@@ -70,7 +70,7 @@
  <br /> 
  <br /> 
  <div style="text-align: center;">
-  <img src="/resource/news/2013/02/vaadin-7/en/resources/Vaadins_Development_and_Release_Process.jpg;jsessionid=BC7AD81F36FA6DE571F249020744937A" border="0" alt="Vaadin's Development and Release Process" _href="img://Vaadins_Development_and_Release_Process.jpg" _p="true" />
+  <img src="/resource/news/2013/02/vaadin-7/en/resources/Vaadins_Development_and_Release_Process.jpg;jsessionid=846FCD69C9F111C02DA5F9D0BB9CD71B" border="0" alt="Vaadin's Development and Release Process" _href="img://Vaadins_Development_and_Release_Process.jpg" _p="true" />
  </div> 
  <div style="text-align: center; font-weight: bold;">
   Figure: Vaadin's Development and Release Process
