@@ -28,8 +28,8 @@
    </div>
    <div>
     <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/1.java">Greenplum Pivotal HD Combines the Strengths of SQL and Hadoop</a>EMC Greenplum has announced Pivotal HD, a new Hadoop distribution including a fully compliant SQL MPP database running on HDFS and being “hundreds of times faster than Hive”.
-   </div>
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/0.java">Using the Domain Driven Design Bounded Context Concept to Shrink a Large Domain Model</a>Bounded Context concept from Domain Driven Design (DDD) can be used to divide a large model into smaller models using the Database Context (DbContext class) in Entity Framework (EF). Bounded Context creates smaller, more cohesive models with boundaries between models.
-  </div>
+   </div> 
+  </div> 
+  <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/0.java">Using the Domain Driven Design Bounded Context Concept to Shrink a Large Domain Model</a>Bounded Context concept from Domain Driven Design (DDD) can be used to divide a large model into smaller models using the Database Context (DbContext class) in Entity Framework (EF). Bounded Context creates smaller, more cohesive models with boundaries between models.  
  </body>
 </html>
