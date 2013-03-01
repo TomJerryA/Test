@@ -1,33 +1,80 @@
-<p>Yahoo!’s recent decision to call all employees to work&nbsp;from company’s&nbsp;offices has raised some questions especially throughout the telecommuting community. Is this a disguised move to lay off people? Is it a misunderstanding of how remoting is to be managed? Is this the right move for Yahoo!?</p> 
-<p>A week ago, Jackie Reses, Executive VP of People and Development for Yahoo!, sent a <a href="http://allthingsd.com/20130222/physically-together-heres-the-internal-yahoo-no-work-from-home-memo-which-extends-beyond-remote-workers/#">memo</a> to all employees announcing them that all work-from-home arrangements are no longer valid and every Yahoo! employee needs to join the workforces in one of the offices available for them starting with June. Reses’ argument was that “communication and collaboration will be important, so we need to be working side-by-side” and she implied that Yahoo!’s telecommuters are not up to their job: “Speed and quality are often sacrificed when we work from home.”</p> 
-<p>Yahoo! has a large percentage of their staff working from home throughout all divisions: customer support, marketing, engineering, etc., and many are not productive, <a href="http://according%20to%20business%20insider%2C/">according to Business Insider</a>, as&nbsp;a former unnamed Yahoo! engineer told them: “For what it's worth, I support the no working from home rule. There's a ton of abuse of that at Yahoo. Something specific to the company.”</p> 
-<p>Michael Katz, a former ad tech executive for Yahoo!, also agrees with company’s decision:</p> 
-<blockquote> 
- <p>The value in human interaction is greater collective wisdom as a result of improved communication &amp; collaboration.</p> 
- <p>It's really all about improving the likelihood that meaningful interaction will translate to meaningful (shareholder) value.</p> 
+<p><a href="http://vaadin.com/">Vaadin</a> has released version 7 of its Java-based web application framework. The Vaadin 7 platform is the framework's first major update since 2009.</p> 
+<p>Java web application developers may find Vaadin 7 comparable with other frameworks like Wicket, JSF and Google Web Toolkit (GWT) and notice similarities and differences among them. In many ways Vaadin is similar to Wicket - the main difference is that Vaadin does not require the use of HTML templates. Likewise, the similarity between JSF and Vaadin is that they both are server-side frameworks; however Vaadin applications are programmed in plain Java requiring no XML configurations.</p> 
+<p>The Vaadin group has been a member of the GWT Steering Committee for over five years, and Vaadin 7 now includes GWT as its core component. In his June 2012 <a href="https://vaadin.com/blog/-/blogs/gwt-built-in-vaadin-7">blog post</a>, Lehtinen suggests that &quot;Anyone who is building their apps using GWT today can move to Vaadin by simply replacing the jars in the project&quot;. Using GWT had some advantages over a traditional Vaadin application, depending on the use case. GWT applications can be made to work off-line, can support larger number of concurrent users (10,000+) where server-side state is not required, and have lower latency. However a traditional Vaadin-based UI running on a Java server or portal is almost certainly easier for a Java developer to build since it can be completely coded in Java.</p> 
+<p>The Vaadin development team has implemented <a href="https://vaadin.com/vaadin7">65 new features</a> in addition to the inclusion of GWT. The framework's <a href="https://vaadin.com/faq">FAQ</a> page mentions that Vaadin 7 is a single jar-file implementation following Java EE standards and it uses typical desktop UI programming patterns. The framework also leverages the support and feedback provided by the open source community consisting of over 40,000 active registered members.</p> 
+<p>InfoQ communicated with Joonas Lehtinen (CEO, Vaadin.com) to find out more about Vaadin 7.</p> 
+<p><strong> InfoQ: Can you list five or six of the most useful features in the latest release of Vaadin from the view of new adopters of the framework? </strong></p> 
+<blockquote>
+  My top picks list is pretty much the list at: https://vaadin.com/vaadin7 
+ <br /> 
+ <br /> Out of those, my top-five ones are: 
+ <br /> 
+ <ol> 
+  <li>Full copy of GWT built-in. This allows us to support the whole package and make it easier to leverage the power of Google's brilliant Java-to-JavaScript compiler in your applications.</li> 
+  <li>Widget extensions allow adding functionality on top of existing widgets as independent extensions. For more info on this, see https://vaadin.com/wiki/-/wiki/Main/Creating%20a%20component%20extension.</li> 
+  <li>Sass compiler introduces long needed modularization of themes.</li> 
+  <li>Redesigned layout engine that uses browsers native layout calculations instead of calculating everything in JavaScript. This radically decreases the number of reflows and makes layouts much faster. As a side benefit, we now support all of CSS.</li> 
+  <li>Redesigned window API that makes Vaadin applications feel more like web applications and simplifies access to the http request and web page.</li> 
+ </ol> 
 </blockquote> 
-<p>Business Insider also added that this move “upset lots of Yahoo employees – including some working mothers, who say they wish they could afford to build a nursery at the office the way CEO Marissa Mayer has.” Mayer had a baby last fall and she paid “<a href="http://www.businessinsider.com/marissa-mayer-who-just-banned-working-from-home-paid-to-have-a-nursery-built-at-her-office-2013-2">to have a nursery built in her office</a>.” “I wonder what would happen if my wife brought our kids and nanny to work and set them up in the cube next door?,” asked the husband of a remote Yahoo! worker.</p> 
-<p>A “source familiar with Mayer’s thought process” saw this announcement as an opportunity for Yahoo! to trim down the workforce being “a layoff that's not a layoff” and bringing the company in shape, currently having a “huge, bloated infrastructure” that “got fat and lazy over the past 15 years.”</p> 
-<p>Yahoo!’s approach to remote work has generated some reaction throughout the tech community. Scott Hanselman, a 5-years telecommuter veteran working for Microsoft, wrote on his blog that <a href="http://www.hanselman.com/blog/BeingARemoteWorkerSucksLongLiveTheRemoteWorker.aspx">he would quit if he were a Yahoo! employee</a>: “If I got this memo while working Remote at Yahoo I'd quit that moment. I would probably quit with some flair as well. Talk about completely demotivating.”</p> 
-<p>He sees three reasons why Yahoo! did it:</p> 
-<blockquote> 
- <ul> 
-  <li>A veiled attempt to trim the workforce through effectively forced attrition by giving a Sophie's Choice to remote workers that management perceives as possibly not optimally contributing. It's easy to avoid calling it a layoff when you've just changed the remote work policy, right?</li> 
-  <li>A complete and total misstep and misunderstanding of how remote workers see themselves and how they provide value.</li> 
-  <li>Pretty clear evidence that Yahoo really has no decent way to measure of productivity and output of a worker.</li> 
- </ul> 
+<p><strong> InfoQ: The report &quot;<a href="https://vaadin.com/gwt-report-2012-portlet/download/1871870899/Future-of-GWT-Report-2012.pdf">The Future of GWT Report 2012</a>&quot; says that SmartGWT, GXT and Errai extend GWT while Vaadin complements it. Can you tell us more on that? </strong></p> 
+<blockquote>
+  The GWT programming model has two levels of abstraction: 
+ <br /> 
+ <ol> 
+  <li>UI written in Java and compiled to JavaScript, and</li> 
+  <li>Native JavaScript. SmartGWT, GXT and Errai essentially just provide more (really nice) components and helpers within the programming model defined by GWT.</li> 
+ </ol> Vaadin adds a server-side Java programming model on top of the programming model provided by GWT. This higher level abstraction speeds up development by decreasing the number software layers required to implement a modern web application. In GWT, one needs to build the UI layer (in browser), RPC plus UI services (in server) and the business logic (in server). In Vaadin, only server-side UI and business logic layers are required. This essentially cuts the code size needed for developing an application UI by half. Vaadin still provides access to writing client-side UI in both Java and JavaScript, if more flexibility is needed. 
 </blockquote> 
-<p>Hanselman believes that trust was lost inside Yahoo! somewhere along the way:</p> 
-<blockquote> 
- <p>Ultimately, though, this comes down to trust, and trust can be found or lost on every page of a company's policies. You were hired as a professional; are you trusted to be a professional? Working remotely requires your company to trust you can do the work not only without them seeing you, but also without constant physical interaction with your teammates.</p> 
+<p><strong> InfoQ: Developers using GWT complain that they have very few to almost no GWT books published recently. Given that background, how do you explain the importance of having the <a href="https://vaadin.com/book">Book of Vaadin</a>? And what are your plans to maintain or enhance its current Preview Edition? </strong></p> 
+<blockquote>
+  We have been maintaining the Book of Vaadin since 2007. This has been a huge task, but we feel that top notch documentation is a very important part of any framework - if a feature is not documented, it is not useful for anyone. 
+ <br /> 
+ <br /> The first full edition of the Book of Vaadin should be ready by early March as a free download for everyone. After that we'll continue to maintain it every time we add new features to the framework. 
 </blockquote> 
-<p>Scott Berkun, an author and speaker, wrote that <a href="http://scottberkun.com/2013/in-defense-of-remote-work-and-marrisa-mayer/">Yahoo!’s decision to apply the same measure to everyone is a mistake</a> and it will actually backfire:</p> 
-<blockquote> 
- <p>Any unilateral decision by an executive about how creative people work is a mistake. To presume to know what is best for hundreds of professional adults is to make yourself a parent, and make your employees children. The most talented employees who prefer autonomy will leave. The less talented and more dependent employees will stay.</p> 
+<p><strong> InfoQ: If the Vaadin development team is distributing a version of GWT which they are maintaining for Vaadin, how are they planning to keep this in-line with standard GWT? </strong></p> 
+<blockquote>
+  The sources for the GWT version that we maintain are available at https://github.com/vaadin/gwt. 
+ <br /> 
+ <br /> All of Vaadin framework is also available at https://github.com/vaadin/vaadin. 
+ <br /> 
+ <br /> We only distribute releases for the Vaadin Framework (not for GWT), but since Vaadin includes GWT, it can be used as a drop-in replacement for GWT distribution - even if only client-side features of the framework would be used. 
+ <br /> 
+ <br /> If you want to take a peek into GWT and Vaadin relationship from an architecture point of view, see https://vaadin.com/blog/-/blogs/vaadin-7-application-architecture. 
 </blockquote> 
-<p>Berkun thinks that Yahoo! does not have data to back up the complaint that&nbsp;their employees sacrificed speed and quality by working at home, but he admits this “might be true at Yahoo.” He also adds that this move might help the company at the end:</p> 
-<blockquote> 
- <p>She [Mayer] is the CEO and knows more about what’s going on in her company than we do. We’re on the outside looking in. A shock to the system might be precisely what Yahoo needs and targeting remote work was a specific way to get her message of “wake up and shape up” heard loudly.</p> 
+<p><strong> InfoQ: The <a href="https://vaadin.com/faq">FAQ</a> section on your web site includes a paragraph on “When should I not use Vaadin?” How does the size of an enterprise project influence the decision on adopting Vaadin? </strong></p> 
+<blockquote>
+  Sometimes it does: Larger the project, more the benefits for the Vaadin developers. Building a very small application should be easy with almost any framework - including Vaadin. 
 </blockquote> 
-<p>It is no secret that Yahoo! has lost its edge and it is not a web front runner anymore, and they have to do something about it. Some people who prefer or need to be working from home will leave the company. Others will go to the office every day from June. If this move is an attempt to cut the number of employees, then it is not a good one because the company trims personnel without discrimination, losing the good along&nbsp;with the bad ones.&nbsp;If this is a rebuilt of the company and its culture, then we have to wait a couple of years to see where it is heading to. Anyway, this is a strong signal regarding remote working and some managers will think twice before letting their employees working from home.</p> 
+<p><strong> InfoQ: The page &quot;<a href="https://vaadin.com/who-is-using-vaadin">Who Is Using Vaadin</a>&quot; shows Finland hosting 34 showcases. USA that hosts six showcases is the next one on the list. What is a Vaadin showcase? Developers in 170 countries use Vaadin, so what will it take to increase the number of Vaadin showcases hosted in those countries? </strong></p> 
+<blockquote>
+  Unfortunately our showcase map is very incomplete. When we started collecting the &quot;who is using Vaadin&quot; list, we just asked around to find about cases using Vaadin. Our headquarters are in Finland, so we heard of quite a few nice showcases from our local networks. 
+ <br /> 
+ <br /> We would love to list showcases from all around the world. Anyone who has built something nice with Vaadin is encouraged to contact us for including them in our listing. 
+</blockquote> 
+<p><strong> InfoQ: Do any non-JVM web application frameworks present competition to Vaadin? If yes, can you name them? </strong></p> 
+<blockquote>
+  While we are very JVM centric, everyone building a web app in this space is also using the web platform. Thus the most competition is from JavaScript frameworks. While having separate front-end and back-end teams with different skills could be ok for some projects, the extra cost of this split should be unnecessary for the most projects in the enterprise space. 
+</blockquote> 
+<p><strong> InfoQ: A professional developer may want to contribute to the Vaadin's codebase. What process do your team members follow for qualifying a potential contributor? </strong></p> 
+<blockquote>
+  Most of the contributions to the Vaadin project come in the form of add-on components. This sets the bar low - anyone can contribute to the Vaadin directory at http://vaadin.com/directory. 
+ <br /> 
+ <br /> When one wants to contribute to the core Vaadin Framework, they should submit their patch though the issue tracking system: http://dev.vaadin.com/wiki/SubmittingBug. One of the core development team members then picks up the patch, evaluates and tests it, and then submits it to our internal Gerrit review system where it is read and evaluated by at least one other developer from our core team. At the minimum, the patch often gets partially re-written during the process. All contributors are also required to sign a contribution agreement. 
+ <br /> 
+ <br /> We are looking forward to making this process simpler by making our Gerrit system public and starting to accept pull requests from GitHub in the future. 
+</blockquote> 
+<p><strong> InfoQ: We learn from your roadmap <a href="https://vaadin.com/blog/-/blogs/roadmap-for-the-next-74-days">blog post</a> that the Vaadin framework intends to follow a steady development process. Is the future process formalized? What does it look like? </strong></p> 
+<blockquote>
+  We renewed our process recently - partly because of the delays in the Vaadin 7 project. We try to do more informal research projects on the side while continuing with the actual development. We hope that this allows us to make better estimates for the roadmap. The core process includes a monthly roadmap meeting where we set roadmaps for all products for the next three months. This internal process as a whole looks like below: 
+ <br /> 
+ <br /> 
+ <div style="text-align: center;">
+  <img src="/resource/news/2013/02/vaadin-7/en/resources/Vaadins_Development_and_Release_Process.jpg;jsessionid=8AD7CC0D7F2A498FE9FE5E545F46BCEE" border="0" alt="Vaadin's Development and Release Process" _href="img://Vaadins_Development_and_Release_Process.jpg" _p="true" />
+ </div> 
+ <div style="text-align: center; font-weight: bold;">
+  Figure: Vaadin's Development and Release Process
+ </div> 
+ <br /> The development itself follows one or two weeks-long cycles, depending on the product feature. When we are getting closer to having something we could show to outside world, we do an internal development review; and if possible, we release an alpha or beta version to get feedback earlier on in the development process. 
+</blockquote> 
 <p id="lastElm"></p>
