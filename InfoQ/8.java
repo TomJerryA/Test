@@ -1,23 +1,33 @@
-<p>Chris Travers recently published a series of articles titled “Building SOLID Databases”. He explains several ideas on how to apply some of the common OOP principles such as Single Responsibility Principle, Interface Segregation, Dependency Inversion to improve data models and database code. While some of the ideas can be applied in part to any relational databases, the articles showcase scenarios involving object-relational features such as table inheritance, available in databases like PostgreSQL.</p> 
-<p align="justify">In <a href="http://ledgersmbdev.blogspot.in/2013/01/building-solid-databases-single.html">Single Responsibility And Normalization</a>, Chris explains the similarities and subtle differences between data models and class models. Normalization is normally sufficient for meeting the SRP in pure relational databases, but table inheritance can be further used to manage commonly co-occurring fields which are dependent on other fields in the database. He provides an example -</p> 
+<p><a href="http://www.greenplum.com">EMC Greenplum</a> has announced <a href="http://www.greenplum.com/blog/topics/hadoop/introducing-pivotal-hd">Pivotal HD</a>, a new Hadoop distribution including a fully compliant SQL MPP database running on HDFS and being “hundreds of times faster than Hive”.</p> 
+<p><a href="http://www.greenplum.com/blog/topics/hadoop/introducing-pivotal-hd">Pivotal HD</a> contains the usual suspects of a standard Hadoop distribution – HDFS, Pig, Hive, Mahout, Map-Reduce, etc. – but adds a number of other components shown in the architectural snapshot below:</p> 
 <blockquote> 
- <p align="justify">A common case where composition makes a big difference is in managing notes. People may want to attach notes to all kinds of other data in a database, and so one cannot say that the text or subject of a note is mutually dependent.</p> 
- <p align="justify">A typical purely relational approach is to either have many independently managed notes tables or have a single global note table which stores notes for everything, and then have multiple join tables to add join dependencies.</p> 
- <p align="justify">An object-relational approach might be to have multiple notes tables, but have them inherit the table structure of a common notes table.</p> 
+ <p class="image-wide"><a href="$image[7].png;jsessionid=2FAA3B89FA31511B77F3A45C11111732"><img title="image" style="border-left-width: 0px; border-right-width: 0px; background-image: none; border-bottom-width: 0px; padding-top: 0px; padding-left: 0px; display: inline; padding-right: 0px; border-top-width: 0px" border="0" alt="image" src="/resource/news/2013/02/Pivotal-HD-SQL-Hadoop/en/resources/Pivotal1.png;jsessionid=2FAA3B89FA31511B77F3A45C11111732" _href="img://Pivotal1.png" _p="true" /></a></p> 
 </blockquote> 
-<p align="justify">In the <a href="http://ledgersmbdev.blogspot.in/2013/01/building-solid-databases-openclosed.html">Open/Closed Principle</a>, the goal would be to keep the system extendable, without causing extensions to break when the base version changes. Again table inheritance can provide a flexible way to provide extension points for data models – the example here is how the pg_message_queue 0.2 can handle various data types by having a separate table to support each data type, all inheriting from a common table. Chris also provides another simple example where a secure API is kept extendable for security controls but closed for modifications.</p> 
-<p align="justify">The <a href="http://en.wikipedia.org/wiki/Liskov_substitution_principle">Liskov Substition Principle</a> is normally not a problem for purely Relational databases, but <a href="http://ledgersmbdev.blogspot.in/2013/02/building-solid-databases-liskov.html">could come to the fore-front</a> when you use table inheritance. An example here is a my_square table inheriting a my_rectangle table –</p> 
-<div align="justify"> 
- <pre>
-CREATE TABLE my_rectangle ( id serial primary key, height  numeric, width numeric );
-CREATE TABLE my_square ( check (height = width) ) INHERITS  (my_rectangle);</pre> 
-</div> 
-<p align="justify">and run an update on my_rectangle -</p> 
-<div align="justify"> 
- <pre>
-UPDATE my_rectangle SET height = height * 2</pre> 
-</div> 
-<p align="justify">then it will cause referential issues in the square table and fail. Ways to handle this would be to either avoid updates altogether (keep rows immutable) or use triggers to delete rows from my_square and insert into my_rectangle whenever such updates are run.</p> 
-<p align="justify"><a href="http://en.wikipedia.org/wiki/Interface_segregation_principle">Interface Segregation</a> <a href="http://ledgersmbdev.blogspot.in/2013/02/building-solid-databases-interface.html">when applied to databases</a> would involve mainly user-defined functions or stored procedures. Chris consider these as interfaces to the underlying data and suggests that the ideal function or stored procedure would have one large query with minimal surrounding logic – anything more than 5 queries or large number of optional parameters might point to reducible complexity which should be dealt with by breaking into multiple separate functions or stored procedures, each one for a specific purpose. This again goes hand in hand with the Single Responsibility Principle.</p> 
-<p align="justify">In <a href="http://ledgersmbdev.blogspot.in/2013/02/building-solid-databases-dependency.html">Dependency Inversion and Robust DB Interfaces</a>, Chris explains how close binding between application logic and stored procedures can lead to leaky abstractions and suggests a few potential solutions. Some of them are using something akin to a service locator pattern, using Views or functions, using <a href="http://www.postgresql.org/docs/9.1/static/xtypes.html">custom datatypes</a>, triggers and notifications. They key suggestion here is to look at various options and design the database itself as an application exposing an appropriate API.&nbsp;</p> 
+<p>The main component of Pivotal is <a href="http://www.greenplum.com/blog/dive-in/hawq-the-new-benchmark-for-sql-on-hadoop">HAWQ</a>, a MPP (Massively Parallel Processing) relational database running directly on HDFS in Hadoop through a dynamic pipelining mechanism and featuring:</p> 
+<ul> 
+ <li>SQL Compliant – supporting all versions of SQL:&nbsp; ‘92, ‘99, 2003 OLAP, etc. 100% compatible with PostgreSQL 8.2.</li> 
+ <li>Row or column-oriented data storage</li> 
+ <li>Query Optimizer – queries can be run on hundreds of thousands of nodes</li> 
+ <li>Fully ODBC/JDBC compliant</li> 
+ <li>?Interactive Query – complex queries on large data sets are solved in seconds or even sub-seconds</li> 
+ <li>Data management – provides table statistics, table security</li> 
+ <li>Supports data stored in HDFS, Hive, HBase, Avro, ProtoBuf, Delimited Text and Sequence Files</li> 
+ <li>Deep analytics – including data mining or machine learning algorithms</li> 
+</ul> 
+<p>Gavin Sherry, Sr. Director of Engineering at Greenplum, demoed (see <a href="http://www.greenplum.com/webcasts?commid=68121">video</a> at ~42’42”) running the following SQL SELECT statement on 1B rows totaling several TB of data on a 60-nodes HDFS cluster in ~13 seconds, providing close to real-time querying capabilities:</p> 
+<p><code> </code></p> 
+<p><code>SELECT gender, count (*)</code></p> 
+<p><code> </code></p> 
+<p><code>FROM retail.order JOIN customers ON retail.order.customer_ID = customers.customer_ID</code></p> 
+<p><code>GROUP BY gender;</code></p> 
+<p>According to <a href="http://www.greenplum.com/blog/author/donald-miner">Donald Miner</a>, Solutions Architect at EMC Greenplum, “<a href="http://www.greenplum.com/blog/topics/hadoop/introducing-pivotal-hd">HAWQ is hundreds of times faster than Hive</a>”, as show in the next graphic from Greenplum (<a href="http://public.brighttalk.com/resource/core/9757/hadoop-the_foundation_for_change_15465.pdf">PDF</a>):</p> 
+<blockquote> 
+ <p class="image-wide"><a href="$image[5].png;jsessionid=2FAA3B89FA31511B77F3A45C11111732"><img title="image" style="border-left-width: 0px; border-right-width: 0px; background-image: none; border-bottom-width: 0px; padding-top: 0px; padding-left: 0px; display: inline; padding-right: 0px; border-top-width: 0px" border="0" alt="image" src="/resource/news/2013/02/Pivotal-HD-SQL-Hadoop/en/resources/Pivotal2.png;jsessionid=2FAA3B89FA31511B77F3A45C11111732" _href="img://Pivotal2.png" _p="true" /></a></p> 
+</blockquote> 
+<p>HAWQ solves queries with “sub-second response time, while at the same time running over much larger datasets and processing with the full expressiveness of SQL, in the same engine.” Miner explains how they made it possible:</p> 
+<blockquote> 
+ <p>We have what we call “segment servers” manage a shard of each table. Several segment servers run on each data node of your cluster. This shard of data, however, is completely stored within HDFS. We have a “master” node that has the job of storing the top-level metadata, as well as building the query plan and pushing the node-local queries down to the segment servers.</p> 
+ <p>When a query starts up, the data is loaded out of HDFS and into the HAWQ execution engine. HAWQ follows MPP architecture, streaming data through stages in a pipeline, instead of spilling and check pointing to disk (like MapReduce). Also, the segment servers are always running, so there is no spin-up time.</p> 
+</blockquote> 
+<p>Pivotal HD comes in three flavors (<a href="http://public.brighttalk.com/resource/core/9707/pivotal_hd_enterprise_datasheet-1_15391.pdf">PDF</a>): Enterprise, Database Services and a Community Edition for evaluation purposes.</p> 
 <p id="lastElm"></p>
