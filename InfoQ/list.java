@@ -2,6 +2,9 @@
  <head></head> 
  <body> 
   <div> 
+   <div> 
+    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/10.java">Entity Framework 6 Alpha 3 with Code First Stored Procedures and Connection Resiliency</a>Microsoft has released Entity Framework 6 Alpha 3 with support for code first stored procedures, connection resiliency, pull request from iceclow and UnaiZorrilla. 
+   </div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/9.java">Casablanca's C++ SDK Whitelisted for Open Source</a>Microsoft's C++ REST SDK, codenamed Casablanca, has been open sourced under the Apache 2.0 license. Casablanca provides developers with a multiplatform way to write C++11 code that interacts with REST services. 
   </div> 
   <div> 
