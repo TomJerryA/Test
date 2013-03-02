@@ -42,7 +42,7 @@
  <br /> 
  <br /> If you want to take a peek into GWT and Vaadin relationship from an architecture point of view, see https://vaadin.com/blog/-/blogs/vaadin-7-application-architecture. 
 </blockquote> 
-<p><strong> InfoQ: The <a href="https://vaadin.com/faq">FAQ</a> section on your web site includes a paragraph on ìWhen should I not use Vaadin?î How does the size of an enterprise project influence the decision on adopting Vaadin? </strong></p> 
+<p><strong> InfoQ: The <a href="https://vaadin.com/faq">FAQ</a> section on your web site includes a paragraph on ‚ÄúWhen should I not use Vaadin?‚Äù How does the size of an enterprise project influence the decision on adopting Vaadin? </strong></p> 
 <blockquote>
   Sometimes it does: Larger the project, more the benefits for the Vaadin developers. Building a very small application should be easy with almost any framework - including Vaadin. 
 </blockquote> 
@@ -70,7 +70,7 @@
  <br /> 
  <br /> 
  <div style="text-align: center;">
-  <img src="/resource/news/2013/02/vaadin-7/en/resources/Vaadins_Development_and_Release_Process.jpg;jsessionid=0AC62C72975AC7200E84D0150E132CF1" border="0" alt="Vaadin's Development and Release Process" _href="img://Vaadins_Development_and_Release_Process.jpg" _p="true" />
+  <img src="/resource/news/2013/02/vaadin-7/en/resources/Vaadins_Development_and_Release_Process.jpg;jsessionid=4CDA4AF392277B561BF048FCEDA55C0C" border="0" alt="Vaadin's Development and Release Process" _href="img://Vaadins_Development_and_Release_Process.jpg" _p="true" />
  </div> 
  <div style="text-align: center; font-weight: bold;">
   Figure: Vaadin's Development and Release Process

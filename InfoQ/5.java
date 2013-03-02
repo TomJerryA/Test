@@ -1,11 +1,11 @@
 <html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>How Swarming Helps Agile Teams to Deliver</h3><p>One of the&nbsp;goals of Agile software development is to deliver working software fast and frequently. Swarming is a technique that helps agile teams to do this. What is swarming, what are the benefits of swarming, and when and how to apply it?</p> 
 <p>Vin D'Amico explains in <a href="http://brainslink.com/2013/01/agile-teams-swarm-to-greatness/">agile teams swarm to greatness</a> that teams that use agile software development can deliver more software with less planning, and respond rapidly:</p> 
 <blockquote> 
- <p>They quickly go from planning to designing to coding to testing to finishing. Then, they do it again ó and they keep doing it until the software meets the goals defined by the stakeholders.</p> 
+ <p>They quickly go from planning to designing to coding to testing to finishing. Then, they do it again ‚Äî and they keep doing it until the software meets the goals defined by the stakeholders.</p> 
 </blockquote> 
 <p>But how do agile teams respond so quickly? Vin states that:</p> 
 <blockquote> 
- <p>(Ö) great teams swarm. They try to resolve the issue or remove the impediment now. If they canít, fine, move it to the backlog but only as a last resort.</p> 
+ <p>(‚Ä¶) great teams swarm. They try to resolve the issue or remove the impediment now. If they can‚Äôt, fine, move it to the backlog but only as a last resort.</p> 
 </blockquote> 
 <p>In <a href="http://tobeagile.com/2012/12/11/seven-strategies-for-team-swarming/">seven strategies for team swarming</a>, David Bernstein explains how swarming&nbsp;help to build an effective team which is able to focus and solve complex problems:</p> 
 <blockquote> 
@@ -15,15 +15,15 @@
 <blockquote> 
  <p>Rather than working alone, see if solitary tasks can be done by two or sometimes three people. Often, the momentum gained by working in pairs offsets putting two people on the same task. Remember, high performance teams almost always pair on tasks.</p> 
 </blockquote> 
-<p>What is swarming? Some years ago, InfoQ&nbsp;published&nbsp;a summary of a Yahoo group discussion&nbsp;on swarming in&nbsp;<a href="http://www.infoq.com/news/2011/01/swarming;jsessionid=6D2A5A2EAE16263B850DB1E49AA385B3">swarming: whatís the point?</a>. It explains the purpose of swarming: ìgetting the team to focus on getting work that is valued by the business <i>done</i>î and ìto increase quality and consistency by getting the whole team involved in a story as near to the beginning as possibleî. According to Vin DíAmico, î[Swarming] is simply the act of coming together to solve a problem or get something done quicklyî. David Bernstein defines it as ìA swarm is where you get the whole team together to focus on solving a single problemî.</p> 
+<p>What is swarming? Some years ago, InfoQ&nbsp;published&nbsp;a summary of a Yahoo group discussion&nbsp;on swarming in&nbsp;<a href="http://www.infoq.com/news/2011/01/swarming;jsessionid=987ECA4D987ED3C77964A89CD8645B68">swarming: what‚Äôs the point?</a>. It explains the purpose of swarming: ‚Äúgetting the team to focus on getting work that is valued by the business <i>done</i>‚Äù and ‚Äúto increase quality and consistency by getting the whole team involved in a story as near to the beginning as possible‚Äù. According to Vin D‚ÄôAmico, ‚Äù[Swarming] is simply the act of coming together to solve a problem or get something done quickly‚Äù. David Bernstein defines it as ‚ÄúA swarm is where you get the whole team together to focus on solving a single problem‚Äù.</p> 
 <p>Oleksi Derkatch describes how&nbsp;<a href="http://oleksiderkatch.blogspot.nl/2011/03/swarming.html">swarming</a>&nbsp;works, and what it can deliver:&nbsp;</p> 
 <blockquote> 
  <p>The idea is that you get all the developers to work (swarm) on a single story, instead of having each developer working on a separate story. The goal is to get more stories fully completed. It's better to have 80% of the features 100% done, instead of having 100% of the features 80% done.</p> 
 </blockquote> 
 <p>Renee Troughton explains how organization can use swarming as a way to build teams that are more innovative, in her blog post <a href="http://agileforest.com/2011/12/20/the-new-age-of-business/">the new age of business</a>:</p> 
 <blockquote> 
- <p>This is where swarming comes in. Most organisations throw their ëresourcesí about from project to project with little thought as to whether the person is actually interested and passionate about that type or project. Additionally they do it with little thought of true speed and its relationship to return of investment.</p> 
- <p>To resource the work we need passionate people who will focus on this idea like it truly is their newborn baby. (Ö) Employees interested in being part of this work should be able to sign up for it and be able to be immediately released to follow through on it.</p> 
+ <p>This is where swarming comes in. Most organisations throw their ‚Äòresources‚Äô about from project to project with little thought as to whether the person is actually interested and passionate about that type or project. Additionally they do it with little thought of true speed and its relationship to return of investment.</p> 
+ <p>To resource the work we need passionate people who will focus on this idea like it truly is their newborn baby. (‚Ä¶) Employees interested in being part of this work should be able to sign up for it and be able to be immediately released to follow through on it.</p> 
 </blockquote> 
 <p>Do your teams swarm? Does it help them to deliver working software&nbsp;fast and frequently?</p> 
 <p id="lastElm"></p></body></html>
