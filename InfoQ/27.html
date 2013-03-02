@@ -1,0 +1,12 @@
+<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>Android 4.2.2中对安全性的改进</h3><p><a href="http://developer.android.com/about/versions/jelly-bean.html">Android 4.2</a> Jelly Bean最近发布了更新，通过加入附加特性来增强应用程序的安全性。它其中的一个特性可以让用户在安装程序之前对应用程序进行验证，从而防止将有害的应用程序安装到移动设备上。并且它可以在发现应用程序损坏的情况下终止安装过程。</p> 
+<p>当你设备里的应用程序试图向一个会产生额外费用的收费服务短号码发送短信时，Android系统会发出提示，由你来选择是否允许该应用程序发送短信或者终止发送过程。</p> 
+<p>最新的版本允许用户自定义配置VPN，从而使设备只有在VPN创建以后才可以访问网络。此外，SSL核心库的实现也提供了对证书绑定的支持，权限也被以分组的形式进行组织管理。它还针对用户选择的权限提供了详细的信息。</p> 
+<p>在Android 4.2.2中，<a href="http://developer.android.com/about/versions/android-4.2.html">目标API级别为17</a>的应用程序会将每个ContentProvider的export属性默认设置为false，从而可以最终减小应用程序的默认攻击面。此次的更新还可以减小针对root权限升级来带来的潜在攻击面，因为installd守护进程不会再以root用户的方式运行。</p> 
+<p>此外，初始化脚本还会遵守O_NOFOLLOW语法规则从而预防符号链接相关的攻击。它还实现了FORTIFY_SOURCE，它可以被系统函数库和应用程序调用，从而预防内存泄漏。</p> 
+<p>Android 4.2.2进行了相关修改，以便利用<a href="http://www.openssl.org/">OpenSSL</a>来完成<a href="http://developer.android.com/reference/java/security/SecureRandom.html">SecureRandom</a>和<a href="http://en.wikipedia.org/wiki/RSA_(algorithm">Cipher.RSA</a>)的实现。该版本还为使用OpenSSL 1.0.1的<a href="http://en.wikipedia.org/wiki/Transport_Layer_Security">TLSv1.1</a>和TLSv1.2增加了SSLSocket的支持，而且还减小了应用程序的默认攻击面。它还包含了<a href="http://www.webkit.org/">WebKit</a>、<a href="http://www.libpng.org/pub/png/libpng.html">libpng</a>、OpenSSL和<a href="http://www.xmlsoft.org/">LibXML</a>开源库的安全补丁。</p> 
+<p>“推荐的做法是在程序第一次启动的时候生成一个真正随机的AES key并将它存储在内部存储空间中。”Android开发者关系团队的Fred chung说道。</p> 
+<p>Android 4.2.2 引入了USB安全调试方面的内容，当启用安全调试的时候，只有被用户认证过的主机才可以通过Android SDK自带的<a href="http://developer.android.com/tools/help/adb.html">ADB工具</a>经由USB连接来访问设备的<a href="http://developer.android.com/sdk/index.html">内部构件</a>。</p> 
+<p>查看英文原文：<a href="http://www.infoq.com/news/2013/02/android-4-2-2;jsessionid=178E0741FC2B6E99BBBCC74705A5AAA5">Security Enhancements in Android 4.2.2</a></p> 
+<hr /> 
+<p>感谢<a href="http://infoq.com/cn/author/%E4%BE%AF%E4%BC%AF%E8%96%87">侯伯薇</a>对本文的审校。</p> 
+<p id="lastElm"></p></body></html>

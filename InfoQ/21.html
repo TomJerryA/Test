@@ -1,0 +1,22 @@
+<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>Netflix为Java引入了响应式扩展</h3><p>Netflix为MS Open Tech的响应式扩展（Reactive Extensions）提供了Java实现并将之开源。但若说RxJava只是针对Java的，就会产生误导。它被设计为亦可用于其他JVM语言。“目前支持的语言（除了Java本身外）包括Groovy、Clojure、Scala和JRuby。”</p> 
+<p>Netflix创建了RxJava来简化服务器端并发。他们的目标是允许客户端触发单个可在服务器并行执行的“重”客户端请求。<a href="http://techblog.netflix.com/2013/02/rxjava-netflix-api.html">Ben Christensen和Jafar Husain</a>解释道：</p> 
+<blockquote> 
+ <p>服务器端并发可以有效降低网络通信量。如果不能在服务器并发执行，那么单个“重”客户端请求可能不如多个“轻”请求，因为一个设备上的每个网络请求可以天然地和其他网络请求并行执行。如果服务器端执行的某个崩溃的“重”请求没有达到并行执行的要求，那么即使算上节省的网络传输时间，也可能会慢于多个“轻”请求。</p> 
+</blockquote> 
+<p>根据Ben和Jafar所说，函数式响应要优于Future和回调函数，因为“函数式响应提供了一系列能够对Observable进行过滤、选择、转换、联合和组合的操作符，可以进行高效地执行和组合。”</p> 
+<p>通过让服务层API中的所有方法返回Observable
+ <t>
+  ，开发者可以与这些方法的实现隔离开来。这些方法可以在今天异步调用，也可以在明天同步返回。服务方法还可以自由选择阻塞和非阻塞I/O，前者可在资源受限时使用。
+ </t></p> 
+<p>
+ <t>
+  RxJava支持“Java 5（以支持Android）和更高版本，最终目标是基于支持Lambda的Java 8进行构建。”与原始
+  <a href="https://rx.codeplex.com/">Rx</a>一样，Netflix的RxJava也是基于Apache License。你可以在github上下载
+  <a href="https://github.com/Netflix/RxJava">RxJava</a>。
+ </t></p> 
+<p>
+ <t>
+  查看英文原文：
+  <a href="http://www.infoq.com/news/2013/02/RxJava;jsessionid=21EFFACCC7936B4AA6BAA9CE530F5194">Netflix Brings Reactive Extensions to Java</a>
+ </t></p> 
+<p id="lastElm"></p></body></html>

@@ -1,0 +1,8 @@
+<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>WCF Data Services 5.3.0支持实例注解和请求URL</h3><p><a href="http://blogs.msdn.com/b/astoriateam/archive/2013/02/18/wcf-data-services-5-3-0-rtw.aspx">微软</a>最新发布的WCF Data Services 5.3.0支持<a href="http://en.wikipedia.org/wiki/JSONP">JSON有效载荷</a>中的实例注解（instance annotations）。此外，针对不同类型的行为可以拥有相同的名称，它还支持不同名称行为的序列化，同时解决了在使用新的IDataServiceActionResolver接口时行为的绑定参数问题。</p> 
+<p>WCF Data Services 5.3.0支持在<a href="http://msdn.microsoft.com/en-us/library/cc646889.aspx">OnStartProcessingRequest</a>方法中修改请求URL。而且，服务的作者不但能修改请求URL，还能修改一组请求中不同部分的URL。</p> 
+<p>根据官方消息，在后续版本中还将支持Atom有效载荷中的实例注解。</p> 
+<p>WCF Data Services 5.3.0解决了代码生成工具的一些问题，如产生无效VB代码、将Precision设置为空间或时间属性时会产生错误，以及为不同命名空间下的子类型生成错误的<a href="http://msdn.microsoft.com/en-us/library/system.componentmodel.inotifypropertychanged.aspx">INotifyPropertyChanged</a>接口代码。它还修复了在JSON的fullmetadata模式下odata.type编写不一致以及Edm.DataTime的有效形式无法解析的问题。</p> 
+<p>WCF Data Service的最新版本还修复了WCF Data Services客户端无法在插入/更新时为开放属性发送类型名称以及Execute()方法在处理具有<a href="http://msdn.microsoft.com/en-us/data/odata.aspx">Data Service</a> 1.0版本的特殊有效载荷时会失败的问题。</p> 
+<p>WCF Data Serivces 3.0还为JSON fullmetadata有效载荷忽略类型信息以及JSON更新/插入请求忽略开放属性类型信息这两个问题提供了解决方案。</p> 
+<p>查看英文原文：<a href="http://www.infoq.com/news/2013/02/wcf-data-services-5-3;jsessionid=5E903EDC7722FD3B32501E07A81298E1">WCF Data Services 5.3.0 with Instance Annotations and request URL</a></p> 
+<p id="lastElm"></p></body></html>
