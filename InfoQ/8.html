@@ -1,10 +1,26 @@
-<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>了解Travis CI：开源的持续集成</h3><p>Travis CI基金会于1月30日<a href="http://about.travis-ci.org/blog/2013-01-30-new-build-system-is-live/">过渡到了全新的构建系统上</a>，简化并加强了他们的开源持续集成测试解决方案的能力。</p> 
-<p>作为<a href="http://about.travis-ci.org/docs/user/getting-started/">广泛支持多种语言的</a>持续集成托管服务，Travis CI在众多JavaScript项目中的普及速度令人印象深刻。根据Travis开发者<a href="https://twitter.com/konstantinhaase">Konstantin Haase</a>的介绍，目前已有超过8056个JavaScript项目正在使用Travis CI解决方案。“对于[测试]一个JavaScript框架而言，[Node.js]是最有可能的选择，尽管任何一种我们提供的语言环境都能够运行类似于PhantomJS或Jasmine的工具，”Haase说道。这其中包括两个著名的GitHub托管的JavaScript项目，<a href="https://github.com/emberjs/ember.js/">ember.js</a>和<a href="https://github.com/Shopify/batman">batman.js</a>。</p> 
-<p>Travis CI过渡到新建系统，“将使我们为新的构建按需供应变得更容易，而无需每次都从一个快照来引导VirtualBox，”Travis CI开发者<a href="https://twitter.com/roidrage">Mathias Meyer</a>说道。“现在我们仅使用一个进程来进行更为动态的映射并基于语言的请求来选择合适的服务器映像。这使我们整个安装工作显著简化，同时我们也能够很容易的增加容量。”</p> 
-<p>开发者需要具有一个GitHub账户以及一个绑定到他们选择的语言的.travis.yml文件来<a href="http://about.travis-ci.org/docs/user/getting-started/">开始</a>使用Travis CI服务。<a href="http://about.travis-ci.org/docs/user/gui-and-headless-browsers/">GUI及headless（GUI之下的应用层）测试</a>选项都可用于确保客户侧代码能够具有预期的表现。在构建过程中，JavaScript开发者可以选择很多种不同的<a href="http://about.travis-ci.org/docs/user/notifications/">构建通知方式</a>。在当前托管的JavaScript项目中，66%的项目采用了IRC通知方式，剩余项目中大部分选用了邮件通知方式，Haase介绍道。</p> 
-<p>随着Travis CI的增长，它已经出现在GitHub项目页面上的<a href="http://about.travis-ci.org/docs/user/status-images/">构建状态图像</a>功能中，该功能能够提供即时的测试状态反馈。“Travis CI上所展示的当前构建状态考虑了全部分支，它仅查看最新完成的构建。状态图像可以被配置为仅显示特定分支，例如主分支，”Haase介绍说。</p> 
-<p>该公司的私有化持续集成服务<a href="http://about.travis-ci.org/docs/user/travis-pro/">Travis Pro</a>的发售工作正在进行。“我们新的构建系统显著提升了整体构建的稳定性和可靠性，我们新的虚拟化平台允许我们更动态的增长。只需要再完善一些细节，Travis Pro就可以开放公测了，”Meyers说。“Travis Pro自2012年夏天开始就被客户们积极使用，并且到目前起已经有了显著改进。我们迫不及待的想要将它展示给所有人了！”</p> 
-<p>英文原文：<a href="http://www.infoq.com/news/2013/02/travis-ci;jsessionid=1335307017ABD7D28BE61E0C434D675C">Meet Travis CI: Open Source Continuous Integration</a></p> 
+<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>微软Visual Studio 2012 update 2增强对Windows Store和Windows Phone单元测试的支持</h3><p>微软最近发布了Visual Studio 2012 Update 2的社区版（CTP），其中有一系列新的特性，如在Team Foundation Server方面的<a href="http://geekswithblogs.net/TarunArora/archive/2013/01/31/tfs2012-qu2---new-feature---work-item-tagging.aspx">工作项标签</a>和基于Web的单元测试用例管理。最新的更新对测试浏览器做出了改进，它能显示UI测试的详细信息并且能为工作项添加标签，这让开发者可以过滤工作项，从而显示相关的工作任务。</p> 
+<p>Visual Studio Update 2提供了对<a href="http://blogs.msdn.com/b/visualstudioalm/archive/2013/01/31/windows-phone-unit-tests-in-visual-studio-2012-update-%20%202.aspx">Windows Phone单元测试</a>的支持，这让开发者从Visual Studio 2012开始，可以在Windows Phone 8模拟器或者设备上编写、运行和调试单元测试。</p> 
+<p>Visual Studio Update 2 支持<a href="http://blogs.msdn.com/b/visualstudioalm/archive/2013/02/02/improvements-in-windows-store-unit-tests-test-exceptions-in-async-lamba-expressions-run-tests-on-the-ui-thread.aspx">Windows Store</a>应用的单元测试，其中在命名空间Microsoft.VisualStudio.TestPlatform.UnitTestFramework.AppContainer中增加了两个新特性。其中Assert.ThrowsException
+ <t>
+  方法能测试在
+  <a href="http://msdn.microsoft.com/en-us/library/bb397687.aspx">异步lambda表达式</a>中是否抛出异常，UITestMethodAttribute属性[UITestMethod]允许在主UI线程中运行单元测试。
+ </t></p> 
+<p>微软已经将调试功能整合到code map中，并且在Team Foundation服务中引入了<a href="http://git-scm.com/">Git版本控制</a>，这样，在基于web的测试用例管理系统下，不安装任何工具就能测试不是基于windows的应用和环境。项目经理&nbsp;<a href="http://blogs.msdn.com/b/visualstudioalm/archive/2013/01/30/first-ctp-for-visual-studio-update-2.aspx">Charles Sterling</a>指出，在使用Visual Studio Update 2 CTP的情况下,VSTS已经提供了一些他曾经遇到的问题的解决方法。</p> 
+<p>Visual Studio Update 2包括了SharePoint 2010高级负载测试，让我们可以使用请求插件、测试工作流、InfoPath的表单、excel服务，管理元数据，查找列和Office Web组件。在Update 2的帮助下，我们就可以在XML文件中，对web和测试场景的输入数据进行参数化。</p> 
+<p>你可以阅读<a href="http://www.infoq.com/news/2013/02/group_dev_vs2012.2;jsessionid=05A5D87FA96E19D1C0B50038CEF3A386">Jeff Martin</a>的文章，以了解其他和看板、SharePoint以及团队资源管理器中的对话框等新特性。</p> 
+<p>微软还同时发布支持&nbsp;<a href="https://tfsodata.visualstudio.com/">Team Foundation Service</a>的<a href="http://www.odata.org/">OData API</a>，这能让开发者根据不同设备和操作系统构建能和TFS中的项目交互的应用。</p> 
+<p>展望未来，微软会从TFS下一个主要的更新版本起只提供对IE 9和IE 10的支持。根据报告，这家软件巨头已经降低对IE 8的支持，并且下一个版本的TFS将不会在IE 8上测试。</p> 
+<p>“我们无论在任何时间，对任何版本的IE都会支持，当然包括IE 9、IE 10以及最新版本的Chrome、Firefox和Safari”，Team Foundation Server的产品经理<a href="http://blogs.msdn.com/b/bharry/archive/2013/02/08/team-foundation-server-and-ie8.aspx">Brian Harry</a>说道。</p> 
+<p>Roger Willis认为，那些早已习惯使用IE 8的政府用户对TFS 12不大感冒。他还请求微软在接下来的24个月中继续对TFS 2012进行更新支持。</p> 
+<p>Dave Shaw则认为：</p> 
+<blockquote> 
+ <p>“我认为人们会欢迎将资源投放到支持新的特性中，而不是支持90%的用户不会使用的旧的浏览器中。”</p> 
+</blockquote> 
+<p>Simon评论到：</p> 
+<blockquote> 
+ <p>“我目前在工作环境中（一个超过3万用户的公司）推行TFS，但是他们因为高风险而拒绝改变，并且还一直在使用Windows 2000和XP，如果IE 8一旦失去支持，将更增加对他们的不满。”</p> 
+</blockquote> 
+<p><strong>查看英文原文：</strong><a href="http://www.infoq.com/news/2013/02/vs2012-2-tagging-wp-unit-test;jsessionid=05A5D87FA96E19D1C0B50038CEF3A386"><strong>Visual Studio Unit Testing Enhancements for Windows Store and Windows Phone</strong></a></p> 
 <hr /> 
-<p>感谢<a href="http://infoq.com/cn/author/%E6%9D%A8%E8%B5%9B">杨赛</a>对本文的审校。</p> 
+<p>感谢<a href="http://www.infoq.com/cn/author/侯伯薇;jsessionid=05A5D87FA96E19D1C0B50038CEF3A386">侯伯薇</a>对本文的审校。</p> 
 <p id="lastElm"></p></body></html>

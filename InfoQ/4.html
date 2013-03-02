@@ -1,31 +1,22 @@
-<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>Xamarin 2.0带来新的IDE、支持iOS的Visual Studio插件和组件商店</h3><p>Xamarin在完成其为跨平台移动开发提供一组通用工具的愿景方面又迈出了重要一步。伴随<a href="http://xamarin.com/press-release-xamarin-2.0">Xamarin 2.0的宣布</a>，Xamarin重新命名了其产品，带来了新的IDE Xamarin Studio、支持iOS开发的Visual Studio插件和组件商店。Miguel de Icaza对InfoQ详细介绍了组件商店。</p> 
-<h2>重新命名</h2> 
-<p>随着时间的推移，Xamarin的工具的名字也有所改变，而且在不同平台上名字也不是非常统一。该公司现在确定了一组新名字：</p> 
-<ul> 
- <li>Xamarin——基于Mono的平台</li> 
- <li>Xamarin.iOS——用于构建iPhone和iPad应用</li> 
- <li>Xamarin.Mac——用于为Mac App Store构建应用</li> 
- <li>Xamarin.Android——用于为Google的Play Store构建应用</li> 
- <li>Xamarin Studio——IDE</li> 
-</ul> 
-<h2>Xamarin Studio</h2> 
-<p>Xamarin Studio是基于MonoDevelop的跨平台IDE新尝试。它有一个新的界面，提供了一些Visual Studio开发者所熟悉的功能：自动完成、重构、语法高亮、代码提示、代码导航、支持模拟器/仿真器或真实设备的集成调试器，此外还集成了Git和Subversion。</p> 
-<p>要进行iOS开发，Mac OS X Lion或更新版本连同iOS SDK、Xcode和Apple Developer Program会员是必要的。</p> 
-<h2>Visual Studio插件</h2> 
-<p>根据Xamarin提供的信息，该平台上23万开发者呼声最高的特性之一就是能够使用Microsoft Visual Studio进行iOS开发。Xamarin的Android开发插件已经存在了好多年，现在又提供了支持iOS的插件。该插件可以很好地与微软的生态系统集成，可以在Mac OS机器的仿真器上进行远程调试和测试。在Mac OS上，因为iOS的现有限制，面向iOS的C#代码会通过AOT编译技术直接编译为ARM汇编代码。而在Android上，应用程序会转换为IL，启动时再进行JIT编译。</p> 
-<h2>组件商店</h2> 
-<p>组件商店是Xamarin 2.0引入的新特性之一。Xamarin构建了一个为增加开发速度直接从IDE中创建、分享和复用组件的框架。Xamarin的CTO Miguel de Icaza与InfoQ分享了组件商店创建背后的一些细节和原因：</p> 
+<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>ASP.NET and Web Tools 2012.2发布，增强了MVC，Azure及SignalR的功能</h3><p><a href="http://weblogs.asp.net/scottgu/archive/2013/02/18/announcing-release-of-asp-net-and-web-tools-2012-2-update.aspx">Microsoft</a>发布了<a href="http://www.asp.net/vnext">ASP.NET and Web Tools 2012.2</a>，包含了Visual Studio Web Tooling，ASP.NET Web API，Web Forms，MVC和Windows Azure认证的功能增强，并新加入了对<a href="http://signalr.net/">SignalR</a>的支持。</p> 
+<p>ASP.NET and Web Tools 2012.2对一些ASP.NET模板的内容进行了更新，包括<a href="http://jquery.com/">jQuery</a>、<a href="http://jqueryui.com/">jQuery UI</a>、<a href="http://www.codeproject.com/Articles/213138/An-Example-to-Use-jQuery-Validation-Plugin">jQuery Validation</a>、<a href="http://modernizr.com/">Modernizr</a>、<a href="http://knockoutjs.com/">Knockout</a>以及一些其它开源的<a href="http://nuget.org/">Nuget</a>库。另外，在从Visual Studio 2012中将项目发布到Windows Azure网站时，你将能够更新本地文件至远端，也可反其道而行之。</p> 
+<p>ASP.NET and Web Tools 2012.2包含了对Visual Studio 2012<a href="http://www.asp.net/vnext/overview/visual-studio/visual-studio-2012-page-inspector"> Page Inspector</a>的功能增强，其中包括JavaScript选择区域的映射及CSS的实时更新。随着此次更新，Visual Studio 2012代码编辑器加入了对<a href="http://coffeescript.org/">CoffeeScript</a>、<a href="http://mustache.github.com/">Mustache</a>、<a href="http://handlebarsjs.com/">Handlebars</a>及<a href="https://github.com/BorisMoore/jsrender">JsRender</a>的语法高亮支持。另外，HTML编辑器现在支持了对Knockout绑定的智能感知，并允许你粘贴某段<a href="http://www.json.org/">JSON</a>文本成为一个.NET类。它还允许你为Mobile模拟器（Emulator）加入扩展钩子，因此第三方的Mobile模拟器就能够以<a href="http://blogs.msdn.com/b/quanto/archive/2009/05/26/what-is-a-vsix.aspx">VSIX</a>方式进行安装。</p> 
+<p>“如果你已经安装过由Mad Kristensen提供的优秀（且免费）的Web Essentials 2012扩展的较早的版本，那么在你安装ASP.NET and Web Tools 2012.2更新前需要将它升级到最新版本，”目前就任于Microsoft服务器与工具部门的公司副总裁Scott Guthrie说道。</p> 
+<p>ASP.NET Web API提供了对OData终结点的支持，允许你对任何数据源进行复杂语法查询、分页、元数据（$metadata）、CRUD操作以及各种定制化操作。此次发布中包含了一个新的追踪（tracking）功能，允许你使用Visual Studio 2012或者在<a href="http://www.windowsazure.com/en-us/">Windows Azure</a>上进行问题排查。</p> 
+<p>除此之外，更新版Web API项目中加入了一个链接，点击它可打开一个自动生成的帮助页面以展示如何访问你的Web API，其中包含了所有API终结点、<a href="http://msdn.microsoft.com/en-us/library/system.web.mvc.httpverbs(v=vs.108">HTTP谓词（verbs）</a>.aspx)、参数以及请求和响应消息的示例。你也可以为帮助文件加入定制的文档与客户端测试的功能。</p> 
+<p>ASP.NET and Web Tools 2012.2新加入了创建SignalR项目的Visual Studio 2012模板，并支持将SignalR加入到现有的Web Forms和MVC应用程序中。这包含了对Friendly URL的完整支持，允许你将URL片段作为参数传递到页面中。它同时也对移动设备提供了Friendly URL的支持，比方说， YourPage.Mobile.aspx将作为默认的内容格式显示在移动设备中。</p> 
+<p>“ASP.NET and Web Tools 2012.2并未修改任何全局程序集缓存（GAC）中的文件，这就不会对你已经安装的ASP.NET产生影响，也不会影响到任何现有项目。所有的变更要么是Visual Studio的工具，要么是本地NuGet库的新功能的增强，”Microsoft的项目经理Scott Hanselman说道。</p> 
+<p>ASP.NET and Web Tools 2012.2提供了一个新项目模板用于创建Facebook应用，并通过iframe将应用显示在Facebook环境下。它也包括了一个ASP.NET MVC的单页应用模板，允许你使用HTML 5、CSS 3和流行的Knockout及jQuery JavaScript库创建响应式客户端web应用。另外，新版中也包含了由社区贡献的多种MVC模板，比如<a href="http://go.microsoft.com/fwlink/?LinkId=282649">BreezeJS</a>、<a href="http://go.microsoft.com/fwlink/?LinkId=282647">Ember</a>、<a href="http://go.microsoft.com/fwlink/?LinkId=282648">DurandalJS</a>和<a href="http://go.microsoft.com/fwlink/?LinkId=282646">Hot Towel</a>。</p> 
+<p>ASP.NET and Web Tools 2012.2发布了一个支持MVC、Web Pages和Web Forms的Windows Azure认证机制，允许在你的应用程序中认证那些你的组织中的<a href="http://www.microsoft.com/en-us/office365/small-business-home.aspx">Office 365</a>用户，并能够在你自己定制的<a href="http://www.windowsazure.com/en-us/manage/services/identity/">Windows Azure活动目录</a>域中创建新用户。</p> 
+<p>Steve Gentile留言道，他希望在下个版本中看到支持AngularJS的模板。<br /> Dhaha觉得TypeScript的功能增强被遗漏了。<br /> James Barrow说道：</p> 
 <blockquote> 
- <p>该项目发起于一年之前，已经经历了多个准备发布的阶段。但每次说到“所有特性都已实现”时，我们总会变得越来越挑剔。我们的组件是否真的易于使用，是否真的易于集成到应用程序中，文档是否恰当？</p> 
- <p>发起于一年之前的这一项目也因此得以维持下来。从“我们要将供iOS和Android使用的流行库打包起来”发展为让开发者通过“选择组件、拾起所需组件、将其集成到应用中、配置完并准备好”这种方式来安装。我们借助一个单独的选项卡提供了概念文档、参考文档以及示例代码。</p> 
- <p>如我之前所提到的，我们希望的不只是多少改进一点软件开发者的体验，而是希望有一个数量级的改进。因此我们将最初简单打包的思想变成了一个完整的框架。</p> 
- <p>但是我们并没有仅仅停留在可复用的、漂亮的用户界面组件库、或是对数据库和Web服务的支持上。</p> 
- <p>我们注意到，人们在开始开发移动应用时有一个很大的困难需要克服，那就是让应用看起来很漂亮。但是在移动环境下，这需要花时间学习API、寻找原图、做实验并微调每个控件和每页视图。像大多数开发者尝试新想法，或者为业务目标努力这样的事情未能正确处理资源或周期。</p> 
- <p>因此我们开发了各种各样可以直接使用的主题，开发者用一行代码即可将主题添加到他们的应用中，整个应用程序就风格化了。</p> 
- <p>我们对早期beta测试的结果以及测试期间测试人员所取得的精良水平非常满意。</p> 
+ <p>Web Essentials的更新是否是因其内建了对LESS和CoffeeScript的支持所引起的？我很遗憾在一大早看到这项功能从Web Essentials中移除了，不过看到Microsoft的这次更新中又加入了对它们的支持，这可能也不错。</p> 
 </blockquote> 
-<p>Xamarin.Mobile是该商店中的组件之一，提供了访问iOS、Android和Windows Phone等平台公共特性（如通讯录和相机等）的API。根据Xamarin提供的信息，如果设计合理，应用程序的代码量最多可以减少90%。</p> 
-<p>查看英文原文：<a href="http://www.infoq.com/news/2013/02/Xamarin-2;jsessionid=14AA21C50C549F958E3C673B0B19E673">Xamarin 2.0 Brings a New IDE, Visual Studio Add-in for iOS and a Component Store</a></p> 
+<p>Mads kristensen留言道：</p> 
+<blockquote> 
+ <p>是的，LESS和CoffeeScript的支持都从Web Essentials中转移到了官方的Web Tools 2012.2发布中。这也是为什么它必须从Web Essentials中移除，这样才不会产成互相冲突（它之前的确造成过冲突）。</p> 
+</blockquote> 
+<p>查看英文原文：<a href="http://www.infoq.com/news/2013/02/asp-net-web-tools-2012-2;jsessionid=F3DDC7C325C12BB3D59769A67C56CCF7">ASP.NET and Web Tools 2012.2 with Enhancements for MVC, Azure and SignalR</a></p> 
 <hr /> 
-<p>感谢<a href="http://infoq.com/cn/author/%E5%BA%B7%E9%94%A6%E9%BE%99]">康锦龙</a>对本文的审校。</p> 
+<p>感谢<a href="http://infoq.com/cn/author/%E6%9D%A8%E8%B5%9B">杨赛</a>对本文的审校。</p> 
 <p id="lastElm"></p></body></html>

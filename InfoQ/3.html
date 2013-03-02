@@ -1,13 +1,29 @@
-<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>Visual Studio信息汇总</h3><h2>Visual Studio Update 2的二月份CTP</h2> 
-<p>Microsoft继续为即将到来的Visual Studio 2012 Update 2推出更新。最新版的<a href="http://www.microsoft.com/en-us/download/details.aspx?id=36539">Update 2 CTP 3</a>已经提供下载。如同以往的版本，新版本还不适合部署到生产环境中。不过来自Microsoft的<a href="http://blogs.msdn.com/b/bharry/archive/2013/02/11/ctp-for-visual-studio-2012-update-2-vs-2012-2-is-available.aspx">Brian Harry</a>指出，下一个的CTP就将能够部署到生产环境了。<br /> 最新的CTP中持续添加了新的特性。首先的是Visual Studio Premium版本中加入了对“Fakes”的支持（译注：Microsoft Fakes是一套可以在Unit Test中自动生成Stub或Mock的类库），以前只有Ultimate版本支持该特性。Microsoft Test Manager现在支持对整个测试计划的克隆，这使得重用已有计划更加方便。而使用HTML和JavaScript的开发者也将从新增的“UI响应工具”（又名Visual Profiler）中受益。<br /> 之前的CTP中引入的基于web的测试用例管理工具，现在不但支持对某些时间过长的（几天或几周）测试进行暂停和恢复的操作，还能在机器重启恢复测试。基于web的测试用例现在也能够添加附件了。</p> 
-<h2>DevLabs移至Visual Studio库</h2> 
-<p>长久以来，<a href="http://visualstudiogallery.msdn.microsoft.com/">Visual Studio Gallery</a>都用于发布Visual Studio的各种插件和扩展。本周Microsoft宣布，它已经把DevLabs门户从MSDN移至Gallery。现在，<a href="http://visualstudiogallery.msdn.microsoft.com/site/search?f%5b0%5d.Type=Affiliation&amp;f%5b0%5d.Value=DevLabs&amp;f%5b0%5d.Text=Microsoft%20DevLabs">DevLabs</a>不再是个独立的部分，可以通过Gallery找到它。<br /> 就像Microsoft的<a href="http://blogs.msdn.com/b/somasegar/archive/2013/02/19/the-evolution-of-devlabs.aspx">S.Somasegar</a>所说，有些项目的首次亮相就是出现在DevLabs上，包括：</p> 
+<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>Greenplum Pivotal HD结合了SQL和Hadoop的优势</h3><p><a href="http://www.greenplum.com/">EMC Greenplum</a>宣布了一个新的Hadoop发行版本——<a href="http://www.greenplum.com/blog/topics/hadoop/introducing-pivotal-hd">Pivotal HD</a>，其中包含一个完全运行于HDFS之上的MPP数据库，兼容SQL，而且速度“比Hive快数百倍”。</p> 
+<p><a href="http://www.greenplum.com/blog/topics/hadoop/introducing-pivotal-hd">Pivotal HD</a>支持标准Hadoop发型版本的常用特性（包括HDFS、Pig、Hive、Mahout和Map-Reduce等），但又加入了一些其他的组件，具体如下面结构图所示：&nbsp;</p> 
+<blockquote> 
+ <p class="image-wide"><img src="/resource/news/2013/03/Pivotal-HD-SQL-Hadoop/zh/resources/Pivotal1.png;jsessionid=57B1C70EBD346CCB07B2857730155054" alt="" _href="img://Pivotal1.png" _p="true" /></p> 
+</blockquote> 
+<p>Pivotal的主要组件是<a href="http://www.greenplum.com/blog/dive-in/hawq-the-new-benchmark-for-sql-on-hadoop">HAWQ</a>，这是一个MPP（Massively Parallel Processing）关系数据库，借助一种动态流水线机制直接运行于Hadoop中的HDFS之上，其特性包括：</p> 
 <ul> 
- <li><a href="http://blogs.msdn.com/b/somasegar/archive/2009/02/23/devlabs-code-contracts-for-net.aspx">Code Contract</a></li> 
- <li><a href="http://chesstool.codeplex.com/">CHESS</a>，一个并发测试的工具</li> 
- <li><a href="http://research.microsoft.com/en-us/projects/pex/">Pex and Moles</a>，另一个测试工具</li> 
- <li><a href="http://blogs.msdn.com/b/somasegar/archive/2009/05/08/building-parallel-applications-using-axum.aspx">Axum</a>，一门实验性质的.NET 语言，用于创建并行应用程序（<a href="http://www.microsoft.com/en-us/download/details.aspx?id=21024">该语言的二进制包</a>现在仍然可以下载）</li> 
+ <li>兼容SQL——支持各个版本的SQL，包括SQL92、SQL99和SQL 2003 OLAP等。百分之百兼容PostgreSQL 8.2。</li> 
+ <li>面向行或面向列的数据存储。</li> 
+ <li>查询优化器——查询可以运行于成千上万个节点上。</li> 
+ <li>完全兼容ODBC/JDBC。</li> 
+ <li>交互式查询——大数据集上的复杂查询可以以秒级或次秒级的速度解决。</li> 
+ <li>数据管理——提供了表统计和表安全等功能。</li> 
+ <li>支持存储在HDFS、Hive、HBase、Avro、ProtoBuf、分隔的文本和序列化文件中的数据。</li> 
+ <li>深度分析——包含了数据挖掘和机器学习算法。</li> 
 </ul> 
-<hr /> 
-<p>感谢<a href="http://infoq.com/cn/author/%E5%BA%B7%E9%94%A6%E9%BE%99]">康锦龙</a>对本文的审校。</p> 
+<p>Greenplum的高级技术总监Gavin Sherry做了一个演示（见该<a href="http://www.greenplum.com/webcasts?commid=68121">视频</a>的42分42秒），在60个节点组成的HDFS集群上，有总量达几个TB的10亿行数据，下列SQL语句可以在13秒内执行完，这提供了接近实时的能力：</p> 
+<pre><p>SELECT gender, count (*)<br />FROM retail.order JOIN customers ON retail.order.customer_ID = customers.customer_ID<br />GROUP BY gender;</p></pre> 
+<p>据EMC Greenplum 的解决方案架构师<a href="http://www.greenplum.com/blog/author/donald-miner">Donald Miner</a>介绍，“<a href="http://www.greenplum.com/blog/topics/hadoop/introducing-pivotal-hd">HAWQ比Hive快数百倍</a>”，下图是Greenplum提供的基准测试结果（<a href="http://public.brighttalk.com/resource/core/9757/hadoop-the_foundation_for_change_15465.pdf">PDF</a>）：</p> 
+<blockquote> 
+ <p class="image-wide"><img src="/resource/news/2013/03/Pivotal-HD-SQL-Hadoop/zh/resources/Pivotal2.png;jsessionid=57B1C70EBD346CCB07B2857730155054" alt="" _href="img://Pivotal2.png" _p="true" /></p> 
+</blockquote> 
+<p>HAWQ能够在“次秒级别内”解决查询问题，“同时做到了在同一引擎内支持规模更大的数据集和完整的SQL表达能力”。Miner解释了这是如何做到的：</p> 
+<blockquote> 
+ <p>我们有所谓的“分段服务器（segment server）”来管理每个表的一个分片。集群中的每个数据节点上会运行一些分段服务器。不过这种数据分片是完全保存在HDFS内的。有一个“主节点”负责存储顶层元数据、构建查询计划并将节点本地的查询推送到分段服务器上。</p> 
+ <p>在查询启动时，数据将从HDFS中读出并加载到HAWQ执行引擎中。HAWQ遵循MPP架构，不同于将数据溢出到磁盘上和在磁盘上建立检查点（如MapReduce），它会让数据流过流水线的不同阶段。另外，分段服务器是一直运行的，所以不存在启动时间。</p> 
+</blockquote> 
+<p>Pivotal HD有三个版本（<a href="http://public.brighttalk.com/resource/core/9707/pivotal_hd_enterprise_datasheet-1_15391.pdf">PDF</a>)：企业版、数据库服务版和用于评估的社区版。<br /> <strong>查看英文原文：</strong><a href="http://www.infoq.com/news/2013/02/Pivotal-HD-SQL-Hadoop;jsessionid=57B1C70EBD346CCB07B2857730155054">Greenplum Pivotal HD Combines the Strengths of SQL and Hadoop</a>&nbsp;</p> 
 <p id="lastElm"></p></body></html>

@@ -1,22 +1,13 @@
-<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>Netflix为Java引入了响应式扩展</h3><p>Netflix为MS Open Tech的响应式扩展（Reactive Extensions）提供了Java实现并将之开源。但若说RxJava只是针对Java的，就会产生误导。它被设计为亦可用于其他JVM语言。“目前支持的语言（除了Java本身外）包括Groovy、Clojure、Scala和JRuby。”</p> 
-<p>Netflix创建了RxJava来简化服务器端并发。他们的目标是允许客户端触发单个可在服务器并行执行的“重”客户端请求。<a href="http://techblog.netflix.com/2013/02/rxjava-netflix-api.html">Ben Christensen和Jafar Husain</a>解释道：</p> 
-<blockquote> 
- <p>服务器端并发可以有效降低网络通信量。如果不能在服务器并发执行，那么单个“重”客户端请求可能不如多个“轻”请求，因为一个设备上的每个网络请求可以天然地和其他网络请求并行执行。如果服务器端执行的某个崩溃的“重”请求没有达到并行执行的要求，那么即使算上节省的网络传输时间，也可能会慢于多个“轻”请求。</p> 
-</blockquote> 
-<p>根据Ben和Jafar所说，函数式响应要优于Future和回调函数，因为“函数式响应提供了一系列能够对Observable进行过滤、选择、转换、联合和组合的操作符，可以进行高效地执行和组合。”</p> 
-<p>通过让服务层API中的所有方法返回Observable
- <t>
-  ，开发者可以与这些方法的实现隔离开来。这些方法可以在今天异步调用，也可以在明天同步返回。服务方法还可以自由选择阻塞和非阻塞I/O，前者可在资源受限时使用。
- </t></p> 
-<p>
- <t>
-  RxJava支持“Java 5（以支持Android）和更高版本，最终目标是基于支持Lambda的Java 8进行构建。”与原始
-  <a href="https://rx.codeplex.com/">Rx</a>一样，Netflix的RxJava也是基于Apache License。你可以在github上下载
-  <a href="https://github.com/Netflix/RxJava">RxJava</a>。
- </t></p> 
-<p>
- <t>
-  查看英文原文：
-  <a href="http://www.infoq.com/news/2013/02/RxJava;jsessionid=0AC1C0E7869B2353680C77848B8790DD">Netflix Brings Reactive Extensions to Java</a>
- </t></p> 
+<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>Visual Studio信息汇总</h3><h2>Visual Studio Update 2的二月份CTP</h2> 
+<p>Microsoft继续为即将到来的Visual Studio 2012 Update 2推出更新。最新版的<a href="http://www.microsoft.com/en-us/download/details.aspx?id=36539">Update 2 CTP 3</a>已经提供下载。如同以往的版本，新版本还不适合部署到生产环境中。不过来自Microsoft的<a href="http://blogs.msdn.com/b/bharry/archive/2013/02/11/ctp-for-visual-studio-2012-update-2-vs-2012-2-is-available.aspx">Brian Harry</a>指出，下一个的CTP就将能够部署到生产环境了。<br /> 最新的CTP中持续添加了新的特性。首先的是Visual Studio Premium版本中加入了对“Fakes”的支持（译注：Microsoft Fakes是一套可以在Unit Test中自动生成Stub或Mock的类库），以前只有Ultimate版本支持该特性。Microsoft Test Manager现在支持对整个测试计划的克隆，这使得重用已有计划更加方便。而使用HTML和JavaScript的开发者也将从新增的“UI响应工具”（又名Visual Profiler）中受益。<br /> 之前的CTP中引入的基于web的测试用例管理工具，现在不但支持对某些时间过长的（几天或几周）测试进行暂停和恢复的操作，还能在机器重启恢复测试。基于web的测试用例现在也能够添加附件了。</p> 
+<h2>DevLabs移至Visual Studio库</h2> 
+<p>长久以来，<a href="http://visualstudiogallery.msdn.microsoft.com/">Visual Studio Gallery</a>都用于发布Visual Studio的各种插件和扩展。本周Microsoft宣布，它已经把DevLabs门户从MSDN移至Gallery。现在，<a href="http://visualstudiogallery.msdn.microsoft.com/site/search?f%5b0%5d.Type=Affiliation&amp;f%5b0%5d.Value=DevLabs&amp;f%5b0%5d.Text=Microsoft%20DevLabs">DevLabs</a>不再是个独立的部分，可以通过Gallery找到它。<br /> 就像Microsoft的<a href="http://blogs.msdn.com/b/somasegar/archive/2013/02/19/the-evolution-of-devlabs.aspx">S.Somasegar</a>所说，有些项目的首次亮相就是出现在DevLabs上，包括：</p> 
+<ul> 
+ <li><a href="http://blogs.msdn.com/b/somasegar/archive/2009/02/23/devlabs-code-contracts-for-net.aspx">Code Contract</a></li> 
+ <li><a href="http://chesstool.codeplex.com/">CHESS</a>，一个并发测试的工具</li> 
+ <li><a href="http://research.microsoft.com/en-us/projects/pex/">Pex and Moles</a>，另一个测试工具</li> 
+ <li><a href="http://blogs.msdn.com/b/somasegar/archive/2009/05/08/building-parallel-applications-using-axum.aspx">Axum</a>，一门实验性质的.NET 语言，用于创建并行应用程序（<a href="http://www.microsoft.com/en-us/download/details.aspx?id=21024">该语言的二进制包</a>现在仍然可以下载）</li> 
+</ul> 
+<hr /> 
+<p>感谢<a href="http://infoq.com/cn/author/%E5%BA%B7%E9%94%A6%E9%BE%99]">康锦龙</a>对本文的审校。</p> 
 <p id="lastElm"></p></body></html>

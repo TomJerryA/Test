@@ -1,29 +1,12 @@
-<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>Greenplum Pivotal HD结合了SQL和Hadoop的优势</h3><p><a href="http://www.greenplum.com/">EMC Greenplum</a>宣布了一个新的Hadoop发行版本——<a href="http://www.greenplum.com/blog/topics/hadoop/introducing-pivotal-hd">Pivotal HD</a>，其中包含一个完全运行于HDFS之上的MPP数据库，兼容SQL，而且速度“比Hive快数百倍”。</p> 
-<p><a href="http://www.greenplum.com/blog/topics/hadoop/introducing-pivotal-hd">Pivotal HD</a>支持标准Hadoop发型版本的常用特性（包括HDFS、Pig、Hive、Mahout和Map-Reduce等），但又加入了一些其他的组件，具体如下面结构图所示：&nbsp;</p> 
-<blockquote> 
- <p class="image-wide"><img src="/resource/news/2013/03/Pivotal-HD-SQL-Hadoop/zh/resources/Pivotal1.png;jsessionid=F5A600AD656DE107DC3AEBB14376997E" alt="" _href="img://Pivotal1.png" _p="true" /></p> 
-</blockquote> 
-<p>Pivotal的主要组件是<a href="http://www.greenplum.com/blog/dive-in/hawq-the-new-benchmark-for-sql-on-hadoop">HAWQ</a>，这是一个MPP（Massively Parallel Processing）关系数据库，借助一种动态流水线机制直接运行于Hadoop中的HDFS之上，其特性包括：</p> 
-<ul> 
- <li>兼容SQL——支持各个版本的SQL，包括SQL92、SQL99和SQL 2003 OLAP等。百分之百兼容PostgreSQL 8.2。</li> 
- <li>面向行或面向列的数据存储。</li> 
- <li>查询优化器——查询可以运行于成千上万个节点上。</li> 
- <li>完全兼容ODBC/JDBC。</li> 
- <li>交互式查询——大数据集上的复杂查询可以以秒级或次秒级的速度解决。</li> 
- <li>数据管理——提供了表统计和表安全等功能。</li> 
- <li>支持存储在HDFS、Hive、HBase、Avro、ProtoBuf、分隔的文本和序列化文件中的数据。</li> 
- <li>深度分析——包含了数据挖掘和机器学习算法。</li> 
-</ul> 
-<p>Greenplum的高级技术总监Gavin Sherry做了一个演示（见该<a href="http://www.greenplum.com/webcasts?commid=68121">视频</a>的42分42秒），在60个节点组成的HDFS集群上，有总量达几个TB的10亿行数据，下列SQL语句可以在13秒内执行完，这提供了接近实时的能力：</p> 
-<pre><p>SELECT gender, count (*)<br />FROM retail.order JOIN customers ON retail.order.customer_ID = customers.customer_ID<br />GROUP BY gender;</p></pre> 
-<p>据EMC Greenplum 的解决方案架构师<a href="http://www.greenplum.com/blog/author/donald-miner">Donald Miner</a>介绍，“<a href="http://www.greenplum.com/blog/topics/hadoop/introducing-pivotal-hd">HAWQ比Hive快数百倍</a>”，下图是Greenplum提供的基准测试结果（<a href="http://public.brighttalk.com/resource/core/9757/hadoop-the_foundation_for_change_15465.pdf">PDF</a>）：</p> 
-<blockquote> 
- <p class="image-wide"><img src="/resource/news/2013/03/Pivotal-HD-SQL-Hadoop/zh/resources/Pivotal2.png;jsessionid=F5A600AD656DE107DC3AEBB14376997E" alt="" _href="img://Pivotal2.png" _p="true" /></p> 
-</blockquote> 
-<p>HAWQ能够在“次秒级别内”解决查询问题，“同时做到了在同一引擎内支持规模更大的数据集和完整的SQL表达能力”。Miner解释了这是如何做到的：</p> 
-<blockquote> 
- <p>我们有所谓的“分段服务器（segment server）”来管理每个表的一个分片。集群中的每个数据节点上会运行一些分段服务器。不过这种数据分片是完全保存在HDFS内的。有一个“主节点”负责存储顶层元数据、构建查询计划并将节点本地的查询推送到分段服务器上。</p> 
- <p>在查询启动时，数据将从HDFS中读出并加载到HAWQ执行引擎中。HAWQ遵循MPP架构，不同于将数据溢出到磁盘上和在磁盘上建立检查点（如MapReduce），它会让数据流过流水线的不同阶段。另外，分段服务器是一直运行的，所以不存在启动时间。</p> 
-</blockquote> 
-<p>Pivotal HD有三个版本（<a href="http://public.brighttalk.com/resource/core/9707/pivotal_hd_enterprise_datasheet-1_15391.pdf">PDF</a>)：企业版、数据库服务版和用于评估的社区版。<br /> <strong>查看英文原文：</strong><a href="http://www.infoq.com/news/2013/02/Pivotal-HD-SQL-Hadoop;jsessionid=F5A600AD656DE107DC3AEBB14376997E">Greenplum Pivotal HD Combines the Strengths of SQL and Hadoop</a>&nbsp;</p> 
+<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>Android 4.2.2中对安全性的改进</h3><p><a href="http://developer.android.com/about/versions/jelly-bean.html">Android 4.2</a> Jelly Bean最近发布了更新，通过加入附加特性来增强应用程序的安全性。它其中的一个特性可以让用户在安装程序之前对应用程序进行验证，从而防止将有害的应用程序安装到移动设备上。并且它可以在发现应用程序损坏的情况下终止安装过程。</p> 
+<p>当你设备里的应用程序试图向一个会产生额外费用的收费服务短号码发送短信时，Android系统会发出提示，由你来选择是否允许该应用程序发送短信或者终止发送过程。</p> 
+<p>最新的版本允许用户自定义配置VPN，从而使设备只有在VPN创建以后才可以访问网络。此外，SSL核心库的实现也提供了对证书绑定的支持，权限也被以分组的形式进行组织管理。它还针对用户选择的权限提供了详细的信息。</p> 
+<p>在Android 4.2.2中，<a href="http://developer.android.com/about/versions/android-4.2.html">目标API级别为17</a>的应用程序会将每个ContentProvider的export属性默认设置为false，从而可以最终减小应用程序的默认攻击面。此次的更新还可以减小针对root权限升级来带来的潜在攻击面，因为installd守护进程不会再以root用户的方式运行。</p> 
+<p>此外，初始化脚本还会遵守O_NOFOLLOW语法规则从而预防符号链接相关的攻击。它还实现了FORTIFY_SOURCE，它可以被系统函数库和应用程序调用，从而预防内存泄漏。</p> 
+<p>Android 4.2.2进行了相关修改，以便利用<a href="http://www.openssl.org/">OpenSSL</a>来完成<a href="http://developer.android.com/reference/java/security/SecureRandom.html">SecureRandom</a>和<a href="http://en.wikipedia.org/wiki/RSA_(algorithm">Cipher.RSA</a>)的实现。该版本还为使用OpenSSL 1.0.1的<a href="http://en.wikipedia.org/wiki/Transport_Layer_Security">TLSv1.1</a>和TLSv1.2增加了SSLSocket的支持，而且还减小了应用程序的默认攻击面。它还包含了<a href="http://www.webkit.org/">WebKit</a>、<a href="http://www.libpng.org/pub/png/libpng.html">libpng</a>、OpenSSL和<a href="http://www.xmlsoft.org/">LibXML</a>开源库的安全补丁。</p> 
+<p>“推荐的做法是在程序第一次启动的时候生成一个真正随机的AES key并将它存储在内部存储空间中。”Android开发者关系团队的Fred chung说道。</p> 
+<p>Android 4.2.2 引入了USB安全调试方面的内容，当启用安全调试的时候，只有被用户认证过的主机才可以通过Android SDK自带的<a href="http://developer.android.com/tools/help/adb.html">ADB工具</a>经由USB连接来访问设备的<a href="http://developer.android.com/sdk/index.html">内部构件</a>。</p> 
+<p>查看英文原文：<a href="http://www.infoq.com/news/2013/02/android-4-2-2;jsessionid=79DF7DFC697DCA0E51C907A15525E533">Security Enhancements in Android 4.2.2</a></p> 
+<hr /> 
+<p>感谢<a href="http://infoq.com/cn/author/%E4%BE%AF%E4%BC%AF%E8%96%87">侯伯薇</a>对本文的审校。</p> 
 <p id="lastElm"></p></body></html>
