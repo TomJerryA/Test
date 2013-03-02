@@ -1,4 +1,4 @@
-<html><body><h1Concurrent Releases Lingual, a SQL DSL for Hadoop</h1><p>
+<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h1>Concurrent Releases Lingual, a SQL DSL for Hadoop</h1><p>
  <!--[if gte mso 9]><xml>
 <o:OfficeDocumentSettings>
 <o:AllowPNG />
