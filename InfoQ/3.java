@@ -1,4 +1,4 @@
-<html><head>Concurrent Releases Lingual, a SQL DSL for Hadoop</head><body><p>
+<html><body><h1Concurrent Releases Lingual, a SQL DSL for Hadoop</h1><p>
  <!--[if gte mso 9]><xml>
 <o:OfficeDocumentSettings>
 <o:AllowPNG />
