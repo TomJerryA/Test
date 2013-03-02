@@ -1,4 +1,4 @@
-<p>
+<html><head>Concurrent Releases Lingual, a SQL DSL for Hadoop</head><body><p>
  <!--[if gte mso 9]><xml>
 <o:OfficeDocumentSettings>
 <o:AllowPNG />
@@ -421,4 +421,4 @@ mso-ascii-theme-font:major-latin;mso-hansi-theme-font:major-latin;mso-bidi-font-
 mso-ascii-theme-font:major-latin;mso-hansi-theme-font:major-latin;mso-bidi-font-family:
 &quot;Times New Roman&quot;;mso-bidi-theme-font:minor-bidi">There are no current plans to extend Hadoop’s current security model. </span></p> 
 <p></p> 
-<p id="lastElm"></p>
+<p id="lastElm"></p></body></html>
