@@ -1,8 +1,8 @@
 <html>
  <head></head> 
- <body>
-  <div>
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/10.java">Windows Blue with New Kernel, Internet Explorer 11, Bing Integration, Updated Apps</a>Coming Summer will most likely witness the preview of Windows Blue which is being rumored as a major update to Windows 8.
+ <body> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/10.java">Windows Blue with New Kernel, Internet Explorer 11, Bing Integration, Updated Apps</a>Coming Summer will most likely witness the preview of Windows Blue which is being rumored as a major update to Windows 8. 
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/9.java">Entity Framework 6 Alpha 3 with Code First Stored Procedures and Connection Resiliency</a>Microsoft has released Entity Framework 6 Alpha 3 with support for code first stored procedures, connection resiliency, pull request from iceclow and UnaiZorrilla. 
