@@ -1,12 +1,31 @@
-<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>Android 4.2.2中对安全性的改进</h3><p><a href="http://developer.android.com/about/versions/jelly-bean.html">Android 4.2</a> Jelly Bean最近发布了更新，通过加入附加特性来增强应用程序的安全性。它其中的一个特性可以让用户在安装程序之前对应用程序进行验证，从而防止将有害的应用程序安装到移动设备上。并且它可以在发现应用程序损坏的情况下终止安装过程。</p> 
-<p>当你设备里的应用程序试图向一个会产生额外费用的收费服务短号码发送短信时，Android系统会发出提示，由你来选择是否允许该应用程序发送短信或者终止发送过程。</p> 
-<p>最新的版本允许用户自定义配置VPN，从而使设备只有在VPN创建以后才可以访问网络。此外，SSL核心库的实现也提供了对证书绑定的支持，权限也被以分组的形式进行组织管理。它还针对用户选择的权限提供了详细的信息。</p> 
-<p>在Android 4.2.2中，<a href="http://developer.android.com/about/versions/android-4.2.html">目标API级别为17</a>的应用程序会将每个ContentProvider的export属性默认设置为false，从而可以最终减小应用程序的默认攻击面。此次的更新还可以减小针对root权限升级来带来的潜在攻击面，因为installd守护进程不会再以root用户的方式运行。</p> 
-<p>此外，初始化脚本还会遵守O_NOFOLLOW语法规则从而预防符号链接相关的攻击。它还实现了FORTIFY_SOURCE，它可以被系统函数库和应用程序调用，从而预防内存泄漏。</p> 
-<p>Android 4.2.2进行了相关修改，以便利用<a href="http://www.openssl.org/">OpenSSL</a>来完成<a href="http://developer.android.com/reference/java/security/SecureRandom.html">SecureRandom</a>和<a href="http://en.wikipedia.org/wiki/RSA_(algorithm">Cipher.RSA</a>)的实现。该版本还为使用OpenSSL 1.0.1的<a href="http://en.wikipedia.org/wiki/Transport_Layer_Security">TLSv1.1</a>和TLSv1.2增加了SSLSocket的支持，而且还减小了应用程序的默认攻击面。它还包含了<a href="http://www.webkit.org/">WebKit</a>、<a href="http://www.libpng.org/pub/png/libpng.html">libpng</a>、OpenSSL和<a href="http://www.xmlsoft.org/">LibXML</a>开源库的安全补丁。</p> 
-<p>“推荐的做法是在程序第一次启动的时候生成一个真正随机的AES key并将它存储在内部存储空间中。”Android开发者关系团队的Fred chung说道。</p> 
-<p>Android 4.2.2 引入了USB安全调试方面的内容，当启用安全调试的时候，只有被用户认证过的主机才可以通过Android SDK自带的<a href="http://developer.android.com/tools/help/adb.html">ADB工具</a>经由USB连接来访问设备的<a href="http://developer.android.com/sdk/index.html">内部构件</a>。</p> 
-<p>查看英文原文：<a href="http://www.infoq.com/news/2013/02/android-4-2-2;jsessionid=395182DF5CB89892A50F9B968950ED0A">Security Enhancements in Android 4.2.2</a></p> 
-<hr /> 
-<p>感谢<a href="http://infoq.com/cn/author/%E4%BE%AF%E4%BC%AF%E8%96%87">侯伯薇</a>对本文的审校。</p> 
+<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>Jelastic将PHP引入平台提供给托管服务提供商</h3><p>除Java外，<a href="http://www.jelastic.com/">Jelastic</a>已经将<a href="http://php.jelastic.com/">PHP</a>引入平台，提供给托管服务提供商。本文包含了对Jelastic首席运营官<a href="http://www.linkedin.com/in/dsotnikov">Dmitry Sotnikov</a>的采访，采访中深入探讨了Jelastic的PaaS解决方案。<br /> 因其Java PaaS解决方案而赢得<a href="http://blog.jelastic.com/2012/10/01/the-dukes-choice-awards-2012-we-won/">2012年度Duke’s Choice Award</a>的<a href="http://www.jelastic.com/">Jelastic公司</a>，近期在其云服务中增加了<a href="http://php.jelastic.com/">部署和运行</a>PHP应用程序的支持。<a href="http://blog.jelastic.com/2013/01/29/php-cloud-hosting-in-one-click/">Jelastic的PHP云托管服务</a>号称具有以下优势：</p> 
+<ul> 
+ <li>高可用性与自动的横向可伸缩性</li> 
+ <li>自动的纵向可伸缩性——Jelastic根据需要增加可使用的资源，并且当某个节点上的资源竞争达到无法忍受的程度时，它会将应用转移到其他节点上</li> 
+ <li>通过隔离实现安全性——应用程序在虚拟容器内的节点上运行，与其他节点完全隔离，即使这些节点在同一个物理主机上</li> 
+ <li>PaaS特性——用户能够享受PaaS一样的特性，而无需手动配置和控制基础设施</li> 
+ <li>支持应用服务器：Apache或Nginx，SQL数据库：MariaDB、PostgreSQL和MySQL，NoSQL数据库：MongoDB、CouchDBA以及Memcached。此外，应用可与Git或SVN集成。</li> 
+</ul> 
+<p>不同于其他拥有自己的基础设施的云服务提供商，Jelastic是一个面向托管服务提供商的PaaS云平台，用户可以选择自己喜欢的提供商。InfoQq采访了Jelastic的首席运营官<a href="http://www.linkedin.com/in/dsotnikov">Dmitry Sotnikov</a>，以期进一步了解其托管服务解决方案。</p> 
+<p><strong>InfoQ：Jelastic是否拥有自己的数据中心，Jelastic提供的PaaS服务是否来自于亚马逊或其他提供商？</strong></p> 
+<blockquote> 
+ <p><strong>DS：</strong>Jelastic与其他云服务不同，它通过类似“Android”的方式投放市场。我们不希望它成为仅对自己开放的私有平台，而是对托管服务公司开放，使其能够提供他们数据中心的服务（类似于你可以从LG、三星、摩托罗拉及HTC等公司得到一部Android系统的手机）。</p> 
+ <p>你可以通过链接<a href="http://jelastic.com/partners">http://jelastic.com/partners</a>查看已经通过Jelastic提供托管服务的公司列表，或在网址<a href="http://jelastic.com/">http://jelastic.com</a>注册Jelastic试用后直接选择你想要使用的那家托管公司。</p> 
+ <p>这一方式帮助我们快速扩张。Jelastic公开问世仅15个月，就已经将业务拓展至全球：美国、巴西、英国、德国、芬兰、俄国和日本。此外还有许多托管服务公司正在为其稍后的发布做准备，因此可以预见，未来数月内Jelastic上会有更多可供选择的托管服务。</p> 
+</blockquote> 
+<p><strong>InfoQ：Jelastic如何处理可靠性问题？你们是否曾出现过服务中断？</strong></p> 
+<blockquote> 
+ <p><strong>DS：</strong>（敲击着木头）目前没有重大的中断，但是你必须认识到，无论一个云服务系统多么优秀，托管服务就是托管服务，中断总是可能发生。但是我们认为我们的生态系统提供了你能想象到的最佳可靠性。如果Jelastic上的托管方A出现问题，你只需切换到托管方B即可。每个托管服务公司都是完全独立和自治的——这与亚马逊或Azure宣称的“地理冗余”不同——因为我们从曾经出现过的中断了解到这些公司的基础设施中依然存在单点故障。</p> 
+</blockquote> 
+<p><strong>InfoQ：我们知道Jelastic为Java和PHP开发，以及两到三种SQL和两种NoSQL数据库提供托管服务。现在是否计划添加对其他语言的支持？对于其他SQL/NoSQL数据存储有什么规划？</strong></p> 
+<blockquote> 
+ <p><strong>DS：</strong>回到2011年年底，我们发布的PaaS仅支持Java，Tomcat和MySQL则是仅有的堆栈选项。一年内我们就添加了Glassfish和Jetty应用服务器，还有多种数据库：MariaDB、Posgres、MongoDB、CouchDB和Memcached。今年我们发布了完整的PHP平台，包括Apache和NGINX应用服务器。我们将继续发展，支持更多的编程语言及堆栈组件（例如，我们已经宣布将在2013年第一季度在应用服务器选项中增加<a href="http://blog.jelastic.com/2012/11/15/tomee-coming-in-jelastic-soon/">TomEE</a>）。</p> 
+ <p>我们的任务是不断拓展堆栈可用性，使客户能够在自动化和规模化的云端选择他们的应用所需的堆栈，而不必被捆绑到专有平台或服务上。</p> 
+</blockquote> 
+<p><strong>InfoQ：为什么你觉得亚马逊的AWS非常成功，而GAE和Azure却在挣扎？你觉得Jelastic会比GAE/Azure做的更好吗？为什么？</strong></p> 
+<blockquote> 
+ <p><strong>DS：</strong>亚马逊借助对现有应用的兼容性，赢得了与GAE和Azure的竞争。Google和微软发布的平台都期望客户能够重新编写应用来使用他们各自的托管服务。除了学习和重新编写的成本外，你还会被捆绑到来自于某个提供商（Google或微软）的特定平台上，这一切都导致了价值命题的不确定性。例如，这个<a href="http://blog.jelastic.com/2012/02/27/google-app-engine-vs-jelastic/">快捷列表列出了所有的GAE强制性限制</a>。<br /> 亚马逊宣称，当用户选择AWS时，他们支付另外的费用——配置和维护亚马逊所提供的虚拟机的管理费（Elastic Beanstalk依旧非常原始，而且众所周知<a href="http://www.zdnet.com/amazon-cuts-off-stack-at-the-paas-3040094915/">亚马逊宣称PaaS将不会成为公司的战略方向</a>）。</p> 
+ <p>我们相信，平台应该结合IaaS的应用兼容性和PaaS的自动化，因此Jelastic被设计为能够托管任何应用而无需对代码进行修改：你可以部署使用任何方式构建的代码（或使用Jelastic在云端构建应用）、上传任何类库、改变服务器配置文件、获取公网IP地址、使用任何网络接口，以及其他特性。同时，Jelastic能够自动化执行所有的管理任务，例如添加新的服务器、配置集群和负载平衡、复制配置改变等。所以，你能够切实享受到两个世界（IaaS/PaaS）中最美好的部分。</p> 
+</blockquote> 
+<p><strong>查看英文原文：</strong><a href="http://www.infoq.com/news/2013/02/Jelastic-PHP-PaaS;jsessionid=C5F08CF8A10C2D7E1897D9239F8A58FD">Jelastic Adds PHP to Their Platform for Service Hosting Providers</a></p> 
 <p id="lastElm"></p></body></html>

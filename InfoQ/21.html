@@ -1,22 +1,13 @@
-<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>Netflix为Java引入了响应式扩展</h3><p>Netflix为MS Open Tech的响应式扩展（Reactive Extensions）提供了Java实现并将之开源。但若说RxJava只是针对Java的，就会产生误导。它被设计为亦可用于其他JVM语言。“目前支持的语言（除了Java本身外）包括Groovy、Clojure、Scala和JRuby。”</p> 
-<p>Netflix创建了RxJava来简化服务器端并发。他们的目标是允许客户端触发单个可在服务器并行执行的“重”客户端请求。<a href="http://techblog.netflix.com/2013/02/rxjava-netflix-api.html">Ben Christensen和Jafar Husain</a>解释道：</p> 
-<blockquote> 
- <p>服务器端并发可以有效降低网络通信量。如果不能在服务器并发执行，那么单个“重”客户端请求可能不如多个“轻”请求，因为一个设备上的每个网络请求可以天然地和其他网络请求并行执行。如果服务器端执行的某个崩溃的“重”请求没有达到并行执行的要求，那么即使算上节省的网络传输时间，也可能会慢于多个“轻”请求。</p> 
-</blockquote> 
-<p>根据Ben和Jafar所说，函数式响应要优于Future和回调函数，因为“函数式响应提供了一系列能够对Observable进行过滤、选择、转换、联合和组合的操作符，可以进行高效地执行和组合。”</p> 
-<p>通过让服务层API中的所有方法返回Observable
- <t>
-  ，开发者可以与这些方法的实现隔离开来。这些方法可以在今天异步调用，也可以在明天同步返回。服务方法还可以自由选择阻塞和非阻塞I/O，前者可在资源受限时使用。
- </t></p> 
-<p>
- <t>
-  RxJava支持“Java 5（以支持Android）和更高版本，最终目标是基于支持Lambda的Java 8进行构建。”与原始
-  <a href="https://rx.codeplex.com/">Rx</a>一样，Netflix的RxJava也是基于Apache License。你可以在github上下载
-  <a href="https://github.com/Netflix/RxJava">RxJava</a>。
- </t></p> 
-<p>
- <t>
-  查看英文原文：
-  <a href="http://www.infoq.com/news/2013/02/RxJava;jsessionid=21EFFACCC7936B4AA6BAA9CE530F5194">Netflix Brings Reactive Extensions to Java</a>
- </t></p> 
+<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>Visual Studio2012代码审阅特性的对比、注释、意见及状态更新功能</h3><p>Visual Studio2012包含了源自于<a href="http://msdn.microsoft.com/en-us/vstudio/ff637362.aspx">Team Foundation Server</a>的<a href="http://msdn.microsoft.com/en-us/library/hh474795.aspx">代码审阅工作流</a>。有了这个工作流，你就能通过经重新设计的<a href="http://msdn.microsoft.com/en-us/library/hh500420.aspx">团队资源管理器（Team Explorer）</a>窗口或者<a href="http://tfspreview.com/">Team Foundation Online Service</a>来审阅代码，通过它们，你还可以进行项目规划、产品团队协作并随时随地管理代码。</p> 
+<p>你还可以通过Team Foundation Service创建团队项目并把项目集成到<a href="http://www.visualstudiolaunch.com/">Visual Studio 2012</a>中。审阅者通过<a href="http://blogs.msdn.com/b/mvpawardprogram/archive/2012/09/04/new-code-review-feature-in-%20%20visual-studio-2012.aspx">代码审阅</a>特性可以对比代码文件、添加注释并将意见反馈至请求者。</p> 
+<p>代码审阅流程的流转过程如下：</p> 
+<ul> 
+ <li>在团队资源管理器中，点击主页或“我的工作”页面中的请求审阅链接（如果看不见，请在Visual Studio 2012中点击“视图”下的“团队资源管理器”）。<br /> <img src="/resource/news/2013/03/code-review-visual-studio-2012/zh/resources/001.png;jsessionid=EFAF001DF166ACAF0F8A6B4E6BD5BB8E" alt="" _href="img://001.png" _p="true" /></li> 
+ <li>在“新的代码审阅”对话框中填写审阅者姓名、审阅主题、详细描述和区域路径。</li> 
+ <li>现在已经完成了代码审阅的申请。所有被分配审阅任务的团队成员将会收到一个通知。</li> 
+ <li>审阅者点击接受链接意味着代码审阅的开始，这时其他审阅者就会收到通知，提醒审阅已经开始。通过团队资源管理器可以添加注释或者整体意见。<br /> <img src="/resource/news/2013/03/code-review-visual-studio-2012/zh/resources/IC607252002.png;jsessionid=EFAF001DF166ACAF0F8A6B4E6BD5BB8E" alt="" _href="img://IC607252002.png" _p="true" /><br /> <img src="/resource/news/2013/03/code-review-visual-studio-2012/zh/resources/IC610138003.png;jsessionid=EFAF001DF166ACAF0F8A6B4E6BD5BB8E" alt="" _href="img://IC610138003.png" _p="true" /></li> 
+ <li>请求代码审阅的开发人员有权管理意见。当审阅者标记审阅状态为“不错”， “有意见”或者“需要改进”时，意味着整个代码审阅流程的完成。</li> 
+</ul> 
+<p>现在仅有<a href="http://www.microsoft.com/visualstudio/eng/products/compare">Visual Studio Premium</a> 和 Visual Studio Ultimate版本支持代码审阅工作流的特性。</p> 
+<p><strong>英文原文查看：</strong><a href="http://www.infoq.com/news/2012/10/code-review-visual-studio-2012;jsessionid=EFAF001DF166ACAF0F8A6B4E6BD5BB8E">Code Review with Comparison, Annotation, Comments and Status Update with Visual Studio 2012</a></p> 
 <p id="lastElm"></p></body></html>
