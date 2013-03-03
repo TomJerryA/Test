@@ -1,22 +1,36 @@
-<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>ASP.NET and Web Tools 2012.2发布，增强了MVC，Azure及SignalR的功能</h3><p><a href="http://weblogs.asp.net/scottgu/archive/2013/02/18/announcing-release-of-asp-net-and-web-tools-2012-2-update.aspx">Microsoft</a>发布了<a href="http://www.asp.net/vnext">ASP.NET and Web Tools 2012.2</a>，包含了Visual Studio Web Tooling，ASP.NET Web API，Web Forms，MVC和Windows Azure认证的功能增强，并新加入了对<a href="http://signalr.net/">SignalR</a>的支持。</p> 
-<p>ASP.NET and Web Tools 2012.2对一些ASP.NET模板的内容进行了更新，包括<a href="http://jquery.com/">jQuery</a>、<a href="http://jqueryui.com/">jQuery UI</a>、<a href="http://www.codeproject.com/Articles/213138/An-Example-to-Use-jQuery-Validation-Plugin">jQuery Validation</a>、<a href="http://modernizr.com/">Modernizr</a>、<a href="http://knockoutjs.com/">Knockout</a>以及一些其它开源的<a href="http://nuget.org/">Nuget</a>库。另外，在从Visual Studio 2012中将项目发布到Windows Azure网站时，你将能够更新本地文件至远端，也可反其道而行之。</p> 
-<p>ASP.NET and Web Tools 2012.2包含了对Visual Studio 2012<a href="http://www.asp.net/vnext/overview/visual-studio/visual-studio-2012-page-inspector"> Page Inspector</a>的功能增强，其中包括JavaScript选择区域的映射及CSS的实时更新。随着此次更新，Visual Studio 2012代码编辑器加入了对<a href="http://coffeescript.org/">CoffeeScript</a>、<a href="http://mustache.github.com/">Mustache</a>、<a href="http://handlebarsjs.com/">Handlebars</a>及<a href="https://github.com/BorisMoore/jsrender">JsRender</a>的语法高亮支持。另外，HTML编辑器现在支持了对Knockout绑定的智能感知，并允许你粘贴某段<a href="http://www.json.org/">JSON</a>文本成为一个.NET类。它还允许你为Mobile模拟器（Emulator）加入扩展钩子，因此第三方的Mobile模拟器就能够以<a href="http://blogs.msdn.com/b/quanto/archive/2009/05/26/what-is-a-vsix.aspx">VSIX</a>方式进行安装。</p> 
-<p>“如果你已经安装过由Mad Kristensen提供的优秀（且免费）的Web Essentials 2012扩展的较早的版本，那么在你安装ASP.NET and Web Tools 2012.2更新前需要将它升级到最新版本，”目前就任于Microsoft服务器与工具部门的公司副总裁Scott Guthrie说道。</p> 
-<p>ASP.NET Web API提供了对OData终结点的支持，允许你对任何数据源进行复杂语法查询、分页、元数据（$metadata）、CRUD操作以及各种定制化操作。此次发布中包含了一个新的追踪（tracking）功能，允许你使用Visual Studio 2012或者在<a href="http://www.windowsazure.com/en-us/">Windows Azure</a>上进行问题排查。</p> 
-<p>除此之外，更新版Web API项目中加入了一个链接，点击它可打开一个自动生成的帮助页面以展示如何访问你的Web API，其中包含了所有API终结点、<a href="http://msdn.microsoft.com/en-us/library/system.web.mvc.httpverbs(v=vs.108">HTTP谓词（verbs）</a>.aspx)、参数以及请求和响应消息的示例。你也可以为帮助文件加入定制的文档与客户端测试的功能。</p> 
-<p>ASP.NET and Web Tools 2012.2新加入了创建SignalR项目的Visual Studio 2012模板，并支持将SignalR加入到现有的Web Forms和MVC应用程序中。这包含了对Friendly URL的完整支持，允许你将URL片段作为参数传递到页面中。它同时也对移动设备提供了Friendly URL的支持，比方说， YourPage.Mobile.aspx将作为默认的内容格式显示在移动设备中。</p> 
-<p>“ASP.NET and Web Tools 2012.2并未修改任何全局程序集缓存（GAC）中的文件，这就不会对你已经安装的ASP.NET产生影响，也不会影响到任何现有项目。所有的变更要么是Visual Studio的工具，要么是本地NuGet库的新功能的增强，”Microsoft的项目经理Scott Hanselman说道。</p> 
-<p>ASP.NET and Web Tools 2012.2提供了一个新项目模板用于创建Facebook应用，并通过iframe将应用显示在Facebook环境下。它也包括了一个ASP.NET MVC的单页应用模板，允许你使用HTML 5、CSS 3和流行的Knockout及jQuery JavaScript库创建响应式客户端web应用。另外，新版中也包含了由社区贡献的多种MVC模板，比如<a href="http://go.microsoft.com/fwlink/?LinkId=282649">BreezeJS</a>、<a href="http://go.microsoft.com/fwlink/?LinkId=282647">Ember</a>、<a href="http://go.microsoft.com/fwlink/?LinkId=282648">DurandalJS</a>和<a href="http://go.microsoft.com/fwlink/?LinkId=282646">Hot Towel</a>。</p> 
-<p>ASP.NET and Web Tools 2012.2发布了一个支持MVC、Web Pages和Web Forms的Windows Azure认证机制，允许在你的应用程序中认证那些你的组织中的<a href="http://www.microsoft.com/en-us/office365/small-business-home.aspx">Office 365</a>用户，并能够在你自己定制的<a href="http://www.windowsazure.com/en-us/manage/services/identity/">Windows Azure活动目录</a>域中创建新用户。</p> 
-<p>Steve Gentile留言道，他希望在下个版本中看到支持AngularJS的模板。<br /> Dhaha觉得TypeScript的功能增强被遗漏了。<br /> James Barrow说道：</p> 
+<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>ActorFx介绍：一个云Actor运行时</h3><p>由Microsoft的附属公司MS Open Tech开发的<a href="http://actorfx.codeplex.com/">ActorFx</a> 打算提供一个“非规范性的、独立于语言的动态分布式对象模型”。该模型由两个组件构成：actor本身及其数据存储，它们分别由接口IActor和IActorState表示。</p> 
+<p><strong>IActorState进行状态管理</strong></p> 
+<p>最初的IActorState是一个非常简单的接口，它的本质是一个暴露了Set、Get、TryGet、Remove和Flush方法的字典。最后一个能够异步运行的操作用于提交改变。按照约定，在调用commit方法之后改变会被自动保存到持久化存储，而在此之前则会被存储在一个“本地副作用缓冲区（local side-effect buffer）”中。</p> 
+<p>这种简化隐藏了一个秘密，那就是可以请求IActorState存储任何内容，包括活动代码（Active Code）。</p> 
+<p><strong>Actor方法</strong></p> 
+<p>之前使用Actor时必须教导它，让它知道自己能做什么。与传统的.NET编程不同的是，这并不是通过人工向服务器部署代码来实现的。相反，方法是在运行时使用IActor.AddAssembly函数推送到actor的。程序集由一个字节数组表示，因此能够通过线路传输并将其存储到IActorState自身内部。</p> 
+<p>这意味着每一个Actor都是一个完全封闭的对象。它没有从类或者原型（prototype）中继承方法，它自己本身就有这些方法。同时随时都可以简单地改变这些方法，只要推送一个具有同样名称的新程序集即可。</p> 
+<p>因为是一次性地加载程序集，所以实际的Actor方法需要使用ActorMethod属性标记。被该属性标记的方法必须遵循委托模式Func&lt;IActorState, object[], object&gt;。</p> 
+<p><strong>向Actor发送消息</strong></p> 
+<p>可以使用IActor.CallMethod向一个Actor发送消息。IActor.CallMethod方法有两个参数，一个是方法的名字（来源于之前添加的程序集），另一个是该方法参数的数组。它的返回类型是简单的System.Object。</p> 
+<p>通过IActor.CallMethod调用方法时，客户端还需要传入客户端ID和序列号。这样Actor运行时就能识别重复的请求并重新发送之前调用的结果。当然，客户端需要负责确保对于给定的消息这一对值是唯一的。</p> 
+<p><strong>Actor之间的通信</strong></p> 
+<p>Actor之间通过IActorProxy的瞬间实例进行通信。通过代理一个Actor能够调用另一个Actor的CallMethod。<br /> 除了直接的方法调用之外，还能使用代理设置订阅。基于修改版本的IObserver，来自于发布Actor的事件能够引发对订阅Actor方法的调用。调用Subscribe方法返回令牌（token）的Dispose方法便可以取消订阅。</p> 
+<p><strong>客户端示例</strong></p> 
+<p>到现在为止我们谈论的大部分内容都是与Actor运行时实现相关的。大多数开发者将会处理FabricActorClient这样的客户端。下面我们看看关键的方法：</p> 
 <blockquote> 
- <p>Web Essentials的更新是否是因其内建了对LESS和CoffeeScript的支持所引起的？我很遗憾在一大早看到这项功能从Web Essentials中移除了，不过看到Microsoft的这次更新中又加入了对它们的支持，这可能也不错。</p> 
+ <p>public class FabricActorClient<br /> {<br /> public FabricActorClient(Uri fabricUri, Uri actorUri, bool useGateway);<br /> public bool AddAssembly(string assemblyName, byte[] assemblyBytes);<br /> public Object CallMethod(string methodName, object[] parameters);<br /> public IDisposable Subscribe(string eventType, IObserver
+  <actorevent>
+    eventObserver);
+   <br /> }
+  </actorevent></p> 
 </blockquote> 
-<p>Mads kristensen留言道：</p> 
-<blockquote> 
- <p>是的，LESS和CoffeeScript的支持都从Web Essentials中转移到了官方的Web Tools 2012.2发布中。这也是为什么它必须从Web Essentials中移除，这样才不会产成互相冲突（它之前的确造成过冲突）。</p> 
-</blockquote> 
-<p>查看英文原文：<a href="http://www.infoq.com/news/2013/02/asp-net-web-tools-2012-2;jsessionid=5A5E6FFE47FD11A8847E72D315F499F0">ASP.NET and Web Tools 2012.2 with Enhancements for MVC, Azure and SignalR</a></p> 
-<hr /> 
-<p>感谢<a href="http://infoq.com/cn/author/%E6%9D%A8%E8%B5%9B">杨赛</a>对本文的审校。</p> 
+<p>
+ <actorevent>
+  再次强调，必须注意AddAssembly会查找匹配Func&lt;IActorState, object[], object&gt;签名的静态方法。
+ </actorevent></p> 
+<p>
+ <actorevent>
+  <a href="http://actorfx.codeplex.com/">ActorFx</a> 基于Apache许可，目前处于alpha状态，可以从CodePlex网站上获取。
+ </actorevent></p> 
+<p>
+ <actorevent>
+  <strong>查看英文原文：</strong>
+  <a href="http://www.infoq.com/news/2013/02/ActorFx;jsessionid=3C11D80AE0847E18022AFC2B31B536D9">Introducing ActorFx, a Cloud Based Actor Runtime</a>
+ </actorevent></p> 
 <p id="lastElm"></p></body></html>

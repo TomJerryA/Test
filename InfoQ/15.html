@@ -1,29 +1,53 @@
-<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>Greenplum Pivotal HD结合了SQL和Hadoop的优势</h3><p><a href="http://www.greenplum.com/">EMC Greenplum</a>宣布了一个新的Hadoop发行版本——<a href="http://www.greenplum.com/blog/topics/hadoop/introducing-pivotal-hd">Pivotal HD</a>，其中包含一个完全运行于HDFS之上的MPP数据库，兼容SQL，而且速度“比Hive快数百倍”。</p> 
-<p><a href="http://www.greenplum.com/blog/topics/hadoop/introducing-pivotal-hd">Pivotal HD</a>支持标准Hadoop发型版本的常用特性（包括HDFS、Pig、Hive、Mahout和Map-Reduce等），但又加入了一些其他的组件，具体如下面结构图所示：&nbsp;</p> 
-<blockquote> 
- <p class="image-wide"><img src="/resource/news/2013/03/Pivotal-HD-SQL-Hadoop/zh/resources/Pivotal1.png;jsessionid=D7168D0AF0CD278A6E5E776D12FBB954" alt="" _href="img://Pivotal1.png" _p="true" /></p> 
-</blockquote> 
-<p>Pivotal的主要组件是<a href="http://www.greenplum.com/blog/dive-in/hawq-the-new-benchmark-for-sql-on-hadoop">HAWQ</a>，这是一个MPP（Massively Parallel Processing）关系数据库，借助一种动态流水线机制直接运行于Hadoop中的HDFS之上，其特性包括：</p> 
-<ul> 
- <li>兼容SQL——支持各个版本的SQL，包括SQL92、SQL99和SQL 2003 OLAP等。百分之百兼容PostgreSQL 8.2。</li> 
- <li>面向行或面向列的数据存储。</li> 
- <li>查询优化器——查询可以运行于成千上万个节点上。</li> 
- <li>完全兼容ODBC/JDBC。</li> 
- <li>交互式查询——大数据集上的复杂查询可以以秒级或次秒级的速度解决。</li> 
- <li>数据管理——提供了表统计和表安全等功能。</li> 
- <li>支持存储在HDFS、Hive、HBase、Avro、ProtoBuf、分隔的文本和序列化文件中的数据。</li> 
- <li>深度分析——包含了数据挖掘和机器学习算法。</li> 
-</ul> 
-<p>Greenplum的高级技术总监Gavin Sherry做了一个演示（见该<a href="http://www.greenplum.com/webcasts?commid=68121">视频</a>的42分42秒），在60个节点组成的HDFS集群上，有总量达几个TB的10亿行数据，下列SQL语句可以在13秒内执行完，这提供了接近实时的能力：</p> 
-<pre><p>SELECT gender, count (*)<br />FROM retail.order JOIN customers ON retail.order.customer_ID = customers.customer_ID<br />GROUP BY gender;</p></pre> 
-<p>据EMC Greenplum 的解决方案架构师<a href="http://www.greenplum.com/blog/author/donald-miner">Donald Miner</a>介绍，“<a href="http://www.greenplum.com/blog/topics/hadoop/introducing-pivotal-hd">HAWQ比Hive快数百倍</a>”，下图是Greenplum提供的基准测试结果（<a href="http://public.brighttalk.com/resource/core/9757/hadoop-the_foundation_for_change_15465.pdf">PDF</a>）：</p> 
-<blockquote> 
- <p class="image-wide"><img src="/resource/news/2013/03/Pivotal-HD-SQL-Hadoop/zh/resources/Pivotal2.png;jsessionid=D7168D0AF0CD278A6E5E776D12FBB954" alt="" _href="img://Pivotal2.png" _p="true" /></p> 
-</blockquote> 
-<p>HAWQ能够在“次秒级别内”解决查询问题，“同时做到了在同一引擎内支持规模更大的数据集和完整的SQL表达能力”。Miner解释了这是如何做到的：</p> 
-<blockquote> 
- <p>我们有所谓的“分段服务器（segment server）”来管理每个表的一个分片。集群中的每个数据节点上会运行一些分段服务器。不过这种数据分片是完全保存在HDFS内的。有一个“主节点”负责存储顶层元数据、构建查询计划并将节点本地的查询推送到分段服务器上。</p> 
- <p>在查询启动时，数据将从HDFS中读出并加载到HAWQ执行引擎中。HAWQ遵循MPP架构，不同于将数据溢出到磁盘上和在磁盘上建立检查点（如MapReduce），它会让数据流过流水线的不同阶段。另外，分段服务器是一直运行的，所以不存在启动时间。</p> 
-</blockquote> 
-<p>Pivotal HD有三个版本（<a href="http://public.brighttalk.com/resource/core/9707/pivotal_hd_enterprise_datasheet-1_15391.pdf">PDF</a>)：企业版、数据库服务版和用于评估的社区版。<br /> <strong>查看英文原文：</strong><a href="http://www.infoq.com/news/2013/02/Pivotal-HD-SQL-Hadoop;jsessionid=D7168D0AF0CD278A6E5E776D12FBB954">Greenplum Pivotal HD Combines the Strengths of SQL and Hadoop</a>&nbsp;</p> 
+<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>面向Android上Dalvik运行时的C# 编译器dot42简介</h3><p>Mono for Android最大的缺点是需要在Mono上面构建，这与Android预期的运行时完全不同。尽管能够直接访问完整的CLR的确有些优势，但是它与Android的Dalvik 运行时之间的封送调用（marshalling call）可能非常昂贵。那为什么不跳过IL代码直接生成Dex代码呢？</p> 
+<p>事实上这有点夸张。<a href="https://www.dot42.com/">dot42</a>编译器实际上并没有跳过IL。恰恰相反，它读取IL代码并将其转换为一种叫做RL或Register Language的新语言。IL和RL主要的差异在于IL是基于栈的(有点像Java的字节码)，而RL基于寄存器。在转换为RL后，会执行一系列的优化，而且最终产品会被重新编译。最后的编译为我们生成Android上Dalvik运行时的dex代码。</p> 
+<p>.Net原始调试信息在该过程的每个步骤中都会维护，当然它必须从Windows/.NET PDB格式转换为dex的调试信息格式。dot42使用Android调试桥接器来连接Visual Studio调试工具。</p> 
+<p>Android库可以通过直接引用JAR文件来访问。“编译后，调用会被重定向为对原始Android库的调用。”类型间的某些映射是必须的，但这主要由编译器解决。例如，java.lang.Boolean被映射为C#的Nullable
+ <bool>
+  。
+ </bool></p> 
+<p>
+ <bool>
+  因为dot42生成的是dex代码，所以有些C#特性无法使用。其中最值得注意的是用户定义值类型，也就是struct，因为Dalvik中并不存在，所以根本没法映射。
+ </bool></p> 
+<p>
+ <bool>
+  在使用dot42时，往往需要决定选择常见数据结构的C#版本还是Android版本。例如，应该使用.Net的List
+  <t>
+   还是Java的ArrayList
+   <t>
+    ？据Ewout Prangsma介绍，如果关注内存和下载大小，开发者应该首选Java版本。即使他们的List
+    <t>
+     实现基本上是对ArrayList
+     <t>
+      的很薄的包装，有些额外的代码仍然需要打包并传到手机上去。
+     </t>
+    </t>
+   </t>
+  </t>
+ </bool></p> 
+<p>
+ <bool>
+  <t>
+   <t>
+    <t>
+     <t>
+      dot42是商业产品，正常批量许可是每开发者499欧元起。
+     </t>
+    </t>
+   </t>
+  </t>
+ </bool></p> 
+<p>
+ <bool>
+  <t>
+   <t>
+    <t>
+     <t>
+      <strong>查看英文原文：</strong>
+      <a href="http://www.infoq.com/news/2013/02/dot42;jsessionid=6D0E30C9E09E709B6432E678974097AF">Introducing dot42, a C# Compiler for Android’s Dalvik Runtime</a>
+     </t>
+    </t>
+   </t>
+  </t>
+ </bool></p> 
 <p id="lastElm"></p></body></html>
