@@ -1,0 +1,92 @@
+<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>Fn.py: Enjoy Functional Programming in Python</h3><p>Despite the fact that Python is not a pure-functional programming language, it's multi-paradigm and it gives you enough freedom to take advantage of the functional programming approach. There are theoretical and practical advantages to the functional style (you can find this list in <a href="http://docs.python.org/2/howto/functional.html#introduction">Python documentation</a>):</p><ul> 
+ <li>Formal provability</li> 
+ <li>Modularity</li> 
+ <li>Composability</li> 
+ <li>Ease of debugging and testing</li> 
+</ul><p>Although this list is descriptive enough, I really like description of advantage of functional programming that was given by Michael O. Church in his article <a href="http://michaelochurch.wordpress.com/2012/12/06/functional-programs-rarely-rot/">“Functional </a><a href="http://www.google.com/url?q=http%3A%2F%2Fmichaelochurch.wordpress.com%2F2012%2F12%2F06%2Ffunctional-programs-rarely-rot%2F&amp;sa=D&amp;sntz=1&amp;usg=AFQjCNHB0B6FLozENsUhw4BvVfq0o_R6Ig">programs</a><a href="http://michaelochurch.wordpress.com/2012/12/06/functional-programs-rarely-rot/"> rarely rot”</a>. I’ve talked about using functional approach in Python at Pycon UA 2012: <a href="http://kachayev.github.com/talks/uapycon2012/index.html">Functional Programming with Python</a> and I mentioned there many problems that you’ll probably discover soon trying to write readable and maintainable functional code in Python.</p><p>Library <a href="https://github.com/kachayev/fn.py">fn.py</a> was created in order to deal with these problems. While it’s impossible to resolve all problems, the library provides you with missing &quot;batteries&quot; to get maximum value from functional approach even in mostly-imperative program. What will you find under the hood?</p><h2>Scala-style lambdas definition</h2><p>Syntax for creating lambda functions in Python is really verbose, just compare:</p><p>Python</p><pre>
+map(lambda x: x*2, [1,2,3])</pre><p>Scala</p><pre>
+List(1,2,3).map(_*2)</pre><p>Clojure</p><pre>
+(map #(* % 2) '(1 2 3))</pre><p>Haskell</p><pre>
+map (2*) [1,2,3]</pre><p>Fn.py provides special _ object to simplify lambda syntax (inspired by Scala).</p><pre><b>from</b> fn <b>import</b> _
+
+<b>assert</b> (_ + _)(10, 5) = 15
+<b>assert</b> <font color="#0080ff">list</font>(<font color="#0080ff">map</font>(_ <b>*</b> <font color="#0080ff">2</font>, <font color="#0080ff">range</font>(<font color="#0080ff">5</font>))) <b>==</b> [<font color="#0080ff">0</font>,<font color="#0080ff">2</font>,<font color="#0080ff">4</font>,<font color="#0080ff">6</font>,<font color="#0080ff">8</font>]
+<b>assert</b> <font color="#0080ff">list</font>(<font color="#0080ff">filter</font>(_ <b>&lt;</b> <font color="#0080ff">10</font>, [<font color="#0080ff">9</font>,<font color="#0080ff">10</font>,<font color="#0080ff">11</font>])) <b>==</b> [<font color="#0080ff">9</font>]</pre><p>There are many other cases where you can use _: all arithmetic operations, attributes resolving, method calling, slicing. If you are not sure, what your function is going to do, you can print it:</p><pre><b>from</b> fn <b>import</b> _ 
+
+<b>print</b> (_ <b>+</b> <font color="#0080ff">2</font>) <font color="#c0c0c0"><i># &quot;(x1) =&gt; (x1 + 2)&quot;</i> <br /></font><b>print</b> (_ <b>+</b> _ <b>*</b> _) <i><font color="#c0c0c0"># &quot;(x1, x2, x3) =&gt; (x1 + (x2 * x3))&quot;</font></i></pre><h2>Streams and infinite sequences declaration</h2><p>Lazy-evaluated scala-style streams. Basic idea: evaluate each new element &quot;on demand&quot; and share calculated elements between all created iterators. Stream object supports &lt;&lt; operator that means pushing new elements when it's necessary.</p><p>Lazy-evaluated stream is a powerful abstraction to deal with infinite sequences. Let’s see how the fibonacci sequence can be calculated in functional programming languages:</p><p>Haskell</p><pre>
+fibs = 0 : 1 : zipWith (+) fibs (tail fibs)</pre><p>Clojure</p><pre>
+(def fib (lazy-cat [0 1] (map + fib (rest fib))))</pre><p>Scala</p><pre>
+def fibs: Stream[Int] = 
+&nbsp;&nbsp;&nbsp;&nbsp; 0 #:: 1 #:: fibs.zip(fibs.tail).map{case (a,b) =&gt; a + b} </pre><p>Now you can do the same thing in Python:</p><pre><b>from</b> fn <b>import</b> Stream 
+<b>from</b> fn.iters <b>import</b> take, drop, <font color="#0080ff">map</font>
+<b>from</b> operator <b>import</b> add
+
+f <b>=</b> Stream()
+fib <b>=</b> f <b>&lt;&lt;</b> [<font color="#0080ff">0</font>, <font color="#0080ff">1</font>] <b>&lt;&lt;</b> <font color="#0080ff">map</font>(add, f, drop(<font color="#0080ff">1</font>, f))
+
+<b>assert</b> <font color="#0080ff">list</font>(take(<font color="#0080ff">10</font>, fib)) <b>==</b> [<font color="#0080ff">0</font>,<font color="#0080ff">1</font>,<font color="#0080ff">1</font>,<font color="#0080ff">2</font>,<font color="#0080ff">3</font>,<font color="#0080ff">5</font>,<font color="#0080ff">8</font>,<font color="#0080ff">13</font>,<font color="#0080ff">21</font>,<font color="#0080ff">34</font>]
+<b>assert</b> fib[<font color="#0080ff">20</font>] <b>==</b> <font color="#0080ff">6765<br /></font><b>assert</b> <font color="#0080ff">list</font>(fib[<font color="#0080ff">30:35</font>]) <b>==</b> [<font color="#0080ff">832040</font>,<font color="#0080ff">1346269</font>,<font color="#0080ff">2178309</font>,<font color="#0080ff">3524578</font>,<font color="#0080ff">5702887</font>]</pre><h2>Trampolines decorator</h2><p><strong>fn.recur.tco</strong> is a workaround for dealing with TCO without heavy stack utilization. Let's start from simple example of recursive factorial calculation:</p><pre><b>def</b> <b><font color="#ff0000">fact</font></b>(n):
+&nbsp;&nbsp;&nbsp;&nbsp; <b>if</b> n <b>==</b> <font color="#0080ff">0</font>: <b>return</b> <font color="#0080ff">1<br /></font>&nbsp;&nbsp;&nbsp;&nbsp; <b>return</b> n <b>*</b> fact(n<b>-</b><font color="#0080ff">1</font>)</pre><p>This variant works, but it's really ugly. Why? It will utilize memory too heavy cause of recursive storing all previous values to calculate final result. If you will execute this function with big n (more then <strong>sys.getrecursionlimit</strong><strong>()</strong>) CPython will fail with</p><pre><b>&gt;&gt;&gt;</b> <b>import</b> sys
+<b>&gt;&gt;&gt;</b> fact(sys<b>.</b>getrecursionlimit() <b>*</b> <font color="#0080ff">2</font>)
+<b>...</b> many many lines of stacktrace <b>...</b>
+<b><font color="#ff0000">RuntimeError</font></b>: maximum recursion depth exceeded</pre><p>Which is good, cause it prevents you from terrible mistakes in your code.</p><p>How can we optimize this solution? Answer is simple, lets transform function to use tail call:</p><pre><b>def</b> <b><font color="#ff0000">fact</font></b>(n, acc<b>=</b><font color="#0080ff">1</font>):
+&nbsp;&nbsp;&nbsp;&nbsp; <b>if</b> n <b>==</b> <font color="#0080ff">0</font>: <b>return</b> acc
+&nbsp;&nbsp;&nbsp;&nbsp; <b>return</b> fact(n<b>-</b><font color="#0080ff">1</font>, acc<b>*</b>n)</pre><p>Why this variant is better? Cause you don't need to remember previous values to calculate final result. More about <a href="http://en.wikipedia.org/wiki/Tail_call">tail call </a><a href="http://www.google.com/url?q=http%3A%2F%2Fen.wikipedia.org%2Fwiki%2FTail_call&amp;sa=D&amp;sntz=1&amp;usg=AFQjCNEu4mNimTv-aGzZPMC1yMqAvtfIhQ">optimization</a> on Wikipedia. But... Python interpreter will execute this function the same way as previous one, so you won't win nothing.</p><p><strong>fn.recur.tco</strong> gives you mechanism to write &quot;optimized a bit&quot; tail call recursion using &quot;trampoline&quot; approach. The same approach is used for example in Clojure and main idea is to expand sequence of functional calls into while loop.</p><pre><b>from</b> fn <b>import</b> recur
+
+@recur.tco 
+<b>def</b> <b><font color="#ff0000">fact</font></b>(n, acc<b>=</b><font color="#0080ff">1</font>):
+&nbsp;&nbsp;&nbsp;&nbsp; <b>if</b> n <b>==</b> <font color="#0080ff">0</font>: <b>return</b> <font color="#c0c0c0">False</font>, acc
+&nbsp;&nbsp;&nbsp;&nbsp; <b>return</b> <font color="#c0c0c0">True</font>, (n<b>-</b><font color="#0080ff">1</font>, acc<b>*</b>n)</pre><p><strong>@recur.tco</strong> is a decorator that execute your function in while loop and check output:</p><ul> 
+ <li>(<strong>False, result</strong>) means that we finished</li> 
+ <li>(<strong>True, args, kwargs</strong>) means that we need to call function again with other arguments</li> 
+ <li>(<strong>func, args, kwargs</strong>) to switch function to be executed inside while loop</li> 
+</ul><h2>Functional style for error-handling</h2><p>Assume that you have Request class that gives you parameter value by its name. To get uppercase notation for non-empty striped value:</p><pre><b>class</b> <b><font color="#808080">Request</font></b>(<font color="#0080ff">dict</font>):
+&nbsp;&nbsp;&nbsp;&nbsp; <b>def</b> <b><font color="#ff0000">parameter</font></b>(<font color="#c0c0c0">self</font>, name):
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <b>return</b> <font color="#c0c0c0">self</font><b>.</b>get(name, <font color="#c0c0c0">None</font>)
+
+r <b>=</b> Request(testing<b>=</b><font color="#ff0000">&quot;Fixed&quot;</font>, empty<b>=</b><font color="#ff0000">&quot; &quot;</font>)
+param <b>=</b> r<b>.</b>parameter(<font color="#ff0000">&quot;testing&quot;</font>)
+<b>if</b> param <b>is</b> <font color="#c0c0c0">None</font>:
+&nbsp;&nbsp;&nbsp;&nbsp; fixed <b>=</b> <font color="#ff0000">&quot;&quot;</font>
+<b>else</b>:&nbsp;&nbsp;&nbsp;&nbsp; 
+     param <b>=</b> param<b>.</b>strip()
+&nbsp;&nbsp;&nbsp;&nbsp; <b>if</b> <font color="#0080ff">len</font>(param) <b>==</b><font color="#0080ff"> 0</font>:
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; fixed <b>=</b> <font color="#ff0000">&quot;&quot;</font>
+&nbsp;&nbsp;&nbsp;&nbsp; <b>else</b>:
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;fixed <b>=</b> param<b>.</b>upper()&nbsp;</pre><p>Hmm, looks ugly. Update code with <strong>fn.monad.Option</strong>. It represents optional values, each instance of <strong>Option</strong> can be either instance of <strong>Full or Empty</strong> (inspired by Scala <a href="http://www.scala-lang.org/api/current/index.html#scala.Option">Option</a>). It provides you with a simple way to write long computation sequences and get rid of many <strong>if/else</strong> blocks.</p><pre><b>from</b> operator <b>import</b> methodcaller
+<b>from</b> fn.monad <b>import</b> optionable
+
+<b>class</b> <b>Request</b>(<font color="#0080ff">dict</font>):
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;@optionable
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>def</b> <b><font color="#ff0000">parameter</font></b>(<font color="#c0c0c0">self</font>, name):
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>return</b> <font color="#c0c0c0">self</font><b>.</b>get(name, <font color="#c0c0c0">None</font>)
+
+r <b>=</b> Request(testing<b>=</b><font color="#ff0000">&quot;Fixed&quot;</font>, empty<b>=</b><font color="#ff0000">&quot; &quot;</font>)
+fixed <b>=</b> r<b>.</b>parameter(<font color="#ff0000">&quot;testing&quot;</font>) 
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>.</b>map(methodcaller(<font color="#ff0000">&quot;strip&quot;</font>)) 
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>.</b>filter(<font color="#0080ff">len</font>) 
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>.</b>map(methodcaller(<font color="#ff0000">&quot;upper&quot;</font>)) 
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>.</b>get_or(<font color="#ff0000">&quot;&quot;</font>)</pre><p><strong>fn.monad.Option.or_call</strong> is good method for trying several variant to end computation. I.e. use have <strong>Request</strong> class with optional attributes <strong>type, mimetype, url</strong>. You need to evaluate &quot;request type&quot; using at least one attribute:</p><pre><b>from</b> fn.monad <b>import</b> Option 
+
+request <b>=</b> <font color="#0080ff">dict</font>(url<b>=</b><font color="#ff0000">&quot;face.png&quot;</font>, mimetype<b>=</b><font color="#ff0000">&quot;PNG&quot;</font>) 
+tp <b>=</b> Option \ 
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>.</b>from_value(request<b>.</b>get(<font color="#ff0000">&quot;type&quot;</font>, <font color="#c0c0c0">None</font>)) \ <i><font color="#c0c0c0"># check &quot;type&quot; key first</font></i> 
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>.</b>or_call(from_mimetype, request) \ <i><font color="#c0c0c0"># or.. check &quot;mimetype&quot; key</font></i> 
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>.</b>or_call(from_extension, request) \ <i><font color="#c0c0c0"># or... get &quot;url&quot; and check extension</font></i> 
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <b>.</b>get_or(<font color="#ff0000">&quot;application/undefined&quot;</font>)</pre><h2>Something else?</h2><p>I described only the small part of library functionality. Also you can find and use:</p><ul> 
+ <li>22 additional itertools recipes to extend functionality of built-in module</li> 
+ <li>iterators unification for Python 2 and Python 3 (range, map, filter etc) which is really useful when working on cross-version library</li> 
+ <li>easy syntax for functional composition and partial function application</li> 
+ <li>additional operators to work with high-ordered functions (apply, flip etc)</li> 
+</ul><h2>Work in progress</h2><p>Since publishing this library on Github I’ve got many reviews, ideas and suggestions from communities as well as patches and fixes. I continue working on enhancements for existing functionality and new features. In closest roadmap:</p><ul> 
+ <li>More operators to work with iterables, i.e. <strong>foldl, foldr</strong></li> 
+ <li>More monads, i.e.<strong> fn.monad.Either</strong> to deal with error logging</li> 
+ <li>C-accelerator for most modules</li> 
+ <li>Curried function builder to simplify <strong>lambda arg1: lambda arg2: ...</strong></li> 
+ <li>More documentations, more tests, more examples</li> 
+</ul><h2>Links</h2><p>If you want to find more information about library you can use following resources:</p><ul> 
+ <li>library on <a href="http://pypi.python.org/pypi?:action=display&amp;name=fn">PyPI</a></li> 
+ <li>Source code on <a href="https://github.com/kachayev/fn.py">GitHub</a></li> 
+ <li><a href="https://github.com/kachayev/fn.py#fnpy-enjoy-fp-in-python">Documentation</a></li> 
+ <li><a href="https://github.com/kachayev/fn.py#installation">Installation procedure</a></li> 
+</ul><h2>About the Author</h2><p><strong>Alexey Kachayev</strong> is a snappy programmer-fanatic, open-source community activist, frequent speaker at different technology conferences, CTO at Kitapps Inc. Alexey is most experienced in Python, Erlang, Clojure and functional programming (Haskell, Lisp). His main interests are distributed applications, cloud computing, real-time web, compilers theory. Alexey contributed to CPython interpretator and Storm (real-time data processor).</p><div class="clearer-space"></div></body></html>

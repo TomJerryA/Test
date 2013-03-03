@@ -1,0 +1,459 @@
+<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>从 QCon 旧金山 2012中学到的关键经验和教训</h3><p>今年，一支由团队主管、架构师及项目经理组成的庞大队伍降临在旧金山内河码头(The Embarcadero in San Francisco)，参加一场年度技术朝圣大会：<a href="http://qconsf.com/sf2012/">QCon旧金山2012</a>(QCon San Francisco 2012，以下简称QConSF)。为了能够容纳950名参会者（比去年多出30%），今年的会议被迫迁到了更大的地方。</p><p>继承会议传统，选择的演讲“由参会者参与，为参会者服务”，QConSF提供超过100个主题演讲，还有今年第一次开办专业便利的open space环节。今年的参会者同样也有机会参加首次举办的 GrapchConnect大会，这个大会是一个跨地区两日会议，覆盖在NoSQL及图形数据库方面的重要主题。</p><p>QConSF 中，Facebook、Google 及 Pinterest 的案例研究吸引了大批人，还有大量主题关于持续发布、大数据及NoSQL、移动跨平台、动态语言等等。本文摘取了QConSF 2012中，针对所有演讲、主题及活动的一些关键分享，包括编辑与参会者的博客文章，还有活动期间twitter上的反馈。你可以从这里看到<a href="http://dlr2008.wordpress.com/2012/11/07/qcon-2012-san-francisco-day-two-in-pictures/">QCon大量参会者</a>发布的<a href="http://www.gramfeed.com/instagram/tags#qconsf">照片</a>。</p><p><a href="http://www.infoq.com/articles/QCon-San-Francisco-2012;jsessionid=80BF4B2B177B3262CAE45414291AA85B#h.8b1ifsriw9fs">专题</a></p><ul> 
+ <li><a href="http://www.infoq.com/articles/QCon-San-Francisco-2012;jsessionid=80BF4B2B177B3262CAE45414291AA85B#h.oyug5niuqq6u">敏捷回顾 by Aino Vonge Corry</a></li> 
+ <li><a href="http://www.infoq.com/articles/QCon-San-Francisco-2012;jsessionid=80BF4B2B177B3262CAE45414291AA85B#h.45v0c9iho50r">持续发布 by Jez Humble</a></li> 
+ <li><a href="http://www.infoq.com/articles/QCon-San-Francisco-2012;jsessionid=80BF4B2B177B3262CAE45414291AA85B#h.4rflmk26p6zd">PhoneGap 跨平台移动应用 by Christophe Coenraets</a></li> 
+ <li><a href="http://www.infoq.com/articles/QCon-San-Francisco-2012;jsessionid=80BF4B2B177B3262CAE45414291AA85B#h.588ppm4gqv9u">领域驱动概要 by Eric Evans</a></li> 
+ <li><a href="http://www.infoq.com/articles/QCon-San-Francisco-2012;jsessionid=80BF4B2B177B3262CAE45414291AA85B#h.di546cdt4zub">科技服务：系统进化方法研究 by James Lewis</a></li> 
+ <li><a href="http://www.infoq.com/articles/QCon-San-Francisco-2012;jsessionid=80BF4B2B177B3262CAE45414291AA85B#h.bqocdectyu9v">专业 JavaScript 与 CoffeeScript by Peter Bell</a></li> 
+</ul><p><a href="http://www.infoq.com/articles/QCon-San-Francisco-2012;jsessionid=80BF4B2B177B3262CAE45414291AA85B#h.15h3r3octj2f">演讲</a></p><ul> 
+ <li><a href="http://www.infoq.com/articles/QCon-San-Francisco-2012;jsessionid=80BF4B2B177B3262CAE45414291AA85B#h.eri1xgyk82gw">酷与无用性 by Kevlin Henney</a></li> 
+ <li><a href="http://www.infoq.com/articles/QCon-San-Francisco-2012;jsessionid=80BF4B2B177B3262CAE45414291AA85B#h.psc4uyemw4ec">NoSQL：过去，现在，将来 by Eric Brewer</a></li> 
+ <li><a href="http://www.infoq.com/articles/QCon-San-Francisco-2012;jsessionid=80BF4B2B177B3262CAE45414291AA85B#h.usbrijxiwmyo">竞争条件、分布、交互——测试硬东西与保持理智 by John Hughes</a></li> 
+ <li><a href="http://www.infoq.com/articles/QCon-San-Francisco-2012;jsessionid=80BF4B2B177B3262CAE45414291AA85B#h.np8jhp9uv95v">真实的软件工程 by Glenn Vanderburg</a></li> 
+</ul><p><a href="http://www.infoq.com/articles/QCon-San-Francisco-2012;jsessionid=80BF4B2B177B3262CAE45414291AA85B#h.9mnf15vabii6">你所关心的架构</a></p><ul> 
+ <li><a href="http://www.infoq.com/articles/QCon-San-Francisco-2012;jsessionid=80BF4B2B177B3262CAE45414291AA85B#h.18vmhsppn60m">Google 云计算 by Randy Shoup</a></li> 
+ <li><a href="http://www.infoq.com/articles/QCon-San-Francisco-2012;jsessionid=80BF4B2B177B3262CAE45414291AA85B#h.18vmhsppn60m">Pinterest 的可扩展性 by Yashwanth Nelapati &amp; Marty Weiner</a></li> 
+</ul><p><a href="http://www.infoq.com/articles/QCon-San-Francisco-2012;jsessionid=80BF4B2B177B3262CAE45414291AA85B#h.51hj901m7wql">大数据与分析</a></p><ul> 
+ <li><a href="http://www.infoq.com/articles/QCon-San-Francisco-2012;jsessionid=80BF4B2B177B3262CAE45414291AA85B#h.ahits6u7op76">100%大数据，0% Hadoop，0% Java by Pavlo Baron</a></li> 
+ <li><a href="http://www.infoq.com/articles/QCon-San-Francisco-2012;jsessionid=80BF4B2B177B3262CAE45414291AA85B#h.ahits6u7op76">Appwatch – 一个 Ebay 大数据应用监控系统 by Bhaven Avalani &amp; Yuri Finklestein</a></li> 
+ <li><a href="http://www.infoq.com/articles/QCon-San-Francisco-2012;jsessionid=80BF4B2B177B3262CAE45414291AA85B#h.ahits6u7op76">通过 Looking Glass – 应用分析于开发中 by Michael Feathers</a></li> 
+</ul><p><a href="http://www.infoq.com/articles/QCon-San-Francisco-2012;jsessionid=80BF4B2B177B3262CAE45414291AA85B#h.e8ptu1t70b5k">持续发布</a></p><ul> 
+ <li><a href="http://www.infoq.com/articles/QCon-San-Francisco-2012;jsessionid=80BF4B2B177B3262CAE45414291AA85B#h.gzjl3t64uvyi">持续交付 by Jez Humble</a></li> 
+ <li><a href="http://www.infoq.com/articles/QCon-San-Francisco-2012;jsessionid=80BF4B2B177B3262CAE45414291AA85B#h.gzjl3t64uvyi">改变文化，成为令人敬畏的力量 by Jesse Robbins</a></li> 
+ <li><a href="http://www.infoq.com/articles/QCon-San-Francisco-2012;jsessionid=80BF4B2B177B3262CAE45414291AA85B#h.gzjl3t64uvyi">云端大规模持续测试 by John Penix</a></li> 
+ <li><a href="http://www.infoq.com/articles/QCon-San-Francisco-2012;jsessionid=80BF4B2B177B3262CAE45414291AA85B#h.gzjl3t64uvyi">产品开发的连续实验 by Frank Harris &amp; Nell Thomas</a></li> 
+ <li><a href="http://www.infoq.com/articles/QCon-San-Francisco-2012;jsessionid=80BF4B2B177B3262CAE45414291AA85B#h.gzjl3t64uvyi">Facebook 的发布工程师 by Chuck Rossi</a></li> 
+</ul><p><a href="http://www.infoq.com/articles/QCon-San-Francisco-2012;jsessionid=80BF4B2B177B3262CAE45414291AA85B#h.hkezqurjbzh">跨平台移动</a></p><ul> 
+ <li><a href="http://www.infoq.com/articles/QCon-San-Francisco-2012;jsessionid=80BF4B2B177B3262CAE45414291AA85B#h.sumpzfqdi45z">为所有移动平台构建社交应用 by James Pearce</a></li> 
+ <li><a href="http://www.infoq.com/articles/QCon-San-Francisco-2012;jsessionid=80BF4B2B177B3262CAE45414291AA85B#h.sumpzfqdi45z">移动 Web 开发者的工具带 by Pete LePage</a></li> 
+</ul><p><a href="http://www.infoq.com/articles/QCon-San-Francisco-2012;jsessionid=80BF4B2B177B3262CAE45414291AA85B#h.8yu61fv4uvmc">Web动态语言</a></p><ul> 
+ <li><a href="http://www.infoq.com/articles/QCon-San-Francisco-2012;jsessionid=80BF4B2B177B3262CAE45414291AA85B#h.x2i1cpju2h6s">Grail 2的多语网络开发 by Jeff Brown</a></li> 
+ <li><a href="http://www.infoq.com/articles/QCon-San-Francisco-2012;jsessionid=80BF4B2B177B3262CAE45414291AA85B#h.x2i1cpju2h6s">使用 Node.js 探索整个网络应用程序性能 by Tom Hughes-Croucher</a></li> 
+</ul><p><a href="http://www.infoq.com/articles/QCon-San-Francisco-2012;jsessionid=80BF4B2B177B3262CAE45414291AA85B#h.b9ngi0l8wlua">Java的复兴</a></p><ul> 
+ <li><a href="http://www.infoq.com/articles/QCon-San-Francisco-2012;jsessionid=80BF4B2B177B3262CAE45414291AA85B#h.m5gxhffxrx0q">Android 应用解析 by Eric Burke</a></li> 
+</ul><p><a href="http://www.infoq.com/articles/QCon-San-Francisco-2012;jsessionid=80BF4B2B177B3262CAE45414291AA85B#h.hoe9upjdfj8g">松散并发与今日的 CAP 定理</a></p><ul> 
+ <li><a href="http://www.infoq.com/articles/QCon-San-Francisco-2012;jsessionid=80BF4B2B177B3262CAE45414291AA85B#h.48hxwu8iy9ri">探索 CAP 中的漏洞 by Michael T.Nygard</a></li> 
+ <li><a href="http://www.infoq.com/articles/QCon-San-Francisco-2012;jsessionid=80BF4B2B177B3262CAE45414291AA85B#h.48hxwu8iy9ri">不再恐惧：拥抱最终一致性 by Sean Cribbs</a></li> 
+ <li><a href="http://www.infoq.com/articles/QCon-San-Francisco-2012;jsessionid=80BF4B2B177B3262CAE45414291AA85B#h.48hxwu8iy9ri">CAP 的平衡：构建可信赖的数据存储 by Jeremy Edberg</a></li> 
+</ul><p><a href="http://www.infoq.com/articles/QCon-San-Francisco-2012;jsessionid=80BF4B2B177B3262CAE45414291AA85B#h.kre3cpsn7ahu">机械交感</a></p><ul> 
+ <li><a href="http://www.infoq.com/articles/QCon-San-Francisco-2012;jsessionid=80BF4B2B177B3262CAE45414291AA85B#h.55ombrnpu89o">JVM 力学：引擎下的峰值 by Gil Tene</a></li> 
+ <li><a href="http://www.infoq.com/articles/QCon-San-Francisco-2012;jsessionid=80BF4B2B177B3262CAE45414291AA85B#h.55ombrnpu89o">通过 HHVM 金属质感的PHP by Keith Adams</a></li> 
+ <li><a href="http://www.infoq.com/articles/QCon-San-Francisco-2012;jsessionid=80BF4B2B177B3262CAE45414291AA85B#h.55ombrnpu89o">与魔鬼同行：机械交感神经网络 by Todd Montgomery</a></li> 
+</ul><p><a href="http://www.infoq.com/articles/QCon-San-Francisco-2012;jsessionid=80BF4B2B177B3262CAE45414291AA85B#h.9pgli6bb91lf">NoSQL 的锋芒</a></p><ul> 
+ <li><a href="http://www.infoq.com/articles/QCon-San-Francisco-2012;jsessionid=80BF4B2B177B3262CAE45414291AA85B#h.wx3vb9mr7ih3">架构模式的高可用性 by Adrian Cockcroft</a></li> 
+ <li><a href="http://www.infoq.com/articles/QCon-San-Francisco-2012;jsessionid=80BF4B2B177B3262CAE45414291AA85B#h.7wqscrjgz9i0">MongoDB 大规模数据中心的架构 by Kenny Gorman</a></li> 
+</ul><p><a href="http://www.infoq.com/articles/QCon-San-Francisco-2012;jsessionid=80BF4B2B177B3262CAE45414291AA85B#h.77zc0v5podg9">可编程网络</a></p><ul> 
+ <li><a href="http://www.infoq.com/articles/QCon-San-Francisco-2012;jsessionid=80BF4B2B177B3262CAE45414291AA85B#h.c9q0g8kko080">缓存超媒体接口 by Tim Stokes</a></li> 
+ <li><a href="http://www.infoq.com/articles/QCon-San-Francisco-2012;jsessionid=80BF4B2B177B3262CAE45414291AA85B#h.c2o31kuu39z4">构建超媒体接口的真实生活故事 by Mike Amundsen</a></li> 
+</ul><p><a href="http://www.infoq.com/articles/QCon-San-Francisco-2012;jsessionid=80BF4B2B177B3262CAE45414291AA85B#h.lztsp5i50wx4">实时网络</a></p><ul> 
+ <li><a href="http://www.infoq.com/articles/QCon-San-Francisco-2012;jsessionid=80BF4B2B177B3262CAE45414291AA85B#h.qpdpk73km41w">经典 MVC 架构的实时集成 by Daniel Erickson</a></li> 
+ <li><a href="http://www.infoq.com/articles/QCon-San-Francisco-2012;jsessionid=80BF4B2B177B3262CAE45414291AA85B#h.8cmpxl5i47la">实时网络：HTML5 Web Sockets，Engine.IO，Socket.IO，SPDY，HTTP 2.0及其相关内容 by Guillermo Rauch</a></li> 
+</ul><p><a href="http://www.infoq.com/articles/QCon-San-Francisco-2012;jsessionid=80BF4B2B177B3262CAE45414291AA85B#h.j34p226hulbj">硅谷的故事</a> + <a href="http://www.infoq.com/articles/QCon-San-Francisco-2012;jsessionid=80BF4B2B177B3262CAE45414291AA85B#h.llr78uyaij5">在硅谷构建十亿用户 by David Mortenson</a> + <a href="http://www.infoq.com/articles/QCon-San-Francisco-2012;jsessionid=80BF4B2B177B3262CAE45414291AA85B#h.bt27qy2tbrfv">优雅工程：Square 堆栈的秘密 by Bob Lee</a></p><p><a href="http://www.infoq.com/articles/QCon-San-Francisco-2012;jsessionid=80BF4B2B177B3262CAE45414291AA85B#h.qsw1k7smemoz">驾驭 HTML5 及 JavaScript</a></p><ul> 
+ <li><a href="http://www.infoq.com/articles/QCon-San-Francisco-2012;jsessionid=80BF4B2B177B3262CAE45414291AA85B#h.4ghmdixjtpsx">JavaScript 性能模式 by Stoyan Stefanov</a></li> 
+ <li><a href="http://www.infoq.com/articles/QCon-San-Francisco-2012;jsessionid=80BF4B2B177B3262CAE45414291AA85B#h.92eu709tadhf">SPDY，呃.. HTTP 2.0来了! By Roberto Peon</a></li> 
+</ul><p><a href="http://www.infoq.com/articles/QCon-San-Francisco-2012;jsessionid=80BF4B2B177B3262CAE45414291AA85B#h.hyi9w3cq69bm">敏捷团队实地指南</a></p><ul> 
+ <li><a href="http://www.infoq.com/articles/QCon-San-Francisco-2012;jsessionid=80BF4B2B177B3262CAE45414291AA85B#h.7zrvl26ir7gt">从任何级别来构建学习型组织 by Matthew Barcomb</a></li> 
+</ul><p><a href="http://www.infoq.com/articles/QCon-San-Francisco-2012;jsessionid=80BF4B2B177B3262CAE45414291AA85B#h.i3uhyf2kaveb">用户体验(UX)</a></p><ul> 
+ <li><a href="http://www.infoq.com/articles/QCon-San-Francisco-2012;jsessionid=80BF4B2B177B3262CAE45414291AA85B#h.hxhpoxwad3gs">精益UX与设计的思考，造就更好的产品定义 by Jeff Gothelf</a></li> 
+ <li><a href="http://www.infoq.com/articles/QCon-San-Francisco-2012;jsessionid=80BF4B2B177B3262CAE45414291AA85B#h.y86k2p4t6cxh">联合制造的伟大产品 by Jeff Patton</a></li> 
+ <li><a href="http://www.infoq.com/articles/QCon-San-Francisco-2012;jsessionid=80BF4B2B177B3262CAE45414291AA85B#h.b27to92yz451">工程师的高质量、有效、快速UX研究 by Tomer Sharon</a></li> 
+ <li><a href="http://www.infoq.com/articles/QCon-San-Francisco-2012;jsessionid=80BF4B2B177B3262CAE45414291AA85B#h.xpegxsacc4d6">Quora 移动产品：以产品为中心的多平台部署 by Anne K Halsall</a></li> 
+ <li><a href="http://www.infoq.com/articles/QCon-San-Francisco-2012;jsessionid=80BF4B2B177B3262CAE45414291AA85B#h.8x99wx1ltg7z">用户体验 – 不仅仅是一支漂亮的棒 by Lane Halley</a></li> 
+</ul><p><a href="http://www.infoq.com/articles/QCon-San-Francisco-2012;jsessionid=80BF4B2B177B3262CAE45414291AA85B#h.2js4i95ct9z0">解决方案：No SQL</a></p><ul> 
+ <li><a href="http://www.infoq.com/articles/QCon-San-Francisco-2012;jsessionid=80BF4B2B177B3262CAE45414291AA85B#h.7sey6wxwhgu1">通用图形数据库使用案例 by Emil Eifrem</a></li> 
+ <li><a href="http://www.infoq.com/articles/QCon-San-Francisco-2012;jsessionid=80BF4B2B177B3262CAE45414291AA85B#h.b061jid0ucx3">可持续软件开发 by Alexander von Zitzewitz</a></li> 
+ <li><a href="http://www.infoq.com/articles/QCon-San-Francisco-2012;jsessionid=80BF4B2B177B3262CAE45414291AA85B#h.92wpyo90ew20">为 NoSQL 数据库的 SQL 界面设计 by Stephen Buxton &amp; May Holstege</a></li> 
+</ul><p><a href="http://www.infoq.com/articles/QCon-San-Francisco-2012;jsessionid=80BF4B2B177B3262CAE45414291AA85B#h.c0sxrmtyb63h">QCon的观点</a></p><p><a href="http://www.infoq.com/articles/QCon-San-Francisco-2012;jsessionid=80BF4B2B177B3262CAE45414291AA85B#h.mejcwypy73mn">后记</a></p><p><a href="http://www.infoq.com/articles/QCon-San-Francisco-2012;jsessionid=80BF4B2B177B3262CAE45414291AA85B#h.xz4buwsk1ikt">结论</a></p><h2><a href="http://qconsf.com/sf2012/tutorials/">专题</a></h2><p><a href="http://qconsf.com/sf2012/presentations/show_presentation.jsp?oid=4580">敏捷回顾</a> by <a href="http://qconsf.com/sf2012/speaker/Aino+Vonge+Corry">Aino Vonge Corry</a></p><p>Twitter 上关于这个主题的反馈包括：</p><blockquote> 
+ <p><a href="https://twitter.com/fgmatwork">ernando Moribe ‏@fgmatwork</a>: <a href="https://twitter.com/apaipi">@apaipi</a> 分享的敏捷回顾是<a href="https://twitter.com/search?q=%23qconsf&amp;src=hash">#qconsf</a> 上最好的指南之一。</p> 
+</blockquote><p><a href="http://qconsf.com/sf2012/presentations/show_presentation.jsp?oid=4440">持续发布</a> by <a href="http://qconsf.com/sf2012/speaker/Jez+Humble">Jez Humble</a></p><p>Twitter 上关于这个主题的反馈包括：</p><blockquote> 
+ <p><a href="https://twitter.com/fgmatwork">Fernando Moribe ‏@fgmatwork</a>: 在<a href="https://twitter.com/search?q=%23qconsf&amp;src=hash">#qconsf</a> 的第一天，@jezhumble 分享的持续发布非常令人敬佩。</p> 
+ <p><a href="https://twitter.com/wadcom">Vlad Skvortsov ‏@wadcom</a>: “很多人成为工程师的原因，是这样他们可以避免与其他人交谈” <a href="https://twitter.com/jezhumble">@jezhumble</a> at <a href="https://twitter.com/search?q=%23qcon&amp;src=hash">#qcon</a></p> 
+ <p><a href="https://twitter.com/wadcom">Vlad Skvortsov ‏@wadcom</a>: 定义：遗留代码是一个没有自动化测试的代码。<a href="https://twitter.com/search?q=%23qcon&amp;src=hash">#qcon</a></p> 
+</blockquote><p><a href="http://qconsf.com/sf2012/presentations/show_presentation.jsp?oid=4442">PhoneGap 跨平台移动应用</a> by <a href="http://qconsf.com/sf2012/speaker/Christophe+Coenraets">Christophe Coenraets</a></p><p>Twitter 上关于这个主题的反馈包括：</p><blockquote> 
+ <p><a href="https://twitter.com/desbiens">desbiens ‏@desbiens</a>: 构建与部署我的第一个 phonegap 应用，谢谢<a href="https://twitter.com/ccoenraets">@ccoenraets</a> <a href="https://twitter.com/search?q=%23qconsf&amp;src=hash">#qconsf</a></p> 
+ <p><a href="https://twitter.com/occasl">Lou Sacco ‏@occasl</a>: <a href="https://twitter.com/ccoenraets">@ccoenraets</a> <a href="https://twitter.com/search?q=%23Phonegap&amp;src=hash">#Phonegap</a> 这个主题令人印象深刻的是，为取得良好性能，什么 JS API 有效的。<a href="https://twitter.com/search?q=%23qconsf&amp;src=hash">#qconsf</a></p> 
+</blockquote><p><a href="http://qconsf.com/sf2012/presentations/show_presentation.jsp?oid=4474">领域驱动概要</a> by <a href="http://qconsf.com/sf2012/speaker/Eric+Evans">Eric Evans</a></p><p>Twitter 上关于这个主题的反馈包括：</p><blockquote> 
+ <p><a href="https://twitter.com/cyberelfo">Franklin Amorim ‏@cyberelfo</a>: “现实是一种消遣。一个模型服务于某些使用场景。”Eric Evans <a href="https://twitter.com/search?q=%23QConSF&amp;src=hash">#QConSF</a></p> 
+ <p><a href="https://twitter.com/hakeemsm">Hakeem Mohammed ‏@hakeemsm</a>: 在<a href="https://twitter.com/search?q=%23ddd&amp;src=hash">#ddd</a> 方面有了新的认识，by <a href="https://twitter.com/ericevans0">@ericevans0</a> at <a href="https://twitter.com/search?q=%23qconsf&amp;src=hash">#qconsf</a> ，多年前读过他的书，现在能够听到他本人演讲。</p> 
+</blockquote><p><a href="http://qconsf.com/sf2012/presentations/show_presentation.jsp?oid=4588">科技服务：系统进化方法研究</a> by <a href="http://qconsf.com/sf2012/speaker/James+Lewis">James Lewis</a></p><p>Twitter 上关于这个主题的反馈包括：</p><blockquote> 
+ <p><a href="https://twitter.com/kris_trujillo">Kris Trujillo ‏@kris_trujillo</a>: “技巧1 - 分治” 微服务 <a href="https://twitter.com/search?q=%23qconsf&amp;src=hash">#qconsf</a></p> 
+ <p><a href="https://twitter.com/kris_trujillo">Kris Trujillo ‏@kris_trujillo</a>: “技巧2 – 使用康威定律来组建团队” – 微服务 <a href="https://twitter.com/search?q=%23qconsf&amp;src=hash">#qconsf</a></p> 
+ <p><a href="https://twitter.com/kris_trujillo">Kris Trujillo ‏@kris_trujillo</a>: “技巧3 – 最后责任时刻……不要在你知道很少的时候做决定” – 微服务 <a href="https://twitter.com/search?q=%23qconsf&amp;src=hash">#qconsf</a></p> 
+ <p><a href="https://twitter.com/kris_trujillo">Kris Trujillo ‏@kris_trujillo</a>: “技巧4 – 成为一个网络，而不是在网络后面” - 微服务 <a href="https://twitter.com/search?q=%23qconsf&amp;src=hash">#qconsf</a></p> 
+ <p><a href="https://twitter.com/kris_trujillo">Kris Trujillo ‏@kris_trujillo</a>: “技巧5 – 如果某件事很重要，让它在你的设计中是一个很明显的部分” – 微服务 <a href="https://twitter.com/search?q=%23qconsf&amp;src=hash">#qconsf</a></p> 
+ <p><a href="https://twitter.com/kris_trujillo">Kris Trujillo ‏@kris_trujillo</a>: “技巧6 – 在业务流程中支持服务编排” – 微服务 <a href="https://twitter.com/search?q=%23qconsf&amp;src=hash">#qconsf</a></p> 
+ <p><a href="https://twitter.com/kris_trujillo">Kris Trujillo ‏@kris_trujillo</a>: “技巧7 – 让做正确的事更简单，做错事更难” – 微服务 <a href="https://twitter.com/search?q=%23qconsf&amp;src=hash">#qconsf</a></p> 
+ <p><a href="https://twitter.com/kris_trujillo">Kris Trujillo ‏@kris_trujillo</a>: 跟随微服务方法清除寻找的应用 <a href="https://twitter.com/search?q=%23qconsf&amp;src=hash">#qconsf</a> <a href="http://t.co/wuedfiN1">pic.twitter.com/wuedfiN1</a></p> 
+ <p><a href="https://twitter.com/jboogie">Jeff Gothelf ‏@jboogie</a>:<a href="https://twitter.com/tsharon">.@tsharon</a> 在给工程师介绍ux研究 <a href="https://twitter.com/search?q=%23qconsf&amp;src=hash">#qconsf</a> <a href="http://t.co/o61ODM4x">pic.twitter.com/o61ODM4x</a></p> 
+ <p><a href="https://twitter.com/kris_trujillo">Kris Trujillo ‏@kris_trujillo</a>: “没有银弹” – 微服务 <a href="https://twitter.com/search?q=%23qconsf&amp;src=hash">#qconsf</a></p> 
+</blockquote><p><a href="http://qconsf.com/sf2012/presentations/show_presentation.jsp?oid=4445">专业 JavaScript 与 CoffeeScript</a> by <a href="http://qconsf.com/sf2012/speaker/Peter+Bell">Peter Bell</a></p><p>Twitter 上关于这个主题的反馈包括：</p><blockquote> 
+ <p><a href="https://twitter.com/QConSF">QCon San Francisco ‏@QConSF</a>: “<a href="https://twitter.com/PeterBell">@PeterBell</a>: 谢谢大家来参加我在<a href="https://twitter.com/QConSF">@QConSF</a> 的 javascript/coffeescript 演讲 – 会有爆料的！” – 我们也已经爆料了！ <a href="https://twitter.com/search?q=%23qconsf&amp;src=hash">#qconsf</a></p> 
+</blockquote><h2>演讲</h2><p><a href="http://qconsf.com/sf2012/presentation/Party+Keynote%3A+Cool+%26+Useless">酷与无用性</a> by <a href="http://qconsf.com/sf2012/speaker/Kevlin+Henney">Kevlin Henney</a></p><p>Twitter 上关于这个主题的反馈包括：</p><blockquote> 
+ <p><a href="https://twitter.com/Mekkaz">Lene Mejlby ‏@Mekkaz</a>: 不要相信编译器，自己输入吧。<a href="https://twitter.com/KevlinHenney">@KevlinHenney</a> 谈到代码自动补全。<a href="https://twitter.com/search?q=%23qconsf&amp;src=hash">#qconsf</a></p> 
+ <p><a href="https://twitter.com/qedtherese">Therese Hansen ‏@qedtherese</a>: Kevlin Henney 在<a href="https://twitter.com/search?q=%23qconsf&amp;src=hash">#qconsf</a> 的舞台上展示了这个: <a href="http://t.co/pUeIB1gC">http://m.youtube.com/watch?v=cYw2ewoO6c4</a> … 我一位丹麦朋友做的这个 <a href="https://twitter.com/search?q=%23CoolAndUseless&amp;src=hash">#CoolAndUseless</a></p> 
+ <p><a href="https://twitter.com/rundavidrun">avid Whittaker ‏@rundavidrun</a>: @kelvinhenney 给我们介绍了COBOL on Cogs，与 Ruby on Rails… 当然使用JS写的。<a href="http://t.co/xyayRlfa">http://coboloncogs.org</a> <a href="https://twitter.com/search?q=%23AtwoodsLaw&amp;src=hash">#AtwoodsLaw</a> <a href="https://twitter.com/search?q=%23qconsf&amp;src=hash">#qconsf</a></p> 
+ <p><a href="https://twitter.com/fgmatwork">Fernando Moribe ‏@fgmatwork</a> : kevlinhenney 在<a href="https://twitter.com/search?q=%23qconsf&amp;src=hash">#qconsf</a> 的演讲非常有趣。 <a href="http://instagr.am/p/RwGddhsDp3/">http://instagr.am/p/RwGddhsDp3/</a></p> 
+ <p><a href="https://twitter.com/geoffnettaglich">Geoff Webb ‏@geoffnettaglich</a> : “酷与无用性”演讲中的亮点 <a href="https://twitter.com/search?q=%23qconsf&amp;src=hash">#qconsf</a> Cobol on Cogs (<a href="http://t.co/XNF4p7qE">http://www.coboloncogs.org/</a> ) 与 JS/Linux (<a href="http://t.co/s3mnuUL4">http://bellard.org/jslinux/</a> )</p> 
+</blockquote><p><a href="http://qconsf.com/sf2012/presentation/NoSQL%3A+Past%2C+Present%2C+Future">NoSQL：过去，现在，将来</a> by <a href="http://qconsf.com/sf2012/speaker/Eric+Brewer">Eric Brewer</a></p><p>Twitter 上关于这个主题的反馈包括：</p><blockquote> 
+ <p><a href="https://twitter.com/kris_trujillo">Kris Trujillo ‏@kris_trujillo</a> : “数据比任何特定实现要持久” - Eric Brewer <a href="https://twitter.com/search?q=%23QConSF&amp;src=hash">#QConSF</a></p> 
+ <p><a href="https://twitter.com/rundavidrun">David Whittaker ‏@rundavidrun</a> : <a href="https://twitter.com/eric_brewer">@eric_brewer</a> 说：“在70年代，我们迁移到更好的层级模型，从汇编到C，从导航到关系数据库。” <a href="https://twitter.com/search?q=%23qconsf&amp;src=hash">#qconsf</a></p> 
+ <p><a href="https://twitter.com/qedtherese">Therese Hansen ‏@qedtherese</a> :Eric Brewer在<a href="https://twitter.com/search?q=%23qconsf&amp;src=hash">#qconsf</a> 的舞台上讲NoSQL，以及 SQL 之前“NoSQL”的一些历史 <a href="http://instagr.am/p/RxvHfJngOe/">http://instagr.am/p/RxvHfJngOe/</a></p> 
+ <p><a href="https://twitter.com/rundavidrun">David Whittaker ‏@rundavidrun</a> : 想要一个干净的模型和 ACID 事务？用关系吧。想要优雅的、模块化的、灵活的？用 NoSQL 吧。 <a href="https://twitter.com/eric_brewer">@eric_brewer</a> <a href="https://twitter.com/search?q=%23qconsf&amp;src=hash">#qconsf</a></p> 
+ <p><a href="https://twitter.com/eriksowa">Erik Sowa ‏@eriksowa</a> :Eric Brewer 在<a href="https://twitter.com/search?q=%23qconsf&amp;src=hash">#qconsf</a> : “ACID 是神圣的。” CAP 这点！</p> 
+ <p><a href="https://twitter.com/rundavidrun">David Whittaker ‏@rundavidrun</a> :<a href="https://twitter.com/eric_brewer">@eric_brewer</a> 利用 CAP 理论来解释为什么他在设计数据共享系统时不得不进行权衡。<a href="https://twitter.com/search?q=%23qconsf&amp;src=hash">#qconsf</a></p> 
+ <p><a href="https://twitter.com/mjpt777">Martin Thompson ‏@mjpt777</a> : “当石头在他的浴缸里时，Jim Gary想出了‘ACID’事务。不要太执着于字母…” - Eric Brewer <a href="https://twitter.com/search?q=%23qconsf&amp;src=hash">#qconsf</a></p> 
+ <p><a href="https://twitter.com/mjpt777">Martin Thompson ‏@mjpt777</a> : “超时是让你在一致性和可用性之间做出选择的一个点。” - Eric Brewer <a href="https://twitter.com/search?q=%23qconsf&amp;src=hash">#qconsf</a></p> 
+ <p><a href="https://twitter.com/rundavidrun">David Whittaker ‏@rundavidrun</a> :<a href="https://twitter.com/eric_brewer">@eric_brewer</a> 声明：“对大多数业务而言，可用性比临时的不一致性更重要，即使是银行，例如ATMs。” <a href="https://twitter.com/search?q=%23qconsf&amp;src=hash">#qconsf</a></p> 
+ <p><a href="https://twitter.com/pmotch">Dan Cundiff ‏@pmotch</a> :Eric Brewer, CAP 创造者说：“在现实世界系统里，可用性大于一致性，因为可用性与收入挂钩。” <a href="https://twitter.com/search?q=%23qconsf&amp;src=hash">#qconsf</a></p> 
+</blockquote><p><a href="http://qconsf.com/sf2012/presentation/Race+Conditions%2C+Distribution%2C+Interactions--Testing+the+Hard+Stuff+and+Staying+Sane">竞争条件、分布、交互——测试硬东西与保持理智</a> by <a href="http://qconsf.com/sf2012/speaker/John+Hughes">John Hughes</a></p><p>Twitter 上关于这个主题的反馈包括：</p><blockquote> 
+ <p><a href="https://twitter.com/geoffnettaglich">Geoff Webb ‏@geoffnettaglich</a> :John Hughes (mr haskell)说“不要写测试，生成它们” <a href="https://twitter.com/search?q=%23qconsf&amp;src=hash">#qconsf</a></p> 
+ <p><a href="https://twitter.com/ielshareef">Ismail Elshareef ‏@ielshareef</a> : 不要写测试；生成它们。使用QuickCheck。来自 @rjmh 的演讲, 完全点燃了激情。 <a href="https://twitter.com/search?q=%23qconsf&amp;src=hash">#qconsf</a> <a href="https://twitter.com/search?q=%23tdd&amp;src=hash">#tdd</a> <a href="https://twitter.com/search?q=%23qa&amp;src=hash">#qa</a></p> 
+ <p><a href="https://twitter.com/rundavidrun">David Whittaker ‏@rundavidrun</a> :<a href="https://twitter.com/rjmh">@rjmh</a> 用 C 实现循环缓冲队列，这显然是正确的，用 Erlang 来测试预期行为模型。酷！<a href="https://twitter.com/search?q=%23qconsf&amp;src=hash">#qconsf</a> <a href="https://twitter.com/search?q=%23tdd&amp;src=hash">#tdd</a> <a href="https://twitter.com/search?q=%23qa&amp;src=hash">#qa</a></p> 
+ <p><a href="https://twitter.com/qedtherese">Therese Hansen ‏@qedtherese</a> :John Hughes 在<a href="https://twitter.com/search?q=%23qconsf&amp;src=hash">#qconsf</a> 的舞台上谈竞赛条件及其他令人讨厌的事物的测试。 <a href="http://instagr.am/p/R0UXNjHgAD/">http://instagr.am/p/R0UXNjHgAD/</a></p> 
+ <p><a href="https://twitter.com/rundavidrun">David Whittaker ‏@rundavidrun</a> :<a href="https://twitter.com/rjmh">@rjmh</a> 模型竞争条件，通过售票机隐喻然后模糊测试，试图将交错作为顺序检查。<a href="https://twitter.com/search?q=%23quickcheck&amp;src=hash">#quickcheck</a> <a href="https://twitter.com/search?q=%23qconsf&amp;src=hash">#qconsf</a></p> 
+ <p><a href="https://twitter.com/iliketoprogram">iliketoprogram ‏@iliketoprogram</a> : 亲爱的 <a href="https://twitter.com/search?q=%23Quickcheck&amp;src=hash">#Quickcheck</a> -我需要研究你，你看起来棒极了! <a href="https://twitter.com/search?q=%23qconsf&amp;src=hash">#qconsf</a></p> 
+</blockquote><p><a href="http://qconsf.com/sf2012/presentation/Opening+Keynote%3A+Real+Software+Engineering">真实的软件工程</a> by <a href="http://qconsf.com/sf2012/speaker/Glenn+Vanderburg">Glenn Vanderburg</a></p><p>Twitter 上关于这个主题的反馈包括：</p><blockquote> 
+ <p><a href="https://twitter.com/kris_trujillo">Kris Trujillo ‏@kris_trujillo</a> : “当‘软件’和‘工程师’一起使用时，它开始出错” - Glenn Vanderbug <a href="https://twitter.com/search?q=%23qconsf&amp;src=hash">#qconsf</a></p> 
+ <p><a href="https://twitter.com/kris_trujillo">Kris Trujillo ‏@kris_trujillo</a> : “作为一门学科，软件工程‘过早成熟’” - Glenn Vanderburg <a href="https://twitter.com/search?q=%23qconsf&amp;src=hash">#qconsf</a></p> 
+ <p><a href="https://twitter.com/kris_trujillo">Kris Trujillo ‏@kris_trujillo</a> : “在工程方面。。。人们通过文档进行设计”这种想法杀死了我们的软件工程师/架构师 <a href="https://twitter.com/search?q=%23qconsf&amp;src=hash">#qconsf</a></p> 
+ <p><a href="https://twitter.com/kris_trujillo">Kris Trujillo ‏@kris_trujillo</a> : “飞机的机翼在工程师预期的准确点停止”。。。如果软件也能这样。。。<a href="https://twitter.com/search?q=%23qconsf&amp;src=hash">#qconsf</a></p> 
+ <p><a href="https://twitter.com/kris_trujillo">Kris Trujillo ‏@kris_trujillo</a> : “不同的工程学科是不同的” <a href="https://twitter.com/search?q=%23qconsf&amp;src=hash">#qconsf</a></p> 
+ <p><a href="https://twitter.com/qedtherese">Therese Hansen ‏@qedtherese</a> : 软件工程是一项科学与艺术 <a href="https://twitter.com/search?q=%23qconsf&amp;src=hash">#qconsf</a> <a href="http://instagr.am/p/RvNlfOngJm/">http://instagr.am/p/RvNlfOngJm/</a></p> 
+ <p><a href="https://twitter.com/kris_trujillo">Kris Trujillo ‏@kris_trujillo</a> : “软件工程师与其他工程师不同” - Glenn Vanderburg 在真实软件工程中的演讲 <a href="https://twitter.com/search?q=%23qconsf&amp;src=hash">#qconsf</a></p> 
+ <p><a href="https://twitter.com/kris_trujillo">Kris Trujillo ‏@kris_trujillo</a> : “在软件中构建原型基本上是瞬时并免费的”。。。原型强于文档 <a href="https://twitter.com/search?q=%23qconsf&amp;src=hash">#qconsf</a></p> 
+ <p><a href="https://twitter.com/kris_trujillo">Kris Trujillo ‏@kris_trujillo</a> : “在软件工程领域，代码就是文档” <a href="https://twitter.com/search?q=%23qconsf&amp;src=hash">#qconsf</a></p> 
+ <p><a href="https://twitter.com/johannescarlen">Johannes Carl&eacute;n ‏@johannescarlen</a> : “在软件工程中代码就是模型” - Glenn Vanderburg <a href="https://twitter.com/search?q=%23qconsf&amp;src=hash">#qconsf</a></p> 
+ <p><a href="https://twitter.com/adrianco">adrian cockcroft ‏@adrianco</a> :<a href="https://twitter.com/search?q=%23qconsf&amp;src=hash">#qconsf</a> 软件工程主题采用了漫画的形式展现软件工程与其他工程的不同 #strawman #fail</p> 
+ <p><a href="https://twitter.com/kris_trujillo">Kris Trujillo ‏@kris_trujillo</a> : “什么运转得最好？敏捷开发的一些变种” - Glenn Vanderburg <a href="https://twitter.com/search?q=%23qconsf&amp;src=hash">#qconsf</a></p> 
+ <p><a href="https://twitter.com/rundavidrun">David Whittaker ‏@rundavidrun</a> :<a href="https://twitter.com/glv">@glv</a> <a href="https://twitter.com/search?q=%23qconsf&amp;src=hash">#qconsf</a> 问，“如果你能够很快并且免费建立原型，为什么要花更多的时间在正式的方法上呢？”</p> 
+</blockquote><h2><a href="http://qconsf.com/sf2012/tracks/show_track.jsp?trackOID=674">你所关心的架构</a></h2><p><a href="http://qconsf.com/sf2012/presentation/Cloud+Computing+at+Google">Google 云计算</a> by <a href="http://qconsf.com/sf2012/speaker/Randy+Shoup">Randy Shoup</a></p><p>Twitter 上关于这个主题的反馈包括：</p><blockquote> 
+ <p><a href="https://twitter.com/jgc94131">Jim Constantine ‏@jgc94131</a> : google 的扳手 – 通过全球同步时钟进行全球的数据存储 <a href="https://twitter.com/search?q=%23QConSF&amp;src=hash">#QConSF</a></p> 
+ <p><a href="https://twitter.com/hihihiroro">Hiroaki ONO ‏@hihihiroro</a> :KVM- 用 Ubuntu 或 CentOS 来管理虚拟机 <a href="https://twitter.com/google">@Google</a> <a href="https://twitter.com/search?q=%23QConSF&amp;src=hash">#QConSF</a></p> 
+</blockquote><p><a href="http://qconsf.com/sf2012/presentation/Scaling+Pinterest">Pinterest 的可扩展性 </a> by <a href="http://qconsf.com/sf2012/speaker/Yashwanth+Nelapati">Yashwanth Nelapati</a> &amp; <a href="http://qconsf.com/sf2012/speaker/Marty+Weiner">Marty Weiner</a></p><p>Twitter 上关于这个主题的反馈包括：</p><blockquote> 
+ <p><a href="https://twitter.com/ramarob">rama roberts ‏@ramarob</a> :Pinterest 有80 cc2.8XL MySQL 服务器。真让人惊讶。 #QconSF <a href="https://twitter.com/CyberPunkie">CyberPunkie ‏@CyberPunkie</a> :<a href="https://twitter.com/search?q=%23QConSF&amp;src=hash">#QConSF</a> 100 Redis 实例 + 80 Memcache ... <a href="https://twitter.com/search?q=%23Pinterest&amp;src=hash">#Pinterest</a></p> 
+</blockquote><h2><a href="http://qconsf.com/sf2012/tracks/show_track.jsp?trackOID=684">大数据与分析</a></h2><p><a href="http://qconsf.com/sf2012/presentation/100%25+Big+Data.+0%25+Hadoop.+0%25+Java">100%大数据，0% Hadoop，0% Java</a> by <a href="http://qconsf.com/sf2012/speaker/Pavlo+Baron">Pavlo Baron</a></p><p>Twitter 上关于这个主题的反馈包括：</p><blockquote> 
+ <p><a href="https://twitter.com/al3xandru">Alex Popescu ‏@al3xandru</a> : 多年以前：有很多“免费”数据，工具却很少。现在：很多工具，很多数据，但是它们都在墙里。 <a href="https://twitter.com/pavlobaron">@pavlobaron</a> <a href="https://twitter.com/search?q=%23qcon&amp;src=hash">#qcon</a> <a href="https://twitter.com/search?q=%23qconsf&amp;src=hash">#qconsf</a></p> 
+</blockquote><p><a href="http://qconsf.com/sf2012/presentation/AppWatch+-+a+big+data+application+monitoring+system+for+eBay">Appwatch – 一个 Ebay 大数据应用监控系统</a> by <a href="http://qconsf.com/sf2012/speaker/Bhaven+Avalani">Bhaven Avalani</a> &amp; <a href="http://qconsf.com/sf2012/speaker/Yuri+Finklestein">Yuri Finklestein</a></p><p>Matt O'Keefe 进行了分享：</p><blockquote> 
+ <p>这是一个将监控作为内容的大数据讨论。问题域包括经营管理（性能，错误，异常检测），根源（根本原因解析），业务监控（客户行为，点击流分析）。客户监测包括开发，运维，信息安全，管理，研究，和业务团队。多少数据？在2009年，它每天有几十TB，现在超过500 TB /天。这个数据的驱动器是业务的增长，SOA（许多小块记录了更多数据），业务洞察力和运维自动化。</p> 
+ <p>第二个方面是数据质量。为了减少熵值，有日志、度量和事件。日志是自由的形式，而事件是通过定义。真实性增强。日志可能不准确。</p> 
+ <p>数据中心有数千台服务器生成日志、度量和事件，这些数据反馈到数据分布系统。这些数据被分配到 OLAP，Hadoop 和 HBase 存储。一些数据进行实时处理，而例如 OLAP 为公制提取的其他活动则不是。 ... 分布大量数据中最难的部分是故障处理。可以暂时缓冲数据，并处理峰值，这是很必要的。他们的解决方案类似于 <a href="https://github.com/facebook/scribe">Scribe</a> 和 <a href="https://cwiki.apache.org/FLUME/">Flume</a>，除了工作单元的日志之外增加多条线路。这些线路必须以正确的顺序处理。故障域管理器将数据复制到下游领域。它采用了队列系统来处理暂时不可用目标域，例如 Hadoop 或消息队列。队列可以显示出由几十十万发布商客户在生产系统中的压力。队列由循环缓冲区实现，这样档压力过大时它们能够丢弃数据。这有不同的策略，例如是丢弃头还是丢弃尾，依赖于域的要求。 ...</p> 
+ <p><strong>见解</strong></p> 
+ <ul> 
+  <li>熵是要重点观察的；要尽可能早的删除</li> 
+  <li>数据分布要有灵活性和弹性</li> 
+  <li>存储要为访问模式进行优化</li> 
+ </ul> 
+</blockquote><p><a href="http://qconsf.com/sf2012/presentation/Through+The+Looking+Glass+-+Applying+Analytics+to+Development">通过 Looking Glass – 应用分析于开发中</a> by <a href="http://qconsf.com/sf2012/speaker/Michael+Feathers">Michael Feathers</a></p><p>Twitter 上关于这个主题的反馈包括：</p><blockquote> 
+ <p><a href="https://twitter.com/jmrgn">ames Morgan ‏@jmrgn</a> : Feather 在分享为许多提交分析文件代码复杂度。很酷的事情。非常好的方式来确定重构的机会。 <a href="https://twitter.com/search?q=%23qconsf&amp;src=hash">#qconsf</a></p> 
+ <p><a href="https://twitter.com/rundavidrun">David Whittaker ‏@rundavidrun</a> :<a href="https://twitter.com/mfeathers">@mfeathers</a> 警告，“在软件方面有一种偏见，某些文件有很好的变化率。保持这些文件的低复杂度吧。” <a href="https://twitter.com/search?q=%23qconsf&amp;src=hash">#qconsf</a></p> 
+ <p><a href="https://twitter.com/eriksowa">Erik Sowa ‏@eriksowa</a> : 分析代码行发人深省的例子 - <a href="https://twitter.com/mfeathers">@mfeathers</a> 在 <a href="https://twitter.com/search?q=%23qconsf&amp;src=hash">#qconsf</a> – 例如客户流失情况 vs. 复杂度。</p> 
+ <p><a href="https://twitter.com/Mekkaz">Lene Mejlby ‏@Mekkaz</a> : 做为一个团队，合作要求读心。 <a href="https://twitter.com/jeffpatton">@jeffpatton</a> <a href="https://twitter.com/search?q=%23qconsf&amp;src=hash">#qconsf</a></p> 
+</blockquote><h2><a href="http://qconsf.com/sf2012/tracks/show_track.jsp?trackOID=673">持续发布</a></h2><p><a href="http://qconsf.com/sf2012/presentation/Adopting+Continuous+Delivery">持续交付</a> by <a href="http://qconsf.com/sf2012/speaker/Jez+Humble">Jez Humble</a></p><p>Twitter 上关于这个主题的反馈包括：</p><blockquote> 
+ <p><a href="https://twitter.com/johannescarlen">Johannes Carl&eacute;n ‏@johannescarlen</a> : “精益不是为了减少成本，精益是在价值流中减少浪费” - Jez Humble <a href="https://twitter.com/search?q=%23qconsf&amp;src=hash">#qconsf</a></p> 
+ <p><a href="https://twitter.com/mattbarcomb">Matt Barcomb ‏@mattbarcomb</a> : 持续发布：你的软件需要常常部署…不是可悲 cc @jezhumble <a href="https://twitter.com/search?q=%23qconsf&amp;src=hash">#qconsf</a></p> 
+</blockquote><p><a href="http://qconsf.com/sf2012/presentation/Changing+Culture+%26+Being+a+Force+for+Awesome">改变文化，成为令人敬畏的力量</a> by <a href="http://qconsf.com/sf2012/speaker/Jesse+Robbins">Jesse Robbins</a></p><p>Twitter 上关于这个主题的反馈包括：</p><blockquote> 
+ <p><a href="https://twitter.com/rundavidrun">David Whittaker ‏@rundavidrun</a> : 在大系统中，最终所有事情能够正确且和谐地运转，持续部署是典范。 @jesserobbins https://twitter.com/search?q=%23qconsf&amp;src=hash</p> 
+ <p><a href="https://twitter.com/thinknow">lane halley ‏@thinknow</a> : 小改变，大影响。“没人负责” “每个人都负责” @jesserobbins 黑客文化改变 https://twitter.com/search?q=%23qconsf&amp;src=hash</p> 
+ <p><a href="https://twitter.com/occasl">Lou Sacco ‏@occasl</a> :<a href="https://twitter.com/jesserobbins">@jesserobbins</a> 的演讲非常好，如何做一个持续部署过程中的好管家。 https://twitter.com/search?q=%23qconsf&amp;src=hash</p> 
+</blockquote><p>Matt O'Keefe 也参与了这个主题的讨论：</p><blockquote> 
+ <p>进行持续部署的团队更幸福。看着你的代码活生生的运行是非常可喜的。你有经历新事物的自由，因为你不用处理大的发布以及让所有事物在一次运行中正常的挑战。…</p> 
+ <p>仅仅工具是不够的（即使真的伟大的工具如 Chef！）。为了取得成功，你需要说服你信任的和你想一起工作的人。原因是显而易见的，例如参看<a href="http://en.wikipedia.org/wiki/Conway's_law">肯威定律</a>。团队需要持续在一起工作，而不仅仅只是部署的时候。</p> 
+ <p>选择：组织稳定利益的变化，或像日常需要一样允许变化。问一下哪个选择更好而不仅仅是一份声明。…</p> 
+ <p>文化改变花费很长时间。这是最困难的事。杰西规则：不要愚蠢地打架，做些更惊人的事情吧！选择你的战争，做下面的5件事情：</p> 
+ <ul> 
+  <li>从小事情做起，建立信任与安全。如果你想彻底改变，机械化会阻止你。</li> 
+  <li>创造冠军。首先攻击有争议的事情。</li> 
+  <li>使用度量建立信心。创造你可以指出来让大家兴奋的事情。时间价值非常好。</li> 
+  <li>庆祝成功。让人兴奋起来，即使是微不足道的成绩。这件事可以让你创造一个回顾点，当你往回看时能看到进度。</li> 
+  <li>利用引人注目的事件。当某些事情打破了，就有机会让某些东西不同。“货币使之改变”是有效的，正如 <a href="https://twitter.com/allspaw">John Allspaw</a> 所说的那样。</li> 
+ </ul> 
+</blockquote><p><a href="http://qconsf.com/sf2012/presentation/Large-Scale+Continuous+Testing+in+the+Cloud">云端大规模持续测试</a> by <a href="http://qconsf.com/sf2012/speaker/John+Penix">John Penix</a></p><p>Twitter 上关于这个主题的反馈包括：</p><blockquote> 
+ <p><a href="https://twitter.com/desbiens">desbiens ‏@desbiens</a> : Google 每天运行超过5000万的用户测试， @johnpenix, #continuousdelivery <a href="https://twitter.com/search?q=%23qconsf&amp;src=hash">#qconsf</a></p> 
+ <p><a href="https://twitter.com/desbiens">desbiens ‏@desbiens</a> : 3个角色与用例：缔约者，发布工程师，开发者， @johnpenix, #continuousdelivery <a href="https://twitter.com/search?q=%23qconsf&amp;src=hash">#qconsf</a></p> 
+ <p><a href="https://twitter.com/pmotch">Dan Cundiff ‏@pmotch</a> :Google 的 John Penix CI 统计：代码库中200k测试套件，每天运行10m测试套件，每天大于60m测试套件，每天大于4k CI构建。<a href="https://twitter.com/search?q=%23qconsf&amp;src=hash">#qconsf</a></p> 
+ <p><a href="https://twitter.com/jezhumble">Jez Humble ‏@jezhumble</a> : <a href="https://twitter.com/LindroosKE">@LindroosKE</a>:“人们不是在分支上工作。好，许多团队是这样的，并且他们不开心” &lt;&lt;来自 Google 的 @johnpenix <a href="https://twitter.com/search?q=%23qconsf&amp;src=hash">#qconsf</a></p> 
+ <p><a href="https://twitter.com/stuartblair">stuartblair ‏@stuartblair</a> :<a href="https://twitter.com/johnpenix">@johnpenix</a>: “阻止人们检查断码，公开羞辱通常是够的” <a href="https://twitter.com/search?q=%23qconsf&amp;src=hash">#qconsf</a></p> 
+ <p><a href="https://twitter.com/jezhumble">Jez Humble ‏@jezhumble</a> : Google 的 CI及自动化测试 @johnpenix <a href="https://twitter.com/search?q=%23qconsf&amp;src=hash">#qconsf</a> <a href="http://t.co/yQLYO4JA">pic.twitter.com/yQLYO4JA</a></p> 
+</blockquote><p><a href="http://qconsf.com/sf2012/presentation/Product+Development+with+Continuous+Experimentation">产品开发的连续实验</a> by <a href="http://qconsf.com/sf2012/speaker/Frank+Harris">Frank Harris</a> &amp; <a href="http://qconsf.com/sf2012/speaker/Nell+Thomas">Nell Thomas</a></p><p>Twitter 上关于这个主题的反馈包括：</p><blockquote> 
+ <p><a href="https://twitter.com/thinknow">lane halley ‏@thinknow</a> : 太酷了。 @Etsy 一次点击部署，非常自动化“VCs，狗和PMs部署。” <a href="https://twitter.com/search?q=%23qconsf&amp;src=hash">#qconsf</a></p> 
+ <p><a href="https://twitter.com/ivanlinhares">Ivan Linhares ‏@ivanlinhares</a> :Etsy 在 <a href="https://twitter.com/search?q=%23qconsf&amp;src=hash">#qconsf</a> ，一天做20次部署，且自动进行AB测试。</p> 
+ <p><a href="https://twitter.com/pmotch">Dan Cundiff ‏@pmotch</a> :Etsy 产品部署每天20+次，涉及200+开发人员。一年10000次部署。<a href="https://twitter.com/search?q=%23qconsf&amp;src=hash">#qconsf</a></p> 
+ <p><a href="https://twitter.com/hthunberg">Hans Thunberg ‏@hthunberg</a> : 小且频繁的发布能够摆脱可怕的发布。 #etsy @ <a href="https://twitter.com/search?q=%23qconsf&amp;src=hash">#qconsf</a></p> 
+ <p><a href="https://twitter.com/thinknow">lane halley ‏@thinknow</a> : 很兴奋听到 @Etsy 介绍通过假设和持续部署更快速且自信。 <a href="https://twitter.com/search?q=%23qconsf&amp;src=hash">#qconsf</a> @jboogie</p> 
+</blockquote><p><a href="http://qconsf.com/sf2012/presentation/Release+Engineering+at+Facebook">Facebook 的发布工程师</a> by <a href="http://qconsf.com/sf2012/speaker/Chuck+Rossi">Chuck Rossi</a></p><p>Twitter 上关于这个主题的反馈包括：</p><blockquote> 
+ <p><a href="https://twitter.com/qedtherese">Therese Hansen ‏@qedtherese</a> :Facebook 开发者安全沙箱加载时间。~ David Mortenson <a href="https://twitter.com/search?q=%23qconsf&amp;src=hash">#qconsf</a> <a href="http://instagr.am/p/RyN-ymHgII/">http://instagr.am/p/RyN-ymHgII/</a></p> 
+ <p><a href="https://twitter.com/fgmatwork">Fernando Moribe ‏@fgmatwork</a> : “Facebook 只有工程师，没有QA部门”。测试自动化，工程师自己写测试 <a href="https://twitter.com/search?q=%23qconsf&amp;src=hash">#qconsf</a></p> 
+ <p><a href="https://twitter.com/kris_trujillo">Kris Trujillo ‏@kris_trujillo</a> : 与Facebook工程师David Mortenson 所描述的生活一样…. 听起来像是一个很伟大的文化 <a href="https://twitter.com/search?q=%23qconsf&amp;src=hash">#qconsf</a></p> 
+ <p><a href="https://twitter.com/dantebriones">Dante Briones ‏@dantebriones</a> :.@chuckr 打破错误的观点， #continuousdelivery 意味着产品的 #testing <a href="https://twitter.com/search?q=%23qconsf&amp;src=hash">#qconsf</a></p> 
+ <p><a href="https://twitter.com/ph1">Pete Hodgson ‏@ph1</a> : Facebook 的错误报告包含堆栈跟踪… 每个功能都是用SVN，这样他们知道谁在发出叫喊。 <a href="https://twitter.com/search?q=%23qconsf&amp;src=hash">#qconsf</a></p> 
+ <p><a href="https://twitter.com/ph1">Pete Hodgson ‏@ph1</a> :Facebook 开发的 khama 仅仅对开发人员、发布团队还有开发经理可见 :-/ <a href="https://twitter.com/search?q=%23qconsf&amp;src=hash">#qconsf</a></p> 
+ <p><a href="https://twitter.com/fgmatwork">Fernando Moribe ‏@fgmatwork</a> : “单独的工具救不了你。你需要正确的文化（公司）”Facebook 关于发布过程 <a href="https://twitter.com/search?q=%23qconsf&amp;src=hash">#qconsf</a></p> 
+</blockquote><p>Matt O'Keefe 参与了这个主题的讨论：</p><blockquote> 
+ <p>你需要常常测试。很多人常说但是并不懂是什么意思，但是 Facebook 认真对待这件事。雇员从来不直接到真是的 facebook.com 去，因为他们被重定向到 www.lastest.facebook.com 。这是 Facebook 加所有挂起改变的产品，这样全公司可以看到什么将发布。嗅觉很重要。如果有严重的错误，你会被重定向到错误提交页面。</p> 
+ <p>文件错误你可以复制。让内部用户报告问题更简单。Facebook 内部包含一些额外的 chrome 按钮来捕获进程状态，然后将错误报告发给合适的人。</p> 
+ <p>当 Chuck 进行一个推送时，还有另外一个步骤，开发人员的修改没有合并除非你证明了这点。你需要回复消息确认你在线，并且准备好进行推送。所以实际的发布是 www.inyour.facebook.com 比latest有少一些的修改。</p> 
+ <p>Facebook.com 是不能用于沙箱的。开发人员必须坚持抗拒测试产品。如果你有十亿用户，不要在产品之外搞清楚问题。Facebook 有独立完整和强大的沙箱系统。</p> 
+ <p>待机工作是很严重的。他们要确保有工程师作为整个系统节点的联系人。Facebook 有一个工具允许快速找到待机工作的人。没有工程师能够摆脱这个。</p> 
+ <p>Facebook 所有事情都用 IRC。它扩展到了一个通道容纳1000人。简单的问题由bot回答。有一个简单的命令来查看任何rev的状态。它们也有浏览器快捷键。Bots是你的朋友，他们向条狗一样跟着你。一个bot会向开发人员确认他们想要发布一个变化。…</p> 
+ <p>当 Chuck 进行最终合并时，他立即触发了一个系统测试。大约有3500单元测试套件，他可以每个机器运行一个。他可以每个精选后再运行测试。…</p> 
+ <p>Chuck 的工作是管理风险。当他看着精密仪表盘时，仪表盘上显示了变化的大小，以及争议工具的讨论数量（争议的是如何改变）。如果都很高，他要更加密切关注。他也能看到推送因果率每个请求达到五颗星。他有一个不喜欢按钮来降低你的因果率。如果你见到了两颗星，Chuck 将停止你的修改。你需要去找他恢复跟踪。…</p> 
+ <p>主要一点是，你不能用你的方式使用工具。来到这的人都被洗脑了，所以他们能够融入这部分文化。你需要一个正确的公司来支持从顶部滑下来。</p> 
+</blockquote><h2><a href="http://qconsf.com/sf2012/tracks/show_track.jsp?trackOID=682">跨平台移动</a></h2><p><a href="http://qconsf.com/sf2012/presentation/Building+social+apps+for+all+mobile+platforms">为所有移动平台构建社交应用 </a> by <a href="http://qconsf.com/sf2012/speaker/James+Pearce">James Pearce</a></p><p>Twitter 上关于这个主题的反馈包括：</p><blockquote> 
+ <p><a href="https://twitter.com/alex_and_r">alex-and-r ‏@alex<em>and</em>r</a> :“@firt: 目前 Facebook 统计 HTML5/web 与 原生流量 Via @jamespearce at #qconsf pic.twitter.com/Bfr1VLoe” О_О</p> 
+ <p><a href="https://twitter.com/firt">Maximiliano Firtman ‏@firt</a> : 在 Facebook 将 HTML5 迁移到原生之后，用户消费了2倍的内容。Via @jamespearce at <a href="https://twitter.com/search?q=%23qconsf&amp;src=hash">#qconsf</a></p> 
+ <p><a href="https://twitter.com/rundavidrun">David Whittaker ‏@rundavidrun</a> :@jamespearce <a href="https://twitter.com/search?q=%23qconsf&amp;src=hash">#qconsf</a> 说：“不要一开始就要求所有的权限，随着时间的推移与你的用户建立信任，在需要的时候申请权限。”</p> 
+ <p><a href="https://twitter.com/rundavidrun">David Whittaker ‏@rundavidrun</a> :@jamespearce <a href="https://twitter.com/search?q=%23qconsf&amp;src=hash">#qconsf</a> 讲到，创建虚拟APP的关键因素是，通过社交故事讲述，给用户一种方式来分享他们的经历。</p> 
+ <p><a href="https://twitter.com/rundavidrun">David Whittaker ‏@rundavidrun</a> :@jamespearce <a href="https://twitter.com/search?q=%23qconsf&amp;src=hash">#qconsf</a> 说：“手机是一个最终社交连接设备，允许亲自改变经验。”</p> 
+ <p><a href="https://twitter.com/firt">Maximiliano Firtman ‏@firt</a> : Facebook 在 HTML5 方面：“我们的挑战不是每个人的挑战” @jamespearce <a href="https://twitter.com/search?q=%23qconsf&amp;src=hash">#qconsf</a></p> 
+ <p><a href="https://twitter.com/firt">Maximiliano Firtman ‏@firt</a> : 在移动终端，性能是非常重要的。对于Facebook 来说，两倍的速度，意味着两倍的内容被消费，以及3周内从1.5星到4星。 <a href="https://twitter.com/search?q=%23qconsf&amp;src=hash">#qconsf</a></p> 
+</blockquote><p>Chris Ferdinandi 也参与了这个话题的讨论：</p><blockquote> 
+ <p>Facebook 每天能从7000设备的移动端网页获得流量，对比看起来像第三方的 iOS 和 Android 本地应用。Facebook APP现在是苹果App 商店排名前50最多下载的应用，在社交网络中排名第四。而他们从移动 HTML5 网站上获得的浏览比 Android 和 iOS 应用之和还要多。</p> 
+ <p>本地应用非常好。就我个人来说，相比访问他们在移动 Safari 上的网站，我更喜欢使用 Facebook 的APP。但是人们还是会去网站，甚至在移动设备上是他们经常访问的网站。</p> 
+</blockquote><p><a href="http://qconsf.com/sf2012/presentation/The+Mobile+Web+Developer%27s+Tool+Belt">移动Web开发者的工具带</a> by <a href="http://qconsf.com/sf2012/speaker/Pete+LePage">Pete LePage</a></p><p>Twitter 上关于这个主题的反馈包括：</p><blockquote> 
+ <p><a href="https://twitter.com/rundavidrun">David Whittaker ‏@rundavidrun</a> : 谢谢 <a href="https://twitter.com/petele">@petele</a> 向我们展示了这么多优秀的web开发工具！ <a href="https://twitter.com/search?q=%23qconsf&amp;src=hash">#qconsf</a>f -HammerJS, CodeKit, LawnChair, FastClick, JSConsole, 等。</p> 
+ <p><a href="https://twitter.com/desbiens">desbiens ‏@desbiens</a> : 远程调试 w/ firefox，或 chrome 远程调试 android 或 ios w/ safari，移动工具带 <a href="https://twitter.com/search?q=%23qconsf&amp;src=hash">#qconsf</a></p> 
+ <p><a href="https://twitter.com/rundavidrun">David Whittaker ‏@rundavidrun</a> :<a href="https://twitter.com/petele">@petele</a> “你现在有机会‘制造惊奇。’推动网络，让事情发生吧！” <a href="http://m.chromeexperiment.com">http://m.chromeexperiment.com</a> <a href="https://twitter.com/search?q=%23qconsf&amp;src=hash">#qconsf</a></p> 
+</blockquote><p><a href="http://gravatar.com/loutilities">Loutilities</a> 也参与了这个话题的讨论：</p><blockquote> 
+ <p>Pete LePage(@petele) 给了我们很好的概览，了解了不同的工具，当开始移动应用开发时你需要考虑。 Sublime，Codekit</p> 
+ <p>移动开发良好设计模式的非常好的网站：</p> 
+ <ul> 
+  <li>www.mobile-patterns.com 展示了应用截屏以获取创意</li> 
+  <li>pttrns.com 也非常棒</li> 
+ </ul> 
+ <p>从 SenchaTouch、bootstrap，或者 jqueryMobile 开始制作吧。</p> 
+ <p>Gitbub.com/ftlabs/fastclick 提升按钮点击性能（通常延迟300ms来缩放、播放等）</p> 
+ <p>要调试的话，jsconsole.com 可以用来在其他设备上进行远程调试，能够在网站上显示…</p> 
+ <p>Hammer.js 很酷，手势事件的监听。</p> 
+ <p>Brian.io/lawnchair 可用于存储一些临时数据，通过抽象IndexDB、WebSQL 或 LocalStorage。</p> 
+ <p>@media，高密度分辨率很酷，或使用 CSS-webkit-image-set 为 hi-rez 图标设置为1x和2x图像密度</p> 
+ <p>CharlesProxy 很好，在Mac上测试网络延迟或网络链接调节器</p> 
+ <p>Chrome 开发工具有很酷的功能，覆盖地理定位、用户代理和设备方向</p> 
+</blockquote><h2><a href="http://qconsf.com/sf2012/tracks/show_track.jsp?trackOID=687">Web动态语言</a></h2><p><a href="http://qconsf.com/sf2012/presentation/Polyglot+Web+Development+With+Grails+2">Grail 2的多语网络开发</a> by <a href="http://qconsf.com/sf2012/speaker/Jeff+Brown">Jeff Brown</a></p><p>Twitter 上关于这个主题的反馈包括：</p><blockquote> 
+ <p><a href="https://twitter.com/garethr">Gareth Rushgrove ‏@garethr</a> :OH: “在动态语言中，编译器能够让你调用不存在的东西很重要” 很赞的观点来自 <a href="https://twitter.com/jeffscottbrown">@jeffscottbrown</a> <a href="https://twitter.com/search?q=%23qconsf&amp;src=hash">#qconsf</a></p> 
+</blockquote><p><a href="http://qconsf.com/sf2012/presentation/Using+Node.js+to+explore+holistic+Internet+application+performance">使用Node.js探索整个网络应用程序性能</a> by <a href="http://qconsf.com/sf2012/speaker/Tom+Hughes-Croucher">Tom Hughes-Croucher</a></p><p>Twitter 上关于这个主题的反馈包括：</p><blockquote> 
+ <p><a href="https://twitter.com/ielshareef">Ismail Elshareef ‏@ielshareef</a> : “延迟是如何影响我们服务的？” @sh1mmer 的提问。Node.js 可以非常好的定位移动设备的延迟。非常好的演讲。 <a href="https://twitter.com/search?q=%23qconsf&amp;src=hash">#qconsf</a></p> 
+ <p><a href="https://twitter.com/desbiens">desbiens ‏@desbiens</a> : 事件驱动编程，nodejs 能够非常好的适应移动架构 @sh1mmer #dynamiclanguage <a href="https://twitter.com/search?q=%23qconsf&amp;src=hash">#qconsf</a></p> 
+ <p><a href="https://twitter.com/desbiens">desbiens ‏@desbiens</a> : 探索移动应用架构与桌面 web 的很多不同点 @sh1mmer #dynamiclanguage <a href="https://twitter.com/search?q=%23qconsf&amp;src=hash">#qconsf</a></p> 
+ <p><a href="https://twitter.com/stuartblair">stuartblair ‏@stuartblair</a> : 荣誉归于 @sh1mmer ，他提供了我见过的最令人信服的 node.js 案例。 <a href="https://twitter.com/search?q=%23qconsf&amp;src=hash">#qconsf</a></p> 
+</blockquote><h2><a href="http://qconsf.com/sf2012/tracks/show_track.jsp?trackOID=686">Java的复兴</a></h2><p><a href="http://qconsf.com/sf2012/presentation/Android+App+Anatomy">Android应用解析</a> by <a href="http://qconsf.com/sf2012/speaker/Eric+Burke">Eric Burke</a></p><p>Twitter 上关于这个主题的反馈包括：</p><blockquote> 
+ <p><a href="https://twitter.com/rundavidrun">David Whittaker ‏@rundavidrun</a> : 在 #Android 中，推送到服务器，捆绑到任务队列，检查网络，如果有的话从队列中删除，重复直到为空。 <a href="https://twitter.com/burke_eric">@burke_eric</a> <a href="https://twitter.com/search?q=%23qconsf&amp;src=hash">#qconsf</a></p> 
+ <p><a href="https://twitter.com/rundavidrun">David Whittaker ‏@rundavidrun</a> :<a href="https://twitter.com/burke_eric">@burke_eric</a> 演示了一些 @square 的最好开源#Android 库：Tape (FIFO), Otto (bus), and Dagger (CDI) <a href="http://square.github.com">http://square.github.com</a> <a href="https://twitter.com/search?q=%23qconsf&amp;src=hash">#qconsf</a></p> 
+</blockquote><h2><a href="http://qconsf.com/sf2012/tracks/show_track.jsp?trackOID=681">松散并发与今日的 CAP 定理</a></h2><blockquote> 
+ <p><a href="http://qconsf.com/sf2012/presentation/Exploiting+Loopholes+in+CAP">探索 CAP 中的漏洞</a> by <a href="http://qconsf.com/sf2012/speaker/Michael+T.+Nygard">Michael T.Nygard</a></p> 
+</blockquote><p>Twitter 上关于这个主题的反馈包括：</p><blockquote> 
+ <p><a href="https://twitter.com/ramarob">rama roberts ‏@ramarob</a> :节点差异。组可以使用 GPS 时间解决 CAP 局限性来重构线性历史。参见 Google Spanner。 - @mtnygard <a href="https://twitter.com/search?q=%23QConSF&amp;src=hash">#QConSF</a></p> 
+ <p><a href="https://twitter.com/adrianco">adrian cockcroft ‏@adrianco</a> :<a href="https://twitter.com/search?q=%23QConSF&amp;src=hash">#QConSF</a> <a href="https://twitter.com/mtnygard">@mtnygard</a> 正在讲关于 ACELC by @daniel_abadi 分区意味着库存/一致性的权衡，或延迟/一致性的权衡。</p> 
+</blockquote><p><a href="http://qconsf.com/sf2012/presentation/Fear+no+more%3A+Embrace+eventual+consistency">不再恐惧：拥抱最终一致性</a> by <a href="http://qconsf.com/sf2012/speaker/Sean+Cribbs">Sean Cribbs</a></p><p>Twitter 上关于这个主题的反馈包括：</p><blockquote> 
+ <p><a href="https://twitter.com/al3xandru">Alex Popescu ‏@al3xandru</a> : “任何足够大的系统是恒定在一个部分失败的状态” <a href="https://twitter.com/justinsheehy">@justinsheehy</a> via <a href="https://twitter.com/seancribbs">@seancribbs</a> <a href="https://twitter.com/search?q=%23QConSF&amp;src=hash">#QConSF</a></p> 
+</blockquote><p><a href="http://qconsf.com/sf2012/presentation/The+CAP+balancing+act%3A+Building+reliable+data+stores">CAP的平衡：构建可信赖的数据存储</a> by <a href="http://qconsf.com/sf2012/speaker/Jeremy+Edberg">Jeremy Edberg</a></p><p><a href="http://www.sdtimes.com/about/AlexHandy">Alex Handy</a> 在 <a href="http://www.sdtimes.com/content/article.aspx?ArticleID=37148&amp;page=2">SD Times</a> 的报道：</p><blockquote> 
+ <p>Netflix 的云业务与可靠性工程经理 Jeremy Edberg 说，当他作为新闻网站 Reddit 的一名工程师时，他学会了如何为快速访问存储数据。</p> 
+ <p>关于 Reddit 的堆栈，他说，“有 Cassandra、Postgres 和 memcached。Reddit 使用最多的方式是通过 Postgres 的分片。Reddit 分别写在四个主数据库，他们有不同类型的东西。每个在其他区域中至少有一个副本。投票链接只有一个副本，而评论有17个副本分布在不同的区域。 Reddit 使用 Postgres 像 NoSQL 那样存储。只有两个表：一个事物表和一个数据表。”</p> 
+ <p>Edberg 说成功的关键之一是在 memcached 中使用一致的密钥散列。“这非常重要。如果你使用每个 memcached 库都默认使用的散列算法，[你可能遇到性能问题]，”他说。“如果你增加了一台服务器，需要将3/4的数据迁移到不同的服务器，这样你的缓存有3/4是无效的。一致的密钥散列则相反：1/4的数据在错的位置。这样档你增加新节点时，你的数据库就不用承受巨大负载。专业建议：使用一致密钥散列。如果你使用 memcached，如果你不手动设置的话，你可能要使用一个很天真的散列算法。”</p> 
+ <p>最后，Edberg 说到，从一开始的可扩展设计是关键，但最初的服务器也是重要决定。“从二台到三台是很困难的，”他说。“当你有一台服务器，从一台到两台操作起来也很困难，这是为什么我建议开始就设计为三台。从三台到六台的扩展要比一台到两台或两台到三台要容易很多。”</p> 
+</blockquote><h2><a href="http://qconsf.com/sf2012/tracks/show_track.jsp?trackOID=680">机械交感</a></h2><p><a href="http://qconsf.com/sf2012/presentation/JVM+mechanics%3A+a+peak+under+the+hood.">JVM力学：引擎下的峰值</a> by <a href="http://qconsf.com/sf2012/speaker/Gil+Tene">Gil Tene</a></p><p>Twitter 上关于这个主题的反馈包括：</p><blockquote> 
+ <p><a href="https://twitter.com/pavlobaron">Pavlo Baron ‏@pavlobaron</a> :Gil Tene 在 <a href="https://twitter.com/search?q=%23qconsf&amp;src=hash">#qconsf</a>: “大部分人测量东西是没有问题的”…“99.9%的时间，你的心脏都是保持跳动的”</p> 
+ <p><a href="https://twitter.com/pavlobaron">Pavlo Baron ‏@pavlobaron</a> :Gil Tene 在 <a href="https://twitter.com/search?q=%23qconsf&amp;src=hash">#qconsf</a>: “反压不会让我们感知到不好的事情 – 他们只是没有获得报告”—这家伙真令人惊奇！</p> 
+ <p><a href="https://twitter.com/pavlobaron">Pavlo Baron ‏@pavlobaron</a> :Gil Tene 在 <a href="https://twitter.com/search?q=%23qconsf&amp;src=hash">#qconsf</a>: “百分位数都不错，但是总是测量最大值”</p> 
+</blockquote><p><a href="http://qconsf.com/sf2012/presentation/PHP+on+the+Metal+with+HHVM.+MOVED+TO+BALLROOM+BC">通过 HHVM 金属质感的PHP</a> by <a href="http://qconsf.com/sf2012/speaker/Keith+Adams">Keith Adams</a></p><p>Twitter 上关于这个主题的反馈包括：</p><blockquote> 
+ <p><a href="https://twitter.com/mjpt777">Martin Thompson ‏@mjpt777</a> : “memcpy 会大约填入 i-cache 的1/3，因为它是11KB的代码。” - Keith Adams <a href="https://twitter.com/search?q=%23qconsf&amp;src=hash">#qconsf</a></p> 
+</blockquote><p><a href="http://qconsf.com/sf2012/presentation/Running+with+the+Devil%3A+Mechanical+Sympathetic+Networking">与魔鬼同行：机械交感神经网络</a> by <a href="http://qconsf.com/sf2012/speaker/Todd+Montgomery">Todd Montgomery</a></p><p>Twitter 上关于这个主题的反馈包括：</p><blockquote> 
+ <p><a href="https://twitter.com/mjpt777">Martin Thompson ‏@mjpt777</a> : “批处理是促使应用性能更好的关键技术…” - <a href="https://twitter.com/toddlmontgomery">@toddlmontgomery</a> <a href="https://twitter.com/search?q=%23qconsf&amp;src=hash">#qconsf</a></p> 
+ <p><a href="http://www.infoq.com/cn/articles/;jsessionid=80BF4B2B177B3262CAE45414291AA85B">Martin Thompson ‏@mjpt777</a> : 应用“Application Level Framing”能够极大地简化你的网络设计。 <a href="https://twitter.com/toddlmontgomery">@toddlmontgomery</a> <a href="https://twitter.com/search?q=%23qconsf&amp;src=hash">#qconsf</a></p> 
+</blockquote><h2><a href="http://qconsf.com/sf2012/tracks/show_track.jsp?trackOID=685">NoSQL的锋芒</a></h2><p><a href="http://qconsf.com/sf2012/presentation/Architectural+patterns+for+high+availability">架构模式的高可用性</a> by <a href="http://qconsf.com/sf2012/speaker/Adrian+Cockcroft">Adrian Cockcroft</a></p><p>Twitter 上关于这个主题的反馈包括：</p><blockquote> 
+ <p><a href="https://twitter.com/tekBuddha">John Martin ‏@tekBuddha</a> : “在 Netflix 我们不做的事情：容量计划。” - @adrianco <a href="https://twitter.com/search?q=%23QConSF&amp;src=hash">#QConSF</a></p> 
+ <p><a href="https://twitter.com/pmotch">Dan Cundiff ‏@pmotch</a> : 听 Netflix @adrianco 关于 HA 模式的演讲。我知道 Chaos Monkey，但不是 Latency Monkey 和 Chaos Gorilla. <a href="https://twitter.com/search?q=%23QConSF&amp;src=hash">#QConSF</a></p> 
+ <p><a href="https://twitter.com/pmotch">Dan Cundiff ‏@pmotch</a> : 在 <a href="https://twitter.com/search?q=%23QConSF&amp;src=hash">#QConSF</a> ，我观察到几个大品牌都迁移到了 @ubuntu 。Netflix 就是一个例子。对我来说很有意义。</p> 
+ <p><a href="https://twitter.com/pavlobaron">Pavlo Baron ‏@pavlobaron</a> : Netflix 推动开发人员开源所有他们写的代码。这对质量产生了自然压力。所以我盗用了这个想法… <a href="https://twitter.com/search?q=%23QConSF&amp;src=hash">#QConSF</a></p> 
+ <p><a href="https://twitter.com/CyberPunkie">CyberPunkie ‏@CyberPunkie</a> :<a href="https://twitter.com/search?q=%23QConSF&amp;src=hash">#QConSF</a> Netflix 与大量扩展：500个 Cassandra 实例！</p> 
+</blockquote><p><a href="http://qconsf.com/sf2012/presentation/MongoDB+large-scale+data+centric+architectures">MongoDB大规模数据中心的架构</a> by <a href="http://qconsf.com/sf2012/speaker/Kenny+Gorman">Kenny Gorman</a></p><p>Twitter 上关于这个主题的反馈包括：</p><blockquote> 
+ <p><a href="https://twitter.com/jgc94131">Jim Constantine ‏@jgc94131</a> :mongoDB 的宝石：你的指标必须符合内存/一次写锁定/ops的噩梦/插入的返回代码，还有很多没有告诉你 <a href="https://twitter.com/search?q=%23QConSF&amp;src=hash">#QConSF</a></p> 
+</blockquote><p><a href="http://gravatar.com/loutilities">Loutilities</a> 也参与了这个话题的讨论：</p><blockquote> 
+ <p>Kenny Gorman 提出了 MongoDB 的陷阱，以及如何适当地扩展。</p> 
+ <p>使其正常化知道它能够在实际的规模下正常运行；垂直分割然后水平化</p> 
+ <p>MongoDB 是OPS的噩梦</p> 
+ <p>MongoDB 的挑战：</p> 
+ <ul> 
+  <li>锁的范围；2.2 有 DB 级锁的范围；2.0是全局的</li> 
+  <li>可见性</li> 
+  <li>模式 – 仍需要商业化的事物</li> 
+  <li>当坏的事情发生…它迅速下降</li> 
+ </ul> 
+ <p>扩展设计：</p> 
+ <p>使差异正常化。DB 的 调整你的工作负载 NoORM；转储 早期碎片（提前想想你的碎片关键） 复制（如何获得可用性） 前产品负载测试</p> 
+</blockquote><h2><a href="http://qconsf.com/sf2012/tracks/show_track.jsp?trackOID=676">可编程网络</a></h2><p><a href="http://qconsf.com/sf2012/presentation/Caching+Hypermedia+APIs">缓存超媒体接口</a> by <a href="http://qconsf.com/sf2012/speaker/Tim+Stokes">Tim Stokes</a></p><p>Twitter 上关于这个主题的反馈包括：</p><blockquote> 
+ <p><a href="https://twitter.com/kris_trujillo">Kris Trujillo ‏@kris_trujillo</a> :WS-* 超媒体的黑暗时代 – 很好的方式来描述它！可编程网络 #qconsf</p> 
+ <p><a href="https://twitter.com/kris_trujillo">Kris Trujillo ‏@kris_trujillo</a> : 用身体传输状态而不是URI – 缓存超媒体 #qconsf</p> 
+ <p><a href="https://twitter.com/kris_trujillo">Kris Trujillo ‏@kris_trujillo</a> : 学到了一个新的伎俩，Content-Location伪装成POST响应缓存 – 真棒！-- 缓存超媒体 #qconsf</p> 
+ <p><a href="https://twitter.com/kris_trujillo">Kris Trujillo ‏@kris_trujillo</a> : 当缓存超媒体时记住关键点 #qconsf <a href="http://t.co/60igzTtV">http://t.co/60igzTtV</a></p> 
+ <p><a href="https://twitter.com/kris_trujillo">Kris Trujillo ‏@kris_trujillo</a>: 设计超媒体缓存的最佳方法 #qconsf <a href="http://t.co/EtnoVyXp">pic.twitter.com/EtnoVyXp</a></p> 
+</blockquote><p><a href="http://qconsf.com/sf2012/presentation/Real-Life+Stories+on+Building+Hypermedia+APIs">构建超媒体接口的真实生活故事</a> by <a href="http://qconsf.com/sf2012/speaker/Mike+Amundsen">Mike Amundsen</a></p><p>Twitter 上关于这个主题的反馈包括：</p><blockquote> 
+ <p><a href="https://twitter.com/kris_trujillo">Kris Trujillo ‏@kris_trujillo</a> : Bash 脚本作为超媒体API的一个客户端 – 非常酷！ @mamund #qconsf</p> 
+ <p><a href="https://twitter.com/kris_trujillo">Kris Trujillo ‏@kris_trujillo</a> : 媒体类型是预定义的超媒体元素的集合 – 可编程网络 #qconsf</p> 
+ <p><a href="https://twitter.com/kris_trujillo">Kris Trujillo ‏@kris_trujillo</a> : 消息设计，不是对象设计 – 可编程网络 #qconsf</p> 
+ <p><a href="https://twitter.com/kris_trujillo">Kris Trujillo ‏@kris_trujillo</a> : 使用线性对象的人在使用超媒体时会有一段很困难的时期 – 可编程网络 #qconsf</p> 
+ <p><a href="https://twitter.com/kris_trujillo">Kris Trujillo ‏@kris_trujillo</a> :APIs 要可用 – 可编程网络 #qconsf</p> 
+ <p><a href="https://twitter.com/kris_trujillo">Kris Trujillo ‏@kris_trujillo</a> : 当应用启示到超媒体时有四个很重要方面要考虑：安全(safety)，操作一致性(idempotent)，可变性(mutability)，独立片段(transclusion) #qconsf</p> 
+ <p><a href="https://twitter.com/kris_trujillo">Kris Trujillo ‏@kris_trujillo</a> : 如果你使用了正确的设计，你的用户可能做到你从未想象过的事情 – 可编程网络 #qconsf</p> 
+</blockquote><p><a href="http://www.sdtimes.com/about/AlexHandy">Alex Handy</a> 在 <a href="http://www.sdtimes.com/content/article.aspx?ArticleID=37148&amp;page=3">SD Times</a> 的报道：</p><blockquote> 
+ <p>7级API架构师 Mike Amundsen 表示，企业非常关注 APIs 的管理和政策执行。但是他也表示，这些对 SLAs 和产品 APIs 新的关注也导致了大企业中如何处理 APIs 的一些有趣变化。</p> 
+ <p>“现在很多时候，我看到销售会议中的人会说‘我不是领导架构，我是领导产品，’”他说。“他们使用那个词。即使在IT领域，有时这些产品领导者很内向。”</p> 
+ <p>简单来说，APIs 正趋向于常规软件产品接受的那样关心与培养。这甚至延伸到企业如何设计 API 。“在房间里的其他人是用户体验设计人员，” Amundsen 说。“我看到人们使用故事和任务来进行 API 设计。以用户为中心的设计对他们对我们的客户来说是很大的事情。”</p> 
+ <p>Amundsen 说，与现在的很多 API 管理主题不同，7级不是简单的推荐 REST 。实际上，作为最佳实践之一的他的公司建议，允许 API 进行松散耦合在一起使用。</p> 
+ <p>“你已经获得了组成层，那是你的商业部分，”他说。“我们告诉人们，实际考虑 API 作为很薄的木皮 – 像 UI – 和一个表示层。你的组件给你数据，你将那些组合到有趣的事物中，然后代理它给客户端，或作为 SOAP 消息，或 JSON 有效负载，或作为 REST 。”</p> 
+</blockquote><h2><a href="http://qconsf.com/sf2012/tracks/show_track.jsp?trackOID=683">实时网络</a></h2><p><a href="http://qconsf.com/sf2012/presentation/Integrating+the+classic+MVC+architecture+with+Real+Time">经典MVC架构的实时集成</a> by <a href="http://qconsf.com/sf2012/speaker/Daniel+Erickson">Daniel Erickson</a></p><p><a href="http://gravatar.com/loutilities">Loutilities</a> 也参与了这个主题的讨论：</p><blockquote> 
+ <p>MVC 仍然会存在因为…</p> 
+ <ul> 
+  <li>它为项目提供了结构</li> 
+  <li>允许人们简单跳转到一个项目，以及多人同时操作</li> 
+  <li>容易上手</li> 
+ </ul> 
+ <p>实时很赞，因为：</p> 
+ <ul> 
+  <li>从你的用户及时获取反馈</li> 
+  <li>在移动终端上运行良好（Voxer）</li> 
+  <li>Web Sockets 通过长/短轮询</li> 
+ </ul> 
+ <p>MVC 与 实时 如何混搭？</p> 
+ <p>进入 <a href="http://geddyjs.org/">Geddy</a> …如果你知道Rails、NoSQL/SQL ORM 层，以及模版语言，那么 Geddy 是一个自然过程。PostGres，Riak，MongoDB 适配器；EJS 和 Jade TL 的。支持 RT OOTB。</p> 
+ <p>Geddy 给了你一个使用 ORM/MVC 框架的方法，这样你可以很容易的融入到你的 Node.js 应用中使用。</p> 
+</blockquote><p><a href="http://qconsf.com/sf2012/presentation/The+realtime+web%3A+HTML5+WebSockets%2C+Engine.IO%2C+Socket.IO%2C+SPDY%2C+HTTP2.0+%26+Beyond">实时网络：HTML5 WebSockets，Engine.IO，Socket.IO，SPDY，HTTP2.0及其相关内容</a> by <a href="http://qconsf.com/sf2012/speaker/Guillermo+Rauch">Guillermo Rauch</a></p><p>Twitter 上关于这个主题的反馈包括：</p><blockquote> 
+ <p><a href="https://twitter.com/adrianco">adrian cockcroft ‏@adrianco</a> : #qconsf 关于 web sockets 和实时网络是非常好的介绍，由 Guillermo带来的演讲，scoket.io 和 engine.io 的作者</p> 
+</blockquote><h2>硅谷的故事</h2><p><a href="http://qconsf.com/sf2012/presentation/Building+for+a+Billion+Users+from+Silicon+Valley.+MOVED+TO+BALLROOM+BC">在硅谷构建十亿用户</a> by <a href="http://qconsf.com/sf2012/speaker/David+Mortenson">David Mortenson</a></p><p>Twitter 上关于这个主题的反馈包括：</p><blockquote> 
+ <p><a href="https://twitter.com/csanz">Christian Sanz ‏@csanz</a> : “Facebook 没有QA，只有工程师，他们负责质量” - David Mortenson, Facebook 工程经理 #QCon #spoton</p> 
+</blockquote><p><a href="http://www.sdtimes.com/about/AlexHandy">Alex Handy</a> 在 <a href="http://www.sdtimes.com/SOFTWARE_QUALITY_THE_MAIN_COURSE_OF_QCON/By_Alex_Handy/About_QCON/37148">SD Times</a> 进行了报道：</p><blockquote> 
+ <p>Mortensen 说，发展到一千工程师，Facebook 建立了一个内部新兵训练营，它会训练新入职的员工加速了解他们会涉及使用的开发工具、环境和实践。他说这些直接的努力，在过去的七年里帮助新入职的工程师缓解了快速成长过程中的痛苦。</p> 
+ <p>最后，所有 Facebook 新兵训练营的努力会直接提升开发者的效率。正如 Mortensen 所说，任何开发者花费超过两分钟的分散项目很可能会成为一个休息时间，因为它用很重要的方式中断了生产力。</p> 
+ <p>为此，Facebook 花了很多时间和精力来简化开发环境。Facebook 的每个开发者在数据中心有他或她自己的开发设备，它包含完整可运行的 Facebook 代码的拷贝。开发人员可以登录并操作代码，然后搜集变化，开发推送集成他们到 Facebook。</p> 
+ <p>Mortensen 说，问题是，开发环境最初非常敏感，因为 Facebook 是用 PHP 写的。这意味着改变需要在开发设备上及时可用，而不需要编译。非常不幸的是，Facebook 的代码越来越复杂，开发沙箱加载时间越来越长。</p> 
+ <p>要解决这个问题，Facebook 创建了 HipHop，一个 PHP-to-C++ 的编译器。一旦经过编译，C++ 代码会运行得更快，但是对于开发者来说，每个改变要求预编译，这会花费10分钟。对于 Mortensen 来说，10分钟等待时间就是致命的生产力。</p> 
+ <p>在开发设备上为编译建立了解释器之后，等待时间降到了约10秒，但是对于 Mortensen 和 Facebook 的开发者来说，这仍然太慢。答案是使用一个 JIT 编译器。“我们在今年春天开启了这个，获得了一些惊人的成果，”他说。“当我们使用 JIT 编译器时，迎来了一片欢呼。补充一下，从来没有这样过。网站仍然更加丰富。这是他们程序努力的事情之一。这是一个有趣的传奇。有足够的努力，任何事情都会有效率。你真想让你的工程师更有效率。”</p> 
+</blockquote><p><a href="http://qconsf.com/sf2012/presentation/Engineering+Elegance%3A+The+Secrets+of+Square%27s+Stack">优雅工程：Square 堆栈的秘密</a> by <a href="http://qconsf.com/sf2012/speaker/Bob+Lee">Bob Lee</a></p><p>Twitter 上关于这个主题的反馈包括：</p><blockquote> 
+ <p><a href="https://twitter.com/kris_trujillo">Kris Trujillo ‏@kris_trujillo</a> : “设计不仅仅与像素有关，而是整体用户体验”“对最终用户的交易从来没有失败”— 好事 <a href="https://twitter.com/crazybob">@crazybob</a> #qconsf</p> 
+</blockquote><h2><a href="http://qconsf.com/sf2012/tracks/show_track.jsp?trackOID=679">驾驭 HTML5 及 JavaScript</a></h2><p><a href="http://qconsf.com/sf2012/presentation/Javascript+Performance+Patterns">Javascript性能模式</a> by <a href="http://qconsf.com/sf2012/speaker/Stoyan+Stefanov">Stoyan Stefanov</a></p><p>Twitter 上关于这个主题的反馈包括：</p><blockquote> 
+ <p><a href="https://twitter.com/rundavidrun">David Whittaker ‏@rundavidrun</a> : 在 iframe 中加载 JS 以避免页面阻塞，除了使用根文档：这不是你要找的文档！@stoyanstefanov #qconsf</p> 
+ <p><a href="https://twitter.com/KuraFire">Faruk Ateş ‏@KuraFire</a> : “有谎言，该死的谎言，还有性能建议。”-- @stoyanstefanov 在 #qconsf</p> 
+ <p><a href="https://twitter.com/rundavidrun">David Whittaker ‏@rundavidrun</a> :@stoyanstefanov 演示了如何测量你的 JS 代码的性能 http://jsPerf.com #qconsf</p> 
+ <p><a href="https://twitter.com/rundavidrun">David Whittaker ‏@rundavidrun</a> : 减少访问 DOM 的数量来优化 JS；把它做为跨越高成本的桥梁。@stoyanstefanov #qconsf</p> 
+</blockquote><p><a href="http://qconsf.com/sf2012/presentation/SPDY%2C+err..+HTTP+2.0+is+coming%21">SPDY，呃.. HTTP 2.0来了!</a> By <a href="http://qconsf.com/sf2012/speaker/Roberto+Peon">Roberto Peon</a></p><p>Twitter 上关于这个主题的反馈包括：</p><blockquote> 
+ <p><a href="https://twitter.com/ielshareef">Ismail Elshareef ‏@ielshareef</a> : SPDY 演讲：不要关注在页面加载时间。那对于用户不重要。用户关心的是“页面多久可用。” #qconsf</p> 
+ <p><a href="https://twitter.com/ielshareef">Ismail Elshareef ‏@ielshareef</a> : SPDY 的服务器推送：服务器知道客户端需要什么资源，然后通过 w/o 显示请求将它发送到客户端。#qconsf #webperf #spdy</p> 
+ <p><a href="https://twitter.com/synodinos">Dio Synodinos ‏@synodinos</a> : “这并不是说我们不喜欢代理。我们不喜欢透明、配置不当的代理” #qconsf #spdy #tls</p> 
+</blockquote><h2><a href="http://qconsf.com/sf2012/tracks/show_track.jsp?trackOID=677">敏捷团队实地指南</a></h2><p><a href="http://qconsf.com/sf2012/presentation/Building+a+Learning+Organization+From+Any+Level">从任何级别来构建学习型组织</a> by <a href="http://qconsf.com/sf2012/speaker/Matthew+Barcomb">Matthew Barcomb</a></p><p>Twitter 上关于这个主题的反馈包括：</p><blockquote> 
+ <p><a href="https://twitter.com/rundavidrun">David Whittaker ‏@rundavidrun</a> : 学习型组织帮助公司创新、适应、提升质量、提升雇员满意度，及可行性。@mattbarcomb #qconsf</p> 
+ <p><a href="https://twitter.com/rundavidrun">David Whittaker ‏@rundavidrun</a> : 当面对任何挑战性活动时：要有好的态度，承认无知，允许失败。#agile @mattbarcomb #qconsf</p> 
+ <p><a href="https://twitter.com/itsmemacelle">itsmemacelle ‏@itsmemacelle</a> : 学习：行动 vs 反思，非正式 vs 正式，输入 vs 输出，动力，选择，创造环境 #qconsf <a href="http://t.co/B5kaeYDQ">pic.twitter.com/B5kaeYDQ</a></p> 
+ <p><a href="https://twitter.com/rundavidrun">David Whittaker ‏@rundavidrun</a> : 学习动力 – 你学习的东西越多，学习其他东西也更简单更快。 #KeepLearning @mattbarcomb #qconsf</p> 
+ <p><a href="https://twitter.com/rundavidrun">David Whittaker ‏@rundavidrun</a> : “来上班，做你的工作，来创造神话。”为了保持与你自己有关，你需要不断地学习。@mattbarcomb #qconsf</p> 
+ <p><a href="https://twitter.com/itsmemacelle">itsmemacelle ‏@itsmemacelle</a> : 白天有关键时间可以很好的完成未完成的学习目标，除了练习“一起学习”@mattbarcomb #qconsf</p> 
+</blockquote><h2><a href="http://qconsf.com/sf2012/tracks/show_track.jsp?trackOID=678">用户体验(UX)</a></h2><p><a href="http://qconsf.com/sf2012/presentation/Better+product+definition+with+Lean+UX+and+Design+Thinking">精益UX与设计的思考，造就更好的产品定义</a> by <a href="http://qconsf.com/sf2012/speaker/Jeff+Gothelf">Jeff Gothelf</a></p><p>Twitter 上关于这个主题的反馈包括：</p><blockquote> 
+ <p><a href="https://twitter.com/thinknow">lane halley ‏@thinknow</a> : 你的要求 / 更有效的表达 / 假设 @jboogie #QConSF 演讲简介</p> 
+ <p><a href="https://twitter.com/mblongii">Mike Long ‏@mblongii</a> : 表达你的假设，定义假设，做轻量测试来验证 @jboogie #QConSF</p> 
+ <p><a href="https://twitter.com/mblongii">Mike Long ‏@mblongii</a> : 测量结果，而不是输出 :) @jboogie #QConSF</p> 
+ <p><a href="https://twitter.com/desbiens">desbiens ‏@desbiens</a> :#qconsf 学习价值超过成长 @jboogie</p> 
+ <p><a href="https://twitter.com/Mekkaz">Lene Mejlby ‏@Mekkaz</a> :#qconsf 设计思考是一种观察 @jboogie</p> 
+ <p><a href="https://twitter.com/Mekkaz">Lene Mejlby ‏@Mekkaz</a> :#QConSF 精益 UX 与设计思考不仅仅是为设计师 @jboogie</p> 
+ <p><a href="https://twitter.com/desbiens">desbiens ‏@desbiens</a> : 注重结果… 精益 UX @jboogie #qconsf</p> 
+ <p><a href="https://twitter.com/desbiens">esbiens ‏@desbiens</a> : 首先测试价值。 @jboogie #leanux #qconsf</p> 
+</blockquote><p>Mathieu Lalonde 也参与了这个主题的讨论：</p><blockquote> 
+ <p>当 Jeff 澄清要求应该被看作是假设时，我有了一点实际感觉（“哈哈！”）。接着 Jeff 解释如果用最简单的方式来证明或反驳这些假设。在某些情况下使用最少可行产品（MVP），在其他情况下模拟 UPS 或纸上的原型可能会有陷阱！</p> 
+ <p>另一个实际情况是，我们如何用下面的样式编写用户故事：“我们相信，如果我们实现 XYZ，我们的交易会用到它，这样他们每天可以带来更多交易。”</p> 
+</blockquote><p><a href="http://qconsf.com/sf2012/presentation/Co-making+Great+Products">联合制造的伟大产品</a> by <a href="http://qconsf.com/sf2012/speaker/Jeff+Patton">Jeff Patton</a></p><p>Twitter 上关于这个主题的反馈包括：</p><blockquote> 
+ <p><a href="https://twitter.com/thinknow">lane halley ‏@thinknow</a> : 不再是“谁闯了祸”/ 一起解决问题 /合作产品 @jeffpatton <a href="https://twitter.com/search?q=%23QConSF&amp;src=hash">#QConSF</a> 演讲简介</p> 
+ <p><a href="https://twitter.com/Mekkaz">Lene Mejlby ‏@Mekkaz</a> : 设计是一种学习经验，还有共同感觉 @jeffpatton <a href="https://twitter.com/search?q=%23QConSF&amp;src=hash">#QConSF</a></p> 
+ <p><a href="https://twitter.com/hthunberg">Hans Thunberg ‏@hthunberg</a> :Jeff Patton – “对我们创造的东西我们都有责任。让我们合作吧。” <a href="https://twitter.com/search?q=%23QConSF&amp;src=hash">#QConSF</a></p> 
+ <p><a href="https://twitter.com/Mekkaz">Lene Mejlby ‏@Mekkaz</a> : 设计不是设计师生产一款产品，它是一个设计师推动的过程 @jeffpatton <a href="https://twitter.com/search?q=%23QConSF&amp;src=hash">#QConSF</a></p> 
+ <p><a href="https://twitter.com/Mekkaz">Lene Mejlby ‏@Mekkaz</a> : 我们不是在这儿构建软件，我们是在这里改变世界 @jeffpatton <a href="https://twitter.com/search?q=%23QConSF&amp;src=hash">#QConSF</a></p> 
+ <p><a href="https://twitter.com/tsharon">Tomer Sharon ‏@tsharon</a> : 你构建废品越快，你就有更多的废品。 - @jeffpatton <a href="https://twitter.com/search?q=%23QConSF&amp;src=hash">#QConSF</a></p> 
+ <p><a href="https://twitter.com/jboogie">Jeff Gothelf ‏@jboogie</a> : 不会仅仅因为写在便签纸上而降低它的有效性。 - @jeffpatton <a href="https://twitter.com/search?q=%23QConSF&amp;src=hash">#QConSF</a> #LeanUX</p> 
+ <p><a href="https://twitter.com/Mekkaz">Lene Mejlby ‏@Mekkaz</a> : 你需要离开办公室去学习你不知道的东西 @jeffpatton <a href="https://twitter.com/search?q=%23QConSF&amp;src=hash">#QConSF</a></p> 
+ <p><a href="https://twitter.com/Mekkaz">Lene Mejlby ‏@Mekkaz</a> : 讲述你的产品故事将帮助你定位问题 @jeffpatton <a href="https://twitter.com/search?q=%23QConSF&amp;src=hash">#QConSF</a></p> 
+</blockquote><p><a href="http://qconsf.com/sf2012/presentation/High-quality%2C+Impactful%2C+Fast+UX+Research+for+Engineers">工程师的高质量、有效、快速UX研究</a> by <a href="http://qconsf.com/sf2012/speaker/Tomer+Sharon">Tomer Sharon</a></p><p>Twitter 上关于这个主题的反馈包括：</p><blockquote> 
+ <p><a href="https://twitter.com/desbiens">desbiens ‏@desbiens</a> : 不要听用户的，而是观察行为 <a href="https://twitter.com/tsharon">@tsharon</a> #qconsf</p> 
+ <p><a href="https://twitter.com/desbiens">desbiens ‏@desbiens</a> : 态度不是行为的预测 #leanux <a href="https://twitter.com/tsharon">@tsharon</a> #qconsf</p> 
+ <p><a href="https://twitter.com/joshi_bhavik">Bhavik Joshi ‏@joshi_bhavik</a> : 不能帮助但是可以平行观察 #custdev #leanlaunchpad &amp; 高质量，有影响力的 &amp; 快速精益 UX 设计 #qconsf <a href="https://twitter.com/tsharon">@tsharon</a> @thelaunch</p> 
+ <p><a href="https://twitter.com/Mekkaz">Lene Mejlby ‏@Mekkaz</a> : 询问经验而不是预测未来 <a href="https://twitter.com/tsharon">@tsharon</a> #qconsf</p> 
+ <p><a href="https://twitter.com/desbiens">desbiens ‏@desbiens</a> : 用户体验之后再询问意见，或询问有关最近的体验 #leanux <a href="https://twitter.com/tsharon">@tsharon</a> #qconsf</p> 
+ <p><a href="https://twitter.com/desbiens">desbiens ‏@desbiens</a> :观察，观察，观察 #leanux <a href="https://twitter.com/tsharon">@tsharon</a> #qconsf</p> 
+ <p><a href="https://twitter.com/Mekkaz">Lene Mejlby ‏@Mekkaz</a> : 眼睛跟踪者不是思想阅读者！他们可以告诉你人们在看什么而不是人们看到什么… <a href="https://twitter.com/tsharon">@tsharon</a> #qconsf</p> 
+ <p><a href="https://twitter.com/thinknow">lane halley ‏@thinknow</a> : “注意力测试”让用户使用页面，然后将他们的视线抓取打印出来，然后用它们重建页面。<a href="https://twitter.com/tsharon">@tsharon</a> #QConSF</p> 
+ <p><a href="https://twitter.com/desbiens">desbiens ‏@desbiens</a> : 注意力测试 #leanux <a href="https://twitter.com/tsharon">@tsharon</a> #qconsf 将页面切成片，观察用户装配这个迷宫</p> 
+ <p><a href="https://twitter.com/Mekkaz">Lene Mejlby ‏@Mekkaz</a> : 一个独立的 A/B 测试仅仅会告诉你发生了什么，而不是为什么。用 A/B 使用测试来替代吧。 <a href="https://twitter.com/tsharon">@tsharon</a> #qconsf</p> 
+ <p><a href="https://twitter.com/thinknow">lane halley ‏@thinknow</a> : 用户研究报告很浪费，不要支持团队学习。通常会问的“报告在哪里？”<a href="https://twitter.com/tsharon">@tsharon</a> 问“你想知道什么？”#QConSF</p> 
+</blockquote><p>Mathieu Lalonde 也参与了这个主题的讨论：</p><blockquote> 
+ <p>这个演讲非常有趣，阐述了一些关于可用性分析与研究的概念。重点之一是：“不要听用户的！观察他们的行为。”在不到50分钟的时间内，Tomer 解释了他的指导原则背后的心理，然后讨论了三个可用的技巧：1、高质量的注意力测试；2、充足的 A/B 可用性研究；3、快速、丰富多彩的协作工具。我想这三个技巧是非常使用且有效的。最后，我发现演讲信息传递非常有效，其内容让人大开眼界。做得好 Tomer！</p> 
+</blockquote><p><a href="http://qconsf.com/sf2012/presentation/Quora+on+Mobile%3A+A+Product-Centered+Approach+to+Multi-Platform+Deployment">Quora移动产品：以产品为中心的多平台部署 </a> by <a href="http://qconsf.com/sf2012/speaker/Anne+K+Halsall">Anne K Halsall</a></p><p>Twitter 上关于这个主题的反馈包括：</p><blockquote> 
+ <p><a href="https://twitter.com/thinknow">lane halley ‏@thinknow</a> : “APP 像是访问你移动环境的一个入口，我想了很多关于如何尊重每个观点。”<a href="https://twitter.com/annekate">@annekate</a> #QConSF</p> 
+ <p><a href="https://twitter.com/thinknow">lane halley ‏@thinknow</a> : “如果你使用移动设备，你可能会损失20%你产品的功能也没有人在意。” <a href="https://twitter.com/annekate">@annekate</a> #QConSF</p> 
+ <p><a href="https://twitter.com/Mekkaz">Lene Mejlby ‏@Mekkaz</a> : 真正地理解你所工作的平台！ <a href="https://twitter.com/annekate">@annekate</a> #qconsf</p> 
+ <p><a href="https://twitter.com/Mekkaz">Lene Mejlby ‏@Mekkaz</a> : 针对新的平台定制产品是值得的 <a href="https://twitter.com/annekate">@annekate</a> #qconsf</p> 
+ <p><a href="https://twitter.com/mblongii">Mike Long ‏@mblongii</a> : 为新平台定制是值得的。不要仅仅移植和仿冒。客户会反抗。 <a href="https://twitter.com/annekate">@annekate</a> #QConSF</p> 
+ <p><a href="https://twitter.com/mblongii">Mike Long ‏@mblongii</a> : 一次构建，任意部署是个神话。 <a href="https://twitter.com/annekate">@annekate</a> #QConSF #mobile</p> 
+ <p><a href="https://twitter.com/Mekkaz">Lene Mejlby ‏@Mekkaz</a> : 为新产品先设计移动终端 <a href="https://twitter.com/annekate">@annekate</a> #qconsf</p> 
+ <p><a href="https://twitter.com/desbiens">desbiens ‏@desbiens</a> : 移动与众不同的不是位置 <a href="https://twitter.com/annekate">@annekate</a>, #ux #qconsf</p> 
+ <p><a href="https://twitter.com/Mekkaz">ene Mejlby ‏@Mekkaz</a> : 确保你有让你的 apps 更好的数据 <a href="https://twitter.com/annekate">@annekate</a> #qconsf</p> 
+</blockquote><p><a href="http://qconsf.com/sf2012/presentation/User+Experience+-+More+Than+Just+a+Pretty+Stick">用户体验 – 不仅仅是一支漂亮的棒</a> by <a href="http://qconsf.com/sf2012/speaker/Lane+Halley">Lane Halley</a></p><p>Twitter 上关于这个主题的反馈包括：</p><blockquote> 
+ <p><a href="https://twitter.com/mblongii">Mike Long ‏@mblongii</a> : 关注问题，不是解决方案。问题是从人开始的 :) <a href="https://twitter.com/thinknow">@thinknow</a> #QConSF</p> 
+</blockquote><h2><a href="http://qconsf.com/sf2012/tracks/show_track.jsp?trackOID=693">解决方案：No SQL</a></h2><p><a href="http://qconsf.com/sf2012/presentation/Common+Graph+Database+Use+Cases">通用图形数据库使用案例</a> by <a href="http://qconsf.com/sf2012/speaker/Emil+Eifrem">Emil Eifrem</a></p><p>Twitter 上关于这个主题的反馈包括：</p><blockquote> 
+ <p><a href="https://twitter.com/ThePeterYu">Peter Yu ‏@ThePeterYu</a> :Twitter 在 JavaVM 上运行了一个图形数据库，堆大学有177GB。 <a href="https://twitter.com/search?q=%23yam&amp;src=hash">#yam</a> <a href="https://twitter.com/search?q=%23QConSF&amp;src=hash">#QConSF</a> <a href="https://twitter.com/search?q=%23GraphConnect&amp;src=hash">#GraphConnect</a></p> 
+</blockquote><p><a href="http://gravatar.com/loutilities">Loutilities</a> 也参与了这个主题的讨论：</p><blockquote> 
+ <p>BigData &amp; NoSQL 的趋势：</p> 
+ <ul> 
+  <li>数据大小增加</li> 
+  <li>关联数据增加</li> 
+  <li>半结构化数据</li> 
+  <li>架构 – 一个多服务的外观</li> 
+ </ul> 
+ <p>NoSQL 的分类：</p> 
+ <p>Key/Value 存储 (继承自 Amazon Dynamo) –</p> 
+ <ul> 
+  <li>Riak, Redis, 和 Voldermort 是实现的示例</li> 
+  <li>优势是它很简单，但是也很弱</li> 
+ </ul> 
+ <p>列存储</p> 
+ <ul> 
+  <li>BigTable – 每行都可能有</li> 
+  <li>示例是 HBase 和 Cassandra，Hyper Table</li> 
+  <li>支持半结构化数据，但是缺点是这是内嵌或连接的</li> 
+ </ul> 
+ <p>文档数据库</p> 
+ <ul> 
+  <li>文档集合，JSON可以被内嵌</li> 
+  <li>MongoDB 中90%高于 NoSQL 以及 CouchDB</li> 
+  <li>优势是数据库简单，但很难连接到数据</li> 
+ </ul> 
+ <p>图形数据库</p> 
+ <ul> 
+  <li>节点与关系</li> 
+  <li>示例有 Neo4j，InfiniteDB，OrientDB 等。</li> 
+  <li>数据连通性和复杂性很好，但是难于扩展规模</li> 
+ </ul> 
+</blockquote><p><a href="http://qconsf.com/sf2012/presentation/Sustainable+Software+Development">可持续软件开发</a> by <a href="http://qconsf.com/sf2012/speaker/Alexander+von+Zitzewitz">Alexander von Zitzewitz</a></p><p>Twitter 上关于这个主题的反馈包括：</p><blockquote> 
+ <p><a href="https://twitter.com/rundavidrun">David Whittaker ‏@rundavidrun</a> :Alexander Zitzewitz: “大学不会教学生如何提高大型复杂软件系统。”我们可以怎么解决这个问题？#qconsf</p> 
+ <p><a href="https://twitter.com/rundavidrun">David Whittaker ‏@rundavidrun</a> :Alex Zitzewitz: “当软件工作时，软件‘正常’？假设这么建造飞机…当它像飞机你完成它？！？” #qconsf</p> 
+ <p><a href="https://twitter.com/rundavidrun">David Whittaker ‏@rundavidrun</a> :Alex Zitzewitz: “技术品质体现在它的每一行代码。高成本的影响：有一个可持续发展的架构。” #qconsf</p> 
+ <p><a href="https://twitter.com/rundavidrun">David Whittaker ‏@rundavidrun</a> :Alex Zitzewitz: “代码中的循环依赖就像‘代码癌症’。通过创建接口减少耦合。” #qconsf pic.twitter.com/0ucovQWR</p> 
+ <p><a href="https://twitter.com/rundavidrun">David Whittaker ‏@rundavidrun</a> :Alex Zitzewitz 给我们指出了重要软件质量备忘单。免费下载： <a href="http://refcardz.dzone.com/refcardz/designing-quality-software">http://refcardz.dzone.com/refcardz/designing-quality-software</a> … #qconsf</p> 
+</blockquote><p><a href="http://qconsf.com/sf2012/presentation/The+Design+of+a+SQL+Interface+for+a+NoSQL+Database">为NoSQL数据库的SQL界面设计</a> by <a href="http://qconsf.com/sf2012/speaker/Stephen+Buxton">Stephen Buxton</a> &amp; <a href="http://qconsf.com/sf2012/speaker/Mary+Holstege">May Holstege</a></p><p>Twitter 上关于这个主题的反馈包括：</p><blockquote> 
+ <p><a href="https://twitter.com/kris_trujillo">Kris Trujillo ‏@kris_trujillo</a> : “为什么是 NoSQL 的 SQL ？因为我们是在企业” - NoSQL #qconsf</p> 
+ <p><a href="https://twitter.com/kris_trujillo">Kris Trujillo ‏@kris_trujillo</a> : “关注结构化数据片段” – NoSQL 的 SQL #qconsf <a href="http://t.co/wRcwNnLb">t.co/wRcwNnLb</a></p> 
+</blockquote><h2>对QCon的意见</h2><p>Twitter 上关于这个主题的反馈包括：</p><blockquote> 
+ <p><a href="https://twitter.com/WoodyZuill">Woody Zuill ‏@WoodyZuill</a> :#QConSF 事物：你是最好的！谢谢你们的辛勤劳动以及注意细节！跟你们工作多愉快啊。很棒的会议！</p> 
+ <p><a href="https://twitter.com/hybrididentity">Josh Warner-Burke ‏@hybrididentity</a> : #qconsf 的食物真实在！</p> 
+ <p><a href="https://twitter.com/Schlaeps">Jonathan Schlaepfer ‏@Schlaeps</a> : 这里的食物太让人惊讶了。 #qconsf</p> 
+ <p><a href="https://twitter.com/kris_trujillo">Kris Trujillo ‏@kris_trujillo</a> : 非常赞同！ &quot;@tsharon: 令人惊喜的 #qconsf 演讲支持率。走出房间去投票吧：绿，黄，红。 pic.twitter.com/Rcpet7qv”</p> 
+ <p><a href="https://twitter.com/jboogie">Jeff Gothelf ‏@jboogie</a> : 这多酷啊？在我的 #qconsf 演讲一个小时后就有反馈。喜欢它。 pic.twitter.com/snneCBdW</p> 
+ <p><a href="https://twitter.com/jboogie">Jeff Gothelf ‏@jboogie</a> : 这就是 #qconsf 在每个演讲之后收集的反馈。每个人都用他们自己的方式。超级酷。pic.twitter.com/T0gJ4Khk</p> 
+ <p><a href="https://twitter.com/adrianco">adrian cockcroft ‏@adrianco</a> :#qconsf 的秘密武器是晚上的环节。首先给大家免费的啤酒，然后将演讲机会给有趣的演讲者。干得好！</p> 
+ <p><a href="https://twitter.com/adrianco">drian cockcroft ‏@adrianco</a> : 参加了很多鼓舞人心 #qconsf 演讲的问题是，我现在要重新写周五演讲的幻灯片，但没有时间...</p> 
+ <p><a href="https://twitter.com/stoyanstefanov">Stoyan Stefanov ‏@stoyanstefanov</a> : 欣喜若狂 #qconsf，人们喜欢我的js PERF的演讲。评论：0红，30黄，87绿色，可能是我演讲“生涯”最好的成绩</p> 
+ <p><a href="https://twitter.com/kennygorman">kennygorman ‏@kennygorman</a> : 在 #qconsf 2012 很赞的时光，看到了许多优秀的人！</p> 
+ <p><a href="https://twitter.com/iliketoprogram">iliketoprogram ‏@iliketoprogram</a> : 这么多输入！我的脑子好像要爆炸了！谢谢 #qconsf 以及嘉宾！真是令人惊喜的一周！</p> 
+ <p><a href="https://twitter.com/jussinieminen">Jussi Nieminen ‏@jussinieminen</a> : 谢谢 @QConSF #QConSF 很棒的会议！明年见！过了！</p> 
+ <p><a href="https://twitter.com/LindroosKE">Kalle Lindroos ‏@LindroosKE</a> : 好东西都在最后出现啊。谢谢 @qconsf! #qconsf</p> 
+</blockquote><h2>后记</h2><p>Twitter 上关于这个主题的反馈包括：</p><blockquote> 
+ <p><a href="https://twitter.com/BurakYenier">Burak Yenier ‏@BurakYenier</a> :@tsharon 谈用户体验设计是一流的。这让我仿佛回到了 #QConSF <a href="https://twitter.com/hybrididentity">osh Warner-Burke ‏@hybrididentity</a> : 我脑子里充满了新的想法#qconsf</p> 
+ <p><a href="https://twitter.com/pavlobaron">Pavlo Baron ‏@pavlobaron</a> : “我把它发布到 GitHub 了”，作为一个短语明显由于我参加的 #qconsf 演讲</p> 
+ <p><a href="https://twitter.com/adrianco">adrian cockcroft ‏@adrianco</a> : 来自 #qconsf 的灵感，将在 Edda 进行一次数据挖掘的新演讲，本周会发布 @NetflixOSS</p> 
+ <p><a href="https://twitter.com/orion_quotient">Jonathan Calvert ‏@orion_quotient</a> : 像 Google 和 Facebook 这样的公司，持续部署是他们竞争力的一部分 – 非常引用自 #qconsf</p> 
+ <p><a href="https://twitter.com/orion_quotient">Jonathan Calvert ‏@orion_quotient</a> : 从 #qconsf 冒险后回到了 #dc – 真正的学习行动要开始了！</p> 
+</blockquote><h2>结论</h2><p>每次 QCon 的成功都依赖于这个事实，那就是几乎从零开始创建的专家小团队，即组成的程序委员会。</p><p>QConSF 2012 与会人员包括 Jez Humble, Patrick Linskey, Steve Vinoski, Dio Synodinos, Aino Vonge Corry, Floyd Marinescu, and Nitin Bharti。这些参与者确保了新主题反应在企业开发中当前趋势，主题演讲既有教育性也有实践性。InfoQ在接下来的几个月内，将会对大部分<a href="http://www.infoq.com/qconsanfrancisco2012;jsessionid=80BF4B2B177B3262CAE45414291AA85B">演讲发布视频</a>。<a href="http://qconsf.com/sf2012/videocalendar/">发布日程</a>可以在QCon SF 的网站上找到。</p><p>QCon 是由 Trifork (GOTO and other Conferences) 以及 InfoQ 的母公司 C4Media 主办的. <a href="http://www.qconferences.com/">QCon 大会</a> 包括 QCon New York, QCon San Francisco, QCon London, QCon Berlin, QCon Beijing,QCon Hangzhou, QCon Tokyo, and QCon Sao Paulo.</p><div class="clearer-space"></div></body></html>

@@ -1,0 +1,29 @@
+<html>
+ <head></head> 
+ <body> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/7.htmlb">从 QCon 旧金山 2012中学到的关键经验和教训</a>本文摘取了 QConSF 2012中，针对所有演讲、主题及活动的一些关键分享，包括编辑与参会者的博客文章，还有活动期间twitter上的反馈。 
+  </div> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/6.htmlb">对比iOS网络组件：AFNetworking VS ASIHTTPRequest</a>在开发iOS应用过程中，如何高效的与服务端API进行数据交换，是一个常见问题。哪一款组件更适合自己，是 AFNetworking（AFN）还是 ASIHTTPRequest（ASI）？本文从用法、功能、性能和原理几个方面对二者进行简单对比，看看二者之间到底存在着怎样的区别，到底应该如何选择。 
+  </div> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/5.htmlb">大数据解决方案设计</a>Jonathan Natkins在本文中解释了如何利用Apache Hadoop结合Flume、Hive和Oozie等组件实现一个典型的数据管理系统。 
+  </div> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/4.htmlb">自建CDN防御DDoS（3）：架构的后续改进</a>本文是《自建CDN防御DDoS》系列的第三篇，介绍CDN架构的后续改进。后续改进主要包括三个方面：DNS智能解析+轮询+存活监测，集中式日志分析+攻击防御，以及多节点CDN的快速部署+图形化管理。 
+  </div> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/3.htmlb">Hadoop虚拟研讨会</a>在本次虚拟研讨会中，InfoQ采访了多位Hadoop提供商和用户，他们就Hadoop的现在和将来发表了看法。 
+  </div> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/2.htmlb">NoSQL的现状</a>Stefan Edlich是德国柏林Beuth HS技术的高级讲师。他对NoSQL的现状进行了评论，考虑到了它的演化、财务方面的影响、标准的缺失、当前的格局、图书以及该领域的领导者和新加入者，并得出了NoSQL现在就要关注这样的结论。 
+  </div> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/1.htmlb">新书：《24小时学会jQuery Mobile》</a>Sams出版社最近出版了Phil Dutson的一本新书《24小时学会jQuery Mobile（Sams Teach Yourself jQuery Mobile In 24 Hrs）》，它向web开发者介绍了如何使用jQuery Mobile构建移动Web应用。 
+  </div> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/0.htmlb">Hadoop和元数据（解决阻抗失配问题）</a>Apache HCatalog这个新项目是针对Hadoop表和存储的管理层，这个管理层可以让Pig、MapReduce和Hive等不同的数据处理工具更加容易的进行数据的交互操作。 
+  </div> 
+ </body>
+</html>
