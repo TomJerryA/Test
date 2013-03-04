@@ -1,29 +1,40 @@
-<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>Greenplum Pivotal HD结合了SQL和Hadoop的优势</h3><p><a href="http://www.greenplum.com/">EMC Greenplum</a>宣布了一个新的Hadoop发行版本——<a href="http://www.greenplum.com/blog/topics/hadoop/introducing-pivotal-hd">Pivotal HD</a>，其中包含一个完全运行于HDFS之上的MPP数据库，兼容SQL，而且速度“比Hive快数百倍”。</p> 
-<p><a href="http://www.greenplum.com/blog/topics/hadoop/introducing-pivotal-hd">Pivotal HD</a>支持标准Hadoop发型版本的常用特性（包括HDFS、Pig、Hive、Mahout和Map-Reduce等），但又加入了一些其他的组件，具体如下面结构图所示：&nbsp;</p> 
+<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>雅虎禁止员工远程办公引发争议</h3><p>&nbsp;</p> 
+<p>近日，雅虎要求所有员工都要到公司办公室办公，此举引发了远程办公社区的各种质疑。这是要变相裁员？还是对如何管理远程办公有所误解？对雅虎而言，这是正确举措吗？</p> 
+<p>几天前，雅虎的人力与发展执行副总裁Jackie Reses向所有员工发送了一份<a href="http://allthingsd.com/20130222/physically-together-heres-the-internal-yahoo-no-work-from-home-memo-which-extends-beyond-remote-workers/">备忘录</a>，宣布所有在家办公的安排都不再有效，从6月开始，每位员工都要回到办公室工作。Reses的理由是，“交流和合作非常重要，所以我们需要在一起工作。” 她还暗示，远程办公的雅虎员工未能胜任其工作：“在家办公往往会牺牲速度和质量。”</p> 
+<p>雅虎有很大一部分员工在家办公，他们来自各个部门，包括客户支持、市场营销和工程等，很多是非生产性部门。<a href="http://according%20to%20business%20insider%2c/">根据Business Insider的消息</a>，有位不愿透露姓名的前雅虎工程师提到，“无论如何，我支持禁止在家办公这一规定。因为‘在家办公’在雅虎滥用得太厉害了。有些事是要看公司的。”</p> 
+<p>雅虎的前广告技术经理Michael Katz也同意这一决定：</p> 
 <blockquote> 
- <p class="image-wide"><img src="/resource/news/2013/03/Pivotal-HD-SQL-Hadoop/zh/resources/Pivotal1.png;jsessionid=540433CD1303453CA40B37273BEB89B0" alt="" _href="img://Pivotal1.png" _p="true" /></p> 
+ <p>&nbsp;</p> 
+ <p>改进交流与合作，人与人之间的交互能产生更好的集体智慧。</p> 
+ <p>真正的问题是，有意义的交互能否转变为实际的价值，也就是股东的利益。</p> 
 </blockquote> 
-<p>Pivotal的主要组件是<a href="http://www.greenplum.com/blog/dive-in/hawq-the-new-benchmark-for-sql-on-hadoop">HAWQ</a>，这是一个MPP（Massively Parallel Processing）关系数据库，借助一种动态流水线机制直接运行于Hadoop中的HDFS之上，其特性包括：</p> 
+<p>&nbsp;</p> 
+<p>Business Insider还补充道，此举“让很多雅虎员工感到不安，有些是在工作的妈妈们，她们说真希望能像CEO Marissa Mayer那样有钱在办公室里办个育儿室”。Mayer去年秋天生了宝宝，她花钱“<a href="http://www.businessinsider.com/marissa-mayer-who-just-banned-working-from-home-paid-to-have-a-nursery-built-at-her-office-2013-2">在自己的办公室里建了个育儿室</a>”。有一个在家办公的雅虎员工，其丈夫问到：“如果我的妻子带着孩子和保姆去上班，并把他们放在隔壁，真不知道会发生什么。”</p> 
+<p>一个“熟悉Mayer考虑过程”的消息人士认为这是雅虎削减人员、让公司更健康的一个机会，这是一种“不是裁员的裁员”。雅虎现在“结构庞大，规模臃肿”，“在过去的15年里越来越臃肿、怠惰”。</p> 
+<p>雅虎对远程办公的措施在技术社区中引起了很多抵触。Scott Hanselman是一位有5年远程办公经验的微软员工，他在博客上说<a href="http://www.hanselman.com/blog/BeingARemoteWorkerSucksLongLiveTheRemoteWorker.aspx">如果自己是雅虎员工的话他会辞职</a>：“如果我在为雅虎远程工作的时候收到这份备忘录，我当时就会辞职。我也可能会有眼力见地离职。谈的全是让人完全失去工作动力的东西。”</p> 
+<p>&nbsp;</p> 
+<p>他认为雅虎之所以这么做，有三个原因：</p> 
 <ul> 
- <li>兼容SQL——支持各个版本的SQL，包括SQL92、SQL99和SQL 2003 OLAP等。百分之百兼容PostgreSQL 8.2。</li> 
- <li>面向行或面向列的数据存储。</li> 
- <li>查询优化器——查询可以运行于成千上万个节点上。</li> 
- <li>完全兼容ODBC/JDBC。</li> 
- <li>交互式查询——大数据集上的复杂查询可以以秒级或次秒级的速度解决。</li> 
- <li>数据管理——提供了表统计和表安全等功能。</li> 
- <li>支持存储在HDFS、Hive、HBase、Avro、ProtoBuf、分隔的文本和序列化文件中的数据。</li> 
- <li>深度分析——包含了数据挖掘和机器学习算法。</li> 
+ <li>管理人员认为远程办公的员工可能没那么多贡献，于是让他们像苏菲一样，必须做出选择，这实际是强制离职，属于含蓄地裁员。不过便于免被称作裁员，只是修改了远程办公政策，对吧？</li> 
+ <li>这是彻头彻尾的失策，也是对远程办公人员如何看待自己、如何提供价值的完全误解。</li> 
+ <li>这清楚地说明，雅虎没有像样的方式来衡量员工的生产率与产出。</li> 
 </ul> 
-<p>Greenplum的高级技术总监Gavin Sherry做了一个演示（见该<a href="http://www.greenplum.com/webcasts?commid=68121">视频</a>的42分42秒），在60个节点组成的HDFS集群上，有总量达几个TB的10亿行数据，下列SQL语句可以在13秒内执行完，这提供了接近实时的能力：</p> 
-<pre><p>SELECT gender, count (*)<br />FROM retail.order JOIN customers ON retail.order.customer_ID = customers.customer_ID<br />GROUP BY gender;</p></pre> 
-<p>据EMC Greenplum 的解决方案架构师<a href="http://www.greenplum.com/blog/author/donald-miner">Donald Miner</a>介绍，“<a href="http://www.greenplum.com/blog/topics/hadoop/introducing-pivotal-hd">HAWQ比Hive快数百倍</a>”，下图是Greenplum提供的基准测试结果（<a href="http://public.brighttalk.com/resource/core/9757/hadoop-the_foundation_for_change_15465.pdf">PDF</a>）：</p> 
+<p>&nbsp;</p> 
+<p>Hanselman认为雅虎在前进的途中丢失了信任：</p> 
 <blockquote> 
- <p class="image-wide"><img src="/resource/news/2013/03/Pivotal-HD-SQL-Hadoop/zh/resources/Pivotal2.png;jsessionid=540433CD1303453CA40B37273BEB89B0" alt="" _href="img://Pivotal2.png" _p="true" /></p> 
+ <p>最后，这会归结为信任问题，信任可能会写在公司政策的每一页，尽管未必会引起注意。有的员工是作为技术专家被雇佣的，那公司信任这个技术专家吗？远程办公要求公司必须信任员工，就算没人盯着、没有定期与同事们进行实际地交流，他们也能做好工作。</p> 
 </blockquote> 
-<p>HAWQ能够在“次秒级别内”解决查询问题，“同时做到了在同一引擎内支持规模更大的数据集和完整的SQL表达能力”。Miner解释了这是如何做到的：</p> 
+<p>&nbsp;</p> 
+<p>作家、演讲家Scott Berkun写到，<a href="http://scottberkun.com/2013/in-defense-of-remote-work-and-marrisa-mayer/">雅虎将同一尺度用到所有人身上的这一决策是错误的</a>，实际上会事与愿违：</p> 
 <blockquote> 
- <p>我们有所谓的“分段服务器（segment server）”来管理每个表的一个分片。集群中的每个数据节点上会运行一些分段服务器。不过这种数据分片是完全保存在HDFS内的。有一个“主节点”负责存储顶层元数据、构建查询计划并将节点本地的查询推送到分段服务器上。</p> 
- <p>在查询启动时，数据将从HDFS中读出并加载到HAWQ执行引擎中。HAWQ遵循MPP架构，不同于将数据溢出到磁盘上和在磁盘上建立检查点（如MapReduce），它会让数据流过流水线的不同阶段。另外，分段服务器是一直运行的，所以不存在启动时间。</p> 
+ <p>关于创造性人才如何工作，管理人员的任何片面决定都是错误的。你有什么资格认为对数百员工而言，把自己当父母、把员工当儿女是最好的。更喜欢自主权的、最有才能的员工将会离开。而不那么有才能的、更喜欢依赖他人的员工会留下。</p> 
 </blockquote> 
-<p>Pivotal HD有三个版本（<a href="http://public.brighttalk.com/resource/core/9707/pivotal_hd_enterprise_datasheet-1_15391.pdf">PDF</a>)：企业版、数据库服务版和用于评估的社区版。<br /> <strong>查看英文原文：</strong><a href="http://www.infoq.com/news/2013/02/Pivotal-HD-SQL-Hadoop;jsessionid=540433CD1303453CA40B37273BEB89B0">Greenplum Pivotal HD Combines the Strengths of SQL and Hadoop</a>&nbsp;</p> 
+<p>&nbsp;</p> 
+<p>雅虎抱怨员工在家办公会牺牲速度和质量，Berkun认为这并没有数据支持，但他承认“在雅虎可能的确如此”。他还补充到，此举最后可能对雅虎是有帮助的：</p> 
+<blockquote> 
+ <p>她[Mayer]是CEO，对公司情况的了解比我们多。我们只是局外人。雅虎可能恰恰需要一次震动，而拿远程办公开刀就是具体的一招，以此让大家听到她的大声疾呼，“都醒醒吧，好好表现”。</p> 
+</blockquote> 
+<p>&nbsp;</p> 
+<p>雅虎失去其优势，再也不是Web时代的领跑者，这已不是秘密。因此他们必须有所行动。更喜欢远程办公或的确有这种需要的人会离开公司。其他人从6月开始就要每天到办公室上班了。如果此举是裁员的一种尝试的话，那这并非良策，因为这样不加区别地裁员，裁掉不好的员工的同时也丢掉了好员工。如果此举是要重建公司及其文化，那我们得等上几年才能看出雅虎走向何方。不管怎样，这是关于远程工作的一个强烈信号，管理者在允许员工在家办公之前是会再三考虑的。</p> 
+<p><b>查看英文原文：<a href="http://www.infoq.com/news/2013/03/Yahoo-stop-remote-work;jsessionid=8379723056CABD02E2CE5C2D04C66A1D">Reactions to Yahoo!’s Decision to Forbid Employee Telecommuting</a></b></p> 
 <p id="lastElm"></p></body></html>

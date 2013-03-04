@@ -1,8 +1,8 @@
 <html>
  <head></head> 
- <body>
-  <div>
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/11.java">Anime version of Scrum overview diagram available from Scrum Primer website</a>The authors of the Scrum Primer, which includes a graphic explaining the Scrum process which is available for download and use under the creative commons license, have released an anime cartoon version of the diagram, also under a creative commons license.
+ <body> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/11.java">Anime version of Scrum overview diagram available from Scrum Primer website</a>The authors of the Scrum Primer, which includes a graphic explaining the Scrum process which is available for download and use under the creative commons license, have released an anime cartoon version of the diagram, also under a creative commons license. 
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/10.java">Windows Blue with New Kernel, Internet Explorer 11, Bing Integration, Updated Apps</a>Coming Summer will most likely witness the preview of Windows Blue which is being rumored as a major update to Windows 8. 
