@@ -1,8 +1,8 @@
 <html>
  <head></head> 
- <body>
-  <div>
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/9.htmlb">学习现代C++：Barbara Moo专访</a>StartFragmentC++在上世纪80年代问世时恰逢面向对象编程兴起，C++也成为软件开发领域的主要编程语言之一。在C++出现后的若干年里，脚本语言和托管语言也逐渐流行起来。InfoQ采访了Barbara Moo，她是《C++ Primer》第五版的合著者之一，这本书是关于C++11和现代C++开发的。
+ <body> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/9.htmlb">学习现代C++：Barbara Moo专访</a>StartFragmentC++在上世纪80年代问世时恰逢面向对象编程兴起，C++也成为软件开发领域的主要编程语言之一。在C++出现后的若干年里，脚本语言和托管语言也逐渐流行起来。InfoQ采访了Barbara Moo，她是《C++ Primer》第五版的合著者之一，这本书是关于C++11和现代C++开发的。 
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/8.htmlb">Hadoop的现在和未来</a>在本次虚拟研讨会中，InfoQ采访了多位Hadoop提供商和用户，他们就Hadoop的现在和将来发表了看法。 
