@@ -1,13 +1,49 @@
-<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>Visual Studio信息汇总</h3><h2>Visual Studio Update 2的二月份CTP</h2> 
-<p>Microsoft继续为即将到来的Visual Studio 2012 Update 2推出更新。最新版的<a href="http://www.microsoft.com/en-us/download/details.aspx?id=36539">Update 2 CTP 3</a>已经提供下载。如同以往的版本，新版本还不适合部署到生产环境中。不过来自Microsoft的<a href="http://blogs.msdn.com/b/bharry/archive/2013/02/11/ctp-for-visual-studio-2012-update-2-vs-2012-2-is-available.aspx">Brian Harry</a>指出，下一个的CTP就将能够部署到生产环境了。<br /> 最新的CTP中持续添加了新的特性。首先的是Visual Studio Premium版本中加入了对“Fakes”的支持（译注：Microsoft Fakes是一套可以在Unit Test中自动生成Stub或Mock的类库），以前只有Ultimate版本支持该特性。Microsoft Test Manager现在支持对整个测试计划的克隆，这使得重用已有计划更加方便。而使用HTML和JavaScript的开发者也将从新增的“UI响应工具”（又名Visual Profiler）中受益。<br /> 之前的CTP中引入的基于web的测试用例管理工具，现在不但支持对某些时间过长的（几天或几周）测试进行暂停和恢复的操作，还能在机器重启恢复测试。基于web的测试用例现在也能够添加附件了。</p> 
-<h2>DevLabs移至Visual Studio库</h2> 
-<p>长久以来，<a href="http://visualstudiogallery.msdn.microsoft.com/">Visual Studio Gallery</a>都用于发布Visual Studio的各种插件和扩展。本周Microsoft宣布，它已经把DevLabs门户从MSDN移至Gallery。现在，<a href="http://visualstudiogallery.msdn.microsoft.com/site/search?f%5b0%5d.Type=Affiliation&amp;f%5b0%5d.Value=DevLabs&amp;f%5b0%5d.Text=Microsoft%20DevLabs">DevLabs</a>不再是个独立的部分，可以通过Gallery找到它。<br /> 就像Microsoft的<a href="http://blogs.msdn.com/b/somasegar/archive/2013/02/19/the-evolution-of-devlabs.aspx">S.Somasegar</a>所说，有些项目的首次亮相就是出现在DevLabs上，包括：</p> 
-<ul> 
- <li><a href="http://blogs.msdn.com/b/somasegar/archive/2009/02/23/devlabs-code-contracts-for-net.aspx">Code Contract</a></li> 
- <li><a href="http://chesstool.codeplex.com/">CHESS</a>，一个并发测试的工具</li> 
- <li><a href="http://research.microsoft.com/en-us/projects/pex/">Pex and Moles</a>，另一个测试工具</li> 
- <li><a href="http://blogs.msdn.com/b/somasegar/archive/2009/05/08/building-parallel-applications-using-axum.aspx">Axum</a>，一门实验性质的.NET 语言，用于创建并行应用程序（<a href="http://www.microsoft.com/en-us/download/details.aspx?id=21024">该语言的二进制包</a>现在仍然可以下载）</li> 
-</ul> 
-<hr /> 
-<p>感谢<a href="http://infoq.com/cn/author/%E5%BA%B7%E9%94%A6%E9%BE%99]">康锦龙</a>对本文的审校。</p> 
+<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>工程师与用户体验——QCon北京2013“用户体验与产品设计”专题出品人石岩专访</h3><p>用户体验是指用户访问一个网站或使用一个产品时的主观感受。它可以用于测试产品的满意度，直观地传达一个产品的特质。用户体验没有一个确切的衡量标准；使用者的状态，系统性能，以及环境都会对其造成影响。随着互联网产品的发展，用户体验被越来越多的公司所重视，其也被视为决定一个网站成败与否的关键因素。但在实际的产品设计中，我们不得不将商业计划、时间成本等因素考虑在内。如何让用研结果对产品产生直接的价值？是追求完善的用户体验还是快速推出产品也成为了每个公司必须要面对的问题。</p> 
+<p><a href="http://www.qconbeijing.com/speaker.php?id=147">本届QCon北京2013</a>，InfoQ特别邀请到<a href="http://www.qconbeijing.com/speaker.php?id=147">豆瓣前端工程师石岩</a>来担任第一次QCon用户体验专题的出品人。石岩昵称石头，ID: mockee。09年加入豆瓣，见证了豆瓣前端团队从无到有一步步发展壮大。他参与过豆瓣大部分产品的前端开发工作，热衷于各类新技术的探索与性能优化，促进新技术在实际项目中的应用，如 HTML5 及桌面版豆瓣FM。石岩热爱技术与设计，各种小洁癖；七年站长经历，曾混迹于体育媒体圈；打拼过创业团队，尝尽互联网行业苦辣酸甜；认为前端开发是技术与设计的完美融合，坚守至今。</p> 
+<p>以下是采访内容。</p> 
+<p><strong>InfoQ：</strong>能否先简单谈谈您在用户体验与产品设计这个领域的从业经验，和您对此领域的理解？</p> 
+<blockquote> 
+ <p><strong>石岩：</strong>严格来讲我并没有设计领域专职的从业经验，但一路走来却又从没离开过设计。在我看来，产品设计和用户体验是两个领域，一个着眼于确定需求解决问题，一个专注改善产品的实际使用感受。对于一个项目来说这两类设计同等重要，不同行业根据自身产品形态、导向的不同都有自己的侧重。就互联网行业来说，近年来 Web App, Mobile App 的出现将用户体验设计提升到了一个全新的高度，其中最重要的因素是，出色的用户体验大幅提升了产品的价值。</p> 
+</blockquote> 
+<p><strong>InfoQ：</strong>在您眼中，一个好的产品设计人员，需要有什么样的特质？</p> 
+<blockquote> 
+ <p><strong>石岩：</strong>洞察力、判断力、创造力，这三点至关重要；洞悉事物本质，充分理解需求，找对问题并以恰当的方式处理问题是产品设计的首要任务。而专注细节、追求极致以及对行业、设计、技术的持续关注则是一名合格产品设计人员应具备的基本素质。</p> 
+</blockquote> 
+<p><strong>InfoQ：</strong>豆瓣是一个以“简”见长的独特网站，能否根据豆瓣的情况，讲讲产品设计中的繁与简怎么拿捏？</p> 
+<blockquote> 
+ <p><strong>石岩：</strong>豆瓣始终将用户体验放在第一位，这已成为公司文化不可或缺的一部分 。如何拿捏设计中的“繁”与“简”是对设计师最大的挑战。在豆瓣，虽然没有产品设计师一职，但设计团队的成员更多是在扮演这个角色；充分理解需求，直面复杂问题，正确定义问题，之后才是赋予其视觉语言。“简”并不是纯粹的简化，繁与简其实是对首要解决的问题的界定。</p> 
+</blockquote> 
+<p><strong>InfoQ：</strong>您认为产品设计在未来会有怎样的趋势？</p> 
+<blockquote> 
+ <p><strong>石岩：</strong>我想产品设计的本质不会变，只是形式必然更加趋于移动化了，这是个充满机遇和挑战的转变。</p> 
+</blockquote> 
+<p><strong>InfoQ：</strong>在您眼中，移动互联网是不是互联网的衍生品？相比桌面端，移动互联网产品设计的核心要素有哪些？</p> 
+<blockquote> 
+ <p><strong>石岩：</strong>我不这么认为。虽然目前的一些移动互联网产品确实扮演着简化桌面应用以及补充网站移动访问需求的角色，但这些并不是移动互联网核心的价值，其完全可以依靠自身特点独立发展，满足不同方向的用户需求。相较桌面端，移动互联网产品的设计原则并没有本质变化，只是核心要素有所区别：在设计移动互联网产品时，应拓展思维，合理支配并充分施展设备自身的硬件能力，专注于核心功能；同时还要关注移动产品对于流量及电池消耗等问题。</p> 
+ <p>在回答这个问题时我突然想到目前的电子书，它的现状及发展趋势与移动互联网很类似；大多时候电子书只是作为实体书的轻便移植版出现，但它完全有能力借助多媒体及用户体验越发丰富的电子阅读设备的支持，转变为实体书无法替代的形式独立发展，以更加多元的方式传达信息。</p> 
+</blockquote> 
+<p><strong>InfoQ：</strong>能否提出三个在2012年出现的能打动你的互联网产品？</p> 
+<blockquote> 
+ <p><strong>石岩：</strong>下面提到的三个产品是我个人非常钟爱且频繁使用的，评价难免偏颇，各位多担待。</p> 
+ <ul> 
+  <li> <p><a href="http://drive.google.com">Google Drive</a>：可靠的云端存储服务，不断与旗下出色在线 Web 应用深度整合。个人体会：在线应用得心应手，存储服务安全可靠。</p> </li> 
+  <li> <p><a href="http://line.naver.jp/">LINE</a>：可以勉强划入 2012 年的产品。后来居上的跨平台即时通讯工具，免费通话及原创萌贴纸是其主要亮点。不是鼻祖，功能也算不上“大而全”，但诸多创新点非常打动人心。</p> </li> 
+  <li> <p><a href="https://itunes.apple.com/en/app/google-maps/id585027354?mt=8">Google Maps iPhone App</a>：Google Maps 不必多介绍，个人认为是目前最好的世界地图服务。这款 2012 年新上架的应用统一了设计，在交互上做了大胆创新。好看，易用。</p> </li> 
+ </ul> 
+</blockquote> 
+<p><strong>InfoQ：</strong>这是在软件开发大会中第一次增加设计类的专题，您认为工程师和设计应该有怎样的关联？</p> 
+<blockquote> 
+ <p><strong>石岩：</strong>作为产品的最终实现者和用户，工程师有权了解产品需求和进展以及参与产品讨论，除此之外还应该增进与设计师的协作，以自身的专业知识弥补设计师对于实现方式了解的不足，从而完善设计，同时产出对于前端工程师来说合理且最大可用的设计交付物。</p> 
+</blockquote> 
+<p><strong>InfoQ：</strong>做为一个资深前端开发人员，受邀担任此次QCon的用户田与产品设计专题出品人，您希望通过此专题为大家带来哪些实践经验，从而解决哪些问题？</p> 
+<blockquote> 
+ <p><strong>石岩：</strong>首先会让一直专注于技术的开发人员通过实例对用户体验、产品设计有进一步的认识；了解产品设计创新的思路，以及如何挖掘用户需求，以“简单”的设计去诠释产品的理念、有效地提升产品体验，从而推动产品价值最大化。同时也会涉及设计人员与开发工程师如何高效协作的问题。</p> 
+</blockquote> 
+<p><strong>InfoQ：</strong>谢谢接受InfoQ的采访，最后一个问题：如果不做从事IT行业，您最希望从事的工作是什么？</p> 
+<blockquote> 
+ <p><strong>石岩：</strong>呵呵，这个问题倒没仔细想过，设计与编程是从小的爱好，如果可以从工作回归到爱好当然最好。非要从事一项工作的话，我想可能是旅行摄影师或者赛车手:)</p> 
+</blockquote> 
+<p>(采访内容结束)</p> 
+<p>用户体验与产品设计专题信息，请见<a href="http://www.qconbeijing.com/track16.html">专题页面</a>。关于此次QCon北京其他专题的详细信息，请移步至<a href="http://www.qconbeijing.com/">大会官网</a>。</p> 
+<p>需要特别注明的是，每年QCon大会门票都会在开幕前售罄，及早预定可提前确保席位，并享受更低折扣。现在报名参加将可享受9折优惠。团体购票（5人及以上）将享有更多优惠。详请咨询qcon【at】cn.infoq.com，或直接致电010-64738142。报名请点击<a href="http://qconbeijing.mymova.com/">报名页面</a>。</p> 
 <p id="lastElm"></p></body></html>
