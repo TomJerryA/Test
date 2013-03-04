@@ -1,12 +1,22 @@
-<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>Android 4.2.2中对安全性的改进</h3><p><a href="http://developer.android.com/about/versions/jelly-bean.html">Android 4.2</a> Jelly Bean最近发布了更新，通过加入附加特性来增强应用程序的安全性。它其中的一个特性可以让用户在安装程序之前对应用程序进行验证，从而防止将有害的应用程序安装到移动设备上。并且它可以在发现应用程序损坏的情况下终止安装过程。</p> 
-<p>当你设备里的应用程序试图向一个会产生额外费用的收费服务短号码发送短信时，Android系统会发出提示，由你来选择是否允许该应用程序发送短信或者终止发送过程。</p> 
-<p>最新的版本允许用户自定义配置VPN，从而使设备只有在VPN创建以后才可以访问网络。此外，SSL核心库的实现也提供了对证书绑定的支持，权限也被以分组的形式进行组织管理。它还针对用户选择的权限提供了详细的信息。</p> 
-<p>在Android 4.2.2中，<a href="http://developer.android.com/about/versions/android-4.2.html">目标API级别为17</a>的应用程序会将每个ContentProvider的export属性默认设置为false，从而可以最终减小应用程序的默认攻击面。此次的更新还可以减小针对root权限升级来带来的潜在攻击面，因为installd守护进程不会再以root用户的方式运行。</p> 
-<p>此外，初始化脚本还会遵守O_NOFOLLOW语法规则从而预防符号链接相关的攻击。它还实现了FORTIFY_SOURCE，它可以被系统函数库和应用程序调用，从而预防内存泄漏。</p> 
-<p>Android 4.2.2进行了相关修改，以便利用<a href="http://www.openssl.org/">OpenSSL</a>来完成<a href="http://developer.android.com/reference/java/security/SecureRandom.html">SecureRandom</a>和<a href="http://en.wikipedia.org/wiki/RSA_(algorithm">Cipher.RSA</a>)的实现。该版本还为使用OpenSSL 1.0.1的<a href="http://en.wikipedia.org/wiki/Transport_Layer_Security">TLSv1.1</a>和TLSv1.2增加了SSLSocket的支持，而且还减小了应用程序的默认攻击面。它还包含了<a href="http://www.webkit.org/">WebKit</a>、<a href="http://www.libpng.org/pub/png/libpng.html">libpng</a>、OpenSSL和<a href="http://www.xmlsoft.org/">LibXML</a>开源库的安全补丁。</p> 
-<p>“推荐的做法是在程序第一次启动的时候生成一个真正随机的AES key并将它存储在内部存储空间中。”Android开发者关系团队的Fred chung说道。</p> 
-<p>Android 4.2.2 引入了USB安全调试方面的内容，当启用安全调试的时候，只有被用户认证过的主机才可以通过Android SDK自带的<a href="http://developer.android.com/tools/help/adb.html">ADB工具</a>经由USB连接来访问设备的<a href="http://developer.android.com/sdk/index.html">内部构件</a>。</p> 
-<p>查看英文原文：<a href="http://www.infoq.com/news/2013/02/android-4-2-2;jsessionid=178E0741FC2B6E99BBBCC74705A5AAA5">Security Enhancements in Android 4.2.2</a></p> 
+<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>Brent Ozar谈如何提高SQL Server的生产力</h3><p>SQL Server顾问<a href="http://www.brentozar.com/archive/2013/02/7-things-developers-should-know-about-sql-server">Brent Ozar</a>最近发表了一篇文章，谈到了每个<a href="http://www.microsoft.com/en-in/SQLserver/default.aspx">SQL Server</a>开发者在他们日常的编程任务中应该遵循的七种技术。按照Brent的说法，开发者应该尽量避免使用<a href="http://msdn.microsoft.com/en-IN/library/ms188385.aspx">ORDER BY</a>语句，他还建议开发者将所有查询结果放入应用程序内存中再进行排序。</p> 
+<p>如果数据库要执行数据处理、排序、加载及缓存等任务，理想情况下每项任务应该使用一个独立的数据库。Brent建议这些数据库使用简单恢复模式，而且每天进行一次备份。</p> 
+<p>他同时建议开发者应有效地利用<a href="http://msdn.microsoft.com/en-us/library/ms188754.aspx">动态管理视图</a>（DMV），还建议对于应用程序中的不同场景，如数据读写、5至15分钟前的老数据以及昨天之前的老数据，应该使用3种不同的连接字符串来建立连接。按照Brent的说法，第一种连接字符串的使用场景不易伸缩，因为我们在SQL Server中并没有多少办法将负载横向扩展到处理写入的多台服务器上。</p> 
+<p>“对应用来说，<a href="http://blogs.technet.com/b/sql_server_isv/archive/2010/12/21/using-read-committed-snapshot-isolation-mini-lab.aspx">已提交读快照隔离（Read-Committed Snapshot Isolation）</a>是比<a href="http://blog.sqlauthority.com/2011/05/08/sql-server-what-kind-of-lock-with-nolock-hint-takes-on-object/">With(Nolock)</a>更好的选择，因为少了很多阻塞的麻烦，同时提供了一致的数据”，Brent说道。</p> 
+<p>按照Brent所说，你不应该再去参考老版本的书和在线文档，因为它们不会定期更新。“当看到某个听着不错的建议时，我喜欢采取‘质疑Phil博士’（译注：Dr.Phil是美国的一档电视秀，一些观众对主持人的生活观念持有不同意见）这样的策略”，Brent说道。</p> 
+<p>最后Brent还建议，如果想重用代码，那么最好用<a href="http://msdn.microsoft.com/en-us/library/aa174792(v=sql.80).aspx">存储过程</a>和<a href="http://msdn.microsoft.com/en-in/library/ms187956.aspx">视图</a>代替函数。他认为函数对数据库层的性能有很大影响。</p> 
+<p>不过，有些开发者并不同意Brent的建议。</p> 
+<p>Tyler Burd说道：</p> 
+<blockquote> 
+ <p>我不同意无节制地采用第2条意见（即“避免ORDER BY，而是在应用程序中排序”）。</p> 
+</blockquote> 
+<p>Brent对Tyler的评论回应道：</p> 
+<blockquote> 
+ <p>为什么不把整个数据集加载到应用程序中并缓存下来呢？</p> 
+</blockquote> 
+<p>还有个别开发者留言，反对Brent所说的避免函数而使用视图和存储过程的观点。</p> 
+<p>你是支持还是反对Brent的技巧和建议呢？请在此留言，InfoQ保证将其发给Brent进行处理和回复如何？</p> 
+<p><strong>查看英文原文</strong>：<a href="http://www.infoq.com/news/2013/02/brent-ozar-sql-server;jsessionid=61C300779C4E0576E61C887793175DF5">Brent Ozar on Improving Productivity with SQL Server</a></p> 
 <hr /> 
-<p>感谢<a href="http://infoq.com/cn/author/%E4%BE%AF%E4%BC%AF%E8%96%87">侯伯薇</a>对本文的审校。</p> 
+<p>感谢<a href="http://www.infoq.com/cn/bycategory.action;jsessionid=61C300779C4E0576E61C887793175DF5?authorName=臧秀涛">臧秀涛</a>对本文的审校。</p> 
+<p>给InfoQ中文站投稿或者参与内容翻译工作，请邮件至<a href="mailto:editors@cn.infoq.com">editors@cn.infoq.com</a>。也欢迎大家通过新浪微博（<a href="http://www.weibo.com/infoqchina">@InfoQ</a>）或者腾讯微博（<a href="http://t.qq.com/infoqchina">@InfoQ</a>）关注我们，并与我们的编辑和其他读者朋友交流。</p> 
 <p id="lastElm"></p></body></html>
