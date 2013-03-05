@@ -1,0 +1,61 @@
+<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>NPR华裔女工程师分享web应用前端高效开发</h3><p><a href="http://www.npr.org/">NPR</a>是美国国家公共广播电台的简称，英文全称为National Public Radio，是一家以美国本土民众为广播对象的综合性广播电台，与超过860家独立非营利性公共广播电台合作，每周制作和播放超过130小时的原创节目，听众数目达到2600万，是练习英语听力的好素材。目前听众可以通过AM/FM收音机、数字和卫星无线电广播、播客、互联网等途径在线收听NPR广播。</p> 
+<p>NPR的应用开发团队也为NPR开发出一系列优秀的web应用，包括：</p> 
+<ul> 
+ <li><a href="http://apps.npr.org/sotomayor-family-photos">最高法院法官索托马约尔的家庭相册</a></li> 
+ <li><a href="http://apps.npr.org/inauguration">2013总统就职典礼</a></li> 
+ <li><a href="http://apps.npr.org/state-of-the-union-2013/">国情咨文</a></li> 
+ <li><a href="http://elections.npr.org/">总统大选应用</a></li> 
+</ul> 
+<p><a href="http://k-zhu.com/">Katie Zhu</a>是一名服务于NPR APP团队的web开发工程师。前不久，她在团队官方博客上撰写了一篇文章：《<a href="http://blog.apps.npr.org/2013/02/14/app-template-redux.html">如何开发从不崩溃、成本极低的新应用</a>》。</p> 
+<p>文章开头，她指出：</p> 
+<blockquote> 
+ <p>我们所用的应用都是<a href="http://github.com/nprapps">开源</a>的。</p> 
+</blockquote> 
+<p>不过他们仅仅使用了两台服务器，</p> 
+<p>Katie点明：</p> 
+<blockquote> 
+ <p>在新闻编辑室开发的节奏很快，在优先级设定上，与为技术产品团队开发完全不同。</p> 
+</blockquote> 
+<p>她总结出3个特点：</p> 
+<ul> 
+ <li><strong>笨蛋才用那么多服务器。</strong>新闻编辑室可不是摇钱树。钱要花到刀刃上，这才是关键。服务器很昂贵，维护服务器就意味着不能用那么多时间开发。……我们现在只有一台生产环境服务器，一个EC2小型实例，用来运行周期后台作业，不作为web服务器使用。</li> 
+ <li><strong>如果App不能在移动设备上使用，那就等于不能用。</strong>我们开发的大部分应用有10%到20%的流量来自移动设备。但是对于<a href="http://elections.npr.org/">总统大选应用</a>，有50%的用户都在手机上访问“<a href="http://elections.npr.org/bigboard/president.html">选情公告</a>”，这个页面甚至还不能根据设备自适应。总结：出色的移动体验绝对有必要。</li> 
+ <li><strong>为使用开发，为重用重构。</strong>这是我最大的转变。当我们面对截止日期开发时，为了保证准时发布，必须要做出一些牺牲，新闻不等人。可是作为一个程序员，要忽略我那些恶心人的JavaScript代码中的味道，这让我压力山大，而且焦虑不已，因为我知道，那些技术债务以后总是要还的。</li> 
+</ul> 
+<p>接下来，Katie介绍了团队使用的<a href="http://github.com/nprapps/app-template">web应用模板</a>。该模板为启动型项目提供了一个骨架，其中使用的开源项目包括：</p> 
+<ul> 
+ <li><a href="http://flask.pocoo.org/">Flask</a>，完成本地项目呈现</li> 
+ <li><a href="http://jinja.pocoo.org/">Jinja</a>，HTML模板</li> 
+ <li><a href="http://lesscss.org/">LESS</a>，处理CSS</li> 
+ <li><a href="http://ricostacruz.com/backbone-patterns/#jst_templates">JST</a>，使用<a href="http://underscorejs.org/#template">Underscore.js</a> JavaScript模板</li> 
+</ul> 
+<p>对于选择这些工具的原因，Katie也做了进一步介绍：</p> 
+<blockquote> 
+ <p>Flask提供无缝开发流程。</p> 
+ <p>我们运行Flask应用，以简化本地开发，而且这对我们的模板至关重要。我们调整了app.py，形成开发工作流，将本地开发和部署之间的麻烦降到最低，它可以帮我们：</p> 
+ <ul> 
+  <li>按需渲染Jinja HTML模板</li> 
+  <li>编译LESS为CSS</li> 
+  <li>编译不同的JST模板成为一个单独的templates.js文件</li> 
+  <li>编译app_config.py成为app_config.js，这样我们的应用配置就有了JavaScript版本。</li> 
+ </ul> 
+ <p>我们的应用配置存在app_config.py中，使用环境变量设置部署目标。app_config.py可以检测我们运行在部署环境还是生产环境，并改变相应配置。对于本地开发项目和部署项目，我们以自动化方式编译app_config.js，以便于同样的应用配置可以在客户侧使用。保持配置一致，而且不重复——这也符合DRY原则！</p> 
+</blockquote> 
+<p>他们的应用模板中还使用了资源管道（asset pipeline）。进行本地开发时，他们用LESS编写样式，并在不同文件中编写JavaScript。部署时，他们把所有的CSS放在一个文件中，所有的JavaScript放在另一个文件中，然后使用gzip将它们打包部署到生产环境。</p> 
+<p>这种方式，让他们的应用对移动设备更友好，减少浏览器请求数量，同时页面加载变得更快。</p> 
+<p>Bootstrap被他们用来作为前端CSS的基础，原因在于：</p> 
+<ul> 
+ <li>Bootstrap使用网格系统</li> 
+ <li>原生响应，有个基本的响应处理机制还是挺牛的</li> 
+ <li>Bootstrap模块实现相对容易</li> 
+ <li>没有那么丑（他们几乎重新编写了所有的样式）</li> 
+ <li>跨浏览器测试简单得多</li> 
+</ul> 
+<p>Katie详细介绍了最后一点。</p> 
+<blockquote> 
+ <p>Bootstrap在样式重置方面做得很好。我们的浏览器测试变得简单多了，麻烦少多了，几乎没啥痛苦。</p> 
+ <p>我作为应用团队的新人，有Bootstrap打底子，我可以随意编写JavaScript事件绑定和功能，还不用担心跨浏览器出问题。</p> 
+</blockquote> 
+<p>团队使用<a href="http://docs.fabfile.org/en/1.5/">Fabric</a>管理设置和配置，包括本地和部署时都会用。而且Fabric的链式命令也很有帮助。</p> 
+<p>NPR在Github的主页上，列出了他们开发过的web应用项目。其中还包括一个他们自己总结的<a href="https://github.com/nprapps/bestpractices">最佳实践</a>，里面记录了他们对于HTML&amp;CSS、JavaScript还有Python的一些最佳实践和编码习惯，感兴趣的同学可以前往观摩。</p> 
+<p id="lastElm"></p></body></html>
