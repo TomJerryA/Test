@@ -1,6 +1,9 @@
 <html>
  <head></head> 
- <body> 
+ <body>
+  <div>
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/13.java">PhoneGap 2.5 Enables Application Cache and InAppBrowser Geolocation</a>PhoneGap 2.5 has been released with support for application cache and InAppBrowser geolocation including several updates and bug fixes.
+  </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/12.java">Eclipse Orion 2.0 Now Runs Locally on Node.js</a>Eclipse Orion 2.0 has been recently released with support for Node.js, Projects, more and improved Shell commands, better JavaScript code assist and performance improvements. 
   </div> 
