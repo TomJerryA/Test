@@ -1,8 +1,8 @@
 <html>
  <head></head> 
- <body>
-  <div>
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/15.java">Expired SSL Certificates Break Azure and TFS</a>Windows Azure experienced a 9 hour outage on February 22 that affected all users who relied on the storage system, including those using Team Foundation Service. InfoQ examines the details that have emerged surrounding the root causes of the failure.
+ <body> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/15.java">Expired SSL Certificates Break Azure and TFS</a>Windows Azure experienced a 9 hour outage on February 22 that affected all users who relied on the storage system, including those using Team Foundation Service. InfoQ examines the details that have emerged surrounding the root causes of the failure. 
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/14.java">Latest News from Microsoft and Amazon Regarding Android</a>Microsoft Azure now has an Android SDK including notification push to Android devices. Amazon makes available a Mobile Ads API that can be used to display adds from their network on any Android device in parallel with those from Google AdMob. 
