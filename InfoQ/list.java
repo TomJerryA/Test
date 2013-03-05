@@ -1,8 +1,8 @@
 <html>
  <head></head> 
- <body>
-  <div>
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/14.java">Latest News from Microsoft and Amazon Regarding Android</a>Microsoft Azure now has an Android SDK including notification push to Android devices. Amazon makes available a Mobile Ads API that can be used to display adds from their network on any Android device in parallel with those from Google AdMob.
+ <body> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/14.java">Latest News from Microsoft and Amazon Regarding Android</a>Microsoft Azure now has an Android SDK including notification push to Android devices. Amazon makes available a Mobile Ads API that can be used to display adds from their network on any Android device in parallel with those from Google AdMob. 
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/13.java">PhoneGap 2.5 Enables Application Cache and InAppBrowser Geolocation</a>PhoneGap 2.5 has been released with support for application cache and InAppBrowser geolocation including several updates and bug fixes. 

@@ -1,6 +1,9 @@
 <html>
  <head></head> 
- <body> 
+ <body>
+  <div>
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/9.javab">Design Pattern Automation</a>Most boilerplate code stems from repetitive implementation of design patterns that are so well-understood that they could be implemented automatically if we had a way to teach it to compilers.
+  </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/8.javab">Self-Organizing Organizations (For Real)</a>All you’ve ever wanted to know about self-organized companies, without daring actually run one. 
   </div> 
