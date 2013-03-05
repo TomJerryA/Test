@@ -1,0 +1,28 @@
+<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>性能扩展的那些事儿：一味增加硬件并不能解决响应时间问题</h3><p>编者按：关注可扩展性话题的朋友们应该对<a href="http://highscalability.com/">HighScalability.com</a>这个网站不陌生。现在，通过跟HighScalability网站的站长Todd Hoff的沟通，InfoQ中文站会定期将HighScalability上的优秀文章翻译过来，分享给关注可扩展性话题的开发和运维朋友们。</p> 
+<p>Stuff The Internet Says on Scalability是Todd Hoff从2010年开始启动的一个系列，每周结束的时候，他会将自己本周关注的一些不错的文章汇总在一起，发布在HighScalability上面。</p> 
+<p>以下是上周的汇总，截止到3月1日。上周由于Delicious书签服务中断，Todd收藏的一些链接无法加进来，所以内容较少一些。</p> 
+<p><a href="http://highscalability.com/blog/2013/3/1/stuff-the-internet-says-on-scalability-for-february-29-2013.html">Stuff The Internet Says On Scalability For February 29,&nbsp;2013</a></p> 
+<ul> 
+ <li> <p>语录：</p> 
+  <ul> 
+   <li><a href="https://twitter.com/muratdemirbas/status/306820542739144705">@muratdemirbas</a>：在云计算网络服务领域，非脆弱性（antifragility）意味着弹性扩展性与网络效应的结合。</li> 
+   <li><a href="https://twitter.com/SQLPerfTips/status/304584605703475200">@SQLPerfTips</a>：一味增加硬件并不能解决响应时间问题，正确的索引系统才是关键。</li> 
+   <li><a href="http://dice.se/wp-content/uploads/Scaling-the-Pipeline.pdf">Stefan Boberg</a>：我们并不需要最快的I/O请求速度！</li> 
+   <li><a href="http://mythz.servicestack.net/blog/2013/02/27/the-deep-insights-of-alan-kay/">Alan Kay</a>：要打造出伟大且极具扩展性的系统，关键在于设计出理想的通信模块，而非过分纠结内部属性与行为。</li> 
+   <li><a href="http://antirez.com/news/51">antirez</a>：在编程工作中保持专注度的无上要诀：永远不要中断工作流程。</li> 
+  </ul> </li> 
+ <li> <p>NPR应用团队指导我们<a href="http://blog.apps.npr.org/2013/02/14/app-template-redux.html">如何开发一款永不停机且几乎不会带来任何额外成本的全新应用</a>。两台服务器共同协作能在极低的成本支出下带来高度可用性。即使是在大选当晚这种人人亢奋的时段，单独一台服务器也足以满足用户的需求。两台设备使用Flask、Jinja、LESS、JST、Bootstrap、Fab、git、Python、Node.js以及S3，借以提供静态内容。本文以精彩的阐述帮我们了解这套设备组合如何以低成本、低开销的方式实现业务需求。</p> </li> 
+ <li> <p><a href="http://labs.spotify.com/2013/02/25/in-praise-of-boring-technology/">Spotify对某些看似“无聊”的技术抱以高度赞扬</a>：大多数情况下，真正能够支持工作的理想工具其实早已包含在业务软件当中，并拥有足以保障成功的客观证明。举例来说，我们可以利用Java或Python来代替Go或Node.js进行后端服务编写；大家也完全可以将数据存储在MySQL或PostgreSQL而非MongoDB或Riak当中（作者还考虑利用Zookeeper代替DNS以获得更加动态化的配置，并希望通过Cassandra解决分布式写入问题。）</p> </li> 
+ <li> <p><a href="http://akfpartners.com/techblog/2013/02/26/scalability">扩展性面临终结？</a>我们很可能看到IaaS与PaaS解决方案在自动扩展及执行方面迎来持续改善，因此很多应用程序将不再需要为用户流量增长所带来的扩展问题而忧心。</p> </li> 
+ <li> <p><a href="http://strataconf.com/strata2013/public/schedule/proceedings">Strata大会的幻灯片已经上线了</a>。视频资料也将在几周内上线。</p> </li> 
+ <li> <p><a href="http://www.youtube.com/watch?v=xmfXoLPinEw">谷歌云技术讲座</a>。Anthony Voellm带来了一场很好的云计算知识普及讲座，并对谷歌云平台进行了详细的介绍。</p> </li> 
+ <li> <p><a href="http://www.youtube.com/watch?v=cULAPp8idms">#hangops</a>是一场非正式性交流聚会，旨在以DevOps为核心讨论各类话题。它弥补了实业企业所欠缺的产值类IQ素养。对这一话题感兴趣的朋友也可以关注一下<a href="http://devopscafe.org/">DevOps茶话会</a>。</p> </li> 
+ <li> <p><a href="http://dice.se/wp-content/uploads/Scaling-the-Pipeline.pdf">渠道扩展</a>。Stefan Boberg专注于创建一套复杂的现代化运营流程，帮助用户了解资产的处理方式并进行逆向渠道操作。海量数据与海量合作者的强强联手实在很有搞头。</p> </li> 
+ <li><a href="http://www.slideshare.net/mlmiller1/20130227-seascale-cloudant-16845042">CloudantGeo看起来很有意思</a>。很简单的HTTP上的JSON，分区自动化，以及时空查询。</li> 
+ <li>全球范围内一些有关可扩展性的讨论活动，比如<a href="http://www.meetup.com/Seattle-Hadoop-HBase-NoSQL-Meetup/">西雅图</a>与<a href="http://www.meetup.com/toronto-high-scalability/">多伦多</a>的两场。</li> 
+ <li><a href="http://news.ycombinator.com/item?id=5287784">Colmmacc建议大家</a>将一切都以静态形式保留在Apache环境当中，这样线程就不会在加载过程中出现创建或删除活动：MaxClients——1000；MinSpareThreads——1000；&nbsp;MaxSpareThreads——1000；ThreadsPerChild——25。</li> 
+ <li>MarkedUp网站就<a href="http://blog.markedup.com/2013/02/cassandra-hive-and-hadoop-how-we-picked-our-analytics-stack/">Cassandra、Hive与Hadoop展开一系列精彩的讨论：我们该如何选择自己的分析堆栈</a>。Cassandra、Hive与Hadoop在当前阶段已经成为理想的业务工具，但我们在实际部署前还需要进行大量现场验证及性能测试。</li> 
+ <li>Netflix公司发布<a href="http://techblog.netflix.com/2013/02/announcing-evcache-distributed-in.html">EVCahce：专为云平台打造的分布式内存内数据存储方案</a>。这是一种整合了多种优势的集群化缓存，Netflix公司希望利用它为用户的个人偏好、视频观看记录、播放列表及评分等信息提供缓存服务。</li> 
+ <li>Chef似乎已经<a href="http://www.infoq.com/news/2013/02/facebook-chef;jsessionid=2B0F8874211C47B0D0957C2852D8ACB5">在业界中获得压倒性优势</a>：Facebook、EC2、Zynga以及CERN都在用它。</li> 
+</ul> 
+<p id="lastElm"></p></body></html>
