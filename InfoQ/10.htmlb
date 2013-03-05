@@ -1,0 +1,27 @@
+<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>TeamToy2的开发故事：面向移动的API设计，代码重用，快速迭代</h3><p>2013年的元旦后，一个名叫<a href="http://teamtoy.net/">TeamToy</a>的项目再次进入了人们的视野。跟BaseCamp、TeamBox、Asana等服务类似，TeamToy是一个面向团队的Todo类产品，目的在于促进团队沟通、提升协同做事的效率。</p><p>TeamToy项目的启动在2008年前后。早期的TeamToy在产品设计层面走过很多弯路，也积累了很多经验。TeamToy的作者陈理捷专门为此写过一篇<a href="http://ftqq.com/2013/01/teamtoy-notes/">产品备忘录</a>，透露了很多TeamToy产品诞生与发展的故事。对于TeamToy项目本身，2013年是个极大的转折点：</p><ol> 
+ <li>整体架构进行了重写，重写后的项目发布为TeamToy2。</li> 
+ <li>有了一个<a href="http://teamtoy.net/">靓丽的产品主页</a>，不仅分别提供了自架设版本的源码下载和<a href="http://yunshangdian.com/?a=item&amp;id=1083">新浪云商店版本的一键安装入口</a>，而且还加入了大量产品介绍和FAQs等说明。</li> 
+ <li>整个项目的代码<a href="https://github.com/easychen/TeamToy">转移到了GitHub上</a>，从代码本身到整个开发流程，都彻底开源。</li> 
+ <li>版本迭代速度较之前大大加快，采用了“小步快跑”的模式。</li> 
+ <li>专门针对智能手机发布了移动版本：<a href="https://github.com/easychen/TeamToy-Pocket">TeamToyPocket</a>，并且也完全开源。</li> 
+</ol><p>目前，TeamToy2仍处于快速更新、完善产品的阶段，用户基数也在不断增长。其移动版本TeamToyPocket刚刚<a href="http://weibo.com/1088413295/zlQwDr1VO">在昨天宣布开源</a>，为此，InfoQ中文站联系到了TeamToy的作者陈理捷，请他谈谈整个TeamToy2开发中的一些想法和经验，以及移动版本的选型、整个项目开源这一决策的考量。</p><p>陈理捷（<a href="http://weibo.com/easy">@Easy</a>），80后，宅，重度萌物控。现任新浪云平台产品主管，负责过SAE、新浪移动云、新浪云商店、微盘等产品。个人博客：《<a href="http://ftqq.com/">方糖气球</a>》。</p><p><strong>InfoQ：从TeamToy v1到v2，整体进行了重写。做出这个决定，都考虑到哪些因素？</strong></p><p><strong>Easy：</strong></p><blockquote> 
+ <p>最主要的是考虑到移动端的强烈需求，这要求提供客户端可用的API，Web页面需要进行自适应设计，而TeamToy V1写于08年，并没有面向API设计，使用的一些周边库也比较陈旧。另外就是产品设计上，TeamToy v1更多的是去追求功能，而V2更多的是希望简捷，整个前端界面的风格都需要重做。</p> 
+ <p>考虑这些因素后，我觉得重写的成本虽然不低，但更利于项目的长期发展。实际上在重写过程中，我还顺便把它所用的框架<a href="https://github.com/easychen/LazyPHP">LazyPHP</a>升级到3，换上了JQuery、Bootstrap等主流的前端库和框架，最后节省了大量的时间。</p> 
+</blockquote><p><strong>InfoQ：在重写TeamToy的过程中，有没有哪些地方觉得自己跟写第一版的时候相比的处理更好，或者眼界更高的情况？</strong></p><p><strong>Easy：</strong></p><blockquote> 
+ <p>重写开始时我就定下了几个规矩，这是之前在第一个版本上后悔莫及的：（1） 完全面向API设计，即使是Web版，也调用标准API接口实现。（2）坚持写单元测试，这样在项目中后期，上线新功能后才能监测对原有功能是否有影响。（3）让项目支持一键升级，这样才能将BUG的危害降到最低。</p> 
+ <p>第一点保证了系统的扩展性，收获了不少的第三方插件；第二和第三则保证了项目的快速迭代，现在从一个bug修复到用户代码更新通常只需要1~2个小时，这点让TeamToy更具竞争力。</p> 
+ <p>其实写第二版时，我并没有比第一版聪明多少，但血泪教训让我保持了更好的习惯，所以开发起来轻松了很多。</p> 
+</blockquote><p><strong>InfoQ：从TeamToy v2发布以来，开发的迭代速度很快（Github上的commit频率从1月开始就很高）。目前在这个项目上的时间规划是如何安排的？</strong></p><p><strong>Easy：</strong></p><blockquote> 
+ <p>因为TeamToy主要是用业余时间来开发，所以我在功能上一直坚持“小步快跑”和“需求拉动”的原则。可能你已经注意到了，TeamToy2直接使用reversion当版本号，即使3~5行的代码的一个更新，也会作为一个版本发布出来。一方面这样产品的质量会更高，另一方面也更容易获得成就感，Bug这种东西，即使是很小的几个，清理掉以后会感觉世界都变美好了。在需求管理上，我一般是只有用户多次遇到的小需求才会慢慢迭代进去，而大块的需求一般会考虑很久，最后放到长假时去做 (T__T)</p> 
+</blockquote><p><strong>InfoQ：TeamToy Pocket选用了PhoneGap进行打包。在做这个选型时，都考虑过哪些因素，PhoneGap的优势在哪里？</strong></p><p><strong>Easy：</strong></p><blockquote> 
+ <p>选择用PhoneGap进行打包，最主要还是因为采用HTML5技术可以重用大量的代码；比如在TeamToyPocket的TODO页面，TODO的样式和事件绑定的JS其实重用了Web版的。当然也有其他的打包工具，但显然PhoneGap是其中发展最快的一个，实际上借助PhoneGap，TeamToyPocket不但可以支持Android和iOS平台，新的Tizen平台、甚至Mac桌面都是支持的。对于一个以跨平台为卖点的客户端来讲，这是非常重要的。</p> 
+</blockquote><p><strong>InfoQ：移动版的开发有没有遇到什么难点？如何解决的？</strong></p><p><strong>Easy：</strong></p><blockquote> 
+ <p>最开始使用了JQueryMobile做框架，但实测时发现整体表现相当差，于是后来我自己重写了一个简单的框架，主要思想是通过div切换来避免ajax载入，实际使用起来流畅度好了不少。</p> 
+ <p>另外因为PhoneGap实际上是使用移动设备默认的浏览器内核，所以要处理各种兼容性问题。比如Android2.3和4.1以后对touch事件不同处理方式。</p> 
+ <p>不过整体上来讲，采用HTML5开发还是很自由的，可以很容易的实现自己想要的效果。</p> 
+</blockquote><p><strong>InfoQ：对于开源，有些人觉得是一种文化信仰，有些人觉得就是一种开发协作的模式。你如何定义开源？你认为开源对TeamToy这个项目最大的好处是什么？</strong></p><p><strong>Easy：</strong></p><blockquote> 
+ <p>开源对我来讲，更多的是一种推动我们积累知识向前进步的方式。</p> 
+ <p>为什么这么说呢？现在的很多协作是基于开放平台的，Facebook和新浪微博上有很多的应用，让我们的工作和生活都更加方便了。但如果Facebook倒闭了呢？如果新浪微博把你的APPKey收回了呢？我们就瞬间回到了原始时代，而第三方在这些平台上花费的精力就完全报废了。</p> 
+ <p>但TeamToy不一样，因为通过开源，我释放了控制权，使得任何人都可以自行架设它。只要你能找到服务器，你就能继续你已经习惯了的高效工作环境。不会因为开发商的问题而无法继续；而你为TeamToy贡献的所有插件，都会成为整个TeamToy用户群的财富。</p> 
+ <p>这就是开源对TeamToy的意义，它保证了这个项目不会退步，保证了用户得到的不会失去。</p> 
+</blockquote><div class="clearer-space"></div></body></html>
