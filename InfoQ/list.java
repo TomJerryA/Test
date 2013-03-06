@@ -1,8 +1,8 @@
 <html>
  <head></head> 
- <body>
-  <div>
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/18.java">Will Java 8 solve PermGen OutOfMemoryError?</a>As part of Oracle's ongoing project to merge the HotSpot and JRockit codebases, Oracle has announced that they will remove PermGen from the Java 8 version of the HotSpot JVM. The effects of the removal of PermGen can now be checked with Java 8 Early Access builds, it is time to find out if all PermGen problems have been resolved.
+ <body> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/18.java">Will Java 8 solve PermGen OutOfMemoryError?</a>As part of Oracle's ongoing project to merge the HotSpot and JRockit codebases, Oracle has announced that they will remove PermGen from the Java 8 version of the HotSpot JVM. The effects of the removal of PermGen can now be checked with Java 8 Early Access builds, it is time to find out if all PermGen problems have been resolved. 
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/17.java">Final Preview of Visual Studio 2012 Update 2 Released</a>The anticipated final preview of VS2012/TFS2012 Update 2 has been released. It brings a few more updates including the highlighting of the new LightSwitch HTML client. 
