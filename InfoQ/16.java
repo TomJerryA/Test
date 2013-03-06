@@ -1,29 +1,29 @@
-<p>One of the&nbsp;goals of Agile software development is to deliver working software fast and frequently. Swarming is a technique that helps agile teams to do this. What is swarming, what are the benefits of swarming, and when and how to apply it?</p> 
-<p>Vin D'Amico explains in <a href="http://brainslink.com/2013/01/agile-teams-swarm-to-greatness/">agile teams swarm to greatness</a> that teams that use agile software development can deliver more software with less planning, and respond rapidly:</p> 
-<blockquote> 
- <p>They quickly go from planning to designing to coding to testing to finishing. Then, they do it again — and they keep doing it until the software meets the goals defined by the stakeholders.</p> 
-</blockquote> 
-<p>But how do agile teams respond so quickly? Vin states that:</p> 
-<blockquote> 
- <p>(…) great teams swarm. They try to resolve the issue or remove the impediment now. If they can’t, fine, move it to the backlog but only as a last resort.</p> 
-</blockquote> 
-<p>In <a href="http://tobeagile.com/2012/12/11/seven-strategies-for-team-swarming/">seven strategies for team swarming</a>, David Bernstein explains how swarming&nbsp;help to build an effective team which is able to focus and solve complex problems:</p> 
-<blockquote> 
- <p>When swarming, the whole team works together on the same problem. It helps to know each other and work well together. Generally, groups need to go through the phases of forming (getting to know each other) and storming (having conflicts and resolving them) before they get to performing (being a highly functional team), so give everyone the space to become a team.</p> 
-</blockquote> 
-<p>Swarming works in a similar way as&nbsp;pair programming, by having team members work closely together&nbsp;on the same task:</p> 
-<blockquote> 
- <p>Rather than working alone, see if solitary tasks can be done by two or sometimes three people. Often, the momentum gained by working in pairs offsets putting two people on the same task. Remember, high performance teams almost always pair on tasks.</p> 
-</blockquote> 
-<p>What is swarming? Some years ago, InfoQ&nbsp;published&nbsp;a summary of a Yahoo group discussion&nbsp;on swarming in&nbsp;<a href="http://www.infoq.com/news/2011/01/swarming;jsessionid=1C543CB8B23475927ED53F6316BAE283">swarming: what’s the point?</a>. It explains the purpose of swarming: “getting the team to focus on getting work that is valued by the business <i>done</i>” and “to increase quality and consistency by getting the whole team involved in a story as near to the beginning as possible”. According to Vin D’Amico, ”[Swarming] is simply the act of coming together to solve a problem or get something done quickly”. David Bernstein defines it as “A swarm is where you get the whole team together to focus on solving a single problem”.</p> 
-<p>Oleksi Derkatch describes how&nbsp;<a href="http://oleksiderkatch.blogspot.nl/2011/03/swarming.html">swarming</a>&nbsp;works, and what it can deliver:&nbsp;</p> 
-<blockquote> 
- <p>The idea is that you get all the developers to work (swarm) on a single story, instead of having each developer working on a separate story. The goal is to get more stories fully completed. It's better to have 80% of the features 100% done, instead of having 100% of the features 80% done.</p> 
-</blockquote> 
-<p>Renee Troughton explains how organization can use swarming as a way to build teams that are more innovative, in her blog post <a href="http://agileforest.com/2011/12/20/the-new-age-of-business/">the new age of business</a>:</p> 
-<blockquote> 
- <p>This is where swarming comes in. Most organisations throw their ‘resources’ about from project to project with little thought as to whether the person is actually interested and passionate about that type or project. Additionally they do it with little thought of true speed and its relationship to return of investment.</p> 
- <p>To resource the work we need passionate people who will focus on this idea like it truly is their newborn baby. (…) Employees interested in being part of this work should be able to sign up for it and be able to be immediately released to follow through on it.</p> 
-</blockquote> 
-<p>Do your teams swarm? Does it help them to deliver working software&nbsp;fast and frequently?</p> 
-<p id="lastElm"></p>
+<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>Insight into the Phases of Scaling</h3><p>Christopher Smith shared insight into approaching and solving the problems of scaling web applications in his presentation &quot;<a href="http://www.socallinuxexpo.org/scale11x/presentations/five-stages-scale">The Five Stages of Scale</a>&quot; at <a href="http://www.socallinuxexpo.org/scale11x">Scale11x</a> last month. In Christopher's presentation he made a case for approaching scaling in a stages with well defined components that are either added or optimized to improve the overall scale of a web application. &nbsp;He took the audience through an <a href="http://www.socallinuxexpo.org/sites/default/files/presentations/SCALE11.pdf">entertaining and informative journey</a> from load balancing through optimized usage of the UDP protocol.</p> 
+<p class="MsoNormal">The most important basic scaling architecture is to have the ability to add web application servers behind a load balancer. A load balancer allows for linear scaling of a web application by partitioning requests and sessions across application servers. This technique amounts to adding application servers to increase scale linearly, however it just delays the inevitable <a href="http://www.facebook.com/pages/C10k-problem/120373131343187">C10K problem</a> because it does not increase the responsiveness of individual requests.</p> 
+<p class="MsoNormal">Christopher spoke about how caching systems placed in front of web applications can provide for scaling by handling read operations. Multiple caching systems can be used in combination to maximize scale. Memcache servers and the like can <a href="http://www.infoq.com/news/2007/11/cfrp;jsessionid=53D3F7179F43DFDB153A126B01ED5B7D">store data in memory for quick retrieval by application servers</a>. A reverse proxy can be placed in front of the load balancer and serve cached resources. Finally a content delivery network (or CDN) can be used to put cached resources closer to end users. Caching however has its limitations in the writing of data.</p> 
+<p class="MsoNormal">An optimized persistence framework will take your ability to scale writes to a new phase in scale. According to Christopher, succeeding in this phase in combination with the before mentioned will be sufficient for most people. <a href="http://cloud.dzone.com/news/sql-vs-nosql-cloud-which">Choosing the proper SQL database or NoSQL databases</a> to match the application data structures will significantly improve scale. The ability to do concurrent read/writes will increase throughput and responsiveness of write operations. Finally if you can &quot;Cheat on <a href="http://www.techopedia.com/definition/23949/atomicity-consistency-isolation-durability-acid">ACID (Particularly C &amp; D)</a>&quot; you can get more writes done faster.</p> 
+<p class="MsoNormal">The underpinnings of these scaling techniques is the minimization of the latency of data reads/writes by web applications. Christopher shared the <a href="http://norvig.com/21-days.html#answers">latency times for different operations on computers</a>:&nbsp;</p> 
+<ul> 
+ <li>L1 cache reference - 0.5 ns</li> 
+ <li>Branch mispredict - 5 ns</li> 
+ <li>L2 cache reference - 7 ns&nbsp;</li> 
+ <li>Mutex lock/unlock - 25 ns</li> 
+ <li>Main memory reference - 100 ns&nbsp;</li> 
+ <li>Compress 1K bytes with Zippy - 3,000 ns</li> 
+ <li>Send 1K bytes over 1 Gbps network - 10,000 ns (or 0.01 ms)</li> 
+ <li>Read 4K randomly from SSD* - 150,000 ns (or 0.15 ms)</li> 
+ <li>Read 1 MB sequentially from memory - 250,000 ns (or 0.25 ms)</li> 
+ <li>Round trip within same datacenter - 500,000 ns (or 0.5 ms)</li> 
+ <li>Read 1 MB sequentially from SSD* - 1,000,000 ns (or 1 ms)</li> 
+ <li>Disk seek - 10,000,000 ns (or 10 ms)</li> 
+</ul> 
+<div>
+ The remainder of Christopher's presentation covered advanced scaling phases including:&nbsp;
+</div> 
+<ul> 
+ <li>Passing code instead of data using commodity servers: <a href="http://www-01.ibm.com/software/data/infosphere/hadoop/mapreduce/">Map/Reduce (Hadoop)</a>, DHT, (Cassandra, HBase, Riak)</li> 
+ <li>Routing data through data partitions: <a href="http://www.complexevents.com/2006/08/01/what%E2%80%99s-the-difference-between-esp-and-cep/">ESP/CEP</a>, Eigen, Storm, Esper, StreamBase, 0mq, etc.</li> 
+ <li>Using UDP instead of TCP&nbsp;</li> 
+</ul> 
+<p class="MsoNormal" style="margin-bottom: 0.0001pt;">The most advanced techniques are in use by companies that manage hyperscale web applications, for example <a href="http://www.facebook.com/note.php?note_id=39391378919">Facebook uses UDP to perform hundreds of thousands of requests/second against Memcached</a>.</p> 
+<p id="lastElm"></p><br><br><br><br><br><br></body></html>
