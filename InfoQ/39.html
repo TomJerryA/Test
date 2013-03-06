@@ -1,0 +1,59 @@
+<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>Spotify工程师讲述如何使用“无聊”技术完成服务发掘和数据库服务</h3><p>Bj&ouml;rn Edstr&ouml;m是互联网音乐服务Spotify的工程师，在Spotify的官方博客中，他讲述了<a href="http://labs.spotify.com/2013/02/25/in-praise-of-boring-technology/">Spotify为什么要使用一些“无聊”技术</a>的原因。</p> 
+<p>Bj&ouml;rn指出：</p> 
+<blockquote> 
+ <p>在Spotify的后端服务和架构中，我们使用了这些成熟和经过验证的技术，我会说明如何实现，以及这样做的原因。此外，我们还会试图说明Spotify何时不会使用某些经过验证的技术，背后的原因以及它们的问题。</p> 
+ <p>如今，更多时候，完成工作的合适工具，最好是使用已经存在了一段时间的软件，而且是有成功案例的。举个后端服务的例子，用Java或是Python，而不是Go或者Node.js。另一个例子，数据存储，用MySQL或PostgreSQL，而不是MongoDB或是Riak。</p> 
+</blockquote> 
+<p>对于“成熟”的定义，Bj&ouml;rn这样理解：</p> 
+<blockquote> 
+ <p>一项成熟技术的原则之一，就是对于你特定的使用案例，它在多大程度上能作为黑盒使用。如果你不时就得去捣腾下它的代码，就可以说这个项目对你来说还不够成熟，否则你就基本上不用，或者很少需要去给软件打补丁。</p> 
+ <p>这很重要，因为“完成工作的正确工具”有成本方面和临时性的效应。比如，考虑到配置和调优，一种存储解决方案对于你目前的负载和资源是有意义的，如果用户量和负载上来了，另一种方案就更有意义。</p> 
+</blockquote> 
+<p>接下来，Bj&ouml;rn先介绍了他们的DNS和绑定解决方案。</p> 
+<p>Spotify大量使用DNS，他们将其用作分布式的复制数据库，可处理大量读负载。在具体用途上，他们用DNS解决服务发现问题。而且，他们使用的SRV记录。DNS SRV记录是一种规范化名称，形式为：<em>name.</em>protocal.site，映射到一个主机名列表上，带有权重、优先级和端口号。</p> 
+<p>举个例子，当Spotify的客户端连接到接入点AP（就是客户端到Spotify后端的连接）时，它会寻找SRV记录 <em>spotify-client.</em>tcp.spotify.com。接入点为要发送请求的每个后台服务做如下事情：</p> 
+<p><code>$ dig +short _spotify-client._tcp.spotify.com SRV</code></p> 
+<p><code>10 12 4070 A1.spotify.com.</code></p> 
+<p><code>10 12 4070 A2.spotify.com.</code></p> 
+<p><code>10 12 4070 A3.spotify.com.</code></p> 
+<p><code>10 12 4070 A4.spotify.com.</code></p> 
+<p>上面的字段按顺序为：优先级、权重、端口号和主机。服务的一个用户可以根据权重比和优先级选择服务器。只有当所有服务器都宕机时，请求才能发送到低优先级的服务器上。上例中，所有四个主机名都有同样优先级（10）和同样权重（12），因此，在正确配置的环境中，它们会各自处理25%的流量。</p> 
+<p>支持Spotify的所有后端服务，都可以通过询问正确的SRV记录发现，服务之间也是这样彼此发现的。对于不适用DNS的，比如外部可见的web服务，他们在DNS前开发了HTTP外观。比如，某些客户端会发送HTTP请求，找出应该连接哪个接入点。</p> 
+<p>在某些情况下，Spotify使用CNAME和PTR记录来补充SRV记录，这主要针对某个服务器有特定目的的情况。</p> 
+<p>他们开发了一些工具，比如让SRV查找变得更简单的命令行工具，作为DNS缓存的 web服务等等，其中包括反向查找（将主机名映射到服务名）等特别功能。</p> 
+<p>他们还用DNS存储服务配置数据，比如在TXT记录中存储DHT环信息，并以此信息作为定位多个复制数据库的辅助。</p> 
+<p>在基础设施和系统管理方面，为了支持DNS，他们使用了一些有特色的开源项目，比如<a href="http://www.dnspython.org/">dnspython</a>、<a href="http://www.xbill.org/dnsjava/">dnsjava</a>和<a href="http://c-ares.haxx.se/">c-ares</a>，这些分别是用Python、Java和C开发的DNS解析器。</p> 
+<p>Spotify的DNS服务器上运行Bind，很多后端服务运行Unbound，这也是DNS服务器，用来改善性能，并降低主DNS服务器的负载。他们在自己的git库中维护DNS区域文件，并在DNS主服务器上运行一个小Makefile文件，从git库中部署变更，推送到不同数据中心的DNS从服务器上。</p> 
+<blockquote> 
+ <p>从2007年启动beta版本开始，这种方案就基本上没有变过，而且扩展性特别好，处理了数千台服务器、几十个服务器和几千万用户。</p> 
+</blockquote> 
+<p>不过最近，他们在考虑逐步放弃DNS，原因有：</p> 
+<ul> 
+ <li>部署新硬件时，管理DNS区域文件的开销过高。</li> 
+ <li>DNS提供对于世界的静态视角（“这些是应该正在运行的服务器”），当服务器越来越多时，动态视角变得越来越重要和有用（“这些是目前真正在运行的服务器”）</li> 
+</ul> 
+<p>截止2013年1月，他们尚未开始执行替代方案，但是已经开始调研Zookeeper。</p> 
+<p>在数据库方面，Spotify是PostgreSQL的重度用户。后端第一个版本就是用它。</p> 
+<p>Bj&ouml;rn认为：</p> 
+<blockquote> 
+ <p>PostgreSQL是高度成熟技术的上佳例子。除非用得太多，它“非常到位”，不用去折腾、甚至不用理解源码。PostgreSQL手册也是世界上开源项目中的最佳文档之一。</p> 
+ <p>在Spotify的开始阶段，负载较低时，PostgreSQL绝对是“完成工作的正确工具”。</p> 
+</blockquote> 
+<p>他们开始用PostgreSQL 8，并使用其中的复制特性。PostgreSQL 9出来后，他们在存储用户身份验证信息的集群中使用了9，一台主数据库服务器负责写，多台热备份服务器处理所有的读。</p> 
+<p>他们还开发了与基础设施相关的库，以相对智能方式判定使用哪个从数据库，基础设施库中跟踪节点健康状况，会从DNS中选取新节点，并停止向DNS记录中已经删除记录的服务器（或健康程度过低的服务器）发送请求。</p> 
+<p>选择成熟的技术还有一个好处，相关技术也相对成熟。Spotify大量使用Python的<a href="https://pypi.python.org/pypi/psycopg2">psycopg2</a>库，他们曾有一些服务使用<a href="www.sqlalchemy.org/;jsessionid=AF8D5812B3D5E688A6E171EFE26893BC">sqlalchemy</a>和类似项目，但很快开始编写自己的SQL到psycopg2中，这样可以深入控制和了解他们的环境。</p> 
+<p>为了降低到PostgreSQL服务器的连接数，他们最近开始使用<a href="pgbouncer.projects.pgfoundry.org/;jsessionid=AF8D5812B3D5E688A6E171EFE26893BC">pgbouncer</a>——这是一个连接池调度器。PostgreSQL的架构决定了PostgreSQL会为每个连接启动新进程，有连接池调度器有助于降低服务器资源使用率。</p> 
+<p>不过到了2009年，Spotify不断发展，服务器负载成为越来越大的问题。后来，他们选择了Cassandra：</p> 
+<blockquote> 
+ <p>这不是因为Cassandra是热门的新技术，而是因为它对我们来说是正确的工具，从经济角度和短期策略角度都是如此。</p> 
+</blockquote> 
+<p>他们有一个专人的人，全天候扑在Cassandra上面，因为它不像PostgreSQL那么成熟，也不完全是个黑盒子。他们从中得到的收获，是一种特定设置，对于特定情形很有用，这对于他们部署到更多数据中心和服务器上十分重要。</p> 
+<blockquote> 
+ <ul> 
+  <li>正确管理的Cassandra集群有更好的复制特性（特别是针对写操作）。</li> 
+  <li>正确管理的Cassandra集群可以更好地应对网络问题和失败，比如分区或是间歇性小故障。</li> 
+  <li>总得来说，从运维角度看，Cassandra在特定的失败情况下表现很好，比如服务器宕机、网络中断等，比PostgreSQL好。</li> 
+ </ul> 
+ <p>不过要注意，对Spotify来说这些是相对较新的问题，其中很多在几年前还没有。如果当时就用Cassandra，那就不是“完成工作的正确工具”了。</p> 
+</blockquote> 
+<p id="lastElm"></p><br><br><br><br><br><br></body></html>
