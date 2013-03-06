@@ -1,6 +1,9 @@
 <html>
  <head></head> 
- <body> 
+ <body>
+  <div>
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/10.javab">Growing EAI with Apache Camel</a>This article shows practical examples of typical integration challenges and explores how Apache Camel can meet them in the context of an integration solution that grows over time.
+  </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/9.javab">Design Pattern Automation</a>Most boilerplate code stems from repetitive implementation of design patterns that are so well-understood that they could be implemented automatically if we had a way to teach it to compilers. 
   </div> 

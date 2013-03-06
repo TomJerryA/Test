@@ -1,6 +1,9 @@
 <html>
  <head></head> 
- <body> 
+ <body>
+  <div>
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/10.c">50 dicas para aplica&ccedil;&otilde;es web mais r&aacute;pidas no Windows</a>O gerente de projetos do Internet Explorer Jatinder Mann da Microsoft apresentou uma palestra chamada 50 truques de performance para fazer suas aplica&ccedil;&otilde;es HTML 5 e sites mais r&aacute;pidos no evento BUILD, fornecendo v&aacute;rias dicas para criar aplica&ccedil;&otilde;es web mais r&aacute;pidas. Veja um resumo.
+  </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/9.c">MobileConf Brasil em S&atilde;o Paulo: iOS, Android e web mobile</a>Acontece em abril, em S&atilde;o Paulo, a primeira MobileConf, uma confer&ecirc;ncia inteiramente voltada &agrave; comunidade de desenvolvimento m&oacute;vel. Ser&atilde;o tr&ecirc;s tracks simult&acirc;neos, com foco em Android, iOS e desenvolvimento web para mobile. 
   </div> 

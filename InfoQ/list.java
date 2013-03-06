@@ -1,6 +1,9 @@
 <html>
  <head></head> 
- <body> 
+ <body>
+  <div>
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/17.java">Final Preview of Visual Studio 2012 Update 2 Released</a>The anticipated final preview of VS2012/TFS2012 Update 2 has been released. It brings a few more updates including the highlighting of the new LightSwitch HTML client.
+  </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/16.java">Insight into the Phases of Scaling</a>Christopher Smith shared insight into approaching and solving the problems of scaling web applications in his presentation &quot;The Five Stages of Scale&quot; at Scale11x last month. In Christopher's presentation he made a case for approaching scaling in a stages with well defined components that are either added or optimized to improve the overall scale of a web application. 
   </div> 
