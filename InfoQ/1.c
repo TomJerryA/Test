@@ -1,0 +1,17 @@
+<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>Programação Extremista: uma estratégia de aprendizagem focada na prática</h3><p><a href="http://ezyang.com/">Edward Z. Yang</a>, graduado pelo MIT e aluno de PhD em Stanford, publicou em seu blog <a href="http://blog.ezyang.com/2012/11/extremist-programming/">o artigo</a> &quot;Programa&ccedil;&atilde;o Extremista&quot;, em que sugere a t&eacute;cnica como estrat&eacute;gia eficiente para se aprender um conceito. (A t&eacute;cnica n&atilde;o tem liga&ccedil;&atilde;o com <a href="http://pt.wikipedia.org/wiki/Programa%C3%A7%C3%A3o_extrema">XP</a>). O autor define a PE como o &quot;ato de elevar um princ&iacute;pio acima de todas as coisas e coloc&aacute;-lo em pr&aacute;tica o m&aacute;ximo poss&iacute;vel&quot;.</p> 
+<blockquote> 
+ <p>Ap&oacute;s um experimento, normalmente olhamos para o extremismo e pensamos: &quot;Foi interessante, mas usar X em Y certamente n&atilde;o foi adequado. &Eacute; preciso usar a ferramenta correta para cada trabalho&quot;.</p> 
+</blockquote> 
+<p>Mas, segundo o autor, &agrave;s vezes &eacute; preciso usar a ferramenta &quot;errada&quot; para realizar um trabalho, pois pode ser que seja a ferramenta correta e n&atilde;o se saiba disso ainda.</p> 
+<blockquote> 
+ <p>Se voc&ecirc; n&atilde;o tentar usar fun&ccedil;&otilde;es em toda parte, pode n&atilde;o perceber a utilidade das fun&ccedil;&otilde;es que aceitam outras fun&ccedil;&otilde;es como argumento. Se n&atilde;o usar objetos em toda parte, pode n&atilde;o perceber que inteiros e at&eacute; mesmo a classe de um determinado objeto s&atilde;o tamb&eacute;m objetos</p> 
+</blockquote> 
+<p>O autor d&aacute; duas recomenda&ccedil;&otilde;es:</p> 
+<blockquote> 
+ <ol start="1"> 
+  <li>Quando estiver aprendendo um novo princ&iacute;pio, tente aplic&aacute;-lo o m&aacute;ximo poss&iacute;vel. Dessa maneira, poder&aacute; aprender mais rapidamente onde o princ&iacute;pio funciona bem ou n&atilde;o, mesmo se as primeiras intui&ccedil;&otilde;es a respeito estiverem erradas. Por outro lado, ao utilizar a ferramenta correta desde o in&iacute;cio, algumas oportunidades poder&atilde;o ser perdidas;</li> 
+  <li>Ao tentar articular a ess&ecirc;ncia de algum princ&iacute;pio, uma linguagem extremista &eacute; mais clara. Se quiser descobrir como &eacute; programar com avalia&ccedil;&atilde;o tardia, &eacute; preciso usar <a href="http://pt.wikipedia.org/wiki/Haskell_(linguagem_de_programa%C3%A7%C3%A3o)">Haskell</a>; n&atilde;o uma linguagem que oferece opcionalmente esse recurso. Mesmo que uma linguagem extremista seja menos pr&aacute;tica, ela ajuda a chegar ao n&uacute;cleo da quest&atilde;o muito mais r&aacute;pido.</li> 
+ </ol> 
+</blockquote> 
+<p>Mas o extremismo tem limites e n&atilde;o &eacute; apropriado na maioria das situa&ccedil;&otilde;es, destaca Yang. Ele sugere aplicar a t&eacute;cnica apenas em projetos pequenos, em pesquisas ou em projetos n&atilde;o cr&iacute;ticos. Nesses cen&aacute;rios, a programa&ccedil;&atilde;o extremista pode ser uma estrat&eacute;gia eficiente para se aprender novos conceitos e expandir os conhecimentos sobre programa&ccedil;&atilde;o.</p> 
+<p id="lastElm"></p><br><br><br><br><br><br></body></html>

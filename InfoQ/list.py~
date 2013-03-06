@@ -1,0 +1,35 @@
+<html>
+ <head></head> 
+ <body> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/9.javab">Design Pattern Automation</a>Most boilerplate code stems from repetitive implementation of design patterns that are so well-understood that they could be implemented automatically if we had a way to teach it to compilers. 
+  </div> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/8.javab">Self-Organizing Organizations (For Real)</a>All you’ve ever wanted to know about self-organized companies, without daring actually run one. 
+  </div> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/7.javab">Interview &amp; Book Review: “The Phoenix Project, A Novel About IT, DevOps &amp; Helping Your Business Win”</a>This book addresses the divide between business and IT and between dev, ops and other teams in IT. It will resonate at one point or another with anyone who's ever worked in IT. 
+  </div> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/6.javab">Refactoring Legacy Applications: A Case Study</a>To refactor legacy code, the ideal is to have a suite of unit tests to prevent regressions. However it's not always that easy. This article describes a methodology to safely refactor legacy code. 
+  </div> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/5.javab">Application Security Testing: The Double-sided Black Box</a>In this article, Rohit Sethi discusses the opaque nature of security verification tools and processes and the potential for false negatives not covered by techniques like automated dynamic testing. 
+  </div> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/4.javab">Fn.py: Enjoy Functional Programming in Python</a>Despite the fact that Python is not a pure-functional programming language, it's multi-paradigm and it gives you enough freedom to take advantage of the functional programming approach. 
+  </div> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/3.javab">DevOps @ Prezi</a>DevOps@Prezi is the second article of the “Monthly DevOps War Stories” series. Each month we hear what DevOps brings to a different organisation. This time we hear about &quot;learning devops from within&quot;. 
+  </div> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/2.javab">New Book: jQuery, jQuery UI And jQuery Mobile</a>“jQuery, jQuery UI and jQuery Mobile” takes you through the various jQuery libraries and also covers the plugin-architecture provided by jQuery. 
+  </div> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/1.javab">Cloudberry: An HTML5 Cloud Phone Platform for Mobile Devices</a>In this article, authors introduce Cloudberry, an HTML5-based cloud phone software which offers the benefit of changing features on mobile devices almost instantly. They also talk about challenges. 
+  </div> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/0.javab">Designing and Implementing Hypermedia APIs</a>This article (the second in a four-part series) focuses on the design of a hypermedia server based on the API designed for the class scheduling problem domain outlined in part one of the series. 
+  </div> 
+ </body>
+</html>

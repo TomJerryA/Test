@@ -1,8 +1,8 @@
 <html>
  <head></head> 
- <body>
-  <div>
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/16.java">Insight into the Phases of Scaling</a>Christopher Smith shared insight into approaching and solving the problems of scaling web applications in his presentation &quot;The Five Stages of Scale&quot; at Scale11x last month. In Christopher's presentation he made a case for approaching scaling in a stages with well defined components that are either added or optimized to improve the overall scale of a web application.
+ <body> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/16.java">Insight into the Phases of Scaling</a>Christopher Smith shared insight into approaching and solving the problems of scaling web applications in his presentation &quot;The Five Stages of Scale&quot; at Scale11x last month. In Christopher's presentation he made a case for approaching scaling in a stages with well defined components that are either added or optimized to improve the overall scale of a web application. 
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/15.java">Expired SSL Certificates Break Azure and TFS</a>Windows Azure experienced a 9 hour outage on February 22 that affected all users who relied on the storage system, including those using Team Foundation Service. InfoQ examines the details that have emerged surrounding the root causes of the failure. 

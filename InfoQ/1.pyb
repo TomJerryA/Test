@@ -1,0 +1,33 @@
+<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>オープンソースCMS DotNetNuke 7.0 リリース</h3><p>2012年11月28日に DotNetNuke 7.0 がリリースされた。DotNetNuke とは、世界中の70万サイト以上で利用されているオープンソースの CMS (Contents Management System) である。DotNetNuke は、.NET Framework で開発されているため Windows Server で動作する。今回のアップデートで、デザインも新しいスキンになり、ASP.NET Web API が採用され内部アーキテクチャも大きく改善された。</p><p>DotNetNuke 7.0 での大きな変更点として以下の3つがある。</p><ol> 
+ <li>インストーラの簡略化</li> 
+ <li>アーキテクチャの変更</li> 
+ <li>デザインの変更</li> 
+</ol><p>この記事では、これらの変更点について紹介する。 <br /> <br /> <img alt="" src="/resource/articles/CMS_DotNetNuke7-1207/ja/resources/101.jpg;jsessionid=19237C114AA5D63FD78610BE5AB1912A" _href="img://101.jpg" _p="true" /><br /> 図１．新しくなった DotNetNuke 7 のトップ画面のスキン</p><h2>インストーラの簡略化</h2><p>「ファイルパーミッション設定」、「データベース設定」、「アカウント設定」など複数画面にわたっていたインストールウィザードが、管理者のパスワード設定とデータベースの設定が１ステップで完了するシンプルなデザインに変更され、より簡単にすばやくインストールできるようになった。</p><p><img alt="" src="/resource/articles/CMS_DotNetNuke7-1207/ja/resources/02.jpg;jsessionid=19237C114AA5D63FD78610BE5AB1912A" _href="img://02.jpg" _p="true" /><br /> 図２．DotNueNuke 7.0 インストール画面</p><p>DotNetNuke 7.0 のインストール方法は、<a target="_blank" href="http://dotnetnuke.codeplex.com/">CodePlex</a> からダウンロードできるほか、Microsoft Web Platform Installer や WebMatrix からもインストールできる。</p><p><img alt="" src="/resource/articles/CMS_DotNetNuke7-1207/ja/resources/03.jpg;jsessionid=19237C114AA5D63FD78610BE5AB1912A" _href="img://03.jpg" _p="true" /><br /> 図３．WebPI のインストール画面</p><p>DotNetNuke 7.0 のシステム要件は以下のようになる。</p><table border="1" cellspacing="0" cellpadding="3" width="598"> 
+ <tbody> 
+  <tr> 
+   <td bgcolor="#0033ff" valign="top" width="140" align="center"><strong><font color="#ffffff">システム要件</font></strong><strong> </strong></td> 
+   <td bgcolor="#0033ff" valign="top" width="280" align="center"><strong><font color="#ffffff">ミニマム構成</font></strong><strong> </strong></td> 
+   <td bgcolor="#0033ff" valign="top" width="180" align="center"><strong><font color="#ffffff">推奨構成</font></strong><strong> </strong></td> 
+  </tr> 
+  <tr> 
+   <td valign="top" width="154" align="center"><strong>OS</strong></td> 
+   <td valign="top" width="208" align="center">Windows 2008 Server<br /> Windows 7</td> 
+   <td valign="top" width="236" align="center">Windows 2012 Server<br /> Windows 8</td> 
+  </tr> 
+  <tr> 
+   <td valign="top" width="154" align="center"><strong>IIS</strong></td> 
+   <td valign="top" width="208" align="center">IIS 7.0<br /> (マネージパイプラインモード: 統合のみ)</td> 
+   <td valign="top" width="236" align="center">IIS 7.5 / 8.0</td> 
+  </tr> 
+  <tr> 
+   <td valign="top" width="154" align="center"><strong>ASP.NET</strong></td> 
+   <td valign="top" width="208" align="center">ASP.NET 4.0</td> 
+   <td valign="top" width="236" align="center">ASP.NET 4.5</td> 
+  </tr> 
+  <tr> 
+   <td valign="top" width="154" align="center"><strong>SQL Server</strong></td> 
+   <td valign="top" width="208" align="center">SQL Server 2008</td> 
+   <td valign="top" width="236" align="center">SQL Server 2012</td> 
+  </tr> 
+ </tbody> 
+</table><p>表１．DotNetNuke 7.0 システム要件(<a target="_blank" href="http://dotnetnuke.codeplex.com/releases/view/94184">http://dotnetnuke.codeplex.com/releases/view/94184</a> より)&nbsp;</p><h2>アーキテクチャの変更</h2><p>DotNetNuke 6.2 から DotNetNuke のサービスフレームワークに ASP.NET MVC を採用していたがDotNetNuke 7.0 では Web API を採用し、ASP.NET MVC を ASP.NET Web API に置き換えている。 <br /> また、初期のアーキテクチャから10年以上変更がなかったデータアクセスレイヤも <br /> <a target="_blank" href="http://www.dotnetnuke.com/Resources/Blogs/EntryId/3494/DAL-2-A-New-DotNetNuke-Data-Layer-for-a-New-Decade.aspx">DAL 2</a> と呼ばれる ORM ベースのデータアクセスレイヤを採用して一新している。</p><h2>デザインの変更</h2><p>すべてのページに適用される Default.css が Reset CSS をベースに大幅に変更された。ブラウザごとの表示の違いを初期化する Reset CSS がベースになったことで効率よく HTML コーディングをすることができる。 <br /> ただし、DotNetNuke を 6.x 系からアップデートする場合はベースの CSS が変更になるため注意が必要である。</p><h2>最後に</h2><p>DotNetNuke 7.0 で操作が簡単になったインストーラやアーキテクチャの変更点を紹介した。このように DotNetNuke 7.0 は、今までの機能はそのままに、よりシンプルで使いやすいデザインになった。また、開発者やデザイナーのためのモダンでプラットフォームとしても期待できる。</p><h2>関連記事</h2><p>・<a target="_blank" href="http://www.infoq.com/jp/articles/DotNetNuke_0327;jsessionid=19237C114AA5D63FD78610BE5AB1912A">オープンソースCMS「DotNetNuke」のセットアップ</a> <br /> ・<a target="_blank" href="http://www.infoq.com/jp/articles/DotNetNuke_0322;jsessionid=19237C114AA5D63FD78610BE5AB1912A">OSS CMS「DotNetNuke」と無償Web開発環境「WebMatrix」のインストール</a></p><div class="clearer-space"></div></body></html>

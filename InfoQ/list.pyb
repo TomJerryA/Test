@@ -1,0 +1,29 @@
+<html>
+ <head></head> 
+ <body> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/7.pyb">最新のC++を学ぶ - Barbara Moo氏インタビュー</a>C++11 marks an effort modernize C++'s role in today's software development. InfoQ speaks with Barbara Moo regarding her new book, C++ Primer, Fifth Edition and the goals for C++11. 
+  </div> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/6.pyb">開発マネージャの役割</a>開発マネージャはたくさんの責任を背負っていますが，もっとも重要なのは製品を出荷することです。この責任を果たすためには，本記事で取り上げているように多大なスキルセットを必要とします。 
+  </div> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/5.pyb">Apache Crunch:MapReduceプログラミングを容易にするJavaライブラリ</a>Josh Wills氏は新しい記事でCrunchを紹介しているー新しいApacheのインキュベーションプロジェクトでMapReduceパイプラインを作成するためのJavaライブラリを提供する。 
+  </div> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/4.pyb">NoSQLの現状</a>Stefan Edlich氏がNoSQLを再考する。NoSQLの発展、財政的な影響、標準や不足してい部分、現在の展望、書籍、リーダーと新参者について考慮した上で、NoSQLは普及すると結論付けている。 
+  </div> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/3.pyb">メトリクス駆動開発</a>この記事では著者が開発チームと共にメトリクスを使って開発を行った経験と考えたことを共有します。著者はメトリクス駆動開発を提唱します。 
+  </div> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/2.pyb">無料で使えるWindows Azure Webサイトはどこまで活用できるか</a>前回は、Windows Azure Webサイトの構成変更やログ出力設定、モードやスケールの変更方法について紹介した。最終回となる今回は、「無料モード」でWebサイトを活用する際の注意事項をまとめる。また、簡単なアクセステストを行って、実際にどの程度の利用に耐え得るのかを検証してみたい。 
+  </div> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/1.pyb">オープンソースCMS DotNetNuke 7.0 リリース</a>2012年11月28日に DotNetNuke 7.0 がリリースされた。世界中の70万サイト以上で利用されているオープンソースの CMS (Contents Management System) である DotNetNuke の変更点について紹介する。 
+  </div> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/0.pyb">hifive: 国産のWebクライアント開発フレームワーク</a>hifiveは、HTML5で記述されたWebクライアント開発向けオープンソースフレームワークである。Backbone.jsやKnockout等最近多く出てきているJavaScript向けMV*フレームワークの一種であり、コードにMVC型の構造を与え、多人数で並列開発を行う際の記述の統一・ビュー/ロジックの分離・メンテナンス性の向上などを可能にする。 
+  </div> 
+ </body>
+</html>
