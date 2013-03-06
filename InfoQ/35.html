@@ -1,0 +1,29 @@
+<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>移动开发那些事儿：半数开发者已经在项目中使用了HTML5</h3><p>以下是上周在移动开发领域值得关注的技术热点：</p> 
+<h2>工具</h2> 
+<ul> 
+ <li><a href="http://phonegap.com/blog/2013/02/28/pg-250-released/">PhoneGap 2.5.0发布了</a>。GitHub上公布了本次版本的<a href="https://github.com/phonegap/phonegap/blob/2.5.0/changelog">更新细节</a>。概括来说，本次更新跟2.4.0版本一样，主要集中在修复bug的工作上。</li> 
+ <li><a href="http://iosdevelopertips.com/">iOSDeveloperTips</a>介绍的几个开源工具： 
+  <ul> 
+   <li><a href="http://iosdevelopertips.com/open-source/ios-open-source-visual-testing-framework.html">Visual Testing Framework</a>（<a href="https://github.com/playup/zucchini">GitHub主页</a>），用于协助开发者对其应用的用户交互界面进行可视化测试。屏幕通过CoffeeScript脚本描述，输出格式则为与UIAutomation兼容的Javascript。</li> 
+   <li><a href="http://iosdevelopertips.com/open-source/ios-open-source-custom-folding-and-flipping-transitions.html">MPFoldTransition</a>（<a href="https://github.com/mpospese/MPFoldTransition">GitHub主页</a>），提供了一系列可定制化的渐变效果，包括折叠效果和翻转效果，开发者可以自定义折叠等动作的方向和模式（如纸张效果或者3D立体效果）。</li> 
+   <li><a href="http://iosdevelopertips.com/open-source/ios-open-source-circle-menu.html">KYCircleMenu</a>（<a href="https://github.com/Kjuly/KYCircleMenu">GitHub主页</a>），圆圈式的菜单显示，一个圆圈式菜单可以容纳1~6个菜单项。</li> 
+  </ul> </li> 
+ <li>Designmodo上推荐了<a href="http://designmodo.com/responsive-css-grid-frameworks/">一系列响应式CSS框架</a>，如Skeleton，320 and Up，Base，Gumby，Wirefy等。</li> 
+ <li><a href="http://lldb.llvm.org/">The LLDB Debugger</a>，号称下一代高性能调试器。目前，LLDB已经是XCode内置的默认调试器。</li> 
+</ul> 
+<h2>技巧</h2> 
+<ul> 
+ <li>ITEye上的一篇文章总结了<a href="http://www.iteye.com/topic/1129263">Android项目快速开发的开发框架：MySQL+OrmLite+Hessian+SQLite</a>。作者使用hessian来做数据传输，ormlite来实现客户端与服务端的数据存储，极大的减少了CRUD工作。目前这一组合尚处于探索期，未用于大型项目上。</li> 
+ <li>iOSDeveloperTips上的一篇文章介绍了<a href="http://iosdevelopertips.com/core-services/ios-and-json-part-1-serialize-objects-to-json.html">如何将对象序列化到JSON</a>。主要思路是：创建一个包含键值对的字典对象，将一个阵列的对象添加到这个字典里，然后使用NSJSONSerialization对象将这个字典序列化做JSON。</li> 
+ <li>Xtreme Labs上的一篇文章介绍并对比了<a href="http://tech.xtremelabs.com/ios-json-parser-comparison/">不同的iOS JSON解析器</a>，包括：<a href="http://lloyd.github.com/yajl/">YAJL</a>，<a href="https://github.com/TouchCode/TouchJSON#readme">Touch JSON</a>，<a href="http://stig.github.com/json-framework/">SBJson</a>，以及原生的<a href="http://developer.apple.com/library/ios/#documentation/Foundation/Reference/NSJSONSerialization_Class/Reference/Reference.html">JSON解析库</a>。</li> 
+ <li>SegmentFault的Gaosboy发布了一篇文章，<a href="http://www.infoq.com/cn/articles/afn_vs_asi;jsessionid=CEF17A89915DDBFEBC2810A5719C7B57">详细对比了AFNetworking和ASIHTTPRequest这两个iOS网络组件</a>。通过对比，基本可以这样评价：AFN适合逻辑简单的应用，或者更适合开发资源尚不丰富的团队，因为AFN的易用性要比ASI好很多，而这样的应用（或团队）对底层网络控件的定制化要求也非常低。ASI更适合已经发展了一段时间的应用，或者开发资源相对丰富的团队，因为往往这些团队（或他们的应用）已经积累了一定的经验，无论是产品上还是技术上的。</li> 
+ <li>有关性能优化的哲学层面的讨论：<a href="http://blogs.msdn.com/b/oldnewthing/archive/2013/02/26/10396960.aspx">应用优化是否允许以牺牲可靠性作为代价？</a>当你的开发团队为了让应用更快一点而砍掉了所有的同步行为，似乎有些事情就不对劲了。</li> 
+ <li><a href="http://www.summa-tech.com/blog/2013/02/26/the-evils-of-getters-and-setters/">Getters与Setters之恶</a>。“我之所以认为getters和setters是邪恶的，那是因为开发者在使用他们的时候完全没考虑数据的行为。”</li> 
+</ul> 
+<h2>杂货</h2> 
+<ul> 
+ <li>Mobile Marketing Universe上对<a href="http://www.mobilemarketinguniverse.com/first-day-report-from-mwc/">今年的MWC大会进行了相当详细的报道</a>。概括来说：Windows Phone得到很多关注，Firefox OS也在设备商中流行，可以预见的是，多操作系统会成为趋势。一些新的机型发布。企业级移动领域，开始讨论MEAP（移动企业应用平台），不过看起来目前只是一个新的热词而已，无非是基于遗留平台、Web和HTML5的打包解决方案。</li> 
+ <li>NFC有什么可以应用的方向？<a href="http://www.cnet.com/8301-17918_1-57568998-85/6-things-i-want-to-do-with-nfc-smartphones-unlocked/">CNET的编辑J-Do的一篇文章提出了六个可行的方向</a>： 在不同的设备之间传输照片和视频；控制汽车；取代银行卡操作ATM机；逛商场助手；签到；不同厂商统一NFC的使用标准，降低门槛。</li> 
+ <li>HTML5的应用状态到底如何？<a href="http://venturebeat.com/2013/02/26/5000-developers-say-html5-is-real-its-now-and-yeah-its-also-the-future/">Kendo UI的一个调查问卷表示半数开发者已经在使用HTML5</a>，还有90%有意在2013年使用HTML5技术，仅有15%开发者仍选择仅开发原生应用。</li> 
+</ul> 
+<p id="lastElm"></p></body></html>
