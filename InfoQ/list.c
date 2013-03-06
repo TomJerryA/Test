@@ -1,8 +1,8 @@
 <html>
  <head></head> 
- <body>
-  <div>
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/11.c">Programa Adote uma JSR cresce, ganha for&ccedil;a da Oracle e se envolve no Java EE 7</a>O programa Adote uma JSR, liderado por grupos de usu&aacute;rios Java, ganhou apoio oficial da Oracle. Arun Gupta, evangelista Java da empresa, publicou recentemente sobre a for&ccedil;a da participa&ccedil;&atilde;o da comunidade, que atrav&eacute;s de feedbacks e outras contribui&ccedil;&otilde;es tem apoiado a evolu&ccedil;&atilde;o do Java EE.
+ <body> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/11.c">Programa Adote uma JSR cresce, ganha for&ccedil;a da Oracle e se envolve no Java EE 7</a>O programa Adote uma JSR, liderado por grupos de usu&aacute;rios Java, ganhou apoio oficial da Oracle. Arun Gupta, evangelista Java da empresa, publicou recentemente sobre a for&ccedil;a da participa&ccedil;&atilde;o da comunidade, que atrav&eacute;s de feedbacks e outras contribui&ccedil;&otilde;es tem apoiado a evolu&ccedil;&atilde;o do Java EE. 
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/10.c">50 dicas para aplica&ccedil;&otilde;es web mais r&aacute;pidas no Windows</a>O gerente de projetos do Internet Explorer Jatinder Mann da Microsoft apresentou uma palestra chamada 50 truques de performance para fazer suas aplica&ccedil;&otilde;es HTML 5 e sites mais r&aacute;pidos no evento BUILD, fornecendo v&aacute;rias dicas para criar aplica&ccedil;&otilde;es web mais r&aacute;pidas. Veja um resumo. 
