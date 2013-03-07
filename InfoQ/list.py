@@ -1,20 +1,20 @@
 <html>
  <head></head> 
- <body>
-  <div>
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/14.py">Eclipse Orion 2.0，Node.js を利用したローカル動作をサポート</a>Eclipse Orion 2.0 が先頃リリースされた。Node.js，Projectsなどのサポート，シェルコマンドの改良に加えて，JavaScriptコードアシストとパフォーマンスが改善されている。
-  </div>
-  <div>
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/13.py">Casablancaの C++ SDKがオープンソースに</a>Microsoftの C++ REST SDK、コードネームがCasablanca、が Apache 2.0ライセンスのもとでオープンソースされた。Casablancaは、開発者にRESTサービスとやりとりするC++11コードを書くマルチプラットフォームの方法を提供する。
-  </div>
-  <div>
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/12.py">ConcurrentがHadoop用SQL DSLをリリース</a>Concurrent, Inc.企業ビッグデータアプリケーションプラットフォームの会社が今日、Lingualを発表した。これはオープンソースプロジェクトで、SQLを使ってApache Hadoop上で速く、簡単にビッグデータアプリケーションの開発ができるようになる。
-  </div>
-  <div>
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/11.py">統合コンポーネントとしてGWTを加えた Vaadin 7 が登場</a>VaadinがJavaベースWebアプリケーションフレームワークのバージョン７をリリースした。このVaadin 7プラットフォームは，同社としては2009年以来のメジャーアップデートになる。
-  </div>
-  <div>
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/10.py">Eclipse RAP 2.0リリース</a>6年の開発期間を経て、1月11日にEclipse RAP 2.0がリリースされた。InfoQはプロジェクトリードに話を聞いた。
+ <body> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/14.py">Eclipse Orion 2.0，Node.js を利用したローカル動作をサポート</a>Eclipse Orion 2.0 が先頃リリースされた。Node.js，Projectsなどのサポート，シェルコマンドの改良に加えて，JavaScriptコードアシストとパフォーマンスが改善されている。 
+  </div> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/13.py">Casablancaの C++ SDKがオープンソースに</a>Microsoftの C++ REST SDK、コードネームがCasablanca、が Apache 2.0ライセンスのもとでオープンソースされた。Casablancaは、開発者にRESTサービスとやりとりするC++11コードを書くマルチプラットフォームの方法を提供する。 
+  </div> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/12.py">ConcurrentがHadoop用SQL DSLをリリース</a>Concurrent, Inc.企業ビッグデータアプリケーションプラットフォームの会社が今日、Lingualを発表した。これはオープンソースプロジェクトで、SQLを使ってApache Hadoop上で速く、簡単にビッグデータアプリケーションの開発ができるようになる。 
+  </div> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/11.py">統合コンポーネントとしてGWTを加えた Vaadin 7 が登場</a>VaadinがJavaベースWebアプリケーションフレームワークのバージョン７をリリースした。このVaadin 7プラットフォームは，同社としては2009年以来のメジャーアップデートになる。 
+  </div> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/10.py">Eclipse RAP 2.0リリース</a>6年の開発期間を経て、1月11日にEclipse RAP 2.0がリリースされた。InfoQはプロジェクトリードに話を聞いた。 
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/9.py">スワーミングがアジャイルチームを助ける</a>スワーミングはアジャイルチームがこの目的を達成するのを支援する手法のひとつだ。スワーミングとは何か、どんな利点があり、どのように導入すればいいのか。 
