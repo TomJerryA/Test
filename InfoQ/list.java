@@ -1,11 +1,11 @@
 <html>
  <head></head> 
- <body>
-  <div>
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/21.java">Erlang/OTP R16B Brings Improved Parallelism</a>The newley released Erlang/OTP R16B brings several performance enhancements among its new features. Code modules can now be loaded in a non-blocking manner, networking code for ports has been improved, and VM processes have been parallelized.
-  </div>
-  <div>
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/20.java">How can Agile make you Faster?</a>Delivering faster is one of the reasons that enterprises mention why want to use agile for software development. How can agile be used to become faster?
+ <body> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/21.java">Erlang/OTP R16B Brings Improved Parallelism</a>The newley released Erlang/OTP R16B brings several performance enhancements among its new features. Code modules can now be loaded in a non-blocking manner, networking code for ports has been improved, and VM processes have been parallelized. 
+  </div> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/20.java">How can Agile make you Faster?</a>Delivering faster is one of the reasons that enterprises mention why want to use agile for software development. How can agile be used to become faster? 
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/19.java">Red Gate Announces Simply Web Dev - Curated Guide for ASP.NET MVC</a>Red Gate Software based in UK has launched a new portal that enables students and developers to learn ASP.NET MVC with the help of wide range of resources. 
