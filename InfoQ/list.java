@@ -1,6 +1,9 @@
 <html>
  <head></head> 
- <body> 
+ <body>
+  <div>
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/24.java">Stimulsoft Released Report Designer For WinRT</a>Stimulsoft has released a new report designer for WinRT that enables you to create and edit reports on any device running Windows 8.
+  </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/23.java">Vagrant Support for Amazon AWS and Rackspace</a>HashiCorp's latest addition to support Amazon AWS and Rackspace as providers for Vagrant enables new usage scenarios: for the first time it will be possible to spin up Virtual Machines in the cloud instead of the developer's desktop. 
   </div> 

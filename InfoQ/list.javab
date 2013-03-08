@@ -1,6 +1,9 @@
 <html>
  <head></head> 
- <body> 
+ <body>
+  <div>
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/11.javab">Interview and Book Review: DevOps Troubleshooting: Linux&reg; Server Best Practices</a>Kyle Rankin delivers practical advice and techniques for team oriented troubleshooting of Linux servers in a DevOps culture. The book includes Linux Server Best Practices in common problem areas.
+  </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/10.javab">Growing EAI with Apache Camel</a>This article shows practical examples of typical integration challenges and explores how Apache Camel can meet them in the context of an integration solution that grows over time. 
   </div> 
