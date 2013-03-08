@@ -2,7 +2,10 @@
  <head></head> 
  <body>
   <div>
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/24.java">Stimulsoft Released Report Designer For WinRT</a>Stimulsoft has released a new report designer for WinRT that enables you to create and edit reports on any device running Windows 8.
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/25.java">Google and MPEG LA End All Disputes on VP8</a>Google has obtained a license for any algorithm that may be essential to VP8 and MPEG LA has a patent for it. Google has the option to sublicense VP8 royalty-free to third party implementers, opening the way for wide adoption of the VP8 codec.
+  </div> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/24.java">Stimulsoft Released Report Designer For WinRT</a>Stimulsoft has released a new report designer for WinRT that enables you to create and edit reports on any device running Windows 8. 
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/23.java">Vagrant Support for Amazon AWS and Rackspace</a>HashiCorp's latest addition to support Amazon AWS and Rackspace as providers for Vagrant enables new usage scenarios: for the first time it will be possible to spin up Virtual Machines in the cloud instead of the developer's desktop. 
