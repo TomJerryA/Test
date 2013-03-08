@@ -1,0 +1,12 @@
+<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>Eclipse Orion 2.0能本地运行Node.js</h3><p>Eclipse Orion 2.0最近发布了，它支持Node.js，包含新的项目管理功能，还对Shell命令的支持作了更多改进，并包含了更好的JavaScript代码助手，并作出了性能上的改进。<br /> 在<a href="http://www.infoq.com/news/2012/10/Eclipse-Orion-1;jsessionid=24AEFECE1B92362D99336E4451A25573">初始版本</a>发布四个月后，Orion团队按照既定计划发布了<a href="http://download.eclipse.org/orion/drops/R-2.0-201302221257/index.html">基于web的JavaScript IDE</a>的第二个稳定版本。其中一些新的特性包括：<br /> <strong>Orionode. </strong>将IDE的对应服务器端用Node.js重新实现了，可供本地使用。开发者现在可以在他们的机器上很容易地拥有一个小型服务器，用来编辑本地文件。</p> 
+<p><a href="https://npmjs.org/package/orion">Orionode</a>并没有像初始服务器版本那样使用Java编写，它目前支持以下的特性：基本的导航，编辑器和插件操作，支持npm的shell命令行和运行Node应用，对静态内容的客户端缓存，和gzip压缩。Orionode并不是要取代Java服务器，其目标只是定位在本地的安装。</p> 
+<p><strong>Projects.</strong>.<br /> 新的<a href="http://planetorion.org/news/2013/03/orion-2-0-release/">项目管理插件</a>能让开发者创建工作单元，它们包含链接到外部源和目标的不同资源。其目的是为了在大型项目中增强模块化，从而对资源更好地管理。目前，Orion支持HTML5和SFTP项目。其中<a href="http://www.hickory.ca/2013/01/28/managing-an-sftp-type-website-using-orion/">后者可以实现远程视图和对SFTP服务器进行资源编辑</a>。</p> 
+<p><strong>Shell.</strong>为Shell增加了大量的命令，包括用来处理插件的<em>plugins</em><em>、列出已有服务实例的</em><em>service</em><em>和用来清屏的</em><em>clear</em><em>。</em></p> 
+<p><a href="http://planetorion.org/news/2013/02/orion-2-0-whats-new-for-shell-page-plug-ins/">Shell命令现在可以传递（返回）两个新的参数（或返回类型）：</a> blob- 代表二进值数据的JS对象，和file—属于工作空间的文件或者目录。如果一个命令的输出类型是file，则结果为被保存到文件中。包括目录在内的多个文件和它们的全部内容能够以参数方式传入到命令中。</p> 
+<p><strong>Content assist.</strong> <a href="http://planetorion.org/news/2013/01/orion-2-0-m2-new-and-noteworthy/">JavaScript内容助手</a>增加了如下的功能：对数组和关联数组的类型推断，能在变量声明前的推断，以及根据使用情况推断对象的属性。</p> 
+<p>在Orion 2.0中同时有其他较小的改进和性能的提升。<a>加载包含JavaScript页面的Orion编辑器</a> 比以前少了<a href="http://planetorion.org/news/2013/01/orion-2-0-m2-new-and-noteworthy/">45%的请求和80%的字节传输</a>。</p> 
+<p><b>查看英文原文</b>：<a href="http://www.infoq.com/news/2013/03/Eclipse-Orion-2;jsessionid=24AEFECE1B92362D99336E4451A25573">Eclipse Orion 2.0 Now Runs Locally on Node.js</a></p> 
+<hr /> 
+<p>感谢<a href="http://www.infoq.com/cn/bycategory.action;jsessionid=24AEFECE1B92362D99336E4451A25573?authorName=姚琪琳">姚琪琳</a>对本文的审校。</p> 
+<p>给InfoQ中文站投稿或者参与内容翻译工作，请邮件至<a href="mailto:editors@cn.infoq.com">editors@cn.infoq.com</a>。也欢迎大家通过新浪微博（<a href="http://www.weibo.com/infoqchina">@InfoQ</a>）或者腾讯微博（<a href="http://t.qq.com/infoqchina">@InfoQ</a>）关注我们，并与我们的编辑和其他读者朋友交流。</p> 
+<p id="lastElm"></p><br><br><br><br><br><br></body></html>

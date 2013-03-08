@@ -1,0 +1,8 @@
+<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>Erlang/OTP R16B带来改进的并行</h3><p>Erlang是一门通用的函数式编程语言，强调对并发和实时分布式系统的支持。 上周发布的Erlang R16B带来了一些改进，这些改进增强了语言虚拟机在很多方面的并行能力。</p> 
+<p>Erlang在很多不同项目中都有应用，包括分布式数据库、通信系统、Web服务器和华尔街的高频交易平台等。使用Erlang的知名项目或公司有<a href="https://github.com/blog/112-supercharged-git-daemon">GitHub</a>、高频交易和多人游戏服务器（即<a href="http://lanyrd.com/2011/erlang-factory-london/sgwyq/">使命召唤</a>）。</p> 
+<p>该版本在其<a href="http://www.erlang.org/download/otp_src_R16B.readme">发布说明</a>中列出了大量修改，有些改进是应该重点强调的。第一， Erlang虚拟机改进了进程的内部处理，支持并行读写，通过减少进程创建和终止期间的竞争提高了性能。</p> 
+<p>端口处理也有极大改进，支持并行读写。这结合了Erlang动态分配端口的新功能以及默认端口限制从1024到65 536的提升。程序员应该注意一下，信号现在是真正异步交付的，这是新系统的成果之一。以前，信号可能会有一个特定的交付顺序，但现在不能再假设或依赖其顺序了。因此，“……这带来的问题是，如果Erlang程序错误地假设了信号交付顺序，即便之前是成功的，现在也可能会失败”。</p> 
+<p>Erlang运行时系统（ERTS）也有所改进，以支持以非阻塞方式加载代码。之前是采用的单线程模型来加载Erlang模块，在加载过程中会挂起虚拟机。新版本的Erlang支持非阻塞操作，所以可以在不停止执行的情况下加载代码。这将改进虚拟机运行在SMP系统上时加载新模块的性能。</p> 
+<p>新版本提供了支持Windows的32位和64位预编译二进制文件。对其他平台也通过相应的包管理器提供了支持。<a href="https://github.com/erlang/otp">源代码</a>可以在GitHub上浏览。（R16B源代码<a href="http://www.erlang.org/download/otp_src_R16B.tar.gz">归档</a>文件也可下载。）</p> 
+<p><b>查看英文原文：<a href="http://www.infoq.com/news/2013/03/erlangR16B_released;jsessionid=87C3A7E07A5813E9F93DCADD48460C93">Erlang/OTP R16B Brings Improved Parallelism</a></b></p> 
+<p id="lastElm"></p><br><br><br><br><br><br></body></html>
