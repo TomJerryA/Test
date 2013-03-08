@@ -1,8 +1,8 @@
 <html>
  <head></head> 
- <body>
-  <div>
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/22.java">HTC America Drops Ball on Mobile Security</a>Manufacturer HTC America affirmatively acknowledged Federal Trade Commission (FTC) charges that millions of its customers’ Android based mobile devices were using software with potentially serious security vulnerabilities. The leading mobile device making company was ordered to make a patch available before the end of March 2013 to all concerned parties.
+ <body> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/22.java">HTC America Drops Ball on Mobile Security</a>Manufacturer HTC America affirmatively acknowledged Federal Trade Commission (FTC) charges that millions of its customers’ Android based mobile devices were using software with potentially serious security vulnerabilities. The leading mobile device making company was ordered to make a patch available before the end of March 2013 to all concerned parties. 
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/21.java">Erlang/OTP R16B Brings Improved Parallelism</a>The newley released Erlang/OTP R16B brings several performance enhancements among its new features. Code modules can now be loaded in a non-blocking manner, networking code for ports has been improved, and VM processes have been parallelized. 
