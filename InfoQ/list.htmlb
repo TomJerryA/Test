@@ -1,8 +1,8 @@
 <html>
  <head></head> 
- <body>
-  <div>
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/14.htmlb">从WordPress看开源平台的发展</a>很少有人知道，地球上六分之一的网站采用Wordpress架构，在Alexa排名前10万的网站中，有16.7%使用了WordPress。如果把WordPress看做一个开放平台的话，它比Facebook更有影响力。而事实上，它就是这样的一个平台。
+ <body> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/14.htmlb">从WordPress看开源平台的发展</a>很少有人知道，地球上六分之一的网站采用Wordpress架构，在Alexa排名前10万的网站中，有16.7%使用了WordPress。如果把WordPress看做一个开放平台的话，它比Facebook更有影响力。而事实上，它就是这样的一个平台。 
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/13.htmlb">深入理解Java内存模型（六）——final</a>StartFragmentJava线程之间的通信对程序员完全透明，内存可见性问题很容易困扰Java程序员，本文试图揭开Java内存模型神秘的面纱。本文大致分三部分：重排序与顺序一致性；三个同步原语（lock，volatile，final）的内存语义，重排序规则及在处理器中的实现；Java内存模型的设计目标，及其与处理器内存模型和顺序一致性内存模型的关系。 
