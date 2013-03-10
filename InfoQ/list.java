@@ -2,7 +2,10 @@
  <head></head> 
  <body>
   <div>
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/26.java">Grunt 0.4.0 Released: An Emphasis On Modularity</a>The Grunt team updated their Javascript task runner to version 0.4.0 on February 18th in their ongoing effort to decouple the library into more modular parts.
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/27.java">Culture Game Extract #6 Now Available from InfoQ</a>Dan Mezick has written The Culture Game – a how-to book describing 16 learning patterns derived from Agile. InfoQ is publishing a series of extracts from the book. The last extract discusses the concepts of of personal mastery and belief change.
+  </div> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/26.java">Grunt 0.4.0 Released: An Emphasis On Modularity</a>The Grunt team updated their Javascript task runner to version 0.4.0 on February 18th in their ongoing effort to decouple the library into more modular parts. 
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/25.java">Google and MPEG LA End All Disputes on VP8</a>Google has obtained a license for any algorithm that may be essential to VP8 and MPEG LA has a patent for it. Google has the option to sublicense VP8 royalty-free to third party implementers, opening the way for wide adoption of the VP8 codec. 
