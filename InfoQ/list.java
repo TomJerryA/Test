@@ -1,6 +1,12 @@
 <html>
  <head></head> 
- <body> 
+ <body>
+  <div>
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/30.java">Cloud Optimization Takes Center Stage with Free Microsoft, AWS Services</a>While a cottage industry has grown around providing services to optimize cloud usage and costs, large cloud providers themselves are beginning to promote their own optimization offerings. Microsoft recently purchased a cloud performance management company and made its product free to customers. Competitor AWS is aggressively promoting their own “Trusted Advisor” program with a free trial period.
+  </div>
+  <div>
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/29.java">jQuery Mobile 1.3.0 Released</a>The jQuery Foundation released version 1.3.0 of its JavaScript and HTML5/CSS framework jQuery Mobile. The update focusses on responsive web design and introduces new widgets for mobile applications.
+  </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/28.java">Jelastic 1.9 with FTP, NGINX caching, Apache TomEE and MariaDB 10</a>Jelastic has announced the availability of version 1.9 with support for FTP/FTPS, NGINX caching, Apache TomEE and MariaDB 10. 
   </div> 
