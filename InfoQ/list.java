@@ -2,10 +2,13 @@
  <head></head> 
  <body>
   <div>
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/30.java">Cloud Optimization Takes Center Stage with Free Microsoft, AWS Services</a>While a cottage industry has grown around providing services to optimize cloud usage and costs, large cloud providers themselves are beginning to promote their own optimization offerings. Microsoft recently purchased a cloud performance management company and made its product free to customers. Competitor AWS is aggressively promoting their own “Trusted Advisor” program with a free trial period.
-  </div>
-  <div>
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/29.java">jQuery Mobile 1.3.0 Released</a>The jQuery Foundation released version 1.3.0 of its JavaScript and HTML5/CSS framework jQuery Mobile. The update focusses on responsive web design and introduces new widgets for mobile applications.
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/31.java">QCon New York 2013: 50/100 speakers confirmed; Talks from NASA, Twitter, LinkedIn, Netflix</a>Over 50 speakers have been confirmed for the second annual QCon New York 2013. QCon New York will take place at the New York Marriott just outside of Manhattan (at the Brooklyn Bridge) on June 10-14, 2013. Registration is open and new speakers and sessions are being posted to the conference site every week.You can get in early by reserving your seat now saving up to $500 by Mar 15th.
+  </div> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/30.java">Cloud Optimization Takes Center Stage with Free Microsoft, AWS Services</a>While a cottage industry has grown around providing services to optimize cloud usage and costs, large cloud providers themselves are beginning to promote their own optimization offerings. Microsoft recently purchased a cloud performance management company and made its product free to customers. Competitor AWS is aggressively promoting their own “Trusted Advisor” program with a free trial period. 
+  </div> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/29.java">jQuery Mobile 1.3.0 Released</a>The jQuery Foundation released version 1.3.0 of its JavaScript and HTML5/CSS framework jQuery Mobile. The update focusses on responsive web design and introduces new widgets for mobile applications. 
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/28.java">Jelastic 1.9 with FTP, NGINX caching, Apache TomEE and MariaDB 10</a>Jelastic has announced the availability of version 1.9 with support for FTP/FTPS, NGINX caching, Apache TomEE and MariaDB 10. 
