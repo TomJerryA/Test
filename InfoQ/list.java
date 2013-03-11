@@ -1,6 +1,9 @@
 <html>
  <head></head> 
- <body> 
+ <body>
+  <div>
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/28.java">Jelastic 1.9 with FTP, NGINX caching, Apache TomEE and MariaDB 10</a>Jelastic has announced the availability of version 1.9 with support for FTP/FTPS, NGINX caching, Apache TomEE and MariaDB 10.
+  </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/27.java">Culture Game Extract #6 Now Available from InfoQ</a>Dan Mezick has written The Culture Game – a how-to book describing 16 learning patterns derived from Agile. InfoQ is publishing a series of extracts from the book. The last extract discusses the concepts of of personal mastery and belief change. 
   </div> 
