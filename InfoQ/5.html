@@ -1,12 +1,11 @@
-<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>Android 4.2.2中对安全性的改进</h3><p><a href="http://developer.android.com/about/versions/jelly-bean.html">Android 4.2</a> Jelly Bean最近发布了更新，通过加入附加特性来增强应用程序的安全性。它其中的一个特性可以让用户在安装程序之前对应用程序进行验证，从而防止将有害的应用程序安装到移动设备上。并且它可以在发现应用程序损坏的情况下终止安装过程。</p> 
-<p>当你设备里的应用程序试图向一个会产生额外费用的收费服务短号码发送短信时，Android系统会发出提示，由你来选择是否允许该应用程序发送短信或者终止发送过程。</p> 
-<p>最新的版本允许用户自定义配置VPN，从而使设备只有在VPN创建以后才可以访问网络。此外，SSL核心库的实现也提供了对证书绑定的支持，权限也被以分组的形式进行组织管理。它还针对用户选择的权限提供了详细的信息。</p> 
-<p>在Android 4.2.2中，<a href="http://developer.android.com/about/versions/android-4.2.html">目标API级别为17</a>的应用程序会将每个ContentProvider的export属性默认设置为false，从而可以最终减小应用程序的默认攻击面。此次的更新还可以减小针对root权限升级来带来的潜在攻击面，因为installd守护进程不会再以root用户的方式运行。</p> 
-<p>此外，初始化脚本还会遵守O_NOFOLLOW语法规则从而预防符号链接相关的攻击。它还实现了FORTIFY_SOURCE，它可以被系统函数库和应用程序调用，从而预防内存泄漏。</p> 
-<p>Android 4.2.2进行了相关修改，以便利用<a href="http://www.openssl.org/">OpenSSL</a>来完成<a href="http://developer.android.com/reference/java/security/SecureRandom.html">SecureRandom</a>和<a href="http://en.wikipedia.org/wiki/RSA_(algorithm">Cipher.RSA</a>)的实现。该版本还为使用OpenSSL 1.0.1的<a href="http://en.wikipedia.org/wiki/Transport_Layer_Security">TLSv1.1</a>和TLSv1.2增加了SSLSocket的支持，而且还减小了应用程序的默认攻击面。它还包含了<a href="http://www.webkit.org/">WebKit</a>、<a href="http://www.libpng.org/pub/png/libpng.html">libpng</a>、OpenSSL和<a href="http://www.xmlsoft.org/">LibXML</a>开源库的安全补丁。</p> 
-<p>“推荐的做法是在程序第一次启动的时候生成一个真正随机的AES key并将它存储在内部存储空间中。”Android开发者关系团队的Fred chung说道。</p> 
-<p>Android 4.2.2 引入了USB安全调试方面的内容，当启用安全调试的时候，只有被用户认证过的主机才可以通过Android SDK自带的<a href="http://developer.android.com/tools/help/adb.html">ADB工具</a>经由USB连接来访问设备的<a href="http://developer.android.com/sdk/index.html">内部构件</a>。</p> 
-<p>查看英文原文：<a href="http://www.infoq.com/news/2013/02/android-4-2-2;jsessionid=79DF7DFC697DCA0E51C907A15525E533">Security Enhancements in Android 4.2.2</a></p> 
+<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>Visual Studio 2012 Update 2最终预览版发布</h3><p>在正式发布VS 2012 Update 2版本前，微软一直定期发布预览版本，秉持这一作风，微软此次发布了<a href="http://www.microsoft.com/en-us/download/details.aspx?id=36833">CTP4</a>。这是Update 2的第一个“go-live”(译者注：go-live指的是将测试中的产品加入生产环境的许可)状态的版本，这意味着它已获得微软的全面支持（请注意下文中TFS 2012 go-live和VS 2012 go-live之间的区别）。这将是在正式发布Update 2之前的最后一个社区技术预览版本。</p> 
+<p>CTP4 继续围绕Update 2的主题——“现代应用生命周期和现代应用开发”进行了全面的改进。为了达到这个目标，首先发布的功能是<a href="http://blogs.msdn.com/b/lightswitch/archive/2013/03/04/announcing-a-new-preview-of-the-lightswitch-html-client.aspx">LightSwitch HTML 客户端</a>的更新预览版本。首席项目经理John Stallo指出这次发布的两个主要目标是支持创建移动端、跨平台的web客户端以及将程序发布到SharePoint 2013应用目录。</p> 
+<p>VS 2012在基于浏览器的测试管理方面也得到了进一步的改进，目前已可以对结果文本进行编辑并支持将多个测试用例步骤进行内联，而不需要在被测环境上安装软件。</p> 
+<p>微软的Brian Harry也指出备份和恢复工具（之前提供单独<a href="http://visualstudiogallery.msdn.microsoft.com/b1ef7eb2-e084-4cb8-9bc7-06c3bad9148f">下载</a>）将会整合到Update 2中。TFS的系统管理员将会从中受益，因为可以在升级后依然保留旧有的<a href="http://blogs.msdn.com/b/visualstudioalm/archive/2013/03/05/tfs-update-2-offers-settings-preservation-for-in-place-upgrades.aspx">TFS配置</a>。</p> 
+<p>如果需要<a href="http://www.infoq.com/news/2013/01/vs2012_git;jsessionid=DE31931256FD01F2BE80653BFB9F1B5D">Git支持</a>功能的开发者仍需等待，因为适用于CTP 4版本的<a href="http://visualstudiogallery.msdn.microsoft.com/abafc7d6-dcaa-40f4-8a5e-d6724bdb980c">Git扩展</a>尚未发布。Harry指出该扩展将“在接下来的一到两天”发布。这部分的功能支持并不是Update 2的一部分，仍然需要用户进行单独下载，同时Harry指出这种方式将使微软可以更快地发展该功能。</p> 
+<p>需要注意的是CTP 4的go-live状态目前只适用于Team Foundation Server 2012，而并不适用于VS 2012，因此VS 2012的CTP4 版本并不适用于生产环境。</p> 
+<p><b>查看英文原文</b>：<a href="http://www.infoq.com/news/2013/03/VS2012_CTP4;jsessionid=DE31931256FD01F2BE80653BFB9F1B5D">Final Preview of Visual Studio 2012 Update 2 Released</a></p> 
 <hr /> 
-<p>感谢<a href="http://infoq.com/cn/author/%E4%BE%AF%E4%BC%AF%E8%96%87">侯伯薇</a>对本文的审校。</p> 
-<p id="lastElm"></p></body></html>
+<p>感谢<a href="http://www.infoq.com/cn/bycategory.action;jsessionid=DE31931256FD01F2BE80653BFB9F1B5D?authorName=赵震一">赵震一</a>对本文的审校。</p> 
+<p>给InfoQ中文站投稿或者参与内容翻译工作，请邮件至<a href="mailto:editors@cn.infoq.com">editors@cn.infoq.com</a>。也欢迎大家通过新浪微博（<a href="http://www.weibo.com/infoqchina">@InfoQ</a>）或者腾讯微博（<a href="http://t.qq.com/infoqchina">@InfoQ</a>）关注我们，并与我们的编辑和其他读者朋友交流。</p> 
+<p id="lastElm"></p><br><br><br><br><br><br></body></html>

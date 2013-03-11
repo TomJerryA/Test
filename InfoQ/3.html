@@ -1,29 +1,31 @@
-<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>Greenplum Pivotal HD结合了SQL和Hadoop的优势</h3><p><a href="http://www.greenplum.com/">EMC Greenplum</a>宣布了一个新的Hadoop发行版本——<a href="http://www.greenplum.com/blog/topics/hadoop/introducing-pivotal-hd">Pivotal HD</a>，其中包含一个完全运行于HDFS之上的MPP数据库，兼容SQL，而且速度“比Hive快数百倍”。</p> 
-<p><a href="http://www.greenplum.com/blog/topics/hadoop/introducing-pivotal-hd">Pivotal HD</a>支持标准Hadoop发型版本的常用特性（包括HDFS、Pig、Hive、Mahout和Map-Reduce等），但又加入了一些其他的组件，具体如下面结构图所示：&nbsp;</p> 
-<blockquote> 
- <p class="image-wide"><img src="/resource/news/2013/03/Pivotal-HD-SQL-Hadoop/zh/resources/Pivotal1.png;jsessionid=57B1C70EBD346CCB07B2857730155054" alt="" _href="img://Pivotal1.png" _p="true" /></p> 
-</blockquote> 
-<p>Pivotal的主要组件是<a href="http://www.greenplum.com/blog/dive-in/hawq-the-new-benchmark-for-sql-on-hadoop">HAWQ</a>，这是一个MPP（Massively Parallel Processing）关系数据库，借助一种动态流水线机制直接运行于Hadoop中的HDFS之上，其特性包括：</p> 
+<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>深入介绍扩展的阶段</h3><p>Christopher Smith在上月举行的<a href="http://www.socallinuxexpo.org/scale11x/presentations/five-stages-scale">Scale11x</a>上进行了题为“<a href="http://www.socallinuxexpo.org/scale11x/presentations/five-stages-scale">扩展的五个阶段</a>”的演讲，演讲中他分享了自己对实现Web应用扩展和解决扩展中的问题的见解。Christopher举了在各阶段实现扩展的例子，同时他还对通过添加或优化良好定义的组件来改善Web应用整体扩展做了讲解。他从负载均衡讲到UDP协议的优化使用，带领听众经历了一段<a href="http://www.socallinuxexpo.org/sites/default/files/presentations/SCALE11.pdf">集知识性和娱乐性于一体的旅程</a>。</p> 
+<p>最重要的基础扩展架构应具有在负载均衡器后面添加Web应用服务器的能力。负载均衡器能够通过在应用服务器间划分请求和会话的方式进行web应用的线性扩展。该技术相当于通过增加应用服务器进行线性扩展，然而这只不过是延缓了不可避免的<a href="http://www.facebook.com/pages/C10k-problem/120373131343187">C10K问题</a>，因为这种方式没有增加单个请求的响应能力。</p> 
+<p>Christopher介绍了web应用前置的缓存系统如何通过处理读取操作来支持扩展：联合使用多重缓存系统使扩展最大化。Memcache服务器（或类似的服务器）可以在<a href="http://www.infoq.com/news/2007/11/cfrp;jsessionid=80F9F1DCBBFE55FA15F1C862E684FDAC">内存中存储数据从而使应用服务器能够快速检索</a>。还可以在负责均衡器之前放置反向代理为缓存的资源提供服务。最后，可以使用内容分发网络（CDN）使缓存的资源更靠近终端用户。不过缓存在写数据方面有它自身的限制。</p> 
+<p>优化的持久性框架能够将扩展写入的能力带到扩展中的新阶段。Christopher认为，对大部分人来说，能够成功运用这一阶段和之前提到的内容就足够了。<a href="http://cloud.dzone.com/news/sql-vs-nosql-cloud-which">选择合适的SQL或NoSQL数据库</a>来匹配应用数据结构将显著地增强扩展性。并发读/写能力将提高写操作的吞吐量和响应能力。最后如果你能够“<a href="http://www.techopedia.com/definition/23949/atomicity-consistency-isolation-durability-acid">在ACID（特别是C和D）上</a>耍点手腕儿”，你就可以将更多的写操作提速。</p> 
+<p>这些扩展技术的基础是使web应用读/写数据的延迟最小化。Christopher分享了计算机上<a href="http://norvig.com/21-days.html#answers">不同操作的延迟时间</a>：</p> 
 <ul> 
- <li>兼容SQL——支持各个版本的SQL，包括SQL92、SQL99和SQL 2003 OLAP等。百分之百兼容PostgreSQL 8.2。</li> 
- <li>面向行或面向列的数据存储。</li> 
- <li>查询优化器——查询可以运行于成千上万个节点上。</li> 
- <li>完全兼容ODBC/JDBC。</li> 
- <li>交互式查询——大数据集上的复杂查询可以以秒级或次秒级的速度解决。</li> 
- <li>数据管理——提供了表统计和表安全等功能。</li> 
- <li>支持存储在HDFS、Hive、HBase、Avro、ProtoBuf、分隔的文本和序列化文件中的数据。</li> 
- <li>深度分析——包含了数据挖掘和机器学习算法。</li> 
+ <li>L1缓存引用 - 0.5 ns</li> 
+ <li>分支预测失败 – 5 ns</li> 
+ <li>L2缓存引用 – 7 ns</li> 
+ <li>互斥锁/解锁 – 25 ns</li> 
+ <li>主内存引用 – 100 ns</li> 
+ <li>使用Zippy压缩1KB – 3,000 ns</li> 
+ <li>在1Gbps网络上发送1KB – 10,000 ns（0.01 ms）</li> 
+ <li>从SSD随机读取4KB – 150,000 ns（0.15 ms）</li> 
+ <li>从内存中顺序读取1MB – 250,000 ns（0.25 ms）</li> 
+ <li>同一个数据中心内部往返 – 500,000 ns （0.5 ms）</li> 
+ <li>从SSD连续读取1MB – 1,000,000 ns （1 ms）</li> 
+ <li>硬盘寻道 – 10,000,000 ns （10 ms）</li> 
 </ul> 
-<p>Greenplum的高级技术总监Gavin Sherry做了一个演示（见该<a href="http://www.greenplum.com/webcasts?commid=68121">视频</a>的42分42秒），在60个节点组成的HDFS集群上，有总量达几个TB的10亿行数据，下列SQL语句可以在13秒内执行完，这提供了接近实时的能力：</p> 
-<pre><p>SELECT gender, count (*)<br />FROM retail.order JOIN customers ON retail.order.customer_ID = customers.customer_ID<br />GROUP BY gender;</p></pre> 
-<p>据EMC Greenplum 的解决方案架构师<a href="http://www.greenplum.com/blog/author/donald-miner">Donald Miner</a>介绍，“<a href="http://www.greenplum.com/blog/topics/hadoop/introducing-pivotal-hd">HAWQ比Hive快数百倍</a>”，下图是Greenplum提供的基准测试结果（<a href="http://public.brighttalk.com/resource/core/9757/hadoop-the_foundation_for_change_15465.pdf">PDF</a>）：</p> 
-<blockquote> 
- <p class="image-wide"><img src="/resource/news/2013/03/Pivotal-HD-SQL-Hadoop/zh/resources/Pivotal2.png;jsessionid=57B1C70EBD346CCB07B2857730155054" alt="" _href="img://Pivotal2.png" _p="true" /></p> 
-</blockquote> 
-<p>HAWQ能够在“次秒级别内”解决查询问题，“同时做到了在同一引擎内支持规模更大的数据集和完整的SQL表达能力”。Miner解释了这是如何做到的：</p> 
-<blockquote> 
- <p>我们有所谓的“分段服务器（segment server）”来管理每个表的一个分片。集群中的每个数据节点上会运行一些分段服务器。不过这种数据分片是完全保存在HDFS内的。有一个“主节点”负责存储顶层元数据、构建查询计划并将节点本地的查询推送到分段服务器上。</p> 
- <p>在查询启动时，数据将从HDFS中读出并加载到HAWQ执行引擎中。HAWQ遵循MPP架构，不同于将数据溢出到磁盘上和在磁盘上建立检查点（如MapReduce），它会让数据流过流水线的不同阶段。另外，分段服务器是一直运行的，所以不存在启动时间。</p> 
-</blockquote> 
-<p>Pivotal HD有三个版本（<a href="http://public.brighttalk.com/resource/core/9707/pivotal_hd_enterprise_datasheet-1_15391.pdf">PDF</a>)：企业版、数据库服务版和用于评估的社区版。<br /> <strong>查看英文原文：</strong><a href="http://www.infoq.com/news/2013/02/Pivotal-HD-SQL-Hadoop;jsessionid=57B1C70EBD346CCB07B2857730155054">Greenplum Pivotal HD Combines the Strengths of SQL and Hadoop</a>&nbsp;</p> 
-<p id="lastElm"></p></body></html>
+<p>Christopher演讲的其他部分涵盖了扩展的高级阶段，包括：</p> 
+<ul> 
+ <li>使用商用服务器传递代码而不是数据：<a href="http://www-01.ibm.com/software/data/infosphere/hadoop/mapreduce/">Map/Reduce (Hadoop)</a>，DHT（Cassandra、HBase和Riak）</li> 
+ <li>通过数据分区路由数据：<a href="http://www.complexevents.com/2006/08/01/what%E2%80%99s-the-difference-between-esp-and-cep/">ESP/CEP</a>、Eigen、Storm、Esper、StreamBase和0mq等</li> 
+ <li>使用UDP而不是TCP</li> 
+</ul> 
+<p>那些管理超大规模web应用的公司使用了最先进的技术，例如<a href="http://www.facebook.com/note.php?note_id=39391378919">Facebook使用UDP和Memcached每秒能执行成千上万次请求</a>。</p> 
+<p><b>查看英文原文</b><b>：<a href="http://www.infoq.com/news/2013/03/Insight-Phases-Scaling;jsessionid=80F9F1DCBBFE55FA15F1C862E684FDAC">Insight into the Phases of Scaling</a></b></p> 
+<hr /> 
+<p>感谢<a href="http://www.infoq.com/cn/bycategory.action;jsessionid=80F9F1DCBBFE55FA15F1C862E684FDAC?authorName=孙镜涛">孙镜涛</a>对本文的审校。</p> 
+<p>给InfoQ中文站投稿或者参与内容翻译工作，请邮件至<a href="mailto:editors@cn.infoq.com">editors@cn.infoq.com</a>。也欢迎大家通过新浪微博（<a href="http://www.weibo.com/infoqchina">@InfoQ</a>）或者腾讯微博（<a href="http://t.qq.com/infoqchina">@InfoQ</a>）关注我们，并与我们的编辑和其他读者朋友交流。</p> 
+<p id="lastElm"></p><br><br><br><br><br><br></body></html>
