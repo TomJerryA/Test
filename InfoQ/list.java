@@ -2,7 +2,10 @@
  <head></head> 
  <body>
   <div>
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/35.java">Red Hat Takes Over Leadership of OpenJDK 6</a>Red Hat have announced that they are taking over support of OpenJDK 6, just days after Oracle posted what it says will be the final freely available update, number&nbsp;43, to its commercial Java 6 development kit.
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/36.java">Xamarin Introduces C# Async for iOS and Android</a>Xamarin has released a preview of their async-enabled libraries for iOS and Android development. This work is based heavily on Microsoft’s .NET 4.5, which was released late last year as part of Visual Studio 2012. Xamarin is the new name for the development platforms previously known as MonoTouch and Mono for Android.
+  </div> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/35.java">Red Hat Takes Over Leadership of OpenJDK 6</a>Red Hat have announced that they are taking over support of OpenJDK 6, just days after Oracle posted what it says will be the final freely available update, number&nbsp;43, to its commercial Java 6 development kit. 
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/34.java">NuoDB Launches Scalable, Cloud Based, Relational Database</a>NuoDB recently released its Cloud Database Management System which supports SQL queries, ACID (Atomic, Consistent, Isolated and Durable) transactions, and easy scaling to multiple nodes. It is designed for companies that need to scale their databases to multiple servers but don’t want to give up the power of relational algebra or transactional guarantees. 

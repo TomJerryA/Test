@@ -1,0 +1,12 @@
+<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>Xamarin Introduces C# Async for iOS and Android</h3><p>Xamarin has released a preview of their async-enabled libraries for iOS and Android development. This work is based heavily on Microsoft’s .NET 4.5, which was released late last year as part of Visual Studio 2012. Xamarin is the new name for the development platforms previously known as MonoTouch and Mono for Android.</p> 
+<p>As part of the <a href="http://www.infoq.com/news/2013/02/Xamarin-2;jsessionid=4CFAC8FA516792EDFDF5603910525187">Xamarin 2.0</a> initiative, the mobile platforms have adopted the class libraries found in Mono and .NET. Previously MonoTouch and Mono for Android were restricted to a subset based on Silverlight/Moonlight. <a href="http://blog.xamarin.com/brave-new-async-mobile-world/">Rodrigo Kumpera</a> writes,</p> 
+<blockquote> 
+ <p>While asynchronicity is the main theme of this release, we also pack two years of improvements to the Mono runtime spread over more than 7,000 individual commits that are now available to Android, Mac and iOS users.</p> 
+</blockquote> 
+<p>This release also brings with it improvements to the iOS batch compiler. Unlike most other platforms, iOS doesn’t allow for JIT-compiled code. This has led to problems with dynamically invoked code, especially where generics are involved.</p> 
+<blockquote> 
+ <p>On iOS we now generate “shareable code” for value types, a truly revolutionary innovation in code generation technology. In practical terms this means that a whole range of code that previously crashed with a “Attempting to JIT compile method” now works. While we still provide the high-performance, and fine-tuned generic code that we can infer –for example direct calls to a method Foo&lt;T&gt;(T x)– we generate a value-type shared version of Foo&lt;T&gt;(T x) that can be used in dynamic cases that previously failed. What was once a dream, is now a reality.</p> 
+</blockquote> 
+<p>Currently Microsoft’s .NET own JIT compiler doesn’t have this capability. While it will share one method for all reference-types, a generic method has to be re-compiled for each distinct value type.</p> 
+<p><a href="http://msdn.microsoft.com/en-us/library/dd799517.aspx">Variance and Contravariance</a> support, introduced in .NET 4.0, has also found its way into the Xamarin platform.</p> 
+<p id="lastElm"></p><br><br><br><br><br><br></body></html>
