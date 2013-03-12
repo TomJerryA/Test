@@ -1,11 +1,31 @@
-<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>3D幻灯片框架Reveal.js发布2.2版，大量CSS 3D变换</h3><p>1月28日，Hakim EI Hattab发布了<a href="https://github.com/hakimel/reveal.js/wiki/Changelog/fe293e7415fc5706d48ef5756b70c188d6954e27">reveal.js 2.2版</a>，为这个JavaScript 3D 幻灯片类库修复了一些bug，并实现了大量新特性。<br /> 和Hattab开发的<a href="https://github.com/hakimel">其它工具</a>一样，Reveal.js也充分利用了现代浏览器的<a href="http://dev.w3.org/csswg/css3-3d-transforms/">CSS 3D变换</a>，以深入挖掘浏览器的Canvas功能。这样，和传统的幻灯片软件不同，reveal.js允许演讲者将他们的幻灯片在z轴空间上扩展，使得传统的的2D讲稿具有了3D变换的特效。<br /> 即使如此，reveal.js还是在它的线性展示形式上与<a href="http://www.slideshare.net/">SlideShare</a>和<a href="http://office.microsoft.com/en-us/powerpoint/">PowerPoint</a>保持了更近的继承关系。一个和reveal.js殊途同归的工具是<a href="https://github.com/bartaz/impress.js">impress.js</a>，“它受Prezi所启发，使用了lon-linear风格的展示方式，”Hattab说道：“我认为impress.js非常优秀，它和reveal.js一样，将某个现有概念发扬光大。这两者之间的最大区别是它们的视觉风格与结构。”。<br /> 总之，2.2版新增加了一些值得注意的功能增强：</p> 
+<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>深入了解扩展的5个阶段</h3><p>Christopher Smith在上月举行的<a href="http://www.socallinuxexpo.org/scale11x/presentations/five-stages-scale">Scale11x</a>上进行了题为“<a href="http://www.socallinuxexpo.org/scale11x/presentations/five-stages-scale">扩展的五个阶段</a>”的演讲，演讲中他分享了自己对实现Web应用扩展和解决扩展中的问题的见解。Christopher举了在各阶段实现扩展的例子，同时他还对通过添加或优化良好定义的组件来改善Web应用整体扩展做了讲解。他从负载均衡讲到UDP协议的优化使用，带领听众经历了一段<a href="http://www.socallinuxexpo.org/sites/default/files/presentations/SCALE11.pdf">集知识性和娱乐性于一体的旅程</a>。</p> 
+<p>最重要的基础扩展架构应具有在负载均衡器后面添加Web应用服务器的能力。负载均衡器能够通过在应用服务器间划分请求和会话的方式进行web应用的线性扩展。该技术相当于通过增加应用服务器进行线性扩展，然而这只不过是延缓了不可避免的<a href="http://www.facebook.com/pages/C10k-problem/120373131343187">C10K问题</a>，因为这种方式没有增加单个请求的响应能力。</p> 
+<p>Christopher介绍了web应用前置的缓存系统如何通过处理读取操作来支持扩展：联合使用多重缓存系统使扩展最大化。Memcache服务器（或类似的服务器）可以在<a href="http://www.infoq.com/news/2007/11/cfrp;jsessionid=3A4AA3C1B677E3D0C9590D3AB79638E2">内存中存储数据从而使应用服务器能够快速检索</a>。还可以在负责均衡器之前放置反向代理为缓存的资源提供服务。最后，可以使用内容分发网络（CDN）使缓存的资源更靠近终端用户。不过缓存在写数据方面有它自身的限制。</p> 
+<p>优化的持久性框架能够将扩展写入的能力带到扩展中的新阶段。Christopher认为，对大部分人来说，能够成功运用这一阶段和之前提到的内容就足够了。<a href="http://cloud.dzone.com/news/sql-vs-nosql-cloud-which">选择合适的SQL或NoSQL数据库</a>来匹配应用数据结构将显著地增强扩展性。并发读/写能力将提高写操作的吞吐量和响应能力。最后如果你能够“<a href="http://www.techopedia.com/definition/23949/atomicity-consistency-isolation-durability-acid">在ACID（特别是C和D）上</a>耍点手腕儿”，你就可以将更多的写操作提速。</p> 
+<p>这些扩展技术的基础是使web应用读/写数据的延迟最小化。Christopher分享了计算机上<a href="http://norvig.com/21-days.html#answers">不同操作的延迟时间</a>：</p> 
 <ul> 
- <li>使用了一个特别的打印样式表<a href="http://phantomjs.org/">PhantomJS</a>，可以在Google Chrome上将你的3D<a href="https://github.com/hakimel/reveal.js#pdf-export">幻灯片直接输出为PDF格式</a>。</li> 
- <li>对<a href="https://github.com/hakimel/reveal.js#internal-links">内部链接</a>的支持。</li> 
- <li>新增了<a href="https://github.com/Remotes/Remotes">remotes.io</a>插件，能够使用智能手机或平板电脑控制幻灯片。</li> 
- <li>使用<a href="https://travis-ci.org/">Travis持续集成</a>方案托管Reveal.js源代码。</li> 
+ <li>L1缓存引用 - 0.5 ns</li> 
+ <li>分支预测失败 – 5 ns</li> 
+ <li>L2缓存引用 – 7 ns</li> 
+ <li>互斥锁/解锁 – 25 ns</li> 
+ <li>主内存引用 – 100 ns</li> 
+ <li>使用Zippy压缩1KB – 3,000 ns</li> 
+ <li>在1Gbps网络上发送1KB – 10,000 ns（0.01 ms）</li> 
+ <li>从SSD随机读取4KB – 150,000 ns（0.15 ms）</li> 
+ <li>从内存中顺序读取1MB – 250,000 ns（0.25 ms）</li> 
+ <li>同一个数据中心内部往返 – 500,000 ns （0.5 ms）</li> 
+ <li>从SSD连续读取1MB – 1,000,000 ns （1 ms）</li> 
+ <li>硬盘寻道 – 10,000,000 ns （10 ms）</li> 
 </ul> 
-<p>为了快速地导出或发布reveal.js幻灯片，开发者可以使用rvl.io，一个带有简单用户界面的免费的幻灯片编辑工具。它的简单易用促使某些用户“基于rvl.io建立个人网站，并发布到个人域名下，”Hattab说道：“我对此很吃惊，我从没想过它还能够这样使用，不过我乐于更多地探索它。”<br /> Hattab是在2011年夏天为一个在斯德哥尔摩举办的会议准备幻灯片的时候发明了reveal.js。因为身边缺少一个制作幻灯片的软件，Hattab决定索性自己写一个。“我意识到可以自己写一个直接运行在浏览器中的幻灯片，于是当天夜里做了几个小时之后它就基本完成了。最终成果令我爱不释手，因此我决定将它转换成一个框架，这就是reveal.js的诞生过程，”Hattab说道。<br /> 现在，在reveal.js的初次GitHub提交后的18个月，它作为一个框架在不断地强化功能，Hattab说道。接下来，他打算专注于在rvl.io中充分利用当前reveal.js的特性。“我将尽力编写最好的编辑工具，将它交到用户手中，并让他们决定该如何使用它。”<br /> 查看英文原文：<a href="http://www.infoq.com/news/2013/02/reveal.js-2.2;jsessionid=EAC5349B45CF59BEE676FFBCB82D6B9F">Reveal.js: A 3D Presentation Framework; Version 2.2 Released</a></p> 
+<p>Christopher演讲的其他部分涵盖了扩展的高级阶段，包括：</p> 
+<ul> 
+ <li>使用商用服务器传递代码而不是数据：<a href="http://www-01.ibm.com/software/data/infosphere/hadoop/mapreduce/">Map/Reduce (Hadoop)</a>，DHT（Cassandra、HBase和Riak）</li> 
+ <li>通过数据分区路由数据：<a href="http://www.complexevents.com/2006/08/01/what%E2%80%99s-the-difference-between-esp-and-cep/">ESP/CEP</a>、Eigen、Storm、Esper、StreamBase和0mq等</li> 
+ <li>使用UDP而不是TCP</li> 
+</ul> 
+<p>那些管理超大规模web应用的公司使用了最先进的技术，例如<a href="http://www.facebook.com/note.php?note_id=39391378919">Facebook使用UDP和Memcached每秒能执行成千上万次请求</a>。</p> 
+<p><b>查看英文原文</b><b>：<a href="http://www.infoq.com/news/2013/03/Insight-Phases-Scaling;jsessionid=3A4AA3C1B677E3D0C9590D3AB79638E2">Insight into the Phases of Scaling</a></b></p> 
 <hr /> 
-<p>感谢<a href="http://infoq.com/cn/author/%E6%9D%A8%E8%B5%9B">杨赛</a>本文的审校。</p> 
-<p id="lastElm"></p></body></html>
+<p>感谢<a href="http://www.infoq.com/cn/bycategory.action;jsessionid=3A4AA3C1B677E3D0C9590D3AB79638E2?authorName=孙镜涛">孙镜涛</a>对本文的审校。</p> 
+<p>给InfoQ中文站投稿或者参与内容翻译工作，请邮件至<a href="mailto:editors@cn.infoq.com">editors@cn.infoq.com</a>。也欢迎大家通过新浪微博（<a href="http://www.weibo.com/infoqchina">@InfoQ</a>）或者腾讯微博（<a href="http://t.qq.com/infoqchina">@InfoQ</a>）关注我们，并与我们的编辑和其他读者朋友交流。</p> 
+<p id="lastElm"></p><br><br><br><br><br><br></body></html>
