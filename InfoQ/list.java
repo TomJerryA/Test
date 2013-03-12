@@ -2,7 +2,10 @@
  <head></head> 
  <body>
   <div>
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/34.java">NuoDB Launches Scalable, Cloud Based, Relational Database</a>NuoDB recently released its Cloud Database Management System which supports SQL queries, ACID (Atomic, Consistent, Isolated and Durable) transactions, and easy scaling to multiple nodes. It is designed for companies that need to scale their databases to multiple servers but don’t want to give up the power of relational algebra or transactional guarantees.
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/35.java">Red Hat Takes Over Leadership of OpenJDK 6</a>Red Hat have announced that they are taking over support of OpenJDK 6, just days after Oracle posted what it says will be the final freely available update, number&nbsp;43, to its commercial Java 6 development kit.
+  </div> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/34.java">NuoDB Launches Scalable, Cloud Based, Relational Database</a>NuoDB recently released its Cloud Database Management System which supports SQL queries, ACID (Atomic, Consistent, Isolated and Durable) transactions, and easy scaling to multiple nodes. It is designed for companies that need to scale their databases to multiple servers but don’t want to give up the power of relational algebra or transactional guarantees. 
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/33.java">API Community Debates Governance versus Innovation</a>Governance has reared its head up again, this time in the API community and questions have been raised about its relevance especially in organizations where innovation is the focus. This was a hot topic at the recent API Strategy and Practice conference and the debate continued in the blogosphere. 
