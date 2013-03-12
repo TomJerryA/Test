@@ -2,7 +2,10 @@
  <head></head> 
  <body>
   <div>
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/32.java">New Developer Tools for SQL Server, SharePoint, and Office</a>Microsoft updated several tools for developers targeting SQL Server, SharePoint, and Office. The Business Intelligence tools support analysis, integration, and reporting for SQL Server. The Office/SharePoint tools suite bring support for the 2013 versions of each and .NET Framework 4.5.
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/33.java">API Community Debates Governance versus Innovation</a>Governance has reared its head up again, this time in the API community and questions have been raised about its relevance especially in organizations where innovation is the focus. This was a hot topic at the recent API Strategy and Practice conference and the debate continued in the blogosphere.
+  </div> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/32.java">New Developer Tools for SQL Server, SharePoint, and Office</a>Microsoft updated several tools for developers targeting SQL Server, SharePoint, and Office. The Business Intelligence tools support analysis, integration, and reporting for SQL Server. The Office/SharePoint tools suite bring support for the 2013 versions of each and .NET Framework 4.5. 
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/31.java">QCon New York 2013: 50/100 speakers confirmed; Talks from NASA, Twitter, LinkedIn, Netflix</a>Over 50 speakers have been confirmed for the second annual QCon New York 2013. QCon New York will take place at the New York Marriott just outside of Manhattan (at the Brooklyn Bridge) on June 10-14, 2013. Registration is open and new speakers and sessions are being posted to the conference site every week.You can get in early by reserving your seat now saving up to $500 by Mar 15th. 
