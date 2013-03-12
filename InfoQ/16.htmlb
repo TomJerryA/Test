@@ -1,0 +1,122 @@
+<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>Fn.py：享受Python中的函数式编程</h3><p>尽管Python事实上并不是一门纯函数式编程语言，但它本身是一门多范型语言，并给了你足够的自由利用函数式编程的便利。函数式风格有着各种理论与实际上的好处（你可以在<a href="http://docs.python.org/2/howto/functional.html#introduction">Python的文档</a>中找到这个列表）：</p><ul> 
+ <li>形式上可证</li> 
+ <li>模块性</li> 
+ <li>组合性</li> 
+ <li>易于调试及测试</li> 
+</ul><p>虽然这份列表已经描述得够清楚了，但我还是很喜欢Michael O.Church在他的文章“<a href="http://michaelochurch.wordpress.com/2012/12/06/functional-programs-rarely-rot/">函数式程序极少腐坏</a>（Functional programs rarely rot）”中对函数式编程的优点所作的描述。我在PyCon UA 2012期间的讲座“<a href="http://kachayev.github.com/talks/uapycon2012/index.html">Functional Programming with Python</a>”中谈论了在Python中使用函数式方式的内容。我也提到，在你尝试在Python中编写可读同时又可维护的函数式代码时，你会很快发现诸多问题。</p><p>fn.py类库就是为了应对这些问题而诞生的。尽管它不可能解决所有问题，但对于希望从函数式编程方式中获取最大价值的开发者而言，它是一块“电池”，即使是在命令式方式占主导地位的程序中，也能够发挥作用。那么，它里面都有些什么呢？</p><h2>Scala风格的Lambda定义</h2><p>在Python中创建Lambda函数的语法非常冗长，来比较一下：</p><p>Python</p><pre>
+map(lambda x: x*2, [1,2,3])
+</pre><p>Scala</p><pre>
+List(1,2,3).map(_*2)
+</pre><p>Clojure</p><pre>
+(map #(* % 2) '(1 2 3))
+</pre><p>Haskell</p><pre>
+map (2*) [1,2,3]
+</pre><p>受Scala的启发，Fn.py提供了一个特别的_对象以简化Lambda语法。</p><pre>
+from fn import _
+
+assert (_ + _)(10, 5) = 15
+assert list(map(_ * 2, range(5))) == [0,2,4,6,8]
+assert list(filter(_ &lt; 10, [9,10,11])) == [9]
+</pre><p>除此之外还有许多场景可以使用_：所有的算术操作、属性解析、方法调用及分片算法。如果你不确定你的函数具体会做些什么，你可以将结果打印出来：</p><pre>
+from fn import _ 
+
+print (_ + 2) # &quot;(x1) =&gt; (x1 + 2)&quot; 
+print (_ + _ * _) # &quot;(x1, x2, x3) =&gt; (x1 + (x2 * x3))&quot;
+</pre><h2>流（Stream）及无限序列的声明</h2><p>Scala风格的惰性求值（Lazy-evaluated）流。其基本思路是：对每个新元素“按需”取值，并在所创建的全部迭代中共享计算出的元素值。Stream对象支持&lt;&lt;操作符，代表在需要时将新元素推入其中。</p><p>惰性求值流对无限序列的处理是一个强大的抽象。我们来看看在函数式编程语言中如何计算一个斐波那契序列。</p><p>Haskell</p><pre>
+fibs = 0 : 1 : zipWith (+) fibs (tail fibs)
+</pre><p>Clojure</p><pre>
+(def fib (lazy-cat [0 1] (map + fib (rest fib))))
+</pre><p>Scala</p><pre>
+def fibs: Stream[Int] = 
+     0 #:: 1 #:: fibs.zip(fibs.tail).map{case (a,b) =&gt; a + b} 
+</pre><p>现在你可以在Python中使用同样的方式了：</p><pre>
+from fn import Stream 
+from fn.iters import take, drop, map
+from operator import add
+
+f = Stream()
+fib = f &lt;&lt; [0, 1] &lt;&lt; map(add, f, drop(1, f))
+
+assert list(take(10, fib)) == [0,1,1,2,3,5,8,13,21,34]
+assert fib[20] == 6765
+assert list(fib[30:35]) == [832040,1346269,2178309,3524578,5702887]
+</pre><h2>蹦床（Trampolines）修饰符</h2><p>fn.recur.tco是一个不需要大量栈空间分配就可以处理TCO的临时方案。让我们先从一个递归阶乘计算示例开始：</p><pre>
+def fact(n):
+     if n == 0: return 1
+     return n * fact(n-1)
+</pre><p>这种方式也能工作，但实现非常糟糕。为什么呢？因为它会递归式地保存之前的计算值以算出最终结果，因此消耗了大量的存储空间。如果你对一个很大的n值（超过了sys.getrecursionlimit()的值）执行这个函数，CPython就会以此方式失败中止：</p><pre>
+&gt;&gt;&gt; import sys
+&gt;&gt;&gt; fact(sys.getrecursionlimit() * 2)
+... many many lines of stacktrace ...
+RuntimeError: maximum recursion depth exceeded
+</pre><p>这也是件好事，至少它避免了在你的代码中产生严重错误。</p><p>我们如何优化这个方案呢？答案很简单，只需改变函数以使用尾递归即可：</p><pre>
+def fact(n, acc=1):
+     if n == 0: return acc
+     return fact(n-1, acc*n)
+</pre><p>为什么这种方式更佳呢？因为你不需要保留之前的值以计算出最终结果。可以在Wikipedia上查看更多<a href="http://www.google.com/url?q=http%3A%2F%2Fen.wikipedia.org%2Fwiki%2FTail_call&amp;sa=D&amp;sntz=1&amp;usg=AFQjCNEu4mNimTv-aGzZPMC1yMqAvtfIhQ">尾递归调用优化</a>的内容。可是……Python的解释器会用和之前函数相同的方式执行这段函数，结果是你没得到任何优化。</p><p>fn.recur.tco为你提供了一种机制，使你可以使用“蹦床”方式获得一定的尾递归优化。同样的方式也使用在诸如Clojure语言中，主要思路是将函数调用序列转换为while循环。</p><pre>
+from fn import recur
+
+@recur.tco 
+def fact(n, acc=1):
+     if n == 0: return False, acc
+     return True, (n-1, acc*n)
+</pre><p>@recur.tco是一个修饰符，能将你的函数执行转为while循环并检验其输出内容：</p><ul> 
+ <li>(False, result)代表运行完毕</li> 
+ <li>(True, args, kwargs)代表我们要继续调用函数并传递不同的参数</li> 
+ <li>(func, args, kwargs)代表在while循环中切换要执行的函数</li> 
+</ul><h2>函数式风格的错误处理</h2><p>假设你有一个Request类，可以按照传入其中的参数名称得到对应的值。要想让其返回值格式为全大写、非空并且去除头尾空格的字符串，你需要这样写：</p><pre>
+class Request(dict):
+     def parameter(self, name):
+         return self.get(name, None)
+
+r = Request(testing=&quot;Fixed&quot;, empty=&quot; &quot;)
+param = r.parameter(&quot;testing&quot;)
+if param is None:
+     fixed = &quot;&quot;
+else:     
+     param = param.strip()
+     if len(param) == 0:
+         fixed = &quot;&quot;
+     else:
+        fixed = param.upper() 
+</pre><p>额，看上去有些古怪。用fn.monad.Option来修改你的代码吧，它代表了可选值，每个Option实例可代表一个Full或者Empty（这点也受到了Scala中<a href="http://www.scala-lang.org/api/current/index.html#scala.Option">Option</a>的启发）。它为你编写长运算序列提供了简便的方法，并且去掉除了许多if/else语句块。</p><pre>
+from operator import methodcaller
+from fn.monad import optionable
+
+class Request(dict):
+     @optionable
+     def parameter(self, name):
+         return self.get(name, None)
+
+r = Request(testing=&quot;Fixed&quot;, empty=&quot; &quot;)
+fixed = r.parameter(&quot;testing&quot;) 
+          .map(methodcaller(&quot;strip&quot;)) 
+          .filter(len) 
+          .map(methodcaller(&quot;upper&quot;)) 
+          .get_or(&quot;&quot;)
+</pre><p>fn.monad.Option.or_call是个便利的方法，它允许你进行多次调用尝试以完成计算。例如，你有一个Request类，它有type，mimetype和url等几个可选属性，你需要使用最少一个属性值以分析它的“request类型”：</p><pre>
+from fn.monad import Option 
+
+request = dict(url=&quot;face.png&quot;, mimetype=&quot;PNG&quot;) 
+tp = Option \ 
+         .from_value(request.get(&quot;type&quot;, None)) \ # check &quot;type&quot; key first 
+         .or_call(from_mimetype, request) \ # or.. check &quot;mimetype&quot; key 
+         .or_call(from_extension, request) \ # or... get &quot;url&quot; and check extension 
+         .get_or(&quot;application/undefined&quot;)
+</pre><h2>其余事项？</h2><p>我仅仅描述了类库的一小部分，你还能够找到并使用以下功能：</p><ul> 
+ <li>22个附加的itertools代码段，以扩展内置module的功能的附加功能</li> 
+ <li>将Python 2和Python 3的迭代器（iterator）（如range，map及filtter等等）使用进行了统一，这对使用跨版本的类库时非常有用</li> 
+ <li>为函数式组合及partial函数应用提供了简便的语法</li> 
+ <li>为使用高阶函数（apply，flip等等）提供了附加的操作符</li> 
+</ul><h2>正在进行中的工作</h2><p>自从在Github上发布这个类库以来，我从社区中收到了许多审校观点、意见和建议，以及补丁和修复。我也在继续增强现有功能，并提供新的特性。近期的路线图包括以下内容：</p><ul> 
+ <li>为使用可迭代对象（iterable），如foldl，foldr增加更多操作符</li> 
+ <li>更多的monad，如fn.monad.Either，以处理错误记录</li> 
+ <li>为大多数module提供C-accelerator</li> 
+ <li>为简化lambda arg1: lambda arg2:…形式而提供的curry函数的生成器</li> 
+ <li>更多文档，更多测试，更多示例代码</li> 
+</ul><h2>链接</h2><p>如果你想了解这个类库的更多信息，可以使用以下资源：</p><ul> 
+ <li><a href="http://pypi.python.org/pypi?:action=display&amp;name=fn">PyPI</a>上的类库</li> 
+ <li><a href="https://github.com/kachayev/fn.py">GitHub</a>上的源代码</li> 
+ <li><a href="https://github.com/kachayev/fn.py#fnpy-enjoy-fp-in-python">文档</a></li> 
+ <li><a href="https://github.com/kachayev/fn.py#installation">安装方法</a></li> 
+</ul><h2>关于作者</h2><p><strong>Alexey Kachayev</strong>是一个精力充沛且狂热的程序员，开源社区的活跃者，并经常在各种技术会议中进行演讲。他是Kitapps Inc的CTO。Alexey在Python、Erlang、Clojure及函数式编程语言（如Haskel及Lisp）等方面经验最丰富。他主要的兴趣所在是分布式应用、云计算、实时web和编译原理等。Alexey也为CPython解释器和Storm（实时数据处理器）贡献过自己的力量。</p><p><strong>查看英文原文</strong>：<a href="http://www.infoq.com/cn/articles/;jsessionid=106DBBCA89F39DD7C04E254655F675A3">Fn.py: Enjoy Functional Programming in Python</a></p><hr /><p>感谢<a href="http://www.infoq.com/cn/bycategory.action;jsessionid=106DBBCA89F39DD7C04E254655F675A3?authorName=杨赛">杨赛</a>对本文的审校。</p><p>给InfoQ中文站投稿或者参与内容翻译工作，请邮件至<a href="mailto:editors@cn.infoq.com">editors@cn.infoq.com</a>。也欢迎大家通过新浪微博（<a href="http://www.weibo.com/infoqchina">@InfoQ</a>）或者腾讯微博（<a href="http://t.qq.com/infoqchina">@InfoQ</a>）关注我们，并与我们的编辑和其他读者朋友交流。</p><div class="clearer-space"></div><br><br><br><br><br><br></body></html>

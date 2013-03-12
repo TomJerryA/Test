@@ -1,6 +1,9 @@
 <html>
  <head></head> 
- <body> 
+ <body>
+  <div>
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/16.htmlb">Fn.py：享受Python中的函数式编程</a>尽管Python事实上并不是一门纯函数式编程语言，但它本身是一门多范型语言，并给了你足够的自由从函数式编程方式中受益。fn.py类库就是为了帮助Python开发者使用函数式编程方式开发而诞生的。
+  </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/15.htmlb">究竟什么是敏捷测试</a>敏捷测试已经不是一个新概念了，但时至今日，感觉在许多人心目中还是比较模糊。希望这篇文章可以一次把“敏捷测试”这个内涵给大家说清楚。 
   </div> 

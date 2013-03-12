@@ -1,17 +1,17 @@
 <html>
  <head></head> 
- <body>
-  <div>
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/18.py">スケーリングに関する段階的考察</a>Christopher Smith氏は先月，Scale 11x で行なった &quot;スケールの５段階 (The Five Stages of Scale)&quot; と題するプレゼンテーションで，Webアプリケーションのスケーリング問題解決に関する自身の考察を披露した。プレゼンテーションの中で氏が論証したのは，明確に定義されたコンポーネントを追加，あるいは最適化する段階的なスケーリングによって，Webアプリケーション全体の規模を拡大するアプローチだ。
-  </div>
-  <div>
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/17.py">PhoneGap 2.5は、アプリケーションキャッシュとInAppBrowserジオロケーションが使える</a>PhoneGap 2.5がリリースされた。アプリケーションキャッシュとInAppBrowserジオロケーションのサポートと幾つかのアップデートとバグ改修が含まれている。
-  </div>
-  <div>
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/16.py">Entity Framework 6 Alpha 3は、コードファーストストアドプロシージャと接続回復性を持つ</a>Microsoftは、コードファーストストアドプロシージャ、接続回復性、iceclowとUnaiZorrillaからのプルリクエストをサポートするEntity Framework 6 Alpha 3をリリースした。
-  </div>
-  <div>
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/15.py">Yahoo!の在宅勤務禁止に対する反応</a>Yahoo!が従業員に出社して業務に従事するよう要求することに決めたことに、在宅勤務のコミュニティから疑問の声が上がった。これは形を変えたレイオフなのか。遠隔労働の管理の仕方についての誤解なのか。Yahoo!にとって正しい決断なのか。
+ <body> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/18.py">スケーリングに関する段階的考察</a>Christopher Smith氏は先月，Scale 11x で行なった &quot;スケールの５段階 (The Five Stages of Scale)&quot; と題するプレゼンテーションで，Webアプリケーションのスケーリング問題解決に関する自身の考察を披露した。プレゼンテーションの中で氏が論証したのは，明確に定義されたコンポーネントを追加，あるいは最適化する段階的なスケーリングによって，Webアプリケーション全体の規模を拡大するアプローチだ。 
+  </div> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/17.py">PhoneGap 2.5は、アプリケーションキャッシュとInAppBrowserジオロケーションが使える</a>PhoneGap 2.5がリリースされた。アプリケーションキャッシュとInAppBrowserジオロケーションのサポートと幾つかのアップデートとバグ改修が含まれている。 
+  </div> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/16.py">Entity Framework 6 Alpha 3は、コードファーストストアドプロシージャと接続回復性を持つ</a>Microsoftは、コードファーストストアドプロシージャ、接続回復性、iceclowとUnaiZorrillaからのプルリクエストをサポートするEntity Framework 6 Alpha 3をリリースした。 
+  </div> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/15.py">Yahoo!の在宅勤務禁止に対する反応</a>Yahoo!が従業員に出社して業務に従事するよう要求することに決めたことに、在宅勤務のコミュニティから疑問の声が上がった。これは形を変えたレイオフなのか。遠隔労働の管理の仕方についての誤解なのか。Yahoo!にとって正しい決断なのか。 
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/14.py">Eclipse Orion 2.0，Node.js を利用したローカル動作をサポート</a>Eclipse Orion 2.0 が先頃リリースされた。Node.js，Projectsなどのサポート，シェルコマンドの改良に加えて，JavaScriptコードアシストとパフォーマンスが改善されている。 
