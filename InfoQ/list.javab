@@ -1,6 +1,9 @@
 <html>
  <head></head> 
- <body> 
+ <body>
+  <div>
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/14.javab">Interview and Book Excerpt: Mastering the Requirements Process</a>Suzanne and James Robertson have released the 3rd edition of their book Mastering the Requirements Process. This edition includes material focused on requirements in agile projects and outsourcing.
+  </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/13.javab">Hybrid Mobile Apps with ASP.NET MVC</a>Daniel Jebaraj demonstrates creating hybrid mobile apps with Android and ASP.NET MVC. 
   </div> 

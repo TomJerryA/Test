@@ -1,6 +1,9 @@
 <html>
  <head></head> 
- <body> 
+ <body>
+  <div>
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/12.c">Eclipse Orion 2.0: agora rodando localmente em Node.js</a>A vers&atilde;o 2.0 do Eclipse Orion, recentemente lan&ccedil;ada, agora suporta Node.js, o plugin Projects, v&aacute;rios novos comandos Shell, um assistente para c&oacute;digo JavaScript aperfei&ccedil;oado e melhorias de performance. Conhe&ccedil;a as principais novidades.
+  </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/11.c">Programa Adote uma JSR cresce, ganha for&ccedil;a da Oracle e se envolve no Java EE 7</a>O programa Adote uma JSR, liderado por grupos de usu&aacute;rios Java, ganhou apoio oficial da Oracle. Arun Gupta, evangelista Java da empresa, publicou recentemente sobre a for&ccedil;a da participa&ccedil;&atilde;o da comunidade, que atrav&eacute;s de feedbacks e outras contribui&ccedil;&otilde;es tem apoiado a evolu&ccedil;&atilde;o do Java EE. 
   </div> 
