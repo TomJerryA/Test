@@ -2,7 +2,10 @@
  <head></head> 
  <body>
   <div>
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/41.java">Spring for Apache Hadoop 1.0</a>SpringSource has released Spring for Apache Hadoop 1.0. Spring for Apache Hadoop allows developers to write Hadoop applications under the Spring Framework. It also allows easily integration with Spring Batch and Spring Integration. Spring for Apache Hadoop is a subproject of the Spring Data umbrella project, and is released under the open source Apache 2.0 license.
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/42.java">Microsoft Open Sources Kinect for Windows Samples</a>Microsoft has recently open sourced on CodePlex 22 code samples under the Apache 2.0 license. The samples which are also included in the Kinect for Windows Toolkit show how to make use of various Kinect features: Audio, Basic Interactions, Colors, Depth, Face Tracing, Infrared, Slideshow Gestures, Speech, WPF, XNA, and others.
+  </div> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/41.java">Spring for Apache Hadoop 1.0</a>SpringSource has released Spring for Apache Hadoop 1.0. Spring for Apache Hadoop allows developers to write Hadoop applications under the Spring Framework. It also allows easily integration with Spring Batch and Spring Integration. Spring for Apache Hadoop is a subproject of the Spring Data umbrella project, and is released under the open source Apache 2.0 license. 
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/40.java">LLBLGen Pro v4.0 Beta with Table Valued Functions, SQL Server 2012 Sequence</a>Solutions Design has annnounced the availability of LLBLGen Pro v4.0 beta with several improvements to the designer and runtime system including support for Visual Studio 2010 and 2012. 
