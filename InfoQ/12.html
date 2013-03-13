@@ -1,12 +1,60 @@
-<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>MySQL 5.6企业版支持全文索引和在线DDL</h3><p>MySQL 5.6系列到达了一个新的里程碑，自此之后Oracle便能舒服地为它的付费客户发布更新的MySQL企业版了。5.6版本中包含的企业版组件包括：</p> 
-<ul> 
- <li>MySQL企业安全（PAM和Windows认证插件）</li> 
- <li>MySQL企业审计</li> 
- <li>MySQL线程池</li> 
-</ul> 
-<p>之前只有MySQL5.5的用户才能使用这些扩展。</p> 
-<p>MySQL 5.6改进了安全功能，例如对关键配置文件和用户密码的加密方式，但是<a href="http://dev.mysql.com/doc/refman/5.6/en/mysql-nutshell.html">对InnoDB</a>的提升才是大新闻。使用该存储引擎的最后一个主要障碍便是缺少全文索引，但是现在这个问题已经不复存在了。</p> 
-<p>该版本还为<a href="http://dev.mysql.com/doc/refman/5.6/en/innodb-online-ddl.html">InnoDB</a>引入了在线DDL，DBA一定会非常喜欢这个功能。增加、重命名和删除列等常用的操作可以和并发查询同时执行。尽管可能涉及到一些数据的复制或重组，但是大多数在线DDL操作都能够就地执行。</p> 
-<p>MySQL 5.6参考手册中包含<a href="http://dev.mysql.com/doc/refman/5.6/en/mysql-nutshell.html">新特性的完整列表</a>。</p> 
-<p><strong>查看英文原文：</strong><a href="http://www.infoq.com/news/2013/02/MySQL-EE-5.6;jsessionid=55FC3FE81E3CD7FFEDA38CB5C1377376"><strong>MySQL 5.6 Enterprise Edition with Full Text Indexes and Online DDL</strong></a></p> 
-<p id="lastElm"></p></body></html>
+<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>Jelastic 1.9支持FTP、NGINX缓存、Apache TomEE以及MariaDB 10</h3><p>支持Java和PHP的PaaS云服务器托管平台<a href="http://jelastic.com/press-releases/jelastic-launches-new-version-1-9">Jelastic</a>发布了1.9版本，该版本将支持FTP/FTPS和<a href="http://wiki.nginx.org/Main">NGINX</a>缓存。最新版还支持<a href="http://tomee.apache.org/apache-tomee.html">Apache TomEE</a>（Apache Tomcat企业版）和<a href="http://blog.mariadb.org/tag/mariadb-10/">MariaDB 10</a>，后者使得让开发者能够充分利用多源复制、动态列名以及<a href="http://blog.mariadb.org/mariadb-galera-cluster-5-5-29-stable-ga-released/">MariaDB Galera集群</a>。</p> 
+<p>Jelastic 1.9包含一个先进的报告仪表盘，主机提供商通过它能够分析<a href="http://www.google.com/url?q=http%3A%2F%2Fsearchcloudcomputing.techtarget.com%2Fdefinition%2FPlatform-as-a-Service-PaaS&amp;sa=D&amp;sntz=1&amp;usg=AFQjCNEjICofPbANAIElrQ3x91LdGvctsw">PaaS</a>业务和客户行为的方方面面，包括转变流程、流失率、活跃率、特性的流行度和每个客户的收益等。它还提供了一个新的日志管理系统，通过新的基于浏览器的用户界面，主机提供商能够给他们的Jelastic客户提供有效的支持。</p> 
+<p>使用Jelastic 1.9，主机提供商能够从RPM构建模板，为数据库管理页面启用安全的SSL（HTTPS）。它还包含Jelastic集群管理器（JCA）特性集，例如时髦的热迁移、自定义控制面板、资金历史记录、收费管理以及系统监控等。</p> 
+<p>只有在要使用的时候，Jelastic框架才会分配Java和PHP应用程序需要的服务器资源。</p> 
+<p>在这次独家专访中，InfoQ 首席运营官（COO）Dmitry Sotnikov分享了更多Jelastic 1.9相关的内容。</p> 
+<p><b>InfoQ：PasS的真正含义是什么？</b></p> 
+<blockquote> 
+ <p>PaaS是自动化的托管主机，它为你包办了IT管理。在常见的托管主机或基础结构即服务（IaaS）中，基本上你拿到的是一台服务器或虚拟主机。从那时到将应用程序运行起来，还需要完成很多管理任务：搭建服务器、搭建数据库、搭建负载均衡，如果还要求高可用性的话，还得搭建集群，确保所有的配置都修改了，确保所有服务器上程序、函数库的版本一致等等。每当改动应用程序、添加新的服务器，这些工作都需要一而再再而三的重复。</p> 
+ <p>至于PaaS，上诉这些都由平台自动完成。你只需要专注于自己的应用程序，平台会处理服务器管理和扩展涉及的所有内容。</p> 
+ <p>此外，你还将获得更多会让开发者和产品IT维护人员羡慕不已的特性，</p> 
+ <ul> 
+  <li>能够在云端直接从源码仓库构建应用程序</li> 
+  <li>支持软件开发周期：能够克隆环境（包括所有的数据），还能将环境相互交换（例如，生产环境、准备环境）</li> 
+  <li>支持角色和权限的团队协作</li> 
+  <li>集成流行的开发工具</li> 
+  <li>远程调试</li> 
+  <li>集成流行的第三方服务，例如监控、日志管理等等。</li> 
+ </ul> 
+</blockquote> 
+<p><b>InfoQ：能否和大家分享一下Jelastic和通常的共享主机有何不同？</b></p> 
+<blockquote> 
+ <p>Jelastic提供给你的不单只是web服务器的一小部分。登陆到Jelastic仪表盘，只需点击几下鼠标即可创建一套完整的环境，包含应用程序服务器、负载均衡、数据库、Memcached等等。你只需上传应用程序，或指定GIT/SVN代码仓库的连接信息——Jelastic会在云端启动应用程序，并且能够自动扩展。</p> 
+ <p>所以和共享主机不同是你能够轻而易举地将应用程序扩展到多台服务器上，还能够很方便地完全管理服务器：修改配置文件、上传应用程序函数库等等。</p> 
+</blockquote> 
+<p><b>InfoQ：使用Jelastic最多能够托管多少个网站？</b></p> 
+<blockquote> 
+ <p>我们没作限制——Jelastic提供了一个自助仪表盘，通过这个仪表盘你可以限定需要多少服务器，如何使用它们，是否希望Jelastic扩展这些服务器，如果需要的话又是如何扩展。</p> 
+</blockquote> 
+<p><b>InfoQ：Jelastic是否支持.NET框架？</b></p> 
+<blockquote> 
+ <p>目前，Jelastic全面支持PHP和Java应用程序，还包括所有基于JVM的编程语言，例如Closure、Groovy、Scala、Jruby和Jython。</p> 
+</blockquote> 
+<p><b>InfoQ：托管一个网站的资费要多少？</b></p> 
+<blockquote> 
+ <p>Jelastic是按时计费的，并且可以自动扩充（包括垂直扩充——能够动态升级内存和处理能力）——因此你实际上只需要为你使用的那部分付费，不使用的那部分服务器资源无需付费。每小时最低的资费仅仅2 美分，要想了解你现在的应用程序的实际价格也很简单：只要<a href="http://jelastic.com/">注册试用</a>，运行应用程序，你将会看到一个无需支付的”虚拟账单“——该账单上有精确的费用。</p> 
+ <p><b>InfoQ：能否安装WordPress以及其他基于PHP的博客应用程序？</b></p> 
+ <p>Jelastic能够托管和扩展任意的PHP或Java应用程序。除此之外，部分我们的<a href="http://www.google.com/url?q=http%3A%2F%2Fwww.servint.net%2Fjelastic.php&amp;sa=D&amp;sntz=1&amp;usg=AFQjCNEYcsUyVnUeWtvt2zcN50KwNmfldw">主机合作伙伴</a>正通过Jelastic提供目前流行应用程序的一键部署，例如Wordpress、Joomla、Drupal、Magnolia、Liferay等等。</p> 
+</blockquote> 
+<p><b>InfoQ：Jelastic能够处理每天20万的访问量吗？</b></p> 
+<blockquote> 
+ <p>Jelastic目前<a href="http://www.google.com/url?q=http%3A%2F%2Fjelastic.com%2Fcustomers&amp;sa=D&amp;sntz=1&amp;usg=AFQjCNF03aoSqAsQMa8WpYDLlzmOuIIs6A">托管的应用程序</a>拥有数以万计的用户、每天数百万的访问量。</p> 
+</blockquote> 
+<p><b>InfoQ：Jelastic是否支持包括IE在内的所有主流浏览器？</b></p> 
+<blockquote> 
+ <p>无论应用程序的创建者决定支持什么浏览器，Jelastic托管的应用程序都能支持。</p> 
+</blockquote> 
+<p><b>InfoQ：Jelastic是否包含任何能够通知宕机时间的应用程序？</b></p> 
+<blockquote> 
+ <p>Jelastic提供基本的内置监控系统，你也可以集成外部任意的监控解决方案。</p> 
+</blockquote> 
+<p><b>InfoQ：是否能够使用Jelastic创建POP3邮箱？</b></p> 
+<blockquote> 
+ <p>Jelastic只托管应用程序——不提供邮箱托管服务。然而，如果应用程序需要发送电子邮件的话，你可以选择添加一个邮件服务器（例如Sendmail），也可以使用外部邮箱（例如Google Apps）或是SendGrid。</p> 
+</blockquote> 
+<p><b>InfoQ：Jelastic和Windows Azure有什么相似之处吗？</b></p> 
+<blockquote> 
+ <p>他们都是PaaS。除添加了一些对非微软系统的支持之外，Azure主要还是面向ASP.NET应用程序，并且由微软独家经营。Jelastic是面向Java和PHP应用程序的PaaS，提供这项服务的主机提供商遍布世界各地，包括美国、巴西、英国、德国、瑞典、芬兰、俄国以及日本。</p> 
+</blockquote> 
+<p><b>查看英文原文</b>：<a href="http://www.infoq.com/news/2013/03/Jelastic-1-9;jsessionid=6A03D41FE3EAFA699AA645E934ED071E">Jelastic 1.9 with FTP, NGINX caching, Apache TomEE and MariaDB 10</a></p> 
+<p id="lastElm"></p><br><br><br><br><br><br></body></html>

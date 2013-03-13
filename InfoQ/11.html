@@ -1,36 +1,11 @@
-<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>LocationTech：帮助企业构建位置感知系统的新平台</h3><p>Eclipse基金会<a href="http://www.prweb.com/releases/2013/2/prweb10392471.htm">发布了</a><a href="http://locationtech.org/">LocationTech</a>&nbsp;——一个新平台，旨在帮助企业构建位置感知系统。</p> 
-<p><a href="http://locationtech.org/">LocationTech</a>&nbsp;是一个平台，它有自己的<a href="http://www.eclipse.org/org/industry-workgroups/">Eclipse工业工作组</a>，并且在Eclipse基金会的管理之下运行。LocationTech为企业和开发者提供了开发自己的位置感知系统所需要的基础设施和管理。</p> 
-<p>基础设施：</p> 
-<ul> 
- <li>一个分布式代码仓库（Git）</li> 
- <li>一个bug跟踪系统（Bugzilla）</li> 
- <li>一个持续的集成服务器（Hudson）</li> 
- <li>一个构建服务器农场</li> 
- <li>一个代码审查系统（Gerrit）</li> 
- <li>项目仪表盘（Drupal）</li> 
- <li>Web托管（Apache和Drupal）</li> 
- <li>下载网站</li> 
-</ul> 
-<p>指导：</p> 
-<ul> 
- <li>如何构建发布项目</li> 
- <li>对任何人甚至是竞争者开放</li> 
- <li>做设计或者路线图决策</li> 
- <li>成为一个贡献者</li> 
-</ul> 
-<p>信任：</p> 
-<ul> 
- <li>验证代码来源</li> 
- <li>检测许可证冲突</li> 
- <li>商标搜索和管理</li> 
- <li>分析依赖和传递依赖</li> 
-</ul> 
-<p>目前，在提议阶段LocationTech包含三个项目（查看<a href="http://www.eclipse.org/projects/dev_process/development_process.php">Eclipse开发流程</a>）：</p> 
-<ul> 
- <li><a href="http://locationtech.org/proposals/geoff-geo-fast-forward">Geoff（Geo Fast Forward）</a>——允许已有的Eclipse RCP应用程序在嵌入其中的地理地图上可视化地理空间信息。</li> 
- <li><a href="http://locationtech.org/proposals/geoscript">GeoScript</a>&nbsp;——提供访问<a href="http://geotools.org/">GeoTools</a>（一个开源的Java&nbsp;<a href="http://en.wikipedia.org/wiki/Geographic_information_system">GIS</a>工具箱）的API，功能来源于&nbsp;<a href="http://geoscript.org/groovy/index.html">Groovy</a>、<a href="http://geoscript.org/js/index.html">JavaScript</a>、<a href="http://geoscript.org/py/index.html">Python</a>及<a href="http://geoscript.org/scala/index.html">Scala</a>等其他语言。</li> 
- <li><a href="http://locationtech.org/proposals/user-friendly-desktop-internet-gis-udig">用户友好的桌面Internet GIS（uDig）</a>——一个能够使用、操作、探索和分析<a href="http://en.wikipedia.org/wiki/Geographic_information_system">GIS</a>数据的桌面应用程序。</li> 
-</ul> 
-<p>LocationTech的发起成员包括：<a href="http://www.locationtech.org/content/actuate">Actuate</a>、<a href="http://www.locationtech.org/content/ibm">IBM</a>、<a href="http://www.locationtech.org/content/opengeo">OpenGeo</a>和<a href="http://www.locationtech.org/content/oracle">Oracle</a>，它向“任何有兴趣向他们的业务中添加位置感知功能的组织开放”。</p> 
-<p><strong>查看英文原文：</strong><a href="http://www.infoq.com/news/2013/02/LocationTech;jsessionid=3491957BD731513546272D8750C7FA8C"><strong>LocationTech: An Initiative Helping Enterprises Build Location Aware Systems</strong></a></p> 
-<p id="lastElm"></p></body></html>
+<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>NuoDB发布可扩展的云关系型数据库</h3><p><a href="http://www.nuodb.com/">NuoDB</a>最近发布了云数据库管理系统，该系统支持SQL查询，ACID事务（原子性、一致性、隔离性、持久性），更可方便地扩展至多个节点。它是为一些公司而专门设计的，这些公司需要将数据库扩展至多个服务器，并且不想失去关系代数和事务保障的能力。</p> 
+<p>传统的关系型数据库最大的问题之一在于不便扩展至多个节点。NuoDB被设计成便于扩展、可容错、高性能——提供比其他关系型数据更优秀的单节点性能。据NuoDB首席架构师Seth Proctor所说：</p> 
+<p>无需使用分片技术，NuoDB直接提供了横向扩展、高可用性、数据冗余等特性，而且安全可靠、管理方便还支持多租户技术。</p> 
+<p>为了实现这些，NuoDB在进程间使用了多版本并发控制和智能的对象协调方案。Seth解释道：</p> 
+<p>这些让我们能够在操作数据库的时候保持高度乐观、还可以异步批量地执行，我们还能预防许多故障以及云端发生的网络异常。我们已经减少了耐用点的事务处理，一旦出现故障也能立马恢复，在需要增加容量或想要迁移运行流程时也会变得更加灵活。这意味着你能够在不关闭数据库或降低可用性级别的情况下做全面的升级。</p> 
+<p>在模式和数据类型演化方面，NuoDB比许多关系型数据提供了更大的灵活性。它还能不中断使用的情况下动态改变模式，还允许用户自定义数据类型，在应用程序改进的时候还能很容易地更新和重新定义这些数据类型。</p> 
+<p>NuoDB起初只发布了Java和C++版本的驱动程序，但在本文撰稿之时，针对Node.js、PHP、Ruby、.NET等编程语言的<a href="https://github.com/nuodb/nuodb-drivers">驱动程序</a>也已经发布。它同时还支持Java世界里的Hibernate和Rails开发者使用的Active Record。</p> 
+<p>NuoDB最初的免费版本最多只支持两台机器——虚拟机或是物理机器都可以。NuoDB还提供了没有使用限制的开发版，但该版本只能在非生产环境中使用。你还可以向NuoDB购买授权，授权费用取决于需要支持的主机数目和数据库大小。</p> 
+<p>Barry Morris和Jim Starkey在马萨诸塞州康桥成立了这家创业公司。公司的CTO Jim是DEC的一名老将，他还开发了关系型数据库Interbase。</p> 
+<p><b>查看英文原文</b>：<a href="http://www.infoq.com/news/2013/03/nuodb;jsessionid=2CF0A8E78CF2296D3F6F5872A1F10739">NuoDB Launches Scalable, Cloud Based, Relational Database</a></p> 
+<p id="lastElm"></p><br><br><br><br><br><br></body></html>

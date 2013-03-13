@@ -1,14 +1,14 @@
 <html>
  <head></head> 
- <body>
-  <div>
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/25.py">Visual Studio 2012 Update 2の最終プレビューがリリース</a>予定されていたVS2012/TFS2012 Update 2の最終プレビューがリリースされた。注目すべき新しいLightSwitch HTMLクライアントを含んでいくつかのアップデートが入っている。
-  </div>
-  <div>
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/24.py">Androidに関するMicrosoftとAmazonからの最新ニュース</a>Microsoft Azureに Android SDK が追加された。Android デバイスを対象とするプッシュ通知を備えている。Amazonも Mobile Ads API の提供を開始した。任意のAndroidデバイス上でGoogle AdMobと並行して，同社のネットワークからの広告が表示可能になる。
-  </div>
-  <div>
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/23.py">期限切れのSSL証明書で AzureとTFSがダウン</a>Windows Azureが2月22日に９時間動作停止し、Team Foundation Serviceを使っている人々を含めて、このストレージシステムに依存している全ユーザーに影響を与えた。InfoQは、この障害の根本原因に関して、明らかになった詳細を調査した。
+ <body> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/25.py">Visual Studio 2012 Update 2の最終プレビューがリリース</a>予定されていたVS2012/TFS2012 Update 2の最終プレビューがリリースされた。注目すべき新しいLightSwitch HTMLクライアントを含んでいくつかのアップデートが入っている。 
+  </div> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/24.py">Androidに関するMicrosoftとAmazonからの最新ニュース</a>Microsoft Azureに Android SDK が追加された。Android デバイスを対象とするプッシュ通知を備えている。Amazonも Mobile Ads API の提供を開始した。任意のAndroidデバイス上でGoogle AdMobと並行して，同社のネットワークからの広告が表示可能になる。 
+  </div> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/23.py">期限切れのSSL証明書で AzureとTFSがダウン</a>Windows Azureが2月22日に９時間動作停止し、Team Foundation Serviceを使っている人々を含めて、このストレージシステムに依存している全ユーザーに影響を与えた。InfoQは、この障害の根本原因に関して、明らかになった詳細を調査した。 
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/22.py">QConTokyo2013【モバイル/HTML】トラックのご紹介</a>モバイル／HTML5トラックでは、急速に普及しているスマートフォン そして タブレットへの対応を取り上げ、マルチスクリーンで利用者に魅力的なUXを提供するアプリケーションを開発するするために不可欠な知識と技術の習得をテーマして構成しています。 
