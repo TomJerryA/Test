@@ -1,6 +1,9 @@
 <html>
  <head></head> 
- <body> 
+ <body>
+  <div>
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/19.py">QCon Tokyo 2013【クラウド】トラックのご紹介</a>今回のQCon Tokyo 2013 では、クラウド時代の実装技術の動向とその可能性にこだわってクラウドカテゴリを設定いたしました。クラウドの導入においては、SaaS/PaaS/IaaSといったサービス形態、パブリック/プライベート/ハイブリッドといった配置種別など、設計時に考慮するべきポイントが多数あります。そこで本トラックでは、クラウドを適切に活用・運用する方法を紹介します。
+  </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/18.py">スケーリングに関する段階的考察</a>Christopher Smith氏は先月，Scale 11x で行なった &quot;スケールの５段階 (The Five Stages of Scale)&quot; と題するプレゼンテーションで，Webアプリケーションのスケーリング問題解決に関する自身の考察を披露した。プレゼンテーションの中で氏が論証したのは，明確に定義されたコンポーネントを追加，あるいは最適化する段階的なスケーリングによって，Webアプリケーション全体の規模を拡大するアプローチだ。 
   </div> 

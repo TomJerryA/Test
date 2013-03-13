@@ -1,8 +1,8 @@
 <html>
  <head></head> 
- <body>
-  <div>
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/38.java">New Avenues for Operations Engineering Education</a>Technology education enthusiasts got together to have a panel discussion on hangops last month about creating new opportunities for operations engineering education. They acknowledge that it is harder than ever to find qualified individuals for today's operation engineering jobs and discussed ways to solve that problem.
+ <body> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/38.java">New Avenues for Operations Engineering Education</a>Technology education enthusiasts got together to have a panel discussion on hangops last month about creating new opportunities for operations engineering education. They acknowledge that it is harder than ever to find qualified individuals for today's operation engineering jobs and discussed ways to solve that problem. 
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/37.java">CQRS Framework Axon 2 Features MongoDB Support and Performance Improvements</a>The latest version of CQRS framework Axon supports MongoEventStore, which uses MongoDB as a backing store, and comes with a simplified API and performance improvements. The recently released version 2.0 also lets event objects be based on POJOs and annotations to define messages, payload and metadata. 
