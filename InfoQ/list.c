@@ -1,8 +1,8 @@
 <html>
  <head></head> 
- <body>
-  <div>
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/13.c">Beta 3 do Entity Framework Power Tools traz corre&ccedil;&otilde;es e novos comandos</a>A Microsoft lan&ccedil;ou recentemente o beta do Entity Framework Power Tools 3, com diversas corre&ccedil;&otilde;es e novas funcionalidades, por exemplo a engenharia reversa utilizando Code First.
+ <body> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/13.c">Beta 3 do Entity Framework Power Tools traz corre&ccedil;&otilde;es e novos comandos</a>A Microsoft lan&ccedil;ou recentemente o beta do Entity Framework Power Tools 3, com diversas corre&ccedil;&otilde;es e novas funcionalidades, por exemplo a engenharia reversa utilizando Code First. 
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/12.c">Eclipse Orion 2.0: agora rodando localmente em Node.js</a>A vers&atilde;o 2.0 do Eclipse Orion, recentemente lan&ccedil;ada, agora suporta Node.js, o plugin Projects, v&aacute;rios novos comandos Shell, um assistente para c&oacute;digo JavaScript aperfei&ccedil;oado e melhorias de performance. Conhe&ccedil;a as principais novidades. 
