@@ -1,8 +1,8 @@
 <html>
  <head></head> 
- <body>
-  <div>
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/40.java">LLBLGen Pro v4.0 Beta with Table Valued Functions, SQL Server 2012 Sequence</a>Solutions Design has annnounced the availability of LLBLGen Pro v4.0 beta with several improvements to the designer and runtime system including support for Visual Studio 2010 and 2012.
+ <body> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/40.java">LLBLGen Pro v4.0 Beta with Table Valued Functions, SQL Server 2012 Sequence</a>Solutions Design has annnounced the availability of LLBLGen Pro v4.0 beta with several improvements to the designer and runtime system including support for Visual Studio 2010 and 2012. 
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/39.java">Replacing Native PHP4 Extensions with Managed Extensions</a>Phalanger, the PHP runtime for .NET and Mono, has reached a significant milestone with the eleven popular PHP extensions being replaced with .NET equivalents. Previously these extensions, written in native C or C++, were limiting Phalanger to only running in 32-bit mode. 
