@@ -2,7 +2,16 @@
  <head></head> 
  <body>
   <div>
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/19.py">QCon Tokyo 2013【クラウド】トラックのご紹介</a>今回のQCon Tokyo 2013 では、クラウド時代の実装技術の動向とその可能性にこだわってクラウドカテゴリを設定いたしました。クラウドの導入においては、SaaS/PaaS/IaaSといったサービス形態、パブリック/プライベート/ハイブリッドといった配置種別など、設計時に考慮するべきポイントが多数あります。そこで本トラックでは、クラウドを適切に活用・運用する方法を紹介します。
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/22.py">QConTokyo2013【モバイル/HTML】トラックのご紹介</a>モバイル／HTML5トラックでは、急速に普及しているスマートフォン そして タブレットへの対応を取り上げ、マルチスクリーンで利用者に魅力的なUXを提供するアプリケーションを開発するするために不可欠な知識と技術の習得をテーマして構成しています。
+  </div>
+  <div>
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/21.py">QConTokyo2013【アジャイル/モデリング】トラックのご紹介</a>このトラックでは、アジャイル開発プロセスの観点から、コーディングスタイル、モデリング、NOSQLデータベースによる柔軟なシステム実現、という３つのテーマでアジャイルとモデリングの最新状況をご紹介したいと思います。
+  </div>
+  <div>
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/20.py">動画サービスを柔軟に作れるAzure Media Servicesのススメ</a>Azure Media Serviceは、メディアの作成から配信までをクラウドで提供できるクラウドサービスです。以前は敷居が高かった動画配信も、いまや Azure を利用することで素早く柔軟にサービスを開始できるようになりました。
+  </div> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/19.py">QCon Tokyo 2013【クラウド】トラックのご紹介</a>今回のQCon Tokyo 2013 では、クラウド時代の実装技術の動向とその可能性にこだわってクラウドカテゴリを設定いたしました。クラウドの導入においては、SaaS/PaaS/IaaSといったサービス形態、パブリック/プライベート/ハイブリッドといった配置種別など、設計時に考慮するべきポイントが多数あります。そこで本トラックでは、クラウドを適切に活用・運用する方法を紹介します。 
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/18.py">スケーリングに関する段階的考察</a>Christopher Smith氏は先月，Scale 11x で行なった &quot;スケールの５段階 (The Five Stages of Scale)&quot; と題するプレゼンテーションで，Webアプリケーションのスケーリング問題解決に関する自身の考察を披露した。プレゼンテーションの中で氏が論証したのは，明確に定義されたコンポーネントを追加，あるいは最適化する段階的なスケーリングによって，Webアプリケーション全体の規模を拡大するアプローチだ。 
