@@ -1,0 +1,15 @@
+<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>Visual Studio 2012 Update 2の最終プレビューがリリース</h3><p><a target="_blank" href="http://www.infoq.com/news/2013/03/VS2012_CTP4;jsessionid=A4B9DF77EE3F1904FE0C6C53930EA1B7"><em>原文(投稿日：2013/03/06)へのリンク</em></a></p> 
+<div class="clearer-space">
+ &nbsp;
+</div> 
+<div id="newsContent"> 
+ <p style="margin-bottom: 0in" class="western"><span lang="en-US">Update 2の公式リリース前に通常のプレビューをリリースする、前進を続けながら、Microsoft は<a class="western" target="_blank" href="http://www.microsoft.com/en-us/download/details.aspx?id=36833">CTP4</a>のリリースを発表した。このリリースは、&quot;go-live&quot;として指定された Update 2の最初のバージョンと記された。すなわちこれは、完全なMicrosoft のサポートを受けていく、という意味である（ TFS2012 go-live と VS2012 go-live未満の差に<b>注意</b>）。これは、Update 2の公式リリース前の最後のCTPを意図している。</span></p> 
+ <p style="margin-bottom: 0in" class="western"><span lang="en-US">CTP4は、Update 2の全体的テーマ－「現代的アプリケーションライフサイクルと現代的アプリケーション開発」を推進し続ける。その目標を提供するために、最初にリリースされたフィーチャは、<a class="western" target="_blank" href="http://blogs.msdn.com/b/lightswitch/archive/2013/03/04/announcing-a-new-preview-of-the-lightswitch-html-client.aspx">LightSwitch HTML クライアント</a>の更新されたプレビューである。リードプログラムマネージャの John Stallo氏は、このリリースの2つの主要な目標は、モバイルの作成 、クロスプラットフォームのWebクライアントとSharePoint 2013アプリケーションカタログへのプログラムの公開をサポートすることである、とコメント した。</span></p> 
+ <p style="margin-bottom: 0in" class="western"><span lang="en-US">VS2012のブラウザベースのテスト管理領域は、さらに洗練 されて、結果やテストケースのステップをインラインでテキスト編集する機能がついた。これで、ソフトウェアをテストされる環境にインストールする必要がない。</span></p> 
+ <p style="margin-bottom: 0in" class="western"><span lang="en-US">Microsoftの Brian Harry氏も、バックアップと復元用のパワーツール（以前は別々に<a class="western" target="_blank" href="http://visualstudiogallery.msdn.microsoft.com/b1ef7eb2-e084-4cb8-9bc7-06c3bad9148f">ダウンロード</a>した）は Update 2に統合される、と述べた。TFSの管理者もアップグレード後は、<a class="western" target="_blank" href="http://blogs.msdn.com/b/visualstudioalm/archive/2013/03/05/tfs-update-2-offers-settings-preservation-for-in-place-upgrades.aspx">TFS のその場設定</a></span><a class="western" href="http://blogs.msdn.com/b/visualstudioalm/archive/2013/03/05/tfs-update-2-offers-settings-preservation-for-in-place-upgrades.aspx"></a><span lang="en-US">を保持する機能から恩恵を受けるはずである。</span></p> 
+ <p style="margin-bottom: 0in" class="western"><span lang="en-US"><a class="western" target="_blank" href="http://www.infoq.com/news/2013/01/vs2012_git;jsessionid=B39AD8FF2C5A273C939AC35E1BFD27C7;jsessionid=A4B9DF77EE3F1904FE0C6C53930EA1B7">Gitのサポート</a>が必要な開発者は、CTP4のインストールをしばらく控えるでしょう。この機能を提供するには、<a class="western" target="_blank" href="http://visualstudiogallery.msdn.microsoft.com/abafc7d6-dcaa-40f4-8a5e-d6724bdb980c">Git 拡張</a>への個別の、まだリリースされていない、アップデートが必要だからだ。氏は、これは「一両日中」に入手できる、と言っている。このサポートは Update 2の一部ではなく、これからも個別のダウンロードが必要である。氏によれば、こうすることで Microsoftがもっと速く成果を提供できるからである。</span></p> 
+ <p style="margin-bottom: 0in" class="western">注意して欲しいのは、CTP4のgo-liveステータスは、Team Foundation Server 2012に<u>排他的に</u>適用されることである。これは、VS2012用のCTP4 には当てはまらない、結果として、VS2012用のCTP4 は本番環境に適用されるべきではない。</p> 
+ <p>&nbsp;</p> 
+ <p id="lastElm">&nbsp;</p> 
+</div> 
+<p id="lastElm"></p><br><br><br><br><br><br></body></html>

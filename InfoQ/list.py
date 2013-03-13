@@ -2,13 +2,22 @@
  <head></head> 
  <body>
   <div>
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/22.py">QConTokyo2013【モバイル/HTML】トラックのご紹介</a>モバイル／HTML5トラックでは、急速に普及しているスマートフォン そして タブレットへの対応を取り上げ、マルチスクリーンで利用者に魅力的なUXを提供するアプリケーションを開発するするために不可欠な知識と技術の習得をテーマして構成しています。
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/25.py">Visual Studio 2012 Update 2の最終プレビューがリリース</a>予定されていたVS2012/TFS2012 Update 2の最終プレビューがリリースされた。注目すべき新しいLightSwitch HTMLクライアントを含んでいくつかのアップデートが入っている。
   </div>
   <div>
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/21.py">QConTokyo2013【アジャイル/モデリング】トラックのご紹介</a>このトラックでは、アジャイル開発プロセスの観点から、コーディングスタイル、モデリング、NOSQLデータベースによる柔軟なシステム実現、という３つのテーマでアジャイルとモデリングの最新状況をご紹介したいと思います。
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/24.py">Androidに関するMicrosoftとAmazonからの最新ニュース</a>Microsoft Azureに Android SDK が追加された。Android デバイスを対象とするプッシュ通知を備えている。Amazonも Mobile Ads API の提供を開始した。任意のAndroidデバイス上でGoogle AdMobと並行して，同社のネットワークからの広告が表示可能になる。
   </div>
   <div>
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/20.py">動画サービスを柔軟に作れるAzure Media Servicesのススメ</a>Azure Media Serviceは、メディアの作成から配信までをクラウドで提供できるクラウドサービスです。以前は敷居が高かった動画配信も、いまや Azure を利用することで素早く柔軟にサービスを開始できるようになりました。
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/23.py">期限切れのSSL証明書で AzureとTFSがダウン</a>Windows Azureが2月22日に９時間動作停止し、Team Foundation Serviceを使っている人々を含めて、このストレージシステムに依存している全ユーザーに影響を与えた。InfoQは、この障害の根本原因に関して、明らかになった詳細を調査した。
+  </div> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/22.py">QConTokyo2013【モバイル/HTML】トラックのご紹介</a>モバイル／HTML5トラックでは、急速に普及しているスマートフォン そして タブレットへの対応を取り上げ、マルチスクリーンで利用者に魅力的なUXを提供するアプリケーションを開発するするために不可欠な知識と技術の習得をテーマして構成しています。 
+  </div> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/21.py">QConTokyo2013【アジャイル/モデリング】トラックのご紹介</a>このトラックでは、アジャイル開発プロセスの観点から、コーディングスタイル、モデリング、NOSQLデータベースによる柔軟なシステム実現、という３つのテーマでアジャイルとモデリングの最新状況をご紹介したいと思います。 
+  </div> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/20.py">動画サービスを柔軟に作れるAzure Media Servicesのススメ</a>Azure Media Serviceは、メディアの作成から配信までをクラウドで提供できるクラウドサービスです。以前は敷居が高かった動画配信も、いまや Azure を利用することで素早く柔軟にサービスを開始できるようになりました。 
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/19.py">QCon Tokyo 2013【クラウド】トラックのご紹介</a>今回のQCon Tokyo 2013 では、クラウド時代の実装技術の動向とその可能性にこだわってクラウドカテゴリを設定いたしました。クラウドの導入においては、SaaS/PaaS/IaaSといったサービス形態、パブリック/プライベート/ハイブリッドといった配置種別など、設計時に考慮するべきポイントが多数あります。そこで本トラックでは、クラウドを適切に活用・運用する方法を紹介します。 

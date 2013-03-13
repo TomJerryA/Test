@@ -1,8 +1,8 @@
 <html>
  <head></head> 
- <body>
-  <div>
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/39.java">Replacing Native PHP4 Extensions with Managed Extensions</a>Phalanger, the PHP runtime for .NET and Mono, has reached a significant milestone with the eleven popular PHP extensions being replaced with .NET equivalents. Previously these extensions, written in native C or C++, were limiting Phalanger to only running in 32-bit mode.
+ <body> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/39.java">Replacing Native PHP4 Extensions with Managed Extensions</a>Phalanger, the PHP runtime for .NET and Mono, has reached a significant milestone with the eleven popular PHP extensions being replaced with .NET equivalents. Previously these extensions, written in native C or C++, were limiting Phalanger to only running in 32-bit mode. 
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/38.java">New Avenues for Operations Engineering Education</a>Technology education enthusiasts got together to have a panel discussion on hangops last month about creating new opportunities for operations engineering education. They acknowledge that it is harder than ever to find qualified individuals for today's operation engineering jobs and discussed ways to solve that problem. 
