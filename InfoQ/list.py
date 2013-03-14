@@ -1,6 +1,27 @@
 <html>
  <head></head> 
- <body> 
+ <body>
+  <div>
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/32.py">モジュラリティを強化したGrunt 0.4.0</a>2月18日、ライブラリを複数のモジュールにして疎結合にしようと作業を続けてきたGruntチームはJavascriptタスクランナーであるGruntのバージョンを0.4.0にした。
+  </div>
+  <div>
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/31.py">GoogleとMPEG LAがVP8を巡る論争に終止符</a>GoogleはMPEG LAの所有する，VP8に不可欠なアルゴリズムのライセンスをすべて取得した。合わせてサードパーティ開発者に対してVP8をロイヤリティフリーでサブライセンスする権利も獲得し，VP8コーデックの広範な採用に向けて道を開いた。
+  </div>
+  <div>
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/30.py">Stimulsoft，WinRT用レポートデザイナをリリース</a>StimulsoftがWinRT用のレポートデザイナを新たにリリースした。Windows 8の動作する任意のデバイス上でレポートの作成と編集が可能になる。
+  </div>
+  <div>
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/29.py">Erlang/OTP R16Bが並列性を改善</a>新しくリリースされたErlang/OTP R16Bの新フィーチャには、幾つものパフォーマンス改善がある。コードは非ブロッキングでロードできるようになり、ポート用のネットワークコードも改善され、VMプロセスは並列化された。
+  </div>
+  <div>
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/28.py">アジャイルで開発速度を上げるには</a>企業がソフトウェア開発へのアジャイル導入を望む理由として挙げられるのが，提供までの期間の短縮だ。開発速度を向上するためには，アジャイルをどのように使えばいいのだろうか？
+  </div>
+  <div>
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/27.py">Red GateがSimply Web Devを発表</a>イギリスのRed Gate Softwareが開発者や学生がASP.NET MVCを学習するために利用できるポータルサイトを立ち上げた。
+  </div>
+  <div>
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/26.py">Java 8でPermGenのOutOfMemoryError問題は解決されるのか？</a>HotSpotとJRockitのコードベース統合を目指して進行中のプロジェクトの一部として，OracleはHotSpot JVMのJava 8バージョンからPermGenを削除すると発表した。しかし多くの人たちは，PermGen関連のすべてのエラーを消滅させる手段としてこれを受け止めている。その効果はJava 8 Early Accessビルドで確認することができる。本当にすべての問題が解決されているのか，ここで検証してみたい。
+  </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/25.py">Visual Studio 2012 Update 2の最終プレビューがリリース</a>予定されていたVS2012/TFS2012 Update 2の最終プレビューがリリースされた。注目すべき新しいLightSwitch HTMLクライアントを含んでいくつかのアップデートが入っている。 
   </div> 

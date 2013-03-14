@@ -1,8 +1,8 @@
 <html>
  <head></head> 
- <body>
-  <div>
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/17.htmlb">阅读者（二十三）——《精益和敏捷开发大型应用指南》</a>此书为传统大型IT部门多团队实施敏捷之得力帮手，首先列出了复杂问题的思考工具，其次给出了大型组织实施敏捷的具体方式及尝试方法，尤其是如何组织团队、提高团队适应能力、培养学习型团队以及各个角色如何做好职责转变等，此外还描述了传统企业常见的团队组织方式并分析其利弊。
+ <body> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/17.htmlb">阅读者（二十三）——《精益和敏捷开发大型应用指南》</a>此书为传统大型IT部门多团队实施敏捷之得力帮手，首先列出了复杂问题的思考工具，其次给出了大型组织实施敏捷的具体方式及尝试方法，尤其是如何组织团队、提高团队适应能力、培养学习型团队以及各个角色如何做好职责转变等，此外还描述了传统企业常见的团队组织方式并分析其利弊。 
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/16.htmlb">Fn.py：享受Python中的函数式编程</a>尽管Python事实上并不是一门纯函数式编程语言，但它本身是一门多范型语言，并给了你足够的自由从函数式编程方式中受益。fn.py类库就是为了帮助Python开发者使用函数式编程方式开发而诞生的。 
