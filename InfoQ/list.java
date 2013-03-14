@@ -1,8 +1,8 @@
 <html>
  <head></head> 
- <body>
-  <div>
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/44.java">Node.js 0.10 Released</a>The Node.js development team has released version 0.10 of node.js, the Javascript-based platform for building high-performance asynchronous servers. The release features an easier to use module for handling streams, better error handling with domains, and performance improvements. The team also announced that after version 0.10, one more stable release (0.12) will follow before its 1.0 release.
+ <body> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/44.java">Node.js 0.10 Released</a>The Node.js development team has released version 0.10 of node.js, the Javascript-based platform for building high-performance asynchronous servers. The release features an easier to use module for handling streams, better error handling with domains, and performance improvements. The team also announced that after version 0.10, one more stable release (0.12) will follow before its 1.0 release. 
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/43.java">Tom Baeyens, creator of jBPM and Alfresco Activiti, Starts New Venture to Bring BPM to the Cloud</a>Tom Baeyens, the original creator of JBoss jBPM (acquired by Red Hat) and Activiti (acquired by Alfresco), has announced Effektif, a new cloud-based Business Process Management (BPM) tool for process automation. The new venture is being developed in partnership with Signavio. InfoQ spoke to Baeyens and co-CEO of Signavio Decker to find out more. 
