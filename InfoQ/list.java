@@ -2,7 +2,13 @@
  <head></head> 
  <body>
   <div>
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/45.java">Applying Agile Practices in Enterprises Outside Development</a>After software development agile practices are now also being used in other aspects of business, according to Gartner. Insights in using agile in the whole enterprise, with examples from marketing, sales and services.
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/47.java">Internet Explorer 10 Broadens Flash Support</a>Microsoft has announced increased Flash support on IE10 running on Windows 8 and Windows RT. This content will now be enabled to run by default and solidifies Flash's position on the Windows platform.
+  </div>
+  <div>
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/46.java">LLBLGen Pro v4.0 Beta with Table Valued Functions, Visual Studio Integration</a>Solutions Design has annnounced the availability of LLBLGen Pro v4.0 beta with several improvements to the designer and runtime system including support for Visual Studio 2010 and 2012.
+  </div> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/45.java">Applying Agile Practices in Enterprises Outside Development</a>After software development agile practices are now also being used in other aspects of business, according to Gartner. Insights in using agile in the whole enterprise, with examples from marketing, sales and services. 
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/44.java">Node.js 0.10 Released</a>The Node.js development team has released version 0.10 of node.js, the Javascript-based platform for building high-performance asynchronous servers. The release features an easier to use module for handling streams, better error handling with domains, and performance improvements. The team also announced that after version 0.10, one more stable release (0.12) will follow before its 1.0 release. 
