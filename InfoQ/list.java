@@ -1,6 +1,9 @@
 <html>
  <head></head> 
- <body> 
+ <body>
+  <div>
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/45.java">Applying Agile Practices in Enterprises Outside Development</a>After software development agile practices are now also being used in other aspects of business, according to Gartner. Insights in using agile in the whole enterprise, with examples from marketing, sales and services.
+  </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/44.java">Node.js 0.10 Released</a>The Node.js development team has released version 0.10 of node.js, the Javascript-based platform for building high-performance asynchronous servers. The release features an easier to use module for handling streams, better error handling with domains, and performance improvements. The team also announced that after version 0.10, one more stable release (0.12) will follow before its 1.0 release. 
   </div> 
