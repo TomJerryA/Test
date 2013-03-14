@@ -1,8 +1,8 @@
 <html>
  <head></head> 
- <body>
-  <div>
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/15.c">Microsoft atualiza .NET Framework 4.5</a>Conhe&ccedil;a detalhes sobre as atualiza&ccedil;&otilde;es para o .NET Framework 4.5, que corrigem problemas de compatibilidade, confiabilidade, estabilidade e desempenho, no Windows Presentation Foundation, CLR, Forms, XML, Network Class Library, ASP.NET, Entity Framework,WWF e WCF.
+ <body> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/15.c">Microsoft atualiza .NET Framework 4.5</a>Conhe&ccedil;a detalhes sobre as atualiza&ccedil;&otilde;es para o .NET Framework 4.5, que corrigem problemas de compatibilidade, confiabilidade, estabilidade e desempenho, no Windows Presentation Foundation, CLR, Forms, XML, Network Class Library, ASP.NET, Entity Framework,WWF e WCF. 
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/14.c">O quanto do Python pode ser escrito em Python?</a>Brett Cannon, um dos desenvolvedores da linguagem de programa&ccedil;&atilde;o Python e funcion&aacute;rio do Google, acredita que parte do compilador e a maioria de seus m&oacute;dulos internos podem ser reimplementados em Python puro. Tal ideia &eacute; discutida no artigo “O quanto de Python pode ser escrito em Python?” publicado no blog que mant&eacute;m sobre a linguagem de programa&ccedil;&atilde;o. 

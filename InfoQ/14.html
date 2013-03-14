@@ -1,42 +1,11 @@
-<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>Eclipse Foundation首次发布Hudson</h3><p>几周之前，Eclipse Foundation<a href="http://www.eclipse.org/org/press-release/20130123_hudson3.php">发布</a>了著名的持续集成系统<a href="http://www.eclipse.org/hudson/">Hudson 3.0</a>。Hudson项目的根源可以追溯到两年前，当时从Hudson<a href="http://www.infoq.com/cn/news/2011/02/jenkins;jsessionid=44BEB9DE59C01B6AD22C533CAAF69EF6">分支出了Jenkins</a>，<a href="http://www.infoq.com/news/2011/05/eclipse-hudson;jsessionid=44BEB9DE59C01B6AD22C533CAAF69EF6">并且它本身被提议作为一个中立的托管组织加入Eclipse Foundation</a>。尽管在那之后，两个分支都继续发展至今，并且在分支之后还发布了Hudson 2.2.1，但此次的Hudson 3.0才是真正意义上的首次发布。</p> 
-<p>Hudson提供了两种获取方式：一个简单的web压缩包（仅包含核心特性）和一个打包的版本（包含若干有用的插件）。可以从<a href="http://search.maven.org/#search%7Cga%7C1%7Cg%3A%22org.eclipse.hudson.main%22">Maven Central</a>上获取，也可以从Eclipse Foundation网站上下载。</p> 
-<p>孵化项目所必须的清理工作是导致这次发布花费时间太长的原因之一。在2011年5月，<a href="http://www.infoq.com/news/2011/05/eclipse-hudson;jsessionid=44BEB9DE59C01B6AD22C533CAAF69EF6">InfoQ提到</a>：</p> 
+<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>Red Hat接管OpenJDK 6的领导权</h3><p>Oracle通告说Java 6 Update 43将是其商用Java 6开发包的最后一个可以免费获得的更新，没几天，Red Hat<a href="http://www.redhat.com/about/news/press-archive/2013/3/red-hat-reinforces-java-commitment">宣布</a>他们将接管对OpenJDK 6的支持。</p> 
+<p>为解决近来困扰Java浏览器插件的一些严重漏洞，Oracle发布了一系列紧急补丁，而Update 43就是其中最新的一个。该补丁的<a href="http://www.oracle.com/technetwork/java/javase/6u43-relnotes-1915290.html">发布说明</a>中提到，“Oracle建议用户迁移到JDK 7，以便继续使用公共更新和安全增强”。</p> 
+<p>就其本身而言，Red Hat指出他们“已经过渡为OpenJDK 6项目的领导角色，能够有效地扩展对技术和用户的支持”。</p> 
+<p>Java 6仍广泛应用于很多企业之中，Oracle也心照不宣地承认这一事实，因此他们两次推迟Java 6的终止支持日期。Oracle最初准备在2012年7月结束对Java 6的支持，后来推迟到2012年11月，之后又推迟到2013年2月。该公司现在仅提供这一版本的商业支持，价格信息请参考<a href="http://www.oracle.com/us/corporate/pricing/technology-price-list-070617.pdf">这里</a>。</p> 
+<p>Red Hat的主要关注点很可能是修复OpenJDK 6中发现的安全漏洞和其他bug。Oracle对JDK 7所做的bug修复大多数同样适用于JDK 6，OpenJDK 6的网站上也指出了<a href="http://openjdk.java.net/projects/jdk6/">这一点</a>：</p> 
 <blockquote> 
- <p>Eclipse Foundation对孵化项目的清理投入了极大的精力，因此项目提议的创建仅仅是万里长征的第一步。除此之外，将现有代码库以Eclipse公开许可的方式进行重新许可，对于由Eclipse公司成员（Sonatype，Oracle）贡献的代码来说或许是可行的，但对于来自外部的核心功能扩展，则需要更仔细的审查才能允许这部分代码加入。</p> 
+ <p>……JDK 7中与规范修改无关的bug修复被假定为对OpenJDK 6有效。换言之，默认情况下，这种修复被假定为适用于OpenJDK 6，进入JDK 7一段时间并相安无事的修复更是如此。</p> 
 </blockquote> 
-<p>InfoQ采访了Hudson项目的领导人Winston Prakash，我们首先询问了为什么孵化项目的清理工作如此重要：</p> 
-<blockquote> 
- <p><strong>Prakash：</strong>在Hudson成为Eclipse Foundation的顶级技术项目之后，它必须遵守Eclipse孵化项目的政策，这有助于降低孵化项目的风险，并且更能吸引其它企业在自己的产品中引入Hudson。这也支持了Hudson一个主要目标，即将其打造为企业级的产品。</p> 
-</blockquote> 
-<p>InfoQ：要达到政策标准，需要对核心架构做多大程度的改变呢？</p> 
-<blockquote> 
- <p><strong>Prakash：</strong>Eclipse Foundation法律团队已经看过该产品代码库中的每一行代码（有工具可以实现逐字的代码分析），以确保它遵循以上所有的政策。Hudson包含的所有<a href="http://wiki.eclipse.org/Hudson-ci/development/third_party_libraries">第三方类库</a>也经过了法律流程的检验。我们花了一年多时间才达到了政策要求。</p> 
-</blockquote> 
-<p>InfoQ：3.0版本的发布是否标志着Hudson的一个全新开端，在插件兼容性方面它和Jenkins今后又会怎样？</p> 
-<blockquote> 
- <p><strong>Prakash：</strong>我们尽了最大的努力来维护两者的兼容性，在不改变任何现有API的前提下提供功能增强。我们将来会继续支持Jenkins的插件，并且<a href="http://wiki.hudson-ci.org/display/HUDSON/Plugin+Verification">在我们的发布中进行检验</a>。</p> 
- <p>我们也将继续鼓励Hudson用户为其开发新插件。</p> 
-</blockquote> 
-<p>InfoQ：Hudson禁用了构建时自动JDK安装，这样做的重要性体现在哪里？</p> 
-<blockquote> 
- <p><strong>Prakash：</strong>这里有个许可方面的问题。根据Oracle法律团队的说法，JDK必须在接受许可条款的前提下才能安装。我们<a href="http://issues.hudson-ci.org/browse/HUDSON-9016">收到报告</a>称，Hudson和Jenkins原先通过屏幕抓取的方式安装JDK是非法的。因此我们迅速禁用了JDK自动安装功能，直到JDK团队能够提供适当的REST API为止。</p> 
-</blockquote> 
-<p>InfoQ：Groovy插件从框架的关键依赖中移除了，这是什么原因？还能继续使用它吗？</p> 
-<blockquote> 
- <p><strong>Prakash：</strong>从Hudson核心中移除Groovy的主要原因是归属方面的问题，Eclipse Foundation不能从Groovy团队获得合法的归属权。</p> 
- <p>通过外部插件依然能够支持Groovy。这样做的好处在于对脚本的支持进行了抽象，因此将来也许能够用Scala、Jython、JRuby等其它JVM语言编写脚本。</p> 
-</blockquote> 
-<p>InfoQ：如何找到Hudson 3.0插件，它的站点现在在哪里？</p> 
-<blockquote> 
- <p><strong>Prakash：</strong>特定于Hudson的插件，以及来自其它分支且兼容Hudson的插件在这里：</p> 
- <ul> 
-  <li>Hudson 3.x的所有插件 – <a href="https://github.com/hudson3-plugins/">https://github.com/hudson3-plugins/</a></li> 
-  <li>Hudson 2.x的所有插件 – <a href="https://github.com/hudson-plugins/">https://github.com/hudson-plugins/</a></li> 
- </ul> 
-</blockquote> 
-<p>InfoQ：Hudson 3.x的未来会怎样？</p> 
-<blockquote> 
- <p><strong>Prakash：</strong>对Eclipse Foundation来说最重要的是其稳定性，我们已准备在下个发布（3.1.0）中专注于性能改善。虽然我们也会继续按需添加新特性，不过稳定性和性能才是优先级最高的事务。</p> 
-</blockquote> 
-<p><strong>查看英文原文：</strong><a href="http://www.infoq.com/news/2013/02/hudson-eclipse;jsessionid=44BEB9DE59C01B6AD22C533CAAF69EF6">First Hudson Release from Eclipse</a></p> 
-<p id="lastElm"></p></body></html>
+<p>想必Red Hat此举主要针对的是使用JBoss中间件以及在Red Hat服务器上运行OpenJDK的客户，但同时也确实为使用Oracle Java 6的企业提供了第三种选择，即切换为Java 7、购买Oracle的支持或切换为OpenJDK 6。</p> 
+<p><strong>查看英文原文</strong>：<a href="http://www.infoq.com/news/2013/03/red-hat-openJDK;jsessionid=B05FFA0F1EB6F1EFA5A513D95081EB25">Red Hat Takes Over Leadership of OpenJDK 6</a></p> 
+<p id="lastElm"></p><br><br><br><br><br><br></body></html>

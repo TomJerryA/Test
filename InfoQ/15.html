@@ -1,53 +1,10 @@
-<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>面向Android上Dalvik运行时的C# 编译器dot42简介</h3><p>Mono for Android最大的缺点是需要在Mono上面构建，这与Android预期的运行时完全不同。尽管能够直接访问完整的CLR的确有些优势，但是它与Android的Dalvik 运行时之间的封送调用（marshalling call）可能非常昂贵。那为什么不跳过IL代码直接生成Dex代码呢？</p> 
-<p>事实上这有点夸张。<a href="https://www.dot42.com/">dot42</a>编译器实际上并没有跳过IL。恰恰相反，它读取IL代码并将其转换为一种叫做RL或Register Language的新语言。IL和RL主要的差异在于IL是基于栈的(有点像Java的字节码)，而RL基于寄存器。在转换为RL后，会执行一系列的优化，而且最终产品会被重新编译。最后的编译为我们生成Android上Dalvik运行时的dex代码。</p> 
-<p>.Net原始调试信息在该过程的每个步骤中都会维护，当然它必须从Windows/.NET PDB格式转换为dex的调试信息格式。dot42使用Android调试桥接器来连接Visual Studio调试工具。</p> 
-<p>Android库可以通过直接引用JAR文件来访问。“编译后，调用会被重定向为对原始Android库的调用。”类型间的某些映射是必须的，但这主要由编译器解决。例如，java.lang.Boolean被映射为C#的Nullable
- <bool>
-  。
- </bool></p> 
-<p>
- <bool>
-  因为dot42生成的是dex代码，所以有些C#特性无法使用。其中最值得注意的是用户定义值类型，也就是struct，因为Dalvik中并不存在，所以根本没法映射。
- </bool></p> 
-<p>
- <bool>
-  在使用dot42时，往往需要决定选择常见数据结构的C#版本还是Android版本。例如，应该使用.Net的List
-  <t>
-   还是Java的ArrayList
-   <t>
-    ？据Ewout Prangsma介绍，如果关注内存和下载大小，开发者应该首选Java版本。即使他们的List
-    <t>
-     实现基本上是对ArrayList
-     <t>
-      的很薄的包装，有些额外的代码仍然需要打包并传到手机上去。
-     </t>
-    </t>
-   </t>
-  </t>
- </bool></p> 
-<p>
- <bool>
-  <t>
-   <t>
-    <t>
-     <t>
-      dot42是商业产品，正常批量许可是每开发者499欧元起。
-     </t>
-    </t>
-   </t>
-  </t>
- </bool></p> 
-<p>
- <bool>
-  <t>
-   <t>
-    <t>
-     <t>
-      <strong>查看英文原文：</strong>
-      <a href="http://www.infoq.com/news/2013/02/dot42;jsessionid=6D0E30C9E09E709B6432E678974097AF">Introducing dot42, a C# Compiler for Android’s Dalvik Runtime</a>
-     </t>
-    </t>
-   </t>
-  </t>
- </bool></p> 
-<p id="lastElm"></p></body></html>
+<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>新的SQL Server、SharePoint和Office开发工具</h3><p>对于想要开发SQL Server 2012商务智能项目的开发者而言，现在能够使用最新发布的<a href="http://www.microsoft.com/en-us/download/details.aspx?id=36843">Microsoft SQL Server Data Tools—— </a><u>商务智能</u> (SSDT-BI) 软件进行开发了。最新发布的工具适用于SQL Server 2005、 SQL Server 2008、 SQL Server 2008 R2、 SQL Server 2012和SQL Azure。</p> 
+<p>安装SSDT BI包之后能够基于下面的模板创建项目：分析（analysis）、报表（reporting）和集成服务。安装完成之后新模板会出现在商务智能（Business Intelligence）类别的下面：</p> 
+<p><img width="500px" src="http://www.infoq.com/resource/news/2013/03/devtools/zh/resources/1.jpg;jsessionid=30B222F6E5B74C4694F68410067B3D16" alt="" _href="img://null" _p="true" /></p> 
+<p>用户能够通过SQL Server Data Tools做哪些事情呢？Microsoft对此是这样描述的：</p> 
+<p>开发者依然会喜欢我们为数据库开发所提供的这些类似于VS的工具，特别是我们提供了与C#和VB中已有功能相对应的代码导航、智能感知和语言支持，为TSQL编辑器提供了平台特定的验证、调试和声明式编辑支持，还为数据库项目和在线数据库实例提供了可视化表编辑器。</p> 
+<p>最新版本的工具支持完全往返的项目，因此用户在升级到2012之后依然能够操作基于2010的文件。使用VS2012简化版的用户也能够通过另外的安装包安装BI。另一个期望的特性是，该版本的工具集将和VS2012 GUI外形（shell）保持一致。</p> 
+<p><b>Office</b><b>开发者工具</b></p> 
+<p>Office团队并没有被超越，因为他们也发布了VS2012的<a href="http://aka.ms/OfficeDevToolsForVS2012">开发者工具</a> （注意这是下载安装文件的链接）。开发者能够通过这些工具创建Office和SharePoint应用。<a href="http://blogs.msdn.com/b/vsto/archive/2013/03/06/office-developer-tools-for-visual-studio-2012-now-available.aspx">最新版</a><u>本</u>的工具支持.NET Framework 4.5，能够为Office 2013构建应用，同时还能远程调试SharePoint网站。那些之前通过人工方式创建<a href="http://blogs.msdn.com/b/vsto/archive/2012/12/21/creating-a-bootstrapper-package-for-an-office-2013-vsto-add-in-with-visual-studio-2012.aspx">引导程序包</a>从而提供.NET 4.5功能的开发者，在这个版本中不再需要这样做了。注意，和上面的BI工具不同的是，Office开发者工具需要VS2012专业版或者更高版本。</p> 
+<p><b>查看英文原文</b>：<a href="http://www.infoq.com/news/2013/03/devtools;jsessionid=30B222F6E5B74C4694F68410067B3D16"><b>New Developer Tools for SQL Server, SharePoint, and Office</b></a></p> 
+<p id="lastElm"></p><br><br><br><br><br><br></body></html>

@@ -1,36 +1,20 @@
-<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>ActorFx介绍：一个云Actor运行时</h3><p>由Microsoft的附属公司MS Open Tech开发的<a href="http://actorfx.codeplex.com/">ActorFx</a> 打算提供一个“非规范性的、独立于语言的动态分布式对象模型”。该模型由两个组件构成：actor本身及其数据存储，它们分别由接口IActor和IActorState表示。</p> 
-<p><strong>IActorState进行状态管理</strong></p> 
-<p>最初的IActorState是一个非常简单的接口，它的本质是一个暴露了Set、Get、TryGet、Remove和Flush方法的字典。最后一个能够异步运行的操作用于提交改变。按照约定，在调用commit方法之后改变会被自动保存到持久化存储，而在此之前则会被存储在一个“本地副作用缓冲区（local side-effect buffer）”中。</p> 
-<p>这种简化隐藏了一个秘密，那就是可以请求IActorState存储任何内容，包括活动代码（Active Code）。</p> 
-<p><strong>Actor方法</strong></p> 
-<p>之前使用Actor时必须教导它，让它知道自己能做什么。与传统的.NET编程不同的是，这并不是通过人工向服务器部署代码来实现的。相反，方法是在运行时使用IActor.AddAssembly函数推送到actor的。程序集由一个字节数组表示，因此能够通过线路传输并将其存储到IActorState自身内部。</p> 
-<p>这意味着每一个Actor都是一个完全封闭的对象。它没有从类或者原型（prototype）中继承方法，它自己本身就有这些方法。同时随时都可以简单地改变这些方法，只要推送一个具有同样名称的新程序集即可。</p> 
-<p>因为是一次性地加载程序集，所以实际的Actor方法需要使用ActorMethod属性标记。被该属性标记的方法必须遵循委托模式Func&lt;IActorState, object[], object&gt;。</p> 
-<p><strong>向Actor发送消息</strong></p> 
-<p>可以使用IActor.CallMethod向一个Actor发送消息。IActor.CallMethod方法有两个参数，一个是方法的名字（来源于之前添加的程序集），另一个是该方法参数的数组。它的返回类型是简单的System.Object。</p> 
-<p>通过IActor.CallMethod调用方法时，客户端还需要传入客户端ID和序列号。这样Actor运行时就能识别重复的请求并重新发送之前调用的结果。当然，客户端需要负责确保对于给定的消息这一对值是唯一的。</p> 
-<p><strong>Actor之间的通信</strong></p> 
-<p>Actor之间通过IActorProxy的瞬间实例进行通信。通过代理一个Actor能够调用另一个Actor的CallMethod。<br /> 除了直接的方法调用之外，还能使用代理设置订阅。基于修改版本的IObserver，来自于发布Actor的事件能够引发对订阅Actor方法的调用。调用Subscribe方法返回令牌（token）的Dispose方法便可以取消订阅。</p> 
-<p><strong>客户端示例</strong></p> 
-<p>到现在为止我们谈论的大部分内容都是与Actor运行时实现相关的。大多数开发者将会处理FabricActorClient这样的客户端。下面我们看看关键的方法：</p> 
+<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>jQuery Mobile 1.3.0发布</h3><p>jQuery基金会发布了旗下的JavaScript和HTML5/CSS框架<a href="http://jquerymobile.com/">jQuery Mobile</a> 1.3.0。更新主要集中在响应式的web设计并新增了多个移动应用的widget。</p> 
+<p>响应式web设计(RWD)旨在提供最佳的用户浏览体验，不管使用的是什么设备、什么浏览器。RWD使用CSS媒体查询(media queries)语言在浏览器中动态适配页面布局，而不是在服务端检测用户代理（User Agent）。因此，它不仅可以根据不同的屏幕尺寸渲染页面，还能响应设备的横竖屏切换。</p> 
+<p>jQuery Mobile项目经理Todd Parker，详述了1.3.0版本中<a href="http://jquerymobile.com/blog/2013/02/20/jquery-mobile-1-3-0-released/">向响应式设计过渡</a>的详情：</p> 
 <blockquote> 
- <p>public class FabricActorClient<br /> {<br /> public FabricActorClient(Uri fabricUri, Uri actorUri, bool useGateway);<br /> public bool AddAssembly(string assemblyName, byte[] assemblyBytes);<br /> public Object CallMethod(string methodName, object[] parameters);<br /> public IDisposable Subscribe(string eventType, IObserver
-  <actorevent>
-    eventObserver);
-   <br /> }
-  </actorevent></p> 
+ <p>jQuery Mobile被设计为不仅能在手机上运行，在平板电脑甚至桌面浏览器中也是可以运行。移动设备优先考虑，但不局限于移动设备。事实上，在我们的下一个版本中，我们将要开始和jQuery UI作更紧密的整合，其目标在于能让开发者共享更多的代码和保留旧的习惯。我们1.3版本的重点是通过增加响应式Web设计的文档和能说明其关键概念的示例，给开源社区提供指引，我们还加入了新的widget，如响应式表格，面板和网格，使用这些widget能够轻而易举地建立响应式的网站和应用。</p> 
 </blockquote> 
-<p>
- <actorevent>
-  再次强调，必须注意AddAssembly会查找匹配Func&lt;IActorState, object[], object&gt;签名的静态方法。
- </actorevent></p> 
-<p>
- <actorevent>
-  <a href="http://actorfx.codeplex.com/">ActorFx</a> 基于Apache许可，目前处于alpha状态，可以从CodePlex网站上获取。
- </actorevent></p> 
-<p>
- <actorevent>
-  <strong>查看英文原文：</strong>
-  <a href="http://www.infoq.com/news/2013/02/ActorFx;jsessionid=3C11D80AE0847E18022AFC2B31B536D9">Introducing ActorFx, a Cloud Based Actor Runtime</a>
- </actorevent></p> 
-<p id="lastElm"></p></body></html>
+<p>除了这些新增的响应式 widget部件，本次更新还包括一系列新的UI元素和功能：</p> 
+<ul> 
+ <li>输入表单（input-form）及菜单风格(menu-style)的面板，在屏幕较小的设备上可以动态打开，在屏幕较大的设备上能保持开启状态。</li> 
+ <li>在范围选择滑块中添加加了两个输入框，可以分别定义最小值和最大值</li> 
+ <li>填加了新的图标和丰富了图标的样式</li> 
+ <li>导航事件和导航方法中，在基于Ajax的DOM事件响应中支持浏览器历史事件的处理</li> 
+ <li>增强了swipe事件的处理，在swipe事件的开始和结束都能增加自定义逻辑</li> 
+</ul> 
+<p>jQuery基金会提供了各种不同的库以简化JavaScript和HTML5/CSS的应用设计，提供跨浏览器的兼容性。除了专注于移动界面的​​<a href="http://jquerymobile.com/">jQuery Mobile</a>，jQuery基金会还提供了增强JavaScript和Ajax功能的<a href="http://jquery.com/">jQuery</a> ，针对桌面应用用户界面的<a href="http://jqueryui.com/">jQuery UI</a>以及JavaScript单元测试框架<a href="http://qunitjs.com/">QUnit</a> 。</p> 
+<p>原文链接：<a href="http://www.infoq.com/news/2013/03/jquery-mobile-1.3.0;jsessionid=86A000E9AE3A8368DC7115BA2DCB0D16">jQuery Mobile 1.3.0 Released</a></p> 
+<hr /> 
+<p>感谢<a href="http://www.infoq.com/cn/bycategory.action;jsessionid=86A000E9AE3A8368DC7115BA2DCB0D16?authorName=雷慈祥">雷慈祥</a>对本文的审校。</p> 
+<p>给InfoQ中文站投稿或者参与内容翻译工作，请邮件至<a href="mailto:editors@cn.infoq.com">editors@cn.infoq.com</a>。也欢迎大家通过新浪微博（<a href="http://www.weibo.com/infoqchina">@InfoQ</a>）或者腾讯微博（<a href="http://t.qq.com/infoqchina">@InfoQ</a>）关注我们，并与我们的编辑和其他读者朋友交流。</p> 
+<p id="lastElm"></p><br><br><br><br><br><br></body></html>
