@@ -1,6 +1,9 @@
 <html>
  <head></head> 
- <body> 
+ <body>
+  <div>
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/48.java">MySQL Reference Architectures for Small to Extra Large Websites</a>Oracle has published MySQL Reference Architectures for Massively Scalable Web Infrastructure, a whitepaper outlining recommended topologies for different types and sizes of websites using MySQL for data storage.
+  </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/47.java">Internet Explorer 10 Broadens Flash Support</a>Microsoft has announced increased Flash support on IE10 running on Windows 8 and Windows RT. This content will now be enabled to run by default and solidifies Flash's position on the Windows platform. 
   </div> 
