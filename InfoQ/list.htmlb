@@ -1,11 +1,11 @@
 <html>
  <head></head> 
- <body>
-  <div>
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/19.htmlb">深入理解Java内存模型（七）——总结</a>Java线程之间的通信对程序员完全透明，内存可见性问题很容易困扰Java程序员，本文试图揭开Java内存模型神秘的面纱。本文大致分三部分：重排序与顺序一致性；三个同步原语（lock，volatile，final）的内存语义，重排序规则及在处理器中的实现；Java内存模型的设计目标，及其与处理器内存模型和顺序一致性内存模型的关系。
-  </div>
-  <div>
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/18.htmlb">一次推荐算法的普及性讨论</a>在这个相对比较偏学术的讨论中，作者和百度的前技术委员会主席廖若雪就推荐算法的基本概念，算法和架构、策略、机器学习之间的关系，以及算法应用的几点经验进行了沟通，希望能对想对算法有所了解的同学有所帮助。
+ <body> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/19.htmlb">深入理解Java内存模型（七）——总结</a>Java线程之间的通信对程序员完全透明，内存可见性问题很容易困扰Java程序员，本文试图揭开Java内存模型神秘的面纱。本文大致分三部分：重排序与顺序一致性；三个同步原语（lock，volatile，final）的内存语义，重排序规则及在处理器中的实现；Java内存模型的设计目标，及其与处理器内存模型和顺序一致性内存模型的关系。 
+  </div> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/18.htmlb">一次推荐算法的普及性讨论</a>在这个相对比较偏学术的讨论中，作者和百度的前技术委员会主席廖若雪就推荐算法的基本概念，算法和架构、策略、机器学习之间的关系，以及算法应用的几点经验进行了沟通，希望能对想对算法有所了解的同学有所帮助。 
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/17.htmlb">阅读者（二十三）——《精益和敏捷开发大型应用指南》</a>此书为传统大型IT部门多团队实施敏捷之得力帮手，首先列出了复杂问题的思考工具，其次给出了大型组织实施敏捷的具体方式及尝试方法，尤其是如何组织团队、提高团队适应能力、培养学习型团队以及各个角色如何做好职责转变等，此外还描述了传统企业常见的团队组织方式并分析其利弊。 

@@ -1,14 +1,14 @@
 <html>
  <head></head> 
- <body>
-  <div>
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/35.py">SQL Server、SharePoint、Officeの新しい開発ツール</a>MicrosoftはSQL Server、SharePoint、Officeをターゲットにしたいくつかの開発ツールをアップデートした。ビジネスインテリジェンスツールは、SQL Serverのanalysis、integration、reportingをサポートする。Office/SharePointツールは、それぞれの2013バージョンと.NET Framework 4.5をサポートする。
-  </div>
-  <div>
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/34.py">jQuery Mobile 1.3.0がリリース</a>jQuery Foundationは、JavaScript と HTML5/CSSフレームワークであるjQuery Mobileのバージョン1.3.0をリリースした。このアップデートは、高応答なウェブ設計に焦点をおき、モバイルアプリケーション用の新しいウィジェットを導入している。
-  </div>
-  <div>
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/33.py">Culture Gameの抜粋＃６がInfoQから入手できる</a>Dan Mezick氏がThe Culture Gameを書いた。これは、Agileから導出した16の学習パターンを書いたハウツー本である。InfoQは、この本から一連の抜粋を発行している。最後の抜粋は、個人的熟達と信条変化の概念について議論している。
+ <body> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/35.py">SQL Server、SharePoint、Officeの新しい開発ツール</a>MicrosoftはSQL Server、SharePoint、Officeをターゲットにしたいくつかの開発ツールをアップデートした。ビジネスインテリジェンスツールは、SQL Serverのanalysis、integration、reportingをサポートする。Office/SharePointツールは、それぞれの2013バージョンと.NET Framework 4.5をサポートする。 
+  </div> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/34.py">jQuery Mobile 1.3.0がリリース</a>jQuery Foundationは、JavaScript と HTML5/CSSフレームワークであるjQuery Mobileのバージョン1.3.0をリリースした。このアップデートは、高応答なウェブ設計に焦点をおき、モバイルアプリケーション用の新しいウィジェットを導入している。 
+  </div> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/33.py">Culture Gameの抜粋＃６がInfoQから入手できる</a>Dan Mezick氏がThe Culture Gameを書いた。これは、Agileから導出した16の学習パターンを書いたハウツー本である。InfoQは、この本から一連の抜粋を発行している。最後の抜粋は、個人的熟達と信条変化の概念について議論している。 
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/32.py">モジュラリティを強化したGrunt 0.4.0</a>2月18日、ライブラリを複数のモジュールにして疎結合にしようと作業を続けてきたGruntチームはJavascriptタスクランナーであるGruntのバージョンを0.4.0にした。 

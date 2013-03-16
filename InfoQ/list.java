@@ -2,10 +2,13 @@
  <head></head> 
  <body>
   <div>
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/0.java">Stripe Open Sources Abba, an A/B Testing Framework</a>Stripe has open sourced their JavaScript A/B testing framework called Abba.
-  </div>
-  <div>
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/49.java">Windows Azure Mobile Services with Android, Active Directory, Localization, East Asia Region</a>Microsoft has recently released several updates to Windows Azure with support for Android, Active Directory, Application monitoring with HTTP response codes, new five languages including expansion of Azure Store to 22 more countries.
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/1.java">Ceylon M5 with Tuples, Verbatim Strings, Spread Operator, Late Annotation</a>RedHat has released Ceylon M5 programming language with several new features such as Tuples, Verbatim Strings, Spread Operator, Late Annotation and reified generics including a new module, package, functions in addition to several key syntax modifications.
+  </div> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/0.java">Stripe Open Sources Abba, an A/B Testing Framework</a>Stripe has open sourced their JavaScript A/B testing framework called Abba. 
+  </div> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/49.java">Windows Azure Mobile Services with Android, Active Directory, Localization, East Asia Region</a>Microsoft has recently released several updates to Windows Azure with support for Android, Active Directory, Application monitoring with HTTP response codes, new five languages including expansion of Azure Store to 22 more countries. 
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/48.java">MySQL Reference Architectures for Small to Extra Large Websites</a>Oracle has published MySQL Reference Architectures for Massively Scalable Web Infrastructure, a whitepaper outlining recommended topologies for different types and sizes of websites using MySQL for data storage. 
@@ -147,9 +150,6 @@
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/2.java">Applying Validation for Queryable API in ASP.NET Web API OData</a>In ASP.NET Web API OData, it is important to enable validation in Queryable API if you make use of queries outside the organization and this article examines the various scenarios where you can enable validation. 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/1.java">Greenplum Pivotal HD Combines the Strengths of SQL and Hadoop</a>EMC Greenplum has announced Pivotal HD, a new Hadoop distribution including a fully compliant SQL MPP database running on HDFS and being “hundreds of times faster than Hive”. 
   </div>  
  </body>
 </html>
