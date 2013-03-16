@@ -1,38 +1,11 @@
-<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>Entity Framework 6 Alpha 3为Code First提供对存储过程支持，并提供连接恢复功能</h3><p>Microsoft宣布<a href="http://blogs.msdn.com/b/adonet/archive/2013/02/27/ef6-alpha-3-available-on-nuget.aspx">Entity Framework 6 Alpha 3</a>已经可以下载了，它现在支持通过Fluent API将Code First映射到对应的新增、修改和删除功能的存储过程；添加了连接恢复功能；包含了来自iceclow和UnaiZorrilla的pull request内容；并添加了新的DbContext的API，以允许你管理自己的事务。</p> 
-<p>根据Microsoft所说，这三种存储过程在创建时需要遵循类似于&lt;type_name&gt;<em>Insert，&lt;type_name&gt;</em>Update及&lt;type_name&gt;_Delete这样的格式。另外，方法的参数名称需要和属性名称相对应，新增和修改的存储过程需要为每个属性创建一个对应的参数，除了那些标记为ID（Identity）及计算所得的属性。而删除的存储过程则需要为实体（entity）的主键值创建一个对应的参数。<br /> 让我们看一看以下代码片段：</p> 
-<pre>
-public class Blog 
-{ 
-&nbsp;public int BlogId { get; set; } 
-&nbsp;public string Name { get; set; } 
-&nbsp;public string Url { get; set; } 
-}</pre> 
-<p>对应以上代码的新增存储过程看起来应该是以下这样：</p> 
-<pre>
-CREATE PROCEDURE [dbo].[Blog_Insert] 
-&nbsp;@Name varchar(max), 
-&nbsp;@Url varchar(max) 
-AS 
-&nbsp;INSERT INTO [dbo].[Blogs] ([Name], [Url])
-&nbsp;VALUES (@Name, @Url)
-&nbsp;SELECT SCOPE_IDENTITY() AS BlogId    </pre> 
-<p>修改和删除的存储存储过程则按照如下方式编写：</p> 
-<pre>
-CREATE PROCEDURE [dbo].[Blog_Update] <br /> @BlogId int, 
-&nbsp;@Name varchar(max), 
-&nbsp;@Url varchar(max) 
-AS 
-&nbsp;UPDATE [dbo].[Blogs] &nbsp;&nbsp;SET [Name] = @Name, [Url] = @Url 
- WHERE BlogId = @BlogId;<br />
-CREATE PROCEDURE [dbo].[Blog_Delete]
- @BlogId int    
-AS
- DELETE FROM [dbo].[Blogs]
- WHERE BlogId = @BlogId    </pre> 
-<p>官方<a href="http://entityframework.codeplex.com/wikipage?title=Code%20First%20Insert%2fUpdate%2fDelete%20Stored%20Procedure%20Mapping">文档</a>详细地介绍了所有可能的场景细节。</p> 
-<p>Entity Framework 6 Alpha 3加入了<a href="http://entityframework.codeplex.com/wikipage?title=Connection%20Resiliency%20Spec">连接恢复</a>功能，能够从短暂的连接失败中自动恢复。它的实现使用了IExecutionStrategy接口，而在其中的具体实现又使用到了IRetriableExecutionDector及IRetryDelayStrategy接口。</p> 
-<p>根据官方信息来源，Entity Framework将包含4个执行策略（Execution Strategy），分别为NonRetryingExecutionStrategy，DefaultSqlExecutionStrategy，ExecutionStrategy和SqlAzureExecutionStrategy。</p> 
-<p>Entity Framework Alpha 3提供了一项功能，它是来自<a href="http://www.codeplex.com/site/users/view/iceclow">iceclow</a>提交的一个pull request，允许你创建定制化的数据迁移操作，并在一个定制化迁移SQL脚本生成器中处理这些操作。Microsoft ADO.NET Entity Framework的项目经理<a href="http://romiller.com/2013/02/27/ef6-writing-your-own-code-first-migration-operations/">Rowan Miller</a>已经通过相关的代码示例介绍了iceclow的实现方式。</p> 
-<p>Alpha 3也允许你使用来自<a href="http://www.codeplex.com/site/users/view/UnaiZorrilla">UnaiZorrilla</a>所提交的pull request，它提供了一个可插式的复数化与单数化的服务。另一项所包含的功能是允许你通过使用DbContext.Database.UseTransaction及DbContext.Database.BeginTransaction API管理你自己的事务。</p> 
-<p><strong>查看英文原文：</strong><a href="http://www.infoq.com/news/2013/03/ef-6-alpha-3;jsessionid=6214E797E39E1FBD8665DA477F311BCF">Entity Framework 6 Alpha 3 with Code First Stored Procedures and Connection Resiliency</a></p> 
-<p id="lastElm"></p></body></html>
+<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>API社区关于治理与创新的争论</h3><p>“API治理”的需求是近期<a href="http://www.apistrategyconference.com/index.php">API战略与实践会议</a>上的热点话题，它吸引了来自创业公司、供应商和企业的API 实践者和专家聚集起来参与其中。</p> 
+<p>Smartbear Software 的解决方案战略总监Lorinda Brandon发表了一篇<a href="http://blog.programmableweb.com/2013/02/27/governance-vs-innovation-do-they-have-to-be-enemies/">关于这场争论的总结</a>，探讨治理和创新是否“必然成为敌对的双方”。Lorinda注意到，在会议的各类出席者之间不出所料地仍然存在着企业与创业团队之间的传统差异。“自我投身业界以来，治理和流程与快速创新之间的差异就一直存在。”</p> 
+<p>Lorinda注意到与会的大部分技术专家都在新API生态系统的最前沿推动创新，而大公司则肩负着客户所强调的可靠性和质量的压力。Lorinda想要发挥两个阵营各自的优势——如何创新而又能在避免产业因缺乏流程和质量控制而崩溃的前提下“享受乐趣”。Lorinda总结道，“如果我们能找到结合治理和创新的方法，他们将在一起成为完美的伙伴”。</p> 
+<p>“API布道者”Kin Lane和会议的一位组织者延续Lorinda的思路，提出了是否有<a href="http://www.apievangelist.com/2013/02/27/what-is-better-word-for-governance-when-it-comes-to-apis/">更好的词语来描绘“治理”</a>的问题。治理同时包含了正面和负面的内涵。它的负面同义词包括：权力、官僚、权威和控制。相反的正面同义词包括：指导、影响、协作和标准化。Kin对许多管理人员不懂得过多的权力和控制会扼杀创新而感到悲哀，API在达到创新的程度之前需要“氧气”来成长和进化。</p> 
+<p>这让人想起由ZDNet的分析员和作者Joe Mckendrick所报道的一场<a href="http://www.zdnet.com/blog/service-oriented/wanted-new-term-for-soa-governance/1058">2008年初SOA社区中</a>类似的争论。也许这并非技术所固有的问题。ZNDet的另一位技术分析员和作者Dion Hinchcliffe在他的文章《<a href="http://www.zdnet.com/blog/hinchcliffe/running-your-soa-like-a-web-startup/525">像Web创业那样运作你的SOA</a>》中说，创新不是做什么，而是用什么方式去做。</p> 
+<p>与SOA相比，API的创新之一是更加鼓励协作、开发者参与和自服务，即中间件厂商WSO2的CTO Paul Fremantle所谓的“<a href="http://www.infoq.com/presentations/Evolution-Integration;jsessionid=6236FF2106D42CDB900C9291F648B732">不碰面</a>”方法。观看这场争论并关注API是否能得益于治理和创新之间的权衡将会很有趣。你怎么看？</p> 
+<p><b>查看英文原文</b>：<a href="http://www.infoq.com/news/2013/03/api-governance-debate;jsessionid=6236FF2106D42CDB900C9291F648B732">API Community Debates Governance versus Innovation</a></p> 
+<hr /> 
+<p>感谢<a href="http://www.infoq.com/cn/bycategory.action;jsessionid=6236FF2106D42CDB900C9291F648B732?authorName=臧秀涛">臧秀涛</a>对本文的审校。</p> 
+<p>给InfoQ中文站投稿或者参与内容翻译工作，请邮件至<a href="mailto:editors@cn.infoq.com">editors@cn.infoq.com</a>。也欢迎大家通过新浪微博（<a href="http://www.weibo.com/infoqchina">@InfoQ</a>）或者腾讯微博（<a href="http://t.qq.com/infoqchina">@InfoQ</a>）关注我们，并与我们的编辑和其他读者朋友交流。</p> 
+<p id="lastElm"></p><br><br><br><br><br><br></body></html>

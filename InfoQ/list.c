@@ -1,6 +1,9 @@
 <html>
  <head></head> 
- <body> 
+ <body>
+  <div>
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/16.c">Principios SOLID aplicado &agrave; modelagem de dados com PostgreSQL</a>Chris Travers recentemente publicou uma s&eacute;rie de artigos intitulados &quot;Constru&iacute;ndo Banco de Dados com princ&iacute;pios SOLID&quot;, que explicam as diversas id&eacute;ias para aplicar alguns dos princ&iacute;pios comuns da programa&ccedil;&atilde;o orientada a objetos como Princ&iacute;pio da Responsabilidade &Uacute;nica, Segrega&ccedil;&atilde;o de Interface e Invers&atilde;o de Depend&ecirc;ncia para melhorar os modelos de dados e c&oacute;digo no banco de dados.
+  </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/15.c">Microsoft atualiza .NET Framework 4.5</a>Conhe&ccedil;a detalhes sobre as atualiza&ccedil;&otilde;es para o .NET Framework 4.5, que corrigem problemas de compatibilidade, confiabilidade, estabilidade e desempenho, no Windows Presentation Foundation, CLR, Forms, XML, Network Class Library, ASP.NET, Entity Framework,WWF e WCF. 
   </div> 

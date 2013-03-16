@@ -1,13 +1,10 @@
-<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>Visual Studio2012代码审阅特性的对比、注释、意见及状态更新功能</h3><p>Visual Studio2012包含了源自于<a href="http://msdn.microsoft.com/en-us/vstudio/ff637362.aspx">Team Foundation Server</a>的<a href="http://msdn.microsoft.com/en-us/library/hh474795.aspx">代码审阅工作流</a>。有了这个工作流，你就能通过经重新设计的<a href="http://msdn.microsoft.com/en-us/library/hh500420.aspx">团队资源管理器（Team Explorer）</a>窗口或者<a href="http://tfspreview.com/">Team Foundation Online Service</a>来审阅代码，通过它们，你还可以进行项目规划、产品团队协作并随时随地管理代码。</p> 
-<p>你还可以通过Team Foundation Service创建团队项目并把项目集成到<a href="http://www.visualstudiolaunch.com/">Visual Studio 2012</a>中。审阅者通过<a href="http://blogs.msdn.com/b/mvpawardprogram/archive/2012/09/04/new-code-review-feature-in-%20%20visual-studio-2012.aspx">代码审阅</a>特性可以对比代码文件、添加注释并将意见反馈至请求者。</p> 
-<p>代码审阅流程的流转过程如下：</p> 
-<ul> 
- <li>在团队资源管理器中，点击主页或“我的工作”页面中的请求审阅链接（如果看不见，请在Visual Studio 2012中点击“视图”下的“团队资源管理器”）。<br /> <img src="/resource/news/2013/03/code-review-visual-studio-2012/zh/resources/001.png;jsessionid=EFAF001DF166ACAF0F8A6B4E6BD5BB8E" alt="" _href="img://001.png" _p="true" /></li> 
- <li>在“新的代码审阅”对话框中填写审阅者姓名、审阅主题、详细描述和区域路径。</li> 
- <li>现在已经完成了代码审阅的申请。所有被分配审阅任务的团队成员将会收到一个通知。</li> 
- <li>审阅者点击接受链接意味着代码审阅的开始，这时其他审阅者就会收到通知，提醒审阅已经开始。通过团队资源管理器可以添加注释或者整体意见。<br /> <img src="/resource/news/2013/03/code-review-visual-studio-2012/zh/resources/IC607252002.png;jsessionid=EFAF001DF166ACAF0F8A6B4E6BD5BB8E" alt="" _href="img://IC607252002.png" _p="true" /><br /> <img src="/resource/news/2013/03/code-review-visual-studio-2012/zh/resources/IC610138003.png;jsessionid=EFAF001DF166ACAF0F8A6B4E6BD5BB8E" alt="" _href="img://IC610138003.png" _p="true" /></li> 
- <li>请求代码审阅的开发人员有权管理意见。当审阅者标记审阅状态为“不错”， “有意见”或者“需要改进”时，意味着整个代码审阅流程的完成。</li> 
-</ul> 
-<p>现在仅有<a href="http://www.microsoft.com/visualstudio/eng/products/compare">Visual Studio Premium</a> 和 Visual Studio Ultimate版本支持代码审阅工作流的特性。</p> 
-<p><strong>英文原文查看：</strong><a href="http://www.infoq.com/news/2012/10/code-review-visual-studio-2012;jsessionid=EFAF001DF166ACAF0F8A6B4E6BD5BB8E">Code Review with Comparison, Annotation, Comments and Status Update with Visual Studio 2012</a></p> 
-<p id="lastElm"></p></body></html>
+<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>微软开放Kinect for Windows样本代码</h3><p>微软最近在<a href="http://kinectforwindows.codeplex.com/">CodePlex</a>上基于<a href="http://www.microsoft.com/en-us/download/details.aspx?id=34807">Apache 2.0协议</a>开放了22个代码样本。这些代码样本也包含在<a href="http://www.microsoft.com/en-us/download/details.aspx?id=34807">Kinect for Windows Toolkit</a> 中，展示了如何利用Kinect的各种特性，包括音频、基本交互、颜色、深度、人脸追踪、红外、连续手势、语音、WPF、XNA等。</p> 
+<p>这些样本大部分用C#和C++编写，还有一部分用VB编写。它们 利用了WPF或DirectX技术。</p> 
+<p>虽然可以从CodePlex的<a href="http://kinectforwindows.codeplex.com/SourceControl/changeset/view/861462899ae7">Git仓库</a>创建出代码分支，但微软尚&gt;不接受任何开发者贡献代码。他们提到将来如何还在研究。</p> 
+<p>Kinect的开发需要使用Visual Studio 2010或者2012、.NET 4.0或4.5、<a href="http://www.microsoft.com/en-us/download/details.aspx?id=34808">Kinect for Windows SDK</a>和<a href="http://www.microsoft.com/en-us/download/details.aspx?id=34807">Kinect for Windows Toolkit</a>。</p> 
+<p>尽管Kinect最初是种游戏设备，但目前在<a href="http://www.kinecthacks.com/">很多项目</a> 中都有应用，或尚在研究，比如<a href="http://www.kinecthacks.com/moveit-turn-your-body-into-an-autodesk-inventor-modeling-tool-wit-a-kinect/">Autodesk建模工具</a>、<a href="http://www.kinecthacks.com/imogen-heap-talks-ableton-controlling-gloves/">控制手套（controlling gloves）</a>、<u>3D</u><a href="http://www.kinecthacks.com/skeletal-hand-and-finger-tracking-in-full-3d/">手势跟踪</a>、<a href="http://www.kinecthacks.com/kinect-powered-google-tv-controller/">Google TV控制器</a>、 <a href="http://www.microsoft.com/en-us/kinectforwindows/discover/gallery.aspx">缓解病人情绪和服装导购</a>等。</p> 
+<p><b>查看英文原文</b>：<a href="http://www.infoq.com/news/2013/03/Microsoft-Kinect-Samples;jsessionid=A4E8E1CBA775407AD5587C2B338E25B4">Microsoft Open Sources Kinect for Windows Samples </a></p> 
+<hr /> 
+<p>感谢<a href="http://www.infoq.com/cn/bycategory.action;jsessionid=A4E8E1CBA775407AD5587C2B338E25B4?authorName=臧秀涛">臧秀涛</a>对本文的审校。</p> 
+<p>给InfoQ中文站投稿或者参与内容翻译工作，请邮件至<a href="mailto:editors@cn.infoq.com">editors@cn.infoq.com</a>。也欢迎大家通过新浪微博（<a href="http://www.weibo.com/infoqchina">@InfoQ</a>）或者腾讯微博（<a href="http://t.qq.com/infoqchina">@InfoQ</a>）关注我们，并与我们的编辑和其他读者朋友交流。</p> 
+<p id="lastElm"></p><br><br><br><br><br><br></body></html>

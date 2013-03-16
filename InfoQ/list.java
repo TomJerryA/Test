@@ -2,7 +2,13 @@
  <head></head> 
  <body>
   <div>
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/48.java">MySQL Reference Architectures for Small to Extra Large Websites</a>Oracle has published MySQL Reference Architectures for Massively Scalable Web Infrastructure, a whitepaper outlining recommended topologies for different types and sizes of websites using MySQL for data storage.
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/0.java">Stripe Open Sources Abba, an A/B Testing Framework</a>Stripe has open sourced their JavaScript A/B testing framework called Abba.
+  </div>
+  <div>
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/49.java">Windows Azure Mobile Services with Android, Active Directory, Localization, East Asia Region</a>Microsoft has recently released several updates to Windows Azure with support for Android, Active Directory, Application monitoring with HTTP response codes, new five languages including expansion of Azure Store to 22 more countries.
+  </div> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/48.java">MySQL Reference Architectures for Small to Extra Large Websites</a>Oracle has published MySQL Reference Architectures for Massively Scalable Web Infrastructure, a whitepaper outlining recommended topologies for different types and sizes of websites using MySQL for data storage. 
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/47.java">Internet Explorer 10 Broadens Flash Support</a>Microsoft has announced increased Flash support on IE10 running on Windows 8 and Windows RT. This content will now be enabled to run by default and solidifies Flash's position on the Windows platform. 
@@ -144,9 +150,6 @@
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/1.java">Greenplum Pivotal HD Combines the Strengths of SQL and Hadoop</a>EMC Greenplum has announced Pivotal HD, a new Hadoop distribution including a fully compliant SQL MPP database running on HDFS and being “hundreds of times faster than Hive”. 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/0.java">Using the Domain Driven Design Bounded Context Concept to Shrink a Large Domain Model</a>Bounded Context concept from Domain Driven Design (DDD) can be used to divide a large model into smaller models using the Database Context (DbContext class) in Entity Framework (EF). Bounded Context creates smaller, more cohesive models with boundaries between models. 
-  </div> 
+  </div>  
  </body>
 </html>

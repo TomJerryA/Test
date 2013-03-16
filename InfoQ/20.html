@@ -1,27 +1,7 @@
-<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>Lienzo 1.0：HTML5 Canvas元素的Java版本场景图API</h3><p><a href="http://emitrom.com/">Emitrom</a>是一家提供企业软件应用定制服务的公司，最近基于Apache 许可证发布了<a href="http://emitrom.com/lienzo/download">Lienzo 1.0稳定版本</a>。<a href="http://emitrom.com/lienzo">Lienzo</a>是个<a href="http://www.infoq.com/gwt;jsessionid=2F5A3B2B494CE9A1CDFDFBCFF1D82D8B;jsessionid=E77B2E9AAB5B638B2F347EE607A1A592">GWT</a>库，它是以<a href="http://www.infoq.com/html-5;jsessionid=2F5A3B2B494CE9A1CDFDFBCFF1D82D8B;jsessionid=E77B2E9AAB5B638B2F347EE607A1A592">HTML5</a><a href="http://www.infoq.com/canvas;jsessionid=2F5A3B2B494CE9A1CDFDFBCFF1D82D8B;jsessionid=E77B2E9AAB5B638B2F347EE607A1A592"> Canvas</a>为后端，用Java实现的结构化图形工具包。Lienzo构建在现有的<a href="http://google-web-toolkit.googlecode.com/svn/javadoc/2.5/index.html?com/google/gwt/canvas/dom/client/package-summary.html">GWT的Canvas支持</a>之上（查看<a href="http://gwtcanvasdemo.appspot.com/">演示</a>），通过提供一套更高级的Java API，以适应丰富动画，游戏，图片处理等。</p> 
-<p>Lienzo 1.0提供了以下图像功能：</p> 
-<ul> 
- <li><a href="http://wiki.emitrom.com/wiki/index.php/Basic_Node_Structure">窗口</a>可以有多个图层，这些图层可组合成场景</li> 
- <li><a href="http://wiki.emitrom.com/wiki/index.php/Mediators">窗口支持缩放和移动</a></li> 
- <li>多个基本图形（圆，线，三角形等）</li> 
- <li>基本的（旋转，缩放，移动）/高级的/仿真的图形<a href="http://wiki.emitrom.com/wiki/index.php/Shape_Transformations">变换</a></li> 
- <li>CSS 3<a href="http://wiki.emitrom.com/wiki/index.php/Color">颜色映射</a></li> 
- <li>基本的文本和<a href="http://wiki.emitrom.com/wiki/index.php/Web_Fonts">Web字体</a>支持</li> 
- <li>图片渲染</li> 
- <li><a href="http://wiki.emitrom.com/wiki/index.php/Image_Filter">图片过滤器</a>（例如，模糊）</li> 
- <li><a href="http://wiki.emitrom.com/wiki/index.php/Point2D">点和矢量图形</a></li> 
- <li><a href="http://wiki.emitrom.com/wiki/index.php/Movie">HTML5视频</a>实验支持</li> 
- <li>将当前Canvas内容另存为图片</li> 
- <li>鼠标及触摸屏的<a href="http://wiki.emitrom.com/wiki/index.php/Events">事件处理</a></li> 
- <li><a href="http://wiki.emitrom.com/wiki/index.php/Dragging">拖放</a></li> 
- <li>带有不同渐变选项的动画</li> 
- <li><a href="http://wiki.emitrom.com/wiki/index.php/Internationalization">国际化</a>支持</li> 
-</ul> 
-<p>有个在线demo展示了几个示例（还有一些动画）以及他们的源码。</p> 
-<p><img src="/resource/news/2013/03/lienzo/zh/resources/lienzo-demo_thumb.png;jsessionid=E77B2E9AAB5B638B2F347EE607A1A592" alt="" _href="img://lienzo-demo_thumb.png" _p="true" /></p> 
-<p>HTML 5中Canvas元素通常在JavaScript中通过一套低级的接口以<a href="http://en.wikipedia.org/wiki/Immediate_mode">immediate模式</a>管理GUI。GWT提供的基本Java API只是在JavaScript API之上做了层简单封装，所以对于大多数企业开发人员来说这还是低级的接口。Emitrom将基本API扩展成以<a href="http://en.wikipedia.org/wiki/Retained_mode">retained模式</a>管理的完整<a href="http://en.wikipedia.org/wiki/Scene_graph">场景图</a>。这使得上述所有高级特性成为可能（例如动画）。</p> 
-<p>还能够<a href="http://wiki.emitrom.com/wiki/index.php/Extending_Lienzo">扩展</a>Lienzo以支持未包含的其他图形。Emitrom还暴露了核心的<a href="http://wiki.emitrom.com/wiki/index.php/Context2D">Context2D</a>对象，它可直接访问HTML 5 Canvas元素的低级接口。对于那些需要这项能力的人来说，这使得开发Lienzo中默认不具备的功能，甚至从现有的Canvas应用种移植原生的JavaScript代码都成为可能。</p> 
-<p>最后，通过添加Emitrom提供的额外的库，Lienzo也能在<a href="http://wiki.emitrom.com/wiki/index.php/Hello_World:_iOS">iOS</a>上运行，通过Adobe Air还能够在<a href="http://wiki.emitrom.com/wiki/index.php/Hello_World:_thick_client_(desktop">桌面</a>)上运行，Flash4j的引入进一步增强了跨平台开发的构想。</p> 
-<p>更多信息，请阅读用户手册以及Javadoc。他们还提供了<a href="http://emitrom.com/products">商业支持</a>。</p> 
-<p><strong>查看英文原文：</strong><a href="http://www.infoq.com/news/2013/01/lienzo;jsessionid=E77B2E9AAB5B638B2F347EE607A1A592">Lienzo 1.0: A Scene Graph API In Java For The HTML5 Canvas</a></p> 
-<p id="lastElm"></p></body></html>
+<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>Node.js v0.10版本发布</h3><p>Node.js研发团队<a href="http://blog.nodejs.org/2013/03/11/node-v0-10-0-stable/">发布了node.js v0.10版本</a>，它是个基于Javascript、用于构建高性能异步服务器的平台。该版本主要更新如下：更易于使用的数据流处理模块，通过域更好地处理错误，此外还带来了性能方面的提升。该团队还宣布在v0.10之后、v1.0之前还会发布一个更稳定版本v0.12。</p> 
+<p><a href="http://nodejs.org/api/stream.html">数据流</a>是node.js的核心部分，它在v0.10版本中经历了重大改动。数据流为任意类型的可读/可写数据流提供了一套公共接口，该抽象接口不需要关心数据流背后是文件，还是运行的进程或是socket。在v0.10以前的版本中，数据包是以数据事件的方式发布，当打开数据流的时候该数据事件就会立马被触发。数据包丢失是个常见问题，这是因为这些事件在程序启动数据事件监听之前就到达了。虽然v0.10版本还有个向后兼容模式，其表现行为与之相同，但推荐监听可读事件，一旦该事件触发，需要显式调用.read() 方法来获取缓存的数据。这样一来，数据包就不那么容易丢失了。</p> 
+<p>在node.js v0.8之前的版本中，未捕获的异常默认会导致整个服务器进程崩溃。要避免这个问题并对未捕获异常的行为采取更多的控制，node.js v0.8版本引入了实验性版本的域这个概念。域是一种将崩溃问题局部化的机制。例如，node.js能够为每个HTTP请求创建一个域。如果该HTTP请求的域范围内有任何代码崩溃了，问题只会局限在该域中，不会导致整个服务器进程崩溃，因而能够将崩溃只局限在单个HTTP请求中。在v0.10版本中，域的状态已经由“实验性”升至“不稳定”，修复了各种边界条件软件缺陷，还提供了更丰富的调试信息。</p> 
+<p>在过去的一年中，node.js社区取得了显著的增长，企业对这项技术也越来越感兴趣。例如<a href="http://thenodefirm.com/">The Node Firm</a>和<a href="http://strongloop.com/">StrongLoop</a>等公司已经提供了有偿的node.js技术支持，培训以及咨询服务。StrongLoop还<a href="http://blog.strongloop.com/announcing-strongloop-node/">发布了StrongLoop Node beta版本</a>，它全面支持node.js，包含各式各样流行的模块，它遵循了和Scala社区中<a href="http://typesafe.com/">Typesafe</a>类似的模式。</p> 
+<p>官方的node.js v0.10的预构建二进制文件已经提供下载，<a href="http://nodejs.org/download/">支持目前所有主流操作系统</a>，包括Windows、Mac、Linux以及Solaris。当然了，作为开源项目的node.js，<a href="https://github.com/joyent/node/tree/v0.10.0">其源代码也已经公布。</a></p> 
+<p><b>查看英文原文</b>：<a href="http://www.infoq.com/news/2013/03/node.js-0.10-released;jsessionid=B17D43484DA478A20665FF692AD146F6">Node.js 0.10 Released</a></p> 
+<p id="lastElm"></p><br><br><br><br><br><br></body></html>

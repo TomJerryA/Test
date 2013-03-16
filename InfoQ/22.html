@@ -1,51 +1,19 @@
-<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>LinkedIn实时低延迟数据抓取系统Databus开源</h3><p>去年的架构师峰会上，来自LinkedIn的高级软件工程师<a href="http://archsummit.com/speaker.php?id=5">Lei Gao</a>做了一场名为<a href="http://archsummit.com/news.php?id=34">《LinkedIn的数据处理架构》</a>的演讲，着重介绍LinkedIn内部的数据基础设施的演变，其中提到Databus数据总线项目，当时就引起大家诸多好奇。前不久，LinkedIn工程团队官方博客<a href="http://engineering.linkedin.com/data-replication/open-sourcing-databus-linkedins-low-latency-change-data-capture-system">发布消息</a>：Databus项目开源。</p> 
-<p>在互联网架构中，数据系统通常分为真实数据（source-of-truth）系统，作为基础数据库，存储用户产生的写操作；以及衍生数据库或索引，提供读取和其他复杂查询操作。后者常常衍生自主数据存储，会对其中的数据做转换，有时还要包括复杂的业务逻辑处理。缓存中的数据也来自主数据存储，当主数据存储发生变化，缓存中的数据就需要刷新，或是转为无效。</p> 
-<p>LinkedIn内部有很多专用的数据存储和服务系统，足以构成一个多种多样的生态系统。基础的OLTP数据存储用来处理面向用户的写操作和部分读操作。其他专用系统提供负责查询，或者通过缓存用来加速查询结果。因此，整个生态系统中就需要一个可靠的、支持事务的、保持一致性的数据变更抓取系统。</p> 
-<p>Databus是一个实时的低延迟数据抓取系统。从2005年就已经开始开发，正式在LinkedIn投入生产系统，是在2011年。</p> 
-<p>在Databus的<a href="https://github.com/linkedin/databus">Github页面</a>上，介绍了他们选择目前解决方案的决策过程。</p> 
-<blockquote> 
- <p>处理这种需求有两种常用方式：</p> 
- <p>应用驱动双向写：这种模式下，应用层同时向数据库和另一个消息系统发起写操作。这种实现看起来简单，因为可以控制向数据库写的应用代码。但是，它会引入一致性问题，因为没有复杂的协调协议（比如两阶段提交协议或者paxos算法），所以当出现问题时，很难保证数据库和消息系统完全处于相同的锁定状态。两个系统需要精确完成同样的写操作，并以同样的顺序完成序列化。如果写操作是有条件的或是有部分更新的语义，那么事情就会变得更麻烦。</p> 
- <p>数据库日志挖掘：将数据库作为唯一真实数据来源，并将变更从事务或提交日志中提取出来。这可以解决一致性问题，但是很难实现，因为Oracle和MySQL这样的数据库有私有的交易日志格式和冗余解决方案，难以保证版本升级之后的可用性。由于要解决的是处理应用代码发起的数据变更，然后写入到另一个数据库中，冗余系统就得是用户层面的，而且要与来源无关。对于快速变化的技术公司，这种与数据来源的独立性非常重要，可以避免应用栈的技术锁定，或是绑死在二进制格式上。</p> 
- <p>在评估了两种方式的优劣之后，我们决定选择日志挖掘，将一致性和单一真实数据来源作为最高优先级，而不是易于实现。</p> 
-</blockquote> 
-<p>Databus的传输层端到端延迟是微秒级的，每台服务器每秒可以处理数千次数据吞吐变更事件，同时还支持无限回溯能力和丰富的变更订阅功能。概要结构如下图。</p> 
-<p><img width="600" src="/resource/news/2013/03/linkedin-databus/zh/resources/databus-usecases.jpg;jsessionid=86E387D31103145E6616D0072B125B51" alt="" _href="img://databus-usecases.jpg" _p="true" /></p> 
-<p>图中显示：Search Index和Read Replicas等系统是Databus的消费者。当主OLTP数据库发生写操作时，连接其上的中继系统会将数据拉到中继中。签入在Search Index或是缓存中的Databus消费者客户端，就会从中继中拉出数据，并更新索引或缓存。</p> 
-<p>Databus提供如下功能：</p> 
+<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>CQRS框架Axon 2提供了对MongoDB的支持及性能提升</h3><p><a href="http://martinfowler.com/bliki/CQRS.html">CQRS</a>框架<a href="http://www.axonframework.org/">Axon</a>的最新版本支持了<a href="http://www.axonframework.org/docs/2.0/repositories-and-event-stores.html#d4e1032">MongoEventStore</a>，它使用了<a href="http://www.mongodb.org/">MongoDB</a>作为后台存储，提供了一套简化的API，并带来了性能上的提升。最新的发布<a href="http://www.axonframework.org/news/axon-2-0-released/">版本2.0</a>允许事件对象基于POJO及批注（annotation）定义消息、负载和元数据。新版本中的其它特性还包括：</p> 
 <ul> 
- <li>来源独立：Databus支持多种数据来源的变更抓取，包括Oracle和MySQL。Oracle适配器在开源版本中有提供，MySQL适配器将在以后提供。</li> 
- <li>可扩展、高度可用：Databus能扩展到支持数千消费者和事务数据来源，同时保持高度可用性。</li> 
- <li>事务按序提交：Databus能保持来源数据库中的事务完整性，并按照事务分组和来源的提交顺寻交付变更事件。</li> 
- <li>低延迟、支持多种订阅机制：数据源变更完成后，Databus能在微秒级内将事务提交给消费者。同时，消费者使用Databus中的服务器端过滤功能，可以只获取自己需要的特定数据。</li> 
- <li>无限回溯：这是Databus最具创新性的组件之一，对消费者支持无限回溯能力。当消费者需要产生数据的完整拷贝时（比如新的搜索索引），它不会对主OLTP数据库产生任何额外负担，就可以达成目的。当消费者的数据大大落后于来源数据库时，也可以使用该功能。</li> 
+ <li>一个高性能的命令总线，它能以一种无锁的算法并行地进行命令处理，能够在每个时间单元处理多出四倍的命令。</li> 
+ <li>新的代码逻辑以确保事件的序列化仅发生一次，并确保仅在实际使用事件时进行反序列化。</li> 
+ <li>对大量事件的重播得到极大的加快。</li> 
+ <li>一个分布式的命令总线，允许横向扩展至多台机器，并调整每台机器的负载。</li> 
+ <li>支持事件的转型（Upcasting）及<a href="http://blog.trifork.com/2012/04/17/refactoring-in-an-event-sourced-world-upcasting-in-axon-2/">分解</a>（Demultiplexing），例如：当实现了某个新的事件结构后，能够将旧的事件转换为多个新的事件。</li> 
+ <li>使用<a href="http://www.amqp.org/">AMQP</a>进行事件分发。</li> 
 </ul> 
-<p><img width="600" src="/resource/news/2013/03/linkedin-databus/zh/resources/databus-as-a-service.png;jsessionid=86E387D31103145E6616D0072B125B51" alt="" _href="img://databus-as-a-service.png" _p="true" /></p> 
-<p>上图中介绍了Databus系统的构成，包括中继Relay、bootstrap服务和客户端库。Bootstrap服务中包括Bootstrap Producer和Bootstrap Server。快速变化的消费者直接从Relay中取事件。如果一个消费者大幅落后，它要的数据就不在Relay的日志中，而是在Bootstrap Producer里面，提交给它的，将会是自消费者上次处理变更之后的所有数据变更快照。</p> 
-<p>Databus Relay中继的功能主要包括：</p> 
-<ol> 
- <li>从Databus来源读取变更行，并在内存缓存内将其序列化为Databus变更事件</li> 
- <li>监听来自Databus客户端（包括Bootstrap Producer）的请求，并传输新的Databus数据变更事件</li> 
-</ol> 
-<p>Databus客户端的功能主要包括：</p> 
-<ol> 
- <li>检查Relay上新的数据变更事件，并执行特定业务逻辑的回调</li> 
- <li>如果落后Relay太多，向Bootstrap Server发起查询</li> 
- <li>新Databus客户端会向Bootstrap Server发起bootstrap启动查询，然后切换到向中继发起查询，以完成最新的数据变更事件</li> 
- <li>单一客户端可以处理整个Databus数据流，或者可以成为消费者集群的一部分，其中每个消费者只处理一部分流数据</li> 
-</ol> 
-<p>Databus Bootstrap Producer只是一种特定的Databus客户端，它的功能有：</p> 
-<ol> 
- <li>检查中继上的新数据变更事件</li> 
- <li>将变更存储在MySQL数据库中</li> 
- <li>MySQL数据库供Bootstrap和客户端使用</li> 
-</ol> 
-<p>Databus Bootstrap Server的主要功能，就是监听来自Databus客户端的请求，并返回长期回溯数据变更事件。</p> 
-<p>在LinkedIn，Databus支持的系统有：</p> 
-<ul> 
- <li>社会化图谱索引（Social Graph Index），服务LinkedIn所有图谱查询</li> 
- <li>人员搜索索引（People Search Index），支持搜素所有LinkedIn用户</li> 
- <li>用户档案数据（Member Profile）多个冗余的读取查询</li> 
-</ul> 
-<p>对Databus项目感兴趣的同学，可以去<a href="https://github.com/linkedin/databus">Github</a>上查看更多信息和相关源码。</p> 
-<p id="lastElm"></p></body></html>
+<p>该团队也发布了一个<a href="http://www.axonframework.org/axon-2-quickstart-guide/">快速入门指南</a>，包含了基于Axon创建一个简单系统的步骤，并且在<a href="http://www.axonframework.org/docs/2.0/single.html">参考指南</a>中更新了框架的各处改动。</p> 
+<p>Axon框架为基于CQRS和<a href="http://martinfowler.com/eaaDev/EventSourcing.html">事件溯源</a>（Event Sourcing）架构模式的系统提供了各种构建块，这两种模式正受到越来越多的关注。<a href="http://domaindrivendesign.org/books/evans_2003">领域驱动设计（DDD）参考书籍</a>的作者Eric Evans在由其他人维护的DDD社区网站上特别<a href="http://domaindrivendesign.org/">指出</a>了它们的重要性：</p> 
+<p>“CQRS和Event Sourcing是实现DDD的两种密切相关的架构方式，它们也是过去几年中DDD领域里最热门的话题。”</p> 
+<p>Axon框架由<a href="http://blog.trifork.com/author/allard/">Allard Buijze</a>所创建，它是一个基于Apache授权的开源产品，当前的版本是2.0，并且可以选择付费的支持。</p> 
+<p>目前已有了一个专属Axon用户的<a href="https://groups.google.com/forum/?fromgroups=#!forum/axonframework">论坛</a>，上面已经聚集了约200名用户，产出了300篇帖子。有一篇关于<a href="http://stackoverflow.com/questions/9646884/real-life-experience-with-the-axon-framework">真实世界中的实际经验</a>的讨论列举了对这个框架的正面和负面的两方面评价。</p> 
+<p><b>查看英文原文</b>：<a href="http://www.infoq.com/news/2013/03/axon-2-release;jsessionid=F4FF4FCA5FBB7D2E12AE9669CE8214BD">CQRS Framework Axon 2 Features MongoDB Support and Performance Improvements</a></p> 
+<hr /> 
+<p>感谢<a href="http://www.infoq.com/cn/bycategory.action;jsessionid=F4FF4FCA5FBB7D2E12AE9669CE8214BD?authorName=杨赛">杨赛</a>对本文的审校。</p> 
+<p>给InfoQ中文站投稿或者参与内容翻译工作，请邮件至<a href="mailto:editors@cn.infoq.com">editors@cn.infoq.com</a>。也欢迎大家通过新浪微博（<a href="http://www.weibo.com/infoqchina">@InfoQ</a>）或者腾讯微博（<a href="http://t.qq.com/infoqchina">@InfoQ</a>）关注我们，并与我们的编辑和其他读者朋友交流。</p> 
+<p id="lastElm"></p><br><br><br><br><br><br></body></html>
