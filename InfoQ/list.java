@@ -1,8 +1,8 @@
 <html>
  <head></head> 
- <body>
-  <div>
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/2.java">PeerJS 0.1.7: A WebRTC Wrapper For P2P In The Browser</a>Michelle Bu and Eric Zhang announced the release of PeerJS 0.1.7 on March 6th as a wrapper around WebRTC, a W3C initiative meant to facilitate P2P communication in the browser.
+ <body> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/2.java">PeerJS 0.1.7: A WebRTC Wrapper For P2P In The Browser</a>Michelle Bu and Eric Zhang announced the release of PeerJS 0.1.7 on March 6th as a wrapper around WebRTC, a W3C initiative meant to facilitate P2P communication in the browser. 
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/1.java">Ceylon M5 with Tuples, Verbatim Strings, Spread Operator, Late Annotation</a>RedHat has released Ceylon M5 programming language with several new features such as Tuples, Verbatim Strings, Spread Operator, Late Annotation and reified generics including a new module, package, functions in addition to several key syntax modifications. 
@@ -150,6 +150,6 @@
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/3.java">Concurrent Releases Lingual, a SQL DSL for Hadoop</a>Concurrent, Inc., the enterprise Big Data application platform company, today announced Lingual, an open source project enabling fast and simple Big Data application development on Apache Hadoop using SQL. 
-  </div>  
+  </div> 
  </body>
 </html>
