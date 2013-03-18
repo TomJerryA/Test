@@ -1,6 +1,12 @@
 <html>
  <head></head> 
- <body> 
+ <body>
+  <div>
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/37.py">VagrantがAmazon AWSとRackspaceをサポート</a>HashiCorp は，Vagrant のプロバイダとして Amazon AWS と Rackspace のサポートを加えることで新たな利用シナリオを実現する – 開発者のデスクトップ上に代えて，初めてクラウド上での仮想マシン起動が可能になるのだ。
+  </div>
+  <div>
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/36.py">スクラム概要図のアニメ版、Scrum Primerのサイトで公開</a>Scrum Primerの著者がスクラムプロセスを説明する図のアニメ版を公開した。これはScrum Primerのサイトからダウンロードでき、Creative Commonsライセンスのもと利用することができる。
+  </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/35.py">SQL Server、SharePoint、Officeの新しい開発ツール</a>MicrosoftはSQL Server、SharePoint、Officeをターゲットにしたいくつかの開発ツールをアップデートした。ビジネスインテリジェンスツールは、SQL Serverのanalysis、integration、reportingをサポートする。Office/SharePointツールは、それぞれの2013バージョンと.NET Framework 4.5をサポートする。 
   </div> 
