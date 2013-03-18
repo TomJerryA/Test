@@ -1,8 +1,8 @@
 <html>
  <head></head> 
- <body>
-  <div>
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/8.pyb">Datomic情報モデル</a>Clojureの作者であるRich Hickey氏が、Datomic情報モデルについて説明する。Datomicは、シンプルなサービスで組み立てられた新しいデータベースで、RDBMSの機能性とNoSQLのスケーラビリティを同時に実現している。
+ <body> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/8.pyb">Datomic情報モデル</a>Clojureの作者であるRich Hickey氏が、Datomic情報モデルについて説明する。Datomicは、シンプルなサービスで組み立てられた新しいデータベースで、RDBMSの機能性とNoSQLのスケーラビリティを同時に実現している。 
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/7.pyb">最新のC++を学ぶ - Barbara Moo氏インタビュー</a>C++11 marks an effort modernize C++'s role in today's software development. InfoQ speaks with Barbara Moo regarding her new book, C++ Primer, Fifth Edition and the goals for C++11. 

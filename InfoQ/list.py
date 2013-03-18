@@ -1,17 +1,17 @@
 <html>
  <head></head> 
- <body>
-  <div>
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/41.py">Internet Explorer 10は幅広くFlashをサポートした</a>Microsoftは、Windows 8とWindows RTで実行されるIE10でFlashサポートを拡大することを発表した。このコンテンツは、現在デフォルトで有効になっており、Windows上のFlashのポジションが固まった。
-  </div>
-  <div>
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/40.py">Xamarinが iOS と Android向けのC#非同期を導入</a>Xamarinは、iOS and Android開発向けの非同期対応ライブラリのプレビューをリリースした。この成果は、Visual Studio 2012の一部として昨年リリースされた Microsoftの .NET 4.5に大きく基づいている。 Xamarinは、以前はAndroid用の MonoTouch と Monoとして知られていた開発プラットフォームの新名称である。
-  </div>
-  <div>
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/39.py">MicrosoftとAWSがクラウド最適化サービスを無償提供</a>クラウドの利用を最適化するサービスの周囲の小さな産業は成長しているが、大規模なクラウド事業者も独自で最適化のサービスを提供し始めている。Microsoftは近頃、クラウドの性能を管理する企業を買収し、その会社の製品の無償提供を始めた。競合のAmazon Web Services (AWS)も“Trusted Advisor”プログラムの無償トライアルを積極的に推進している。
-  </div>
-  <div>
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/38.py">FTP, NGINXキャッシング, Apache TomEE, MarinaDB 10をサポートするJelastic 1.9</a>JelasticはFTP/FTPS，NGINXキャッシング，Apache TomEE，MariaDBをサポートするバージョン1.9の提供開始を発表した。
+ <body> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/41.py">Internet Explorer 10は幅広くFlashをサポートした</a>Microsoftは、Windows 8とWindows RTで実行されるIE10でFlashサポートを拡大することを発表した。このコンテンツは、現在デフォルトで有効になっており、Windows上のFlashのポジションが固まった。 
+  </div> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/40.py">Xamarinが iOS と Android向けのC#非同期を導入</a>Xamarinは、iOS and Android開発向けの非同期対応ライブラリのプレビューをリリースした。この成果は、Visual Studio 2012の一部として昨年リリースされた Microsoftの .NET 4.5に大きく基づいている。 Xamarinは、以前はAndroid用の MonoTouch と Monoとして知られていた開発プラットフォームの新名称である。 
+  </div> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/39.py">MicrosoftとAWSがクラウド最適化サービスを無償提供</a>クラウドの利用を最適化するサービスの周囲の小さな産業は成長しているが、大規模なクラウド事業者も独自で最適化のサービスを提供し始めている。Microsoftは近頃、クラウドの性能を管理する企業を買収し、その会社の製品の無償提供を始めた。競合のAmazon Web Services (AWS)も“Trusted Advisor”プログラムの無償トライアルを積極的に推進している。 
+  </div> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/38.py">FTP, NGINXキャッシング, Apache TomEE, MarinaDB 10をサポートするJelastic 1.9</a>JelasticはFTP/FTPS，NGINXキャッシング，Apache TomEE，MariaDBをサポートするバージョン1.9の提供開始を発表した。 
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/37.py">VagrantがAmazon AWSとRackspaceをサポート</a>HashiCorp は，Vagrant のプロバイダとして Amazon AWS と Rackspace のサポートを加えることで新たな利用シナリオを実現する – 開発者のデスクトップ上に代えて，初めてクラウド上での仮想マシン起動が可能になるのだ。 
