@@ -2,10 +2,13 @@
  <head></head> 
  <body>
   <div>
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/7.java">Java 8 Starting to Find Its Way into .Net/Mono</a>In last week’s development snapshot, IKVM added experimental support for static methods in interfaces and default interfaces methods. These Java 8 features are primarily to support the internal workings of Java libraries, they won’t be readily usable from other .NET languages.
-  </div>
-  <div>
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/6.java">GitSync for Plastic SCM Introduces Native Git Protocols and Visual Studio 2012 Support</a>GitSync for Plastic SCM has been released with support for native Git network protocols and Visual Studio 2012 support.
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/8.java">GitSync for Plastic SCM with Native Git Protocols and Visual Studio 2012 Support</a>GitSync for Plastic SCM has been released with support for native Git network protocols and Visual Studio 2012 support.
+  </div> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/7.java">Java 8 Starting to Find Its Way into .Net/Mono</a>In last week’s development snapshot, IKVM added experimental support for static methods in interfaces and default interfaces methods. These Java 8 features are primarily to support the internal workings of Java libraries, they won’t be readily usable from other .NET languages. 
+  </div> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/6.java">GitSync for Plastic SCM Introduces Native Git Protocols and Visual Studio 2012 Support</a>GitSync for Plastic SCM has been released with support for native Git network protocols and Visual Studio 2012 support. 
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/5.java">Terracotta's BigMemory 4.0 and In-Genius Products Offer Real-time Insights From Big Data Sources</a>Terracotta’s BigMemory 4.0 and In-Genius products offer real-time analytics and insights from Big Data sources and integration with Hadoop. Terracotta recently announced the release of the new version of in-memory data platform BigMemory and In-Genius, an in-memory intelligence platform for Big Data. 
@@ -147,9 +150,6 @@
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/9.java">Entity Framework 6 Alpha 3 with Code First Stored Procedures and Connection Resiliency</a>Microsoft has released Entity Framework 6 Alpha 3 with support for code first stored procedures, connection resiliency, pull request from iceclow and UnaiZorrilla. 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/8.java">Casablanca's C++ SDK Whitelisted for Open Source</a>Microsoft's C++ REST SDK, codenamed Casablanca, has been open sourced under the Apache 2.0 license. Casablanca provides developers with a multiplatform way to write C++11 code that interacts with REST services. 
-  </div>   
+  </div>  
  </body>
 </html>

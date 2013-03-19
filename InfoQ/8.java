@@ -1,16 +1,19 @@
-<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>Casablanca's C++ SDK Whitelisted for Open Source</h3><p lang="zxx" style="margin-bottom: 0in">Microsoft's C++ REST SDK, codenamed <a href="http://casablanca.codeplex.com/">Casablanca</a> has been open sourced under the Apache license. It is described as a &quot;a Microsoft effort to support cloud-based client-server communication in native code using a modern asynchronous C++ API design.&quot; Breaking through the highlevel description, this offering uses C++11 to provide what Microsoft hopes is an easier way to write client-side HTTP code.</p> 
-<p lang="zxx" style="margin-bottom: 0in"> </p>
-<p lang="zxx" style="margin-bottom: 0in">Casablanca is multi-platform, supporting Linux as well as Windows 7 and Windows 8. Microsoft developer Artur Laksberg states that support WinXP for and Vista is being developed. Another highlight is its support for asynchronous operations. Microsoft's <a href="http://blogs.msdn.com/b/vcblog/archive/2013/02/26/the-c-rest-sdk-quot-casablanca-quot.aspx">announcement</a> provides some examples of a file upload via HTTP and creating a JSON object to demonstrate Casablanca in action.</p> 
-<p></p> 
-<p lang="zxx" style="margin-bottom: 0in">Both the Windows and Linux builds support the following feaures:</p> 
-<blockquote> 
- <ul> 
-  <li>Ability to create a connection to a server via a HTTP Client, send requests and handle response.</li> 
-  <li>Support for construction and use of Uniform Resource Identifiers (URI).</li> 
-  <li>Constructing, parsing and serializing JSON values.</li> 
-  <li>Asynchronously reading/writing bytes to/from an underlying medium via Streams and Stream Buffers.</li> 
- </ul> 
+<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>GitSync for Plastic SCM with Native Git Protocols and Visual Studio 2012 Support</h3><p><a href="http://plasticscm.com/gitsync/index.html">GitSync for Plastic SCM</a>, a native Windows based distributed versioning control system (DVCS) provides support for https:// and git:// native Git protocols without any need for intermediate translations and also integrates with Git repositories.</p> 
+<p>It enables you to leverage the ability of Plastic SCM to push and pull code changes to not only GitHub but also Codeplex, BitBucket or any Git server using native Git network protocols and integrates with Visual Studio 2012 that enables you to work with all features using a single Integrated Development Environment (IDE).</p> 
+<p>GitSync for Plastic SCM has an ability to clone a Git repository and later push changes to it. As a developer, you will be able to create branches and push them to Git or create branches on Git and pull them in. It also effectively handles concurrent conflicts which enables developers to work on the same branch on the two systems and reconcile changes, just as they would when using a pure Plastic SCM environment or a pure Git one.</p> 
+<p>Plastic SCM includes a distributed branch explorer that enables you to explore remote repositories as if they are local including drawing their changes together with the local ones in the diagram. Moreover, developers will be able to track code with Xdiff (cross-difference) and Xmerge (cross-merge) which identifies code fragments that have been moved and link them for easy navigation.</p> 
+<p>It enables you to invoke methodhistory from the annotate views in the GUI including support for Eclipse, multiple languages, improved C# and also provides an ability to track refactored code between files.</p> 
+<p>&quot;It is important to highlight that GitSync is not a different product, it is offering Plastic SCM to the Git community so they can use Plastic on the client side then push/pull changes to any flavor of Git server. Since Git tools on Windows are weaker than they're on MacOS X and Plastic SCM specially shines on Windows, we think this is a great way to help Git users and also to ease the Plastic SCM adoption,&quot; says Pablo Santos, President, Plastic SCM.</p> 
+<p>InfoQ had a chat with Manuel Lucio Dallo, Product team member to know more about Plastic SCM.<br /> <br /> <strong>InfoQ: Does GitSync for Plastic SCM improve productivity?</strong></p> 
+<blockquote>
+  With Plastic as a Git &quot;client&quot; your development will be faster, you will spend less time in source control and more at important thing, coding. Plastic SCM is 100% graphical and intuitive. Complex and regular actions that requires time and obscure commands in Git are done in Plastic in a couple of clicks. 
 </blockquote> 
-<p lang="zxx" style="margin-bottom: 0in">There are several different Streams and Stream Buffers available: a memory based producer-consumer, files, a memory based stream backed by a STL container, raw pointer streams, and interop streams. This last type of stream allows for &quot;...Casablanca [to provide] two sets of classes, one to give an async stream interface to an iostream, one to give an iostream interface to an async stream.&quot;</p> 
-<p lang="zxx" style="margin-bottom: 0in">The <a href="http://casablanca.codeplex.com/wikipage?title=Linux Features&amp;referringTitle=Documentation">Linux http client</a> is somewhat limited in that it does not yet support https, proxies, or authentication, but Microsoft states these features will be part of a future release. CodePlex houses <a href="http://casablanca.codeplex.com/SourceControl/changeset/view/8737b35e9171#readme.txt">Casablanca's source code</a> where it may be viewed online, obtained via Git, or downloaded as a Zip archive with the latest snapshot.</p> 
-<p id="lastElm"></p></body></html>
+<p><strong>InfoQ: For what purpose, GitSync for Plastic SCM can be used in real world scenario? </strong></p> 
+<blockquote>
+  Imagine that your team is using Git, so you are forced to use Git. Now you can use Plastic SCM in your dev laptop, then, push and pull from Git but your development is done under Plastic SCM. This is specially useful in teams that want to test Plastic in the production environment without spending resources in an evaluation process.
+ <br /> 
+ <br /> There will be also developers that are simple not comfortable using the command line as the only Git interface, here is where Plastic can help the developer simplifying the workflow with a real and powerful GUI, then, once developers realize Plastic is as powerful, or more, as Git and much easier to use we expect to have a good numbers of teams fully migrating to Plastic SCM.
+ <br /> 
+ <br /> We don't have minimum resources needed. A regular, nowadays, laptop will do the work. The server, in windows, requires the .NET Framework 3.5 as the default database backend is SQL Server CE. 
+</blockquote> 
+<p id="lastElm"></p><br><br><br><br><br><br></body></html>
