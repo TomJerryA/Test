@@ -1,6 +1,18 @@
 <html>
  <head></head> 
- <body> 
+ <body>
+  <div>
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/45.py">CQRSフレームワークのAxon 2がMongoDBをサポート，パフォーマンスも向上</a>Axon の CQRS フレームワークの最新バージョンでは，MongoDB をバックストアとして使用する MongoEventStore がサポートされている。さらにAPIがシンプルなものになり，パフォーマンスも向上している。先日リリースされたこのバージョン2.0は，イベントオブジェクトがPOJOベースになると同時に，メッセージやペイロード，メタデータを定義するアノテーションも備えている。
+  </div>
+  <div>
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/44.py">Red HatがOpenJDK 6のリーダーシップを引き継ぐ</a>Red Hatは、OpenJDK 6のサポートを引き継ぐことを発表した。それは、Oracleが自分たちの有償Java 6開発キットへの最後の無償アップデート、番号43が入手可能であることを掲載したほんの数日後のことである。
+  </div>
+  <div>
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/43.py">NuoDBがスケーラブルなクラウドベースRDBをローンチ</a>NuoDBは先頃，クラウド対応のデータベース管理システムをリリースした。SQLクエリとACID(Atomic, Consistent, Isolated, Durable)トランザクションをサポートし，複数ノードへの拡張も容易だ。マルチサーバへのスケールアップは必要だが，リレーショナル操作の便利さとトランザクションの信頼性は失いたくない，という企業のために設計されたデータベースだ。
+  </div>
+  <div>
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/42.py">QCon New York 2013,50/100の講演者が確定 - NASA, Twitter，LinkedIn, Netflixから</a>第２回 QCon New York 2013 講演者の50名以上が確定した。QCon New Yorkはマンハッタンのすぐ外(ブルックリン橋近く)にあるニューヨーク・マリオットを会場として，2013年6月10～14日の日程で開催される。参加登録はすでに始まっていて，新たに決定した講演者やセッションが毎週，カンファレンスのサイトに掲載されている。現在は早期予約期間中で，３月15日までに登録すれば500ドルの割引が受けられる。
+  </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/41.py">Internet Explorer 10は幅広くFlashをサポートした</a>Microsoftは、Windows 8とWindows RTで実行されるIE10でFlashサポートを拡大することを発表した。このコンテンツは、現在デフォルトで有効になっており、Windows上のFlashのポジションが固まった。 
   </div> 

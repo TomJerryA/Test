@@ -2,10 +2,13 @@
  <head></head> 
  <body>
   <div>
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/4.java">DataStax Brings Enterprise Security To Cassandra, Hadoop, Solr</a>Datastax Enterprise 3.0 was announced last month with several Enterprise security features for a cluster using Cassandra, Hadoop and Solr. InfoQ caught up with Robin Schumacher, VP of Products at DataStax to learn more.
-  </div>
-  <div>
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/3.java">Windows Management Framework 3.0 with PowerShell 3.0, WMI, WinRM</a>Microsoft has recently released Windows Management Framework 3.0 which includes Windows PowerShell 3.0, WMI, WinRM including PowerShell Web Service and Server Manager CIM Provider.
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/5.java">Terracotta's BigMemory 4.0 and In-Genius Products Offer Real-time Insights From Big Data Sources</a>Terracotta’s BigMemory 4.0 and In-Genius products offer real-time analytics and insights from Big Data sources and integration with Hadoop. Terracotta recently announced the release of the new version of in-memory data platform BigMemory and In-Genius, an in-memory intelligence platform for Big Data.
+  </div> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/4.java">DataStax Brings Enterprise Security To Cassandra, Hadoop, Solr</a>Datastax Enterprise 3.0 was announced last month with several Enterprise security features for a cluster using Cassandra, Hadoop and Solr. InfoQ caught up with Robin Schumacher, VP of Products at DataStax to learn more. 
+  </div> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/3.java">Windows Management Framework 3.0 with PowerShell 3.0, WMI, WinRM</a>Microsoft has recently released Windows Management Framework 3.0 which includes Windows PowerShell 3.0, WMI, WinRM including PowerShell Web Service and Server Manager CIM Provider. 
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/2.java">PeerJS 0.1.7: A WebRTC Wrapper For P2P In The Browser</a>Michelle Bu and Eric Zhang announced the release of PeerJS 0.1.7 on March 6th as a wrapper around WebRTC, a W3C initiative meant to facilitate P2P communication in the browser. 
@@ -147,9 +150,6 @@
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/6.java">Eclipse RAP 2.0 Released - Same Acronym, Different Name</a>On January 11th, Eclipse RAP 2.0 was released, after 6 years of development. InfoQ talked to the project lead about the release. 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/5.java">How Swarming Helps Agile Teams to Deliver</a>Swarming is a technique that helps agile teams to deliver working software fast and frequently. What is swarming, what are the benefits of swarming, and when and how to apply it? 
-  </div>   
+  </div>  
  </body>
 </html>

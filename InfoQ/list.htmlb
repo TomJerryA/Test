@@ -1,8 +1,8 @@
 <html>
  <head></head> 
- <body>
-  <div>
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/21.htmlb">Apache Crunch：用于简化MapReduce编程的Java库</a>Josh Wills在本文中介绍了一个新的Apache孵化器项目Crunch，该项目是用于创建MapReduce流水线的Java库。Crunch建立在一组用于简化MapReduce应用设计的高层抽象之上，还提供了用于实现如连接数据、执行聚合和排序记录等常见任务的模式库。
+ <body> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/21.htmlb">Apache Crunch：用于简化MapReduce编程的Java库</a>Josh Wills在本文中介绍了一个新的Apache孵化器项目Crunch，该项目是用于创建MapReduce流水线的Java库。Crunch建立在一组用于简化MapReduce应用设计的高层抽象之上，还提供了用于实现如连接数据、执行聚合和排序记录等常见任务的模式库。 
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/20.htmlb">开发者需要了解的WebKit</a>Paul Irish是著名的前端开发工程师，同时他也是Chrome开发者关系团队成员。针对大家对WebKit的种种误解，他在自己的博客发表了《WebKit for Developers》一文，试图为大家解惑WebKit的同与不同。 
