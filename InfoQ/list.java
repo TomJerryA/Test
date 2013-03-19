@@ -1,6 +1,12 @@
 <html>
  <head></head> 
- <body> 
+ <body>
+  <div>
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/7.java">Java 8 Starting to Find Its Way into .Net/Mono</a>In last week’s development snapshot, IKVM added experimental support for static methods in interfaces and default interfaces methods. These Java 8 features are primarily to support the internal workings of Java libraries, they won’t be readily usable from other .NET languages.
+  </div>
+  <div>
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/6.java">GitSync for Plastic SCM Introduces Native Git Protocols and Visual Studio 2012 Support</a>GitSync for Plastic SCM has been released with support for native Git network protocols and Visual Studio 2012 support.
+  </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/5.java">Terracotta's BigMemory 4.0 and In-Genius Products Offer Real-time Insights From Big Data Sources</a>Terracotta’s BigMemory 4.0 and In-Genius products offer real-time analytics and insights from Big Data sources and integration with Hadoop. Terracotta recently announced the release of the new version of in-memory data platform BigMemory and In-Genius, an in-memory intelligence platform for Big Data. 
   </div> 
@@ -144,12 +150,6 @@
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/8.java">Casablanca's C++ SDK Whitelisted for Open Source</a>Microsoft's C++ REST SDK, codenamed Casablanca, has been open sourced under the Apache 2.0 license. Casablanca provides developers with a multiplatform way to write C++11 code that interacts with REST services. 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/7.java">Reactions to Yahoo!’s Decision to Forbid Employee Telecommuting</a>Yahoo!’s recent decision to call all employees to work from company’s offices has raised some questions especially throughout the telecommuting community. Is this a disguised move to lay off people? Is it a misunderstanding of how remoting is to be managed? Is this the right move for Yahoo!? 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/6.java">Eclipse RAP 2.0 Released - Same Acronym, Different Name</a>On January 11th, Eclipse RAP 2.0 was released, after 6 years of development. InfoQ talked to the project lead about the release. 
-  </div> 
+  </div>   
  </body>
 </html>
