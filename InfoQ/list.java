@@ -1,6 +1,9 @@
 <html>
  <head></head> 
- <body> 
+ <body>
+  <div>
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/9.java">PuppetLabs and Opscode Reveal How They Built Their Open Source Communities</a>Being nice to people and being explicit and transparent about how things are done are key ingredients for growing communities say both, Luke Kanies, CEO and founder of PuppetLabs, and Adam Jacob, co-founder of Opscode and creator of Chef. They both claim that you need to be genuine in the way you interact with your communities.
+  </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/8.java">GitSync for Plastic SCM with Native Git Protocols and Visual Studio 2012 Support</a>GitSync for Plastic SCM has been released with support for native Git network protocols and Visual Studio 2012 support. 
   </div> 
@@ -147,9 +150,6 @@
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/10.java">Windows Blue with New Kernel, Internet Explorer 11, Bing Integration, Updated Apps</a>Coming Summer will most likely witness the preview of Windows Blue which is being rumored as a major update to Windows 8. 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/9.java">Entity Framework 6 Alpha 3 with Code First Stored Procedures and Connection Resiliency</a>Microsoft has released Entity Framework 6 Alpha 3 with support for code first stored procedures, connection resiliency, pull request from iceclow and UnaiZorrilla. 
-  </div> 
+  </div>  
  </body>
 </html>

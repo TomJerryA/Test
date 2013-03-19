@@ -1,8 +1,8 @@
 <html>
  <head></head> 
- <body>
-  <div>
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/18.c">L&iacute;der de seguran&ccedil;a da Oracle promete corrigir falhas e melhorar a comunica&ccedil;&atilde;o</a>Logo ap&oacute;s uma s&eacute;rie de falhas graves de seguran&ccedil;a, o respons&aacute;vel pela seguran&ccedil;a do Java da Oracle, Milton Smith, est&aacute; atuando para que as falhas sejam corrigidas e para melhorar a comunica&ccedil;&atilde;o com membros da comunidade.
+ <body> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/18.c">L&iacute;der de seguran&ccedil;a da Oracle promete corrigir falhas e melhorar a comunica&ccedil;&atilde;o</a>Logo ap&oacute;s uma s&eacute;rie de falhas graves de seguran&ccedil;a, o respons&aacute;vel pela seguran&ccedil;a do Java da Oracle, Milton Smith, est&aacute; atuando para que as falhas sejam corrigidas e para melhorar a comunica&ccedil;&atilde;o com membros da comunidade. 
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/17.c">GitHub Boxen: Automa&ccedil;&atilde;o de Configura&ccedil;&atilde;o e Gerenciamento no Mac OS X</a>O GitHub abriu os fontes do Boxen, sua ferramenta para automa&ccedil;&atilde;o de configura&ccedil;&atilde;o de notebooks Mac ao qual pode ser convertida para tamb&eacute;m configurar equipamentos com Linux ou Windows. 
