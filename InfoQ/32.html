@@ -1,75 +1,35 @@
-<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>Spring Framework 4.0相关计划公布---包括对于Java SE 8 和Groovy2的支持</h3><p>VMware公司旗下的SpringSource团队近日宣布了Spring Framework 4.0的相关计划，这是Spring框架的下一个升级版本,新的特性包括了对Java SE 8，Groovy 2,Java EE 7部分功能和WebSockets的支持。在介绍Spring Framework 3.2版本的 <a href="http://www.youtube.com/watch?v=fb5YG2W1srA&amp;feature=youtu.be">webinar</a>结尾，曾更详细地讨论过这些计划。</p> 
-<p>计划的新特性和更新的全部清单如下：</p> 
+<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>从小型网站到超大规模网站的MySQL参考架构</h3><p>Oracle发布《<a href="http://www.mysql.com/why-mysql/white-papers/mysql-reference-architectures-for-scalable-web-infrastructure/">面向大规模可伸缩网站基础设施的MySQL参考架构</a>》白皮书，针对将MySQL用作数据存储的不同类型和不同规模的网站给出了推荐的拓扑结构。</p> 
+<p>根据分别提供4类服务——用户和会话管理、电子商务、分析类应用 (多结构数据)和CMS（元数据）——的网站的规模和可用性要求（如下表所示），这份白皮书给出了4个参考架构。</p> 
+<p><img src="http://www.infoq.com/resource/news/2013/03/MySQL-Reference-Architectures/zh/resources/1.png;jsessionid=2D9570BC1574EE32730A0A2B0E42C2E9" width="500" alt="" _href="img://null" _p="true" /></p> 
+<p>请注意，这里给出的指导方针只是基本建议，实际应用中需要根据读写模式、负载平衡和所用的缓存机制等因素进行调整。</p> 
+<p><b>小型（Small）网站参考架构</b></p> 
+<p>这一参考架构可用于上述4类网站的所有小型实现。可以使用MySQL Replication来制作数据的副本以支持备份和分析。</p> 
+<p><img src="http://www.infoq.com/resource/news/2013/03/MySQL-Reference-Architectures/zh/resources/2.png;jsessionid=2D9570BC1574EE32730A0A2B0E42C2E9" alt="" _href="img://null" _p="true" /></p> 
+<p><b>中型（Medium）网站参考架构</b></p> 
+<p>在这种情况下，推荐针对不同类型的活动选择独立的基础设施，考虑每个MySQL服务器最多支持8个应用服务器，如果因伸缩性需求应用服务器数量增加，则添加更多的MySQL从服务器。</p> 
+<p><img width="500px" src="http://www.infoq.com/resource/news/2013/03/MySQL-Reference-Architectures/zh/resources/3.png;jsessionid=2D9570BC1574EE32730A0A2B0E42C2E9" alt="" _href="img://null" _p="true" /></p> 
+<p>为满足会话管理网站和电子商务网站的高可用性要求，可以使用<a href="http://en.wikipedia.org/wiki/Linux-HA">Linux心跳（Heartbeat）</a>和半同步复制。CMS网站通常对读操作的向外扩展有更高要求，假定每个MySQL从服务器最多可以处理3000个并发用户，白皮书建议为每个MySQL主服务器添加20-30个从服务器。CMS系统可将数据保存在一个SAN中，或者保存在连接到该服务器的分布式设备中。</p> 
+<p>会话管理网站和CMS网站推荐使用Memcached，这有助于减轻应用服务器和MySQL服务器的负担。</p> 
+<p>分析类网站的拓扑结构简单一些，1个主服务器加3个从服务器就能解决问题。</p> 
+<p><b>大规模（Large）网站参考架构</b></p> 
+<p>针对大规模网站，白皮书推荐使用MySQL Geographic Replication来进行跨数据中心的数据库复制，这种方式支持跨越地理上分离的集群进行异步复制。</p> 
+<p><img src="http://www.infoq.com/resource/news/2013/03/MySQL-Reference-Architectures/zh/resources/4.png;jsessionid=2D9570BC1574EE32730A0A2B0E42C2E9" width="500" alt="" _href="img://null" _p="true" /></p> 
+<p>会话管理网站和电子商务网站应该使用集群，白皮书声称“4个数据节点，1秒可以支持6000个会话（页面点击），其中每次页面点击生成8–12个数据库操作”。大规模CMS网站使用的配置与中型网站类似，只是必要时需要多添加一些从服务器。针对分析类应用，这里引入了一个数据提炼（Data Refinery）单元，用于数据的清理和组织。</p> 
+<p><b>超大规模（Extra Large）网站参考架构</b></p> 
+<p>针对社交网站，白皮书也给出了相应建议。它声称“网络上流量最大的10个网站有9个部署了MySQL，其中包括Google、Facebook和YouTube”，但是没有说明这些网站用MySQL干什么，不过众所周知的是，LinkedIn成功应用了MySQL。</p> 
+<p>社交网站的拓扑结构利用了中型和大规模网站中实现的概念，包括专用应用服务器、Memcached和数据提炼单元, 但为支持写操作的向外扩展引入了分片（Shard）。MySQL集群被用于用户的认证和查找，当“用于查找的键（key）不止1个”时，直接读写相应的分片。</p> 
+<p><img src="http://www.infoq.com/resource/news/2013/03/MySQL-Reference-Architectures/zh/resources/5.png;jsessionid=2D9570BC1574EE32730A0A2B0E42C2E9" width="500" alt="" _href="img://null" _p="true" /></p> 
+<p>MySQL主服务器和从服务器的推荐规格如下：</p> 
 <ul> 
- <li> <p>基于Spring应用对Java SE 8的良好支持:</p> 
-  <ul> 
-   <li>支持Java SE 8的新的语言特性，比如lambda表达式；API方面比如JSR-310 Date和Time。</li> 
-  </ul> </li> 
- <li> <p>支持使用Groovy 2配置和实现Spring 风格应用:</p> 
-  <ul> 
-   <li>基于Groovy的bean定义；Groovy可以作为整个应用的可选语言。</li> 
-  </ul> </li> 
- <li> <p>支持Java EE 7中的关键技术:</p> 
-  <ul> 
-   <li>包括JMS 2.0，JPA 2.1，Bean Validation 1.1，Servlet 3.1和JCache</li> 
-  </ul> </li> 
- <li> <p>支持WebSocket风格的应用程序架构:</p> 
-  <ul> 
-   <li>支持符合JSR-356的运行时和相关技术</li> 
-  </ul> </li> 
- <li> <p>应用程序内部的细粒度事件处理和消息传送:</p> 
-  <ul> 
-   <li>基于现有的应用程序事件和消息监听器机制构建</li> 
-  </ul> </li> 
- <li> <p>裁剪功能和依赖升级:</p> 
-  <ul> 
-   <li>删除已弃用的功能，将最低依赖提升到Java 6+等</li> 
-  </ul> </li> 
+ <li>8–16个x86-64位CPU核心（MySQL 5.5及以上)。</li> 
+ <li>4–8个x86 -64位CPU核心（MySQL 5.1及更早版本）。</li> 
+ <li>比活动数据多3–10倍的内存。</li> 
+ <li>Linux、Solaris或Windows操作系统。</li> 
+ <li>最少4块磁盘，8–16块磁盘能增加I/O密集型应用的性能。</li> 
+ <li>支持电池供电高速缓存的硬件RAID。</li> 
+ <li>推荐使用RAID 10。如果负载为读密集型，RAID 5也是合适的。</li> 
+ <li>2个网卡和2个供电单元用作冗余。</li> 
 </ul> 
-<p>InfoQ采访了Spring框架联合创始人Juergen Hoeller，以了解计划的更多详情。<br /> <br /> <strong>InfoQ: 能否给我们介绍下，在Spring中， Lambda表达式会在哪些方面带来帮助；我想JMS中的回调编程模型是否就是其中的一种应用场景?</strong></p> 
-<blockquote> 
- <p>“实际上，所有的Spring模板类（如JmsTemplate，JdbcTemplate，TransactionTemplate）多年来一直使用基于回调的编程风格，这正好是lambda表达式发挥所长之处，伴随着那些已经建立的回调接口，更多使用Java 8 lambda表达式的原生功能接口可供使用。我们也希望在异步编程模型中能采用强大的lambda表达式，如fork-join任务和异步web请求的处理，针对这些我们在Spring 3.x版本中已经完成了大量的基础工作。我们的目标是当用户结合Spring4的API使用Java 8的语言特性时，能得到非常平滑和自然的体验。”　<br /> </p> 
-</blockquote> 
-<p><strong>InfoQ: JMS 2.0将会给Spring带来多大的影响？</strong></p> 
-<p>&nbsp;</p> 
-<blockquote> 
- <p>“我们很高兴看到在JMS 1.1发布超过10年后JMS规范发布了修订版本。然而，新规范的内容除了紧跟时代的步伐外，并没有太多的改变。我们正打算在JmsTemplate中支持新的发送选项（延迟传递，异步发送），并允许使用新的JMSContext Client API作为替代Spring的 JmsTemplate的可选方案。所以JMS 2.0本身不会给架构带来多大的影响；它将从根本上促使我们重新审视JMS在各种基于Spring架构的应用中的作用。因此，任何在Spring中对JMS的进一步支持将继续兼容JMS 1.1。”</p> 
-</blockquote> 
-<p><strong>InfoQ: 与JMS较为相关的这类WebSocket应用将通过JSR-356得到支持。对此你们的计划是怎么样的？</strong></p> 
-<blockquote> 
- <p>&nbsp;“我们研究WebSocket在业界的使用已有一段时间了，对即将出台的JSR-356规范及其相关的技术都十分感兴趣，包括针对主流Servlet容器和在最小化服务器配置的嵌入式HTTP端点中的部署。我们的目标是以虔诚的态度为Spring编程模型提供一个简单直接的扩展，从而暴露（exposing ）Websocket风格的端点（endpoints），理想状态下，将和我们对基于Spring应用中消息端点的支持计划同步。我们将保持注重实效，我们很想在2013年的基础架构中，能提供让Spring使用者感到实用的面向WebSocket的功能。”</p> 
-</blockquote> 
-<p><strong>InfoQ: 计划中明确提到的新的Java Date和Time的API。你能否举例说明它们将在哪里得到支持？</strong></p> 
-<blockquote> 
- <p>“Spring Framework 3.0中引入了更多使用JodaTime类库来对日期进行绑定和渲染的支持。JSR-310本质上是JodaTime的标准化版本，即使它们在设计上有少许不同。我们将优先支持JSR-310中的值类型，这可以通过Spring的@DateTimeFormat和相关的转化功能得到实现，并建议在应用领域模型的核心中使用它们。”</p> 
-</blockquote> 
-<p><strong>InfoQ: 我留意到你们在Groovy上花了不少功夫。你有没有发现Groovy 2.0在大规模开发中已成为了Java以外的另一种可选项，它在性能上是否足够优秀，能举例说明么？</strong></p> 
-<blockquote> 
- <p>&nbsp;“这是一个关键的问题，我们也正在探索这个问题的答案。我们在Spring 4.0核心框架中对Groovy提供了更为强大的支持，从而看到了更多的可能性：基于Groovy的bean定义(又称Grails BeanBuilder)，下一代的脚本支持，以及使用Groovy 2中的静态编译模式作为基于Spring的应用的主要实现语言。当使用静态编译模式时，Groovy的性能是相当好的，而且今后会变得更好。”</p> 
-</blockquote> 
-<p><strong>InfoQ: 相比于Java，你觉得Groovy中的哪些特性更适合开发Spring应用？</strong></p> 
-<blockquote> 
- <p>“恩，Groovy在很多方面跟Java是很接近的，并且与Java具有天然的互操作性。对于Spring来说，最重要的是Groovy对Java的注解具有强有力的支持，并且支持使用闭包作为Java API的方法参数。对于Java的使用者来说，Groovy是十分容易掌握的。除此之外，Groovy显然有很多很好的小众语言的特性，它们可以让你选择性地或甚至全部采用，但同时又不放弃传统Java语言的语义特性。大家可以通过实际查看<a href="http://groovy.codehaus.org/groovy%2b2.1%2brelease%2bnotes?nc">Groovy 2.1的最新特性</a>去体会下。”</p> 
-</blockquote> 
-<p><strong>InfoQ: 你是否是更认同Groovy？</strong></p> 
-<blockquote> 
- <p>“不，绝对不是。我们正全力拥抱Java ，特别是以Java 8的语言风格——但与此同时，我们也对其他语言持开放态度。我们不仅关注Groovy，也关注Scala和其他语言。只不过，对于核心的Spring用户来说，Groovy自有其优势（sweet spot），我们一定会在Java 8中喜欢上Groovy。个人认为，我们对多种语言的研究正在同时进行，这是十分好的事情，而Spring终将会从其间受益良多。”</p> 
-</blockquote> 
-<p><strong>InfoQ: 对于JCache的支持，你们的计划是怎么样的？我知道早在Spring 3.2中已经对其提供了支持，但在Jave EE 7中，你们对JCache的改变有什么预期？</strong></p> 
-<blockquote> 
- <p>“一旦JCache的规范最终发布，我们将确定支持所有JCache针对CacheManager设置而提供选项，包括事务和分布式变体（variants）。我们也打算支持JCache中的缓存注解，作为除Spring原有缓存注解以外的可选方案，并适当的在 Spring Framework中做到开箱即用。同时，我们将重新投入到对EHCache的原生支持，确保其跟JCache得到同一级别的支持，并对最近发布的EHCache 2.5以上的新特性进行同步。Spring Framework &nbsp;4是一个让我们同步常用第三方类库新特性以及对运行时要求更新版本的好机会。”</p> 
-</blockquote> 
-<p><strong>InfoQ: 既然你提到最低的依赖环境是Java EE 6，那么是否意味着，企业如果使用旧版本的应用服务器，如只支持Jave EE 5的WebLogic 10,WebSphere 7，将不能使用这些新的特性？</strong></p> 
-<blockquote> 
- <p>“Spring Framework 4.0 计划的一个重要部分，是根据最新的Java SE和Jave EE去定制框架，所以我们的基线将会是Jave SE 6及Jave EE 6以上。然而，我们也尽量通过使用Jave EE 6特性包，比如Websphere 7的IBM JPA 2.0特性包，或者WebLogic 10.3.4的JPA 2.0特性包，以对这些Jave EE 5的中间件服务器做出妥协，这样就能在它们上面很好地运行Spring Framework 4.0。从技术上说，这意味着尽管最近Spring在web方面的支持已经朝Servlet 3.0方向强势迈进，但我们将在运行时继续对Servlet 2.5保持兼容，。无论如何，Spring将依然保持着原来的使命，那就是将各种新的编程模型的特性带到已有的运行平台中去，在Spring 4.0中依然是这样的。”</p> 
-</blockquote> 
-<p><strong>InfoQ: 去年看上去，至少是外界看来，对SpringSource来说是个多事之秋，比如Rod的离开和VMWare决定将SpringSource分离出来成立一家独立的公司。在业界好像有一种暗示，认为Spring框架某种程度上“已经结束”，你怎样回应这种议论？</strong></p> 
-<blockquote> 
- <p>“Spring的开源团队依然稳定，熟悉的面孔都依旧各司其职。像我本人，实际上正在庆祝自己作为Spring Framework开源项目负责人的10周年。 Spring Framework 4.0正通过建立新一代的框架来庆祝自己的10周岁生日，并为未来打造好了一个全新的基础。尽管核心编程模型的改变已不再具有颠覆性，但我们根本没有结束，类似于Java EE 7相比Jave EE 6那样。在Spring 4.0 GA发布后，还将会有其他一系列基于Spring Framework 4.0框架的其他项目陆续发布。”</p> 
-</blockquote> 
-<p>Spring Framework 4.0的第一个里程碑版本预期将在今年4月末发布。而GA版本则计划于今年年底发布。</p> 
-<p><strong>原文链接：</strong><a href="http://www.infoq.com/news/2013/01/spring4;jsessionid=C3D6E6F38BBF5CED1CE6D46F76B63C28">Plans for Spring Framework 4.0 Announced - Includes Support for Java SE 8 and Groovy 2</a></p> 
-<hr /> 
-<p>感谢<a href="http://www.infoq.com/cn/bycategory.action;jsessionid=C3D6E6F38BBF5CED1CE6D46F76B63C28?authorName=赵震一">赵震一</a>对本文的审校。</p> 
-<p>给InfoQ中文站投稿或者参与内容翻译工作，请邮件至<a href="mailto:editors@cn.infoq.com">editors@cn.infoq.com</a>。也欢迎大家通过新浪微博（<a href="http://www.weibo.com/infoqchina">@InfoQ</a>）或者腾讯微博（<a href="http://t.qq.com/infoqchina">@InfoQ</a>）关注我们，并与我们的编辑和其他读者朋友交流。</p> 
-<p id="lastElm"></p></body></html>
+<p>另外，白皮书还有一些针对MySQL集群和数据存储设备的建议，再就是用于监控、备份和集群管理的解决方案。</p> 
+<p><b>查看英文原文</b>：<b><a href="http://www.infoq.com/news/2013/03/MySQL-Reference-Architectures;jsessionid=2D9570BC1574EE32730A0A2B0E42C2E9">MySQL Reference Architectures for Small to Extra Large Websites</a></b></p> 
+<p id="lastElm"></p><br><br><br><br><br><br></body></html>

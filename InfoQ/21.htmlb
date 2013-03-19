@@ -1,0 +1,48 @@
+<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>Apache Crunch：用于简化MapReduce编程的Java库</h3><p><a href="http://incubator.apache.org/crunch/">Apache Crunch（孵化器项目）</a>是基于Google的<a href="http://dl.acm.org/citation.cfm?id=1806638">FlumeJava</a>库编写的Java库，用于创建MapReduce流水线。与其他用来创建MapReduce作业的高层工具（如Apache Hive、Apache Pig和Cascading等）类似，Crunch提供了用于实现如连接数据、执行聚合和排序记录等常见任务的模式库。而与其他工具不同的是，Crunch并不强制所有输入遵循同一数据类型。相反，Crunch使用了一种定制的类型系统，非常灵活，能够直接处理复杂数据类型，如时间序列、HDF5文件、Apache HBase表和序列化对象（像protocol buffer或<a href="http://avro.apache.org/">Avro</a>记录）等。</p><p>Crunch并不想阻止开发者以MapReduce方式思考，而是尝试使之简化。尽管MapReduce有诸多优点，但对很多问题而言，并非正确的抽象级别：大部分有意思的计算都是由多个MapReduce作业组成的，情况往往是这样——出于性能考虑，我们需要将逻辑上独立的操作（如数据过滤、数据投影和数据变换）组合为一个物理上的MapReduce作业。</p><p>本质上，Crunch设计为MapReduce之上的一个薄层，希望在不牺牲MapReduce力量（或者说不影响开发者使用MapReduce API）的前提下，更容易在正确的抽象级别解决手头问题。</p><p>尽管Crunch会让人想起历史悠久的Cascading API，但是它们各自的数据模型有很大不同：按照常识简单总结一下，可以认为把问题看做数据流的人会偏爱Crunch和Pig，而考虑SQL风格连接的人会偏爱Cascading和Hive。</p><p><strong>Crunch的理念</strong></p><p>PCollection
+ <t>
+  和PTable&lt;K, V&gt;是Crunch的核心抽象，前者代表一个分布式、不可变的对象集合，后者是Pcollection的一个子接口，其中包含了处理键值对的额外方法。这两个核心类支持如下四个基本操作：
+ </t></p><ol> 
+ <li>
+  <t>
+   parallelDo：将用户定义函数应用于给定PCollection，返回一个新的PCollection作为结果。
+  </t></li> 
+ <li>
+  <t></t>groupByKey：将一个PTable中的元素按照键值排序并分组（等同于MapReduce作业中的shuffle阶段）</li> 
+ <li>combineValues：执行一个关联操作来聚合来自groupByKey操作的值。</li> 
+ <li>union：将两个或多个Pcollection看做一个虚拟的PCollection。</li> 
+</ol><p>Crunch的所有高阶操作（joins、cogroups和set operations等）都是通过这些基本原语实现的。Crunch的作业计划器（job planner）接收流水线开发者定义的操作图，将操作分解为一系列相关的MapReduce作业，然后在Hadoop集群上执行。Crunch也支持内存执行引擎，可用于本地数据上流水线的测试与调试。</p><p>有些问题可以从能够操作定制数据类型的大量用户定义函数受益，而Crunch就是为这种问题设计的。Crunch中的用户定义函数设计为轻量级的，为满足应用程序的需要，仍然提供了完整的访问底层MapReduce API的功能。Crunch开发者也可以使用Crunch原语来定义API，为客户提供涉及一系列复杂MapReduce作业的高级ETL、机器学习和科学计算功能。</p><p><strong>Crunch起步</strong></p><p>可以从<a href="http://incubator.apache.org/crunch/download.html">Crunch的网站</a>下载最新版本的源代码或二进制文件，或者使用在Maven Central发布的<a href="http://repo1.maven.org/maven2/org/apache/crunch/crunch/">dependencies</a>。</p><p>源代码中有很多示例应用。下面是Crunch中WordCount应用的源代码：</p><pre>
+import org.apache.crunch.DoFn;
+import org.apache.crunch.Emitter;
+import org.apache.crunch.PCollection;
+import org.apache.crunch.PTable;
+import org.apache.crunch.Pair;
+import org.apache.crunch.Pipeline;
+import org.apache.crunch.impl.mr.MRPipeline;
+import org.apache.crunch.type.writable.Writables;
+
+public class WordCount {
+  public static void main(String[] args) throws Exception {
+    // Create an object to coordinate pipeline creation and execution.
+    Pipeline pipeline = new MRPipeline(WordCount.class);
+    // Reference a given text file as a collection of Strings.
+    PCollection&lt;String&gt; lines = pipeline.readTextFile(args[0]);
+
+    // Define a function that splits each line in a PCollection of Strings into a
+    // PCollection made up of the individual words in the file.
+    PCollection&lt;String&gt; words = lines.parallelDo(new DoFn&lt;String, String&gt;() {
+      public void process(String line, Emitter&lt;String&gt; emitter) {
+	for (String word : line.split(&quot;\\s+&quot;)) {
+	&nbsp; emitter.emit(word);
+	}
+      }
+    }, Writables.strings()); // Indicates the serialization format
+
+    // The count method applies a series of Crunch primitives and returns
+    // a map of the top 20 unique words in the input PCollection to their counts.
+    // We then read the results of the MapReduce jobs that performed the
+    // computations into the client and write them to stdout.
+     for (Pair&lt;String, Long&gt; wordCount : words.count().top(20).materialize()) {
+      System.out.println(wordCount);
+     }
+   }
+}</pre><p><strong>Crunch优化方案</strong></p><p>Crunch优化器的目标是尽可能减少运行的MapReduce作业数。大多数MapReduce作业都是 IO密集型的，因此访问数据的次数越少越好。公平地说，每种优化器（Hive、Pig、Cascading和Crunch）的工作方式本质上是相同的。但与其他框架不同的是，Crunch把优化器原语暴露给了客户开发人员，对于像构造ETL流水线或构建并评估一组随机森林模型这样的任务而言，构造可复用的高阶操作更容易。</p><p><strong>结论</strong></p><p>Crunch目前仍处于Apache的孵化器阶段，我们非常欢迎社区贡献（<a href="http://incubator.apache.org/projects/crunch.html">参见项目主页</a>）让这个库更好。特别的是，我们正在寻求更高效的MapReduce编译思想（包括基于成本考虑的优化）、新的MapReduce设计模式，还希望支持更多的数据源和目标，如HCatalog、Solr和ElasticSearch等。还有很多把Crunch带向如<a href="http://incubator.apache.org/crunch/scrunch.html">Scala</a>和<a href="https://github.com/viacoban/crackle">Clojure</a>等其他JVM语言的项目，也有很多使用Crunch<a href="https://github.com/dlyubimov/crunchR">以R语言来创建MapReduce流水线</a>的工具。</p><p><strong>关于作者</strong></p><p><img src="http://www.infoq.com/resource/articles/ApacheCrunch/zh/resources/Josh_Wills.jpg;jsessionid=638E7F98C5F7ECA27DF7BA99F9BCE5BC" alt="" _href="img://Josh_Wills.jpg" _p="true" />Josh Wills是Cloudera的数据科学主管，主要负责与客户和工程师一起基于Hadoop为不同行业开发解决方案。他从杜克大学获得数学专业学士学位，又从得克萨斯大学奥斯汀分校获得运筹学专业硕士学位。</p><p><strong>查看英文原文：</strong><a href="http://www.infoq.com/articles/ApacheCrunch;jsessionid=638E7F98C5F7ECA27DF7BA99F9BCE5BC">Apache Crunch: A Java Library for Easier MapReduce Programming</a></p><div class="clearer-space"></div><br><br><br><br><br><br></body></html>

@@ -1,6 +1,9 @@
 <html>
  <head></head> 
- <body> 
+ <body>
+  <div>
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/15.javab">Queues – the true enemy of flow</a>Most project management offices measure activity to control delivery times. This article argues that tracking and quantifying queues is a better way to improve cycle time reduction and predictability.
+  </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/14.javab">Interview and Book Excerpt: Mastering the Requirements Process</a>Suzanne and James Robertson have released the 3rd edition of their book Mastering the Requirements Process. This edition includes material focused on requirements in agile projects and outsourcing. 
   </div> 

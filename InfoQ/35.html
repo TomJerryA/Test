@@ -1,29 +1,75 @@
-<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>移动开发那些事儿：半数开发者已经在项目中使用了HTML5</h3><p>以下是上周在移动开发领域值得关注的技术热点：</p> 
-<h2>工具</h2> 
+<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>Spring for Apache Hadoop 1.0发布</h3><p>SpringSource发布了<a href="http://www.springsource.org/spring-data/hadoop">Spring for Apache Hadoop 1.0</a>。开发者能够通过它编写基于Spring Framework的Hadoop应用，还能很容易地与Spring Batch和Spring Integration集成。Spring for Apache Hadoop是Spring Data大型项目的一个子项目，它基于开源的Apache 2.0许可发布。</p> 
+<p>Hadoop应用通常是一个命令行工具、脚本和代码的集合。Spring for Apache Hadoop为Hadoop应用开发提供了一个一致性的编程模型和声明式配置模型。开发人员现在能够借助它使用Spring编程模型（依赖注入、POJO和辅助模板）实现Hadoop应用，并且能够以标准的Java应用而不是命令行工具的方式运行它。Spring for Apache Hadoop支持对HDFS的读写操作，支持运行MapReduce、流或者级联工作，还能够与HBase、Hive和Pig交互。</p> 
+<p>Spring for Apache Hadoop包含以下关键特性：</p> 
 <ul> 
- <li><a href="http://phonegap.com/blog/2013/02/28/pg-250-released/">PhoneGap 2.5.0发布了</a>。GitHub上公布了本次版本的<a href="https://github.com/phonegap/phonegap/blob/2.5.0/changelog">更新细节</a>。概括来说，本次更新跟2.4.0版本一样，主要集中在修复bug的工作上。</li> 
- <li><a href="http://iosdevelopertips.com/">iOSDeveloperTips</a>介绍的几个开源工具： 
-  <ul> 
-   <li><a href="http://iosdevelopertips.com/open-source/ios-open-source-visual-testing-framework.html">Visual Testing Framework</a>（<a href="https://github.com/playup/zucchini">GitHub主页</a>），用于协助开发者对其应用的用户交互界面进行可视化测试。屏幕通过CoffeeScript脚本描述，输出格式则为与UIAutomation兼容的Javascript。</li> 
-   <li><a href="http://iosdevelopertips.com/open-source/ios-open-source-custom-folding-and-flipping-transitions.html">MPFoldTransition</a>（<a href="https://github.com/mpospese/MPFoldTransition">GitHub主页</a>），提供了一系列可定制化的渐变效果，包括折叠效果和翻转效果，开发者可以自定义折叠等动作的方向和模式（如纸张效果或者3D立体效果）。</li> 
-   <li><a href="http://iosdevelopertips.com/open-source/ios-open-source-circle-menu.html">KYCircleMenu</a>（<a href="https://github.com/Kjuly/KYCircleMenu">GitHub主页</a>），圆圈式的菜单显示，一个圆圈式菜单可以容纳1~6个菜单项。</li> 
-  </ul> </li> 
- <li>Designmodo上推荐了<a href="http://designmodo.com/responsive-css-grid-frameworks/">一系列响应式CSS框架</a>，如Skeleton，320 and Up，Base，Gumby，Wirefy等。</li> 
- <li><a href="http://lldb.llvm.org/">The LLDB Debugger</a>，号称下一代高性能调试器。目前，LLDB已经是XCode内置的默认调试器。</li> 
+ <li>支持声明式配置，能够创建、配置和参数化Hadoop连接，支持MapReduce、流、Hive、Pig和级联工作。有不同的“runner”类执行不同的Hadoop交互类型，它们分别是JobRunner、ToolRunner、 JarRunner、 HiveRunner、 PigRunner、CascadeRunner和HdfsScriptRunner。</li> 
+ <li>全面的HDFS数据访问支持，可以使用所有基于JVM的脚本语言，例如Groovy、JRuby、Jython和Rhino。</li> 
+ <li>支持 Pig和Hive的模板类PigTemplate和HiveTemplate。这些辅助类提供了异常转化、资源管理和轻量级对象映射功能。</li> 
+ <li>支持对HBase的声明式配置，同时为Dao层支持引入了HBaseTemplate。</li> 
+ <li>声明和编程支持Hadoop工具，包括文件系统Shell（FsShell）和分布式复制（DistCp）。</li> 
+ <li>安全支持。Spring for Apache Hadoop清楚运行Hadoop环境的安全约束，因此能够透明地从一个本地开发环境迁移到一个完全Kerberos安全的Hadoop集群。</li> 
+ <li>支持Spring Batch。通过Spring Batch，多个步骤能够被调整为有状态的方式并使用REST API进行管理。例如，Spring Batch处理大文件的能力就可以被用于向HDFS导入或者从HDFS导出文件。</li> 
+ <li>支持Spring Integration。Spring Integration允许对那些在被读取并写入HDFS及其他存储之前能够被转换或者过滤的事件流进行处理。</li> 
 </ul> 
-<h2>技巧</h2> 
-<ul> 
- <li>ITEye上的一篇文章总结了<a href="http://www.iteye.com/topic/1129263">Android项目快速开发的开发框架：MySQL+OrmLite+Hessian+SQLite</a>。作者使用hessian来做数据传输，ormlite来实现客户端与服务端的数据存储，极大的减少了CRUD工作。目前这一组合尚处于探索期，未用于大型项目上。</li> 
- <li>iOSDeveloperTips上的一篇文章介绍了<a href="http://iosdevelopertips.com/core-services/ios-and-json-part-1-serialize-objects-to-json.html">如何将对象序列化到JSON</a>。主要思路是：创建一个包含键值对的字典对象，将一个阵列的对象添加到这个字典里，然后使用NSJSONSerialization对象将这个字典序列化做JSON。</li> 
- <li>Xtreme Labs上的一篇文章介绍并对比了<a href="http://tech.xtremelabs.com/ios-json-parser-comparison/">不同的iOS JSON解析器</a>，包括：<a href="http://lloyd.github.com/yajl/">YAJL</a>，<a href="https://github.com/TouchCode/TouchJSON#readme">Touch JSON</a>，<a href="http://stig.github.com/json-framework/">SBJson</a>，以及原生的<a href="http://developer.apple.com/library/ios/#documentation/Foundation/Reference/NSJSONSerialization_Class/Reference/Reference.html">JSON解析库</a>。</li> 
- <li>SegmentFault的Gaosboy发布了一篇文章，<a href="http://www.infoq.com/cn/articles/afn_vs_asi;jsessionid=CEF17A89915DDBFEBC2810A5719C7B57">详细对比了AFNetworking和ASIHTTPRequest这两个iOS网络组件</a>。通过对比，基本可以这样评价：AFN适合逻辑简单的应用，或者更适合开发资源尚不丰富的团队，因为AFN的易用性要比ASI好很多，而这样的应用（或团队）对底层网络控件的定制化要求也非常低。ASI更适合已经发展了一段时间的应用，或者开发资源相对丰富的团队，因为往往这些团队（或他们的应用）已经积累了一定的经验，无论是产品上还是技术上的。</li> 
- <li>有关性能优化的哲学层面的讨论：<a href="http://blogs.msdn.com/b/oldnewthing/archive/2013/02/26/10396960.aspx">应用优化是否允许以牺牲可靠性作为代价？</a>当你的开发团队为了让应用更快一点而砍掉了所有的同步行为，似乎有些事情就不对劲了。</li> 
- <li><a href="http://www.summa-tech.com/blog/2013/02/26/the-evils-of-getters-and-setters/">Getters与Setters之恶</a>。“我之所以认为getters和setters是邪恶的，那是因为开发者在使用他们的时候完全没考虑数据的行为。”</li> 
-</ul> 
-<h2>杂货</h2> 
-<ul> 
- <li>Mobile Marketing Universe上对<a href="http://www.mobilemarketinguniverse.com/first-day-report-from-mwc/">今年的MWC大会进行了相当详细的报道</a>。概括来说：Windows Phone得到很多关注，Firefox OS也在设备商中流行，可以预见的是，多操作系统会成为趋势。一些新的机型发布。企业级移动领域，开始讨论MEAP（移动企业应用平台），不过看起来目前只是一个新的热词而已，无非是基于遗留平台、Web和HTML5的打包解决方案。</li> 
- <li>NFC有什么可以应用的方向？<a href="http://www.cnet.com/8301-17918_1-57568998-85/6-things-i-want-to-do-with-nfc-smartphones-unlocked/">CNET的编辑J-Do的一篇文章提出了六个可行的方向</a>： 在不同的设备之间传输照片和视频；控制汽车；取代银行卡操作ATM机；逛商场助手；签到；不同厂商统一NFC的使用标准，降低门槛。</li> 
- <li>HTML5的应用状态到底如何？<a href="http://venturebeat.com/2013/02/26/5000-developers-say-html5-is-real-its-now-and-yeah-its-also-the-future/">Kendo UI的一个调查问卷表示半数开发者已经在使用HTML5</a>，还有90%有意在2013年使用HTML5技术，仅有15%开发者仍选择仅开发原生应用。</li> 
-</ul> 
-<p id="lastElm"></p></body></html>
+<p>下面是配置示例和代码片段，大部分来自于Spring for Hadoop博客或者参考手册。</p> 
+<p>MapReduce</p> 
+<pre>
+&lt;!-- use the default configuration --&gt;
+&lt;hdp:configuration /&gt;
+&lt;!-- create the job --&gt;
+&lt;hdp:job id=&quot;word-count&quot; 
+    input-path=&quot;/input/&quot; output-path=&quot;/ouput/&quot;
+    mapper=&quot;org.apache.hadoop.examples.WordCount.TokenizerMapper&quot;
+    reducer=&quot;org.apache.hadoop.examples.WordCount.IntSumReducer&quot; /&gt;
+&lt;!-- run the job --&gt;
+&lt;hdp:job-runner id=&quot;word-count-runner&quot; pre-action=&quot;cleanup-script&quot; post-action=&quot;export-results&quot; job=&quot;word-count&quot; run-at-startup=&quot;true&quot; /&gt;
+</pre> 
+<p>HDFS</p> 
+<pre>
+&lt;!-- copy a file using Rhino --&gt;
+&lt;hdp:script id=&quot;inlined-js&quot; language=&quot;javascript&quot; run-at-startup=&quot;true&quot;&gt;
+    importPackage(java.util)
+
+    name = UUID.randomUUID().toString()
+    scriptName = &quot;src/main/resources/hadoop.properties&quot;
+    // fs - FileSystem instance based on 'hadoopConfiguration' bean
+    fs.copyFromLocalFile(scriptName, name)
+&lt;/hdp:script&gt;
+</pre> 
+<p>HBase</p> 
+<pre>
+&lt;!-- use default HBase configuration --&gt;
+&lt;hdp:hbase-configuration /&gt;
+
+&lt;!-- wire hbase configuration --&gt;
+&lt;bean id=&quot;hbaseTemplate&quot; class=&quot;org.springframework.data.hadoop.hbase.HbaseTemplate&quot; p:configuration-ref=&quot;hbaseConfiguration&quot; /&gt;
+// read each row from HBaseTable (Java)
+List rows = template.find(&quot;HBaseTable&quot;, &quot;HBaseColumn&quot;, new RowMapper() {
+    @Override
+    public String mapRow(Result result, int rowNum) throws Exception {
+        return result.toString();
+    }
+}));
+</pre> 
+<p>Hive</p> 
+<pre>
+&lt;!-- configure data source --&gt;
+&lt;bean id=&quot;hive-driver&quot; class=&quot;org.apache.hadoop.hive.jdbc.HiveDriver&quot; /&gt;
+&lt;bean id=&quot;hive-ds&quot; class=&quot;org.springframework.jdbc.datasource.SimpleDriverDataSource&quot; c:driver-ref=&quot;hive-driver&quot; c:url=&quot;${hive.url}&quot; /&gt;
+
+&lt;!-- configure standard JdbcTemplate declaration --&gt;
+&lt;bean id=&quot;hiveTemplate&quot; class=&quot;org.springframework.jdbc.core.JdbcTemplate&quot; c:data-source-ref=&quot;hive-ds&quot;/&gt;
+</pre> 
+<p>Pig</p> 
+<pre>
+&lt;!-- run an external pig script --&gt;
+&lt;hdp:pig-runner id=&quot;pigRunner&quot; run-at-startup=&quot;true&quot;&gt;
+    &lt;hdp:script location=&quot;pig-scripts/script.pig&quot;/&gt;
+&lt;/hdp:pig-runner&gt;
+</pre> 
+<p>&nbsp;</p> 
+<p>如果想要开始，可以<a href="http://www.springsource.com/download/community?project=Spring%20Data%20Hadoop">下载Spring for Apache Hadoop</a>或者使用<i>org.springframework.data:spring-data-hadoop:1.0.0.RELEASE</i>&nbsp; Maven构件。还可以获取Spring for Hadoop的<a href="http://static.springsource.org/spring-hadoop/docs/current/reference/html/batch-wordcount.html">WordCount示例</a>。在YouTube上还有<a href="http://www.youtube.com/watch?v=wlTnBzQ6KDU">介绍Spring Hadoop</a>的网络会议。</p> 
+<p>Spring for Apache Hadoop需要JDK 6.0及以上版本、Spring Framework 3.0及以上版本（推荐使用3.2）和Apache Hadoop 0.20.2 （推荐1.0.4）。现在并不支持Hadoop YARN、NextGen或 2.x。支持所有的Apache Hadoop 1.0.x分布式组件，这些分布式组件包括vanilla Apache Hadoop、Cloudera CDH3、CDH4和Greenplum HD等。</p> 
+<p>想要获取更深入的信息，你可以阅读<a href="http://static.springsource.org/spring-hadoop/docs/1.0.0.RELEASE/reference/html/">Spring for Apache Hadoop </a><u>参考手册</u> 和 <a href="http://static.springsource.org/spring-hadoop/docs/current/api/">Javadoc</a>。Spring for Apache Hadoop 的<a href="https://github.com/SpringSource/spring-hadoop">源代码</a>和<a href="https://github.com/SpringSource/spring-hadoop-samples/">示例</a>托管在GitHub上。</p> 
+<p><b>查看英文原文</b>：<a href="http://www.infoq.com/news/2013/03/spring-for-apache-hadoop-1.0;jsessionid=192D5F6F9355976676DA63A055560263"><b>Spring for Apache Hadoop 1.0</b></a></p> 
+<p id="lastElm"></p><br><br><br><br><br><br></body></html>

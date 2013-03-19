@@ -1,13 +1,8 @@
-<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>微软开源C++ REST SDK——Casablanca</h3><p>微软的代号为<a href="http://casablanca.codeplex.com/">Casablanca</a>的C++ REST SDK已经基于Apache许可证开源。它被描述为“微软为了以原生代码支持基于云的客户端/服务器通信所做的努力，采用了现代异步C++ API设计”。该产品使用C++11实现，微软希望提供一种更简单的编写客户端HTTP代码的方法。</p> 
-<p>Casablanca支持多个平台，除了Windows 7、Windows 8之外还支持Linux。微软的开发人员Artur Laksberg提到，对WinXP和Vista的支持正在开发之中。该产品的另一个亮点是支持异步操作。微软在<a href="http://blogs.msdn.com/b/vcblog/archive/2013/02/26/the-c-rest-sdk-quot-casablanca-quot.aspx">公布</a>时提供了一些例子来说明Casablanca的使用，一个是通过HTTP上传文件，一个是JSON对象的创建。</p> 
-<p>Windows和Linux上的构建版本都支持以下特性：</p> 
-<ul> 
- <li>能够通过HTTP客户端创建到服务器的连接，并能发送请求和处理响应。</li> 
- <li>支持URI的构建与使用。</li> 
- <li>能够构建、解析和序列化JSON值。</li> 
- <li>可以通过流（Stream）和流缓冲（Stream Buffer）对底层介质进行异步的数据读写。</li> 
-</ul> 
-<p>Casablanca中有几种不同的流和流缓冲可供使用：基于内存的生产者/消费者、文件、可以配合STL容器使用的基于内存的流、裸指针流和互操作流。互操作流使得“Casablanca能够提供两组类，一组使用异步流到iostream的接口，另一组使用iostream到异步流的接口”。</p> 
-<p><a href="http://casablanca.codeplex.com/wikipage?title=Linux%20Features&amp;referringTitle=Documentation">Linux HTTP客户端</a>还有些限制，因为它尚不支持HTTPS、代理和认证，但微软介绍说这些特性会包含在未来的版本中。<a href="http://casablanca.codeplex.com/SourceControl/changeset/view/8737b35e9171#readme.txt">Casablanca的源代码</a>放在了CodePlex上，可以在线查看或通过Git获取，还可以以Zip包形式下载最新的快照版本。</p> 
-<p><strong>查看英文原文：</strong><a href="http://www.infoq.com/news/2013/03/casablanca;jsessionid=A4ED76788C711E339CD881E569BDE3C1">Casablanca's C++ SDK Whitelisted for Open Source</a></p> 
-<p id="lastElm"></p></body></html>
+<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>Ceylon M5发布，支持元组、逐字字符串、展开操作符和late注解</h3><p><a href="http://www.redhat.com/">Red Hat</a>宣布<a href="http://ceylon-lang.org/blog/2013/03/14/ceylon-m5-nesa-pong/">Ceylon</a>编程语言的第5个里程碑版本（代号为“Nesa Pong”）已经可用，同时带来了相应的<a href="http://ceylon-lang.org/documentation/1.0/ide/install">集成开发环境</a>（IDE）。<a href="http://ceylon-lang.org/download">Ceylon M5</a>包含了一个支持泛型类型参数的完全具体化类型系统。该版本能够直接与原生JavaScript进行互操作，还包含了一个时间日期（datetime）模块以及一个HTTP服务器。</p> 
+<p><img width="500px" src="http://www.infoq.com/resource/news/2013/03/ceylon-m5/zh/resources/1.png;jsessionid=0AFEC12CC8AC45FAFD174ECC45392779" alt="" _href="img://null" _p="true" /></p> 
+<p>Ceylon M5支持元组（<a href="http://ceylon-lang.org/documentation/1.0/tour/sequences/#tuples">tuple</a>），这是一种可以获得每个元素静态类型的链表。它还支持通过新的dynamic块与原生JavaScript API直接互操作。另外，它支持纵向的范围操作符“<a href="http://ceylon-lang.org/documentation/1.0/tour/attributes-control-structures/#for">:</a>”，可以根据给定的起点和长度生成Integer序列。</p> 
+<p>Ceylon M5支持用户使用<a href="http://ceylon-lang.org/documentation/1.0/tour/basics/#fat_arrows_and_forward_declaration">胖箭头</a>=&gt;、前置声明, 此外还支持<a href="http://ceylon-lang.org/documentation/1.0/tour/functions/#the_spread_operator">展开操作符</a>（译者注：spread operator，即前置的*）、late注解、针对可迭代对象的语法糖、<a href="http://ceylon-lang.org/documentation/1.0/tour/language-module/#numeric_literals">二进制和十六进制数字字面量</a>、默认类型参数和<a href="http://ceylon-lang.org/documentation/1.0/tour/generics/#fully_reified_generic_types">具体化泛型（reified generics）</a>。它还引入了可以包含非转义反斜杠和双引号的逐字字符串（<a href="http://ceylon-lang.org/documentation/1.0/tour/basics/#verbatim_strings">verbatim string</a>）。要生成这样的字符串，应该用三个双引号把字符串字面量包起来。</p> 
+<p>据Red Hat的Ceylon首席开发人员<a href="http://ceylon-lang.org/blog/authors/gavin-king/">Gavin King</a>介绍，<a href="http://ceylon-lang.org/blog/2013/02/15/progress-report/">M5版本</a>尚不支持注解、序列化和反射。</p> 
+<p>该版本还带来了ceylon.time模块、ceylon.net.http.server包、compose() 和curry()函数，并重写了与Java数组的互操作支持。除了更新语言规范和文档之外，该版本还根据社区反馈和实践经验引入了一些重要的语法变化。</p> 
+<p><b>查看英文原文</b>：<b><a href="http://www.infoq.com/news/2013/03/ceylon-m5;jsessionid=0AFEC12CC8AC45FAFD174ECC45392779">Ceylon M5 with Tuples, Verbatim Strings, Spread Operator, Late Annotation</a></b></p> 
+<p id="lastElm"></p><br><br><br><br><br><br></body></html>
