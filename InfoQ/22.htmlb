@@ -1,0 +1,111 @@
+<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>使用HTML5开发体感游戏——VeloMaze的开发简介</h3><p>HTML5现在越来越像一个游戏开发平台。但有时候，游戏领域对于如何应用HTML5的特性设置了相当多的限制条件，尤其是对那些访问硬件设备的接口更是如此。</p><p>在2012年11月初，我加入了copypastel小组，并决定分享我在第三届年度<a href="http://nodeknockout.com/">NodeKO</a>竞赛中开发游戏的经历。尽管由于时间限制无法详解全项目，我相信结果仍旧值得与爱好游戏相关技术的读者们分享。接下来，我打算公开该游戏的技术背景，及其如何在多种网络技术基础之上构建整个项目。应用在该游戏中的技术有：<a href="http://nodejs.org/">Node.js</a>，<a href="http://expressjs.com/">express</a>（静态内容服务），<a href="http://socket.io/">Socket.io</a>（处理客户端和服务器端关于小球往复运动的通讯），<a href="http://sylvester.jcoglan.com/">Sylvester.js</a>（物理引擎的矢量库）和<a href="http://jquery.com/">jQuery</a>。</p><p>那什么是VeloMaze呢？VeloMaze是被许多点状恐龙（迅猛龙）占据的迷宫。迅猛龙希望小球能一直在迷宫中移动。由于迷宫的连续性，它可以说是没有终点的。但是每当你通过一级关卡，就会给你之后的玩家造成更多麻烦，因为他（她）会获得另一个小球！是不是很有趣？这就是迷宫中的生活。</p><p><img src="http://www.infoq.com/resource/articles/html5-motoric-games/zh/resources/6fig1.jpg;jsessionid=6B9B9B9FACB4F8C7042BD669A2478CE3" alt="" _href="img://6fig1.jpg" _p="true" /></p><p>这个游戏非常适合那些在同一个地方，而且每个人都有手机的团队。这在当今是很常见的。这里还有一段解说游戏系统要求的<a href="http://www.youtube.com/watch?v=VUUsnAu1WG4">视频</a>。</p><p>系统运行最重要的条件就是加速计。加速计是测量加速度的设备。带有加速计的设备通常返回重力的角度或者重力的矢量数据。这在某些浏览器中有可能做到，比如在下列网贴中所提及的：</p><ul> 
+ <li>Safari on iPhone &amp; iPad 4.2: Accelerometer, WebSockets &amp; better HTML5 support</li> 
+ <li>What are good examples of accelerometer usage in HTML5 for websites and webapps?</li> 
+ <li>Accelerometer-based game control using an iOS device courtesy of HTML5</li> 
+</ul><p>从描述系统要求的视频中可以注意到，某些笔记本电脑中也配有加速计。相当多新式的MacBook Pro笔记本为防止跌落时造成硬件损伤也安装了加速度计（我那台2009年买的笔记本中就安装着一个）。我觉得以笔记本旋转为基础的游戏开发领域目前还是少有人涉足的地带！下面的图表演示了应用程序架构在上层是如何搭建的。</p><p><img src="http://www.infoq.com/resource/articles/html5-motoric-games/zh/resources/1fig2.jpg;jsessionid=6B9B9B9FACB4F8C7042BD669A2478CE3" alt="" _href="img://1fig2.jpg" _p="true" /></p><p>游戏本身的开发相当容易，但全面支持所有的浏览器和加速度计组合需要做更多的工作，而我们的<a href="http://nodeknockout.com/teams/copypastel">小组</a>只拥有48小时的时间。因此，有些测试我们是没有做的，比如对最新版Android系统的测试；但是我惊喜的发现，我们的游戏在其中却运行的非常好！然而运气只是成功的一部分。在下面的篇幅中，我打算解析游戏玩法的编写，并解释究竟怎样使该游戏具有可玩性。</p><p>读取加速度计数据非常简单，不过标准的缺失使得该过程比预想的更加难以实现。首先，我们快速调查了小组内现有的各种不同的平台和浏览器组合，为适应各种组合方式，编写了如下代码：</p><pre>
+/* 这里检查游览器是否支持DeviceOrientationEvent事件（链接到W3C）。*/
+if (window.DeviceOrientationEvent) {
+    window.addEventListener('deviceorientation', function(e) {
+      // 我们从事件“e”中获取角度值并转化成弧度值。
+      leftRightAngle = e.gamma /90.0*Math.PI/2;
+      frontBackAngle = e.beta /90.0*Math.PI/2;
+    }, false);
+} else if (window.OrientationEvent) { //另一个选项是Mozilla版本同样的东西
+    window.addEventListener('MozOrientation', function(e) {
+      //在这里将长度值当做一个单位，并转换成角度值，看起来运行的不错。
+      leftRightAngle = e.x * Math.PI/2;
+      frontBackAngle = e.y * Math.PI/2;
+    }, false);
+} else {
+    // 自然地，没有浏览器支持的大多数人会获取这个。
+    setStatus('Your device does not support orientation reading. Please use Android 4.0 or later, iOS (MBP laptop 
+is fine) or similar platform.');
+}</pre><p>结果是，代码可以在版本较新的Chrome中正常运行，也有人反馈说说它也可以运行在较新版本的iOS上的Safari浏览器当中（但是我手头上的Safari并不支持）。我决定不再试图寻找那种能读取所有可能用的浏览器中加速度计数据的普适性解决方案，因为现实是我们在Node淘汰赛的编码环节中个只有48小时的时间，而当时游戏的架构还没有完成。</p><p>我决定使用Sylvester，它是一个碰撞检测的向量和矩阵数学库。其实我也可以使用<a href="http://box2d-js.sourceforge.net/">Box2D JS</a>来节省时间，但是由于有过Sylvester的使用经验，并且所需的碰撞检测比较简单，我还是决定使用Sylvester。检查小球是否落到洞里去的代码如下所示：</p><pre>
+function checkBallHole(ball, hole, dropped) {
+    // 用Sylvester定义洞和求的位置为矢量对象
+    var holeVector = $V([hole.x, hole.y]);
+    var ballVector = $V([ball.x, ball.y]);
+    // 在Sylvester中用向量简单的计算距离
+    if (ballVector.distanceFrom(holeVector) &lt; hole.r) {
+      // 用球的位置作为变量执行回调函数
+      dropped(ballVector);
+    }
+}</pre><p>所以事实上这里没有什么复杂的：如果你的小球的中心位于洞内，那么就会触发“dropped”的函数。这段代码在每帧运行一次，那么以前开发过游戏的朋友都知道，这种实现方式可能会造成小球在这一帧内飞跃洞穴而没有掉进去。然而，在日常生活中我们知道，如果你用足够快的速度将小球推向洞穴，它是可以滑过而不掉落的，所以这不是个问题。</p><p>这个游戏中也有墙体，所以碰撞检测也是必须要做的。Sylvester提供了一种目标与计算线状对象的放发，我用的就是这个。简单的代码如下：</p><pre>
+// 计算球和墙壁碰撞时的冲击矢量数据
+function impactBallByWall(ball, wall) {
+    var ballVector = $V([ball.x, ball.y]);
+    // 定义墙体为线段(x1,y1) (x2,y2)
+    var wallSegment = Line.Segment.create(
+	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; $V([wall.sx, wall.sy]),
+	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; $V([wall.dx, wall.dy]));
+	
+    // 计算墙与球的最近点（几乎就要撞上的那个位置）
+    var collisionPoint = wallSegment.pointClosestTo(ballVector)
+	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; .to2D(); // needed by sylvester to convert 3D to 2D vector
+	
+    //sylvester将矢量数据从3D转化成2D所需的变量，然后看这个距离在当前框架内为多少（并不是在两个框架之间差距多少）
+    var dist = collisionPoint.distanceFrom(ballVector);
+	
+    //天真的假设碰撞只发生在球和墙的距离小于球的半径的情况下
+    if (dist &lt; ball.r) {
+        //调整到一个合适的值。较大的逆质量值意味着更大的影响（和较小的质量）
+	var inverseMassSum = 1/100.0;
+	//从球心到碰撞点的向量
+	var differenceVector = collisionPoint.subtract(ballVector);
+	var collisionNormal = differenceVector.multiply(1.0/dist);
+	// 球陷下去的部分相当于在墙内
+	var penetrationDistance = ball.r-dist;
+	//碰撞时球的速率
+	var collisionVelocity = $V([ball.vx, ball.vy]);
+        // 从点属性中我们获得冲击速度
+	var impactSpeed = collisionVelocity.dot(collisionNormal);
+	
+	if (impactSpeed &gt;= 0) {
+	&nbsp;&nbsp;&nbsp; // 计算冲击量。运动能量在每次碰撞是以2-1-0.4=0.6的倍率递减
+	&nbsp;&nbsp;&nbsp; var impulse = collisionNormal.multiply(
+	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; (-1.4)*impactSpeed/(inverseMassSum));
+	&nbsp;&nbsp;&nbsp; //冲击只会作用在球上，因为墙被设计为固定的
+	&nbsp;&nbsp;&nbsp; var newBallVelocity = $V([ball.vx, ball.vy]).add(
+	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; impulse.multiply(inverseMassSum));
+	&nbsp;&nbsp;&nbsp; //把值传回原来的对象
+	&nbsp;&nbsp;&nbsp; ball.vx = newBallVelocity.e(1);
+	&nbsp;&nbsp;&nbsp; ball.vy = newBallVelocity.e(2);
+       }
+    }
+}</pre><p>在实现小球和墙体的碰撞过程时我做了许多并非真实的假设（但是跟现实足够接近）。首先，墙体的厚度为零（而不是实际上的5像素），而且，我没有计算两帧之间发生了什么。很明显，这会导致游戏中球体有能力穿越墙体。通过创建球体在不同帧之间的运动线段并找出球体三角与墙体之间是否有交叉，就很可以容易的测试到是否会发生碰撞。那么我们就必须要计算小球和墙体发生碰撞的位置。在上文的代码段中，这个位置数据就存在变量“collisionPoint”内（见下图）。</p><p><img src="http://www.infoq.com/resource/articles/html5-motoric-games/zh/resources/2fig3.jpg;jsessionid=6B9B9B9FACB4F8C7042BD669A2478CE3" alt="" _href="img://2fig3.jpg" _p="true" /></p><p>我很喜欢Ganvas和WebGL，但是我们计划使用DOM和jQuery来做渲染，因为我们除了制作球体滚动之外，不需要任何Ganvas和WebGL的特效（如果这样实现，其实是很优雅的，真可惜）。使用DOM渲染的场景在缩放时有点生硬，但它很容易实现。我写了下面的函数用于绘制游戏中的子画面。</p><pre>
+    //设置DOM元素属性以反映sprite对象
+    setElementPosition: function(element, sprite) {
+        // 同步sprite维数
+	sprite.width = (maze.getSquareWidth() * sprite.r * 2);
+	sprite.height = (maze.getSquareHeigth() * sprite.r * 2);
+	var x = sprite.x;
+	var y = sprite.y;
+	/* 在绝对定位中计算样式属性left和top的值
+	* 从而确保点（x,y）在sprire的中心位置（使距离计算更加简单）
+	*/
+	var newLeft = (x * maze.getSquareWidth()&nbsp; - element.width() / 2.0);
+	var newTop = (y * maze.getSquareHeigth()&nbsp; - element.height() / 2.0);
+	// 避免sprite因为受到传感器持续输入的影响而产生的颤抖
+	// 通过一个阈值判断是否显示球在屏幕上的移动。
+	// 这是一个相当大的阈值，对于某些设备来说应该选择较小的值。
+	if (thresholded(element.css('left') - newLeft, 5) !== 0) {
+	&nbsp;&nbsp;  //设置DOM元素的x坐标位置
+	&nbsp;&nbsp;&nbsp; element.css('left', parseInt(newLeft) + 'px');
+	}
+	if (thresholded(element.css('top') - newTop, 5) !== 0) {
+	&nbsp;&nbsp;&nbsp; //设置DOM元素的y坐标位置
+	&nbsp;&nbsp;&nbsp; element.css('top', parseInt(newTop) + 'px');
+	}
+	//设置DOM元素的大小。
+	element.css('width', sprite.width + 'px');
+	element.css('height', sprite.height + 'px');
+	// 球状 DOM元素包含许多层（所有的div），所以重置所有层。
+	element.find('div').each(function () {
+	$(this).css('width', sprite.width + 'px');
+	$(this).css('height', sprite.height + 'px');
+	});
+	// sprite位置的调试信息。通过点击‘enter’显示调试信息。
+	element.find('.location').html('('+parseInt(sprite.x*10)/10.0+','+parseInt(sprite.y*10)/10.0+')');
+    },</pre><p>我做了一个根据视角实时缩放的功能，因此在每个框架中的宽度和高度都是计算得到的。很不幸在游戏中没有体现出这点，因为我们尝试编程控制浏览器旋转失败了（没有用于此项功能的接口，所以这还需要破解）。所以我们最后决定，通知用户关闭手机浏览器的旋转功能，如下图所示：</p><p><img src="http://www.infoq.com/resource/articles/html5-motoric-games/zh/resources/11fig4.jpg;jsessionid=6B9B9B9FACB4F8C7042BD669A2478CE3" alt="" _href="img://11fig4.jpg" _p="true" /></p><p>所有的加速度计数据的读取，物理引擎的运行和DOM渲染都被归拢到一个主循环中了。我将所有的主循环的代码放置到函数“update”中并且每100毫秒运行一次（我知道这不够频繁，但是它在我的设备上运行的很好，所以就暂时忽略这个设定值吧），像这样：</p><pre>
+window.setInterval(function() { update(); }, 100);
+</pre><p>客户端的所有源代码可以点击<a href="https://github.com/raimo/velomaze/blob/master/public/javascripts/main.js">这里</a>获取。</p><p>顺便提一句，我对于新式的视网膜MacBook Pros非常失望，它<a href="http://support.apple.com/kb/HT1935">没有加速度度计</a>（就像我们某位玩家提到的），因为它们的SSD驱动器没有可以移动的部件！所以也许以笔记本旋转为基础的游戏看起来要到此为止了。- @raimo_t</p><h3>关于作者：</h3><p><img src="http://www.infoq.com/resource/articles/html5-motoric-games/zh/resources/raimo.jpg;jsessionid=6B9B9B9FACB4F8C7042BD669A2478CE3" alt="" _href="img://raimo.jpg" _p="true" />Raimo Tuisku 是UserVoice（一种和用户交流的产品）的API/集成系统开发者。他在去年完成了他的计算机科学硕士学位，是位有10年开发经验的资深开发人员。在前往旧金山湾区之前，他为三家芬兰软件公司开发产品和安全接口。除Web和集成之外，Raimo还喜欢开发3D游戏，设计软件架构，开发社交移动版游戏，和环游世界会见新的朋友。你可以在<br /> Twitter上@raimo_t来获知他在APIs、WebGL、HTML5 Canvas和移动版HTML5游戏方面正在进行的工作。</p><p><strong>查看英文原文：</strong><a href="http://www.infoq.com/articles/html5-motoric-games;jsessionid=6B9B9B9FACB4F8C7042BD669A2478CE3">Developing Motoric Games with HTML5 - The Making of VeloMaze</a></p><div class="clearer-space"></div><br><br><br><br><br><br></body></html>
