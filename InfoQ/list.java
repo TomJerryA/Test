@@ -1,8 +1,8 @@
 <html>
  <head></head> 
- <body>
-  <div>
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/8.java">GitSync for Plastic SCM with Native Git Protocols and Visual Studio 2012 Support</a>GitSync for Plastic SCM has been released with support for native Git network protocols and Visual Studio 2012 support.
+ <body> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/8.java">GitSync for Plastic SCM with Native Git Protocols and Visual Studio 2012 Support</a>GitSync for Plastic SCM has been released with support for native Git network protocols and Visual Studio 2012 support. 
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/7.java">Java 8 Starting to Find Its Way into .Net/Mono</a>In last week’s development snapshot, IKVM added experimental support for static methods in interfaces and default interfaces methods. These Java 8 features are primarily to support the internal workings of Java libraries, they won’t be readily usable from other .NET languages. 
@@ -150,6 +150,6 @@
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/9.java">Entity Framework 6 Alpha 3 with Code First Stored Procedures and Connection Resiliency</a>Microsoft has released Entity Framework 6 Alpha 3 with support for code first stored procedures, connection resiliency, pull request from iceclow and UnaiZorrilla. 
-  </div>  
+  </div> 
  </body>
 </html>
