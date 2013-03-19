@@ -1,8 +1,8 @@
 <html>
  <head></head> 
- <body>
-  <div>
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/5.java">Terracotta's BigMemory 4.0 and In-Genius Products Offer Real-time Insights From Big Data Sources</a>Terracotta’s BigMemory 4.0 and In-Genius products offer real-time analytics and insights from Big Data sources and integration with Hadoop. Terracotta recently announced the release of the new version of in-memory data platform BigMemory and In-Genius, an in-memory intelligence platform for Big Data.
+ <body> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/5.java">Terracotta's BigMemory 4.0 and In-Genius Products Offer Real-time Insights From Big Data Sources</a>Terracotta’s BigMemory 4.0 and In-Genius products offer real-time analytics and insights from Big Data sources and integration with Hadoop. Terracotta recently announced the release of the new version of in-memory data platform BigMemory and In-Genius, an in-memory intelligence platform for Big Data. 
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/4.java">DataStax Brings Enterprise Security To Cassandra, Hadoop, Solr</a>Datastax Enterprise 3.0 was announced last month with several Enterprise security features for a cluster using Cassandra, Hadoop and Solr. InfoQ caught up with Robin Schumacher, VP of Products at DataStax to learn more. 
@@ -150,6 +150,6 @@
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/6.java">Eclipse RAP 2.0 Released - Same Acronym, Different Name</a>On January 11th, Eclipse RAP 2.0 was released, after 6 years of development. InfoQ talked to the project lead about the release. 
-  </div>  
+  </div> 
  </body>
 </html>
