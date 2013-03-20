@@ -1,8 +1,8 @@
 <html>
  <head></head> 
- <body>
-  <div>
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/19.c">Stripe abre c&oacute;digo do Abba, um framework para testes A/B</a>A Stripe abriu os fontes de seu framework de JavaScript para Testes A/B, chamado Abba.
+ <body> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/19.c">Stripe abre c&oacute;digo do Abba, um framework para testes A/B</a>A Stripe abriu os fontes de seu framework de JavaScript para Testes A/B, chamado Abba. 
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/18.c">L&iacute;der de seguran&ccedil;a da Oracle promete corrigir falhas e melhorar a comunica&ccedil;&atilde;o</a>Logo ap&oacute;s uma s&eacute;rie de falhas graves de seguran&ccedil;a, o respons&aacute;vel pela seguran&ccedil;a do Java da Oracle, Milton Smith, est&aacute; atuando para que as falhas sejam corrigidas e para melhorar a comunica&ccedil;&atilde;o com membros da comunidade. 

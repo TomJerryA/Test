@@ -2,7 +2,10 @@
  <head></head> 
  <body>
   <div>
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/11.java">Filepicker - Upload, Download, Connect and Synchronize Files from your App to the Users Cloud</a>Filepicker.io enables you to upload and store files from your own application via Facebook, Dropbox, Instagra, Flickr and etc including from your own computer.
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/12.java">Xtend 2.4 Adds Active Annotations, Android Support and More</a>Xtend is a statically compiled programming language for the JVM but which has type inference to reduce boilerplate code. The new Xtend 2.4 release adds active annotations, which can be used to generate standard patterns and reduce coding errors, as well as Android support and collection literals. InfoQ caught up with Sven Efftinge to find out what else is new with the Xtend 2.4 release.
+  </div> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/11.java">Filepicker - Upload, Download, Connect and Synchronize Files from your App to the Users Cloud</a>Filepicker.io enables you to upload and store files from your own application via Facebook, Dropbox, Instagra, Flickr and etc including from your own computer. 
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/10.java">Canvas-Based Chart.js Version 0.1 Released</a>Chart.js, a canvas-driven Javascript charting library, was released under the MIT open source license by Nick Downie on March 17th as an alternative to SVG-based charting libraries. 
@@ -147,9 +150,6 @@
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/13.java">PhoneGap 2.5 Enables Application Cache and InAppBrowser Geolocation</a>PhoneGap 2.5 has been released with support for application cache and InAppBrowser geolocation including several updates and bug fixes. 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/12.java">Eclipse Orion 2.0 Now Runs Locally on Node.js</a>Eclipse Orion 2.0 has been recently released with support for Node.js, Projects, more and improved Shell commands, better JavaScript code assist and performance improvements. 
   </div>  
  </body>
 </html>
