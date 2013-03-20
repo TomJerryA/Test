@@ -1,6 +1,9 @@
 <html>
  <head></head> 
- <body> 
+ <body>
+  <div>
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/10.java">Canvas-Based Chart.js Version 0.1 Released</a>Chart.js, a canvas-driven Javascript charting library, was released under the MIT open source license by Nick Downie on March 17th as an alternative to SVG-based charting libraries.
+  </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/9.java">PuppetLabs and Opscode Reveal How They Built Their Open Source Communities</a>Being nice to people and being explicit and transparent about how things are done are key ingredients for growing communities say both, Luke Kanies, CEO and founder of PuppetLabs, and Adam Jacob, co-founder of Opscode and creator of Chef. They both claim that you need to be genuine in the way you interact with your communities. 
   </div> 
@@ -147,9 +150,6 @@
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/11.java">Anime version of Scrum overview diagram available from Scrum Primer website</a>The authors of the Scrum Primer, which includes a graphic explaining the Scrum process which is available for download and use under the creative commons license, have released an anime cartoon version of the diagram, also under a creative commons license. 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/10.java">Windows Blue with New Kernel, Internet Explorer 11, Bing Integration, Updated Apps</a>Coming Summer will most likely witness the preview of Windows Blue which is being rumored as a major update to Windows 8. 
-  </div> 
+  </div>  
  </body>
 </html>
