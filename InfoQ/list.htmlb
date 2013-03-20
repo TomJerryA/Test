@@ -1,6 +1,9 @@
 <html>
  <head></head> 
- <body> 
+ <body>
+  <div>
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/23.htmlb">Etsy工程师Sam Haskins谈代码部署，监控与故障处理</a>在本次访谈中，Sam Haskins分享了他在Etsy做DevOps的经验。Etsy使用Git做代码管理，平均每天提交的更新数量在30次左右，有时甚至达到70个。在如此高频率提交代码的情况下，他们如何进行代码审查？如何在每次更新之后监控系统性能？如何处理故障？下面，Sam将一一解答。
+  </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/22.htmlb">使用HTML5开发体感游戏——VeloMaze的开发简介</a>在这篇文章中Raimo讲解了他在NodeKO竞赛上开发一个HTML5体感游戏时遇到的挑战和解决的办法。在这个游戏中用到的技术有：Node.js、express（静态内容服务）、Socket.io（处理客户端和服务器端的通讯）、Sylvester.js（物理引擎的矢量库）和JQuery。 
   </div> 

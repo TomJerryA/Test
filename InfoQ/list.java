@@ -1,8 +1,8 @@
 <html>
  <head></head> 
- <body>
-  <div>
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/12.java">Xtend 2.4 Adds Active Annotations, Android Support and More</a>Xtend is a statically compiled programming language for the JVM but which has type inference to reduce boilerplate code. The new Xtend 2.4 release adds active annotations, which can be used to generate standard patterns and reduce coding errors, as well as Android support and collection literals. InfoQ caught up with Sven Efftinge to find out what else is new with the Xtend 2.4 release.
+ <body> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/12.java">Xtend 2.4 Adds Active Annotations, Android Support and More</a>Xtend is a statically compiled programming language for the JVM but which has type inference to reduce boilerplate code. The new Xtend 2.4 release adds active annotations, which can be used to generate standard patterns and reduce coding errors, as well as Android support and collection literals. InfoQ caught up with Sven Efftinge to find out what else is new with the Xtend 2.4 release. 
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/11.java">Filepicker - Upload, Download, Connect and Synchronize Files from your App to the Users Cloud</a>Filepicker.io enables you to upload and store files from your own application via Facebook, Dropbox, Instagra, Flickr and etc including from your own computer. 
@@ -150,6 +150,6 @@
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/13.java">PhoneGap 2.5 Enables Application Cache and InAppBrowser Geolocation</a>PhoneGap 2.5 has been released with support for application cache and InAppBrowser geolocation including several updates and bug fixes. 
-  </div>  
+  </div> 
  </body>
 </html>

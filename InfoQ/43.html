@@ -1,21 +1,16 @@
-<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>用PostgreSQL设计可靠的数据库</h3><p>Chris Travers最近发表了一系列题为“建设符合SOLID原则的数据库”的文章。他解释了如何运用一些常见的OOP原则（如单一责任原则、接口隔离、依赖反转）去改进数据模型和数据库代码的一些想法。尽管其中的一些想法可以在某种程度上应用到任何一种关系型数据库上，但文章列举的场景涉及到了对象关系特性（如表继承），只有类似PostgreSQL的数据库才有这些特性。</p> 
-<p>在<a href="http://ledgersmbdev.blogspot.in/2013/01/building-solid-databases-single.html">单一职责和标准化</a>方面，Chris解释了数据模型和类模型之间的相同点以及细微的差异。在纯粹的关系型数据库中，标准化通常可以完全满足单一职责原则（SRP），然而，表继承可进一步用来管理通常一起出现的字段，这些字段依赖数据库中的其他字段。他举了一个例子：</p> 
-<p>对于管理备注来说，其构成方式【译者注，即备注相关表及其表结构】也会有很大差异。人们可能想在数据库里的各种数据上添加备注，因此，任何人都不能说备注的内容或主题是具有依赖性的。</p> 
-<p>有两种典型的处理纯关系型的方法，一是可以持有很多独立管理的备注表，另外也可以创建一张单独的全局备注表，用这张表保存所有备注，然通过多表关联来建立依赖关系。</p> 
-<p>对象关系型处理方法可以持有多张备注表，并让它们继承公共备注表的表结构。</p> 
-<p><a href="http://ledgersmbdev.blogspot.in/2013/01/building-solid-databases-openclosed.html">开放/封闭原则</a>的目标是保持系统的可扩展性，当基线版本变更时会无故破坏系统的可扩展性。表继承则以灵活的方式为数据模型提供可扩展点。——举例来说，pg<em>message</em>queue 0.2能够处理各种数据类型，它有一张单独的且可支持每种数据类型的表，可以从这张公共表去做所有的继承。Chris另外还列举了一个简单的例子，一个安全的API既要支持安全控制上的可扩展，还要禁止被更改。</p> 
-<p>对于纯粹的关系型数据库，<a href="http://en.wikipedia.org/wiki/Liskov_substitution_principle">里氏替换原则</a>通常不是问题，但当你使用表继承时，<a href="http://ledgersmbdev.blogspot.in/2013/02/building-solid-databases-liskov.html">就会暴露出问题了</a>。这里有一个例子，my_square 表继承了my_rectangle 表。</p> 
-<pre>
-CREATE TABLE my_rectangle ( id serial primary key, height numeric, width numeric );
-CREATE TABLE my_square ( check (height = width) ) INHERITS (my_rectangle);
-and run an update on my_rectangle -
-UPDATE my_rectangle SET height = height * 2
-</pre> 
-<p>这将导致在square表中产生引用问题，最终导致运行失败。处理此问题有两个方法，避免整体更新（保持行不可变），或者在更新时，首先使用触发器将my<em>square表中的行删除，然后再插入到my</em>rectangle表中。</p> 
-<p><a href="http://ledgersmbdev.blogspot.in/2013/02/building-solid-databases-interface.html">在数据库中应用</a><a href="http://en.wikipedia.org/wiki/Interface_segregation_principle">接口隔离</a>时，将涉及主要的用户自定义函数或存储过程。Chris考虑把它们作为底层数据的接口，并建议理想情况下，在最小的逻辑范围内函数或存储过程应该只有一条大的查询——如果查询语句超过5条或者具有大量的备选参数，就表明应该简化复杂度，把它们分解为多个独立的函数或存储过程，每一个针对一个特定的目标。这与单一职责原则也是相辅助相成的。</p> 
-<p>在<a href="http://ledgersmbdev.blogspot.in/2013/02/building-solid-databases-dependency.html">依赖反转和健壮的数据库接口</a>方面，Chris解释以什么方式封闭应用逻辑与存储过程的绑定会导致抽象泄露，并提出了几个建议的解决方案。其中某些使用类似于服务探测器模式的东西，或使用视图和函数，或使用<a href="http://www.postgresql.org/docs/9.1/static/xtypes.html">自定义数据类型</a>、触发器和通知。在此强烈建议，充分考虑各种选择，像应用一样设计数据库，使其暴露适当的API。</p> 
-<p><b>查看英文原文：</b><a href="http://www.infoq.com/news/2013/02/solid-database-design;jsessionid=211264428ED424EE5B6DADF31E231408">SOLID Database Design With PostgreSQL</a></p> 
+<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>PeerJS 0.1.7：一个用于浏览器内P2P的WebRTC封装器</h3><p><a href="http://github.com/michellebu">Michelle Bu</a>与<a href="http://github.com/ericz">Eric Zhang</a>在3月6日发布了<a href="http://peerjs.com/">PeerJS 0.1.7</a>，它封装了WebRTC。后者是W3C倡议的旨在促进浏览器内P2P通信的一种技术。</p> 
+<p>尽管<a href="http://www.w3.org/TR/2011/WD-websockets-20110929/">WebSocket</a>的作用发展迅速，但PeerJS代表的是服务器所组织数据之传输方式的一种根本性转变。</p> 
+<p>Bu说：“WebSocket和WebRTC数据通道看起来一样——都支持二进制数据，还允许从一个客户端发送可能最终会到达另一客户端的任意数据，然而它们本质上是不同的。使用WebRTC数据通道，可以向其他任何节点传送数据而无需经由某些中心服务器。以Facebook或Google聊天程序为例，向坐在旁边的人发送一条消息需要相当多的时间。这是因为消息必须在物理上从你的计算机提交到需要路由50或60跳之远的Facebook服务器。从网络角度来看这非常不理想。理想状态下，这个包应该仅传输20英尺——这正是WebRTC的工作方式。之前整个网络拓扑看起来像一个蜘蛛，而现在更像是一张网。”</p> 
+<p>拥抱这一新的生态系统吧！PeerJS旨在封装WebRTC规范的复杂性，使其成为一套易于理解的API。PeerJS的使用方式如下：</p> 
+<ul> 
+ <li>使用版本号26或更高版本的Chrome。这意味着当前只有<a href="https://www.google.com/intl/en/chrome/browser/canary.html">Canary</a>或<a href="https://www.google.com/intl/en/chrome/browser/beta.html">beta</a>版本的浏览器可以使用。在接下来几个月，请留意WebRTC的<a href="http://peerjs.com/status">浏览器兼容性更新</a>。Bu预计在2到3个月内将支持与最新版本的Firefox进行互操作。</li> 
+ <li>建立一个节点服务器（PeerServer）。可以在代码托管网站注册，抓取代码自己构建，也可以在node.js上通过“npm install peer”命令安装。Bu说：“一旦连接到一个节点，就不再需要服务器了；除非想连接到更多的节点。”</li> 
+ <li>启动代码。看一下<a href="https://github.com/peers/peerjs/blob/master/examples/helloworld.html">hello world例程</a>，了解“PeerJS省去了很多麻烦，不需要构建和运行代理（brokering）服务器，不需要理解纷繁复杂的WebRTC节点连接和数据通道规范（那可是需要设置无数的处理程序），不需要考虑边界情况，也不需要应对不同浏览器之间的差异。”Bu说道。</li> 
+</ul> 
+<p>由于WebRTC还在发展，除了少量聊天demo外，PeerJS在实践中的例子还很少。 <a href="http://peerkit.com/">PeerKit</a>是一个例外，它是Zhang创建的、作为P2P CDN的新兴项目。Bu说：“想象一下这样的世界：猫的图片来自咖啡店里在你旁边恰好浏览同一网站的人，而不是内华达州的中心服务器”。</p> 
+<p>在浏览器之间，要在有状态的双向数据传输之上构建下一代应用，很可能还需要几年，但在此之前“WebRTC将是开发者的派对”，Bu这样说，“当考虑将所有状态都保存在客户端时，一定会有许多技术问题需要处理。”</p> 
+<p><strong>查看英文原文</strong>：<a href="http://www.infoq.com/news/2013/03/peerjs-0.1.7-released;jsessionid=A51D4132C5BA6A84F217C90ECE12638C">PeerJS 0.1.7: A WebRTC Wrapper For P2P In The Browser</a></p> 
 <hr /> 
-<p>感谢<a href="http://www.infoq.com/cn/bycategory.action;jsessionid=211264428ED424EE5B6DADF31E231408?authorName=贾国清">贾国清</a>对本文的审校。</p> 
+<p>感谢<a href="http://www.infoq.com/cn/bycategory.action;jsessionid=A51D4132C5BA6A84F217C90ECE12638C?authorName=臧秀涛">臧秀涛</a>对本文的审校。</p> 
 <p>给InfoQ中文站投稿或者参与内容翻译工作，请邮件至<a href="mailto:editors@cn.infoq.com">editors@cn.infoq.com</a>。也欢迎大家通过新浪微博（<a href="http://www.weibo.com/infoqchina">@InfoQ</a>）或者腾讯微博（<a href="http://t.qq.com/infoqchina">@InfoQ</a>）关注我们，并与我们的编辑和其他读者朋友交流。</p> 
 <p id="lastElm"></p><br><br><br><br><br><br></body></html>
