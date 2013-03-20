@@ -1,6 +1,9 @@
 <html>
  <head></head> 
- <body> 
+ <body>
+  <div>
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/17.javab">Evaluating Agile and Scrum with Other Software Methodologies</a>Capers Jones compare the effectiveness of Agile and Scrum with a sample of contemporary software development methods using several standard metrics.
+  </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/16.javab">Interview: Sam Haskins from Etsy on Code Deployment, Monitoring and Failure Procedures</a>Sam Haskins from Etsy talks about code management with Github, fast deployments with feature flags and no packaging, canary releasing, voluntary code reviews, CI with Jenkins, monitoring and failures. 
   </div> 

@@ -1,13 +1,40 @@
-<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>Anime version of Scrum overview diagram available from Scrum Primer website</h3><p>&nbsp;Bas Vodde is one of the authors of the <a href="http://www.infoq.com/minibooks/Scrum_Primer;jsessionid=6D8F4CF04BCA97F8E9E52911C1125FEF">Scrum Primer</a>&nbsp;available from <a href="http://www.infoq.com/minibooks/Scrum_Primer;jsessionid=6D8F4CF04BCA97F8E9E52911C1125FEF">InfoQ.com</a> and from the Scrum Primer <a href="http://www.scrumprimer.org/#home">website</a>.</p> 
-<p>On the Scrum primer website there is a graphic which shows an <a href="http://www.scrumprimer.org/#overview">overview</a> of the Scrum process which has been made freely available under a Creative Commons license.&nbsp;</p> 
-<p>Recently another version of the overview diagram was added to the website – one showing the Scrum process as an anime <a href="http://www.scrumprimer.org/#anime">cartoon</a>&nbsp;</p> 
-<p><img src="/resource/news/2013/03/anime-scrum-primer/en/resources/anime_scrum_overview_small.png;jsessionid=6D8F4CF04BCA97F8E9E52911C1125FEF" width="512" height="365" alt="" _href="img://anime_scrum_overview_small.png" _p="true" /><br /> <br /> Bas spoke to InfoQ about the new graphic.</p> 
-<p><strong>InfoQ</strong>: What inspired you to prepare an anime view of the Scrum process?<br /> <strong>Bas</strong>: It all happened quite accidentally. Over the last years, I've worked quite a lot in Japan, especially giving Scrum courses there. One day, a student brought some planning poker cards that were in anime style. He had made them himselves. I looked at them and thought they were really really great. So, I asked if we could replicate them. However, he had only four images and we wanted a different image on each card. So, we needed an artist and the Japanese agile coaches at Odd-e had a friend who could make anime really well, so we asked her. She made anime style planning poker cards which are now incredibly popular with our students and clients.</p> 
-<p>The planning poker cards were Scrum-themed. So, one day, I was looking at them and noticed that we had all graphics to create a Scrum Overview picture. So, I asked my colleagues from Odd-e Japan what they thought about that and they said it was possible. So, we started making the Scrum Overview picture. We'll see what comes from it next. So far, it has mainly just been fun and cool.</p> 
-<p><strong>InfoQ</strong>: Who was the artist?<br /> <strong>Bas</strong>: The artist is called Touko Okamoto. She's a good friend of our Odd-e Japan team and always helps us out with lots of things. And, as you can see, she is a great artist. I think we're really lucky to work with her :)</p> 
-<p><strong>InfoQ</strong>: How many versions of the diagram did you produce?<br /> <strong>Bas</strong>: Well, before we have the ones we published, we went through a long cycle of review and change. I think this might have lasted for one and a half year as all of us are busy and the communication didn't always go smooth. My Japanese language skills are still really bad!</p> 
-<p>In the end, we published three versions: blue, pink and green. These versions kind-of came by accident. I believe the original version was pink (the cutest) and then I figured it would be nice to have a blue version too. So, I asked for a blue version and I got back a green version. I'm still not sure why, but I liked the green version too, so we ended up with three versions so everyone can pick their style :P<br /> <br /> <strong>InfoQ</strong>: How has it been received by the community?<br /> <strong>Bas</strong>: So far, it has been received very well. The most common feedback has been that they are &quot;cute&quot;.</p> 
-<p>Personally, one of my favorite feedback has been from an American friend of mine who works in the Finance industy. This was related to the planning poker cards. Each card he would say &quot;Oh no!&quot; and be amazed at them. In the end, he said he loved them, but he wouldn't be able to use them in the US. I thought that was an interesting comment. I wouldn't know as, well, I'm rarely in the US.</p> 
-<p><strong>InfoQ</strong>: You’ve released the diagram under a <a href="http://creativecommons.org/licenses/by-nd/3.0/deed.en_US">Creative Commons</a> license – what restrictions are there on people using it?<br /> <strong>Bas</strong>: We published it under creative commons with &quot;attribution&quot; and &quot;no change&quot;. The no change means you can't change the image. Not sure who would want to do that anyways :). The attribution means you need to attribute it back to Odd-e or the Scrum Primer site. The image is allowed to use commercially, so it is easy to add it to a presentation or-so.</p> 
-<p>&nbsp;</p> 
-<p id="lastElm"></p></body></html>
+<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>Filepicker - Upload, Download, Connect and Synchronize Files from your App to the Users Cloud</h3><p><a href="https://www.filepicker.io/">Filepicker</a> provides an ability to upload files from Facebook, Dropbox, Instagram, Google Drive, Flickr, Skydrive, Evernote, Github, Picasa, Box, Alfresco, Gmail, FTP and WebDAV using a single dialog window. It automatically stores the uploaded images in <a href="http://aws.amazon.com/s3/">Amazon Simple Storage Service (S3)</a> and and generates an unique URL as soon as you complete the uploading process.</p> 
+<p>Filepicker provides support for Web, <a href="http://www.apple.com/in/ios/">iOS</a>, <a href="http://www.android.com/">Android</a>, <a href="http://phonegap.com/">PhoneGap</a> platforms and works by enabling image post processing and hence the images will be in right size regardless of what type of file a user uploads either from the cloud or their local devices. Filepicker is free for upto 5,000 files/month which includes e-mail and community support.<br /> <br /> InfoQ had a chat with <a href="https://twitter.com/ananddass">Anand Dass</a>, Chief Operating Officer at Filepicker to know more about the product.<br /> <br /> <strong>InfoQ: What is the real purpose of using Filepicker?</strong></p> 
+<blockquote>
+  Content interoperability on the web and mobile is broken. Filepicker.io’s purpose is to solve this problem. Here are some examples on how it is broken; ever tried using a mobile productivity application and tried to access that PDF sitting in your email application? Or after editing the PDF in the editing app, wished that the PDF automatically saved itself to your Dropbox or Google Drive? It is hard to do these actions currently on your mobile phone. These are just a few of the symptoms of the problem 
+ <p>Our goal is to build technology infrastructure for applications so that no matter where your content is, no matter what device you are on or what application you are using, you will be able to pick, edit, view and perform all the actions you want to perform seamlessly. The current version of the product is only the beginning where we support the pick use case.</p> 
+</blockquote> 
+<p><strong>InfoQ: What prompted you to develop Filepicker?</strong></p> 
+<blockquote>
+  The broken experience we had on the web and mobile. Any website I go to and try to upload a file or picture, I ended up first downloading the picture from Facebook or the file from Google drive to my desktop and then uploading it to the website and finally erasing the copy from my desktop. 
+ <p>The current way we build apps assumes that the content a user cares about is on the harddrive which is no longer the case. In case of mobile phones there is no concept of downloading and uploading files and I just could not get work done on my mobile. This prompted me to build Filepicker.io.</p> 
+</blockquote> 
+<p><strong>InfoQ: What is the benefit of using FilePicker from user point of view?</strong></p> 
+<blockquote>
+  Our product is for web and mobile application developers who are building applications for end users. So if we do our job right and are successful in motivating the developer community, the user wouldn’t have to worry about where his content is and how to get it when he wants it.
+</blockquote> 
+<p><strong>InfoQ: What type of file formats are supported by FilePicker?</strong></p> 
+<blockquote>
+  Pretty much everything including crazy custom formats. So documents, images, audio, video, photoshop files are supported. With the rise of mobile apps the notion of files is changing. Apps on iOS have their own data containers and these data aren’t in the form of files. In the near future, Filepicker.io will be enabling data interchange for content that are not represented as files. 
+</blockquote> 
+<p><strong>InfoQ: How easy it is to integrate FilePicker with the apps?</strong></p> 
+<blockquote>
+  2 lines of code is all it takes. Add our 
+ <a href="http://developers.filepicker.io">JavaScript library</a> and change the tag to 
+ <em>&lt;input type=filepicker&gt;</em> and you are all set. 10 minutes is all it should take for a simple web application. iOS and Android obviously take a bit longer but we have had customers tweet out that they got the integration up and running in 30 minutes or so! 
+</blockquote> 
+<p><strong>InfoQ: Does Filepicker provide support for mobile and tablet devices?</strong></p> 
+<blockquote>
+ Yes. iOS, Android, mobile web, PhoneGap platforms are supported. Some of the strongest positive feedback that we have received has been from mobile users who are now able to perform open and save actions from an application directly to the cloud. It is something they can’t do otherwise and when folks see it, it blows them. 
+ <p>Liyan Chang, Head of Product and User Experience has created a video demo which highlights the usage of <a href="http://vimeo.com/45436417">Filepicker iOS</a> library.</p> 
+</blockquote> 
+<p><strong>InfoQ: What is the difference between free and premium services?</strong></p> 
+<blockquote>
+  The only difference really is the # of files per month. Upto 5000 files/month is free and if you want more # of files you will have to subscribe to paid plan ($99 per month). We are big believers in enabling any developer build a best in class experience. So we chose not segment our plans based on any other feature. For our enterprise customers we have customized plans based on throughput, SLAs and uptime requirements.
+ <strong> </strong>
+</blockquote> 
+<p><strong>InfoQ: Does Filepicker provide support for Windows Phone 8?</strong></p> 
+<blockquote>
+  Yes. We are working hard to provide support for Windows Phone and you can expect something from us later this year. It's very much on our roadmap. 
+</blockquote> 
+<p id="lastElm"></p><br><br><br><br><br><br></body></html>

@@ -1,0 +1,536 @@
+<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>Evaluating Agile and Scrum with Other Software Methodologies</h3><p>In general selecting a software development methodology has more in common with joining a cult than it does with making a technical decision. Many companies do not even attempt to evaluate methods, but merely adopt the most popular, which today constitute the many faces of agile. This article uses several standard metrics including function points, defect removal efficiency (DRE), Cost of Quality (COQ), and Total Cost of Ownership (TCO) to compare a sample of contemporary software development methods.</p><p>There are about 55 named software development methods in use, and an even larger number of hybrids. Some of the development methods include the traditional waterfall approach, various flavors of agile, the Rational Unified Process (RUP), the Team Software Process (TSP), V-Model development, Microsoft Solutions Framework, the Structured Analysis and Design Technique (SADT), Evolutionary Development (EVO), Extreme Programming (XP), PRINCE2, Merise, model-based development, and many more.</p><p>The data itself comes from studies with a number of clients who collectively use a wide variety of software methods. The predictions use the author’s proprietary Software Risk Master™ tool which can model all 55 software development methodologies.</p><h2>Introduction</h2><p>The existence of more than 55 software development methods, each with loyal adherents, is a strong message that none of the 55 is capable of handling all sizes and kinds of software applications.</p><p>Some methods work best for small applications and small teams; others work well for large systems and large teams; some work well for complex embedded applications; some work well for high-speed web development; some work well for high-security military applications. How is it possible to select the best methodology for specific projects? Is one methodology enough, or should companies utilize several based on the kinds of projects they need to develop?</p><p>Unfortunately due to lack of quantified data and comparisons among methodologies, selecting a software development method is more like joining a cult than a technical decision. Many companies do not even attempt to evaluate alternative methods, but merely adopt the most popular method of the day, whether or not it is suitable for the kinds of software they build.</p><p>When software methodologies are evaluated the results bring to mind the ancient Buddhist parable of the blind men and the elephant. Different methods have the highest speed, the highest quality, and the lowest total cost of ownership.</p><p>(In the original parable the blind man who touched the trunk thought an elephant was like a snake. The blind man who touched the side thought an elephant was like a wall. The blind man who touched the tusk thought an elephant was like a spear; the blind man who touched the tail thought an elephant was like a rope.)</p><h3>Combinations of Factors that Affect Software Projects</h3><p>An ideal solution would be to evaluate a variety of methods across a variety of sizes and types of software. However that is difficult because of combinatorial complexity. Let us consider the major factors that are known to have an impact on software project results:</p><table cellspacing="0" cellpadding="0" border="0"> 
+ <tbody> 
+  <tr> 
+   <td width="319" valign="top"> <p>Factor</p> </td> 
+   <td width="151" valign="top"> <p>Number of Possibilities</p> </td> 
+  </tr> 
+  <tr> 
+   <td width="319" valign="top">&nbsp;</td> 
+   <td width="151" valign="top">&nbsp;</td> 
+  </tr> 
+  <tr> 
+   <td width="319" valign="top"> <p>Methodologies</p> </td> 
+   <td width="151" valign="top"> <p>55</p> </td> 
+  </tr> 
+  <tr> 
+   <td width="319" valign="top"> <p>Programming languages</p> </td> 
+   <td width="151" valign="top"> <p>50</p> </td> 
+  </tr> 
+  <tr> 
+   <td width="319" valign="top"> <p>Nature, class, and type of application</p> </td> 
+   <td width="151" valign="top"> <p>15</p> </td> 
+  </tr> 
+  <tr> 
+   <td width="319" valign="top"> <p>Capability Maturity Model Levels</p> </td> 
+   <td width="151" valign="top"> <p>5</p> </td> 
+  </tr> 
+  <tr> 
+   <td width="319" valign="top"> <p>Team experience (low, average, high)</p> </td> 
+   <td width="151" valign="top"> <p>3</p> </td> 
+  </tr> 
+  <tr> 
+   <td width="319" valign="top"> <p>Size plateau of application (small, medium, large)</p> </td> 
+   <td width="151" valign="top"> <p>3</p> </td> 
+  </tr> 
+  <tr> 
+   <td width="319" valign="top"> <p>Application complexity (low, average, high)</p> </td> 
+   <td width="151" valign="top"> <p>3</p> </td> 
+  </tr> 
+  <tr> 
+   <td width="319" valign="top">&nbsp;</td> 
+   <td width="151" valign="top">&nbsp;</td> 
+  </tr> 
+  <tr> 
+   <td width="319" valign="top"> <p>Combinations of factors</p> </td> 
+   <td width="151" valign="top"> <p>5,568,750</p> </td> 
+  </tr> 
+ </tbody> 
+</table><p>Since the number of combinations is far too large to consider every one, this article will make simplifying assumptions in order to focus primarily on the methodologies, and not on all of the other factors.</p><p>In this article the basic assumptions will be these:</p><table cellspacing="0" cellpadding="0" border="0"> 
+ <tbody> 
+  <tr> 
+   <td width="177" valign="top"> <p>Application size</p> </td> 
+   <td width="142" valign="top"> <p>1000 function points</p> </td> 
+  </tr> 
+  <tr> 
+   <td width="177" valign="top"> <p>Programming languages</p> </td> 
+   <td width="142" valign="top"> <p>C and C++</p> </td> 
+  </tr> 
+  <tr> 
+   <td width="177" valign="top"> <p>Logical code statements</p> </td> 
+   <td width="142" valign="top"> <p>75,000</p> </td> 
+  </tr> 
+  <tr> 
+   <td width="177" valign="top"> <p>Requirements creep</p> </td> 
+   <td width="142" valign="top"> <p>Omitted</p> </td> 
+  </tr> 
+  <tr> 
+   <td width="177" valign="top"> <p>Deferred features</p> </td> 
+   <td width="142" valign="top"> <p>Omitted</p> </td> 
+  </tr> 
+  <tr> 
+   <td width="177" valign="top"> <p>Reusable features</p> </td> 
+   <td width="142" valign="top"> <p>Omitted</p> </td> 
+  </tr> 
+  <tr> 
+   <td width="177" valign="top"> <p>Team experience</p> </td> 
+   <td width="142" valign="top"> <p>Average</p> </td> 
+  </tr> 
+  <tr> 
+   <td width="177" valign="top"> <p>Complexity</p> </td> 
+   <td width="142" valign="top"> <p>Average</p> </td> 
+  </tr> 
+  <tr> 
+   <td width="177" valign="top"> <p>Cost per staff month</p> </td> 
+   <td width="142" valign="top"> <p>$7,500</p> </td> 
+  </tr> 
+ </tbody> 
+</table><p>By holding size, languages, complexity, and team experience at constant levels it is easier to examine the impacts of the methodologies themselves. There are unfortunately too many methodologies to consider all of them, so a subset of 10 methods will be shown, all of which are fairly widely used in the United States.</p><p>(Note that the actual applications being compared ranged from about 800 function points in size to 1,300. The author has a proprietary method for mathematically adjusting application sizes to a fixed size in order to facilitate side-by-side comparisons.)</p><p>Methodologies in Alphabetic Order</p><ol> 
+ <li>Agile with scrum</li> 
+ <li>CMMI 1 with waterfall</li> 
+ <li>CMMI 3 with iterative</li> 
+ <li>CMMI 5 with spiral</li> 
+ <li>Extreme programming (XP)</li> 
+ <li>Object-oriented development</li> 
+ <li>Pair programming with iterative</li> 
+ <li>Proofs of correctness with waterfall</li> 
+ <li>Rational unified process (RUP)</li> 
+ <li>Team Software Process (TSP)</li> 
+</ol><p>Since not every reader may be familiar with every method, here are short descriptions of the ones in the article:</p><p><b>Agile with scrum:</b> The term “agile” is ambiguous and there are many flavors of agile. For this article the term is used for projects that more or less follow the 1997 agile manifesto, have embedded users to provide requirements, use user stories, divide projects into discrete sprints that are developed individually, and use the scrum concept and daily status meetings. Minimizing paperwork and accelerating development speeds are top goals of agile.</p><p><b>CMMI 1 with waterfall:</b> The Capability Maturity Model Integrated™ (CMMI) of the Software Engineering Institute is a well-well known method for evaluating the sophistication of software development. CMMI 1 is the bottom initial level of the 5 CMMI levels and implies fairly chaotic development. The term “waterfall” refers to traditional software practices of sequential development starting with requirements and not doing the next step until the current step is finished.</p><p><b>CMMI 3 with iterative: </b>The third level of the CMMI is called “defined” and refers to a reasonably smooth and well understood set of development steps. The term “iterative” is older than “agile” but has a similar meaning of dividing applications into separate pieces that can be constructed individually.</p><p><b>CMMI 5 with spiral</b>: The 5<sup>th</sup> level of the CMMI is the top and is called “optimizing.” Groups that achieve this level are quite sophisticated and seldom make serious mistakes. The spiral model of software development was pioneered by Dr. Barry Boehm. It features ideas that also occur in agile, such as individual segments that can be developed separately. The spiral segments are often larger than agile segments, and are preceded by prototypes.</p><p><b>Extreme Programming (XP)</b>: This method falls under the umbrella of agile development but has some unique features. The most notable unique feature is to delay coding until test cases have been developed first. The XP method also uses reviews or inspections. Sometimes pair programming is used with XP but not always, so that is a special case. Quality of the final software is a major goal of the XP method.</p><p><b>Object-oriented development (OO):</b> The OO method is one of the oldest in this article and has had many successes. It has also led to the creation of special languages such as Objective C. In this article OO analysis and design with use cases are used. The C++ language is also an OO language. OO analysis and design are somewhat different from conventional methods so a learning curve is needed.</p><p><b>Pair programming:</b> The concept of pair programming is often part of the agile approach, but is not limited to it. In this paper pair programming is used with iterative development. The basic idea of pair programming is that two people take turns coding. While one is coding the other is watching and making suggestions. Sometimes the pair use only one computer or work station between them.</p><p><b>Proofs of correctness: </b>The concept behind proofs of correctness is that of applying formal mathematical proofs to the algorithms that will be included in a software application. It is obvious that the algorithms need to be expressed in a formal manner so that they can be proved. It is also obvious that the person who performs the proof has enough mathematical skills to handle rather complex equations and algorithms.</p><p><b>Rational Unified Process (RUP): </b>The RUP methodology was originated by the Rational Corporation which was acquired by IBM in 2003 so it is now an IBM methodology. The RUP method includes aspects of both iterative and object-oriented development. Since RUP is now owned by IBM there are numerous tools that support the method. Use Cases and visual representations are standard for RUP applications, but the author’s clients usually include other methods as well such as decision tables.</p><p><b>Team Software Process (TSP): </b>The TSP method was developed by the late Watts Humphrey, who was IBM’s director of programming and later created the assessment method used by the Software Engineering Institute (SEI) capability maturity model. TSP is very focused on software quality. All bugs are recorded; inspections are used, and high quality is the main goal on the grounds that bugs slow down development. The TSP method has some unusual aspects such as self-governing tools and a coach that serves the role of manager. TSP is now endorsed and supported by the SEI.</p><h3>Three Kinds of Methodology Evaluation and 10 Metrics</h3><p>Even with the number of methods limited to 10 there are still a great many results that need to be evaluated. However from working with hundreds of clients, the topics that have the greatest importance to development managers and higher executives are these:</p><p><b>Speed-related metrics</b></p><ol> 
+ <li>Development schedules</li> 
+ <li>Development staffing</li> 
+ <li>Development effort</li> 
+ <li>Development costs</li> 
+</ol><p><b>Quality-related metrics</b></p><ol> 
+ <li>Defect potentials</li> 
+ <li>Defect removal efficiency (DRE)</li> 
+ <li>Delivered defects</li> 
+ <li>High-severity defects</li> 
+</ol><p><b>Economic-related metrics</b></p><ol> 
+ <li>Total Cost of Ownership (TCO)</li> 
+ <li>Cost of Quality (COQ)</li> 
+</ol><p>Even with only 10 methodologies and 10 topics to display, that is still quite a significant amount of information.</p><p>This article will attempt to compare methodologies in three major categories:</p><ol> 
+ <li>Speed: Development schedules, effort, and costs</li> 
+</ol><ol> 
+ <li>Quality: Software quality in terms of delivered defects</li> 
+</ol><ol> 
+ <li>Economics: Total Cost of Ownership (TCO) and Cost of Quality (COQ)</li> 
+</ol><p>Note that the technique used in this article of holding application size constant at 1000 function points means that the data cannot be safely used to determine the best methods for large systems of 10,000 function points or massive systems of 100,000 function points. However applications in the 1000 function point size range are very common, and are large enough to show comparative results in a fairly useful way.</p><p>Some of the data in this article was prepared using the author’s Software Risk Master ™ (SRM) tool, which is designed to perform side-by-side comparisons of any development methodology, any CMMI level, any complexity level, and any level of team experience. Some of the tables are based on SRM outputs, although derived from earlier measured applications.</p><h3>Speed: Comparing Methodologies for Development Schedules and Costs</h3><p>The first comparison of methodologies concerns initial development speeds, costs, and short-term issues. Among the author’s clients the most frequent request when estimating software projects is to predict the development schedule. Because schedules are viewed as critical to a majority of software managers and executives, table 1 is sorted by the speed of development.</p><p><b>Table 1: Software Schedules, Staff, Effort, Productivity</b></p><table cellspacing="0" cellpadding="0" border="0"> 
+ <tbody> 
+  <tr> 
+   <td width="41" valign="bottom">&nbsp;</td> 
+   <td width="118" valign="bottom"> <p><b>Methodologies</b></p> </td> 
+   <td width="89" valign="bottom"> <p><b>Schedule</b></p> </td> 
+   <td width="46" valign="bottom"> <p><b>Staff</b></p> </td> 
+   <td width="72" valign="bottom"> <p><b>Effort</b></p> </td> 
+   <td width="61" valign="bottom"> <p><b>FP</b></p> </td> 
+   <td width="92" valign="bottom"> <p><b>Development</b></p> </td> 
+  </tr> 
+  <tr> 
+   <td width="41" valign="bottom">&nbsp;</td> 
+   <td width="118" valign="bottom"> <p>&nbsp;</p> </td> 
+   <td width="89" valign="bottom"> <p><b>Months</b></p> </td> 
+   <td width="46" valign="bottom"> <p>&nbsp;</p> </td> 
+   <td width="72" valign="bottom"> <p><b>Months</b></p> </td> 
+   <td width="61" valign="bottom"> <p><b>Month</b></p> </td> 
+   <td width="92" valign="bottom"> <p><b>Cost</b></p> </td> 
+  </tr> 
+  <tr> 
+   <td width="41" valign="bottom">&nbsp;</td> 
+   <td width="118" valign="bottom">&nbsp;</td> 
+   <td width="89" valign="bottom">&nbsp;</td> 
+   <td width="46" valign="bottom">&nbsp;</td> 
+   <td width="72" valign="bottom">&nbsp;</td> 
+   <td width="61" valign="bottom">&nbsp;</td> 
+   <td width="92" valign="bottom">&nbsp;</td> 
+  </tr> 
+  <tr> 
+   <td width="41" valign="bottom"> <p>1</p> </td> 
+   <td width="118" valign="bottom"> <p>Extreme (XP)</p> </td> 
+   <td width="89" valign="bottom"> <p>11.78</p> </td> 
+   <td width="46" valign="bottom"> <p>7</p> </td> 
+   <td width="72" valign="bottom"> <p>84</p> </td> 
+   <td width="61" valign="bottom"> <p>11.89</p> </td> 
+   <td width="92" valign="bottom"> <p>$630,860</p> </td> 
+  </tr> 
+  <tr> 
+   <td width="41" valign="bottom"> <p>2</p> </td> 
+   <td width="118" valign="bottom"> <p>Agile/scrum</p> </td> 
+   <td width="89" valign="bottom"> <p>11.82</p> </td> 
+   <td width="46" valign="bottom"> <p>7</p> </td> 
+   <td width="72" valign="bottom"> <p>84</p> </td> 
+   <td width="61" valign="bottom"> <p>11.85</p> </td> 
+   <td width="92" valign="bottom"> <p>$633,043</p> </td> 
+  </tr> 
+  <tr> 
+   <td width="41" valign="bottom"> <p>3</p> </td> 
+   <td width="118" valign="bottom"> <p>TSP</p> </td> 
+   <td width="89" valign="bottom"> <p>12.02</p> </td> 
+   <td width="46" valign="bottom"> <p>7</p> </td> 
+   <td width="72" valign="bottom"> <p>86</p> </td> 
+   <td width="61" valign="bottom"> <p>11.64</p> </td> 
+   <td width="92" valign="bottom"> <p>$644,070</p> </td> 
+  </tr> 
+  <tr> 
+   <td width="41" valign="bottom"> <p>4</p> </td> 
+   <td width="118" valign="bottom"> <p>CMMI 5/ spiral</p> </td> 
+   <td width="89" valign="bottom"> <p>12.45</p> </td> 
+   <td width="46" valign="bottom"> <p>7</p> </td> 
+   <td width="72" valign="bottom"> <p>83</p> </td> 
+   <td width="61" valign="bottom"> <p>12.05</p> </td> 
+   <td width="92" valign="bottom"> <p>$622,257</p> </td> 
+  </tr> 
+  <tr> 
+   <td width="41" valign="bottom"> <p>5</p> </td> 
+   <td width="118" valign="bottom"> <p>OO</p> </td> 
+   <td width="89" valign="bottom"> <p>12.78</p> </td> 
+   <td width="46" valign="bottom"> <p>8</p> </td> 
+   <td width="72" valign="bottom"> <p>107</p> </td> 
+   <td width="61" valign="bottom"> <p>9.31</p> </td> 
+   <td width="92" valign="bottom"> <p>$805,156</p> </td> 
+  </tr> 
+  <tr> 
+   <td width="41" valign="bottom"> <p>6</p> </td> 
+   <td width="118" valign="bottom"> <p>RUP</p> </td> 
+   <td width="89" valign="bottom"> <p>13.11</p> </td> 
+   <td width="46" valign="bottom"> <p>8</p> </td> 
+   <td width="72" valign="bottom"> <p>101</p> </td> 
+   <td width="61" valign="bottom"> <p>9.58</p> </td> 
+   <td width="92" valign="bottom"> <p>$756,157</p> </td> 
+  </tr> 
+  <tr> 
+   <td width="41" valign="bottom"> <p>7</p> </td> 
+   <td width="118" valign="bottom"> <p>Pair/iterative</p> </td> 
+   <td width="89" valign="bottom"> <p>13.15</p> </td> 
+   <td width="46" valign="bottom"> <p>12</p> </td> 
+   <td width="72" valign="bottom"> <p>155</p> </td> 
+   <td width="61" valign="bottom"> <p>9.21</p> </td> 
+   <td width="92" valign="bottom"> <p>$1,160,492</p> </td> 
+  </tr> 
+  <tr> 
+   <td width="41" valign="bottom"> <p>8</p> </td> 
+   <td width="118" valign="bottom"> <p>CMMI 3/iterative</p> </td> 
+   <td width="89" valign="bottom"> <p>13.34</p> </td> 
+   <td width="46" valign="bottom"> <p>8</p> </td> 
+   <td width="72" valign="bottom"> <p>107</p> </td> 
+   <td width="61" valign="bottom"> <p>9.37</p> </td> 
+   <td width="92" valign="bottom"> <p>$800,113</p> </td> 
+  </tr> 
+  <tr> 
+   <td width="41" valign="bottom"> <p>9</p> </td> 
+   <td width="118" valign="bottom"> <p>Proofs/waterfall</p> </td> 
+   <td width="89" valign="bottom"> <p>13.71</p> </td> 
+   <td width="46" valign="bottom"> <p>12</p> </td> 
+   <td width="72" valign="bottom"> <p>161</p> </td> 
+   <td width="61" valign="bottom"> <p>6.21</p> </td> 
+   <td width="92" valign="bottom"> <p>$1,207,500</p> </td> 
+  </tr> 
+  <tr> 
+   <td width="41" valign="bottom"> <p>10</p> </td> 
+   <td width="118" valign="bottom"> <p>CMMI 1/waterfall</p> </td> 
+   <td width="89" valign="bottom"> <p>15.85</p> </td> 
+   <td width="46" valign="bottom"> <p>10</p> </td> 
+   <td width="72" valign="bottom"> <p>158</p> </td> 
+   <td width="61" valign="bottom"> <p>6.51</p> </td> 
+   <td width="92" valign="bottom"> <p>$1,188,870</p> </td> 
+  </tr> 
+  <tr> 
+   <td width="41" valign="bottom">&nbsp;</td> 
+   <td width="118" valign="bottom">&nbsp;</td> 
+   <td width="89" valign="bottom">&nbsp;</td> 
+   <td width="46" valign="bottom">&nbsp;</td> 
+   <td width="72" valign="bottom">&nbsp;</td> 
+   <td width="61" valign="bottom">&nbsp;</td> 
+   <td width="92" valign="bottom">&nbsp;</td> 
+  </tr> 
+  <tr> 
+   <td width="41" valign="bottom">&nbsp;</td> 
+   <td width="118" valign="bottom"> <p>Average</p> </td> 
+   <td width="89" valign="bottom"> <p>13.00</p> </td> 
+   <td width="46" valign="bottom"> <p>8.6</p> </td> 
+   <td width="72" valign="bottom"> <p>112.6</p> </td> 
+   <td width="61" valign="bottom"> <p>9.762</p> </td> 
+   <td width="92" valign="bottom"> <p>$844,852</p> </td> 
+  </tr> 
+ </tbody> 
+</table><p>As can be seen the software development methods that yield the shortest schedules for applications of 1000 function points are the XP and Agile methods, with TSP coming in third.</p><h3>Quality: Comparing Defect Potentials, Defect Removal, and Delivered Defects</h3><p>The next topic of interest when comparing methodologies is that of quality. The article considers four aspects of software quality: defect potentials, defect removal efficiency, delivered defects, and high-severity defects.</p><p>The phrase “defect potential” refers to the sum of defects found in requirements, design, source code, documents, and “bad fixes.” A bad fix is a new defect accidentally injected during an attempt to repair a previous defect. (About 7% of attempts to fix bugs include new bugs.)</p><p>The phrase “defect removal efficiency” refers to the combined efficiency levels of inspections, static analysis, and testing. In this article six kinds of testing were included: 1) unit test; 2) function test; 3) regression test; 4) performance test; 5) system test; 6) acceptance test.</p><p>(There are about 40 total kinds of testing, but the specialized forms of testing are outside the scope of this article.)</p><p>When quality is evaluated readers can see why the parable of the blind man and the elephant was cited earlier:</p><p><b>Table 2: Software Defect Potentials, Removal, and Delivery</b></p><table cellspacing="0" cellpadding="0" border="0"> 
+ <tbody> 
+  <tr> 
+   <td width="41" valign="bottom">&nbsp;</td> 
+   <td width="105" valign="bottom"> <p><b>Methodologies</b></p> </td> 
+   <td width="73" valign="bottom"> <p><b>Defect</b></p> </td> 
+   <td width="72" valign="bottom"> <p><b>Defect</b></p> </td> 
+   <td width="77" valign="bottom"> <p><b>Defects</b></p> </td> 
+   <td width="62" valign="bottom"> <p><b>Hi Sev.</b></p> </td> 
+  </tr> 
+  <tr> 
+   <td width="41" valign="bottom">&nbsp;</td> 
+   <td width="105" valign="bottom"> <p>&nbsp;</p> </td> 
+   <td width="73" valign="bottom"> <p><b>Potential</b></p> </td> 
+   <td width="72" valign="bottom"> <p><b>Removal</b></p> </td> 
+   <td width="77" valign="bottom"> <p><b>Delivered</b></p> </td> 
+   <td width="62" valign="bottom"> <p><b>Defects</b></p> </td> 
+  </tr> 
+  <tr> 
+   <td width="41" valign="bottom">&nbsp;</td> 
+   <td width="105" valign="bottom">&nbsp;</td> 
+   <td width="73" valign="bottom">&nbsp;</td> 
+   <td width="72" valign="bottom">&nbsp;</td> 
+   <td width="77" valign="bottom">&nbsp;</td> 
+   <td width="62" valign="bottom">&nbsp;</td> 
+  </tr> 
+  <tr> 
+   <td width="41" valign="bottom"> <p>1</p> </td> 
+   <td width="105" valign="bottom"> <p>TSP</p> </td> 
+   <td width="73" valign="bottom"> <p>2,700</p> </td> 
+   <td width="72" valign="bottom"> <p>96.79%</p> </td> 
+   <td width="77" valign="bottom"> <p>87</p> </td> 
+   <td width="62" valign="bottom"> <p>16</p> </td> 
+  </tr> 
+  <tr> 
+   <td width="41" valign="bottom"> <p>2</p> </td> 
+   <td width="105" valign="bottom"> <p>CMMI 5/ spiral</p> </td> 
+   <td width="73" valign="bottom"> <p>3,000</p> </td> 
+   <td width="72" valign="bottom"> <p>95.95%</p> </td> 
+   <td width="77" valign="bottom"> <p>122</p> </td> 
+   <td width="62" valign="bottom"> <p>22</p> </td> 
+  </tr> 
+  <tr> 
+   <td width="41" valign="bottom"> <p>3</p> </td> 
+   <td width="105" valign="bottom"> <p>RUP</p> </td> 
+   <td width="73" valign="bottom"> <p>3,900</p> </td> 
+   <td width="72" valign="bottom"> <p>95.07%</p> </td> 
+   <td width="77" valign="bottom"> <p>192</p> </td> 
+   <td width="62" valign="bottom"> <p>36</p> </td> 
+  </tr> 
+  <tr> 
+   <td width="41" valign="bottom"> <p>4</p> </td> 
+   <td width="105" valign="bottom"> <p>Extreme (XP)</p> </td> 
+   <td width="73" valign="bottom"> <p>4,500</p> </td> 
+   <td width="72" valign="bottom"> <p>93.36%</p> </td> 
+   <td width="77" valign="bottom"> <p>299</p> </td> 
+   <td width="62" valign="bottom"> <p>55</p> </td> 
+  </tr> 
+  <tr> 
+   <td width="41" valign="bottom"> <p>5</p> </td> 
+   <td width="105" valign="bottom"> <p>OO</p> </td> 
+   <td width="73" valign="bottom"> <p>4,950</p> </td> 
+   <td width="72" valign="bottom"> <p>93.74%</p> </td> 
+   <td width="77" valign="bottom"> <p>310</p> </td> 
+   <td width="62" valign="bottom"> <p>57</p> </td> 
+  </tr> 
+  <tr> 
+   <td width="41" valign="bottom"> <p>6</p> </td> 
+   <td width="105" valign="bottom"> <p>Pair/iterative</p> </td> 
+   <td width="73" valign="bottom"> <p>4,700</p> </td> 
+   <td width="72" valign="bottom"> <p>92.93%</p> </td> 
+   <td width="77" valign="bottom"> <p>332</p> </td> 
+   <td width="62" valign="bottom"> <p>61</p> </td> 
+  </tr> 
+  <tr> 
+   <td width="41" valign="bottom"> <p>7</p> </td> 
+   <td width="105" valign="bottom"> <p>Proofs/waterfall</p> </td> 
+   <td width="73" valign="bottom"> <p>4,650</p> </td> 
+   <td width="72" valign="bottom"> <p>92.21%</p> </td> 
+   <td width="77" valign="bottom"> <p>362</p> </td> 
+   <td width="62" valign="bottom"> <p>67</p> </td> 
+  </tr> 
+  <tr> 
+   <td width="41" valign="bottom"> <p>8</p> </td> 
+   <td width="105" valign="bottom"> <p>Agile/scrum</p> </td> 
+   <td width="73" valign="bottom"> <p>4,800</p> </td> 
+   <td width="72" valign="bottom"> <p>92.30%</p> </td> 
+   <td width="77" valign="bottom"> <p>370</p> </td> 
+   <td width="62" valign="bottom"> <p>68</p> </td> 
+  </tr> 
+  <tr> 
+   <td width="41" valign="bottom"> <p>9</p> </td> 
+   <td width="105" valign="bottom"> <p>CMMI 3/ Iter.</p> </td> 
+   <td width="73" valign="bottom"> <p>4,500</p> </td> 
+   <td width="72" valign="bottom"> <p>91.18%</p> </td> 
+   <td width="77" valign="bottom"> <p>397</p> </td> 
+   <td width="62" valign="bottom"> <p>73</p> </td> 
+  </tr> 
+  <tr> 
+   <td width="41" valign="bottom"> <p>10</p> </td> 
+   <td width="105" valign="bottom"> <p>CMMI 1/ Water.</p> </td> 
+   <td width="73" valign="bottom"> <p>6,000</p> </td> 
+   <td width="72" valign="bottom"> <p>78.76%</p> </td> 
+   <td width="77" valign="bottom"> <p>1,274</p> </td> 
+   <td width="62" valign="bottom"> <p>236</p> </td> 
+  </tr> 
+  <tr> 
+   <td width="41" valign="bottom">&nbsp;</td> 
+   <td width="105" valign="bottom">&nbsp;</td> 
+   <td width="73" valign="bottom">&nbsp;</td> 
+   <td width="72" valign="bottom">&nbsp;</td> 
+   <td width="77" valign="bottom">&nbsp;</td> 
+   <td width="62" valign="bottom">&nbsp;</td> 
+  </tr> 
+  <tr> 
+   <td width="41" valign="bottom">&nbsp;</td> 
+   <td width="105" valign="bottom"> <p>Average</p> </td> 
+   <td width="73" valign="bottom"> <p>4,370</p> </td> 
+   <td width="72" valign="bottom"> <p>92.23%</p> </td> 
+   <td width="77" valign="bottom"> <p>374</p> </td> 
+   <td width="62" valign="bottom"> <p>69</p> </td> 
+  </tr> 
+ </tbody> 
+</table><p>When the focus of the evaluation turns to quality rather than speed, TSP, CMMI 5, and RUP are on top, followed by XP. Agile is not strong on quality so it is only number 8 out of 10. The Agile lack of quality measures and failure to use inspections will also have an impact in the next comparison.</p><h3>Economics: Total Cost of Ownership (TCO) and Cost of Quality (COQ)</h3><p>Some of the newer methods such as Agile and XP have not been in use long enough to show really long-range findings over 10 years or more. In this article TCO is limited to only five years of usage, because there is almost no data older than that for Agile.</p><p>The figures for TCO include development, five years of enhancement, five years of maintenance or defect repairs, and five years of customer support. While the Software Risk Master tool predicts those values separately, in this article they are all combined together into a single figure.</p><p>The figures for COQ consolidate all direct costs for finding and fixing bugs from the start of requirements through five years of customer usage.</p><p><b>Table 3: Total Cost of Ownership (TCO): Cost of Quality (COQ)</b></p><table cellspacing="0" cellpadding="0" border="0"> 
+ <tbody> 
+  <tr> 
+   <td width="41" valign="bottom">&nbsp;</td> 
+   <td width="123" valign="bottom"> <p><b>Methodologies</b></p> </td> 
+   <td width="104" valign="bottom"> <p><b>TCO</b></p> </td> 
+   <td width="104" valign="bottom"> <p><b>COQ</b></p> </td> 
+   <td width="77" valign="bottom"> <p><b>Percent</b></p> </td> 
+  </tr> 
+  <tr> 
+   <td width="41" valign="bottom">&nbsp;</td> 
+   <td width="123" valign="bottom">&nbsp;</td> 
+   <td width="104" valign="bottom">&nbsp;</td> 
+   <td width="104" valign="bottom">&nbsp;</td> 
+   <td width="77" valign="bottom">&nbsp;</td> 
+  </tr> 
+  <tr> 
+   <td width="41" valign="bottom"> <p>1</p> </td> 
+   <td width="123" valign="bottom"> <p>TSP</p> </td> 
+   <td width="104" valign="bottom"> <p>$1,026,660</p> </td> 
+   <td width="104" valign="bottom"> <p>$298,699</p> </td> 
+   <td width="77" valign="bottom"> <p>29.09%</p> </td> 
+  </tr> 
+  <tr> 
+   <td width="41" valign="bottom"> <p>2</p> </td> 
+   <td width="123" valign="bottom"> <p>CMMI 5/ spiral</p> </td> 
+   <td width="104" valign="bottom"> <p>$1,034,300</p> </td> 
+   <td width="104" valign="bottom"> <p>$377,880</p> </td> 
+   <td width="77" valign="bottom"> <p>36.53%</p> </td> 
+  </tr> 
+  <tr> 
+   <td width="41" valign="bottom"> <p>3</p> </td> 
+   <td width="123" valign="bottom"> <p>Extreme (XP)</p> </td> 
+   <td width="104" valign="bottom"> <p>$1,318,539</p> </td> 
+   <td width="104" valign="bottom"> <p>$627,106</p> </td> 
+   <td width="77" valign="bottom"> <p>47.56%</p> </td> 
+  </tr> 
+  <tr> 
+   <td width="41" valign="bottom"> <p>4</p> </td> 
+   <td width="123" valign="bottom"> <p>RUP</p> </td> 
+   <td width="104" valign="bottom"> <p>$1,360,857</p> </td> 
+   <td width="104" valign="bottom"> <p>$506,199</p> </td> 
+   <td width="77" valign="bottom"> <p>37.20%</p> </td> 
+  </tr> 
+  <tr> 
+   <td width="41" valign="bottom"> <p>5</p> </td> 
+   <td width="123" valign="bottom"> <p>Agile/scrum</p> </td> 
+   <td width="104" valign="bottom"> <p>$1,467,957</p> </td> 
+   <td width="104" valign="bottom"> <p>$774,142</p> </td> 
+   <td width="77" valign="bottom"> <p>52.74%</p> </td> 
+  </tr> 
+  <tr> 
+   <td width="41" valign="bottom"> <p>6</p> </td> 
+   <td width="123" valign="bottom"> <p>OO</p> </td> 
+   <td width="104" valign="bottom"> <p>$1,617,839</p> </td> 
+   <td width="104" valign="bottom"> <p>$735,388</p> </td> 
+   <td width="77" valign="bottom"> <p>45.45%</p> </td> 
+  </tr> 
+  <tr> 
+   <td width="41" valign="bottom"> <p>7</p> </td> 
+   <td width="123" valign="bottom"> <p>CMMI 3/iterative</p> </td> 
+   <td width="104" valign="bottom"> <p>$1,748,043</p> </td> 
+   <td width="104" valign="bottom"> <p>$925,929</p> </td> 
+   <td width="77" valign="bottom"> <p>52.97%</p> </td> 
+  </tr> 
+  <tr> 
+   <td width="41" valign="bottom"> <p>8</p> </td> 
+   <td width="123" valign="bottom"> <p>Pair/iterative</p> </td> 
+   <td width="104" valign="bottom"> <p>$2,107,861</p> </td> 
+   <td width="104" valign="bottom"> <p>$756,467</p> </td> 
+   <td width="77" valign="bottom"> <p>35.89%</p> </td> 
+  </tr> 
+  <tr> 
+   <td width="41" valign="bottom"> <p>9</p> </td> 
+   <td width="123" valign="bottom"> <p>Proofs/waterfall</p> </td> 
+   <td width="104" valign="bottom"> <p>$2,216,167</p> </td> 
+   <td width="104" valign="bottom"> <p>$863,929</p> </td> 
+   <td width="77" valign="bottom"> <p>38.98%</p> </td> 
+  </tr> 
+  <tr> 
+   <td width="41" valign="bottom"> <p>10</p> </td> 
+   <td width="123" valign="bottom"> <p>CMMI 1/waterfall</p> </td> 
+   <td width="104" valign="bottom"> <p>$3,944,159</p> </td> 
+   <td width="104" valign="bottom"> <p>$2,804,224</p> </td> 
+   <td width="77" valign="bottom"> <p>71.10%</p> </td> 
+  </tr> 
+  <tr> 
+   <td width="41" valign="bottom">&nbsp;</td> 
+   <td width="123" valign="bottom">&nbsp;</td> 
+   <td width="104" valign="bottom">&nbsp;</td> 
+   <td width="104" valign="bottom">&nbsp;</td> 
+   <td width="77" valign="bottom">&nbsp;</td> 
+  </tr> 
+  <tr> 
+   <td width="41" valign="bottom">&nbsp;</td> 
+   <td width="123" valign="bottom"> <p>Average</p> </td> 
+   <td width="104" valign="bottom"> <p>$1,784,238</p> </td> 
+   <td width="104" valign="bottom"> <p>$866,996</p> </td> 
+   <td width="77" valign="bottom"> <p>44.75%</p> </td> 
+  </tr> 
+ </tbody> 
+</table><p>Because applications developed using the TSP, CMMI 5, and RUP methodologies are deployed with low numbers of defects it is fairly easy to enhance them, maintain them, and support them. Therefore the 5-year total cost of ownership clearly favors the quality-related methods rather than the speed-related methods.</p><p>Agile is not bad, but with a COQ of more than 50% Agile needs to take quality more seriously up front.</p><p>The COQ percentages reveal a chronic problem for software applications. We have so many bugs that finding and fixing bugs is the major cost of both development and total cost of ownership.</p><h3>The Methods that Achieve Top Rankings in all Categories</h3><p>To continue with the metaphor of the blind men and the elephant, here are the top methods in each of the 10 categories:</p><p><b>Table 4: Top Methods in 10 Categories</b></p><table width="430" cellspacing="0" cellpadding="0" border="0"> 
+ <tbody> 
+  <tr> 
+   <td width="36" valign="top"> <p>1.</p> </td> 
+   <td width="209" valign="top"> <p>Development schedules</p> </td> 
+   <td width="183" valign="top"> <p>Extreme programming (XP)</p> </td> 
+  </tr> 
+  <tr> 
+   <td width="36" valign="top"> <p>2.</p> </td> 
+   <td width="209" valign="top"> <p>Development staffing</p> </td> 
+   <td width="183" valign="top"> <p>Agile/scrum (tied)</p> </td> 
+  </tr> 
+  <tr> 
+   <td width="36" valign="top"> <p>3.</p> </td> 
+   <td width="209" valign="top"> <p>Development effort</p> </td> 
+   <td width="183" valign="top"> <p>CMMI/5 spiral</p> </td> 
+  </tr> 
+  <tr> 
+   <td width="36" valign="top"> <p>4.</p> </td> 
+   <td width="209" valign="top"> <p>Development costs</p> </td> 
+   <td width="183" valign="top"> <p>CMMI/5 spiral</p> </td> 
+  </tr> 
+  <tr> 
+   <td width="36" valign="top"> <p>5.</p> </td> 
+   <td width="209" valign="top"> <p>Defect potentials</p> </td> 
+   <td width="183" valign="top"> <p>TSP</p> </td> 
+  </tr> 
+  <tr> 
+   <td width="36" valign="top"> <p>6.</p> </td> 
+   <td width="209" valign="top"> <p>Defect removal efficiency (DRE)</p> </td> 
+   <td width="183" valign="top"> <p>TSP</p> </td> 
+  </tr> 
+  <tr> 
+   <td width="36" valign="top"> <p>7.</p> </td> 
+   <td width="209" valign="top"> <p>Delivered defects</p> </td> 
+   <td width="183" valign="top"> <p>TSP</p> </td> 
+  </tr> 
+  <tr> 
+   <td width="36" valign="top"> <p>8.</p> </td> 
+   <td width="209" valign="top"> <p>High-severity defects</p> </td> 
+   <td width="183" valign="top"> <p>TSP</p> </td> 
+  </tr> 
+  <tr> 
+   <td width="36" valign="top"> <p>9.</p> </td> 
+   <td width="209" valign="top"> <p>Total Cost of Ownership (TCO)</p> </td> 
+   <td width="183" valign="top"> <p>TSP</p> </td> 
+  </tr> 
+  <tr> 
+   <td width="36" valign="top"> <p>10.</p> </td> 
+   <td width="209" valign="top"> <p>Cost of Quality (COQ)</p> </td> 
+   <td width="183" valign="top"> <p>TSP</p> </td> 
+  </tr> 
+ </tbody> 
+</table><p>The phrase “be careful of what you wish for because you might get it” seems to be appropriate for these methodology comparisons. Methods such as Agile that focus on speed are very quick. Methods such as TSP, RUP, and CMMI 5 that focus on quality have very few defects.</p><h2>Why some Methods Compare Poorly for Speed, Quality, and Economics</h2><p>As can be seen the various methodologies fluctuated in their effectiveness on the speed, quality, and economic dimensions. However three methodologies were near the bottom for all three evaluations. These laggards were the waterfall method, which was in last place, the proof of correctness method, and the pair programming method. It is useful to explain the probable reasons for the low placements of these three methodologies.</p><h2>Waterfall and CMMI 1</h2><p>It is no secret that about 35% of software projects for more than 50 years have been cancelled due to poor quality or overruns. Most of these used waterfall development and either were at CMMI level 1 or did not use the CMMI at all.</p><p>At the 1000 function point size range used in this example for waterfall, the percentage of time and effort devoted to finding and fixing bugs is about 25.71%. The number of projects that run late or exceed their budgets is about 50%. These are not very large applications, but with waterfall they are often troublesome.</p><p>It should be mentioned that the primary motivation of most of the newer methods is to overcome the historical problems associated with waterfall development.</p><p>There have been a few successes with waterfall projects but these tend to be those done by expert teams.</p><h2>Pair Programming</h2><p>Unfortunately pair programming is an expensive mistake. The idea of letting two people take turns programming while one watched is a theoretical idea but weak in practice. The evidence for pair programming is flawed. There are assertions that pairs create software with fewer bugs than individual programmers. Unfortunately the individuals were using basic waterfall methods. Capable individual programmers who use static analysis and participate in formal code inspections of their work produce better code for about half the cost of pair programming.</p><p>Further, there are some 90 different software occupations. Why double up programmers and nobody else? If the idea of pair programming worked as asserted, then architects, business analysts, testers, quality assurance and everybody might be doubled. Why not use two project managers instead of one?</p><p>The usage of pair programming is symptomatic of very poor measurement practices and also a failure to understand the distribution of talent among large populations. If a company were building a large system with 500 programmers, it would not be possible to bring in or hire 500 more to pair up with them.</p><h2>Proofs of Correctness</h2><p>The idea of proofs of correctness is an academic construct and is more theoretical than real. In order to prove algorithms in software they need to be formally expressed and the personnel doing the proofs need considerable mathematical sophistication. Even then, errors will occur in many proofs.</p><p>In the sample used in this article for 1000 function points there were about 690 specific requirements that need to be proved. This is why even small applications that use proofs take a long time, because proofs are time consuming.</p><p>It would be essentially impossible to use proofs of correctness on an application of 10,000 function points because there would be 7,407 specific algorithms to be proved and that might take several years, during which the requirements would have changed so many that the earlier proofs might no longer apply.</p><h2>Matching Software Methodologies with Projects</h2><p>Since no method is top-ranked in every category, readers may well ask how to select methods that match the needs of their projects.</p><p>For smaller applications of 1000 function points or less where speed of delivery is the most critical parameter, then XP, Agile, and TSP are all very good choices.</p><p>For complex applications that might need FDA approval, operate weapons systems, or control sensitive financial data, high quality levels are mandatory. In this class TSP, CMMI 5, and RUP are the top choices, with XP as another possible method. Agile has been used for such applications but needs to be bent and twisted so much that it no longer is very agile. Agile is not strong on quality.</p><p>For applications that might last for more than 10 years or which require very frequent enhancements and therefore need well designed interior structures, TSP would be the top choice, with CMMI 5, RUP, and XP also possibilities. Agile has not shown much success with long-term maintenance and enhancements.</p><h2>Summary and Conclusions</h2><p>As this article is written the software industry has about 55 different development methodologies. This is too large a number to compare in a short article.</p><p>For the 10 methods compared here, most have had some successes and most have had a few failures too.</p><p>Overall the Agile family and the methods that emphasize speed have achieved their goal, and they are fairly quick.</p><p>The methods that emphasize quality such as TSP, RUP, and CMMI 5 have also achieved their goals, and deliver very few defects.</p><p>No single method appears to be a universal panacea that can be successful on every size and kind of software application.</p><p>This article attempts to show the methods that give the best fit to three important factors:</p><ol> 
+ <li>speed;</li> 
+ <li>quality;</li> 
+ <li>long-rang economic value.</li> 
+</ol><h2>About the Author</h2><p><strong><img vspace="4" hspace="4" align="left" src="http://www.infoq.com/resource/articles/evaluating-agile-software-methodologies/en/resources/capers-jones.jpg;jsessionid=BF7849476DBE1F259AC0965F64A574DC" alt="" _href="img://capers-jones.jpg" _p="true" />Capers Jones</strong> is currently vice president and chief technology officer of <a href="http://www.namcook.com/">Namcook Analytics LLC</a>.&nbsp; This company designs leading-edge risk, cost, and quality estimation and measurement tools. He was the president of Capers Jones &amp; Associates LLC until 2012, a software researcher and manager at IBM for 12 years and Assistant Director of Programming at the ITT Corporation where he started their software measurement program. Capers is a well-known author and international public speaker. Some of his books are <u>The Economics of Software Quality</u> (with Olivier Bonsignour), Software Engineering Best Practices, Applied Software Measurement and Estimating Software Costs. He is currently working on his 15<sup>th</sup> book entitled <u>The Technical and Social History of Software Engineering</u>, to be published in the autumn of 2013.</p><p>Capers and his colleagues have collected historical data that is used for judging the effectiveness of software process improvement methods and also for calibrating software estimation accuracy, in cited in software litigation in cases where quality, productivity, and schedules are part of the proceedings. He has also worked as an expert witness in 15 lawsuits involving breach of contract and software taxation issues.</p><div class="clearer-space"></div><br><br><br><br><br><br></body></html>

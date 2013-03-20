@@ -1,6 +1,9 @@
 <html>
  <head></head> 
- <body> 
+ <body>
+  <div>
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/11.java">Filepicker - Upload, Download, Connect and Synchronize Files from your App to the Users Cloud</a>Filepicker.io enables you to upload and store files from your own application via Facebook, Dropbox, Instagra, Flickr and etc including from your own computer.
+  </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/10.java">Canvas-Based Chart.js Version 0.1 Released</a>Chart.js, a canvas-driven Javascript charting library, was released under the MIT open source license by Nick Downie on March 17th as an alternative to SVG-based charting libraries. 
   </div> 
@@ -147,9 +150,6 @@
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/12.java">Eclipse Orion 2.0 Now Runs Locally on Node.js</a>Eclipse Orion 2.0 has been recently released with support for Node.js, Projects, more and improved Shell commands, better JavaScript code assist and performance improvements. 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/11.java">Anime version of Scrum overview diagram available from Scrum Primer website</a>The authors of the Scrum Primer, which includes a graphic explaining the Scrum process which is available for download and use under the creative commons license, have released an anime cartoon version of the diagram, also under a creative commons license. 
-  </div> 
+  </div>  
  </body>
 </html>
