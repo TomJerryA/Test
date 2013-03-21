@@ -1,6 +1,9 @@
 <html>
  <head></head> 
- <body> 
+ <body>
+  <div>
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/18.java">Interview with Neil Bartlett about OSGi and the new Bndtools 2.0 release</a>Neil Bartlett, current maintainer of the popular Bndtools Eclipse plugin for OSGi has announced the release of Bndtools 2.0. InfoQ has interviewed Neil Bartlett to learn more about Bndtools and about OSGi in general.
+  </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/17.java">ZeroTurnaround has Announced the Availability of LiveRebel 2.6</a>ZeroTurnaround has announced the availability of LiveRebel 2.6, its software release automation tool. InfoQ has interviewed Krishnan Badrinarayanan Product Manager to learn more about LiveRebel and the latest release. 
   </div> 
@@ -147,9 +150,6 @@
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/19.java">Red Gate Announces Simply Web Dev - Curated Guide for ASP.NET MVC</a>Red Gate Software based in UK has launched a new portal that enables students and developers to learn ASP.NET MVC with the help of wide range of resources. 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/18.java">Will Java 8 solve PermGen OutOfMemoryError?</a>As part of Oracle's ongoing project to merge the HotSpot and JRockit codebases, Oracle has announced that they will remove PermGen from the Java 8 version of the HotSpot JVM. The effects of the removal of PermGen can now be checked with Java 8 Early Access builds, it is time to find out if all PermGen problems have been resolved. 
-  </div> 
+  </div>  
  </body>
 </html>

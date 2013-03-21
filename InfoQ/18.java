@@ -1,20 +1,55 @@
-<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>Will Java 8 solve PermGen OutOfMemoryError?</h3><p>As part of Oracle's ongoing project to merge the HotSpot and JRockit codebases, Oracle has announced that <a href="https://blogs.oracle.com/java/entry/java_7_questions_answers">they will remove PermGen</a> from the Java 8 version of the HotSpot JVM. Many people however have interpreted this announcement in a way that all their PermGen errors will disappear. Because the effects of the removal of PermGen can now be checked with <a href="http://jdk8.java.net/download.html">Java 8 Early Access</a> builds, it is time to find out if all PermGen problems have been resolved.</p> 
-<h3>What is the PermGen?</h3> 
-<p>Jon Masamitsu, JVM developer at Oracle, explained 2006 in his blog the <a href="https://blogs.oracle.com/jonthecollector/entry/presenting_the_permanent_generation">purpose of the permanent generation</a>: The permanent generation contains information about classes, such as bytecode, names and JIT information. It is stored in a separate space, because it is mostly static and garbage collection can be much more optimized by separating it.</p> 
-<h3>The Problems with PermGen</h3> 
-<p>Many developers find their system showing &quot;java.lang.OutOfMemoryError: PermGen space&quot; at some time. When it does, it is very often caused by a memory leak related to classloaders, and creation of new classloaders, which generally happens during hot deployments of code. This is why it is more frequent on development machines, than in production. When it occurs in production, developers can take the generated heap dump and use a tool like <a href="http://www.eclipse.org/mat/">Eclipse Memory Analyzer Toolkit</a> to look for classloaders that should be gone but are not. The permanent collection is garbage collected, unless specific configuration prevents it. However, in the case of leaks, there is just nothing to collect. In production the most common &quot;problem&quot; is that the default value 64MB is way too low. Setting it to 256MB is the usual band aid to resolve it.</p> 
-<h3>What Java 8 changes</h3> 
-<p>In his <a href="http://mail.openjdk.java.net/pipermail/hotspot-dev/2012-September/006679.html">mail on the HotSpot development list</a>, Jon now explains what Java 8 will change: with Java 8, there is no PermGen anymore. Some parts of it, like the interned Strings, have been moved to regular heap already in Java 7. In 8 the remaining structures will be moved to a native memory region called &quot;Metaspace&quot;, which will grow automatically by default and will be garbage collected. There will be two flags: <code>MetaspaceSize</code> and <code>MaxMetaspaceSize</code>.</p> 
-<p>Jon Masamitsu explains the design goal behind this on request by InfoQ:</p> 
+<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>Interview with Neil Bartlett about OSGi and the new Bndtools 2.0 release</h3><p>Neil Bartlett, preeminent OSGi expert and current maintainer of the popular Bndtools Eclipse plugin for OSGi <a href="http://njbartlett.name/2013/02/11/bndtools2-released.html">has announced the release of Bndtools 2.0</a>. Some of the features he has highlighted are:</p> 
+<ul> 
+ <li>Support for OSGi Release 5 Resolver and Repository specifications</li> 
+ <li>Export run descriptors as standalone executables</li> 
+ <li>Baselining (build errors for incorrectly versioned bundles)</li> 
+ <li>Enhanced Semantic Versioning, using annotations for Consumer and Provider roles</li> 
+ <li>Exported Package Decorations</li> 
+ <li>Improved Incremental Builder</li> 
+ <li>Support for Apache ACE</li> 
+ <li>Lots of bug fixes and performance improvements.</li> 
+</ul> 
+<p>This is a long awaited release. The previous release 1.1 became available in March 2012.</p> 
+<p>InfoQ spoke to Neil Bartlett about Bndtools and about OSGi in general.</p> 
+<p><b>Can you please explain a bit about OSGi and Bndtools to the non-OSGi audience?</b></p> 
 <blockquote> 
- <p>A goal for removing perm gen was so that users do not have to think about correctly sizing it.</p> 
- <p>Set MetaspaceSize to a value larger than the default, if you know that your applications needs more space for class data. Setting it to a larger size will avoid some number of GC's at startup. It is not necessary and I do not particularly recommend it unless you want to avoid as many GC's as possible.</p> 
- <p>Set MaxMetaspaceSize if you want to limit the space for class data. You might want to do this if you suspect you are leaking classloaders and want the application to stop before it uses up too much native memory. Another case might be where you have multiple applications running on a server and you want to limit how much space each uses for class data.</p> 
+ <p>OSGi is a way of developing modular applications on the JVM. It allows you to build modules (which we call &quot;bundles&quot;) that are cleanly isolated from each other, and with explicit, managed dependencies. Because of our focus on dependencies, we can always tell whether a particular bundle can be installed into our environment, whether additional dependencies will need to be added as well, what effect it will have on other modules, and so on.</p> 
+ <p>Bndtools is an IDE for developing OSGi bundles and applications. It is based on Eclipse, and can be installed from the Eclipse Marketplace.</p> 
 </blockquote> 
-<p>So <code>MetaspaceSize</code> falls in the category of potentially affecting the first few Garbage Collections and should not be important in most cases. In that way it reflects the purpose of the old <code>PermSize</code>; flag.</p> 
-<p>When <code>MaxMetaspaceSize</code> is set, the space can still run out of memory, which will cause a &quot;java.lang.OutOfMemoryError: Metadata space&quot;. Due to the fact that classloader leaks exist, and consuming unlimited native memory is something Java typically does not do, it seems sensible to set a similar limit to what was set with <code>MaxPermSize</code>. Similar to the PermGen, verbose GC logging will print the current consumption of Metaspace. Using the command line flags <code>PermSize</code> or <code>MaxPermSize</code> will result in a warning, instructing the user to switch to the Metaspace flags.</p> 
-<h3>Conclusion</h3> 
-<p>Because the concept of Metaspace and perm is mostly the same, an administrator performing a Java 7 to Java 8 upgrade can change the flags simply by running <code>sed 'e/Perm/Metaspace/g'</code>.</p> 
-<p>Overall, this change looks underwhelming. For most cases, it is just a name change. Making the Metaspace unbounded by default prevents choosing a too small default, but requires setting a maximum to ensure system stability. Luckily, we can reuse the configuration of PermSize and MaxPermSize almost everybody already uses and just rename the flag. Unfortunately the move from managed java heap to native memory means that there is a lot less valuable troubleshooting information in a heap dump, as also Kirk Pepperdine <a href="http://mail.openjdk.java.net/pipermail/hotspot-dev/2012-September/006684.html">raised as concern</a>.</p> 
-<p>In the end, classloader leaks can still occur as before.</p> 
+<p><b> Is OSGi important to Java projects of all sizes and kinds, or is it more appropriate to larger or smaller projects? </b></p> 
+<blockquote> 
+ <p>OSGi means modularity, which is beneficial to almost all sizes of projects. It should be clear enough why large projects benefit from modularity: it helps to isolate complexity and divide the work into manageable chunks. But even small projects benefit, for example if you write a small piece of code it's likely that you will want to reuse it later in another project. If you develop that as an OSGi bundle then it will be much easier to reuse.</p> 
+ <p>Having said that, some very small projects don't really need modularity; for example &quot;Hello World&quot; doesn't benefit much from a modular approach!</p> 
+</blockquote> 
+<p><b> OSGi seems to have some loyal followers, but it does not seem to have huge traction. What is the reason for that?</b></p> 
+<blockquote> 
+ <p>Well, the traction is increasing fast, but I agree it's not mainstream yet. OSGi is actually very ambitious because it aims to improve the entire software development process, therefore it has an impact on everything from code repositories through testing to team structures. So it takes time for the benefits to be realized, and many businesses are understandably nervous about taking on a known up-front cost in return for uncertain future gains. However this is changing as more businesses become successful with it.</p> 
+ <p>Another problem is technical, in that OSGi has had quite poor tool support for a long time. Bndtools – and the ecosystem of tools that can integrate with it – have started to improve that situation.</p> 
+</blockquote> 
+<p><b> There is a lot of focus on Android right now, is OSGi relevant for Android development?</b></p> 
+<blockquote> 
+ <p>Yes, I think that as Android applications get bigger and more complicated, they are going to need to look at modularity seriously as well. OSGi has been used successfully in some Android projects, however Android is sufficiently different from standard Java – in subtle but important ways – that this is still a bit of an experimental area right now.</p> 
+</blockquote> 
+<p><b> How does Bndtools help in OSGi projects?</b></p> 
+<blockquote> 
+ <p>OSGi has a reputation for being difficult to use, however it really just needs certain information about our code to be stated explicitly. Nearly all of this information is available inside the Java classes that we put into the bundle... it just needs to be teased out. Bndtools does this as part of the build process, which allows developers just to concentrate on their own code and not repeat anything they have already written into the source.</p> 
+ <p>Bndtools also hooks into the Eclipse build system, which means that as soon as you save a change in a source file, your bundle will be immediately built and ready. Then if you happen to have an OSGi runtime going already (e.g. in debugging or testing) then we push the new bundle straight into it, by taking advantage of OSGi's ability to dynamically update modules at runtime. This leads to an extremely fast code/run/test workflow, since basically your code is already running as soon as you save it.</p> 
+ <p>Finally in Bndtools 2.0 we added support for the new Resolver and Repositories specifications from OSGi Release 5. This lets you compose applications by focusing on the small number of &quot;top-level&quot; modules that provide your core functionality – the resolver takes care of providing all of the static and runtime dependencies from that core. So you no longer have to manage long lists of JARs that need to go on your classpath.</p> 
+</blockquote> 
+<p><b> Does Bndtools provide any collaboration tools?</b></p> 
+<blockquote> 
+ <p>Yes. One of the major difficulties in collaborating with other developers is maintaining compatibility of shared APIs, and how to coordinate when those APIs need to change. The key to getting this right is a proper versioning strategy, but most developers apply versions to their artifacts in a manual and fairly arbitrary way. Bndtools has the ability to analyze your classes and work out the changes that were made compared with the previously released version. Then it can automatically bump the version for you. Also for consumers of an API it works out what range of versions your code is going to be compatible with, and automatically generates an import of that range.</p> 
+</blockquote> 
+<p><b> Are there any competitors?</b></p> 
+<blockquote> 
+ <p>Probably the closest competitor is PDE, the Plug-in Development Environment, which is also an Eclipse-based IDE but takes a very different approach. Naturally I believe that Bndtools is much better and more productive; in fact I'm confident of this because I used PDE for many years before Bndtools existed.</p> 
+</blockquote> 
+<p><b> Is Eclipse required, or does it standalone? Do you support other IDEs such as IntelliJ and Netbeans?</b></p> 
+<blockquote> 
+ <p>Yes and no. Bndtools is built on top of bnd, developed by Peter Kriens. Bnd is a headless tool that can be used from the command line, or from ANT, or from Maven, and so on. Therefore developers using NetBeans, IDEA or even a plain text editor can still work with the projects because they are just using bnd.</p> 
+ <p>Bndtools does require Eclipse and it isn't directly usable in other IDEs. However those IDEs could build their own support for OSGi by using bnd themselves. Most of the smarts are in bnd, and Bndtools only provides things like pretty editors for the bnd descriptor files, a launcher, hooks into the Eclipse build lifecycle, and so on.</p> 
+ <p>I hope that other IDEs spend some effort on this, because really I just want people to use OSGi. I have no interest in forcing them to use Eclipse if that is not their preference.</p> 
+</blockquote> 
+<p>As well as the <a href="http://bndtools.org/tutorial.html">Bndtools Tutorial</a> Bartlett recommends the books &quot;Java Application Architecture&quot; by Kirk Knoernschild (<a href="http://www.infoq.com/articles/java-application-architecture;jsessionid=A13391743906C744C8E206C6FD97D9A8">previously covered on InfoQ</a>) and &quot;Enterprise OSGi in Action&quot; by Tim Ward and Holly Cummins, which discusses tooling options for OSGi including bnd and Bndtools, as good sources for further information.</p> 
+<p>InfoQ has also run a series of articles discussing modularity in general:&nbsp;<a href="http://www.infoq.com/articles/modular-java-what-is-it;jsessionid=A13391743906C744C8E206C6FD97D9A8">Modular Java: What is it?</a>, <a href="http://www.infoq.com/articles/modular-java-static-modularity;jsessionid=A13391743906C744C8E206C6FD97D9A8">Modular Java: Static Modularity</a>, <a href="http://www.infoq.com/articles/modular-java-dynamic-modularity;jsessionid=A13391743906C744C8E206C6FD97D9A8">Modular Java: Dynamic Modularity</a>, <a href="http://www.infoq.com/articles/modular-java-declarative-modules;jsessionid=A13391743906C744C8E206C6FD97D9A8">Modular Java: Declarative Modularity</a>.</p> 
 <p id="lastElm"></p><br><br><br><br><br><br></body></html>
