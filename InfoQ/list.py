@@ -1,6 +1,9 @@
 <html>
  <head></head> 
- <body> 
+ <body>
+  <div>
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/46.py">QConTokyo2013【ビッグデータ/分散技術】トラックのご紹介</a>スマートデバイスの台頭により、ウェブからのトラフィックは年々増加傾向にあります。ビッグデータを活用するには、データの収集・永続化・加工処理などすべての面において分散処理が必要となります。本トラックでは、今注目されている分散処理の最新情報について様々な分散処理基盤を紹介し、事例を交え紹介していきます。
+  </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/45.py">CQRSフレームワークのAxon 2がMongoDBをサポート，パフォーマンスも向上</a>Axon の CQRS フレームワークの最新バージョンでは，MongoDB をバックストアとして使用する MongoEventStore がサポートされている。さらにAPIがシンプルなものになり，パフォーマンスも向上している。先日リリースされたこのバージョン2.0は，イベントオブジェクトがPOJOベースになると同時に，メッセージやペイロード，メタデータを定義するアノテーションも備えている。 
   </div> 
