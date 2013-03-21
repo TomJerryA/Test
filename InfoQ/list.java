@@ -2,7 +2,10 @@
  <head></head> 
  <body>
   <div>
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/16.java">Develop Utility, Productivity, Financial and Media Apps with RadControls for Windows 8</a>Telerik has recently released RadControls for Windows 8, which enables developers to build touch optimized applications for desktop and mobile devices.
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/17.java">ZeroTurnaround has Announced the Availability of LiveRebel 2.6</a>ZeroTurnaround has announced the availability of LiveRebel 2.6, its software release automation tool. InfoQ has interviewed Krishnan Badrinarayanan Product Manager to learn more about LiveRebel and the latest release.
+  </div> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/16.java">Develop Utility, Productivity, Financial and Media Apps with RadControls for Windows 8</a>Telerik has recently released RadControls for Windows 8, which enables developers to build touch optimized applications for desktop and mobile devices. 
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/15.java">Should You Create User Stories for Technical Debt?</a>Agile teams sometimes struggle with the planning of pure technical tasks that have no direct value for the user of a system, but have to be done to deliver working software. Should you create user stories to handle such technical tasks and technical debt, or not? 
@@ -147,9 +150,6 @@
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/18.java">Will Java 8 solve PermGen OutOfMemoryError?</a>As part of Oracle's ongoing project to merge the HotSpot and JRockit codebases, Oracle has announced that they will remove PermGen from the Java 8 version of the HotSpot JVM. The effects of the removal of PermGen can now be checked with Java 8 Early Access builds, it is time to find out if all PermGen problems have been resolved. 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/17.java">Final Preview of Visual Studio 2012 Update 2 Released</a>The anticipated final preview of VS2012/TFS2012 Update 2 has been released. It brings a few more updates including the highlighting of the new LightSwitch HTML client. 
   </div>  
  </body>
 </html>
