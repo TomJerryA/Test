@@ -1,0 +1,14 @@
+<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>APIコミュニティでの議論 - ガバナンス対イノベーション</h3><p><a target="_blank" href="http://www.infoq.com/news/2013/03/api-governance-debate;jsessionid=3C98D080E6CD679B463E3D77DA24DB3C"><em>原文(投稿日：2013/03/12)へのリンク</em></a></p> 
+<div class="clearer-space">
+ &nbsp;
+</div> 
+<div id="newsContent"> 
+ <p>先日の <a target="_blank" href="http://www.apistrategyconference.com/index.php">API Strategy and Practiceカンファレンス</a> でのホットな話題は，&quot;APIガバナンス&quot;の必要性についてだった。スタートアップからベンダ，大企業に至るまで，APIの実務家と専門家たちが幅広くこの議論に参加していた。</p> 
+ <p>Smartbear Softwareでソリューション戦略ディレクタを務めるLorinda Brandon氏は，その <a target="_blank" href="http://blog.programmableweb.com/2013/02/27/governance-vs-innovation-do-they-have-to-be-enemies/">議論の報告</a> に合わせて，ガバナンスとイノベーションは &quot;敵でなければならない&quot; のだろうか，と疑問を呈している。氏が指摘するのは，カンファレンスのさまざまな参加者の中で，以前から意識されていた大企業と新興企業のギャップが，今も変わらず残っていることだ。&quot;この違いは 「ガバナンスおよびプロセス」 と 「急速なイノベーション」 の対立として，私がこの業界に入った当時から常に存在していたものです。&quot;</p> 
+ <p>カンファレンスに参加した技術者のほとんどが，新しいAPIエコシステムの最前線でイノベーションを推進する側にいることは間違いない。その一方で大企業には，信頼性と品質を重視するユーザからのプレッシャがある。氏はそのどちらの陣営にも加わりたいと思っている – プロセスと品質管理を信奉するこの業界において，踏みにじられることなくイノベーションを &quot;楽しむ&quot; ための，それが手段だと考えるからだ。そして &quot;ガバナンスとイノベーションを統合する術を見つけられれば，お互いに完璧なパートナシップを構築することができるはず&quot; と結論付ける。</p> 
+ <p>氏の意見に賛同した，カンファレンス主催者のひとりでもあるAPIエバンジェリストのKin Lane氏は，<a target="_blank" href="http://www.apievangelist.com/2013/02/27/what-is-better-word-for-governance-when-it-comes-to-apis/">&quot;ガバナンス&quot; よりも適切な言葉</a> はないかと考えている。 ガバナンスにはポジティブな意味とネガティブな意味がある。ネガティブな意味では権力，官僚主義，権威，管理であり，対照的にポジティブには指導，影響，協調，標準化という意味を持つ。過剰な権力や管理がイノベーションを抑圧することを大部分の経営者が理解していない，と氏は嘆いている。APIがイノベーションのレベルに達するまでに成長し，進化するためには &quot;酸素&quot; が必要なのだ。</p> 
+ <p>この話は <a target="_blank" href="http://www.zdnet.com/blog/service-oriented/wanted-new-term-for-soa-governance/1058">2008年初めのSOAコミュニティ</a> で起きた同じような議論を彷彿とさせる。ZDNet記者でアナリストのJoe McKendrick氏が，当時この件を取材していた。テクノロジの世界だけの問題ではないだろう。同じZDNet記者でアナリストのDion Hinchcliffe氏は，<a target="_blank" href="http://www.zdnet.com/blog/hinchcliffe/running-your-soa-like-a-web-startup/525">Running Your SOA like a Web Startup</a> と題した自身の記事に，イノベーションとは何をするかではなく，どのようにするかという問題だ，と書いている。</p> 
+ <p>APIがSOAに増して持つイノベーションのひとつは，コラボレーションや開発者の関与，セルフサービスといったものの恩恵を受けていることだ – ミドルウェアベンダWSO2のCTOであるPaul Fremantle氏はこのように指摘して，<a target="_blank" href="http://www.infoq.com/presentations/Evolution-Integration;jsessionid=B42AB5DE615B4FC241084B030A80BAFD;jsessionid=3C98D080E6CD679B463E3D77DA24DB3C">ノー・ミーティング</a> アプローチと呼んでいる。今回の議論に注目して，果たしてAPIがガバナンスとイノベーションのトレードオフをうまくやってのけられるのか，成り行きを見守るのも面白いのではないだろうか。読者の考えはどうだろう？</p> 
+ <p id="lastElm">&nbsp;</p> 
+</div> 
+<p id="lastElm"></p><br><br><br><br><br><br></body></html>

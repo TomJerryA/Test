@@ -2,7 +2,19 @@
  <head></head> 
  <body>
   <div>
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/46.py">QConTokyo2013【ビッグデータ/分散技術】トラックのご紹介</a>スマートデバイスの台頭により、ウェブからのトラフィックは年々増加傾向にあります。ビッグデータを活用するには、データの収集・永続化・加工処理などすべての面において分散処理が必要となります。本トラックでは、今注目されている分散処理の最新情報について様々な分散処理基盤を紹介し、事例を交え紹介していきます。
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/0.py">Node.js 0.10がリリース</a>Node.js開発チームは、node.jsのバージョン0.10をリリースしたが、これは高パフォーマンスな非同期サーバーを構築するためのJavaScriptベースのプラットフォームである。このリリースのフィーチャとして、ストリーム処理するためのモジュールがより使いやすくなったこと、ドメインのエラーハンドリングの改善、パフォーマンス改善がある。チームは、また0.10の後、1.0リリース前にもう１つ安定バージョンのリリース(0.12)があることを発表した。
+  </div>
+  <div>
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/49.py">Spring for Apache Hadoop 1.0リリース</a>SpringSourceはSpring for Apache Hadoop 1.0をリリースした。Spring for Apache Hadoopを使えば、開発者はSpring Frameworkを使ってHadoopアプリケーションを開発できる。また、Spring BatchとSpring Integrationとも簡単に統合できる。Spring for Apache HadoopはSpring Data umbrella projectのサブプロジェクトであり、オープンソースのApache 2.0ライセンスでリリースされている。
+  </div>
+  <div>
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/48.py">LLBLGen Pro v4.0 Betaリリース</a>Solutions DesignはLLBLGen Pro v4.0 Betaをリリースした。デザイナとランタイムが改善されており、Visual Studio 2010/2012のサポートが追加されている。
+  </div>
+  <div>
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/47.py">APIコミュニティでの議論 - ガバナンス対イノベーション</a>ガバナンスの問題がまたもや現れた。今回はAPIコミュニティにおいて，中でもイノベーションを主眼とする組織との関係について疑問を投げかけている。先日のAPI Strategy and Practiceカンファレンスで大きな話題となり，その後もネット上での議論が続いている。
+  </div> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/46.py">QConTokyo2013【ビッグデータ/分散技術】トラックのご紹介</a>スマートデバイスの台頭により、ウェブからのトラフィックは年々増加傾向にあります。ビッグデータを活用するには、データの収集・永続化・加工処理などすべての面において分散処理が必要となります。本トラックでは、今注目されている分散処理の最新情報について様々な分散処理基盤を紹介し、事例を交え紹介していきます。 
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/45.py">CQRSフレームワークのAxon 2がMongoDBをサポート，パフォーマンスも向上</a>Axon の CQRS フレームワークの最新バージョンでは，MongoDB をバックストアとして使用する MongoEventStore がサポートされている。さらにAPIがシンプルなものになり，パフォーマンスも向上している。先日リリースされたこのバージョン2.0は，イベントオブジェクトがPOJOベースになると同時に，メッセージやペイロード，メタデータを定義するアノテーションも備えている。 
@@ -138,9 +150,6 @@
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/1.py">'Adopt a JSR'のフォローアップオンライン会議が明日開催</a>世界中から40人以上のJUGリーダー/会員が参加した、1月18日の最初のオンライン会議に続いて、'Adopt a JSR' プログラムを支援している人々が2月27日水曜日にフォローアップ　オンライン会議をホストしている。 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/0.py">コンテキスト境界を使って大きなドメインモデルを小さくする</a>開発者はドメイン駆動設計(DDD)のコンテキスト境界という概念を使って、巨大なモデルを複数の小さなモデルに分割できる。これにはEntity Frameworkのデータベースコンテキスト(DbContextクラス)が利用できる。 
-  </div> 
+  </div>  
  </body>
 </html>
