@@ -2,7 +2,10 @@
  <head></head> 
  <body>
   <div>
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/15.java">Should You Create User Stories for Technical Debt?</a>Agile teams sometimes struggle with the planning of pure technical tasks that have no direct value for the user of a system, but have to be done to deliver working software. Should you create user stories to handle such technical tasks and technical debt, or not?
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/16.java">Develop Utility, Productivity, Financial and Media Apps with RadControls for Windows 8</a>Telerik has recently released RadControls for Windows 8, which enables developers to build touch optimized applications for desktop and mobile devices.
+  </div> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/15.java">Should You Create User Stories for Technical Debt?</a>Agile teams sometimes struggle with the planning of pure technical tasks that have no direct value for the user of a system, but have to be done to deliver working software. Should you create user stories to handle such technical tasks and technical debt, or not? 
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/14.java">Camunda Forks Alfresco Activiti</a>Camunda, a Berlin-based software and consulting company specializing in BPM, has announced that they are forking Alfresco Activiti to launch a new product called camunda BPM. The new product replaces camunda fox, the firm's previous Activiti-based BPM offering. 
@@ -147,9 +150,6 @@
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/17.java">Final Preview of Visual Studio 2012 Update 2 Released</a>The anticipated final preview of VS2012/TFS2012 Update 2 has been released. It brings a few more updates including the highlighting of the new LightSwitch HTML client. 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/16.java">Insight into the Phases of Scaling</a>Christopher Smith shared insight into approaching and solving the problems of scaling web applications in his presentation &quot;The Five Stages of Scale&quot; at Scale11x last month. In Christopher's presentation he made a case for approaching scaling in a stages with well defined components that are either added or optimized to improve the overall scale of a web application. 
   </div>  
  </body>
 </html>

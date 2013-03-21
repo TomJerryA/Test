@@ -1,11 +1,11 @@
 <html>
  <head></head> 
- <body>
-  <div>
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/2.py">運用エンジニアの教育</a>先月のhangopsでは、テクノロジーの教育に熱心なパネリストが集まって運用エンジニアの教育機会を作成することについて話し合った。彼らは現在の運用エンジニアの仕事に見合う人物を見つけるのはこれまで以上に難しくなっていることを認め、どのようにこの問題を解決するか議論した。
-  </div>
-  <div>
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/1.py">ネイティブのPHP4拡張モジュールをマネージド版で置き換え</a>Phalanger、.NET と Mono用のPHPランタイムは、重要なマイルストーンに達し、11の人気のあるPHP拡張機能を.NET同等版で置き換えた。これらの拡張機能は、以前、ネイティブのCあるいはC++で書かれており、 Phalangerは32ビットモードでしか走らない、という制限があった。
+ <body> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/2.py">運用エンジニアの教育</a>先月のhangopsでは、テクノロジーの教育に熱心なパネリストが集まって運用エンジニアの教育機会を作成することについて話し合った。彼らは現在の運用エンジニアの仕事に見合う人物を見つけるのはこれまで以上に難しくなっていることを認め、どのようにこの問題を解決するか議論した。 
+  </div> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/1.py">ネイティブのPHP4拡張モジュールをマネージド版で置き換え</a>Phalanger、.NET と Mono用のPHPランタイムは、重要なマイルストーンに達し、11の人気のあるPHP拡張機能を.NET同等版で置き換えた。これらの拡張機能は、以前、ネイティブのCあるいはC++で書かれており、 Phalangerは32ビットモードでしか走らない、という制限があった。 
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/0.py">Node.js 0.10がリリース</a>Node.js開発チームは、node.jsのバージョン0.10をリリースしたが、これは高パフォーマンスな非同期サーバーを構築するためのJavaScriptベースのプラットフォームである。このリリースのフィーチャとして、ストリーム処理するためのモジュールがより使いやすくなったこと、ドメインのエラーハンドリングの改善、パフォーマンス改善がある。チームは、また0.10の後、1.0リリース前にもう１つ安定バージョンのリリース(0.12)があることを発表した。 
@@ -150,6 +150,6 @@
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/3.py">公共部門におけるアジャイル導入: FBIとロッテルダム港の事例</a>公共部門にはアジャイルソフトウェア開発手法を導入するニーズがある。FBIとオランダのロッテルダム港の事例は、アジャイルがどのように使われているかを示している。 
-  </div>   
+  </div> 
  </body>
 </html>

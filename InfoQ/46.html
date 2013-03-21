@@ -1,36 +1,27 @@
-<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>超低数据传输量，服务器端动态扩展——Node.js开源游戏框架升级至0.3版</h3><p>在这个广大女性可以放假半天的特别节日里，网易杭州研究院的小伙子们没能休息，反而热火朝天的发布了GitHub上广受好评的<a href="https://github.com/NetEase/pomelo">Node.js游戏框架pomelo</a>的最新版本0.3版。</p> 
-<p>如果你还不了解这款“柚子”框架，请参见InfoQ对框架作者，杭州网易研究院高级研究员谢骋超的专访： <a href="http://www.infoq.com/cn/news/2012/11/netease-nodejs-framework;jsessionid=CD342C36CE6B143CF7D3FD3CF28C2F89">网易NodeJS开源游戏框架pomelo访谈</a>，及他在InfoQ连载的“<a href="http://www.infoq.com/cn/master-nodejs;jsessionid=CD342C36CE6B143CF7D3FD3CF28C2F89">深入浅出node.js游戏服务器开发</a>”系列文章。</p> 
-<p>值得一提的是谢骋超也是本届<a href="http://www.qconbeijing.com/">QCon北京2013大会</a>的受邀演讲嘉宾，将会在<a href="http://www.qconbeijing.com/track15.html">Node.js专题</a>中分享Pomelo框架的心得体会。</p> 
-<p>下面让我们了解一下pomelo框架的更新内容：</p> 
-<p>Pomelo 0.3版为移动端性能优化做了很多工作， 新协议的数据包压缩后的传输量仅为0.2版的20%， 并保留了0.2版基于socket.io的传输协议。socket.io对开发浏览器端器端的实时应用非常适合，而socket（websocket）、protobuf、二进制等协议则对移动端、桌面客户端的开发更具优势。pomelo对它们的同时支持使同时支持浏览器、移动、桌面客户端的高实时应用或游戏变得非常容易。下面让我们看看pomelo的新版本特性：</p> 
-<p><strong>1. 新协议支持</strong></p> 
-<p>0.3版Pomelo开始支持二进制协议，并支持对请求route的字典压缩和请求内容进行protobuf压缩。0.3版同时兼容以前版本基于socket.io的通讯协议。通过在应用中配置不同的connector component来实现协议的切换或共存。</p> 
-<p>目前Pomelo服务器提供两类connector：sioconnector和hybridconnector，分别对于基于socket.io和二进制的通讯。</p> 
-<p><strong>2. 动态服务器扩展</strong></p> 
-<p>Pomelo 0.3版开始支持动态增加和移除服务器进程机制，并提供相应的命令行工具。每台新增的服务器都会连接到master服务器上进行注册。Master再将新服务器的信息广播给集群中的所有服务器进程。原有的服务器进程再对新增服务器事件进行响应。</p> 
-<p>当一个服务器进程接收到一个新增服务器的消息后，会将该服务器信息保存到本地的app上下文中，之后可以通过app.getServers等系列方法查看到新服务器的信息，从而影响之后的消息路由。</p> 
-<p>如果新加的服务器的类型之前尚未存在于app上下文中，Pomelo会尝试着为其创建对应的rpc代理对象。如果该类型服务器需要提供rpc服务，则需要在约定的目录（servers/server-type/remote/）下提供rpc服务代码。</p> 
-<p>动态移除服务器进程的流程也与上面类似，当服务器断开与master的连接后，master会将该服务器的信息广播给其他进程，其他进程再进行相应处理。</p> 
-<p><strong>3. 其他新特性</strong></p> 
-<ul> 
- <li>servers.json配置文件的修改：随着Pomelo支持协议的增多，配置文件原先定义的wsPort（代表websocket port）已不适用，现调整为clientPort。</li> 
- <li>3.2 新增channel广播接口：ChannelService新增broadcast接口，适用于给全世界广播的场景。</li> 
- <li>新增session获取接口：LocalSessionService新增根据session id获取localSession接口get和根据user id获取localSession接口getByUid。</li> 
- <li>javascript客户端支持： 
-  <ul> 
-   <li>支持两类javascript客户端 --- socket.io与websocket：目前socket.io与websocket两套协议在javascript都有用武之地。socket.io的兼容好，可以适应各种浏览器，适合开发类似聊天室这样的高实时应用。websocket客户端则在数据压缩上做到了很多优化，大大减少了消息的传输量，适合开发基于HTML 5的游戏应用。</li> 
-   <li>客户端javscript build系统：以前的pomelo-jsclient版本管理异常混乱， 经常将好几个文件复制到不同的项目各自修改。因此我们引入了component来管理js的库。 客户端js代码目前采用以component的形式统一管理与维护。</li> 
-  </ul> </li> 
- <li>其它客户端支持： 
-  <ul> 
-   <li>提供新的C客户端，支持socket协议，基于libuv开发，提供了完整的数据与消息压缩， 支持cocos2d-x</li> 
-   <li>其余客户端，如flash,android, ios, unity3d， 目前还只支持socket.io协议，后续会推出基于socket协议客户端</li> 
-  </ul> </li> 
-</ul> 
-<p>关于pomelo此次升级的其他相关文章，可以参考该项目的GitHub页面：</p> 
-<ul> 
- <li><a href="https://github.com/NetEase/pomelo/wiki/Pomelo-0.2%E5%88%B00.3%E5%8D%87%E7%BA%A7%E6%8C%87%E5%8D%97">Pomelo 0.2到0.3升级指南</a></li> 
- <li><a href="https://github.com/NetEase/pomelo/wiki/Pomelo-%E6%95%B0%E6%8D%AE%E5%8E%8B%E7%BC%A9%E5%8D%8F%E8%AE%AE">Pomelo 数据压缩协议</a></li> 
- <li><a href="https://github.com/NetEase/pomelo/wiki/Pomelo-%E9%80%9A%E8%AE%AF%E5%8D%8F%E8%AE%AE">网络通讯协议参考</a></li> 
-</ul> 
+<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>QCon北京2013：NASA云计算专家Khawaja，百度基础体系首席架构师林仕鼎</h3><p>距离QCon北京2013（4月25-27）还有一个月，现在大会讲师邀约工作已几近完成。具体日程安排、演讲信息请见<a href="http://www.qconbeijing.com/schedule.php">大会日程页面</a>。</p> 
+<p>需要注意的是，3月31日是大会8折购票的截止日，4月开始大会门票将进入全价销售期。如欲报名报请速点击<a href="http://qconbeijing.mymova.com/">报名页面</a>。</p> 
+<p>这次向大家介绍几位最新确认的重量级嘉宾。这些嘉宾的演讲内容很快就会更新在大会官网。此届QCon我们还会在开幕前提供各位讲师的ppt下载，敬请各位关注。</p> 
+<p><strong>主题演讲嘉宾：</strong></p> 
+<p><a href="http://www.qconbeijing.com/speaker.php?id=213">百度基础体系首席架构师林仕鼎</a>： 林仕鼎2002年毕业于北京航空航天大学计算机系，获得硕士学位。在加入百度之前的02年到07年，他在微软亚洲研究院系统研究组工作，历任助理研究员、副研究员、研究员，主要研究大规模分布式系统和高性能系统架构，期间发表数篇论文，被Operating SystemReview、HotOS、ICAC、IPTPS等国际顶级期刊或会议收录。</p> 
+<p>加入百度后，林仕鼎创建了Search Infrastructure组，致力于研究适合百度搜索引擎的基础架构和Ranking支撑系统。2010年6月，制定了百度统一基础架构发展的长期技术规划，推动相关团队的整合并创立基础架构部，担任主任架构师。作为首席架构师，他负责制定百度云的战略和发展规划，确立了“一人一云”的理念，并带领核心技术产品研发。</p> 
+<p>此次QCon，林仕鼎会在第一天上午的主题演讲中与大家分享他科研与工业相结合的独特经验，与系统架构设计过程中的经验要点。</p> 
+<p><a href="http://www.qconbeijing.com/speaker.php?id=212">美国宇航局（NASA）推进技术实验室成员Khawaja Shams</a>：Khawaja是美国宇航局推进技术实验室，行动规划软件（OPS）实验室成员。</p> 
+<p>他负责操作和运营机器人资产，包括地面、空中、水上机器人以及火星探测车等。 他是多个软件项目的负责人，火星科学实验室行动策划和序列子系统（APSS）服务端组件工程师，在推进技术实验室中同首席技术官保持着亲密的合作，力求在保证安全的情况下，将云计算实施到NASA的任务行动中。同时，他也是推进技术实验室，CIO技术委员会（CTAB）顾问。 Khawaja拥有加州大学圣地亚哥分校（UC San Diego）计算机科学学士学位，康奈尔大学计算机科学硕士学位。目前在南加州大学（USC）就读机器人学的博士学位。</p> 
+<p>我们可能想象不到的是，美国宇航局推进技术实验室（NASA Jet Propulsion Laboratory）也在云计算上投入了大量的人力物力，借以维持任务和IT之间的平衡。而Khawaja作为此实验室成员之一，将会为大家揭秘NASA的云计算应用。</p> 
+<p><strong>“<a href="http://www.qconbeijing.com/track01.html">知名网站案例分析</a>”专题：</strong></p> 
+<p><a href="http://www.qconbeijing.com/speaker.php?id=223">安全宝联合产品副总裁，前阿里巴巴集团高级安全专家吴翰清</a>：吴翰清毕业于西安交通大学少年班，从2000年开始研究网络攻防技术。在大学期间创立了在中国安全圈内极具影响力的组织“幻影”。2009年起，加入阿里巴巴云计算有限公司，负责云计算安全、反网络欺诈等工作，是阿里巴巴集团最具价值的安全专家。2012年9月10日他正式加盟创新工场旗下安全宝团队，担任安全宝联合产品副总裁。</p> 
+<p>吴翰清是还是著名安全图书<a href="book.douban.com/subject/10546925/;jsessionid=76BCCB781EA19E35E49F1ACC1CFDD8BB">《 白帽子讲Web安全》</a>的作者，并同时维护有微博<a href="http://weibo.com/u/1707085527">@aullik5</a>，个人网站<a href="http://weibo.com/u/1707085527">http://taosay.net</a>，以及他的微信公众帐号：道哥的黑板报。</p> 
+<p>在<a href="http://www.qconbeijing.com/speaker.php?id=141">QCon历届金牌主持冯大辉</a>主持的专题中，吴翰清会分享他在安全宝对互联网安全的最新经验及感悟。</p> 
+<p><strong>“<a href="http://www.qconbeijing.com/track10.html">机器学习与推荐算法</a>”专题：</strong></p> 
+<p><a href="http://www.qconbeijing.com/speaker.php?id=172">豆瓣网首席科学家王守崑</a>：王守崑现任豆瓣网首席科学家，负责豆瓣网整体算法架构设计和实施。加入豆瓣网七年以来，他领导建立了应用于各条产品线的个性化推荐系统和机器学习算法平台。目前专注于互联网信息架构与算法、web2.0网络模式创新、数字音乐、推荐系统与在线收听等应用。</p> 
+<p>在加入豆瓣网之前，王守崑曾从事供应链管理建模和咨询工作，有多篇针对中国市场的运营管理案例被北美商学院案例系统收录并使用。王守崑于2002年毕业于清华大学自动化系，分别获工学学士和工学硕士学位。</p> 
+<p><strong>“<a href="http://www.qconbeijing.com/track16.html">用户体验与产品设计</a>”专题：</strong></p> 
+<p><a href="http://www.qconbeijing.com/speaker.php?id=214">eico design创意总监，联合创始人张伟</a>：张伟(Rokey) 是界面用户体验设计公司eico design的联合创始人，之前曾就职于微软Windows Mobile用户体验设计团队，及金山软件与网易的界面设计团队。</p> 
+<p>他同时也是eico design的创意总监之一，服务过包含移动，家电，车载，物流，航运等众多新兴领域，主导包括华为，宝马，魅族，Google，Microsoft，搜狗等诸多产品的界面设计工作。2011年，与合伙人许士彦建立Weico产品品牌，致力于开发并运营优秀的社交类产品。目前拥有2500万用户的Weico微博客户端已是新浪微博最大的第三方客户端，并在2012年创建了全新的Weico+图片社交平台。</p> 
+<p>张伟的教育背景为广告品牌与创意领域，他一直致力于为用户提供直觉易用的操作体验，并创造具有品牌化与情感化的界面设计，从设计的角度发现商业，技术与美学的契合点，这也成为eico design在用户体验设计领域所坚持的设计思想。</p> 
+<p><a href="http://www.qconbeijing.com/speaker.php?id=208">Jing.fm 创始人，CEO施凯文</a>：施凯文是准89年中俄混血，从小学习古典钢琴，16岁考入中央音乐学院电子音乐制作专业，17岁第一次创业，2008年底创办Koocu音乐网，2010年创办Saylikes音乐网，Jing.fm是他目前正在从事的第四次创业，身兼创始人及CEO。产品自12年6月上线内测以来，引起互联网行业内的高度重视，揭开了第四代音乐产品的序幕。</p> 
+<p>重度音乐发烧友，重度互联网网民，偏执的完美主义者。在团队中承担全部产品设计，UI设计，UE设计、前端开发、智能算法设计、数据库内容规划等。精通Html5、Css、Javascript、Php等主流开发语言，并深度参与代码开发，积累了大量的交互设计与用户体验的实践经验。</p> 
+<p>曾因创新的产品设计理念及技术实现方式，被美国时代周刊亚洲版报道过。2012年底又被美国福布斯中文版评选为30岁以下年轻创业家，被多家媒体称为极客心文艺范的全能型创业人才。</p> 
+<p>&nbsp;</p> 
+<p><strong><span style="font-family: Lucida, 'Lucida Grande', Tahoma, sans-serif; font-size: 13px; line-height: 19px;">特别提醒：</span></strong><span style="font-family: Lucida, 'Lucida Grande', Tahoma, sans-serif; font-size: 13px; line-height: 19px;">本届QCon售票比以往同期更为火爆。若不想等门票售罄，请及早预定。现在报名还可享受9折优惠。团体购票（5人及以上）将享有更多优惠。详请咨询qcon【at】cn.infoq.com，或直接致电010-64738142。</span></p> 
 <p id="lastElm"></p><br><br><br><br><br><br></body></html>
