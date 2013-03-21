@@ -1,6 +1,9 @@
 <html>
  <head></head> 
- <body> 
+ <body>
+  <div>
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/19.java">Stanford Offers Free Introductory Course on iOS Programming</a>Stanford University is offering a free introductionary course &quot;Coding Together: Developing Apps for iPhone and iPad (Winter 2013)&quot; on iTunes U. All lectures can be downloaded as video podcasts along with slides in PDF format. The material is suitable for Objective-C and iOS programming beginners, though knowledge of object-oriented concepts and languages is required.
+  </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/18.java">Interview with Neil Bartlett about OSGi and the new Bndtools 2.0 release</a>Neil Bartlett, current maintainer of the popular Bndtools Eclipse plugin for OSGi has announced the release of Bndtools 2.0. InfoQ has interviewed Neil Bartlett to learn more about Bndtools and about OSGi in general. 
   </div> 
@@ -147,9 +150,6 @@
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/20.java">How can Agile make you Faster?</a>Delivering faster is one of the reasons that enterprises mention why want to use agile for software development. How can agile be used to become faster? 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/19.java">Red Gate Announces Simply Web Dev - Curated Guide for ASP.NET MVC</a>Red Gate Software based in UK has launched a new portal that enables students and developers to learn ASP.NET MVC with the help of wide range of resources. 
-  </div> 
+  </div>  
  </body>
 </html>
