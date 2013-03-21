@@ -2,16 +2,22 @@
  <head></head> 
  <body>
   <div>
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/0.py">Node.js 0.10がリリース</a>Node.js開発チームは、node.jsのバージョン0.10をリリースしたが、これは高パフォーマンスな非同期サーバーを構築するためのJavaScriptベースのプラットフォームである。このリリースのフィーチャとして、ストリーム処理するためのモジュールがより使いやすくなったこと、ドメインのエラーハンドリングの改善、パフォーマンス改善がある。チームは、また0.10の後、1.0リリース前にもう１つ安定バージョンのリリース(0.12)があることを発表した。
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/2.py">運用エンジニアの教育</a>先月のhangopsでは、テクノロジーの教育に熱心なパネリストが集まって運用エンジニアの教育機会を作成することについて話し合った。彼らは現在の運用エンジニアの仕事に見合う人物を見つけるのはこれまで以上に難しくなっていることを認め、どのようにこの問題を解決するか議論した。
   </div>
   <div>
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/49.py">Spring for Apache Hadoop 1.0リリース</a>SpringSourceはSpring for Apache Hadoop 1.0をリリースした。Spring for Apache Hadoopを使えば、開発者はSpring Frameworkを使ってHadoopアプリケーションを開発できる。また、Spring BatchとSpring Integrationとも簡単に統合できる。Spring for Apache HadoopはSpring Data umbrella projectのサブプロジェクトであり、オープンソースのApache 2.0ライセンスでリリースされている。
-  </div>
-  <div>
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/48.py">LLBLGen Pro v4.0 Betaリリース</a>Solutions DesignはLLBLGen Pro v4.0 Betaをリリースした。デザイナとランタイムが改善されており、Visual Studio 2010/2012のサポートが追加されている。
-  </div>
-  <div>
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/47.py">APIコミュニティでの議論 - ガバナンス対イノベーション</a>ガバナンスの問題がまたもや現れた。今回はAPIコミュニティにおいて，中でもイノベーションを主眼とする組織との関係について疑問を投げかけている。先日のAPI Strategy and Practiceカンファレンスで大きな話題となり，その後もネット上での議論が続いている。
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/1.py">ネイティブのPHP4拡張モジュールをマネージド版で置き換え</a>Phalanger、.NET と Mono用のPHPランタイムは、重要なマイルストーンに達し、11の人気のあるPHP拡張機能を.NET同等版で置き換えた。これらの拡張機能は、以前、ネイティブのCあるいはC++で書かれており、 Phalangerは32ビットモードでしか走らない、という制限があった。
+  </div> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/0.py">Node.js 0.10がリリース</a>Node.js開発チームは、node.jsのバージョン0.10をリリースしたが、これは高パフォーマンスな非同期サーバーを構築するためのJavaScriptベースのプラットフォームである。このリリースのフィーチャとして、ストリーム処理するためのモジュールがより使いやすくなったこと、ドメインのエラーハンドリングの改善、パフォーマンス改善がある。チームは、また0.10の後、1.0リリース前にもう１つ安定バージョンのリリース(0.12)があることを発表した。 
+  </div> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/49.py">Spring for Apache Hadoop 1.0リリース</a>SpringSourceはSpring for Apache Hadoop 1.0をリリースした。Spring for Apache Hadoopを使えば、開発者はSpring Frameworkを使ってHadoopアプリケーションを開発できる。また、Spring BatchとSpring Integrationとも簡単に統合できる。Spring for Apache HadoopはSpring Data umbrella projectのサブプロジェクトであり、オープンソースのApache 2.0ライセンスでリリースされている。 
+  </div> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/48.py">LLBLGen Pro v4.0 Betaリリース</a>Solutions DesignはLLBLGen Pro v4.0 Betaをリリースした。デザイナとランタイムが改善されており、Visual Studio 2010/2012のサポートが追加されている。 
+  </div> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/47.py">APIコミュニティでの議論 - ガバナンス対イノベーション</a>ガバナンスの問題がまたもや現れた。今回はAPIコミュニティにおいて，中でもイノベーションを主眼とする組織との関係について疑問を投げかけている。先日のAPI Strategy and Practiceカンファレンスで大きな話題となり，その後もネット上での議論が続いている。 
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/46.py">QConTokyo2013【ビッグデータ/分散技術】トラックのご紹介</a>スマートデバイスの台頭により、ウェブからのトラフィックは年々増加傾向にあります。ビッグデータを活用するには、データの収集・永続化・加工処理などすべての面において分散処理が必要となります。本トラックでは、今注目されている分散処理の最新情報について様々な分散処理基盤を紹介し、事例を交え紹介していきます。 
@@ -144,12 +150,6 @@
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/3.py">公共部門におけるアジャイル導入: FBIとロッテルダム港の事例</a>公共部門にはアジャイルソフトウェア開発手法を導入するニーズがある。FBIとオランダのロッテルダム港の事例は、アジャイルがどのように使われているかを示している。 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/2.py">Brent Ozar氏，SQL Serverの生産性向上について語る</a>SQL Serverコンサルタントとして著名なBrent Ozar氏が先日，SQL Serverでの生産性を向上するいくつかのテクニックを公表した。 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/1.py">'Adopt a JSR'のフォローアップオンライン会議が明日開催</a>世界中から40人以上のJUGリーダー/会員が参加した、1月18日の最初のオンライン会議に続いて、'Adopt a JSR' プログラムを支援している人々が2月27日水曜日にフォローアップ　オンライン会議をホストしている。 
-  </div>  
+  </div>   
  </body>
 </html>

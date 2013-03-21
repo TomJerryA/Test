@@ -1,32 +1,50 @@
-<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>Expired SSL Certificates Break Azure and TFS</h3><p class="western" style="margin-bottom: 0in"><span lang="en-US">Users of Windows Azure storage experienced a lengthy outage on February 22. &nbsp;T</span><span lang="en-US">eam Foundation Service (TFS) relies on Azure to provide backend storage, and so as a result also &nbsp;experienced</span><span lang="en-US"> a</span><span lang="en-US"> <a class="western" href="http://blogs.msdn.com/b/bharry/archive/2013/02/23/bad-day.aspx">nine hour outage</a>. &nbsp;</span>The outage was due to the expiration of <a class="western" href="http://en.wikipedia.org/wiki/SSL_certificate">SSL certificates</a> used to secure and authenticate HTTPS traffic.&nbsp;As key certificates expired, communication across HTTPS with the affected servers began to fail. HTTP communication remained operational in some cases, however it is by definition insecure and of use only to those customers who could tolerate communicating in plaintext.</p> 
-<p class="western" style="margin-bottom: 0in">Officially the outage began at 12:29 PST on February 22 and affected customers across all regions that were accessing Windows Azure storage using HTTPS. &nbsp;Availability was restored worldwide for all customers by 00:09 AM PST on February 23, 2013.</p> 
-<p class="western" style="margin-bottom: 0in;">Microsoft's Mike Neil, general manager of Windows Azure provided <a class="western" href="http://blogs.msdn.com/b/windowsazure/archive/2013/03/01/details-of-the-february-22nd-2013-windows-azure-storage-disruption.aspx">details</a> of the failure. Azure uses SSL to secure traffic for throughout the service, in particular between the 3 major storage types: blobs, queues, and tables. In this case, the outage began when the certificates for these areas began to expire:</p> 
+<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>Should You Create User Stories for Technical Debt?</h3><p>Agile teams sometimes struggle with the planning of pure technical tasks, like tasks that have to do with technical debt. Such tasks&nbsp;have no direct value for the user of a system, but have to be done to deliver working software. Should&nbsp;you create user stories to handle such technical tasks and technical debt, or not?</p> 
+<p>In the blog post <a href="http://www.industriallogic.com/blog/as-a-developer-is-not-a-user-story/">&quot;As a Developer…” Is Not a User Story</a>, Bill Wake talks about user stories that he encountered which do not have value for the customer. As an example he mentions the user story &quot;As a developer, I want to configure Jenkins so that we have continuous integration&quot;. Bill explains why he thinks we shouldn't call them user stories:</p> 
 <blockquote> 
- <ul> 
-  <li>*.blob.core.windows.net Friday, February 22, 2013 12:29:53 PM PST</li> 
-  <li>*.queue.core.windows.net Friday, February 22, 2013 12:31:22 PM PST</li> 
-  <li>*.table.core.windows.net Friday, February 22, 2013 12:32:52 PM PST</li> 
- </ul> 
+ <p>My argument is not that those activities are not good or important things to do (they are for this team), but that thinking of them as user stories misleads the team and its customers. Writing something in the <i>form</i> of a user story when it's not about <i>users</i> of the system misses the point.</p> 
 </blockquote> 
-<p class="western" style="margin-bottom: 0in;">Neil went on to describe how the automated process of monitoring and updating the SSL certificates in use by the Azure system broke down. The monitoring system notified the appropriate staff that updated certificates were needed-- these were then created and packaged in a routine system update. Unfortunately this update was not labeled as containing time-sensitive components, so it was deprioritized in favor of other updates.</p> 
-<p class="western" style="margin-bottom: 0in;">Since new certificates were created and marked updated in the monitoring service, no further update notices were sent. Thus the new certificates languished in the update queue and master certificate repository, but never made it to the production Azure environment.</p> 
-<p class="western" style="margin-bottom: 0in;">A corrective patch was created for deployment that restored HTTPS service to a majority of customers by 22:45 PST, with full service restoration declared February 23<sup>rd</sup> at 00:09 PST. As a result of the outage affected customers will receive 25% service credit. The automated certificate monitoring process has been updated so that certificates are monitored at the end points so that a failed/delayed deployment would not be overlooked.</p> 
-<p class="western" style="margin-bottom: 0in">Harry noted that running and maintaining large online systems is complex:</p> 
+<p>His opinion is that we should call them tasks in stead of user stories. Applying lean thinking, he considers them to be waste:&nbsp;&nbsp;&nbsp;</p> 
 <blockquote> 
- <p class="western" style="margin-bottom: 0in">Of course, one of the things you quickly learn when operating a large scale mission critical service is that you can’t assume anything is going to work... The hard thing about this is that anything can go wrong and it’s only obvious in hindsight what you should have been protecting against – so you have to try to protect against every possibility.</p> 
+ <p>From that perspective [of lean thinking], many of the activities teams do can be regarded as a type of waste, but we don't know how to develop software effectively without doing them. Lean teams talk about this kind of waste as &quot;Non-Value-Added But Necessary&quot;: work we do because we have to.</p> 
 </blockquote> 
-<p class="western" style="margin-bottom: 0in;">Neil observed that original Azure system suffered from a single point of failure:</p> 
+<p>Bill suggests to be critical on user stories where the role is somebody from development, in stead of an actual user of the software. Try to reframe such a user stories as functional behavior or quality characteristic and rephrase it, if that isn't possible then consider it to be a task. Task are there for the development team to track, but should not be put on the backlog as user stories since they&nbsp;are not delivering value:</p> 
 <blockquote> 
- <p class="western" style="margin-bottom: 0in">“While the expiration of the certificates caused the direct impact to customers, a breakdown in our procedures for maintaining and monitoring these certificates was the root cause. Additionally, since the certificates were the same across regions and were temporally close to each other, they were a single point of failure for the storage system.”</p> 
+ <p>(…) recognize that your team will sometimes just have tasks. You may decide to track tasks internally, but don't treat them or track them as direct progress on the developed system.</p> 
 </blockquote> 
-<p class="western" style="margin-bottom: 0in;">Users commenting on the outage noted the seriousness of the outage and the need for reliable systems. User “trievangelist” noted his workaround for NuGet during the outage:</p> 
+<p>Mattias Marschall provides a solution on how to handle technical tasks in a backlog, in the blog post <a href="http://www.agileweboperations.com/how-to-translate-business-value-of-things-that-are-technically-important">how to translate “business value” of things that are technically important</a>. He starts by explaining how he sees the relationship between user stories and technical tasks:</p> 
 <blockquote> 
- <p class="western" style="margin-bottom: 0in"><i>trievangelist 23 Feb 2013 6:49 AM #</i></p> 
- <p class="western" style="margin-bottom: 0in"><i>Thank you for posting this, Brian. We were impacted when our build processes, which use NuGet and rely on downloading the latest version of nuget.exe from nuget.org began failing. Thankfully we are using an internal NuGet gallery and I was able to work around the problem by using a local version of nuget.exe.</i></p> 
+ <p>User Stories should describe what a user wants the system to do. Purely technical tasks should usually be implemented as part of a User Story.</p> 
 </blockquote> 
-<p class="western" style="margin-bottom: 0in;">User Keith Richardson used the outage to explain why his firm is not interested in migrating systems to the cloud:</p> 
+<p>But what about&nbsp;technical tasks which are not&nbsp;directly related to a specific user story? Mattias suggest&nbsp;to put them on the product backlog:</p> 
 <blockquote> 
- <p class="western" style="margin-bottom: 0in;"><i>Keith Richardson 25 Feb 2013 8:44 AM #</i></p> 
- <p class="western" style="margin-bottom: 0in"><i>This is yet another reason we won't move to the cloud. Every 6-7 months you guys seem to have an outage of some sort or another...if this was internal we would fire someone/a vendor. I can't stress this enough. We would FIRE someone.</i></p> 
+ <p>To be able to put technical tasks into the product backlog for prioritization, just create a User Story for each of them. But, isn’t that cheating? Not if you can answer these two questions:</p> 
+ <ol> 
+  <li>Who benefits from the result?</li> 
+  <li>Why is this task necessary?</li> 
+ </ol> 
 </blockquote> 
-<p id="lastElm"></p></body></html>
+<p>With his solution you can have all the technical tasks covered by user stories in the backlog, either as a part of a user story for a customer, or with a user story specifically for the technical tasks:</p> 
+<blockquote> 
+ <p>If you’re able to formulate your technical tasks as a kind of User Story, your stake holders will be able to understand the necessity of them and will be able to prioritize them along with other User Stories.</p> 
+</blockquote> 
+<p>Bastian Buch explains in his blog post <a href="http://www.codovation.com/2012/06/effective-steps-to-reduce-technical-debt-an-agile-approach/">effective steps to reduce technical debt: an agile approach</a> that developers and product owner can have a different opinion on technical tasks that are related to technical debt:</p> 
+<blockquote> 
+ <p>Developers know about technical debt and are aware that it is important to face this problem.</p> 
+ <p>Product Owner often doesn’t understand the need and benefits of reducing technical debt and don’t consider or allow technical projects / stories in their backlog and release plan.</p> 
+</blockquote> 
+<p>He suggests that the&nbsp;product owner should take responsibility for reducing technical debt. Team members should discuss technical debt with the product owner, and work together&nbsp;to give&nbsp;it the right priority on the product backlog:</p> 
+<blockquote> 
+ <p>The team should remember the product owner that he is part of the team: his pain is the pain of the team and other way round. He is not the customer, payer or employer of the team but more a SME (subject matter expert) and manager / analyst of product requirements from different stakeholders.</p> 
+</blockquote> 
+<blockquote> 
+ <p>As a team give your product owner the guarantee that growth of the product will stay the most important part – but not just in a short team (Performance) but also in a long term (Health) manner.</p> 
+</blockquote> 
+<p>Bastian&nbsp;proposes that we should collect the technical problems into user stories, estimate&nbsp;the effort needed to solve it and&nbsp;the benefits that solving would bring. He calls the benefits “payment”, as solving the problem reduces the technical debt:</p> 
+<blockquote> 
+ <p>(…) we created stories marked as “TechnicalDebtItems” in JIRA for each task we defined. For bringing those items into a prioritized order and for drawing the right conclusions, we created a chart to visualize how the efforts relate to the payment and vise versa.</p> 
+</blockquote> 
+<p>Making things visible helps the product owner and the team to collaboratively reduce technical debt.</p> 
+<blockquote> 
+ <p>[With] the visualization of the debt and the finding of a possible repayment plan (…) the team now can focus on the most important steps. An important side effect: This overview is also a great tool for working with the product owner and other stakeholders because it gives him a good transparency regarding technical debt.</p> 
+</blockquote> 
+<p id="lastElm"></p><br><br><br><br><br><br></body></html>
