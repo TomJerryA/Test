@@ -1,8 +1,8 @@
 <html>
  <head></head> 
- <body>
-  <div>
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/24.htmlb">敏捷教练指导的另一种选择</a>Phil Abernathy声称敏捷教练这个角色可能将日暮西山，基于向敏捷团队中加入敏捷实践经理的见解，他提出了敏捷教练的另一种选择。敏捷实践经理将与团队“风险共担（skin in the game）”，其职责不仅仅包括优化团队流程，同时也负责通过产品交付客户价值。
+ <body> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/24.htmlb">敏捷教练指导的另一种选择</a>Phil Abernathy声称敏捷教练这个角色可能将日暮西山，基于向敏捷团队中加入敏捷实践经理的见解，他提出了敏捷教练的另一种选择。敏捷实践经理将与团队“风险共担（skin in the game）”，其职责不仅仅包括优化团队流程，同时也负责通过产品交付客户价值。 
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/23.htmlb">Etsy工程师Sam Haskins谈代码部署，监控与故障处理</a>在本次访谈中，Sam Haskins分享了他在Etsy做DevOps的经验。Etsy使用Git做代码管理，平均每天提交的更新数量在30次左右，有时甚至达到70个。在如此高频率提交代码的情况下，他们如何进行代码审查？如何在每次更新之后监控系统性能？如何处理故障？下面，Sam将一一解答。 

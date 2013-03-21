@@ -1,6 +1,9 @@
 <html>
  <head></head> 
- <body> 
+ <body>
+  <div>
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/13.java">Quickstart for New Users of Opscode Chef</a>OpsCode is providing a new avenue for learning chef aimed at equipping new users with what they need to start building &quot;Infrastructure as Code&quot;. The content leads users through a quickstart, common cases, screen casts, and troubleshooting.
+  </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/12.java">Xtend 2.4 Adds Active Annotations, Android Support and More</a>Xtend is a statically compiled programming language for the JVM but which has type inference to reduce boilerplate code. The new Xtend 2.4 release adds active annotations, which can be used to generate standard patterns and reduce coding errors, as well as Android support and collection literals. InfoQ caught up with Sven Efftinge to find out what else is new with the Xtend 2.4 release. 
   </div> 
@@ -147,9 +150,6 @@
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/14.java">Latest News from Microsoft and Amazon Regarding Android</a>Microsoft Azure now has an Android SDK including notification push to Android devices. Amazon makes available a Mobile Ads API that can be used to display adds from their network on any Android device in parallel with those from Google AdMob. 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/13.java">PhoneGap 2.5 Enables Application Cache and InAppBrowser Geolocation</a>PhoneGap 2.5 has been released with support for application cache and InAppBrowser geolocation including several updates and bug fixes. 
-  </div> 
+  </div>  
  </body>
 </html>
