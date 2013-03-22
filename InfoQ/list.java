@@ -1,8 +1,8 @@
 <html>
  <head></head> 
- <body>
-  <div>
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/20.java">Edge.js Combines Node.js with .NET</a>The Edge.js project combines Node.js with the .NET platform. Developers can use C# on Node.js or provide Node.js functionality to C# applications-- allowing them to use the best tool for each task. InfoQ had the opportunity to speak with author Tomasz Janczuk about the project and his future plans.
+ <body> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/20.java">Edge.js Combines Node.js with .NET</a>The Edge.js project combines Node.js with the .NET platform. Developers can use C# on Node.js or provide Node.js functionality to C# applications-- allowing them to use the best tool for each task. InfoQ had the opportunity to speak with author Tomasz Janczuk about the project and his future plans. 
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/19.java">Stanford Offers Free Introductory Course on iOS Programming</a>Stanford University is offering a free introductionary course &quot;Coding Together: Developing Apps for iPhone and iPad (Winter 2013)&quot; on iTunes U. All lectures can be downloaded as video podcasts along with slides in PDF format. The material is suitable for Objective-C and iOS programming beginners, though knowledge of object-oriented concepts and languages is required. 
@@ -150,6 +150,6 @@
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/21.java">Erlang/OTP R16B Brings Improved Parallelism</a>The newley released Erlang/OTP R16B brings several performance enhancements among its new features. Code modules can now be loaded in a non-blocking manner, networking code for ports has been improved, and VM processes have been parallelized. 
-  </div>  
+  </div> 
  </body>
 </html>
