@@ -2,7 +2,10 @@
  <head></head> 
  <body>
   <div>
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/22.java">An Analyzation of Parse MBaaS</a>In this third in a series of posts on the new breed of companies offering MBaaS, InfoQ examines what makes Parse tick. Parse, like its growing list of competitors, saves mobile app developers the time and hassle required to create one’s own efficient mobile backend.
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/23.java">When to Use WPF with Async and Reactive Extensions</a>Ian Griffiths has published a six part series on when to use, and when not to use, .NET 4.5’s async features with WPF. The series begins with a post titled Too Much, Too Fast with WPF and Async.
+  </div> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/22.java">An Analyzation of Parse MBaaS</a>In this third in a series of posts on the new breed of companies offering MBaaS, InfoQ examines what makes Parse tick. Parse, like its growing list of competitors, saves mobile app developers the time and hassle required to create one’s own efficient mobile backend. 
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/21.java">ZeroTurnaround Acquires Javeleon</a>Java software tools maker ZeroTurnaround has acquired Javeleon, a Denmark based startup that produces a product related to ZeroTurnaround's popular JRebel dynamic Java class-reloading tool. 
@@ -147,9 +150,6 @@
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/24.java">Stimulsoft Released Report Designer For WinRT</a>Stimulsoft has released a new report designer for WinRT that enables you to create and edit reports on any device running Windows 8. 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/23.java">Vagrant Support for Amazon AWS and Rackspace</a>HashiCorp's latest addition to support Amazon AWS and Rackspace as providers for Vagrant enables new usage scenarios: for the first time it will be possible to spin up Virtual Machines in the cloud instead of the developer's desktop. 
   </div>  
  </body>
 </html>
