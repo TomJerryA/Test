@@ -1,42 +1,13 @@
-<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>Java 8会解决PermGen OutOfMemoryError问题吗?</h3><p><b>Java 8</b><b>会解决</b><b>PermGen OutOfMemoryError</b><b>问题吗</b></p> 
-<p>Oracle正在合并HotSpot和JRockit的代码库，作为该项目的一部分，Oracle宣布他们会<a href="https://blogs.oracle.com/java/entry/java_7_questions_answers">将PermGen从Java 8的HotSpot JVM中移除</a>。然而很多人都认为这意味着所有的PermGen错误也将消失不见。因为现在可以通过<a href="http://jdk8.java.net/download.html">Java 8 Early Access</a>构建版本来检查移除PermGen的效果，所以是时候看看是不是所有PermGen问题都已解决了。</p> 
-<p><b>PermGen</b><b>是什么？</b></p> 
-<p>Jon Masamitsu（JVM开发者，现就职于Oracle）曾于2006年在其博客上解释过<a href="https://blogs.oracle.com/jonthecollector/entry/presenting_the_permanent_generation">永久代（Permanent Generation）的用途</a>：永久代包含了类相关的信息，包括字节码、类名和JIT信息。它被保存在一个独立的空间中，因为它通常是静态的，而且将其独立出来可以对垃圾收集进行更多优化。</p> 
-<p><b>PermGen</b><b>带来的问题</b></p> 
-<p>很多开发者都在其系统中见过“java.lang.OutOfMemoryError: PermGen space”这一问题。这往往是由类加载器相关的内存泄漏以及新类加载器的创建导致的，通常出现于代码热部署时。相对于正式产品，该问题在开发机上出现的频率更高，正是这个原因。当它在产品中出现时，开发者可以拿到生成的堆转储文件，并利用像<a href="http://www.eclipse.org/mat/">Eclipse Memory Analyzer Toolkit</a>这样的工具来寻找应该卸载却没被卸载的类加载器。除非通过特定配置阻止，PermGen也是会进行垃圾回收的。然而，在出现内存泄漏时，就没什么可回收的了。在产品中最常见的“问题”是64MB这个默认值太低了。常用的解决方法是将其设置为256MB。</p> 
-<p><b>Java 8</b><b>改变了什么</b></p> 
-<p>Jon 在<a href="http://mail.openjdk.java.net/pipermail/hotspot-dev/2012-September/006679.html">HotSpot开发邮件列表</a>中解释了Java 8将发生的变化：Java 8中再也没有PermGen了。其中的某些部分，如被intern的字符串，在Java 7中已经移到了普通堆里。其余结构在Java 8中会被移到称作“Metaspace”的本机内存区中，该区域在默认情况下会自动生长，也会被垃圾回收。它有两个标记：MetaspaceSize和MaxMetaspaceSize。</p> 
-<p>应InfoQ的要求，Jon Masamitsu解释了其背后的设计目标：</p> 
-<blockquote> 
- <p>移除了PermGen，用户就无需考虑如何正确设置其大小了，这是我们的一个目标。</p> 
- <p>如果知道应用程序的类数据需要更多空间，可以把MetaspaceSize设置的比默认值大些。 这能减少一些启动时的GC次数。不过没必要这么做。除非你想尽量减少GC次数，否则我不建议这么做。</p> 
- <p>如果想限制类数据所占空间的大小，可以设置MaxMetaspaceSize。如果怀疑出现类加载器泄漏，并且希望应用在耗尽太多本机内存前停止，应该设置它。还有一种使用场合，那就是在一个服务器上运行了多个应用，而且用户希望限制每个应用所占的类空间大小。</p> 
-</blockquote> 
-<p>因此设置MetaspaceSize会潜在影响头几次垃圾回收，大部分情况下并不重要。这也反映出类似旧式PermSize标记的用途。</p> 
-<p>在设置了MaxMetaspaceSize的情况下，该空间的内存仍然会耗尽，进而引发“java.lang.OutOfMemoryError: Metadata space”错误。因为类加载器的泄漏仍然存在，而通常Java又不希望无限制地消耗本机内存，因此设置一个类似于MaxPermSize的限制看起来也是合理的。与PermGen类似，verbose: GC日志会打印Metaspace当前的内存消耗情况。使用命令行标记PermSize或MaxPermSize会导致一个警告，通知用户切换为Metaspace标记。</p> 
-<p><b>结论</b></p> 
-<p>因为Metaspace和PermGen的理念几乎是相同的，管理员在将Java 7升级到Java 8时，只需执行sed 'e/Perm/Metaspace/g'就能修改相应标记。</p> 
-<p>总的来说，变化看起来平淡无奇。大多数情况下，只是名字变了一下。默认情况下不限制Metaspace，以避免所选的默认值太小，但为了保证系统的稳定性又需要设置一下最大值。幸运的是我们可以复用PermSize和MaxPermSize的配置——几乎每个人都用过——只需要改一下标记即可。遗憾的是，从托管Java堆迁移到本机内存意味着堆转储文件中有价值的故障诊断信息少了许多，正如Kirk Pepperdine<a href="http://mail.openjdk.java.net/pipermail/hotspot-dev/2012-September/006684.html">所担忧的</a>。</p> 
-<p>最后，类加载器泄漏的问题和以前一样，仍然会出现。</p> 
-<p><b>译者补记</b>：</p> 
-<p>英文站原新闻下有些评论，读者Ronald Miura并不同意本文的结论，他不客气地评论道：</p> 
-<blockquote> 
- <p>如果将类信息加载到有限内存区域中，最后会出现OutOfMemoryError。如果不使用有限的区域，你会得到“不稳定的系统”。</p> 
- <p>还“平淡无奇”，你想要什么，让JVM自动修正你的内存泄漏bug吗？</p> 
-</blockquote> 
-<p>来自Oracle的Cameron Purdy倒是很平和：</p> 
-<blockquote> 
- <p>还是会好一些的。之前不管是不是需要，JVM都会吃掉那块空间……如果设置得太小，JVM会死掉；如果设置得太大，这块内存就被JVM浪费了。理论上说，现在你完全可用不关注这个，因为JVM会在运行时自动调校为“合适的大小”。</p> 
-</blockquote> 
-<p>peter lin对Ronald Miura的意见表示赞同，他补充说：</p> 
-<blockquote> 
- <p>过去我使用并测试过JRockit，由JVM来管理PermGen，开发者就轻松多了。我都记不清tomcat用户在邮件列表中问过我多少次相关的问题了。</p> 
-</blockquote> 
-<p>Ronald Miura后来又补充了一下自己的意见：</p> 
-<blockquote> 
- <p>……我认为这种改变是巨大的进步。</p> 
- <p>我很反感本文的结论，把这种改动诋毁为“平淡无奇”。如果你期望的是无解问题（自动修复你的bug）的神奇方案，那才算“平淡无奇”吧。</p> 
-</blockquote> 
-<p>亲爱的InfoQ读者，你怎样看待这个问题？欢迎参与讨论。</p> 
-<p><b>查看英文原文</b>：<a href="http://www.infoq.com/news/2013/03/java-8-permgen-metaspace;jsessionid=B2B0F3E01BB44CE5CC60180630AA9567">Will Java 8 solve PermGen OutOfMemoryError?</a></p> 
+<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>使用Kinvey MBaas编码与生活</h3><p>最近许多文章谈及MBaaS（移动后端服务）这一新兴行业背后的那些组织，本文是该系列文章的第二篇。InfoQ将带您看一看马萨诸塞州坎布里奇的Kinvey公司。该公司由德州大学的三名校友创建。获得了投资者<u><a href="http://www.bostonseed.com/">Boston Seed</a></u>的一些帮助。Kinvey的第三方数据集成，支持多平台、通知、版本化API和业务逻辑功能，这必将助力于开发者后端。</p> 
+<p><a href="http://idaconcpts.com/">智能手机应用</a>开发者的一个重要选择在于是否花费时间建立他们自己的后端云服务。随着MBaaS提供商的爆发性增长，人们会发现许多开发者将选择由Kinvey这样的公司提供的更简单的方式来构建后端云服务。<a href="http://deployd.com/">用不了多久就会这样</a>。</p> 
+<p>Kinvey最近将<u><a href="http://www.brightcove.com/en/content-app-platform">Bright Cove</a></u>的<u><a href="http://devcenter.kinvey.com/appcloud/">App Cloud</a></u>加入了它的平台列表。像Kinvey的其他平台一样，，只需要下载代码库并放进你的项目，就能给你的应用添加一个功能丰富的后端。下边是Kinvey支持的开发者平台的完整列表——App Cloud、<u><a href="http://devcenter.kinvey.com/ios/">iOS</a></u>, <u><a href="http://devcenter.kinvey.com/android/">Android</a></u><u>、<a href="http://devcenter.kinvey.com/html5/">HTML5</a>、<a href="http://devcenter.kinvey.com/nodejs/">Node.js</a>、<a href="http://devcenter.kinvey.com/phonegap/">PhoneGap</a>、<a href="http://devcenter.kinvey.com/titanium/">Titanium</a>、<a href="http://devcenter.kinvey.com/triggerio/">Trigger.io</a></u> 和 <u><a href="http://devcenter.kinvey.com/rest/">REST API</a></u>。</p> 
+<p>Kinvey对新手开发者来说是一个好的选择。Kinvey的后端服务的收费是<a href="http://www.kinvey.com/pricing">预付费</a>的。在他们的网站上提供了各种平台的<a href="http://devcenter.kinvey.com/android/tutorials">教程</a>、<a href="http://devcenter.kinvey.com/android/samples">示例</a>和<a href="http://devcenter.kinvey.com/android/guides/getting-started">入门指南</a>。另外还有教授如何使用后端构建<a href="http://www.kinvey.com/how-to-make-an-app-ios">iOS</a>和<u><a href="http://www.kinvey.com/how-to-make-an-app-android">Android</a></u>移动应用的免费电子书。</p> 
+<p>以iOS电子书为例，该书由<u><a href="http://greatwriting.com/">Randall Cronk</a></u> 和 <u><a href="http://www.kinvey.com/about/michaelkatz">Michael Katz</a></u><u>编</u>写，包含了很多快速构建应用的诀窍，比如如何使用Xcode的MVC模式框架实现‘通过应用委托对象提供app特有行为’。</p> 
+<p>正如所料，一切倾向于鼓励用户采用Kinvey的MBaaS。所以对待这一切，我们仅持保留态度。</p> 
+<p>说起古老的智慧，Claudio Tesoriero在博客<u><a href="http://blogs.forrester.com/michael_facemire/12-04-25-mobile_backend_as_a_service_the_new_lightweight_middleware">influential Michael Facemire</a></u>的回复中，强调了你如果将所有的数字鸡蛋放入一个MBaaS篮子里所面临的潜在困境。</p> 
+<p>阻止我们在诸多项目中使用同一个baas提供商的原因在于“供应商锁定”问题。如果该baas供应商改变定价策略或者停止业务会怎么样？如果因此而将应用改用其他后端可能会非常痛苦而且耗费不菲。</p> 
+<p><b>查看英文原文</b>：<a href="http://www.infoq.com/news/2013/02/KinveyMBaaS;jsessionid=79ADCF05C5AFD987E382641864DFA99E">To Live and Code in Kinvey MBaaS</a></p> 
+<hr /> 
+<p>感谢<a href="http://www.infoq.com/cn/bycategory.action;jsessionid=79ADCF05C5AFD987E382641864DFA99E?authorName=赵震一">赵震一</a>对本文的审校。</p> 
+<p>给InfoQ中文站投稿或者参与内容翻译工作，请邮件至<a href="mailto:editors@cn.infoq.com">editors@cn.infoq.com</a>。也欢迎大家通过新浪微博（<a href="http://www.weibo.com/infoqchina">@InfoQ</a>）或者腾讯微博（<a href="http://t.qq.com/infoqchina">@InfoQ</a>）关注我们，并与我们的编辑和其他读者朋友交流。</p> 
 <p id="lastElm"></p><br><br><br><br><br><br></body></html>

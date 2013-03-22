@@ -1,7 +1,13 @@
-<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>Stimulsoft发布WinRT报表设计器</h3><p>Stimulsoft发布了<a href="http://www.stimulsoft.ru/en/products/reports-winrt">Stimulsoft Reports.WinRT</a>，这是一款新的<a href="http://en.wikipedia.org/wiki/Windows_Runtime">WinRT</a>平台上的报表设计器，允许用户在任何运行Windows8的设备上创建并编辑报表。你能够将报表导出为PDF格式，还能将图片保存为报表工具所支持的任何一种格式，它支持基于<a href="http://en.wikipedia.org/wiki/ARM_architecture">ARM</a> 和Intel 的Windows 8版本，能够将报表保存为30多种文件格式，例如PDF、Microsoft Word和Excel等。</p> 
-<p>Stimulsoft Reports.WinRT支持与触摸界面相关的手势功能，如缩放、拖拽、滑动、滚动和导航，这有助于用户更容易地与报表内容交互，同时能够将报表保存为XML格式或保存在云端。它还会使用非标准大小自动设置打印页大小，同时支持<a href="http://www.microsoft.com/visualstudio/eng#whats-new">Visual Studio 2012</a> 。</p> 
-<p>Stimulsoft Reports.WinRT包含一个新的示例PrintFromCode、QuickButtons面板，对图表处理做了优化，同时还解决了图表中与YRightAxis相关的bug以及WinRT多条件加载存在的bug。</p> 
-<p>报表设计器界面支持的语言超过28种，如阿拉伯语、白俄罗斯语、 保加利亚语、简体中文、 繁体中文、 克罗地亚语、捷克语、 荷兰语、 英语、 波斯语、 法语、 格鲁吉亚语、 德语、匈牙利语、意大利语、 印度尼西亚语、 立陶宛语、 挪威语、波兰语、 葡萄牙语、 罗马尼亚语、俄语、塞尔维亚语、斯洛伐克语、西班牙语、瑞典语、土耳其语和乌克兰语。</p> 
-<p>“我们的基本任务是通过WinRT API创建一个能够运行于Windows 8 平台上的报表，该报表会带有专门的云Web服务，能够使用仪表盘、报表和网格等终端客户应用程序分析数据。该应用程序提供了从报表规划到将其发布到服务器这个完整周期的所有功能，”Stimulsoft的支持经理Andrew Savin说。</p> 
-<p><b>查看英文原文</b>：<a href="http://www.infoq.com/news/2013/03/stimulsoft-reports-winrt;jsessionid=B57CBAA449DD26F12E6DFB1E91D9BDD8"><b>Stimulsoft Released Report Designer For WinRT</b></a></p> 
+<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>jBPM及Alfresco Activiti创始人Tom Baeyens筹划将BPM带到云端</h3><p>JBoss <a href="http://www.jboss.org/jbpm/">jBPM</a>（被Red Hat收购）和<a href="http://www.activiti.org/">Activiti</a>（由Alfresco公司支持）创始人Tom Baeyens最近发布了<a href="http://www.effektif.com/">Effektif</a>，一款基于云的业务流程管理（BPM）新工具，用于自动化流程管理。新成立的公司与Signavio公司建立了合作关系，Signavio公司创立于2009年，主要提供SaaS和内部流程编排器解决方案。Signavio将对Effektif投资120万欧元以加快产品开发、建立销售机会。作为Signavio投资方案中的一部分，Effektif总部已迁从比利时迁往德国柏林；同时，Signavio的联席CEOTorben Schreiter已加入Effecktif的董事会。</p> 
+<p>Baeyens告诉InfoQ，他的核心计划是：“当把BPM带到云端的时候，在动态方面变得更加重要。”他认为，使业务用户能够定义和改变系统内的工作流程是必不可少的，因此在传统的BPMN建模工具上构建云端可扩展的流程执行引擎是不足够的。</p> 
+<p>Baeyens打算将Effektif分为3个概念层。第一层是一个基于浏览器的向导，旨在提供一个简单的机制使企业用户能够定义任务和为这些任务及切换（handover）创建表单。协调和反馈可以通过电子邮件实现。此外，这一层还将包括一个沙箱环境以允许用户去试验这些流程。Baeyens说道：“我们的目标是能让企业用户能在不到5分钟的时间内建立他们的第一个简单流程。”</p> 
+<p>第二层增加了一组适配器以便与其它基于云端包装的应用程序——如Salesforce和Google Apps——进行整合。虽然仍然不需要编码，但Baeyens承认这一层将需要一些技术知识以进行设置集成。因此，很可能这项任务依然由IT技术人员承担。</p> 
+<p>第三层，即最后一层，将允许开发人员编写要包含在工作流中的定制软件。这里所采取的方法类似<a href="http://aws.amazon.com/swf/">亚马逊的简单工作流服务</a>。Effektif将为每个系统活动维护一个任务列表。开发人员可以编写一段代码，通过一个RESTful API从该列表中获得任务并执行工作，并将结果返回给云端的工作流引擎。返回结果后会触发一个触发器以继续整个工作流程程。根据Baeyens介绍，任何语言——“PHP，Java等等”——都可以通过这样的方法去调用工作流。同样的机制也可适用于整合在防火墙后面的企业内部系统。</p> 
+<p>就核心架构方面而言，该工作流引擎采用Java语言开发，并使用<a href="http://www.bpmn.org/">业务流程模型和符号（BPMN）2.0标准</a>。Signavio公司的联席CEO Gero Decker告诉我们，该产品将充分利用Signavio流程编辑器中提供的流程建模功能。“这样做的好处是，在Signavio中已经支持的流程模型导入功能（例如XPDL）也能同样用在Effektif。”</p> 
+<p>REST层使用<a href="http://restlet.org/">Restlet</a> 框架构建，利用<a href="http://wiki.fasterxml.com/jacksonhome">Jackson</a> 去解析处理JSON，<a href="http://www.mongodb.org/">MongoDB</a> 用作提供数据源。目前团队还没决定在前端使用何种Javascript框架。</p> 
+<p>Effecktif的第一个beta版本将会在今年夏天发布，在年底将会公开发布。价格方面还没拟定，但很大可能是基于每一个流程实例模型进行收费。</p> 
+<p><b>查看英文原文</b>：<a href="http://www.infoq.com/news/2013/03/baeyens-activiti;jsessionid=6C186E5581DCA15F5651AEC24D31B9DD">Tom Baeyens, creator of jBPM and Alfresco Activiti, Starts New Venture to Bring BPM to the Cloud</a></p> 
+<hr /> 
+<p>感谢<a href="http://www.infoq.com/cn/bycategory.action;jsessionid=6C186E5581DCA15F5651AEC24D31B9DD?authorName=杨赛">杨赛</a>对本文的审校。</p> 
+<p>给InfoQ中文站投稿或者参与内容翻译工作，请邮件至<a href="mailto:editors@cn.infoq.com">editors@cn.infoq.com</a>。也欢迎大家通过新浪微博（<a href="http://www.weibo.com/infoqchina">@InfoQ</a>）或者腾讯微博（<a href="http://t.qq.com/infoqchina">@InfoQ</a>）关注我们，并与我们的编辑和其他读者朋友交流。</p> 
 <p id="lastElm"></p><br><br><br><br><br><br></body></html>

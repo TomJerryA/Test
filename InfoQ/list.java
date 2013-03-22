@@ -1,8 +1,8 @@
 <html>
  <head></head> 
- <body>
-  <div>
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/21.java">ZeroTurnaround Acquires Javeleon</a>Java software tools maker ZeroTurnaround has acquired Javeleon, a Denmark based startup that produces a product related to ZeroTurnaround's popular JRebel dynamic Java class-reloading tool.
+ <body> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/21.java">ZeroTurnaround Acquires Javeleon</a>Java software tools maker ZeroTurnaround has acquired Javeleon, a Denmark based startup that produces a product related to ZeroTurnaround's popular JRebel dynamic Java class-reloading tool. 
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/20.java">Edge.js Combines Node.js with .NET</a>The Edge.js project combines Node.js with the .NET platform. Developers can use C# on Node.js or provide Node.js functionality to C# applications-- allowing them to use the best tool for each task. InfoQ had the opportunity to speak with author Tomasz Janczuk about the project and his future plans. 
@@ -150,6 +150,6 @@
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/22.java">HTC America Drops Ball on Mobile Security</a>Manufacturer HTC America affirmatively acknowledged Federal Trade Commission (FTC) charges that millions of its customers’ Android based mobile devices were using software with potentially serious security vulnerabilities. The leading mobile device making company was ordered to make a patch available before the end of March 2013 to all concerned parties. 
-  </div>  
+  </div> 
  </body>
 </html>
