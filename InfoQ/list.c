@@ -1,6 +1,9 @@
 <html>
  <head></head> 
- <body> 
+ <body>
+  <div>
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/23.c">Pesquisadores exp&otilde;em vulnerabilidades do SSL</a>Pesquisadores da universidade do Texas em Austin e da Universidade Stanford publicaram uma pesquisa que exp&otilde;e vulnerabilidades cr&iacute;ticas no uso de bibliotecas SSL em aplica&ccedil;&otilde;es n&atilde;o-browser, antes consideradas altamente seguras. Saiba os detalhes.
+  </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/22.c">O Agile realmente traz mais rapidez?</a>O Agile torna mesmo as equipes mais r&aacute;pidas? Conhe&ccedil;a discuss&otilde;es recentes sobre o tema. 
   </div> 

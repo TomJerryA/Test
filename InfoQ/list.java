@@ -1,6 +1,9 @@
 <html>
  <head></head> 
- <body> 
+ <body>
+  <div>
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/22.java">An Analyzation of Parse MBaaS</a>In this third in a series of posts on the new breed of companies offering MBaaS, InfoQ examines what makes Parse tick. Parse, like its growing list of competitors, saves mobile app developers the time and hassle required to create one’s own efficient mobile backend.
+  </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/21.java">ZeroTurnaround Acquires Javeleon</a>Java software tools maker ZeroTurnaround has acquired Javeleon, a Denmark based startup that produces a product related to ZeroTurnaround's popular JRebel dynamic Java class-reloading tool. 
   </div> 
@@ -147,9 +150,6 @@
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/23.java">Vagrant Support for Amazon AWS and Rackspace</a>HashiCorp's latest addition to support Amazon AWS and Rackspace as providers for Vagrant enables new usage scenarios: for the first time it will be possible to spin up Virtual Machines in the cloud instead of the developer's desktop. 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/22.java">HTC America Drops Ball on Mobile Security</a>Manufacturer HTC America affirmatively acknowledged Federal Trade Commission (FTC) charges that millions of its customers’ Android based mobile devices were using software with potentially serious security vulnerabilities. The leading mobile device making company was ordered to make a patch available before the end of March 2013 to all concerned parties. 
-  </div> 
+  </div>  
  </body>
 </html>
