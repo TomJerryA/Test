@@ -1,7 +1,24 @@
-<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>Erlang/OTP R16B Brings Improved Parallelism</h3><p class="western" style="margin-bottom: 0in">Erlang is a general purpose functional programming language with an emphasis on supporting concurrency and real-time distributed systems. Last week saw the release of Erlang R16B, bringing several improvements that bring increased parallelization to various areas of the language's virtual machine.</p> 
-<p class="western" style="margin-bottom: 0in"><span lang="en-US">Erlang is used in several different projects, including distributed databases, communication systems, web servers, and high-frequency trading platforms on Wall Street. Prominent projects or companies using Erlang include <a class="western" href="https://github.com/blog/112-supercharged-git-daemon">GitHub</a>, high-frequency trading,&nbsp;</span>and multiplayer gaming servers (i.e.: <a class="western" href="http://lanyrd.com/2011/erlang-factory-london/sgwyq/">Call of Duty</a>).</p> 
-<p class="western" style="margin-bottom: 0in"><span lang="en-US">This new release of Erlang has an extensive list of changes in its <a class="western" href="http://www.erlang.org/download/otp_src_R16B.readme">release notes</a>, and there are several items to highlight among the improvements. The first is that Erlang virtual machine has improved its internal handling of processes. This allows for parallel reads and writes, which benefits performance by reducing contention during the spawning and terminating of processes. </span></p> 
-<p class="western" style="margin-bottom: 0in">Port handling has been greatly improved to allow for parallel reads and writes in this area. This is combined with Erlang's new ability to dynamically allocate ports and the raise of the default port limit to 65,536 from 1023. Programmer's should note that one result of the new system is that signals are now truly asynchronously delivered. Previously signals may have had a specific delivery order, but that order can no longer be assumed or relied on. As a result, &quot;...this may cause Erlang programs that have made false assumptions about signal delivery order to fail even though they previously succeeded.&quot;</p> 
-<p class="western" style="margin-bottom: 0in">The Erlang Run-Time System (ERTS) has been improved to support loading code in a non-blocking manner. Previously a single thread model was used to load Erlang modules, which halted the VM during the loading process. In this release Erlang supports non-blocking operations so that the code can be loaded without stopping code execution. This should improve the performance of the VM when running on an SMP system during the loading of new modules.</p> 
-<p class="western" style="margin-bottom: 0in">The new release supports Windows with precompiled binaries for both 32 and 64 bit platforms. Other platforms are supported via their appropriate package managers. The <a class="western" href="https://github.com/erlang/otp">source code</a> can be browsed on GitHub. (R16B Source <a class="western" href="http://www.erlang.org/download/otp_src_R16B.tar.gz">archives</a> are also ready for download.)</p> 
+<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>ZeroTurnaround Acquires Javeleon</h3><p>Java software tools maker ZeroTurnaround has acquired Javeleon, a Denmark based startup that produces a product related to ZeroTurnaround's popular JRebel dynamic Java class-reloading tool. The acquisition includes exclusive rights to all related intellectual property.</p> 
+<p>Javeleon was founded in 2012 to commercialize technology built upon research at the Maersk McKinney Moeller Institute at the University of Southern Denmark.</p> 
+<p>Javeleon co-founders Dr. Allan Gregersen and Michael Rasmussen will join forces with ZeroTurnaround’s product and engineering teams in Estonia.</p> 
+<p>InfoQ asked Alex Laats, ZeroTurnaround President &amp; COO about the acquisition.</p> 
+<p><b>Will you be acquiring any Javeleon staff besides the founders?</b></p> 
+<blockquote>
+ Nope. Javeleon just launched in 2012 and Allan and Michael were the entire team.
+</blockquote> 
+<p><b> </b></p> 
+<p><b>Will the acquisition instantly drive more market share for JRebel?</b><b> </b></p> 
+<blockquote>
+  Javeleon targeted the same market as JRebel. Current market share for Javeleon is negligible, so this is really about strengthening ZeroTurnaround's grip as the dominant player in the market for Java developers.
+</blockquote> 
+<p><b>What will Javeleon's technology add to the JRebel feature set?</b></p> 
+<blockquote>
+ The most obvious difference is the ability to handle dynamic updates for super classes. This was on ZeroTurnaround's roadmap, and the acquisition will accelerate the availability of this feature.
+</blockquote> 
+<p><b>Will the Javeleon tool continue to be marketed under that brand, or will it be completely incorporated into JRebel?</b></p> 
+<blockquote>
+ The Javeleon product will no longer be marketed under that brand. The technology will be integrated with future releases of JRebel.
+</blockquote> 
+<p>Laats said that they are not yet ready to talk about the future roadmap in terms of timing but wanted users to know that there is a lot of cool technology on the way that will strengthen JRebel's capabilities.</p> 
+<p>The terms of the deal have not been disclosed.</p> 
 <p id="lastElm"></p><br><br><br><br><br><br></body></html>

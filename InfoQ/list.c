@@ -1,8 +1,8 @@
 <html>
  <head></head> 
- <body>
-  <div>
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/22.c">O Agile realmente traz mais rapidez?</a>O Agile torna mesmo as equipes mais r&aacute;pidas? Conhe&ccedil;a discuss&otilde;es recentes sobre o tema.
+ <body> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/22.c">O Agile realmente traz mais rapidez?</a>O Agile torna mesmo as equipes mais r&aacute;pidas? Conhe&ccedil;a discuss&otilde;es recentes sobre o tema. 
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/21.c">O Java 8 resolver&aacute; o ‘PermGen OutOfMemoryError’?</a>Como parte do projeto em andamento para mesclar o c&oacute;digo do HotSpot e JRockit, a Oracle anunciou que ir&aacute; remover a PermGen da JVM HotSpot na vers&atilde;o 8 do Java. Conhe&ccedil;a os impactos da mudan&ccedil;a e as recentes discuss&otilde;es sobre o assunto. 
