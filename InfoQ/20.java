@@ -1,35 +1,25 @@
-<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>How can Agile make you Faster?</h3><p>A reason that enterprises mention why&nbsp;want to use agile for software development is that they want&nbsp;to deliver faster. There are studies that show that agile projects&nbsp;can be&nbsp;faster, like the Columbus Agile Productivity Benchmark Project described in <a href="http://www.infoq.com/news/2012/11/success-agile-projects;jsessionid=9C5397F8FB554AADCDFFC081F34108DA">evidence of success of agile projects</a>. How can agile&nbsp;be used&nbsp;to become&nbsp;faster?</p> 
-<p>In the blog post <a href="http://news.idg.no/cw/art.cfm?id=1FFBF5B6-0806-32B0-91FADBB886D47464">who says agile development can't be faster?</a>, Matthew Heusser shared a discussion that he had at the agile testing days conference:</p> 
+<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>Edge.js Combines Node.js with .NET</h3><p class="western" style="margin-bottom: 0in"><span lang="en-US">The JavaScript project&nbsp;<a class="western" href="http://nodejs.org/">Node.js</a>&nbsp;now has the ability to run in one process with .NET code thanks to the </span><a class="western" href="https://github.com/tjanczuk/edge"><span lang="en-US">Edge.js</span></a><span lang="en-US"> project </span><span lang="en-US">(formerly called <a class="western" href="https://github.com/tjanczuk/owin">owin</a>)</span><span lang="en-US">. Similar to the <a class="western" href="http://www.infoq.com/news/2012/05/frijters_IKVM;jsessionid=5B56E72FB535CD53D556D76BD4F57239">IKVM project</a> </span><span lang="en-US">which unites .NET and Mono</span><span lang="en-US">, </span><span lang="en-US">Edge.js</span><span lang="en-US"> proposes a &quot;best of both worlds&quot; approach </span><span lang="en-US">by combining .NET with Node.js. &nbsp;This allows developers to maximize the effectiveness of their project by taking advantage of the strengths of each tool.</span></p> 
+<p class="western" style="margin-bottom: 0in">Created by Tomasz Janczuk, Edge.js is intended in part to make it easier for developers to maximize their Node.js usage without resorting to non-CLR languages like C/C++. Edge.js' approach provides several benefits, including the ability to execute CPU-bound calcualtions in .NET without blocking Node.js' event loop. It also allows using C# to write Node.js extensions to access Windows-platform specific features without resorting to the use of C/C++.</p> 
+<p class="western" style="margin-bottom: 0in">The connection between node.js an Edge.js is seamless and bilateral: node.js can call .NET methods and .NET code can call Node.js. Edge.js can compile C# source at run time or it can be pre-compiled before Edge.js starts.</p> 
+<p class="western" style="margin-bottom: 0in">InfoQ was fortunate to have the opportunity to discuss the project with Janczuk and talk about his future plans for Edge.js:</p> 
+<p class="western" style="margin-bottom: 0in"><b><b>InfoQ: &nbsp;Any specific motivations for the project beyond simply desiring to provide connection between C# and Node.js?</b></b>&nbsp;</p> 
 <blockquote> 
- <p>At Agile Testing Days in Potsdam, Germany, in November 2012, Lisa Crispin and Janet Gregory, authors of Agile Testing: A Practical Guide , made the bold claim that &quot;agile means faster&quot; is a myth.</p> 
+ <p class="western" style="margin-bottom: 0in;"><b>Janczuk:&nbsp;</b>&quot;Edge.js aspires to provide developers with a choice of technology that best suites the task at hand at a finer scope than the entire application. Edge.js is based on the premise that everything can be done in either node.js or .NET, but specific things are often better done with one of them. Until now the choice between node.js and .NET was a choice that developers had to make at the scope of the entire application. With Edge.js, developers have the option of using .NET or node.js for aspects of their application for which particular technology makes more sense.&quot;</p> 
 </blockquote> 
-<p>Later in the conference, Janet Gregory explained to Matthew Heusser what she meant with this:</p> 
+<p>&nbsp;</p> 
+<p class="western" style="margin-bottom: 0in"><b>InfoQ: The .NET examples all seem to be C#, does Edge.js require C#? And if so, would language support be broadened to other .NET platform languages?</b></p> 
 <blockquote> 
- <p>The point of agile is not speed, she says. It might be a by-product, but it won't happen right this second. (…) An agile conversion slows you down, at least in the short term-and that short term is not a week or two. It may be a year or two.</p> 
+ <p class="western" style="margin-bottom: 0in;"><b>Janczuk:</b>&nbsp; &quot;Edge.js allows .NET code to be integrated with a node.js application either by specifying a pre-compiled CLR assembly, or by including .NET source code within the node.js application. Edge.js supports any CLR language that can generate a pre-compiled assembly with a Func&lt;object,Task&lt;object&gt;&gt; delegate. When literal .NET code is included in the node.js application, edge.js currently only supports C#.&quot;</p> 
+ <br /> 
 </blockquote> 
-<p>Matthew provides several arguments why he considers agile to be faster. He explains how building the right things and skipping requirements that are not worth doing saves time. Another reason to use agile is that “The Old Way Isn't Fast, Either<strong>”:</strong></p> 
+<p class="western" style="margin-bottom: 0in"><b>InfoQ: &nbsp;What are the goals for the project over the next 6-12 months?</b></p> 
 <blockquote> 
- <p>(…) comparing an agile team that can't get something done in a year to a more traditional team that can is a false comparison. In a year, the traditional team will have 12-and-a-half requirements done, a mess on the floor and nothing to ship.</p> 
+ <p class="western" style="margin-bottom: 0in;"><b>Janczuk: </b>“Edge.js plans to remain a small component with relatively few fundamental concepts that enable interop between .NET and node.js in-process. Scenario-specific functionality, for example access to MS SQL, writing to Windows Event Logs, or access to X.509 certificate store, is expected to evolve as new modules that depend on edge.js rather than by expanding the scope of edge.js itself. Some notable plans for edge.js itself include support for Mono, compiling CLR languages other than C# and hosting node.js within a .NET process.”</p> 
+ <br /> 
 </blockquote> 
-<p>He concludes his blog post by explaining why he disagrees, and explains how he thinks that agile can help teams to become faster:</p> 
+<p class="western" style="margin-bottom: 0in"><b>InfoQ: &nbsp;Given your professional employment at Microsoft as a Development Manager, w</b><b>ill this remain an independent project or at some part would it become a formal part of Microsoft tooling?</b></p> 
 <blockquote> 
- <p>One question remains: Is it faster? Crispin and Gregory might argue that it does not matter, that focusing on pure speed in the short term leads to shortcuts, pain and slow performance in the long term. I contend that teams can focus on eliminating waste and improve velocity as they improve process.</p> 
+ <p class="western" style="margin-bottom: 0in;"><b>Janczuk: </b>&quot;While Microsoft has a track record for embracing open source technologies, there are no plans currently for edge.js to become part of any Microsoft product.&quot;</p> 
 </blockquote> 
-<p>In <a href="http://skipoleschris.blogspot.nl/2012/07/making-agile-go-fast.html">making agile go fast</a>, Chris Turner&nbsp;reflects on reasons why agile project can go slow. He describes four reasons that he often sees, and gives some suggestions how to handle them:</p> 
-<ul> 
- <li>The wrong people: Remove people from the team&nbsp;who aren’t following good engineering discipline or are&nbsp;making things more complex.</li> 
- <li>Putting the process first: Establish open&nbsp;communication and self organising and empowered teams.</li> 
- <li>Using the wrong technologies: give teams authority to make technology decisions, and allow technology choices to be reversed if they hinder delivery.</li> 
- <li>Making the architecture too complex: Keep your software&nbsp;as simple as possible, refactor.&nbsp;</li> 
-</ul> 
-<p>Neil Killick describes in his blog post <a href="http://neilkillick.com/2012/10/24/sustainable-pace-the-fastest-way-to-deliver-software/">sustainable pace – the Fastest way to deliver software</a>&nbsp;how asking an agile team to speed up can slow down software development. He tells a story about&nbsp;an agile&nbsp;team that is capable of delivering&nbsp;on average 10 stories in every 2-week Sprint, where the number of stories to be delivered is increased:</p> 
-<blockquote> 
- <p>Now imagine we asked the team to take on just ONE story every Sprint. (…) Well, we can’t be sure but it is fairly safe to assume that the 1 story is guaranteed to be delivered. We can also be pretty sure that it will be of an extremely high quality</p> 
- <p>(…) we ask the team to deliver 2 stories per Sprint. While it’s highly likely that the team will surely deliver the 2 stories, the probability is slightly less than when we asked them to deliver 1 story. So we have a little less predictability.</p> 
- <p>Now imagine we’re struggling to hit a contractual deadline so we feel the need to “speed up”. So we ask the team that predictably delivers 10 stories to deliver 12 (now we’re over capacity). Or even 14? (…) the “faster” we ask (or worse, tell) our teams to go, the&nbsp;less predictable at delivering software we become, and that software is more likely to be of a lower quality.</p> 
-</blockquote> 
-<p>He advices to allow teams to work at a sustainable pace:</p> 
-<blockquote> 
- <p>(…) by allowing the team to find the right balance and deliver high quality software at their capacity, a cycle of success is created.</p> 
-</blockquote> 
+<p>Edge.js is an open source project released under version 2 of the Apache License. &nbsp;Janczuk has an&nbsp;<a class="western" href="http://tjanczuk.github.com/edge/#/">overview</a>&nbsp;available on the project's website that includes code samples for those seeking more information.&nbsp;</p> 
 <p id="lastElm"></p><br><br><br><br><br><br></body></html>

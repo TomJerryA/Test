@@ -1,0 +1,64 @@
+<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>Application Performance Management Maturity Model</h3><p>As anyone who has worked in an enterprise IT organization will know, good tools too often go to waste. Sometimes the tool does not meet the expectations or requirements; sometimes the advocate leaves the organization; or sometimes the technology simply becomes obsolete after the vendor is acquired or the product is killed off. There is no be-all, end-all solution to this problem, but if your job is to purchase a tool like APM there are some steps you can take to make it less likely that your software becomes shelfware. Here are a few of the lessons I’ve learned over a career as a monitoring architect and a buyer of APM.</p><h3>1. Document the Pain</h3><p>Nobody will agree to spend money on a tool unless there is some problem actually hurting your business (e.g. lost revenue, productivity impact, customer satisfaction). If you want to justify a purchase, find a tangible problem and <b>document it</b>. This will preferably be an issue with a business/mission critical application such as your eCommerce platform, online trading application, payment gateway, risk calculation, settlement system, etc.</p><p>Find some application or service that is impacting your business in a meaningful way due to poor performance and/or downtime and document the following:</p><ul> 
+ <li>Number of issues and severity level</li> 
+ <li>Mean Time To Repair (MTTR – usually the average amount of time from first impact to problem resolution)</li> 
+ <li>Quantifiable measure of impact on business (e.g. dollars lost per minute, potential customers lost, trades lost per minute).</li> 
+ <li>Average number of employees involved in troubleshooting each issue</li> 
+ <li>Root cause of each incident</li> 
+</ul><p>You will use this data in your evaluation document and your business justification down the road.</p><h3>2. Take Stock of What You Have</h3><p>Many IT organizations have dozens of tools in their possession that are rarely, if ever, used. If you haven’t already done so, you need to take inventory of what software you already own and document your findings. You will use this information for years to come as long as you keep it up to date. Your inventory should address:</p><ul> 
+ <li>What tools exist and what category should they belong to? (e.g. Database Monitoring, Network Monitoring, OS Monitoring, Desktop Monitoring)</li> 
+ <li>How many licenses do we have and are they current?</li> 
+ <li>What are they good at?</li> 
+ <li>What are they not good at?</li> 
+ <li>What would be classified as an APM tool?</li> 
+ <li>If I already have an APM tool why is it not being used properly?</li> 
+</ul><p>Put labels on your existing tools and understand what they do. This will help to identify where your weaknesses really are, and if you have any tools in your possession that aren’t being fully utilized already.</p><h3>3. Uncover Your Blind Spots</h3><p>Now that you have the overall landscape of your monitoring ecosystem laid out, you need to see if there are any gaping holes. One way to do this is to compare your existing toolset against a model of what an application performance management solution should include, like <a href="http://apmdigest.com/gartners-5-dimensions-of-apm">Gartner’s 5 Dimensions of APM</a>. Gartner’s model includes the five following criteria for a “complete” APM solution:</p><ol> 
+ <li>End User Experience Monitoring: Measuring the response time of your application all the way to the end user. It’s not good enough to just understand how fast your application runs within the confines of the data center(s).</li> 
+ <li>Application Topology Mapping: Automatic detection and display of all components involved in the delivery of your application. You need to know what application components are in use at any given time, but especially when there is an issue impacting your users.</li> 
+ <li>Business Transaction Profiling: Detecting and measuring the response time of all application component activity initiated by a single user request. This is not the same as measuring the response time of a web page!</li> 
+ <li>Deep Application Diagnostics: Detecting and measuring the run time code execution within your application containers. If your current or prospective solution does not load into the application container you will NOT have this important capability.</li> 
+ <li>Analytics: Intelligence applied to data that provides you with actionable information. This is not the same as reporting, and analytics can (and should) be a key differentiator between competing solutions.</li> 
+</ol><p>Gartner’s model should give you an idea of what you’re looking for in an APM solution. Most software doesn’t incorporate all five aspects of APM on its own, so many organizations use a combination of different tools to get the complete visibility they need. Take a look at the tools listed in your inventory to find out where the holes are in your APM strategy.</p><h2>A New Maturity Model for APM</h2><p>Maturity models often fail because they’re too theoretical. Vendors shove maturity models at their customers in a last-ditch attempt to improve adoption and retention rates, but the customer is simply too busy solving problems to care. That’s why I’m proposing my own maturity model for APM, one based in real-world experience fighting fires and using APM tools rather than theories about how APM should be used. In this section I’ll present my new maturity model and provide some example questions that an APM buyer or user might ask in each stage.</p><h3>What Questions Are You Asking?</h3><p>The best indicator of where you are in the maturity model is determined by the kinds of questions and statements that that come up in your organization. For example, when my child asks where babies come from, I know just about where he belongs in the Life Maturity Model—and any other child asking that question is probably in about the same stage regardless of age. To make it easier to identify where you and your organization lie, I’ve organized my maturity model by the types of questions you might be asking at each stage in the process.</p><h3>Hirsch’s APM Maturity Model</h3><h4>Level 0 – What Just Happened?</h4><ul> 
+ <li>We just got a bunch of phone calls that the Website/Application is slow. Really?</li> 
+ <li>CPU, memory, disk, and network all look great. Why is it still so slow?</li> 
+ <li>You start making phone calls or start/join a conference call asking 
+  <ul> 
+   <li>Did you change anything?</li> 
+   <li>Do you see anything in the log files?v</li> 
+   <li>Are we having network problems?</li> 
+   <li>Can someone get the DBA on the line? It has to be the database!</li> 
+   <li>It just started working again. Did anyone change anything?</li> 
+   <li>Is it fixed?</li> 
+  </ul> </li> 
+</ul><ul> 
+ <li>3AM phone call from help desk…It’s broken again. Damn!</li> 
+ <li>How does a business transaction relate to IT infrastructure?</li> 
+</ul><h4>Level 1 – Too much information!</h4><ul> 
+ <li>Our new monitoring tool sure does provide a lot of data. Look at all these charts to spend hours digging through.</li> 
+ <li>It took a long time to set up all of those alert thresholds but I bet it will be worth it.</li> 
+ <li>Why so many alerts? Did everything break at the same time?</li> 
+ <li>Is anything really wrong? I don’t know, go test the site/app to find out.</li> 
+ <li>It worked great in dev/test/qa. What’s different about prod?</li> 
+ <li>We profiled our code in dev and it is still slowing down in prod. Why?</li> 
+ <li>It’s still slow for our customers? It looks fine from the office.</li> 
+ <li>Our <a href="http://www.appdynamics.com/about-us-overview.php">APM tool</a> is okay for testing but we wouldn’t dare use it in production.</li> 
+ <li>Does anyone know what dependencies exist between our applications?</li> 
+ <li>I heard about something called DevOps. Any idea what it is?</li> 
+</ul><h4>Level 2 – Whew, that’s getting better!</h4><ul> 
+ <li>We’re still getting a lot of alerts but now we know if apps are slow or broken.</li> 
+ <li>We don’t set alert thresholds very often; our tooling alerts us automatically when important metrics deviate from their baselines.</li> 
+ <li>Looks like some of the functions in our app are always slow. Let’s focus on optimizing the ones that are used the most or are the most important.</li> 
+ <li>We built a dashboard for our app to show when it gets slow or breaks.</li> 
+ <li>We can see everything going on in test and prod and know what’s different between environments.</li> 
+ <li>We know if any of our end users are impacted because we monitor every business transaction.</li> 
+ <li>Yep, the problem is on line 45 of the DoSomething method.</li> 
+ <li>We automatically deploy monitoring with our apps. It’s part of our build/release process.</li> 
+ <li>Our applications and their dependencies automatically get mapped by our tools. No need to guess what will break if we make a change.</li> 
+ <li>Wouldn’t it be cool if we could automatically react to that spike in workload so our site won’t slow down or crash?</li> 
+ <li>I wonder if the business felt any impact from that problem?</li> 
+</ul><h4>Level 3 – APM Rockstar</h4><ul> 
+ <li>We built a business AND technology dashboard so that everyone could see if there was any impact at any given time.</li> 
+ <li>All of our monitoring tools are integrated and provide a holistic view of the health of each component as well as the entire application.</li> 
+ <li>Whenever there is an application slowdown (or when we predict there will be a slowdown) due to spikes in user activity, our tooling automatically adapts and spins up new instances until the spike ends.</li> 
+ <li>When any of our application nodes are not working properly, our tooling automatically removes the bad node and replaces it with a new functional node.</li> 
+ <li>The data derived from our APM toolset is used by many different functional groups within the organization spanning both technology and business.</li> 
+</ul><p>From looking at these questions and statements, you can probably identify which level of this maturity model you and your organization belong to. Even more importantly, you may have an idea about how to advance along the maturity path by looking at what you’ll have accomplished by the next step in the model. Obviously, utilizing APM software is an essential part of attaining higher levels of APM maturity, but good processes and well-trained people are also critical components of success. The only way to become an APM Rockstar is with a careful balance of all three components: people, processes and technology.</p><h2>About the Author</h2><p><strong><img vspace="3" hspace="3" align="left" _p="true" _href="img://Jim_Hirschauer.JPG" alt="" src="http://www.infoq.com/resource/articles/apm-maturity-model/en/resources/Jim_Hirschauer.JPG;jsessionid=E165C4F6AA1A97BB79FB18DE3A7E2521" />Jim Hirschauer</strong> is Tech Evangelist at AppDynamics. Before joining AppDynamics Jim spent years on the user side of APM solving problems, fighting fires, and trying to convince all of his APM vendors that they could (and should) do better. Jim’s viewpoint is a result of work in a high pressure Financial Services environment but his methods and approach apply to any IT organization that strives for greatness.</p><div class="clearer-space"></div><br><br><br><br><br><br></body></html>
