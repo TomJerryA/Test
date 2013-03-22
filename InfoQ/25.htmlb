@@ -1,0 +1,378 @@
+<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>详解Java 7中新的文件API</h3><p>Java 7向语言中引入了一些有用的特性，其中包括一个新的I/O文件包。相对于老的java.io包，这个包针对文件系统——特别是基于POSIX的系统——提供了粒度更细的控制功能。本文首先介绍一下新的API，之后通过一个基于Web的文件管理器项目WebFolder来详细探索这些API。该项目提供了一种管理远程计算机上文件系统的机制。它支持文件系统的遍历以及文件的查看、重命名、复制和删除等操作。我们可以利用新的I/O文件包扩展该项目，使之能够操作ZIP文件的内容，并能监视修改操作。WebFolder可以免费从<a href="http://webfolder.sf.net" target="_blank">http://webfolder.sf.net</a>下载。</p><p>尽管基本文件操作API在不同版本之间的确也有些更新，但Java团队决定为Java 7提供一个新设计的替代包，以一种新的方式来涵盖文件系统操作。</p><p>基本文件操作API仍然位于java.nio.file包及其两个子包java.nio.file.attribute和java.nio.file.spi中。新API把文件相关的操作从java.io包中分离出来，而且为使文件系统的管理更为直观，还提供了一些额外的方法。概念上，新API构建为一组实体接口和操作类，其中实体接口包含的是一个文件系统中的基本对象，而操作类包含的是文件系统自身之上的操作。这一理念从java.util包继承而来，在java.util包中，像Collections和Arrays等类提供了很多操作，分别用于集合和数组等基本聚合数据结构。为避免混淆，尤其是要避免java.io包和java.nio.file一起使用时出现问题，新包中的基类和接口采取了不同的命名方法。</p><p>新包不仅重新组织了支持文件和文件系统操作的类，还扩展了API的功能，比如提供了更为简单的文件复制和移动方式。</p><h3>常规文件操作与新文件操作相关类之对比</h3><p>下表是这些包中基类和接口的简单概述：</p><table cellspacing="0" cellpadding="0" border="1" style="width: 100%;"> 
+ <tbody> 
+  <tr> 
+   <td>Java &lt; 7 java.io，javax.swing.filechooser</td> 
+   <td>Java &gt;= 7 java.nio.file</td> 
+   <td>注释</td> 
+  </tr> 
+  <tr> 
+   <td>File</td> 
+   <td>Path和Files</td> 
+   <td>File类同时提供了文件位置和文件系统操作，而新API将其分为两部分。Path提供的只是一个文件位置，还支持与路径相关的额外操作；Files支持文件操作，还提供了很多File类中没有的新功能，比如复制或读取整个文件的内容，或者设置文件属主。</td> 
+  </tr> 
+  <tr> 
+   <td>FileSystemView</td> 
+   <td>FileSystem</td> 
+   <td>FileSystemView类提供了底层文件系统的一个视图，仅用于Swing文件选择器的上下文中。FileSystem类可以表示定义于本地、远程或其他可选存储机制（如ISO映像或ZIP归档）之上的不同文件系统。FileSystem类包含了一些工厂，用于提供如Path等不同接口的具体实现。</td> 
+  </tr> 
+  <tr> 
+   <td>没有类似的类</td> 
+   <td>FileStore</td> 
+   <td>表示文件存储相关的某些属性，如文件大小。可以从一个特定的Path或FileSystem类重新获取。</td> 
+  </tr> 
+ </tbody> 
+</table><p>除了对象和操作的组织方式不同之外，新文件系统API能够在大多数方法和构造器中利用相当新的Java特性，如自动装箱（autoboxing），因而新API用起来更整洁，也更容易。<br /> 下面几部分我们会更详细地看一下特定改进。</p><h3>文件系统遍历与分组操作</h3><p>新文件包引入了一种新的文件系统遍历方法，相比于之前基于数组和过滤器的版本，内存使用效率有所改进。此外，新方法也使深度遍历文件系统成为可能。新的实现使用了访问者设计模式。尽管可以模仿访问者模式，使用支持普通文件的过滤器来执行遍历操作，但要提供简单且内存高效的多层遍历算法会困难得多。</p><p>访问者模式是作为FileVisitor接口引入的。因为这是个泛型接口，你可能会认为可以使用基于File的实现来遍历文件系统，然而新I/O文件只支持实现了Path接口的对象。该接口声明了四个方法，SimpleFileVisitor类是该接口的一个实现，开发者可以继承这个类，这样在给定情况下只需实现所需的任何方法即可。下表简要概述了FileVisitor的各个方法以及它们在SimpleFileVisitor类中的行为：</p><table cellspacing="0" cellpadding="0" border="1" style="width: 100%;"> 
+ <tbody> 
+  <tr> 
+   <td>方法名</td> 
+   <td>用途</td> 
+   <td>默认情况</td> 
+  </tr> 
+  <tr> 
+   <td>visitFile</td> 
+   <td>除非定义了过滤控制，否则会在遍历的每个普通文件（包括符号链接）上调用该方法。任何有意义的文件相关操作都可以在此处理，比如备份文件或查找文件内容。也可以在这里决定遍历是继续还是停止。该方法不会在目录上调用。</td> 
+   <td>返回CONTINUE</td> 
+  </tr> 
+  <tr> 
+   <td>preVisitDirectory</td> 
+   <td>如果访问的项是目录而非文件，调用的将是该方法而非visitFile。它支持跳过特定目录，也支持为复制操作在目标位置创建相应的目录。</td> 
+   <td>返回CONTINUE</td> 
+  </tr> 
+  <tr> 
+   <td>postVisitDirectory</td> 
+   <td>该方法在整个目录的遍历已经完成时调用，可以方便地结束目录上的操作。比如，如果遍历的目的是删除所有文件，那么目录本身可以在该方法中删除。</td> 
+   <td>返回CONTINUE</td> 
+  </tr> 
+  <tr> 
+   <td>visitFileFailed</td> 
+   <td>如果在文件系统遍历过程中出现任何未处理的异常，则会调用该方法。如果异常被重新抛出，那么所有遍历都将停止，而且异常会被传播到使用Files.walkFileTree启动文件系统遍历的代码处。可以在这里分析异常并决定是否继续遍历。</td> 
+   <td>重新抛出IOException</td> 
+  </tr> 
+ </tbody> 
+</table><p>正如你所看到的，该接口非常强大，支持文件系统上的大部分习惯操作，包括归档、搜索、备份和删除文件。其异常处理也非常灵活。然而，如果只是需要获取某个目录的内容而无需深度遍历，使用老式的File.list()操作就很方便，新IO文件中也有一个类似的功能，不过返回的是一个集合而非纯数组。</p><h3>java.io包中没有的新特性</h3><p>尽管新IO文件提供的文件系统遍历和分组操作确实非常有用，但标准的java.io包也支持这些操作。不过新IO文件提供了旧包所没有的特定于操作系统的功能。对链接和符号链接的支持就是一个重要例子，现在它们可以在任何文件系统遍历操作中创建或处理。当然，只有在支持链接和符号链接的文件系统中才能工作，否则会抛出UnsupportedOperationException。另一个扩展是能够管理文件属性，如属主和权限。重复一下，如果底层文件系统不支持，会抛出IOException或UnsupportedOperationException。下表是对链接和扩展文件属性相关操作的简要概述。所有这些操作都可以从Files类调用。</p><table cellspacing="0" cellpadding="0" border="1" style="width: 100%;"> 
+ <tbody> 
+  <tr> 
+   <td>操作</td> 
+   <td>用途</td> 
+   <td>注释</td> 
+  </tr> 
+  <tr> 
+   <td>createLink</td> 
+   <td>创建映射到某个文件的硬连接</td> 
+   <td>&nbsp;</td> 
+  </tr> 
+  <tr> 
+   <td>createSymbolicLink</td> 
+   <td>创建映射到文件或目录的符号链接</td> 
+   <td>&nbsp;</td> 
+  </tr> 
+  <tr> 
+   <td>getFileAttributeView</td> 
+   <td>以特定于文件系统实现的FileAttributeView形式访问属性</td> 
+   <td>虽然该方法带来了提供一组预定义属性集的灵活性，但使用的仍是具体实现类，因此限制了代码的可移植性</td> 
+  </tr> 
+  <tr> 
+   <td>getOwner</td> 
+   <td>获得文件属主</td> 
+   <td>只能用于支持属主属性的文件系统</td> 
+  </tr> 
+  <tr> 
+   <td>getPosixFilePermissions</td> 
+   <td>获得文件权限</td> 
+   <td>特定于POSIX系统</td> 
+  </tr> 
+  <tr> 
+   <td>isSymbolicLink</td> 
+   <td>判断给定路径是否为符号链接</td> 
+   <td>特定文件系统</td> 
+  </tr> 
+  <tr> 
+   <td>readSymbolicLink</td> 
+   <td>读取符号链接的目标路径</td> 
+   <td>特定文件系统</td> 
+  </tr> 
+  <tr> 
+   <td>readAttributes</td> 
+   <td>读取文件属性</td> 
+   <td>该方法有两个以不同形式返回属性的变体</td> 
+  </tr> 
+  <tr> 
+   <td>setAttribute</td> 
+   <td>设置文件属性</td> 
+   <td>属性名可能包含FileAttributeView限定词</td> 
+  </tr> 
+ </tbody> 
+</table><p>如果打算使用表中列出的操作，请参考新IO文件的文档。</p><h4>监视</h4><p>该API也提供了一种监视机制，因此可以针对事件（如创建、修改和删除）监视特定文件或目录的状态。遗憾的是，该API并不保证为监视事件采用推送模型，而且大部分情况下会使用轮询机制，在我看来，这降低了实现的吸引力。监视服务也依赖于系统，所以无法利用这种服务构建真正可移植的应用。有5个接口涵盖了该功能。下表是这些接口及其用法的简要概述。</p><table cellspacing="0" cellpadding="0" border="1" style="width: 100%;"> 
+ <tbody> 
+  <tr> 
+   <td>接口</td> 
+   <td>用途</td> 
+   <td>用法</td> 
+  </tr> 
+  <tr> 
+   <td>Watchable</td> 
+   <td>这种类型的对象可以注册到监视服务中。注册后得到的WatchKey可用于监控事件修改。</td> 
+   <td>必须通过该接口的某个具体实现来注册感兴趣的与对象关联的监视事件。请注意，Path也扩展了Watchable接口。</td> 
+  </tr> 
+  <tr> 
+   <td>WatchService</td> 
+   <td>文件系统中用于注册Watchable对象的服务，使用WatchKey来监控修改。</td> 
+   <td>WatchService可以从FileSytem对象获得。</td> 
+  </tr> 
+  <tr> 
+   <td>WatchKey</td> 
+   <td>监视键是注册所得到的凭据，用于查询修改事件。</td> 
+   <td>该对象可以保存下来，之后用于查询修改事件。当存在相关修改事件时，可以直接从WatchService获得WatchKey对象。</td> 
+  </tr> 
+  <tr> 
+   <td>WatchEvent</td> 
+   <td>携带监视事件。</td> 
+   <td>WatchEvent对象会被传给事件通知调用，可以从中获得事件种类和受影响对象的路径。</td> 
+  </tr> 
+  <tr> 
+   <td>WatchEvent.Kind</td> 
+   <td>携带监视事件的种类信息。</td> 
+   <td>用于在注册Watchable对象时指定感兴趣的特定事件类型。在通知调用的WatchEvent中也有提供。</td> 
+  </tr> 
+ </tbody> 
+</table><p>这里强调两个可能会使用监视服务的场景。一个是，只需要监控特定对象的修改时。在这种情况下，Watchable对象可以注册到监视服务中并获得监视键，监视键用于轮询修改事件。针对监视键的轮询机制不是阻塞的，因此即使未出现新事件，轮询仍然会获得一个空列表。为减轻轮询的负载，可以在两次轮询间引入一个延迟；作为代价，这会丢失一些通知事件发生时的精度。第二个场景利用了监视服务的监视机制，适于轮询与多个被监视对象相关的修改事件。和第一个场景一样，需要注册所有的Watchable对象，不过可以忽略返回的监视键。这里没有使用监视键的轮询机制，而是使用服务轮询机制来检索与所激发修改事件相关的监视键，然后使用针对监视键的轮询操作来处理事件。在这种情况下，监视键应保证指定了某些事件。可以使用一个线程来管理所有的监视键。监视服务的轮询机制更为灵活，因为它支持阻塞（blocking）、非阻塞（non-blocking）和带超时的阻塞（blocking with timeout）等操作。所以也能够更精确。后面我们会看一个有关第二个场景的例子，前面提到的WebFolder项目用到了它。</p><h4>工具操作</h4><p>新I/O文件的下一个主要特性是一组工具方法。这组方法使新包成为自给自足的，因为大部分使用情况下都不需要调用标准java.io包中的功能。输入流、输出流和字节通道都可以直接使用Files类的方法获得。该API支持完整的操作，如复制或移动文件。此外，整个文件的内容可被当作字符串列表或字节数组读出。不过需要注意的是，因为没有大小控制参数，所以为避免可能出现的内存问题，必须添加获取文件大小的操作。</p><h4>新I/O文件组织的更多信息</h4><p>最后，文件系统与存储是新I/O文件包的主要部分。正如我们所看到的，文件位置是通过Path接口表示的，这是该包的关键要素。开发者需要利用FileSystem工厂获得该接口的具体实现，而文件系统工厂又必须通过FileSystems工厂获得。下表显示了新I/O关键要素之间的关系。</p><p><img src="http://www.infoq.com/resource/articles/java7-nio2/zh/resources/13fig1.jpg;jsessionid=FF160FF1B4C655821C1715EE1D645129" alt="" _href="img://13fig1.jpg" _p="true" /></p><p>存储信息可以从文件系统上的特定文件（Path）获得。</p><h3>使用文件系统</h3><p>所有文件系统实现都由相应提供者负责支持，实现的基类定义在java.nio.file.spi包中。服务提供者的概念使开发者能够轻松地扩展到更多文件系统。有些有趣的文件系统提供者是包装过的，比如有的会变换ZIP文件的内容，支持如内容的遍历和文件的创建、删除及修改等功能。后面我们会看一个例子。</p><h3>并发与原子操作</h3><p>如果不提一下新IO文件对并发的支持，概述将是不完整的。新IO文件高度支持并发，因此大部分操作在并发环境中是安全的。移动文件也是原子的。通过获取SecureDirectoryStream接口的具体实现来操作目录内容也是安全的。在这种情况下，即使目录被外部攻击者移动或修改，所有目录相关操作仍然具有一致性。这里只接收相对路径。</p><h3>实例</h3><p>学习新东西最好的方法就是动手编程。上面提到的基于Web的文件管理器WebFolder最初是用java.io包开发的，因此我决定使用新IO文件来迁移一下该项目。如此将有助于更好地理解I/O文件中的概念，而且相对于其他更严肃的项目，我可以用特定应用来评估新的API。这里我有意让示例代码小一些，完整的源代码可以从<a href="http://webfolder.sourceforge.net/">项目网站</a>下载。</p><p><strong>1.获取一个目录下的内容</strong></p><pre>
+try (RequestTransalated rt = translateReq(getConfigValue(&quot;TOPFOLDER&quot;, File.separator),
+req.getPathInfo());
+
+	DirectoryStream&lt;Path&gt; stream = Files.newDirectoryStream(rt.transPath);) {
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; for (Path entry : stream) {
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; result.add(new Webfile(entry, rt.reqPath)); // 添加目录
+element info in model
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; }
+
+} catch (Exception ioe) {
+
+	log(&quot;&quot;, ioe);
+
+}&nbsp; // 因为API支持AutoCloseable和新的try块语法，所以这里没有finally块</pre><p>这个例子填充了一个将由页面视图绘制的目录模型。Files.newDirectoryStream用于获取目录内容的迭代器。</p><p><strong>2. 深度遍历</strong></p><pre>
+Path ffrom = ….
+
+Files.walkFileTree(ffrom, EnumSet.of(FileVisitOption.FOLLOW_LINKS), Integer.MAX_VALUE,
+
+&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;new SimpleFileVisitor&lt;Path&gt;() {
+
+&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;@Override
+
+&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;public FileVisitResult preVisitDirectory(Path dir,
+
+BasicFileAttributes attrs)
+
+&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;throws IOException {
+
+&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;Path targetdir =
+fto.resolve(fto.getFileSystem().getPath(ffrom.relativize(dir).toString()));
+
+&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;try {
+
+&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;Files.copy(dir, targetdir,
+StandardCopyOption.COPY_ATTRIBUTES);
+
+&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;} catch (FileAlreadyExistsException e) {
+
+&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;if (!Files.isDirectory(targetdir))
+
+&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;throw e;
+
+&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;}
+
+&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;return FileVisitResult.CONTINUE;
+
+&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;}
+
+&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;@Override
+
+&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;public FileVisitResult visitFile(Path file, BasicFileAttributes
+attrs) throws IOException {
+
+&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;Path targetfile = fto.resolve(fto.getFileSystem()
+
+&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; .getPath(ffrom.relativize(file).toString()));
+
+&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;Files.copy(file, targetfile,
+StandardCopyOption.COPY_ATTRIBUTES);
+
+&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;return FileVisitResult.CONTINUE;
+
+&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;}
+
+});</pre><p>这段代码将文件系统上一个目录的内容复制到另一个位置。preVisitDirectory负责复制目录本身。因为目标可以是另一个文件系统，该例子既可以方便地在保存目录结构的同时提取ZIP归档文件的全部内容，也可以方便地将目录结构存入ZIP归档文件中。COPY_ATTRIBUTES选项会把源文件的所有属性（包括时间戳）保存到目标文件中。</p><p>类似实现可用于删除一个目录的所有内容，在这种情况下必须实现postVisitDirectory方法，而不是preVisitDirectory，因为删除内容之后才能删除目录本身。</p><pre>
+@Override
+
+public FileVisitResult postVisitDirectory(Path dir, IOException e) throws IOException {
+
+&nbsp;&nbsp; &nbsp;if (e == null) {&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;
+
+&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;if (dir.getParent() != null) {
+
+&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;Files.delete(dir);
+
+&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;return FileVisitResult.CONTINUE;
+
+&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;} else
+
+&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;return FileVisitResult.TERMINATE;
+
+&nbsp;&nbsp; &nbsp;} else {
+
+&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;// 目录迭代失败
+
+&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;throw e;
+
+&nbsp;&nbsp; &nbsp;}
+
+}</pre><p>该例子在删除前会检查以确保目标并非根目录。所有可能的异常都会向上传播，由某个调用者处理。</p><p><strong>3.来自ZIP的文件系统</strong></p><pre>
+FileSystem fs = FileSystems.newFileSystem(zipPath, null);
+
+Path zipRootPath = fs.getPath(fs.getSeparator());
+
+….
+
+Fs.close();</pre><p>zipRootPath可以随意遍历ZIP文件的内容。所得的文件系统功能全面，支持大部分操作（包括复制、移动和删除）。不过ZIP文件系统不能使用监视服务。还请注意，该文件系统用完后必须关闭。如果要在同一个ZIP上打开另一个文件系统，操作会失败，因此编写代码时请将这种可能性牢记在心。然而默认的文件系统无需关闭。看起来新I/O文件包只维护了一个文件系统实例，并负责处理并发。</p><p><strong>4.监视</strong></p><p>监视服务有多种使用方法，这里会说明两种最常见的，前面也有所提及。</p><pre>
+WatchService ws = dir.getFileSystem().newWatchService();
+
+WatchKey wk = dir.register(ws,&nbsp; StandardWatchEventKinds.ENTRY_CREATE,
+StandardWatchEventKinds.ENTRY_DELETE, StandardWatchEventKinds.ENTRY_MODIFY);</pre><p>获得监视键之后，可以将其传给监视线程来监控相关事件。</p><pre>
+@Override
+
+public void run() {
+
+&nbsp;&nbsp; &nbsp;for (;;) {
+
+&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;if (watchKey != null) {
+
+&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;for (WatchEvent&lt;?&gt; event : watchKey.pollEvents()) {
+
+&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;updateScreen(event.kind(), event.context());
+
+&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;}
+
+&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;boolean valid = watchKey.reset();
+
+&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;if (!valid) {
+
+&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;break;
+
+&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;}
+
+    }
+
+}</pre><p>如果事件消耗速度不够快，则会收到OVERFLOW事件。如果对监视键的事件没有兴趣了，可以取消。监视服务也可以用完后关闭。还有一种方法是，在注册了多个被监视对象的情况下，使用监视服务方法来轮询修改事件。这种方法更适合WebFolder应用。</p><pre>
+public void run() {
+
+&nbsp;&nbsp; &nbsp;for (;;) {
+
+&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;try {
+
+&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;WatchKey watchKey = watchService.take(); // poll(10, );
+
+&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;processWatchKey(watchKey);
+
+&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;} catch (InterruptedException ie) {
+
+&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;break;
+
+&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;}
+
+&nbsp;&nbsp; &nbsp;}
+
+}</pre><p>一个监视线程是为默认文件系统获取的，之后会用在一个单一的监控线程中。这里使用了take操作，因为它是阻塞的，所以不会浪费循环。为支持轮询，processWatchKey方法的实现与上面类似，也关联了监视事件。不过，这里不需要额外的循环，因为从监视服务获得的键已经与事件关联了起来。</p><h3>概括</h3><p>新I/O文件提供的内容包括：</p><ol> 
+ <li>强大的文件系统遍历机制，可以进行复杂的分组操作。</li> 
+ <li>可以操作具体的文件、文件系统对象及其属性（如链接、属主和权限）。</li> 
+ <li>用于处理整个文件内容的便捷的工具方法，如读取、复制和移动等。</li> 
+ <li>用于监控文件系统修改的监视服务。</li> 
+ <li>文件系统上的原子操作，提供了针对文件系统的进程同步。</li> 
+ <li>可以定制定义于特定文件组织形式（如归档文件）之上的文件系统。</li> 
+</ol><h3>迁移</h3><p>之所以考虑将基于老式I/O包的系统迁移到新I/O包上，有如下四个原因：</p><ul> 
+ <li>用到复杂的文件遍历实现时，会发现内存问题</li> 
+ <li>需要支持ZIP归档文件中的文件操作</li> 
+ <li>需要细粒度地控制POSIX系统中的文件属性</li> 
+ <li>需要监视服务</li> 
+</ul><p>根据经验，如果有两项或两项以上适用于项目，迁移就是值得的，否则我建议仍使用当前实现。一个不迁移的理由是，新I/O文件实现并不能使代码更紧凑、可读性更好。另一方面，在第一次访问特定的运行时实现时，新的文件遍历操作性能可能稍显不好。看起来Oracle在Windows上的实现做了很多缓存，致使第一次访问消耗的时间比较显著。然而Linux上的OpenJDK（IcedTea）实现就没有这种问题，所以该问题似乎依赖于具体的平台/实现。</p><p>如果决定迁移，下表提供了一些技巧：</p><table cellspacing="0" cellpadding="0" border="1" style="width: 100%;"> 
+ <tbody> 
+  <tr> 
+   <td>当前实现</td> 
+   <td>迁移后</td> 
+   <td>注释</td> 
+  </tr> 
+  <tr> 
+   <td>fileObj = new File(new File(pe1, pe2), pe3)</td> 
+   <td>pathObj = fsObj. getPath(pe1, pe2, pe3)</td> 
+   <td>fsObj可以作为FileSystems.getDefault()的结果获得，因为文件系统保存在Path本身之中，所以该对象可以从来自同一文件系统的任何现有路径获得</td> 
+  </tr> 
+  <tr> 
+   <td>fileObj.someOperation()</td> 
+   <td>Files.someOperation(pathObj)</td> 
+   <td>尽管可以添加一些与链接和属性相关的额外参数，但大部分情况下操作名是相同的</td> 
+  </tr> 
+  <tr> 
+   <td>fileObj.listFiles()</td> 
+   <td>Files.newDirectoryStream(pathObj)</td> 
+   <td>Files.walkFileTree应该用于深度遍历</td> 
+  </tr> 
+  <tr> 
+   <td>new FileInputStrean(file)</td> 
+   <td>Files.newInputStream(pathObj)</td> 
+   <td>可以指定如何打开文件的额外选项</td> 
+  </tr> 
+  <tr> 
+   <td>new FileOutputStream(file)</td> 
+   <td>Files.newOutputStream(pathObj)</td> 
+   <td>可以指定如何打开文件的额外选项</td> 
+  </tr> 
+  <tr> 
+   <td>new FileWriter(file)</td> 
+   <td>Files.newBufferedWriter(pathObj)</td> 
+   <td>可以指定如何打开文件的额外选项</td> 
+  </tr> 
+  <tr> 
+   <td>new FileReader(file)</td> 
+   <td>Files.newBufferedReader(pathObj)</td> 
+   <td>可以指定如何打开文件的额外选项</td> 
+  </tr> 
+  <tr> 
+   <td>new RandomAccessFile(file)</td> 
+   <td>Files.newByteChannel(pathObj)</td> 
+   <td>可以指定打开选项和文件创建属性</td> 
+  </tr> 
+ </tbody> 
+</table><p>File类和Path接口之间有两种转换方法：pathObj.toFile()和fileObj.toPath()。这有助于减少迁移所需的努力，人们得以将精力集中在新I/O文件提供的新功能上。作为迁移过程的一部分，可以考虑用Files.copy替换定制的文件复制方式。Path接口本身提供了很多便利方法，可以减少以前基于File对象编码时的代码量。因为新代码将运行于Java 7或更高版本之上，改进异常处理和资源释放是值得的。下面代码说明了旧的机制和新的机制：</p><pre>
+ClosableResource resource = null;
+
+try {
+
+&nbsp;&nbsp;&nbsp;&nbsp; Resource = new Resource(…);
+
+// 资源处理
+
+} catch(Exception e) {
+
+} finally {
+
+&nbsp;&nbsp; &nbsp;if (resource != null)
+
+&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;try {
+
+&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;resource.close();
+
+        }&nbsp; catch(Exception e) {
+
+        }
+
+}</pre><p>可以替换为下面更为紧凑的代码：</p><pre>
+try (Resource = new Resource(…);) {
+
+&nbsp;&nbsp;&nbsp;&nbsp; // 资源处理
+
+&nbsp;
+
+} catch(Exception e) {
+
+}</pre><p>Resource必须实现AutoCloseable接口，所有来自JRT的标准资源都实现了该接口。</p><h3>关于作者</h3><p><img src="http://www.infoq.com/resource/articles/java7-nio2/zh/resources/DmitriyRogatkin.jpg;jsessionid=FF160FF1B4C655821C1715EE1D645129" alt="" _href="img://DmitriyRogatkin.jpg" _p="true" />Dmitriy Rogatkin是WikiOrgCharts公司的CTO，负责把握公司的技术方向。他之前主要从事企业级软件开发相关的技术：他在MetricStream这家领先的企业级GRC软件公司担任了十多年首席架构师。他喜欢通过创建开源软件（从多媒体桌面应用到框架，再到应用服务器）来检验不同的想法。在他的诸多项目当中，TJWS是一个微型应用服务器，在完整的Java EE Profile应用服务器耗费太高时，可以将TJWS作为一种选择；而TravelsPal可以帮助人们在旅行和规划时间时联系彼此。<br /> 查看英文原文：<a href="http://www.infoq.com/articles/java7-nio2;jsessionid=FF160FF1B4C655821C1715EE1D645129">A Detailed Look at The New File API in Java 7</a></p><div class="clearer-space"></div><br><br><br><br><br><br></body></html>
