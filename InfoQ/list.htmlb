@@ -1,8 +1,8 @@
 <html>
  <head></head> 
- <body>
-  <div>
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/25.htmlb">详解Java 7中新的文件API</a>Java 7向语言中引入了一些有用的特性，其中包括一个新的I/O文件包。相对于老的java.io包，这个包针对文件系统——特别是基于POSIX的系统——提供了粒度更细的控制功能。本文首先介绍一下新的API，之后通过一个基于Web的文件管理器项目WebFolder来详细探索这些API。
+ <body> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/25.htmlb">详解Java 7中新的文件API</a>Java 7向语言中引入了一些有用的特性，其中包括一个新的I/O文件包。相对于老的java.io包，这个包针对文件系统——特别是基于POSIX的系统——提供了粒度更细的控制功能。本文首先介绍一下新的API，之后通过一个基于Web的文件管理器项目WebFolder来详细探索这些API。 
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/24.htmlb">敏捷教练指导的另一种选择</a>Phil Abernathy声称敏捷教练这个角色可能将日暮西山，基于向敏捷团队中加入敏捷实践经理的见解，他提出了敏捷教练的另一种选择。敏捷实践经理将与团队“风险共担（skin in the game）”，其职责不仅仅包括优化团队流程，同时也负责通过产品交付客户价值。 
