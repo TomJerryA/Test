@@ -1,6 +1,9 @@
 <html>
  <head></head> 
- <body> 
+ <body>
+  <div>
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/25.java">Has Web Style Worked?</a>Almost 7 years ago Tim Bray declared SOA dead and the future was Web Style. In a recent blog post Jean-Jacques Dubray looks back over the years and decides that Web Style hasn't worked and, given the plethora of non-Web Style services in the Programmable Web directory, is in fact itself dead. He also looks at what this means for computing and the future of application development.
+  </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/24.java">Integrate BarCodes into Windows Phone Apps</a>RadControls for Windows Phone Q1 2013 includes components to generate and integrate bar codes into Windows Phone 7 and 8 apps. 
   </div> 
@@ -147,9 +150,6 @@
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/26.java">Grunt 0.4.0 Released: An Emphasis On Modularity</a>The Grunt team updated their Javascript task runner to version 0.4.0 on February 18th in their ongoing effort to decouple the library into more modular parts. 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/25.java">Google and MPEG LA End All Disputes on VP8</a>Google has obtained a license for any algorithm that may be essential to VP8 and MPEG LA has a patent for it. Google has the option to sublicense VP8 royalty-free to third party implementers, opening the way for wide adoption of the VP8 codec. 
-  </div> 
+  </div>  
  </body>
 </html>
