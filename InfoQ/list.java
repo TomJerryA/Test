@@ -1,8 +1,8 @@
 <html>
  <head></head> 
- <body>
-  <div>
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/24.java">Integrate BarCodes into Windows Phone Apps</a>RadControls for Windows Phone Q1 2013 includes components to generate and integrate bar codes into Windows Phone 7 and 8 apps.
+ <body> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/24.java">Integrate BarCodes into Windows Phone Apps</a>RadControls for Windows Phone Q1 2013 includes components to generate and integrate bar codes into Windows Phone 7 and 8 apps. 
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/23.java">When to Use WPF with Async and Reactive Extensions</a>Ian Griffiths has published a six part series on when to use, and when not to use, .NET 4.5’s async features with WPF. The series begins with a post titled Too Much, Too Fast with WPF and Async. 
@@ -150,6 +150,6 @@
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/25.java">Google and MPEG LA End All Disputes on VP8</a>Google has obtained a license for any algorithm that may be essential to VP8 and MPEG LA has a patent for it. Google has the option to sublicense VP8 royalty-free to third party implementers, opening the way for wide adoption of the VP8 codec. 
-  </div>  
+  </div> 
  </body>
 </html>
