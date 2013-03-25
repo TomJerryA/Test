@@ -1,8 +1,8 @@
 <html>
  <head></head> 
- <body>
-  <div>
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/25.java">Has Web Style Worked?</a>Almost 7 years ago Tim Bray declared SOA dead and the future was Web Style. In a recent blog post Jean-Jacques Dubray looks back over the years and decides that Web Style hasn't worked and, given the plethora of non-Web Style services in the Programmable Web directory, is in fact itself dead. He also looks at what this means for computing and the future of application development.
+ <body> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/25.java">Has Web Style Worked?</a>Almost 7 years ago Tim Bray declared SOA dead and the future was Web Style. In a recent blog post Jean-Jacques Dubray looks back over the years and decides that Web Style hasn't worked and, given the plethora of non-Web Style services in the Programmable Web directory, is in fact itself dead. He also looks at what this means for computing and the future of application development. 
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/24.java">Integrate BarCodes into Windows Phone Apps</a>RadControls for Windows Phone Q1 2013 includes components to generate and integrate bar codes into Windows Phone 7 and 8 apps. 
@@ -150,6 +150,6 @@
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/26.java">Grunt 0.4.0 Released: An Emphasis On Modularity</a>The Grunt team updated their Javascript task runner to version 0.4.0 on February 18th in their ongoing effort to decouple the library into more modular parts. 
-  </div>  
+  </div> 
  </body>
 </html>

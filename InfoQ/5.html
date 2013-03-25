@@ -1,11 +1,60 @@
-<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>Visual Studio 2012 Update 2最终预览版发布</h3><p>在正式发布VS 2012 Update 2版本前，微软一直定期发布预览版本，秉持这一作风，微软此次发布了<a href="http://www.microsoft.com/en-us/download/details.aspx?id=36833">CTP4</a>。这是Update 2的第一个“go-live”(译者注：go-live指的是将测试中的产品加入生产环境的许可)状态的版本，这意味着它已获得微软的全面支持（请注意下文中TFS 2012 go-live和VS 2012 go-live之间的区别）。这将是在正式发布Update 2之前的最后一个社区技术预览版本。</p> 
-<p>CTP4 继续围绕Update 2的主题——“现代应用生命周期和现代应用开发”进行了全面的改进。为了达到这个目标，首先发布的功能是<a href="http://blogs.msdn.com/b/lightswitch/archive/2013/03/04/announcing-a-new-preview-of-the-lightswitch-html-client.aspx">LightSwitch HTML 客户端</a>的更新预览版本。首席项目经理John Stallo指出这次发布的两个主要目标是支持创建移动端、跨平台的web客户端以及将程序发布到SharePoint 2013应用目录。</p> 
-<p>VS 2012在基于浏览器的测试管理方面也得到了进一步的改进，目前已可以对结果文本进行编辑并支持将多个测试用例步骤进行内联，而不需要在被测环境上安装软件。</p> 
-<p>微软的Brian Harry也指出备份和恢复工具（之前提供单独<a href="http://visualstudiogallery.msdn.microsoft.com/b1ef7eb2-e084-4cb8-9bc7-06c3bad9148f">下载</a>）将会整合到Update 2中。TFS的系统管理员将会从中受益，因为可以在升级后依然保留旧有的<a href="http://blogs.msdn.com/b/visualstudioalm/archive/2013/03/05/tfs-update-2-offers-settings-preservation-for-in-place-upgrades.aspx">TFS配置</a>。</p> 
-<p>如果需要<a href="http://www.infoq.com/news/2013/01/vs2012_git;jsessionid=DE31931256FD01F2BE80653BFB9F1B5D">Git支持</a>功能的开发者仍需等待，因为适用于CTP 4版本的<a href="http://visualstudiogallery.msdn.microsoft.com/abafc7d6-dcaa-40f4-8a5e-d6724bdb980c">Git扩展</a>尚未发布。Harry指出该扩展将“在接下来的一到两天”发布。这部分的功能支持并不是Update 2的一部分，仍然需要用户进行单独下载，同时Harry指出这种方式将使微软可以更快地发展该功能。</p> 
-<p>需要注意的是CTP 4的go-live状态目前只适用于Team Foundation Server 2012，而并不适用于VS 2012，因此VS 2012的CTP4 版本并不适用于生产环境。</p> 
-<p><b>查看英文原文</b>：<a href="http://www.infoq.com/news/2013/03/VS2012_CTP4;jsessionid=DE31931256FD01F2BE80653BFB9F1B5D">Final Preview of Visual Studio 2012 Update 2 Released</a></p> 
-<hr /> 
-<p>感谢<a href="http://www.infoq.com/cn/bycategory.action;jsessionid=DE31931256FD01F2BE80653BFB9F1B5D?authorName=赵震一">赵震一</a>对本文的审校。</p> 
-<p>给InfoQ中文站投稿或者参与内容翻译工作，请邮件至<a href="mailto:editors@cn.infoq.com">editors@cn.infoq.com</a>。也欢迎大家通过新浪微博（<a href="http://www.weibo.com/infoqchina">@InfoQ</a>）或者腾讯微博（<a href="http://t.qq.com/infoqchina">@InfoQ</a>）关注我们，并与我们的编辑和其他读者朋友交流。</p> 
+<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>iOS Web开发调试工具MIHTool作者访谈</h3><p><a href="http://www.iunbug.com/mihtool">MIHTool</a>是一款在国外非常出名的移动设备Web开发调试工具。大家可能想不到的是这款工具是不折不扣的国人作品。InfoQ联系到它的作者，做了一次简单采访。不管你是否了解此应用，是否关心移动开发与调试，这后面的故事都值得一读。</p> 
+<p>以下是采访内容：</p> 
+<p><strong>InfoQ：</strong>请先做个自我介绍吧。</p> 
+<blockquote> 
+ <p><strong>听奏：</strong>我是MIHTool的作者，也是一个前端开发者，目前就职于网易，专注于移动前端。关于MIHTool大家可以Twitter <a href="https://twitter.com/unbug">@unbug</a> 或者微博 <a href="http://weibo%E3%80%82com/unbug">@听奏</a>。这是我的个人主页 <a href="http://www.iunbug.com/">iunbug.com</a>。</p> 
+</blockquote> 
+<p><strong>InfoQ：</strong>能否讲讲决定做MIHTool这款产品的起因？</p> 
+<blockquote> 
+ <p><strong>听奏：</strong>开发MIHTool最初是因为移动前端的项目一直受到性能不佳，CSS3动画不流畅，闪动等的问题的困扰。但如果调试移动端页面的时候能像PC端的Chrome一样查看到页面合成渲染层边框元素的重绘渲染数，那么可以大大减少上述问题的出现。后来作者在Zynga工作室CTO(也是jQuery UI的原作者)Paul Bakaus指导下，MIHTool不断迭代，通过Twitter，邮件，MIHTool Google Group作者收集到不少网友的建议(或需求)，MIHTool才有今天这么多丰富实用的开发者功能。</p> 
+</blockquote> 
+<p><strong>InfoQ：</strong>MIHTool解决了什么问题？</p> 
+<blockquote> 
+ <p><strong>听奏：</strong>详细的内容可以在<a href="http://www.iunbug.com/mihtool">MIHTool的主页</a>看到。当中比较突出的功能用Paul Bakaus专门为MIHTool写的介绍博文《<a href="http://paulbakaus%E3%80%82com/tutorials/performance/mihtool-the-ios-web-debugger/">MIHTool, the iOS web debugger</a>》中总结的四点可以说明:</p> 
+ <ol> 
+  <li> <p>Inline Web inspector 这个是iPad独占的功能。没错，通过MIHTool不仅可以远程调试页面，如果你有一台iPad你可以完全用iPad来完成调试，特别是你身边没有一台PC的时候。当Paul Bakaus看到这个功能时他在Twitter上是这么评价的&quot;This will be game changing. Nothing like it existed before in iOS. I'm blogging about it.&quot;。</p> </li> 
+  <li> <p>进阶性能分析功能显示页面合成渲染层边框和显示元素的重绘渲染数 Webkit内核的浏览器提供这两个网页高级性能分析标记。在chrome中很容易开启，但在mobile safari不通过XCode的instruments是无法查看到的。而通过这两个标记，前端开发者能够更加有依据的也解决性能问题。MIHTool直接提供了这两个功能，作者希望从事移动前端的开发者通过MIHTool都能找出自己作品中的性能瓶颈原因进而做出更加优异的作品。</p> </li> 
+  <li> <p>完全远程控制 通过MIHTool HTTP Server你可以完全方便的通过简单的命令控制MIHTool，这对开发者有什么好处呢？比如你有10台iOS设备罢在你面前，你想写一个脚本让他们自动打开你的测试页面(自动化测试)，那么通过MIHTool的远程打开URL命令你的脚本是可以实现的。</p> </li> 
+  <li> <p>缓存的控制 MIHTool不仅可以很方便的清除缓存(包括manifest)，Cookies，localStorage，你还能(或者远程)禁用缓存或者全部删除上述所有数据。这大大的节约了开发者的时间。</p> </li> 
+ </ol> 
+</blockquote> 
+<p><strong>InfoQ：</strong>市面上有什么同类产品吗?</p> 
+<blockquote> 
+ <p><strong>听奏：</strong>目前同类产品比较知名的是Adobe edge inspect(原名Adobe shadow)，已经发布有一年了专注于web inspector和多平台及云服务。</p> 
+</blockquote> 
+<p><strong>InfoQ：</strong>和Adobe edge inspec相比，MIHTool有什么优势？</p> 
+<blockquote> 
+ <p><strong>听奏：</strong>Adobe edge inspect属adobe edge系列的成员，主要功能是web inspect。MIHTool专注于给开发者丰富的开发者调试工具，web inspect只是其中的一个功能，两者都是用的apache开源的weinre，MIHTool对weinre做了一些修改，如适配触屏(Inline web inspector)，离线存储脚本，支持外连脚本/样式的查看等。MIHTool的开发者工具非常的丰富，其他功能有:多达30的UA可以切换，显示合成渲染层边框和元素重绘率，查看HAR，HTML编辑器查看和编辑源码，缓存控制，完全化的远程控制等都是Adobe edge inspect没有的。并且MIHTool只用安装到iOS设备上即可以使用，而adobe edge inspect 要不仅要安装iOS客户端，同时还要安装chrome插件和MAC(PC)客户端，当然，adobe edge inspect支持多平台也是MIHTool不及的。</p> 
+</blockquote> 
+<p><strong>InfoQ：</strong>这款工具的名字是怎么得来的？</p> 
+<blockquote> 
+ <p><strong>听奏：</strong>MIH = Make It Happen。这是作者给自己的一个承诺，承诺无论如何都要将MIHTool开发出来坚持下去。作者知道无论做任何事情开头难坚持也难，如果不给自己一个承诺那么即使开始兴趣盎然最终也会不了了之。作者为了这个承诺在不到三个月时间就将MIHTool打造得如此实用，着实让作者本人也大吃一惊。</p> 
+</blockquote> 
+<p><strong>InfoQ：</strong>在创作这款产品的时候，有没有遇到什么困难，是如何解决的？（语言学习、视觉设计、产品规划、推广工作）</p> 
+<blockquote> 
+ <p><strong>听奏：</strong>因为作者曾是J2EE开发者，学习其他编程语言心理上没有什么压力，学习objective-c时也没有过多拘泥，都是MIHTool要用什么特性才通过搜索引擎和youtobe视频学习的，显然很不专业，其实MIHTool本来是开源的，在github上还有早期的版本，但作者把MIHTool的objective-c代码写得实在不堪入目，不再好意思更新上去。</p> 
+ <p>MIHTool里唯一上眼的应用图标不是作者设计的，是Mortensen的图形与交互设计师Rude设计的，Rude先是在Twitter上抱怨原来的图标，后来干脆动手帮作者做了一个，也就是现在MIHTool的图标，非常的细腻和精致。</p> 
+ <p>因为MIHTool迭代非常的快，规划的功能基本上都即想即加的，直到5.0才算基本完善了。但很遗憾的是作者一直想给MIHTool加FPS查看器和网络环境模拟及类似fiddler的本地脚本替换线上脚本等功能因为作者iOS开发能力有限没能实现，如果读者知道如何实现欢迎不吝赐教。</p> 
+ <p>MIHTool在国外较多开发者知晓，Twitter上几乎每天都有的关于MIHTool的新twitter，但MIHTool的推广作者其实没有什么功劳，都是Zynga工作室CTOPaul Bakaus在Twitter上的推广的，他专门为MIHTool写了一篇Blog。同时在Twitter，G+，facebook上推广MIHTool的还有Google的工程师Paul Irish和Addy Osmani及Smashing Magazine的编辑。作者的朋友同事也帮MIHTool在微博上推广过，但可能由于国内移动前端不太活跃的原因国内的安装量很少而且大多都是友情支持，目前安装量较多的几个国家是美国，英国，德国，和意大利。</p> 
+</blockquote> 
+<p><strong>InfoQ：</strong>那么国外的开发者对MIHTool都有着什么样的评价？</p> 
+<blockquote> 
+ <p><strong>听奏：</strong>在Twitter，一些业界比较有名望的人士对MIHTool做出过如下的评价:</p> 
+ <ul> 
+  <li>Zynga工作室CTO <a href="https://twitter.com/pbakaus">@pbakaus</a> : MIHTool is a brilliant tool that helps you debug websites on iOS.</li> 
+  <li>Google工程师 <a href="https://twitter.com/paul_irish">‏@paul_irish</a> : MIHTool: a smart &amp; powerful debug tool for iOS WebView.</li> 
+  <li>Google工程师 <a href="https://twitter.com/addyosmani">@addyosmani</a> : MIHTool will change your life: A complete inline Web Inspector on iOS with performance profiling</li> 
+  <li>Smashing Magazine ‏<a href="https://twitter.com/smashingmag">@smashingmag</a> : MIHTool: a good tool for debugging websites on iPad and iPhone.</li> 
+ </ul> 
+</blockquote> 
+<p><strong>InfoQ：</strong>此款产品在AppStore上有一个收费版和一个免费版，能否对此讲讲你的想法？</p> 
+<blockquote> 
+ <p><strong>听奏：</strong>收费版是4。0才开始上架的，作者对外发布一直没用过收费版的连接，因为收费版是作者给那些想捐助支持MIHTool的用户准备的，他们的捐助会帮助作者支付MIHTool的服务器开销，作者承诺只要是作者管理的，MIHTool收费版和免费版就不会有任何区别。</p> 
+ <p>作者收到一些MIHTool用户的感谢邮件，希望能通过PayPal或Google Checkout的方式捐款，作者在此深表感激。</p> 
+</blockquote> 
+<p><strong>InfoQ：</strong>对这款工具，有怎样后续的计划？</p> 
+<blockquote> 
+ <p><strong>听奏：</strong>MIHTool到5.0时基本已经完善，目前这段时间作者比较轻松，只修修BUG和添加网友新的需求，后续会将MIHTool的HTML编辑器(iPad版)做成一个更加实用的源码编辑器。</p> 
+</blockquote> 
+<p>（采访内容完）</p> 
 <p id="lastElm"></p><br><br><br><br><br><br></body></html>
