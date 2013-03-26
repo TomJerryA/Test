@@ -1,6 +1,9 @@
 <html>
  <head></head> 
- <body> 
+ <body>
+  <div>
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/26.java">Windows Embedded 8 Released</a>Windows Embedded 8 has been released by Microsoft and entered general availability. Intended to be used by OEMs and in specialized environments, this series of releases marks Embedded's alignment with Windows 8's code base.
+  </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/25.java">Has Web Style Worked?</a>Almost 7 years ago Tim Bray declared SOA dead and the future was Web Style. In a recent blog post Jean-Jacques Dubray looks back over the years and decides that Web Style hasn't worked and, given the plethora of non-Web Style services in the Programmable Web directory, is in fact itself dead. He also looks at what this means for computing and the future of application development. 
   </div> 
@@ -147,9 +150,6 @@
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/27.java">Culture Game Extract #6 Now Available from InfoQ</a>Dan Mezick has written The Culture Game – a how-to book describing 16 learning patterns derived from Agile. InfoQ is publishing a series of extracts from the book. The last extract discusses the concepts of of personal mastery and belief change. 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/26.java">Grunt 0.4.0 Released: An Emphasis On Modularity</a>The Grunt team updated their Javascript task runner to version 0.4.0 on February 18th in their ongoing effort to decouple the library into more modular parts. 
-  </div> 
+  </div>  
  </body>
 </html>

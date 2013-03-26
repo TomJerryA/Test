@@ -1,0 +1,86 @@
+<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>How Would You Build Up a City from Components?</h3><p><img hspace="3" align="left" src="http://www.infoq.com/resource/articles/component-city/en/resources/7fig1.jpg;jsessionid=B2D49A49ED18872B48A4323F8B020C4C" _href="img://7fig1.jpg" _p="true" alt="" /></p><p>More and more&nbsp;enterprise application development is moving to component frameworks and solutions. Why? Does component architecture have any future? I believe yes and soon all development frameworks will be component-based - it is imminent. Let me show you why.</p><p>How do you build up your house? You start with building blocks. It is possible to compare the construction of a web application with the construction of your small country house. You can quickly build up a very good looking application with all the required functionality. Every room in your house is created for specific needs, for instance the kitchen, living room, bedroom or bathroom. The layout of the house allows you to conveniently move between rooms using the corridors and stairs.</p><p>You are doing better now and can afford to build a bigger and better house – you would like to have a sauna, a pool, a movie theater and of course a giant aquarium filled with reptiles☺. But changing the design of your house can be quite difficult. If you are able to add the extra facilities the house ends up not looking so nice. It is also less convenient since your additions had to be put in inconvenient places, so that, for instance, to get into the billiard room you have to pass through the main bedroom.</p><p>In the end your nice and neat house turns into an awkward and uncomfortable house with a bunch of different functions within it. The same story can happen with application development.</p><p>The question is, is it possible to design an application such that it can grow and change according to your needs? Let’s try to figure it out.</p><h2>Components are building blocks of the application</h2><p><img align="left" alt="" src="http://www.infoq.com/resource/articles/component-city/en/resources/fig2-2.jpg;jsessionid=B2D49A49ED18872B48A4323F8B020C4C" _href="img://fig2-2.jpg" _p="true" />Components are the primary means of extending application functionality. The process of creating components is a bit different from the creation of applications based on them. The component should not only provide useful functionality but be designed for reuse from the outset.&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p><h2>Reuse of components</h2><p><img align="left" _p="true" _href="img://5fig3small.jpg" alt="" src="http://www.infoq.com/resource/articles/component-city/en/resources/5fig3small.jpg;jsessionid=B2D49A49ED18872B48A4323F8B020C4C" />To easily reuse components they should be designed with a loose coupling approach. To make this possible, different frameworks typically implement their event models based on the Observer pattern. This allows multiple recipients to subscribe to the same event.</p><p>&nbsp;The Observer pattern was originally implemented in Smalltalk. Smalltalk is a user interface framework based on MVC and is now a key part of MVC frameworks. I would like to draw your attention to the fact that the Observer pattern has existed in Java since version 1.0. Let’s have a deeper look into it.</p><p>&nbsp;</p><p>The following UML diagram describes the Observer pattern:&nbsp;</p><p class="image-wide"><img align="absBottom" src="http://www.infoq.com/resource/articles/component-city/en/resources/2fig4.jpg;jsessionid=B2D49A49ED18872B48A4323F8B020C4C" alt="" _href="img://2fig4.jpg" _p="true" /></p><p>Here is a basic Java implementation</p><pre>
+public class ObservableX extends Observable {
+  ...
+  public void setAmount(double amount) {
+    this.amount = amount;
+    super.setChanged();
+    super.notifyObservers();
+}
+
+}
+  public class ObserverA implements Observer {
+  public void public void update(Observable o) {
+  // gets updated amount
+}
+
+}
+  public class ObserverB implements Observer {
+  public void public void update(Observable o) {
+  // gets updated amount
+}
+
+}
+//instantiate concrete observableX
+ObservableX observableX = new ObservableX();
+//somewhere in code
+observableX.addObserver(new ObserverA());
+observableX.addObserver(new ObserverB());
+//much later
+
+observableX.setAmount(amount);</pre><p>How it works:</p><p>Firstly we create an instance of ObservableX class, add the ObserverA and ObserverB instances into the observableX object and then somewhere in the code we set the value for &quot;some amount&quot; using the setAmount method. The functionality of the observable class notifies all the registered observers about the received amount.</p><p>The Observer acts as a mediator that maintains the list of recipients. When some event occurs within a component it is sent to all recipients from that list.</p><p>Due to the mediator the component isn’t aware of its recipients. And the recipients can subscribe to the events of different components of a particular type.</p><p class="image-wide"><img align="absBottom" src="http://www.infoq.com/resource/articles/component-city/en/resources/fig5.jpg;jsessionid=B2D49A49ED18872B48A4323F8B020C4C" alt="" _href="img://fig5.jpg" _p="true" /></p><p>A class can become a component when it uses events to notify observers about its changes. And this can be achieved by using the Observer pattern.</p><h2>To use components is easier than to create them</h2><p>Using components you can quickly create a variety of forms, panels, windows, and other composite elements of the interface. However, to be able to re-use the new composite parts they should be turned into components.</p><p>In order to achieve this you do need to determine the external events that the component will generate as well as the mechanism of sending messages. I.e. you need to at least create new event classes and define interfaces or callback methods for receiving those events.</p><p>This approach makes the implementation of reusable application components more complex. It is fine if the system consists of a small number of composite elements - up to around ten. But what if the system consists of hundreds of such elements?</p><p>Conversely, not following this approach will lead to tight coupling between elements and will reduce the chances of re-use to zero. This, in its turn will lead to code duplication that will make maintenance more complicated in future and will lead to a growing number of bugs in the system.</p><p>The problem is compounded by the fact that users of the components often do not know how to define and send new events to their parts. But they can easily use ready-made events provided by the component framework. They know how to receive events but don’t know how to send them.</p><p>To solve this problem, let's consider how to simplify the use of the event model in applications.</p><h2>Too many Event Listeners</h2><p>In Java Swing, GWT, JSF and Vaadin the Observer pattern is used for implementation of an event model where multiple users can subscribe to one event. Lists to which Event Listeners are added serve as the implementation. When the relevant event occurs it is sent to all the recipients of that list.</p><p class="image-wide"><img align="absBottom" src="http://www.infoq.com/resource/articles/component-city/en/resources/fig6.jpg;jsessionid=B2D49A49ED18872B48A4323F8B020C4C" alt="" _href="img://fig6.jpg" _p="true" /></p><p>Each component creates its own set of Event Listeners for one or more events. This leads to an increasing number of classes in the application. That, in its turn, makes support and development of the system more complicated.</p><p>With annotations Java gained a way to have individual methods subscribe to particular events. As an example consider the implementation of the event model in CDI (<a href="http://docs.oracle.com/javaee/6/tutorial/doc/giwhb.html">Contexts and Dependency Injection</a>) from Java EE 6.</p><pre>
+ public class PaymentHandler {
+      public void creditPayment(<strong>@Observes</strong> @Credit PaymentEvent event) {
+        ...
+      }
+}
+
+public class PaymentBean {
+
+    <strong>@Inject</strong>
+    @Credit
+    Event&lt;PaymentEvent&gt; creditEvent;
+
+   public String pay() {
+     PaymentEvent creditPayload = new PaymentEvent();
+            // populate payload ... 
+            <strong>creditEvent.fire(creditPayload);</strong>
+      }
+}</pre><p>As you can see the PaymentEvent is fired when the pay() method of the PaymentBean object is called. After that the creditPayment () method of the PaymentHandler object receives the paymentEvent.</p><p>Another example is in the implementation of the <a href="https://code.google.com/p/guava-libraries/wiki/EventBusExplained">Event Bus in Guava Libraries</a>:</p><pre>
+ // Class is typically registered by the container.
+class EventBusChangeRecorder {
+  <strong>@Subscribe</strong> public void recordCustomerChange(ChangeEvent e) {
+    recordChange(e.getChange());
+  }
+}
+// somewhere during initialization
+<strong>eventBus.register</strong><strong>(new EventBusChangeRecorder())</strong>;
+// much later
+public void changeCustomer() {
+  ChangeEvent event = getChangeEvent();
+  <strong>eventBus.post(event);</strong>
+}</pre><p>The EventBus registers the object of the EventBusChangeRecorder class. Then calling the changeCustomer() method results in the EventBus receiving the ChangeEvent object and calling the recordCustomerChange () method of the EventBusChangeRecorder object.</p><p><img align="absBottom" src="http://www.infoq.com/resource/articles/component-city/en/resources/fig7.jpg;jsessionid=B2D49A49ED18872B48A4323F8B020C4C" alt="" _href="img://fig7.jpg" _p="true" /></p><p>Now you don’t need to implement a number of Event Listeners for your components, making the use of events in applications simpler.</p><p>The Event Bus usage is convenient when all the components are displayed at the same time on the screen and they use the Event Bus for message exchange, as shown in the picture below.</p><p class="image-wide"><img align="absBottom" src="http://www.infoq.com/resource/articles/component-city/en/resources/1fig8.jpg;jsessionid=B2D49A49ED18872B48A4323F8B020C4C" alt="" _href="img://1fig8.jpg" _p="true" /></p><p>Here all these elements - the header, left menu, content, right panel - are components.</p><h2>Subscribed to events – don’t forget to unsubscribe</h2><p>By replacing Event Listeners with annotations we have made a big step forward in simplifying the use of the event model. But even so, every component in the system needs to be connected with the Event Bus, and then has to subscribe events to it and, at the right time, unsubscribe from it.</p><p class="image-wide"><img align="absBottom" src="http://www.infoq.com/resource/articles/component-city/en/resources/fig9.jpg;jsessionid=B2D49A49ED18872B48A4323F8B020C4C" alt="" _href="img://fig9.jpg" _p="true" /></p><p>It is possible to hit a situation when the same recipient is subscribed several times to the same event, which can lead to a number of repeated notifications. A similar situation can arise when multiple system components subscribe to the same event, which can trigger a series of cascade events.</p><p>To be able to control the event model better, it makes sense to move the work with events out to configuration and make the application container responsible for events management. Since particular events are available only on particular conditions, it is reasonable to move the management of their state out to configuration as well.</p><p class="image-wide"><img align="absBottom" src="http://www.infoq.com/resource/articles/component-city/en/resources/fig10.jpg;jsessionid=B2D49A49ED18872B48A4323F8B020C4C" alt="" _href="img://fig10.jpg" _p="true" /></p><p>A sample configuration is shown below:</p><pre>
+&lt;?xml version=&quot;1.0&quot;?&gt;
+&lt;application initial=&quot;A&quot;&gt;
+
+    &lt;view id=&quot;A&quot;&gt;
+        &lt;on event=&quot;next&quot; to=&quot;B&quot;/&gt;
+    &lt;/view&gt;
+
+    &lt;view id=&quot;B&quot;&gt;
+        &lt;on event=&quot;previous&quot; to=&quot;A&quot;/&gt;
+        &lt;on event=&quot;next&quot; to=&quot;C&quot;/&gt;
+    &lt;/view&gt;
+
+    &lt;view id=&quot;C&quot;&gt;
+        &lt;on event=&quot;previous&quot; to=&quot;B&quot;/&gt;
+        &lt;on event=&quot;next&quot; to=&quot;D&quot;/&gt;
+    &lt;/view&gt;
+
+    &lt;view id=&quot;D&quot;&gt;
+        &lt;on event=&quot;previous&quot; to=&quot;C&quot;/&gt;
+        &lt;on event=&quot;finish&quot; to=&quot;finish&quot;/&gt;
+    &lt;/view&gt;
+
+    &lt;final id=&quot;finish&quot; /&gt; 
+
+&lt;/application&gt;</pre><p>The transition to the B view will be initiated by the “next” event from the A view. From the B view the user can go back to the A view by the “previous” event or to the C view by the “next” event. From the D view the finish event leads to the “final” state which instructs the application to finish up the workflow within the application.</p><p><a href="http://en.wikipedia.org/wiki/Finite-state_machine">Finite State Machines</a> are specifically designed for such needs. A state machine is a mathematical <a href="http://en.wikipedia.org/wiki/Model_of_computation">model of computation</a>. It is conceived as an abstract machine that can be in one of a finite number of states, but only in one state at a time, known as the current state. An event or condition can trigger a transition to another state. Using this approach you can easily define an active screen and have an event trigger a transition to another screen.</p><h2>The benefits of using Finite State Machines for configuring the application</h2><p>In most cases application configuration is defined statically. Configuring the application with dependency injection we define application structure on startup. But we forget that while exploring the application its status can change. Change of state is often hard-coded in the application code which leads to complications in future adjustments and maintenance.</p><p class="image-wide"><img align="absBottom" src="http://www.infoq.com/resource/articles/component-city/en/resources/fig11.jpg;jsessionid=B2D49A49ED18872B48A4323F8B020C4C" alt="" _href="img://fig11.jpg" _p="true" /></p><p>Moving the transitions between states into configuration gives more flexibility. And that’s why when creating composite application elements, such as forms, windows or panels, we don’t need to worry about what state the application should go to. You can do this later, setting the behavior in the configuration.</p><p class="image-wide"><img align="absBottom" src="http://www.infoq.com/resource/articles/component-city/en/resources/fig12.jpg;jsessionid=B2D49A49ED18872B48A4323F8B020C4C" alt="" _href="img://fig12.jpg" _p="true" /></p><p>All the components can communicate using a standardized mechanism for sending events - through the Event Bus. At the same time, the <a href="http://en.wikipedia.org/wiki/State_diagram">state machine</a> can control the subscription of component events to the Event Bus. This approach turns all components of the application (forms, windows, panels) into reusable components that can be easily managed from the external configuration.</p><p>If you are interested you can have a look at some examples of configuration in the <a href="http://samples.lexaden.com/">Enterprise Sampler</a>.</p><p>You can consider state configuration as a road map of a city, and events as cars delivering goods and people to the desired destinations.</p><p>I'm sure using this approach it is easy to design and build up not just a small and ready to grow house but a whole city with skyscrapers, broadways and highways.</p><p class="image-wide"><img align="absBottom" src="http://www.infoq.com/resource/articles/component-city/en/resources/fig13.jpg;jsessionid=B2D49A49ED18872B48A4323F8B020C4C" alt="" _href="img://fig13.jpg" _p="true" /></p><h2>About the Author</h2><p><img vspace="3" hspace="3" align="left" src="http://www.infoq.com/resource/articles/component-city/en/resources/AliakseiPapou.jpg;jsessionid=B2D49A49ED18872B48A4323F8B020C4C" alt="" _href="img://AliakseiPapou.jpg" _p="true" /><strong>Aliaksei Papou</strong> is CTO, Software Architect and Co-founder of <a href="http://lexaden.com">Lexaden.com</a>. He has more than 10 years experience in the development of enterprise applications. The innovation of technologies is his passion. Aliaksei and Denis Skarbichev, CEO and Co-founder of Lexaden.com, have developed the <a href="http://www.lexaden.com/main/entry/web_flow">Lexaden Web Flow</a> language that allows the creation of large scale agile enterprise applications.</p><div class="clearer-space"></div><br><br><br><br><br><br></body></html>

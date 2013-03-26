@@ -1,10 +1,88 @@
-<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>Microsoft Azure SQL解决方案选型指南</h3><p>微软上周发布了一个指南，<a href="http://blogs.msdn.com/b/windowsazure/archive/2013/02/14/choosing-between-sql-server-in-windows-azure-vm-amp-windows-azure-sql-database.aspx">指导用户在Windows Azure虚拟机环境中如何在Windows Azure SQL Database和SQLServer之间做出选择</a>。这篇文章深入细致地描述了在Azure虚拟机上选择使用SQL Server服务器托管还是使用Azure的原生SQL数据库时需要考虑的场景和决策点。各种图表、曲线图以及列表提供了做战略性选择时所需考虑的多维视角，有助于读者在他们的用例场景中轻松地做出最好的选择。</p> 
-<p>这篇文章不仅从“基础设施”和云托管两个层面对SQL Server进行了明确的介绍，同时它还有助于读者解决很多与基于云的持久化相关的问题，如服务级协议、可用性和扩展性需求。不论一个应用是否采用Azure，在云中选择怎样托管数据服务器通常都是所有的云解决方案所必须做出的决定。该指南同样适用于提供类似的<a href="http://www.infoq.com/search.action;jsessionid=6197CC4FE8531A78BE2FBE181098FE8F?queryString=cloud+database&amp;searchOrder=relevance&amp;search=cloud+database">持久化</a>和<a href="http://www.infoq.com/search.action;jsessionid=6197CC4FE8531A78BE2FBE181098FE8F?queryString=cloud+virtual+machine&amp;searchOrder=relevance&amp;search=cloud+virtual+machine">虚拟机</a>服务的技术和平台。</p> 
-<p>该指南是微软系列文章中最新的一篇，旨在帮助云开发者在创建解决方案时做出最好的选择。其他的文章聚焦于架构注意事项，如实现CQRS和开发多租户应用。</p> 
-<p><a href="http://msdn.microsoft.com/en-us/library/jj554200.aspx">CQRS Journey</a>发布于2012年八月，它对团队的第一个CQRS项目提供了一步一步的说明。虽然这不是最纯粹的进入CQRS主题的方式，但它确实引入了一些与云应用相关的概念（忽略他们对技术或平台的选择）。这种指南模型，展示了不同团队成员和利益相关者的不同观点，具有很强的启发性，并且在微软以后的文章多次提到。</p> 
-<p><a href="http://msdn.microsoft.com/en-us/library/ff966499.aspx">云端多租户应用</a>开发第三版发布于2012年12月，该书针对云端多租户系统提出的选择和场景提供了详细的说明。虽然它们大多来自于Azure解决方案，但是能够很容易地将其转用于其他平台。</p> 
-<p><b>查看英文原文</b>：<a href="http://www.infoq.com/news/2013/02/Azure-SQL-Database-Guidance;jsessionid=6197CC4FE8531A78BE2FBE181098FE8F"><b>Microsoft’s Cloud Guidance Addresses SQL Server</b></a></p> 
-<hr /> 
-<p>感谢<a href="http://www.infoq.com/cn/bycategory.action;jsessionid=6197CC4FE8531A78BE2FBE181098FE8F?authorName=孙镜涛">孙镜涛</a>对本文的审校。</p> 
-<p>给InfoQ中文站投稿或者参与内容翻译工作，请邮件至<a href="mailto:editors@cn.infoq.com">editors@cn.infoq.com</a>。也欢迎大家通过新浪微博（<a href="http://www.weibo.com/infoqchina">@InfoQ</a>）或者腾讯微博（<a href="http://t.qq.com/infoqchina">@InfoQ</a>）关注我们，并与我们的编辑和其他读者朋友交流。</p> 
+<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>Xtend 2.4发布，新版添加了Active注解，对Android的支持等新特性</h3><p>前些天，Eclipse基金会宣布<a href="http://www.eclipse.org/xtend/">Xtend 2.4</a>发布。Xtend是一门静态类型的类Java编程语言，它可以被编译成Java代码并运行在JVM（以及比如Android这样的类JVM系统）上。</p> 
+<p>与其他如Scala和Kotlin等基于JVM的编译型语言不同，Xtend是先被转译成Java代码然后才使用标准的Java编译器进行编译的，所以通过它生产出的程序并没有向后兼容的问题。</p> 
+<p>Xtend与例如Groovy和JRuby/Jython这样的解释型语言的不同之处在于它是静态类型的，并具有类型推导的功能以支持简化编码工作。这意味着将可以让IDE来实现代码重构和类型指定。</p> 
+<p>InfoQ去年曾对 <a href="http://www.infoq.com/news/2012/06/xtend-release-10;jsessionid=4FD0221A5633D5F219758CE67B667709">Xtend 1.0 版的发布</a>进行过相关报道，而在这段时间里它已经发生了很多的变化。<a href="http://www.eclipse.org/xtend/release_notes_2_4_0.html">2.4版中的新特性</a>包括了active注解、集合字面量、对Android的支持以及被改进的代码重构和内容辅助工具。</p> 
+<p>InfoQ采访了Xtend的项目负责人Sven Efftinge，并提出了一些列相关问题以了解更多关于Xtend新版本的内容：</p> 
+<p><b>InfoQ</b>: Xtend 2.4 版的新特性之一是添加了对active注解的支持。你能描述下它们是什么，以及它们是如何减少样板代码的吗？</p> 
+<blockquote> 
+ <p><b>Sven Efftinge</b>: 根本上来说是你先声明了一个注解并告诉编译器该如何将这些注解元素转译成Java代码。典型的使用案例是生成JavaBean的getter和setter方法，以及观察者或访问者等其它通用设计模式的代码——但是你可以结合它们做很多事。我们致力于使active注解的开发和部署变得非常容易。</p> 
+ <p>举个例子，考虑到Javabean模式的属性。我们需要对其创建get/set方法对，这将导致一些被称为“Java代码膨胀”的问题。在Xtend中，你只需要将你的字段声明为注解property，Xtend会自动处理剩下的工作：</p> 
+ <pre>
+@Property String name
+</pre> 
+ <p>这行代码将被转译成以下Java代码：</p> 
+ <pre>
+private String name;
+
+public String getName() {
+  return this.name;
+}
+
+public void setName(String name) {
+  this.name = name;
+}
+</pre> 
+ <p>还有其他的一些注解，比如@Data，可以自动为你生成 hashCode() 和 equals()方法；而@Observable适用于为某个数据类自动生成对属性变化监听器的支持，详情见<a href="http://www.eclipse.org/xtend/release_notes_2_4_0.html#active_annotations">版本发布说明</a>中的描述。</p> 
+ <p>而最酷的事情是IDE和编译器将会感知你对代码的变更。所以当变更立即生效时，所有的键入、链接以及导航和内容辅助等功能都会按照预期的方式进行工作，</p> 
+ <p>这才是代码生成功能应有的样子。</p> 
+</blockquote> 
+<p><b>InfoQ</b>: 另一项新的特性是字面量集合。使用字面量的数组，集合（set），映射(map)的语法是怎样的？它们可以嵌套吗？</p> 
+<blockquote> 
+ <p><b>Sven Efftinge</b>: 它的语法是一个#号后面跟上一对大括号或方括号，对于list你可以像这样编写：</p> 
+ <pre>
+val myList = #[1,2,3,4]</pre> 
+ <p>对于set是这样的：</p> 
+ <pre>
+val mySet = #{1,2,3}
+</pre> 
+ <p>Map可以使用元组操作符创建：</p> 
+ <pre>
+val mySet = #{1-&gt;&quot;one&quot;,2-&gt;&quot;two&quot; }</pre> 
+ <p>如果你希望使用数组类型时，List字面量同样可以作为一个数组字面量来使用：</p> 
+ <pre>
+val int[] myArray = #[1,2,3,4]</pre> 
+ <p>所以答案是肯定的，当它们作为表达式的时候可以被嵌套使用。</p> 
+</blockquote> 
+<p><b>InfoQ</b>: 字面量集合类型是可变的还是不变的？你如何通过字面量获取可变集合？</p> 
+<blockquote> 
+ <p><b>Sven Efftinge</b>: 是的，他们是不变的。如果你想要可变的集合，可以选用一个工厂方法：</p> 
+ <pre>
+val myArrayList = newArrayList(1,2,3,4)</pre> 
+ <p>当然，你同样可以通过使用已存在的不变list来重新构造它们。</p> 
+</blockquote> 
+<p><b>InfoQ</b>: 谈到字面量，请问什么是扩展提供者（extension provider）以及他们相比于扩展方法（extension method）有什么区别？</p> 
+<blockquote> 
+ <p><b>Sven Efftinge</b>: 扩展提供者是那些在你程序范围内提供扩展方法的对象。以下的例子就是最好的说明。假设你有一个数据访问对象（DAO）类，它有一个方法save(Entity)。</p> 
+ <p>在Java中你必须这样写：</p> 
+ <pre>
+myDao.save(myEntity)</pre> 
+ <p>在Xtend中你可以将DAO对象作为扩展提供者，使你可以将它的方法作为第一个参数类型的成员方法。所以你可以取而代之的写成这样：</p> 
+ <pre>
+myEntity.save()</pre> 
+ <p>这是对C#扩展方法（只有静态方法可以被作为扩展使用）的一种重要增强。扩展提供者使你可以很容易的替换实际的实现。</p> 
+</blockquote> 
+<p><b>InfoQ</b>: JDK 8具有一个将Lambda表达式转换成单一抽象方法（SAM）类型的概念。而如今Java 6和Java 7配合Xtend后是不是也可以实现这样的功能？</p> 
+<blockquote> 
+ <p><b>Sven Efftinge</b>: JDK 8的只能将Lambda表达式转换成了所谓的功能性接口。在Xtend里也使用了同样的方式来实现。而新添加的部分是你现在可以将SAM类型与抽象类一起使用。它们作为“功能性Java”在框架中被频繁地使用。</p> 
+ <p>通过使用Xtend，你无须等待JDK 8来实现这些功能。你今天就可以在Java6或Java7上实现。事实上，Xtend与Java 5也是兼容的。</p> 
+</blockquote> 
+<p><b>InfoQ</b>: 说到向后兼容，Xtend在这方面的情况又是怎样的？能够在Xtend 1.0下编译的程序是否仍然可以在Xtend 2.4下使用呢？</p> 
+<blockquote> 
+ <p><b>Sven Efftinge</b>: 它们是二进制兼容的。所以在Xtend 1.0下可以编译的程序将无需任何二次编译或修改就能和Xtend 2.4一起工作。</p> 
+ <p>尽管我们改进了编译器的错误报告功能，并可以对先前编译器无法警告你的语义错误进行高亮显示，但是在源码级别并没有重大变化，</p> 
+ <p>不管是在编译级别还是源码级别，我们都非常谨慎地对待兼容性，</p> 
+</blockquote> 
+<p><b>InfoQ</b>: 可以将Xtend项目编译并安装到Android上似乎是该框架一个非常大的成功。鉴于使用Scala或Kotlin编译Android应用将会给打包带来更多兆的空间占用。相比于直接使用Java编程，使用Xtend编译Android应用平均会带来多大空间的增长？</p> 
+<blockquote> 
+ <p><b>Sven Efftinge</b>: Xtend编译生成的Java源代码最终会被编译成Java字节码，这确保了创建的字节码可以很好的工作在Android上。并且Xtend并没有自己独立的“胖”代码库，而只有少数几组将扩展方法添加到现存JDK类型的类（&lt;40K）和1.3M大小的Google Guava。</p> 
+ <p>你可以使用Xtend编写漂亮高效的Android应用。</p> 
+</blockquote> 
+<p><b>InfoQ</b>: 编程语言的一个成功标准是看其是否具有良好的IDE支持。Eclipse中对于Xtend的支持进展如何？</p> 
+<blockquote> 
+ <p><b>Sven Efftinge</b>: IDE具备了很多项功能，比如格式化工具，新的快速修复功能，新的代码重构工具以及显著改善的内容辅助功能。</p> 
+ <p>编译器的性能同样也有了很大的提升。我们对如何在使用Xtend和IDE协同工作时建立一个好的流程给予了极大的关注。</p> 
+ <p>不像其他基于JVM的那些语言，Xtend可以与JDT一起工作。你无须替换JDT或启用编织（enable weaving）来使用它。此外，你可以使用任意版本的Java编译器来编译项目；并不局限你仅仅使用作为插件安装的版本。</p> 
+ <p>Xtend 2.4版可在<a href="http://www.eclipse.org/xtend/download.html">2.4版发布说明</a>处获取。更多关于Xtend的信息见<a href="http://www.eclipse.org/xtend/">Xtend</a> 主页。</p> 
+</blockquote> 
+<p><b>查看英文链接</b>：<a href="http://www.infoq.com/news/2013/03/xtend-24;jsessionid=4FD0221A5633D5F219758CE67B667709"><b>Xtend 2.4 Adds Active Annotations, Android Support and More</b></a></p> 
 <p id="lastElm"></p><br><br><br><br><br><br></body></html>

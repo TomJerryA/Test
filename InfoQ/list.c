@@ -1,6 +1,12 @@
 <html>
  <head></head> 
- <body> 
+ <body>
+  <div>
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/25.c">Spring para Apache Hadoop 1.0: Big Data mais perto do Spring</a>A SpringSource lan&ccedil;ou a vers&atilde;o 1.0 do Spring para Apache Hadoop. O projeto permite que desenvolvedores escrevam aplica&ccedil;&otilde;es Hadoop integradas ao Spring Framework e facilita a integra&ccedil;&atilde;o com o Spring Batch e Spring Integration. O Spring para Apache Hadoop &eacute; um subprojeto do Spring Data.
+  </div>
+  <div>
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/24.c">Homeopatia Arquitetural: voc&ecirc; devia ter feito como eu disse</a>Steve Jones, da CapGemini volta ao tema da perda de &ecirc;nfase em pensamentos e reflex&atilde;o, e o foco exclusivo em tecnologia e opini&otilde;es pouco embasadas.
+  </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/23.c">Pesquisadores exp&otilde;em vulnerabilidades do SSL</a>Pesquisadores da universidade do Texas em Austin e da Universidade Stanford publicaram uma pesquisa que exp&otilde;e vulnerabilidades cr&iacute;ticas no uso de bibliotecas SSL em aplica&ccedil;&otilde;es n&atilde;o-browser, antes consideradas altamente seguras. Saiba os detalhes. 
   </div> 
