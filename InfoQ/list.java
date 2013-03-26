@@ -1,8 +1,8 @@
 <html>
  <head></head> 
- <body>
-  <div>
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/29.java">Git in JavaScript Kickstarter Project Funded in 28 Hours</a>Tim Caswell, a well-known member of the JavaScript and Node.js communities, came up with the idea to reimplement Git in JavaScript and managed to get the project funded on Kickstarter within 28 hours with over 360 backers. The project is another example of Atwood's Law: &quot;any application that can be written in JavaScript, will eventually be written in JavaScript.&quot;
+ <body> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/29.java">Git in JavaScript Kickstarter Project Funded in 28 Hours</a>Tim Caswell, a well-known member of the JavaScript and Node.js communities, came up with the idea to reimplement Git in JavaScript and managed to get the project funded on Kickstarter within 28 hours with over 360 backers. The project is another example of Atwood's Law: &quot;any application that can be written in JavaScript, will eventually be written in JavaScript.&quot; 
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/28.java">Backbone.js 1.0 Released</a>After 2.5 years of development, version 1.0 of Backbone.js has been released. Backbone.js is the popular JavaScript Model/View library used for many popular single-page web applications, including USA Today, Rdio and Airbnb. 
@@ -150,6 +150,6 @@
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/30.java">Cloud Optimization Takes Center Stage with Free Microsoft, AWS Services</a>While a cottage industry has grown around providing services to optimize cloud usage and costs, large cloud providers themselves are beginning to promote their own optimization offerings. Microsoft recently purchased a cloud performance management company and made its product free to customers. Competitor AWS is aggressively promoting their own “Trusted Advisor” program with a free trial period. 
-  </div>  
+  </div> 
  </body>
 </html>
