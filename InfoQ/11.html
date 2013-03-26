@@ -1,11 +1,9 @@
-<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>NuoDB发布可扩展的云关系型数据库</h3><p><a href="http://www.nuodb.com/">NuoDB</a>最近发布了云数据库管理系统，该系统支持SQL查询，ACID事务（原子性、一致性、隔离性、持久性），更可方便地扩展至多个节点。它是为一些公司而专门设计的，这些公司需要将数据库扩展至多个服务器，并且不想失去关系代数和事务保障的能力。</p> 
-<p>传统的关系型数据库最大的问题之一在于不便扩展至多个节点。NuoDB被设计成便于扩展、可容错、高性能——提供比其他关系型数据更优秀的单节点性能。据NuoDB首席架构师Seth Proctor所说：</p> 
-<p>无需使用分片技术，NuoDB直接提供了横向扩展、高可用性、数据冗余等特性，而且安全可靠、管理方便还支持多租户技术。</p> 
-<p>为了实现这些，NuoDB在进程间使用了多版本并发控制和智能的对象协调方案。Seth解释道：</p> 
-<p>这些让我们能够在操作数据库的时候保持高度乐观、还可以异步批量地执行，我们还能预防许多故障以及云端发生的网络异常。我们已经减少了耐用点的事务处理，一旦出现故障也能立马恢复，在需要增加容量或想要迁移运行流程时也会变得更加灵活。这意味着你能够在不关闭数据库或降低可用性级别的情况下做全面的升级。</p> 
-<p>在模式和数据类型演化方面，NuoDB比许多关系型数据提供了更大的灵活性。它还能不中断使用的情况下动态改变模式，还允许用户自定义数据类型，在应用程序改进的时候还能很容易地更新和重新定义这些数据类型。</p> 
-<p>NuoDB起初只发布了Java和C++版本的驱动程序，但在本文撰稿之时，针对Node.js、PHP、Ruby、.NET等编程语言的<a href="https://github.com/nuodb/nuodb-drivers">驱动程序</a>也已经发布。它同时还支持Java世界里的Hibernate和Rails开发者使用的Active Record。</p> 
-<p>NuoDB最初的免费版本最多只支持两台机器——虚拟机或是物理机器都可以。NuoDB还提供了没有使用限制的开发版，但该版本只能在非生产环境中使用。你还可以向NuoDB购买授权，授权费用取决于需要支持的主机数目和数据库大小。</p> 
-<p>Barry Morris和Jim Starkey在马萨诸塞州康桥成立了这家创业公司。公司的CTO Jim是DEC的一名老将，他还开发了关系型数据库Interbase。</p> 
-<p><b>查看英文原文</b>：<a href="http://www.infoq.com/news/2013/03/nuodb;jsessionid=2CF0A8E78CF2296D3F6F5872A1F10739">NuoDB Launches Scalable, Cloud Based, Relational Database</a></p> 
+<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>基于Canvas的图表类库Chart.js  0.1发布</h3><p><a href="http://www.nickdownie.com/">Nick Downie</a>于3月17日发布了一款基于canvas的JavaScript图表类库<a href="http://www.chartjs.org/">Chart.js</a>，该类库基于MIT开源许可发布，是SVG图表类库的一种替代方案。</p> 
+<p>“我想创建一个开箱即用的图表解决方案，该解决方案提供简单且易于理解的API，Web设计者能够通过这些API实现美观的图表，同时它也需要足够的轻量便利，以便开发人员能够在复杂的Web应用中引用它”Downie说。</p> 
+<p>Chart.js暴露了<a href="http://www.chartjs.org/docs/">6种不同的图表类型</a>，它们建立在数据和选项相结合的API之上。Downie花了一个月的时间为他这个大学期间最后的项目构建类库及支持文档。在17日开放源码之后，“我完全没有料到会有这么多的响应，真是惊呆了——我在Hacker News上发布了一个帖子，一天之后就有几万人访问了这个网站，同时Github上的问题和贡献收件箱都满了，”Downie说。</p> 
+<p>与SVG图表类库不同的是， 对于每一个图表元素而言，chart.js使用一个单独的canvas节点进行输出，而不是输出多个DOM节点。由于使用了单独的节点输出，所以chart.js只有一个事件监听器钩子，同时“保持对任何区域的跟踪都需要在内存中交互，在检查当前的鼠标位置时需要迭代这些内容。用户每次移动他们的鼠标时都需要加载整个循环。同时这也意味着如果我们直接在canvas上绘制工具提示那么需要对canvas进行清除和重画。”Downie说。“谈到这方面的定制化，我认为要实现一个简单的能够满足所有人需要的API几乎不可能——有些人可能想要工具提示，其他人可能想要在图表上画线，还有人想要高亮数据点，各种需要不一而足。如果都满足那么它很快就会变得非常复杂，”Downie说。与可能需要添加工具提示相比，Downie更愿意推动chart.js成为一个替代方案，“让那些想要在自己的网站和应用中包含简单、静态图形的开发者使用Chart.js，而不再使用过度复杂且超负载的解决方案（基于SVG的图表方案）”。</p> 
+<p>虽然简化API是canvas方式的一个优点，但是Chart.js失去了基于向量的SVG图表工具所具有的伸缩性，因为它依赖于canvas所产生的光栅图像。在这种情况下，“（为canvas）声明基于百分比的CSS宽度进行响应布局。对于高DPI显示设备而言，Chart.js会通过CSS自动地扩展到正确的设备像素比（devicePixelRatio）并缩放回正确的设备像素大小，”Downie说。</p> 
+<p>Canvas本身就具有通过<a href="https://developer.mozilla.org/en-US/docs/DOM/HTMLCanvasElement">toDataUrl</a>导出base64图片的能力。“我希望在将来的发布版中能够向创建完成的图表中添加一些实用功能，这样用户便能够很容易地清除、更新或者导出图表了——本质上Chart.js会为这个功能提供一个封装，”Downie说。</p> 
+<p>Downie将在春天毕业，他希望向Chart.js中添加一些其他的功能，也希望能在毕业之后集中精力做好全职工作。“（Chart.js）给了我一个非常好的理由，让我能够同时设计并开发一些非常优雅的作品，并对Web设计社区中的人们有所帮助（希望如此）。”</p> 
+<p><b>查看英文原文</b>：<a href="http://www.infoq.com/news/2013/03/chartjs-v.0.1-released;jsessionid=D8DF82F63842F2FB33A62FEA77465E18"><b>Canvas-Based Chart.js Version 0.1 Released</b></a></p> 
 <p id="lastElm"></p><br><br><br><br><br><br></body></html>

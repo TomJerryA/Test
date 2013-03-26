@@ -1,60 +1,33 @@
-<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>Jelastic 1.9支持FTP、NGINX缓存、Apache TomEE以及MariaDB 10</h3><p>支持Java和PHP的PaaS云服务器托管平台<a href="http://jelastic.com/press-releases/jelastic-launches-new-version-1-9">Jelastic</a>发布了1.9版本，该版本将支持FTP/FTPS和<a href="http://wiki.nginx.org/Main">NGINX</a>缓存。最新版还支持<a href="http://tomee.apache.org/apache-tomee.html">Apache TomEE</a>（Apache Tomcat企业版）和<a href="http://blog.mariadb.org/tag/mariadb-10/">MariaDB 10</a>，后者使得让开发者能够充分利用多源复制、动态列名以及<a href="http://blog.mariadb.org/mariadb-galera-cluster-5-5-29-stable-ga-released/">MariaDB Galera集群</a>。</p> 
-<p>Jelastic 1.9包含一个先进的报告仪表盘，主机提供商通过它能够分析<a href="http://www.google.com/url?q=http%3A%2F%2Fsearchcloudcomputing.techtarget.com%2Fdefinition%2FPlatform-as-a-Service-PaaS&amp;sa=D&amp;sntz=1&amp;usg=AFQjCNEjICofPbANAIElrQ3x91LdGvctsw">PaaS</a>业务和客户行为的方方面面，包括转变流程、流失率、活跃率、特性的流行度和每个客户的收益等。它还提供了一个新的日志管理系统，通过新的基于浏览器的用户界面，主机提供商能够给他们的Jelastic客户提供有效的支持。</p> 
-<p>使用Jelastic 1.9，主机提供商能够从RPM构建模板，为数据库管理页面启用安全的SSL（HTTPS）。它还包含Jelastic集群管理器（JCA）特性集，例如时髦的热迁移、自定义控制面板、资金历史记录、收费管理以及系统监控等。</p> 
-<p>只有在要使用的时候，Jelastic框架才会分配Java和PHP应用程序需要的服务器资源。</p> 
-<p>在这次独家专访中，InfoQ 首席运营官（COO）Dmitry Sotnikov分享了更多Jelastic 1.9相关的内容。</p> 
-<p><b>InfoQ：PasS的真正含义是什么？</b></p> 
+<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>Swarming是如何帮助敏捷团队实施交付的</h3><p>快速且频繁地交付可工作的软件是敏捷开发的目标之一。Swarming就是能够帮助敏捷团队实现这一目标的技术。那什么是Swarming，Swarming有哪些好处，该在何时使用，又该如何使用呢？</p> 
+<p>Vin D'Amico在《<u><a href="http://brainslink.com/2013/01/agile-teams-swarm-to-greatness/">敏捷团队通过Swarming取得巨大成功</a></u>》一文中解释道，使用敏捷软件开发的团队可以在免去一些计划的情况下，发布更多软件，而且响应更为迅速：</p> 
 <blockquote> 
- <p>PaaS是自动化的托管主机，它为你包办了IT管理。在常见的托管主机或基础结构即服务（IaaS）中，基本上你拿到的是一台服务器或虚拟主机。从那时到将应用程序运行起来，还需要完成很多管理任务：搭建服务器、搭建数据库、搭建负载均衡，如果还要求高可用性的话，还得搭建集群，确保所有的配置都修改了，确保所有服务器上程序、函数库的版本一致等等。每当改动应用程序、添加新的服务器，这些工作都需要一而再再而三的重复。</p> 
- <p>至于PaaS，上诉这些都由平台自动完成。你只需要专注于自己的应用程序，平台会处理服务器管理和扩展涉及的所有内容。</p> 
- <p>此外，你还将获得更多会让开发者和产品IT维护人员羡慕不已的特性，</p> 
- <ul> 
-  <li>能够在云端直接从源码仓库构建应用程序</li> 
-  <li>支持软件开发周期：能够克隆环境（包括所有的数据），还能将环境相互交换（例如，生产环境、准备环境）</li> 
-  <li>支持角色和权限的团队协作</li> 
-  <li>集成流行的开发工具</li> 
-  <li>远程调试</li> 
-  <li>集成流行的第三方服务，例如监控、日志管理等等。</li> 
- </ul> 
+ <p>他们快速地执行从计划到设计到编码到测试再到交付的敏捷流程，如此往复，直到软件达到客户预期目标为止。</p> 
 </blockquote> 
-<p><b>InfoQ：能否和大家分享一下Jelastic和通常的共享主机有何不同？</b></p> 
+<p>敏捷团队为何响应如此之快呢？Vin指出：</p> 
 <blockquote> 
- <p>Jelastic提供给你的不单只是web服务器的一小部分。登陆到Jelastic仪表盘，只需点击几下鼠标即可创建一套完整的环境，包含应用程序服务器、负载均衡、数据库、Memcached等等。你只需上传应用程序，或指定GIT/SVN代码仓库的连接信息——Jelastic会在云端启动应用程序，并且能够自动扩展。</p> 
- <p>所以和共享主机不同是你能够轻而易举地将应用程序扩展到多台服务器上，还能够很方便地完全管理服务器：修改配置文件、上传应用程序函数库等等。</p> 
+ <p>（...）好的团队都在用Swarming。他们尽量在当下解决问题或者消除障碍。如果做不到，好，把它移到Backlog中，但不到万不得已不要这么做。</p> 
 </blockquote> 
-<p><b>InfoQ：使用Jelastic最多能够托管多少个网站？</b></p> 
+<p>在《<u><a href="http://tobeagile.com/2012/12/11/seven-strategies-for-team-swarming/">团队Swarming的7项策略</a></u>》一文中，David Bernstein解释了Swarming如何帮助我们建立一支专注并且能够解决复杂问题的高效团队：</p> 
 <blockquote> 
- <p>我们没作限制——Jelastic提供了一个自助仪表盘，通过这个仪表盘你可以限定需要多少服务器，如何使用它们，是否希望Jelastic扩展这些服务器，如果需要的话又是如何扩展。</p> 
+ <p>进行Swarming时，整个团队针对同一问题集中在一起工作。这有助于大家相互了解，进而更好地合作。通常，团队需要经历从形成（了解彼此）、磨合（发现矛盾，化解矛盾）到最终运转（成为一支高效的团队）这几个阶段，所以请给每个人一点空间。</p> 
 </blockquote> 
-<p><b>InfoQ：Jelastic是否支持.NET框架？</b></p> 
+<p>Swarming的工作方式跟结对编程很像，都是让团队成员在同一任务上紧密合作：</p> 
 <blockquote> 
- <p>目前，Jelastic全面支持PHP和Java应用程序，还包括所有基于JVM的编程语言，例如Closure、Groovy、Scala、Jruby和Jython。</p> 
+ <p>跟单枪匹马地工作相比，看看一项任务是否可以由两个甚至三个人来完成。让两个人来做同一件事是有损失，但结对工作所带来的动力往往会将其抵消。记住，高效率的团队几乎总是结对完成任务的。</p> 
 </blockquote> 
-<p><b>InfoQ：托管一个网站的资费要多少？</b></p> 
+<p>什么是Swarming？几年之前， Yahoo讨论组上曾有一次关于《<a href="http://www.infoq.com/news/2011/01/swarming;jsessionid=3AADC3829916F4B9172BCBE2D56B6267">Swarming:意义何在？</a>》的讨论，InfoQ也进行了总结。其中解释了Swarming的目的：“使团队专注于完成有业务价值的工作”，“尽可能让整个团队从一开始就参与到同一个用户故事中去，以此提升质量和一致性”。按照Vin D’Amico的说法，“简单来说，Swarming是这样的行为——将大家召集到一起来解决问题或快速完成某个任务”。David Bernstein这样定义，“Swarming就是把整个团队聚在一起，专注地解决同一个问题”。</p> 
+<p>Oleksi Derkatch描述了<a href="http://oleksiderkatch.blogspot.nl/2011/03/swarming.html">Swarming</a>如何工作，以及它能带来什么：</p> 
 <blockquote> 
- <p>Jelastic是按时计费的，并且可以自动扩充（包括垂直扩充——能够动态升级内存和处理能力）——因此你实际上只需要为你使用的那部分付费，不使用的那部分服务器资源无需付费。每小时最低的资费仅仅2 美分，要想了解你现在的应用程序的实际价格也很简单：只要<a href="http://jelastic.com/">注册试用</a>，运行应用程序，你将会看到一个无需支付的”虚拟账单“——该账单上有精确的费用。</p> 
- <p><b>InfoQ：能否安装WordPress以及其他基于PHP的博客应用程序？</b></p> 
- <p>Jelastic能够托管和扩展任意的PHP或Java应用程序。除此之外，部分我们的<a href="http://www.google.com/url?q=http%3A%2F%2Fwww.servint.net%2Fjelastic.php&amp;sa=D&amp;sntz=1&amp;usg=AFQjCNEYcsUyVnUeWtvt2zcN50KwNmfldw">主机合作伙伴</a>正通过Jelastic提供目前流行应用程序的一键部署，例如Wordpress、Joomla、Drupal、Magnolia、Liferay等等。</p> 
+ <p>它的理念是让所有开发者工作于同一个用户故事，而不是让每个开发者各自为战。它的目标是彻底完成更多的用户故事。彻底完成80%的功能总比各种功能都只完成80%要好。</p> 
 </blockquote> 
-<p><b>InfoQ：Jelastic能够处理每天20万的访问量吗？</b></p> 
+<p>Renee Troughton解释了组织应该如何使用Swarming来构建更富创造性的团队。她在博客文章《<u><a href="http://agileforest.com/2011/12/20/the-new-age-of-business/">业务的新时代</a></u>》中写道：</p> 
 <blockquote> 
- <p>Jelastic目前<a href="http://www.google.com/url?q=http%3A%2F%2Fjelastic.com%2Fcustomers&amp;sa=D&amp;sntz=1&amp;usg=AFQjCNF03aoSqAsQMa8WpYDLlzmOuIIs6A">托管的应用程序</a>拥有数以万计的用户、每天数百万的访问量。</p> 
+ <p>这正是Swarming的用武之地。大部分组织就是将人员从一个项目抛到另一个项目，很少考虑个人兴趣。除此之外，他们也很少考虑这么做的真正速度以及与投资回报的关系。</p> 
+ <p>为使工作更富成效，我们需要有激情的人，他们对待工作会像对待自己的孩子般专注。（...）应该允许对此有兴趣的员工报名参与，而且要立马放人让他们坚持到底。</p> 
 </blockquote> 
-<p><b>InfoQ：Jelastic是否支持包括IE在内的所有主流浏览器？</b></p> 
-<blockquote> 
- <p>无论应用程序的创建者决定支持什么浏览器，Jelastic托管的应用程序都能支持。</p> 
-</blockquote> 
-<p><b>InfoQ：Jelastic是否包含任何能够通知宕机时间的应用程序？</b></p> 
-<blockquote> 
- <p>Jelastic提供基本的内置监控系统，你也可以集成外部任意的监控解决方案。</p> 
-</blockquote> 
-<p><b>InfoQ：是否能够使用Jelastic创建POP3邮箱？</b></p> 
-<blockquote> 
- <p>Jelastic只托管应用程序——不提供邮箱托管服务。然而，如果应用程序需要发送电子邮件的话，你可以选择添加一个邮件服务器（例如Sendmail），也可以使用外部邮箱（例如Google Apps）或是SendGrid。</p> 
-</blockquote> 
-<p><b>InfoQ：Jelastic和Windows Azure有什么相似之处吗？</b></p> 
-<blockquote> 
- <p>他们都是PaaS。除添加了一些对非微软系统的支持之外，Azure主要还是面向ASP.NET应用程序，并且由微软独家经营。Jelastic是面向Java和PHP应用程序的PaaS，提供这项服务的主机提供商遍布世界各地，包括美国、巴西、英国、德国、瑞典、芬兰、俄国以及日本。</p> 
-</blockquote> 
-<p><b>查看英文原文</b>：<a href="http://www.infoq.com/news/2013/03/Jelastic-1-9;jsessionid=6A03D41FE3EAFA699AA645E934ED071E">Jelastic 1.9 with FTP, NGINX caching, Apache TomEE and MariaDB 10</a></p> 
+<p>你的团队在使用Swaming吗？对于快速频繁地交付软件，它是不是真的有帮助？</p> 
+<p><b>查看英文原文</b>：<u><a href="http://www.infoq.com/news/2013/02/swarming-agile-teams-deliver;jsessionid=3AADC3829916F4B9172BCBE2D56B6267">How Swarming Helps Agile Teams to Deliver</a></u></p> 
+<hr /> 
+<p>感谢<a href="http://www.infoq.com/cn/bycategory.action;jsessionid=3AADC3829916F4B9172BCBE2D56B6267?authorName=臧秀涛">臧秀涛</a>对本文的审校。</p> 
+<p>给InfoQ中文站投稿或者参与内容翻译工作，请邮件至<a href="mailto:editors@cn.infoq.com">editors@cn.infoq.com</a>。也欢迎大家通过新浪微博（<a href="http://www.weibo.com/infoqchina">@InfoQ</a>）或者腾讯微博（<a href="http://t.qq.com/infoqchina">@InfoQ</a>）关注我们，并与我们的编辑和其他读者朋友交流。</p> 
 <p id="lastElm"></p><br><br><br><br><br><br></body></html>

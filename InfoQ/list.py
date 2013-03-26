@@ -2,10 +2,13 @@
  <head></head> 
  <body>
   <div>
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/8.py">StripeがA/BテストフレームワークのAbbaをオープンソース化</a>Stripeは同社のAbbaというJavaScript A/B テストフレームワークをオープンソースにした。
-  </div>
-  <div>
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/7.py">小から超大規模ウェブサイトまでのMySQL参照アーキテクチャ</a>Oracleが発表した大規模な拡張性を備えたWebインフラストラクチャのためのMySQLリファレンスアーキテクチャ、ホワイトペーパーには、データストレージにMySQLを使用してWebサイトのさまざまな種類とサイズ向けの推奨トポロジが概要されている。
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/9.py">PeerJS 0.1.7: ブラウザにおけるP2PのためのWebRTCラッパー</a>Michelle Bu氏とEric Zhang氏は3月6日、WebRTCのラッパーとしてPeerJS 0.1.7のリリースを発表した。WebRTCは、W3CがブラウザでのP2P通信をやりやすくするために作っているものだ。
+  </div> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/8.py">StripeがA/BテストフレームワークのAbbaをオープンソース化</a>Stripeは同社のAbbaというJavaScript A/B テストフレームワークをオープンソースにした。 
+  </div> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/7.py">小から超大規模ウェブサイトまでのMySQL参照アーキテクチャ</a>Oracleが発表した大規模な拡張性を備えたWebインフラストラクチャのためのMySQLリファレンスアーキテクチャ、ホワイトペーパーには、データストレージにMySQLを使用してWebサイトのさまざまな種類とサイズ向けの推奨トポロジが概要されている。 
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/6.py">開発以外でアジャイルを実践する</a>Gartnerによればアジャイルの手法が開発以外で使われ始めている。この記事ではマーケティングやセールス、サービスを例にアジャイルを企業全体で実践することを紹介する。 
@@ -147,9 +150,6 @@
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/10.py">Eclipse RAP 2.0リリース</a>6年の開発期間を経て、1月11日にEclipse RAP 2.0がリリースされた。InfoQはプロジェクトリードに話を聞いた。 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/9.py">スワーミングがアジャイルチームを助ける</a>スワーミングはアジャイルチームがこの目的を達成するのを支援する手法のひとつだ。スワーミングとは何か、どんな利点があり、どのように導入すればいいのか。 
-  </div>   
+  </div>  
  </body>
 </html>
