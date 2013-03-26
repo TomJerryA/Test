@@ -2,6 +2,12 @@
  <head></head> 
  <body> 
   <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/4.py">MicrosoftがKinect for Windowsのサンプルをオープンソース公開</a>Microsoftは先頃，Apache 2.0ライセンスの下で22のコードサンプルをCodePlexにソース公開した。Kinect for Windows Toolkit にも含まれるこれらのサンプルには，Kinectのさまざまな機能 – オーディオ，基本的操作，色彩と深さ，顔認識，赤外線，スライドショー・ジェスチャ，音声合成，WPF，XNA，その他の使用方法が示されている。 
+  </div> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/3.py">QConTokyo2013【組み込み】トラックのご紹介</a>今年のQConTokyoは、基調講演後の午後全体を組込みトラックがカバーします。 モノづくり、組込みソフトウェア、製造業で活躍のみなさまに的確な最新情報をお届けできるものと考えております。 
+  </div> 
+  <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/2.py">運用エンジニアの教育</a>先月のhangopsでは、テクノロジーの教育に熱心なパネリストが集まって運用エンジニアの教育機会を作成することについて話し合った。彼らは現在の運用エンジニアの仕事に見合う人物を見つけるのはこれまで以上に難しくなっていることを認め、どのようにこの問題を解決するか議論した。 
   </div> 
   <div> 
@@ -144,12 +150,6 @@
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/5.py">OracleがHTML5向けにNetBeansをアップデート</a>NetBeansの最新リリースの7.3で、OracleはIDEをアップデートしたので、開発者はモバイルとウェブアプリケーション用の HTML5ベースのユーザーインターフェースをもっと容易に作成できるようになる。HTML, JavaScript,CSS3用のコード補完機能と新しいNashornを使ったJavaScriptエディタを持っている。Netbeansは、また新規のスタンドアロンJPQLエディタが加わり、開発者はIDEから直接JPQLクエリをテストできる。 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/4.py">「２月革命」ビジネス価値に基づいたソフトウェアを届けることを目指す</a>2013年2月、著者、スピーカー、コンサルタント、現場開発者たちが、ビジネス価値に基づいたソフトウェアを届けるためのアプローチにある共通要素を明らかにしようと集まった。彼らは、組織やチームがビジネス価値を最大化するために「正しい製品を作る」のに役立つ、いくつかの原理と実践的ステップを明らかにした。 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/3.py">公共部門におけるアジャイル導入: FBIとロッテルダム港の事例</a>公共部門にはアジャイルソフトウェア開発手法を導入するニーズがある。FBIとオランダのロッテルダム港の事例は、アジャイルがどのように使われているかを示している。 
   </div> 
  </body>
 </html>

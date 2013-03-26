@@ -1,8 +1,11 @@
 <html>
  <head></head> 
- <body>
-  <div>
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/26.htmlb">交付云计算的复杂性</a>即便在21世纪初的今天，计算看起来仍然更像是一门艺术而非科学。然而，背后的原因恐怕连最资深的业内人士也无法说清。最可能的原因是，IT从多种角度思考最终产品、应用和数据。打个比方，就像三个盲人摸象，因为摸到的位置不同，所以每个人心中的大象也各不相同。
+ <body> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/27.htmlb">函数式反应型编程(FRP) - 实时互动应用开发的新思路</a>本文详细讲解JavaScript编程的一种新型编程模型：利用函数式编程(Functional Programming)的思想和方法(函数、高阶函数)来支持Reactive Programming，来达到所谓的Functional Reactive Programming，简称FRP。它从新的视角关注数据流，代码更接近于只描述做什么(what)的声明式(declarative)代码，简洁又直观。 
+  </div> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/26.htmlb">交付云计算的复杂性</a>即便在21世纪初的今天，计算看起来仍然更像是一门艺术而非科学。然而，背后的原因恐怕连最资深的业内人士也无法说清。最可能的原因是，IT从多种角度思考最终产品、应用和数据。打个比方，就像三个盲人摸象，因为摸到的位置不同，所以每个人心中的大象也各不相同。 
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/25.htmlb">详解Java 7中新的文件API</a>Java 7向语言中引入了一些有用的特性，其中包括一个新的I/O文件包。相对于老的java.io包，这个包针对文件系统——特别是基于POSIX的系统——提供了粒度更细的控制功能。本文首先介绍一下新的API，之后通过一个基于Web的文件管理器项目WebFolder来详细探索这些API。 

@@ -2,7 +2,10 @@
  <head></head> 
  <body>
   <div>
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/26.java">Windows Embedded 8 Released</a>Windows Embedded 8 has been released by Microsoft and entered general availability. Intended to be used by OEMs and in specialized environments, this series of releases marks Embedded's alignment with Windows 8's code base.
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/27.java">Windows Azure Updated with Hadoop, HTML5/JS, CORS, PhoneGap, Mercurial and Dropbox</a>The recently released Windows Azure updates include support for Hadoop service, HTML5/JS, CORS, PhoneGap including Mercurial, Dropbox, CodePlex and Bitbucket deployment integration.
+  </div> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/26.java">Windows Embedded 8 Released</a>Windows Embedded 8 has been released by Microsoft and entered general availability. Intended to be used by OEMs and in specialized environments, this series of releases marks Embedded's alignment with Windows 8's code base. 
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/25.java">Has Web Style Worked?</a>Almost 7 years ago Tim Bray declared SOA dead and the future was Web Style. In a recent blog post Jean-Jacques Dubray looks back over the years and decides that Web Style hasn't worked and, given the plethora of non-Web Style services in the Programmable Web directory, is in fact itself dead. He also looks at what this means for computing and the future of application development. 
@@ -147,9 +150,6 @@
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/28.java">Jelastic 1.9 with FTP, NGINX caching, Apache TomEE and MariaDB 10</a>Jelastic has announced the availability of version 1.9 with support for FTP/FTPS, NGINX caching, Apache TomEE and MariaDB 10. 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/27.java">Culture Game Extract #6 Now Available from InfoQ</a>Dan Mezick has written The Culture Game – a how-to book describing 16 learning patterns derived from Agile. InfoQ is publishing a series of extracts from the book. The last extract discusses the concepts of of personal mastery and belief change. 
   </div>  
  </body>
 </html>
