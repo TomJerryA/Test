@@ -1,10 +1,20 @@
-<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>ASP.NET Web APIのODataでQueryable APIにバリデーションを適用する</h3><p><a target="_blank" href="http://www.infoq.com/news/2013/02/queryable-api;jsessionid=41805BB538D1C6C8E60701DB577B336B"><em>原文(投稿日：2013/02/27)へのリンク</em></a></p> 
+<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>StripeがA/BテストフレームワークのAbbaをオープンソース化</h3><p><a target="_blank" href="http://www.infoq.com/news/2013/03/Abba;jsessionid=A0044DA2B7C8D41F1655A2CC0D7D86E6"><em>原文(投稿日：2013/03/15)へのリンク</em></a></p> 
 <div class="clearer-space">
  &nbsp;
 </div> 
 <div id="newsContent"> 
- <p><a target="_blank" href="http://www.nuget.org/packages/microsoft.aspnet.webapi.odata">ASP.NETのWeb APIのOData</a>では、下に示すように、<a target="_blank" href="http://blogs.msdn.com/b/webdev/archive/2013/02/06/protect-your-queryable-api-with-validation-feature-in-asp-net-web-api-odata.aspx">Queryable API</a>の助けを借りて特定のアクション用の<a target="_blank" href="http://www.odata.org/">OData</a>クエリシンタックスを使用することができる。<br /> <br /> <code>[Queryable]&nbsp;&nbsp;&nbsp; <br /> public IQueryable&lt;WorkItem&gt; Get(int projectId) </code><br /> <br /> しかし、もしあなたの組織外にクエリ可能なアクションを公開しするなら、クエリバリデーションの助けを借りて、保護層を追加することで、サービスを保護すべきである。 Microsoftの Program Managerである Hongmei Ge氏は、最近 Queryable APIで、バリデーションを適用できる、様々なシナリオを検討した。<br /> <br /> 氏によって指摘された最初のシナリオは、下に示すように AllowedQueryOptionsと呼ばれるプロパティを使って、$top と $skipを持つクエリだけを許すのである。<br /> <br /> <code>[Queryable(AllowedQueryOptions = AllowedQueryOptions.Skip | AllowedQueryOptions.Top)]<br /> public IQueryable&lt;WorkItem&gt; Get(int projectId) </code></p> 
- <p>MaxTop と MaxSkipプロパティを使って、$top と $skipの値を100と200に制限できる。<br /> <br /> <code>[Queryable(MaxTop = 100)]<br /> public IQueryable&lt;WorkItem&gt; Get(int projectId) </code><br /> <br /> <code>[Queryable(MaxSkip = 200)]<br /> public IQueryable&lt;WorkItem&gt; Get(int projectId) </code><br /> <br /> AllowedOrderbyPropertiesを使って、結果をIdプロパティによって並び替えられる。なぜなら任意のプロパティによる並び替えは、遅い可能性がある。<br /> <br /> <code>[Queryable(AllowedOrderByProperties = &quot;Id&quot;)]<br /> public IQueryable&lt;WorkItem&gt; Get(int projectId) </code><br /> <br /> もしあなたのクライアントが$filter内で Equal比較を使っているなら、AllowedLogicalOperatorsを使ってそれを検証すべきである。<br /> <br /> <code>[Queryable(AllowedLogicalOperators = AllowedLogicalOperators.Equal)]<br /> public IQueryable&lt;WorkItem&gt; Get(int projectId) </code><br /> <br /> AllowedArithmeticOperators の値をNoneにセットすれば、$filter で算術演算をオフすることができる。<br /> <br /> <code>[Queryable(AllowedArithmeticOperators = AllowedArithmeticOperators.None)]<br /> public IQueryable&lt;WorkItem&gt; Get(int projectId) </code><br /> <br /> AllowedFunctionsプロパティを使って、$filterにおける関数の使い方を制限できる。<br /> <br /> <code>[Queryable(AllowedFunctions = AllowedFunctions.StartsWith)]<br /> public IQueryable&lt;WorkItem&gt; Get(int projectId) </code><br /> <br /> 上記のコードは、StartsWith関数だけが$filterで使えることを意味している。<br /> <br /> 氏はまた、$skip, $top, $orderby, $filterに対するデフォルトのバリデーションロジックやクエリをバリデートするためにODataQueryOptions の使い方をカスタマイズするような、高度なシナリオでクエリバリデーションを説明している。</p> 
+ <p><a target="_blank" href="https://stripe.com/">Stripe</a> は，同社の <a target="_blank" href="https://github.com/maccman/abba">Abba</a> というJavaScript A/B テストフレームワークをオープンソースにした。このテスト用にWebアプリケーションをセットアップするには，メインページに次のようなコードを挿入する必要がある。</p> 
+ <pre>
+&lt;script&gt;
+  Abba('test name')
+    .control('Test A', function(){ /* ... */ })
+    .variant('Test B', function(){ /* ... */ })
+    .start();
+&lt;/script&gt;</pre> 
+ <p>このスクリプトでは <code>Test A</code> というコントロールテストを定義して，すべての処理結果の報告対象にすると同時に，<code>Test B</code>という別のバリアントを定義している。バリアントは複数あってもよい。テストでハンドラが参照される度に，必要に応じてこれがフレームワークからコールされる。コントロールテストではハンドラのない場合もある。</p> 
+ <p>テストが開始されると，Abbaは別々のテストに関連付けられたハンドラをランダムに呼び出す。通常はこれによって，サイトで使用されているページが別々に呼び出される。フレームワークが各ユーザ毎に，テスト開始と終了ステータスを保持する。ユーザが改めてWebサイトを参照した時，前回と同じページを表示するようにAbbaを設定しておくことも可能だ。</p> 
+ <p>データはMongoDBにストアされ，日毎のビジター数やコンバージョン率 (テストを完了したビジター) を，指定された時間範囲でグラフ表示によって可視化することができる。各バリアントの値は重み付けされ，テスト精度を評価するための<a target="_blank" href="http://en.wikipedia.org/wiki/Standard_score">標準スコア</a> が計算される。結果を日付ないし使用ブラウザでフィルタリングすることも可能だ。</p> 
+ <p>Abbaはローカルでもサーバ上でも実行可能である。Heroku上で動作させるための手順書も用意されている。動作にはRuby 1.9.3とMongoDBが必要だ。</p> 
  <p id="lastElm">&nbsp;</p> 
 </div> 
 <p id="lastElm"></p><br><br><br><br><br><br></body></html>

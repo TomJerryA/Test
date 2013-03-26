@@ -2,10 +2,16 @@
  <head></head> 
  <body>
   <div>
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/6.py">開発以外でアジャイルを実践する</a>Gartnerによればアジャイルの手法が開発以外で使われ始めている。この記事ではマーケティングやセールス、サービスを例にアジャイルを企業全体で実践することを紹介する。
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/8.py">StripeがA/BテストフレームワークのAbbaをオープンソース化</a>Stripeは同社のAbbaというJavaScript A/B テストフレームワークをオープンソースにした。
   </div>
   <div>
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/5.py">Tom Baeyens氏(jBPM，Alfresco Activitiの作者)，クラウド版BPMの新ベンチャを開始</a>JBoss jBPM (Red Hatが買収) と Activiti (Alfresco) のオリジナル作者であるTom Baeyens氏が，ビジネスプロセスを自動化するクラウドベースの新BPM (Business Process Management) ツールの Effektif を発表した。新たなベンチャを進めるパートナーはSignavioという新興企業だ。InfoQではBaeyens氏とSignavio共同CEOのDecker氏に詳細を聞いた。
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/7.py">小から超大規模ウェブサイトまでのMySQL参照アーキテクチャ</a>Oracleが発表した大規模な拡張性を備えたWebインフラストラクチャのためのMySQLリファレンスアーキテクチャ、ホワイトペーパーには、データストレージにMySQLを使用してWebサイトのさまざまな種類とサイズ向けの推奨トポロジが概要されている。
+  </div> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/6.py">開発以外でアジャイルを実践する</a>Gartnerによればアジャイルの手法が開発以外で使われ始めている。この記事ではマーケティングやセールス、サービスを例にアジャイルを企業全体で実践することを紹介する。 
+  </div> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/5.py">Tom Baeyens氏(jBPM，Alfresco Activitiの作者)，クラウド版BPMの新ベンチャを開始</a>JBoss jBPM (Red Hatが買収) と Activiti (Alfresco) のオリジナル作者であるTom Baeyens氏が，ビジネスプロセスを自動化するクラウドベースの新BPM (Business Process Management) ツールの Effektif を発表した。新たなベンチャを進めるパートナーはSignavioという新興企業だ。InfoQではBaeyens氏とSignavio共同CEOのDecker氏に詳細を聞いた。 
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/4.py">MicrosoftがKinect for Windowsのサンプルをオープンソース公開</a>Microsoftは先頃，Apache 2.0ライセンスの下で22のコードサンプルをCodePlexにソース公開した。Kinect for Windows Toolkit にも含まれるこれらのサンプルには，Kinectのさまざまな機能 – オーディオ，基本的操作，色彩と深さ，顔認識，赤外線，スライドショー・ジェスチャ，音声合成，WPF，XNA，その他の使用方法が示されている。 
@@ -144,12 +150,6 @@
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/9.py">スワーミングがアジャイルチームを助ける</a>スワーミングはアジャイルチームがこの目的を達成するのを支援する手法のひとつだ。スワーミングとは何か、どんな利点があり、どのように導入すればいいのか。 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/8.py">ASP.NET Web APIのODataでQueryable APIにバリデーションを適用する</a>ASP.NET のWeb APIのODataでは、もし組織外でクエリを使うなら、Queryable API でバリデーションを使用できることは重要である。この記事は、バリデーションを使うことができる様々なシナリオを検討している。 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/7.py">GreenplumのPivotal HDがSQLのパワーとHadoopを結合する</a>EMC Greenplum が新しいHadoopディストリビューションの Pivotal HD を発表した。HDFS上で &quot;Hiveより数百倍高速&quot; に動作するという，SQL完全準拠のMPPデータベースを備える。 
   </div>   
  </body>
 </html>
