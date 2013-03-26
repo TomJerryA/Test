@@ -1,30 +1,56 @@
-<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>PostgreSQLで頑強なデータベース設計</h3><p><a target="_blank" href="http://www.infoq.com/news/2013/02/solid-database-design;jsessionid=4D6FD81A63BF494F50CE725E85F8A3ED"><em>原文(投稿日：2013/02/26)へのリンク</em></a></p> 
+<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>開発以外でアジャイルを実践する</h3><p><a target="_blank" href="http://www.infoq.com/news/2013/03/agile-outside-development;jsessionid=13941F0EF9968A778536DD318EDAE080"><em>原文(投稿日：2013/03/14)へのリンク</em></a></p> 
 <div class="clearer-space">
  &nbsp;
 </div> 
 <div id="newsContent"> 
- <p>Chris Travers 氏は、最近「頑強なデータベースの構築」と題する一連の記事を発表した。彼は、いかに幾つかの共通のOOP原則、例えば単一責務の原則、インターフェースの分離、依存性の逆転をいかに適用して、データモデルやデータベースのコードを改善するかに関する幾つかの考えを説明している。アイデアの幾つかは、どのようなリレーショナルデータベースにも部分的に適用出来るが、 記事は、PostgreSQLのようなデータベースにあるテーブルの継承のようなオブジェクト・リレーショナル機能を含んだシナリオを紹介している。</p> 
- <p align="justify"><a target="_blank" href="http://ledgersmbdev.blogspot.in/2013/01/building-solid-databases-single.html">単一責務と正規化</a>で、氏は、データモデルとクラスモデル間の類似性と微妙な違いを説明している。正規化は、通常、純粋なリレーショナル・データベースでSRPを満たすのに十分であるが、テーブル継承は、さらにデータベース内の他のフィールドに依存している一般的共起フィールドを管理するために使用できる。彼は例を提供している。</p> 
+ <p>企業全体でのアジャイルの実践は利点があるだろう。最近、いくつかのブログでソフトウエア開発以外でアジャイルを実践することについての考察がされた。GartnerのJake Sorofman氏は、<a target="_blank" href="http://blogs.gartner.com/jake-sorofman/is-agile-the-last-remaining-competitive-advantage/">アジャイルが残された最後の競争優位なのか</a>どうかについて論じている。氏は企業でのアジャイルの利用が企業全体で使われるという傾向を示している。</p> 
  <blockquote> 
-  <p align="justify">合成が大きな違いをもたらす共通のケースは、ノートの管理においてである。人々は、データベースにあるあらゆる種類の他のデータにノートを付けたいと思うかもしれない。そうなら、ノートのテキストすなわち件名が互いに依存している、と言うことはできない。</p> 
-  <p align="justify">典型的な純粋なリレーショナル　アプローチでは、多くの独立に管理されているノートのテーブルを持っているか、あらゆるもののためのメモを格納する単一のグローバルノートテーブルを持っているかのどちらかで、次に複数の結合テーブルを持ち、結合依存関係を追加する。</p> 
-  <p align="justify">オブジェクト・リレーショナル・アプローチでは、複数のノートのテーブルを持つようになるが、それらが共通なノートのテーブルのテーブル構造を継承しているだろう。</p> 
+  <p>アジャイルがソフトウエア開発の実践方法になったことは誰でも知っています。そして今、アジャイルの実践がビジネスの他の分野へ進出しているのが見られつつあります。</p> 
  </blockquote> 
- <p align="justify"><a target="_blank" href="http://ledgersmbdev.blogspot.in/2013/01/building-solid-databases-openclosed.html">オープン・クローズ原則 </a>では、ゴールは、ベースバージョンが変更された時に、拡張性を壊さずに、システムを拡張可能に保つことだろう。再び、テーブルの継承がデータモデルの拡張ポイントを提供する柔軟な方法を提供することができる。ここでの例は、いかに pg_message_queue 0.2は、各データ型をサポートする別々のテーブを持ち、全てのテーブルは共通のテーブルから継承させることによって、様々なデータ型を扱うことができるかを示している。氏は、またセキュアなAPIがセキュリティコントロールのために、拡張性を維持しながら、修正に対してクローズドでいるかを示す、別の簡単な例を提供している。</p> 
- <p align="justify"><a target="_blank" href="http://en.wikipedia.org/wiki/Liskov_substitution_principle">Liskov の置換原則</a> は、通常、純粋にリレーショナルデータベースの問題ではないが、テーブルの継承を使うと、<a target="_blank" href="http://ledgersmbdev.blogspot.in/2013/02/building-solid-databases-liskov.html">前面に出てくる事がある</a> 。ここにある例は、 my_rectangleテーブルを継承している my_squareテーブルである。</p> 
- <div align="justify"> 
-  <pre>
-CREATE TABLE my_rectangle ( id serial primary key, height  numeric, width numeric );
-CREATE TABLE my_square ( check (height = width) ) INHERITS  (my_rectangle);</pre> 
- </div> 
- <p align="justify">そして my_rectangleを更新する。</p> 
- <div align="justify"> 
-  <pre>
-UPDATE my_rectangle SET height = height * 2</pre> 
- </div> 
- <p align="justify">すると、それが squareテーブルに参照の問題を引き起こし、失敗する。これに対処する方法は、いっぺんに更新するのを避ける（行をイミュータブルにする）か、 トリガーを使って、そのような更新の度に、my_squareから行を削除し、 my_rectangleに挿入するかのどちらかである。</p> 
- <p align="justify"><a target="_blank" href="http://en.wikipedia.org/wiki/Interface_segregation_principle">インターフェースの分離</a>が <a target="_blank" href="http://ledgersmbdev.blogspot.in/2013/02/building-solid-databases-interface.html">データベースに適用されるとき</a>は、主にユーザー定義の関数あるいはストアドプロシージャを伴うだろう。氏は、これらを基礎となるデータへのインターフェースとして考えており、理想的な関数ないしストアドプロシージャが最小限の周辺ロジックを持つ１つの大きなクエリを持つことを提案している。5つ以上のクエリあるいは、多数のオプションのパラメータが複雑性を減らすべきことの示唆となり、それらは、複数の別々の関数かストアドプロシージャ（それぞれは1つの特定の目的を持つ）に分解することで対処すべきである。再び、この原則は単一責務の原則と一緒に適用される。</p> 
- <p align="justify"><a target="_blank" href="http://ledgersmbdev.blogspot.in/2013/02/building-solid-databases-dependency.html">依存性の逆転と堅牢なDBインターフェース</a>では、氏は、アプリケーションロジックとストアドプロシージャ間の緊密な結合がいかに、脆弱な抽象に導くことになり得るかを説明し、2,3の潜在的解決策を提案している。それらのあるものは、サービスロケーターパターンに似たものを使い、ビューあるいは関数を使い、<a target="_blank" href="http://www.postgresql.org/docs/9.1/static/xtypes.html">カスタムなデータ型</a>、トリガー、通知を使っている。ここでの主要な提案は、様々なオプションを検討し、データベース自身を適当なAPIを公開しているアプリケーションとして設計することである。</p> 
+ <p>以前、InfoQではアジャイルの実践が企業のマーケティング(<a target="_blank" href="http://www.infoq.com/news/2012/07/agile-marketing-manifesto;jsessionid=613E763D482EA13B806D69C84DFF01DA;jsessionid=13941F0EF9968A778536DD318EDAE080">SprintZeroでアジャイルマーケッターがアジャイルマーケティングマニュフェストを作成</a>)とセールス(<a target="_blank" href="http://www.infoq.com/news/2011/07/agile-sales;jsessionid=613E763D482EA13B806D69C84DFF01DA;jsessionid=13941F0EF9968A778536DD318EDAE080">セールとアジャイルは水と油か</a>)でどのように使われているか報じている。アジャイルがソフトウエア開発以外の企業の活動にも利点があることが明らかになりつつある。Jake Sorofman氏曰く、</p> 
+ <blockquote> 
+  <p>(…) すべてを変化させる方法は何か、という問いに対するに私たちのシンプルな回答がアジャイルです。すべてが素早く変化する現実、真実は常に不透明で、小さな失敗をする余裕はあるものの、大きなことは必ず成功させなければならないビジネスをアジャイルは支援します。実際、アジャイルでの小さなことの失敗は大きなの成功を<em>実現</em>させます。</p> 
+ </blockquote> 
+ <p>氏は、顧客への価値を継続的に提供することを取り上げ、リーンスタートアップとアジャイルがどのように一緒にするかを示している。</p> 
+ <blockquote> 
+  <p>ビジネスインキュベーションの世界では、“実用最小限製品”について話します。実用最小限製品は真実を探すための、提供できる最小限の価値を定義します。そして、ありがたいことに実用最小限製品によって私は次の点に気付いたのです。すなわち、幅広くアジャイルを導入することで最小限の価値が導かれる、ということです。</p> 
+ </blockquote> 
+ <p><a target="_blank" href="http://www.theenterprisearchitect.eu/archive/2012/08/10/enterprise-agile-extending-the-agile-process-outside-development">enterprise agile: extending the agile process outside development</a>というブログ記事でMendixのCTOであるJohan den Haan氏は企業全体にアジャイルを適用することについての氏の考えを示している。氏は何が企業へのアジャイル導入を特別なものにしているかを説明する。</p> 
+ <blockquote> 
+  <p>組織全体の考え方が定まらなければアジャイルは導入できません。アジャイルな組織ではマーケティングもセールスも製品開発とバランスを取ります。アジャイルな企業ではビジネス全体がマーケットの変化に素早く反応できる方法で組織されています。すべての部門は完全に価値の流れと統合されています。</p> 
+ </blockquote> 
+ <p>そして、アジャイルのどのような価値がマーケティングの役に立つのかを説明する。</p> 
+ <blockquote> 
+  <p>一定のペースでリリースすると自分たちのペースでマーケティングできます。ただ、それより重要なのは、価値を可能な限り素早く提供できることです。</p> 
+ </blockquote> 
+ <p>アジャイルソフトウエア開発によって製品を頻繁にリリースすることが可能になる。フィードバックを受け取るために、氏はサービス部門もアジャイルを実践することを薦める。</p> 
+ <blockquote> 
+  <p>(…) サービス部門もこのプロセスに早い時期に合流するべきです。製品についてのフィードバックに耳を傾け、すぐにイテレーション/スプリントのミーティングで議論し、実際にリリースする前にこのフィードバックに対処する機会を与えます。</p> 
+ </blockquote> 
+ <p>氏はアジャイルを企業に導入する方法を説明してブログ記事を締めくくっている。</p> 
+ <blockquote> 
+  <p>アジャイルな方法でアジャイルを導入します。ポリシーを作ったりするなどトップダウンの方法で始めてはなりません。ひとつのチームから始め、アジャイルしているチームが複数になれば、すぐにチーム感を調整する必要がでてきます。こうなるとスクラムのスクラムミーティングを始めたくなるかもしれません。もし、開発プロセスがアジャイルなら、その実践を拡大するのです。他の部門をひとつずつ巻き込み、上位のマネジメントがこの動きを支援してくれるようにします。</p> 
+ </blockquote> 
+ <p><a target="_blank" href="http://agilecoach.typepad.com/agile-coaching/2012/09/introducing-agile-techniques-to-teams-outside-software-development-.html">introducing agile techniques to teams outside software development</a>という記事では作家でアジャイルコーチである<a target="_blank" href="http://www.infoq.com/author/Rachel-Davies;jsessionid=613E763D482EA13B806D69C84DFF01DA;jsessionid=13941F0EF9968A778536DD318EDAE080">Rachel Davies氏</a>が開発以外にアジャイルを導入した自身の経験を書いている。</p> 
+ <blockquote> 
+  <p>私たちの会社はXPを開発手法の中心に据えることで生まれました。そして製品が成功するにつれ成長し、今や複数の部門(ファイナンスやインフラストラクチャ、HRと設備管理を合わせた&quot;People &amp; Places&quot;)が日々、開発チームとは関係のない業務を行っています。それらの部門も開発と同じように自分たちの仕事をマネジメントすることに興味を持っています。</p> 
+ </blockquote> 
+ <p>氏はソフトウエアを開発するチーム以外にアジャイルを導入する方法を説明する。</p> 
+ <blockquote> 
+  <p>チームにアジャイルの理論と実践を大声で吹き込むのではなく、ゆっくりと導入していきました。まず、その週の仕事をボード上で視覚的にわかるようにする方法を簡単にスケッチし、付箋を使ってそれを実現しました。(…) そして、ボードの周りに集まっていくつかのミーティングを繰り返し実施します。週の始めに優先順位付けを行い、デイリースタンドアップや月次の振り返りを行うのです。</p> 
+ </blockquote> 
+ <p>氏はAgile2012でディスカッションを開催している。ここで士はアジャイルを使うことについて会話をし始めるためにできることについて一覧している。</p> 
+ <ul> 
+  <li>ビールやコーヒーを飲みながら価値を説明する</li> 
+  <li>ミーティングを楽しくするための方法を導入する</li> 
+  <li>エクゼクティブエバンジェリスト</li> 
+  <li>アジャイルソフトウエア開発チームツアーを開催する</li> 
+  <li>オープンで好奇心旺盛な人をひとり見つける</li> 
+  <li>チームの信頼を醸成する。チームのメンバを支援者として巻き込む</li> 
+  <li>開発以外のチームがアジャイルコーチを利用できるようにする</li> 
+  <li>面白いエレベータピッチを作る</li> 
+  <li>クールに見えるものを使って関心を引き寄せる</li> 
+ </ul> 
  <p id="lastElm">&nbsp;</p> 
 </div> 
 <p id="lastElm"></p><br><br><br><br><br><br></body></html>

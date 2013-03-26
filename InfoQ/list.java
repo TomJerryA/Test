@@ -1,8 +1,8 @@
 <html>
  <head></head> 
- <body>
-  <div>
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/27.java">Windows Azure Updated with Hadoop, HTML5/JS, CORS, PhoneGap, Mercurial and Dropbox</a>The recently released Windows Azure updates include support for Hadoop service, HTML5/JS, CORS, PhoneGap including Mercurial, Dropbox, CodePlex and Bitbucket deployment integration.
+ <body> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/27.java">Windows Azure Updated with Hadoop, HTML5/JS, CORS, PhoneGap, Mercurial and Dropbox</a>The recently released Windows Azure updates include support for Hadoop service, HTML5/JS, CORS, PhoneGap including Mercurial, Dropbox, CodePlex and Bitbucket deployment integration. 
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/26.java">Windows Embedded 8 Released</a>Windows Embedded 8 has been released by Microsoft and entered general availability. Intended to be used by OEMs and in specialized environments, this series of releases marks Embedded's alignment with Windows 8's code base. 
@@ -150,6 +150,6 @@
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/28.java">Jelastic 1.9 with FTP, NGINX caching, Apache TomEE and MariaDB 10</a>Jelastic has announced the availability of version 1.9 with support for FTP/FTPS, NGINX caching, Apache TomEE and MariaDB 10. 
-  </div>  
+  </div> 
  </body>
 </html>

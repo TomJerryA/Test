@@ -1,22 +1,16 @@
-<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>OracleがHTML5向けにNetBeansをアップデート</h3><p><a target="_blank" href="http://www.infoq.com/news/2013/02/netbeans73;jsessionid=B3516E6DC32298A7B37FA6A7E70064CC"><em>原文(投稿日：2013/02/26)へのリンク</em></a></p> 
+<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>Tom Baeyens氏(jBPM，Alfresco Activitiの作者)，クラウド版BPMの新ベンチャを開始</h3><p><a target="_blank" href="http://www.infoq.com/news/2013/03/baeyens-activiti;jsessionid=59630CEA3311EA7FCB33C658D77E10E4"><em>原文(投稿日：2013/03/13)へのリンク</em></a></p> 
 <div class="clearer-space">
  &nbsp;
 </div> 
 <div id="newsContent"> 
- <p>NetBeansの最新リリースの7.3で、OracleはIDEをアップデートしたので、開発者はモバイルとウェブアプリケーション用の HTML5ベースのユーザーインターフェースをもっと容易に作成できるようになる。</p> 
- <p>新しいHTML5プロジェクトタイプによって、自動的に人気のある<a target="_blank" href="http://backbonejs.org">Backbone</a> と <a target="_blank" href="http://jquery.com">jQuery</a>のようなJavaScriptフレームワークが公開のCDNからダウンロードされ、取り込まれる。幾つかのサンプルHTML5 アプリケーションも New Projectウィザードから直接開くことができる。これらのあるものは、NetBeansに含まれており、他のものはGitHubから即座にダウンロードできる。</p> 
- <p>IDEには、またサーバー側のJavaベースのRESTサービスにアクセスできるJavaScriptクライアントコードを生成できるウィザードが含まれている。ウィザードがJSコードを生成するのに、 Backbone.jsライブラリと（オプションで）HTMLファイルを使っている。HTMLファイルは、生成されたコードがどのようにカスタマイズできるか、について指示を与えるスケルトンを含んでいる。もしRESTサービスがデータコレクション周りのインターフェースを持ち、テーブルソーターUIが選ばれたら、RESTデータは、 Tablesorter jQueryプラグインを使って、テーブルグリッドとしてレンダリングされる。</p> 
- <p>コーディング時には、エディタが HTML5, JavaScript, jQuery, CSS3(<a target="_blank" href="http://wiki.netbeans.org/html5">Project Easel</a>)用の補完機能を提供する。JavaScriptのエディタとデバッガは、 Oracleの Nashorn JavaScriptエンジンを使って完全に書き直された。Java 8におけるJavaのデフォルトのJavaScriptエンジンは、Rhinoに代わってこのNashornになる。このエディタは、共通のJavaScriptドキュメントオプションとして、<a target="_blank" href="https://wiki.appcelerator.org/display/tis/scriptdoc%2b(sdoc)%2b2.0%2bspecification">ScriptDoc</a>, <a target="_blank" href="http://code.google.com/p/ext-doc/">Ext-Doc</a>、<a target="_blank" href="http://code.google.com/p/jsdoc-toolkit/">JsDoc</a>をサポートする。</p> 
- <p>IDEの狙いの1つは、開発者がウェブインターフェースをデバッグするのを助けることである。IDEのHTMLプレビューは、内部のWebKitベースのブラウザによって提供されている。また Chromeブラウザ拡張は、WebKitリモートデバッグプロトコルを使うので、NetBeans内からウェブアプリケーションのデバッグができる。デバッガは、HTML5アプリケーションに含まれているローカルファイルとアプリケーションにリンクされている、しかしソースに含まれているではない、リモートのJavaScriptファイルの両方のデバッグをサポートしている。デバッガは4つのビューを提供する。</p> 
- <ul> 
-  <li><strong>ブレークポイント</strong>:ラインブレークポイント（スクリプトが特定のコード行に達した時にトリガーされる）、DOMブレークポイント（特定のDOMノードに変更があった時にトリガーされる）、イベントブレークポイント（ページで特定のイベントが起きた時にトリガーされる）、XMLHttpRequestブレークポイント（ XMLHttpRequestを使って、ネットワーク通信が行われた時にトリガーされる）。</li> 
-  <li><strong>コールスタック</strong>: JavaScriptプログラムの現在の実行スタックを表示する。コールスタックウィンドウには、3つのコンテキストアクションがある：&quot;Make Current&quot; （変数が評価されている現在のフレームを変更する）, &quot;Go to Source&quot; そして &quot;Copy Stack&quot;（スタックトレースをクリップボードにコピーする）。</li> 
-  <li><strong>変数</strong>: 変数は、変数ウィンドウで検査できる現在のスコープ内で有効である。評価器も含まれており、任意の式を評価できる。</li> 
-  <li><strong>ブラウザログ</strong>: ブラウザで発生したあらゆる例外、エラー、警告などを表示する。</li> 
- </ul> 
- <p>JavaScriptの単体テストも js-test-driver（これは Eclipse と IntelliJでもサポートされている）によってサポートされている。JavaScriptのユニットテストを走らせ、デバッグするのは、他の言語でのと同じである。</p> 
- <p>ウェブプログラミングの他には、NetBeans 7.3には、新規のスタンドアロンのJPQL (Java Persistence Query Language)エディタがあり、開発者はIDEから直接JPQLクエリをテストすることができる。最後に、新バージョンは、Raspberry Piを含む Linux ARMシステム上のJavaアプリケーションのプロファイリングをサポートしている。</p> 
- <p>NetBeansは、オープンソースのIDEで、 CDDL v1.0とGPLv2のもとで<a target="_blank" href="http://netbeans.org/cddl-gplv2.html">ライセンス</a>されている。Javaの他に Groovy（このバージョンにはGroovy 2.0 のサポートが追加された）、PHP, C, C++が追加されている。 Windows,OS X, Solaris 、Linuxプラットフォーム版が<a target="_blank" href="http://netbeans.org/community/releases/73/">ダウンロード</a>できる。</p> 
+ <p>JBoss <a target="_blank" href="http://www.jboss.org/jbpm/">jBPM</a> (Red Hatが買収) と <a target="_blank" href="http://www.activiti.org">Activiti</a> (Alfresco) のオリジナル作者であるTom Baeyens氏が，ビジネスプロセスを自動化するクラウドベースの新BPM (Business Process Management) ツールの <a target="_blank" href="http://www.effektif.com">Effektif</a> を発表した。新たなベンチャを進めるパートナーは，SaaSとオンプレミスのビジネスプロセスエディタを提供している <a target="_blank" href="http://www.signavio.com">Signavio</a> という，2009年に設立された新興企業だ。Effektifの開発促進と販売体制確立のためにSignavioは120万ユーロを投資している。これに合わせてEffektifは開発拠点をベルギーからドイツのベルリンへ移転し，Signavioの共同CEOであるTorben Schreiter氏が取締役に就任する。</p> 
+ <p>Baeyens氏がInfoQに語ったところによれば，このプランの中核をなすのは &quot;BPMをクラウドに移行することにより，ビジネスプロセスの動的側面がより重要なものになる&quot; という発想だ。その結論としてシステムのワークフローは，ビジネスユーザ自身が定義および変更可能なものでなければならない。従来型のBPMNモデラ上にクラウドスケールの実行エンジンを構築しただけでは不十分だ，と氏は主張する。</p> 
+ <p>Baeyens氏はEffektifを３つの概念的レイヤで考えている。第１のレイヤはブラウザベースのウィザードだ。ビジネスユーザがタスクやその委譲の定義，入力フォームの作成などを行うためのシンプルなメカニズムを提供する。作業の調整やフィードバックにはEメールを使用する。作成したプロセスをユーザが試行するためのサンドボックスも用意されている。&quot;私たちの狙いは，ビジネスユーザが５分未満で最初の簡単なプロセスを定義できるようにすることです&quot; とBaeyens氏は述べている。</p> 
+ <p>第２のレイヤではSalesforceやGoogle Appsなど，他のクラウドベースのパッケージアプリケーションとの統合アダプタが提供されている。コーディングこそ必要ではないが，統合を定義するにはある程度の技術知識は必要だろう。この点はBaeyens氏も認めている。このレイヤでの作業はIT技術者が行うことになりそうだ。</p> 
+ <p>最後の第３レイヤは，開発者がワークフローに付加するカスタムソフトウェアを記述する場所だ。ここで採用しているアプローチは <a target="_blank" href="http://aws.amazon.com/swf/">AmazonのSimple Workflow Service</a> のそれに近い。Effektifはシステムの各アクティビティ単位でタスクリストを保持している。開発者はRESTfulなAPIを通じてタスクリストから必要なタスクを参照し，処理結果をクラウドエンジンに返すようなコードを記述する。そこで返された結果がプロセスを起動するトリガになる，という機構だ。プログラムには任意の言語 – Bayens氏によれば &quot;PHP, Java, 他&quot; を使用することができる。同じ機構を使用して，ファイアウォール内にある企業システムとの統合も可能だ。</p> 
+ <p>アーキテクチャ面に目を移すと，エンジンはJavaを使って開発され，<a target="_blank" href="http://www.bpmn.org/">BPMN(Business Process Model and Notation) 2.0</a> を採用している。Signavioの共同CEOであるGero Decker氏によると，製品のモデリングプロセスフローには同社のSignavio Process Editorが使われている。&quot;これには素晴らしい副産物があります。Signavioが現在すでに持っているプロセスモデルのインポート機能 (例:<a target="_blank" href="http://www.xpdl.org">XPDL</a>) が，Effektifでも利用できるのです。&quot;</p> 
+ <p>RESTレイヤは <a target="_blank" href="http://restlet.org">Restlet</a> フレームワークを使って構築されている。JSONの処理には <a target="_blank" href="http://wiki.fasterxml.com/jacksonhome">Jackson</a> を，ストレージとしては <a target="_blank" href="http://www.mongodb.org">MongoDB</a> を使用する。フロントエンドのJavaScriptフレームワークについてはまだ未確定だ。</p> 
+ <p>Effektifの最初のベータ版は夏頃になる見込みだ。製品の公開は今年の終わりを目標としている。価格については未定だが，アクティビティインスタンス単位の価格モデルをベースとしたものになりそうだ。</p> 
  <p id="lastElm">&nbsp;</p> 
 </div> 
 <p id="lastElm"></p><br><br><br><br><br><br></body></html>

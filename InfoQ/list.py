@@ -1,6 +1,12 @@
 <html>
  <head></head> 
- <body> 
+ <body>
+  <div>
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/6.py">開発以外でアジャイルを実践する</a>Gartnerによればアジャイルの手法が開発以外で使われ始めている。この記事ではマーケティングやセールス、サービスを例にアジャイルを企業全体で実践することを紹介する。
+  </div>
+  <div>
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/5.py">Tom Baeyens氏(jBPM，Alfresco Activitiの作者)，クラウド版BPMの新ベンチャを開始</a>JBoss jBPM (Red Hatが買収) と Activiti (Alfresco) のオリジナル作者であるTom Baeyens氏が，ビジネスプロセスを自動化するクラウドベースの新BPM (Business Process Management) ツールの Effektif を発表した。新たなベンチャを進めるパートナーはSignavioという新興企業だ。InfoQではBaeyens氏とSignavio共同CEOのDecker氏に詳細を聞いた。
+  </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/4.py">MicrosoftがKinect for Windowsのサンプルをオープンソース公開</a>Microsoftは先頃，Apache 2.0ライセンスの下で22のコードサンプルをCodePlexにソース公開した。Kinect for Windows Toolkit にも含まれるこれらのサンプルには，Kinectのさまざまな機能 – オーディオ，基本的操作，色彩と深さ，顔認識，赤外線，スライドショー・ジェスチャ，音声合成，WPF，XNA，その他の使用方法が示されている。 
   </div> 
@@ -144,12 +150,6 @@
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/7.py">GreenplumのPivotal HDがSQLのパワーとHadoopを結合する</a>EMC Greenplum が新しいHadoopディストリビューションの Pivotal HD を発表した。HDFS上で &quot;Hiveより数百倍高速&quot; に動作するという，SQL完全準拠のMPPデータベースを備える。 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/6.py">PostgreSQLで頑強なデータベース設計</a>Chris Travers 氏は、最近「頑健なデータベースの構築」と題する一連の記事を発表した。彼は、いかに幾つかの共通のOOP原則、例えば単一責務の原則、インターフェースの分離、依存性の逆転をいかに適用して、データモデルやデータベースのコードを改善するかに関する幾つかの考えを説明している。 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/5.py">OracleがHTML5向けにNetBeansをアップデート</a>NetBeansの最新リリースの7.3で、OracleはIDEをアップデートしたので、開発者はモバイルとウェブアプリケーション用の HTML5ベースのユーザーインターフェースをもっと容易に作成できるようになる。HTML, JavaScript,CSS3用のコード補完機能と新しいNashornを使ったJavaScriptエディタを持っている。Netbeansは、また新規のスタンドアロンJPQLエディタが加わり、開発者はIDEから直接JPQLクエリをテストできる。 
-  </div> 
+  </div>   
  </body>
 </html>
