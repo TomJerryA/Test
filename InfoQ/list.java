@@ -1,6 +1,9 @@
 <html>
  <head></head> 
- <body> 
+ <body>
+  <div>
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/28.java">Backbone.js 1.0 Released</a>After 2.5 years of development, version 1.0 of Backbone.js has been released. Backbone.js is the popular JavaScript Model/View library used for many popular single-page web applications, including USA Today, Rdio and Airbnb.
+  </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/27.java">Windows Azure Updated with Hadoop, HTML5/JS, CORS, PhoneGap, Mercurial and Dropbox</a>The recently released Windows Azure updates include support for Hadoop service, HTML5/JS, CORS, PhoneGap including Mercurial, Dropbox, CodePlex and Bitbucket deployment integration. 
   </div> 
@@ -147,9 +150,6 @@
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/29.java">jQuery Mobile 1.3.0 Released</a>The jQuery Foundation released version 1.3.0 of its JavaScript and HTML5/CSS framework jQuery Mobile. The update focusses on responsive web design and introduces new widgets for mobile applications. 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/28.java">Jelastic 1.9 with FTP, NGINX caching, Apache TomEE and MariaDB 10</a>Jelastic has announced the availability of version 1.9 with support for FTP/FTPS, NGINX caching, Apache TomEE and MariaDB 10. 
-  </div> 
+  </div>  
  </body>
 </html>
