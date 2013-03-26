@@ -1,6 +1,9 @@
 <html>
  <head></head> 
- <body> 
+ <body>
+  <div>
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/28.htmlb">深入浅出node.js游戏服务器开发——基于Pomelo的MMO RPG开发</a>Pomelo是杭州网易研究院发布的基于Node.js开源游戏框架，本篇是连载内容的第三篇，为大家介绍如何使用Pomelo框架来搭建MMO RPG服务器，并分析其设计思路和实现方法。以此来帮助大家更好的理解和使用Pomelo框架，理解Pomelo框架游戏开发的基础流程，使用方法和设计理念。
+  </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/27.htmlb">函数式反应型编程(FRP) - 实时互动应用开发的新思路</a>本文详细讲解JavaScript编程的一种新型编程模型：利用函数式编程(Functional Programming)的思想和方法(函数、高阶函数)来支持Reactive Programming，来达到所谓的Functional Reactive Programming，简称FRP。它从新的视角关注数据流，代码更接近于只描述做什么(what)的声明式(declarative)代码，简洁又直观。 
   </div> 
