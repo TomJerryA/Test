@@ -1,8 +1,8 @@
 <html>
  <head></head> 
- <body>
-  <div>
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/9.py">PeerJS 0.1.7: ブラウザにおけるP2PのためのWebRTCラッパー</a>Michelle Bu氏とEric Zhang氏は3月6日、WebRTCのラッパーとしてPeerJS 0.1.7のリリースを発表した。WebRTCは、W3CがブラウザでのP2P通信をやりやすくするために作っているものだ。
+ <body> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/9.py">PeerJS 0.1.7: ブラウザにおけるP2PのためのWebRTCラッパー</a>Michelle Bu氏とEric Zhang氏は3月6日、WebRTCのラッパーとしてPeerJS 0.1.7のリリースを発表した。WebRTCは、W3CがブラウザでのP2P通信をやりやすくするために作っているものだ。 
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/8.py">StripeがA/BテストフレームワークのAbbaをオープンソース化</a>Stripeは同社のAbbaというJavaScript A/B テストフレームワークをオープンソースにした。 
@@ -150,6 +150,6 @@
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/10.py">Eclipse RAP 2.0リリース</a>6年の開発期間を経て、1月11日にEclipse RAP 2.0がリリースされた。InfoQはプロジェクトリードに話を聞いた。 
-  </div>  
+  </div> 
  </body>
 </html>

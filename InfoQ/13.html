@@ -1,48 +1,16 @@
-<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>RightScale工程师分享跨云应用架构的三个挑战</h3><p>根据应用需要部署资源，这是云计算的关键好处之一。不过，随着使用私有云的企业越来越多，当某个应用的资源需求超出单一私有云的容量时，他们就需要考虑使用另一个云平台，甚至包括公共云。此类状况称为“云爆发（cloudbursting）”，针对云爆发，应用的架构也需要进行调整。</p> 
-<p>RightScale的工程师<a href="http://blog.rightscale.com/author/byloblog/">Stephen Bylo</a>在RightScale官方博客上发表文章《<a href="http://blog.rightscale.com/2013/03/07/bursting-the-cloudbursting-bubble/">应对云爆发的挑战</a>》，分享了如何应对云爆发的经验。</p> 
-<p>在开头，Stephen指出：</p> 
-<blockquote> 
- <p>尽管这种应用层云爆发的概念听起来简单，但还是要注意在技术和业务等多方面的重要考虑。其中包括：拉通不同云之间的不一致性，处理公共云与私有云之间的安全、延迟、通信成本。</p> 
-</blockquote> 
-<p>在Stephen看来，这就需要为应用创建一种云爆发架构，确保两个云之间的通信延迟和带宽不会对应用和用户体验有负面影响，也就是说：部署在两个云中的应用服务要以尽量完全相同的方式工作，还要设置通信路径，控制好资源便于两个云的访问，还要保证通信管道的安全性。</p> 
-<p>接下来，他指出了云爆发架构的三个主要挑战：</p> 
-<ol> 
- <li>为多个云创建和管理配置</li> 
- <li>在云间创建和管理低延迟通信路径</li> 
- <li>保证云间通信安全性。</li> 
-</ol> 
-<h4>挑战1：管理配置</h4> 
-<p>Stephen指出：不同云供应商之间天差地别，这就需要管理两种完全不同环境的应用和技术栈。具体区别包括：</p> 
+<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>Google通过Code School提供免费Web开发教程</h3><p>对于前端工程师来说，掌握Chrome DevTools是一项必备技能。而大多数前端开发工程师也承认，即使天天都在使用Chrome DevTools，也未必了解它的所有功能。</p> 
+<p>现在好消息来了：日前，Google与<a href="http://www.codeschool.com/">Code School</a>合作发布了Chrome浏览器内置开发者工具的交互式在线课程“<a href="http://discover-devtools.codeschool.com/">Discover DevTools</a>”。</p> 
+<p>和<a href="http://www.codecademy.com/">Codecademy</a>与<a href="https://teamtreehouse.com/">Treehouse</a>类似，Code School是一个在线教授编程与Web设计知识的网站。如果需要学习网站上的所有课程，Code School会按月收取$25的费用。不过Discover DevTools课程是免费的。</p> 
+<p>Google在这个系列教程的发布声明中指出，这个课程的学习者至少得有一些JavaScript开发经验。</p> 
+<p>教程共分七级，从简单的检查HTML元素和修改CSS开始，然后进阶到DOM的操纵，debugging，以及其他更深入内容：</p> 
 <ul> 
- <li>底层hypervisor不同，hypervisor版本不同</li> 
- <li>不同hypervisor功能和机器镜像格式</li> 
- <li>云API在行为和调用方式上的不同</li> 
- <li>不同的云提供不同的虚拟机类型和运行性能</li> 
- <li>云的网络配置不同。有些提供可用区域的概念，有些没有。有些有安全组，有些有子网和ACL，有些都有。</li> 
- <li>提供不同类型的存储，比如对象存储、块存储、持久化和临时存储，这会展现不同的行为，而且在其他云中可能无法使用。</li> 
+ <li> <p>LEVEL 1 - 基础DOM与样式 学习Elements面板，学习如何改变DOM、更新样式。</p> </li> 
+ <li> <p>LEVEL 2 - 进阶DOM与样式 用工作流来加速开发工作。</p> </li> 
+ <li> <p>LEVEL 3 - 学用控制台 学习控制台、如何检查exception、快捷键。</p> </li> 
+ <li> <p>LEVEL 4 - JavaScript调试 学习调试JavaScript程序的最佳步骤。</p> </li> 
+ <li> <p>LEVEL 5 - 提高网络性能 学习使用Network面板和页面加速扩展程序来提升网络交互速度。</p> </li> 
+ <li> <p>LEVEL 6 - 提升性能 熟悉程序渲染性能，学习如何使用CPU分析工具来查找性能问题。</p> </li> 
+ <li> <p>LEVEL 7 - 内存分析 学习如何查找内存泄漏</p> </li> 
 </ul> 
-<p>Stephen认为：</p> 
-<blockquote> 
- <p>这也产生了下游效应。举个例子：使用不同类型的hypervisor和存储子系统，常常需要为不同的云使用不同的虚拟机镜像，而且要维护各种不同操作系统和安全补丁。</p> 
-</blockquote> 
-<h4>挑战2：通信延迟</h4> 
-<p>如果应用需要在位于不同云中的应用层和数据库间来回移动大量数据，延迟和吞吐就会是很大的挑战，特别是通信需要在公共互联网上传输的情况。因为在每次前端请求中，应用到数据库之间的通信可能要进行多个来回，即使是相对很小的延迟也会快速累计。</p> 
-<p>对于降低延迟，Stephen给出两种方式：</p> 
-<ul> 
- <li>托管私有云的云提供商可以将其与公有云放在同一个地点.</li> 
- <li>诸如CoreSite和Equinix这些公司，他们的数据中心在专用私有资源和公共云资源之间使用超高速连接。</li> 
-</ul> 
-<p>很多应用中，应用到数据库之间的连接频度和数据量没有优化，使用很多带宽。部署通信通路的费用非常昂贵，不管是使用公共互联网还是使用租赁线路。而且，有些云提供商对于数据出口和入口还有收费。因此，对这段通信流进行优化，可以减少延迟，降低达成性能目标需要的带宽成本。</p> 
-<h3>挑战3：应对安全性</h3> 
-<p>在云间提供安全通信路径，也就意味着要设置加密通路，同时处理不可避免的路由问题，比如合规性和审计要求。根据应用可用性的需求，这些通信通路可能需要在各个层面做冗余，路由的复杂性由此增加，同时设备成本和部署成本也会上升。动态服务器分配更加负责，因为新的服务器加入到阵列之后，必须动态加入到VPN之内。</p> 
-<p>创建安全通信通路有多种方式。RightScale的解决方案是与多家公司合作，而且云提供商也在不断提供新的方法。AWS为其虚拟私有云提供VPN网关，处理加密和路由问题。而OpenStack的新功能也将提供相关特性。</p> 
-<p>除了将应用进行跨云部署之外，Stephen还建议可以采用SOA架构：</p> 
-<blockquote> 
- <p>将应用分解为多个唯一的、而且是松耦合的服务，每个服务可以运行在不同的云中。每种服务可以通过为延迟和带宽优化过的协议访问，比如通过webAPI。服务在设计的时候，就已经做好自治的（autonomous）准备，这样就不必分享数据，而是通过API之间的相互调用完成功能。这会大大简化不同服务之间的集成，同时不带来过多负载压力。</p> 
-</blockquote> 
-<p>最后，Stephen总结道：</p> 
-<blockquote> 
- <p>我们发现，云爆发的跨云架构，对于技术复杂性和相应的成本要求都很高。根据需求不同，有多种不同方法可以达成同样的好处。</p> 
- <p>同时，公共云提供者们也在解决一些通信层面的挑战，给出不同类型的直接连接方案。这些方法应该有助于降低云与云之间的障碍。</p> 
-</blockquote> 
+<p>整个教程制作相当精良，开篇甚至有专门为Web开发编撰的Rap歌曲。教程本身亦是精美的HTML5作品。如果你对这些感兴趣，请点击<a href="http://discover-devtools.codeschool.com/">教程链接</a>。</p> 
 <p id="lastElm"></p><br><br><br><br><br><br></body></html>
