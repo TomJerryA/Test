@@ -2,7 +2,10 @@
  <head></head> 
  <body>
   <div>
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/26.c">Mais cursos gratuitos de Stanford, incluindo desenvolvimento para iPhone/iPad com iOS 6</a>A Universidade Stanford, uma das l&iacute;deres mundiais em pesquisas em ci&ecirc;ncia da computa&ccedil;&atilde;o, no cora&ccedil;&atilde;o do Silicon Valley, est&aacute; oferecendo novos cursos gratuitos de programa&ccedil;&atilde;o via iTunes U, incluindo alguns focados em desenvolvimento para iPhone e iPad, cobrindo as vers&otilde;es mais recentes do iOS.
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/27.c">Wikimedia adota gera&ccedil;&atilde;o de templates baseada em Lua</a>A Wikimedia adotou a linguagem de programa&ccedil;&atilde;o Lua para gera&ccedil;&atilde;o dos templates de p&aacute;ginas utilizados em diversos sites baseados no MediaWiki.
+  </div> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/26.c">Mais cursos gratuitos de Stanford, incluindo desenvolvimento para iPhone/iPad com iOS 6</a>A Universidade Stanford, uma das l&iacute;deres mundiais em pesquisas em ci&ecirc;ncia da computa&ccedil;&atilde;o, no cora&ccedil;&atilde;o do Silicon Valley, est&aacute; oferecendo novos cursos gratuitos de programa&ccedil;&atilde;o via iTunes U, incluindo alguns focados em desenvolvimento para iPhone e iPad, cobrindo as vers&otilde;es mais recentes do iOS. 
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/25.c">Spring para Apache Hadoop 1.0: Big Data mais perto do Spring</a>A SpringSource lan&ccedil;ou a vers&atilde;o 1.0 do Spring para Apache Hadoop. O projeto permite que desenvolvedores escrevam aplica&ccedil;&otilde;es Hadoop integradas ao Spring Framework e facilita a integra&ccedil;&atilde;o com o Spring Batch e Spring Integration. O Spring para Apache Hadoop &eacute; um subprojeto do Spring Data. 
