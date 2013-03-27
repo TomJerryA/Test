@@ -1,21 +1,35 @@
-<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>Vagrant支持Amazon AWS和Rackspace</h3><p><a href="http://www.hashicorp.com/">HashiCorp</a>向<a href="http://www.vagrantup.com/">Vagrant</a>添加了新的插件，使得Vagrant能够支持<a href="http://aws.amazon.com/">Amazon AWS</a>、<a href="http://www.rackspace.com/">Rackspace</a>和新的应用场景：它能够管理位于<a href="http://www.hashicorp.com/blog/preview-vagrant-aws.html">云端而不是开发者桌面上的虚拟机</a>。Mitchell Hashimoto向InfoQ表示，他的愿景是使Vagrant成为一个能够尽量简化从开发到产品整个流程的工作环境工具，新插件向他的愿景更进了一步。</p> 
-<p>借助在3月14日发布的Vagrant 1.1，无论是管理EC2实例、Rackspace云服务器、VirtualBox还是VMware Fusion虚拟机，开发者都能够使用一套命令为开发、质量保证甚至是生产创建新的工作环境。</p> 
-<p>来自于Vocalocity（AWS 插件的开发赞助商）的Randy Layman已经在使用预发布版管理他们用于持续集成（CI）过程的AWS实例。他倾向于使用AWS 插件而不是VirtulaBox进行开发，因为（AWS上的）虚拟机构建速度更快，同时它们使用和CI实例完全相同的操作系统。</p> 
-<p>Hashimoto表示，因为Rackspace使用<a href="http://www.openstack.org/">OpenStack</a> 运行其云端服务器， 所以Vagrant对OpenStack的支持工作已经完成了90%。他希望开源开发者们能够接手并补充剩余的部分。</p> 
-<p>新发布的Vagrant 1.1允许开发者将所需的插件作为命令行参数传递：</p> 
-<pre>
-$ vagrant up --provider aws
-</pre> 
-<p>与<a href="https://www.virtualbox.org/">VirtualBox</a>中的缺省设置不同的是，以上命令会使用新的AWS 插件并初始化一个EC2实例。</p> 
-<p>Vagrant文件支持为AWS定义额外的参数，例如将被创建的实例的位置：</p> 
-<pre>
-config.vm.provider :aws do |aws|
-   aws.region = &quot;eu-west-1&quot;
-end
-
-</pre> 
-<p><b>查看英文原文：</b><a href="http://www.infoq.com/news/2013/03/vagrant-aws-rackspace;jsessionid=5EE2CDE3F16EFFCC0B2C5FBB7F8DC190"><b>Vagrant Support for Amazon AWS and Rackspace</b></a></p> 
-<hr /> 
-<p>感谢<a href="http://www.infoq.com/cn/bycategory.action;jsessionid=5EE2CDE3F16EFFCC0B2C5FBB7F8DC190?authorName=孙镜涛">孙镜涛</a>对本文的审校。</p> 
-<p>给InfoQ中文站投稿或者参与内容翻译工作，请邮件至<a href="mailto:editors@cn.infoq.com">editors@cn.infoq.com</a>。也欢迎大家通过新浪微博（<a href="http://www.weibo.com/infoqchina">@InfoQ</a>）或者腾讯微博（<a href="http://t.qq.com/infoqchina">@InfoQ</a>）关注我们，并与我们的编辑和其他读者朋友交流。</p> 
+<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>QQ安全中心的两小时Bug：快速响应+快速部署的经典案例</h3><p>3月24日晚11点22分，<a href="http://weibo.com/haoel?from=profile&amp;wvr=5&amp;loc=infdomain">@左耳朵耗子</a>想改QQ密码，触发了QQ安全中心的一个bug：</p> 
+<p><img src="http://www.infoq.com/resource/news/2013/03/tencent-devops/zh/resources/1538efefbgw1e319zu3g25j.jpg;jsessionid=C6D33DA9DFD77B03D0CBF47D79B6C5A1" alt="" _href="img://1538efefbgw1e319zu3g25j.jpg" _p="true" /></p> 
+<p>于是<a href="http://weibo.com/1401880315/zoYjGbWC7">发微博</a>吐槽之。大家初步分析这是一个比较低级的错误，<a href="http://weibo.com/shoit">@翁雨键</a>在评论中认为：</p> 
+<blockquote> 
+ <p>目测是因为#是非法字符。程序员偷懒跟密码长度不对用了同一个错误提示，QA不知道有这样的规定设计测试用例没覆盖到，PM/UE太junior只关心正常的path没给错误用例设计提示。</p> 
+</blockquote> 
+<p>然后过了半个多小时，<a href="http://weibo.com/qqsafe">@腾讯QQ安全中心</a>的运营人员发现了这条吐槽，并进行了反馈：</p> 
+<p><img src="http://www.infoq.com/resource/news/2013/03/tencent-devops/zh/resources/Screenshot 2013-03-26 下午5.34.23.jpg;jsessionid=C6D33DA9DFD77B03D0CBF47D79B6C5A1" alt="image" _href="img://Screenshot 2013-03-26 下午5.34.23.jpg" _p="true" /></p> 
+<p>又过了一个多小时，<a href="http://weibo.com/qqsafe">@腾讯QQ安全中心</a>又回来这条微博下评论，说bug已经改好了：</p> 
+<p><img src="http://www.infoq.com/resource/news/2013/03/tencent-devops/zh/resources/Screenshot 2013-03-26 下午5.31.11.jpg;jsessionid=C6D33DA9DFD77B03D0CBF47D79B6C5A1" alt="image" _href="img://Screenshot 2013-03-26 下午5.31.11.jpg" _p="true" /></p> 
+<p>此消息一出，腾讯QQ安全中心背后的运维、响应、部署流程立刻引起了大家的关注。当事人陈皓对腾讯这次的响应速度<a href="http://weibo.com/1401880315/zp2ll0itf">进行了高度评价</a>：</p> 
+<blockquote> 
+ <p>只有高度自动化测试+程序员完全自主才会有这样高效的流程。</p> 
+</blockquote> 
+<p>在看到这条消息的时候，InfoQ编辑正好在跟<a href="http://www.qconbeijing.com/speaker.php?id=162">腾讯互联网产品运维副总监Coati</a>沟通<a href="http://www.qconbeijing.com/">QCon北京</a>分享的事情，便问他腾讯在快速响应、部署这方面是怎么做的。Coati表示，虽然QQ安全中心属于基础运维部，而自己负责的范围属于应用运维，但根据他跟同事的沟通，他们在运维响应方面的很多处理流程是差不多的，比如：</p> 
+<blockquote> 
+ <p>一般我们推送新版本，大体分为三级：一种是大版本的更新，涉及到特性增减改动等方面的，一般每周会做2-3次，而且会选择周一到周四之间做推送，一般不在周五做推送；另外一种是运营性的版本更新，这个更新频率不一定。这两种都是需要QA参与的。第三种是bug修复，这里也分级别，比如外网对bug进行快速修复，大的bug是需要走灰度的，而小的bug，比如只是涉及到界面、体验相关的，是可以免测试的。</p> 
+ <p>这次密码功能bug的修复，因为涉及到程序逻辑，所以上线之前还是要经过测试的。不过这并不是说测试人员就一定要在公司，我们可以VPN登陆，从家里也可以随时响应的。</p> 
+</blockquote> 
+<p>Coati表示会在<a href="http://www.qconbeijing.com/">QCon北京</a>上的分享介绍更多的细节，包括：</p> 
+<ol> 
+ <li>腾讯的互联网产品运维这块是如何划分领域的？</li> 
+ <li>运维和开发有明确的界限么？平时如何协作？</li> 
+ <li>代码部署和代码审查都使用什么工具？发布流程如何？发布的频率如何？</li> 
+ <li>应用运维的监控分为几个层面？信息源来自哪里，监控的力度、频率如何？</li> 
+</ol> 
+<p>想了解腾讯运维体系的同学们，可以重点关注Coati的分享。</p> 
+<p>InfoQ在前不久刚刚介绍过<a href="http://www.infoq.com/cn/articles/interview-sam-haskins;jsessionid=C6D33DA9DFD77B03D0CBF47D79B6C5A1">Etsy的运维体系</a>。根据Sam Haskins的介绍，Etsy的核心平台团队平均每天的部署次数在20-30次，最高时甚至能达到70次。他们的监控手段也比较立体，在自动化监控工具之外，有大量的工作是靠人肉看图表来完成的，另外帮助论坛和客服那里也是重要的反馈来源（他倒是没提到有没有在用Twitter做这方面的监控）。</p> 
+<p>阿里系方面，应用运维的刘勇（<a href="http://weibo.com/u/1890612272?from=profile&amp;wvr=5&amp;loc=infdomain">@淘宝仲明</a>）也<a href="http://os.51cto.com/art/201212/371228.htm">公开介绍</a>过他们的运维流程。阿里应用运维的发布观察期一般在一个小时左右，涉及到交易等重要的变更则走灰度，需要24小时的观察期；监控也分为很多维度，针对底层有常规指标的监控，针对业务层面有交易量等业务指标的监控，也有对用户投诉的监控，根据投诉出现的频率和修复bug需要的时间来确定bug修复的优先级。仲明也是今年QCon北京自动化运维专场的讲师。</p> 
+<p>乔梁也<a href="http://www.infoq.com/cn/articles/devops-not-legend;jsessionid=C6D33DA9DFD77B03D0CBF47D79B6C5A1">对百度的DevOps运动进行过介绍</a>，提到了从2010年到2011年之间，百度内部的提测耗时和上线部署耗时大大减少的情况。对于不了解DevOps文化的同学，这篇文章也是一个很好的入门资料。</p> 
+<p>最近几年在运维界流行的<a href="http://www.infoq.com/cn/devops/;jsessionid=C6D33DA9DFD77B03D0CBF47D79B6C5A1">DevOps文化</a>，可以说是开发领域的敏捷运动的一个延伸，提倡开发和运维协同工作，以实现快速部署、快速响应。这个理念尤其适用于互联网产品和移动互联网产品，因为此类产品的迭代速度是核心竞争力，不仅影响产品本身的质量、功能发展，还很大的影响到产品的市场口碑和传播效应。像本次QQ安全中心的例子，用户反馈的信息源出现在新浪微博这个第三方平台上，而众所周知，官方微博的运营人员往往是不懂技术的。</p> 
+<p>微博运营人员如何能够判定这个bug反馈的重要程度（无论是在技术层面还是营销层面）？运营人员把此类bug反馈到哪个渠道（一般的情况下，腾讯这样大的公司，你不可能很快知道负责QQ安全中心这个产品的技术经理是哪位的）？谁来决定这个bug值不值得在凌晨12点的时候电话把同事叫起来进行修复（当然，也有可能是这一块的负责人那个时候还没下班）？</p> 
+<p>这些都是很有意思的话题，而且已经不完全是技术的范畴。腾讯这样规模的公司能做到这样快速的反馈，的确很厉害；同时这也意味着，即使你是一个小公司，在产品迭代、响应速度上要赶超腾讯，是难度很大的。</p> 
+<p>现在就开始建立这样一个快速响应的开发+运维+测试的体系吧！</p> 
 <p id="lastElm"></p><br><br><br><br><br><br></body></html>
