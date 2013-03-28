@@ -2,7 +2,10 @@
  <head></head> 
  <body>
   <div>
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/34.java">Release Cadence Report - Survey Launched</a>Ryan Cromwell has released the Release Cadence Report Survey. Based on the premise that the rate at which software is released is one of the most important metrics teams should be monitoring and reporting on he has launched a survey which examines five areas of team activities. The survey will remain open until 24 May 2013, following which the results will be made available to the community.
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/35.java">Study: Clojure, CoffeeScript and Haskell Are the Most Expressive General-purpose Languages</a>According to a study, the most expressive general-purpose languages are Clojure, CoffeeScript and Haskell. The study uses LoC/commit as the measuring unit of expressiveness.
+  </div> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/34.java">Release Cadence Report - Survey Launched</a>Ryan Cromwell has released the Release Cadence Report Survey. Based on the premise that the rate at which software is released is one of the most important metrics teams should be monitoring and reporting on he has launched a survey which examines five areas of team activities. The survey will remain open until 24 May 2013, following which the results will be made available to the community. 
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/33.java">WCF Data Services 5.4.0 Released with Client Hooks and Instance Annotations on Atom Payloads</a>Microsoft has announced the availability of WCF Data Services 5.4.0 release candidate with new features and several bug fixes. 
@@ -147,9 +150,6 @@
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/36.java">Xamarin Introduces C# Async for iOS and Android</a>Xamarin has released a preview of their async-enabled libraries for iOS and Android development. This work is based heavily on Microsoft’s .NET 4.5, which was released late last year as part of Visual Studio 2012. Xamarin is the new name for the development platforms previously known as MonoTouch and Mono for Android. 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/35.java">Red Hat Takes Over Leadership of OpenJDK 6</a>Red Hat have announced that they are taking over support of OpenJDK 6, just days after Oracle posted what it says will be the final freely available update, number&nbsp;43, to its commercial Java 6 development kit. 
   </div>  
  </body>
 </html>
