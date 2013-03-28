@@ -1,6 +1,9 @@
 <html>
  <head></head> 
- <body> 
+ <body>
+  <div>
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/38.java">QCon New York Update (June 10-14): JavaScript, HTML5, Future of Mobile Tracks; Schedule Now Live</a>The schedule is live for QCon New York 2013 with registrations 60% ahead of last year at this time and 65/100 speakers confirmed. Hear about the latest tools, trends, and innovations in Mobile, JavaScript, and HTML5 development across three in-depth tracks and many tutorials. You can get in early by reserving your seat now, saving $400 by Apr 19th.
+  </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/37.java">Google Promises Not to Sue for Using Their Pledged Patents</a>Google is promising not to take legal action against any party using pledged patents for open source or free software “unless first attacked.” 
   </div> 
@@ -147,9 +150,6 @@
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/39.java">Replacing Native PHP4 Extensions with Managed Extensions</a>Phalanger, the PHP runtime for .NET and Mono, has reached a significant milestone with the eleven popular PHP extensions being replaced with .NET equivalents. Previously these extensions, written in native C or C++, were limiting Phalanger to only running in 32-bit mode. 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/38.java">New Avenues for Operations Engineering Education</a>Technology education enthusiasts got together to have a panel discussion on hangops last month about creating new opportunities for operations engineering education. They acknowledge that it is harder than ever to find qualified individuals for today's operation engineering jobs and discussed ways to solve that problem. 
-  </div> 
+  </div>  
  </body>
 </html>
