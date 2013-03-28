@@ -1,23 +1,72 @@
-<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>朱坤谈移动应用开发的优秀法则</h3><p>&nbsp;朱坤目前是移动应用<a href="http://itunes.apple.com/us/app/kuai-jie-jiu-dian-guan-jia/id495882599?mt=8">快捷酒店管家</a>的产品与运营负责人，他之前曾担任百度身边的产品经理。他在自己的博客中回顾了该移动应用的产生过程，并着重强调了优秀移动应用的几个关键地方，非常值得移动开发者和创业公司借鉴和参考。</p> 
-<p>朱坤认为，一个优秀APP产品往往要具备三方面的特点：</p> 
-<ol> 
- <li>性能好，通俗讲就是加载速度快。在当前的网络环境下，APP产品的性能好，用户无需等待与忍耐，这是判断一个APP好不好用的重要标准。微信的性能就相当突出，在网络环境很差、很多APP都无法打开的情况下，它还能够使用。但性能并不是一个纯技术层面的问题，也包括策略层面的考虑，开发者需要对速度与效果进行平衡。比如在点击查看微信的消息时，它总是会进入到消息列表，而不是只显示单个消息，此举虽然会牺牲一些速度，却可以使消息的到达率更高。“快捷酒店管家”同样如此，原本打开地图就显示方圆50公里内的酒店，加载速度很慢，后来考虑到用户很少会跑到那么远的地方去住，选择也无需提供那么多，便将搜索直径缩小到10公里，只有再次拖动地图时才会加载其他酒店，速度明显提高。</li> 
- <li>用户第一眼就能够找到自己想要的东西，快速有效地解决问题。必须学会放弃。大而全地绑定用户始终是一种诱惑，但当你想要的东西特别多的时候，得到的就会特别少。作为在手机等移动终端上使用的APP来说，简洁是很重要，因为设备屏幕空间有限，用户完成的任务也有限。但如何理解“简洁”？它其实是一种合理的整理。飞机驾驶舱里有无数仪表，你能说它不简洁吗？它必须那么复杂。所以并不是说少和简单就是简洁。APP的简洁应该指核心功能非常突出，不核心的功能可以找到，不需要的功能没有。在产品设计时要在“用户想要什么”与“你想给什么”之间博弈。用户使用APP就像鱼在池塘中游弋，产品开发者需要通过搭建障碍来引导用户。某些通道的口会留得很宽，那是希望用户经常用的功能；某些口很窄，想通过要困难一些，适用于用户使用较少的功能；有的地方就是雷区，不能让他们过去。比如“快捷酒店管家”打开后的地图主界面默认为定位用户附近的酒店，这正是多数用户需要的；也有用户要找其他城市的酒店，主页面的某个位置会提供搜索按钮，可以切换到相应界面；在预订下单等关键点，就会要求用户必须输入姓名与手机号才能继续，以此保证订单的真实性。</li> 
- <li>设计有人情味儿，也就是现在很多人常说的“有爱”。APP总要跟用户交互，交互过程应当尽量让人感到愉悦。要做到令人愉悦，就必须认清自己的用户群体，根据他们的特征喜好不断增加细节元素。过去打开“快捷酒店管家”的地图，附近的酒店会一下子显示出来，缺乏特色又十分生硬。后来考虑到我们的核心用户群体是 20岁左右的年轻人，他们的QQ皮肤会很花哨，微博模板也个性十足，也就是说，他们追求的是张扬、好玩儿、酷，于是我们将酒店的显示方式改成了从天上哗啦哗啦掉下来的有趣方式。<b> </b></li> 
-</ol> 
-<p>他还提出来一个看上去不可思议的观点——APP不是规划出来的：</p> 
+<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>Vaadin 7发布，内嵌GWT组件</h3><p><a href="https://vaadin.com/home">Vaadin</a>发布了基于Java的web应用框架的第七版，Vaadin 7平台是该框架自2009年以来首次重大更新。</p> 
+<p>Java web应用开发者可以发现，Vaadin 7与Wicket、JSF和Google Web Toolkit（GWT）等其他框架相比，有显著的相似性和不同点。在许多方面，Vaadin和Wicket相似；主要的区别在于Vaadin并不采用HTML模板。类似的，JSF和Vaadin之间的相似点在于都是服务端的框架，然而Vaadin应用是用纯Java编写的，无需XML配置文件。</p> 
+<p>Vaadin小组作为GWT指导委员会成员已经有五年多了，Vaadin 7现在把GWT作为核心组件包含进来。在2012年6月<a href="https://vaadin.com/blog/-/blogs/gwt-built-in-vaadin-7">发布的博客</a>中，Lehtinen建议“现在，任何使用GWT构建应用的人都可以简单的通过替换项目中的jar包来迁移到Vaadin。”使用GWT与传统的Vaadin应用相比有一些优势，这要取决于用例。GWT应用可以离线操作，支持大量（一万以上）的并发用户，服务端的状态不是必须的，并且有较低的延迟；然而，传统的基于UI的Vaadin运行在Java服务器或门户上，这对于Java开发者来说似乎更简单一些，因为它可以完全采用Java编码。</p> 
+<p>Vaadin团队除了引入GWT外，还实现了65个新特性。该框架的<a href="https://vaadin.com/faq">FAQ</a>页面提到，Vaadin 7是一个遵守Java EE标准并采用了桌面UI编程模式的单jar文件实现，框架还得到了来自开源社区超过4万活跃注册用户的支持和反馈。</p> 
+<p>InfoQ采访了Joonas Lehtinen（Vaadin.com的CEO），来挖掘更多关于Vaadin 7的信息.</p> 
+<p><b>InfoQ</b><b>：从新用户的角度，你能在最新发布的Vaadin中列举出5至6条最有用的特性么？</b></p> 
 <blockquote> 
- <p>在某种程度上说，APP产品不是规划出来的。也许听上去不可思议，“快捷酒店管家”永远没有产品规划，甚至不知道2个月之后自己会做什么。举例来说，“在线预订”现在是这个APP的核心功能之一，其实2012年3月产品刚上线时并无这一功能，用户仅能进行电话预订。上线后不少用户反映不爽，因为他们的电话会打到酒店前台，前台再转给400订房专线，因为APP的数据无法传输，400客服还会再问用户在哪儿、住几天、住什么房等信息，整个过程要多花费一两分钟。于是，只需点几个键就能完成整个流程的“在线预订”功能应运而生。</p> 
+ <p>Joonas：我最向大家推荐的主要特性列在这个列表里基本都覆盖了：<a href="https://vaadin.com/vaadin7">https://vaadin.com/vaadin7</a>。</p> 
+ <p>除此，我推荐的前五大特性如下：</p> 
+ <ol> 
+  <li>完全GWT的嵌入。这样我们可以更容易的支持整个包，并在你的应用中利用Google强大的Java-to-JavaScript编译器。</li> 
+  <li>Widget扩展允许在已有的widget上像独立的扩展那样添加功能。更多信息请访问：<a href="https://vaadin.com/wiki/-/wiki/Main/Creating%20a%20component%20extension">https://vaadin.com/wiki/-/wiki/Main/Creating%20a%20component%20extension</a>。</li> 
+  <li>Sass编译器引入了期盼很久的主题模块化。</li> 
+  <li>重新设计的布局引擎使用浏览器原生布局计算来替代JavaScript计算。这彻底的降低了回流量，使得布局速度更快。额外收获是，我们现在支持全部的CSS。</li> 
+  <li>重新设计的windows API使Vaadin应用更像web应用，简化了http请求和网页访问。</li> 
+ </ol> 
 </blockquote> 
-<p>朱坤认为，由于用户群体内部存在差异性，产品功能较为显著的调整往往会引发用户的不同反应，此时需要在准确判断主流趋势的基础上拿捏分寸，要渐进柔和地调整，切忌简单粗暴。就拿上面提到的从电话预订转为在线预订来说，其间也经历过“斗争”。一开始采用“硬掰”的方式，直接把电话预订的功能隐藏掉了，结果引起不小的反弹，因为有些用户就想打电话。为此我们又进行调整，只是将电话的位置弱化，突出下面的“预订”。</p> 
+<p><b>InfoQ</b><b>：“</b><a href="https://vaadin.com/gwt-report-2012-portlet/download/1871870899/Future-of-GWT-Report-2012.pdf"><b>GWT</b><b>的未来-2012</b><b>年度报告</b></a><b>”中提到SmartGWT、GXT和Errai扩展了GWT，而Vaadin补充了它。你能就此跟我们详细说说么？</b></p> 
 <blockquote> 
- <p>不仅如此，对于像我们这种连接用户与商家的“桥梁式”APP来说，基本价值定位确定之后，产品的改进、丰满乃至走向，某种程度上是多方力量共同作用的结果，需要开发者对相关利益方的需求进行捕捉与平衡。使用早期的“快捷酒店管家”，用户打开地图后能看到所有附近酒店，满房是红色，有房是绿色。用户就提出，我只是想找一间房，为什么把满房的也给我？其实，设为全部显示是为了满足一些店长的要求，他们可以通过APP查看所有酒店的预订情况，与竞争对手进行比较。但更好地满足核心用户的需求才是第一要务，于是我们就添加了一个可选功能，默认“只显示可预订”。</p> 
+ <p>Joonas：GWT编程模型有两个级别的抽象：</p> 
+ <ol> 
+  <li>UI由Java编写，并编译成JavaScript。</li> 
+  <li>原生JavaScript。SmartGWT、GXT和Errai本质上只是在由GWT定义的编程模型下提供了更多（非常好用的）组件和帮助。</li> 
+ </ol> 
+ <p>Vaadin基于GWT的编程模型添加了服务端的Java编程模型。这是更高一级的抽象，通过降低实现代web应用的软件层级数来加快开发。用GWT，需要构建UI层（浏览器内部）、RPC，还有UI服务（服务器内部）和业务逻辑（服务器内部）。用Vaadin，只需要服务端UI和业务逻辑层。这本质上削减了开发应用UI所需要的近一半代码量。如果需要更多的灵活性，Vaadin还同时支持Java和JavaScript来编写客户端UI。</p> 
 </blockquote> 
+<p><b>InfoQ</b><b>：使用GWT的开发者们抱怨说最近几乎没有关于GWT的新书。基于此背景，你怎样来解释</b><a href="https://vaadin.com/book"><b>Vaadin</b><b>之书</b></a><b>的重要性？你计划如何维护和加强当前的预览版？</b></p> 
 <blockquote> 
- <p>就这样，我们被推着一路前进，用户把“快捷酒店管家”当做预订平台，酒店则把我们当做营销平台，作为第三方的我们努力把桥梁当好。除了通过微博、微信、客服电话、关键词推送等方式对核心用户的需求不断揣摩外，“快捷酒店管家”也渐渐增设了不少体现酒店需求的信息展示功能，如是否有免费wifi，是否有停车场，附近是否有地铁等等，这些都是我们最初做产品时没有想到的。</p> 
+ <p>Joonas：我们从2007年开始维护Vaadin之书，这已成为一项巨大的任务，但我们感到顶级的文档是任何框架的一个非常重要的组成部分。如果一个特性没有被文档化，那么它对于别人是无用的。</p> 
+ <p>Vaadin之书的第一个完整版将于三月初提供免费下载。此后我们每次在框架中添加新特性时，都会将其继续更新维护到Vaadin之书。</p> 
 </blockquote> 
-<p>他特别强调了一个优秀移动应用的特质——让用户感觉APP是活的：</p> 
+<p><b>InfoQ</b><b>：如果Vaadin开发团队在分发他们正在维护的Vaadin的GWT版本，他们将计划怎样内联标准的GWT？</b></p> 
 <blockquote> 
- <p>对于一个APP来说，用户的下载只是万里长征的第一步，下载后的用户流失是必须面对的问题。有研究说，APP产品在下载后三个月内平均会失去76%的用户，维系用户确实是个难题。用户流失的原因各不相同。一种是3分钟效应，甚至有人说是60秒效应，就是说如果在3分钟之内用户无法找到你的亮点，或者说他急需解决的问题你无法解决，就可能会直接把你删掉，或者无限期打入“冷宫”。这是产品自身的问题，需要做出根本改变。第二种是用户确实在某个特定时段没有需求，比如订酒店就不是日常需求，如果APP因为这种原因被搁置，那就需要通过不断的运营让用户在需要的时候想起你。</p> 
+ <p>Joonas：我们维护的可用的GWT版本源码地址如下：</p> 
+ <p><a href="https://github.com/vaadin/gwt">https://github.com/vaadin/gwt</a>。</p> 
+ <p>Vaadin框架的全部资源地址如下：</p> 
+ <p><a href="https://github.com/vaadin/vaadin">https://github.com/vaadin/vaadin</a>。</p> 
+ <p>我们发布的版本只有Vaadin框架（而不是GWT），但是既然Vaadin包含了GWT，它可以用来作为GWT发行包的一个替代——即使你只需要客户端的功能，这样操作也无妨。</p> 
+ <p>如果你想要从架构的视角来理解GWT和Vaadin关系，请参考：</p> 
+ <p><a href="https://vaadin.com/blog/-/blogs/vaadin-7-application-architecture">https://vaadin.com/blog/-/blogs/vaadin-7-application-architecture</a>。</p> 
 </blockquote> 
+<p><b>InfoQ</b><b>：你们网站上的</b><a href="https://vaadin.com/faq"><b>FAQ</b></a><b>区有一个段落谈论“什么时候不宜使用Vaadin？”。企业项目规模的大小如何影响是否应该采用Vaadin的决策呢？</b></p> 
+<blockquote> 
+ <p>Joonas：有时是这样的：项目越大，Vaadin开发者受益越多。构建非常小的应用对于任何框架来说都比较容易，包括Vaadin。</p> 
+</blockquote> 
+<p><b>InfoQ</b><b>：页面“</b><a href="https://vaadin.com/who-is-using-vaadin"><b>谁在使用Vaadin</b></a><b>”显示了芬兰占了34个案例，美国占了6个案例，在列表上紧随其后。什么是Vaadin案例？170个国家的开发者使用Vaadin，做什么能够增加这些国家的Vaadin案例数量？</b></p> 
+<blockquote> 
+ <p>Joonas：我们的案例地图是非常不完整的。当我们开始收集“谁在使用Vaadin”列表时，我们只是四处打听到了一些使用Vaadin的案例。我们的总部在芬兰，所以我们在本地网络中找到了一些非常优秀的案例。</p> 
+ <p>我们想要列出来自全世界的展示。我们鼓励任何使用Vaadin并且做出优秀作品的人来联系我们，并把作品加入这个列表中。</p> 
+</blockquote> 
+<p><b>InfoQ</b><b>：有没有非JVM web应用的框架当前能和Vaadin竞争的？如果有，你能介绍几个么？</b></p> 
+<blockquote> 
+ <p>Joonas：我们是非常JVM中心化的，每个在这里构建web app的开发者同时也在使用web平台，因此最大的竞争来自于JavaScript框架。虽然对一些项目来说，将前端和后端团队分离是有效的，但因分离造成的额外开销对于产业空间上的大多数项目来说并不必要。</p> 
+</blockquote> 
+<p><b>InfoQ:</b><b>有的专业的开发者也许打算为Vaadin的底层代码做些贡献，你们的团队怎样操作来遴选符合条件的贡献者？</b></p> 
+<blockquote> 
+ <p>Joonas：大多数对Vaadin项目的贡献都是插件。这个门槛很低——任何人可以贡献到Vaadin的目录，地址在：<a href="http://vaadin.com/directory">http://vaadin.com/directory</a>。</p> 
+ <p>如果想要给Vaadin核心框架贡献代码，则应该通过发行跟踪系统提交补丁程序，地址在：<a href="http://dev.vaadin.com/wiki/SubmittingBug">http://dev.vaadin.com/wiki/SubmittingBug</a>。核心开发团队中的一员会收到补丁程序，评估测试，然后提交到我们内部的Gerrit审查系统，以保证至少能被我们核心团队的另一名开发者阅读和评估。补丁程序经常在这一流程中被部分重写至少一次。所有的贡献者都被要求签署一项贡献协议。</p> 
+ <p>我们期望通过公开我们的Gerrit系统来使这一流程更简单些，并在以后开始接受来自GitHub上的拉从请求。</p> 
+</blockquote> 
+<p><b>InfoQ</b><b>：我们从你们</b><a href="https://vaadin.com/blog/-/blogs/roadmap-for-the-next-74-days"><b>博客上发表的</b></a><b>路线图中获悉，Vaadin框架打算按照稳定的开发流程。这是说未来的流程规范化了么？它是什么样子的呢？</b></p> 
+<blockquote> 
+ <p>Joonas：我们最近更新了我们的开发流程——部分原因在于Vaadin 7的延迟。我们打算在继续进行现行开发的同时做些非正式的研究项目。我们希望这将使我们能更好的评估路线图，核心流程包括月度的路线图会议——我们将在未来的三个月将所有的产品路线图确认下来。内部流程作为一个整体如下图所示：</p> 
+ <p><img src="http://www.infoq.com/resource/news/2013/03/vaadin-7/zh/resources/1.jpg;jsessionid=1600FD5BDC2CEDE63432FCE96BABD0DF" alt="" _href="img://null" _p="true" /></p> 
+ <p><b>图表：Vaadin的开发和发布流程</b></p> 
+ <p>开发周期在一到两周，这个周期取决于产品的特性。当我们开发到差不多可以对外展示一些东西的时候，我们会进行内部的开发评审，如果可以，我们会发布alpha或beta版，以来在开发流程中得到较早的反馈。</p> 
+</blockquote> 
+<p><b>查看英文原文</b>：<a href="http://www.infoq.com/news/2013/02/vaadin-7;jsessionid=1600FD5BDC2CEDE63432FCE96BABD0DF">Vaadin 7 Arrives with GWT as an Integrated Component</a></p> 
+<hr /> 
+<p>感谢<a href="http://www.infoq.com/cn/bycategory.action;jsessionid=1600FD5BDC2CEDE63432FCE96BABD0DF?authorName=杨赛">杨赛</a>对本文的审校。</p> 
+<p>给InfoQ中文站投稿或者参与内容翻译工作，请邮件至<a href="mailto:editors@cn.infoq.com">editors@cn.infoq.com</a>。也欢迎大家通过新浪微博（<a href="http://www.weibo.com/infoqchina">@InfoQ</a>）或者腾讯微博（<a href="http://t.qq.com/infoqchina">@InfoQ</a>）关注我们，并与我们的编辑和其他读者朋友交流。</p> 
 <p id="lastElm"></p><br><br><br><br><br><br></body></html>

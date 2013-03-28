@@ -1,57 +1,16 @@
-<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>移动平台上的HTML5技术是否华而不实</h3><p>时至今日，HTML5技术已经不再是停留在纸面上的标准了，越来越多的公司和开发者尝试把HTML5技术应用到前端领域，到底HTML5能够对移动开发者带来多大的改进？它的前途是否值得期待？<a href="http://www.zhihu.com/question/20652815" target="_blank">社区</a>对此褒贬不一，有人认为HTML5的优势无可比拟，机会越来越多，有人则持不同观点，认为有炒作之嫌，HTML5在实际应用中存在诸多现实问题。</p> 
-<p><a href="http://www.zhihu.com/people/liu-tie-feng" target="_blank">刘铁锋</a>认为基于HTML 5的开发会越来越多，主要基于三点原因：</p> 
-<ul> 
- <li>入门的门槛（影响了开发者的基数和成本）</li> 
- <li>开发的成本（雇佣多个平台开发人员，还是一个平台开发人员）</li> 
- <li>PC上的发展趋势</li> 
-</ul> 
-<p>同时，他也指出目前HTML5的开发还不成熟，可以归纳为以下几点：</p> 
-<ul> 
- <li>浏览器内核能力不够强（渲染速度、界面响应速度、通过GPU加速的能力）不够，对于基本HTML 5的标准支持并不是最大问题。PC的浏览器已经接近完全，手机上海豚浏览器的内核已经可以达到480+, 通过Facebook的Ringmark测试的Ring 1 （非广告，只是为了说明技术上的可行性）.</li> 
- <li>浏览器访问移动设备的能力（标准的发展和用户的需求有差距）</li> 
- <li>浏览器的编程模型的限制（单进程的模型，依赖于DOM数据处理的模型）</li> 
-</ul> 
-<p>刘铁锋认为困难是暂时的：</p> 
+<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>何时在WPF中使用Async及Reactive Extensions</h3><p>Ian Griffiths发布了包含六部分的一系列文章，讨论了何时应该、及何时不应在WPF中使用.NET 4.5中的async特性。这个系列始于一篇名为“<a href="http://www.interact-sw.co.uk/iangblog/2013/02/14/wpf-async-too-fast">Too Much, Too Fast with WPF and Async</a>”的贴子。</p> 
+<p>有了async这件神器，似乎有人就想在应用程序中到处使用，并时时刻刻调用它。不幸的是，如果每个batch的大小（即async调用之间的时间差）小于创建Task对象及对应的上下文切换的消耗，这种情况下async就不那么好用了。</p> 
+<p>Ian写道，大的batch可以减少任务完成的总体时间，但又可能影响到UI的响应。</p> 
 <blockquote> 
- <p>目前手机的硬件能力已经在提升，双核1G，Android 4.0的MTK山寨手机已经只要500块。双核1.5G只要900块。性能不会是最大瓶颈，那么PC上已经跑起来的典型应用，在手机上都会起来。如果对比PC上的发展局面，其实已经展示了手机HTML 5发展的未来。</p> 
+ <p>虽然这远远快于8.5秒的情况，但我们也作出了牺牲：那个总体速度较慢的例子反而为UI更快地提供了有用的信息。实际上，用户可能会更倾向于较慢的那个版本，因为有用的信息能够立即出现，你可能不会感觉到装载整个列表的速度慢了三倍——将整个列表拖动到底部的时间说不定都远远长于8.5秒了。按照这个重要的指标来看，单纯地使用异步方法是更好的选择：它为用户更快地提供了有用的信息。</p> 
 </blockquote> 
-<p><a href="http://www.zhihu.com/people/superwyh">王亞暉</a>指出了HTML5的两个关键优势：</p> 
-<ul> 
- <li>跨平台特性，基本上有浏览器的地方就能有HTML5应用。</li> 
- <li>相对开发成本较低，学习曲线并没有传统游戏开发那么陡峭。</li> 
-</ul> 
-<p>他提到了自己去年的实际开发经历：</p> 
+<p>Ian Griffiths也谈到了使用<a href="http://www.interact-sw.co.uk/iangblog/2013/02/19/wpf-threads-too-fast">线程池与WPF 4.5中的集合同步（Collection Synchronization）新特性</a>。如果你要使用ConfigureAwait(false)方法来避免强制在UI线程上进行处理，这项技巧也是必不可少的。</p> 
 <blockquote> 
- <p>我前半年一直在做一款有点社交和LBS性质的纯 HTML5的webapp，前端纯粹HTML5，后端Scala，现在又在纠集了几个朋友做一款HTML5的大型页游，前端HTML5，后端node。之所以不选择Flash是因为，对于移动平台的支持度很糟糕同时，Flash本身也是浏览器不稳定因素的诱因之一。</p> 
- <p>这个（注：指跨浏览器）其实据说挺容易的，我身边是一个以前Opera的人在做，据说比Opera做hack容易的多。我自己也试过把网上一些现成HTML5游戏做跨平台跨浏览器移植，确实不是很麻烦，一些现有的解决方案能给人省掉90％的开发时间，也绝对比我之前适应Android各个系统各个分辨率各个商店的体验开心的多。</p> 
- <p>HTML5＋Node.js基本上是一个天生适合做游戏的搭配，网易不久前出了一个叫pomelo的游戏引擎，磊友马上也要出一款 HTML5的大型页游，我也听说几家大公司也在做类似的开发，同时我认识一个在厦门的团队也野心勃勃的做一款HTML5的大型3D页游。如果不出意外估计明年底后年初会是一个纯HTML5游戏的爆棚期。传统的web app也是如此，我前几天去Mozzila串门，看了一下FirefoxOS上的一些东西，表现还是非常的惊艳。</p> 
+ <p>调用ConfigureAwait表示我们并不关心方法在哪个线程上继续执行。要点在于，某个不能立即完成的读操作最终会完成，而方法的余下部分会在一个线程池的线程上延迟执行。这意味着使用await不会再导致WPF的调度占用。但当然，它也意味着列表的全部更新都会发生在一个工作线程上，因此我们需要使用同样的小花招以避免产生问题：要么等到方法完成后再绑定数据并显示列表，要么就必须处理跨线程的变更通知。</p> 
 </blockquote> 
-<p>王亞暉特意澄清了HTML5被妖魔化的一些方面：</p> 
-<ul> 
- <li>运算速度慢——这个确实是，尤其是手机上。但计算机行业什么时候运算速度成了限制，想想5年前手机的原生程序是什么一个状态，再看看现在的，五六百就能买到一个跑3D游戏的智能手机了。而且事实上iOS开了一个很好的头，Safari有硬件加速，所以效率极高，基本上web app的延迟是在一个完全可以接受的范围之内。相比较本地处理能力，真正大的问题在网速和电池上。这个确实短期不好解决。但在PC上，这也不是问题。</li> 
- <li>版本分裂——这个基本上跟开发者关系不大，而且真正分裂的焦点是在版本进度把握上。只是一个希望把标准写死了，一个希望更灵活。</li> 
-</ul> 
-<p>对HTML5技术持相反意见的开发者也不少。</p> 
-<p><a href="http://www.zhihu.com/people/wang-bin-1-53">王斌</a>认为HTML5技术是一场炒作，“因为周围，无论国内还是国外，都是叫好不叫座”。具体来说：</p> 
-<ul> 
- <li>功能和性能有限。就拿HTML5中最大的亮点Canvas来说，想用这玩意取代Flash，基本是不可能的。Canvas才提供多少个API，那几个绘图函数实在太简陋，和Flash极其强大的各种特效相比简直大巫见小巫，更别提Flash的动画能力了。</li> 
- <li>用JS来做动画和特效，效率太低。Flash Player里面对各种浮点数、矢量绘图的优化，简直到了超越普通硬件加速的地步。</li> 
- <li>现在HTML5已经开始分裂了，分裂成两个标准。本来就不是标准的东西，还继续分裂&middot;&middot;&middot;前途简直没有。</li> 
- <li>开发工具几乎没有，就更别提和Flash IDE相比了&middot;&middot;&middot;</li> 
- <li>各种浏览器支持的也有限。拿PC上的Chrome去打开那些所谓的HTML5的站点，经常卡死。要知道Chrome的核心dll一个就接近50m，这么庞大的东西，支持HTML5还这么差，更别提移动设备那些有限的资源了。我是觉得，那些手机浏览器，解析各种HTML4的网页都不一定标准，就更别提HTML5了&middot;&middot;</li> 
-</ul> 
-<p>他总结道：</p> 
-<blockquote> 
- <p>那些赞美HTML5的，基本都是一厢情愿而已。尤其IE6都还坚挺，XP还占据40%市场的中国，想推广HTML5，太难。10年前有人大呼什么IPV6\ X64之类的时代要到了，可目前可以说还是早的很。十年前我就在关注一项矢量绘图技术：SVG，绝对比Canvas绘图能力强大，可惜一直没有商业公司推广，以至于现在几乎没人知道。</p> 
- <p>再进一步，所谓的HTML5，之所以拿出来炒，最大的原因恐怕还是乔布斯这人，想在商业上踢翻Adobe。要知道Flash一旦成为标准，在对开发者要求极其苛刻的iOS平台，一切都将可以绕过苹果的限制。所以乔布斯才出如此极端之做法。现在乔布斯已逝，HTML5 的前景堪忧啊。</p> 
-</blockquote> 
-<p>除此之外，还有不少讨论者持类似的态度，他们认为HTML5存在的主要问题，包括以下几点：</p> 
-<ul> 
- <li>开放式标准带来的问题是，没有能真正提供一个好生态环境及开发体验。很多开发者都有“我不知道该用HTML5做什么” 的感觉。</li> 
- <li>HTML5的权限、API都不够用，很多本地随手就实现的功能HTML5得折腾很久。JS的调试也很麻烦。好不容易开发出来了，素材，代码都不能加密。</li> 
- <li>动画效果，HTML5的加载速度慢，帧率跟本地比明显不够。</li> 
- <li>HTML5完全是牺牲体验的典型。所谓的跨平台如果是通过增加开发难度，功能性能缩水来实现也就毫无意义了。宁可在一个平台上做80分，也不要在两个平台上各得50分。</li> 
- <li>基于HTML5的应用，需要浏览器进行执行，如果是Firefox OS这类浏览器操作系统，耗电问题可能会得到一定程度解决。但是安卓上的浏览器或iOS浏览器再执行Web应用，势必会更加耗电。</li> 
-</ul> 
-<p>有关社区讨论的详细内容，读者可以查看知乎社区的<a href="http://www.zhihu.com/question/20652815" target="_blank">相关文章</a>。欢迎读者特别是前端领域的开发者发表对HTML5技术发展前景的看法。</p> 
+<p>Ian所演示的另一个技巧是<a href="http://www.interact-sw.co.uk/iangblog/2013/02/20/wpf-rx-threads-chunking">使用Reactive Extensions分块处理数据</a>。它使用了Buffer函数将batch大小限制为100ms，或是将总数限制为5000个（取决于先达到哪个数值），然后通过ObserveOnDispatcher函数将其封装回送至UI线程。这种模式比起其它技巧显得冗余，但它“几乎能够立即开始显示[…]数据，并在2.3秒内完成加载并显示所有数据”，这比原来的同步实现还是有所改进。</p> 
+<p><b>查看英文原文</b>：<a href="http://www.infoq.com/news/2013/03/WPF-Async;jsessionid=EB7EE5163F32481A859C96A349B68AA5">When to Use WPF with Async and Reactive Extensions</a></p> 
+<hr /> 
+<p>感谢<a href="http://www.infoq.com/cn/bycategory.action;jsessionid=EB7EE5163F32481A859C96A349B68AA5?authorName=杨赛">杨赛</a>对本文的审校。</p> 
+<p>给InfoQ中文站投稿或者参与内容翻译工作，请邮件至<a href="mailto:editors@cn.infoq.com">editors@cn.infoq.com</a>。也欢迎大家通过新浪微博（<a href="http://www.weibo.com/infoqchina">@InfoQ</a>）或者腾讯微博（<a href="http://t.qq.com/infoqchina">@InfoQ</a>）关注我们，并与我们的编辑和其他读者朋友交流。</p> 
 <p id="lastElm"></p><br><br><br><br><br><br></body></html>
