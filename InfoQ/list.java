@@ -2,7 +2,10 @@
  <head></head> 
  <body>
   <div>
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/33.java">WCF Data Services 5.4.0 Released with Client Hooks and Instance Annotations on Atom Payloads</a>Microsoft has announced the availability of WCF Data Services 5.4.0 release candidate with new features and several bug fixes.
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/34.java">Release Cadence Report - Survey Launched</a>Ryan Cromwell has released the Release Cadence Report Survey. Based on the premise that the rate at which software is released is one of the most important metrics teams should be monitoring and reporting on he has launched a survey which examines five areas of team activities. The survey will remain open until 24 May 2013, following which the results will be made available to the community.
+  </div> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/33.java">WCF Data Services 5.4.0 Released with Client Hooks and Instance Annotations on Atom Payloads</a>Microsoft has announced the availability of WCF Data Services 5.4.0 release candidate with new features and several bug fixes. 
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/32.java">WCF Data Services 5.4.0 - Client Hooks and Instance Annotations on Atom Payloads</a>Microsoft has announced the availability of WCF Data Services 5.4.0 release candidate with new features and several bug fixes. 
@@ -147,9 +150,6 @@
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/35.java">Red Hat Takes Over Leadership of OpenJDK 6</a>Red Hat have announced that they are taking over support of OpenJDK 6, just days after Oracle posted what it says will be the final freely available update, number&nbsp;43, to its commercial Java 6 development kit. 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/34.java">NuoDB Launches Scalable, Cloud Based, Relational Database</a>NuoDB recently released its Cloud Database Management System which supports SQL queries, ACID (Atomic, Consistent, Isolated and Durable) transactions, and easy scaling to multiple nodes. It is designed for companies that need to scale their databases to multiple servers but don’t want to give up the power of relational algebra or transactional guarantees. 
   </div>  
  </body>
 </html>
