@@ -1,34 +1,21 @@
-<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>QCon New York 2013: 50/100 speakers confirmed; Talks from NASA, Twitter, LinkedIn, Netflix</h3><p>Over 50 speakers have been confirmed for the second annual <a href="http://qconnewyork.com/?utm_source=infoq&amp;utm_medium=news&amp;utm_campaign=03122013news">QCon New York 2013</a>.&nbsp;QCon New York will take place at the New York Marriott just outside of Manhattan (at the Brooklyn Bridge) on June 10-14, 2013. Registration is open and new speakers and sessions are being posted to the conference site every week.You can get in early by <a href="http://qconnewyork.com/registration-intro.html?utm_source=infoq&amp;utm_medium=news&amp;utm_campaign=03122013news">reserving your seat</a>&nbsp;now saving up to&nbsp;<strong>$500&nbsp; by Mar 15th</strong>.&nbsp;</p> 
-<p>QCon New York features 2 days of tutorials (June 10-11, 2013) and 3 full conference days (June 12-14, 2013).</p> 
-<p>Here is a brief list of sessions that you can expect to see at QCon New York this year: </p> 
-<ul> 
- <li><strong>&quot;How Netflix Operates Multi-Region Clouds for Maximum Freedom and Agility,&quot;</strong> by Jeremy Edberg,&nbsp;Reliability Architect for Netflix</li> 
- <li><strong>&quot;Data Science @ NASA,&quot;</strong> by Rob Witoff, Data Scientist at NASA</li> 
- <li><strong>&quot;Lessons Learned from Building Storm,&quot;</strong> by Nathan Marz,&nbsp;Lead Engineer Backtype @Twitter</li> 
- <li><strong>&quot;Scalability, Availability, and Performance at LinkedIn&quot;</strong>, by Sid Anand,&nbsp;Senior Member, Distributed Data Systems, LinkedIn</li> 
- <li><strong>&quot;Screwing Up for Less,&quot;</strong> by Stephen Hardisty, Software Engineer at Etsy&nbsp;</li> 
- <li><strong>&quot;Surviving Big Javascript Projects,&quot;</strong> by Anton Kovalyov, Creator of JSHint, Engineer at Mozilla</li> 
- <li><strong>&quot;Deep Dive into the G1 Garbage Collector,&quot;</strong> by Charlie Hunt, Author of &quot;Java Performance&quot;</li> 
- <li><strong>&quot;Mary had a little λ,&quot;</strong> by Stephen Chin, Java Hacker and Co-author of &quot;Pro JavaFX Platform&quot;</li> 
- <li><strong>&quot;Well Behaved Web Apps in the Haute Soci&eacute;t&eacute; of Native Apps,&quot;</strong> by&nbsp;Adrian Kosmaczewski</li> 
- <li><strong>&quot;Evolving Panorama of Data,&quot;&nbsp;</strong>by Rebecca Parsons, ThoughtWorks CTO</li> 
- <li><strong>&quot;Real-time Aggregation of Big Data for Trading and Risk Management,&quot;</strong>&nbsp;by Paul Water, Executive Director of Software Engineering at the Chicago Mercantile Exchange</li> 
- <li><strong>&quot;Shedding Light on the Cloud: Defining Clouds and Best Practices,&quot;</strong> by Paul Weiss,&nbsp;Senior Cloud Engineer at Eucalyptus</li> 
- <li><strong>&quot;Testable Javascript,&quot;</strong> by Mark Ethan Trostler, author of O'Reilly's &quot;Testable Javascript&quot;</li> 
- <li><strong>&quot;Dart's Web UI for Web Components/Dynamic Views,&quot; </strong>by Seth Ladd, Web Engineer, Chrome Developer Advocate at Google</li> 
- <li><strong>&quot;Analyzing and Harnessing Unstructured Data the Easy Way for Capital Markets,&quot;</strong> by Greg Bujak, Head of Product Development at Risk Focus<br /> &nbsp;</li> 
-</ul> 
-<p>Other speakers who will be presenting at QCon New York include:</p> 
-<ul> 
- <li><strong>Ramesh Balakrishnan</strong>, Software Engineer at Dropbox</li> 
- <li><b>Jim McCarthy,&nbsp;</b>Agile and Team Collaboration Guru</li> 
- <li><strong>Peter Bell</strong>,&nbsp;Senior VP Engineering, General Assembly</li> 
- <li><strong>Kirk Pepperdine</strong>, Java Performance Tuning Expert</li> 
- <li><strong>Dave Farley</strong>, Co-Author &quot;Continuous Delivery&quot; (Addison Wesley)</li> 
- <li><strong>Matthew McCullough</strong>,&nbsp;VP of Training at GitHub.com</li> 
-</ul> 
-<p>QCon New York will host more than 100 speakers, 6 concurrent tracks, and many breaks, parties, and opportunities for networking.If you have never attended a QCon be sure to watch some of our past sessions. There is no other event in the US with similar opportunities for learning, networking, and tracking innovation occurring in the Java, .NET, HTML5, Mobile , Agile, and Architecture communities.</p> 
-<p><a href="http://qconnewyork.com/registration-intro.html?utm_source=infoq&amp;utm_medium=news&amp;utm_campaign=03122013news">Registration</a>&nbsp;is&nbsp;<strong>$1,695</strong>&nbsp;(a $500 savings) for the 3 day event&nbsp;<strong>until March 15th</strong>, and increases afterwards every month. Group discounts are available. QCon is produced by InfoQ.com and runs annually in London, San Francisco, New York, Beijing, Shanghai, Chengdu, Guangzhou, Tokyo and S&atilde;o Paulo.&nbsp;<a href="http://qconferences.com">http://qconferences.com</a></p> 
-<p>Stay up-to-date with the latest conference announcements on our&nbsp;<a href="http://twitter.com/#!/QConnewyork">Twitter</a>&nbsp;and&nbsp;<a href="https://www.facebook.com/QCon">Facebook</a>&nbsp;pages.</p> 
-<p>&nbsp;</p> 
+<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>Docker: Automated and Consistent Software Deployments</h3><p><a href="https://www.dotcloud.com/">dotCloud</a>, a PaaS provider, has open sourced <a href="https://github.com/dotcloud/docker/">Docker</a>, a key component of their platform. Docker is a <a href="http://en.wikipedia.org/wiki/LXC">LinuX Container (LXC)</a> technology augmented with a a high level API providing a lightweight virtualization solution that runs Unix processes in isolation. It provides a way to automate software deployment in a secure and repeatable environment.</p> 
+<p>Docker uses the concept of a Standard Container which contains a software component along with all its dependencies - binaries, libraries, configuration files, scripts, virtualenvs, jars, gems, tarballs, etc. – and can be run on any x64-bit Linux kernel that supports <a href="http://en.wikipedia.org/wiki/Cgroups">cgroups</a>. Such containers can be deployed on a laptop, on a distributed infrastructure, in the cloud, etc., preserving its environment, making it appropriate for a broad range of uses: continuous deployment, web deployments, database clusters, SOA, etc., as <a href="http://www.kavistechnology.com/blog/docker-is-open-source/">Mike Kavis explained on his blog</a>:</p> 
+<blockquote> 
+ <p>The use case that was relevant to me, the application guy, is to use Docker to streamline a continuous delivery process. In every place that I have worked in my career, from the mainframe days, to the client server days, to the cloud days, getting the different environments in sync and successfully testing applications has been a nightmare. When code moves from Dev to QA to Stage to Prod, no matter how good or bad our processes were these environments were NEVER the same. The end result was always a hit in the quality of a production release. “It worked in test” became the most shrugged off phrase since “the check is in the mail”.</p> 
+ <p>With Continuous Delivery (CD), the <em>entire environment</em> moves with the code from Dev to QA to Stage to Prod. No more configuration issues, no more different systems, no more excuses. With CD, if it didn’t work in Prod it didn’t work in Test. With Docker, I can see writing scripts to automate the CD process. I can see gains in speed to market because of how quickly new environments can be created without dealing with all of the setup and configuration issues.</p> 
+</blockquote> 
+<p>Solomon Hykes, CEO of dotCloud, <a href="http://www.youtube.com/watch?feature=player_embedded&amp;v=wW9CAH9nSLs">demoed Docker at PyCon</a>, explaining that it’s a repeatable lightweight virtualization solution because “it’s isolated at the process level and it has its own file system”. The API enables system administrators to execute a number of operations on containers: start, stop, copy, wait, commit, attach standard streams, list file system changes, etc.</p> 
+<p>Some of Docker’s <a href="https://github.com/dotcloud/docker/">main features</a> are:</p> 
+<blockquote> 
+ <ul> 
+  <li> <p>File system isolation: each process container runs in a completely separate root file system.</p> </li> 
+  <li> <p>Resource isolation: system resources like CPU and memory can be allocated differently to each process container, using cgroups.</p> </li> 
+  <li> <p>Network isolation: each process container runs in its own network namespace, with a virtual interface and IP address of its own.</p> </li> 
+  <li> <p>Copy-on-write: root file systems are created using copy-on-write, which makes deployment extremely fast, memory-cheap and disk-cheap.</p> </li> 
+  <li> <p>Logging: the standard streams (stdout/stderr/stdin) of each process container are collected and logged for real-time or batch retrieval.</p> </li> 
+  <li> <p>Change management: changes to a container's file system can be committed into a new image and re-used to create more containers. No templating or manual configuration required.</p> </li> 
+  <li> <p>Interactive shell: docker can allocate a pseudo-tty and attach to the standard input of any container, for example to run a throwaway interactive shell.</p> </li> 
+ </ul> 
+</blockquote> 
+<p>So far, Docker has been tested with Ubuntu 12.04 and 12. 10, but it should be working with any Linux 2.6.24 or later, according to dotCloud. It can also be installed on Windows or Mac OS X via <a href="https://www.virtualbox.org/">VirtualBox</a> using <a href="http://www.vagrantup.com/">Vagrant</a>.&nbsp;Docker was written in Go, and uses Linux <a href="http://blog.dotcloud.com/kernel-secrets-from-the-paas-garage-part-24-c">cgroup</a>&nbsp;and <a href="http://blog.dotcloud.com/under-the-hood-linux-kernels-on-dotcloud-part">namespacing</a>, <a href="http://aufs.sourceforge.net/aufs.html">AUFS</a>&nbsp;– file system with copy-on-write capabilities-, and <a href="http://lxc.sourceforge.net/">LXC</a> scripts.</p> 
 <p id="lastElm"></p><br><br><br><br><br><br></body></html>

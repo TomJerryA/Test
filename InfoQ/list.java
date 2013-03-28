@@ -1,6 +1,15 @@
 <html>
  <head></head> 
- <body> 
+ <body>
+  <div>
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/32.java">WCF Data Services 5.4.0 - Client Hooks and Instance Annotations on Atom Payloads</a>Microsoft has announced the availability of WCF Data Services 5.4.0 release candidate with new features and several bug fixes.
+  </div>
+  <div>
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/31.java">Docker: Automated and Consistent Software Deployments</a>dotCloud, a PaaS provider, has open sourced Docker, a key component of their platform. Docker is a LinuX Container (LXC) technology augmented with a a high level API providing a lightweight virtualization solution that runs Unix processes in isolation. It provides a way to automate software deployment in a secure and repeatable environment.
+  </div> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/30.java">Use Canary Deployments to Test in Production</a>Companies use &quot;Canary Deployments&quot; to test software in production by routing a subset of users to new functionality as part of continuous delivery according to Nolio in their 1st video in a series about DevOps Best Practices. A &quot;Canary Deployment&quot; is a type of incremental release performed by deploying a new version of software side by side with its production version counterpart. 
+  </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/29.java">Git in JavaScript Kickstarter Project Funded in 28 Hours</a>Tim Caswell, a well-known member of the JavaScript and Node.js communities, came up with the idea to reimplement Git in JavaScript and managed to get the project funded on Kickstarter within 28 hours with over 360 backers. The project is another example of Atwood's Law: &quot;any application that can be written in JavaScript, will eventually be written in JavaScript.&quot; 
   </div> 
@@ -141,15 +150,6 @@
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/33.java">API Community Debates Governance versus Innovation</a>Governance has reared its head up again, this time in the API community and questions have been raised about its relevance especially in organizations where innovation is the focus. This was a hot topic at the recent API Strategy and Practice conference and the debate continued in the blogosphere. 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/32.java">New Developer Tools for SQL Server, SharePoint, and Office</a>Microsoft updated several tools for developers targeting SQL Server, SharePoint, and Office. The Business Intelligence tools support analysis, integration, and reporting for SQL Server. The Office/SharePoint tools suite bring support for the 2013 versions of each and .NET Framework 4.5. 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/31.java">QCon New York 2013: 50/100 speakers confirmed; Talks from NASA, Twitter, LinkedIn, Netflix</a>Over 50 speakers have been confirmed for the second annual QCon New York 2013. QCon New York will take place at the New York Marriott just outside of Manhattan (at the Brooklyn Bridge) on June 10-14, 2013. Registration is open and new speakers and sessions are being posted to the conference site every week.You can get in early by reserving your seat now saving up to $500 by Mar 15th. 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/30.java">Cloud Optimization Takes Center Stage with Free Microsoft, AWS Services</a>While a cottage industry has grown around providing services to optimize cloud usage and costs, large cloud providers themselves are beginning to promote their own optimization offerings. Microsoft recently purchased a cloud performance management company and made its product free to customers. Competitor AWS is aggressively promoting their own “Trusted Advisor” program with a free trial period. 
-  </div> 
+  </div>   
  </body>
 </html>

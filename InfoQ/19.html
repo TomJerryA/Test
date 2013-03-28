@@ -1,8 +1,49 @@
-<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>IE 10将加强对Flash的支持</h3><p>因为Flash支持游戏、视频和交互式内容，所以它在很多不同的项目中都有应用。尽管该平台在过去屡遭中伤，但由于其根植于多平台并支持流媒体，因此仍然很受欢迎。</p> 
-<p>微软<a href="http://blogs.msdn.com/b/ie/archive/2013/03/11/flash-in-windows-8.aspx">宣布</a>将更新IE 10，使Windows 8和Windows RT平台在缺省情况下能运行Flash内容。此举表明了微软对Flash的流行以及其对提供友好环境的重要性的认可。微软IE项目组的程序经理Rob Mauceri指出，一个设备要想成为不依赖于PC的主设备，必须能够运行用户日常所需的大部分内容。</p> 
-<p>Mauceri还指出，他的团队与Adobe一起改进了Windows 8中的Flash播放器， “针对触摸、性能、安全性、可靠性和电池寿命进行了优化”。值得注意的是，乔布斯于2010年决定在Apple设备中停止支持Flash时考虑的也是这几方面的原因，这对我们是很好的启示。</p> 
-<p>使用Flash的网站开发者可以参考微软针对Windows用户的<a href="http://msdn.microsoft.com/en-us/library/ie/jj193557.aspx">指南</a>。为保证安全的浏览体验，IE 10使用兼容性视图列表来阻止特定网站运行Flash内容，该指南也包含了兼容性视图列表的详细信息。<a href="http://www.modern.ie/en-us">modern.IE</a>是微软单独提供的站点，可以辅助开发者创建兼容IE的网站。</p> 
-<p>相比于和Apple的合作，Adobe和微软的合作能否产生更好的结果尚待分晓。或许Windows RT以<a href="http://www.infoq.com/cn/news/2013/01/winrt_exploit;jsessionid=CD0781561F002BF4B6E4257679D2B17B">PC为核心的根基</a>会带来一个优势，即帮助微软的移动设备像服务一样取得成功。Mauceri指出，加强对Flash的支持，其目标是架起一座桥梁，为现有的基于Flash网站向基于HTML5的技术过渡提供时间。</p> 
-<p>同样关于HTML5，<a href="http://www.apple.com/hotnews/thoughts-on-flash/">乔布斯3年前写道</a>：“……让Web开发者来创建高级的图形、字体、动画和变换，而不是依赖于第三方浏览器插件（如Flash）……[这些]开放的标准创建于移动时代，比如HTML5，它们将在移动设备上取得胜利（PC上同样如此）。”</p> 
-<p><b>查看英文原文</b>：<a href="http://www.infoq.com/news/2013/03/IE10_Win8_Flash;jsessionid=CD0781561F002BF4B6E4257679D2B17B">Internet Explorer 10 Broadens Flash Support</a></p> 
+<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>是否应该为技术债创建用户故事？</h3><p>敏捷团队有时也会为纯技术性任务而挣扎，比如必须处理技术债。虽然这种任务对系统用户没有直接价值，但要交付可以工作的软件又不得不处理。那么，是不是应该创建用户故事来应对这样的技术性任务或技术债呢？</p> 
+<p>在博文《<a href="http://www.industriallogic.com/blog/as-a-developer-is-not-a-user-story/">像“作为开发者……”这样的表达并非用户故事</a>》中，Bill Wake谈到了他所遇到的对客户没什么价值的用户故事。作为例子，他提到了“作为开发者，我想配置Jenkins，以便进行持续集成”这个用户故事。Bill解释了为什么我们不应将其称作用户故事：</p> 
+<blockquote> 
+ <p>我不是说这些活动不好，或者说不重要，它们也是面向这个团队的，不过将其当作用户故事会误导团队及其客户。把与用户无关的东西以用户故事的<i>形式</i>写下来，这是没抓住要领。</p> 
+</blockquote> 
+<p>他的观点是，应该称其为任务，而非用户故事。根据精益思想，他认为这些活动其实是种浪费：</p> 
+<blockquote> 
+ <p>从精益思想的角度看，团队所做的很多活动都可以视作浪费，但我们又不知道如何避免这些活动从而有效地进行软件开发。精益团队称其为“不增加价值，却又必不可少”，因为这是不得已而为之的事。</p> 
+</blockquote> 
+<p>Bill建议，如果某些用户故事的角色不是来自实际软件用户，而是来自于开发之中，这时一定要慎重。可以尝试将这样的用户故事重新组织为功能行为或质量特性，然后换种描述方式；如果行不通，再考虑将其看作任务。作为任务，开发团队需要跟踪，但又不应将其作为用户故事放在产品Backlog上，因为它们并不交付价值：</p> 
+<blockquote> 
+ <p>（……）承认你的团队有时面对的只是任务。可以内部跟踪这些任务，但是不要将其看作所开发系统的直接进展，更不要将其当作直接进展来跟踪。</p> 
+</blockquote> 
+<p>关于如何在产品Backlog中处理技术性任务，Mattias Marschall在其博文《<a href="http://www.agileweboperations.com/how-to-translate-business-value-of-things-that-are-technically-important">技术上很重要的事物，怎样表达出“业务价值”</a>》中提出了一种方案。他首先解释了如何看待用户故事与技术性任务之间的关系：</p> 
+<blockquote> 
+ <p>用户任务应该描述用户想让系统做的事情。纯粹的技术性任务通常实现为用户故事的一部分。</p> 
+</blockquote> 
+<p>但如何处理与具体的用户故事没有直接关联的技术性任务呢？Mattias建议把它们放到产品Backlog上：</p> 
+<blockquote> 
+ <p>要把技术性任务按优先级放到产品Backlog中，那就为每一项创建一个用户故事。等等，这不是弄虚作假吗？不，如果你能回答如下两个问题，那就不是：</p> 
+ <ol> 
+  <li>谁能从其结果中受益？</li> 
+  <li>为什么这个任务是必要的？</li> 
+ </ol> 
+</blockquote> 
+<p>利用他的解决方案，我们既可以把所有的技术性任务包含到产品Backlog中的用户故事里去，也可以将其作为面向客户的用户故事的一部分，还可以使用一个专为技术性任务创建的用户故事来应对：</p> 
+<blockquote> 
+ <p>如果你能将技术性任务明确地表达为一种用户故事，那么利益相关者就能理解它们的必要性，并将它们与其他用户故事一起优先考虑。</p> 
+</blockquote> 
+<p>Bastian Buch在其博客文章<a href="http://www.codovation.com/2012/06/effective-steps-to-reduce-technical-debt-an-agile-approach/">《减少技术债的有效步骤：敏捷方法</a>》中解释道，对于与技术债相关的技术性任务，开发者和产品所有者可能有不同看法：</p> 
+<blockquote> 
+ <p>开发者了解技术债，也能意识到面对这种问题的重要性。</p> 
+ <p>产品所有者往往不理解减少技术债的必要性和收益所在，因此他们不会考虑甚至不允许把技术性项目或用户故事列入他们的产品Backlog和发布计划中。</p> 
+</blockquote> 
+<p>他建议由产品所有者负责减少技术债。团队成员应该与产品所有者讨论技术债，并共同努力，让技术债在产品Backlog中具有正确的优先级：</p> 
+<blockquote> 
+ <p>团队应该记住，产品所有者是团队的一分子，他的痛苦就是大家的痛苦，反之亦然。他不是团队的客户、买主或老板，而更像是来自不同利益相关者的主题专家（SME，subject matter expert）和产品需求管理者/分析员。</p> 
+ <p>团队向产品所有者保证产品成长，这仍然是最重要的——不管从短期的绩效还是从长期的健康来看，都是如此。</p> 
+</blockquote> 
+<p>Bastian建议把所有的技术性问题收集到用户故事中，评估投入和产出。他将收益称为“报酬”，因为解决了问题能减少技术债：</p> 
+<blockquote> 
+ <p>（……）针对我们定义的每一项任务，我们在JIRA中创建标记为“TechnicalDebtItems”的用户故事。为了安排这些项目的优先级并得出正确结论，我们创建一个图表来将投入与回报的相互关系可视化。</p> 
+</blockquote> 
+<p>可视化有助于产品所有者和团队协作减少技术债。</p> 
+<blockquote> 
+ <p>通过将技术债和可能的回报可视化，（……）现在团队可以把精力集中在最重要的步骤上。还有一个重要的副作用：这也是与产品所有者和利益相关者协同工作的一个极好工具，因为它使技术债对他们也有很好的透明度。</p> 
+</blockquote> 
+<p><b>查看英文原文</b>：<b><a href="http://www.infoq.com/news/2013/03/user-stories-technical-debt;jsessionid=954B42CF427F3195474D89FC000C758C">Should You Create User Stories for Technical Debt?</a></b></p> 
 <p id="lastElm"></p><br><br><br><br><br><br></body></html>

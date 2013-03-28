@@ -1,0 +1,140 @@
+<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>云测试探索实践</h3><p><img src="http://www.infoq.com/resource/articles/testing-in-the-cloud-exploring-the-practice/zh/resources/2IEEElogo.jpg;jsessionid=2BF8614D3813917258EBABAE0DD33E80" alt="" _href="img://2IEEElogo.jpg" _p="true" />这篇文章最初发表于IEEE Software 杂志由InfoQ和<a href="http://www.computer.org/portal/web/computingnow/software" target="_blank">IEEE</a>计算机协会共同呈现。</p><p>云计算是一种按需提供计算资源的模式，它可以降低管理成本，是IT行业中一直广泛热议的话题。它主要分为以下服务层次：基础设施即服务（IaaS）、平台即服务（PaaS）和软件即服务（SaaS）。云计算支持把所有东西都作为服务（XaaS）交付的模式，提供了非常广泛互联网服务，从安全和数据库到存储和集成均有所涉及（<a href="http://doi.ieeecomputersociety.org/10.1109/MS.2011.132" target="_blank">云测试资源请参阅此链接</a>）。</p><p>云计算改变了我们交付软件和使用软件的方式，传统的软件许可方式正在逐渐减少，而越来越多的公司采用了租用软件服务的方式。2010年，Gartner经研究后预测：2012年将有20%的企业不再拥有IT资产，而是采取从云中获取的方式（虽然这些预测并没有进行跟踪确认）。云服务在成长是事实，但在部署云应用之前仍然要经历开发和测试。随着云服务的增长，对基于云服务开发的应用的测试需求也在增长。</p><p>云测试门槛相对较低。云测试按需服务，并针对使用收费。许多公司已经提供了云测试服务（参见表1），比如性能测试、负载测试和Web应用测试，以及在云中托管的测试环境。</p><p>云测试最主要的优点是节省了内部测试环境的创建、维护和审批成本。例如，一个IP语音电话的网络管理系统，如果用亚马逊的云去测试它只需要花费不到130美元。其他方面的优点还包括可以更灵活地根据需要选择测试环境、可以在全球市场选择供应商和客户。尽管有很多优点，但从另一方面来看也会付出一些难以发现、难以估算的代价：在云测试中创建测试用例和脚本需要特定的技能，而且安全保障与监控也会带来额外的成本。我们在本文中提供了一个如何选用云测试的路线图。</p><h3><strong>表1</strong></h3><p style="text-align: center;">云测试供应商实例。</p><table cellspacing="1" cellpadding="1" border="0" style="width: 100%;"> 
+ <tbody> 
+  <tr> 
+   <td style="background-color: rgb(0, 0, 0); width: 150px;"><span style="color:#ffffff;">云供应商</span></td> 
+   <td style="background-color: rgb(0, 0, 0);"><span style="color:#ffffff;">测试服务</span></td> 
+  </tr> 
+  <tr> 
+   <td style="background-color: rgb(153, 204, 255);">Soasta</td> 
+   <td style="background-color: rgb(153, 204, 255);">用于测试Web应用和网站的性能、扩展性、可靠性的云服务，可以测试内部和生产环境 (参考此链接)</td> 
+  </tr> 
+  <tr> 
+   <td style="background-color: rgb(153, 204, 255);">STaaS</td> 
+   <td style="background-color: rgb(153, 204, 255);">按需服务，让客户可以随时随地访问测试工具和测试环境(参考此链接)</td> 
+  </tr> 
+  <tr> 
+   <td style="background-color: rgb(153, 204, 255);">Zephyr</td> 
+   <td style="background-color: rgb(153, 204, 255);">可扩展的全生命周期测试管理平台，集成了各种测试工具和测试系统，提供了全球访问性、协同办公、可视化管理、实时更新等特性 (参考此链接)</td> 
+  </tr> 
+  <tr> 
+   <td style="background-color: rgb(153, 204, 255);">Sauce Labs</td> 
+   <td style="background-color: rgb(153, 204, 255);">基于Selenium的测试服务，可跨多浏览器测试Web应用，支持浏览器任务自动化，可以同时执行多个测试。(参考此链接)</td> 
+  </tr> 
+  <tr> 
+   <td style="background-color: rgb(153, 204, 255);">Skytap</td> 
+   <td style="background-color: rgb(153, 204, 255);">可扩展的云解决方案，可以可视化地控制云端应用，能够用来做应用的开发、测试、迁移和评估，也可以创建混合云 (参考此链接)</td> 
+  </tr> 
+  <tr> 
+   <td style="background-color: rgb(153, 204, 255);">uTest</td> 
+   <td style="background-color: rgb(153, 204, 255);">从“Web、桌面和移动应用”专业测试人员的众包池中提供功能、安全、负载、本地化和易用性测试服务(参考此链接)</td> 
+  </tr> 
+  <tr> 
+   <td style="background-color: rgb(153, 204, 255);">IBM</td> 
+   <td style="background-color: rgb(153, 204, 255);">在私有测试环境中提供按需服务的、安全的、动态的、可扩展的测试服务资源，该环境包含易于使用的平台、服务需求管理、自动化和配置管理等 (参考此链接)</td> 
+  </tr> 
+  <tr> 
+   <td style="background-color: rgb(153, 204, 255);">PushToTest</td> 
+   <td style="background-color: rgb(153, 204, 255);">持续集成平台服务，结合网格技术与云计算，可以跨单个或多个云测试环境执行测试(参考此链接)</td> 
+  </tr> 
+  <tr> 
+   <td style="background-color: rgb(153, 204, 255);">CloudTestGo</td> 
+   <td style="background-color: rgb(153, 204, 255);">在快捷、高效、真实的环境中执行性能测试的解决方案，可用于Web应用、电子商务应用、垂直商业应用的负载测试 (参考此链接)</td> 
+  </tr> 
+  <tr> 
+   <td style="background-color: rgb(153, 204, 255);">BlazeMeter</td> 
+   <td style="background-color: rgb(153, 204, 255);">用于负载与性能测试的云平台，也可以用于云监控，能够创建负载测试脚本、执行实时监控以及运行新的服务器 (参考此链接)</td> 
+  </tr> 
+ </tbody> 
+</table><p><strong>研究过程</strong></p><p>为了解云计算应用相关动态，我们采访了15家软件组织。我们选出在云计算与云测试应用中较为领先的8家进行深入分析。其他组织尚未完全应用云计算，或者仅有这方面的意向，所以我们不作为研究分析重点。我们调查了云计算与云测试结合中显露出来的所有优势、机会、挑战或问题。</p><h3><strong>表 2</strong></h3><p style="text-align: center;">组织访谈录.</p><table cellspacing="1" cellpadding="1" border="0" style="width: 100%;"> 
+ <tbody> 
+  <tr> 
+   <td style="width: 45px; background-color: rgb(0, 0, 0);">&nbsp;</td> 
+   <td style="background-color: rgb(0, 0, 0);"><span style="color:#ffffff;">描述</span></td> 
+   <td style="background-color: rgb(0, 0, 0);"><span style="color:#ffffff;">被访者角色</span></td> 
+   <td style="background-color: rgb(0, 0, 0);"><span style="color:#ffffff;">公司介绍及与云计算的关系</span></td> 
+   <td style="background-color: rgb(0, 0, 0); width: 100px; text-align: center;"><span style="color:#ffffff;">公司规模<sup>7</sup></span></td> 
+   <td style="background-color: rgb(0, 0, 0);"><span style="color:#ffffff;">测试中使用云的情况</span></td> 
+  </tr> 
+  <tr> 
+   <td style="background-color: rgb(153, 204, 255); text-align: center;">1</td> 
+   <td style="background-color: rgb(153, 204, 255);">云计算创业公司</td> 
+   <td style="background-color: rgb(153, 204, 255);">负责人</td> 
+   <td style="background-color: rgb(153, 204, 255);">个人云计算创业公司，提供咨询和培训服务，并作为云服务代理，帮助客户从大型云服务提供商那里购买服务器实例，目标客户是中小型企业中的开发者社区。</td> 
+   <td style="background-color: rgb(153, 204, 255);">微型</td> 
+   <td style="background-color: rgb(153, 204, 255);">有自己的测试平台，并委托一小部分客户在不同的环境中对系统进行测试，通过他们的反馈进一步完善系统。</td> 
+  </tr> 
+  <tr> 
+   <td style="background-color: rgb(0, 204, 255); text-align: center;">2</td> 
+   <td style="background-color: rgb(0, 204, 255);">软件开发咨询服务</td> 
+   <td style="background-color: rgb(0, 204, 255);">首席技术官</td> 
+   <td style="background-color: rgb(0, 204, 255);">专门从事软件开发与云计算</td> 
+   <td style="background-color: rgb(0, 204, 255);">小型</td> 
+   <td style="background-color: rgb(0, 204, 255);">使用云计算进行伸缩性与性能测试</td> 
+  </tr> 
+  <tr> 
+   <td style="background-color: rgb(153, 204, 255); text-align: center;">3</td> 
+   <td style="background-color: rgb(153, 204, 255); ">服务管理与云计算专家</td> 
+   <td style="background-color: rgb(153, 204, 255); ">创始人兼合伙人</td> 
+   <td style="background-color: rgb(153, 204, 255); ">针对IT服务管理提供咨询与专业服务，云计算平台提供咨询和应用开发服务</td> 
+   <td style="background-color: rgb(153, 204, 255); ">小型</td> 
+   <td style="background-color: rgb(153, 204, 255); ">为达到特定的测试目的而使用基于云的服务器，主要采用force.com平台</td> 
+  </tr> 
+  <tr> 
+   <td style="background-color: rgb(0, 204, 255); text-align: center;">4</td> 
+   <td style="background-color: rgb(0, 204, 255);">全球性云供应商</td> 
+   <td style="background-color: rgb(0, 204, 255);">架构师</td> 
+   <td style="background-color: rgb(0, 204, 255);">通过平台为客户提供创建、托管和管理应用的一系列云服务</td> 
+   <td style="background-color: rgb(0, 204, 255);">大型</td> 
+   <td style="background-color: rgb(0, 204, 255);">逐渐将他们的开发、测试和应用服务向云环境中迁移，部分开发和测试工具已经迁移到了自属的云平台。该组织预计超过50%的开发连接到云计算。</td> 
+  </tr> 
+  <tr> 
+   <td style="background-color: rgb(153, 204, 255); text-align: center;">5</td> 
+   <td style="background-color: rgb(153, 204, 255);">大型公司的性能测试团队</td> 
+   <td style="background-color: rgb(153, 204, 255);">团队负责人</td> 
+   <td style="background-color: rgb(153, 204, 255);">提供IT、开发和咨询服务</td> 
+   <td style="background-color: rgb(153, 204, 255);">大型</td> 
+   <td style="background-color: rgb(153, 204, 255);">该组织有一个云性能测试试点项目，用来评估能够向客户提供何种程度的云性能测试</td> 
+  </tr> 
+  <tr> 
+   <td style="background-color: rgb(0, 204, 255); text-align: center;">6</td> 
+   <td style="background-color: rgb(0, 204, 255);">跨国IT服务供应商</td> 
+   <td style="background-color: rgb(0, 204, 255);">服务研发经理</td> 
+   <td style="background-color: rgb(0, 204, 255);">提供云基础设施、应用和咨询，以及跨行业领域的IT服务</td> 
+   <td style="background-color: rgb(0, 204, 255);">大型</td> 
+   <td style="background-color: rgb(0, 204, 255);">开发自有云平台，用以支持新应用的开发、测试以及已移植到平台上的应用</td> 
+  </tr> 
+  <tr> 
+   <td style="background-color: rgb(153, 204, 255); text-align: center;">7</td> 
+   <td style="background-color: rgb(153, 204, 255);">咨询公司</td> 
+   <td style="background-color: rgb(153, 204, 255);">测试与方法论总监</td> 
+   <td style="background-color: rgb(153, 204, 255);">提供信息管理、数字化业务、软件开发与测试服务</td> 
+   <td style="background-color: rgb(153, 204, 255);">大型</td> 
+   <td style="background-color: rgb(153, 204, 255);">将云测试作为备选方案供客户决策</td> 
+  </tr> 
+  <tr> 
+   <td style="background-color: rgb(0, 204, 255); text-align: center;">8</td> 
+   <td style="background-color: rgb(0, 204, 255);">非盈利公众IT机构</td> 
+   <td style="background-color: rgb(0, 204, 255);">两名开发经理</td> 
+   <td style="background-color: rgb(0, 204, 255);">为学术界、研究院和公司提供数据、计算、应用程序和信息管理服务</td> 
+   <td style="background-color: rgb(0, 204, 255);">中型</td> 
+   <td style="background-color: rgb(0, 204, 255);">作为国家发展项目的一部分，该组织开发人员正在探索，在云测试环境中测试他们代码的可行性。它的服务已经迁移到了云上，并规划了一个新的数据中心。</td> 
+  </tr> 
+ </tbody> 
+</table><p><strong>云测试的影响</strong></p><p>我们发现了云计算对测试产生的几种影响。我们把它们分为三组：对实际测试的影响、对交付的影响和对测试服务的支持，以及云测试的挑战。</p><p><strong>对实际测试的影响</strong></p><p>访谈者的意见帮我们确认了几个对测试较为显著的影响：</p><p><strong>更高效的性能测试</strong>.</p><p>云计算可以实现更及时、更经济的性能、扩展性和压力测试。云计算提供的服务可以满足传统方式很难实现的时间和成本要求。（上表中）组织1的负责人说，“你可以更轻松地运行不同的开源进程堆栈应用，甚至已被许可的服务器（如Windows Server 2003或2008），几乎不必花费多少时间和成本，然后在这些服务器上安装测试软件去做测试。”按照以前的传统，测试实验室会是一个大机房，里面有许多服务器，上面运行着各种操作系统。通常，这是笔巨大的投资，因为即使不使用服务器也需要不间断地维护。有了云计算，我们可以更快地测试。如果我们不再使用这些服务器，可以随时退回他们。两位访谈者就云性能测试展开了讨论：</p><p>你不可能使用传统方式得到40台高端、昂贵的服务器。这根本无法实现。但我们很清楚，使用云计算可以让你做有效的测试，这是任何其他方式都难以实现的。例如，我做过一些性能测试，用40个亚马逊实例去模拟20000个用户行为。它们要真实地在全内嵌的浏览器套件上运行，所以这不是一个简单的HTML-HTTP请求测试，要用来充分展现浏览器对DOM和JavaScript的支持，并测试富互联网应用。（首席技术总监，组织2）</p><p>还有一个为活动售票的Web票务服务。显然……峰值需求是关键。因此，他们要测试一下解决方案。是否一切妥当？有没有充分利用平台？他们在Azure环境中搭建了一个独立的测试平台，用以测试云计算解决方案。因为它能提供足够的负载，而不必准备上百台的测试服务器。（架构师，组织4）</p><p><strong>快速测试。</strong>总的来说，更短的测试时间促成了更快速的开发。</p><blockquote> 
+ <p>任意一个新特性开发完成之后，你可以在不同的（假设是10个）环境中进行测试，紧接着你就可以立即拿到有效的报告，并在将来的开发中使用。</p> 
+ <p>在大项目中，如果你在云环境中做测试，将缩短测试周期，因为在开发团队和测试团队之间可以更快地迭代。（架构师，组织4）</p> 
+ <p>最终产品也会更加符合业务需要。公司可以迅速建立用于测试（和开发）的基础设施，就可以有更多的时间去处理实际业务：</p> 
+ <p>我认为缩短时间就可以更快地开发。在业内比如客户关系管理[CRM]，你公司已准备就绪的CRM，就好像要去注册的Hotmail一样。于是你和我共同的工作就是去理解你需要修改什么，但完整的系统可以直接提供给你。 (创建人, 组织 3)</p> 
+</blockquote><p>更真实的测试结果。基于云的系统可以很轻松地跨越不同的操作环境，使开发人员以用户的视角理解服务的可用性。组织1的负责人发现了这么做的好处：</p><blockquote> 
+ <p>我把服务以折扣价提供给一些客户，作为回报，他们向我反馈该服务的使用情况，诸如疑似Bug或他们发现的其他缺陷。</p> 
+</blockquote><p>当考虑是否在云中做测试时，已有内部测试环境的公司必然根据他们自身的主要问题做出决策。这需要在内部测试环境与云测试环境之间做个权衡，内部测试环境比生产环境要小，而云测试环境与生产环境类似。内部测试环境安全，但会影响到测试结果的质量。而另一方面，云测试环境能够产生更真实的测试结果，但需要更加关注数据安全性。组织必须做出恰当的选择：</p><blockquote> 
+ <p>大多数公司可能会说，“好吧，我们既然已经有了这个环境，就让我们继续使用吧，它会给我们满意结果的。”然而，你看看云测试环境的优势，在不久将来的某一时刻，必然会有人迈出这一步。</p> 
+</blockquote><p><strong>测试服务交付与支持</strong></p><p>在交付与支持方面，评论还给了我们更多的见解。</p><p><strong>提供更好的测试工具及选择。</strong>为选择最好的测试工具和环境，组织可以在云计算中完成技术可行性研究。</p><blockquote> 
+ <p>如果你在一个特定的环境中，你就不再关心还能再做些什么。你只有这个环境，只能测试它、验证它，其他什么也做不了。于是，扼杀了很多创造性的思维。（技术总监，组织2）</p> 
+</blockquote><p>按需服务的测试还意味着公司没必要再去采购了，比方说测试工具每年的许可。相反，它们在云中提供，让人随需取用，这种做法更加灵活。组织4提供了云调试解决方案的配套工具。架构师解释说，它的工作原理就像一个飞机的黑匣子：“你可以……从出错的地方跳回到上一步，查看正在开发的代码到底是哪里出现了错误。”</p><p>快捷有效的云工具和云环境增强了测试的敏捷性和整体的开发效率。使用敏捷开发方法可以促成不断快速发展、完善的IT服务市场，更快地使最终产品尽可能地满足业务需要。</p><p><strong>改善开发人员与测试人员的沟通。</strong> 如果在云中进行开发和测试，那么开发和测试团队就可以平等地访问系统。组织7的测试和方法论总监认为：“如果所有团队都有访问权，那么开发人员以前所拥有的对系统的最快捷的访问（试验一下，看看测试是否可用）的条件不复存在。”这可以增强团队之间的交互。开发团队必须及时沟通需求的变化，这样才会使测试团队有正确的测试参数。</p><p><strong>增强供应商交付服务。</strong> 云开发与云测试遵循敏捷方法，使组织更快地解决客户需求：</p><blockquote> 
+ <p>因为我们不需要建立庞杂的环境和其他原因，，我们只能一边说一边做，好吧，就是这样的需求，让我们先去创建它，然后在一周或两周之后再看一下，哪些地方是你满意的？哪里不是？做一些改变，然后同意，好的，产品符合了……需要。（创始人，组织3）</p> 
+</blockquote><p>云计算也促进了供应商之间的互动。如果客户提供的测试能力要求超出了供应商的水平，供应商可以从其他供应商那里租用资源。组织1和3有这样的交互：</p><blockquote> 
+ <p>我们考虑使用AWS来做测试。有时我们的测试只需要一台或几台服务器。当其他的Web服务更加便宜并且同样好用时，从亚马逊购买就显得不太明智了。你知道[组织1]也有他们自己的网站，你也可以从他那儿购买服务器时间，所以是值得我们思考的方面。</p> 
+</blockquote><p>从商业的角度来看，这有助于更加及时的满足客户的需要，对供应商和客户来说都是双赢的。</p><h3>云测试的挑战</h3><p>云测试需要测试一些额外因素和参数。可能这些要求不是最近才提出的，但云测试对它们做了进一步的强调。例如，不同的云系统需要一定层次的集成，并且要在一起协同工作。一位受访者说，未来基于云的企业资源计划系统将需要“在使用了不同技术的不同的云之间进行集成。”两个其他受访者强调负载均衡、网络延迟、多租户。</p><p>与安全相关的问题也是一个主要问题，特别是测试数据的管理。测试数据的存储和处理不应影响到保密性。检验云是否安全的一个方法是有选择性地在公共云上暴露数据，一个访谈者建议：</p><blockquote> 
+ <p>使用云去完成一些典型的安全性要求不高的内容。那么，举个例子，Google Group中不能存放任何客户合同，却可以存放一些测试计划。</p> 
+</blockquote><p>测试数据管理的关键是不同地域的法规差异。</p><p>在我们之前的实证研究中，我们发现开发关键安全性应用的组织更加重视拥有的领域知识。由于这个原因，这些组织通常不愿意考虑云测试。另外，公司也可能受到预算的制约。云测试供应商应该提供透明的定价模型，以便客户拥有足够的信息做预算和成本估算。在云中做测试可以引起组织的重大变化。因此，他们需要有效的变更管理策略和过程。</p><h2>云测试路线图</h2><p>组织应评估云测试是否是一种可靠的投资。我们提出了一种在云中建立测试的简单、实用的路线图。</p><h3>理解云计算</h3><p>云计算成为用于测试的越来越可行的一种选择。组织必须增强在其独特的环境中对云计算的理解。他们应该评估风险，包括安全性和性能方面，这样他们可以为降低风险做些提前准备。很多云计算研讨会、讲座和论坛是不错的信息源和提高意识的渠道。比如云计算和服务工程研讨会，以及云计算世界论坛。</p><h3>开展试点项目</h3><p>组织可以开展试点项目，充分发掘云测试的优点。通过试点评估云测试可行性是一种低风险的方式。组织可以试验他们正在考虑的各种工具的响应时间和载荷条件。在云测试中试点，你可以测试云本身或在云中托管的基础设施，也可以测试云应用和非云应用。试点项目使用这些方法可以帮助提升测试程序。</p><h3>制定详细战略</h3><p>组织探索云测试另一种可靠的方式是制定详细的战略。这可以包括建立欲测试应用的标准、潜在的云供应商以及测试级别（比如，集成和性能测试）。云测试供应商和质量保证咨询公司可以为这些策略的创建提供一些建议和方向。对于中小型企业（SME），即使财政资源很有限，云测试也使巨大的测试相关的IT投入成为可能。这意味着中小型企业可以去竞争通常属于大公司的潜在客户群。这将促成更加繁荣的市场。</p><h3>增强团队交互并为复杂性做好准备</h3><p>随着时间的推移，在云中的开发环境和测试环境将继续增加。其中一家组织正在对它的业务云进行评估，访谈者提到，他们期待将来所有的开发和测试都基于云计算。这会促使开发和测试团队更多的交互、更加彻底的测试以及更快的软件开发周期。同时，针对基于云的应用和系统带来的复杂度和需求，组织需要准备附加的测试。</p><h3>加强产研合作</h3><p>许多公开的问题依然存在，包括应用问题（哪个应用最合适云测试）、管理问题（如何为云测试组织人力资源）、法律和金融问题（如何跨不同的全球司法管辖区管理测试数据）和经济问题（如何制定适当的定价模型）。我们不能孤立地解决这些挑战，而是敦促研究者和实践者进行合作，以云测试为目标建立相关的软件行业。<br /> 由于服务数量的增多，更多的公司接受了以云计算模式去交付、测试和使用软件。我们可以期待出现更多的云应用。通过改进开发和测试团队的交互，我们还可以期待应用质量的提高。建议的路线图可以作为组织考虑采用云测试的起点。我们将来的工作目标在于，通过为公司提供实例的策略来完善路线图。</p><p>原文链接：<a href="http://www.infoq.com/articles/testing-in-the-cloud-exploring-the-practice;jsessionid=2BF8614D3813917258EBABAE0DD33E80">Testing in the Cloud: Exploring the Practice</a></p><hr /><p>感谢<a href="http://www.infoq.com/cn/bycategory.action;jsessionid=2BF8614D3813917258EBABAE0DD33E80?authorName=马国耀">马国耀</a>对本文的审校。</p><p>给InfoQ中文站投稿或者参与内容翻译工作，请邮件至<a href="mailto:editors@cn.infoq.com">editors@cn.infoq.com</a>。也欢迎大家通过新浪微博（<a href="http://www.weibo.com/infoqchina">@InfoQ</a>）或者腾讯微博（<a href="http://t.qq.com/infoqchina">@InfoQ</a>）关注我们，并与我们的编辑和其他读者朋友交流。</p><div class="clearer-space"></div><br><br><br><br><br><br></body></html>

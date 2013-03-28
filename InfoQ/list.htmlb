@@ -1,6 +1,15 @@
 <html>
  <head></head> 
- <body> 
+ <body>
+  <div>
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/31.htmlb">对比iOS中的四种数据存储</a>你是用什么方法来持久保存数据的？这是在几乎每一次关于iOS技术的交流或讨论都会被提到的问题，而且大家对这个问题的热情持续高涨。本文主要从概念上把“数据存储”这个问题进行剖析，并且结合各自特点和适用场景给大家提供一个选择的思路，并不详细介绍某一种方式的技术细节。
+  </div>
+  <div>
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/30.htmlb">云测试探索实践</a>在本文中，作者们讨论了云测试在软件交付过程中的影响。他们讨论了云测试服务，比如性能测试和Web应用测试。他们也共享了与不同组织访谈的结果以及他们对云测试的应用，并提出一个云测试路线图。
+  </div>
+  <div>
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/29.htmlb">从赌钱游戏看PageRank算法</a>PageRank算法有着非常高的知名度和普及度，我们将以PageRank算法为例讲述“并行计算+数据算法”的经典搭配，并且这种“海量数据并行处理、迭代多轮后收敛”的分析过程也跟其他的数据挖掘或者机器学习算法应用类似，能起到很好的参考作用。
+  </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/28.htmlb">深入浅出node.js游戏服务器开发——基于Pomelo的MMO RPG开发</a>Pomelo是杭州网易研究院发布的基于Node.js开源游戏框架，本篇是连载内容的第三篇，为大家介绍如何使用Pomelo框架来搭建MMO RPG服务器，并分析其设计思路和实现方法。以此来帮助大家更好的理解和使用Pomelo框架，理解Pomelo框架游戏开发的基础流程，使用方法和设计理念。 
   </div> 

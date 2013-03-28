@@ -1,17 +1,57 @@
-<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>Eclipse Orion 2.0，Node.js を利用したローカル動作をサポート</h3><p><a target="_blank" href="http://www.infoq.com/news/2013/03/Eclipse-Orion-2;jsessionid=25022678CA6197881524232DBADB5C13"><em>原文(投稿日：2013/03/04)へのリンク</em></a></p> 
+<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>技術的負債のユーザストーリーを作るべきか</h3><p><a target="_blank" href="http://www.infoq.com/news/2013/03/user-stories-technical-debt;jsessionid=12327BBB741AF1D32F37494EAA1DFA9A"><em>原文(投稿日：2013/03/21)へのリンク</em></a></p> 
 <div class="clearer-space">
  &nbsp;
 </div> 
 <div id="newsContent"> 
- <p><a target="_blank" href="http://download.eclipse.org/orion/drops/R-2.0-201302221257/index.html">Eclipse Orion 2.0</a> が先頃リリースされた。Node.js，Projectsなどのサポート，シェルコマンドの改良に加えて，JavaScriptコードアシストとパフォーマンスが改善されている。</p> 
- <p>WebベースのJavaScript IDEとしてOrionが<a target="_blank" href="http://www.infoq.com/jp/news/2012/11/Eclipse-Orion-1;jsessionid=DB9708F7E43B352CB0C87167C3168672;jsessionid=25022678CA6197881524232DBADB5C13">初めてリリースされてから</a> ４ヶ月後，当初予定のとおり，<a target="_blank" href="http://download.eclipse.org/orion/drops/R-2.0-201302221257/index.html">第２の安定バージョン</a> がリリースされたことになる。今回新たに加えられた機能は次のようなものだ。</p> 
- <p><strong>Orionode：</strong> IDEのサーバサイド部分が，ローカルで運用可能なように Node.js を使って再実装された。これによって，ファイルをローカル編集する場合に必要なサーバ上のフットプリントが非常に小さくなった。</p> 
- <p><a target="_blank" href="https://npmjs.org/package/orion">Orionode</a> はまだJavaで書かれたサーバの初期段階程度に過ぎず，サポートする機能も限られている – 基本的なナビゲータ，エディタおよびプラグイン操作，rpmのサポートとNodeアプリケーションの実行が可能なシェルコマンド，静的コンテキストのクライアントキャッシュ，gzip圧縮などだ。OrionodeはJavaサーバを置き換えようというものではなく，ローカルインストレーションのみを対象とするものだ。</p> 
- <p><strong>プロジェクト：</strong> <a target="_blank" href="http://planetorion.org/news/2013/03/orion-2-0-release/">プロジェクトプラグイン</a> を使用して，作業ユニットを定義できるようになった。作業ユニットは，大規模プロジェクトのリソース管理改善を目的とするもので，外部ソースやターゲットにリンクしたさまざまなリソースで構成される。現時点でOrionがサポートするのはHTML5プロジェクトと，<a target="_blank" href="http://www.hickory.ca/2013/01/28/managing-an-sftp-type-website-using-orion/">SFTPサーバ上のリソースをリモートで参照および編集する</a> SFTPプロジェクトの２つだ。</p> 
- <p><strong>シェル： </strong>シェルに多数のコマンドが追加された – プラグインを扱う <em>plugins</em>，利用可能なサービスのインスタンスを一覧表示する <em>service</em>，画面をクリアする <em>clear</em> などだ。</p> 
- <p><a target="_blank" href="http://planetorion.org/news/2013/02/orion-2-0-whats-new-for-shell-page-plug-ins/">シェルコマンドには新たに２つのパラメータ型/戻り値型</a> – JSオブジェクトをバイナリデータで表現する <em>blob</em>，ワークスペースに属するファイルあるいはフォルダを表す <em>file</em> – が追加された。コマンドの出力タイプが <em>file</em> であれば，処理結果はファイルにダンプされる。ディレクトリを含む複数のファイルや，そのコンテンツ全体をパラメータとしてコマンドに渡すことも可能だ。</p> 
- <p><strong>コンテントアシスト： </strong><a target="_blank" href="http://planetorion.org/news/2013/01/orion-2-0-m2-new-and-noteworthy/">JavaScript のコンテントアシスト</a> が改良され，いくつかのケースが追加された。配列値と連想配列の型推論，宣言に先立った変数の推測，使用状況に基づくオブジェクトプロパティの推測などが可能になっている。</p> 
- <p>その他，細かな拡張やパフォーマンスの改善なども実施されている。編集作業のOrionおよびJavaScriptページのロードは，<a target="_blank" href="http://planetorion.org/news/2013/01/orion-2-0-m2-new-and-noteworthy/">要求数で45%，バイト転送サイズで80%削減されている</a>。</p> 
+ <p>アジャイルチームは、技術的負債を扱うタスクのように、純粋に技術的なタスクの計画に難儀する場合がある。このようなタスクは直接的にはシステムを利用する顧客のためにはならないが、問題なく動作するソフトウエアを提供するには避けて通れない。このような技術的なタスクや技術的負債を扱う場合にもユーザストーリーを作るべきだろうか。</p> 
+ <p><a target="_blank" href="http://www.industriallogic.com/blog/as-a-developer-is-not-a-user-story/">&quot;As a Developer…” Is Not a User Story</a>というブログ記事でBill Wake氏は、顧客の価値にはならないユーザストーリーについて書いている。氏が例示しているのは、&quot;開発者として、私はJenkinsを構成して継続的統合を実現したい&quot;というようなユーザストーリーだ。これをユーザストーリーと呼ぶべきでない理由を氏は説明する。</p> 
+ <blockquote> 
+  <p>これらの活動はよいものでもないし重要でもないと主張したいわけではありません。しかし、このような活動をユーザストーリーとして捉えてしまうとチームや顧客を混乱させます。何かをユーザストーリーの<i>形式</i>で記述するにもかかわらず、それが<i>ユーザ</i>に関係ないことだとしたら、ポイントを外しています。</p> 
+ </blockquote> 
+ <p>ユーザストーリーと呼ばずにタスクと呼ぶべきだというのが氏の意見だ。リーンの考え方を適用することで、氏はこのようなタスクを無駄と考えている。</p> 
+ <blockquote> 
+  <p>リーンの考え方からすれば、チームの活動の多くは無駄と見なされる可能性があります。しかし、そのような無駄なしにソフトウエアを効率的に開発する方法を私たちは知りません。リーンチームはこのような無駄を&quot;Non-Value-Added But Necessary&quot;として話します。やらなければならないからやる仕事なのです。</p> 
+ </blockquote> 
+ <p>氏は、ソフトウエアのユーザではなく開発側の誰かが登場人物になるユーザストーリーに対して批評的に接することを薦める。このようなユーザストーリーを機能的な振る舞いや品質の問題として再解釈し、もしそれが不可能だったらタスクとして捉えるのだ。タスクは開発チームが追跡するが、価値を提供しないのでユーザストーリーとしてバックログに積み上げるべきではない。</p> 
+ <blockquote> 
+  <p>(…) チームがタスクを抱えるだろうと認識すると、内部的にタスクを追跡しようとするかもしれませんが、そのタスクが開発しているシステムの進捗に直接貢献すると捉えてはなりません。</p> 
+ </blockquote> 
+ <p><a target="_blank" href="http://www.agileweboperations.com/how-to-translate-business-value-of-things-that-are-technically-important">how to translate “business value” of things that are technically important</a>というブログ記事でMattias Marschall氏は技術的タスクをバックログで扱う方法を提案している。氏はユーザストーリーと技術的タスクの関係を説明することから話を始める。</p> 
+ <blockquote> 
+  <p>ユーザストーリーはユーザがシステムに求めるものを記述するべきです。純粋な技術的タスクは普通、ユーザストーリーの一部として実装されます。</p> 
+ </blockquote> 
+ <p>しかし、特定のユーザストーリーと直接的に関係しない技術的タスクはどうなのだろうか。氏はプロダクトバックログにこれらのタスクを積み上げることを提案する。</p> 
+ <blockquote> 
+  <p>技術的タスクをプロダクトバックログに積み上げて優先順位を付けるには、それぞれのタスクにユーザストーリーを作ります。しかし、これはだましていることになるでしょうか。次の2つの質問に答えられればだましていることにはなりません。</p> 
+  <ol> 
+   <li>タスクを遂行した結果は誰の利益になるのか</li> 
+   <li>なぜこのタスクが必要なのか</li> 
+  </ol> 
+ </blockquote> 
+ <p>氏の方法では、顧客のユーザストーリーの一部のタスクにしろ、技術的タスクに特化したユーザストーリーにしろ、すべての技術的タスクをバックログのユーザストーリーで覆うことになる。</p> 
+ <blockquote> 
+  <p>技術的タスクをユーザストーリーとして形式化できるなら、利害関係者はそのタスクの必要性を理解し、他のユーザストーリーを含めて優先順位を付けることができるでしょう。</p> 
+ </blockquote> 
+ <p>Bastian Buch氏は<a target="_blank" href="http://www.codovation.com/2012/06/effective-steps-to-reduce-technical-debt-an-agile-approach/">effective steps to reduce technical debt: an agile approach</a>というブログ記事で開発者とプロダクトオーナが技術的負債に関連する技術的タスクについて意見が食い違う可能性があることを説明する。</p> 
+ <blockquote> 
+  <p>開発者は技術的負債を知っており、これに対処することは重要なことだと認識しています。</p> 
+  <p>しかし、プロダクトオーナは技術的負債を低減する必要性や利点を理解しません。バックログやリリース計画に技術的プロジェクト/ストーリーがあることを考えませんし認めません。</p> 
+ </blockquote> 
+ <p>氏はプロダクトオーナが技術的負債を低減することに責任を背負うことを薦める。チームのメンバは技術的負債についてプロダクトオーナと議論し、バックログ上で適切な優先順位が付けられるようにする。</p> 
+ <blockquote> 
+  <p>チームはプロダクトオーナがチームの一員であることを忘れないようにするべきです。彼の痛みはチームの痛みであり、チームの痛い身は彼の痛みです。顧客でもチームの雇用主でもありません。SME(内容領域専門家)でありマネージャであり、異なる利害関係者の要求のアナリストなのです。</p> 
+ </blockquote>
+ <blockquote> 
+  <p>チームとして、プロダクトオーナに製品の成長が最も重要なことであり続ける、と保証します。しかし、短期的(パフォーマンス)観点はもちろん、長期的(健康)観点も重要だということも含めて保証するのです。</p> 
+ </blockquote> 
+ <p>氏は技術的な問題をユーザストーリーにまとめ、解決にどのくらいかかるか、解決すればどのくらい利益があるのか見積もりことを薦める。氏はこのときの利益を“支払い”と呼ぶ。技術的負債が少なくなるからだ。</p> 
+ <blockquote> 
+  <p>(…) 私たちはJIRA上で“TechnicalDebtItems”とマークされるストーリーを作りました。これらのアイテムに優先順位を付け、正しい結論に導くために見積もりと支払いの関係を示すチャートを作りました。</p> 
+ </blockquote> 
+ <p>視覚的に把握できるようにすることでプロダクトオーナとチームが協力して技術的負債の削減に取り組める。</p> 
+ <blockquote> 
+  <p>負債を視覚化し支払いの方法を考えます。(…) こうすることでチームは一番重要なステップに注力できます。そして、有用な副作用があります。プロダクトオーナが技術的負債を把握できるので、他の利害関係者と一緒に働きやすくなるのです。</p> 
+ </blockquote> 
  <p id="lastElm">&nbsp;</p> 
 </div> 
 <p id="lastElm"></p><br><br><br><br><br><br></body></html>

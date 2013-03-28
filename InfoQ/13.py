@@ -1,23 +1,50 @@
-<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>Casablancaの C++ SDKがオープンソースに</h3><p><a target="_blank" href="http://www.infoq.com/news/2013/03/casablanca;jsessionid=E086FF70EDFA89E59BD968F98D9C5EC0"><em>原文(投稿日：2013/03/01)へのリンク</em></a></p> 
+<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>新しいユーザのためのOpscode Chefクイックスタート</h3><p><a target="_blank" href="http://www.infoq.com/news/2013/03/opscode-learnchef;jsessionid=36C8C2AFFA6C6283E822BD367C2F455C"><em>原文(投稿日：2013/03/20)へのリンク</em></a></p> 
 <div class="clearer-space">
  &nbsp;
 </div> 
 <div id="newsContent"> 
- <p style="margin-bottom: 0in" lang="zxx">Microsoftの C++ REST SDK、コードネームが<a target="_blank" href="http://casablanca.codeplex.com/">Casablanca</a>、が Apacheライセンスのもとでオープンソースされた。「現代的な非同期のC++　API設計を使って、クラウドベースのクライアント－サーバー通信をネイティブコードでサポートするMicrosiftの成果」と、説明されている。高レベルな記述をせずに、この製品は、C++11を使って、Microsoftが望む、クライアント側のHTTPコードを書くための、より簡単な方法を提供する。</p> 
- <p style="margin-bottom: 0in" lang="zxx">&nbsp;</p> 
- <p style="margin-bottom: 0in" lang="zxx">Casablancaは、マルチプラットフォームであり、Windows 7と Windows 8と同様にLinuxをサポートしている。Microsoftの開発者である Artur Laksberg氏は、WinXPとVistaのサポートも開発中である、と述べている。もう一つ特筆すべきことは、非同期操作のサポートです。Microsoftの<a target="_blank" href="http://blogs.msdn.com/b/vcblog/archive/2013/02/26/the-c-rest-sdk-quot-casablanca-quot.aspx">発表</a> は、Casablanca の実際の動きを示すために、HTTPを介したファイルのアップロードやJSONオブジェクトの作成の例を幾つか提供している。</p> 
- <p>&nbsp;</p> 
- <p style="margin-bottom: 0in" lang="zxx">Windows とLinuxの両方のビルドは、以下のフィーチャをサポートしている。</p> 
- <blockquote> 
-  <ul> 
-   <li>HTTPクライアント経由でサーバーへの接続を生成し、リクエストを送り、応答を処理する機能。</li> 
-   <li>Uniform Resource Identifiers (URI)の構築と使用をサポート。</li> 
-   <li>JSONの値を構築、パース、シリアライズする。</li> 
-   <li>Streams とStream Buffersを介してバイトを元にあるメディアへ/から非同期に書き/読みする。</li> 
-  </ul> 
+ <p>Opscodeは新しいユーザが&quot;Infrastructure as Code&quot;を構築するために必要な知識を身につけるための<a target="_blank" href="https://learnchef.opscode.com/">Chefを学ぶための新しい方法</a>を提供した。ユーザはクイックスタート、一般的なケース、スクリーンキャスト、トラブルシューティングをこのコンテンツから得ることができる。Opscodeはこれを&quot;#learnchef&quot;と呼んでいる。これは質問して更なる情報を得ることができる<a target="_blank" href="http://webchat.freenode.net/?channel=learnchef">フリーノードでユーザが参加できるIRCチャンネル</a>の名前でもある。</p> 
+ <div>
+  Opscodeの#learnchefのリードであるSeth Vargo氏はこの新しい学習方法を作成したOpscodeの動機を次のように語っている。
+ </div> 
+ <blockquote>
+  Chefへの入門に人々を誘い、惹き付けるために
+  <a target="_blank" href="https://learnchef.opscode.com/">#learnchef</a>を作りました。ひとつのゴールを念頭に置いています。すなわち、新しいユーザがゼロから最速で網羅的に理解するための方法は何か、ということです。長い間Chefに存在していたギャップを埋めようとしています。コンテンツもデザインもキャンペーンもエンドユーザを念頭に作りました。ハウツースクリーンキャストからコモンユースケースまで、新しいユーザが#learnchefキャンペーンを直観的であると感じ、積極的に利用し始めてくれることを願っています。
+  <br /> 
  </blockquote> 
- <p style="margin-bottom: 0in" lang="zxx">幾つかの異なる Streams とStream Buffersが使える：メモリーベースのプロデューサー－コンシューマ、ファイル、STLコンテナによるメモリーベースのストリーム、生ポインターストリーム、相互運用ストリーム。この最後のタイプのストリームによってできるようになるのは、「...Casablanca は、２セットのクラスを提供する。その１つは、 iostreamへの非同期のストリームインターフェースを与え、もう１つは、非同期ストリームへの iostreamインターフェースを与える。」</p> 
- <p style="margin-bottom: 0in" lang="zxx"><a target="_blank" href="http://casablanca.codeplex.com/wikipage?title=Linux Features&amp;referringTitle=Documentation">Linux httpクライアント</a>には、若干の制限があり、https、プロキシ、認証をまだサポートしていない。しかし、Microsoftは、これらのフィーチャは将来のリリースでサポートされる、と言っている。 CodePlexには、<a target="_blank" href="http://casablanca.codeplex.com/SourceControl/changeset/view/8737b35e9171#readme.txt">Casablancaのソースコード</a>があり、最新のスナップショットをオンラインで見ることもできるし、Gitで入手するか、Zipアーカイブをダウンロード出来る。</p> 
+ <div>
+  #learnchefのクイックスタートは3つのシナリオを提供する。&quot;Workstation Setup&quot;、&quot;Using Chef Repo&quot;、&quot;Converge a Node&quot;の3つだ。利用するOSによってセットアップの仕方が異なる。クイックスタートではMac、Linux、Windowsについて情報を提供する。さらに、ユーザがクックブックのダウンロード、編集、作成を始めるのを支援するため、Opscodeは
+  <a target="_blank" href="https://github.com/opscode/chef-repo">GitHubにリポジトリ</a>を用意した。コンテンツはThe content explains how to use the installed applications to converge a VirtualBox上のバーチャルマシンノードを小コミュニティのクックブックとユーザが作成したクックブックを合わせたChefリポジトリを使って網羅する方法を説明している。
+ </div> 
+ <div>
+  &nbsp;
+ </div> 
+ <div>
+  短いスクリーンキャストはクイックスタートをサポートするコンテンツを提供する。Chefリポジトリの作成、アプリケーションのインストール、&quot;.pem&quot;ファイルの管理、Hosted Chefの登録などだ。トラブルシューティングは一般的なエラーと問題への対処法を提供する。401エラー、403エラー、その他のワークフロー上の問題などだ。
+ </div> 
+ <div>
+  &nbsp;
+ </div> 
+ <div>
+  Opscodeはこれからもコンテンツを追加するつもりだ。また、
+  <a target="_blank" href="https://twitter.com/learnchef">twitter上でアップデートを告知している。</a>
+ </div> 
+ <div>
+  &nbsp;
+ </div> 
+ <div>
+  &nbsp;&nbsp;
+ </div> 
+ <div>
+  &nbsp;
+ </div> 
+ <div>
+  &nbsp;
+ </div> 
+ <div>
+  &nbsp;
+ </div> 
+ <p>&nbsp;</p> 
  <p id="lastElm">&nbsp;</p> 
 </div> 
 <p id="lastElm"></p><br><br><br><br><br><br></body></html>

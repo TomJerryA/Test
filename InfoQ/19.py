@@ -1,5 +1,31 @@
-<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>QCon Tokyo 2013【クラウド】トラックのご紹介</h3><h2><a target="_blank" href="http://www.infoq.com/jp/news/2012/04/qcontokyo_20120403_2;jsessionid=814AB970C5FA001EC67F5C8FBD4E5B0A">QCon Tokyo 2013【クラウド】トラックのご紹介</a></h2> 
-<p>QCon Tokyo 2013 は、最新技術を追い求めるデベロッパのための情報コミュニティ 「InfoQ」が主催する、<br /> エンジニアによるエンジニアのためのハイクオリティなワールドワイド カンファレンスです。 <br /> 今回のQcon Tokyo 2013 では、クラウド時代の実装技術の動向とその可能性にこだわってクラウドカテゴリを設定いたしました。クラウドの導入においては、SaaS/PaaS/IaaSといったサービス形態、パブリック/プライベート/ハイブリッドといった配置種別など、設計時に考慮するべきポイントが多数あります。そこで本トラックでは、クラウドを適切に活用・運用する方法を紹介します。 <br /> まず、海外セッションは、「<a target="_blank" href="http://www.qcontokyo.com/speaker_MartyWeiner_2013.html">Scaling Pinterest</a>」です。あの人気サイトPinterestのエンジニアであるMarty Weiner氏が圧倒的なページビューを処理するためのアーキテクチャについて事例をもとに紹介します。スタートアップであった小さなサイトがどのように大きくなり、何を捨て、何を採用したかについて語られます。<a target="_blank" href="http://www.publickey1.jp/blog/12/pinterest_pythonamazon.html">こちらの記事</a>によると、利用している技術はAmazon クラウド、MySQL、Python、Django、Tornado、Node.js等のようです。興味がある方はぜひ話を聞きにきてください。 <br /> 日本のセッションは、IBM ラショナル アジアパシフィック CTOの上村 務氏による「<a target="_blank" href="http://www.qcontokyo.com/speaker_TsutomuKamimura_2013.html">エンタープライズ DevOps</a>」です。クラウドの進展に伴い、DevOps のコンセプトをエンタープライズに適用するメリットと課題を解説して頂きます。DevOpsは、InfoQでも「<a target="_blank" href="http://www.infoq.com/jp/news/2013/02/making-devops-work;jsessionid=814AB970C5FA001EC67F5C8FBD4E5B0A">DevOpsを実践するには</a>」「<a target="_blank" href="http://www.infoq.com/jp/news/2013/01/system-problems-devops-culture;jsessionid=814AB970C5FA001EC67F5C8FBD4E5B0A">DevOps文化で難しいシステム問題を解決</a>」のような記事が公開されている注目のテーマです。IBM の具体的なソリューションSCCD を通して、DevOps を実現する基本概念や主要技術が解説されます。 <br /> 日本のもう１つのセッションはNTTデータの伊藤 雅典氏による「<a target="_blank" href="http://www.qcontokyo.com/speaker_MasanoriItoh_2013.html">OpenStackによる、実践オンプレミスクラウド</a>」です。OpenStackは、Amazon EC2/S3ライクなクラウド基盤を構築するためのOSSです。オンプレミスにクラウド基盤を構築する技術についてコミュニティ、事例、動向などと共に紹介頂きます。InfoQでも「<a target="_blank" href="http://www.infoq.com/jp/news/2013/01/test-kitchen-on-openstack;jsessionid=814AB970C5FA001EC67F5C8FBD4E5B0A">Opscode Chef統合テストがTest Kitchen 0.7.0によりOpenStack上で動くようになった</a>」や「<a target="_blank" href="http://www.infoq.com/jp/news/2012/09/OpenStack-Foundation;jsessionid=814AB970C5FA001EC67F5C8FBD4E5B0A">Rackspace、OpenStackをFoundationに委ねる</a>」のような記事が公開され注目が高まりつつあることがわかります。 <br /> クラウド技術の活用方法に夢を膨らませ、ビアパーティーでアイデアを語り合いましょう！</p> 
-<h2>●開催概要</h2> 
-<p>開催日時：2013年4月23日(火) 10:00-19:00 (19:00～ ビアパーティあり)<br /> <br /> 会　　　場：JA共済ビル カンファレンスホール<br /> <br /> 公式サイト：<a target="_blank" href="http://qcontokyo.com/">http://qcontokyo.com/</a></p> 
+<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>ZeroTurnaroundがJaveleonを買収</h3><p><a target="_blank" href="http://www.infoq.com/news/2013/03/JRebelJaveleonMerger;jsessionid=558E0E3F49CBB010E4FA335E7EDDCBB4"><em>原文(投稿日：2013/03/22)へのリンク</em></a></p> 
+<div class="clearer-space">
+ &nbsp;
+</div> 
+<div id="newsContent"> 
+ <p>Javaのソフトウェアツールメーカーである<a target="_blank" href="http://zeroturnaround.com">ZeroTurnaround</a>が Javeleonを買収した。この会社は、デンマークに本拠を置く生まれたて会社で、 ZeroTurnaroundの人気のある<a target="_blank" href="http://zeroturnaround.com/software/jrebel/">JRebel</a>動的Javaクラス－再ロードツールに関係した製品を出している。買収には、全ての関連する知的財産の排他的権利が含まれている。</p> 
+ <p>Javeleonは、2012年に設立され、デンマークの University of Southernにある<a target="_blank" href="http://www.sdu.dk/en/Om_SDU/Institutter_centre/Mmmi_maersk_mckinney_moeller">Maersk McKinney Moeller Institute</a> で行われた研究を基にした技術を実用化した。</p> 
+ <p>Javeleonの共同設立者である Dr. Allan Gregersen と Michael Rasmussen氏がエストニアで、ZeroTurnaroundの製品エンジニアリングチームと力をあわせて行く。</p> 
+ <p>InfoQは、 ZeroTurnaround 社長兼 COOの Alex Laats氏に買収について聞いた。</p> 
+ <p><b>Javeleonの技術はJRebelの機能セットに何を追加するのですか？ </b></p> 
+ <blockquote>
+  最も明らかな違いは、スーパークラスの動的更新を処理する機能です。これはZeroTurnaroundのロードマップにあり、今回の買収によって、この機能がもっと早く手に入ります。
+ </blockquote> 
+ <p><b>あなたは創業者のほかにもJaveleonスタッフを取得されるのですか？ </b></p> 
+ <blockquote>
+  いいえ。Javeleonは2012年に創業したばかりで、Allan と Michaelしかいません。
+ </blockquote> 
+ <p>&nbsp;</p> 
+ <p><b>この買収で直ちに、JRebelの市場シェアが伸びますか？</b><b> </b></p> 
+ <blockquote>
+  Javeleonは、JRebelと同じ市場を狙ってました。 Javeleonの現在の市場シェアは、微々たるものなので、これは、本当にJava開発者向けの市場で支配的なプレーヤーとして ZeroTurnaroundの支配力を強めることになります。
+ </blockquote> 
+ <p><b>Javeleonツールは、そのブランドの下で販売され続けるのか、あるいは完全にJRebelに組み込まれるのでしょうか？</b></p> 
+ <blockquote>
+  Javeleon製品は、もはやそのブランドの下で販売されません。技術はJRebelの将来のリリースに統合されます。 
+ </blockquote> 
+ <p>Laats氏は、彼らはまだタイミングの面で今後のロードマップについて話をする準備ができていないと言ったが、ユーザーにJRebelの機能を強化していく中でたくさんの素晴らしい技術があることを知って貰いたいと思っている。</p> 
+ <p>　買収の条件は明らかにされていない。</p> 
+ <p id="lastElm">&nbsp;</p> 
+</div> 
 <p id="lastElm"></p><br><br><br><br><br><br></body></html>

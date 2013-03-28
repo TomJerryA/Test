@@ -1,14 +1,66 @@
-<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>Entity Framework 6 Alpha 3は、コードファーストストアドプロシージャと接続回復性を持つ</h3><p><a target="_blank" href="http://www.infoq.com/news/2013/03/ef-6-alpha-3;jsessionid=455CB225154CC86C417FB2862BEA15B6"><em>原文(投稿日：2013/03/01)へのリンク</em></a></p> 
+<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>ZeroTurnaroundがLiveRebel 2.6を発表</h3><p><a target="_blank" href="http://www.infoq.com/news/2013/03/LiveRebel2.6;jsessionid=BA4BC092B4285019BEDFD1122DEFC788"><em>原文(投稿日：2013/03/21)へのリンク</em></a></p> 
 <div class="clearer-space">
  &nbsp;
 </div> 
 <div id="newsContent"> 
- <p>Microsoftは、fluent APIの補助によるinsert、update、deleteストアドプロシージャー、接続回復性、iceclowからのプルリクエスト、UnaiZorrillaとあなた自身がトランザクションを管理できる新しいDbContext APIシナリオをサポートする<a target="_blank" href="http://blogs.msdn.com/b/adonet/archive/2013/02/27/ef6-alpha-3-available-on-nuget.aspx">Entity Framework 6 Alpha 3</a>を発表した。<br /> <br /> Microsoftによると、3つのストアドプロシージャは、 &lt;type_name&gt;_Insert、&lt;type_name&gt;_Update、&lt;type_name&gt;_Deleteのようなフォーマットで作成されるべきである。さらにパラメータ名に対応したと、insertとupdateストアドプロシージャーは、識別子や計算とマークされたものを除き、すべてのプロパティをパラメータとして持つべきであり、deleteストアドプロシージャーは、エンティティのキー値のパラメータを持つべきである。</p> 
- <p>以下のコードスニペットを見てみよう。<br /> <br /> <code>public class Blog <br /> { <br /> &nbsp; public int BlogId { get; set; } <br /> &nbsp; public string Name { get; set; } <br /> &nbsp; public string Url { get; set; } <br /> } </code></p> 
- <p>上記のコードに対応したinsertストアドプロシージャが以下のように表示される。<br /> <br /> <code>CREATE PROCEDURE [dbo].[Blog_Insert] <br /> &nbsp; @Name varchar(max), <br /> &nbsp; @Url varchar(max) <br /> AS <br /> &nbsp; INSERT INTO [dbo].[Blogs] ([Name], [Url])<br /> &nbsp; VALUES (@Name, @Url)<br /> <br /> &nbsp; SELECT SCOPE_IDENTITY() AS BlogId </code></p> 
- <p>updateとdeleteのプロシージャーは以下のように表示される。<br /> <br /> <code>CREATE PROCEDURE [dbo].[Blog_Update] <br /> &nbsp; @BlogId int, <br /> &nbsp; @Name varchar(max), <br /> &nbsp; @Url varchar(max) <br /> AS <br /> &nbsp; UPDATE [dbo].[Blogs]&nbsp;&nbsp; SET [Name] = @Name, [Url] = @Url&nbsp;&nbsp;&nbsp; <br /> &nbsp; WHERE BlogId = @BlogId; </code><br /> <br /> <br /> <code>CREATE PROCEDURE [dbo].[Blog_Delete] <br /> &nbsp; @BlogId int <br /> AS <br /> &nbsp; DELETE FROM [dbo].[Blogs]<br /> &nbsp; WHERE BlogId = @BlogId </code></p> 
- <p>公式<a target="_blank" href="http://entityframework.codeplex.com/wikipage?title=Code%20First%20Insert%2fUpdate%2fDelete%20Stored%20Procedure%20Mapping">ドキュメント</a>ではすべての可能なシナリオを詳細に検討している。<br /> <br /> Entity Framework 6 Alpha 3には、一時的な接続障害からの自動復旧を可能にするa href=&quot;http://entityframework.codeplex.com/wikipage?title=Connection%20Resiliency%20Spec&quot;&gt;接続回復性が含まれている。これは、IRetriableExceptionDetectorとIRetryDelayStrategyインターフェイスを使ったIExecutionStrategyインターフェイスが実装されている。</p> 
- <p>公式な情報によると、Entity FrameworkはNonRetryingExecutionStrategy、DefaultSqlExecutionStrategy、ExecutionStrategy、SqlAzureExecutionStrategyといった4つのストラテジ実行とともにリリースされる。<br /> <br /> Entity Framework 6 Alpha 3は、カスタム移行操作とカスタム移行SQLジェネレータでそれらの操作をすることができる<a target="_blank" href="http://www.codeplex.com/site/users/view/iceclow">iceclow</a>からのプルリクエストを提供する。 MicrosoftでADO.NET Entity FrameworkのProgram Managerである<a target="_blank" href="http://romiller.com/2013/02/27/ef6-writing-your-own-code-first-migration-operations/">Rowan Miller氏</a>は、関連するコードとiceclowの実装を検討してきた。<br /> <br /> Alpha 3はまた、DbContext.Database.UseTransactionとDbContext.Database.BeginTransaction APIsの補助による自身のトランザクションの管理を含むプラグ可能な複数形と単数形サービスを提供する<a target="_blank" href="http://www.codeplex.com/site/users/view/UnaiZorrilla">UnaiZorrilla</a>からのプルリクエストも可能にする。</p> 
+ <p>ZeroTurnaroundはリリース自動化ツールであるLiveRebel 2.6が利用可能になったことを発表した。</p> 
+ <p>バージョン2.6の新しい機能は下記の通り。</p> 
+ <ul> 
+  <li>Java、PHP、Python、PERL、Rubyを使ったアプリケーションのビルド</li> 
+  <li>データベースのアップデートとバージョンコントロール。関連するアプリケーションと共にデータベースのアップデートや変更のロールバックができる</li> 
+  <li>複数プラットフォームのアップデート。多くの異なる環境のプラットフォームやデータベースを使ってビルドしたアプリケーションをリリースできる</li> 
+  <li>ひとつのリリースを複数の異なる環境へ配置できるプロパティ管理。特定の構成を各環境へ適用することで実現する</li> 
+  <li>リアルタイムでのアプリケーションとサーバの監視</li> 
+ </ul> 
+ <p>InfoQはZeroTurnaroundのLiveRebelのプロダクトマーケティングマネージャであるKrishnan Badrinarayanan氏に話を聞いた。</p> 
+ <p><b>LiveRebelを継続的統合のツールではなくテストとリリースのツールとして位置付けていますね。LiveRebelはテストとリリースに何を加えたのでしょう。</b></p> 
+ <blockquote> 
+  <p>リリースアプリについて考える場合、CIツールはスクリプトの強化版と見なすことができます。何でもできますが、コーディングとメンテナンスが必要です。またCIツールは環境や構成、データベースなどの知識を持っていません。単にタスクをひとつひとつ実行して成功、失敗をログ出力するだけです。</p> 
+  <p>LiveRebelのアプローチは違います。環境についてすべてを知っています。どのサーバが動いているか、どのアプリケーションのどのバージョンが配置されているかなどです。特定の環境の資産を管理しバージョン管理します。データベースと環境の変更を理解しバージョン管理します。</p> 
+  <p>アジャイル開発チームは数日の間隔を置いて頻繁にリリースをします。QAチームは各リリースを取り上げ、LiveRebelを使ってコード、DB、構成をテスト環境に自動配置を行います。配置するとLiveRebelは自動的にテストスクリプトを実行します。テストに通ると運用チームはステージング環境にアプリケーションを配置します。LiveRebelは自動的にスモークテストを呼び出します。最終的には、運用チームが停止時間なしで運用環境へアプリケーションを配置します。配置が失敗したら、LiveRebelが自動的に変更をロールバックします。これがLiveRebelの典型的な使い方です。</p> 
+  <p>LiveRebelはコード、DB、構成を物理環境、仮想環境、クラウド環境をまたいで同期しリリースします。配置自体がバージョン管理され、自動化されており、可逆性があってテストできます。結果として、チームはリリースをしっかり管理し、予測可能なかたちで素早く済ますことができます。品質を落としたりユーザエクスペリエンスを劣化させたりしません。</p> 
+ </blockquote> 
+ <p><b>LiveRebelを使う場合、CIツールは必要ですか。LiveRebelがCIツールの役割を果たしてくれるのでしょうか。</b></p> 
+ <blockquote> 
+  <p>CIツールとは担う領域が違います。LiveRebelはビルドをしません。ビルドの後に使われるツールです。LiveRebelはリリース自動化ツールであり、人気のCIツールにはリリース自動化ツールが統合されています。例えば、開発チームがリリースパッケージを作り、LiveRebelコマンドセンターを使ってアップロードすると対象の環境に素早く安全に配置してくれます。</p> 
+  <p>チームがJenkins、Hudson、BambooのようなCIツールを使っている場合、LiveRebelプラグインをインストールしてLiveRebelへ配置物を渡す配置タスクを作成できます。そして、LiveRebelが配置を行います。停止時間なしでコード、DB、構成を一緒を対象の環境へ配置するのです。</p> 
+ </blockquote> 
+ <p>&nbsp;</p> 
+ <p><b>プロパティの管理について教えてください。</b><b> </b></p> 
+ <blockquote> 
+  <p>テスト環境、ステージング環境、運用環境または顧客の環境へとリリースしていく場合、環境プロパティや環境変数、構成が環境ごとに異なるという問題に行き当たります。普通この問題は各環境ごとにリリース物を別けることで解決します。この場合、リリース物が環境ごとにわずかに異なることになり、完全にテストできません。また、独自に作成したスクリプトやツールを使って環境ごとに異なるプロパティを外部に出す方法もあります。</p> 
+  <p>LiveRebelを使うと、リリースエンジニアは各環境に適用するプロパティを明記できます。対象の環境にはすべて同じパッケージを配置し、環境ごとのプロパティを適用できるのです。また、プロパティの定義がなかったらアラートを上げてくれます。</p> 
+  <p>つまり、テスト環境でもステージング環境でも運用環境でも同じリリースプロセスで対応でき、実際にユーザに使われる前までにテストされていることを保証できるのです。</p> 
+ </blockquote> 
+ <p><b>キャパシティの監視について教えてください。</b></p> 
+ <blockquote> 
+  <p>LiveRebelは各アプリやサーバの隣にビーコンがついているという、サーバとアプリケーションの基本的な監視の仕組みを提供します。このビーコンは受信するリクエストの数に反応します。監視対象の健康状態に応じて緑から赤に変わります。マウスオーバすると、ビーコンはポップアップで、レスポンスのスループットの統計値を表示します。これはApplication Performance Monitorを置き換えるものではありません。サーバとアプリケーションの健康状態を監視するための主要なメトリクスを提供します。</p> 
+ </blockquote> 
+ <p>&nbsp;</p> 
+ <p><b>Ant、Maven、Gradleのような一般的なビルドツールはサポートしますか。</b><b> </b></p> 
+ <blockquote> 
+  <p>はい。LiveRebelはコマンドラインインターフェースとREST APIを提供します。スクリプトを少し書けば、LiveRebelとビルドツールを統合できます。</p> 
+ </blockquote> 
+ <p><b>Hudson、Bamboo、TeamCityやソースコード管理システムとは統合できますか。</b></p> 
+ <blockquote> 
+  <p>LiveRebelにはHudson、Jenkins、Bamboo向けのプラグインがあります。TeamCity向けプラグインは現在開発中です。プラグインはプラグインメニューからインストールでき安全な方法でLiveRebelと通信できるようセットアップできます。一度セットアップすれば、CIツールからLiveRebel経由でリリース物を自動的に対象の環境へ配置できます。配置はすべてフェールセーフなので、失敗したら、LiveRebelはユーザに影響がないようにすべての変更をロールバックします。ソース管理システムについてはこれからの対応になります。アプリケーションの構成を管理するために、LiveRebelはGITを使っています。</p> 
+ </blockquote> 
+ <p><b>姉妹製品のJRebelとは全く違うツールのようですね。シナジーはあるのでしょうか。</b></p> 
+ <blockquote> 
+  <p>もちろんです。ソフトウエアの現実への浸透を促進するという私たちのミッションの一部を担っています。私たちはソフトウエアチームの開発と提供のプロセスより楽で生産的なものになるように支援します。</p> 
+ </blockquote> 
+ <p><b>どのOSで動きますか。Windows、Unix、Linuxはどうですか。</b></p> 
+ <blockquote> 
+  <p>Windows、Unix、Linux、さらにMacOS Xで動作します。サポートしている環境は<a href="http://zeroturnaround.com/software/liverebel/what-we-support/#headline">ここ</a>を見てください。</p> 
+ </blockquote> 
+ <p>&nbsp;</p> 
+ <p><b>無償で提供されるとウェブサイトに書いてあります。価格体系を教えてください。</b><b> </b></p> 
+ <blockquote> 
+  <p>管理されるサーバが2つまではLiveRebelは無償で使えます。つまり、アプリをホストする2台のサーバにアプリケーションを配置するのに使う場合、LiveRebelは無償です。データベースサーバは計算に入りません。管理するサーバを追加する場合、1台あたり年額420ドルかかります。</p> 
+ </blockquote> 
+ <p>&nbsp;</p> 
+ <p>氏は、開発の次のステップとしてプラットフォームの網羅性を向上させ、リリース管理のサポートを強化することに注力していると教えてくれた。LiveRebelのより詳しい情報は<a href="http://www.liverebel.com">ここ</a>で入手できる。</p> 
+ <p>&nbsp;</p> 
  <p id="lastElm">&nbsp;</p> 
 </div> 
 <p id="lastElm"></p><br><br><br><br><br><br></body></html>

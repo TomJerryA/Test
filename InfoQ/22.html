@@ -1,19 +1,17 @@
-<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>CQRS框架Axon 2提供了对MongoDB的支持及性能提升</h3><p><a href="http://martinfowler.com/bliki/CQRS.html">CQRS</a>框架<a href="http://www.axonframework.org/">Axon</a>的最新版本支持了<a href="http://www.axonframework.org/docs/2.0/repositories-and-event-stores.html#d4e1032">MongoEventStore</a>，它使用了<a href="http://www.mongodb.org/">MongoDB</a>作为后台存储，提供了一套简化的API，并带来了性能上的提升。最新的发布<a href="http://www.axonframework.org/news/axon-2-0-released/">版本2.0</a>允许事件对象基于POJO及批注（annotation）定义消息、负载和元数据。新版本中的其它特性还包括：</p> 
+<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>腾讯AlloyTeam再次发力：开源HTML5图像处理引擎AlloyImage</h3><p>近日，AlloyTeam的<a href="http://www.alloyteam.com/2013/03/html5-in-order-to-bring-us-what-professional-level-image-processing/">腾讯Web前端Alloy团队Blog</a>再次引起了业界的广泛关注，原因就是该团队近日推出了最新的开源项目：一个基于HTML5技术的专业级图像处理引擎——AlloyImage(简称AI)，以及一个在线Web图像处理平台——AlloyPhoto(简称AP)。这预示着腾讯的Web前端团队将在底层基础技术层面做深入研究，并将更多的为业界提供基础技术服务。</p> 
+<p>据称，该项目同时也将与HTML5梦工场一起推动HTML5技术在业界的广泛深入的应用。在其官方博客中，是这样介绍的：</p> 
+<blockquote> 
+ <p><a href="http://alloyteam.github.com/AlloyPhoto/">AlloyImage</a>是一个使用JavaScript语言开发的，基于Web的在线图像处理引擎，除了核心底层图像处理引擎，还同时集成了一些方便快捷的图像处理API，您可以将它简单快捷的引用到您的Web网页中，做出与PhotoShop一样的优美效果。甚至，你可以用AlloyImage来开发一个Web在线图像处理软件，如：Web版的PhotoShop——<a href="http://alloyteam.github.com/AlloyPhoto/alloyphoto.html">AlloyPhoto</a>。</p> 
+</blockquote> 
+<p>AlloyImage主要使用HTML5的Canvas技术，并在多图层（Layer）处理方面做了创新性的尝试，不仅如此，在技术实现层面，其架构方便扩展，使用者可以很容易写出现一个AlloyImage的滤镜插件，很多API支持重载，参数传递灵活。</p> 
+<p>Peak-Labs创始人，Mammoth猛犸浏览器、Rasgueado键盘作者<a href="http://weibo.com/peakji" target="_blank">@PeakJi</a>在阅读完代码后也评论道：全中文注释超感人，但处理后的图片是base64编码的data:image类型(比较少被用于大尺寸图像，一般是减少请求用的)，大图解码时可能会锁UI thread造成卡死，而且大部分webkit浏览器不会缓存这种图片。</p> 
+<p>2012年6月，Tencent AlloyTeam就曾将其前端JavaScript开发框架JX（JavaScript eXtension tools）开源，该框架具有原生对象零污染、模块封包、多版本共存、分层设计以及无缝集成各种js框架的特点，可与jQuery、YUI、Mootools和Prototype.js等框架无缝集成。更多详细信息可访问<a href="http://www.alloyteam.com/2012/06/jx-framework/">腾讯Web前端Javascript开发框架 JX(Javascript eXtension tools)</a>。</p> 
+<h3>了解更多</h3> 
 <ul> 
- <li>一个高性能的命令总线，它能以一种无锁的算法并行地进行命令处理，能够在每个时间单元处理多出四倍的命令。</li> 
- <li>新的代码逻辑以确保事件的序列化仅发生一次，并确保仅在实际使用事件时进行反序列化。</li> 
- <li>对大量事件的重播得到极大的加快。</li> 
- <li>一个分布式的命令总线，允许横向扩展至多台机器，并调整每台机器的负载。</li> 
- <li>支持事件的转型（Upcasting）及<a href="http://blog.trifork.com/2012/04/17/refactoring-in-an-event-sourced-world-upcasting-in-axon-2/">分解</a>（Demultiplexing），例如：当实现了某个新的事件结构后，能够将旧的事件转换为多个新的事件。</li> 
- <li>使用<a href="http://www.amqp.org/">AMQP</a>进行事件分发。</li> 
+ <li><a href="http://alloyteam.github.com/AlloyPhoto/">官网</a></li> 
+ <li><a href="http://alloyteam.github.com/AlloyPhoto/alloyphoto.html">在线Demo-AlloyPhoto</a></li> 
+ <li><a href="https://github.com/AlloyTeam/AlloyPhoto">源码</a></li> 
+ <li><a href="http://www.AlloyTeam.com/">团队Blog</a></li> 
+ <li><a href="http://www.infoq.com/cn/presentations/html5-svg;jsessionid=F70509F64E11597ADFDFA4B3F4CBAD79">视频：百度技术沙龙王集鹄——HTML5中的图形图像处理</a></li> 
 </ul> 
-<p>该团队也发布了一个<a href="http://www.axonframework.org/axon-2-quickstart-guide/">快速入门指南</a>，包含了基于Axon创建一个简单系统的步骤，并且在<a href="http://www.axonframework.org/docs/2.0/single.html">参考指南</a>中更新了框架的各处改动。</p> 
-<p>Axon框架为基于CQRS和<a href="http://martinfowler.com/eaaDev/EventSourcing.html">事件溯源</a>（Event Sourcing）架构模式的系统提供了各种构建块，这两种模式正受到越来越多的关注。<a href="http://domaindrivendesign.org/books/evans_2003">领域驱动设计（DDD）参考书籍</a>的作者Eric Evans在由其他人维护的DDD社区网站上特别<a href="http://domaindrivendesign.org/">指出</a>了它们的重要性：</p> 
-<p>“CQRS和Event Sourcing是实现DDD的两种密切相关的架构方式，它们也是过去几年中DDD领域里最热门的话题。”</p> 
-<p>Axon框架由<a href="http://blog.trifork.com/author/allard/">Allard Buijze</a>所创建，它是一个基于Apache授权的开源产品，当前的版本是2.0，并且可以选择付费的支持。</p> 
-<p>目前已有了一个专属Axon用户的<a href="https://groups.google.com/forum/?fromgroups=#!forum/axonframework">论坛</a>，上面已经聚集了约200名用户，产出了300篇帖子。有一篇关于<a href="http://stackoverflow.com/questions/9646884/real-life-experience-with-the-axon-framework">真实世界中的实际经验</a>的讨论列举了对这个框架的正面和负面的两方面评价。</p> 
-<p><b>查看英文原文</b>：<a href="http://www.infoq.com/news/2013/03/axon-2-release;jsessionid=F4FF4FCA5FBB7D2E12AE9669CE8214BD">CQRS Framework Axon 2 Features MongoDB Support and Performance Improvements</a></p> 
-<hr /> 
-<p>感谢<a href="http://www.infoq.com/cn/bycategory.action;jsessionid=F4FF4FCA5FBB7D2E12AE9669CE8214BD?authorName=杨赛">杨赛</a>对本文的审校。</p> 
-<p>给InfoQ中文站投稿或者参与内容翻译工作，请邮件至<a href="mailto:editors@cn.infoq.com">editors@cn.infoq.com</a>。也欢迎大家通过新浪微博（<a href="http://www.weibo.com/infoqchina">@InfoQ</a>）或者腾讯微博（<a href="http://t.qq.com/infoqchina">@InfoQ</a>）关注我们，并与我们的编辑和其他读者朋友交流。</p> 
 <p id="lastElm"></p><br><br><br><br><br><br></body></html>

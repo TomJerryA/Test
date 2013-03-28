@@ -1,6 +1,9 @@
 <html>
  <head></head> 
- <body> 
+ <body>
+  <div>
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/28.c">Software Craftsmen s&atilde;o Egoc&ecirc;ntricos?</a>Em um recente post em seu blog, Ted Neward apontou um lado negro no movimento Software Craftsmanship. De acordo com Neward, a comunidade dos &quot;artes&atilde;os de software&quot; imp&otilde;e uma segrega&ccedil;&atilde;o &agrave; comunidade de desenvolvimento, separando-a entre os craftsmen e os trabalhadores comuns.
+  </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/27.c">Wikimedia adota gera&ccedil;&atilde;o de templates baseada em Lua</a>A Wikimedia adotou a linguagem de programa&ccedil;&atilde;o Lua para gera&ccedil;&atilde;o dos templates de p&aacute;ginas utilizados em diversos sites baseados no MediaWiki. 
   </div> 

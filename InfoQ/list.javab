@@ -1,6 +1,9 @@
 <html>
  <head></head> 
- <body> 
+ <body>
+  <div>
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/22.javab">Capturing Compliance Requirements: A Pattern-Based Approach</a>Assuring compliance across an enterprise needs a holistic approach for defining process &amp; system controls. This article covers a new pattern-based framework to manage process compliance requirements.
+  </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/21.javab">Kanban Pioneer: Interview with David J. Anderson</a>Kanban pioneer David J. Anderson recently went to Brazil to present a course on Kanban, and gave a wide-ranging interview to InfoQ Brasil editors. See the major highlights. 
   </div> 
