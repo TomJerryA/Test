@@ -1,35 +1,35 @@
 <html>
  <head></head> 
- <body>
-  <div>
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/19.py">ZeroTurnaroundがJaveleonを買収</a>JavaのソフトウェアツールメーカーであるZeroTurnaroundが Javeleonを買収した。この会社は、デンマークに本拠を置く生まれたて会社で、 ZeroTurnaroundの人気のあるJRebel動的Java クラス－再ロードツールに関係した製品を出している。
-  </div>
-  <div>
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/18.py">スタンフォード大がiOSプログラミングの入門コースを無料で提供</a>Stanford Universityは、iTunes Uで無料の入門コースーを提供している。全講義は、PDFフォーマットのスライドと一緒にビデオポッドキャストとして、ダウンロード出来る。教材は、Objective-C と iOSプログラミング初心者に適している。オブジェクト指向概念と言語の知識が必要だが。
-  </div>
-  <div>
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/17.py">Neil Bartlett氏に聞く - OSGiとBndtools 2.0リリースについて</a>Eclipse用のOSGiプラグインとして人気の高いBndtoolsのメンテナであるNeil Bartlett氏 が，Bndtools 2.0のリリースを発表した。InfoQは氏に，Bndtoolの詳細とOSGi全般について話を聞いた。
-  </div>
-  <div>
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/16.py">ZeroTurnaroundがLiveRebel 2.6を発表</a>ZeroTurnaroundはリリース自動化ツールであるLiveRebel 2.6が利用可能になったことを発表した。InfoQはZeroTurnaroundのLiveRebelのプロダクトマーケティングマネージャであるKrishnan Badrinarayanan氏に話を聞いた。
-  </div>
-  <div>
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/15.py">Java 8は.NET/Monoへの道を探し始めた</a>先週の開発スナップショットによると、IKVMはインターフェースとデフォルトインターフェースメソッドに静的メソッドの実験的サポートを追加した。これらのJava 8の機能は最初はJavaライブラリの内部処理をサポートするたことが目的であった。それらは他の.NET言語から即座に利用することは出来ない。
-  </div>
-  <div>
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/14.py">技術的負債のユーザストーリーを作るべきか</a>アジャイルチームは、技術的負債を扱う仕事のように、純粋に技術的な仕事の計画に難儀する場合がある。このようなタスクは直接的にはシステムを利用する顧客のためにはならないが、問題なく動作するソフトウエアを提供するには避けて通れない仕事だ。このような技術的な仕事や技術的負債を扱う場合にもユーザストーリーを作るべきだろうか。
-  </div>
-  <div>
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/13.py">新しいユーザのためのOpscode Chefクイックスタート</a>Opscodeは新しいユーザがInfrastructure as Codeを構築するために必要な知識を身につけるためのChefを学ぶための新しい方法を提供した。ユーザはクイックスタート、一般的なケース、スクリーンキャスト、トラブルシューティングをこのコンテンツから得ることができる。
-  </div>
-  <div>
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/12.py">Xtend 2.4 リリース - アクティブアノテーション，Androidサポートなどを新たに実装</a>XtendはJVM用のプログラム言語だ。静的コンパイルされる言語でありながら，ボイラプレートコードを削減するタイプインターフェースを備えている。新たにリリースされた2.4では，標準的なパターンを生成することでコードエラーを削減するアクティブアノテーションに加えて，Androidのサポートやコレクションリテラルなどが追加されている。InfoQではSven Efftinge氏に連絡を取り，他の新機能について話を聞いた。
-  </div>
-  <div>
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/11.py">アプリからクラウドへファイルをアップロードできるFilepicker</a>Filepicker.ioを使えばアプリケーションからFacebook、Dropbox、Instagra、Flickrなどのファイルをアップロードできる。
-  </div>
-  <div>
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/10.py">PuppetLabsとOpscodeはどうやってオープンソースコミュニティを育てたか</a>コミュニティを育てるには人々にきちんと接して、物事がどのようになされたかを透明にすることが重要だ、とLuke Kanies氏とAdam Jacob氏は言う。Luke Kanies氏はPuppetLabsの創業者、CEOであり、Adam Jacob氏はOpscodeの共同創業者でありChefの開発者だ。両者ともコミュニティに対して真摯に関わることが必要だと主張している。PuppetLabsとOpscodeはビジネスと共に活発なオープンソースコミュニティを作ることに成功した企業だ。
+ <body> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/19.py">ZeroTurnaroundがJaveleonを買収</a>JavaのソフトウェアツールメーカーであるZeroTurnaroundが Javeleonを買収した。この会社は、デンマークに本拠を置く生まれたて会社で、 ZeroTurnaroundの人気のあるJRebel動的Java クラス－再ロードツールに関係した製品を出している。 
+  </div> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/18.py">スタンフォード大がiOSプログラミングの入門コースを無料で提供</a>Stanford Universityは、iTunes Uで無料の入門コースーを提供している。全講義は、PDFフォーマットのスライドと一緒にビデオポッドキャストとして、ダウンロード出来る。教材は、Objective-C と iOSプログラミング初心者に適している。オブジェクト指向概念と言語の知識が必要だが。 
+  </div> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/17.py">Neil Bartlett氏に聞く - OSGiとBndtools 2.0リリースについて</a>Eclipse用のOSGiプラグインとして人気の高いBndtoolsのメンテナであるNeil Bartlett氏 が，Bndtools 2.0のリリースを発表した。InfoQは氏に，Bndtoolの詳細とOSGi全般について話を聞いた。 
+  </div> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/16.py">ZeroTurnaroundがLiveRebel 2.6を発表</a>ZeroTurnaroundはリリース自動化ツールであるLiveRebel 2.6が利用可能になったことを発表した。InfoQはZeroTurnaroundのLiveRebelのプロダクトマーケティングマネージャであるKrishnan Badrinarayanan氏に話を聞いた。 
+  </div> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/15.py">Java 8は.NET/Monoへの道を探し始めた</a>先週の開発スナップショットによると、IKVMはインターフェースとデフォルトインターフェースメソッドに静的メソッドの実験的サポートを追加した。これらのJava 8の機能は最初はJavaライブラリの内部処理をサポートするたことが目的であった。それらは他の.NET言語から即座に利用することは出来ない。 
+  </div> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/14.py">技術的負債のユーザストーリーを作るべきか</a>アジャイルチームは、技術的負債を扱う仕事のように、純粋に技術的な仕事の計画に難儀する場合がある。このようなタスクは直接的にはシステムを利用する顧客のためにはならないが、問題なく動作するソフトウエアを提供するには避けて通れない仕事だ。このような技術的な仕事や技術的負債を扱う場合にもユーザストーリーを作るべきだろうか。 
+  </div> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/13.py">新しいユーザのためのOpscode Chefクイックスタート</a>Opscodeは新しいユーザがInfrastructure as Codeを構築するために必要な知識を身につけるためのChefを学ぶための新しい方法を提供した。ユーザはクイックスタート、一般的なケース、スクリーンキャスト、トラブルシューティングをこのコンテンツから得ることができる。 
+  </div> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/12.py">Xtend 2.4 リリース - アクティブアノテーション，Androidサポートなどを新たに実装</a>XtendはJVM用のプログラム言語だ。静的コンパイルされる言語でありながら，ボイラプレートコードを削減するタイプインターフェースを備えている。新たにリリースされた2.4では，標準的なパターンを生成することでコードエラーを削減するアクティブアノテーションに加えて，Androidのサポートやコレクションリテラルなどが追加されている。InfoQではSven Efftinge氏に連絡を取り，他の新機能について話を聞いた。 
+  </div> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/11.py">アプリからクラウドへファイルをアップロードできるFilepicker</a>Filepicker.ioを使えばアプリケーションからFacebook、Dropbox、Instagra、Flickrなどのファイルをアップロードできる。 
+  </div> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/10.py">PuppetLabsとOpscodeはどうやってオープンソースコミュニティを育てたか</a>コミュニティを育てるには人々にきちんと接して、物事がどのようになされたかを透明にすることが重要だ、とLuke Kanies氏とAdam Jacob氏は言う。Luke Kanies氏はPuppetLabsの創業者、CEOであり、Adam Jacob氏はOpscodeの共同創業者でありChefの開発者だ。両者ともコミュニティに対して真摯に関わることが必要だと主張している。PuppetLabsとOpscodeはビジネスと共に活発なオープンソースコミュニティを作ることに成功した企業だ。 
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/9.py">PeerJS 0.1.7: ブラウザにおけるP2PのためのWebRTCラッパー</a>Michelle Bu氏とEric Zhang氏は3月6日、WebRTCのラッパーとしてPeerJS 0.1.7のリリースを発表した。WebRTCは、W3CがブラウザでのP2P通信をやりやすくするために作っているものだ。 
@@ -150,6 +150,6 @@
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/20.py">動画サービスを柔軟に作れるAzure Media Servicesのススメ</a>Azure Media Serviceは、メディアの作成から配信までをクラウドで提供できるクラウドサービスです。以前は敷居が高かった動画配信も、いまや Azure を利用することで素早く柔軟にサービスを開始できるようになりました。 
-  </div>           
+  </div> 
  </body>
 </html>

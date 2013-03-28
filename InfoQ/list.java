@@ -1,11 +1,11 @@
 <html>
  <head></head> 
- <body>
-  <div>
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/32.java">WCF Data Services 5.4.0 - Client Hooks and Instance Annotations on Atom Payloads</a>Microsoft has announced the availability of WCF Data Services 5.4.0 release candidate with new features and several bug fixes.
-  </div>
-  <div>
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/31.java">Docker: Automated and Consistent Software Deployments</a>dotCloud, a PaaS provider, has open sourced Docker, a key component of their platform. Docker is a LinuX Container (LXC) technology augmented with a a high level API providing a lightweight virtualization solution that runs Unix processes in isolation. It provides a way to automate software deployment in a secure and repeatable environment.
+ <body> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/32.java">WCF Data Services 5.4.0 - Client Hooks and Instance Annotations on Atom Payloads</a>Microsoft has announced the availability of WCF Data Services 5.4.0 release candidate with new features and several bug fixes. 
+  </div> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/31.java">Docker: Automated and Consistent Software Deployments</a>dotCloud, a PaaS provider, has open sourced Docker, a key component of their platform. Docker is a LinuX Container (LXC) technology augmented with a a high level API providing a lightweight virtualization solution that runs Unix processes in isolation. It provides a way to automate software deployment in a secure and repeatable environment. 
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/30.java">Use Canary Deployments to Test in Production</a>Companies use &quot;Canary Deployments&quot; to test software in production by routing a subset of users to new functionality as part of continuous delivery according to Nolio in their 1st video in a series about DevOps Best Practices. A &quot;Canary Deployment&quot; is a type of incremental release performed by deploying a new version of software side by side with its production version counterpart. 
@@ -150,6 +150,6 @@
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/33.java">API Community Debates Governance versus Innovation</a>Governance has reared its head up again, this time in the API community and questions have been raised about its relevance especially in organizations where innovation is the focus. This was a hot topic at the recent API Strategy and Practice conference and the debate continued in the blogosphere. 
-  </div>   
+  </div> 
  </body>
 </html>
