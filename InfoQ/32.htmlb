@@ -1,0 +1,207 @@
+<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>函数式反应型编程(FRP) —— 实时互动应用开发的新思路</h3><p>请先看<a href="http://nec.netease.com/weekly/frp/flicker-search.html">一个非常简单的小应用</a>，它允许用户在一个搜索输入框里输入关键词，然后在其下方的结果区域实时显示从<a href="http://flicker.com">Flicker</a>网站搜索得到的图片，当用户输入的关键词发生变化，显示的图片也会随即跟着发生变化。</p><p><img width="500px;" src="http://www.infoq.com/resource/articles/functional-reactive-programming/zh/resources/1.png;jsessionid=404C358968DD80DF16527306AB521DA7" title="Flicker实时搜索" alt="" _href="img://null" _p="true" /></p><p>这实际上便是一种reactive能力。而类似这种能自动对外部环境的变化作出响应的系统我们称之为反应型系统(<a href="http://en.wikipedia.org/wiki/Reactive_system">Reactive System</a>)。典型的外部环境变化包括外部输入信号的变化、事件的发生，而且系统的响应通常是实时的。互动系统是最重要的一种反应型系统，它不但能响应外部环境的变化，还会将自己的内部状态通过某种方式反馈给外部观察者。</p><h2>二、如何构建Reactive System?</h2><p>如果要开发上面的这个Flicker实时搜索小应用，应该怎么做呢？</p><p>别忙，程序员在动手开发之前应该首先把软件要做什么尽可能搞清楚。虽然这是个很小的应用，但我们仍然可以把它做的事情用一个简单但更清晰的流程图表示出来：</p><p><img width="500px;" src="http://www.infoq.com/resource/articles/functional-reactive-programming/zh/resources/2.png;jsessionid=404C358968DD80DF16527306AB521DA7" title="Flicker实时搜索功能流程图" alt="" _href="img://null" _p="true" /></p><p>用户在输入框键入各种关键词向Flicker发出搜索请求，它们就像一道不断流向Flicker服务器的”请求流”，服务器处理完请求后向客户端返回搜索结果，形成了一道“应答流”，客户端将“应答流”转换成“图片流”注入到网页中的结果区域。只要用户的输入发生变化，这些流中的内容也跟着改变，网页中显示的图片也就跟着变化。</p><p>功能不复杂，试着把它变成程序。</p><h3>Callback Style</h3><p>通过处理相应的事件便能响应用户的输入，那么就可以采用大家所熟悉的注册event callback的方式来做：</p><pre class="brush: js;">
+//处理response的回调函数
+var responseHandler = function (answer)
+{
+  //根据response创建image nodes
+  var nodes = buildImages(answer);
+  //用image nodes动态更新显示区域
+  swapChildren($('images'), nodes);
+}
+
+//搜索框回调函数
+var searchHandler = function (txt)
+{
+  //发送request,并注册该次request的回调
+  requestFlickerSearch(txt, responseHandler);
+}
+
+//使指定的输入框具有实时flicker搜索能力
+function enableFlickerSearch(nodeId)
+{
+  //注册搜索输入框回调
+  registerCallback($(nodeId), searchHandler);
+}
+
+enableFlickerSearch('search');
+</pre><h3>X Style</h3><p>上面这种方式是大家最熟悉的，也是最常用的。但今天我要给大家看看另外一种不同的方式，暂时称之为X Style吧。</p><p>核心代码如下：</p><pre class="brush: js;">
+//将指定的输入框包装成具有flicker search能力的输入框，
+//并返回相关联的实时图片流
+function makeFlickerImagesStream(searchEditId)
+{
+  //根据指定的搜索输入框内容创建request stream
+  var requestE = extractValueE(searchEditId).
+                  calmE(1000).
+                  mapE(flickrSearchRequest);
+  //根据request stream创建response stream
+  var responseE = getForeignWebServiceObjectE(requestE); 
+  //根据response stream创建image DOM stream
+  var imagesE = responseE.mapE(createImageNodes);
+  return imagesE;
+}
+
+function start() 
+{
+  //创建一个实时图片流，流中的内容根据&quot;search&quot;输入框内容的变化而变化
+  var imageNodes = makeFlickerImagesStream(&quot;search&quot;);
+
+  //用imageNodes图片流里的内容动态更新images节点
+  insertDomE(imageNodes,&quot;images&quot;);
+}
+</pre><p>注意到makeFlickerImageStream的实现里有requestE, responseE, imagesE这样的变量，从名字上很容易将它们和之前流程图中的“请求流”“应答流”“图片流”对应起来。</p><p>目前为止，这两种方式看起来代码量差不多，没感觉X风格有什么特别的。 好，假设这个Flicker实时搜索框被做成了独立的控件，对于使用者来说是一个黑盒子，内部实现不可见，如果想添加一个黄色图片过滤功能，不是一古脑儿显示搜索得到的所有图片，而是过滤掉黄色图片只在结果区域显示健康图片，这时该怎么做？</p><p>对于callback风格的实现来说，应用代码只有这一行，其它的都不可见。</p><pre class="brush: js;">
+enableFlickerSearch('search');
+</pre><p>你能想到一种不修改搜索框控件内部实现的方案吗？至少我没有想到。</p><p>一个比单纯修改模块内部实现更好的方案也许是同时修改接口和控件实现以便让用户去定制如何处理response:</p><pre class="brush: js;">
+enableFlickerSearch('search', customResponseHandler);
+</pre><p>那么用户可以在这个定制的处理函数中先过滤图片再显示出来。</p><p>对于X风格实现，start函数才是应用层的代码。如果要过滤掉黄色图片，很简单，只要将最后一行代码改变一下就行了：</p><pre class="brush: js;">
+function start() 
+{
+  //创建一个实时图片流，流中的内容根据&quot;search&quot;输入框内容的变化而变化
+  var imageNodes = makeFlickerImagesStream(&quot;search&quot;);
+
+  //用指定的健康图片判断函数healthy
+  //对imageNodes进行过滤得到健康图片流
+  var healthyImageNodes = 
+        imageNodes.filterE(healthy);
+  //用过滤得到的健康图片流里的内容动态更新images节点
+  insertDomE(healthyImageNodes,&quot;images&quot;);
+}
+</pre><p>看见了吗？完全不需要修改控件内部的实现就轻松实现了新功能。</p><h2>三、另外一个例子－Drag and Drop</h2><p>现在请看另一个<a href="http://nec.netease.com/weekly/frp/drag-drop.html">鼠标拖拽的小例子</a>。</p><p>对于这样一种交互操作，如果抛开实现细节，用自然语言通常会怎么描述它呢？我想极有可能是这样：</p><blockquote> 
+ <p>当鼠标左键按下时便开始移动拖拽，直到鼠标左键抬起时停止。</p> 
+</blockquote><p>这句话实际上定义出了拖拽交互的功能规约(function specification)，有了规约便可以写出代码。</p><p>这次先来看看X风格的代码实现：</p><pre class="brush: js;">
+function start() {  
+  //为节点创建和它绑定的拖拽消息流
+  var posE = dragE($('dragTarget'));
+
+  //根据拖拽消息去调整节点的位置
+  posE.doE(function(m) {
+    $('dragTarget').style.left = m.clientX;
+    $('dragTarget').style.top = m.clientY;
+  });
+}
+</pre><p>这段代码很简单，注释里的解释应该清楚了。但是，最关键的用来创建拖拽消息流的dragE是怎么实现的呢？它在这里：</p><pre class="brush: js;">
+function dragE(target) 
+{
+  //鼠标左键按下消息流
+  var mousedown = extractEventE(target,'mousedown');
+  //鼠标左键抬起消息流
+  var mouseup = extractEventE(document, &quot;mouseup&quot;);
+  //鼠标移动消息流
+  var mousemove = extractEventE(document, &quot;mousemove&quot;);
+  //返回一个拖拽消息流:
+  //每当有鼠标左键按下消息时它就输出鼠标移动消息，
+  //直到鼠标左键抬起才停止输出鼠标移动消息，
+  //当下一次鼠标左键按下时又重复以上模式。
+  return mousedown.thenE(function (_)
+                         { 
+                           return mousemove.untilE(mouseup);
+                         });
+}
+</pre><p>这些代码暂时看不懂没关系，只要注意最后return出去的表达式中的thenE和untilE，这和之前自然语言描述中的<strong>“当...发生时便开始... ，直到....”</strong>一一对应，代码就象对自然语言的直接翻译！</p><p>如果换用callback的方式怎么做呢？这里就不写了，读者可以自己尝试一下，看看最终出来的代码的语义和自然语言的描述差别有多大。</p><h2>四、Functional Reactive Programming</h2><p>上面两例中X风格的代码主要描述系统中数据(消息)流的结构关系，至于环境变化如何导致某些数据流变化，这些变化了的数据流又如何导致其它的相关数据流变化，压根儿不需要关心。这是一种编程范式，称之为<a href="http://en.wikipedia.org/wiki/Reactive_programming">Reactive Programming</a>。</p><p>而主要利用函数式编程(Functional Programming)的思想和方法(函数、高阶函数)来支持Reactive Programming就是所谓的<a href="http://en.wikipedia.org/wiki/Functional_reactive_programming">Functional Reactive Programming</a>，简称FRP。</p><p>现在可以给X正名了，它就是FRP。</p><h3>FRP vs. Callback</h3><p>程序员在写代码之前，首先会需要一个功能规约，而规约的描述形式并不固定，可以是流程图(第一个例子)，可以是自然语言(第二个例子)，也可以是其它的方式，只要能精准方便地表达意图就好。</p><p>当有了规约之后，FRP编程就像照镜子，代码基本上就是规约的直接映射。</p><p><img src="http://www.infoq.com/resource/articles/functional-reactive-programming/zh/resources/3.png;jsessionid=404C358968DD80DF16527306AB521DA7" width="500px;" alt="" _href="img://null" _p="true" /></p><p>而写callback风格的代码，就得费力地咀嚼规约，艰难地消化，最后挤出的代码就像一坨缠来绕去的线团，它呈现出来的样子和程序真正的意图相去甚远。</p><p><img width="500px;" src="http://www.infoq.com/resource/articles/functional-reactive-programming/zh/resources/4.png;jsessionid=404C358968DD80DF16527306AB521DA7" alt="" _href="img://null" _p="true" /></p><h3>为什么？</h3><p>为什么callback风格的代码会表现成这样，背后的原因是什么？请读者带着这个问题边思考边往下看，在文章的后面作者会给出自己的结论。</p><h2>五、Flapjax</h2><p>本文的所有示例都利用了一个叫<a href="http://www.flapjax-lang.org">Flapjax</a>的库。简单来说，它就是一个支持FRP的JavaScript框架。接下来将以它为参考详细介绍FRP的各种概念。</p><h3>1、基本思想</h3><p>引起实时互动系统发生变化的最根本的自变量是<strong>时间</strong>，变化的环境和各种事件(比如键盘、鼠标、网络）归根结底都是由时间的变化引起的，时间是本质特征，从一开始就要考虑。</p><p>那些对外部环境具有反应能力、随时间变化的数据被抽象为一种叫信号(Signal)的概念。</p><h3>2、信号</h3><p>信号分为两种，分别叫事件流(Event Stream)和行为(Behavior)。</p><h3>Event Stream</h3><p><img width="500px;" src="http://www.infoq.com/resource/articles/functional-reactive-programming/zh/resources/5.png;jsessionid=404C358968DD80DF16527306AB521DA7" alt="" _href="img://null" _p="true" /></p><p>事件流可以看成时间轴上无限长的数据流，这个里面流淌的数据代表着一个个事件，它们在时间轴上是离散的。</p><h4>Behavior</h4><p><img width="500px;" src="http://www.infoq.com/resource/articles/functional-reactive-programming/zh/resources/6.png;jsessionid=404C358968DD80DF16527306AB521DA7" alt="" _href="img://null" _p="true" /></p><p>行为也是随时间变化的数据，它在时间轴上是连续的。</p><h4>信号的类型</h4><p>信号(EventStream和Behavior)都是First-Class Value，所以它们也有自己的类型。 信号所代表的随时间变化的数据的类型X决定了信号的类型。记为：EventStream X 或 Behavior X。</p><p>比如：</p><ul> 
+ <li>代表输入框内容变化的事件流，类型为EventStream String</li> 
+ <li>随时间不停变化的数值，类型为Behavior Number</li> 
+</ul><h4>函数角度看信号</h4><p>如果从函数式编程的角度来看，behavior可以看成这样一个函数：输入某个时刻，它计算得到在那个时刻自身的采样值。</p><p><img width="500px;" src="http://www.infoq.com/resource/articles/functional-reactive-programming/zh/resources/7.png;jsessionid=404C358968DD80DF16527306AB521DA7" alt="" _href="img://null" _p="true" /></p><p>同样地，event stream也可以看成这样一个函数：输入也是某个时刻，如果在这个时刻有事件发生就把相应的event数据返回出来，否则就返回一个特殊的nothing表示没有任何事件发生。</p><p><img width="500px;" src="http://www.infoq.com/resource/articles/functional-reactive-programming/zh/resources/8.png;jsessionid=404C358968DD80DF16527306AB521DA7" alt="" _href="img://null" _p="true" /></p><h3>3、Event Stream</h3><h4>基本API</h4><pre class="brush: js;">
+//为指定DOM节点创建鼠标左键按下的事件流
+es1 = extractEventE(targetDom, &quot;mousedown&quot;);
+
+//为指定DOM节点创建内容动态更新事件流，
+//每当节点内容发生变化，这个事件流里都会产生相应的事件
+es2 = extractValueE(searchEdit);
+
+//创建会且只会发生一个事件的事件流，
+//这个唯一的事件所携带的信息是调用者传入的参数
+es3 = oneE(&quot;hello world&quot;);
+
+//永远也不会有事件发生的事件流
+nothingEs = zeroE();
+
+//将事件流中的动态内容注入到指定的dom节点上，
+//此后只要事件流里有新的事件发生，
+//这个节点的内容就会跟着新事件的内容自动发生变化。
+insertDomE(es2, &quot;result&quot;);
+</pre><h4>转换和组合</h4><p>除了基本API，框架还提供了相应的API对事件流进行转换或者将多个事件流组合成新的更复杂的事件流。常用的有：</p><ul> 
+ <li> <p>过滤<br /> filterE(sourceEs, pred)会用谓词函数pred对事件流sourceEs进行过滤生成一个新的事件流，所有出现在sourceEs并且被pred判断为true的事件都会出现在新生成的事件流中。</p> <p><img width="500px;" src="http://www.infoq.com/resource/articles/functional-reactive-programming/zh/resources/9.png;jsessionid=404C358968DD80DF16527306AB521DA7" alt="" _href="img://null" _p="true" /></p> </li> 
+ <li> <p>映射<br /> mapE(f, sourceEs)会用转换函数f对事件流sourceEs进行转换生成一个新的事件流，所有出现在sourceEs中的事件都会被f转换成新的事件并出现在新生成的事件流中。</p> <p><img width="500px;" src="http://www.infoq.com/resource/articles/functional-reactive-programming/zh/resources/10.png;jsessionid=404C358968DD80DF16527306AB521DA7" alt="" _href="img://null" _p="true" /></p> </li> 
+ <li> <p>合并<br /> mergeE(es1, es2)会把两个事件流es1和es2合并成一个新的事件流，所有出现在es1或者es2中的事件都会出现在新生成的事件流中。</p> <p><img width="500px;" src="http://www.infoq.com/resource/articles/functional-reactive-programming/zh/resources/11.png;jsessionid=404C358968DD80DF16527306AB521DA7" alt="" _href="img://null" _p="true" /></p> </li> 
+ <li> <p>直到<br /> es1.untilE(es2)会根据两个事件流es1和es2生成一个新的事件流，es1出现的所有事件都会出现在新生成的事件流中，直到es2的第一个事件发生，此后结果事件流中将不再发生任何事件。就好像es2中的事件是一个永久的阻断信号，它一旦出现，意味着此后es1中的事件都被阻断不再进入结果事件流中。</p> <p><img width="500px;" src="http://www.infoq.com/resource/articles/functional-reactive-programming/zh/resources/12.png;jsessionid=404C358968DD80DF16527306AB521DA7" alt="" _href="img://null" _p="true" /></p> </li> 
+ <li> <p>当...发生时便...<br /> srcEs.thenE(f)会根据事件流srcEs和函数f生成一个新的事件流，这里的f必须是一个输入为event输出为EventStream的函数。每当srcEs中出现一个事件，都会把这个事件传给f计算得到一个临时事件流，接下来这个临时事件流中的事件都会出现在最终的结果事件流中，直到srcEs中再次有新的事件发生，又会重新调用f得到另一个临时事件流并替换掉老的，同时结果事件流开始接收这个最新产生的临时事件流中的事件。srcEs中不断有事件发生，上述过程也就不断重复。在前文鼠标拖拽的例子中，正是这个方法使得拖拽事件流的表达非常接近自然语言的描述。熟悉FP的读者一定已经发现，如果把事件流看成是[Monad](http://en.wikipedia.org/wiki/Monad<em>(functional</em>programming))的话，那么thenE就相当于它的bind操作。实际上在Flapjax里，这个方法的名字确实是叫bindE，为了使代码的可读性更好，作者对Flapjax做了小小的修改和扩展，为bindE取了个别名thenE。本文所有示例使用的都是这个定制版Flapjax。</p> <p><img width="500px;" src="http://www.infoq.com/resource/articles/functional-reactive-programming/zh/resources/13.png;jsessionid=404C358968DD80DF16527306AB521DA7" alt="" _href="img://null" _p="true" /></p> </li> 
+</ul><h3>4、Behavior</h3><h4>基本API</h4><pre class="brush: js;">
+//最基本的behavior就是时间本身！
+//timerB创建一个表示系统时间值的behavior，
+//输入参数表示它每隔多长时间(毫秒)更新一次
+behavior1 = timerB(1000);
+
+//创建一种特殊的常量型behavior
+//任何时刻它的值都等于你传进去的值
+cb = constantB(&quot;老子是个常量&quot;);
+
+//valueNow获取behavior在当前时刻的值
+v = valueNow(behavior1);
+
+//为指定DOM节点创建相关的behavior，
+//它的值会自动随着节点的内容变化而变化
+domb = extractValueB(dom);
+
+//把behavior的动态内容注入到dom节点上，
+//此后只要behavior的值发生变化，
+//这个dom节点的内容就会自动发生变化。
+insertDomB(behavior1, &quot;timer&quot;);
+</pre><h4>Lift</h4><p>Number类型的数据有加减乘除等运算操作，和它对应的Behavior Number类型的行为也有相应的addB、subB、mulB、divB这些运算操作。比如这样一个调用</p><pre class="brush: js;">
+b3 = addB(b1, b2);
+</pre><p>就会根据b1和b2这两个行为生成一个新的行为b3，并且任何时刻b3的值都会等于同时刻b1和b2的值之和。其它运算符的语义可以依此类推。有了这些操作后就意味着behavior是可以直接运算的！这使得我们可以像写普通运算表达式那样方便地创建复杂行为。</p><p>addB可以看成是把＋这个原本作用在Number类型数据上的运算提升(lift)后得到的作用在Behavior Number类型上的运算，其它运算符同此类比。</p><p><img width="500px;" src="http://www.infoq.com/resource/articles/functional-reactive-programming/zh/resources/14.png;jsessionid=404C358968DD80DF16527306AB521DA7" alt="" _href="img://null" _p="true" /></p><p>Flapjax提供了lift这个API，它能将计算普通值的函数提升为计算相应behavior的函数。比如标准数学库中的sqrt函数的类型是输入参数为Number类型输出结果为Number类型：</p><pre class="brush: js;">
+Math.sqrt: Number -&gt; Number
+</pre><p>它的提升版本(lifted version)可以这样得到：</p><pre class="brush: js;">
+sqrtB = lift(Math.sqrt);
+</pre><p>得到的sqrtB是一个新的函数，类型是输入参数为Behavior Number输出结果为Behavior Number:</p><pre class="brush: js;">
+sqrtB: Behavior Number -&gt; Behavior Number
+</pre><p>很明显，lift是一个输入参数为函数输出结果也为函数的高阶函数。</p><p>接下来就可以直接调用sqrtB：</p><pre class="brush: js;">
+//b1是个behavior，b2是调用生成的新的behavior，
+//b2在任何时刻的值都等于b1同时刻值的平方根。
+b2 = sqrtB(b1); 
+</pre><p>实际上之前的addB的定义是这样的：</p><pre class="brush: js;">
+addB = lift(function (v1,v2){
+              return v1 + v2;
+            });
+</pre><p>请看<a href="http://nec.netease.com/weekly/frp/timer2.html">这个演示</a>，它通过以上介绍的方式定义了多个behavior，并将它们在网页上呈现出来。</p><h3>5、更多的信号和组合操作</h3><p>Flapjax还提供了更多的信号：</p><pre class="brush: js;">
+mouseLeftB
+mouseTopB
+getWebServiceObjectE(requestE)
+......
+</pre><p>更多的组合操作：</p><pre class="brush: js;">
+collectE
+calmE
+switchB
+condB
+......
+</pre><p>具体请查阅参考手册。</p><h2>六、FRP的优势</h2><p>在FRP的编程模型里，基本信号可以在不做任何修改的情况下被转换或者组合成新的复杂信号，而新的复杂信号又可以在不做任何修改的情况下被转换或者组合成更复杂的信号，就像乐高积木的搭建，这个过程可以一直进行下去，直到构建出足够复杂的信号以满足系统的需求。</p><p><img width="500px;" src="http://www.infoq.com/resource/articles/functional-reactive-programming/zh/resources/15.png;jsessionid=404C358968DD80DF16527306AB521DA7" alt="" _href="img://null" _p="true" /></p><p>这正是程序员梦寐以求的组合能力(Composability)！</p><p>现在重新回到前文提出的那个问题，为什么callback风格的代码总是像一坨线团一样那么地杂乱？让我们先来看看一个通用的event-driven框架大概是什么样的：</p><p><img width="500px;" src="http://www.infoq.com/resource/articles/functional-reactive-programming/zh/resources/16.png;jsessionid=404C358968DD80DF16527306AB521DA7" alt="" _href="img://null" _p="true" /></p><p>请读者回想一下，程序中注册的事件回调处理函数的返回值一般都是什么类型？想必要么是void要么是一个表示执行状态的状态码，不太可能让返回值可以随意使用各种数据类型，这是因为一个事件驱动框架要通用地处理各种callback，就只能让它的返回值类型足够通用，void便是首选。因此，回调与回调之间是无法直接传递类型丰富的数据的，它们只能通过修改应用程序的共享状态来间接地通讯，这迫使程序员不得不把应用逻辑分割得支离破碎，从而丧失了核心的组合能力！这便是callback风格程序的最大问题。</p><p>Callback模型关注控制流，但它对控制流的描述不具有很好的组合性。FRP模型换了一个视角，关注数据流，且数据流的组合能力极佳，使得代码更接近于只描述做什么(what)的声明式(declarative)代码，而不是描述怎么做(how)的命令式(imperative)代码，相当简洁和直观，更符合人的自然思维!</p><h2>七、实现简述</h2><p>实现一个FRP框架最关键的是要在信号之间合理有序地传播变化，通常分为两种做法：</p><h3>1、Push方式</h3><p>信号主动把变化传播给受影响的其它信号。</p><ul> 
+ <li>优点：外部的变化是同步处理的，系统的反应延迟小。</li> 
+ <li>缺点:<br /> 
+  <ul> 
+   <li>所有构建出来的信号不管程序是否真的需要，都会参与更新和计算，有可能存在大量无用功；</li> 
+   <li>无用信号必须显式地从数据流网络中删除才有可能被回收，资源管理较麻烦，常常造成资源泄漏。</li> 
+  </ul> </li> 
+</ul><h3>2、Pull方式</h3><p>信号主动去查询可能会影响到自己的信号是否发生了变化，如果发生变化就进行重计算。</p><ul> 
+ <li>优点： 
+  <ul> 
+   <li>按需计算，只有真正被程序需要(即被取值)的信号才参与更新和计算。</li> 
+   <li>信号在程序里没有了任何引用就会被自动回收掉，资源管理简单。</li> 
+  </ul> </li> 
+ <li>缺点:<br /> 
+  <ul> 
+   <li>外部的变化采用异步处理，系统的反应延迟依赖于pull的频率。</li> 
+   <li>当没有变化发生时，仍然会以固定频率pull，也存在一定的消耗。</li> 
+  </ul> </li> 
+</ul><p>Flapjax采用的是push的方式。</p><h2>八、其它的FRP框架</h2><p>FRP最早发源于<a href="http://www.haskell.org">Haskell</a>社区，在Haskell社区里有许多关注点不同实现方式各异的FRP框架，比如：</p><ul> 
+ <li>Fran</li> 
+ <li>Yampa</li> 
+ <li>Reactive</li> 
+ <li>....</li> 
+</ul><p><a href="http://docs.racket-lang.org/frtime">FrTime</a>是用<a href="http://racket-lang.org">Racket(Scheme)</a>语言实现的一款FRP框架，它背后的团队和Flapjax的团队是同一个，所以它们在理念、设计和实现上都极为相似。</p><p>LuaTime是笔者在几年前为<a href="http://www.lua.org">Lua</a>语言实现的FRP框架，它在API的设计上主要参考了FrTime，但是底层的实现采用了pull的方式。这个项目计划在今年年内开源。</p><h2>九、相关研究</h2><ul> 
+ <li><a href="http://msdn.microsoft.com/en-us/data/gg577609.aspx">Microsoft Reactive Extensions</a><br /> 微软用于解决实时互动、异步编程问题的跨语言的开发框架，基本思想和FRP极为类似：将变化的数据抽象出来，称之为IObservable，并为其定义各种转换和组合操作。它背后的主要设计者是Haskell社区的大牛。</li> 
+ <li><a href="http://www.cs.umd.edu/projects/PL/arrowlets">Arrowlets</a><br /> FRP关注数据流，Arrowlets和callback一样关注控制流，但它利用[Arrow](http://en.wikipedia.org/wiki/Arrow<em>(computer</em>science) )这种计算模型使得控制流具备了很好的组合能力。</li> 
+ <li>Promise or Future<br /> 在JavaScript社区中很流行的对异步编程的解决方案，有无数的实现库。</li> 
+ <li>Sandglass<br /> 笔者所在团队设计的一种基于Behavior Tree模型的AI编程语言，为Behavior Tree引入了协作式多任务机制和显式的时间控制机制，支持以同步化的思维来写异步程序，能编译成标准的JavaScript。</li> 
+</ul><h2>关于作者</h2><p><b>邓际锋</b>，来自网易公司杭州研究院前台技术中心引擎技术组。</p><p>我们团队的努力方向包括：</p><ul> 
+ <li>开发跨平台实时互动多媒体应用解决方案；</li> 
+ <li>为儿童和非技术人员开发更自然更有趣的创作工具；</li> 
+ <li>探索各种更自然高效的编程模型并积极实践；</li> 
+ <li>编程语言及相关工具的设计与实现;</li> 
+</ul><p>你可以通过新浪微博<a href="http://weibo.com/ideamonad">@邓际锋</a>或者邮箱soloist.deng at gmail.com与我联系。</p><div class="clearer-space"></div><br><br><br><br><br><br></body></html>

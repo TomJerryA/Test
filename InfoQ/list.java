@@ -1,8 +1,8 @@
 <html>
  <head></head> 
- <body>
-  <div>
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/36.java">GCC 4.8 Completes Move to C++</a>GCC has become fully implemented in C++ in its new 4.8 release, but the improvements aren't solely internal. The compiler has increased support for C++11, Google's Go, and new compiler optimizations.
+ <body> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/36.java">GCC 4.8 Completes Move to C++</a>GCC has become fully implemented in C++ in its new 4.8 release, but the improvements aren't solely internal. The compiler has increased support for C++11, Google's Go, and new compiler optimizations. 
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/35.java">Study: Clojure, CoffeeScript and Haskell Are the Most Expressive General-purpose Languages</a>According to a study, the most expressive general-purpose languages are Clojure, CoffeeScript and Haskell. The study uses LoC/commit as the measuring unit of expressiveness. 
@@ -150,6 +150,6 @@
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/37.java">CQRS Framework Axon 2 Features MongoDB Support and Performance Improvements</a>The latest version of CQRS framework Axon supports MongoEventStore, which uses MongoDB as a backing store, and comes with a simplified API and performance improvements. The recently released version 2.0 also lets event objects be based on POJOs and annotations to define messages, payload and metadata. 
-  </div>  
+  </div> 
  </body>
 </html>

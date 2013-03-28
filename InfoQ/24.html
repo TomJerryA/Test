@@ -1,11 +1,14 @@
-<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>API社区关于治理与创新的争论</h3><p>“API治理”的需求是近期<a href="http://www.apistrategyconference.com/index.php">API战略与实践会议</a>上的热点话题，它吸引了来自创业公司、供应商和企业的API 实践者和专家聚集起来参与其中。</p> 
-<p>Smartbear Software 的解决方案战略总监Lorinda Brandon发表了一篇<a href="http://blog.programmableweb.com/2013/02/27/governance-vs-innovation-do-they-have-to-be-enemies/">关于这场争论的总结</a>，探讨治理和创新是否“必然成为敌对的双方”。Lorinda注意到，在会议的各类出席者之间不出所料地仍然存在着企业与创业团队之间的传统差异。“自我投身业界以来，治理和流程与快速创新之间的差异就一直存在。”</p> 
-<p>Lorinda注意到与会的大部分技术专家都在新API生态系统的最前沿推动创新，而大公司则肩负着客户所强调的可靠性和质量的压力。Lorinda想要发挥两个阵营各自的优势——如何创新而又能在避免产业因缺乏流程和质量控制而崩溃的前提下“享受乐趣”。Lorinda总结道，“如果我们能找到结合治理和创新的方法，他们将在一起成为完美的伙伴”。</p> 
-<p>“API布道者”Kin Lane和会议的一位组织者延续Lorinda的思路，提出了是否有<a href="http://www.apievangelist.com/2013/02/27/what-is-better-word-for-governance-when-it-comes-to-apis/">更好的词语来描绘“治理”</a>的问题。治理同时包含了正面和负面的内涵。它的负面同义词包括：权力、官僚、权威和控制。相反的正面同义词包括：指导、影响、协作和标准化。Kin对许多管理人员不懂得过多的权力和控制会扼杀创新而感到悲哀，API在达到创新的程度之前需要“氧气”来成长和进化。</p> 
-<p>这让人想起由ZDNet的分析员和作者Joe Mckendrick所报道的一场<a href="http://www.zdnet.com/blog/service-oriented/wanted-new-term-for-soa-governance/1058">2008年初SOA社区中</a>类似的争论。也许这并非技术所固有的问题。ZNDet的另一位技术分析员和作者Dion Hinchcliffe在他的文章《<a href="http://www.zdnet.com/blog/hinchcliffe/running-your-soa-like-a-web-startup/525">像Web创业那样运作你的SOA</a>》中说，创新不是做什么，而是用什么方式去做。</p> 
-<p>与SOA相比，API的创新之一是更加鼓励协作、开发者参与和自服务，即中间件厂商WSO2的CTO Paul Fremantle所谓的“<a href="http://www.infoq.com/presentations/Evolution-Integration;jsessionid=6236FF2106D42CDB900C9291F648B732">不碰面</a>”方法。观看这场争论并关注API是否能得益于治理和创新之间的权衡将会很有趣。你怎么看？</p> 
-<p><b>查看英文原文</b>：<a href="http://www.infoq.com/news/2013/03/api-governance-debate;jsessionid=6236FF2106D42CDB900C9291F648B732">API Community Debates Governance versus Innovation</a></p> 
-<hr /> 
-<p>感谢<a href="http://www.infoq.com/cn/bycategory.action;jsessionid=6236FF2106D42CDB900C9291F648B732?authorName=臧秀涛">臧秀涛</a>对本文的审校。</p> 
-<p>给InfoQ中文站投稿或者参与内容翻译工作，请邮件至<a href="mailto:editors@cn.infoq.com">editors@cn.infoq.com</a>。也欢迎大家通过新浪微博（<a href="http://www.weibo.com/infoqchina">@InfoQ</a>）或者腾讯微博（<a href="http://t.qq.com/infoqchina">@InfoQ</a>）关注我们，并与我们的编辑和其他读者朋友交流。</p> 
+<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>在生产中使用金丝雀部署来进行测试</h3><p>根据Nolio发布的<a href="http://www.noliosoft.com/resources/videos/webinar/canary/show/1/">DevOps最佳实践系列中的第一个视频</a>，很多公司通过路由策略选择性地对部分用户发布新功能从而使用 “金丝雀部署（Canary Deployments）”来测试生产中的软件，并将这一方式作为其可持续交付的一部分。“金丝雀部署”是增量发布的一种类型，它的执行方式是在原有软件生产版本可用的情况下，同时部署一个新的版本。同时运行同一个软件产品的多个版本需要软件针对配置和完美自动化部署进行特别设计。</p> 
+<p>考虑到<a href="http://blogs.msdn.com/b/seliot/archive/2009/12/25/don-t-just-listen-to-your-users-watch-them-with-online-experiments.aspx">A/B 测试</a>和预防性（pre-emptive）<a href="http://highscalability.com/blog/2011/12/12/netflix-developing-deploying-and-supporting-software-accordi.html">性能测试</a>，一旦克服了“金丝雀部署”所涉及的技术挑战将可以减少部署流程中的风险。A/B 测试允许在不改变大多数用户的用户体验的情况下进行对新功能的测试。而性能测试对于整个用户群体来说同样只会产生微不足道的影响。</p> 
+<p>根据Nolio的“金丝雀部署”，该方式由以下几个步骤组成：</p> 
+<ol> 
+ <li>准备好部署各个阶段的工件，包括：构建工件，测试脚本，配置文件和部署清单文件。</li> 
+ <li>从负载均衡列表中移除掉“金丝雀”服务器。</li> 
+ <li>升级“金丝雀”应用（排掉原有流量并进行部署）。</li> 
+ <li>对应用进行自动化测试。</li> 
+ <li>将“金丝雀”服务器重新添加到负载均衡列表中（连通性和健康检查）。</li> 
+ <li>如果“金丝雀”在线使用测试成功，升级剩余的其他服务器。（否则就回滚）</li> 
+</ol> 
+<p>Nolio在他们的相关介绍中针对如何使用他们的产品对“金丝雀部署”进行高层次软件编配做了概览。他们使用了一个可在多个流程中复用的应用模型，并通过数据来驱动该模型的用途。管理和报表都将随着“金丝雀部署”而被完成。</p> 
+<p><b>查看英文原文</b>：<a href="http://www.infoq.com/news/2013/03/canary-release-improve-quality;jsessionid=D48E9467A07CF50E3566F53E39660C26">http://www.infoq.com/news/2013/03/canary-release-improve-quality</a></p> 
 <p id="lastElm"></p><br><br><br><br><br><br></body></html>
