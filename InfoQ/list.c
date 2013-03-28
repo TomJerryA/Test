@@ -1,6 +1,9 @@
 <html>
  <head></head> 
- <body> 
+ <body>
+  <div>
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/29.c">Microsoft disponibiliza exemplos de c&oacute;digo Kinect para Windows</a>A Microsoft lan&ccedil;ou recentemente no CodePlex 22 exemplos de c&oacute;digo aberto sob a licen&ccedil;a Apache 2.0. Os exemplos, que tamb&eacute;m est&atilde;o inclu&iacute;dos no conjunto de ferramentas do Kinect para Windows, mostram como utilizar v&aacute;rios recursos do Kinect, como: &aacute;udio, intera&ccedil;&otilde;es b&aacute;sicas, cores, profundidade, rastreamento de rosto, infravermelho, slideshow com gestos, voz, WPF, XNA, e outros.
+  </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/28.c">Software Craftsmen s&atilde;o Egoc&ecirc;ntricos?</a>Em um recente post em seu blog, Ted Neward apontou um lado negro no movimento Software Craftsmanship. De acordo com Neward, a comunidade dos &quot;artes&atilde;os de software&quot; imp&otilde;e uma segrega&ccedil;&atilde;o &agrave; comunidade de desenvolvimento, separando-a entre os craftsmen e os trabalhadores comuns. 
   </div> 

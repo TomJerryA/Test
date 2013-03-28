@@ -1,8 +1,8 @@
 <html>
  <head></head> 
- <body>
-  <div>
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/37.java">Google Promises Not to Sue for Using Their Pledged Patents</a>Google is promising not to take legal action against any party using pledged patents for open source or free software “unless first attacked.”
+ <body> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/37.java">Google Promises Not to Sue for Using Their Pledged Patents</a>Google is promising not to take legal action against any party using pledged patents for open source or free software “unless first attacked.” 
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/36.java">GCC 4.8 Completes Move to C++</a>GCC has become fully implemented in C++ in its new 4.8 release, but the improvements aren't solely internal. The compiler has increased support for C++11, Google's Go, and new compiler optimizations. 
@@ -150,6 +150,6 @@
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/38.java">New Avenues for Operations Engineering Education</a>Technology education enthusiasts got together to have a panel discussion on hangops last month about creating new opportunities for operations engineering education. They acknowledge that it is harder than ever to find qualified individuals for today's operation engineering jobs and discussed ways to solve that problem. 
-  </div>  
+  </div> 
  </body>
 </html>
