@@ -1,11 +1,11 @@
 <html>
  <head></head> 
- <body>
-  <div>
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/21.py">Windows Azureが更新し、Hadoop, HTML5/JS, CORS, PhoneGap, Mercurial、Dropboxをサポート</a>最近リリースされたWindows Azureのアップデートは、Hadoop サービス, HTML5/JS, CORS, PhoneGapをサポートし、Mercurial, Dropbox, CodePlex、Bitbucketのデプロイが統合されている。
-  </div>
-  <div>
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/20.py">Windows Phone アプリにバーコードを組み込む</a>RadControls for Windows Phone Q1 2013には，Windows Phone 7および8用アプリに組み込むバーコード生成コンポーネントが用意されている。
+ <body> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/21.py">Windows Azureが更新し、Hadoop, HTML5/JS, CORS, PhoneGap, Mercurial、Dropboxをサポート</a>最近リリースされたWindows Azureのアップデートは、Hadoop サービス, HTML5/JS, CORS, PhoneGapをサポートし、Mercurial, Dropbox, CodePlex、Bitbucketのデプロイが統合されている。 
+  </div> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/20.py">Windows Phone アプリにバーコードを組み込む</a>RadControls for Windows Phone Q1 2013には，Windows Phone 7および8用アプリに組み込むバーコード生成コンポーネントが用意されている。 
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/19.py">ZeroTurnaroundがJaveleonを買収</a>JavaのソフトウェアツールメーカーであるZeroTurnaroundが Javeleonを買収した。この会社は、デンマークに本拠を置く生まれたて会社で、 ZeroTurnaroundの人気のあるJRebel動的Java クラス－再ロードツールに関係した製品を出している。 
@@ -150,6 +150,6 @@
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/22.py">QConTokyo2013【モバイル/HTML】トラックのご紹介</a>モバイル／HTML5トラックでは、急速に普及しているスマートフォン そして タブレットへの対応を取り上げ、マルチスクリーンで利用者に魅力的なUXを提供するアプリケーションを開発するするために不可欠な知識と技術の習得をテーマして構成しています。 
-  </div>   
+  </div> 
  </body>
 </html>
