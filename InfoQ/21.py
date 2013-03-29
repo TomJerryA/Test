@@ -1,11 +1,16 @@
-<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>QConTokyo2013【アジャイル/モデリング】トラックのご紹介</h3><h2>QConTokyo2013【アジャイル/モデリング】トラックのご紹介</h2> 
-<p>ようやくドメイン駆動開発DDDも現実味を帯びてきました。業務や問題領域の中核的なしくみをドメインモデルとして定式化し、それをコアにしてシステム全体のアーキテクチャを段階的に構築していく考え方です。ここでは、モデリング技術とアーキテクチャ設計技術とアジャイルに開発プロセスを進めていくマネジメント技術が有効にチーム内外で働く必要があります。</p> 
-<p>考え方も実践する際の注意点も共有できていません。このトラックでは、アジャイル開発プロセスの観点から、コーディングスタイル、モデリング、NOSQLデータベースによる柔軟なシステム実現、という３つのテーマでアジャイルとモデリングの最新状況をご紹介したいと思います。</p> 
-<p>１つめは、有限会社システム設計の増田 亨さんより、『小さなオブジェクトでドメインモデルを組み立てる－ドメイン駆動設計の実践ガイド－』を話していただきます。１つだけの明確な責務をもった管理単位としての小オブジェクトの有機的な組合せが信頼性の高い保守しやすい柔軟なシステムを構成する際の一番重要なポイントだとわかります。それを実現するための具体的な養成ギブスの在り方についても学ぶことができるでしょう。</p> 
-<p>２つめは、株式会社アットウェアの北野さん・河村さんより、『(仮）アジャイル開発とNoSQLは相性がいい』と題して、オープンソースのNoSQLデータベースとして現在注目されているCouchBaseを使った実践的なアジャイル開発を進める際の注意点を解説していただきます。CouchBase自体も、ドキュメントDBとしての要素と高機能分散DBとしての要素を併せ持ち管理機能がかなり使いやすいとのことですので、今後のシステム開発で利用するDBの候補としてウォッチしたいところです。</p> 
-<p>３つめは、株式会社アトラクタの原田騎郎さんより、『(仮)アジャイルにおけるモデリングの意味と実践』と題して、アジャイル開発の現場でDDDを実践する際のモデリングの原理・方法論的な話と具体的な適用事例を交えた実践ノウハウの話をしていただく予定です。</p> 
-<p>ぜひ、みなさまのニーズを満たす実践的なノウハウをいくつか持ち帰っていただけるよう理論と実践の両方で工夫した企画をご提供しようと考えております。最後の懇親の場であるビアパーティ等で皆様とアジャイルやモデリング、DDDの苦労について楽しく語り合うことができることを期待しております。</p> 
-<h2>●開催概要</h2> 
-<p>開催日時：2013年4月23日(火) 10:00-19:00 (19:00～ ビアパーティあり)<br /> <br /> 会　　場：JA共済ビル カンファレンスホール<br /> <br /> 公式サイト：<a target="_blank" href="http://qcontokyo.com/">http://qcontokyo.com/</a><br /> &nbsp;</p> 
-<p>&nbsp;</p> 
+<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>Windows Azureが更新し、Hadoop, HTML5/JS, CORS, PhoneGap, Mercurial、Dropboxをサポート</h3><p><a target="_blank" href="http://www.infoq.com/news/2013/03/windows-azure-updates;jsessionid=CB35D8F67EAB67771CB3577F0AB4F66D"><em>原文(投稿日：2013/03/26)へのリンク</em></a></p> 
+<div class="clearer-space">
+ &nbsp;
+</div> 
+<div id="newsContent"> 
+ <p>Microsoftは、<a target="_blank" href="http://weblogs.asp.net/scottgu/archive/2013/03/18/windows-azure-new-hadoop-service-html5-js-cors-phonegap-mercurial-and-dropbox-support.aspx">Windows Azure</a>への幾つもの強化を含んだリリースを行った。含まれたのは、HTML5/JSクライアント、<a target="_blank" href="http://en.wikipedia.org/wiki/Cross-origin_resource_sharing">Cross Origin Resource Sharing</a> (CORS), PhoneGap 、Windows Phone 7.5へのサポートである。これで、 Apache Cordova/PhoneGapアプリと同様に HTML5ウェブアプリもモバイルサービスに接続できるようになり、 Windows Azureをデータストレージと認証の両方の目的に使うことができるようになった。</p> 
+ <p>最近リリースされたアップデートには、 Internet Explorer 8と Chrome, Firefox,　Safariの最新バージョンをサポートする新しいモバイルサービス ウェブクライントが含まれ、更に PhoneGap 2.3.0が含まれる。これは他のネイティブSDKにある同じデータクエリとストレージAPIを提供し、モバイルサービスによってサポートされているMicrosoft Account, Google, Facebook, Twitter の４つのアイデンティティプロバイダのどれかを介して、簡単なユーザー認証ができる。</p> 
+ <p>前述したように、 Microsoftは、CORSのサポートを追加した。これでモバイルサービスは、クロスドメインAjaxリクエストを受け付けることができる。そうなると管理ダッシュボードからモバイルサービスが許可できるドメインのホワイトリストを設定できるようになる。</p> 
+ <p>更に最近リリースされたアップデートには、様々な新しいクライントプラットフォームと連携できるばかりでなく、ASP.NETと.NETサーバーのバックエンドからモバイルサービスを呼ぶことができる機能を提供するポータブルなライブラリのサポートが含まれている。更に、このリリースも Windows Phone 7.5, Json.NET、HttpClientのサポートを提供している。</p> 
+ <p>Windows Azureは、またユーザーインターフェースを改善した<a target="_blank" href="http://mercurial.selenic.com/">Mercurial</a> (Hg) ソース管理をサポートし、管理ポータル内から、<a target="_blank" href="https://www.dropbox.com/">Dropbox</a>, <a target="_blank" href="http://www.codeplex.com/">CodePlex</a>, <a target="_blank" href="https://bitbucket.org/">Bitbucket</a>のリポジトリからサイトをデプロイ出来る機能を持っている。</p> 
+ <p>最近リリースされたアップデートには、またソース管理のデプロイを管理するための改善されたUIとダッシュボードから<em>TFS証明書の更新</em> オプションを選ぶことで、 Windows Azure管理ポータルから直接、継続的デプロイのために、Team Foundation Serviceによって使われる証明書を更新できる機能が含まれている。</p> 
+ <p>それは、またReset publish profile credentials と呼ばれるダッシュボードにある、新しいquick glance コマンドを使って、パブリッシュプロファイルを再生成することもサポートしており、新しい<a target="_blank" href="http://www.hadooponazure.com/">HDInsight</a>サーバー（今回Windows Azure ポータルに統合された）によって、Azure上で走っているHadoopクラスタをデプロイ、管理、使用できるようなった。</p> 
+ <p>この最近のアップデートによって、 HDInsightクラスタを作成でき、ダッシュボード ビューをドリルダウンすればクラスタのクイックグランス画面を見ることができる。それは、クラスタの基本的な情報を表示し、クラスタに接続する簡単な方法を提供する。</p> 
+ <p id="lastElm">&nbsp;</p> 
+</div> 
 <p id="lastElm"></p><br><br><br><br><br><br></body></html>
