@@ -1,8 +1,30 @@
-<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>Ceylon M5发布，支持元组、逐字字符串、展开操作符和late注解</h3><p><a href="http://www.redhat.com/">Red Hat</a>宣布<a href="http://ceylon-lang.org/blog/2013/03/14/ceylon-m5-nesa-pong/">Ceylon</a>编程语言的第5个里程碑版本（代号为“Nesa Pong”）已经可用，同时带来了相应的<a href="http://ceylon-lang.org/documentation/1.0/ide/install">集成开发环境</a>（IDE）。<a href="http://ceylon-lang.org/download">Ceylon M5</a>包含了一个支持泛型类型参数的完全具体化类型系统。该版本能够直接与原生JavaScript进行互操作，还包含了一个时间日期（datetime）模块以及一个HTTP服务器。</p> 
-<p><img width="500px" src="http://www.infoq.com/resource/news/2013/03/ceylon-m5/zh/resources/1.png;jsessionid=0AFEC12CC8AC45FAFD174ECC45392779" alt="" _href="img://null" _p="true" /></p> 
-<p>Ceylon M5支持元组（<a href="http://ceylon-lang.org/documentation/1.0/tour/sequences/#tuples">tuple</a>），这是一种可以获得每个元素静态类型的链表。它还支持通过新的dynamic块与原生JavaScript API直接互操作。另外，它支持纵向的范围操作符“<a href="http://ceylon-lang.org/documentation/1.0/tour/attributes-control-structures/#for">:</a>”，可以根据给定的起点和长度生成Integer序列。</p> 
-<p>Ceylon M5支持用户使用<a href="http://ceylon-lang.org/documentation/1.0/tour/basics/#fat_arrows_and_forward_declaration">胖箭头</a>=&gt;、前置声明, 此外还支持<a href="http://ceylon-lang.org/documentation/1.0/tour/functions/#the_spread_operator">展开操作符</a>（译者注：spread operator，即前置的*）、late注解、针对可迭代对象的语法糖、<a href="http://ceylon-lang.org/documentation/1.0/tour/language-module/#numeric_literals">二进制和十六进制数字字面量</a>、默认类型参数和<a href="http://ceylon-lang.org/documentation/1.0/tour/generics/#fully_reified_generic_types">具体化泛型（reified generics）</a>。它还引入了可以包含非转义反斜杠和双引号的逐字字符串（<a href="http://ceylon-lang.org/documentation/1.0/tour/basics/#verbatim_strings">verbatim string</a>）。要生成这样的字符串，应该用三个双引号把字符串字面量包起来。</p> 
-<p>据Red Hat的Ceylon首席开发人员<a href="http://ceylon-lang.org/blog/authors/gavin-king/">Gavin King</a>介绍，<a href="http://ceylon-lang.org/blog/2013/02/15/progress-report/">M5版本</a>尚不支持注解、序列化和反射。</p> 
-<p>该版本还带来了ceylon.time模块、ceylon.net.http.server包、compose() 和curry()函数，并重写了与Java数组的互操作支持。除了更新语言规范和文档之外，该版本还根据社区反馈和实践经验引入了一些重要的语法变化。</p> 
-<p><b>查看英文原文</b>：<b><a href="http://www.infoq.com/news/2013/03/ceylon-m5;jsessionid=0AFEC12CC8AC45FAFD174ECC45392779">Ceylon M5 with Tuples, Verbatim Strings, Spread Operator, Late Annotation</a></b></p> 
+<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>分析Parse MBaaS</h3><p>移动后端即服务的爆炸性增长证明，大量的移动应用开发者更青睐<a href="http://blog.programmableweb.com/2012/11/29/mobile-backend-as-a-service-mbaas-give-me-liberty-or-give-me-convenience/">简单便捷的开发模式</a>。这是设计伟大应用的一方面。另一方面移动后端即服务融合诸多令人羡慕的技术（如MongoDB、Couch、Cassandra、MySQL等...)形成易于维护、可更新的移动后端。</p> 
+<p><a href="http://www.infoq.com/cn/news/2013/03/KinveyMBaaS;jsessionid=75403FE0852FBE8E1EC2A0E5F6D3EA23">该系列文章</a>主要介绍了提供MBaaS产品的新公司，在第三篇中InfoQ将带您了解是什么促使<a href="https://parse.com/">Parse</a>飞速前进。得益于创业投资公司<u><a href="http://ycombinator.com/">Y Combinator</a></u>的帮助，Parse在<a href="http://gigaom.com/2011/08/08/parse/">2011年创立</a>，像它那些不断涌现的竞争者一样，致力于帮助移动应用开发者节省时间并减少麻烦，从而创建开发者自己的高效移动后端。</p> 
+<p>随着我们对MBaaS提供商的深入了解，每家公司产品的特性、优点、常见问题大多相似。所不同的只是实现这些特性的方式。每家MBaaS提供商独特的编码风格、服务器和规划最终产生了完全不同的结果。</p> 
+<p>以<a href="http://www.infoq.com/news/2013/01/28;jsessionid=D1B136EB81F11754F967FAC5CC0AC4E4;jsessionid=75403FE0852FBE8E1EC2A0E5F6D3EA23">早前提到过的</a>Kii Cloud为例。他们和Parse提供了相似的UI风格，可以容易地指向目标并进行点击。不论是那些主流<a href="https://www.parse.com/docs/index">移动平台</a>的应用还是一些非移动平台的应用，他们都能够<a href="https://parse.com/apps/quickstart">让开发者方便地将MBaaS嵌入到应用中</a>。</p> 
+<p>分发方式是一个主要的不同点。由于Parse的战略伙伴Kii Cloud提供的网络拥有着来自亚洲市场移动消费者群体百万潜在客户。Parse似乎并不打算提供像Kii<a href="https://www.parse.com/products">那样的</a>分发通道，而他们的合作伙伴们则提供了一个<a href="https://www.parse.com/customers/partners">附加功能</a>的有趣集合。</p> 
+<p>每个MBaaS提供商或许都有他们独特的东西。比如Parse，为了进行搜索，需要用户的数据模型遵从<a href="http://blog.parse.com/">他们的方式</a>：“...无确切前缀匹配的字符串查询无法使用索引。因为随着你应用的增长，这种类型的查询极易产生由超时错误引起的失败。”</p> 
+<p>Parse向从独立新手到大型企业的所有<a href="https://www.parse.com/plans">移动软件开发者</a>提供了三种价格套餐以供选择。预算有限的开发者可以使用免费套餐。该套餐包括每月100万次的请求和推送以及1GB的云存储空间。</p> 
+<p>说到推送技术，Parse提供了<a href="https://www.parse.com/products/push?mkt_tok=3RkMMJWWfF9wsRonu6TOZKXonjHpfsX57eUtUKWzlMI/0ER3fOvrPUfGjI4ATMdiI/qLAzICFpZo2FFIG/KGeQ==#3">一系列选项</a>。开发者可以组合、调度、分割推送通知，并为他们的推送通知设置目标以及使用一个缜密的分析工具进行测试。</p> 
+<p>让<a href="https://parse.com/questions/fetch-all-data-in-a-table-using-pfquery">社区</a>来发现那些隐藏的问题。<u><a href="https://news.ycombinator.com/user?id=jawngee">jawngee</a></u>在<u><a href="https://news.ycombinator.com/item?id=4701035">Hacker News</a></u>说：</p> 
+<blockquote> 
+ <p>我不喜欢那些通常无法工作的子类化（subclassing）。你把PFObject注册为子类没有问题，但是当你进行大量PFQuery的时候你会发疯的。PFUser是一个适合子类化的主要选择，但是如果不进行大量的调整也能难凑效。</p> 
+</blockquote> 
+<p><u><a href="https://news.ycombinator.com/user?id=bklimt">bklimt</a></u><u>说</u>:</p> 
+<blockquote> 
+ <p>PFObject的子类化和更全面的离线解决方案都是我们非常希望增加的特性。我们正花费时间以确保我们能够正确地使用它们。</p> 
+</blockquote> 
+<p><u>Parse</u><u>用户Huzell说:</u></p> 
+<blockquote> 
+ <p>如何让查询获得所有对象...?</p> 
+</blockquote> 
+<p>这让<a href="http://www.linkedin.com/in/33fosco">Parse的专家</a>为难：</p> 
+<blockquote> 
+ <p>获取大量结果的特性尚未支持。- Fosco Marotto</p> 
+</blockquote> 
+<p>在社区通常能够找到解决方案。至少<a href="http://alexefish.com/post/29843064002/fetching-every-row-of-a-table-with-parse-and-pfquery">对iOS</a>来说，Alex Fish可以解决这个问题。</p> 
+<p><b>英文原文链接</b>：<u><a href="http://www.infoq.com/news/2013/03/analyzation_parse-MBaaS;jsessionid=75403FE0852FBE8E1EC2A0E5F6D3EA23">An Analyzation of Parse MBaaS</a></u></p> 
+<hr /> 
+<p>感谢<a href="http://www.infoq.com/cn/bycategory.action;jsessionid=75403FE0852FBE8E1EC2A0E5F6D3EA23?authorName=赵震一">赵震一</a>对本文的审校。</p> 
+<p>给InfoQ中文站投稿或者参与内容翻译工作，请邮件至<a href="mailto:editors@cn.infoq.com">editors@cn.infoq.com</a>。也欢迎大家通过新浪微博（<a href="http://www.weibo.com/infoqchina">@InfoQ</a>）或者腾讯微博（<a href="http://t.qq.com/infoqchina">@InfoQ</a>）关注我们，并与我们的编辑和其他读者朋友交流。</p> 
 <p id="lastElm"></p><br><br><br><br><br><br></body></html>

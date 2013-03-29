@@ -1,35 +1,22 @@
-<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>从小型网站到超大规模网站的MySQL参考架构</h3><p>Oracle发布《<a href="http://www.mysql.com/why-mysql/white-papers/mysql-reference-architectures-for-scalable-web-infrastructure/">面向大规模可伸缩网站基础设施的MySQL参考架构</a>》白皮书，针对将MySQL用作数据存储的不同类型和不同规模的网站给出了推荐的拓扑结构。</p> 
-<p>根据分别提供4类服务——用户和会话管理、电子商务、分析类应用 (多结构数据)和CMS（元数据）——的网站的规模和可用性要求（如下表所示），这份白皮书给出了4个参考架构。</p> 
-<p><img src="http://www.infoq.com/resource/news/2013/03/MySQL-Reference-Architectures/zh/resources/1.png;jsessionid=2D9570BC1574EE32730A0A2B0E42C2E9" width="500" alt="" _href="img://null" _p="true" /></p> 
-<p>请注意，这里给出的指导方针只是基本建议，实际应用中需要根据读写模式、负载平衡和所用的缓存机制等因素进行调整。</p> 
-<p><b>小型（Small）网站参考架构</b></p> 
-<p>这一参考架构可用于上述4类网站的所有小型实现。可以使用MySQL Replication来制作数据的副本以支持备份和分析。</p> 
-<p><img src="http://www.infoq.com/resource/news/2013/03/MySQL-Reference-Architectures/zh/resources/2.png;jsessionid=2D9570BC1574EE32730A0A2B0E42C2E9" alt="" _href="img://null" _p="true" /></p> 
-<p><b>中型（Medium）网站参考架构</b></p> 
-<p>在这种情况下，推荐针对不同类型的活动选择独立的基础设施，考虑每个MySQL服务器最多支持8个应用服务器，如果因伸缩性需求应用服务器数量增加，则添加更多的MySQL从服务器。</p> 
-<p><img width="500px" src="http://www.infoq.com/resource/news/2013/03/MySQL-Reference-Architectures/zh/resources/3.png;jsessionid=2D9570BC1574EE32730A0A2B0E42C2E9" alt="" _href="img://null" _p="true" /></p> 
-<p>为满足会话管理网站和电子商务网站的高可用性要求，可以使用<a href="http://en.wikipedia.org/wiki/Linux-HA">Linux心跳（Heartbeat）</a>和半同步复制。CMS网站通常对读操作的向外扩展有更高要求，假定每个MySQL从服务器最多可以处理3000个并发用户，白皮书建议为每个MySQL主服务器添加20-30个从服务器。CMS系统可将数据保存在一个SAN中，或者保存在连接到该服务器的分布式设备中。</p> 
-<p>会话管理网站和CMS网站推荐使用Memcached，这有助于减轻应用服务器和MySQL服务器的负担。</p> 
-<p>分析类网站的拓扑结构简单一些，1个主服务器加3个从服务器就能解决问题。</p> 
-<p><b>大规模（Large）网站参考架构</b></p> 
-<p>针对大规模网站，白皮书推荐使用MySQL Geographic Replication来进行跨数据中心的数据库复制，这种方式支持跨越地理上分离的集群进行异步复制。</p> 
-<p><img src="http://www.infoq.com/resource/news/2013/03/MySQL-Reference-Architectures/zh/resources/4.png;jsessionid=2D9570BC1574EE32730A0A2B0E42C2E9" width="500" alt="" _href="img://null" _p="true" /></p> 
-<p>会话管理网站和电子商务网站应该使用集群，白皮书声称“4个数据节点，1秒可以支持6000个会话（页面点击），其中每次页面点击生成8–12个数据库操作”。大规模CMS网站使用的配置与中型网站类似，只是必要时需要多添加一些从服务器。针对分析类应用，这里引入了一个数据提炼（Data Refinery）单元，用于数据的清理和组织。</p> 
-<p><b>超大规模（Extra Large）网站参考架构</b></p> 
-<p>针对社交网站，白皮书也给出了相应建议。它声称“网络上流量最大的10个网站有9个部署了MySQL，其中包括Google、Facebook和YouTube”，但是没有说明这些网站用MySQL干什么，不过众所周知的是，LinkedIn成功应用了MySQL。</p> 
-<p>社交网站的拓扑结构利用了中型和大规模网站中实现的概念，包括专用应用服务器、Memcached和数据提炼单元, 但为支持写操作的向外扩展引入了分片（Shard）。MySQL集群被用于用户的认证和查找，当“用于查找的键（key）不止1个”时，直接读写相应的分片。</p> 
-<p><img src="http://www.infoq.com/resource/news/2013/03/MySQL-Reference-Architectures/zh/resources/5.png;jsessionid=2D9570BC1574EE32730A0A2B0E42C2E9" width="500" alt="" _href="img://null" _p="true" /></p> 
-<p>MySQL主服务器和从服务器的推荐规格如下：</p> 
-<ul> 
- <li>8–16个x86-64位CPU核心（MySQL 5.5及以上)。</li> 
- <li>4–8个x86 -64位CPU核心（MySQL 5.1及更早版本）。</li> 
- <li>比活动数据多3–10倍的内存。</li> 
- <li>Linux、Solaris或Windows操作系统。</li> 
- <li>最少4块磁盘，8–16块磁盘能增加I/O密集型应用的性能。</li> 
- <li>支持电池供电高速缓存的硬件RAID。</li> 
- <li>推荐使用RAID 10。如果负载为读密集型，RAID 5也是合适的。</li> 
- <li>2个网卡和2个供电单元用作冗余。</li> 
-</ul> 
-<p>另外，白皮书还有一些针对MySQL集群和数据存储设备的建议，再就是用于监控、备份和集群管理的解决方案。</p> 
-<p><b>查看英文原文</b>：<b><a href="http://www.infoq.com/news/2013/03/MySQL-Reference-Architectures;jsessionid=2D9570BC1574EE32730A0A2B0E42C2E9">MySQL Reference Architectures for Small to Extra Large Websites</a></b></p> 
+<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>GitSync for Plastic SCM发布，支持原生Git协议及Visual Studio 2012</h3><p><a href="http://plasticscm.com/gitsync/index.html">GitSync for Plastic SCM</a>是一个原生的、基于Windows的分布式版本控制系统（DCVS），它在不需要任何中间转换的情况下，提供了对https:// 以及git:// 等原生Git协议的支持，并且能够集成Git库。</p> 
+<p>它允许你充分利用Plastic SCM的功能，使用原生的Git网络协议与GitHub、Codeplex、BitBucket或任何Git服务器之间进行代码变更的push与pull，并且与Visual Studio 2012相集成，以使你可以在一个单独的集成开发环境（IDE）下使用所有功能。</p> 
+<p>GitSync for Plastic SCM能够clone一个Git库并在之后将变更push到其中。作为开发者，你能够使用它创建分支并将它们push至Git，或是在Git中创建分支并pull至本地。它也有效地处理了并发冲突的问题，以使得开发者能够在两个系统（Plastic SCM与Git）中同时工作在同一分支上，并正确合并变更，就如同工作在纯Plastic SCM环境下或是纯Git环境下一样。</p> 
+<p>Plastic SCM包含了一个分布式分支浏览器，使得你可以像本地库一样浏览远程库。它还可以将远程变更和本地变更共同显示在一张图表上。另外，开发者将能够使用Xdiff（cross-difference）和Xmerge（cross-merge）跟踪代码，它们能够鉴别出被移动过的代码片段，并在它们之间建立关联以便于浏览。</p> 
+<p>它允许你通过图形界面中的注解视图（annotate view）调用“方法历史”（method history），它也提供了对Eclipse、多语言的支持，改进了C#，并提供了在多个文件间跟踪重构代码的功能。</p> 
+<p>Plastic SCM的总裁Pablo Santos说道：“我需要强调，GitSync并不是一个新产品，它只是将Plastic SCM领入了Git社区，因此用户们可以在客户端使用Plastic，并与任何Git服务器进行代码的push/pull。由于Windows上的Git工具相对要弱于Mac OS X上的版本， 而Plastic SCM是特别闪耀于Windows平台上的工具，我们认为这将有助于Git的用户，并简化Plastic SCM的使用”。</p> 
+<p>InfoQ与产品团队的Manuel Lucio Dallo进行了一次交谈，以获得对Plastic SCM更多的了解。</p> 
+<p><b>InfoQ</b><b>：GitSync for Plastic SCM</b><b>是否提高了生产力？</b></p> 
+<blockquote> 
+ <p>使用Plastic作为Git“客户端”，你的开发速度将会加快，你将减少在源代码控制方面所花费的时间，将更多的时间用于重要的事，例如编码。Plastic SCM 100%图形化并且非常直观。Git中的复杂而又常规的动作既耗时又需要编写各种令人费解的命令，而在Plastic中只需要几次点击就可完成。</p> 
+</blockquote> 
+<p><b>InfoQ</b><b>：将GitSync for Plastic SCM</b><b>应用于真实场景的动机会有哪些？</b></p> 
+<blockquote> 
+ <p>假设你的团队正在使用Git，那你也被迫一起使用Git。现在，你可以在你的开发笔记本上使用Plastic SCM，并对Git进行push和pull操作，而你的开发过程都是通过Plastic SCM完成的。这对于那些打算在生产环境尝试Plastic，而又不想为评估过程花费太多力气的团队来说尤其有用。</p> 
+ <p>也有些开发者仅仅是对将命令行作为Git唯一的界面不感冒，此时Plastic就能够通过一个真实并强大的图形界面帮助这些开发者简化流程。一旦开发者认识到Plastic和Git一样强大，甚至有过之而无不及，并且更加易于使用，那我们就可以期待有大量的团队将会完全迁移到Plastic SCM上。</p> 
+ <p>我们没有什么硬件最低需求，一个普通的主流笔记本就能够完成工作。服务器端的Windows操作系统需要安装.NET Framework 3.5，默认的后台数据库是SQL Server CE。</p> 
+</blockquote> 
+<p><b>查看英文原文</b>：<a href="http://www.infoq.com/news/2013/03/gitsync-for-plastic-SCM;jsessionid=2F6848AC499CC82E07BD1547C60F3BA3">GitSync for Plastic SCM with Native Git Protocols and Visual Studio 2012 Support</a></p> 
+<hr /> 
+<p>感谢<a href="http://www.infoq.com/cn/bycategory.action;jsessionid=2F6848AC499CC82E07BD1547C60F3BA3?authorName=杨赛">杨赛</a>对本文的审校。</p> 
+<p>给InfoQ中文站投稿或者参与内容翻译工作，请邮件至<a href="mailto:editors@cn.infoq.com">editors@cn.infoq.com</a>。也欢迎大家通过新浪微博（<a href="http://www.weibo.com/infoqchina">@InfoQ</a>）或者腾讯微博（<a href="http://t.qq.com/infoqchina">@InfoQ</a>）关注我们，并与我们的编辑和其他读者朋友交流。</p> 
 <p id="lastElm"></p><br><br><br><br><br><br></body></html>
