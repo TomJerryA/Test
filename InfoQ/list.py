@@ -1,6 +1,9 @@
 <html>
  <head></head> 
- <body> 
+ <body>
+  <div>
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/22.py">CamundaがAlfesco Activitiをフォーク</a>ベルリンを本拠とするBPM専門のソフトウェアコンサルタント会社であるCamundaが AlfescoのActivitiをフォークして，camunda BPMという新たな製品をローンチすると発表した。同社がこれまで扱っていたActivitiベースのBPM製品であるcamunda foxの後継となるプロダクトだ。
+  </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/21.py">Windows Azureが更新し、Hadoop, HTML5/JS, CORS, PhoneGap, Mercurial、Dropboxをサポート</a>最近リリースされたWindows Azureのアップデートは、Hadoop サービス, HTML5/JS, CORS, PhoneGapをサポートし、Mercurial, Dropbox, CodePlex、Bitbucketのデプロイが統合されている。 
   </div> 
@@ -147,9 +150,6 @@
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/23.py">期限切れのSSL証明書で AzureとTFSがダウン</a>Windows Azureが2月22日に９時間動作停止し、Team Foundation Serviceを使っている人々を含めて、このストレージシステムに依存している全ユーザーに影響を与えた。InfoQは、この障害の根本原因に関して、明らかになった詳細を調査した。 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/22.py">QConTokyo2013【モバイル/HTML】トラックのご紹介</a>モバイル／HTML5トラックでは、急速に普及しているスマートフォン そして タブレットへの対応を取り上げ、マルチスクリーンで利用者に魅力的なUXを提供するアプリケーションを開発するするために不可欠な知識と技術の習得をテーマして構成しています。 
-  </div> 
+  </div>  
  </body>
 </html>

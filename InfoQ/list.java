@@ -2,7 +2,10 @@
  <head></head> 
  <body>
   <div>
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/41.java">Pluralsight Released Scratch and C# Programming Courses for Kids</a>Pluralsight, hardocre developer training company has released two new courses based on Scratch and C# for kids.
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/42.java">Business Process Improvement Using Agile</a>Organizations want to improve their business processes, and today they need to do it faster. Is it possible to use agile methods and techniques for business process improvement?
+  </div> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/41.java">Pluralsight Released Scratch and C# Programming Courses for Kids</a>Pluralsight, hardocre developer training company has released two new courses based on Scratch and C# for kids. 
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/40.java">Google Promises Not to Sue for Using Their Pledged Patents [Updated]</a>Google is promising not to take legal action against any party using pledged patents for open source or free software “unless first attacked.” 
@@ -147,9 +150,6 @@
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/43.java">Tom Baeyens, creator of jBPM and Alfresco Activiti, Starts New Venture to Bring BPM to the Cloud</a>Tom Baeyens, the original creator of JBoss jBPM (acquired by Red Hat) and Activiti (acquired by Alfresco), has announced Effektif, a new cloud-based Business Process Management (BPM) tool for process automation. The new venture is being developed in partnership with Signavio. InfoQ spoke to Baeyens and co-CEO of Signavio Decker to find out more. 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/42.java">Microsoft Open Sources Kinect for Windows Samples</a>Microsoft has recently open sourced on CodePlex 22 code samples under the Apache 2.0 license. The samples which are also included in the Kinect for Windows Toolkit show how to make use of various Kinect features: Audio, Basic Interactions, Colors, Depth, Face Tracing, Infrared, Slideshow Gestures, Speech, WPF, XNA, and others. 
   </div>  
  </body>
 </html>
