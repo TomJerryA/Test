@@ -2,7 +2,10 @@
  <head></head> 
  <body>
   <div>
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/40.java">Google Promises Not to Sue for Using Their Pledged Patents [Updated]</a>Google is promising not to take legal action against any party using pledged patents for open source or free software “unless first attacked.”
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/41.java">Pluralsight Released Scratch and C# Programming Courses for Kids</a>Pluralsight, hardocre developer training company has released two new courses based on Scratch and C# for kids.
+  </div> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/40.java">Google Promises Not to Sue for Using Their Pledged Patents [Updated]</a>Google is promising not to take legal action against any party using pledged patents for open source or free software “unless first attacked.” 
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/39.java">EclipseCon 2013 Roundup</a>EclipseCon 2013 was hosted in Boston this week, and covered diverse topics from OSGi in the cloud and Eclipse in space. Read on to find more about the key points covered and the winners of the Eclipse community awards. 
@@ -147,9 +150,6 @@
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/42.java">Microsoft Open Sources Kinect for Windows Samples</a>Microsoft has recently open sourced on CodePlex 22 code samples under the Apache 2.0 license. The samples which are also included in the Kinect for Windows Toolkit show how to make use of various Kinect features: Audio, Basic Interactions, Colors, Depth, Face Tracing, Infrared, Slideshow Gestures, Speech, WPF, XNA, and others. 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/41.java">Spring for Apache Hadoop 1.0</a>SpringSource has released Spring for Apache Hadoop 1.0. Spring for Apache Hadoop allows developers to write Hadoop applications under the Spring Framework. It also allows easily integration with Spring Batch and Spring Integration. Spring for Apache Hadoop is a subproject of the Spring Data umbrella project, and is released under the open source Apache 2.0 license. 
   </div>  
  </body>
 </html>

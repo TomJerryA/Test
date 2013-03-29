@@ -1,77 +1,31 @@
-<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>Spring for Apache Hadoop 1.0</h3><p> SpringSource has released <a href="http://www.springsource.org/spring-data/hadoop">Spring for Apache Hadoop 1.0</a>. Spring for Apache Hadoop allows developers to write Hadoop applications under the Spring Framework. It also allows easily integration with Spring Batch and Spring Integration. Spring for Apache Hadoop is a subproject of the Spring Data umbrella project, and is released under the open source Apache 2.0 license. </p> 
-<p> Hadoop applications generally are a collection of command line utilities, scripts and code. Spring for Apache Hadoop provides a consistent programming and declarative configuration model for developing Hadoop applications. Hadoop applications can now be implemented using the Spring programming model (Dependency Injection, POJOs, Helper Templates) and run as standard Java applications instead of command line utilities. Spring for Apache Hadoop supports reading from and writing to HDFS, running MapReduce, Streaming or Cascading jobs, and interacting with HBase, Hive and Pig. </p> 
-<p> The key features of Spring for Apache Hadoop include: </p> 
-<ul> 
- <li> Declarative configuration to create, configure, and parameterize Hadoop connectivity and MapReduce, Streaming, Hive, Pig, and Cascading jobs. There are &quot;runner&quot; classes that execute the different Hadoop interaction types, namely JobRunner, ToolRunner, JarRunner, HiveRunner, PigRunner, CascadeRunner and HdfsScriptRunner. </li> 
- <li> Comprehensive HDFS data access support using any JVM based scripting language, such as Groovy, JRuby, Jython and Rhino. </li> 
- <li> Template classes for Pig and Hive, named PigTemplate and HiveTemplate. These helper classes provide exception translation, resource management, and lightweight object mapping features. </li> 
- <li> Declarative configuration for HBase, and the introduction of HBaseTemplate for DAO support. </li> 
- <li> Declarative and programmatic support for Hadoop Tools, including File System Shell (FsShell) and Distributed Copy (DistCp). </li> 
- <li> Security support. Spring for Apache Hadoop is aware of the security constraints of the running Hadoop environment so moving from a local development environment to a fully Kerberos-secured Hadoop cluster is transparent. </li> 
- <li> Spring Batch support. With Spring Batch, multiple steps can be coordinated in a stateful manner and administered using a REST API. For example, Spring Batch's ability to manage the processing of large files can be used to import and export files to and from HDFS. </li> 
- <li> Spring Integration support. Spring Integration allows for the processing of event streams that can be transformed or filtered before being read and written to HDFS or other storage. </li> 
-</ul> 
-<p> Here are sample configuration and code snippets, mostly taken from the Spring for Hadoop blog or reference manual. </p> 
-<p> MapReduce </p> 
-<pre>
-	&lt;!-- use the default configuration --&gt;
-	&lt;hdp:configuration /&gt;
-
-	&lt;!-- create the job --&gt;
-	&lt;hdp:job id=&quot;word-count&quot; 
-		input-path=&quot;/input/&quot; output-path=&quot;/ouput/&quot;
-		mapper=&quot;org.apache.hadoop.examples.WordCount.TokenizerMapper&quot;
-		reducer=&quot;org.apache.hadoop.examples.WordCount.IntSumReducer&quot; /&gt;
-
-	&lt;!-- run the job --&gt;
-	&lt;hdp:job-runner id=&quot;word-count-runner&quot; pre-action=&quot;cleanup-script&quot; post-action=&quot;export-results&quot; job=&quot;word-count&quot; run-at-startup=&quot;true&quot; /&gt;
-</pre> 
-<p> HDFS </p> 
-<pre>
-	&lt;!-- copy a file using Rhino --&gt;
-	&lt;hdp:script id=&quot;inlined-js&quot; language=&quot;javascript&quot; run-at-startup=&quot;true&quot;&gt;
-		importPackage(java.util)
-		
-		name = UUID.randomUUID().toString()
-		scriptName = &quot;src/main/resources/hadoop.properties&quot;
-		// fs - FileSystem instance based on 'hadoopConfiguration' bean
-		fs.copyFromLocalFile(scriptName, name)
-	&lt;/hdp:script&gt;
-</pre> 
-<p> HBase </p> 
-<pre>
-	&lt;!-- use default HBase configuration --&gt;
-	&lt;hdp:hbase-configuration /&gt;
-		
-	&lt;!-- wire hbase configuration --&gt;
-	&lt;bean id=&quot;hbaseTemplate&quot; class=&quot;org.springframework.data.hadoop.hbase.HbaseTemplate&quot; p:configuration-ref=&quot;hbaseConfiguration&quot; /&gt;
-</pre> 
-<pre>
-	// read each row from HBaseTable (Java)
-	List
- <string>
-   rows = template.find(&quot;HBaseTable&quot;, &quot;HBaseColumn&quot;, new RowMapper
-  <string>
-   () { @Override public String mapRow(Result result, int rowNum) throws Exception { return result.toString(); } })); 
-  </string>
- </string></pre> 
-<p> Hive </p> 
-<pre>
-	&lt;!-- configure data source --&gt;
-	&lt;bean id=&quot;hive-driver&quot; class=&quot;org.apache.hadoop.hive.jdbc.HiveDriver&quot; /&gt;
-	&lt;bean id=&quot;hive-ds&quot; class=&quot;org.springframework.jdbc.datasource.SimpleDriverDataSource&quot; c:driver-ref=&quot;hive-driver&quot; c:url=&quot;${hive.url}&quot; /&gt;
-
-	&lt;!-- configure standard JdbcTemplate declaration --&gt;
-	&lt;bean id=&quot;hiveTemplate&quot; class=&quot;org.springframework.jdbc.core.JdbcTemplate&quot; c:data-source-ref=&quot;hive-ds&quot;/&gt;
-</pre> 
-<p> Pig </p> 
-<pre>
-	&lt;!-- run an external pig script --&gt;
-	&lt;hdp:pig-runner id=&quot;pigRunner&quot; run-at-startup=&quot;true&quot;&gt;
-		&lt;hdp:script location=&quot;pig-scripts/script.pig&quot;/&gt;
-	&lt;/hdp:pig-runner&gt;
-</pre> 
-<p> To get started, you can <a href="http://www.springsource.com/download/community?project=Spring%20Data%20Hadoop">download Spring for Apache Hadoop</a>, or use the <em>org.springframework.data:spring-data-hadoop:1.0.0.RELEASE</em> Maven artifact. The <a href="http://static.springsource.org/spring-hadoop/docs/current/reference/html/batch-wordcount.html">WordCount example</a> for Spring for Hadoop is also available. There is also the <a href="http://www.youtube.com/watch?v=wlTnBzQ6KDU">Introducing Spring Hadoop</a> webinar on YouTube. </p> 
-<p> Spring for Apache Hadoop requires JDK 6.0 and above, Spring Framework 3.0 (3.2 recommended) and above, and Apache Hadoop 0.20.2 (1.0.4 recommended). Hadoop YARN, NextGen or 2.x, is NOT supported at this time. Any Apache Hadoop 1.0.x distribution should be supported, and this includes distributions such as vanilla Apache Hadoop, Cloudera CDH3 and CDH4, Greenplum HD. </p> 
-<p> For in-depth information, you can read the <a href="http://static.springsource.org/spring-hadoop/docs/1.0.0.RELEASE/reference/html/">Spring for Apache Hadoop Reference Manual</a> and <a href="http://static.springsource.org/spring-hadoop/docs/current/api/">Javadoc</a>. The Spring for Apache Hadoop <a href="https://github.com/SpringSource/spring-hadoop">source code</a> and <a href="https://github.com/SpringSource/spring-hadoop-samples/">examples</a> are hosted on GitHub. </p> 
+<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>Pluralsight Released Scratch and C# Programming Courses for Kids</h3><p><a href="http://www.pluralsight.com">Pluralsight</a> has announced the availability of two new courses based on <a href="http://www.pluralsight.com/training/Courses/TableOfContents/learning-programming-scratch">Scratch</a> (developed by <a href="http://scratch.mit.edu/">MIT</a>) and <a href="http://www.pluralsight.com/training/Courses/TableOfContents/teaching-kids-programming">C#</a> programming languages specifically targeted for kids above 10+. The Scratch programming demonstrates the development of interesting programs and will be useful for those kids who are interested in computer science, mathematics or gaming.</p> 
+<p>Authored by <a href="http://pluralsight.com/training/Authors/Details/joe-hummel">Dr. Joe Hummel</a>, a visiting professor in the Department of Information and Computer Science at the University of California with a specialty in high performance computing, the whole course has been divided into 8 chapters with several modules.</p> 
+<p>The first two chapters examine the installation process of Scratch 1.4 on both Windows and Mac OS X. The remaining content focuses on coordinate systems, selection, repetition, variables and patterns. The course spans over 2 hours and has been tagged under beginner level.</p> 
+<p><a target="_blank" href="/resource/news/2013/03/pluralsight-scratch-csharp-kids/en/resources/Figure_Scratch_ORIGINAL.png;jsessionid=8C184F18EBFA2E27D21DD83E6F3B45EA"><img target="_blank" _p="true" alt="" src="http://www.infoq.com/resource/news/2013/03/pluralsight-scratch-csharp-kids/en/resources/1Figure_Scratch.png;jsessionid=8C184F18EBFA2E27D21DD83E6F3B45EA" /></a></p> 
+<p>Joe also provided demos and mini tests including homework questions and finishes the course by providing few project suggestions and tips.<strong> </strong></p> 
+<p>&quot;In Scratch, program flow is modelled visually. To me that's quite a bit simpler than having to learn the syntax of a language like VB to write a for loop. Scratch is designed to help people learn to program,&quot; says Keith Brown, Chief Technology Officer, Pluralsight.</p> 
+<p>The C# course from the house of <a href="http://www.teachingkidsprogramming.com/">Teaching Kids Programming</a> courseware library covers objects, methods, variables and for loops in a fun and creative way using Visual Studio and has been authored by <a href="http://pluralsight.com/training/Authors/Details/llewellyn-falco">Llewellyn Falco</a> and <a href="http://pluralsight.com/training/Authors/Details/lynn-langit">Lynn Langit</a>.</p> 
+<p><a href="/resource/news/2013/03/pluralsight-scratch-csharp-kids/en/resources/Figure_CS_ORIGINAL.png;jsessionid=8C184F18EBFA2E27D21DD83E6F3B45EA" target="_blank"><img _p="true" alt="" src="http://www.infoq.com/resource/news/2013/03/pluralsight-scratch-csharp-kids/en/resources/Figure_CS.png;jsessionid=8C184F18EBFA2E27D21DD83E6F3B45EA" /></a></p> 
+<p>The authors examine each concept with the help of source codes and also included quiz and several homework questions. This course has been allotted a time span of one hour and has been tagged under beginner level.</p> 
+<p><strong>Course authors teaching C# for a group of kids at an elementary school</strong><br /> <br /> <img _p="true" _href="img://Figure_3.jpg" alt="" src="http://www.infoq.com/resource/news/2013/03/pluralsight-scratch-csharp-kids/en/resources/Figure_3.jpg;jsessionid=8C184F18EBFA2E27D21DD83E6F3B45EA" /></p> 
+<p>As with other Pluralsight courses, Kids can directly jump to learn a specific topic and will have an ability to access exercise files and assessments if they have purchased a monthly/annual plus subscription plan.</p> 
+<p>InfoQ had a brief chat with Aaron Skonnard, President and CEO, Pluralsight to know more about these new courses meant for kids.<br /> &nbsp;<br /> <strong>InfoQ: Do you think kids are smart enough to learn programming languages such as C#?</strong></p> 
+<blockquote>
+  Definitely. I just had my 11 and 14 yearr old boys take the Teaching Kids Programming (TKP) in C# course and they had no issues.
+ <br /> 
+ <br /> The important thing is not so much the language you choose but rather &quot;how&quot; you choose to teach it. Lynn and Llewellyn use the 
+ <a href="http://teachingkidsprogramming.org/blog/homepage/teachers/">intentional method</a> of learning, where they ask children to translate English into code one line at a time. They ask the kids to make certain things happen (the intention) without explaining exactly how to do it and they guide the children in figuring it out. 
+ <br /> 
+ <br /> It's a very effective and compelling way of learning. The TKP courseware is also available in Java and Small Basic, but Pluralsight only has the C# course available right now. However, we do intend to cover many different languages, as illustrated by our Scratch programming course for kids.
+ <br /> &nbsp;
+ <br /> The Scratch course is designed for kids to go through by themselves (independently) whereas the TKP course is designed for parents or teachers to do with the children (as the mentor). 
+ <br /> 
+ <br /> Although guiding kids through the TKP course is most effective, kids can also go through the TKP course on their own, which is what my own son did last night. He finished the entire course in a few hours. 
+</blockquote> 
+<p><strong>InfoQ: Can you share with us the future roadmap for kids courses?</strong></p> 
+<blockquote>
+  We are planning to publish more TKP courses that use Java and Small Basic. We're also working on some new kids courses on 
+ <a href="http://appinventor.mit.edu/">App Inventor</a>, Arduino, Raspberry Pi, and Lego Mindstorms (and more). We hope to have dozens of kids courses by the end of the year. 
+</blockquote> 
+<p>&quot;Parents can get access to Visual Studio Express, free of charge, to use with our Teaching Kids Programming course. Most professional developers working on the Microsoft platform will already have a paid version of Visual Studio but the Express editions work just fine with our course,&quot; said Aaron when InfoQ asked him why the C# course authors make use of Visual Studio for teaching C#.</p> 
 <p id="lastElm"></p><br><br><br><br><br><br></body></html>
