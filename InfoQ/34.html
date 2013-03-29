@@ -1,49 +1,39 @@
-<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>百度技术沙龙第36期回顾：语音技术现状与趋势（含资料下载）</h3><p>在3月16日由<a href="http://weibo.com/baidutech">@百度</a>主办、<a href="http://e.weibo.com/infoqchina">@InfoQ</a>负责策划组织和实施的<a href="http://www.infoq.com/cn/zones/baidu-salon/;jsessionid=1A6366B4C2D20D834615DD0570A4A620">第36期百度技术沙龙</a>活动上，百度多媒体部门的语音技术研发工作的负责人贾磊和IBM中国研究院信息和用户技术（IUT）部的高级经理秦勇分享了在语音技术的的经验与实践，话题涉及“语音技术的发展与应用”，以及“利用数据做聪明的决定”等。本文将对他们各自的分享做下简单的回顾，同时提供相关资料的下载。</p> 
-<p><strong>主题一：语音技术的发展与应用（<a href="http://pan.baidu.com/share/link?shareid=504554&amp;uk=3223972836">下载讲稿</a>）</strong></p> 
-<p>百度多媒体部门的语音技术研发工作的负责人贾磊首先结合百度通用语音识别服务介绍了在互联网下的语音识别的技术特色：</p> 
-<ol> 
- <li>网络化的识别构架</li> 
- <li>海量语言模型训练玉莲和语音层信息的快速更新</li> 
- <li>海量的来自各种平台的语音特征</li> 
- <li>庞大的计算资源和服务平台</li> 
-</ol> 
-<p>目前百度使用一套网络架构支持包括掌上百度、百度搜索、Ting!等多样化的产品，所有的产品通过统一的接入接口经过解码器由垂直领域模型进行解析，语音通过使用类语言模型、Grammer模型、Ngram模型和深度神经网络模型，进行一遍解码，进行文字结果识别、指令内容解析。</p> 
-<p>然后他对声学建模和语音识别中的深度神经网络进行了介绍，主要针对传统SDG训练等的不足指出深度神经网络在语音识别方面的优势：</p> 
-<ol> 
- <li> <p>在1000小时数据的训练上，相对于mpe和fmpe的区分度系统而言，实现了相对误识别率的降低超过20%。</p> </li> 
- <li> <p>训练后的DNN网络最终是稀疏的，经过优化后，可以适应CPU的线上服务要求。最后的概率计算打分在12核12线的条下满足时时解码要求。</p> </li> 
- <li> <p>有希望克服了SGD缓慢训练的问题，使用异步混乱梯度法或者是基于二阶优化信息的优化算法，有希望实现了DNN的并行海量数据训练，解决了DNN训练时间过长的难题。</p> </li> 
- <li> <p>DNN在百度已经取代了GMM！</p> </li> 
-</ol> 
-<p>虽然深度神经网络作为一种强力的模式识别分类工具，广泛成功的应用于语音、图像等多媒体领域。而在文本分类领域，其应用并未获得压倒性的优势。他对这个问题践行了简单的解释。</p> 
-<p>最后他提到了Deep Brain的构想，希望能够通过这一个技术平台的搭建彻底解决DNN训练练的时间过长的技术瓶颈和网络结构和权重共同学习问题。</p> 
-<p><strong>主题二：利用数据做聪明的决定（<a href="http://t.cn/zYdCR3f">下载讲稿</a>）</strong></p> 
-<p>IBM中国研究院信息和用户技术（IUT）部的高级经理秦勇第二个为大家分享，他主要围绕如何通过数据来进行决策支持，主要涉及四个方面的内容：语音翻译、社交网络分析、深度问答和图像分析。</p> 
-<p>秦勇首先回顾了IBM的语音识别技术历史，IBM自1961年进行语音技术研究以来，一直在相关技术领域处于领先地位，IBM的语音识别解决方案是将内容通过iTrans转化成文本，通过不同的分析平台根据其用途进行解析，他对iTrans的架构进行了讲解。</p> 
-<p>在随后谈到社交网络分析时，他引用了这样一句话：</p> 
-<blockquote> 
- <p>网络的社会化不会朝生暮死，也不回昙花一现。网络的社会化将逐渐的影响到每个人，每家公司，每个国家，深入到世界的各个角落。</p> 
-</blockquote> 
-<p>IBM目前针对公共事业、金融投资、消费品等领域进行针对性的社会化分析，通过面向领域的情感分析和观点总结能够迅速了解到相关领域的社会化网络现状。</p> 
-<p>对于深度问答，IBM最显而易见的成果是Watson，当然，这只是背后庞杂技术的具体展示，Watson的实现涉及了语料分析、证据索引、假设推断以及决策制定等复杂的理论技术支持。</p> 
-<p>最后，他谈到了视觉分析，用户能够通过元数据处理以后的数据挖掘，在不同层面上对处理后的结果进行可视化的展示，在内容管理、健康管理、智慧地球等领域都能看到其运用场景。</p> 
-<p><strong>Open Space（开放式讨论环节）</strong></p> 
-<p>为了促进参会者与我们每期的嘉宾以及讲师近距离交流，深入探讨在演讲过程中的疑问，本次活动依然设置了Open Space（开放式讨论）环节。</p> 
-<p>在Open Space的总结环节，几位话题小组长分别对讨论的内容进行了总结。</p> 
-<blockquote> 
- <p>贾磊：今天和大家分享了百度的语音技术现状，同时也和不同行业的朋友对于语音识别的未来有了一次深入交流，对我的启发也很大；</p> 
- <p>秦勇：我们看到了Siri等语音技术正在改变大家的交互方式，因此谈到了语音在未来的下一个热点，如呼叫中心、多媒体内容管理等，还有就是大家也谈到了IBM Watson的未来；</p> 
- <p>郑鑫：我们讨论了语音技术在银行业的应用，同时还讨论了语音导航、客服来电语音分析等，也获得了很多灵感；</p> 
- <p>董鑫：我们组主要围绕语音合成技术的应用进行讨论，包括语音合成在未来将会扮演的角色、目前的一些语音合成技术现状等；</p> 
-</blockquote> 
-<p>会后，一些参会者也通过新浪微博分享了他们的参会感受：</p> 
-<blockquote> 
- <p><a href="http://weibo.com/panyuning">Pan小月</a>：正在聊语音识别的话题，我一直在想把语音识别技术应用到@下厨房 里，可结合的点很多，不光是菜谱步骤＂下一步＂这么简单（其实我们已经做过语音搜索了，可做的还有许多）。还有豆瓣电台，对于大量把豆瓣电台当背景音乐的人来说，能用语音控制会更实用吧。</p> 
- <p><a href="http://weibo.com/870906000">double_刘佳</a>：下午去参加百度技术沙龙，太火爆了，比场面更火的还是语音识别，我这门外汗是开眼界了，之前的好些想法IBM都搞出模型了，只是IBM没提供给互联网用户使用：iTrans视频提取文本做内容搜索，播放时可选择包含关键词的时间点；从电视台广播台的多媒体内容中抽出文本；男女声识别；个性化发声，好多好多。</p> 
- <p><a href="http://weibo.com/hsiaotong">Yang-Hsiao-Tung</a>：百度「技术沙龙」真是不错，可以为国内IT行业塑造一种时尚文化。</p> 
- <p><a href="http://weibo.com/n/Yourtion">Yourtion</a>: iTranS果然很厉害~ 对于音频与视频中的语音进行识别，然后可以使用文字对其内容进行搜索，还能根据关键词打标签。</p> 
- <p><a href="http://weibo.com/u/1920627817">有假熊出没</a>：IBM的演讲更大程度上是一些idea，一种别样的感受</p> 
-</blockquote> 
-<p>有关百度技术沙龙的更多信息，可以通过新浪微博关注<a href="http://weibo.com/baidutech">@百度技术沙龙</a>，或者关注InfoQ官方微信：infoqchina，InfoQ上也总结了过往35期所有百度技术沙龙的演讲视频和资料等，感兴趣的读者可以<a href="http://www.infoq.com/cn/zones/baidu-salon/;jsessionid=1A6366B4C2D20D834615DD0570A4A620">直接浏览内容</a>。</p> 
-<p><strong>特别提示：</strong>第37期百度技术沙龙将在4月20日，在北京举行，欢迎关注<a href="http://weibo.com/infoqchina">@InfoQ</a>、<a href="http://weibo.com/baidutech">@百度技术沙龙</a>获取后续的轰动信息。</p> 
+<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>Google即将发布Go语言1.1版</h3><p>继2012年3月Google发布Go语言的第一个正式版本Go 1之后，时隔一年，Google将于近期发布Go 1.1。通过从Google网站内收集到的信息，我们了解到新版本保持了对旧版本的<a href="https://go.googlecode.com/doc/go1compat.html">兼容性</a>，同时还添加了一些重大的语言特性，修改了大量类库，并且改善了编译器、类库和运行时的实现。</p> 
+<p>Google相信，很多用户仅仅通过安装新版本并重新编译已有程序就能看到显著的性能提升。以下就是InfoQ了解到的，即将发布的新版Go语言将为我们带来的新特性（具体信息以正式发布时的特性列表为准）。</p> 
+<p>语言方面的变化如下：</p> 
+<ul> 
+ <li>在Go 1.1中常量0作为除数时会引发编译错误而不是运行时错误。</li> 
+ <li>对<a href="https://go.googlecode.com/hg/doc/go1.1.html#unicode">Unicode</a>文本中的代理项做了处理，在Go1.1中代理项约束内置到了编译器、类库和运行时中。</li> 
+ <li>实现了<a href="https://go.googlecode.com/ref/spec#Method_values">方法值</a>，也就是能够绑定到指定接收值的函数。</li> 
+ <li>引入了<a href="https://go.googlecode.com/ref/spec/#Terminating_statements">终止语句</a>的概念，能够更加自由地使用“return”语句。</li> 
+</ul> 
+<p>在实现和工具方面，新版本也做了诸多改进，包括：</p> 
+<ul> 
+ <li>命令行标记解析。</li> 
+ <li>64位平台上的int大小。</li> 
+ <li>Unicode文本。</li> 
+ <li>GC编译器。</li> 
+ <li>修改了go/go test/go fix命令。</li> 
+</ul> 
+<p>在性能方面，使用Go 1.1 GC工具套件编译的代码将为大多数应用带来30%到40%的性能提升，甚至会更高，当然对于少数程序性能提升并不明显或者没有提升。基于性能考虑，新版本对工具和类库做了很多微调，其中特别需要注意的几个主要变动如下：</p> 
+<ul> 
+ <li>GC编译器在大多数情况下会生成更好的代码，最重要的莫过于32位Intel架构上的浮点数。</li> 
+ <li>GC编译器会做更多的内联，包括一些运行时操作，如<a href="https://go.googlecode.com/pkg/builtin/#append">append</a>和接口转换。</li> 
+ <li>重新实现了Go Map，大大降低了内存占用和CPU时间消耗。</li> 
+ <li>优化了垃圾回收器的并行化处理，降低了程序在多CPU上运行的延迟。</li> 
+ <li>垃圾回收器更加精确，花费的CPU时间更少，并能显著降低堆大小，在32位架构上尤为明显。</li> 
+ <li>运行时和网络类库紧耦合，网络操作仅需要少量的上下文切换。</li> 
+</ul> 
+<p>新版本Go语言对标准类库也做了大量更新，包括：</p> 
+<ul> 
+ <li>增加了一个新类型<a href="https://go.googlecode.com/pkg/bufio/#Scanner">Scanner</a>，以行或者空格分隔单词的形式读取输入更加容易。</li> 
+ <li>对传入<a href="https://go.googlecode.com/pkg/net/#ResolveTCPAddr">ResolveTCPAddr</a>的网络名做了限定，不再像1.0那样可以使用“tcp”、“tcp4”和“tcp6”之外的字符，在1.1中使用其他的字符串将会返回一个错误。其他的解析器<a href="https://go.googlecode.com/pkg/net/#ResolveIPAddr">ResolveIPAddr</a>、<a href="https://go.googlecode.com/pkg/net/#ResolveUDPAddr">ResolveUDPAddr</a>和<a href="https://go.googlecode.com/pkg/net/#ResolveUnixAddr">ResolveUnixAddr</a>也是如此。同时<a href="https://go.googlecode.com/pkg/net/#ListenUnixgram">ListenUnixgram</a>将返回<a href="https://go.googlecode.com/pkg/net/#UnixConn">UnixConn</a>而不是<a href="https://go.googlecode.com/pkg/net/#UDPConn">UDPConn</a>。</li> 
+ <li>在新版本中能够使用<a href="https://go.googlecode.com/pkg/reflect/">reflect</a>包运行“select”语句。新方法<a href="https://go.googlecode.com/pkg/reflect/#Value.Convert">Value.Convert</a>（或者<a href="https://go.googlecode.com/pkg/reflect/#Type">Type.ConvertibleTo</a>）提供了执行Go转换或者对<a href="https://go.googlecode.com/pkg/reflect/#Value">Value</a>进行类型断言操作的功能。同时reflect包还新增了<a href="https://go.googlecode.com/pkg/reflect/#MakeFunc">MakeFunc</a>、<a href="https://go.googlecode.com/pkg/reflect/#ChanOf">ChanOf</a>、<a href="https://go.googlecode.com/pkg/reflect/#MapOf">MapOf</a>和<a href="https://go.googlecode.com/pkg/reflect/#SliceOf">SliceOf</a>等函数。</li> 
+ <li>在1.1版本中FreeBSD、Linux、NetBSD、OS X和OpenBSD平台返回的时间精确度为纳秒。</li> 
+ <li>过期的和旧的子树转移到了go.exp和go.text子库中</li> 
+</ul> 
+<p>对于类库所做变更还有很多，在此无法一一列举了，感兴趣的读者可以查看Google提供的介绍。</p> 
+<hr /> 
+<p>感谢<a href="http://www.infoq.com/cn/bycategory.action;jsessionid=D290E90D47353265E180460BC49AA196?authorName=侯伯薇">侯伯薇</a>对本文的审校。</p> 
+<p>给InfoQ中文站投稿或者参与内容翻译工作，请邮件至<a href="mailto:editors@cn.infoq.com">editors@cn.infoq.com</a>。也欢迎大家通过新浪微博（<a href="http://www.weibo.com/infoqchina">@InfoQ</a>）或者腾讯微博（<a href="http://t.qq.com/infoqchina">@InfoQ</a>）关注我们，并与我们的编辑和其他读者朋友交流。</p> 
 <p id="lastElm"></p><br><br><br><br><br><br></body></html>

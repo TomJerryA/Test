@@ -1,55 +1,14 @@
-<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>Facebook元老王淮眼中的软件开发原则</h3><p>王淮是Facebook的早期员工，也是Facebook内部第二位中国籍工程师和第一位研发经理，曾经负责支付后台和安全系统，担任反欺诈部门的技术经理。最近，他<a href="http://www.tmtpost.com/22793.html" target="_blank">分享</a>了一些基本的码农原则，包括代码结构、测试重要性等。</p> 
-<p>正确性是第一要求，他认为“不能解决问题的代码是耍流氓”。</p> 
-<p>然后是代码结构，王淮觉得结构体现逻辑：</p> 
-<blockquote> 
- <p>第一步，第二步，需要什么数据，需要做什么处理，处理完了结果到那里去，都应该在结构中被很好的体现出来。</p> 
- <p>结构体现设计。 设计一定要清晰。我的经验来看，一般来说，在设计结构图上面的每个组件都对应着自己的类，然后之间或类内部的通信通过成员函数来完成。</p> 
-</blockquote> 
-<p>他提供一个可借鉴的做法：在一个大的功能实现过程中，给出第一个diff（提交代码增量）的时候，可以只把结构当做一个diff，里面的函数可以是空的(place holder，作为占位符)。 把数据的生成和界面的展示分开来。典型的可以按照MVC的模式来，但也可以只把数据和UI界面分开来的比较轻量级的做法。结构应当是提交代码审查的时候最最关注的地方。最需要问的问题就是“这个diff号称要解决的问题被正确解决了吗？”</p> 
-<p>测试的重要性不言而喻。王淮指出：</p> 
-<blockquote> 
- <p>不论你再正确，还是有错误的时候。通过（相对）公正的测试一是来减少自己被绕到代码里的几率，二是让后续的或者别人的改动对自己代码不经意的破坏被最快的展现出来。测试应该把类主要的功能都测一遍。测试也应该把类和其他类最重要的集成部分也测一遍。</p> 
-</blockquote> 
-<p>对于提交代码增量的问题，王淮说了几个需要注意的事项：</p> 
-<ul> 
- <li>Bug修改，无所谓，该多大就多大。一般bug fix不会超过100行。超过的要特别重视，想想究竟是什么原因造成。会不会是当初设计的问题。一个diff，原则上不应该超过200-300行修改。但多了怎么办，把一个diff变成多个。</li> 
- <li>每个diff应该只做一件事情。每个diff尽可少的做一个改动。这样可以尽可能的方便自己的管理(学会用git branch)，和方便审阅者的代码审查。如果diff越集中做一件事，审查代码的人需要越短的时间来审查做出高质量的，整体效率越高。</li> 
- <li>一个功能超过一屏，则将其分割。</li> 
-</ul> 
-<p>面向对象还是面向函数，王淮指出，Java本身就是面向对象，所以这个问题不大。但千万不要出现披着面向对象的外皮，在类里面写超长的面向函数的处理。这种情况下，尽可能的分流成辅助函数。</p> 
-<p>关于代码规范，他举了一些简单的例子：比如文件名，变量或函数名的命名规范，分行的前置空2个空格或4个；每行的字数（不应超过80字符）；如何使用public/private/protected；用左右括号的原则；空行的使用；文件和代码comments的位置 （比如，代码注释只能单独成行）；对“// TODO:”的使用规范；宏、常量的使用。这里没有特别的哪一种样式一定更对，但是需要有一个大家统一的指南，一起遵守，让整体的代码有统一的风格和标准。最大的好处就是有利于可读性，可读性的好坏决定着维护成本。</p> 
-<p>注释应当简洁但充分。有些人觉得代码应该自说名。王淮不大同意，代码是实现细节，适当的在意图上给予说明，可以大幅度的减少读代码的人的烦恼。</p> 
-<p>代码审查越来越受到重视，王淮指出：</p> 
-<ul> 
- <li>作为审查者，一定要读懂diff；所有被接受的diff必须是在读懂的前提下。做审查者的人要有“将来如果这些代码线上出问题，我要帮助支持”的心理准备。</li> 
- <li>代码审查应该被每个工程师当做工作的重要一部分。</li> 
- <li>应当在24小时内给回复，这应当变成共识。</li> 
- <li>感觉有问题的代码，一定要在相应的行上做出评论 （inline comments)，以让作者明白问题所在。</li> 
- <li>尽可能把对修改的所有意见一次性给出，减少来来回回的次数。比较复杂的建议审查者主动找代码作者来进行线下沟通，达成一致。</li> 
- <li>一般的diff，来回次数不宜超过3次；如果超过3次，想想看，是不是diff 太大，太复杂了。</li> 
-</ul> 
-<p>说到代码审查，thoughtbot公司最近在<a href="https://github.com/thoughtbot/guides/tree/master/code-review#code-review" target="_blank">github</a>上发布了自己的代码审查原则，其中几个值得关注的要点包括：</p> 
-<ul> 
- <li>接受这样的现实：很多编程上的主张都是一种个人观点。应该讨论它们的利与弊，提出你的倾向观点，迅速地达成一种解决方案。</li> 
- <li>提问，而不是命令。(“把这个变量改成<code>:user_id，</code>你觉得如何？”)</li> 
- <li>请求给予说明。(“我不明白。你能解释一下吗？”)</li> 
- <li>避免代码的归属之争。(“我的”，“不是我的”，“你的”)</li> 
- <li>避免使用一些会被认为是有关人身特征的词语。(“笨蛋”，“愚蠢”)要把所有人都看作是有魅力的、聪明的、善意的。</li> 
- <li>要明确。要记着并不是每个人都能理解你的意图。</li> 
- <li>要谦虚。(“我不能确定——我们来分析一下。”)</li> 
- <li>不要用夸张修辞语。(“总是”，“从不”，“永远”，“毫无…”)</li> 
- <li>不要讽刺。</li> 
- <li>展现真实的你。如果你不是幽默型的人，不喜欢使用一些表情符号或动画gif图，不要勉强。如果你是这种人，请自信的发挥。</li> 
- <li>如果有太多的“我不理解”或“另一种方案：”的评论，请专门针对这个人进行交流。可以把你们线下的交流总结成一个帖子附在后面。</li> 
- <li>对审查者的建议表示感激。(“谢谢提醒。我会把它改正。”)</li> 
- <li>理解审查是对事不对人。审查的是你的代码，而不是你。</li> 
- <li>解释为什么代码写成这样。(“因为xxx原因我才写成这样。如果我把这个类/文件/方法/变量改个名会更清晰些吗？”)</li> 
- <li>整理所作的改动，在以后的迭代中重构它们。</li> 
- <li>在做修改的版本上注明代码审查的链接。</li> 
- <li>push提交要基于最早的一轮反馈，并形成一个独立的分支。等这个分支上的任务完全完成了再合并。这让审查者能够根据早先的反馈找到你的单独的更新。</li> 
- <li>努力站在审查者的立场上理解。</li> 
- <li>争取回复每个评论。</li> 
- <li>直到最后一个人退出登录后再合并分支。</li> 
- <li>直到持续集成测试(TDDium, TravisCI,等)告诉你这个分支的测试套件通过后再合并分支。</li> 
-</ul> 
+<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>Windows Azure移动服务更新，支持Android、活动目录和更多语言，并支持在东亚地区部署服务</h3><p>微软更新了<a href="http://weblogs.asp.net/scottgu/archive/2013/03/04/windows-azure-updates-android-support-sql-reporting-services-active-directory-more.aspx">Windows Azure移动服务</a>，增加了对Android平台的支持。同时，微软基于<a href="http://www.apache.org/licenses/LICENSE-2.0.html">Apache 2.0</a>协议在GitHub上发布了<a href="https://github.com/WindowsAzure/azure-mobile-services">Android客户端SDK</a>。此外，还支持将移动服务部署到东亚地区，以减少亚洲客户使用应用时的访问延迟。</p> 
+<p>本次更新，支持从Windows Azure管理门户内部创建和管理<a href="http://www.microsoft.com/en-us/sqlserver/solutions-technologies/business-intelligence/reporting.aspx">SQL Reporting Services</a>，允许用户上传预先创建的报表、查看所管理报表的指标，以及管理用户访问报表、数据源和文件夹的权限。</p> 
+<p>借助更新后的管理门户，用户可以集成活动目录，借助它，能够创建和管理用户账号，能够从本地活动目录同步用户，能够使用活动目录联合身份验证服务建立Azure的单点登录，还能够使用基于手机的双重身份认证。</p> 
+<p>负责微软的服务器和工具业务的全球副总裁<a href="https://twitter.com/scottgu">Scott Guthrie</a>说：“记住，为了将延迟最小化，请把软件服务和Windows Azure SQL数据库部署到同一数据中心。”</p> 
+<p>本次更新支持监控Web应用的可用性。用户可以利用HTTP响应代码和响应时间，来了解自己的Web应用在世界各地的可用性。不过这一特性只能用于保留模式下的网站和移动服务、产品环境中的云服务和虚拟机。</p> 
+<p>微软还对<a href="http://msdn.microsoft.com/en-us/library/ee732537.aspx">服务总线</a>做了重大改进，例如用于队列、主题和订阅的更多仪表盘指标，还添加了操作和错误计数。此外，快速启动页面新增了样例解决方案的下载，这些解决方案展示了如何使用服务总线队列、主题和中继进行应用开发。</p> 
+<p>本次更新支持用户直接从Windows Azure管理门户内下载blob存储文件。它还增强了<a href="http://www.windowsazure.com/en-us/home/features/media-services/">Windows Azure媒体服务</a>，用户可以轻松地从Azure按需传输视频流，并能够从仪表盘里监视指标，无需配置自己的流媒体服务器。</p> 
+<p>除了以上改进，Windows Azure管理门户还允许上传证书的公共密钥，例如*.cer这样的证书文件。此外，门户还提供了对五种新语言的支持，包括俄语、韩语、葡萄牙语、简体中文和繁体中文。微软还将<a href="http://www.windowsazure.com/en-us/store/overview/">Windows Azure商店</a>扩展到了22个新国家。</p> 
+<p>知名iOS专家和<a href="http://netnewswireapp.com/">NetNewsWire</a>（现由<a href="http://netnewswireapp.com/black-pixel-acquires-netnewswire">Black Pixel</a>接管）创始人<a href="https://twitter.com/brentsimmons">Brent Simmons</a>发布了一系列<a href="http://www.windowsazure.com/en-us/develop/mobile/ios/">视频教程</a>，用于指导如何使用Windows Azure移动服务进行iOS应用开发。</p> 
+<p><b>查看英文原文：</b><a href="http://www.infoq.com/news/2013/03/windows-azure-march-updates;jsessionid=97A972E00FBE9D9383FB73198F74FB57"><b>Windows Azure Mobile Services with Android, Active Directory, Localization, East Asia Region</b></a></p> 
+<hr /> 
+<p>感谢<a href="http://www.infoq.com/cn/bycategory.action;jsessionid=97A972E00FBE9D9383FB73198F74FB57?authorName=臧秀涛">臧秀涛</a>对本文的审校。</p> 
+<p>给InfoQ中文站投稿或者参与内容翻译工作，请邮件至<a href="mailto:editors@cn.infoq.com">editors@cn.infoq.com</a>。也欢迎大家通过新浪微博（<a href="http://www.weibo.com/infoqchina">@InfoQ</a>）或者腾讯微博（<a href="http://t.qq.com/infoqchina">@InfoQ</a>）关注我们，并与我们的编辑和其他读者朋友交流。</p> 
 <p id="lastElm"></p><br><br><br><br><br><br></body></html>
