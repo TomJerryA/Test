@@ -1,6 +1,9 @@
 <html>
  <head></head> 
- <body> 
+ <body>
+  <div>
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/33.htmlb">goroutine背后的系统知识</a>Go语言从诞生到普及已经三年了，先行者大都是Web开发的背景，也有了一些普及型的书籍，可系统开发背景的人在学习这些书籍的时候，总有语焉不详的感觉，网上也有若干流传甚广的文章，可其中或多或少总有些与事实不符的技术描述。希望这篇文章能为比较缺少系统编程背景的Web开发人员介绍一下goroutine背后的系统知识。
+  </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/32.htmlb">函数式反应型编程(FRP) —— 实时互动应用开发的新思路</a>本文详细讲解JavaScript编程的一种新型编程模型：利用函数式编程(Functional Programming)的思想和方法(函数、高阶函数)来支持Reactive Programming，来达到所谓的Functional Reactive Programming，简称FRP。它从新的视角关注数据流，代码更接近于只描述做什么(what)的声明式(declarative)代码，简洁又直观。 
   </div> 
