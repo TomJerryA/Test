@@ -1,6 +1,9 @@
 <html>
  <head></head> 
- <body> 
+ <body>
+  <div>
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/43.java">MongoDB Gets Better Security, Text Search, Performance Improvements – What’s Next?</a>MongoDB 2.4 was recently released with new features such as Text Search, hash-based sharding, better geo-spatial capabilities with GeoJSON support and several performance and tooling improvements. We also discussed with 10gen about what’s next on the roadmap.
+  </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/42.java">Business Process Improvement Using Agile</a>Organizations want to improve their business processes, and today they need to do it faster. Is it possible to use agile methods and techniques for business process improvement? 
   </div> 
@@ -147,9 +150,6 @@
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/44.java">Node.js 0.10 Released</a>The Node.js development team has released version 0.10 of node.js, the Javascript-based platform for building high-performance asynchronous servers. The release features an easier to use module for handling streams, better error handling with domains, and performance improvements. The team also announced that after version 0.10, one more stable release (0.12) will follow before its 1.0 release. 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/43.java">Tom Baeyens, creator of jBPM and Alfresco Activiti, Starts New Venture to Bring BPM to the Cloud</a>Tom Baeyens, the original creator of JBoss jBPM (acquired by Red Hat) and Activiti (acquired by Alfresco), has announced Effektif, a new cloud-based Business Process Management (BPM) tool for process automation. The new venture is being developed in partnership with Signavio. InfoQ spoke to Baeyens and co-CEO of Signavio Decker to find out more. 
-  </div> 
+  </div>  
  </body>
 </html>
