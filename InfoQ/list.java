@@ -2,7 +2,10 @@
  <head></head> 
  <body>
   <div>
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/43.java">MongoDB Gets Better Security, Text Search, Performance Improvements – What’s Next?</a>MongoDB 2.4 was recently released with new features such as Text Search, hash-based sharding, better geo-spatial capabilities with GeoJSON support and several performance and tooling improvements. We also discussed with 10gen about what’s next on the roadmap.
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/44.java">Got Node? AWS Latest Cloud to Offer Node.js Application Services</a>The Amazon Web Services (AWS) team recently added support for Node.js to its Elastic Beanstalk service, giving it an industry-leading set of supported platforms. AWS has joined a crowded field of Node.js-friendly clouds and will attempt to differentiate themselves through integration with other top AWS services.
+  </div> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/43.java">MongoDB Gets Better Security, Text Search, Performance Improvements – What’s Next?</a>MongoDB 2.4 was recently released with new features such as Text Search, hash-based sharding, better geo-spatial capabilities with GeoJSON support and several performance and tooling improvements. We also discussed with 10gen about what’s next on the roadmap. 
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/42.java">Business Process Improvement Using Agile</a>Organizations want to improve their business processes, and today they need to do it faster. Is it possible to use agile methods and techniques for business process improvement? 
@@ -147,9 +150,6 @@
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/45.java">Applying Agile Practices in Enterprises Outside Development</a>After software development agile practices are now also being used in other aspects of business, according to Gartner. Insights in using agile in the whole enterprise, with examples from marketing, sales and services. 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/44.java">Node.js 0.10 Released</a>The Node.js development team has released version 0.10 of node.js, the Javascript-based platform for building high-performance asynchronous servers. The release features an easier to use module for handling streams, better error handling with domains, and performance improvements. The team also announced that after version 0.10, one more stable release (0.12) will follow before its 1.0 release. 
   </div>  
  </body>
 </html>
