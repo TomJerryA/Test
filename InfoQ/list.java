@@ -2,7 +2,10 @@
  <head></head> 
  <body>
   <div>
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/38.java">QCon New York Update (June 10-14): JavaScript, HTML5, Future of Mobile Tracks; Schedule Now Live</a>The schedule is live for QCon New York 2013 with registrations 60% ahead of last year at this time and 65/100 speakers confirmed. Hear about the latest tools, trends, and innovations in Mobile, JavaScript, and HTML5 development across three in-depth tracks and many tutorials. You can get in early by reserving your seat now, saving $400 by Apr 19th.
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/39.java">EclipseCon 2013 Roundup</a>EclipseCon 2013 was hosted in Boston this week, and covered diverse topics from OSGi in the cloud and Eclipse in space. Read on to find more about the key points covered and the winners of the Eclipse community awards.
+  </div> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/38.java">QCon New York Update (June 10-14): JavaScript, HTML5, Future of Mobile Tracks; Schedule Now Live</a>The schedule is live for QCon New York 2013 with registrations 60% ahead of last year at this time and 65/100 speakers confirmed. Hear about the latest tools, trends, and innovations in Mobile, JavaScript, and HTML5 development across three in-depth tracks and many tutorials. You can get in early by reserving your seat now, saving $400 by Apr 19th. 
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/37.java">Google Promises Not to Sue for Using Their Pledged Patents</a>Google is promising not to take legal action against any party using pledged patents for open source or free software “unless first attacked.” 
@@ -147,9 +150,6 @@
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/40.java">LLBLGen Pro v4.0 Beta with Table Valued Functions, SQL Server 2012 Sequence</a>Solutions Design has annnounced the availability of LLBLGen Pro v4.0 beta with several improvements to the designer and runtime system including support for Visual Studio 2010 and 2012. 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/39.java">Replacing Native PHP4 Extensions with Managed Extensions</a>Phalanger, the PHP runtime for .NET and Mono, has reached a significant milestone with the eleven popular PHP extensions being replaced with .NET equivalents. Previously these extensions, written in native C or C++, were limiting Phalanger to only running in 32-bit mode. 
   </div>  
  </body>
 </html>
