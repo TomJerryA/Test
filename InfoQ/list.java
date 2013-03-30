@@ -1,8 +1,8 @@
 <html>
  <head></head> 
- <body>
-  <div>
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/45.java">Video Lessons on Agile Coaching and Organizational Change</a>Two video lessons covering agile coaching and organizational change were released by Pearson/Addison-Wesley in the last quarter of 2012. They provide a different way to increase knowledge on agile adoption for visual and audible learners.
+ <body> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/45.java">Video Lessons on Agile Coaching and Organizational Change</a>Two video lessons covering agile coaching and organizational change were released by Pearson/Addison-Wesley in the last quarter of 2012. They provide a different way to increase knowledge on agile adoption for visual and audible learners. 
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/44.java">Got Node? AWS Latest Cloud to Offer Node.js Application Services</a>The Amazon Web Services (AWS) team recently added support for Node.js to its Elastic Beanstalk service, giving it an industry-leading set of supported platforms. AWS has joined a crowded field of Node.js-friendly clouds and will attempt to differentiate themselves through integration with other top AWS services. 
@@ -150,6 +150,6 @@
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/46.java">LLBLGen Pro v4.0 Beta with Table Valued Functions, Visual Studio Integration</a>Solutions Design has annnounced the availability of LLBLGen Pro v4.0 beta with several improvements to the designer and runtime system including support for Visual Studio 2010 and 2012. 
-  </div>  
+  </div> 
  </body>
 </html>
