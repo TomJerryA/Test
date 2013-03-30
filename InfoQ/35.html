@@ -1,75 +1,26 @@
-<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>Spring for Apache Hadoop 1.0发布</h3><p>SpringSource发布了<a href="http://www.springsource.org/spring-data/hadoop">Spring for Apache Hadoop 1.0</a>。开发者能够通过它编写基于Spring Framework的Hadoop应用，还能很容易地与Spring Batch和Spring Integration集成。Spring for Apache Hadoop是Spring Data大型项目的一个子项目，它基于开源的Apache 2.0许可发布。</p> 
-<p>Hadoop应用通常是一个命令行工具、脚本和代码的集合。Spring for Apache Hadoop为Hadoop应用开发提供了一个一致性的编程模型和声明式配置模型。开发人员现在能够借助它使用Spring编程模型（依赖注入、POJO和辅助模板）实现Hadoop应用，并且能够以标准的Java应用而不是命令行工具的方式运行它。Spring for Apache Hadoop支持对HDFS的读写操作，支持运行MapReduce、流或者级联工作，还能够与HBase、Hive和Pig交互。</p> 
-<p>Spring for Apache Hadoop包含以下关键特性：</p> 
+<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>磊友创始人赵霏谈HTML5手游上线iOS经验</h3><p>HTML5在游戏行业逐渐得到认可和普及，磊友创始人赵霏最近在<a href="http://www.zhihu.com/question/20880421" target="_blank">知乎社区</a>上分享了HTML5手游“<a href="https://itunes.apple.com/cn/app/lie-mo-yong-bing./id605684016" target="_blank">猎魔佣兵</a>”上线iOS的经验，包括HTML5技术开发手机游戏的优点、AppStore对游戏定价的限制条件和相应的解决办法、原生界面和Web界面的协调等等，对准备尝试iOS游戏的开发者和创业者来说都是不错的参考。</p> 
+<p>赵霏详细描述了<a href="https://itunes.apple.com/cn/app/lie-mo-yong-bing./id605684016" target="_blank">猎魔佣兵</a>上线的曲折过程，起初项目组“并没有把这个事情看的很难，因为我们的HTML5游戏引擎完全是自主研发的，而内核采用的是Canvas和Dom混合模式。我们预先设定的方案也是直接在苹果平台上用Xcode进行打包，把自己的Javascript脚本，美术资源和webview组件封装在一起。经过测试发现本地加载读取是可行的，于是安装包分分钟就做好了。”但是，后来经历了多次审核失败、修改和重新提交，笔者将其概括为几条：</p> 
+<ol> 
+ <li>游戏中出现了内测相关的邮件，苹果会以为你对用户不负责，拿用户来测试你的产品。经验：不论是游戏内部还是游戏描述，一定不要出现“内测”相关的东西。</li> 
+ <li>游戏定价问题。AppStore上网游的内置付费的道具的标价很重要，单价千万不要超过99美金。“我们的某个道具单价为648元人民币，完全超过99美金。”，接下来，道具一次性售出的总价也不能超过99美金。“我们将道具单价将为68元，但是我们允许用户一次性购买10份，那总价就是680元，结果又毫无压力超出99美金。”所以，要限制道具购买数量。</li> 
+ <li>磊友请来了有过审核斗争经验的专家，提供了建议：关键字的选择不要涉及版权，尽量多的把文字写在游戏截图上，图标设计的需要把握的尺度，不要贪心一次提交很多版本，同时也给了第一次接到AppStore审核的拒绝结果后两个小时应该有的反馈。”</li> 
+ <li>AppStore认为“游戏是基于web的游戏，建议我们提交给流量几乎为零的WebAppStore，宛如一桶凉水泼下来，从头到脚，这基本宣判了我们产品的死刑”。解决办法：我们又找到了AppStore上有一部分跟我们类似的原生与网页混合打包产品，分析后得出的结论是，无论从画面，还是用户操作，投入一些细节的设计和修改，我们是可以把Webapp产品做到原生的体验，同时也抛弃了之前图快图省事的想法。一方面我们也觉得是否在于之前被打回来的次数过多，所以苹果加强了对我们这款游戏的审核力度，导致最后杯具的结局。通过分析出这些原因，也就详细的拟定了修改的方案，安排技术人员又重新开始了我们的苹果之旅。这一次我们大大增加了原生代码的数量，将游戏的登录注册选服加载客服等等界面都用原生代码完成，适当的增加了动画特效，进入游戏后，我们替换了底栏菜单和聊天部分，同时加入了游戏的背景音乐。新完成的安装包，基本可以说原生代码和网页脚本比例达到了3:7的程度。最后我们重新注册了苹果账号，换了个马甲，继续提交。</li> 
+</ol> 
+<p>经历了多次修改最终成功之后，赵霏总结了几条HTML5手游上线iOS的经验：</p> 
 <ul> 
- <li>支持声明式配置，能够创建、配置和参数化Hadoop连接，支持MapReduce、流、Hive、Pig和级联工作。有不同的“runner”类执行不同的Hadoop交互类型，它们分别是JobRunner、ToolRunner、 JarRunner、 HiveRunner、 PigRunner、CascadeRunner和HdfsScriptRunner。</li> 
- <li>全面的HDFS数据访问支持，可以使用所有基于JVM的脚本语言，例如Groovy、JRuby、Jython和Rhino。</li> 
- <li>支持 Pig和Hive的模板类PigTemplate和HiveTemplate。这些辅助类提供了异常转化、资源管理和轻量级对象映射功能。</li> 
- <li>支持对HBase的声明式配置，同时为Dao层支持引入了HBaseTemplate。</li> 
- <li>声明和编程支持Hadoop工具，包括文件系统Shell（FsShell）和分布式复制（DistCp）。</li> 
- <li>安全支持。Spring for Apache Hadoop清楚运行Hadoop环境的安全约束，因此能够透明地从一个本地开发环境迁移到一个完全Kerberos安全的Hadoop集群。</li> 
- <li>支持Spring Batch。通过Spring Batch，多个步骤能够被调整为有状态的方式并使用REST API进行管理。例如，Spring Batch处理大文件的能力就可以被用于向HDFS导入或者从HDFS导出文件。</li> 
- <li>支持Spring Integration。Spring Integration允许对那些在被读取并写入HDFS及其他存储之前能够被转换或者过滤的事件流进行处理。</li> 
+ <li>苹果的审核确实非常尽职尽责，每一个可能的细节都不会放过。但感觉单机游戏如果只是下载收费要比有内置计费的网游容易通过的多，所以网游的设计和开发者一定要在计费接口部分多下功夫，一定要严格遵守苹果的规范。</li> 
+ <li>在提交时候，不要贪心同时提交iPhone和iPad两个版本，我们因为《猎魔佣兵》是HTML5技术可以自动适配屏幕分辨率于是全机型打钩提交上去，结果被苹果打回来的时候告知完全没区别……</li> 
+ <li>HTML5的游戏开发应该尽量使用Canvas来渲染画面，而Dom可以用在菜单和一些文字输入类控件即可。原生代码则主要用来制作框架容器和部分菜单，并且完成游戏进入前的界面和各种动画特效，声音声效的播放以及对话框和聊天部分。所有游戏第一次进入用到的图像和声音等资源打包为bundle模式，全部放在本地，更多的地图，副本的图像声音资源可以考虑分阶段下载。最后我们完成的安装包大小为33M，便于下载安装。一句话，多加一些Native的代码让你的HTML5游戏产品制作的更加接近原生体验吧！</li> 
+ <li>苹果对于Webapp的顾虑可能会在外链\第三方计费控制等问题吧，所以我建议这方面还是老实一点，不耍小聪明，万一上了线乱搞也有可能会被苹果踢下来。因此我们也会继续踏踏实实的做好游戏产品，遵守苹果的规范，认真服务于玩家。</li> 
+ <li>在游戏的打包中我们也可以通过原生代码不但增加了一键登录同时也把第三方统计平台加入进来，比如友盟，appcpa等等。</li> 
 </ul> 
-<p>下面是配置示例和代码片段，大部分来自于Spring for Hadoop博客或者参考手册。</p> 
-<p>MapReduce</p> 
-<pre>
-&lt;!-- use the default configuration --&gt;
-&lt;hdp:configuration /&gt;
-&lt;!-- create the job --&gt;
-&lt;hdp:job id=&quot;word-count&quot; 
-    input-path=&quot;/input/&quot; output-path=&quot;/ouput/&quot;
-    mapper=&quot;org.apache.hadoop.examples.WordCount.TokenizerMapper&quot;
-    reducer=&quot;org.apache.hadoop.examples.WordCount.IntSumReducer&quot; /&gt;
-&lt;!-- run the job --&gt;
-&lt;hdp:job-runner id=&quot;word-count-runner&quot; pre-action=&quot;cleanup-script&quot; post-action=&quot;export-results&quot; job=&quot;word-count&quot; run-at-startup=&quot;true&quot; /&gt;
-</pre> 
-<p>HDFS</p> 
-<pre>
-&lt;!-- copy a file using Rhino --&gt;
-&lt;hdp:script id=&quot;inlined-js&quot; language=&quot;javascript&quot; run-at-startup=&quot;true&quot;&gt;
-    importPackage(java.util)
-
-    name = UUID.randomUUID().toString()
-    scriptName = &quot;src/main/resources/hadoop.properties&quot;
-    // fs - FileSystem instance based on 'hadoopConfiguration' bean
-    fs.copyFromLocalFile(scriptName, name)
-&lt;/hdp:script&gt;
-</pre> 
-<p>HBase</p> 
-<pre>
-&lt;!-- use default HBase configuration --&gt;
-&lt;hdp:hbase-configuration /&gt;
-
-&lt;!-- wire hbase configuration --&gt;
-&lt;bean id=&quot;hbaseTemplate&quot; class=&quot;org.springframework.data.hadoop.hbase.HbaseTemplate&quot; p:configuration-ref=&quot;hbaseConfiguration&quot; /&gt;
-// read each row from HBaseTable (Java)
-List rows = template.find(&quot;HBaseTable&quot;, &quot;HBaseColumn&quot;, new RowMapper() {
-    @Override
-    public String mapRow(Result result, int rowNum) throws Exception {
-        return result.toString();
-    }
-}));
-</pre> 
-<p>Hive</p> 
-<pre>
-&lt;!-- configure data source --&gt;
-&lt;bean id=&quot;hive-driver&quot; class=&quot;org.apache.hadoop.hive.jdbc.HiveDriver&quot; /&gt;
-&lt;bean id=&quot;hive-ds&quot; class=&quot;org.springframework.jdbc.datasource.SimpleDriverDataSource&quot; c:driver-ref=&quot;hive-driver&quot; c:url=&quot;${hive.url}&quot; /&gt;
-
-&lt;!-- configure standard JdbcTemplate declaration --&gt;
-&lt;bean id=&quot;hiveTemplate&quot; class=&quot;org.springframework.jdbc.core.JdbcTemplate&quot; c:data-source-ref=&quot;hive-ds&quot;/&gt;
-</pre> 
-<p>Pig</p> 
-<pre>
-&lt;!-- run an external pig script --&gt;
-&lt;hdp:pig-runner id=&quot;pigRunner&quot; run-at-startup=&quot;true&quot;&gt;
-    &lt;hdp:script location=&quot;pig-scripts/script.pig&quot;/&gt;
-&lt;/hdp:pig-runner&gt;
-</pre> 
-<p>&nbsp;</p> 
-<p>如果想要开始，可以<a href="http://www.springsource.com/download/community?project=Spring%20Data%20Hadoop">下载Spring for Apache Hadoop</a>或者使用<i>org.springframework.data:spring-data-hadoop:1.0.0.RELEASE</i>&nbsp; Maven构件。还可以获取Spring for Hadoop的<a href="http://static.springsource.org/spring-hadoop/docs/current/reference/html/batch-wordcount.html">WordCount示例</a>。在YouTube上还有<a href="http://www.youtube.com/watch?v=wlTnBzQ6KDU">介绍Spring Hadoop</a>的网络会议。</p> 
-<p>Spring for Apache Hadoop需要JDK 6.0及以上版本、Spring Framework 3.0及以上版本（推荐使用3.2）和Apache Hadoop 0.20.2 （推荐1.0.4）。现在并不支持Hadoop YARN、NextGen或 2.x。支持所有的Apache Hadoop 1.0.x分布式组件，这些分布式组件包括vanilla Apache Hadoop、Cloudera CDH3、CDH4和Greenplum HD等。</p> 
-<p>想要获取更深入的信息，你可以阅读<a href="http://static.springsource.org/spring-hadoop/docs/1.0.0.RELEASE/reference/html/">Spring for Apache Hadoop </a><u>参考手册</u> 和 <a href="http://static.springsource.org/spring-hadoop/docs/current/api/">Javadoc</a>。Spring for Apache Hadoop 的<a href="https://github.com/SpringSource/spring-hadoop">源代码</a>和<a href="https://github.com/SpringSource/spring-hadoop-samples/">示例</a>托管在GitHub上。</p> 
-<p><b>查看英文原文</b>：<a href="http://www.infoq.com/news/2013/03/spring-for-apache-hadoop-1.0;jsessionid=192D5F6F9355976676DA63A055560263"><b>Spring for Apache Hadoop 1.0</b></a></p> 
+<p>读者可以会有疑问：既然HTML5打包iOS版本存在诸多问题，为何不干脆用原生开发呢？赵霏给出了选用HTML5技术开发手机游戏的理由：</p> 
+<ul> 
+ <li>用HTML5开发手机应用和游戏的效率会稍高一些，成本也会略有降低。这主要体现在各种智能手机终端的移植上，我们前端都是javascript工程师，而打包移植的工作有1个人就可以快速搞定。不需要同时维护若干个团队和若干个版本。</li> 
+ <li>用HTML5开发，游戏升级版本更新会更方便，只要不涉及原生代码的改动，我们都可以在后台安排脚本更新即可，无需用户再去下载安装覆盖等麻烦，也减少了因此而带来的用户流失。</li> 
+ <li>用HTML5开发的网页游戏跨平台的能力较强，可以运行在PC，平板，手机等所有支持HTML5的浏览器内，这样可以让玩家无论是在电脑还是手机都可以跨平台体验游戏的乐趣，从后台数据看，大部分用户是愿意接受在不同的时段使用不同设备，电脑和手机来体验我们的游戏。</li> 
+ <li>HTML5开发手机应用和游戏相对来讲会比较安全，由于浏览器的限制，我们是无法读取用户的隐私信息或设置暗扣陷阱。</li> 
+ <li>虽然HTML5页游有以上的好处，但目前HTML5游戏的市场环境还并不成熟，很多用户还是比较习惯安装app来玩游戏的习惯，所以我们也采用同时推安装包和链接两种方式来尽可能的覆盖我们的用户群，因此webapp的推广方式还是非常灵活的。</li> 
+</ul> 
+<p>如果想详细了解有关的细节，读者可以查看<a href="http://www.zhihu.com/question/20880421" target="_blank">这里</a>，也欢迎大家发表自己的看法，分享自己的心得。</p> 
 <p id="lastElm"></p><br><br><br><br><br><br></body></html>
