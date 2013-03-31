@@ -1,6 +1,9 @@
 <html>
  <head></head> 
- <body> 
+ <body>
+  <div>
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/46.java">RSA Panelists Reinforce that DevOps Boosts Application Security</a>Smaller releases, automated testing, and a culture that embraces security are the reasons why panelists at the RSA 2013 conference say that Devops can be a huge boon for application security.
+  </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/45.java">Video Lessons on Agile Coaching and Organizational Change</a>Two video lessons covering agile coaching and organizational change were released by Pearson/Addison-Wesley in the last quarter of 2012. They provide a different way to increase knowledge on agile adoption for visual and audible learners. 
   </div> 
@@ -147,9 +150,6 @@
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/47.java">Internet Explorer 10 Broadens Flash Support</a>Microsoft has announced increased Flash support on IE10 running on Windows 8 and Windows RT. This content will now be enabled to run by default and solidifies Flash's position on the Windows platform. 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/46.java">LLBLGen Pro v4.0 Beta with Table Valued Functions, Visual Studio Integration</a>Solutions Design has annnounced the availability of LLBLGen Pro v4.0 beta with several improvements to the designer and runtime system including support for Visual Studio 2010 and 2012. 
-  </div> 
+  </div>  
  </body>
 </html>
