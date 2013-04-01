@@ -1,6 +1,9 @@
 <html>
  <head></head> 
- <body> 
+ <body>
+  <div>
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/47.java">Patent Holder Pursues IP Grab on TCP/IP</a>A networking hardware vendor based in Austin, Texas says it's going to pursue royalties on the implementation of the TCP/IP set of protocols. Formerly known as Dellor, KCIR Networks acquired Nett Labs in 1997, acquiring this patent into the bargain. The patent claim was filed in 1975, but Nett Labs never pursued royalties.
+  </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/46.java">RSA Panelists Reinforce that DevOps Boosts Application Security</a>Smaller releases, automated testing, and a culture that embraces security are the reasons why panelists at the RSA 2013 conference say that Devops can be a huge boon for application security. 
   </div> 
@@ -147,9 +150,6 @@
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/48.java">MySQL Reference Architectures for Small to Extra Large Websites</a>Oracle has published MySQL Reference Architectures for Massively Scalable Web Infrastructure, a whitepaper outlining recommended topologies for different types and sizes of websites using MySQL for data storage. 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/47.java">Internet Explorer 10 Broadens Flash Support</a>Microsoft has announced increased Flash support on IE10 running on Windows 8 and Windows RT. This content will now be enabled to run by default and solidifies Flash's position on the Windows platform. 
-  </div> 
+  </div>  
  </body>
 </html>
