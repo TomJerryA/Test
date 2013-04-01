@@ -2,6 +2,9 @@
  <head></head> 
  <body> 
   <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/48.java">Python Tools for Visual Studio 2.0 Adds IntelliSense, Virtualenv and Windows Azure Support</a>Python Tools for Visual Studio 2.0 alpha release includes support for Intellisense, Virtualenv, Windows Azure, Cloud Service, Web Sites and Client Libraries. 
+  </div> 
+  <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/47.java">Patent Holder Pursues IP Grab on TCP/IP</a>A networking hardware vendor based in Austin, Texas says it's going to pursue royalties on the implementation of the TCP/IP set of protocols. Formerly known as Dellor, KCIR Networks acquired Nett Labs in 1997, acquiring this patent into the bargain. The patent claim was filed in 1975, but Nett Labs never pursued royalties. 
   </div> 
   <div> 
@@ -147,9 +150,6 @@
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/49.java">Windows Azure Mobile Services with Android, Active Directory, Localization, East Asia Region</a>Microsoft has recently released several updates to Windows Azure with support for Android, Active Directory, Application monitoring with HTTP response codes, new five languages including expansion of Azure Store to 22 more countries. 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/48.java">MySQL Reference Architectures for Small to Extra Large Websites</a>Oracle has published MySQL Reference Architectures for Massively Scalable Web Infrastructure, a whitepaper outlining recommended topologies for different types and sizes of websites using MySQL for data storage. 
   </div> 
  </body>
 </html>
