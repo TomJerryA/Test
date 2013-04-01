@@ -1,15 +1,30 @@
-<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>58同城开源其轻量级Web框架Argo</h3><p>近日，<a href="http://e.weibo.com/58code">@58同城开源</a> 微博称，58同城轻量级Web框架Argo正式开源。目前Argo支撑着58同城几乎所有的Web站点，包括Wap和手机端的访问等，现在Argo每天处理10亿级的请求。经过长时间的运作与运行，证明Argo是一个可靠、高效的Web框架。</p> 
-<p>Argo在GitHub上的地址：<a href="https://github.com/58code/Argo" target="_blank">https://github.com/58code/Argo</a>，Argo是希腊神话中的一艘船，58所有开源项目都将采用希腊神话系列命名，这也包括早先开源的服务通信框架<a href="https://github.com/58code/Gaea/">Gaea</a>。</p> 
-<p>Argo起源于58同城的内容Web框架WF(Web Framework)。目前WF支撑着58同城几乎所有的Web站点，包括Wap和手机端的访问等，现在WF每天处理10亿级的请求。经过长时间的运作与运行，证明WF是一个可靠的、高效的Web框架。Argo在WF做了大量优化和重构，以适应各组织软件开发的个性化需求，提升了系统性能，具有更好的可扩展性。Argo的开源反过来也促进WF2.0的开发。</p> 
-<p>Argo不是一个通用的Web框架，主要工作环境是：</p> 
+<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>MongoDB新版本特性和未来规划</h3><p><a href="http://www.mongodb.org/">MongoDB</a> 2.4已经发布，该版本增加了一些新特性，如文本搜索、基于哈希的分片、更好的地理空间功能、支持GeoJSON以及一些性能和工具方面的提升。我们还和10gen讨论了MongoDB接下来的路线图。</p> 
+<p>一些关键的提升如下：</p> 
 <ul> 
- <li>Servlet 3.0环境，主要针对Tomcat 7.X；</li> 
- <li>基于<a href="http://code.google.com/p/google-guice/">Guice</a>的loc，组织和项目可以各提供一个module注入模块，而且module的命名必须符合约定；</li> 
- <li>Maven依赖，项目的代码体系和Maven默认代码体系一致，Maven以插件提供开发过程中所需要的开发运行环境</li> 
+ <li>引入了<a href="http://docs.mongodb.org/manual/release-notes/2.4/#text-search">文本搜索</a>，现在是一个测试功能，支持15种语言的词干和断词</li> 
+ <li><a href="http://docs.mongodb.org/manual/release-notes/2.4/#new-hashed-index-and-sharding-with-a-hashed-shard-key">基于哈希的分片</a>，用于数据交叉传播时不能轻易预测任何自然分片键的情况</li> 
+ <li><a href="http://docs.mongodb.org/manual/release-notes/2.4/#new-geospatial-indexes-with-geojson-and-improved-spherical-geometry">地理空间索引</a>和GeoJSON支持</li> 
+ <li>安全提升——新的模块化<a href="http://docs.mongodb.org/manual/release-notes/2.4/#new-modular-authentication-system-with-support-for-kerberos">身份认证系统</a>、与Kerberos集成以及<a href="http://docs.mongodb.org/manual/release-notes/2.4/#role-based-access-control-and-new-privilege-documents">基于角色的访问控制</a></li> 
+ <li>一些性能提升，最重要的一项是针对计数和聚合等专门场景的提升</li> 
+ <li>使用V8作为Mongo Shell内部默认的JavaScript引擎（代替了SpiderMonkey），进而提升了基于JavaScript的操作的性能和并发性</li> 
+ <li>用于监控集群状态的其他指标</li> 
 </ul> 
-<p>Argo的设计遵循“约定优于配置”、简单和纪律严明的哲学观，既可以减少软件开发人员做决定的数量，又不失灵活性。同时，Argo项目代码结构简单，可以不需要任何配置文件。</p> 
-<h3>关于The Gaea Project</h3> 
-<p><a href="https://github.com/58code/Gaea" target="_blank">Gaea</a>是服务通讯框架(Service Communication Framework)支持跨平台具有高并发、高性能、高可靠性，并提供异步、多协议、事件驱动的中间层服务框架。</p> 
-<h3>关于58同城开源</h3> 
-<p>微博账号：<a href="http://e.weibo.com/58code">@58同城开源</a><br /> 联系邮箱：code@58.com</p> 
+<p>10gen还介绍了同2.4版一起发布的一款<a href="http://www.10gen.com/products/mongodb-enterprise">企业版MongoDB</a>。</p> 
+<p>为了了解新特性和将来规划的更多信息，我们联系了10gen的产品市场总监<a href="http://www.linkedin.com/in/kellystirman">Kelly Stirman</a>。</p> 
+<p>Kelly解释了为什么集合级别的锁可能对MongoDB没有意义：</p> 
+<blockquote> 
+ <p>版本2.2对锁做了改进，通过降低锁竞争为写吞吐量带来了实质性的好处。David Mytton写了一篇非常好的<a href="http://blog.serverdensity.com/goodbye-global-lock-mongodb-2-0-vs-2-2/">与该主题相关的文章</a>。</p> 
+ <p>除了2.0和2.2版本中所提供的改进，MongoDB 2.4并没有包含任何额外粒度的锁。我们正在考虑在2.6版本中引入文档级别的锁。锁产生的提升已经足够了，集合级别的锁可能不会再带来其他重要的提升了，因此文档级别的锁可能是下一个方向。</p> 
+</blockquote> 
+<p>关于何时使用基于范围的分片而不是新的基于哈希的分片，Kelly说：</p> 
+<blockquote> 
+ <p>什么时候使用基于范围的分片呢？如果你的应用程序基于一个分片键范围请求数据，那么这些查询会被路由到合适的分片，通常只有一个分片，特殊情况下可能有一些分片。在一个使用了基于哈希分片的系统中，同样的查询会将请求路由到更多的分片，可能是所有的分片。理想情况下，我们希望查询会被路由到一个单独的分片或者尽可能少的分片，因为这样的扩展能力要比将所有的查询路由到所有的分片好。因此，如果你非常理解自己的数据和查询，那么基于范围的分片可能是最好的选择。</p> 
+</blockquote> 
+<p>在MongoDB 2.4中计数速度最高可以提升20倍，同时聚合框架平均要快3到5倍。Kelly解释说计数性能的提升受益于MongoDB中B树遍历性能的一些提升——基于索引的低基数计数是最大的提升。聚合框架性能的提升实际上是对MongoDB内部实现做的很多小变动引起的，它们一起带来了具大的好处。</p> 
+<p>接下来将会增加哪些企业特性：</p> 
+<blockquote> 
+ <p>MongoDB 2.4在安全和监控领域实现了一些重大举措，但是对于将来的版本我们还有很多计划。我们将沿着认证、授权和审计三个维度进行安全控制。将来版本的MongoDB将继续关注这些领域，同时我们还会继续增强我们为MongoDB提供的工具。<a href="http://www.10gen.com/products/mongodb-monitoring-service">MongoDB监控服务</a>（MMS）在MongoDB社区已经非常流行，有超过15,000位用户并在持续增长。我们将继续对MMS进行投资，为用户提供免费的云工具，同时提供本地产品作为我们企业订阅服务的一部分。</p> 
+</blockquote> 
+<p>如果你想了解更多与MongoDB 2.4新特性相关的信息，可以阅读<a href="http://docs.mongodb.org/manual/release-notes/2.4/">发行说明</a>和<a href="http://docs.mongodb.org/manual/release-notes/2.4-overview/">概述</a>。</p> 
+<p><b>查看英文原文：</b><a href="http://www.infoq.com/news/2013/03/mongodb-2-4;jsessionid=8B438ECDF9ED2EF8D8CE93D33DDF2E5C"><b>MongoDB Gets Better Security, Text Search, Performance Improvements – What’s Next?</b></a></p> 
 <p id="lastElm"></p><br><br><br><br><br><br></body></html>
