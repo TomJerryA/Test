@@ -1,8 +1,8 @@
 <html>
  <head></head> 
- <body>
-  <div>
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/46.java">RSA Panelists Reinforce that DevOps Boosts Application Security</a>Smaller releases, automated testing, and a culture that embraces security are the reasons why panelists at the RSA 2013 conference say that Devops can be a huge boon for application security.
+ <body> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/46.java">RSA Panelists Reinforce that DevOps Boosts Application Security</a>Smaller releases, automated testing, and a culture that embraces security are the reasons why panelists at the RSA 2013 conference say that Devops can be a huge boon for application security. 
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/45.java">Video Lessons on Agile Coaching and Organizational Change</a>Two video lessons covering agile coaching and organizational change were released by Pearson/Addison-Wesley in the last quarter of 2012. They provide a different way to increase knowledge on agile adoption for visual and audible learners. 
@@ -150,6 +150,6 @@
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/47.java">Internet Explorer 10 Broadens Flash Support</a>Microsoft has announced increased Flash support on IE10 running on Windows 8 and Windows RT. This content will now be enabled to run by default and solidifies Flash's position on the Windows platform. 
-  </div>  
+  </div> 
  </body>
 </html>
