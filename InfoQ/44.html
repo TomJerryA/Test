@@ -1,16 +1,17 @@
-<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>PeerJS 0.1.7：一个用于浏览器内P2P通信的WebRTC封装器</h3><p><a href="http://github.com/michellebu">Michelle Bu</a>与<a href="http://github.com/ericz">Eric Zhang</a>在3月6日发布了<a href="http://peerjs.com/">PeerJS 0.1.7</a>，它封装了WebRTC。后者是W3C倡议的旨在促进浏览器内P2P通信的一种技术。</p> 
-<p>与成长迅猛的<a href="http://www.w3.org/TR/2011/WD-websockets-20110929/">WebSocket</a>不同的是，PeerJS颠覆了由服务器组织数据传输的这种传统方式。</p> 
-<p>Bu说：“WebSocket和WebRTC数据通道看起来一样——都支持二进制数据，还允许从一个客户端发送可能最终会到达另一客户端的任意数据，然而它们本质上是不同的。使用WebRTC数据通道，可以向其他任何节点传送数据而无需经由某些中心服务器。以Facebook或Google聊天程序为例，向坐在旁边的人发送一条消息需要相当多的时间。这是因为消息必须在物理上从你的计算机提交到需要路由50或60跳之远的Facebook服务器。从网络角度来看这非常不理想。理想状态下，这个包应该仅传输20英尺——这正是WebRTC的工作方式。之前整个网络拓扑看起来像一个蜘蛛，而现在更像是一张网。”</p> 
-<p>拥抱这一新的生态系统吧！PeerJS旨在封装WebRTC规范的复杂性，使其成为一套易于理解的API。PeerJS的使用方式如下：</p> 
-<ul> 
- <li>使用版本号26或更高版本的Chrome。这意味着当前只有<a href="https://www.google.com/intl/en/chrome/browser/canary.html">Canary</a>或<a href="https://www.google.com/intl/en/chrome/browser/beta.html">beta</a>版本的浏览器可以使用。在接下来几个月，请留意WebRTC的<a href="http://peerjs.com/status">浏览器兼容性更新</a>。Bu预计在2到3个月内将支持与最新版本的Firefox进行互操作。</li> 
- <li>建立一个节点服务器（PeerServer）。可以在代码托管网站注册，抓取代码自己构建，也可以在node.js上通过“npm install peer”命令安装。Bu说：“一旦连接到一个节点，就不再需要服务器了；除非想连接到更多的节点。”</li> 
- <li>启动代码。看一下<a href="https://github.com/peers/peerjs/blob/master/examples/helloworld.html">hello world例程</a>，了解“PeerJS省去了很多麻烦，不需要构建和运行代理（brokering）服务器，不需要理解纷繁复杂的WebRTC节点连接和数据通道规范（那可是需要设置无数的处理程序），不需要考虑边界情况，也不需要应对不同浏览器之间的差异。”Bu说道。</li> 
-</ul> 
-<p>由于WebRTC还在发展，除了少量聊天demo外，PeerJS在实践中的例子还很少。 <a href="http://peerkit.com/">PeerKit</a>是一个例外，它是Zhang创建的、作为P2P CDN的新兴项目。Bu说：“想象一下这样的世界：猫的图片来自咖啡店里在你旁边恰好浏览同一网站的人，而不是内华达州的中心服务器”。</p> 
-<p>在浏览器之间，要在有状态的双向数据传输之上构建下一代应用，很可能还需要几年，但在此之前“WebRTC将是开发者的派对”，Bu这样说，“当考虑将所有状态都保存在客户端时，一定会有许多技术问题需要处理。”</p> 
-<p><strong>查看英文原文</strong>：<a href="http://www.infoq.com/news/2013/03/peerjs-0.1.7-released;jsessionid=611F937905D9786AA76E0C53968B9CAC">PeerJS 0.1.7: A WebRTC Wrapper For P2P In The Browser</a></p> 
+<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>Windows Phone应用中通过RadBarcode整合条形码</h3><p><a href="http://www.telerik.com/products/windows-phone/overview/all-controls/barcode.aspx">RadControls for Windows Phone Q1 2013</a> 中的<a href="http://blogs.telerik.com/blogs/13-03-13/barcode-for-windows-phone---q1-2013">RadBarcode</a> 控件包括了多个能生成不同类型<a href="http://www.telerik.com/help/windows-phone/radbarcode-barcode-types-description.html">条形码</a>的组件，能生成的条形码类型有QP、UPCA、UPCE、<a name="OLE_LINK2"></a><a name="OLE_LINK1">UPCSupplement2</a>、UPCSupplement5、 POSTNET、PDF417、MSI、EAN8、EAN13、库德巴码（Codabar）、93、扩展93、39，扩展39、非交叉25、交叉25、128、128A、128B、128C 和 11。</p> 
+<p>比如，在添加了下面的XML命名空间之后，就能够很容易地通过下面的代码为值999888生成库德巴码：</p> 
+<pre>
+xmlns:telerikDataViz=&quot;clr-namespace:Telerik.Windows.Controls;assembly=Telerik.Windows.Controls.DataVisualization&quot;<br />&lt;Border Background=&quot;Gray&quot;<br />VerticalAlignment=&quot;Center&quot;&gt;<br />&lt;telerikDataViz:RadBarcodeCodebar Width=&quot;520&quot;<br />Height=&quot;150&quot;<br />Margin=&quot;30&quot;<br />Text=&quot;999888&quot;/&gt;<br />&lt;/Border&gt;
+</pre> 
+<p>RadControls for Windows Phone Q1 2013提供了对QR（<b>快速响应</b>）条码的支持，并且能够通过RadBarcodeQR控件生成，使用的代码如下：</p> 
+<pre>
+&lt;Border Background=&quot;gray&quot;<br />VerticalAlignment=&quot;Center&quot;&gt;<br />&lt;telerikDataViz:RadBarcodeQR Width=&quot;300&quot;<br />Height=&quot;300&quot;<br />Version=&quot;7&quot;<br />Text=&quot;Mark mark@yahoo.com&quot;/&gt;<br />&lt;/Border&gt; 
+</pre> 
+<p>在上面的代码中，Version属性设置为7。Version的数值设置地越高，编码到QR码中的信息就越多。<br /> RadBarcodeQR包含一个QR码生成器，该生成器可用于编码联系人详细资料从而创建一个图像，这样就可以使用QR扫描仪、有摄像功能的手机以及能够将条码PIN到启动窗口的智能机快速地创建一条新的联系人记录。</p> 
+<p>用户能够通过RadBarcode创建购物应用并整合到<a href="http://msdn.microsoft.com/en-us/library/windowsphone/develop/jj207032(v=vs.105).aspx">Windows Phone钱包</a>中。同时还能够通过它将任意数字转变为工业标准条形码格式。此外，还可以使用内置的输入校验器通过数值匹配相关的条形码类型。</p> 
+<p>RadControls for Windows Phone Q1 2013包含50多种<a href="http://www.telerik.com/products/windows-phone/overview/all-controls.aspx">控件</a>，其中包括LiveTileHelper组件，该组件能在应用中创建和更新页面标题的链接，并允许用户使用每一个新模板同时添加自定义UI元素作为其内容。</p> 
+<p><b>查看英文原文</b>：<a href="http://www.infoq.com/news/2013/03/radbarcode;jsessionid=0FA0C99F96005DB9B762BAACF0D3523B">Integrate BarCodes into Windows Phone Apps</a></p> 
 <hr /> 
-<p>感谢<a href="http://www.infoq.com/cn/bycategory.action;jsessionid=611F937905D9786AA76E0C53968B9CAC?authorName=臧秀涛">臧秀涛</a>对本文的审校。</p> 
+<p>感谢<a href="http://www.infoq.com/cn/bycategory.action;jsessionid=0FA0C99F96005DB9B762BAACF0D3523B?authorName=孙镜涛">孙镜涛</a>对本文的审校。</p> 
 <p>给InfoQ中文站投稿或者参与内容翻译工作，请邮件至<a href="mailto:editors@cn.infoq.com">editors@cn.infoq.com</a>。也欢迎大家通过新浪微博（<a href="http://www.weibo.com/infoqchina">@InfoQ</a>）或者腾讯微博（<a href="http://t.qq.com/infoqchina">@InfoQ</a>）关注我们，并与我们的编辑和其他读者朋友交流。</p> 
 <p id="lastElm"></p><br><br><br><br><br><br></body></html>

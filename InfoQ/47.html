@@ -1,5 +1,45 @@
-<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>Java 8特性有望进入.Net/Mono</h3><p>在上周的快照版本中，<a href="http://weblog.ikvm.net/PermaLink.aspx?guid=467b6c9e-d9f6-4c6f-8de0-10c4f30ec5a9">IKVM</a>（该库旨在向CLR中增加Java支持）添加了对静态接口方法和默认接口方法两种特性的实验性支持。这些Java 8特性主要是为支持Java库内部使用而设计的。Jeroen Frijters并没有期望这些特性能与其他.NET语言很好地进行互操作。</p> 
-<p>恰如其名，静态接口方法在接口的命名空间中实现了静态方法，而此前只有类才支持。该功能被推荐为<a href="https://blogs.oracle.com/darcy/entry/project_coin">Project Coin</a>的一部分。</p> 
-<p>利用默认接口方法，Java开发者可以将抽象接口看作抽象基类。和接口中的其他方法一样，这种方法也可以重写，但是将其加入接口不会带来破坏性。不同于扩展方法（Extension Method）这种语言层次的概念，默认接口方法需要运行时支持。&nbsp;</p> 
-<p><b>查看英文原文</b>：<b><a href="http://www.infoq.com/news/2013/03/IKVM-Java-8;jsessionid=E2012C05C3730E648BFB201008A2EDB5">Java 8 Starting to Find Its Way into .Net/Mono</a></b></p> 
+<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>Filepicker——一个帮助用户上传、下载、连接和同步app中文件到云端的工具</h3><p><a href="https://www.filepicker.io/">Filepicker</a>可以通过使用一个简单的对话框窗口，帮助你将Facebook、Dropbox、Instagram、Google Drive、Flickr、Skydrive、Evemote、Github、Picasa、Box、Alfresco、Gmail、FTP和WebDAV中的文件上传到云端。一旦你完成上传流程后，它会自动将文件存储到<a href="http://aws.amazon.com/s3/">亚马逊的简单存储服务（S3）</a>上并生成一个唯一的URL。</p> 
+<p>Filepicker支持Web，<a href="http://www.apple.com/in/ios/">iOS</a>，<a href="http://www.android.com/">Android</a>，<a href="http://phonegap.com/">PhoneGap</a>等多个平台，并且无论用户上传的是什么类型的文件以及无论从云端还是本地设备中上传，它都能在上传过程中对图片进行后期处理并生成合适的尺寸。Filepicker免费提供每月高达5000个文件的服务，其中包括e-mail和社区的支持。</p> 
+<p>InfoQ采访了Fliepicker的首席运营官<a href="https://twitter.com/ananddass">Anand Dass</a>以了解产品的更多情况.</p> 
+<p><strong>InfoQ:</strong><strong>使用</strong><strong>Filepicker</strong><strong>的真正目的是什么？</strong></p> 
+<blockquote>
+ 在网络和移动设备中，内容的互操作性是被割裂的。 Filepicker.io的目标是解决这个问题。这里有一些例子说明了它们之间是如何被割裂的：是否曾经尝试过使用移动应用程序去访问你电子邮件应用中的PDF？又或者在编辑程序中编辑完PDF后，希望PDF自动保存到你的Dropbox或Google Drive中？目前在你的手机上是很难进行这些操作的。这些仅仅是问题的一部分症状。 
+ <p>我们的目标是建立应用程序的技术基础设施，从而达到这样的效果：无论你的内容在哪里，无论你使用什么设备或什么样的应用程序，你将都能够对文件进行选取，编辑，查看并无缝地执行所有你希望的操作。当前版本的产品仅仅是个开始，我们在该版本中支持了文件的选择功能。</p> 
+</blockquote> 
+<p><strong>InfoQ:</strong><strong>是什么促使你们去开发</strong><strong>Filepicker? </strong></p> 
+<blockquote>
+ <strong> </strong> 
+ <p>在移动设备和互联网之间割裂的体验促使我们去开发了Filepicker。比如当我在访问任意一个网站并需要上传文件或者图片时，我首先要从Facebook或Google drive中将文件下载到我本地计算机，然后上传到该网站，最后还要删除计算机上的图片副本。</p> 
+ <p>一直以来我们构建应用的方式大都假设了用户关心的内容都在硬盘上，而实际的情况已经不是这样了。对手机而言，并没有文件下载和上传的概念，只是我无法在手机上完成在台式机器上才能完成的这些工作。这促使我创建了Filepicker.io。</p> 
+</blockquote> 
+<p><strong>InfoQ:</strong><strong>从用户的角度而言，使用</strong><strong>FilePicker</strong><strong>的好处是什么？</strong></p> 
+<blockquote> 
+ <p>我们的产品针对的是那些要为终端用户构建应用的互联网和移动应用开发者。因此，如果我们能做好我们的工作并成功地调动开发者社区的积极性，用户将不必担心他的内容在什么地方以及当他需要该内容的时候如何去获取。</p> 
+</blockquote> 
+<p><strong>InfoQ: Filepicker</strong><strong>支持什么类型的文件格式？</strong></p> 
+<blockquote> 
+ <p>几乎支持一切甚至包括自定义格式。因此，文档、图片、音频、视频、Photoshop文件都是支持的。随着移动应用的崛起，文件的概念正在发生变化。 iOS上的应用程序具有其自己的数据容器，而这些数据并不是以文件形式存在的。 Filepicker.io将在不久的将来，对那些不是以文件方式存在的内容间的数据交互进行支持。</p> 
+</blockquote> 
+<p><strong>InfoQ: </strong><strong>将</strong><strong>FilePicker</strong><strong>整合到应用中有多容易？</strong></p> 
+<blockquote> 
+ <p>只需要两行代码就可以了。添加我们的<a href="http://developers.filepicker.io/">Javascript库</a>并将标签改为<em>&lt;input type=filepicker&gt;</em><em>就设置完毕了。对于简单的</em><em>web</em><em>应用来说只需要</em><em>10</em><em>分钟就设置好了。</em><em>iOS</em><em>和</em><em>Android</em><em>明显会需要更多的时间，但我们也有客户通过</em><em>tweet</em><em>反映他们仅仅使用</em><em>30</em><em>分钟就完成了整合并且能正常运行！</em></p> 
+ <p><em><br /> </em></p> 
+</blockquote> 
+<p><strong>InfoQ: Filepicker</strong><strong>提供对移动设备和平板设备的支持么？</strong></p> 
+<blockquote> 
+ <p>是的。支持iOS、Android、移动web、PhoneGap等多种平台。我们收到来自移动用户的一些积极的反馈，他们现在可以在应用中直接执行打开文件并将文件保存到云端的操作。这是其他人无法做到的，当别人看到这个功能时，着实打击到了他们。</p> 
+ <p>Liyan Chang是产品和用户体验的负责人，他创建了一个视频来演示并突出 <a href="http://vimeo.com/45436417">Filepicker iOS</a>类库的用途。</p> 
+</blockquote> 
+<p><strong>InfoQ:</strong><strong>免费服务和收费服务之间的区别是什么？</strong></p> 
+<blockquote> 
+ <p>唯一的区别事实上是每月可以保存的文件数目不同。免费用户每个月能保存高达5000个文件，如果您需要保存更多的文件，你将只能认购付费计划（每月99美元）。我们的坚定信念是帮助每个开发者创建一流的用户体验。因此，我们选择不在基于任何其他功能上分割我们的计划。针对企业用户，我们拥有基于吞吐量，SLA和正常运行时间等需求的定制计划。</p> 
+</blockquote> 
+<p><strong>InfoQ:Filepicker</strong><strong>是否支持</strong><strong>Windows Phone 8?</strong></p> 
+<blockquote> 
+ <p>是的，我们正努力提供对Windows Phone的支持，在今年晚些时候你将能看到相关的功能。这在我们的产品规划中是十分重要的。</p> 
+</blockquote> 
+<p><b>查看英文原文</b>：<a href="http://www.infoq.com/news/2013/03/filepicker;jsessionid=3FBCC3A917E9B6C04E3BF4D7FD3719AC">Filepicker - Upload, Download, Connect and Synchronize Files from your App to the Users Cloud</a></p> 
+<hr /> 
+<p>感谢<a href="http://www.infoq.com/cn/bycategory.action;jsessionid=3FBCC3A917E9B6C04E3BF4D7FD3719AC?authorName=赵震一">赵震一</a>对本文的审校。</p> 
+<p>给InfoQ中文站投稿或者参与内容翻译工作，请邮件至<a href="mailto:editors@cn.infoq.com">editors@cn.infoq.com</a>。也欢迎大家通过新浪微博（<a href="http://www.weibo.com/infoqchina">@InfoQ</a>）或者腾讯微博（<a href="http://t.qq.com/infoqchina">@InfoQ</a>）关注我们，并与我们的编辑和其他读者朋友交流。</p> 
 <p id="lastElm"></p><br><br><br><br><br><br></body></html>

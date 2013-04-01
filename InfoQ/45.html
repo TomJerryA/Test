@@ -1,53 +1,24 @@
-<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>企业将敏捷实践用于开发之外</h3><p>将敏捷实践运用于整个企业是有益的。若干近期发表的博文探讨了在开发之外使用敏捷的可能性。Gartner的Jake Sorofman写了一篇题为《<a href="http://blogs.gartner.com/jake-sorofman/is-agile-the-last-remaining-competitive-advantage/">敏捷是否是最后留存的竞争优势</a>》的文章，点出了在企业中使用敏捷方面他所看到的趋势：</p> 
+<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>Node.js和.NET相结合的项目Edge.js</h3><p>Javascrip项目<a href="http://nodejs.org/">Node.js</a> 现在可以在同一个进程中与.NET代码一起运行了，这得益于 <a href="https://github.com/tjanczuk/edge">Edge.js</a> 项目（前身为<a href="https://github.com/tjanczuk/owin">owin</a>）。跟<a href="http://www.infoq.com/news/2012/05/frijters_IKVM;jsessionid=56FAFA9A84F300371FA677A12C2B3E5A">IKVM 项目</a>将Mono和.NET结合一样，Edge.js提出了 “两全其美”的方法将.NET和Node.js结合。这样开发者可以充分利用每种工具的优势去最大限度提高他们项目的效率。</p> 
+<p>Edge.js由Tomasz Janczuk创立，其目的在于让开发人员最大限度地发挥Node.js的威力，而不用使用非CLR的语言，如C/C ++。 Edge.js实现的方法提供了若干好处，包括在.NET中执行计算密集型的运算时不阻塞Node.js的事件循环。它也允许使用C#编写Node.js的插件去访问Windows平台的特定功能，而这些都无需使用C或者C++。<br /> Node.js和Edge.js之间的连接是无缝的和相互的：Node.js的可以调用.NET方法，.NET代码也可以调用Node.js。Edge.js可以在运行时编译C#源代码，也可以在Edge.js运行前预编译。</p> 
+<p>InfoQ有幸和Janczuk探讨该项目并谈及他将来对Edge.js的计划：</p> 
+<p><b>InfoQ:</b> <b>除了仅仅希望提供将</b><b>C#</b><b>和</b><b>Node.js</b><b>结合外，还有什么特别的动机么？</b></p> 
 <blockquote> 
- <p>我们都知道这一哲学改变了软件开发实践。而我们刚开始了解的，是敏捷实践正在向商业的其他方面蔓延。</p> 
+ <p><b>Janczuk:</b> “Edge.js致力于为开发人员提供一个在一定范围内根据任务特点选择使用技术的机会，而不是在整个应用中去选择。Edge.js基于一切都可以通过Node.js或者.NET去实现的前提，但某些具体的功能可能用其中一种技术更加适合。在Edge.js之前，开发人员必须在整个应用程序范围内选择是使用Node.js还是.NET。而有了Edge.js，开发人员可以根据他们应用中哪些部分更适合使用Node.js或.NET而作出选择。”</p> 
 </blockquote> 
-<p>之前InfoQ报道了敏捷实践在企业中如何运用于市场营销（<a href="http://www.infoq.com/news/2012/07/agile-marketing-manifesto;jsessionid=F79601856EE4F48B3C9703BC2E10A6B8">敏捷市场人员在SprintZero研讨会上创建了一个敏捷市场宣言</a>）和销售（<a href="http://www.infoq.com/news/2011/07/agile-sales;jsessionid=F79601856EE4F48B3C9703BC2E10A6B8">销售和敏捷，油和水?</a>）。人们逐渐清晰的认识到，对企业而言敏捷能够为软件开发之外的活动带来益处，Jake对此写道：</p> 
+<p><b>InfoQ:</b><b> </b><b>.NET</b><b>的例子全部是使用</b><b>C#</b><b>，</b><b>Edge.js</b><b>需要</b><b>C#</b><b>吗？如果需要的话，是否支持</b><b>.NET</b><b>平台中的其他语言？</b></p> 
 <blockquote> 
- <p>（……）敏捷实践是我们对任何事物的变化本质的简单回应。它帮助我们面对现实：一切都在飞速前进，真相往往是不透明的，而对于商业方面尽管我们允许在小事上犯错，但在大事上必须正确。实际上，在敏捷中，通过小处试错我们往往能够使大事正确。</p> 
+ <p><b>Janczuk</b>：“Edge.js允许.NET代码通过指定一个预编译的CLR程序集，或者在Node.js应用中包含.NET源代码的方法去和Node.js应用整合。Edge.js支持任何可以生成一个Func&lt;object,Task&lt;object&gt;&gt;委托的预编译程序集的CLR语言。当在Node.js应用中使用.NET代码时，Edge.js目前只支持C#。”</p> 
 </blockquote> 
-<p>他展示了精益创业和敏捷如何通过专注于向客户持续传递价值而结合在一起：</p> 
+<p><b>InfoQ:&nbsp; </b><b>在接下来的</b><b>6</b><b>到</b><b>12</b><b>个月项目的目标是什么？</b></p> 
 <blockquote> 
- <p>在新商业孵化的世界中，我们将“最小可行产品”称作追寻真相的探针，它定义了你可以交付的最小价值增量。幸运的是，这引领我得到我的最后一点：敏捷的广阔运用带来了最小价值生涯。</p> 
+ <p><b>Janczuk</b>：“Edge.js计划使用相对较少的基本概念并保留规模小的组件就能在进程内整合.NET和Node.js。对于某些特定场景的功能（例如访问MS SQL、写Windows事件日志，或访问X.509证书存储区），会作为新的依赖于Edge.js的模块而提供，而不是扩大Edge.js本身的范围。Edge.js本身也有一些值得注意的计划，包括对Mono的支持，编译C#之外的CLR语言和在.NET进程中托管Node.js。”</p> 
 </blockquote> 
-<p>在博文《<a href="http://www.theenterprisearchitect.eu/archive/2012/08/10/enterprise-agile-extending-the-agile-process-outside-development">企业敏捷：在开发之外扩展敏捷流程</a>》中，Mendix的首席技术官Johan den Haan分享了他对于在整个企业中采用敏捷实践的理念。他首先阐述了对企业而言采用敏捷有什么不同：</p> 
+<p><b>InfoQ:&nbsp;&nbsp; </b><b>由于现在受雇于微软，那么将来这个项目依然是独立的项目呢还是在某些部分将来会正式成为微软的工具？</b></p> 
 <blockquote> 
- <p>只有整个组织机构都采用这样的思维方式，敏捷才有可能：在敏捷企业里，组织机构的市场和销售方与产品开发达到平衡。在敏捷企业里，整个商业通过一种能快速响应市场变化的方式来组织。各部门完全与总体价值流整合，形成了端到端的敏捷。</p> 
+ <p><b>Janczuk: </b>“虽然微软也拥抱开源技术，但到目前为止Edge.js并没任何计划要成为任何微软产品的一部分。”<br /> Edge.js是一个在Apache许可协议2.0下的开源项目。Janczuk在其项目的主页上提供了<a href="http://tjanczuk.github.com/edge/#/">项目概况</a>，还包括样例代码以让开发者了解更多的信息。</p> 
 </blockquote> 
-<p>他描述了敏捷实践能够为市场营销提供的价值：</p> 
-<blockquote> 
- <p>以稳定节奏频发发布使得市场营销更容易创建他们自己传递消息的节奏，但更重要的是它能够尽快将价值带给客户。</p> 
-</blockquote> 
-<p>敏捷软件开发使频繁交付成为可能。为了获得这些交付物的反馈，Johan建议服务也能采用敏捷实践：</p> 
-<blockquote> 
- <p>（……）服务也应该在早期纳入流程。确保你倾听他们对产品的反馈，将其引入早期的迭代/冲刺会议，并让他们有机会在新版本的实际发布前就开始付诸行动。</p> 
-</blockquote> 
-<p>Johan通过描述你如何能够在企业中采纳敏捷，来总结他的博文：</p> 
-<blockquote> 
- <p>采用敏捷方式入手！不要通过创造政策等手段来自上而下的开始。从一支而不是多支团队入手，一旦你拥有多支“正在进行”敏捷的团队，你可能就需要努力来协调他们了。这时你或许想要从Scrums会议的Scrum入手。如果你团队里的开发流程采用了敏捷，那就开始扩展你对“完成”的定义。向其他部门逐一推行（采纳敏捷）并保证向整体敏捷价值流的转变得到高级管理层支持。</p> 
-</blockquote> 
-<p>在《<a href="http://agilecoach.typepad.com/agile-coaching/2012/09/introducing-agile-techniques-to-teams-outside-software-development-.html">向软件开发之外的团队介绍敏捷技术</a>》一文中，该作者（也是一位敏捷教练）<a href="http://www.infoq.com/author/Rachel-Davies;jsessionid=F79601856EE4F48B3C9703BC2E10A6B8">Rachel Davies</a>分享了她在开发之外运用敏捷实践的经验：</p> 
-<blockquote> 
- <p>我们公司成立的时候以XP（极限编程）为核心软件开发方法。公司的成长伴随着产品的成功，现在我们拥有若干部门处理那些开发团队不愿涉及的对其工作进行管理的日常事务（例如财务、基础设施和结合了人力与设备管理的“人&amp;位置”）。</p> 
-</blockquote> 
-<p>她描述了如何向非软件开发团队引入敏捷：</p> 
-<blockquote> 
- <p>我们慢慢构建（敏捷机制）而不是用敏捷理论和原则来轰炸这些团队。我们以简单的草图入手，讲述如何使每周的工作在墙上展现并用超级便利贴将其归拢在一起（……）围绕着贴板，我们采用一个简单会面循环机制：将下一周的工作展现并排序，每天进行站立会议并进行每月回顾。</p> 
-</blockquote> 
-<p>在Agile 2012上，Rachel组织了一场讨论，并在关于使用敏捷的谈话中，列出了以下你可以做的事情作为开场白：</p> 
-<ul> 
- <li>在啤酒或咖啡上阐述价值（注：类似于中国的酒桌文化）</li> 
- <li>引入便利化使会议变得更有趣</li> 
- <li>执行官布道者</li> 
- <li>安排一次对敏捷软件团队的参观</li> 
- <li>寻找一位开放并好奇的人</li> 
- <li>构建团队信心——使每个人都成为支持者</li> 
- <li>为开发之外的团队安排一位敏捷教练</li> 
- <li>制作一个有趣的电梯演讲</li> 
- <li>用有趣的东西来唤起兴趣</li> 
-</ul> 
-<p><strong>查看英文原文</strong>：<a href="http://www.infoq.com/news/2013/03/agile-outside-development;jsessionid=F79601856EE4F48B3C9703BC2E10A6B8">Applying Agile Practices in Enterprises Outside Development</a></p> 
+<p><b>查看英文原文</b>：<a href="http://www.infoq.com/news/2013/03/edgejs;jsessionid=56FAFA9A84F300371FA677A12C2B3E5A">Edge.js Combines Node.js with .NET</a></p> 
 <hr /> 
-<p>感谢<a href="http://www.infoq.com/cn/bycategory.action;jsessionid=F79601856EE4F48B3C9703BC2E10A6B8?authorName=赵震一">赵震一</a>对本文的审校。</p> 
+<p>感谢<a href="http://www.infoq.com/cn/bycategory.action;jsessionid=56FAFA9A84F300371FA677A12C2B3E5A?authorName=姚琪琳">姚琪琳</a>对本文的审校。</p> 
 <p>给InfoQ中文站投稿或者参与内容翻译工作，请邮件至<a href="mailto:editors@cn.infoq.com">editors@cn.infoq.com</a>。也欢迎大家通过新浪微博（<a href="http://www.weibo.com/infoqchina">@InfoQ</a>）或者腾讯微博（<a href="http://t.qq.com/infoqchina">@InfoQ</a>）关注我们，并与我们的编辑和其他读者朋友交流。</p> 
 <p id="lastElm"></p><br><br><br><br><br><br></body></html>
