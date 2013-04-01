@@ -1,5 +1,14 @@
-<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>Java 8开始找到进入.Net/Mono之路</h3><p>在上周的开发快照版本中，<a href="http://weblog.ikvm.net/PermaLink.aspx?guid=467b6c9e-d9f6-4c6f-8de0-10c4f30ec5a9">IKVM</a>（该库旨在向CLR中增加Java支持）添加了对如下两种特性的实验性支持，一个是接口中的静态方法（Static Method in Interface），一个是默认接口方法（Default Interface Method）。这些Java 8特性主要是为支持Java库内部使用而设计的。当谈到这些特性与其他.NET语言的混用时，Jeroen Frijters并没有指望良好的互操作性。</p> 
-<p>恰如其名，接口中的静态方法完全实现了存在于接口命名空间中的静态方法，而之前只有类中才支持。该功能被推荐为<a href="https://blogs.oracle.com/darcy/entry/project_coin">Project Coin</a>的一部分。</p> 
-<p>默认接口方法使Java开发者能够将抽象接口看作抽象基类。和其他接口方法一样，这种方法也可以重写，但是能在不向接口引入破坏性改变的情况下加入。与纯粹是语言层次概念的扩展方法（Extension Method）不同，默认接口方法需要运行时支持。</p> 
-<p><b>查看英文原文</b>：<b><a href="http://www.infoq.com/news/2013/03/IKVM-Java-8;jsessionid=5BAE717DF6C50DC99B5A0EE7B31096E7">Java 8 Starting to Find Its Way into .Net/Mono</a></b></p> 
+<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>Backbone.js 1.0 发布</h3><p>经过两年半的研发，<a href="http://ashkenas.com/backbonejs-1.0/">Backbone.js发布</a>了版本1.0。<a href="http://backbonejs.org/">Backbone.js</a>是一个流行的JavaScript 模型/视图类库，很多流行的单页面Web应用程序都使用了该js，包括：<a href="http://www.usatoday.com/">USA Today</a>、 <a href="http://www.rdio.com/new">Rdio</a>和 <a href="https://www.airbnb.com/wishlists/popular">Airbnb</a>。</p> 
+<p>Backbone.js为用户提供了三个核心构建块：</p> 
+<ol> 
+ <li><i>模型</i> ，用于表示持久性对象。使用Backbone.js的同步功能，模型能够自动地与远程数据源（默认情况下通过RESTful Web服务）进行同步。同时，它还提供了工具能够容易地管理并同步数据源的模型集合。</li> 
+ <li><i>视图</i>，用于构建并维护Web应用程序的UI。视图经过配置之后便能够监听自己所代表的模型的change事件，这使得模型和UI之间能够容易地、及时地进行同步。</li> 
+ <li>路由，支持Backbone.js应用程序内的导航。尽管典型的Backbone.js应用程序是单页面界面，但是支持可加入书签的URL并且能够使用浏览器的返回按钮进行导航依然是必要的。Backbone.js路由通过使用HTML5提供的新历史（History）API对该功能提供了支持，如果不支持则使用URL散列实现。</li> 
+</ol> 
+<p>与0.9系列相比Backbone.js带来了一些变化。这些变化包括：提供了一种更加智能的方式大量更新集合、自动解码编码的URL片段同时还为事件发生提供了新的listenTo和stopListening方法。默认情况下，现在在保存模型的时候才会进行模型验证，而在之前的版本中，属性设置之后马上就会进行验证。这些变化都不是开创性的，所以从0.9升级到1.0应该相当轻松。</p> 
+<p>虽然Backbone.js已经面世很长时间了，但是1.0版本绝对不是它的终点。</p> 
+<p>发布说明的最后明显是一个<a href="http://ashkenas.com/backbonejs-1.0/">新想法的召集令</a>：</p> 
+<p>让Backbone处于核心地位的基本前提始终是，尝试并发现利用JavaScript构建Web应用程序时有用的最小数据结构（模型和集合）集合和原始用户界面（视图和URL）。我们将继续追逐这些特殊类型的功能，如果你认为自己已经找到一个这样的功能，请发送给我们。在一个包罗万象的生态系统中，为你决定所有事情的框架是很常见的，许多类库需要你重构网站从而适应它们的外观、感觉和默认行为——Backbone应该继续成为一个工具，给你足够的自由去设计Web应用程序的所有体验。</p> 
+<p>Backbone.js 1.0<a href="http://backbonejs.org/">下载</a>之后是一个单独的JavaScript源文件。最小的经过gzip压缩的版本只有6.3kb。Backbone.js依赖于<a href="http://underscorejs.org/">underscore.js</a> ，在使用视图和路由等依赖于DOM的特性时还依赖<a href="http://jquery.com/">jQuery</a>或者<a href="http://zeptojs.com/">Zepto</a>。</p> 
+<p><b>查看英文原文</b>：<a href="http://www.infoq.com/news/2013/03/backbone.js-1.0;jsessionid=251E5D676683BD70919BD342F151A830"><b>Backbone.js 1.0 Released</b></a></p> 
 <p id="lastElm"></p><br><br><br><br><br><br></body></html>

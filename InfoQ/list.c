@@ -1,11 +1,11 @@
 <html>
  <head></head> 
- <body>
-  <div>
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/31.c">Usando deployments “can&aacute;rio” para testes em produ&ccedil;&atilde;o</a>Conhe&ccedil;a as pr&aacute;ticas da empresa Nolio que utiliza a t&eacute;cnica de &quot;canary deployments&quot; para testar software em produ&ccedil;&atilde;o, redirecionando um subgrupo de usu&aacute;rios para uma nova funcionalidade como parte das pr&aacute;ticas de entregas cont&iacute;nuas.
-  </div>
-  <div>
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/30.c">MongoDB 2.4: busca textual, sharding e mais</a>O time de desenvolvimento do MongoDB anunciou a vers&atilde;o 2.4 de seu banco de dados NoSQL, agora com a fun&ccedil;&atilde;o de busca textual, uma das funcionalidades mais esperadas para o projeto. Conhe&ccedil;a os detalhes.
+ <body> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/31.c">Usando deployments “can&aacute;rio” para testes em produ&ccedil;&atilde;o</a>Conhe&ccedil;a as pr&aacute;ticas da empresa Nolio que utiliza a t&eacute;cnica de &quot;canary deployments&quot; para testar software em produ&ccedil;&atilde;o, redirecionando um subgrupo de usu&aacute;rios para uma nova funcionalidade como parte das pr&aacute;ticas de entregas cont&iacute;nuas. 
+  </div> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/30.c">MongoDB 2.4: busca textual, sharding e mais</a>O time de desenvolvimento do MongoDB anunciou a vers&atilde;o 2.4 de seu banco de dados NoSQL, agora com a fun&ccedil;&atilde;o de busca textual, uma das funcionalidades mais esperadas para o projeto. Conhe&ccedil;a os detalhes. 
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/29.c">Microsoft disponibiliza exemplos de c&oacute;digo Kinect para Windows</a>A Microsoft lan&ccedil;ou recentemente no CodePlex 22 exemplos de c&oacute;digo aberto sob a licen&ccedil;a Apache 2.0. Os exemplos, que tamb&eacute;m est&atilde;o inclu&iacute;dos no conjunto de ferramentas do Kinect para Windows, mostram como utilizar v&aacute;rios recursos do Kinect, como: &aacute;udio, intera&ccedil;&otilde;es b&aacute;sicas, cores, profundidade, rastreamento de rosto, infravermelho, slideshow com gestos, voz, WPF, XNA, e outros. 
