@@ -1,42 +1,19 @@
-<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>Red GateがSimply Web Devを発表</h3><p><a target="_blank" href="http://www.infoq.com/news/2013/03/red-gate-simply-web-dev;jsessionid=815571F79AA4881EC541B704FF58BD7A"><em>原文(投稿日：2013/03/06)へのリンク</em></a></p> 
+<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>いつWPFをAsyncとReactive Extensionsと一緒に使うべきか</h3><p><a target="_blank" href="http://www.infoq.com/news/2013/03/WPF-Async;jsessionid=4B14B973DA3FB144096F8B516235AEF4"><em>原文(投稿日：2013/03/22)へのリンク</em></a></p> 
 <div class="clearer-space">
  &nbsp;
 </div> 
 <div id="newsContent"> 
- <p>Red Gate Softwareが<a target="_blank" href="http://webdev.simple-talk.com/">Simply Web Dev</a>というサイトを立ち上げた。このサイトはASP.NET MVCの学習するためのガイドだ。主にASP.NET MVCに関連する外部サイトへのリンクを提供する。例えば、<a target="_blank" href="http://webdev.simple-talk.com/areas/">エリア</a>、<a target="_blank" href="http://webdev.simple-talk.com/routing/">ルーティング</a>、<a target="_blank" href="http://webdev.simple-talk.com/controllers-and-actions/">コントローラーとアクション</a>、<a target="_blank" href="http://webdev.simple-talk.com/controller-extensibility/">コントローラーの拡張性</a>、<a target="_blank" href="http://webdev.simple-talk.com/filters/">フィルタ</a>、<a target="_blank" href="http://webdev.simple-talk.com/views/">Views</a>, <a target="_blank" href="http://webdev.simple-talk.com/model-template/">モデルテンプレート</a>、<a target="_blank" href="http://webdev.simple-talk.com/model-binding/">バインディング</a>、そして<a target="_blank" href="http://webdev.simple-talk.com/model-validation/">バリデーション</a>だ。</p> 
- <p>&nbsp;</p> 
- <p><img alt="" src="http://www.infoq.com/resource/news/2013/03/red-gate-simply-web-dev/ja/resources/3Figure_1.png;jsessionid=815571F79AA4881EC541B704FF58BD7A" _href="img://3Figure_1.png" _p="true" /></p> 
- <p>InfoQはRed Gate SoftwareのChris Massey氏にこのサイトについて詳しく話を聞いた。</p> 
- <p><strong>InfoQ: このサイトにはどのような意図があるのでしょうか。</strong></p> 
- <blockquote>
-  現時点で入手できる最良の技術資料を集めたものです。経験豊かなASP.NETの開発者に集めてもらい、ASP.NET MVCの経験のない開発者が最も意味あるコンテンツを見つけられるように構造化しました。 
-  <p>要するに、ASP.NET MVCを学んでいる開発者が、より経験のあるウェブ開発者の知見や経験から学習することを支援するに設計されているのです。学びたいときに必要なコンテンツだけを読めるようにしました。</p> 
+ <p>Ian Griffiths氏は、WPFで.NET 4.5の非同期フィーチャをいつ使い、いつ使わないべきかに関する6回シリーズを公開した。シリーズは<a target="_blank" href="http://www.interact-sw.co.uk/iangblog/2013/02/14/wpf-async-too-fast">WPFとAsyncは余りに良く、余りに早い</a>と題する記事で始まっている。</p> 
+ <p>非同期を使って、好きなようにアプリケーション中にそれを振り分けて、それでお終いとしたくなるかもしれない。不幸にして、バッチサイズ、すなわち各非同期呼び出し間の時間差がタスクオブジェクトの生成コストと関連するコンテキストスイッチのコストよりも小さければ、これは上手くいかない。</p> 
+ <p>大きなバッチは完了するまでの時間を短縮できるが、UIの応答性を妨げる可能性がある。氏は次のように書いている。</p> 
+ <blockquote> 
+  <p>これは8.5秒のケースよりも随分早いですが我々は何かを失いました。もっと遅い例は、UIでもっと早くなる、という役立つ結果を産みました。事実、ユーザーは実際、その遅いバージョンの方を好むでしょう。なぜなら、もし有用なデータが即座に現れたら、リストを埋め終わるのに3倍長く時間がかかるのに気が付かないかもしれない。おそらく、とにかく全リストをスクロールダウンするのに8.5秒よりずっと長くかかるでしょう。なので1つの重要な手段によって、ネイティブ非同期メソッドはより優れています。それは、ユーザーにより早く有益な情報を提供します。</p> 
  </blockquote> 
- <p><strong>InfoQ: なぜこのようなポータルサイトを立ち上げる必要があるのでしょうか。</strong></p> 
- <blockquote>
-  ASP.NET MVCを学ぼうとするとすでに大量のコンテンツがオンラインで閲覧でき、必要に応じて情報を探し回らなければなりません。同じような内容のコンテンツもありますし、玉石混合で、経験豊かな開発者でない限り、本当に便利なコンテンツを探すのは大変です。 
-  <p>そこで私たちは、新人開発者やASP.NETの経験のないウェブ開発者が、素早く、信頼できる最良のコンテンツを探し出し、ASP.NETを理解できればとても便利になると考えました。</p> 
+ <p>Ian Griffiths氏は、また<a target="_blank" href="http://www.interact-sw.co.uk/iangblog/2013/02/19/wpf-threads-too-fast">スレッドプールと WPF 4.5の新しい Collection Synchronizationフィーチャ</a>を使うことに注目している。もしConfigureAwait(false) を使って、処理がUIスレッド上で起きるように強制することを避けたいなら、このテクニックは必要である。</p> 
+ <blockquote> 
+  <p>ConfigureAwaitへのその呼び出しは、メソッドがどのコンテキストで継続するのかは気にしていない、と宣言しています。結論は、すぐに完了できない読み取りが結局終了しない場合、メソッドの残りの部分の遅延実行は、スレッドプールのスレッドで起こるということです。これは、我々のawait は、もはやWPFディスパッチャのオーバーヘッドを被ることがない、ということです。しかし、もちろん、それはまた、すべてのリストの更新がワーカースレッド上で起きることを意味しますので、我々は問題を回避するために、以前と同じトリックを使用する必要があります。どちらもリストをデータバインディングに見えるようにする前に、私達が終わるまで、待つ必要があります。あるいは、我々は、スレッド間の変更通知処理を可能にする必要があります。</p> 
  </blockquote> 
- <p><strong>InfoQ: Red GateがSimply Web Devを作ったのは何から着想を得たのですか。</strong></p> 
- <blockquote>
-  私たちはウェブ開発者のコミュニティを支援する方法を探していました。付き合いのある書き手のネットワークを使って、私たちのウェブ開発者が探している情報に見合う記事やブログを書いてもらう方法が自然に浮かびましたが、既に入手できるコンテンツを探してみると別の方法を思いつきました。 
-  <p>既に大量のコンテンツがあることに気付いたのです。この大量のコンテンツに単に新たなコンテンツを追加するのではなく、最良なコンテンツ、専門家、クラウドの英知を見つける方法を提供することで開発者を支援できると考えました。Googleは情報を見つけるのが得意ですが、現時点では、人間の専門家が何を読むべきか教えてくれる方が優れています。</p> 
- </blockquote> 
- <p><strong>InfoQ: 同じASP.NET、LINQ、Visual Studio 2012について同じようなポータルサイトを立ち上げる計画はありますか。</strong></p> 
- <blockquote>
-  もちろんです。カバーする範囲を拡大するつもりです。現時点ではテーマの制限範囲は設けていません。しかし、第一に優先しているのはウェブ開発者のASP.NET MVC学習を支援することなので、ツールの学習を支援する同じようなサイトを今後数ヶ月の間に立ち上げることはありません。誰かが私たちを説得したいのなら別ですが。
- </blockquote> 
- <p><strong>InfoQ:Simply Web Devはどの程度の頻度で更新するつもりですか。</strong></p> 
- <blockquote>
-  毎週更新するつもりです。手始めに、ASP.NET MVCを完璧にカバーするつもりで作業しています。現時点ではアルファ版で、私たちがウェブ開発者がどのような種類のコンテンツを探しているのか、どのようにリソースの利用感や機能性を改善するのか調査するのに利用しています。 
-  <p>&nbsp;</p> 
- </blockquote> 
- <p><strong>InfoQ: 学生にとっても便利なサイトになるでしょうか。</strong></p> 
- <blockquote>
-  もちろんです。ウェブ開発の経験のない学生やASP.NETに慣れていない学生にとっては、専門家が理解を深めるために読むべきコンテンツを示し、なぜ読むべきなのかを説明してくれるのは大きな益になります。
-  <br /> 
-  <br /> 私たちが利用している技術をできるだけ素早くスムーズに理解するために学習をしている人であれば誰でも支援したいと思っています。このようなかたちで情報が手に入るのなら学生も便利だと感じるはずです。
- </blockquote> 
+ <p>氏が示した別のテクニックは、<a target="_blank" href="http://www.interact-sw.co.uk/iangblog/2013/02/20/wpf-rx-threads-chunking">Reactive Extensionsを使ってデータをまとめる</a>ことだ。これはBuffer関数を使ってバッチサイズを100 ms ないし 5000 項目のいずれか最初の方に制限する。そして ObserveOnDispatcher関数は、UIスレッド上にそれをマーシャリングして戻す。このパターンは他のテクニックよりも冗長だが、「ほぼ瞬時に、データを表示し始め、全データをロードして、表示するのに2.3秒で終わります」、また元の同期実装に対する改善である。</p> 
  <p id="lastElm">&nbsp;</p> 
 </div> 
 <p id="lastElm"></p><br><br><br><br><br><br></body></html>

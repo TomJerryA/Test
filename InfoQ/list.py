@@ -1,6 +1,12 @@
 <html>
  <head></head> 
- <body> 
+ <body>
+  <div>
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/28.py">Windows Embedded 8 リリース</a>Windows Embedded 8がMicrosoftからリリースされ，一般入手が可能になった。OEM や特殊環境での使用を意図したこのリリースシリーズは，Windows 8 のコードベースを組み込み環境へと適用させるものだ。
+  </div>
+  <div>
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/27.py">いつWPFをAsyncとReactive Extensionsと一緒に使うべきか</a>Ian Griffiths氏は、WPFで.NET 4.5の非同期フィーチャをいつ使い、いつ使わないべきかに関する6回シリーズを公開した。シリーズはWPFとAsyncは余りに良く、余りに早いと題する記事で始まっている。
+  </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/26.py">Parse MBaaS の分析</a>MBaaS を提供する新興企業を取り上げるシリーズ記事の第３弾として，今回の記事では Parse という企業を動かしているものについて検討する。Parse は，数を増し続ける競合企業たちと同じように，効率的なモバイルバックエンド構築に必要なモバイルアプリ開発者の時間と労力の削減を目的とする企業だ。 
   </div> 
@@ -144,12 +150,6 @@
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/29.py">Erlang/OTP R16Bが並列性を改善</a>新しくリリースされたErlang/OTP R16Bの新フィーチャには、幾つものパフォーマンス改善がある。コードは非ブロッキングでロードできるようになり、ポート用のネットワークコードも改善され、VMプロセスは並列化された。 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/28.py">アジャイルで開発速度を上げるには</a>企業がソフトウェア開発へのアジャイル導入を望む理由として挙げられるのが，提供までの期間の短縮だ。開発速度を向上するためには，アジャイルをどのように使えばいいのだろうか？ 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/27.py">Red GateがSimply Web Devを発表</a>イギリスのRed Gate Softwareが開発者や学生がASP.NET MVCを学習するために利用できるポータルサイトを立ち上げた。 
-  </div> 
+  </div>   
  </body>
 </html>
