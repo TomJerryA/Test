@@ -1,6 +1,9 @@
 <html>
  <head></head> 
- <body> 
+ <body>
+  <div>
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/8.cb">DevOps de zero a 100%: N&iacute;veis e passos de ado&ccedil;&atilde;o</a>A ado&ccedil;&atilde;o das pr&aacute;ticas de DevOps n&atilde;o &eacute; um processo gradual, em que o grau m&aacute;ximo pode n&atilde;o ser o objetivo. Este artigo apresenta os v&aacute;rios graus de ado&ccedil;&atilde;o do DevOps e fornece dicas para evoluir.
+  </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/7.cb">Escalando o Agile na Spotify: exemplo de sucesso de Lean Startup, Scrum e Kanban</a>Ap&oacute;s a fase de implanta&ccedil;&atilde;o de uma cultura &aacute;gil como aconteceu na Spotify, o pr&oacute;ximo grande desafio foi escalar as pr&aacute;ticas &aacute;geis para as diversas equipes, o que exigiu uma nova readequa&ccedil;&atilde;o. 
   </div> 
