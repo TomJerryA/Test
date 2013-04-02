@@ -1,13 +1,49 @@
-<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>jBPM及Alfresco Activiti创始人Tom Baeyens筹划将BPM带到云端</h3><p>JBoss <a href="http://www.jboss.org/jbpm/">jBPM</a>（被Red Hat收购）和<a href="http://www.activiti.org/">Activiti</a>（由Alfresco公司支持）创始人Tom Baeyens最近发布了<a href="http://www.effektif.com/">Effektif</a>，一款基于云的业务流程管理（BPM）新工具，用于自动化流程管理。新成立的公司与Signavio公司建立了合作关系，Signavio公司创立于2009年，主要提供SaaS和内部流程编排器解决方案。Signavio将对Effektif投资120万欧元以加快产品开发、建立销售机会。作为Signavio投资方案中的一部分，Effektif总部已迁从比利时迁往德国柏林；同时，Signavio的联席CEOTorben Schreiter已加入Effecktif的董事会。</p> 
-<p>Baeyens告诉InfoQ，他的核心计划是：“当把BPM带到云端的时候，在动态方面变得更加重要。”他认为，使业务用户能够定义和改变系统内的工作流程是必不可少的，因此在传统的BPMN建模工具上构建云端可扩展的流程执行引擎是不足够的。</p> 
-<p>Baeyens打算将Effektif分为3个概念层。第一层是一个基于浏览器的向导，旨在提供一个简单的机制使企业用户能够定义任务和为这些任务及切换（handover）创建表单。协调和反馈可以通过电子邮件实现。此外，这一层还将包括一个沙箱环境以允许用户去试验这些流程。Baeyens说道：“我们的目标是能让企业用户能在不到5分钟的时间内建立他们的第一个简单流程。”</p> 
-<p>第二层增加了一组适配器以便与其它基于云端包装的应用程序——如Salesforce和Google Apps——进行整合。虽然仍然不需要编码，但Baeyens承认这一层将需要一些技术知识以进行设置集成。因此，很可能这项任务依然由IT技术人员承担。</p> 
-<p>第三层，即最后一层，将允许开发人员编写要包含在工作流中的定制软件。这里所采取的方法类似<a href="http://aws.amazon.com/swf/">亚马逊的简单工作流服务</a>。Effektif将为每个系统活动维护一个任务列表。开发人员可以编写一段代码，通过一个RESTful API从该列表中获得任务并执行工作，并将结果返回给云端的工作流引擎。返回结果后会触发一个触发器以继续整个工作流程程。根据Baeyens介绍，任何语言——“PHP，Java等等”——都可以通过这样的方法去调用工作流。同样的机制也可适用于整合在防火墙后面的企业内部系统。</p> 
-<p>就核心架构方面而言，该工作流引擎采用Java语言开发，并使用<a href="http://www.bpmn.org/">业务流程模型和符号（BPMN）2.0标准</a>。Signavio公司的联席CEO Gero Decker告诉我们，该产品将充分利用Signavio流程编辑器中提供的流程建模功能。“这样做的好处是，在Signavio中已经支持的流程模型导入功能（例如XPDL）也能同样用在Effektif。”</p> 
-<p>REST层使用<a href="http://restlet.org/">Restlet</a> 框架构建，利用<a href="http://wiki.fasterxml.com/jacksonhome">Jackson</a> 去解析处理JSON，<a href="http://www.mongodb.org/">MongoDB</a> 用作提供数据源。目前团队还没决定在前端使用何种Javascript框架。</p> 
-<p>Effecktif的第一个beta版本将会在今年夏天发布，在年底将会公开发布。价格方面还没拟定，但很大可能是基于每一个流程实例模型进行收费。</p> 
-<p><b>查看英文原文</b>：<a href="http://www.infoq.com/news/2013/03/baeyens-activiti;jsessionid=6C186E5581DCA15F5651AEC24D31B9DD">Tom Baeyens, creator of jBPM and Alfresco Activiti, Starts New Venture to Bring BPM to the Cloud</a></p> 
+<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>公共单位中的敏捷实施：FBI和鹿特丹港</h3><p>公共单位正在越来越多地使用敏捷方法，从而满足在可用的预算和时间条件下开发软件的需求，并在面对不断变化的需求时变得更加灵活和实用。本文通过对公众领域如何采用敏捷方法作为其需求的解决方案进行了探索，并通过两个案例分析展现了敏捷开发如何运用于FBI及荷兰的鹿特丹港。</p> 
+<p>在这篇来自于<a href="http://www.computerworld.com/s/topic/13/Government+IT">计算机世界政府IT新闻（栏目）</a>的文章《<a href="http://www.computerworld.com/s/article/9235966/Feds_turn_to_agile_development_as_budget_cuts_loom">随着预算的削减，联邦政府转向敏捷开发</a>》中，高级编辑<a href="http://www.computerworld.com/s/author/265/Patrick+Thibodeau">Patrick Thibodeau</a>表示，美国联邦政府机构有必要使用敏捷软件开发方法：</p> 
+<blockquote> 
+ <p>IT经理正在通过转向敏捷开发来加速项目并快速体现他们的价值。大型、笨拙、多年期的政府IT项目的日子正在缓慢地面临终结。</p> 
+</blockquote> 
+<p>（联邦政府）机构的预算被削减，由于年度预算尚未批准，所以他们必须在短期预算下运作。这些预算方面的不确定性驱动政府机构寻找新的途径来规划和管理他们的IT项目：</p> 
+<blockquote> 
+ <p>敏捷方法论强调开发者、管理者与客户之间的协作——任何一个与项目产出相关的人——随着迭代开发周期以较短的增量方式产出交付成果。</p> 
+</blockquote> 
+<p>Matthew Weigelt和Camille Tuutti在<a href="http://fcw.com/home.aspx">FCW</a>上描述了如何通过敏捷开发帮助公共单位管理好演进的需求。文章《<a href="http://fcw.com/articles/2013/01/28/agile-it-managers.aspx?sc_lang=en">开始敏捷实践？让你的IT经理们做好准备</a>》以阐述在传统“瀑布”模型中那些他们认为必须被处理的问题作为开始：</p> 
+<blockquote> 
+ <p>联邦CIO Steven VanRoekel和联邦采购政策办公室管理员Joe Jordan于2012年7月在OMBlog中写道：长久以来，政府被失控的IT项目拖累，损失了数十亿美元并滞后于进度计划。而当一些技术创新发布时，它们（失控的项目）便只能被放弃。</p> 
+ <p>“在许多情况下，这些失败可以追溯到漫长的收购，以及多年来为了交付大规模新系统而在IT开发上作出的努力，而不是以增量的方式提供新的功能——如同私营单位那样”，VanRoekel和Jordan写道。</p> 
+</blockquote> 
+<p>敏捷开发能够帮助政府机构更好地管理其软件项目：</p> 
+<blockquote> 
+ <p>敏捷开发使项目更快发布“而不是对它分析过度并构建一些客户不需要的东西”，</p> 
+ <p>敏捷开发的另一个重要方面，是为用户提供了在项目中识别问题的机会，而且还有机会来解决这些问题。通过选择敏捷开发，官方能够接受与政府内外部利益相关者持续沟通的重要性，从而吸收变更并解决任何变更带来的问题。</p> 
+</blockquote> 
+<p>Jason Bloomberg在<a href="http://www.cio.com/">CIO.com</a>上发表的文章《<a href="http://www.cio.com/article/714333/How_the_FBI_Proves_Agile_Works_for_Government_Agencies">FBI如何证明敏捷方法适用于政府机构</a>》展示了一个公共单位使用敏捷方法的例子。它描绘了FBI的哨兵项目是如何通过使用敏捷软件开发方法论来调头走上正轨的：</p> 
+<blockquote> 
+ <p>[FBI的CIO Chad Fulgham]选择将项目切换到了由长度为两周的sprint（scrum的一个核心最佳实践）组成的迭代Scrum方法。尽管错过了最初拟定的2011年9月这个截止期限，但Fulgham的团队仍然使项目处于掌控之中，并成功在调整后的4.51亿美元预算内完成了项目，这应该归功于敏捷开发。</p> 
+</blockquote> 
+<p>Jason援引了一份报告，其中政府问责局（GAO）调查了若干美国政府机构的敏捷方案。这份报告的内容在此前InfoQ的《<a href="http://www.infoq.com/news/2012/07/agile-in-government;jsessionid=EDF514340B0C3E4BF858D90D945240DE">政府敏捷实施指南</a>》中已经介绍过。</p> 
+<p>John Foley也在《<a href="http://www.informationweek.com/government/enterprise-applications/fbis-sentinel-project-5-lessons-learned/240004888">FBI的哨兵项目：学到的五</a>点经验》中描绘了敏捷开发是如何帮助FBI的。来自该项目的经验之一是“敏捷开发能够使事情完成”：</p> 
+<blockquote> 
+ <p>其思路是，一个亲身实践的增量方法之所以更快是因为在两周的“sprint”中，功能得以实现，调整得以完成。FBI错过了它的目标完成期限——2011年9月——但最终任务能够完成应该归功于敏捷方法论。</p> 
+</blockquote> 
+<p>另一个来自FBI项目的经验是敏捷开发能够帮助政府省钱：</p> 
+<blockquote> 
+ <p>[Fulgham和Johnson]将项目维持在给定的预算内（……）敏捷开发不仅更快，而且更便宜。</p> 
+</blockquote> 
+<p>另一个公共单位敏捷实施的例子来自于荷兰。Mark Chillingworth在<a href="http://www.cio.co.uk/">CIO.co.uk</a>上发表的文章《<a href="http://www.cio.co.uk/article/3411783/cio-profile-lourens-visser-keeps-port-of-rotterdams-systems-ship-shape/">CIO LourensVisser将鹿特丹港的系统管理得井井有条</a>》，展示了如何使用敏捷方法开发用于管理鹿特丹港的软件。他引用了CIO LourensVissers的话，解释了改变IT管理方式的需求：</p> 
+<blockquote> 
+ <p>“当提出港口的愿景计划时，我感到我们必须为其谋划一个IT战略，而它也确实需要。之前的项目是基于先到先得方式的。维护预算也在持续增长，而我期望着革新，”</p> 
+</blockquote> 
+<p>基于来自商业的要求，新信息系统的内部开发最终决定采用敏捷方法。</p> 
+<blockquote> 
+ <p>港口主管理和信息系统（HaMIS）取代了已经使用了19年的解决方案，该系统的开发也许是Visser这次改革的最大成果。HaMIS由Visser团队于内部开发（……）开发团队采用了敏捷开发实践，并且为了保证产品的高质量，鹿特丹港与软件改进团体（SIG）达成了合作关系，而SIG担当了开发过程中Java代码的独立评审员。</p> 
+</blockquote> 
+<p>敏捷实施促进了鹿特丹港IT部门与其内部客户之间的协作：</p> 
+<blockquote> 
+ <p>Visser说，其中一个好处是IT部门现在与组织机构中的其他部分有了更多的互动。“我们拥有着一个混合文化，如同一个政府部门和一个咨询公司，我们还像是一个拥有许多资产的公用事业公司，”Visser补充道。</p> 
+</blockquote> 
+<p><b>查看英文原文</b>：<a href="http://www.infoq.com/news/2013/02/agile-public-sector;jsessionid=EDF514340B0C3E4BF858D90D945240DE">Agile Adoption in the Public Sector: FBI and Port of Rotterdam</a></p> 
 <hr /> 
-<p>感谢<a href="http://www.infoq.com/cn/bycategory.action;jsessionid=6C186E5581DCA15F5651AEC24D31B9DD?authorName=杨赛">杨赛</a>对本文的审校。</p> 
+<p>感谢<a href="http://www.infoq.com/cn/bycategory.action;jsessionid=EDF514340B0C3E4BF858D90D945240DE?authorName=赵震一">赵震一</a>对本文的审校。</p> 
 <p>给InfoQ中文站投稿或者参与内容翻译工作，请邮件至<a href="mailto:editors@cn.infoq.com">editors@cn.infoq.com</a>。也欢迎大家通过新浪微博（<a href="http://www.weibo.com/infoqchina">@InfoQ</a>）或者腾讯微博（<a href="http://t.qq.com/infoqchina">@InfoQ</a>）关注我们，并与我们的编辑和其他读者朋友交流。</p> 
 <p id="lastElm"></p><br><br><br><br><br><br></body></html>
