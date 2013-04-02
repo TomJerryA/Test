@@ -1,11 +1,14 @@
 <html>
  <head></head> 
- <body>
-  <div>
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/28.py">Windows Embedded 8 リリース</a>Windows Embedded 8がMicrosoftからリリースされ，一般入手が可能になった。OEM や特殊環境での使用を意図したこのリリースシリーズは，Windows 8 のコードベースを組み込み環境へと適用させるものだ。
-  </div>
-  <div>
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/27.py">いつWPFをAsyncとReactive Extensionsと一緒に使うべきか</a>Ian Griffiths氏は、WPFで.NET 4.5の非同期フィーチャをいつ使い、いつ使わないべきかに関する6回シリーズを公開した。シリーズはWPFとAsyncは余りに良く、余りに早いと題する記事で始まっている。
+ <body> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/29.py">Canary Deploymentsを使って稼働中にテストする</a>Nolioが彼らのDevOpsのベストプラクティスに関するシリーズの最初のビデオで言っていることによれば、ユーザーの一部を新しい機能に目を向けさせたことで、企業は&quot;Canary Deployments&quot;を継続的デリバリの一部として使って、稼働中のソフトウェアをテストしている。&quot;Canary Deployments&quot;は一種のインクリメンタル リリースで、ソフトウェアの新バージョンをその対応する稼働中のバージョンと並んでデプロイすることで実現される。 
+  </div> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/28.py">Windows Embedded 8 リリース</a>Windows Embedded 8がMicrosoftからリリースされ，一般入手が可能になった。OEM や特殊環境での使用を意図したこのリリースシリーズは，Windows 8 のコードベースを組み込み環境へと適用させるものだ。 
+  </div> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/27.py">いつWPFをAsyncとReactive Extensionsと一緒に使うべきか</a>Ian Griffiths氏は、WPFで.NET 4.5の非同期フィーチャをいつ使い、いつ使わないべきかに関する6回シリーズを公開した。シリーズはWPFとAsyncは余りに良く、余りに早いと題する記事で始まっている。 
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/26.py">Parse MBaaS の分析</a>MBaaS を提供する新興企業を取り上げるシリーズ記事の第３弾として，今回の記事では Parse という企業を動かしているものについて検討する。Parse は，数を増し続ける競合企業たちと同じように，効率的なモバイルバックエンド構築に必要なモバイルアプリ開発者の時間と労力の削減を目的とする企業だ。 
@@ -148,8 +151,5 @@
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/30.py">Stimulsoft，WinRT用レポートデザイナをリリース</a>StimulsoftがWinRT用のレポートデザイナを新たにリリースした。Windows 8の動作する任意のデバイス上でレポートの作成と編集が可能になる。 
   </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/29.py">Erlang/OTP R16Bが並列性を改善</a>新しくリリースされたErlang/OTP R16Bの新フィーチャには、幾つものパフォーマンス改善がある。コードは非ブロッキングでロードできるようになり、ポート用のネットワークコードも改善され、VMプロセスは並列化された。 
-  </div>   
  </body>
 </html>
