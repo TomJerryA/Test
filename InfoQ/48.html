@@ -1,8 +1,133 @@
-<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>Opscode Chef新用户快速入门指南</h3><p>Opscode提供了一种<a href="https://learnchef.opscode.com/">新的学习Chef的途径</a>，旨在帮助用户快速掌握开始构建“基础设施即代码（Infrastructure as Code）”所需要的知识。新途径通过提供快速入门指南、常用案例、视频讲座和问题处理引导用户学习。Opscode将之称为“#learnchef”，这也是<a href="http://webchat.freenode.net/?channel=learnchef">IRC频道</a>的名字，新用户能够加入freenode提问问题或者获取更深入的信息。</p> 
-<p>Opscode公司#learnchef的领导者Seth Vargo解释了Opscode创建这个新的学习方式的动机：</p> 
-<p>我们创建<a href="https://learnchef.opscode.com/">#learnchef</a>的目的是为用户提供一个有趣的、魅力不凡的学习Chef的入口。创建它是为了实现心里的那个目标：对于从未接触过Chef的新用户来说最快的学习方式是什么？我们一直都在填充Chef中长期存在的空白。在创建资料、设计和活动等内容时我们始终把最终用户放在第一位。我们提供了如何使用的视频讲座和常见的使用案例等内容，我们希望新的Cheffer从开始就能感觉到#learnchef活动是多么地直观和令人兴奋。</p> 
-<p>#learnchef快速入门提供了三个部分：“工作站设置”、“Chef仓库（Repo）的使用”和“汇聚节点”。你所使用的操作系统决定了设置，我们提供的信息支持Mac、Linux和Windows三种平台。另外，Opscode<a href="https://github.com/opscode/chef-repo">通过GitHub提供了一个入门Chef仓库（Repo）</a>，帮助用户下载、编辑和创建cookbook。该入门中的内容解释了如何使用已安装的应用程序汇聚一个VirtualBox虚拟机节点（该节点使用了Chef 仓库、社区cookbook和用户创建的cookbook）。</p> 
-<p>短的视频讲座为快速入门指南提供了支持内容。涵盖的内容包括：Chef仓库的创建、应用程序安装、“.pem”文件的管理和托管Chef的注册。问题处理部分为常见错误和常见问题的处理提供了指南，包括：401未授权错误、403拒绝访问错误和其他的流程问题。</p> 
-<p>Opscode将继续添加新内容，同时用户还可以<a href="https://twitter.com/learnchef">通过twitter对更新的内容进行交流</a>。</p> 
-<p><b>查看英文原文</b>：<a href="http://www.infoq.com/news/2013/03/opscode-learnchef;jsessionid=AC8A3D3C075CF6B01E161387A0661F9C"><b>Quickstart for New Users of Opscode Chef</b></a></p> 
+<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>Alloy团队AlloyImage作者王斌访谈</h3><p>近日，腾讯Web前端Alloy团队Blog发布了最新的开源项目：一个基于HTML5技术的专业级图像处理引擎——AlloyImage(简称AI)，以及一个在线Web图像处理平台——AlloyPhoto(简称AP)。InfoQ中文站曾做过<a href="http://www.infoq.com/cn/news/2013/03/tencent-os-alloyimage;jsessionid=84D36577E169746CFE5996BBD1FEE8F5">相关报道</a>。在报道之后，我们联系到Alloy团队的王斌——AlloyImage的作者，做了一次邮件采访。</p> 
+<p>下面是采访内容：</p> 
+<p><strong>InfoQ：</strong>能否先简单介绍一下Alloy团队？</p> 
+<blockquote> 
+ <p><strong>王斌：</strong>很多人很好奇腾讯AlloyTeam名字的含义和由来，这里还真有一段小历史，2008那年我们团队开始研发WebQQ（现在叫Q+ Web），WebQQ是首个将WebOS、云计算、AppStore和Web开放平台整合在一起的产品，所以我们就给了WebQQ起了一个开发代号——AlloyOS，Alloy的中文含义是合金、合铸、合成，正好寓意WebQQ是将公司内、外的各种互联网服务产品合铸成一个为用户提供一站式的在线生活的平台，所以我们团队的名字也就自然成了AlloyTeam，AlloyTeam的名字还有一重寓意就是将团队所有成员的聪明才智合铸在一起。所以后来出的一些项目也都有用Alloy冠名，比如AlloyPhoto、AlloyImage、AlloyTimer等等。</p> 
+ <p>我们团队主要面向Web前端领域，2008年的时候，为了更快、更好的开发WebQQ，我们开发了通用的Web前端框架JX(Javascript eXtension)，然后为了团队可以方便的在Mac下开发Web产品，我们的潘祥智同学开发了跨平台的抓包工具Rythem，后来为了提高迭代和发布效率，龙福康同学开发了智能合图工具iSpriter，再后来我们参与了Q+产品的开发，为了进一步研究Web和客户端技术的结合，郭大扬同学开发了WebTop。HTML5技术刚开始流行时，为了学习和研究，我们又一起开发了一个在线编程对战的游戏平台CodeTank(代码坦克)，后来我们团队2012年来的新人们参加【腾讯创意马拉松】开发了一个HTML5的体感游戏《墙来了WallComing》。目前团队还在做一些移动Web方面的开发，所以不久的将来也会有一些移动开发的框架出来。</p> 
+ <p>附一些主要的自由项目作品：</p> 
+ <ul> 
+  <li> <p>JX——WebQQ中使用的Web前端Javascript框架</p> </li> 
+  <li> <p>墙来了WallComing——基于HTML5开发的在线体感游戏</p> </li> 
+  <li> <p>CodeTank——在线Javascript编程对战游戏平台</p> </li> 
+  <li> <p>Rythem——跨平台的http抓包分析工具</p> </li> 
+  <li> <p>WebTop——一个使用HTML5开发桌面应用的平台</p> </li> 
+  <li> <p>iSpriter——图片智能合体工具</p> </li> 
+  <li> <p>xXxxxxx——一个还未公开的在线创作平台，名字暂时保密</p> </li> 
+ </ul> 
+ <p>以及还有许多新鲜、有趣的项目还在开发中，后续会不定期的公布。</p> 
+</blockquote> 
+<p><strong>InfoQ：</strong>为什么要做一款Javascript图像处理引擎？</p> 
+<blockquote> 
+ <p><strong>王斌：</strong>首先，腾讯一直本着务实的心态希望能为业界做一些基础技术方面的贡献，而我们Alloy团队目前主要是做HTML5方面的研究，所以我们希望为业界提供一些良好的HTML5技术基础，同时我们也是HTML5梦工场的主要成员，希望可以一起推动HTML5技术在实际项目中的应用。其次，市面上的在线图像处理软件都是Flash写的，Flash本身不是html规范的一部分，移动端的支持也不够良好，所以在线图像处理需要替代者出现，而且使用html5来写也是名正言顺的事情。第三，虽然html5提供了很好的图形操作接口，但是图像处理的门槛相对较高一点，很多普通的Web开发者并不想去学习这方面的知识，只是想实现一些常见的效果，就需要一个图像处理引擎，所以基于以上几点，我们团队就开发了AlloyImage图像处理引擎。</p> 
+</blockquote> 
+<p><strong>InfoQ：</strong>这款引擎的核心实现原理是什么？</p> 
+<blockquote> 
+ <p><strong>王斌：</strong>AlloyImage的核心实现原理是基于HTML5 Canvas的提供的像素级操作做为切入点，对一幅图像做一些算法操作，来进行数字图像处理，这也是传统的图像处理软件做图像处理的基本原理。</p> 
+</blockquote> 
+<p><strong>InfoQ：</strong>这样实现的运行效率如何？</p> 
+<blockquote> 
+ <p><strong>王斌：</strong>为了测试执行效率，我们做了一个简单的性能测试，结果可以见此表：</p> 
+ <style type="text/css">
+.alloy{
+	border:1px solid grey;
+	text-align: center;
+}
+</style> 
+ <table class="alloy"> 
+  <tbody> 
+   <tr> 
+    <td colspan="7">AlloyImage性能测试</td> 
+   </tr> 
+   <tr> 
+    <td>&nbsp;</td> 
+    <td>美肤</td> 
+    <td>素描</td> 
+    <td>柔焦</td> 
+    <td>仿Lomo</td> 
+    <td>粗糙</td> 
+    <td>木雕</td> 
+   </tr> 
+   <tr> 
+    <td>320*240</td> 
+    <td>0.115</td> 
+    <td>0.06</td> 
+    <td>0.077</td> 
+    <td>0.166</td> 
+    <td>0.181</td> 
+    <td>0.669</td> 
+   </tr> 
+   <tr> 
+    <td>600*450</td> 
+    <td>0.221</td> 
+    <td>0.178</td> 
+    <td>0.161</td> 
+    <td>0.377</td> 
+    <td>0.336</td> 
+    <td>2.435</td> 
+   </tr> 
+   <tr> 
+    <td>480*800</td> 
+    <td>0.303</td> 
+    <td>0.26</td> 
+    <td>0.255</td> 
+    <td>0.532</td> 
+    <td>0.477</td> 
+    <td>3.248</td> 
+   </tr> 
+   <tr> 
+    <td>960*720</td> 
+    <td>0.476</td> 
+    <td>0.409</td> 
+    <td>0.372</td> 
+    <td>0.89</td> 
+    <td>0.853</td> 
+    <td>6.185</td> 
+   </tr> 
+   <tr> 
+    <td>配置</td> 
+    <td colspan="2">i5-4200@3.1GHZ</td> 
+    <td>&nbsp;</td> 
+    <td colspan="2">Chrome25</td> 
+    <td>&nbsp;</td> 
+   </tr> 
+  </tbody> 
+ </table> 
+ <p>测试结果可以看出，对于大部分的组合效果，处理速度还是在可接受范围内。</p> 
+</blockquote> 
+<blockquote> 
+ <p>做图像处理，肯定要依靠像素级操作来完成，这就不可避免的会出现大量的循环操作，这部分是影响整体运行时间的主要因素。由于JavaScript是解释型的语言，边编译边执行的效率相对比编译后执行的效率要差一些。一方面，不同浏览器对解释器的优化存在差异，Chrome浏览器相对好一些，基于TypedArray类型的数组循环操作运行时间远远短于传统混合型的数组，所以在Chrome在这方面的运行效率较IE高很多。另一方面，运行效率还受硬件配置的影响。</p> 
+</blockquote> 
+<p><strong>InfoQ：</strong>在研发过程中是否遇到过困难？是如何解决的？</p> 
+<blockquote> 
+ <p><strong>王斌：</strong>研发过程遇到的困难可能就是接口的设计，算法的实现这两方面。接口设计方面一般会征求团队内的意见、参照一些优秀的开源引擎的接口设计特点，算法实现方面就需AlloyImage要去不断学习相关的专业知识来解决。</p> 
+</blockquote> 
+<p><strong>InfoQ：</strong>AlloyImage已经有实际应用了吗？</p> 
+<blockquote> 
+ <p><strong>王斌：</strong>AlloyImage已经在AlloyPhoto的简约版和Pro版中使用了，如下图：</p> 
+</blockquote> 
+<p><img src="http://www.infoq.com/resource/news/2013/04/alloyimage-interview/zh/resources/AlloyPhoto-1.png;jsessionid=84D36577E169746CFE5996BBD1FEE8F5" width="500" alt="" _href="img://AlloyPhoto-1.png" _p="true" /></p> 
+<blockquote> 
+ <p>另外还有一些项目也正在开发中了。</p> 
+</blockquote> 
+<p><strong>InfoQ：</strong>市面上是否有同类产品？相比之下AlloyImage有哪些独到之处？</p> 
+<blockquote> 
+ <p><strong>王斌：</strong>国内外都会有一些直接用canvas来做一些效果的尝试或者代码库，但这些产品，都没有对多图层方面做一些扩展和支持，而且使用者都可扩展东西很少。AlloyImage不但提供了图层的操作方法，而且提供了一些基础的调节功能与滤镜。而且，AlloyImage提供更多的可定制、可组合的效果，比如，开发者可以通过两个图片的叠加，加上不同的滤镜效果，就可以组合出一些意想不到的效果。甚至photoshop的一些风格处理教程，可以直接写成AlloyImage来实现。</p> 
+</blockquote> 
+<p><strong>InfoQ：</strong>对于以后的版本会有哪些计划？</p> 
+<blockquote> 
+ <p><strong>王斌：</strong>AlloyImage后续版本会加入WebWorker多线程机制，其次性能方面会做进一步优化，另一方面，将会加上更多的滤镜效果和调节效果，以及画笔、橡皮擦等工具接口，这样高级组合效果也会变得更多。</p> 
+</blockquote> 
+<p><strong>InfoQ：</strong>能否评估一下HTML5的现状并展望其前景？</p> 
+<blockquote> 
+ <p><strong>王斌：</strong>HTML5的发展依赖于浏览器的支持和计算性能的提高，据我们统计，中国的IE6-8占据市场份额已经低于50%，IE9+以及Chrome、Firefox、Safari、Opera等支持HTML5的浏览器已经超过50%。在中国，PC上由于系统升级慢、微软捆绑IE等原因，对HTML5支持良好的Chrome、Firefox、Safari、Opera等浏览器在中国还不够普及，HTML5在中国还有一段路要走，但这期间不乏有一些新的尝试与想法。</p> 
+ <p>移动端相对会好很多，iOS、Android等平台占有绝对的市场份额，其浏览器都是基于Webkit内核，对HTML5有很好的支持。随着移动设备硬件的迅速发展，计算性能比3年前有了很大的提升，比如2010年时，在手机上用HTML5开发一个WebQQ好友的列表，其滚动效果很卡，和Native开发的列表体验没法相提并论，但是到了2013年，现在主流的设备体验已经和Native的体验几乎没有什么区别了。</p> 
+ <p>随着FirefoxOS的推出，HTML5来开发App的趋势会更加明显，或许未来在iOS和Android上只需要像微信公众平台一样简单的关注一下，即可在手机桌面上拥有一个HTML5的App，HTML5 App无需安装、按需加载、离线缓存等优势将会明显体现出来，届时约有70%并不需要高密集和高性能运算的App都将可以采用HTML5技术来开发，在达到同样的体验的前提下，将会拥有比Native更高的开发效率和跨平台特性，这些都是开发者所看重的。</p> 
+ <p>HTML5提供了丰富的API，让Web拥有了很多接近Native应用的能力，相较Native应用，HTML5具有开发敏捷、跨平台的优势，所以，在硬件性能提升、浏览器支持良好、网速很快的未来前前景下，HTML5会有很好的表现。与此同时，对HTML5开发人员的专业性要求也会变强，也需要更多的底层库出现，比如WebGL的库等等，相信未来会有更多HTML5的基础框架出现。</p> 
+</blockquote> 
+<p><strong>InfoQ：</strong>腾讯/Alloy团队在对待开源这件事上有着什么样的态度？</p> 
+<blockquote> 
+ <p><strong>王斌：</strong>Web前端技术是非常适合来做开源的，现在Github上边最多的开源项目就是Javascript语言的，这是一门神奇的语言，从最初是一门跑龙套的语言，发展到现如今变成如此流行的开发语言，和Javascript运行机制中的需天然开源的特性分不开，这是它能如此流行的原因之一。</p> 
+ <p>腾讯Alloy团队非常乐于参与开源项目，众所周知，开源项目促进了技术的交流和进步，每一位开发人员都从开源项目中获益，发展开源项目将会有力的推动业界技术的进步，我们Alloy团队会利用业余时间参与到一些感兴趣的开源项目中，也会发起一些有趣的开源项目，欢迎更多的开发人员能参与进来。</p> 
+</blockquote> 
+<p>（采访内容完）</p> 
 <p id="lastElm"></p><br><br><br><br><br><br></body></html>
