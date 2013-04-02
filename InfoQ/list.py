@@ -1,14 +1,17 @@
 <html>
  <head></head> 
- <body>
-  <div>
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/25.py">RadControls for Windows 8による開発ユーティリティ、生産性、会計とメディアアプリ</a>Telerikは先日、開発者がタッチに最適化されたデスクトップとモバイルデバイスのアプリケーションを構築することができるようにしたRadControls for Windows 8をリリースした。
-  </div>
-  <div>
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/24.py">Canvasベースのチャートライブラリ、Chart.js 0.1がリリース</a>3月17日、Nick Downie氏がcanvasを使ったJavaScriptチャートライブラリ、Chart.jsをMITオープンソースライセンスで公開した。これはSVGベースのチャートライブラリに代わるものだ。
-  </div>
-  <div>
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/23.py">GitプロトコルとVisual Studio 2012をサポートしたGitSync for Plastic SCM</a>GitプロトコルとVisual Studio 2012をサポートしたGitSync for Plastic SCMがリリースされた。
+ <body> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/26.py">Parse MBaaS の分析</a>MBaaS を提供する新興企業を取り上げるシリーズ記事の第３弾として，今回の記事では Parse という企業を動かしているものについて検討する。Parse は，数を増し続ける競合企業たちと同じように，効率的なモバイルバックエンド構築に必要なモバイルアプリ開発者の時間と労力の削減を目的とする企業だ。 
+  </div> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/25.py">RadControls for Windows 8による開発ユーティリティ、生産性、会計とメディアアプリ</a>Telerikは先日、開発者がタッチに最適化されたデスクトップとモバイルデバイスのアプリケーションを構築することができるようにしたRadControls for Windows 8をリリースした。 
+  </div> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/24.py">Canvasベースのチャートライブラリ、Chart.js 0.1がリリース</a>3月17日、Nick Downie氏がcanvasを使ったJavaScriptチャートライブラリ、Chart.jsをMITオープンソースライセンスで公開した。これはSVGベースのチャートライブラリに代わるものだ。 
+  </div> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/23.py">GitプロトコルとVisual Studio 2012をサポートしたGitSync for Plastic SCM</a>GitプロトコルとVisual Studio 2012をサポートしたGitSync for Plastic SCMがリリースされた。 
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/22.py">CamundaがAlfesco Activitiをフォーク</a>ベルリンを本拠とするBPM専門のソフトウェアコンサルタント会社であるCamundaが AlfescoのActivitiをフォークして，camunda BPMという新たな製品をローンチすると発表した。同社がこれまで扱っていたActivitiベースのBPM製品であるcamunda foxの後継となるプロダクトだ。 
@@ -148,8 +151,5 @@
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/27.py">Red GateがSimply Web Devを発表</a>イギリスのRed Gate Softwareが開発者や学生がASP.NET MVCを学習するために利用できるポータルサイトを立ち上げた。 
   </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/26.py">Java 8でPermGenのOutOfMemoryError問題は解決されるのか？</a>HotSpotとJRockitのコードベース統合を目指して進行中のプロジェクトの一部として，OracleはHotSpot JVMのJava 8バージョンからPermGenを削除すると発表した。しかし多くの人たちは，PermGen関連のすべてのエラーを消滅させる手段としてこれを受け止めている。その効果はJava 8 Early Accessビルドで確認することができる。本当にすべての問題が解決されているのか，ここで検証してみたい。 
-  </div>    
  </body>
 </html>
