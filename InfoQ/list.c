@@ -2,6 +2,9 @@
  <head></head> 
  <body> 
   <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/32.c">Windows Embedded 8: vers&atilde;o final e alinhamento com Windows 8</a>A Microsoft lan&ccedil;ou o Windows Embedded 8, vers&atilde;o est&aacute;vel para uso em produ&ccedil;&atilde;o. Destinado a fabricantes de equipamentos originais (OEMs) e em ambientes especializados, esta s&eacute;rie de lan&ccedil;amentos marca o alinhamento de bases de c&oacute;digo entre a vers&atilde;o Embedded e o Windows 8. 
+  </div> 
+  <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/31.c">Usando deployments “can&aacute;rio” para testes em produ&ccedil;&atilde;o</a>Conhe&ccedil;a as pr&aacute;ticas da empresa Nolio que utiliza a t&eacute;cnica de &quot;canary deployments&quot; para testar software em produ&ccedil;&atilde;o, redirecionando um subgrupo de usu&aacute;rios para uma nova funcionalidade como parte das pr&aacute;ticas de entregas cont&iacute;nuas. 
   </div> 
   <div> 
