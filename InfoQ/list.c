@@ -2,6 +2,9 @@
  <head></head> 
  <body> 
   <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/33.c">Backbone.js 1.0: primeira vers&atilde;o maior em 2 anos</a>Ap&oacute;s dois anos e meio de desenvolvimento, a vers&atilde;o 1.0 do Backbone.js foi lan&ccedil;ada. O Backbone.js &eacute; uma popular biblioteca JavaScript que segue o modelo Model/View, utilizada por v&aacute;rios aplicativos web populares, incluindo USA Today, Rdio e Airbnb. Veja o que mudou. 
+  </div> 
+  <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/32.c">Windows Embedded 8: vers&atilde;o final e alinhamento com Windows 8</a>A Microsoft lan&ccedil;ou o Windows Embedded 8, vers&atilde;o est&aacute;vel para uso em produ&ccedil;&atilde;o. Destinado a fabricantes de equipamentos originais (OEMs) e em ambientes especializados, esta s&eacute;rie de lan&ccedil;amentos marca o alinhamento de bases de c&oacute;digo entre a vers&atilde;o Embedded e o Windows 8. 
   </div> 
   <div> 
