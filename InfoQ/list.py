@@ -1,6 +1,15 @@
 <html>
  <head></head> 
- <body> 
+ <body>
+  <div>
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/25.py">RadControls for Windows 8による開発ユーティリティ、生産性、会計とメディアアプリ</a>Telerikは先日、開発者がタッチに最適化されたデスクトップとモバイルデバイスのアプリケーションを構築することができるようにしたRadControls for Windows 8をリリースした。
+  </div>
+  <div>
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/24.py">Canvasベースのチャートライブラリ、Chart.js 0.1がリリース</a>3月17日、Nick Downie氏がcanvasを使ったJavaScriptチャートライブラリ、Chart.jsをMITオープンソースライセンスで公開した。これはSVGベースのチャートライブラリに代わるものだ。
+  </div>
+  <div>
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/23.py">GitプロトコルとVisual Studio 2012をサポートしたGitSync for Plastic SCM</a>GitプロトコルとVisual Studio 2012をサポートしたGitSync for Plastic SCMがリリースされた。
+  </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/22.py">CamundaがAlfesco Activitiをフォーク</a>ベルリンを本拠とするBPM専門のソフトウェアコンサルタント会社であるCamundaが AlfescoのActivitiをフォークして，camunda BPMという新たな製品をローンチすると発表した。同社がこれまで扱っていたActivitiベースのBPM製品であるcamunda foxの後継となるプロダクトだ。 
   </div> 
@@ -141,15 +150,6 @@
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/26.py">Java 8でPermGenのOutOfMemoryError問題は解決されるのか？</a>HotSpotとJRockitのコードベース統合を目指して進行中のプロジェクトの一部として，OracleはHotSpot JVMのJava 8バージョンからPermGenを削除すると発表した。しかし多くの人たちは，PermGen関連のすべてのエラーを消滅させる手段としてこれを受け止めている。その効果はJava 8 Early Accessビルドで確認することができる。本当にすべての問題が解決されているのか，ここで検証してみたい。 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/25.py">Visual Studio 2012 Update 2の最終プレビューがリリース</a>予定されていたVS2012/TFS2012 Update 2の最終プレビューがリリースされた。注目すべき新しいLightSwitch HTMLクライアントを含んでいくつかのアップデートが入っている。 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/24.py">Androidに関するMicrosoftとAmazonからの最新ニュース</a>Microsoft Azureに Android SDK が追加された。Android デバイスを対象とするプッシュ通知を備えている。Amazonも Mobile Ads API の提供を開始した。任意のAndroidデバイス上でGoogle AdMobと並行して，同社のネットワークからの広告が表示可能になる。 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/23.py">期限切れのSSL証明書で AzureとTFSがダウン</a>Windows Azureが2月22日に９時間動作停止し、Team Foundation Serviceを使っている人々を含めて、このストレージシステムに依存している全ユーザーに影響を与えた。InfoQは、この障害の根本原因に関して、明らかになった詳細を調査した。 
-  </div> 
+  </div>    
  </body>
 </html>
