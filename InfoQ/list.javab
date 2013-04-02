@@ -2,6 +2,9 @@
  <head></head> 
  <body> 
   <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/25.javab">Choosing the Right ESB for Your Integration Needs</a>Kai W&auml;hner explains the differences between an integration framework, an ESB and a suite, following with advice for selecting the right one from existing commercial and open source solutions. 
+  </div> 
+  <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/24.javab">Bridging the Management Gap</a>Resistance from management is recognized as a bottleneck in agile adoption. When will we reach the tipping point where organizations unshackle themselves from the limitations of command &amp; control? 
   </div> 
   <div> 
