@@ -1,6 +1,18 @@
 <html>
  <head></head> 
- <body> 
+ <body>
+  <div>
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/33.py">WCF Data Services 5.4.0－Atomペイロードにクライアントフックとインスタンスアノテーション</a>Microsoftは、新フィーチャと幾つものバグ修正があるWCF Data Services 5.4.0のリリース候補がリリースされたと発表した。
+  </div>
+  <div>
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/32.py">Docker: 継続的ソフトウェアデプロイの自動化</a>PaaSプロバイダのdotCloudが自社プラットフォームの重要なコンポーネントであるDockerをオープンソースとして公開した。DockerはLXC(LinuX Container)テクノロジの実装で，Unixプロセスを分離実行する軽量仮想化(lightweight virtualization)ソリューションを実現した高レベル API を拡張機能として備えることにより，ソフトウェア展開の自動化に必要な，再現性を持ったセキュアな実行環境を提供する。
+  </div>
+  <div>
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/31.py">JavaScriptでGitを実装するKickstarterプロジェクト、28時間で資金調達</a>JavaScriptおよびNode.jsコミュニティで有名なTim Caswell氏が、JavaScriptでGitを再実装しようと思いつき、Kickstarterで360名を超える出資者により28時間で資金調達した。このプロジェクトは、Atwoodの法則「JavaScriptで書けるものは、いずれJavaScriptで書かれる」の一例だ。
+  </div>
+  <div>
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/30.py">Backbone.js 1.0リリース</a>2年半の開発を経て、Backbone.jsのバージョン1.0がリリースされた。Backbone.jsは人気のあるModel/ViewのJavaScriptライブラリで、USA Today、Rdio、Airbnbを含む多くのWebアプリケーションで用いられている。
+  </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/29.py">Canary Deploymentsを使って稼働中にテストする</a>Nolioが彼らのDevOpsのベストプラクティスに関するシリーズの最初のビデオで言っていることによれば、ユーザーの一部を新しい機能に目を向けさせたことで、企業は&quot;Canary Deployments&quot;を継続的デリバリの一部として使って、稼働中のソフトウェアをテストしている。&quot;Canary Deployments&quot;は一種のインクリメンタル リリースで、ソフトウェアの新バージョンをその対応する稼働中のバージョンと並んでデプロイすることで実現される。 
   </div> 
@@ -138,18 +150,6 @@
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/34.py">jQuery Mobile 1.3.0がリリース</a>jQuery Foundationは、JavaScript と HTML5/CSSフレームワークであるjQuery Mobileのバージョン1.3.0をリリースした。このアップデートは、高応答なウェブ設計に焦点をおき、モバイルアプリケーション用の新しいウィジェットを導入している。 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/33.py">Culture Gameの抜粋＃６がInfoQから入手できる</a>Dan Mezick氏がThe Culture Gameを書いた。これは、Agileから導出した16の学習パターンを書いたハウツー本である。InfoQは、この本から一連の抜粋を発行している。最後の抜粋は、個人的熟達と信条変化の概念について議論している。 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/32.py">モジュラリティを強化したGrunt 0.4.0</a>2月18日、ライブラリを複数のモジュールにして疎結合にしようと作業を続けてきたGruntチームはJavascriptタスクランナーであるGruntのバージョンを0.4.0にした。 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/31.py">GoogleとMPEG LAがVP8を巡る論争に終止符</a>GoogleはMPEG LAの所有する，VP8に不可欠なアルゴリズムのライセンスをすべて取得した。合わせてサードパーティ開発者に対してVP8をロイヤリティフリーでサブライセンスする権利も獲得し，VP8コーデックの広範な採用に向けて道を開いた。 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/30.py">Stimulsoft，WinRT用レポートデザイナをリリース</a>StimulsoftがWinRT用のレポートデザイナを新たにリリースした。Windows 8の動作する任意のデバイス上でレポートの作成と編集が可能になる。 
-  </div> 
+  </div>     
  </body>
 </html>

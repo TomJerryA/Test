@@ -1,13 +1,50 @@
-<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>GoogleとMPEG LAがVP8を巡る論争に終止符</h3><p><a target="_blank" href="http://www.infoq.com/news/2013/03/Google-MPEG-LA-VP8;jsessionid=198CE5DC982821C04F8A35ABF6E87B8E"><em>原文(投稿日：2013/03/08)へのリンク</em></a></p> 
+<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>JavaScriptでGitを実装するKickstarterプロジェクト、28時間で資金調達</h3><p><a target="_blank" href="http://www.infoq.com/news/2013/03/git-in-javascript;jsessionid=806EFD9E289230875F28ABB47126B480"><em>原文(投稿日：2013/03/26)へのリンク</em></a></p> 
 <div class="clearer-space">
  &nbsp;
 </div> 
 <div id="newsContent"> 
- <p>GoogleはMPEG LAの所有する，VP8に不可欠なアルゴリズムのライセンスをすべて取得した。合わせてサードパーティ開発者に対してVP8をロイヤリティフリーでサブライセンスする権利も獲得し，VP8コーデックの広範な採用に向けて道を開いた。</p> 
- <p>Googleは先程，MPEG LAおよび特許を保有する11社に対して，&quot;VP8に不可欠と思われるすべての技術&quot; のライセンス提供に関する合意に至ったことを発表した。合わせてVP8の実装である <a target="_blank" href="http://www.webmproject.org/code/">libvpx</a> および <a target="_blank" href="http://datatracker.ietf.org/doc/rfc6386/">VP8データフォーマット仕様</a> を使用するサードパーティに対して，これらの技術を無償でサブライセンスする権利も取得した。契約に関する金銭面の条件は明らかにされていない。</p> 
- <p>MPEG LAも今回の合意について <a target="_blank" href="http://www.mpegla.com/main/Pages/Media.aspx">発表する</a> と同時に，今後VP8のパテントプールを形成する意思のないことを表明している。さらに今回の合意によって &quot;Googleとの契約が容易になり，VP8が広くユーザに普及する&quot; ことを歓迎する，とも述べている。</p> 
- <p>Googleは今後数週間内にサブライセンス許諾条件を公表する意向である。しかしGoogleがこれまで &quot;誰でも利用可能で，未来のイノベーションを引き起こすような，オープンでロイヤリティフリーなビデオコーデック&quot; を提供する，という意図を繰り返し述べていることから，どのようなものになるかは想像に難くない。&quot;今回の発表は，その目標に向けての重要なステップなのです。&quot;</p> 
- <p>これによって <a target="_blank" href="http://www.infoq.com/jp/news/2010/06/WebM-VP8;jsessionid=06EA83515C1C20CFA58668F97A11CBA3;jsessionid=198CE5DC982821C04F8A35ABF6E87B8E">ライセンス面での議論</a> はもはや問題ではなくなり，GoogleやMozilla，OperaはVP8を推進することが可能になる。 <a target="_blank" href="http://gs.statcounter.com/#browser-ww-monthly-201202-201302">StatCounter</a> によると，ブラウザ市場におけるこの３社のシェアは，合計で約60%であるという。しかしながら，VP8が十分なパフォーマンス向上を提供するものだとWebサイトマスタやCDNたちが認めない限りは，コーデックとしての幅広い普及は望めないだろう。一方でGoogleは先頃，近いうちに <a target="_blank" href="http://blog.chromium.org/2013/03/data-compression-in-chrome-beta-for.html">すべてのイメージをWebPフォーマットに変換および最適化するプロキシを，Chrome for Androidで採用する予定</a> である，と発表した。<a target="_blank" href="https://developers.google.com/speed/webp/">WebP</a> はVP8のアルゴリズムを転用したイメージフォーマットである。Googleによれば，ロスレス画像の場合はPNGに比較して25%，非可逆フォーマットならばJPEG比較で25～34%のイメージサイズ縮小が可能だという。</p> 
+ <p>JavaScriptおよび<a target="_blank" href="http://nodejs.org">Node.js</a>コミュニティで有名な<a target="_blank" href="http://creationix.com/">Tim Caswell</a>氏が、JavaScriptで<a target="_blank" href="http://git-scm.com/">Git</a>を再実装しようと思いつき、Kickstarterで360名を超える出資者により<a target="_blank" href="http://www.kickstarter.com/projects/creationix/js-git">28時間で資金調達した</a>。このプロジェクトは、<a target="_blank" href="http://www.codinghorror.com/blog/2007/07/the-principle-of-least-power.html">Atwoodの法則</a>「JavaScriptで書けるものは、いずれJavaScriptで書かれる」の一例だ。</p> 
+ <p>このプロジェクトについてもっと知るため、Tim氏に話を聞いた。</p> 
+ <p><b>JSGitのアイデアはどこから生まれたのですか？</b></p> 
+ <blockquote> 
+  <p>私はいつも、自分が持っているデバイスをプログラムする新しい方法を探しています。最近、Microsoftのよい人から<a target="_blank" href="http://www.microsoft.com/Surface/en-US/surface-with-windows-rt/windows-rt">Surface RT</a>が送られてきました。前のプロジェクトで使った<a target="_blank" href="http://www.apple.com/ipad/">iPad</a>も2台ありますし、<a target="_blank" href="http://www.google.com/intl/en/chrome/devices/chromebook-pixel/">ChromeBook Pixel</a>を買ったところでした。いずれも興味深いデバイスなのですが、かなり不満がありました。鍵のかけられた環境で、そのデバイス上で開発するのには不向きなんです。だれも、あのAppleですら、鍵をかけていないプラットフォーム、それがブラウザのJavaScript環境です。あなたはコードを書いてブラウザで動かせます。ローカルストレージにもアクセスできますし、インターネットにデータをアップロード、ダウンロードすることもできます。</p> 
+  <p>1年ほど<a target="_blank" href="http://c9.io">Cloud9</a>で仕事をして、ブラウザベースのIDEは実現可能だとわかりました。Cloud9がうまく解決していなかった唯一の問題、それがオフライン作業でした。自分のGitリポジトリを自分のデバイスにローカルにクローンし、海外へのフライト中（あるいは裏庭の向こうをぶらぶらしながら）オフライン作業し、その後インターネットにつながる環境に戻ったら、変更を自分のパブリックなGitリポジトリにプッシュする、そういうのがやりたかったんです。</p> 
+  <p>JavaScriptはどこでも使えるプラットフォームです。そこでGitをポーティングしようと決めたんです。</p> 
+ </blockquote> 
+ <p><b>JSGitのユースケースをどう考えていますか？ 単なるブラウザベースのIDEやエディタですか、それとも、もっといろんな応用があるんですか？</b></p> 
+ <blockquote>
+  私の一番のユースケースはブラウザベースのプログラミング環境ですが、別の使い道に関心を持っている人がたくさんいます。たとえば、Node.jsのための完全にJavaScriptで書かれたGitクライアントとサーバなどです。Gitはいろんなデプロイメントシステムの共通コンポーネントなので、Git for Node.jsできめ細かくコントロールできれば、多くの人にとって非常に役立つでしょう。
+ </blockquote> 
+ <p><b>パフォーマンスはどう考えていますか？</b></p> 
+ <blockquote>
+  JavaScript自体はかなり高速です。最近、JavaScriptで非常に高速なハッシュ関数（MD5、SHA1、SHA256）を書いたんですが、私のデスクトップのブラウザで、1秒間に500,000 MD5ハッシュまで可能でした。大きなGitリポジトリの場合、高速なノートパソコン上でネイティブクライアントを使ったとしても、クローンには時間がかかるので、それがうまくやれるとは思っていません。でも、小さなリポジトリでは、かなり高速になると思っています。
+ </blockquote> 
+ <p><b>JavaScriptでスクラッチから全部再実装するのではなく、<a target="_blank" href="https://github.com/kripken/emscripten">Emscripten</a>のようなもので、既存のGitのC実装をクロスコンパイルするというアプローチを取らないのはなぜですか？ </b></p> 
+ <blockquote>
+  これも調べるつもりですが、初期調査の結果、2つのことが問題になると予想しています。1つ目は、Emscriptenはコードジェネレータだということです。これはかなり巨大なコードを生成します。コードの大部分を手動で微調整しない限り、結局は直接の移植になります。2つ目は、GitのCによる実装を見てみると、下位のファイルシステムやネットワーク呼び出しとの密結合がかなりあります。Gitのブラウザベースバージョンには、かなりのカスタマイズが必要になるでしょう。各種Webプラットフォームには独自のファイルストレージAPIがあるため、それぞれについてファイルシステム抽象化レイヤを書かなくてはなりません。
+ </blockquote> 
+ <p><b>Gitには、C、Javaなどの言語による実装がありますが、JavaScriptで実装するときの課題は具体的に何だと思いますか？</b></p> 
+ <blockquote>
+  JavaScriptでcrypto関係を実装した経験がかなりあるため、それは問題になるとは思っていません。でも、実装しなくてはならないコード量は問題でしょうね。まずは必要最小限なところに取り組んで、そこから時間を使い果たすまで成長させていくつもりです。
+ </blockquote> 
+ <p><b>なぜ今、このプロジェクトをやるんですか？ これを可能にする特別なHTML5技術があるのでしょうか？</b></p> 
+ <blockquote>
+  どちらかと言うとハードウェアですね。長時間のバッテリーとすばらしい画面を持つデバイスがどんどん増えていますが、開発環境としてはひどいものです。
+ </blockquote> 
+ <p><b>プロジェクトは1日ちょっとで資金調達できましたが、それでどんな機能が作れると思っていますか？</b></p> 
+ <blockquote>
+  <a target="_blank" href="http://www.kickstarter.com/projects/creationix/js-git/posts">Stretch Goals</a>で見積もったように、Gitの基本機能が作れると思っています。時間があれば、さまざまなプラットフォームとのインテグレーションもやりたいです。
+ </blockquote> 
+ <p><b>どうしてKickstarterを使ったんですか？</b></p> 
+ <blockquote>
+  よさそうに聞こえたんですよ。これまでやってきて、そしてKickstarterのルールを全部読んでみて、プロジェクトの理想には辛うじて合うかなと感じています。
+ </blockquote> 
+ <p><b>Kickstarterで資金調達しようとする（JavaScript）オープンソースプロジェクトは増えると思いますか？</b></p> 
+ <blockquote>
+  まだわかりませんね。これは1つの実験です。アイデアに何ヶ月も時間を費やす前に、アイデアをスクリーニングするという考え方は気に入っています。私は、結局はコミュニティの関心がほとんどないとわかるプロジェクトに、自分の自由時間を何百時間も費やして来ました。みんなが期待するクールなプロジェクトにフルタイムで取り組むという考え方は実に気に入っています。Kickstarterが長期的にうまくいくかはわかりませんが、もしうまくいかなくても、他の考え方を探し続けます。
+ </blockquote> 
+ <p>JSGitは、Kickstarterで資金調達に成功した最初のJavaScript関連プロジェクトではない。過去には<a target="_blank" href="http://www.kickstarter.com/projects/869786663/async-savascript-book?ref=live">非同期JavaScriptプログラミングに関する書籍</a>と<a target="_blank" href="http://www.kickstarter.com/projects/188988365/lets-code-test-driven-javascript?ref=live">テスト駆動JavaScriptのスクリーンキャスト</a>のプロジェクトがあった。だが、JSGitはJavaScriptライブラリを作る最初のKickstarterプロジェクトだ。</p> 
+ <p><a target="_blank" href="http://www.kickstarter.com/projects/creationix/js-git">このプロジェクト</a>の支援募集は2013年3月30日までだ。期日が過ぎたら、Tim氏はすぐにプロジェクトに取り組む予定だ。</p> 
  <p id="lastElm">&nbsp;</p> 
 </div> 
 <p id="lastElm"></p><br><br><br><br><br><br></body></html>
