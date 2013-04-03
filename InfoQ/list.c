@@ -1,6 +1,9 @@
 <html>
  <head></head> 
- <body> 
+ <body>
+  <div>
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/34.c">Melhoria de processos de neg&oacute;cios usando Agile: discuss&otilde;es recentes</a>Organiza&ccedil;&otilde;es querem melhorar seus processos de neg&oacute;cios e nos dias de hoje precisam fazer essa melhoria de forma r&aacute;pida. &Eacute; poss&iacute;vel utilizar t&eacute;cnicas &aacute;geis para melhoria de processos de neg&oacute;cios?
+  </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/33.c">Backbone.js 1.0: primeira vers&atilde;o maior em 2 anos</a>Ap&oacute;s dois anos e meio de desenvolvimento, a vers&atilde;o 1.0 do Backbone.js foi lan&ccedil;ada. O Backbone.js &eacute; uma popular biblioteca JavaScript que segue o modelo Model/View, utilizada por v&aacute;rios aplicativos web populares, incluindo USA Today, Rdio e Airbnb. Veja o que mudou. 
   </div> 
