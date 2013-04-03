@@ -1,6 +1,9 @@
 <html>
  <head></head> 
- <body> 
+ <body>
+  <div>
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/9.cb">Spring Data: A solu&ccedil;&atilde;o mais geral para persist&ecirc;ncia?</a>Conhe&ccedil;a o Spring Data, um projeto da SpringSource cuja proposta &eacute; unificar e facilitar o acesso a diferentes tecnologias de armazenamento de dados, como bancos de dados relacionais e NoSQL.
+  </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/8.cb">DevOps de zero a 100%: N&iacute;veis e passos de ado&ccedil;&atilde;o</a>A ado&ccedil;&atilde;o das pr&aacute;ticas de DevOps n&atilde;o &eacute; um processo gradual, em que o grau m&aacute;ximo pode n&atilde;o ser o objetivo. Este artigo apresenta os v&aacute;rios graus de ado&ccedil;&atilde;o do DevOps e fornece dicas para evoluir. 
   </div> 

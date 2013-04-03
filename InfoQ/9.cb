@@ -1,0 +1,203 @@
+<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>Spring Data: A solução mais geral para persistência?</h3><p>O SpringData &eacute; um projeto da SpringSource com proposta de unificar e facilitar o acesso a diferentes tecnologias de armazenamento de dados, como bancos de dados relacionais e os NoSQL.</p><p>Independentemente da solu&ccedil;&atilde;o de armazenamento, as classes de &quot;reposit&oacute;rio&quot; (tamb&eacute;m conhecidas como <a href="http://pt.wikipedia.org/wiki/Objeto_de_acesso_a_dados">Data Access Objects</a> ou DAOs) normalmente disponibilizam opera&ccedil;&otilde;es <a href="http://pt.wikipedia.org/wiki/CRUD">CRUD</a> (Create-Read-Update-Delete) para um determinado objeto de dom&iacute;nio, al&eacute;m de m&eacute;todos de pesquisa e funcionalidades de ordena&ccedil;&atilde;o e pagina&ccedil;&atilde;o. O SpringData disponibiliza interfaces gen&eacute;ricas para esses aspectos (CrudRepository e PagingAndSortingRepository), al&eacute;m de implementa&ccedil;&otilde;es espec&iacute;ficas para cada banco de dados. Uma vis&atilde;o geral da arquitetura do Spring Data &eacute; mostrada na figura abaixo.</p><p><img alt="" src="http://www.infoq.com/resource/articles/spring-data-intro/pt/resources/101.jpg;jsessionid=117FF5BA41177E21B9C08238B3AC3DD1" _href="img://101.jpg" _p="true" /></p><p>&Eacute; prov&aacute;vel que o leitor tenha utilizado algum dos templates do Spring (como o <a href="http://en.wikipedia.org/wiki/Template_method_pattern">JdbcTemplate</a>) para escrever suas pr&oacute;prias implementa&ccedil;&otilde;es de reposit&oacute;rios. Embora os templates sejam poderosos, &eacute; poss&iacute;vel fazer melhor: com os reposit&oacute;rios do Spring Data &eacute; preciso escrever apenas uma interface com m&eacute;todos de pesquisa definidos de acordo com um conjunto de conven&ccedil;&otilde;es (as quais podem variar dependendo da tecnologia de armazenamento utilizada). O Spring Data fornece uma implementa&ccedil;&atilde;o apropriada dessa interface em tempo de execu&ccedil;&atilde;o. Veja um exemplo:</p><table cellspacing="0" cellpadding="0" border="1"> 
+ <tbody> 
+  <tr> 
+   <td width="597" valign="top"> <pre><strong><font color="#7f0055">public interface</font></strong> <font style="background-color: #cccccc">UserRepository</font> <strong><font color="#9e7c7c"><font color="#7f0055">extends</font> </font></strong>MongoRepository&lt;User, String&gt; { 
+<font color="#a5a5a5">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;@Query</font>(<font color="#0000ff">&quot;{ fullName: ?0 }&quot;</font>)
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;List&lt;User&gt; findByTheUsersFullName(String fullName);
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;List&lt;User&gt; findByFullNameLike(String fullName, Sort sort);
+}
+...
+
+<font color="#a5a5a5">Autowired </font>UserRepository <font color="#0000ff">repo</font>;<p>&nbsp;</p></pre> </td> 
+  </tr> 
+ </tbody> 
+</table><p>Neste artigo iremos comparar tr&ecirc;s subprojetos do Spring Data: JPA, MongoDB e Neo4j. O <a href="http://www.oracle.com/technetwork/java/javaee/tech/persistence-jsp-140049.html">JPA</a> &eacute; parte da plataforma Java EE e define uma API unificada para acessar bancos de dados relacionais e realizar <a href="http://pt.wikipedia.org/wiki/Mapeamento_objeto-relacional">mapeamento objeto-relacional</a>. O <a href="http://www.mongodb.org/">MongoDB</a> &eacute; um banco de dados open source, escal&aacute;vel, de alta performance e orientado a documentos. O <a href="http://www.neo4j.org/">Neo4j</a> &eacute; um <a href="http://en.wikipedia.org/wiki/Graph_database">banco de dados orientado a grafos</a>, com suporte completo a transa&ccedil;&otilde;es.</p><p>Todos esses projetos do Spring Data suportam aspectos como: uso de templates; mapeamento de objetos para a estrutura de armazenamento do banco de dados; e suporte a reposit&oacute;rios.</p><p>Outros projetos do Spring Data, como o <a href="http://www.springsource.org/spring-data/redis">Spring Data Redis</a> e o <a href="http://www.springsource.org/spring-data/riak">Spring Data Riak</a>, d&atilde;o suporte apenas a templates, pois esses sistemas de armazenamento mant&ecirc;m dados n&atilde;o-estruturados, que n&atilde;o podem ser mapeados ou pesquisados.</p><p>Vamos agora examinar os templates, o mapeamento de objetos e o suporte a reposit&oacute;rios.</p><h2>Templates</h2><p>O principal prop&oacute;sito de um template (modelo) do Spring Data, e de todos os outros templates do Spring, &eacute; cuidar da aloca&ccedil;&atilde;o de recursos e tradu&ccedil;&atilde;o de exce&ccedil;&otilde;es.</p><p>No caso a seguir, o recurso &eacute; um datastore acessado remotamente atrav&eacute;s de uma conex&atilde;o TCP/IP. O exemplo mostra como configurar o template MongoDB:</p><table cellspacing="0" cellpadding="0" border="1"> 
+ <tbody> 
+  <tr> 
+   <td width="597" valign="top"> <pre><font color="#8080ff">&lt;!-- Connection to MongoDB server --&gt;</font>
+<font color="#809ec2"><font color="#8fb08c">&lt;mongo:db-factory</font> </font><font color="#9b00d3">host</font>=<font color="#0000ff"><em>&quot;localhost&quot;</em> </font><font color="#8064a2">port</font>=<em><font color="#0000ff">&quot;27017&quot;</font></em> <font color="#9b00d3">dbname</font>=<em><font color="#0000ff">&quot;test&quot;</font></em> <font color="#8fb08c">/&gt; </font>
+
+<font color="#8080ff">&lt;!-- MongoDB Template --&gt;</font>
+<font color="#8fb08c">&lt;bean</font> <font color="#9b00d3">id</font>=<em><font color="#0000ff">&quot;mongoTemplate&quot;</font></em>
+<font color="#9b00d3">class</font>=<font color="#0000ff"><em>&quot;org.springframework.data.mongodb.core.MongoTemplate&quot;</em></font><font color="#8fb08c">&gt;</font>
+&nbsp;&nbsp;<font color="#8fb08c">&lt;constructor-arg</font> <font color="#9b00d3">name</font>=<em><font color="#0000ff">&quot;mongoDbFactory&quot;</font></em> <font color="#9b00d3">ref</font>=<font color="#0000ff"><em>&quot;mongoDbFactory&quot;</em></font><font color="#8fb08c">/&gt; </font>
+<font color="#8fb08c">&lt;/bean&gt;</font></pre> </td> 
+  </tr> 
+ </tbody> 
+</table><p>Primeiramente, definimos uma f&aacute;brica de conex&otilde;es, que &eacute; ent&atilde;o referenciada pelo MongoTemplate. No caso do MongoDB, o projeto Spring Data depende do <a href="https://github.com/mongodb/mongo-java-driver">driver de baixo n&iacute;vel para Java</a>.</p><p>Em geral, uma API de baixo n&iacute;vel como a do driver do MongoDB tem sua pr&oacute;pria estrat&eacute;gia de tratamento e lan&ccedil;amento de exce&ccedil;&otilde;es. O Spring costuma lidar com exce&ccedil;&otilde;es atrav&eacute;s de exce&ccedil;&otilde;es n&atilde;o-verificadas, que o desenvolvedor pode capturar e tratar, sem no entanto ser obrigado a faz&ecirc;-lo. Para cobrir essa lacuna, a implementa&ccedil;&atilde;o de um template captura as exce&ccedil;&otilde;es de baixo n&iacute;vel e relan&ccedil;a uma exce&ccedil;&atilde;o n&atilde;o-verificada correspondente do Spring, a qual &eacute; subclasse da exce&ccedil;&atilde;o DataAccessException.</p><p>Um template fornece opera&ccedil;&otilde;es espec&iacute;ficas para persist&ecirc;ncia, como salvar, atualizar e excluir um registro, e tamb&eacute;m para executar consultas ou jobs <a href="http://en.wikipedia.org/wiki/MapReduce">map/reduce</a>. Entretanto, esses m&eacute;todos funcionam apenas com o respectivo banco de dados subjacente.</p><p>O Spring Data n&atilde;o fornece um template para JPA, uma vez que a implementa&ccedil;&atilde;o JPA &eacute; por si s&oacute; uma camada de abstra&ccedil;&atilde;o no topo da API JDBC. Um EntityManager do JPA &eacute; a classe correspondente a um template. A tradu&ccedil;&atilde;o de exce&ccedil;&otilde;es &eacute; realizada pela implementa&ccedil;&atilde;o do reposit&oacute;rio.</p><h2>Mapeamentos</h2><p>O JPA introduziu um padr&atilde;o para mapeamento objeto-relacional (em outras palavras, mapeamento de grafos de objetos para tabelas em banco de dados). O Hibernate &eacute; provavelmente a implementa&ccedil;&atilde;o mais popular da especifica&ccedil;&atilde;o JPA.</p><p>Com o Spring Data, o suporte se estende tamb&eacute;m aos bancos de dados NoSQL que possuem estruturas similares a objetos. Mas essas estruturas de dados podem ser muito diferentes entre si, fato que tornaria dif&iacute;cil construir uma API comum de mapeamento de objetos para estruturas de armazenamento espec&iacute;ficas dos banco de dados. Cada banco de dados tem seu pr&oacute;prio conjunto de anota&ccedil;&otilde;es para fornecer os metadados necess&aacute;rios ao mapeamento. O exemplo a seguir mostra como um objeto de dom&iacute;nio simples pode ser mapeado para diferentes bancos de dados:</p><table cellspacing="1" cellpadding="1" border="1"> 
+ <tbody> 
+  <tr> 
+   <td width="213" valign="top"> <p><b>JPA</b></p> </td> 
+   <td width="213" valign="top"> <p><b>MongoDB</b></p> </td> 
+   <td width="213" valign="top"> <p><b>Neo4j</b></p> </td> 
+  </tr> 
+  <tr> 
+   <td width="213" valign="top"> <pre>
+@Entity
+@Table(name=<font color="#0000ff">&quot;TUSR&quot;</font>)
+<font color="#7f0055"><strong>public class</strong></font> User {
+
+&nbsp;&nbsp;@Id
+&nbsp;&nbsp;<strong><font color="#7f0055">private</font></strong> String id;
+
+&nbsp;&nbsp;@Column(name=<font color="#0000ff">&quot;fn&quot;</font>)
+&nbsp;&nbsp;<strong><font color="#7f0055">private</font></strong> String name;
+
+&nbsp;&nbsp;<strong><font color="#7f0055">private</font></strong> Date lastLogin;
+
+...
+}</pre> </td> 
+   <td width="213" valign="top"> <pre><font color="#a5a5a5">@Document</font>(
+collection=<font color="#0000ff">&quot;usr&quot;</font>)
+<strong><font color="#7f0055">public class</font></strong> User {
+
+&nbsp;&nbsp;@Id
+&nbsp;&nbsp;<strong><font color="#7f0055">private</font></strong> String id;
+
+&nbsp;&nbsp;<font color="#a5a5a5">@Field</font>(<font color="#0000ff">&quot;fn&quot;</font>)
+&nbsp;&nbsp;<strong><font color="#7f0055">private</font></strong> String name;
+
+&nbsp;&nbsp;<strong><font color="#7f0055">private</font></strong> Date lastLogin;
+
+&nbsp;...
+}</pre> </td> 
+   <td width="213" valign="top"> <pre>
+@NodeEntity
+<font color="#7f0055"><strong>public class</strong></font> User {
+
+&nbsp;&nbsp;@GraphId
+&nbsp;&nbsp;Long id;
+
+
+&nbsp;&nbsp;<strong><font color="#7f0055">private</font></strong> String name;
+
+&nbsp;&nbsp;<strong><font color="#7f0055">private</font></strong> Date lastLogin;
+
+...
+}</pre> &nbsp;</td> 
+  </tr> 
+ </tbody> 
+</table><p>Se o leitor possuir familiaridade com entidades JPA, ter&aacute; reconhecido as anota&ccedil;&otilde;es padr&atilde;o da API. O Spring Data faz reuso dessas anota&ccedil;&otilde;es; nenhuma outra &eacute; introduzida. O mapeamento &eacute; feito pela implementa&ccedil;&atilde;o de JPA que estiver sendo utilizada. Tanto o MongoDB quanto o Neo4j requerem um conjunto similar de anota&ccedil;&otilde;es. A primeira anota&ccedil;&atilde;o &eacute; colocada no n&iacute;vel da classe, mapeando-a para uma cole&ccedil;&atilde;o (no MongoDB uma cole&ccedil;&atilde;o &eacute; similar a uma tabela em um banco de dados relacional) ou para um n&oacute; (n&oacute;s e arestas s&atilde;o os principais tipos de dados em um banco de dados orientado a grafos como o Neo4j).</p><p>Cada entidade JPA tem que possuir um identificador &uacute;nico. O mesmo &eacute; v&aacute;lido para os documentos no MongoDB e os n&oacute;s no Neo4j.</p><p>O MongoDB utiliza uma anota&ccedil;&atilde;o @Id (n&atilde;o &eacute; a mesma anota&ccedil;&atilde;o do JPA; esta &eacute; localizada no pacote org.springframework.data.annotation), enquanto o Neo4j utiliza a anota&ccedil;&atilde;o @GraphId. Os valores desses atributos s&atilde;o preenchidos depois de persistir o objeto de dom&iacute;nio. Para outros atributos persistentes, a anota&ccedil;&atilde;o @Field deve ser utilizada caso o nome do atributo no documento MongoDB n&atilde;o seja equivalente ao atributo Java.</p><p>Refer&ecirc;ncias a outros objetos tamb&eacute;m s&atilde;o suportadas. Os pap&eacute;is (Roles) da nossa classe usu&aacute;rio (User) podem ser persistidos da seguinte forma:</p><table cellspacing="1" cellpadding="1" border="1"> 
+ <tbody> 
+  <tr> 
+   <td width="199" valign="top"> <p><b>JPA</b></p> </td> 
+   <td width="199" valign="top"> <p><b>MongoDB</b></p> </td> 
+   <td width="199" valign="top"> <p><b>Neo4j</b></p> </td> 
+  </tr> 
+  <tr> 
+   <td width="199" valign="top"> <pre>
+
+
+
+@OneToMany
+<strong><font color="#7f0055">private</font></strong> List
+     <role>
+       roles;
+     </role></pre> </td> 
+   <td width="199" valign="top"> <pre>
+
+
+
+
+<font color="#7f0055"><strong>private</strong></font> List
+     <role>
+       roles;
+     </role></pre> </td> 
+   <td width="199" valign="top"> <pre><font color="#a5a5a5">@RelatedTo</font>(
+type = <font color="#0000ff">&quot;has&quot;</font>,
+direction = 
+Direction.<em><font color="#0000ff">OUTGOING</font></em>)
+<strong><font color="#7f0055">private</font></strong> List
+     <role>
+       roles;
+     </role></pre> </td> 
+  </tr> 
+ </tbody> 
+</table><p>Com o JPA, a anota&ccedil;&atilde;o @OneToMany &eacute; utilizada para representar um relacionamento. O lado &quot;n&quot; &eacute; armazenado em outra tabela e normalmente &eacute; recuperado com uma jun&ccedil;&atilde;o (join). O MongoDB n&atilde;o suporta jun&ccedil;&otilde;es entre cole&ccedil;&otilde;es. Por padr&atilde;o, os objetos referenciados s&atilde;o armazenados dentro do mesmo documento. Tamb&eacute;m &eacute; poss&iacute;vel ter refer&ecirc;ncias a outros documentos, o que resultar&aacute; em uma jun&ccedil;&atilde;o no lado do cliente. No Neo4j, os relacionamentos s&atilde;o chamados de arestas (edges) e s&atilde;o um dos tipos de dados b&aacute;sicos.</p><p>Em resumo, o MongoDB e o Neo4j utilizam um mapeamento de objetos similar ao bastante conhecido mapeamento objeto-relacional do JPA. Entretanto, por causa de suas diferentes estruturas de dados, os mapeamentos n&atilde;o s&atilde;o exatamente a mesma coisa. Mas o conceito por tr&aacute;s de todos os mapeamentos &eacute; o mesmo: mapear objetos Java para a estrutura de dados do banco de dados correspondente.</p><h2>Suporte a reposit&oacute;rios</h2><p>Quem j&aacute; persistiu dados em uma aplica&ccedil;&atilde;o de neg&oacute;cio, provavelmente j&aacute; escreveu algum tipo de DAO. Normalmente s&atilde;o implementadas opera&ccedil;&otilde;es de CRUD para um &uacute;nico registro e v&aacute;rios m&eacute;todos de pesquisa para cada uma das classes persistentes. Os m&eacute;todos de pesquisa possuem par&acirc;metros que s&atilde;o inclu&iacute;dos na consulta antes de ela ser executada no banco de dados.</p><p>Com o JPA, pelo menos as opera&ccedil;&otilde;es de CRUD est&atilde;o dispon&iacute;veis na interface EntityManager. Mas escrever m&eacute;todos de pesquisa personalizados ainda &eacute; tedioso: criar uma <a href="http://docs.oracle.com/javaee/6/api/javax/persistence/NamedQuery.html">named query</a>, determinar cada par&acirc;metro e executar a consulta. Por exemplo:</p><table cellspacing="0" cellpadding="0" border="1"> 
+ <tbody> 
+  <tr> 
+   <td width="597" valign="top"> <pre><font color="#4f81bd">@Entity</font>
+@NamedQuery<font color="#8fb08c">(</font> name=<font color="#0000ff">&quot;myQuery&quot;</font>, query <font color="#8fb08c">=</font> <font color="#0000ff">&quot;SELECT u FROM User u where u.name = :name&quot;</font> <font color="#8fb08c">)</font>
+public class User <font color="#8fb08c">{ </font>
+...
+<font color="#8fb08c">} </font>
+
+@<font color="#4f81bd">Repository </font>
+public class ClassicUserRepository <font color="#8fb08c">{ </font>
+
+&nbsp;&nbsp;&nbsp;@PersistenceContext EntityManager em<font color="#8fb08c">; </font>
+
+&nbsp;&nbsp;&nbsp;public List<font color="#8fb08c">&lt;</font>User<font color="#8fb08c">&gt;</font> findByName(<font color="#4f81bd">String</font> Name<font color="#8fb08c">) { </font>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;TypedQuery<font color="#8fb08c">&lt;</font>User<font color="#8fb08c">&gt;</font> q <font color="#8fb08c">=</font> getEntityManger<font color="#8fb08c">()</font>.<font color="#8fb08c">createNamedQuery(</font><font color="#0000ff">&quot;myQuery&quot;</font>, User.class<font color="#8fb08c">); </font>
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;q.<font color="#8fb08c">setParameter</font><font color="#8fb08c">(</font><font color="#0000ff">&quot;name&quot;</font>, fullName<font color="#8fb08c">);</font>
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return q.<font color="#8fb08c">getResultList()</font>;
+&nbsp;&nbsp;&nbsp;<font color="#8fb08c">} </font>
+&nbsp;&nbsp;&nbsp;...</pre> </td> 
+  </tr> 
+ </tbody> 
+</table><p>Esse c&oacute;digo pode ser um pouco reduzido se for utilizada a interface fluente de uma <a href="http://docs.oracle.com/javaee/6/api/javax/persistence/TypedQuery.html">TypedQuery</a>:</p><table cellspacing="0" cellpadding="0" border="1"> 
+ <tbody> 
+  <tr> 
+   <td width="597" valign="top"> <pre>
+@<font color="#4f81bd">Repository</font>
+<strong>public class</strong> ClassicUserRepository <font color="#8fb08c">{ </font>
+
+&nbsp;&nbsp;&nbsp;@PersistenceContext EntityManager em<font color="#8fb08c">; </font>
+
+&nbsp;&nbsp;&nbsp;<strong>public</strong> List<font color="#8fb08c">&lt;</font>User<font color="#8fb08c">&gt;</font> findByName<font color="#8fb08c">(</font><font color="#4f81bd">String</font> name<font color="#8fb08c">) {</font>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong>return</strong> getEntityManger<font color="#9bbb59">()</font>.<font color="#8fb08c">createNamedQuery</font><font color="#8fb08c">(</font><font color="#0000ff">&quot;myQuery&quot;</font>, User.class<font color="#8fb08c">)</font>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#8fb08c">.setParameter(</font><font color="#0000ff">&quot;name&quot;</font>, fullName<font color="#8fb08c">)</font>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#8fb08c">.getResultList(); </font>
+&nbsp;&nbsp;&nbsp;<font color="#8fb08c">} </font>
+&nbsp;&nbsp;&nbsp;...</pre> </td> 
+  </tr> 
+ </tbody> 
+</table><p>Mas ainda assim est&aacute; sendo implementado um m&eacute;todo que invoca m&eacute;todos <em>setters</em> e executa um comando para cada tipo de pesquisa. Com o Spring Data JPA, a mesma pesquisa &eacute; reduzida para o seguinte trecho de c&oacute;digo:</p><table cellspacing="0" cellpadding="0" border="1"> 
+ <tbody> 
+  <tr> 
+   <td width="597" valign="top"> <pre><strong>package</strong> <font color="#4f81bd">repositories; </font>
+
+<strong>public interface</strong> UserRepository <strong>extends</strong> JpaRepository<font color="#8fb08c">&lt;</font>User, String<font color="#8fb08c">&gt;</font><font color="#8fb08c"> {</font>
+
+&nbsp;&nbsp;&nbsp;List<font color="#8fb08c">&lt;</font>User<font color="#8fb08c">&gt;</font> findByName<font color="#8fb08c">(</font><font color="#4f81bd">String</font> name<font color="#8fb08c">); </font>
+<font color="#8fb08c">}</font><p>&nbsp;</p></pre> </td> 
+  </tr> 
+ </tbody> 
+</table><p>Com o Spring Data JPA, as consultas <a href="http://en.wikipedia.org/wiki/Java_Persistence_Query_Language">JPQL</a> n&atilde;o precisam mais ser declaradas com a anota&ccedil;&atilde;o @NamedQuery na classe correspondente &agrave; entidade JPA. Em vez disso, a consulta &eacute; escrita em uma anota&ccedil;&atilde;o no m&eacute;todo do reposit&oacute;rio:</p><table cellspacing="0" cellpadding="0" border="1"> 
+ <tbody> 
+  <tr> 
+   <td width="597" valign="top"> <pre>
+@Transactional<font color="#8fb08c">(</font>timeout <font color="#8fb08c">=</font> <font color="#dd8484">2</font>, propagation <font color="#8fb08c">=</font> Propagation.<font color="#8fb08c">REQUIRED)</font>
+@Query<font color="#8fb08c">(</font><font color="#0000ff">&quot;SELECT u FROM User u WHERE u.name = 'User 3'&quot;</font><font color="#8fb08c">)</font>
+List<font color="#8fb08c">&lt;</font>User<font color="#8fb08c">&gt;</font> findByGivenQuery<font color="#8fb08c">();</font></pre> </td> 
+  </tr> 
+ </tbody> 
+</table><p>Tudo o escrito anteriormente tamb&eacute;m &eacute; v&aacute;lido para Spring Data MongoDB e Spring Data Neo4j. O exemplo a seguir efetua uma pesquisa em um banco de dados Neo4j com a linguagem de consulta <a href="http://docs.neo4j.org/chunked/1.6.M02/cypher-query-lang.html">Cipher</a>:</p><table cellspacing="0" cellpadding="0" border="1"> 
+ <tbody> 
+  <tr> 
+   <td width="597" valign="top"> <pre><strong>public interface</strong> UserRepository <strong>extends</strong> GraphRepository<font color="#8fb08c">&lt;</font>User<font color="#8fb08c">&gt; {</font>
+
+&nbsp;&nbsp;User findByLogin<font color="#8fb08c">(</font><font color="#0000ff"><strong>String</strong></font> login<font color="#8fb08c">); </font>
+
+&nbsp;&nbsp;@<strong><font color="#0000ff">Query</font></strong><font color="#8fb08c">(</font>&quot;<font color="#0000ff">START root=node:User</font><font color="#0000ff">(login = 'root') MATCH root-[:knows]-&gt;friends RETURN friends&quot;</font><font color="#8fb08c">)</font>
+&nbsp;&nbsp;<strong><font color="#0000ff">List</font></strong><font color="#8fb08c">&lt;</font>User<font color="#8fb08c">&gt;</font> findFriendsOfRoot<font color="#8fb08c">(); </font>
+<font color="#8fb08c">}</font></pre> </td> 
+  </tr> 
+ </tbody> 
+</table><p>As conven&ccedil;&otilde;es de nomea&ccedil;&atilde;o dos m&eacute;todos de pesquisa, &eacute; claro, diferem de um banco de dados para outro. Por exemplo, o MongoDB suporta <a href="http://blog.codecentric.de/en/2012/02/spring-data-mongodb-geospatial-queries/">consultas geoespaciais</a> e, sendo assim, pode-se escrever consultas como:</p><table cellspacing="0" cellpadding="0" border="1"> 
+ <tbody> 
+  <tr> 
+   <td width="597" valign="top"> <pre><font color="#7f0055"><strong>public interface</strong></font> LocationRepository <strong><font color="#7f0055">extends</font></strong> MongoRepository&lt;Location, String&gt; {
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;List&lt;Location&gt; findByPositionWithin(Circle c);
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;List&lt;Location&gt; findByPositionWithin(Box b);
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;List&lt;Location&gt; findByPositionNear(Point p, Distance d);
+}</pre> </td> 
+  </tr> 
+ </tbody> 
+</table><p>H&aacute; tamb&eacute;m suporte gen&eacute;rico para pagina&ccedil;&atilde;o e ordena&ccedil;&atilde;o para todos os bancos de dados. Para isso, &eacute; necess&aacute;rio fornecer par&acirc;metros especiais aos m&eacute;todos de pesquisa.</p><p>As principais vantagens do suporte a reposit&oacute;rios s&atilde;o que: o desenvolvedor escreve muito menos c&oacute;digo repetitivo, e as consultas podem ser definidas junto aos m&eacute;todos de pesquisa e suas documenta&ccedil;&otilde;es. Al&eacute;m disso, as consultas JPQL s&atilde;o compiladas assim que o contexto do Spring &eacute; criado e n&atilde;o na primeira vez que a consulta &eacute; utilizada, o que facilita a detec&ccedil;&atilde;o de erros de sintaxe.</p><h2>Resumo</h2><p>Este artigo forneceu uma vis&atilde;o geral de uma s&eacute;rie de tecnologias complexas, tentando descobrir similaridades e diferen&ccedil;as entre elas. Para uma vis&atilde;o mais detalhada dos projetos Spring Data, visite as p&aacute;ginas dos projetos <a href="http://www.springsource.org/spring-data/jpa">Spring Data JPA</a>, <a href="http://www.springsource.org/spring-data/mongodb">Spring Data MongoDB</a> e <a href="http://www.springsource.org/spring-data/neo4j">Spring Data Neo4j</a>.</p><p>Respondendo a pergunta feita no t&iacute;tulo: n&atilde;o, n&atilde;o existe nenhuma API gen&eacute;rica para todos os tipos de bancos de dados, pois as diferen&ccedil;as est&atilde;o nos fundamentos, na estrutura b&aacute;sica. Entretanto, o projeto Spring Data fornece um modelo de programa&ccedil;&atilde;o comum para acesso a dados, ilustrada abaixo:</p><p><img alt="" src="http://www.infoq.com/resource/articles/spring-data-intro/pt/resources/02.jpg;jsessionid=117FF5BA41177E21B9C08238B3AC3DD1" _href="img://02.jpg" _p="true" /></p><p>O suporte a reposit&oacute;rios &eacute; uma abstra&ccedil;&atilde;o da camada f&iacute;sica e tamb&eacute;m facilita bastante a escrita de m&eacute;todos de pesquisa. Com o mapeamento de objetos, os objetos de dom&iacute;nio podem ser transformados nos tipos de dados do banco escolhido. E os templates fornecem acesso de baixo n&iacute;vel &agrave;s capacidades espec&iacute;ficas do banco de dados.</p><hr /><h2>Sobre o autor</h2><p><b><img src="http://www.infoq.com/resource/articles/spring-data-intro/pt/resources/03.jpg;jsessionid=117FF5BA41177E21B9C08238B3AC3DD1" alt="" _href="img://03.jpg" _p="true" align="left" hspace="3" />Tobias Trelle </b>&eacute; consultor de TI s&ecirc;nior na Codecentric AG, com mais de 15 anos de experi&ecirc;ncia. Seus principais interesses s&atilde;o arquiteturas de software, EAI e computa&ccedil;&atilde;o em nuvem. Tobias escreve regularmente em blogs, al&eacute;m de dar treinamentos e palestras em confer&ecirc;ncias. (<a href="https://twitter.com/#!/tobiastrelle">Twitter,</a> <a href="http://blog.codecentric.de/en/author/tobias-trelle/">Blog,</a> <a href="http://www.linkedin.com/pub/tobias-trelle/34/116/360">Linked In</a>, <a href="https://plus.google.com/u/0/111216541625241356564/about">G+</a>)</p><div class="clearer-space"></div><br><br><br><br><br><br></body></html>
