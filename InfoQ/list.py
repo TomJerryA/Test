@@ -2,16 +2,19 @@
  <head></head> 
  <body>
   <div>
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/33.py">WCF Data Services 5.4.0－Atomペイロードにクライアントフックとインスタンスアノテーション</a>Microsoftは、新フィーチャと幾つものバグ修正があるWCF Data Services 5.4.0のリリース候補がリリースされたと発表した。
-  </div>
-  <div>
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/32.py">Docker: 継続的ソフトウェアデプロイの自動化</a>PaaSプロバイダのdotCloudが自社プラットフォームの重要なコンポーネントであるDockerをオープンソースとして公開した。DockerはLXC(LinuX Container)テクノロジの実装で，Unixプロセスを分離実行する軽量仮想化(lightweight virtualization)ソリューションを実現した高レベル API を拡張機能として備えることにより，ソフトウェア展開の自動化に必要な，再現性を持ったセキュアな実行環境を提供する。
-  </div>
-  <div>
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/31.py">JavaScriptでGitを実装するKickstarterプロジェクト、28時間で資金調達</a>JavaScriptおよびNode.jsコミュニティで有名なTim Caswell氏が、JavaScriptでGitを再実装しようと思いつき、Kickstarterで360名を超える出資者により28時間で資金調達した。このプロジェクトは、Atwoodの法則「JavaScriptで書けるものは、いずれJavaScriptで書かれる」の一例だ。
-  </div>
-  <div>
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/30.py">Backbone.js 1.0リリース</a>2年半の開発を経て、Backbone.jsのバージョン1.0がリリースされた。Backbone.jsは人気のあるModel/ViewのJavaScriptライブラリで、USA Today、Rdio、Airbnbを含む多くのWebアプリケーションで用いられている。
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/34.py">調査: もっとも表現力に富んだ汎用プログラム言語は Clojure，CoffeeScript，Haskell</a>ある調査によると，表現力のもっとも高い汎用プログラム言語は Clojure と CoffeeScript，そして Haskell なのだという。調査では LoC /コミットを表現力の測定単位として採用している。
+  </div> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/33.py">WCF Data Services 5.4.0－Atomペイロードにクライアントフックとインスタンスアノテーション</a>Microsoftは、新フィーチャと幾つものバグ修正があるWCF Data Services 5.4.0のリリース候補がリリースされたと発表した。 
+  </div> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/32.py">Docker: 継続的ソフトウェアデプロイの自動化</a>PaaSプロバイダのdotCloudが自社プラットフォームの重要なコンポーネントであるDockerをオープンソースとして公開した。DockerはLXC(LinuX Container)テクノロジの実装で，Unixプロセスを分離実行する軽量仮想化(lightweight virtualization)ソリューションを実現した高レベル API を拡張機能として備えることにより，ソフトウェア展開の自動化に必要な，再現性を持ったセキュアな実行環境を提供する。 
+  </div> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/31.py">JavaScriptでGitを実装するKickstarterプロジェクト、28時間で資金調達</a>JavaScriptおよびNode.jsコミュニティで有名なTim Caswell氏が、JavaScriptでGitを再実装しようと思いつき、Kickstarterで360名を超える出資者により28時間で資金調達した。このプロジェクトは、Atwoodの法則「JavaScriptで書けるものは、いずれJavaScriptで書かれる」の一例だ。 
+  </div> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/30.py">Backbone.js 1.0リリース</a>2年半の開発を経て、Backbone.jsのバージョン1.0がリリースされた。Backbone.jsは人気のあるModel/ViewのJavaScriptライブラリで、USA Today、Rdio、Airbnbを含む多くのWebアプリケーションで用いられている。 
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/29.py">Canary Deploymentsを使って稼働中にテストする</a>Nolioが彼らのDevOpsのベストプラクティスに関するシリーズの最初のビデオで言っていることによれば、ユーザーの一部を新しい機能に目を向けさせたことで、企業は&quot;Canary Deployments&quot;を継続的デリバリの一部として使って、稼働中のソフトウェアをテストしている。&quot;Canary Deployments&quot;は一種のインクリメンタル リリースで、ソフトウェアの新バージョンをその対応する稼働中のバージョンと並んでデプロイすることで実現される。 
@@ -147,9 +150,6 @@
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/35.py">SQL Server、SharePoint、Officeの新しい開発ツール</a>MicrosoftはSQL Server、SharePoint、Officeをターゲットにしたいくつかの開発ツールをアップデートした。ビジネスインテリジェンスツールは、SQL Serverのanalysis、integration、reportingをサポートする。Office/SharePointツールは、それぞれの2013バージョンと.NET Framework 4.5をサポートする。 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/34.py">jQuery Mobile 1.3.0がリリース</a>jQuery Foundationは、JavaScript と HTML5/CSSフレームワークであるjQuery Mobileのバージョン1.3.0をリリースした。このアップデートは、高応答なウェブ設計に焦点をおき、モバイルアプリケーション用の新しいウィジェットを導入している。 
-  </div>     
+  </div>  
  </body>
 </html>
