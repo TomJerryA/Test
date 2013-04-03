@@ -2,6 +2,9 @@
  <head></head> 
  <body> 
   <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/36.py">Google が誓約特許に対する非訴訟を発表</a>Google は &quot;先制攻撃を受けない限り&quot;，非訴訟誓約の対象とした特許に関して，オープンソースあるいはフリーのソフトウェアに対する法的措置を行わないと発表した。 
+  </div> 
+  <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/35.py">GCC 4.8でC++に完全移行</a>GCCの新リリース4.8は、完全にC++で実装されたが、改善は内部だけではない。C++11、Googleの Go、新しいコンパイラーの最適化へのサポートを拡大した。 
   </div> 
   <div> 
@@ -147,9 +150,6 @@
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/37.py">VagrantがAmazon AWSとRackspaceをサポート</a>HashiCorp は，Vagrant のプロバイダとして Amazon AWS と Rackspace のサポートを加えることで新たな利用シナリオを実現する – 開発者のデスクトップ上に代えて，初めてクラウド上での仮想マシン起動が可能になるのだ。 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/36.py">スクラム概要図のアニメ版、Scrum Primerのサイトで公開</a>Scrum Primerの著者がスクラムプロセスを説明する図のアニメ版を公開した。これはScrum Primerのサイトからダウンロードでき、Creative Commonsライセンスのもと利用することができる。 
   </div> 
  </body>
 </html>
