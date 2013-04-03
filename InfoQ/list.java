@@ -2,6 +2,9 @@
  <head></head> 
  <body> 
   <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/49.java">Martin Fowler on Software Design in the 21st Century</a>Martin Fowler talks about Software Design in the 21st Century split into three short talks, Schemaless Data Structures, NoSQL &amp; Consistency, and finally the value of Software Design. 
+  </div> 
+  <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/48.java">Python Tools for Visual Studio 2.0 Adds IntelliSense, Virtualenv and Windows Azure Support</a>Python Tools for Visual Studio 2.0 alpha release includes support for Intellisense, Virtualenv, Windows Azure, Cloud Service, Web Sites and Client Libraries. 
   </div> 
   <div> 
@@ -147,9 +150,6 @@
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/0.java">Stripe Open Sources Abba, an A/B Testing Framework</a>Stripe has open sourced their JavaScript A/B testing framework called Abba. 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/49.java">Windows Azure Mobile Services with Android, Active Directory, Localization, East Asia Region</a>Microsoft has recently released several updates to Windows Azure with support for Android, Active Directory, Application monitoring with HTTP response codes, new five languages including expansion of Azure Store to 22 more countries. 
   </div> 
  </body>
 </html>
