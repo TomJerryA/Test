@@ -1,8 +1,11 @@
 <html>
  <head></head> 
- <body>
-  <div>
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/34.py">調査: もっとも表現力に富んだ汎用プログラム言語は Clojure，CoffeeScript，Haskell</a>ある調査によると，表現力のもっとも高い汎用プログラム言語は Clojure と CoffeeScript，そして Haskell なのだという。調査では LoC /コミットを表現力の測定単位として採用している。
+ <body> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/35.py">GCC 4.8でC++に完全移行</a>GCCの新リリース4.8は、完全にC++で実装されたが、改善は内部だけではない。C++11、Googleの Go、新しいコンパイラーの最適化へのサポートを拡大した。 
+  </div> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/34.py">調査: もっとも表現力に富んだ汎用プログラム言語は Clojure，CoffeeScript，Haskell</a>ある調査によると，表現力のもっとも高い汎用プログラム言語は Clojure と CoffeeScript，そして Haskell なのだという。調査では LoC /コミットを表現力の測定単位として採用している。 
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/33.py">WCF Data Services 5.4.0－Atomペイロードにクライアントフックとインスタンスアノテーション</a>Microsoftは、新フィーチャと幾つものバグ修正があるWCF Data Services 5.4.0のリリース候補がリリースされたと発表した。 
@@ -148,8 +151,5 @@
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/36.py">スクラム概要図のアニメ版、Scrum Primerのサイトで公開</a>Scrum Primerの著者がスクラムプロセスを説明する図のアニメ版を公開した。これはScrum Primerのサイトからダウンロードでき、Creative Commonsライセンスのもと利用することができる。 
   </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/35.py">SQL Server、SharePoint、Officeの新しい開発ツール</a>MicrosoftはSQL Server、SharePoint、Officeをターゲットにしたいくつかの開発ツールをアップデートした。ビジネスインテリジェンスツールは、SQL Serverのanalysis、integration、reportingをサポートする。Office/SharePointツールは、それぞれの2013バージョンと.NET Framework 4.5をサポートする。 
-  </div>  
  </body>
 </html>
