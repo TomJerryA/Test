@@ -1,13 +1,49 @@
-<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>使用Kinvey MBaas编码与生活</h3><p>最近许多文章谈及MBaaS（移动后端服务）这一新兴行业背后的那些组织，本文是该系列文章的第二篇。InfoQ将带您看一看马萨诸塞州坎布里奇的Kinvey公司。该公司由德州大学的三名校友创建。获得了投资者<u><a href="http://www.bostonseed.com/">Boston Seed</a></u>的一些帮助。Kinvey的第三方数据集成，支持多平台、通知、版本化API和业务逻辑功能，这必将助力于开发者后端。</p> 
-<p><a href="http://idaconcpts.com/">智能手机应用</a>开发者的一个重要选择在于是否花费时间建立他们自己的后端云服务。随着MBaaS提供商的爆发性增长，人们会发现许多开发者将选择由Kinvey这样的公司提供的更简单的方式来构建后端云服务。<a href="http://deployd.com/">用不了多久就会这样</a>。</p> 
-<p>Kinvey最近将<u><a href="http://www.brightcove.com/en/content-app-platform">Bright Cove</a></u>的<u><a href="http://devcenter.kinvey.com/appcloud/">App Cloud</a></u>加入了它的平台列表。像Kinvey的其他平台一样，，只需要下载代码库并放进你的项目，就能给你的应用添加一个功能丰富的后端。下边是Kinvey支持的开发者平台的完整列表——App Cloud、<u><a href="http://devcenter.kinvey.com/ios/">iOS</a></u>, <u><a href="http://devcenter.kinvey.com/android/">Android</a></u><u>、<a href="http://devcenter.kinvey.com/html5/">HTML5</a>、<a href="http://devcenter.kinvey.com/nodejs/">Node.js</a>、<a href="http://devcenter.kinvey.com/phonegap/">PhoneGap</a>、<a href="http://devcenter.kinvey.com/titanium/">Titanium</a>、<a href="http://devcenter.kinvey.com/triggerio/">Trigger.io</a></u> 和 <u><a href="http://devcenter.kinvey.com/rest/">REST API</a></u>。</p> 
-<p>Kinvey对新手开发者来说是一个好的选择。Kinvey的后端服务的收费是<a href="http://www.kinvey.com/pricing">预付费</a>的。在他们的网站上提供了各种平台的<a href="http://devcenter.kinvey.com/android/tutorials">教程</a>、<a href="http://devcenter.kinvey.com/android/samples">示例</a>和<a href="http://devcenter.kinvey.com/android/guides/getting-started">入门指南</a>。另外还有教授如何使用后端构建<a href="http://www.kinvey.com/how-to-make-an-app-ios">iOS</a>和<u><a href="http://www.kinvey.com/how-to-make-an-app-android">Android</a></u>移动应用的免费电子书。</p> 
-<p>以iOS电子书为例，该书由<u><a href="http://greatwriting.com/">Randall Cronk</a></u> 和 <u><a href="http://www.kinvey.com/about/michaelkatz">Michael Katz</a></u><u>编</u>写，包含了很多快速构建应用的诀窍，比如如何使用Xcode的MVC模式框架实现‘通过应用委托对象提供app特有行为’。</p> 
-<p>正如所料，一切倾向于鼓励用户采用Kinvey的MBaaS。所以对待这一切，我们仅持保留态度。</p> 
-<p>说起古老的智慧，Claudio Tesoriero在博客<u><a href="http://blogs.forrester.com/michael_facemire/12-04-25-mobile_backend_as_a_service_the_new_lightweight_middleware">influential Michael Facemire</a></u>的回复中，强调了你如果将所有的数字鸡蛋放入一个MBaaS篮子里所面临的潜在困境。</p> 
-<p>阻止我们在诸多项目中使用同一个baas提供商的原因在于“供应商锁定”问题。如果该baas供应商改变定价策略或者停止业务会怎么样？如果因此而将应用改用其他后端可能会非常痛苦而且耗费不菲。</p> 
-<p><b>查看英文原文</b>：<a href="http://www.infoq.com/news/2013/02/KinveyMBaaS;jsessionid=79ADCF05C5AFD987E382641864DFA99E">To Live and Code in Kinvey MBaaS</a></p> 
-<hr /> 
-<p>感谢<a href="http://www.infoq.com/cn/bycategory.action;jsessionid=79ADCF05C5AFD987E382641864DFA99E?authorName=赵震一">赵震一</a>对本文的审校。</p> 
-<p>给InfoQ中文站投稿或者参与内容翻译工作，请邮件至<a href="mailto:editors@cn.infoq.com">editors@cn.infoq.com</a>。也欢迎大家通过新浪微博（<a href="http://www.weibo.com/infoqchina">@InfoQ</a>）或者腾讯微博（<a href="http://t.qq.com/infoqchina">@InfoQ</a>）关注我们，并与我们的编辑和其他读者朋友交流。</p> 
+<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>开发人员如何有效地进行数据库设计</h3><p>数据库设计在软件开发过程中占有重要的地位，国内开发者MeteorSeed在<a href="http://www.cnblogs.com/MeteorSeed/archive/2013/03/27/2880054.html" target="_blank">博客</a>中结合自己的实际经历全面总结了关系型数据库设计需要注意的各个方面，包括Codd的基本法则、设计阶段、设计原则和命名规则。</p> 
+<p>MeteorSeed认为在项目早期应该由开发者进行数据库设计，后期调优则需要DBA：“一个精通OOP和ORM的开发者，设计的数据库往往更为合理，更能适应需求的变化”。他引用了关系数据库之父Codd的12条法则，作为数据库设计的指导性方针：</p> 
+<ol> 
+ <li><strong>信息法则<br /> </strong>关系数据库中的所有信息都用唯一的一种方式表示——表中的值。</li> 
+ <li><strong>保证访问法则<br /> </strong>依靠表名、主键值和列名的组合，保证能访问每个数据项。</li> 
+ <li><strong>空值的系统化处理<br /> </strong>支持空值（NULL），以系统化的方式处理空值，空值不依赖于数据类型。</li> 
+ <li><strong>基于关系模型的动态联机目录<br /> </strong>数据库的描述应该是自描述的，在逻辑级别上和普通数据采用同样的表示方式，即数据库必须含有描述该数据库结构的系统表或者数据库描述信息应该包含在用户可以访问的表中。</li> 
+ <li><strong>统一的数据子语言法则<br /> </strong>一个关系数据库系统可以支持几种语言和多种终端使用方式，但必须至少有一种语言，它的语句能够一某种定义良好的语法表示为字符串，并能全面地支持以下所有规则：数据定义、视图定义、数据操作、约束、授权以及事务。（这种语言就是SQL)</li> 
+ <li><strong>视图更新法则<br /> </strong>所有理论上可以更新的视图也可以由系统更新。</li> 
+ <li><strong>高级的插入、更新和删除操作<br /> </strong>把一个基础关系或派生关系作为单个操作对象处理的能力不仅适应于数据的检索，还适用于数据的插入、修改个删除，即在插入、修改和删除操作中数据行被视作集合。</li> 
+ <li><strong>数据的物理独立性<br /> </strong>不管数据库的数据在存储表示或访问方式上怎么变化，应用程序和终端活动都保持着逻辑上的不变性。</li> 
+ <li><strong>数据的逻辑独立性<br /> </strong>当对表做了理论上不会损害信息的改变时，应用程序和终端活动都会保持逻辑上的不变性。</li> 
+ <li><strong>数据完整性的独立性<br /> </strong>专用于某个关系型数据库的完整性约束必须可以用关系数据库子语言定义，而且可以存储在数据目录中，而非程序中。</li> 
+ <li><strong>分布独立性<br /> </strong>不管数据在物理是否分布式存储，或者任何时候改变分布策略，RDBMS的数据操纵子语言必须能使应用程序和终端活动保持逻辑上的不变性。</li> 
+ <li><strong>非破坏性法则<br /> </strong>如果一个关系数据库系统支持某种低级（一次处理单个记录）语言，那么这个低级语言不能违反或绕过更高级语言（一次处理多个记录）规定的完整性法则或约束，即用户不能以任何方式违反数据库的约束。</li> 
+</ol> 
+<p>MeteorSeed把数据库设计阶段分为规划阶段、概念阶段、逻辑阶段、实现阶段和物理阶段。关于设计原则，他从以下几个方面阐述了自己的经验：</p> 
+<ul> 
+ <li><strong>降低对数据库功能的依赖<br /> </strong>功能应该由程序实现，而非DB实现。原因在于，如果功能由DB实现时，一旦更换的DBMS不如之前的系统强大，不能实现某些功能，这时我们将不得不去修改代码。所以，为了杜绝此类情况的发生，功能应该有程序实现，数据库仅仅负责数据的存储，以达到最低的耦合。</li> 
+ <li><strong>定义实体关系的原则<br /> </strong>当定义一个实体与其他实体之间的关系时，需要考量如下： 
+  <ul> 
+   <li><strong>牵涉到的实体</strong> 识别出关系所涉及的所有实体。</li> 
+   <li><strong>所有权</strong> 考虑一个实体“拥有”另一个实体的情况。</li> 
+   <li><strong>基数</strong> 考量一个实体的实例和另一个实体实例关联的数量。</li> 
+  </ul> </li> 
+ <p>关系与表数量</p> 
+ <ul> 
+  <li>描述1:1关系最少需要1张表。</li> 
+  <li>描述1:n关系最少需要2张表。</li> 
+  <li>描述n:n关系最少需要3张表。</li> 
+ </ul> 
+ <li><strong>列意味着唯一的值<br /> </strong>如果表示坐标（0,0），应该使用两列表示，而不是将“0,0”放在1个列中。</li> 
+ <li><strong>列的顺序<br /> </strong>列的顺序对于表来说无关紧要，但是从习惯上来说，采用“主键+外键+实体数据+非实体数据”这样的顺序对列进行排序显然能得到比较好的可读性。</li> 
+ <li><strong>定义主键和外键<br /> </strong>数据表必须定义主键和外键（如果有外键）。定义主键和外键不仅是RDBMS的要求，同时也是开发的要求。几乎所有的代码生成器都需要这些信息来生成常用方法的代码（包括SQL文和引用），所以，定义主键和外键在开发阶段是必须的。之所以说在开发阶段是必须的是因为，有不少团队出于性能考虑会在进行大量测试后，在保证参照完整性不会出现大的缺陷后，会删除掉DB的所有外键，以达到最优性能。笔者认为，在性能没有出现问题时应该保留外键，而即便性能真的出现问题，也应该对SQL文进行优化，而非放弃外键约束。</li> 
+ <li><strong>选择键</strong></li> 
+ <p>人工键与自然键。人工键——实体的非自然属性，根据需要由人强加的，如GUID，其对实体毫无意义；自然健——实体的自然属性，如身份证编号。人工键的好处：键值永远不变；永远是单列存储。人工键的缺点：因为人工键是没有实际意义的唯一值，所以不能通过人工键来避免重复行。MeteorSeed建议全部使用人工键。原因如下：</p> 
+ <ul> 
+  <li>在设计阶段我们无法预测到代码真正需要的值，所以干脆放弃猜测键，而使用人工键。</li> 
+  <li>人工键复杂处理实体关系，而不负责任何属性描述，这样的设计使得实体关系与实体内容得到高度解耦，这样做的设计思路更加清晰。</li> 
+ </ul> 
+ <p>MeteorSeed的另一个建议是——每张表都需要有一个对用户而言有意义的自然键，在特殊情况下也许找不到这样一个项，此时可以使用复合键。这个键我在程序中并不会使用其作为唯一标识，但是却可以在对数据库直接进行查询时使用。使用人工键的另一个弊端，主要源自对查询性能的考量，因此选择人工键的形式（列的类型）很重要：</p> 
+ <ul> 
+  <li>自增值类型，由于类型轻巧查询效率更好，但取值有限。</li> 
+  <li>GUID查询效率不如值类型，但是取值无限，且对开发人员更加亲切。</li> 
+ </ul> 
+ <p>智能健与非智能键。智能键——键值包含额外信息，其根据某种约定好的编码规范进行编码，从键值本身可以获取某些信息；非智能键，单纯的无意义键值，如自增的数字或GUID。智能键是一把双刃剑，开发人员偏爱这种包含信息的键值，程序盼望着其中潜在的数据；数据库管理员或者设计者则讨厌这种智能键，原因也是很显然的，智能键对数据库是潜在的风险。前面提到，数据库设计的原则之一是不要把具有独立意义的值的组合实现到一个单一的列中，应该使用多个独立的列。数据库设计者，更希望开发人员通过拼接多个列来得到智能键，即以复合主键的形式给开发人员使用，而不是将一个列的值分解后使用。开发人员应该接受这种数据库设计，但是很多开发者却想不明白两者的优略。MeteorSeed认为，使用单一列实现智能键存在这样一个风险，就是我们可能在设计阶段无法预期到编码规则可能会在后期发生变化。比如，构成智能键的局部键的值用完而引起规则变化或者长度变化，这种编码规则的变化对于程序的有效性验证与智能键解析是破坏性的，这是系统运维人员最不希望看到的。所以MeteorSeed建议如果需要智能键，请在业务逻辑层封装（使用只读属性），不要再持久化层实现，以避免上述问题。</p> 
+</ul> 
+<p>除此之外，MeteorSeed还从“是否允许NULL”、属性切割、规范化（范式）、选择数据类型、优化并行等几个方面谈了设计原则。有关详细内容，可以查看MeteorSeed的博客<a href="http://www.cnblogs.com/MeteorSeed/archive/2013/03/27/2880054.html" target="_blank">原文</a>。&nbsp;&nbsp;</p> 
 <p id="lastElm"></p><br><br><br><br><br><br></body></html>

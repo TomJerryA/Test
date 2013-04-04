@@ -1,8 +1,8 @@
 <html>
  <head></head> 
- <body>
-  <div>
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/2.java">Google+ Sign-In: Federated Identity, Authorization and Semantic Activity Streams</a>Google+ Sign-In extends the Google+ social network into third-party websites, desktop applications and mobile apps. This service, announced on February 26th, provides features for authentication, authorization and activity sharing. There is also support for user engagement, hangouts and automatic Android app downloads.
+ <body> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/2.java">Google+ Sign-In: Federated Identity, Authorization and Semantic Activity Streams</a>Google+ Sign-In extends the Google+ social network into third-party websites, desktop applications and mobile apps. This service, announced on February 26th, provides features for authentication, authorization and activity sharing. There is also support for user engagement, hangouts and automatic Android app downloads. 
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/1.java">Developing Stable Teams, and Dealing with Dysfunctions</a>Having stable teams can be beneficial for agile software development. Several views on establishing and nurturing stable teams, and dealing with team dysfunctions. 
@@ -150,6 +150,6 @@
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/3.java">Windows Management Framework 3.0 with PowerShell 3.0, WMI, WinRM</a>Microsoft has recently released Windows Management Framework 3.0 which includes Windows PowerShell 3.0, WMI, WinRM including PowerShell Web Service and Server Manager CIM Provider. 
-  </div>  
+  </div> 
  </body>
 </html>
