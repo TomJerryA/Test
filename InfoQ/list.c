@@ -1,8 +1,8 @@
 <html>
  <head></head> 
- <body>
-  <div>
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/35.c">Swarming: Ajudando equipes a entregarem mais e melhor</a>O Swarming &eacute; uma t&eacute;cnica que ajuda equipes &aacute;geis a entregar software em funcionamento de forma r&aacute;pida e frequente. Conhe&ccedil;a mais sobre a t&eacute;cnica com base no trabalho de v&aacute;rios especialistas.
+ <body> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/35.c">Swarming: Ajudando equipes a entregarem mais e melhor</a>O Swarming &eacute; uma t&eacute;cnica que ajuda equipes &aacute;geis a entregar software em funcionamento de forma r&aacute;pida e frequente. Conhe&ccedil;a mais sobre a t&eacute;cnica com base no trabalho de v&aacute;rios especialistas. 
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/34.c">Melhoria de processos de neg&oacute;cios usando Agile: discuss&otilde;es recentes</a>Organiza&ccedil;&otilde;es querem melhorar seus processos de neg&oacute;cios e nos dias de hoje precisam fazer essa melhoria de forma r&aacute;pida. &Eacute; poss&iacute;vel utilizar t&eacute;cnicas &aacute;geis para melhoria de processos de neg&oacute;cios? 

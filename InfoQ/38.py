@@ -1,74 +1,72 @@
-<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>FTP, NGINXキャッシング, Apache TomEE, MarinaDB 10をサポートするJelastic 1.9</h3><p><a target="_blank" href="http://www.infoq.com/news/2013/03/Jelastic-1-9;jsessionid=CE07B6AB832361B828946629E476CA28"><em>原文(投稿日：2013/03/11)へのリンク</em></a></p> 
+<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>アジャイルを用いたビジネスプロセスの改善</h3><p><a target="_blank" href="http://www.infoq.com/news/2013/03/process-improvement-agile;jsessionid=D2F77C6C944D805855D2EC9315074A41"><em>原文(投稿日：2013/03/29)へのリンク</em></a></p> 
 <div class="clearer-space">
  &nbsp;
 </div> 
 <div id="newsContent"> 
- <p>JavaとPHPをPaaS(Platform-as-a-Service) 提供するクラウドサーバホスティング用プラットフォームの <a target="_blank" href="http://jelastic.com/press-releases/jelastic-launches-new-version-1-9">Jelastic</a> がバージョン1.9をリリースした。FTP/FTPSと <a target="_blank" href="http://wiki.nginx.org/Main">NGINX</a> キャッシュのサポートに加えて，今回のリリースではTomcatのエンタープライズ版である <a target="_blank" href="http://tomee.apache.org/apache-tomee.html">Apache TomEE</a>，マルチソース・レプリケーションと動的列，さらに <a target="_blank" href="http://blog.mariadb.org/mariadb-galera-cluster-5-5-29-stable-ga-released/">MarinaDB Galera Cluster</a> も利用可能な <a target="_blank" href="http://blog.mariadb.org/tag/mariadb-10/">MariaDB 10</a> のサポートが提供される。</p> 
- <p>Jelasticには先進的なレポートダッシュボードも装備されている。ユーザの契約状況や解約率，アクセス率，機能別の人気，ユーザ単位での利益など，<a target="_blank" href="http://searchcloudcomputing.techtarget.com/definition/Platform-as-a-Service-PaaS">PaaS</a> ビジネスの状況やユーザ行動をあらゆる面から分析することが可能だ。ログ管理システムも刷新され，ブラウザベースの新ユーザインターフェースを利用するJelasticユーザを効率的にサポートできるようになった。</p> 
- <p>Jelastic 1.9を使うことによって，RPMからのテンプレートの構築や，データベース管理用WebページでのセキュアなSSL(HTTPS)利用が可能になる。さらにJelastic クラスタ管理(Jelastic Cluster Admin / JCA)では，スマート・ライブ・インテグレーションやダッシュボードのカスタマイズ，ユーザ課金の回収歴，料金表管理，システム監視などの機能も利用可能だ。</p> 
- <p>Jelasticフレームワークは，JavaあるいはPHPアプリケーションの使用状況に応じてサーバがリソースを割り当てるように設計されている。</p> 
- <p>チーフオペレーティングオフィサのDmitry Sotnikov氏がInfoQの独占インタビューに応じて，Jelastic 1.9に関する詳細な内容を説明してくれた。<br /> <br /> <strong>InfoQ: PaaSは本来，どのような意味なのでしょう？</strong></p> 
- <blockquote>
-  IT管理の負担をなくすためのホスティング自動化がPaaS(Platform-as-a-Service)です。通常のホスティングや Infrastructure-as-a-Service は，基本的に仮想マシンを提供してくれますが，その時点からアプリケーションを稼働させるまでには，まだ多くの管理作業が残っています - サーバやデータベースのセットアップ，ロードバランシング設定などに加えて，高可用性が必要ならばクラスタの構成も必要です。すべてのサーバに対して，設定変更やアプリケーション，ライブラリのバージョンなどの一貫性を確保しなければなりません。アプリケーションを更新したり必要なサーバを追加したりする度に，このような作業を何度も何度も繰り返さなければならないのです。
-  <br /> &nbsp;
-  <br /> PaaSでは，これらはすべてプラットフォームが自動化します。サーバ管理やスケーリングといったことはすべてプラットフォームに任せて，素晴らしいアプリケーションの開発に専念できるのです。
-  <br /> 
-  <br /> それらに加えて，開発者や業務用IT関係者に喜ばれるような機能もたくさんあります。例えば， 
-  <ul> 
-   <li>ソースコードリポジトリから直接，クラウド上にアプリケーションを構築することが可能。</li> 
-   <li>アプリケーション開発ライフサイクルのサポート。環境のクローン作成(データもすべて同時に！)や入れ替え(開発とステージング，といったように)も可能。</li> 
-   <li>権限管理，役割管理を持ったチーム作業のサポート。</li> 
-   <li>一般的な開発ツールとの統合。</li> 
-   <li>リモートデバッグ。</li> 
-   <li>モニタリングやログ管理など，一般的なサードパーティサービスとの統合。</li> 
-  </ul> 
+ <p>組織はビジネスプロセスの改善を望んでいる。そして今日，それは迅速に行う必要がある。ならばビジネスプロセスの改善に，アジャイルの手法やテクニックを使うことはできないだろうか？</p> 
+ <p>Harvard Business Review の &quot;<a target="_blank" href="http://blogs.hbr.org/cs/2012/10/when_it_comes_to_operational.html">プロセス戦略における次の波 (the next wave of process strategy)</a>&quot; という記事に，Brad Power氏がビジネスプロセス改善のアプローチに対する自身の見解を公開している。過去数十年を掛けて改善されてきた手法によって，これまで多くのことが達成されてきた。しかし氏は，組織にはプロセスを継続的に改善する必要があると考えている。</p> 
+ <blockquote> 
+  <p>(...) 昨日の勝利を祝う時間などありません。組織にとって過去の成功は，今後10年間の継続的な発展を保証するものではないのです。なぜなら情報処理技術 (...) が，現時点でもっとも進歩したビジネスプロセスでさえ，10年後にはまったくの時代遅れにしてしまうからです。</p> 
+ </blockquote>
+ <blockquote> 
+  <p>トップマネジメントにとって，組織のプロセス改善が必要かどうかはもはや問題ではありません。どのような方法を選択するのか，費用はどの程度か，いつ実施するのか，ということが問題なのです。</p> 
  </blockquote> 
- <p><strong>InfoQ: Jelasticと通常の共有ホスティングとの違いについて説明して頂けますか？</strong></p> 
- <blockquote>
-  Jelasticは，単にWebサーバの一部を使える，というものではありません。ダッシュボードにログインして数回マウスをクリックするだけで，アプリケーションサーバやロードバランサ，データベース，Memcachedなど，すべての環境が構築できるのです。あとは普通にアプリケーションのアップロードを行うか，GITまたはSVNコードリポジトリの接続情報を指定するだけです - あとはJelasticがアプリケーションを起動して，クラウドへと自動的にスケーリングしてくれます。
-  <br /> 
-  <br /> つまり共有ホスティングとは違って，アプリケーションを多数のサーバに容易に展開できるパワーに加えて，設定の変更やアプリケーションライブラリのアップロードといった，サーバを完全に管理できるフレキシビリティも手に入るのです。
+ <p>そのような変化のひとつとして氏が指摘するのは，プロセス改善をより迅速に行うことの必要性だ。</p> 
+ <blockquote> 
+  <p>今日の企業は月や年ではなく，日あるいは週単位でプロセスを変えられなければなりません。</p> 
  </blockquote> 
- <p><strong>InfoQ: Jelasticにはいくつのサイトをホストできるのでしょう？</strong></p> 
- <blockquote>
-  制限はありません。Jelasticの提供するセルフサービス・ダッシュボードを使用すれば，サーバが何台必要か，その中から何台使用するのか，それをJelasticがスケールするかどうか，どのようにスケールするのかなど，ユーザ自身で指定できます。
+ <p><a target="_blank" href="http://blogs.hbr.org/cs/2012/12/in_my_last_post_i_1.html">プロセス戦略の３つの実例 (three examples of new process strategy)</a> と題されたPower氏の次の記事では，組織がプロセスを改善するための新手法が紹介されている。</p> 
+ <blockquote> 
+  <p>私はこれらのプロセス改善アプローチを &quot;Process Strategy 2.0&quot; と総称しています。これらはリーン，シックスシグマ，ビジネスリエンジニアリングといった &quot;Process Strategy 1.0&quot; の方法論を越えるものです。</p> 
  </blockquote> 
- <p><strong>InfoQ: .NET Frameworkはサポートされていますか？</strong></p> 
- <blockquote>
-  現時点では，PHPとJavaアプリケーションのフルサポートを提供しています。ClosureやGroovy，Scala，Jruby，JythonなどJVMベース言語も含んでいます。
-  <br type="_moz" /> 
+ <p>プロセス改善の迅速化のニーズは増加している，それを充足するにはアジャイルのアプローチが必要だ，と氏は言う。</p> 
+ <blockquote> 
+  <p>運用と改善をスピーディにするため， Process Strategy 2.0では，即時の試行とアジャイル管理プロセスのより一層の活用を行います。</p> 
  </blockquote> 
- <p><strong>InfoQ: サイトあたりの費用はどの程度なのでしょう？</strong></p> 
- <blockquote>
-  Jelasticでは，時間課金と自動スケーリング (垂直スケーリング - オンザフライでのメモリと処理能力の追加 - も含みます) を採用しています。したがって実際に使用しているものだけに支払えばよく，必要のないもののために余分に支払う必要はありません。費用はわずか２セント/時間からとなっています。実際のアプリケーションで必要な費用を知るのは簡単です - まず無料トライアルに申し込んでください。そこでアプリケーションを実行すると，&quot;仮想料金&quot; というものが表示されます。これは支払う必要のないものですが，正確な費用です。推測する必要はまったくありません。
-  <br type="_moz" /> 
+ <p>InfoWorld ブログの記事 <a target="_blank" href="http://www.infoworld.com/t/agile-development/adapt-agile-build-better-business-204332">ビジネス改善へのアジャイル活用 (adapt agile to build a better business)</a> では，筆者であるAdvice Line blogsのBob Lewis氏が，Scrumを用いたビジネス変革の実現について解説している。最初に氏は，ビジネス変革の実現とソフトウェア開発との違いを明確にする。</p> 
+ <blockquote> 
+  <p>ビジネスの変革は，しかしながら，新しいソフトウェアをシステムに投入して，それを用いたビジネス改善の方法をユーザに見つけてもらう，という単純なものではありません。ビジネスの過程と実践，トレーニング，コミュニケーション，会計処理の変更，業績指標の再定義など，あらゆる問題を改善するためのタスクを伴うものなのです。</p> 
  </blockquote> 
- <p><strong>InfoQ: WordPressのような，PHPベースのブログアプリをインストールすることは可能でしょうか？</strong></p> 
- <blockquote>
-  JelasticはPHPまたはJavaベースであれば，どのアプリケーションでもホストあるいはクラウドにスケールできます。さらにWordpressやJoomla，Drupal，Magnolia，Liferayなど人気のアプリケーションについては，いくつかのホスティングパートナからワンクリックデプロイのサービスが提供されています。
+ <p>プロダクトのバックログにあるユーザストーリは，ビジネスの変革を実現するために必要なものをすべてカバーできていなければならない。バックログの項目は &quot;新しいソフトウェアを使用して実際に処理を行う方法を説明する&quot; という，ビジネス変革を意図したものになるはずだ。</p> 
+ <blockquote> 
+  <p>ユーザストーリに取り組むことになれば，ソフトウェアに何ら関係のない部分については，相応な資格を持つビジネススタッフに割り当てられることになるでしょう。彼らは，ユーザストーリにアサインされた開発者たちが直接関与する作業に加えて，自身の作業についても責任を負うことになるのです。例えば &quot;新しいプロセスとソフトウエアに関するユーザ教育&quot; という項目はバックログに入れられて，他のすべてのユーザストーリと同等に管理されることになります。</p> 
  </blockquote> 
- <p><strong>InfoQ: 1日20万ビジターを処理することは可能でしょうか？</strong></p> 
- <blockquote>
-  Jelasticは数十万のユーザ，１日数百万のWeb要求を処理可能な 
-  <a target="_blank" href="http://jelastic.com/customers">ホスティングアプリケーション</a> です。
-  <br type="_moz" /> 
+ <p>ビジネス変革に優先順位を設定する手段として氏が推奨するのは，Goldratt氏の TOC (Therory of Constraints) の利用である。</p> 
+ <blockquote> 
+  <p>TOCは明確なゴール – コスト削減，サイクルタイム短縮，生産能力向上といった – を確立することによって機能して，ゴール達成への唯一かつ最大の障害を特定します。これがボトルネック，すなわち制約(constraint)であり，それを取り除くことで目標の達成に一歩近付きます。その次には，残った制約から最大のものを特定して，それを取り除くのです。</p> 
  </blockquote> 
- <p><strong>InfoQ: Internet Explorerなど，主要なブラウザはすべてサポートされているのでしょうか？</strong></p> 
- <blockquote>
-  アプリケーションの開発者がサポート対象として選択したブラウザならば，どれでもサポートすることができます。
+ <p>ビジネス変革にスクラムとTOCを組み合わせて使うことは，組織がアジャイル企業になる上でも有効だ，と氏は言う。</p> 
+ <blockquote> 
+  <p>(...) 企業がアジャイルであるためには，設計，計画，意図的な変化の達成を迅速かつ確実に行えることが必要です。</p> 
  </blockquote> 
- <p><strong>InfoQ: Jelasticにはダウンタイムを通知するアプリはあるのでしょうか？</strong></p> 
- <blockquote>
-  基本的なモニタリング機能は組み込みで用意しています。外部の監視ソリューションの組み込みも可能です。
+ <p><a target="_blank" href="http://agilemanagement.net/index.php/Blog/change_management_vs_process_evolution/">チェンジマネジメント対プロセスの進化 (change management vs process evolution)</a> というブログポストの David Anderson 氏は，自身がチェンジマネジメントと呼んでいるビジネスプロセス改善のアイデアを紹介している。</p> 
+ <blockquote> 
+  <p>チェンジマネジメントは組織の変化を管理するための規律です。プロセスや組織構造の変更といったアクティビティに対して，何らかの管理性あるいはガバナンスを与える規律がチェンジマネジメントなのです。</p> 
  </blockquote> 
- <p><strong>InfoQ: Jelastic内にPOP3メールボックスを作成することはできますか？</strong></p> 
- <blockquote>
-  Jelasticはアプリケーションホスティングであって，メールボックスをホストするサービスではありません。ただしアプリケーションにメール送信機能が必要ならば，メールサーバ (Sendmailなど) を追加することも，あるいは外部のメールボックス (Google Appsなど) を使用することもできます。
+ <p>組織にアジャイルを適用するというのは，その行為自体が管理面での変革であり，時には困難を伴う。なぜアジャイルを採用するのか，氏は次のように説明している。</p> 
+ <blockquote> 
+  <p>アジャイル移行のアプローチ自体が非アジャイルである，すなわち大規模な事前計画を作成して実行するというアプローチである，というのは実に皮肉な話です。アジャイルに移行する試みの多くが十分な成果を上げられていない，という事実(これを私は，少なくとも５年間言い続けています)を考えれば，使用しているアプローチが問題のドメインに対して不適切なのかも知れません。必要なのは変化のためのアジャイルアプローチ - フィードバックループによって新たな情報を得られるように進歩したアプローチなのです。</p> 
  </blockquote> 
- <p><strong>InfoQ: JelasticとWindows Azureに共通点はありますか？</strong></p> 
+ <p>氏もLewis氏と同じく，Goldratt氏のTOCに言及している。氏が推奨するのは，最大の制約に注目してそれを排除する，という進化的変革を管理するために，TOCの改善の５ステップをソリューションとして採用することだ。</p> 
+ <blockquote> 
+  <p>(...) 重要なのは小さな変更を行うことです。はるかに先の変化を事前に予測することはできません。２ないし３ステップ程度が，おそらくはベストなのでしょう。移行作業全体を予見することは不可能です。</p> 
+ </blockquote> 
+ <p>カンバンやリーンスタートアップといったメソッドは，組織の変革を阻む最大制約を見つけ出すのに役立つはずだ。</p> 
+ <blockquote> 
+  <p>カンバンは進化的変革の可能性を企業に提供します。(...) カンバンを用いることで，適合基準による現行プロセスの評価が可能になります。それによって私たちは，プロセスを発展させるためにどのような変化を導けばよいのかを判断できるのです。</p> 
+  <p>リーンスタートアップもこれと同じように，Eric Ries氏がビジネスモデル改革のアプローチとして紹介したものです。(...) リーンスタートアップによる適合基準は，より市場に直結したものになります (...)リーンスタートアップにあるビジネス上の仮説立証というコンセプトは，変革時において適合基準を適用するためのプロセスに相当します。</p> 
+ </blockquote> 
+ <p><a target="_blank" href="http://www.softwareag.com/blog/reality_check/index.php/process-power/process-improvement/">組織はいかにして真のプロセス改革を実現するか (how organizations achieve real process improvement)</a> と題するブログ記事では，Software AG のエンタープライズBPMのトップを務める Joerg Klueckmann氏が，プロセス改革を実践する組織での経験について語っている。紹介されている組織のひとつが Cable &amp; Wireless だ。</p> 
+ <blockquote> 
+  <p>Process Excellence は，ミッションクリティカルな通信インテグレータとしての Cable &amp; Wireless のビジョンの中核をなすものです。同社は組織における BPM を IT のレベルからよりビジネス戦略的なレベルへと上昇させました。そして稚拙なプロセスから Process Excellence へと移行した自らの経験を公開したのです。</p> 
+ </blockquote> 
+ <p>Cable &amp; Wireless はパフォーマンス改善を，同社のプロセス改善戦略上のひとつのコンポーネントとして考えている。</p> 
  <blockquote>
-  Platform-as-a-Serviceである，という点ですね。ただしAzureは，非Microsofシステムもいくつかサポートしてはいますが，基本的なターゲットはASP.NETアプリケーションです。さらに提供しているのはMicrosoftのみです。JelasticはJavaとPHPアプリケーションのためのPlatform-as-a-Serviceで，米国やブラジル，イギリス，ドイツ，スウェーデン，フィンランド，ロシア，日本など世界中のホスティングプロバイダによって提供されています。
-  <br type="_moz" /> 
+  パフォーマンス改善： プロセス間およびプロセス内の改善プロジェクトのポートフォリオへの優先度設定と実施を行うための，一環性および継続性を備えた改善方法論。
+ </blockquote> 
+ <p>Cable &amp; Wireless におけるプロセス改善のベストプラクティスのひとつがアジャイルプロセスだ。氏はアジャイルが，迅速な変革に一役買っていると述べている。</p> 
+ <blockquote> 
+  <p>アジャイルプロセス - 単純な IT アジャイル開発の意味ではなく，ビジネスより発する俊敏な (管理された) 変革。</p> 
  </blockquote> 
  <p id="lastElm">&nbsp;</p> 
 </div> 
