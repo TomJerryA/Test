@@ -1,6 +1,12 @@
 <html>
  <head></head> 
- <body> 
+ <body>
+  <div>
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/1.java">Developing Stable Teams, and Dealing with Dysfunctions</a>Having stable teams can be beneficial for agile software development. Several views on establishing and nurturing stable teams, and dealing with team dysfunctions.
+  </div>
+  <div>
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/0.java">Google, Opera Fork WebKit. Samsung Joins Firefox to Push Servo</a>There are two major browser developments recently announced, both targeting parallel architectures: Google and Opera with Blink, a WebKit fork, while Samsung joins Mozilla to push Servo forward.
+  </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/49.java">Martin Fowler on Software Design in the 21st Century</a>Martin Fowler talks about Software Design in the 21st Century split into three short talks, Schemaless Data Structures, NoSQL &amp; Consistency, and finally the value of Software Design. 
   </div> 
@@ -144,12 +150,6 @@
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/2.java">PeerJS 0.1.7: A WebRTC Wrapper For P2P In The Browser</a>Michelle Bu and Eric Zhang announced the release of PeerJS 0.1.7 on March 6th as a wrapper around WebRTC, a W3C initiative meant to facilitate P2P communication in the browser. 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/1.java">Ceylon M5 with Tuples, Verbatim Strings, Spread Operator, Late Annotation</a>RedHat has released Ceylon M5 programming language with several new features such as Tuples, Verbatim Strings, Spread Operator, Late Annotation and reified generics including a new module, package, functions in addition to several key syntax modifications. 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/0.java">Stripe Open Sources Abba, an A/B Testing Framework</a>Stripe has open sourced their JavaScript A/B testing framework called Abba. 
-  </div> 
+  </div>   
  </body>
 </html>

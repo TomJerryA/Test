@@ -1,11 +1,11 @@
 <html>
  <head></head> 
- <body>
-  <div>
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/38.py">アジャイルを用いたビジネスプロセスの改善</a>組織はビジネスプロセスの改善を望んでいる。そして今日，それは迅速に行う必要がある。ならばビジネスプロセスの改善に，アジャイルの手法やテクニックを使うことはできないだろうか？
-  </div>
-  <div>
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/37.py">QCon New Yorkの更新(6月10-14): JavaScript,HTML5,モバイルの将来のトラック;スケジュールが日々更新</a>QCon New York 2013のスケジュールがリアルに更新されており、登録数は昨年のこの時点よりも60％増えている。QCon New Yorkは、今年の6月10～14日に Manhattan郊外（Brooklyn Bridge）にある New York Marriottで開催される。新しい講演者やセッションは、毎週カンファレンスサイトに掲示されている。早期登録ができ、4月19日まで行えば、400ドル節約できる。
+ <body> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/38.py">アジャイルを用いたビジネスプロセスの改善</a>組織はビジネスプロセスの改善を望んでいる。そして今日，それは迅速に行う必要がある。ならばビジネスプロセスの改善に，アジャイルの手法やテクニックを使うことはできないだろうか？ 
+  </div> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/37.py">QCon New Yorkの更新(6月10-14): JavaScript,HTML5,モバイルの将来のトラック;スケジュールが日々更新</a>QCon New York 2013のスケジュールがリアルに更新されており、登録数は昨年のこの時点よりも60％増えている。QCon New Yorkは、今年の6月10～14日に Manhattan郊外（Brooklyn Bridge）にある New York Marriottで開催される。新しい講演者やセッションは、毎週カンファレンスサイトに掲示されている。早期登録ができ、4月19日まで行えば、400ドル節約できる。 
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/36.py">Google が誓約特許に対する非訴訟を発表</a>Google は &quot;先制攻撃を受けない限り&quot;，非訴訟誓約の対象とした特許に関して，オープンソースあるいはフリーのソフトウェアに対する法的措置を行わないと発表した。 
@@ -150,6 +150,6 @@
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/39.py">MicrosoftとAWSがクラウド最適化サービスを無償提供</a>クラウドの利用を最適化するサービスの周囲の小さな産業は成長しているが、大規模なクラウド事業者も独自で最適化のサービスを提供し始めている。Microsoftは近頃、クラウドの性能を管理する企業を買収し、その会社の製品の無償提供を始めた。競合のAmazon Web Services (AWS)も“Trusted Advisor”プログラムの無償トライアルを積極的に推進している。 
-  </div>   
+  </div> 
  </body>
 </html>
