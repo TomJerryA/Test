@@ -1,19 +1,32 @@
-<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>Xamarinが iOS と Android向けのC#非同期を導入</h3><p><a target="_blank" href="http://www.infoq.com/news/2013/03/async-xamarin;jsessionid=0BFEE16C2C2988D59D362249EB10FFB2"><em>原文(投稿日：2013/03/12)へのリンク</em></a></p> 
+<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>Edge.jsは、Node.jsと.NETを結びつける</h3><p><a target="_blank" href="http://www.infoq.com/news/2013/03/edgejs;jsessionid=F67E788EBE13D3F7FC25DD3D958173B2"><em>原文(投稿日：2013/03/22)へのリンク</em></a></p> 
 <div class="clearer-space">
  &nbsp;
 </div> 
 <div id="newsContent"> 
- <p>Xamarinは、iOS and Android開発向けの非同期対応ライブラリのプレビューをリリースした。この成果は、Visual Studio 2012の一部として昨年リリースされた Microsoftの .NET 4.5に大きく基づいている。 Xamarinは、以前はAndroid用の MonoTouch と Monoとして知られていた開発プラットフォームの新名称である。</p> 
- <p><a target="_blank" href="http://www.infoq.com/news/2013/02/Xamarin-2;jsessionid=9BBAAF6D2685C01CBEEB8572A16ECCA0;jsessionid=0BFEE16C2C2988D59D362249EB10FFB2">Xamarin 2.0</a>イニシアチブの一環として、モバイルプラットフォームは、 Mono と .NETにあるクラスライブラリを採用している。以前、Android用の MonoTouch と Monoは、Silverlight/Moonlightベースのサブセットに制限されていた。<a target="_blank" href="http://blog.xamarin.com/brave-new-async-mobile-world/">Rodrigo Kumpera</a>氏は書いている。</p> 
+ <p style="margin-bottom: 0in" class="western">JavaScriptプロジェクト <a class="western" target="_blank" href="http://nodejs.org/">Node.js</a> は<a class="western" target="_blank" href="https://github.com/tjanczuk/edge">Edge.js</a>(以前は<a class="western" target="_blank" href="https://github.com/tjanczuk/owin">owin</a>と呼ばれていた)プロジェクトのおかげで.NETコードとひとつのプロセスで実行する機能を持つことになった。.NETとMonoを結びつける<a class="western" target="_blank" href="http://www.infoq.com/news/2012/05/frijters_IKVM;jsessionid=4BCB65B355443545F57293128CEFE48E;jsessionid=F67E788EBE13D3F7FC25DD3D958173B2">IKVMプロジェクト</a>と同様に、Edge.jsは.NETとNode.jsを組み合わせることで&quot;両方の世界で最高&quot;のアプローチを提案する。これにより、開発者はそれぞれのツールの長所を生かしてプロジェクトの効果を最大化することができる。</p> 
+ <p style="margin-bottom: 0in" class="western">Tomasz Janczuk氏によって開発されたEdge.jsは、開発者がC/C++のような非CLR言語に頼ることなく、Node.jsを簡単に最大限に活用することができるように意図されている。Edge.jsのアプローチは、Node.jsのイベントループをブロックすることなく.NETのCPU境界の計算実行を含むいくつかのベネフィットを提供する。C/C++を使うことなくC#を使ってNode.jsを拡張することで、Windowsプラットフォーム固有の機能にアクセスすることができる。</p> 
+ <p style="margin-bottom: 0in" class="western">node.jsとEdge.jsの間の接続はシームレスで双方向である: node.jsは、.NETメソッドを呼び出せ、.NETコードはNode.jsを呼び出すことができる。Edge.jsは、C#ソースを実行時にコンパイルするか、Edge.jsの開始前に事前コンパイルすることができる。</p> 
+ <p style="margin-bottom: 0in" class="western">InfoQは、Janczuk氏とプロジェクトについて議論する機会に恵まれ、彼のEdge.jsに対する将来プランについて話すことができた:</p> 
+ <p style="margin-bottom: 0in" class="western"><b><b>InfoQ: プロジェクトの同期は単純にC#とNode.jsを繋ぎたいという欲求だけですか？</b></b></p> 
  <blockquote> 
-  <p>非同期処理がこのリリースの主要テーマだが、7000以上のコミットによる、Monoランタイムへの2年間の改善が詰め込んでいます。それらを Android, Mac、iOSのユーザーが使えるようになりました。</p> 
+  <p style="margin-bottom: 0in" class="western"><b>Janczuk: </b>&quot;Edge.jsは、開発者にアプリケーション全体よりもより小さいスコープでの技術の選択肢を提供することを目指しているベストスイートです。Edge.jsは、すべてがnode.jsか.NETのどちらかで行われる前提に基づいているが、特定のものがどちらかよいもので行われます。これまでnode.jsと.NETの間は、開発者がアプリケーション全体のスコープで選択しました。Edge.jsでは、開発者は.NETとnode.jsを特定の技術が理にかなっているかどうかの観点で選択することができます。&quot;</p> 
  </blockquote> 
- <p>このリリースは、またiOSバッチコンパイラーにも改善をもたらしている。他の殆どのプラットフォームと違い、iOSはJITコンパイルされたコードを許可しない。これは、動的に起動されるコードで特にジェネリックスが関与した場合に問題となる。</p> 
+ <p>&nbsp;</p> 
+ <p style="margin-bottom: 0in" class="western"><b>InfoQ: .NETの例はすべてC#であるように見えますが、Edge.jsはC#が必要なのですか？もしそうであれば、他の.NETプラットフォーム言語を広くサポートしますか？</b></p> 
  <blockquote> 
-  <p>iOS上で、我々は値型に対して「共有可能なコード」を生成できるようになりました。これはコード生成技術における真に革命的な革新です。実用上、これが意味すことは、以前「JITコンパイル方式を試しています」で、クラッシュしたコード全体が動くようになった、ということです。我々は、尚推論できる、高パフォーマンスで、微調整した汎用コードを提供します。例えば、メソッド Foo&lt;T&gt;(T x)–への直接呼び出しでは、以前は失敗した動的ケースで、使うことができる Foo&lt;T&gt;(T x) の値型共有バージョンを生成します。かつて夢だったものが現実になりました。</p> 
+  <p style="margin-bottom: 0in" class="western"><b>Janczuk:</b> &quot;Edge.jsは、プリコンパイルされたCLRアセンブリか、node.jsアプリケーションに含まれる.NETソースコードのいずれかによって.NETコートとnode.jsアプリケーションを統合することができます。Edge.jsはFunc&lt;object,Task&lt;object&gt;&gt;デリゲートでプリコンパイルされたアセンブリを生成することで任意のCLR言語をサポートします。リテラル.NETコードがnode.jsアプリケーションに含まれている場合、edge.jsは現時点ではC#のみをサポートします。&quot;</p> 
+  <br /> 
  </blockquote> 
- <p>現在、 Microsoftの .NET 独自の JITコンパイラには、この機能はない。1つのメソッドを全ての参照型で共有し、ジェネリックなメソッドは、それぞれ個別の値型で再コンパイルする必要がある。</p> 
- <p><a target="_blank" href="http://msdn.microsoft.com/en-us/library/dd799517.aspx">共変と反変</a>のサポートが.NET 4.0で導入されたが、Xamarin プラットフォームでも存在する。</p> 
+ <p style="margin-bottom: 0in" class="western"><b>InfoQ: 今後6～12ヶ月のプロジェクトのゴールはなんですか？</b></p> 
+ <blockquote> 
+  <p style="margin-bottom: 0in" class="western"><b>Janczuk: </b>“Edge.jsは、.NETとnode.jsを間をインプロセスで相互運用可能な比較的少数のコンセプトを持つ小さなコンポーネントを維持する予定です。シナリオ固有の機能、例えばMS SQLにアクセスする、Windowsイベントログに書き込む、X.509証明書ストアにアクセスするなどは、edge.jsのスコープを広げるよりも、edge.jsに依存した新しいモジュールとして展開されることが期待されています。edge.jsに関するいくつかの特筆すべきプランは、Monoのサポートが含まれること、C#以外のCLR言語にコンパイルできること、.NETプロセスでnode.jsがホストできることがあげられます。”</p> 
+  <br /> 
+ </blockquote> 
+ <p style="margin-bottom: 0in" class="western"><b>InfoQ: Microsoftでの専門職として考えると、このプロジェクトは独立したままでしょうか、それともMicrosoftツールの一部として公式になるのでしょうか？</b></p> 
+ <blockquote> 
+  <p style="margin-bottom: 0in" class="western"><b>Janczuk: </b>&quot;Microsoftは、オープンソース技術を採用した実績がありますが、現時点でedge.jsがMicrosoft製品の一部として採用される予定はありません。&quot;</p> 
+ </blockquote> 
+ <p>Edge.jsはApacheライセンスバージョン2でリリースされたオープンソースプロジェクトである。Janczuk氏は、プロジェクトのWebサイト上に、コードサンプルやより詳細な情報を含む<a class="western" target="_blank" href="http://tjanczuk.github.com/edge/#/">概要</a>を提供している。</p> 
  <p id="lastElm">&nbsp;</p> 
 </div> 
 <p id="lastElm"></p><br><br><br><br><br><br></body></html>

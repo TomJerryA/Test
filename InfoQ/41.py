@@ -1,16 +1,19 @@
-<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>Internet Explorer 10は幅広くFlashをサポートした</h3><p><a target="_blank" href="http://www.infoq.com/news/2013/03/IE10_Win8_Flash;jsessionid=DF6E9A481AF99CF98E066612D712962C"><em>原文(投稿日：2013/03/14)へのリンク</em></a></p> 
+<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>Python Tools for Visual Studio 2.0は、インテリセンス、Virtualenv、Windows Azureのサポートを追加</h3><p><a target="_blank" href="http://www.infoq.com/news/2013/04/pvts-2-0-alpha;jsessionid=7DBB8C7F80208CAE96A9F96B864140D4"><em>原文(投稿日：2013/04/01)へのリンク</em></a></p> 
 <div class="clearer-space">
  &nbsp;
 </div> 
 <div id="newsContent"> 
- <p style="margin-bottom: 0in" class="western">&nbsp;</p> 
- <p style="margin-bottom: 0in" class="western">Flashは、ゲーム、ビデオ、インタラクティブなコンテンツなど様々なプロジェクトで使われてきた。このプラットフォームは、過去に多く批判されたが、マルチプラットフォームとストリームメディアの機能のおかげで人気が継続している。</p> 
- <p style="margin-bottom: 0in" class="western">Microsoftは、Flashの人気と手厚い環境を提供することの重要性を認識して、Internet Explorer 10は、Windows 8とWindows RTの両方でデフォルトでFlashコンテンツを実行出来るように更新することを<a class="western" target="_blank" href="http://blogs.msdn.com/b/ie/archive/2013/03/11/flash-in-windows-8.aspx">発表した</a>。Internet ExplorerのGroup Program ManagerであるRob Mauceri氏のメモでは、デバイスがプライマリデバイスになってPCに依存しないために、ユーザーが日々必要になる多くのコンテンツを実行できるようにする必要がある。</p> 
- <p style="margin-bottom: 0in" class="western">Mauceri氏は、彼のチームがWindows 8で使われるFlash playerを改善するためにAdobeと作業したことを見ており、“...タッチ、パフォーマンス、セキュリティ、バッテリー駆動時間が最適化”されている。これは、Steve Jobs氏が2010年にAppleデバイスのFlashサポートをしないことを決定したことと同じ領域であることに注意するべきである。</p> 
- <p style="margin-bottom: 0in" class="western">Flashを使っているWebサイト開発者は、Windowsユーザーを対象にした<a class="western" target="_blank" href="http://msdn.microsoft.com/en-us/library/ie/jj193557.aspx">Microsoftのガイド</a>を参照することができる。このガイドにはまた、安全でセキュアな閲覧ができるように明示的なFlashコンテンツをブロックするためのInternet Explorer 10で使用されるMicrosoftのCompatibility View listの詳細も含まれている。また、IE互換のWebサイトを作成する開発者を支援するためにMicrosoftによって提供される<a class="western" target="_blank" href="http://www.modern.ie/en-us">modern.IE</a>サイトがある。</p> 
- <p style="margin-bottom: 0in" class="western">このAdobeとMicrosoftとのパートナーシップは、AdobeとAppleno関係よりもよい結果をもたらすかは今後を見守る必要がある。おそらくWindows RTの<a class="western" target="_blank" href="http://www.infoq.com/news/2013/01/winrt_exploit;jsessionid=8A2E5CF83CC33C88B2B94127C4442191;jsessionid=DF6E9A481AF99CF98E066612D712962C">PC中心のルーツ</a>は、サービスの成功のようにMicrosoftのモバイルデバイスを補助するアドバンテージを提供する。Mauceri氏によると、この幅広いFlashサポートのゴールは、既存のFlash技術をベースにしたサイトがHTML5ベースの技術に移行するまでの猶予を与える“ブリッジ” として位置づけているという。</p> 
- <p style="margin-bottom: 0in" class="western"><a class="western" target="_blank" href="http://www.apple.com/hotnews/thoughts-on-flash/">Jobsが3年前に書いた</a>HTML5と同じく: “... Web開発者は、(Flashのような)サードパーティーのブラウザープラグインに依存することなく、グラフィックス、タイポグラフィ、アニメーション、トランジションを作成することができる...モバイル世代に作成されたHTML5のような[これらの]オープンスタンダードは、モバイルデバイス(とPCでも)で勝利するだろう”</p> 
- <p>&nbsp;</p> 
+ <p>Microsoftは、<a target="_blank" href="http://pytools.codeplex.com/">Python Tools for Visual Studio 2.0</a>アルファ版をリリースしたが、これには、デバッグの改善、インテリセンス、そして Windows Azureサポートが含まれている。このアルファ版で、開発者は Python スクリプトのデバッグが出来る。Visual Studioを使って、関連をファイルを開き、その上で右クリックし、<a target="_blank" href="http://pytools.codeplex.com/wikipage?title=Debug%20As%20Script">Debug as Script</a>オプションを選ぶだけでよく、ブレークポイントの設定、全てをブレーク、コールスタック、ローカル変数、ウォッチウィンドウを使った状態のチェックができるを提供している。更に<a target="_blank" href="http://pytools.codeplex.com/wikipage?title=Remote%20Debugging%20for%20Windows%2c%20Linux%20and%20OS%20X">リモートデバッグ</a>とクライアントライブラリが Windows, Linux、Mac OS Xで利用できる。</p> 
+ <p>Python Tools for Visual Studio 2.0 アルファ版は、completions, signature help、quick infoの3つの異なるフォーマットで<a target="_blank" href="http://pytools.codeplex.com/wikipage?title=Features%20Editor#intellisense">インテリセンス</a>をサポートしている。 completionsフォーマットは、コンテキストの基づいた言葉のリストを表示し、正しくない、あるいは興味にないオプションを表示するのを避けるためにフィルターできる。</p> 
+ <p>signature helpフォーマットは、関数呼び出しを書いている時に表示され、あらゆるドキュメントと利用できるパラメータ情報を含んでいる。一方、 quick infoは、識別子の上にマウスを置くと表示されるツールチップとして表示され、潜在的な値や型、あらゆる利用可能なドキュメント、返り値と定義の場所を持つことになる。</p> 
+ <p>最新のアルファ版は、また<a target="_blank" href="http://pytools.codeplex.com/wikipage?title=Azure%20Web%20Sites%20">Windows Azure</a>、仮想マシン、クラウドサービス、ウェブサイトもサポートし、そしてAzure上でブラウザベースの計算も提供する。更に、開発者は、Visual Studioを使って<a target="_blank" href="https://www.djangoproject.com/">Django</a>アプリケーションを開発し、 Windows Azureにそれらをデプロイできる。</p> 
+ <p>当局筋によると、 Python Tools for Visual Studio 2.0アルファ版は、以下の手順でインストールする必要がある。</p> 
+ <ol> 
+  <li>Python Toolsの以前のバージョン（もしあれば）をアンインストールする。</li> 
+  <li>Pythonのディストリビューション（CPython か IronPython ）をインストールする。</li> 
+  <li>Visual Studio 2010 か 2012をインストールし、 Python Tools for Visual Studio 2.0 alphaパッケージを実行する。</li> 
+ </ol> 
+ <p>Python Tools for Visual Studio 2.0アルファ版は、仮想環境を作成するための Pythonツール、<a target="_blank" href="http://pytools.codeplex.com/wikipage?title=Virutal%20Env">Virtualenv</a>をサポートしている。新しい仮想環境を作るには、Visual Studio IDE 内から仮想環境ツリーノード上で右クリックし、 Create Virtual Environmentオプションを選択する。</p> 
  <p id="lastElm">&nbsp;</p> 
 </div> 
 <p id="lastElm"></p><br><br><br><br><br><br></body></html>
