@@ -2,7 +2,10 @@
  <head></head> 
  <body>
   <div>
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/6.java">EZNamespaceExtensions.Net v2013 Adds Context Menus, Thumbnail, Icons, Property Sheet Support</a>EZNamespaceExtensions.Net v2013 enables you to develop Windows Explorer namespace extensions using Visual Studio with support for Multi-level sub folders, Thumbnail view, Icons, Property sheet, Infotip and much more.
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/7.java">Visual Studio 2012 Update 2 Formally Released</a>Microsoft has formally released Update 2 for Visual Studio 2012. This update brings several new features but also includes numerous big fixes and behavior corrections.
+  </div> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/6.java">EZNamespaceExtensions.Net v2013 Adds Context Menus, Thumbnail, Icons, Property Sheet Support</a>EZNamespaceExtensions.Net v2013 enables you to develop Windows Explorer namespace extensions using Visual Studio with support for Multi-level sub folders, Thumbnail view, Icons, Property sheet, Infotip and much more. 
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/5.java">WSO2 Developer Studio 3.0&amp;3.1 Have Better ESB Tooling</a>WSO2 Developer Studio 3.0 and 3.1 improve ESB and Registry Resource Editor tools, has better performance, uses Eclipse Juno SR2, and supports JAX-RS REST code generation. 
@@ -147,9 +150,6 @@
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/8.java">GitSync for Plastic SCM with Native Git Protocols and Visual Studio 2012 Support</a>GitSync for Plastic SCM has been released with support for native Git network protocols and Visual Studio 2012 support. 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/7.java">Java 8 Starting to Find Its Way into .Net/Mono</a>In last week’s development snapshot, IKVM added experimental support for static methods in interfaces and default interfaces methods. These Java 8 features are primarily to support the internal workings of Java libraries, they won’t be readily usable from other .NET languages. 
   </div>  
  </body>
 </html>
