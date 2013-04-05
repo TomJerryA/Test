@@ -1,6 +1,9 @@
 <html>
  <head></head> 
- <body> 
+ <body>
+  <div>
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/3.java">Improve DevOps Cultures with Information Consolidation</a>The Appsecute platform aims to improve collaboration and increase productivity through consolidating information associated to an applications lifecycle. The software as a service platform accepts messages directly from people and from integrated technology platforms, then it aggregates those events online for viewing by everyone within an organization.
+  </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/2.java">Google+ Sign-In: Federated Identity, Authorization and Semantic Activity Streams</a>Google+ Sign-In extends the Google+ social network into third-party websites, desktop applications and mobile apps. This service, announced on February 26th, provides features for authentication, authorization and activity sharing. There is also support for user engagement, hangouts and automatic Android app downloads. 
   </div> 
@@ -147,9 +150,6 @@
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/4.java">DataStax Brings Enterprise Security To Cassandra, Hadoop, Solr</a>Datastax Enterprise 3.0 was announced last month with several Enterprise security features for a cluster using Cassandra, Hadoop and Solr. InfoQ caught up with Robin Schumacher, VP of Products at DataStax to learn more. 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/3.java">Windows Management Framework 3.0 with PowerShell 3.0, WMI, WinRM</a>Microsoft has recently released Windows Management Framework 3.0 which includes Windows PowerShell 3.0, WMI, WinRM including PowerShell Web Service and Server Manager CIM Provider. 
-  </div> 
+  </div>  
  </body>
 </html>
