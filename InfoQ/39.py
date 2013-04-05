@@ -1,23 +1,29 @@
-<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>MicrosoftとAWSがクラウド最適化サービスを無償提供</h3><p><a target="_blank" href="http://www.infoq.com/news/2013/03/microsoft-metricshub-aws-advisor;jsessionid=4D360DBBA689B6EDC7FDB40D11C3704E"><em>原文(投稿日：2013/03/11)へのリンク</em></a></p> 
+<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>共通APIを伴う Windows Azure 通知ハブ</h3><p><a target="_blank" href="http://www.infoq.com/news/2013/01/windows-azure-notification-hubs;jsessionid=5D6F94F7BEADE4F34B6D7C9A8712F991"><em>原文(投稿日：2013/03/24)へのリンク</em></a></p> 
 <div class="clearer-space">
  &nbsp;
 </div> 
 <div id="newsContent"> 
- <p>クラウドの利用を最適化するサービスの周囲の小さな産業は成長しているが、大規模なクラウド事業者も独自で最適化のサービスを提供し始めている。Microsoftは近頃、クラウドの性能を管理する企業を買収し、その会社の製品の無償提供を始めた。競合のAmazon Web Services (AWS)も“Trusted Advisor”プログラムの無償トライアルを積極的に推進している。</p> 
- <p>スタートアッププログラム<a target="_blank" href="http://www.microsoft.com/bizspark/accelerator/">The Microsoft Accelerator</a>の参加者である<a target="_blank" href="https://www.metricshub.com">MetricsHub</a>は、先週Microsoftに買収された。同社はクラウド環境の自動拡張や監視、性能問題の検知とアラート、Windows Azureのインボイスの解析などの<a target="_blank" href="https://www.metricshub.com/features?a=0&amp;sku=NoSKU">サービス</a>を提供する。<a target="_blank" href="http://techcrunch.com/2013/03/04/microsoft-acquires-cloud-performance-management-service-metricshub-makes-it-available-for-free-on-azure/">TechCrunchによれば買収された時点で、同社はたった374のユーザしか抱えていない</a>が、<a target="_blank" href="http://blog.metricshub.com/2013/03/04/future-of-metricshub/">MetricsHubのブログ</a>によれば、“無数のデータポイントを処理し、数千の自動アクションでクラウドアプリケーションのヘルスとコストの管理を支援します”。Microsoftはこの買収をブログで発表し、クラウド最適化の難しさとMetricsHubを買収した理由を説明した。</p> 
- <blockquote> 
-  <p>拡張性や柔軟性などさまざまな理由でクラウドソリューションを利用せざるを得なくなっています。とりわけ最小限の投資で最大限の成果を上げようとしている企業にとってはそうでしょう。しかし、いつどのようにアプリケーションを拡張すればいいのか教えてくれる、すべてのデータポイントを監視し相関関係を探し、理解するのは難しいです。このようなデータポイントから本当の価値を引き出すには、アプリケーションがインテリジェンスを持って返答するように自動化する必要があります。ここがMetricsHubの技術が活かされる場面です。性能最適化を自動化する彼らの手法は顧客に負担をかけずに事態に対処できます。また、顧客が必要な分だけ支払いを行い、サービスの利用を最大化することを保証します。</p> 
+ <p><a target="_blank" href="https://manage.windowsazure.com/">Windows Azure 管理ポータル</a>の改善として<a target="_blank" href="http://msdn.microsoft.com/library/jj927170.aspx">Windows Azure 通知ハブ</a> がリリースされ、<a target="_blank" href="http://windows.microsoft.com/en-IN/windows/home">Windows 8</a> や <a target="_blank" href="http://www.apple.com/in/ios/">iOS</a>等のマルチデバイスプラットフォーム向けにビルドされたアプリケーションに対し、プッシュ通知を送るための共通 API を提供する。Microsoft によると、近々<a target="_blank" href="http://www.android.com/">Android </a>と <a target="_blank" href="http://www.windowsphone.com/en-in">Windows Phone</a> もサポートに加える予定だ。</p> 
+ <p>Microsoft は数百万の<a target="_blank" href="http://en.wikipedia.org/wiki/Push_technology">プッシュ通知</a>を行う通知ハブを改善した。ユーザを指定するタグの機能をもつメッセージを通知ハブに登録し、メッセージをプッシュ通知する。</p> 
+ <p>上記のタグはアプリケーションを指定する文字列（ユーザID、株式銘柄記号等）から構成され、デバイスハンドルの格納/管理や独自のユーザー別通知ルーティング情報の実装を不要とする。さらに、Subルーティング機構により、独自の通知ルーティング・インフラの構築も不要となる。</p> 
+ <p>Windows Azure プッシュ通知ハブは、Windows と Linux どちらも選択可能な<a target="_blank" href="http://blogs.msdn.com/b/windowsazure/archive/2012/06/25/infrastructure-as-a-service-series-virtual-machines-and-windows.aspx">Infrastructure-as-a-Service</a>(IaaS) Virtual Machines、Cloud Servie、Web サイトからも利用可能だ。</p> 
+ <p>「プッシュ通知を利用することで、ロジックはきわめてシンプルでスケーラブルになるだろう」と、Microsoft社 Server and Tools Business の Corporate Vice President である <a target="_blank" href="http://weblogs.asp.net/scottgu/about.aspx">Scott Guthrie</a> 氏は発言している。</p> 
+ <p>Windows Azure 管理ポータルで通知ハブを新規に作成するためには <strong>アプリサービス</strong> カテゴリの配下に存在する<a target="_blank" href="http://msdn.microsoft.com/en-us/library/ee732537.aspx">Service Bus</a>通知ハブを選択する。通知ハブの作成後、通知ハブに登録されたデバイス数、通知ハブにプッシュされたメッセージ数、通知ハブを介して配信に成功したメッセージ数、失敗したメッセージ数を確認できる。</p> 
+ <p>同通知ハブはMicrosoft <a target="_blank" href="http://msdn.microsoft.com/en-in/library/windows/apps/hh913756.aspx">Windows Notification System</a> と <a target="_blank" href="http://developer.apple.com/library/mac/#documentation/NetworkingInternet/Conceptual/RemoteNotificationsPG/ApplePushService/ApplePushService.html">Apple Push Notification service</a> (APNS) を登録することが可能であり、管理ポータルから<strong>構成</strong>タブをクリックすることで設定可能となる。登録が成功した後、通知ハブに対して任意のクライアントアプリケーション／デバイスを登録可能であり、関連付けたタグでフィルタリングが可能である。この処理を一度実行すれば、少量のコードでユーザに対してブロードキャスト通知をすることが可能となる。</p> 
+ <p>Claus Nielsen氏は以下の質問をした。</p> 
+ <blockquote>
+  Scott、これは凄いニュースだと思います。しかし、Windows7 におけるプッシュ通知やスムースストリーミングの領域では何があるんでしょうか。
  </blockquote> 
- <p>今回のプレリリースサービスはMicrosoftのすべての顧客が無償で利用できる。既存の顧客はこの無償プランに移行されるようだ。</p> 
- <p>AWSもクラウドを最適化するサービスを推進し、安全でコストパフォーマンスが良い環境を作成している。2012年に始まった<a target="_blank" href="https://aws.amazon.com/support/trustedadvisor/">AWS Trusted Advisor</a>プログラムはAWSサービスを監視し、性能改善や費用節約になる、すぐに出来るアクションを推薦する。このプログラムはプレミアムAWSサポートを利用している顧客に提供されるが、3月はAWSのすべての顧客に無償提供される。AWSチームは<a target="_blank" href="http://aws.typepad.com/aws/2013/03/aws-trusted-advisor-update-trial-new-features.html">この無償提供のトライアルについて</a>、このサービスの価値と成績を説明している。</p> 
- <blockquote> 
-  <p>AWS Trusted AdvisorはAWSの多くの顧客によって利用されてきましたので、このサービスの推薦は信頼して役立てることができます。費用を節約したり、安全性を向上させたり、耐障害性を改善したり、全体の性能を向上させたりできます。これはクラウドベースのAPIで利用できるインフラでのみ可能なユニークで強力な利点です。</p> 
-  <p>この推薦機能の価値を見るために最後の90日に注目してください。この期間、AWSの顧客はTrusted Advisorから135000の推薦を受け取り、年額1800万ドルを節約しました。</p> 
+ <p>Service Bus の Program Manager である Elio Damaggio 氏は以下の様にコメントしている。</p> 
+ <blockquote>
+  プッシュ通知ハブの機能は、同機能をサポートしているプラットフォーム（Windows 8、Windows Phone、Android、iOS 等のモバイルプラットフォーム）の OS に対して直接プッシュ通知を行うよう設計されている。
+  <br /> 
+  <br /> Windows 7 や他の OS で動作しているアプリケーションに対してメッセージをプッシュするためには、Service Bus Topicsを利用できる。2000 サブスクリプション以上を共有できるよう取り扱うか、SignalR (http://signalr.net/)を利用する必要があるが、同機能はすでに Service Bus を利用したスケールアウト構成が可能なよう設計されている。 
  </blockquote> 
- <p>Trusted Advisorの推薦機能は4つのカテゴリに分類される。コスト最適化、セキュリティ、フォールトトレランス、性能の4つだ。コスト最適化には“未活用のEC2インスタンス”(過去14日間で4日、CPU使用率10%以下のインスタンス)や“RDSがアイドル状態のDBインスタンス”(過去7日間でコネクションがないアクティブなデータベース)などが含まれる。セキュリティには7つの推薦があり、アクセス権限が弱いS3のバケットやアイデンティティとアクセス管理がサービスをまたいで利用されているかどうかを検出する。フォールトトレランスではVPNトンネルの冗長性、データベースのバックップ、複数の地域にまたがるデータベースや、地域をまたがるノードが不均等に分散している点などを検出する。性能ではCPUの平均利用率が90%を超えているサーバや過度のルール数を抱えるセキュリティグループなどを検出する。</p> 
- <p>MicrosoftとAWSの顧客にとってはこれらのサービスが無料で利用できるのは喜ばしいことだが、パートナーにとってはそれほどではない。Microsoftはパートナーの事業領域に侵入することで悪名高く、AWSも同じ道を辿りそうだ。<a target="_blank" href="https://cloudability.com/">Cloudability</a>、<a target="_blank" href="http://www.newvem.com/">Newvem</a>、<a target="_blank" href="http://www.cloudyn.com/">Cloudyn</a>、<a target="_blank" href="https://www.cloudvertical.com/">CloudVertical</a>などの会社は有償でAWSクラウドの監視と最適化を行うサービスを提供している。<a target="_blank" href="http://www.theregister.co.uk/2013/03/08/amazon_copies_partner_products/">The Registerの記事</a>はパートナーの不満と巨大で野心的なサービスプロバイダのアドインを構築している企業が抱える困難を指摘している。</p> 
- <blockquote> 
-  <p>このAmazonのスポークスマンの発言の行間を読めば、Amazonはサービスの開発を続け、パートナーはAmazonによるコモディティ化の波から逃げるべく走り続けなければならないことがわかるだろう。</p> 
+ <p>Tomasz Wisniewski氏は、Elio氏がコメントしたように Windows Azure モバイルサービスがプッシュ通知がどの様に通知ハブと協調するか知ろうとしている。</p> 
+ <blockquote>
+  通知ハブはWindows Azureモバイルサービスのプッシュ機能を置き換えるものではなく、補完するするものだ。間もなく、通知ハブは任意のモバイルサービスのバックエンドから利用可能になるだろう。さらに、高スケールのブロードキャスト機能とタグがサポートされる予定だ。 
+  <br type="_moz" /> 
  </blockquote> 
  <p id="lastElm">&nbsp;</p> 
 </div> 
