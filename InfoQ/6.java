@@ -1,19 +1,44 @@
-<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>GitSync for Plastic SCM Introduces Native Git Protocols and Visual Studio 2012 Support</h3><p><a href="http://plasticscm.com/gitsync/index.html">GitSync for Plastic SCM</a>, a native Windows based distributed versioning control system (DVCS) provides support for https:// and git:// native Git protocols without any need for intermediate translations and also integrates with Git repositories.</p> 
-<p>It enables you to leverage the ability of Plastic SCM to push and pull code changes to not only GitHub but also Codeplex, BitBucket or any Git server using native Git network protocols and integrates with Visual Studio 2012 that enables you to work with all features using a single Integrated Development Environment (IDE).</p> 
-<p>GitSync for Plastic SCM has an ability to clone a Git repository and later push changes to it. As a developer, you will be able to create branches and push them to Git or create branches on Git and pull them in. It also effectively handles concurrent conflicts which enables developers to work on the same branch on the two systems and reconcile changes, just as they would when using a pure Plastic SCM environment or a pure Git one.</p> 
-<p>Plastic SCM includes a distributed branch explorer that enables you to explore remote repositories as if they are local including drawing their changes together with the local ones in the diagram. Moreover, developers will be able to track code with Xdiff (cross-difference) and Xmerge (cross-merge) which identifies code fragments that have been moved and link them for easy navigation.</p> 
-<p>It enables you to invoke methodhistory from the annotate views in the GUI including support for Eclipse, multiple languages, improved C# and also provides an ability to track refactored code between files.</p> 
-<p>&quot;It is important to highlight that GitSync is not a different product, it is offering Plastic SCM to the Git community so they can use Plastic on the client side then push/pull changes to any flavor of Git server. Since Git tools on Windows are weaker than they're on MacOS X and Plastic SCM specially shines on Windows, we think this is a great way to help Git users and also to ease the Plastic SCM adoption,&quot; says Pablo Santos, President, Plastic SCM.</p> 
-<p>InfoQ had a chat with Manuel Lucio Dallo, Product team member to know more about Plastic SCM.<br /> <br /> <strong>InfoQ: Does GitSync for Plastic SCM improve productivity?</strong></p> 
+<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>EZNamespaceExtensions.Net v2013 Adds Context Menus, Thumbnail, Icons, Property Sheet Support</h3><p>Logic NP Software has released <a href="http://www.ssware.com/eznamespaceextensions/eznamespaceextensions.htm">EZNamespaceExtensions.Net v2013</a> which enables you to develop shell or Windows Explorer namespace extensions in .NET. It employs an easy to use object model to enable the shell namespace extension to integrate smoothly and seamlessly into Windows Explorer. The look, feel and functionality of the extensions will be similar to that of the active Windows Explorer folders.</p> 
+<p>EZNamespaceExtensions.Net provides support for the following <a href="http://www.ssware.com/eznamespaceextensions/eznamespaceextensions.htm#features">Windows Explorer features</a> and functionalities</p> 
+<ul> 
+ <li>Folder and non-folder items</li> 
+ <li>Multi level sub folders</li> 
+ <li>Automatic sub folder navigation</li> 
+ <li>Context menus, background context menus for items</li> 
+ <li>Details and Report view support with multiple columns</li> 
+ <li>Thumbnail view, Cut, Copy and Paste</li> 
+ <li>Group view and category</li> 
+ <li>Icons and Overlay icons for items</li> 
+ <li>Automatic renaming functionality for items</li> 
+ <li>Property sheet and Infotip for items</li> 
+</ul> 
+<p>EZNamespaceExtensions also provides an ability to integrate menu items to the main Windows Explorer frame menu and add buttons to the Windows Explorer toolbar with drag-drop support from, to and within the namespace extension. It also enables you to present items in the namespace extension as files and folders.</p> 
+<p>In order to work with <a href="http://www.ssware.com/eznamespaceextensions/eznamespaceextensions.htm#features">EZNamespaceExtensions.Net v2013</a>, you need to make use of Shell Namespace Extension project template integrated with Visual Studio 2012. It automatically generates the required code and files for the development of a namespace extension.</p> 
+<p>The project can be then modified, built and registered using the RegisterExtensionDotNet40.exe utility, which can be found inside the installation folder. Moreover, you should restart Windows Explorer using the RestartExplorer.exe utility in order to view the namespace extension and will also be visible under My Computer.</p> 
+<p>InfoQ spoke to Himangi G, Senior Developer, LogicNP Software to know more about the possibilities of EZNamespaceExtensions.Net.</p> 
+<p><strong>InfoQ: What is the need for the development of Windows Explorer namespace extensions in .NET?</strong></p> 
 <blockquote>
-  With Plastic as a Git &quot;client&quot; your development will be faster, you will spend less time in source control and more at important thing, coding. Plastic SCM is 100% graphical and intuitive. Complex and regular actions that requires time and obscure commands in Git are done in Plastic in a couple of clicks. 
+  Developing Windows Explorer namespace extensions in .NET allows developers to leverage their existing knowledge and skills of the .NET technology and base class library as well as use their favorite .NET programming language, be it C# or VB.NET. Using .NET to develop namespace extensions allow developers to use the vast base class library (BCL) to their advantage. 
 </blockquote> 
-<p><strong>InfoQ: For what purpose, GitSync for Plastic SCM can be used in real world scenario? </strong></p> 
+<p><strong>InfoQ: Can you share with us the type of applications that can be developed using EZNamespaceExtensions.Net v2013?</strong></p> 
 <blockquote>
-  Imagine that your team is using Git, so you are forced to use Git. Now you can use Plastic SCM in your dev laptop, then, push and pull from Git but your development is done under Plastic SCM. This is specially useful in teams that want to test Plastic in the production environment without spending resources in an evaluation process.
- <br /> 
- <br /> There will be also developers that are simple not comfortable using the command line as the only Git interface, here is where Plastic can help the developer simplifying the workflow with a real and powerful GUI, then, once developers realize Plastic is as powerful, or more, as Git and much easier to use we expect to have a good numbers of teams fully migrating to Plastic SCM.
- <br /> 
- <br /> We don't have minimum resources needed. A regular, nowadays, laptop will do the work. The server, in windows, requires the .NET Framework 3.5 as the default database backend is SQL Server CE. 
+  The following is just some of the types of Windows Explorer-integrated and File Open/Save Dialog-integrated software that you can developed using EZNamespaceExtensions.Net 2013: 
+ <ul> 
+  <li>Document Management Software</li> 
+  <li>Content Management Software</li> 
+  <li>Information Management Software</li> 
+  <li>Virtual Drives</li> 
+  <li>FTP programs</li> 
+  <li>Database Browser or Front-End</li> 
+  <li>Protocol Handlers</li> 
+ </ul> 
+</blockquote> 
+<p><strong>InfoQ: Is it necessary to purchase a license of EZNamespaceExtensions.Net v2013 when distributing the application?</strong></p> 
+<blockquote>
+  No, EZNamespaceExtensions.Net v2013 includes royalty-free redistribution licenses, so you can redistribute the EZNamespaceExtensions.Net binary with your developed namespace extension absolutely free. 
+</blockquote> 
+<p><strong>InfoQ: How easy it is to develop an application with EZNamespaceExtensions.Net v2013?</strong></p> 
+<blockquote>
+  EZNamespaceExtensions.Net allows you to jumpstart namespace extension development with Visual Studio IDE Project wizards. It has a simple, well designed and thoroughly tested API framework which allows you to develop namespace extensions in hours/days instead of weeks/months. It has full feature support allowing your namespace extension to integrate seamlessly into Windows Explorer and File Open/Save dialogs of all applications. It includes a registration utility to easily deploy your developed namespace extensions. 
 </blockquote> 
 <p id="lastElm"></p><br><br><br><br><br><br></body></html>

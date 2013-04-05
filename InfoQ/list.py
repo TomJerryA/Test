@@ -1,11 +1,11 @@
 <html>
  <head></head> 
- <body>
-  <div>
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/41.py">Python Tools for Visual Studio 2.0は、インテリセンス、Virtualenv、Windows Azureのサポートを追加</a>Python Tools for Visual Studio 2.0 アルファ版は、インテリセンス、Virtualenv, Windows Azure、クラウドサービス、ウェブサイト、クライアントライブラリのサポートを含んでいる。
-  </div>
-  <div>
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/40.py">Edge.jsは、Node.jsと.NETを結びつける</a>Edge.jsプロジェクトは、Node.jsと.NETプラットフォームを結びつける。開発者はC#からNode.jsを使用したり、Node.jsの機能をC#アプリケーションに提供したりすることができるs--各タスクで最適なツールを使用することができる。InfoQは著者のTomasz Janczuk氏と話す機会に恵まれ、プロジェクトや将来プランについて聞くことができた。
+ <body> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/41.py">Python Tools for Visual Studio 2.0は、インテリセンス、Virtualenv、Windows Azureのサポートを追加</a>Python Tools for Visual Studio 2.0 アルファ版は、インテリセンス、Virtualenv, Windows Azure、クラウドサービス、ウェブサイト、クライアントライブラリのサポートを含んでいる。 
+  </div> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/40.py">Edge.jsは、Node.jsと.NETを結びつける</a>Edge.jsプロジェクトは、Node.jsと.NETプラットフォームを結びつける。開発者はC#からNode.jsを使用したり、Node.jsの機能をC#アプリケーションに提供したりすることができるs--各タスクで最適なツールを使用することができる。InfoQは著者のTomasz Janczuk氏と話す機会に恵まれ、プロジェクトや将来プランについて聞くことができた。 
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/39.py">共通APIを伴う Windows Azure 通知ハブ</a>Microsoftは通知ハブをリリースし、Windows Azure 管理ポータルへの改善を加えた。共通APIを利用することで、数千のモバイルデバイスへ通知ハブを用いたプッシュ通知をブロードキャストすることができる。 
@@ -150,6 +150,6 @@
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/42.py">QCon New York 2013,50/100の講演者が確定 - NASA, Twitter，LinkedIn, Netflixから</a>第２回 QCon New York 2013 講演者の50名以上が確定した。QCon New Yorkはマンハッタンのすぐ外(ブルックリン橋近く)にあるニューヨーク・マリオットを会場として，2013年6月10～14日の日程で開催される。参加登録はすでに始まっていて，新たに決定した講演者やセッションが毎週，カンファレンスのサイトに掲載されている。現在は早期予約期間中で，３月15日までに登録すれば500ドルの割引が受けられる。 
-  </div>   
+  </div> 
  </body>
 </html>
