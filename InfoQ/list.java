@@ -1,6 +1,9 @@
 <html>
  <head></head> 
- <body> 
+ <body>
+  <div>
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/4.java">WSO2 Developer Studio 3.0&amp;3.1 Has Better ESB Tooling</a>WSO2 Developer Studio 3.0 and 3.1 improve ESB and Registry Resource Editor tools, has better performance, uses Eclipse Juno SR2, and supports JAX-RS REST code generation.
+  </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/3.java">Improve DevOps Cultures with Information Consolidation</a>The Appsecute platform aims to improve collaboration and increase productivity through consolidating information associated to an applications lifecycle. The software as a service platform accepts messages directly from people and from integrated technology platforms, then it aggregates those events online for viewing by everyone within an organization. 
   </div> 
@@ -147,9 +150,6 @@
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/5.java">Terracotta's BigMemory 4.0 and In-Genius Products Offer Real-time Insights From Big Data Sources</a>Terracotta’s BigMemory 4.0 and In-Genius products offer real-time analytics and insights from Big Data sources and integration with Hadoop. Terracotta recently announced the release of the new version of in-memory data platform BigMemory and In-Genius, an in-memory intelligence platform for Big Data. 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/4.java">DataStax Brings Enterprise Security To Cassandra, Hadoop, Solr</a>Datastax Enterprise 3.0 was announced last month with several Enterprise security features for a cluster using Cassandra, Hadoop and Solr. InfoQ caught up with Robin Schumacher, VP of Products at DataStax to learn more. 
-  </div> 
+  </div>  
  </body>
 </html>

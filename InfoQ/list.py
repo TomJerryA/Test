@@ -1,8 +1,8 @@
 <html>
  <head></head> 
- <body>
-  <div>
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/39.py">共通APIを伴う Windows Azure 通知ハブ</a>Microsoftは通知ハブをリリースし、Windows Azure 管理ポータルへの改善を加えた。共通APIを利用することで、数千のモバイルデバイスへ通知ハブを用いたプッシュ通知をブロードキャストすることができる。
+ <body> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/39.py">共通APIを伴う Windows Azure 通知ハブ</a>Microsoftは通知ハブをリリースし、Windows Azure 管理ポータルへの改善を加えた。共通APIを利用することで、数千のモバイルデバイスへ通知ハブを用いたプッシュ通知をブロードキャストすることができる。 
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/38.py">アジャイルを用いたビジネスプロセスの改善</a>組織はビジネスプロセスの改善を望んでいる。そして今日，それは迅速に行う必要がある。ならばビジネスプロセスの改善に，アジャイルの手法やテクニックを使うことはできないだろうか？ 
@@ -150,6 +150,6 @@
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/40.py">Xamarinが iOS と Android向けのC#非同期を導入</a>Xamarinは、iOS and Android開発向けの非同期対応ライブラリのプレビューをリリースした。この成果は、Visual Studio 2012の一部として昨年リリースされた Microsoftの .NET 4.5に大きく基づいている。 Xamarinは、以前はAndroid用の MonoTouch と Monoとして知られていた開発プラットフォームの新名称である。 
-  </div>  
+  </div> 
  </body>
 </html>
