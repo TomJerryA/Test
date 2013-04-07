@@ -1,6 +1,9 @@
 <html>
  <head></head> 
- <body> 
+ <body>
+  <div>
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/9.java">Struts 1 Reaches End Of Life</a>Struts 1, the venerable Java MVC Web framework, has reached End Of Life status, the Apache foundation has announced. In a sense, the move simply formalises what has already happened, as the Struts team have focused their efforts on version 2; the last release of Struts 1 was in December 2008. The change of status does mean that no further security patches or bug fixes will be issued.
+  </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/8.java">Gartner's Technology Trends for Information Infrastructure: Big Data, NoSQL and In-Memory Computing</a>Big Data, NoSQL databases and In-Memory computing are some of the technologies that will play key role in modernizing information management in 2013 and beyond, according to Gartner. A recent report released by Gartner team identifies the top technology trends that will have impact on the information infrastructure and governance. 
   </div> 
@@ -147,9 +150,6 @@
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/10.java">Canvas-Based Chart.js Version 0.1 Released</a>Chart.js, a canvas-driven Javascript charting library, was released under the MIT open source license by Nick Downie on March 17th as an alternative to SVG-based charting libraries. 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/9.java">PuppetLabs and Opscode Reveal How They Built Their Open Source Communities</a>Being nice to people and being explicit and transparent about how things are done are key ingredients for growing communities say both, Luke Kanies, CEO and founder of PuppetLabs, and Adam Jacob, co-founder of Opscode and creator of Chef. They both claim that you need to be genuine in the way you interact with your communities. 
-  </div> 
+  </div>  
  </body>
 </html>
