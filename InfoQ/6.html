@@ -1,88 +1,12 @@
-<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>Xtend 2.4发布，新版添加了Active注解，对Android的支持等新特性</h3><p>前些天，Eclipse基金会宣布<a href="http://www.eclipse.org/xtend/">Xtend 2.4</a>发布。Xtend是一门静态类型的类Java编程语言，它可以被编译成Java代码并运行在JVM（以及比如Android这样的类JVM系统）上。</p> 
-<p>与其他如Scala和Kotlin等基于JVM的编译型语言不同，Xtend是先被转译成Java代码然后才使用标准的Java编译器进行编译的，所以通过它生产出的程序并没有向后兼容的问题。</p> 
-<p>Xtend与例如Groovy和JRuby/Jython这样的解释型语言的不同之处在于它是静态类型的，并具有类型推导的功能以支持简化编码工作。这意味着将可以让IDE来实现代码重构和类型指定。</p> 
-<p>InfoQ去年曾对 <a href="http://www.infoq.com/news/2012/06/xtend-release-10;jsessionid=4FD0221A5633D5F219758CE67B667709">Xtend 1.0 版的发布</a>进行过相关报道，而在这段时间里它已经发生了很多的变化。<a href="http://www.eclipse.org/xtend/release_notes_2_4_0.html">2.4版中的新特性</a>包括了active注解、集合字面量、对Android的支持以及被改进的代码重构和内容辅助工具。</p> 
-<p>InfoQ采访了Xtend的项目负责人Sven Efftinge，并提出了一些列相关问题以了解更多关于Xtend新版本的内容：</p> 
-<p><b>InfoQ</b>: Xtend 2.4 版的新特性之一是添加了对active注解的支持。你能描述下它们是什么，以及它们是如何减少样板代码的吗？</p> 
-<blockquote> 
- <p><b>Sven Efftinge</b>: 根本上来说是你先声明了一个注解并告诉编译器该如何将这些注解元素转译成Java代码。典型的使用案例是生成JavaBean的getter和setter方法，以及观察者或访问者等其它通用设计模式的代码——但是你可以结合它们做很多事。我们致力于使active注解的开发和部署变得非常容易。</p> 
- <p>举个例子，考虑到Javabean模式的属性。我们需要对其创建get/set方法对，这将导致一些被称为“Java代码膨胀”的问题。在Xtend中，你只需要将你的字段声明为注解property，Xtend会自动处理剩下的工作：</p> 
- <pre>
-@Property String name
-</pre> 
- <p>这行代码将被转译成以下Java代码：</p> 
- <pre>
-private String name;
-
-public String getName() {
-  return this.name;
-}
-
-public void setName(String name) {
-  this.name = name;
-}
-</pre> 
- <p>还有其他的一些注解，比如@Data，可以自动为你生成 hashCode() 和 equals()方法；而@Observable适用于为某个数据类自动生成对属性变化监听器的支持，详情见<a href="http://www.eclipse.org/xtend/release_notes_2_4_0.html#active_annotations">版本发布说明</a>中的描述。</p> 
- <p>而最酷的事情是IDE和编译器将会感知你对代码的变更。所以当变更立即生效时，所有的键入、链接以及导航和内容辅助等功能都会按照预期的方式进行工作，</p> 
- <p>这才是代码生成功能应有的样子。</p> 
-</blockquote> 
-<p><b>InfoQ</b>: 另一项新的特性是字面量集合。使用字面量的数组，集合（set），映射(map)的语法是怎样的？它们可以嵌套吗？</p> 
-<blockquote> 
- <p><b>Sven Efftinge</b>: 它的语法是一个#号后面跟上一对大括号或方括号，对于list你可以像这样编写：</p> 
- <pre>
-val myList = #[1,2,3,4]</pre> 
- <p>对于set是这样的：</p> 
- <pre>
-val mySet = #{1,2,3}
-</pre> 
- <p>Map可以使用元组操作符创建：</p> 
- <pre>
-val mySet = #{1-&gt;&quot;one&quot;,2-&gt;&quot;two&quot; }</pre> 
- <p>如果你希望使用数组类型时，List字面量同样可以作为一个数组字面量来使用：</p> 
- <pre>
-val int[] myArray = #[1,2,3,4]</pre> 
- <p>所以答案是肯定的，当它们作为表达式的时候可以被嵌套使用。</p> 
-</blockquote> 
-<p><b>InfoQ</b>: 字面量集合类型是可变的还是不变的？你如何通过字面量获取可变集合？</p> 
-<blockquote> 
- <p><b>Sven Efftinge</b>: 是的，他们是不变的。如果你想要可变的集合，可以选用一个工厂方法：</p> 
- <pre>
-val myArrayList = newArrayList(1,2,3,4)</pre> 
- <p>当然，你同样可以通过使用已存在的不变list来重新构造它们。</p> 
-</blockquote> 
-<p><b>InfoQ</b>: 谈到字面量，请问什么是扩展提供者（extension provider）以及他们相比于扩展方法（extension method）有什么区别？</p> 
-<blockquote> 
- <p><b>Sven Efftinge</b>: 扩展提供者是那些在你程序范围内提供扩展方法的对象。以下的例子就是最好的说明。假设你有一个数据访问对象（DAO）类，它有一个方法save(Entity)。</p> 
- <p>在Java中你必须这样写：</p> 
- <pre>
-myDao.save(myEntity)</pre> 
- <p>在Xtend中你可以将DAO对象作为扩展提供者，使你可以将它的方法作为第一个参数类型的成员方法。所以你可以取而代之的写成这样：</p> 
- <pre>
-myEntity.save()</pre> 
- <p>这是对C#扩展方法（只有静态方法可以被作为扩展使用）的一种重要增强。扩展提供者使你可以很容易的替换实际的实现。</p> 
-</blockquote> 
-<p><b>InfoQ</b>: JDK 8具有一个将Lambda表达式转换成单一抽象方法（SAM）类型的概念。而如今Java 6和Java 7配合Xtend后是不是也可以实现这样的功能？</p> 
-<blockquote> 
- <p><b>Sven Efftinge</b>: JDK 8的只能将Lambda表达式转换成了所谓的功能性接口。在Xtend里也使用了同样的方式来实现。而新添加的部分是你现在可以将SAM类型与抽象类一起使用。它们作为“功能性Java”在框架中被频繁地使用。</p> 
- <p>通过使用Xtend，你无须等待JDK 8来实现这些功能。你今天就可以在Java6或Java7上实现。事实上，Xtend与Java 5也是兼容的。</p> 
-</blockquote> 
-<p><b>InfoQ</b>: 说到向后兼容，Xtend在这方面的情况又是怎样的？能够在Xtend 1.0下编译的程序是否仍然可以在Xtend 2.4下使用呢？</p> 
-<blockquote> 
- <p><b>Sven Efftinge</b>: 它们是二进制兼容的。所以在Xtend 1.0下可以编译的程序将无需任何二次编译或修改就能和Xtend 2.4一起工作。</p> 
- <p>尽管我们改进了编译器的错误报告功能，并可以对先前编译器无法警告你的语义错误进行高亮显示，但是在源码级别并没有重大变化，</p> 
- <p>不管是在编译级别还是源码级别，我们都非常谨慎地对待兼容性，</p> 
-</blockquote> 
-<p><b>InfoQ</b>: 可以将Xtend项目编译并安装到Android上似乎是该框架一个非常大的成功。鉴于使用Scala或Kotlin编译Android应用将会给打包带来更多兆的空间占用。相比于直接使用Java编程，使用Xtend编译Android应用平均会带来多大空间的增长？</p> 
-<blockquote> 
- <p><b>Sven Efftinge</b>: Xtend编译生成的Java源代码最终会被编译成Java字节码，这确保了创建的字节码可以很好的工作在Android上。并且Xtend并没有自己独立的“胖”代码库，而只有少数几组将扩展方法添加到现存JDK类型的类（&lt;40K）和1.3M大小的Google Guava。</p> 
- <p>你可以使用Xtend编写漂亮高效的Android应用。</p> 
-</blockquote> 
-<p><b>InfoQ</b>: 编程语言的一个成功标准是看其是否具有良好的IDE支持。Eclipse中对于Xtend的支持进展如何？</p> 
-<blockquote> 
- <p><b>Sven Efftinge</b>: IDE具备了很多项功能，比如格式化工具，新的快速修复功能，新的代码重构工具以及显著改善的内容辅助功能。</p> 
- <p>编译器的性能同样也有了很大的提升。我们对如何在使用Xtend和IDE协同工作时建立一个好的流程给予了极大的关注。</p> 
- <p>不像其他基于JVM的那些语言，Xtend可以与JDT一起工作。你无须替换JDT或启用编织（enable weaving）来使用它。此外，你可以使用任意版本的Java编译器来编译项目；并不局限你仅仅使用作为插件安装的版本。</p> 
- <p>Xtend 2.4版可在<a href="http://www.eclipse.org/xtend/download.html">2.4版发布说明</a>处获取。更多关于Xtend的信息见<a href="http://www.eclipse.org/xtend/">Xtend</a> 主页。</p> 
-</blockquote> 
-<p><b>查看英文链接</b>：<a href="http://www.infoq.com/news/2013/03/xtend-24;jsessionid=4FD0221A5633D5F219758CE67B667709"><b>Xtend 2.4 Adds Active Annotations, Android Support and More</b></a></p> 
+<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>Martin Fowler论21世纪的软件设计</h3><p>无模式（Schemaless）数据结构不易为人所理解，重要的是当我们在NoSQL数据库中使用这些数据结构的时候如何权衡它的优缺点。在最近的一次公司活动中， <a href="http://martinfowler.com/">Martin Fowler</a> 就无模式数据结构 和 NoSQL与一致性进行了<a href="http://www.youtube.com/watch?v=8kotnF6hfd8">讨论</a>。</p> 
+<p><b>无模式数据结构：</b></p> 
+<p>无模式通常被视为NoSQL数据库的一个重大优势，而Martin认为这一领域不易被大家充分理解，同时他介绍了无模式的不同方面以及使用无模式数据结构的优缺点。</p> 
+<p>Martin讨论的重点是即使在无模式的结构中，依然存在着模式。为了查询数据和寻找信息，你必须理解数据，从而有了一个<a href="http://martinfowler.com/articles/schemaless/">隐式模式（<u>Implicit Schema</u>）</a>，即数据的定义，比如代码。与此相对的是关系数据库中的模式，该模式只接受恰当的数据，这是一种<a href="http://martinfowler.com/articles/schemaless/">显式模式（<u>Explicit Schema</u>）</a>。</p> 
+<p>Martin在结束讨论时声称，即使在某些情况下无模式非常有用，但大多数时候 “隐式模式==坏事（<i>Bad Thing</i>）”，并推荐使用显式模式从而使数据拥有一个清晰的描述。但是他同样也指出模式并非固定的存储模式；它可以在同一契约下具有更多的形式，例如一个数据访问层或XML模式。</p> 
+<p><b>NoSQL</b><b>与一致性</b></p> 
+<p>在本次演讲中Martin着眼于NoSQL数据库一致性的两个方面。</p> 
+<p>逻辑一致性涉及在一个数据库中工作时如何保持数据一致性。对于大多数NoSQL数据库（图形数据库除外）来说，使用<a href="http://dddcommunity.org/resources/ddd_terms/">聚集（</a><a href="http://dddcommunity.org/resources/ddd_terms/">aggregate</a><a href="http://dddcommunity.org/resources/ddd_terms/">）</a>（来自领域驱动设计中的一个概念，即在同一时间存储的一个对象群集）是避免数据不一致的一个显著方式。</p> 
+<p>当描述同一数据在多个不同地点的复制一致性时，Martin介绍了<a href="http://en.wikipedia.org/wiki/CAP_theorem">CAP 理论</a>。而数据一旦通过网络完成复制后，他将该问题简化为如何在一致性和可用性之间做出选择。他强调了这并非是一个技术问题，这是在一致性和可用性优先级方面的一个业务选择。</p> 
+<p>最后，Martin以软件设计的价值和技术债务的讨论结束了该次演讲。</p> 
+<p><b>查看英文原文</b>：<a href="http://www.infoq.com/news/2013/04/software-design-21st-century;jsessionid=7F177224CDB786BA75C68B3F1213F9F0"><b>Martin Fowler on Software Design in the 21st Century</b></a></p> 
 <p id="lastElm"></p><br><br><br><br><br><br></body></html>
