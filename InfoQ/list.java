@@ -1,6 +1,9 @@
 <html>
  <head></head> 
- <body> 
+ <body>
+  <div>
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/8.java">Gartner's Technology Trends for Information Infrastructure: Big Data, NoSQL and In-Memory Computing</a>Big Data, NoSQL databases and In-Memory computing are some of the technologies that will play key role in modernizing information management in 2013 and beyond, according to Gartner. A recent report released by Gartner team identifies the top technology trends that will have impact on the information infrastructure and governance.
+  </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/7.java">Visual Studio 2012 Update 2 Formally Released</a>Microsoft has formally released Update 2 for Visual Studio 2012. This update brings several new features but also includes numerous big fixes and behavior corrections. 
   </div> 
@@ -147,9 +150,6 @@
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/9.java">PuppetLabs and Opscode Reveal How They Built Their Open Source Communities</a>Being nice to people and being explicit and transparent about how things are done are key ingredients for growing communities say both, Luke Kanies, CEO and founder of PuppetLabs, and Adam Jacob, co-founder of Opscode and creator of Chef. They both claim that you need to be genuine in the way you interact with your communities. 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/8.java">GitSync for Plastic SCM with Native Git Protocols and Visual Studio 2012 Support</a>GitSync for Plastic SCM has been released with support for native Git network protocols and Visual Studio 2012 support. 
-  </div> 
+  </div>  
  </body>
 </html>

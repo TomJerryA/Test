@@ -1,0 +1,67 @@
+<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>Delphi 18周年庆：持续创新与全新跨设备支持</h3><p>遥想1995年2月14日，英巴卡迪诺在加州旧金山的西部软件开发大会上正式推出了<a href="http://edn.embarcadero.com/article/32977">第一版Delphi</a>。结合了16位Windows本机代码编译器、可视化组件体系架构（属性、方法与事件）、可视化双向工具IDE、Windows运行时库及数据库支持能力的Delphi横空出世，一举超越了此前十二年Turbo Pascal所积累的全部创新成果。从那时开始，英巴卡迪诺开发团队一直在为Delphi添加更具现代化特质的创新组件，旨在满足客户业务需求的同时支持新型<a href="http://www.embarcadero.com/products/delphi/ios-development">跨设备应用架构</a>。很多开发者可能还没有开始关注Delphi解决方案的最新动态，下面我们就简单介绍以往八个版本中所包含的创新内容。</p><p>Delphi 2005</p><ul> 
+ <li>多单元命名空间</li> 
+ <li>for … in … do循环</li> 
+ <li>内联函数</li> 
+ <li>嵌套类型</li> 
+ <li>异构数据库访问，多层数据库应用程序</li> 
+ <li>重构、源代码历史视图</li> 
+ <li>单元测试</li> 
+</ul><p>Delphi 2006</p><ul> 
+ <li>代码块完成/外围，编辑器修改栏</li> 
+ <li>实时代码模板</li> 
+ <li>UML建模、审计、量度与文档信息</li> 
+ <li>设计模式</li> 
+</ul><p>Delphi 2007</p><ul> 
+ <li>MSBuild，Build配置</li> 
+ <li>VCL - AJAX与Vista兼容性</li> 
+ <li>应用程序的Vista与XP主题</li> 
+ <li>dbExpress - 新框架、委托驱动程序、Unicode数据库支持</li> 
+</ul><p>Delphi 2009</p><ul> 
+ <li>语言、库及IDE全面支持Unicode</li> 
+ <li>泛型及匿名方法</li> 
+ <li>资源编辑器、类浏览器</li> 
+ <li>DataSnap多层结构</li> 
+ <li>VCL – 新组件、定制提示、功能区控件</li> 
+ <li>本地化 – 集成型翻译环境、外部翻译管理器</li> 
+</ul><p>Delphi 2010</p><ul> 
+ <li>Windows 7、多点触控及手势操作支持、Direct-2D</li> 
+ <li>IDE Insight、源代码格式化程序、搜索任务栏</li> 
+ <li>RTTI强化</li> 
+ <li>属性</li> 
+ <li>后台编译</li> 
+ <li>线程断点、线程冻结/解冻</li> 
+ <li>DataSnap – 支持HTTP协议</li> 
+</ul><p>Delphi XE</p><ul> 
+ <li>DataSnap – 支持HTTPS、JavaScript、REST</li> 
+ <li>集成代码版本管理</li> 
+ <li>正则表达式库</li> 
+ <li>AQtime、CodeSite、Beyond Compare、Final Builder</li> 
+ <li>云服务与云部署</li> 
+</ul><p>Delphi XE2</p><ul> 
+ <li>FireMonkey Win32/Win64/Mac业务应用平台（HD与3D）</li> 
+ <li>Windows 64位及Mac开发</li> 
+ <li>VCL样式</li> 
+ <li>Windows与Mac环境下的RTL支持</li> 
+ <li>专为 VCL与FireMonkey打造的LiveBinding</li> 
+ <li>DataSnap服务监测与控制</li> 
+ <li>DataSnap服务连接器</li> 
+ <li>针对Mac和64位Windows的dbExpress驱动，以及新的dbExpress ODBC驱动</li> 
+ <li>针对Amazon服务的云API支持</li> 
+ <li>管理器及平台部署助理</li> 
+</ul><p>Delphi XE3</p><ul> 
+ <li>专为Delphi VCL及FireMonkey打造的Metropolis UI应用</li> 
+ <li>XE 3专有FireMonkey强化，包括对DirectX 10的支持</li> 
+ <li>FireMonkey下的手势、触控、操作及多媒体支持</li> 
+ <li>VCL与FireMonkey传感器/设备框架</li> 
+ <li>针对功能区控制的VCL样式支持</li> 
+ <li>Windows及Mac环境下的InterBase ToGo（嵌入式SQL数据库）支持</li> 
+ <li>SQLite数据库支持</li> 
+ <li>Visual LiveBinding与LiveBinding强化</li> 
+ <li>专为Mac OS X沙箱应用环境打造的权限清单与配置页面</li> 
+ <li>Mac OS X 10.8（美洲狮）及视网膜显示技术支持</li> 
+</ul><p>2013</p><p>多平台、FireMonkey、数据库支持以及多层架构体现着Delphi对创新的不懈追求，同时也引导我们走向Delphi的下一次革命性飞跃：<a href="http://www.embarcadero.com/products/delphi/ios-development">Windows、Mac、iOS及Android环境下的跨设备应用程序开发</a>。</p><p>iOS平台上的全新Delphi与RAD Studio开发方案也即将面世。现在正是我们在Windows、Mac、iOS及Android等系统平台上开发跨设备应用程序的绝佳时机。加入这次激动人心的学术研讨会，了解移动开发的重要性为何逐步攀升、与Delphi移动开发解决方案来一次近距离接触。</p><ul> 
+ <li>Delphi与RAD Studio开发者们的移动机遇；</li> 
+ <li>利用Delphi完成iOS应用开发中从IDE到设备模拟等一系列任务；</li> 
+ <li>Delphi移动UI及样式的使用技巧；</li> 
+ <li>利用InterBase与SQLite为你的移动应用提供数据连接选项。</li> 
+</ul><p><strong>查看英文原文</strong>：<a href="http://blogs.embarcadero.com/davidi/2013/02/14/42557">Feb 14, 2013 - Delphi’s 18th birthday celebration - ongoing innovations and new multi-device support</a></p><div class="clearer-space"></div><br><br><br><br><br><br></body></html>

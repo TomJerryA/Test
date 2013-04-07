@@ -1,8 +1,8 @@
 <html>
  <head></head> 
- <body>
-  <div>
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/36.c">Agile Brazil 2013: Submiss&atilde;o de palestras fecha este final de semana</a>O Agile Brazil 2013, a maior confer&ecirc;ncia Agile do pa&iacute;s, acontece este ano em Bras&iacute;lia, trazendo palestras e keynotes com grandes personalidades do Brasil e do exterior, e promovendo t&oacute;picos importantes como governo, grandes empresas e startups. A chamada de submiss&otilde;es fecha este final de semana.
+ <body> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/36.c">Agile Brazil 2013: Submiss&atilde;o de palestras fecha este final de semana</a>O Agile Brazil 2013, a maior confer&ecirc;ncia Agile do pa&iacute;s, acontece este ano em Bras&iacute;lia, trazendo palestras e keynotes com grandes personalidades do Brasil e do exterior, e promovendo t&oacute;picos importantes como governo, grandes empresas e startups. A chamada de submiss&otilde;es fecha este final de semana. 
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/35.c">Swarming: Ajudando equipes a entregarem mais e melhor</a>O Swarming &eacute; uma t&eacute;cnica que ajuda equipes &aacute;geis a entregar software em funcionamento de forma r&aacute;pida e frequente. Conhe&ccedil;a mais sobre a t&eacute;cnica com base no trabalho de v&aacute;rios especialistas. 
