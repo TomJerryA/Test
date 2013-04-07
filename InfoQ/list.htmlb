@@ -2,7 +2,10 @@
  <head></head> 
  <body>
   <div>
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/36.htmlb">Delphi 18周年庆：持续创新与全新跨设备支持</a>遥想1995年2月14日，英巴卡迪诺在加州旧金山的西部软件开发大会上正式推出了第一版Delphi。结合了16位Windows本机代码编译器、可视化组件体系架构（属性、方法与事件）、可视化双向工具IDE，一举超越了此前十二年Turbo Pascal所积累的全部创新成果。很多开发者可能还没有开始关注Delphi解决方案的最新动态，下面我们就简单介绍以往八个版本中所包含的创新内容。
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/37.htmlb">Windows与Mac开发领域的两个全新成功案例</a>Embarcadero网站为我们分享了FireMonkey在Windows与Mac开发领域的两个全新成功案例：Bremmers Audio Design的MultitrackStudio以及Porter Lee公司的BEAST警方证物管理系统。
+  </div> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/36.htmlb">Delphi 18周年庆：持续创新与全新跨设备支持</a>遥想1995年2月14日，英巴卡迪诺在加州旧金山的西部软件开发大会上正式推出了第一版Delphi。结合了16位Windows本机代码编译器、可视化组件体系架构（属性、方法与事件）、可视化双向工具IDE，一举超越了此前十二年Turbo Pascal所积累的全部创新成果。很多开发者可能还没有开始关注Delphi解决方案的最新动态，下面我们就简单介绍以往八个版本中所包含的创新内容。 
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/35.htmlb">林仕鼎谈数据中心计算（一）：整体大于部分之和</a>《失控》中提到一个很普遍的现象，就是整体大于部分之和。比如把10000只蜜蜂加起来，它不仅仅是10000只蜜蜂，而是一个蜂群，具备很多只有蜂群才有（而蜜蜂没有）的特性。那么，把一万台服务器加起来，我们能得到什么？林仕鼎说：“我现在就是把数据中心当做一台机器来看。” 
