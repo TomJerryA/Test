@@ -1,33 +1,52 @@
-<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>Iron.io从Ruby迁移到Go：减少了28台服务器并避免了连锁故障</h3><p><img style="float:right" src="http://www.infoq.com/resource/news/2013/03/ruby-to-go/zh/resources/1.jpg;jsessionid=FB0DF3DB4051DD10926742E11A048FDA" alt="" _href="img://null" _p="true" /></p> 
-<p>过去几个月，我在用Go语言编写系统，所以一直密切关注能够证实我的选择是正确的”的那些消息。当Iron.io记录下<a href="http://blog.iron.io/2013/03/how-we-went-from-30-servers-to-2-go.html">使用Go重写IronWorker的经验</a>时，机会出现了。Iron.io中非常忙碌的作业执行系统最初是用Ruby编写的。</p> 
-<p>重写的结果是：</p> 
-<ul> 
- <li>服务器数量从30台减少到2台，而且第2台仅用于实现冗余。</li> 
- <li>CPU利用率下降至5%以下。</li> 
- <li>所用内存也下降了很多。Rails应用在启动时需要接近50MB内存，而Go版本在启动时只需要几百KB内存。</li> 
- <li>连锁故障成为历史。</li> 
- <li>运行于成百上千台服务器上的新服务完全用Go编写。</li> 
- <li>他们认为，Go的使用使他们得以“构建伟大的产品，得以成长和扩展，同时还能吸引一流人才”。他们的博客中写道：“我们认为，在可预见的未来，它将继续帮助我们成长。”一般建议根据人才库的规模来选择编程语言，他们发现Go语言的选择帮助他们吸引了顶级人才。</li> 
- <li>容易部署，因为Go程序会编译为一个单一静态映像。</li> 
- <li>Go存在的小问题：需要学习一种新语言，库还有限。</li> 
- <li>如果服务器流量很高，或者你想应对突发的增长，Go是很好的选择。</li> 
-</ul> 
-<p>当然，如果没有第二系统效应（Second System Effect）的影响，重写会快得多，不过你可能会回想起LinkedIn的类似经验：<a href="http://highscalability.com/blog/2012/10/4/linkedin-moved-from-rails-to-node-27-servers-cut-and-up-to-2.html">LinkedIn从Rails迁移到Node：服务器减少27台，速度提升多达20倍</a>。</p> 
-<p>下面说明一下Go解决的问题：</p> 
-<ul> 
- <li>在使用Ruby时，服务器的CPU利用率维持在50%到60%之间。为将CPU利用率保持在50%左右，可以增加服务器，这样就可以优雅地处理流量峰值。但这种方式有个缺点：需要昂贵的服务器来进行水平扩展。</li> 
- <li>他们有一个非常有趣的故障模式。当流量出现峰值时，Rails服务器的CPU利用率将达到100%。这就致使该服务器看上去是失效了，进而引发负载均衡器把流量路由到其余服务器上，这样更多服务器的CPU利用率会飙升到100%。最终导致连锁故障。</li> 
-</ul> 
-<p>使用Ruby有助于产品快速上市，这个理由十分在理。虽说性能并非一切，但这里我们看到了性能的价值，尤其是在Web层之外，性能更为重要。表现良好的服务在健壮性和成本方面都有巨大优势。</p> 
-<p>以往，系统的弱点被服务器的量所掩盖，但大量服务器要花很多钱，而且未必总能解决问题。</p> 
-<p>性能起到了缓冲作用，使系统既能承载流量而不至崩溃，又能容忍一次次的突发冲击。即时（Just-in-time）分配和启动新实例都需要时间，而长时间的流量峰值可能引发连锁故障。针对性能编码，而不是针对产品上市时间编码，即可防患于未然。</p> 
-<p><b>Go</b><b>并不完美</b></p> 
-<p>如果看一下Go的Google网上论坛，你会发现Go并不是没有<a href="https://groups.google.com/forum/?fromgroups#%21searchin/golang-nuts/performance$20problem">性能问题</a>。不过这些问题往往可以编码绕过。比如用bufio.ReadSlice代替bufio.ReadString，能够去掉一次数据复制，代码魔法般地快了若干倍。</p> 
-<p>学习这些技巧是需要时间的，尤其对这样一种新语言而言。</p> 
-<p>让Go真正处于不利地位的是，JVM和V8 JavaScript引擎在垃圾回收优化和代码生成方面已经有了许多年的经验积累。Go要赶上尚需时日。</p> 
-<p>性能永远不会是免费的。你必须巧妙地编码，将状态共享最小化，不要老翻腾内存，要尽力剖析，理解自己的语言并且能够用这种语言来做正确的事。</p> 
-<p><b>查看英文原文</b>：<a href="http://highscalability.com/blog/2013/3/13/ironio-moved-from-ruby-to-go-28-servers-cut-and-colossal-clu.html"><b>Iron.io Moved From Ruby to Go: 28 Servers Cut and Colossal Clusterf**ks Prevented</b></a></p> 
-<hr /> 
-<p>感谢<a href="http://www.infoq.com/cn/bycategory.action;jsessionid=FB0DF3DB4051DD10926742E11A048FDA?authorName=杨赛">杨赛</a>对本文的审校。</p> 
-<p>给InfoQ中文站投稿或者参与内容翻译工作，请邮件至<a href="mailto:editors@cn.infoq.com">editors@cn.infoq.com</a>。也欢迎大家通过新浪微博（<a href="http://www.weibo.com/infoqchina">@InfoQ</a>）或者腾讯微博（<a href="http://t.qq.com/infoqchina">@InfoQ</a>）关注我们，并与我们的编辑和其他读者朋友交流。</p> 
+<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>Netflix开发者大赛，云计算1.0，还是2.0？</h3><p>Joe Emison是BuildFax公司的CTO和创始人，该公司为企业提供地产方面的数据，在技术架构上以云计算为基础。最近，Joe Emsion在信息周刊上发表文章《<a href="http://www.informationweek.com/cloud-computing/platform/how-netflix-is-ruining-cloud-computing/240151650">Netflix如何毁掉云计算</a>》，指责Netflix最近举办的云计算开发者大赛抱有“以AWS为中心”的心态。</p> 
+<p>Emison认为：Netflix是“云计算1.0”时代的典范，表现出了巨大的收益，也暴露出不少问题。</p> 
+<blockquote> 
+ <p>云计算1.0基本上就是Amazon Web Service的事情，它是第一家，也是唯一一家，提供的特性能够满足构建相当大规模应用的需求。因此，Netflix拥抱AWS很正常。但是在云计算1.0手中，Netflix在2012年就遇到4次故障。最大的一次在圣诞节前夜，依赖一个不是很重要的AWS负载均衡服务，是问题的主要原因。</p> 
+</blockquote> 
+<p>而最近Netflix设立的头奖10万美元的开源云计算管控工具大赛，更是被Emison认为：</p> 
+<blockquote> 
+ <p>这种做法，会让未来几年的云计算实践和架构都处于十分被动的局面。 …… 因为这个做法完全是“云计算1.0”的思维模式，建立在“Amazon是唯一厂商”这个观点的基础之上。 …… Netflix这个以AWS为中心的竞赛令人生厌，除此之外，还有更深层次的问题：Netflix有些工具所考虑的架构，在云计算1.0时代没有问题，但随着时间推进，问题越来越多。对于一家公司来说，很难放弃目前没有问题的代码和系统，特别是它们看起来很不错的时候，而且还能争取一点时间，上述都是正确的内部决策，这些我都可以理解。但是，Netflix没有自己努力从中绞出最后一点价值，而是把大把钞票扔到外面，让所有人都去拥抱、扩展他们的工具和代码，而这些代码和工具对于未来的云架构来说，算不上多么好的实践。</p> 
+</blockquote> 
+<p>接下来，Emison列举了Netflix的Aminator工具，作为Netflix不良实践的例子。该工具基于一个AMI模板和一些代码，使得更易于批量构建Amazon Machine Image镜像。他认为：该工具几年前用还可以接受，但现在：</p> 
+<blockquote> 
+ <p>如今，我们已经有了Chef和Puppet这样广泛使用的配置管理工具，再大规模创建AMI就不是什么好实践了。AWS自己最近还发布了OpsWork服务，用它处理应用部署要好得多，它就用了Chef。</p> 
+</blockquote> 
+<p>他还列举了Edda和Asgard，指出这些工具：</p> 
+<blockquote> 
+ <p>在架构上，是为了解决一些多少已经解决了的问题，这就像是一个仍在频繁依赖和使用SOAP的开源项目，而不是用RESTful方法。</p> 
+</blockquote> 
+<p>不过他认为Denominator还是一个出色的DNS管理工具，Simian Army对于测试云架构来说，是一个极好的、有开创意义的想法，可惜，只能用在AWS上。</p> 
+<p>Emison在文末指出：</p> 
+<blockquote> 
+ <p>有可能Netflix的竞赛会将世界引向云计算2.0时代，拥抱多云架构，同时使用写作和配置管理作为最优的方式。……但Netflix刚刚发布AMInator这个事实说明：Netflix很乐意推广他们开发的任何工具，不管这些工具是否符合当今云架构的最佳实践。</p> 
+</blockquote> 
+<p>针对Emison的这些观点，Netflix的云架构师Adrian Cockcroft在自己的博客上<a href="http://perfcap.blogspot.com/2013/03/comment-on-how-netflix-is-ruining-cloud.html">做出了回应</a>。</p> 
+<p>他先对比了“云计算1.0”和“2.0”：</p> 
+<blockquote> 
+ <p>我认为：大部分人目前用云的方法，是把一部分现有的架构迁移到云中，运行混合的设置环境。这是我眼中的云计算1.0。Netflix所做的，是开发灵活度更高的原生云应用，这更适于成为“云计算2.0”。至于底层用哪些特定的IaaS服务，或者是否用公有云和私有云，这与我们构建的架构无关。</p> 
+</blockquote> 
+<p>对于可移植性问题，他认为：</p> 
+<blockquote> 
+ <p>其他云厂商的功能和规模，还只能相对于Amazon在2008到2009年的水平。我们还在等他们跟上来。他们做出了很多承诺，但对Netflix而言却没多少能用的。不过，还是有些小规模而且更简单的应用有使用NetflixOSS的需求。Eucalyptus在公共云和私有云中都已经把Asgard、Edda和Chaos Monkey跑了起来，而且会放在Eucalyptus 3.3中交付。还能看到一些信号，人们想要在OpenStack、CloudStack和Google Compute中加入一些缺失的功能，让NetflixOSS能在上面运行。</p> 
+</blockquote> 
+<p>至于AMinator工具，他认为有其特定优势：</p> 
+<blockquote> 
+ <p>如果你想要启动500个完全相同的实例，在它们启动后各自运行Chef或是Puppet，很容易让它们依赖Chef或是Puppet，浪费启动时间，而且如果安装出现问题，就会得到一堆不一致的实例。使用AMInator在构建阶段只运行一次Chef，这就降低了运行时出现问题的几率。</p> 
+</blockquote> 
+<p>对于Netflix举办的大赛，Adrian的回应是：</p> 
+<blockquote> 
+ <p>奖励中包含可移植性的类别，这个类别很广，要是有人为NetflixOSS加入其他编程语言的支持，比如Erlang、GO或是Ruby，或是让NetflixOSS能够运行在更多IaaS选择之上，都有可能获奖。现实情况是：AWS确实统治了目前的云部署市场，所以，能在AWS上运行，也就能保证能让最多人收益。很多人都在吹捧AWS之外的方案，但它们都还有一段路要走。</p> 
+</blockquote> 
+<p>Joe也看到了这篇文章，并在评论中说道：</p> 
+<blockquote> 
+ <p>我认为你的回应是只见树木，不见森林。</p> 
+ <p>森林是这样的：Netflix的云架构，不管是从公开演讲还是从开源代码中看，从根本上，</p> 
+ <p>a）跟AWS紧密交织，基本上是无法分离的；</p> 
+ <p>b）从配置管理和协作角度来看，大大落后于最佳的“通用”开放解决方案。</p> 
+ <p>同时远远落后于“Unix方式”——封装、抽象可与其他彼此互相交换使用的工具，无法构建最佳架构。</p> 
+ <p>……</p> 
+ <p>Netflix在云架构领域中，有很大的权力和影响力，很多人都指望着Netflix指导他们如何完成云部署。如果从长远考虑你的云架构，Netflix做出的一些选择就是不好。从历史上看，也很难引证好的先例，证明这样跟一家IT厂商紧密交织是好的决策。对于在云中部署的人们来说，不管出于什么目的和意图，了解、理解配置管理，远比会用某种可以忽略这个过程的工具来得重要得多。</p> 
+</blockquote> 
+<p>Adrian和Emison在评论中展开一系列交锋，感兴趣的同学，可<a href="http://perfcap.blogspot.com/2013/03/comment-on-how-netflix-is-ruining-cloud.html">前往</a>关注。</p> 
+<p>坐在大洋彼岸隔岸观火的我们，恐怕大部分人都没有太多机会真正使用AWS，1.0还没有尝到甜头，奢谈2.0似乎有些为时尚早。但他们的讨论还是可以给国内的公共云运营商以启示，对广大想要使用公共云的开发者们来说，更是一个提醒。不管1.0还是2.0，先把配置管理弄明白才是最重要的事。</p> 
 <p id="lastElm"></p><br><br><br><br><br><br></body></html>
