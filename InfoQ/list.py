@@ -2,10 +2,13 @@
  <head></head> 
  <body>
   <div>
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/43.py">EclipseCon 2013総まとめ</a>EclipseCon 2013がボストンで開催された。OSGiからクラウド、宇宙でのEclipseなど話題は多岐にわたった。
-  </div>
-  <div>
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/42.py">ウェブスタイルは上手くいったか</a>7年前、im Bray氏がSOAの終焉とウェブスタイルの興隆を予言した。最近のブログでJean-Jacques Dubray氏がこれに言及し、ウェブスタイルは成功しなかったと結論付けた。さらに氏は、このことが将来のコンピューティングとアプリケーション開発にどのように影響を与えるか開設している。
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/44.py">Release Cadence Report - アジャイルに関する調査のローンチ</a>Ryan Cromwell 氏が Release Cadence Report Survey をリリースした。ソフトウェアをリリースする速さはチームが監視，報告すべきもっとも重要な指標のひとつであるという前提に基づいて，チームの活動を５つの領域から評価する調査のローンチである。調査は2013年5月24日まで継続され，その後コミュニティに対して結果が公開される予定だ。
+  </div> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/43.py">EclipseCon 2013総まとめ</a>EclipseCon 2013がボストンで開催された。OSGiからクラウド、宇宙でのEclipseなど話題は多岐にわたった。 
+  </div> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/42.py">ウェブスタイルは上手くいったか</a>7年前、im Bray氏がSOAの終焉とウェブスタイルの興隆を予言した。最近のブログでJean-Jacques Dubray氏がこれに言及し、ウェブスタイルは成功しなかったと結論付けた。さらに氏は、このことが将来のコンピューティングとアプリケーション開発にどのように影響を与えるか開設している。 
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/41.py">Python Tools for Visual Studio 2.0は、インテリセンス、Virtualenv、Windows Azureのサポートを追加</a>Python Tools for Visual Studio 2.0 アルファ版は、インテリセンス、Virtualenv, Windows Azure、クラウドサービス、ウェブサイト、クライアントライブラリのサポートを含んでいる。 
@@ -147,9 +150,6 @@
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/45.py">CQRSフレームワークのAxon 2がMongoDBをサポート，パフォーマンスも向上</a>Axon の CQRS フレームワークの最新バージョンでは，MongoDB をバックストアとして使用する MongoEventStore がサポートされている。さらにAPIがシンプルなものになり，パフォーマンスも向上している。先日リリースされたこのバージョン2.0は，イベントオブジェクトがPOJOベースになると同時に，メッセージやペイロード，メタデータを定義するアノテーションも備えている。 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/44.py">Red HatがOpenJDK 6のリーダーシップを引き継ぐ</a>Red Hatは、OpenJDK 6のサポートを引き継ぐことを発表した。それは、Oracleが自分たちの有償Java 6開発キットへの最後の無償アップデート、番号43が入手可能であることを掲載したほんの数日後のことである。 
-  </div>   
+  </div>  
  </body>
 </html>
