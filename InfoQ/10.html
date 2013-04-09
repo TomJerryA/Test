@@ -1,31 +1,13 @@
-<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>Kinect for Windows培训北京站：了解K4W软硬件原理</h3><p>自去年10月Kinect for Windows在中国发布，微软随后启动“Kinect for Windows加速器计划”之后，上周又启动了名为“码”上Kinect的全国培训活动，本次活动共设北京、南京、上海、成都以及深圳五站，意在普及Kinect for Windows开发，鼓励开发者通过这一新的人机交互方式，开发出更具创新、生产率更高的行业应用。</p> 
-<p>北京站活动于3月20日举行，培训内容主要涵盖Kinect关键技术及交互设计、Kinect Scenarios(NUI、NEO、NUO)、Kinect for Windows SDK v1.7的新特性以及Kinect 技术的更多应用及其商业价值探讨等。</p> 
-<p>SDK主要提供了软件类库和开发工具，从而帮助开发者可以捕获丰富的基于Kinect的自然数据，下图展示了Kinect硬件同软件类库的交互过程：</p> 
-<p><img src="http://www.infoq.com/resource/news/2013/03/k4w-roadshow-beijing/zh/resources/IC568988.png;jsessionid=2E9C4847C0231A489519AC2648111460" alt="" _href="img://IC568988.png" _p="true" /></p> 
-<p>硬件方面，Kinect for Windows Sensor主要包含红外线发射器、RGB摄像头、红外接收器、倾角控制马达、麦克风阵列以及加速计。</p> 
-<p>在API方面，通过添加新API增加了开发的易用性和连贯性。例如利用更快的方法来在深度图像和颜色图像之间进行映射。这将带来新的场景，如绿屏侦测和3-D点云。此外，Kinect for Windows SDK可以捕获超过4米的扩展深度数据，可针对应用环境优化色彩摄像头。白平衡，对比度，色度，饱和度和其他设定均可微调，添加了一些新的API来转换坐标空间的数据：颜色，深度和框架。共有两组API：一组为转换单个像素，一组为转换整幅图像。更支持红外，Raw Bayer，扩展深度数据和加速器等功能。SDK架构图展示如下：</p> 
-<p><img src="http://www.infoq.com/resource/news/2013/03/k4w-roadshow-beijing/zh/resources/IC584339.png;jsessionid=2E9C4847C0231A489519AC2648111460" alt="" _href="img://IC584339.png" _p="true" /></p> 
-<p>主要包含以下组件：</p> 
-<ul> 
- <li>Kinect硬件：主要包含Kinect Sensor以及与电脑相连的USB Hub；</li> 
- <li>Kinect驱动：Kinect Windows驱动，主要包含麦克风阵列驱动，音频和视频驱动（用来处理颜色、深度和骨骼数据）；</li> 
- <li>音频和视频组件：帮助Kinect捕捉骨骼移动以及深度图像；</li> 
- <li><span style="font-family: 'Segoe UI', 'Lucida Grande', Verdana, Arial, Helvetica, sans-serif; line-height: 16px;">DirectX Media Object (DMO)相关的数据；</span></li> 
- <li>Windows 7标准API，主要包含音频、视频以及多媒体等API，目前也已支持Windows 8</li> 
-</ul> 
-<p>此外，近距离模式（Near Mode）使深度传感器能够探测到最近40厘米范围内的物体，并在此前可实现的范围之外与之通信，获得更多与深度值相关的信息。在色彩和深度的同步，深度到色彩映射和完整API等方面也进行了改进。Kinect可识别人体内的20个骨骼，摄像头帧数30FPS（普通电影24FPS）。</p> 
-<h3>开发者关注问题</h3> 
-<p><strong>最新的Kinect for WindowsSDK更新是否提供面部识别支持？ </strong></p> 
-<blockquote> 
- <p>自1.5版本开始， Kinect for Windows SDK已通过面部追踪SDK组件支持实时面部追踪。面部识别SDK并非专门针对面部识别和辨认。面部识别实时探测和追踪面部的位置和方向，并提供三维网格动画，这些动画结合Kinect的深度数据以3-D的方式呈现。面部识别能够实时绘制眉毛的位置和嘴型。传统的面部识别算法能都用于Kinect的RGB流；我们仍在持续研究Kinect传感器的其他可用功能。 了解更多关于面部识别的内容</p> 
-</blockquote> 
-<p><strong>针对Kinect密集处理的推荐硬件配置？ </strong></p> 
-<blockquote> 
- <p>针对需要大量使用Kinect框架追踪的应用以及定制程序处理，我们建议采用如下的计算机参考配置。我们发现其能够提供大多数高强度追踪场景所需的强大性能，同时也能为其他的程序运行提供合理的帧数。 处理器： 类型： 英特尔酷睿 i5桌面处理器系列或以上 时钟频率：3.0 GHz或以上 核心数：4或以上 内存： 4 GB DDR3 1333 或以上 操作系统： 64位版本Windows 7或64位版本Windows 8。</p> 
-</blockquote> 
-<p><strong><font color="red">号外：</font></strong>3月29日之前免费报名参加InfoQ协办的微软Kinect沙龙活动（<a href="http://www.infoq.com/cn/vendorcontent/show.action;jsessionid=2E9C4847C0231A489519AC2648111460?vcr=2147" target="_blank">3月27日成都站</a>，<a href="http://www.infoq.com/cn/vendorcontent/show.action;jsessionid=2E9C4847C0231A489519AC2648111460?vcr=2147">3月29日深圳站</a>），可获赠QCon成都2013大会门票（凭“QConCDVIP”<a href="http://www.regonline.com/Register/Checkin.aspx?EventId=1215668">折扣码注册</a>），门票不含大会资料、餐饮、晚场活动等，如需深度参与，需另外支付200元（凭“QConCDVIP200”<a href="http://www.regonline.com/Register/Checkin.aspx?EventId=1215668">折扣码注册</a>）。</p> 
-<h3>相关阅读</h3> 
-<p><a href="http://www.infoq.com/cn/news/2012/12/kinect-for-windows;jsessionid=2E9C4847C0231A489519AC2648111460">微软通过Kinect for Windows加速器计划助力开发者</a></p> 
-<p><a href="http://www.infoq.com/cn/news/2013/03/Microsoft-Kinect-Samples;jsessionid=2E9C4847C0231A489519AC2648111460">微软开放Kinect for Windows样本代码</a></p> 
-<p><a href="http://www.infoq.com/cn/news/2013/03/k4w-sdk1.7-release;jsessionid=2E9C4847C0231A489519AC2648111460">微软发布Kinect for Windows SDK v1.7</a></p> 
+<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>Windows Azure更新，支持Hadoop、HTML5/JS、CORS、PhoneGap、Mercurial和Dropbox</h3><p>微软最近发布了多项<a href="http://weblogs.asp.net/scottgu/archive/2013/03/18/windows-azure-new-hadoop-service-html5-js-cors-phonegap-mercurial-and-dropbox-support.aspx">Windows Azure</a>增强功能，其中包括对HTML5/JS客户端、<a href="http://en.wikipedia.org/wiki/Cross-origin_resource_sharing">跨域资源分享</a>（CORS）、PhoneGap和Windows Phone 7.5的支持。对于移动服务，现在既可以使用HTML5 Web客户端应用连接，也可以使用Apache Cordova/PhoneGap应用连接，可以将Windows Azure用作数据存储和身份验证。</p> 
+<p>最近发布的更新包括了新的移动服务Web客户端库，支持Internet Explorer 8、最新的Chrome、Firefox、Safari以及PhoneGap 2.3.0，提供了与其他原生SDK一样的数据查询和存储API ，并允许用户方便地使用移动服务所支持的Microsoft <a>Account</a>、Google 、Facebook和Twitter这四种认证机制之一进行身份认证。</p> 
+<p>如上所述，微软已经添加了对CORS的支持，使移动服务能够接受跨域的Ajax请求，支持通过管理面板设置<a>允许移动服务访问</a>的域的白名单。</p> 
+<p>此外，最近发布的更新支持便携式类库，它能和各种新客户端平台一起使用，能够从ASP.NET和.NET服务器后端调用移动服务。 再有，该版本还提供对Windows Phone 7.5、Json.NET和HttpClient的支持。</p> 
+<p>Windows Azure支持使用<a href="http://mercurial.selenic.com/">Mercurial</a>（Hg）进行源代码控制，同时改善了用户界面，还支持在管理门户中从<a href="https://www.dropbox.com/">Dropbox</a>、 <a href="http://www.codeplex.com/">CodePlex</a>和<a href="https://bitbucket.org/">Bitbucket</a>等资源库部署网站。</p> 
+<p>最近发布的更新还包括针对管理源代码控制部署而改进的用户界面。用于持续部署的Team Foundation Service所用的证书，可以在Windows Azure管理门户内直接更换 ，从仪表板中选择<em>Renew TFS certificate</em><a>选项即可</a>。</p> 
+<p>它也支持重新生成发布配置文件，这可以通过在仪表板中使用一个称为重置 发布配置证书（Reset publish profile credentials）的快捷命令实现。它还支持新的<a href="http://www.hadooponazure.com/">HDInsight</a>服务器（现在与Windows Azure门户集成了），支持在Azure上部署、管理和使用Hadoop集群。</p> 
+<p>最近的更新支持创建HDInsight集群，用户可在仪表板中快速查看集群情况。它能显示集群的基本信息，并为用户提供了简单的连接集群的方法。</p> 
+<p><b>查看英文原文</b>：<a href="http://www.infoq.com/news/2013/03/windows-azure-updates;jsessionid=39B8A47A8BA087257B1E73AA0E183FC2">Windows Azure Updated with Hadoop, HTML5/JS, CORS, PhoneGap, Mercurial and Dropbox</a></p> 
+<hr /> 
+<p>感谢<a href="http://www.infoq.com/cn/bycategory.action;jsessionid=39B8A47A8BA087257B1E73AA0E183FC2?authorName=臧秀涛">臧秀涛</a>对本文的审校。</p> 
+<p>给InfoQ中文站投稿或者参与内容翻译工作，请邮件至<a href="mailto:editors@cn.infoq.com">editors@cn.infoq.com</a>。也欢迎大家通过新浪微博（<a href="http://www.weibo.com/infoqchina">@InfoQ</a>）或者腾讯微博（<a href="http://t.qq.com/infoqchina">@InfoQ</a>）关注我们，并与我们的编辑和其他读者朋友交流。</p> 
 <p id="lastElm"></p><br><br><br><br><br><br></body></html>

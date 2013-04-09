@@ -1,6 +1,9 @@
 <html>
  <head></head> 
- <body> 
+ <body>
+  <div>
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/38.htmlb">自动化错误报告：通往更高软件质量的大门</a>无知是福，但对于软件bug而言，这种态度触及了底线。那些能够揪出bug并改善软件质量的，将收获客户极大的信任，更高的报酬，更低廉的维护成本，并且难以被其竞争对手替代。
+  </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/37.htmlb">Windows与Mac开发领域的两个全新成功案例</a>Embarcadero网站为我们分享了FireMonkey在Windows与Mac开发领域的两个全新成功案例：Bremmers Audio Design的MultitrackStudio以及Porter Lee公司的BEAST警方证物管理系统。 
   </div> 

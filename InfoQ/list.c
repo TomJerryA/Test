@@ -1,6 +1,15 @@
 <html>
  <head></head> 
- <body> 
+ <body>
+  <div>
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/39.c">Ansible: uma nova op&ccedil;&atilde;o para gerenciamento de configura&ccedil;&atilde;o</a>O Ansible &eacute; a mais recente promessa para a pr&oacute;xima gera&ccedil;&atilde;o de sistemas de gerenciamento de configura&ccedil;&atilde;o, independente de linguagem de programa&ccedil;&atilde;o, utilizando SSH como camada de comunica&ccedil;&atilde;o, operacional com linguagens de programa&ccedil;&atilde;o com suporte a JSON. Conhe&ccedil;a o novo projeto.
+  </div>
+  <div>
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/38.c">Desenvolvedores e suas personalidades: dados da nova pesquisa da Evans Data</a>A empresa Evans Data realizou um estudo abrangente para descobrir caracter&iacute;sticas do perfil dos desenvolvedores. Os desenvolvedores s&atilde;o introvertidos ou extrovertidos? S&atilde;o intuitivos ou l&oacute;gicos? Preferem recompensas virtuais ou reais? O que &eacute; mais preocupante para suas carreiras? Entre muitas outras quest&otilde;es.
+  </div>
+  <div>
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/37.c">PuppetLabs e Opscode mostram como constru&iacute;ram suas comunidades open source</a>Ser educado com as pessoas e expl&iacute;cito e transparente sobre como as coisas s&atilde;o feitas: estes s&atilde;o os ingredientes fundamentais para o crescimento das comunidades - dizem Luke Kanies, CEO e fundador da PuppetLabs e Adam Jacob, co-fundador da Opscode e criador da Chef.
+  </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/36.c">Agile Brazil 2013: Submiss&atilde;o de palestras fecha este final de semana</a>O Agile Brazil 2013, a maior confer&ecirc;ncia Agile do pa&iacute;s, acontece este ano em Bras&iacute;lia, trazendo palestras e keynotes com grandes personalidades do Brasil e do exterior, e promovendo t&oacute;picos importantes como governo, grandes empresas e startups. A chamada de submiss&otilde;es fecha este final de semana. 
   </div> 

@@ -2,7 +2,13 @@
  <head></head> 
  <body>
   <div>
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/9.java">Struts 1 Reaches End Of Life</a>Struts 1, the venerable Java MVC Web framework, has reached End Of Life status, the Apache foundation has announced. In a sense, the move simply formalises what has already happened, as the Struts team have focused their efforts on version 2; the last release of Struts 1 was in December 2008. The change of status does mean that no further security patches or bug fixes will be issued.
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/11.java">Microsoft Office Developer Tools - Search Configuration Template, App Validation and Azure Debugging</a>The recently released Microsoft Office Developer Tools for Visual Studio 2012 provides a new search configuration project template, ability to validate apps during the submission process and Windows Azure debugging.
+  </div>
+  <div>
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/10.java">Blossom Switches to Dart</a>In a blog post, Thomas Schranz has announced that his company will be porting their Blossom product, a web-based Kanban board for product teams, to Dart, Google's new web programming language and platform that can be used as a replacement of JavaScript.
+  </div> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/9.java">Struts 1 Reaches End Of Life</a>Struts 1, the venerable Java MVC Web framework, has reached End Of Life status, the Apache foundation has announced. In a sense, the move simply formalises what has already happened, as the Struts team have focused their efforts on version 2; the last release of Struts 1 was in December 2008. The change of status does mean that no further security patches or bug fixes will be issued. 
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/8.java">Gartner's Technology Trends for Information Infrastructure: Big Data, NoSQL and In-Memory Computing</a>Big Data, NoSQL databases and In-Memory computing are some of the technologies that will play key role in modernizing information management in 2013 and beyond, according to Gartner. A recent report released by Gartner team identifies the top technology trends that will have impact on the information infrastructure and governance. 
@@ -144,12 +150,6 @@
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/12.java">Xtend 2.4 Adds Active Annotations, Android Support and More</a>Xtend is a statically compiled programming language for the JVM but which has type inference to reduce boilerplate code. The new Xtend 2.4 release adds active annotations, which can be used to generate standard patterns and reduce coding errors, as well as Android support and collection literals. InfoQ caught up with Sven Efftinge to find out what else is new with the Xtend 2.4 release. 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/11.java">Filepicker - Upload, Download, Connect and Synchronize Files from your App to the Users Cloud</a>Filepicker.io enables you to upload and store files from your own application via Facebook, Dropbox, Instagra, Flickr and etc including from your own computer. 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/10.java">Canvas-Based Chart.js Version 0.1 Released</a>Chart.js, a canvas-driven Javascript charting library, was released under the MIT open source license by Nick Downie on March 17th as an alternative to SVG-based charting libraries. 
-  </div>  
+  </div>   
  </body>
 </html>

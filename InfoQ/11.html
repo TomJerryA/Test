@@ -1,9 +1,40 @@
-<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>基于Canvas的图表类库Chart.js  0.1发布</h3><p><a href="http://www.nickdownie.com/">Nick Downie</a>于3月17日发布了一款基于canvas的JavaScript图表类库<a href="http://www.chartjs.org/">Chart.js</a>，该类库基于MIT开源许可发布，是SVG图表类库的一种替代方案。</p> 
-<p>“我想创建一个开箱即用的图表解决方案，该解决方案提供简单且易于理解的API，Web设计者能够通过这些API实现美观的图表，同时它也需要足够的轻量便利，以便开发人员能够在复杂的Web应用中引用它”Downie说。</p> 
-<p>Chart.js暴露了<a href="http://www.chartjs.org/docs/">6种不同的图表类型</a>，它们建立在数据和选项相结合的API之上。Downie花了一个月的时间为他这个大学期间最后的项目构建类库及支持文档。在17日开放源码之后，“我完全没有料到会有这么多的响应，真是惊呆了——我在Hacker News上发布了一个帖子，一天之后就有几万人访问了这个网站，同时Github上的问题和贡献收件箱都满了，”Downie说。</p> 
-<p>与SVG图表类库不同的是， 对于每一个图表元素而言，chart.js使用一个单独的canvas节点进行输出，而不是输出多个DOM节点。由于使用了单独的节点输出，所以chart.js只有一个事件监听器钩子，同时“保持对任何区域的跟踪都需要在内存中交互，在检查当前的鼠标位置时需要迭代这些内容。用户每次移动他们的鼠标时都需要加载整个循环。同时这也意味着如果我们直接在canvas上绘制工具提示那么需要对canvas进行清除和重画。”Downie说。“谈到这方面的定制化，我认为要实现一个简单的能够满足所有人需要的API几乎不可能——有些人可能想要工具提示，其他人可能想要在图表上画线，还有人想要高亮数据点，各种需要不一而足。如果都满足那么它很快就会变得非常复杂，”Downie说。与可能需要添加工具提示相比，Downie更愿意推动chart.js成为一个替代方案，“让那些想要在自己的网站和应用中包含简单、静态图形的开发者使用Chart.js，而不再使用过度复杂且超负载的解决方案（基于SVG的图表方案）”。</p> 
-<p>虽然简化API是canvas方式的一个优点，但是Chart.js失去了基于向量的SVG图表工具所具有的伸缩性，因为它依赖于canvas所产生的光栅图像。在这种情况下，“（为canvas）声明基于百分比的CSS宽度进行响应布局。对于高DPI显示设备而言，Chart.js会通过CSS自动地扩展到正确的设备像素比（devicePixelRatio）并缩放回正确的设备像素大小，”Downie说。</p> 
-<p>Canvas本身就具有通过<a href="https://developer.mozilla.org/en-US/docs/DOM/HTMLCanvasElement">toDataUrl</a>导出base64图片的能力。“我希望在将来的发布版中能够向创建完成的图表中添加一些实用功能，这样用户便能够很容易地清除、更新或者导出图表了——本质上Chart.js会为这个功能提供一个封装，”Downie说。</p> 
-<p>Downie将在春天毕业，他希望向Chart.js中添加一些其他的功能，也希望能在毕业之后集中精力做好全职工作。“（Chart.js）给了我一个非常好的理由，让我能够同时设计并开发一些非常优雅的作品，并对Web设计社区中的人们有所帮助（希望如此）。”</p> 
-<p><b>查看英文原文</b>：<a href="http://www.infoq.com/news/2013/03/chartjs-v.0.1-released;jsessionid=D8DF82F63842F2FB33A62FEA77465E18"><b>Canvas-Based Chart.js Version 0.1 Released</b></a></p> 
+<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>Apache Struts 1宣告退出舞台</h3><p>近日，Apache官方网站发布了关于Apache Struts 1 EOL（End-Of-Life）<a href="http://struts.apache.org/struts1eol-press.html">新闻稿</a>及<a href="http://struts.apache.org/struts1eol-announcement.html">通告</a>。该新闻稿指出，2013年4月5日，Apache Struts项目团队正式通知广大开发者，Struts 1.x开发框架结束使命，并且官方将不会继续提供支持。</p> 
+<p>Struts 1.x项目创建于2000年，最新版本1.3.10发布于2008年12月。同期，Struts社区将精力专注于推动Struts 2框架的发展，截止到2013年4月，已发布了23个版本。据通告称：</p> 
+<blockquote> 
+ <p>此次宣告Struts 1.x退出舞台并不再提供支持，主要是因为缺少足够的志愿者来提供支持。</p> 
+</blockquote> 
+<p>于此同时，在<a href="http://struts.apache.org/struts1eol-press.html">新闻稿</a>中，Apache Struts团队强烈建议大家学习Struts 2框架，Struts 2更加现代、高度解耦、功能丰富且易于维护。就在3月，Apache Struts刚刚发布了2.3.12版，这个版本为维护版本，包含了一些很小的改进，如：</p> 
+<blockquote> 
+ <ul> 
+  <li>重构所有验证器，可通过 OGNL 设置参数</li> 
+  <li>Tag 的 required 属性改名为 requiredLabel 支持 HTML5 的 required 属性</li> 
+  <li>三个新的 Tiles 插件，用于支持 Tiles 3 结果类型</li> 
+  <li>改进支持 JBoss 5 的 Convention 插件</li> 
+ </ul> 
+</blockquote> 
+<p>此外，对于正在试用Struts 1.x的开发者或团队，Apache Struts团队就常见问题给出了回答：</p> 
+<p><strong>Struts 1.x不再提供支持后，现有资源如何处理？</strong></p> 
+<p>所有资源将会保留，Apache Struts首页将会提供相关文档的链接，同时也会保留Struts 1.x各个版本的下载地址。所有的Struts 1源代码均可在Apache Struts代码仓库中找到，并且永久保留。所有发布的Maven组件（Maven artifacts）均可通过Maven Central访问。</p> 
+<p><strong>如果以后发现和Struts 1.x相关的安全问题或严重的Bug，是否还会有相应的修复？</strong></p> 
+<p>目前来看，是不会的，这也是要宣布EOL的原因。既然现在已经宣布不再提供支持，开发者也需要寻找移植方案，将现有的Struts 1代码移植到其他Web框架上。</p> 
+<p><strong>现在是不是就需要将Struts 1从我的项目中删除？</strong></p> 
+<p>就目前Struts团队了解的情况来看，不必立即删除。然而需要意识到的是，未来将不会有针对安全和Bug问题的修复，一旦未来发现上述情况，开发团队需要自己来应对。</p> 
+<p><strong>如果需要将现有项目从Struts 1移植到其他Web框架，有什么推荐？</strong></p> 
+<p>您也许会意识到，目前为止Struts 1还没有直接的替代品。您需要根据现有代码的情况，来选择新的开发框架，并通过调整代码来适应新的框架。虽然有很多基于Action的Java Web开发框架都可以实现这个效果，但我们还是会推荐Struts 2。因为他更先进、高度解耦、功能丰富且更易于维护。他继承了Struts 1的核心理念，但在架构和API设计上要比Struts 1.x先进很多。此外，其他的替代框架也不错，如<a href="http://www.springsource.org/">Spring Web MVC</a>、<a href="http://www.grails.org/">Grails</a>或<a href="http://www.stripesframework.org/display/stripes/Home">Stripes</a>。</p> 
+<p><strong>如果想继续对Struts 1进行维护，我们可以做些什么？</strong>&nbsp;</p> 
+<p>可以随意的为Struts 1进行贡献。有两种方法：从现有代码建立分支并进行改进或吸引社区人士来继续推动Apache Struts项目。如果有足够的人愿意并且有能力来继续提供补丁、进行维护以及长期管理的话，我们认为有这样的支援者的情况下，或许Struts 1还有希望。</p> 
+<p>此消息一出，微博人士也纷纷感慨：</p> 
+<blockquote> 
+ <p>蒼氵： 还记得进公司的第一件事就是把纯JSP的实现的功能用Struts1实现,好怀念啊.........感谢Struts1。</p> 
+ <p>猫砂西瓜： 忘不了那一屏幕的form bean。</p> 
+ <p>KDS-黑暗浪子： 逝去的总归要逝去，一切向前看。仔细想想，从03到07年我也用这个5年了。</p> 
+ <p>Kaloo2010： 面试再问这个就有的说了。 识时务的马： 怀念一下，当初那个堆砌ActionForm的青葱岁月。</p> 
+</blockquote> 
+<p>此外，为了给读者提供更好的参考，InfoQ中文站上也为您准备了相关内容：</p> 
+<ul> 
+ <li><a href="http://www.infoq.com/cn/spring;jsessionid=DD2FE476FFAEEED5A74EE6DFD28E8EC4">Spring相关的内容</a></li> 
+ <li><a href="http://www.infoq.com/cn/grails;jsessionid=DD2FE476FFAEEED5A74EE6DFD28E8EC4">Grails相关的内容</a></li> 
+ <li><a href="http://www.infoq.com/cn/minibooks/spring-ioc;jsessionid=DD2FE476FFAEEED5A74EE6DFD28E8EC4">迷你书：Spring的IoC容器</a></li> 
+ <li><a href="http://www.infoq.com/cn/minibooks/grails;jsessionid=DD2FE476FFAEEED5A74EE6DFD28E8EC4">迷你书：Grails入门指南</a></li> 
+</ul> 
 <p id="lastElm"></p><br><br><br><br><br><br></body></html>

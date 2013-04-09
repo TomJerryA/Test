@@ -1,6 +1,9 @@
 <html>
  <head></head> 
- <body> 
+ <body>
+  <div>
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/26.javab">The Real Question is Why?</a>The Agile movement has driven a revolutionary change in the way we build and deliver software solutions. The challenge today is building the right solution. The author challenges us to ask Why.
+  </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/25.javab">Choosing the Right ESB for Your Integration Needs</a>Kai W&auml;hner explains the differences between an integration framework, an ESB and a suite, following with advice for selecting the right one from existing commercial and open source solutions. 
   </div> 

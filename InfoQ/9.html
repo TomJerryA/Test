@@ -1,21 +1,26 @@
-<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>DataStax为Cassandra、Hadoop和Solr带来企业安全</h3><p><a href="http://3.datastax.com/datastax-enterprise.php">DataStax Enterprise</a>(DSE)3.0于上月发布，它具有若干针对那些使用了<a href="http://cassandra.apache.org/">Cassandra</a>、<a href="http://hadoop.apache.org/">Hadoop</a>和<a href="http://lucene.apache.org/solr/">Solr</a>的集群的企业安全特性。InfoQ采访了DataStax的产品副总裁Robin Schumacher以获取更多信息。</p> 
-<p>DSE是一个集成平台，将Cassandra的生产认证版本与Apache Solr和Hadoop分别结合并用于企业搜索和批量分析。最新发布的<a href="http://www.datastax.com/2013/02/datastax-enterprise-3-available-today">DSE 3.0</a>增加了<a href="http://www.datastax.com/2013/02/a-closer-look-at-datastax-enterprise-3-0-%E2%80%93-part-1">若干项安全特性</a>，它们适用于这三个产品。Robin解释道，根据对实现安全性的需求，客户可以：</p> 
+<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>PeerCDN：使用WebRTC构建基于浏览器的P2P CDN</h3><p>一组Web黑客构建了一个基于P2P的CDN，能够借助于一些JavaScript代码在Web浏览器之间分发网站数据。该项目称为<a href="https://peercdn.com/">PeerCDN</a>，它基于<a href="http://www.webrtc.org/">WebRTC</a>这个新兴的技术构建。</p> 
+<p><a href="https://peercdn.com/">PeerCDN的官网</a>是这样介绍该项目的：</p> 
+<p>PeerCDN是一个对等的分布式CDN，它能够让Web变得更快、更可靠，同时能够帮助网站降低带宽消耗。PeerCDN会自动地通过网站当前访问者所建立起来的P2P网络为网站内的静态内容（图片、视频和文件下载）服务，降低Web主机的一部分负担，同时也减少网站访问者的带宽消耗。除此之外，它还具有以下优点：</p> 
 <ul> 
- <li>选择 “完全内部”的方式：安全元数据将完全包含在DataStax Enterprise集群中，或是：</li> 
- <li>选择使用可信任的第三方安全软件包（例如Kerberos和LDAP）与DataStax Enterprise结合，用一种外部方式来维持安全信息。</li> 
+ <li>纯JavaScript，非常快，也非常轻量级，使用它不需要安装任何浏览器插件。</li> 
+ <li>能够轻松地处理瞬间流量增长。访问量高的文件可以被对等节点快速有效地传递，而常规的Web服务器和传统的CDN则可以为长尾内容提供可靠的服务。</li> 
+ <li>广泛的浏览器支持。PeerCDN利用WebRTC的数据通道在网站访问者之间建立对等的连接，Chrome和夜间版Firefox已经实现了该数据通道协议，而根据StatCounter提供的数据，这两款浏览器一共占有全球58%的浏览器使用率。此外，IE和Safari可能很快就会支持该协议。</li> 
+ <li>可以和传统的CDN一起工作。可以在需要提供更好的网站性能或需要减少服务器带宽使用率的情况下采用PeerCDN。</li> 
+ <li>内置的安全性。PeerCDN使用集中的资源认证服务器为网站资源生成SHA1哈希。对等节点提供的数据都会在确认安全性和原始性（内容未被篡改）的情况下才会被接受。同时，对等节点间的通信也是加密的。</li> 
+ <li>可靠性。如果对等节点慢或者中央PeerCDN服务器无法访问，那么网站就会按照正常方式加载。</li> 
+ <li>易于安装。我们的目标是易于复制、粘贴。只要在一个网站上粘贴一个script标签，网站马上就会变快，使用的带宽更少，更加弹性地处理瞬间流量。</li> 
 </ul> 
-<p>下面解释了DSE的安全特性是如何胜过Cassandra的——</p> 
+<p>为了解释PeerCDN的实现方式，该项目还制作了一个<a href="http://www.youtube.com/watch?feature=player_embedded&amp;v=PnBIIdmKO9o">截屏视频</a>。该视频首先介绍了PeerCDN的一些优点；然后通过文件下载、视频和图片三个示例讲解了其工作方式；最后简要介绍了其安全性、浏览器支持和性能。</p> 
+<p>当然，对于该项目的前景还有一些不同的声音，有些人就在<a href="https://news.ycombinator.com/item?id=5452780">HackNews上提出了自己的疑问</a>：</p> 
 <blockquote> 
- <p>DSE具有很多不同的安全特性，包括透明的数据加密和Kerberos/LDAP外部认证，它们是企业寻找的两个重要功能。与实时性一样，我们将安全特性也整合到分析和搜索维度中，而这是其他NoSQL厂商所不具备的。</p> 
+ <p>这对网站很好，但是对移动或者有数据上限的用户而言就有问题了。移动用户和某些使用无线网络的情况下会有流量限制。</p> 
 </blockquote> 
-<p>Robin还分享了在分布式集群中落实安全性所面临的一些挑战——</p> 
+<p>除此之外，有人提出了隐私问题，认为向其他的对等节点泄漏信息根本就不好，因为可以暗地里使用这些信息跟踪用户。同时在2013年，为所有类型的静态文件提供服务非常容易且成本低廉，所以大的视频可能是唯一的使用场景，而如果使用这种方式加载视频，需要大量的种子才能快速缓冲并播放。此外，还有存储这些内容需要占用用户多大的磁盘空间，是否会在当前页面上下文之外存储内容等问题。</p> 
+<p><a href="http://www.reddit.com/r/programming/comments/1b6162/peertopeer_cdn_in_the_browser/">Reddit网站上也有人对该项目发表了自己的看法</a>：</p> 
 <blockquote> 
- <p>在“无主”或点对点架构中，没有某些RDBMS或标准Hadoop中的那些主服务器或主节点。因此，使用DataStax Enterprise时，我们需要保证能够在集群间巧妙地配置和管理安全性，以确保每个节点都是安全的并能够有效部署客户需要的安全特性（例如，数据审计、客户端-节点加密等）。此外，DataStax Enterprise除了通过Cassandra提供NoSQL的扩展性外还支持使用Solr和Hadoop分别进行企业搜索和批量分析，我们还需要从安全性角度来保证对这些领域的覆盖。所以我们考虑了跨技术安全性来解决这个问题，就像处理大规模数据库集群间的通用数据保护问题一样。</p> 
+ <p>人们并不想这样共享自己的带宽，特别是他们自己没有选择权的情况下。很多用户可能并不知道发生了什么，但是他们会发现自己访问网页时的速度变慢了。另外，现在人们通常会打开大量的标签页，但是他们并不希望一些忘记关闭的标签页占用大量的流量。</p> 
 </blockquote> 
-<p>新版本还通过<a href="http://www.datastax.com/products/opscenter">OpsCenter</a> 3.0中的<a href="http://www.datastax.com/2013/02/a-closer-look-at-datastax-enterprise-3-0-%E2%80%93-part-2">多种工具改进</a>提升了可管理性，例如更简单的配置、备份/恢复的粒度控制、更好的诊断等等。</p> 
-<p>DataStax还分享了一个有意思的关于“随时医疗保健（<a href="http://www.datastax.com/resources/casestudies/healthcareanytime">HealthCare AnyTime</a>）”的案例分析，它已经从关系型数据库迁移至DSE3.0。该案例分析宣称，在转向DSE后的五年中客户将节省75万美元。</p> 
-<p><b>英文原文链接：</b><a href="http://www.infoq.com/news/2013/03/datastax-enterprise-3;jsessionid=BC97FE609C984FF1601770B2E4E882C2"><b>DataStax Brings Enterprise Security To Cassandra, Hadoop, Solr</b></a></p> 
-<hr /> 
-<p>感谢<a href="http://www.infoq.com/cn/bycategory.action;jsessionid=BC97FE609C984FF1601770B2E4E882C2?authorName=赵震一">赵震一</a>对本文的审校。</p> 
-<p>给InfoQ中文站投稿或者参与内容翻译工作，请邮件至<a href="mailto:editors@cn.infoq.com">editors@cn.infoq.com</a>。也欢迎大家通过新浪微博（<a href="http://www.weibo.com/infoqchina">@InfoQ</a>）或者腾讯微博（<a href="http://t.qq.com/infoqchina">@InfoQ</a>）关注我们，并与我们的编辑和其他读者朋友交流。</p> 
+<p>当然，也有人持肯定意见，认为互联网需要更多这样的技术。只有ADSL连接才存在人们所关心的带宽问题，但是对称访问连接（FttH）会越来越多，这将推动P2P协议向前发展。</p> 
+<p>如果你想了解社区中对该项目的相关讨论，可以打开新闻中给出的链接阅读更详细的信息。</p> 
+<p>PeerCDN项目的开发者之一Feross Aboukhadijeh是一位著名的HTML 5开发者，他在最近构建了一个网站，能够自动地通过<a href="http://feross.org/fill-disk/">GB大小的猫图</a>填满访问者的硬盘（可参考<a href="http://www.infoq.com/cn/news/2013/02/html5-fill-disk;jsessionid=88CAE6A4411752AA1A43ACF760A02125">InfoQ中文站之前的报道</a>）。在此之前，他还创建了一个名为<a href="http://ytinstant.com/">YTInstant</a>的YouTube搜索网站。</p> 
 <p id="lastElm"></p><br><br><br><br><br><br></body></html>
