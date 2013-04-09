@@ -1,17 +1,17 @@
 <html>
  <head></head> 
- <body>
-  <div>
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/48.py">特許所有者がTCP/IPの知的所有権を主張</a>テキサス州オースティンに本拠を置くネットワークハードウェアベンダが，TCP/IP プロトコルセットの実装に対してロイヤリティを求めると発言している。かつて Dellor という社名だったこの KCIR Networks は，1997年に Comer Labs を買収した際にこの特許を合わせて取得した。特許が出願されたのは 1975年だが，Comer Labs がこれまでにロイヤリティを要求したことはなかった。
-  </div>
-  <div>
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/47.py">アジャイルコーチングと組織変化についての動画講義</a>2012年の最後の四半期にアジャイル導入についてのふたつの学習動画がPearson/Addison-Wesleyから発表された。
-  </div>
-  <div>
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/46.py">AWSクラウド、Node.jsアプリケーションサービスを提供</a>AWS（Amazon Web Services）チームはElastic BeanstalkサービスにNode.jsのサポートを追加し、業界最高レベルのプラットフォームサポートを実現した。AWSは競合ひしめくNode.jsフレンドリーなクラウドに参入したが、ほかのAWSサービスとの統合によって差異化をはかろうとしている。
-  </div>
-  <div>
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/45.py">MongoDBがセキュリティの改善、テキスト検索、パフォーマンス向上を実現</a>MongoDB2.4は最近、テキスト検索、ハッシュベースのシャーディング、GeoJSONサポートによる優れた地理空間機能、そしていくつかのパフォーマンス改善とツーリング群の改善を行なって、リリースされた。我々は、またロードマップ上の次のリリースが何であるのかを10genと話した。
+ <body> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/48.py">特許所有者がTCP/IPの知的所有権を主張</a>テキサス州オースティンに本拠を置くネットワークハードウェアベンダが，TCP/IP プロトコルセットの実装に対してロイヤリティを求めると発言している。かつて Dellor という社名だったこの KCIR Networks は，1997年に Comer Labs を買収した際にこの特許を合わせて取得した。特許が出願されたのは 1975年だが，Comer Labs がこれまでにロイヤリティを要求したことはなかった。 
+  </div> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/47.py">アジャイルコーチングと組織変化についての動画講義</a>2012年の最後の四半期にアジャイル導入についてのふたつの学習動画がPearson/Addison-Wesleyから発表された。 
+  </div> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/46.py">AWSクラウド、Node.jsアプリケーションサービスを提供</a>AWS（Amazon Web Services）チームはElastic BeanstalkサービスにNode.jsのサポートを追加し、業界最高レベルのプラットフォームサポートを実現した。AWSは競合ひしめくNode.jsフレンドリーなクラウドに参入したが、ほかのAWSサービスとの統合によって差異化をはかろうとしている。 
+  </div> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/45.py">MongoDBがセキュリティの改善、テキスト検索、パフォーマンス向上を実現</a>MongoDB2.4は最近、テキスト検索、ハッシュベースのシャーディング、GeoJSONサポートによる優れた地理空間機能、そしていくつかのパフォーマンス改善とツーリング群の改善を行なって、リリースされた。我々は、またロードマップ上の次のリリースが何であるのかを10genと話した。 
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/44.py">Release Cadence Report - アジャイルに関する調査のローンチ</a>Ryan Cromwell 氏が Release Cadence Report Survey をリリースした。ソフトウェアをリリースする速さはチームが監視，報告すべきもっとも重要な指標のひとつであるという前提に基づいて，チームの活動を５つの領域から評価する調査のローンチである。調査は2013年5月24日まで継続され，その後コミュニティに対して結果が公開される予定だ。 
@@ -150,6 +150,6 @@
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/49.py">Spring for Apache Hadoop 1.0リリース</a>SpringSourceはSpring for Apache Hadoop 1.0をリリースした。Spring for Apache Hadoopを使えば、開発者はSpring Frameworkを使ってHadoopアプリケーションを開発できる。また、Spring BatchとSpring Integrationとも簡単に統合できる。Spring for Apache HadoopはSpring Data umbrella projectのサブプロジェクトであり、オープンソースのApache 2.0ライセンスでリリースされている。 
-  </div>     
+  </div> 
  </body>
 </html>
