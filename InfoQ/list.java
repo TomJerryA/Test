@@ -1,8 +1,8 @@
 <html>
  <head></head> 
- <body>
-  <div>
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/12.java">Scaling Agile At Spotify: An Interview with Henrik Kniberg</a>Back in November, Spotify released a paper titled &quot;Scaling Agile @ Spotify with Tribes, Squads, Chapters &amp; Guilds&quot;. I recently had a chance to chat with Henrik Kniberg, one of the coaches on site there, to ask him some questions about the paper and to get an update on where they are today.
+ <body> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/12.java">Scaling Agile At Spotify: An Interview with Henrik Kniberg</a>Back in November, Spotify released a paper titled &quot;Scaling Agile @ Spotify with Tribes, Squads, Chapters &amp; Guilds&quot;. I recently had a chance to chat with Henrik Kniberg, one of the coaches on site there, to ask him some questions about the paper and to get an update on where they are today. 
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/11.java">Microsoft Office Developer Tools - Search Configuration Template, App Validation and Azure Debugging</a>The recently released Microsoft Office Developer Tools for Visual Studio 2012 provides a new search configuration project template, ability to validate apps during the submission process and Windows Azure debugging. 
@@ -150,6 +150,6 @@
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/13.java">Quickstart for New Users of Opscode Chef</a>OpsCode is providing a new avenue for learning chef aimed at equipping new users with what they need to start building &quot;Infrastructure as Code&quot;. The content leads users through a quickstart, common cases, screen casts, and troubleshooting. 
-  </div>  
+  </div> 
  </body>
 </html>

@@ -1,6 +1,9 @@
 <html>
  <head></head> 
- <body> 
+ <body>
+  <div>
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/10.cb">Qual tipo de Scrum Master voc&ecirc; est&aacute; contratando?</a>Johanna Rothman, autora de livros consagrados, recomenda uma an&aacute;lise de cargo antes da contrata&ccedil;&atilde;o de um Scrum Master, pois nem sempre esse &eacute; o tipo de profissional que a empresa est&aacute; procurando.
+  </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/9.cb">Spring Data: A solu&ccedil;&atilde;o mais geral para persist&ecirc;ncia?</a>Conhe&ccedil;a o Spring Data, um projeto da SpringSource cuja proposta &eacute; unificar e facilitar o acesso a diferentes tecnologias de armazenamento de dados, como bancos de dados relacionais e NoSQL. 
   </div> 
