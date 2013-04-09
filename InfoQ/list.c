@@ -1,8 +1,8 @@
 <html>
  <head></head> 
- <body>
-  <div>
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/40.c">TDC 2013 Florian&oacute;polis: inscri&ccedil;&otilde;es abertas</a>Nos dias 24, 25 e 26 de maio, em Florian&oacute;polis, ser&aacute; realizada a edi&ccedil;&atilde;o 2013 do The Developer's Conference, uma das maiores confer&ecirc;ncias para desenvolvedores no Brasil. O destaque do evento &eacute; a diversidade de assuntos distribu&iacute;dos em 21 trilhas, incluindo: Java, Arquitetura, .NET, Cloud Computing, Games, Android, Empreendedorismo, Web e Mobile.
+ <body> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/40.c">TDC 2013 Florian&oacute;polis: inscri&ccedil;&otilde;es abertas</a>Nos dias 24, 25 e 26 de maio, em Florian&oacute;polis, ser&aacute; realizada a edi&ccedil;&atilde;o 2013 do The Developer's Conference, uma das maiores confer&ecirc;ncias para desenvolvedores no Brasil. O destaque do evento &eacute; a diversidade de assuntos distribu&iacute;dos em 21 trilhas, incluindo: Java, Arquitetura, .NET, Cloud Computing, Games, Android, Empreendedorismo, Web e Mobile. 
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/39.c">Ansible: uma nova op&ccedil;&atilde;o para gerenciamento de configura&ccedil;&atilde;o</a>O Ansible &eacute; a mais recente promessa para a pr&oacute;xima gera&ccedil;&atilde;o de sistemas de gerenciamento de configura&ccedil;&atilde;o, independente de linguagem de programa&ccedil;&atilde;o, utilizando SSH como camada de comunica&ccedil;&atilde;o, operacional com linguagens de programa&ccedil;&atilde;o com suporte a JSON. Conhe&ccedil;a o novo projeto. 

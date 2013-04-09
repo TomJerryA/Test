@@ -1,92 +1,44 @@
-<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>Xtend 2.4 Adds Active Annotations, Android Support and More</h3><p>Today, the Eclipse Foundation announced the release of <a href="http://www.eclipse.org/xtend/">Xtend 2.4</a>, a statically-typed Java-esque programming language that compiles down to Java and runs on the JVM (and JVM like systems such as Android).</p> 
-<p>Unlike other JVM-based compiled languages such as Scala and Kotlin, Xtend is translated to Java source and then compiled with the standard Java compiler, so there are no backward compatibility issues with the resulting output.</p> 
-<p>Xtend differs from interpreted languages such as Groovy and JRuby/Jython in that the language is statically typed but has type inference to support simple coding, which means refactorings and type-specific completions are possible in the IDE.</p> 
-<p>InfoQ covered the <a href="http://www.infoq.com/news/2012/06/xtend-release-10;jsessionid=9B0EF572666163B70F1B33A7D96CBC13">1.0 release</a> last year, but a lot has changed in the interim. The <a href="http://www.eclipse.org/xtend/release_notes_2_4_0.html">new features in 2.4</a> include active annotations, collection literals, Android support and improved refactoring and content assist in the tooling.</p> 
-<p>InfoQ caught up with Sven Efftinge, project lead of Xtend, to find out more about the release, and started by asking:</p> 
-<p><b>InfoQ</b>: One of the new features in Xtend 2.4 is the addition of active annotations. Can you explain what they are, and how they cut down on boilerplate code?</p> 
-<blockquote> 
- <p><b>Sven Efftinge</b>: You basically declare an annotation and tell the compiler how annotated elements should be translated to Java code. Typical use cases are generating getters and setters, observers or other common design patterns such as visitors – but you can do much more with them. We've focussed on making it super easy to develop and deploy active annotations.</p> 
- <p>As an example, consider the JavaBean pattern for properties. This requires the creation of a get/set method pair, which contributes to what some refer to as 'Java code bloat'. In Xtend, you just need to declare that your field should be a property and Xtend does the rest:</p> 
- <pre>
-@Property String name
-</pre> 
- <p>This is translated into the following Java code:</p> 
- <pre>
-private String name;
-public String getName() {
-  return this.name;
-}
-public void setName(String name) {
-  this.name = name;
-}
-</pre> 
- <p>There are other annotations, such as <code>@Data</code>, which generates <code>hashCode()</code> and <code>equals()</code> for you automatically, and <code>@Observable</code> which can be applied to a data class to get automatic support for property change listeners, as described in <a href="http://www.eclipse.org/xtend/release_notes_2_4_0.html#active_annotations">the release notes</a>.
-  <!--?p--></p> 
- <p>The coolest thing is that the IDE and the compiler are aware of your changes. So all the typing, linking as well as stuff like navigation and content assist just work as expected, as changes are applied on the fly.</p> 
- <p>It's how code generation should be.</p> 
-</blockquote> 
-<p><b>InfoQ</b>: Another new feature is that of literal collections. What is the syntax for using literal arrays, sets and maps? Can these be nested?</p> 
-<blockquote> 
- <p><b>Sven Efftinge</b>: The syntax is a hash followed by either curly braces or squared brackets. For lists you use:</p> 
- <pre>
-val myList = #[1,2,3,4]
-</pre> 
- <p>And for sets it is:</p> 
- <pre>
-val mySet = #{1,2,3}
-</pre> 
- <p>Maps are created using the tuple operator:</p> 
- <pre>
-val mySet = #{1-&gt;&quot;one&quot;,2-&gt;&quot;two&quot; }
-</pre> 
- <p>The list literal can also be used as an array literal when the expected type is an array, as in:</p> 
- <pre>
-val int[] myArray = #[1,2,3,4]
-</pre> 
- <p>And yes, they can be nested as they are just expressions.</p> 
-</blockquote> 
-<p><b>InfoQ</b>: Are literal collection types mutable or immutable? How can you seed a mutable collection with a literal one?</p> 
-<blockquote> 
- <p><b>Sven Efftinge</b>: Yes, they are immutable. If you want a mutable one you use one of the factory methods:</p> 
- <pre>
-val myArrayList = newArrayList(1,2,3,4)
-</pre> 
- <p>Of course you can also construct them with existing immutable lists.</p> 
-</blockquote> 
-<p><b>InfoQ</b>: Speaking of literals, what are extension providers and how do they compare to extension methods?</p> 
-<blockquote> 
- <p><b>Sven Efftinge</b>: Extension providers are objects on the scope of your program which provide extension methods. This is best explained by example. Consider you have a Data Access Object (DAO) class, with methods like <code>save(Entity)</code>.</p> 
- <p>In Java you have to write:</p> 
- <pre>
-myDao.save(myEntity)
-</pre> 
- <p>In Xtend you could make the DAO object an extension provider which lets you use its methods as member methods on their first argument type. So instead you can write:</p> 
- <pre>
-myEntity.save()
-</pre> 
- <p>This is an important enhancement over C# extension methods (where only static methods can be used as extensions). Extension providers let you exchange the actual implementation easily.</p> 
-</blockquote> 
-<p><b>InfoQ</b>: JDK 8 has the concept of converting Lambdas into Single Access Method (SAM) types. Is this possible on Java 6 or Java 7 with Xtend today?</p> 
-<blockquote> 
- <p><b>Sven Efftinge</b>: In JDK8 lambdas can only be converted to so called functional interfaces. This is done in Xtend in the same way. The new addition is that you can now also use abstract classes with a SAM type. They are frequently used by frameworks such as &quot;Functional Java&quot;.</p> 
- <p>With Xtend, you don't need to wait for JDK8 to be able to do this; you can do it in Java 6 or Java 7 today. In fact, Xtend is compatible with Java 5.</p> 
-</blockquote> 
-<p><b>InfoQ</b>: Speaking of backward compatibility, what's the story with Xtend? Can programs compiled against Xtend 1.0 still be used against Xtend 2.4 today?</p> 
-<blockquote> 
- <p><b>Sven Efftinge</b>: They are binary compatible, so programs compiled against Xtend 1.0 will work with Xtend 2.4 without any recompilation or changes needed.</p> 
- <p>At the source level there are no breaking changes, although we have improved the compiler's error reporting which can highlight semantic errors where before the compiler wouldn't have warned you.</p> 
- <p>We take compatibility seriously, both at the compiled level and at the source level.</p> 
-</blockquote> 
-<p><b>InfoQ</b>: Being able to compile Xtend projects and install onto Android seems like a great win for the framework. Given that compiling Android applications with Scala or Kotlin add many megabytes to the package, what is the average size increase of compiling an Android application with Xtend versus coding directly in Java?</p> 
-<blockquote> 
- <p><b>Sven Efftinge</b>: Xtend compiles to Java source code which in turn is compiled to Java byte code. This ensures that the created byte code works nicely with Android. Also Xtend doesn't have its own fat library. There are only a couple of classes adding extension methods to existing JDK types (&lt;40K) and Google Guava, which is 1.3M.</p> 
- <p>You can write pretty efficient Android apps with Xtend.</p> 
-</blockquote> 
-<p><b>InfoQ</b>: One of the success criteria for a language is that it has excellent IDE support. How is Xtend's support in Eclipse evolving?</p> 
-<blockquote> 
- <p><b>Sven Efftinge</b>: The IDE has many new features like formatter, new quick fixes, new refactorings and much improved content assist.</p> 
- <p>Also the compiler performance has been improved a lot, too. We have a strong focus on enabling a good flow when working with Xtend and the IDE.</p> 
- <p>Unlike other JVM based languages, Xtend works with rather than against the JDT. You don't need to replace the JDT or enable weaving to use it. In addition, you can use any version of the Java compiler to be able to compile the project; you're not limited to just the version installed as the plug-in.</p> 
-</blockquote> 
-<p>Xtend 2.4 is available for <a href="http://www.eclipse.org/xtend/download.html&gt;download&lt;/a&gt;, as are the &lt;a href=" www.eclipse.org="" xtend="">release notes for 2.4</a>. For more information on Xtend, see the <a href="http://www.eclipse.org/xtend/">Xtend</a> home page.</p> 
+<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>Scaling Agile At Spotify: An Interview with Henrik Kniberg</h3><p>Back in November, Spotify released a paper titled <a href="http://blog.crisp.se/2012/11/14/henrikkniberg/scaling-agile-at-spotify">Scaling Agile @ Spotify with Tribes, Squads, Chapters &amp; Guilds</a>. I recently had a chance to chat with Henrik Kniberg, one of the coaches on site, to ask him some questions about the paper and to get an update on where they are today.</p> 
+<p><strong>Infoq:</strong> What were the initial signs that what you were doing wasn't going to scale? What were some of the pain points?</p> 
+<p><strong>Henrik Kniberg:</strong> We couldn’t get the productivity we wanted, and people in the organization were generally frustrated. For example, chapter leads were getting way too many direct-reports, so it was hard to find time to do 1:1 meetings, active mentoring, or coaching.</p> 
+<p><strong>InfoQ:</strong> Who was involved in the early decision making on how you were going to scale and what were their roles in the organization?</p> 
+<p><strong>Henrik Kniberg:&nbsp;</strong>Basically the senior leaders within Technology and Product worked together to figure things out. We then went to the organization for feedback and inspiration. It wasn’t a big re-make, more like a continuous stream of small iterative improvements to our organization and process. We have been growing for 3 years, and the way we work today has evolved naturally over time.</p> 
+<p><strong>InfoQ:</strong><strong>&nbsp;</strong>What led you to adopt this approach as opposed to using an existing scaling approach like Scaled Agile Framework or Disciplined Agile Delivery, etc.</p> 
+<p><strong>Henrik Kniberg:&nbsp;</strong>We are huge fans of the agile &amp; lean principles and fundamentals, but we are not closely attached to any specific set of practices or methods. We just want to work in a way that fits our culture and environment really well.</p> 
+<p>Autonomy is one of our guiding principles. We aim for independent squads that can each build and release products on their own without having to be tightly coordinated in a big agile framework. We try to avoid big projects altogether (when we can), and thereby minimize the need to coordinate work across many squads.</p> 
+<p><strong>InfoQ:</strong>&nbsp;You mentioned that you have 30 squads over 3 cities. Are all the squads co-located or are there squads with members in separate cities?</p> 
+<p><strong>Henrik Kniberg:&nbsp;</strong>Squads and tribes are co-located in the vast majority of cases. That is, all members of a squad are usually in the same room, and all squads in a tribe are usually next to each other in the same office. We have deliberately organized for this. We are particularly keen on making sure that the product owner is in the same location and room as the squad. Right now I can only think of one squad that isn’t co-located.</p> 
+<p><strong>InfoQ:</strong>&nbsp;I noticed that the only tools shown were stickies and spreadsheets. &nbsp;Is Spotify using an existing Agile tool to co-ordinate their work? If not, why not?</p> 
+<p><strong>Henrik Kniberg:&nbsp;</strong>We use a mix of tools, and are constantly experimenting with this. The most common coordination tools right now are stickies on the wall, google spreadsheets, and Jira. We also have a bit of Trello and LeanKit Kanban.</p> 
+<p>We encourage knowledge sharing and the spreading of best practices, but it is up to each squad and tribe to choose whatever tools make them happy and effective. By avoiding big projects, we also minimize the need to standardize our choice of tools.</p> 
+<p><strong>InfoQ:</strong>&nbsp;You also show that several &quot;squads&quot; may own individual parts of the product (diagram on page 2), how is that handled and how is overall cohesion of the product handled (and code ownership).</p> 
+<p><img src="http://www.infoq.com/resource/news/2013/04/scaling-agile-spotify-kniberg/en/resources/spotify_1.png;jsessionid=B8DA4E6E1124CDB28FCEAF2B15BE6BA4" alt="" _href="img://spotify_1.png" _p="true" /></p> 
+<p><strong>Henrik Kniberg:&nbsp;</strong>The technical architecture is hugely important for the way we are organized. The organizational structure must play in harmony with the technical architecture. Many companies can’t use our way of working because their architecture won’t allow it.</p> 
+<p>We have invested a lot into getting an architecture that supports how we want to work (not the other way around); this has resulted in a tight ecosystem of components and apps, each running and evolving independently. The overall evolution of the ecosystem is guided by a powerful architectural vision.</p> 
+<p>We keep the product design cohesive by having senior product managers work tightly with squads, product owners, and designers. This coordination is tricky sometimes, and is one of our key challenges. Designers work directly with squads, but also spend at least 20% of their time working together with other designers to keep the overall product design consistent.</p> 
+<p><strong>InfoQ:</strong>&nbsp;The image on page six seems to indicate a lot of dependencies, including UX as a separate team. How are those dependencies handled?</p> 
+<p><img src="http://www.infoq.com/resource/news/2013/04/scaling-agile-spotify-kniberg/en/resources/spotify_2.png;jsessionid=B8DA4E6E1124CDB28FCEAF2B15BE6BA4" alt="" _href="img://spotify_2.png" _p="true" /></p> 
+<p><strong>Henrik Kniberg:&nbsp;</strong>Dependencies are one of our challenges; the more dependencies we have, the less effective we become.</p> 
+<p>For example, UX used to be mostly separate, which caused dependency problems (as shown in our dependency visualization spreadsheet above). Now design and UX is mostly integrated into the squads, which has reduced the problem. This is one example of a dependency reduction strategy.</p> 
+<p>Here are some other dependency reduction strategies we use:</p> 
+<ol style="margin-top: 0pt; margin-bottom: 0pt;"> 
+ <li> <p>Decide where to put dependencies. For example, we have an intentional dependency from feature squads to infrastructure squads. This is managable, since infrastructure squads generally have more predictable delivery times. Instead of trying to eliminate that dependency, we try to become good at managing it.</p> </li> 
+ <li> <p>Don’t wait for stuff that isn’t ready.Solve the problem yourself instead. We adopt an open source model, so a squad is allowed to make the changes they need in another squad’s code, usually combined with conversations and code reviews.</p> </li> 
+ <li> <p>Knowledge sharing.Sometimes a dependency is caused by lack of knowledge. This is solved by internal tech talks, doing “internships” in another squad to learn from them, or shifting responsibilities between squads where it makes sense.</p> </li> 
+ <li> <p>Persistent dependency problems are sometimes resolved by splitting, combining, or rearranging squads.</p> </li> 
+</ol> 
+<p><strong>InfoQ:</strong>&nbsp;Any significant changes or updates since the paper was published?</p> 
+<p><strong style="font-family: Arial, Verdana, sans-serif; font-size: 12px;">Henrik Kniberg: </strong>We keep growing, so change is continuous.</p> 
+<p>One big step is that we’ve started becoming more clear about our product development process, see <a href="http://blog.crisp.se/2013/01/13/henrikkniberg/how-spotify-builds-products" style="text-decoration: none;"> How Spotify builds products</a> and the Think It, Build It, Ship It, Tweak It framework. &nbsp;We have also become more intentional about applying lean-startup principles, such as delivering an MVP (Minimum Viable Product) early, and using measurable hypotheses to drive product development. We are much better now at releasing the MVP to a small population of users to start learning from actual usage metrics. Hence, while building the product, we also get real user feedback and can adapt our priorities based on that.</p> 
+<p><strong>InfoQ:</strong>&nbsp;What would you say is your biggest challenge now?</p> 
+<p><strong>Henrik Kniberg:&nbsp;</strong>Some of our current challenges are:</p> 
+<ul> 
+ <li> <p>Squad dependencies - how to minimize unnecessary dependencies, and optimize the necessary dependencies. This is always a challenge as the company grows.</p> </li> 
+ <li> <p>How to balance between organizational focus (squads running in the same direction), and squad autonomy (squads getting to choose their own direction).</p> </li> 
+ <li> <p>How to integrate design and development more tightly</p> </li> 
+ <li> <p>How to avoid bottlenecking operations as the company grows, and enable squads to continuously deploy and experiment in production.</p> </li> 
+ <li> <p>How to deal with “big projects” that involve the coordination of dozens of squads.</p> </li> 
+ <li> <p>How to keep the product design cohesive while having many different squads working on it independently.</p> </li> 
+</ul> 
+<p>&nbsp;</p> 
 <p id="lastElm"></p><br><br><br><br><br><br></body></html>
