@@ -1,6 +1,9 @@
 <html>
  <head></head> 
- <body> 
+ <body>
+  <div>
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/41.c">Valor de neg&oacute;cio: como priorizar o backlog e o que ele realmente significa</a>Ron Jeffries, um dos tr&ecirc;s fundadores do Extreme Programming (XP), esclarece qual &eacute; o verdadeiro valor para uma empresa, auxiliando a prioriza&ccedil;&atilde;o correta do backlog de desenvolvimento de um produto.
+  </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/40.c">TDC 2013 Florian&oacute;polis: inscri&ccedil;&otilde;es abertas</a>Nos dias 24, 25 e 26 de maio, em Florian&oacute;polis, ser&aacute; realizada a edi&ccedil;&atilde;o 2013 do The Developer's Conference, uma das maiores confer&ecirc;ncias para desenvolvedores no Brasil. O destaque do evento &eacute; a diversidade de assuntos distribu&iacute;dos em 21 trilhas, incluindo: Java, Arquitetura, .NET, Cloud Computing, Games, Android, Empreendedorismo, Web e Mobile. 
   </div> 
