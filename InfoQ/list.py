@@ -2,7 +2,19 @@
  <head></head> 
  <body>
   <div>
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/44.py">Release Cadence Report - アジャイルに関する調査のローンチ</a>Ryan Cromwell 氏が Release Cadence Report Survey をリリースした。ソフトウェアをリリースする速さはチームが監視，報告すべきもっとも重要な指標のひとつであるという前提に基づいて，チームの活動を５つの領域から評価する調査のローンチである。調査は2013年5月24日まで継続され，その後コミュニティに対して結果が公開される予定だ。
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/48.py">特許所有者がTCP/IPの知的所有権を主張</a>テキサス州オースティンに本拠を置くネットワークハードウェアベンダが，TCP/IP プロトコルセットの実装に対してロイヤリティを求めると発言している。かつて Dellor という社名だったこの KCIR Networks は，1997年に Comer Labs を買収した際にこの特許を合わせて取得した。特許が出願されたのは 1975年だが，Comer Labs がこれまでにロイヤリティを要求したことはなかった。
+  </div>
+  <div>
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/47.py">アジャイルコーチングと組織変化についての動画講義</a>2012年の最後の四半期にアジャイル導入についてのふたつの学習動画がPearson/Addison-Wesleyから発表された。
+  </div>
+  <div>
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/46.py">AWSクラウド、Node.jsアプリケーションサービスを提供</a>AWS（Amazon Web Services）チームはElastic BeanstalkサービスにNode.jsのサポートを追加し、業界最高レベルのプラットフォームサポートを実現した。AWSは競合ひしめくNode.jsフレンドリーなクラウドに参入したが、ほかのAWSサービスとの統合によって差異化をはかろうとしている。
+  </div>
+  <div>
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/45.py">MongoDBがセキュリティの改善、テキスト検索、パフォーマンス向上を実現</a>MongoDB2.4は最近、テキスト検索、ハッシュベースのシャーディング、GeoJSONサポートによる優れた地理空間機能、そしていくつかのパフォーマンス改善とツーリング群の改善を行なって、リリースされた。我々は、またロードマップ上の次のリリースが何であるのかを10genと話した。
+  </div> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/44.py">Release Cadence Report - アジャイルに関する調査のローンチ</a>Ryan Cromwell 氏が Release Cadence Report Survey をリリースした。ソフトウェアをリリースする速さはチームが監視，報告すべきもっとも重要な指標のひとつであるという前提に基づいて，チームの活動を５つの領域から評価する調査のローンチである。調査は2013年5月24日まで継続され，その後コミュニティに対して結果が公開される予定だ。 
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/43.py">EclipseCon 2013総まとめ</a>EclipseCon 2013がボストンで開催された。OSGiからクラウド、宇宙でのEclipseなど話題は多岐にわたった。 
@@ -138,18 +150,6 @@
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/49.py">Spring for Apache Hadoop 1.0リリース</a>SpringSourceはSpring for Apache Hadoop 1.0をリリースした。Spring for Apache Hadoopを使えば、開発者はSpring Frameworkを使ってHadoopアプリケーションを開発できる。また、Spring BatchとSpring Integrationとも簡単に統合できる。Spring for Apache HadoopはSpring Data umbrella projectのサブプロジェクトであり、オープンソースのApache 2.0ライセンスでリリースされている。 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/48.py">LLBLGen Pro v4.0 Betaリリース</a>Solutions DesignはLLBLGen Pro v4.0 Betaをリリースした。デザイナとランタイムが改善されており、Visual Studio 2010/2012のサポートが追加されている。 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/47.py">APIコミュニティでの議論 - ガバナンス対イノベーション</a>ガバナンスの問題がまたもや現れた。今回はAPIコミュニティにおいて，中でもイノベーションを主眼とする組織との関係について疑問を投げかけている。先日のAPI Strategy and Practiceカンファレンスで大きな話題となり，その後もネット上での議論が続いている。 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/46.py">QConTokyo2013【ビッグデータ/分散技術】トラックのご紹介</a>スマートデバイスの台頭により、ウェブからのトラフィックは年々増加傾向にあります。ビッグデータを活用するには、データの収集・永続化・加工処理などすべての面において分散処理が必要となります。本トラックでは、今注目されている分散処理の最新情報について様々な分散処理基盤を紹介し、事例を交え紹介していきます。 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/45.py">CQRSフレームワークのAxon 2がMongoDBをサポート，パフォーマンスも向上</a>Axon の CQRS フレームワークの最新バージョンでは，MongoDB をバックストアとして使用する MongoEventStore がサポートされている。さらにAPIがシンプルなものになり，パフォーマンスも向上している。先日リリースされたこのバージョン2.0は，イベントオブジェクトがPOJOベースになると同時に，メッセージやペイロード，メタデータを定義するアノテーションも備えている。 
-  </div>  
+  </div>     
  </body>
 </html>

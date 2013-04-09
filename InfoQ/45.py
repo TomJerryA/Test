@@ -1,22 +1,34 @@
-<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>CQRSフレームワークのAxon 2がMongoDBをサポート，パフォーマンスも向上</h3><p><a target="_blank" href="http://www.infoq.com/news/2013/03/axon-2-release;jsessionid=BED7CE2209035AB822CE7DB06D048DF0"><em>原文(投稿日：2013/03/19)へのリンク</em></a></p> 
-<div class="clearer-space">
- &nbsp;
-</div> 
+<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>MongoDBがセキュリティの改善、テキスト検索、パフォーマンス向上を実現</h3><p><a target="_blank" href="http://www.infoq.com/news/2013/03/mongodb-2-4;jsessionid=C2F15D8231EDBE007EF45A0361CF607F"><em>原文(投稿日：2013/03/29)へのリンク</em></a></p> 
+<div class="clearer-space"></div> 
 <div id="newsContent"> 
- <p><span lang="SV"><span lang="EN-GB"><font color="#0000ff"><a target="_blank" href="http://www.axonframework.org/">Axon</a></font></span></span> の <a target="_blank" href="http://martinfowler.com/bliki/CQRS.html">CQRS</a> フレームワークの最新バージョンでは，<a target="_blank" href="http://www.mongodb.org/">MongoDB</a> をバックストアとして使用する <a target="_blank" href="http://www.axonframework.org/docs/2.0/repositories-and-event-stores.html#d4e1032">MongoEventStore</a> がサポートされている。さらにAPIがシンプルなものになり，パフォーマンスも向上している。先日リリースされたこの <a target="_blank" href="http://www.axonframework.org/news/axon-2-0-released/">バージョン2.0</a> は，イベントオブジェクトがPOJOベースになると同時に，メッセージやペイロード，メタデータを定義するアノテーションも備えている。その他の新機能は次のようなものだ。</p> 
+ <p><a href="http://www.mongodb.org/" target="_blank">MongoDB</a> 2.4は最近、テキスト検索、ハッシュベースのシャーディング、GeoJSONサポートによる優れた地理空間機能、そしていくつかのパフォーマンス改善とツーリング群の改善を行なって、リリースされた。我々は、またロードマップ上の次のリリースが何であるのかを10genと話した。</p> 
+ <p>主な改善点のいくつかは以下のとおりである 。</p> 
  <ul> 
-  <li>高性能なコマンドバス。ロックレスアルゴリズムを使用して並列的にコマンドを処理することにより，単位時間あたり４倍以上のコマンドを処理できるようになった。</li> 
-  <li>イベントのシリアライズ実行が１度だけであること，イベントが実際に使用される場合にのみデシリアライズされることを保証するロジック。</li> 
-  <li>多数のイベントを対象とするリプレイの大幅な高速化。</li> 
-  <li>複数のマシンへの水平スケーリングと各マシンの負荷調整が可能な分散コマンドバス。</li> 
-  <li>イベントのアップキャストと <a target="_blank" href="http://blog.trifork.com/2012/04/17/refactoring-in-an-event-sourced-world-upcasting-in-axon-2/">逆多重化</a> のサポート。新たなイベントを実装した後に，以前のイベントを複数の新イベントに変換する処理などが可能になる。</li> 
-  <li>分散イベントに <a target="_blank" href="http://www.amqp.org/">AMQP</a> (Advanced Message Queuing Protocol) を使用可能。</li> 
+  <li><a href="http://docs.mongodb.org/manual/release-notes/2.4/#text-search" target="_blank">テキスト検索</a>は、ベータ機能として導入され、15の言語で語幹処理とトークン化をサポートしている。</li> 
+  <li><a href="http://docs.mongodb.org/manual/release-notes/2.4/#new-hashed-index-and-sharding-with-a-hashed-shard-key" target="_blank">ハッシュベースのシャーディング</a>は、あらゆる自然なシャーディングキーに分散しているデータを簡単に予測できない場合のためである。</li> 
+  <li><a href="http://docs.mongodb.org/manual/release-notes/2.4/#new-geospatial-indexes-with-geojson-and-improved-spherical-geometry" target="_blank">地理空間インデックス</a>は、GeoJSONサポートによる。</li> 
+  <li>セキュリティの強化-新しい<a href="http://docs.mongodb.org/manual/release-notes/2.4/#new-modular-authentication-system-with-support-for-kerberos" target="_blank">モジュラー認証システム</a>、Kerberosとの統合、<a href="http://docs.mongodb.org/manual/release-notes/2.4/#role-based-access-control-and-new-privilege-documents" target="_blank">ロールベースのアクセス制御</a></li> 
+  <li>いくつかのパフォーマンスの向上、カウントや集計などのいくつかの特定のシナリオでは著しい改善。</li> 
+  <li>V8がMongoのシェルにおけるデフォルトのJavaScriptエンジンになった（SpiderMonkeyを置き換え）。これで、JavaScriptベースのアクションのパフォーマンスと同時実行性が改善される。</li> 
+  <li>クラスタのステータス監視用の追加メトリクス</li> 
  </ul> 
- <p>リリースに合わせて，Axonベースのシンプルなシステムを構築するためのステップが <a target="_blank" href="http://www.axonframework.org/axon-2-quickstart-guide/">クイックスタートガイド</a> として公開された。また，フレームワークの変更を反映して <a target="_blank" href="http://www.axonframework.org/docs/2.0/single.html">リファレンスガイド</a> もアップデートされている。</p> 
- <p>このフレームワークでは，CQRS (Command Query Responsibility Segregation) と <a target="_blank" href="http://martinfowler.com/eaaDev/EventSourcing.html">イベントソーシング</a> という，２つのアーキテクチャ・パターンをベースとしたシステムのビルディングブロックを提供している。いずれも今，注目を集めつつあるパターンだ。<a target="_blank" href="http://domaindrivendesign.org/books/evans_2003">DDD reference book</a> の著者であるEric Evans氏らの運営するDDD(Domain-Driven Design)コミュニティのWebサイトには，その重要性が特に <a target="_blank" href="http://domaindrivendesign.org/">指摘されている</a>。</p> 
- <p>&quot;CQRSとイベントソーシングの２つは，非常に密接な関連を持ったDDDへのアーキテクチャ的アプローチです。DDDに関しては，ここ数年で一番ホットな話題でしょう。&quot;</p> 
- <p>Axon Framework は <a target="_blank" href="http://blog.trifork.com/author/allard/">Allard Buijze</a> 氏が設立したオープンソース製品である。Apache License バージョン2.0 によってライセンスされ，有償サポートも選択できる。</p> 
- <p>約200名のメンバを持つAxon ユーザ <a target="_blank" href="https://groups.google.com/forum/?fromgroups=#!forum/axonframework">フォーラム</a> には，これまでに約300のトピックがある。 <a target="_blank" href="http://stackoverflow.com/questions/9646884/real-life-experience-with-the-axon-framework">実務上の経験</a> に関する議論からは，フレームワークに対して肯定的，否定的の両方のフィードバックのあることが確認できる。<br /> &nbsp;</p> 
- <p id="lastElm">&nbsp;</p> 
+ <p>10genは、また 2.4のリリースと一緒に<a href="http://www.10gen.com/products/mongodb-enterprise" target="_blank">MongoDBのエンタープライズ版</a>も導入した。</p> 
+ <p>我々は、10genの製品マーケティングのディレクターである<a href="http://www.linkedin.com/in/kellystirman" target="_blank">Kelly Stirman</a>氏に連絡を取り、新機能と次に何が期待できるのかを聞いた。</p> 
+ <p>氏は、コレクション・レベルのロックがMongoDBにとって意味をなさないかも知れない理由を説明した。</p> 
+ <blockquote> 
+  <p>2.2で、ロックによる改善は、ロック競合を減らすことにより、ライト時のスループットに本質的な便益を提供しています。David Mytton氏が<a href="http://blog.serverdensity.com/goodbye-global-lock-mongodb-2-0-vs-2-2/" target="_blank">この主題で良い記事を書き上げました</a>。</p> 
+  <p>MongoDBの2.4は、2.0と2.2で提供した改善を超えて、ロックの粒度に関して何も追加していません。私たちは、2.6では、ドキュメントレベルのロックを検討しています。改善を生み出したロックは、充分本質的だったので、コレクション・レベルのロックは大きな改善を追加しないでしょう。なので、ドキュメントレベルのロックが、次のステップでしょう。</p> 
+ </blockquote> 
+ <p>新しいハッシュベースのシャーディングの代わりに範囲ベースのシャーディングをどのような場合に使用するのかについて。</p> 
+ <blockquote> 
+  <p>範囲ベースのシャーディングを使用する場合、もしシャードキーの範囲に基づいて、アプリケーションがデータを要求するなら、それらのクエリは、通常、一つのシャード、あるいは恐らく僅かな数のシャードである、適切なシャードにルーティングされます。ハッシュベースのシャーディングを使用したシステムでは同じクエリは、ずっと多くのシャード、おそらすべてシャードにリクエストをルーティングします。理想的には、クエリは単一のシャードまたはできるだけ少数のシャードにルーティングされます。すべてのクエリをすべてのシャーにルーティングするよりも、この方がずっと良くスケールするからです。だから、あなたがよく自分のデータとクエリを理解していれば、恐らく範囲ベースのシャーディングが最適なオプションです。</p> 
+ </blockquote> 
+ <p>MongoDB 2.4では、カウントは最高で20倍速くなり、Aggregationフレームワークは平均で３～５倍早くなります。氏の説明によると、改良されたカウントパフォーマンスは、MongoDBにおけるBツリーのトラバースへのいくつかの改善に依存している。カーディナリティが低いインデックスベースのカウントにおいて、最大の改善が見られます。アグリゲーションフレームワークの改善は、MongoDBの内部実装における多くの小さな変更が積み重なって大きな恩恵をもたらした結果なのだ。</p> 
+ <p>エンタープライズフィーチャでは、何が次に入るのですか？</p> 
+ <blockquote> 
+  <p>MongoDBの2.4は、セキュリティおよび監視の領域で大きく前進しましたが、将来のリリースには、はるかに多くのものを計画しています。我々は、認証、認可、および監査の次元に沿ってセキュリティを考えます。MongoDBの今後のリリースでも、これらの領域に注力していきます。我々はMongoDBのを提供するツール群を強化していきます。 <a href="http://www.10gen.com/products/mongodb-monitoring-service" target="_blank">MongoDB監視サービス</a>（MMS）は、MongoDBのコミュニティで非常に人気を得ており、15,000人以上のユーザがおり、急速に成長しています。私たちは、MMSへの投資を引き続き行い、当社のエンタープライズサブスクリプションの一部として、クラウドベースのツールとオンプレムの製品の両方を無料で提供していきます。</p> 
+ </blockquote> 
+ <p>MongoDB 2.4の新しいフィーチャについてもっと知りたければ、<a href="http://docs.mongodb.org/manual/release-notes/2.4/" target="_blank">リリースノート</a>と<a href="http://docs.mongodb.org/manual/release-notes/2.4-overview/" target="_blank">概要</a>を読むといい。</p> 
+ <p id="lastElm"></p> 
 </div> 
 <p id="lastElm"></p><br><br><br><br><br><br></body></html>
