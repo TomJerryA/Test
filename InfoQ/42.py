@@ -1,41 +1,58 @@
-<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>QCon New York 2013,50/100の講演者が確定 - NASA, Twitter，LinkedIn, Netflixから</h3><p><a target="_blank" href="http://www.infoq.com/news/2013/03/qconnyc-2013-update;jsessionid=1B7E11194A60DA03548F5CBBEB3BEDB5"><em>原文(投稿日：2013/03/11)へのリンク</em></a></p> 
+<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>ウェブスタイルは上手くいったか</h3><p><a target="_blank" href="http://www.infoq.com/news/2013/03/web-style;jsessionid=856612D388D1A8108AB45FED13409457"><em>原文(投稿日：2013/03/24)へのリンク</em></a></p> 
 <div class="clearer-space">
  &nbsp;
 </div> 
 <div id="newsContent"> 
- <p>第２回 <a target="_blank" href="http://qconnewyork.com/?utm_source=infoq&amp;utm_medium=news&amp;utm_campaign=03122013news">QCon New York 2013</a> 講演者の50名以上が確定した。QCon New Yorkはマンハッタンのすぐ外(ブルックリン橋近く)にあるニューヨーク・マリオットを会場として，2013年6月10～14日の日程で開催される。参加登録はすでに始まっていて，新たに決定した講演者やセッションが毎週，カンファレンスのサイトに掲載されている。現在は早期 <a target="_blank" href="http://qconnewyork.com/registration-intro.html?utm_source=infoq&amp;utm_medium=news&amp;utm_campaign=03122013news">予約</a> 期間中で，<strong>３月15日までに登録すれば500ドルの割引</strong> が受けられる。</p> 
- <p>カンファレンスの前半２日間(2013年6月10～11日)はチュートリアル，続く3日間(2013年6月12～14日)は完全カンファレンス日という設定だ。</p> 
- <p>今年のQCon New Yorkで予定されているセッションの概要を紹介しよう。</p> 
- <ul> 
-  <li><strong>&quot;Netflixにおける，自由度とアジリティを最大化するマルチリージョン・クラウド運用&quot;</strong> - Netflix 信頼性アーキテクト, Jeremy Edberg氏</li> 
-  <li><strong>&quot;データサイエンス＠NASA&quot;</strong> - NASA データサイエンティスト, Rob Witoff氏</li> 
-  <li><strong>&quot;Stormの開発から学んだこと&quot;</strong> - Backtype@Twitter リードエンジニア, Nathan Marz氏</li> 
-  <li><strong>&quot;LinkedInにとってのスケーラビリティ，アベイラビリティ，パフォーマンス&quot;</strong> - LinkedIn 分散データシステム担当シニアメンバ, Sid Anand氏</li> 
-  <li><strong>&quot;つまらない失敗&quot;</strong> - Etsy ソフトウェアエンジニア, Stephen Hardisty氏</li> 
-  <li><strong>&quot;巨大JavaScriptプロジェクトを生き抜く&quot;</strong> - JSHint クリエータ, Mozillaエンジニア, Anton Kovalyov氏</li> 
-  <li><strong>&quot;G1ガベージコレクタへのディープダイブ&quot;</strong> - &quot;Java Performance&quot; 著者, Charlie Hunt氏</li> 
-  <li><strong>&quot;メリーさんのラムダ&quot;</strong> - Javaハッカ－, &quot;Pro JavaFX Platgform&quot; 共同著者, Stephen Chin氏</li> 
-  <li><strong>&quot;ネイティブアプリのオートソシエテの住人たる，上品なWeb アプリとは&quot;</strong> - Adrian Kosmaczewski氏</li> 
-  <li><strong>&quot;データ進化の概観&quot;</strong> - ThoughtWorks CTO, Rebecca Parsons氏</li> 
-  <li><strong>&quot;トレーディングおよびリスク管理のためのビッグデータのリアルタイム・アグリゲーション&quot;</strong> - シカゴ・マーカンタイル取引所 ソフトウェアエンジニアリング・エグゼクティブディレクタ, Paul Water氏</li> 
-  <li><strong>&quot;雲に光を - クラウドにおけるベストプラクティスの定義&quot;</strong> - Eucalyptus シニア・クラウドエンジニア, Paul Weiss氏</li> 
-  <li><strong>&quot;テスト可能なJavascript&quot;</strong> - &quot;Testable Javascript&quot;(O'Reily) 著者, Mark Ethan Trostler氏</li> 
-  <li><strong>&quot;Webコンポーネント/動的ビューのためのDartのWeb UI&quot;</strong> - Google Chromeデベロッパ・アドボケート, Seth Ladd氏</li> 
-  <li><strong>&quot;キャピタルマーケットのための簡単な非構造データの分析と統制&quot;</strong> - Risk Focus 製品開発責任者, Greg Bujak氏<br /> &nbsp;</li> 
- </ul> 
- <p>その他，Qcon New Yorkでプレゼンテーション予定の講演者には，以下の方々がいる。</p> 
- <ul> 
-  <li><strong>Ramesh Balakrishnan氏</strong>, Dropbox ソフトウェアエンジニア</li> 
-  <li><b>Jim McCarthy氏</b>, アジャイルおよびチームコラボレーション・グル</li> 
-  <li><strong>Peter Bell氏</strong>, General Assembly エンジニアリング上級副社長</li> 
-  <li><strong>Kirk Pepperdine氏</strong>, Javaパフォーマンスチューニング専門家</li> 
-  <li><strong>Dave Farley氏</strong> &quot;Continuous Delivery&quot; (Addison Wesley) 共同執筆者</li> 
-  <li><strong>Matthew McCullough氏</strong>, GitHub.com トレーニングVP</li> 
- </ul> 
- <p>QCon New Yorkでは100人以上の講演者と6つの並行トラック，そして多数の休憩やパーティ，ネットワークの機会が提供される予定だ。QConにまだ出席したことがなければ，過去のセッションについて見ておくとよいだろう。学習とネットワークの機会，Javaや.NET，HTML5，モバイル，アジャイル，アーキテクチャの各コミュニティで起きている技術革新を追い求める機会としては，米国でも他に類をみないカンファレンスだ。</p> 
- <p>３日間のイベントへの <a target="_blank" href="http://qconnewyork.com/registration-intro.html?utm_source=infoq&amp;utm_medium=news&amp;utm_campaign=03122013news">参加登録</a> 費用は，<strong>３月15日まで</strong> ならば <strong>1,595</strong> ドル (500ドル割引) である。団体割引も利用可能だ。QConはInfoQ.comのプロデュースの下，ロンドン，サンフランシスコ，ニューヨーク，北京，上海，成都，広州，東京，サンパウロで毎年開催されている。<a target="_blank" href="http://qconferences.com">http://qconferences.com</a></p> 
- <p>私たちの <a target="_blank" href="http://twitter.com/#!/QConnewyork">Twitter</a> と <a target="_blank" href="https://www.facebook.com/QCon">Facebook</a> ページで，カンファレンスについての最新のアナウンスを確認してほしい。</p> 
- <p>&nbsp;</p> 
+ <p>Jean-Jacques Dubray氏(JJ)が<a target="_blank" href="http://www.ebpml.org/blog2/index.php/2013/03/20/the-end-of-the-web">最近のブログ</a>で<a target="_blank" href="http://www.tbray.org/ongoing/When/200x/2006/04/17/SOA-or-not">Tim Bray氏がSOAの終焉を予言</a>してからほぼ7年経ったことに言及している。</p> 
+ <blockquote>
+  私はインタビューを受け、ポッドキャストで話しました。 [...] 両方とも私にはある疑問が浮かびました。“SOAについてどうするべきだと思うか”。不気味なことにこの問いを私に投げかけた人はいませんでした。そして私は答えを見つけました。“何もするな。‘SOA’はかつては何らかの意味を持っていたが、今は只のベンダの戯言だ。”
+ </blockquote> 
+ <p>TimTim Bray氏はSOAよりも<a target="_blank" href="http://www.tbray.org/ongoing/When/200x/2006/03/26/On-REST">ウェブスタイル</a>に未来がある、と宣言(予言)している。JJが説明するようにこの予言はその後、多く言及された。<a target="_blank" href="http://www.infoq.com/news/2009/01/is-soa-dead;jsessionid=3C3882C9D9DD4567D18E339670C63407;jsessionid=856612D388D1A8108AB45FED13409457">Anne-Thomas Manes氏など</a>の言及だ。結論のひとつはSOAプロジェクトの多くは衰退し、中止になった。JJは自身の経験を語っている。</p> 
+ <blockquote>
+  当時のマネージャが私にTim Brayの記事がIT部門で話題になっており、彼は自身のマネジメントでTimの宣言に対してどのように回答をしたらいいか解らないと言いました。そのとき、彼のチームは独自のESBを構築していました当時はまだXMLはほとんど知られていませんでした。絶えず上昇するトランザクション量(2007年初頭で1日10メガのリクエスト)がTim Brayの文章で危うくなったのです。
+ </blockquote> 
+ <p>JJは<a target="_blank" href="http://www.infoq.com/articles/rest-soap;jsessionid=3C3882C9D9DD4567D18E339670C63407;jsessionid=856612D388D1A8108AB45FED13409457">数年</a>に渡ってInfoQや他の媒体で<a target="_blank" href="http://www.infoq.com/news/2011/06/trouble-with-apis;jsessionid=3C3882C9D9DD4567D18E339670C63407;jsessionid=856612D388D1A8108AB45FED13409457">Webが見落としている</a><a target="_blank" href="http://www.infoq.com/news/2011/06/RestAPIs;jsessionid=3C3882C9D9DD4567D18E339670C63407;jsessionid=856612D388D1A8108AB45FED13409457">問題について</a><a target="_blank" href="http://www.infoq.com/articles/RESTSOAFuture/;jsessionid=3C3882C9D9DD4567D18E339670C63407;jsessionid=856612D388D1A8108AB45FED13409457">少なくない時間</a>を費やしている。最近では、ウェブスタイルを実装していると称する多くのサービスを見ている。</p> 
+ <blockquote>
+  9000のAPI[Programmable Webのディレクトリにある]の内、私の見積もりではTim Brayの
+  <a target="_blank" href="http://en.wikipedia.org/wiki/Representational_state_transfer">ウェブスタイル</a>に従っているのは1%に満たないです。ほとんどのAPIはウェブスタイルではなく&quot;API&quot;スタイル、つまり、RPCのようなスタイルです。
+ </blockquote> 
+ <p>JJは自身が代表的なサンプルと考えるAPIをいくつか例示し、自身の考えを説明している。</p> 
+ <blockquote> 
+  <ul> 
+   <li><span style="line-height: 19px; font-size: 13px"><strong>Ask Ziggy</strong> </span><a style="line-height: 19px; font-size: 13px" target="_blank" href="http://www.ask-ziggy.com/walkthrough.html#sample">&quot;アクション&quot;</a><span style="line-height: 19px; font-size: 13px"> (Play、NextSong、Previous Song、Shuffle...というような)を定義する機能を提供する</span></li> 
+   <li><span style="line-height: 19px; font-size: 13px"><strong>WhatLanguage</strong> 同じURIにGET(リクエストの文字数が7500文字以下の場合)やPOSTをすることで与えられた文字列の言語を検出する<a target="_blank" href="http://www.whatlanguage.net/en/api/language_identification_documentation#detect_text">ことができる</a></span></li> 
+   <li><span style="line-height: 19px; font-size: 13px"><strong>Do.com</strong> <a target="_blank" href="https://developers.do.com/docs/tasks">ウェブスタイルのAPI</a>を提供しているように見えるが、不十分。5種類のリソース(タスク、プロジェクト、ユーザ...)に対する単純なCRUD操作を提供する</span></li> 
+   <li><span style="line-height: 19px; font-size: 13px"><strong>SkyBuffer</strong>も<a target="_blank" href="https://dev.skybuffer.com/version/1">ウェブスタイル</a>に従っているが、DO.comと同じようにエンティティに対するCRUDを提供する</span></li> 
+   <li><span style="line-height: 19px; font-size: 13px"><strong>MaShape</strong>は&quot;Cloud APIハブ&quot;であり、APIの開発者にそのAPIの利用者のためのより良い方法を提供する。では<a target="_blank" href="https://www.mashape.com/docs/gettingstarted/overview">どのように実現しているのか</a>。&quot;<span>Mashape上でAPIを記述することでクライアントライブラリとドキュメントを自動生成する方法&quot;を提供する。数年のバッシングの後、開発者の間でクライアントコードの自動生成についての議論が始まったのだ。</span></span></li> 
+  </ul> 
+ </blockquote> 
+ <p>&nbsp;JJの考えでは、Timやその他の人が推奨する純粋なウェブスタイルはAPIアプローチと競合関係にある。</p> 
+ <blockquote>
+  ウェブスタイルは&quot;統一インターフェース&quot;、ブックマークウェブスタイルは&quot;統一インターフェース&quot;、ブックマーク、
+  <a target="_blank" href="http://www.infoq.com/articles/hypermedia-api-tutorial-part-one;jsessionid=3C3882C9D9DD4567D18E339670C63407;jsessionid=856612D388D1A8108AB45FED13409457">HATEAOS</a>ではなかったのか。標準IANA型を忘れてはいないか。このような議論は最近聞かなくなりました。URL内に動詞を埋め込む方法や複雑なクエリをポストすることを恥ずかしく思う人はいなくなりました。最も重要なのは
+  <a target="_blank" href="http://docs.mongodb.org/manual/reference/javascript/">MongoDBが示したことです</a>。つまり、CRUDを行うためには4つの動詞と貧弱なURL構文では足りないということです。開発者と設計者はやけになって&quot;ウェブスタイル&quot;の周りをふらふらして、
+  <a target="_blank" href="http://www.infoq.com/presentations/OpenStack-Extensions;jsessionid=3C3882C9D9DD4567D18E339670C63407;jsessionid=856612D388D1A8108AB45FED13409457">JSONに名前空間を付ける</a>というようなこともしています。
+ </blockquote> 
+ <p>このようなウェブスタイルのようなサービスを概観し、JJは価値を提供するのに失敗し、&quot;死んだ&quot;と結論を下している。さらに、ウェブそのものがほとんど死にかけていると宣言する。</p> 
+ <blockquote>
+  [...] 
+  <a target="_blank" href="http://www.itwriting.com/blog/7249-native-apps-vs-html-5-no-consensus-over-how-to-choose.html">HTML5を使って価値あるものを作り出す方法がわからない、ネイティブアプリと競争しなければならない開発者</a>とウェブのビジネスモデルの中心にある&quot;製品&quot;に反映された素晴らしいアイディアに最終的に肝を冷やすことになるエンドユーザの間でウェブは死にかけています。&quot;ウェブよ永遠なれ&quot;というメッセージを携え、
+  <a target="_blank" href="http://www.ebpml.org/blog2/index.php/2010/11/21/soon-the-web-will-die">Tim Berner-Leeは6ヶ月ごとにやってきますが</a>、
+  <a target="_blank" href="http://www.bbc.co.uk/news/world-asia-21855051">セキュリティの大混乱</a>の後では、 大英帝国勲章の持ち主でももはやウェブを救えないように思えます。
+ </blockquote> 
+ <p>幸い、JJの記事は、過去とごまかされてきた&quot;技術的負債&quot;を陰鬱に振り返るだけで終わっていない。現在我々がどこにいるのか、そして、モバイルの新しい波についても言及している。JJはモバイルをこれまで見られなかった最大のパラダイムシフトになる可能性があると考えている。</p> 
+ <blockquote>
+  ほとんどの人は覚えていないでしょうが、ソフトウエアエンジニアリングは古い、とても古い&quot;ファイル処理&quot;というパラダイムの上に成り立っています。UFSがその頂点に位置しているのでしょう。ディスクトップのメタファとPCの主な利用パターンは&quot;ファイル処理&quot;に結びつけられたままです。モバイルにはファイルは関係ありません。モバイル端末は私たちの活動を逐一支援してくれます。少なくも、未来のオペレーティングシステムはアクティビティ中心になります。
+ </blockquote> 
+ <p>しかし、成功するためにはウェブの技術を置き去りにしなければならない、とJJは考えている。</p> 
+ <blockquote>
+  最高のユーザエクスペリエンスが勝ちます。それに対抗しようとする人は負けるでしょう。ウェブが興隆したのは、一時は優れたユーザエクスペリエンスを提供したからです。&quot;ウェブ&quot;だからという理由で興隆したのではありません。
+ </blockquote> 
+ <p>最後にJJは問題解決方法に対してもっと実用本位になり、過去から学ばなければならない、と主張する。</p> 
+ <blockquote>
+  さらにCRUDを突き詰めようとしてもRESTでない方法を切り捨てることはできません。MongoDB APIのように非常に優れた設計のAPIでさえそうです。また、オブジェクト指向は分散されたコンポーネント間の通信を表現するには不適切なパラダイムであることをしっかり理解する必要があります。すべてをステートレスなシングルトンのメソッド呼び出しで具現化することを辞めなければなりません。クラスのアノテーションはSOAが始め、私たちが終わらせなければならないセマンティック革命の推進力としては貧弱過ぎるのです。
+ </blockquote> 
+ <p>JJが示したこれらの変化を考慮すると、一体最終的なゴールは何なのだろう。JJは堅牢な合成プログラミングモデルを想定しているようだ。このモデルではモデルとビューが分離されながらも適切なつながりを持ち、アクティビティ/アクション/ライフサイクルのパラダイムに従う。残念ながらこのモデルについてJJは詳しく説明していないが、おそらくその意図は今後の関連する記事で説明されるだろう。</p> 
  <p id="lastElm">&nbsp;</p> 
 </div> 
 <p id="lastElm"></p><br><br><br><br><br><br></body></html>
