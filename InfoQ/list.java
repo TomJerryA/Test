@@ -1,6 +1,9 @@
 <html>
  <head></head> 
- <body> 
+ <body>
+  <div>
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/14.java">Dart2js Outperforms Hand-Written JavaScript in DeltaBlue Benchmark</a>Google released a new version of the Dart2js compiler, whose generated JavaScript code now outperforms hand-written JavaScript in the DeltaBlue benchmark, a commonly used benchmark for benchmarking object-oriented languages.
+  </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/13.java">IBM Mobile First- MBaaS, Big Data and Then Some for Enterprise</a>IBM has assembled a comprehensive portfolio of applications whereby enterprises can catch up to today’s current mobile computing trends. Mobile First is designed to enable enterprise to get their share of the billions of dollars that the firm maintains is being left on the table by the organizations that are not gearing up for this trend. 
   </div> 
@@ -147,9 +150,6 @@
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/15.java">Should You Create User Stories for Technical Debt?</a>Agile teams sometimes struggle with the planning of pure technical tasks that have no direct value for the user of a system, but have to be done to deliver working software. Should you create user stories to handle such technical tasks and technical debt, or not? 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/14.java">Camunda Forks Alfresco Activiti</a>Camunda, a Berlin-based software and consulting company specializing in BPM, has announced that they are forking Alfresco Activiti to launch a new product called camunda BPM. The new product replaces camunda fox, the firm's previous Activiti-based BPM offering. 
-  </div> 
+  </div>  
  </body>
 </html>
