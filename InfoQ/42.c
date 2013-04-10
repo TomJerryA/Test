@@ -1,0 +1,46 @@
+<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>Devemos criar histórias de usuário para a nossa dívida técnica?</h3><p>Equipes &aacute;geis algumas vezes apresentam dificuldades com o planejamento de tarefas puramente t&eacute;cnicas, tais como aquelas relacionadas a d&iacute;vida t&eacute;cnica. Essas tarefas n&atilde;o tem valor direto para o usu&aacute;rio do sistema, mas precisam ser feitas para entregar o software funcionando. Devemos criar hist&oacute;rias de usu&aacute;rio para lidar com tarefas t&eacute;cnicas e d&iacute;vida t&eacute;cnica?</p> 
+<p>No artigo &quot;<a href="http://www.google.com/url?q=http%3A%2F%2Fwww.industriallogic.com%2Fblog%2Fas-a-developer-is-not-a-user-story%2F&amp;sa=D&amp;sntz=1&amp;usg=AFQjCNHPw9izjsy1U0D_Upii8Kz23yrRYw">Como um desenvolvedor… n&atilde;o &eacute; uma</a> <a href="http://www.google.com/url?q=http%3A%2F%2Fwww.industriallogic.com%2Fblog%2Fas-a-developer-is-not-a-user-story%2F&amp;sa=D&amp;sntz=1&amp;usg=AFQjCNHPw9izjsy1U0D_Upii8Kz23yrRYw">hist&oacute;ria de usu&aacute;rio</a>&quot;, <a href="https://twitter.com/wwake">Bill Wake</a> fala sobre hist&oacute;rias de usu&aacute;rio que ele encontrou que n&atilde;o tinham valor para o cliente. Como exemplo, ele menciona a hist&oacute;ria de usu&aacute;rio &quot;Como um desenvolvedor, tenho que configurar o Jenkins para que n&oacute;s tenhamos integra&ccedil;&atilde;o cont&iacute;nua&quot;. Bill explica porqu&ecirc; ele acredita que n&atilde;o devemos cham&aacute;-las de hist&oacute;rias de usu&aacute;rio:</p> 
+<blockquote> 
+ <p>O meu argumento n&atilde;o &eacute; que essas atividades n&atilde;o s&atilde;o boas ou importantes de serem feitas (elas s&atilde;o para a equipe), mas pensar nelas como hist&oacute;rias de usu&aacute;rio enganam a equipe e seus clientes. Escrever algo na forma de uma hist&oacute;ria de usu&aacute;rio, quando n&atilde;o est&aacute; relacionado com os usu&aacute;rios do sistema, perde-se o real sentido.</p> 
+</blockquote> 
+<p>Sua opini&atilde;o &eacute; que n&oacute;s devemos cham&aacute;-las de tarefas ao inv&eacute;s de hist&oacute;rias de usu&aacute;rio. Aplicando o pensamento lean, ele as considera como desperd&iacute;cio.</p> 
+<blockquote> 
+ <p>A partir dessa perspectiva, pensamento lean, muitas dessas tarefas que as equipes fazem podem ser consideradas um tipo de desperd&iacute;cio, mas n&oacute;s n&atilde;o sabemos como desenvolver software de forma eficiente sem realiz&aacute;-las. Equipes lean falam sobre esse tipo de desperd&iacute;cio como &quot;Sem-Valor-Agregado, mas necess&aacute;rio&quot;: o trabalho que n&oacute;s fazemos porqu&ecirc; precisamos.</p> 
+</blockquote> 
+<p>Bill sugere sermos cr&iacute;ticos em hist&oacute;rias de usu&aacute;rio onde o papel &eacute; descrito como &quot; algu&eacute;m do desenvolvimento&quot;, ao inv&eacute;s de um usu&aacute;rio do software. Tente reformular tais hist&oacute;rias de usu&aacute;rio como um comportamento funcional ou uma caracter&iacute;stica de qualidade e reformul&aacute;-la, se isso n&atilde;o for poss&iacute;vel, ent&atilde;o considere como uma tarefa. As tarefas est&atilde;o no quadro para a equipe acompanhar, mas n&atilde;o devem ser colocadas no backlog como hist&oacute;rias de usu&aacute;rio, j&aacute; que n&atilde;o est&atilde;o entregando valor.</p> 
+<blockquote> 
+ <p>(...) reconhe&ccedil;a que seu time, em algum momento, s&oacute; ter&aacute; tarefas. Voc&ecirc; decide como acompanhar as atividades internamente, mas n&atilde;o as trate ou acompanhe como progresso direto no sistema que est&aacute; sendo desenvolvido.</p> 
+</blockquote> 
+<p><a href="https://twitter.com/mmarschall">Mattias Marschall</a> fornece uma solu&ccedil;&atilde;o para lidar com tarefas t&eacute;cnicas no backlog, em seu artigo &quot;<a href="http://www.google.com/url?q=http%3A%2F%2Fwww.agileweboperations.com%2Fhow-to-translate-business-value-of-things-that-are-technically-important&amp;sa=D&amp;sntz=1&amp;usg=AFQjCNGaH6npOCOyVFai3jbVW8py_hbcbw">Como traduzir o valor de neg&oacute;cio de itens que s&atilde;o tecnicamente importantes</a>&quot;. Ele come&ccedil;a explicando como ele observa o relacionamento entre hist&oacute;rias de usu&aacute;rio e tarefas t&eacute;cnicas.</p> 
+<blockquote> 
+ <p>...hist&oacute;rias de usu&aacute;rio devem descrever o que um usu&aacute;rio quer que o sistema fa&ccedil;a. Tarefas puramente t&eacute;cnicas devem geralmente ser implementadas como parte de uma hist&oacute;ria de usu&aacute;rio.</p> 
+</blockquote> 
+<p>Mas e as tarefas t&eacute;cnicas que n&atilde;o s&atilde;o diretamente relacionadas a uma hist&oacute;ria de usu&aacute;rio espec&iacute;fica? Mattias sugere coloc&aacute;-las no backlog do produto.</p> 
+<blockquote> 
+ <p>Para ser capaz de colocar atividades t&eacute;cnicas no backlog do produto para prioriza&ccedil;&atilde;o, basta criar uma hist&oacute;ria de usu&aacute;rio para cada uma delas. Mas, isso n&atilde;o &eacute; trapacear? N&atilde;o, se voc&ecirc; conseguir responder &agrave;s seguintes perguntas:</p> 
+ <p>1. Quem &eacute; o beneficiado com o resultado?</p> 
+ <p>2. Por que essa tarefa &eacute; necess&aacute;ria?</p> 
+</blockquote> 
+<p>Com essa solu&ccedil;&atilde;o, voc&ecirc; pode ter todas as tarefas t&eacute;cnicas cobertas por hist&oacute;rias de usu&aacute;rio no backlog, como parte de uma hist&oacute;ria de usu&aacute;rio para um cliente ou com uma hist&oacute;ria de usu&aacute;rio especificamente para tarefas t&eacute;cnicas:</p> 
+<blockquote> 
+ <p>Se voc&ecirc; &eacute; capaz de formular suas tarefas t&eacute;cnicas como uma esp&eacute;cie de hist&oacute;ria de usu&aacute;rio, os interessados ser&atilde;o capazes de entender a necessidade de prioriz&aacute;-las, juntamente com outras hist&oacute;rias de usu&aacute;rio.</p> 
+</blockquote> 
+<p>Bastian Buch explica em seu artigo &quot;<a href="http://www.google.com/url?q=http%3A%2F%2Fwww.codovation.com%2F2012%2F06%2Feffective-steps-to-reduce-technical-debt-an-agile-approach%2F&amp;sa=D&amp;sntz=1&amp;usg=AFQjCNGTlywoYXh4G-5Q4drU-_lho9sWew">Passos efetivos para reduzir a d&iacute;vida t&eacute;cnica: uma abordagem &aacute;gil</a>&quot;, em que os desenvolvedores e o product owner podem ter opini&otilde;es diferentes sobre tarefas t&eacute;cnicas que est&atilde;o relacionadas com a d&iacute;vida t&eacute;cnica:</p> 
+<blockquote> 
+ <p>Os desenvolvedores conhecem a d&iacute;vida t&eacute;cnica e est&atilde;o cientes de que &eacute; importante encarar esse problema. O product owner muitas vezes n&atilde;o entende a necessidade e os benef&iacute;cios de reduzir a d&iacute;vida t&eacute;cnica e n&atilde;o consideram ou permitem que projetos ou hist&oacute;rias t&eacute;cnicas fa&ccedil;am parte de seu backlog e do plano de release.</p> 
+</blockquote> 
+<p>Ele sugere que o product owner deva assumir a responsabilidade de reduzir a d&iacute;vida t&eacute;cnica. Os membros da equipe devem discutir a d&iacute;vida t&eacute;cnica com o product owner, al&eacute;m de trabalharem juntos para priorizarem corretamente o product backlog:</p> 
+<p>&nbsp;</p> 
+<blockquote> 
+ <p>A equipe deve lembrar o product owner que ele &eacute; parte da equipe: sua dor &eacute; a dor da equipe e vice-versa. Ele n&atilde;o &eacute; o cliente ou empregador da equipe, mas um especialista no assunto, al&eacute;m de gerente e analista de requisitos do produto provindo de diferentes interessados.</p> 
+ <p>A equipe se responsabiliza, perante o product owner, que o crescimento do produto continuar&aacute; sendo a parte mais importante, n&atilde;o apenas em um curto espa&ccedil;o de tempo (desempenho), assim como no longo prazo.</p> 
+</blockquote> 
+<p>Bastiam prop&otilde;e que n&oacute;s devemos reunir os problemas t&eacute;cnicos em hist&oacute;rias de usu&aacute;rio, estimar o esfor&ccedil;o necess&aacute;rio para resolv&ecirc;-los e verificar os benef&iacute;cios que a resolu&ccedil;&atilde;o traria. Ele denomina os benef&iacute;cios de &quot;pagamento&quot;, j&aacute; que resolver o problema reduz a d&iacute;vida t&eacute;cnica:</p> 
+<blockquote> 
+ <p>(...) n&oacute;s criamos hist&oacute;rias marcadas como &quot;itens de d&iacute;vida t&eacute;cnica&quot; para cada tarefa que n&oacute;s definimos. Para podermos priorizar esses itens e obtermos as conclus&otilde;es corretas, n&oacute;s criamos um gr&aacute;fico para visualizar como os esfor&ccedil;os se relacionam com o pagamento e vice-versa.</p> 
+</blockquote> 
+<p>Deixar as coisas vis&iacute;veis ajudam o product owner e a equipe a reduzir a d&iacute;vida t&eacute;cnica de forma colaborativa.</p> 
+<blockquote> 
+ <p>Com a visualiza&ccedil;&atilde;o da d&iacute;vida t&eacute;cnica e a descoberta de um plano de pagamento poss&iacute;vel, a equipe pode ficar concentrada nos passos mais importantes. Um importante efeito colateral: Essa vis&atilde;o tamb&eacute;m &eacute; uma &oacute;tima ferramenta para trabalhar com o product owner e outros interessados porque d&aacute; a eles uma boa transpar&ecirc;ncia em rela&ccedil;&atilde;o a d&iacute;vida t&eacute;cnica.</p> 
+</blockquote> 
+<p id="lastElm"></p><br><br><br><br><br><br></body></html>
