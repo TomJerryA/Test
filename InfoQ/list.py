@@ -1,17 +1,17 @@
 <html>
  <head></head> 
- <body>
-  <div>
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/4.py">Visual Studio 2012 Update 2正式リリース</a>Microsoftは、Visual Studio 2012のUpdate 2を正式にリリースした。この更新では、いくつかの新機能と多くの大きな修正と振る舞いの修正が含まれている。
-  </div>
-  <div>
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/3.py">EZNamespaceExtensions.Net v2013がコンテキストメニューとサムネイル、アイコン、プロパティシートのサポートを追加</a>EZNamespaceExtensions.Net v2013によって、Visual Studio を使って、Windows Explorerエクステンションを開発できる。更に多段サブフォルダー、サムネイルビュー、アイコン、プロパティシート、情報ティップなどをサポートしている。
-  </div>
-  <div>
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/2.py">GoogleとOperaがWebKitをフォーク，SamsungはFirefoxと共同でServoを推進</a>２つの主要なブラウザ開発チームが先頃，パラレルアーキテクチャを目指すことを発表した。WebKitフォークのBlinkを採用するGoogleとOpera，そして共同でServoをプッシュするMozillaとSamsungだ。
-  </div>
-  <div>
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/1.py">Google+ Sign-In：連合アイデンティティ、認証、セマンティック アクティビティストリーム</a>Google+ Sign-Inは、Google+ のソーシャルネットワークを拡張して、サードパーティのWebサイト、デスクトップアプリケーションやモバイルアプリケーションまで入り込み、さらにIDプロバイダとしてのGoogleの位置をTwitterやFacebookなど、他のもの並に強固する。2月26日に発表した新サービスでは、認証、認可、活動共有の機能を提供する。更にユーザー　エンゲージメント、溜まり場、Android アプリの自動ダウンロードをサポートする。
+ <body> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/4.py">Visual Studio 2012 Update 2正式リリース</a>Microsoftは、Visual Studio 2012のUpdate 2を正式にリリースした。この更新では、いくつかの新機能と多くの大きな修正と振る舞いの修正が含まれている。 
+  </div> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/3.py">EZNamespaceExtensions.Net v2013がコンテキストメニューとサムネイル、アイコン、プロパティシートのサポートを追加</a>EZNamespaceExtensions.Net v2013によって、Visual Studio を使って、Windows Explorerエクステンションを開発できる。更に多段サブフォルダー、サムネイルビュー、アイコン、プロパティシート、情報ティップなどをサポートしている。 
+  </div> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/2.py">GoogleとOperaがWebKitをフォーク，SamsungはFirefoxと共同でServoを推進</a>２つの主要なブラウザ開発チームが先頃，パラレルアーキテクチャを目指すことを発表した。WebKitフォークのBlinkを採用するGoogleとOpera，そして共同でServoをプッシュするMozillaとSamsungだ。 
+  </div> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/1.py">Google+ Sign-In：連合アイデンティティ、認証、セマンティック アクティビティストリーム</a>Google+ Sign-Inは、Google+ のソーシャルネットワークを拡張して、サードパーティのWebサイト、デスクトップアプリケーションやモバイルアプリケーションまで入り込み、さらにIDプロバイダとしてのGoogleの位置をTwitterやFacebookなど、他のもの並に強固する。2月26日に発表した新サービスでは、認証、認可、活動共有の機能を提供する。更にユーザー　エンゲージメント、溜まり場、Android アプリの自動ダウンロードをサポートする。 
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/0.py">情報を統合しDevOps文化を改善する</a>Appsecuteプラットフォームはアプリケーションライフサイクルに関連する情報を統合することでコラボレーションを促進し生産性を上げる。このSoftware as a Service (SaaS)プラットフォームは人や統合されたプラットフォームから直接メッセージを受け取り、それを組織内のすべての人が閲覧できるように集約する。 
@@ -150,6 +150,6 @@
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/5.py">Tom Baeyens氏(jBPM，Alfresco Activitiの作者)，クラウド版BPMの新ベンチャを開始</a>JBoss jBPM (Red Hatが買収) と Activiti (Alfresco) のオリジナル作者であるTom Baeyens氏が，ビジネスプロセスを自動化するクラウドベースの新BPM (Business Process Management) ツールの Effektif を発表した。新たなベンチャを進めるパートナーはSignavioという新興企業だ。InfoQではBaeyens氏とSignavio共同CEOのDecker氏に詳細を聞いた。 
-  </div>     
+  </div> 
  </body>
 </html>
