@@ -1,13 +1,22 @@
-<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>MicrosoftがKinect for Windowsのサンプルをオープンソース公開</h3><p><a target="_blank" href="http://www.infoq.com/news/2013/03/Microsoft-Kinect-Samples;jsessionid=60072A7CC805D5B92465CBEEC527D6E0"><em>原文(投稿日：2013/03/13)へのリンク</em></a></p> 
+<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>Visual Studio 2012 Update 2正式リリース</h3><p><a target="_blank" href="http://www.infoq.com/news/2013/04/VS2012_Update2;jsessionid=25361D5CAEB52FCDC2ACE0337C9F69BE"><em>原文(投稿日：2013/04/05)へのリンク</em></a></p> 
 <div class="clearer-space">
  &nbsp;
 </div> 
 <div id="newsContent"> 
- <p>Microsoftは先頃，<a target="_blank" href="http://kinectforwindows.codeplex.com/license">Apache 2.0ライセンスの下で</a> 22のコードサンプルを <a target="_blank" href="http://kinectforwindows.codeplex.com/">CodePlexにソース公開した</a>。<a target="_blank" href="http://www.microsoft.com/en-us/download/details.aspx?id=34807">Kinect for Windows Toolkit</a> にも含まれるこれらのサンプルには，Kinectのさまざまな機能 – オーディオ，基本的操作，色彩と深さ，顔認識，赤外線，スライドショー・ジェスチャ，音声合成，WPF，XNA，その他の使用方法が示されている。</p> 
- <p>サンプルは大部分がC#とC++，部分的にVBで記述されていて，WPFやDirectX技術を活用している。</p> 
- <p><a target="_blank" href="http://kinectforwindows.codeplex.com/SourceControl/changeset/view/861462899ae7#">CodePlexのGitリポジトリ</a> からコードをフォークすることは可能だが，現時点ではMicrosoftはコントリビューションを受け付けていない。将来的にどのように実施するかは，同社によれば調査中とのことだ。</p> 
- <p>Kinectでの開発にはVisual Studio 2010または2012，.NET 4.0または4.5，<a target="_blank" href="http://www.microsoft.com/en-us/download/details.aspx?id=34808">Kinect for Windows SDK</a>，<a target="_blank" href="http://www.microsoft.com/en-us/download/details.aspx?id=34807">Kinect for Windows Toolkit</a> が必要である。</p> 
- <p>Kinectはゲームデバイスとしてスタートしたが，現在では <a target="_blank" href="http://www.kinecthacks.com/moveit-turn-your-body-into-an-autodesk-inventor-modeling-tool-wit-a-kinect/">Autodeskのモデリングツール</a>，<a target="_blank" href="http://www.kinecthacks.com/imogen-heap-talks-ableton-controlling-gloves/">コントロールグローブ</a>，<a target="_blank" href="http://www.kinecthacks.com/skeletal-hand-and-finger-tracking-in-full-3d/">3Dハンドトラッキング</a>，<a target="_blank" href="http://www.kinecthacks.com/kinect-powered-google-tv-controller/">Google TVコントローラ</a>，<a target="_blank" href="http://www.microsoft.com/en-us/kinectforwindows/discover/gallery.aspx">患者の気分転換やアパレルショッピング</a> など，<a target="_blank" href="http://www.kinecthacks.com/">さまざまなプロジェクト</a> で採用，あるいは採用が検討されている。</p> 
+ <p style="margin-bottom: 0in" class="western"><span lang="en-US">MicrosoftがVS2012をリリースしたとき、彼らは通常のアップデートのテンポで製品を更新する意向を表明した。およそ1ヶ月後、Update 2の最終プレビューがリリースされ、Microsoftは公式にいくつかの新しい機能だけでなく、多くのバグフィックスを含むVisual Studio 2012の<a class="western" target="_blank" href="http://www.microsoft.com/en-us/download/details.aspx?id=38188">Update 2パッケージ</a>をリリースした。</span></p> 
+ <p style="margin-bottom: 0in" class="western">MicrosoftのS. Somasegar氏はこのリリースで強化した具体的な5つの領域を示した:</p> 
+ <blockquote> 
+  <ul> 
+   <li>Agileプランニング</li> 
+   <li>品質の対応</li> 
+   <li>Windowsストア開発</li> 
+   <li>基幹業務アプリケーション開発</li> 
+   <li>一般的な開発者エクスペリエンス</li> 
+  </ul> 
+ </blockquote> 
+ <p style="margin-bottom: 0in" class="western">Agileプランニングはサポートは、カンバンボードをカスタマイズする新機能とTFSワークアイテムにタグを使用する機能に向けられている。品質の対応について、Somasegar氏の表現をと、品質保証の参照と関連する機能をテストができる。改善点としては、Windows Phone 8アプリ、非同期コード、SharePoint 2013テストサポートの改善など、改善された単体テストサポートが含まれる。Windowsストア開発の主なメリットは、JavaScriptアプリの診断の改善である。基幹業務アプリケーションの拡張は、LightSwitchとBlend周りにフォーカスしている。<a class="western" target="_blank" href="http://weblogs.asp.net/scottgu/archive/2013/02/18/announcing-release-of-asp-net-and-web-tools-2012-2-update.aspx">Scott Guthrie氏が述べたように</a>ASP.NETとWebツールアップデートはUpdate 2の一部でありながら分けられてリリースされており、こちらもダウンロード可能になっている。</p> 
+ <p style="margin-bottom: 0in" class="western">含まれているすべての機能に渡って、VS2012の前のイテレーションで発見された問題とバグが修正されている。修正された問題の詳細は<a class="western" target="_blank" href="http://support.microsoft.com/kb/2797912">ここで提供されている</a>。 MicrosoftのCharles Sterling氏は、Update 2でいくつかのALM機能を<a class="western" target="_blank" href="http://blogs.msdn.com/b/visualstudioalm/archive/2013/04/04/visual-studio-update-2-now-available.aspx">示しており</a>、ひとつの新機能はTFS2010ビルドサーバー2012との互換性である。この配置の構成は<a class="western" target="_blank" href="http://blog.hinshelwood.com/visual-studio-2012-update-2-supports-2010-build-servers/">Martin Hinshelwood氏のブログ投稿</a>で詳細が説明されている。最後にBrian Harry氏は、TFS Update 1からUpdate 2にアップグレード時にTFSのほとんどの設定(すべてではない)がUpdate 2に維持されると<a class="western" target="_blank" href="http://blogs.msdn.com/b/bharry/archive/2013/04/04/vs-tfs-2012-2-update-2-released-today.aspx">述べた</a>。</p> 
+ <p style="margin-bottom: 0in" class="western">Update 2は累積リリースなので、新規インストールしたVS2012にUpdate 1をインストールしなくても、<a class="western" target="_blank" href="http://www.infoq.com/news/2012/11/vs2012update1_released;jsessionid=9890F510BB56B4DFEE2957D29299326F;jsessionid=25361D5CAEB52FCDC2ACE0337C9F69BE">Update 1</a>のすべての更新が含まれている。インターネット接続できなマシンにインストールするためのISOイメージがMicrosoftから対応が提供されている。-- &quot;/layout&quot;オプションをつけてUpdate 2を実行することで、オフラインインストールに必要な全てのファイルがダウンロードされる(Update 2の<a class="western" target="_blank" href="http://www.microsoft.com/en-us/download/details.aspx?id=38188">ダウンロードページ</a>の下にステップバイステップ操作ガイドが記載されている)。正式なサイズは、ローカルインストールにおよそ1.8GBのスペースが必要であるとMicrosoftから提示されている。</p> 
  <p id="lastElm">&nbsp;</p> 
 </div> 
 <p id="lastElm"></p><br><br><br><br><br><br></body></html>

@@ -2,7 +2,19 @@
  <head></head> 
  <body>
   <div>
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/0.py">情報を統合しDevOps文化を改善する</a>Appsecuteプラットフォームはアプリケーションライフサイクルに関連する情報を統合することでコラボレーションを促進し生産性を上げる。このSoftware as a Service (SaaS)プラットフォームは人や統合されたプラットフォームから直接メッセージを受け取り、それを組織内のすべての人が閲覧できるように集約する。
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/4.py">Visual Studio 2012 Update 2正式リリース</a>Microsoftは、Visual Studio 2012のUpdate 2を正式にリリースした。この更新では、いくつかの新機能と多くの大きな修正と振る舞いの修正が含まれている。
+  </div>
+  <div>
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/3.py">EZNamespaceExtensions.Net v2013がコンテキストメニューとサムネイル、アイコン、プロパティシートのサポートを追加</a>EZNamespaceExtensions.Net v2013によって、Visual Studio を使って、Windows Explorerエクステンションを開発できる。更に多段サブフォルダー、サムネイルビュー、アイコン、プロパティシート、情報ティップなどをサポートしている。
+  </div>
+  <div>
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/2.py">GoogleとOperaがWebKitをフォーク，SamsungはFirefoxと共同でServoを推進</a>２つの主要なブラウザ開発チームが先頃，パラレルアーキテクチャを目指すことを発表した。WebKitフォークのBlinkを採用するGoogleとOpera，そして共同でServoをプッシュするMozillaとSamsungだ。
+  </div>
+  <div>
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/1.py">Google+ Sign-In：連合アイデンティティ、認証、セマンティック アクティビティストリーム</a>Google+ Sign-Inは、Google+ のソーシャルネットワークを拡張して、サードパーティのWebサイト、デスクトップアプリケーションやモバイルアプリケーションまで入り込み、さらにIDプロバイダとしてのGoogleの位置をTwitterやFacebookなど、他のもの並に強固する。2月26日に発表した新サービスでは、認証、認可、活動共有の機能を提供する。更にユーザー　エンゲージメント、溜まり場、Android アプリの自動ダウンロードをサポートする。
+  </div> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/0.py">情報を統合しDevOps文化を改善する</a>Appsecuteプラットフォームはアプリケーションライフサイクルに関連する情報を統合することでコラボレーションを促進し生産性を上げる。このSoftware as a Service (SaaS)プラットフォームは人や統合されたプラットフォームから直接メッセージを受け取り、それを組織内のすべての人が閲覧できるように集約する。 
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/49.py">Martin Fowler氏が21世紀のソフトウェアデザインについて講演</a>Martin Fowler氏が21世紀のソフトウェアデザインについて講演した。スキーマ無しデータ構造、NoSQLと一貫性、最後にソフトウェアデザインの価値の３つを話した。 
@@ -138,18 +150,6 @@
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/5.py">Tom Baeyens氏(jBPM，Alfresco Activitiの作者)，クラウド版BPMの新ベンチャを開始</a>JBoss jBPM (Red Hatが買収) と Activiti (Alfresco) のオリジナル作者であるTom Baeyens氏が，ビジネスプロセスを自動化するクラウドベースの新BPM (Business Process Management) ツールの Effektif を発表した。新たなベンチャを進めるパートナーはSignavioという新興企業だ。InfoQではBaeyens氏とSignavio共同CEOのDecker氏に詳細を聞いた。 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/4.py">MicrosoftがKinect for Windowsのサンプルをオープンソース公開</a>Microsoftは先頃，Apache 2.0ライセンスの下で22のコードサンプルをCodePlexにソース公開した。Kinect for Windows Toolkit にも含まれるこれらのサンプルには，Kinectのさまざまな機能 – オーディオ，基本的操作，色彩と深さ，顔認識，赤外線，スライドショー・ジェスチャ，音声合成，WPF，XNA，その他の使用方法が示されている。 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/3.py">QConTokyo2013【組み込み】トラックのご紹介</a>今年のQConTokyoは、基調講演後の午後全体を組込みトラックがカバーします。 モノづくり、組込みソフトウェア、製造業で活躍のみなさまに的確な最新情報をお届けできるものと考えております。 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/2.py">運用エンジニアの教育</a>先月のhangopsでは、テクノロジーの教育に熱心なパネリストが集まって運用エンジニアの教育機会を作成することについて話し合った。彼らは現在の運用エンジニアの仕事に見合う人物を見つけるのはこれまで以上に難しくなっていることを認め、どのようにこの問題を解決するか議論した。 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/1.py">ネイティブのPHP4拡張モジュールをマネージド版で置き換え</a>Phalanger、.NET と Mono用のPHPランタイムは、重要なマイルストーンに達し、11の人気のあるPHP拡張機能を.NET同等版で置き換えた。これらの拡張機能は、以前、ネイティブのCあるいはC++で書かれており、 Phalangerは32ビットモードでしか走らない、という制限があった。 
-  </div>  
+  </div>     
  </body>
 </html>

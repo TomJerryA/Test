@@ -1,17 +1,51 @@
-<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>QConTokyo2013【組み込み】トラックのご紹介</h3><p>InfoQJapan Japanでは毎年春に、IT最新技術カンファレンスQConTokyoを海外・国内の一線で活躍するスピーカーを集めて開催しております。</p> 
-<p>今年のQConTokyoは、基調講演後の午後全体を組込みトラックがカバーします。<br /> モノづくり、組込みソフトウェア、製造業で活躍のみなさまに的確な最新情報をお届けできるものと考えております。</p> 
-<p>「QCon Tokyo 2013」の基調講演者には、<br /> 今話題の3Dプリンター等の多様な工作機械とそれを通した自由で柔軟なものづくりにチャレンジしておられる田中浩也さんをお呼びしています。消費者と生産者の距離を縮め、デザインの地産地消を目指して企画から設計製造までのアジャイルなプロセスをベンチャーや中小企業、あるいはパーソナルな応用に繋げていく市民包摂型ものづくり施設「<a target="_blank" href="http://matome.naver.jp/odai/2130551516211481601">ファブラボ</a>」の日本における発起人です。<br /> 慶應義塾大学環境情報学部准教授として、日本のデザインとものづくりの新しい形をファブラボやパーソナルファブリケーションを通して模索しています。</p> 
-<p>　　田中 浩也 氏<br /> 慶應義塾大学環境情報学部准教授 / <a target="_blank" href="http://fablabkamakura.net/">ファブラボ鎌倉</a><a target="_blank" href="http://fablabkamakura.net/)"><br /> </a>&gt;&gt; <a target="_blank" href="http://qcontokyo.com/speaker_HiroyaTanaka_2013.html">http://qcontokyo.com/speaker_HiroyaTanaka_2013.html<br /> </a></p> 
-<p>組込みトラックでは、以下のようなテーマで一線で活躍するスピーカーから直接話を聞くことができます。</p> 
-<p>いま注目のポストiOS、Androidとして話題になっている組込み/モバイル向けオープンプラットフォームに関して、<br /> Tizen、Qtの２つをとりあげ、経緯と概要、最新情報と今後の方向性について取り上げます。<br /> <a target="_blank" href="https://www.tizen.org/">Tizen</a>はNTTドコモの杉村さんから、<a target="_blank" href="http://qt-project.org/">Qt</a>に関しては日本Qtユーザー会の鈴木さんから語っていただきます。<br /> さらに近年ますます重大な問題になっているネットワークに接続される組込み機器のセキュリティ対策をどうすべきかという非常に現実的かつ重要な問題について、その対応ポイントと実効的なソリューションについてセーフネットのチーフアーキテクトのDarim Rahmatallahの講演があります。<br /> またプログラミング言語好きには、日本が生み世界が育てつつあるオブジェクト指向言語Rubyの組込み向け処理系<a target="_blank" href="http://forum.mruby.org/">mRuby</a>が最近発表されましたが、この最新情報と組込みソフトウェア開発への応用の可能性と課題についての講演が注目です。<br /> 当初はゲームへの入力デバイスとして開発されたマイクロソフトの<a target="_blank" href="http://www.kinecthacks.com/">Kinect</a>ですが、デプス・センサーとして進化し、現在では、組込みシステムへの応用が進んでいる現状の紹介も注目すべきテーマです。</p> 
-<p>そのほか、並列してモバイル/html5、クラウド、アジャイル/モデリング、ビッグデータ/分散技術といったさまざまなテーマでの講演が目白押しです。</p> 
-<p>セッションスピーカー &gt;&gt; <a target="_blank" href="http://qcontokyo.com/speaker.html">http://qcontokyo.com/speaker.html</a></p> 
-<p>またデモ展示ブースや情報交換のためのビアパーティも用意されております。</p> 
-<p>ぜひとも、QConTokyo2013へ参加登録していただき、当日お会いできることを楽しみにしております。</p> 
-<p>&nbsp;</p> 
-<h2>●開催概要</h2> 
-<p>開催日時：2013年4月23日(火) 10:00-19:00 (19:00～ ビアパーティあり)</p> 
-<p>会　　　場：JA共済ビル カンファレンスホール</p> 
-<p>公式サイト：<a target="_blank" href="http://qcontokyo.com/">http://qcontokyo.com/</a></p> 
-<p>&nbsp;</p> 
+<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>EZNamespaceExtensions.Net v2013がコンテキストメニューとサムネイル、アイコン、プロパティシートのサポートを追加</h3><p><a target="_blank" href="http://www.infoq.com/news/2013/04/eznamespaceextensions-net-v2013;jsessionid=082A55FB605751269A1EF709CCEC1BC7"><em>原文(投稿日：2013/04/05)へのリンク</em></a></p> 
+<div class="clearer-space">
+ &nbsp;
+</div> 
+<div id="newsContent"> 
+ <p>Logic NP Softwareがリリースした<a target="_blank" href="http://www.ssware.com/eznamespaceextensions/eznamespaceextensions.htm">EZNamespaceExtensions.Net v2013</a>は、.NETでシェルやWindowsエクスプローラの名前空間エクステンションを開発することができる。簡単に使えるオブジェクトモデルを採用して、シェルの名前空間エクステンションをWindows Explorerにスムーズかつシームレスに統合できる。拡張機能のルック＆フィールと機能がアクティブなWindowsエクスプローラのフォルダと似たようになる。</p> 
+ <p>EZNamespaceExtensions.Netは、以下の<a target="_blank" href="http://www.ssware.com/eznamespaceextensions/eznamespaceextensions.htm#features">Windows Explorerフィーチャ</a>と機能をサポートする。</p> 
+ <ul> 
+  <li>フォルダと非フォルダアイテム</li> 
+  <li>マルチレベルのサブフォルダ</li> 
+  <li>自動サブフォルダナビゲーション</li> 
+  <li>アイテムのコンテキストメニューとバックグラウンドコンテキストメニュー</li> 
+  <li>複数の列を持つ詳細およびレポートビューのサポート</li> 
+  <li>サムネイルビュー、カット、コピーと貼り付け</li> 
+  <li>グループビューとカテゴリ</li> 
+  <li>アイテムのアイコンとオーバーレイアイコン</li> 
+  <li>アイテムの自動名称変更機能</li> 
+  <li>アイテムのプロパティシートと情報ティップ</li> 
+ </ul> 
+ <p>EZNamespaceExtensionsはまた、メインのWindows Explorerのフレームメニューにメニュー項目を統合し、名前空間エクステンション内からのドラッグアンドドロップをサポートすることにより、Windowsエクスプローラのツールバーにボタンを追加する機能を提供する。また、ファイルやフォルダのように、名前空間エクステンションに項目を表示することができる。</p> 
+ <p><a target="_blank" href="http://www.ssware.com/eznamespaceextensions/eznamespaceextensions.htm#features">EZNamespaceExtensions.Net v2013</a>と連携するためには、Visual Studio 2012に統合されているシェル名前空間エクステンション プロジェクトテンプレートを利用する必要がある。 それは自動的に名前空間エクステンションの開発に必要なコードとファイルを生成する。</p> 
+ <p>プロジェクトは、インストールフォルダの中にあるRegisterExtensionDotNet40.exeユーティリティを使って、変更、構築、登録できる。また、名前空間エクステンションを見るために、そしてマイコンピュータの下に表示されるためにRestartExplorer.exeユーティリティを使用して、Windows Explorerを再起動する必要がある。</p> 
+ <p>InfoQは、LogicNP Softwareのシニア開発者であるHimangi G氏に、EZNamespaceExtensions.Netの可能性について詳しく話を聞いた。</p> 
+ <p><strong>InfoQ: .NETでWindowsエクスプローラの名前空間エクステンションの開発に対するニーズは、何ですか？</strong></p> 
+ <blockquote>
+  .NETにおけるWindowsエクスプローラの名前空間エクステンションの開発は、開発者が自分の好きな.NETプログラミング言語であるC＃やVB.NETが使えるのと、.NETテクノロジと基本クラスライブラリ(BCL)の培った知識やスキルを利用できることです。.NETを使って名前空間エクステンションを開発すると、開発者は自分に有利な膨大な基本クラスライブラリ（BCL）を使用することができます。
+ </blockquote> 
+ <p><strong>InfoQ: EZNamespaceExtensions.Net V2013を使用して開発できるアプリケーションの種類を教えて下さい。</strong></p> 
+ <blockquote>
+  EZNamespaceExtensions.Net 2013を使用して開発することができるのは、Windowsエクスプローラに統合され、ファイルのオープン/保存ダイアログに統合されたソフトウェアの以下の様な種類です。 
+  <ul> 
+   <li>文書管理ソフトウェア</li> 
+   <li>コンテンツ管理ソフトウェア</li> 
+   <li>情報管理ソフトウェア</li> 
+   <li>仮想ドライブ</li> 
+   <li>FTPプログラム</li> 
+   <li>データベースブラウザまたはフロントエンド</li> 
+   <li>プロトコルハンドラ</li> 
+  </ul> 
+ </blockquote> 
+ <p><strong>InfoQ: アプリケーションを配布するときV2013 EZNamespaceExtensions.Netのライセンスを購入する必要がありますか？</strong></p> 
+ <blockquote>
+  いいえ、EZNamespaceExtensions.Net V2013には、ロイヤリティフリーの再配布ライセンスが含まれていますので、あなたの開発した名前空間エクステンションとEZNamespaceExtensions.Netバイナリを無料で再配布することができます。
+ </blockquote> 
+ <p><strong>InfoQ: EZNamespaceExtensions.Net V2013を使うと、どのぐらい簡単にアプリケーションを開発できるのですか？</strong></p> 
+ <blockquote>
+  EZNamespaceExtensions.Netを使えば、Visual Studio IDEのプロジェクトウィザードで名前空間エクステンションの開発を直ちに開始出来ます。シンプルで、良く設計され、徹底的にテストされたAPIフレームワークを持っていますので、名前空間エクステンションの開発に要するのは、週/月ではなく、時間/日の単位になります。あなたの名前空間エクステンションをWindowsエクスプローラとすべてのアプリケーションのファイルオープン/保存ダイアログにシームレスに統合できるように、フル機能をサポートしています。それには、あなたの開発した名前空間エクステンションを簡単にデプロイできる登録ユーティリティが含まれています。 
+ </blockquote> 
+ <p id="lastElm">&nbsp;</p> 
+</div> 
 <p id="lastElm"></p><br><br><br><br><br><br></body></html>
