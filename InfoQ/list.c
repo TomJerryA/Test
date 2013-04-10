@@ -2,7 +2,10 @@
  <head></head> 
  <body>
   <div>
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/42.c">Devemos criar hist&oacute;rias de usu&aacute;rio para a nossa d&iacute;vida t&eacute;cnica?</a>Equipes &aacute;geis algumas vezes apresentam dificuldades com o planejamento de tarefas puramente t&eacute;cnicas, tais como aquelas relacionadas a d&iacute;vida t&eacute;cnica. Essas tarefas n&atilde;o tem valor direto para o usu&aacute;rio do sistema, mas precisam ser feitas para entregar o software funcionando. Devemos criar hist&oacute;rias de usu&aacute;rio para lidar com tarefas t&eacute;cnicas e d&iacute;vida t&eacute;cnica?
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/43.c">AWS se junta a concorr&ecirc;ncia dos provedores de Cloud e oferece suporte ao Node.js</a>A AWS se juntou ao repleto time de provedores de cloud que oferecem suporte ao Node.js atrav&eacute;s do seu servi&ccedil;o Elastic Beanstalk e tentar&aacute; se diferenciar oferecendo integra&ccedil;&atilde;o com seus principais servi&ccedil;os.
+  </div> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/42.c">Devemos criar hist&oacute;rias de usu&aacute;rio para a nossa d&iacute;vida t&eacute;cnica?</a>Equipes &aacute;geis algumas vezes apresentam dificuldades com o planejamento de tarefas puramente t&eacute;cnicas, tais como aquelas relacionadas a d&iacute;vida t&eacute;cnica. Essas tarefas n&atilde;o tem valor direto para o usu&aacute;rio do sistema, mas precisam ser feitas para entregar o software funcionando. Devemos criar hist&oacute;rias de usu&aacute;rio para lidar com tarefas t&eacute;cnicas e d&iacute;vida t&eacute;cnica? 
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/41.c">Valor de neg&oacute;cio: como priorizar o backlog e o que ele realmente significa</a>Ron Jeffries, um dos tr&ecirc;s fundadores do Extreme Programming (XP), esclarece qual &eacute; o verdadeiro valor para uma empresa, auxiliando a prioriza&ccedil;&atilde;o correta do backlog de desenvolvimento de um produto. 
