@@ -1,13 +1,33 @@
-<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>Node.js 0.10がリリース</h3><p><a target="_blank" href="http://www.infoq.com/news/2013/03/node.js-0.10-released;jsessionid=DCA39AC587F77DCE3D7BA4546A18909C"><em>原文(投稿日：2013/03/13)へのリンク</em></a></p> 
+<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>情報を統合しDevOps文化を改善する</h3><p><a target="_blank" href="http://www.infoq.com/news/2013/04/improve-devops-info;jsessionid=36978C53BC92AA9BD8C8386D144ACDD4"><em>原文(投稿日：2013/04/04)へのリンク</em></a></p> 
 <div class="clearer-space">
  &nbsp;
 </div> 
 <div id="newsContent"> 
- <p>Node.js開発チームは、<a target="_blank" href="http://blog.nodejs.org/2013/03/11/node-v0-10-0-stable/">node.jsのバージョン0.10をリリースした</a>が、これは高パフォーマンスな非同期サーバーを構築するためのJavaScriptベースのプラットフォームである。このリリースのフィーチャとして、ストリーム処理するためのモジュールがより使いやすくなったこと、ドメインのエラーハンドリングの改善、パフォーマンス改善がある。チームは、また0.10の後、1.0リリース前にもう１つ安定バージョンのリリース(0.12)があることを発表した。</p> 
- <p><a target="_blank" href="http://nodejs.org/api/stream.html">ストリーム</a>はnode.jsの中核部分であり、0.10で著しく変更された。ストリームは、あらゆる型の読み出し、あるいは書き込み可能なデータストリームに対する共通のインターフェースを提供し、ストリームの裏にあるのがファイル、走っているプロセス、あるいはソケットであっても抽象化する。バージョン0.10以前では、データパケットは、ストリームがオープンされた時、直ちに到着し始める<tt>data</tt>イベントとして放出された。共通の問題は、データパッケージがなくなることだった。なぜならプログラムが<tt>data</tt>イベントを聴き始めるチャンスを得る前に、それらが到着するからである。0.10には同じ動きをする後方互換性モードがあるので、推奨の方法は、<tt>readable</tt>イベントを聞き、到着したら明示的に<tt>.read()</tt>を呼んで、バッファされたデータを取得することである。その結果、データパケットを落とす可能性がずっと減る。</p> 
- <p>node.jsのバージョン0.8以前では、未処理の例外の既定動作は、サーバープロセス全体がクラッシュすることでした。この問題を回避し、未処理の例外の動作をもっと細かくコントロールするために、node.jsのバージョン0.8は<em>domains</em>（ドメイン）の実験的バージョンを導入した。ドメインは、クラッシュを限定化するメカニズムである。例えば、入ってくるHTTPリクエストのそれぞれに対してドメインを作ることが可能である。もしHTTPリクエストのドメインに付加したどのコードがクラッシュしても、そのドメインだけが死に、サーバープロセス全体がダウンすることはない。それによって、単一のHTTPリクエストにクラッシュを限定することになる。0.10では、ドメインのステータスは、「実験的」から「不安定」に格上げされ、様々なエッジケースを修正し、より良いデバッグ情報を提供する。</p> 
- <p>Node.jsコミュニティは、この数年間非常に大きくなり、企業からの関心も高まっている。呼応して、<a target="_blank" href="http://thenodefirm.com/">The Node Firm</a> や <a target="_blank" href="http://strongloop.com">StrongLoop</a>のような会社が有償のnode.jsサポート、トレーニング、コンサルティングの提供を始めた。StrongLoopは<a target="_blank" href="http://blog.strongloop.com/announcing-strongloop-node/">StrongLoop Nodeのベータ版</a>をリリースした。これは、Scalaコミュニティにおける<a target="_blank" href="http://typesafe.com">Typesafe</a> に似たモデルに従って、様々な人気のあるモジュールを含んだnode.jsの完全にサポートされたディストリビューションである。</p> 
- <p>公式なnode.js 0.10リリースのビルド済バイナリは、Windows, Mac, Linux、Solarisを含んだ、<a target="_blank" href="http://nodejs.org/download/">人気のあるOS全てに対してダウンロード出来る</a>。もちろん、node.jsはオープンソースプロジェクトなので、<a target="_blank" href="https://github.com/joyent/node/tree/v0.10.0">そのソースコードも入手可能</a>である。</p> 
+ <p><a target="_blank" href="https://www.appsecute.com/features.html">Appsecuteプラットフォーム</a>はアプリケーションライフサイクルに関連する情報を統合することでコラボレーションを促進し生産性を上げる。このSoftware as a Service (SaaS)プラットフォームは人や統合されたプラットフォームから直接メッセージを受け取り、それを組織内のすべての人が閲覧できるように集約する。</p> 
+ <div>
+  このプラットフォームは異なる情報の追跡に関する問題に対処し、チーム内の役割が固まってしまうことを防ぐ。AppsecuteのCTOであるTyler Power氏によれば、
+ </div> 
+ <blockquote>
+  私たちが直面している問題は、アプリケーションのライフサイクルに関わるツールが多すぎるということです。それゆえ、個人がそれらのツールを利用した作業を最新に保ち続けるのが極端に難しくなります。また、それらのツールから上がる、緊急対処が必要な事案を捉え、適切に対処するのも難しくなります。このような事態は関心をアプリケーションライフサイクルの小さな一部分に限定し、人々を疎結合にするという文化から生まれたものです。購入した便利なツールの価値ある利便性が無視されているのです。
+ </blockquote> 
+ <div>
+  さらに、Appsecuteの創業者はこのプラットフォームは停止時間の影響を少なくできると考えている。
+ </div> 
+ <blockquote>
+  何か危機的なことが起った場合、すべての人々が異なるシステムから集約された同一の情報を見ることになります。こうすることでトラブル発生時の停止時間を大幅に削減できるがわかりました。簡単に問題を認識し対処できるからです。 
+ </blockquote> 
+ <div>
+  このプラットフォームを使い、ユーザ、組織、アプリケーション、外部イベントとのコネクタを管理することで、'単一'のタイムライン上で情報の見方を形作ることができる。Appsecuteはソース管理や継続的統合システム、チケットシステム、Platforms as a Service(Paas)からのイベントストリームをサポートする。これらのシステムはDevops文化の中で複数の役割を担っている。現在、このプラットフォームは無料で利用でき、Appsecuteとイベントソースを結びつける
+  <a target="_blank" href="http://blog.appsecute.com/?p=299">コネクタの作成方法</a>を記したドキュメントを提供する。GitHub上には
+  <a target="_blank" href="https://github.com/Appsecute">さまざまなコネクタのコード</a>が公開されている。
+ </div> 
+ <div>
+  &nbsp;
+ </div> 
+ <div>
+  <a target="_blank" href="http://www.pagerduty.com/tour/">Pagerduty</a>と
+  <a target="_blank" href="http://www.datadoghq.com/product/">Datadog</a>はAppsecuteと同様、情報を集約するオンラインサービスを提供する。
+ </div> 
  <p id="lastElm">&nbsp;</p> 
 </div> 
 <p id="lastElm"></p><br><br><br><br><br><br></body></html>
