@@ -1,6 +1,9 @@
 <html>
  <head></head> 
- <body> 
+ <body>
+  <div>
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/49.py">Martin Fowler氏が21世紀のソフトウェアデザインについて講演</a>Martin Fowler氏が21世紀のソフトウェアデザインについて講演した。スキーマ無しデータ構造、NoSQLと一貫性、最後にソフトウェアデザインの価値の３つを話した。
+  </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/48.py">特許所有者がTCP/IPの知的所有権を主張</a>テキサス州オースティンに本拠を置くネットワークハードウェアベンダが，TCP/IP プロトコルセットの実装に対してロイヤリティを求めると発言している。かつて Dellor という社名だったこの KCIR Networks は，1997年に Comer Labs を買収した際にこの特許を合わせて取得した。特許が出願されたのは 1975年だが，Comer Labs がこれまでにロイヤリティを要求したことはなかった。 
   </div> 
@@ -147,9 +150,6 @@
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/0.py">Node.js 0.10がリリース</a>Node.js開発チームは、node.jsのバージョン0.10をリリースしたが、これは高パフォーマンスな非同期サーバーを構築するためのJavaScriptベースのプラットフォームである。このリリースのフィーチャとして、ストリーム処理するためのモジュールがより使いやすくなったこと、ドメインのエラーハンドリングの改善、パフォーマンス改善がある。チームは、また0.10の後、1.0リリース前にもう１つ安定バージョンのリリース(0.12)があることを発表した。 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/49.py">Spring for Apache Hadoop 1.0リリース</a>SpringSourceはSpring for Apache Hadoop 1.0をリリースした。Spring for Apache Hadoopを使えば、開発者はSpring Frameworkを使ってHadoopアプリケーションを開発できる。また、Spring BatchとSpring Integrationとも簡単に統合できる。Spring for Apache HadoopはSpring Data umbrella projectのサブプロジェクトであり、オープンソースのApache 2.0ライセンスでリリースされている。 
-  </div> 
+  </div>  
  </body>
 </html>

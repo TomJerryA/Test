@@ -1,8 +1,8 @@
 <html>
  <head></head> 
- <body>
-  <div>
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/13.java">IBM Mobile First- MBaaS, Big Data and Then Some for Enterprise</a>IBM has assembled a comprehensive portfolio of applications whereby enterprises can catch up to today’s current mobile computing trends. Mobile First is designed to enable enterprise to get their share of the billions of dollars that the firm maintains is being left on the table by the organizations that are not gearing up for this trend.
+ <body> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/13.java">IBM Mobile First- MBaaS, Big Data and Then Some for Enterprise</a>IBM has assembled a comprehensive portfolio of applications whereby enterprises can catch up to today’s current mobile computing trends. Mobile First is designed to enable enterprise to get their share of the billions of dollars that the firm maintains is being left on the table by the organizations that are not gearing up for this trend. 
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/12.java">Scaling Agile At Spotify: An Interview with Henrik Kniberg</a>Back in November, Spotify released a paper titled &quot;Scaling Agile @ Spotify with Tribes, Squads, Chapters &amp; Guilds&quot;. I recently had a chance to chat with Henrik Kniberg, one of the coaches on site there, to ask him some questions about the paper and to get an update on where they are today. 
@@ -150,6 +150,6 @@
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/14.java">Camunda Forks Alfresco Activiti</a>Camunda, a Berlin-based software and consulting company specializing in BPM, has announced that they are forking Alfresco Activiti to launch a new product called camunda BPM. The new product replaces camunda fox, the firm's previous Activiti-based BPM offering. 
-  </div>  
+  </div> 
  </body>
 </html>

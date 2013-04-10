@@ -1,33 +1,46 @@
-<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>Swarming是如何帮助敏捷团队实施交付的</h3><p>快速且频繁地交付可工作的软件是敏捷开发的目标之一。Swarming就是能够帮助敏捷团队实现这一目标的技术。那什么是Swarming，Swarming有哪些好处，该在何时使用，又该如何使用呢？</p> 
-<p>Vin D'Amico在《<u><a href="http://brainslink.com/2013/01/agile-teams-swarm-to-greatness/">敏捷团队通过Swarming取得巨大成功</a></u>》一文中解释道，使用敏捷软件开发的团队可以在免去一些计划的情况下，发布更多软件，而且响应更为迅速：</p> 
-<blockquote> 
- <p>他们快速地执行从计划到设计到编码到测试再到交付的敏捷流程，如此往复，直到软件达到客户预期目标为止。</p> 
+<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>EZNamespaceExtensions.Net v2013增加对上下文菜单、缩略图、图标、属性表的支持</h3><p>Logic NP Software公司最近发布了<a href="http://www.ssware.com/eznamespaceextensions/eznamespaceextensions.htm">EZNamespaceExtensions.Net v2013</a>，让你可以在.NET中开发外壳（shell）或者Windows资源管理器（Windows Explorer）命名空间的扩展。它利用一种易于使用的对象模型，让shell命名空间扩展能够平滑而无缝地整合到Windows资源管理器中。扩展的外观、体验和功能都和Windows资源管理器中的文件夹类似。</p> 
+<p>EZNamespaceExtensions.Net为以下<a href="http://www.ssware.com/eznamespaceextensions/eznamespaceextensions.htm#features">Windows资源管理器特性</a>和功能提供了支持：</p> 
+<ul> 
+ <li>文件夹和非文件夹项目</li> 
+ <li>多级子文件夹</li> 
+ <li>自动子文件夹导航</li> 
+ <li>上下文菜单、针对项目的后台上下文菜单</li> 
+ <li>带有多个列的详细信息和报表视图支持</li> 
+ <li>缩略图视图，剪切、复制和粘贴</li> 
+ <li>分组视图和分类视图</li> 
+ <li>图标和针对项目的叠加图标</li> 
+ <li>针对项目的自动重命名功能</li> 
+ <li>针对项目的属性表和信息条提示</li> 
+</ul> 
+<p>EZNamespaceExtensions还让我们可以把菜单项整合到Windows资源管理器框架主菜单中，并可以向Windows资源管理器工具栏增加按钮，还可以在命名空间扩展中拖入、拖出和拖动按钮。它还让你可以在命名空间扩展中把项目展现为文件和文件夹。</p> 
+<p>为了使用<a href="http://www.ssware.com/eznamespaceextensions/eznamespaceextensions.htm#features">EZNamespaceExtensions.Net v2013</a>，你需要使用集成在Visual Studio 2012中的Shell命名空间扩展项目模板。它会为开发命名空间扩展自动生成所需要的代码和文件。</p> 
+<p>然后你可以修改项目，构建，并使用RegisterExtensionDotNet40.exe工具注册，那个工具可以在安装目录中找到。此外，你需要使用RestartExplorer.exe工具重启Windows资源管理器，这样才能够看到命名空间扩展，而且也会在“我的电脑”中看到。</p> 
+<p>InfoQ采访了LogicNP软件公司的高级开发者 Himangi G，以了解EZNamespaceExtensions.Net能够完成的功能。</p> 
+<p><strong>InfoQ：是什么需求驱使你开发了.NET中的Windows Explorer命名空间扩展呢？</strong></p> 
+<blockquote>
+  开发.NET中的Windows Explorer命名空间让开发者可以使用现有关于.NET技术和基础类库的知识和技能，并且可以使用他们最喜欢的.NET编程语言，可能是C#或者VB.NET。使用.NET开发命名空间扩展让开发者可以充分利用大量基础类库。
 </blockquote> 
-<p>敏捷团队为何响应如此之快呢？Vin指出：</p> 
-<blockquote> 
- <p>（...）好的团队都在用Swarming。他们尽量在当下解决问题或者消除障碍。如果做不到，好，把它移到Backlog中，但不到万不得已不要这么做。</p> 
+<p><strong>InfoQ：能否请你和大家分享一下能够使用EZNamespaceExtensions.Net v2013开发的应用程序类型？</strong></p> 
+<blockquote>
+  以下只是你能使用EZNamespaceExtensions.Net 2013开发的某些集成在Windows资源管理器和打开/保存文件对话框的软件类型： 
+ <ul> 
+  <li>文档管理软件</li> 
+  <li>内容管理软件</li> 
+  <li>信息管理软件</li> 
+  <li>虚拟磁盘</li> 
+  <li>FTP程序</li> 
+  <li>数据库管理器或者前端应用</li> 
+  <li>协议处理程序</li> 
+ </ul> 
 </blockquote> 
-<p>在《<u><a href="http://tobeagile.com/2012/12/11/seven-strategies-for-team-swarming/">团队Swarming的7项策略</a></u>》一文中，David Bernstein解释了Swarming如何帮助我们建立一支专注并且能够解决复杂问题的高效团队：</p> 
-<blockquote> 
- <p>进行Swarming时，整个团队针对同一问题集中在一起工作。这有助于大家相互了解，进而更好地合作。通常，团队需要经历从形成（了解彼此）、磨合（发现矛盾，化解矛盾）到最终运转（成为一支高效的团队）这几个阶段，所以请给每个人一点空间。</p> 
+<p><strong>InfoQ：当分发应用的时候，必须购买EZNamespaceExtensions.Net v2013的许可吗？</strong></p> 
+<blockquote>
+  不需要，EZNamespaceExtensions.Net v2013包含了无需专利费的分发许可，所以你可以完全免费地和你所开发的命名空间扩展一起分发EZNamespaceExtensions.Net的二进制文件。
 </blockquote> 
-<p>Swarming的工作方式跟结对编程很像，都是让团队成员在同一任务上紧密合作：</p> 
-<blockquote> 
- <p>跟单枪匹马地工作相比，看看一项任务是否可以由两个甚至三个人来完成。让两个人来做同一件事是有损失，但结对工作所带来的动力往往会将其抵消。记住，高效率的团队几乎总是结对完成任务的。</p> 
+<p><strong>InfoQ：使用EZNamespaceExtensions.Net v2013开发应用程序有多容易？</strong></p> 
+<blockquote>
+  EZNamespaceExtensions.Net让你可以马上使用Visual Studio IDE的项目向导开始命名空间扩展的开发。它拥有一个简单、设计良好并且完整测试过的API框架，这让你可以在几小时或者几天内开发出命名空间扩展，而不需要几周或者几个月。它拥有完整的特性支持，让你的命名空间扩展可以无缝地集成到Windows资源管理器以及所有应用的打开/保存文件的对话框中。它还包含了注册工具，用来轻松地部署你开发的命名空间扩展。
 </blockquote> 
-<p>什么是Swarming？几年之前， Yahoo讨论组上曾有一次关于《<a href="http://www.infoq.com/news/2011/01/swarming;jsessionid=3AADC3829916F4B9172BCBE2D56B6267">Swarming:意义何在？</a>》的讨论，InfoQ也进行了总结。其中解释了Swarming的目的：“使团队专注于完成有业务价值的工作”，“尽可能让整个团队从一开始就参与到同一个用户故事中去，以此提升质量和一致性”。按照Vin D’Amico的说法，“简单来说，Swarming是这样的行为——将大家召集到一起来解决问题或快速完成某个任务”。David Bernstein这样定义，“Swarming就是把整个团队聚在一起，专注地解决同一个问题”。</p> 
-<p>Oleksi Derkatch描述了<a href="http://oleksiderkatch.blogspot.nl/2011/03/swarming.html">Swarming</a>如何工作，以及它能带来什么：</p> 
-<blockquote> 
- <p>它的理念是让所有开发者工作于同一个用户故事，而不是让每个开发者各自为战。它的目标是彻底完成更多的用户故事。彻底完成80%的功能总比各种功能都只完成80%要好。</p> 
-</blockquote> 
-<p>Renee Troughton解释了组织应该如何使用Swarming来构建更富创造性的团队。她在博客文章《<u><a href="http://agileforest.com/2011/12/20/the-new-age-of-business/">业务的新时代</a></u>》中写道：</p> 
-<blockquote> 
- <p>这正是Swarming的用武之地。大部分组织就是将人员从一个项目抛到另一个项目，很少考虑个人兴趣。除此之外，他们也很少考虑这么做的真正速度以及与投资回报的关系。</p> 
- <p>为使工作更富成效，我们需要有激情的人，他们对待工作会像对待自己的孩子般专注。（...）应该允许对此有兴趣的员工报名参与，而且要立马放人让他们坚持到底。</p> 
-</blockquote> 
-<p>你的团队在使用Swaming吗？对于快速频繁地交付软件，它是不是真的有帮助？</p> 
-<p><b>查看英文原文</b>：<u><a href="http://www.infoq.com/news/2013/02/swarming-agile-teams-deliver;jsessionid=3AADC3829916F4B9172BCBE2D56B6267">How Swarming Helps Agile Teams to Deliver</a></u></p> 
-<hr /> 
-<p>感谢<a href="http://www.infoq.com/cn/bycategory.action;jsessionid=3AADC3829916F4B9172BCBE2D56B6267?authorName=臧秀涛">臧秀涛</a>对本文的审校。</p> 
-<p>给InfoQ中文站投稿或者参与内容翻译工作，请邮件至<a href="mailto:editors@cn.infoq.com">editors@cn.infoq.com</a>。也欢迎大家通过新浪微博（<a href="http://www.weibo.com/infoqchina">@InfoQ</a>）或者腾讯微博（<a href="http://t.qq.com/infoqchina">@InfoQ</a>）关注我们，并与我们的编辑和其他读者朋友交流。</p> 
+<b>查看英文原文：</b>
+<a href="http://www.infoq.com/news/2013/04/eznamespaceextensions-net-v2013;jsessionid=17166E403E8AA86848963A0EE8DE8DF9">EZNamespaceExtensions.Net v2013 Adds Context Menus, Thumbnail, Icons, Property Sheet Support</a> 
 <p id="lastElm"></p><br><br><br><br><br><br></body></html>
