@@ -1,6 +1,9 @@
 <html>
  <head></head> 
- <body> 
+ <body>
+  <div>
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/45.c">Aplicativos Windows no Android, Android no BlackBerry e um telefone baseado no Ubuntu</a>A comunidade de desenvolvedores de plataformas m&oacute;veis teve diversas not&iacute;cias em fevereiro: BlackBerry rodando aplicativos Android, aparelhos Android rodando aplica&ccedil;&otilde;es Windows e o an&uacute;ncio da data de lan&ccedil;amento de um telefone baseado no Ubuntu.
+  </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/44.c">Melhorando a Cultura DevOps com Informa&ccedil;&otilde;es Consolidadas</a>A plataforma Appsecute visa melhorar a colabora&ccedil;&atilde;o e aumentar a produtividade por meio da consolida&ccedil;&atilde;o da informa&ccedil;&atilde;o associada ao ciclo de vida de uma aplica&ccedil;&atilde;o. A plataforma de software como servi&ccedil;o (SaaS) aceita mensagens diretamente de pessoas e de outras plataformas de tecnologicas integradas, assim ela agrega eventos de forma online e que possam ser visualizados por todos em uma organiza&ccedil;&atilde;o. 
   </div> 

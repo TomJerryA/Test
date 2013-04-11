@@ -1,44 +1,21 @@
-<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>JavaScript Git的Kickstarter项目仅28小时达到集资目标</h3><p><a href="http://creationix.com/">Tim Caswell</a>是多个JavaScript和<a href="http://nodejs.org/">Node.js</a>社区的知名成员，他提出了一个使用JavaScript来重新实现<a href="http://git-scm.com/">Git</a>的建议。<a href="http://www.kickstarter.com/projects/creationix/js-git">并将该项目放到了Kickstarter（译者注：Kickstarter是一个对个人创意项目进行公众集资（捐赠）从而获得资金支持的网络平台）上进行集资，结果仅仅在28小时内就获得了超过360人的资助</a>。该项目再一次应证了<a href="http://www.codinghorror.com/blog/2007/07/the-principle-of-least-power.html">Atwood定律</a>：“任何应用都可以使用JavaScript来编写，并最终也会由JavaScript编写。”</p> 
-<p>InfoQ通过与Tim的对话对该项目进行了更深入地了解。</p> 
-<p><b>JSGIT</b><b>项目的想法从何而来？</b></p> 
-<blockquote> 
- <p>我一直在寻找一种适合在我自己设备上编程的新方式。最近有个微软的朋友送了我一个<a href="http://www.microsoft.com/Surface/en-US/surface-with-windows-rt/windows-rt">Surface RT</a> ，前一个项目留下的一对<a href="http://www.apple.com/ipad/">iPad</a>，以及我最近买的一个<a href="http://www.google.com/intl/en/chrome/devices/chromebook-pixel/">ChromeBook Pixel</a>。这些都是很有意思的设备，但是令我非常郁闷的是他们都有锁定限制并且对于在设备上的开发支持非常不友好。有一个平台没有人敢对其锁定，甚至是Apple，这就是浏览器环境中的JavaScript。你可以在该环境中生成并执行代码，你也可以访问本地存储，并且可以通过互联网上传或下载数据。</p> 
- <p>在<a href="http://c9.io/">Cloud9</a>平台上工作了一年后，我意识到基于浏览器的IDE在现今将成为可能。唯一的问题是Cloud9没有很好的解决离线问题。我希望的是可以将我的Git仓库复制到我本地的设备中，当我在海外飞行时（或者身处于我家后院深处时）可以离线工作。并且当我回到互联网的怀抱后，可以将我的修改push回我的公共Git仓库。</p> 
- <p>由于JavaScript是唯一一个随处可用的平台，所以我决定并且真的要将Git移植到JavasScript平台。</p> 
-</blockquote> 
-<p><b>你认为</b><b>JSGit</b><b>将会有哪些使用场景，是否只是基于浏览器的</b><b>IDE</b><b>和编辑器，还是将会有更广泛地应用？</b></p> 
-<blockquote> 
- <p>我个人的主要用途是基于浏览器的编程环境，但是很多人也表达了对于其他用途的兴趣，比如一个纯JavaScript的针对Node.js的 Git客户端和服务器。Git是很多部署系统中的一个通用组件，实现具有针对Node.js的Git服务器和客户端来对Git进行细粒度控制，将会给很多人带来帮助。</p> 
-</blockquote> 
-<p><b>你认为它的性能将会如何？</b></p> 
-<blockquote> 
- <p>JavaScript本身是相当快的，我最近使用JavaScript写了一些非常快的hash函数（MD5，SHA1，SHA256）,在我的桌面浏览器里可以达到每秒500,000次MD5 hash的速度。因为复制一个Git仓库是很慢的，即使你在一台很快的笔记本上使用原生客户端，对于大型的仓库来说都是非常慢的，我也不期望JS版本的Git能解决这个问题。但是对于小型的仓库，我希望它是足够快的。</p> 
-</blockquote> 
-<p><b>为什么不采用</b><a href="https://github.com/kripken/emscripten"><b>Emscripten</b></a><b>这样的工具将</b><b>C</b><b>实现的</b><b>Git</b><b>进行交叉编译，而选择使用</b><b>JavaScript</b><b>从无到有的重新实现每一项功能？</b></p> 
-<blockquote> 
- <p>我打算对此做进一步的研究，但是从我对这个领域的初步调查来看，我预见到两个问题。首先，Emscripten是一个代码生成器。它会生成非常大量的代码并最终形成一个直接的移植版本，除非你手动地调整大部分代码。其次，查看Git的各种C实现，它们通常是与底层文件系统和网络调用紧密耦合的。这就需要我们对某个基于浏览器版本的Git进行重型定制。因为每个web平台都有其自有的文件存储API，这将需要我为多个web平台手写文件系统的抽象。</p> 
-</blockquote> 
-<p><b>目前已经有</b><b>C</b><b>，</b><b>Java</b><b>和其他语言等多个</b><b>Git</b><b>实现，你觉得使用</b><b>JavaScript</b><b>实现</b><b>Git</b><b>将会面临哪些特别的挑战？</b></p> 
-<blockquote> 
- <p>我在使用JavaScript实现加密相关的功能方面相当有经验，所以我不认为这是一个问题。但是需要实现的代码总量之大将会是个问题。我计划把工作重点先放在那些最基本的重要功能上，然后不断完善直到花光我的时间。</p> 
-</blockquote> 
-<p><b>为什么现在才发起这个项目？是不是某些特别的</b><b>HTML5</b><b>技术使得现今具备了该项目的可行性？</b></p> 
-<blockquote> 
- <p>这其中更多的因素与硬件有关。现在越来越多的设备具备了长时间的电池寿命以及较大的屏幕，但是开发体验却非常的糟糕。</p> 
-</blockquote> 
-<p><b>你的项目在一天多内就得到了小规模的资助，你打算使用这些即将收到的资金来构建哪些功能？</b></p> 
-<blockquote> 
- <p>正如我在<a href="http://www.kickstarter.com/projects/creationix/js-git/posts">拓展目标</a>中所预估的，我希望先实现重要的Git功能。如果有时间，将会实现对多种平台的集成。</p> 
-</blockquote> 
-<p><b>为什么会想到使用</b><b>Kickstarter</b><b>平台？</b></p> 
-<blockquote> 
- <p>这在当时这听起来像是个不错的主意。到目前为止它都进行的很好，尽管在通读了所有Kickstarter的规则后，我仍然感觉到像这种类型的项目勉强能符合他们心中的理想项目。</p> 
-</blockquote> 
-<p><b>你是否认为更多的（</b><b>JavaScript</b><b>）开源项目应该尝试上</b><b>Kickstarter</b><b>进行集资呢？</b></p> 
-<blockquote> 
- <p>我现在还不知道，这只是一个实验。我确实很喜欢这种概念，就是在你为某个想法花费几个月的时间实践之前，可以通过创意甄选从而获得支持。我曾经在过去的几个项目中花费了几百个小时的业余时间，但最后却发现社区对他们几乎没什么兴趣。我真的喜欢全职为一些大家想要的而且非常酷的项目而工作。我不知道Kickstarter的这个项目是否可以长期这样进展下去，但是即使不会我也会继续寻找其他适合的点子。</p> 
-</blockquote> 
-<p>JSGit并不是首个在Kickstarter上成功达到集资目标的JavaScript相关项目。以前类似的项目还包括<a href="http://www.kickstarter.com/projects/869786663/async-javascript-book?ref=live">一本关于异步JavaScript编程的书</a>和<a href="http://www.kickstarter.com/projects/188988365/lets-code-test-driven-javascript?ref=live">测试驱动JavaScript的一个视频系列</a>。不管怎样，JSGit是首个用于生产JavaScript代码库的Kickstarter项目。</p> 
-<p>该<a href="http://www.kickstarter.com/projects/creationix/js-git">项目开放接受集资</a>至2013年3月30日。Tim希望在接受集资截止日到期后立即开展该项目的工作。</p> 
-<p><b>查看英文原文</b>：<a href="http://www.infoq.com/news/2013/03/git-in-javascript;jsessionid=5BA8387B5E769CAEE7E1098AF077DA77">http://www.infoq.com/news/2013/03/git-in-javascript</a></p> 
+<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>Docker：具备一致性的自动化软件部署</h3><p>PaaS供应商<a href="https://www.dotcloud.com/">dotCloud</a>开源了自有平台上的关键组件<a href="https://github.com/dotcloud/docker/">Docker</a>。Docker是一种增加了高级API的LinuX Container（LXC）技术，提供了能够独立运行Unix进程的轻量级虚拟化解决方案。它提供了一种在安全、可重复的环境中自动部署软件的方式。</p> 
+<p>Docker使用标准化容器的概念，能够容纳软件组件及其依赖关系——二进制文件、类库、配置文件、脚本、Virtualenv、jar包、gem包、原始码等——而且可以在任何支持<a href="http://en.wikipedia.org/wiki/Cgroups">cgroups</a>的64位（针对x64）Linux内核上运行。这样的容器可以部署在笔记本、分布式基础架构、云端或是其他地方，其对环境的保留适用于广泛的用途：持续部署、Web部署、数据库群集、SOA等等，对此，<a href="http://www.kavistechnology.com/blog/docker-is-open-source/">Mike Kavis在他的博客中这样描述</a>：</p> 
+<p>作为应用开发者，与我相关的用例是使用Docker以简化持续交付过程。在我职业生涯中工作过的每个地方，在那些从大型机到客户端再到云端的岁月里，让不同的环境保持同步并成功测试应用简直是个噩梦。无论我们的流程有多好或者有多糟，在“Dev-QA-Stage-Prod（开发-质量保证-过渡-生产）”的迁移过程中的各个阶段里，代码<b>从来</b>就没有处于相同的环境。最后的结果就是，发布的产品总是出现质量问题。“它在测试阶段是好的”是仅次于“支票已经寄出了”（译者注：the check is in the mail为美国俚语，意指某件应该发生某事但实际情况却与之不符，最早是债务人用于缓和债权人的愤怒情绪的一种借口）的推脱借口。</p> 
+<p>在持续交付（CD）过程中，<i>整个环境</i>随着代码一起在“Dev-QA-Stage-Prod”的不同阶段间迁移。配置问题，系统环境不同的问题，借口都将不复存在。在CD过程中，如果代码在产品阶段出问题，那么在测试阶段也一样有问题。使用Docker的过程中，我知道能够通过编写脚本实现CD流程的自动化。我还知道，因为无需处理所有的安装和配置问题，随着创建新环境的速度加快，产品进入市场的速度也得到了提升。</p> 
+<p>dotCloud的CEO Solomon Hykes<a href="http://www.youtube.com/watch?feature=player_embedded&amp;v=wW9CAH9nSLs">在PyCon上演示了Docker</a>，宣称它是可重复的轻量级虚拟化解决方案，因为“它在进程层面是独立的，而且拥有自己的文件系统”。其API允许系统管理员对容器进行一系列操作：开始、停止、复制、等待、提交、关联标准流、列出文件系统变更等等。</p> 
+<p>Docker的<a href="https://github.com/dotcloud/docker/">主要特性</a>如下：</p> 
+<ul> 
+ <li>文件系统隔离：每个进程容器运行在完全独立的根文件系统里。</li> 
+ <li>资源隔离：可以使用cgroup为每个进程容器分配不同的系统资源，例如CPU和内存。</li> 
+ <li>网络隔离：每个进程容器运行在自己的网络命名空间里，拥有自己的虚拟接口和IP地址。</li> 
+ <li>写时复制：采用写时复制方式创建根文件系统，这让部署变得极其快捷，并且节省内存和硬盘空间。</li> 
+ <li>日志记录：Docker将会收集和记录每个进程容器的标准流（stdout/stderr/stdin），用于实时检索或批量检索。</li> 
+ <li>变更管理：容器文件系统的变更可以提交到新的映像中，并可重复使用以创建更多的容器。无需使用模板或手动配置。</li> 
+ <li>交互式Shell：Docker可以分配一个虚拟终端并关联到任何容器的标准输入上，例如运行一个一次性交互shell。</li> 
+</ul> 
+<p>目前，Docker已在Ubuntu 12.04和12.10测试过，但dotCloud表示它应该能够在2.6.24或更高版本的Linux上运行。它还可以在Windows或Mac OS X中，使用<a href="http://www.vagrantup.com/">Vagrant</a>在<a href="https://www.virtualbox.org/">VirtualBox</a>的虚拟机里安装。Docker是用Go语言编写的，并使用了Linux的 <a href="http://blog.dotcloud.com/kernel-secrets-from-the-paas-garage-part-24-c">cgroup</a>、<a href="http://blog.dotcloud.com/under-the-hood-linux-kernels-on-dotcloud-part">namespacing</a>、支持写时复制特性的<a href="http://aufs.sourceforge.net/aufs.html">AUFS</a>文件系统以及<a href="http://lxc.sourceforge.net/">LXC</a>脚本。</p> 
+<p><b>查看英文原文：</b><a href="http://www.infoq.com/news/2013/03/Docker;jsessionid=85EDA67E3A0DC43FA96548D54C3D9D58">Docker: Automated and Consistent Software Deployments</a></p> 
+<hr /> 
+<p>感谢<a href="http://www.infoq.com/cn/bycategory.action;jsessionid=85EDA67E3A0DC43FA96548D54C3D9D58?authorName=康锦龙">康锦龙</a>对本文的审校。</p> 
+<p>给InfoQ中文站投稿或者参与内容翻译工作，请邮件至<a href="mailto:editors@cn.infoq.com">editors@cn.infoq.com</a>。也欢迎大家通过新浪微博（<a href="http://www.weibo.com/infoqchina">@InfoQ</a>）或者腾讯微博（<a href="http://t.qq.com/infoqchina">@InfoQ</a>）关注我们，并与我们的编辑和其他读者朋友交流。</p> 
 <p id="lastElm"></p><br><br><br><br><br><br></body></html>
