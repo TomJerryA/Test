@@ -1,50 +1,48 @@
-<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>Should You Create User Stories for Technical Debt?</h3><p>Agile teams sometimes struggle with the planning of pure technical tasks, like tasks that have to do with technical debt. Such tasks&nbsp;have no direct value for the user of a system, but have to be done to deliver working software. Should&nbsp;you create user stories to handle such technical tasks and technical debt, or not?</p> 
-<p>In the blog post <a href="http://www.industriallogic.com/blog/as-a-developer-is-not-a-user-story/">&quot;As a Developer…” Is Not a User Story</a>, Bill Wake talks about user stories that he encountered which do not have value for the customer. As an example he mentions the user story &quot;As a developer, I want to configure Jenkins so that we have continuous integration&quot;. Bill explains why he thinks we shouldn't call them user stories:</p> 
+<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>Product Backlogs with Process Maps or Story Maps</h3><p>Structuring a product backlog can be helpful to keep an overview of the user stories and see the bigger picture. The blog post <a href="http://www.agilebuddha.com/agile/story-mapping-andvs-process-maps/">story mapping and/vs process maps</a>&nbsp;from Shrikant Vashishtha describes how you can map user stories on a process map. He compares the process mapping approach for structuring user stories with story mapping from <a href="http://www.infoq.com/author/Jeff-Patton;jsessionid=F958AABC9F352F6370D9D3BB5A27031B">Jeff Patton</a>.</p> 
+<p>In Scrum, the product backlog is used to manage the product needs. For a large product there may be many user stories in the backlog, which can make it difficult to keep an overview and see the bigger picture. Also when you have many user stories, a similar thing can happen with the sprint backlog of the team:&nbsp;</p> 
 <blockquote> 
- <p>My argument is not that those activities are not good or important things to do (they are for this team), but that thinking of them as user stories misleads the team and its customers. Writing something in the <i>form</i> of a user story when it's not about <i>users</i> of the system misses the point.</p> 
+ <p>(…) many times, as you look at the card-wall (Scrum Board), things are not very clear to you. Card wall may look like the mesh of user-stories with statuses in To Do, In Progress or Done. However some of the bigger questions are not clearly answered by just looking at user-stories.</p> 
 </blockquote> 
-<p>His opinion is that we should call them tasks in stead of user stories. Applying lean thinking, he considers them to be waste:&nbsp;&nbsp;&nbsp;</p> 
+<p>Shrikant suggests to do process mapping&nbsp;to to structure the product backlog and visualize user stories:&nbsp;</p> 
 <blockquote> 
- <p>From that perspective [of lean thinking], many of the activities teams do can be regarded as a type of waste, but we don't know how to develop software effectively without doing them. Lean teams talk about this kind of waste as &quot;Non-Value-Added But Necessary&quot;: work we do because we have to.</p> 
+ <p>How about having a pictorial view of whole business flow as a process-map, identifying the user-stories (work to be done) in it?</p> 
 </blockquote> 
-<p>Bill suggests to be critical on user stories where the role is somebody from development, in stead of an actual user of the software. Try to reframe such a user stories as functional behavior or quality characteristic and rephrase it, if that isn't possible then consider it to be a task. Task are there for the development team to track, but should not be put on the backlog as user stories since they&nbsp;are not delivering value:</p> 
+<p>The process maps mention the IDs of the user stories that are used to implement parts of the process. Looking at the process map&nbsp;you can see which user stories are needed for a business flow, and if you use colors you can make the progress of the business flow visible.</p> 
+<p>Another approach to structure a large product backlogs is story mapping, as described by Jeff Patton in his 2008 article&nbsp;<a href="http://www.agileproductdesign.com/blog/the_new_backlog.html">the new user story backlog is a map</a>:&nbsp;</p> 
 <blockquote> 
- <p>(…) recognize that your team will sometimes just have tasks. You may decide to track tasks internally, but don't treat them or track them as direct progress on the developed system.</p> 
+ <p>Arranging user stories in the order you'll build them doesn't help me explain to others what the system does. Try handing your user story backlog to your stakeholders or users when they ask you the question &quot;what does the system you're building do?&quot; For my money, trying to understand the system - the whole system - is the difficult part of software development. One of the most common complaints I hear from Agile teams is that they lose the big picture - that is if they ever had it in the first place.</p> 
 </blockquote> 
-<p>Mattias Marschall provides a solution on how to handle technical tasks in a backlog, in the blog post <a href="http://www.agileweboperations.com/how-to-translate-business-value-of-things-that-are-technically-important">how to translate “business value” of things that are technically important</a>. He starts by explaining how he sees the relationship between user stories and technical tasks:</p> 
+<p>&nbsp;Jeff explains how story mapping helps to communicate the big picture:</p> 
 <blockquote> 
- <p>User Stories should describe what a user wants the system to do. Purely technical tasks should usually be implemented as part of a User Story.</p> 
+ <p>I find a story map hung as an information radiator becomes a constant point of discussion about the product we're building. When the project is running, it becomes our sprint or iteration planning board. We identify or mark off stories to build in the next iteration directly on the map. During the iteration we'll place just the stories we're working on into a task wall to managing their development - but the story map lives on the planning wall reminding us what the big picture is, and how far we've come.</p> 
 </blockquote> 
-<p>But what about&nbsp;technical tasks which are not&nbsp;directly related to a specific user story? Mattias suggest&nbsp;to put them on the product backlog:</p> 
+<p>Previously InfoQ wrote about&nbsp;how story mapping helps to structure a product backlog in <a href="http://www.infoq.com/news/2009/03/story-map;jsessionid=F958AABC9F352F6370D9D3BB5A27031B">story mapping gives context to user stories</a>:</p> 
 <blockquote> 
- <p>To be able to put technical tasks into the product backlog for prioritization, just create a User Story for each of them. But, isn’t that cheating? Not if you can answer these two questions:</p> 
- <ol> 
-  <li>Who benefits from the result?</li> 
-  <li>Why is this task necessary?</li> 
- </ol> 
+ <p>A story map is two-dimensional, indicating the priority of stories, as well as their relation to each other and the larger goals of the users. The map helps the team to understand how stories fit together to form a releasable product.</p> 
 </blockquote> 
-<p>With his solution you can have all the technical tasks covered by user stories in the backlog, either as a part of a user story for a customer, or with a user story specifically for the technical tasks:</p> 
+<p>After having describes how process mapping works in <a href="http://www.agilebuddha.com/agile/story-mapping-andvs-process-maps/">story mapping and/vs process maps</a>, Shrikant Vashishtha continues his blog post by comparing&nbsp;process mapping with story mapping. He describes how a product backlog looks with story mapping:</p> 
 <blockquote> 
- <p>If you’re able to formulate your technical tasks as a kind of User Story, your stake holders will be able to understand the necessity of them and will be able to prioritize them along with other User Stories.</p> 
+ <p>The idea of story-mapping is to groom Product Backlog in such a way that you have “big stories” (termed as “user activities”, epics or features also) at the top of map. These big stories are divided further into user tasks (something that someone does to reach a goal).</p> 
 </blockquote> 
-<p>Bastian Buch explains in his blog post <a href="http://www.codovation.com/2012/06/effective-steps-to-reduce-technical-debt-an-agile-approach/">effective steps to reduce technical debt: an agile approach</a> that developers and product owner can have a different opinion on technical tasks that are related to technical debt:</p> 
+<p>Shrikant&nbsp;gives some drawbacks from using story maps:</p> 
 <blockquote> 
- <p>Developers know about technical debt and are aware that it is important to face this problem.</p> 
- <p>Product Owner often doesn’t understand the need and benefits of reducing technical debt and don’t consider or allow technical projects / stories in their backlog and release plan.</p> 
+ <p>Story maps are great information radiators. However they may require big space to capture stories of entire release. Also story-mapping doesn’t necessarily provide information on the linkage between stories or how those epics/user-stories are orchestrated together to reach a business goal.</p> 
 </blockquote> 
-<p>He suggests that the&nbsp;product owner should take responsibility for reducing technical debt. Team members should discuss technical debt with the product owner, and work together&nbsp;to give&nbsp;it the right priority on the product backlog:</p> 
+<p>Where it becomes difficult to keep an overall view with story maps, Shrikant suggest that process maps can help since they do not show all the details:</p> 
 <blockquote> 
- <p>The team should remember the product owner that he is part of the team: his pain is the pain of the team and other way round. He is not the customer, payer or employer of the team but more a SME (subject matter expert) and manager / analyst of product requirements from different stakeholders.</p> 
+ <p>Instead of having all stories on board, you instead put a big poster of process map embedding the user-story identifiers in it. Process-map in itself is also a narrative and helps people to come on the same page.</p> 
 </blockquote> 
+<p>He concludes by explaining that you can use both process maps and story maps to structure a large product backlog:</p> 
 <blockquote> 
- <p>As a team give your product owner the guarantee that growth of the product will stay the most important part – but not just in a short team (Performance) but also in a long term (Health) manner.</p> 
+ <p>(…) it may look like that process maps and story maps are completely different concepts to solve the same problem but they are not. They are tools to bring more clarity on the board. Depending on the context, they can be used to complement each other.</p> 
 </blockquote> 
-<p>Bastian&nbsp;proposes that we should collect the technical problems into user stories, estimate&nbsp;the effort needed to solve it and&nbsp;the benefits that solving would bring. He calls the benefits “payment”, as solving the problem reduces the technical debt:</p> 
+<p>In the blog post <a href="http://www.techwell.com/2013/03/user-story-mapping-goal-driven-backlog-development">user story mapping—goal-driven backlog development</a>, Scott Sehlhorst gives an overview of story mapping.&nbsp;He start by stating what the purpose is:</p> 
 <blockquote> 
- <p>(…) we created stories marked as “TechnicalDebtItems” in JIRA for each task we defined. For bringing those items into a prioritized order and for drawing the right conclusions, we created a chart to visualize how the efforts relate to the payment and vise versa.</p> 
+ <p>User story mapping is a technique for assuring that each release or iteration makes the product tangibly better. (…) User story mapping forces you to explicitly understand the processes that users follow or will follow to solve problems and the value-chain or workflow by which these users achieve their goals.</p> 
 </blockquote> 
-<p>Making things visible helps the product owner and the team to collaboratively reduce technical debt.</p> 
+<p>Scott explains how story mapping can be done, and which benefits it brings:</p> 
 <blockquote> 
- <p>[With] the visualization of the debt and the finding of a possible repayment plan (…) the team now can focus on the most important steps. An important side effect: This overview is also a great tool for working with the product owner and other stakeholders because it gives him a good transparency regarding technical debt.</p> 
+ <p>With user story mapping, you organize the user stories or tasks that users perform into groups that identify which stories are collectively required to deliver value. This is a powerful technique for assessing the <em>completeness</em> of your requirements. It also gives you a tool for assuring that each release or iteration adds value by enabling a user to solve, or more effectively solve, a problem—avoiding a delivery that only solves half of a problem.</p> 
 </blockquote> 
+<p>Do you structure your product backlog with story maps or process maps? Do they help you to keep an overview and see the bigger picture?</p> 
 <p id="lastElm"></p><br><br><br><br><br><br></body></html>
