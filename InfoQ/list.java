@@ -2,10 +2,13 @@
  <head></head> 
  <body>
   <div>
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/16.java">BDD Tool Cucumber with a Larger Team and Numerous Bugs Fixed</a>The project for Cucumber, a Behaviour Driven Development, BDD, tool, has recently increased the team and intensive work last months has brought open bugs down substantially, Aslak Helles&oslash;y revealed when talking about the Cucumber ecosystem during a Cucumber conference day last week.
-  </div>
-  <div>
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/15.java">Product Backlogs with Process Maps or Story Maps</a>When you have a large backlog with many user stories, structuring a product backlog with story maps or process maps can help to keep an overview and see the bigger picture.
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/17.java">Google's Go Readies 1.1 Release</a>Version 1.1 of Google's Go is in beta, and brings significant reported performance increases, new toolset &amp; language features. It maintains backwards compatibility with Go 1.0 and in most cases a recompile is the only thing needed to take advantage of this release.
+  </div> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/16.java">BDD Tool Cucumber with a Larger Team and Numerous Bugs Fixed</a>The project for Cucumber, a Behaviour Driven Development, BDD, tool, has recently increased the team and intensive work last months has brought open bugs down substantially, Aslak Helles&oslash;y revealed when talking about the Cucumber ecosystem during a Cucumber conference day last week. 
+  </div> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/15.java">Product Backlogs with Process Maps or Story Maps</a>When you have a large backlog with many user stories, structuring a product backlog with story maps or process maps can help to keep an overview and see the bigger picture. 
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/14.java">Dart2js Outperforms Hand-Written JavaScript in DeltaBlue Benchmark</a>Google released a new version of the Dart2js compiler, whose generated JavaScript code now outperforms hand-written JavaScript in the DeltaBlue benchmark, a commonly used benchmark for benchmarking object-oriented languages. 
@@ -147,9 +150,6 @@
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/18.java">Interview with Neil Bartlett about OSGi and the new Bndtools 2.0 release</a>Neil Bartlett, current maintainer of the popular Bndtools Eclipse plugin for OSGi has announced the release of Bndtools 2.0. InfoQ has interviewed Neil Bartlett to learn more about Bndtools and about OSGi in general. 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/17.java">ZeroTurnaround has Announced the Availability of LiveRebel 2.6</a>ZeroTurnaround has announced the availability of LiveRebel 2.6, its software release automation tool. InfoQ has interviewed Krishnan Badrinarayanan Product Manager to learn more about LiveRebel and the latest release. 
-  </div>   
+  </div>  
  </body>
 </html>

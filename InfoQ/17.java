@@ -1,59 +1,23 @@
-<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>ZeroTurnaround has Announced the Availability of LiveRebel 2.6</h3><p>ZeroTurnaround has announced the availability of LiveRebel 2.6, its software release automation tool.</p> 
-<p>Version 2.6 adds the following features:</p> 
+<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>Google's Go Readies 1.1 Release</h3><p style="margin-bottom: 0in"><span lang="en-US">As Google's Go programming language version 1.1 nears release, the developers have <a href="https://groups.google.com/d/msg/golang-nuts/bQDzp4IYI1o/zHOiBy5BvO0J" target="_top">announced</a> the release of the latest beta, providing a working preview of its new features. Not least among these is an estimated speed increase of 30%-40% in several use cases. Version 1.0 of Go was released a little over a year ago in March 2012, and to this point Google has released bug fixes </span><span lang="en-US">but </span><span lang="en-US">v</span><span lang="en-US">ersion 1.1 will bring <a href="http://tip.golang.org/doc/go1.1">new features</a> while upholding their commitment to backwards compatibility with 1.X version. The updates </span><span lang="en-US">affect</span><span lang="en-US"> the toolset, language features, and changes to the standard library.</span></p> 
+<p style="margin-bottom: 0in"><b>New Language Features</b></p> 
 <ul> 
- <li>Support for applications built using Java, PHP, Python, PERL and Ruby.</li> 
- <li>Database updates and version control, giving operations teams the ability to update or rollback database changes along with associated applications.</li> 
- <li>Multiplatform updates, enabling teams to release applications built using multiple platforms and databases across many unlike environments.</li> 
- <li>Property management that allows deploying a single release onto several, unlike environments by applying specific configurations for each one behind the scenes.</li> 
- <li>Monitors the health of the application and the server it runs on in real-time.</li> 
+ <li>Integer division by zero</li> 
+ <li><a href="http://tip.golang.org/ref/spec#Method_values">Method values</a></li> 
+ <li><span lang="en-US">Return requirements – Previously functions that returned a value required an explicit “return” or call to panic, this has been relaxed with the addition of <a href="http://tip.golang.org/ref/spec#Terminating_statements">terminating statements</a>.</span></li> 
 </ul> 
-<p>InfoQ has interviewed Krishnan Badrinarayanan ZeroTurnaround Product Marketing Manager for LiveRebel.</p> 
-<p><b>I see you position LiveRebel as a test and release tool, but you are not a continuous integration tool. What does LiveRebel add to the test and release equation?</b></p> 
-<blockquote> 
- <p>When you think about releasing apps, CI tools can be thought of as scripting on steroids. You can do anything with them, but you have to code and maintain it all. They do not have knowledge about your environment, configuration, database or anything else. They just trigger and execute tasks one after another and log success or failure.</p> 
- <p>LiveRebel approaches this differently. It knows everything about your environment - which servers are running, and which apps and versions are deployed. It manages and versions properties specific to environments. It understands and versions database and environment changes.</p> 
- <p>A typical use case: An agile development team releases updates every few days. The QA team picks each release up, and using LiveRebel automatically deploys it - code, DB, conf - onto their test environments. Once deployed, LiveRebel automatically calls test scripts. Once passed, the Operations team deploys the app onto the staging environment. LiveRebel automatically calls smoke tests. Finally, the operations team deploys the app onto the production environment with no downtime. If any deployment were to fail, LiveRebel automatically rolls back changes.</p> 
- <p>In the end LiveRebel releases apps - code, DB and config, all in-sync, across physical, virtual or cloud environments. Deployments are versioned, automated, fully reversible and testable. The result: teams better manage and expedite releases predictably, without compromising quality or disrupting user experience.</p> 
-</blockquote> 
-<p><b>Is a CI tool actually required or can LiveRebel perform CI functions as well?</b></p> 
-<blockquote> 
- <p>They occupy different niches. LiveRebel doesn't do builds, it comes after the builds were done. LiveRebel is a release automation tool that also integrates with popular CI tools. For example, if the development team were to package a release by hand, they can use the LiveRebel command center to upload it, and then deploy it onto various environments, quickly and safely.</p> 
- <p>However, if the team were to use a CI tool like Jenkins, Hudson or Bamboo, they can install the LiveRebel plugin and create deployment tasks that would hand off deployment to LiveRebel. LiveRebel would then deploy the release - code, DB and conf, all together - onto selected environments with no downtime and in a failsafe manner.</p> 
-</blockquote> 
-<p><b> </b></p> 
-<p><b>Can you talk about property management?</b><b> </b></p> 
-<blockquote> 
- <p>When you release apps through testing, staging, production, or onto customer or external environments, you encounter differences in environment properties, environment variables and configuration. Often this is solved by packaging a separate release for each environment. This means that your releases are subtly different between environments and cannot be tested completely. Others have found a way to externalize these environment specific properties using home-grown scripts and tools.</p> 
- <p>With LiveRebel, release engineers can specify property sets that apply for each environment. LiveRebel then deploys the same package to all chosen environments and applies their respective property sets. It will even alert you if you are missing some properties.</p> 
- <p>This means that you can run the same release process through testing, staging and production and be sure it's tested before getting to users.</p> 
-</blockquote> 
-<p><b>What about the monitoring capabilities?</b></p> 
-<blockquote> 
- <p>LiveRebel provides basic application and server monitoring by placing a beacon beside each app or server. The beacons pulsate based on the number of requests they receive, and turns from green to red based on their health. On mouse-over, the beacon provides a pop up with key stats on response throughput. It's not a replacement for a full-blown Application Performance Monitor, but it provides the key metrics to monitor the server and application health.</p> 
-</blockquote> 
-<p><b> </b></p> 
-<p><b>Do you support the usual build tools, Ant, Maven, Gradle?</b><b> </b></p> 
-<blockquote> 
- <p>Yes. LiveRebel offers a fully featured command line interface and REST API. So, with a couple lines of scripting, engineers can integrate LiveRebel with build tools.</p> 
-</blockquote> 
-<p><b>Do you integrate with Hudson, Bamboo, and TeamCity, and the various source control systems?</b></p> 
-<blockquote> 
- <p>LiveRebel has ready-made plugins for Hudson, Jenkins and Bamboo. A plugin in for TeamCity is in the works. The plugins can be installed from each of their plugins menu and set up to communicate with LiveRebel securely. Once set up, you can automatically deploy releasable artifacts right from the CI tool via LiveRebel into selected environments with no downtime. All deployments are failsafe, which means if a failure were to occur, LiveRebel automatically rolls back any changes before users are impacted. Any source control system will do. For managing app configuration LiveRebel uses GIT.</p> 
-</blockquote> 
-<p><b>This seems like a completely different tool than sister product JRebel. Is there any kind of synergy?</b></p> 
-<blockquote> 
- <p>Absolutely. It's a part of our mission to help software eat the world faster! We help software teams make the process of developing and delivering apps more pleasant and productive.</p> 
-</blockquote> 
-<p><b>What operating systems, Windows, Unix, Linux?</b></p> 
-<blockquote> 
- <p>All of the above and the MacOS X. <a href="http://zeroturnaround.com/software/liverebel/what-we-support/#headline">Here is a complete list</a> of what we support.</p> 
-</blockquote> 
-<p><b> </b></p> 
-<p><b>Your website says this is free. What is your pricing model?</b><b> </b></p> 
-<blockquote> 
- <p>LiveRebel is free for up to 2 managed servers. Which means you can deploy apps on up to two servers that host apps for free. Database servers do not count towards this quota. Any additional managed servers can be acquired at $420 per year.</p> 
-</blockquote> 
-<p><b> </b></p> 
-<p>Badrinarayanan told InfoQ that the next steps in product development will focus on increasing platform coverage and improving release management support. More information on LiveRebel is available <a href="http://www.liverebel.com">here</a>.</p> 
-<p>&nbsp;</p> 
+<p style="margin-bottom: 0in"><b>Tools / Implementation</b></p> 
+<ul> 
+ <li>gccgo – <a href="http://www.infoq.com/news/2013/03/gcc48_released;jsessionid=3ECC5B5C4AB446BBCF20068385A2FAE8">Version 4.8 of GCC</a> (GNU Compiler Collection) released in March 2013 has partial Go 1.1 support, while the upcoming GCC 4.8.1 scheduled for release in May should provide complete 1.1 support.</li> 
+ <li>int/unit on 64-bit implementations now defined as 64-bit. This could issues for programs expecting these types to only be 32-bit.</li> 
+ <li>Heap size - On 64-bit systems this has been expanded to tens of gigabytes (exact size system dependent and not finalized)</li> 
+ <li>go command 
+  <ul> 
+   <li>Error messages for compiling, testing, and running code are more descriptive</li> 
+   <li>$GOPATH must be set in order to use go get, and it is no longer acceptable for it to be equal to $GOROOT</li> 
+  </ul> </li> 
+ <li>go fix has been adjusted to support migrating of code from 1.0.X to 1.1. (Pre 1.0.X code cannot be upgraded directly to Go 1.1)</li> 
+ <li>Race detection – developers battling with race conditions will benefit from using new option<a href="http://tip.golang.org/doc/articles/race_detector.html"> -race</a> with go test. It is currently available for the 64-bit platforms Linux, OS X, and Windows.</li> 
+</ul> 
+<p style="margin-bottom: 0in">Go's developers report significant performance increases in several (but not all use cases). These increases are brought about by improvements to the compiler's code generation, a better map implementation, fewer context switches in networking applications, and an improved garbage collector.</p> 
+<p style="margin-bottom: 0in"><span lang="en-US">Downloads for major platforms (Windows, Linux, OS X, etc) are <a href="https://code.google.com/p/go/downloads/list?q=go1.1beta2" target="_top">available</a> now for 1.1 Beta 2. Keep in mind that development is progressing at a brisk pace so newer versions can and will appear. Developers should be able to take advantage of the new 1.1 features by recompiling their existing code.</span></p> 
 <p id="lastElm"></p><br><br><br><br><br><br></body></html>
