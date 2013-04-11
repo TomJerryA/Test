@@ -1,6 +1,16 @@
-<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>物理墙和虚拟墙之争</h3><p>在敏捷开发中，故事墙作为information radiator，在支撑整个软件团队的日常开发，可视化开发进度和开发中出现的问题，起到非常重要的作用。团队的开发状态和进度，在任何时刻，你只需要抬一抬头，就可以一目了然：当前谁在开发什么任务，是否有闲置的资源，开发和测试的工作分配是否合理，是否有过量的Bug等待修复，不一而足。</p> 
-<p>虚拟的电子故事墙也应运而生，比如Mingle和TFS，还有一些开源的产品经过改造后，也可以极度模拟实际的物理墙界面，并更加容易创建和编辑并删除。尤其在保存开发过程历史方面，比起物理墙有着得天独厚的好处。物理墙基本上只关注当前迭代的进程，在每次进入新的迭代，物理墙更新，上一迭代的故事卡片被回收或者遗弃，难以定位和回顾。虚拟墙因为信息化的本质，更容易搜索和存档，保留快照。此外，电子故事墙在统计和制作图表方面的功能，更是物理墙无法企及的。电子墙可以随着故事卡的挪动，动态算出当前状态下的各种数据，并渲染对应的实时更新的图表，为团队和客户提供数据和可视化方面的决策支持。更重要的，虚拟墙天生支持分布式开发，因为地区甚至时区有差异的团队，如果需要共用一个故事墙时，唯一的选择只能是虚拟墙，每一方团队都能看到时刻最新的故事墙状态。</p> 
-<p>如何解决好两者之间的关系，在ThoughtWorks内部以及客户的现场，我们都遇到了类似的问题。一般来说，团队自身或者开发者们更喜欢物理墙多一点，感受直观，把注意力和时间都聚焦在故事卡对应的任务本身，而不是被动地吸引在虚拟墙软件自身以及如何学习使用并挪动虚拟墙上的电子卡上（你会看见在站会时，每一位开发人员在挪动电子卡时会有多么奇怪而有趣的事情发生），对他们是更重要的事情。而对于团队的PM或者stakeholder们来说，虚拟墙可以远程打开，开发状态一目了然，更不用提统计和图表所提供的支持。</p> 
-<p>很多团队会选择两者都采用，但不得不问到以谁为主以及如何同步的问题。以谁为主还是比较好解决，物理墙面向开发团队，虚拟墙面向管理者和stakeholder们。所以最大的问题在于如何保持两者之间的数据同步。说白了就是，物理墙上的故事卡挪动，要及时在虚拟墙上反映出来，尤其虚拟墙软件对于故事卡的每一步挪动都会记录相应的数据变化，从而为精细的图表和统计提供数据，这样物理墙和虚拟墙之间的故事卡数据同步显得尤为重要。但现实情况和经验表明，数据同步做得很不如人意，开发者的关注点在物理墙，往往容易忘记及时更新虚拟墙上的故事卡，他们甚至对于这样一件重复的事情感到愤怒。而如果由PM每天下班前对两个故事墙做同步，又显得无聊之极。</p> 
-<p>怎么办？我更相信鱼和熊掌不可兼得，对于一个团队，如果既要享受物理墙带来的可视化和信息辐射的好处，又需要虚拟墙带来的强大的编辑、统计以及图表功能，就不得不去承担因为同步二者的故事卡数据所带来的辛苦甚至是痛苦。选择团队的开发人员来各自负责同步两个墙之间的数据，还是由PM每天找一个正确的时间来同步，都是由团队自己来决定，至少我们是这么做的。你还有其他的办法吗？</p> 
+<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>Python Tools for Visual Studio 2.0新增对智能感知、Virtualenv和Windows Azure的支持</h3><p>微软近期发布了<a href="http://pytools.codeplex.com/">Python Tools for Visual Studio 2.0</a>的alpha版本，其中包括调试方面的改进、智能感知和对Windows Azure的支持。这一版本让开发者可以使用Visual Studio调试Python脚本文件，开发者只需要简单地打开相关文件，右键点击 “<a href="http://pytools.codeplex.com/wikipage?title=Debug%20As%20Script">作为脚本调试</a>”，并从以下功能中选择：设定断点、全部中断、监控调用栈的状态、局部变量和监视窗口。此外，它现在已经支持在Windows、Linux和Mac OS X中使用<a href="http://pytools.codeplex.com/wikipage?title=Remote%20Debugging%20for%20Windows%2c%20Linux%20and%20OS%20X">远程调试</a>和客户端类库。</p> 
+<p>Python Tools for Visual Studio 2.0的alpha版本以三种不同形式提供了对<a href="http://pytools.codeplex.com/wikipage?title=Features%20Editor#intellisense">智能感知</a>的支持，包括补全特性、签名帮助和快速信息。补全特性基于上下文显示推荐词列表，并对其过滤以避免列出错误或不相关的内容。</p> 
+<p>签名帮助这一形式的智能感知，将在编写一个包含任何文档和可用的参数信息的函数调用时显示。此外，当开发者将鼠标放置在一个标识符上的时候，快速信息将以提示信息的形式呈现给开发者，并且会显示可能的值或类型、任何可用文档、返回类型和定义位置。</p> 
+<p>作为最新版本，该alpha版本支持<a href="http://pytools.codeplex.com/wikipage?title=Azure%20Web%20Sites%20">Windows Azure</a>、虚拟机、云服务、Web站点，以及在Azure上进行基于浏览器的计算。此外，开发者还将可以使用Visual Studio开发<a href="https://www.djangoproject.com/">Django</a>应用并将其部署到Windows Azure上。</p> 
+<p>根据官方消息，Python Tools for Visual Studio 2.0的alpha版本应该按以下步骤安装：</p> 
+<ol> 
+ <li>卸载旧版本的Python Tools（如果有的话）</li> 
+ <li>安装Python发行版——CPython或IronPython</li> 
+ <li>安装Visual Studio 2010或2012，接下来运行Python Tools for Visual Studio 2.0 alpha版的安装包</li> 
+</ol> 
+<p>Python Tools for Visual Studio 2.0的alpha版本支持<a href="http://pytools.codeplex.com/wikipage?title=Virutal%20Env">Virtualenv</a>，它是用于创建虚拟环境的Python工具。要创建新的虚拟环境，开发者需要在Visual Studio IDE中右键点击“虚拟环境”的树节点并选择“创建虚拟环境”选项。</p> 
+<p><b>查看英文原文：</b><a href="http://www.infoq.com/news/2013/04/pvts-2-0-alpha;jsessionid=9FBE80AB3F9981A30764809FEC889E7B"><b>Python Tools for Visual Studio 2.0 Adds IntelliSense, Virtualenv and Windows Azure Support</b></a></p> 
+<hr /> 
+<p>感谢<a href="http://www.infoq.com/cn/bycategory.action;jsessionid=9FBE80AB3F9981A30764809FEC889E7B?authorName=侯伯薇">侯伯薇</a>对本文的审校。</p> 
+<p>给InfoQ中文站投稿或者参与内容翻译工作，请邮件至<a href="mailto:editors@cn.infoq.com">editors@cn.infoq.com</a>。也欢迎大家通过新浪微博（<a href="http://www.weibo.com/infoqchina">@InfoQ</a>）或者腾讯微博（<a href="http://t.qq.com/infoqchina">@InfoQ</a>）关注我们，并与我们的编辑和其他读者朋友交流。</p> 
 <p id="lastElm"></p><br><br><br><br><br><br></body></html>

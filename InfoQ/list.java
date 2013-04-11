@@ -1,8 +1,8 @@
 <html>
  <head></head> 
- <body>
-  <div>
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/17.java">Google's Go Readies 1.1 Release</a>Version 1.1 of Google's Go is in beta, and brings significant reported performance increases, new toolset &amp; language features. It maintains backwards compatibility with Go 1.0 and in most cases a recompile is the only thing needed to take advantage of this release.
+ <body> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/17.java">Google's Go Readies 1.1 Release</a>Version 1.1 of Google's Go is in beta, and brings significant reported performance increases, new toolset &amp; language features. It maintains backwards compatibility with Go 1.0 and in most cases a recompile is the only thing needed to take advantage of this release. 
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/16.java">BDD Tool Cucumber with a Larger Team and Numerous Bugs Fixed</a>The project for Cucumber, a Behaviour Driven Development, BDD, tool, has recently increased the team and intensive work last months has brought open bugs down substantially, Aslak Helles&oslash;y revealed when talking about the Cucumber ecosystem during a Cucumber conference day last week. 
@@ -150,6 +150,6 @@
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/18.java">Interview with Neil Bartlett about OSGi and the new Bndtools 2.0 release</a>Neil Bartlett, current maintainer of the popular Bndtools Eclipse plugin for OSGi has announced the release of Bndtools 2.0. InfoQ has interviewed Neil Bartlett to learn more about Bndtools and about OSGi in general. 
-  </div>  
+  </div> 
  </body>
 </html>

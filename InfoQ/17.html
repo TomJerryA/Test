@@ -1,35 +1,30 @@
-<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>QQ安全中心的两小时Bug：快速响应+快速部署的经典案例</h3><p>3月24日晚11点22分，<a href="http://weibo.com/haoel?from=profile&amp;wvr=5&amp;loc=infdomain">@左耳朵耗子</a>想改QQ密码，触发了QQ安全中心的一个bug：</p> 
-<p><img src="http://www.infoq.com/resource/news/2013/03/tencent-devops/zh/resources/1538efefbgw1e319zu3g25j.jpg;jsessionid=C6D33DA9DFD77B03D0CBF47D79B6C5A1" alt="" _href="img://1538efefbgw1e319zu3g25j.jpg" _p="true" /></p> 
-<p>于是<a href="http://weibo.com/1401880315/zoYjGbWC7">发微博</a>吐槽之。大家初步分析这是一个比较低级的错误，<a href="http://weibo.com/shoit">@翁雨键</a>在评论中认为：</p> 
-<blockquote> 
- <p>目测是因为#是非法字符。程序员偷懒跟密码长度不对用了同一个错误提示，QA不知道有这样的规定设计测试用例没覆盖到，PM/UE太junior只关心正常的path没给错误用例设计提示。</p> 
-</blockquote> 
-<p>然后过了半个多小时，<a href="http://weibo.com/qqsafe">@腾讯QQ安全中心</a>的运营人员发现了这条吐槽，并进行了反馈：</p> 
-<p><img src="http://www.infoq.com/resource/news/2013/03/tencent-devops/zh/resources/Screenshot 2013-03-26 下午5.34.23.jpg;jsessionid=C6D33DA9DFD77B03D0CBF47D79B6C5A1" alt="image" _href="img://Screenshot 2013-03-26 下午5.34.23.jpg" _p="true" /></p> 
-<p>又过了一个多小时，<a href="http://weibo.com/qqsafe">@腾讯QQ安全中心</a>又回来这条微博下评论，说bug已经改好了：</p> 
-<p><img src="http://www.infoq.com/resource/news/2013/03/tencent-devops/zh/resources/Screenshot 2013-03-26 下午5.31.11.jpg;jsessionid=C6D33DA9DFD77B03D0CBF47D79B6C5A1" alt="image" _href="img://Screenshot 2013-03-26 下午5.31.11.jpg" _p="true" /></p> 
-<p>此消息一出，腾讯QQ安全中心背后的运维、响应、部署流程立刻引起了大家的关注。当事人陈皓对腾讯这次的响应速度<a href="http://weibo.com/1401880315/zp2ll0itf">进行了高度评价</a>：</p> 
-<blockquote> 
- <p>只有高度自动化测试+程序员完全自主才会有这样高效的流程。</p> 
-</blockquote> 
-<p>在看到这条消息的时候，InfoQ编辑正好在跟<a href="http://www.qconbeijing.com/speaker.php?id=162">腾讯互联网产品运维副总监Coati</a>沟通<a href="http://www.qconbeijing.com/">QCon北京</a>分享的事情，便问他腾讯在快速响应、部署这方面是怎么做的。Coati表示，虽然QQ安全中心属于基础运维部，而自己负责的范围属于应用运维，但根据他跟同事的沟通，他们在运维响应方面的很多处理流程是差不多的，比如：</p> 
-<blockquote> 
- <p>一般我们推送新版本，大体分为三级：一种是大版本的更新，涉及到特性增减改动等方面的，一般每周会做2-3次，而且会选择周一到周四之间做推送，一般不在周五做推送；另外一种是运营性的版本更新，这个更新频率不一定。这两种都是需要QA参与的。第三种是bug修复，这里也分级别，比如外网对bug进行快速修复，大的bug是需要走灰度的，而小的bug，比如只是涉及到界面、体验相关的，是可以免测试的。</p> 
- <p>这次密码功能bug的修复，因为涉及到程序逻辑，所以上线之前还是要经过测试的。不过这并不是说测试人员就一定要在公司，我们可以VPN登陆，从家里也可以随时响应的。</p> 
-</blockquote> 
-<p>Coati表示会在<a href="http://www.qconbeijing.com/">QCon北京</a>上的分享介绍更多的细节，包括：</p> 
-<ol> 
- <li>腾讯的互联网产品运维这块是如何划分领域的？</li> 
- <li>运维和开发有明确的界限么？平时如何协作？</li> 
- <li>代码部署和代码审查都使用什么工具？发布流程如何？发布的频率如何？</li> 
- <li>应用运维的监控分为几个层面？信息源来自哪里，监控的力度、频率如何？</li> 
-</ol> 
-<p>想了解腾讯运维体系的同学们，可以重点关注Coati的分享。</p> 
-<p>InfoQ在前不久刚刚介绍过<a href="http://www.infoq.com/cn/articles/interview-sam-haskins;jsessionid=C6D33DA9DFD77B03D0CBF47D79B6C5A1">Etsy的运维体系</a>。根据Sam Haskins的介绍，Etsy的核心平台团队平均每天的部署次数在20-30次，最高时甚至能达到70次。他们的监控手段也比较立体，在自动化监控工具之外，有大量的工作是靠人肉看图表来完成的，另外帮助论坛和客服那里也是重要的反馈来源（他倒是没提到有没有在用Twitter做这方面的监控）。</p> 
-<p>阿里系方面，应用运维的刘勇（<a href="http://weibo.com/u/1890612272?from=profile&amp;wvr=5&amp;loc=infdomain">@淘宝仲明</a>）也<a href="http://os.51cto.com/art/201212/371228.htm">公开介绍</a>过他们的运维流程。阿里应用运维的发布观察期一般在一个小时左右，涉及到交易等重要的变更则走灰度，需要24小时的观察期；监控也分为很多维度，针对底层有常规指标的监控，针对业务层面有交易量等业务指标的监控，也有对用户投诉的监控，根据投诉出现的频率和修复bug需要的时间来确定bug修复的优先级。仲明也是今年QCon北京自动化运维专场的讲师。</p> 
-<p>乔梁也<a href="http://www.infoq.com/cn/articles/devops-not-legend;jsessionid=C6D33DA9DFD77B03D0CBF47D79B6C5A1">对百度的DevOps运动进行过介绍</a>，提到了从2010年到2011年之间，百度内部的提测耗时和上线部署耗时大大减少的情况。对于不了解DevOps文化的同学，这篇文章也是一个很好的入门资料。</p> 
-<p>最近几年在运维界流行的<a href="http://www.infoq.com/cn/devops/;jsessionid=C6D33DA9DFD77B03D0CBF47D79B6C5A1">DevOps文化</a>，可以说是开发领域的敏捷运动的一个延伸，提倡开发和运维协同工作，以实现快速部署、快速响应。这个理念尤其适用于互联网产品和移动互联网产品，因为此类产品的迭代速度是核心竞争力，不仅影响产品本身的质量、功能发展，还很大的影响到产品的市场口碑和传播效应。像本次QQ安全中心的例子，用户反馈的信息源出现在新浪微博这个第三方平台上，而众所周知，官方微博的运营人员往往是不懂技术的。</p> 
-<p>微博运营人员如何能够判定这个bug反馈的重要程度（无论是在技术层面还是营销层面）？运营人员把此类bug反馈到哪个渠道（一般的情况下，腾讯这样大的公司，你不可能很快知道负责QQ安全中心这个产品的技术经理是哪位的）？谁来决定这个bug值不值得在凌晨12点的时候电话把同事叫起来进行修复（当然，也有可能是这一块的负责人那个时候还没下班）？</p> 
-<p>这些都是很有意思的话题，而且已经不完全是技术的范畴。腾讯这样规模的公司能做到这样快速的反馈，的确很厉害；同时这也意味着，即使你是一个小公司，在产品迭代、响应速度上要赶超腾讯，是难度很大的。</p> 
-<p>现在就开始建立这样一个快速响应的开发+运维+测试的体系吧！</p> 
+<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>Google+ Sign-In：联合身份认证、授权和语义活动流</h3><p><a href="http://googleplusplatform.blogspot.com.au/2013/02/google-plus-sign-in.html">Google+ Sign-In</a>将Google+社交网络扩展到第三方网站、桌面应用和移动应用，并进一步巩固了Google与Twitter和Facebook一道作为认证提供者的地位。在2月26日公布的这项服务支持以下特性：身份认证、授权和活动分享。它还为用户互动、Hangouts（通过摄像头进行多人视频通话）和自动下载Android应用提供了额外的支持</p> 
+<p>尽管关于这项新服务的讨论主要聚焦在与Facebook的<a href="http://www.theverge.com/2013/2/26/4030970/google-plus-sign-in-takes-on-facebook-connect-and-frictionless-sharing">激烈竞争</a>上，从技术角度看，探寻<a href="https://developers.google.com/+/">Google+ API</a>幕后的内容以了解这些新特性如何工作并理解一些将要投入使用的标准很有帮助。</p> 
+<p>一个简单的[g+ | Sign In]<a href="https://developers.google.com/+/web/signin/"> 按钮</a>为进入第三方Web页面、桌面或移动应用提供了入口。它的流程从应用为了访问用户的Google+档案而请求访问令牌开始。在浏览器中，该编配（orchestration）通过<a href="https://developers.google.com/+/web/signin/#using_the_client-side_flow">客户侧流程</a>，或是通过后端API操作使用<a href="https://developers.google.com/+/web/signin/server-side-flow">服务器侧流程</a>完成。如果用户还未使用Google+认证，则认证会作为sign-in的一部分。此外用户会得到提示，对第三方应用赋予他们希望的访问等级。访问等级或范围包括：</p> 
+<ul> 
+ <li>Userinfo.email：仅提供用户的电邮地址</li> 
+ <li>plus.me：提供用户的Google+档案信息</li> 
+ <li>plus.login：通过允许访问圈子以及向用户的Goolge+活动流写入活动的能力，扩展其他范围</li> 
+</ul> 
+<p>这样的访问编配结合了认证与授权，授权遵循<a href="http://openid.net/connect/">OpenID Connect</a>草案标准，而这份草案标准则基于近期生效的<a href="http://www.rfc-editor.org/rfc/rfc6749.txt">OAuth 2</a>协议。认证则完全由Google认证系统处理而不会涉及第三方应用。OpenID Connect将认证置于OAuth授权协议之上，有效地对第三方应用进行用户认证并准许访问用户的Google+档案。<a href="http://openid.net/foundation/leadership/">Nat Sakimura</a>是OpenID基金会主席及OpenID Connect的合著者，他<a href="http://nat.sakimura.org/2011/05/15/dummys-guide-for-the-difference-between-oauth-authentication-and-openid/">恰到好处地描述</a>了OpenID、OAuth和OpenID Connect之间的区别，以及应用如何使用类似Google+ Sign-In这样的服务以校验一个用户请求访问的认证。</p> 
+<p>用户可以使用他们的<a href="http://plus.google.com/apps">应用设置页面</a>检查他们的应用授权，在该页面中他们可以取消访问或改变自己的分享设置。</p> 
+<p>第三方应用现在可以使用其访问令牌在Google+ API中管理应用内活动。Google将这些活动称作“<a href="https://developers.google.com/+/api/latest/moments">瞬间</a>（moments）”，而Google+ API提供简单的CRUD接口以插入、列出和删除“瞬间”。“瞬间”可以以不同的风格出现，被称作ActivityTypes（活动类型）。所有的活动都拥有名字、描述和缩略图，以及一个用于表现活动主题的<i>itemtype（事物类型）</i>。Itemtype必须是<a href="http://schema.org/">schema.org</a>所列出的<a href="http://schema.org/Thing">事物</a>的子类型，例如一本<a href="http://schema.org/Book">书</a>、一个<a href="http://schema.org/Place">地方</a>或是一个<a href="http://schema.org/Person">人</a>。此外，事物必须拥有指向某个HTML页面的URL——这个页面必须包<a href="http://schema.org/">schema.org</a>含标记出的相关事物。用这种方法，Google+集成鼓励开发结构化标记的“语义网”，它也<a href="http://googleblog.blogspot.com.au/2011/06/introducing-schemaorg-search-engines.html">有益于搜索引擎</a>。行为列表相当全面：</p> 
+<ul> 
+ <li>AddActivity（添加活动）：一个具有itemtype、名字、描述和缩略图的通用活动。</li> 
+ <li>BuyActivity（购买活动）：展现某事物的购买。</li> 
+ <li>CheckinActivity（签到活动）：展现用户在某处签到，并带有额外的地址和地理位置属性。</li> 
+ <li>CommentActivity（评论活动）：适用于用户对一篇博文、书或其他创新作品进行评价的时候。</li> 
+ <li>CreateActivity（创建活动）：适用于用户创建一件创新作品的时候。</li> 
+ <li>DiscoverActivity（发现活动）：适用于用户发现一件创新作品的时候。</li> 
+ <li>ListenActivity（聆听活动）：展现用户正在聆听音乐拷贝或提供额外属性用于歌曲、专辑和艺术家的元数据。</li> 
+ <li>ReserveActivity（预订活动）：表示用户正在预订某项本地业务，例如餐厅或酒店。</li> 
+ <li>ReviewActivity（评价活动）：一项包含评级信息的事物评价。</li> 
+ <li>WantActivity（期望活动）：表明用户期望某事物，例如他们将某事物添加到了应用中的心愿单。</li> 
+</ul> 
+<p>Google+基于用户授权设置，完全处理将这些“瞬间”到Google+活动流的表达与分发工作。</p> 
+<p>这份简洁的回顾仅仅浮光掠影般检视了Sign-In带来的新的Google+特性，但却给出了一个关于新的认证和授权标准，以及语义标记向社交活动流扩展的有趣例子。</p> 
+<p><b>查看英文原文</b>：<a href="http://www.infoq.com/news/2013/04/google-plus-federated-identity;jsessionid=42BE3553269408EBBA612B62F9D2CD1D">Google+ Sign-In: Federated Identity, Authorization and Semantic Activity Streams</a></p> 
+<hr /> 
+<p>感谢<a href="http://www.infoq.com/cn/bycategory.action;jsessionid=42BE3553269408EBBA612B62F9D2CD1D?authorName=侯伯薇">侯伯薇</a>对本文的审校。</p> 
+<p>给InfoQ中文站投稿或者参与内容翻译工作，请邮件至<a href="mailto:editors@cn.infoq.com">editors@cn.infoq.com</a>。也欢迎大家通过新浪微博（<a href="http://www.weibo.com/infoqchina">@InfoQ</a>）或者腾讯微博（<a href="http://t.qq.com/infoqchina">@InfoQ</a>）关注我们，并与我们的编辑和其他读者朋友交流。</p> 
 <p id="lastElm"></p><br><br><br><br><br><br></body></html>

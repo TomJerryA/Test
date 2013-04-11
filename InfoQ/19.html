@@ -1,49 +1,49 @@
-<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>是否应该为技术债创建用户故事？</h3><p>敏捷团队有时也会为纯技术性任务而挣扎，比如必须处理技术债。虽然这种任务对系统用户没有直接价值，但要交付可以工作的软件又不得不处理。那么，是不是应该创建用户故事来应对这样的技术性任务或技术债呢？</p> 
-<p>在博文《<a href="http://www.industriallogic.com/blog/as-a-developer-is-not-a-user-story/">像“作为开发者……”这样的表达并非用户故事</a>》中，Bill Wake谈到了他所遇到的对客户没什么价值的用户故事。作为例子，他提到了“作为开发者，我想配置Jenkins，以便进行持续集成”这个用户故事。Bill解释了为什么我们不应将其称作用户故事：</p> 
-<blockquote> 
- <p>我不是说这些活动不好，或者说不重要，它们也是面向这个团队的，不过将其当作用户故事会误导团队及其客户。把与用户无关的东西以用户故事的<i>形式</i>写下来，这是没抓住要领。</p> 
-</blockquote> 
-<p>他的观点是，应该称其为任务，而非用户故事。根据精益思想，他认为这些活动其实是种浪费：</p> 
-<blockquote> 
- <p>从精益思想的角度看，团队所做的很多活动都可以视作浪费，但我们又不知道如何避免这些活动从而有效地进行软件开发。精益团队称其为“不增加价值，却又必不可少”，因为这是不得已而为之的事。</p> 
-</blockquote> 
-<p>Bill建议，如果某些用户故事的角色不是来自实际软件用户，而是来自于开发之中，这时一定要慎重。可以尝试将这样的用户故事重新组织为功能行为或质量特性，然后换种描述方式；如果行不通，再考虑将其看作任务。作为任务，开发团队需要跟踪，但又不应将其作为用户故事放在产品Backlog上，因为它们并不交付价值：</p> 
-<blockquote> 
- <p>（……）承认你的团队有时面对的只是任务。可以内部跟踪这些任务，但是不要将其看作所开发系统的直接进展，更不要将其当作直接进展来跟踪。</p> 
-</blockquote> 
-<p>关于如何在产品Backlog中处理技术性任务，Mattias Marschall在其博文《<a href="http://www.agileweboperations.com/how-to-translate-business-value-of-things-that-are-technically-important">技术上很重要的事物，怎样表达出“业务价值”</a>》中提出了一种方案。他首先解释了如何看待用户故事与技术性任务之间的关系：</p> 
-<blockquote> 
- <p>用户任务应该描述用户想让系统做的事情。纯粹的技术性任务通常实现为用户故事的一部分。</p> 
-</blockquote> 
-<p>但如何处理与具体的用户故事没有直接关联的技术性任务呢？Mattias建议把它们放到产品Backlog上：</p> 
-<blockquote> 
- <p>要把技术性任务按优先级放到产品Backlog中，那就为每一项创建一个用户故事。等等，这不是弄虚作假吗？不，如果你能回答如下两个问题，那就不是：</p> 
- <ol> 
-  <li>谁能从其结果中受益？</li> 
-  <li>为什么这个任务是必要的？</li> 
- </ol> 
-</blockquote> 
-<p>利用他的解决方案，我们既可以把所有的技术性任务包含到产品Backlog中的用户故事里去，也可以将其作为面向客户的用户故事的一部分，还可以使用一个专为技术性任务创建的用户故事来应对：</p> 
-<blockquote> 
- <p>如果你能将技术性任务明确地表达为一种用户故事，那么利益相关者就能理解它们的必要性，并将它们与其他用户故事一起优先考虑。</p> 
-</blockquote> 
-<p>Bastian Buch在其博客文章<a href="http://www.codovation.com/2012/06/effective-steps-to-reduce-technical-debt-an-agile-approach/">《减少技术债的有效步骤：敏捷方法</a>》中解释道，对于与技术债相关的技术性任务，开发者和产品所有者可能有不同看法：</p> 
-<blockquote> 
- <p>开发者了解技术债，也能意识到面对这种问题的重要性。</p> 
- <p>产品所有者往往不理解减少技术债的必要性和收益所在，因此他们不会考虑甚至不允许把技术性项目或用户故事列入他们的产品Backlog和发布计划中。</p> 
-</blockquote> 
-<p>他建议由产品所有者负责减少技术债。团队成员应该与产品所有者讨论技术债，并共同努力，让技术债在产品Backlog中具有正确的优先级：</p> 
-<blockquote> 
- <p>团队应该记住，产品所有者是团队的一分子，他的痛苦就是大家的痛苦，反之亦然。他不是团队的客户、买主或老板，而更像是来自不同利益相关者的主题专家（SME，subject matter expert）和产品需求管理者/分析员。</p> 
- <p>团队向产品所有者保证产品成长，这仍然是最重要的——不管从短期的绩效还是从长期的健康来看，都是如此。</p> 
-</blockquote> 
-<p>Bastian建议把所有的技术性问题收集到用户故事中，评估投入和产出。他将收益称为“报酬”，因为解决了问题能减少技术债：</p> 
-<blockquote> 
- <p>（……）针对我们定义的每一项任务，我们在JIRA中创建标记为“TechnicalDebtItems”的用户故事。为了安排这些项目的优先级并得出正确结论，我们创建一个图表来将投入与回报的相互关系可视化。</p> 
-</blockquote> 
-<p>可视化有助于产品所有者和团队协作减少技术债。</p> 
-<blockquote> 
- <p>通过将技术债和可能的回报可视化，（……）现在团队可以把精力集中在最重要的步骤上。还有一个重要的副作用：这也是与产品所有者和利益相关者协同工作的一个极好工具，因为它使技术债对他们也有很好的透明度。</p> 
-</blockquote> 
-<p><b>查看英文原文</b>：<b><a href="http://www.infoq.com/news/2013/03/user-stories-technical-debt;jsessionid=954B42CF427F3195474D89FC000C758C">Should You Create User Stories for Technical Debt?</a></b></p> 
+<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>英特尔IDF 2013热点回顾：Scorpio，HTML5，开放混合云</h3><p>2013年4月20日~21日是英特尔IDF 2013北京站。本届IDF共安排了<a href="https://intel.activeevents.com/bj13/scheduler/catalog.do">20个技术主题</a>，涉及学术界与行业的交流、英特尔的芯片架构、图形和视觉计算、嵌入式等老话题，也涉及一体机、超级本、感知计算、云计算、HTML5等新话题。</p> 
+<p>InfoQ编辑在IDF现场一天多，跟大家分享几个开发领域挺值得关注的方向和话题：</p> 
+<h2>感知计算</h2> 
+<p>结合现在越来越多的感知设备——包括3D摄像头，<a href="http://www.infoq.com/cn/news/2013/03/k4w-roadshow-beijing;jsessionid=2E819B942FAFB3FF9054E91CEFFC744A">Kinect</a>和Leap Motion这样的体感设备，以及自Siri问世以来层出不穷的更加智能的语音识别系统等——现在的感知计算已经可以做到很多以前做不到的事情，而这个领域很可能仍会在数年内出现更多的创新。不光是游戏开发者可以利用感知计算做出交互性更强、更加趣味的游戏，很多商业应用也都在这其中的机会。比如主题演讲中演示的、由3D摄像头去除背景的视频对话，不但减少了视频传输的数据量，而且可以实现很多更加直观的交互：</p> 
+<p><img src="http://www.infoq.com/resource/news/2013/04/beijing-intel-idf-2013/zh/resources/Screenshot 2013-04-11 上午1.02.41.jpg;jsessionid=2E819B942FAFB3FF9054E91CEFFC744A" alt="image" _href="img://Screenshot 2013-04-11 上午1.02.41.jpg" _p="true" /></p> 
+<p>iFanr上有<a href="http://www.ifanr.com/275262">一篇文章</a>分享了对感知计算的体验，可以看到更多感知计算目前实现的东西。InfoQ中文站也会在这两年逐步引入更多这方面的内容。</p> 
+<h2>数据中心的开放标准</h2> 
+<p>早上的主题演讲中介绍了由阿里、百度、腾讯、中国电信合作、英特尔作为技术顾问而联合发起的Project Scorpio（天蝎计划）。该计划类似西方市场上由Facebook主导的<a href="http://www.opencompute.org/">Open Compute Project</a>，目的是对数据中心的规格形成业界的通用标准。根据天蝎计划轮席主席、来自腾讯IaaS平台研发团队的陈晓建（Eric Chen）介绍，之所以三家互联网厂商会找运营商合作这个项目，其中很大的原因在于，一开始三家都是自己做自己的数据中心标准，一方面规模有限，很难从硬件厂商那里获得定制的服务，另一方面即使得到了定制服务，结果各家定制的机柜尺寸、布局、乃至于服务器是横插还是竖插都无法统一，拿到运营商那里没法儿一起托管。所以，三家找中国电信、英特尔合作搞这个天蝎计划，是顺势而为的合作。</p> 
+<p>在上午的技术分会场中，英特尔IT部门的云计算首席工程师Das Kamhout先生介绍了<a href="http://www.opendatacenteralliance.org/">开放数据中心联盟</a>（Open Data Center Alliance，ODCA）的一些工作。这个联盟成立的原因和天蝎计划类似：天蝎计划/Open Compute Project源于大型互联网公司的信息共享需求，而ODCA则源于企业IT的信息共享需求。大家都不希望重复制造轮子，也不希望自己造出来的轮子跟别的轮子不匹配，所以信息共享在当前这个时代已经是大势所趋。</p> 
+<p>根据Das的介绍，ODCA目前已经有300多位成员，核心成员有宝马、德意志银行、中国联通等企业，英特尔作为技术顾问参与其中。运作了一年多之后，ODCA已经积累了来自用户成员的22个应用模式文档（Usage Model），通过一些制定标准的服务提供商成员和技术服务提供商成员进行整理，形成了一些POC（Proof of Concepts）和RFP（Request for proposal）的文档，并整理出来了应用模式文档的母版（Master），以及一些模型框架。</p> 
+<p>ODCA目前针对RFP的制作提供了一份工具：<a href="http://www.opendatacenteralliance.org/ourwork/proposalengineassistant">PEAT</a>，企业用户使用这个工具可以快速生成一份RFP需求文档，而服务提供方也可以根据这个工具的获得企业用户的需求。</p> 
+<p>联盟总结了几套模型框架，其中包括一个企业云成熟度模型：</p> 
+<p><img src="http://www.infoq.com/resource/news/2013/04/beijing-intel-idf-2013/zh/resources/Screenshot 2013-04-11 上午2.30.17.jpg;jsessionid=2E819B942FAFB3FF9054E91CEFFC744A" alt="image" _href="img://Screenshot 2013-04-11 上午2.30.17.jpg" _p="true" /></p> 
+<p>从左到右是时间轴，从上到下分别代表企业内部的四个用户身份：终端用户、App开发者、App所有者、运维管理员。IT部门处于最下面这个角色，上面的三个角色都是IT部门的客户。从左侧到右侧有几个对比：</p> 
+<p>Simple SaaS，包括早期在互联网上的SaaS服务以及企业内部的传统应用（比如ERP之类的），只是可用而已，但是公网上的SaaS不能保证数据安全性，而内网应用之间也无法互相集成。越往右侧，安全性和可集成性就越高。</p> 
+<p>Traditional Apps，情况跟上面类似，只是能用，但无法弹性扩展。到Cloud Aware了，在可扩展性、单点故障容错、一致性方面都会有提升。</p> 
+<p>Simple IaaS，就是虚拟机/物理机+存储+网络打包管理，简单有效。而Full IaaS，则意味着更加细粒度的管理，比如直接对对象存储层级的管理，HTTP请求直接发送到对象，由RESTful API来处理，又比如SDN的广泛应用，等等。</p> 
+<p>除了成熟度模型，还有一些概念框架，安全框架，以及针对商务人员和律师、用于帮助企业加速合约签订流程的商业框架等。</p> 
+<p>Das提到，对企业而言，最关注的是隐私、安全、SLA等方面，这是ODCA和Open Compute Project等项目的一个根本性的不同。企业需要成熟的身份管理，需要能够自由的选择云服务提供商，因此公共标准的API至关重要。为什么OpenStack的UI总是被人说不友好？因为OpenStack项目的重心在API，至于UI，各家有各家的使用习惯，想要定制的可以自己定制，作为项目本身，UI能够达成共识就已经完工了。</p> 
+<p>此外，Das还提到现在的一个问题，那就是传统的软件服务许可模式——无论是包年付费还是按核付费，对云计算服务而言都不是理想的许可模式。新的许可模式是一个需要去解决的问题。</p> 
+<p>这个讲座的PDF已经可以在<a href="https://intel.activeevents.com/bj13/scheduler/catalog.do">IDF官网</a>上下载，这里是<a href="http://vdisk.weibo.com/s/x7ouz">微盘上的下载地址</a>。</p> 
+<h2>HTML5</h2> 
+<p>这次的IDF专门开辟了HTML5专场，包括两个演讲场和一个演示场。演示场有两个东西值得注意：</p> 
+<p>第一个是<a href="http://software.intel.com/html5">英特尔HTML5开发者专区</a>。该专区目前主要提供了两个工具：</p> 
+<ol> 
+ <li>一个<a href="http://html5dev-software.intel.com/">HTML5开发环境</a>，包含一个用于创建Web App/Phonegap App的控制台，一个在线开发、调试、测试Web App的XDK工具——所有的操作都在浏览器中完成，以及一个叫做App Framework的JavaScript类库（以前叫做jqMobi）。</li> 
+ <li><a href="http://software.intel.com/en-us/articles/technical-reference-intel-html5-app-porter-tool-beta">App Porter Tool</a>，用来把iOS的项目（Xcode）自动转换成Web App项目（Visual Studio）的工具。常用的Objective-C API都是可以由该工具自动转换成JavaScript的，对于无法自动转换的，这个工具会留下一个todo的代码段让开发者手动填写。</li> 
+</ol> 
+<p>第二个东西是一个叫做Parallel JavaScript的项目。顾名思义，这是一个JavaScript并行计算的实现，可以大幅提升JavaScript在浏览器里的运行效果。Github上有一个<a href="https://github.com/RiverTrail/RiverTrail">该项目的演示</a>，使用了ParallelArray的渲染表现效果提升的非常明显。目前的Firefox夜间版已经加入了这个特性，可用于测试。Chromium的工作也在进展中，可能会出现在不久之后的Dev版中。当然，作为对JavaScript的补充，新实现需要进入ECMAScript标准才能通用，这个过程可能还需要个一两年。</p> 
+<h2>英特尔IT的开放混合云</h2> 
+<p>作为英特尔IT部门的首席工程师，Das还带来了ODCA之外的另一个分享，就是英特尔自己构建内部云的一些过程、经验。</p> 
+<p>这是一个整体的架构图：</p> 
+<p><img src="http://www.infoq.com/resource/news/2013/04/beijing-intel-idf-2013/zh/resources/Screenshot 2013-04-11 上午3.33.16.jpg;jsessionid=2E819B942FAFB3FF9054E91CEFFC744A" alt="image" _href="img://Screenshot 2013-04-11 上午3.33.16.jpg" _p="true" /></p> 
+<p>几个有意思的演讲内容摘要：</p> 
+<ul> 
+ <li>英特尔的内部云始于十多年前启动的网格计算项目（Design Grid），网格计算主要面向内部的设计人员。作为云项目启动是在2011年前后。</li> 
+ <li>目前的英特尔内部云主要针对三类用户：以前用网格计算的那些设计人员，大约万人左右，现在仍然在使用网格计算那套系统（从某种意义上来说，网格计算也属于云计算的一种体现）；做研发的，大约600人左右；实验室测试的，大约千人左右，这两个应用场景使用的是基于OpenStack的新云计算平台。</li> 
+ <li>英特尔目前在全球有68个数据中心，云计算的计算资源分布在其中的10个上。</li> 
+ <li>虚拟化的比例目前为77%。没有做虚拟化的部分主要是出于几方面考虑：对IO的需求，对SLA的需求，对安全性的需求，以及不需要虚拟化的数据库。对于安全性方面，目前英特尔有另一个叫做Trusted and Secure Cloud的项目，通过验证硬件和操作系统的可信度来为需要高安全性的应用、数据提供一个可信的环境。</li> 
+ <li>其实虚拟机还是物理机都不是云计算的重点，重点在于可管理。</li> 
+ <li>自从内部云项目推动之后，虚拟机实例的数量大大节省。不过更大的好处在于开发流程的加快。</li> 
+ <li>英特尔的研发环境同时使用内部的Git和公网的Github。</li> 
+ <li>本周正逢内部云从OpenStack的Essex版本升级到Folsom版本。现在最新的OpenStack版本是本月初刚刚发布的<a href="http://www.infoq.com/cn/news/2013/04/openstack-grizzly;jsessionid=2E819B942FAFB3FF9054E91CEFFC744A">Grizzly</a>。</li> 
+ <li>“如果你的服务器出了问题，最佳实践是直接把它干掉。别想着去修复它！”Das认为Netflix的Chaos Monkey是非常不错的东西。</li> 
+ <li>英特尔IT团队正在将Nagios替换成<a href="http://www.shinken-monitoring.org/">Shinken</a>，替换的原因是Nagios在API方面太弱了，而Nagios社区似乎对API化这件事儿不怎么感兴趣。</li> 
+ <li>DevOps已经不算什么了，现在开始流行的是NoOps：“如果开发者在凌晨三点接到来自自己应用的报警而不得不爬起来去修复bug，那么他会更加谨慎的对待未来的代码，避免类似的事情再度发生。”</li> 
+</ul> 
+<p>这个讲座的PDF已经可以在<a href="https://intel.activeevents.com/bj13/scheduler/catalog.do">IDF官网</a>上下载，这里是<a href="http://vdisk.weibo.com/s/x7owO">微盘上的下载地址</a>。</p> 
 <p id="lastElm"></p><br><br><br><br><br><br></body></html>
