@@ -1,6 +1,12 @@
 <html>
  <head></head> 
- <body> 
+ <body>
+  <div>
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/6.py">Gartnerの示す情報インフラ技術トレンド: ビッグデータ，NoSQL，インメモリ・コンピューティング</a>ビッグデータとNoSQLデータベース，そしてインメモリ・コンピューティングが，2013年以降の現代的な情報管理において重要な役目を果たすテクノロジだ – Gartner はそのように予想する。同社の調査チームがリリースした 最新レポート には，情報インフラストラクチャとガバナンスに影響を与えるであろう最先端の技術トレンドとして，この３つが示されている。
+  </div>
+  <div>
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/5.py">ESBツーリングを強化したWSO2 Developer Studio 3.0と3.1</a>WSO2 Developer Studio 3.0と3.1はESBとレジストリリソースエディタツールが改善され、性能が良くなった。また、Eclipse Juno SR2をベースにしており、JAX-RS RESTコード生成をサポートする。
+  </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/4.py">Visual Studio 2012 Update 2正式リリース</a>Microsoftは、Visual Studio 2012のUpdate 2を正式にリリースした。この更新では、いくつかの新機能と多くの大きな修正と振る舞いの修正が含まれている。 
   </div> 
@@ -144,12 +150,6 @@
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/7.py">小から超大規模ウェブサイトまでのMySQL参照アーキテクチャ</a>Oracleが発表した大規模な拡張性を備えたWebインフラストラクチャのためのMySQLリファレンスアーキテクチャ、ホワイトペーパーには、データストレージにMySQLを使用してWebサイトのさまざまな種類とサイズ向けの推奨トポロジが概要されている。 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/6.py">開発以外でアジャイルを実践する</a>Gartnerによればアジャイルの手法が開発以外で使われ始めている。この記事ではマーケティングやセールス、サービスを例にアジャイルを企業全体で実践することを紹介する。 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/5.py">Tom Baeyens氏(jBPM，Alfresco Activitiの作者)，クラウド版BPMの新ベンチャを開始</a>JBoss jBPM (Red Hatが買収) と Activiti (Alfresco) のオリジナル作者であるTom Baeyens氏が，ビジネスプロセスを自動化するクラウドベースの新BPM (Business Process Management) ツールの Effektif を発表した。新たなベンチャを進めるパートナーはSignavioという新興企業だ。InfoQではBaeyens氏とSignavio共同CEOのDecker氏に詳細を聞いた。 
-  </div> 
+  </div>   
  </body>
 </html>
