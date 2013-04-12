@@ -2,7 +2,10 @@
  <head></head> 
  <body>
   <div>
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/19.java">NoSQL Benchmark Compares Aerospike, Cassandra, Couchbase and MongoDB</a>A recent set of benchmarks compares Aerospike, Cassandra, Couchbase and MongoDB to see how they fare when it comes to insert throughput, maximum throughput, latency and behavior during a failover.
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/20.java">LLVM Authors Have Received One of the ACM Awards 2012</a>ACM has granted their 2012 awards for innovation in computing, including the Software System Award to LLVM creators.
+  </div> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/19.java">NoSQL Benchmark Compares Aerospike, Cassandra, Couchbase and MongoDB</a>A recent set of benchmarks compares Aerospike, Cassandra, Couchbase and MongoDB to see how they fare when it comes to insert throughput, maximum throughput, latency and behavior during a failover. 
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/18.java">CouchDB 1.3.0 Adds New Features and Algorithm Enhancements</a>Apache Software Foundation has released CouchDB 1.3.0 with support for Fix _session, Cross Origin Resource Sharing (CORS) including additional features and algorithm enhancements. 
@@ -147,9 +150,6 @@
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/21.java">ZeroTurnaround Acquires Javeleon</a>Java software tools maker ZeroTurnaround has acquired Javeleon, a Denmark based startup that produces a product related to ZeroTurnaround's popular JRebel dynamic Java class-reloading tool. 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/20.java">Edge.js Combines Node.js with .NET</a>The Edge.js project combines Node.js with the .NET platform. Developers can use C# on Node.js or provide Node.js functionality to C# applications-- allowing them to use the best tool for each task. InfoQ had the opportunity to speak with author Tomasz Janczuk about the project and his future plans. 
   </div>  
  </body>
 </html>
