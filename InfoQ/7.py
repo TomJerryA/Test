@@ -1,41 +1,60 @@
-<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>小から超大規模ウェブサイトまでのMySQL参照アーキテクチャ</h3><p><a target="_blank" href="http://www.infoq.com/news/2013/03/MySQL-Reference-Architectures;jsessionid=12DD1EC39CD2AA2F58BCFB90146A38D1"><em>原文(投稿日：2013/03/14)へのリンク</em></a></p> 
+<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>BlossomがDartに移行</h3><p><a target="_blank" href="http://www.infoq.com/news/2013/04/blossom-dart-switch;jsessionid=FDE796277A073BA4D30C4BB12C9E551B"><em>原文(投稿日：2013/04/08)へのリンク</em></a></p> 
 <div class="clearer-space">
  &nbsp;
 </div> 
 <div id="newsContent"> 
- <p>Oracleが発表した<a target="_blank" href="http://www.mysql.com/why-mysql/white-papers/mysql-reference-architectures-for-scalable-web-infrastructure/">大規模な拡張性を備えたWebインフラストラクチャのためのMySQLリファレンスアーキテクチャ</a>、ホワイトペーパーには、データストレージにMySQLを使用してWebサイトのさまざまな種類とサイズ向けの推奨トポロジが概要されている。</p> 
- <p>このホワイトペーパーは、サイズと提供する4つの異なるタイプのサービスに対する可用性の要求に基づいた、MySQLを使うウェブサイトの作成用の4つのリファレンス・アーキテクチャを提案している。4つのサービスは、ユーザーとセッション管理、eコマース、アナリティクス（多構造化データ）、CMS（メタデータ）で、以下のテーブルに示す。&nbsp;</p> 
- <p class="image-wide"><img style="background-image: none; border-right-width: 0px; padding-left: 0px; padding-right: 0px; display: inline; border-top-width: 0px; border-bottom-width: 0px; border-left-width: 0px; padding-top: 0px" border="0" alt="" _p="true" _href="img://MySQL-1.png" src="http://www.infoq.com/resource/news/2013/03/MySQL-Reference-Architectures/ja/resources/MySQL-1.png;jsessionid=12DD1EC39CD2AA2F58BCFB90146A38D1" /></p> 
- <p>これらのガイドラインは、基本的な推奨事項であり、使用される読み取り/書き込みのパターン、ロード・バランシング、キャッシングのメカニズムなどに基づいて調整される必要がある。</p> 
- <p><strong>小規模なWebリファレンスアーキテクチャ </strong></p> 
- <p>このリファレンス・アーキテクチャは、前に述べた4つのタイプのウェブサイトのすべての小規模な実装に使用することができる。MySQLレプリケーションは、バックアップや分析の目的でデータのコピーを作成するために使用することができる。</p> 
- <p><a href="$image[4].png;jsessionid=D37507DBDD46C3811D9D4D8BB358754C;jsessionid=12DD1EC39CD2AA2F58BCFB90146A38D1"><img style="background-image: none; border-right-width: 0px; padding-left: 0px; padding-right: 0px; display: inline; border-top-width: 0px; border-bottom-width: 0px; border-left-width: 0px; padding-top: 0px" title="image" border="0" alt="image" _p="true" _href="img://MySQL-2.png" src="http://www.infoq.com/resource/news/2013/03/MySQL-Reference-Architectures/en/resources/MySQL-2.png;jsessionid=D37507DBDD46C3811D9D4D8BB358754C;jsessionid=12DD1EC39CD2AA2F58BCFB90146A38D1" /></a></p> 
- <p><strong>中規模なWebリファレンスアーキテクチャ</strong></p> 
- <p>この場合、各MySQLインスタンスが、もしアプリケーション・サーバーの数がスケーラビリティの目的のために増加されている場合は、もっとスレーブ・インスタンスを追加し、最大8個のアプリケーション・サーバーを提供できることを考慮して、活動の異なるタイプごとに別々のインフラを使用することを薦めている。</p> 
- <p class="image-wide"><a target="_blank" href="/resource/news/2013/03/MySQL-Reference-Architectures/en/resources/MySQL-3.png;jsessionid=D37507DBDD46C3811D9D4D8BB358754C;jsessionid=12DD1EC39CD2AA2F58BCFB90146A38D1"><img style="background-image: none; border-right-width: 0px; padding-left: 0px; padding-right: 0px; display: inline; border-top-width: 0px; border-bottom-width: 0px; border-left-width: 0px; padding-top: 0px" title="image" border="0" alt="image" _p="true" _href="img://MySQL-3.png" src="http://www.infoq.com/resource/news/2013/03/MySQL-Reference-Architectures/en/resources/MySQL-3.png;jsessionid=D37507DBDD46C3811D9D4D8BB358754C;jsessionid=12DD1EC39CD2AA2F58BCFB90146A38D1" /></a></p> 
- <p>セミ非同期なレプリケーションと一緒に<a target="_blank" href="http://en.wikipedia.org/wiki/Linux-HA">Linux Heartbeat</a> がセッション管理とeコマースの高可用性目的の為に使われている。CMSサイトには、通常、読み取り操作でスケールアウトするために、より大きなニーズがあり、ホワイトペーパーでは、各スレーブは最大3000人の同時ユーザーを処理できることを考慮して、各MySQLマスタに20から30のスレーブを追加することを推奨している。CMSシステムは、SAN、または各サーバーに接続された分散型デバイス上にデータを格納することができる。</p> 
- <p>アプリケーションとMySQLサーバの負担の多くを緩和するために、セッション管理とCMSサイトの両方にメモリキャッシュを使用することが推奨されている。</p> 
- <p>分析目的のトポロジーは、もっと簡単で、3つのスレーブを持つマスターがジョブをこなす。</p> 
- <p><strong>大規模なWebリファレンスアーキテクチャ</strong></p> 
- <p>この参照アーキテクチャに対しては、ホワイトペーパーは、地理的に離れたクラスタ間で非同期レプリケーションを提供するMySQL地理的レプリケーションを使用して、異なるデータセンター間でのデータベースの複製を推奨している。</p> 
- <p class="image-wide"><a target="_blank" href="/resource/news/2013/03/MySQL-Reference-Architectures/en/resources/MySQL-4-XL.png;jsessionid=D37507DBDD46C3811D9D4D8BB358754C;jsessionid=12DD1EC39CD2AA2F58BCFB90146A38D1"><img style="background-image: none; border-right-width: 0px; padding-left: 0px; padding-right: 0px; display: inline; border-top-width: 0px; border-bottom-width: 0px; border-left-width: 0px; padding-top: 0px" title="image" border="0" alt="image" width="640" height="375" _p="true" _href="img://MySQL-4-XL.png" src="http://www.infoq.com/resource/news/2013/03/MySQL-Reference-Architectures/en/resources/MySQL-4-XL.png;jsessionid=D37507DBDD46C3811D9D4D8BB358754C;jsessionid=12DD1EC39CD2AA2F58BCFB90146A38D1" /></a></p> 
- <p>セッション管理とeコマースサイトでは、論文はクラスタを使用する必要があると言っている。 &quot;4xデータノードを使えば、各ページが8- 12のデータベース操作を生成する場合、1秒で6000セッション（ページヒット）をサポートすることが可能です &quot;。大規模CMSサイトは、単に必要に応じてスレーブを増やす中規模なものと同様の構成を使う。Data Refinery ユニットは、分析データをクリーンアップし、整理するために導入される。</p> 
- <p><strong>特大規模なWebリファレンスアーキテクチャ </strong></p> 
- <p>ホワイトペーパーは、ソーシャルなウェブサイトにも、MySQLは &quot;Google、FacebookやYouTubeなどウェブ上で最もトラフィックの多いトップ10サイトの内9社で配備されている”と言って使用を推奨している。ただしこれらのサイトが何にMySQLを使っているかは言っていない。しかし、LinkedInがMySQLの使用で成功しているのは、知られている。</p> 
- <p>ソーシャルなトポロジーは、専用アプリケーション・サーバー、メモリキャッシュ、データリファイナリーを含んだ中/大規模のウェブサイトが実装している概念を使用しているが、書き込み操作をスケールアウトできるようにシャードを導入している。MySQLクラスタは、ユーザー認証、検索、「検索に複数キーが使われる」時に適切なシャードに読み込みと書き込もを割り振るために使われている。</p> 
- <p class="image-wide"><a target="_blank" href="/resource/news/2013/03/MySQL-Reference-Architectures/en/resources/MySQL-5-XL.png;jsessionid=D37507DBDD46C3811D9D4D8BB358754C;jsessionid=12DD1EC39CD2AA2F58BCFB90146A38D1"><img style="background-image: none; border-bottom: 0px; border-left: 0px; padding-left: 0px; padding-right: 0px; display: inline; border-top: 0px; border-right: 0px; padding-top: 0px" title="image" border="0" alt="image" width="640" height="405" _p="true" _href="img://MySQL-5-XL.png" src="http://www.infoq.com/resource/news/2013/03/MySQL-Reference-Architectures/en/resources/MySQL-5-XL.png;jsessionid=D37507DBDD46C3811D9D4D8BB358754C;jsessionid=12DD1EC39CD2AA2F58BCFB90146A38D1" /></a></p> 
- <p>MySQLマスタサーバとスレーブサーバの両方の推奨仕様は以下のとおり。</p> 
- <ul> 
-  <li>8から16のx86-64ビットのCPUコア（MySQLバージョン5.5以上）</li> 
-  <li>4から8までのx86 -64ビットCPUコア（MySQL 5.1とそれ以前のバージョン）</li> 
-  <li>アクティブなデータよりも３から10倍以上のRAMが必要</li> 
-  <li>Linux、Solaris、またはWindowsオペレーティングシステム</li> 
-  <li>最低4倍のハードディスクドライブ。8から16のディスクがI / O集中型アプリケーションのパフォーマンスが向上する</li> 
-  <li>バッテリバックアップされたキャッシュを搭載したハードウェアRAID</li> 
-  <li>RAID 10は、推奨される。ワークロードは、読み取り集中型である場合、RAID 5が適しています</li> 
-  <li>2倍のネットワーク・インタフェース・カードと冗長性を確保のために2倍の電源ユニット</li> 
- </ul> 
- <p>ホワイトペーパーは、またMySQLクラスタやデータストレージデバイスの推奨事項に加え、監視、バックアップ、クラスタ管理のためのソリューションを含んでいる。</p> 
+ <p>Thomas Schranz氏は自社製品の <a target="_blank" href="http://blossom.io">Blossom</a> を，<a target="_blank" href="http://www.dartlang.org">Dart</a> に移植すると <a target="_blank" href="http://www.ramen.io/post/46936028144/we-are-switching-to-dart-why">ブログ記事</a> に発表した。Blossom は開発チームのための製品で，Webベースのカンバン方式ボードである。DartはGoogleの開発した，JavaScriptの代替として利用可能な新しいWebプログラミング言語とプラットフォームだ。</p> 
+ <p>今回の決定について氏は，JavaScriptエコシステムのフラグメンテーションに対して同社がこれまで長く抱いていた不満の結果だ，と <a target="_blank" href="http://www.ramen.io/post/46936028144/we-are-switching-to-dart-why">書いている</a>。</p> 
+ <blockquote> 
+  <p><a target="_blank" href="https://www.blossom.io">Blossom</a> ではJavaScriptを積極的に利用しました。JavaScriptはいろいろな面で素晴らしい言語です。ただし，その暗黒面を回避する手段を知っているならば，ですが。というのは，JavaScriptのエコシステムには，多くの面で重要なものが欠けていると思うからなのです。コア部分に関しては特にです。</p> 
+  <p>何か事を始めようするとき，スタート地点に立つまでに乗り越えなければならない障害が多すぎます。この点が非常に不満なのです。エコシステムの新参者の目には，これがどう映っているのかは分かりません。学習曲線の上昇率としては比較的高い反面，疑問に感じる部分もたくさんあるのではないのでしょうか。</p> 
+ </blockquote> 
+ <p>結果として同社は，アプリケーションのフロントエンドを段階的にDartへ移行することを決定した。それまでのフロントエンドは <a target="_blank" href="http://coffeescript.org">CoffeeScript</a>, <a target="_blank" href="http://backbonejs.org">Backbone.js</a>, <a target="_blank" href="http://underscorejs.org">Underscore.js</a>, <a target="_blank" href="http://jquery.com">jQuery</a> を採用して，これらを <a target="_blank" href="http://brunch.io">Brunch</a> で組み立てる，という構成だった。</p> 
+ <p>InfoQではSchranz氏に，今回の変更について詳しく聞くことにした。</p> 
+ <p><b>Dartはまだ若い言語です。なぜ今，このような移行をしようと決意したのでしょう？</b></p> 
+ <blockquote> 
+  <p>Dartは確かに，他の言語と比べれば新しい言語です。しかしツーリングや標準ライブラリ，パッケージ管理システムなどが充実しているので，JavaScriptのエコシステムよりも使いやすいものに仕上がっています。</p> 
+  <p>JavaScriptの世界にはフラグメンテーションが多すぎます。コンポーネントに関しては特にそうです。パッケージの管理，モジュール操作，非同期コードや依存性，コレクションの反復処理にさえ，競合する方法が山のように作られています。その結果が，ライブラリ同士の相性の悪さになって現れているのです。独自のエコシステムに引き込もうとするものがあり，それを無視しようと「車輪の再発明」を試みるものがある，といった具合です。私はJavaScriptコミュニティが，RubyやPython，Dartなどの言語のコミュニティに比べて，<a target="_blank" href="http://en.wikipedia.org/wiki/Not_invented_here">NIHシンドローム</a> に冒されている度合いが強いのではないか，と思っています。</p> 
+  <p>そのことが不要な複雑さを生み出しているのです。初心者を困惑させるだけではありません。何年もJavaScriptを書いてきた人たちさえも混乱させているのです。Dartに移行するというのは，表面的にはリスクを伴った行動に思えるかも知れません。しかし私には，JavaScriptに固執することの方がよほどリスクが多いように思えてなりません。</p> 
+ </blockquote> 
+ <p><b>Dartのどのような部分がBlossomに向いているのでしょうか？</b></p> 
+ <blockquote>
+  フロントエンドのコードベースを開発するに当たって，私たちはより生産性の高い方法をずっと探していました。Dartはその点，非常に優れた基盤を提供してくれます。Dart VMのおかげでセーブ・リロードの開発サイクルが非常に短縮されますし，パワフルなコードアナライザも提供されています。このため，Dartエディタでの作業は快適です。自動補完やリファクタリング，デバッグなどの機能が，JavaScriptでは実現できていないレベルでサポートされています。さらにパッケージマネージャや選択的な型付け，一貫性のある標準ライブラリなどのおかげで，コードベースを論理的に検討することも容易です。Dartは単なるプログラミング言語ではなく，さまざまな補助機構を装備しているのです。それを理解することが大切です。結合された開発エクスペリエンスがあるという点が，Dartのすばらしさです。
+ </blockquote> 
+ <p><b>ですがDartはまだ，開発のアルファ段階です。</b><b>APIもまだ確定ではありません。それが問題になることはないのでしょうか？</b></p> 
+ <blockquote>
+  言語のセマンティクスやシンタクスはすでに，かなり安定していると思っています。とは言っても，Dartチームは1.0に向けて作業していますから，その過程でAPIレベルでも数多くの改善が実施されています。ただし幸運なことにDartには，先程述べたような充実したツールサポートがあります。非推奨とマークされたメソッドはエディタが教えてくれますし，必要ならば 
+  <a target="_blank" href="http://www.youtube.com/watch?v=P7htQQQmpGM">コードベースを自動的にアップデートしてくれるクリーンアップツール</a> も提供されています。もっとも，ブログやメーリングリストをフォローさえしていれば，手作業で更新を行うのも大した手間ではありません。
+ </blockquote> 
+ <p><b>今は切り替えプロセスの真っ只中で，アプリケーションをひとつひとつ移行しているところだと思いますが，</b><b>JavaScriptからDartコードへの対応，あるいはその逆で，どのようなことを経験しましたか？</b></p> 
+ <blockquote>
+  <a target="_blank" href="http://www.dartlang.org/articles/js-dart-interop/">js相互運用パッケージ</a> というものが用意されています。これを使えば，JavaScriptオブジェクトの生成や関数のコール，さらにはDart関数をJavaScriptから呼び出すことも可能です。これだけで相互運用性については，かなりの部分がカバーされます。ただしBlossomに関しては，相互運用ライブラリはさほど必要ではありませんでした。 既存のBackbone.jsコードベースの独立性がもともと高く，ウィジェットからウィジェットに置き換える作業も比較的簡単だったからです。アプリケーションの一部については，Dartで置き換えるために 
+  <a target="_blank" href="http://pub.dartlang.org/packages/route">Justin Fagnani氏のルーティングパッケージ</a> も使用しています。今のところ，移行は予想したよりも簡単です。
+ </blockquote> 
+ <p><b>これまでDartプラットフォームで開発作業を続けてきて，JavaScriptの場合と比べてどうでしたか？</b></p> 
+ <blockquote>
+  とても快適ですよ。一貫性のある開発エクスペリエンスのおかげで，エコシステムの基本的なビルディングブロックに無駄な作業を強いられることもなく，自分たちの製品開発に集中することができています。本当に信じられないくらいです。JavaScriptでコードを書いていた頃は，
+  <tt>undefined</tt> をチェックする処理があちらこちらに散らばっていました。まともな言語ならば例外をスローするような場合でも，JavaScriptでは動作を続けようとする傾向があるからです。こんなに解放感を味わえたのは，何年も前，PHPからRubyとRailsフレームワークに切り替えた時以来です。当時はその作業も，リスキーで非常識だと言われたものです。
+ </blockquote> 
+ <p><b>これまでにDartに移植されたコードは，おおよそどの位ですか？</b></p> 
+ <blockquote>
+  現時点では５％程度です。新しい機能をDartで実装していますし，既存部分の移植も継続的に行っています。
+ </blockquote> 
+ <p><b>同じような移植を行っている製品アプリケーションで，何か知っているものはありますか？</b></p> 
+ <blockquote>
+  JavaScriptからDartに移行しているアプリケーションは，これ以外には知りません。ですが今後，もっと同じような発表があったとしても，驚きはしないと思います。Dartコミュニティは拡大していますし，1.0マイルストーンを待ちきれない人たちもたくさんいます。Dartをサポートするサービスもいくつか始まりました。例えば 
+  <a target="_blank" href="http://drone.io">drone.io</a> という継続的インテグレーションサービスは，たくさんのDartのオープンソースパッケージが，テストのために使用しています。
+ </blockquote> 
+ <p><b>現時点で，Dartへの移行を他の企業にも奨めますか？</b></p> 
+ <blockquote>
+  移行するには少し早いかも知れませんが，Dartに注目して，その言語やツール，特にWeb UIに関していろいろ試してみることは，間違いなく奨められます。次の週末にでもぜひ試してみてください。
+ </blockquote> 
+ <p><b>Dartの将来性についてはどうでしょう，広く普及すると思いますか？</b></p> 
+ <blockquote>
+  Dartの将来には期待できると思います。Web開発のおもしろさを思い出させてくれます。プラットフォームに関係する人たちも最高で，コミュニティとパッケージがすでに立ち上がってきています。Webのアプリケーションを開発するのは楽しいですよ。
+ </blockquote> 
+ <p>Dartが <a target="_blank" href="http://blog.chromium.org/2011/10/dart-language-for-structured.html">最初に発表された</a> 1年半前には，その言語やアプローチに対して <a target="_blank" href="http://www.quirksmode.org/blog/archives/2011/10/dart_or_why_jav.html">批判的な</a> 声が <a target="_blank" href="http://www.sitepoint.com/google-dart-fail/">非常に多かった</a>。しかしそれ以降，Dartプラットフォームは着実に進歩している。JetBrainsのWebStormやIntelliJなど，サードパーティのIDEにも <a target="_blank" href="http://plugins.jetbrains.com/plugin/?id=6351">Dartのサポートが追加されている</a>。サーバサイドDartアプリケーションを <a target="_blank" href="http://www.heroku.com">Heroku</a> にデプロイすることも可能になった。</p> 
+ <p>Blossomは一般公開されている製品アプリケーションとして，初めてDartに移植されたものだ。これが諺で言う「最初に跳ぶ羊」になり，他が追随することになるのかどうか。それは時が経てば分かるだろう。</p> 
  <p id="lastElm">&nbsp;</p> 
 </div> 
 <p id="lastElm"></p><br><br><br><br><br><br></body></html>

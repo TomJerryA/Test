@@ -1,6 +1,9 @@
 <html>
  <head></head> 
- <body> 
+ <body>
+  <div>
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/7.py">BlossomがDartに移行</a>Thomas Schranz氏は自社製品のBlossomをDartに移植するとブログ記事に発表した。Blossomは開発チームのための製品で，Webベースのカンバン方式ボードである。DartはGoogleの開発した，JavaScriptの代替として利用可能な新しいWebプログラミング言語とプラットフォームだ。
+  </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/6.py">Gartnerの示す情報インフラ技術トレンド: ビッグデータ，NoSQL，インメモリ・コンピューティング</a>ビッグデータとNoSQLデータベース，そしてインメモリ・コンピューティングが，2013年以降の現代的な情報管理において重要な役目を果たすテクノロジだ – Gartner はそのように予想する。同社の調査チームがリリースした 最新レポート には，情報インフラストラクチャとガバナンスに影響を与えるであろう最先端の技術トレンドとして，この３つが示されている。 
   </div> 
@@ -147,9 +150,6 @@
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/8.py">StripeがA/BテストフレームワークのAbbaをオープンソース化</a>Stripeは同社のAbbaというJavaScript A/B テストフレームワークをオープンソースにした。 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/7.py">小から超大規模ウェブサイトまでのMySQL参照アーキテクチャ</a>Oracleが発表した大規模な拡張性を備えたWebインフラストラクチャのためのMySQLリファレンスアーキテクチャ、ホワイトペーパーには、データストレージにMySQLを使用してWebサイトのさまざまな種類とサイズ向けの推奨トポロジが概要されている。 
-  </div> 
+  </div>  
  </body>
 </html>

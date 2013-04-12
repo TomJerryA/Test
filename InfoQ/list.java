@@ -1,8 +1,8 @@
 <html>
  <head></head> 
- <body>
-  <div>
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/18.java">CouchDB 1.3.0 Adds New Features and Algorithm Enhancements</a>Apache Software Foundation has released CouchDB 1.3.0 with support for Fix _session, Cross Origin Resource Sharing (CORS) including additional features and algorithm enhancements.
+ <body> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/18.java">CouchDB 1.3.0 Adds New Features and Algorithm Enhancements</a>Apache Software Foundation has released CouchDB 1.3.0 with support for Fix _session, Cross Origin Resource Sharing (CORS) including additional features and algorithm enhancements. 
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/17.java">Google's Go Readies 1.1 Release</a>Version 1.1 of Google's Go is in beta, and brings significant reported performance increases, new toolset &amp; language features. It maintains backwards compatibility with Go 1.0 and in most cases a recompile is the only thing needed to take advantage of this release. 
@@ -150,6 +150,6 @@
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/19.java">Stanford Offers Free Introductory Course on iOS Programming</a>Stanford University is offering a free introductionary course &quot;Coding Together: Developing Apps for iPhone and iPad (Winter 2013)&quot; on iTunes U. All lectures can be downloaded as video podcasts along with slides in PDF format. The material is suitable for Objective-C and iOS programming beginners, though knowledge of object-oriented concepts and languages is required. 
-  </div>  
+  </div> 
  </body>
 </html>
