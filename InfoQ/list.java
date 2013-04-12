@@ -1,6 +1,9 @@
 <html>
  <head></head> 
- <body> 
+ <body>
+  <div>
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/19.java">NoSQL Benchmark Compares Aerospike, Cassandra, Couchbase and MongoDB</a>A recent set of benchmarks compares Aerospike, Cassandra, Couchbase and MongoDB to see how they fare when it comes to insert throughput, maximum throughput, latency and behavior during a failover.
+  </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/18.java">CouchDB 1.3.0 Adds New Features and Algorithm Enhancements</a>Apache Software Foundation has released CouchDB 1.3.0 with support for Fix _session, Cross Origin Resource Sharing (CORS) including additional features and algorithm enhancements. 
   </div> 
@@ -147,9 +150,6 @@
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/20.java">Edge.js Combines Node.js with .NET</a>The Edge.js project combines Node.js with the .NET platform. Developers can use C# on Node.js or provide Node.js functionality to C# applications-- allowing them to use the best tool for each task. InfoQ had the opportunity to speak with author Tomasz Janczuk about the project and his future plans. 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/19.java">Stanford Offers Free Introductory Course on iOS Programming</a>Stanford University is offering a free introductionary course &quot;Coding Together: Developing Apps for iPhone and iPad (Winter 2013)&quot; on iTunes U. All lectures can be downloaded as video podcasts along with slides in PDF format. The material is suitable for Objective-C and iOS programming beginners, though knowledge of object-oriented concepts and languages is required. 
-  </div> 
+  </div>  
  </body>
 </html>
