@@ -1,8 +1,8 @@
 <html>
  <head></head> 
- <body>
-  <div>
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/20.java">LLVM Authors Have Received One of the ACM Awards 2012</a>ACM has granted their 2012 awards for innovation in computing, including the Software System Award to LLVM creators.
+ <body> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/20.java">LLVM Authors Have Received One of the ACM Awards 2012</a>ACM has granted their 2012 awards for innovation in computing, including the Software System Award to LLVM creators. 
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/19.java">NoSQL Benchmark Compares Aerospike, Cassandra, Couchbase and MongoDB</a>A recent set of benchmarks compares Aerospike, Cassandra, Couchbase and MongoDB to see how they fare when it comes to insert throughput, maximum throughput, latency and behavior during a failover. 
@@ -150,6 +150,6 @@
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/21.java">ZeroTurnaround Acquires Javeleon</a>Java software tools maker ZeroTurnaround has acquired Javeleon, a Denmark based startup that produces a product related to ZeroTurnaround's popular JRebel dynamic Java class-reloading tool. 
-  </div>  
+  </div> 
  </body>
 </html>

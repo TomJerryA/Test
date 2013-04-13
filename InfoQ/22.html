@@ -1,17 +1,33 @@
-<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>腾讯AlloyTeam再次发力：开源HTML5图像处理引擎AlloyImage</h3><p>近日，AlloyTeam的<a href="http://www.alloyteam.com/2013/03/html5-in-order-to-bring-us-what-professional-level-image-processing/">腾讯Web前端Alloy团队Blog</a>再次引起了业界的广泛关注，原因就是该团队近日推出了最新的开源项目：一个基于HTML5技术的专业级图像处理引擎——AlloyImage(简称AI)，以及一个在线Web图像处理平台——AlloyPhoto(简称AP)。这预示着腾讯的Web前端团队将在底层基础技术层面做深入研究，并将更多的为业界提供基础技术服务。</p> 
-<p>据称，该项目同时也将与HTML5梦工场一起推动HTML5技术在业界的广泛深入的应用。在其官方博客中，是这样介绍的：</p> 
+<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>淘宝开源其系统监控工具Tsar</h3><p>淘宝在开发社区的贡献可谓功不可没，近日又将其系统监控工具<a href="http://tsar.taobao.org/">Tsar</a>代码上传至<a href="https://github.com/alibaba/tsar">GitHub</a>。据<a href="http://weibo.com/1804559491/zrRJxwBPG">@淘叔度</a>介绍，Tsar在淘宝内部已经被大量使用，它不仅可以监控CPU、IO、内存、TCP等系统状态，也可监控Apache、Nginx/Tengine、Squid等服务器状态。</p> 
+<p>Tsar（Taobao System Activity Reporter）可将收集到的数据存储在磁盘上，另外可以支持将数据存储到MySQL中，也可将数据发送到Nagios报警服务器。在展示数据层面，可以指定模块，并且支持对多条信息的数据进行Merge输出，如果带--live参数，还可以输出秒级的实时信息。</p> 
+<p>从架构上来看，Tsar基于模块化设计，源代码上来看主要包含两部分：框架和模块。框架源代码主要存放在src目录，模块源代码主要在modules目录中。框架提供对配置文件的解析、模块的加载、命令行参数的解析、应用模块的接口对模块原始数据的解析与输出。</p> 
+<p>Tsar的运行流程图如下：&nbsp;</p> 
+<p><img src="http://www.infoq.com/resource/news/2013/04/taobao-open-tsar/zh/resources/liucheng.png;jsessionid=6F7940811815AD358BCA41C6632D5B99" alt="" _href="img://liucheng.png" _p="true" /></p> 
+<p>主要执行流程：</p> 
 <blockquote> 
- <p><a href="http://alloyteam.github.com/AlloyPhoto/">AlloyImage</a>是一个使用JavaScript语言开发的，基于Web的在线图像处理引擎，除了核心底层图像处理引擎，还同时集成了一些方便快捷的图像处理API，您可以将它简单快捷的引用到您的Web网页中，做出与PhotoShop一样的优美效果。甚至，你可以用AlloyImage来开发一个Web在线图像处理软件，如：Web版的PhotoShop——<a href="http://alloyteam.github.com/AlloyPhoto/alloyphoto.html">AlloyPhoto</a>。</p> 
+ <ul> 
+  <li>解析输入</li> 
+  <li>读取配置文件信息</li> 
+  <li>加载相应模块</li> 
+  <li>Tsar的三种模式（print、live和cron）执行</li> 
+  <li>释放资源</li> 
+ </ul> 
 </blockquote> 
-<p>AlloyImage主要使用HTML5的Canvas技术，并在多图层（Layer）处理方面做了创新性的尝试，不仅如此，在技术实现层面，其架构方便扩展，使用者可以很容易写出现一个AlloyImage的滤镜插件，很多API支持重载，参数传递灵活。</p> 
-<p>Peak-Labs创始人，Mammoth猛犸浏览器、Rasgueado键盘作者<a href="http://weibo.com/peakji" target="_blank">@PeakJi</a>在阅读完代码后也评论道：全中文注释超感人，但处理后的图片是base64编码的data:image类型(比较少被用于大尺寸图像，一般是减少请求用的)，大图解码时可能会锁UI thread造成卡死，而且大部分webkit浏览器不会缓存这种图片。</p> 
-<p>2012年6月，Tencent AlloyTeam就曾将其前端JavaScript开发框架JX（JavaScript eXtension tools）开源，该框架具有原生对象零污染、模块封包、多版本共存、分层设计以及无缝集成各种js框架的特点，可与jQuery、YUI、Mootools和Prototype.js等框架无缝集成。更多详细信息可访问<a href="http://www.alloyteam.com/2012/06/jx-framework/">腾讯Web前端Javascript开发框架 JX(Javascript eXtension tools)</a>。</p> 
-<h3>了解更多</h3> 
+<p>本次开源消息公布后，受到了社区开发者的欢迎：</p> 
+<blockquote> 
+ <p>TriChaos：喜欢没有浮华的字符界面，像和没有废话的人对话。</p> 
+ <p>_Yuen：代码少逻辑清晰模块化又好，不得不说是一个好工具的典范。</p> 
+ <p>淘木名：事后线上问题分析必备利器。</p> 
+ <p>淘叔度：目前只支持C语言开发的插件。不过写个模块非常简单。</p> 
+</blockquote> 
+<h3>得益于淘宝开源</h3> 
+<p><a href="http://code.taobao.org/">淘宝开源平台</a>于2010年6月上线，至今，该平台已经发布了若干开源项目，其中不乏来自于淘宝之外的项目在此落户。目前注册会员数13002人，收录项目已达到2875个。目前，该平台关注度最高的5个项目分别是<a href="http://code.taobao.org/p/tfs/src/">tfs</a>、<a href="http://code.taobao.org/p/tair/src/">tair</a>、<a href="http://code.taobao.org/p/webx">webx</a>、<a href="http://code.taobao.org/p/OceanBase">OceanBase</a>、<a href="http://code.taobao.org/p/athrun/src/">athrun</a>。</p> 
+<h3>扩展阅读</h3> 
 <ul> 
- <li><a href="http://alloyteam.github.com/AlloyPhoto/">官网</a></li> 
- <li><a href="http://alloyteam.github.com/AlloyPhoto/alloyphoto.html">在线Demo-AlloyPhoto</a></li> 
- <li><a href="https://github.com/AlloyTeam/AlloyPhoto">源码</a></li> 
- <li><a href="http://www.AlloyTeam.com/">团队Blog</a></li> 
- <li><a href="http://www.infoq.com/cn/presentations/html5-svg;jsessionid=F70509F64E11597ADFDFA4B3F4CBAD79">视频：百度技术沙龙王集鹄——HTML5中的图形图像处理</a></li> 
+ <li><a href="http://www.infoq.com/cn/news/2013/03/github-opensource;jsessionid=6F7940811815AD358BCA41C6632D5B99" target="_blank">GitHub引起开源“平民化”变革</a></li> 
+ <li><a href="http://www.infoq.com/cn/news/2010/07/tabao-opensource;jsessionid=6F7940811815AD358BCA41C6632D5B99" target="_blank">走近淘宝开源平台</a></li> 
+ <li><a href="http://www.infoq.com/cn/news/2013/04/alloyimage-interview;jsessionid=6F7940811815AD358BCA41C6632D5B99" target="_blank">腾讯前端Alloy团队访谈：HTML5开源图像处理框架AlloyImage</a></li> 
+ <li><a href="http://www.infoq.com/cn/news/2013/03/58com-opensourced-argo;jsessionid=6F7940811815AD358BCA41C6632D5B99" target="_blank">58同城开源其轻量级Web框架Argo</a></li> 
 </ul> 
+<p>&nbsp;</p> 
 <p id="lastElm"></p><br><br><br><br><br><br></body></html>
