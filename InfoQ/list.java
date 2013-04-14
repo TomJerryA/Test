@@ -1,8 +1,8 @@
 <html>
  <head></head> 
- <body>
-  <div>
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/22.java">Continuous Delivery Speeds Up Innovation</a>Thoughtworks recently published a whitepaper including a maturity model for continuous delivery (or CD) as a response to research indicating that most companies understand the importance of innovation, but are not able to deliver software quickly enough to meet the needs of business leaders.
+ <body> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/22.java">Continuous Delivery Speeds Up Innovation</a>Thoughtworks recently published a whitepaper including a maturity model for continuous delivery (or CD) as a response to research indicating that most companies understand the importance of innovation, but are not able to deliver software quickly enough to meet the needs of business leaders. 
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/21.java">Sails 0.8.9: A Rails-Inspired Real-Time Node MVC Framework</a>Version 0.8.9 of Sails, a real-time MVC framework built atop node.js, was released on April 9th by Austin, TX-based Balderdash in an ongoing effort to bring a Rails-like development platform to modern web apps 
@@ -150,6 +150,6 @@
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/23.java">When to Use WPF with Async and Reactive Extensions</a>Ian Griffiths has published a six part series on when to use, and when not to use, .NET 4.5’s async features with WPF. The series begins with a post titled Too Much, Too Fast with WPF and Async. 
-  </div>  
+  </div> 
  </body>
 </html>
