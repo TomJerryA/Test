@@ -1,28 +1,27 @@
-<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>An Analyzation of Parse MBaaS</h3><p>&nbsp;The explosive growth of Mobile Backend as a Service (MBaaS) is proof that a significant percentage of mobile application developers prefer&nbsp;<a href="http://blog.programmableweb.com/2012/11/29/mobile-backend-as-a-service-mbaas-give-me-liberty-or-give-me-convenience/">the easy way out</a>. It is one thing to design a great app. Quite another to muster the enviable skills of stacking multiple languages such as MongoDB, Couch, Cassandra, MySQL and etc…, to form a serviceable, updateable mobile back end.</p> 
-<p>&nbsp;</p> 
-<p class="MsoNormal">&nbsp;In this third in a&nbsp;<a href="http://www.infoq.com/news/2013/02/KinveyMBaaS;jsessionid=8A11054CF28668535F66F5950F1A6FE9">series of posts</a>&nbsp;on the new breed of companies offering MBaaS, InfoQ examines&nbsp;<a href="https://parse.com/">what makes Parse</a>&nbsp;tick.&nbsp;<a href="http://gigaom.com/2011/08/08/parse/">Begun in 2011</a>&nbsp;with the assistance of startup funder&nbsp;<a href="http://ycombinator.com/">Y Combinator</a>, Parse, like its growing list of competitors, saves mobile app developers the time and hassle required to create one’s own efficient mobile backend.</p> 
-<p class="MsoNormal">As we look closer at MBaaS providers, the FAQ’s, features and benefits of each service begin to look the same. What is different is the implementation of those attributes. The unique coding styles, servers and programming of each MBaaS provider ultimately yields quite different results.</p> 
-<p class="MsoNormal">Take the&nbsp;<a href="http://www.infoq.com/news/2013/01/28;jsessionid=8A11054CF28668535F66F5950F1A6FE9">earlier reviewed</a>&nbsp;Kii Cloud for instance. That service and Parse offer somewhat similar UI looks, with point and click simplicity. They both enable developers to&nbsp;<a href="https://parse.com/apps/quickstart">easily plug in</a>&nbsp;a MBaaS to their app for all major&nbsp;<a href="https://www.parse.com/docs/index">mobile phone platforms</a>&nbsp;as well as the non-mobile oriented ones.</p> 
-<p class="MsoNormal">Distribution is one major difference. Through its strategic partners Kii Cloud delivers a network with millions of potential customers from mobile consumers in Asian markets. While Parse does not appear to offer&nbsp;<a href="https://www.parse.com/products">anything like</a>&nbsp;Kii’s distribution channels, their partners do offer an interesting collection of&nbsp;<a href="https://www.parse.com/customers/partners">bells and whistles</a>.</p> 
-<p class="MsoNormal">Each MBaaS provider is likely to have their own unique variables. Parse, for example, requires data models to conform to&nbsp;<a href="http://blog.parse.com/">their method</a>&nbsp;for conducting searches: “…string matching queries that don’t match an exact prefix of the string won’t be able to use an index. This makes these types of queries very likely to fail due to timeout errors as your app grows.”</p> 
-<p class="MsoNormal">Parse serves all&nbsp;<a href="https://www.parse.com/plans">mobile software developers</a>&nbsp;from the indie newbie to massive enterprises with a choice of three pricing schemes. Those on the proverbial shoestring budget can go with the free plan. That includes one million each of requests and pushes per month with a gigabyte of cloud storage.</p> 
-<p class="MsoNormal">When it comes to push technology, Parse features an&nbsp;<a href="https://www.parse.com/products/push?mkt_tok=3RkMMJWWfF9wsRonu6TOZKXonjHpfsX57eUtUKWzlMI%2F0ER3fOvrPUfGjI4ATMdiI%2FqLAzICFpZo2FFIG%2FKGeQ%3D%3D#3">array of options</a>. Devs can compose, schedule, segment and target their push notices and then examine them with a fine tooth analytical comb.</p> 
-<p class="MsoNormal">Leave it to&nbsp;<a href="https://parse.com/questions/fetch-all-data-in-a-table-using-pfquery">the community</a>&nbsp;to find the chinks in any armor.&nbsp;<span class="comhead"><a href="https://news.ycombinator.com/user?id=jawngee">jawngee</a>&nbsp;over at&nbsp;<a href="https://news.ycombinator.com/item?id=4701035">Hacker News</a>:</span></p> 
-<blockquote>
- I don't like that subclassing generally doesn't work. You can subclass PFObject no problem, but you lose it when you are doing a lot of PFQuery'ing. PFUser would be a prime candidate for subclassing but that really doesn't work without a lot of shim'ing.
-</blockquote> 
-<p><span new="" style="font-size: 9pt; line-height: 13px;"><a href="https://news.ycombinator.com/user?id=bklimt">bklimt</a>:</span></p> 
-<blockquote>
- PFObject subclassing and a more comprehensive offline solution are both very high on our list of features we would like to add. We're just taking our time to make sure we get them right.
-</blockquote> 
-<p>Parse user Huzell:</p> 
-<blockquote>
- how can you keep the query getting all objects…?
-</blockquote> 
-<p>was able to stump the&nbsp;<a href="http://www.linkedin.com/in/33fosco">Parse guru</a>:</p> 
-<blockquote>
- It is not supported behavior to get large numbers of results- Fosco Marotto.
- <span class="usernameprofile">&nbsp;</span>
-</blockquote> 
-<p class="MsoNormal">The community at large is also often able to find a solution. Alex Fish was able to provide one,&nbsp;<a href="http://alexefish.com/post/29843064002/fetching-every-row-of-a-table-with-parse-and-pfquery">for iOS</a>&nbsp;at least.</p> 
+<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>Continuous Delivery Speeds Up Innovation</h3><p>Thoughtworks recently published a whitepaper including a <a href="http://www.thoughtworks-studios.com/register?destination=node/10946">maturity model for continuous delivery</a> (or CD) as a response to research indicating that most companies understand the importance of innovation, but are not able to deliver software quickly enough to meet the needs of business leaders. &nbsp;The white paper explains that the low level of continuous delivery maturity within companies prevents their software development teams from being strategic partners and makes their software releases slower than needed by their businesses.&nbsp;</p> 
+<p>Thoughtworks intends for companies to <a href="http://consultantsmind.com/2012/07/01/maturity-model/">use the maturity model to identify gaps</a> in their processes and tools so they can focus on improving those areas. They believe that continuous delivery is the solution to improving the productivity of software development to the point of exceeding expectations and in turn creating the capabilities within technology departments so that they can play a critical role in the strategic direction of their companies. The following levels and results are explained in detail within the white paper:</p> 
+<ul> 
+ <li>5: Optimizing - <a href="http://www.startuplessonslearned.com/2009/06/why-continuous-deployment.html">Continuous deployment</a> capability enables business innovation/experimentation</li> 
+ <li>4: quantitatively managed - Software is always in a releasable state. Release time box is well defined and equal to, or less than, business need.</li> 
+ <li>3: defined - Release time box is well defined, but duration from idea inception to production release is greater than business need.</li> 
+ <li>2: managed - Release time box is well defined, but duration from idea inception to production release is greater than business need.</li> 
+ <li>1: initial - Ad hoc deployments</li> 
+</ul> 
+<div>
+ The maturity model is divided into 5 levels. Companies that do not exceed level 4 will be hard pressed to deliver innovation at an acceptable pace. Most companies that operate at or below level 3 will never keep up with the demands of business leaders and the market.
+</div> 
+<div>
+ &nbsp;
+</div> 
+<div>
+ Thoughtworks commissioned Forrester Consulting to perform research for their whitepaper, which included the surveying of 325 business and IT professionals.
+</div> 
+<div>
+ &nbsp;
+</div> 
+<div>
+ Additional information to assist in filling the gaps identified through usage of this CD model can be found on InfoQ. A model to assist in 
+ <a href="http://www.infoq.com/articles/Continuous-Delivery-Maturity-Model;jsessionid=55513E7B8E8B5DB980BA9A32F9DB0906">adopting continuous delivery</a> was published earlier this year. Jez Humble, Principal Consultant with ThoughtWorks, recently spoke on the
+ <a href="http://www.infoq.com/presentations/Adopting-Continuous-Delivery;jsessionid=55513E7B8E8B5DB980BA9A32F9DB0906"> most important factors in implementing continuous delivery</a>.
+</div> 
 <p id="lastElm"></p><br><br><br><br><br><br></body></html>
