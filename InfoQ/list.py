@@ -2,7 +2,13 @@
  <head></head> 
  <body>
   <div>
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/8.py">Windows Azure Mobile ServicesのAndroid対応、Active Directory、ローカライズ、東アジアリージョン</a>MicrosoftはWindows Azureでいくつかのアップデートをリリースした。Android対応、Active Directory対応、HTTPレスポンスコードによるアプリケーション監視, 新しい5つの言語対応、22カ国以上のAzureストア等である。
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/10.py">Microsoft Office Developer Tools が検索設定テンプレート、アプリ検証、Azureでのデバッグを提供。</a>最近リリースされたMicrosoft Office Developer Tools for Visual Studio 2012は、新しい検索設定プロジェクトテンプレート、サブミッションプロセス中のアプリ検証とWindows Azureでのデバッグ機能を提供している。
+  </div>
+  <div>
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/9.py">Struts 1が寿命を迎える</a>Apache財団の発表によれば、JavaのMVCウェブフレームワークであるStruts 1が寿命を迎えた。ある意味では、この動きは単純に、Strutsチームがバージョン2の開発に注力しているという既成事実を公式に認めただけだ。Struts 1の最後のリリースは2008年のバージョン1.3.10だ。コードとドキュメントは今後も入手できるが、今後はセキュリティパッチやバグ修正は提供されない。
+  </div> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/8.py">Windows Azure Mobile ServicesのAndroid対応、Active Directory、ローカライズ、東アジアリージョン</a>MicrosoftはWindows Azureでいくつかのアップデートをリリースした。Android対応、Active Directory対応、HTTPレスポンスコードによるアプリケーション監視, 新しい5つの言語対応、22カ国以上のAzureストア等である。 
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/7.py">BlossomがDartに移行</a>Thomas Schranz氏は自社製品のBlossomをDartに移植するとブログ記事に発表した。Blossomは開発チームのための製品で，Webベースのカンバン方式ボードである。DartはGoogleの開発した，JavaScriptの代替として利用可能な新しいWebプログラミング言語とプラットフォームだ。 
@@ -144,12 +150,6 @@
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/11.py">アプリからクラウドへファイルをアップロードできるFilepicker</a>Filepicker.ioを使えばアプリケーションからFacebook、Dropbox、Instagra、Flickrなどのファイルをアップロードできる。 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/10.py">PuppetLabsとOpscodeはどうやってオープンソースコミュニティを育てたか</a>コミュニティを育てるには人々にきちんと接して、物事がどのようになされたかを透明にすることが重要だ、とLuke Kanies氏とAdam Jacob氏は言う。Luke Kanies氏はPuppetLabsの創業者、CEOであり、Adam Jacob氏はOpscodeの共同創業者でありChefの開発者だ。両者ともコミュニティに対して真摯に関わることが必要だと主張している。PuppetLabsとOpscodeはビジネスと共に活発なオープンソースコミュニティを作ることに成功した企業だ。 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/9.py">PeerJS 0.1.7: ブラウザにおけるP2PのためのWebRTCラッパー</a>Michelle Bu氏とEric Zhang氏は3月6日、WebRTCのラッパーとしてPeerJS 0.1.7のリリースを発表した。WebRTCは、W3CがブラウザでのP2P通信をやりやすくするために作っているものだ。 
-  </div>  
+  </div>   
  </body>
 </html>
