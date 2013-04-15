@@ -1,6 +1,9 @@
 <html>
  <head></head> 
- <body> 
+ <body>
+  <div>
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/8.py">Windows Azure Mobile ServicesのAndroid対応、Active Directory、ローカライズ、東アジアリージョン</a>MicrosoftはWindows Azureでいくつかのアップデートをリリースした。Android対応、Active Directory対応、HTTPレスポンスコードによるアプリケーション監視, 新しい5つの言語対応、22カ国以上のAzureストア等である。
+  </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/7.py">BlossomがDartに移行</a>Thomas Schranz氏は自社製品のBlossomをDartに移植するとブログ記事に発表した。Blossomは開発チームのための製品で，Webベースのカンバン方式ボードである。DartはGoogleの開発した，JavaScriptの代替として利用可能な新しいWebプログラミング言語とプラットフォームだ。 
   </div> 
@@ -147,9 +150,6 @@
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/9.py">PeerJS 0.1.7: ブラウザにおけるP2PのためのWebRTCラッパー</a>Michelle Bu氏とEric Zhang氏は3月6日、WebRTCのラッパーとしてPeerJS 0.1.7のリリースを発表した。WebRTCは、W3CがブラウザでのP2P通信をやりやすくするために作っているものだ。 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/8.py">StripeがA/BテストフレームワークのAbbaをオープンソース化</a>Stripeは同社のAbbaというJavaScript A/B テストフレームワークをオープンソースにした。 
-  </div> 
+  </div>  
  </body>
 </html>

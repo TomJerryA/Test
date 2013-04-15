@@ -1,20 +1,13 @@
-<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>StripeがA/BテストフレームワークのAbbaをオープンソース化</h3><p><a target="_blank" href="http://www.infoq.com/news/2013/03/Abba;jsessionid=A0044DA2B7C8D41F1655A2CC0D7D86E6"><em>原文(投稿日：2013/03/15)へのリンク</em></a></p> 
+<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>Windows Azure Mobile ServicesのAndroid対応、Active Directory、ローカライズ、東アジアリージョン</h3><p> 
+ <meta content="text/html; charset=Shift_JIS" http-equiv="content-type" /></p> 
+<p><a target="_blank" href="http://www.infoq.com/news/2013/03/windows-azure-march-updates;jsessionid=1BE2CC603B11FE373CC0960F1E42C264"><em>原文(投稿日：2013/03/15)へのリンク</em></a></p> 
 <div class="clearer-space">
  &nbsp;
 </div> 
 <div id="newsContent"> 
- <p><a target="_blank" href="https://stripe.com/">Stripe</a> は，同社の <a target="_blank" href="https://github.com/maccman/abba">Abba</a> というJavaScript A/B テストフレームワークをオープンソースにした。このテスト用にWebアプリケーションをセットアップするには，メインページに次のようなコードを挿入する必要がある。</p> 
- <pre>
-&lt;script&gt;
-  Abba('test name')
-    .control('Test A', function(){ /* ... */ })
-    .variant('Test B', function(){ /* ... */ })
-    .start();
-&lt;/script&gt;</pre> 
- <p>このスクリプトでは <code>Test A</code> というコントロールテストを定義して，すべての処理結果の報告対象にすると同時に，<code>Test B</code>という別のバリアントを定義している。バリアントは複数あってもよい。テストでハンドラが参照される度に，必要に応じてこれがフレームワークからコールされる。コントロールテストではハンドラのない場合もある。</p> 
- <p>テストが開始されると，Abbaは別々のテストに関連付けられたハンドラをランダムに呼び出す。通常はこれによって，サイトで使用されているページが別々に呼び出される。フレームワークが各ユーザ毎に，テスト開始と終了ステータスを保持する。ユーザが改めてWebサイトを参照した時，前回と同じページを表示するようにAbbaを設定しておくことも可能だ。</p> 
- <p>データはMongoDBにストアされ，日毎のビジター数やコンバージョン率 (テストを完了したビジター) を，指定された時間範囲でグラフ表示によって可視化することができる。各バリアントの値は重み付けされ，テスト精度を評価するための<a target="_blank" href="http://en.wikipedia.org/wiki/Standard_score">標準スコア</a> が計算される。結果を日付ないし使用ブラウザでフィルタリングすることも可能だ。</p> 
- <p>Abbaはローカルでもサーバ上でも実行可能である。Heroku上で動作させるための手順書も用意されている。動作にはRuby 1.9.3とMongoDBが必要だ。</p> 
+ <p><a target="_blank" href="http://weblogs.asp.net/scottgu/archive/2013/03/04/windows-azure-updates-android-support-sql-reporting-services-active-directory-more.aspx">Windows Azure Mobile Services</a>がAndroidプラットフォームに対応した。 またMicrosoftはGitHubにて<a target="_blank" href="https://github.com/WindowsAzure/azure-mobile-services">Android Client SDK</a>を <a target="_blank" href="http://www.apache.org/licenses/LICENSE-2.0.html">Apache 2.0</a>ライセンスでリリースした。 Mobile Servicesを東アジアのリージョンで利用できるようにし、アジア向けのアプリケーションで待ち時間を減らせるようになった。<br /> <br /> 最新のリリースアップデートではWindows Azureの管理ポータルから<a target="_blank" href="http://www.microsoft.com/en-us/sqlserver/solutions-technologies/business-intelligence/reporting.aspx">SQL Reporting Services</a>を作成および管理する機能を提供する。 Windows Azure管理ポータルで、事前に作成したレポートをアップロードし、管理レポートのメトリックを表示し、レポート、データソース、フォルダへアクセスするユーザ権限を管理できる。<br /> <br /> アップデートされた管理ポータルではActive Directoryを統合することができ、オンプレミスのActive Directoryから同期しユーザーアカウントを作成および管理できる。そして、2要素認証ベースの電話機能を含むActive Directory Federation Servicesを使用してAzureのシングルサインオンを確立できる。<br /> <br /> 「待ち時間を最小限にするために、モバイルサービスとWindows AzureとSQLデータベースを同じデータセンターに配置することを忘れないで。」とMicrosoft副社長で Server and Tools Business担当の<a target="_blank" href="https://twitter.com/scottgu">Scott Guthrie</a>氏は述べる。</p> 
+ <p>最新アップデートではWebアプリケーションの可用性を監視できる。HTTPコードを使用して応答時間を把握でき、世界中からWebアプリケーションの可用性を知れる。 ただしこの機能は占有モードでのWebサイトとモバイルサービス、本番環境でのクラウドサービス、仮想マシンでのみ使用可能である。<br /> <br /> さらにMicrosoftは<a target="_blank" href="http://msdn.microsoft.com/en-us/library/ee732537.aspx">Service Bus</a>への大幅な機能強化を追加した。 キュー・トピック・サブスクリプションの操作とエラー数を含むダッシュボードメトリックなどである。 また、クイックスタートページにService Busのキュー、トピック、リレーを利用するアプリケーションのサンプルコンテンツが追加された。<br /> <br /> 最新アップデートでは、Windows Azure管理ポータルから直接Blobストレージファイルをダウンロードできる。 また<a target="_blank" href="http://www.windowsazure.com/en-us/home/features/media-services/">Windows Azure Media Services</a>の機能が強化されている。 ストリーミングサーバーを個別にセットアップしなくても、ダッシュボード内から簡単にAzureでオンデマンドでビデオをストリーミングしてメトリックを監視できる。 <br /> <br /> 上記の機能強化に加えて、Windows Azure管理ポータルで、*.cerといった証明書ファイルと公開鍵をアップロードする機能を提供する。 管理ポータルは、ロシア語、韓国語、ポルトガル語、中国語簡体字、中国語繁体字という新しい5言語のサポートが含まれている。 Microsoftは、22以上の国で<a target="_blank" href="http://www.windowsazure.com/en-us/store/overview/">Windows Azureストア</a>を利用できるように拡大した。</p> 
+ <p>iOSの専門家で<a target="_blank" href="http://netnewswireapp.com/">NetNewsWire</a>の作者（現在は<a target="_blank" href="http://netnewswireapp.com/black-pixel-acquires-netnewswire">Black Pixel</a>へ引継）である <a target="_blank" href="https://twitter.com/brentsimmons">Brent Simmons</a>氏が、 Windows Azure Mobile ServicesによるiOS開発を検証した<a target="_blank" href="http://www.windowsazure.com/en-us/develop/mobile/ios/">ビデオチュートリアル</a>シリーズを発表していると言及した。</p> 
  <p id="lastElm">&nbsp;</p> 
 </div> 
 <p id="lastElm"></p><br><br><br><br><br><br></body></html>

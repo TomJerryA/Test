@@ -1,8 +1,8 @@
 <html>
  <head></head> 
- <body>
-  <div>
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/40.htmlb">性能测试面面观——HP性能测试专家宗刚访谈</a>宗刚是2013北京QCon测试专题的受邀讲师。在这个访谈中，宗刚对性能测试领域内的许多问题做了深入的回答。
+ <body> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/40.htmlb">性能测试面面观——HP性能测试专家宗刚访谈</a>宗刚是2013北京QCon测试专题的受邀讲师。在这个访谈中，宗刚对性能测试领域内的许多问题做了深入的回答。 
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/39.htmlb">林仕鼎谈数据中心计算（二）：存储资源分层</a>在之前的对话中，百度基础体系首席架构师林仕鼎先生提到要将数据中心当做逻辑上的一台机器来设计架构。在林仕鼎看来，这种软件设计理念的变化包含很多方面，但最基本的一点就是：分层。一个存储系统有三个层：block层，stream层，以及table层。CCDB的设计是，我把这三个层放在一块儿，放在一台机器上面去。然后，机器和机器之间连起来，就把每个层直接扩展到多机了。 
