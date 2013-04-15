@@ -1,35 +1,10 @@
-<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>范凯观点：Ruby社区应该去Rails化</h3><p>&nbsp;</p> 
-<p>InfoQ中文站报道过一些公司从Ruby转移到其他语言的新闻，包括<a href="http://www.infoq.com/cn/news/2013/03/ruby-to-go;jsessionid=6B3E3DC818088247CC3FA275FF2A238C">Iron.io从Ruby迁移到Go：减少了28台服务器并避免了连锁故障</a>、<a href="http://www.infoq.com/cn/news/2012/11/twitter-ruby-to-java;jsessionid=6B3E3DC818088247CC3FA275FF2A238C">从Ruby向Java的迁移帮助Twitter挺过了美国大选</a>和<a href="http://www.infoq.com/cn/news/2012/10/Ruby-on-Rails-Node-js-LinkedIn;jsessionid=6B3E3DC818088247CC3FA275FF2A238C">在LinkedIn的Ruby on Rails和Node.js对决</a>。最近，IT元老范凯在<a href="http://robbinfan.com/blog/40/ruby-off-rails">博客</a>中详细地分析了Rails目前在Web服务方面的局限和原因，针对“继续沿用Ruby on rails重写或者重构应用，性能可能会有一两倍的提升，但无法弥合10倍以上的性能差距，难道说Ruby真的如此不堪吗？注定要被Node.js或者Go所取代吗？”这个问题给出了自己的观点，即：使用其他Ruby轻量级框架取代Rails，而不是使用Node.js和Go取代Ruby。</p> 
-<p>针对Ruby的性能问题，范凯首先做了澄清，存在性能问题的是Rails，而不是Ruby语言本身，他引用了Ruby的纤程框架<a href="http://postrank-labs.github.com/goliath/">Goliath</a>的实际应用数据：</p> 
-<ul> 
- <li>VPS上总共使用了16个CPU内核，跑了16个单进程实例</li> 
- <li>每个进程实例稳定消耗50MB内存</li> 
- <li>Web框架使用Goliath, URL分发是grape，数据库访问使用ActiveRecord，缓存使用Redis</li> 
- <li>应用吞吐量达到了1800 request/s</li> 
-</ul> 
-<p>这个数据意味着一台配备了4颗4核CPU，2G内存的服务器，每天可以处理 1.5亿次 web请求。由此可见，Ruby完全可以做到高并发IO的应用。问题主要不在Ruby解释器上，而在Rails框架上。更准确的说就是，<strong> Ruby on R</strong><strong>ails作为一个full-stack的web开发框架，并不适合用来开发Linkedin和Iron.io的后台web服务，从某种意义上来说，属于Rails的时代已经过去了。</strong></p> 
-<p>范凯表示：<strong>移动时代，Web服务将取代Web网站。</strong>为什么Rails不适合Web服务呢，他认为主要原因包括：</p> 
-<ul> 
- <li><strong>Rails调用堆栈过深，URL请求处理性能很差</strong><strong>。</strong>Rails的设计目标是提供Web开发的 最佳实践 ，所以无论你需要不需要，Rails默认提供了开发Website所有可能的组件，但其中绝大部分你可能一辈子都用不上。其中最夸张的是<code>ActionDispatch::RequestId</code>middleware，只有在大型应用部署在群集环境下进行线上调试才可能用到的功能，有什么必要做成默认的功能呢？ Rails的哲学是：提供最全的功能集给你，如果你用不到，你自己手工一个一个关闭掉 ，但是这样带来的结果就是默认带了太多不必要的冗余功能，造成性能损耗极大。</li> 
- <li><strong>Rails加载的框架和依赖库过多，内存消耗过度。</strong>Rails自身依赖库非常多，造成的结果就是Rails应用持续运行以后内存消耗非常高。举个例子：如果你用到了Rails的asset pipeline功能，那么项目需要依赖一个JS引擎来编译JS和CSS，默认会使用libv8这个库。尽管只是编译阶段使用libv8，运行期并不需要它，但是仍然会加载libv8，这意味着你的每个ruby进程会多占20MB内存。在我们其中一个大项目上，总共开了40个ruby进程，直接浪费了800MB内存。于是我们不得不在生产服务器上安装了node.js，替换了libv8。此外，一旦其中某个依赖库有内存泄露，整个应用也可能出现内存泄露，这种内存泄露是很讨厌的事情，Rails如此肆无忌惮不加限制的使用第三方依赖库也是一个潜在的隐患。</li> 
- <li><strong>Rails传统多进程模型的IO并发能力很低。</strong>Rails的多进程并发模型的IO并发能力很低，开多少个进程，就只能同时响应多少个并发请求，但Ruby进程的内存消耗是很大的，多进程调度的CPU开销也很高，这决定了单台服务器上能开的进程数是非常有限的，一般不会超过30个。但是对于Web Service类型的应用，需要很高的IO并发处理能力，传统Rails多进程很容易就会出现负载的瓶颈。从Rails4.0开始，默认也开启了多线程模式，也可以支持多线程方式运行Rails应用。但就目前来说，Rails使用多线程，还面临一些兼容性问题：大量的Rails插件和代码不是线程安全的，在多线程模型下运行，会出现意想不到的bug；另外Rails的多线程应用尚未得到广泛应用，可能会有潜在的bug。</li> 
-</ul> 
-<p>不用Rails，Ruby社区又能用什么呢？范凯提供了自己的建议：</p> 
-<ul> 
- <li><a href="http://www.sinatrarb.com/intro-zh.html">Sinatra</a>——Sinatra本身也是Ruby社区非常流行和著名的轻量级Web框架，核心源代码不超过1000行，文档只有1页。对于Rails开发者来说，花了几个小时，就可以快速使用Sinatra开发Web Service了。Sinatra对多线程支持的非常好，可以用<a href="http://rainbows.rubyforge.org/">rainbows</a>来跑多线程Sinatra，IO并发处理能力很好。Github也是用它来提供开放API服务的。我自己写了一个<a href="https://github.com/robbin/sinatratest">Sinatra的项目模版</a>，如果你用Sinatra开发Web Service，可以参考。</li> 
- <li><a href="http://www.padrinorb.com/">Padrino</a>——Padrino是一个基于Sinatra之上的轻量级Web框架，在Sinatra基础之上提供了命名路由，模块化项目组织，页面helpers和generators等等。Padrino是一个高度模仿Rails的框架，API的命名和Rails很像，Rails开发者花1-2天看看文档就可以快速上手开发了。Padrino相比Rails易学易用，多线程支持良好，性能比Rails好很多，开发Website推荐使用。我自己的网站也是用Padrino开发的，源代码在：<a href="https://github.com/robbin/robbin_site">robbin_site</a></li> 
- <li><a href="http://postrank-labs.github.com/goliath/">Goliath</a>——Goliath是一个Ruby的纤程开发框架，性能非常好，作者本身是在开发PostRank产品过程中开发的Goliath。PostRank是一个用户社交行为实时跟踪工具，需要很高的性能来支撑，PostRank被Google收购了，作者现在在Google工作。Goliath适合用来开发对性能非常敏感的Web Service或者real-time的应用，但使用Goliath有一些门槛，你不能使用普通的阻塞IO库，必须使用作者封装的一些纤程的库。</li> 
-</ul> 
-<p>所谓的“去Rails化”，范凯认为不必大惊小怪：</p> 
-<blockquote> 
- <p>学习Rails无非意味着你花了时间熟悉ActiveRecord和ActionPack以及相关库的功能而已，所谓去Rails化也仅仅只是放弃使用ActionPack，换一个更轻量级更简单的URL路由处理器，例如换成Grape，Sinatra，Padrino或者Camping而已。这对一个长期使用Rails的Ruby开发者来说，应该是举手之劳的事情。所以自己动手，根据实际应用场景挑选最合适的组件。例如ActionPack不太适合写Web Service，那我换成Sinatra就行了，但是ActiveRecord照常用，这并不需要你付出多少学习成本，更不需要你放弃什么。</p> 
-</blockquote> 
-<p>目前有一些公司从Ruby/Rails转向Node.js和Go，范凯经过调研，认为Ruby更适合自己：</p> 
-<ul> 
- <li>用Sinatra或者Goliath这样的轻量级框架写Web Service，性能已经足够好了，特别是<a href="http://weibo.com/flyerhzm">@黄志敏</a>的案例证明，16核已经可以支撑每天1.5亿次请求了，对我来说已经不太可能遇到超过这个负载量的应用了。而Ruby的开发效率，代码表达能力和可维护性对我来说还是很重要的。</li> 
- <li>Node.js的Event IO编程风格在我看来是“反人类”的，极其变态的。用来写代码上规模的应用，代码的可读性和可维护性都很差。Event IO是很底层的技术，我很难理解为何不封装成coroutine来使用。Node.js只适合用来开发real-time类型的应用。</li> 
- <li>Go的主要问题在于现阶段还不成熟：一方面Go自身还在演进当中；另一方面Go的类库还是过于贫瘠了，用来开发项目还是需要自己写很多东西的，感觉很不方便。</li> 
-</ul> 
-<p>有关范凯完整的论述，可以查看博客<a href="http://robbinfan.com/blog/40/ruby-off-rails">原文</a>。欢迎InfoQ读者发表自己的看法。</p> 
-<p>&nbsp;</p> 
+<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>CouchDB 1.3.0的新特性以及算法的强化</h3><p><a href="https://blogs.apache.org/couchdb/entry/apache_couchdb_1_3_0">Apache</a>软件基金会发布了<a href="http://couchdb.apache.org/">CouchDB 1.3.0</a>，修复了IE7的_session，支持<a href="http://www.w3.org/TR/cors/">跨域资源分享</a>（CORS）并将URL重写器中的最大递归深度限制为100次调用。在递归调用重写器过程中不再重写X-CouchDB-Requested-Path，并且将<a href="http://www.w3.org/TR/eventsource/">服务器端发送事件</a>(Server-sent Event)协议添加到db变更API中。此外，该最新版本还允许通过使用/_config/admins API实现密码哈希同步，并在show/list ETags中包含用户名。</p> 
+<p>CouchDB 1.3.0针对在同一个批处理中创建、删除某个文档时的不必要冲突提供了解决方案，而数据库包含的复制程序将新的服务器范围的UUID用于检查点ID以增进有效恢复的机会。它还将JS<a href="http://lenaherrmann.net/2010/04/28/writing-a-testsuite-for-the-couchdb-api">测试套件</a>迁移到CLI，并改进了它的回溯和测试的可靠性。</p> 
+<p>该版本禁止链接到<a href="http://answers.oreilly.com/topic/1395-introduction-to-couchdbs-futon-administration-interface/">Futon</a>测试套件，对Futon增加了视图请求持续时间，同时取消了用户没有权限使用的按钮。此外，如果从Git的本地签出直接构建，则必须使用<a href="http://lists.gnu.org/archive/html/autotools-announce/2008-09/msg00002.html">Autoconf v2.63</a>。根据官方的说法，当从web浏览器中运行的时候，Futon测试套件会导致一些问题，因此现在要通过CLI提供测试套件。</p> 
+<p>在CouchDB 1.3.0中，密码通过结合可配置工作因子的<a href="http://en.wikipedia.org/wiki/PBKDF2">PBKDF2</a>（Password-Based Key Derivation Function 2：基于密码的密钥派生函数）算法生成哈希值，并提供对utc_id算法的支持。此外，数据库名称也在重写过程中进行编码，并改进了C/C++编译器检测。当新请求发生时重置重写计算器将被重置，并修复了在couchdb脚本中的进程退出前就返回停止状态的问题。</p> 
+<p>CouchDB 1.3.0包含针对Windows和OS X的预先构建的包，以及一份由Futon直接托管的手册。与安装包一道，Apache还提供了PDF形式的手册。</p> 
+<p><b>查看英文原文：</b><a href="http://www.infoq.com/news/2013/04/couchdb-1-3-0;jsessionid=EE3DA80D352E68B4BAC1A6D70408E72D"><b>CouchDB 1.3.0 Adds New Features and Algorithm Enhancements</b></a></p> 
+<hr /> 
+<p>感谢<a href="http://www.infoq.com/cn/bycategory.action;jsessionid=EE3DA80D352E68B4BAC1A6D70408E72D?authorName=侯伯薇">侯伯薇</a>对本文的审校。</p> 
+<p>给InfoQ中文站投稿或者参与内容翻译工作，请邮件至<a href="mailto:editors@cn.infoq.com">editors@cn.infoq.com</a>。也欢迎大家通过新浪微博（<a href="http://www.weibo.com/infoqchina">@InfoQ</a>）或者腾讯微博（<a href="http://t.qq.com/infoqchina">@InfoQ</a>）关注我们，并与我们的编辑和其他读者朋友交流。</p> 
 <p id="lastElm"></p><br><br><br><br><br><br></body></html>

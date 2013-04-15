@@ -2,10 +2,13 @@
  <head></head> 
  <body>
   <div>
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/10.py">Microsoft Office Developer Tools が検索設定テンプレート、アプリ検証、Azureでのデバッグを提供。</a>最近リリースされたMicrosoft Office Developer Tools for Visual Studio 2012は、新しい検索設定プロジェクトテンプレート、サブミッションプロセス中のアプリ検証とWindows Azureでのデバッグ機能を提供している。
-  </div>
-  <div>
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/9.py">Struts 1が寿命を迎える</a>Apache財団の発表によれば、JavaのMVCウェブフレームワークであるStruts 1が寿命を迎えた。ある意味では、この動きは単純に、Strutsチームがバージョン2の開発に注力しているという既成事実を公式に認めただけだ。Struts 1の最後のリリースは2008年のバージョン1.3.10だ。コードとドキュメントは今後も入手できるが、今後はセキュリティパッチやバグ修正は提供されない。
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/11.py">Spotifyはどうやってアジャイルをスケールアウトしたか: Henrik Kniberg氏へのインタビュー</a>昨年11月、SpotifyはScaling Agile @ Spotify with Tribes, Squads, Chapters &amp; Guildsと題したペーパーを発表した。私は最近、Henrik Kniberg氏にこのペーパーと現在の状況について質問する機会を得た。
+  </div> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/10.py">Microsoft Office Developer Tools が検索設定テンプレート、アプリ検証、Azureでのデバッグを提供。</a>最近リリースされたMicrosoft Office Developer Tools for Visual Studio 2012は、新しい検索設定プロジェクトテンプレート、サブミッションプロセス中のアプリ検証とWindows Azureでのデバッグ機能を提供している。 
+  </div> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/9.py">Struts 1が寿命を迎える</a>Apache財団の発表によれば、JavaのMVCウェブフレームワークであるStruts 1が寿命を迎えた。ある意味では、この動きは単純に、Strutsチームがバージョン2の開発に注力しているという既成事実を公式に認めただけだ。Struts 1の最後のリリースは2008年のバージョン1.3.10だ。コードとドキュメントは今後も入手できるが、今後はセキュリティパッチやバグ修正は提供されない。 
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/8.py">Windows Azure Mobile ServicesのAndroid対応、Active Directory、ローカライズ、東アジアリージョン</a>MicrosoftはWindows Azureでいくつかのアップデートをリリースした。Android対応、Active Directory対応、HTTPレスポンスコードによるアプリケーション監視, 新しい5つの言語対応、22カ国以上のAzureストア等である。 
@@ -147,9 +150,6 @@
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/12.py">Xtend 2.4 リリース - アクティブアノテーション，Androidサポートなどを新たに実装</a>XtendはJVM用のプログラム言語だ。静的コンパイルされる言語でありながら，ボイラプレートコードを削減するタイプインターフェースを備えている。新たにリリースされた2.4では，標準的なパターンを生成することでコードエラーを削減するアクティブアノテーションに加えて，Androidのサポートやコレクションリテラルなどが追加されている。InfoQではSven Efftinge氏に連絡を取り，他の新機能について話を聞いた。 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/11.py">アプリからクラウドへファイルをアップロードできるFilepicker</a>Filepicker.ioを使えばアプリケーションからFacebook、Dropbox、Instagra、Flickrなどのファイルをアップロードできる。 
-  </div>   
+  </div>  
  </body>
 </html>
