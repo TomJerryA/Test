@@ -2,7 +2,13 @@
  <head></head> 
  <body>
   <div>
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/23.java">Portable Class Library Support for Noda Time</a>Noda Time, the advanced date/time library for .NET, is now available for Windows 8, Windows Phone 7, and Windows Phone 8. This version also offers a NuGet package and a comprehensive user’s guide.
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/25.java">JSON Validation Roundup</a>Create any “flexible” or “extensible” file format and sooner or later a group of developers will start complaining about validation. For JSON, several options are starting to spring up.
+  </div>
+  <div>
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/24.java">Windows Azure Adds Active Directory, New Backup Service, Monitoring and Log Improvements</a>Microsoft has announced the availability of Windows Azure Active Directory, new backup service with support for incremental backups including several monitoring and log improvements.
+  </div> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/23.java">Portable Class Library Support for Noda Time</a>Noda Time, the advanced date/time library for .NET, is now available for Windows 8, Windows Phone 7, and Windows Phone 8. This version also offers a NuGet package and a comprehensive user’s guide. 
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/22.java">Continuous Delivery Speeds Up Innovation</a>Thoughtworks recently published a whitepaper including a maturity model for continuous delivery (or CD) as a response to research indicating that most companies understand the importance of innovation, but are not able to deliver software quickly enough to meet the needs of business leaders. 
@@ -144,12 +150,6 @@
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/26.java">Windows Embedded 8 Released</a>Windows Embedded 8 has been released by Microsoft and entered general availability. Intended to be used by OEMs and in specialized environments, this series of releases marks Embedded's alignment with Windows 8's code base. 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/25.java">Has Web Style Worked?</a>Almost 7 years ago Tim Bray declared SOA dead and the future was Web Style. In a recent blog post Jean-Jacques Dubray looks back over the years and decides that Web Style hasn't worked and, given the plethora of non-Web Style services in the Programmable Web directory, is in fact itself dead. He also looks at what this means for computing and the future of application development. 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/24.java">Integrate BarCodes into Windows Phone Apps</a>RadControls for Windows Phone Q1 2013 includes components to generate and integrate bar codes into Windows Phone 7 and 8 apps. 
-  </div>  
+  </div>   
  </body>
 </html>
