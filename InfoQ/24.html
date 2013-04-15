@@ -1,14 +1,17 @@
-<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>在生产中使用金丝雀部署来进行测试</h3><p>根据Nolio发布的<a href="http://www.noliosoft.com/resources/videos/webinar/canary/show/1/">DevOps最佳实践系列中的第一个视频</a>，很多公司通过路由策略选择性地对部分用户发布新功能从而使用 “金丝雀部署（Canary Deployments）”来测试生产中的软件，并将这一方式作为其可持续交付的一部分。“金丝雀部署”是增量发布的一种类型，它的执行方式是在原有软件生产版本可用的情况下，同时部署一个新的版本。同时运行同一个软件产品的多个版本需要软件针对配置和完美自动化部署进行特别设计。</p> 
-<p>考虑到<a href="http://blogs.msdn.com/b/seliot/archive/2009/12/25/don-t-just-listen-to-your-users-watch-them-with-online-experiments.aspx">A/B 测试</a>和预防性（pre-emptive）<a href="http://highscalability.com/blog/2011/12/12/netflix-developing-deploying-and-supporting-software-accordi.html">性能测试</a>，一旦克服了“金丝雀部署”所涉及的技术挑战将可以减少部署流程中的风险。A/B 测试允许在不改变大多数用户的用户体验的情况下进行对新功能的测试。而性能测试对于整个用户群体来说同样只会产生微不足道的影响。</p> 
-<p>根据Nolio的“金丝雀部署”，该方式由以下几个步骤组成：</p> 
-<ol> 
- <li>准备好部署各个阶段的工件，包括：构建工件，测试脚本，配置文件和部署清单文件。</li> 
- <li>从负载均衡列表中移除掉“金丝雀”服务器。</li> 
- <li>升级“金丝雀”应用（排掉原有流量并进行部署）。</li> 
- <li>对应用进行自动化测试。</li> 
- <li>将“金丝雀”服务器重新添加到负载均衡列表中（连通性和健康检查）。</li> 
- <li>如果“金丝雀”在线使用测试成功，升级剩余的其他服务器。（否则就回滚）</li> 
-</ol> 
-<p>Nolio在他们的相关介绍中针对如何使用他们的产品对“金丝雀部署”进行高层次软件编配做了概览。他们使用了一个可在多个流程中复用的应用模型，并通过数据来驱动该模型的用途。管理和报表都将随着“金丝雀部署”而被完成。</p> 
-<p><b>查看英文原文</b>：<a href="http://www.infoq.com/news/2013/03/canary-release-improve-quality;jsessionid=D48E9467A07CF50E3566F53E39660C26">http://www.infoq.com/news/2013/03/canary-release-improve-quality</a></p> 
+<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>Visual Studio 2012 Update 2正式发布</h3><p>在Microsoft发布VS2012时，就表示希望能够为其按照固定的周期推出更新。在Update 2的最终预览版发布后一个月左右，Microsoft发布了官方的Visual Studio 2012 <a href="http://www.microsoft.com/en-us/download/details.aspx?id=38188">Update 2</a>，其中包含了一些新特性及大量的bug修复。</p> 
+<p>Microsoft的S.Somasegar列举了此次更新中所特意增进了功能的5个方面：</p> 
+<ul> 
+ <li>敏捷规划（Agile Planning）</li> 
+ <li>质量实施（Quality Enablement）</li> 
+ <li>Windows Store开发</li> 
+ <li>业务线（Line-of-business）开发</li> 
+ <li>常规开发体验</li> 
+</ul> 
+<p>对敏捷规划的支持包括了新增的定制看板图（Kanban board），以及在TFS工作项中使用tag的功能。Somasegar用质量实施这个词来描述质量保证与软件测试相关的功能。这次的改进包括了为某些领域提供更好的单元测试的支持：例如Windows Phone 8应用，异步代码，并且改进了对SharePoint 2013测试的支持。Windows Store开发主要得益于改进的JavaScript应用的问题诊断。而业务线开发的增强主要是得益于LightSwitch与Blend这两个产品。另外，按<a href="http://weblogs.asp.net/scottgu/archive/2013/02/18/announcing-release-of-asp-net-and-web-tools-2012-2-update.aspx">Scott Guthire</a>所说，之前独立发布的ASP.NET and Web Tools Update也包含在此次Update 2中，因此如果你之前没有下载过的话，这次就不必单独去下载它了。</p> 
+<p>除了新引入的这些特性之外，VS2012之前几次迭代中出现的一些问题和bug也在这次更新里得到修复，你可以在<a href="http://support.microsoft.com/kb/2797912">这里</a>找到这些问题修正的细节。Microsoft的Charles Sterling<a href="http://blogs.msdn.com/b/visualstudioalm/archive/2013/04/04/visual-studio-update-2-now-available.aspx">展示</a>了Update 2中ALM（应用生命周期管理）相关的一些特性。另外一个特别重要的新特性是TFS 2012与2010构建服务器的兼容性，<a href="http://blog.hinshelwood.com/visual-studio-2012-update-2-supports-2010-build-servers/">Martin Hinshelwood的博客文章</a>中详细描述了相关的配置方法。最后，Brian Harry<a href="http://blogs.msdn.com/b/bharry/archive/2013/04/04/vs-tfs-2012-2-update-2-released-today.aspx">提到</a>，从TFS Update 1到Update 2的升级过程中，Update 2能够保留大部分（但不是所有）的TFS配置信息。</p> 
+<p>Update 2是一次累积更新，这意味着它包含<a href="http://www.infoq.com/news/2012/11/vs2012update1_released;jsessionid=868BD9E0A0F828F25985386D456FEAFC">Update 1</a>中的所有内容，因此全新安装的VS2012可以不需要安装Update 1而直接升级到最新版本。虽然现在还未提供未接入互联网的机器可以使用的ISO映像文件，但Microsoft提供了一个临时方案，只需在运行Update 2执行文件时使用“/layout”选项，它就会下载离线安装所需的全部文件（可以在Update 2的<a href="http://www.microsoft.com/en-us/download/details.aspx?id=38188">下载页面</a>底部找到详细的步骤说明）。Microsoft并未正式说明它的大小，不过在我的本机安装时，它大约需要1.8GB左右的空间。</p> 
+<p><b>查看英文原文</b>：<a href="http://www.infoq.com/news/2013/04/VS2012_Update2;jsessionid=868BD9E0A0F828F25985386D456FEAFC">Visual Studio 2012 Update 2 Formally Released</a></p> 
+<hr /> 
+<p>感谢<a href="http://www.infoq.com/cn/bycategory.action;jsessionid=868BD9E0A0F828F25985386D456FEAFC?authorName=侯伯薇">侯伯薇</a>对本文的审校。</p> 
+<p>给InfoQ中文站投稿或者参与内容翻译工作，请邮件至<a href="mailto:editors@cn.infoq.com">editors@cn.infoq.com</a>。也欢迎大家通过新浪微博（<a href="http://www.weibo.com/infoqchina">@InfoQ</a>）或者腾讯微博（<a href="http://t.qq.com/infoqchina">@InfoQ</a>）关注我们，并与我们的编辑和其他读者朋友交流。</p> 
 <p id="lastElm"></p><br><br><br><br><br><br></body></html>

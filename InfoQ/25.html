@@ -1,16 +1,43 @@
-<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>何时在WPF中使用Async及Reactive Extensions</h3><p>Ian Griffiths发布了包含六部分的一系列文章，讨论了何时应该、及何时不应在WPF中使用.NET 4.5中的async特性。这个系列始于一篇名为“<a href="http://www.interact-sw.co.uk/iangblog/2013/02/14/wpf-async-too-fast">Too Much, Too Fast with WPF and Async</a>”的贴子。</p> 
-<p>有了async这件神器，似乎有人就想在应用程序中到处使用，并时时刻刻调用它。不幸的是，如果每个batch的大小（即async调用之间的时间差）小于创建Task对象及对应的上下文切换的消耗，这种情况下async就不那么好用了。</p> 
-<p>Ian写道，大的batch可以减少任务完成的总体时间，但又可能影响到UI的响应。</p> 
+<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>基于经验的SOA成功原则</h3><p>多年以来，我们对<a href="http://www.infoq.com/soa/;jsessionid=9469A5E9FEF8735D80A6B31455A786E0">SOA 原则</a>这一主题以及什么会促进SOA成功，什么会阻碍SOA实施等内容都进行过很多相关的报道。从初期的狂热宣传，到大规模企业的实施、Web服务以及较近期REST带来的影响力。我们可以通过这7年来的文章，对SOA的演进进行追溯。然而，在此期间的成功案例却通常少之又少，据一些数据表明仅有<a href="http://www.infoq.com/news/2008/07/Only1;jsessionid=9469A5E9FEF8735D80A6B31455A786E0">20%的SOA项目获得了成功</a>。其中包括了<a href="http://www.infoq.com/news/2009/01/soa-case-study-cisco;jsessionid=9469A5E9FEF8735D80A6B31455A786E0">CISCO</a>和 <a href="http://www.infoq.com/presentations/SOA-eBay;jsessionid=9469A5E9FEF8735D80A6B31455A786E0">eBay</a>等几个著名的成功案例。</p> 
+<p>InfoQ英文站编辑<a href="http://www.infoq.com/author/Jean~Jacques-Dubray;jsessionid=9469A5E9FEF8735D80A6B31455A786E0">Jean-Jacque Dubray</a>不仅帮助我们追溯了SOA在那段岁月的发展，也分享了不少他的个人观点。他对SOA起到了积极的影响并基于SOA原则部署过很多成功的系统。通过基于这些经验背景的思考，Jean-Jacques（JJ）最近在<a href="http://www.ebpml.org/blog2/index.php/2013/02/21/four-principles-to-succeed-at">博客中发表</a>了他所信奉的四条促进SOA成功的原则：</p> 
+<p>1. 服务接口应该与服务实现解耦</p> 
+<ol start="2"> 
+ <li>所有业务逻辑应该标准化</li> 
+ <li>变更一个服务应该是非常容易的</li> 
+</ol> 
+<ol> 
+ <ul> 
+  <li>在服务消费者准备就绪之前，服务变更对消费者来说应该是不可见的</li> 
+  <li>当服务消费者准备就绪之后，服务变更应该是易于消费的</li> 
+ </ul> 
+</ol> 
+<ol start="4"> 
+ <li>服务版本控制应该基于兼容性</li> 
+</ol> 
+<p>JJ认为只要你在所有设计和开发阶段一贯地遵守这些原则，成功的机率将会大大提升。虽然这些原则相对来说比较容易理解，但遗憾的是他没有对所列举的这些原则进行更详细的阐述。对于“服务接口”，JJ补充道：</p> 
 <blockquote> 
- <p>虽然这远远快于8.5秒的情况，但我们也作出了牺牲：那个总体速度较慢的例子反而为UI更快地提供了有用的信息。实际上，用户可能会更倾向于较慢的那个版本，因为有用的信息能够立即出现，你可能不会感觉到装载整个列表的速度慢了三倍——将整个列表拖动到底部的时间说不定都远远长于8.5秒了。按照这个重要的指标来看，单纯地使用异步方法是更好的选择：它为用户更快地提供了有用的信息。</p> 
+ <p>大部分人在SOA中遭遇了失败，因为他们认为服务是一种抽象，就好比OO中的“类”。但实际上服务接口是一种契约，通过它可以暴露和控制变更。[...]不要在你的服务边界（service boundaries）上耗费太多精力，应尽可能的将更多的精力花在构建最好的服务接口上（也就是指有效地管理变更）。</p> 
 </blockquote> 
-<p>Ian Griffiths也谈到了使用<a href="http://www.interact-sw.co.uk/iangblog/2013/02/19/wpf-threads-too-fast">线程池与WPF 4.5中的集合同步（Collection Synchronization）新特性</a>。如果你要使用ConfigureAwait(false)方法来避免强制在UI线程上进行处理，这项技巧也是必不可少的。</p> 
+<p>然而，JJ所做的工作还涉及到围绕SOA相关的其他一些领域，这些领域在过去的时间里也曾引起了很多人的关注。其中包括治理（governance），对此他建议道：</p> 
 <blockquote> 
- <p>调用ConfigureAwait表示我们并不关心方法在哪个线程上继续执行。要点在于，某个不能立即完成的读操作最终会完成，而方法的余下部分会在一个线程池的线程上延迟执行。这意味着使用await不会再导致WPF的调度占用。但当然，它也意味着列表的全部更新都会发生在一个工作线程上，因此我们需要使用同样的小花招以避免产生问题：要么等到方法完成后再绑定数据并显示列表，要么就必须处理跨线程的变更通知。</p> 
+ <p>不要“过度治理”，治理应该保持最小化并且是基于短期内（3-6个月）的合乎情理的共识。而数据治理（Data Governance）则更为重要，因为你的信息模型发生的任何变更通常都会对服务接口造成影响。</p> 
 </blockquote> 
-<p>Ian所演示的另一个技巧是<a href="http://www.interact-sw.co.uk/iangblog/2013/02/20/wpf-rx-threads-chunking">使用Reactive Extensions分块处理数据</a>。它使用了Buffer函数将batch大小限制为100ms，或是将总数限制为5000个（取决于先达到哪个数值），然后通过ObserveOnDispatcher函数将其封装回送至UI线程。这种模式比起其它技巧显得冗余，但它“几乎能够立即开始显示[…]数据，并在2.3秒内完成加载并显示所有数据”，这比原来的同步实现还是有所改进。</p> 
-<p><b>查看英文原文</b>：<a href="http://www.infoq.com/news/2013/03/WPF-Async;jsessionid=EB7EE5163F32481A859C96A349B68AA5">When to Use WPF with Async and Reactive Extensions</a></p> 
-<hr /> 
-<p>感谢<a href="http://www.infoq.com/cn/bycategory.action;jsessionid=EB7EE5163F32481A859C96A349B68AA5?authorName=杨赛">杨赛</a>对本文的审校。</p> 
-<p>给InfoQ中文站投稿或者参与内容翻译工作，请邮件至<a href="mailto:editors@cn.infoq.com">editors@cn.infoq.com</a>。也欢迎大家通过新浪微博（<a href="http://www.weibo.com/infoqchina">@InfoQ</a>）或者腾讯微博（<a href="http://t.qq.com/infoqchina">@InfoQ</a>）关注我们，并与我们的编辑和其他读者朋友交流。</p> 
+<p>松耦合通常作为成功SOA的核心组成部分而被人们广为称道，对于如何实现松耦合，JJ建议道：</p> 
+<blockquote> 
+ <p>对消费者交互环境的管理不涉及接口背后的业务逻辑实现。在接口消费者中，不出现重复的涉及对各类记录系统状态管理的业务逻辑。</p> 
+</blockquote> 
+<p>服务复用通常是SOA中另一个被认为非常重要，然而也很难实现的领域。<a href="http://www.infoq.com/news/2009/07/service-reuse;jsessionid=9469A5E9FEF8735D80A6B31455A786E0">早在2009年的时候</a>，我们就援引过Burton的Richard Watson曾经说过的一段话：</p> 
+<blockquote> 
+ <p>一个服务可能永远不会被复用，但是我们仍然可以通过其他方式来创造价值：通过适应性和低成本的维护来减少冗余；通过对既定策略的贯彻执行来提升安全性和依从性，以上列举了一些我们期望得到的其他成果。而过于专注在复用上将会蒙蔽我们的双眼，从而导致我们无法看到这些其他的成果。</p> 
+</blockquote> 
+<p>而JJ也赞同这一点：</p> 
+<blockquote> 
+ <p>没有人会指望今天构建的一个服务会在从现在开始的三年内被持续的新消费者们不断消费，这是荒唐的想法。如果你想以这种方式进行复用，那么你迟早会失败并最后得出一个例如“SOA不起作用了”这样的愚蠢结论。对于SOA（在现实世界中也是如此）的复用，它是以另外一种方式进行的：并不是一个新的消费者复用一个老的服务；几乎都是一个服务的新版本（变更以支持新消费者）在不打断老消费者的情况下被消费者复用。</p> 
+</blockquote> 
+<p>事实上在2009年的文章中，JJ曾对此有过以下评论：</p> 
+<blockquote> 
+ <p>大多数的人仍然无法理解的是：在SOA中的“复用”并不是人们通常听到的“复用”，对它们的理解是不一样的。在SOA中的复用是向前复用（forward reuse），而例如我今天早上听到的复用则是向上复用（upward reuse）。在SOA中，复用意味着为新消费者构建的服务新版本并不会打断现有的老消费者。对于认为某人能在今天设计出一个服务并且可以在两年内被一直“复用”这种想法，很大程度上来说是个幻想。在SOA中，较老的消费者可以“复用”那些为最新消费者而创建的服务新版本。</p> 
+</blockquote> 
+<p>正如最初所提到的，所有这些原则和思想都受到了JJ在这个领域中多年经验的影响。其他人对于这些问题又是怎么认为的呢？你愿意也来分享一下你的经验吗?</p> 
+<p><b>查看原文链接</b>：<a href="http://www.infoq.com/news/2013/02/succeed-soa;jsessionid=9469A5E9FEF8735D80A6B31455A786E0">http://www.infoq.com/news/2013/02/succeed-soa</a></p> 
 <p id="lastElm"></p><br><br><br><br><br><br></body></html>

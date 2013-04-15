@@ -1,8 +1,8 @@
 <html>
  <head></head> 
- <body>
-  <div>
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/11.py">Spotifyはどうやってアジャイルをスケールアウトしたか: Henrik Kniberg氏へのインタビュー</a>昨年11月、SpotifyはScaling Agile @ Spotify with Tribes, Squads, Chapters &amp; Guildsと題したペーパーを発表した。私は最近、Henrik Kniberg氏にこのペーパーと現在の状況について質問する機会を得た。
+ <body> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/11.py">Spotifyはどうやってアジャイルをスケールアウトしたか: Henrik Kniberg氏へのインタビュー</a>昨年11月、SpotifyはScaling Agile @ Spotify with Tribes, Squads, Chapters &amp; Guildsと題したペーパーを発表した。私は最近、Henrik Kniberg氏にこのペーパーと現在の状況について質問する機会を得た。 
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/10.py">Microsoft Office Developer Tools が検索設定テンプレート、アプリ検証、Azureでのデバッグを提供。</a>最近リリースされたMicrosoft Office Developer Tools for Visual Studio 2012は、新しい検索設定プロジェクトテンプレート、サブミッションプロセス中のアプリ検証とWindows Azureでのデバッグ機能を提供している。 
@@ -150,6 +150,6 @@
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/12.py">Xtend 2.4 リリース - アクティブアノテーション，Androidサポートなどを新たに実装</a>XtendはJVM用のプログラム言語だ。静的コンパイルされる言語でありながら，ボイラプレートコードを削減するタイプインターフェースを備えている。新たにリリースされた2.4では，標準的なパターンを生成することでコードエラーを削減するアクティブアノテーションに加えて，Androidのサポートやコレクションリテラルなどが追加されている。InfoQではSven Efftinge氏に連絡を取り，他の新機能について話を聞いた。 
-  </div>  
+  </div> 
  </body>
 </html>

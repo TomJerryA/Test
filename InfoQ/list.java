@@ -1,6 +1,9 @@
 <html>
  <head></head> 
- <body> 
+ <body>
+  <div>
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/23.java">Portable Class Library Support for Noda Time</a>Noda Time, the advanced date/time library for .NET, is now available for Windows 8, Windows Phone 7, and Windows Phone 8. This version also offers a NuGet package and a comprehensive user’s guide.
+  </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/22.java">Continuous Delivery Speeds Up Innovation</a>Thoughtworks recently published a whitepaper including a maturity model for continuous delivery (or CD) as a response to research indicating that most companies understand the importance of innovation, but are not able to deliver software quickly enough to meet the needs of business leaders. 
   </div> 
@@ -147,9 +150,6 @@
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/24.java">Integrate BarCodes into Windows Phone Apps</a>RadControls for Windows Phone Q1 2013 includes components to generate and integrate bar codes into Windows Phone 7 and 8 apps. 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/23.java">When to Use WPF with Async and Reactive Extensions</a>Ian Griffiths has published a six part series on when to use, and when not to use, .NET 4.5’s async features with WPF. The series begins with a post titled Too Much, Too Fast with WPF and Async. 
-  </div> 
+  </div>  
  </body>
 </html>
