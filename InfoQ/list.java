@@ -1,11 +1,11 @@
 <html>
  <head></head> 
- <body>
-  <div>
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/25.java">JSON Validation Roundup</a>Create any “flexible” or “extensible” file format and sooner or later a group of developers will start complaining about validation. For JSON, several options are starting to spring up.
-  </div>
-  <div>
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/24.java">Windows Azure Adds Active Directory, New Backup Service, Monitoring and Log Improvements</a>Microsoft has announced the availability of Windows Azure Active Directory, new backup service with support for incremental backups including several monitoring and log improvements.
+ <body> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/25.java">JSON Validation Roundup</a>Create any “flexible” or “extensible” file format and sooner or later a group of developers will start complaining about validation. For JSON, several options are starting to spring up. 
+  </div> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/24.java">Windows Azure Adds Active Directory, New Backup Service, Monitoring and Log Improvements</a>Microsoft has announced the availability of Windows Azure Active Directory, new backup service with support for incremental backups including several monitoring and log improvements. 
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/23.java">Portable Class Library Support for Noda Time</a>Noda Time, the advanced date/time library for .NET, is now available for Windows 8, Windows Phone 7, and Windows Phone 8. This version also offers a NuGet package and a comprehensive user’s guide. 
@@ -150,6 +150,6 @@
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/26.java">Windows Embedded 8 Released</a>Windows Embedded 8 has been released by Microsoft and entered general availability. Intended to be used by OEMs and in specialized environments, this series of releases marks Embedded's alignment with Windows 8's code base. 
-  </div>   
+  </div> 
  </body>
 </html>

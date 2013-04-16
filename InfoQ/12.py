@@ -1,98 +1,21 @@
-<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>Xtend 2.4 リリース - アクティブアノテーション，Androidサポートなどを新たに実装</h3><p><a target="_blank" href="http://www.infoq.com/news/2013/03/xtend-24;jsessionid=C4A9062090E0A2B59ECD404B0E5610ED"><em>原文(投稿日：2013/03/20)へのリンク</em></a></p> 
+<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>IBMのMobile First - MBaaS，ビッグデータ，それ以上のものをエンタープライズに</h3><p><a target="_blank" href="http://www.infoq.com/news/2013/04/ibm-mobile-first;jsessionid=640C85FF2FE85524E443EE36D8417332"><em>原文(投稿日：2013/04/09)へのリンク</em></a></p> 
 <div class="clearer-space">
  &nbsp;
 </div> 
 <div id="newsContent"> 
- <p>Eclipse Foundationは先日，<a target="_blank" href="http://www.eclipse.org/xtend/">Xtend 2.4</a> のリリースを発表した。Xtendは静的型付けを持ったJava風プログラム言語である。記述されたコードはJavaにコンパイルされて，JVM (あるいはAndroidなどJVMライクなシステム) 上で動作する。</p> 
- <p>ScalaやKotlinといった他のJVMベースのコンパイル言語とは異なり，XtendはJavaコードに変換された後，標準的なJavaコンパイラでコンパイルされる。したがって生成されたコードに下位互換性の問題は存在しない。</p> 
- <p>さらにGroovyやJRuby/Jythonなどのインタプリタ言語とも異なり，静的型付けでありながら，シンプルなコード記述を可能にする型推測の機能を備えている。これによってリファクタリングや型に依存する補完機能がIDE上で実現されている。</p> 
- <p>InfoQでは昨年にも <a target="_blank" href="http://www.infoq.com/news/2012/06/xtend-release-10;jsessionid=AFA2C73BFBA4C2F3C048547092A3DCC2;jsessionid=C4A9062090E0A2B59ECD404B0E5610ED">1.0のリリース</a> を伝えているが，その後数多くの変更が行われている。今回リリースされた <a target="_blank" href="http://www.eclipse.org/xtend/release_notes_2_4_0.html">2.4の新機能</a> は，アクティブアノテーション，コレクションリテラル，Androidのサポート，リファクタリングの改善，ツーリングでのコンテントアシストなどだ。</p> 
- <p>InfoQはXtendのプロジェクトリーダであるSven Efftinge氏に連絡を取り，今回のリリースに関する詳細を聞くことにした。</p> 
- <p><b>InfoQ</b>: Xtend 2.4の新機能のひとつとして，アクティブアノテーションが追加されていますが，これがどのようなものなのか，どうやってボイラプレートコードを削減するのかを説明して頂けますか？</p> 
- <blockquote> 
-  <p><b>Sven Efftinge</b>: 基本的にはアノテーションを記述することによって，その要素をどのようにJavaコード変換するのかをコンパイラに指示する，という方法です。典型的なユースケースはgetterとsetter，observer，visitorなど，一般的なデザインパターンの生成でしょう。ですが，他にもさまざまな使い道がありますから，アクティブアノテーションの開発や配布が手軽にできることを重視しています。</p> 
-  <p>例として，JavaBeanパターンのプロパティを考えてみましょう。これにはget/setメソッドをペアで作る必要があります。いわゆる &quot;Javaコード肥大化&quot; に一役買うわけです。しかしXtendでは，フィールドがプロパティであると宣言するだけで，あとはXtendが処理してくれます。</p> 
-  <pre>
-@Property String name
-</pre> 
-  <p>これが次のようなJavaコードに変換されます。</p> 
-  <pre>
-private String name;
-public String getName() {
-  return this.name;
-}
-public void setName(String name) {
-  this.name = name;
-}
-</pre> 
-  <p>その他にも，<code>hashCode()</code> と <code>equals()</code> メソッドを自動生成する <code>@Data</code> や，<a target="_blank" href="http://www.eclipse.org/xtend/release_notes_2_4_0.html#active_annotations">リリースノート</a> でも紹介したように，データクラスに適用してプロパティ更新リスナのサポートを自動的に追加する <code>@Observable</code> などのアノテーションがあります。</p> 
-  <p>この機能で一番クールなのは，IDEとコンパイラがコード変更を認識してくれることでしょう。タイピングやリンク時はもちろんのこと，ナビゲーションやコンテントアシストといった機能にも変更がオンザフライに反映されて，期待通りの動作をするのです。</p> 
-  <p>コード生成機能はこうあるべきです。</p> 
+ <p class="MsoNormal">IBMは，現在のモバイルコンピューティングのトレンドをキャッチアップする <a target="_blank" href="http://www.ibm.com/mobilefirst/us/en/">包括的システム</a>，ないしはスイート，あるいは同社の説明ではアプリケーション <i>ポートフォリオ</i> を構築した。Mobile Firstという名のこのシステムは，トレンドに乗り切れていない組織がいまだテーブルに残したままの数十億ドルの市場から，ユーザ企業がシェアを獲得するためデザインされたものだ。</p> 
+ <p class="MsoNormal">Mobile Firstの中核となる <a target="_blank" href="http://www-01.ibm.com/software/mobile-solutions/worklight/components/mobile-development-platform/">開発プラットフォーム</a> は，HTML5, CSS3, Apache Cordovaに基づくもので，<a target="_blank" href="http://www-01.ibm.com/software/mobile-solutions/worklight/">Worklight Studio</a> と呼ばれる。Worklight StudioはEclipse上で動作するIDEである。完全なモバイルWebアプリ，あるいはAndroidやiOS，Blackberry用のOS対応アプリ開発に必要なコードは，すべてこの上で開発することができる。さらにAT&amp;TのクラウドベースAPIへのアクセスなど，バックエンド接続の実現に使用する数々のアダプタも備えている。一部はあらかじめ設定されているが，その他に開発者自身がSQLやHTTPを使って作成することも可能だ。</p> 
+ <p class="MsoNormal">Worklight StudioにはJQuery Mobile, Sencha Touch, Dojo ToolkitなどのJavaScriptライブラリが統合されているので，モバイル開発者が既存のコード資産を組み込む時間の大幅な短縮が実現できる。使用するライブラリはアプリケーション作成ウィザードで簡単に選択可能である。</p> 
+ <p class="MsoNormal">フレキシブルな認証フレームワークも装備されていて，フォームやクッキー，HTTPヘッダ，アダプタなどに基づく認証処理に対応している。&quot;Do It Yourself&quot; 派ならば，Authentication Configuration Editorを使って独自のフレームワークを構築することもできる。</p> 
+ <p class="MsoNormal">用意されている <a target="_blank" href="http://www.ibm.com/developerworks/mobile/">補助ツール</a> の数も多く，モバイル開発ソリューション全般に対応する。Mobile FirstにおけるIBMのマントラは，おそらく &quot;倒すことのできない敵は <a target="_blank" href="http://itknowledgeexchange.techtarget.com/soa-talk/ibm-buys-in-to-mobile-middleware-acquires-worklight/">買収せよ</a>&quot; ということばがもっとも言い当てているだろう。 多彩なモバイルツールやサービスのコレクションを構成する１ダース近いツール群は，そのような行動の結果だ。</p> 
+ <p style="line-height: normal" class="MsoNormal"><span>エンタープライズシステムはその定義上，硬直的で比較的変化が少なく，大規模な変更には時間を要するのが一般的である。ただしIBM用語で言う変更は選択の対象ではなく，義務であるというのが正確だ。</span><span>エンタープライズシステムで <a target="_blank" href="http://en.wikipedia.org/wiki/IBM"><span style="color: blue">IBM</span></a> に比肩するものはおそらく存在しないだろう。したがって同社が <a target="_blank" href="http://www.ibm.com/mobilefirst/us/en/why-ibm-for-mobile/?lnk=announce"><span style="color: blue">モバイルこそ一番 (Mobile is First)</span></a> と説くならば，それはある種の威厳を持つことばになる。</span><span><a target="_blank" href="http://www-03.ibm.com/press/us/en/pressrelease/40408.wss"><span style="color: blue">Mobile First</span></a> でIBMはユーザ企業に， <a target="_blank" href="http://articles.economictimes.indiatimes.com/2013-02-25/news/37289434_1_mobile-applications-mobile-analytics-mobile-commerce"><span style="color: blue">目を覚まして</span></a> コーヒーを味わうよう告げているのだ。</span></p> 
+ <p style="line-height: normal" class="MsoNormal"><span>その意味から言うと，モバイルに不可欠な特質が <a target="_blank" href="http://gigaom.com/2013/02/21/ibms-mobile-first-plan-is-really-about-cloud-first-thats-all-you-need-to-know/"><span style="color: blue">ビッグデータに基づく</span></a> ものであるというのが，やや皮肉な事実に思われる。</span><span>モバイルコンピューティングという新しい概念に <a target="_blank" href="http://www.infoq.com/news/2012/11/Big-Data-Survey;jsessionid=D1851884A8B8A00F79DDDDF48236A485;jsessionid=640C85FF2FE85524E443EE36D8417332"><span style="color: blue">相反する</span></a> ものだからだ。</span><span>モバイル最優先というIBMのビジョンによれば，いまだエンタープライズシステムをモバイルデバイス対応に一新しない企業は敗者になるはずなのだ。</span></p> 
+ <p class="MsoNormal">&nbsp;</p> 
+ <p class="MsoNormal">中規模ないし小規模の開発者にとって，IBMのモバイル戦略に乗るのは <a target="_blank" href="https://www-112.ibm.com/software/howtobuy/buyingtools/paexpress/Express?P0=E1&amp;part_number=D0PMQLL,D0PMTLL,D0PMWLL,D0PMZLL,D0PN2LL,D0VBPLL&amp;catalogLocale=en_US&amp;locale=en_US&amp;country=USA&amp;PT=html">安くはない</a> が，そうでないユーザにはIBMの専門技術と <a target="_blank" href="http://www.ibm.com/developerworks/mobile/worklight/getting-started.html">深淵な機能セット</a> が賢明な投資を保証してくれるだろう。ただし，どの大企業にも批判者は存在する。たとえばgigaomのコメンテータ <i>Darth Vader's Mentor</i> は，</p> 
+ <blockquote>
+  IBM コンサルティング .... 300ドルのデバイスが起こす50万ドルの問題が，プロプライエタリAPIによるベンダロックインによって1,500万ドルのコンサルティング料金に転じた上に，オフショアヘルプは何もしてくれない，という代物。
  </blockquote> 
- <p><b>InfoQ</b>: もうひとつの新機能にリテラルコレクションがありますが，配列やセット，マップなどのリテラルはどのように記述するのでしょう？ネストは可能ですか？</p> 
- <blockquote> 
-  <p><b>Sven Efftinge</b>: ハッシュに続けて中括弧かカギ括弧で記述します。リストの場合は，</p> 
-  <pre>
-val myList = #[1,2,3,4]
-</pre> 
-  <p>セットならば，次のように記述します。</p> 
-  <pre>
-val mySet = #{1,2,3}
-</pre> 
-  <p>マップはタプル演算子を使って生成します。</p> 
-  <pre>
-val mySet = #{1-&gt;&quot;one&quot;,2-&gt;&quot;two&quot; }
-</pre> 
-  <p>配列を記述すべき場所であれば，次のようにリストリテラルを配列リテラルとして使用することもできます。</p> 
-  <pre>
-val int[] myArray = #[1,2,3,4]
-</pre> 
-  <p>これらは通常の式ですので，ネストすることももちろん可能です。</p> 
- </blockquote> 
- <p><b>InfoQ</b>: リテラルコレクション型はミュータブル(mutable/可変)でしょうか，あるいはイミュータブル(immutable/不変)なのでしょうか？ミュータブルなコレクションをリテラルで初期化することは可能ですか？</p> 
- <blockquote> 
-  <p><b>Sven Efftinge</b>: イミュータブルです。ミュータブルなインスタンスが必要な場合はファクトリメソッドを使用します。</p> 
-  <pre>
-val myArrayList = newArrayList(1,2,3,4)
-</pre> 
-  <p>既存のイミュータブルなリストからの生成も，もちろん可能です。</p> 
- </blockquote> 
- <p><b>InfoQ</b>: リテラルと言えば，エクステンションプロバイダとはどのようなものなのでしょう？エクステンションメソッドとはどう違うのでしょうか？</p> 
- <blockquote> 
-  <p><b>Sven Efftinge</b>: エクステンションプロバイダは，プログラムのスコープ内でエクステンションメソッドを提供するオブジェクトです。例で説明するのが一番よいでしょう。<code>save(Entity)</code> というメソッドを持ったDAO(Data Access Object) を考えてみてください。</p> 
-  <p>Javaでは次のような記述が必要です。</p> 
-  <pre>
-myDao.save(myEntity)
-</pre> 
-  <p>XtendならばDAOオブジェクトをエクステンションプロバイダにすることで，メソッドを最初のパラメータタイプのメンバメソッドとして使用できます。ですから次のように記述できるのです。</p> 
-  <pre>
-myEntity.save()
-</pre> 
-  <p>この機能は，C#のエクステンションメソッド (エクステンションとして使用できるのは静的メソッドに限られる) よりも大幅に拡張されています。 エクステンションプロバイダを使用することで，実装内容を簡単に入れ替えることができるのです。</p> 
- </blockquote> 
- <p><b>InfoQ</b>: JDK 8にはラムダ式をSAM(Single Access Method)型に変換するコンセプトがありますが，現在のXtendでJava 6やJava 7を使っても同じことが可能でしょうか？</p> 
- <blockquote> 
-  <p><b>Sven Efftinfe</b> JDK8のラムダは，いわゆる関数インターフェースに変換されるだけのものですから，Xtendでも同じことが可能です。新しい機能は，SAM型とともに抽象クラスも使用可能になったことです。これは &quot;Functional Java&quot; などのフレームワークで多用されている方法です。</p> 
-  <p>XtendならばJDK8を待たずとも，現行のJava 6やJava 7で同じことができますし，実際にはJava 5にも対応しています。</p> 
- </blockquote> 
- <p><b>InfoQ</b>: 下位互換性についてはどうでしょう？ Xtend 1.0でコンパイル可能だったプログラムは，今回のXtend 2.4でも使用できるのですか？</p> 
- <blockquote> 
-  <p><b>Sven Efftinge</b>: バイナリ互換性がありますから，Xtend 1.0でコンパイルされたプログラムは，変更や再コンパイルをしなくてもXtend 2.4で動作します。</p> 
-  <p>ソースレベルでも互換性を損なうような変更はありません。ただし，以前のバージョンでは警告されていなかった意味的エラーを強調するように，コンパイラのエラーメッセージなどは改良されています。</p> 
-  <p>Xtendではコンパイル結果とソースの両方のレベルで，互換性を重視しているのです。</p> 
- </blockquote> 
- <p><b>InfoQ</b>: XtendのプロジェクトがAndroid用にコンパイル，インストールできるようになったのは，フレームワークとして大きな進歩だと思います。ところで，ScalaやKotlinを使ってAndroidアプリケーションをコンパイルすると，完成したパッケージが何メガバイトも大きくなります。Xtendでコンパイルしたアプリケーションは，Javaで直接コーディングした場合と比べて，平均的にどの程度のサイズ増加があるのでしょう？</p> 
- <blockquote> 
-  <p><b>Sven Efftinge</b>: XtendはJavaのソースコードにコンパイルされて，それからJavaバイトコードにコンパイルされます。ですから，生成されたバイトコードはAndroidで確実に動作するものになります。さらにXtendでは，独自に巨大なライブラリを持つようなことをしていません。既存のJDKのクラスにエクステンションメソッドを追加するクラスがくつか(40K以下)と，1.3MというサイズのGoogle Guavaがあるだけです。</p> 
-  <p>ですからXtendでは，非常に効率のよいAndroidアプリを開発することができるのです。</p> 
- </blockquote> 
- <p><b>InfoQ</b>: プログラム言語の成功指標のひとつに，IDEサポートが充実していることがあります。EclipseのXtendサポートはどの程度改良されているのでしょう？</p> 
- <blockquote> 
-  <p><b>Sven Efftinge</b>: IDEにはフォーマッタや新しいクイックフィックス，新しいリファクタリング，コンテントアシストの大幅な改良など，さまざまな新機能があります。</p> 
-  <p>コンパイラのパフォーマンスも大きく改善されました。 Xtendでは，IDEを使用した開発作業のワークフロー改善にも力を注いでいます。</p> 
-  <p>他のJDMベース言語とは違って，XtendはJDTに対しても良好に動作します。JDTを置き換えたり，weavingを使用する必要はありません。さらに，プロジェクトのコンパイルには任意のバージョンのJavaコンパイラが使用可能です。プラグインとしてインストールされているバージョンに限定されません。</p> 
- </blockquote> 
- <p>Xtend 2.4の内容は 2.4リリースノート に記載されている。より詳細な情報については <a target="_blank" href="http://www.eclipse.org/xtend/">Xtend</a> のホームページを参照してほしい。</p> 
+ <p><a target="_blank" href="http://www.youtube.com/watch?v=PSxihhBzCjk">映画「卒業」</a> のワンシーンのごとく，行き場を失ったハイテク世界のすべてに対して，ここにひとつのお告げの言葉が与えられる – <a target="_blank" href="https://engineering.purdue.edu/ECE/Academics/Undergraduates/UGO/Announcements/ibm-research-austin">未来とは</a> ただひとつ， &quot;モバイル&quot; だ，と。<a target="_blank" href="http://en.wikipedia.org/wiki/IBM_PC_DOS">PC DOS</a> の時の失敗とは違って，今回の時流をIBMが見逃すことは，どうやらなさそうなのだ。</p> 
  <p id="lastElm">&nbsp;</p> 
 </div> 
 <p id="lastElm"></p><br><br><br><br><br><br></body></html>

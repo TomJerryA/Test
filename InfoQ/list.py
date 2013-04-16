@@ -1,6 +1,9 @@
 <html>
  <head></head> 
- <body> 
+ <body>
+  <div>
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/12.py">IBMのMobile First - MBaaS，ビッグデータ，それ以上のものをエンタープライズに</a>IBMは現在のモバイルコンピューティングのトレンドをキャッチアップする包括的システムないしスイート，あるいは同社の説明ではアプリケーションポートフォリオを構築した。Mobile Firstという名のこのシステムは，トレンドに乗り切れていない組織がいまだテーブルに残したままの数十億ドルの市場から，ユーザ企業がシェアを獲得するためデザインされたものだ。
+  </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/11.py">Spotifyはどうやってアジャイルをスケールアウトしたか: Henrik Kniberg氏へのインタビュー</a>昨年11月、SpotifyはScaling Agile @ Spotify with Tribes, Squads, Chapters &amp; Guildsと題したペーパーを発表した。私は最近、Henrik Kniberg氏にこのペーパーと現在の状況について質問する機会を得た。 
   </div> 
@@ -147,9 +150,6 @@
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/13.py">新しいユーザのためのOpscode Chefクイックスタート</a>Opscodeは新しいユーザがInfrastructure as Codeを構築するために必要な知識を身につけるためのChefを学ぶための新しい方法を提供した。ユーザはクイックスタート、一般的なケース、スクリーンキャスト、トラブルシューティングをこのコンテンツから得ることができる。 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/12.py">Xtend 2.4 リリース - アクティブアノテーション，Androidサポートなどを新たに実装</a>XtendはJVM用のプログラム言語だ。静的コンパイルされる言語でありながら，ボイラプレートコードを削減するタイプインターフェースを備えている。新たにリリースされた2.4では，標準的なパターンを生成することでコードエラーを削減するアクティブアノテーションに加えて，Androidのサポートやコレクションリテラルなどが追加されている。InfoQではSven Efftinge氏に連絡を取り，他の新機能について話を聞いた。 
-  </div> 
+  </div>  
  </body>
 </html>
