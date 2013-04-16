@@ -1,72 +1,67 @@
-<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>Vaadin 7发布，内嵌GWT组件</h3><p><a href="https://vaadin.com/home">Vaadin</a>发布了基于Java的web应用框架的第七版，Vaadin 7平台是该框架自2009年以来首次重大更新。</p> 
-<p>Java web应用开发者可以发现，Vaadin 7与Wicket、JSF和Google Web Toolkit（GWT）等其他框架相比，有显著的相似性和不同点。在许多方面，Vaadin和Wicket相似；主要的区别在于Vaadin并不采用HTML模板。类似的，JSF和Vaadin之间的相似点在于都是服务端的框架，然而Vaadin应用是用纯Java编写的，无需XML配置文件。</p> 
-<p>Vaadin小组作为GWT指导委员会成员已经有五年多了，Vaadin 7现在把GWT作为核心组件包含进来。在2012年6月<a href="https://vaadin.com/blog/-/blogs/gwt-built-in-vaadin-7">发布的博客</a>中，Lehtinen建议“现在，任何使用GWT构建应用的人都可以简单的通过替换项目中的jar包来迁移到Vaadin。”使用GWT与传统的Vaadin应用相比有一些优势，这要取决于用例。GWT应用可以离线操作，支持大量（一万以上）的并发用户，服务端的状态不是必须的，并且有较低的延迟；然而，传统的基于UI的Vaadin运行在Java服务器或门户上，这对于Java开发者来说似乎更简单一些，因为它可以完全采用Java编码。</p> 
-<p>Vaadin团队除了引入GWT外，还实现了65个新特性。该框架的<a href="https://vaadin.com/faq">FAQ</a>页面提到，Vaadin 7是一个遵守Java EE标准并采用了桌面UI编程模式的单jar文件实现，框架还得到了来自开源社区超过4万活跃注册用户的支持和反馈。</p> 
-<p>InfoQ采访了Joonas Lehtinen（Vaadin.com的CEO），来挖掘更多关于Vaadin 7的信息.</p> 
-<p><b>InfoQ</b><b>：从新用户的角度，你能在最新发布的Vaadin中列举出5至6条最有用的特性么？</b></p> 
+<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>IBM 2013策略发布：大数据和分析、云计算、企业移动、社交商务、智慧商务、智慧城市</h3><p>4月11日（上周四），IBM软件集团召开了一年一度的策略发布会，本次主题为软实力、新智慧、新格局。在会上，IBM大中华区副总裁兼大中华区软件集团总经理胡世忠解读了IBM软件集团在五大创新领域和四大联盟的全新战略，IBM全球副总裁兼IBM中国开发中心总经理王阳博士则重点阐释了IBM软件集团的众多创新技术，此外，IBM软件集团高管团队还针对大数据和分析、移动计算、云计算、社交商务和智慧城市等行业热点进行了阐述。</p> 
+<h3>软实力、新智慧、新格局</h3> 
+<p>IBM大中华区副总裁兼大中华区软件集团总经理胡世忠表示，“以软件为核心的新IT发展环境，为企业带来了业务创新的崭新机遇，IBM非常看好软件在新计算时代的发展前景。对于IBM来说，软件业务是推动公司持续转型的重要推动力”。</p> 
+<p>据透露，在大中华区，IBM在2013年将着力推进软件在大数据和分析、企业移动、云计算、社交商务、智慧商务以及智慧城市等领域的投入。</p> 
+<p>在2012年，IBM完成的11笔收购中，有至少5笔涉及大数据及分析领域，其中就包括了大型数据访问与分析工具Vivisimo，数据分析与迁移软件Butterfly、云数据分析软件Emptoris和DemandTec、数字客户体验管理和客户行为分析解决方案供应商Tealeaf等。在刚刚过去的2013年2月，IBM又宣布收购提供自助服务业务分析软件的制造商Start Analytics分析软件及非结构企业数据分析及管理软件StoredIQ。</p> 
+<h3>大数据策略</h3> 
+<p>据统计，全世界有90%的信息都是在过去两年中产生的，而这些数据有80%都是以视频、数字图像、电子邮件、社交网络评论以及短信等形式存在的非结构化信息。不仅如此，大数据依然在快速增长：</p> 
 <blockquote> 
- <p>Joonas：我最向大家推荐的主要特性列在这个列表里基本都覆盖了：<a href="https://vaadin.com/vaadin7">https://vaadin.com/vaadin7</a>。</p> 
- <p>除此，我推荐的前五大特性如下：</p> 
- <ol> 
-  <li>完全GWT的嵌入。这样我们可以更容易的支持整个包，并在你的应用中利用Google强大的Java-to-JavaScript编译器。</li> 
-  <li>Widget扩展允许在已有的widget上像独立的扩展那样添加功能。更多信息请访问：<a href="https://vaadin.com/wiki/-/wiki/Main/Creating%20a%20component%20extension">https://vaadin.com/wiki/-/wiki/Main/Creating%20a%20component%20extension</a>。</li> 
-  <li>Sass编译器引入了期盼很久的主题模块化。</li> 
-  <li>重新设计的布局引擎使用浏览器原生布局计算来替代JavaScript计算。这彻底的降低了回流量，使得布局速度更快。额外收获是，我们现在支持全部的CSS。</li> 
-  <li>重新设计的windows API使Vaadin应用更像web应用，简化了http请求和网页访问。</li> 
- </ol> 
+ <ul> 
+  <li>每年增长率达到60%，其中包括结构化和非结构化内容（IDC）；</li> 
+  <li>仅在社交媒体上，每分钟就有600条新博客/帖子发布，还有34,000条Twitter消息被共享（IBI Times）；</li> 
+  <li>2012年，“数字世界”的数据量将增至2.7ZB，比2011年增加48%，而到2015年，数据量则将飙升至8ZB左右（IDC）。</li> 
+ </ul> 
 </blockquote> 
-<p><b>InfoQ</b><b>：“</b><a href="https://vaadin.com/gwt-report-2012-portlet/download/1871870899/Future-of-GWT-Report-2012.pdf"><b>GWT</b><b>的未来-2012</b><b>年度报告</b></a><b>”中提到SmartGWT、GXT和Errai扩展了GWT，而Vaadin补充了它。你能就此跟我们详细说说么？</b></p> 
+<p>IBM的大数据平台包括基于Hadoop的分析、流计算、数据仓库、整合、可视化、系统管理、治理、咨询服务及业务伙伴应用。</p> 
+<p>在本次大会上，一些行业前景设想被提出：</p> 
 <blockquote> 
- <p>Joonas：GWT编程模型有两个级别的抽象：</p> 
- <ol> 
-  <li>UI由Java编写，并编译成JavaScript。</li> 
-  <li>原生JavaScript。SmartGWT、GXT和Errai本质上只是在由GWT定义的编程模型下提供了更多（非常好用的）组件和帮助。</li> 
- </ol> 
- <p>Vaadin基于GWT的编程模型添加了服务端的Java编程模型。这是更高一级的抽象，通过降低实现代web应用的软件层级数来加快开发。用GWT，需要构建UI层（浏览器内部）、RPC，还有UI服务（服务器内部）和业务逻辑（服务器内部）。用Vaadin，只需要服务端UI和业务逻辑层。这本质上削减了开发应用UI所需要的近一半代码量。如果需要更多的灵活性，Vaadin还同时支持Java和JavaScript来编写客户端UI。</p> 
+ <ul> 
+  <li>医疗：随着医学图像和电子病历的激增，利用大数据，医疗专业人士可以从大量数据中提取有用的临床信息，以便更好地了解病史和预测治疗效果，从而改善病人护理，并降低成本。预计，到2015年，每家医院的平均数据量将从167TB增至665TB；</li> 
+  <li>零售：通过分析销售趋势和纳入更准确的预测，零售商可以更好地了解客户，最终提高客户的满意度和忠诚度，并增加收入；</li> 
+  <li>通信：提供通信服务的企业可以利用数据创建更加个性化的客户体验，避免客户流向竞争对手。</li> 
+ </ul> 
 </blockquote> 
-<p><b>InfoQ</b><b>：使用GWT的开发者们抱怨说最近几乎没有关于GWT的新书。基于此背景，你怎样来解释</b><a href="https://vaadin.com/book"><b>Vaadin</b><b>之书</b></a><b>的重要性？你计划如何维护和加强当前的预览版？</b></p> 
+<p>想要学习Hadoop技能的读者，可以利用IBM的社区网站<a href="http://bigdatauniversity.com/">BigDataUniversity</a>学习Hadoop基础知识、流计算、开源软件开发和数据库管理技术。</p> 
+<h3>移动策略：帮助客户成为移动企业</h3> 
+<p>自2月21日IBM推出移动平台解决方案MobileFirst，IBM提到希望在三个关键点上可以帮助客户和业务伙伴：</p> 
 <blockquote> 
- <p>Joonas：我们从2007年开始维护Vaadin之书，这已成为一项巨大的任务，但我们感到顶级的文档是任何框架的一个非常重要的组成部分。如果一个特性没有被文档化，那么它对于别人是无用的。</p> 
- <p>Vaadin之书的第一个完整版将于三月初提供免费下载。此后我们每次在框架中添加新特性时，都会将其继续更新维护到Vaadin之书。</p> 
+ <ul> 
+  <li>解决方案：将IBM的移动应用程序和数据平台与移动管理、安全及分析结合到一起;</li> 
+  <li>服务：在战略、设计及应用开发与实施方面提供移动服务和专业知识;</li> 
+  <li>生态系统：提供广泛的业务合作伙伴、开发者、专家资源，帮助客户和生态系统的成员积极采纳移动计算。</li> 
+ </ul> 
 </blockquote> 
-<p><b>InfoQ</b><b>：如果Vaadin开发团队在分发他们正在维护的Vaadin的GWT版本，他们将计划怎样内联标准的GWT？</b></p> 
+<h3>社交商务策略</h3> 
+<p>从消费者到企业社交网络的转变，即“社交商务”不仅是客户面临的下一个重大挑战，也是IT的新战场。</p> 
+<p>大家都知道，现在全世界有8亿多Facebook用户，每天发布的Twitter消息多达2亿条，社交网络的广泛流行造就了一个精通社交技术的工作群体，IBM本次透露了希望能否创新的地方在于：</p> 
 <blockquote> 
- <p>Joonas：我们维护的可用的GWT版本源码地址如下：</p> 
- <p><a href="https://github.com/vaadin/gwt">https://github.com/vaadin/gwt</a>。</p> 
- <p>Vaadin框架的全部资源地址如下：</p> 
- <p><a href="https://github.com/vaadin/vaadin">https://github.com/vaadin/vaadin</a>。</p> 
- <p>我们发布的版本只有Vaadin框架（而不是GWT），但是既然Vaadin包含了GWT，它可以用来作为GWT发行包的一个替代——即使你只需要客户端的功能，这样操作也无妨。</p> 
- <p>如果你想要从架构的视角来理解GWT和Vaadin关系，请参考：</p> 
- <p><a href="https://vaadin.com/blog/-/blogs/vaadin-7-application-architecture">https://vaadin.com/blog/-/blogs/vaadin-7-application-architecture</a>。</p> 
+ <ul> 
+  <li>新的软件帮助营销团队设计周密完善的广告活动，只需一点就可以将活动信息实时发布到热门社交网络上。一个新的社交网络套件可以支持员工实时访问数字媒体和数据，并为人力资源管理者提供一种更好的新员工招聘和入职方式；</li> 
+  <li>IBM社交网络平台将包含社交分析功能，利用这些功能可以访问和分析组织内外的大数据，数据来源包括Facebook、Twitter、音频、视频和实时监控数据。</li> 
+ </ul> 
 </blockquote> 
-<p><b>InfoQ</b><b>：你们网站上的</b><a href="https://vaadin.com/faq"><b>FAQ</b></a><b>区有一个段落谈论“什么时候不宜使用Vaadin？”。企业项目规模的大小如何影响是否应该采用Vaadin的决策呢？</b></p> 
+<h3>智慧商务策略</h3> 
+<p>IBM将智慧商务定义为以客户为中心，以需求驱动商业的价值链，并在企业营销管理层面强调以客户为中心的渠道精准营销。此次大会分享了两个案例：</p> 
 <blockquote> 
- <p>Joonas：有时是这样的：项目越大，Vaadin开发者受益越多。构建非常小的应用对于任何框架来说都比较容易，包括Vaadin。</p> 
+ <ul> 
+  <li>协助北京王府井百货在智慧商务领域的转型，构建以WebSphere Commerce为核心的电子商务平台；</li> 
+  <li>协助走秀网，构建电子商务平台，主要解决统筹采购、市场、销售和服务的全链条数据问题。</li> 
+ </ul> 
 </blockquote> 
-<p><b>InfoQ</b><b>：页面“</b><a href="https://vaadin.com/who-is-using-vaadin"><b>谁在使用Vaadin</b></a><b>”显示了芬兰占了34个案例，美国占了6个案例，在列表上紧随其后。什么是Vaadin案例？170个国家的开发者使用Vaadin，做什么能够增加这些国家的Vaadin案例数量？</b></p> 
+<h3>智慧城市</h3> 
+<p>主要分为两个部分：</p> 
 <blockquote> 
- <p>Joonas：我们的案例地图是非常不完整的。当我们开始收集“谁在使用Vaadin”列表时，我们只是四处打听到了一些使用Vaadin的案例。我们的总部在芬兰，所以我们在本地网络中找到了一些非常优秀的案例。</p> 
- <p>我们想要列出来自全世界的展示。我们鼓励任何使用Vaadin并且做出优秀作品的人来联系我们，并把作品加入这个列表中。</p> 
+ <ul> 
+  <li>基础架构：向市民提供高效的基础城市服务，让城市更为宜居；</li> 
+  <li>人：提供支持市民经济、社会和健康需求的有效服务。</li> 
+ </ul> 
 </blockquote> 
-<p><b>InfoQ</b><b>：有没有非JVM web应用的框架当前能和Vaadin竞争的？如果有，你能介绍几个么？</b></p> 
+<p>大会还分享了IBM自2009年推出“智慧地球”概念以来，取得的进展：</p> 
 <blockquote> 
- <p>Joonas：我们是非常JVM中心化的，每个在这里构建web app的开发者同时也在使用web平台，因此最大的竞争来自于JavaScript框架。虽然对一些项目来说，将前端和后端团队分离是有效的，但因分离造成的额外开销对于产业空间上的大多数项目来说并不必要。</p> 
+ <ul> 
+  <li>智慧镇江打造智能交通：2012年2月，与江苏省镇江市，通过采用智能运营中心（Intelligent Operations Center）解决方案搭建城市公共交通系统指挥中心。</li> 
+  <li>舟山市港航管理局打造智慧舟山港：2013年3月，协助舟山港管理局提升物流服务水平。</li> 
+ </ul> 
 </blockquote> 
-<p><b>InfoQ:</b><b>有的专业的开发者也许打算为Vaadin的底层代码做些贡献，你们的团队怎样操作来遴选符合条件的贡献者？</b></p> 
-<blockquote> 
- <p>Joonas：大多数对Vaadin项目的贡献都是插件。这个门槛很低——任何人可以贡献到Vaadin的目录，地址在：<a href="http://vaadin.com/directory">http://vaadin.com/directory</a>。</p> 
- <p>如果想要给Vaadin核心框架贡献代码，则应该通过发行跟踪系统提交补丁程序，地址在：<a href="http://dev.vaadin.com/wiki/SubmittingBug">http://dev.vaadin.com/wiki/SubmittingBug</a>。核心开发团队中的一员会收到补丁程序，评估测试，然后提交到我们内部的Gerrit审查系统，以保证至少能被我们核心团队的另一名开发者阅读和评估。补丁程序经常在这一流程中被部分重写至少一次。所有的贡献者都被要求签署一项贡献协议。</p> 
- <p>我们期望通过公开我们的Gerrit系统来使这一流程更简单些，并在以后开始接受来自GitHub上的拉从请求。</p> 
-</blockquote> 
-<p><b>InfoQ</b><b>：我们从你们</b><a href="https://vaadin.com/blog/-/blogs/roadmap-for-the-next-74-days"><b>博客上发表的</b></a><b>路线图中获悉，Vaadin框架打算按照稳定的开发流程。这是说未来的流程规范化了么？它是什么样子的呢？</b></p> 
-<blockquote> 
- <p>Joonas：我们最近更新了我们的开发流程——部分原因在于Vaadin 7的延迟。我们打算在继续进行现行开发的同时做些非正式的研究项目。我们希望这将使我们能更好的评估路线图，核心流程包括月度的路线图会议——我们将在未来的三个月将所有的产品路线图确认下来。内部流程作为一个整体如下图所示：</p> 
- <p><img src="http://www.infoq.com/resource/news/2013/03/vaadin-7/zh/resources/1.jpg;jsessionid=1600FD5BDC2CEDE63432FCE96BABD0DF" alt="" _href="img://null" _p="true" /></p> 
- <p><b>图表：Vaadin的开发和发布流程</b></p> 
- <p>开发周期在一到两周，这个周期取决于产品的特性。当我们开发到差不多可以对外展示一些东西的时候，我们会进行内部的开发评审，如果可以，我们会发布alpha或beta版，以来在开发流程中得到较早的反馈。</p> 
-</blockquote> 
-<p><b>查看英文原文</b>：<a href="http://www.infoq.com/news/2013/02/vaadin-7;jsessionid=1600FD5BDC2CEDE63432FCE96BABD0DF">Vaadin 7 Arrives with GWT as an Integrated Component</a></p> 
-<hr /> 
-<p>感谢<a href="http://www.infoq.com/cn/bycategory.action;jsessionid=1600FD5BDC2CEDE63432FCE96BABD0DF?authorName=杨赛">杨赛</a>对本文的审校。</p> 
-<p>给InfoQ中文站投稿或者参与内容翻译工作，请邮件至<a href="mailto:editors@cn.infoq.com">editors@cn.infoq.com</a>。也欢迎大家通过新浪微博（<a href="http://www.weibo.com/infoqchina">@InfoQ</a>）或者腾讯微博（<a href="http://t.qq.com/infoqchina">@InfoQ</a>）关注我们，并与我们的编辑和其他读者朋友交流。</p> 
+<p>此外，InfoQ还对部分演讲人进行了采访，欢迎关注后续的内容报道。</p> 
 <p id="lastElm"></p><br><br><br><br><br><br></body></html>

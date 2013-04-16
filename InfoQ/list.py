@@ -1,11 +1,11 @@
 <html>
  <head></head> 
- <body>
-  <div>
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/14.py">プロダクトバックログのためのプロセスマップとストーリマップ</a>もし多数のユーザストーリを抱えた大規模なバックログがあるのならば，ストーリマップやプロセスマップによってプロダクトバックログを体系化する方法が，概要の把握と全体像の理解に役立つだろう。
-  </div>
-  <div>
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/13.py">Dart2jsがDeltaBlueベンチマークで手書きJavaScriptコードのパフォーマンスを上回る</a>Googleが Dart2jsコンパイラの新バージョン をリリースした。生成されるJavaScriptコードのパフォーマンスは，オブジェクト指向言語で一般的に利用されている DeltaBlueベンチマーク において，手書きのJavaScroptを上回っている。
+ <body> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/14.py">プロダクトバックログのためのプロセスマップとストーリマップ</a>もし多数のユーザストーリを抱えた大規模なバックログがあるのならば，ストーリマップやプロセスマップによってプロダクトバックログを体系化する方法が，概要の把握と全体像の理解に役立つだろう。 
+  </div> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/13.py">Dart2jsがDeltaBlueベンチマークで手書きJavaScriptコードのパフォーマンスを上回る</a>Googleが Dart2jsコンパイラの新バージョン をリリースした。生成されるJavaScriptコードのパフォーマンスは，オブジェクト指向言語で一般的に利用されている DeltaBlueベンチマーク において，手書きのJavaScroptを上回っている。 
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/12.py">IBMのMobile First - MBaaS，ビッグデータ，それ以上のものをエンタープライズに</a>IBMは現在のモバイルコンピューティングのトレンドをキャッチアップする包括的システムないしスイート，あるいは同社の説明ではアプリケーションポートフォリオを構築した。Mobile Firstという名のこのシステムは，トレンドに乗り切れていない組織がいまだテーブルに残したままの数十億ドルの市場から，ユーザ企業がシェアを獲得するためデザインされたものだ。 
@@ -150,6 +150,6 @@
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/15.py">Java 8は.NET/Monoへの道を探し始めた</a>先週の開発スナップショットによると、IKVMはインターフェースとデフォルトインターフェースメソッドに静的メソッドの実験的サポートを追加した。これらのJava 8の機能は最初はJavaライブラリの内部処理をサポートするたことが目的であった。それらは他の.NET言語から即座に利用することは出来ない。 
-  </div>   
+  </div> 
  </body>
 </html>

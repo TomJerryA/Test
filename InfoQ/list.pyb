@@ -1,8 +1,8 @@
 <html>
  <head></head> 
- <body>
-  <div>
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/10.pyb">ニーズに合ったESBを選ぶには</a>Kai W&auml;hner氏がインテグレーション／フレームワークとESB，インテグレーションスイートの違いを説明した上で，既存の商用およびオープンソースのソリューションの中から，適切なものを選択する方法についてアドバイスします。
+ <body> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/10.pyb">ニーズに合ったESBを選ぶには</a>Kai W&auml;hner氏がインテグレーション／フレームワークとESB，インテグレーションスイートの違いを説明した上で，既存の商用およびオープンソースのソリューションの中から，適切なものを選択する方法についてアドバイスします。 
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/9.pyb">デザインパターンの自動化</a>殆どの定型的なコードは、デザインパターンを繰り返し実装することに起因している、ことは良く知られているので、コンパイラーにそれを教える方法があれば、デザインパターンは自動的に実装できるだろう。 
