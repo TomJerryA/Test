@@ -2,7 +2,13 @@
  <head></head> 
  <body>
   <div>
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/12.py">IBMのMobile First - MBaaS，ビッグデータ，それ以上のものをエンタープライズに</a>IBMは現在のモバイルコンピューティングのトレンドをキャッチアップする包括的システムないしスイート，あるいは同社の説明ではアプリケーションポートフォリオを構築した。Mobile Firstという名のこのシステムは，トレンドに乗り切れていない組織がいまだテーブルに残したままの数十億ドルの市場から，ユーザ企業がシェアを獲得するためデザインされたものだ。
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/14.py">プロダクトバックログのためのプロセスマップとストーリマップ</a>もし多数のユーザストーリを抱えた大規模なバックログがあるのならば，ストーリマップやプロセスマップによってプロダクトバックログを体系化する方法が，概要の把握と全体像の理解に役立つだろう。
+  </div>
+  <div>
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/13.py">Dart2jsがDeltaBlueベンチマークで手書きJavaScriptコードのパフォーマンスを上回る</a>Googleが Dart2jsコンパイラの新バージョン をリリースした。生成されるJavaScriptコードのパフォーマンスは，オブジェクト指向言語で一般的に利用されている DeltaBlueベンチマーク において，手書きのJavaScroptを上回っている。
+  </div> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/12.py">IBMのMobile First - MBaaS，ビッグデータ，それ以上のものをエンタープライズに</a>IBMは現在のモバイルコンピューティングのトレンドをキャッチアップする包括的システムないしスイート，あるいは同社の説明ではアプリケーションポートフォリオを構築した。Mobile Firstという名のこのシステムは，トレンドに乗り切れていない組織がいまだテーブルに残したままの数十億ドルの市場から，ユーザ企業がシェアを獲得するためデザインされたものだ。 
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/11.py">Spotifyはどうやってアジャイルをスケールアウトしたか: Henrik Kniberg氏へのインタビュー</a>昨年11月、SpotifyはScaling Agile @ Spotify with Tribes, Squads, Chapters &amp; Guildsと題したペーパーを発表した。私は最近、Henrik Kniberg氏にこのペーパーと現在の状況について質問する機会を得た。 
@@ -144,12 +150,6 @@
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/15.py">Java 8は.NET/Monoへの道を探し始めた</a>先週の開発スナップショットによると、IKVMはインターフェースとデフォルトインターフェースメソッドに静的メソッドの実験的サポートを追加した。これらのJava 8の機能は最初はJavaライブラリの内部処理をサポートするたことが目的であった。それらは他の.NET言語から即座に利用することは出来ない。 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/14.py">技術的負債のユーザストーリーを作るべきか</a>アジャイルチームは、技術的負債を扱う仕事のように、純粋に技術的な仕事の計画に難儀する場合がある。このようなタスクは直接的にはシステムを利用する顧客のためにはならないが、問題なく動作するソフトウエアを提供するには避けて通れない仕事だ。このような技術的な仕事や技術的負債を扱う場合にもユーザストーリーを作るべきだろうか。 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/13.py">新しいユーザのためのOpscode Chefクイックスタート</a>Opscodeは新しいユーザがInfrastructure as Codeを構築するために必要な知識を身につけるためのChefを学ぶための新しい方法を提供した。ユーザはクイックスタート、一般的なケース、スクリーンキャスト、トラブルシューティングをこのコンテンツから得ることができる。 
-  </div>  
+  </div>   
  </body>
 </html>
