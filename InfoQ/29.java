@@ -1,44 +1,43 @@
-<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>Git in JavaScript Kickstarter Project Funded in 28 Hours</h3><p><a href="http://creationix.com/">Tim Caswell</a>, a well-known member of the JavaScript and <a href="http://nodejs.org">Node.js</a> communities, came up with the idea to reimplement <a href="http://git-scm.com/">Git</a> in JavaScript and <a href="http://www.kickstarter.com/projects/creationix/js-git">managed to get the project funded on Kickstarter within 28 hours</a> with over 360 backers. The project is another example of <a href="http://www.codinghorror.com/blog/2007/07/the-principle-of-least-power.html">Atwood's Law</a>: &quot;any application that can be written in JavaScript, will eventually be written in JavaScript.&quot;</p> 
-<p>InfoQ spoke to Tim to learn more about the project.</p> 
-<p><b>Where did the idea for JSGit come from?</b></p> 
+<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>A Merge Tool that Understands Functions</h3><p>Codice Software, maker of <a href="http://plasticscm.com/">Plastic SCM</a>, has released a preview of a semantic merge tool. This tool parses your code, allowing for a more accurate merge than the line-by-line comparisons most tools use. We interviewed Pablo Santos Luaces, Principal Software Engineer of Codice Software.</p> 
+<p><b>InfoQ</b>: What first inspired you and your company to look into semantic merges?</p> 
 <blockquote> 
- <p>I'm always looking for new ways to program the devices I own. I was recently sent a <a href="http://www.microsoft.com/Surface/en-US/surface-with-windows-rt/windows-rt">Surface RT</a> by the nice people at Microsoft, had a couple <a href="http://www.apple.com/ipad/">iPads</a> from a previous project and just bought a <a href="http://www.google.com/intl/en/chrome/devices/chromebook-pixel/">ChromeBook Pixel</a>. They were interesting devices, but I was rather frustrated that they were so locked down and very hostile to development <em>on</em> the device. The one platform that nobody dares to lock down, not even Apple, is the JavaScript in the browser environment. You can generate and then execute code there, you can access local storage, and you can upload and download data on the internet.</p> 
- <p>After working on <a href="http://c9.io">Cloud9</a> for a year, I realized that a browser-based IDE is possible today. The only problem that Cloud9 didn't solve well was the offline story. I wished that I could clone my Git repos locally to my device, work offline while flying overseas (or hanging out in the far end of my backyard), and then when I'm back within reach of internet, pushing my changes back to my public Git repo.</p> 
- <p>Since JavaScript was the one platform that was available everywhere, I decided I really wanted to have Git ported to it.</p> 
+ <p><b>Pablo</b>: It is actually a long story that started long ago.</p> 
+ <p>We truly believe that &quot;with great branching comes great merging&quot; :) and since we strongly believe in &quot;branch per task&quot; (http://codicesoftware.blogspot.com/2010/08/branch-per-task-workflow-explained.html) which implies coming up with tons of branches, we always thought we'd need a much better merge mechanism.</p> 
+ <p>DVCS is rocking the development world but we're still using merge algorithms based on text, basically the same &quot;merge engines&quot; we used 15 years ago.</p> 
+ <p>So we started thinking on &quot;semantic merge&quot; but of course it is far from easy. So we first came with &quot;Xdiff and Xmerge&quot; http://plasticscm.com/features/xmerge.aspx as a way to empower our current &quot;text-based&quot; diff and merge algorithms. We though they were great, but we wanted to come up with something better. Semantic was always the goal.</p> 
+ <p>Then we worked hard in better ways to merge files and directories in order to have better &quot;refactoring support&quot; and we added this to the core of Plastic SCM: http://plasticscm.com/mergemachine/index.html.</p> 
+ <p>And when all the bits and pieces were there (back in mid 2012) we jumped to Semantic Merge: let's forget about the old text-based ways of merging files and let's parse the source code and deal with namespaces, classes, methods and so on instead of lines of text.</p> 
+ <p>And that's how we started the whole thing.</p> 
+ <p>The inspiration was: forget everything you know about current merge technology, as a developer: how would you expect merges to behave? How should they really work? The answer was: &quot;merge should understand the code&quot;, and this is how all started.</p> 
 </blockquote> 
-<p><b>What do you see as use-cases for JSGit, is it just browser-based IDEs and editors or are there more broad applications?</b></p> 
-<blockquote>
- My primary use case is browser-based programming environments, but many people have expressed interest in other uses, such as a pure JavaScript Git clients and servers for Node.js. Git is a common component in many deployment systems and having finer grained control of Git for Node.js servers and clients would be very useful to a lot of people.
+<p><b>InfoQ</b>: Could you talk a little bit more your &quot;branch per merge&quot; philosophy?</p> 
+<blockquote> 
+ <p><b>Pablo</b>: Branch per task is a well-known branching pattern and is based on the following idea: for each task in your issue tracker you'll create a branch to work on it.</p> 
+ <p>So yes, every single change or new feature will have an entry on the issue tracker (whether it is a new task, a bug, a performance issue, anything) and then it will have a branch.</p> 
+ <p>Advantages:</p> 
+ <p>* In pure mainline (trunk) development (everyone working on a single branch) the version control is perceived as just a &quot;delivery mechanism&quot; by the developer. A pain. That's all.<br /> * But using your own branch (whether you're working centralized or distributed) you don't use the version control just as a delivery mechanism, now it is a productivity tool: you checkin as often as you need (a checkin is not a delivery, just your own checkpoint), you can check differences on your own code... and so on.<br /> * The main issue with traditional CI is &quot;breaking the build&quot;, it is a reactive way of working: you first break the build, then it has to be fixed. This is a consequence of the &quot;mainline&quot; way of working: you checkin and the code hits the mainline. Using branch per task you're shielded from that.<br /> * It is not true that more branching leads to more merging: working in parallel is what leads to merging, but you can change a file in parallel with me even if we're on the same branch... then one of the two will have to merge.<br /> * You tend to better isolate tasks, which are more independent from each other than what we tend to think. So branch per task enables more flexible release cycles, more controlled ones too.<br /> * Creating stable baselines during the merge phase (which can happen once a day, branch per task doesn't mean you've to merge once a month... not at all!) is also very natural with branch per task.</p> 
+ <p>You can find the entire explanation here: <a href="http://www.plasticscm.com/infocenter/quick-start/intro-task-driven-development.aspx">http://www.plasticscm.com/infocenter/quick-start/intro-task-driven-development.aspx</a></p> 
 </blockquote> 
-<p><b>Do you have any sense of what the performance will be like?</b></p> 
-<blockquote>
- JavaScript itself is fairly fast, I recently wrote some very fast hash functions (MD5, SHA1, SHA256) in JavaScript and was able to get up to 500,000 MD5 hashes per second on my desktop browser. Since cloning a Git repo is slow even using the native client on a fast laptop for large repos, I don't expect this to handle that case well. But for small repos, I expect it to be plenty fast.
+<p><b>InfoQ</b>: Why did you choose C# as your first language to support?</p> 
+<blockquote> 
+ <p><b>Pablo</b>: There are several reasons for that, I'll describe them in no particular order:</p> 
+ <p>1) We're a .NET shop at heart! :-) We develop C# code on a daily basis, so eating our own dog's food seemed like a good thing to do :-)</p> 
+ <p>2) C# is one of the top languages in number of users: go to StackOverflow and you'll find out C# is the most popular tag! http://stackoverflow.com/tags. Go to the TIOBE Index and C# is in the top 5 http://www.tiobe.com/index.php/content/paperinfo/tpci/index.html. According to PYPL https://sites.google.com/site/pydatalog/pypl/PyPL-PopularitY-of-Programming-Language C# is number 3 and raising... So, definitely is a very extended language.</p> 
+ <p>3) C# (and Java) are very good to start with a concept like semantic merge because they're easier to deal with (from the tech point of view) than C++, so at the very beginning we were able to focus more on the semantic merge technology itself and less on the languages.</p> 
+ <p>So, these are the main reasons.</p> 
 </blockquote> 
-<p><b>Why not take the approach of cross-compiling the existing C implementation of Git with something like <a href="https://github.com/kripken/emscripten">Emscripten</a> rather than reimplementing everything from scratch in JavaScript?</b></p> 
-<blockquote>
- I plan to look into this, but from initial research into this area, there are two problems I foresee. First, Emscripten is a code generator. It generates fairly large code-bases and ends up being a direct port unless you manually tweak lots of code. Second, looking at the Git implementations in C they often are tightly coupled with the underlying filesystem and network calls. These would need heavy customization in a browser-based version of Git. I will need hand-written filesystem abstractions for the various web platforms since each has its own API for file storage.
+<p><b>InfoQ</b>: What other languages/file formats are you planning on supporting in the future?</p> 
+<blockquote> 
+ <p><b>Pablo</b>: Our goal is to release support for VB.NET, then Java and then jump to C and C++. After that we'll be running a <a href="http://plasticscm.uservoice.com/forums/196398-mergebegins">survey</a> among our early adopters to learn what they need.</p> 
 </blockquote> 
-<p><b>There are implementations of Git in C, Java and other languages, what do you think will be the challenges in implementing it in JavaScript specifically?</b></p> 
-<blockquote>
- I'm fairly experienced implementing crypto stuff in JavaScript, so I don't expect that to be a problem. But the sheer amount of code that needs implementing will be a problem. I plan on working in the bare essentials first and going up from there till I run out of time.
+<p><b>InfoQ</b>: Most merge tools &quot;see&quot; files in terms of lines. What does your product see? Just functions? Statements and blocks? Expressions within a statement?</p> 
+<blockquote> 
+ <p><b>Pablo</b>: What semanticmerge sees is a the source file in a tree format: namespaces, then class(es), methods inside... Basically the structure. The semantic doesn't see &quot;the code inside the methods&quot;, so it stops at method, property or field level. The merge of the bodies of methods or properties is run in a text-based way. It doesn't &quot;semantically&quot; merge &quot;if statements&quot;, for instance. Not yet at least ;-).</p> 
+ <p>Of course, it is able to reduce the 3-way merge to a method-based 3-way merge: it finds the &quot;ancestor&quot; of the method and the two contributors and hence greatly simplifies life to the text-based merge tool used to deal with method bodies.</p> 
 </blockquote> 
-<p><b>Why do this project now? Is there any particular HTML5 technology that makes this possible today?</b></p> 
-<blockquote>
- It's more about hardware. There are more and more devices that have long battery life and great screens, but crappy development experiences.
+<p><b>InfoQ</b>: Occasionally a developer will run a &quot;clean-up&quot; tool across a file, sorting methods from properties and alphabetizing everything. Needless to say, a line-based merge tool doesn't handle this very well. Would this be a scenario that your too supports?</p> 
+<blockquote> 
+ <p><b>Pablo</b>: This is exactly my favorite case!! Yes, semantic merge is able to deal with this case cleanly. In fact it is NOT affected by the location of the elements, it *does know* a method is the same method regardless of the position :-). So yes, this is a great feature because basically we empower refactoring: nothing will prevent you know from having your files as clean as readable as possible.</p> 
 </blockquote> 
-<p><b>Your project got funded in little over a day, what features do you expect to be able to build for the funds you will be receiving?</b></p> 
-<blockquote>
- Like I estimated in my 
- <a href="http://www.kickstarter.com/projects/creationix/js-git/posts">stretch goals</a>, I hope to have the essential Git features implemented and if there is time, some integration with various platforms.
-</blockquote> 
-<p><b>Why Kickstarter?</b></p> 
-<blockquote>
- It sounded like a good idea at the time. So far it's working out, though after reading through all the Kickstarter rules, I'm feeling like this kind of project barely fits into their ideal for a project.
-</blockquote> 
-<p><b>Do you think more (JavaScript) open source projects should try to get funding on Kickstarter?</b></p> 
-<blockquote>
- I don't know yet, this is an experiment. I do like the idea of screening ideas for support before spending months of time working on them. I've spend hundreds of hours of my free time on past projects only to find out that there is little interest from the community for them. I really like the idea of working full-time on cool projects that people wish existed. I don't know if Kickstarter will work out long term, but I'll keep looking for other ideas if it doesn't.
-</blockquote> 
-<p>JSGit is not the first JavaScript-related project to successfully reach its funding goal on Kickstarter. Previous projects include <a href="http://www.kickstarter.com/projects/869786663/async-savascript-book?ref=live">a book on asynchronous JavaScript programming</a> and <a href="http://www.kickstarter.com/projects/188988365/lets-code-test-driven-javascript?ref=live">a screencast series on test-driven JavaScript</a>. However, JSGit is the first Kickstarter project to produce a JavaScript library.</p> 
-<p>The <a href="http://www.kickstarter.com/projects/creationix/js-git">project is open to pledges</a> until March 30, 2013. Tim expects to start working on the project soon after the pledge deadline expires.</p> 
+<p>You can apply for the closed beta at <a href="http://www.plasticscm.com/sm/index.html">http://www.plasticscm.com/sm/index.html</a>.</p> 
 <p id="lastElm"></p><br><br><br><br><br><br></body></html>

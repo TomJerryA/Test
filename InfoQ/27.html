@@ -1,31 +1,26 @@
-<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>Concurrent发布Lingual——一种用于Hadoop的领域专用语言</h3><p><a href="http://www.cascading.org/about/">Cascading</a> 是一个流行的应用框架，是一个面向企业数据流的<a href="http://www.patternlanguage.com/">模式语言</a>。Cascading可以定义复杂的数据处理流程，创建面向复杂数据的框架。这些框架可被用来作为<a href="http://en.wikipedia.org/wiki/Domain-specific_language">领域专用语言(DSLs)</a>进行脚本编写。</p> 
-<p><a href="http://www.cascading.org/lingual/%20">Lingual</a>是<a href="http://www.concurrentinc.com/posts/">最新</a>增加到<u>Cascading</u><u>扩展套件</u>中的新的基于SQL的领域专用语言，整合了<a href="https://github.com/julianhyde/optiq">Optiq</a> （一个动态数据管理框架）的能力和Cascading基于Hadoop的执行。Lingual的目标，是降低熟悉SQL、JDBC和传统BI工具的开发人员和数据分析师使用Hadoop的门槛。它所提供的能力，被公司誉为“真正用于Cascading和Hadoop的SQL”。</p> 
-<p>据Chris Wensel（Cascading技术总监兼创始人）表示，Lingual的目标是提供符合ANSI标准的SQL接口，该接口被设计为与所有知名的Hadoop发行版兼容——无论是自建的还是在云环境中的。它可以从传统数据仓库中“剪贴”已有的ANSI标准SQL代码，这样一来，用户就能够直接访问被锁在Hadoop集群中的数据。它也可以从Hadoop乃至大量各种不同的BI工具中查询并导出数据。</p> 
-<p>使用Lingual，公司可以通过标准的技术把已有的技术和产品投资平移到Hadoop上，立刻就能够发挥它们的价值。如果分析师和开发人员熟悉SQL、JDBC或者传统的BI工具，可以现在马上很容易地在Hadoop上创建大数据应用，从而大幅提升工作效率，提前将产品推向市场。</p> 
-<p>Lingual并不打算为Hadoop集群中上PB级别的数据提供次秒级（sub-second）的响应时间。公司更为重视的目标是，简化应用向Hadoop迁移的过程——实际上，最大的挑战主要集中在关系型数据库或大规模并行处理数据库向Hadoop的迁移。</p> 
-<p>Lingual发行版<a href="http://www.slideshare.net/pacoid">包括</a>：</p> 
-<ul> 
- <li>在Cascading框架上层构建的ANSI标准SQL解析器与优化器</li> 
- <li>大规模非结构化数据之中的关系型数据编目视图</li> 
- <li>用来测试和提交Hadoop查询的SQL shell</li> 
- <li>以JDBC驱动程序集成现有的BI工具和应用服务器</li> 
-</ul> 
-<p>InfoQ有幸与Concurrent股份有限公司的技术总监兼创始人Chris K Wensel讨论了Lingual。</p> 
-<p><b>InfoQ</b><b>：</b>Lingual 看上去很像Apache Hive。您能谈一下Lingual相比Hive最主要的优势吗？</p> 
-<p><b>Wensel</b><b>：</b>Lingual首要的目标集中在ANSI标准的兼容性上。Hadoop从来都不是单独使用的，你既可以把数据从HDFS位桶（bit-bucket）转入备选工具（如R或Mondrian），也可以把现有的工作负载转移到Hadoop上，以发挥其性价比的优势。无论是哪种情况，很大的可能性是你本来就熟悉SQL，或者你正迁移的“应用”或查询已经是基于SQL来做的，甚至还有可能是你正使用的工具只能识别SQL。所以，提供基于标准的SQL接口非常重要。</p> 
-<p>为了达成这个目标，我们做了很多测试。我们现在已经从Mondrian测试套件中提取了6000多个复杂SQL查询，并且我们已经达到了90%的测试覆盖，而且，还计划从流行的工具中吸收增加更多的测试。</p> 
-<p>Lingual并不打算做成一个提供人类级别响应时间的专用查询工具。因此，我们建议使用一个适当的分布式MPP（大规模并行处理）风格的数据库。我不建议在非Hadoop设计的场景下使用Hadoop。</p> 
-<p>这就是说，我们提供了一个遵循JDBC驱动程序的标准，可以使用Cascading的“本地模式”去测试非本地数据的查询，这种方式不需要依赖Hadoop去提升测试速度。</p> 
-<p>在ANSI标准依丛性目标之上，Lingual 运行于Cascading 的上层，所以任何针对Cascading 的改进，或者任何新的“规划师”（除了专门为Hadoop准备的），以及本地内存处理，连同Cascading现有的健壮性、灵活性、可扩展性、标准性（很多公司已经在计算场景中应用了标准化的Cascading）一起，都将被Lingual继承过来。</p> 
-<p><b>InfoQ</b><b>：我们从</b>现有的产品描述上还无法非常清晰地了解Lingual如何定义和维护关系型数据库编目。您可以解释一些实现细节吗？它是否需要准备好特定的文件，或者使用类似于Hive SerDe的机制去提供现有数据与表结构定义的映射？</p> 
-<p><b>Wensel</b><b>：</b>在最初的发布里有一个内置的“单用户”编目。我们将在短期内提供HCatalog集成及（或）一个备选的方案。当前，元数据编目是一个琐细的（并可由人工编辑的）JSON文档，它可以保存在本地文件系统或HDFS（甚至S3）上，可以允许基本的共享。</p> 
-<p>至于读/写数据方面，Lingual将整合提供所有Cascading（以及Cascalog、Scalding等等）的支持。这些都通过Lingual的命令行接口进行管理。</p> 
-<p>用户不必使用任何“Cascading特有的”格式去查询数据。</p> 
-<p>用户可以从命令行中把一个文件简单地注册为一张表，如果一切顺利的话，在该文件中可以找到任何元数据（列和类型）信息。我们将在接下来的工作中把它逐步细化，把编目工具中最新的可支持的数据格式也添加进来。</p> 
-<p><b>InfoQ</b><b>：</b> Lingual 的安全模型是如何考虑的？它是否基于文件访问权限？是否可以被JDBC 驱动程序支持？<b> </b></p> 
-<p><b>Wensel</b><b>：</b>目前没有考虑去扩展Hadoop当前的安全模型。</p> 
-<p>查看英文原文：<a href="http://www.infoq.com/news/2013/02/Lingual;jsessionid=18A1C9AB93A72E79B96150FC1DE7A12B">Concurrent Releases Lingual, a SQL DSL for Hadoop</a></p> 
-<hr /> 
-<p>感谢<a href="http://www.infoq.com/cn/bycategory.action;jsessionid=18A1C9AB93A72E79B96150FC1DE7A12B?authorName=杨赛">杨赛</a>对本文的审校。</p> 
-<p>给InfoQ中文站投稿或者参与内容翻译工作，请邮件至<a href="mailto:editors@cn.infoq.com">editors@cn.infoq.com</a>。也欢迎大家通过新浪微博（<a href="http://www.weibo.com/infoqchina">@InfoQ</a>）或者腾讯微博（<a href="http://t.qq.com/infoqchina">@InfoQ</a>）关注我们，并与我们的编辑和其他读者朋友交流。</p> 
+<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>百度云开发者技术中心落户成都</h3><p>4月12日，成都高新区与百度云签署合作协议，“成都百度云开发者技术中心”正式入驻成都高新区移动互联网创业大厦。技术中心将为西部地区的优秀开发者提供从免费办公场地、百度云平台服务到政策扶持的全方位孵化服务。这次共有四支团队入驻技术中心，在签约仪式现场，百度移动&middot;云事业部副总经理岳国峰和成都高新区相关负责人阐述了本次合作的愿景并进一步回答了包括政策、技术支持、百度云服务等问题。</p> 
+<p>这次入驻的团队在分享各自感受时不约而同提到了“成本问题”，即通过入驻开发者中心能够帮助他们极大的节省创业初期的精力和资金成本。而这也是百度和成都高新区所一再强调的，即：</p> 
+<blockquote> 
+ <p>中心希望能够通过强强联合的方式，为开发者提供基础设施、市场渠道、人力资源服务等三大服务；同时，结合百度云的技术支持服务，帮助开发者快速迭代、降低产品的开发和推广成本……这是一个多赢的场景。</p> 
+</blockquote> 
+<p>根据岳国峰的介绍，百度目前在中心投入了20个工作人员，提供技术、市场等方面的支持，并通过技术中心实现对整个西南中心的开发者支持。百度云未来的投入将会集中到云本身的基础设施建设、生态建设等方面。岳国峰具体介绍了百度对于云的投入情况：</p> 
+<blockquote> 
+ <p>百度在云上面投入很大。我们单笔最大的投资是在山西阳泉建立一个大型的云计算数据中心，47亿元人民币，是最大的一笔。这还不包括我们对外提供的基础设施的投入……我们也投入了大量的服务器去扩充我们的存储能力，包括去年我们就在南京上线了全国首个规模ARM服务器来支撑大规模云存储的业务需要。</p> 
+</blockquote> 
+<p>在提及云的同时，岳国峰也透露了百度对于移动互联网的关注：</p> 
+<blockquote> 
+ <p>近三年来，我们非常关注移动互联网的发展。移动互联网，从智能机的大量的涌现，到现在移动设备的百花齐放，已经勾勒出非常广阔的发展前景。百度怎么看这件事情？未来移动互联网有非常非常多的机会，而且它可以做得非常深。这样众多的机会，并不是属于百度这样的大平台，而是广大的开发者的。未来的移动互联网时代是开发者的时代。在这样潮流下，百度做什么呢？把自己多年积累的能力帮助开发者快速成长，快速的走向成功。我们希望能跟开发者和我们的准入用户构建这样的生态系统，推动生态系统良性的发展。这是我们百度的初衷，为我们开发者提供各式各样的能力支持，帮助他们快速的成长。</p> 
+</blockquote> 
+<p>随后他提到了百度在移动互联网上两个正在发力的服务场景：</p> 
+<blockquote> 
+ <ol> 
+  <li>App的搜索：百度会加强基于应用功能的搜索，让用户不仅仅能够根据应用的描述信息，更能根据网页的聚合来实现更准确的描述匹配；</li> 
+  <li>App的内容发现：百度将会对App的内容进行挖掘，识别用户的需求进行匹配，将其分配给相关的开发者。</li> 
+ </ol> 
+</blockquote> 
+<p>当然，为开发者提供服务时，不可避免会被问道如何协调与开发者的利益的问题。针对这个问题，岳国峰回答道：</p> 
+<blockquote> 
+ <p>坦率来讲，我们现在还没有想到这一步，还是先帮大家把这个事情做起来。未来，如果开发者都成长了，这也是百度非常希望看到的。未来我们会提供更多的跟后续运营推广变现的推广，这才是跟运营相关的。</p> 
+</blockquote> 
+<p>目前百度云面向开发者提供了<a href="http://developer.baidu.com/bae">应用引擎（BAE）</a>、<a href="http://developer.baidu.com/map">云推送</a>、<a href="http://developer.baidu.com/mtc">移动测试中心</a>等服务，开发者在使用过程中需要面向这些服务对代码进行定制。针对开发者其他的技术需求，百度方面表示还在搜集业务需求，针对一些诸如大数据实现等的开发者要求，也会适时推出自己的定制化服务。</p> 
 <p id="lastElm"></p><br><br><br><br><br><br></body></html>
