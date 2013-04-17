@@ -1,8 +1,8 @@
 <html>
  <head></head> 
- <body>
-  <div>
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/43.htmlb">深入浅出Symfony2 - 如何提高网站响应速度</a>Symfony2是一个基于PHP语言的Web开发框架，有着开发速度快、性能高等特点。 本文通过对一个基于Symfony2框架所开发的网站页面进行逐步优化，最终实现页面加载速度的提高的例子，向读者介绍Symfony2框架的一些核心功能和特点。
+ <body> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/43.htmlb">深入浅出Symfony2 - 如何提高网站响应速度</a>Symfony2是一个基于PHP语言的Web开发框架，有着开发速度快、性能高等特点。 本文通过对一个基于Symfony2框架所开发的网站页面进行逐步优化，最终实现页面加载速度的提高的例子，向读者介绍Symfony2框架的一些核心功能和特点。 
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/42.htmlb">书评：Java应用架构</a>《Java应用架构：以OSGi为例讲解模块化模式》是Kirk Knoernschild编写的一本优秀图书，它列出了模块化系统设计的模式。在本书的开始讲述了模块化的概要理由，主体部分介绍了模块化开发的18个模式列表，最后是一个OSGi的例子。InfoQ与Kirk进行了交流以了解本书的更多情况。 

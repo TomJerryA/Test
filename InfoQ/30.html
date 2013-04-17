@@ -1,30 +1,27 @@
-<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>分析Parse MBaaS</h3><p>移动后端即服务的爆炸性增长证明，大量的移动应用开发者更青睐<a href="http://blog.programmableweb.com/2012/11/29/mobile-backend-as-a-service-mbaas-give-me-liberty-or-give-me-convenience/">简单便捷的开发模式</a>。这是设计伟大应用的一方面。另一方面移动后端即服务融合诸多令人羡慕的技术（如MongoDB、Couch、Cassandra、MySQL等...)形成易于维护、可更新的移动后端。</p> 
-<p><a href="http://www.infoq.com/cn/news/2013/03/KinveyMBaaS;jsessionid=75403FE0852FBE8E1EC2A0E5F6D3EA23">该系列文章</a>主要介绍了提供MBaaS产品的新公司，在第三篇中InfoQ将带您了解是什么促使<a href="https://parse.com/">Parse</a>飞速前进。得益于创业投资公司<u><a href="http://ycombinator.com/">Y Combinator</a></u>的帮助，Parse在<a href="http://gigaom.com/2011/08/08/parse/">2011年创立</a>，像它那些不断涌现的竞争者一样，致力于帮助移动应用开发者节省时间并减少麻烦，从而创建开发者自己的高效移动后端。</p> 
-<p>随着我们对MBaaS提供商的深入了解，每家公司产品的特性、优点、常见问题大多相似。所不同的只是实现这些特性的方式。每家MBaaS提供商独特的编码风格、服务器和规划最终产生了完全不同的结果。</p> 
-<p>以<a href="http://www.infoq.com/news/2013/01/28;jsessionid=D1B136EB81F11754F967FAC5CC0AC4E4;jsessionid=75403FE0852FBE8E1EC2A0E5F6D3EA23">早前提到过的</a>Kii Cloud为例。他们和Parse提供了相似的UI风格，可以容易地指向目标并进行点击。不论是那些主流<a href="https://www.parse.com/docs/index">移动平台</a>的应用还是一些非移动平台的应用，他们都能够<a href="https://parse.com/apps/quickstart">让开发者方便地将MBaaS嵌入到应用中</a>。</p> 
-<p>分发方式是一个主要的不同点。由于Parse的战略伙伴Kii Cloud提供的网络拥有着来自亚洲市场移动消费者群体百万潜在客户。Parse似乎并不打算提供像Kii<a href="https://www.parse.com/products">那样的</a>分发通道，而他们的合作伙伴们则提供了一个<a href="https://www.parse.com/customers/partners">附加功能</a>的有趣集合。</p> 
-<p>每个MBaaS提供商或许都有他们独特的东西。比如Parse，为了进行搜索，需要用户的数据模型遵从<a href="http://blog.parse.com/">他们的方式</a>：“...无确切前缀匹配的字符串查询无法使用索引。因为随着你应用的增长，这种类型的查询极易产生由超时错误引起的失败。”</p> 
-<p>Parse向从独立新手到大型企业的所有<a href="https://www.parse.com/plans">移动软件开发者</a>提供了三种价格套餐以供选择。预算有限的开发者可以使用免费套餐。该套餐包括每月100万次的请求和推送以及1GB的云存储空间。</p> 
-<p>说到推送技术，Parse提供了<a href="https://www.parse.com/products/push?mkt_tok=3RkMMJWWfF9wsRonu6TOZKXonjHpfsX57eUtUKWzlMI/0ER3fOvrPUfGjI4ATMdiI/qLAzICFpZo2FFIG/KGeQ==#3">一系列选项</a>。开发者可以组合、调度、分割推送通知，并为他们的推送通知设置目标以及使用一个缜密的分析工具进行测试。</p> 
-<p>让<a href="https://parse.com/questions/fetch-all-data-in-a-table-using-pfquery">社区</a>来发现那些隐藏的问题。<u><a href="https://news.ycombinator.com/user?id=jawngee">jawngee</a></u>在<u><a href="https://news.ycombinator.com/item?id=4701035">Hacker News</a></u>说：</p> 
+<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>应用程序迁移到云平台的最佳实践</h3><p>越来越多的开发者和公司选择将应用程序迁移到云平台上，对于真正的企业级产品来说，这个过程不是简单的点几个按钮就大功告成。我们需要从云平台的环境特点出发，对自身的产品做一定的适应调整。IBM云平台专家Sheetal和Ashish<a href="http://www.ibm.com/developerworks/cloud/library/cl-app2appliance/index.html" target="_blank">总结</a>了应用程序迁移到云平台的最佳实践，包括支持静默安装、控制磁盘空间使用、设置应该由 API 或 CLI 来完成、跟踪和日志信息必须通过 API/CLI 收集等。</p> 
+<p>Sheetal和Ashish将迁移分为3种场景，分别为：</p> 
+<ul> 
+ <li>将您的应用程序集成到另一个云产品中——目前需求是增强现有云应用程序以及您的应用程序功能。目标是实现无缝集成。通常，在需要将新功能引入到现有的产品时，就会涉及从头开始设计和开发新功能；另一个可选方案是利用一个现有产品（这种情况下，不需要启用云），将其功能集成到云产品。在这种情况下，您必须确定您的应用程序可以与现有云产品正确 “连接”。</li> 
+ <li>将您的应用程序添加到另一个在云中托管的设备——一个云设备由预安装和预配置软件和应用程序构成；有时也可用作一个自包含服务器。当您计划添加一个附加应用程序到现有云设备包以增强其功能时，确保您的应用程序可与软件包中的其他应用程序和配置文件以及设备资源依赖项正确交互。</li> 
+ <li>将您的应用程序作为一个独立的云设备进行托管——将您的应用程序用于云环境的一个方法是在其自身的云设备中使用，特别是如果不需要将它与另一个云应用程序集成时。</li> 
+</ul> 
+<p>对于如何实现顺利迁移，他们提出了应用程序自身调整的若干实践，包括支持静默安装：</p> 
 <blockquote> 
- <p>我不喜欢那些通常无法工作的子类化（subclassing）。你把PFObject注册为子类没有问题，但是当你进行大量PFQuery的时候你会发疯的。PFUser是一个适合子类化的主要选择，但是如果不进行大量的调整也能难凑效。</p> 
+ <p>在安装过程中不显示消息或窗口的安装称为静默安装。当将一个应用程序集成到另一个应用程序或一个设备时，它就成为单一产品的一部分，单个安装程序是首选创建的。如果您的产品不能以静默方式安装，对您的产品来说，在单个安装过程中信息来自用户请求，而此时设备团队可能不想显示/询问其用户。这对用户来说是一种麻烦，对于他们来说并不需要了解这些基础产品的详细信息。如果静默安装不可用，您将失去已经取得的高效性，因为对于用户来说，就像是安装两个不同的产品。</p> 
 </blockquote> 
-<p><u><a href="https://news.ycombinator.com/user?id=bklimt">bklimt</a></u><u>说</u>:</p> 
+<p>控制磁盘空间使用也很重要：您的系统资源应该能够自动地缩减所占的磁盘空间以帮助控制磁盘使用。如果将您产品的功能和流程会产生日志并跟踪数据到一个输出文件，设备服务器中应该有一个流程以限制该数据流来防止内存不足问题的出现。创建一个属性文件，定义即将生成的输出文件的大小和数量。这些值应该能由系统管理员编辑。创建一个进程以监控这些文件。</p> 
+<p>应该由 API 或 CLI 来完成设置和收集跟踪、日志信息：</p> 
 <blockquote> 
- <p>PFObject的子类化和更全面的离线解决方案都是我们非常希望增加的特性。我们正花费时间以确保我们能够正确地使用它们。</p> 
+ <p>您必须能够通过 API 或命令行界面访问和操作所有配置设置。由于 REST Web 服务提供的松耦合性、轻量级以及可互操作性，它们是非常流行的，可能是您最常遇见的一个。如果其他流程需要手工更改一些属性文件或其他文件，可采用它以便于 CLI 或 API 完成那些更改。如果在设备或者设备部分整体功能的安装过程中需要完成一个特定设置或配置，使用这些 ACL 或 API 来完成。设计应该是这样的，设备不需要了解应用程序的内部设计就能够对设置进行任意更改，你应该可以使用 CLI 来完成。另外，无论在何处更改这类配置或设置无论在何处更改，在理想情况下，应及时生效，而不需要要重启应用程序；这样就不会扰乱整个设备的运行。</p> 
+ <p>当产品中出现问题时，要完全诊断清楚，从产品中收集日志是非常重要的。采用命令行机制（或其他）来执行选择性或隔离诊断操作；操作将不会影响整个设备。这包括收集可直接被管理员所用的日志/跟踪信息的功能。</p> 
 </blockquote> 
-<p><u>Parse</u><u>用户Huzell说:</u></p> 
-<blockquote> 
- <p>如何让查询获得所有对象...?</p> 
-</blockquote> 
-<p>这让<a href="http://www.linkedin.com/in/33fosco">Parse的专家</a>为难：</p> 
-<blockquote> 
- <p>获取大量结果的特性尚未支持。- Fosco Marotto</p> 
-</blockquote> 
-<p>在社区通常能够找到解决方案。至少<a href="http://alexefish.com/post/29843064002/fetching-every-row-of-a-table-with-parse-and-pfquery">对iOS</a>来说，Alex Fish可以解决这个问题。</p> 
-<p><b>英文原文链接</b>：<u><a href="http://www.infoq.com/news/2013/03/analyzation_parse-MBaaS;jsessionid=75403FE0852FBE8E1EC2A0E5F6D3EA23">An Analyzation of Parse MBaaS</a></u></p> 
-<hr /> 
-<p>感谢<a href="http://www.infoq.com/cn/bycategory.action;jsessionid=75403FE0852FBE8E1EC2A0E5F6D3EA23?authorName=赵震一">赵震一</a>对本文的审校。</p> 
-<p>给InfoQ中文站投稿或者参与内容翻译工作，请邮件至<a href="mailto:editors@cn.infoq.com">editors@cn.infoq.com</a>。也欢迎大家通过新浪微博（<a href="http://www.weibo.com/infoqchina">@InfoQ</a>）或者腾讯微博（<a href="http://t.qq.com/infoqchina">@InfoQ</a>）关注我们，并与我们的编辑和其他读者朋友交流。</p> 
+<p>高可用性支持是一个很好的优势：大多数 IBM 设备尝试支持高可用性；客户也有此需求。如果您的产品不支持高可用性，那么该设备的整个高可用性功效就会大打折扣。让您的产品在开发初期就完成高可用性设计或者留有一定空间将来开发，都是一个不错的主意。</p> 
+<p>除此之外，还包括：</p> 
+<ul> 
+ <li>提供生命周期功能——任何作为您应用程序的一部分运行的进程、线程或守护进程必须有其自己的生命周期功能。它应该提供开启、暂停和停止的常见状态，而且应该有一个方式可让产品自己使用 CLI 或 API 控制这些状态。</li> 
+ <li>所有配置均应是可重配置的——预安装阶段假设的任何配置必须在设备创建时能够进行重置（Reset），也可选项根据用户需求重新配置。</li> 
+ <li>能够在设备中激活和禁用应用程序——这对您的应用程序来说是一个很强大的优势，可通过使用一个命令行、API 或 GUI 激活或禁用应用程序，这样产品相关文件仍然驻留在磁盘中，但是不能消耗其托管系统的 CPU 和内存资源。这样，您就可以将您的产品嵌入到另一个产品中，在需要时通过开启或关闭来使用它。在云中，一个设备可以通过解除相关特性来关闭它所提供的某些服务，即使是在该应用程序正托管初始产品的时候。</li> 
+ <li>命令应可在任何 shell 中运行——尽量确保所有命令不受限于任何特定 shell。与您应用程序相关的 CLI 命令（至少是最重要的那个）不应限制为只能在某个 shell 上运行。集成到您产品的设备可能在不同的 shell 上运行，不一定是您选择的那个；在这种情况下，您将不能运行 CLI 命令，仅仅因为 shell 不同。</li> 
+</ul> 
+<p>启用版本标记、使数据备份和恢复可用、应用程序应是独立的自给自足的、API 应该能够将数据导入或导出应用程序、提供一个编程式方法来管理用户、最大限度地减少对外部的依赖关系、有一个可以彻底终止程序的 API等也在最佳实践之列。</p> 
 <p id="lastElm"></p><br><br><br><br><br><br></body></html>
