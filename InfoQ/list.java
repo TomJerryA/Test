@@ -1,6 +1,15 @@
 <html>
  <head></head> 
- <body> 
+ <body>
+  <div>
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/32.java">Asynchronous Gotchas in C#</a>Sometimes the best way to understand pitfalls in one language is to see how another language prevents them. Tomas Petricek, author of Real-World Functional Programming, discusses seven common mistakes found in asynchronous C# code and demonstrates how F# makes them less likely to occur.
+  </div>
+  <div>
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/31.java">Dart's M4 Release Stabilizes Core Libraries</a>The Google Dart team has released milestone 4 of its SDK. While the language had already stabilized in previous milestones, this M4 release stabilizes some core libraries. Performance has also improved. The DartVM, which runs Dart natively, is now between 160% (for the DeltaBlue benchmark) and 200% (for the Richards benchmark) faster than v8. The release also includes the faster dart2js compiler.
+  </div>
+  <div>
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/30.java">Release of the Microsoft Script Explorer Canceled</a>Microsoft has canceled the release of their Script Explorer. This tool was designed to make it easier to find PowerShell scripts located in either public repositories (e.g. TechNet Script Center and PoshCode) or a company’s internal collection.
+  </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/29.java">A Merge Tool that Understands Functions</a>Codice Software, maker of Plastic SCM, has released a preview of a semantic merge tool. This tool parses your code, allowing for a more accurate merge than the line-by-line comparisons most tools use. We interviewed Pablo Santos Luaces, Principal Software Engineer of Codice Software. 
   </div> 
@@ -141,15 +150,6 @@
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/33.java">WCF Data Services 5.4.0 Released with Client Hooks and Instance Annotations on Atom Payloads</a>Microsoft has announced the availability of WCF Data Services 5.4.0 release candidate with new features and several bug fixes. 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/32.java">WCF Data Services 5.4.0 - Client Hooks and Instance Annotations on Atom Payloads</a>Microsoft has announced the availability of WCF Data Services 5.4.0 release candidate with new features and several bug fixes. 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/31.java">Docker: Automated and Consistent Software Deployments</a>dotCloud, a PaaS provider, has open sourced Docker, a key component of their platform. Docker is a LinuX Container (LXC) technology augmented with a a high level API providing a lightweight virtualization solution that runs Unix processes in isolation. It provides a way to automate software deployment in a secure and repeatable environment. 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/30.java">Use Canary Deployments to Test in Production</a>Companies use &quot;Canary Deployments&quot; to test software in production by routing a subset of users to new functionality as part of continuous delivery according to Nolio in their 1st video in a series about DevOps Best Practices. A &quot;Canary Deployment&quot; is a type of incremental release performed by deploying a new version of software side by side with its production version counterpart. 
-  </div> 
+  </div>    
  </body>
 </html>

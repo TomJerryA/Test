@@ -1,21 +1,41 @@
-<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>Docker: Automated and Consistent Software Deployments</h3><p><a href="https://www.dotcloud.com/">dotCloud</a>, a PaaS provider, has open sourced <a href="https://github.com/dotcloud/docker/">Docker</a>, a key component of their platform. Docker is a <a href="http://en.wikipedia.org/wiki/LXC">LinuX Container (LXC)</a> technology augmented with a a high level API providing a lightweight virtualization solution that runs Unix processes in isolation. It provides a way to automate software deployment in a secure and repeatable environment.</p> 
-<p>Docker uses the concept of a Standard Container which contains a software component along with all its dependencies - binaries, libraries, configuration files, scripts, virtualenvs, jars, gems, tarballs, etc. – and can be run on any x64-bit Linux kernel that supports <a href="http://en.wikipedia.org/wiki/Cgroups">cgroups</a>. Such containers can be deployed on a laptop, on a distributed infrastructure, in the cloud, etc., preserving its environment, making it appropriate for a broad range of uses: continuous deployment, web deployments, database clusters, SOA, etc., as <a href="http://www.kavistechnology.com/blog/docker-is-open-source/">Mike Kavis explained on his blog</a>:</p> 
-<blockquote> 
- <p>The use case that was relevant to me, the application guy, is to use Docker to streamline a continuous delivery process. In every place that I have worked in my career, from the mainframe days, to the client server days, to the cloud days, getting the different environments in sync and successfully testing applications has been a nightmare. When code moves from Dev to QA to Stage to Prod, no matter how good or bad our processes were these environments were NEVER the same. The end result was always a hit in the quality of a production release. “It worked in test” became the most shrugged off phrase since “the check is in the mail”.</p> 
- <p>With Continuous Delivery (CD), the <em>entire environment</em> moves with the code from Dev to QA to Stage to Prod. No more configuration issues, no more different systems, no more excuses. With CD, if it didn’t work in Prod it didn’t work in Test. With Docker, I can see writing scripts to automate the CD process. I can see gains in speed to market because of how quickly new environments can be created without dealing with all of the setup and configuration issues.</p> 
-</blockquote> 
-<p>Solomon Hykes, CEO of dotCloud, <a href="http://www.youtube.com/watch?feature=player_embedded&amp;v=wW9CAH9nSLs">demoed Docker at PyCon</a>, explaining that it’s a repeatable lightweight virtualization solution because “it’s isolated at the process level and it has its own file system”. The API enables system administrators to execute a number of operations on containers: start, stop, copy, wait, commit, attach standard streams, list file system changes, etc.</p> 
-<p>Some of Docker’s <a href="https://github.com/dotcloud/docker/">main features</a> are:</p> 
+<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>Dart's M4 Release Stabilizes Core Libraries</h3><p>The Google Dart team <a href="http://news.dartlang.org/2013/04/core-libraries-stabilize-with-darts-new.html">has released milestone 4</a> of its Dart SDK. While the language had already stabilized in previous milestones, this M4 release stabilizes some core libraries, specifically: <tt>dart:core</tt>, <tt>dart:collection</tt> and <tt>dart:async</tt>. Performance has also improved. The DartVM, which runs Dart natively, is now between 160% (for the DeltaBlue benchmark) and 200% (for the Richards benchmark) faster than <a href="https://code.google.com/p/v8/">v8</a>, the JavaScript engine that powers Chrome. The release also includes the <a href="http://www.infoq.com/news/2013/04/dart2js-outperforms-js;jsessionid=97B83D560AF790E192AF73A076107B80">faster dart2js compiler that we reported on before</a>.</p> 
+<p>A summary of <a href="https://groups.google.com/a/dartlang.org/d/msg/misc/rIKbw3AVNxo/oJZvxo_1SEAJ">the API changes in this release</a>:</p> 
 <blockquote> 
  <ul> 
-  <li> <p>File system isolation: each process container runs in a completely separate root file system.</p> </li> 
-  <li> <p>Resource isolation: system resources like CPU and memory can be allocated differently to each process container, using cgroups.</p> </li> 
-  <li> <p>Network isolation: each process container runs in its own network namespace, with a virtual interface and IP address of its own.</p> </li> 
-  <li> <p>Copy-on-write: root file systems are created using copy-on-write, which makes deployment extremely fast, memory-cheap and disk-cheap.</p> </li> 
-  <li> <p>Logging: the standard streams (stdout/stderr/stdin) of each process container are collected and logged for real-time or batch retrieval.</p> </li> 
-  <li> <p>Change management: changes to a container's file system can be committed into a new image and re-used to create more containers. No templating or manual configuration required.</p> </li> 
-  <li> <p>Interactive shell: docker can allocate a pseudo-tty and attach to the standard input of any container, for example to run a throwaway interactive shell.</p> </li> 
+  <li>The separator argument in Iterable.join defaults to &quot;&quot; (instead of <tt>null</tt>).</li> 
+  <li>All <tt>DateTime</tt> constants are non-abbreviated. Also changed <tt>DAYS_IN_WEEK</tt> to <tt>DAYS_PER_WEEK</tt>.</li> 
+  <li>Removed deprecated classes and methods 
+   <ul> 
+    <li><tt>CollectionSink</tt></li> 
+    <li><tt>Stream.pipeInto</tt></li> 
+    <li><tt>Iterable/Stream.max/min</tt></li> 
+    <li><tt>Collection</tt> (List, Set and Queue now extend Iterable directly)</li> 
+    <li><tt>Datetime.&lt;/&lt;=/&gt;/&gt;=</tt></li> 
+    <li><tt>IOSink.writeStream</tt> (renamed to IOSink.addStream)</li> 
+    <li><tt>IOSink.writeBytes</tt> (renamed to IOSink.add)</li> 
+    <li><tt>StreamSink</tt> (renamed to EventSink)</li> 
+   </ul> </li> 
+  <li><tt>Iterable.reduce/Stream.reduce</tt> introduced that does not require an initial value.</li> 
+  <li>List range functions were refactored: 
+   <ul> 
+    <li><tt>List.getRange</tt> takes an <tt>endIndex</tt> argument and returns an <tt>Iterable</tt>.</li> 
+    <li><tt>List.setRange</tt> takes an <tt>endIndex</tt> and an <tt>iterable</tt> (plus an optional skipCount).</li> 
+    <li><tt>List.removeRange</tt> takes an endIndex.</li> 
+    <li><tt>List.insertRange</tt> got removed.</li> 
+    <li><tt>List.replaceRange</tt> was added.</li> 
+    <li><tt>List.fillRange</tt> was added.</li> 
+    <li><tt>List.setAll</tt> was added. (not strictly speaking a range function).</li> 
+   </ul> </li> 
+  <li><tt>Stream.hasSubscribers</tt> renamed to <tt>Stream.hasListener</tt></li> 
+  <li>Removed <tt>async:EventSinkView</tt>.</li> 
+  <li>Removed the <tt>AsyncError</tt> class.</li> 
+  <li>Removed <tt>StreamController.broadcast</tt>.</li> 
+  <li><tt>dart:html</tt> has had most Web Worker related APIs removed while the correct API is worked out. The Worker class remains for spawning Javascript workers</li> 
+  <li>Renamed <tt>InvocationMirror</tt> to <tt>Invocation</tt></li> 
+  <li><tt>Function.apply</tt> uses <tt>Symbol</tt> for named arguments</li> 
+  <li><tt>dart:mirror</tt> now uses <tt>Symbol</tt> instead of <tt>String</tt> to represent names</li> 
  </ul> 
 </blockquote> 
-<p>So far, Docker has been tested with Ubuntu 12.04 and 12. 10, but it should be working with any Linux 2.6.24 or later, according to dotCloud. It can also be installed on Windows or Mac OS X via <a href="https://www.virtualbox.org/">VirtualBox</a> using <a href="http://www.vagrantup.com/">Vagrant</a>.&nbsp;Docker was written in Go, and uses Linux <a href="http://blog.dotcloud.com/kernel-secrets-from-the-paas-garage-part-24-c">cgroup</a>&nbsp;and <a href="http://blog.dotcloud.com/under-the-hood-linux-kernels-on-dotcloud-part">namespacing</a>, <a href="http://aufs.sourceforge.net/aufs.html">AUFS</a>&nbsp;– file system with copy-on-write capabilities-, and <a href="http://lxc.sourceforge.net/">LXC</a> scripts.</p> 
+<p>Frequently changing APIs is one of the challenges of developing with Dart today, requiring users to <a href="http://www.infoq.com/news/2013/04/blossom-dart-switch;jsessionid=97B83D560AF790E192AF73A076107B80">keep a close eye on the mailing list</a> for <a href="https://groups.google.com/a/dartlang.org/forum/#!searchin/misc/breaking$20change">breaking changes</a>. As the team aims for a summer 1.0 release, it will continue to add breaking changes while it still can, once 1.0 is hit, APIs will change less often. The number of these changes is expected to decrease as summer draws closer.</p> 
+<p>The <a href="http://www.dartlang.org/tools/sdk/">Dart SDK M4 release can be downloaded</a> from the Dart website and is available for Windows, Linux and Mac.</p> 
 <p id="lastElm"></p><br><br><br><br><br><br></body></html>
