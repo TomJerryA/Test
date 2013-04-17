@@ -1,0 +1,126 @@
+<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>深入浅出Symfony2 - 如何提高网站响应速度</h3><p>Symfony2是一个基于PHP语言的Web开发框架，有着开发速度快、性能高等特点。但Symfony2的学习曲线也比较陡峭，没有经验的初学者往往需要一些练习才能掌握其特性。相对其他框架，Symfony2比较吸引人的特点有：</p><ol> 
+ <li>支持DI（Dependency Injection，依赖注入）和IoC（Inversion of control）。</li> 
+ <li>高性能。</li> 
+ <li>扩展性强。</li> 
+ <li>文档成熟、拥有成熟的社区支持。</li> 
+</ol><p>本文通过对一个基于Symfony2框架所开发的网站页面进行逐步优化，最终实现页面加载速度的提高的例子，向读者介绍Symfony2框架的一些核心功能和特点。通过阅读本文，你可以通过一些具体的例子了解Symfony2框架的优秀特性和技术特点，从而体会到使用Symfony2框架可以为网站开发带来的各种优势。</p><h2>适合人群</h2><ul> 
+ <li>本文适用于希望提高PHP语言的开发技术，或者对Symfony2框架有兴趣的读者。</li> 
+ <li>本文也适用于系统架构师和各类技术决策者。</li> 
+</ul><h2>1.Symfony2的运行环境的设置</h2><p>在我所演示的项目中，已经包含了一个页面，通过输入这个地址来打开它：http://your.host.com/app<em>dev.php/test</em>page_1。出现的页面如下图所示：</p><p><img src="http://www.infoq.com/resource/articles/symfony2/zh/resources/1.jpg;jsessionid=11C27928F7FED68B4B7A0C15F2EABE72" alt="" _href="img://null" _p="true" /></p><p>我们打开浏览器自带的调试功能，然后刷新页面：</p><p><img src="http://www.infoq.com/resource/articles/symfony2/zh/resources/2.jpg;jsessionid=11C27928F7FED68B4B7A0C15F2EABE72" alt="" _href="img://null" _p="true" /></p><p>可以看到，该页面充斥着大量的js/css/图片文件，而整个页面的加载速度竟然达到了9.6秒。</p><p>而如果打开这个页面：http://your.host.com/app.php/test<em>page</em>1，出现的页面如下图所示：</p><p><img src="http://www.infoq.com/resource/articles/symfony2/zh/resources/3.jpg;jsessionid=11C27928F7FED68B4B7A0C15F2EABE72" alt="" _href="img://null" _p="true" /></p><p>我们发现页面的加载速度变成了4秒，同时众多js和css文件被各自合并成为了两个单独的文件（图中红框的部分）。</p><p>造成上面两个页面打开速度截然不同的原因在于：如果通过不同的入口文件（app.php和app<em>dev.php）进入页面，Symfony2会根据入口文件的不同，切换到不同的运行环境。比如在默认配置中：通过app.php访问的页面，就是<strong>生产环境</strong>，而通过app</em>dev.php访问的页面，则是<strong>开发环境</strong>。Symfony2根据运行环境的不同，运行程序时的配置也会不同。比如细心的读者可能会发现，开发环境中页面的下方多了一条像是工具栏一样的东西（这是Symfony2特有的开发调试栏）。环境的不同会影响Symfony2程序运行的各个环节，以下列举了一些比较重要的不同配置下的差异处：</p><table> 
+ <tbody> 
+  <tr> 
+   <td>功能</td> 
+   <td>开发环境</td> 
+   <td>生产环境</td> 
+  </tr> 
+  <tr> 
+   <td>-----</td> 
+   <td>-----</td> 
+   <td>-----</td> 
+  </tr> 
+  <tr> 
+   <td>开发调试栏</td> 
+   <td>会出现</td> 
+   <td>不会出现</td> 
+  </tr> 
+  <tr> 
+   <td>日志记录</td> 
+   <td>记录详细的程序执行信息</td> 
+   <td>只在程序出现错误的时候记录</td> 
+  </tr> 
+  <tr> 
+   <td>css/js合并</td> 
+   <td>不会</td> 
+   <td>会</td> 
+  </tr> 
+ </tbody> 
+</table><p>所以可以看出，css/js文件合并其实是Symfony2自动根据环境不同所开启或关闭的一个自带功能罢了，这个功能在Symfony2中叫做Assets管理，当然我们也可以通过控制入口文件来实现开启或者关闭其他更多的功能。</p><p>通过Symfony2的环境配置功能开启或关闭各种自带功能就像在文本里改一个参数那么简单，而每个不同的环境又有一套独立的环境配置。Symfony2提供了大量的参数供用户方便的配置各种功能，通过对不同环境下的各个功能进行配置，可以很方便的设置出一套适合你自己的工作/生产环境。</p><p>接下来让我们看看Assets管理模块还能为我们做什么。</p><h2>2.深入Assets管理</h2><p>通过对上述页面的分析，我们发现虽然js和css文件合并了，但各自的文件内容却没有经过压缩，两个文件的大小分别是437k和310k，这显然是一个不太合理的数字。但我们可以通过简单的配置，让Assets管理模块帮我们在合并文件的同时对内容也进行压缩。</p><p>例如我们选择使用uglifyjs2对js进行压缩，用yuicompressor对css进行压缩。在这些软件已经安装完毕的情况下，只需要修改app/config.yml的以下几行：</p><pre>
+assetic:
+    debug:          &quot;%kernel.debug%&quot;
+    use_controller: false
+    bundles:        ['ScourgenHFS2Demo1Bundle']
+    java: /usr/bin/java
+    filters:
+        cssrewrite: ~
+        uglifyjs2:
+            compress: true
+            mangle: true
+            bin: /opt/local/bin/uglifyjs
+        yui_css:
+            jar: /usr/share/yuicompressor-2.4.7.jar
+</pre><p>然后在layout模板中引入js/css的地方分别增加一个过滤器</p><pre>
+'@ScourgenHFS2Demo1Bundle/Resources/public/css/public_home.css'
+'@ScourgenHFS2Demo1Bundle/Resources/public/css/inner_city_line.css'
+filter='?yui_css'
+%}
+&lt;link rel=&quot;stylesheet&quot; type=&quot;text/css&quot; media=&quot;screen&quot; href=&quot;{{ asset_url }}&quot; /&gt;
+
+...
+
+'@ScourgenHFS2Demo1Bundle/Resources/public/js/common/title.js'
+filter='?uglifyjs2'
+%}         
+</pre><p>我们再执行一下生成Assets的命令：</p><pre>
+% php app/console assetic:dump  --env=prod                                                                                                                                  
+Dumping all prod assets.
+Debug mode is off.
+03:14:06 [file+] /Users/scourgen/Desktop/InfoQ/
+optimize_performance_of_pages_with_symfony2/HeadFirstSymfony2-Demo1/app/../web/css/2ff013f.css
+03:14:14 [file+] /Users/scourgen/Desktop/InfoQ/
+</pre><p>然后再打开刚才生产环境下的页面，这时会发现刚才的两个css和js文件的大小已经变成了271k和232k，文件内容也已经都变成了经过uglifyjs2和yuicompressor压缩之后的内容。虽然两个文件大小依然很大，但如果考虑到它们在经过gzip压缩后的文件大小只有86k和39k，也应该算是在合理范围之内了。</p><p>当然在实际开发中，我们经常会碰到虽然服务端的js/css文件内容修改了，但客户端却保留着旧版本的缓存，导致页面样式和js功能出现问题的情况，而为了解决这个问题，同样可以通过修改配置实现：</p><pre>
+#app/config.yml
+#将framework的templating改成如下的样子：
+…
+templating:
+    assets_version: 1
+    assets_version_format: %%s?%%s
+    engines:
+        - twig
+    assets_base_urls:
+        http:
+            - http://server1.dev
+            - http://server2.dev
+...
+</pre><p>然后为css合并文件指定一个文件名：</p><pre>
+'@ScourgenHFS2Demo1Bundle/Resources/public/css/public_home.css'
+'@ScourgenHFS2Demo1Bundle/Resources/public/css/inner_city_line.css'
+filter='?yui_css'
+output='css/a.css'
+%}
+</pre><p>我们再刷新一下页面，看看发生了什么。</p><p>这时刚才两个js和css的URL分别变成了：</p><ul> 
+ <li>http://server1.dev/css/a.css?1</li> 
+ <li>http://server2.dev/js/9ad140b.js?1</li> 
+</ul><p>虽然js和css文件的url后面都带上了一个变量（也就是上面所定义的assets_version），而由于URL的不同，客户端将会重新下载这两个文件以避免从缓存中读取旧的版本。但为什么这两个文件的地址会变成serverx.dev呢？</p><p>其实这是Assets管理模块的另外一个功能：将它所管理的文件路径变成绝对地址（也就是增加了上面配置文件中的http://server1.dev和http://server2.dev两个域名）。而且在配置了多个域名的情况下，哪个文件名匹配哪个域名是固定的，不会随机显示造成带宽浪费，而这其实是由它的一套算法实现的。</p><p>通过这样的修改，我们也得到了两个益处：</p><ol> 
+ <li>当页面的js/css/图片文件很多时，由于这些URL的域名都不一样，可以让浏览器在同一时间并发下载更多的文件，从而加快页面打开的时间（参考：<a href="http://hi.baidu.com/thinkinginlamp/item/837ab520d6591146469962a5">浏览器并发连接数</a>）。</li> 
+ <li>由于这些URL的域名和网页所在的域名不一样，所以HTTP头里不会携带cookie信息，能够减少网络带宽，从而实现<a href="http://shen2.cn/2010/08/cookie-free-domain/">cookie-free domain</a>。</li> 
+</ol><p>类似的情况也有很多，在开发中为了实现最佳实践我们往往需要绞尽脑汁，但如果使用Symfony2作为开发框架则会使问题变得非常简单，甚至简单到根本不用写代码，只需要更改几行配置就能实现。</p><p>话说回来，在经过这些调整之后，前端的载入速度看起来已经不错了。那么Symfony2是否也可以很方便的调试和优化后端代码？答案是肯定的。接下来我们看一下如何使用Symfony2调试和优化程序的性能。</p><h2>3.调试和开发工具介绍</h2><p>调试和优化程序的最基本前提就是：你得知道你的程序在干什么。这句话虽然说得轻巧，但在许多框架面前却很难做到。这些框架在各种高新技术的封装下，代码和程序逻辑也变得十分复杂和臃肿，想要得知你所使用的框架背后到底做了哪些具体的事情、或者想获取程序运行的堆栈和调用信息、以及MySQL/NoSQL/MessageQueue……这些服务的调用和执行情况等等，都是不太容易的。而在没有这些信息支持的情况下，想去对后端程序做调试和优化几乎是不可能的。</p><p>而获取这些信息以便进行开发和优化对于Symfony2来说却非常容易，原因有三个：</p><ol> 
+ <li>Symfony2有一个调试工具栏，能够在每一个页面打开时，在页面的最下方显示该页的程序调试信息，甚至能够从中直接找出导致页面响应速度缓慢的瓶颈。Symfony2自带的调试工具栏非常强大，下面选一个比较酷的功能给大家演示一下：</li> 
+</ol><p><img src="http://www.infoq.com/resource/articles/symfony2/zh/resources/4.jpg;jsessionid=11C27928F7FED68B4B7A0C15F2EABE72" alt="" _href="img://null" _p="true" /></p><p>上图是一个显示程序执行顺序以及耗时的界面，通过这个界面，开发者可以很直观的看到程序的详细执行流程和顺序。通过这个界面，也可以看到每个步骤所占用的时间，从而发现影响程序执行速度的瓶颈，从而有针对性的进行优化。比如上图所示的程序执行流程里，一眼就能看出一共有三个地方执行的时间比较久（青色的条比较长）。</p><ol> 
+ <li> <p>高效且合理的框架设计使得Symfony2框架内的每个模块都不互相<a href="http://baike.baidu.com/view/1731634.htm">耦合</a>，每个模块都有自己的职责，可以单独为其执行测试用例而不依托其他模块。每个模块也都会像一个独立的软件一样有其自己的版本发布周期，有的模块甚至拥有独立的维护团队。这样的设计让Symfony2取得了复杂性和扩展性之间的平衡，也完成了架构上的解耦，从而直接在架构层面降低了整个框架的复杂度。所以对于开发者来说，不论是开发新功能，还是优化现有程序，都会觉得非常方便和高效。</p> </li> 
+ <li> <p>日志记录功能把框架在执行时的全过程都完完全全记录在了日志中，你唯一需要担心的就是及时清理日志以免磁盘空间占用过大。下图是日志的一部分，可以看到日志所记录的信息是非常详细的，让人不禁联想起了一些重量级Java框架的日志的输出。</p> </li> 
+</ol><p><img src="http://www.infoq.com/resource/articles/symfony2/zh/resources/5.jpg;jsessionid=11C27928F7FED68B4B7A0C15F2EABE72" alt="" _href="img://null" _p="true" /></p><p>所以综上三点所述，Symfony2对于调试和优化是非常友好的，利用其自带功能和设计可以很方便的进行调试和优化。</p><p>Symfony2本身已经做得非常出色了，那么在Symfony2之外呢？</p><p>虽然大家在国内可能不太听得到Symfony2这个名字，但在国际市场上Symfony2可是非常出名的。许多IDE软件开发商都支持Symfony2（比较出名的有PHPStorm、NetBeans和Eclipse with PDT），通过这些软件对于Symfony2的支持，能够让开发者更加方便快捷的进行开发工作。</p><p>而对于开源软件开发者，以及一些大网站的技术团队而言，他们也围绕Symfony2框架做了很多工作，也开源了许多他们自己的模块。在Symfony2的托管平台Github上，Symfony2项目的fork量和star量分别为6428和2174（截止2013年4月中旬），位居所有PHP项目的前列。而在最近发布的对2.2版本的开发统计显示，共有2035次提交以及711次申请合并，平均每天11次提交和4次申请合并。如此频繁的代码变更速度也能证明Symfony2以及相关社区的活跃度。</p><p>有如此强大的开发工具和社区支持，不管开发者在碰到什么问题时，基本上都可以迎刃而解。当然就算碰到了比较复杂的难题，也可以在Symfony2的社区或IRC频道中询问其他开发者。当然也可以来找我，我的联系方式在本文最下面。</p><h2>4. 如何使用缓存</h2><p>对于优化程序性能来说，一般会有三个方向：</p><ol> 
+ <li>优化代码语法</li> 
+ <li>优化业务逻辑</li> 
+ <li>优化框架及系统</li> 
+</ol><p>代码语法的优化并非本文的主题，而业务逻辑则又是由具体的网站功能所决定的，并不会有什么放之四海皆准的办法，所以本节主要介绍的是如何更加高效的使用Symfony2框架所附带的功能来提高网站的响应速度。</p><p>下面介绍一下Symfony2中最重要的优化功能之一 - 页面缓存功能。</p><p>对于一个页面来说，经常会有多个程序块来负责分别处理不同的页面部分，比如上文我们所展示的这个页面中，可能会有一块程序来处理页面上方的黑色导航条：显示所有的公交信息及判断用户所在地点；一块程序来处理页面的中间部分：根据用户是否登录显示不同的内容；一块程序来处理页面下方的线路详情信息；而这个页面的最终内容其实就是页面样式模板加上这三个程序输出后的结果。如果希望加快页面速度，最好的办法就是加快这三个程序的输出结果，甚至将结果缓存起来以便今后直接调用。</p><p>那我们看看如何对页面进行缓存，下面我将通过一个例子来向读者展示如何做到这点。</p><p>使用页面片段缓存，我们先要在包含其他页面片段的代码上增加一个standalone参数：</p><p><code> {% render url('layout_top', {}) with {}, {'standalone': true} %} </code></p><p>然后在这个处理页面片段的方法上配置缓存信息。</p><pre>
+/**
+ * @Route(&quot;/esi/getTop&quot;, name=&quot;layout_top&quot;)
+ * @Cache(public=true,expires=&quot;+1 hour&quot;, smaxage=3600, maxage=3600)
+ */
+</pre><p>可以看到通过配置，我们为这个页面片段定义了一小时的过期时间，定义缓存的参数和HTTP头信息中控制缓存的参数是相同的（public,expires,maxage等）。</p><p>细心的读者会发现两个问题：</p><ol> 
+ <li>缓存控制的参数为什么是写在注释里的？</li> 
+ <li>为什么这些参数和HTTP头信息中负责控制缓存的参数相同？这是一个巧合还是有意为之？</li> 
+</ol><p>其实通过回答这两个问题，读者可以理解Symfony2框架的另外两个重要功能：</p><ol> 
+ <li>支持使用注释（Annotation）来对程序进行配置，改变其实现逻辑。</li> 
+ <li>使用ESI规范作为页面缓存的标准，缓存参数兼容HTTP头信息中的缓存参数。</li> 
+</ol><p>Annotation这个单词是“注释”的意思，在编程开发领域特指一种编程语言能够通过注释来改变程序的运行逻辑。对于熟悉其他语言的读者来说，Annotation其实并不陌生，比如在Java里就有各种Annotation，@Override和@GuardedBy等大家也都比较熟悉。Annotation对于开发者来说能够大大的简化程序的复杂度：把复杂的程序逻辑抽象成为参数配置。但是对于PHP来说，PHP语言其实是不支持Annotation这个功能的，于是Symfony2在其框架内部实现了Annotation：第一次执行程序时，Symfony2会自动分析处理源文件，并将结果缓存在文件系统中，下次程序再被执行时，Symfony2会自动执行上次生成的文件，从而避免每次都对源文件的注释进行分析，而整个过程对开发者来说是完全透明的（这也能解释为什么有些页面第一次打开会比较慢，但以后就会很快）。</p><p>Symfony2框架中大量使用了Annotation：从缓存的定义到路由的配置，甚至到表结构的定义，处处都使用了Annotation功能。你甚至可以根据规范编写自己的Annotation。所以在使用Symfony2开发程序时，复杂的逻辑会变成一行行清晰的注释，程序的流程控制将变得非常简单。</p><p>而对于页面缓存功能来说，Symfony2有一个模块实现了兼容ESI协议的反向代理功能，从而允许开发者使用HTTP协议来控制页面缓存以及设置过期时间等，所以在网站规模变大的时候，开发者也可以平滑地将自带的反向代理模块升级成专门的反向代理服务（例如使用Varnish），从而提升网站整体性能。</p><p>对于不太熟悉ESI的读者，我在这里稍微做一下解释：</p><p>ESI是通过代理服务对页面片段进行访问的一种协议，比如你的HTML代码中有一段ESI：</p><pre>
+&lt;esi:include src=&quot;/top&quot; max-age=&quot;45&quot;/&gt;
+</pre><p>那么当ESI服务软件（例如Varnish）获取到包含这行代码的HTML之后，会立即向&quot;/top&quot;这个URL做一个额外的HTTP请求，同时把这个请求的HTML返回数据填充在这个页面里。假设&quot;/top&quot;的返回数据是一段A标签，那么上文的这段HTML代码在显示给用户的时候，就变成了：</p><pre>
+&lt;a href=&quot;http://for_example.com&quot;&gt;for_example.com&lt;/a&gt;
+</pre><p>当然ESI的功能远不止那么简单，我们在此主要用到的是它的页面片段缓存功能。</p><h2>5.数据库操作</h2><p>作为一个成熟的Web开发框架，对数据库操作的支持自然是重中之重，Symfony2对于这块自然也不例外。Symfony2默认使用Doctrine2作为其ORM的实现，通过Doctrine2，用户可以像操作一个类一样去操作数据库，从而提高开发效率。ORM这个概念读者应该都不陌生，在其他语言里也有各种实现，但在使用ORM上我们经常遇到这样的挑战，即如何权衡数据库性能和开发效率之间的平衡：</p><ul> 
+ <li>直接写SQL语句来操作数据库当然效率最高，可是开发速度慢，动一个字段甚至会对整个项目都需要进行重构。</li> 
+ <li>使用ORM则可以加快开发速度，但往往由于ORM的封装和限制，所生成出来的SQL无法保证运行效率。</li> 
+</ul><p>那Doctrine2又是如何解决这些问题的呢？我们通过一个比较有特色的例子来感受一下：</p><pre>
+$user=$this-&gt;getDoctrine()-&gt;getRepository('ScourgenHFS2Demo1Bundle:User')-&gt;find(2)
+echo $user-&gt;getName();
+</pre><p>在上面这段代码中，第一行虽然看起来是向User表去查询ID为2的用户，但其实还没有任何SQL语句在数据库上执行，$user就是一个上文所提到的代理对象。而当在第二行中，当这个对象的属性第一次被调用的时候，真实的SQL语句才会被传递到服务器，并且将结果集中的name字段返回给echo函数。</p><p>造成以上现象的原因是Doctrine2支持延迟加载功能：当程序执行对数据库的操作时，比如获取一条条数据，返回的对象并不是一个真实的来自数据库的结果集，而是一个代理对象（Proxy Object），而只有当数据被真正调用的时候，这个代理对象才会去数据库里进行查找，并返回真实的数据。</p><p>所以使用延迟加载的好处是：ORM会根据<strong>真正</strong>需要的内容去获取相应的数据。</p><p>想象一下如果你的表结构非常复杂，而且前端页面经常改变，在这种情况下一般都需要对SQL操作进行一定的修改和重构才能满足不断变化的需求，而且很难保持性能的最优化。而如果此时有延迟加载功能，就能够保证不管页面如何变化，数据库操作相关的代码都可以在不需要修改的前提下，<strong>一直</strong>生成最优化的SQL语句去获取那些真正被使用到的数据。所以延迟加载才能够一方面显著的加快开发速度，一方面优化页面性能。</p><p>当然除此之外Doctrine2的功能还有很多，包括批量处理、对象生命周期管理、表结构自动维护等等，Doctrine2也可以作为一个单独的类库被Symfony2之外的程序所使用。但在这里由于主题和篇幅的限制，我不做过多的介绍，如果读者们对此感兴趣的话，希望以后能够有机会单独写文介绍。</p><h2>6.总结</h2><p>本文向大家展示了Symfony2的一些很酷的功能，从Symfony2的环境设置，到Assets管理，到开发调试栏的介绍，再到缓存优化的分析……读者可以通过上面的几个例子感受到使用Symfony2作为框架进行开发并不是一件很复杂的事情：改几行配置，甚至都不需要写代码，就可以使用业界的各种“最佳实践”来解决问题。就让框架做应该做的事情吧，分工明确才能让开发者能够安心的把注意力集中在自己项目的业务逻辑上，从而提高项目的速度和质量。</p><p>而在国内，由于框架辈出，甚至有几年开发经验的工程师甚至都会自己做一个框架，社区和业界也缺少一个公认的答案和方向：工程师都在打一枪换一个地方，而各大公司和团队都在重复制造各种不同样子的轮子，整个业界的风气也变得异常浮躁，以至于许多人索性放弃了对完美的追求，直接承认了他们做的事情就是“quick and dirty“的。</p><p>我并不指望能够改变你的想法，但如果你也有一些相同的感悟，那么请尝试一下Symfony2，它将帮助你重新找回信心。</p><h2>7.关于作者</h2><p>洪涛在互联网、零售、电信领域有多年的从业经验，曾负责中国电信域名纠错平台的开发，也曾为雅虎、腾讯等大型互联网站进行架构设计与开发工作，他善于使用开源技术解决技术难题，作为一个87年生的人，他有着“洪大师”的称号。洪涛目前的兴趣是Symfony2框架在中国的推广和普及。</p><p>读者可以通过他的微博<a href="http://weibo.com/scourgen">@斯考吉恩</a>或邮件（scourgen at gmail dot com）与他取得联系。</p><div class="clearer-space"></div><br><br><br><br><br><br></body></html>
