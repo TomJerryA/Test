@@ -1,18 +1,7 @@
-<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>GCC 4.8发布，完成向C++的迁移</h3><p>GNU编译器集合（GCC）的<a href="http://gcc.gnu.org/gcc-4.8/">最新版本</a>发布，这标志着向C++的迁移已经完成。这一过程持续了多年，GCC团队指出，为了有一个可维护的代码基来吸引并留住新的项目成员，这种迁移是必要的。<a href="http://gcc.gnu.org/wiki/cxx-conversion">之所以选择C++</a>，部分原因是它是标准化的语言，而且 &quot;支持更干净的代码，更容易编写并保证清晰的接口……尽管这并非灵丹妙药，但相对于基于C的遗留代码，的确是种改进”。对大部分开发者来说，最终结果不过是，如果有兴趣从源代码构建GCC 4.8，则必须使用支持C++ 2003的编译器。该版本设计得更为高效，更容易更新，普通用户可以直接受益。</p> 
-<p><b>新的编译器特性</b></p> 
-<p>首先介绍一下通用的编译器改进，该版本“引入了一个新的通用优化层，既满足了快速编译和极佳调试体验的需要，又保证了合理的运行时性能”。此外，4.8包含了用于探测内存错误的<a href="https://code.google.com/p/address-sanitizer/">AddressSanitizer</a>，以及支持插入指令检查数据竞争的<a href="https://code.google.com/p/data-race-test/wiki/ThreadSanitizer">ThreadSanitizer</a>。（ThreadSanitizer目前只能用于x86-64 GNU/Linux。)</p> 
-<p>值得注意的是，该版本还支持64位ARM（AArch64）和32位ARMv8等架构。</p> 
-<p><b>特定于语言的改进</b></p> 
-<p>完成了向C++的迁移，这并不是唯一值得赞赏的成绩，编译器在其他一些方面还有不少改进。GCC目前初步在多种架构上实现了针对GNU/Linux和Solaris等平台的Go 1.1支持。如果使用Fortran和C进行开发的话，也有一些更新值得研究一番。</p> 
-<p>C++用户会看到如下<a href="http://gcc.gnu.org/gcc-4.8/cxx0x_status.html">对C++11支持的改进</a>：</p> 
-<ul> 
- <li>thread_local关键字</li> 
- <li>attribute语法</li> 
- <li>对齐说明符（alignment specifier）</li> 
- <li>继承构造函数</li> 
- <li>forward_list满足了能够感知分配器（allocator-aware）的容器这一需求</li> 
-</ul> 
-<p>与<a href="http://clang.llvm.org/cxx_status.html">Clang 3.2</a>相比，GCC 4.8对C++11的支持也非常不错，而且都领先于最新的<a href="http://www.infoq.com/cn/news/2012/11/nov12CTP;jsessionid=D63B7709600291A2C5C4542B62FB0BE8">Visual C++ Compiler November 2012 CTP</a>。新增了编译选项<i>-std=c++1y</i>，支持对下一个主要标准（<a href="http://isocpp.org/std/status">预计大约在2007年</a>）提出的特性进行实验，这意味着应对未来C++变化的计划已经开始。</p> 
-<p>C++运行时标准库（libstdc++）对C++11有了更大的支持，改进了随机数生成器（包括新的X86处理器上的硬件支持），并加入了新的随机数分布。</p> 
-<p><b>查看英文原文</b>：<b><a href="http://www.infoq.com/news/2013/03/gcc48_released;jsessionid=D63B7709600291A2C5C4542B62FB0BE8">GCC 4.8 Completes Move to C++</a></b></p> 
+<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>BDD工具Cucumber开发团队扩大且修复了大量Bug</h3><p><a href="https://github.com/aslakhellesoy">Aslak Helles&oslash;y</a>在上周举行的<a href="http://skillsmatter.com/event/agile-testing/cukeup-2013">Cucumber会议日</a>上谈论Cucumber生态系统时透露，作为一个行为驱动开发（<a href="http://en.wikipedia.org/wiki/Behavior-driven_development">BDD</a>）工具，<a href="http://cukes.info/">Cucumber</a>项目最近扩充了其开发团队，并且通过过去两个月的突击工作解决了大量的开放bug。</p> 
+<p>谈及一封询问Cucumber是否是一个死项目的email时，该项目的创建者和核心开发者Aslak坦诚地说，该项目在过去两年中确实进行缓慢，这从Ruby版本中持续增长的开放bug数就能看出来。但是事情现在发生了转变，一个新的更加庞大的团队已经形成，同时在过去的两个月里差不多有150个bug已经被关闭，将开放bug的数量降低到了20，将解决bug花费的平均时间缩短为了40天。</p> 
+<p>除了新团队之外，今年的工作重点包括两个方面：设计一个新的Gherkin解析器提升Cucumber的内部质量从而能够更容易地修复报告bug；改善现在过于庞杂的wiki文档。根据计划，wiki将迁移到新的web文档网站，从夏天开始wiki将退出舞台。为了实现这个目标，团队需要社区的帮助，引用Aslak的一句话就是“如果所有使用Cucumber的人都能够贡献一个段落，那么这项工作就能完成”。</p> 
+<p>社区能够帮助解决的另外两个常见的问题是：在Cucumber论坛中回答问题而不是等待“权威的”答案；将与Selenium和Maven等工具相关的问题重定向到正确的论坛。这样能够节省团队的时间，使其专注于代码。</p> 
+<p>Cucumber是一个开源的行为驱动开发（BDD）工具，目前支持9种编程语言，包括Ruby、基于JVM的语言和JavaScript。同时，借助于<a href="http://www.specflow.org/">SpecFlow</a>项目可以使用同样的Gherkin语法支持.NET语言。</p> 
+<p><b>查看英文原文</b>：<a href="http://www.infoq.com/news/2013/04/cucumber-ecosystem;jsessionid=7A2F0F79FF11841E2F9D176464AA71E8"><b>BDD Tool Cucumber with a Larger Team and Numerous Bugs Fixed</b></a></p> 
 <p id="lastElm"></p><br><br><br><br><br><br></body></html>
