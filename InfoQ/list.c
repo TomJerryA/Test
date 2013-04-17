@@ -1,8 +1,8 @@
 <html>
  <head></head> 
- <body>
-  <div>
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/47.c">Entrega Cont&iacute;nua aumenta a velocidade de inova&ccedil;&atilde;o</a>A Thoughtworks publicou recentemente um documento, incluindo um modelo de maturidade para a entrega cont&iacute;nua como uma resposta &agrave; pesquisa que indica que a maioria das empresas entendem a import&acirc;ncia da inova&ccedil;&atilde;o, mas n&atilde;o s&atilde;o capazes de entregar software de forma r&aacute;pida o suficiente para atender as necessidades de seus l&iacute;deres empresariais.
+ <body> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/47.c">Entrega Cont&iacute;nua aumenta a velocidade de inova&ccedil;&atilde;o</a>A Thoughtworks publicou recentemente um documento, incluindo um modelo de maturidade para a entrega cont&iacute;nua como uma resposta &agrave; pesquisa que indica que a maioria das empresas entendem a import&acirc;ncia da inova&ccedil;&atilde;o, mas n&atilde;o s&atilde;o capazes de entregar software de forma r&aacute;pida o suficiente para atender as necessidades de seus l&iacute;deres empresariais. 
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/46.c">AWS se junta &agrave; concorr&ecirc;ncia dos provedores de Cloud e oferece suporte ao Node.js</a>A AWS se juntou ao repleto time de provedores de cloud que oferecem suporte ao Node.js atrav&eacute;s do seu servi&ccedil;o Elastic Beanstalk e tentar&aacute; se diferenciar oferecendo integra&ccedil;&atilde;o com seus principais servi&ccedil;os. 

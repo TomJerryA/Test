@@ -1,17 +1,17 @@
 <html>
  <head></head> 
- <body>
-  <div>
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/29.java">A Merge Tool that Understands Functions</a>Codice Software, maker of Plastic SCM, has released a preview of a semantic merge tool. This tool parses your code, allowing for a more accurate merge than the line-by-line comparisons most tools use. We interviewed Pablo Santos Luaces, Principal Software Engineer of Codice Software.
-  </div>
-  <div>
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/28.java">IntelliJ IDEA 12.1 Lands with JavaFX 2.0 Support</a>JetBrains has begun shipping IntelliJ IDEA 12.1 which sees the IDE gaining full support for JavaFX 2.0, the latest incarnation of the Java client platform. Version 12.1 of popular IDE also includes new features for Gradle, Scala, Groovy and Play Framework users.
-  </div>
-  <div>
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/27.java">Google Releases Mirror API for Glass</a>Google has released the Mirror API for writing Glassware applications and the final specification for Glass devices.
-  </div>
-  <div>
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/26.java">Microsoft Makes Infrastructure Cloud Generally Available, Matches AWS Prices</a>Today, Microsoft took their Infrastructure-as-a-Service (IaaS) cloud product – called Windows Azure Infrastructure Services – out of preview and made it available to the general public. Microsoft is entering a crowded IaaS market but they’ve committed to matching cloud leader Amazon Web Services (AWS) on price while also promising enterprise-class SLAs and services.
+ <body> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/29.java">A Merge Tool that Understands Functions</a>Codice Software, maker of Plastic SCM, has released a preview of a semantic merge tool. This tool parses your code, allowing for a more accurate merge than the line-by-line comparisons most tools use. We interviewed Pablo Santos Luaces, Principal Software Engineer of Codice Software. 
+  </div> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/28.java">IntelliJ IDEA 12.1 Lands with JavaFX 2.0 Support</a>JetBrains has begun shipping IntelliJ IDEA 12.1 which sees the IDE gaining full support for JavaFX 2.0, the latest incarnation of the Java client platform. Version 12.1 of popular IDE also includes new features for Gradle, Scala, Groovy and Play Framework users. 
+  </div> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/27.java">Google Releases Mirror API for Glass</a>Google has released the Mirror API for writing Glassware applications and the final specification for Glass devices. 
+  </div> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/26.java">Microsoft Makes Infrastructure Cloud Generally Available, Matches AWS Prices</a>Today, Microsoft took their Infrastructure-as-a-Service (IaaS) cloud product – called Windows Azure Infrastructure Services – out of preview and made it available to the general public. Microsoft is entering a crowded IaaS market but they’ve committed to matching cloud leader Amazon Web Services (AWS) on price while also promising enterprise-class SLAs and services. 
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/25.java">JSON Validation Roundup</a>Create any “flexible” or “extensible” file format and sooner or later a group of developers will start complaining about validation. For JSON, several options are starting to spring up. 
@@ -150,6 +150,6 @@
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/30.java">Use Canary Deployments to Test in Production</a>Companies use &quot;Canary Deployments&quot; to test software in production by routing a subset of users to new functionality as part of continuous delivery according to Nolio in their 1st video in a series about DevOps Best Practices. A &quot;Canary Deployment&quot; is a type of incremental release performed by deploying a new version of software side by side with its production version counterpart. 
-  </div>     
+  </div> 
  </body>
 </html>

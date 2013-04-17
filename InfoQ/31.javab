@@ -1,0 +1,274 @@
+<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>Ember.js - Web Applications Done Right</h3><p>Last year InfoQ published my article&nbsp;<a href="http://www.infoq.com/articles/emberjs;jsessionid=F2A39DE43940EF82B34C9D2621B4C162">&quot;Ember.js – Rich Web Applications done right”</a>;&nbsp;at the time the code was based on version 0.9.4 of Ember.js, and Ember.js itself was a fairly young project.</p><p>The framework has come a long way since then and it's time to update the article with the state of the art in Ember.js development practices and technologies, in particular the Ember Router.&nbsp;</p><p>The Ember.js API has stabilized a lot with the release of the Ember.js 1.0 Release Candidate 1. This article is based off a fresh build off the master branch (24<sup>th</sup> of March 2013) both for Ember.js and for Ember Data.</p><p>My book <a href="http://www.manning.com/skeie/">&quot;Ember.js in Action&quot;</a> will be published by Manning Publications in the second half of this year. Manning has an early access release available, in which you will be able to get the first four chapters right away, with new chapters coming out moving towards the books release.</p><p>So how has the Ember.js landscape improved? Is Ember.js still the framework for developing single-page web applications the right way?&nbsp;</p><p>These are a couple of questions that I aim to answer though this article. We have a lot of ground to cover, so lets get started! The source code for the application we are building can be found at&nbsp;<a href="https://github.com/joachimhs/Ember-Example/">GitHub</a>.</p><h2>What are we building?</h2><p>We will be building a simple photo-album application in which users will be presented with a row of photographs along the bottom edge of the page. When the user selects one of these photographs, the URL will update to reflect this while the selected photograph will be displayed above the list of thumbnails.</p><p>We will also be adding a simple slideshow function that will transition to the next photograph in the list every 4 seconds.</p><p>The finished application looks like figure 1 below.</p><p>(Click on the image to enlarge it)</p><p class="image-wide"><a href="/resource/articles/Emberjs-Web-Applications/en/resources/fig1-large.jpg;jsessionid=F2A39DE43940EF82B34C9D2621B4C162" _href="resource://fig1-large.jpg"><img align="absBottom" src="http://www.infoq.com/resource/articles/Emberjs-Web-Applications/en/resources/1fig1-small.jpg;jsessionid=F2A39DE43940EF82B34C9D2621B4C162" alt="" _href="img://1fig1-small.jpg" _p="true" /></a></p><p><b>Figure 1 – The finished application</b></p><p>We will start out with a clean slate, and build up the features that we require from our application piece by piece. So lets get started with setting up our application.</p><h2>Project structure and setup</h2><p>The finished source code shown for this application is available via <a href="https://github.com/joachimhs/Ember-Example">GitHub</a>. The source code for the application is located inside the site-directory. You need to start the application so that it will be available without a context path. There are many ways in which you can achieve this, a few simple alternatives are:</p><ul> 
+ <li>Use the asdf-gem to host the current directory. For further instructions see <a href="https://github.com/wycats/asdf">GitHub</a>. Once the gem is installed issue the command “asdf” from the site-directory</li> 
+ <li>Any other webserver that will host your application as <a href="http://localhost/">http://localhost/</a></li> 
+</ul><p>The example project have the structure as shown below in figure 2.</p><p><img vspace="3" hspace="3" align="absBottom" src="http://www.infoq.com/resource/articles/Emberjs-Web-Applications/en/resources/1fig2.jpg;jsessionid=F2A39DE43940EF82B34C9D2621B4C162" alt="" _href="img://1fig2.jpg" _p="true" /></p><p><b>Figure 2 – The Project Structure</b></p><p>All of the external libraries are located in the site/scripts directory. The required libraries are</p><ul> 
+ <li>Ember.js, built on the 24<sup>th</sup> of March 2013</li> 
+ <li>Ember Data, built on the 16<sup>th</sup> of February 2013</li> 
+ <li>Handlebars.js 1.0 RC 3</li> 
+ <li>JQuery 1.9.1</li> 
+</ul><p>Inside the img directory there is a total of 10 image files, that we will use to form our photo album. There is a single CSS file called master.css inside the css directory.</p><p>All of our application logic will be split into separate files inside the app directory. We will start out with the single app.js file. The article will tell you whenever you need to add an additional file to the application.</p><h2>Short introduction to Bindings</h2><p>In Ember.js, Bindings are used to synchronize the values of a variable between objects. Consider code in listing 1 below:</p><pre>
+&lt;!DOCTYPE html PUBLIC &quot;-//W3C//DTD HTML 4.01//EN&quot;
+        &quot;http://www.w3.org/TR/html4/strict.dtd&quot;&gt;
+
+&lt;html lang=&quot;en&quot;&gt;
+&lt;head&gt;
+     &lt;title&gt;Ember.js Example Bindings&lt;/title&gt;
+     &lt;link rel=&quot;stylesheet&quot; href=&quot;css/master.css&quot; type=&quot;text/css&quot; charset=&quot;utf-8&quot;&gt;
+     &lt;script src=&quot;scripts/jquery-1.9.1.min.js&quot; type=&quot;text/javascript&quot; charset=&quot;utf-8&quot;&gt;&lt;/script&gt;
+     &lt;script src=&quot;scripts/handlebars-1.0.0.rc.3.js&quot; type=&quot;text/javascript&quot; charset=&quot;utf-8&quot;&gt;&lt;/script&gt;
+     &lt;script src=&quot;scripts/ember.prod.20130324.js&quot; type=&quot;text/javascript&quot; charset=&quot;utf-8&quot;&gt;&lt;/script&gt;
+     &lt;script type=&quot;text/javascript&quot;&gt;
+         BindingsExample = Ember.Application.create();
+
+         BindingsExample.person = Ember.Object.create({
+             name: 'Joachim Haagen Skeie'
+         });
+
+         BindingsExample.car = Ember.Object.create({
+             ownerBinding: 'BindingsExample.person.name'
+         });
+     &lt;/script&gt;
+
+     &lt;script type=&quot;text/x-handlebars&quot;&gt;
+         &lt;div id=&quot;mainArea&quot;&gt;{{BindingsExample.car.owner}}&lt;/div&gt;
+     &lt;/script&gt;
+
+&lt;/head&gt;
+&lt;body bgcolor=&quot;#555154&quot;&gt;
+
+&lt;/body&gt;
+&lt;/html&gt;</pre><h3><a href="http://github.com/joachimhs/Ember-Example/blob/master/site/bindings.html">Listing 1 - Simple bindings example</a></h3><p>In the code above we are starts out by loading the CSS file before it includes the JavaScript libraries jQuery, Handlebars and Ember.js. The application itself is defined in full from line 10 to 25. It starts out by defining a namespace for the application, <strong>BindingsExample</strong> in this case. The application have two objects defined, one <strong>BindingsExample.person</strong> and one <strong>BindingsExample.car.</strong> Here we are following the Ember.js naming convention, by starting instantiated objects with a lower case letter.</p><p>The <i>name</i> property for the BindingsExample.person object is set to the string “Joachim Haagen Skeie”. Looking at the c<i>ar</i> object, you will notice that it has one property called <strong>ownerBinding</strong>. Because the property name ends in&nbsp;<strong>“Binding”</strong> Ember.js will automatically create an <strong>“owner” </strong>property for you, that is bound to the contents of another property, in this case the <strong>BindingsExample.person.name</strong> property.</p><p>If you load this HTML file in the browser, it will simply print out the value of the BindingsExample.car.owner property, in this case being <strong>“Joachim Haagen Skeie”</strong>.</p><p>The beauty of this approach is that whenever the BindingsExample.person.name property changes, that the contents on the website will also be updated. Try typing the following into your browser's JavaScript console and watch the contents of the displayed website change with it:</p><pre>
+BindingsExample.person.set('name', 'Some random dude')</pre><p>The contents of the displayed webpage will now be&nbsp;<strong>“Some random dude”</strong><i>. </i>With that in mind, it is time to start bootstrapping our example application.</p><h2>Bootstrapping your Ember.js application</h2><p>If you would like to get a feel for what we are building in this example application, you can have a look at the <a href="http://ember-example.haagen.name/">finished application</a>.</p><p>To get started, lets create an empty index.html file, add the directories app, css<i>, </i>img<i> </i>and scripts. Now, create or copy the following files:</p><ul> 
+ <li>Inside you <strong>app</strong> directory, create a single file named <strong>app.js</strong>.</li> 
+ <li>Inside the <strong>css </strong>directory, copy in the <a href="https://github.com/joachimhs/Ember-Example/blob/master/site/css/master.css">file</a>.</li> 
+ <li>Inside the scripts directory, copy in the files from <a href="https://github.com/joachimhs/Ember-Example/tree/master/site/scripts">Github</a>.</li> 
+</ul><p>Lets get started with our index.html file. We will start out with a rather empty file, only referencing our scripts and CSS files as show below in listing 2.</p><pre>
+&lt;!DOCTYPE html PUBLIC &quot;-//W3C//DTD HTML 4.01//EN&quot;
+        &quot;http://www.w3.org/TR/html4/strict.dtd&quot;&gt;
+&lt;html lang=&quot;en&quot;&gt;
+&lt;head&gt;
+    &lt;meta http-equiv=&quot;Content-Type&quot; content=&quot;text/html; charset=utf-8&quot;&gt;
+    &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0, maximum-scale=1.0&quot;&gt;
+
+    &lt;title&gt;Ember.js Example Application&lt;/title&gt;
+    &lt;link rel=&quot;stylesheet&quot; href=&quot;css/master.css&quot; type=&quot;text/css&quot; charset=&quot;utf-8&quot;&gt;
+    &lt;meta name=&quot;author&quot; content=&quot;Joachim Haagen Skeie&quot;&gt;
+    &lt;script src=&quot;scripts/jquery-1.9.1.min.js&quot; type=&quot;text/javascript&quot; charset=&quot;utf-8&quot;&gt;&lt;/script&gt;
+    &lt;script src=&quot;scripts/handlebars-1.0.0.rc.3.js&quot; type=&quot;text/javascript&quot; charset=&quot;utf-8&quot;&gt;&lt;/script&gt;
+    &lt;script src=&quot;scripts/ember.prod.20130324.js&quot; type=&quot;text/javascript&quot; charset=&quot;utf-8&quot;&gt;&lt;/script&gt;
+    &lt;script src=&quot;scripts/ember-data-20130216.js&quot; type=&quot;text/javascript&quot; charset=&quot;utf-8&quot;&gt;&lt;/script&gt;
+    &lt;script src=&quot;app/app.js&quot; type=&quot;text/javascript&quot; charset=&quot;utf-8&quot;&gt;&lt;/script&gt;
+
+    &lt;script type=&quot;text/x-handlebars&quot;&gt;
+
+    &lt;/script&gt;
+&lt;/head&gt;
+&lt;body bgcolor=&quot;#555154&quot;&gt;
+
+&lt;/body&gt;
+&lt;/html&gt;</pre><h3><a href="https://github.com/joachimhs/Ember-Example/blob/master/site/index.html">Listing 2 – Our Initial index.html file</a></h3><p>The first thing we need to do is to create a namespace for our application, which we will place inside app.js. I have decided to create the namespace EME (EMber-Example). Add the following to your app.js file:</p><pre>
+EME = Ember.Application.create({});</pre><h3><a href="https://github.com/joachimhs/Ember-Example/blob/master/site/app/app.js">Listing 3 – Ember-Example namespace (EME)</a></h3><p>The last part, before we move on to defining the object model for our application, is to add some content to the applications CSS file. I would like the application to have a white background, with rounded borders, and I would like the application’s main area to fill the entire screen. Add the following to your css/master.css file.</p><pre>
+#mainArea {
+    border-radius: 25px;
+    -moz-bottomleft: 25px;
+    padding: 15px;
+    margin-top: 5px;
+    background: #fff;
+    text-align: left;
+    position: absolute;
+    top: 5px;
+    left: 5px;
+    right: 5px;
+    bottom: 5px;
+    z-index:1;
+}</pre><h3><a href="https://github.com/joachimhs/Ember-Example/blob/master/site/css/master.css">Listing 4 – CSS for the application mainArea</a></h3><p>&nbsp;In order to render a div element with the id &quot;mainArea&quot;, we will extend the application template, which you will find inside index.html between the two empty script-tags of type text/x-handlebars. Listing 5 below shows the end result.</p><pre>
+    &lt;script type=&quot;text/x-handlebars&quot;&gt;
+       &lt;div id=&quot;mainArea&quot;&gt;&lt;/div&gt;
+    &lt;/script&gt;</pre><h3><a href="https://github.com/joachimhs/Ember-Example/blob/master/site/index.html">Listing 5 – Adding a div-element to hold our application</a></h3><p>You can now refresh your page. You should see an empty white area with rounded corners covering most of the screen. With that in place, its time to start defining a model for our Photographs.</p><h2>Defining your object model with Ember Data</h2><p>At this point we first need to add ember-data to our list of included scripts into your index.html file, if you haven’t done so already.</p><p>To start out with Ember.js, we need to initialize the data store. Open up app/app.js and add the lines shown in listing 6 below.</p><pre>
+EME.store = DS.Store.create({
+    adapter: &quot;DS.RESTAdapter&quot;,
+    revision: 11
+});</pre><h3><a href="https://github.com/joachimhs/Ember-Example/blob/master/site/app/app.js">Listing 6 – Creating the Datastore</a></h3><p>As you can see, we are creating a new DS.Store object, called EME.store. We need to tell the datastore two pieces of information. The first is the Ember Data revision number and the second is which adapter we will use. The revision number is there to ensure that you will be notified whenever breaking changes occur in Ember Data. Because Ember Data has not reached a finalized and stable 1.0 API yet, breaking changes will occur from time to time when the API evolves, moving towards a final release. We will be using the DS.RESTAdapter to interface with the backend throughout this application.</p><p>For this application we will only require one type of data – a photograph – which will have three properties, an id, a title and a URL. The photograph data model is defined by by extending DS.Model. Create the file models/photo_model.js and add the code from listing 7 below.</p><pre>
+EME.Photo = DS.Model.extend({
+    imageTitle: DS.attr('string'),
+    imageUrl: DS.attr('string')
+});</pre><h3><a href="https://github.com/joachimhs/Ember-Example/blob/master/site/app/models/photo_model.js">Listing 7 – The Photograph Model Object</a></h3><p>You may note that we haven’t actually defined an &quot;id&quot; property. This is due to the fact that Ember Data will create one for us. In fact it won’t even allow you to specify one manually. In addition, we have defined two properties &quot;imageTitle&quot; and &quot;imageUrl&quot;, both of which are defined as strings via DS.attr('string') .</p><p>Now, with that out of the way, it is time to think about how we are going to structure our application, as well as how we are going to define our applications URLs.</p><h2>Structuring our application via the Ember Router</h2><p>In the previous article, we used the Ember StateManager to structure the application states. Since then the StateManager has been replaced with a more thorough implementation named Ember Router. Ember Router serves the same purpose, but it will generate a lot of the boilerplate code automatically for you at runtime using sane defaults that is easy to override when necessary.</p><p>The first thing we need to define in our application is the routes that our application will be built up with. You can think of a route as a state that the user can be in . Each route will have its own clearly defined URL. Ember.js will generate controllers, view and template automatically for you, which is convenient. Whenever you find yourself needing more than the basic pre-defined functionality you simply create you own implementation and Ember.js will automatically substitute your code in place of the generated code.</p><p>For the Photo album we require a total of three routes:</p><ul> 
+ <li>An Index Route that responds to the “/” URL</li> 
+ <li>A Photos Route that responds to the “/photos” URL</li> 
+ <li>A Selected Photo Route that responds to the “/photos/:photo_id” route.</li> 
+</ul><p>As I mentioned, Ember.js will happily generate all of the above for us, but first we need to tell Ember.js which routes we want our application to have. We do this by simply implementing EME.Router.map() as shown below in listing 8. Create a new file called router.js and add the following code to it.</p><pre>
+EME.Router.map(function() {
+    this.route(&quot;index&quot;, {path: &quot;/&quot;});
+    this.resource(&quot;photos&quot;, {path: &quot;/photos&quot;}, function() {
+        this.route(&quot;selectedPhoto&quot;, {path: &quot;:photo_id&quot;})
+    });
+});</pre><h3><a href="https://github.com/joachimhs/Ember-Example/blob/master/site/app/router.js">Listing 8 – Defining the Application Routes</a></h3><p>As you can see there are two different types of constructs that we can use inside the map() function, route() representing final routes and resource() representing a route that can contain sub routes. We are defining two top-level routes, one named index that responds to the “/” URL, as well as a resource called photos that responds to the “/photos” URL. In addition we are creating a sub route called selectedPhoto that will respond to the “/photos/:photo_id” URL. The Ember Router uses URL attributes prepended with a colon to indicate a dynamic part. Ember Router will replace this dynamic part later when it updates the applications URL.</p><p>Note also, that in Ember Router's naming conventions, :photo_id refers to the &quot;id&quot; property on the EME.Photo model object.</p><p>Because we won’t be having anything to display inside the index route, we will simply redirect from the index route to the photos route in case the user requests the “/” URL directly. We can do this by creating an EME.IndexRoute class as shown below in listing 9. Add this to the router.js file.</p><pre>
+EME.IndexRoute = Ember.Route.extend({
+    redirect: function() {
+        this.transitionTo('photos');
+    }
+});</pre><h3><a href="https://github.com/joachimhs/Ember-Example/blob/master/site/app/router.js">Listing 9 – Redirecting from the Index to the Photos route</a></h3><p>In the code above we are using the route’s redirect function in order to redirect to the route named photos, using the transitionTo() function.</p><h2>Fetching the Photos from the Backend using Ember Data</h2><p>The final piece of code required for our router in order to be able to show any photos is to tell what data the photos route will be using to draw its data. Extend router.js with the code shown below in listing 10.</p><pre>
+EME.PhotosRoute = Ember.Route.extend({
+    model: function() {
+        return EME.Photo.find();
+    }
+});</pre><h3><a href="https://github.com/joachimhs/Ember-Example/blob/master/site/app/router.js">Listing 9 – Redirecting from the Index to the Photos route</a></h3><p>In the code above, we are relying on Ember Data to fetch all of the EME.Photo objects from the server asynchronously. Once the server has responded, EME.PhotosRoute will populate the automatically generated PhotosController with the data returned. Note that, we could have asked for a specific photograph from the server by specifying an id to the find() function, EME.Photo.find(1), but for our purpose, fetching all photos is sufficient.</p><p>Because our model class is named <strong>EME.Photos</strong>, Ember Data will, by default, look for the data for this model via the URL “/photos”, the contents of which is shown below in listing 10.</p><pre>
+{ &quot;photos&quot;: [
+    { &quot;id&quot;: 1, &quot;image_title&quot;: &quot;Bird&quot;, &quot;image_url&quot;: &quot;img/bird.jpg&quot;},
+    { &quot;id&quot;: &quot;2&quot;, &quot;image_title&quot;: &quot;Dragonfly&quot;, &quot;image_url&quot;: &quot;img/dragonfly.jpg&quot;},
+    { &quot;id&quot;: &quot;3&quot;, &quot;image_title&quot;: &quot;Fly&quot;, &quot;image_url&quot;: &quot;img/fly.jpg&quot;},
+    { &quot;id&quot;: &quot;4&quot;, &quot;image_title&quot;: &quot;Frog&quot;, &quot;image_url&quot;: &quot;img/frog.jpg&quot;},
+    { &quot;id&quot;: &quot;5&quot;, &quot;image_title&quot;: &quot;Lizard&quot;, &quot;image_url&quot;: &quot;img/lizard.jpg&quot;},
+    { &quot;id&quot;: &quot;6&quot;, &quot;image_title&quot;: &quot;Mountain 1&quot;, &quot;image_url&quot;: &quot;img/mountain.jpg&quot;},
+    { &quot;id&quot;: &quot;7&quot;, &quot;image_title&quot;: &quot;Mountain 2&quot;, &quot;image_url&quot;: &quot;img/mountain2.jpg&quot;},
+    { &quot;id&quot;: &quot;8&quot;, &quot;image_title&quot;: &quot;Panorama&quot;, &quot;image_url&quot;: &quot;img/panorama.jpg&quot;},
+    { &quot;id&quot;: &quot;9&quot;, &quot;image_title&quot;: &quot;Sheep&quot;, &quot;image_url&quot;: &quot;img/sheep.jpg&quot;},
+    { &quot;id&quot;: &quot;10&quot;, &quot;image_title&quot;: &quot;Waterfall&quot;, &quot;image_url&quot;: &quot;img/waterfall.jpg&quot;}
+]}</pre><h3><a href="https://github.com/joachimhs/Ember-Example/blob/master/site/photos">Listing 10 – The Sample Photo Data</a></h3><p>This is all well and good, but having the photos loaded doesn’t do us any good without any code to actually display them. So lets get started with defining some templates for our application.</p><h2>Creating the Application Templates</h2><p>Ember.js uses Handlebars.js as its default templating engine. We will, in total define four templates. We have already seen the application template above in listing 5, but it is missing one crucial item, an outlet into which it can draw the current route’s template. So lets get started by extending the application template with an outlet, as shown below in listing 11.</p><pre>
+&lt;script type=&quot;text/x-handlebars&quot;&gt;
+    &lt;div id=&quot;mainArea&quot;&gt;
+        {{outlet}}
+    &lt;/div&gt;
+&lt;/script&gt;</pre><h3><a href="https://github.com/joachimhs/Ember-Example/blob/master/site/index.html">Listing 11 – Extending the Application Template with an Outlet</a></h3><p>An outlet is simply defined via the {{outlet}} handlebars expression and it is used to tell Ember.js exactly where that template expects to draw sub templates. The contents of this template will change depending on which route is the current viewed route. For the index route this outlet will contain the index template while for the photos resource this outlet will contain the photos template.</p><p>Now that we have a place to draw the list of photo thumbnails, lets define the photos template, shown below in listing 12.</p><pre>
+   &lt;script type=&quot;text/x-handlebars&quot; id=&quot;photos&quot;&gt;
+       {{outlet}}
+
+       &lt;div class=&quot;thumbnailViewList&quot;&gt;
+           {{#each photo in controller}}
+           &lt;div class=&quot;thumbnailItem&quot;&gt;
+               {{#linkTo photos.selectedPhoto photo}}
+                   {{view EME.PhotoThumbnailView
+                        srcBinding=&quot;photo.imageUrl&quot;
+                        contentBinding=&quot;photo&quot;}}
+                   {{/linkTo}}
+            &lt;/div&gt;
+            {{/each}}
+       &lt;/div&gt;
+    &lt;/script&gt;</pre><h3><a href="https://github.com/joachimhs/Ember-Example/blob/master/site/index.html">Listing 12 – Defining the photos template</a></h3><p>There are a couple of new things to note in the example above. The first is the fact that the text/x-handlebars script tag has an &quot;id&quot; attribute. This id attribute tells Ember.js that what this template is named, and this name – photos – tells Ember.js that this template belongs to the PhotosRoute. As long as you keep to the standard naming convention Ember.js is nice enough to take care of the rest.</p><p>The first thing we define in our template is an {{outlet}} into which we can draw whichever photograph is the selected photograph. Next, we define a div-element into which we can draw each of our thumbnails. In order to iterate over each of the photos, loaded into the PhotosController we are using the {{#each photo in controller}} handlebars expression. Inside the each-loop we are using the {{#linkTo ..}} expression to link each photograph up with the selectedPhoto route. Note that we are both specifying which route to link to (via the parent-route.sub.route construct), as well as specifying a context that Ember.js will pass into this route. In our case this context is simply the photograph that the user clicks on.</p><p>We have created a custom view to render each of the thumbnails. Create the file views/photo_thumbnail_view.js, the contents of which are shown below in listing 13.</p><pre>
+EME.PhotoThumbnailView = Ember.View.extend({
+    tagName: 'img',
+    attributeBindings: ['src'],
+    classNames: ['thumbnailItem'],
+    classNameBindings: 'isSelected',
+
+    isSelected: function() {
+        return this.get('content.id') === 
+this.get('controller.controllers.photosSelectedPhoto.content.id');
+    }.property('controller.controllers.photosSelectedPhoto.content', 'content')
+});</pre><h3><a href="https://github.com/joachimhs/Ember-Example/blob/master/site/app/views/photo_thumbnail_view.js">Listing 13 – Creating a Custom View for the Thumbnails</a></h3><p>The PhotoThumbnailView starts out by specifying that this view will be rendered as an img tag via the tagName property. It then binds up the src-attribute before specifying the CSS class thumbnailItem for this tag.</p><p>We want to make the selected photograph larger than the other photographs to make it clear to the user which photograph is selected. In order to append a custom is-selected CSS class to the selected property we are using the classNameBindings property. This will simply append the CSS class is-selected to the view if the isSelected computed property returns true, which it only does if the views photo id is the same as the selected photos id.</p><p>The only template missing from our application at this point is the template that renders the selected photo. Because this route is a sub route of the photos resource, it will have an id of photos/selectedPhoto. Listing 14 below shows the selectedPhoto template.</p><pre>
+&lt;script type=&quot;text/x-handlebars&quot; id=&quot;photos/selectedPhoto&quot;&gt;
+    &lt;div id=&quot;selectedPhoto&quot;&gt;
+        &lt;h1&gt;{{imageTitle}}&lt;/h1&gt;
+
+        &lt;div class=&quot;selectedPhotoItem&quot;&gt;
+            &lt;img id=&quot;selectedImage&quot; {{bindAttr src=&quot;imageUrl&quot;}}/&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+&lt;/script&gt;</pre><h3><a href="https://github.com/joachimhs/Ember-Example/blob/master/site/index.html">Listing 14 –The Selected Photo Template</a></h3><p>There is nothing new going on in this template, as it simply renders a div-element to place the selected photograph in, into which it renders the title and the photo.</p><p>At this point you can reload the application. The end result will look something like figure 3 below.</p><p>(Click on the image to enlarge it)</p><p class="image-wide"><a href="/resource/articles/Emberjs-Web-Applications/en/resources/fig3-large.jpg;jsessionid=F2A39DE43940EF82B34C9D2621B4C162" _href="resource://fig3-large.jpg"><img vspace="3" hspace="3" align="absBottom" src="http://www.infoq.com/resource/articles/Emberjs-Web-Applications/en/resources/fig3-small.jpg;jsessionid=F2A39DE43940EF82B34C9D2621B4C162" alt="" _href="img://fig3-small.jpg" _p="true" /></a></p><p><b>Figure 3 – The Photo album so far</b></p><p>You may notice that the currently selected photograph is not highlighted, nor is it larger than the other thumbails. The reason for this is that we need to specify a controller for both the photos route and for the selectedPhotos route. In addition we need to link these controllers together in order for our PhotoThumbnailView to resolve the isSelected computed property correctly. So lets go ahead and implement these two controllers.</p><h2>Defining Controllers</h2><p>At this point we will define customized controllers for the photos resource and for the selectedPhoto route. In addition we will need to link the photos controller up with the selectedPhoto controller. Lets start by creating a new file controllers/photos_controller.js, shown below in listing 15.</p><pre>
+EME.PhotosController = Ember.ArrayController.extend({
+    needs: ['photosSelectedPhoto'],
+});</pre><h3><a href="https://github.com/joachimhs/Ember-Example/blob/master/site/app/controllers/photos_controller.js">Listing 15 –The PhotosController</a></h3><p>As you can see, there is not much going on inside this controller at this point in time. Because we have defined the controller to be an Ember.ArrayController, Ember.js takes care of proxying our list of photos out to the template, as well as handling any bindings or other controller-issues. The only thing we need to specify is the fact that this controller needs the photosSelectedPhotoController. Because we have specified an explicit relationship between the controllers, we will also need to create the controller we are referring to. Create a new file controllers/selected_photo_controller.js, the content of which is shown below in listing 16.</p><pre>
+EME.PhotosSelectedPhotoController = Ember.ObjectController.extend({});</pre><h3><a href="https://github.com/joachimhs/Ember-Example/blob/master/site/app/controllers/selected_photo_controller.js">Listing 16 –The PhotosSelectedPhotoController</a></h3><p>Because we aren’t implementing any custom logic for this controller, its enough to declare it, specifying that the controller is an Ember.ObjectController, meaning that it will serve as a proxy for a single photograph.</p><p>Refreshing the application, as shown below in figure 4, reveals that the selected photograph is now highlighted as we expected.</p><p>(Click on the image to enlarge it)</p><p class="image-wide"><a href="/resource/articles/Emberjs-Web-Applications/en/resources/fig4-large.jpg;jsessionid=F2A39DE43940EF82B34C9D2621B4C162" _href="resource://fig4-large.jpg"><img vspace="3" hspace="3" align="absBottom" src="http://www.infoq.com/resource/articles/Emberjs-Web-Applications/en/resources/fig4-small.jpg;jsessionid=F2A39DE43940EF82B34C9D2621B4C162" alt="" _href="img://fig4-small.jpg" _p="true" /></a></p><p><b>Figure 4 – The Result After Adding The Controllers</b></p><p>The final piece of the application is a set of control buttons that allow the user to navigate to the next and to the previous photograph, as well as starting and stopping a slideshow.</p><h2>Adding Control Buttons and Slide Show Functionality</h2><p>We are going to add a four buttons below the selected photograph to control which photo is selected. The “Play” button will start a slideshow and change the selected photo each 4 seconds. The “Stop” button will stop the started slideshow, while the “Next” and “Prev” buttons will select the next photo and previous photo respectively. Lets start by adding a template to hold the control buttons called photoControls, shown below in listing 17.</p><pre>
+&lt;script type=&quot;text/x-handlebars&quot; id=&quot;photoControls&quot;&gt;
+    &lt;div class=&quot;controlButtons&quot;&gt;
+        &lt;button {{action playSlideshow}}&gt;Play&lt;/button&gt;
+        &lt;button {{action stopSlideshow}}&gt;Stop&lt;/button&gt;
+        &lt;button {{action prevPhoto}}&gt;Prev&lt;/button&gt;
+        &lt;button {{action nextPhoto}}&gt;Next&lt;/button&gt;
+   &lt;/div&gt;
+&lt;/script&gt; </pre><h3><a href="https://github.com/joachimhs/Ember-Example/blob/master/site/index.html">Listing 17 –The Selected Photo Template</a></h3><p>This template simply creates four buttons. To each of the buttons it attaches an appropriate action, for which we will implement action functions later. First we need to tell the application where to render this photoControls template. We will render this template directly beneath the selected photograph, so it makes sense to specify this just after the {{outlet}} in the photos template, as shown in listing 18 below.</p><pre>
+&lt;script type=&quot;text/x-handlebars&quot; id=&quot;photos&quot;&gt;
+        &lt;div&gt;Disclamer: The photographs used for this example application is under 
+Copyright to Joachim Haagen Skeie.
+            You are allowed to use the photographs while going through this example 
+application. The source code itself
+            is released under the MIT licence.
+        &lt;/div&gt;
+        {{outlet}}
+<b>        {{render photoControls}} </b>
+        &lt;div class=&quot;thumbnailViewList&quot;&gt;
+            {{#each photo in controller}}
+            &lt;div class=&quot;thumbnailItem&quot;&gt;
+                {{#linkTo photos.selectedPhoto photo}}
+                    {{view EME.PhotoThumbnailView
+                        srcBinding=&quot;photo.imageUrl&quot;
+                        contentBinding=&quot;photo&quot;}}
+                    {{/linkTo}}
+            &lt;/div&gt;
+            {{/each}}
+        &lt;/div&gt;
+    &lt;/script&gt; </pre><h3><a href="https://github.com/joachimhs/Ember-Example/blob/master/site/index.html">Listing 18 –Adding the photoControls to the Application</a></h3><p>Next, we need to define action functions for our four buttons. Because we are using the {{render}} expression, we are able to create a PhotoControls controller and make Ember.js automatically use this controller as the controller for the photoControls template. Create a new file controllers/photo_controls_controller.js with the contents of listing 19 below.</p><pre>
+EME.PhotoControlsController = Ember.Controller.extend({
+    needs: ['photos', 'photosSelectedPhoto'],
+
+    playSlideshow: function() {
+        console.log('playSlideshow');
+    },
+
+    stopSlideshow: function() {
+        console.log('stopSlideshow');
+    },
+
+    nextPhoto: function() {
+        console.log('nextPhoto');
+    },
+    prevPhoto: function() {
+        console.log('prevPhoto');
+    }
+}); </pre><h3><a href="https://github.com/joachimhs/Ember-Example/blob/master/site/app/controllers/photo_controls_controller.js">Listing 19 –Adding a PhotoControlsController to Handle Events</a></h3><p>If you reload the application now, and bring up the browsers console, you should see a new line being logged to the console each time you click one of the four buttons.</p><p>Note that we have specified that this controller needs both the photosController and the photosSelectedPhoto. The reason for this is that we don’t want to implement the contents of these action functions inside this controller. Rather, we want to delegate some of these to the other controllers, where this responsibility makes more sense. Both the nextPhoto and the prevPhoto make more sense in the PhotosController, so lets update the code to delegate the actions to this controller, shown below in listing 20.</p><pre>
+nextPhoto: function() {
+    console.log('nextPhoto');
+    this.get('controllers.photos').nextPhoto();
+},
+
+prevPhoto: function() {&lt;
+    console.log('prevPhoto');
+    this.get('controllers.photos').prevPhoto();
+}</pre><h3><a href="https://github.com/joachimhs/Ember-Example/blob/master/site/app/controllers/photo_controls_controller.js">Listing 19 – Delegating Events to the PhotosController</a></h3><p>As you can see, we are simply delegating to functions on the PhotosController. But before we have a closer look at the implementation those functions, lets finish this controller first by implementing the slideshow slideshow functionality, as shown below in listing 20.</p><pre>
+    playSlideshow: function() {
+        console.log('playSlideshow');
+        var controller = this;
+        controller.nextPhoto();
+        this.set('slideshowTimerId', setInterval(function() {
+            Ember.run(function() {
+                controller.nextPhoto();
+            });
+        }, 4000));
+    },
+
+    stopSlideshow: function() {
+        console.log('stopSlideshow');
+        clearInterval(this.get('slideshowTimerId'));
+        this.set('slideshowTimerId', null);
+    }</pre><h3><a href="https://github.com/joachimhs/Ember-Example/blob/master/site/app/controllers/photo_controls_controller.js">Listing 20 – Adding Slideshow Functionality</a></h3><p>There are a couple of things to note here. First off, when the user clicks on the play button, the playSlideshow() function will immediately trigger the nextPhoto() function in order to select the next photograph. It then starts a timer using the setInterval() function built into JavaScript. This function returns an id which we can use to return clear the interval later on, so we are making sure that we store this id in the PhotoControlsControllers slideshowTimerId property.</p><p>Because we don’t control when the timer executes the callback function, and because we want to ensure that we are executing this callback as part of the Ember.js run-loop we need to wrap the contents of the callback into Ember.run().</p><p>The final piece missing in our application at this point is the implementation of the nextPhoto and prevPhoto functions. I will only show the implementation of the nextPhoto here, because their implementation is almost identical. Listing 21 shows the nextPhoto implementation.</p><pre>
+    nextPhoto: function() {
+        var selectedPhoto = null;
+        if (!this.get('controllers.photosSelectedPhoto.content')) {
+            this.transitionToRoute(&quot;photos.selectedPhoto&quot;, 
+                this.get('content.firstObject'));
+        } else {
+            var selectedIndex = this.findSelectedItemIndex();
+
+            if (selectedIndex &gt;= (this.get('content.length') - 1)) {
+                selectedIndex = 0;
+            } else {
+                selectedIndex++;
+            }
+
+            this.transitionToRoute(&quot;photos.selectedPhoto&quot;, 
+               this.get('content').objectAt(selectedIndex))
+        }
+   }</pre><h3><a href="https://github.com/joachimhs/Ember-Example/blob/master/site/app/controllers/photos_controller.js">Listing 21 –The nextPhoto() function</a></h3><p>If there is no photograph selected, the function will simply display the first photograph in the list. It accomplishes this by transitioning to the photos.selectedPhoto route using the content.firstObject property.</p><p>If a photograph is selected already, we need to find out which index the selected photograph has inside the content array. We do this by calling the findSelectedItemIndex() function, the contents of which is shown below in listing 22.</p><p>Once the index of the currently selected photograph is found, we need to increment the selected index. The only exception is in the case where the very last photograph is selected, in which case we want to select the first photograph in the content array.</p><p>When the index of the photograph we want to transition to has been determined, we can simply transition to the photos.selectedPhoto using that photograph as the context.</p><pre>
+    findSelectedItemIndex: function() {
+        var content = this.get('content');
+        var selectedPhoto = this.get('controllers.photosSelectedPhoto.content');
+
+        for (index = 0; index &lt; content.get('length'); index++) {
+            if (this.get('controllers.photosSelectedPhoto.content') === 
+content.objectAt(index)) {
+                return index;
+            }
+        }
+
+        return 0;
+    }</pre><h3><a href="https://github.com/joachimhs/Ember-Example/blob/master/site/app/controllers/photos_controller.js">Listing 22 –The findSelectedItemIndex() function</a></h3><p>There should be no surprises in the code for the findSelectedItemIndex(). It simply iterates across the content array until it finds the selected photograph. If it is unable to find a photograph, it simply returns the index of the first photograph in the content array.</p><p>Normally I would not add my Adapter to my <i>app.js</i> file, but rather to its own .js file. This makes it easier to find the Adapter code later on when you want to change your implementation.</p><h2>Conclusion</h2><p>What Ember.js brings to the table is a clean and consistent application development model. It makes it very easy to create your own template views that are easy to understand, create and update. Coupled with its consistent way of managing Bindings and computed properties, Ember.js does indeed offer much of the boilerplate code that a web framework needs, and because it is so obvious which technology is in use and how the DOM tree gets updated its also very easy to add on other third party add-ons and plugins.</p><p>Ember.js’ naming conventions mean that you only have to specify and implement classes when the defaults Ember.js provides aren’t sufficient. What you end up with is a clean codebase that is easy to test and, most importantly, easy to maintain.</p><p>Hopefully this article has given you a better understanding of the Ember.js development model and you are left with a clear view on how you can leverage Ember.js for your next project.&nbsp;</p><p>All of the concepts and constructs that are used in this article, and more, will be covered in detail in <a href="http://www.manning.com/skeie/">&quot;Ember.js in Action&quot;</a>. This book is currently available via Manning Publications Early Access Program, meaning that you can get a head start at the books content right away.&nbsp;</p><h2>About the Author</h2><p><b><img vspace="3" hspace="3" align="left" src="http://www.infoq.com/resource/articles/Emberjs-Web-Applications/en/resources/jhs.jpg;jsessionid=F2A39DE43940EF82B34C9D2621B4C162" alt="" _href="img://jhs.jpg" _p="true" />Joachim Haagen Skeie</b> is the owner at <a href="http://haagen-software.no/">Haagen Software AS</a> in Oslo, Norway where he works as an independent consultant and course instructor. He has a keen interest in both application profiling and open source software. Through his company he is currently busy bootstrapping the <a href="https://github.com/joachimhs/EurekaJ/">EurekaJ Application Monitoring Tool</a>. He can be contacted via <a href="http://twitter.com/#%21/joachimhs">his Twitter account</a>, or via email joachim (at) haagen-software.no. If you are interested in getting together with other Ember.js developers from around Europe, Joachim is leading the organizing team behind <a href="http://emberfest.eu/">Ember Fest</a>, a mini-conference in Munich, Germany in August.</p><div class="clearer-space"></div><br><br><br><br><br><br></body></html>
