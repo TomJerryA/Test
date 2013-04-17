@@ -1,8 +1,8 @@
 <html>
  <head></head> 
- <body>
-  <div>
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/48.c">DevCamp: um novo evento na regi&atilde;o de Campinas</a>Nos dias 10 e 11 de maio, em Campinas-SP, acontecer&aacute; a primeira edi&ccedil;&atilde;o do Devcamp, confer&ecirc;ncia com objetivo de promover o compartilhamento de experi&ecirc;ncias e a democratiza&ccedil;&atilde;o da informa&ccedil;&atilde;o entre a comunidade e incluir definitivamente Campinas no cen&aacute;rio dos grandes eventos de TI do Brasil.
+ <body> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/48.c">DevCamp: um novo evento na regi&atilde;o de Campinas</a>Nos dias 10 e 11 de maio, em Campinas-SP, acontecer&aacute; a primeira edi&ccedil;&atilde;o do Devcamp, confer&ecirc;ncia com objetivo de promover o compartilhamento de experi&ecirc;ncias e a democratiza&ccedil;&atilde;o da informa&ccedil;&atilde;o entre a comunidade e incluir definitivamente Campinas no cen&aacute;rio dos grandes eventos de TI do Brasil. 
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/47.c">Entrega Cont&iacute;nua aumenta a velocidade de inova&ccedil;&atilde;o</a>A Thoughtworks publicou recentemente um documento, incluindo um modelo de maturidade para a entrega cont&iacute;nua como uma resposta &agrave; pesquisa que indica que a maioria das empresas entendem a import&acirc;ncia da inova&ccedil;&atilde;o, mas n&atilde;o s&atilde;o capazes de entregar software de forma r&aacute;pida o suficiente para atender as necessidades de seus l&iacute;deres empresariais. 

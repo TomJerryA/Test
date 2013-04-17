@@ -1,6 +1,9 @@
 <html>
  <head></head> 
- <body> 
+ <body>
+  <div>
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/33.java">LeanSentry Adds Smart Alerts, Error Highlighting and Classic ASP Support</a>LeanSentry, formerly Sentinel has been updated with support for smart alerts, error highlighting, enhanced dashboard, classic ASP support in addition to several diagnostics features.
+  </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/32.java">Asynchronous Gotchas in C#</a>Sometimes the best way to understand pitfalls in one language is to see how another language prevents them. Tomas Petricek, author of Real-World Functional Programming, discusses seven common mistakes found in asynchronous C# code and demonstrates how F# makes them less likely to occur. 
   </div> 
@@ -147,9 +150,6 @@
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/34.java">Release Cadence Report - Survey Launched</a>Ryan Cromwell has released the Release Cadence Report Survey. Based on the premise that the rate at which software is released is one of the most important metrics teams should be monitoring and reporting on he has launched a survey which examines five areas of team activities. The survey will remain open until 24 May 2013, following which the results will be made available to the community. 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/33.java">WCF Data Services 5.4.0 Released with Client Hooks and Instance Annotations on Atom Payloads</a>Microsoft has announced the availability of WCF Data Services 5.4.0 release candidate with new features and several bug fixes. 
-  </div> 
+  </div>  
  </body>
 </html>
