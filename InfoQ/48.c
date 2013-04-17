@@ -1,0 +1,10 @@
+<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>DevCamp: um novo evento na região de Campinas</h3><p>Nos dias 10 e 11 de maio, em Campinas-SP, acontecer&aacute; a primeira edi&ccedil;&atilde;o do <a href="http://www.devcamp.com.br/">Devcamp</a>, confer&ecirc;ncia com objetivo de promover o compartilhamento de experi&ecirc;ncias e a democratiza&ccedil;&atilde;o da informa&ccedil;&atilde;o entre a comunidade e incluir definitivamente Campinas no cen&aacute;rio dos grandes eventos de TI do Brasil.</p> 
+<p>Com boa parte da <a href="http://www.devcamp.com.br/programacao.php">programa&ccedil;&atilde;o</a> definida, o evento contar&aacute; mais de 20 apresenta&ccedil;&otilde;es de palestrantes renomados no cen&aacute;rio nacional e ser&aacute; dividido em tr&ecirc;s trilhas:</p> 
+<ul> 
+ <li>Dev Roots: com palestras direcionadas a desenvolvedores e com assuntos diretamente ligados a programa&ccedil;&atilde;o e arquitetura;</li> 
+ <li>Al&eacute;m do c&oacute;digo: com assuntos que afetam o dia-a-dia do desenvolvimento de software mas extrapolam as linhas de c&oacute;digo;</li> 
+ <li>Se liga nisso: com palestras de profissionais altamente reconhecidos no mercado falando sobre sua trajet&oacute;ria e palestras de temas inovadores que ser&atilde;o tend&ecirc;ncia no mercado de TI.</li> 
+</ul> 
+<p>Entre as palestras confirmadas, est&atilde;o nomes conhecidos como Paulo Silveira, Alexandre Freire, Rafael Buzon, Bill Coutinho, Luca Bastos, Fabio Lima Santos, Leandro Guimar&atilde;es e Manoel Pimentel.</p> 
+<p>As inscri&ccedil;&otilde;es est&atilde;o com valor promocional at&eacute; 21 de abril, e o evento ocorrer&aacute; no Centro de Conven&ccedil;&otilde;es da Unicamp, a partir das 8:30 da manh&atilde;. Novidades do evento podem ser acompanhadas pela conta no Twitter <a href="https://twitter.com/DevCampinas">@devcamp</a> e no <a href="http://www.devcamp.com.br/">site</a>.</p> 
+<p id="lastElm"></p><br><br><br><br><br><br></body></html>
