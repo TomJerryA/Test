@@ -1,6 +1,9 @@
 <html>
  <head></head> 
- <body> 
+ <body>
+  <div>
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/42.htmlb">书评：Java应用架构</a>《Java应用架构：以OSGi为例讲解模块化模式》是Kirk Knoernschild编写的一本优秀图书，它列出了模块化系统设计的模式。在本书的开始讲述了模块化的概要理由，主体部分介绍了模块化开发的18个模式列表，最后是一个OSGi的例子。InfoQ与Kirk进行了交流以了解本书的更多情况。
+  </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/41.htmlb">多设备企业环境下的C++</a>无论是在谈话、社交网络还是和一些产业文章中，你一定听说过在企业内部支持多设备的需求。像BYOD（自带设备）这样的词条已出现在多数文章和企业战略中。企业组织需要支持大量类型的设备，以便使员工更有工作效率。现代企业同时要支持包括多层系统、云计算、REST和SOAP web services等更多类型的软件架构。 
   </div> 

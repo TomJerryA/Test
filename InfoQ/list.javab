@@ -1,8 +1,8 @@
 <html>
  <head></head> 
- <body>
-  <div>
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/31.javab">Ember.js - Web Applications Done Right</a>This article explains the Ember.js application development model and shows how to use it to build your first client-side JavaScript web application with the framework.
+ <body> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/31.javab">Ember.js - Web Applications Done Right</a>This article explains the Ember.js application development model and shows how to use it to build your first client-side JavaScript web application with the framework. 
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/30.javab">Agile Software Architecture Sketches and NoUML</a>Understanding the software architecture of what you're building can prevent chaos and encourage collective code ownership. But how do you do this without resorting to big design up front and UML? 

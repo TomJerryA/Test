@@ -1,0 +1,80 @@
+<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>书评：Java应用架构</h3><p>《Java应用架构：以OSGi为例讲解模块化模式》（Java Application Architecture: Modularity Patterns with Examples using OSGi）是Kirk Knoernschild编写的一本优秀图书，它通过18个模式列表来讲解怎样在应用程序的设计中实现模块化设计。</p><p>本书的第一部分介绍了使用模块化的理由，这是通过介绍运行时和开发时的模块化支持进行的。接下来，介绍了它是如何在设计时能够有利于架构并展现了怎样与面向服务的架构进行集成。最后，会有一个参考样例来展示这些功能如何组合在一起。</p><p>本书的第二部分是模式的列表，它分成五个不同的部分，这些模式可以在<a href="http://www.kirkk.com/modularity/pattern-catalog/" target="_blank">该站点的模式目录中找到</a>:</p><ul> 
+ <li><b>基本模式（Base Pattern）</b> 
+  <ul> 
+   <li><a href="http://www.kirkk.com/modularity/2009/12/manage-relationships/" target="_blank">管理关系（Manage Relationships）</a> – 设计模块关系。</li> 
+   <li><a href="http://www.kirkk.com/modularity/2009/12/module-reuse/" target="_blank">模块重用（Module Reuse）</a> – 强调模块级别的重用。</li> 
+   <li><a href="http://www.kirkk.com/modularity/2009/12/cohesive-modules/" target="_blank">模块内聚（Cohesive Modules）</a> – 模块的行为应该只服务于一个目的。</li> 
+  </ul> </li> 
+ <li><b>依赖模式（Dependency Pattern）</b> 
+  <ul> 
+   <li><a href="http://www.kirkk.com/modularity/2009/12/acyclic-relationships/" target="_blank">非循环关系（Acyclic Relationships）</a> – 模块关系必须是非循环的。</li> 
+   <li><a href="http://www.kirkk.com/modularity/2009/12/levelize-modules/" target="_blank">等级化模块（Levelize Modules）</a> – 模块关系应该是等级化的。</li> 
+   <li><a href="http://www.kirkk.com/modularity/2009/12/physical-layers/" target="_blank">物理分层（Physical Layers）</a> – 模块关系不应该违反概念上的分层。</li> 
+   <li><a href="http://www.kirkk.com/modularity/2009/12/container-independence/" target="_blank">容器独立（Container Independence）</a> – 模块应该独立于运行时容器。</li> 
+   <li><a href="http://www.kirkk.com/modularity/2009/12/independent-deployment/" target="_blank">独立部署（Independent Deployment）</a> – 模块应该是独立的可部署单元。</li> 
+  </ul> </li> 
+ <li><b>可用性模式</b> 
+  <ul> 
+   <li><a href="http://www.kirkk.com/modularity/2009/12/published-interface/" target="_blank">发布接口（Published Interface）</a> – 使模块的发布接口众所周知。</li> 
+   <li><a href="http://www.kirkk.com/modularity/2009/12/external-configuration/" target="_blank">外部配置（External Configuration）</a> – 模块应该可以在外部进行配置。</li> 
+   <li><a href="http://www.kirkk.com/modularity/2010/08/defaultimplementation/" target="_blank">默认实现（Default Implementation）</a> – 为模块提供一个默认实现。</li> 
+   <li><a href="http://www.kirkk.com/modularity/2009/12/module-facade/" target="_blank">模块门面（Module Facade）</a> – 创建一个门面，使其担当细粒度模块底层实现的粗粒度入口。</li> 
+  </ul> </li> 
+ <li><b>扩展性模式</b> 
+  <ul> 
+   <li><a href="http://www.kirkk.com/modularity/2009/12/abstract-modules/" target="_blank">抽象化模块（Abstract Modules）</a> – 依赖于模块的抽象元素。</li> 
+   <li><a href="http://www.kirkk.com/modularity/2009/12/implementation-factory/" target="_blank">实现工厂（Implementation Factory）</a> – 使用工厂来创建模块的实现类。</li> 
+   <li><a href="http://www.kirkk.com/modularity/2009/12/separate-abstractions/" target="_blank">分离抽象（Separate Abstraction）</a> – 将抽象与实现它们的类放在各自独立的模块之中。</li> 
+  </ul> </li> 
+ <li><b>通用模式</b> 
+  <ul> 
+   <li><a href="http://www.kirkk.com/modularity/2009/12/colocate-exceptions/" target="_blank">就近异常（Colocate Exceptions）</a> – 异常应该接近抛出它们的类或接口。</li> 
+   <li><a href="http://www.kirkk.com/modularity/2009/12/levelized-build/" target="_blank">等级化构建（Levelize Build:）</a> – 按照模块的等级执行构建。</li> 
+   <li><a href="http://www.kirkk.com/modularity/2009/12/test-module-2/" target="_blank">测试模块（Test Module）</a> – 每个模块应该有一个对应的测试模块，用来校验模块的行为并阐述其用法。</li> 
+  </ul> </li> 
+</ul><p>本书的最后一部分涵盖了模式化的应用程序，它使用OSGi作为Java模块系统的样例。尽管这一部分是特定于OSGi的，但是本书其他部分所讲解的模式可以用于Java的任意模块系统，包括即将到来的Jigsaw项目。对于那些没有运行时模块系统但又想构建模块化软件的人们来说，这也是一个很好的指导。</p><p>InfoQ联系到了Kirk，并询问了他关于软件和模块化的一些想法，我们的讨论是从过去几十年来软件的复杂性是如何变化开始的：</p><blockquote> 
+ <p><b>Kirk</b>: 毫无疑问，在过去的几十年中软件获得了持续的增长。更加强大的硬件以及更具表现力的编程语言使得创建强大的软件系统更为容易。</p> 
+ <p>如今，大多数的开发人员不用再过多担心要应对严格的内存限制以及有限的处理能力。例如，一项由Jyv&auml;skyl&auml;进行的研究显示，在1990年存在1200亿行代码，到2000年这个数字已经增长了一倍多到了2500亿行。这个研究也声明代码行数每七年就翻一倍。</p> 
+ <p>这是很令人吃惊的并且需要对此有清醒的认识，它意味着相对于某些人编写第一行代码的时候，我们在未来的七年中将会编写比以前更多的代码。在很多方面来看，这种代码上的增长并不是一件坏事。如果软件没有增长和进化，它最终就会消亡。使用软件的人们很自然地希望从它身上得到更多，所以我们要推出新的版本并进行更新来支持我们的用户。但是更多的代码会意味着更多的维护工作。更大的系统天生就会比那些较小的系统维护起来更为困难。</p> 
+</blockquote><p><b>Info</b><strong>Q：在软件的设计和架构方面，有什么影响吗？</strong></p><blockquote> 
+ <p><b>Kirk</b>令人遗憾的是，目前还没有明显的影响。在很多方面，我们依然还是以相同的方式来设计软件，就像15或20年前所做的那样。但是，这不会持续太久，有些事情需要发生变化。</p> 
+ <p>开发庞大的软件已经不合适了。SOA以及服务在正确的方向上迈出了一步，但是只解决了所面临挑战的一部分。服务设计中最复杂的一个方面就是确定服务的粒度。如果太粗粒度的话，在跨各种上下文方面服务的用处就不大（例如可重用性），而太细粒度的话，对于发挥作用来说服务所做的就有所不足（如可用性）。
+  <!-- This highlights an interesting dilemma. --></p> 
+ <p>正如我在本书中所讨论的，最大化重用会使可用变得复杂。单个抽象层次并不能解决这个问题。更多的层级是必要的，而模块化就是下一个等级，模块化就是下一步，它会帮助你实现“一直向下的”架构。（译者注：作者在书中借鉴了“海龟背地球”的故事，原文是“turtles all the way down”。如想更多地了解英文中的这个俗语，读者可以参考维基百科的如下地址：http://en.wikipedia.org/wiki/Turtles_all_the_way_down。在本书中，作者使用了类似的词汇“architecture all the way down”，指的是架构不仅要关注高层的服务，还要关注中间的模块和包甚至底层的代码，我们将这个短语译为“一直向下的架构”。）</p> 
+ <p>最终形成的结果就是，你在合适等级的粒度上使用已有的模块来组装服务，模块是与服务不同等级的粒度，这有助于你实现一直向下的架构。</p> 
+</blockquote><p><strong>InfoQ：JVM中模块化的未来如何？</strong></p><blockquote> 
+ <p><b>Kirk</b>：构建于JVM之上的模块化方面，有很多的事情正在进行。目前，OSGi正在应用于各个主要厂商的产品之中并且在很多的组织中都是可以使用的。</p> 
+ <p>令人遗憾的是，OSGi在企业中还没有获得驱动力。有些人说它太复杂，但他们真正想说的是设计模块化的软件是很困难的。正如你所熟悉的Frederick Brooks所言，这个问题是以软件开发的本质复杂性为核心的。架构和设计是十分困难的。</p> 
+ <p>然而，有弹性的、高适应性的、灵活的以及可维护的软件是成功的关键，尤其是今天快节奏的企业环境中，在企业中交付需要比以往更大的软件开发团队。当然，OSGi并不是唯一的模块系统。Oracle也在努力将Jigsaw加入到Java SE之中，这将会在2013年可用（译者注：Jigsaw已经推迟到了预计2015年发布的Java SE9之中，本文的最初发表日期为2012年7月）。Java平台将会支持模块化，它将会改变设计软件系统的方式。</p> 
+</blockquote><p><b>In</b><strong>foQ：是什么促使你决定编写《Java应用架构》这本书？</strong></p><blockquote> 
+ <p><b>Kirk</b>：大约在10年以前，我认识到我所设计的软件有一个严重的问题。我们将所有的精力放在设计良好的类结构上，然后我们将所有的东西打包到一个巨大的可部署单元中，如WAR或EAR文件。这感觉起来并不好。所有的努力是用来创建灵活的软件，但是我们在重用、可维护性以及灵活性方面并没有看到明显的收益。</p> 
+ <p>与此同时，我签署了本人第二本书的合约并计划编写关于软件模式的内容。我将自己在软件设计方面所面临的严重问题带到了写作之中；感觉有些东西丢失了，而这使得我苦苦追寻的收益不可能实现。我一直以来就是Bob Martin的<a href="http://en.wikipedia.org/wiki/SOLID_(object-oriented_design)" target="_blank">SOLID</a>原则和<a href="http://www.amazon.com/Design-Patterns-Elements-Reusable-Object-Oriented/dp/0201633612" target="_blank">GOF模式（译者注：参见机械工业出版社的《设计模式：可复用面向对象软件的基础》）</a>的忠实粉丝。我还开始研究Clemens Szyperski的作品，此人是<a href="http://www.amazon.com/Component-Software-Object-Oriented-Programming-Edition/dp/0201745720" target="_blank">《Component Software: Beyond Object-Oriented Programming》</a>（译者注：该书中文版由电子工业出版社引进，中文书名为《构件化软件--超越面向对象编程》）一书的作者，以及John Lakos的作品，此人编写了<a href="http://www.amazon.co.uk/Large-Scale-C-Software-Design-APC/dp/0201633620" target="_blank">《Large Scale C++ Software Design》</a>（译者注：该书中文版由中国电力出版社引进，中文书名为《大规模C++程序设计》）。我接受了所有的这些理念，并且改变了自己设计软件系统的方式，也就是关注JAR文件并将其视为模块化单元。</p> 
+ <p>在过去的几年中，我完善了这种方式。通过将JAR文件作为模块化单元，我突然能够实现很多以前苦苦追寻的收益。你在本书中看到的很多模式都是10年前开始的结果。同时，我曾经还有一本完成大约70%的书，但是它里面没有包含我在同一时期所使用的很多理念。所以我暂时停止了那本书，而是花费时间继续证明这些模式，大约在两三年前，遇到到一个很有耐心的出版人，让我相信一切已经就绪。可能这更多地描述了这本书是怎么来的，而不是我为什么要写它。</p> 
+ <p>最终，我写这本书是因为这些模式异乎寻常地改善了我开发的系统，我希望将它们与全世界共享。</p> 
+</blockquote><p><strong>InfoQ：这本书是特定于OSGi的吗？</strong></p><blockquote> 
+ <p><b>Kirk</b>：绝对不是这样的。它不特定于任何的模块框架。这些模式甚至整本书在设计之时就是要借助标准Java所能提供的特性来进行使用的。实际上，在2006年之前，我并没有接触过OSGi，这已经是我开始探索这个问题四年之后的事情了。</p> 
+ <p>我发现OSGi后感觉茅塞顿开。我发现了一个志同道合的社区以及对众多模式提供运行时支持的框架。当我学习OSGi的时候，我开始思考将已有的应用迁移至OSGi都需要些什么。</p> 
+ <p>本书提供了一些关于OSGi的样例，但是主要是用来讲述OSGi的威力以及让大家简单了解将系统从标准Java迁移到OSGi都需要做什么。</p> 
+</blockquote><p><b>Info</b><strong>Q：如果你不使用OSGi或Jigsaw，能进行模块化吗？</strong></p><blockquote> 
+ <p><b>Kirk</b>：绝对是可以的。在第二章中，我讨论了模块化的两个方面——运行时模型（runtime model）和开发模型（development model）。开发模型又可以进一步划分为编程模型（programming model）和设计范式（design paradigm）。
+  <!--?p--></p> 
+ <p>模块框架会为你提供编程模型和运行时模型。但是不会有什么框架帮助你设计很好的一组模块。这个任务留给了开发人员，这也是本书关注的焦点。</p> 
+ <p>我想与面向对象范式做一个类比。仅仅因为语言支持继承、多态、封装以及动态绑定并不能保证产生伟大的面向对象软件。设计模式会帮助你做到这一点。</p> 
+ <p>对于模块化来说是同样的道理。即便你使用了模块化框架，并不能保证会有模块化的软件。所以本书的目的在于帮助你首先设计模块化的软件，不管你使用的是OSGi、Jigsaw还是标准的Java。按照这种方式，你可以马上使用本书的理念，而且没有必要采用任何新的框架也不用任何额外的基础设施投资。</p> 
+ <p>大多数的样例代码使用标准的Java来论证理念。我也增加了一些基于OSGi的代码样例，它们用来阐述你能够从运行时模块化中所获得的收益。所以，书中的理念除了帮助你在当下设计模块化的软件以外，当运行时模块化可用并且你决定使用它的时候，这些理念也会为你做好准备。</p> 
+</blockquote><p><b>Info</b><strong>Q：模块化只是有关于重用吗？</strong></p><blockquote> 
+ <p><b>Kirk</b>：重用是有意思的，因为它具有卖点。我的意思是在过去几十年主要的技术趋势中，都将重用作为其主要的优势。在90年代，它是面向对象编程。稍后就是基于组件的开发（component-based development）。然后我们接触到的就是面向服务的架构。</p> 
+ <p>具有讽刺意味的是，它们中的每一个都没有达到预期，众多的开发团队依然在重用中挣扎。重用当然是模块化的优势之一，但它并不是灵丹妙药。模块化填补了其他技术手段无法填补的空白，因为模块化允许你在不同等级的抽象和粒度上来关注设计。如果你阅读本书第二章和第五章的话，你会发现这个空白在哪里以及模块化如何提供帮助。</p> 
+ <p>但是，模块化也有其他的优势。这包括更好的可维护性、依赖管理以及增强理解复杂软件系统的能力。在本书第一部分有几章详细讨论了这些理念。</p> 
+</blockquote><p><b>Inf</b><strong>oQ：模块化能够用于已有的系统吗，或者它需要进行预先设计吗？系统能不能重构得更加模块化？</strong></p><blockquote> 
+ <p><b>Kirk</b>：如果你在考虑架构和设计的时候，就开始思考模块化的话。这样会更加容易一些。但是，如果你面临的是已有系统，你依然可以对其进行模块化，如果你具备良好的类设计更是如此。实际上，本书的第八章，就会带你做一个练习，我们会使用模式对并不那么模块化的已有系统进行几次重构。最后能够得到高度模块化的系统，这是阐述模块化收益的一个很有力的例子。</p> 
+ <p>在你做这些练习的时候，通常会发现有意思的事情。你会发现在类设计中存在一些你以前所不知道的缺陷。例如，几乎所有的团队都想对软件系统进行分层。通常，这意味着他们具有展现层、领域层以及数据访问层。但这是逻辑分层。也就是，它们在理念上存在于类结构中，但并不是物理上的可部署单元。</p> 
+ <p>当试图将你的软件划分为模块的时候，你会开始关注可部署单元。当你这样做的时候，你一般会发现这其中存在一些我们事先并不知道的违反逻辑分层的地方。关于这个问题，在物理分层模式中我进行了更多的讨论。</p> 
+</blockquote><p><b>Info</b><strong>Q：对于Java模块化的未来，你怎么看？</strong></p><blockquote> 
+ <p><b>Kirk</b>：模块化将会改变我们在Java平台上开发和交付软件系统的方式。在开发的角度来看，它填补了其他主要的设计范式所遗留的空白。在软件交付的角度来看，它标志着庞大和静态平台的终结。这将会促使更为强大的生态系统涌现，开发人员能够很容易地通过仓库提供模块。</p> 
+ <p>鉴于在移动生态系统中应用商店获得了令人兴奋的成功，这种仓库将有可能会成为“企业模块商店”。有些模块可能会是免费的，但是另外一些可能会付费才能使用。这就会允许通过不同的来源将运行时环境拼凑完整。在有些时候，有可能环境本身也是根据应用程序的基础设施需求来进行组装的。</p> 
+</blockquote><p>本书中完整的模式列表可以在<a href="http://modularity.kirkk.com" target="_blank">本书的站点上</a>找到（以及<a href="http://modularity.kirkk.com/jaamain.html" target="_blank">移动优化版本</a>）。本书的<a href="http://modularity.kirkk.com/JAASample.pdf" rel="nofollow" target="_blank">一个样例</a>可以在线获取，书中模式的样例可以在<a href="https://github.com/pragkirk/poma" target="_blank">GitHub上得到</a>。本书可以在Amazon上<a href="http://www.amazon.com/gp/product/0321247132/" target="_blank">购买印刷版</a>以及<a href="http://www.amazon.com/gp/product/B007KOGS5U/" target="_blank">Kindle</a>和<a href="http://itunes.apple.com/us/book/java-application-architecture/id510941880" target="_blank">iBooks</a>格式的电子版。</p><p>&nbsp;</p><p class="MsoPlainText">这些Q&amp;A基于Kirk Knoernschild编写的《Java应用架构：以OSGi为例讲解模块化模式》一书，该书由Pearson/Prentice Hall Professional在2012年3月出版，ISBN为0321247132。关于更多的信息，可以访问该<a target="_blank" href="http://www.informit.com/title/0321247132">站点</a>。（译者注：本书的中文版由机械工业出版社华章图书引进，目前本人正在翻译，预计今年9月份可以出版，关注模块化和OSGi技术的读者敬请期待。最终的中文版书名有待编辑和出版社确认。关于内容和术语的翻译，您如果有好的建议，欢迎与我联系交流。）</p><h2>关于本书作者</h2><p><strong><img vspace="4" hspace="4" align="left" _p="true" _href="img://kirk.jpg" alt="" src="http://www.infoq.com/resource/articles/java-application-architecture/en/resources/kirk.jpg;jsessionid=C10FD9EC933373DD92AB58CE04055653;jsessionid=B4DC99E68988EA0CA963C95DBA7FBA09" />Kirk Knoernschild</strong>是一位软件工程师，热衷于构建伟大的软件。他对设计、架构、应用开发平台、敏捷开发以及IT产业的整体情况都有很大的兴趣，尤其是与软件开发相关的内容。他的新书《Java应用架构：以OSGi为例讲解模块化模式》出版于2012年，介绍了18个帮助你设计模块化软件的模式。你可以访问他的<a target="_blank" href="http://techdistrict.kirkk.com">个人站点</a>。</p><div style="clear:both">
+ &nbsp;
+</div><h2>关于评论者</h2><p><strong><img vspace="4" hspace="4" align="left" _p="true" _href="img://alexblewitt.jpg" alt="" src="http://www.infoq.com/resource/articles/java-application-architecture/en/resources/alexblewitt.jpg;jsessionid=C10FD9EC933373DD92AB58CE04055653;jsessionid=B4DC99E68988EA0CA963C95DBA7FBA09" />Dr Alex Blewitt</strong>工作于伦敦的一家投资银行，但依然在抽时间了解OSGi与Eclipse的新闻。尽管曾经作为EclipseZone的编辑和Eclipse Ambassador的候选人，但是他的日常角色与Eclipse或Java毫无关系。除此以外的时间他会用来陪伴自己的家人，并在天气晴好的时候带他们乘飞机旅行。</p><div class="clearer-space">
+ &nbsp;
+</div><br><br><br><br><br><br></body></html>
