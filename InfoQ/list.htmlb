@@ -1,8 +1,8 @@
 <html>
  <head></head> 
- <body>
-  <div>
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/44.htmlb">遗留系统的技术栈迁移</a>本文介绍了如何针对遗留系统进行技术栈迁移。文中给出了一些最佳实践，迁移步骤和案例分析。
+ <body> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/44.htmlb">遗留系统的技术栈迁移</a>本文介绍了如何针对遗留系统进行技术栈迁移。文中给出了一些最佳实践，迁移步骤和案例分析。 
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/43.htmlb">深入浅出Symfony2 - 如何提高网站响应速度</a>Symfony2是一个基于PHP语言的Web开发框架，有着开发速度快、性能高等特点。 本文通过对一个基于Symfony2框架所开发的网站页面进行逐步优化，最终实现页面加载速度的提高的例子，向读者介绍Symfony2框架的一些核心功能和特点。 

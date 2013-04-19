@@ -1,29 +1,29 @@
 <html>
  <head></head> 
- <body>
-  <div>
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/41.java">Tabris 1.0: Cross-platform Mobile Development in Java</a>After three years in development, EclipseSource has released Tabris 1.0, a cross-platform Java mobile development framework for iOS and Android.
-  </div>
-  <div>
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/40.java">Meteor Introduces Tighter NPM Integration, Overhauled Package Management</a>The Meteor Development Group released Meteor 0.6.0 on April 4th as a major overhaul to its package management system as well as growing NPM package support.
-  </div>
-  <div>
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/39.java">First Look at Visual Studio 2012 Update 3 Shows Modest Updates</a>The first preview of the forthcoming 3rd Update to Visual Studio has been released. This release focuses primarily on bug fixes and improvements to Team Foundation Server 2012.
-  </div>
-  <div>
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/38.java">More on Immutable Collections in .NET</a>Since we last reported on Immutable Collections in January, the API has evolved and a lot more has been revealed about the inner workings.
-  </div>
-  <div>
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/37.java">Audio Interviews with Agile Commentators and Authors</a>Gil Broza, author of “The Human Side of Agile” has announced a series of audio interviews with a variety of authors and commentators on the topic of “Individuals and Interactions” in May. The theme of the series is &quot;Apply proven strategies, approaches, and actions to make the Agile promise happen&quot;.
-  </div>
-  <div>
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/36.java">Async for .NET and Silverlight 4</a>Microsoft has released the final version of Microsoft.Bcl.Async. This package allows developers using .NET 4, Silverlight 4, and Windows Phone 7.5 to use the async features found in C# 5 and VB 11.
-  </div>
-  <div>
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/35.java">Leadership for Self-Organized Agile Teams</a>Organizations that implement self-organized agile teams need managers who empowerer the teams by using servant leadership, and who coach and mentor them to learn and continuously improve themselves.
-  </div>
-  <div>
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/34.java">Netflix Gives Up Silverlight, Chooses HTML5</a>Netflix has announced their intent to switch their video player from Silverlight to HTML5, the first implementation of the new player being done in Chrome/Chrome OS, with Windows and Mac OS X following soon.
+ <body> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/41.java">Tabris 1.0: Cross-platform Mobile Development in Java</a>After three years in development, EclipseSource has released Tabris 1.0, a cross-platform Java mobile development framework for iOS and Android. 
+  </div> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/40.java">Meteor Introduces Tighter NPM Integration, Overhauled Package Management</a>The Meteor Development Group released Meteor 0.6.0 on April 4th as a major overhaul to its package management system as well as growing NPM package support. 
+  </div> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/39.java">First Look at Visual Studio 2012 Update 3 Shows Modest Updates</a>The first preview of the forthcoming 3rd Update to Visual Studio has been released. This release focuses primarily on bug fixes and improvements to Team Foundation Server 2012. 
+  </div> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/38.java">More on Immutable Collections in .NET</a>Since we last reported on Immutable Collections in January, the API has evolved and a lot more has been revealed about the inner workings. 
+  </div> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/37.java">Audio Interviews with Agile Commentators and Authors</a>Gil Broza, author of “The Human Side of Agile” has announced a series of audio interviews with a variety of authors and commentators on the topic of “Individuals and Interactions” in May. The theme of the series is &quot;Apply proven strategies, approaches, and actions to make the Agile promise happen&quot;. 
+  </div> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/36.java">Async for .NET and Silverlight 4</a>Microsoft has released the final version of Microsoft.Bcl.Async. This package allows developers using .NET 4, Silverlight 4, and Windows Phone 7.5 to use the async features found in C# 5 and VB 11. 
+  </div> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/35.java">Leadership for Self-Organized Agile Teams</a>Organizations that implement self-organized agile teams need managers who empowerer the teams by using servant leadership, and who coach and mentor them to learn and continuously improve themselves. 
+  </div> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/34.java">Netflix Gives Up Silverlight, Chooses HTML5</a>Netflix has announced their intent to switch their video player from Silverlight to HTML5, the first implementation of the new player being done in Chrome/Chrome OS, with Windows and Mac OS X following soon. 
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/33.java">LeanSentry Adds Smart Alerts, Error Highlighting and Classic ASP Support</a>LeanSentry, formerly Sentinel has been updated with support for smart alerts, error highlighting, enhanced dashboard, classic ASP support in addition to several diagnostics features. 
@@ -150,6 +150,6 @@
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/42.java">Business Process Improvement Using Agile</a>Organizations want to improve their business processes, and today they need to do it faster. Is it possible to use agile methods and techniques for business process improvement? 
-  </div>         
+  </div> 
  </body>
 </html>

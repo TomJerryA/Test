@@ -2,16 +2,19 @@
  <head></head> 
  <body>
   <div>
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/2.c">Android 4.2.2: Foco em melhorias de seguran&ccedil;a</a>O Android 4.2 Jelly Bean foi atualizado com recursos adicionais para melhorar a seguran&ccedil;a de aplica&ccedil;&otilde;es. Conhe&ccedil;a os detalhes.
-  </div>
-  <div>
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/1.c">O que o RH e a ger&ecirc;ncia podem fazer para suportar a transforma&ccedil;&atilde;o &aacute;gil</a>Em uma ado&ccedil;&atilde;o &aacute;gil, h&aacute; a necessidade de desenvolver e sustentar uma cultura &aacute;gil. O que o departamento de recursos humanos ou gerentes podem fazer para suportar a agilidade em suas empresas, minimizar as chances de preocupa&ccedil;&otilde;es a respeito de pap&eacute;is por parte dos funcion&aacute;rios, avalia&ccedil;&otilde;es de desempenho e ambiente de trabalho?
-  </div>
-  <div>
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/0.c">PGDay Cear&aacute; 2013: a reuni&atilde;o da comunidade PostgreSQL em Fortaleza</a>Acontece no pr&oacute;ximo dia 3 de maio, no Centro Universit&aacute;rio Christus o PGDay Cear&aacute; 2013, uma reuni&atilde;o organizada pela comunidade PostgreSQL em Fortaleza, contando com a participa&ccedil;&atilde;o de alguns dos integrantes mais ativos da comunidade PostgreSQL no Brasil.
-  </div>
-  <div>
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/49.c">Ora2Pg 11.1: Migra&ccedil;&otilde;es de Oracle para PostgreSQL mais r&aacute;pidas</a>A Dalibo anunciou no &uacute;ltimo 10 de abril o lan&ccedil;amento da vers&atilde;o 11.1 do Ora2Pg. Essa importante vers&atilde;o traz o t&atilde;o aguardado suporte para multiprocessamento, que possibilita exportar dados de forma paralela. A importa&ccedil;&atilde;o de dados a partir de um banco de dados Oracle passa a ser 10 vezes mais r&aacute;pida se comparada com as vers&otilde;es anteriores.
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/3.c">Experi&ecirc;ncias em servi&ccedil;os: li&ccedil;&otilde;es para obter sucesso em SOA</a>Conhe&ccedil;a opini&otilde;es recentes sobre o papel do SOA e dicas e cuidados para o sucesso na ado&ccedil;&atilde;o de arquiteturas orientadas a servi&ccedil;os.
+  </div> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/2.c">Android 4.2.2: Foco em melhorias de seguran&ccedil;a</a>O Android 4.2 Jelly Bean foi atualizado com recursos adicionais para melhorar a seguran&ccedil;a de aplica&ccedil;&otilde;es. Conhe&ccedil;a os detalhes. 
+  </div> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/1.c">O que o RH e a ger&ecirc;ncia podem fazer para suportar a transforma&ccedil;&atilde;o &aacute;gil</a>Em uma ado&ccedil;&atilde;o &aacute;gil, h&aacute; a necessidade de desenvolver e sustentar uma cultura &aacute;gil. O que o departamento de recursos humanos ou gerentes podem fazer para suportar a agilidade em suas empresas, minimizar as chances de preocupa&ccedil;&otilde;es a respeito de pap&eacute;is por parte dos funcion&aacute;rios, avalia&ccedil;&otilde;es de desempenho e ambiente de trabalho? 
+  </div> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/0.c">PGDay Cear&aacute; 2013: a reuni&atilde;o da comunidade PostgreSQL em Fortaleza</a>Acontece no pr&oacute;ximo dia 3 de maio, no Centro Universit&aacute;rio Christus o PGDay Cear&aacute; 2013, uma reuni&atilde;o organizada pela comunidade PostgreSQL em Fortaleza, contando com a participa&ccedil;&atilde;o de alguns dos integrantes mais ativos da comunidade PostgreSQL no Brasil. 
+  </div> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/49.c">Ora2Pg 11.1: Migra&ccedil;&otilde;es de Oracle para PostgreSQL mais r&aacute;pidas</a>A Dalibo anunciou no &uacute;ltimo 10 de abril o lan&ccedil;amento da vers&atilde;o 11.1 do Ora2Pg. Essa importante vers&atilde;o traz o t&atilde;o aguardado suporte para multiprocessamento, que possibilita exportar dados de forma paralela. A importa&ccedil;&atilde;o de dados a partir de um banco de dados Oracle passa a ser 10 vezes mais r&aacute;pida se comparada com as vers&otilde;es anteriores. 
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/48.c">DevCamp: um novo evento na regi&atilde;o de Campinas</a>Nos dias 10 e 11 de maio, em Campinas-SP, acontecer&aacute; a primeira edi&ccedil;&atilde;o do Devcamp, confer&ecirc;ncia com objetivo de promover o compartilhamento de experi&ecirc;ncias e a democratiza&ccedil;&atilde;o da informa&ccedil;&atilde;o entre a comunidade e incluir definitivamente Campinas no cen&aacute;rio dos grandes eventos de TI do Brasil. 
@@ -147,9 +150,6 @@
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/4.c">Ensino de programa&ccedil;&atilde;o para todos: oportunidade para suprir as demandas de mercado</a>Foi lan&ccedil;ado recentemente o site Code.org, que busca difundir o aprendizado de programa&ccedil;&atilde;o e incentivar a forma&ccedil;&atilde;o de novos programadores para suprir a demanda de mercado. 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/3.c">NetBeans 7.3: foco em HTML5</a>Na nova vers&atilde;o 7.3 do NetBeans, a Oracle atualizou a IDE para facilitar a cria&ccedil;&atilde;o de interfaces baseadas em HTML5 para aplica&ccedil;&otilde;es m&oacute;veis e web. Conhe&ccedil;a os detalhes. 
-  </div>    
+  </div>  
  </body>
 </html>
