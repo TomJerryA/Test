@@ -2,7 +2,10 @@
  <head></head> 
  <body>
   <div>
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/3.c">Experi&ecirc;ncias em servi&ccedil;os: li&ccedil;&otilde;es para obter sucesso em SOA</a>Conhe&ccedil;a opini&otilde;es recentes sobre o papel do SOA e dicas e cuidados para o sucesso na ado&ccedil;&atilde;o de arquiteturas orientadas a servi&ccedil;os.
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/4.c">Cresce competi&ccedil;&atilde;o entre implementa&ccedil;&otilde;es do Hadoop para consultas em tempo real</a>Stinger, a nova iniciativa da Hortonworks, entra na disputa com o Apache Drill e o Cloudera Impala pela melhor implementa&ccedil;&atilde;o do Hadoop para consultas em tempo real. Conhe&ccedil;a as novidades.
+  </div> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/3.c">Experi&ecirc;ncias em servi&ccedil;os: li&ccedil;&otilde;es para obter sucesso em SOA</a>Conhe&ccedil;a opini&otilde;es recentes sobre o papel do SOA e dicas e cuidados para o sucesso na ado&ccedil;&atilde;o de arquiteturas orientadas a servi&ccedil;os. 
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/2.c">Android 4.2.2: Foco em melhorias de seguran&ccedil;a</a>O Android 4.2 Jelly Bean foi atualizado com recursos adicionais para melhorar a seguran&ccedil;a de aplica&ccedil;&otilde;es. Conhe&ccedil;a os detalhes. 
@@ -147,9 +150,6 @@
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/5.c">Facebook adota o Chef para ger&ecirc;ncia da camada web</a>O Facebook implatou o Private Chef, um produto de automa&ccedil;&atilde;o de infraestrutura para gerenciamento da sua camada web. Para garantir que o Chef atenda aos requisitos de escalabilidade do Facebook, a empresa ajudou na cria&ccedil;&atilde;o da &uacute;ltima vers&atilde;o do Chef Server, totalmente reescrito em Erlang. 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/4.c">Ensino de programa&ccedil;&atilde;o para todos: oportunidade para suprir as demandas de mercado</a>Foi lan&ccedil;ado recentemente o site Code.org, que busca difundir o aprendizado de programa&ccedil;&atilde;o e incentivar a forma&ccedil;&atilde;o de novos programadores para suprir a demanda de mercado. 
   </div>  
  </body>
 </html>
