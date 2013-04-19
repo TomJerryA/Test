@@ -1,6 +1,9 @@
 <html>
  <head></head> 
- <body> 
+ <body>
+  <div>
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/42.java">JavaScript Memory Analyzer in Visual Studio 2012 Identifies Leaks in Windows Store Apps</a>Visual Studio 2012 Update 1 includes a new JavaScript Memory Analyzer for Windows 8 which identifies potential memory leaks to enable developers to fix their apps before submission to Windows Store.
+  </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/41.java">Tabris 1.0: Cross-platform Mobile Development in Java</a>After three years in development, EclipseSource has released Tabris 1.0, a cross-platform Java mobile development framework for iOS and Android. 
   </div> 
@@ -147,9 +150,6 @@
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/43.java">MongoDB Gets Better Security, Text Search, Performance Improvements – What’s Next?</a>MongoDB 2.4 was recently released with new features such as Text Search, hash-based sharding, better geo-spatial capabilities with GeoJSON support and several performance and tooling improvements. We also discussed with 10gen about what’s next on the roadmap. 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/42.java">Business Process Improvement Using Agile</a>Organizations want to improve their business processes, and today they need to do it faster. Is it possible to use agile methods and techniques for business process improvement? 
-  </div> 
+  </div>  
  </body>
 </html>
