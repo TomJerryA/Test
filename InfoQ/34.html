@@ -1,39 +1,18 @@
-<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>Google即将发布Go语言1.1版</h3><p>继2012年3月Google发布Go语言的第一个正式版本Go 1之后，时隔一年，Google将于近期发布Go 1.1。通过从Google网站内收集到的信息，我们了解到新版本保持了对旧版本的<a href="https://go.googlecode.com/doc/go1compat.html">兼容性</a>，同时还添加了一些重大的语言特性，修改了大量类库，并且改善了编译器、类库和运行时的实现。</p> 
-<p>Google相信，很多用户仅仅通过安装新版本并重新编译已有程序就能看到显著的性能提升。以下就是InfoQ了解到的，即将发布的新版Go语言将为我们带来的新特性（具体信息以正式发布时的特性列表为准）。</p> 
-<p>语言方面的变化如下：</p> 
-<ul> 
- <li>在Go 1.1中常量0作为除数时会引发编译错误而不是运行时错误。</li> 
- <li>对<a href="https://go.googlecode.com/hg/doc/go1.1.html#unicode">Unicode</a>文本中的代理项做了处理，在Go1.1中代理项约束内置到了编译器、类库和运行时中。</li> 
- <li>实现了<a href="https://go.googlecode.com/ref/spec#Method_values">方法值</a>，也就是能够绑定到指定接收值的函数。</li> 
- <li>引入了<a href="https://go.googlecode.com/ref/spec/#Terminating_statements">终止语句</a>的概念，能够更加自由地使用“return”语句。</li> 
-</ul> 
-<p>在实现和工具方面，新版本也做了诸多改进，包括：</p> 
-<ul> 
- <li>命令行标记解析。</li> 
- <li>64位平台上的int大小。</li> 
- <li>Unicode文本。</li> 
- <li>GC编译器。</li> 
- <li>修改了go/go test/go fix命令。</li> 
-</ul> 
-<p>在性能方面，使用Go 1.1 GC工具套件编译的代码将为大多数应用带来30%到40%的性能提升，甚至会更高，当然对于少数程序性能提升并不明显或者没有提升。基于性能考虑，新版本对工具和类库做了很多微调，其中特别需要注意的几个主要变动如下：</p> 
-<ul> 
- <li>GC编译器在大多数情况下会生成更好的代码，最重要的莫过于32位Intel架构上的浮点数。</li> 
- <li>GC编译器会做更多的内联，包括一些运行时操作，如<a href="https://go.googlecode.com/pkg/builtin/#append">append</a>和接口转换。</li> 
- <li>重新实现了Go Map，大大降低了内存占用和CPU时间消耗。</li> 
- <li>优化了垃圾回收器的并行化处理，降低了程序在多CPU上运行的延迟。</li> 
- <li>垃圾回收器更加精确，花费的CPU时间更少，并能显著降低堆大小，在32位架构上尤为明显。</li> 
- <li>运行时和网络类库紧耦合，网络操作仅需要少量的上下文切换。</li> 
-</ul> 
-<p>新版本Go语言对标准类库也做了大量更新，包括：</p> 
-<ul> 
- <li>增加了一个新类型<a href="https://go.googlecode.com/pkg/bufio/#Scanner">Scanner</a>，以行或者空格分隔单词的形式读取输入更加容易。</li> 
- <li>对传入<a href="https://go.googlecode.com/pkg/net/#ResolveTCPAddr">ResolveTCPAddr</a>的网络名做了限定，不再像1.0那样可以使用“tcp”、“tcp4”和“tcp6”之外的字符，在1.1中使用其他的字符串将会返回一个错误。其他的解析器<a href="https://go.googlecode.com/pkg/net/#ResolveIPAddr">ResolveIPAddr</a>、<a href="https://go.googlecode.com/pkg/net/#ResolveUDPAddr">ResolveUDPAddr</a>和<a href="https://go.googlecode.com/pkg/net/#ResolveUnixAddr">ResolveUnixAddr</a>也是如此。同时<a href="https://go.googlecode.com/pkg/net/#ListenUnixgram">ListenUnixgram</a>将返回<a href="https://go.googlecode.com/pkg/net/#UnixConn">UnixConn</a>而不是<a href="https://go.googlecode.com/pkg/net/#UDPConn">UDPConn</a>。</li> 
- <li>在新版本中能够使用<a href="https://go.googlecode.com/pkg/reflect/">reflect</a>包运行“select”语句。新方法<a href="https://go.googlecode.com/pkg/reflect/#Value.Convert">Value.Convert</a>（或者<a href="https://go.googlecode.com/pkg/reflect/#Type">Type.ConvertibleTo</a>）提供了执行Go转换或者对<a href="https://go.googlecode.com/pkg/reflect/#Value">Value</a>进行类型断言操作的功能。同时reflect包还新增了<a href="https://go.googlecode.com/pkg/reflect/#MakeFunc">MakeFunc</a>、<a href="https://go.googlecode.com/pkg/reflect/#ChanOf">ChanOf</a>、<a href="https://go.googlecode.com/pkg/reflect/#MapOf">MapOf</a>和<a href="https://go.googlecode.com/pkg/reflect/#SliceOf">SliceOf</a>等函数。</li> 
- <li>在1.1版本中FreeBSD、Linux、NetBSD、OS X和OpenBSD平台返回的时间精确度为纳秒。</li> 
- <li>过期的和旧的子树转移到了go.exp和go.text子库中</li> 
-</ul> 
-<p>对于类库所做变更还有很多，在此无法一一列举了，感兴趣的读者可以查看Google提供的介绍。</p> 
+<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>可移植类库（Portable Class Library）已支持Noda Time</h3><p><a href="http://noda-time.blogspot.com/2013/04/noda-time-v110-released.html">Noda Time</a>是用于.NET的高级日期/时间库，其最新版本适用于Windows 8、Windows Phone 7和Windows Phone 8。该版本还提供了NuGet包和全面的<a href="http://noda-time.googlecode.com/hg-history/1.1.x/docs/userguide/index.html">用户指南</a>。</p> 
+<p>Noda Time将类型系统分为两类，即本地类型与全球类型。</p> 
+<p>本地类型不会绑定到任何时区，但可能会包含一个日历组件。这与DateTimeKind被设置Unspecified的DateTime类相似。此外，Noda Time还支持只有时间或只有日期的值。</p> 
+<p>全球类型基于Instant的概念。一个Instant是通用时间系统中的某个特定时刻。为了与其他系统兼容，它以时间片（tick）为单位，从世界标准时间1970年1月1日（Unix纪元）开始计算，这里每毫秒被划分为1万个时间片，从而能够支持非常高的精度。但应该指出的是，某些科学仪器能够以小到10<sup>-18</sup>秒的时间片来测量时间。</p> 
+<p>诸如ZonedDateTime等类会将Instant与时区信息结合起来。与DateTimeOffset不同，ZonedDateTime包含了需要显示给用户的实际时区信息。</p> 
+<p>下面这幅来自其文档的转换图展现了这些核心类型是如何关联的：</p> 
+<p><img src="http://www.infoq.com/resource/news/2013/04/Noda-Time-1-1/zh/resources/1.png;jsessionid=AE44EB47B19661FDE2F2FB264CFB56E1" alt="" _href="img://null" _p="true" /></p> 
+<p>与BCL相比，Noda Time的另一个优势是对历史日期的支持。BCL的DateTime类表示的最小值是公元元年。Noda Time则支持表示到大约公元前27000年，可以用于应用中对古埃及和中国的年表进行的比较。</p> 
+<p>Noda Time同时支持Windows和Olson时区数据库。由于各国政府经常会修改时区相关的法律，因此Noda Time允许开发者加入较新版本的数据库。</p> 
+<p>在Noda Time中，Period和Duration有着不同的含义。Duration表示一段固定长度的时间，可用时间片进行计量。而Period则是抽象的概念，例如“一个月”或“两周”。“由Period表示的时间流逝的总量并不是固定的：始于1月1日的‘一个月’，实际上比从2月1日开始的‘一个月’要长，因为2月总是比1月短。”</p> 
+<p>在面向Java的Joda Time的基础上，Noda Time是为了修正<a href="http://noda-time.blogspot.com/2011/08/what-wrong-with-datetime-anyway.html">.NET日期/时间类中现存的许多问题</a>而设计的。例如，它允许开发者直接表示日期而无需时间组件，从而避免不必要的时区转化将“12月10日零点”意外地变成“12月9日晚11点”这样的问题。</p> 
+<p>Noda Time提供了IClock接口以支持测试。它通过SystemClock和FakeClock实现。初始化之后就可以手动递增FakeClock，或为它设置固定步长的自动增量。</p> 
+<p>Noda Time基于Apache许可提供。</p> 
+<p><b>查看英文原文</b>：<a href="http://www.infoq.com/news/2013/04/Noda-Time-1-1;jsessionid=AE44EB47B19661FDE2F2FB264CFB56E1">Portable Class Library Support for Noda Time</a></p> 
 <hr /> 
-<p>感谢<a href="http://www.infoq.com/cn/bycategory.action;jsessionid=D290E90D47353265E180460BC49AA196?authorName=侯伯薇">侯伯薇</a>对本文的审校。</p> 
+<p>感谢<a href="http://www.infoq.com/cn/bycategory.action;jsessionid=AE44EB47B19661FDE2F2FB264CFB56E1?authorName=臧秀涛">臧秀涛</a>对本文的审校。</p> 
 <p>给InfoQ中文站投稿或者参与内容翻译工作，请邮件至<a href="mailto:editors@cn.infoq.com">editors@cn.infoq.com</a>。也欢迎大家通过新浪微博（<a href="http://www.weibo.com/infoqchina">@InfoQ</a>）或者腾讯微博（<a href="http://t.qq.com/infoqchina">@InfoQ</a>）关注我们，并与我们的编辑和其他读者朋友交流。</p> 
 <p id="lastElm"></p><br><br><br><br><br><br></body></html>

@@ -2,7 +2,31 @@
  <head></head> 
  <body>
   <div>
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/33.java">LeanSentry Adds Smart Alerts, Error Highlighting and Classic ASP Support</a>LeanSentry, formerly Sentinel has been updated with support for smart alerts, error highlighting, enhanced dashboard, classic ASP support in addition to several diagnostics features.
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/41.java">Tabris 1.0: Cross-platform Mobile Development in Java</a>After three years in development, EclipseSource has released Tabris 1.0, a cross-platform Java mobile development framework for iOS and Android.
+  </div>
+  <div>
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/40.java">Meteor Introduces Tighter NPM Integration, Overhauled Package Management</a>The Meteor Development Group released Meteor 0.6.0 on April 4th as a major overhaul to its package management system as well as growing NPM package support.
+  </div>
+  <div>
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/39.java">First Look at Visual Studio 2012 Update 3 Shows Modest Updates</a>The first preview of the forthcoming 3rd Update to Visual Studio has been released. This release focuses primarily on bug fixes and improvements to Team Foundation Server 2012.
+  </div>
+  <div>
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/38.java">More on Immutable Collections in .NET</a>Since we last reported on Immutable Collections in January, the API has evolved and a lot more has been revealed about the inner workings.
+  </div>
+  <div>
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/37.java">Audio Interviews with Agile Commentators and Authors</a>Gil Broza, author of “The Human Side of Agile” has announced a series of audio interviews with a variety of authors and commentators on the topic of “Individuals and Interactions” in May. The theme of the series is &quot;Apply proven strategies, approaches, and actions to make the Agile promise happen&quot;.
+  </div>
+  <div>
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/36.java">Async for .NET and Silverlight 4</a>Microsoft has released the final version of Microsoft.Bcl.Async. This package allows developers using .NET 4, Silverlight 4, and Windows Phone 7.5 to use the async features found in C# 5 and VB 11.
+  </div>
+  <div>
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/35.java">Leadership for Self-Organized Agile Teams</a>Organizations that implement self-organized agile teams need managers who empowerer the teams by using servant leadership, and who coach and mentor them to learn and continuously improve themselves.
+  </div>
+  <div>
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/34.java">Netflix Gives Up Silverlight, Chooses HTML5</a>Netflix has announced their intent to switch their video player from Silverlight to HTML5, the first implementation of the new player being done in Chrome/Chrome OS, with Windows and Mac OS X following soon.
+  </div> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/33.java">LeanSentry Adds Smart Alerts, Error Highlighting and Classic ASP Support</a>LeanSentry, formerly Sentinel has been updated with support for smart alerts, error highlighting, enhanced dashboard, classic ASP support in addition to several diagnostics features. 
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/32.java">Asynchronous Gotchas in C#</a>Sometimes the best way to understand pitfalls in one language is to see how another language prevents them. Tomas Petricek, author of Real-World Functional Programming, discusses seven common mistakes found in asynchronous C# code and demonstrates how F# makes them less likely to occur. 
@@ -126,30 +150,6 @@
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/42.java">Business Process Improvement Using Agile</a>Organizations want to improve their business processes, and today they need to do it faster. Is it possible to use agile methods and techniques for business process improvement? 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/41.java">Pluralsight Released Scratch and C# Programming Courses for Kids</a>Pluralsight, hardocre developer training company has released two new courses based on Scratch and C# for kids. 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/40.java">Google Promises Not to Sue for Using Their Pledged Patents [Updated]</a>Google is promising not to take legal action against any party using pledged patents for open source or free software “unless first attacked.” 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/39.java">EclipseCon 2013 Roundup</a>EclipseCon 2013 was hosted in Boston this week, and covered diverse topics from OSGi in the cloud and Eclipse in space. Read on to find more about the key points covered and the winners of the Eclipse community awards. 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/38.java">QCon New York Update (June 10-14): JavaScript, HTML5, Future of Mobile Tracks; Schedule Now Live</a>The schedule is live for QCon New York 2013 with registrations 60% ahead of last year at this time and 65/100 speakers confirmed. Hear about the latest tools, trends, and innovations in Mobile, JavaScript, and HTML5 development across three in-depth tracks and many tutorials. You can get in early by reserving your seat now, saving $400 by Apr 19th. 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/37.java">Google Promises Not to Sue for Using Their Pledged Patents</a>Google is promising not to take legal action against any party using pledged patents for open source or free software “unless first attacked.” 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/36.java">GCC 4.8 Completes Move to C++</a>GCC has become fully implemented in C++ in its new 4.8 release, but the improvements aren't solely internal. The compiler has increased support for C++11, Google's Go, and new compiler optimizations. 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/35.java">Study: Clojure, CoffeeScript and Haskell Are the Most Expressive General-purpose Languages</a>According to a study, the most expressive general-purpose languages are Clojure, CoffeeScript and Haskell. The study uses LoC/commit as the measuring unit of expressiveness. 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/34.java">Release Cadence Report - Survey Launched</a>Ryan Cromwell has released the Release Cadence Report Survey. Based on the premise that the rate at which software is released is one of the most important metrics teams should be monitoring and reporting on he has launched a survey which examines five areas of team activities. The survey will remain open until 24 May 2013, following which the results will be made available to the community. 
-  </div>  
+  </div>         
  </body>
 </html>

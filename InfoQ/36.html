@@ -1,39 +1,14 @@
-<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>Google即将发布Go语言1.1版，含多项重大更新</h3><p>继2012年3月Google发布Go语言的第一个正式版本Go 1之后，时隔一年，Google将于近期发布Go 1.1。通过从Google网站内收集到的信息，我们了解到新版本保持了对旧版本的<a href="https://go.googlecode.com/doc/go1compat.html">兼容性</a>，同时还添加了一些重大的语言特性，修改了大量类库，并且改善了编译器、类库和运行时的实现。</p> 
-<p>Google相信，很多用户仅仅通过安装新版本并重新编译已有程序就能看到显著的性能提升。以下就是InfoQ了解到的，即将发布的新版Go语言将为我们带来的新特性（具体信息以正式发布时的特性列表为准）。</p> 
-<p>语言方面的变化如下：</p> 
-<ul> 
- <li>在Go 1.1中常量0作为除数时会引发编译错误而不是运行时错误。</li> 
- <li>对<a href="https://go.googlecode.com/hg/doc/go1.1.html#unicode">Unicode</a>文本中的代理项做了处理，在Go1.1中代理项约束内置到了编译器、类库和运行时中。</li> 
- <li>实现了<a href="https://go.googlecode.com/ref/spec#Method_values">方法值</a>，也就是能够绑定到指定接收值的函数。</li> 
- <li>引入了<a href="https://go.googlecode.com/ref/spec/#Terminating_statements">终止语句</a>的概念，能够更加自由地使用“return”语句。</li> 
-</ul> 
-<p>在实现和工具方面，新版本也做了诸多改进，包括：</p> 
-<ul> 
- <li>命令行标记解析。</li> 
- <li>64位平台上的int大小。</li> 
- <li>Unicode文本。</li> 
- <li>gc编译器。</li> 
- <li>修改了go/go test/go fix命令。</li> 
-</ul> 
-<p>在性能方面，使用Go 1.1 gc工具套件编译的代码将为大多数应用带来30%到40%的性能提升，甚至会更高，当然对于少数程序性能提升并不明显或者没有提升。基于性能考虑，新版本对工具和类库做了很多微调，其中特别需要注意的几个主要变动如下：</p> 
-<ul> 
- <li>gc编译器在大多数情况下会生成更好的代码，最重要的莫过于32位Intel架构上的浮点数。</li> 
- <li>gc编译器会做更多的内联，包括一些运行时操作，如<a href="https://go.googlecode.com/pkg/builtin/#append">append</a>和接口转换。</li> 
- <li>重新实现了Go Map，大大降低了内存占用和CPU时间消耗。</li> 
- <li>优化了垃圾回收器的并行化处理，降低了程序在多CPU上运行的延迟。</li> 
- <li>垃圾回收器更加精确，花费的CPU时间更少，并能显著降低堆大小，在32位架构上尤为明显。</li> 
- <li>运行时和网络类库紧耦合，网络操作仅需要少量的上下文切换。</li> 
-</ul> 
-<p>新版本Go语言对标准类库也做了大量更新，包括：</p> 
-<ul> 
- <li>增加了一个新类型<a href="https://go.googlecode.com/pkg/bufio/#Scanner">Scanner</a>，以行或者空格分隔单词的形式读取输入更加容易。</li> 
- <li>对传入<a href="https://go.googlecode.com/pkg/net/#ResolveTCPAddr">ResolveTCPAddr</a>的网络名做了限定，不再像1.0那样可以使用“tcp”、“tcp4”和“tcp6”之外的字符，在1.1中使用其他的字符串将会返回一个错误。其他的解析器<a href="https://go.googlecode.com/pkg/net/#ResolveIPAddr">ResolveIPAddr</a>、<a href="https://go.googlecode.com/pkg/net/#ResolveUDPAddr">ResolveUDPAddr</a>和<a href="https://go.googlecode.com/pkg/net/#ResolveUnixAddr">ResolveUnixAddr</a>也是如此。同时<a href="https://go.googlecode.com/pkg/net/#ListenUnixgram">ListenUnixgram</a>将返回<a href="https://go.googlecode.com/pkg/net/#UnixConn">UnixConn</a>而不是<a href="https://go.googlecode.com/pkg/net/#UDPConn">UDPConn</a>。</li> 
- <li>在新版本中能够使用<a href="https://go.googlecode.com/pkg/reflect/">reflect</a>包运行“select”语句。新方法<a href="https://go.googlecode.com/pkg/reflect/#Value.Convert">Value.Convert</a>（或者<a href="https://go.googlecode.com/pkg/reflect/#Type">Type.ConvertibleTo</a>）提供了执行Go转换或者对<a href="https://go.googlecode.com/pkg/reflect/#Value">Value</a>进行类型断言操作的功能。同时reflect包还新增了<a href="https://go.googlecode.com/pkg/reflect/#MakeFunc">MakeFunc</a>、<a href="https://go.googlecode.com/pkg/reflect/#ChanOf">ChanOf</a>、<a href="https://go.googlecode.com/pkg/reflect/#MapOf">MapOf</a>和<a href="https://go.googlecode.com/pkg/reflect/#SliceOf">SliceOf</a>等函数。</li> 
- <li>在1.1版本中FreeBSD、Linux、NetBSD、OS X和OpenBSD平台返回的时间精确度为纳秒。</li> 
- <li>过期的和旧的子树转移到了go.exp和go.text子库中</li> 
-</ul> 
-<p>对于类库所做变更还有很多，在此无法一一列举了，感兴趣的读者可以查看Google提供的介绍。</p> 
+<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>LLVM创建者荣获2012年ACM软件系统奖</h3><p>ACM已经颁发了2012年度的计算领域创新奖，其中的软件系统奖颁发给了LLVM的创建者。</p> 
+<p><a href="http://www.acm.org/">计算机协会</a>（ACM）宣布了2012年度<a href="http://www.acm.org/press-room/news-releases/2013/acm-tech-awards-2012">6个著名奖项</a>的得主，奖励他们“在将计算机科学应用于解决现实挑战方面的重大贡献”，这也反映了“在计算机网络、信息检索、计算机科学教育、多智能体系统、通用编译技术和人机交互技术等方面的成就”。</p> 
+<p><a href="http://awards.acm.org/software_system/">软件系统奖</a>是其中之一，由<a href="http://awards.acm.org/citation.cfm?id=3453297&amp;srt=year&amp;year=2012&amp;aw=149&amp;ao=SOFTWSYS&amp;yr=2012">Vikram S Adve</a>、<a href="http://awards.acm.org/citation.cfm?id=5756445&amp;srt=year&amp;year=2012&amp;aw=149&amp;ao=SOFTWSYS&amp;yr=2012">Evan Cheng</a>和<a href="http://awards.acm.org/citation.cfm?id=5074762&amp;srt=year&amp;year=2012&amp;aw=149&amp;ao=SOFTWSYS&amp;yr=2012">Chris Lattner</a>获得，奖励他们在<a href="http://llvm.org/">LLVM编译器基础架构</a>方面的贡献。LLVM工具集支持对任意语言进行代码分析和变换。LLVM技术已经应用于多家公司的产品，如Apple、Adobe、AMD、Arxan、AutoESL、Cray、Google、Intel、National Instruments、nVidia、REAL Software、XMOS等等。LLVM 3.2版发布于2012年12月，<a href="http://llvm.org/docs/ReleaseNotes.html#whatsnew">3.3版本</a>会在不久的将来发布。</p> 
+<p>ACM软件系统奖自1983年设立以来，已被授予很多著名人物，如Dennis Ritchie和Ken Thompson（UNIX）、Alan Kay（Smalltalk）、Michael Stonebraker（INGRES）、Vinton Cerf（TCP/IP）和Tim Berners-Lee（WWW）等等。<a href="http://en.wikipedia.org/wiki/Software_System_Award">完整的列表</a>很长，在此不再一一列举。</p> 
+<p><a href="http://dl.acm.org/author_page.cfm?id=81100383891">Martin Casado</a>和<a href="http://dl.acm.org/author_page.cfm?id=81100360141">Dina Katabi</a>获得了<a href="http://awards.acm.org/hopper">Grace Murray Hopper奖</a>（该奖项授予当年的优秀青年计算机专家），以表彰他们对网络效率的改进。Casado发起了软件定义网络（SDN）运动，他的的贡献在于使用<a href="https://www.google.com/url?sa=t&amp;rct=j&amp;q=&amp;esrc=s&amp;source=web&amp;cd=1&amp;cad=rja&amp;ved=0CEIQFjAA&amp;url=http%3A%2F%2Fwww.openflow.org%2F&amp;ei=rR1oUfKLO8bQtQbHtYH4Bw&amp;usg=AFQjCNFN3iOsrLxBI4a5lMPwiJI5h2lEcQ&amp;sig2=foyCCBH8pzmtlD4eP-mtWg&amp;bvm=bv.45175338,d.Yms">OpenFlow</a>（一种开放API）、<a href="https://www.google.com/url?sa=t&amp;rct=j&amp;q=&amp;esrc=s&amp;source=web&amp;cd=1&amp;cad=rja&amp;ved=0CDgQFjAA&amp;url=http%3A%2F%2Fopenvswitch.org%2F&amp;ei=3h1oUcb6IoictQby4oDwBA&amp;usg=AFQjCNEMBSVJPRvNp22GmAGIKJ_gnKiRcg&amp;sig2=QQ6btK-1Dx3Ogkx0XC8HnA&amp;bvm=bv.45175338,d.Yms">OpenVswitch</a>以及NOX和ONIX SDN控制器给基于硬件的网络计算机提供了软件替代方案。Dina Katabi提出了一种新的网络协议设计方案，在网络拥塞控制方面有重要贡献。</p> 
+<p>Andrei Broder、Moses Charikar和Piotr Indyk因为<a href="http://en.wikipedia.org/wiki/Locality-sensitive_hashing">局部敏感哈希（LSH）算法</a>获得<a href="http://awards.acm.org/kanellakis">Paris Kanellakis理论与实践奖</a>，该算法用于在大型数据库中检索相似条目。</p> 
+<p><a href="http://portal.acm.org/author_page.cfm?id=81325489795">Eric Roberts</a>获得<a href="http://awards.acm.org/homepage.cfm?awd=142">Karl V. Karlstrom杰出教育家奖</a>，以奖励他在计算机科学教育方面的贡献。Roberts是<a href="http://dl.acm.org/citation.cfm?id=1076609&amp;coll=DL&amp;dl=GUIDE">《Thinking Recursively》</a>一书的作者，他在斯坦福大学创建了计算机科学本科培养计划并且在百慕大群岛的公立高中开设了计算机课程。</p> 
+<p>Yoav Shoham和Moshe Tennenholtz获得<a href="http://awards.acm.org/newell/">ACM / AAAI Newell奖</a>，以表彰他们在“跨计算机科学、博弈论和经济学的多智能体系统”方面的贡献。作为先驱者，Shoham提供了一种方法来“说明分布式多智能体系统”。而作为开拓者，Tennenholtz提供了几种方法来“设计与分析计算设置中决策者之间的相互作用”。Tennenholtz还创造了RMax，这是一种通过与环境交互进行学习的算法。</p> 
+<p>Thomas Bartoschek和Johannes Sch&ouml;ning因为“校园地理信息科学”（GI@School）获得<a href="http://awards.acm.org/lawler">Eugene L. Lawler奖</a>。该程序使得学生可以“在他们的社区设计问题解决方案时综合利用地理信息和人机交互技术”。</p> 
+<p>查看英文原文：<a href="http://www.infoq.com/news/2013/04/LLVM-ACM-Award-2012;jsessionid=32F77D3AE4F9961F3FF43C6606B8031C">LLVM Authors Have Received One of the ACM Awards 2012</a></p> 
 <hr /> 
-<p>感谢<a href="http://www.infoq.com/cn/bycategory.action;jsessionid=2EFF53D247E26A99E13EC28CE55E02B6?authorName=侯伯薇">侯伯薇</a>对本文的审校。</p> 
+<p>感谢<a href="http://www.infoq.com/cn/bycategory.action;jsessionid=32F77D3AE4F9961F3FF43C6606B8031C?authorName=臧秀涛">臧秀涛</a>对本文的审校。</p> 
 <p>给InfoQ中文站投稿或者参与内容翻译工作，请邮件至<a href="mailto:editors@cn.infoq.com">editors@cn.infoq.com</a>。也欢迎大家通过新浪微博（<a href="http://www.weibo.com/infoqchina">@InfoQ</a>）或者腾讯微博（<a href="http://t.qq.com/infoqchina">@InfoQ</a>）关注我们，并与我们的编辑和其他读者朋友交流。</p> 
 <p id="lastElm"></p><br><br><br><br><br><br></body></html>

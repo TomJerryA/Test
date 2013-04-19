@@ -1,6 +1,12 @@
 <html>
  <head></head> 
- <body> 
+ <body>
+  <div>
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/33.javab">DevOps @ Spotify</a>In this article we learn how lessons learned from the DevOps movement have permeated engineering management at Spotify. The result is a healthy Potlac with team leader, product owner and agile coach.
+  </div>
+  <div>
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/32.javab">The Seven Information Smells of Domain Modelling</a>Unfortunately a couple of issues with domain modelling have caused it to fall out of favour over the past few year. The authors present an approach that addresses the issues.
+  </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/31.javab">Ember.js - Web Applications Done Right</a>This article explains the Ember.js application development model and shows how to use it to build your first client-side JavaScript web application with the framework. 
   </div> 

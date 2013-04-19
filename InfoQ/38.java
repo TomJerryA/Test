@@ -1,43 +1,37 @@
-<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>QCon New York Update (June 10-14): JavaScript, HTML5, Future of Mobile Tracks; Schedule Now Live</h3><p>The schedule is live for <a href="http://qconnewyork.com?utm_source=infoq&amp;utm_medium=news&amp;utm_campaign=03282013news">QCon New York 2013</a> with registrations&nbsp;<strong>60% ahead</strong><strong>&nbsp;of last year</strong> at this time.&nbsp;QCon New York will take place at the New York Marriott just outside of Manhattan (at the Brooklyn Bridge) on June 10-14, 2013. New speakers and sessions are being posted to the conference site every week. &nbsp;You can get in early by&nbsp;<a href="http://qconnewyork.com/registration-intro.html?utm_source=infoq&amp;utm_medium=news&amp;utm_campaign=03282013news">reserving your seat</a>&nbsp;now, saving <strong>$400 by Apr 19th</strong>. &nbsp;</p> 
-<p>QCon New York features 2 days of tutorials (June 10-11, 2013) and 3 full conference days (June 12-14, 2013). The 'tracks-to-days' schedule is now live and can be <a href="http://qconnewyork.com/schedule.html?utm_source=infoq&amp;utm_medium=news&amp;utm_campaign=03282013news">viewed here</a>. &nbsp;</p> 
-<p>Hear about the latest tools, trends, and innovations in Mobile, JavaScript, and HTML5 development. Some of this year's track topics include:&nbsp;</p> 
-<p><u><strong>Tomorrow's Mobile</strong></u><br /> As we move into the post-PC world, both consumer and business applications are becoming mobile. What will this look like, and how can we be ready for it? What problems will we meet along the way, and what do we already know about their solutions? Sessions in this track include:</p> 
-<ul> 
- <li><strong>&quot;Well Behaved Web Apps in the Haute Soci&eacute;t&eacute; of Native Apps,&quot;</strong>&nbsp;by&nbsp;Adrian Kosmaczewski,&nbsp;Author of &quot;Mobile JavaScript Application Development”</li> 
- <li><strong>&quot;Design Patterns for Mobile Applications,&quot;</strong> by Saul Mora,&nbsp;Host of NSBrief podcast, MagicalRecord</li> 
- <li><strong>&quot;Hyper Focused to a Fault,&quot; </strong>by Brittany Tarvin,&nbsp;Chicago's GirlDevelopIT, iPhone/Mac</li> 
- <li><strong>&quot;Gamifying Enterprise Mobile Applications: Do We Have a Winner?,&quot;</strong> by&nbsp;Michelle Andreassen, Enterprise Architect at Lego</li> 
-</ul> 
-<p><strong>Track Host:</strong> Graham Lee, Author &quot;Professional Cocoa Application Security&quot;</p> 
-<p><u><b>The JavaScript Ecosystem </b></u><br /> Hear leading experts provide valuable insight into how they leverage JavaScript for building innovative products and services. Learn about popular JavaScript &nbsp;libraries and tools, motivations, best-practices, deployment patterns and more. Sessions in this track include:</p> 
-<ul> 
- <li><strong>&quot;Surviving Big JavaScript projects,&quot;</strong> by Anton Kovalyov, Creator of JSHint, Mozilla Engineer</li> 
- <li><strong>&quot;Testable JavaScript,&quot;</strong> by&nbsp;Mark Ethan Trostler,&nbsp;Author of O'Reilly's 'Testable JavaScript'</li> 
- <li>&quot;Web Browser Automation,&quot; by Jason Huggins,&nbsp;Co-founder of Sauce Labs</li> 
- <li><strong>&quot;JavaScript MVC Frameworks,&quot;</strong> by Erik Bryn,&nbsp;Ember.js core team</li> 
-</ul> 
-<p><strong>Track Host:</strong> Dio Synodinos, Research Platform Team Lead at C4Media</p> 
-<p><u><strong>HTML5 and Modern Web Languages</strong></u><br /> What types of new programming languages and development environments beyond vanilla JavaScript are available to help us build truly sophisticated and innovative applications? Learn about the new tools, techniques and mechanisms that are helping us build more maintainable and manageable systems. Sessions in this track include:</p> 
-<ul> 
- <li><strong>&quot;Meteor - A Radically Faster Web Development Platform,&quot;</strong> by&nbsp;Matt Debergalis,&nbsp;Meteor Founder and Core Developer</li> 
- <li><strong>&quot;Using Dart with Google Web Toolkit,&quot;</strong> by Shannon JJ Behrens&nbsp;</li> 
- <li><strong>&quot;Wrangling WebRTC: Challenges and Opportunities for Real-time Communication,&quot; </strong>by Badri Rajasekar, Engineer Behind OpenTok API</li> 
- <li><strong>&quot;The CoffeeScript-Streamline Challenge,&quot;</strong> by Aseem Kishore,&nbsp;Senior developer of the Paper App</li> 
-</ul> 
-<p><strong>Track Host:</strong> Frank Greco, Chair, NYJavaSIG</p> 
-<p>See the complete list of <a href="http://qconnewyork.com/tracks.html?utm_source=infoq&amp;utm_medium=news&amp;utm_campaign=03282013news">track abstracts here</a></p> 
-<p style="margin-top: 7px; margin-bottom: 7px; font-family: Verdana, sans-serif; font-size: 11px;"><strong>Related Tutorials</strong></p> 
-<ul> 
- <li>Creating iOS Apps in Objective-C</li> 
- <li>PhoneGap</li> 
- <li>Writing Real Apps with Dart</li> 
- <li>Building Web Applications with WebSocket</li> 
- <li>Testable JavaScript</li> 
- <li>Responsive Web Design</li> 
-</ul> 
-<p>See the complete list of <a href="http://qconnewyork.com/tutorials.html?utm_source=infoq&amp;utm_medium=news&amp;utm_campaign=03282013news">tutorials here&nbsp;</a></p> 
-<p style="margin-top: 7px; margin-bottom: 7px; font-family: Verdana, sans-serif; font-size: 11px;"><span style="font-family: Arial, Verdana, sans-serif; font-size: 12px;">QCon New York is the premier east coast event for team leads, architects, and project managers, with over 100 speakers presenting across 6 concurrent tracks. &nbsp;There will be numerous opportunities for knowledge sharing and peer networking during the many breaks, evening parties, and facilitated open spaces. &nbsp;</span></p> 
-<p style="font-family: Arial, Verdana, sans-serif; font-size: 12px;">There is no other event in the US with similar opportunities for learning, networking, and tracking innovation occurring in the Java, .NET, HTML5, Mobile , Agile, and Architecture communities.</p> 
-<p style="font-family: Arial, Verdana, sans-serif; font-size: 12px;"><a href="http://qconnewyork.com/registration-intro.html?utm_source=infoq&amp;utm_medium=news&amp;utm_campaign=03282013news">Registration</a>&nbsp;is&nbsp;<strong>$1,795</strong>&nbsp;(a $400 savings) for the 3 day event&nbsp;<strong>until April 19th</strong>, and increases afterwards every month. Group discounts are available. QCon is produced by InfoQ.com and runs annually in London, San Francisco, New York, Beijing, Shanghai, Chengdu, Tokyo and S&atilde;o Paulo.&nbsp;<a href="http://qconferences.com">http://qconferences.com</a></p> 
-<p style="font-family: Arial, Verdana, sans-serif; font-size: 12px;">Stay up-to-date with the latest conference announcements on our&nbsp;<a href="http://twitter.com/#!/QConnewyork">Twitter</a>&nbsp;and&nbsp;<a href="https://www.facebook.com/QCon">Facebook</a>&nbsp;pages.</p> 
+<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>More on Immutable Collections in .NET</h3><p>Since we last reported on <a href="http://www.infoq.com/news/2013/01/Immutable-BCL;jsessionid=25384E92750396761FD42D9B9FFC4A17">Immutable Collections</a> in January, the API has evolved and a lot more has been revealed about the inner workings. First a rundown of what’s changed in the most recent release:</p> 
+<p><b>Constructors</b></p> 
+<p>Though the immutable collections still do not offer constructors, the use of an Empty object is no longer necessary. Previously you would see code like this:</p> 
+<pre>
+var list = ImmutableList&lt;int&gt;.Empty.Add(1, 2, 3);</pre> 
+<p>With the new release we get a static factory method called Create. This allows generic type inference to be used, shortening the expression to:</p> 
+<pre>
+var list = ImmutableList.Create(1, 2, 3);</pre> 
+<p><b>Compatibility </b></p> 
+<p>A hotly debated topic is the implementation of the IList&lt;T&gt; interface. Proponents of the interface say that it is necessary for interoperability with libraries that predate the introduction of IReadOnlyList&lt;T&gt;. Critics complain that the same legacy libraries don’t necessarily check to see if IList.IsReadOnly is false before attempting to modify values.</p> 
+<p>In the end the BCL team bowed down to legacy concerns and implemented IList&lt;T&gt;. While everyone agrees that it would have been better if IList.IsReadOnly never existed, at this point there is too much momentum behind it.</p> 
+<p>For a complete list of immutable classes and the interfaces they expose see this <a href="http://blogs.msdn.com/cfs-filesystemfile.ashx/__key/communityserver-blogs-components-weblogfiles/00-00-00-30-50/4503.Immutable_5F00_Table.png">compatibility chart</a>.</p> 
+<p><b>Equality Semantics</b></p> 
+<p>Like other collection types, the immutable collections will only support reference equality. The <a href="http://blogs.msdn.com/b/bclteam/archive/2013/03/06/update-to-immutable-collections.aspx">BCL Team writes</a>,</p> 
+<blockquote> 
+ <p>Value equality on collections can be fairly expensive to compute and comparing for equality on nested collections, such as ImmutableDictionary&lt;string, ImmutableList&lt;string&gt;&gt; is more difficult to define. Finally, providing this functionality leads to more issues when different comparers are involved, as customers have pointed out.</p> 
+</blockquote> 
+<p>Previously the collections did override Object.Equals but not op_equals.</p> 
+<p>Some have asked about supporting <a href="http://msdn.microsoft.com/en-us/library/system.collections.istructuralequatable.aspx">IStructuralEquatable</a>. The BCL team has declined to support that interface because it is “hard to generalize”. For example, in some scenarios it may be appropriate to skip over items in the collection (e.g. whitespace nodes in a parser), which wouldn’t be possible with a non-specific implementation.</p> 
+<p>Unfortunately the design of the immutable classes requires them to be sealed, preventing the use of inheritance to add IStructuralEquatable after the fact.</p> 
+<p><b>Platform Support</b></p> 
+<p>The immutable collections library is designed for .NET 4.5 and later. It is designed to take advantage of the new read-only interfaces and the developers are not interested in maintaining a separate version for older libraries. It is also available for the Windows 8 and the “portable-net45+win8” profiles.</p> 
+<p><b>Serialization</b></p> 
+<p>The legacy serialization design using the Serializable attribute will not be supported by the immutable collections. At this time there is no word on whether or not other serialization designs such as DataContractSerializer will be supported.</p> 
+<p><b>Internals</b></p> 
+<p>Immutable collections (except stack and queue) are based on <a href="http://en.wikipedia.org/wiki/AVL_tree">AVL trees</a>. This allows insertions in the beginning, middle, or end of the list without recopying the entire tree. In the <a href="http://en.wikipedia.org/wiki/Persistent_data_structure#Trees">trees section</a> of the Wikipedia article on persistent data structures you can see an example of such an insert.</p> 
+<p>Immutable hash tables also use AVL trees. Instead of the bucket design of normal hash tables, which perform a modulus operation on the hash code, these actually sort the tree according to the raw hash code. This means retrieval requires a binary search with an average retrieval time of O(log n).</p> 
+<p>Keep in mind that the Big-O notation is misleading when using multi-threaded operations. The alternative to the immutable collections are the concurrent collections, which require expensive internal locking to ensure thread safety.</p> 
+<p>An interesting feature of the immutable collections is that their internal nodes are not immutable. In order to reduce the amount of garbage created while constructing a collection, each node begins in an editable state. This allows the constructor to make changes to the existing AVL tree as it adds nodes instead of discarding and recreating it. Once construction is complete and the immutable wrapper returned the nodes are marked as frozen, preventing further changes.</p> 
+<p>Another surprising design decision is the object pool used by the enumerator. In .NET many of the enumerators are designed to be allocation free. If you get an enumerator from an IList&lt;T&gt; two allocations are needed. But with a List&lt;T&gt;, the enumerator is a struct and no allocations are necessary.</p> 
+<p>Likewise, the immutable collections use structs for the enumerator. But because the internal structure is a tree, the enumerator needs a stack to include a stack of previously visited nodes so that it can back-track. In order to reduce allocations, a set of these stacks is stored in an object pool (actually a stack) protected by a single lock. In fact, this is the only lock in the entire immutable collection library. It is critical that dispose is called on the enumerator, or else the stack will not be returned to the object pool.</p> 
+<p>For more information see the Channel 9 video titled <a href="http://blogs.msdn.com/b/bclteam/archive/2013/03/19/inner-workings-of-immutable-collections-on-channel-9.aspx">Inner Workings of Immutable Collections</a>.</p> 
+<p><b>Usage Recommendations</b></p> 
+<p>When creating an immutable collection, it is best to create the collection all at once using the Create function. This will allow it to pre-allocate the tree and directly populate the nodes. The second-best method is to use a builder, which doesn’t freeze nodes until you call ToImmutable.</p> 
+<p>When enumerating items in an immutable collection, always prefer a foreach loop. Due to the internal tree structure, this will be much faster than a for loop. (Side note: Since .NET 2.0, even normal lists can be read faster with foreach than with for.)</p> 
+<p>If a collection is never mutated after being created, then an immutable collection will have poorer performance than a normal collection protected by a read-only wrapper. Immutable collections are better when you want to efficiently create new collections that are slightly different than another collection.</p> 
 <p id="lastElm"></p><br><br><br><br><br><br></body></html>

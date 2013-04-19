@@ -1,6 +1,12 @@
 <html>
  <head></head> 
- <body> 
+ <body>
+  <div>
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/16.py">関数を理解するマージツール</a>Plastic SCMを開発したCodice Softwareが，セマンティックマージツール (Semantic Merge Tool) のプレビュー版をリリースした。このツールはコードを解析することで，行単位で比較する多くの同種ツールよりも正確なマージを行うことができる。同社の主席ソフトウェア技術者であるPablo Santos Luaces氏に話を聞いた。
+  </div>
+  <div>
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/15.py">LLVM開発者らがACM Awards 2012 を受賞</a>ACMは2012年のコンピューティング技術革新に対する表彰を行った。LLVM開発者らがソフトウェアシステム賞などを受賞している。
+  </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/14.py">プロダクトバックログのためのプロセスマップとストーリマップ</a>もし多数のユーザストーリを抱えた大規模なバックログがあるのならば，ストーリマップやプロセスマップによってプロダクトバックログを体系化する方法が，概要の把握と全体像の理解に役立つだろう。 
   </div> 
@@ -144,12 +150,6 @@
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/17.py">Neil Bartlett氏に聞く - OSGiとBndtools 2.0リリースについて</a>Eclipse用のOSGiプラグインとして人気の高いBndtoolsのメンテナであるNeil Bartlett氏 が，Bndtools 2.0のリリースを発表した。InfoQは氏に，Bndtoolの詳細とOSGi全般について話を聞いた。 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/16.py">ZeroTurnaroundがLiveRebel 2.6を発表</a>ZeroTurnaroundはリリース自動化ツールであるLiveRebel 2.6が利用可能になったことを発表した。InfoQはZeroTurnaroundのLiveRebelのプロダクトマーケティングマネージャであるKrishnan Badrinarayanan氏に話を聞いた。 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/15.py">Java 8は.NET/Monoへの道を探し始めた</a>先週の開発スナップショットによると、IKVMはインターフェースとデフォルトインターフェースメソッドに静的メソッドの実験的サポートを追加した。これらのJava 8の機能は最初はJavaライブラリの内部処理をサポートするたことが目的であった。それらは他の.NET言語から即座に利用することは出来ない。 
-  </div> 
+  </div>   
  </body>
 </html>

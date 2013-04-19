@@ -1,6 +1,18 @@
 <html>
  <head></head> 
- <body> 
+ <body>
+  <div>
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/2.c">Android 4.2.2: Foco em melhorias de seguran&ccedil;a</a>O Android 4.2 Jelly Bean foi atualizado com recursos adicionais para melhorar a seguran&ccedil;a de aplica&ccedil;&otilde;es. Conhe&ccedil;a os detalhes.
+  </div>
+  <div>
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/1.c">O que o RH e a ger&ecirc;ncia podem fazer para suportar a transforma&ccedil;&atilde;o &aacute;gil</a>Em uma ado&ccedil;&atilde;o &aacute;gil, h&aacute; a necessidade de desenvolver e sustentar uma cultura &aacute;gil. O que o departamento de recursos humanos ou gerentes podem fazer para suportar a agilidade em suas empresas, minimizar as chances de preocupa&ccedil;&otilde;es a respeito de pap&eacute;is por parte dos funcion&aacute;rios, avalia&ccedil;&otilde;es de desempenho e ambiente de trabalho?
+  </div>
+  <div>
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/0.c">PGDay Cear&aacute; 2013: a reuni&atilde;o da comunidade PostgreSQL em Fortaleza</a>Acontece no pr&oacute;ximo dia 3 de maio, no Centro Universit&aacute;rio Christus o PGDay Cear&aacute; 2013, uma reuni&atilde;o organizada pela comunidade PostgreSQL em Fortaleza, contando com a participa&ccedil;&atilde;o de alguns dos integrantes mais ativos da comunidade PostgreSQL no Brasil.
+  </div>
+  <div>
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/49.c">Ora2Pg 11.1: Migra&ccedil;&otilde;es de Oracle para PostgreSQL mais r&aacute;pidas</a>A Dalibo anunciou no &uacute;ltimo 10 de abril o lan&ccedil;amento da vers&atilde;o 11.1 do Ora2Pg. Essa importante vers&atilde;o traz o t&atilde;o aguardado suporte para multiprocessamento, que possibilita exportar dados de forma paralela. A importa&ccedil;&atilde;o de dados a partir de um banco de dados Oracle passa a ser 10 vezes mais r&aacute;pida se comparada com as vers&otilde;es anteriores.
+  </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/48.c">DevCamp: um novo evento na regi&atilde;o de Campinas</a>Nos dias 10 e 11 de maio, em Campinas-SP, acontecer&aacute; a primeira edi&ccedil;&atilde;o do Devcamp, confer&ecirc;ncia com objetivo de promover o compartilhamento de experi&ecirc;ncias e a democratiza&ccedil;&atilde;o da informa&ccedil;&atilde;o entre a comunidade e incluir definitivamente Campinas no cen&aacute;rio dos grandes eventos de TI do Brasil. 
   </div> 
@@ -138,15 +150,6 @@
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/3.c">NetBeans 7.3: foco em HTML5</a>Na nova vers&atilde;o 7.3 do NetBeans, a Oracle atualizou a IDE para facilitar a cria&ccedil;&atilde;o de interfaces baseadas em HTML5 para aplica&ccedil;&otilde;es m&oacute;veis e web. Conhe&ccedil;a os detalhes. 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/2.c">Java: Oracle divulga atualiza&ccedil;&otilde;es de seguran&ccedil;a antes do previsto para tratar 50 falhas</a>A Oracle publicou uma atualiza&ccedil;&atilde;o de seguran&ccedil;a importante para o Java. Originalmente agendada para 19 de fevereiro, a atualiza&ccedil;&atilde;o foi liberada uma quinzena mais cedo, na sexta-feira (15), devido ao problema de &quot;explora&ccedil;&atilde;o ativa 'na rede' de uma das vulnerabilidades que afetam o Java Runtime Environment (JRE) em navegadores de desktop&quot;. 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/1.c">Programa&ccedil;&atilde;o Extremista: uma estrat&eacute;gia de aprendizagem focada na pr&aacute;tica</a>Um aluno de PhD em Stanford escreveu um artigo no qual sugere a t&eacute;cnica de “Programa&ccedil;&atilde;o extremista” como uma estrat&eacute;gia para se aprender conceitos. O autor define a t&eacute;cnica como o ato de elevar um princ&iacute;pio acima de todas as coisas e coloc&aacute;-lo em pr&aacute;tica o m&aacute;ximo poss&iacute;vel. 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/0.c">JCache: API ficar&aacute; de fora do Java EE 7</a>Brian Oliver, um dos l&iacute;deres da especifica&ccedil;&atilde;o JSR-107 da API JCache e representante da Oracle, anunciou que &quot;infelizmente, algumas das datas chave de entrega para que a JSR-107 fosse inclu&iacute;da no Java EE 7 foram perdidas&quot;, e que &quot;seria no m&iacute;nimo razo&aacute;vel notificar a todos de que agora &eacute; muito improv&aacute;vel que a JSR-107 fa&ccedil;a parte do Java EE 7&quot;. 
-  </div> 
+  </div>    
  </body>
 </html>

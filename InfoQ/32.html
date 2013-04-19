@@ -1,22 +1,24 @@
-<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>GitSync for Plastic SCM发布，支持原生Git协议及Visual Studio 2012</h3><p><a href="http://plasticscm.com/gitsync/index.html">GitSync for Plastic SCM</a>是一个原生的、基于Windows的分布式版本控制系统（DCVS），它在不需要任何中间转换的情况下，提供了对https:// 以及git:// 等原生Git协议的支持，并且能够集成Git库。</p> 
-<p>它允许你充分利用Plastic SCM的功能，使用原生的Git网络协议与GitHub、Codeplex、BitBucket或任何Git服务器之间进行代码变更的push与pull，并且与Visual Studio 2012相集成，以使你可以在一个单独的集成开发环境（IDE）下使用所有功能。</p> 
-<p>GitSync for Plastic SCM能够clone一个Git库并在之后将变更push到其中。作为开发者，你能够使用它创建分支并将它们push至Git，或是在Git中创建分支并pull至本地。它也有效地处理了并发冲突的问题，以使得开发者能够在两个系统（Plastic SCM与Git）中同时工作在同一分支上，并正确合并变更，就如同工作在纯Plastic SCM环境下或是纯Git环境下一样。</p> 
-<p>Plastic SCM包含了一个分布式分支浏览器，使得你可以像本地库一样浏览远程库。它还可以将远程变更和本地变更共同显示在一张图表上。另外，开发者将能够使用Xdiff（cross-difference）和Xmerge（cross-merge）跟踪代码，它们能够鉴别出被移动过的代码片段，并在它们之间建立关联以便于浏览。</p> 
-<p>它允许你通过图形界面中的注解视图（annotate view）调用“方法历史”（method history），它也提供了对Eclipse、多语言的支持，改进了C#，并提供了在多个文件间跟踪重构代码的功能。</p> 
-<p>Plastic SCM的总裁Pablo Santos说道：“我需要强调，GitSync并不是一个新产品，它只是将Plastic SCM领入了Git社区，因此用户们可以在客户端使用Plastic，并与任何Git服务器进行代码的push/pull。由于Windows上的Git工具相对要弱于Mac OS X上的版本， 而Plastic SCM是特别闪耀于Windows平台上的工具，我们认为这将有助于Git的用户，并简化Plastic SCM的使用”。</p> 
-<p>InfoQ与产品团队的Manuel Lucio Dallo进行了一次交谈，以获得对Plastic SCM更多的了解。</p> 
-<p><b>InfoQ</b><b>：GitSync for Plastic SCM</b><b>是否提高了生产力？</b></p> 
-<blockquote> 
- <p>使用Plastic作为Git“客户端”，你的开发速度将会加快，你将减少在源代码控制方面所花费的时间，将更多的时间用于重要的事，例如编码。Plastic SCM 100%图形化并且非常直观。Git中的复杂而又常规的动作既耗时又需要编写各种令人费解的命令，而在Plastic中只需要几次点击就可完成。</p> 
-</blockquote> 
-<p><b>InfoQ</b><b>：将GitSync for Plastic SCM</b><b>应用于真实场景的动机会有哪些？</b></p> 
-<blockquote> 
- <p>假设你的团队正在使用Git，那你也被迫一起使用Git。现在，你可以在你的开发笔记本上使用Plastic SCM，并对Git进行push和pull操作，而你的开发过程都是通过Plastic SCM完成的。这对于那些打算在生产环境尝试Plastic，而又不想为评估过程花费太多力气的团队来说尤其有用。</p> 
- <p>也有些开发者仅仅是对将命令行作为Git唯一的界面不感冒，此时Plastic就能够通过一个真实并强大的图形界面帮助这些开发者简化流程。一旦开发者认识到Plastic和Git一样强大，甚至有过之而无不及，并且更加易于使用，那我们就可以期待有大量的团队将会完全迁移到Plastic SCM上。</p> 
- <p>我们没有什么硬件最低需求，一个普通的主流笔记本就能够完成工作。服务器端的Windows操作系统需要安装.NET Framework 3.5，默认的后台数据库是SQL Server CE。</p> 
-</blockquote> 
-<p><b>查看英文原文</b>：<a href="http://www.infoq.com/news/2013/03/gitsync-for-plastic-SCM;jsessionid=2F6848AC499CC82E07BD1547C60F3BA3">GitSync for Plastic SCM with Native Git Protocols and Visual Studio 2012 Support</a></p> 
-<hr /> 
-<p>感谢<a href="http://www.infoq.com/cn/bycategory.action;jsessionid=2F6848AC499CC82E07BD1547C60F3BA3?authorName=杨赛">杨赛</a>对本文的审校。</p> 
-<p>给InfoQ中文站投稿或者参与内容翻译工作，请邮件至<a href="mailto:editors@cn.infoq.com">editors@cn.infoq.com</a>。也欢迎大家通过新浪微博（<a href="http://www.weibo.com/infoqchina">@InfoQ</a>）或者腾讯微博（<a href="http://t.qq.com/infoqchina">@InfoQ</a>）关注我们，并与我们的编辑和其他读者朋友交流。</p> 
+<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>JSON校验综述</h3><p>我们所创建的任何“灵活”或“可扩展的”文件格式，迟早都会因为校验的问题而遭受开发者们的抱怨。在处理校验问题方面有着很多的工具，但是通常可以将它们归为以下几类：</p> 
+<ul> 
+ <li>判断数据是否已被正确格式化</li> 
+ <li>手动检查形式有误的数据并尝试纠正</li> 
+ <li>手动检查形式有误的数据并将有误数据丢弃</li> 
+ <li>自动检查形式有误的数据</li> 
+</ul> 
+<p>这篇文章的目的并非为了讨论这些选项，而是对自动校验方面的可用工具包进行了一些总结。</p> 
+<p><b>JSON Schema</b></p> 
+<p><a href="http://json-schema.org/implementations.html">JSON Schema</a> 是一个建议标准，并且已得到了17个不同项目的支持。它可在JavaScript、Java、Python、 Ruby、Perl、 PHP、.NET、ActionScript、C、 Haskell和Erlang等技术中使用。这种格式比VeriJSON更加复杂，模式与实际数据之间的关系几乎很难找到相似之处。然而它的功能也更加广泛，具备支持范围检查的数字、可限制的列表以及在列表中防止重复条目等功能。它同样还支持对<a href="http://json-schema.org/example2.html">其他模式</a><a href="http://json-schema.org/example2.html">的引用</a>，允许你将大型模式拆分成一个个较小的模式。</p> 
+<p><b>Atdgen</b></p> 
+<p>Atdgen对OCaml提供了JSON的序列化与反序列化支持。JSON的模式是使用atd文件创建的。通过一个代码生成器运行这些文件就可以生成OCaml类文件和匹配的对象/JSON转换器。在Atdgen中，校验是在反序列化过程中进行的。</p> 
+<p>atd文件中的校验规则是开放的，开发者可以直接在atd文件中注入任意他们想要的OCaml代码。它支持对二级模式文件的引用。</p> 
+<p><a href="http://mjambon.com/atdgen">Atdgen</a> 基于开源许可可用。</p> 
+<p><b>DataContractJsonSerializer</b></p> 
+<p><a href="http://msdn.microsoft.com/en-us/library/system.runtime.serialization.json.datacontractjsonserializer.aspx">DataContractJsonSerializer</a>基于WCF的DataContractSerializer，它使用类定义和数据契约属性来确定一个JSON文件应该如何进行校验和最终的反序列化。这种方式适合于基本的任务，但是也明显地显现出了性能问题，在字典方面也存在难点。它的校验非常受限于基本结构。</p> 
+<p><b>Json.NET</b></p> 
+<p>James Newton-King的Json.NET是迄今为止最具综合性的JSON序列化和反序列化工具。像DataContractJsonSerializer一样，Json.NET可以使用类来定义它的模式。你可以任意选择使用标准WCF数据契约属性或<a href="http://james.newtonking.com/projects/json/help/index.html?topic=html/SerializationAttributes.htm">JSON.NET 的序列化属性</a>，同时它还支持了大量的类型，包括DataTable 和 nHibernate实体。而就在这个月，<a href="http://james.newtonking.com/archive/2013/04/07/json-net-5-0-release-1-net-4-5-biginteger-read-only-collections.aspx">JSON.NET 5.0</a> （通过BigInteger）支持了无大小限制的整数以及以IEnumerable构造器方式暴露的只读集合（collection）。</p> 
+<p>JSON.NET同样支持通过JSON Schema进行校验。</p> 
+<p><b>VeriJSON</b></p> 
+<p>VeriJSON是一个依赖于基于模式匹配的Objective-C库。模式本身以JSON的方式编写。支持的类型有“number”、“string”、“bool”和“url”。字符串可以通过一个正则表达式来进行约束，而url则可以通过模式进行约束（例如：http，ftp）。以结构化的方式表现数组和对象，并支持可选的属性。</p> 
+<p><a href="https://bitbucket.org/dcutting/verijson">VeriJSON</a>基于开源许可可用。</p> 
+<p><b>英文原文链接</b>：<a href="http://www.infoq.com/news/2013/04/JSON-Validation;jsessionid=2B7CF64A427CBA004904F29E04677746">JSON Validation Roundup</a></p> 
 <p id="lastElm"></p><br><br><br><br><br><br></body></html>
