@@ -1,36 +1,36 @@
-<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>CamundaがAlfesco Activitiをフォーク</h3><p><a target="_blank" href="http://www.infoq.com/news/2013/03/Camunda-Forks-Activiti;jsessionid=BFE260CADDB5E6242117CFCC419D92F0"><em>原文(投稿日：2013/03/21)へのリンク</em></a></p> 
+<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>継続的デリバリがイノベーションを加速する</h3><p><a target="_blank" href="http://www.infoq.com/news/2013/04/cd-speeds-up-innovation;jsessionid=CDC69D4B5CAA7A35A24BB91119F164D0"><em>原文(投稿日：2013/04/13)へのリンク</em></a></p> 
 <div class="clearer-space">
  &nbsp;
 </div> 
 <div id="newsContent"> 
- <p>ベルリンを本拠とするBPM専門のソフトウェアコンサルタント会社である <a target="_blank" href="http://www.camunda.com">Camunda</a> が Alfesco の <a target="_blank" href="http://www.bpm-guide.de/2013/03/18/camunda-forks-activiti-and-launches-camunda-bpm/">Activiti</a> をフォークして，<a target="_blank" href="http://www.camunda.org/">camunda BPM</a> という新たな製品をローンチすると <a target="_blank" href="http://www.bpm-guide.de/2013/03/18/camunda-forks-activiti-and-launches-camunda-bpm/">発表した</a>。同社がこれまで扱っていた，Activiti ベースのBPM製品である camunda fox の後継となるプロダクトだ。</p> 
- <p>camunda BPM は４つのコンポーネントから構成される。</p> 
- <ol> 
-  <li>BPMN 2.0 プロセスエンジン – Javaで実装されている。</li> 
-  <li>Cockpit – システムの監視および管理用ツール。</li> 
-  <li>Modeler – BPMN プロセスモデリング用の Eclipse プラグイン。</li> 
-  <li>Cycle – ビジネスアナリストがBPMNツールで作成したBPMNダイアグラムと，エンジニアがModelerで編集したテクニカルで実行可能なBPMN 2.0 XMLファイルとの同期に使用する。</li> 
- </ol> 
- <p>camunda BPM の主要部分は <a target="_blank" href="http://www.apache.org/licenses/LICENSE-2.0">Apache ライセンス</a>，Eclipse Modeler ツールについては <a target="_blank" href="http://www.eclipse.org/legal/epl-v10.html">Eclipse Public Licence</a> で公開される。WebSphere と WebLogic とのインテグレーション，高負荷シナリオ用の Cockput モニタ用追加モジュールの２つも別途提供されるが，これらはオープンソースではない。</p> 
- <p>両製品で大きく異なる部分のひとつは，camunda BPM がアプリケーションサーバを幅広くサポートしている点だ。Tomcat以外にJBoss AS7 と EAP 6，Glass Fish 3.1，WebSphere 8，WebLogic 12cの上でも動作する。&quot;私たちにはプロセスエンジンの共有と組み込み，というコンセプトがあります。&quot; と，同社の創設者でマネージングディレクタのBernd R&uuml;cker氏は InfoQ に語っている。&quot;それを活用して，稼働するアプリケーションサーバを選びません。さまざまなサーバに対応するというのは，私たちにとって大して難しいことではないのです。&quot;</p> 
- <p>Activiti のプロジェクトリーダである Tijs Rademakers氏は自身の <a href="http://bpmn20inaction.blogspot.co.uk/2013/03/activiti-forked.html">ブログ</a> に&nbsp;&quot;アプリケーションサーバコンポーネントを追加していくという方法も，Activiti プロジェクトにとって相応しい作業でしょう&quot; と書いている。しかし我々とのインタビューで R&uuml;cker 氏は，フォークを行った動機として，技術的な問題と並んで両社の重視する部分の違いが大きかった，と説明している。</p> 
+ <p>Thoughtworks が先日公開した白書で取り上げた <a target="_blank" href="http://www.thoughtworks-studios.com/register?destination=node/10946">継続的デリバリ (CD, Continuous Delivery) の成熟モデル</a> は，多くの企業がイノベーションの重要性を理解しながらも，ビジネスリーダの要求に対して十分な速さでソフトウェアを提供できていない，という調査結果に対する回答だ。そこでは企業における継続的デリバリのレベルの低さが，戦略的パートナとしてのソフトウェア開発チームの立場を阻害すると同時に，ビジネスの要求に対してソフトウェアのリリースが遅れを取る原因となっている，と説明されている。</p> 
+ <p>Thoughtworksが意図するのは，プロセスとツールの <a target="_blank" href="http://consultantsmind.com/2012/07/01/maturity-model/">ギャップを評価する手段として成熟度モデルを利用</a> することによって，企業が改善すべき領域の明確化を可能にすることだ。彼らは継続的デリバリを，ソフトウェア開発の生産性を期待されるレベル以上に向上し得るソリューションとして捉える。それによって技術部門内に，企業の戦略的方向性に重要な役割を果たす能力が生まれることを期待しているのだ。白書では，以下のようなレベルと成果が詳細に説明されている。</p> 
  <blockquote> 
-  <p>Alfesco は Activiti を自社ECM (Enterprise Content Managenet) システムの組み込みエンジンとして開発しています。彼らのゴールは開発当初から，同システムの jBPM を置き換えることでした。私たちのシステムでは BPM + Java と呼んでいる部分です。</p> 
-  <p>例えば私たちには Zalando というクライアントがあって，膨大な数のオーダ (と全体としてのプロセス数) を毎日発生させています。ECMシステムが処理する業務とは，要求されているものがまったく違うのです。その結果は多くの機能的な相違点に現れています – 例えば Alfesco ではシンプルなワークフローを手軽に設定できることが重要ですが，私たちの目標は BPMN 2.0 を完全にサポートすることにあります。このような違いはさまざまな軋轢を生じさせるものですから，プロジェクトを分離するのに十分な理由となります。</p> 
-  <p>もうひとつの理由は，私たちがビジネスとITのアラインメントを重視している点です。 私たちはビジネスアナリストにもコミュニティに参加してほしいと思っています。Activiti のコミュニティで経験したことを繰り返したくないのです。</p> 
+  <ul> 
+   <li>5: 最適化 – <a target="_blank" href="http://www.startuplessonslearned.com/2009/06/why-continuous-deployment.html">継続的デプロイ</a> の実現により，ビジネス上の実験とイノベーションを実現する。</li> 
+   <li>4: 定量的管理 – リリース・オンデマンド: ソフトウェアは常にリリース可能な状態にある。リリースタイムボックスが明確に定義されると同時に，ビジネスニーズを十二分に満足する。</li> 
+   <li>3: 明確化 – リリース候補版の定期的提供: リリースタイムボックスは明確に定義されているが，着想から製品リリースまでの期間はビジネス上のニーズに達していない。</li> 
+   <li>2: 管理 – 計画的リリース: リリースタイムボックスは明確に定義されているが，着想から製品リリースまでの期間はビジネスニーズに達していない。</li> 
+   <li>1: 初期状態 – アドホックなデプロイ。</li> 
+  </ul> 
  </blockquote> 
- <p>Tijs Rademakers氏と話をしたとき，氏は &quot;プロジェクトをフォークする権利は誰にもある&quot; と言っていた。ただし条件がある。</p> 
- <blockquote> 
-  <p>... オープンソースコミュニティに新たな価値を提供できるものでなければなりません。それが可能だと言える，正当な理由が必要なのです。</p> 
-  <p>その点で私には，今回のフォークを完全に納得することができません。オープンソースBPMコミュニティに付加価値をもたらさないのではないのか，というのが私の意見です。それどころか，どちらのプロジェクトも同じ Activiti コードベースを使っているため，新機能はすべて重複して実装されることになります。それに camunda がオープンソース化したコンポーネントはすべて，Activiti プロジェクトにとっても同じように必要なものであるはずなのです。</p> 
-  <p>統一したプロジェクトとして作業していくという選択が議論されることはありませんでした。事前に意見を交わす機会もなかったのです。ですからフォークという選択は，私たちにとって極めて不愉快な驚きでした。</p> 
- </blockquote> 
- <p>Activiti のオリジナル作者で，BPM をクラウド化する目的のために同じようにプロジェクトを離れた Tom Baeyens 氏についても，プロジェクトの将来に対して懸念を抱かざるを得ない存在のはずだ。しかし Rademakers 氏は，彼については心配していないと言う。</p> 
- <blockquote> 
-  <p>ご存知のように Tom は，Joran [Barrez氏] と一緒に Activiti プロジェクトを立ち上げた人物です。BPM を完全にクラウド対応しようという彼の新プロジェクトの方向性には，非常に興味を持って見ていますし，ぜひ成功してほしいと思っています。Tom がプロジェクトを離れたことによる影響は，実際にはそれほど大きくありません。１年ほど前から，彼のプロジェクトへの関与は少なくなっていましたから。私たちは現在でも理想的なコミュニティとチームとして，Activiti の開発に携わっているのです。</p> 
-  <p>将来について言えば，私は Activiti の将来はとても明るいと思っています。5.11 と 5.12 のリリースで見て頂いたように私たちは，堅牢な BPMN エンジンをベースとして，非常に多くの新機能 (新しいWebモデラ，操作の容易なプロセスエディタ，JavaScript ベースのプロセスダイアグラム，レポート機能など) を導入することに努力してきました。その結果はコミュニティ拡大や活発なフォーラム，コミュニティによる貢献という形で実を結びつつあります。ですから６月のリリース (5.13) に向けて私たちは，機能的に完成された REST API や JavaScript SDK，さらに簡単になった管理とセットアップ作業など，Activiti の向上を続けていくつもりです。コミュニティやパートナ，Alfesco のサポートする Activitiコア開発チームに恵まれた私たちは，BPM の世界で活動する上で理想的な環境にいると思っています。</p> 
- </blockquote> 
- <p>人気のあるプロジェクトをフォークすることが，リスクを伴う行為であることは間違いない。しかしR&uuml;cker氏は，挑戦に臆することはない，市場にはcamunda BPM の余地があると確信している，と話している。</p> 
+ <div>
+  成熟度モデルは５つのレベルに分割されている。 レベル４をクリアできていない企業は，要求されるペースでイノベーションを実現するために苦労しているはずだ。またレベル３以下の企業の大部分は，ビジネスリーダや市場の要求を満足できないだろう。
+ </div> 
+ <div>
+  &nbsp;
+ </div> 
+ <div>
+  Thoughtworksは白書のために，325の事業とITプロフェッショナルへの調査を含むリサーチの実施をForrester Consultingに依頼している。
+ </div> 
+ <div>
+  &nbsp;
+ </div> 
+ <div>
+  今回のCDモデルを通じて明らかになったギャップを埋めるための有用な追加情報がInfoQにはある。昨年初めに公開した，
+  <a target="_blank" href="http://www.infoq.com/articles/Continuous-Delivery-Maturity-Model;jsessionid=2E1F70D9DCB3675A2373C5EEFD39B775;jsessionid=CDC69D4B5CAA7A35A24BB91119F164D0">継続的デリバリの適用</a> を支援するモデルに関する記事だ。ThoughtWorksの主任コンサルタントである Jez Humble氏も先頃，
+  <a target="_blank" href="http://www.infoq.com/presentations/Adopting-Continuous-Delivery;jsessionid=2E1F70D9DCB3675A2373C5EEFD39B775;jsessionid=CDC69D4B5CAA7A35A24BB91119F164D0">継続的デリバリを実現する上でもっとも重要なファクタ</a> についての講演を行っている。
+ </div> 
  <p id="lastElm">&nbsp;</p> 
 </div> 
 <p id="lastElm"></p><br><br><br><br><br><br></body></html>

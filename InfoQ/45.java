@@ -1,81 +1,80 @@
-<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>Video Lessons on Agile Coaching and Organizational Change</h3><p>&nbsp;</p> 
-<p>Two video lessons on agile adoption were released by Pearson/Addison-Wesley in the last quarter of 2012. These video lessons, covering agile coaching and organizational change, can be downloaded at <a href="file:///C:/Documents%20and%20Settings/Ben/Local%20Settings/Temp/WindowsLiveWriter-429641856/177FF894430E/mylivelessons.com">livelessons</a> on InformIT, the on-line platform of Pearson.</p> 
-<p>The lesson <a href="http://www.informit.com/store/coaching-agile-teams-livelessons-video-training-downloadable-9780321885494">coaching agile teams</a> by <a href="http://www.infoq.com/author/Lyssa-Adkins;jsessionid=FB8F2CD737598F31D6F9C9407A88B22D">Lyssa Adkins</a> “teaches the skills, tools and mindsets agile coaches need to guide their teams to extraordinary performance”. It covers topics like changes in mindset and behavior that help organizations to become agile, agile roles and practices and how to handle situations that can happen in your daily work as a coach. The lesson also explains how to become an agile coach and how to make your value as a coach visible in the organization.</p> 
-<p>In the lesson <a href="http://www.informit.com/store/agile-transformation-livelessons-video-training-downloadable-9780321887153">agile transformation</a>, Jason Little will “show you a four step model that will help you shape your path to business agility”.&nbsp;It covers the history of agile, shows how to understand the business objectives and culture of an organization, and gives some basics of organization change and agile certification. The lesson also helps you to introduce change in the organization, to reflect using retrospectives and measurements and how to deploy the Lean Startup method.</p> 
-<p>InfoQ did an interview with Julie Phifer, Video Acquisitions Editor at Pearson Education about the video lessons on agile coaching and organizational change.</p> 
-<p><strong>InfoQ: Last year, Pearson released two video trainings on agile coaching and organizational change. What made you choose to focus on agile adoption?</strong></p> 
-<blockquote> 
- <p><strong>Julie:</strong> We consistently heard from customers that they were on board with the ideas behind agile, but that their organizations were finding adoption difficult -- or at least more difficult than they thought it would be. We received a lot of inquiries from these customers on the nuances of agile. It just seemed like the logical take and a clear opportunity for video training on the topic.</p> 
+<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>Database Lifecycle Management Guidance Updated</h3><p>Microsoft has updated the <a href="http://msdn.microsoft.com/en-us/library/jj907294.aspx">database lifecycle management</a> curated guidance page in the MSDN library, which provides relevant resources for SQL Server Data Tools, SQL Server Management Studio and Windows Azure SQL Database. The page features SQL Server database lifecycle management diagram to identify the applications and actions that apply to your database scenarios.</p> 
+<p><a href="/resource/news/2013/04/database-lifecycle-management/en/resources/Figure_1_Original.gif;jsessionid=D91E40998EECE59C4771A50D5A28243E" target="_blank"><img src="http://www.infoq.com/resource/news/2013/04/database-lifecycle-management/en/resources/4Figure_1.png;jsessionid=D91E40998EECE59C4771A50D5A28243E" alt="" _href="img://4Figure_1.png" _p="true" /></a></p> 
+<p>For instance, if you need to know more about Windows Azure SQL database backup and restore then you just need to navigate to backup and restore task located under Windows Azure SQL Database section and you will be able to view a detailed tutorial of the task with source codes, screenshots and external references.</p> 
+<p>&quot;The subject matter is curated for students and others new to the industry. I hope it helps them,&quot; says Louis Berner who works as a Technical Writer/Software Engineer with SQL Server User Education.</p> 
+<p>As of the time of this writing, following topics are covered in the database lifecycle management guidance page.</p> 
+<p><strong>SQL Server Data Tools</strong></p> 
+<ul> 
+ <li><a href="http://msdn.microsoft.com/en-us/data/tools.aspx">Microsoft SQL Server Data Tools (SSDT)</a></li> 
+ <li><a href="http://msdn.microsoft.com/en-us/data/hh297028">Get Started with SQL Server Data Tools</a> - Video</li> 
+ <li><a href="http://channel9.msdn.com/Events/TechEd/Europe/2012/DBI311">Microsoft SQL Server Data Tools: Database Development from Zero to Sixty</a> - Video</li> 
+ <li><a href="http://msdn.microsoft.com/en-us/data/aa937699">Data Development Technical Documentation</a></li> 
+ <li><a href="http://msdn.microsoft.com/en-us/library/hh550080(VS.103).aspx">Data Portability</a></li> 
+ <li><a href="http://msdn.microsoft.com/en-us/library/windowsazure/ee621784.aspx">Tools and Utilities Support (Windows Azure SQL Database)</a></li> 
+ <li><a href="http://msdn.microsoft.com/en-us/library/windowsazure/ff394102.aspx">Guidelines and Limitations (Windows Azure SQL Database)</a></li> 
+ <li><a href="http:// http://blogs.msdn.com/b/ssdt/">SQL Server Data Tools Team Blog</a></li> 
+</ul> 
+<p><strong>SQL Server Management Studio</strong></p> 
+<ul> 
+ <li><a href="http://www.windowsazure.com/en-us/manage/services/sql-databases/how-to-manage-a-sqldb/">Managing Windows Azure SQL Database Using SQL Server Management Studio</a></li> 
+ <li><a href="http://technet.microsoft.com/en-us/library/ms187048.aspx">Backup and Restore of SQL Server Databases</a></li> 
+ <li><a href="http://msdn.microsoft.com/en-us/library/windowsazure/ee730904.aspx">Migrating Databases to Windows Azure SQL Database</a></li> 
+ <li><a href="http://channel9.msdn.com/Events/TechEd/Europe/2012/FDN01">The New World of Data: SQL Server and Hybrid IT</a> - Video</li> 
+ <li><a href="http://go.microsoft.com/fwlink/?LinkId=274959">Get Started with SQL Data Sync</a></li> 
+ <li><a href="http://blogs.technet.com/b/dataplatforminsider/">SQL Server Team Blog</a></li> 
+</ul> 
+<p><strong>Windows Azure SQL Database</strong></p> 
+<ul> 
+ <li><a href="http://www.windowsazure.com/en-us/manage/services/sql-databases/getting-started-w-sql-databases/">Get Started with Windows Azure SQL Database</a></li> 
+ <li><a href="http://msdn.microsoft.com/en-us/library/windowsazure/ff394114.aspx">Monitor Windows Azure SQL Database Using Dynamic Management Views </a></li> 
+ <li><a href="http://msdn.microsoft.com/en-us/library/windowsazure/jj650016.aspx">Windows Azure SQL Database Backup and Restore</a></li> 
+ <li><a href="http://msdn.microsoft.com/en-us/library/windowsazure/hh335292.aspx">How to: Import and Export a Database (Windows Azure SQL Database)</a></li> 
+ <li><a href="http://www.microsoft.com/en-us/download/details.aspx?id=8396">Windows Azure Training Kit - November 2012</a></li> 
+ <li><a href="http://windowsazure-trainingkit.github.com/index.htm">Windows Azure Training Kit - GitHub</a></li> 
+ <li><a href="http://www.windowsazure.com/en-us/pricing/free-trial/">Windows Azure 90-day Free Trial</a></li> 
+ <li><a href="http://social.technet.microsoft.com/wiki/contents/articles/1541.windows-azure-sql-database-connection-management.aspx">Windows Azure SQL Database Connection Management</a></li> 
+ <li><a href="http://social.technet.microsoft.com/wiki/contents/articles/1719.windows-azure-sql-database-connectivity-troubleshooting-guide.aspx">Windows Azure SQL Database Connectivity Troubleshooting Guide</a></li> 
+ <li><a href="http://social.msdn.microsoft.com/Forums/en-US/ssdsgetstarted/threads">Windows Azure SQL Database Community Forum</a></li> 
+ <li><a href="http://blogs.msdn.com/b/windowsazure/">Windows Azure Team Blog</a></li> 
+ <li><a href="http://www.windowsazure.com/en-us/support/service-dashboard/">Windows Azure Service Dashboard</a></li> 
+ <li><a href="http://stackoverflow.com/questions/tagged/azure%20sql-azure">Stackoverflow for Windows Azure SQL Database</a></li> 
+</ul> 
+<p>In an interview to InfoQ, Louis explained the purpose behind the creation of a curated page for database lifecycle management.</p> 
+<p><strong>InfoQ: Do you think the flowchat diagram will really assist developers to code quickly and without any frustration?</strong></p> 
+<blockquote>
+  The diagram provides a holistic view of SSDT, SSMS, Azure, and a hybrid architecture in terms of the actions that connect them. For example, you can publish from SSDT to Azure; you can import to SSDT from a local instance of SQL Server; and you can export a .bacpac file from SQL Database on Azure to a local disk.
+ <br /> 
+ <br /> It is the &quot;publish,&quot; &quot;import,&quot; and &quot;export&quot; actions - along with the other operations in the visual - that tie together the Microsoft applications in the diagram. The visual presentation is not intended to assist developers to code quickly or without frustration, but rather to connect the dots for customers and provide a visual sense of cohesion between the applications that contribute to the database lifecycle. 
 </blockquote> 
-<p><strong>InfoQ: You worked together with Lyssa Adkins and Jason Little for these video trainings. Why them?</strong></p> 
-<blockquote> 
- <p><strong>Julie:</strong> Lyssa Adkins is a proven author, a dynamic personality, and a fantastic presenter. Her book,&nbsp;<i>Coaching Agile Teams</i>, has been so well-received in the agile community that it seemed only natural to extend her work to the video format. As for Jason Little, one of our editors saw him present at a session at the Agile 2011 conference in Salt Lake City. He thought that he connected with his audience in a way that few presenters are able to, and we liked his ideas. It made sense that he would be a natural candidate for presenting ideas in the video format.</p> 
+<p><strong>InfoQ: From your point of view, who will benefit from the resources provided on the DLM page?</strong></p> 
+<blockquote>
+  The DLM topic is the result of work I am doing with Microsoft Customer Support Services (CSS). CSS Support Engineers have data that indicate barriers to adoption of the Azure platform because customers are confused about: 
+ <ul> 
+  <li>How to get started with SQL Server Data Tools</li> 
+  <li>How to get existing data migrated to the Azure platform - i.e., data portability options</li> 
+  <li>How to compare and sync data</li> 
+  <li>How to backup to the Cloud or how to use Import/Export features</li> 
+  <li>How to do backup and restore operations from the Cloud in order to satisfy their SLA requirements</li> 
+ </ul> 
+ <p>You can see from the list of topics that they are mostly 100-level and 200-level concepts. So the initial release of the DLM topic - published end-Jan-2013 - addresses adoption of the Azure platform, data portability, getting up-and-running, and basic developer tasks. Future DLM topic updates will include more advanced subjects like:</p> 
+ <ul> 
+  <li>Federations</li> 
+  <li>Performance - latency, throttling, wait statistics</li> 
+  <li>Error reference</li> 
+  <li>PowerShell scripting</li> 
+  <li>Monitoring</li> 
+  <li>Permissions and roles</li> 
+ </ul> 
+ <p>I continue to consume CSS data to ensure that I address customer top tasks. The new topics listed above are from the latest cut of CSS customer data.</p> 
 </blockquote> 
-<p><strong>InfoQ: How does a video training look? What is the advantage of a video training compared to- for instance- webinars or on-line conferences, or using a book?</strong></p> 
-<blockquote> 
- <p><strong>Julie:</strong> All video LiveLessons receive a period of product development ahead of the recording. This development includes not just the author, but also an editorial team with reviewers. We carefully work on the outline of topics covered much like we do in our book development process. &nbsp; We then produce these videos in a studio environment to optimize the production value for the end viewer. In comparison to other online offerings, these LiveLessons provide the viewer with digestible segments of content that they can learn over time and review often. Video is a different learning format from a book in that it can be more appealing to visual and audible learners.&nbsp;&nbsp;</p> 
+<p><strong>InfoQ: Do you have any plan to update DLM topic page frequently?</strong></p> 
+<blockquote>
+  The plan is to update the topic each quarter. The next update should be ready to publish in May/June 2013. 
+ <p>I am developing a workflow to analyze customer data, build a backlog of topics, review the backlog with project stakeholders, publish updates to the topic, and validate that the topic is meeting customer needs.</p> 
+ <p>It is a method of content curation, as nearly all of the content listed in the DLM topic already exists somewhere on the Web. I am collecting the best-of-breed content, tutorials, video, and community assets in a single repository, and customers seem to like my approach.</p> 
 </blockquote> 
-<p><strong>InfoQ: How can professionals use these video trainings to develop themselves? What does it bring them?</strong></p> 
-<blockquote> 
- <p><strong>Julie:</strong> We are keenly aware that customers learn in very different ways. With that in mind, we see video as a dynamic way of capturing a customer's attention, and meeting their needs for newer ways to learn in order to do their jobs even better. The format allows them to learn directly from experts at a pace that is optimal for their own learning style. Not everyone can afford the time or expense to travel to a conference to see an expert speak or gain instruction from them. Our video format allows the customer to do that without sacrificing time away from home.</p> 
-</blockquote> 
-<p><strong>InfoQ: Are video trainings only suitable for individual training, or can you also hook up with other professionals that are doing the training?</strong></p> 
-<blockquote> 
- <p><strong>Julie:</strong> We believe that video trainings are suitable for both individual learning and group learning. The spirited discussion, instantaneous peer feedback, and mentoring opportunities that can come from a group setting will only serve to enhance the user's individual experience.</p> 
-</blockquote> 
-<p><strong>InfoQ: Will there be more video trainings for agile adoption? Can you give the readers of InfoQ a sneak preview of future topics?</strong></p> 
-<blockquote> 
- <p><strong>Julie:</strong> Yes, definitely. &nbsp;I believe that future topics will mirror the most successful books that we have published on the topic of agile adoption.</p> 
-</blockquote> 
-<p>Jason Little, author of the video lesson <a href="http://www.informit.com/store/agile-transformation-livelessons-video-training-downloadable-9780321887153">agile transformation</a>&nbsp;was also interviewed by InfoQ:</p> 
-<p><strong>InfoQ: Thanks Jason for finding the time to answer some questions. Your video training with Pearson is about agile transformation. Why was this topic chosen?</strong></p> 
-<blockquote> 
- <p><strong>Jason:</strong> Chris from Pearson was at my Agile 2011 session and he liked how I was talking about Agile Transformation being a trigger to organizational change. &nbsp;At the time the Agile community seemed to be focusing more on agile adoption and transformation and, in some cases, forgetting that 'agile' isn't the point. &nbsp;Bringing on Agile is huge organizational change, not something only&nbsp;IT and teams do. &nbsp;My session focused on showing people how to understand that their market, size, culture, approach to finding work and more contribute to the approach you take when bringing Agile in. &nbsp;We chose the title 'Agile Transformation' because that's what people in organizations ask and look for.</p> 
-</blockquote> 
-<p><strong>InfoQ: The video training on agile transformation mentions &quot;four steps to organizational change&quot;. What are these these steps, and why are they important?</strong></p> 
-<blockquote> 
- <p><strong>Jason:</strong> The four steps are 'understand, educate, execute, reflect'. They're important because they help people have conversations about their approach to agile.&nbsp;</p> 
- <p>During the 'Understand' step I show how organizations can pluck tools and ideas not only from Agile, but also from the change management world to understand their context and which approach might work best for them.</p> 
-</blockquote> 
-<blockquote> 
- <p>In 'educate' I suggest a bunch of approaches to learning about agile through a variety of channels like local meetup groups, conferences, forums and more. I also talk about how learning about organizational change and about how people process change can be more important.</p> 
-</blockquote> 
-<blockquote> 
- <p>Execute is about using what you've understood to be important to your organization and picking a path that makes the most sense. &nbsp;I offer 3 approaches that seem to be the most common, but there are endless possibilities when your talking about organizational change.</p> 
-</blockquote> 
-<blockquote> 
- <p>In&nbsp;Reflect, I talk about how organizations can implement dynamic governance through retrospectives and emphasize that staff, managers and executive level feedback must happen frequently to learn and adjust to the reaction to the change.</p> 
-</blockquote> 
-<p><strong>InfoQ: What are the kind of things that people can learn from the video training, and how can it help them to implement agile?</strong></p> 
-<blockquote> 
- <p><strong>Jason:</strong> For me, the most important message I wanted to get across was that sometimes you may want to put agile aside and focus on organizational change. &nbsp;I wanted viewers to see there are plenty of organizational change tools and methods out there, don't restrict yourself to agile because you read an awesome case study and think you can replicate it. &nbsp;I did my best to use neutral and easily digestible language to help people start or get unstuck.</p> 
-</blockquote> 
-<p><strong>InfoQ: Agile transformation is a broad topic, I can imagine that people doing the video training can have additional questions. Is there a way for them to ask questions?</strong></p> 
-<blockquote> 
- <p><strong>Jason:</strong> Yes. They can join my linked in group ( URL ) and find more information and articles at <a href="http://www.agiletransformation.ca/">www.agiletransformation.ca</a> or even contact me directly, I love talking to people about this topic to see what is and isn't working for them.</p> 
-</blockquote> 
-<p>Finally, InfoQ interviewed Lyssa Adkins, author of &nbsp;the video lesson <a href="http://www.informit.com/store/coaching-agile-teams-livelessons-video-training-downloadable-9780321885494">coaching agile teams</a>:</p> 
-<p><strong>InfoQ: Thanks Lyssa that you are willing to answer some questions. As mentioned, Pearson released a video training from you about agile coaching. What made you decide to do a video training with them?</strong></p> 
-<blockquote> 
- <p><strong>Lyssa:</strong> I decided to do the Pearson LiveLessons because there are parts of the Coaching Agile Teams book that we, at the Agile Coaching Institute, do not teach in our courses and that I think are important for agile coaches. I wanted this material to have a new lease on life. I also wanted a way to serve agilists in parts of the world that we won't train in-person for a good long while. &nbsp;We just can't be everywhere at once, but these LiveLessons can.</p> 
-</blockquote> 
-<p><strong>InfoQ: How are the book &quot;coaching agile teams&quot; and the video training &quot;agile coaching&quot; related? Should you first read the book, or better start with the video training? Are the same topics covered?</strong></p> 
-<blockquote> 
- <p><strong>Lyssa:</strong> Both the Coaching Agile Teams book and LiveLessons are created in &quot;bite size chunks&quot; so that an agile coach can find exactly the topic she needs at the moment she needs it. &nbsp;They are companions...meant to be there over the long haul as agile coaches continually develop their skills and adjust their mindsets. &nbsp;The LiveLessons go beyond the book in a couple areas, one key area being the agile coaching competency and skills framework which was started in the book but became much more complete and robust as we, at the Agile Coaching Institute, learned from our students and from the scores of agile coaches we coached.</p> 
-</blockquote> 
-<p><strong>InfoQ: Learning using a video differs from workshops and class room courses, as you do not have the interaction with the teacher. Doesn't this make it difficult to train people in agile coaching with a video?</strong></p> 
-<blockquote> 
- <p><strong>Lyssa: </strong>In the LiveLessons, I offer topics that can be conveyed more &quot;cerebrally&quot; without the aid of a direct in-depth experience to metabolize. &nbsp;Having said that, it's not just Lyssa as a &quot;talking head!&quot; &nbsp;The LiveLessons come with a companion workbook to help agile coaches move the material they are learning into their own real-life agile coaching and, just like the book, there are moments where we pause to think and introspect.</p> 
-</blockquote> 
-<p><strong>InfoQ: What can agile coaches learn from the video training, how does it help them to improve their coaching skills?</strong></p> 
-<blockquote> 
- <p><strong>Lyssa:</strong> The LiveLessons offer tons of practical tools and techniques for coaching agile teams as well as plenty of deeper topics to help agile coaches see where they are, unintentionally, the impediment. &nbsp;You get both things you can do immediately and challenges to help you see how you are &quot;being&quot; with the team and the organization. &nbsp;When you grow in both your &quot;doing&quot; and your &quot;being&quot; you have a shot at being the great agile coach that helps people enjoy the full promise of agile.</p> 
-</blockquote> 
-<p><strong>InfoQ: If people have questions on agile coaching while doing the training or when they apply it in their daily work, where can they go to?</strong></p> 
-<blockquote> 
- <p><strong>Lyssa: </strong>For help becoming a great agile coach, you go to the Agile Coaching Institute, of course! &nbsp;It is my personal focus, and ACI's sole direction to provide a learning path for agile coaches from the ScrumMaster of one or a few teams, to the multi-team agile coach helping an organization expand its agile capabilities, all the way to the enterprise agile coach. &nbsp;Our courses follow (and create) this learning path and with over 1,300 agile coaches trained, we are always honing and expanding our offerings to aid people doing agile coaching.</p> 
-</blockquote> 
-<p>&nbsp;</p> 
-<blockquote> 
+<p><strong>InfoQ: Do you have any estimate regarding how many developers really benefited from the DLM resource page?</strong></p> 
+<blockquote>
+  Since Jan-2013, the topic has &gt; 3,000 page views on MSDN, excellent customer ratings, and verbatim comments like &quot;Awesome&quot; and &quot;Very helpful&quot;&nbsp; It may not meet everyone's needs, but for the target audience:&nbsp; new to Azure, new to SQL Server, frustrated with getting started, looking for the best documentation and video available - I have begun to build a following. 
 </blockquote> 
 <p id="lastElm"></p><br><br><br><br><br><br></body></html>

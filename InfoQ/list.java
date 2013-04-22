@@ -1,6 +1,9 @@
 <html>
  <head></head> 
- <body> 
+ <body>
+  <div>
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/45.java">Database Lifecycle Management Guidance Updated</a>Microsoft recently updated database lifecycle management guidance page with SQL Server DLM diagram along with curated resources for SQL Server Data Tools, SQL Server Management Studio and Windows Azure SQL Database.
+  </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/44.java">Go Big: CA World 2013 Opening Keynote</a>Continuing our tradition of on the spot conference reporting, here are the raw notes from CA World 2013’s opening keynote. CA World is focused on products, techniques, and technologies in the areas of SaaS, Mobile, DevOps, and Big Data. The first keynote is led by Mike Gregoire, CA Technologies new CEO. 
   </div> 
@@ -147,9 +150,6 @@
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/46.java">RSA Panelists Reinforce that DevOps Boosts Application Security</a>Smaller releases, automated testing, and a culture that embraces security are the reasons why panelists at the RSA 2013 conference say that Devops can be a huge boon for application security. 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/45.java">Video Lessons on Agile Coaching and Organizational Change</a>Two video lessons covering agile coaching and organizational change were released by Pearson/Addison-Wesley in the last quarter of 2012. They provide a different way to increase knowledge on agile adoption for visual and audible learners. 
-  </div> 
+  </div>  
  </body>
 </html>
