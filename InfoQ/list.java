@@ -1,8 +1,8 @@
 <html>
  <head></head> 
- <body>
-  <div>
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/44.java">Go Big: CA World 2013 Opening Keynote</a>Continuing our tradition of on the spot conference reporting, here are the raw notes from CA World 2013’s opening keynote. CA World is focused on products, techniques, and technologies in the areas of SaaS, Mobile, DevOps, and Big Data. The first keynote is led by Mike Gregoire, CA Technologies new CEO.
+ <body> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/44.java">Go Big: CA World 2013 Opening Keynote</a>Continuing our tradition of on the spot conference reporting, here are the raw notes from CA World 2013’s opening keynote. CA World is focused on products, techniques, and technologies in the areas of SaaS, Mobile, DevOps, and Big Data. The first keynote is led by Mike Gregoire, CA Technologies new CEO. 
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/43.java">Vaughn Vernon on Advanced Architecture Styles with DDD</a>Using the Hexagonal architecture style allows for delaying decisions for architectural mechanisms and promotes using the same internal API irrespective of type of client, Vaughn Vernon explained last week when describing different architecture styles from a DDD perspective; the classical Layered Architecture and the more advanced Hexagonal and Actor Model styles. 
@@ -150,6 +150,6 @@
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/45.java">Video Lessons on Agile Coaching and Organizational Change</a>Two video lessons covering agile coaching and organizational change were released by Pearson/Addison-Wesley in the last quarter of 2012. They provide a different way to increase knowledge on agile adoption for visual and audible learners. 
-  </div>  
+  </div> 
  </body>
 </html>
