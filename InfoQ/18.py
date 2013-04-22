@@ -1,14 +1,12 @@
-<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>スタンフォード大がiOSプログラミングの入門コースを無料で提供</h3><p><a target="_blank" href="http://www.infoq.com/news/2013/03/stanford-ios-programming-course;jsessionid=A28DE1576AD4F82761C1312F63BDBD32"><em>原文(投稿日：2013/03/21)へのリンク</em></a></p> 
+<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>BDDツール、Cucumberがチームを大きくして、多くのバグを修正。</h3><p><a target="_blank" href="http://www.infoq.com/news/2013/04/cucumber-ecosystem;jsessionid=F48251389C721269F62A0C15D7910188"><em>原文(投稿日：2013/04/11)へのリンク</em></a></p> 
 <div class="clearer-space">
  &nbsp;
 </div> 
 <div id="newsContent"> 
- <p>Stanford Universityは、iTunes Uで無料の入門コース<a target="_blank" href="https://itunes.apple.com/us/course/coding-together-developing/id593208016"> &quot;Coding Together: Developing Apps for iPhone and iPad (Winter 2013)&quot;</a>を提供している。全講義は、PDFフォーマットのスライドと一緒にビデオポッドキャストとして、ダウンロード出来る。教材は、Objective-C と iOSプログラミング初心者に適している。オブジェクト指向概念と言語の知識が必要だが。</p> 
- <p>コースは、約25の講義からなり、それぞれは、教室のビデオキャプチャ、講義で使われたスライド、毎週の宿題を提供し、ハンズオンのプログラミング知識を養うことができる。iOSのアプリケーション開発をステップ・バイ・ステップで教えるように構成されており、Objective-Cのシンタックス、メモリ管理、モデル-ビュー-コントロール(MVC)パターンのような基礎概念から始まる。更に、講義では、UI要素、データベースアクセス、iCloud統合のようなトピックが扱われる。実際のプログラミングの他に、コースは、XCode IDE やテスト、デバッグ、プロファイリング、ソースコード管理のようなテクニックを説明する。</p> 
- <p><a target="_blank" href="https://itunes.apple.com/us/book/ipad-iphone-app-development/id571023793?mt=13">iBook available on iTunes</a>では、コースに関連する、役立つドキュメントやインタラクティブなコンテンツが提供されている。</p> 
- <p>コースは現在開発中なので、全講義がまだ入手できるわけではない。iOSの最新変更をカバーしていないが、同じコースが<a target="_blank" href="https://itunes.apple.com/us/course/ipad-iphone-app-development/id495052415">&quot;iPad and iPhone App Development (Fall 2011)&quot;</a>として入手できる。</p> 
- <p>開発ツールをダウンロードし、更に開発ドキュメントにアクセスするには、<a target="_blank" href="https://developer.apple.com"> Apple Developer Center</a>で登録する必要がある。ベーシック登録は無料だが、iOSシミュレータでアプリケーションを動かすことが出来るだけである。 iPhones と iPads上にデプロイし、あるいは iTunesストアでアプリケーションを売るには、有料サブスクリプション（99ドル/年）が必要である。</p> 
- <p>コースは Paul Hegarty氏が教える。彼は、Stanford Universityを卒業して NeXT Computersに入り、研究と開発を率いた。その時に、彼は、NeXTSTEPオペレーティングシステムの作成に加わり、これは後にAppleによって買収された。Mac OS X と iOSは、NeXTSTEPの直接の子孫である。</p> 
+ <p><a target="_blank" href="http://cukes.info/">Cucumber</a>,ビヘイビア駆動開発, <a target="_blank" href="http://en.wikipedia.org/wiki/Behavior-driven_development">BDD</a>ツールは最近、チームを増強し、この２ヶ月間の集中的な作業によりバグを大幅に減らした、と<a target="_blank" href="https://github.com/aslakhellesoy">Aslak Helles&oslash;y</a>氏が明らかにした。先週開かれた Cucumber <a target="_blank" href="http://skillsmatter.com/event/agile-testing/cukeup-2013">カンファレンスデー</a>においてCucumberのエコシステムについて話した時のことである。</p> 
+ <p>Cucumberが死んだプロジェクトかどうかを尋ねたメールに関して、クリエーターであり、中核開発者の氏は、Rubyバージョンのオープンバグ数が増え続けているように、この２年間の進化は、非常にゆっくりしていた事を認めた。しかし事態は変わった。新しくより大きなチームが作られて、この２ヶ月間で、約１５０のバグがクローズされ、４０日間の平均で修正すべきバグ数が２０まで下がった。</p> 
+ <p>その上、新チームは２つの活動に注力している。報告されてるバグの修正を簡単にしつつ、Cucumberの内部品質を改善するために新しいGherkinパーサーを設計すること。そして、大きくなりすぎた現在のドキュメントウィキを改善することである。計画では、ウィキを新しいドキュメントウェブサイトに移行し、ウィキを夏まで停止する。これを達成するためには、チームはコミュニテイからの助けが必要である。氏は、「Cucumberを使っている皆が１パラグラフづつ助けてくれたら、これは達成できる。」、と言っている。<br /> コミュニテイの助けるが必要なことがもう２つある。１つは、Cucumberフォーラムで「権威のある」答えを待たずに、質問に答えることである。そして、例えば、Selenium や Mavenなどのツールについての質問を正しいフォーラムに転送することである。こうしてくれれば、チームがコーディングに集中できるようになる。</p> 
+ <p>Cucumberは、ビヘイビア駆動開発、BDD用のオープンソースなツールで現在Ruby, JVMベース言語、JavaScriptを含んだ９つのプログラミング言語が使える。.NET 言語は、同じGherkinシンタックスを使って、<a target="_blank" href="http://www.specflow.org/">SpecFlow</a>プロジェクトを通じてサポートされている。</p> 
  <p id="lastElm">&nbsp;</p> 
 </div> 
 <p id="lastElm"></p><br><br><br><br><br><br></body></html>

@@ -1,6 +1,12 @@
 <html>
  <head></head> 
- <body> 
+ <body>
+  <div>
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/18.py">BDDツール、Cucumberがチームを大きくして、多くのバグを修正。</a>Cucumber、ビヘイビア駆動開発、BDD、ツールは最近、チームを増強し、この２ヶ月間の集中的な作業によりバグを大幅に減らした、とAslak Helles&oslash;y氏が明らかにした。先週開かれた CucumberカンファレンスデーにおいてCucumberのエコシステムについて話した時のことである。
+  </div>
+  <div>
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/17.py">安定したチーム作りと機能不全なチームの対処</a>複数のプロジェクトにわたる安定したチームを持つことは、アジャイルソフトウェア開発にとってプラスになる。安定したチーム作りとその育成について、また機能不全なチームの対処について、さまざまな人がブログに記事を書いている。
+  </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/16.py">関数を理解するマージツール</a>Plastic SCMを開発したCodice Softwareが，セマンティックマージツール (Semantic Merge Tool) のプレビュー版をリリースした。このツールはコードを解析することで，行単位で比較する多くの同種ツールよりも正確なマージを行うことができる。同社の主席ソフトウェア技術者であるPablo Santos Luaces氏に話を聞いた。 
   </div> 
@@ -144,12 +150,6 @@
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/19.py">ZeroTurnaroundがJaveleonを買収</a>JavaのソフトウェアツールメーカーであるZeroTurnaroundが Javeleonを買収した。この会社は、デンマークに本拠を置く生まれたて会社で、 ZeroTurnaroundの人気のあるJRebel動的Java クラス－再ロードツールに関係した製品を出している。 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/18.py">スタンフォード大がiOSプログラミングの入門コースを無料で提供</a>Stanford Universityは、iTunes Uで無料の入門コースーを提供している。全講義は、PDFフォーマットのスライドと一緒にビデオポッドキャストとして、ダウンロード出来る。教材は、Objective-C と iOSプログラミング初心者に適している。オブジェクト指向概念と言語の知識が必要だが。 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/17.py">Neil Bartlett氏に聞く - OSGiとBndtools 2.0リリースについて</a>Eclipse用のOSGiプラグインとして人気の高いBndtoolsのメンテナであるNeil Bartlett氏 が，Bndtools 2.0のリリースを発表した。InfoQは氏に，Bndtoolの詳細とOSGi全般について話を聞いた。 
-  </div> 
+  </div>   
  </body>
 </html>

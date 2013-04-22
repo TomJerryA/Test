@@ -1,8 +1,8 @@
 <html>
  <head></head> 
- <body>
-  <div>
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/43.java">Vaughn Vernon on Advanced Architecture Styles with DDD</a>Using the Hexagonal architecture style allows for delaying decisions for architectural mechanisms and promotes using the same internal API irrespective of type of client, Vaughn Vernon explained last week when describing different architecture styles from a DDD perspective; the classical Layered Architecture and the more advanced Hexagonal and Actor Model styles.
+ <body> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/43.java">Vaughn Vernon on Advanced Architecture Styles with DDD</a>Using the Hexagonal architecture style allows for delaying decisions for architectural mechanisms and promotes using the same internal API irrespective of type of client, Vaughn Vernon explained last week when describing different architecture styles from a DDD perspective; the classical Layered Architecture and the more advanced Hexagonal and Actor Model styles. 
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/42.java">JavaScript Memory Analyzer in Visual Studio 2012 Identifies Leaks in Windows Store Apps</a>Visual Studio 2012 Update 1 includes a new JavaScript Memory Analyzer for Windows 8 which identifies potential memory leaks to enable developers to fix their apps before submission to Windows Store. 
@@ -150,6 +150,6 @@
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/44.java">Got Node? AWS Latest Cloud to Offer Node.js Application Services</a>The Amazon Web Services (AWS) team recently added support for Node.js to its Elastic Beanstalk service, giving it an industry-leading set of supported platforms. AWS has joined a crowded field of Node.js-friendly clouds and will attempt to differentiate themselves through integration with other top AWS services. 
-  </div>  
+  </div> 
  </body>
 </html>
