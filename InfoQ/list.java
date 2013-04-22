@@ -2,7 +2,10 @@
  <head></head> 
  <body>
   <div>
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/45.java">Database Lifecycle Management Guidance Updated</a>Microsoft recently updated database lifecycle management guidance page with SQL Server DLM diagram along with curated resources for SQL Server Data Tools, SQL Server Management Studio and Windows Azure SQL Database.
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/46.java">Database Lifecycle Management Guidance Updated by Microsoft</a>Microsoft recently updated database lifecycle management guidance page with SQL Server DLM diagram along with curated resources for SQL Server Data Tools, SQL Server Management Studio and Windows Azure SQL Database.
+  </div> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/45.java">Database Lifecycle Management Guidance Updated</a>Microsoft recently updated database lifecycle management guidance page with SQL Server DLM diagram along with curated resources for SQL Server Data Tools, SQL Server Management Studio and Windows Azure SQL Database. 
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/44.java">Go Big: CA World 2013 Opening Keynote</a>Continuing our tradition of on the spot conference reporting, here are the raw notes from CA World 2013’s opening keynote. CA World is focused on products, techniques, and technologies in the areas of SaaS, Mobile, DevOps, and Big Data. The first keynote is led by Mike Gregoire, CA Technologies new CEO. 
@@ -147,9 +150,6 @@
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/47.java">Patent Holder Pursues IP Grab on TCP/IP</a>A networking hardware vendor based in Austin, Texas says it's going to pursue royalties on the implementation of the TCP/IP set of protocols. Formerly known as Dellor, KCIR Networks acquired Nett Labs in 1997, acquiring this patent into the bargain. The patent claim was filed in 1975, but Nett Labs never pursued royalties. 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/46.java">RSA Panelists Reinforce that DevOps Boosts Application Security</a>Smaller releases, automated testing, and a culture that embraces security are the reasons why panelists at the RSA 2013 conference say that Devops can be a huge boon for application security. 
   </div>  
  </body>
 </html>

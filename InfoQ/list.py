@@ -1,17 +1,17 @@
 <html>
  <head></head> 
- <body>
-  <div>
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/22.py">継続的デリバリがイノベーションを加速する</a>Thoughtworks が先日公開した白書で取り上げた継続的デリバリ (CD, Continuous Delivery) の成熟モデルは，多くの企業がイノベーションの重要性を理解しながらも，ビジネスリーダの要求に対して十分な速さでソフトウェアを提供できていないという調査結果に対する回答だ。
-  </div>
-  <div>
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/21.py">Aerospike, Cassandra, Couchbase、MongoDBを比較したNoSQLベンチマーク</a>最近のベンチマークセットがAerospike, Cassandra, Couchbase、MongoDBを比較して、インサート スループット、最大スループット、レイテンシ、フェイルオーバー中の動作がどうなのかを知ることができる。
-  </div>
-  <div>
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/20.py">CouchDB 1.3.0が新しいフィーチャとアルゴリズムの改善を追加</a>Apache Software Foundation がリリースしたCouchDB 1.3.0には、Fix _session, Cross Origin Resource Sharing (CORS)のサポートと追加のフィーチャとアルゴリズムの改善が含まれている。
-  </div>
-  <div>
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/19.py">Googleの Goが近々1.1をリリース</a>Googleの Goバージョン1.1はベータで、著しいパフォーマンスの増加が報告され、新しいツールセットと言語フィーチャをもたらす。Go 1.0との後方互換性を維持し、殆どの場合、このリリースを利用するのに必要なのは再コンパイルだけである。
+ <body> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/22.py">継続的デリバリがイノベーションを加速する</a>Thoughtworks が先日公開した白書で取り上げた継続的デリバリ (CD, Continuous Delivery) の成熟モデルは，多くの企業がイノベーションの重要性を理解しながらも，ビジネスリーダの要求に対して十分な速さでソフトウェアを提供できていないという調査結果に対する回答だ。 
+  </div> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/21.py">Aerospike, Cassandra, Couchbase、MongoDBを比較したNoSQLベンチマーク</a>最近のベンチマークセットがAerospike, Cassandra, Couchbase、MongoDBを比較して、インサート スループット、最大スループット、レイテンシ、フェイルオーバー中の動作がどうなのかを知ることができる。 
+  </div> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/20.py">CouchDB 1.3.0が新しいフィーチャとアルゴリズムの改善を追加</a>Apache Software Foundation がリリースしたCouchDB 1.3.0には、Fix _session, Cross Origin Resource Sharing (CORS)のサポートと追加のフィーチャとアルゴリズムの改善が含まれている。 
+  </div> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/19.py">Googleの Goが近々1.1をリリース</a>Googleの Goバージョン1.1はベータで、著しいパフォーマンスの増加が報告され、新しいツールセットと言語フィーチャをもたらす。Go 1.0との後方互換性を維持し、殆どの場合、このリリースを利用するのに必要なのは再コンパイルだけである。 
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/18.py">BDDツール、Cucumberがチームを大きくして、多くのバグを修正。</a>Cucumber、ビヘイビア駆動開発、BDD、ツールは最近、チームを増強し、この２ヶ月間の集中的な作業によりバグを大幅に減らした、とAslak Helles&oslash;y氏が明らかにした。先週開かれた CucumberカンファレンスデーにおいてCucumberのエコシステムについて話した時のことである。 
@@ -150,6 +150,6 @@
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/23.py">GitプロトコルとVisual Studio 2012をサポートしたGitSync for Plastic SCM</a>GitプロトコルとVisual Studio 2012をサポートしたGitSync for Plastic SCMがリリースされた。 
-  </div>     
+  </div> 
  </body>
 </html>
