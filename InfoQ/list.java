@@ -2,7 +2,10 @@
  <head></head> 
  <body>
   <div>
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/42.java">JavaScript Memory Analyzer in Visual Studio 2012 Identifies Leaks in Windows Store Apps</a>Visual Studio 2012 Update 1 includes a new JavaScript Memory Analyzer for Windows 8 which identifies potential memory leaks to enable developers to fix their apps before submission to Windows Store.
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/43.java">Vaughn Vernon on Advanced Architecture Styles with DDD</a>Using the Hexagonal architecture style allows for delaying decisions for architectural mechanisms and promotes using the same internal API irrespective of type of client, Vaughn Vernon explained last week when describing different architecture styles from a DDD perspective; the classical Layered Architecture and the more advanced Hexagonal and Actor Model styles.
+  </div> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/42.java">JavaScript Memory Analyzer in Visual Studio 2012 Identifies Leaks in Windows Store Apps</a>Visual Studio 2012 Update 1 includes a new JavaScript Memory Analyzer for Windows 8 which identifies potential memory leaks to enable developers to fix their apps before submission to Windows Store. 
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/41.java">Tabris 1.0: Cross-platform Mobile Development in Java</a>After three years in development, EclipseSource has released Tabris 1.0, a cross-platform Java mobile development framework for iOS and Android. 
@@ -147,9 +150,6 @@
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/44.java">Got Node? AWS Latest Cloud to Offer Node.js Application Services</a>The Amazon Web Services (AWS) team recently added support for Node.js to its Elastic Beanstalk service, giving it an industry-leading set of supported platforms. AWS has joined a crowded field of Node.js-friendly clouds and will attempt to differentiate themselves through integration with other top AWS services. 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/43.java">MongoDB Gets Better Security, Text Search, Performance Improvements – What’s Next?</a>MongoDB 2.4 was recently released with new features such as Text Search, hash-based sharding, better geo-spatial capabilities with GeoJSON support and several performance and tooling improvements. We also discussed with 10gen about what’s next on the roadmap. 
   </div>  
  </body>
 </html>
