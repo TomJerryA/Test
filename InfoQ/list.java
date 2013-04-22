@@ -1,8 +1,8 @@
 <html>
  <head></head> 
- <body>
-  <div>
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/46.java">Database Lifecycle Management Guidance Updated by Microsoft</a>Microsoft recently updated database lifecycle management guidance page with SQL Server DLM diagram along with curated resources for SQL Server Data Tools, SQL Server Management Studio and Windows Azure SQL Database.
+ <body> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/46.java">Database Lifecycle Management Guidance Updated by Microsoft</a>Microsoft recently updated database lifecycle management guidance page with SQL Server DLM diagram along with curated resources for SQL Server Data Tools, SQL Server Management Studio and Windows Azure SQL Database. 
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/45.java">Database Lifecycle Management Guidance Updated</a>Microsoft recently updated database lifecycle management guidance page with SQL Server DLM diagram along with curated resources for SQL Server Data Tools, SQL Server Management Studio and Windows Azure SQL Database. 
@@ -150,6 +150,6 @@
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/47.java">Patent Holder Pursues IP Grab on TCP/IP</a>A networking hardware vendor based in Austin, Texas says it's going to pursue royalties on the implementation of the TCP/IP set of protocols. Formerly known as Dellor, KCIR Networks acquired Nett Labs in 1997, acquiring this patent into the bargain. The patent claim was filed in 1975, but Nett Labs never pursued royalties. 
-  </div>  
+  </div> 
  </body>
 </html>

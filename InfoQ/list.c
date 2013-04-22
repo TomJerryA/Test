@@ -1,6 +1,9 @@
 <html>
  <head></head> 
- <body> 
+ <body>
+  <div>
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/5.c">Novidades da Microsoft e Amazon para o Android</a>O Windows Azure agora possui um SDK Android incluindo notifica&ccedil;&otilde;es push para dispositivos, e a Amazon disponibilizou uma API de an&uacute;ncios que pode ser utilizada em dispositivos Android, em paralelo com o Google AdMob. Conhe&ccedil;a os detalhes.
+  </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/4.c">Cresce competi&ccedil;&atilde;o entre implementa&ccedil;&otilde;es do Hadoop para consultas em tempo real</a>Stinger, a nova iniciativa da Hortonworks, entra na disputa com o Apache Drill e o Cloudera Impala pela melhor implementa&ccedil;&atilde;o do Hadoop para consultas em tempo real. Conhe&ccedil;a as novidades. 
   </div> 
@@ -147,9 +150,6 @@
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/6.c">Novo Radar de Tecnologias da ThoughtWorks: Mobile e Big Data em destaque</a>O &uacute;ltimo relat&oacute;rio “Radar de Tecnologias” da ThoughtWorks concentra-se em plataformas m&oacute;veis, an&aacute;lises de Big Data, arquiteturas simples, ambientes reproduz&iacute;veis, e persist&ecirc;ncia de dados bem constru&iacute;da. Veja um resumo. 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/5.c">Facebook adota o Chef para ger&ecirc;ncia da camada web</a>O Facebook implatou o Private Chef, um produto de automa&ccedil;&atilde;o de infraestrutura para gerenciamento da sua camada web. Para garantir que o Chef atenda aos requisitos de escalabilidade do Facebook, a empresa ajudou na cria&ccedil;&atilde;o da &uacute;ltima vers&atilde;o do Chef Server, totalmente reescrito em Erlang. 
-  </div> 
+  </div>  
  </body>
 </html>
