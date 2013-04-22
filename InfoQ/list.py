@@ -1,11 +1,11 @@
 <html>
  <head></head> 
- <body>
-  <div>
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/18.py">BDDツール、Cucumberがチームを大きくして、多くのバグを修正。</a>Cucumber、ビヘイビア駆動開発、BDD、ツールは最近、チームを増強し、この２ヶ月間の集中的な作業によりバグを大幅に減らした、とAslak Helles&oslash;y氏が明らかにした。先週開かれた CucumberカンファレンスデーにおいてCucumberのエコシステムについて話した時のことである。
-  </div>
-  <div>
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/17.py">安定したチーム作りと機能不全なチームの対処</a>複数のプロジェクトにわたる安定したチームを持つことは、アジャイルソフトウェア開発にとってプラスになる。安定したチーム作りとその育成について、また機能不全なチームの対処について、さまざまな人がブログに記事を書いている。
+ <body> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/18.py">BDDツール、Cucumberがチームを大きくして、多くのバグを修正。</a>Cucumber、ビヘイビア駆動開発、BDD、ツールは最近、チームを増強し、この２ヶ月間の集中的な作業によりバグを大幅に減らした、とAslak Helles&oslash;y氏が明らかにした。先週開かれた CucumberカンファレンスデーにおいてCucumberのエコシステムについて話した時のことである。 
+  </div> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/17.py">安定したチーム作りと機能不全なチームの対処</a>複数のプロジェクトにわたる安定したチームを持つことは、アジャイルソフトウェア開発にとってプラスになる。安定したチーム作りとその育成について、また機能不全なチームの対処について、さまざまな人がブログに記事を書いている。 
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/16.py">関数を理解するマージツール</a>Plastic SCMを開発したCodice Softwareが，セマンティックマージツール (Semantic Merge Tool) のプレビュー版をリリースした。このツールはコードを解析することで，行単位で比較する多くの同種ツールよりも正確なマージを行うことができる。同社の主席ソフトウェア技術者であるPablo Santos Luaces氏に話を聞いた。 
@@ -150,6 +150,6 @@
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/19.py">ZeroTurnaroundがJaveleonを買収</a>JavaのソフトウェアツールメーカーであるZeroTurnaroundが Javeleonを買収した。この会社は、デンマークに本拠を置く生まれたて会社で、 ZeroTurnaroundの人気のあるJRebel動的Java クラス－再ロードツールに関係した製品を出している。 
-  </div>   
+  </div> 
  </body>
 </html>
