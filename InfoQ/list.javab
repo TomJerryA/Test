@@ -1,8 +1,8 @@
 <html>
  <head></head> 
- <body>
-  <div>
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/34.javab">Dialogue Sheets Revisited</a>Last year Allan Kelly wrote an InfoQ article about a tool for retrospectives - Dialogue Sheets. A year and over 2000 downloads later he looks at how they are being used in the wild.
+ <body> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/34.javab">Dialogue Sheets Revisited</a>Last year Allan Kelly wrote an InfoQ article about a tool for retrospectives - Dialogue Sheets. A year and over 2000 downloads later he looks at how they are being used in the wild. 
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/33.javab">DevOps @ Spotify</a>In this article we learn how lessons learned from the DevOps movement have permeated engineering management at Spotify. The result is a healthy Potlac with team leader, product owner and agile coach. 
