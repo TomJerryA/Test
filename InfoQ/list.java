@@ -2,7 +2,13 @@
  <head></head> 
  <body>
   <div>
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/48.java">Service Virtualization as an Alternative to Mocking</a>Mocking via dependency injection is often a messy endeavor. For even the simplest of applications it often involves creating new interfaces, taking on a dependency to an IoC Container, and in general adds a lot of unnecessary complexity. And after all that, you still have to write the mocks themselves, many of which aren’t useful for anything besides simplistic unit tests.
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/0.java">Detecting Abnormal Traffic in Real Time with APM 9.5</a>CA Technologies’ Application Performance Management 9.5 adds the ability to detect and analyze unusual performance metric patterns in near real time. This can be used to detect the beginnings of a denial of service attack, failing hardware, or a rouge application.
+  </div>
+  <div>
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/49.java">Layer 7 to be Merged with SiteMinder</a>Layer 7 Technologies has just been acquired by CA Technologies for the purpose of augmenting CA SiteMinder with Layer 7’s API Management &amp; Security Suite. Layer 7 specializes in adding “access, security, SLA and management features” to existing service APIs.
+  </div> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/48.java">Service Virtualization as an Alternative to Mocking</a>Mocking via dependency injection is often a messy endeavor. For even the simplest of applications it often involves creating new interfaces, taking on a dependency to an IoC Container, and in general adds a lot of unnecessary complexity. And after all that, you still have to write the mocks themselves, many of which aren’t useful for anything besides simplistic unit tests. 
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/47.java">Microsoft Offers Module to Scale Out Real-time Node.js Applications</a>A new open-source contribution from Microsoft uses the Windows Azure Service Bus to provide scale out support for real-time Node.js applications. This module, called socket.io-servicebus, connects multiple servers running the popular Socket.IO module. This contribution is yet another example of Microsoft embracing Node.js and integrating it with Microsoft products and services. 
@@ -144,12 +150,6 @@
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/1.java">Developing Stable Teams, and Dealing with Dysfunctions</a>Having stable teams can be beneficial for agile software development. Several views on establishing and nurturing stable teams, and dealing with team dysfunctions. 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/0.java">Google, Opera Fork WebKit. Samsung Joins Firefox to Push Servo</a>There are two major browser developments recently announced, both targeting parallel architectures: Google and Opera with Blink, a WebKit fork, while Samsung joins Mozilla to push Servo forward. 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/49.java">Martin Fowler on Software Design in the 21st Century</a>Martin Fowler talks about Software Design in the 21st Century split into three short talks, Schemaless Data Structures, NoSQL &amp; Consistency, and finally the value of Software Design. 
-  </div>  
+  </div>   
  </body>
 </html>

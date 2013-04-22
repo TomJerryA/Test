@@ -1,12 +1,21 @@
-<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>Martin Fowler on Software Design in the 21st Century</h3><p>Schemaless data structures are not well understood and it's important to consider the advantages and disadvantages when using these data structures in NoSQL databases. At a recent company event <a href="http://martinfowler.com/">Martin Fowler</a>&nbsp;<a href="http://www.youtube.com/watch?v=8kotnF6hfd8">talked</a> about Schemaless Data Structures, and NoSQL &amp; Consistency.</p> 
-<p><strong>Schemaless Data Structures:</strong></p> 
-<p>Being schemaless is often seen as a big advantage with NoSQL databases. Martin believes that the area is not well understood and describes different aspects of schemalessness as well as what advantages and disadvantages of using schemaless data structures.</p> 
-<p>The main point is that even in a schemaless structure you still have a schema. In order to query the data and find information you have to understand the data, and that's an <a href="http://martinfowler.com/articles/schemaless/">Implicit Schema</a>, a definition of data e.g. in code. In contrast the schema in a relational database, where only correct data is accepted, is an <a href="http://martinfowler.com/articles/schemaless/">Explicit Schema</a>.</p> 
-<p>Martin ends the discussion with claiming that most of the time <em>&quot;Implicit Schema == Bad Thing&quot;</em> prefering an explicit schema to get a clear statement what data looks like, although there are a few cases where schemalessnes is useful. But he also states that a schema does not need to be a fixed storage schema; it can be more in the form of a contract, e.g. a data access layer or XML schema.</p> 
-<p><strong>NoSQL and Consistency:</strong></p> 
-<p>In this talk Martin looks at two aspects of consistency in NoSQL databases.</p> 
-<p>Logical Consistency deals with keeping data consistent when working in one database. For most NoSQL databases (graphs being one exception), the use of <a href="http://dddcommunity.org/resources/ddd_terms/">aggregates</a> (a concept from Domain Driven Design where you store a cluster of objects at the same time) is an obvious way of avoiding inconsistency.</p> 
-<p>While describing Replication Consistency, with copies of the same data in several places, Martin introduces the <a href="http://en.wikipedia.org/wiki/CAP_theorem">CAP theorem</a>, and with data already replicated over the network he simplifies it into a choice between consistency and availability, He emphasizes that this not a technical issue, it's a business choice whether being consistent or available is the top priority.</p> 
-<p>Martin ended with a talk discussing the value of software design and technical debt.</p> 
-<p>&nbsp;</p> 
+<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>Layer 7 to be Merged with SiteMinder</h3><p>Layer 7 Technologies has just been acquired by CA Technologies for the purpose of augmenting CA SiteMinder with Layer 7’s API Management &amp; Security Suite. Layer 7 specializes in adding “access, security, SLA and management features” to existing service APIs. Here is a rundown of the core product line.</p> 
+<p><b>Layer 7 XML Gateways</b></p> 
+<p>The <a href="http://www.layer7tech.com/products/industry-leading-xml-gateway-overview">XML Gateways</a> product is used to transform service requests between SOAP, XML/REST, and XML/JSON formats. It can firewall APIs and offers some defense against denial of service attacks via request throttling. On the security side it has “full SAML Web services profile support” as well as OAuth and the various WS-* protocols.</p> 
+<p>The purpose of this product is to remove concerns such as security and metrics from the application itself. Correctly implementing these can be downright difficult, and even when they are done successfully there is no guarantee the work can be reused in other services. By moving it to the gateway, the developer ensures a consistent interface for the production support team to work with.</p> 
+<p><b>API Portal</b></p> 
+<p>Once the Service APIs are created, developers need an easy way to find them and learn how to use them correctly. In theory this could just be a web site with some basic documentation, but some companies may wish to have a more comprehensive solution.</p> 
+<p>The <a href="http://www.layer7tech.com/products/layer-7-api-portal">API Portal</a> is essentially a turn-key solution for exposing service APIs to both internal and external developers. Features include:</p> 
+<ul> 
+ <li>Developer organization sign-up</li> 
+ <li>Application registration</li> 
+ <li>Discussion forums, integrated messaging, FAQs, issue resolution etc.</li> 
+ <li>A place to store API documentation, sample code/applications etc., complete with versioning</li> 
+ <li>OAuth compatible API key management</li> 
+ <li>API Analytics such as Utilization Rates, Latency, Error Rates, Availability, etc.</li> 
+</ul> 
+<p>Everything here could be assembled from other products and open source projects, but there is arguably an advantage to having everything integrated into one system.</p> 
+<p><b>API Service Manager</b></p> 
+<p>The <a href="http://www.layer7tech.com/products/api-service-manager">API Service Manager</a> builds upon the Gateway product to add monitoring tools that span the enterprise. In addition to their own gateways, a plug-in architecture allows metrics from third party gateways to be fed into this reporting and alert system.</p> 
+<p><b>CA SiteMinder</b></p> 
+<p>CA Technologies see these tools as filling an important gap in their <a href="http://www.ca.com/us/secure-single-sign-on.aspx">SiteMinder</a> product line. SiteMinder is essentially the website version of what Layer 7 is doing. It adds single sign-on capabilities to websites.</p> 
 <p id="lastElm"></p><br><br><br><br><br><br></body></html>
