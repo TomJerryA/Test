@@ -1,6 +1,9 @@
 <html>
  <head></head> 
- <body> 
+ <body>
+  <div>
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/47.java">Microsoft Offers Module to Scale Out Real-time Node.js Applications</a>A new open-source contribution from Microsoft uses the Windows Azure Service Bus to provide scale out support for real-time Node.js applications. This module, called socket.io-servicebus, connects multiple servers running the popular Socket.IO module. This contribution is yet another example of Microsoft embracing Node.js and integrating it with Microsoft products and services.
+  </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/46.java">Database Lifecycle Management Guidance Updated by Microsoft</a>Microsoft recently updated database lifecycle management guidance page with SQL Server DLM diagram along with curated resources for SQL Server Data Tools, SQL Server Management Studio and Windows Azure SQL Database. 
   </div> 
@@ -147,9 +150,6 @@
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/48.java">Python Tools for Visual Studio 2.0 Adds IntelliSense, Virtualenv and Windows Azure Support</a>Python Tools for Visual Studio 2.0 alpha release includes support for Intellisense, Virtualenv, Windows Azure, Cloud Service, Web Sites and Client Libraries. 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/47.java">Patent Holder Pursues IP Grab on TCP/IP</a>A networking hardware vendor based in Austin, Texas says it's going to pursue royalties on the implementation of the TCP/IP set of protocols. Formerly known as Dellor, KCIR Networks acquired Nett Labs in 1997, acquiring this patent into the bargain. The patent claim was filed in 1975, but Nett Labs never pursued royalties. 
-  </div> 
+  </div>  
  </body>
 </html>

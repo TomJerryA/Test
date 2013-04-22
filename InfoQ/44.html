@@ -1,17 +1,8 @@
-<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>Windows Phone应用中通过RadBarcode整合条形码</h3><p><a href="http://www.telerik.com/products/windows-phone/overview/all-controls/barcode.aspx">RadControls for Windows Phone Q1 2013</a> 中的<a href="http://blogs.telerik.com/blogs/13-03-13/barcode-for-windows-phone---q1-2013">RadBarcode</a> 控件包括了多个能生成不同类型<a href="http://www.telerik.com/help/windows-phone/radbarcode-barcode-types-description.html">条形码</a>的组件，能生成的条形码类型有QP、UPCA、UPCE、<a name="OLE_LINK2"></a><a name="OLE_LINK1">UPCSupplement2</a>、UPCSupplement5、 POSTNET、PDF417、MSI、EAN8、EAN13、库德巴码（Codabar）、93、扩展93、39，扩展39、非交叉25、交叉25、128、128A、128B、128C 和 11。</p> 
-<p>比如，在添加了下面的XML命名空间之后，就能够很容易地通过下面的代码为值999888生成库德巴码：</p> 
-<pre>
-xmlns:telerikDataViz=&quot;clr-namespace:Telerik.Windows.Controls;assembly=Telerik.Windows.Controls.DataVisualization&quot;<br />&lt;Border Background=&quot;Gray&quot;<br />VerticalAlignment=&quot;Center&quot;&gt;<br />&lt;telerikDataViz:RadBarcodeCodebar Width=&quot;520&quot;<br />Height=&quot;150&quot;<br />Margin=&quot;30&quot;<br />Text=&quot;999888&quot;/&gt;<br />&lt;/Border&gt;
-</pre> 
-<p>RadControls for Windows Phone Q1 2013提供了对QR（<b>快速响应</b>）条码的支持，并且能够通过RadBarcodeQR控件生成，使用的代码如下：</p> 
-<pre>
-&lt;Border Background=&quot;gray&quot;<br />VerticalAlignment=&quot;Center&quot;&gt;<br />&lt;telerikDataViz:RadBarcodeQR Width=&quot;300&quot;<br />Height=&quot;300&quot;<br />Version=&quot;7&quot;<br />Text=&quot;Mark mark@yahoo.com&quot;/&gt;<br />&lt;/Border&gt; 
-</pre> 
-<p>在上面的代码中，Version属性设置为7。Version的数值设置地越高，编码到QR码中的信息就越多。<br /> RadBarcodeQR包含一个QR码生成器，该生成器可用于编码联系人详细资料从而创建一个图像，这样就可以使用QR扫描仪、有摄像功能的手机以及能够将条码PIN到启动窗口的智能机快速地创建一条新的联系人记录。</p> 
-<p>用户能够通过RadBarcode创建购物应用并整合到<a href="http://msdn.microsoft.com/en-us/library/windowsphone/develop/jj207032(v=vs.105).aspx">Windows Phone钱包</a>中。同时还能够通过它将任意数字转变为工业标准条形码格式。此外，还可以使用内置的输入校验器通过数值匹配相关的条形码类型。</p> 
-<p>RadControls for Windows Phone Q1 2013包含50多种<a href="http://www.telerik.com/products/windows-phone/overview/all-controls.aspx">控件</a>，其中包括LiveTileHelper组件，该组件能在应用中创建和更新页面标题的链接，并允许用户使用每一个新模板同时添加自定义UI元素作为其内容。</p> 
-<p><b>查看英文原文</b>：<a href="http://www.infoq.com/news/2013/03/radbarcode;jsessionid=0FA0C99F96005DB9B762BAACF0D3523B">Integrate BarCodes into Windows Phone Apps</a></p> 
+<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>微软发布支持.NET及Silverligh4的Async包</h3><p>微软发布了Microsoft.Bcl.Async的最终版本。该包允许开发者在.NET 4、Silverlight 4和Windows Phone 7.5使用C# 5和VB中的异步特性。</p> 
+<p>该包由三个库组成：Microsoft.Bcl、Microsoft.Bcl.Async和Microsoft.Bcl.Build。由于使用了<a href="http://msdn.microsoft.com/en-us/library/db7849ey.aspx">程序集统一</a>的方式，解决方案中的所有工程都必须引用这三个库。</p> 
+<p><a href="https://www.nuget.org/packages/Microsoft.CompilerServices.AsyncTargetingPack">Microsoft.Bcl.Async</a>取代了Async Targeting Pack，后者已从NuGet中移除。</p> 
+<p><b>查看英文原文</b>：<a href="http://www.infoq.com/news/2013/04/Async-dotnet4;jsessionid=CB054D831D727258B5355BF04620CE06">Async for .NET and Silverlight 4 </a></p> 
 <hr /> 
-<p>感谢<a href="http://www.infoq.com/cn/bycategory.action;jsessionid=0FA0C99F96005DB9B762BAACF0D3523B?authorName=孙镜涛">孙镜涛</a>对本文的审校。</p> 
+<p>感谢<a href="http://www.infoq.com/cn/bycategory.action;jsessionid=CB054D831D727258B5355BF04620CE06?authorName=臧秀涛">臧秀涛</a>对本文的审校。</p> 
 <p>给InfoQ中文站投稿或者参与内容翻译工作，请邮件至<a href="mailto:editors@cn.infoq.com">editors@cn.infoq.com</a>。也欢迎大家通过新浪微博（<a href="http://www.weibo.com/infoqchina">@InfoQ</a>）或者腾讯微博（<a href="http://t.qq.com/infoqchina">@InfoQ</a>）关注我们，并与我们的编辑和其他读者朋友交流。</p> 
 <p id="lastElm"></p><br><br><br><br><br><br></body></html>

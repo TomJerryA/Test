@@ -1,24 +1,16 @@
-<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>Node.js和.NET相结合的项目Edge.js</h3><p>Javascrip项目<a href="http://nodejs.org/">Node.js</a> 现在可以在同一个进程中与.NET代码一起运行了，这得益于 <a href="https://github.com/tjanczuk/edge">Edge.js</a> 项目（前身为<a href="https://github.com/tjanczuk/owin">owin</a>）。跟<a href="http://www.infoq.com/news/2012/05/frijters_IKVM;jsessionid=56FAFA9A84F300371FA677A12C2B3E5A">IKVM 项目</a>将Mono和.NET结合一样，Edge.js提出了 “两全其美”的方法将.NET和Node.js结合。这样开发者可以充分利用每种工具的优势去最大限度提高他们项目的效率。</p> 
-<p>Edge.js由Tomasz Janczuk创立，其目的在于让开发人员最大限度地发挥Node.js的威力，而不用使用非CLR的语言，如C/C ++。 Edge.js实现的方法提供了若干好处，包括在.NET中执行计算密集型的运算时不阻塞Node.js的事件循环。它也允许使用C#编写Node.js的插件去访问Windows平台的特定功能，而这些都无需使用C或者C++。<br /> Node.js和Edge.js之间的连接是无缝的和相互的：Node.js的可以调用.NET方法，.NET代码也可以调用Node.js。Edge.js可以在运行时编译C#源代码，也可以在Edge.js运行前预编译。</p> 
-<p>InfoQ有幸和Janczuk探讨该项目并谈及他将来对Edge.js的计划：</p> 
-<p><b>InfoQ:</b> <b>除了仅仅希望提供将</b><b>C#</b><b>和</b><b>Node.js</b><b>结合外，还有什么特别的动机么？</b></p> 
-<blockquote> 
- <p><b>Janczuk:</b> “Edge.js致力于为开发人员提供一个在一定范围内根据任务特点选择使用技术的机会，而不是在整个应用中去选择。Edge.js基于一切都可以通过Node.js或者.NET去实现的前提，但某些具体的功能可能用其中一种技术更加适合。在Edge.js之前，开发人员必须在整个应用程序范围内选择是使用Node.js还是.NET。而有了Edge.js，开发人员可以根据他们应用中哪些部分更适合使用Node.js或.NET而作出选择。”</p> 
-</blockquote> 
-<p><b>InfoQ:</b><b> </b><b>.NET</b><b>的例子全部是使用</b><b>C#</b><b>，</b><b>Edge.js</b><b>需要</b><b>C#</b><b>吗？如果需要的话，是否支持</b><b>.NET</b><b>平台中的其他语言？</b></p> 
-<blockquote> 
- <p><b>Janczuk</b>：“Edge.js允许.NET代码通过指定一个预编译的CLR程序集，或者在Node.js应用中包含.NET源代码的方法去和Node.js应用整合。Edge.js支持任何可以生成一个Func&lt;object,Task&lt;object&gt;&gt;委托的预编译程序集的CLR语言。当在Node.js应用中使用.NET代码时，Edge.js目前只支持C#。”</p> 
-</blockquote> 
-<p><b>InfoQ:&nbsp; </b><b>在接下来的</b><b>6</b><b>到</b><b>12</b><b>个月项目的目标是什么？</b></p> 
-<blockquote> 
- <p><b>Janczuk</b>：“Edge.js计划使用相对较少的基本概念并保留规模小的组件就能在进程内整合.NET和Node.js。对于某些特定场景的功能（例如访问MS SQL、写Windows事件日志，或访问X.509证书存储区），会作为新的依赖于Edge.js的模块而提供，而不是扩大Edge.js本身的范围。Edge.js本身也有一些值得注意的计划，包括对Mono的支持，编译C#之外的CLR语言和在.NET进程中托管Node.js。”</p> 
-</blockquote> 
-<p><b>InfoQ:&nbsp;&nbsp; </b><b>由于现在受雇于微软，那么将来这个项目依然是独立的项目呢还是在某些部分将来会正式成为微软的工具？</b></p> 
-<blockquote> 
- <p><b>Janczuk: </b>“虽然微软也拥抱开源技术，但到目前为止Edge.js并没任何计划要成为任何微软产品的一部分。”<br /> Edge.js是一个在Apache许可协议2.0下的开源项目。Janczuk在其项目的主页上提供了<a href="http://tjanczuk.github.com/edge/#/">项目概况</a>，还包括样例代码以让开发者了解更多的信息。</p> 
-</blockquote> 
-<p><b>查看英文原文</b>：<a href="http://www.infoq.com/news/2013/03/edgejs;jsessionid=56FAFA9A84F300371FA677A12C2B3E5A">Edge.js Combines Node.js with .NET</a></p> 
+<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>Netflix放弃Silverlight，拥抱HTML5</h3><p>Netflix宣布准备将其视频播放器从Silverlight转换到HTML5，他们将首先完成针对Chrome/Chrome OS的新播放器的实现，而针对Windows和Mac OS X的版本也将紧随其后。</p> 
+<p>Netflix的云系统架构总监Adrian Cockcroft表示，在北美的<a href="http://www.infoq.com/presentations/Netflix-Architecture;jsessionid=080BFD12E6619360FE44739E05807626">下载流量中Netflix占据了1/3的份额</a>，而且到目前为止这些流量全部都是由一个Silverlight应用处理的，不过这一现状即将改变。</p> 
+<p>Netflix近期宣布准备从Silverlight<a href="http://techblog.netflix.com/2013/04/html5-video-at-netflix.html">转向HTML5</a>。之所以这样决定， 主要原因之一在于他们考虑到微软宣称<a href="http://support.microsoft.com/gp/lifean45#sl5">将在2021年停止对Silverlight 5的支持</a>，但却对Silverlight 6只字未提。Netflix还对用户在看视频前必须安装Silverlight插件这一限制表示不满，而且部分用户由于安全原因拒绝安装这样的插件。此外还有一个问题，那就是较新的浏览器不支持插件，例如iOS上的Safari或Windows 8/Metro上的IE。我们还可以补充一个问题：<a href="http://www.microsoft.com/getsilverlight/locale/en-us/html/installation-win-SL5.html">Windows 8和Linux并未出现在Silverlight兼容的操作系统列表中</a>。针对Netflix的这一消息，大部分评论要求提供对Linux的官方支持。</p> 
+<p>Netflix将通过转向HTML5解决以上问题，他们已经开发了第一个应用，而且正在Chrome OS环境中进行测试。Google也已经对实现Netflix所需的大量HTML5<a>增强</a> 表现出了兴趣，并将其命名为“HTML5高级视频扩展”：</p> 
+<ul> 
+ <li><a href="http://www.w3.org/TR/media-source/">媒体来源扩展</a>——允许应用使用JavaScript进行流式内容传输。这让Web应用能够灵活地选择合适的CDN进行流传输，并且当一个CDN出现问题时切换到另一个。</li> 
+ <li><a href="https://dvcs.w3.org/hg/html-media/raw-file/tip/encrypted-media/encrypted-media.html">加密媒体扩展</a>——增加对DRM的支持。</li> 
+ <li><a href="http://www.w3.org/TR/WebCryptoAPI/">Web加密API</a>——一套支持加密的JavaScript API。Netflix会将大部分后端服务器通信进行加密，以保证访问者的隐私安全。Netflix还会向其服务器回传大量日志信息，更精确地说，根据Cockcroft的消息，这大约占据了整个北美上传流量的4.5%。</li> 
+</ul> 
+<p>目前Netflix使用Pepper插件来满足加密需求，一直会用到Google在Chrome中实现Web加密API<a>时为止</a> ，Netflix打算届时开始在Windows和Mac OS X下测试其HTML5视频应用。</p> 
+<p>至少从2010年当<a href="http://www.infoq.com/news/2010/09/Silverlight-Web-Apps;jsessionid=080BFD12E6619360FE44739E05807626">人们开始争论Silverlight的前景</a>时开始，关于它要死掉的传闻起就已经在传播了。2011年，<a href="http://www.infoq.com/news/2011/09/Silverlight-5-RC;jsessionid=080BFD12E6619360FE44739E05807626">微软通过发布Silverlight 5给出了将继续支持该平台的信号</a>。然而紧随其后消息却与之矛盾，再就是微软决定<a href="http://www.infoq.com/news/2011/09/Metro-Plug-ins;jsessionid=080BFD12E6619360FE44739E05807626">在IE Metro中停止支持任何插件</a>。如果此前还有任何怀疑的话，现在我们可以非常自信地说，Silverlight已经没有前途了。随着Flash正在遭受相似的窘境，未来数年内，只剩下HTML5去占据RIA市场了。</p> 
+<p><b>查看英文原文</b>：<a href="http://www.infoq.com/news/2013/04/Netflix-Silverlight-HTML5;jsessionid=080BFD12E6619360FE44739E05807626">Netflix Gives Up Silverlight, Chooses HTML5</a></p> 
 <hr /> 
-<p>感谢<a href="http://www.infoq.com/cn/bycategory.action;jsessionid=56FAFA9A84F300371FA677A12C2B3E5A?authorName=姚琪琳">姚琪琳</a>对本文的审校。</p> 
+<p>感谢<a href="http://www.infoq.com/cn/bycategory.action;jsessionid=080BFD12E6619360FE44739E05807626?authorName=臧秀涛">臧秀涛</a>对本文的审校。</p> 
 <p>给InfoQ中文站投稿或者参与内容翻译工作，请邮件至<a href="mailto:editors@cn.infoq.com">editors@cn.infoq.com</a>。也欢迎大家通过新浪微博（<a href="http://www.weibo.com/infoqchina">@InfoQ</a>）或者腾讯微博（<a href="http://t.qq.com/infoqchina">@InfoQ</a>）关注我们，并与我们的编辑和其他读者朋友交流。</p> 
 <p id="lastElm"></p><br><br><br><br><br><br></body></html>

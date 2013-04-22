@@ -1,62 +1,26 @@
-<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>Neil Bartlett访谈：关于OSGi与新发布的Bndtools 2.0</h3><div id="newsContent"> 
- <p>Neil Bartlett是卓越的OSGi专家以及流行的OSGi Eclipse插件工具Bndtools的维护者，他<a href="http://njbartlett.name/2013/02/11/bndtools2-released.html">宣布Bndtools 2.0已经释放</a>。他强调的一些特性如下：</p> 
- <ul> 
-  <li>支持OSGi Release 5 Resolver以及Repository规范</li> 
-  <li>导出运行描述符作为单独的可执行文件</li> 
-  <li>基线（对于不正确版本的bundle会出现构建错误）</li> 
-  <li>增强Semantic Versioning，对于Consumer和Provider角色使用注解声明</li> 
-  <li>导出包装饰</li> 
-  <li>改进的增量构建器</li> 
-  <li>支持Apache ACE</li> 
-  <li>大量的缺陷修正以及性能提升</li> 
- </ul> 
- <p>这是一个经过漫长等待后的版本释放。之前的版本1.1是在2012年3月释放的。</p> 
- <p>关于Bndtools与OSGi的基本情况，InfoQ与Neil Bartlett进行了交流。</p> 
- <p><b>对于不了解OSGi的读者，您能简单介绍一下OSGi与Bndtools吗？</b></p> 
- <blockquote> 
-  <p>OSGi是在Java平台上开发模块化应用程序的一种方式。它允许你构建模块（称之为bundle），它们彼此之间是隔离的，具备明确的和可管理的依赖。因为我们的关注点在于依赖，所以我们会说特定的bundle能不能安装到我们的环境之中，是不是还要添加额外的依赖，它对其他模块的影响是什么等等。</p> 
-  <p>Bndtools是开发OSGi bundle和应用的IDE。它基于Eclipse，并且可以通过Eclipse Marketplace进行安装。</p> 
- </blockquote> 
- <p><b>OSGi对各种规模和类型的Java项目来说，是不是都很重要，还是它适用于较大规模或较小规模的项目？</b></p> 
- <blockquote> 
-  <p>OSGi意味着模块化，几乎所有规模的项目都可以从中受益。大型项目为何能够从模块化中受益是非常清楚的：它有助于隔离复杂性并将工作拆分为可管理的部分。即便是小规模的项目也可以从中受益，比如你写了一小段代码并想让它在其他项目中重用。如果你将其开发为OSGi的bundle，那么它更易于重用。</p> 
-  <p>话虽如此，但是对于很小的项目并不真正的需要模块化；例如“Hello World”并不会从模块化方式中受益太多。</p> 
- </blockquote> 
- <p><b> OSGi有一些忠实的追随者，但是似乎缺乏强大的驱动力。这其中的原因是什么？</b></p> 
- <blockquote> 
-  <p>嗯，这种驱动力在快速增长，但我同意它还不是主流。OSGi实际上是非常雄心勃勃的，因为它的目标在于改善整个软件开发的过程，因此它对于所有的事情都会产生影响，从代码仓库到测试再到团队结构都是如此。所以，它需要时间来让人们意识到它所带来的好处，对于很多的企业来讲，承担已知的成本来换取未知的预期受益，他们感到紧张也是可以理解的。但是随着越来越多的企业成功使用了它，这种情况正在发生变化。</p> 
-  <p>另外一个问题是技术上的，OSGi长期以来的工具支持都很差。Bndtools——以及可以与其集成的生态系统工具——正在开始改善这种现状。</p> 
- </blockquote> 
- <p><b>现在Android赢得了很多的关注，OSGi与Android开发有关系吗？</b></p> 
- <blockquote> 
-  <p>是的，我认为随着Android应用程序的规模越来越大并且越来越复杂，它们也会需要严肃地考虑模块化。OSGi在很多的Android项目中已经获得了成功，但是Android与标准的Java有明显的不同——以一种微妙但是重要的方式——目前它依然是实验性的领域。</p> 
- </blockquote> 
- <p><b>在OSGi项目中，Bndtools是如何提供帮助的？</b></p> 
- <blockquote> 
-  <p>OSGi因为难以使用而广受诟病，但是它所需要的只是一些特定的信息，这些信息描述了我们代码的明确声明。这些信息几乎都可以通过封装在bundle中的Java类来获取……它只是需要被抽取出来。Bndtools会作为构建过程的一部分来做这些事情，这将使得开发人员只关注自己的代码而无需重复任何在编写在源码的过程中已经做过的事情。</p> 
-  <p>Bndtools也可以嵌入到Eclipse的构建系统之中，这意味在保存一个发生变化的文件之时，你的bundle就会构建完成。如果你正在使用OSGi的环境（例如调试或测试），那么我们会直接将新的bundle放在里面，这借助了OSGi运行时动态更新模块的能力。这会促使特别快速的编码/运行/测试流程，因为你保存代码的时候它基本上就已经在运行了。</p> 
-  <p>在Bndtools 2.0的最终版本中，我们添加了对OSGi Release 5新的Resolver和Repositories的支持。这使得你可以关注少量的“顶级（top-level）”模块来组成应用，这些模块提供你的核心功能——resolver将会负责为核心功能提供所有的静态和运行时依赖。所以你不用再去管理一个很长的要位于类路径中的JAR包清单了。</p> 
- </blockquote> 
- <p><b>Bndtools提供协作的工具了吗？</b></p> 
- <blockquote> 
-  <p>是的。与其他的开发人员协作时，主要的一个困难在于维持共享API的兼容性，以及当这些API发生变化时该如何进行协调。达到这一点的关键在于合适的版本策略，但是大多数的开发人员在将版本用在制件（artifact）上时，是手工进行的并且相当随意。Bndtools能够分析你的类并且计算出与之前释放版本的变化。接下来，它会自动为你导出版本。对于API的使用者来说，它能够计算出你的代码所能兼容的版本并自动生成这个范围的导入（import）。</p> 
- </blockquote> 
- <p><b>有什么竞争对手吗？</b></p> 
- <blockquote> 
-  <p>可能最接近的竞争对手就是PDE，也就是插件开发环境（Plug-in Development Environment），它也是基于Eclipse的IDE但是采取了一种不同的方式。我相信Bndtools更好且更有效率，实际上，我之所以如此自信是因为在Bndtools存在之前我曾经用过PDE很多年。</p> 
- </blockquote> 
- <p><b>Eclipse是必需的吗，或者它能够独立运行吗？你支持其他的IDE吗，像IntelliJ以及Netbeans？</b></p> 
- <blockquote> 
-  <p>有的方面是这样，有的方面却并非如此。Bndtools基于bnd进行构建，bnd是由Peter Kriens开发的。Bnd是一个没有什么依赖的工具，它可以通过命令行、ANT或者Maven等来进行使用。因此，使用NetBeans、IDEA甚至简单文本编辑器的开发人员都可以使用这些项目，因为它们只是会使用bnd。</p> 
-  <p>Bndtools确实会需要Eclipse，它不能直接用于其他的IDE。但是，这些IDE可以通过使用bnd本身来构建自己对OSGi的支持。大多数的智慧其实来源于bnd，Bndtools所做的事情只不过是为bnd描述文件提供了漂亮的编辑器、一个launcher、嵌入到Eclipse的构建生命周期等等。</p> 
-  <p>我希望其他的IDE也能在这方面做出一些努力，因为我真正希望的是人们使用OSGi。如果有人不喜欢Eclipse的话，我真的无意强迫他们使用它。</p> 
- </blockquote> 
- <p>除了<a href="http://bndtools.org/tutorial.html">Bndtools手册</a>以外，Bartlett推荐了Kirk Knoernschild的图书《Java Application Architecture》(<a href="http://www.infoq.com/articles/java-application-architecture;jsessionid=681CC9A6B64DFE0E1D9845D780EEB0D0">以前在InfoQ上曾经介绍过</a>。译者注：该书的中文版由华章图书引进，目前本人正在翻译，读者如有兴趣，敬请期待。) 以及Tim Ward和Holly Cummins的《Enterprise OSGi in Action》，后者讨论了OSGi可选的工具，其中就包括了bnd和Bndtools，如果想进一步了解的话，它可以作为很好的信息来源。</p> 
- <p>InfoQ也曾经推出过一个系列来讨论模块化：<a href="http://www.infoq.com/articles/modular-java-what-is-it;jsessionid=681CC9A6B64DFE0E1D9845D780EEB0D0">Modular Java: What is it?</a>（该文的译文为：<a href="http://www.infoq.com/cn/articles/modular-java-what-is-it;jsessionid=681CC9A6B64DFE0E1D9845D780EEB0D0">模块化Java简介</a>）,<a href="http://www.infoq.com/articles/modular-java-static-modularity;jsessionid=681CC9A6B64DFE0E1D9845D780EEB0D0">Modular Java: Static Modularity</a>（该文的译文为：<a href="http://www.infoq.com/cn/articles/modular-java-static-modularity;jsessionid=681CC9A6B64DFE0E1D9845D780EEB0D0">模块化Java：静态模块化</a>）, <a href="http://www.infoq.com/articles/modular-java-dynamic-modularity;jsessionid=681CC9A6B64DFE0E1D9845D780EEB0D0">Modular Java: Dynamic Modularity</a>（该文的译文为：<a href="http://www.infoq.com/articles/modular-java-dynamic-modularity;jsessionid=681CC9A6B64DFE0E1D9845D780EEB0D0">模块化Java：动态模块化）</a>以及<a href="http://www.infoq.com/articles/modular-java-declarative-modules;jsessionid=681CC9A6B64DFE0E1D9845D780EEB0D0">Modular Java: Declarative Modularity</a>（该文的译文为：<a href="http://www.infoq.com/cn/articles/modular-java-declarative-modules;jsessionid=681CC9A6B64DFE0E1D9845D780EEB0D0">模块化Java：声明式模块化</a>）。</p> 
- <p id="lastElm">&nbsp;</p> 
-</div> 
-<div>
- <b>英文原文链接</b>：
- <a href="http://www.infoq.com/news/2013/03/Bndtools2;jsessionid=681CC9A6B64DFE0E1D9845D780EEB0D0">Interview with Neil Bartlett about OSGi and the new Bndtools 2.0 release</a>
-</div> 
+<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>拥抱Node？最新的AWS云提供Node.js应用服务</h3><p>最近，Amazon Web Services（AWS）团队在<a href="http://aws.amazon.com/elasticbeanstalk/">Elastic Beanstalk</a>服务中加入了对Node.js的支持，使它所支持的平台的集合处于行业领先地位。除了Node.js，AWS Elastic Beanstalk还支持开发者打包、部署和管理使用Java、PHP、.NET、Ruby和Python开发的应用。AWS加入了“青睐Node.js的云服务”这个竞争激烈的领域，并将尝试通过整合其他顶级AWS服务来让自己与众不同。</p> 
+<p>在一篇关于向AWS Elastic Beanstalk<a href="http://www.allthingsdistributed.com/2013/03/beanstalk-a-la-node.html">添加Node.js的博客文章中</a>，AWC的首席技术官Werner Vogels解释了将这个日趋流行的平台纳入支持范围的一些原因。</p> 
+<p>我花了大量的时间与许多在游戏和移动领域工作的AWS开发者沟通，他们中的大部分都在寻找适合自己的Web应用的Node.js。凭借其异步的事件驱动编程模型，Node.js允许开发者们处理大量并发连接并保持低延迟。这些开发者们一般使用与我们的一个数据服务相结合的EC2实例来创建Web服务，这些Web服务可用于数据检索或创建动态的手机界面。</p> 
+<p>针对Elastic Beanstalk中的Node.js，AWS团队的Jeff Barr列出了<a href="http://aws.typepad.com/aws/2013/03/aws-elastic-beanstalk-for-nodejs.html">一些他喜欢的特性</a>：</p> 
+<ul> 
+ <li>开发者选择<a href="http://nginx.org/">Nginx</a>或<a href="http://httpd.apache.org/">Apache</a>作为自己Node.js应用的反向代理。如果应用的客户端需要建立起直接连接，开发者甚至可以选择不使用任何代理。</li> 
+ <li>根据应用需要，配置HTTP和TCP的负载均衡。如果应用使用WebSockets，那么对应用的工作负载而言，TCP负载均衡可能更加适用。</li> 
+ <li>使用应用需要的特定版本的Node.js，或提供用于启动Node.js应用的命令，以配置Node.js栈。开发者还可以使用<a href="https://npmjs.org/">npm</a>管理依赖关系。</li> 
+ <li>当使用Nginx或Apache时，通过配置gzip压缩和静态文件以帮助提升性能。使用gzip压缩，开发者可以减少面向客户端的响应的大小，从而加快传输速度。使用静态文件，开发者可以让Nginx或Apache快速提供静态资源（例如图片或CSS），而不必与Node.js应用在执行的数据密集型处理争抢时间。</li> 
+ <li>将应用与<a href="http://aws.amazon.com/rds/">Amazon RDS</a>无缝整合，以便在相关的数据存储中存储和检索数据。</li> 
+ <li>定制自己的EC2实例，或使用Elastic Beans配置文件将应用连接到AWS资源（访问 <a href="http://docs.aws.amazon.com/elasticbeanstalk/latest/dg/create_deploy_nodejs_custom_container.html">AWS Elastic Beanstalk开发者指南</a>以进一步了解配置文件）。</li> 
+ <li>在<a href="http://aws.amazon.com/vpc/">Amazon虚拟私有云</a>中运行Node.js应用以获得额外的网络控制。</li> 
+</ul> 
+<p>除了以上列出的特性，Elastic Beanstalk还支持<a href="http://docs.aws.amazon.com/elasticbeanstalk/latest/dg/create_deploy_nodejs.sdlc.html">Git整合</a>、<a href="http://docs.aws.amazon.com/elasticbeanstalk/latest/dg/create_deploy_nodejs_express_elasticache.html">高可用性集群</a>以及<a href="http://docs.aws.amazon.com/elasticbeanstalk/latest/dg/create_deploy_nodejs_custom_container.html">使用针对特定环境的变量</a>。2012年12月，AWS初次尝试涉足Node.js领域，并为Node.js开发者<a href="http://aws.amazon.com/about-aws/whats-new/2012/12/04/introducing-the-aws-sdk-for-node-js/">发布了一套SDK</a>。该SDK支持使用绝大多数AWS服务，包括Amazon DynamoDB、Amazon Simple Storage Service (S3)、Amazon Relational Database Service (RDS)、Amazon Simple Queue Service (SQS)和Amazon Elastic Compute Cloud (EC2)等。</p> 
+<p>AWS与其他许多提供Node.js应用服务的云服务建立了连接。除Google App Engine外，几乎每个主流平台即服务（PaaS）厂商都提供了基于Node.js的fabric（注：fabric计算，指的是由松散耦合的存储、网络、高速宽带连接所组成的并行处理高性能计算系统。），包括<a href="https://devcenter.heroku.com/articles/nodejs">Heroku</a>， <a href="http://www.windowsazure.com/en-us/develop/nodejs/">Windows Azure</a>， <a href="https://www.openshift.com/paas">Open Shift</a>， <a href="https://www.engineyard.com/products/cloud/features">Engine Yard</a>，以及众多Cloud Foundry的提供者。这些厂商也都在与<a href="https://www.nodejitsu.com/">Nodejitsu</a>竞争，它是Node.js领域的精神领袖并提供专用的平台。那么这些厂商如何体现自己的独特性？一种方法是通过工具来体现。Werner Vogels指明了Elastic Beanstalk是如何与众多顶级平台的开发工具紧密结合的。</p> 
+<p>开发者可以在除GovCloud外的任何AWS域中部署和管理应用。有许多工具适用于应用的部署和管理，开发者可以选择自己喜好进行选择。Java应用的开发者可以使用用于Eclipse的AWS工具包；.NET应用的开发者则可以使用用于Visual Studio的AWS工具包；如果开发者希望在命令行中工作，可以与Git一起使用一个名为“eb”的命令行工具。诸如eXoCloud IDE等合作伙伴也提供与Elastic Beanstalk的整合。</p> 
+<p><a href="https://codenvy.com/features">Codenvy</a>从exoCloud中独立出来，它针对用于Node.js部署的Elastic Beanstalk，为开发者提供一个基于云的开发环境。</p> 
+<p>云服务提供商为了在同类对手中寻求差异化竞争，除了为开发者提供构建和部署Node.js应用的工具外，正在整合额外服务并提供应对应用管理中的“困难”问题的解决方案。在Elastic Beans上运行Node.js的一个有吸引力的因素，是能够轻松地整合AWS提供的许多应用服务。Node.js应用在AWS环境里运行，将能够以低延迟使用数据库、存储、计算、队列、缓存以及其他许多服务。诸如Windows Azure这样的云也拥有相似的价值主张，在其上<a href="http://www.windowsazure.com/en-us/develop/nodejs/">部署Node.js应用的开发者</a>同样能够使用不同的本地服务集合，包括数据库、存储和消息传递。如<a href="https://addons.heroku.com/">Heroku</a>和<a href="https://www.nodejitsu.com/paas/addons/">Nodejitsu</a>这样的供应商则没有自己的额外应用服务集，但它们维护了一个策划管理的目录，列出了能够与其上运行的应用整合的服务。</p> 
+<p>除了提供额外服务作为差异化竞争手段外，云服务提供商还兜售自己具有让应用部署和管理变得更容易的能力。这意味着支持基于Web的源代码管理仓库——像AWS、Windows Azure和Nodejitsu这些云所做的那样——并提供持续部署服务，例如Nodejitsu通过TravisCI支持这一服务。高质量监控和响应系统，让开发者和管理员的容量管理工作变得简单了许多。AWS拥有用于监控云的使用情况并自动调整应用环境大小的产品，而<a href="http://www.allthingsdistributed.com/2013/03/beanstalk-a-la-node.html">Werner Vogels描绘</a>了Elastic Beanstalk如何帮助提供具有全部管理能力的应用。</p> 
+<p>Elastic Beanstalk能够自动化提供、监控和配置许多AWS基础资源，例如Elastic负载均衡、自动扩展和EC2。Elastic Beanstalk还提供了用于部署应用、处理日志并自定义EC2实例的自动化工具。</p> 
+<p>请密切关注这一领域。云服务提供商正在提高其平台的应用管理能力，并提供本地的或整合的服务以提升其平台上运行的应用有效性。</p> 
+<p><b>查看英文原文</b>：<a href="http://www.infoq.com/news/2013/03/aws-node-elastic-beanstalk;jsessionid=49D954C1216E042A1F4C3C62CC38DC9E">Got Node? AWS Latest Cloud to Offer Node.js Application Services</a></p> 
+<hr /> 
+<p>感谢<a href="http://www.infoq.com/cn/bycategory.action;jsessionid=49D954C1216E042A1F4C3C62CC38DC9E?authorName=崔康">崔康</a>对本文的审校。</p> 
+<p>给InfoQ中文站投稿或者参与内容翻译工作，请邮件至<a href="mailto:editors@cn.infoq.com">editors@cn.infoq.com</a>。也欢迎大家通过新浪微博（<a href="http://www.weibo.com/infoqchina">@InfoQ</a>）或者腾讯微博（<a href="http://t.qq.com/infoqchina">@InfoQ</a>）关注我们，并与我们的编辑和其他读者朋友交流。</p> 
 <p id="lastElm"></p><br><br><br><br><br><br></body></html>

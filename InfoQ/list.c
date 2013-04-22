@@ -1,8 +1,8 @@
 <html>
  <head></head> 
- <body>
-  <div>
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/6.c">jQuery Mobile 1.3.0: enfoque no web design responsivo</a>A vers&atilde;o 1.3.0 do jQuery Mobile, o framework JavaScript e HTML5/CSS para aplicativos m&oacute;veis, tem foco em web design responsivo e traz novos componentes gr&aacute;ficos. Saiba mais.
+ <body> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/6.c">jQuery Mobile 1.3.0: enfoque no web design responsivo</a>A vers&atilde;o 1.3.0 do jQuery Mobile, o framework JavaScript e HTML5/CSS para aplicativos m&oacute;veis, tem foco em web design responsivo e traz novos componentes gr&aacute;ficos. Saiba mais. 
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/5.c">Novidades da Microsoft e Amazon para o Android</a>O Windows Azure agora possui um SDK Android incluindo notifica&ccedil;&otilde;es push para dispositivos, e a Amazon disponibilizou uma API de an&uacute;ncios que pode ser utilizada em dispositivos Android, em paralelo com o Google AdMob. Conhe&ccedil;a os detalhes. 
@@ -150,6 +150,6 @@
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/7.c">Netflix traz o Reactive Extensions para Java, com c&oacute;digo aberto</a>A Netflix criou e abriu os fontes do RxJava, uma implementa&ccedil;&atilde;o em Java do Reactive Extensions (Rx) da MS Open Technologies, e que foi projetada para uso com qualquer linguagem que roda na JVM. Al&eacute;m do pr&oacute;prio Java, Groovy, Clojure, Scala e JRuby s&atilde;o linguagens j&aacute; suportadas por essa implementa&ccedil;&atilde;o. 
-  </div>  
+  </div> 
  </body>
 </html>
