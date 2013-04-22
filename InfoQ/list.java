@@ -2,7 +2,10 @@
  <head></head> 
  <body>
   <div>
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/47.java">Microsoft Offers Module to Scale Out Real-time Node.js Applications</a>A new open-source contribution from Microsoft uses the Windows Azure Service Bus to provide scale out support for real-time Node.js applications. This module, called socket.io-servicebus, connects multiple servers running the popular Socket.IO module. This contribution is yet another example of Microsoft embracing Node.js and integrating it with Microsoft products and services.
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/48.java">Service Virtualization as an Alternative to Mocking</a>Mocking via dependency injection is often a messy endeavor. For even the simplest of applications it often involves creating new interfaces, taking on a dependency to an IoC Container, and in general adds a lot of unnecessary complexity. And after all that, you still have to write the mocks themselves, many of which aren’t useful for anything besides simplistic unit tests.
+  </div> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/47.java">Microsoft Offers Module to Scale Out Real-time Node.js Applications</a>A new open-source contribution from Microsoft uses the Windows Azure Service Bus to provide scale out support for real-time Node.js applications. This module, called socket.io-servicebus, connects multiple servers running the popular Socket.IO module. This contribution is yet another example of Microsoft embracing Node.js and integrating it with Microsoft products and services. 
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/46.java">Database Lifecycle Management Guidance Updated by Microsoft</a>Microsoft recently updated database lifecycle management guidance page with SQL Server DLM diagram along with curated resources for SQL Server Data Tools, SQL Server Management Studio and Windows Azure SQL Database. 
@@ -147,9 +150,6 @@
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/49.java">Martin Fowler on Software Design in the 21st Century</a>Martin Fowler talks about Software Design in the 21st Century split into three short talks, Schemaless Data Structures, NoSQL &amp; Consistency, and finally the value of Software Design. 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/48.java">Python Tools for Visual Studio 2.0 Adds IntelliSense, Virtualenv and Windows Azure Support</a>Python Tools for Visual Studio 2.0 alpha release includes support for Intellisense, Virtualenv, Windows Azure, Cloud Service, Web Sites and Client Libraries. 
   </div>  
  </body>
 </html>

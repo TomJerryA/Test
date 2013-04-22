@@ -1,8 +1,8 @@
 <html>
  <head></head> 
- <body>
-  <div>
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/46.htmlb">用户实例：DubDubDeploy</a>最初Donte Ormsby联系我们的时候，仅仅是写了一封友好的信，说他发现一个非常棒的工具能简化ASP.NET的网站部署，并认为我们的读者可能感兴趣。经过进一步交谈，我们认为介绍DubDub部署最好的办法就是让Donte来给读者讲述他亲身经历的故事。
+ <body> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/46.htmlb">用户实例：DubDubDeploy</a>最初Donte Ormsby联系我们的时候，仅仅是写了一封友好的信，说他发现一个非常棒的工具能简化ASP.NET的网站部署，并认为我们的读者可能感兴趣。经过进一步交谈，我们认为介绍DubDub部署最好的办法就是让Donte来给读者讲述他亲身经历的故事。 
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/45.htmlb">林仕鼎谈数据中心计算（三）：学术界与工业界，以及未来展望</a>在《林仕鼎谈数据中心计算》的第一部分，百度基础体系首席架构师林仕鼎先生提到要将数据中心当做逻辑上的一台机器来设计架构。在之后的对话中，林仕鼎具体介绍了对数据中心的存储资源做逻辑分层、物理映射的思路。在接下来的对话中，林仕鼎会介绍他对于“为什么以前的系统做的并不是很好”的理解，以及“为什么会想要去做这个系统”的原因。此外，对话中也会涉及到他对12306系统的部分解读，以及一些相关问题的看法。 
