@@ -1,8 +1,8 @@
 <html>
  <head></head> 
- <body>
-  <div>
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/1.java">Two More DevOps Tool Vendors Acquired</a>The excitement over DevOps is continuing to increase in major corporations. Today it was announced that two DevOps tool vendors were acquired. UrbanCode was picked up by IBM while Nolio went to CA Technologies.
+ <body> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/1.java">Two More DevOps Tool Vendors Acquired</a>The excitement over DevOps is continuing to increase in major corporations. Today it was announced that two DevOps tool vendors were acquired. UrbanCode was picked up by IBM while Nolio went to CA Technologies. 
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/0.java">Detecting Abnormal Traffic in Real Time with APM 9.5</a>CA Technologies’ Application Performance Management 9.5 adds the ability to detect and analyze unusual performance metric patterns in near real time. This can be used to detect the beginnings of a denial of service attack, failing hardware, or a rouge application. 
@@ -150,6 +150,6 @@
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/2.java">Google+ Sign-In: Federated Identity, Authorization and Semantic Activity Streams</a>Google+ Sign-In extends the Google+ social network into third-party websites, desktop applications and mobile apps. This service, announced on February 26th, provides features for authentication, authorization and activity sharing. There is also support for user engagement, hangouts and automatic Android app downloads. 
-  </div>  
+  </div> 
  </body>
 </html>

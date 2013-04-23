@@ -1,6 +1,9 @@
 <html>
  <head></head> 
- <body> 
+ <body>
+  <div>
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/23.py">JSONバリデーションのまとめ</a>どんな “柔軟な” すなわち “拡張性のある” ファイルフォーマットを作っても、遅かれ早かれ開発者のグループがバリデーションに関して文句を言い始める。JSONには、幾つもの選択肢が出てき始めている。
+  </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/22.py">継続的デリバリがイノベーションを加速する</a>Thoughtworks が先日公開した白書で取り上げた継続的デリバリ (CD, Continuous Delivery) の成熟モデルは，多くの企業がイノベーションの重要性を理解しながらも，ビジネスリーダの要求に対して十分な速さでソフトウェアを提供できていないという調査結果に対する回答だ。 
   </div> 
@@ -147,9 +150,6 @@
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/24.py">Canvasベースのチャートライブラリ、Chart.js 0.1がリリース</a>3月17日、Nick Downie氏がcanvasを使ったJavaScriptチャートライブラリ、Chart.jsをMITオープンソースライセンスで公開した。これはSVGベースのチャートライブラリに代わるものだ。 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/23.py">GitプロトコルとVisual Studio 2012をサポートしたGitSync for Plastic SCM</a>GitプロトコルとVisual Studio 2012をサポートしたGitSync for Plastic SCMがリリースされた。 
-  </div> 
+  </div>  
  </body>
 </html>
