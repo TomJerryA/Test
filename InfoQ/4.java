@@ -1,14 +1,20 @@
-<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>WSO2 Developer Studio 3.0&3.1 Has Better ESB Tooling</h3><p>WSO2 Developer Studio 3.0 and 3.1 improve ESB&nbsp;and Registry Resource Editor tools, has better performance, uses Eclipse Juno SR2, and supports JAX-RS REST code generation.</p> 
-<p>WSO2 has recently <a href="http://wso2.com/about/news/wso2-developer-studio-adds-significant-new-capabilities-to-support-development-and-integration-with-the-wso2-esb/">announced</a>&nbsp;two new&nbsp;releases of their <a href="http://wso2.com/products/developer-studio/">Developer Studio IDE, 3.0 and 3.1</a>&nbsp;(WSO2 DS). The initial plan was to release a major version, but they managed to follow up with a minor release a week later, adding some improvements requested by customers.</p> 
-<p>WSO2 DS continues the trend established with the <a href="http://wso2.com/about/news/new-wso2-developer-studio-2-0-is-first-ide-for-developing-an-application-once-and-deploying-it-both-on-premise-and-in-the-cloud">2.0 release</a>, streamlining application development for <a href="http://wso2.com/products/carbon/">Carbon</a>&nbsp;and <a href="http://wso2.com/cloud/stratos/">Stratos</a>. The main enhancements in WSO2 DS IDE 3.0 and 3.1 are:</p> 
-<ul> 
- <li>WSO2 ESB Graphical Flow Composition Tool&nbsp;– a graphical tool useful to visualize message flow paths between various components connected to&nbsp;the ESB</li> 
- <li>WSO2 ESB REST API support&nbsp;– ESB REST services are automatically packaged within the Carbon Archive (CAR)</li> 
- <li>WSO2 ESB Task support&nbsp;– used to set up recurring tasks that are also packaged in the CAR</li> 
- <li>Registry Resource Editor&nbsp;now can be used to migrate media resources across environments&nbsp;</li> 
- <li>Better overall performance</li> 
- <li>Support for Eclipse Juno SR2</li> 
- <li>Support for JAX-RS-based REST code generation using WADL</li> 
-</ul> 
-<p>WSO2 Developer Studio is&nbsp;an Eclipse-based IDE providing integrated tools for creating SOA&nbsp;or composite applications, and RESTful services that can be deployed either locally on the Carbon middleware platform, or on&nbsp;a Stratos-based private or hybrid cloud, or on <a href="http://wso2.com/cloud/stratoslive/">StratosLive</a>, a Java PaaS operated by WSO2.</p> 
+<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>Major Performance Improvements in CA Clarity 13.2</h3><p><a href="http://www.ca.com/us/project-portfolio-management.aspx">CA Clarity</a> is an enterprise resource planning tool specifically designed for large IT organizations and consulting firms. It is heavily focused on cost analysis, enabling managers and executives to see how much each project and feature actually costs. In addition to on-going cost control and detecting runaway projects, it can be used to plan for future endeavors.</p> 
+<p><b>Portfolio Planning</b></p> 
+<p>The portfolio planning tool has been completely rewritten from scratch. CA cites performance problems as being the primary reason</p> 
+<p>In order to create a plan you need to first rank your projects. Then you select how many projects you wish to complete and the views estimate how much it will cost versus the budget you have allocated to it. The planning tools assume that multiple projects within a single portfolio won’t be acted upon at the same time, as that would lead to confusion and unfocused work within a given team. However, a separate portfolio can be created for each team and then they can be grouped together into a single plan.</p> 
+<p>Portfolios and plans can be updated manually or automatically to include past expenditures. They can also be duplicated, so you can experiment with different plans before settling on one to enact. This feature was request because normal task tracking tools (e.g. JIRA, TFS) normally don’t allow for “what if” planning.</p> 
+<p><b>Time Sheets</b></p> 
+<p>Since it is designed for consulting firms, Clarity includes support for time tracking and time sheet approvals. New in this version is the ability to approve time sheets using a mobile client, useful for employees at client sites or who simple forget to log their time while still at the office.</p> 
+<p><b>Open Workbench</b></p> 
+<p>Contrary to popular belief, development on Open Workbench hasn’t ceased. However, this release has been almost entirely focused on usability issues.</p> 
+<p>Clarity has also been updated to support Microsoft Project 2013, which is considered an alternative to Open Workbench.</p> 
+<p><b>Clarity Agile</b></p> 
+<p>Clarity Agile was updated to work better with SCRUM style workflows by creating portlets based around burn down charts.</p> 
+<p>In order to support capitalization, tasks in the agile tools can be automatically mapped to charge codes by task type. In the past developers would need to log their activities twice, once in the tasking tool and second time in the time tracking tool for billing purposes.</p> 
+<p><b>Performance Improvements</b></p> 
+<p>Though portfolios was the only piece that was rewritten, all of the major components have received significant performance improvements. Many of the tools and pages have gone from a completely unacceptable average response time of roughly 5 seconds to around 0.6 sec. Elsewhere, some long running batches for large installations have improved from 12+ hours to less than an hour.</p> 
+<p>The reason for these performance improvements is a conscious decision to treat performance as a critical factor throughout the development process. In the past they would complete the code first, then start looking at performance during the QA process. Under their new development philosophy performance testing happens prior to check-in for every change.</p> 
+<p><b>No Back-porting</b></p> 
+<p>Often companies will consider back-porting some improvements to previous versions of their product. As a result of this policy, companies can end up with multiple active branches. In the case of Clarity 12.x, there were 9 active branches.</p> 
+<p>So starting with Clarity 13, back porting will no longer be done. Rather than enabling and encouraging users to stay on old versions, CA is focused on keeping their customers up to date as new editions are released. This is part of their overall SaaS policy of frequent, easy upgrades.</p> 
 <p id="lastElm"></p><br><br><br><br><br><br></body></html>

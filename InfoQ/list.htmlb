@@ -1,8 +1,8 @@
 <html>
  <head></head> 
- <body>
-  <div>
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/47.htmlb">国防工业中的敏捷</a>国防工业通常被认为是一种”非敏捷的”文化。严格按照等级划分的团队，很少有协作的自由而且被强制要求通过合同规定的工件沟通。在本文中，Jeff Plummer分享了在他领导的团队中成功为国防工业应用敏捷原则和实践的经验。
+ <body> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/47.htmlb">国防工业中的敏捷</a>国防工业通常被认为是一种”非敏捷的”文化。严格按照等级划分的团队，很少有协作的自由而且被强制要求通过合同规定的工件沟通。在本文中，Jeff Plummer分享了在他领导的团队中成功为国防工业应用敏捷原则和实践的经验。 
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/46.htmlb">用户实例：DubDubDeploy</a>最初Donte Ormsby联系我们的时候，仅仅是写了一封友好的信，说他发现一个非常棒的工具能简化ASP.NET的网站部署，并认为我们的读者可能感兴趣。经过进一步交谈，我们认为介绍DubDub部署最好的办法就是让Donte来给读者讲述他亲身经历的故事。 
