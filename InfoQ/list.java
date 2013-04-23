@@ -1,6 +1,9 @@
 <html>
  <head></head> 
- <body> 
+ <body>
+  <div>
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/2.java">Facebook Releases PhoneGap Plugin and SDK for .NET</a>The recently released PhoneGap Facebook Plugin enables developers to enable Facebook single sign-on into their PhoneGap based Android and iOS apps. Facebook also released SDK for .NET which enables developers to integrate Facebook into their Windows Phone and Windows 8 applications.
+  </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/1.java">Two More DevOps Tool Vendors Acquired</a>The excitement over DevOps is continuing to increase in major corporations. Today it was announced that two DevOps tool vendors were acquired. UrbanCode was picked up by IBM while Nolio went to CA Technologies. 
   </div> 
@@ -147,9 +150,6 @@
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/3.java">Improve DevOps Cultures with Information Consolidation</a>The Appsecute platform aims to improve collaboration and increase productivity through consolidating information associated to an applications lifecycle. The software as a service platform accepts messages directly from people and from integrated technology platforms, then it aggregates those events online for viewing by everyone within an organization. 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/2.java">Google+ Sign-In: Federated Identity, Authorization and Semantic Activity Streams</a>Google+ Sign-In extends the Google+ social network into third-party websites, desktop applications and mobile apps. This service, announced on February 26th, provides features for authentication, authorization and activity sharing. There is also support for user engagement, hangouts and automatic Android app downloads. 
-  </div> 
+  </div>  
  </body>
 </html>
