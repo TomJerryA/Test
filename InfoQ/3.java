@@ -1,26 +1,29 @@
-<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>Improve DevOps Cultures with Information Consolidation</h3><p>The <a href="https://www.appsecute.com/features.html">Appsecute platform</a> aims to improve collaboration and increase productivity through consolidating&nbsp;information associated to an applications lifecycle. The software as a service (or SaaS) platform accepts messages directly from people and from integrated technology platforms, then it aggregates those events online for viewing by everyone within an organization.</p> 
-<div>
- The platform addresses the problem of disparate information tracking and targets the prevention of siloed roles in project teams. This was commented on by Tyler Power, CTO and co-founder of Appsecute, as follows:&nbsp;
-</div> 
-<blockquote>
- The problem that we see is that there are too many tools involved in the application lifecycle. This makes it extremely difficult for an individual to stay up to date with work being done in these tools, as well as being aware of and responding to urgent issues arising from them. This breeds a culture of isolation between people where they limit their concern to a small piece of the application lifecycle, effectively ignoring the valuable utility of the other tools a business has invested in.&nbsp;
+<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>Visualize JavaScript Code Flow with TraceGL</h3><p>Rik Arends has released <a href="https://trace.gl">TraceGL</a>, a new tool to debug JavaScript application using <em>trace debugging</em>. To make it easier to debug and understand complex browser and <a href="http://nodejs.org">Node.js</a>-based applications, the tool captures, visualizes and lets the user navigate execution traces while the application is running.</p> 
+<p><img src="http://www.infoq.com/resource/news/2013/04/tracegl/en/resources/shot2.png;jsessionid=4B5E1036F798D134D84A88DE6007F7C0" alt="" _href="img://shot2.png" _p="true" /></p> 
+<p>TraceGL consists of two parts: a node.js-based server and a <a href="http://www.khronos.org/webgl/">WebGL</a>-based client that runs in the browser. The four-pane browser UI shows a mini-map of the trace at the top left, a zoomed-in part of the trace top right, a stack-trace bottom left and the code itself bottom-right.&nbsp;When hovering over variables in the code, the UI shows the value that the variable had at the time. In addition, code execution paths for control flow are visualized.</p> 
+<p>To find out more about this project, InfoQ talked to its creator, Rik Arends.</p> 
+<p><strong>Why do we need TraceGL, aren't the browser-integrated debuggers good enough?</strong></p> 
+<blockquote> 
+ <p>Browser debuggers have definitely been getting better, but they operate in 'breakpoint/step' mode. First, you have to know where to put the breakpoints, and if you step over the wrong function you have to start all over again. With a trace, all execution is recorded. This means that instead of stepping, you see all logic at once, all variables and function arguments are visible, and you can use search, and data aggregation visualisations. You don't miss anything anymore. Also as it is a recording, you don't interrupt the program. Especially with event based code, behaviour is different if you put a breakpoint somewhere, with tracing code behaves more natural. And now the recording can be shared, which enables new ways of aiding debugging in a quality assurance process.</p> 
+ <p>TraceGL has definitely taught me a lot about my own code and libraries like jQuery just by wandering around the code.</p> 
 </blockquote> 
-<div>
- Additionally, the founders of Appsecute believe the product will reduce the impact of downtime. Tyler commented as follows:&nbsp;
-</div> 
+<p><strong>Are there any types of applications that this is especially useful for?</strong></p> 
 <blockquote>
- It also means during a crisis everyone is looking at the same information, aggregated from all the different systems they use, we have found this can significantly reduce downtime in a crisis as it makes it much easier to recognize and resolve problems.
+  The more code you have, the nicer having a tracer is, especially if it's not all your own code. Use it on any reasonably complex HTML5 app and you will learn many new things about your code. Seeing what your code does as you move around the UI is quite lovely. However I have to say that TraceGL is also very useful for Node.js. As it is entirely event driven, breakpoint debugging is not a natural fit, but tracing is. The availability of a closure stack allows you to jump in and out of callbacks by simply clicking on the function, which is very handy. It's like getting a window into your server and being able to see what is going on. 
 </blockquote> 
-<div>
- The platform provides users with the ability to shape the way information is presented on a 'single plane of glass' timeline by managing users, organizations, applications, and connectors to external event streams. Appsecute supports technology triggered event streams from source control, continuous integration, ticketing systems, and platforms as a service (or Paas). These systems align with multiple roles in a Devops culture. To date the product is free and they provide step by step documentation on 
- <a href="http://blog.appsecute.com/?p=299">how to build connectors</a> to integrate event stream sources with Appsecute. Additionally they 
- <a href="https://github.com/Appsecute">provide the code for various connectors</a> on GitHub.
-</div> 
-<div>
- &nbsp;
-</div> 
-<div>
- <a href="http://www.pagerduty.com/tour/">Pagerduty</a> and 
- <a href="http://www.datadoghq.com/product/">Datadog</a> provide online services that aggregate information streams similar to Appsecute.
-</div> 
+<p><strong>How does TraceGL work, does it integrate into the JavaScript VM? Does it instrument the code?</strong></p> 
+<blockquote>
+  TraceGL operates as both a proxy and a fileserver, and it works by instrumenting your JavaScript, much in the same way as CoffeeScript is compiled to JavaScript. I'm using the awesome 
+ <a href="http://marijnhaverbeke.nl/acorn/">Acorn JS</a> parser by Marijn Haverbeke, and then non-destructively modify the source. When executing this modified source, it logs all codeflow over a websocket connection, via the node process to the UI for visualisation. This means traceGL doesn't need a debug connection to the JavaScript VM. It can just as easily trace your code on a mobile phone, as a Node.js backend. 
+</blockquote> 
+<p><strong>What is the technology used to implement the traceGL UI?</strong></p> 
+<blockquote>
+  Since TraceGL can get huge amounts of data flowing in, I needed to display and scroll vast amounts of text. As an experiment I decided to write the whole UI in webGL, and render all the text to static vertexbuffers. This means when scrolling and zooming there is very little processing going on in JavaScript as its a single drawcall to render big chunks of text. I've implemented a basic UI toolkit with dirty-region handling, and wrote a GLSL shader compiler to do all UI styling. So this means I no longer use CSS to style anything, but you write little shader fragments. All the interactivity works via raypicking and databinding a JavaScript DOM to shader variables. If you go this route, you do have to handle Retina screens yourself, but that works nicely. I'm originally a C++ graphics coder, so finally being able to make a fast browser UI without HTML was very refreshing. 
+</blockquote> 
+<p><strong>Does traceGL work with compile-to-JavaScript languages like CoffeeScript?</strong></p> 
+<blockquote>
+  TraceGL can instrument and display the output of a CoffeeScript compiler, but I don't have support yet for source-maps to neatly map it back to the original CoffeeScript source. 
+</blockquote> 
+<p>While TraceGL is not an editor or IDE, it does give a similar &quot;live programming&quot; feel as LightTable. Whereas LightTable does this by showing results of individual Clojure functions and allows editing to affect the results, with TraceGL you keep using your own editor, and use the TraceGL UI to visualize the codeflow either live, or after the fact.</p> 
+<p><a href="https://trace.gl/">TraceGL is available from its website</a>&nbsp;for $14.99. It is distributed as a single JavaScript file and runs on any platform that can run Node.js and browsers supporting WebGL (primarily recent versions of Chrome and Firefox).</p> 
 <p id="lastElm"></p><br><br><br><br><br><br></body></html>

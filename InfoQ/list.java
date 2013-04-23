@@ -2,7 +2,10 @@
  <head></head> 
  <body>
   <div>
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/2.java">Facebook Releases PhoneGap Plugin and SDK for .NET</a>The recently released PhoneGap Facebook Plugin enables developers to enable Facebook single sign-on into their PhoneGap based Android and iOS apps. Facebook also released SDK for .NET which enables developers to integrate Facebook into their Windows Phone and Windows 8 applications.
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/3.java">Visualize JavaScript Code Flow with TraceGL</a>Rik Arends has released TraceGL, a new tool to debug JavaScript application using trace debugging. In order to make it easier to debug complex browser and Node.js-based applications, the tool captures, visualizes and lets the user navigate execution traces while the application is running.
+  </div> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/2.java">Facebook Releases PhoneGap Plugin and SDK for .NET</a>The recently released PhoneGap Facebook Plugin enables developers to enable Facebook single sign-on into their PhoneGap based Android and iOS apps. Facebook also released SDK for .NET which enables developers to integrate Facebook into their Windows Phone and Windows 8 applications. 
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/1.java">Two More DevOps Tool Vendors Acquired</a>The excitement over DevOps is continuing to increase in major corporations. Today it was announced that two DevOps tool vendors were acquired. UrbanCode was picked up by IBM while Nolio went to CA Technologies. 
@@ -147,9 +150,6 @@
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/4.java">WSO2 Developer Studio 3.0&amp;3.1 Has Better ESB Tooling</a>WSO2 Developer Studio 3.0 and 3.1 improve ESB and Registry Resource Editor tools, has better performance, uses Eclipse Juno SR2, and supports JAX-RS REST code generation. 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/3.java">Improve DevOps Cultures with Information Consolidation</a>The Appsecute platform aims to improve collaboration and increase productivity through consolidating information associated to an applications lifecycle. The software as a service platform accepts messages directly from people and from integrated technology platforms, then it aggregates those events online for viewing by everyone within an organization. 
   </div>  
  </body>
 </html>
