@@ -2,7 +2,10 @@
  <head></head> 
  <body>
   <div>
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/23.py">JSONバリデーションのまとめ</a>どんな “柔軟な” すなわち “拡張性のある” ファイルフォーマットを作っても、遅かれ早かれ開発者のグループがバリデーションに関して文句を言い始める。JSONには、幾つもの選択肢が出てき始めている。
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/24.py">IntelliJ IDEA 12.1がJavaFX 2.0を新たにサポート</a>JetBrainsがIntelliJ IDEA 12.1の提供を開始した。Javaクライアントプラットフォームの最新実装であるJavaFX 2.0のフルサポートを実現している。この人気IDEの新バージョンにはGradle, Scala, Groovy, Play Framework用の新機能も含まれている。
+  </div> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/23.py">JSONバリデーションのまとめ</a>どんな “柔軟な” すなわち “拡張性のある” ファイルフォーマットを作っても、遅かれ早かれ開発者のグループがバリデーションに関して文句を言い始める。JSONには、幾つもの選択肢が出てき始めている。 
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/22.py">継続的デリバリがイノベーションを加速する</a>Thoughtworks が先日公開した白書で取り上げた継続的デリバリ (CD, Continuous Delivery) の成熟モデルは，多くの企業がイノベーションの重要性を理解しながらも，ビジネスリーダの要求に対して十分な速さでソフトウェアを提供できていないという調査結果に対する回答だ。 
@@ -147,9 +150,6 @@
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/25.py">RadControls for Windows 8による開発ユーティリティ、生産性、会計とメディアアプリ</a>Telerikは先日、開発者がタッチに最適化されたデスクトップとモバイルデバイスのアプリケーションを構築することができるようにしたRadControls for Windows 8をリリースした。 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/24.py">Canvasベースのチャートライブラリ、Chart.js 0.1がリリース</a>3月17日、Nick Downie氏がcanvasを使ったJavaScriptチャートライブラリ、Chart.jsをMITオープンソースライセンスで公開した。これはSVGベースのチャートライブラリに代わるものだ。 
   </div>  
  </body>
 </html>
