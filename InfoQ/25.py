@@ -1,18 +1,24 @@
-<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>RadControls for Windows 8による開発ユーティリティ、生産性、会計とメディアアプリ</h3><p><a target="_blank" href="http://www.infoq.com/news/2013/03/radcontrols-for-windows-8;jsessionid=7DCAC826A6537C3C4F87E292A0C9F063"><em>原文(投稿日：2013/03/21)へのリンク</em></a></p> 
+<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>MicrosoftがScript Explorerのリリースをキャンセル</h3><p><a target="_blank" href="http://www.infoq.com/news/2013/04/Script-Explorer-Canceled;jsessionid=2C888FC172455B01D0F083B1F93A7048"><em>原文(投稿日：2013/04/17)へのリンク</em></a></p> 
 <div class="clearer-space">
  &nbsp;
 </div> 
 <div id="newsContent"> 
- <p>Telerikから先日リリースされた<a target="_blank" href="http://www.telerik.com/products/windows-8/overview.aspx">RadControls for Windows 8 Q1 2013 </a>は、Chart、DatePicker、Pagination、Gauge、TimePicker、HubTile、BulletGraph、NumericBox、Slider、ComboBox、AutoCompleteBox、DropDownListコントロールを使ったタッチ中心のアプリケーションを作成することができる。</p> 
- <p><a target="_blank" href="http://www.telerik.com/products/windows-metro/controls/drop-down-list.aspx">DropDownList</a>は、リストから単一の選択をすることができ、実行時にアイテムの追加、削除、無効化が可能である。<a target="_blank" href="http://www.telerik.com/products/windows-metro/controls/numeric-text-box.aspx">NumericBox</a>は、通貨を含む数値を正確に入力する機能を提供する。スイートにはまた、キーワードの数文字を入力すると、複数の値もしくはリモートオンラインデータでGoogleスタイルのサジェストを統合することができる<a target="_blank" href="http://www.telerik.com/products/windows-metro/controls/auto-complete.aspx">AutoCompleteBox</a>と名付けられたコントロールが含まれている。</p> 
- <p>&quot;DropDownListは、マウスとタッチに最適化されている。ComboBoxは、ユーザーがタイプしたキーボードフィルタリングを提供する&quot; と、Telerikの開発ツール部門のバイスプレジデントChris Sells氏は言う。</p> 
- <p><a target="_blank" href="http://www.telerik.com/products/windows-metro/controls/gauge.aspx">Gauge</a>コントロールは、動的なデータを簡単に視覚化して、流れるようなアニメーションを追加することができる。<a target="_blank" href="http://www.telerik.com/products/windows-metro/controls/pagination.aspx">Pagination</a>コントロールは、UIの完全にコントロールでスタイルでアプリケーションに素早く、直感的なページ間ナビゲーションを可能にする</p> 
- <p>さらにスイートには、機能、比較、予測値の進捗の視覚化に加えて、水平、垂直の書式で進捗状況を表示することができる<a target="_blank" href="http://www.telerik.com/products/windows-metro/controls/bullet-graph.aspx">BulletGraph</a>コントロールが含まれている。</p> 
- <p><a target="_blank" href="http://www.telerik.com/products/windows-metro/controls/chart.aspx">Chart</a>コントロールは、Windows 8にパンやズームと行ったジェスチャーを追加することができる。これはまた、多軸、水平チャート、財務指標、注釈や空の値をサポートする。<a target="_blank" href="http://www.telerik.com/products/windows-metro/controls/grid.aspx">Grid</a>コントロールは、単一または複数カラムで、ソート、グルーピング、フィルタリング、選択、自動生成カラム、カスタマイズ可能なカラム、条件付き書式、コマンドをサポートして、階層データの表示機能を含んでいる。</p> 
- <p>&quot;RadControls for Windows 8は、企業内の基幹系エンタープライズアプリ、B2Cアプリと消費者向けアプリをサポートできるように構築されている。ユーティリティ、金融、メディア消費アプリなどあなたが想像できるあらゆる種類の - 非常にハードなゲームを除いて - 組み込んだり、コントロールスイートを使って改善することができる &quot;とChris氏は言う。</p> 
- <p><a target="_blank" href="http://www.telerik.com/products/windows-metro/controls/slider.aspx">Slider</a>コントロールは、visual thumbによる値の変更と調整をすることができ、<a target="_blank" href="http://www.telerik.com/products/windows-metro/controls/hubtile.aspx">HubTile</a>は、タイル中のコンテンツの回転とスライドするオプションを使用して、Windows 8スタイルのタイルを統合する機能を提供する。</p> 
- <p>RadControls for Windows 8はまた、メトロスタイルのインターフェイスで無限ループによる時間と日付の選択する<a target="_blank" href="http://www.telerik.com/products/windows-metro/controls/time-picker.aspx">TimePicker</a>と<a target="_blank" href="http://www.telerik.com/products/windows-metro/controls/date-picker.aspx">DatePicker</a>といったコントロールも含まれている。</p> 
- <p>&quot;私たちは、平均、合計、集計など集計したデータを表示して、対話を容易にできるようにデータ編集と集計サポートといったビジネスと生産性機能などRadGridの拡張を続けている。加えて、私たちはCalendar、NumericBox for XAML、MultiSelect、Bulletgraphs/Sparklines for HTMLといったもっとも要望の多いコンポーネントを提供するために作業している&quot; とInfoQがRadControls for Windows 8の将来ロードマップについて尋ねたときにChris氏は語った。</p> 
+ <p>MicrosoftはScript Explorerのリリースをキャンセルした。このツールは，外部リポジトリ (TechNet Script Center, PoshCodeなど) あるいは企業の内部コレクションにあるPowerShellスクリプトを，容易に見つけられるようにデザインされたものだ。</p> 
+ <p><a target="_blank" href="http://blogs.msdn.com/b/powershell/archive/2013/04/05/microsoft-script-explorer-next-steps.aspx">PowerShellチームは次のように書いている</a>。</p> 
+ <blockquote> 
+  <p>今回の解析結果の中から，Script Explorerプレリリース版の適用と利用状況が，私たちの期待したレベルに達していないことが分かりました。理由のひとつとして，PowerShellスクリプトの検索と共有に関する市場においてユーザにはすでに多数の選択肢が存在し，既存のメカニズムを今後も継続利用するという内容が大部分を占めていた，という事実があります。結論として私たちは，Script ExplorerプロジェクトをRTMとしないことを決定しました。</p> 
+ </blockquote> 
+ <p>プレビュー版の所有者は，公開リポジトリのサポートに必要なサービスが終了する2013年7月14までは，ツールを継続して使用することができる。</p> 
+ <p>Microsoftは代替製品として，次のようなものをリストアップしている。</p> 
+ <ul> 
+  <li><a target="_blank" href="http://technet.microsoft.com/en-us/scriptcenter/">TechNet Script Center</a></li> 
+  <li><a target="_blank" href="http://poshcode.org/">PowerShell Code Repository</a></li> 
+  <li><a target="_blank" href="http://powershell.com/">PowerShell.com</a></li> 
+  <li><a target="_blank" href="http://powershell.org/">PowerShell.org</a></li> 
+  <li><a target="_blank" href="http://www.idera.com/Free-Tools/PowerShell-Plus/">PowerShell Plus</a>, <a target="_blank" href="http://www.idera.com/Free-Tools/PowerShell-scripts/">PowerShell Scripts</a> (Idera)</li> 
+  <li><a target="_blank" href="http://www.powergui.org/">PowerGUI</a> (Quest)</li> 
+  <li><a target="_blank" href="http://www.sapien.com/software/powershell_studio">PowerShell Studio</a> (SAPIEN)</li> 
+ </ul> 
  <p id="lastElm">&nbsp;</p> 
 </div> 
 <p id="lastElm"></p><br><br><br><br><br><br></body></html>

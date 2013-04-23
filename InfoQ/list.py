@@ -2,7 +2,22 @@
  <head></head> 
  <body>
   <div>
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/24.py">IntelliJ IDEA 12.1がJavaFX 2.0を新たにサポート</a>JetBrainsがIntelliJ IDEA 12.1の提供を開始した。Javaクライアントプラットフォームの最新実装であるJavaFX 2.0のフルサポートを実現している。この人気IDEの新バージョンにはGradle, Scala, Groovy, Play Framework用の新機能も含まれている。
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/29.py">自己組織型アジャイルチームにおけるリーダシップ</a>自己組織型アジャイルチームを実践する組織には，奉仕型リーダシップでチームを支援し，チーム自身が継続的な向上を学ぶように指導，助言できるマネージャが必要だ。
+  </div>
+  <div>
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/28.py">NetflixがSilverlightを見限り，HTML5を選択</a>Netflixは自社のビデオプレーヤをSilverlightからHTML5に切り替えると発表した。新しいプレーヤは最初Chrome/Chrome OSに実装されるが，間もなくWindowsとMac OS Xにも用意されるという。
+  </div>
+  <div>
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/27.py">C#の非同期の落とし穴</a>時々 1 つの言語の落とし穴を理解する最良の方法は、別の言語がそれらをどのように防いでいるかを参考にすることである。Real-World Functional Programmingの著者であるTomas Petricek氏は、非同期なC# コードに見られる６つの一般的な誤りについて説明し、どのように F# がそれらの発生する可能性を少なくしているかを示している。
+  </div>
+  <div>
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/26.py">Dartの M4リリースがコアライブラリを安定化</a>Google DartがDart SDKのマイルストーン 4をリリースした。言語は既に、以前のマイルストーンで安定化したが、このM4リリースは幾つかのコアライブラリを安定化させた。パフォーマンスも向上した。Dartをネイティブで動かすDartVMは、160% (DeltaBlueベンチマークで)から200% (Richardsベンチマークで)Chromeを動かしているJavaScriptエンジンのv8よりも早くなった。このリリースには、高速化されたdart2jsコンパイラーが含まれている。
+  </div>
+  <div>
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/25.py">MicrosoftがScript Explorerのリリースをキャンセル</a>MicrosoftはScript Explorerのリリースをキャンセルした。このツールは外部リポジトリ (TechNet Script Center, PoshCodeなど) あるいは企業の内部コレクションにあるPowerShellスクリプトを容易に見つけられるようにデザインされたものだ。
+  </div> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/24.py">IntelliJ IDEA 12.1がJavaFX 2.0を新たにサポート</a>JetBrainsがIntelliJ IDEA 12.1の提供を開始した。Javaクライアントプラットフォームの最新実装であるJavaFX 2.0のフルサポートを実現している。この人気IDEの新バージョンにはGradle, Scala, Groovy, Play Framework用の新機能も含まれている。 
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/23.py">JSONバリデーションのまとめ</a>どんな “柔軟な” すなわち “拡張性のある” ファイルフォーマットを作っても、遅かれ早かれ開発者のグループがバリデーションに関して文句を言い始める。JSONには、幾つもの選択肢が出てき始めている。 
@@ -135,21 +150,6 @@
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/30.py">Backbone.js 1.0リリース</a>2年半の開発を経て、Backbone.jsのバージョン1.0がリリースされた。Backbone.jsは人気のあるModel/ViewのJavaScriptライブラリで、USA Today、Rdio、Airbnbを含む多くのWebアプリケーションで用いられている。 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/29.py">Canary Deploymentsを使って稼働中にテストする</a>Nolioが彼らのDevOpsのベストプラクティスに関するシリーズの最初のビデオで言っていることによれば、ユーザーの一部を新しい機能に目を向けさせたことで、企業は&quot;Canary Deployments&quot;を継続的デリバリの一部として使って、稼働中のソフトウェアをテストしている。&quot;Canary Deployments&quot;は一種のインクリメンタル リリースで、ソフトウェアの新バージョンをその対応する稼働中のバージョンと並んでデプロイすることで実現される。 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/28.py">Windows Embedded 8 リリース</a>Windows Embedded 8がMicrosoftからリリースされ，一般入手が可能になった。OEM や特殊環境での使用を意図したこのリリースシリーズは，Windows 8 のコードベースを組み込み環境へと適用させるものだ。 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/27.py">いつWPFをAsyncとReactive Extensionsと一緒に使うべきか</a>Ian Griffiths氏は、WPFで.NET 4.5の非同期フィーチャをいつ使い、いつ使わないべきかに関する6回シリーズを公開した。シリーズはWPFとAsyncは余りに良く、余りに早いと題する記事で始まっている。 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/26.py">Parse MBaaS の分析</a>MBaaS を提供する新興企業を取り上げるシリーズ記事の第３弾として，今回の記事では Parse という企業を動かしているものについて検討する。Parse は，数を増し続ける競合企業たちと同じように，効率的なモバイルバックエンド構築に必要なモバイルアプリ開発者の時間と労力の削減を目的とする企業だ。 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/25.py">RadControls for Windows 8による開発ユーティリティ、生産性、会計とメディアアプリ</a>Telerikは先日、開発者がタッチに最適化されたデスクトップとモバイルデバイスのアプリケーションを構築することができるようにしたRadControls for Windows 8をリリースした。 
-  </div>  
+  </div>      
  </body>
 </html>
