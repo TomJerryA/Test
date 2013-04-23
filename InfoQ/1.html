@@ -1,38 +1,40 @@
-<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>Netflix公布个性化和推荐系统架构</h3><p>Netflix的推荐和个性化功能向来精准，前不久，他们公布了自己在这方面的系统架构。</p> 
-<p>3月27日，Netflix的工程师<a href="http://www.twitter.com/xamat">Xavier Amatrain</a>和<a href="http://www.twitter.com/justinBasilico">Justin Basilico</a>在官方博客<a href="http://techblog.netflix.com/2013/03/system-architectures-for.html">发布文章</a>，介绍了自己的个性化和推荐系统架构。文章开头，他们指出：</p> 
+<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>Blink其实都在意料之中——Chromium Committer朱永盛访谈</h3><p>朱永盛, Web技术和WebKit/Chromium社区的爱好者和贡献者。2010年之前，从事于XML和XSLT编译器的开发和优化工作。自2010年开始，参与开发过多个基于WebKit/Chromium的项目，一直对WebKit/Chromium开源社区保持关注和贡献，去年成为Chromium项目的Committer。</p> 
+<p>作为QCon北京2013“跨终端的Web”的演讲嘉宾，朱永盛接受了InfoQ的采访。采访内容如下：</p> 
+<p><strong>InfoQ：能否讲讲您与WebKit、Chromium项目的渊源</strong></p> 
 <blockquote> 
- <p>要开发出这样的一个软件架构，能够处理海量现有数据、响应用户交互，还要易于尝试新的推荐方法，这可不一点都不容易。</p> 
+ <p><strong>朱永盛：</strong>在业余时间里，发表关于WebKit/Chromium技术内幕的文章，分享个人在项目的经历和理解，和大家一起交流学习心得。具体见个人微博http://blog.csdn.net/milado_nju。联系方式是<a href="mailto:yongsheng@chromium.org">yongsheng@chromium.org</a>。</p> 
 </blockquote> 
-<p>接下来，文章贴出了他们的系统框架图，其中的主要组件包括多种机器学习算法。</p> 
-<p><img src="http://www.infoq.com/resource/news/2013/04/netflix-ml-architecture/zh/resources/MachineLearningArchitecture-v3.jpg;jsessionid=FB6E303172A5B0EE04A515C8D4F5673F" alt="" _href="img://MachineLearningArchitecture-v3.jpg" _p="true" /></p> 
-<p>他们这样解释其中的组件和处理过程：</p> 
+<p><strong>InfoQ：究竟什么是WebKit？</strong></p> 
 <blockquote> 
- <p>对于数据，最简单的方法是存下来，留作后续离线处理，这就是我们用来管理离线作业（Offline jobs）的部分架构。计算可以以离线、接近在线或是在线方式完成。在线计算（Online computation）能更快地响应最近的事件和用户交互，但必须实时完成。这会限制使用算法的复杂性和处理的数据量。离线计算（Offline computation）对于数据数量和算法复杂度限制更少，因为它以批量方式完成，没有很强的时间要求。不过，由于没有及时加入最新的数据，所以很容易过时。个性化架构的关键问题，就是如何以无缝方式结合、管理在线和离线计算过程。接近在线计算（Nearline computation）介于两种方法之间，可以执行类似于在线计算的方法，但又不必以实时方式完成。模型训练（Model training）是另一种计算，使用现有数据来产生模型，便于以后在对实际结果计算中使用。另一块架构是如何使用事件和数据分发系统（Event and Data Distribution）处理不同类型的数据和事件。与之相关的问题，是如何组合在离线、接近在线和在线之间跨越的不同的信号和模型（Signals and Models）。最后，需要找出如何组合推荐结果（Recommendation Results），让其对用户有意义。</p> 
+ <p><strong>朱永盛：</strong>这其实是一个很难的问题，因为WebKit本身的确是很复杂，经常容易被人误解。WebKit只是一个渲染引擎，不是浏览器，主要用来将HTML页面渲染成可视化的图像结果。它包括WebCore，JavaScript，WebKit Ports等，这其中WebKit Ports是很大的一块，而且是平台相关的。所以基于WebKit的浏览器一般需要有不同的WebKit Port。</p> 
+ <p>同时，WebKit离一个完整的浏览器非常非常地远，这是因为浏览器还有很多其它的功能。拿Chromium来说，它是一个基于WebKit的浏览器，WebKit用来渲染网页，但是，Chromium做了很多其它的工作，主要两部分：第一，WebKit的Chromium port，这里面主要是Chromium需要将WebKit运行在不同平台(Windows, Mac, Linux等)和图形工具上（skia)；第二，很多新框架和浏览器功能，包括多进程模型，沙箱模型，各种HTML5功能实现，GPU硬件加速机制等等。</p> 
 </blockquote> 
-<p>接下来，文章分析了在线、接近在线和离线计算。</p> 
-<p>对于在线计算，相关组件需要满足SLA对可用性和响应时间的要求，而且纯粹的在线计算在某型情形下可能无法满足SLA，因此，快速的备用方案就很重要，比如返回预先计算好的结果等。在线计算还需要不同的数据源确保在线可用，这需要额外的基础设施。</p> 
-<p>离线计算在算法上可相对灵活，工程方面的需求也简单。客户端的SLA响应时间要求也不高。在部署新算法到生产环境时，对于性能调优的需求也不高。Netflix利用这种灵活性来完成快速实验：如果某个新的实验算法执行较慢，他们会部署更多Amazon EC2实例来达成吞吐处理目标，而不是花费宝贵的工程师时间去优化性能，因为业务价值可能不是很高。</p> 
-<p>接近在线计算与在线计算执行方式相同，但计算结果不是马上提供，而是暂时存储起来，使其具备异步性。接近在线计算的完成是为了响应用户事件，这样系统在请求之间响应速度更快。这样一来，针对每个事件就有可能完成更复杂的处理。增量学习算法很适合应用在接近在线计算中。</p> 
+<p><strong>InfoQ：WebKit Ports是什么？</strong></p> 
 <blockquote> 
- <p>不管什么情况，选择在线、接近在线、还是离线处理，这都不是非此即彼的决策。所有的方式都可以、而且应该结合使用。 …… 即使是建模部分也可以用在线和离线的混合方式完成。这可能不适合传统的监督分类法（supervised classification）应用，因为分类器必须从有标记的数据中批量培训，而且只能以在线方式使用，对新输入分类。不过，诸如矩阵因子分解这样的方法更适合混合离线和在线建模方法：有些因子可以预先以离线方式计算，有些因子可以实时更新，创建更新的结果。其他诸如集群处理这样的非监督方法，也可以对集群中心进行离线计算，对集群节点进行在线作业。这些例子说明：模型训练可以分解为大规模和复杂的全局模型训练，以及轻量级的用户指定模型训练或更新阶段，以在线方式完成。</p> 
+ <p><strong>朱永盛：</strong>WebKit的渲染一部分工作是平台独立的（例如HTML解析等），但是还有很大一部分是需要依赖平台的功能（如系统调用），也需要平台上的其它库（如图形库skia，cairo）。平台有多个，例如Windows，Linux，Mac等。同一平台上，也有不同的图形库，这样组合起来就会有很多不同的可能，一个WebKit Port可能就是基于一个这样的组合来实现的。</p> 
 </blockquote> 
-<p><img src="http://www.infoq.com/resource/news/2013/04/netflix-ml-architecture/zh/resources/OfflineJobs-v3.jpg;jsessionid=FB6E303172A5B0EE04A515C8D4F5673F" alt="" _href="img://OfflineJobs-v3.jpg" _p="true" /></p> 
-<p>对于离线作业（Offline jobs），主要用来运行个性化机器学习算法。这些作业会定期执行，而且不必与结果的请求和展示同步。主要有两种任务这样处理：模型训练和中间与最终结果批量计算（batch computation of intermediate or final results）。不过，他们也有一些学习算法是以在线增量方式完成的。</p> 
-<p>这两种任务都需要改善数据，通常是由数据库查询完成。由于这些查询要操作大量数据，以分布式方式完成更方便，因此通过Hadoop或是Hive、Pig作业就是自然而然的事情。一旦查询完成，就需要某种机制发布产生的数据。对于这样的机制，Netflix有如下需求：</p> 
-<ul> 
- <li>可以通知订阅者查询完成。</li> 
- <li>支持不同存储方式（不只是HDFS，还有S3或是Cassandra等等）</li> 
- <li>应该透明处理错误，允许监控和报警。</li> 
-</ul> 
-<p>Netflix使用内部的工具Hermes完成这些功能，它将数据以接近实时的方式交付给订阅者，在某些方面接近<a href="http://kafka.apache.org/">Apache Kafka</a>，但它不是消息/事件队列系统。</p> 
-<p><img src="http://www.infoq.com/resource/news/2013/04/netflix-ml-architecture/zh/resources/SignalsAndModels-v3.jpg;jsessionid=FB6E303172A5B0EE04A515C8D4F5673F" alt="" _href="img://SignalsAndModels-v3.jpg" _p="true" /></p> 
-<p>无论是离线还是在线计算，都需要处理三种输入：模型、数据和信号。模型是以离线方式训练完成的参数文件，数据是已完成处理的信息，存在某种数据库中。在Netflix，信号是指输入到算法中的新鲜信息。这些数据来自实时服务，可用其产生用户相关数据。</p> 
-<p><img src="http://www.infoq.com/resource/news/2013/04/netflix-ml-architecture/zh/resources/EventDistribution-v3.png;jsessionid=FB6E303172A5B0EE04A515C8D4F5673F" alt="" _href="img://EventDistribution-v3.png" _p="true" /></p> 
-<p>对于事件和数据分发，Netflix会从多种设备和应用中收集尽可能多的用户事件，并将其集中起来为算法提供基础数据。他们区分了数据和事件。事件是对时间敏感的信息，需要尽快处理。事件会路由、触发后续行动或流程。而数据需要处理和存储，便于以后使用，延迟不是重要，重要的是信息质量和数量。有些用户事件也会被作为数据处理。</p> 
-<p>Netflix使用内部框架<strong>Manhattan</strong>处理接近实时的事件流。该分布式计算系统是推荐算法架构的中心。它类似Twitter的<a href="http://storm-project.net/">Storm</a>，但是用处不同，而且响应不同的内部需求。数据流主要通过<a href="http://wiki.apache.org/hadoop/Chukwa">Chukwa</a>，输入到Hadoop，进行处理的初步阶段。此后使用Hermes作为发布-订阅机制。</p> 
-<p>Netflix使用Cassandra、EVCache和MySQL存储离线和中间结果。它们各有利弊。MySQL存储结构化关系数据，但会面临分布式环境中的扩展性问题。当需要大量写操作时，他们使用EVCache更合适。关键问题在于，如何满足查询复杂度、读写延迟、事务一致性等彼此冲突的需求，要对于各种情况到达某个最优点。</p> 
-<p>在总结中，他们指出：</p> 
+<p><strong>InfoQ：浏览器都使用WebKit，就意味着Web的统一和封闭吗？</strong></p> 
 <blockquote> 
- <p>我们需要具备使用复杂机器学习算法的能力，这些算法要可以适应高度复杂性，可以处理大量数据。我们还要能够提供灵活、敏捷创新的架构，新的方法可以很容易在其基础上开发和插入。而且，我们需要我们的推荐结果足够新，能快速响应新的数据和用户行为。找到这些要求之间恰当的平衡并不容易，需要深思熟虑的需求分析，细心的技术选择，战略性的推荐算法分解，最终才能为客户达成最佳的结果。</p> 
+ <p><strong>朱永盛：</strong>相信看了上面的描述，你也很难相信使用WebKit就代表Web会很好的统一和封闭了。因为虽然都叫WebKit，但是WebKit是开放的，它虽然包含了相同的基础架构，但是每个WebKit Port都有不同的实现，导致很多的不一致性，需要大家共同努力。至于封闭问题，这个也是仁者见仁的问题了。本身WebKit是开源的，与其不停的争论，不如大家都参与进去，共同推动Web技术的发展。</p> 
 </blockquote> 
+<p><strong>InfoQ：作为WebKit和Chromium项目的参与者以及Chromium的committer，能否和大家分享一下参与这种著名开源项目的感受？</strong></p> 
+<blockquote> 
+ <p><strong>朱永盛：</strong>个人还是很喜欢开源的风格，因为你可以从中学习任何你想知道的东西，而且可以参与。这两个项目里面有很多非常资深的人，但是他们很随和，当然也少不了争论。举个例子来说，基本上当我提交代码补丁后，他们都会很快的反应并给予很多的意见帮忙改进他们，完全是技术讨论，能收获很多。如果想参与到他们中来，建议从一些小的问题入手，找资深的人给些建议，相信可以很快地成长的。</p> 
+</blockquote> 
+<p><strong>InfoQ：对前端开发者来说，了解WebKit如何解析渲染网页，会给他们带来怎样的经验和启示？ </strong></p> 
+<blockquote> 
+ <p><strong>朱永盛：</strong>我一直相信这样一个道理，了解背后原理的人总是对问题理解地更深刻。这就像是用C语言编程的人应该了解C语言背后的东西，这样写出的代码更高效。同样，当你了解WebKit是如何工作的时候，知道什么事情它能够高效的做到，什么事情它会比较费时，这绝对会有助于你更深刻的理解你的代码是怎样被执行，从而设计并改进他们。</p> 
+</blockquote> 
+<p><strong>InfoQ：您对Google Blink项目有什么看法？</strong></p> 
+<blockquote> 
+ <p><strong>朱永盛：</strong>其实这个并不令人吃惊，因为之前就有很多关于这方面的讨论，如果你关注WebKit的邮件列表就会发现。Google有很多新的功能希望加入WebKit中，但是WebKit可能并不认可，双方分歧越来越多，终于分道扬镳，就像当年的WebKit之于KHTML一样。目前，Blink就是WebKit，没有太多的变动，只是删除了些不用的代码。未来，Blink应该会有很多新颖的功能，大家拭目以待。 以上仅是代表我个人的观点。</p> 
+</blockquote> 
+<p><strong>InfoQ：如果在InfoQ开设专栏详述WebKit内幕，您有什么计划？</strong></p> 
+<blockquote> 
+ <p><strong>朱永盛：</strong>一直想把WebKit内部的技术逐一介绍出来，目前的打算是列出一个系统的提纲出来，然后逐步介绍提纲中各个专题的技术内部。因为涉及的技术很多，所以可能这会是一个较长的过程。</p> 
+</blockquote> 
+<p>(采访内容完)</p> 
+<p><strong>特别提醒：</strong></p> 
+<p>QCon北京2013即将在本周四（25号）于北京国际会议中心召开。无论您是否身处会场，都可以通过<a href="http://e.weibo.com/infoqchina">InfoQ微博</a>、微信：infoqchina，来获得场内最新资讯，slides下载信息等内容。</p> 
+<p>腾讯大讲堂仍将鼎力支持QCon：除所有的Keynote之外，二号厅A的其余4个专题16场演讲，都会在大讲堂进行视频直播，敬请关注。</p> 
 <p id="lastElm"></p><br><br><br><br><br><br></body></html>
