@@ -2,10 +2,13 @@
  <head></head> 
  <body>
   <div>
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/0.java">Detecting Abnormal Traffic in Real Time with APM 9.5</a>CA Technologies’ Application Performance Management 9.5 adds the ability to detect and analyze unusual performance metric patterns in near real time. This can be used to detect the beginnings of a denial of service attack, failing hardware, or a rouge application.
-  </div>
-  <div>
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/49.java">Layer 7 to be Merged with SiteMinder</a>Layer 7 Technologies has just been acquired by CA Technologies for the purpose of augmenting CA SiteMinder with Layer 7’s API Management &amp; Security Suite. Layer 7 specializes in adding “access, security, SLA and management features” to existing service APIs.
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/1.java">Two More DevOps Tool Vendors Acquired</a>The excitement over DevOps is continuing to increase in major corporations. Today it was announced that two DevOps tool vendors were acquired. UrbanCode was picked up by IBM while Nolio went to CA Technologies.
+  </div> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/0.java">Detecting Abnormal Traffic in Real Time with APM 9.5</a>CA Technologies’ Application Performance Management 9.5 adds the ability to detect and analyze unusual performance metric patterns in near real time. This can be used to detect the beginnings of a denial of service attack, failing hardware, or a rouge application. 
+  </div> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/49.java">Layer 7 to be Merged with SiteMinder</a>Layer 7 Technologies has just been acquired by CA Technologies for the purpose of augmenting CA SiteMinder with Layer 7’s API Management &amp; Security Suite. Layer 7 specializes in adding “access, security, SLA and management features” to existing service APIs. 
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/48.java">Service Virtualization as an Alternative to Mocking</a>Mocking via dependency injection is often a messy endeavor. For even the simplest of applications it often involves creating new interfaces, taking on a dependency to an IoC Container, and in general adds a lot of unnecessary complexity. And after all that, you still have to write the mocks themselves, many of which aren’t useful for anything besides simplistic unit tests. 
@@ -147,9 +150,6 @@
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/2.java">Google+ Sign-In: Federated Identity, Authorization and Semantic Activity Streams</a>Google+ Sign-In extends the Google+ social network into third-party websites, desktop applications and mobile apps. This service, announced on February 26th, provides features for authentication, authorization and activity sharing. There is also support for user engagement, hangouts and automatic Android app downloads. 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/1.java">Developing Stable Teams, and Dealing with Dysfunctions</a>Having stable teams can be beneficial for agile software development. Several views on establishing and nurturing stable teams, and dealing with team dysfunctions. 
-  </div>   
+  </div>  
  </body>
 </html>
