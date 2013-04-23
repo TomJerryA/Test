@@ -1,49 +1,54 @@
-<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>公共单位中的敏捷实施：FBI和鹿特丹港</h3><p>公共单位正在越来越多地使用敏捷方法，从而满足在可用的预算和时间条件下开发软件的需求，并在面对不断变化的需求时变得更加灵活和实用。本文通过对公众领域如何采用敏捷方法作为其需求的解决方案进行了探索，并通过两个案例分析展现了敏捷开发如何运用于FBI及荷兰的鹿特丹港。</p> 
-<p>在这篇来自于<a href="http://www.computerworld.com/s/topic/13/Government+IT">计算机世界政府IT新闻（栏目）</a>的文章《<a href="http://www.computerworld.com/s/article/9235966/Feds_turn_to_agile_development_as_budget_cuts_loom">随着预算的削减，联邦政府转向敏捷开发</a>》中，高级编辑<a href="http://www.computerworld.com/s/author/265/Patrick+Thibodeau">Patrick Thibodeau</a>表示，美国联邦政府机构有必要使用敏捷软件开发方法：</p> 
+<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>百度技术沙龙第37期回顾：MySQL优化实践（含资料下载）</h3><p>在4月20日由<a href="http://weibo.com/baidutech">@百度</a>主办、<a href="http://e.weibo.com/infoqchina">@InfoQ</a>负责策划组织和实施的<a href="http://www.infoq.com/cn/zones/baidu-salon/;jsessionid=DF38FDEBFF1D73EB55EE71C7FF3D272F">第37期百度技术沙龙</a>活动上，百度运维部DBA王剑英和人人网数据中心技术副总监刘启荣分享了各自的MySQL优化实践经验，话题涉及“SEQDB——高性能KV型MySQL存储引擎”，以及“MySQL运维感悟”等。本文将对他们各自的分享做下简单的回顾，同时提供相关资料的下载。</p> 
+<p><strong>主题一：SEQDB——高性能KV型MySQL存储引擎 （<a href="http://pan.baidu.com/share/link?shareid=572641&amp;uk=3223972836">下载讲稿</a>）</strong></p> 
+<p>百度运维部DBA王剑英介绍了他们的技术选型过程，他首先列举了三个不同的业务场景，并分析了使用Innodb的解决方案。通过对于Innbodb的测试，他发现Innodb不能很好的满足百度的业务需求，主要是存在如下的问题：</p> 
+<ol> 
+ <li>数据量超过内存，IO bound时，依赖IOPS。</li> 
+ <li>Innodb不能发挥高性能IO设备的潜能。</li> 
+ <li>Innodb不能达到100ms以下99.99%的SLA，达不到业务场景的要求。</li> 
+</ol> 
+<p>为了完全发挥SSD的潜能，使得QPS&gt;=IOPS、低延迟，并且实现SQL接口、经验的复用，他们提出了如下的两套解决方案：</p> 
+<p><img width="500px" src="http://www.infoq.com/resource/news/2013/04/baidu-salon37-summary/zh/resources/1.png;jsessionid=DF38FDEBFF1D73EB55EE71C7FF3D272F" alt="" _href="img://1.png" _p="true" /></p> 
+<p>经过了一系列的对比，他们选择写一套自己的引擎。同时，为了提高面向业务的性能实现，他们选择在功能上放弃join、range、group by等复杂的查询功能，不做全功能引擎，简化复杂度，只支持基于主键的增删改查。</p> 
+<p>百度的Sequentialdb总体构架如下：</p> 
+<p><img width="500px" src="http://www.infoq.com/resource/news/2013/04/baidu-salon37-summary/zh/resources/2.png;jsessionid=DF38FDEBFF1D73EB55EE71C7FF3D272F" alt="" _href="img://2.png" _p="true" /></p> 
+<p>随后他从细节上分享了百度对于SEQDB的设计细节，包括应用的访问模型、索引结构、数据查找、垃圾回收、元信息位图和BLOCK管理等实现。</p> 
+<p>最后他分享了其他经验：</p> 
+<ol> 
+ <li>对于索引常驻内存安全性，建议使用一主多从和备库的结构，内存的安全性是足够的，索引放在磁盘上访问成本太高；</li> 
+ <li>SSD损坏的月概率是0.1%以下，远低于HDD，如果磁盘损坏则无法恢复；</li> 
+ <li>时延敏感型应用，瓶颈会出现在写binlog上，建议调整sync_binlog，将binlog迁移到SSD上；</li> 
+ <li>毫秒级别超时API满足业务的延时需求</li> 
+</ol> 
+<p><strong>主题二：MySQL运维感悟（<a href="http://pan.baidu.com/share/link?shareid=572668&amp;uk=3223972836">下载讲稿</a>）</strong></p> 
+<p>人人网数据中心技术副总监刘启荣的介绍这9年来运维MySQL的一些经验和心得：包括MySQL数据从单台演化到一个集群的过程中，所遇到过的一些问题以及所采用的解决方案、在数据库管理过程中认知的转换与变化、在整体性能优化中的各方面的取舍等。</p> 
+<p>他根据数据库机器规模的不同阶段分享了具体的实践经验：</p> 
+<ol> 
+ <li> <p>在一个台服务器的阶段：备份</p> 大家一般处于应用的初期，此时性能不是最重要的，要做好备份；</li> 
+ <li> <p>在两台服务器的阶段：监控</p> 这个阶段一般都会建立主/从的数据库架构，由于宕机造成数据差异、网络问题、从库空间不足或者主库binlog丢失都会导致同步的问题。为了解决这个问题，需要做好监控，开启sql_thread、io_thread，并且延时主从备份。</li> 
+ <li> <p>在十台服务器的阶段：散列</p> 如果面临频繁写操作，突然宕机的状况将会增多，这个时候需要对数据库做散列。</li> 
+ <li> <p>在一百台服务器的阶段：Proxy Cluster</p> HA的可靠性将会降低，需要使用proxy cluster、HA、备份、在线的DDL同时使用；</li> 
+ <li> <p>在一千台服务器的阶段：系统化</p> DBA开始远离业务，部门之间的协作需求也越来越多，然而由于“人永远不靠谱”，需要标准化、自动化、统一化和流程化来保障运营需要。</li> 
+</ol> 
+<p><strong>百度技术沙龙三周年</strong></p> 
+<p>本期是百度技术“三周年”，沙龙的第一期讲师刘洪清、LAMP人社区的潘少宁、往期讲师王集鹄等嘉宾也来到现场与参会者一起为沙龙庆生。</p> 
+<p><strong>Open Space（开放式讨论环节）</strong></p> 
+<p>为了促进参会者与我们每期的嘉宾以及讲师近距离交流，深入探讨在演讲过程中的疑问，本次活动依然设置了Open Space（开放式讨论）环节。</p> 
+<p>在Open Space的总结环节，几位话题小组长分别对讨论的内容进行了总结。</p> 
 <blockquote> 
- <p>IT经理正在通过转向敏捷开发来加速项目并快速体现他们的价值。大型、笨拙、多年期的政府IT项目的日子正在缓慢地面临终结。</p> 
+ <p>王剑英：我们针对不同的应用场景讨论了MySQL与不同引擎的结合方案；</p> 
+ <p>刘启荣：从数据库优化的角度，对数据库选型、引擎、拆分等方面来分享了大家的经验；</p> 
+ <p>DSpark：主要是和几个朋友讨论了Python和大数据使用相关的内容；</p> 
+ <p>王集鹄：关注了PC和移动端感应器的区别，同时比较了Native和HTML5 App的用户体验的差异，还讨论了前端CSS的模块话处理方案；</p> 
+ <p>&nbsp;</p> 
 </blockquote> 
-<p>（联邦政府）机构的预算被削减，由于年度预算尚未批准，所以他们必须在短期预算下运作。这些预算方面的不确定性驱动政府机构寻找新的途径来规划和管理他们的IT项目：</p> 
+<p>会后，一些参会者也通过新浪微博分享了他们的参会感受：</p> 
 <blockquote> 
- <p>敏捷方法论强调开发者、管理者与客户之间的协作——任何一个与项目产出相关的人——随着迭代开发周期以较短的增量方式产出交付成果。</p> 
+ <p><a href="http://weibo.com/wxianfeng">wxianfeng</a>：好多关键词啊：TPS、 QPS、SSD、HDD、IOPS、RAID 5、INNODB、handler socket、SeqDB、 binlog、位图、Master-Slave、snapshot……另外 @四喜和丸子 的演讲好搞笑啊, 祝百度技术沙龙越办越好.</p> 
+ <p><a href="http://weibo.com/u/1365616043">太微左桓</a>：昨天的百度技术沙龙没听懂多少东西，不过惊喜却是遇到了王集鹄老师，一轮OpenSpace，收获是巨大的。很庆幸没有中途离场，现在想起来，还是忍不住的亢奋。</p> 
+ <p><a href="http://weibo.com/leakingfore">快盘-符小钻</a>： 百度技术沙龙听 @四喜和丸子 讲 mysql 维护，苦逼地发现百实例级别的问题我们都碰到了。再往后，把完善的监控和自动化部署做好，千实例级别完全没有问题。再深入一些，可以根据我们业务的需求做深度定制的存储引擎。抑或是通用的数据分区方案。</p> 
+ <p><a href="http://weibo.com/u/1868089925">harry小淫既天才</a>：从上年刚进百度实习就开始参加了百度技术沙龙，到现在有好几期了。很喜欢这种开放自由交流的感觉，也开阔了视眼。今天是小度沙龙三周年，祝小龙龙越办越好，影响越来越大。</p> 
+ <p><a href="http://weibo.com/jannio">Artisan_code</a>：人很不靠谱，靠技术来约束。百度技术沙龙，人之出，性本懒。人的自制力是不靠谱的，需要周围的环境来约束，想腐败都不行。</p> 
 </blockquote> 
-<p>Matthew Weigelt和Camille Tuutti在<a href="http://fcw.com/home.aspx">FCW</a>上描述了如何通过敏捷开发帮助公共单位管理好演进的需求。文章《<a href="http://fcw.com/articles/2013/01/28/agile-it-managers.aspx?sc_lang=en">开始敏捷实践？让你的IT经理们做好准备</a>》以阐述在传统“瀑布”模型中那些他们认为必须被处理的问题作为开始：</p> 
-<blockquote> 
- <p>联邦CIO Steven VanRoekel和联邦采购政策办公室管理员Joe Jordan于2012年7月在OMBlog中写道：长久以来，政府被失控的IT项目拖累，损失了数十亿美元并滞后于进度计划。而当一些技术创新发布时，它们（失控的项目）便只能被放弃。</p> 
- <p>“在许多情况下，这些失败可以追溯到漫长的收购，以及多年来为了交付大规模新系统而在IT开发上作出的努力，而不是以增量的方式提供新的功能——如同私营单位那样”，VanRoekel和Jordan写道。</p> 
-</blockquote> 
-<p>敏捷开发能够帮助政府机构更好地管理其软件项目：</p> 
-<blockquote> 
- <p>敏捷开发使项目更快发布“而不是对它分析过度并构建一些客户不需要的东西”，</p> 
- <p>敏捷开发的另一个重要方面，是为用户提供了在项目中识别问题的机会，而且还有机会来解决这些问题。通过选择敏捷开发，官方能够接受与政府内外部利益相关者持续沟通的重要性，从而吸收变更并解决任何变更带来的问题。</p> 
-</blockquote> 
-<p>Jason Bloomberg在<a href="http://www.cio.com/">CIO.com</a>上发表的文章《<a href="http://www.cio.com/article/714333/How_the_FBI_Proves_Agile_Works_for_Government_Agencies">FBI如何证明敏捷方法适用于政府机构</a>》展示了一个公共单位使用敏捷方法的例子。它描绘了FBI的哨兵项目是如何通过使用敏捷软件开发方法论来调头走上正轨的：</p> 
-<blockquote> 
- <p>[FBI的CIO Chad Fulgham]选择将项目切换到了由长度为两周的sprint（scrum的一个核心最佳实践）组成的迭代Scrum方法。尽管错过了最初拟定的2011年9月这个截止期限，但Fulgham的团队仍然使项目处于掌控之中，并成功在调整后的4.51亿美元预算内完成了项目，这应该归功于敏捷开发。</p> 
-</blockquote> 
-<p>Jason援引了一份报告，其中政府问责局（GAO）调查了若干美国政府机构的敏捷方案。这份报告的内容在此前InfoQ的《<a href="http://www.infoq.com/news/2012/07/agile-in-government;jsessionid=EDF514340B0C3E4BF858D90D945240DE">政府敏捷实施指南</a>》中已经介绍过。</p> 
-<p>John Foley也在《<a href="http://www.informationweek.com/government/enterprise-applications/fbis-sentinel-project-5-lessons-learned/240004888">FBI的哨兵项目：学到的五</a>点经验》中描绘了敏捷开发是如何帮助FBI的。来自该项目的经验之一是“敏捷开发能够使事情完成”：</p> 
-<blockquote> 
- <p>其思路是，一个亲身实践的增量方法之所以更快是因为在两周的“sprint”中，功能得以实现，调整得以完成。FBI错过了它的目标完成期限——2011年9月——但最终任务能够完成应该归功于敏捷方法论。</p> 
-</blockquote> 
-<p>另一个来自FBI项目的经验是敏捷开发能够帮助政府省钱：</p> 
-<blockquote> 
- <p>[Fulgham和Johnson]将项目维持在给定的预算内（……）敏捷开发不仅更快，而且更便宜。</p> 
-</blockquote> 
-<p>另一个公共单位敏捷实施的例子来自于荷兰。Mark Chillingworth在<a href="http://www.cio.co.uk/">CIO.co.uk</a>上发表的文章《<a href="http://www.cio.co.uk/article/3411783/cio-profile-lourens-visser-keeps-port-of-rotterdams-systems-ship-shape/">CIO LourensVisser将鹿特丹港的系统管理得井井有条</a>》，展示了如何使用敏捷方法开发用于管理鹿特丹港的软件。他引用了CIO LourensVissers的话，解释了改变IT管理方式的需求：</p> 
-<blockquote> 
- <p>“当提出港口的愿景计划时，我感到我们必须为其谋划一个IT战略，而它也确实需要。之前的项目是基于先到先得方式的。维护预算也在持续增长，而我期望着革新，”</p> 
-</blockquote> 
-<p>基于来自商业的要求，新信息系统的内部开发最终决定采用敏捷方法。</p> 
-<blockquote> 
- <p>港口主管理和信息系统（HaMIS）取代了已经使用了19年的解决方案，该系统的开发也许是Visser这次改革的最大成果。HaMIS由Visser团队于内部开发（……）开发团队采用了敏捷开发实践，并且为了保证产品的高质量，鹿特丹港与软件改进团体（SIG）达成了合作关系，而SIG担当了开发过程中Java代码的独立评审员。</p> 
-</blockquote> 
-<p>敏捷实施促进了鹿特丹港IT部门与其内部客户之间的协作：</p> 
-<blockquote> 
- <p>Visser说，其中一个好处是IT部门现在与组织机构中的其他部分有了更多的互动。“我们拥有着一个混合文化，如同一个政府部门和一个咨询公司，我们还像是一个拥有许多资产的公用事业公司，”Visser补充道。</p> 
-</blockquote> 
-<p><b>查看英文原文</b>：<a href="http://www.infoq.com/news/2013/02/agile-public-sector;jsessionid=EDF514340B0C3E4BF858D90D945240DE">Agile Adoption in the Public Sector: FBI and Port of Rotterdam</a></p> 
-<hr /> 
-<p>感谢<a href="http://www.infoq.com/cn/bycategory.action;jsessionid=EDF514340B0C3E4BF858D90D945240DE?authorName=赵震一">赵震一</a>对本文的审校。</p> 
-<p>给InfoQ中文站投稿或者参与内容翻译工作，请邮件至<a href="mailto:editors@cn.infoq.com">editors@cn.infoq.com</a>。也欢迎大家通过新浪微博（<a href="http://www.weibo.com/infoqchina">@InfoQ</a>）或者腾讯微博（<a href="http://t.qq.com/infoqchina">@InfoQ</a>）关注我们，并与我们的编辑和其他读者朋友交流。</p> 
+<p>有关百度技术沙龙的更多信息，可以通过新浪微博关注<a href="http://weibo.com/baidutech">@百度技术沙龙</a>，或者关注InfoQ官方微信：infoqchina，InfoQ上也总结了过往36期所有百度技术沙龙的演讲视频和资料等，感兴趣的读者可以<a href="http://www.infoq.com/cn/zones/baidu-salon/;jsessionid=DF38FDEBFF1D73EB55EE71C7FF3D272F">直接浏览内容</a>。</p> 
+<p><strong>特别提示：</strong>第38期百度技术沙龙将在5月25日，在<strong>深圳</strong>举行，欢迎关注<a href="http://weibo.com/infoqchina">@InfoQ</a>、<a href="http://weibo.com/baidutech">@百度技术沙龙</a>获取后续的轰动信息。</p> 
 <p id="lastElm"></p><br><br><br><br><br><br></body></html>

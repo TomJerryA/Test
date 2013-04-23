@@ -1,140 +1,34 @@
-<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>腾讯前端Alloy团队访谈：HTML5开源图像处理框架AlloyImage</h3><p>近日，腾讯Web前端Alloy团队Blog发布了最新的开源项目：一个基于HTML5技术的专业级图像处理引擎——AlloyImage(简称AI)，以及一个在线Web图像处理平台——AlloyPhoto(简称AP)。项目源码发布在<a href="http://alloyteam.github.com/AlloyPhoto/">http://alloyteam.github.com/AlloyPhoto/</a>。InfoQ中文站对此曾做过<a href="http://www.infoq.com/cn/news/2013/03/tencent-os-alloyimage;jsessionid=4FA0C2CFB8DEECBEC276B1712F48C1EC">相关报道</a>。在报道之后，我们联系到Alloy团队，对AlloyImage、HTML5、JavaScipt开发，以及开源等许多问题做了一次邮件采访。</p> 
-<p>以下是采访内容：</p> 
-<p><strong>InfoQ：</strong>能否先简单介绍一下Alloy团队？</p> 
-<blockquote> 
- <p><strong>Alloy：</strong>很多人很好奇腾讯AlloyTeam名字的含义和由来，这里还真有一段小历史，2008那年我们团队开始研发WebQQ（现在叫Q+ Web），WebQQ是首个将WebOS、云计算、AppStore和Web开放平台整合在一起的产品，所以我们就给了WebQQ起了一个开发代号——AlloyOS，Alloy的中文含义是合金、合铸、合成，正好寓意WebQQ是将公司内、外的各种互联网服务产品合铸成一个为用户提供一站式的在线生活的平台，所以我们团队的名字也就自然成了AlloyTeam，AlloyTeam的名字还有一重寓意就是将团队所有成员的聪明才智合铸在一起。所以后来出的一些项目也都有用Alloy冠名，比如AlloyPhoto、AlloyImage、AlloyTimer等等。</p> 
- <p>我们团队主要面向Web前端领域，2008年的时候，为了更快、更好的开发WebQQ，我们开发了通用的Web前端框架JX(Javascript eXtension)，然后为了团队可以方便的在Mac下开发Web产品，我们的潘祥智同学开发了跨平台的抓包工具Rythem，后来为了提高迭代和发布效率，龙福康同学开发了智能合图工具iSpriter，再后来我们参与了Q+产品的开发，为了进一步研究Web和客户端技术的结合，郭大扬同学开发了WebTop。HTML5技术刚开始流行时，为了学习和研究，我们又一起开发了一个在线编程对战的游戏平台CodeTank(代码坦克)，后来我们团队2012年来的新人们参加【腾讯创意马拉松】开发了一个HTML5的体感游戏《墙来了WallComing》。目前团队还在做一些移动Web方面的开发，所以不久的将来也会有一些移动开发的框架出来。</p> 
- <p>附一些主要的自由项目作品：</p> 
- <ul> 
-  <li> <p>JX——WebQQ中使用的Web前端Javascript框架</p> </li> 
-  <li> <p>墙来了WallComing——基于HTML5开发的在线体感游戏</p> </li> 
-  <li> <p>CodeTank——在线Javascript编程对战游戏平台</p> </li> 
-  <li> <p>Rythem——跨平台的http抓包分析工具</p> </li> 
-  <li> <p>WebTop——一个使用HTML5开发桌面应用的平台</p> </li> 
-  <li> <p>iSpriter——图片智能合体工具</p> </li> 
-  <li> <p>xXxxxxx——一个还未公开的在线创作平台，名字暂时保密</p> </li> 
- </ul> 
- <p>以及还有许多新鲜、有趣的项目还在开发中，后续会不定期的公布。</p> 
-</blockquote> 
-<p><strong>InfoQ：</strong>为什么要做一款Javascript图像处理引擎？</p> 
-<blockquote> 
- <p><strong>Alloy：</strong>首先，腾讯一直本着务实的心态希望能为业界做一些基础技术方面的贡献，而我们Alloy团队目前主要是做HTML5方面的研究，所以我们希望为业界提供一些良好的HTML5技术基础，同时我们也是HTML5梦工场的主要成员，希望可以一起推动HTML5技术在实际项目中的应用。其次，市面上的在线图像处理软件都是Flash写的，Flash本身不是html规范的一部分，移动端的支持也不够良好，所以在线图像处理需要替代者出现，而且使用html5来写也是名正言顺的事情。第三，虽然html5提供了很好的图形操作接口，但是图像处理的门槛相对较高一点，很多普通的Web开发者并不想去学习这方面的知识，只是想实现一些常见的效果，就需要一个图像处理引擎，所以基于以上几点，我们团队就开发了AlloyImage图像处理引擎。</p> 
-</blockquote> 
-<p><strong>InfoQ：</strong>这款引擎的核心实现原理是什么？</p> 
-<blockquote> 
- <p><strong>Alloy：</strong>AlloyImage的核心实现原理是基于HTML5 Canvas的提供的像素级操作做为切入点，对一幅图像做一些算法操作，来进行数字图像处理，这也是传统的图像处理软件做图像处理的基本原理。</p> 
-</blockquote> 
-<p><strong>InfoQ：</strong>这样实现的运行效率如何？</p> 
-<blockquote> 
- <p><strong>Alloy：</strong>为了测试执行效率，我们做了一个简单的性能测试，结果可以见此表：</p> 
- <style type="text/css">
-.alloy{
-    border:1px solid grey;
-    text-align: center;
-}
-</style> 
- <table class="alloy"> 
-  <tbody> 
-   <tr> 
-    <td colspan="7">AlloyImage性能测试</td> 
-   </tr> 
-   <tr> 
-    <td>&nbsp;</td> 
-    <td>美肤</td> 
-    <td>素描</td> 
-    <td>柔焦</td> 
-    <td>仿Lomo</td> 
-    <td>粗糙</td> 
-    <td>木雕</td> 
-   </tr> 
-   <tr> 
-    <td>320*240</td> 
-    <td>0.115</td> 
-    <td>0.06</td> 
-    <td>0.077</td> 
-    <td>0.166</td> 
-    <td>0.181</td> 
-    <td>0.669</td> 
-   </tr> 
-   <tr> 
-    <td>600*450</td> 
-    <td>0.221</td> 
-    <td>0.178</td> 
-    <td>0.161</td> 
-    <td>0.377</td> 
-    <td>0.336</td> 
-    <td>2.435</td> 
-   </tr> 
-   <tr> 
-    <td>480*800</td> 
-    <td>0.303</td> 
-    <td>0.26</td> 
-    <td>0.255</td> 
-    <td>0.532</td> 
-    <td>0.477</td> 
-    <td>3.248</td> 
-   </tr> 
-   <tr> 
-    <td>960*720</td> 
-    <td>0.476</td> 
-    <td>0.409</td> 
-    <td>0.372</td> 
-    <td>0.89</td> 
-    <td>0.853</td> 
-    <td>6.185</td> 
-   </tr> 
-   <tr> 
-    <td>配置</td> 
-    <td colspan="2">i5-4200@3.1GHZ</td> 
-    <td>&nbsp;</td> 
-    <td colspan="2">Chrome25</td> 
-    <td>&nbsp;</td> 
-   </tr> 
-  </tbody> 
- </table> 
- <p>测试结果可以看出，对于大部分的组合效果，处理速度还是在可接受范围内。</p> 
-</blockquote> 
-<blockquote> 
- <p>做图像处理，肯定要依靠像素级操作来完成，这就不可避免的会出现大量的循环操作，这部分是影响整体运行时间的主要因素。由于JavaScript是解释型的语言，边编译边执行的效率相对比编译后执行的效率要差一些。一方面，不同浏览器对解释器的优化存在差异，Chrome浏览器相对好一些，基于TypedArray类型的数组循环操作运行时间远远短于传统混合型的数组，所以在Chrome在这方面的运行效率较IE高很多。另一方面，运行效率还受硬件配置的影响。</p> 
-</blockquote> 
-<p><strong>InfoQ：</strong>在研发过程中是否遇到过困难？是如何解决的？</p> 
-<blockquote> 
- <p><strong>Alloy：</strong>研发过程遇到的困难可能就是接口的设计，算法的实现这两方面。接口设计方面一般会征求团队内的意见、参照一些优秀的开源引擎的接口设计特点，算法实现方面就需AlloyImage要去不断学习相关的专业知识来解决。</p> 
-</blockquote> 
-<p><strong>InfoQ：</strong>AlloyImage已经有实际应用了吗？</p> 
-<blockquote> 
- <p><strong>Alloy：</strong>AlloyImage已经在AlloyPhoto的简约版和Pro版中使用了，如下图：</p> 
- <p><img src="http://www.infoq.com/resource/news/2013/04/alloyimage-interview/zh/resources/AlloyPhoto-1.png;jsessionid=4FA0C2CFB8DEECBEC276B1712F48C1EC" width="500" alt="" _href="img://AlloyPhoto-1.png" _p="true" /></p> 
-</blockquote> 
-<blockquote> 
- <p>另外还有一些项目也正在开发中了。</p> 
-</blockquote> 
-<p><strong>InfoQ：</strong>市面上是否有同类产品？相比之下AlloyImage有哪些独到之处？</p> 
-<blockquote> 
- <p><strong>Alloy：</strong>国内外都会有一些直接用canvas来做一些效果的尝试或者代码库，但这些产品，都没有对多图层方面做一些扩展和支持，而且使用者都可扩展东西很少。AlloyImage不但提供了图层的操作方法，而且提供了一些基础的调节功能与滤镜。而且，AlloyImage提供更多的可定制、可组合的效果，比如，开发者可以通过两个图片的叠加，加上不同的滤镜效果，就可以组合出一些意想不到的效果。甚至photoshop的一些风格处理教程，可以直接写成AlloyImage来实现。</p> 
-</blockquote> 
-<p><strong>InfoQ：</strong>对于以后的版本会有哪些计划？</p> 
-<blockquote> 
- <p><strong>Alloy：</strong>AlloyImage后续版本会加入WebWorker多线程机制，其次性能方面会做进一步优化，另一方面，将会加上更多的滤镜效果和调节效果，以及画笔、橡皮擦等工具接口，这样高级组合效果也会变得更多。</p> 
-</blockquote> 
-<p><strong>InfoQ：</strong>能否评估一下HTML5的现状并展望其前景？</p> 
-<blockquote> 
- <p><strong>Alloy：</strong>HTML5的发展依赖于浏览器的支持和计算性能的提高，据我们统计，中国的IE6-8占据市场份额已经低于50%，IE9+以及Chrome、Firefox、Safari、Opera等支持HTML5的浏览器已经超过50%。在中国，PC上由于系统升级慢、微软捆绑IE等原因，对HTML5支持良好的Chrome、Firefox、Safari、Opera等浏览器在中国还不够普及，HTML5在中国还有一段路要走，但这期间不乏有一些新的尝试与想法。</p> 
- <p>移动端相对会好很多，iOS、Android等平台占有绝对的市场份额，其浏览器都是基于Webkit内核，对HTML5有很好的支持。随着移动设备硬件的迅速发展，计算性能比3年前有了很大的提升，比如2010年时，在手机上用HTML5开发一个WebQQ好友的列表，其滚动效果很卡，和Native开发的列表体验没法相提并论，但是到了2013年，现在主流的设备体验已经和Native的体验几乎没有什么区别了。</p> 
- <p>随着FirefoxOS的推出，HTML5来开发App的趋势会更加明显，或许未来在iOS和Android上只需要像微信公众平台一样简单的关注一下，即可在手机桌面上拥有一个HTML5的App，HTML5 App无需安装、按需加载、离线缓存等优势将会明显体现出来，届时约有70%并不需要高密集和高性能运算的App都将可以采用HTML5技术来开发，在达到同样的体验的前提下，将会拥有比Native更高的开发效率和跨平台特性，这些都是开发者所看重的。</p> 
- <p>HTML5提供了丰富的API，让Web拥有了很多接近Native应用的能力，相较Native应用，HTML5具有开发敏捷、跨平台的优势，所以，在硬件性能提升、浏览器支持良好、网速很快的未来前前景下，HTML5会有很好的表现。与此同时，对HTML5开发人员的专业性要求也会变强，也需要更多的底层库出现，比如WebGL的库等等，相信未来会有更多HTML5的基础框架出现。</p> 
-</blockquote> 
-<p><strong>InfoQ：</strong>腾讯/Alloy团队在对待开源这件事上有着什么样的态度？</p> 
-<blockquote> 
- <p><strong>Alloy：</strong>Web前端技术是非常适合来做开源的，现在Github上边最多的开源项目就是Javascript语言的，这是一门神奇的语言，从最初是一门跑龙套的语言，发展到现如今变成如此流行的开发语言，和Javascript运行机制中的需天然开源的特性分不开，这是它能如此流行的原因之一。</p> 
- <p>腾讯Alloy团队非常乐于参与开源项目，众所周知，开源项目促进了技术的交流和进步，每一位开发人员都从开源项目中获益，发展开源项目将会有力的推动业界技术的进步，我们Alloy团队会利用业余时间参与到一些感兴趣的开源项目中，也会发起一些有趣的开源项目，欢迎更多的开发人员能参与进来。</p> 
-</blockquote> 
-<p><strong>InfoQ：</strong>多谢Alloy团队！让我们期待更多更好的Alloy开源作品！</p> 
-<p>（采访内容完）</p> 
-<p><style type="text/css">
-.alloy{
-    border:1px solid grey;
-    text-align: center;
-}
-</style></p> 
+<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>NoSQL基准对比Aerospike、Cassandra、Couchbase和MongoDB</h3><p>为了查看Aerospike、Cassandra、Couchbase和MongoDB这些数据库在处理插入吞吐量、最大吞吐量时的表现以及故障恢复期间的延迟时间和行为，最近的一个基准集合对这些数据库做了比较。</p> 
+<p><a href="http://www.thumbtack.net/about.html">Thumbtack Technology</a>发布了两个基准白皮书，其中包含了一些键—值存储的比较结果：<a href="http://www.thumbtack.net/solutions/documents/Ultra-HighPerformanceNoSQLBenchmarking.pdf"><i>超高性能</i><i> NoSQL</i><i>基准</i><i>: </i><i>分析持久性和性能权衡</i></a><i> (PDF) </i>和 <a href="http://www.thumbtack.net/solutions/documents/NoSQLFailoverCharacteristics_000.pdf"><i>NoSQL</i><i>故障恢复</i><i>特性</i><i>: Aerospike</i><i>、</i><i>Cassandra</i><i>、</i><i>Couchbase</i><i>和</i><i>MongoDB</i></a><i> (PDF)</i><i>。</i>这两个基准都试图检测“直面客户的应用程序，它们需要非常高的吞吐量和低延迟时间，同时其信息又能够使用键-值模式表示”。</p> 
+<p>Thumbtack使用了一个改善版本的<a href="http://research.yahoo.com/node/3202"><i>Yahoo! </i><i>云服务</i></a><i><u>基准</u></i><i> (YCSB)</i> ，该基准可以克服使用高容量多客户端时遇到的一些限制。YCSB的变化已经写入了第一个白皮书并且提交回了社区。</p> 
+<p>测试的NoSQL数据库包括<a href="http://www.aerospike.com/">Aerospike</a>、<a href="http://cassandra.apache.org/">Cassandra</a>、<a href="http://www.couchbase.com/">Couchbase</a> （1.8 和2.0）和 <a href="http://www.infoq.com/news/2013/04/mongodb.org;jsessionid=23D5201AC8523FFE50B83FEFB92E9A91">MongoDB</a>。第一个是商业化产品，最后一个是文档数据存储而不是键-值存储，但是因为“在我们遇到的客户端中经常考虑将它用于相似类型的应用程序中”，所以我们将之包含了进来。所有的数据库都使用其提供商提供的建议做了优化。测试系统使用SSD存储，而没有使用旋转磁盘。白皮书中详细记录了测试所使用的方法论、客户端、工作量配置以及硬件配置等信息。</p> 
+<p>Thumbtack承认它们和“Aerospike、Couchbase以及10gen有商业和（或）战略合作关系”，同时使用的硬件也是从Aerospike租用的。</p> 
+<p>下面列出了一些测试的基准结果。</p> 
+<p><b>插入吞吐量</b></p> 
+<p>数据库通过YCSB的加载路由执行了大量插入，载入了初始的工作集合。Couchbase在工作集合载入内存中时结果很好，但是在工作集合载入SSD时遇到了问题，Couchbase 1.8没有完成操作，而对Couchbase 2.0而言则必须使用较小的集合和异步模式。图中蓝色圆柱表示的就是Couchbase，Aerospike处在第二位。</p> 
+<p><b>图</b><b>1</b><b>：插入吞吐量</b></p> 
+<p><img src="http://www.infoq.com/resource/news/2013/04/NoSQL-Benchmark/zh/resources/1.png;jsessionid=23D5201AC8523FFE50B83FEFB92E9A91" _href="img://null" _p="true" alt="" /></p> 
+<p><b>注意：</b>对Couchbase 2.0而言，SSD吞吐量使用的样本较小，同时是异步模式；而对Couchbase 1.8而言，即使减少数据集也不能加载。</p> 
+<p><b>最大吞吐量</b></p> 
+<p>该测试使用了一个“强持久性模型，在复制时使用了一个相对服务器的RAM而言非常大的数据集。该测试打算作为保证强持久性的事务型数据的使用典范”。</p> 
+<p>在这个图表中并没有Couchbase，因为使用同步复制时它无法完成测试。</p> 
+<p><b>图</b><b>2</b><b>：最大吞吐量——</b><b>SSD</b><b>支持的数据集</b></p> 
+<p><img src="http://www.infoq.com/resource/news/2013/04/NoSQL-Benchmark/zh/resources/2.png;jsessionid=23D5201AC8523FFE50B83FEFB92E9A91" _href="img://null" _p="true" alt="" /></p> 
+<p>在使用异步复制时，内存中的结果如下：</p> 
+<p><b>图</b><b>3</b><b>：最大吞吐量——内存数据集</b></p> 
+<p><img src="http://www.infoq.com/resource/news/2013/04/NoSQL-Benchmark/zh/resources/3.png;jsessionid=23D5201AC8523FFE50B83FEFB92E9A91" _href="img://null" _p="true" alt="" /></p> 
+<p><b>延迟时间</b><b>/</b><b>吞吐量</b></p> 
+<p>基准还测量了在不同级别的传输下读取和更新的延迟时间。下面的图表包含了一个完整视图和每个对应的缩放视图。</p> 
+<p><b>图</b><b>4a</b><b>——</b><b>4d</b><b>：延迟时间</b><b>/</b><b>吞吐量结果（平衡负载）</b></p> 
+<p><img src="http://www.infoq.com/resource/news/2013/04/NoSQL-Benchmark/zh/resources/4.png;jsessionid=23D5201AC8523FFE50B83FEFB92E9A91" _href="img://null" _p="true" alt="" /></p> 
+<p><b>故障恢复</b></p> 
+<p>Thumbtack还模拟了一个硬件错误，以便查看在一个节点无法工作时会发生什么：</p> 
+<p><img src="http://www.infoq.com/resource/news/2013/04/NoSQL-Benchmark/zh/resources/5.png;jsessionid=23D5201AC8523FFE50B83FEFB92E9A91" _href="img://null" _p="true" alt="" /></p> 
+<p><b>注意：</b>以上结果依赖于使用的驱动，像Hector这样较新的驱动能恢复到100%的吞吐量。同时假设监控脚本完美。</p> 
+<p>基准还测量了宕机时间，例如集群从发生错误开始到能够响应所需要的时间，所有数据库显示的值都合理：</p> 
+<p><b>图</b><b>6</b><b>：宕机时间、异步复制和基于</b><b>RAM</b><b>的数据集</b></p> 
+<p><img src="http://www.infoq.com/resource/news/2013/04/NoSQL-Benchmark/zh/resources/6.png;jsessionid=23D5201AC8523FFE50B83FEFB92E9A91" _href="img://null" _p="true" alt="" /></p> 
+<p>Thumbtack基准还包含了很多其他不同情况下的不同结果，但是此处并没有包含这些内容。</p> 
+<p><a href="http://www.networkworld.com/news/tech/2012/102212-nosql-263595.html">另一个NoSQL基准</a>发布于2012年10月，其中对比了Cassandra、HBase、MongoDB和Rick。这些测试中还包含了MySQL，作为针对SQL技术的一个参考。</p> 
+<p><b>查看英文原文</b>：<a href="http://www.infoq.com/news/2013/04/NoSQL-Benchmark;jsessionid=23D5201AC8523FFE50B83FEFB92E9A91"><b>NoSQL Benchmark Compares Aerospike, Cassandra, Couchbase and MongoDB</b></a></p> 
 <p id="lastElm"></p><br><br><br><br><br><br></body></html>

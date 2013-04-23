@@ -1,20 +1,20 @@
 <html>
  <head></head> 
- <body>
-  <div>
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/29.py">自己組織型アジャイルチームにおけるリーダシップ</a>自己組織型アジャイルチームを実践する組織には，奉仕型リーダシップでチームを支援し，チーム自身が継続的な向上を学ぶように指導，助言できるマネージャが必要だ。
-  </div>
-  <div>
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/28.py">NetflixがSilverlightを見限り，HTML5を選択</a>Netflixは自社のビデオプレーヤをSilverlightからHTML5に切り替えると発表した。新しいプレーヤは最初Chrome/Chrome OSに実装されるが，間もなくWindowsとMac OS Xにも用意されるという。
-  </div>
-  <div>
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/27.py">C#の非同期の落とし穴</a>時々 1 つの言語の落とし穴を理解する最良の方法は、別の言語がそれらをどのように防いでいるかを参考にすることである。Real-World Functional Programmingの著者であるTomas Petricek氏は、非同期なC# コードに見られる６つの一般的な誤りについて説明し、どのように F# がそれらの発生する可能性を少なくしているかを示している。
-  </div>
-  <div>
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/26.py">Dartの M4リリースがコアライブラリを安定化</a>Google DartがDart SDKのマイルストーン 4をリリースした。言語は既に、以前のマイルストーンで安定化したが、このM4リリースは幾つかのコアライブラリを安定化させた。パフォーマンスも向上した。Dartをネイティブで動かすDartVMは、160% (DeltaBlueベンチマークで)から200% (Richardsベンチマークで)Chromeを動かしているJavaScriptエンジンのv8よりも早くなった。このリリースには、高速化されたdart2jsコンパイラーが含まれている。
-  </div>
-  <div>
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/25.py">MicrosoftがScript Explorerのリリースをキャンセル</a>MicrosoftはScript Explorerのリリースをキャンセルした。このツールは外部リポジトリ (TechNet Script Center, PoshCodeなど) あるいは企業の内部コレクションにあるPowerShellスクリプトを容易に見つけられるようにデザインされたものだ。
+ <body> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/29.py">自己組織型アジャイルチームにおけるリーダシップ</a>自己組織型アジャイルチームを実践する組織には，奉仕型リーダシップでチームを支援し，チーム自身が継続的な向上を学ぶように指導，助言できるマネージャが必要だ。 
+  </div> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/28.py">NetflixがSilverlightを見限り，HTML5を選択</a>Netflixは自社のビデオプレーヤをSilverlightからHTML5に切り替えると発表した。新しいプレーヤは最初Chrome/Chrome OSに実装されるが，間もなくWindowsとMac OS Xにも用意されるという。 
+  </div> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/27.py">C#の非同期の落とし穴</a>時々 1 つの言語の落とし穴を理解する最良の方法は、別の言語がそれらをどのように防いでいるかを参考にすることである。Real-World Functional Programmingの著者であるTomas Petricek氏は、非同期なC# コードに見られる６つの一般的な誤りについて説明し、どのように F# がそれらの発生する可能性を少なくしているかを示している。 
+  </div> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/26.py">Dartの M4リリースがコアライブラリを安定化</a>Google DartがDart SDKのマイルストーン 4をリリースした。言語は既に、以前のマイルストーンで安定化したが、このM4リリースは幾つかのコアライブラリを安定化させた。パフォーマンスも向上した。Dartをネイティブで動かすDartVMは、160% (DeltaBlueベンチマークで)から200% (Richardsベンチマークで)Chromeを動かしているJavaScriptエンジンのv8よりも早くなった。このリリースには、高速化されたdart2jsコンパイラーが含まれている。 
+  </div> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/25.py">MicrosoftがScript Explorerのリリースをキャンセル</a>MicrosoftはScript Explorerのリリースをキャンセルした。このツールは外部リポジトリ (TechNet Script Center, PoshCodeなど) あるいは企業の内部コレクションにあるPowerShellスクリプトを容易に見つけられるようにデザインされたものだ。 
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/24.py">IntelliJ IDEA 12.1がJavaFX 2.0を新たにサポート</a>JetBrainsがIntelliJ IDEA 12.1の提供を開始した。Javaクライアントプラットフォームの最新実装であるJavaFX 2.0のフルサポートを実現している。この人気IDEの新バージョンにはGradle, Scala, Groovy, Play Framework用の新機能も含まれている。 
@@ -150,6 +150,6 @@
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/30.py">Backbone.js 1.0リリース</a>2年半の開発を経て、Backbone.jsのバージョン1.0がリリースされた。Backbone.jsは人気のあるModel/ViewのJavaScriptライブラリで、USA Today、Rdio、Airbnbを含む多くのWebアプリケーションで用いられている。 
-  </div>      
+  </div> 
  </body>
 </html>
