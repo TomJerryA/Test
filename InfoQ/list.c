@@ -1,8 +1,8 @@
 <html>
  <head></head> 
- <body>
-  <div>
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/8.c">Agile nas empresas: indo al&eacute;m do setor de desenvolvimento</a>As pr&aacute;ticas &aacute;geis est&atilde;o sendo utilizadas em aspectos dos neg&oacute;cios diferentes do desenvolvimento de software, de acordo com a Gartner. Conhe&ccedil;a tend&ecirc;ncias no uso do Agile em toda a empresa, com exemplos nas &aacute;reas de marketing, vendas e servi&ccedil;os.
+ <body> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/8.c">Agile nas empresas: indo al&eacute;m do setor de desenvolvimento</a>As pr&aacute;ticas &aacute;geis est&atilde;o sendo utilizadas em aspectos dos neg&oacute;cios diferentes do desenvolvimento de software, de acordo com a Gartner. Conhe&ccedil;a tend&ecirc;ncias no uso do Agile em toda a empresa, com exemplos nas &aacute;reas de marketing, vendas e servi&ccedil;os. 
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/7.c">Java 8: Express&otilde;es lambda e cole&ccedil;&otilde;es</a>Faltando pouco para o lan&ccedil;amento do Java 8, Brian Goetz publicou uma atualiza&ccedil;&atilde;o do seu artigo “Estado do Lambda”, mencionando as evolu&ccedil;&otilde;es na API de cole&ccedil;&otilde;es e outras &aacute;reas. A introdu&ccedil;&atilde;o de express&otilde;es lambda &eacute; uma das funcionalidades mais esperadas do Java 8, e o suporte a elas na Collections API &eacute; fundamental para garantir ampla utiliza&ccedil;&atilde;o das bibliotecas. 
@@ -150,6 +150,6 @@
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/9.c">MobileConf Brasil em S&atilde;o Paulo: iOS, Android e web mobile</a>Acontece em abril, em S&atilde;o Paulo, a primeira MobileConf, uma confer&ecirc;ncia inteiramente voltada &agrave; comunidade de desenvolvimento m&oacute;vel. Ser&atilde;o tr&ecirc;s tracks simult&acirc;neos, com foco em Android, iOS e desenvolvimento web para mobile. 
-  </div>  
+  </div> 
  </body>
 </html>

@@ -1,8 +1,8 @@
 <html>
  <head></head> 
- <body>
-  <div>
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/4.java">Major Performance Improvements in CA Clarity 13.2</a>CA Clarity, an enterprise resource planning tool specifically designed for large IT organizations and consulting firms, has undergone a major redesign to fix its performance issues. In some cases average response time has gone from a frustrating 5 seconds to roughly 0.6 sec.
+ <body> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/4.java">Major Performance Improvements in CA Clarity 13.2</a>CA Clarity, an enterprise resource planning tool specifically designed for large IT organizations and consulting firms, has undergone a major redesign to fix its performance issues. In some cases average response time has gone from a frustrating 5 seconds to roughly 0.6 sec. 
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/3.java">Visualize JavaScript Code Flow with TraceGL</a>Rik Arends has released TraceGL, a new tool to debug JavaScript application using trace debugging. In order to make it easier to debug complex browser and Node.js-based applications, the tool captures, visualizes and lets the user navigate execution traces while the application is running. 
@@ -150,6 +150,6 @@
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/5.java">WSO2 Developer Studio 3.0&amp;3.1 Have Better ESB Tooling</a>WSO2 Developer Studio 3.0 and 3.1 improve ESB and Registry Resource Editor tools, has better performance, uses Eclipse Juno SR2, and supports JAX-RS REST code generation. 
-  </div>  
+  </div> 
  </body>
 </html>
