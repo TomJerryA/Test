@@ -2,7 +2,10 @@
  <head></head> 
  <body>
   <div>
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/19.java">Apigee Now Supports Node.js and Open Sources Volos</a>Apigee Edge now supports Node.js and has open sourced Volos, a project containing a set of API management modules.
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/20.java">Testing Resiliency at PagerDuty Without a Simian Army</a>Doug Barth, from PagerDuty, talked at DevOps Days London about their approach to start resiliency testing their systems without dedicating a lot of automation effort upfront. The goal was to quickly start learning about failure points and openly discuss how to fix them with only one hour per week of effort.
+  </div> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/19.java">Apigee Now Supports Node.js and Open Sources Volos</a>Apigee Edge now supports Node.js and has open sourced Volos, a project containing a set of API management modules. 
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/18.java">Attribute Based Routing in ASP.NET MVC</a>ASP.NET MVC 5 introduces the same attribute based routing used by Web API 2. This optional syntax allows routes to be registered declaratively instead of by manipulating a RouteCollection. 
@@ -147,9 +150,6 @@
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/22.java">Continuous Delivery Speeds Up Innovation</a>Thoughtworks recently published a whitepaper including a maturity model for continuous delivery (or CD) as a response to research indicating that most companies understand the importance of innovation, but are not able to deliver software quickly enough to meet the needs of business leaders. 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/21.java">Sails 0.8.9: A Rails-Inspired Real-Time Node MVC Framework</a>Version 0.8.9 of Sails, a real-time MVC framework built atop node.js, was released on April 9th by Austin, TX-based Balderdash in an ongoing effort to bring a Rails-like development platform to modern web apps 
   </div>  
  </body>
 </html>
