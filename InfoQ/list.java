@@ -1,6 +1,51 @@
 <html>
  <head></head> 
- <body> 
+ <body>
+  <div>
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/18.java">Attribute Based Routing in ASP.NET MVC</a>ASP.NET MVC 5 introduces the same attribute based routing used by Web API 2. This optional syntax allows routes to be registered declaratively instead of by manipulating a RouteCollection.
+  </div>
+  <div>
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/17.java">Reintroducing Hstore for PostgreSQL</a>PostgreSQL 9.4 will be reintroducing Hstore as the column type of choice for document-style data. This supersedes PostgreSQL’s JSON support which was introduced in version 9.0 and early tests show it to be significantly faster than MongoDB for some operations.
+  </div>
+  <div>
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/16.java">The Scrum Behind a Fixed-Everything Success</a>How can you combine Scrum with a project constrained by a fixed price and completion date? Tim van Baarsen discusses his experience of completing a fixed-everything tender through continuing to work with Scrum behind the scenes.
+  </div>
+  <div>
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/15.java">Use the Force, Luca</a>Yesterday, a developer on the Jenkins project accidentally triggered a force push on the GitHub repositories that store the Git repositories for the Jenkins codebase, wiping out several months of commits. InfoQ looks at what happened and what needs to prevent this re-occuring in the future.
+  </div>
+  <div>
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/14.java">OData Scaffolding is Visual Studio 2013</a>One of the new features in VS 2013 is OData Scaffolding. Like MVC Scaffolding, this feature is designed as both a training aid and to speed development. However, it requires a bit more setup than the MVC version.
+  </div>
+  <div>
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/13.java">Windows Azure SDK 2.2 Adds Visual Studio 2013, Integrated Sign-in and Filter Support</a>Microsoft has released Windows Azure SDK 2.2 with support for integrated sign-in, Visual Studio 2013 in addition to the ability to filter subscriptions/regions. The latest update also provides a set of pre-configured VM images of VS 2013 available within the Windows Azure Management Portal for use by MSDN subscribers.
+  </div>
+  <div>
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/12.java">Using Process Improvement for Repeatable Results with Agile</a>On November 14 and 15 the SEPG Europe 2013 conference will be held in Amsterdam. The conference program covers experience stories and presentations on using the Capability Maturity Model Integrated™ (CMMI) in agile environments. InfoQ will cover this conference, and did interviews about how the CMMI can support agile adoption and the focus of the SEPG Europe conference.
+  </div>
+  <div>
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/11.java">Serializing Immutable Collections in .NET</a>Serialization and immutable collections do mix in .NET, but only if you look to third party libraries like JSON.NET and protobuf-net.
+  </div>
+  <div>
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/10.java">Go Fourth and Grow</a>Go has celebrated its fourth open-source anniversary, and InfoQ looks back at where it came from and where it is going.
+  </div>
+  <div>
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/9.java">Introducing Clide, an “Enjoyable Visual Studio Automation API”</a>When writing an add-in or extension for Visual Studio developers have traditionally had to choose between EnvDTE and the IVs interfaces. In an attempt to create library that is both more powerful than EnvDTE and easier to use than IVs interfaces, Clarius Labs is offering what they call “Clide: An Enjoyable Visual Studio Automation API”.
+  </div>
+  <div>
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/8.java">XAML Spy is Now Free</a>First Floor Software, makers of XAML Spy, is now offering a free version of their flagship product. Known as XAML Spy Express, this product allows developers to browse the visual tree of a running WPF, Silverlight, Windows Phone, or Windows Store application.
+  </div>
+  <div>
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/7.java">What’s the Problem with Mobile HTML5?</a>A recent research concludes that contrary to the general belief performance is not the main problem with HTML5 but rather the missing of profiling and debugging tools and the lack of certain APIs.
+  </div>
+  <div>
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/6.java">SQL Makes a Comeback through NewSQL</a>New database developments indicate a return to SQL, but not by running the traditional relational stores on bigger and better hardware, not even on sharded architectures, but through NewSQL solutions.
+  </div>
+  <div>
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/5.java">Add-ins Deprecated in Visual Studio 2013</a>Microsoft has deprecated the Visual Studio Add-in infrastructure. According to MSDN, “Visual Studio add-ins are deprecated in Visual Studio 2013. You should upgrade your add-ins to VSPackage extensions.”
+  </div> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/5.java">Introducing Rodney Viana’s WinDbg Extension for .NET Debugging</a>When a .NET application fails in production the developer is often left with just a memory dump. Since Visual Studio cannot handle dumps, you have to instead look at a tool called WinDbg. Though powerful, these can be difficult to use so developers occasionally create their own extensions. Once such developer is Rodney Viana, who has just released netext 1.6.1 as an open source project. 
+  </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/4.java">Major Performance Improvements in CA Clarity 13.2</a>CA Clarity, an enterprise resource planning tool specifically designed for large IT organizations and consulting firms, has undergone a major redesign to fix its performance issues. In some cases average response time has gone from a frustrating 5 seconds to roughly 0.6 sec. 
   </div> 
@@ -105,51 +150,6 @@
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/20.java">LLVM Authors Have Received One of the ACM Awards 2012</a>ACM has granted their 2012 awards for innovation in computing, including the Software System Award to LLVM creators. 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/19.java">NoSQL Benchmark Compares Aerospike, Cassandra, Couchbase and MongoDB</a>A recent set of benchmarks compares Aerospike, Cassandra, Couchbase and MongoDB to see how they fare when it comes to insert throughput, maximum throughput, latency and behavior during a failover. 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/18.java">CouchDB 1.3.0 Adds New Features and Algorithm Enhancements</a>Apache Software Foundation has released CouchDB 1.3.0 with support for Fix _session, Cross Origin Resource Sharing (CORS) including additional features and algorithm enhancements. 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/17.java">Google's Go Readies 1.1 Release</a>Version 1.1 of Google's Go is in beta, and brings significant reported performance increases, new toolset &amp; language features. It maintains backwards compatibility with Go 1.0 and in most cases a recompile is the only thing needed to take advantage of this release. 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/16.java">BDD Tool Cucumber with a Larger Team and Numerous Bugs Fixed</a>The project for Cucumber, a Behaviour Driven Development, BDD, tool, has recently increased the team and intensive work last months has brought open bugs down substantially, Aslak Helles&oslash;y revealed when talking about the Cucumber ecosystem during a Cucumber conference day last week. 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/15.java">Product Backlogs with Process Maps or Story Maps</a>When you have a large backlog with many user stories, structuring a product backlog with story maps or process maps can help to keep an overview and see the bigger picture. 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/14.java">Dart2js Outperforms Hand-Written JavaScript in DeltaBlue Benchmark</a>Google released a new version of the Dart2js compiler, whose generated JavaScript code now outperforms hand-written JavaScript in the DeltaBlue benchmark, a commonly used benchmark for benchmarking object-oriented languages. 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/13.java">IBM Mobile First- MBaaS, Big Data and Then Some for Enterprise</a>IBM has assembled a comprehensive portfolio of applications whereby enterprises can catch up to today’s current mobile computing trends. Mobile First is designed to enable enterprise to get their share of the billions of dollars that the firm maintains is being left on the table by the organizations that are not gearing up for this trend. 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/12.java">Scaling Agile At Spotify: An Interview with Henrik Kniberg</a>Back in November, Spotify released a paper titled &quot;Scaling Agile @ Spotify with Tribes, Squads, Chapters &amp; Guilds&quot;. I recently had a chance to chat with Henrik Kniberg, one of the coaches on site there, to ask him some questions about the paper and to get an update on where they are today. 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/11.java">Microsoft Office Developer Tools - Search Configuration Template, App Validation and Azure Debugging</a>The recently released Microsoft Office Developer Tools for Visual Studio 2012 provides a new search configuration project template, ability to validate apps during the submission process and Windows Azure debugging. 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/10.java">Blossom Switches to Dart</a>In a blog post, Thomas Schranz has announced that his company will be porting their Blossom product, a web-based Kanban board for product teams, to Dart, Google's new web programming language and platform that can be used as a replacement of JavaScript. 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/9.java">Struts 1 Reaches End Of Life</a>Struts 1, the venerable Java MVC Web framework, has reached End Of Life status, the Apache foundation has announced. In a sense, the move simply formalises what has already happened, as the Struts team have focused their efforts on version 2; the last release of Struts 1 was in December 2008. The change of status does mean that no further security patches or bug fixes will be issued. 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/8.java">Gartner's Technology Trends for Information Infrastructure: Big Data, NoSQL and In-Memory Computing</a>Big Data, NoSQL databases and In-Memory computing are some of the technologies that will play key role in modernizing information management in 2013 and beyond, according to Gartner. A recent report released by Gartner team identifies the top technology trends that will have impact on the information infrastructure and governance. 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/7.java">Visual Studio 2012 Update 2 Formally Released</a>Microsoft has formally released Update 2 for Visual Studio 2012. This update brings several new features but also includes numerous big fixes and behavior corrections. 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/6.java">EZNamespaceExtensions.Net v2013 Adds Context Menus, Thumbnail, Icons, Property Sheet Support</a>EZNamespaceExtensions.Net v2013 enables you to develop Windows Explorer namespace extensions using Visual Studio with support for Multi-level sub folders, Thumbnail view, Icons, Property sheet, Infotip and much more. 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/5.java">WSO2 Developer Studio 3.0&amp;3.1 Have Better ESB Tooling</a>WSO2 Developer Studio 3.0 and 3.1 improve ESB and Registry Resource Editor tools, has better performance, uses Eclipse Juno SR2, and supports JAX-RS REST code generation. 
-  </div> 
+  </div>               
  </body>
 </html>

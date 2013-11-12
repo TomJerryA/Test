@@ -1,44 +1,18 @@
-<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>EZNamespaceExtensions.Net v2013 Adds Context Menus, Thumbnail, Icons, Property Sheet Support</h3><p>Logic NP Software has released <a href="http://www.ssware.com/eznamespaceextensions/eznamespaceextensions.htm">EZNamespaceExtensions.Net v2013</a> which enables you to develop shell or Windows Explorer namespace extensions in .NET. It employs an easy to use object model to enable the shell namespace extension to integrate smoothly and seamlessly into Windows Explorer. The look, feel and functionality of the extensions will be similar to that of the active Windows Explorer folders.</p> 
-<p>EZNamespaceExtensions.Net provides support for the following <a href="http://www.ssware.com/eznamespaceextensions/eznamespaceextensions.htm#features">Windows Explorer features</a> and functionalities</p> 
-<ul> 
- <li>Folder and non-folder items</li> 
- <li>Multi level sub folders</li> 
- <li>Automatic sub folder navigation</li> 
- <li>Context menus, background context menus for items</li> 
- <li>Details and Report view support with multiple columns</li> 
- <li>Thumbnail view, Cut, Copy and Paste</li> 
- <li>Group view and category</li> 
- <li>Icons and Overlay icons for items</li> 
- <li>Automatic renaming functionality for items</li> 
- <li>Property sheet and Infotip for items</li> 
-</ul> 
-<p>EZNamespaceExtensions also provides an ability to integrate menu items to the main Windows Explorer frame menu and add buttons to the Windows Explorer toolbar with drag-drop support from, to and within the namespace extension. It also enables you to present items in the namespace extension as files and folders.</p> 
-<p>In order to work with <a href="http://www.ssware.com/eznamespaceextensions/eznamespaceextensions.htm#features">EZNamespaceExtensions.Net v2013</a>, you need to make use of Shell Namespace Extension project template integrated with Visual Studio 2012. It automatically generates the required code and files for the development of a namespace extension.</p> 
-<p>The project can be then modified, built and registered using the RegisterExtensionDotNet40.exe utility, which can be found inside the installation folder. Moreover, you should restart Windows Explorer using the RestartExplorer.exe utility in order to view the namespace extension and will also be visible under My Computer.</p> 
-<p>InfoQ spoke to Himangi G, Senior Developer, LogicNP Software to know more about the possibilities of EZNamespaceExtensions.Net.</p> 
-<p><strong>InfoQ: What is the need for the development of Windows Explorer namespace extensions in .NET?</strong></p> 
-<blockquote>
-  Developing Windows Explorer namespace extensions in .NET allows developers to leverage their existing knowledge and skills of the .NET technology and base class library as well as use their favorite .NET programming language, be it C# or VB.NET. Using .NET to develop namespace extensions allow developers to use the vast base class library (BCL) to their advantage. 
-</blockquote> 
-<p><strong>InfoQ: Can you share with us the type of applications that can be developed using EZNamespaceExtensions.Net v2013?</strong></p> 
-<blockquote>
-  The following is just some of the types of Windows Explorer-integrated and File Open/Save Dialog-integrated software that you can developed using EZNamespaceExtensions.Net 2013: 
- <ul> 
-  <li>Document Management Software</li> 
-  <li>Content Management Software</li> 
-  <li>Information Management Software</li> 
-  <li>Virtual Drives</li> 
-  <li>FTP programs</li> 
-  <li>Database Browser or Front-End</li> 
-  <li>Protocol Handlers</li> 
- </ul> 
-</blockquote> 
-<p><strong>InfoQ: Is it necessary to purchase a license of EZNamespaceExtensions.Net v2013 when distributing the application?</strong></p> 
-<blockquote>
-  No, EZNamespaceExtensions.Net v2013 includes royalty-free redistribution licenses, so you can redistribute the EZNamespaceExtensions.Net binary with your developed namespace extension absolutely free. 
-</blockquote> 
-<p><strong>InfoQ: How easy it is to develop an application with EZNamespaceExtensions.Net v2013?</strong></p> 
-<blockquote>
-  EZNamespaceExtensions.Net allows you to jumpstart namespace extension development with Visual Studio IDE Project wizards. It has a simple, well designed and thoroughly tested API framework which allows you to develop namespace extensions in hours/days instead of weeks/months. It has full feature support allowing your namespace extension to integrate seamlessly into Windows Explorer and File Open/Save dialogs of all applications. It includes a registration utility to easily deploy your developed namespace extensions. 
-</blockquote> 
-<p id="lastElm"></p><br><br><br><br><br><br></body></html>
+<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>SQL Makes a Comeback through NewSQL</h3><p>New database developments&nbsp;indicate a return to SQL, but not by running the traditional relational stores on bigger and better hardware, not even on sharded architectures, but&nbsp;through NewSQL solutions.</p>
+<p align="left">After losing ground to NoSQL&nbsp;– initially&nbsp;perceived as “No <em>more</em> SQL”, and later as “Not only SQL”, the old SQL knows a comeback these days. One of the advertised solutions has been sharding, but for some this is not enough.&nbsp;New ways have to be found, some of them combining the two technologies, SQL and NoSQL, others by improving the performance and scalability capabilities of relational stores,&nbsp;all of these being&nbsp;known as NewSQL. Google,&nbsp;one of the first&nbsp;supporters of NoSQL, built F1, a distributed relational database combining the high availability and scalability of BigTable with the “consistency and usability” of SQL. Google describes F1 in&nbsp;the whitepaper <a href="http://static.googleusercontent.com/external_content/untrusted_dlcp/research.google.com/en/us/pubs/archive/41344.pdf">F1: A Distributed SQL Database That Scales</a>&nbsp;(PDF) as:</p>
+<blockquote> 
+ <p>… a fault-tolerant globally-distributed OLTP and OLAP database built at Google as the new storage system for Google's AdWords system. It was designed to replace a sharded MySQL implementation that was not able to meet our growing scalability and reliability requirements.</p> 
+</blockquote>
+<p align="left">One of these NewSQL solutions is <a href="http://www.memsql.com/">MemSQL</a>, a fully in-memory solution for real-time analytics of structured or semi-structured (JSON) data. It does not use columnar stores but “lock-free skip lists and lock-free hash tables” for faster access to data, and employs parallel processing on a shared-nothing architecture with no single point of failure.</p>
+<p align="left">Another NewSQL variant is <a href="http://www.clustrix.com/">ClustrixDB</a>, a peer-to-peer shared-nothing distributed database for transaction processing and real-time analytics. According to Robin Purohit, Clustrix CEO, their database manages to process 4.4B transactions/day with an average latency of 5-10 ms on 21 nodes (8-cores/ 48GB RAM each) at <a href="http://www.twoo.com/">Twoo.com</a> by being</p>
+<blockquote> 
+ <p>built from scratch as a peer-to-peer distributed SQL database with no single coordinator (and therefore no single point-of-failure). ClustrixDB uses distributed transactions using Paxos consensus protocol.&nbsp;ClustrixDB also uses distributed 2 phase locking for writes and distributed multi-version concurrency control to ensure reads and writes do not interfere. This guarantees the strict ACID properties expected from a single node database in a distributed environment.</p> 
+ <p>ClustrixDB uses shared-nothing architecture - the only architecture known to scale linearly.&nbsp;ClustrixDB brings Massively Parallel Processing (MPP) for real-time analytics that has only been available in data warehousing, to the primary database.&nbsp;</p> 
+</blockquote>
+<p align="left">We asked Toon Coppens, CTO at Twoo.com, why their initial MySQL sharded solution did not work for them, opting for a NewSQL one:</p>
+<blockquote> 
+ <p>As we learned with&nbsp;<a href="http://netlog.com/">Netlog.com</a>&nbsp;which had hundreds of sharded mysql boxes, the engineering overhead of rebalancing and managing the shards, not the least the inflexibility to change queries or create new ones over all shards on the fly, made this route less favourable. We like to think as data sitting in one query-able place.&nbsp;</p> 
+ <p>While NoSQL would provide us with scalable possibilities, we didn't want to tie us to the low level-ish data representation it often implies. We want(ed) full flexibility of changing product &amp; feature requirements on the go, while not having to reform the data layer on a live and growing site. (clustrix provides quick alters while everything keeps running under heavy load, amongst other great features).</p> 
+</blockquote>
+<p align="left">While NoSQL solutions have been praised for their performance, scalability and availability, the development and data refactoring efforts seem to be higher than those associated with SQL datastores. This prompts some to turn to NewSQL which&nbsp;combines the advantages of NoSQL with the power of SQL. What it matters in the end is to use the solution that satisfies one’s needs.</p>
+<p>&nbsp;</p><br><br><br><br><br><br></body></html>

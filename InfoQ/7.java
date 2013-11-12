@@ -1,15 +1,71 @@
-<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>Visual Studio 2012 Update 2 Formally Released</h3><p class="western" style="margin-bottom: 0in"><span lang="en-US">When Microsoft released VS2012, they expressed a desire to update the product with a regular update </span><span lang="en-US">tempo</span><span lang="en-US">. </span><span lang="en-US">Roughly a month after </span><span lang="en-US">Update 2's final preview release</span><span lang="en-US">, Microsoft has released the official <a class="western" href="http://www.microsoft.com/en-us/download/details.aspx?id=38188">Update 2 package</a> for Visual Studio 2012 that includes several new features as well as numerous bug fixes.</span></p> 
-<p class="western" style="margin-bottom: 0in">Microsoft's S. Somasegar lists the five areas specifically targetted for enhancement with this release:</p> 
+<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>What’s the Problem with Mobile HTML5?</h3><p>A recent research concludes that contrary to the general belief performance is not the main problem with HTML5 but rather the missing of profiling and debugging tools and the lack of certain APIs.</p>
+<p>After surveying over 6,000 developers worldwide, analyzing 30,000+ Android Play apps, reviewing 42 HTML5 frameworks and tools, and interviewing 32 top experts on the subject of mobile HTML5 vs. native, VisionMobile has come to a number of conclusions published in the <a href="http://www.developereconomics.com/downloads/can-html5-compete-native/">How can HTML5 compete with Native?</a> research report, the most significant findings being covered in this article. The report distinguishes four main routes to market used for HTML5 applications:</p>
+<ol> 
+ <li>Mobile Browser – web apps or websites tailored for mobile devices and running in a mobile browser</li> 
+ <li>Native Wrapper – web apps packaged in a native wrapper and delivered through an app store</li> 
+ <li>Web-to-native Converter – apps written in JavaScript and compiled to native code</li> 
+ <li>Native JavaScript API – HTML5 apps written for platforms natively supporting it, such as Firefox OS, Windows 8, Chrome OS</li> 
+</ol>
+<p>The key findings of the report are:</p>
+<ul> 
+ <li>61% of the developers write for the mobile browser</li> 
+ <li>63% of the US Android Play applications <em>cannot</em> be written in HTML5 for the mobile browser because some APIs are not implemented by the browsers yet</li> 
+ <li>the 37% of US Android apps that could be implemented in HTML5 would become 58% if the browsers would add support for Power Management and WiFi APIs</li> 
+ <li>39% of the developers create HTML5 apps for the other 3 routes to market beside the mobile browser</li> 
+ <li>49% of the US Android apps could be implemented with native wrappers, 63% with web-to-native converters, and 98% with native JavaScript</li> 
+</ul>
+<p>The following chart shows what makes HTML5 attractive:</p>
 <blockquote> 
- <ul> 
-  <li>Agile planning</li> 
-  <li>Quality enablement</li> 
-  <li>Windows Store development</li> 
-  <li>Line-of-business development</li> 
-  <li>General developer experience</li> 
- </ul> 
-</blockquote> 
-<p class="western" style="margin-bottom: 0in"><span lang="en-US">Agile planning support is addressed with the new ability to customize the Kanban board, and the ability to use tags on TFS work items. </span><span lang="en-US">Quality enablement is the phrase Somasegar uses to refer to quality assurance and software testing related functionality. Improvements here include greater unit testing support for areas such as Windows Phone 8 apps, aysnchronous code, and improved support for SharePoint 2013 testing. Windows Store development primarily benefits from improved JavaScript app diagnostics. Line-of-business application enhancements are focused around LightSwitch and Blend. </span><span lang="en-US">Further, as <a class="western" href="http://weblogs.asp.net/scottgu/archive/2013/02/18/announcing-release-of-asp-net-and-web-tools-2012-2-update.aspx">Scott Guthrie noted</a>, the </span><span lang="en-US">separately released </span><span lang="en-US">ASP.NET and Web Tools Update is also part of Update 2 </span><span lang="en-US">saving a separate download if it has not already been downloaded</span><span lang="en-US">.</span></p> 
-<p class="western" style="margin-bottom: 0in"><span lang="en-US">Beyond all of the features that are included, several issues and bugs discovered in previous iterations of VS2012 have been fixed. Details on these corrected issues is <a class="western" href="http://support.microsoft.com/kb/2797912">available here</a>. </span><span lang="en-US">Microsoft's Charles Sterling <a class="western" href="http://blogs.msdn.com/b/visualstudioalm/archive/2013/04/04/visual-studio-update-2-now-available.aspx">illustrates</a> some of the ALM features in Update 2, and one new feature of particular importance is TFS2012's compatibility with 2010 build servers. Configuring this arrangement is described in detail by </span><span lang="en-US"><a class="western" href="http://blog.hinshelwood.com/visual-studio-2012-update-2-supports-2010-build-servers/">Martin Hinshelwood's blog post</a>. Finally, Brian Harry <a class="western" href="http://blogs.msdn.com/b/bharry/archive/2013/04/04/vs-tfs-2012-2-update-2-released-today.aspx">notes</a> that with Update 2 most (but not all) of the TFS settings are preserved during the upgrade from TFS Update 1 to Update 2.</span></p> 
-<p class="western" style="margin-bottom: 0in"><span lang="en-US">Update 2 is a cumulative release, meaning that includes all of the benfits of <a class="western" href="http://www.infoq.com/news/2012/11/vs2012update1_released;jsessionid=50E06713E5C35D43DC484DF9866131E0">Update 1</a> so a fresh installation of VS2012 may be directly upgraded without first installing Update 1. An ISO image for installation on non-Internet connected machines is not provided but Microsoft has provided a work-around</span><span lang="en-US">-- running the Update 2 executable with the &quot;/layout&quot; option which will download all of the files necessary for offline installations </span><span lang="en-US">(Step by step instructions are listed at the bottom of Update 2's <a class="western" href="http://www.microsoft.com/en-us/download/details.aspx?id=38188">download page</a>)</span><span lang="en-US">. While no formal size is given by Microsoft my local installation indicates roughly 1.8 GB of space is required.</span></p> 
-<p id="lastElm"></p><br><br><br><br><br><br></body></html>
+ <p><a href="/resource/news/2013/11/mobile-html5/en/resources/html5-native-1.png" target="_blank"><img title="image" style="border: 0px currentcolor; border-image: none; display: inline; background-image: none;" alt="image" src="http://www.infoq.com/resource/news/2013/11/mobile-html5/en/resources/html5-native-1.png" border="0" _href="img://html5-native-1.png" _p="true" /></a></p> 
+</blockquote>
+<p>What developers complain about HTML5 is shown in the next chart:</p>
+<blockquote> 
+ <p><a href="/resource/news/2013/11/mobile-html5/en/resources/html5-native-2.png" target="_blank"><img title="image" style="border: 0px currentcolor; border-image: none; display: inline; background-image: none;" alt="image" src="http://www.infoq.com/resource/news/2013/11/mobile-html5/en/resources/html5-native-2.png" border="0" _href="img://html5-native-2.png" _p="true" /></a></p> 
+</blockquote>
+<p>Many developers consider performance as HTML5’s main problem, but interviewing a number experts in the field the authors of the report consider it as a false target because performance is automatically improving by new generations of hardware, better JavaScript compilers, the option of using Asm.js, etc.. The main culprit in their opinion has to do with politics, more exactly the fact that the major browser vendors are also mobile OS vendors, interested in channeling applications through their respective app stores. Google encourages native Chrome apps, Apple seems to be implementing the latest HTML5 standards but “leaves out performance related APIs, e.g. WebGL.” Also, according to the report, one of the HTML5 myths is that development is easy, but actually development is pretty hard because of missing adequate debugging and profiling tools.</p>
+<p>The most used APIs by US Google Play apps are:</p>
+<blockquote> 
+ <p><a href="/resource/news/2013/11/mobile-html5/en/resources/html5-native-3.png" target="_blank"><img title="image" style="border: 0px currentcolor; border-image: none; display: inline; background-image: none;" alt="image" src="http://www.infoq.com/resource/news/2013/11/mobile-html5/en/resources/html5-native-3.png" border="0" _href="img://html5-native-3.png" _p="true" /></a></p> 
+</blockquote>
+<p>The current HTML5 APIs standardization status and browser adoption is depicted in the following graphic:</p>
+<blockquote> 
+ <p><a href="/resource/news/2013/11/mobile-html5/en/resources/html5-native-4.png" target="_blank"><img title="image" style="border: 0px currentcolor; border-image: none; display: inline; background-image: none;" alt="image" src="http://www.infoq.com/resource/news/2013/11/mobile-html5/en/resources/html5-native-4.png" border="0" _href="img://html5-native-4.png" _p="true" /></a></p> 
+</blockquote>
+<p>The next table indicates the APIs that would make the most difference if implemented for their respective route to market, showing how many more apps could be implemented in HTML5 if that happens:</p>
+<table width="500" border="1" cellspacing="0" cellpadding="2"> 
+ <tbody> 
+  <tr> 
+   <td width="166" valign="top"> <p style="margin-right: 0px;" dir="ltr">Route to market</p> </td> 
+   <td width="166" valign="top">API</td> 
+   <td width="166" valign="top">% of apps</td> 
+  </tr> 
+  <tr> 
+   <td width="166" valign="top">Mobile Browser</td> 
+   <td width="166" valign="top">Power management</td> 
+   <td width="166" valign="top">13%</td> 
+  </tr> 
+  <tr> 
+   <td width="166" valign="top">Native Wrapper</td> 
+   <td width="166" valign="top">Power management</td> 
+   <td width="166" valign="top">12%</td> 
+  </tr> 
+  <tr> 
+   <td width="166" valign="top">Web-to-native Converter</td> 
+   <td width="166" valign="top">WiFi</td> 
+   <td width="166" valign="top">21%</td> 
+  </tr> 
+  <tr> 
+   <td width="166" valign="top">Native JavaScript API</td> 
+   <td width="166" valign="top">Calendar</td> 
+   <td width="166" valign="top"> <p>1.4%</p> </td> 
+  </tr> 
+ </tbody> 
+</table>
+<p>The report concludes with a number of observations and recommendations for the HTML5 space:</p>
+<ul> 
+ <li>Browsers should implement more HTML5 APIs starting with Power Management and WiFi. Developers should push browser vendors to implement more APIs.</li> 
+ <li>A standardized packaging solution should be developed for native JavaScript apps, allowing such applications to be packaged once and deployed on any supporting platform</li> 
+ <li>A device identity API should be developed to alleviate the fears related to cookies and privacy concerns</li> 
+ <li>Developers should be better educated regarding the possibilities offered by HTML5, the real advantages and drawbacks</li> 
+ <li>A Debug API should be developed to enable the creation of a set of debugging tools</li> 
+</ul><br><br><br><br><br><br></body></html>
