@@ -1,47 +1,47 @@
 <html>
  <head></head> 
- <body>
-  <div>
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/18.java">Attribute Based Routing in ASP.NET MVC</a>ASP.NET MVC 5 introduces the same attribute based routing used by Web API 2. This optional syntax allows routes to be registered declaratively instead of by manipulating a RouteCollection.
-  </div>
-  <div>
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/17.java">Reintroducing Hstore for PostgreSQL</a>PostgreSQL 9.4 will be reintroducing Hstore as the column type of choice for document-style data. This supersedes PostgreSQL’s JSON support which was introduced in version 9.0 and early tests show it to be significantly faster than MongoDB for some operations.
-  </div>
-  <div>
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/16.java">The Scrum Behind a Fixed-Everything Success</a>How can you combine Scrum with a project constrained by a fixed price and completion date? Tim van Baarsen discusses his experience of completing a fixed-everything tender through continuing to work with Scrum behind the scenes.
-  </div>
-  <div>
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/15.java">Use the Force, Luca</a>Yesterday, a developer on the Jenkins project accidentally triggered a force push on the GitHub repositories that store the Git repositories for the Jenkins codebase, wiping out several months of commits. InfoQ looks at what happened and what needs to prevent this re-occuring in the future.
-  </div>
-  <div>
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/14.java">OData Scaffolding is Visual Studio 2013</a>One of the new features in VS 2013 is OData Scaffolding. Like MVC Scaffolding, this feature is designed as both a training aid and to speed development. However, it requires a bit more setup than the MVC version.
-  </div>
-  <div>
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/13.java">Windows Azure SDK 2.2 Adds Visual Studio 2013, Integrated Sign-in and Filter Support</a>Microsoft has released Windows Azure SDK 2.2 with support for integrated sign-in, Visual Studio 2013 in addition to the ability to filter subscriptions/regions. The latest update also provides a set of pre-configured VM images of VS 2013 available within the Windows Azure Management Portal for use by MSDN subscribers.
-  </div>
-  <div>
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/12.java">Using Process Improvement for Repeatable Results with Agile</a>On November 14 and 15 the SEPG Europe 2013 conference will be held in Amsterdam. The conference program covers experience stories and presentations on using the Capability Maturity Model Integrated™ (CMMI) in agile environments. InfoQ will cover this conference, and did interviews about how the CMMI can support agile adoption and the focus of the SEPG Europe conference.
-  </div>
-  <div>
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/11.java">Serializing Immutable Collections in .NET</a>Serialization and immutable collections do mix in .NET, but only if you look to third party libraries like JSON.NET and protobuf-net.
-  </div>
-  <div>
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/10.java">Go Fourth and Grow</a>Go has celebrated its fourth open-source anniversary, and InfoQ looks back at where it came from and where it is going.
-  </div>
-  <div>
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/9.java">Introducing Clide, an “Enjoyable Visual Studio Automation API”</a>When writing an add-in or extension for Visual Studio developers have traditionally had to choose between EnvDTE and the IVs interfaces. In an attempt to create library that is both more powerful than EnvDTE and easier to use than IVs interfaces, Clarius Labs is offering what they call “Clide: An Enjoyable Visual Studio Automation API”.
-  </div>
-  <div>
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/8.java">XAML Spy is Now Free</a>First Floor Software, makers of XAML Spy, is now offering a free version of their flagship product. Known as XAML Spy Express, this product allows developers to browse the visual tree of a running WPF, Silverlight, Windows Phone, or Windows Store application.
-  </div>
-  <div>
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/7.java">What’s the Problem with Mobile HTML5?</a>A recent research concludes that contrary to the general belief performance is not the main problem with HTML5 but rather the missing of profiling and debugging tools and the lack of certain APIs.
-  </div>
-  <div>
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/6.java">SQL Makes a Comeback through NewSQL</a>New database developments indicate a return to SQL, but not by running the traditional relational stores on bigger and better hardware, not even on sharded architectures, but through NewSQL solutions.
-  </div>
-  <div>
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/5.java">Add-ins Deprecated in Visual Studio 2013</a>Microsoft has deprecated the Visual Studio Add-in infrastructure. According to MSDN, “Visual Studio add-ins are deprecated in Visual Studio 2013. You should upgrade your add-ins to VSPackage extensions.”
+ <body> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/18.java">Attribute Based Routing in ASP.NET MVC</a>ASP.NET MVC 5 introduces the same attribute based routing used by Web API 2. This optional syntax allows routes to be registered declaratively instead of by manipulating a RouteCollection. 
+  </div> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/17.java">Reintroducing Hstore for PostgreSQL</a>PostgreSQL 9.4 will be reintroducing Hstore as the column type of choice for document-style data. This supersedes PostgreSQL’s JSON support which was introduced in version 9.0 and early tests show it to be significantly faster than MongoDB for some operations. 
+  </div> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/16.java">The Scrum Behind a Fixed-Everything Success</a>How can you combine Scrum with a project constrained by a fixed price and completion date? Tim van Baarsen discusses his experience of completing a fixed-everything tender through continuing to work with Scrum behind the scenes. 
+  </div> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/15.java">Use the Force, Luca</a>Yesterday, a developer on the Jenkins project accidentally triggered a force push on the GitHub repositories that store the Git repositories for the Jenkins codebase, wiping out several months of commits. InfoQ looks at what happened and what needs to prevent this re-occuring in the future. 
+  </div> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/14.java">OData Scaffolding is Visual Studio 2013</a>One of the new features in VS 2013 is OData Scaffolding. Like MVC Scaffolding, this feature is designed as both a training aid and to speed development. However, it requires a bit more setup than the MVC version. 
+  </div> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/13.java">Windows Azure SDK 2.2 Adds Visual Studio 2013, Integrated Sign-in and Filter Support</a>Microsoft has released Windows Azure SDK 2.2 with support for integrated sign-in, Visual Studio 2013 in addition to the ability to filter subscriptions/regions. The latest update also provides a set of pre-configured VM images of VS 2013 available within the Windows Azure Management Portal for use by MSDN subscribers. 
+  </div> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/12.java">Using Process Improvement for Repeatable Results with Agile</a>On November 14 and 15 the SEPG Europe 2013 conference will be held in Amsterdam. The conference program covers experience stories and presentations on using the Capability Maturity Model Integrated™ (CMMI) in agile environments. InfoQ will cover this conference, and did interviews about how the CMMI can support agile adoption and the focus of the SEPG Europe conference. 
+  </div> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/11.java">Serializing Immutable Collections in .NET</a>Serialization and immutable collections do mix in .NET, but only if you look to third party libraries like JSON.NET and protobuf-net. 
+  </div> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/10.java">Go Fourth and Grow</a>Go has celebrated its fourth open-source anniversary, and InfoQ looks back at where it came from and where it is going. 
+  </div> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/9.java">Introducing Clide, an “Enjoyable Visual Studio Automation API”</a>When writing an add-in or extension for Visual Studio developers have traditionally had to choose between EnvDTE and the IVs interfaces. In an attempt to create library that is both more powerful than EnvDTE and easier to use than IVs interfaces, Clarius Labs is offering what they call “Clide: An Enjoyable Visual Studio Automation API”. 
+  </div> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/8.java">XAML Spy is Now Free</a>First Floor Software, makers of XAML Spy, is now offering a free version of their flagship product. Known as XAML Spy Express, this product allows developers to browse the visual tree of a running WPF, Silverlight, Windows Phone, or Windows Store application. 
+  </div> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/7.java">What’s the Problem with Mobile HTML5?</a>A recent research concludes that contrary to the general belief performance is not the main problem with HTML5 but rather the missing of profiling and debugging tools and the lack of certain APIs. 
+  </div> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/6.java">SQL Makes a Comeback through NewSQL</a>New database developments indicate a return to SQL, but not by running the traditional relational stores on bigger and better hardware, not even on sharded architectures, but through NewSQL solutions. 
+  </div> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/5.java">Add-ins Deprecated in Visual Studio 2013</a>Microsoft has deprecated the Visual Studio Add-in infrastructure. According to MSDN, “Visual Studio add-ins are deprecated in Visual Studio 2013. You should upgrade your add-ins to VSPackage extensions.” 
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/5.java">Introducing Rodney Viana’s WinDbg Extension for .NET Debugging</a>When a .NET application fails in production the developer is often left with just a memory dump. Since Visual Studio cannot handle dumps, you have to instead look at a tool called WinDbg. Though powerful, these can be difficult to use so developers occasionally create their own extensions. Once such developer is Rodney Viana, who has just released netext 1.6.1 as an open source project. 
@@ -150,6 +150,6 @@
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/20.java">LLVM Authors Have Received One of the ACM Awards 2012</a>ACM has granted their 2012 awards for innovation in computing, including the Software System Award to LLVM creators. 
-  </div>               
+  </div> 
  </body>
 </html>

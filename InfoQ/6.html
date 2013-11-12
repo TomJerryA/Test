@@ -1,12 +1,4 @@
-<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>Martin Fowler论21世纪的软件设计</h3><p>无模式（Schemaless）数据结构不易为人所理解，重要的是当我们在NoSQL数据库中使用这些数据结构的时候如何权衡它的优缺点。在最近的一次公司活动中， <a href="http://martinfowler.com/">Martin Fowler</a> 就无模式数据结构 和 NoSQL与一致性进行了<a href="http://www.youtube.com/watch?v=8kotnF6hfd8">讨论</a>。</p> 
-<p><b>无模式数据结构：</b></p> 
-<p>无模式通常被视为NoSQL数据库的一个重大优势，而Martin认为这一领域不易被大家充分理解，同时他介绍了无模式的不同方面以及使用无模式数据结构的优缺点。</p> 
-<p>Martin讨论的重点是即使在无模式的结构中，依然存在着模式。为了查询数据和寻找信息，你必须理解数据，从而有了一个<a href="http://martinfowler.com/articles/schemaless/">隐式模式（<u>Implicit Schema</u>）</a>，即数据的定义，比如代码。与此相对的是关系数据库中的模式，该模式只接受恰当的数据，这是一种<a href="http://martinfowler.com/articles/schemaless/">显式模式（<u>Explicit Schema</u>）</a>。</p> 
-<p>Martin在结束讨论时声称，即使在某些情况下无模式非常有用，但大多数时候 “隐式模式==坏事（<i>Bad Thing</i>）”，并推荐使用显式模式从而使数据拥有一个清晰的描述。但是他同样也指出模式并非固定的存储模式；它可以在同一契约下具有更多的形式，例如一个数据访问层或XML模式。</p> 
-<p><b>NoSQL</b><b>与一致性</b></p> 
-<p>在本次演讲中Martin着眼于NoSQL数据库一致性的两个方面。</p> 
-<p>逻辑一致性涉及在一个数据库中工作时如何保持数据一致性。对于大多数NoSQL数据库（图形数据库除外）来说，使用<a href="http://dddcommunity.org/resources/ddd_terms/">聚集（</a><a href="http://dddcommunity.org/resources/ddd_terms/">aggregate</a><a href="http://dddcommunity.org/resources/ddd_terms/">）</a>（来自领域驱动设计中的一个概念，即在同一时间存储的一个对象群集）是避免数据不一致的一个显著方式。</p> 
-<p>当描述同一数据在多个不同地点的复制一致性时，Martin介绍了<a href="http://en.wikipedia.org/wiki/CAP_theorem">CAP 理论</a>。而数据一旦通过网络完成复制后，他将该问题简化为如何在一致性和可用性之间做出选择。他强调了这并非是一个技术问题，这是在一致性和可用性优先级方面的一个业务选择。</p> 
-<p>最后，Martin以软件设计的价值和技术债务的讨论结束了该次演讲。</p> 
-<p><b>查看英文原文</b>：<a href="http://www.infoq.com/news/2013/04/software-design-21st-century;jsessionid=7F177224CDB786BA75C68B3F1213F9F0"><b>Martin Fowler on Software Design in the 21st Century</b></a></p> 
-<p id="lastElm"></p><br><br><br><br><br><br></body></html>
+<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>Visual Studio 2013弃用加载项</h3><p>微软已经弃用Visual Studio加载项这一基础结构。根据MSDN上的说法，“Visual Studio 2013弃用了加载项。开发人员应该将加载项升级为<a href="http://msdn.microsoft.com/en-us/library/bb166424(v=vs.120).aspx">VSPackage扩展</a>。”稍后的文档指出，“VSPackage是Visual Studio的主要架构单位，也是部署、许可和安全的单位。Visual Studio本身的大部分就写成了VSPackage集合。”</p>
+<p>目前为止，现有的加载项可以继续工作，但是无法用VS 2013创建新的加载项。也就是说，开发人员应该尽快考虑按照MSDN上名为“<a href="http://msdn.microsoft.com/en-us/library/dn246938.aspx">如何将加载项转换成VSPackage</a>”的指南行事。随着Visual Studio发布频率的增加，可能不用很长时间就把加载项彻底删除了。</p>
+<p>VSPackage推出已经有十多年了，但由于需要Visual Studio Industry Partners（VSIP）许可以及<a href="http://msdn.microsoft.com/en-us/library/cc138588(v=vs.90).aspx">Developer and Package Load Keys</a>，开发人员经常避免使用它。直至2010年，MSDN文档才没有提及这一要求。在VS 2005之前，还有<a href="http://blogs.msdn.com/b/dotnetinterop/archive/2006/01/27/517578.aspx">VSPackage不能开源</a>的许可限制。</p>
+<p><strong>查看英文原文：</strong><a href="http://www.infoq.com/news/2013/11/VS-2013-Extensions">Add-ins Deprecated in Visual Studio 2013</a></p><br><br><br><br><br><br></body></html>

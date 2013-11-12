@@ -1,28 +1,7 @@
-<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>OpenStack发布第七个正式版Grizzly 支持大规模生产环境和更多网络技术</h3><p>2013年4月4日，OpenStack基金会发布了OpenStack的<a href="https://wiki.openstack.org/wiki/Releases">第七个大版本</a>——Grizzly（上一个版本Folsom发布于2012年9月）。根据<a href="http://www.openstack.org/software/grizzly/press-release">官方通告</a>，Grizzly版本包含了将近230个新特性，对大规模的生产环境、企业应用场景和更广泛的软件定义网络提供了更好的支持。作为第七个版本，Grizzly对已经在运行OpenStack的用户需求更加关注，这些用户包括百思买，Comcast，CERN，惠普，NeCTAR，NSA，Rackspace，三星SDS等。</p> 
-<p>官方通告对OpenStack Grizzly的新特性进行了简单的介绍，以下是中国OpenStack用户组（COSUG）社区负责人、OpenStack董事会成员程辉提供的中文版介绍：</p> 
-<blockquote>
- <p><strong>OpenStack Grizzly的新特性和功能</strong></p> 
- <p>本次新增的近230个新功能涉及计算、存储、网络和共享服务等方面。</p> 
- <p>OpenStack计算虚拟化 - 计算使用“Cells”管理分布式集群，使用“NoDB”主机架构以减少对中央数据库的依赖。虚拟化管理方面也提供了新特性，并对各种虚拟机管理程序都提供了更好的支持，包括ESX，KVM，Xen和Hyper-V等。此外，新版计算也包含了裸机供应，共享存储协议，网络设备的热添加/删除等在线网络功能，等等。</p> 
- <p>OpenStack对象存储 - 云运营商现在可以利用配额自动地控制他们的对象存储环境的增长。此外，执行批量操作的功能让部署和管理大型集群变得更容易，从而为最终用户提供更佳的体验。跨域资源共享（CORS）让浏览器直接连接到后端的存储环境，提高了网络集成对象存储集群的性能和可扩展性。</p> 
- <p>OpenStack块存储 - 作为OpenStack块存储组件的第二个完整版本，本次更新为从一个集中的接入点管理异构存储环境提供了一套完整的存储服务。一个新的智能调度器为云终端用户提供了基于负载分配存储空间的功能，负载可以根据性能、效率或成本效益来定义。同时，本次更新对更多种类的后端存储设备提供了支持，包括Ceph/RBD，Coraid，EMC，惠普，华为，IBM，NetApp，红帽/Gluster，SolidFire和Zadara。</p> 
- <p>OpenStack网络 - 本次更新包含了高级网络自动化功能，新增了如下网络虚拟化平台的支持：Big Switch，Hyper-V，PlumGrid，Brocade，Midonet等，让用于能够更加灵活自主地选择合适的虚拟化网络技术。此前，OpenStack网络已经对Open vSwitch，Cisco UCS/Nexus，Linux Bridge，Nicira，Ryu OpenFlow，NEC OpenFlow等技术提供了支持。通过跨服务器分配L3/L4和动态主机配置协议（DHCP）服务，OpenStack网络实现了更大的规模和更高的可用性。此外，新版提供了一个新的负载均衡即服务（LBaaS）框架和API，以方便其他网络公司与OpenStack进行集成。</p> 
- <p>OpenStack Dashboard - OpenStack Dashboard在用户体验方面进行了改进，提供了更多语言的支持，并添加了新功能的入口，如网络和LBaaS等。Grizzly版本的Dashboard向后兼容Folsom版本。</p> 
- <p>OpenStack认证服务 - 本次采用了一个新的基于标准PKI功能的令牌格式，新版的性能较之前有了很大提升，同时还允许客户端不进行额外的身份认证服务呼叫就可以进行离线令牌认证。OpenStack身份认证也为多租户环境提供了更有条理的管理，支持群组，模拟，基于角色的访问控制（RBAC）等，并且可以更加细致的进行权限设置。</p> 
- <p>OpenStack镜像服务 – 主要有两个新增功能：普通用户之间可以共享的镜像；镜像新增了一组通用属性，为了方便镜像检索和发现，以及更快地获取镜像。</p>
-</blockquote> 
-<p>Grizzly版本的<a href="http://www.openstack.org/software/grizzly/">官方页面</a>上列出了参与本次版本开发的517位开发者的名字，这些开发者来自45家以上的企业，共计贡献了7620个补丁。</p> 
-<p>对于Grizzly的发布，本次的发行管理员Thierry Carrez在<a href="http://www.linux.com/news/enterprise/cloud-computing/712549-openstack-grizzly-debuts-with-more-than-200-new-features/">Linux.com的一次访谈</a>上表示：</p> 
-<blockquote>
- <p>我个人感到这次最令人兴奋的变更就是OpenStack计算虚拟化（Nova）中引入的Cells部署模式，这可以实现大规模的部署，另外还有no-db-compute，这个特性将计算节点从系统中隔离出来，这样可以实现很好的安全性。另外，OpenStack网络组件对安全群组特性和LBaaS特性的引入也很不错。</p>
-</blockquote> 
-<p>有的用户表示对新版本的发布十分兴奋。<a href="http://virtualgeek.typepad.com/virtual_geek/2013/04/openstack-grizzly-is-out-with-extra-awesomesauce-and-bonus-vmware-and-emc-goodies.html">Virtualgeek网站</a>对此评论到：</p> 
-<blockquote>
- <p>事情的变化将会很有意思。目前在企业中，OpenStack的部署还没有成为主流（倒是在服务提供商和教育机构中看到不少），不过“传统”企业中倒是有越来越多的人在玩这个东西。</p>
-</blockquote> 
-<p>也有用户表示<a href="http://gigaom.com/2013/04/04/openstack-grizzly-adds-scale-storage-options-now-bring-on-the-users/#comment-1326150">对OpenStack目前的成熟度仍然不满意</a>：</p> 
-<blockquote>
- <p>好吧，我就是一个OpenStack的“真正用户”。我供职的公司不提供OpenStack服务，我们是自己用来架设私有云的。就我目前的经验，在花费了几个月的时间架设一个多节点的OpenStack环境之后，对于OpenStack一直被描述为难以安装、难以配置、难以维护的情况，我现在可算是深有体会了。就好像你需要一辆车，但OpenStack给你的只是一地的零件。如果想要做“云计算时代的Linux”，OpenStack项目在用户体验、可用性方面需要多加重视了。</p>
-</blockquote> 
-<p>2013年4月15日到18日，<a href="http://www.openstack.org/summit/portland-2013/">OpenStack在2013年的第一场全球峰会</a>将在俄勒冈州的波特兰举行。本次会议预计将有超过2000名开发者、商界领袖和用户参与。</p> 
-<p id="lastElm"></p><br><br><br><br><br><br></body></html>
+<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>Visual Studio 2013 新增OData支架支持</h3><p>OData支架是VS 2013的新特性之一。就像MVC支架，该特性设计为一个培训助手，同时也用于提升开发速度。不过，与MVC版本相比，它需要的设置稍微多一些。为了帮助开发人员，来自微软的Kirthi<a href="http://blogs.msdn.com/b/webdev/archive/2013/11/08/odata-scaffolding.aspx">逐步解释了OData支架的用法</a>。</p>
+<p>要记住，在基于OData端点创建Web API之后，最重要的事是更新<a href="http://www.asp.net/web-api/overview/extensibility/configuring-aspnet-web-api">WebApiConfig</a>。按照惯例，WebApiConfig是一个静态类，仅有一个名为Register（HttpConfiguration config）的方法。该方法实际上是使用<a href="http://msdn.microsoft.com/query/dev12.query?appId=Dev12IDEF1&amp;l=EN-US&amp;k=k(System.Web.Http.OData.Builder.ODataConventionModelBuilder);k(TargetFrameworkMoniker-.NETFramework,Version%3Dv4.5);k(DevLang-csharp)&amp;rd=true">ODataConventionModelBuilder</a>类将模型映射到<a href="http://msdn.microsoft.com/en-us/library/microsoft.data.edm.iedmmodel(v=vs.113).aspx">EDM Model</a>。然后，将模型注册为路由。</p>
+<p>如果网站在创建之初没有Web API支持，那么开发人员还需要在Application_Start事件中增加下面这行代码：</p>
+<pre>
+GlobalConfiguration.Configure(WebApiConfig.Register);</pre>
+<p>该方法的目的是用于为OData控制器注册路由，GlobalConfiguration.Configure则将其作为回调方法调用。</p>
+<p><strong>查看英文原文：</strong><a href="http://www.infoq.com/news/2013/11/OData-Scaffolding">OData Scaffolding is Visual Studio 2013</a></p><br><br><br><br><br><br></body></html>

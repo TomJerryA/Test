@@ -1,16 +1,35 @@
-<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>DeltaBlue基准测试显示　Dart2js生成的JavaScript代码优于手写代码</h3><p>Google发布了<a href="http://news.dartlang.org/2013/03/why-dart2js-produces-faster-javascript.html">新版Dart2js编译器</a>，<a href="http://www.cs.washington.edu/research/constraints/deltablue/">DeltaBlue基准测试</a>（用于测试面向对象语言的常用基准测试程序）显示，该编译器生成的JavaScript代码优于手写代码。尽管Dart2js项目从未以此为目标，但是它所应用的各种优化，如内联（inlining）和预先计算（pre-computation）等，使某些Dart程序跑得比语义等价的地道JavaScript代码还快。Dart网站还<a href="http://www.dartlang.org/performance/">发布</a>了Richards基准测试的结果，然而它的数据就是缓慢收敛的了，在这种基准测试程序下，Dart生成的JavaScript代码仍然比手写的代码慢26%。</p> 
-<p>下图显示了Dart在DeltaBlue基准测试程序上性能随时间演进的情况：</p> 
-<p><a href="http://www.infoq.com/cn/news/2013/04/;jsessionid=62E0EA64E68EF1CE9FA928ED3B47C5C6"><img src="http://www.infoq.com/resource/news/2013/04/dart2js-outperforms-js/zh/resources/1.png;jsessionid=62E0EA64E68EF1CE9FA928ED3B47C5C6" width="500px;" _href="img://null" _p="true" alt="" /></a></p> 
-<p>图中紫色的线代表Dart2js生成的JavaScript代码在Google v8 JavaScript引擎上的运行情况，黄线代表语义等价的地道JavaScript代码在v8上的运行情况。最上面的蓝线代表的是Dart代码在原生Dart<a href="http://en.wikipedia.org/wiki/Virtual_machine">虚拟机</a>上的运行情况。数值越高表示性能越好。</p> 
-<p><a href="http://dartlang.org/">Dart</a>是Google为开发大规模Web应用程序而设计的新编程语言，可以运行在如下各种环境中：</p> 
-<ol> 
- <li><i>运行在嵌入了</i><i>Dart</i><i>虚拟机的浏览器中。</i>因为Dart项目尚未发布1.0版本，所以除了<a href="http://www.dartlang.org/dartium/">“Dartium”这一Chromium构建版本</a>提供了Dart SDK之外，还没有哪个浏览器嵌入Dart虚拟机。</li> 
- <li><i>在服务器端，运行于</i><i>Dart</i><i>虚拟机中。</i><a href="http://api.dartlang.org/docs/releases/latest/dart_io.html">dart:io</a>库只能用于服务器端应用，它提供了用于访问文件系统和进程管理信息、以及用于构建服务器（比如HTTP服务器或WebSocket服务器）的API。这就使Dart可用于与<a href="http://nodejs.org/">Node.js</a>类似的场景，而且从前端到后端的应用开发都可以使用Dart。</li> 
- <li><i>嵌入在应用程序中运行。</i>Dart虚拟机可用嵌入在任何C/C++应用程序中，从而支持Dart应用。</li> 
- <li><i>编译为</i><i>JavaScript</i><i>代码，运行在任何现代浏览器中。</i>目前还没有哪个产品级浏览器支持Dart，除了Chrome外，是否有浏览器准备嵌入Dart虚拟机还不得而知。不过利用Dart2js编译器将Dart程序编译为JavaScript代码，仍然能够在各种浏览器中运行Dart应用。因此，Dart能否成功，生成的JavaScript代码的性能至关重要。</li> 
-</ol> 
-<p>新的Dart2js编译器本身就是用Dart实现的，为了收集变量和参数将使用类型的更多信息，它使用了一种名为“全局类型推导（<i>global </i><a href="http://en.wikipedia.org/wiki/Type_inference"><i>type inferencing</i></a>）”的技术。因此可以生成更紧凑、更快速的JavaScript代码。有趣的是，Dart2js并没有使用Dart所支持的可选类型标注。这是因为运行时并没有这些类型信息。除非Dart运行于检查模式（checked mode），这时如果破坏了类型约束，Dart会报错。因此像String name = 10;这样的语句，尽管让人迷惑不解，却是完全合法的。为确保所生成代码的正确性，Dart2js编译器完全忽略了类型标注。</p> 
-<p>因为Dart不像JavaScript那么自由，因而有可能进行很多新的优化。比如，在JavaScript中，可以动态向对象中添加方法，可以替换方法，可以动态下载代码，还可以使用eval和with语句，这极大限制了像v8这样的JavaScript引擎可以执行的优化。这些功能中有很多Dart都不支持，因此Dart2js在执行时可以精确地知道哪些代码会运行。它能够消除输出中用不到的代码，该过程称为死代码消除或tree shaking。某些情况下，它还可以内联代码，因为不同于JavaScript，Dart不支持动态修改（monkey patching）对象。</p> 
-<p>尽管我们不应轻相任何基准测试，但看看Dart团队如何不断改进性能数据也是很有趣的。虽然Dart还处于积极的开发之中，不过已经<a href="http://www.infoq.com/news/2013/04/blossom-dart-switch;jsessionid=62E0EA64E68EF1CE9FA928ED3B47C5C6">开始有厂家将其应用于产品中了</a>。对于今天有兴趣在网络上部署Dart代码的任何人而言，Dart2js所生成代码的性能和体积都非常重要。</p> 
-<p><b>查看英文原文</b>：<a href="http://www.infoq.com/news/2013/04/dart2js-outperforms-js;jsessionid=62E0EA64E68EF1CE9FA928ED3B47C5C6"><b>Dart2js Outperforms Hand-Written JavaScript in DeltaBlue Benchmark</b></a></p> 
-<p id="lastElm"></p><br><br><br><br><br><br></body></html>
+<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>HANA为大数据应用做好准备</h3><p>HANA是SAP发布的一套与数据源无关的、软硬件结合的、基于内存计算的平台，在最近的年度开发者技术会议上，SAP公司详细<a href="http://www.drdobbs.com/tools/sap-developer-lead-hana-is-ready-to-code/240163087" target="_blank">公布</a>了其在HANA数据平台编程方面取得的显著进步。HANA已经为大数据应用开发做好准备。</p>
+<p>在会上，开发者关系负责人Thomas Grassl表示最近在加利福尼亚州举办的Code Jam编程大赛中，已经看到各种各样不同水平的程序员开始尝试基于SAP HANA的应用程序和代码库。Grassl说：“SAP HANA为开发人员提供了新的机遇，从而改变了我们对大数据应用的设计、构建和使用的方式。”</p>
+<p>SAP公司揭示了它们的编程计划为“实时企业应用程序”主要基于三个关键的要素：</p>
+<blockquote> 
+ <p>SAP Fiori应用在视觉上吸引人、直观并且拥有智能的用户体验，简化了SAP HANA基础设施的云部署选项，还有SAP HANA在service pack 7（SP7）中提供的强大的新功能。SAP Fiori是公司提供的用户体验产品。它是一个应用程序的集合，支持最广泛和最常用的SAP软件功能，并且其作为一个技术层，作用在类似于ERP、CRM、采购与供应链管理（SCM）以及人才管理等机制(能被HANA平台本身所支持的机制)之上。</p> 
+ <p>基于SAP Fiori的成功以及旺盛的市场需求，SAP现在正开始着手于用户体验（UX）设计服务来帮助开发者充分利用“设计思维（Design thinking）”这种方式编程。这种服务将促使专业设计师团队与用户并肩协作，并与真实终端的用户在协作模型下合作，开发出跨越任何应用程序或解决方案的引人注目的用户体验。</p> 
+</blockquote>
+<p>Grassl解释说整套“数据开发者工具”现在正因为一个直接的任务联系在一起，即让实时企业应用能够被River定义语言（RDL）所驱动。RDL是一种可执行的规范语言，并允许许多开发团队协作并细化应用程序要做什么（有什么功能），然而却可以不必知道这些应用程序的需求是怎样实现。就SAP而言，在HANA基础之上的所有的一切将不影响应用程序的表现和健壮性。</p>
+<blockquote> 
+ <p>开发者通过访问SAP HANA智能数据，可以从Hadoop获取集成数据，并通过合成数据构建实时应用程序。除此之外，通过和HANA SP7一起可用的River定义语言，开发者可以很轻松的了解SAP HANA并直接对其进行开发。</p> 
+</blockquote>
+<p>SAP HANA平台及应用程序副总裁Jacob Klein解释说：“据我们所了解，在River定义语言中最关键的要素是可读性以及简单的语言结构，从而能容易实现更高层次的概念。其声明的性质有助于开发者将注意力集中到捕捉应用程序的功能，而不是它的执行机制。从概念上讲，它类似于标准的SQL的思路，只是适用于更广泛和更复杂的领域中。”</p>
+<p>该公司的技术发言人Vishal Sikka博士指出，SAP的技术现在实现了其所谓的“前所未有的能力”，即在多达10000个CPU核心上实时的计算原本无法想象的任务。</p>
+<p>随着SAP HANA的SP7的推出，开放应用程序的开发体验将会更加广泛并且可能变得与语言类型无关。</p>
+<blockquote> 
+ <p>开发者应该能够利用核心数据服务（CDS）并且通过预先打包好的数据质量库来促成代码重用和快速开发。</p> 
+</blockquote>
+<p>此外，SAP HANA智能数据访问技术已经通过写入能力而得到了增强，并且数据已经被扩展到包括如Oracle和微软SQL Server等数据源的支持。</p>
+<blockquote> 
+ <p>智能数据的访问也通过Hortonworks提供了与Hadoop更加紧密的结合。为了进一步扩展数据利用的范围，SAP还增加了一项新的能力，即创建自定义文本分析字典来以商业应用程序需要的方式处理非结构化数据。</p> 
+</blockquote>
+<p>通过SAP HANA SP7，SAP计划继续增加新的功能来支持高可用性/灾难恢复（HA/DR）的功能部署，例如用于回放的快照和日志，还有为复杂的多主机体系和延伸集群配置准备的级联系统副本。新的统一化的安装/补丁工具和经过增强的操作监督机制也将继续简化管理体验。</p>
+<p>对于SAP公司来说，还有一个<a href="http://www.drdobbs.com/tools/red-hat-loves-sap-its-official/240162581" target="_blank">好消息</a>，那就是即将正式发布的RHEL 6.5 将通过实现通用SAP部署的最优配置的自动化来简化“关键任务SAP应用程序”的操作。</p>
+<p>红帽已经公开地发布了Red Hat Enterprise Linux 6.5（RHEL）的 beta发行版，这次对“Red Hat Enterprise Linux 6.5”内核的修改，提高了红帽在操作管理水平上的可扩展性。</p>
+<blockquote> 
+ <p>在大型系统的内核转储文件现在可以扩展到多TB的数据级别，并且一种新的压缩算法（LZO）能够加快创建转储文件的速度，这直接缩短了在崩溃转储过程中的停机时间，同时实现了更快的排除故障的功能。性能工具跟踪能力的提升和测试命令还提供了额外的基础设施事件的监测能力。</p> 
+</blockquote>
+<p>网络增强功能包括：通过检查Internet组管理协议（IGMP）的数据来列出路由端口和活跃用户组，进而实现对组播业务更好的分析。</p>
+<p>Beta版本的红帽企业版6.5增强了存储特性，这使得它具有了更高的稳定性、高效性和易用性。</p>
+<blockquote> 
+ <p>在iSCSI和光纤通道存储区域网络（SAN）的环境下，企业级的存储用户将受益于改进的控制和恢复功能。多路径IO的性能和高可用性功能可以对更广泛的设备适用，同时，多路径自动命名功能的增强提供了更短、更方便的设备名称。</p> 
+ <p>红帽企业Linux6.5的beta版本还支持英特尔的NVM Express的驱动程序，它访问基于PCI Express总线的固态硬盘的行业标准规范。此外，基于FUSE文件系统，如GlusterFS，现在也可以使用异步IO来提高性能。</p> 
+</blockquote>
+<p>另外，红帽guests账户的最大内存已增至4TB，这一特性允许guests在虚拟CUP上运行大规模的工作负载和动态的热加载功能，进而使得安装guests来计算资源这一过程自动、简单，同时减少停机时间。</p>
+<p>要想了解更多大数据方面的新闻和文章，读者朋友可以关注InfoQ中文站的“<a href="http://www.infoq.com/cn/bigdata/" target="_blank">大数据</a>”专题。</p><br><br><br><br><br><br></body></html>

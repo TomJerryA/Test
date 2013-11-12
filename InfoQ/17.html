@@ -1,30 +1,37 @@
-<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>Google+ Sign-In：联合身份认证、授权和语义活动流</h3><p><a href="http://googleplusplatform.blogspot.com.au/2013/02/google-plus-sign-in.html">Google+ Sign-In</a>将Google+社交网络扩展到第三方网站、桌面应用和移动应用，并进一步巩固了Google与Twitter和Facebook一道作为认证提供者的地位。在2月26日公布的这项服务支持以下特性：身份认证、授权和活动分享。它还为用户互动、Hangouts（通过摄像头进行多人视频通话）和自动下载Android应用提供了额外的支持</p> 
-<p>尽管关于这项新服务的讨论主要聚焦在与Facebook的<a href="http://www.theverge.com/2013/2/26/4030970/google-plus-sign-in-takes-on-facebook-connect-and-frictionless-sharing">激烈竞争</a>上，从技术角度看，探寻<a href="https://developers.google.com/+/">Google+ API</a>幕后的内容以了解这些新特性如何工作并理解一些将要投入使用的标准很有帮助。</p> 
-<p>一个简单的[g+ | Sign In]<a href="https://developers.google.com/+/web/signin/"> 按钮</a>为进入第三方Web页面、桌面或移动应用提供了入口。它的流程从应用为了访问用户的Google+档案而请求访问令牌开始。在浏览器中，该编配（orchestration）通过<a href="https://developers.google.com/+/web/signin/#using_the_client-side_flow">客户侧流程</a>，或是通过后端API操作使用<a href="https://developers.google.com/+/web/signin/server-side-flow">服务器侧流程</a>完成。如果用户还未使用Google+认证，则认证会作为sign-in的一部分。此外用户会得到提示，对第三方应用赋予他们希望的访问等级。访问等级或范围包括：</p> 
+<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>在Twitter，Netty 4 GC开销降为五分之一</h3><p>Netty项目在7月份发布了Netty 4的第一个版本，其性能的显著提升主要来源于垃圾收集开销的降低。在Twitter，Netty 4经过完善已经获得了5倍的性能提升，但也有一些代价。</p>
+<p><a href="http://netty.io/">Netty项目</a>创始人和Twitter软件工程师<a href="http://www.linkedin.com/in/trustin">Trustin Lee</a>从2003年开始就一直编写网络应用程序框架。Netty第一次公开发布是在<a href="http://www.theserverside.com/news/thread.tss?thread_id=26416">2004年6月</a>，其项目<a href="http://netty.io/">主页</a>这样描述它，“一种异步事件驱动的网络应用程序框架，用于可维护的高性能协议服务器和客户端的快速开发。”</p>
+<p>Lee在博文“<a href="https://blog.twitter.com/2013/netty-4-at-twitter-reduced-gc-overhead">Netty 4在Twitter：降低GC开销</a>”中写道，Twitter在许多地方使用Netty实现联网功能：</p>
 <ul> 
- <li>Userinfo.email：仅提供用户的电邮地址</li> 
- <li>plus.me：提供用户的Google+档案信息</li> 
- <li>plus.login：通过允许访问圈子以及向用户的Goolge+活动流写入活动的能力，扩展其他范围</li> 
-</ul> 
-<p>这样的访问编配结合了认证与授权，授权遵循<a href="http://openid.net/connect/">OpenID Connect</a>草案标准，而这份草案标准则基于近期生效的<a href="http://www.rfc-editor.org/rfc/rfc6749.txt">OAuth 2</a>协议。认证则完全由Google认证系统处理而不会涉及第三方应用。OpenID Connect将认证置于OAuth授权协议之上，有效地对第三方应用进行用户认证并准许访问用户的Google+档案。<a href="http://openid.net/foundation/leadership/">Nat Sakimura</a>是OpenID基金会主席及OpenID Connect的合著者，他<a href="http://nat.sakimura.org/2011/05/15/dummys-guide-for-the-difference-between-oauth-authentication-and-openid/">恰到好处地描述</a>了OpenID、OAuth和OpenID Connect之间的区别，以及应用如何使用类似Google+ Sign-In这样的服务以校验一个用户请求访问的认证。</p> 
-<p>用户可以使用他们的<a href="http://plus.google.com/apps">应用设置页面</a>检查他们的应用授权，在该页面中他们可以取消访问或改变自己的分享设置。</p> 
-<p>第三方应用现在可以使用其访问令牌在Google+ API中管理应用内活动。Google将这些活动称作“<a href="https://developers.google.com/+/api/latest/moments">瞬间</a>（moments）”，而Google+ API提供简单的CRUD接口以插入、列出和删除“瞬间”。“瞬间”可以以不同的风格出现，被称作ActivityTypes（活动类型）。所有的活动都拥有名字、描述和缩略图，以及一个用于表现活动主题的<i>itemtype（事物类型）</i>。Itemtype必须是<a href="http://schema.org/">schema.org</a>所列出的<a href="http://schema.org/Thing">事物</a>的子类型，例如一本<a href="http://schema.org/Book">书</a>、一个<a href="http://schema.org/Place">地方</a>或是一个<a href="http://schema.org/Person">人</a>。此外，事物必须拥有指向某个HTML页面的URL——这个页面必须包<a href="http://schema.org/">schema.org</a>含标记出的相关事物。用这种方法，Google+集成鼓励开发结构化标记的“语义网”，它也<a href="http://googleblog.blogspot.com.au/2011/06/introducing-schemaorg-search-engines.html">有益于搜索引擎</a>。行为列表相当全面：</p> 
-<ul> 
- <li>AddActivity（添加活动）：一个具有itemtype、名字、描述和缩略图的通用活动。</li> 
- <li>BuyActivity（购买活动）：展现某事物的购买。</li> 
- <li>CheckinActivity（签到活动）：展现用户在某处签到，并带有额外的地址和地理位置属性。</li> 
- <li>CommentActivity（评论活动）：适用于用户对一篇博文、书或其他创新作品进行评价的时候。</li> 
- <li>CreateActivity（创建活动）：适用于用户创建一件创新作品的时候。</li> 
- <li>DiscoverActivity（发现活动）：适用于用户发现一件创新作品的时候。</li> 
- <li>ListenActivity（聆听活动）：展现用户正在聆听音乐拷贝或提供额外属性用于歌曲、专辑和艺术家的元数据。</li> 
- <li>ReserveActivity（预订活动）：表示用户正在预订某项本地业务，例如餐厅或酒店。</li> 
- <li>ReviewActivity（评价活动）：一项包含评级信息的事物评价。</li> 
- <li>WantActivity（期望活动）：表明用户期望某事物，例如他们将某事物添加到了应用中的心愿单。</li> 
-</ul> 
-<p>Google+基于用户授权设置，完全处理将这些“瞬间”到Google+活动流的表达与分发工作。</p> 
-<p>这份简洁的回顾仅仅浮光掠影般检视了Sign-In带来的新的Google+特性，但却给出了一个关于新的认证和授权标准，以及语义标记向社交活动流扩展的有趣例子。</p> 
-<p><b>查看英文原文</b>：<a href="http://www.infoq.com/news/2013/04/google-plus-federated-identity;jsessionid=42BE3553269408EBBA612B62F9D2CD1D">Google+ Sign-In: Federated Identity, Authorization and Semantic Activity Streams</a></p> 
-<hr /> 
-<p>感谢<a href="http://www.infoq.com/cn/bycategory.action;jsessionid=42BE3553269408EBBA612B62F9D2CD1D?authorName=侯伯薇">侯伯薇</a>对本文的审校。</p> 
-<p>给InfoQ中文站投稿或者参与内容翻译工作，请邮件至<a href="mailto:editors@cn.infoq.com">editors@cn.infoq.com</a>。也欢迎大家通过新浪微博（<a href="http://www.weibo.com/infoqchina">@InfoQ</a>）或者腾讯微博（<a href="http://t.qq.com/infoqchina">@InfoQ</a>）关注我们，并与我们的编辑和其他读者朋友交流。</p> 
-<p id="lastElm"></p><br><br><br><br><br><br></body></html>
+ <li><a href="http://twitter.github.io/finagle/">Finagle</a>是我们的<a href="https://blog.twitter.com/2011/finagle-protocol-agnostic-rpc-system">协议无关的RPC系统</a>，用于实现大部分内部服务，如<a href="https://blog.twitter.com/2011/twitter-search-now-3x-faster">搜索</a>，它的传输层建立在Netty上。</li> 
+ <li>TFE（Twitter前端）是我们专有的<a href="http://wiki.squid-cache.org/SpoonFeeding">填鸭式</a><a href="http://en.wikipedia.org/wiki/Reverse_proxy">反向代理</a>，它使用Netty为大部分面向公众的HTTP和<a href="http://en.wikipedia.org/wiki/SPDY">SPDY</a>流量提供服务。</li> 
+ <li><a href="https://github.com/twitter/cloudhopper-smpp">Cloudhopper</a>每月用Netty向遍布世界各地数以百计的运营商发送数十亿条短信息。</li> 
+</ul>
+<p>Netty包含一个反应堆模式的实现，它同时也是<a href="http://www.playframework.com/">Play框架</a>的核心。Play、Grails和许多其它Web框架都采用一种<a href="http://www.jamesward.com/2011/08/23/war-less-java-web-apps">WAR-less Web应用程序模式</a>，它允许与底层HTTP服务器更紧密地集成。使用内部包含像Netty这种框架的服务器，异步编程会简单很多。异步编程和非阻塞I/O是“响应宣言（<a href="http://www.reactivemanifesto.org/">The Reactive Manifesto</a>）”的核心。InfoQ在“<a href="http://www.infoq.com/cn/news/2013/08/reactive-programming-emerging">新兴趋势：响应式编程</a>”中报道了这一新兴模式。</p>
+<p>Netty 3使用Java对象表示I/O事件。Lee谈道：</p>
+<blockquote> 
+ <p>这样简单，但会产生大量的<a href="http://en.wikipedia.org/wiki/Garbage_collection_(computer_science)">垃圾</a>，尤其是在我们这样的规模下。Netty 4在新版本中对此做出了更改，取代生存周期短的事件对象，而以定义在生存周期长的通道对象上的方法处理I/O事件。它还有一个使用池的专用缓冲区分配器。</p> 
+ <p>……每当收到新信息或者用户发送信息到远程端，Netty 3均会创建一个新的堆缓冲区。这意味着，对应每一个新的缓冲区，都会有一个‘new byte[capacity]’。这些缓冲区会导致GC压力，并消耗内存带宽：为了安全起见，新的字节数组分配时会用零填充，这会消耗内存带宽。然而，用零填充的数组很可能会再次用实际的数据填充，这又会消耗同样的内存带宽。如果Java虚拟机（JVM）提供了创建新字节数组而又无需用零填充的方式，那么我们本来就可以将内存带宽消耗减少50%，但是目前没有那样一种方式。</p> 
+</blockquote>
+<p>在Netty 4中，代码定义了粒度更细的API，用来处理不同的事件类型，而不是创建事件对象。它还实现了一个新缓冲池，那是一个纯Java版本的<a href="https://www.facebook.com/notes/facebook-engineering/scalable-memory-allocation-using-jemalloc/480222803919">jemalloc</a>（Facebook也在用）。现在，Netty不会再因为用零填充缓冲区而浪费内存带宽了。不过，由于它不依赖于GC，开发人员需要小心内存泄漏。如果忘记在处理程序中释放缓冲区，那么内存使用率会无限地增长。</p>
+<p>这些变化没有向后兼容Netty 3，但其垃圾生成速度是原来的1/5，而垃圾清理速度快了5倍。</p>
+<p>Lee写道：</p>
+<blockquote> 
+ <p>我们比较了两个分别建立在Netty 3和4基础上<a href="http://en.wikipedia.org/wiki/Echo_Protocol">echo</a>协议服务器。（Echo非常简单，这样，任何垃圾的产生都是Netty的原因，而不是协议的原因）。我使它们服务于相同的分布式echo协议客户端，来自这些客户端的16384个并发连接重复发送256字节的随机负载，几乎使千兆以太网饱和。</p> 
+ <p>根据测试结果，Netty 4：</p> 
+ <ul> 
+  <li>GC中断频率是原来的1/5：<b>45.5 vs. 9.2次/分钟</b></li> 
+  <li>垃圾生成速度是原来的1/5：<b>207.11 vs 41.81 MiB/秒</b></li> 
+ </ul> 
+</blockquote>
+<p>Lee提到，在Twitter中采用Netty 4还有一些障碍，那就是缓冲区泄漏和核心复杂。该项目希望增加更多功能，包括HTTP/2、异步DNS解析以及客户端HTTP和SOCKS代理支持。</p>
+<p>Yahoo工程部门有一篇类似的文章，内容是关于Netty如何帮助他们成倍地提升<a href="https://github.com/nathanmarz/storm">Storm集群</a>的速度。在名为“<a href="http://yahooeng.tumblr.com/post/64758709722/making-storm-fly-with-netty">Netty让Storm飞速运行</a>”的文章中，Bobby Evans写道：</p>
+<blockquote> 
+ <p>在雅虎，我们都是用自己的产品进行开发。在将Netty作为Storm集群的默认消息层之前，我需要一些数据来确认，它与当前的默认消息层zeromq相比怎么样。要做到这一点，我需要一个能够使Storm消息层达到极限的基准测试程序，因此，我写了<a href="https://github.com/yahoo/storm-perf-test">一个</a>。那是一个简单的高速测试，用于确认Storm在不同的Bolt和Spout之间推送消息有多快。它允许同时启动多个具有不同复杂度的Topology来发送定长消息。</p> 
+</blockquote>
+<p>Evans指出，在小规模测试中（没有资源冲突），Netty比zeromq更快（40-100%）。在大规模测试中，它也遇到了性能问题，但减少了解决问题的线程数。</p>
+<blockquote> 
+ <p>对于大量短消息而言，Netty的默认设置并不是很好，即使该节点上只有它自己在运行。但是，当把它限制在单线程上，我们每秒能够获得比zeromq多85%到111%的消息，之后网络再次饱和。</p> 
+</blockquote>
+<p>Evans指出，Netty现在是Yahoo Storm集群的默认消息层。</p>
+<p>Netty 4的改进对许多开源项目都大有益处。该框架有一个<a href="http://netty.io/wiki/related-projects.html">长长的相关项目列表</a>，包括<a href="http://akka.io/">Akka</a>、<a href="http://james.apache.org/">Apache James</a>、<a href="http://www.jboss.org/hornetq">HornetQ</a>和<a href="http://vertx.io/">Vert.x</a>，这里仅举这几例。要了解更多关于Netty 4的信息，请查看<a href="http://netty.io/">netty.io</a>或<a href="https://blog.twitter.com/2013/netty-4-at-twitter-reduced-gc-overhead">Lee的博文</a>。</p>
+<p><strong>查看英文原文：</strong><a href="http://www.infoq.com/news/2013/11/netty4-twitter">Netty 4 Reduces GC Overhead by 5x at Twitter</a></p><br><br><br><br><br><br></body></html>

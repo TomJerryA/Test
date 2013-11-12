@@ -1,45 +1,65 @@
-<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>浏览器市场再起波澜：Google和Opera支持Blink，Samsung联合Mozilla推动Servo</h3><p>近日有两则与浏览器开发相关的重要新闻：一个是Google和Opera支持WebKit的分支<a href="http://www.chromium.org/blink">Blink</a>；另一个是Samsung将与Mozilla合作，共同推动<a href="https://github.com/mozilla/servo">Servo</a>。Blink和Servo均以并行架构为目标。</p> 
-<p>不久之前，Opera宣布放弃自己的浏览器引擎Presto，<a href="http://www.infoq.com/news/2013/02/Opera-WebKit-Presto;jsessionid=3ABA7518932403D75C88C6A0B53AD377">拥抱WebKit</a>。当时有人还担心，少了一种多样性对Web会有何种不利影响。现在他们不必烦恼了，因为Google从WebKit创建了一个分支——即名为<a href="http://www.chromium.org/blink">Blink</a>的抽象浏览器引擎，其开发会与Chromium结合在一起，由后者提供该平台的一种实现。Opera的Web布道师Bruce Lawson宣布，<a href="http://www.brucelawson.co.uk/2013/hello-blink/">Opera将与Google一起开发Blink</a>。</p> 
-<p>WebKit渲染引擎现在势头很猛，而且或许有机会成为最重要的引擎，那Google为什么要创建一个分支呢？<a href="http://www.chromium.org/blink/developer-faq">Google认为</a>，尽管“只有一种选择看上去对开发者的效率有利”，但从长期来看，“只有一种选择不可避免地会导致停滞不前”，而“如果有更多的渲染引擎可以选择，这会带来更多创新，也会使Web生态系统更健康”。</p> 
-<p>据Google介绍，之所以创建WebKit分支，有两个主要的技术原因：</p> 
+<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>移动HTML5面对的问题</h3><p>近期的一份研究报告，给出了与一般观点相左的结论，性能并不是HTML5面对的主要问题；相反，性能分析和调试工具的缺失，以及缺少某些特定API才是它的最大问题。</p>
+<p>VisionMobile对全球超过6千名开发者进行了调查，分析了超过3万款Android Play中发布的应用，评测了42款HTML5框架和工具，并就移动HTML5与原生应用之争的话题，访谈了32位顶级专家。最终，VisionMobile对此进行总结，发表了研究报告《<a href="http://www.developereconomics.com/downloads/can-html5-compete-native/">HTML5如何与原生应用竞争？</a>》。以下是该研究中的一些最重要的发现。该报告划分出四类适合HTML5应用的主要市场路径：</p>
+<ol> 
+ <li>移动浏览器——针对移动设备开发，适合运行在移动浏览器环境中的Web应用或网页。</li> 
+ <li>原生应用包装——将Web应用封装到原生应用中，并通过应用商店发布。</li> 
+ <li>Web到原生转换——使用JavaScript编写应用，并编译为原生应用。</li> 
+ <li>原生的JavaScript API——针对原生支持HTML5的平台编写应用，例如Firefox OS、Windows 8和chrome OS这样的平台。</li> 
+</ol>
+<p>该报告中的重要发现包括：</p>
 <ul> 
- <li>与其他基于WebKit的浏览器相比，Chrome使用了与众不同的多进程架构。此举给WebKit和Chrome都带来了一定的复杂性，延缓了创新的步伐。</li> 
- <li>Blink提供了一种选择，Google可以根据自身需要改进其浏览器性能，引入并行处理机制也是一个主要方向。</li> 
-</ul> 
-<p>简而言之，Google希望“像V8对JavaScript所做的改进一样，改进网络、渲染和布局。还记得V8之前的JS引擎吗？我们希望带来同样健康的创新，让使用各种浏览器的Web用户都能受益”。</p> 
-<p>看来Google希望能够根据自己的需要自由推动WebKit的开发，不必遵守WebKit的开发协议，而且能增强自己控制力更强的Chromium。要成为Blink的提交者（<a href="http://dev.chromium.org/getting-involved/become-a-committer">Committer</a>）或所有者（<a href="http://dev.chromium.org/developers/owners-files">Owner</a>），其他开发者必须遵从Google制定的指导原则。</p> 
-<p>Google的第一步是重新组织所继承的WebKit代码，“移除了7个构建系统，删除了7000多个文件——包含的代码超过450万行”。从长期来看，Google希望向Blink中引入一系列改进，包括：</p> 
+ <li>61%的开发者针对移动浏览器进行开发。</li> 
+ <li>在美国区Android Play的应用中，63%的应用无法使用HTML5针对移动浏览器开发，因为浏览器还没有实现这些应用需要的某些API 。</li> 
+ <li>在美国，37%的Android应用可以使用HTML5实现，而如果浏览器能够增加电源管理和WiFi相关API，那么这一数字将能够上升到58%。</li> 
+ <li>39%的开发者通过移动浏览器之外的其他三种市场路径创建HTML5应用。</li> 
+ <li>在美国，49%的Android应用可以使用原生应用封装的方式；63%可以使用Web到原生转换器的方式；而98%可以使用JavaScript的方式。</li> 
+</ul>
+<p>下图展示了HTML5吸引人的地方：</p>
+<p><img width="600" _p="true" _href="img://null" alt="" src="http://infoqstatic.com/resource/news/2013/11/mobile-html5/zh/resources/1111003.png" /></p>
+<p>而下图展现了开发者对HTML5的抱怨：</p>
+<p><img width="600" _p="true" _href="img://null" alt="" src="http://infoqstatic.com/resource/news/2013/11/mobile-html5/zh/resources/1111004.png" /></p>
+<p>许多开发者认为性能是HTML5的主要问题，但是在采访过这一领域的许多专家后，报告的作者认为性能是个“伪目标”，因为性能会随着硬件的更新换代、JavaScript编译器的升级、Asm.js等可选项的涌现等原因，而自动得到改善。在这些专家看来，首要问题与政治有关，更确切的说，由于主流浏览器供应商同时也是移动OS供应商，因此他们热衷于通过各自的应用商店来分发应用。Google鼓励原生的Chrome应用，Apple似乎打算实现最新的HTML5标准，但“却遗漏了性能相关的API，例如WebGL。”同样地，根据这份报告，HTML5的神话之一，是开发很简单；但实际上开发很难——因为缺少充足的调试和性能分析工具。</p>
+<p>在美国区的Google Play中，应用程序最常使用的API是：</p>
+<p><img width="600" _p="true" _href="img://null" alt="" src="http://infoqstatic.com/resource/news/2013/11/mobile-html5/zh/resources/1111005.png" /></p>
+<p>目前的HTML5 API标准的状态，以及浏览器的支持情况，如下图所示：</p>
+<p><img width="600" _p="true" _href="img://null" alt="" src="http://infoqstatic.com/resource/news/2013/11/mobile-html5/zh/resources/1111006.png" /></p>
+<p>如果某些特定API能够得以实现，那么对不同的市场路径造成的影响如下表所示。表中展现了如果拥有这些API，使用HTML5开发的应用数量将会上升的比例： </p>
+<table cellspacing="0" cellpadding="0" border="1"> 
+ <tbody> 
+  <tr> 
+   <td width="167" valign="top"> <p>市场路径</p> </td> 
+   <td width="167" valign="top"> <p>API</p> </td> 
+   <td width="167" valign="top"> <p>百分比</p> </td> 
+  </tr> 
+  <tr> 
+   <td width="167" valign="top"> <p>移动浏览器</p> </td> 
+   <td width="167" valign="top"> <p>电源管理</p> </td> 
+   <td width="167" valign="top"> <p>13%</p> </td> 
+  </tr> 
+  <tr> 
+   <td width="167" valign="top"> <p>原生应用包装</p> </td> 
+   <td width="167" valign="top"> <p>电源管理</p> </td> 
+   <td width="167" valign="top"> <p>12%</p> </td> 
+  </tr> 
+  <tr> 
+   <td width="167" valign="top"> <p>Web到原生转换</p> </td> 
+   <td width="167" valign="top"> <p>WiFi</p> </td> 
+   <td width="167" valign="top"> <p>21%</p> </td> 
+  </tr> 
+  <tr> 
+   <td width="167" valign="top"> <p>原生JavaScript API</p> </td> 
+   <td width="167" valign="top"> <p>日历</p> </td> 
+   <td width="167" valign="top"> <p>1.4%</p> </td> 
+  </tr> 
+ </tbody> 
+</table>
+<p></p>
+<p>针对HTML5领域，这份报告总结出的若干观察和推荐如下：</p>
 <ul> 
- <li><a href="http://www.chromium.org/developers/design-documents/oop-iframes">进程外的iframe</a>，支持在单独的沙盒进程中运行不同的页面组件。</li> 
- <li>更快、更简洁的网络，目前受限于“旧的Mac WebKit API条款而无法修改”。</li> 
- <li>将文档对象模型（DOM）整个移到JavaScript中。这有可能大大加快JavaScript DOM访问速度。</li> 
-</ul> 
-<p>Google还考虑了如下<a href="http://www.chromium.org/blink#new-features">可能的改进</a>：</p> 
-<ul> 
- <li>让WebCore了解多个进程内的历史记录信息（目前假定的是同步访问同一进程内的历史记录信息）</li> 
- <li>删除Widget树（原来受到Mac WebKit1的限制）</li> 
- <li>将WebCore分到多个模块中</li> 
- <li>尽可能让代码直接使用沙盒Platform API，代替WebCore/Platform API</li> 
- <li>建立一种更简洁、更严格的tree-gardening系统，避免每天需要两个全职工程师参与的情况</li> 
- <li>尝试把DOM移到JS堆中</li> 
- <li>增加对多核的利用（比如，改进HTML解析器、样式引擎和JavaScript解析器等模块）</li> 
- <li>去掉DOM中不够清晰的部分，这些部分可以做一些向后不兼容的修改，这样有利于提高性能或降低复杂性</li> 
- <li>在Mac Chrome中全部使用现代的、速度更快的tcmalloc</li> 
- <li>尝试增量式布局或并行布局</li> 
- <li>因为现在只有一个JavaScript引擎，所以可以移除ScriptValue/ScriptState等抽象概念，以此来修复内存泄漏问题</li> 
- <li>使用WebIDL替换WebKitIDL，移除定制的JavaScript绑定代码</li> 
- <li>改进WebCore，使之赶上DOM3 Event/[DOM]UI Event</li> 
-</ul> 
-<p>新浏览器引擎的出现引发了Web开发者的担忧，他们必须确保其代码能在新的浏览器上正确运行。为缓解开发者的焦虑，Google引入了与Mozilla开发Firefox类似的机制。</p> 
-<p>我们的目标是推动创新，改进兼容性，开放Web平台，同时避免加入很多特性，避免破坏与其他浏览器的兼容性。关于<a href="http://www.chromium.org/blink#new-features">新特性的添加</a>、<a href="http://www.chromium.org/blink#vendor-prefixes">厂商前缀（Vendor Prefix）的使用</a>，以及<a href="http://www.chromium.org/blink#compatibility">新特性何时才算足够稳定进而可以交付</a>等问题，我们面向开发者引入了强有力的策略。</p> 
-<p>Firefox今天所用的Gecko引擎并不是基于WebKit的，不过二者高度兼容。我们会采用与Mozilla类似的方式，提供一个独特但兼容的开源引擎。我们也会继续开放Bug跟踪和<a href="http://chromestatus.com/">实现状态</a>，开发者随时可以看到我们在干什么，并做出自己的贡献。</p> 
-<p>另一个重要策略与厂商前缀有关，Google不打算将其用于新特性中了：</p> 
-<p>与之相反，我们会暴露一个设置入口（在about:flags 中），以便支持实验性的DOM/CSS特性，用户可以在此看到新添加的特性，进而加以试用并提供反馈，很像目前使用的<a href="https://plus.google.com/+GoogleChromeDevelopers/posts/ffDPaPAMkMZ">“Experimental WebKit Features”标记</a>。只有当我们想看看这些特性能否稳定交付时，才会在dev/canary版本中默认启用。</p> 
-<p>对于遗留的与厂商前缀有关的特性，我们会继续使用-webkit-前缀，因为重命名所有前缀会给开发者带来不必要的麻烦。我们已经<a href="https://plus.google.com/+GoogleChromeDevelopers/posts/Rh1aMkzucgV">着手研究</a>实际中应用的HTML5和CSS3特性，借助调研数据，可以更好地指导我们如何可靠地弃用相关前缀所指定的属性和API。至于从WebKit继承而来的任何非标准特性（如-webkit-box-reflect），我们希望具体问题具体分析，随着时间的推移，将其标准化或是弃用。</p> 
-<p>至于一般性的Android和移动开发，Google希望“整个移动Web平台与Blink同步，甚至走在Blink的前面”。</p> 
-<p>之后WebKit就主要由Apple掌控了，这是Blink带来的副作用之一。Apple能否快速推进WebKit，使其跟上其他浏览器的步伐？我们拭目以待。</p> 
-<p>就在Google宣布Blink几小时前，<a href="http://blog.mozilla.org/blog/2013/04/03/mozilla-and-samsung-collaborate-on-next-generation-web-browser-engine/">Mozilla宣布</a>与Samsung合作，共同推进<a href="https://github.com/mozilla/servo">Servo</a>的开发。这是用<a href="http://www.infoq.com/news/2012/08/Interview-Rust;jsessionid=3ABA7518932403D75C88C6A0B53AD377">Rust</a>开发的一个并行浏览器项目，作为“利用明天速度更快的多核异构计算架构”的一种尝试。Servo是“完全从头开始重新构建的Web浏览器”，纳入了安全机制，并支持高度并行的硬件。</p> 
-<p>第一步是让它运行在Android/ARM上，到目前为止，Samsung的主要贡献是“Rust的ARM后端，以及支持Android交叉编译所必需的构建基础设施”。</p> 
-<p>目前，Servo是运行在Mac OS X和64位Linux上的一个原型浏览器引擎，因为它所用的编程语言尚未成熟，很可能还要承受成长之痛。Mozilla在同一天宣布了<a href="https://github.com/mozilla/rust/wiki/Doc-releases">Rust 0.6</a>，但该语言要达到稳定，至少还需要一年的时间。在此期间，他们要“争取完成Rust的第一个主要版本——完成库的清理、扩充和文档化，构建改进用户体验的工具，增强性能”。</p> 
-<p><b>查看英文原文</b>：<b><a href="http://www.infoq.com/news/2013/04/Google-Blink-Mozilla-Servo;jsessionid=3ABA7518932403D75C88C6A0B53AD377">Google, Opera Fork WebKit. Samsung Joins Firefox to Push Servo</a></b></p> 
-<p id="lastElm"></p><br><br><br><br><br><br></body></html>
+ <li>浏览器应该实现更多的HTML5 API，首先从电源管理和WiFi开始。开发者应该推动浏览器厂家实现更多的API。</li> 
+ <li>原生JavaScript应用需要标准化打包解决方案，以便实现一次打包就能在任何支持的平台上部署的目标。</li> 
+ <li>应该开发设备身份识别API，以减少与cookie和隐私相关的恐惧。</li> 
+ <li>开发者需要能够更好地获得HTML5相关知识，包括HTML5能够提供哪些能力、真正的优势和缺点。</li> 
+ <li>应该开发调试API，以便创建一系列调试工具。</li> 
+</ul>
+<p><strong>查看英文原文：</strong><a href="http://www.infoq.com/news/2013/11/mobile-html5">What’s the Problem with Mobile HTML5?</a></p><br><br><br><br><br><br></body></html>

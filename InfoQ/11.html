@@ -1,40 +1,20 @@
-<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>Apache Struts 1宣告退出舞台</h3><p>近日，Apache官方网站发布了关于Apache Struts 1 EOL（End-Of-Life）<a href="http://struts.apache.org/struts1eol-press.html">新闻稿</a>及<a href="http://struts.apache.org/struts1eol-announcement.html">通告</a>。该新闻稿指出，2013年4月5日，Apache Struts项目团队正式通知广大开发者，Struts 1.x开发框架结束使命，并且官方将不会继续提供支持。</p> 
-<p>Struts 1.x项目创建于2000年，最新版本1.3.10发布于2008年12月。同期，Struts社区将精力专注于推动Struts 2框架的发展，截止到2013年4月，已发布了23个版本。据通告称：</p> 
-<blockquote> 
- <p>此次宣告Struts 1.x退出舞台并不再提供支持，主要是因为缺少足够的志愿者来提供支持。</p> 
-</blockquote> 
-<p>于此同时，在<a href="http://struts.apache.org/struts1eol-press.html">新闻稿</a>中，Apache Struts团队强烈建议大家学习Struts 2框架，Struts 2更加现代、高度解耦、功能丰富且易于维护。就在3月，Apache Struts刚刚发布了2.3.12版，这个版本为维护版本，包含了一些很小的改进，如：</p> 
-<blockquote> 
- <ul> 
-  <li>重构所有验证器，可通过 OGNL 设置参数</li> 
-  <li>Tag 的 required 属性改名为 requiredLabel 支持 HTML5 的 required 属性</li> 
-  <li>三个新的 Tiles 插件，用于支持 Tiles 3 结果类型</li> 
-  <li>改进支持 JBoss 5 的 Convention 插件</li> 
- </ul> 
-</blockquote> 
-<p>此外，对于正在试用Struts 1.x的开发者或团队，Apache Struts团队就常见问题给出了回答：</p> 
-<p><strong>Struts 1.x不再提供支持后，现有资源如何处理？</strong></p> 
-<p>所有资源将会保留，Apache Struts首页将会提供相关文档的链接，同时也会保留Struts 1.x各个版本的下载地址。所有的Struts 1源代码均可在Apache Struts代码仓库中找到，并且永久保留。所有发布的Maven组件（Maven artifacts）均可通过Maven Central访问。</p> 
-<p><strong>如果以后发现和Struts 1.x相关的安全问题或严重的Bug，是否还会有相应的修复？</strong></p> 
-<p>目前来看，是不会的，这也是要宣布EOL的原因。既然现在已经宣布不再提供支持，开发者也需要寻找移植方案，将现有的Struts 1代码移植到其他Web框架上。</p> 
-<p><strong>现在是不是就需要将Struts 1从我的项目中删除？</strong></p> 
-<p>就目前Struts团队了解的情况来看，不必立即删除。然而需要意识到的是，未来将不会有针对安全和Bug问题的修复，一旦未来发现上述情况，开发团队需要自己来应对。</p> 
-<p><strong>如果需要将现有项目从Struts 1移植到其他Web框架，有什么推荐？</strong></p> 
-<p>您也许会意识到，目前为止Struts 1还没有直接的替代品。您需要根据现有代码的情况，来选择新的开发框架，并通过调整代码来适应新的框架。虽然有很多基于Action的Java Web开发框架都可以实现这个效果，但我们还是会推荐Struts 2。因为他更先进、高度解耦、功能丰富且更易于维护。他继承了Struts 1的核心理念，但在架构和API设计上要比Struts 1.x先进很多。此外，其他的替代框架也不错，如<a href="http://www.springsource.org/">Spring Web MVC</a>、<a href="http://www.grails.org/">Grails</a>或<a href="http://www.stripesframework.org/display/stripes/Home">Stripes</a>。</p> 
-<p><strong>如果想继续对Struts 1进行维护，我们可以做些什么？</strong>&nbsp;</p> 
-<p>可以随意的为Struts 1进行贡献。有两种方法：从现有代码建立分支并进行改进或吸引社区人士来继续推动Apache Struts项目。如果有足够的人愿意并且有能力来继续提供补丁、进行维护以及长期管理的话，我们认为有这样的支援者的情况下，或许Struts 1还有希望。</p> 
-<p>此消息一出，微博人士也纷纷感慨：</p> 
-<blockquote> 
- <p>蒼氵： 还记得进公司的第一件事就是把纯JSP的实现的功能用Struts1实现,好怀念啊.........感谢Struts1。</p> 
- <p>猫砂西瓜： 忘不了那一屏幕的form bean。</p> 
- <p>KDS-黑暗浪子： 逝去的总归要逝去，一切向前看。仔细想想，从03到07年我也用这个5年了。</p> 
- <p>Kaloo2010： 面试再问这个就有的说了。 识时务的马： 怀念一下，当初那个堆砌ActionForm的青葱岁月。</p> 
-</blockquote> 
-<p>此外，为了给读者提供更好的参考，InfoQ中文站上也为您准备了相关内容：</p> 
-<ul> 
- <li><a href="http://www.infoq.com/cn/spring;jsessionid=DD2FE476FFAEEED5A74EE6DFD28E8EC4">Spring相关的内容</a></li> 
- <li><a href="http://www.infoq.com/cn/grails;jsessionid=DD2FE476FFAEEED5A74EE6DFD28E8EC4">Grails相关的内容</a></li> 
- <li><a href="http://www.infoq.com/cn/minibooks/spring-ioc;jsessionid=DD2FE476FFAEEED5A74EE6DFD28E8EC4">迷你书：Spring的IoC容器</a></li> 
- <li><a href="http://www.infoq.com/cn/minibooks/grails;jsessionid=DD2FE476FFAEEED5A74EE6DFD28E8EC4">迷你书：Grails入门指南</a></li> 
-</ul> 
-<p id="lastElm"></p><br><br><br><br><br><br></body></html>
+<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>2013香港OpenStack峰会数据与资料汇总</h3><p>以下是2013年11月5日到8日期间，香港OpenStack峰会的一些数据、资料汇总整理。</p>
+<h3>官方数据：峰会现场</h3>
+<p>本次峰会共有来自50多个国家的3000多名参会者，分别来自690多家公司。有66%的参会者是第一次参加OpenStack峰会。</p>
+<h3>官方数据：OpenStack项目健康状态</h3>
+<p>目前OpenStack生态系统已经有269家公司参与，参与开发的独立开发者人数累计1633位，平均每月的贡献者人数为375人。在过去六个月间的Havana周期中，整个项目一共合并了2万多个patch，详细代码情况见<a href="http://activity.openstack.org/dash/releases/index.html?data_dir=data/havana">OpenStack Activity页面</a> 。</p>
+<p>OpenStack基金会在本次会前做了一个用户调查，调查结果被制作为一张信息图，包含数据如下：</p>
+<p>目前已知的OpenStack部署分布在56个国家的200多个城市中，其中美国超过了30个；英法德、中国、印度的部署数量分别超过了10个；俄罗斯、澳大利亚、西欧部分国家和拉美部分国家部署数量分别超过了4个；另外在墨西哥、非洲部分国家、东欧和北欧部分国家至少已经开展了一个OpenStack部署。</p>
+<p>OpenStack部署所在的行业按部署数量排序依次是IT行业、学术教育、电信、制片与多媒体、政府国防、制造业、零售、医疗、金融、消费品市场。选择OpenStack解决方案的首要原因是节省成本，之后依次为提高运维效率、开放的平台、底层可以有比较多技术选择的自由、以及能够帮助企业更好的创新。在部署OpenStack的企业中，有5000人以上的大企业占到了29%的比例，100人以下的小微型企业则占到了42%的比例。</p>
+<p>OpenStack上最常运行的应用依次为Web服务、QA测试环境、数据库、科研平台、持续集成和自动化测试系统、存储备份系统、虚拟桌面、数据挖掘和大数据处理、管理监控系统、高性能计算。</p>
+<p>按照部署类型划分，有60%的OpenStack部署都是作为企业内部私有云，还有17%是托管的私有云。公共云部署占15%，混合云部署占6%，剩下的2%是用于维护OpenStack社区自身运作的。</p>
+<p>在OpenStack部署工具当中，使用Puppet的最多，之后依次是DevStack、Chef、PackStack以及Crowbar和SaltStack。</p>
+<p>从Host OS来看，有55%的Ubuntu，24%的CentOS，10%的RHEL。从虚拟化来看，有62%的KVM，12%的XEN，8%的ESX，另外还有Xenserver（4%）、HyperV（3%）、LXC（4%）、QEMU（5%）、裸金属（2%）以及OpenVZ（1%）。</p>
+<p>网络的使用情况是42%的Open vSwitch，28%的Linux Bridge，10%的Cisco，6%的Nicira。存储的使用情况是31%的LVM，17%的Ceph，16%的NFC。</p>
+<p><img src="http://infoqstatic.com/resource/news/2013/11/openstack-summit-hk-recap/zh/resources/openstack-user-survey-infographic.png" width="500" alt="" _href="img://openstack-user-survey-infographic.png" _p="true" /></p>
+<h3>视频资料</h3>
+<p>本次峰会的演讲视频目前都已经上传到了<a href="http://www.youtube.com/user/OpenStackFoundation/videos">Youtube</a>上，在<a href="http://www.openstack.org/summit/openstack-summit-hong-kong-2013/session-videos/">峰会官网</a>上可以查询观看（目前尚未整理完毕，大家可以对照<a href="http://openstacksummitnovember2013.sched.org/">议程</a>在YouTube上面找对应的视频）。</p>
+<p>总体来讲，OpenStack峰会并非是单纯的技术会议，有很多议程跟商业模式和产品模式相关。下面从InfoQ中文站的角度，推荐一些适合大家快速了解OpenStack应用状况的议程。</p>
+<p><a href="http://www.openstack.org/summit/openstack-summit-hong-kong-2013/session-videos/presentation/canonical-keynote-building-business-value-through-interoperability">来自Canonical CEO Mark Shuttleworth的主题演讲</a>，对于演讲人而言是很好的学习典范。其演讲内容在之前的一篇<a href="http://www.infoq.com/cn/news/2013/11/ubuntu-cloud-openstack">InfoQ新闻</a>中已经进行过报道，主要覆盖了几个方面：不同虚拟化方案、存储方案、网络方案之间的互操作性，用于应用部署和扩展的Juju项目，OpenStack on ARM等。</p>
+<p>第二天<a href="http://www.openstack.org/summit/openstack-summit-hong-kong-2013/session-videos/presentation/openstack-china-spotlight-featuring-ctrip-iqiyi-and-qihoo-360">来自三个中国用户案例分享的主题演讲</a>：<a href="http://www.youtube.com/watch?v=VkALbeyVXGU">爱奇艺</a>、<a href="http://www.youtube.com/watch?v=CLQrNMP8Ru0">奇虎360</a>、<a href="http://www.youtube.com/watch?v=srAm9rrJ74Y">携程</a>。爱奇艺的私有云主要用于管理基础架构。<a href="http://www.infoq.com/cn/news/2013/11/openstack-in-360">奇虎360</a>的应用主要用于云杀毒、开发测试环境、在线游戏、build、Hadoop客户端、Web应用、基础架构工具等方面。携程方面在呼叫中心方面使用的比较多，主要是VDI的应用场景。他们有<a href="http://www.youtube.com/watch?v=owadO3MfC6I">一个议程专门分享他们的经验</a>。</p>
+<p><a href="http://www.openstack.org/summit/openstack-summit-hong-kong-2013/session-videos/presentation/red-hat-keynote-truth-happens">红帽的Keynote</a>介绍了<a href="https://wiki.openstack.org/wiki/TripleO">Triple-O项目</a>——用OpenStack来做OpenStack环境的安装、升级、维护的一个子项目，也被用于构建OpenStack项目的持续集成和自动化测试环境。演讲者在现场再次播放了Truth Happens这段经典视频，表达他对OpenStack项目的信心。</p><br><br><br><br><br><br></body></html>
