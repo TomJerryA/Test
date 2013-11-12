@@ -2,49 +2,52 @@
  <head></head> 
  <body>
   <div>
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/23.c">Migrando do Desenvolvimento Guiado por Dados para o Desenvolvimento Guiado por Dom&iacute;nio</a>Com uma grande experi&ecirc;ncia em data-driven development, Julie Lerman compartilha experi&ecirc;ncias da migra&ccedil;&atilde;o para o Domain-Driven Design em tr&ecirc;s artigos, com exemplos em C# usando o Entity Framework.
-  </div>
-  <div>
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/22.c">Confer&ecirc;ncia Web W3C Brasil: um evento voltado para os padr&otilde;es da Web</a>Nos dias 18 e 19 de novembro, em S&atilde;o Paulo, ocorrer&aacute; a 5&ordf; edi&ccedil;&atilde;o da Confer&ecirc;ncia Web W3C Brasil, que traz diversos especialistas web brasileiros. Ser&atilde;o abordados os principais padr&otilde;es da Open Web Platform, como HTML5, Web Components, API Web Speech, Web Sockets, al&eacute;m de um curso de Git, mesas de debates e tutoriais.
-  </div>
-  <div>
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/21.c">Crescente da Programa&ccedil;&atilde;o Reativa</a>A Programa&ccedil;&atilde;o Reativa baseia-se em fluxo de dados e propaga&ccedil;&atilde;o de mudan&ccedil;as, com o modelo de execu&ccedil;&atilde;o de uma linguagem de programa&ccedil;&atilde;o propagando automaticamente as mudan&ccedil;as atrav&eacute;s do fluxo de dados. Com a popularidade de arquiteturas orientada a eventos, escal&aacute;veis e interativas, tanto do lado do cliente quanto do servidor, o conceito de &quot;reatividade&quot; est&aacute; ganhando cada vez mais aten&ccedil;&atilde;o.
-  </div>
-  <div>
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/20.c">Google Espresso: Automatizando os testes de UI do Android nas nuvens</a>O Google abriu o c&oacute;digo fonte do Espresso, um framework de testes automatizado para Android que permite executar testes em m&aacute;quinas x86 na nuvem, em um ambiente multi-thread, resolvendo os problemas de concorr&ecirc;ncia associados aos testes de UI.
-  </div>
-  <div>
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/19.c">NetBeans 7.4 agora com suporte ao JDK 8 e Aplica&ccedil;&otilde;es Web Mobile</a>Depois de apresentado no JavaOne, a Oracle lan&ccedil;ou oficialmente o NetBeans 7.4. A nova vers&atilde;o permite que os desenvolvedores trabalhem com as vers&otilde;es pr&eacute;vias do JDK 8, adicionou suporte para a integra&ccedil;&atilde;o do HTML5 com aplica&ccedil;&otilde;es Java EE e fornece ferramentas para o desenvolvimento de aplica&ccedil;&otilde;es m&oacute;veis com o Apache Cordova.
-  </div>
-  <div>
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/18.c">Tudo sobre o Java 8</a>A TechEmpower, uma empresa de desenvolvimento de aplica&ccedil;&otilde;es customizadas com sede em El Segundo, Calif&oacute;rnia, postou recentemente um post chamado &quot;Tudo sobre o Java 8&quot;. No post h&aacute; um resumo completo das mudan&ccedil;as que o desenvolvedor encontrar&aacute; no Java 8. Aqui est&aacute; uma vis&atilde;o geral do post.
-  </div>
-  <div>
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/17.c">Appmaker: ferramenta para desenvolvimento de aplica&ccedil;&otilde;es m&oacute;veis usando HTML5</a>A Funda&ccedil;&atilde;o Mozilla lan&ccedil;ou recentemente a vers&atilde;o pr&eacute; alpha do Appmaker, uma aplica&ccedil;&atilde;o web que permite desenvolver e publicar facilmente aplica&ccedil;&otilde;es m&oacute;veis utilizando HTML5.
-  </div>
-  <div>
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/16.c">Apache Solr 4.5: suporte a dados distribu&iacute;dos customiz&aacute;vel e Faceted Multithread</a>Solr &eacute; uma plataforma de busca NoSQL fornecida em c&oacute;digo livre que &eacute; parte do projeto Lucene. No inicio de outubro a vers&atilde;o 4.5 foi lan&ccedil;ada e traz entre novos recursos, suporte a dados distribu&iacute;dos (sharding) customiz&aacute;vel inclusive por campo, faceted em multithread e a classe CloudSolrServer agora &eacute; capaz de endere&ccedil;ar diretamente o n&oacute; l&iacute;der no cen&aacute;rio distribu&iacute;do. Saiba mais sobre esta nova vers&atilde;o
-  </div>
-  <div>
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/15.c">Pol&ecirc;mica sobre escalabilidade do MongoDB: 100 GB s&atilde;o uma barreira?</a>Um controverso post da MongoDB (antiga 10Gen) reacendeu desconfian&ccedil;as da comunidade em rela&ccedil;&atilde;o a tecnologias NoSQL. No texto s&atilde;o apontadas considera&ccedil;&otilde;es relativas &agrave; escalabilidade do MongoDB, especialmente em bases de dados maiores que 100 GB.
-  </div>
-  <div>
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/14.c">Firefox OS: Hist&oacute;rico e contexto do lan&ccedil;amento</a>Robert Nyman, evangelista t&eacute;cnico da Mozilla, comenta sobre a hist&oacute;ria do Boot to Gecko e sua evolu&ccedil;&atilde;o at&eacute; o lan&ccedil;amento do Firefox OS; aborda a arquitetura, as Web APIs, simulador e como publicar aplica&ccedil;&otilde;es no Firefox OS.
-  </div>
-  <div>
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/13.c">OSGi: Foco no JavaScript e Nativo</a>O aumento da popularidade de aplica&ccedil;&otilde;es modulares, poliglotas, reiniciou a discuss&atilde;o na OSGi Alliance no sentido de oferecer uma linguagem padr&atilde;o e uma vers&atilde;o independente de ambiente de execu&ccedil;&atilde;o.
-  </div>
-  <div>
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/12.c">Agilidade solit&aacute;ria: tornando-se Agile antes da pr&oacute;pria equipe</a>&Eacute; comum que organiza&ccedil;&otilde;es realizem uma transforma&ccedil;&atilde;o &aacute;gil que atinge toda uma equipe ou departamento. Mas existem profissionais que come&ccedil;am a utilizar pr&aacute;ticas &aacute;geis individualmente, ou que trabalham de forma &aacute;gil em equipes de apenas uma pessoa. Como essas pessoas podem adotar pr&aacute;ticas &aacute;geis e quais os tipos de benef&iacute;cios que podem obter com isso?
-  </div>
-  <div>
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/11.c">Agile nos Correios dos EUA: a experi&ecirc;ncia do MTEOR</a>Conhe&ccedil;a a experi&ecirc;ncia dos Correios dos Estados Unidos, que adotaram o Agile em um grande projeto, com resultados muito positivos at&eacute; agora.
-  </div>
-  <div>
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/10.c">A flexibilidade do Agile: ponto forte ou calcanhar de Aquiles?</a>Ser&aacute; que o princ&iacute;pio &quot;responder a mudan&ccedil;as mais do que seguir um plano&quot; &eacute; um ponto forte ou uma flexibilidade que n&atilde;o funciona na pr&aacute;tica? O que acontece com projetos &aacute;geis com dificuldades em gerenciar mudan&ccedil;as e clientes esperando flexibilidade demais? Ser&aacute; que o Agile n&atilde;o cumpre suas promessas, ou &eacute; a forma que as equipes e organiza&ccedil;&otilde;es t&ecirc;m adotado o Agile que causa os problemas?
-  </div>
-  <div>
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/9.c">MVP = aprendizado inteligente</a>Steve Blank explica que o objetivo real de um MVP &eacute; dar in&iacute;cio a um processo de aprendizado, n&atilde;o criar a vers&atilde;o que seja menor e mais barata de um produto final. Conhe&ccedil;a mais sobre as ideias de blank e outras opini&otilde;es da comunidade.
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/24.c">XML vs JSON: A diferen&ccedil;a de desempenho era apenas um boato?</a>Muitas das suposi&ccedil;&otilde;es sobre o qu&atilde;o lento, dispendioso e &quot;gordo&quot; o XML &eacute; se comparado &agrave; leveza do JSON, n&atilde;o foram sustentadas pelo teste feito por David Lee, engenheiro l&iacute;der na Marklogic, ap&oacute;s a execu&ccedil;&atilde;o de um experimento &quot;crowd sourcing&quot; com 33 documentos diferentes e aproximadamente 1200 testes, em uma grande quantidade de navegadores e sistemas operacionais.
+  </div> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/23.c">Migrando do Desenvolvimento Guiado por Dados para o Desenvolvimento Guiado por Dom&iacute;nio</a>Com uma grande experi&ecirc;ncia em data-driven development, Julie Lerman compartilha experi&ecirc;ncias da migra&ccedil;&atilde;o para o Domain-Driven Design em tr&ecirc;s artigos, com exemplos em C# usando o Entity Framework. 
+  </div> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/22.c">Confer&ecirc;ncia Web W3C Brasil: um evento voltado para os padr&otilde;es da Web</a>Nos dias 18 e 19 de novembro, em S&atilde;o Paulo, ocorrer&aacute; a 5&ordf; edi&ccedil;&atilde;o da Confer&ecirc;ncia Web W3C Brasil, que traz diversos especialistas web brasileiros. Ser&atilde;o abordados os principais padr&otilde;es da Open Web Platform, como HTML5, Web Components, API Web Speech, Web Sockets, al&eacute;m de um curso de Git, mesas de debates e tutoriais. 
+  </div> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/21.c">Crescente da Programa&ccedil;&atilde;o Reativa</a>A Programa&ccedil;&atilde;o Reativa baseia-se em fluxo de dados e propaga&ccedil;&atilde;o de mudan&ccedil;as, com o modelo de execu&ccedil;&atilde;o de uma linguagem de programa&ccedil;&atilde;o propagando automaticamente as mudan&ccedil;as atrav&eacute;s do fluxo de dados. Com a popularidade de arquiteturas orientada a eventos, escal&aacute;veis e interativas, tanto do lado do cliente quanto do servidor, o conceito de &quot;reatividade&quot; est&aacute; ganhando cada vez mais aten&ccedil;&atilde;o. 
+  </div> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/20.c">Google Espresso: Automatizando os testes de UI do Android nas nuvens</a>O Google abriu o c&oacute;digo fonte do Espresso, um framework de testes automatizado para Android que permite executar testes em m&aacute;quinas x86 na nuvem, em um ambiente multi-thread, resolvendo os problemas de concorr&ecirc;ncia associados aos testes de UI. 
+  </div> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/19.c">NetBeans 7.4 agora com suporte ao JDK 8 e Aplica&ccedil;&otilde;es Web Mobile</a>Depois de apresentado no JavaOne, a Oracle lan&ccedil;ou oficialmente o NetBeans 7.4. A nova vers&atilde;o permite que os desenvolvedores trabalhem com as vers&otilde;es pr&eacute;vias do JDK 8, adicionou suporte para a integra&ccedil;&atilde;o do HTML5 com aplica&ccedil;&otilde;es Java EE e fornece ferramentas para o desenvolvimento de aplica&ccedil;&otilde;es m&oacute;veis com o Apache Cordova. 
+  </div> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/18.c">Tudo sobre o Java 8</a>A TechEmpower, uma empresa de desenvolvimento de aplica&ccedil;&otilde;es customizadas com sede em El Segundo, Calif&oacute;rnia, postou recentemente um post chamado &quot;Tudo sobre o Java 8&quot;. No post h&aacute; um resumo completo das mudan&ccedil;as que o desenvolvedor encontrar&aacute; no Java 8. Aqui est&aacute; uma vis&atilde;o geral do post. 
+  </div> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/17.c">Appmaker: ferramenta para desenvolvimento de aplica&ccedil;&otilde;es m&oacute;veis usando HTML5</a>A Funda&ccedil;&atilde;o Mozilla lan&ccedil;ou recentemente a vers&atilde;o pr&eacute; alpha do Appmaker, uma aplica&ccedil;&atilde;o web que permite desenvolver e publicar facilmente aplica&ccedil;&otilde;es m&oacute;veis utilizando HTML5. 
+  </div> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/16.c">Apache Solr 4.5: suporte a dados distribu&iacute;dos customiz&aacute;vel e Faceted Multithread</a>Solr &eacute; uma plataforma de busca NoSQL fornecida em c&oacute;digo livre que &eacute; parte do projeto Lucene. No inicio de outubro a vers&atilde;o 4.5 foi lan&ccedil;ada e traz entre novos recursos, suporte a dados distribu&iacute;dos (sharding) customiz&aacute;vel inclusive por campo, faceted em multithread e a classe CloudSolrServer agora &eacute; capaz de endere&ccedil;ar diretamente o n&oacute; l&iacute;der no cen&aacute;rio distribu&iacute;do. Saiba mais sobre esta nova vers&atilde;o 
+  </div> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/15.c">Pol&ecirc;mica sobre escalabilidade do MongoDB: 100 GB s&atilde;o uma barreira?</a>Um controverso post da MongoDB (antiga 10Gen) reacendeu desconfian&ccedil;as da comunidade em rela&ccedil;&atilde;o a tecnologias NoSQL. No texto s&atilde;o apontadas considera&ccedil;&otilde;es relativas &agrave; escalabilidade do MongoDB, especialmente em bases de dados maiores que 100 GB. 
+  </div> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/14.c">Firefox OS: Hist&oacute;rico e contexto do lan&ccedil;amento</a>Robert Nyman, evangelista t&eacute;cnico da Mozilla, comenta sobre a hist&oacute;ria do Boot to Gecko e sua evolu&ccedil;&atilde;o at&eacute; o lan&ccedil;amento do Firefox OS; aborda a arquitetura, as Web APIs, simulador e como publicar aplica&ccedil;&otilde;es no Firefox OS. 
+  </div> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/13.c">OSGi: Foco no JavaScript e Nativo</a>O aumento da popularidade de aplica&ccedil;&otilde;es modulares, poliglotas, reiniciou a discuss&atilde;o na OSGi Alliance no sentido de oferecer uma linguagem padr&atilde;o e uma vers&atilde;o independente de ambiente de execu&ccedil;&atilde;o. 
+  </div> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/12.c">Agilidade solit&aacute;ria: tornando-se Agile antes da pr&oacute;pria equipe</a>&Eacute; comum que organiza&ccedil;&otilde;es realizem uma transforma&ccedil;&atilde;o &aacute;gil que atinge toda uma equipe ou departamento. Mas existem profissionais que come&ccedil;am a utilizar pr&aacute;ticas &aacute;geis individualmente, ou que trabalham de forma &aacute;gil em equipes de apenas uma pessoa. Como essas pessoas podem adotar pr&aacute;ticas &aacute;geis e quais os tipos de benef&iacute;cios que podem obter com isso? 
+  </div> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/11.c">Agile nos Correios dos EUA: a experi&ecirc;ncia do MTEOR</a>Conhe&ccedil;a a experi&ecirc;ncia dos Correios dos Estados Unidos, que adotaram o Agile em um grande projeto, com resultados muito positivos at&eacute; agora. 
+  </div> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/10.c">A flexibilidade do Agile: ponto forte ou calcanhar de Aquiles?</a>Ser&aacute; que o princ&iacute;pio &quot;responder a mudan&ccedil;as mais do que seguir um plano&quot; &eacute; um ponto forte ou uma flexibilidade que n&atilde;o funciona na pr&aacute;tica? O que acontece com projetos &aacute;geis com dificuldades em gerenciar mudan&ccedil;as e clientes esperando flexibilidade demais? Ser&aacute; que o Agile n&atilde;o cumpre suas promessas, ou &eacute; a forma que as equipes e organiza&ccedil;&otilde;es t&ecirc;m adotado o Agile que causa os problemas? 
+  </div> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/9.c">MVP = aprendizado inteligente</a>Steve Blank explica que o objetivo real de um MVP &eacute; dar in&iacute;cio a um processo de aprendizado, n&atilde;o criar a vers&atilde;o que seja menor e mais barata de um produto final. Conhe&ccedil;a mais sobre as ideias de blank e outras opini&otilde;es da comunidade. 
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/8.c">Agile nas empresas: indo al&eacute;m do setor de desenvolvimento</a>As pr&aacute;ticas &aacute;geis est&atilde;o sendo utilizadas em aspectos dos neg&oacute;cios diferentes do desenvolvimento de software, de acordo com a Gartner. Conhe&ccedil;a tend&ecirc;ncias no uso do Agile em toda a empresa, com exemplos nas &aacute;reas de marketing, vendas e servi&ccedil;os. 
@@ -147,9 +150,6 @@
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/25.c">Spring para Apache Hadoop 1.0: Big Data mais perto do Spring</a>A SpringSource lan&ccedil;ou a vers&atilde;o 1.0 do Spring para Apache Hadoop. O projeto permite que desenvolvedores escrevam aplica&ccedil;&otilde;es Hadoop integradas ao Spring Framework e facilita a integra&ccedil;&atilde;o com o Spring Batch e Spring Integration. O Spring para Apache Hadoop &eacute; um subprojeto do Spring Data. 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/24.c">Homeopatia Arquitetural: voc&ecirc; devia ter feito como eu disse</a>Steve Jones, da CapGemini volta ao tema da perda de &ecirc;nfase em pensamentos e reflex&atilde;o, e o foco exclusivo em tecnologia e opini&otilde;es pouco embasadas. 
-  </div>                
+  </div>  
  </body>
 </html>

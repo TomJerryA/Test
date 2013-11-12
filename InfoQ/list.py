@@ -1,50 +1,50 @@
 <html>
  <head></head> 
- <body>
-  <div>
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/44.py">Internet Explorer 11、新しいF12ツール、タッチ改善、WebGL、WebCrypto 、ハードウェア3Dサポートを追加</a>Windows 8.1に搭載されたInternet Explorer 11には、タッチ改善に加えて、新しいF12ツール、WebGL、ハードウェア3Dサポートが含まれている。
-  </div>
-  <div>
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/43.py">Netty 4がTwitterのGCオーバーヘッドを1/5に削減</a>Netty Projectは７月，Netty 4の最初のバージョンをリリースした。おもにガベージコレクションのオーバーヘッドを削減することによって，大幅なパフォーマンスの向上を実現している。TwitterはNetty 4を組み込むことで５倍のパフォーマンス向上を実現したが，いくつか問題もあった。
-  </div>
-  <div>
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/42.py">Phusion Passengerアプリサーバ、Node.jsをサポート</a>もともとRubyをターゲットにしていた人気のあるWebアプリケーションサーバ、Phusion PassengerがNode.jsアプリをサポートした。この機能は今年初めに、Passengerのエンタープライズ版で取り入れられたが、フリー版の4.0.21リリースでオープンソース化された。Phusion PassengerはNode.jsにスケーリング、統計情報、監視、マルチテナント性をもたらす。InfoQはPhusionのCTO、Hongli Lai氏に話を聞いた。
-  </div>
-  <div>
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/41.py">Google Espresso: Android UI のクラウド型高速自動化テスト</a>Google 製のオープンソース Espressoは、Android の自動テストフレームワークであり、クラウド上の x86 マシンでマルチスレッド環境でテストを実行することができ、UIテストに関する平行性の課題を解決する。
-  </div>
-  <div>
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/40.py">Google Play 4.0、さらにサービスを追加</a>Play ServicesはGingerbreadよりも前のデバイスをサポートしなくなる。Play 4.0にはMobile Ads SDKが含まれ、Wallet Instant Buyにより新しい統合購入システムが提供される。
-  </div>
-  <div>
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/39.py">EclipseのM2Mプロジェクト</a>EclipseConでBenjamin Cab&eacute;氏がEclipseのマシン to マシン(m2m)プロジェクトを紹介した。
-  </div>
-  <div>
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/38.py">なぜGerritはBuckを選んだのか</a>６ヶ月前，Gerritプロジェクトは既存のMavenビルドから，Buckをベースとしたビルドシステムへの移行を開始した。そして2.8ストリームでは，Buckがデフォルトのビルドになった。EclipseConでShawn Pearce氏はこの切り替えの理由に加えて，ビルドシステム自体についても少し説明した。Buckの内容とMavenに対するアドバンテージについて，本文から読み取ってほしい。
-  </div>
-  <div>
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/37.py">2.0リリースでクラウドへと向かうEclipse Code Recommender</a>Eclipse Code Recommenders 2.0がリリースされた。リコメンデーションを拡張し，他ユーザのスニペットを取得する新しいクラウドソーシング機構に加えて，開発途中ながらJavaDocの&quot;関連項目&quot;コールの記述を動的ドキュメントによってアノテートするテクノロジも備えている。詳細は本文で確認してほしい。
-  </div>
-  <div>
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/36.py">ゼロから始めるドメイン駆動設計</a>ドメインはビジネスを説明し、ドメイン駆動設計では、ドメインはアプリケーションの最も重要な構成要素だ、とAndras Nemes氏がドメイン駆動設計に基づいたウェブサービス開発についての連載ブログ記事の初回で説明している。氏の目的はDDDのすべてを説明するのではなく、初学者でも学習できるようにすることだ。
-  </div>
-  <div>
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/35.py">CiscoがH.264デコーダをオープンソース化，Mozilla Firefoxで使用可能に</a>Ciscoが次週のIETF議会に先立って，H.264デコーダをMozilla Firefoxで利用可能なBSDライセンスで公開すると発表した。これによってすべてのブラウザがH.264をサポート可能になる。
-  </div>
-  <div>
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/34.py">Eclipse財団がヨーロッパ支部をローンチ</a>本日のEclipseCon EuropeにおいてEclipse財団は，ヨーロッパのオープンソースコミュニティのサポートと促進を目的として，同財団のヨーロッパ支部を設立すると発表した。詳細は本文を参照してほしい。
-  </div>
-  <div>
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/33.py">GOTO Berlin: 自分の公開APIを使うときの課題</a>自分のAPIを使うことが課題になることがある。GOTO Berlinカンファレンスで、Soundcloudのエンジニアリングディレクター、Phil Calcado氏が巨大なRailsアプリケーションを管理、再構築した経験について語った。
-  </div>
-  <div>
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/32.py">QConSF 2013のスケジュールが公開</a>なぜしっかりとチューニングされたシステムが、優れているが未熟なシステムよりも高性能なのか。FacebookのKeith Adams氏がQCon San Franciscoのキーノートでこの質問に答える。カンファレンスのスケジュールが決まり、昨年より40％多い参加者が見込まれている。3週間前だが、10月25日までに参加登録すれば400ドル割引される。
-  </div>
-  <div>
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/31.py">Docker, Inc: dotCloud、オールインワンのコンテナ技術に賭ける</a>PaaSプロバイダのdotCloudが、自らの最新オープンソーステクノロジーに合わせて社名を変更した。Docker, IncはスタンドアロンのPaaSプロダクトを提供し続けるが、社名と同じソフトウェアの成長と商業化にそのフォーカスを移すことになる。Dockerの急激な成長とプロダクトの向かう先について、CEOのBen Golub氏に話を聞いた。
-  </div>
-  <div>
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/30.py">C++アプリケーションにOSGi APIを提供するC++ Micro Services</a>EclipseCon EuropeでSascha Zelzer氏がC++ Micro Servicesプロジェクトを発表した。標準OSGiレイヤにおける同種のAPIに倣って，C++プログラムにOSGiサービスレイヤを提供することが目標だ。詳細は本文を読んで確認してほしい。
+ <body> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/44.py">Internet Explorer 11、新しいF12ツール、タッチ改善、WebGL、WebCrypto 、ハードウェア3Dサポートを追加</a>Windows 8.1に搭載されたInternet Explorer 11には、タッチ改善に加えて、新しいF12ツール、WebGL、ハードウェア3Dサポートが含まれている。 
+  </div> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/43.py">Netty 4がTwitterのGCオーバーヘッドを1/5に削減</a>Netty Projectは７月，Netty 4の最初のバージョンをリリースした。おもにガベージコレクションのオーバーヘッドを削減することによって，大幅なパフォーマンスの向上を実現している。TwitterはNetty 4を組み込むことで５倍のパフォーマンス向上を実現したが，いくつか問題もあった。 
+  </div> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/42.py">Phusion Passengerアプリサーバ、Node.jsをサポート</a>もともとRubyをターゲットにしていた人気のあるWebアプリケーションサーバ、Phusion PassengerがNode.jsアプリをサポートした。この機能は今年初めに、Passengerのエンタープライズ版で取り入れられたが、フリー版の4.0.21リリースでオープンソース化された。Phusion PassengerはNode.jsにスケーリング、統計情報、監視、マルチテナント性をもたらす。InfoQはPhusionのCTO、Hongli Lai氏に話を聞いた。 
+  </div> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/41.py">Google Espresso: Android UI のクラウド型高速自動化テスト</a>Google 製のオープンソース Espressoは、Android の自動テストフレームワークであり、クラウド上の x86 マシンでマルチスレッド環境でテストを実行することができ、UIテストに関する平行性の課題を解決する。 
+  </div> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/40.py">Google Play 4.0、さらにサービスを追加</a>Play ServicesはGingerbreadよりも前のデバイスをサポートしなくなる。Play 4.0にはMobile Ads SDKが含まれ、Wallet Instant Buyにより新しい統合購入システムが提供される。 
+  </div> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/39.py">EclipseのM2Mプロジェクト</a>EclipseConでBenjamin Cab&eacute;氏がEclipseのマシン to マシン(m2m)プロジェクトを紹介した。 
+  </div> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/38.py">なぜGerritはBuckを選んだのか</a>６ヶ月前，Gerritプロジェクトは既存のMavenビルドから，Buckをベースとしたビルドシステムへの移行を開始した。そして2.8ストリームでは，Buckがデフォルトのビルドになった。EclipseConでShawn Pearce氏はこの切り替えの理由に加えて，ビルドシステム自体についても少し説明した。Buckの内容とMavenに対するアドバンテージについて，本文から読み取ってほしい。 
+  </div> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/37.py">2.0リリースでクラウドへと向かうEclipse Code Recommender</a>Eclipse Code Recommenders 2.0がリリースされた。リコメンデーションを拡張し，他ユーザのスニペットを取得する新しいクラウドソーシング機構に加えて，開発途中ながらJavaDocの&quot;関連項目&quot;コールの記述を動的ドキュメントによってアノテートするテクノロジも備えている。詳細は本文で確認してほしい。 
+  </div> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/36.py">ゼロから始めるドメイン駆動設計</a>ドメインはビジネスを説明し、ドメイン駆動設計では、ドメインはアプリケーションの最も重要な構成要素だ、とAndras Nemes氏がドメイン駆動設計に基づいたウェブサービス開発についての連載ブログ記事の初回で説明している。氏の目的はDDDのすべてを説明するのではなく、初学者でも学習できるようにすることだ。 
+  </div> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/35.py">CiscoがH.264デコーダをオープンソース化，Mozilla Firefoxで使用可能に</a>Ciscoが次週のIETF議会に先立って，H.264デコーダをMozilla Firefoxで利用可能なBSDライセンスで公開すると発表した。これによってすべてのブラウザがH.264をサポート可能になる。 
+  </div> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/34.py">Eclipse財団がヨーロッパ支部をローンチ</a>本日のEclipseCon EuropeにおいてEclipse財団は，ヨーロッパのオープンソースコミュニティのサポートと促進を目的として，同財団のヨーロッパ支部を設立すると発表した。詳細は本文を参照してほしい。 
+  </div> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/33.py">GOTO Berlin: 自分の公開APIを使うときの課題</a>自分のAPIを使うことが課題になることがある。GOTO Berlinカンファレンスで、Soundcloudのエンジニアリングディレクター、Phil Calcado氏が巨大なRailsアプリケーションを管理、再構築した経験について語った。 
+  </div> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/32.py">QConSF 2013のスケジュールが公開</a>なぜしっかりとチューニングされたシステムが、優れているが未熟なシステムよりも高性能なのか。FacebookのKeith Adams氏がQCon San Franciscoのキーノートでこの質問に答える。カンファレンスのスケジュールが決まり、昨年より40％多い参加者が見込まれている。3週間前だが、10月25日までに参加登録すれば400ドル割引される。 
+  </div> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/31.py">Docker, Inc: dotCloud、オールインワンのコンテナ技術に賭ける</a>PaaSプロバイダのdotCloudが、自らの最新オープンソーステクノロジーに合わせて社名を変更した。Docker, IncはスタンドアロンのPaaSプロダクトを提供し続けるが、社名と同じソフトウェアの成長と商業化にそのフォーカスを移すことになる。Dockerの急激な成長とプロダクトの向かう先について、CEOのBen Golub氏に話を聞いた。 
+  </div> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/30.py">C++アプリケーションにOSGi APIを提供するC++ Micro Services</a>EclipseCon EuropeでSascha Zelzer氏がC++ Micro Servicesプロジェクトを発表した。標準OSGiレイヤにおける同種のAPIに倣って，C++プログラムにOSGiサービスレイヤを提供することが目標だ。詳細は本文を読んで確認してほしい。 
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/29.py">自己組織型アジャイルチームにおけるリーダシップ</a>自己組織型アジャイルチームを実践する組織には，奉仕型リーダシップでチームを支援し，チーム自身が継続的な向上を学ぶように指導，助言できるマネージャが必要だ。 
@@ -150,6 +150,6 @@
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/45.py">MongoDBがセキュリティの改善、テキスト検索、パフォーマンス向上を実現</a>MongoDB2.4は最近、テキスト検索、ハッシュベースのシャーディング、GeoJSONサポートによる優れた地理空間機能、そしていくつかのパフォーマンス改善とツーリング群の改善を行なって、リリースされた。我々は、またロードマップ上の次のリリースが何であるのかを10genと話した。 
-  </div>                
+  </div> 
  </body>
 </html>
