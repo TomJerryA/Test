@@ -1,20 +1,12 @@
-<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>WCF Data Services 5.4.0－Atomペイロードにクライアントフックとインスタンスアノテーション</h3><p><a target="_blank" href="http://www.infoq.com/news/2013/03/wcf-data-services-5-4-0;jsessionid=7925EF0BCAD7D8BC56968F2CB32DE45C"><em>原文(投稿日：2013/03/27)へのリンク</em></a></p> 
-<div class="clearer-space">
- &nbsp;
-</div> 
-<div id="newsContent"> 
- <p><a target="_blank" href="http://blogs.msdn.com/b/astoriateam/archive/2013/03/26/wcf-data-services-5-4-0-prerelease.aspx">Microsoft</a> は、<a target="_blank" href="https://nuget.org/packages/Microsoft.Data.Services/5.4.0-rc1">WCF Data Services 5.4.0</a>のリリース候補（プレリリース）バージョンをリリースしたが、クライアントのデシリアライズ、シリアライズフック、<a target="_blank" href="http://www.odata.org/documentation/atom-format/">atomペイロード</a>のインスタンスアノテーション、インスタンスアノテーションのクライント消費、更にAtomとJSONフォーマット間の簡単化されたトランジションがサポートされている。<br /> <br /> クライアントのデシリアライズとシリアライズフックは、ワイヤータイプやプロパティ名を変更するような幾つもの様々なシナリオを可能にする拡張ポイントを提供する。 新リリースは、例えば Atomペイロードのインスタンスアノテーションをサポートする。これはODataフィードの拡張フィーチャであり、ODataのリクエストとレスポンスがフィード、単一のエンティティとプロパティを対象にしたアノテーションをつけることができるようになる。<br /> <br /> WCF Data Services 5.4.0は、クライアントにAPIを追加し、インスタンスアノテーションがそれらを使用できるようした。また Preferヘッダーを介して、クライアントが関係するのがどのインスタンスアノテーション化を示す機能を提供している。このおかげで、odata.includeアノテーション プレファレンスを重要視するODataサービスからのレスポンスを効率化できる。またAtomと<a target="_blank" href="http://www.json.org/">JSON</a>フォーマット間の変換を簡単にする新機能も含まれている。<br /> <br /> WCF Data Services 5.4.0は、以下のシナリオにおける問題の解決を提供する、幾つものバグ修正を行なっている。</p> 
- <ul> 
-  <li>もし新しいJSONフォーマットが使われ、タイプリゾルバーが提供されない場合、複雑な値のコレクションを読み込むと失敗する時があった</li> 
-  <li>ODataLibはIDと編集リンクにおけるリテラル値をエスケープできなかった</li> 
-  <li>application/json;odata=nometadataにしてサービスドキュメントをリクエストすると失敗する</li> 
-  <li>タイプリゾルバー無しで新しいJSONフォーマットを使うと、派生型で問題を起こす</li> 
-  <li>クライアント上のLINKプロバイダは、複合キーを持つ派生型でキー式ではなく$filter を生成する</li> 
-  <li>WCF DS クライアントで、大文字と小文字を区別する照合を必要とするヘッダーがある</li> 
-  <li>新しいJSONフォーマットをリクエストすると、Atomフォーマットを使ったエラーになることがある</li> 
-  <li>OData v1/v2 ペイロードのPATCHリクエストが405ではなく500エラーを返す</li> 
- </ul> 
- <p>最新リリースでは、また<a target="_blank" href="http://odata.codeplex.com/wikipage?title=ODataLib">ODataLib</a>のカレント項目を追跡するのが簡単になり、 EntityStateとETagを設定できないために、幾つかの操作でわざわざエンティティをデタッチし、そしてアタッチしなければならない問題が修正されている。プレリリースバージョンは、また.NET Framework 4.0, Silverlight 4.0が対象で、幾つかの言語に既にローカライズされている。</p> 
- <p id="lastElm">&nbsp;</p> 
-</div> 
-<p id="lastElm"></p><br><br><br><br><br><br></body></html>
+<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>GOTO Berlin: 自分の公開APIを使うときの課題</h3><p><a target="_blank" href="http://www.infoq.com/news/2013/10/gotober-using-own-public-api"><em>原文(投稿日：2013/10/21)へのリンク</em></a></p>
+<div class="article_page_left news_container text_content_container"> 
+ <div class="text_info"> 
+  <p>自分の<a href="http://en.wikipedia.org/wiki/API">API</a>を使うことが課題になることがある。<a href="http://gotocon.com/berlin-2013/">GOTO Berlin</a>カンファレンスで、<a href="https://soundcloud.com/">Soundcloud</a>のエンジニアリングディレクター、<a href="http://philcalcado.com/">Phil Calcado</a>氏が巨大なRailsアプリケーションを管理、再構築した<a href="http://gotocon.com/berlin-2013/presentation/APIs: The Problems with Eating your Own Dog food">経験</a>について語った。<br /> Soundcloudは急速に成長しているが、彼は1年ほど前にリリースした新しいWebサイトの作成で経験した問題について語った。</p> 
+  <p>Soundcloudは<a href="http://rubyonrails.org/">Ruby on Rails</a>アプリケーションとしてスタートしたが、6年間拡張を繰り返して、雑然とした状態になっていた。問題の大部分はそのインフラストラクチャ、<a href="http://www.mysql.com/">MySQL</a>と<a href="http://memcached.org/">Memcached</a>を使った巨大なRails<a href="http://en.wikipedia.org/wiki/Monolithic_system">モノリス</a>にあった。<br /> 2010年、彼らは新しいプラットフォームの検討を開始した。そう考えるに至った一端は、Twitterによる<a href="https://blog.twitter.com/2010/tech-behind-new-twittercom">アーキテクチャの再設計</a>にあった。Soundcloudチームは、Twitterと同じように、公開APIを使ってバックエンドとおしゃべりする単一ページのJavaScriptアプリケーションを構築すればよいと考えた。最終的に、彼らは新しいWebサイトを構築することにした。バックエンドの経験は不足しているが熟練したフロントエンドJavaScript開発者たちを多数投じ、6、7ヶ月かけて、公開APIの上に新しいWebサイトを構築した。<br /> 彼らは非常に安定したアプリケーションを作ったが、リリース直前になって、Twitterと話す機会があった。彼らは新しいTwitterアーキテクチャとまったく同じ考えで、自分たちの新しいWebサイトをリリースしようとしていることを話した。ところが、Twitterの人は、新しい設計はそれほど良いアイデアではなかったことに気付いた、と答えた。実際、Twitterは後になって、大部分をサーバサイドレンダリングに<a href="https://blog.twitter.com/2012/improving-performance-twittercom">戻す</a>ことに決めた。</p> 
+  <p>このことでチームは興味深い状況に陥った。これは重要なインテグレーションだった。そのままリリースすべきだろうか、それともキャンセルすべきだろうか。Railsをよくわかっていたので、Railsが最初にダウンするだろうと考えて、多数のノードをセットアップした。ところが、新しい設計では1ページにつき3リクエストから100リクエスト以上必要になり、最初にダウンしたのは高可用性プロキシだった。それを修正すると、今度はmemcachedがダウンし、最終的にRailsとMySQLがダウンした。彼らはようやく基本的なアーキテクチャ問題があることに気付いた。</p> 
+  <p>早い段階で気付いたのは、アプリケーション全体を書き直せないことだった。Railsを使い続けるなら、高速なAPI、できるだけ高速に多数のリクエストを処理できるAPIが必要だった。彼らは巨大なRailsアプリケーションを小さなパーツに分割し、サービスという考えを取り入れた。驚いたことに、全体のパフォーマンスは変わらなかったが、パフォーマンスのボトルネックはデータベースからHTTPへと移った。結論としては、彼らは高速なRailsを必要としたということだ。</p> 
+  <p>コードを調べると、並行処理の余地がたくさんあることがわかった。Railsは並列性や並行性には適しておらず、彼らは<a href="http://twitter.github.io/finagle/">Finagle</a>のようなツールを使って非同期化することで、何とか並列性と並行性を得ようとした。おかげで、負荷は大幅に軽減され、非常に高速に結果を返せるようになった。</p> 
+  <p>リクエストを高速にさばけるようになると、彼らはネットワークについて調べた。依然として各ページのレンダリングには大量のリクエストを必要としたので、リクエスト数を減らす方法を模索した。その結果、1リクエストで数ページ分のデータを返すカスタムAPIを用意することにした。最終的に、彼らはモバイル向け、デスクトップ向け、パートナー向けの3つの専用APIを用意した。<br /> 現在抱えている最も興味深い設計課題は、いかにしてAPIをモデル化するかだ。今のところ、開発者はきめ細かなモバイル向けAPIと、経験に基づいたデスクトップ向けAPIを好んでいる。そのため、今のところ2つの異なるバックエンドを使っている。</p> 
+  <p>The <a href="http://gotocon.com/berlin-2013/">GOTO Berlin Conference 2013</a>はベルリンで初めて開催されるGOTOカンファレンスであり、420名の出席者と80名の講演者が参加する。</p> 
+ </div> 
+</div><br><br><br><br><br><br></body></html>

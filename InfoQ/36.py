@@ -1,17 +1,18 @@
-<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>Google が誓約特許に対する非訴訟を発表</h3><p><a target="_blank" href="http://www.infoq.com/news/2013/03/Google-Patents;jsessionid=E142004F31C27F017D6BB4FBA57C41B8"><em>原文(投稿日：2013/03/28)へのリンク</em></a></p> 
-<div class="clearer-space">
- &nbsp;
-</div> 
-<div id="newsContent"> 
- <p>先日発表した <a target="_blank" href="http://www.google.com/patents/opnpledge/pledge/">Open Patent Non-Assertion Pledge</a> (OPN) の下で Google は，誓約対象の特許を実装コードに含む可能性のあるフリーソフトウェアおよびオープンソースソフトウェアを開発，配布，利用する過程に関して，いかなる個人または団体に対しても訴訟を行わないと発表した。この誓約はオープンソースでないソフトウェアには適用されないが，&quot;対象特許に関して他のソフトウェア実装を検討する団体に対しても適切な対応&quot; を検討する用意がある，としている。</p> 
- <p>OPN には他の企業も参加可能だ。現時点では Cloudera，IBM，OIN (Open Invention Network) が，&quot;OPN Pledge への賛同と支持&quot; を表明している。</p> 
- <p>この誓約には撤回不能な法的拘束力があると解釈されるが，ただし &quot;特許侵害に対する告訴などの法的手段による受益者、あるいはそのような訴訟において直接的な金銭的利害を有するもの&quot; に対処する手段として誓約を破棄する権利は留保されている。したがって OPN を適用する企業、あるいは誓約の対象である特許を含む製品やサービスが法的攻撃を受けた場合、このような &quot;防衛的撤回&quot; が発動される可能性がある。</p> 
- <p>Google は <a target="_blank" href="http://www.google.com/patents/opnpledge/patents/">MapReduce 関連技術など10件の特許</a> を誓約の対象としているが、<a target="_blank" href="http://www.google.com/patents/opnpledge/faq/">さらに数を増やす予定だ</a>。</p> 
- <blockquote> 
-  <p>Google は今後、誓約対象の特許をさらに拡大したいと考えています。OPN Pledge 立ち上げ発表のノベルティとして、まずは知名度の高いテクノロジに関する特許を散発的に提供することにしました。今回の誓約に対する社会的評価を適切に判断し、今後の追加対象とする技術と特許の選択と時期の判断に役立てたいという考えからです。今後にご注目ください。</p> 
- </blockquote> 
- <p>Google は OPNを主導する理由として，&quot;オープンなインターネット – 真のイノベーションを守り、優れた製品とサービスを提供し続ける&quot; ことに対する責任をあげると同時に，その意図については，迫り来る &quot;特許攻撃&quot; と同社が呼ぶものからの防御にある，としている。</p> 
- <p>過去にも <a target="_blank" href="http://www-03.ibm.com/press/us/en/pressrelease/7473.wss">IBM が500件の特許</a> について，オープンソースに対する非係争誓約を行った例がある。また <a target="_blank" href="http://www.redhat.com/legal/patent_policy.html">Red Hat は，所有するすべての特許について同様な対応を行っている</a>。</p> 
- <p id="lastElm">&nbsp;</p> 
-</div> 
-<p id="lastElm"></p><br><br><br><br><br><br></body></html>
+<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>ゼロから始めるドメイン駆動設計</h3><p><a target="_blank" href="http://www.infoq.com/news/2013/10/ddd-ground-up"><em>原文(投稿日：2013/10/30)へのリンク</em></a></p>
+<div class="article_page_left news_container text_content_container"> 
+ <div class="text_info"> 
+  <p>ドメインはビジネスを説明する。ドメインは、企業活動を推進するコンセプトとロジックの集合だ。<a href="http://en.wikipedia.org/wiki/Domain-driven_design">ドメイン駆動設計</a>(DDD)でアプリケーションを作る場合、ドメインが最も重要な要素となる。.NETプラットフォームで開発を行っているスウェーデンのウェブ開発者である<a href="http://dotnetcodr.com/about/">Andras Nemes氏</a>はドメイン駆動設計の原則に従ったウェブサービス開発についての連載ブログ記事の<a href="http://dotnetcodr.com/2013/09/12/a-model-net-web-service-based-on-domain-driven-design-part-1-introduction/">初回</a>で このように説明している。</p> 
+  <p>テクノロジー駆動の手法では技術選択がドメインに影響を与えてしまうことが簡単に起きる。しかし、DDDでは方向が逆だ。ドメインはアプリケーションにとって最も重要な構成要素であり、技術はさまざまな形態をを取りうる実装の細部にすぎない。氏はドメインはビジネスの要件に反応し、ドメインの変化は技術の選択にも影響を及ぼす。</p> 
+  <p>氏は連載の目的はDDDのすべての側面をカバーすることではない、と明言している。氏の目的はDDDの最も重要な概念を盛り込んだ.NETソリューションを作成して、DDDに基づくプロジェクトのひな形として使ってもらうことだ。また、DDD初心者の開発者にも益があるように、取り上げるすべての概念について説明をしている。</p> 
+  <p>次のレイヤを備えたすべてのソリューションを提供することが目的だ。</p> 
+  <ul> 
+   <li>インフラストラクチャ: 横断的な関心事を乗せるインフラストラクチャサービス</li> 
+   <li>リポジトリ: データアクセスと永続化レイヤ</li> 
+   <li>ドメイン: ビジネスエンティティとロジックを備えたドメインレイヤ。アプリケーションの中心</li> 
+   <li>アプリケーションサービス: 利用者にアクションを提供する薄いレイヤ</li> 
+   <li>ウェブ: アプリケーションの利用者</li> 
+  </ul> 
+  <p>DDDツアーを始めるにあたって、氏はエンティティ、バリューオブジェクト、アグリゲートなどの主要な概念をガイドラインとともに説明している。さらに各レイヤの作成について連載に書いていくつもりだ。</p> 
+  <p>ドメインが中心になることで、密結合を従来のレイヤ型ソリューションにある密結合を低減してくれる、というのが氏の考えだ。また、リポジトリの実装という最も技術駆動なレイヤを抽象化して隠蔽し、取り替え可能にもしているようだ。</p> 
+ </div> 
+</div><br><br><br><br><br><br></body></html>

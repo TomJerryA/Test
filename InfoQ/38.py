@@ -1,73 +1,37 @@
-<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>アジャイルを用いたビジネスプロセスの改善</h3><p><a target="_blank" href="http://www.infoq.com/news/2013/03/process-improvement-agile;jsessionid=D2F77C6C944D805855D2EC9315074A41"><em>原文(投稿日：2013/03/29)へのリンク</em></a></p> 
-<div class="clearer-space">
- &nbsp;
-</div> 
-<div id="newsContent"> 
- <p>組織はビジネスプロセスの改善を望んでいる。そして今日，それは迅速に行う必要がある。ならばビジネスプロセスの改善に，アジャイルの手法やテクニックを使うことはできないだろうか？</p> 
- <p>Harvard Business Review の &quot;<a target="_blank" href="http://blogs.hbr.org/cs/2012/10/when_it_comes_to_operational.html">プロセス戦略における次の波 (the next wave of process strategy)</a>&quot; という記事に，Brad Power氏がビジネスプロセス改善のアプローチに対する自身の見解を公開している。過去数十年を掛けて改善されてきた手法によって，これまで多くのことが達成されてきた。しかし氏は，組織にはプロセスを継続的に改善する必要があると考えている。</p> 
- <blockquote> 
-  <p>(...) 昨日の勝利を祝う時間などありません。組織にとって過去の成功は，今後10年間の継続的な発展を保証するものではないのです。なぜなら情報処理技術 (...) が，現時点でもっとも進歩したビジネスプロセスでさえ，10年後にはまったくの時代遅れにしてしまうからです。</p> 
- </blockquote>
- <blockquote> 
-  <p>トップマネジメントにとって，組織のプロセス改善が必要かどうかはもはや問題ではありません。どのような方法を選択するのか，費用はどの程度か，いつ実施するのか，ということが問題なのです。</p> 
- </blockquote> 
- <p>そのような変化のひとつとして氏が指摘するのは，プロセス改善をより迅速に行うことの必要性だ。</p> 
- <blockquote> 
-  <p>今日の企業は月や年ではなく，日あるいは週単位でプロセスを変えられなければなりません。</p> 
- </blockquote> 
- <p><a target="_blank" href="http://blogs.hbr.org/cs/2012/12/in_my_last_post_i_1.html">プロセス戦略の３つの実例 (three examples of new process strategy)</a> と題されたPower氏の次の記事では，組織がプロセスを改善するための新手法が紹介されている。</p> 
- <blockquote> 
-  <p>私はこれらのプロセス改善アプローチを &quot;Process Strategy 2.0&quot; と総称しています。これらはリーン，シックスシグマ，ビジネスリエンジニアリングといった &quot;Process Strategy 1.0&quot; の方法論を越えるものです。</p> 
- </blockquote> 
- <p>プロセス改善の迅速化のニーズは増加している，それを充足するにはアジャイルのアプローチが必要だ，と氏は言う。</p> 
- <blockquote> 
-  <p>運用と改善をスピーディにするため， Process Strategy 2.0では，即時の試行とアジャイル管理プロセスのより一層の活用を行います。</p> 
- </blockquote> 
- <p>InfoWorld ブログの記事 <a target="_blank" href="http://www.infoworld.com/t/agile-development/adapt-agile-build-better-business-204332">ビジネス改善へのアジャイル活用 (adapt agile to build a better business)</a> では，筆者であるAdvice Line blogsのBob Lewis氏が，Scrumを用いたビジネス変革の実現について解説している。最初に氏は，ビジネス変革の実現とソフトウェア開発との違いを明確にする。</p> 
- <blockquote> 
-  <p>ビジネスの変革は，しかしながら，新しいソフトウェアをシステムに投入して，それを用いたビジネス改善の方法をユーザに見つけてもらう，という単純なものではありません。ビジネスの過程と実践，トレーニング，コミュニケーション，会計処理の変更，業績指標の再定義など，あらゆる問題を改善するためのタスクを伴うものなのです。</p> 
- </blockquote> 
- <p>プロダクトのバックログにあるユーザストーリは，ビジネスの変革を実現するために必要なものをすべてカバーできていなければならない。バックログの項目は &quot;新しいソフトウェアを使用して実際に処理を行う方法を説明する&quot; という，ビジネス変革を意図したものになるはずだ。</p> 
- <blockquote> 
-  <p>ユーザストーリに取り組むことになれば，ソフトウェアに何ら関係のない部分については，相応な資格を持つビジネススタッフに割り当てられることになるでしょう。彼らは，ユーザストーリにアサインされた開発者たちが直接関与する作業に加えて，自身の作業についても責任を負うことになるのです。例えば &quot;新しいプロセスとソフトウエアに関するユーザ教育&quot; という項目はバックログに入れられて，他のすべてのユーザストーリと同等に管理されることになります。</p> 
- </blockquote> 
- <p>ビジネス変革に優先順位を設定する手段として氏が推奨するのは，Goldratt氏の TOC (Therory of Constraints) の利用である。</p> 
- <blockquote> 
-  <p>TOCは明確なゴール – コスト削減，サイクルタイム短縮，生産能力向上といった – を確立することによって機能して，ゴール達成への唯一かつ最大の障害を特定します。これがボトルネック，すなわち制約(constraint)であり，それを取り除くことで目標の達成に一歩近付きます。その次には，残った制約から最大のものを特定して，それを取り除くのです。</p> 
- </blockquote> 
- <p>ビジネス変革にスクラムとTOCを組み合わせて使うことは，組織がアジャイル企業になる上でも有効だ，と氏は言う。</p> 
- <blockquote> 
-  <p>(...) 企業がアジャイルであるためには，設計，計画，意図的な変化の達成を迅速かつ確実に行えることが必要です。</p> 
- </blockquote> 
- <p><a target="_blank" href="http://agilemanagement.net/index.php/Blog/change_management_vs_process_evolution/">チェンジマネジメント対プロセスの進化 (change management vs process evolution)</a> というブログポストの David Anderson 氏は，自身がチェンジマネジメントと呼んでいるビジネスプロセス改善のアイデアを紹介している。</p> 
- <blockquote> 
-  <p>チェンジマネジメントは組織の変化を管理するための規律です。プロセスや組織構造の変更といったアクティビティに対して，何らかの管理性あるいはガバナンスを与える規律がチェンジマネジメントなのです。</p> 
- </blockquote> 
- <p>組織にアジャイルを適用するというのは，その行為自体が管理面での変革であり，時には困難を伴う。なぜアジャイルを採用するのか，氏は次のように説明している。</p> 
- <blockquote> 
-  <p>アジャイル移行のアプローチ自体が非アジャイルである，すなわち大規模な事前計画を作成して実行するというアプローチである，というのは実に皮肉な話です。アジャイルに移行する試みの多くが十分な成果を上げられていない，という事実(これを私は，少なくとも５年間言い続けています)を考えれば，使用しているアプローチが問題のドメインに対して不適切なのかも知れません。必要なのは変化のためのアジャイルアプローチ - フィードバックループによって新たな情報を得られるように進歩したアプローチなのです。</p> 
- </blockquote> 
- <p>氏もLewis氏と同じく，Goldratt氏のTOCに言及している。氏が推奨するのは，最大の制約に注目してそれを排除する，という進化的変革を管理するために，TOCの改善の５ステップをソリューションとして採用することだ。</p> 
- <blockquote> 
-  <p>(...) 重要なのは小さな変更を行うことです。はるかに先の変化を事前に予測することはできません。２ないし３ステップ程度が，おそらくはベストなのでしょう。移行作業全体を予見することは不可能です。</p> 
- </blockquote> 
- <p>カンバンやリーンスタートアップといったメソッドは，組織の変革を阻む最大制約を見つけ出すのに役立つはずだ。</p> 
- <blockquote> 
-  <p>カンバンは進化的変革の可能性を企業に提供します。(...) カンバンを用いることで，適合基準による現行プロセスの評価が可能になります。それによって私たちは，プロセスを発展させるためにどのような変化を導けばよいのかを判断できるのです。</p> 
-  <p>リーンスタートアップもこれと同じように，Eric Ries氏がビジネスモデル改革のアプローチとして紹介したものです。(...) リーンスタートアップによる適合基準は，より市場に直結したものになります (...)リーンスタートアップにあるビジネス上の仮説立証というコンセプトは，変革時において適合基準を適用するためのプロセスに相当します。</p> 
- </blockquote> 
- <p><a target="_blank" href="http://www.softwareag.com/blog/reality_check/index.php/process-power/process-improvement/">組織はいかにして真のプロセス改革を実現するか (how organizations achieve real process improvement)</a> と題するブログ記事では，Software AG のエンタープライズBPMのトップを務める Joerg Klueckmann氏が，プロセス改革を実践する組織での経験について語っている。紹介されている組織のひとつが Cable &amp; Wireless だ。</p> 
- <blockquote> 
-  <p>Process Excellence は，ミッションクリティカルな通信インテグレータとしての Cable &amp; Wireless のビジョンの中核をなすものです。同社は組織における BPM を IT のレベルからよりビジネス戦略的なレベルへと上昇させました。そして稚拙なプロセスから Process Excellence へと移行した自らの経験を公開したのです。</p> 
- </blockquote> 
- <p>Cable &amp; Wireless はパフォーマンス改善を，同社のプロセス改善戦略上のひとつのコンポーネントとして考えている。</p> 
- <blockquote>
-  パフォーマンス改善： プロセス間およびプロセス内の改善プロジェクトのポートフォリオへの優先度設定と実施を行うための，一環性および継続性を備えた改善方法論。
- </blockquote> 
- <p>Cable &amp; Wireless におけるプロセス改善のベストプラクティスのひとつがアジャイルプロセスだ。氏はアジャイルが，迅速な変革に一役買っていると述べている。</p> 
- <blockquote> 
-  <p>アジャイルプロセス - 単純な IT アジャイル開発の意味ではなく，ビジネスより発する俊敏な (管理された) 変革。</p> 
- </blockquote> 
- <p id="lastElm">&nbsp;</p> 
-</div> 
-<p id="lastElm"></p><br><br><br><br><br><br></body></html>
+<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>なぜGerritはBuckを選んだのか</h3><p><a target="_blank" href="http://www.infoq.com/news/2013/10/gerrit-buck"><em>原文(投稿日：2013/10/31)へのリンク</em></a></p>
+<div class="article_page_left news_container text_content_container"> 
+ <div class="text_info"> 
+  <p>今日EclipseConでShawn Pearce氏(<a href="https://gerrit.googlesource.com/gerrit/">Gerritプロジェクト</a>のメンテナ)が，<a href="https://www.eclipsecon.org/europe2013/improve-your-java-builds-buck">Improve your Java Builds with Buck</a>と題する講演を行った (<a href="http://gerrit-talks.commondatastorage.googleapis.com/buck-rant.html">スライド</a>, <a href="http://gerrit-talks.commondatastorage.googleapis.com/buck-intro.html">追加スライド</a>)。これらの資料は，Gerritプロジェクトが<a href="https://gerrit.googlesource.com/gerrit/+/fd6bb9f6a5aa4c2b8ae64ce2e42fd5efaa0459c9">MavenからBuckへとスイッチ</a>した結果，Gerrit 2.8以降のビルドでは最終的にBuckのみを使用するようになった，その理由を説明したものだ。</p> 
+  <p>Buckは，Google社内で使用されているビルドシステムの 'blaze' を基本モデルとしたビルドシステムで，現在はFacebookに所属する元Google社員の手で開発された。Facebookでありながら，このビルドシステムはApacheライセンスのオープンソースとして<a href="https://github.com/facebook/buck#readme">GitHubで公開されている</a>。BuckはPythonベースだが，GerritではおもにJavaのコンパイルに使用している。</p> 
+  <p>Buckの言語はDSLの一種で，基礎となるビルドファイルにはPythonを使用する。下記に示すのは，ファイルシステム上の別の場所に配置されたGuavaを参照する '<code>printy_lib</code>' というJavaライブラリの定義である：</p> 
+  <blockquote> 
+   <pre><code> java_library(   name = 'printy_lib',   srcs = glob(['src/main/java/**/*.java']),   deps = [':guava'], )  prebuilt_jar(   name = 'guava',   binary_jar = 'guava.jar', ) </code></pre> 
+  </blockquote> 
+  <p>Gerritプロジェクトでは，JAR参照をMaven Centralで解決してローカルシステムに取得する機能を追加した。取得するJARファイルの内容は，GAVによる識別とSHA1のチェックサムを使ってダウンロード時に検証される。 これらの拡張機能は現在のBuckでは使用できないが，将来的には寄贈される可能性もある。</p> 
+  <blockquote> 
+   <pre><code> include_defs('//lib/maven.defs')  maven_jar(   name = 'guava',   id = 'com.google.guava:guava:14.0',   sha1 = '67b7be4ee7ba48e4828a42d6d5069761186d4a53',   license = 'Apache2.0', ) </code></pre> 
+  </blockquote> 
+  <p>Mavenに対してBuckが持つ明確なメリットは，その処理速度だ。それを実現する重要なアドバンテージがいくつかある。モジュールをまたいだビルドの並列実行はそのひとつだ。Buckのビルドでは，デフォルト値としてCPU数&times;1.25のスレッドを使用している(MavenやMakeも並列ビルドは可能だが，モジュール単位での並列性に制限される)。<a href="http://gerrit-talks.commondatastorage.googleapis.com/buck-rant.html#12">Gerritの速度改善として示されている</a>のは次の値だ:</p> 
+  <ul> 
+   <li><b>クリーンビルド</b> <pre>
+mvn package -Dmaven.{javadoc,test}.skip=true  ... 6分50秒
+buck build :gerrit                            ... 2分 3秒
+buck test --all                               ... 2分 5秒
+</pre> </li> 
+   <li><b>No-op インクリメンタル・リビルド</b> <pre>
+mvn package -Dmaven.{javadoc,test}.skip=true  ... 4分44秒
+buck build :gerrit                            ...     2秒
+</pre> </li> 
+   <li><b>buckdがバックグラウンドで実行されている場合はさらに高速に動作する</b> <pre>
+~/buck/bin/buckd
+time buck :gerrit                             ...    0.5秒
+</pre> </li> 
+  </ul> 
+  <p>デフォルトでマルチスレッドがサポートされている以外にも，Buckはインクリメンタルビルドやコンパイル対象を変更されたクラスに限定するなどの方法で，コンパイル速度を向上している。更新されたソースファイルの検出には，ファイルシステムのタイムスタンプ(すべてのシステムで信頼性があるとは限らない)ではなく，最終コンパイル時をベースとしたSHAによる内容比較を用いている。ビルドファイルのハッシュ値も取得しているので，ビルド定義が変更された場合にはすべてのファイルが再コンパイルされる。</p> 
+  <p>BuckにはJavaの依存関係に関する詳細な情報も組み込まれている。相互依存関係にあるクラスのビルド方法や，内部メソッドではなく公開されたAPIの変更時にのみ依存関係によるコンパイルを実施する処理などを実現する。</p> 
+  <p>ローカルシステム上でビルド用のコンテントを共有するのと同様に，BuckをApache Cassandaストレージシステムに接続することで，複数の開発者によるライブラリ共有を許可することも可能だ。これは構築済，あるいは旧バージョン用のコンポーネントをダウンロード可能なリポジトリ機構として動作する。必要なコンポーネントが何かを解決する処理は，Buckビルドシステムが実行する。これによって問題の切り分けが簡単にできるようになると同時に，毎回ビルド処理を行うことなく，過去のビルドからの資産を解析することが可能になる。コンテンツはハッシュされているので，アップデートされていないバージョンや公開されていないバージョンも利用可能だ。</p> 
+  <p>処理速度の向上は，より柔軟な開発作業を可能にする。ビルドが１秒以内に実行可能なため(Gerritデーモン実行時)，Gerritの開発ビルドでは開発モードで実行されていることを検出して，HTTP要求ごとにリビルドとリロードを起動するようなことが可能になる。これによって非常に短いターンアラウンドでのパッチ提供が可能になり，開発時にリビルドやデプロイのために数秒あるいは数分を待つ必要がなくなる。</p> 
+  <p>Buckは開発中であるため，Gradleが提供しているコミュニティや資料に比べれば不足する部分もある。最後に，BuckはJavaで記述されているが，DSLとしてはPythonを使用する。また，テストはおもにMacとLinuxマシンで実施されている。これはつまり，現時点ではWindowsサポートの優先順位が低いことを意味する。</p> 
+  <p>Buckに関する詳細な情報は，<a href="http://facebook.github.io/buck/">FaceBookのBuckを紹介したページ</a>を参照してほしい。</p> 
+ </div> 
+</div><br><br><br><br><br><br></body></html>

@@ -1,50 +1,31 @@
-<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>JavaScriptでGitを実装するKickstarterプロジェクト、28時間で資金調達</h3><p><a target="_blank" href="http://www.infoq.com/news/2013/03/git-in-javascript;jsessionid=806EFD9E289230875F28ABB47126B480"><em>原文(投稿日：2013/03/26)へのリンク</em></a></p> 
-<div class="clearer-space">
- &nbsp;
-</div> 
-<div id="newsContent"> 
- <p>JavaScriptおよび<a target="_blank" href="http://nodejs.org">Node.js</a>コミュニティで有名な<a target="_blank" href="http://creationix.com/">Tim Caswell</a>氏が、JavaScriptで<a target="_blank" href="http://git-scm.com/">Git</a>を再実装しようと思いつき、Kickstarterで360名を超える出資者により<a target="_blank" href="http://www.kickstarter.com/projects/creationix/js-git">28時間で資金調達した</a>。このプロジェクトは、<a target="_blank" href="http://www.codinghorror.com/blog/2007/07/the-principle-of-least-power.html">Atwoodの法則</a>「JavaScriptで書けるものは、いずれJavaScriptで書かれる」の一例だ。</p> 
- <p>このプロジェクトについてもっと知るため、Tim氏に話を聞いた。</p> 
- <p><b>JSGitのアイデアはどこから生まれたのですか？</b></p> 
- <blockquote> 
-  <p>私はいつも、自分が持っているデバイスをプログラムする新しい方法を探しています。最近、Microsoftのよい人から<a target="_blank" href="http://www.microsoft.com/Surface/en-US/surface-with-windows-rt/windows-rt">Surface RT</a>が送られてきました。前のプロジェクトで使った<a target="_blank" href="http://www.apple.com/ipad/">iPad</a>も2台ありますし、<a target="_blank" href="http://www.google.com/intl/en/chrome/devices/chromebook-pixel/">ChromeBook Pixel</a>を買ったところでした。いずれも興味深いデバイスなのですが、かなり不満がありました。鍵のかけられた環境で、そのデバイス上で開発するのには不向きなんです。だれも、あのAppleですら、鍵をかけていないプラットフォーム、それがブラウザのJavaScript環境です。あなたはコードを書いてブラウザで動かせます。ローカルストレージにもアクセスできますし、インターネットにデータをアップロード、ダウンロードすることもできます。</p> 
-  <p>1年ほど<a target="_blank" href="http://c9.io">Cloud9</a>で仕事をして、ブラウザベースのIDEは実現可能だとわかりました。Cloud9がうまく解決していなかった唯一の問題、それがオフライン作業でした。自分のGitリポジトリを自分のデバイスにローカルにクローンし、海外へのフライト中（あるいは裏庭の向こうをぶらぶらしながら）オフライン作業し、その後インターネットにつながる環境に戻ったら、変更を自分のパブリックなGitリポジトリにプッシュする、そういうのがやりたかったんです。</p> 
-  <p>JavaScriptはどこでも使えるプラットフォームです。そこでGitをポーティングしようと決めたんです。</p> 
- </blockquote> 
- <p><b>JSGitのユースケースをどう考えていますか？ 単なるブラウザベースのIDEやエディタですか、それとも、もっといろんな応用があるんですか？</b></p> 
- <blockquote>
-  私の一番のユースケースはブラウザベースのプログラミング環境ですが、別の使い道に関心を持っている人がたくさんいます。たとえば、Node.jsのための完全にJavaScriptで書かれたGitクライアントとサーバなどです。Gitはいろんなデプロイメントシステムの共通コンポーネントなので、Git for Node.jsできめ細かくコントロールできれば、多くの人にとって非常に役立つでしょう。
- </blockquote> 
- <p><b>パフォーマンスはどう考えていますか？</b></p> 
- <blockquote>
-  JavaScript自体はかなり高速です。最近、JavaScriptで非常に高速なハッシュ関数（MD5、SHA1、SHA256）を書いたんですが、私のデスクトップのブラウザで、1秒間に500,000 MD5ハッシュまで可能でした。大きなGitリポジトリの場合、高速なノートパソコン上でネイティブクライアントを使ったとしても、クローンには時間がかかるので、それがうまくやれるとは思っていません。でも、小さなリポジトリでは、かなり高速になると思っています。
- </blockquote> 
- <p><b>JavaScriptでスクラッチから全部再実装するのではなく、<a target="_blank" href="https://github.com/kripken/emscripten">Emscripten</a>のようなもので、既存のGitのC実装をクロスコンパイルするというアプローチを取らないのはなぜですか？ </b></p> 
- <blockquote>
-  これも調べるつもりですが、初期調査の結果、2つのことが問題になると予想しています。1つ目は、Emscriptenはコードジェネレータだということです。これはかなり巨大なコードを生成します。コードの大部分を手動で微調整しない限り、結局は直接の移植になります。2つ目は、GitのCによる実装を見てみると、下位のファイルシステムやネットワーク呼び出しとの密結合がかなりあります。Gitのブラウザベースバージョンには、かなりのカスタマイズが必要になるでしょう。各種Webプラットフォームには独自のファイルストレージAPIがあるため、それぞれについてファイルシステム抽象化レイヤを書かなくてはなりません。
- </blockquote> 
- <p><b>Gitには、C、Javaなどの言語による実装がありますが、JavaScriptで実装するときの課題は具体的に何だと思いますか？</b></p> 
- <blockquote>
-  JavaScriptでcrypto関係を実装した経験がかなりあるため、それは問題になるとは思っていません。でも、実装しなくてはならないコード量は問題でしょうね。まずは必要最小限なところに取り組んで、そこから時間を使い果たすまで成長させていくつもりです。
- </blockquote> 
- <p><b>なぜ今、このプロジェクトをやるんですか？ これを可能にする特別なHTML5技術があるのでしょうか？</b></p> 
- <blockquote>
-  どちらかと言うとハードウェアですね。長時間のバッテリーとすばらしい画面を持つデバイスがどんどん増えていますが、開発環境としてはひどいものです。
- </blockquote> 
- <p><b>プロジェクトは1日ちょっとで資金調達できましたが、それでどんな機能が作れると思っていますか？</b></p> 
- <blockquote>
-  <a target="_blank" href="http://www.kickstarter.com/projects/creationix/js-git/posts">Stretch Goals</a>で見積もったように、Gitの基本機能が作れると思っています。時間があれば、さまざまなプラットフォームとのインテグレーションもやりたいです。
- </blockquote> 
- <p><b>どうしてKickstarterを使ったんですか？</b></p> 
- <blockquote>
-  よさそうに聞こえたんですよ。これまでやってきて、そしてKickstarterのルールを全部読んでみて、プロジェクトの理想には辛うじて合うかなと感じています。
- </blockquote> 
- <p><b>Kickstarterで資金調達しようとする（JavaScript）オープンソースプロジェクトは増えると思いますか？</b></p> 
- <blockquote>
-  まだわかりませんね。これは1つの実験です。アイデアに何ヶ月も時間を費やす前に、アイデアをスクリーニングするという考え方は気に入っています。私は、結局はコミュニティの関心がほとんどないとわかるプロジェクトに、自分の自由時間を何百時間も費やして来ました。みんなが期待するクールなプロジェクトにフルタイムで取り組むという考え方は実に気に入っています。Kickstarterが長期的にうまくいくかはわかりませんが、もしうまくいかなくても、他の考え方を探し続けます。
- </blockquote> 
- <p>JSGitは、Kickstarterで資金調達に成功した最初のJavaScript関連プロジェクトではない。過去には<a target="_blank" href="http://www.kickstarter.com/projects/869786663/async-savascript-book?ref=live">非同期JavaScriptプログラミングに関する書籍</a>と<a target="_blank" href="http://www.kickstarter.com/projects/188988365/lets-code-test-driven-javascript?ref=live">テスト駆動JavaScriptのスクリーンキャスト</a>のプロジェクトがあった。だが、JSGitはJavaScriptライブラリを作る最初のKickstarterプロジェクトだ。</p> 
- <p><a target="_blank" href="http://www.kickstarter.com/projects/creationix/js-git">このプロジェクト</a>の支援募集は2013年3月30日までだ。期日が過ぎたら、Tim氏はすぐにプロジェクトに取り組む予定だ。</p> 
- <p id="lastElm">&nbsp;</p> 
-</div> 
-<p id="lastElm"></p><br><br><br><br><br><br></body></html>
+<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>Docker, Inc: dotCloud、オールインワンのコンテナ技術に賭ける</h3><p><a target="_blank" href="http://www.infoq.com/news/2013/10/dotcloud-renamed-docker"><em>原文(投稿日：2013/10/29)へのリンク</em></a></p>
+<div class="article_page_left news_container text_content_container"> 
+ <div class="text_info"> 
+  <p>PaaSプロバイダのdotCloudが、自らの最新オープンソーステクノロジーに合わせて<a href="http://blog.docker.io/2013/10/dotcloud-is-becoming-docker-inc/">社名を変更した</a>。<a href="http://www.docker.com/" target="_blank">Docker, Inc</a>はスタンドアロンのPaaSプロダクトを提供し続けるが、社名と同じソフトウェアの成長と商業化にそのフォーカスを移すことになる。Dockerの急激な成長とプロダクトの向かう先について、CEOのBen Golub氏に話を聞いた。</p> 
+  <p><a href="http://www.docker.io/" target="_blank">Docker</a>とは何か? これは開発者やシステム管理者が、Linux環境において自己充足のアプリケーションコンテナをデプロイするのを可能にするオープンソースエンジンだ。（悪く言う人がすぐに指摘するように）正直なところ新しいものではないが、DockerはLinuxユーザが今日にでも利用できるテクノロジーの上にできている。CEOのBen Golub氏は、目標は「ボックスを再発明すること」ではなく、他人の仕事を引き受け、コンテナを使いやすくし、標準的なツールに統合することだ、と語る。<a href="http://www.docker.io/" target="_blank">Docker.io</a>プロジェクトは2013年3月にリリースされて以来、<a href="http://www.businesswire.com/news/home/20131029005746/en/dotCloud-Docker">プレスリリース</a>にあるよう劇的に成長している。</p> 
+  <blockquote> 
+   <p>ローンチして7ヶ月、Dockerプロジェクトは開発者とDevOpsの両方のコミュニティの後押しで、急速に成長しているエコシステムに不可欠な要素になっています。</p> 
+   <p>主なものを挙げると、</p> 
+   <ul> 
+    <li>140,000を超えるコンテナのダウンロード</li> 
+    <li>GitHubにおける6,700を超えるスターと800を超えるフォーク</li> 
+    <li>3か月で600を超えるGitHub Dockerfileの作成</li> 
+    <li>Dockerパブリックリポジトリにおける何千ものコンテナ化されたアプリケーション</li> 
+    <li>このオープンソースエンジン上に構築された150を超えるプロジェクト</li> 
+    <li>世界30都市で50を超えるミートアップ</li> 
+    <li>約200名のコントリビュータ、その92パーセントは社外の人</li> 
+    <li>13,000を超えるオンラインのDockerトレーニング修了者</li> 
+    <li>Dockerを利用していると公にしている<a href="http://api.yandex.com/cocaine/">Yandex</a>、<a href="http://www.rackspace.com/blog/how-mailgun-uses-docker-and-contributes-back/">Rackspace</a>、<a href="https://speakerdeck.com/teddziuba/docker-at-ebay">eBay</a>、<a href="http://www.youtube.com/watch?v=-Lj3jt_-3r0">CloudFlare</a>といった企業</li> 
+    <li><a href="http://community.opscode.com/cookbooks/docker">Chef</a>、<a href="http://forge.puppetlabs.com/garethr/docker">Puppet</a>、Travis、<a href="https://github.com/georgebashi/jenkins-docker-plugin">Jenkins</a>など、非常に重要なエンタープライズプロジェクトとのインテグレーション</li> 
+    <li><a href="http://coreos.com/">CoreOS</a>、<a href="http://deis.io/">Deis</a>、<a href="https://flynn.io/">Flynn</a>、<a href="https://orchardup.com/">Orchard</a>など、Docker上に専用ビジネスを立ち上げる企業の増加</li> 
+   </ul> 
+  </blockquote> 
+  <p>Dockerの勢いに注目して、パートナーシップを競って結んでいるところもある。Red Hatは最近、Red Hat PaaSプラットフォーム、OpenShiftとのインテグレーションなど、複数の分野におけるDockerとの<a href="http://www.redhat.com/about/news/press-archive/2013/9/red-hat-and-dotcloud-collaborate-on-docker-to-bring-next-generation-linux-container-enhancements-to-openshift" target="_blank">「技術的コラボレーション」を発表</a>した。さらに、オープンソースIaaSプロジェクトのOpenStackは、最新リリースであるコードネーム “Havana”に<a href="http://blog.docker.io/2013/10/openstack-havana-docker/" target="_blank">Dockerを組み入れている</a>。</p> 
+  <p>なぜDockerは伸びるのか? Golub氏は「コンテナ化は次世代コンピューティングを実現する最も重要な要素の1つ」であり、仮想マシンはそれにふさわしい単位ではないと考えている。人々はアプリケーションを使って仕事をしたいのであり、Dockerのような軽量コンテナがカプセル化とインターオペラビリティの絶妙な組み合わせをもたらすと信じている。Golub氏によると、Dockerにはまだ改良の余地がたくさんある。安定性とドキュメントの改善のほか、開発者はコンテナを組織化することで、複雑な分離システムを作成する方法を求めている。システム管理者は所定のホストにあるコンテナを特定し、そのパフォーマンスをモニタリングするための優れたツールを求めている。だが、最大のギャップは期待されているものだ。Dockerチームは今もなお、ユースケースを開拓し、人々がどのように使いたいのか学び続けている。</p> 
+  <p>オープンソースに引き続きコミットすることを約束する一方、Docker, Incは明確な商業化計画を立てている。</p> 
+  <blockquote> 
+   <p>2014年の初めに、Docker, Inc.はDocker関連プロダクトを立ち上げます。これには開発者向け（Docker as a Service）と企業向け（プライベートレジストリ、オーケストレイション、モニタリングを含む）の管理サービスが含まれます。また、Docker, Inc.からのLevel IIIサポートが受けられるサービスプロバイダのパートナーネットワークを構築する計画も発表しました。</p> 
+  </blockquote> 
+  <p>dotCloud PaaSの将来は、少々怪しくなっている。Docker, IncはPaaSサービスを提供し続けると言っているが、会社のフォーカスは明確にDockerそのものにある。スタンドアロンのPaaSプロダクトはすぐれた顧客体験を提供するが、Golub氏は「あなたの一番の顧客があなたを大きくする」ことに気付いた。彼は、従来のPaaSサービスを通してであれ、Dockerのようなコンテナを通してであれ、開発者は間違いなくPaaSのような環境を必要としていると信じている。Dockerをリリースして、<em>これ</em>が会社として、コミュニティとして、彼らにより大きな影響を及ぼすチャンスをもたらすことがはっきりした。</p> 
+ </div> 
+</div><br><br><br><br><br><br></body></html>

@@ -1,6 +1,51 @@
 <html>
  <head></head> 
- <body> 
+ <body>
+  <div>
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/23.c">Migrando do Desenvolvimento Guiado por Dados para o Desenvolvimento Guiado por Dom&iacute;nio</a>Com uma grande experi&ecirc;ncia em data-driven development, Julie Lerman compartilha experi&ecirc;ncias da migra&ccedil;&atilde;o para o Domain-Driven Design em tr&ecirc;s artigos, com exemplos em C# usando o Entity Framework.
+  </div>
+  <div>
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/22.c">Confer&ecirc;ncia Web W3C Brasil: um evento voltado para os padr&otilde;es da Web</a>Nos dias 18 e 19 de novembro, em S&atilde;o Paulo, ocorrer&aacute; a 5&ordf; edi&ccedil;&atilde;o da Confer&ecirc;ncia Web W3C Brasil, que traz diversos especialistas web brasileiros. Ser&atilde;o abordados os principais padr&otilde;es da Open Web Platform, como HTML5, Web Components, API Web Speech, Web Sockets, al&eacute;m de um curso de Git, mesas de debates e tutoriais.
+  </div>
+  <div>
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/21.c">Crescente da Programa&ccedil;&atilde;o Reativa</a>A Programa&ccedil;&atilde;o Reativa baseia-se em fluxo de dados e propaga&ccedil;&atilde;o de mudan&ccedil;as, com o modelo de execu&ccedil;&atilde;o de uma linguagem de programa&ccedil;&atilde;o propagando automaticamente as mudan&ccedil;as atrav&eacute;s do fluxo de dados. Com a popularidade de arquiteturas orientada a eventos, escal&aacute;veis e interativas, tanto do lado do cliente quanto do servidor, o conceito de &quot;reatividade&quot; est&aacute; ganhando cada vez mais aten&ccedil;&atilde;o.
+  </div>
+  <div>
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/20.c">Google Espresso: Automatizando os testes de UI do Android nas nuvens</a>O Google abriu o c&oacute;digo fonte do Espresso, um framework de testes automatizado para Android que permite executar testes em m&aacute;quinas x86 na nuvem, em um ambiente multi-thread, resolvendo os problemas de concorr&ecirc;ncia associados aos testes de UI.
+  </div>
+  <div>
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/19.c">NetBeans 7.4 agora com suporte ao JDK 8 e Aplica&ccedil;&otilde;es Web Mobile</a>Depois de apresentado no JavaOne, a Oracle lan&ccedil;ou oficialmente o NetBeans 7.4. A nova vers&atilde;o permite que os desenvolvedores trabalhem com as vers&otilde;es pr&eacute;vias do JDK 8, adicionou suporte para a integra&ccedil;&atilde;o do HTML5 com aplica&ccedil;&otilde;es Java EE e fornece ferramentas para o desenvolvimento de aplica&ccedil;&otilde;es m&oacute;veis com o Apache Cordova.
+  </div>
+  <div>
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/18.c">Tudo sobre o Java 8</a>A TechEmpower, uma empresa de desenvolvimento de aplica&ccedil;&otilde;es customizadas com sede em El Segundo, Calif&oacute;rnia, postou recentemente um post chamado &quot;Tudo sobre o Java 8&quot;. No post h&aacute; um resumo completo das mudan&ccedil;as que o desenvolvedor encontrar&aacute; no Java 8. Aqui est&aacute; uma vis&atilde;o geral do post.
+  </div>
+  <div>
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/17.c">Appmaker: ferramenta para desenvolvimento de aplica&ccedil;&otilde;es m&oacute;veis usando HTML5</a>A Funda&ccedil;&atilde;o Mozilla lan&ccedil;ou recentemente a vers&atilde;o pr&eacute; alpha do Appmaker, uma aplica&ccedil;&atilde;o web que permite desenvolver e publicar facilmente aplica&ccedil;&otilde;es m&oacute;veis utilizando HTML5.
+  </div>
+  <div>
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/16.c">Apache Solr 4.5: suporte a dados distribu&iacute;dos customiz&aacute;vel e Faceted Multithread</a>Solr &eacute; uma plataforma de busca NoSQL fornecida em c&oacute;digo livre que &eacute; parte do projeto Lucene. No inicio de outubro a vers&atilde;o 4.5 foi lan&ccedil;ada e traz entre novos recursos, suporte a dados distribu&iacute;dos (sharding) customiz&aacute;vel inclusive por campo, faceted em multithread e a classe CloudSolrServer agora &eacute; capaz de endere&ccedil;ar diretamente o n&oacute; l&iacute;der no cen&aacute;rio distribu&iacute;do. Saiba mais sobre esta nova vers&atilde;o
+  </div>
+  <div>
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/15.c">Pol&ecirc;mica sobre escalabilidade do MongoDB: 100 GB s&atilde;o uma barreira?</a>Um controverso post da MongoDB (antiga 10Gen) reacendeu desconfian&ccedil;as da comunidade em rela&ccedil;&atilde;o a tecnologias NoSQL. No texto s&atilde;o apontadas considera&ccedil;&otilde;es relativas &agrave; escalabilidade do MongoDB, especialmente em bases de dados maiores que 100 GB.
+  </div>
+  <div>
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/14.c">Firefox OS: Hist&oacute;rico e contexto do lan&ccedil;amento</a>Robert Nyman, evangelista t&eacute;cnico da Mozilla, comenta sobre a hist&oacute;ria do Boot to Gecko e sua evolu&ccedil;&atilde;o at&eacute; o lan&ccedil;amento do Firefox OS; aborda a arquitetura, as Web APIs, simulador e como publicar aplica&ccedil;&otilde;es no Firefox OS.
+  </div>
+  <div>
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/13.c">OSGi: Foco no JavaScript e Nativo</a>O aumento da popularidade de aplica&ccedil;&otilde;es modulares, poliglotas, reiniciou a discuss&atilde;o na OSGi Alliance no sentido de oferecer uma linguagem padr&atilde;o e uma vers&atilde;o independente de ambiente de execu&ccedil;&atilde;o.
+  </div>
+  <div>
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/12.c">Agilidade solit&aacute;ria: tornando-se Agile antes da pr&oacute;pria equipe</a>&Eacute; comum que organiza&ccedil;&otilde;es realizem uma transforma&ccedil;&atilde;o &aacute;gil que atinge toda uma equipe ou departamento. Mas existem profissionais que come&ccedil;am a utilizar pr&aacute;ticas &aacute;geis individualmente, ou que trabalham de forma &aacute;gil em equipes de apenas uma pessoa. Como essas pessoas podem adotar pr&aacute;ticas &aacute;geis e quais os tipos de benef&iacute;cios que podem obter com isso?
+  </div>
+  <div>
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/11.c">Agile nos Correios dos EUA: a experi&ecirc;ncia do MTEOR</a>Conhe&ccedil;a a experi&ecirc;ncia dos Correios dos Estados Unidos, que adotaram o Agile em um grande projeto, com resultados muito positivos at&eacute; agora.
+  </div>
+  <div>
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/10.c">A flexibilidade do Agile: ponto forte ou calcanhar de Aquiles?</a>Ser&aacute; que o princ&iacute;pio &quot;responder a mudan&ccedil;as mais do que seguir um plano&quot; &eacute; um ponto forte ou uma flexibilidade que n&atilde;o funciona na pr&aacute;tica? O que acontece com projetos &aacute;geis com dificuldades em gerenciar mudan&ccedil;as e clientes esperando flexibilidade demais? Ser&aacute; que o Agile n&atilde;o cumpre suas promessas, ou &eacute; a forma que as equipes e organiza&ccedil;&otilde;es t&ecirc;m adotado o Agile que causa os problemas?
+  </div>
+  <div>
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/9.c">MVP = aprendizado inteligente</a>Steve Blank explica que o objetivo real de um MVP &eacute; dar in&iacute;cio a um processo de aprendizado, n&atilde;o criar a vers&atilde;o que seja menor e mais barata de um produto final. Conhe&ccedil;a mais sobre as ideias de blank e outras opini&otilde;es da comunidade.
+  </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/8.c">Agile nas empresas: indo al&eacute;m do setor de desenvolvimento</a>As pr&aacute;ticas &aacute;geis est&atilde;o sendo utilizadas em aspectos dos neg&oacute;cios diferentes do desenvolvimento de software, de acordo com a Gartner. Conhe&ccedil;a tend&ecirc;ncias no uso do Agile em toda a empresa, com exemplos nas &aacute;reas de marketing, vendas e servi&ccedil;os. 
   </div> 
@@ -105,51 +150,6 @@
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/24.c">Homeopatia Arquitetural: voc&ecirc; devia ter feito como eu disse</a>Steve Jones, da CapGemini volta ao tema da perda de &ecirc;nfase em pensamentos e reflex&atilde;o, e o foco exclusivo em tecnologia e opini&otilde;es pouco embasadas. 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/23.c">Pesquisadores exp&otilde;em vulnerabilidades do SSL</a>Pesquisadores da universidade do Texas em Austin e da Universidade Stanford publicaram uma pesquisa que exp&otilde;e vulnerabilidades cr&iacute;ticas no uso de bibliotecas SSL em aplica&ccedil;&otilde;es n&atilde;o-browser, antes consideradas altamente seguras. Saiba os detalhes. 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/22.c">O Agile realmente traz mais rapidez?</a>O Agile torna mesmo as equipes mais r&aacute;pidas? Conhe&ccedil;a discuss&otilde;es recentes sobre o tema. 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/21.c">O Java 8 resolver&aacute; o ‘PermGen OutOfMemoryError’?</a>Como parte do projeto em andamento para mesclar o c&oacute;digo do HotSpot e JRockit, a Oracle anunciou que ir&aacute; remover a PermGen da JVM HotSpot na vers&atilde;o 8 do Java. Conhe&ccedil;a os impactos da mudan&ccedil;a e as recentes discuss&otilde;es sobre o assunto. 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/20.c">Princ&iacute;pios SOLID aplicado &agrave; modelagem de dados com PostgreSQL</a>Chris Travers recentemente publicou uma s&eacute;rie de artigos intitulados &quot;Constru&iacute;ndo Banco de Dados com princ&iacute;pios SOLID&quot;, que explicam as diversas id&eacute;ias para aplicar alguns dos princ&iacute;pios comuns da programa&ccedil;&atilde;o orientada a objetos como Princ&iacute;pio da Responsabilidade &Uacute;nica, Segrega&ccedil;&atilde;o de Interface e Invers&atilde;o de Depend&ecirc;ncia para melhorar os modelos de dados e c&oacute;digo no banco de dados. 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/19.c">Stripe abre c&oacute;digo do Abba, um framework para testes A/B</a>A Stripe abriu os fontes de seu framework de JavaScript para Testes A/B, chamado Abba. 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/18.c">L&iacute;der de seguran&ccedil;a da Oracle promete corrigir falhas e melhorar a comunica&ccedil;&atilde;o</a>Logo ap&oacute;s uma s&eacute;rie de falhas graves de seguran&ccedil;a, o respons&aacute;vel pela seguran&ccedil;a do Java da Oracle, Milton Smith, est&aacute; atuando para que as falhas sejam corrigidas e para melhorar a comunica&ccedil;&atilde;o com membros da comunidade. 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/17.c">GitHub Boxen: Automa&ccedil;&atilde;o de Configura&ccedil;&atilde;o e Gerenciamento no Mac OS X</a>O GitHub abriu os fontes do Boxen, sua ferramenta para automa&ccedil;&atilde;o de configura&ccedil;&atilde;o de notebooks Mac ao qual pode ser convertida para tamb&eacute;m configurar equipamentos com Linux ou Windows. 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/16.c">Principios SOLID aplicado &agrave; modelagem de dados com PostgreSQL</a>Chris Travers recentemente publicou uma s&eacute;rie de artigos intitulados &quot;Constru&iacute;ndo Banco de Dados com princ&iacute;pios SOLID&quot;, que explicam as diversas id&eacute;ias para aplicar alguns dos princ&iacute;pios comuns da programa&ccedil;&atilde;o orientada a objetos como Princ&iacute;pio da Responsabilidade &Uacute;nica, Segrega&ccedil;&atilde;o de Interface e Invers&atilde;o de Depend&ecirc;ncia para melhorar os modelos de dados e c&oacute;digo no banco de dados. 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/15.c">Microsoft atualiza .NET Framework 4.5</a>Conhe&ccedil;a detalhes sobre as atualiza&ccedil;&otilde;es para o .NET Framework 4.5, que corrigem problemas de compatibilidade, confiabilidade, estabilidade e desempenho, no Windows Presentation Foundation, CLR, Forms, XML, Network Class Library, ASP.NET, Entity Framework,WWF e WCF. 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/14.c">O quanto do Python pode ser escrito em Python?</a>Brett Cannon, um dos desenvolvedores da linguagem de programa&ccedil;&atilde;o Python e funcion&aacute;rio do Google, acredita que parte do compilador e a maioria de seus m&oacute;dulos internos podem ser reimplementados em Python puro. Tal ideia &eacute; discutida no artigo “O quanto de Python pode ser escrito em Python?” publicado no blog que mant&eacute;m sobre a linguagem de programa&ccedil;&atilde;o. 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/13.c">Beta 3 do Entity Framework Power Tools traz corre&ccedil;&otilde;es e novos comandos</a>A Microsoft lan&ccedil;ou recentemente o beta do Entity Framework Power Tools 3, com diversas corre&ccedil;&otilde;es e novas funcionalidades, por exemplo a engenharia reversa utilizando Code First. 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/12.c">Eclipse Orion 2.0: agora rodando localmente em Node.js</a>A vers&atilde;o 2.0 do Eclipse Orion, recentemente lan&ccedil;ada, agora suporta Node.js, o plugin Projects, v&aacute;rios novos comandos Shell, um assistente para c&oacute;digo JavaScript aperfei&ccedil;oado e melhorias de performance. Conhe&ccedil;a as principais novidades. 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/11.c">Programa Adote uma JSR cresce, ganha for&ccedil;a da Oracle e se envolve no Java EE 7</a>O programa Adote uma JSR, liderado por grupos de usu&aacute;rios Java, ganhou apoio oficial da Oracle. Arun Gupta, evangelista Java da empresa, publicou recentemente sobre a for&ccedil;a da participa&ccedil;&atilde;o da comunidade, que atrav&eacute;s de feedbacks e outras contribui&ccedil;&otilde;es tem apoiado a evolu&ccedil;&atilde;o do Java EE. 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/10.c">50 dicas para aplica&ccedil;&otilde;es web mais r&aacute;pidas no Windows</a>O gerente de projetos do Internet Explorer Jatinder Mann da Microsoft apresentou uma palestra chamada 50 truques de performance para fazer suas aplica&ccedil;&otilde;es HTML 5 e sites mais r&aacute;pidos no evento BUILD, fornecendo v&aacute;rias dicas para criar aplica&ccedil;&otilde;es web mais r&aacute;pidas. Veja um resumo. 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/9.c">MobileConf Brasil em S&atilde;o Paulo: iOS, Android e web mobile</a>Acontece em abril, em S&atilde;o Paulo, a primeira MobileConf, uma confer&ecirc;ncia inteiramente voltada &agrave; comunidade de desenvolvimento m&oacute;vel. Ser&atilde;o tr&ecirc;s tracks simult&acirc;neos, com foco em Android, iOS e desenvolvimento web para mobile. 
-  </div> 
+  </div>                
  </body>
 </html>

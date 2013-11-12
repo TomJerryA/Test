@@ -1,58 +1,53 @@
-<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>ウェブスタイルは上手くいったか</h3><p><a target="_blank" href="http://www.infoq.com/news/2013/03/web-style;jsessionid=856612D388D1A8108AB45FED13409457"><em>原文(投稿日：2013/03/24)へのリンク</em></a></p> 
-<div class="clearer-space">
- &nbsp;
-</div> 
-<div id="newsContent"> 
- <p>Jean-Jacques Dubray氏(JJ)が<a target="_blank" href="http://www.ebpml.org/blog2/index.php/2013/03/20/the-end-of-the-web">最近のブログ</a>で<a target="_blank" href="http://www.tbray.org/ongoing/When/200x/2006/04/17/SOA-or-not">Tim Bray氏がSOAの終焉を予言</a>してからほぼ7年経ったことに言及している。</p> 
- <blockquote>
-  私はインタビューを受け、ポッドキャストで話しました。 [...] 両方とも私にはある疑問が浮かびました。“SOAについてどうするべきだと思うか”。不気味なことにこの問いを私に投げかけた人はいませんでした。そして私は答えを見つけました。“何もするな。‘SOA’はかつては何らかの意味を持っていたが、今は只のベンダの戯言だ。”
- </blockquote> 
- <p>TimTim Bray氏はSOAよりも<a target="_blank" href="http://www.tbray.org/ongoing/When/200x/2006/03/26/On-REST">ウェブスタイル</a>に未来がある、と宣言(予言)している。JJが説明するようにこの予言はその後、多く言及された。<a target="_blank" href="http://www.infoq.com/news/2009/01/is-soa-dead;jsessionid=3C3882C9D9DD4567D18E339670C63407;jsessionid=856612D388D1A8108AB45FED13409457">Anne-Thomas Manes氏など</a>の言及だ。結論のひとつはSOAプロジェクトの多くは衰退し、中止になった。JJは自身の経験を語っている。</p> 
- <blockquote>
-  当時のマネージャが私にTim Brayの記事がIT部門で話題になっており、彼は自身のマネジメントでTimの宣言に対してどのように回答をしたらいいか解らないと言いました。そのとき、彼のチームは独自のESBを構築していました当時はまだXMLはほとんど知られていませんでした。絶えず上昇するトランザクション量(2007年初頭で1日10メガのリクエスト)がTim Brayの文章で危うくなったのです。
- </blockquote> 
- <p>JJは<a target="_blank" href="http://www.infoq.com/articles/rest-soap;jsessionid=3C3882C9D9DD4567D18E339670C63407;jsessionid=856612D388D1A8108AB45FED13409457">数年</a>に渡ってInfoQや他の媒体で<a target="_blank" href="http://www.infoq.com/news/2011/06/trouble-with-apis;jsessionid=3C3882C9D9DD4567D18E339670C63407;jsessionid=856612D388D1A8108AB45FED13409457">Webが見落としている</a><a target="_blank" href="http://www.infoq.com/news/2011/06/RestAPIs;jsessionid=3C3882C9D9DD4567D18E339670C63407;jsessionid=856612D388D1A8108AB45FED13409457">問題について</a><a target="_blank" href="http://www.infoq.com/articles/RESTSOAFuture/;jsessionid=3C3882C9D9DD4567D18E339670C63407;jsessionid=856612D388D1A8108AB45FED13409457">少なくない時間</a>を費やしている。最近では、ウェブスタイルを実装していると称する多くのサービスを見ている。</p> 
- <blockquote>
-  9000のAPI[Programmable Webのディレクトリにある]の内、私の見積もりではTim Brayの
-  <a target="_blank" href="http://en.wikipedia.org/wiki/Representational_state_transfer">ウェブスタイル</a>に従っているのは1%に満たないです。ほとんどのAPIはウェブスタイルではなく&quot;API&quot;スタイル、つまり、RPCのようなスタイルです。
- </blockquote> 
- <p>JJは自身が代表的なサンプルと考えるAPIをいくつか例示し、自身の考えを説明している。</p> 
- <blockquote> 
+<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>Phusion Passengerアプリサーバ、Node.jsをサポート</h3><p><a target="_blank" href="http://www.infoq.com/news/2013/11/phusion-nodejs"><em>原文(投稿日：2013/11/05)へのリンク</em></a></p>
+<div class="article_page_left news_container text_content_container"> 
+ <div class="text_info"> 
+  <p>もともとRubyをターゲットにしていた人気のあるWebアプリケーションサーバ、Phusion PassengerがNode.jsアプリをサポートした。この機能は今年初めに、Passengerのエンタープライズ版で取り入れられたが、フリー版の4.0.21リリースでオープンソース化された。</p> 
+  <p>Passengerは、ApacheやNginxといったWebサーバと組み合わせて、Webアプリケーションの提供、モニタリング、スケーリングのための完全なソリューションになることを目的としている。<a href="http://www.phusion.nl/">オランダを拠点とするPhusion</a>によると、Passengerで<a href="http://nodejs.org/">Node.js</a>アプリを動かすことには、次のようなメリットがあるという。</p> 
   <ul> 
-   <li><span style="line-height: 19px; font-size: 13px"><strong>Ask Ziggy</strong> </span><a style="line-height: 19px; font-size: 13px" target="_blank" href="http://www.ask-ziggy.com/walkthrough.html#sample">&quot;アクション&quot;</a><span style="line-height: 19px; font-size: 13px"> (Play、NextSong、Previous Song、Shuffle...というような)を定義する機能を提供する</span></li> 
-   <li><span style="line-height: 19px; font-size: 13px"><strong>WhatLanguage</strong> 同じURIにGET(リクエストの文字数が7500文字以下の場合)やPOSTをすることで与えられた文字列の言語を検出する<a target="_blank" href="http://www.whatlanguage.net/en/api/language_identification_documentation#detect_text">ことができる</a></span></li> 
-   <li><span style="line-height: 19px; font-size: 13px"><strong>Do.com</strong> <a target="_blank" href="https://developers.do.com/docs/tasks">ウェブスタイルのAPI</a>を提供しているように見えるが、不十分。5種類のリソース(タスク、プロジェクト、ユーザ...)に対する単純なCRUD操作を提供する</span></li> 
-   <li><span style="line-height: 19px; font-size: 13px"><strong>SkyBuffer</strong>も<a target="_blank" href="https://dev.skybuffer.com/version/1">ウェブスタイル</a>に従っているが、DO.comと同じようにエンティティに対するCRUDを提供する</span></li> 
-   <li><span style="line-height: 19px; font-size: 13px"><strong>MaShape</strong>は&quot;Cloud APIハブ&quot;であり、APIの開発者にそのAPIの利用者のためのより良い方法を提供する。では<a target="_blank" href="https://www.mashape.com/docs/gettingstarted/overview">どのように実現しているのか</a>。&quot;<span>Mashape上でAPIを記述することでクライアントライブラリとドキュメントを自動生成する方法&quot;を提供する。数年のバッシングの後、開発者の間でクライアントコードの自動生成についての議論が始まったのだ。</span></span></li> 
+   <li>マルチテナント性 – 最小構成で複数のアプリを動かすことができる</li> 
+   <li>監視 – 自動的にNode.jsプロセスを開始し、クラッシュ時に再開させることができる</li> 
+   <li>スケーリング – 処理すべきリクエスト数に応じて、プロセスを増減させることができる</li> 
+   <li>統計情報 – プロセスの動作状態を知るのに役立つツールを提供する</li> 
   </ul> 
- </blockquote> 
- <p>&nbsp;JJの考えでは、Timやその他の人が推奨する純粋なウェブスタイルはAPIアプローチと競合関係にある。</p> 
- <blockquote>
-  ウェブスタイルは&quot;統一インターフェース&quot;、ブックマークウェブスタイルは&quot;統一インターフェース&quot;、ブックマーク、
-  <a target="_blank" href="http://www.infoq.com/articles/hypermedia-api-tutorial-part-one;jsessionid=3C3882C9D9DD4567D18E339670C63407;jsessionid=856612D388D1A8108AB45FED13409457">HATEAOS</a>ではなかったのか。標準IANA型を忘れてはいないか。このような議論は最近聞かなくなりました。URL内に動詞を埋め込む方法や複雑なクエリをポストすることを恥ずかしく思う人はいなくなりました。最も重要なのは
-  <a target="_blank" href="http://docs.mongodb.org/manual/reference/javascript/">MongoDBが示したことです</a>。つまり、CRUDを行うためには4つの動詞と貧弱なURL構文では足りないということです。開発者と設計者はやけになって&quot;ウェブスタイル&quot;の周りをふらふらして、
-  <a target="_blank" href="http://www.infoq.com/presentations/OpenStack-Extensions;jsessionid=3C3882C9D9DD4567D18E339670C63407;jsessionid=856612D388D1A8108AB45FED13409457">JSONに名前空間を付ける</a>というようなこともしています。
- </blockquote> 
- <p>このようなウェブスタイルのようなサービスを概観し、JJは価値を提供するのに失敗し、&quot;死んだ&quot;と結論を下している。さらに、ウェブそのものがほとんど死にかけていると宣言する。</p> 
- <blockquote>
-  [...] 
-  <a target="_blank" href="http://www.itwriting.com/blog/7249-native-apps-vs-html-5-no-consensus-over-how-to-choose.html">HTML5を使って価値あるものを作り出す方法がわからない、ネイティブアプリと競争しなければならない開発者</a>とウェブのビジネスモデルの中心にある&quot;製品&quot;に反映された素晴らしいアイディアに最終的に肝を冷やすことになるエンドユーザの間でウェブは死にかけています。&quot;ウェブよ永遠なれ&quot;というメッセージを携え、
-  <a target="_blank" href="http://www.ebpml.org/blog2/index.php/2010/11/21/soon-the-web-will-die">Tim Berner-Leeは6ヶ月ごとにやってきますが</a>、
-  <a target="_blank" href="http://www.bbc.co.uk/news/world-asia-21855051">セキュリティの大混乱</a>の後では、 大英帝国勲章の持ち主でももはやウェブを救えないように思えます。
- </blockquote> 
- <p>幸い、JJの記事は、過去とごまかされてきた&quot;技術的負債&quot;を陰鬱に振り返るだけで終わっていない。現在我々がどこにいるのか、そして、モバイルの新しい波についても言及している。JJはモバイルをこれまで見られなかった最大のパラダイムシフトになる可能性があると考えている。</p> 
- <blockquote>
-  ほとんどの人は覚えていないでしょうが、ソフトウエアエンジニアリングは古い、とても古い&quot;ファイル処理&quot;というパラダイムの上に成り立っています。UFSがその頂点に位置しているのでしょう。ディスクトップのメタファとPCの主な利用パターンは&quot;ファイル処理&quot;に結びつけられたままです。モバイルにはファイルは関係ありません。モバイル端末は私たちの活動を逐一支援してくれます。少なくも、未来のオペレーティングシステムはアクティビティ中心になります。
- </blockquote> 
- <p>しかし、成功するためにはウェブの技術を置き去りにしなければならない、とJJは考えている。</p> 
- <blockquote>
-  最高のユーザエクスペリエンスが勝ちます。それに対抗しようとする人は負けるでしょう。ウェブが興隆したのは、一時は優れたユーザエクスペリエンスを提供したからです。&quot;ウェブ&quot;だからという理由で興隆したのではありません。
- </blockquote> 
- <p>最後にJJは問題解決方法に対してもっと実用本位になり、過去から学ばなければならない、と主張する。</p> 
- <blockquote>
-  さらにCRUDを突き詰めようとしてもRESTでない方法を切り捨てることはできません。MongoDB APIのように非常に優れた設計のAPIでさえそうです。また、オブジェクト指向は分散されたコンポーネント間の通信を表現するには不適切なパラダイムであることをしっかり理解する必要があります。すべてをステートレスなシングルトンのメソッド呼び出しで具現化することを辞めなければなりません。クラスのアノテーションはSOAが始め、私たちが終わらせなければならないセマンティック革命の推進力としては貧弱過ぎるのです。
- </blockquote> 
- <p>JJが示したこれらの変化を考慮すると、一体最終的なゴールは何なのだろう。JJは堅牢な合成プログラミングモデルを想定しているようだ。このモデルではモデルとビューが分離されながらも適切なつながりを持ち、アクティビティ/アクション/ライフサイクルのパラダイムに従う。残念ながらこのモデルについてJJは詳しく説明していないが、おそらくその意図は今後の関連する記事で説明されるだろう。</p> 
- <p id="lastElm">&nbsp;</p> 
-</div> 
-<p id="lastElm"></p><br><br><br><br><br><br></body></html>
+  <p>Passengerの開発者たちは、Apache/Nginxと組み合わせることで、静的ファイル配信の高速化、大量のアクセス攻撃や遅いクライアントに対する防御といったメリットも得られると<a href="https://github.com/phusion/passenger/wiki/Node.js">述べている</a>。</p> 
+  <p>この発表はPhusionが自ら課した、Passengerを「究極の多言語アプリサーバ」にするという目標に向けた一歩だ。昨年、Passengerの<a href="http://blog.phusion.nl/2012/10/24/phusion-passenger-4-0-beta-1-is-here/">Pythonサポートがベータになった</a>が完成したようだ。Node.jsサポートの発表に続いて、PhusionはNodeベースのアプリフレームワークである<a href="http://www.meteor.com/">Meteor</a>のサポートも<a href="http://blog.phusion.nl/2013/11/01/will-meteor-kill-rails-i-dont-know-but-phusion-passenger-open-sources-meteor-support/">明らかにした</a>。</p> 
+  <p>Passenger自体はC++で書かれており、Rubyやその他の言語と密に結合してはいない。バージョン4のリリースでは、いくつかのアーキテクチャ上の変更がなされた。Passengerの内部I/OハンドラはNode.jsとよく似たイベント駆動になり、エンタープライズ版はマルチプロセスおよびマルチスレッドのハイブリッド実行をサポートする。これにより、WebSocket上のライブストリーミングといった機能を可能にしつつ、リソースを最大限に活用することができる。</p> 
+  <p>Rubyアプリに関して、Passengerはたとえば、リクエスト間までガベージコレクションを遅延させることができる&quot;out of band&quot;実行のような機能や、サブスクリプションベースのアプリモニタリングおよび分析サービスである<a href="https://www.unionstationapp.com/">PhusionのUnion Station製品</a>とのインテグレーションも提供する。</p> 
+  <p>人気のあるRubyアプリサーバのうち、ThinやUnicornのようなイベント駆動のサーバアーキテクチャよりもスレッド化を好むという点において、PumaはPassengerとよく似ている。Phusionチームは最近、<a href="https://github.com/phusion/passenger/wiki/Puma-vs-Phusion-Passenger">PassengerとPumaの比較</a>を公表し、Pumaの開発者であるEvan Phoenix氏が<a href="https://news.ycombinator.com/item?id=5991407">HackerNewsでこれに反応した</a>。</p> 
+  <p>InfoQでは、Passengerの最近のアップデートについて、PhusionのCTO、Hongli Lai氏から話を聞いた。</p> 
+  <p><b>PassengerはRubyユーザにout-of-band実行のような、言語ランタイムに密接に関係した独自機能を提供していますね。Node.jsやPythonユーザにも同様のメリットはありますか？</b></p> 
+  <blockquote>
+    ほとんどの機能は、Node.jsとPythonを含むサポートしている言語すべてで利用できます。当初より、私たちはRubyへの依存関係を最小限にしてきました。最初のリリースから数ヶ月ですでにPythonをサポートしていたのですが、積極的な売り込みをしていなかっただけです。次のリリースでは
+   <a href="http://www.meteor.com/">Meteor</a>のサポートを計画しています。 
+   <p>Node.jsとPythonで利用できない機能がわずかにありますが、これらはその言語では意味がないか、必要な言語固有のサポートコードがまだ書かれていないためです。NodeとPythonのガベージコレクタは通常、Rubyのような長いGCポーズに苦しむことはありません。そのため、Node.jsとPythonユーザにはout-of-band work機能は必要ないと思います。</p> 
+  </blockquote> 
+  <p><b>現時点で、Node.jsのサポートはどれくらい安定していますか？</b></p> 
+  <blockquote>
+   安定していると思います。私たちのテストアプリケーションはすべてパスしており、テスターのアプリケーションもすべてうまく動いています。既知の問題はありません。
+  </blockquote> 
+  <p><b>もともとPassengerの目標は、RubyのデプロイメントをPHPと同じくらい簡単にすること、適切なディレクトリにアプリを置くだけにすることでしたよね。Passengerはその約束を達成できたと思いますか？</b></p> 
+  <blockquote>
+   アプリのデプロイメントには、OSや言語ランタイムのプロビジョニングからライブラリ依存関係の管理やアプリケーションプロセスの監視まで、あらゆることが関係しています。PHPのデプロイが簡単な理由の1つは、mod_phpモジュールを通して、Webサーバが自動的にPHPアプリケーション実行の面倒を見てくれるためです。
+   <br /> Passengerを最初に開発した当時、Rubyアプリケーションの実行、監視、管理は大変な苦痛でした。複数のアプリケーションサーバプロセスを実行し、ローカルソケットをリッスンし、このソケット集合にプロキシが向かうようWebサーバをセットアップし、プロセスがクラッシュしたときに再開するようプロセス監視ツールをセットアップする必要がありました。Passengerで、私たちはmod_phpに似た仕組みを開発することで、この部分を解決しました。ですから、バージョン1.0の時点で、適切なディレクトリに置くだけでRubyアプリを実行するという目標はすでに達成しています。
+   <br /> 
+   <br /> それでもPHPの方がデプロイするのが簡単だと思われている理由は、多くの人気のあるPHPアプリケーションがアプリ実行以上のことを自動的に世話してくれるためです。たとえば、
+   <a href="http://wordpress.org/">Wordpress</a>には依存関係がなく、ユーザが設定ファイルを編集する必要もなく、きれいなGUIを通してデータベースのクレデンシャルを求めます。でも自分でPHPアプリを書く場合には、RubyやNode、Pythonアプリで経験するのと同じ問題が起こります。
+  </blockquote> 
+  <p><b>実際のところ、Passengerがすぐに使えるホスティング会社はありますか？</b></p> 
+  <blockquote>
+   Passengerがすぐに使える知名度の高いホスティング会社には、
+   <a href="http://aws.amazon.com/elasticbeanstalk/">Amazon Elastic Beanstalk</a>や
+   <a href="https://www.openshift.com/"> Red Hat OpenShift</a>があります。
+   <a href="http://heroku.com/">Heroku</a>のような多くのプロバイダはアプリサーバの選択にとらわれていませんが、ユーザは簡単にPassengerを使うことができます。
+   <a href="http://www.brightbox.com">BrightBox</a>や
+   <a href="https://www.speedyrails.com/">SpeedyRails</a>など、デフォルトでPassengerを使っている小さなホスティング会社もたくさんあります。
+  </blockquote> 
+  <p><b>Rubyアプリサーバには、強い競合がいくつかありますね（Thin、Unicorn、Puma）。この時点で、Passengerはどんな位置にいますか？</b></p> 
+  <blockquote>
+   他のRubyアプリサーバは、Passengerよりもスコープが限定されています。ユーザはプロセスを開始し、ソケットをリッスンするようセットアップし、リバースプロキシルールを設定したりする必要があります。システム全体を細かくコントロールしたいエキスパートにとって、これは必ずしも悪いアプローチではありませんが、私たちの哲学とは違います。私たちの好みは、安定して柔軟性がありながら、インストール、利用、管理がシンプルなソフトウェアです。
+   <br /> 
+   <br /> そうは言っても、私たちは他からたくさんのことを学んでいます。たとえば、Passengerの&quot;smart spawning&quot;機能はUnicornよりも先でしたが、Passengerのout-of-band work機能は独自に改善しているものの、Unicornをベースにしています。それぞれのサーバには強みと弱みがあるのです。
+  </blockquote> 
+  <p>&nbsp;</p> 
+ </div> 
+</div><br><br><br><br><br><br></body></html>
