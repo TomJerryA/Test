@@ -2,16 +2,28 @@
  <head></head> 
  <body>
   <div>
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/24.java">Windows/Windows Phone Takes a Step Towards Unification</a>Microsoft has taken the first step towards unifying the Windows 8 and Windows Phone stores. Developers no longer have to register for each platform separately. Those already registered for both will be receiving a free renewal for one year in compensation.
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/28.java">Android Gets Better with App Translation Service</a>Google has officially released its translation service for Android app which enables developers to localize the apps in various languages based on the guidelines in the localization checklist document.
   </div>
   <div>
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/23.java">Pivotal Announces Pivotal CF Based on CloudFoundry</a>Today, Pivotal announced the availability of Pivotal CF, an enterprise cloud platform based on Cloud Foundry, along with a number of Pivotal One services such as an Apache Hadoop and Analytics service. A reply of the announcement is available from gopivotal.com
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/27.java">Project Monaco Brings Visual Studio to the Web</a>Microsoft has released Visual Studio Online which brings a form of the its popular software development IDE to the web. As part of this release small teams of developers can use this service for free, and use it from non-Windows based clients.
   </div>
   <div>
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/22.java">Presto: Facebook’s Distributed SQL Query Engine</a>Facebook has open-sourced Presto, their distributed SQL query engine. Presto uses a pipelined architecture rather than the Map/Reduce design found elsewhere. In production since early this year, Facebook has since “deployed in multiple geographical regions and [they] have successfully scaled a single cluster to 1,000 nodes”.
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/26.java">Pivotal's Reactor Goes GA</a>This week, Pivotal released version 1.0 of its project Reactor for general availability. Reactor provides low-level abstractions for an event-driven, reactive programming model, and is a component member of the Spring IO Platform in its &quot;IO Foundation&quot; layer.
   </div>
   <div>
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/21.java">Use the Force, Luca - Jenkins Developer Wipes out a Month of Commits on GitHub</a>Yesterday, a developer on the Jenkins project accidentally triggered a force push on the GitHub repositories that store the Git repositories for the Jenkins codebase, wiping out several months of commits. InfoQ looks at what happened and what needs to prevent this re-occuring in the future.
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/25.java">Developing iOS &amp; Android Apps with C# in Visual Studio</a>Xamarin partnerships with Microsoft to let developers build iOS and Android applications in Visual Studio. Xamarin University teaches developers how to do that.
+  </div> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/24.java">Windows/Windows Phone Takes a Step Towards Unification</a>Microsoft has taken the first step towards unifying the Windows 8 and Windows Phone stores. Developers no longer have to register for each platform separately. Those already registered for both will be receiving a free renewal for one year in compensation. 
+  </div> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/23.java">Pivotal Announces Pivotal CF Based on CloudFoundry</a>Today, Pivotal announced the availability of Pivotal CF, an enterprise cloud platform based on Cloud Foundry, along with a number of Pivotal One services such as an Apache Hadoop and Analytics service. A reply of the announcement is available from gopivotal.com 
+  </div> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/22.java">Presto: Facebook’s Distributed SQL Query Engine</a>Facebook has open-sourced Presto, their distributed SQL query engine. Presto uses a pipelined architecture rather than the Map/Reduce design found elsewhere. In production since early this year, Facebook has since “deployed in multiple geographical regions and [they] have successfully scaled a single cluster to 1,000 nodes”. 
+  </div> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/21.java">Use the Force, Luca - Jenkins Developer Wipes out a Month of Commits on GitHub</a>Yesterday, a developer on the Jenkins project accidentally triggered a force push on the GitHub repositories that store the Git repositories for the Jenkins codebase, wiping out several months of commits. InfoQ looks at what happened and what needs to prevent this re-occuring in the future. 
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/20.java">Testing Resiliency at PagerDuty Without a Simian Army</a>Doug Barth, from PagerDuty, talked at DevOps Days London about their approach to start resiliency testing their systems without dedicating a lot of automation effort upfront. The goal was to quickly start learning about failure points and openly discuss how to fix them with only one hour per week of effort. 
@@ -138,18 +150,6 @@
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/30.java">Release of the Microsoft Script Explorer Canceled</a>Microsoft has canceled the release of their Script Explorer. This tool was designed to make it easier to find PowerShell scripts located in either public repositories (e.g. TechNet Script Center and PoshCode) or a company’s internal collection. 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/29.java">A Merge Tool that Understands Functions</a>Codice Software, maker of Plastic SCM, has released a preview of a semantic merge tool. This tool parses your code, allowing for a more accurate merge than the line-by-line comparisons most tools use. We interviewed Pablo Santos Luaces, Principal Software Engineer of Codice Software. 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/28.java">IntelliJ IDEA 12.1 Lands with JavaFX 2.0 Support</a>JetBrains has begun shipping IntelliJ IDEA 12.1 which sees the IDE gaining full support for JavaFX 2.0, the latest incarnation of the Java client platform. Version 12.1 of popular IDE also includes new features for Gradle, Scala, Groovy and Play Framework users. 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/27.java">Google Releases Mirror API for Glass</a>Google has released the Mirror API for writing Glassware applications and the final specification for Glass devices. 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/26.java">Microsoft Makes Infrastructure Cloud Generally Available, Matches AWS Prices</a>Today, Microsoft took their Infrastructure-as-a-Service (IaaS) cloud product – called Windows Azure Infrastructure Services – out of preview and made it available to the general public. Microsoft is entering a crowded IaaS market but they’ve committed to matching cloud leader Amazon Web Services (AWS) on price while also promising enterprise-class SLAs and services. 
   </div>     
  </body>
 </html>

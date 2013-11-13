@@ -1,40 +1,40 @@
 <html>
  <head></head> 
- <body>
-  <div>
+ <body> 
+  <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/22.pyb">Java 8を可能にしたJava 7の機能</a> この記事ではBen Evans氏が，Java 8の新機能の布石となったJava 7の機能を探求します。 
-  </div>
-  <div>
+  </div> 
+  <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/21.pyb">かんばんはただの常識か?</a> 私たちは、製品開発について考える時に、経験則の概念がどれほど強力かを見てきました。アジャイルマニフェストは、個々のアジャイルプロセスとプラクティスを使って、経験則をまとめたものだと考えられます。このかんばんシンキングモデルは、注目すべき重要な分野を含む5つのかんばんの経験則と、改善に関する3つの影響が含まれています。 
-  </div>
-  <div>
+  </div> 
+  <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/20.pyb">JavaOne 2013 総まとめ: Java 8の衝撃，Java・イズ・バック！</a> JavaOne2013年が先日の9月22日から26日にかけて，サンフランシスコで開催されました。祭典は日曜日，Peter Utzschneider, Nandini Ramani and Cameron Purdy各氏によるストラテジキーノートで幕を開けています。 
-  </div>
-  <div>
+  </div> 
+  <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/19.pyb">ドメイン・フレームワークのススメ(第2回)</a> 簡単なゲームを題材として、ドメイン・フレームワークの考え方を数回の記事に分けて解説。第2回はドメイン・フレームワークの抽出と、ドメイン・フレームワークを利用して再構築されたモデル(分析モデル)のイメージを解説。 
-  </div>
-  <div>
+  </div> 
+  <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/18.pyb">Docker: Linuxコンテナを使ってアプリケーションの配置を支援する</a> DockerはLinuxコンテナの内部でアプリケーションを動作させるためのオープンソースツールです。 
-  </div>
-  <div>
+  </div> 
+  <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/17.pyb">Java 7 ソケット・ダイレクト・プロトコル - 一度書けば、どこでも実行できる、ある場所では驚くほどに</a> この記事では、ウルトラ・ハイ・パフォーマンスコンピューティング環境へ、InfiniBandリモート・ダイレクト・メモリ・アクセスへのネイティブアクセスを提供する、Java7のJavaソケット・ダイレクト・プロトコルのサポートについて概説します。 
-  </div>
-  <div>
+  </div> 
+  <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/16.pyb">ドメイン・フレームワークのススメ(第1回)</a> 簡単なゲームを題材として、ドメイン・フレームワークの考え方を数回の記事に分けて解説。第1回は題材となるゲームの説明と、概念モデルのイメージを解説。 
-  </div>
-  <div>
+  </div> 
+  <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/15.pyb">バーチャルパネル: 低レイテンシ環境でJavaを使う</a> InfoQは低レイテンシJavaの専門家4人を集めて、こうした場面でJavaを使うときのベストプラクティスについて議論した。 
-  </div>
-  <div>
+  </div> 
+  <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/14.pyb">データベースのバージョニングとアップグレードスクリプトの利用</a> Konrad Lukasik氏が，デリバリを考慮したデータベース構築とバージョニングについて，アップグレードスクリプトを使った実践的なアドバイスを提供してくれました。企業環境における氏自らの経験に基づいたこの記事には，そのスクリプトも含まれています 
-  </div>
-  <div>
+  </div> 
+  <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/13.pyb">ダブル・ディスパッチ～ 典型的なオブジェクト指向プログラミング・イディオム ～</a> オブジェクト指向でのプログラミングでよく用いられる典型的なプログラミング・テクニック(イディオム)のひとつである「ダブル・ディスパッチ」について、具体的な例とUML図を用いて解説。 
-  </div>
-  <div>
+  </div> 
+  <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/12.pyb">.NETで非同期ライブラリを正しく実装する</a> 非同期ライブラリを構築するのは難しいです。しかし、基本的な原則に従えば、ライブラリの利用者の利便性を大幅に改善することができます。【 
-  </div>
-  <div>
+  </div> 
+  <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/11.pyb">Javaガベージコレクションのエッセンス</a> ガベージコレクタをチューニングしようとすると、何百ものJVMスタートアップフラグをどう扱えばいいのか困りませんか? この記事では、チューニングするガベージコレクションのアルゴリズムを選ぶ時のトレードオフについて説明します。 
   </div> 
   <div> 

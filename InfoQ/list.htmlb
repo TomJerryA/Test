@@ -1,6 +1,9 @@
 <html>
  <head></head> 
- <body> 
+ <body>
+  <div>
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/10.htmlb">Datomic信息模型</a> Clojure的作者Rich Hickey在本文中介绍了Datomic的信息模型，Datomic是一种新型数据库，它被设计为一系列简单服务的组合，并结合了关系型数据库管理系统的能力与NoSQL的可伸缩性。 
+  </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/9.htmlb">使用Flurry来统计和分析用户行为</a> 本文介绍了Flurry的基本功能以及如何利用Flurry做自定义的统计和分析，文章最后也将Flurry与业界其它同类工具做了对比和总结。 
   </div> 
@@ -147,9 +150,6 @@
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/11.htmlb">深入理解Java内存模型（五）——锁</a>Java线程之间的通信对程序员完全透明，内存可见性问题很容易困扰Java程序员，本文试图揭开Java内存模型神秘的面纱。本文大致分三部分：重排序与顺序一致性；三个同步原语（lock，volatile，final）的内存语义，重排序规则及在处理器中的实现；Java内存模型的设计目标，及其与处理器内存模型和顺序一致性内存模型的关系。 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/10.htmlb">TeamToy2的开发故事：面向移动的API设计，代码重用，快速迭代</a>2013年的元旦后，一个名叫TeamToy的项目再次进入了人们的视野，这是一个面向团队的Todo类产品。目前，TeamToy2仍处于快速更新、完善产品的阶段，其移动版本TeamToyPocket刚刚宣布开源。为此，InfoQ中文站联系到了TeamToy的作者陈理捷，请他谈谈整个TeamToy2开发中的一些想法和经验，以及移动版本的选型、整个项目开源这一决策的考量。 
-  </div> 
+  </div>  
  </body>
 </html>
