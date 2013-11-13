@@ -1,142 +1,54 @@
-<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>自建CDN防御DDoS（3）：架构的后续改进</h3><p>在<a href="http://www.infoq.com/cn/articles/anti-ddos-cdn-1;jsessionid=B9C440412AE4E901BE5729D9A3FA32C5">本系列的第一篇文章</a>中，我们介绍了我们客服系统遇到DDoS攻击的情况，以及我们为什么决定采用自建CDN的方式来解决这个问题的原因。</p><p>之后，我们介绍了<a href="http://www.infoq.com/cn/articles/anti-ddos-cdn-2;jsessionid=B9C440412AE4E901BE5729D9A3FA32C5">自建CDN的具体建设规划</a>，主要从以下几个方面进行考量：硬件成本、带宽成本、架构设计、实际部署。</p><p>本文是《自建CDN防御DDoS》系列的第三篇，介绍CDN架构的后续改进。后续改进主要包括三个方面：DNS智能解析+轮询+存活监测，集中式日志分析+攻击防御，以及多节点CDN的快速部署+图形化管理。</p><h2>1、DNS智能解析+轮询+存活监测</h2><h3>A. 部署智能DNS就近匹配CDN节点</h3><p>我们自建CDN的另外一个目的是做访问路径优化，因为这些加速节点是我们精心挑选之后部署的，无论是带宽质量、机房环境、安全风险等指标均能满足可靠可控的需求。</p><p>因此当部署完多个CDN节点后，为使这些节点协同运作，同时优化用户的访问路径，我们可以通过配置Bind的View视图把访客IP指定到相应的CDN节点，使得访客能够根据自己所在的区域和线路类型，就近从CDN节点上获取页面内容，从而优化访客的路由。</p><h3>B. DNS自动轮询+故障监测</h3><p>我们可以利用DNS轮询来为网站进行分流负载。如果条件充裕，可以在各个大区内部署冗余的CDN节点，这样既能缓解某个区域内单一节点的负载，同时能为这个节点作互备，当这个区内的CDN节点因故障失效之后，调度机制能在最快时间内将故障节点的流量牵引至当前可用节点，实现动态的剔除该节点，从而不影响访客的正常请求。</p><p>实现DNS轮询只需要在Bind中为同一域名添加多个A记录即可。Bind View视图功能和节点存活检查的相关技术已经相当成熟，相应的技术文档也比较多了，可以参考《<a href="http://wenku.baidu.com/view/dab18a0b79563c1ec5da710e.html">使用Bind构建高可用智能DNS服务器</a>》，这里我们就不再累述。</p><h3>C. Bind View IP分拣脚本</h3><p>我们目前编写的脚本可以帮忙快速分拣出电信、联通的线路还包括华东、华南、华北和西部四个地区的IP范围，有兴趣的同学可以试用一下。</p><pre>
-# &nbsp;这个脚本是从Apnic下载属于中国的IP列表，然后把属于联通，电信及其它的IP进行归类  
-get_apnic(){  
-FILE=$PWD/ip_apnic  
-CNC_FILE=$PWD/CNC  
-CTC_FILE=$PWD/CTC  
-TMP=/dev/shm/ip.tmp  
-rm -f $FILE  
-wget http://ftp.apnic.net/apnic/stats/apnic/delegated-apnic-latest -O $FILE  
-
-grep 'apnic|CN|ipv4|' $FILE | cut -f 4,5 -d'|'|sed -e 's/|/ /g' | while read ip cnt  
-do  
- &nbsp;&nbsp;   echo $ip:$cnt  
- &nbsp;&nbsp;   mask=$(cat &lt;&lt; EOF | bc | tail -1  
-
-pow=32;  
-define log2(x) {  
-if (x&lt;=1) return (pow);  
-pow--;  
-return(log2(x/2));  
-}  
-
-log2($cnt)  
-EOF  
-)  
-
-whois $ip@whois.apnic.net &gt; $TMP.tmp  
-sed -n '/^inetnum/,/source/p' $TMP.tmp | awk '(/mnt-/ || /netname/)' &gt; &nbsp;$TMP  
-NETNAME=`grep ^netname $TMP | sed -e 's/.*: &nbsp;  \(.*\)/\1/g' | sed -e 's/-.*//g'|sed 's: ::g'`  
-
-egrep -qi &quot;(CNC|UNICOM|WASU|NBIP|CERNET|CHINAGBN|CHINACOMM|FibrLINK|BGCTVNET|DXTNET|CRTC)&quot; $TMP  
- &nbsp;if [ $? = 0 ];then  
- &nbsp; echo $ip/$mask &gt;&gt; $CNC_FILE  
-    else  
- &nbsp; egrep -qi &quot;(CHINATELECOM|CHINANET)&quot; $TMP  
- &nbsp; if [ $? = 0 ];then  
- &nbsp;&nbsp;&nbsp; echo $ip/$mask &gt;&gt; $CTC_FILE  
- &nbsp; else  
- &nbsp;&nbsp;&nbsp;&nbsp;   sed -n '/^route/,/source/p' $TMP.tmp | awk '(/mnt-/ || /netname/)' &gt; &nbsp;$TMP  
- &nbsp;&nbsp;&nbsp;&nbsp;   egrep -qi &quot;(CNC|UNICOM|WASU|NBIP|CERNET|CHINAGBN|CHINACOMM|FibrLINK|BGCTVNET|DXTNET|CRTC)&quot; $TMP  
- &nbsp;&nbsp;&nbsp;&nbsp;   if [ $? = 0 ];then  
- &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;   echo $ip/$mask &gt;&gt; $CNC_FILE  
- &nbsp;&nbsp;&nbsp;&nbsp;   else  
- &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;   egrep -qi &quot;(CHINATELECOM|CHINANET)&quot; $TMP  
- &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;   if [ $? = 0 ];then  
- &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;   echo $ip/$mask &gt;&gt; $CTC_FILE  
- &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;   else  
- &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;   echo &quot;$ip/$mask $NETNAME&quot; &gt;&gt; $PWD/OTHER  
- &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;   fi  
- &nbsp;&nbsp;&nbsp;&nbsp;   fi  
- &nbsp; fi  
-    fi  
-done  
-rm -rf $TMP $TMP.tmp  
-}  
-
-# &nbsp;从whois信息中提取address登记人地址信息，从而判断在哪个省份  
-gen_zone(){  
- &nbsp;&nbsp;   FILE=$2  
- &nbsp;&nbsp;&nbsp; [ ! -s $FILE ] &amp;&amp; echo &quot;$FILE file not found.&quot; &amp;&amp; exit 0  
-
- &nbsp;&nbsp;   rm -rf &nbsp;$FILE.zone  
- &nbsp;&nbsp;   while read LINE;do  
- &nbsp;&nbsp;    &nbsp;&nbsp;&nbsp; LINE=`echo &quot;$LINE&quot;|awk '{print $1}'`  
- &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; echo &quot;$LINE @ &quot;  
- &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; echo -n &quot;$LINE @ &quot; &gt;&gt; $FILE.zone  
- &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; whois $LINE|egrep &quot;address&quot;|xargs echo &gt;&gt; $FILE.zone  
- &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; sleep $TIME  
- &nbsp;&nbsp;   done &lt; $FILE  
-}  
-
-# 分别挑选出华东，华南，华北，西部四大区的IP地址列表  
-gen_area(){  
- &nbsp;&nbsp;   FILE=$2  
- &nbsp;&nbsp;&nbsp; [ ! -s $FILE.zone ] &amp;&amp; echo &quot;$FILE.zone file not found.&quot; &amp;&amp; exit 0  
-
- &nbsp;&nbsp;   STRING=&quot;none&quot;  
- &nbsp;&nbsp;   echo $FILE|egrep -i -q &quot;cnc&quot;  
- &nbsp;&nbsp;   [ $? = 0 ] &amp;&amp; &nbsp;STRING=&quot;cnc&quot;  
- &nbsp;&nbsp;   echo $FILE|egrep -i -q &quot;ctc&quot;  
- &nbsp;&nbsp;   [ $? = 0 ] &amp;&amp; &nbsp;STRING=&quot;ctc&quot;  
- &nbsp;&nbsp;   echo $FILE|egrep -i -q &quot;other&quot;  
- &nbsp;&nbsp;   [ $? = 0 ] &amp;&amp; &nbsp;STRING=&quot;other&quot;  
- &nbsp;&nbsp;     
- &nbsp;&nbsp;   [ $STRING = &quot;none&quot; ] &amp;&amp; echo &quot;Not cnc or ctc file&quot; &amp;&amp; exit 0  
-
- &nbsp;&nbsp;   cp -a $FILE.zone $FILE.tmp  
-
- &nbsp;&nbsp;   egrep -i &quot;$HD_STR&quot; $FILE.tmp &gt; $HD_FILE.$STRING  
- &nbsp;&nbsp;   egrep -i -v &quot;$HD_STR&quot; $FILE.tmp &gt; aaa  
- &nbsp;&nbsp;   mv aaa $FILE.tmp  
-
- &nbsp;&nbsp;   egrep -i &quot;$HN_STR&quot; $FILE.tmp &gt; $HN_FILE.$STRING  
- &nbsp;&nbsp;   egrep -i -v &quot;$HN_STR&quot; $FILE.tmp &gt; aaa  
- &nbsp;&nbsp;   mv aaa $FILE.tmp  
-
- &nbsp;&nbsp;   egrep -i &quot;$XI_STR&quot; $FILE.tmp &gt; $XI_FILE.$STRING  
- &nbsp;&nbsp;   egrep -i -v &quot;$XI_STR&quot; $FILE.tmp &gt; aaa  
- &nbsp;&nbsp;   mv aaa $FILE.tmp  
-
- &nbsp;&nbsp;   egrep -i &quot;$HB_STR&quot; $FILE.tmp &gt; $HB_FILE.$STRING  
- &nbsp;&nbsp;   egrep -i -v &quot;$HB_STR&quot; $FILE.tmp &gt; aaa  
- &nbsp;&nbsp;   mv aaa $FILE.tmp  
-
- &nbsp;&nbsp;   grep ^[0-9] $FILE.tmp |awk '{print $1}' &gt;&gt; $HD_FILE.$STRING  
- &nbsp;&nbsp;   sed -r -i 's#@.*##g' *.$STRING  
-
- &nbsp;&nbsp;   rm -rf $FILE.tmp  
-}  
-</pre><p>具体脚本可以通过<a href="https://github.com/shaohaiyang/easyMyDNS">https://github.com/shaohaiyang/easyMyDNS</a>下载获取。</p><h2>2、集中式日志分析+攻击防御</h2><p>CDN作为网站的前置节点，实时记录着所有访客的访问行为。可以说，日志当中蕴藏了丰富的奥秘。据了解，大部分网站并没有对其访问日志进行很好的利用，仅仅是对其做了归档备份。如能利用好这些访问日志，并对其进行深度的分析和挖掘，对于了解网站的运行状况、感知业务层面的一些异常活动，能够带来极大的帮助。尤其是当面临DDoS攻击时，能够提供出足够的依据来区分恶意的IP。</p><p>区分恶意攻击的主要依据类型有：</p><ul> 
- <li>某个IP发起大量的并发请求</li> 
- <li>大量连续的IP段发起请求</li> 
- <li>大量无规则的IP发起请求</li> 
-</ul><p>目前我们对HAProxy的日志分析仅作用于单节点，我们在实际应用场景中，是基于单位时间段的日志截断，把日志写入到/dev/shm内存中，使用了通用的shell，awk，sed语言来做行为分析，这样做的好处是避免了磁盘IO开销的短板。缺点是，日志分析行为比较粗糙，分析效率有待于提高。</p><h3>A. 多节点CDN集中式日志分析+攻击阻断架构</h3><p>由于作用于单节点的日志分析架构存在较大的局限性，主要体现为：</p><ul> 
- <li>日志散落在各个节点，分析时忽略了其他节点的数据，无法获悉全局的情况</li> 
- <li>当防御规则启用后，仅作用于单节点，其他节点依旧面临该特性的攻击</li> 
- <li>单节点的实时分析当面临攻击时，会占用较大系统资源</li> 
-</ul><p>因此在多节点CDN架构下，如要及时感知到DDoS攻击并对其进行阻断，而且还要考虑尽可能少的开销用节点系统资源，需要站在全局层面来集中分析攻击行为，并且针对分析后的结果展开多节点协同处理防御/阻断规则，来应对DDoS攻击。</p><p>对难点进行梳理后，我们发现要实现这样的需求主要解决三个问题：</p><ol> 
- <li>汇集多个CDN节点的海量日志存储</li> 
- <li>针对海量日志的集中式风险分析</li> 
- <li>协同运作的攻击阻断机制</li> 
-</ol><h4>具体架构：</h4><ul> 
- <li>Nginx/HAProxy作为防御攻击系统的终端</li> 
- <li>节点产生的访问日志通过syslog传送到专用的LogServer进行汇集</li> 
- <li>专用的LogServer作为日志的存储和风险分析、阻断规则推送</li> 
-</ul><h4>a. HAProxy/Nginx作为防御攻击系统的载体</h4><p>我们在<a href="http://www.infoq.com/cn/articles/anti-ddos-cdn-2;jsessionid=B9C440412AE4E901BE5729D9A3FA32C5">上一篇文章</a>中已经提到过，在CDN节点端，我们建议用HAProxy或Nginx作为防御性的反向代理，能够灵活的制定防御攻击的ACL过滤规则，并能够以热加载的方式实时生效。</p><h4>b. 日志存储解决思路</h4><p>这个环节主要包含两个部分，一是由节点到LogServer的日志传输，另一个是LogServer这一端的日志集中存储。由CDN节点产生的日志可以通过本地写入PIPE + Rsyslog UDP传输的方式将日志汇总到专用的LogServer，LogServer收到日志之后，按照域名分类的方式将日志存储在一起。</p><p>对于海量日志的存储可以用Hadoop作为载体，利用Map/Reduce算法分解日志，提升筛选效率。对此有兴趣深入了解的同学可以参考<a href="http://www.gaizaoren.org/archives/491">开源日志系统比较</a>。</p><h4>c. 协同运作的攻击阻断机制</h4><p>这里则是最为关键的一个环节：我们整个架构的重点在于“抗攻击”，而我们经过前面的分析，针对多节点CDN的攻击防御，最为高效的做法是：由专用的LogServer进行集中式分析运算，并将运算结果生成安全防护策略，实时对接到各个CDN节点，协同处理防御/阻断规则，以此来应对DDoS攻击。那么这里将会产生以下几个主要问题：</p><ol> 
- <li>采用什么样的脚本和规则来分析日志</li> 
- <li>分析后的结果如何形成HAProxy/Iptables的ACL策略</li> 
- <li>生成的ACL策略如何作用到全局的CDN节点，并形成联动</li> 
-</ol><p>对此我们的设计思路如下：</p><p>当日志完整的存储在LogServer之后，使用分析脚本对其进行特征匹配，提取出恶意攻击的来源IP地址，将这些IP地址生成相应的HAProxy/Iptables的阻断规则，并下发到全局的CDN节点。这里可以通过两种方式来进行：</p><ol> 
- <li>通过开发专用的接口与Iptables、Nginx/HAProxy进行联动</li> 
- <li>通过统一配置管理工具Puppet推送来实现，LogServer作为消息的推送端与命令下发主控端，各个CDN节点作为策略的接收端与生效命令执行端，在接收完防护策略后，自动加入ACL列表，执行热加载的命令</li> 
-</ol><h3>B. 该架构的优势</h3><ul> 
- <li>这套架构得以实现之后，系统的横向扩展将变得非常容易，能根据节点的流量/资源负载情况，动态的添置或下线CDN节点，无需对源站点进行任何改动。</li> 
- <li>能够从容的应对DDoS攻击，在分散攻击流量的同时，能够自动阻断攻击来源。</li> 
- <li>并且对于新的攻击，只要在某一站点发现异常，即可快速编制新防护规则，将屏蔽措施应用到所有加入CDN的站点，实现全局的安全防护。</li> 
- <li>将各个CDN节点上的日志进行汇总收集/分析，能够获取到所有用户详细的访问行为，同时对所有的非法访问行为进行均记录在案，通过编制业务安全规则，可提供事前预警、事后追踪。</li> 
-</ul><h2>3、多节点CDN的快速部署与图形化管理</h2><p>管理和运维一套CDN系统对于任何组织来讲都是个很大的挑战，尤其是部署了多区域多线路的CDN。需要随时掌控CDN加速的节点列表、需要定义哪些网页元素可以作为缓存、需要做什么样的ACL策略等等，这些都需要专业的系统运维人员来配置实现。</p><p>通常较为成熟的做法是通过主控机，预先配置好CDN规则 ，通过Rsync把配置文件推送到各个CDN节点中去。很显然，这种方案虽然效率高，但是对CDN部署者具有一定的门槛，加上服务器的权限控制要求非常严格，也不利于面向其它工程师做推广。</p><p>偶然的机会，我们有幸在<a href="http://segmentfault.com/hackathon">黑客马拉松大赛</a>初识了<a href="http://ocdn.me/">OpenCDN</a>这个获奖作品，通过互补整合，更是弥补了我们这套CDN上的前端管理的不足。因此，可以跟OpenCDN这个项目做很好的深度整合，降低运维和管理门槛，造福于更多的IT运维的用户。</p><p><img src="/resource/articles/anti-ddos-cdn-3/zh/resources/node-info.png;jsessionid=B9C440412AE4E901BE5729D9A3FA32C5" width="500" alt="" _href="img://node-info.png" _p="true" /></p><h3>A. OpenCDN主要解决什么问题？</h3><p>OpenCDN是一套快速部署CDN加速的工具，针对专门提供CDN加速服务的企业或对多节点CDN加速有需求的企业提供一套便捷的管理平台，可对每一个节点的状态、系统负载进行实时监测与统一管理。OpenCDN预制了多套常用缓存规则，支持多种复杂的CDN缓存场景。正如其名，OpenCDN是免费开源的。</p><h3>B. OpenCDN当前是怎么做的？</h3><p>OpenCDN的主体架构可分为CDN管理中心和CDN加速节点。CDN加速节点可以有很多个，在数量上没有任何限制。用户可以通过OpenCDN快速的部署多个CDN加速节点，并通过一个管理中心进行集中式的管理。</p><p>因此OpenCDN在这里主要做了两部分工作，一是将CDN节点的部署过程一键化，二是通过WebConsole工具将这些CDN加速节点统一的管理起来。</p><p><img src="/resource/articles/anti-ddos-cdn-3/zh/resources/node.png;jsessionid=B9C440412AE4E901BE5729D9A3FA32C5" width="500" alt="" _href="img://node.png" _p="true" /></p><h3>C. OpenCDN未来要做出什么样？达到怎么样的效果？</h3><p>OpenCDN将致力于为多节点CDN加速有需求的网站，提供一套便捷的CDN加速管理平台，能够按需自建CDN节点，灵活控制成本，提高网站响应速度，轻松应对突发流量。</p><p>后续我们将在此基础上整合加入上述CDN防御大流量DDoS攻击的组合方案。我们对这套平台做了开源，希望有更多有需要的人能够以最低的成本获取它，同时也希望通过更多的开发者加入进来一起完善它。所谓人人为我，我为人人。</p><h3>D. OpenCDN进行自建CDN的优势</h3><ol> 
- <li>首先是降低了获取CDN的成本，同时最为关键的是提升了CDN节点的性能。对比租用商业CDN，我们无需再为购买流量而计算成本，形成固定开销的租用模式。</li> 
- <li>不局限于节点的介质，物理服务器或者VPS均可以适用，可利用不同服务商的VPS构建起一张覆盖全国全网的低成本CDN加速集群。</li> 
- <li>商业CDN的节点要共享给多个站点同时使用，而这意味着节点的有限资源（并发数）将在同一时间内分享使用，对于带宽/流量要求较高的用户，比较适合自建的架构。</li> 
-</ol><h3>OpenCDN适用于哪些用户？</h3><p>OpenCDN目前来看，比较适用于行业竞争比较大的网站：</p><p>游戏站、垂直电商、社区论坛、在线视频、聊天。</p><p>这些网站的共性特点：流量中型规模，竞争激烈，经常被攻击，行业利润高，愿意花钱。</p><h2>总结</h2><p>至此，《自建CDN防御DDoS》系列便告一段落。如果有任何疑问，欢迎跟我们交流、探讨。</p><h3>作者简介</h3><p>邵海杨（<a href="http://shaohy.17geek.us/doku.php?id=whoami">个人页面</a>），来自杭州Linux用户组。网名“海洋之心”，系统架构师，业余撰稿人，致力于开源软件及前沿科技的研究和探索。</p><p>张磊（<a href="http://weibo.com/zooboa">微博</a>，<a href="http://www.zooboa.com/">博客</a>），来自杭州谷歌开发者社区。专注于信息安全技术领域，曾主导多项银行/证券行业网站安全测试和入侵取证分析项目，为四大银行提供安全防护技术支持。目前创业做互联网安全防护。</p><h3>相关阅读</h3><p><a href="http://www.infoq.com/cn/articles/anti-ddos-cdn-1;jsessionid=B9C440412AE4E901BE5729D9A3FA32C5">自建CDN防御DDoS（1）：知己知彼，建设持久防线</a><br /> <a href="http://www.infoq.com/cn/articles/anti-ddos-cdn-2;jsessionid=B9C440412AE4E901BE5729D9A3FA32C5">自建CDN防御DDoS（2）：架构设计、成本与部署细节</a></p><div class="clearer-space"></div></body></html>
+<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>论软件生命周期集成</h3><p>多年来，软件交付被视为辅助的业务流程。尽管软件交付花费了企业大量的成本，但是它始终没有成为企业业务的关注点，因为它不像供应链管理、 财务管理、人资管理那样具有一套严谨的系统架构。</p>
+<p>但是，随着越来越多的企业把软件交付作为业务运作的关键环节，创建、实现、开发和维护软件就变得尤为重要。尤其是，伴随着移动技术、云技术以及开放式网络的出现，软件变得越来越复杂。不仅软件创新能形成竞争性优势，而且如果能够比竞争对手更快且以更低的价格交付软件，那将具有真正的商业价值。毕竟，更重要的往往不是谁先有新产品或新服务的想法，而是谁先进入市场提供这种产品或服务。</p>
+<h2>软件交付串联了多个独立的过程，而不仅仅是一个单一的集成过程。</h2>
+<p>软件交付不仅是一个数十亿美元的产业，并且是主体业务流程的内在诉求。交付软件的能力能够推动业务创新，也能阻碍业务的创新。软件进入市场的时间、创新能力和质量，将成为决定公司竞争力的要素。相比其他传统的业务流程，软件交付没有成熟的模型，只是不同技术和工具的无序集合。</p>
+<p>投资组合规划、项目管理、需求、设计、开发、测试和部署都有各自良好定义的流程和工具，但他们不能有效整合、协作、配合顺畅。同一业务在其整个生命周期中被定义了无数次，从规划设计阶段，到定义、开发、测试，各个组都根据自己的需求和工具重新定义项目构件。电子表格、邮件和维基（wikis）是用来整合所有过程的，这些工具不但又是一笔开销，并且它们通常又会建立另一套系统来记录生命周期过程及其集成。</p>
+<p>精益创业(Lean Startup)、 运维开发(DevOps)和敏捷开发（ Agile）等方法会促使组织重新评估他们的开发实践活动，以实现加快节奏和增加反馈的愿望。虽然许多组织已经采用了敏捷模式，并试图应用运维开发(DevOps)，但这些举措的重点都在于工程团队及他们的实践活动。</p>
+<p>业务敏捷（Business Agility）要求通过工程、管理和客户流程这样一个工作流与业务无缝集成，但这与我们今天所见到的情况相去甚远。</p>
+<div id="lowerFullwidthVCR"></div>
+<p>以下两部分勾勒出我们今天的现实：</p>
+<h2>不相关联的专业越来越精简，但不太精益</h2>
+<p>Henry Ford和工业革命告诉我们，将分工和部门的层次结构做专业的划分，是提高效率和集中度的最好方式。一旦问题变得更复杂，组织也会随之变得复杂以解决问题。随着IT队伍规模的扩大，他们的流程、管理结构和层次结构也会相应增长。随着时间推移，学科发展超出了开发人员的能力范围，创建了独立的工作组，譬如需求、设计和测试组。敏捷开发（ Agile）将这种独立工作组视作项目开发失败的关键原因，并要求建立跨职能团队。而现实是，即使在同一个团队，不同的角色会用不同的方法、不同的措施和工具去解决同一个问题。</p>
+<p>即使在敏捷（Agile）团队中，开发人员和业务分析人员也会使用不同的工具，鼓励不同的工作方式。传统的测试工具将从测试的角度来描述问题，而开发工具会从开发人员的角度来看待问题。这些工具通过引入不同的词汇、控件和处理步骤将软件交付分割成若干个过程。过程改进通常是在功能单元的层次，而不是跨越整个软件开发和交付过程。</p>
+<p>试想，有一个工厂将生产过程中的每个步骤进行了优化，但该厂产品仍然质量低且过于昂贵。这是精益创业（Lean）生产革命之前，<a href="http://books.google.com/books/about/The_Machine_That_Changed_the_World.html?id=9NHmNCmDUUoC">汽车制造商</a>的经验。Henry Ford的传统生产模式在管理过程变化、产品复杂性和产品灵活性方面存在缺陷，而这些都是现代汽车制造所要求的。精益创业（Lean）方法的采用，意味着从整体的视角来看待端到端的过程，这在企业层面而非部门或具体职位层面，能让组织减少浪费，增加价值。</p>
+<p>这也势必会引导清晰的过程所有权、体系结构、自动化、体系结构的建立——而这些概念在软件开发行业还很缺乏。</p>
+<p>在软件开发中，我们仍然有：</p>
+<ul> 
+ <li>在端到端的过程中，缺少所有权。如果一个组织没有做整体考虑，这样的话，整个过程的所有权就将被分割到若干的小组中。例如，质量组做测试、业务分析组做需求，而报告由PMO来完成。这样的分割让所有人都没有了从整体上改变的意愿了。</li> 
+ <li>没有清晰的系统架构和路线图用于提升水平。个人和团队实施新技术和相关实践，以使他们的工作更简单，在相关的软件交付实践过程中，他们大量采用了独立的实践和工具，但没有清晰的路线图或是与技术相关的计划，这笔投资将是没有计划性并且是不明智的。</li> 
+ <li>缺乏过程自动化。在大多数软件开发和交付团队中，仍然存在着过多的手动步骤和过程。想想看每周状态报告，这些报告是跨部门决策和组织中枢的关键。而做这些报告需要大量的电子邮件、登记签到电话，并且需要创建电子表格，这样既不准确，也不完善。事实上，手动步骤由于存在重复性任务，对此的改进，将是过程实现自动化的一个显著指标。</li> 
+</ul>
+<h2>端到端的报告及其可追溯性仍然是一个梦想</h2>
+<p>现代企业都是基于数据做决定的。从日复一日的运作，到企业规章和法规的遵从，企业都是依靠复杂的仪器和报告能力。软件交付的过程，就像其他的业务过程一样，需要追踪和报告。但和其他业务过程不同的是，软件交付过程没有一致商定的过程或数据模型。除非组织要建立一个安全的决策系统，否则，在描述软件交付过程中产生的流量、影响、生产率、质量和价值的报告上，没有必要达成一致意见。</p>
+<p>这是一个有趣的难题。没有达成一致的报告，是因为我们不知道用什么来衡量吗？或者我们不用报告，那么要用什么来衡量呢？</p>
+<p>正如我们之前所指出的，在软件交付生命周期内所使用的工具是相互隔离的，并且其中有大量的手动过程，这是自动化所要避免的。手动创建状态和可追溯报告需要花费很多时间，并且需要多人参与。在大型项目，或是地理上分布很广的项目上，这所需要花费的时间，最终降低了信息的价值。例如，常见的情况是，和一个外包测试合作伙伴共事，使用有缺陷的电子表格工作。这个有缺陷的表格在每日工作结束时发送，但版本往往由不同的团队在不同的时间更新数次，这会导致许多会议。这些会议往往由“我们根据哪个版本的电子表格工作？”开始，并会导致对每个版本差异的讨论。</p>
+<p>现在，让我们来看看在软件交付生命周期的连接。</p>
+<h2>软件交付业务流程需要自动化</h2>
+<p>随着软件的价值和重要性的增加，很显然，下一步就是把它视作一个关键的业务流程。像接近其他过程——如销售，采购及分销——一样进行软件交付过程，你以不同的方式执行软件交付，不仅包括它所包含的过程，还有价值、报告和分析。这样你将会有一种端到端的整体视角，而非独立地关注每个学科。最终，过程的价值不存在于每个学科里，而是存在于用户或 业务所用到的软件里。</p>
+<h2>软件交付的工作流应该从建立开始到实施结束</h2>
+<p>软件交付包含许多过程，包括软件生命周期（SDLC）管理、项目管理、需求管理、质量管理、操作和服务管理。对于许多组织来说，这些过程有准则、模板、工具和过程组件。事实上，许多过程包括很多相同的组件，如缺陷、要求和任务，以及敏捷（Agile）的故事和诗歌。不幸的是，这些过程如何互动，许多组织都没有整体的流程模型或形式化描述。</p>
+<p>事实上，即使在争取连续交付的组织中，一个“连续”的事情就是交付最后的工作产品：代码和应用。但在项目工作流中，仍然存在从一个项目功能组件到另一个项目功能组件之间的不连续性。</p>
+<p>由于软件交付将为产品提供代码、服务和APIs的供应商们越来越多地集合起来，所以形势就变得越来越严重。随着Web服务和API驱动的开发，供应链往往松散，再加上控制有限，并且没有一致的过程或ALM工具集。另一个例子是外包测试。这些测试组难以成为项目的一部分，因为他们分属不同的组织和不同的地区。但他们的信息必须融合在同一项目内以确定项目的真实状态。</p>
+<h2>分析和报告至关重要</h2>
+<p>如果你问一位IT项目经理小组，对于软件组织而言，什么是关键的度量指标？你会见到一系列非常不同的度量方法，例如缺陷数量策略（number of defects to the strategic）、状态随时间改变等。不仅应用程序开发专家需要定义正确度量办法，他们还需要看到状态是如何随时间改变的。对于许多工具来说，时间或基于时间的数据不难发现，只要用那些关注于即时工作流的工具就行了。</p>
+<h2>软件生命周期的整合将“L”置于应用程序生命周期管理中</h2>
+<p>对于管理应用程序开发和交付过程而言，不需要清晰划分每个阶段的要素，一些组织没有一个生命周期的全局视角，是因为他们的基础工具是由不同的产品组成的，旨在提高更广泛的组织中的一个（或两个）职能团队的效率。</p>
+<p>对许多组织而言，应用程序生命周期管理意味着采用一种工具，或者一种工具套件。这将允许跨越不同学科的信息正常化，并支持常见的报告和分析。厂商给市场和销售人员灌输这样的思想：当你使用某某工具，那么所有的开发问题将迎刃而解。然而对许多组织来说，现实更加复杂，而非一种工具能够解决。添加移动技术、云、开源代码、横向工具等等，到新兴的平台上，将永远很复杂。必须集成现实中所采用的各种异构工具。</p>
+<p>尽管如此，“一体化”并不是两个系统间点对点的简单连接。整合组织广泛使用的工具，正是出于软件过程改进的需要。</p>
+<ul> 
+ <li><b>一种能够跨越所有学科的常见数据模型，</b>以调和它们所生产的组件的差距。</li> 
+ <li><b>将工作流添加到模型中。</b>由于应用程序生命周期管理（ALM）实践的做法是跨工具，并且工作在工具之间切换。就过渡而言，捕获从一种工具到另一种工具的切换，这非常重要。举个例子，如果门票从服务台转向开票部门，那么捕获这个过渡，是理解从操作到创建队列的关键。</li> 
+ <li><b>对项目、产品和版本的理解。</b>在很多组织中，应用程序、产品、项目和版本往往交替使用，导致混乱。对其确切含义，全行业没有共同的认识。每一个公司需要创建自己对每个概念的明确定义。有效的应用程序生命周期管理报告，需要对双方资产和时间元素的任何数据模型，有一个明确的定义。</li> 
+ <li><b>资源/</b><b>用户和团队。</b>一旦进入了项目组合管理、开发和运营的世界，就了解了对报告和分析工作而言什么是重要的，且谁在为之工作。对许多组织来说，用户名的结构、团队标识，甚至于部门代码，每个团队都用得不一样。介绍一个可以跨工具边界的、一致的方法给用户用于报告分析，也有助于确保治理和控制更有效。</li> 
+</ul>
+<p>启用这个跨学科的<a href="http://tasktop.com/softwarelifecycleintegration">软件生命周期集成</a>和工具，将为组织提供必要的基础设施，让他们在其关键的业务流程——软件开发和部署上，实现自动化分析和报告</p>
+<p>对于许多组织而言，是否有综合性的软件交付实践决定了项目的成败。此时应该将<a href="http://tasktop.com/blog/tag/lean-alm">精益思想</a>（Lean thinking）应用到软件交付的实践中，并创建和维护从构想到到实现的软件流，消除断点，实现实时协作。同时要创建一个端到端的软件交付实践规范。该规范必须为连接软件交付实践提供必要的材料，为软件交付实践专业人员提供创建集成体系结构和测量方法，以使软件交付更迅速，并消除实践过程中不必要的麻烦。</p>
+<h2>作者简介</h2>
+<p><img _p="true" _href="img://null" alt="" style="float: left; margin-right: 10px" src="http://infoqstatic.com/resource/articles/SDL-Integration/zh/resources/0929003.jpg" /> Dave West是<a href="http://www.tasktop.com/">Tasktop Technologies</a>的首席产品官。他对Tasktop的变革起了重要作用，这推动了软件业的前进。他引领了该公司产品线的政策方向，并帮助Tasktop做了市场定位。他是一位前Forrester Research行业分析师。<a href="http://dave.west@tasktop.com/">点此</a>联系Dave。</p>
+<div style="clear:both">
+ &nbsp;
+</div>
+<p><strong>参考英文原文：</strong><a href="http://www.infoq.com/articles/SDL-Integration">The Case for Software Lifecycle Integration</a></p>
+<hr />
+<p>感谢<a href="http://www.infoq.com/cn/author/侯伯薇">侯伯薇</a>对本文的审校。</p>
+<p>给InfoQ中文站投稿或者参与内容翻译工作，请邮件至<a href="mailto:editors@cn.infoq.com">editors@cn.infoq.com</a>。也欢迎大家通过新浪微博（<a href="http://www.weibo.com/infoqchina">@InfoQ</a>）或者腾讯微博（<a href="http://t.qq.com/infoqchina">@InfoQ</a>）关注我们，并与我们的编辑和其他读者朋友交流。</p><br><br><br><br><br><br></body></html>

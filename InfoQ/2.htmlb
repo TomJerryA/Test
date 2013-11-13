@@ -1,41 +1,81 @@
-<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>NoSQL的现状</h3><p>经过了至少4年的激烈争论，现在是对NoSQL的现状做一个阶段性结论的时候了。围绕着NoSQL发生了如此之多的事情，以至于很难对其作出一个简单概括，也很难判断它达到了什么目标以及在什么方面没有达到预期。</p><p>在很多领域，NoSQL不仅在行业内也在学术领域中取得了成功。大学开始认识到NoSQL必须要加入到课程中。只是反复讲解标准数据库已经不够了。当然，这不意味着深入学习关系型数据库是错误的。相反，NoSQL是很好的很重要的补充。</p><h2>发生了什么？</h2><p>NoSQL领域在短短的4到5年的时间里，爆炸性地产生了50到150个新的数据库。<a href="http://nosql-database.org/" target="_blank">nosql-database.org</a>列出了150个这样的数据库，包括一些像对象数据库这样很古老但很强大的。当然，一些有意思的合并正在发生，如CouchDB和Membase交易产生的CouchBase。但是我们稍后会在本文中讨论每一个主要的系统。</p><p>很多人都曾经假设在NoSQL领域会有一个巨大地整合。但是这并没有发生。NoSQL过去是爆炸性地增长，现在依旧如此。就像计算机科学中的所有领域一样——如编程语言——现在有越来越多的空白领域需要大量的数据库。这是与互联网、大数据、传感器以及将来很多技术的爆炸性增长同步的，这导致了更多的数据以及对它们进行处理的不同需求。在过去的四年中，我们只看到了一个重要的系统离开了舞台：德国的Graph数据库Sones。为数众多的NoSQL依然快乐地生存着，要么在开源社区，不用考虑任何的金钱回报，要么在商业领域。</p><h2>可见性与金钱？</h2><p>另外一个重要的方面就是可见性与行业采用的情况。在这个方面，我们可以看到在传统的行业中——要保护投资——与新兴的行业（主要是初创公司）之间有很大的差别。几乎所有热门的基于Web的创业公司如Pinterest和Instagram 都在使用混合式（SQL + NoSQL）的架构，而传统的行业依然纠结于是否采用NoSQL。但是观察显示，越来越多这样的公司正在试图将它们的一部分数据流用NoSQL方案进行处理并在以后进行分析，这样的方案包括Hadoop、MongoDB以及Cassandra等。</p><p>这同时导致了对具备NoSQL知识的架构师和开发人员的需求持续增长。<a target="_blank" href="http://servicesangle.com/blog/2011/12/29/top-10-developer-and-engineering-skills-employers-will-look-for-going-into-2012/">最近的调查</a>显示行业中最需要的开发人员技能如下：</p><ol> 
- <li>HTML5</li> 
- <li>MongoDB</li> 
- <li>iOS</li> 
- <li>Android</li> 
- <li>Mobile Apps</li> 
- <li>Puppet</li> 
- <li>Hadoop</li> 
- <li>jQuery</li> 
- <li>PaaS</li> 
- <li>Social Media</li> 
-</ol><p>在前十名的技术需求中，有两个NoSQL数据库。有一个甚至排在了iOS前面。如果这不是对它的赞扬，那是什么呢？！</p><p>但是，跟最初预计相比，对NoSQL的采用变得越来越快，越来越深入。在2011年夏天，Oracle曾经发布过一个著名白皮书，它提到NoSQL数据库感觉就像是冰淇淋的风味，但是你不应该过于依附它，因为它不会持续太长时间。但是仅仅在几个月之后，Oracle就展现了它们将Hadoop集成到大数据设备的方案。甚至，他们建立了自己的NoSQL数据库，那是对BerkeleyDB的修改。从此之后，所有的厂商在集成Hadoop方面展开了竞赛。Microsoft、Sybase、IBM、Greenplum、Pervasive以及很多的公司都已经对它有了紧密的集成。有一个模式随处可见：不能击败它，就拥抱它。</p><p>但是，关于NoSQL被广泛采用的另一个很重要但不被大家关注的重要信号就是NoSQL成为了一个PaaS标准。借助于众多NoSQL数据库的易安装和管理，像Redis和MongoDB这样的数据库可以在很多的PaaS服务中看到，如Cloud Foundry、OPENSHIFT、dotCloud、Jelastic等。随着所有的事情都在往云上迁移，NoSQL会对传统的关系型数据库产生很大的压力。例如当面临选择MySQL/PostGres或MongoDB/Redis时，将会强制人们再三考虑他们的模型、需求以及随之而来的其他重要问题。</p><p>另外一个很有意思的技术指示器就是ThoughtWorks的技术雷达，即便你可能不完全同意它所包含的所有事情，但它总会包含一些有意思的事情。让我们看一下他们2012年10月份的技术雷达，如图1：</p><p><strong><img vspace="3" hspace="3" src="http://www.infoq.com/resource/articles/State-of-NoSQL/en/resources/5fig1.jpg;jsessionid=04B082E87FA66344D603F2999546BCB7" alt="" _href="img://5fig1.jpg" _p="true" /></strong></p><p><strong>图1：ThoughtWorks技术雷达，2012年10月——平台</strong></p><p>在他们的平台象限中，列出了5个数据库：</p><ol> 
- <li>Neo4j （采用）</li> 
- <li>MongoDB（试用阶段但是采用）</li> 
- <li>Riak（试用）</li> 
- <li>CouchBase（试用）</li> 
- <li>Datomic（评估）</li> 
-</ol><p>你会发现它们中至少有四个获得了很多的风险投资。如果你将NoSQL领域的所有风险投资加起来，结果肯定是在一亿和十亿美元之间！Neo4j就是一个例子，它在一系列的B类资助中得到了一千一百万美元。其他得到一千万到三千万之间资助的公司是Aerospike、Cloudera、DataStax、MongoDB以及CouchBase等。但是，让我们再看一下这个列表：Neo4j、MongoDB、Riak以及CouchBase已经在这个领域超过四年了并且在不断地证明它们是特定需求的市场领导者。第五名的数据库——Datomic——是一个令人惊讶的全新数据库，它是由一个小团队按照全新的范式编写的。这一定是很热门的东西，在后面简要讨论所有数据库的时候，我们更更深入地了解它们。</p><h2>标准</h2><p>已经有很多人要求NoSQL标准了，但他们没有看到NoSQL涵盖了一个范围如此之大的模型和需求。所以，适用于所有主要领域的统一语言如Wide Column、Key/Value、Document和Graph数据库肯定不会持续很长时间，因为它不可能涵盖所有的领域。有一些方式，如Spring Data，试图建立一个统一层，但这取决于读者来测试这一层在构建多持久化环境时是不是一个飞跃。</p><p>大多数的Graph和Document数据库在它们的领域中已经提出了标准。在Graph数据库世界，因为它的tinkerpop blueprints、Gremlin、Sparql以及Cypher使得它更为成功一些。在Document数据库领域，UnQL和jaql填补了一些位置，尽管前者缺少现实世界NoSQL数据库的支持。但是借助Hadoop的力量，很多项目正在将著名的ETL语言如Pig和Hive使用到其他NoSQL数据库中。所以标准世界是高度分裂的，但这只是因为NoSQL是一个范围很广的领域。</p><h2>格局</h2><p>作为最好的数据库格局图之一，是由<a target="_blank" href="http://blogs.the451group.com/information_management/2012/11/02/updated-database-landscape-graphic/">451 Group的Matt Aslett在一个报告中</a>给出的。最近，他更新了该图片从而能够让我们可以更好得深入理解他所提到的分类。你可以在下面的图片中看到，这个格局是高度碎片化和重叠的：</p><p>（点击图片放大）</p><p><a href="http://www.infoq.com/resource/articles/State-of-NoSQL/en/resources/fig2large.jpg;jsessionid=04B082E87FA66344D603F2999546BCB7" _href="resource://fig2large.jpg"><strong><img vspace="3" hspace="3" src="http://www.infoq.com/resource/articles/State-of-NoSQL/en/resources/7fig2small.jpg;jsessionid=04B082E87FA66344D603F2999546BCB7" alt="" _href="img://7fig2small.jpg" _p="true" /></strong></a></p><p><strong>图2：Matt Aslett（451 Group）给出的数据库格局 </strong></p><p>你可以看到在这个图片中有多个维度。关系型的以及非关系型的、分析型的以及操作型的、NoSQL类型的以及NewSQL类型的。最后的两个分类中，对于NoSQL有著名的子分类Key-Value、Document、Graph以及Big Tables，而对于NewSQL有子分类Storage-Engine、Clustering-Sharding、New Database、Cloud Service Solution。这个图有趣的地方在于，将一个数据放在一个精确的位置变得越来越难。每一个都在拼命地集成其他范围数据库中的特性。NewSQL系统实现NoSQL的核心特性，而NoSQL越来越多地试图实现“传统”数据库的特性如支持SQL或ACID，至少是可配置的持久化机制。</p><p>这一切都始于众多的数据库都提供与Hadoop进行集成。但是，也有很多其他的例子，如MarkLogic开始参与JSON浪潮，所以也很难对其进行定位。另外，更多的多模型数据库开始出现，如ArangoDB、OrientDB和AlechemyDB（现在它是很有前途的Aerospike DB的一部分）。它们允许在起始的时候只有一个数据库模型（如document/JSON模型）并在新需求出现的时候添加新的模型（Graph或key-value）。</p><h2>图书</h2><p>另外一个证明它开始变得成熟的标志就是图书市场。在2010年和2011年两本德语书出版之后，我们看到Wiley出版了Shashank Tiwari的书。它的结构很棒并且饱含了深刻伟大的见解。在2012年，这个竞赛围绕着两本书展开。“七周七数据库”（Seven Databases in Seven Weeks）当然是一本杰作。它的特点在于新颖的编写以及实用的基于亲身体验的见解：它选取了6种著名的NoSQL数据库以及PostGreSQL。这些都使得它成为一本高度推荐的图书。另一方面，P.J. Sandalage以及Martin Fowler采取了一种更为全面的方法，涵盖了所有的特征并帮助你评估采用NoSQL的路径和决策。</p><p>但是，会有更多的书出现。Manning的书出现在市场上只是个时间问题：Dan McCreary和Ann Kelly正在编写一本名为“<a target="_blank" href="http://www.manning.com/mccreary/">Making Sense of NoSQL</a>”的书，首期的MEAP（指的是Manning Early Access Program——译者注）章节已经可以看到了。</p><p>在介绍完理念和模式后，他们的第三章看起来保证很有吸引力：</p><ul> 
- <li>构建NoSQL大数据解决方案</li> 
- <li>构建NoSQL搜索解决方案</li> 
- <li>构建NoSQL高可用性解决方案</li> 
- <li>使用NoSQL来提高敏捷性</li> 
-</ul><p>只是一个全新的方式，绝对值得一读。</p><h2>领导者的现状</h2><p>让我们快速了解一下各个NoSQL的领导者。作为市场上很明显的领导者之一，Hadoop是一个很奇怪的动物（作者使用这个词，可能是因为Hadoop的标识是一只大象——译者注）。一方面，它拥有巨大的发展势头。正如前面所说，每个传统的数据库提供商都急切地声明支持Hadoop。像Cloudera和MapR这样的公司会持续增长并且新的Hadoop扩展和继承者每周都在出现。<br /> 即便是Hive和Pig也在更好地得到接受。不过，有一个美中不足之处：公司们依然在抱怨非结构化的混乱（读取和解析文件本应该更快一些），MapReduce在批处理上做的还不够（甚至Google已经舍弃了它），管理依旧很困难，稳定性问题以及在本地很难找到培训/咨询。即便你可以解决一些上面的问题，如果Hadoop继续像现在这样发展或发生重大变化的话，它依然会是热点问题。</p><p>第二位领导者，MongoDB，同样面临激烈的争论。处于领导地位的数据库会获得更多的批评，这可能是很自然的事情。不过，MongoDB经历了快速的增长，它受到的批评主要如下：</p><p style="margin-left: 40px;">a)就老版本而言或者<br /> b)缺少怎样正确使用它的知识。尽管MongoDB在下载区域清楚地表明32位版本不能处理2GB的数据并建议使用64位版本，但这依然受到了很多近乎荒谬的抱怨。</p><p>不管怎样，MongoDB合作者和资助者推动了雄心勃勃的发展路线，包含了很多热门的东西：</p><ul> 
- <li>行业需要的一些安全性/LDAP特性，目前正在开发</li> 
- <li>全文本搜索很快会推出</li> 
- <li>针对MapReduce的V8将会推出</li> 
- <li>将会出现比集合级别更好的锁级别</li> 
- <li>Hash分片键正在开发中</li> 
-</ul><p>尤其是最后一点吸引了很多架构师的兴趣。MongoDB经常被抱怨（同时也被竞争对手）没有实现简洁一致的哈希，因为key很容易定义所以不能保证完全正确。但在将来，将会有一个对hash分片键的配置。这意味着用户可以决定使用hash key来分片，还是需要使用自己选择分片key所带来的优势（可能很少）。</p><p>Cassandra是这个领域中的另一个产品，它做的很好并且添加了更多更好的特性，如更好的查询。但是不断有传言说运行Cassandra集群并不容易，需要一些很艰难的工作。但这里最吸引人的肯定是DataStax。Cassandra的新公司——获得了两千五百万美元的C类资助——很可能要处理分析和一些操作方面的问题。尤其是分析能力使得很多人感到惊讶，因为早期的Cassandra并没有被视为强大的查询机器。但是这种现状在最近的几个版本中发生了变化，查询功能对一些现代分析来讲已经足够了。</p><p>Redis的开发进度也值得关注。尽管Salvatore声明如果没有社区和Pieter Noordhuis的帮助，他做不成任何的事情，但是它依旧是相当棒的一个产品。对故障恢复的良好支持以及使用Lua的服务器端脚本语言是其最近的成就。使用Lua的决策对社区带来了一些震动，因为每个人都在集成JavaScript作为服务器端的语言。但是，Lua是一个整洁的语言并为Redis开启新的潘多拉盒子带来了可能性。</p><p>CouchBase在可扩展性和其他潜在因素方面看起来也是一个很好的选择，尽管Facebook以及Zynga面临着巨大的风波。它确实不是很热门的查询机器，但如果他们能够在将来提高查询能力，那它的功能就会相当完整了。与CouchDB创立者的合并毫无疑问是很重要的一个步骤，CouchDB在CouchBase里面的影响值得关注。在每个关于数据库的会议上，听到这样的讨论也是很有意思的，那就是在Damien、Chris和Jan离开后，CouchDB会变得更好呢还是更坏呢？大家在这里只能听到极端的观点。但是，只要数据库做得好谁关心这个呢。现在看起来，它确实做的很好。</p><p>最后一个需要提及的NoSQL数据库当然是Riak，在功能性和监控方面它也有了巨大的提升。在稳定性方面，它继续得到巨大的声誉：“像巨石一般稳定可靠且不显眼，并对你的睡眠有好处”。Riak CS fork在这种技术的模块化方面看起来也很有趣。</p><h2>有意思的新加入者</h2><p>除了市场领导者，评估新的加入者通常是很有意思的。让我们深入了解它们中的一部分。</p><p>毫无疑问，Elastic Search是最热门的新NoSQL产品，在一系列的A轮资助中它刚刚获得了一千万美元，这是它热门的一个明证。作为构建在Lucene之上的高扩展性搜索引擎，它有很多的优势：a）它有一个公司提供服务并且b）利用了Lucene在过去的多年中已被充分证明的成就。它肯定会比以往更加深入得渗透到整个行业中，并在半结构化信息领域给重要的参与者带来冲击。</p><p>Google在这个领域也推出了小巧但是迅速的LevelDB。在很多特殊的需求下，如压缩集成方面，它作为基础得到了很多的应用。即使是Riak都集成了LevelDB。考虑到Google的新数据库如Dremel和Spanner都有了对应的开源项目（如Apache Drill或Cloudera Impala），它依然被视为会继续存在的。</p><p>另外一个技术变化当然就是在2012年初的DynamoDB。自从部署在Amazon中，他们将其视为增长最快的服务。它的可扩展性很强。新特性开发地比较慢但它关注于SSD，其潜力是很令人振奋的。</p><p>多模块数据库也是值得关注的一个领域。最著名的代表者是OrientDB，它现在并不是新的加入者但它在很迅速地提高功能。可能它变化得太快了，很多使用者也许会很开心地看到OrientDB已经到达了1.0版本，希望它能更稳定一些。对Graph、Document、Key-Value的支持以及对事务和SQL的支持，使得我们有理由给它第二次表现的机会。尤其是对SQL的良好支持使得它对诸如Penthao这样的分析解决方案方面很有吸引力。这个领域另一个新的加入者是ArangoDB，它的进展很快，并不畏惧将自己与已确定地位的参与者进行比较。<br /> 但是，如果有新的需求必须要实现并且具有不同类型的新数据模型要进行持久化的话，对原生JSON和Graph的支持会省去很多的努力。</p><p>到目前位置，2012年的最大惊喜来自于Datomic。它由一些摇滚明星采用Clojure语言以难以令人置信的速度开发的，它发布了一些新的范式。另外，它还进入了ThoughtWorks的技术雷达，占据了推荐关注的位置。尽管它“只是”已有数据库中一个参与者，但是它有很多的优势，如：</p><ul> 
- <li>事务</li> 
- <li>时间机器</li> 
- <li>新颖且强大的查询方式</li> 
- <li>新的模式方式</li> 
- <li>缓存以及可扩展性的特性</li> 
-</ul><p>目前，支持将DynamoDB、Riak、CouchBase、Infinispan以及SQL作为底层的存储引擎。它甚至允许你同时混合和查询不同的数据库。很多有经验的人都很惊讶于这种颠覆性的范式转变是如何可能实现的。但幸运的是它就是这样。</p><h2>总结</h2><p>作为总结，我们做出三点结论：</p><ol> 
- <li> <p>关于CAP理论，Eric Brewer的一些新文章应该几年前就发表。在<a target="_blank" href="http://www.infoq.com/articles/cap-twelve-years-later-how-the-rules-have-changed;jsessionid=04B082E87FA66344D603F2999546BCB7">这篇文章中</a>（<a target="_blank" href="http://www.infoq.com/cn/articles/cap-twelve-years-later-how-the-rules-have-changed;jsessionid=04B082E87FA66344D603F2999546BCB7">这篇佳文的中文版地址</a>——译者注），他指出“三选二”具有误导性，并指出了它的原因，世界为何远比简单的CP/AP更为复杂，如在ACID/BASE之间做出选择。虽然如此，近些年来有成千上万的对话和文章继续赞扬CAP理论而没有任何批评性的反思。Michael Stonebraker是NoSQL最强有力的审查者之一（NoSQL领域也对他颇多感激），他在多年前就指出了这些问题！遗憾的是，没有多少人在听。但是，既然Eric Brewer更新了他的理论，简单的CAP叙述时代肯定要结束了。在指出CAP理论的真实和多样性的观点上，请站在时代的前列。</p> </li> 
- <li> <p>正如我们所了解的那样，传统关系型数据库的不足导致了NoSQL领域的产生。但这也是传统帝国发起回击的时刻。在“NewSQL”这个术语之下，我们可以看到许多新的引擎（如database.com、VoltDB、GenieDB等，见图2），它们提高了传统的解决方案、分片以及云计算方案的能力。这要感谢NoSQL运动。</p> <p>但是随着众多的数据库尝试实现所有的特性，明确的边界消失了<br /> 确定使用哪种数据库比以前更为复杂了。<br /> 你必须要知道50个用例、50个数据库并要回答至少50个问题。关于后者，笔者在过去两年多的NoSQL咨询中进行了收集，可以在以下地址找到：<a target="_blank" href="http://nosql-database.org/select-the-right-database.html">选择正确的数据库</a>，<a target="_blank" href="http://www.infoq.com/presentations/Choosing-NoSQL-NewSQL;jsessionid=04B082E87FA66344D603F2999546BCB7">在NoSQL和NewSQL间进行选择</a>。</p> </li> 
- <li>一个通用的真理就是，每一项技术的变化——从客户端-服务端技术开始甚至更早——需要十倍的成本才能进行转移。例如，从大型机到客户端-服务端、客户端-服务端到SOA、SOA到WEB、RDBMS到混合型持久化之间的转换都是如此。所以可以推断出，在将NoSQL加入到他们的产品决策上，很多的公司在迟疑和纠结。但是，大家也都知道，最先采用的公司会从这个两个领域获益并且能够快速集成NoSQL，所以在将来会占据更有利的位置。就这一点而言，NoSQL解决方案会一直存在并且评估起来会是有利可图的领域。</li> 
-</ol><h2>关于作者</h2><p><strong><img vspace="3" hspace="3" align="left" src="http://www.infoq.com/resource/articles/State-of-NoSQL/en/resources/stefanEdlich.jpg;jsessionid=04B082E87FA66344D603F2999546BCB7" alt="" _href="img://stefanEdlich.jpg" _p="true" />Prof. Dr. Stefan Edlich</strong>是德国柏林Beuth HS技术（University of App. Sc.）的高级讲师。他为诸多出版社如Apress、OReilly、Spektrum/Elsevier等编写了超过10本IT图书。他维护着<a target="_blank" href="http://nosql-database.org ">NoSQL Archive</a>网站, 从事NoSQL咨询并组织NoSQL技术会议，编写了世界上最早的两本NoSQL图书，现在他热衷于Clojure编程语言。</p><div style="clear:both;">
+<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>大数据安全: Hadoop安全模型的演进</h3><p><img width="500" _p="true" _href="img://null" alt="" src="http://infoqstatic.com/resource/articles/HadoopSecurityModel/zh/resources/0929000.jpg" /></p>
+<p>敏感信息的安全和保护是当今人们最关心的问题之一。进入大数据时代，很多组织都在从各种源头收集数据，进行分析，并基于对海量数据集的分析做出决策，因此这一过程中的安全问题变得愈发重要。与此同时，HIPAA和其他隐私保护法之类的法律法规也要求组织加强对这些数据集的访问控制和隐私限制。来自内部和外部攻击者的网络安全漏洞与日俱增，通常都要数月之后才能发现，而那些受此影响的人正在为此付出代价。没能对他们的数据做出恰当访问控制的组织将受到起诉，出现在负面报道中，并将面临监管机构的罚款。</p>
+<p>请想一想下面这些让人大开眼界的统计数据：</p>
+<ul> 
+ <li>赛门铁克和Ponemon研究所今年公布的一项研究表明，一个安全漏洞在美国的平均组织化成本是540万美元<sup>1</sup>。另据<a href="http://www.latimes.com/business/technology/la-fi-tn-cybercrime-140-billion-dollars-economy-20130722,0,308705.story">最近一项研究</a>表明，仅仅网络犯罪在美国造成的损失每年就有140亿美元之多。</li> 
+ <li>2011年索尼游戏机网络中出现的漏洞可以算是近代最大的安全漏洞之一，专家们估计索尼与该漏洞相关的损失大约在27亿到240亿美元之间（范围很大，但这个漏洞太大了，所以几乎难以对其进行量化）。<sup>2</sup></li> 
+ <li>Netflix和AOL已经因为其管理的大量数据和对个人信息的保护而受到金额达数百万美元的起诉（某些已经立案），尽管他们已经对这些数据做了“匿名化”处理并且是为了研究才公布的。<sup>3</sup></li> 
+ <li>跟安全漏洞相关的除了可量化的成本（客户和业务合作伙伴的损失，诉讼，监管罚款），经历此类事件的组织的可信度和声誉还会受到影响，甚至可能会导致公司歇业。<sup>4</sup></li> 
+</ul>
+<p>简而言之，如果没有恰当的安全控制，大数据很容易变成花费巨大的大问题。</p>
+<p>对于处理大数据的组织来说这意味着什么？意味着你拥有的数据越多，对数据的保护就越重要。意味着不仅要安全有效地控制离开自有网络的数据，还必须做好网络内部的数据访问控制。依据数据的敏感程度，我们可能要确保数据分析师能看到的数据是可以让他们分析的数据，并且必须明白发布这些数据及其分析结果可能产生的后果。仅<a href="http://www.wired.com/threatlevel/2009/12/netflix-privacy-lawsuit/">Netflix数据泄漏</a>一个案例就足以表明，即使已经试图对数据做了“匿名化”处理，也可能会发布一些意料之外的信息——一些在<a href="http://en.wikipedia.org/wiki/Differential_privacy">差异化隐私</a>领域标明的东西。</p>
+<p>Apache Hadoop是最流行的大数据处理平台之一。尽管最初设计Hadoop时根本没考虑安全问题，但它的安全模型在不断地演进。Hadoop的兴起也招致了很多批判，并且随着安全专家不断指出其潜在的安全漏洞及大数据的安全风险，使得Hadoop一直在改进其安全性。“Hadoop安全”市场曾出现过爆炸性的增长，很多厂商都发布了“安全加强”版的Hadoop和对Hadoop的安全加以补充的解决方案。这类产品有<a href="https://github.com/cloudera/access">Cloudera Sentry</a>、<a href="http://www-03.ibm.com/security/data/products.html"> IBM InfoSphere Optim Data Masking</a>、 <a href="http://cloudsecurity.intel.com/hadoop-security">英特尔的安全版Hadoop</a>、<a href="http://www.datastax.com/2013/04/hadoop-security-and-the-enterprise">DataStax企业版</a>、<a href="http://www.dataguise.com/products/dghadoop.html"> DataGuise for Hadoop</a>、<a href="http://www.protegrity.com/2012/02/protegrity-releases-big-data-protector-for-hadoop/">用于Hadoop的Protegrity大数据保护器</a>、<a href="http://www.revelytix.com/?q=content/lineage">Revelytix Loom</a>、<a href="http://zettaset.com/info-center/datasheets/sb-sdw.pdf">Zettaset 安全数据仓库</a>，此外还有很多，这里就不再一一列举了。与此同时，Apache也有 <a href="http://accumulo.apache.org/">Apache Accumulo</a>这样的项目，为使用Hapdoop提供了添加额外安全措施的机制。最终还出现了 <a href="http://knox.incubator.apache.org/">Knox网关</a> (由HortonWorks贡献)和<a href="https://github.com/intel-hadoop/project-rhino/">Rhino项目</a>(由英特尔贡献)这样的开源项目，承诺要让Hadoop本身发生重大改变。</p>
+<div id="lowerFullwidthVCR"></div>
+<p>要让Hadoop达到安全性要求的巨大需求使得Hadoop一直在发生着变化，这也是我要在本文中重点讨论的内容。</p>
+<h2>Hadoop安全（简）史</h2>
+<p>Doug Cutting和Mike Cafarella最初为Nutch项目开发Hadoop时并没有考虑安全因素，这是众所周知的事实。因为Hadoop的最初用例都是围绕着如何管理大量的公共web数据，无需考虑保密性。按照Hadoop最初的设想，它假定集群总是处于可信的环境中，由可信用户使用的相互协作的可信计算机组成。</p>
+<p>最初的Hadoop中并没有安全模型，它不对用户或服务进行验证，也没有数据隐私。因为Hadoop被设计成在分布式的设备集群上执行代码，任何人都能提交代码并得到执行。尽管在较早的版本中实现了审计和授权控制（HDFS文件许可），然而这种访问控制很容易避开，因为任何用户只需要做一个命令行切换就可以模拟成其他任何用户。这种模拟行为非常普遍，大多数用户都会这么干，所以这一已有的安全控制其实没起到什么作用。</p>
+<p>在当时，考虑到安全问题的组织把Hadoop隔离在专有网络中，只有经过授权的用户才能访问。然而由于Hadoop内部几乎没有安全控制，在这样的环境中也会出现很多意外和安全事故。善意的用户可能会犯错（比如用一个分布式删除在几秒内就会删除大量数据）。所有用户和程序员对集群内的所有数据都有相同的访问权限，所有任务都能访问集群内的任何数据，并且所有用户都可能会去读取任何数据集。因为MapReduce没有认证或授权的概念，某个顽劣的用户可能为了让自己的任务更快完成而降低其他Hadoop任务的优先级，甚至更坏，直接杀掉其他任务。</p>
+<p>随着Hadoop在数据分析和处理平台中的地位日益凸显，安全专家们开始关心来自Hadoop集群内部的恶意用户的威胁。恶意开发人员能轻易写出假冒其他用户Hadoop服务的代码来（比如写一个新的TaskTracker并将其注册为Hapdoop服务，或者冒充hdfs或mapred用户，把HDFS里的东西全删掉等等）。因为DataNode没有访问控制，恶意用户可以绕过访问控制从DataNode中读取任意数据块，或将垃圾数据写到DataNode中破坏目标分析数据的完整性。所有人都能向JobTracker提交任务，并可以任意执行。</p>
+<p>因为这些安全问题，Hadoop社区意识到他们需要更加健壮的安全控制，因此，雅虎的一个团队决定重点解决认证问题，选择Kerberos作为Hadoop的认证机制，这在他们2009年的<a href="https://issues.apache.org/jira/secure/attachment/12428537/security-design.pdf">白皮书</a>上有记录。</p>
+<p>在Hadoop发布.20.20x版本时他们实现了自己的目标，该版本采用了下面这些机制：</p>
+<ul> 
+ <li><b>用</b><b>Kerberos RPC (SASL/GSSAPI) </b><b>在</b><b>RPC</b><b>连接上做相互认证</b>——用SASL/GSSAPI来实现Kerberos及RPC连接上的用户、进程及Hadoop服务的相互认证。</li> 
+ <li><b>为</b><b>HTTP Web</b><b>控制台提供</b><b>“</b><b>即插即用</b><b>”</b><b>的认证</b>——也就是说web应用和web控制台的实现者可以为HTTP连接实现自己的认证机制。包括（但不限于）HTTP SPNEGO认证。</li> 
+ <li><b>强制执行</b><b>HDFS</b><b>的文件许可</b>——可以通过NameNode根据文件许可（用户及组的访问控制列表（ACLs））强制执行对HDFS中文件的访问控制。</li> 
+ <li><b>用于后续认证检查的代理令牌</b>——为了降低性能开销和Kerberos KDC上的负载，可以在各种客户端和服务经过初始的用户认证后使用代理令牌。具体来说，代理令牌用于跟NameNode之间的通讯，在无需Kerberos服务器参与的情况下完成后续的认证后访问。</li> 
+ <li><b>用于数据块访问控制的块访问令牌</b>——当需要访问数据块时，NameNode会根据HDFS的文件许可做出访问控制决策，并发出一个块访问令牌（用HMAC-SHA1），可以把这个令牌交给DataNode用于块访问请求。因为DataNode没有文件或访问许可的概念，所以必须在HDFS许可和数据块的访问之间建立对接。</li> 
+ <li><b>用作业令牌强制任务授权</b>——作业令牌是由JobTracker创建的，传给TaskTracker，确保Task只能做交给他们去做的作业。也可以把Task配置成当用户提交作业时才运行，简化访问控制检查。</li> 
+ <li>把这些整合到一起让Hadoop向前迈出了一大步。自那之后，又实现了一些值得称道的修改：</li> 
+ <li><b>从</b><b>“</b><b>即插即用的认证</b><b>”</b><b>到</b><b>HTTP SPNEGO</b><b>认证</b>——尽管2009年的Hadoop安全设计重点是即插即用的认证，但因为RPC连接（用户、应用和Hadoop服务）已经采用了Kerberos认证，所以Hadoop开发者社区觉得如果能跟Kerberos保持一致更好。现在Hadoop web控制台被配置成使用HTTP SPNEGO这一用于web控制台的Kerberos实现。这样可以部分满足Hadoop亟需的一致性。</li> 
+ <li><b>网络加密</b>——采用了SASL的连接可以配置成使用机密保护质量（QoP），在网络层强制加密，包括使用Kerberos RPC的连接和使用代理令牌的后续认证。Web控制台和MapReduce随机操作可以配置成使用SSL进行加密。HDFS文件传输器也能配置为加密的。</li> 
+</ul>
+<p>自对安全性进行重新设计以来，Hadoop的安全模型大体上没发生什么变化。随着时间的推移，Hadoop体系中的一些组件在Hadoop之上构建了自己的安全层，比如Apache Accumulo，提供单元级的授权，而HBase提供列和族系一级的访问控制。</p>
+<h2>Hadoop当前所面临的安全挑战</h2>
+<p>组织在保证Hadoop的安全性时会面临一些安全方面的挑战，在我和Boris Lublinsky 及 Alexey Yakubovich写的新书中，我们用了两章的篇幅集中讨论Hadoop的安全问题，其中一章的重点是Hadoop本身的安全能力，另外一章的重点是对Hadoop的安全性进行补充的策略。</p>
+<p>常见的安全问题有：</p>
+<ul> 
+ <li>如何强制所有类型的客户端（比如web控制台和进程）上的用户及应用进行验证？</li> 
+ <li>如何确保服务不是流氓服务冒充的（比如流氓TaskTracker和Task，未经授权的进程向 DataNode 出示ID 以访问数据块等？）</li> 
+ <li>如何根据已有的访问控制策略和用户凭据强制数据的访问控制？</li> 
+ <li>如何实现基于属性的访问控制（ABAC）或基于角色的访问控制（RBAC）？</li> 
+ <li>怎么才能将Hadoop跟已有的企业安全服务集成到一起？</li> 
+ <li>如何控制谁被授权可以访问、修改和停止MapReduce作业？</li> 
+ <li>怎么才能加密传输中的数据？</li> 
+ <li>如何加密静态数据？</li> 
+ <li>如何对事件进行跟踪和审计，如何跟踪数据的出处？</li> 
+ <li>对于架设在网络上的Hadoop集群，通过网络途径保护它的最好办法是什么？</li> 
+</ul>
+<p>这其中很多问题都能靠Hadoop自身的能力解决，但也有很多是Hadoop所无能为力的，所以行业内涌现出了很多Hadoop安全补充工具。厂商们发布安全产品来弥补Hadoop的不足有几个原因：</p>
+<ol> 
+ <li><b>没有</b><b>“</b><b>静态数据</b><b>”</b><b>加密</b>。目前HDFS上的静态数据没有加密。那些对Hadoop集群中的数据加密有严格安全要求的组织，被迫使用第三方工具实现HDFS硬盘层面的加密，或安全性经过加强的Hadoop版本（比如今年早些时候英特尔发布的版本）。</li> 
+ <li><b>以</b><b> Kerberos</b><b>为中心的方式</b>——Hadoop依靠 Kerberos做认证。对于采用了其他方式的组织而言，这意味着他们要单独搭建一套认证系统。</li> 
+ <li><b>有限的授权能力</b>——尽管Hadoop能基于用户及群组许可和访问控制列表（ACL）进行授权，但对于有些组织来说这样是不够的。很多组织基于XACML和基于属性的访问控制使用灵活动态的访问控制策略。尽管肯定可以用Accumulo执行这些层面的授权过滤器，但Hadoop的授权凭证作用是有限的。</li> 
+ <li><b>安全模型和配置的复杂性。</b> Hadoop的认证有几个相关的数据流，用于应用程序和Hadoop服务的Kerberos RPC认证，用于web控制台的HTTP SPNEGO认证，以及使用代理令牌、块令牌、作业令牌。对于网络加密，也必须配置三种加密机制，用于SASL机制的保护质量，用于web控制台的SSL，HDFS数据传输加密。所有这些设置都要分别进行配置，并且很容易出错。</li> 
+</ol>
+<p>如果Hadoop如今还不具备实现者所要求的安全能力，那么他们只能转而集成第三方工具，或使用某个厂商提供的安全加强版Hadoop，或采用其他有创造性的办法。</p>
+<h2>即将发生的大变化</h2>
+<p>2013年开端之际，英特尔发起了一个开源项目<a href="https://github.com/intel-hadoop/project-rhino/">Rhino</a>，以提升Hadoop及其整个体系的安全能力，并将代码贡献给了Apache。这有望显著加强Hadoop当前的贡献。这一开源项目的总体目标是要支持加密和密钥管理，一个超越Hadoop当前提供的用户及群组ACL的通用授权框架，一个基于认证框架的通用令牌，改善HBase的安全性，改善安全审计。这些任务都被记录在Hadoop、 MapReduce、HBase 和 Zookeeper的JIRA中，择重点摘录如下：</p>
+<ul> 
+ <li><b>加密的静态数据</b>——JIRA 任务 <a href="https://issues.apache.org/jira/browse/hadoop-9331">HADOOP-9331</a> (Hadoop加密编码解码器框架及加密编码解码器的实现) 和 <a href="https://issues.apache.org/jira/browse/mapreduce-5025">MAPREDUCE-5025</a> (支持MapReduce中的加密编码解码器的密钥发行和管理) 有直接的关系。第一个侧重于创建一个加密框架及其实现，以支持对HDFS上文件的加密和解密；第二个侧重于为MapReduce提供密钥发行和管理框架，以便能在MapReduce操作过程中对数据加密和解密。为此向Hadoop中引入了一个可分割AES编码解码器的实现，可以对磁盘上分散的数据加密和解密。密钥发行和管理框架可以在MapReduce操作过程中解析密钥的上下文，因此MapReduce作业能够进行加解密操作。他们已经发展出的需求包括MapReduce作业不同阶段的不同选项，并且要支持灵活的密钥获取办法。在一些相关的任务中，<a href="https://issues.apache.org/jira/browse/ZOOKEEPER-1688">ZOOKEEPER-1688</a> 将提供透明的快照加密能力，并在硬盘记录日志，防止敏感信息从静态文件中泄漏出去。</li> 
+ <li><b>基于令牌的认证及统一授权框架</b>——JIRA 任务 <a href="https://issues.apache.org/jira/browse/HADOOP-9392">HADOOP-9392</a> (基于令牌的认证及单点登录) 和 <a href="https://issues.apache.org/jira/browse/HADOOP-9466">HADOOP-9466</a> (统一授权框架) 也是相互关联的。第一项任务展示了一个跟Kerberos耦合不是那么紧密的基于令牌的认证框架。第二项任务会用基于令牌的框架支持灵活的授权强制引擎，以取代（但能向后兼容）当前的ACL式访问控制。对基于令牌的认证框架，第一项任务计划支持多种认证机制的令牌，比如LDAP 用户名/密码认证，Kerberos，X.509证书认证，SQL认证（基于SQL数据库的用户名/密码认证）和SAML。第二项任务要支持一个先进的授权模型，侧重于基于属性的访问控制（ABAC）和XACML标准。</li> 
+ <li><b>提升</b><b>HBase</b><b>的安全性</b>——JIRA 任务 <a href="https://issues.apache.org/jira/browse/hbase-6222">HBASE-6222</a> (增加每-键值安全) 向HBase添加Apache Accumulo具备但HBase还没有的单元级授权。开发出构建在加密框架上的<a href="https://issues.apache.org/jira/browse/hbase-7544">HBASE-7544</a> ，把它扩展到HBase，提供透明的表加密。</li> 
+</ul>
+<p>这些就是Hadoop的主要变化，但有望解决有这些安全需求的组织的安全问题。</p>
+<h2>结论</h2>
+<p>在我们这个步履匆匆而又相互关联的世界里，大数据就是王道，在我们对海量数据进行处理和分析时，明白安全的重要性至关重要。这要从弄懂数据及相关的安全策略开始，也要明白组织的安全策略，并知道如何强制执行。本文介绍了Hadoop的安全简史，重点讲了常见的安全问题，并介绍了Rhino项目，给出了一个未来的快照。</p>
+<h2>关于作者</h2>
+<p><img _p="true" _href="img://null" alt="" style="float: left; margin-right: 10px" src="http://infoqstatic.com/resource/articles/HadoopSecurityModel/zh/resources/0929001.jpg" /> 凯文T.史密斯是Novetta解决方案应用任务方案分部的技术方案及推广指导，他负责向客户提供战略性的技术领导力，开发具有创新性的、数据为本并且高度安全的解决方案。他经常在各种技术会议上演讲，发表过很多技术文章，还编写过许多技术书籍，包括即将出版的《专业Hadoop解决方案》，以及《应用SOA：面向服务的架构及设计策略》，《语义Web：XML，Web服务及知识管理的未来发展指南》等等。可以通过KSmith@Novetta.com联系到他。</p>
+<div style="clear:both">
  &nbsp;
-</div><p><b>查看英文原文：</b><a href="http://www.infoq.com/articles/State-of-NoSQL;jsessionid=04B082E87FA66344D603F2999546BCB7">The State of NoSQL</a></p><div class="clearer-space"></div></body></html>
+</div>
+<h2>致谢</h2>
+<p>特别感谢Stella Aquilina, Boris Lublinsky, Joe Pantella, Ralph Perko, Praveena Raavicharla, Frank Tyler 和 Brian Uri 对本文的审阅和部分内容的评论。 此外还要感谢克里斯&middot;贝利制作了不断发展的Hadoop大象之“艾比路”这幅插图。</p>
+<p><sup>1</sup> Ponemon 研究所, 2013数据泄露的成本研究：全球分析，2013年5月</p>
+<p><sup>2</sup> 商业内幕，PlayStation网络危机可能让索尼花费了数十亿</p>
+<p><sup>3</sup> 请参见“CNN/Money –5数据泄露 - 从尴尬到致命”,及维基百科上关于 AOL在匿名化记录上泄漏的研究数据的页面</p>
+<p><sup>4</sup> Ponemon 研究所, “你的公司为大数据泄漏做好准备了吗？”, 2013年3月</p>
+<p><strong>查看英文原文：</strong><a href="http://www.infoq.com/articles/HadoopSecurityModel">Big Data Security: The Evolution of Hadoop’s Security Model</a></p>
+<hr />
+<p>感谢<a href="http://www.infoq.com/cn/author/侯伯薇">侯伯薇</a>对本文的审校。</p>
+<p>给InfoQ中文站投稿或者参与内容翻译工作，请邮件至<a href="mailto:editors@cn.infoq.com">editors@cn.infoq.com</a>。也欢迎大家通过新浪微博（<a href="http://www.weibo.com/infoqchina">@InfoQ</a>）或者腾讯微博（<a href="http://t.qq.com/infoqchina">@InfoQ</a>）关注我们，并与我们的编辑和其他读者朋友交流。</p><br><br><br><br><br><br></body></html>

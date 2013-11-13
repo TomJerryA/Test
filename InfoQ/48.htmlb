@@ -1,0 +1,51 @@
+<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>书评：使用Android SDK构建应用，第2版</h3><p>在最新版的<a href="http://www.informit.com/store/android-developers-cookbook-building-applications-with-9780321897534">Android开发者手册</a>：使用Android SDK构建应用（第2版）一书中，作者<a href="http://www.xing.com/profile/Ronan_Schwarz">Ronan Schwarz</a>、<a href="http://www.pearsonhighered.com/educator/product/Sams-Teach-Yourself-jQuery-Mobile-in-24-Hours/9780672335945.page">Phil Dutson</a>、<a href="http://www.linkedin.com/in/dijieming">James Steele</a>与<a href="http://www.linkedin.com/pub/nelson-to/5/129/969">Nelson To</a>成功地向Addison-Wesley开发者书库系列添加了浓墨重彩的一笔。这本面向移动应用开发者的图书可以作为新手的权威指南。对于中级与专家级开发者来说，本书也将有助于他们增强自身的编程实践。</p>
+<p>读者在学习如何编写自己的代码的同时还可以将书中的攻略、代码片段与用户界面布局快速应用到Android项目中以创建出自己的原始应用。</p>
+<p>本书的一大特色就是指导读者如何使用Android基本的<a href="http://developer.android.com/reference/packages.html">应用编程接口</a>（API）来确保应用能够在各种碎片化的设备与不同的OS版本上运行；回顾过去、立足现在、展望未来。作者还谈到了Android、<a href="http://www.linux.org/threads/the-linux-kernel-security.4223/">Linux内核</a>、<a href="http://www.slideshare.net/SayemAhmed/a-brief-overview-on-java-frameworks">Java框架</a>与<a href="http://developer.android.com/sdk/index.html">Eclipse集成开发环境</a>之间的关系。</p>
+<p>书中讲述了对OS做了怎样的修改使之能够在移动生态圈的舞台上大放异彩，移动设备具有更小的屏幕和有限的选项，并且在必要时需要使用私有的Android库。与<a href="http://docs.oracle.com/javase/7/docs/api/javax/swing/package-summary.html">Swing</a>或<a href="http://docs.oracle.com/javase/1.4.2/docs/api/javax/swing/Timer.html">Timer</a>等Java库及X Windows或GNU C库等典型的Linux工具不同，他们并不适合于在Android上编码。</p>
+<p>从书中的第1章开始，读者就将深入到这个世界上最为流行的移动OS的具体细节当中。书中谈到了构成操作系统的必要文件，如何确保易丢失的闪存的安全性，他们由6个镜像构成：</p>
+<ul> 
+ <li>Bootloader——在启动时开始装载启动镜像</li> 
+ <li>Boot镜像——内核与RAMDisk</li> 
+ <li>System镜像——带有应用的OS平台</li> 
+ <li>Data镜像——在不同的权限模式下保存用户数据</li> 
+ <li>Recovery镜像——保存更新并重新构建文件</li> 
+ <li>Radio镜像——保存Radio栈文件</li> 
+</ul>
+<p>作者建议开发者深入理解硬件与他们所编写的代码之间的关系。他们强调不仅要考虑现有的智能手机和平板之间在内存与处理能力、屏幕尺寸、分辨率、前后摄像头上差别的重要性，还要考虑到现在或是未来将会运行在OS上的全新设备类型，比如说智能手表、训练设备、医疗设备、汽车，甚至是游戏机等，建议开发者们要尽可能编写设备中立的代码。</p>
+<div id="lowerFullwidthVCR"></div>
+<p>作者强调了在<a href="http://developer.android.com/design/index.html">设计应用</a>时能够把握全局的重要性。这意味着开发者应该能够清晰地认识到完成后的应用是什么样子的。这4位作者将他们专业的建议与经验都浓缩到了这本手册中。</p>
+<p>他们建议在创建Android应用时使用Eclipse IDE来保证最佳的效果。</p>
+<p>下面是一段示例攻略：</p>
+<blockquote>
+  活动与意图 
+ <br /> 
+ <br /> 这项操作的步骤与上一个攻略类似： 
+ <ol> 
+  <li>在Eclipse中，选择File → New → Android Application Project。</li> 
+  <li>填写项目名，比如说SimpleFragmentExample。</li> 
+  <li>填写应用名，比如说Example of Basic Fragments。</li> 
+  <li>填写包名，比如说com.cookbook.simplefragments。</li> 
+  <li>将最低限度的SDK设为API Level 11或是Android Honeycomb。</li> 
+  <br /> 低版本API能够使用Fragments的前提是机器上要安装好额外的支持库。 
+  <br /> 
+  <br /> 
+  <li>在Create Activity界面上，选择MasterDetailFlow作为起始点。</li> 
+  <li>命名条目，比如说fruits。</li> 
+  <li>按下Finish按钮完成示例项目的创建。</li> 
+ </ol> 探索该示例的任务就交给读者完成了，下面重点来谈谈Fragments。Fragments有自己的生命周期，它取决于宿主活动。由于在活动生命周期的任何时刻，我们都可以添加、显示、隐藏以及删除Fragments，因此其存活周期要比其他组件短很多。类似于活动，Fragments也有onPause()、onResume()、onDestroy()及onCreate()方法。 
+ <br /> 
+ <br /> 然而，值得注意的是onCreate(Bundle)是Fragment上所调用的第2个方法，第1个被调用的方法是onAttach(Activity)，它会发出现已连接到宿主活动的信号。这里可以调用活动的方法，然而系统并不保证活动已经完全完成了自身的初始化。只有在调用了onActivityCreated()方法后活动自身的onCreate()方法才会被调用。 
+ <br /> 
+ <br /> 假设Fragments可以在晚些时候实例化并被加到活动上来，那么我们就不应该依赖onAttach()中活动的状态。用来初始化视图并启动大多数任务的方法是onCreateView(LayoutInflater, ViewGroup, Bundle)。如果Fragment是重新创建的，那么这里的Bundle类就是保存的实例状态。Fragments还会使用bundles来序列化参数。Fragment所需的每一种外部信息都可以通过调用setArguments()从宿主活动中获得，并且总是可以通过getArguments()调用在Fragments中读取。这样就可以将来自于活动起始意图的信息直接传递给显示的Fragment。
+</blockquote>
+<p>应用最为重要的特性之一就是用户界面了。在Android开发者手册的第5章中，我们将会学习到一个基本的UI布局的3个关键元素：界面视图、界面触摸事件以及定义应用属性的按键。这包含了完整的资源目录，比如说用于动画的res/animator/以及用于XML文件的res/menu，它会选择菜单。</p>
+<p>每个UI对象都有3个可定义的属性来改变UI的外观与性能，分别是对象尺寸、对象文本以及对象颜色。为了保持应用的一致性，读者将会学习到如何使用全局资源文件，它将有助于追踪每一个属性。</p>
+<p>第13章针对的是想要通过Google Play的应用内购买来销售应用的开发者。为了使用应用内购买，你需要拥有一个Google Play账户来链接到开发者账户。你所需的一切都位于Android SDK的SDK Manager中的Extras中。</p>
+<p>本书的作者有4位，有人可能会想这会不会造成图书风格的不一致。不会的，在如何为开源的<a href="http://developer.android.com/about/index.html">Android移动操作系统</a>编写应用的相关建议这个话题上，与既成事实的设备类型与OS版本的碎片化不同，各位作者所给出的建议都是一样的。大家在阅读本书时不会感到风格的不一致，各位作者的表达风格都是一样的。</p>
+<p>Android开发者手册：使用Android SDK构建应用（第2版）一书值得任何一位开发者拥有。阅读本书可以让你追赶上移动开发的潮流，在需要帮助时你总能从书中找到答案。</p>
+<h2>关于本书作者</h2>
+<p><strong><img src="http://www.infoq.com/resource/articles/Book_Review_Building_Applications_Android_SDK_2nd_Edition/en/resources/ronan.jpg" vspace="3" hspace="3" align="left" alt="" _href="img://ronan.jpg" _p="true" />Ronan 'Zero' Schwarz</strong> 是OpenIntents的联合创始人，这是一家专业的Android开发公司。Ronan拥有15年的编程经验，涉足的领域非常广泛，如增强现实、Web、机器人、业务系统以及各种不同的编程语言，如C、Java和汇编等。Ronan从2007年开始就从事Android平台开发了，并且创建了SplashPlay与Droidspray，在两次Google Android开发者挑战赛中他都是顶级选手。他目前在德国柏林的SinnerSchrader Mobile工作，是一名咨询师。Ronan经常在欧洲的各大会议上发表演讲，是一位杰出的Android开发者。</p>
+<p><strong><img src="http://www.infoq.com/resource/articles/Book_Review_Building_Applications_Android_SDK_2nd_Edition/en/resources/PhilDutson.jpg" vspace="3" hspace="3" align="left" alt="" _href="img://PhilDutson.jpg" _p="true" />Phil Dutson</strong> 是ICON Health and Fitness的前端与移动主开发者。他曾为NordicTrack、ProForm、Freemotion、Sears、Costco及Sam’s Club等公司开发过项目并设计解决方案。在过去的几年中，他曾为各种移动设备编写过程序，从第一个Palm Pilot 5000到现在的iOS与Android。Phil是jQuery, JQuery UI, and jQuery Mobile、Sams Teach Yourself jQuery Mobile in 24 hours以及Creating QR and Tag Codes3本图书的作者。</p>
+<p><strong><img src="http://www.infoq.com/resource/articles/Book_Review_Building_Applications_Android_SDK_2nd_Edition/en/resources/James.jpg" vspace="3" hspace="3" align="left" alt="" _href="img://James.jpg" _p="true" />James Steele</strong> 经常参加硅谷Android与新技术小组。他目前就职于Sensor Platforms，专注于提升用户手势与上下文信息的价值，同时向开发者屏蔽掉传感器硬件的复杂性和物理特性。在加入Sensor Platforms前，Steele博士在Spansion、Polaris Wireless与ArrayComm担任高级管理职位，同时还在麻省理工学院与俄亥俄州立大学从事理论与粒子物理的研究工作。他于纽约州立大学斯托尼布鲁克分校获得理论物理博士学位。</p>
+<p><strong><img src="http://www.infoq.com/resource/articles/Book_Review_Building_Applications_Android_SDK_2nd_Edition/en/resources/Nelson.jpg" vspace="3" hspace="3" align="left" alt="" _href="img://Nelson.jpg" _p="true" />Nelson To</strong> 拥有多年的Android研究与开发经验。他对探索创新理念并通过Android应用实现其想法拥有巨大的热情。他曾开发过多款Android应用，包括AOL AIM Android应用、为Logitech Revue Box开发过Google TV上首款高清视频聊天Android应用（Vid）。他还在本地社区教授Android课程以帮助人们更加高效地学习Android，同时还投身于Android社区，为本地社区组织Android会议。</p>
+<p><b>查看英文原文：</b><a href="http://www.infoq.com/articles/Book_Review_Building_Applications_Android_SDK_2nd_Edition">Book Review: Building Applications with the Android SDK, 2nd Edition</a></p><br><br><br><br><br><br></body></html>

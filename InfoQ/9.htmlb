@@ -1,29 +1,80 @@
-<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>学习现代C++：Barbara Moo专访</h3><p>自上世纪80年代推出以来，C++的流行程度在这些年里不断变化。诸如Java和C#之类托管语言的兴起，以及如JavaScript、Python和Ruby这样的脚本语言的出现，都对C++的应用有所影响。但许多支持者喜欢C++提供的可控性、底层能力和运行速度。C++11承诺以更高效的方式将这些优势带给程序员，C++11引入的那些变化也说明了在过去三十年中这门编程语言有了多大的成长。想要学习C++11或初次尝试C++的程序员，建议阅读Stanley B. Lippman、Jos&eacute;e Lajoie和Barbara E. Moo编写的《C++ Primer》第五版。InfoQ有机会采访了Moo女士，对她的新书和C++编程语言进行了整体性的讨论。</p><p><strong>InfoQ：让我们从你的新书的教学方式开始。你曾经参与编写的《Accelerated C++》使用了一种围绕C++标准库进行教学的方式。《C++ Primer》第五版延续了这种风格。与之相比，第三版的作者采用的方法完全不同（当时是在C的基础上介绍C++）。之所以提到这个话题，是因为我认为它对于讨论这门编程语言整体教学哲学的转变以及引入C++ 11所需要的变化，都是非常有帮助的。那么你和新团队是如何共同参与这个项目的？</strong></p><blockquote> 
- <p><strong>Barbara</strong>：谢谢。实际上正是由于《Accelerated C++》的成功，促使Addison-Wesley出版社邀请我参与了《C++ Primer》第四版的工作。它在C++社区中实际上扮演了非常重要的角色。自1989年首次出版以来，它几乎成为严肃的程序员学习C++的必读之作。</p> 
- <p>《C++ Primer》的前三版是受这门编程语言变革的驱动而推出的。1998年出版的第三版专注于当年的C++标准。该版本在新标准库广泛应用之前出版，也早于《Accelerated C++》。而后者证明了与编程语言一起讲授库而非将库作为高级主题的优势。与之前的《C++ Primer》版本不同，第四版的主要动机是修改其教学策略。我们决定使用与《Accelerated C++》相同的教学方式，并特意在书的一开始就引入了库的内容。</p> 
- <p>遗憾的是，太多的C++书籍仍旧基于数组和指针来讲授底层设施，而将库作为高级主题。但实际上使用数组和指针更容易出错，也更难理解。更糟的是，为了简化数组的使用，许多书都带来了一些不良习惯，例如教大家使用固定长度的数组。</p> 
- <p>使用string和vector类型使得编写程序变得更简单。因此在《C++ Primer》中很早就出现了这部分内容。当新的C++11标准接近完成时，我们决定使用同样的策略来展现新特性。我们彻底修订了本书，以期将这门编程语言作为一个整体来展现，而不是仅仅将新特性作为高级主题嫁接在旧有的编程语言上。C++11的一些新特性，特别是auto和decltype，以范围为基础的for循环语句，以及使编程更轻松的智能指针等，这些特性是与其他基础内容一起来讲授的。</p> 
-</blockquote><p><strong>InfoQ：在C++的新特性中，你最喜欢哪些？</strong></p><blockquote> 
- <p><strong>Barbara</strong>：好吧，其实我认为在上一个问题中我已经部分回答了这个问题。新的auto和decltype类型说明符允许程序员享受静态类型的好处（在编译阶段捕捉错误）而无需编写长且复杂的类型声明或搜索程序以确定需要哪个类型。</p> 
- <p>智能指针令动态内存的使用变得更简单、更安全，但我认为智能指针带来的最大价值是，在使用它编写管理资源的类时会更便捷。那些使用智能指针（取代了传统指针的位置）的类无需定义赋值运算符、拷贝构造函数和析构函数。这意味着我们可以编写相当复杂的类而无需学习拷贝控制。</p> 
- <p>其他一些我喜欢的特性，包括新的库设施，它们可用于与函数结合的编程，例如标准库函数bind和function。这些新设施使用起来更干净和统一。此外，可被视作轻量级函数的lambda表达式，让我们可以更容易地应用和定制标准算法的行为。</p> 
- <p>一个非常重要的改变是右值引用和move语意，许多开发者可能并未注意，但无论如何会享受到它带来的好处。能够move而不是copy一个对象，仅是有些类会有这种需要。在实践中，我怀疑只有非常老道的程序员会直接编写move操作。尽管如此，在能够移动对象时避免拷贝，能够为标准库容器和字串类带来非常大的性能提升。</p> 
-</blockquote><p><strong>InfoQ：新标准是否遗漏了什么重要内容？</strong></p><blockquote> 
- <p><strong>Barbara</strong>: 没有。委员会已经有了Concepts的草案，该特性试图向语言中添加约束检查，不过在正式标准中被去掉了。我觉得这种选择没什么问题，因为其设计的确还没有准备好。</p> 
-</blockquote><p><strong>InfoQ：考虑到时下热门的一些领域（移动/Web/云），你觉得C++是否还能适应当今软件开发世界的需求？现在有相当多的、热度不同的编程语言（Python/C#和Java/Go等），当开启新项目时，你觉得C++与它们相比如何？（或者说，选择C++ 11只是为了支持C++遗留代码吗？）</strong></p><blockquote> 
- <p><strong>Barbara</strong>: 这些语言各不相同，它们与C++相比在很多重要方面都有差异，包括技术性和非技术性问题。除了我不太熟悉的Go，这些语言与C++有很大不同，而且它们面向的是不同类型的应用。如果要编写一个大规模应用，并且对性能、可移植性、硬件接口或伸缩性需求都有严格的要求，那么这些语言都不合适。另一方面，如果要编写一个主要与用户交互的应用，那么我大概会考虑其中的一门语言。</p> 
- <p>对于移动/网络/云计算相关的特定问题，C++同样适合开发这些应用。C++可以用于管理服务器（云端）的计算。此外，它当然也可以用于控制移动设备自身的操作系统。所以，即使在计算机产业的最新部分，C++仍旧有广泛的用途。</p> 
- <p>C++、Python以及Java（程度较小），与C#、Go和Objective-C等语言相比还有一个很重要的不同。第一组语言的演进过程是开放的（Java至少是部分开放的）。因此它们适用于很多平台。而第二组却并非如此。这些语言由特定的赞助公司控制。微软期望C#成为跨平台语言，但实际上它仅用于运行在微软操作系统上的项目。迄今为止Go是Google的语言，而Objective-C在苹果的iOS应用之外用处不大。如果要编写绑定于某个平台的语言，这样的语言是合适的。如果不是这样，你必须考虑当需要支持其他硬件或操作系统时会出现什么情况。 **</p> 
-</blockquote><p><strong>InfoQ: 有人将C++描述为三个独立的语言：没有作用域概念的C预处理器，C++运行时语言，以及C++编译时语言—— 即模板。你是否认可这种分法？如果是这样，这个问题是不是很严重？</strong></p><blockquote> 
- <p><strong>Barbara</strong>: 不，我认为这夸大其词了。确实存在预处理器，而且它确实与C++语言本身是分离的。但除了#include和条件编译外，自从上世纪80年代中期C++拥有了内联和常量后，几乎没什么理由在C++中继续使用预处理器了。因此，大部分C++程序员甚至无需考虑预处理器，也无需熟悉其额外功能。</p> 
- <p>至于“运行时”和“编译时”语言的区别，我认为相对于程序员，它对语言的设计者和实现者更重要。抛开那些使用模板元编程的少数C++程序员，很多C++程序员，也可能是大部分C++程序员，在使用模板或语言的其他部分时，从没考虑过二者的区别。关于模板，他们所看到的区别顶多是到编译后期才有可能见到报错。 乍看上去让人惊讶，但这并不是很严重的问题。对使用模板的程序而言，更加严重的问题是编译器报错信息的水平。</p> 
-</blockquote><p><strong>InfoQ: 对于使用C++的一些争议在于其冗长的编译时间和模糊的编译错误。你认为这是否是一个实实在在需要克服的阻碍，还是说这一现象只是被夸大了？（假若这样，使用确实存在一些挑战，但付出这些代价仍然是值得的，对吗？）</strong></p><blockquote> 
- <p><strong>Barbara</strong>: 关于编译时间，我认为，与今天相比它在过去曾经是个很严重的问题。与其它很多软件系统一样，随着机器性能的提升，编译时间已经变短了。想想看，自从上世纪80年代中期我们开始使用C++以来，机器性能已经提升了大约1000倍。系统却并没有变大1000倍，所以与当年C++缓慢的编译时间相比，编译速度在今天而言已经非常非常快了。当然，那些编写超大规模系统的团队仍需要注意如何组织代码，以缩短编译时间。遗憾的是，我认为编译时间慢对大型项目而言是无法改变的事实。</p> 
- <p>至于模糊的编译错误，我觉得主要与涉及模板的代码有关。我希望编译器的作者们能够在模板相关的报错信息上多花一些功夫，报错时使用代码中的名字而非内部生成的名字。我主要使用了GCC编译器来测试书中的代码，必须承认，与使用模板的代码相关的错误信息能够帮助我定位到出错的那一行，但往往无助于找出错误原因。</p> 
-</blockquote><p><strong>InfoQ: 自从我们上一次对话以来，微软和其他组织宣布了<a href="http://www.isocpp.org/">标准C++基金会</a>。你觉得对C++的应用有何影响？他们以提供一个集中的C++地点和更短的新标准发布周期为目标，对此你怎么看？</strong></p><blockquote> 
- <p><strong>Barbara</strong>: 我目前还不是非常了解标准C++基金会，当然他们也刚刚启动。我为这样的努力喝彩，目前看来它会是一个有趣的、值得跟踪的站点。</p> 
-</blockquote><h2>关于访谈对象</h2><p>&nbsp;</p><div style="float:left; margin:0px 10px;">
- <img src="/resource/articles/modern-C-book-moo/zh/resources/1.jpg;jsessionid=6DD654B54070ABA35EBFEDFE7CE58B6E" alt="" _href="img://null" _p="true" />
-</div><p><strong>Barbara E. Moo</strong>是一个在软件领域具有20年经验的独立咨询顾问。在AT&amp;T接近十五年的工作经历中，她开发了第一个使用C++编写的商业产品，负责管理了公司的第一个C++编译器项目，并指导了AT&amp;T屡获殊荣的WorldNet网络服务业务的开发。</p><p>&nbsp;</p><div style="clear:both;">
- &nbsp;
-</div><p><strong>查看英文原文</strong>：<a href="http://www.infoq.com/articles/modern-C-book-moo;jsessionid=6DD654B54070ABA35EBFEDFE7CE58B6E">Learning Modern C++: An Interview with Barbara Moo</a></p><hr /><p>感谢<a href="http://www.infoq.com/cn/bycategory.action;jsessionid=6DD654B54070ABA35EBFEDFE7CE58B6E?authorName=臧秀涛">臧秀涛</a>对本文的审校。</p><p>给InfoQ中文站投稿或者参与内容翻译工作，请邮件至<a href="mailto:editors@cn.infoq.com">editors@cn.infoq.com</a>。也欢迎大家通过新浪微博（<a href="http://www.weibo.com/infoqchina">@InfoQ</a>）或者腾讯微博（<a href="http://t.qq.com/infoqchina">@InfoQ</a>）关注我们，并与我们的编辑和其他读者朋友交流。</p><div class="clearer-space"></div></body></html>
+<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>使用Flurry来统计和分析用户行为</h3><h2>简介</h2>
+<p><img width="600" src="http://infoqstatic.com/resource/articles/use-flurry-to-statistics-and-analysis-user-behavior/zh/resources/1030200.png" alt="" _href="img://null" _p="true" /></p>
+<p><a href="http://www.flurry.com/">Flurry</a>是一家专门为移动应用提供数据统计和分析的公司。他们的数据统计分析SDK支持的平台包括iPhone, iPad, Android, Windows Phone, Java ME和BlackBerry。使用Flurry服务的公司包括eBay、Yahoo、Hulu和Skype等超过11万家公司，涉及的应用超过36万个。</p>
+<p>利用Flurry提供的分析平台，我们可以很容易地自动统计出应用的使用情况，例如：</p>
+<ol> 
+ <li>每天（每周或每月）登录用户数，应用使用次数</li> 
+ <li>每天（每周或每月）新用户数，活跃用户数</li> 
+ <li>用户的所在地、年龄、性别的分布情况</li> 
+</ol>
+<p>Flurry也可以自动统计出移动设备的分类情况，例如：</p>
+<ol> 
+ <li>使用3G，Wifi的会话比例</li> 
+ <li>使用iOS系统各版本(例如iOS6.0, iOS7.0等)的比例</li> 
+ <li>使用iOS各种设备（例如iPhone4, iPhone5等)的比例</li> 
+</ol>
+<p>除了上面介绍的自动统计项目，Flurry SDK也提供了统计用的相关API，便于我们针对自己产品的特点，做针对性的统计。例如统计应用中某个按钮的按下次数，或者网络请求的平均响应时间等。</p>
+<h2>Flurry的基本使用</h2>
+<h3>注册和下载对应SDK</h3>
+<p>使用Flurry前，需要先到官方网站<a href="http://www.flurry.com/">http://www.flurry.com/</a>注册账号。然后登录到Flurry后台，依次选择 <code>&quot;Applications&quot; -&gt; “Add a New Application&quot;</code> ，增加一个需要统计分析的应用。如下图所示：</p>
+<div id="lowerFullwidthVCR"></div>
+<p><img width="600" src="http://infoqstatic.com/resource/articles/use-flurry-to-statistics-and-analysis-user-behavior/zh/resources/1030201.png" alt="" _href="img://null" _p="true" /></p>
+<p>然后，在接下来的界面之后根据你的应用类型，选择iPhone或iPad应用。如下图所示：</p>
+<p><img width="600" src="http://infoqstatic.com/resource/articles/use-flurry-to-statistics-and-analysis-user-behavior/zh/resources/1030202.png" alt="" _href="img://null" _p="true" /></p>
+<p>接着，填入应用的名字和分类（名字仅用作在Flurry后台和自己的其它应用区分，不需要和应用的真实名字相同），之后点击&quot;Create App&quot;，如下所示：</p>
+<p><img width="600" src="http://infoqstatic.com/resource/articles/use-flurry-to-statistics-and-analysis-user-behavior/zh/resources/1030203.png" alt="" _href="img://null" _p="true" /></p>
+<p>到此，我们就成功在后台创建了一个新的应用统计和分析项目。点击下图中的&quot;Download&quot;，可以下载需要集成在应用中的SDK。而下图中的提示2中的Key：<code>X28BBKTNZ9H3VYTBDBG3</code>则是我们在集成时用于标识自己应用的ID。</p>
+<p><img width="600" src="http://infoqstatic.com/resource/articles/use-flurry-to-statistics-and-analysis-user-behavior/zh/resources/1030204.png" alt="" _href="img://null" _p="true" /></p>
+<h3>集成SDK</h3>
+<p>我们将下载后的SDK解压，可以看到文件列表如下。列表中对我们最重要的文件是Flurry目录下的<code>flurry.h</code>文件和<code>libFlurry_4.3.0.a</code>文件。这2个文件需要复制到Xcode的工程中去。</p>
+<p>而<code>ProjectApiKey.txt</code>文件中记录了我们之前创建的应用ID，在在代码中调用SDK初使化时需要使用。</p>
+<p><img width="600" src="http://infoqstatic.com/resource/articles/use-flurry-to-statistics-and-analysis-user-behavior/zh/resources/1030205.png" alt="" _href="img://null" _p="true" /></p>
+<p>接着我们打开Xcode工程，将之前下载解压的Flurry目录拖动添加到工程中，同时在工程的.pch文件中加上 <code>#import &quot;Flurry.h&quot;</code>，如下图所示：</p>
+<p><img width="600" src="http://infoqstatic.com/resource/articles/use-flurry-to-statistics-and-analysis-user-behavior/zh/resources/1030206.png" alt="" _href="img://null" _p="true" /></p>
+<p>接着我们在<code>Link Binary With Libraries</code>中加入如下2个依赖的framework:</p>
+<ul> 
+ <li>Security.framework</li> 
+ <li>SystemConfiguration.framework。</li> 
+</ul>
+<p><img width="600" src="http://infoqstatic.com/resource/articles/use-flurry-to-statistics-and-analysis-user-behavior/zh/resources/1030207.png" alt="" _href="img://null" _p="true" /></p>
+<p>接着我们打开 <code>AppDelegate.m</code>，在<code>- (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions</code>方法中，加入代码<code>[Flurry startSession:@&quot;X28BBKTNZ9H3VYTBDBG3&quot;];</code>，如下图所示：</p>
+<p><img width="600" src="http://infoqstatic.com/resource/articles/use-flurry-to-statistics-and-analysis-user-behavior/zh/resources/1030208.png" alt="" _href="img://null" _p="true" /></p>
+<p>这样，就完成了Flurry最简单的集成。通过以上短短几步，Flurry就可以帮我们完成应用的基本使用数据的统计和分析。</p>
+<h3>自定义统计项</h3>
+<p>Flurry提供了<code>logEvent</code>函数，用于实现自定义的统计项。默认情况下，该函数接受一个参数，用于表示当前统计项的名字。</p>
+<p>例如我们的界面中有2个按钮，我们想统计它们各自被用户的点击次数，则可以如下代码实现。在该代码中，我们定义了2个自定义的统计项，名字分别为<code>First Button Pressed</code>和<code>Second Button Pressed</code>。</p>
+<p><img width="600" src="http://infoqstatic.com/resource/articles/use-flurry-to-statistics-and-analysis-user-behavior/zh/resources/1030209.png" alt="" _href="img://null" _p="true" /></p>
+<p><code>logEvent</code>函数也支持添加各种参数，用于做更加精细的统计，例如，我们想在统计用户在同一个页面，点击时不同按钮的次数分布，看哪些按钮更加常用，则统计代码可以如下实现：</p>
+<p><img width="600" src="http://infoqstatic.com/resource/articles/use-flurry-to-statistics-and-analysis-user-behavior/zh/resources/1030210.png" alt="" _href="img://null" _p="true" /></p>
+<p><code>logEvent</code>函数也支持统计时间，常常用来统计某个复杂的网络操作的耗时或者用户对于某些界面的响应时间。例如，我们想统计用户停留在某个提示界面的时间，则可以用如下代码完成：</p>
+<p><img width="600" src="http://infoqstatic.com/resource/articles/use-flurry-to-statistics-and-analysis-user-behavior/zh/resources/1030211.png" alt="" _href="img://null" _p="true" /></p>
+<h3>查看统计结果</h3>
+<p>完成上面的自定义统计的代码后，待应用发布后，我们就可以从后台的<code>Events</code>栏中看到相应的统计结果了。如下图所示：</p>
+<p><img width="600" src="http://infoqstatic.com/resource/articles/use-flurry-to-statistics-and-analysis-user-behavior/zh/resources/1030212.png" alt="" _href="img://null" _p="true" /></p>
+<h3>统计Crashlog</h3>
+<p>Flurry从4.2.3开始，支持应用的Crashlog统计。只需要在<code>AppDelegate.m</code>文件 中，调用完<code>startSession</code>方法后，再调用如下代码即可：</p>
+<p><code>[Flurry setCrashReportingEnabled:YES];</code></p>
+<p>之后就可以从后台的<code>Errors</code>项中，获得应用的Crashlog信息。</p>
+<h2>和其它统计分析平台的对比</h2>
+<p>和著名的统计工具<a href="http://www.google.com/analytics/">Google Analytics</a>相比，Flurry的优点是：</p>
+<ol> 
+ <li>Flurry专门针对移动端做了许多优化。</li> 
+ <li>Flurry没有被墙的问题。</li> 
+</ol>
+<p>Flurry缺点是:</p>
+<ol> 
+ <li>Google Analytics的统计功能相对更强大一些。</li> 
+ <li>Google Analytics可以和网页版的统计数据做整合。</li> 
+</ol>
+<p>和国内的分析平台<a href="http://www.umeng.com/">友盟</a>相比，Flurry的优点是：</p>
+<ol> 
+ <li>使用Flurry的应用相对更多。根据Flurry和友盟的官方数据，有超过36万应用使用Flurry<sup><a href="http://www.flurry.com/big-data.html">1</a> </sup>，有超过18万应用使用友盟<sup><a href="http://www.umeng.com/analytics">2</a></sup>。</li> 
+ <li>Flurry是国外的公司，保持独立和专注，数据安全性更高；友盟现在已经<a href="http://tech.163.com/13/0426/16/8TDB6H1N00094MOK.html">被阿里收购</a>，当用户的应用涉及领域和阿里有类似或重合的时候，那么该统计数据有潜在的安全性问题。</li> 
+</ol>
+<p>Flurry的缺点是：</p>
+<ol> 
+ <li>友盟因为是中国公司，所以对国内开发者非常友善，相关的文档或界面都是中文的。而Flurry并不提供中文的后台管理界面或相关文档。</li> 
+ <li>Flurry的服务器在国外，在响应速度上应该相对比友盟慢一些。但在测试中，Flurry服务器都保证了500ms左右的响应时间，还是比较好的。</li> 
+</ol>
+<h2>总结</h2>
+<p>本文介绍了Flurry的基本功能以及如何做自定义的统计，最后与业界其它同类工具做了对比。我也将相关示例代码整理到github上，地址是：<a href="https://github.com/tangqiaoboy/FlurryUsageSample">https://github.com/tangqiaoboy/FlurryUsageSample</a>，愿本文能帮助你更加方法地做应用的统计和分析工作。</p><br><br><br><br><br><br></body></html>

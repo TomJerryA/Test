@@ -1,6 +1,42 @@
 <html>
  <head></head> 
- <body> 
+ <body>
+  <div>
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/9.htmlb">使用Flurry来统计和分析用户行为</a> 本文介绍了Flurry的基本功能以及如何利用Flurry做自定义的统计和分析，文章最后也将Flurry与业界其它同类工具做了对比和总结。 
+  </div>
+  <div>
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/8.htmlb">建立学习与创新的文化</a> Jeff介绍了一个大型工程企业的员工如何通过在工作中进行持续学习的方式建立起创新文化的一系列步骤。在一个传统的工作环境中，工程团队通常倾向于等待业务方面的决策，并朝着既定的决策方向开始执行。而如今我们则看到，工程团队也会向业务决策者提出有钻研价值的新方向。 
+  </div>
+  <div>
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/7.htmlb">如何让你的内存NoSQL数据库为企业应用做好准备</a> 在本文中，作者Yiftach Schoolman阐述了如何克服管理云端的内存NoSQL数据库所面临的七项最大挑战。他详细讨论了可用性、网络分裂期间及之后的一致性、数据持久化、可伸缩性以及运维开销等挑战的应对方式。 
+  </div>
+  <div>
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/6.htmlb">百度移动统计分析介绍与进阶经验分享</a> 为了让开发者更加深入的了解百度移动统计，InfoQ邀请了该产品的产品经理袁泽陆撰写本文，详细介绍百度移动统计产品、如何使用、移动应用分析常见问题解释等。 
+  </div>
+  <div>
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/5.htmlb">线程池规模调优</a> 大小合适的线程池允许运行尽可能多的请求，只要硬件和软件支持合理。这篇文章我们探讨了如何遵从“测量不猜”典故去合理设置线程池。 
+  </div>
+  <div>
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/4.htmlb">论软件生命周期集成</a> 对于许多组织而言，是否有综合性的软件交付实践会决定了项目的成败。这时，就应该将精益思想（Lean thinking）应用到软件交付的实践中，并创建和维护从构想到实现的软件流，消除断点，实现实时协作。 
+  </div>
+  <div>
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/3.htmlb">恒生电子李文松：做金融的也需要很漂亮很友好的界面</a> 在2013年10月24日的阿里云开发者大会上，恒生电子互联网服务事业群首席架构师李文松以阿里云金融合作伙伴的身份，跟阿里云业务架构师赵楠林（三冬）一起接受了InfoQ中文站的采访。我们希望能够通过这次采访了解金融互联网发展的一些状态，以及开发者在金融行业的这样一个转变中有哪些机遇和挑战。 
+  </div>
+  <div>
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/2.htmlb">大数据安全: Hadoop安全模型的演进</a> 在这篇文章中，凯文T.史密斯聚焦于大数据安全的重要性，并讨论了Hadoop安全模型的演进。 
+  </div>
+  <div>
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/1.htmlb">大数据处理之如何确保断电不丢数据</a> 这篇文件将围绕这个新接口对其实现细节进行简单的分析，从而希望找出一种合理使用hsync()的策略，避免重要数据丢失。 
+  </div>
+  <div>
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/0.htmlb">书评：Java核心编程卷1——基础</a> Cay Horstmann与Gary Cornell合著的Java核心编程已经出版了，与之前的版本一样，这是一本明晰且拥有大量颇具价值的示例的书籍。 
+  </div>
+  <div>
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/49.htmlb">Peter Kriens重返OSGi联盟</a> Peter Kriens是OSGi的推动者之一，到2012年初为止他一直在这里担任总监长达11年。InfoQ联系到了Peter，与他讨论了重返OSGi及其jpm4j项目的最新情况。 
+  </div>
+  <div>
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/48.htmlb">书评：使用Android SDK构建应用，第2版</a> Android开发者手册是一本针对移动开发者的参考书，可以作为编程实践的权威指南，值得每一位开发者拥有。 
+  </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/47.htmlb">国防工业中的敏捷</a>国防工业通常被认为是一种”非敏捷的”文化。严格按照等级划分的团队，很少有协作的自由而且被强制要求通过合同规定的工件沟通。在本文中，Jeff Plummer分享了在他领导的团队中成功为国防工业应用敏捷原则和实践的经验。 
   </div> 
@@ -114,36 +150,6 @@
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/10.htmlb">TeamToy2的开发故事：面向移动的API设计，代码重用，快速迭代</a>2013年的元旦后，一个名叫TeamToy的项目再次进入了人们的视野，这是一个面向团队的Todo类产品。目前，TeamToy2仍处于快速更新、完善产品的阶段，其移动版本TeamToyPocket刚刚宣布开源。为此，InfoQ中文站联系到了TeamToy的作者陈理捷，请他谈谈整个TeamToy2开发中的一些想法和经验，以及移动版本的选型、整个项目开源这一决策的考量。 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/9.htmlb">学习现代C++：Barbara Moo专访</a>StartFragmentC++在上世纪80年代问世时恰逢面向对象编程兴起，C++也成为软件开发领域的主要编程语言之一。在C++出现后的若干年里，脚本语言和托管语言也逐渐流行起来。InfoQ采访了Barbara Moo，她是《C++ Primer》第五版的合著者之一，这本书是关于C++11和现代C++开发的。 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/8.htmlb">Hadoop的现在和未来</a>在本次虚拟研讨会中，InfoQ采访了多位Hadoop提供商和用户，他们就Hadoop的现在和将来发表了看法。 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/7.htmlb">从 QCon 旧金山 2012中学到的关键经验和教训</a>本文摘取了 QConSF 2012中，针对所有演讲、主题及活动的一些关键分享，包括编辑与参会者的博客文章，还有活动期间twitter上的反馈。 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/6.htmlb">对比iOS网络组件：AFNetworking VS ASIHTTPRequest</a>在开发iOS应用过程中，如何高效的与服务端API进行数据交换，是一个常见问题。哪一款组件更适合自己，是 AFNetworking（AFN）还是 ASIHTTPRequest（ASI）？本文从用法、功能、性能和原理几个方面对二者进行简单对比，看看二者之间到底存在着怎样的区别，到底应该如何选择。 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/5.htmlb">大数据解决方案设计</a>Jonathan Natkins在本文中解释了如何利用Apache Hadoop结合Flume、Hive和Oozie等组件实现一个典型的数据管理系统。 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/4.htmlb">自建CDN防御DDoS（3）：架构的后续改进</a>本文是《自建CDN防御DDoS》系列的第三篇，介绍CDN架构的后续改进。后续改进主要包括三个方面：DNS智能解析+轮询+存活监测，集中式日志分析+攻击防御，以及多节点CDN的快速部署+图形化管理。 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/3.htmlb">Hadoop虚拟研讨会</a>在本次虚拟研讨会中，InfoQ采访了多位Hadoop提供商和用户，他们就Hadoop的现在和将来发表了看法。 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/2.htmlb">NoSQL的现状</a>Stefan Edlich是德国柏林Beuth HS技术的高级讲师。他对NoSQL的现状进行了评论，考虑到了它的演化、财务方面的影响、标准的缺失、当前的格局、图书以及该领域的领导者和新加入者，并得出了NoSQL现在就要关注这样的结论。 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/1.htmlb">新书：《24小时学会jQuery Mobile》</a>Sams出版社最近出版了Phil Dutson的一本新书《24小时学会jQuery Mobile（Sams Teach Yourself jQuery Mobile In 24 Hrs）》，它向web开发者介绍了如何使用jQuery Mobile构建移动Web应用。 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/0.htmlb">Hadoop和元数据（解决阻抗失配问题）</a>Apache HCatalog这个新项目是针对Hadoop表和存储的管理层，这个管理层可以让Pig、MapReduce和Hive等不同的数据处理工具更加容易的进行数据的交互操作。 
-  </div> 
+  </div>           
  </body>
 </html>
