@@ -1,0 +1,96 @@
+<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>JavaOne 2013 総まとめ: Java 8の衝撃，Java・イズ・バック！</h3><p><a target="_blank" href="●"><em>原文(投稿日：2013/10/20)へのリンク</em></a></p>
+<p>JavaOne 2013が9月22日から26日にかけてサンフランシスコで開催されました。このJavaの祭典は日曜日，Oracleの <a href="http://www.linkedin.com/pub/peter-utzschneider/11/983/276">Peter Utzschneider</a>，<a href="http://www.linkedin.com/in/nandiniramani">Nandini Ramani</a>，<a href="http://www.linkedin.com/pub/cameron-purdy/0/10/23a">Cameron Purdy</a> 各氏による <a href="http://medianetwork.oracle.com/video/player/2685497644001">ストラテジキーノート</a> で幕を開けています。</p>
+<p>JavaOneカンファレンスは今年で18回を数えますが，Javaコミュニティの勢いに衰えは見えません。Utzschneider氏が聴衆に語ったところでは，Javaは現在でも世界最大の開発者プラットフォームであり，<abbr title="Java User Groups">JUG</abbr>の数も毎年10%の割合で増加しているということです。<br /> &nbsp;</p>
+<h2><strong>Javaの今後</strong></h2>
+<p>Ramani氏は現在のJavaの状況について論じました。今回の講演で氏が指摘したのは，Javaに存在しているSDKの数の多さです。Java SE 7，CDC 1.1 (SE 1.4.2ベース)，CLDC (SE 1.3ベース)，Java MEなど，枚挙に暇がありません。かつてこれらの実装には，独自の垂直市場が明確に形成されていました。その結果，それぞれの実装は分散して，年を追うごとに独自性を深めていったのです。Java 8では，CDCの代替となるコンパクトプロファイルの提供が予定されています。</p>
+<p>MEとSEのAPIはほぼ同じで，どちらも言語のすべての機能をサポートしています。Java 8ではプラットフォームの統合が行われる予定です – SEエンベッデドからJavaEEによるサーバサイド開発まで，コードのポータビリティ，APIの共通化，ツールの共用化が実現されます。将来的には，Java開発者のタイプはただ１つになるでしょう。</p>
+<p style="text-align:center"><img src="http://www.infoq.com/resource/articles/javaone2013-roundup/ja/resources/nandini2.jpg" alt="" _href="img://nandini2.jpg" _p="true" /></p>
+<div id="lowerFullwidthVCR"></div>
+<p>プラットフォーム戦略の基礎としては他にも同期リリース(Java 8 Early Accessで公開)や，さまざまなチップセットの一級市民となることを目的としたパートナ協業(ARM, Freescale, Qualcomm)などがあります。Java Embedded の移植と拡張を支援するため，Oracleはこの８月，Java Platform Integrator Programをローンチしました。</p>
+<p>昨年夏にリリースされたJava EE 7は，その後２回のカンファレンスで取り上げられていることを考慮すれば，ひとつの大きなマイルストンであると言えます。Purdy氏は，EE 7には３つの重要な領域がある，と言います – 開発者の生産性，企業要件の充足，そしてHTML5です。</p>
+<p style="text-align:center"><img src="http://www.infoq.com/resource/articles/javaone2013-roundup/ja/resources/cameron2.jpg" alt="" _href="img://cameron2.jpg" _p="true" /></p>
+<p>２年前にJava EE 7が発表された当時，大きなテーマはクラウドでした。現在のEEには，セキュリティ強化やデフォルトリソース，スキーマ生成，RESTfulなクライアントAPIの提供，マルチテナントアプリケーション用のJSKスキニングなど，クラウドへの配置を支援する機能が数多く用意されています。講演の最後にはPurdy氏が <a href="http://avatar.java.net">Project Avatar</a> をオープンソースに移行すると発表しました。AvatarはNode.jsに似ていますが，JVM上で動作します。<br /> &nbsp;</p>
+<h2><strong>衝撃的なJava 8，Java・イズ・バック！</strong></h2>
+<p>カンファレンスの最大の話題はJava 8でした。<a href="http://www.linkedin.com/in/markreinhold">Mark Reinhold</a>氏の<a href="http://medianetwork.oracle.com/video/player/2685720528001">テクニカル・キーノート</a>が好例です。Java 8には日付と時刻を扱う新API (<a href="http://jcp.org/en/jsr/detail?id=310">JSR 310</a>)，JavaScriptエンジンのNashorn ，型アノテーション (<a href="http://jcp.org/en/jsr/detail?id=308">JSR 308</a>)，コンパクト・プロファイル，プロジェクトラムダ (<a href="http://jcp.org/en/jsr/detail?id=335">JSR 335</a>) など，新機能が数多くあります。</p>
+<blockquote>
+ ラムダ式のプログラミングモデルへの追加は，ジェネリックスさえも凌駕する，まさに過去最大のアップグレードです。Javaの歴史上で初めてのことでしたから，私たちは仮想マシンと言語，ライブラリなどすべての調整を取りながら，注意深く作業を進めてきました。その結果は，Javaらしさを失うものではありません。
+ <em>-- </em>Mark Reinhold 
+</blockquote>
+<p>OracleでJava言語のアーキテクトを務める<a href="http://www.linkedin.com/in/briangoetz">Brian Goetz</a>氏は，単純なアイデアの実装に必要な定型的コードの多くが，ラムダ式によって不要になることを，例を挙げて説明しています。ラムダ式が導入される前，開発者はアイデアの実現にしばしば，内部クラスのような &quot;パティとパンズの割合&quot; の悪い方法を使わなければなりませんでした。Goetz氏は次の例を挙げています：</p>
+<pre>
+     Collection&lt;person&gt; people = …;
+
+     Iterator&lt;person&gt; ip = people.iterator();
+     while (ip.hasNext()) {
+         Person p = ip.next();
+         if (p.getAge() &gt; 18) {
+             ip.remove();
+         }
+     }</pre>
+<p>このテスト部分を述語に書き換えることで，同じアイデアを次のように要約することができます：</p>
+<pre>
+    Collections.removeAll(people,
+                          new Predicate&lt;person&gt;() {
+                               public boolean test(Person p) {
+                                   return p.getAge() &gt; 18;
+                               }
+                           }); </pre>
+<p>ラムダ式を使えば，さらにシンプルです：</p>
+<pre>
+    Collections.removeAll(people, p -&gt; p.getAge() &gt; 18);
+</pre>
+<p>ラムダ式は構文的に優れているだけはありません。invokedynamicの使用によって出力されるバイトコードがコンパクトになり，パフォーマンスも向上しています。言語とAPIの改善を証明するため，Goetz氏は新しいストリームAPIを使用したコレクションのバルク操作を例として，次のように説明しています：</p>
+<pre>
+    int highestWeight = people.stream()
+    	                      .filter(p -&gt; p.getGender() == MALE)
+    	                      .mapToInt(p -&gt; p.getWeight())
+    	                      .max();</pre>
+<p>この例では構文の簡略化に加えてパフォーマンスの向上，さらに処理の並列性向上も実現されています。Java7では，構文分解のためにFork/Joinフレームワークが新たに加えられましたが，そのAPIは使いにくいものでした。Java 8では <code>stream()</code> を <code>parallelStream()</code> に置き換えるという，わずか１行の変更で済みます：</p>
+<pre>
+    int highestWeight = people.<b>parallelStream()</b>
+    	                      .filter(p -&gt; p.getGender() == MALE)
+    	                      .mapToInt(p -&gt; p.getWeight())
+    	                      .max();</pre>
+<p>Project Lambdaに関する詳細は <a href="http://openjdk.java.net/projects/lambda/">http://openjdk.java.net/projects/lambda</a> を参照するか，あるいは <a href="https://jdk8.java.net/">Java 8をダウンロード</a> して確認してください。<br /> &nbsp;</p>
+<h3><strong>NetBeans 7.4</strong></h3>
+<p>NetBeansのエンジニアリングディレクタである<a href="http://www.linkedin.com/pub/john-ceccarelli/1/704/95b">John Ceccarelli</a>氏は，チェスゲームを使ってHTML5アプリケーション編集のデモを行いました (Knockout.jsで記述されています)。デモでは，NetBeans内でプロパティを微調整可能であること(FirebugやChrome Developer Toolsの方法と似ています)や，その結果がリロードしなくてもブラウザにすぐ反映される様子を見ることができました。IntellJ IDEAのLiveEditプラグインに非常に近いもののようです。</p>
+<p>NetBeansは昨年，高度なHTML5サポート実現を目的としたProject Easelを開始すると発表しました。コミュニティからの反応は，&quot;それはすごい，だけどEEプロジェクトでそれを使いたいな&quot; という感じだった，とCeccarelli氏は語っています。うれしいことにJavaOneの直前，NetBeans 7.4 RC1がリリースされました。HTML5, Java EE, Java Web，そしてMaven Webプロジェクトがサポートされています。</p>
+<p>HTMLとCSSのライブ編集に加えて，NetBeans 7.4ではAngularやjQuery，Knockout.jsなどのJavaScriptフレームワークもサポートされています。これはコードエディタがJavaScript内のDOM idだけでなく，モデル名もすべて認識する，という意味です。さらにモバイルWebとモバイルハイブリッド(Cordova 3.0のサポートを通じて)にも完全に対応しています。ライブ編集機能がデスクトップブラウザだけでなく，モバイルデバイス上でも使用できる点にも注目に値するでしょう。最新のリリース候補は<a href="https://netbeans.org/">netbeans.org</a> からダウンロード可能です。</p>
+<p>先程述べたデモのチェスサーバはJava EE 7を使って書かれたもので，GlassFish 4上で動作していました。このアプリケーションはChess Endpoint, Player Registration, Chess Engine, Chess Game Manager, Persistence Manager という，５つの独立したモジュールで構成されています。</p>
+<p style="text-align:center"><img src="http://www.infoq.com/resource/articles/javaone2013-roundup/ja/resources/santiago2.jpg" alt="" _href="img://santiago2.jpg" _p="true" /></p>
+<p>チェスサーバにはWebSocket, バッチ, EJB, JPA, JAX-RS 2.0など，新しいJava EEテクノロジが多数使われています。クライアントとサーバ間の通信はすべてJSONを介して行われます。GlassFishチームのSantiago Pericas-Geertsen氏が，Java EE 7にWebSocketエンドポイントをセットアップすることがどれほど簡単か，コードで示してくれました：</p>
+<pre>
+    @ServerEndpoint(value = &quot;/chessserver&quot;,
+                    encoders = MessageEncoder.class,
+                    decoders = MessageDecoder.class);
+    public class ChessServerEndpoint {
+
+        @Inject private GameCatalog catalog;
+
+        @OnMessage
+        public Message onMessage(String message, Session session) {
+            return message.processMe(this);
+        }
+        ...
+    }
+</pre>
+<p>エンドポイントと通信するためのクライアントAPIはなじみ深い形式で，実装も非常に簡単そうです。</p>
+<p>Oracleのテクニカルキーノートで最後に紹介された技術的なイノベーションはDukePadでした。<a href="https://wiki.openjdk.java.net/display/OpenJFX/DukePad">DukePad</a> はRaspberry PiとJava SE 8 Embeddedをベースとした，DO IT YOURSELFな自家製タブレットコンピュータです。CPUパフォーマンスは素晴らしいとは言えません - Raspberry PiのCPUはPentium IIと同じ位，Samsung Galaxy S4の1/14，Core i7プロセッサと比べれば1/94～1/100という遅さなのです。ただしGPUはかなり速く，1996年当時のPentium IIに比べれば400倍も高速です。</p>
+<p><a href="http://openjdk.java.net/projects/openjfx/">OpenJFX</a> のコンポーネントは，iOSやAndroid用のプロトタイプも含めて，大部分がオープンソースになっています。フォーラムの運営も順調で，ユーザからも数多くのバグレポートが寄せられている，ということです。コミュニティのコントリビューションも活発です。JavaFXは，Java SE 8に同梱されています。</p>
+<p>OracleはJava 9以降についても多くの取り組みを行っています。主要なものとしては，GPUへの移植(Java on GPU)，レイフィケーション (Reification/具象化 - ジェネリクスの型消去問題を解決する)，JNI 2.0，メモリ効率のよいデータ構造(Memory-Efficient Data Structures)，Jigsawによるモジュラプラットフォーム構築などがあります。<br /> &nbsp;</p>
+<h2><strong>Javaコミュニティ</strong></h2>
+<p><a href="http://medianetwork.oracle.com/video/player/2698223954001">Javaコミュニティキーノート</a>の最初に登壇したのは，Oracle製品管理シニアディレクタの<a href="http://ca.linkedin.com/pub/donald-smith/6/945/6a0">Donald Smith</a>氏です。氏はJavaテクノロジに関する印象的なエンドユーザ事例を紹介するために，さまざまな人々を舞台に呼び出していました。</p>
+<p><a href="http://www.linkedin.com/in/toriwieldt">Tori Wieldt</a>氏は<a href="https://www.java.net/challenge">Raspberry Pi Challenge</a>について，25人の開発者が関わって７つのプロジェクトが実施された状況を語りました。このイベントからは，Heart of Glass (Google Glassを使用して心拍数をリアルタイムに監視する) と MTTAS (Monster Truck as a Service) という２つの成功プロジェクトが生まれています。OracleがRaspberry Pi財団とOEM契約を締結したことも発表されました。今後，彼らが提供するイメージのいくつかにはJava SEが同梱されることになります。箱から出してすぐにJavaが使用できるのです！</p>
+<p>その他に注目すべき発表としては，<a href="https://squareup.com/">Square</a>がOpenJDKのメンバになったこと，<a href="http://www.devoxx.com/display/4KIDS/Home">Devoxx4Kids</a>が各地でワークショップをホストするためのJUGリーダと親を募集中であること，などがありました。Minecraftハッカになる方法を紹介するAditya Gupta氏のデモも，当然ながらハイライトのひとつでしたが，それと同時に，基調講演のプレゼンテーションで初めてEclipseを使ったデモのひとつでもありました。氏は目を疑うようなデモを次々と披露しましたが，大部分は父親である<a href="http://www.linkedin.com/in/arunpgupta">Arun Gupta</a>氏と<a href="http://www.minecraftforge.net/">Minecraft Forge</a>から習得したものです。</p>
+<p><a href="https://academy.oracle.com/">Oracle Academy</a>について，Alison Derbenwick Miller氏から紹介がありました。一般的な教育過程に加えて，大学に対してもカリキュラムを提供します。昨年は250万人に教育機会を提供したのに加えて，学生によるワークショップ，教育者の開発と資格対応割引などを行っています。</p>
+<p>教育に関する話題に続いて，数多くのロボットのデモが展示されました。James Gosling氏も，自身の従事する仕事について話すためにゲスト出演していました。<br /> &nbsp;</p>
+<h2><strong>Java・イズ・バックを証明するもの</strong></h2>
+<p>ストラテジキーノートとテクニカルキーノートは，どちらもJavaが復活した理由を示すものでした。Java 8はJavaプログラミングを(定型的なコーディングを減らすことで)再び楽しくしたいと思っています。そしてJava EE 7には，最新のアプリケーションを簡単に開発可能にするに違いないAPIが多数用意されているのです。最近発表された記事の中にも，さらなる証拠があります。</p>
+<ul> 
+ <li>Wired の &quot;<a href="http://www.wired.com/wiredenterprise/2013/09/the-second-coming-of-java/"> The Second Coming of Java: A Relic Returns to Rule Web</a>&quot;</li> 
+ <li>Dr. Dobb's の<a href="http://www.drdobbs.com/jvm/if-java-is-dying-it-sure-looks-awfully-h/240162390"> If Java Is Dying, It Sure Looks Awfully Healthy</a></li> 
+</ul>
+<p>今年のJavaOneに参加できなかったのなら，来年の予定をカレンダに書き込んでおくとよいでしょう。技術的なコンテントに興味がなくても，ネットワーキングのためにそうしておきましょう。Oracle Appreciate Eventは無料の食事にMaroon 5やBlack Keysの音楽と，とてもすてきなものでした。かってのパーティが蘇り，展示ホールは人であふれていました。</p>
+<p>何よりも素晴らしいのは，以前と変わらなく強い開発者コミュニティの熱意です。<br /> &nbsp;</p>
+<h2><strong>著者について</strong></h2>
+<p><strong><img src="http://www.infoq.com/resource/articles/javaone2013-roundup/ja/resources/matt-raible.jpg" vspace="3" hspace="3" align="left" alt="" _href="img://matt-raible.jpg" _p="true" />Matt Raible</strong>氏はこれまでの人生の大半を通じて，Webアプリケーションの開発に従事してきました。氏がWebに関わりを持ち始めたのはNetscape 1.0のリリースよりもさらに前のことです。それから15年以上にわたって，氏は企業へのオープンソース技術 (Spring, Hibernate, Apache, Struts, Grails, Bootstrap, jQuert) の導入と，その効果的利用を支援してきました。さらに氏は，Spring LiveとPro JSPの作者であると同時に，Javaフレームワークの採用を容易にするAppFuseプロジェクトの創設者でもあり，Apache RollerとApache Strutsプロジェクトのコミッタも務めています。氏は HTML5, CSS, JavaScript, CoffeeScript, jQuery, AngularJS, Java, Spring, Scala, Play! Framework, Groovy, Grails, Tomcat, Jetty, PhoneGapの知識を持ち，それらを愛しています。</p><br><br><br><br><br><br></body></html>

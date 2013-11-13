@@ -1,6 +1,42 @@
 <html>
  <head></head> 
- <body> 
+ <body>
+  <div>
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/22.cb">An&aacute;lise do Livro LogStash: Gerenciamento de logs de forma simples</a> O uso de ferramentas como cat, tail, sed awk, perl e grep n&atilde;o escala para um n&uacute;mero maior de hosts e tipos variados de arquivos de log. Neste livro, James Turnbull argumenta de forma convincente pela utiliza&ccedil;&atilde;o do LogStash para centraliza&ccedil;&atilde;o de logs, explicando detalhes de sua implementa&ccedil;&atilde;o dentro do contexto de um projeto de tratamento de logs. 
+  </div>
+  <div>
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/21.cb">9 fal&aacute;cias sobre o desempenho do Java</a> Embora o Java tenha evolu&iacute;do bastante nos &uacute;ltimos 18 anos e se tornado a principal linguagem usada no meio corporativo, algumas fal&aacute;cias sobre seu desempenho ainda persistem. Neste artigo examinaremos alguns desses equ&iacute;vocos mais populares. 
+  </div>
+  <div>
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/20.cb">Agile, Scrum e Burocracia</a> Esclarecendo alguns mitos sobre a filosofia Agile e a sua rela&ccedil;&atilde;o com processos de gerenciamento. Muitos ainda acreditam que utilizar pr&aacute;ticas &aacute;geis &eacute; o mesmo que n&atilde;o seguir m&eacute;todo de trabalho ou n&atilde;o ter documenta&ccedil;&atilde;o. 
+  </div>
+  <div>
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/19.cb">PostgreSQL: Armazenamento de dados em formato &quot;schemaless&quot;</a> Schemaless permite armazenar dados sem conhecimento pr&eacute;vio de chaves ou tipos de dados. Este artigo apresenta uma solu&ccedil;&atilde;o utilizando PostgreSQL para armazenar dados em formato schemaless com Hstore. 
+  </div>
+  <div>
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/18.cb">REST e SOAP: Usar um dos dois ou ambos?</a> Desenvolvedores web t&ecirc;m uma grande quantidade de tecnologias que podem escolher. Nesse breve artigo, s&atilde;o exploradas duas abordagens para interface com servi&ccedil;os web – SOAP e REST – e como us&aacute;-las. 
+  </div>
+  <div>
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/17.cb">Uma solu&ccedil;&atilde;o para a d&iacute;vida t&eacute;cnica?</a> Como podemos tratar a d&iacute;vida t&eacute;cnica de forma a conseguir c&oacute;digo mais coeso e focado na qualidade durante o desenvolvimento e manuten&ccedil;&atilde;o de um software? 
+  </div>
+  <div>
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/16.cb">Novo Scrum Guide: Analisando as mudan&ccedil;as</a> A atualiza&ccedil;&atilde;o do Scrum Guide inclui mudan&ccedil;as para torn&aacute;-lo mais coerente em rela&ccedil;&atilde;o ao do framework na pr&aacute;tica. Saiba o que foi alterado. 
+  </div>
+  <div>
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/15.cb">Modelagem de Dom&iacute;nio: os 7 maus cheiros de informa&ccedil;&atilde;o</a> A modelagem do dom&iacute;nio &eacute; uma t&eacute;cnica poderosa do arsenal dos profissionais de TI. Discutimos maus cheiros em modelos de dom&iacute;nio que indicam a necessidade de mais perguntas e mudan&ccedil;as a fazer. 
+  </div>
+  <div>
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/14.cb">Refatora&ccedil;&atilde;o de sistemas legados: um estudo de caso</a> Refatorar o legado &eacute; sempre uma atividade muito dif&iacute;cil e delicada. Este artigo apresenta uma metodologia para refatorar c&oacute;digo legado de maneira segura, com base em um exemplo real. 
+  </div>
+  <div>
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/13.cb">Op&ccedil;&otilde;es Reais: um pilar para as pr&aacute;ticas &aacute;geis</a> A liberdade de escolha rege muitas das pr&aacute;ticas &aacute;geis. Nesse artigo os autores prop&otilde;em que o uso de Op&ccedil;&otilde;es Reais permitem desenvolver e refinar novas pr&aacute;ticas &aacute;geis e levar o Agile aonde nunca esteve. 
+  </div>
+  <div>
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/12.cb">A praga das Febres &Aacute;geis: Fuja da infec&ccedil;&atilde;o</a> As Febres &Aacute;geis roubam pessoas de sua racionalidade e senso comum, com rela&ccedil;&atilde;o &agrave; ado&ccedil;&atilde;o de processos &aacute;geis. Saiba como reconhecer os sintomas dessa terr&iacute;vel infec&ccedil;&atilde;o. 
+  </div>
+  <div>
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/11.cb">Aplica&ccedil;&otilde;es m&oacute;veis com HTML5 e JavaScript: um exemplo completo com frameworks e arquitetura MVC</a> Um guia detalhado de frameworks para aplica&ccedil;&otilde;es m&oacute;veis baseadas em HTML5 e JavaScript, levando em conta requisitos essenciais pra o desenvolvimento de aplica&ccedil;&otilde;es m&oacute;veis – com um exemplo completo. 
+  </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/10.cb">Qual tipo de Scrum Master voc&ecirc; est&aacute; contratando?</a>Johanna Rothman, autora de livros consagrados, recomenda uma an&aacute;lise de cargo antes da contrata&ccedil;&atilde;o de um Scrum Master, pois nem sempre esse &eacute; o tipo de profissional que a empresa est&aacute; procurando. 
   </div> 

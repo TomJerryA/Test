@@ -1,0 +1,217 @@
+<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>ダブル・ディスパッチ～ 典型的なオブジェクト指向プログラミング・イディオム ～</h3><p>ダブル・ディスパッチ(Double Dispatch)とは、オブジェクト指向でのプログラミングでよく用いられる典型的なプログラミング・テクニック(イディオム)のひとつで、あるメソッドの引数として渡されたオブジェクトに対して自分自身を引数として別のメッセージを送り返すというコーディングの仕方のことを指します。 <br /> Javaで記述すると、たとえば次のようなイメージのコードになります(リスト 1 )：</p>
+<p align="center"><font face="ＭＳ Ｐ明朝, MS PMincho,ヒラギノ明朝 Pro W3, Hiragino Mincho Pro, serif">リスト1 ダブル・ディスパッチのコード・イメージ</font></p>
+<pre>
+public void someMethod( SomeObject parameter ) {
+    parameter.otherMethod( this ) ;
+}
+</pre>
+<p>…これだけでは抽象的すぎて何が何だかぜんぜんわかりませんね。<br /> 以下、もう少し具体的な例を示しながらダブル・ディスパッチの特徴や注意点を解説していきます。<br /> &nbsp;</p>
+<h2><strong>レンタル・ショップの例 (レベル1)</strong></h2>
+<p>商品としてCDやDVDを取り扱うレンタル・ショップを想像してみてください(図 1 )。</p>
+<p><a href="/resource/articles/DoubleDispatch_0829/ja/resources/fig_oo1.png" target="_blank"><img src="http://www.infoq.com/resource/articles/DoubleDispatch_0829/ja/resources/01_s.png" _href="img://01_s.png" _p="true" alt="" /></a></p>
+<p align="center"><font face="ＭＳ Ｐ明朝, MS PMincho,ヒラギノ明朝 Pro W3, Hiragino Mincho Pro, serif">図1 レンタル・ショップのクラス図 (レベル1)</font>　<font size="-3" color="#000099">※クリックして拡大表示</font></p>
+<div id="lowerFullwidthVCR"></div>
+<p>&nbsp;</p>
+<p>このレンタル・ショップ(RentalShop)は複数の商品(Item)を所有しています。各商品はCDまたはDVDのいずれかの商品種別(ItemKind)を持ちます。同様に、このレンタル・ショップには複数の会員(Member)が登録されています。各会員には一般会員(Common)またはゴールド会員(Gold)という会員種別(MemberKind)があるものとします。レンタル料金の計算方法やレンタル可能日数などは、商品種別と会員種別の組合せによって変わってきます。 <br /> さて、このもっとも単純な構造の上でレンタル・ショップのさまざまな業務を実装していくことを考えてみてください。一連の業務の流れを実現するために、各クラスにはいろいろな操作が必要になってくると思いますが、ここではレンタル料金の計算を行う操作(calculateRentalFee)だけに絞って考えてみましょう。 <br /> calculateRentalFeeメソッドを何のヒネリも加えずに素直に実装するとしたら、そのコードはおそらく次のような感じになることでしょう(リスト 2 )。</p>
+<p align="center"><font face="ＭＳ Ｐ明朝, MS PMincho,ヒラギノ明朝 Pro W3, Hiragino Mincho Pro, serif">リスト2 RentalShop#calculateRentalFee()メソッドのコード・イメージ</font></p>
+<pre>
+public int calculateRentalFee( Item item , Member member ) { 
+    int rentalFee = 0 ; 
+    switch ( item.getItemKind() ) { 
+    case ItemKind.CD : 
+        switch ( member.getMemberKind() ) { 
+        case MemberKind.Common : 
+            // 一般会員がCDを借りる場合の料金計算 
+            rentalFee = ... ; 
+            break ; 
+        case MemberKind.Gold : 
+            // ゴールド会員がCDを借りる場合の料金計算 
+            rentalFee = ... ; 
+            break ; 
+        default : 
+            assert( false ) ; 
+        } 
+        break ; 
+    case ItemKind.DVD : 
+        switch ( member.getMemberKind() ) { 
+        case MemberKind.Common : 
+            // 一般会員がDVDを借りる場合の料金計算 
+            rentalFee = ... ; 
+            break ; 
+        case MemberKind.Gold : 
+            // ゴールド会員がDVDを借りる場合の料金計算 
+            rentalFee = ... ; 
+            break ; 
+        default : 
+            assert( false ) ;
+        } 
+        break ; 
+    default : 
+        assert( false ) ;
+    } 
+    return rentalFee ; 
+}
+</pre>
+<p>このコードはswitch文が入れ子になっていてなんだか「イヤな感じ」がしますね(それがオブジェクト指向プログラマにとって正常な感覚だと思います)。</p>
+<p>&nbsp;</p>
+<h2><strong>レンタル・ショップの例 (レベル2)</strong></h2>
+<p>レンタル・ショップのモデルに少しヒネリを加えて、商品種別毎のサブクラスを作ってみました(図 2 )。</p>
+<p><a href="/resource/articles/DoubleDispatch_0829/ja/resources/fig_oo2.png" target="_blank"><img src="http://www.infoq.com/resource/articles/DoubleDispatch_0829/ja/resources/02_s.png" _href="img://02_s.png" _p="true" alt="" /></a></p>
+<p align="center"><font face="ＭＳ Ｐ明朝, MS PMincho,ヒラギノ明朝 Pro W3, Hiragino Mincho Pro, serif">図2 レンタル・ショップのクラス図 (レベル2)　</font><font size="-3" color="#000099">※クリックして拡大表示</font></p>
+<p>ついでに、レンタル料金の計算は各商品オブジェクトにやってもらうようにしましょう(リスト 3 )。そのためのメソッドがItem#calculateRentalFee()で、これは各サブクラス(CDとDVD)でそれぞれオーバーライドされます。オーバーライドされたそれぞれのメソッドでは(既に自分自身の商品種別は決まり切っているので)switch文がひとつ不要になります(リスト 4 、リスト 5 )。</p>
+<p align="center"><font face="ＭＳ Ｐ明朝, MS PMincho,ヒラギノ明朝 Pro W3, Hiragino Mincho Pro, serif">リスト3 RentalShop#calculateRentalFee()メソッドのコード・イメージ</font></p>
+<pre>
+public int calculateRentalFee( Item item , Member member ) { 
+    return item.calculateRentalFee( member ) ; 
+}
+</pre>
+<p align="center"><font face="ＭＳ Ｐ明朝, MS PMincho,ヒラギノ明朝 Pro W3, Hiragino Mincho Pro, serif">リスト4 CD#calculateRentalFee()メソッドのコード・イメージ</font></p>
+<pre>
+public int calculateRentalFee( Member member ) { 
+    int rentalFee = 0 ; 
+    switch ( member.getMemberKind() ) { 
+    case MemberKind.Common : 
+        // 一般会員がCDを借りる場合の料金計算 
+        rentalFee = ... ; 
+        break ; 
+    case MemberKind.Gold : 
+        // ゴールド会員がCDを借りる場合の料金計算 
+        rentalFee = ... ; 
+        break ; 
+    default : 
+        assert( false ) ;
+    } 
+    return rentalFee ; 
+}
+</pre>
+<p align="center"><font face="ＭＳ Ｐ明朝, MS PMincho,ヒラギノ明朝 Pro W3, Hiragino Mincho Pro, serif">リスト5 DVD#calculateRentalFee()メソッドのコード・イメージ</font></p>
+<pre>
+public int calculateRentalFee( Member member ) { 
+    int rentalFee = 0 ; 
+    switch ( member.getMemberKind() ) { 
+    case MemberKind.Common :
+        // 一般会員がDVDを借りる場合の料金計算 
+        rentalFee = ... ; 
+        break ; 
+    case MemberKind.Gold : 
+        // ゴールド会員がDVDを借りる場合の料金計算 
+        rentalFee = ... ; 
+        break ; 
+    default : 
+        assert( false ) ;
+    } 
+    return rentalFee ; 
+}
+</pre>
+<p>いくらか「よい感じ」になってきた気がしますが、まだCDクラスとDVDクラスでオーバーライドされたそれぞれのcalculateRentalFee()メソッドの中にswitch文が残ってしまっています。ちょっと中途半端な感じですね。そこで「ダブル・ディスパッチ」です。</p>
+<p>&nbsp;</p>
+<h2><strong>レンタル・ショップの例 (レベル3)</strong></h2>
+<p>レンタル・ショップのモデルにさらにヒネリを加えて、会員種別毎にサブクラスを導入したうえで商品と会員との間でダブル・ディスパッチを行う構造にしてみましょう(図 3 )。</p>
+<p><a href="/resource/articles/DoubleDispatch_0829/ja/resources/fig_oo3.png" target="_blank"><img src="http://www.infoq.com/resource/articles/DoubleDispatch_0829/ja/resources/03_s.png" _href="img://03_s.png" _p="true" alt="" /></a></p>
+<p align="center"><font face="ＭＳ Ｐ明朝, MS PMincho,ヒラギノ明朝 Pro W3, Hiragino Mincho Pro, serif">図3 レンタル・ショップのクラス図 (レベル3)　</font><font size="-3" color="#000099">※クリックして拡大表示</font></p>
+<p>商品の各サブクラス(CDとDVD)の#calculateRentalFee()メソッドは、それぞれリスト 6 , リスト 7 のようになります。</p>
+<p align="center"><font face="ＭＳ Ｐ明朝, MS PMincho,ヒラギノ明朝 Pro W3, Hiragino Mincho Pro, serif">リスト6 CD#calculateRentalFee()メソッドのコード・イメージ</font></p>
+<pre>
+public int calculateRentalFee( Member member ) { 
+    return member.calculateRentalFeeForCD( this ) ; 
+}
+</pre>
+<p align="center"><font face="ＭＳ Ｐ明朝, MS PMincho,ヒラギノ明朝 Pro W3, Hiragino Mincho Pro, serif">リスト7 DVD#calculateRentalFee()メソッドのコード・イメージ</font></p>
+<pre>
+public int calculateRentalFee( Member member ) { 
+    return member.calculateRentalFeeForDVD( this ) ; 
+}
+</pre>
+<p>これらのメソッドから呼び出される会員側のメソッド(#calculateRentalFeeForCD()および#calculateRentalFeeForVideo())は、やはりそれぞれのサブクラス(CommonMemberおよびGoldMember)でオーバーライドされて実装されます。そのオーバーライドされた各メソッドでは、既に自分自身がどんな種別の会員か決まっていますし、引数として渡された商品の種類も確定していますから、単にそれぞれの組合せ用のロジックを個別に実装すればOKです(リスト 8 、リスト 9 、リスト 10 、リスト 11 )。これでめでたく(オブジェクトの種別を判別するための)switch文が完全に排除されたことになります。</p>
+<p align="center"><font face="ＭＳ Ｐ明朝, MS PMincho,ヒラギノ明朝 Pro W3, Hiragino Mincho Pro, serif">リスト8 CommonMember#calculateRentalFeeForCD()メソッドのコード・イメージ</font></p>
+<pre>
+public int calculateRentalFeeForCD( CD item ) { 
+    return ... ; // 一般会員がCDを借りる場合の料金計算
+}
+</pre>
+<p align="center"><font face="ＭＳ Ｐ明朝, MS PMincho,ヒラギノ明朝 Pro W3, Hiragino Mincho Pro, serif">リスト9 CommonMember#calculateRentalFeeForDVD()メソッドのコード・イメージ</font></p>
+<pre>
+public int calculateRentalFeeForDVD( DVD item ) { 
+    return ... ; // 一般会員がDVDを借りる場合の料金計算
+}
+</pre>
+<p align="center"><font face="ＭＳ Ｐ明朝, MS PMincho,ヒラギノ明朝 Pro W3, Hiragino Mincho Pro, serif">リスト10 GoldMember#calculateRentalFeeForCD()メソッドのコード・イメージ</font></p>
+<pre>
+public int calculateRentalFeeForCD( CD item ) { 
+    return ... ; // ゴールド会員がCDを借りる場合の料金計算
+}
+</pre>
+<p align="center"><font face="ＭＳ Ｐ明朝, MS PMincho,ヒラギノ明朝 Pro W3, Hiragino Mincho Pro, serif">リスト11 GoldMember#calculateRentalFeeForDVD()メソッドのコード・イメージ</font></p>
+<pre>
+public int calculateRentalFeeForDVD( DVD item ) { 
+    return ... ; // ゴールド会員がDVDを借りる場合の料金計算
+}
+</pre>
+<p>「ダブル・ディスパッチ」という名前は&quot;Dispatch&quot;(ここでは「分配する」とか「選択する」とかいったニュアンスで使われています)を2回行うというところに由来しています。この例での最初の&quot;Dispatch&quot;はRentalShop#calculateRentalFee()メソッド中でのItem#calculateRentalFee()の呼び出しの際に言語処理系によって行われます(実際の商品種別によってサブクラスのいずれかの#calculateRentalFee()メソッドが選択されて実行されます)。商品の各々のサブクラスでオーバーライドされた#calculateRentalFee()メソッド中で、今度はMember#calculateRentalFeeForCD()かMember#calculateRentalFeeForDVD()のいずれかが呼び出されて2回目の&quot;Dispatch&quot;が実行されます(これも実際の会員種別毎のサブクラスでオーバーライドされた#calculateRentalFeeForCD()か#calculateRentalFeeForDVD()のいずれかが選択されて実行されます)。 <br /> ダブル・ディスパッチは、この例のように、「別々のクラス階層に含まれる二種類のオブジェクトの組み合わせによって処理の内容(振る舞い)を変える必要がある」といった状況で使われます。 <br /> モデル上、一見複雑な形になってしまったように思えますが、この構造は新たに会員種別が増えたりするような場合に有利です。たとえば「法人会員」や「特別会員」、「ファミリー会員」などといった新しい会員種別を追加することを想像してみてください。そのような場合、それぞれの会員種別を表わす新規のクラスがMemberクラスのサブクラスとして追加されますが、既存のクラスやメソッドにはいっさい追加・変更が加わらないということが判るでしょう。 <br /> 逆に、新たな商品種別が追加されるような場合には、既存のクラスに手が入ることになります。たとえば、「新たに商品として本(Book)を扱うことになった」といった状況を考えてみましょう(図 4 )。</p>
+<p><a href="/resource/articles/DoubleDispatch_0829/ja/resources/fig_oo4.png" target="_blank"><img src="http://www.infoq.com/resource/articles/DoubleDispatch_0829/ja/resources/04_s.png" _href="img://04_s.png" _p="true" alt="" /></a></p>
+<p align="center"><font face="ＭＳ Ｐ明朝, MS PMincho,ヒラギノ明朝 Pro W3, Hiragino Mincho Pro, serif">図4 レンタル・ショップのクラス図 (商品種別の追加)</font>　<font size="-3" color="#000099">※クリックして拡大表示</font></p>
+<p>この場合、Bookクラスの追加と、MemberクラスおよびそのすべてのサブクラスにBook用の料金計算メソッドの追加が必要になります。既存のクラスにメソッドが追加されてはいますが、それでも、既存のメソッドに対してコードの変更が入ることはありません。もし、会員種別よりも商品種別の方が増えやすいなら、会員種別と商品種別との間のディスパッチの方向を逆転させた設計にすることを検討してみるべきでしょう。 <br /> ダブル・ディスパッチの欠点(注意点)は、メッセージ呼び出しのオーバー・ヘッドとクラス数、メソッド数の増加でしょう。ここで示した例ではレンタル料金の計算処理だけピックアップしてみましたが、他のさまざまな処理を同様にダブル・ディスパッチで実装することにすると、その処理種別数&times;商品種別数分のメソッドが定義されなくてはならなくなります。</p>
+<p>&nbsp;</p>
+<h2><strong>双方向関連の実装</strong></h2>
+<p>ダブル・ディスパッチの少し毛色の変わった応用例として双方向関連の実装を考えてみましょう(図 5 )。</p>
+<p><a href="/resource/articles/DoubleDispatch_0829/ja/resources/fig_oo5.png" target="_blank"><img src="http://www.infoq.com/resource/articles/DoubleDispatch_0829/ja/resources/05_s.png" _href="img://05_s.png" _p="true" alt="" /></a></p>
+<p align="center"><font face="ＭＳ Ｐ明朝, MS PMincho,ヒラギノ明朝 Pro W3, Hiragino Mincho Pro, serif">図5 1対多の双方向関連</font>　<font size="-3" color="#000099">※クリックして拡大表示</font></p>
+<p>ここではContainerとComponentというクラスの間に１：多の双方向関連が張られています。双方向関連なので、あるContainerインスタンス(aContainer)のcomponentsとして参照されているすべてのComponentインスタンスは、必ずcontainerとしてaContainerを参照していなければなりません(そのどちらか片方しか成り立たないという状況は許されません)。このような双方向参照を保証するコードの実装例を以下に示します(単純化のため、マルチ・スレッドやエラー処理等への対処は省略されています)。</p>
+<p align="center"><font face="ＭＳ Ｐ明朝, MS PMincho,ヒラギノ明朝 Pro W3, Hiragino Mincho Pro, serif">リスト12 Containerクラスのコード・イメージ</font></p>
+<pre>
+public class Container { 
+
+    protected java.util.Set components = new java.util.HashSet() ; 
+
+    public void addComponent( Component newComponent ) { 
+        if ( ! components.contains( newComponent ) ) { 
+            components.add( newComponent ) ; 
+            newComponent.setContainer( this ) ; 
+        } 
+    } 
+
+    public void removeComponent( Component oldComponent ) { 
+        if ( components.remove( oldComponent ) ) { 
+            oldComponent.setContainer( null ) ; 
+        } 
+    } 
+
+}
+</pre>
+<p align="center"><font face="ＭＳ Ｐ明朝, MS PMincho,ヒラギノ明朝 Pro W3, Hiragino Mincho Pro, serif">リスト13 Componentクラスのコード・イメージ</font></p>
+<pre>
+public class Component { 
+
+    protected Container container = null ;
+
+    public void setContainer( Container newContainer ) { 
+        if ( container != newContainer ) { 
+            Container oldContainer = container ; 
+            if ( oldContainer != null ) { 
+                container = null ; 
+                oldContainer.removeComponent( this ) ; 
+            } 
+            container = newContainer ; 
+            if ( newContainer != null ) { 
+                newContainer.addComponent( this ) ; 
+            } 
+        } 
+    } 
+
+}
+</pre>
+<p>このコードでは、Container#addComponent()メソッド、Container#removeComponent()メソッド、および、Component#setContainer()メソッドが、それぞれ自分自身(this)を引数として相互に呼び出しあっています(つまり形式としてダブル・ディスパッチになっているわけです)。若干コードが複雑で追いにくいのですが、Container#addComponent()でコンポーネントを追加しても、Component#setContainer()でコンテナを設定しても、どちらも同じ状況に落ち着くようになっています。</p>
+<p>&nbsp;</p>
+<h2><strong>おわりに</strong></h2>
+<p>以上、オブジェクト指向プログラミングでの典型的なコーディング・テクニックのひとつであるダブル・ディスパッチについて、Javaでの実装コード例を示しながら解説しました。ダブル・ディスパッチはオブジェクト指向言語の特徴のひとつであるポリモルフィズム(多相性)を上手に利用した設計/実装テクニックです。特に、２つのオブジェクトの具体的な種別の組合せ毎にロジックが異なるような処理の実装や、２つのオブジェクト間で維持しなくてはならない制約を保証したい場合などに有効です。 <br /> GoF (Gang of Four) の「デザイン・パターン」を読んだことがある人は、ここで紹介したダブル・ディスパッチとよく似たやり方を既に目にしているハズです。そう、Visitorパターンなどですね。GoFのVisitorパターンもダブル・ディスパッチの応用例のひとつと考えることができます。 <br /> ダブル・ディスパッチはいろいろと応用範囲の広い基本的なイディオムですが、前述したように利点ばかりではなく欠点もあります。そういった利点・欠点のトレード・オフをしっかり考慮した上で「ここだ！」という個所(ツボ)に「びしっ！」と適用できるようなプログラマになりたいものですね。 <br /> この記事が何らかのお役に立ちましたら幸いです…。</p>
+<p>以上</p>
+<p>&nbsp;</p>
+<h2><strong>関連情報：</strong></h2>
+<pre>
+ <ul>     
+  <li>豆蔵ソフト工学ラボ：誤解しがちなモデリングの技：<br /><a href="http://labo.mamezou.com/special/sp_002/">http://labo.mamezou.com/special/sp_002/</a></li>     
+  <li>豆蔵ソフト工学ラボ：組込み開発のためのモデリングワンポイントレッスン：<br /><a href="http://labo.mamezou.com/special/sp_006/">http://labo.mamezou.com/special/sp_006/</a></li>     
+  <li>豆蔵ソフト工学ラボ：システム開発地図：<br /><a href="http://labo.mamezou.com/special/sp_015/">http://labo.mamezou.com/special/sp_015/</a></li> 
+ </ul>
+</pre>
+<p>&nbsp;</p><br><br><br><br><br><br></body></html>

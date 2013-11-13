@@ -2,7 +2,19 @@
  <head></head> 
  <body>
   <div>
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/20.java">Testing Resiliency at PagerDuty Without a Simian Army</a>Doug Barth, from PagerDuty, talked at DevOps Days London about their approach to start resiliency testing their systems without dedicating a lot of automation effort upfront. The goal was to quickly start learning about failure points and openly discuss how to fix them with only one hour per week of effort.
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/24.java">Windows/Windows Phone Takes a Step Towards Unification</a>Microsoft has taken the first step towards unifying the Windows 8 and Windows Phone stores. Developers no longer have to register for each platform separately. Those already registered for both will be receiving a free renewal for one year in compensation.
+  </div>
+  <div>
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/23.java">Pivotal Announces Pivotal CF Based on CloudFoundry</a>Today, Pivotal announced the availability of Pivotal CF, an enterprise cloud platform based on Cloud Foundry, along with a number of Pivotal One services such as an Apache Hadoop and Analytics service. A reply of the announcement is available from gopivotal.com
+  </div>
+  <div>
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/22.java">Presto: Facebook’s Distributed SQL Query Engine</a>Facebook has open-sourced Presto, their distributed SQL query engine. Presto uses a pipelined architecture rather than the Map/Reduce design found elsewhere. In production since early this year, Facebook has since “deployed in multiple geographical regions and [they] have successfully scaled a single cluster to 1,000 nodes”.
+  </div>
+  <div>
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/21.java">Use the Force, Luca - Jenkins Developer Wipes out a Month of Commits on GitHub</a>Yesterday, a developer on the Jenkins project accidentally triggered a force push on the GitHub repositories that store the Git repositories for the Jenkins codebase, wiping out several months of commits. InfoQ looks at what happened and what needs to prevent this re-occuring in the future.
+  </div> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/20.java">Testing Resiliency at PagerDuty Without a Simian Army</a>Doug Barth, from PagerDuty, talked at DevOps Days London about their approach to start resiliency testing their systems without dedicating a lot of automation effort upfront. The goal was to quickly start learning about failure points and openly discuss how to fix them with only one hour per week of effort. 
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/19.java">Apigee Now Supports Node.js and Open Sources Volos</a>Apigee Edge now supports Node.js and has open sourced Volos, a project containing a set of API management modules. 
@@ -138,18 +150,6 @@
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/26.java">Microsoft Makes Infrastructure Cloud Generally Available, Matches AWS Prices</a>Today, Microsoft took their Infrastructure-as-a-Service (IaaS) cloud product – called Windows Azure Infrastructure Services – out of preview and made it available to the general public. Microsoft is entering a crowded IaaS market but they’ve committed to matching cloud leader Amazon Web Services (AWS) on price while also promising enterprise-class SLAs and services. 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/25.java">JSON Validation Roundup</a>Create any “flexible” or “extensible” file format and sooner or later a group of developers will start complaining about validation. For JSON, several options are starting to spring up. 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/24.java">Windows Azure Adds Active Directory, New Backup Service, Monitoring and Log Improvements</a>Microsoft has announced the availability of Windows Azure Active Directory, new backup service with support for incremental backups including several monitoring and log improvements. 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/23.java">Portable Class Library Support for Noda Time</a>Noda Time, the advanced date/time library for .NET, is now available for Windows 8, Windows Phone 7, and Windows Phone 8. This version also offers a NuGet package and a comprehensive user’s guide. 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/22.java">Continuous Delivery Speeds Up Innovation</a>Thoughtworks recently published a whitepaper including a maturity model for continuous delivery (or CD) as a response to research indicating that most companies understand the importance of innovation, but are not able to deliver software quickly enough to meet the needs of business leaders. 
-  </div>  
+  </div>     
  </body>
 </html>

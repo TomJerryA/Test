@@ -1,0 +1,408 @@
+<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>Aplicações móveis com HTML5 e JavaScript: um exemplo completo com frameworks e arquitetura MVC</h3><p>Pode-se criar uma interface rica para aplica&ccedil;&otilde;es de forma nativa ou utilizando HTML5 e JavaScript. Aplica&ccedil;&otilde;es nativas podem oferecer uma experi&ecirc;ncia mais rica para os usu&aacute;rios, mas podem levar mais tempo e ser mais caras de desenvolver para v&aacute;rios sistemas operacionais. As tecnologias HTML5 e JavaScript abrir&atilde;o a porta para as interfaces independentes de dispositivo. Isso significa que as interfaces com o usu&aacute;rio podem ser criadas utilizando bibliotecas de componentes JavaScript que renderizam componentes visuais utilizando elementos do HTML5. O HTML5 traz novas funcionalidades que suportam a mobilidade e o desenvolvimento de interfaces ricas.</p>
+<p>Este artigo apresenta frameworks e estruturas usadas para implementar o lado cliente das aplica&ccedil;&otilde;es m&oacute;veis com base em JavaScript e HTML5. A interface com o usu&aacute;rio e os elementos de navega&ccedil;&atilde;o s&atilde;o todos componentes renderizados no navegador, enquanto os servidores de aplica&ccedil;&otilde;es t&ecirc;m somente o papel de fornecer acesso aos dados JSON para a interface com o usu&aacute;rio. Como a inten&ccedil;&atilde;o aqui &eacute; fornecer uma arquitetura de refer&ecirc;ncia, o exemplo implementa apenas algumas funcionalidades b&aacute;sicas.</p>
+<h2>Considera&ccedil;&otilde;es sobre o desenvolvimento m&oacute;vel</h2>
+<p>Muitas abordagens para desenvolver aplica&ccedil;&otilde;es para navegadores desktop podem ser utilizadas nas aplica&ccedil;&otilde;es baseadas em navegadores m&oacute;veis. No entanto, as aplica&ccedil;&otilde;es m&oacute;veis apresentam desafios n&atilde;o existentes nos navegadores para desktop.</p>
+<p>Considere por exemplo as resolu&ccedil;&otilde;es de tela. As dimens&otilde;es bem menores das telas exigem um design de interfaces diferente para otimizar a intera&ccedil;&atilde;o do usu&aacute;rio com a aplica&ccedil;&atilde;o. O HTML5, juntamente com uma biblioteca de componentes de interface gr&aacute;fica m&oacute;vel como o jQuery Mobile, fornece um modo independente de dispositivo para criar interfaces m&oacute;veis com JavaScript. Veja a seguir uma lista criada com o jQuery Mobile:</p>
+<p><img src="http://www.infoq.com/resource/articles/mobile-architecture-html5-javascript/pt/resources/201.jpg" alt="" _href="img://201.jpg" _p="true" /></p>
+<p>Essa interface com usu&aacute;rio &eacute; renderizada utilizando o identificador de pap&eacute;is (<em>role identifier</em>) do HTML5, al&eacute;m de CSS. Abaixo est&aacute; um trecho do c&oacute;digo usado para implementar a lista. Note o atributo <strong>data-role</strong>, utilizado pelo jQuery Mobile para renderizar um componente visual amig&aacute;vel a dispositivos m&oacute;veis.</p>
+<div id="lowerFullwidthVCR"></div>
+<pre>
+&lt;div id=&quot;stockListContainer&quot; data-role='content'&gt;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;ul data-role=&quot;listview&quot; id='tcStockList' data-inset=&quot;true&quot; data-filter=&quot;true&quot;&gt;&lt;/ul&gt;
+&lt;/div&gt;
+</pre>
+<p>A conectividade &eacute; outra quest&atilde;o fundamental. Embora as redes 3G e wi-fi sejam hoje comuns, a conectividade n&atilde;o pode ser considerada como sempre dispon&iacute;vel. Felizmente, o HTML5 tem funcionalidades de cache, permitindo que recursos do site possam ser armazenados localmente e controlados de modo desconectado. O caching &eacute; habilitado adicionando-se o seguinte elemento HTML em n&iacute;vel de raiz:</p>
+<pre>
+&lt;!DOCTYPE HTML&gt;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;html manifest=&quot;cache.manifest&quot;&gt;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;body&gt;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;...
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/body&gt;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/html&gt;
+</pre>
+<p>Os arquivos de manifesto s&atilde;o arquivos textuais que definem quais recursos ser&atilde;o armazenados, al&eacute;m de diretivas que controlam os recursos que podem &quot;pular&quot; o cache, ou o que mostrar quando o recurso n&atilde;o est&aacute; dispon&iacute;vel. Atualiza&ccedil;&otilde;es e notifica&ccedil;&otilde;es de cache tamb&eacute;m podem ser controlados quando o arquivo muda, ou atrav&eacute;s de uma API JavaScript. A seguir, &eacute; apresentado um exemplo de arquivo <em>manifest</em>:</p>
+<pre>
+CACHE MANIFEST
+# 2012-27-18:v1
+
+# Explicitly cached resources.
+CACHE:
+index.html
+css/stylesheet.css
+Images/logo.png
+scripts/main.js
+
+# White Listed Resources, requires connectivity, will bypass cache
+NETWORK:
+http://api.twitter.com
+
+
+# offline.html will be displayed, if *.HTML are not available.
+FALLBACK:
+*.html /static.html
+</pre>
+<p>Al&eacute;m disso, o HTML5 fornece um mecanismo que armazena os dados do lado do servidor localmente para opera&ccedil;&otilde;es desconectadas, e tamb&eacute;m para ganho de desempenho. Um mecanismo de armazenamento local de 5 MB baseado em chave/valor est&aacute; dispon&iacute;vel para armazenar strings ou objetos JSON transformados em strings. O exemplo a seguir mostra como um <strong>Backbone.Collection</strong> de objetos <strong>Stock</strong> podem ser armazenados e recuperados localmente como uma string do JSON.</p>
+<pre>
+var d = JSON.stringify(data);
+localStorage.setItem('STOCKS', d);
+
+var d = localStorage.getItem('STOCKS');
+data = JSON.parse(d);
+</pre>
+<p>As aplica&ccedil;&otilde;es tamb&eacute;m podem ser constru&iacute;das para notificar o usu&aacute;rio da &quot;falta de conectividade&quot; e intermediar as requisi&ccedil;&otilde;es de acesso aos dados que ser&atilde;o enfileiradas em um reposit&oacute;rio local de chave/valor, que &eacute; padronizado nos navegadores que suportam o HTML5. Quando a conex&atilde;o &eacute; restaurada, os objetos que foram armazenados localmente s&atilde;o enviados para o servidor.</p>
+<p>O uso de largura de banda &eacute; outra preocupa&ccedil;&atilde;o. Minimizar as requisi&ccedil;&otilde;es ao servidor e o tamanho da carga podem ser suportados usando a AJAX; h&aacute; depend&ecirc;ncia do servidor somente para acesso aos dados usando JSON. O JSON &eacute; muito mais eficiente e sucinto que XML ou protocolos baseados em SOAP.</p>
+<h2>Arquitetura de aplica&ccedil;&otilde;es HTML5</h2>
+<p>O JavaScript nunca foi pretendido como linguagem uso geral para cria&ccedil;&atilde;o de aplica&ccedil;&otilde;es. Seu objetivo original era aprimorar a experi&ecirc;ncia dos usu&aacute;rios nos navegadores, permitindo que HTML din&acirc;mico fosse renderizado e alterado sem se ter que acessar um servidor remoto; isso oferecia melhora de desempenho percept&iacute;vel e real. Os dispositivos m&oacute;veis n&atilde;o t&ecirc;m todo o poder de processamento ou o acesso a largura de banda dos navegadores desktop, ent&atilde;o as interfaces de usu&aacute;rio ricas precisam minimizar as idas e vindas ao servidor implementando o que for poss&iacute;vel com elementos JavaScript e HTML5 no lado cliente.</p>
+<p>Isso &eacute; bem diferente do que &eacute; feito em aplica&ccedil;&otilde;es web do lado servidor (JSP/ASP/PHP), em que elementos din&acirc;micos de HTML s&atilde;o renderizados no servidor. Na nova topologia, os elementos do lado do servidor suportam a autentica&ccedil;&atilde;o e requisi&ccedil;&otilde;es de acesso a dados, e a intera&ccedil;&atilde;o com o usu&aacute;rio e muita l&oacute;gica de aplica&ccedil;&atilde;o fica no navegador do cliente. Isso pode ser visto na figura a seguir:</p>
+<p><img src="http://www.infoq.com/resource/articles/mobile-architecture-html5-javascript/pt/resources/102.jpg" alt="" _href="img://102.jpg" _p="true" /></p>
+<p>Al&eacute;m disso, por usarmos uma linguagem din&acirc;mica e fracamente tipada, (que permite <em>closures</em> e a habilidade de tratar blocos de c&oacute;digo como tipos de dados), ganhamos muita flexibilidade na programa&ccedil;&atilde;o. Mas, isso pode levar a um c&oacute;digo dif&iacute;cil de manter. Assim, precisamos ser rigorosos ao criar aplica&ccedil;&otilde;es baseadas em JavaScript. A lista a seguir apresenta t&eacute;cnicas gerais que precisam ser postas em pr&aacute;tica:</p>
+<ul> 
+ <li>Navega&ccedil;&atilde;o</li> 
+ <li>Acesso a dados remotos</li> 
+ <li>Autentica&ccedil;&atilde;o e Autoriza&ccedil;&atilde;o</li> 
+ <li>Desacoplamento da vis&atilde;o do modelo da aplica&ccedil;&atilde;o (padr&atilde;o MVC)</li> 
+ <li>Modulariza&ccedil;&atilde;o / Empacotamento</li> 
+ <li>Gerenciamento de depend&ecirc;ncias</li> 
+ <li>Registro em logs/ Rastreamento</li> 
+ <li>Tratamento de exce&ccedil;&otilde;es</li> 
+</ul>
+<p>No mundo do Java, h&aacute; frameworks que auxiliam a cria&ccedil;&atilde;o de arquiteturas em camadas. Do mesmo modo, h&aacute; frameworks dispon&iacute;veis no mundo do JavaScript para auxiliar o uso de uma arquitetura em camadas. Para aumento de facilidade de manuten&ccedil;&atilde;o e estabilidade, os seguintes frameworks s&atilde;o usados para ajudar a for&ccedil;ar uma arquitetura modular dividida em camadas e orientada a objetos:</p>
+<p><a href="http://backbonejs.org/">Backbone.js</a></p>
+<blockquote> 
+ <p>O Backbone fornece uma maneira orientada a objetos para separar e aplicar o padr&atilde;o <a href="http://pt.wikipedia.org/wiki/MVC">Model View Controller</a><a href="http://pt.wikipedia.org/wiki/MVC"> (MVC)</a> nas aplica&ccedil;&otilde;es JavaScript. As interfaces com o usu&aacute;rio em HTML5 s&atilde;o separadas do controle e das implementa&ccedil;&otilde;es dos objetos do modelo. Al&eacute;m disso, &eacute; fornecido um mecanismo de navega&ccedil;&atilde;o padr&atilde;o entre as funcionalidades da interface.</p> 
+</blockquote>
+<p><a href="http://requirejs.org/">Require.js</a></p>
+<blockquote> 
+ <p>O Require.js &eacute; um framework para carregamento de arquivos e m&oacute;dulos JavaScript, o qual permite que as depend&ecirc;ncias de c&oacute;digo JavaScript sejam carregadas e validadas conforme solicitados por um m&oacute;dulo ou fun&ccedil;&atilde;o JavaScript. O framework tamb&eacute;m informa para o desenvolvedor erros de depend&ecirc;ncias, quando um m&oacute;dulo ou biblioteca JavaScript n&atilde;o p&ocirc;de ser carregado.</p> 
+</blockquote>
+<p><a href="http://underscorejs.org/">Underscore.js</a></p>
+<blockquote> 
+ <p>O Underscore.js &eacute; uma biblioteca que disponibiliza m&eacute;todos utilit&aacute;rios para permitir que mecanismos de programa&ccedil;&atilde;o funcional sejam aplicados &agrave;s cole&ccedil;&otilde;es de objetos. Tamb&eacute;m oferece a funcionalidade de templates HTML.</p> 
+</blockquote>
+<p><a href="http://jquery.com/">JQuery</a></p>
+<blockquote> 
+ <p>Biblioteca utilizada para acessar e manipular elementos <a href="http://pt.wikipedia.org/wiki/Document_Object_Model">DOM</a> do HTML.</p> 
+</blockquote>
+<p><a href="http://jquerymobile.com/">jQuery Mobile</a></p>
+<blockquote> 
+ <p>Biblioteca de componentes de interface com o usu&aacute;rio em HTML5, que oferece um conjunto de controles renderizados em HTML5 e mecanismos para o tratamento de eventos e da apar&ecirc;ncia da aplica&ccedil;&atilde;o.</p> 
+</blockquote>
+<p><a href="https://github.com/in-the-keyhole/khs-sherpa/">khsSherpa</a></p>
+<blockquote> 
+ <p>Trata-se de um framework de servidor de aplica&ccedil;&otilde;es, em Java, que oferece acesso remoto a objetos Java por meio de requisi&ccedil;&otilde;es HTTP. Oferece suporte a autentica&ccedil;&atilde;o baseada em tokens, por meio do empacotamento autom&aacute;tico de tipos Java para objetos JSON; opcionalmente habilita o suporte entre dom&iacute;nios diferentes com <a href="http://pt.wikipedia.org/wiki/JSONP">JSONP</a>.</p> 
+</blockquote>
+<h2>Estrutura de pastas para JavaScript</h2>
+<p>O JavaScript n&atilde;o fornece uma maneira padronizada de organizar os elementos de programa&ccedil;&atilde;o, que s&atilde;o apenas arquivos de texto com extens&atilde;o .js. Outras linguagens fornecem mecanismos para organiza&ccedil;&atilde;o, como os pacotes de Java ou Namespaces de C#. Tentar definir todas as fun&ccedil;&otilde;es e objetos JavaScript em um grande arquivo &uacute;nico dificultar&aacute; a manuten&ccedil;&atilde;o, especialmente quando grande parte de aplica&ccedil;&atilde;o &eacute; definida no JavaScript. Portanto, as pastas de arquivos do sistema podem ser criadas na pasta raiz, para particionar os fontes por &aacute;reas de responsabilidade.</p>
+<p><img src="http://www.infoq.com/resource/articles/mobile-architecture-html5-javascript/pt/resources/103.jpg" alt="" _href="img://103.jpg" _p="true" /></p>
+<p>As pastas ir&atilde;o conter elementos os JavaScript do MVC da aplica&ccedil;&atilde;o. A imagem anterior apresenta um exemplo de estrutura de pastas. Suponha que essas pastas estejam localizadas dentro da pasta raiz do servidor web ou servidor de aplica&ccedil;&otilde;es.</p>
+<h2>Suporte a modularidade</h2>
+<p>O JavaScript n&atilde;o tem mecanismos internos para particionar os elementos de c&oacute;digo fonte, diferentemente de outras linguagens como o Java, novamente, com seus packages e o C# com seus Namespaces. No entanto, as aplica&ccedil;&otilde;es JS podem importar e incluir diretivas para trazer depend&ecirc;ncias. Isso permite a modulariza&ccedil;&atilde;o dos c&oacute;digos das aplica&ccedil;&otilde;es e frameworks, aprimorando a manuten&ccedil;&atilde;o e o reuso.</p>
+<p>O framework <strong>Require.js</strong> fornece um mecanismo eficiente para particionar e tratar os arquivos JavaScript como m&oacute;dulos; tem tamb&eacute;m habilidade de definir, importar e acessar depend&ecirc;ncias.</p>
+<p>O Require.js usa o framework Asynchronous Module Definition (AMD) para realizar a defini&ccedil;&atilde;o e carregamento de depend&ecirc;ncias. A fun&ccedil;&atilde;o &quot;require&quot; do AMD para carregar os m&oacute;dulos tem sua sintaxe apresentada a seguir:</p>
+<pre>
+define([modules], factory function);
+</pre>
+<p>Cada m&oacute;dulo &eacute; um arquivo JavaScript individual que define um objeto JavaScript. Quando invocado, os m&oacute;dulos s&atilde;o carregados e uma inst&acirc;ncia de objeto &eacute; criada e passada para uma fun&ccedil;&atilde;o de f&aacute;brica (factory) para uso do desenvolvedor. O exemplo a seguir mostra um m&oacute;dulo JavaScript usando a fun&ccedil;&atilde;o define() do Require.js, para carregar a depend&ecirc;ncia utilit&aacute;ria:</p>
+<pre>
+define([&quot;util&quot;], <b>function</b> (util) {
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>return</b> {
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;date<b>:</b> <b>function</b>(){
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;var date = new Date();
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>return</b> util.format(date);
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;};
+});</pre>
+<p>O Require tamb&eacute;m tem funcionalidades de otimiza&ccedil;&atilde;o com o objetivo de minimizar o carregamento de arquivo e aumentar o desempenho.</p>
+<h2>Backbone MVC</h2>
+<p>O Backbone MVC permite a implementa&ccedil;&atilde;o do popular padr&atilde;o de projeto MVC usando JavaScript. Tipicamente, as aplica&ccedil;&otilde;es web implementam esse padr&atilde;o com o objetivo de usar as tecnologias de gera&ccedil;&atilde;o de HTML din&acirc;mico no lado do servidor, como o JSP ou algum mecanismo de templates de HTML. O Backbone MVC fornece componentes ou abstra&ccedil;&otilde;es para processar as entradas do usu&aacute;rio e aplicar os modelos de objetos da aplica&ccedil;&otilde;es ao mecanismo de HTML din&acirc;mico. O framework fornece uma maneira para usar esses mecanismos com JavaScript, em vez de gerar tags HTML no servidor.</p>
+<h2>Templates HTML</h2>
+<p>A camada de vis&atilde;o (view) do Backbone &eacute; simplemente um arquivo HTML est&aacute;tico com a aplica&ccedil;&atilde;o dos pap&eacute;is do HTML5. O Backbone fornece um mecanismo de templates, ent&atilde;o esses atributos de modelos podem ser aplicados no HTML quando a camada de vis&atilde;o for renderizada por uma vis&atilde;o/controle. A aplica&ccedil;&atilde;o de exemplo define uma lista na tela com o JQuery Mobile, que &eacute; definido com os pap&eacute;is de atributos do HTML5. A tela HTML5 <strong>stock-list.html</strong> &eacute; mostrada a seguir:</p>
+<pre>
+&lt;div id=<i>&quot;stockListContainer&quot;</i> data-role=<i>'content'</i>&gt;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;ul data-role=<i>&quot;listview&quot;</i> id=<i>'tcStockList'</i> data-inset=<i>&quot;true&quot;</i> data-filter=<i>&quot;true&quot;</i>&gt;&lt;/ul&gt;
+&lt;/div&gt;</pre>
+<p>As a&ccedil;&otilde;es na lista s&atilde;o definidos no <strong>stock-list-item.html</strong>. Aplicando o mecanismo de templates do Backbone para apresentar os detalhes do objeto de modelo de a&ccedil;&atilde;o (stock). O HTML com os elementos de templates &eacute; mostrado a seguir:</p>
+<pre>
+&lt;a href=<i>'#&lt;%=ticker%&gt;'</i>&gt;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<u>&lt;h4&gt;&lt;</u>%= ticker %&gt;&lt;/h4&gt;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<u>&lt;p&gt;&lt;</u>%= name %&gt;&lt;/p&gt;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<u>&lt;p&gt;</u>Price: <u>&lt;</u>%= price %&gt;&lt;/p&gt;
+&lt;/a&gt;</pre>
+<p>Note que as express&otilde;es de templates s&atilde;o similares &agrave;s p&aacute;ginas JSP e ASP, nas quais &lt;%= %&gt; s&atilde;o usados para marcar locais a serem atualizados com valores de atributos de um objeto JSON. Os templates HTML s&atilde;o localizados na pasta template.</p>
+<h2>Vis&atilde;o/Controlador</h2>
+<p>Uma vis&atilde;o (view) HTML &eacute; renderizada navegando at&eacute; uma implementa&ccedil;&atilde;o de controlador (controller) do Backbone. Os controles ligam os objetos JavaScript a uma tela HTML e informam para o framework renderizar a camada de vis&atilde;o com a defini&ccedil;&atilde;o e tratamento dos eventos. Na terminologia do Backbone, as vis&otilde;es s&atilde;o controles e a cria&ccedil;&atilde;o das vis&otilde;es no Backbone s&atilde;o feitas estendendo o objeto <strong>Backbone.View</strong> do framework.</p>
+<p>A seguir &eacute; apresentado um exemplo parcial para o controlador de vis&atilde;o <strong>stockListPage.js</strong>, no qual primeiro carregamos os arquivos JavaScript necess&aacute;rios usando o framework <strong>require.js</strong>. Este &uacute;ltimo invoca a fun&ccedil;&atilde;o JavaScript <strong>define([modules,...], controller())</strong> e retorna uma fun&ccedil;&atilde;o do controlador de vis&atilde;o do Backbone. Note que essa fun&ccedil;&atilde;o estende o objeto <strong>Backbone.View</strong>.</p>
+<p>Um aspecto interessante do framework Require &eacute; a fun&ccedil;&atilde;o Define, respons&aacute;vel por carregar as depend&ecirc;ncias dos m&oacute;dulos necess&aacute;rios atrav&eacute;s da implementa&ccedil;&atilde;o do controlador de vis&atilde;o. Observe que os m&oacute;dulos de modelo e do template HTML s&atilde;o tamb&eacute;m fornecidos pelo objeto do m&oacute;dulo de vis&atilde;o/controlador:</p>
+<pre>
+define([
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'jquery',
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'backbone',
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'underscore',
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'model/stockListCollection',
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'view/stockListView',
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'text!template/stock-list.html'],
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>function</b>($, Backbone, _, StockListCollection, StockListView, stockListTemplate) {<b>var</b> <u>list</u> = {};
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>return</b> Backbone.View.extend({
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;id : 'stock-list-page',
+</pre>
+<p>Quando uma inst&acirc;ncia da vis&atilde;o/controlador &eacute; criada: a fun&ccedil;&atilde;o <strong>initialize</strong> &eacute; invocada. Ela fornece uma maneira para definir eventos e inicializar o modelo de controlador, que pode ser um objeto individual ou uma cole&ccedil;&atilde;o de objetos.</p>
+<p>Note no exemplo que na fun&ccedil;&atilde;o <strong>initialize</strong> da vis&atilde;o/controlador de <strong>stockListPage.js</strong>, &eacute; criado um objeto <strong>StockListCollection</strong>. As cole&ccedil;&otilde;es s&atilde;o tamb&eacute;m oferecidas pelo Backbone, atrav&eacute;s de objetos que fornecem uma maneira de gerenciar &quot;cole&ccedil;&otilde;es&quot; de modelos de objetos JavaScript para a camada de vis&atilde;o. Quando esse controlador &eacute; invocado, o m&eacute;todo <strong>initialize()</strong> &eacute; executado. Quando uma inst&acirc;ncia &eacute; criada, s&atilde;o utilizados os seletores jQuery para aplicar os tratamentos de eventos do Backbone aos bot&otilde;es. A seguir temos o trecho de c&oacute;digo da fun&ccedil;&atilde;o <strong>initialize()</strong>:</p>
+<pre><b>var</b> <u>list</u> = {};
+<b>return</b> Backbone.View.extend({
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;id : 'stock-list-page',
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;initialize : <b>function</b>() {
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>this</b>.list = <b>new</b> StockListCollection();
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;$(&quot;#about&quot;).on(&quot;click&quot;, <b>function</b>(e){
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;navigate(e);
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;e.preventDefault();
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;e.stopPropagation();
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&amp; amp;nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>return</b> <b>false</b>;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;});
+
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;$(&quot;#add&quot;).on(&quot;click&quot;, <b>function</b>(e){
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;navigate(e);
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;e.preventDefault();
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;e.stopPropagation();
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&amp;nb sp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>return</b> <b>false</b>;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;});
+
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;},
+</pre>
+<p>Os eventos s&atilde;o associados ao m&eacute;todo da vis&atilde;o/controlador, atrav&eacute;s da associa&ccedil;&atilde;o do evento do formul&aacute;rio e um seletor jQuery com um nome de m&eacute;todo. O exemplo a seguir apresenta o evento e m&eacute;todos de tratamento para a aplica&ccedil;&atilde;o de exemplo e adiciona bot&otilde;es para a lista de a&ccedil;&otilde;es da p&aacute;gina. Os comandos de navega&ccedil;&atilde;o s&atilde;o discutidos na pr&oacute;xima se&ccedil;&atilde;o.</p>
+<pre>
+events: {
+&nbsp;&quot;click #about&quot; : &quot;about&quot;,
+&nbsp;&quot;click #add&quot; : &quot;add&quot;,
+},
+about : <b>function</b>(e) {
+
+window.stock.routers.workspaceRouter.navigate(&quot;#about&quot;,<b>true</b>);
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>return</b> <b>false</b>;
+},
+
+add : <b>function</b>(e) {
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;window.stock.routers.workspaceRouter.navigate(&quot;#add&quot;,<b>true</b>);
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>return</b> <b>false</b>;
+},
+</pre>
+<p>Um template de vis&atilde;o/controlador em HTML &eacute; renderizado e apresentado quando o m&eacute;todo <strong>render()</strong> &eacute; enviado para uma inst&acirc;ncia. A fun&ccedil;&atilde;o render de stockListPage.js &eacute; apresentada a seguir. O template &eacute; compilado e ent&atilde;o mostra um template HTML que &eacute; aplicado para os controladores do atributo <strong>el</strong>. O atributo <strong>this.el</strong> &eacute; a localiza&ccedil;&atilde;o do controlador no DOM no qual o HTML ser&aacute; inserido. A seguir, note que outra vis&atilde;o/controlador &eacute; instanciada e renderizada. O StockListView controla a renderiza&ccedil;&atilde;o da lista de a&ccedil;&otilde;es com o jQuery Mobile.</p>
+<pre>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;render : <b>function</b>(eventName) {
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>var</b> compiled_template = _.template(stockListTemplate);
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>var</b> $el = $(<b>this</b>.el);
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;$el.html(compiled_template());
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>this</b>.listView = <b>new</b> StockListView({
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;el : $('ul', <b>this</b>.el),
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;collection : <b>this</b>.list
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;});
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>this</b>.listView.render();
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>return</b> <b>this</b>;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;},
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;});
+});
+</pre>
+<h2>Navega&ccedil;&atilde;o</h2>
+<p>A navega&ccedil;&atilde;o entre os controladores de vis&atilde;o &eacute; outro mecanismo fornecido pelo Backbone. O Backbone se refere a isso como &quot;roteamento&quot; e assim fornece um objeto Backbone. O objeto de roteamento que pode ser estendido para definir rotas de navega&ccedil;&atilde;o. Um exemplo de roteamento &eacute; apresentado a seguir:</p>
+<pre>
+define(['jquery', 'backbone', 'jquerymobile' ], function($, Backbone) {
+         var transition = $.mobile.defaultPageTransition;
+         var WorkspaceRouter = Backbone.Router.extend({
+                   // bookmarkMode : false,
+                   id : 'workspaceRouter',
+                   routes : {
+                             &quot;index&quot; : &quot;stockList&quot;,
+                             &quot;stockDetail&quot; : &quot;stockDetail&quot;
+                   },
+                   initialize : function() {
+                             $('.back').on('click', function(event) {
+                                       window.history.back();
+                                       return false;
+                             });
+                             this.firstPage = true;
+                   },
+                   defaultRoute: function() {
+                             console.log('default route');
+                             this.runScript(&quot;script&quot;,&quot;stockList&quot;);
+         },
+         stockDetail: function() {
+                   require(['view/stockDetailView'], function (ThisView) {
+                                       var page = new ThisView();
+                                       $(page.el).attr({
+                                                 'data-role' : 'page',
+                                                 'data-add-back-btn' : &quot;false&quot;
+                                       });
+                                       page.render();
+                                       $(page.el).prependTo($('body'));
+                                       $.mobile.changePage($(page.el), {
+                                                 transition : 'slide'
+                                       });
+                   });
+         },
+
+         stockList : function() {
+                             require(['view/stockListPage'], function (ThisView) {
+                                       var page = new ThisView();
+
+                                       $(page.el).attr({
+                                                 'data-role' : 'page',
+                                                 'data-add-back-btn' : &quot;false&quot;
+                                       });
+
+                                       page.render();
+                                       $(page.el).prependTo($('body'));
+                                       $.mobile.changePage($(page.el), {
+                                                 transition : 'flip'
+                                       });
+                           });
+                   },
+         });
+         return new WorkspaceRouter();
+});
+
+</pre>
+<p>A fun&ccedil;&atilde;o Define do framework Require &eacute; usado para fornecer inst&acirc;ncias do jQuery, Backbone e jQuery Mobile para sobrescrever as fun&ccedil;&otilde;es/m&eacute;todos de roteamento. Quando a inst&acirc;ncia do Router &eacute; criada, as rotas s&atilde;o inicializadas com um ID e nome da fun&ccedil;&atilde;o a se executar quando a rota &eacute; navegada. No exemplo anterior, h&aacute; duas rotas: <strong>#index</strong> e <strong>#stockDetail</strong>.</p>
+<p>O objeto de roteamento pode ser invocado pela navega&ccedil;&atilde;o para uma vis&atilde;o/controle com a seguinte express&atilde;o:</p>
+<pre>
+&lt;aRouter&gt;.navigate(&quot;#index&quot;);</pre>
+<p>Uma fun&ccedil;&atilde;o de roteamento cria uma inst&acirc;ncia do <strong>Backbone.View</strong> e chama a fun&ccedil;&atilde;o de renderiza&ccedil;&atilde;o. O trecho de c&oacute;digo a seguir &eacute; um exemplo que estende a fun&ccedil;&atilde;o <strong>BackBone.Router</strong> para renderizar a lista de a&ccedil;&otilde;es com o jQuery Mobile. Note no c&oacute;digo a seguir que o Require cria uma inst&acirc;ncia da vis&atilde;o/stockListPage com a vis&atilde;o/controle do Backbone, e em seguida usa o jQuery para fazer decora&ccedil;&otilde;es dos atributos da p&aacute;gina e renderiz&aacute;-los.</p>
+<pre>
+// Router navigation funtion
+stockList : <b>function</b>() {
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;require(['view/stockListPage'], <b>function</b> (ThisView) {
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>var</b> page = <b>new</b> ThisView();
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;$(page.el).attr({
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'data-role' : 'page',
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'data-add-back-btn' : &quot;false&quot;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;});
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;page.render();
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;$(page.el).prependTo($('body' ));
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;$.mobile.changePage($(page.el), {
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;transition : 'flip'
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;});
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;});
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;},</pre>
+<h2>Cole&ccedil;&atilde;o/Modelo</h2>
+<p>O Backbone fornece um objeto Collection, que gerencia listas de objetos <strong>Backbone.Model</strong>. Os objetos de vis&atilde;o/controle t&ecirc;m atributos que referenciam uma lista ou um simples objeto JavaScript. O objeto <strong>Backbone.Collection</strong> para os objetos do modelo <strong>StockListItem</strong> &eacute; apresentado pela vis&atilde;o/controle a seguir:</p>
+<pre>
+define(['jquery', 'backbone', 'underscore', 'model/stockItemModel'],
+function($, Backbone, _, StockListItem) {
+         return Backbone.Collection.extend({
+                   model : StockListItem,
+                   url : 'http://localhost:8080/khs-sherpa-jquery/sherpa?endpoint=StockService&amp;action=quotes&amp;callback=?',
+                   initialize : function() {
+                             $.mobile.showPageLoadingMsg();
+                             console.log('findScripts url:' + this.url);
+                             var data = this.localGet();
+                             if (data == null) {
+                                       this.loadStocks();
+                             } else {
+                                       console.log('dados locais presentes..');
+                                       this.reset(data);
+                             }
+                   },
+                   loadStocks : function() {
+                             var self = this;
+                             $.getJSON(this.url, {
+                                       }).success(function(data, textStatus, xhr) {
+                                                 console.log('o script obteve a lista json com sucesso');
+
+                                                 console.log(JSON.stringify(data.scripts));
+                                                 self.reset(data);
+                                                 self.localSave(data);
+                                       }).error(function(data, textStatus, xhr) {
+                                                 console.log('error');
+                                                 console.log(&quot;data - &quot; + JSON.stringify(data));
+                                                 console.log(&quot;textStatus - &quot; + textStatus);
+                                                 console.log(&quot;xhr - &quot; + JSON.stringify(xhr));
+                                       }).complete(function() {
+                                                 console.log('conclu&iacute;da a requisi&ccedil;&atilde;o json');
+                                                 $.mobile.hidePageLoadingMsg();
+                                       });
+                   },
+                   localSave : function(data) {
+                             var d = JSON.stringify(data);
+                             localStorage.setItem('STOCKS', d);
+                   },
+                   localGet : function() {
+                             var d = localStorage.getItem('STOCKS');
+                             data = JSON.parse(d);
+                             return data;
+                   }
+         });
+});
+
+</pre>
+<p>Quando o objeto Collection &eacute; inicializado (na aplica&ccedil;&atilde;o de exemplo, isso acontece quando a vis&atilde;o/controle cria uma inst&acirc;ncia), o atributo URL especificado &eacute; chamado usando o mecanismo AJAX do jQuery para invocar o endpoint JSONP do lado servidor. O endpoint retorna objetos do JSON, que s&atilde;o automaticamente mapeados para o modelo <strong>stockListItem</strong>. A defini&ccedil;&atilde;o do Backbone.Model para o StockItemModel &eacute; apresentada a seguir:</p>
+<pre>
+define(['jquery',
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'backbone',
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'underscore'],
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>function</b>($, Backbone, _) {
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>return</b> Backbone.Model.extend({
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;initialize : <b>function</b>() {
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;});
+});</pre>
+<p>Para os leitores familiarizados com as linguagens fortemente tipadas, a habilidade do JavaScript de transformar strings no formato JSON em objetos de modelo JavaScript parece m&aacute;gica.</p>
+<p>Os objetos Backbone.Model t&ecirc;m v&aacute;rios m&eacute;todos para ajudar a salvar e sincronizar com um servidor. Do mesmo modo, os objetos Backbone.Collection t&ecirc;m m&eacute;todos para sincronizar e salvar em um servidor tamb&eacute;m, e efetuar tipos de opera&ccedil;&otilde;es da programa&ccedil;&atilde;o funcional. Verifique mais funcionalidades no <a href="http://backbonejs.org/">site</a> do Backbone.</p>
+<h2>Armazenamento local</h2>
+<p>Outros m&eacute;todos adicionados no exemplo do <strong>StockListCollection</strong> estendem <strong>Backbone.Collection,</strong> fornecendo a habilidade de salvar e restaurar objetos usando o mecanismo de armazenamento local do HTML5. Isso &eacute; definido nos m&eacute;todos localSave() e localGet() dentro da cole&ccedil;&atilde;o. Como a cole&ccedil;&atilde;o de objetos Stock s&atilde;o obtidos no servidor, a aplica&ccedil;&atilde;o HTML5 pode atuar sem conectividade.</p>
+<p>Esse exemplo utiliza o mecanismo de sess&atilde;o local baseado em chave/valor. O HTML5 tamb&eacute;m fornece um mecanismo de armazenamento relacional local chamado webSQL. No entanto, o trabalho para essa especifica&ccedil;&atilde;o est&aacute; parado e ela n&atilde;o &eacute; completamente suportada. Ent&atilde;o contar com esse recurso pode ser arriscado. J&aacute; o armazenamento de sess&otilde;es baseado em chave/valor &eacute; bem suportado. Para mais informa&ccedil;&otilde;es, verifique a <a href="http://www.w3.org/TR/webdatabase/">especifica&ccedil;&atilde;o</a> do webSQL.</p>
+<h2>Inicializa&ccedil;&atilde;o e Bootstrap de aplica&ccedil;&otilde;es</h2>
+<p>O <strong>index.html</strong> padr&atilde;o inicia tudo. Este &eacute; o ponto em que s&atilde;o carregados os estilos definidos com a seguinte tag:</p>
+<pre>
+&lt;script data-main=&quot;main.js src=&quot;libs/require/require.js&quot;/&gt;</pre>
+<p>Esse trecho invoca a fun&ccedil;&atilde;o <strong>main.js</strong> que configura e carrega o suporte das bibliotecas JavaScript. O framework Require fornece um bom mecanismo para acessar uma biblioteca JavaScript, atrav&eacute;s de um nome simples e uma URL base com o caminho da localiza&ccedil;&atilde;o. Como a pasta lib est&aacute; fora do diret&oacute;rio raiz, nenhum caminho base de URL &eacute; exigido. Veja um exemplo:</p>
+<pre>
+require.config({
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;paths : {
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'backbone' : 'libs/AMDbackbone-0.5.3',
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'underscore' : 'libs/underscore-1.2.2',
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'text' : 'libs/require/text',
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'jquery' : 'libs/jquery-1.7.2',
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'jquerymobile' : 'libs/jquery.mobile-1.1.0-rc.2'
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;},
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;baseUrl : ''
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;});</pre>
+<p>Essa fun&ccedil;&atilde;o de inicializa&ccedil;&atilde;o tamb&eacute;m usa a fun&ccedil;&atilde;o require para configurar as propriedades do jQuery Mobile e carregar o script do <strong>App.js</strong> que navega para a rota <strong>#index</strong>, apresentando a stock-list-item.html.</p>
+<p>O script App.js apresentado a seguir inicializa uma inst&acirc;ncia de roteamento da &aacute;rea de trabalho, inicializa o backbone e ent&atilde;o navega para a p&aacute;gina <strong>#index</strong>:</p>
+<pre>
+define(['backbone', 'router/workspaceRouter'], <b>function</b>(Backbone, WorkspaceRouter) {
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&quot;use strict&quot;;
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;$(<b>function</b>(){
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;window.tc = {
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;routers : {
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;workspaceRouter : WorkspaceRouter
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;},
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;views : {},
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;models : {},
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ticker: <b>null</b>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;};
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>var</b> <u>started</u> = Backbone.history.start({pushState:<b>false</b>, root:'/HTML5BackboneJQMRequireJS/'});
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;window.tc.routers.workspaceRouter.navigate(&quot;#index&quot;, {trigger:<b>true</b>});
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;});
+});</pre>
+<h2>Endpoints JSON no lado servidor</h2>
+<p>Um servidor de aplica&ccedil;&otilde;es configurado para usar o framework JSON khsSherpa fornece URLs para endpoints, com m&eacute;todos para criar, ler, atualizar e remover para objetos Lists e Stock. O framework converte os par&acirc;metros das requisi&ccedil;&otilde;es HTML para m&eacute;todos de Endpoint Java chamando e serializando objetos Java de e para strings JSON.</p>
+<p>Este projeto de exemplo &eacute; definido e projetado para ser publicado como um componente WAR do Java EE. O WAR cont&eacute;m tanto HTML est&aacute;tico como JavaScript, que &eacute; inicialmente entregue e pode residir nos navegadores dos clientes, al&eacute;m dos endpoints no servidor de aplica&ccedil;&otilde;es Java com o Sherpa JSON que conduzem a interface HTML5.</p>
+<p>Aqui est&aacute; definido o endpoint Java no servidor, que disponibiliza objetos de pre&ccedil;os de a&ccedil;&otilde;es (stock) no formato JSON. Os endpoints s&atilde;o invocados usando uma URL HTTP get.</p>
+<p>A aplica&ccedil;&atilde;o de exemplo apenas necessita de um endpoint para obter a cole&ccedil;&atilde;o de objetos Stock. No entanto, aplica&ccedil;&otilde;es mais realistas podem precisar de autentica&ccedil;&atilde;o e endpoints adicionais para suportar opera&ccedil;&otilde;es CRUD. Esse framework suporta esses requisitos. Para mais informa&ccedil;&otilde;es quanto &agrave;s funcionalidades, <a href="https://github.com/in-the-keyhole/khs-sherpa/">verifique o framework no Github</a>.</p>
+<h2>Conclus&otilde;es</h2>
+<p>Mesmo com um exemplo simples, pudemos apresentar uma arquitetura MVC para aplica&ccedil;&otilde;es executando no navegador. Eliminar a necessidade de os servidores renderizarem HTML din&acirc;mico nas interfaces da aplica&ccedil;&atilde;o &eacute; a caracter&iacute;stica mais importante da arquitetura apresentada.</p>
+<p>O JavaScript n&atilde;o &eacute; uma linguagem de programa&ccedil;&atilde;o natural para todos os prop&oacute;sitos; por&eacute;m a explos&atilde;o de dispositivos m&oacute;veis e a grande ado&ccedil;&atilde;o do HTML5, assim como a falta de suporte de plug-ins, torna JavaScript/HTML5 um caminho vi&aacute;vel para entregar aplica&ccedil;&otilde;es ricas baseadas em navegadores para dispositivos m&oacute;veis.</p>
+<p>O c&oacute;digo completo da aplica&ccedil;&atilde;o de exemplo pode ser encontrado no <a href="https://github.com/in-the-keyhole/khs-backbone-example">GitHub</a>.</p>
+<hr />
+<h2>Sobre o autor</h2>
+<p><b><img vspace="4" hspace="4" align="left" alt="" src="http://www.infoq.com/resource/articles/mobile-architecture-html5-javascript/pt/resources/04.jpg" _p="true" /></b></p>
+<p><strong>David Pitt</strong> &eacute; Arquiteto de Solu&ccedil;&otilde;es S&ecirc;nior e S&oacute;cio-Diretor da Keyhole Software. Com quase 25 anos de experi&ecirc;ncia em TI, passou os &uacute;ltimos 15 ajudando departamentos de TI corporativos a adotarem a tecnologia de objetos. Desde 1999, lidera e ensina equipes de desenvolvimento de softwares que utilizam como base as tecnologias Java (Java EE) e .NET (com C#). &Eacute; autor de v&aacute;rios artigos t&eacute;cnicos e co-autor de um popular livro sobre o WebSphere da IBM, que documenta alguns de seus padr&otilde;es arquiteturais.</p><br><br><br><br><br><br></body></html>

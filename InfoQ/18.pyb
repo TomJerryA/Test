@@ -1,0 +1,203 @@
+<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>Docker: Linuxコンテナを使ってアプリケーションの配置を支援する</h3><p><a target="_blank" href="http://www.infoq.com/articles/docker-containers"><em>原文(投稿日：2013/09/26)へのリンク</em></a></p>
+<p><a href="http://docker.io">Docker</a>はLinux<i>コンテナ</i>の内部でアプリケーションを動かすためのオープンソースツールで、軽量な仮想マシンの一種です。アプリケーションを実行するだけでなく、コンテナ化されたアプリケーションを<a href="http://index.docker.io">Docker index</a>という独自のDockerレジストリを通じて配布するツールも提供します。複雑なアプリケーション配置作業を単純化できるのです。</p>
+<p>この記事では、複雑なシステムの配置作業で企業が直面している課題を説明し、そして、Dockerがこの課題を解決するための価値あるツールになり得ることを示します。また、ほかの使い方についても説明します。</p>
+<h2><strong>配置の問題</strong></h2>
+<p>サーバアプリケーションの配置はますます複雑になっています。いくつかのPerlスクリプトをコピーするだけでインストールが完了する時代は終わりました。今日、ソフトウエアは多くの種類の要求を抱えています。</p>
+<ul> 
+ <li>インストールするソフトウエアやライブラリの依存物(&quot;Python &gt;= 2.6.3とDjango 1.2に依存する&quot;)</li> 
+ <li>実行するサービスへの依存(&quot;MySQL 5.5とRabbitMQのキュー&quot;が必要)</li> 
+ <li>特定のOSに対する依存(&quot;64-bit Ubuntu Linux 12.04でビルドとテストをした&quot;)</li> 
+ <li>リソースの要件: 
+  <ul> 
+   <li>利用可能なメモリの最少量(&quot;1GBのメモリが必要&quot;)</li> 
+   <li>特定のポートへのバインド(&quot;80と443を使う&quot;)</li> 
+  </ul> </li> 
+</ul>
+<p>例えば、比較的シンプルなアプリケーションの配置を考えてみましょう。<a href="http://www.wordpress.org">Wordpress</a>です。典型的なWordpressのインストールでは、</p>
+<ul> 
+ <li>Apache 2</li> 
+ <li>PHP 5</li> 
+ <li>MySQL</li> 
+ <li>Wordpressのソースコード</li> 
+ <li>WordpressのMySQLデータベース。Wordpress向けの構成が必要。</li> 
+ <li>Apache。次の構成が必要。 
+  <ul> 
+   <li>PHPモジュールのロード</li> 
+   <li>URLリライトの有効化と<tt>.htaccess</tt>ファイル</li> 
+   <li><tt>DocumentRoot</tt>をWordpressのソースに向ける</li> 
+  </ul> </li> 
+</ul>
+<p>配置してシステムを動かすまでに、次のような問題や困難にぶつかるはずです。</p>
+<div id="lowerFullwidthVCR"></div>
+<ol> 
+ <li><strong>分離: </strong>このサーバにすでに違うサイトをホストしていて、そのサイトが<a href="http://nginx.org/">nginx</a>で動いている場合、WordpressはApacheで動くので、困ったことになります。両方とも80ポートをリッスンしようとします。両方を同じサーバで動かすことは不可能ではありませんが、構成をひねらなければなりません(リッスンするポートを変更する)。ライブラリでも同じような衝突が発生するでしょう。また、既に動作しているアプリケーションがPHP4に依存していたら、厄介です。WordpressはPHP4をサポートしていないのです。そして、PHP4とPHP5を同時に動かすのはとても難しいです。同じサーバで動いているアプリケーションは互いに<i>分離</i>(この場合はファイルシステムやネットワークのレベルで)されていませんので、衝突が起きてしまうのです。</li> 
+ <li><strong>セキュリティ:</strong> 私たちがインストールしているのは<i>Wordpress</i>です。最強のセキュリティレベルを誇るソフトウエアではありません。Wordpressをサンドボックス化して、ハッキングされてもほかのアプリケーションが影響を受けないようにできたら素晴らしいです。</li> 
+ <li><strong>アップグレード、ダウングレード:</strong> アプリケーションのアップグレードは既存ファイルの上書きを伴います。アップグレードの最中に何が起きるでしょうか。対象のシステムは停止するのでしょうか。アップグレードが失敗したらどうなるでしょう。失敗していたことがわかったらどうでしょうか。以前のバージョンにロールバックできるのでしょうか。</li> 
+ <li><strong>スナップショット、バックアップ:</strong> 一度すべてをセットアップしたら、システムの&quot;スナップショット&quot;が取れると便利です。スナップショットはバックアップできますし、ほかのサーバに移して、実行できます。可用性を確保するため複製して複数のサーバに配置するのもいいでしょう。</li> 
+ <li><strong>再現性:</strong> 配置を自動化して運用環境で動作させる前にテスト用のインフラで新しいバージョンのシステムをテストするのは素晴らしいやり方です。このようなやり方は通常<a href="http://www.opscode.com/chef/">Chef</a>、<a href="https://puppetlabs.com/">Puppet</a>というようなツールを使い、パッケージを自動的にサーバにインストールして、問題なく動作すれば、運用環境で全く同じ配置スクリプトを実行することで実現します。このやり方は99%うまくいきます。しかし、残りの1%の場合、すなわち、テスト環境への配置と運用環境への配置の間にリポジトリのパッケージが更新されると互換性のパッケージになってしまう可能性があります。その結果、運用環境のセットアップはテスト環境と異なってしまい、問題が発生する可能性が生まれます。配置のほんの小さな側面もコントロールしなければ(例えば、独自のAPTやYUMリポジトリをホストしなければ)、同じシステムを複数の環境に<i>再現</i>するのは難しいです。</li> 
+ <li><strong>Constrain resources:</strong> WordpressのCPU使用がおかしくなって、CPUサイクルをすべて使い尽くしてしまい、ほかのアプリケーションの実行をブロックしてしまったらどうなるでしょう。メモリを使い尽くしてしまったらどうでしょうか。ログの生成が暴走してデスクを使い尽くしてしまったらどうでしょう。こう考えるとアプリケーションが利用できるリソースに制限をかけられると便利そうです。</li> 
+ <li><strong>簡単なインストール:</strong> there may be DebianやCentOSのパッケージ、あるいはChefのレシピでWordpressの複雑なインストールステップを自動で実行してくれるかもしれません。しかし、これらの仕組みは安定的に動かすには複雑すぎます。というのは、これらの仕組みは対象となるシステムのあり得る構成を考慮しなければならないからです。そして、多くの場合、このような仕組みはクリーンな環境でのみ正常に動作します。</li> 
+ <li><strong>簡単なアンインストール:</strong> ソフトウエアは簡単にきれいに除去できる必要があります。しかし、アプリケーションの配置は通常、既存の構成ファイルに変更を加え、状態(MySQLのデータやログ)を左右します。したがって、アプリケーションを完全に除去するのは難しいです。</li> 
+</ol>
+<p>ではこのような問題をどのように解決すればいいでしょうか。</p>
+<h2><strong>仮想マシン!</strong></h2>
+<p>個別のアプリケーションを分離された仮想マシンで動作させるとき、例えば<a href="http://aws.amazon.com/ec2/">AmazonのEC2</a>を使うとき、ほとんどの問題は解決します。</p>
+<ol> 
+ <li><strong>分離:</strong> ひとつの仮想マシンにひとつのアプリケーションをインストールすることで完全な分離を実現できます。</li> 
+ <li><strong><strong>再現性: </strong></strong>システムを好きなように準備して、AMIを作成すれば、このAMIを使って好きなだけインスタンスを作成できます。完全に再現性があります。</li> 
+ <li><strong>セキュリティ</strong> 完全に分離されているので、Wordpressのサーバがハッキングされても、ほかのインフラは影響を受けません。SSHのキーを散らかしたり、パスワードを再利用していれば別ですが。でもそんなことしていないですよね。</li> 
+ <li><strong>リソースの制限: </strong> 仮想マシンは一定のCPUサイクル、メモリ、デスクスペースを確保します。この確保したリソース量を超えることはありません。</li> 
+ <li><strong>簡単なインストール:</strong> アプリケーションの増加はEC2アプライアンスとして利用でき、<a href="https://aws.amazon.com/marketplace">AWSマーケットプレイス</a>でワンクリックでインスタンス化できます。数分の再起動を必要としますが、それだけです。</li> 
+ <li><strong>簡単なアンインストール:</strong> アプリケーションが必要なくなったら、仮想マシンを捨てればいいだけです。</li> 
+ <li><strong>アップグレード、ダウングレード:</strong> <a href="http://www.infoq.com/news/2013/06/netflix">Netflixが行っていること</a>は新しい仮想マシンを配置するだけです。そして、ロードバランサの向き先を古い仮想マシンから新しい仮想マシンへ向けます。ただし、維持しなければならない状態をローカルに保存している場合はこの方法はうまくいきません。</li> 
+ <li><strong>スナップショット、バックアップ:</strong> EBSのディスクはボタンのクリックでスナップショットが取れます。スナップショットは<a href="http://aws.amazon.com/s3">S3</a>へバックアップされます。</li> 
+</ol>
+<p>完璧です。</p>
+<p>しかし、新しい問題があります。これは<i>高価</i>なやり方です。</p>
+<ul> 
+ <li><strong>お金:</strong> 必要なアプリケーション分だけEC2のインスタンスを立ち上げるほどの金銭的な余裕はありますか。必要なインスタンスサイズを予測できますか。あとで追加のリソースが必要になったら、アップグレードするために仮想マシンを止めなければなりません。また、必要以上にリソースを確保してしまったら、お金を払いすぎてしまうことになります(SolarisのZonesは<a href="http://www.joyent.com/">Joyent</a>と同様動的にリソースをリサイズします)。</li> 
+ <li><strong>時間:</strong> 仮想マシンに関連するオペレーションは遅いです。起動には数分かかりますし、スナップショットを取るのにも時間がかかります。イメージの作成にも時間がかかります。世界は動いています。このような無駄な時間はありません。</li> 
+</ul>
+<p>もっと良い方法はないでしょうか。</p>
+<p><a href="http://docker.io">Docker</a>を使ってみましょう。</p>
+<p><a href="http://docker.io">Docker</a>はプラットフォームプロバイダの<a href="https://www.dotcloud.com">dotCloud</a>の人々が始めたオープンソースプロジェクトで<a href="http://www.infoq.com/news/2013/03/Docker">今年のはじめに</a>始まりました。技術的観点ではDockerは(<a href="http://golang.org">Go</a>で書かれている)ふたつの既存技術を使いやすくします。</p>
+<ul> 
+ <li><a href="http://lxc.sourceforge.net/">LXC: Linux Containers</a>。各プロセスを通常のUnixプロセスよりも高いレベルで分離して実行します。この仕組みには<i>コンテナ化</i>という言葉が使われます。プロセスは<i>コンテナ</i>の内部で実行される、と言います。コンテナは次の水準での分離をサポートします。 
+  <ul> 
+   <li>ファイルシステム: コンテナのファイルシステムに<a href="http://docs.docker.io/en/latest/commandline/command/run/">特別にマウント</a>しなければ、コンテナはサンドボックス化されたファイルシステムにのみアクセスできます(<a href="http://en.wikipedia.org/wiki/Chroot">chroot</a>に似ています)。</li> 
+   <li>ユーザ名前空間: コンテナは独自のデータベースを持ちます(例えば、コンテナのルートはホストのルートアカウントとは別になります)。</li> 
+   <li>プロセス名前空間: 当該コンテナ内のプロセスだけが見えます。</li> 
+   <li>ネットワーク名前空間: コンテナは仮想ネットワークデバイスを持ち、仮想IPを持ちます。</li> 
+  </ul> </li> 
+ <li><a href="http://aufs.sourceforge.net/">AUFS</a>。コピーオンライトなファイルシステムを実現する。</li> 
+</ul>
+<p>DockerはAUFSをサポートしているカーネルが3.8以上のLinuxにインストールできます。しかし、概念的にはDockerはこれらの技術には依存していません。将来的には類似の技術で動作するようになるかもしれません。例えば、<a href="http://www.oracle.com/technetwork/server-storage/solaris/containers-169727.html">SolarisのZones</a>や<a href="http://www.freebsd.org/doc/en_US.ISO8859-1/books/handbook/jails.html">BSD jails</a>、<a href="http://en.wikipedia.org/wiki/ZFS">ZFS</a>といった技術です。現時点では前述の条件のLinuxにのみインストールできます。</p>
+<p>では、なぜDockerは興味深い技術なのでしょうか。</p>
+<ul> 
+ <li>まず、Dockerはとても<i>軽量</i>です。仮想マシンを立ち上げるにはリソースがたくさん必要です。しかし、Dockerコンテナを起動するのに必要なCPUとメモリのオーバヘッドは小さく、とても素早く起動できます。通常のプロセスの起動と比べられるくらいです。コンテナの実行も高速で、イメージの作成やファイルシステムのスナップショット取得も同様に高速です。</li> 
+ <li>また、Dockerは<i>すでに仮想化された環境</i>でも動作します。つまり、EC2インスタンス、Rackspace VM、 VirtualBoxの中で動かすこともできるのです。実際、MacやWindowsでDockerを使うには<a href="http://docs.docker.io/en/latest/installation/vagrant/">Vagrantを使う</a>のが有効です。</li> 
+ <li>そして、Dockerコンテナは<i>ポータブル</i>でDockerが動くOSになら、どこにでも移動できます。UbuntuであれCentOSであれ、Dockerが動作するなら、コンテナを走らせることができます。</li> 
+</ul>
+<p>では、前述した配置と運用に関わる問題のリストを振り返って、Dockerがどの程度役に立つかを見てみましょう。</p>
+<ol> 
+ <li><strong>分離:</strong> Dockerはアプリケーションをファイルシステムやネットワークのレベルで分離します。まるで&quot;本当&quot;の仮想マシンで動作させているようです。</li> 
+ <li><strong><strong>再現性:</strong> </strong>好きなようにシステムを準備して(ログインして<tt>apt-get</tt>ですべてのソフトウエアをそろえる、または<a href="http://docs.docker.io/en/latest/use/builder/">Dockerfile</a>を使う)、イメージの変更をコミットします。そうすれば好きなだけ、イメージをインスタンス化し、ほかのマシンで全く同じ環境をセットアップできます。</li> 
+ <li><strong>セキュリティ:</strong> Dockerのコンテナは通常のプロセス分離よりも安全です。Dockerチームはいくつかの<a href="http://blog.docker.io/2013/08/containers-docker-how-secure-are-they/">セキュリティ問題を発見して</a>対処しています。</li> 
+ <li><strong>リソースの制限: </strong>DockerはCPUの利用を一定のCPUサイクルで制限できます。メモリも同様です。ディスクスペースの制限はまだ直接的にはサポートされていません。</li> 
+ <li><strong>簡単なインストール</strong> Dockerには<a href="https://index.docker.io/">Docker Index</a>があります。これは単一のコマンドでインスタンスかできるDockerイメージのリポジトリです。例えば、Clojure REPLのイメージを使うには<tt>docker run -t -i zefhemel/clojure-repl</tt>というコマンドを実行すれば、後は自動的にリポジトリからイメージを取り出して、インスタンス化してくれます。</li> 
+ <li><strong>簡単なアンインストール:</strong> アプリケーションが必要なくなったらコンテナを破棄すればいいだけです。</li> 
+ <li><strong>アップグレード、ダウングレード:</strong> EC2の仮想マシンと同じです。新しいバージョンのアプリが乗っているインスタンスを起動し、ロードバランサを古い仮想マシンから新しい仮想マシンに向ければいいのです。</li> 
+ <li><strong>スナップショット、バックアップ:</strong> Dockerはイメージのコミットとタグ付けをサポートします。EC2のスナップショットとは違い、<i>一瞬</i>で終わります。</li> 
+</ol>
+<h2><strong>どのように使うか</strong></h2>
+<p>Dockerをインストールしたとしましょう。Ubuntuコンテナ内でbashを実行するには次のようにします。</p>
+<pre>
+docker run -t -i ubuntu /bin/bash</pre>
+<p>&quot;ubuntu&quot;イメージが既にダウンロードされているか否かによって、DockerはUbuntuのイメージをダウンロードするか、既にローカルにあるイメージをコピーするかします。それから、Ubuntuコンテナ内で<tt>/bin/bash</tt>を実行します。コンテナ内では、普通のUbuntuのように作業をすることができます。例えば、新しいパッケージをインストールすることもできます。</p>
+<p>&quot;hello&quot;をインストールしてみましょう。</p>
+<pre>
+$ docker run -t -i ubuntu /bin/bash
+<span style="text-decoration: underline;">root@78b96377e546:/#</span> apt-get install hello
+Reading package lists... Done
+Building dependency tree... Done
+The following NEW packages will be installed:
+  hello
+0 upgraded, 1 newly installed, 0 to remove and 0 not upgraded.
+Need to get 26.1 kB of archives.
+After this operation, 102 kB of additional disk space will be used.
+Get:1 http://archive.ubuntu.com/ubuntu/ precise/main hello amd64 2.7-2 [26.1 kB]
+Fetched 26.1 kB in 0s (390 kB/s)
+debconf: delaying package configuration, since apt-utils is not installed
+Selecting previously unselected package hello.
+(Reading database ... 7545 files and directories currently installed.)
+Unpacking hello (from .../archives/hello_2.7-2_amd64.deb) ...
+Setting up hello (2.7-2) ...
+<span style="text-decoration: underline;">root@78b96377e546:/#</span> hello
+Hello, world!
+</pre>
+<p>いったん、終了してからもう一度Dockerコマンドを実行してみましょう。</p>
+<pre><span style="text-decoration: underline;">root@78b96377e546:/#</span> exit
+exit
+$ docker run -t -i ubuntu /bin/bash
+<span style="text-decoration: underline;">root@e5e9cde16021:/#</span> hello
+bash: hello: command not found</pre>
+<p>何が起きたのでしょうか。helloコマンドはどこへいってしまったのでしょうか。上記のコマンドでは単純に真新しいUbuntuのイメージから<i>新しい</i>コンテナを起動しただけなのです。以前のコンテナで引き続き作業を続けるには、そのコンテナを<i>リポジトリ</i>に<i>コミット</i>しなければなりません。では、新しく立ち上げたコンテナを終了し、立ち上げたコンテナのidを見てみましょう。</p>
+<pre>
+$ docker ps -a
+ID                  IMAGE                   COMMAND                CREATED              STATUS              PORTS
+e5e9cde16021        ubuntu:12.04            /bin/bash              About a minute ago   Exit 127
+78b96377e546        ubuntu:12.04            /bin/bash              2 minutes ago        Exit 0</pre>
+<p><tt>docker ps</tt>コマンドを実行すると、現在実行中のコンテナの一覧が見れます。<tt>docker ps -a</tt>はすでに終了しているコンテナの一覧が見れます。コンテナはそれぞれユニークなIDを持ちます。一覧にはコンテナが使ったイメージも表示されます。いつ作成されたか、現在の状態、公開しているポートとホストとのポートのマッピングをも表示します。</p>
+<p>最初に表示されたのが、&quot;hello&quot;がなかった、後に立ち上げたコンテナで、次が再利用したいと思っているコンテナです。このコンテナをコミットして、このコンテナから新しいコンテナを作成しましょう。</p>
+<pre>
+$ docker commit 78b96377e546 zefhemel/ubuntu
+356e4d516681
+$ docker run -t -i zefhemel/ubuntu /bin/bash
+<span style="text-decoration: underline;">root@0d7898bbf8cd:/#</span> hello
+Hello, world!</pre>
+<p>ここではコンテナをリポジトリにコミットして(IDを使って)います。リポジトリはgitのリポジトリに似ています。タグの名前を付けなかったら(私のように)、&quot;latest&quot;という名前がつきます。ローカルにインストールしたイメージを見るには<tt>docker images</tt>を実行します。</p>
+<p>Dockerには2、3のイメージ(例えば、<tt>ubuntu</tt>や<tt>centos</tt>)しかありません。自分自身でイメージを作成することができます。ユーザのリポジトリは<a href="http://github.com">Github</a>ライクな命名モデルに従います。<a href="https://index.docker.io/account/signup/">Dockerのユーザ名</a>はスラッシュとリポジトリ名で構成されます。</p>
+<p>さて、上述したのはDockerイメージを作成するひとつの方法です。もっと明確な方法もあります。<tt>Dockerfile</tt>を使う方法です。</p>
+<h2><strong>Dockerfileでイメージを作る</strong></h2>
+<p><tt>Dockerfile</tt>はベースのイメージからどのようにイメージを作成するかを記した単純なテキストファイルです。<a href="https://github.com/zefhemel/docker-images">Githubにいくつかあげてあります</a>。次に示す例では、イメージを実行し、SSHサーバをインストールしています。</p>
+<pre>
+FROM ubuntu
+RUN apt-get update
+RUN apt-get install -y openssh-server
+RUN mkdir /var/run/sshd
+RUN echo &quot;root:root&quot; | chpasswd
+EXPOSE 22</pre>
+<p>見ての通り、本当に明白なやり方です。<tt>FROM</tt>コマンドはベースとなるイメージを指定します。上記の例では公式のイメージを指定していますが、先ほど作成した<tt>zefhemel/ubuntu</tt>を指定することもできます。<tt>RUN</tt>コマンドはイメージを構成するためのコマンドです。上記の例では、APTパッケージリポジトリをアップデートし、OpenSSHのサーバをインストールして、ディレクトリを作成し、rootアカウントにパスワードを設定しています。<tt>EXPOSE</tt>コマンドは22ポート(SSHのポート)を外部に公開します。では、このDockerfileをどのようにビルドしてインスタンス化するのか、見てみましょう。</p>
+<p>まず、イメージをビルドします。Dockerfileのあるディレクトリで次を実行します。</p>
+<pre>
+$ docker build -t zefhemel/ssh .</pre>
+<p>これによって新しいSSHのイメージとともに<tt>zefhemel/ssh</tt>リポジトリが作成されます。ビルドが成功すれば、次のコマンドでイメージをインスタンス化できます。</p>
+<pre>
+$ docker run -d zefhemel/ssh /usr/sbin/sshd -D</pre>
+<p>これは前のコマンドとは違います。<tt>-d</tt>によってコンテナがバックグラウンドで動作します。また、bashを動かす代わりに、<tt>sshd</tt>デーモンを動かしています(フォアグラウンドで動かすには<tt>-D</tt>)。</p>
+<p>実行中のコンテナを確認してみましょう。</p>
+<pre>
+$ docker ps
+ID                  IMAGE                   COMMAND                CREATED             STATUS              PORTS
+23ee5acf5c91        zefhemel/ssh:latest     /usr/sbin/sshd -D      3 seconds ago       Up 2 seconds        49154-&gt;22
+</pre>
+<p>コンテナが起動していることがわかります。PORTSに着目してください。ポート22を<tt>公開</tt>したのですが、ホストシステムのポート(49154)にマップされています。動作を確認してみましょう。</p>
+<pre>
+$ ssh root@localhost -p 49154
+The authenticity of host '[localhost]:49154 ([127.0.0.1]:49154)' can't be established.
+ECDSA key fingerprint is f3:cc:c1:0b:e9:e4:49:f2:98:9a:af:3b:30:59:77:35.
+Are you sure you want to continue connecting (yes/no)? yes
+Warning: Permanently added '[localhost]:49154' (ECDSA) to the list of known hosts.
+root@localhost's password: <i typed="" in="" here=""> Welcome to Ubuntu 12.04 LTS (GNU/Linux 3.8.0-27-generic x86_64)   * Documentation:  https://help.ubuntu.com/  The programs included with the Ubuntu system are free software; the exact distribution terms for each program are described in the individual files in /usr/share/doc/*/copyright.  Ubuntu comes with ABSOLUTELY NO WARRANTY, to the extent permitted by applicable law.  <span style="text-decoration: underline;">root@23ee5acf5c91:~#</span></i></pre>
+<p><i typed="" in="" here=""> </i></p>
+<p><i typed="" in="" here="">成功しました。SSHサーバが実行されており、ログインできることがわかりました。SSHから抜けて、コンテナを停止してみましょう。</i></p>
+<p><i typed="" in="" here=""> </i></p>
+<pre><i typed="" in="" here="">$ docker kill 23ee5acf5c91</i></pre>
+<p><i typed="" in="" here=""> </i></p>
+<p><i typed="" in="" here="">上述の通り、ポート22はホストの49154にマップされました。しかし、このマップはランダムです。特定のポートにマップするには、次のように<tt>-p</tt>をつけて実行します。</i></p>
+<p><i typed="" in="" here=""> </i></p>
+<pre><i typed="" in="" here="">
+docker run -p 2222:22 -d zefhemel/ssh /usr/sbin/sshd -D</i></pre>
+<i typed="" in="" here=""> <p>こうすることで2222にマップされます。また、イメージをユーザフレンドリにするにはDockerfileの最終業に次の1行を加えるといいでしょう。</p> <pre>
+CMD /usr/sbin/sshd -D</pre> <p>CMDはコマンドを<i>ビルド</i>したときでなく、<i>インスタンス化</i>したときに実行するようにします。引数が追加されなければ、<tt>/usr/sbin/sshd -D</tt>を実行します。つまり、次を実行すればいいだけになります。</p> <pre>
+docker run -p 2222:22 -d zefhemel/ssh</pre> <p>これは前述のコマンドと一緒です。このイメージを公開するには<tt>docker push</tt>を実行します。</p> <pre>
+docker push zefhemel/ssh</pre> <p>ログインした後は、前述した<tt>docker run</tt>コマンドを使えば<a href="https://index.docker.io/u/zefhemel/">誰でも利用できます</a>。</p> <p>Wordpressの例に戻りましょう。Dockerを使ってどのようにWordpressをコンテナ内で動かせばいいでしょうか。WordpressのイメージをビルドするにはDockerfileを作成する必要があります。</p> 
+ <ol> 
+  <li>Apache、PHP5、MySQLをインストールする</li> 
+  <li>Wordpressをダウンロードし、ファイルシステム上のどこかに展開する</li> 
+  <li>MySQLデータベースを作成する</li> 
+  <li>Wordpressの構成ファイルを更新してMySQLデータベースを使うようにする</li> 
+  <li>WordpressをApacheの<tt>DocumentRoot</tt>にする</li> 
+  <li>MySQLとApacheを起動する (例えば、<a href="http://supervisord.org/">supervisord</a>を使う)</li> 
+ </ol> <p>幸運なことに<a href="https://index.docker.io/search?q=wordpress">多くの人がすでに上記を実施しています</a>。例えば、<a href="https://github.com/jbfink/docker-wordpress">John Fink氏のgithubのリポジトリ</a>にはWordpressのイメージをビルドするのに必要な情報がすべて含まれています。</p> <h2><strong>Dockerの使い道</strong></h2> <p>複雑なアプリケーションを簡単にかつ信頼でき、再現性があるかたちで配置する以外に、Dockerにはほかの使い方もあります。例えば、</p> 
+ <ul> 
+  <li>継続的統合と配置: Dockerコンテナの内部でソフトウエアをビルドすることで、ビルドを明確に分離できます。ビルドされたソフトウエアのイメージは自動的にリポジトリに登録され、テスト環境や運用環境に配置されます。</li> 
+  <li><a href="http://progrium.com/blog/2013/06/19/dokku-the-smallest-paas-implementation-youve-ever-seen/">Dokku</a>: シンプルなPlatform-as-a-Serviceで<a href="http://progrium.com/blog/2013/06/19/dokku-the-smallest-paas-implementation-youve-ever-seen/">たった100行未満のBash</a>で書かれている。</li> 
+  <li><a href="https://flynn.io/">Flynn</a>と<a href="http://deis.io/">Deis</a>はオープンソースのPlatform-as-a-ServiceプロジェクトでDockerを使っている。</li> 
+  <li><a href="http://blog.docker.io/2013/07/docker-desktop-your-desktop-over-ssh-running-inside-of-a-docker-container/">ディスクトップ環境をDockerで実行する。</a></li> 
+  <li>論理的帰結としてDockerを採用したプロジェクトが<a href="http://coreos.com/">CoreOS</a>です。CoreOSは軽量なLinuxディストリビューションで、Dockerを使ってすべてのアプリケーションをインストールし実行します。<a href="http://www.freedesktop.org/wiki/Software/systemd/">systemd</a>で管理されます。</li> 
+ </ul> <h2><strong>Dockerはなんではないか</strong></h2> <p>Dockerは信頼性のある配置作業を実現しますが、必要な機能をすべて備えた配置システムではありません。Dockerもコンテナ内のアプリケーションが動作するのとレベルで動作します。どのコンテナをどのサーバにインストールし、どのように実行するのかはDockerのスコープの範囲外です。</p> <p>同様に、複数のコンテナや物理サーバ、仮想マシンをまたいで動作するアプリケーションを制御するのもスコープ外です。コンテナに通信させるにはほかのアプリケーションがどのポートやIPで動作しているのかを判別する仕組みが必要です。<a href="https://github.com/coreos/etcd">etcd</a>のようなツールやその他のサービス検出の仕組みが使えるでしょう。</p> <h2><strong>結論</strong></h2> <p>この記事で説明したことは生のままLXC、cgroups、AUFSを使っても実現できることです。しかし<a href="http://www.infoq.com/presentations/Simple-Made-Easy">簡単でもシンプルでも</a>ありません。Dockerは複雑なアプリケーションをコンテナにパッケージングして、簡単にバージョニングして配布できるようにします。その結果、現在広く普及している&quot;本当&quot;の仮想マシンと同等の柔軟さとパワーを軽量なLinuxコンテナで実現できるのです。Macbook Pro上の<a href="http://www.vagrantup.com">Vagrant</a> VirtualBoxで動作しているDockerで作成したイメージは<a href="http://aws.amazon.com/ec2">EC2</a>、<a href="http://www.rackspace.com">Rackspace Cloud</a> 、物理サーバでも動作しますし、その逆も可能です。</p> <p>Dockerは<a href="http://www.docker.io">ウェブサイト</a>から無償で入手できます。利用を始めるにはインタラクティブな<a href="https://www.docker.io/gettingstarted">スタートガイド</a>を使うといいでしょう。<a href="http://blog.docker.io/2013/08/getting-to-docker-1-0/">プロジェクトのロードマップ</a>によれば、運用環境で使える初めてのバージョンは0.8で2013年10月にリリースされる予定。しかし、すでに運用環境でも使われています。</p> <h2><strong>著者について</strong></h2> <p><strong><img src="http://www.infoq.com/resource/articles/docker-containers/ja/resources/1zef-hemel.jpg" vspace="3" align="left" alt="" _href="img://1zef-hemel.jpg" _p="true" />Zef Hemel</strong>は<a href="http://www.logicblox.com/">LogicBlox</a>のエバンジェリストであり、プロダクトマネジメントチームの一員。LogicBloxは論理プログラミング、特に<a href="https://en.wikipedia.org/wiki/Datalog">Datalog</a>をベースにしたアプリケーションサーバやデータベースを開発している。以前は、ブラウザベースのIDEを開発している<a href="http://c9.io/">Cloud9 IDE</a>のVPをつとめていた。90年代からウェブアプリケーションの開発をしており、宣言的プログラミングを強く支持している。</p> </i>
+<p></p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p><br><br><br><br><br><br></body></html>

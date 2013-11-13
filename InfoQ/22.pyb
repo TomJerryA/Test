@@ -1,0 +1,68 @@
+<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>Java 8を可能にしたJava 7の機能</h3><p><a target="_blank" href="http://www.infoq.com/articles/Java-7-Features-Which-Enable-Java-8"><em>原文(投稿日：2013/10/31)へのリンク</em></a></p>
+<p>無料でビールが飲める，製品に対して文句を言う機会を与えられる - これらが開発者にとって無上の喜びであることは，ハイテク産業では常識となっています。</p>
+<p>Oracle買収後のロードマップにコミュニティを関与させようというMark Rainhold氏やJavaチームの尽力 <a href="http://www.infoq.com/news/2010/09/jdk7-slip">(プランA / プランB)</a>にも関わらず，Java開発者の多くがJava 7を &quot;価値のないリリース&quot; だと言うのも，そういった理由からなのです。</p>
+<p>今回の記事では，Java 8の新機能への布石となっているJava 7の機能を探ることで，このような主張を論破してみたいと思います。<br /> &nbsp;</p>
+<h2><strong>ダイアモンド演算子<br /> <br type="_moz" /> </strong></h2>
+<p>Javaは時として，過度に冗長であると批判されることがあります。最も一般的な分野のひとつが代入式です。Java 6では，代入式を次のように記述しなければなりませんでした：</p>
+<p><small><b>Map&lt;String, String&gt; m = new HashMap&lt;String, String&gt;();</b></small></p>
+<div id="lowerFullwidthVCR"></div>
+<p>このステートメントには冗長な情報がたくさんあります – プログラマにこれほど明示的な指定を求めるのではなく，コンパイラ自身がもっと情報を検出できるようにするべきです。</p>
+<p>実際にScalaなどの言語では，式から多くの型推論を行うことによって，このようにシンプルな代入式を書くことができます：</p>
+<p><small><b>val m = Map(&quot;x&quot; -&gt; 24, &quot;y&quot; -&gt; 25, &quot;z&quot; -&gt; 26);</b></small></p>
+<p>valというキーワードは，この変数が再割り当てされないようにするためのものです (Java変数のfinalキーワードに相当します)。 変数についての型情報はまったく指定されていません – 代わりにScalaコンパイラが代入式の右辺を調べて，代入される値を評価することで，変数の型を適切に判断してくれるのです。</p>
+<p>Java 7では，限定された範囲の型推論機構が導入されました。次のような代入式の記述が可能になっています：</p>
+<p><small><b>Map&lt;String, String&gt; m = new HashMap&lt;&gt;();</b></small></p>
+<p>Scalaの形式と大きく違うのは，Scalaでは値が明示的な型を持っていて，そこから変数の型を推測している点です。これに対してJava 7では，変数の型が明示的で，代入値の型の方が推論の対象となります。</p>
+<p>Scalaのソリューションの方が好ましいと主張する開発者もいますが，Java 8の重要な機能であるラムダ式のコンテキストで考えると，あまり望ましいものではないことが理解できます。</p>
+<p>Java 8では，整数に２を加える関数を次のように記述できるようになります：</p>
+<p><small><b>Function&lt;Integer, Integer&gt; fn = x -&gt; x + 2;</b></small></p>
+<p>FunctionインターフェースはJava 8で新たに追加されたもので，プリミティブ型に特化した形式とともにjava.util.functionに含まれています。ただしこの構文は，相当するScalaの機能と非常に近いことから選択されたものです。開発者にとっては，類似性を見出すのも容易でしょう。</p>
+<p>ひとつの整数パラメータを取って整数値を返すFunctionとしてfnの型を明示的に指定しているので，Javaコンパイラはパラメータxの型を整数と推測することが可能になります。これはJava 7のダイアモンド構文で見たものと同じパターンです。つまり変数の型を指定することで，値の型を推論するのです。</p>
+<p>対応するScalaのラムダ式を見てみましょう：</p>
+<p><small><b>val fn = (x : Int) =&gt; x + 2;</b></small></p>
+<p>ここでは，パラメータxの型を明示的に指定する必要がある一方で，fnの正確な型は分からないので，そこからは何も推測することができません。Scala形式が取り立てて可読性に欠けるということはありませんが， Java 7のダイアモンド構文に直接遡ることのできるJava 8の形式は，クリーン性で優っていると言ってもいいでしょう。<br /> &nbsp;</p>
+<h2><strong>メソッドハンドル<br /> <br type="_moz" /> </strong></h2>
+<p>メソッドハンドルもまた，Java 7の最も重要な新機能です。少なくとも大部分のJava開発者にとっては，日々の作業でも特別な意味を持っています。</p>
+<p>メソッドハンドルはメソッドを実行するための，型指定を持ったリファレンスです。 (C/C++に詳しい開発者ならば) &quot;タイプセーフな関数ポインタ&quot;，あるいはモダンなJava開発者ならば &quot;新型のCore Reflection&quot; と解釈してもよいでしょう。</p>
+<p>メソッドハンドラはラムダ式の実装で大きな役割を果たしています。Java 8の初期プロトタイプでは，ラムダ式をそれぞれ，コンパイル時に無名の内部クラスに変換していました。</p>
+<p>最近のベータ版では，それよりも洗練されています。ラムダ式には(少なくともJavaでは)関数のシグネチャ(メソッドハンドルAPIではMethodTypeオブジェクトとして表現される)と本体は存在しますが，必ずしも関数名は必要でないことを思い出してみてください。</p>
+<p>このことはラムダ式が，適切なシグネチャを持ったメソッドと，ラムダ式の本体を保持するメソッドの２つから構成される合成メソッドに変換可能なことを示唆しています。私たちの例で言えば：</p>
+<p><small><b>Function&lt;Integer, Integer&gt; fn = x -&gt; x + 2;</b></small></p>
+<p>というラムダ式は，Java 8コンパイラによって次のようなバイトコードのプライベートメソッドに変換されます：</p>
+<pre>
+ private static java.lang.Integer lambda$0(java.lang.Integer);
+   descriptor: (Ljava/lang/Integer;)Ljava/lang/Integer;
+   flags: ACC_PRIVATE, ACC_STATIC, ACC_SYNTHETIC
+   Code:
+    stack=2, locals=1, args_size=1
+      0: aload_0
+      1: invokevirtual #13 // Method java/lang/Integer.intValue:()I
+      4: iconst_2
+      5: iadd
+      6: invokestatic #8 // Method java/lang/Integer.valueOf:(I)Ljava/lang/Integer;
+      9: areturn</pre>
+<p>これはシグネチャ(整数値を取得して，整数値を返す)としても，意味的にも正しいものです。このラムダ式を使用するには，参照するメソッドハンドルを取得した上で，それを使って適切な型のオブジェクトを生成します。そのために使用される機能について，次に説明しましょう。<br /> &nbsp;</p>
+<h2><strong>invokedynamic</strong></h2>
+<p><br /> Java 8のドアを開くJava 7の機能として最後に紹介するのは，メソッドハンドルよりもさらに奥深いものです。それは新しいバイトコードのinvokedynamic – Java 1.0以来，プラットフォームに初めてバイトコードが追加されました。ただし，Java開発者がバージョン7でこの機能を使うことは，ほとんど不可能といってよいでしょう。バージョン7のjavacは，どのような状況であっても，このコードを含むクラスファイルを生成することはないからです。</p>
+<p>このバイトコードはJava言語以外の開発者が使用するためのものです。JRubyなど，Javaよりも動的なディスパッチを必要とする言語のために設計されました。invokedynamicの動作を見るために，Javaのメソッド呼び出しがどのようなバイトコードにコンパイルされるかを説明しましょう。</p>
+<p>標準的なJavaメソッド呼び出しは，一般にコールサイト(call site)と呼ばれるJVMバイトコード列に変換されます。コールサイトは，ディスパッチオペコード(dispatch opcode, 通常のインスタンスメソッド呼び出しではinvokevirtual)と定数値(クラスの定数プール上のオフセット値)を組み合わせて，コールされるメソッドを指示します。</p>
+<p>ディスパッチオペコードにはそれぞれ，メソッド検索の方法を規定する独自のルールがあります。しかしJava 7までは，定数値はコールされるメソッドを示す単純なインデックスのみでした。</p>
+<p>invokedynamicでは違います。コールされるメソッドを直接指定するインデックスに代えて，どのメソッドをコールするかを実行時にユーザコードから指定可能な，間接的なメカニズムが提供されています。</p>
+<p>invokedynamicサイトが最初に現れた時点では，呼び出されるターゲットは決まっていません。代わりにメソッドハンドル(ブートストラップメソッド/bootstrap method と呼ばれます)が起動されます。呼び出されたブートストラップメソッドは，invokedynamicコールの本当のターゲットである別のメソッドハンドルを持ったCallSiteオブジェクトを返します。</p>
+<p>1) 実行ストリーム内にinvokedynamicサイトが現れる(この時点ではリンクされていない) 2) ブートストラップメソッドをコールして，CallSiteオブジェクトを取得する 3) CallSiteオブジェクトに(ターゲットの)メソッドハンドルが格納されている 4) ターゲットメソッドハンドルを起動する。</p>
+<p>ブートストラップメソッドは，呼び出されるべきメソッドをユーザコードで選択するための手段です。ラムダ式ではラムダメタファクトリ(lambda meta-factory)という，ライブラリの提供するブートストラップメソッドを使用します。</p>
+<p>このメソッドには，共通処理ソッド(最後の章で説明します)のメソッドハンドルを持つ静的パラメータと，ラムダの正しいシグネチャが与えられます。</p>
+<p>メタファクトリの返すCallSiteにはメソッドハンドルが格納されています。そのメソッドがラムダ式に変換される適切な型のインスタンスを返すのです。つまり次のステートメントは：</p>
+<p><small><b>Function&lt;Integer, Integer&gt; fn = x -&gt; x + 2;</b></small></p>
+<p>このようなinvokedynamicコールに変換されます：</p>
+<pre>
+Code:
+  stack=4, locals=2, args_size=1
+     0: invokedynamic #2, 0 // InvokeDynamic #0:apply:()Ljava/util/function/Function;
+     5: astore_1</pre>
+<p>invokedynamicのブートストラップメソッドはLambdaMetafactory.metafactory( )という，ターゲットのメソッドハンドルにリンクされたCallSiteオブジェクトを返すstaticメソッドです。このメソッドハンドルは，Functionインターフェースを実装したオブジェクトを返します。</p>
+<p>invokedynamic命令が完了すると，apply()メソッドのコンテントとしてラムダ式を保持するFunctionオブジェクトがスタックの先頭にセットされ，残りのコードが通常どおり実行されます。<br /> &nbsp;</p>
+<h2><strong>結論</strong></h2>
+<p><br /> ラムダ式のJavaプラットフォームへの導入は，これまでは常に挑戦的な試みでした。しかしJava 7で適切な準備作業が実施されたことにより，必要な労力はかなり緩和されています。プランBを採用したことによって，Java 7を早期リリースとして開発者に提供するだけでなく，Java 8で使用されるコア技術，特にラムダ式の完全なロードテストを事前に行う機会が実現されました。<br /> &nbsp;</p>
+<h2><strong>著者について<br /> <br type="_moz" /> </strong></h2>
+<p><strong><img src="http://www.infoq.com/resource/articles/Java-7-Features-Which-Enable-Java-8/ja/resources/Ben-Evans.jpg" vspace="3" hspace="3" align="left" alt="" _href="img://Ben-Evans.jpg" _p="true" />Ben Evans</strong> 氏は jClarity の CEO です。同社は開発者や運用チーム支援のパフォーマンスツールを提供する新興企業です。LJC (London JUG) の創設者であり，JCP Executive Committee のメンバとして Java エコシステムの標準作成の支援もしてもいます。Java Champion，JavaOne Rockstar，&quot;The Well-Grounded Java Developer&quot; の共同著者である氏は，Java プラットフォームやパフォーマンス，並列性，その他のトピックに関して定期的に講演を行っています。</p><br><br><br><br><br><br></body></html>

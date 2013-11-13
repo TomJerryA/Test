@@ -1,10 +1,34 @@
-<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>CouchDB 1.3.0的新特性以及算法的强化</h3><p><a href="https://blogs.apache.org/couchdb/entry/apache_couchdb_1_3_0">Apache</a>软件基金会发布了<a href="http://couchdb.apache.org/">CouchDB 1.3.0</a>，修复了IE7的_session，支持<a href="http://www.w3.org/TR/cors/">跨域资源分享</a>（CORS）并将URL重写器中的最大递归深度限制为100次调用。在递归调用重写器过程中不再重写X-CouchDB-Requested-Path，并且将<a href="http://www.w3.org/TR/eventsource/">服务器端发送事件</a>(Server-sent Event)协议添加到db变更API中。此外，该最新版本还允许通过使用/_config/admins API实现密码哈希同步，并在show/list ETags中包含用户名。</p> 
-<p>CouchDB 1.3.0针对在同一个批处理中创建、删除某个文档时的不必要冲突提供了解决方案，而数据库包含的复制程序将新的服务器范围的UUID用于检查点ID以增进有效恢复的机会。它还将JS<a href="http://lenaherrmann.net/2010/04/28/writing-a-testsuite-for-the-couchdb-api">测试套件</a>迁移到CLI，并改进了它的回溯和测试的可靠性。</p> 
-<p>该版本禁止链接到<a href="http://answers.oreilly.com/topic/1395-introduction-to-couchdbs-futon-administration-interface/">Futon</a>测试套件，对Futon增加了视图请求持续时间，同时取消了用户没有权限使用的按钮。此外，如果从Git的本地签出直接构建，则必须使用<a href="http://lists.gnu.org/archive/html/autotools-announce/2008-09/msg00002.html">Autoconf v2.63</a>。根据官方的说法，当从web浏览器中运行的时候，Futon测试套件会导致一些问题，因此现在要通过CLI提供测试套件。</p> 
-<p>在CouchDB 1.3.0中，密码通过结合可配置工作因子的<a href="http://en.wikipedia.org/wiki/PBKDF2">PBKDF2</a>（Password-Based Key Derivation Function 2：基于密码的密钥派生函数）算法生成哈希值，并提供对utc_id算法的支持。此外，数据库名称也在重写过程中进行编码，并改进了C/C++编译器检测。当新请求发生时重置重写计算器将被重置，并修复了在couchdb脚本中的进程退出前就返回停止状态的问题。</p> 
-<p>CouchDB 1.3.0包含针对Windows和OS X的预先构建的包，以及一份由Futon直接托管的手册。与安装包一道，Apache还提供了PDF形式的手册。</p> 
-<p><b>查看英文原文：</b><a href="http://www.infoq.com/news/2013/04/couchdb-1-3-0;jsessionid=EE3DA80D352E68B4BAC1A6D70408E72D"><b>CouchDB 1.3.0 Adds New Features and Algorithm Enhancements</b></a></p> 
-<hr /> 
-<p>感谢<a href="http://www.infoq.com/cn/bycategory.action;jsessionid=EE3DA80D352E68B4BAC1A6D70408E72D?authorName=侯伯薇">侯伯薇</a>对本文的审校。</p> 
-<p>给InfoQ中文站投稿或者参与内容翻译工作，请邮件至<a href="mailto:editors@cn.infoq.com">editors@cn.infoq.com</a>。也欢迎大家通过新浪微博（<a href="http://www.weibo.com/infoqchina">@InfoQ</a>）或者腾讯微博（<a href="http://t.qq.com/infoqchina">@InfoQ</a>）关注我们，并与我们的编辑和其他读者朋友交流。</p> 
-<p id="lastElm"></p><br><br><br><br><br><br></body></html>
+<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>PaaS渐入佳境</h3><p>随着laaS的第一波浪潮过后，云服务市场逐步开始把PaaS作为主要的服务模式。与此同时，微软也在近期推出了Hadoop Azure大数据服务。</p>
+<p>对于PaaS的稳步发展，Dr.Dobb‘s主编Andrew表示了<a href="http://www.drdobbs.com/cloud/the-steady-emergence-of-paas/240159174" target="_blank">认同</a>，他以自己的个人经历与云服务模式的发展做了比较。</p>
+<blockquote> 
+ <p>当我刚开始学习编程的时候，个人电脑还是即昂贵又不可靠的电子设备。考虑到电脑的成本，我认识到拥有一台个人电脑的最好的办法是自己组装一台。每隔几年，我都会搜寻最新最快的CPU、新的主板、我能买的起的最大的RAM、更好的驱动、性能更优的显卡。然后我会在某个周末津津有味地鼓捣我的新 “神秘盒子”。接下来就是漫长的重装系统，最后是安装各种软件和工具。在上述工作完成后，我得到了自己新的、更快的电脑。但相比兴奋喜悦，我感受到更多的是筋疲力尽。</p> 
+ <p>一些年过去后，攒了几次电脑的我终于意识到这种攒机方式非常费时间，并且带来的收益不大。这时个人电脑价位下降了，性能也更可靠了。最终我决定变聪明一点，在意识到这一点后我便一直买电脑了——相比攒机我节约了大量的时间，加快了进度。</p> 
+</blockquote>
+<p>Andrew认为他的经历和许多关注云解决方案的开发者的类似。有着一颗极客的心的我们很容易被IaaS模型所吸引——该模型提供只含有一个操作系统（大多情况是Linux）的虚拟机。之后，痛苦的构建过程就开始了：打个比方，我们需要让它服务于网络应用程序。于是，我们需要添加Apache，然后进行Apache配置，添加MySQL，配置MySQL，添加脚本语言（如Python），配置脚本语言，添加业务逻辑，配置之。然后将这些组件连接起来，再进行漫长的仿佛没有尽头的配置。这个过程,就是俗称的“牦牛刮胡子”。</p>
+<blockquote> 
+ <p>开发者需要花费几天来进行检查网络的设置和细节，确保所有配置正确，这并不是什么让人愉快的工作。但是至此一切还没有结束。如果虚拟机需要按比例调整或克隆以符合集群需求，那么我们还需要在软件基础架构中加入附加层。如果虚拟机需要调用缓存和负载平衡器，那么我们就更需要加入附加层。突然之间，你就变成了系统构建者和管理者——你终于可以开始削减一些代码了。如果当时我沿着这种路线走下去，我将需要一直构建我的个人电脑，抛弃我的集成开发环境（IDE）。</p> 
+</blockquote>
+<p>不仅是开发者，企业也意识到了这个问题。Andrew指出，亚马逊云服务在提供可扩展性的同时变得使用、配置复杂——尽管可以使用有效的预配置模板——太复杂以至于现在有针对于服务各部分专门的研究。公司使用云服务是要减轻公司负担，而不是增加公司工作量。因此现在的潮流逐渐从Iaas转向了PaaS——采用PaaS作为服务平台——来减少麻烦，获得更多的好处。</p>
+<p>对于程序员，Andrew认为Paas的一个经典解决方案是CloudBees。你可以利用一个装有Java的、运行着默认的持续集成服务器Jenkins的虚拟机。当然，这个虚拟机也装有SCMs（GitHub和Subversion）。</p>
+<blockquote> 
+ <p>一旦你完成CloudBees上实例的构建与测试后，你就可以将此应用程序部署到其它云服务上。CloudBees只在你使用实例的时候收费，因此你可以只在每天的最后时刻进行构建——利用机器，在构建完成后停止机器。你设置自己的实例，测试所有的部件，确保它符合规模，这一切会花很长时间么？PaaS的作用不可小觑。</p> 
+</blockquote>
+<p>企业有很多PaaS可以选择，Andrew指出了几个选项：微软的Windows Azure，谷歌的App Engine，还有一些小供应商提供的服务。在合适的供应商中，一个叫Apprenda的拥有一些独特的优点。他的PaaS能提供面向托管程序的多租户管理。</p>
+<blockquote> 
+ <p>打个比方说，如果你是一个企业级的消费者，你想要创建单个实例化的托管Oracle DBMS，同时你希望它可以被若干个之间相互独立的应用程序共享。如果你采用的是IaaS，那你就要面临一个很大的管理难题。Apprenda的PaaS软件对这类问题处理的很好。它对DBMS进行设置，因此每个应用程序都认为自己是DBMS的唯一用户，但事实上它们共享了DBMS。如果没有这种支持——就像IaaS一样——每个应用程序都将需要自己的数据库实例。</p> 
+</blockquote>
+<p>Andrew指出，现在市场上已经有各种各样的PaaS可供选择：每一种应对不同的用户需求，许多还通过公司墙（enterprise walls）提高云体验。我们可以看到PaaS产品日益成为解决方案首选——而IaaS更多的是为PaaS解决方案提供裸系统，而不是与之竞争。</p>
+<p>说到PaaS市场的发展，微软最近<a href="http://www.infoworld.com/d/big-data/microsoft-goes-big-data-new-hadoop-azure-service-229669" target="_blank">推出</a>了Hadoop Azure大数据服务。微软公司通过其无处不在的Excel为商业世界带来了电子表格。现在微软希望以一种大致相同的方式，通过他们新的Windows Azure HDInsight 服务在大数据分析方面做出类似的效果。</p>
+<p>微软公司数据平台部总经理Eron Kelly说：“我认为作为一家公司我们一直以来做的很好，因为公司能够处理技术难题并且简化它们，因此，我们正在简化Hadoop，并且将它带给每个人。”</p>
+<p>Windows Azure HDInsight作为一个由Windows Azure所提供的PaaS（平台即服务）产品，它提供了Apache Hadoop的数据处理平台和一些相关工具。HDInsight将使用Hortonworks数据平台（HDP），这将是Hortonworks提供的Hadoop旗舰版产品。</p>
+<p>微软并不是第一家提供Hadoop云服务的公司。亚马逊Web服务也提供了Hadoop和Rackspace计划，并将很快提供HDP服务。IBM公司最近也发布了SoftLayer主机服务，并且它将提供快速运转的跨多个裸机服务器处理Cloudera 的Hadoop分布式服务。但微软公司希望在可增长的空间中开拓出有竞争力的优势，即先简化其部署过程，之后再使用Hadoop。比如，通过微软的分析工具，服务将运行的更好。Excel表格的使用者可以使用电子表格的一个功能，例如“Power BI”功能，然后进行采集数据，并通过Hadoop MapReduce对数据进行分析和可视化。</p>
+<p>微软公司在2011年首次宣布了这个服务计划。原本微软打算和Hortonworks一起合作，开发他们自己的Hadoop版本，并且使自己的版本经设置后可以在Windows服务器上运行。</p>
+<blockquote> 
+ <p>很快我们就发现在Hortonworks提供的产品功能和我们将要提供的产品间存在着一定程度的冗余，因此我们决定针对一个核心功能达成协议，即Windows上的HDP。微软为此已经为Apache Hadoop和相关软件贡献了超过1.6万行的代码。</p> 
+ <p>Windows Azure HDInsight将运行一个HDP的Stock版，允许用户在Azure和其他非Azure HDP环境之间无缝的迁移工作数据。Hortonworks发布下一个HDP版本之后，版本v2.0将尽快发布，Azure 的HDP版本将会自动更新。</p> 
+</blockquote>
+<p>Kelly说，微软公司实际上已经在为一些特定客户以全生产模式运行了数个月的Windows Azure HDInsight服务。</p>
+<ul> 
+ <li>巴塞罗那市用该服务来分析交通模式、垃圾收集和一些有关市政府职责的数据，并希望这些数据能够用于帮助政府做出更加明智的支出决策。</li> 
+ <li>弗吉尼亚理工学院和州立大学的一组研究人员在使用该服务运行DNA测序工具。&nbsp;</li> 
+</ul><br><br><br><br><br><br></body></html>

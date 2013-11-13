@@ -1,16 +1,32 @@
-<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>Python Tools for Visual Studio 2.0新增对智能感知、Virtualenv和Windows Azure的支持</h3><p>微软近期发布了<a href="http://pytools.codeplex.com/">Python Tools for Visual Studio 2.0</a>的alpha版本，其中包括调试方面的改进、智能感知和对Windows Azure的支持。这一版本让开发者可以使用Visual Studio调试Python脚本文件，开发者只需要简单地打开相关文件，右键点击 “<a href="http://pytools.codeplex.com/wikipage?title=Debug%20As%20Script">作为脚本调试</a>”，并从以下功能中选择：设定断点、全部中断、监控调用栈的状态、局部变量和监视窗口。此外，它现在已经支持在Windows、Linux和Mac OS X中使用<a href="http://pytools.codeplex.com/wikipage?title=Remote%20Debugging%20for%20Windows%2c%20Linux%20and%20OS%20X">远程调试</a>和客户端类库。</p> 
-<p>Python Tools for Visual Studio 2.0的alpha版本以三种不同形式提供了对<a href="http://pytools.codeplex.com/wikipage?title=Features%20Editor#intellisense">智能感知</a>的支持，包括补全特性、签名帮助和快速信息。补全特性基于上下文显示推荐词列表，并对其过滤以避免列出错误或不相关的内容。</p> 
-<p>签名帮助这一形式的智能感知，将在编写一个包含任何文档和可用的参数信息的函数调用时显示。此外，当开发者将鼠标放置在一个标识符上的时候，快速信息将以提示信息的形式呈现给开发者，并且会显示可能的值或类型、任何可用文档、返回类型和定义位置。</p> 
-<p>作为最新版本，该alpha版本支持<a href="http://pytools.codeplex.com/wikipage?title=Azure%20Web%20Sites%20">Windows Azure</a>、虚拟机、云服务、Web站点，以及在Azure上进行基于浏览器的计算。此外，开发者还将可以使用Visual Studio开发<a href="https://www.djangoproject.com/">Django</a>应用并将其部署到Windows Azure上。</p> 
-<p>根据官方消息，Python Tools for Visual Studio 2.0的alpha版本应该按以下步骤安装：</p> 
-<ol> 
- <li>卸载旧版本的Python Tools（如果有的话）</li> 
- <li>安装Python发行版——CPython或IronPython</li> 
- <li>安装Visual Studio 2010或2012，接下来运行Python Tools for Visual Studio 2.0 alpha版的安装包</li> 
-</ol> 
-<p>Python Tools for Visual Studio 2.0的alpha版本支持<a href="http://pytools.codeplex.com/wikipage?title=Virutal%20Env">Virtualenv</a>，它是用于创建虚拟环境的Python工具。要创建新的虚拟环境，开发者需要在Visual Studio IDE中右键点击“虚拟环境”的树节点并选择“创建虚拟环境”选项。</p> 
-<p><b>查看英文原文：</b><a href="http://www.infoq.com/news/2013/04/pvts-2-0-alpha;jsessionid=9FBE80AB3F9981A30764809FEC889E7B"><b>Python Tools for Visual Studio 2.0 Adds IntelliSense, Virtualenv and Windows Azure Support</b></a></p> 
-<hr /> 
-<p>感谢<a href="http://www.infoq.com/cn/bycategory.action;jsessionid=9FBE80AB3F9981A30764809FEC889E7B?authorName=侯伯薇">侯伯薇</a>对本文的审校。</p> 
-<p>给InfoQ中文站投稿或者参与内容翻译工作，请邮件至<a href="mailto:editors@cn.infoq.com">editors@cn.infoq.com</a>。也欢迎大家通过新浪微博（<a href="http://www.weibo.com/infoqchina">@InfoQ</a>）或者腾讯微博（<a href="http://t.qq.com/infoqchina">@InfoQ</a>）关注我们，并与我们的编辑和其他读者朋友交流。</p> 
-<p id="lastElm"></p><br><br><br><br><br><br></body></html>
+<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>你应该远离的6个Java特性</h3><p><a href="http://plumbr.eu/about-us">Nikita Salnikov Tarnovski</a>是<a href="http://plumbr.eu/">plumbr</a>的高级开发者，也是一位应用性能调优的专家，他拥有多年的性能调优经验。近日，Tarnovski<a href="http://www.javacodegeeks.com/author/nikita-salnikov-tarnovski/">撰文</a>谈到了普通开发者应该尽量避免使用的6个Java特性，这些特性常见于各种框架或库当中，但对于普通的应用开发者来说，使用这些特性也许会给你所开发的应用带来灾难。</p>
+<blockquote>
+  我曾花费了无数个小时为各种不同的应用排错。根据过往的经验我可以得出这样一个结论，那就是对于大多数开发者来说，你应该远离几个Java SE特性或是APIs。这里所说的大多数开发者指的是一般的Java EE开发者而不是库设计者或是基础设施开发者。
+</blockquote>
+<p>坦白地说，从长远来看，大多数团队都应该远离如下的Java特性。不过凡事总有例外的情况。如果你有一个强大的团队，总是能够清楚地意识到自己在做什么，那就按照你的想法去做就行。但对于大多数情况来说，如果你在项目的开发中使用了下面这几个Java特性，那么从长远来看你是会后悔的。</p>
+<p>这些应该远离的Java特性有：</p>
+<ul> 
+ <li>反射</li> 
+ <li>字节码操纵</li> 
+ <li>ThreadLocal</li> 
+ <li>类加载器</li> 
+ <li>弱引用与软引用</li> 
+ <li>Sockets</li> 
+</ul>
+<p>下面对这些特性进行逐个分析，看看为什么普通的Java开发者应该远离他们：</p>
+<p><b>反射：</b>在流行的库如Spring和Hibernate中，反射自然有其用武之地。不过内省业务代码在很多时候都不是一件好事，原因有很多，一般情况下我总是建议大家不要使用反射。</p>
+<p>首先是代码可读性与工具支持。打开熟悉的IDE，寻找你的Java代码的内部依赖，很容易吧。现在，使用反射来替换掉你的代码然后再试一下，结果如何呢？如果通过反射来修改已经封装好的对象状态，那么结果将会变得更加不可控。请看看如下示例代码：</p>
+<p><img src="http://infoqstatic.com/resource/news/2013/11/six-java-features-to-avoid/zh/resources/screenshot2.PNG" alt="" _href="img://screenshot2.PNG" _p="true" /></p>
+<p>如果这样做就无法得到编译期的安全保证。就像上面这个示例一样，你会发现如果getDeclaredField()方法调用的参数输错了，那么只有在运行期才能发现。要知道的是，寻找运行期Bug的难度要远远超过编译期的Bug。</p>
+<p>最后还要谈谈代价问题。JIT对反射的优化程度是不同的，有些优化时间会更长一些，而有些甚至是无法应用优化。因此，有时反射的性能损失可以达到几个数量级的差别。不过在典型的业务应用中，你可能不会注意到这个代价。</p>
+<p>总结一下，我觉得在业务代码中唯一合理（直接）使用反射的场景是通过AOP。除此之外，你最好远离反射这一特性。</p>
+<p><b>字节码操纵：</b>如果在Java EE应用代码中直接使用了CGLIB或是ASM库，那么我建议你好好审视一下。就像方才我提到的反射带来的消极影响，使用字节码操纵所带来的痛苦可能是反射的好几倍之多。</p>
+<p>更糟糕的是在编译期你根本就看不到可执行的代码。从本质上来说，你不知道产品中实际运行的是什么代码。因此在面对运行期的问题以及调试时，你要花费更多的时间。</p>
+<p><b>ThreadLocal：</b>看到业务代码中如果出现ThreadLocal会让我感到颤抖，原因有二。首先，借助于ThreadLocal，你可以不必显式通过方法调用就可以传递变量，而且会对这种做法上瘾。在某些情况下这么做可能是合理的，不过如果不小心，那么我可以保证最后代码中会出现大量意想不到的依赖。</p>
+<p>第二个原因与我每天的工作有关。将数据存储在ThreadLocal中很容易造成内存泄漏，至少我所看到的十个永久代泄漏中就有一个是由过量使用ThreadLocal导致的。连同类加载器及线程池的使用，“java.lang.OutOfMemoryError:Permgen space”就在不远处等着你呢。</p>
+<p><b>类加载器：</b>首先，类加载器是个很复杂的东西。你必须首先理解他们，包括层次关系、委托机制以及类缓存等等。即便你觉得自己已经精通了类加载器，一开始使用时还是会出现各种各样的问题，很可能会导致类加载器泄漏问题。因此，我建议大家还是将类加载器留给应用服务器使用吧。</p>
+<p><b>弱引用与软引用：</b>关于弱引用与软引用，你是不是只知道他们是什么以及简单的使用方式而已？现在的你对Java内核有了更好的理解，那会不会使用软引用重写所有的缓存呢？这么做可不太好，可不能手里有锤子就到处找鼓敲吧。</p>
+<p>你可能很想知道我为什么说缓存不太适用使用软引用吧。毕竟，使用软引用来构建缓存可以很好地说明将某些复杂性委托给GC来完成而不是自己去实现这一准则。</p>
+<p>下面来举个例子吧。你使用软引用构建了一个缓存，这样当内存行将耗尽时，GC会介入并开始清理。但现在你根本就无法控制哪些对象会从缓存中删除，很有可能在下一次缓存中不再有这个对象时重新创建一次。如果内存还是很紧张，又触发GC执行了一次清理，那么很有可能会出现一个死循环，应用会占用大量CPU时间，Full GC也会不断执行。</p>
+<p><b>Sockets：</b><a href="http://docs.oracle.com/javase/7/docs/api/java/net/Socket.html">java.net.Socket</a>简直太难使用了。我认为它的缺陷归根结底源自其阻塞的本质。在编写具有Web前端的典型的Java EE应用时，你需要高度的并发性来支持大量的用户访问。这时你最不想发生的事情就是让可伸缩性不那么好的线程池呆在那儿，等待着阻塞的Sockets。</p>
+<p>现在已经出现了非常棒的第三方库来解决这些问题，别自己写了，尝试一下<a href="http://netty.io/">Netty</a>吧。</p>
+<p>各位InfoQ读者，Java出现至今经历了多次版本更迭，每次也都会有诸多新特性的加入。在日常的Java开发中，你认为存在哪些Java特性是很容易导致问题的呢？作者提到不建议在普通的应用开发中使用反射，不过对于一些框架或库的开发，离开反射实际上是无法实现的，例如Spring、Struts2等框架，那么在一般的Java项目开发中，你觉得哪些地方有使用反射的必要呢？换句话说，如果不使用反射就实现不了功能或是需求。文中作者也不建议使用字节码操纵，实际上一些框架在实现某些功能时是必须要使用的，比如说Spring在实现AOP时就使用了Java的动态代理与CGLib库两种方式来达成的。那么对于一般的Java项目来说，哪些地方需要用到字节码操纵呢？欢迎各位读者畅所欲言，一起讨论这些有趣的话题。</p><br><br><br><br><br><br></body></html>

@@ -1,0 +1,95 @@
+<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>Modelagem de Domínio: os 7 maus cheiros de informação</h3><p>A modelagem de dom&iacute;nio &eacute; uma poderosa t&eacute;cnica do arsenal dos profissionais de TI. Mas infelizmente algumas quest&otilde;es a tem feito cair em desuso nos &uacute;ltimos anos, especialmente nos c&iacute;rculos &aacute;geis. Dois problemas reais s&atilde;o o tempo muito grande necess&aacute;rio e e propens&atilde;o &agrave; &quot;par&aacute;lise na an&aacute;lise&quot; . Aqui apresentamos uma abordagem para a modelagem de dom&iacute;nio que buscar tratar esses problemas.</p>
+<p>Discutiremos sinais que aparecem em um modelo de dom&iacute;nio, que demonstram a necessidade de se fazer mais perguntas. Chamamos esses sinais de &quot;cheiros (ou maus cheiros) de informa&ccedil;&atilde;o&quot; (information smells). Eles nos indicam que talvez n&atilde;o haja o entendimento completo das informa&ccedil;&otilde;es importantes do nosso dom&iacute;nio. Os cheiros podem indicar o esquecimento de informa&ccedil;&otilde;es do modelo, ou que nele foram inseridas informa&ccedil;&otilde;es incorretas. Focar nos cheiros de informa&ccedil;&atilde;o nos leva &agrave;s perguntas que precisamos fazer, o que &eacute; um processo r&aacute;pido. Quando todos os cheiros se dissiparem, ou for decidido que os remanescentes s&atilde;o aceit&aacute;veis, interrompemos o processo para evitar a par&aacute;lise na an&aacute;lise.</p>
+<p>O processo come&ccedil;a com a sa&iacute;da do sistema que entrega valor ao usu&aacute;rio. Tratamos ent&atilde;o cada cheiro de informa&ccedil;&atilde;o no modelo com base na sa&iacute;da.</p>
+<h2>Sobre Modelos de Dom&iacute;nio</h2>
+<p>Um modelo de dom&iacute;nio &eacute; uma simplifica&ccedil;&atilde;o de aspectos de uma organiza&ccedil;&atilde;o, seus produtos, opera&ccedil;&otilde;es e mercado. &Eacute; especifico a uma organiza&ccedil;&atilde;o e ao modo como ela opera; cria um vocabul&aacute;rio preciso para a organiza&ccedil;&atilde;o e o seu contexto. Um modelo de dom&iacute;nio normalmente descreve informa&ccedil;&otilde;es de interesse do neg&oacute;cio. Como a maioria dos sistemas corporativos se foca em coletar, processar e prover dados, &eacute; muito &uacute;til saber o que &eacute; essa informa&ccedil;&atilde;o e ter uma forma clara de categoriz&aacute;-la. Geralmente um modelo de dom&iacute;nio consiste de entidades de neg&oacute;cio com dados e comportamento associados. S&atilde;o tamb&eacute;m especificadas as intera&ccedil;&otilde;es de entidades de neg&oacute;cio. Exemplos de modelagem de dom&iacute;nio incluem modelos entidade-relacionamento tradicionais e modelos de objetos.</p>
+<h2>O exemplo</h2>
+<p>Usaremos um exemplo fict&iacute;cio, inspirado em diversos casos da vida real, para demonstrar o conceito de cheiros de informa&ccedil;&atilde;o. Um diretor de RH est&aacute; tentando entender os motivos pelos quais cada desenvolvedor est&aacute; sendo pago, a fim de evitar a&ccedil;&otilde;es judiciais relacionadas &agrave;s faixas salariais entre diferentes grupos demogr&aacute;ficos. Durante a discuss&atilde;o em que o time buscava entender uma solicita&ccedil;&atilde;o feita pelo diretor, surgiu o seguinte rascunho:</p>
+<p><img src="http://www.infoq.com/resource/articles/seven-modelling-smells/pt/resources/201.jpg" alt="" _href="img://201.jpg" _p="true" /></p>
+<div id="lowerFullwidthVCR"></div>
+<p>As melhores ferramentas para modelagem de dom&iacute;nio s&atilde;o caneta e papel, ou lapiseira e ficha de arquivo; ou ainda um marcador e quadro branco. Essas ferramentas colocam &ecirc;nfase na troca de informa&ccedil;&otilde;es, em vez de focar em deixar os exemplos ou modelos com visual bonito. Mas para aumentar a legibilidade neste artigo, criamos alguns dos modelos usando uma ferramenta de diagrama&ccedil;&atilde;o:</p>
+<p><img src="http://www.infoq.com/resource/articles/seven-modelling-smells/pt/resources/102.jpg" alt="" _href="img://102.jpg" _p="true" /></p>
+<p>H&aacute; conceitos importantes para se lembrar sobre os cheiros da informa&ccedil;&atilde;o e o que eles dizem quanto ao nosso modelo de dom&iacute;nio:</p>
+<ul> 
+ <li>Os cheiros n&atilde;o indicam que h&aacute; um problema, mas s&atilde;o fortes indica&ccedil;&otilde;es de que <strong>pode</strong> haver um problema;</li> 
+ <li>Os cheiros da informa&ccedil;&atilde;o n&atilde;o s&atilde;o t&atilde;o fortes quanto <strong>regras</strong>, as quais est&atilde;o sempre corretas;</li> 
+ <li>As perguntas que os cheiros de informa&ccedil;&atilde;o revelam devem sempre ser expressadas na forma de &quot;Me d&ecirc; um exemplo de ...&quot; em vez de &quot;Me diga como...&quot;. Estamos procurando exemplos para explorar os detalhes do dom&iacute;nio, em vez de generaliza&ccedil;&otilde;es sobre o dom&iacute;nio que escondem os detalhes.</li> 
+</ul>
+<p>Ent&atilde;o, sem mais delongas, aqui est&atilde;o os principais cheiros da informa&ccedil;&atilde;o:</p>
+<ol start="1"> 
+ <li>Um item est&aacute; na sa&iacute;da mas n&atilde;o est&aacute; no modelo;</li> 
+ <li>Um item est&aacute; no modelo mas n&atilde;o est&aacute; na sa&iacute;da;</li> 
+ <li>H&aacute; dois peda&ccedil;os de informa&ccedil;&atilde;o em um &uacute;nico lugar;</li> 
+ <li>Uma entidade n&atilde;o est&aacute; relacionada a nenhuma outra entidade;</li> 
+ <li>Existem relacionamentos um-para-um;</li> 
+ <li>H&aacute; muitos relacionamentos muitos-para-muitos;</li> 
+ <li>Fun&ccedil;&otilde;es n&atilde;o-definidas.</li> 
+</ol>
+<p>A seguir est&aacute; uma descri&ccedil;&atilde;o mais detalhada de cada cheiro da informa&ccedil;&atilde;o.</p>
+<p><strong>Cheiro de informa&ccedil;&atilde;o #1 - Um item est&aacute; na sa&iacute;da mas n&atilde;o est&aacute; no modelo.</strong></p>
+<p><img src="http://www.infoq.com/resource/articles/seven-modelling-smells/pt/resources/03.jpg" alt="" _href="img://03.jpg" _p="true" /></p>
+<p>Todos os itens da sa&iacute;da precisam estar no modelo de dom&iacute;nio. A sa&iacute;da &eacute; simplesmente uma vis&atilde;o dos dados no modelo. Todo peda&ccedil;o da informa&ccedil;&atilde;o mostrado na sa&iacute;da precisa ser um atributo ou m&eacute;todo do modelo. No exemplo acima (traduzindo), Departamento, Sal&aacute;rio M&eacute;dio, Fun&ccedil;&atilde;o, Sal&aacute;rio, Sexo e Ra&ccedil;a est&atilde;o faltando no modelo de dom&iacute;nio. Para resolver esse mau cheiro, adicione-os como atributos ou m&eacute;todos. Se n&atilde;o h&aacute; uma entidade apropriada para pode conter esse atributos, crie uma nova entidade.</p>
+<p><strong>Cheiro de informa&ccedil;&atilde;o #2 - itens no modelo, que n&atilde;o est&atilde;o na sa&iacute;da</strong></p>
+<p><img src="http://www.infoq.com/resource/articles/seven-modelling-smells/pt/resources/104.jpg" alt="" _href="img://104.jpg" _p="true" /></p>
+<p>Itens que est&atilde;o no modelo mas n&atilde;o na sa&iacute;da s&atilde;o exemplos de itens colocados no modelo sem necessidade. Os analistas pensam incorretamente que precisam de um valor; &quot;empurram&quot; valores para dentro do modelo. Isso &eacute; perigoso, pois se acaba tendo um esfor&ccedil;o de desenvolvimento adicional para inserir e manter esse valor. Para resolver este mau cheiro, os analistas devem perguntar ao usu&aacute;rio se precisam mesmo dessa informa&ccedil;&atilde;o. (O m&eacute;todo SSADM chama esse problema de &quot;Infomation Sink&quot;.)</p>
+<p><strong>Cheiro de informa&ccedil;&atilde;o</strong> <strong>#3 - dois peda&ccedil;os da informa&ccedil;&atilde;o no mesmo lugar (1NF)</strong></p>
+<p><img src="http://www.infoq.com/resource/articles/seven-modelling-smells/pt/resources/05.jpg" alt="" _href="img://05.jpg" _p="true" /></p>
+<p>Manter duas partes da informa&ccedil;&atilde;o em um mesmo lugar cria problemas. O nome &quot;John Smith&quot; (veja figura acima) poderia ser armazenado como nome e sobrenome. &Eacute; um mau cheiro? A pergunta chave seria se se deseja analisar ou processar os dois dados independentemente ou n&atilde;o. Isso tamb&eacute;m &eacute; conhecido como uma viola&ccedil;&atilde;o da &quot;Primeira Forma Normal&quot; ou <a href="http://pt.wikipedia.org/wiki/Normaliza%C3%A7%C3%A3o_de_dados">1NF</a>.</p>
+<p>Embora a 1NF seja uma regra de design, pode levar a descobrir que dois peda&ccedil;os de dados variados s&atilde;o referenciados como um s&oacute;. Viola&ccedil;&otilde;es da primeira forma normal s&atilde;o identificadas olhando como dados reais s&atilde;o normalmente referenciados pelo nome. Outro exemplo &eacute; a Ra&ccedil;a que cont&eacute;m &quot;Jedi&quot; que &eacute; uma cren&ccedil;a/religi&atilde;o e &quot;IC1&quot;, que &eacute; uma classifica&ccedil;&atilde;o &eacute;tnica usada pela pol&iacute;cia do Reino Unido.</p>
+<p><strong>Cheiro de informa&ccedil;&atilde;o #4 - falta de relacionamento</strong><span><br /> </span></p>
+<p><img src="http://www.infoq.com/resource/articles/seven-modelling-smells/pt/resources/06.jpg" alt="" _href="img://06.jpg" _p="true" /></p>
+<p>Todos objetos de neg&oacute;cio no sistema devem estar conectados. Quando n&atilde;o &eacute; poss&iacute;vel identificar um relacionamento entre dois objetos de neg&oacute;cio, devem ser feitas as seguintes perguntas ao usu&aacute;rio: &quot;Qual a rela&ccedil;&atilde;o entre esses dois itens? &Eacute; um relacionamento direto, ou &eacute; feita atrav&eacute;s de outra coisa?&quot; Este &eacute; um cheiro poderoso. Analis&aacute;-lo na maioria das vezes leva a conhecimento perdido. Em sistemas corporativos frequentemente &eacute; a estrutura organizacional que est&aacute; ausente no modelo.</p>
+<p><strong>Cheiro de informa&ccedil;&atilde;o #5 - relacionamento um-para-um. S&atilde;o a mesma coisa?</strong></p>
+<p><img src="http://www.infoq.com/resource/articles/seven-modelling-smells/pt/resources/07.jpg" alt="" _href="img://07.jpg" _p="true" /></p>
+<p>Sempre que se deparar com um relacionamento um-para-um, h&aacute; duas poss&iacute;veis explica&ccedil;&otilde;es: 1) O analista de neg&oacute;cio usou mais de um termo para a mesmo entidade e os dois objetos devem na verdade ser um s&oacute;; 2) O relacionamento um-para-um deve na verdade ser um um-para-muitos mas ainda n&atilde;o se sabe o porqu&ecirc;. Por exemplo, um carro e um chofer pode ser um relacionamento um-para-um mas quando se analisa mais a fundo, descobre-se que somente um chofer pode dirigir um carro ao mesmo tempo (claro!). Muitos chofers podem dirigir o mesmo carro em horas diferentes. A informa&ccedil;&atilde;o perdida neste caso foi a natureza temporal do relacionamento.</p>
+<p><strong>Cheiro de informa&ccedil;&atilde;o #6 - muitos para muitos (informa&ccedil;&atilde;o perdida)</strong></p>
+<p><img src="http://www.infoq.com/resource/articles/seven-modelling-smells/pt/resources/08.jpg" alt="" _href="img://08.jpg" _p="true" /></p>
+<p>Relacionamentos muitos-para-muitos ocasionalmente representam um relacionamento v&aacute;lido. Na maioria das vezes, indicam um objeto de neg&oacute;cio do tipo &quot;elo perdido&quot; . No design de sofware relacional, relacionamentos muitos-para-muitos s&atilde;o substitu&iacute;dos por entidades de liga&ccedil;&atilde;o, que algumas vezes s&atilde;o objetos de neg&oacute;cio que possuem informa&ccedil;&otilde;es sobre o relacionamento em si. No exemplo ilustrado acima, um empregado pode ter diferentes t&iacute;tulos de trabalho em per&iacute;odos diferentes (temporal), ou pode gastar parte de seu tempos em mais de um papel. Mais uma vez, o cheiro ajuda a rastrear potenciais informa&ccedil;&otilde;es perdidas.</p>
+<p><strong>Cheiro de informa&ccedil;&atilde;o #7 - fun&ccedil;&otilde;es n&atilde;o-definidas (informa&ccedil;&otilde;es perdidas)</strong></p>
+<p><img src="http://www.infoq.com/resource/articles/seven-modelling-smells/pt/resources/09.jpg" alt="" _href="img://09.jpg" _p="true" /></p>
+<p>Todo m&eacute;todo no modelo deve ser definido. Tudo que for referenciado dentro do m&eacute;todo deve fazer parte do modelo de neg&oacute;cio. Tome como exemplo o m&eacute;todo <strong>getAge</strong></p>
+<ul> 
+ <li>getAge calcula a idade em anos.</li> 
+ <li>getAge = (today() - Employee.date of birth) / 365</li> 
+</ul>
+<p>A data de nascimento e a fun&ccedil;&atilde;o que calcula a data atual est&atilde;o perdidas e precisam ser adicionadas ao modelo de neg&oacute;cio.</p>
+<p>Resumindo, o processo funciona assim:</p>
+<ol start="1"> 
+ <li>Identificar a sa&iacute;da que entregar&aacute; valor ao usu&aacute;rio;</li> 
+ <li>Se ainda n&atilde;o h&aacute; um modelo de dom&iacute;nio que suporte a sa&iacute;da, crie um modelo;</li> 
+ <li>Checar todos os cheiros at&eacute; que n&atilde;o sobre nenhum no modelo;</li> 
+ <li>Parar.</li> 
+</ol>
+<p>Essa abordagem pode ser ordens de magnitude mais r&aacute;pida e mais focada que a modelagem de dom&iacute;nio tradicional.</p>
+<h2>Exemplo passo a passo</h2>
+<p>Para fechar, vejamos um exemplo criado incrementalmente, passo a passo. Come&ccedil;amos com um relat&oacute;rio pedido pelo diretor do RH.</p>
+<p><img src="http://www.infoq.com/resource/articles/seven-modelling-smells/pt/resources/10.jpg" alt="" _href="img://10.jpg" _p="true" /></p>
+<p><strong>Cheiro 1 - Um item que est&aacute; na sa&iacute;da mas n&atilde;o est&aacute; no modelo.</strong></p>
+<p>Temos itens na nossa sa&iacute;da que n&atilde;o existem em no modelo de dom&iacute;nio, ent&atilde;o os adicionamos:</p>
+<p><img src="http://www.infoq.com/resource/articles/seven-modelling-smells/pt/resources/11.jpg" alt="" _href="img://11.jpg" _p="true" /></p>
+<p>Note que o sal&aacute;rio m&eacute;dio &eacute; calculado com base em outros dados; ent&atilde;o o chamamos de getAverageSalary para nos lembrar ele &eacute; um atributo calculado.</p>
+<p><strong>Cheiro 2 - Um item est&aacute; no modelo mas n&atilde;o na sa&iacute;da</strong></p>
+<p>Algu&eacute;m se empolgou e adicionou a data de nascimento &agrave; entidade Empregado</p>
+<p><img src="http://www.infoq.com/resource/articles/seven-modelling-smells/pt/resources/112.jpg" alt="" _href="img://112.jpg" _p="true" /></p>
+<p>Perguntamos ao diretor de RH se era mesmo necess&aacute;ria a data de nascimento no relat&oacute;rio. Disseram que n&atilde;o, mas gostariam da idade no relat&oacute;rio.</p>
+<p><img src="http://www.infoq.com/resource/articles/seven-modelling-smells/pt/resources/13.jpg" alt="" _href="img://13.jpg" _p="true" /></p>
+<p><strong>Cheiro 3 - H&aacute; dois peda&ccedil;os de informa&ccedil;&atilde;o em um mesmo lugar</strong></p>
+<p>O nome completo &eacute; composto pelo nome e sobrenome. Perguntamos ao diretor do RH se desejam que os nomes sejam separados para se distinguir pessoas da mesma fam&iacute;lia (O nome de fam&iacute;lia pode ser usado para identificar grupos culturais, por exemplo). Ele n&atilde;o gostou da ideia.</p>
+<p><strong>Cheiro 4 - Um entidade n&atilde;o est&aacute; relacionada com nenhuma outra</strong></p>
+<p>Todas as entidades no modelo devem estar ligadas. Perguntamos para os especialistas no neg&oacute;cio se as entidades s&atilde;o ligadas diretamente umas com as outras ou atrav&eacute;s de alguma outra coisa. Por exemplo, o empregado est&aacute; ligado diretamente ao departamento ou est&aacute; em um time e o time est&aacute; ligado ao departamento?</p>
+<p><img src="http://www.infoq.com/resource/articles/seven-modelling-smells/pt/resources/14.jpg" alt="" _href="img://14.jpg" _p="true" /></p>
+<p><strong>Cheiro 5 - Relacionamento um-para-um</strong></p>
+<p>Como relacionamentos um-para-um costumam constituir um mau cheiro, perguntamos aos especialistas no neg&oacute;cio sobre eles: &quot;Poderia nos dar um exemplo de um empregado com mais de um departamento e um exemplo de departamento com mais de um empregado?&quot;</p>
+<p>Ao aplicar esta t&eacute;cnica rigorosamente pode-se gerar perguntas aparentemente bobas mas que na verdade s&atilde;o de bastante valor. Um exemplo: &quot;Poderia me dar um exemplo de empregado com mais de um sexo, ou mais de uma ra&ccedil;a?&quot;. As perguntas devem se manter abertas at&eacute; se achar um exemplo para elas. Funcionam como indicadores de risco para avaliar se um sistema pode sofrer altera&ccedil;&otilde;es.</p>
+<p><img src="http://www.infoq.com/resource/articles/seven-modelling-smells/pt/resources/15.jpg" alt="" _href="img://15.jpg" _p="true" /></p>
+<p><strong>Cheiro 6 - Relacionamentos muitos para muitos</strong></p>
+<p>Relacionamentos muitos-para-muitos podem indicar perda de informa&ccedil;&otilde;es. Perguntamos ao especialista de neg&oacute;cio o que essa informa&ccedil;&atilde;o perdida poderia ser. Neste caso, o tempo de trabalho de um empregado pode ser alocado entre um ou mais departamentos:</p>
+<p><img src="http://www.infoq.com/resource/articles/seven-modelling-smells/pt/resources/16.jpg" alt="" _href="img://16.jpg" _p="true" /></p>
+<p>Para quest&otilde;es de fun&ccedil;&atilde;o (ou papel), sexo e ra&ccedil;a, o especialista de neg&oacute;cio n&atilde;o consegue pensar em mais nenhuma informa&ccedil;&atilde;o de valor. Ent&atilde;o o cheiro permanece, com perguntas abertas que indicam o risco de mudan&ccedil;a.</p>
+<p>Um website especializado resolveu o problema do relacionamento muitos-para-muitos do sexo, incluindo classifica&ccedil;&otilde;es para cada uma das opc&otilde;es (masculino, feminino, transsexual feminina, transexual masculino, intersexual). As informa&ccedil;&otilde;es perdidas poderiam ser a data em que o indiv&iacute;duo decidiu realizar a opera&ccedil;&atilde;o, ou quando a opera&ccedil;&atilde;o foi realizada e o impacto que isso teve nos b&ocirc;nus e aumentos de sal&aacute;rios subsequentes.</p>
+<p><strong>Cheiro 7 - Fun&ccedil;&otilde;es n&atilde;o definidas</strong></p>
+<p>Perguntamos ao especialista no neg&oacute;cio como calcular as fun&ccedil;&otilde;es getAverageSalary e getAge:</p>
+<p><img src="http://www.infoq.com/resource/articles/seven-modelling-smells/pt/resources/17.jpg" alt="" _href="img://17.jpg" _p="true" /></p>
+<p>Isto leva a cria&ccedil;&atilde;o de de allocation.cost e employee.dateOfBirth, que s&atilde;o adicionados ao modelo.</p>
+<p><img src="http://www.infoq.com/resource/articles/seven-modelling-smells/pt/resources/18.jpg" alt="" _href="img://18.jpg" _p="true" /></p>
+<p>N&atilde;o h&aacute; mais cheiros que sem resolu&ccedil;&atilde;o ou que tiveram seu tratamento adiado. Ent&atilde;o podemos parar nosso processo de modelagem de dom&iacute;nio!</p><br><br><br><br><br><br></body></html>

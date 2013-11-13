@@ -1,0 +1,160 @@
+<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>データベースのバージョニングとアップグレードスクリプトの利用</h3><p><a target="_blank" href="http://www.infoq.com/articles/db-versioning-scripts"><em>原文(投稿日：2013/08/23)へのリンク</em></a></p>
+<h2><strong>1.はじめに</strong></h2>
+<p>データベースのアップグレードはいつでもデリバリ作業の&quot;最後の一歩(last mile)&quot;です。プロジェクトが終わるまで，あるいはリリース直前のスプリントまで残ってしまうことも少なくありません。完璧と呼ぶには程遠いものです。なぜなら：</p>
+<ul> 
+ <li>テスト環境にソフトウェアをデプロイする度に，データベースが再構築されるような場合もしばしばです。テスタにとってこれは，毎回テストデータを失うことに他なりません。</li> 
+ <li>プロジェクトが長期間に及ぶ場合には，最初のデータベース更新が実施されてから何ヶ月も後にアップグレードスクリプトが書かれることも珍しくありません。その頃にはデータ移行に関する情報が失われてしまったり，損なわれてしまっているかも知れないのです。</li> 
+ <li>製品版のリリースに対して，事前にアップグレードスクリプトを徹底的かつ反復的にテストすることができません。これは失敗のリスクを極めて大きなものにします。</li> 
+ <li>アップグレードスクリプトの作成に必要な時間を見積もることは難しいため，提供日の遅延や予算超過のリスクがより一層大きくなります。</li> 
+</ul>
+<p>このような問題を回避するために経験から学んだのは，データベースの優れたバージョン管理とデリバリ戦略は大部分のエンタープライズプロジェクトで必須である，ということです。私たちが<a href="http://www.objectivity.co.uk">Objectivity</a>でそれをどのように扱っているのか，ここでご紹介しましょう。</p>
+<h2><strong>2. アジャイルの観点</strong></h2>
+<p>私たちのプロジェクトはアジャイル手法で進行されています。すなわちアプリケーションは増加的，かつ反復的に開発されます。データベースはこのソフトウェア開発プロセスの一部です。ここではすべてが &quot;完了の定義(DoD/Definition of Done)&quot; から始まります。あらゆる高機能チームにとってこれは，非常に重要なことです。また，ユーザストーリのレベルでのDoDには，&quot;デプロイ可能&quot;という条件を含める必要があります。つまり，スクリプトを介して自動的にデプロイ可能な場合にのみ，ストーリが完了したと解釈するのです。もちろんDoDの条件はこれだけではありません。この話題だけでひとつの記事になってしまう位，他にもたくさんの条件があります(データベースのアップグレードスクリプト作成もそのひとつです)。</p>
+<p>こうして作り上げられたDoDは，スプリントの計画や見積にも影響を与えます。主要なタスクをすべて考慮したかどうかを評価する，チェックリストとして使用するのです。データベースに関して言えば，アップグレードスクリプトを書く上でプロジェクトに適用されたルールについて，各チームメンバに周知しておく必要があります – どのようなフォーマットか？ テンプレートは使用するのか？ ファイルをどに置くのか？ ファイルで遵守すべき名称規約はあるのか？ 等々。</p>
+<p>開発期間中のコードやデータベースは，開発者たちによって並行的に変更されます。そこでデータベースプロジェクトを修正したときには，同時にアップグレードスクリプトも記述するようにします。作成した成果は，他のコードとともにチェックインして，専用の環境でユーザストーリ (User Story/US)をテストするために使用されるのです。</p>
+<div id="lowerFullwidthVCR"></div>
+<p>スプリントが完了して，ソフトウェアの実運用移行の決定が下されたならば，スクリプトは他の成果物と合わせてインストレーションの実行に使用されます。</p>
+<h2><strong>3.バージョニングのアプローチ</strong></h2>
+<p>データベースのバージョニングの詳細な実施方法はプロジェクトによってまちまちですが，キーとなる要素は常に存在します。それは次のようなものです。</p>
+<ul> 
+ <li><b>データベースがバージョン管理されていること</b> – 自明な出発点です。データベースの変更を特定できなければ，どうやってアップグレードスクリプトを書くことができるのでしょう？ 私たちはVisual Studio 2010データベースプロジェクト，またはRedGate SQL Source Controlを使用しています。いずれもTFSリポジトリを対象としてデータベースの構造を管理するものです。この分野では，ツールがかなりの部分をサポートしてくれます。</li> 
+ <li><b>データベースのバージョンがデータベース自体に格納されていること</b> – ある環境にインストールされているDBスキーマのバージョンを識別可能にするためには，データベースそれ自体に記録しておくことが必要です。実現方法はいろいろあります(ユーザ定義関数や拡張プロパティ，特定の名前のオブジェクトなど)が，ObjectivityではDbVersionという特別なテーブルを使用しています。この方法のメリットとして，テーブルは標準的なデータベースオブジェクトなので，開発者や管理者も扱い方をよく知っていますし，コードからのアクセスも容易な点が挙げられます。データベースには現在のバージョンを記録しても，あるいはバージョン歴をすべて格納しておいてもよいでしょう。テーブル定義の例をリスト１に挙げておきます。</li> 
+ <li><b>データベースのバージョンをアプリケーション起動時に検証すること</b> – アプリケーションにデータベースのバージョンを確認するコードを埋め込んでおいて，起動時に検証を行います。所定の条件が満たされていなければ，適切なエラーを表示して停止するようにします。このベストプラクティスは，多くのデプロイエラーから開発者チームを開放すると同時に，テスト作業が無駄になるリスクを最小化してくれます。</li> 
+ <li><b>アップグレードスクリプトを開発と並行して作成すること</b> – 開発者がデータベーススキーマを変更する時には，データベースを更新するSQLスクリプトも同時に用意するようにします。私たちはそのために，テンプレートを用意するようにしています (リスト２のサンプル参照)。テンプレートの最初の部分では，データベースバージョンが期待したものであるかを確認しています。適切なバージョンであれば，トランザクションを開始します。データベースに所定の変更(この部分は開発者が作成します)を行った後，バージョンテーブルを更新した上でトランザクションをコミットし，正常終了のメッセージを表示します。このプラクティスは，「はじめに」の章で述べたリストの中の，第２と第４の問題に対処するためのものです。</li> 
+</ul>
+<h2><strong>4.ハイブリッドなソリューション</strong></h2>
+<p>データベースが(データサイズではなく)オブジェクト数の面で大規模な場合，特にストアドプロシージャやユーザ定義関数を多数使っているような場合には，アップグレードスクリプトが非常に大きなものになることがあります。対応策のひとつとして，アップグレードスクリプトの対象を特定のオブジェクトタイプに制限する方法があります。一般的には実際にデータをストアする部分(例えばテーブル)を対象として，他のオブジェクトはアップグレードプロセスの最後に再インストールするようにしておきます。このようなハイブリッドソリューションが特に推奨されるのは，チームのデータベースアップグレードに関する経験が浅い場合や，広範なビジネスロジックがデータベースに保存されているような場合です。</p>
+<h2><strong>5.データについては？</strong></h2>
+<p>データは一般的に，２つのグループに区別することができます。</p>
+<ul> 
+ <li>初期データ – 参照データやディクショナリなど，アプリケーションの起動時および／または実行時に必要なデータ。</li> 
+ <li>ビジネスデータ – アプリケーションUIから生成されたデータ，外部ソースからインポートされたデータ，あるいは開発者やテスタが何らかの作業目的で事前に作成しておいたデータ。</li> 
+</ul>
+<p>新たな&quot;最後の一歩&quot;問題を回避するためにも，これらのグループはプロジェクトを開始する時から区別しておいた方がよいでしょう。</p>
+<p>私たちは，グループ毎のフォルダに置いたスクリプト/CSVを使ってデータベースのデータを初期化するか，あるいは(小規模システムでデプロイを容易にするため)アップグレードスクリプトに初期化データを埋め込んでいます。データを別々のフォルダに置く場合には，複数回の実行が可能なようにスクリプトを記述しておくのがベストです。もうひとつ対処しなければならない問題が，テーブルにデータを挿入する順番です。複雑なデータベーススキーマ(循環参照のあるような)では，テーブルに順序付けすることができません。この場合は事前に外部キーを無効にしておいて，データ格納後に再度有効にするのがベストプラクティスです。</p>
+<h2><strong>6.バージョニングのベストプラクティス</strong></h2>
+<p>以降のプラクティスは必須ではありませんが，非常に有効なものです。新たにプロジェクトを始めるのであれば，少なくとも検討はするべきでしょう。</p>
+<h3><strong>３項目のバージョン文字列を使用すること</strong></h3>
+<p>私たちの経験では，次のようなデータベースバージョン文字列がもっとも柔軟性があります。</p>
+<p>&lt;メジャーバージョン&gt;.&lt;マイナーバージョン&gt;.&lt;リビジョン&gt;</p>
+<p>最初の項目はメジャーリリースや，２ヶ月に１回といったシステムフェーズで更新します。残る２つの項目は開発者が指定します。マイナーバージョンは，互換性のない修正(必須フィールドの追加など)がデータベースに導入されて，&quot;旧&quot;アプリケーションが新しいスキーマに適合しなくなった場合に更新します。データベースに互換性のある修正(インデックスやテーブル，省略可能なフィールドの追加など)が加えられた場合は，リビジョンを増やします。</p>
+<h3><strong>環境に依存しないスクリプトを記述すること</strong></h3>
+<p>アップグレードスクリプトは理論上，環境の変更を一切必要とせずに動作するような方法で記述するべきです。これはすなわち，パスやデータベースインスタンス名，SQLユーザ名やリンクしているサーバ設定といった情報を含んではならない，という意味です。Microsoft SQL Serverを使っているのであれば，SQLCMD変数をこの目的で使用することができます。より詳しい情報は<a href="http://msdn.microsoft.com/en-us/library/ms188714.aspx">こちら</a>を参照してください。</p>
+<h3><strong>複数のチームがひとつのデータベース上で作業している場合は，データベース全体をいくつかのスキーマに分割すること</strong></h3>
+<p>複数のチームが並行して大規模なデータベース開発を行う場合，データベースを複数のスキーマに分割しておくと，より効率的になります。すべてのスキーマにはそれぞれ，独自のバージョンとアップグレードスクリプトを用意します。こうすることによって，コード統合時のコンフリクトが最小かつ単純になるのです。当然ですが，DbVersionテーブルはスキーマバージョン(新たな列)を格納できるように修正しなければなりません。この場合のスキーマには，２つのタイプ - 共有(shared)と専用(dedicated) - があります。あるチームが共有スキーマを変更したいと考えている場合は，他のチームの意見を聞いた上で，もっともよい方法でオブジェクト構造を修正する必要があります。一方の専用スキーマについては，チームの完全なコントロール下にあります。</p>
+<p>あるいはもし，データベースがレガシであって新たなスキーマを導入できなければ，データベースをいくつかの仮想領域に分割して，それぞれ別々にバージョンを付けることも可能です。</p>
+<h3><strong>チェックインしたアップグレードスクリプトは決して変更しないこと</strong></h3>
+<p>データベースにバージョンが明記されていれば，ユーザは単にそれを使用するでしょう。オリジナルと比較して変更点を確認するとは限りません。そのため，データベースに適用されたアップグレードスクリプトのバージョンが違っていると，その状況を見つけ出すのが困難になります。もしアップグレードスクリプトの誤りによってデータベースを更新してしまったならば，元に戻す別のスクリプトを書いてください – オリジナルのスクリプトを変更してはいけません。すでにどこかの環境で適用された後かも知れないからです。</p>
+<h3><strong>複数のリリースを開発する場合は，一定範囲のバージョンを確保してマージを単純化すること</strong></h3>
+<p>複数のチームが同一システム／データベースの連続的なリリースの開発を並行して行っているような場合，各チームが使用するバージョンの範囲について前もって合意しておけば，マージ上の問題を回避することができます。</p>
+<p>例えば，リリース１を開発しているチームAが共有スキーマの2.x.xと注文スキーマの1.x.xを，リリース２に向けて開発を行うチームBが共有スキーマの3.x.xと帳票スキーマの1.x.xを使用する，というようにです。</p>
+<h3><strong>アップグレードプロセスは自動化しておくこと</strong></h3>
+<p>開発と並行してアップグレードスクリプトを書くことの欠点は，それが多数になることです。それゆえ，開発者やリリース管理者などにとって，作業時間を節約するための自動化が強く望まれます。同時にデリバリ作業をスピードアップし，回復性も向上します。さらに自動化することで，アップグレードプロセスをCIプロセスにプラグインすることも容易になるのです。</p>
+<p>ObjectivityではPSakeモジュール(PowerShell)を使用して，プロセスを自動化してます。PowerShellはMicrosoftのタスク自動化フレームワークで，.NET上に構築されたスクリプト言語に基づいています。PSakeの方はPowerShellで記述されたドメイン固有言語で，MSBuildのRakeに似た依存パターンを使用してビルドを生成するものです。PSakeビルドスクリプトは，複数のTaskで構成されます。各タスクは関数で，他のタスクへの依存を定義することができます。私たちObjectivityでは，アップグレードスクリプトをひとつのPSakeタスクとして記述するようにしています。</p>
+<p>私たちの使用しているデータベースアップグレードのアルゴリズムを紹介しましょう。</p>
+<ol> 
+ <li>既存のデータベースのバージョンをチェックする</li> 
+ <li>現在のバージョンに対応するアップグレードスクリプトを検索する (このステップでは，DBバージョンに連動したファイル名称規約を利用しています)</li> 
+ <li>ファイルが見つかればそれを実行して，アウトプットを検証する - 終了またはエラー</li> 
+ <li>スクリプトがなければ，処理を終了する</li> 
+ <li>ステップ１に戻る</li> 
+</ol>
+<p>サンプル実装をリスト３に掲載します。</p>
+<h3><strong>CI時にアップグレードスクリプトを検証すること</strong></h3>
+<p>私たちObjectivityでは，データベースのアップグレードプロセスに不慣れな開発者が，プロジェクトの採用したアップグレードスクリプト記述ルールを誤って破ってしまうことがしばしばあります。継続的インテグレーション(Continuous Integration/CI)サーバにコミットする度に以下の項目をチェックして，アップグレードスクリプトの一貫性を検証しておくとよいでしょう。</p>
+<ul> 
+ <li>ファイル名称規約 – 私たちは次のようなファイル名を使用しています: &lt;prefix&gt;_&lt;current_version_from_db_version_table&gt;_&lt;target_version&gt;_&lt;optional_info_about_upgrade&gt;.sql <br /> 例: Upgrade_1.0.1_1.0.2_rename_column.sql <br /> 複数のスキーマを使用する場合は，プレフィックスにスキーマ名を含めます。</li> 
+ <li>ファイルの内容 – ヘッダとフッタをチェックすれば，テンプレートが使用されていることを確認できます。もうひとつ，ファイルの内容のバージョンと，ファイル名のバージョンとの検証も可能です。</li> 
+</ul>
+<p>この検証は，実際のコードを構築する前でも行うことができます。違反があった場合には，そのビルドを失敗させる必要があります。</p>
+<p>アップグレードスクリプトを実行した結果のデータベース構造が，開発中のデータベースプロジェクトのデータベースと同じであるかどうか，検証することを強く推奨します。私たちは２つのデータベースインスタンスを使って，それを実現しています。</p>
+<ul> 
+ <li>第１のインスタンスは，アップグレードスクリプトの適用対象であるシステムから取得した，作業者に依存しないコピーをリストアしたもの。これを，</li> 
+ <li>データベースプロジェクトから生成した第２のインスタンスと比較する。何らかの差異があれば，ビルドは失敗する。</li> 
+</ul>
+<h3><strong>更新前にデータベースをバックアップすること</strong></h3>
+<p>アップグレードスクリプトはトランザクションとして記述されてはいますが，正常に終了する保証はありません。したがって万一に備えて，更新前にバックアップを行っておくのが理想です。このステップは自動化しておく必要があります。</p>
+<h3><strong>アップグレードスクリプトの実行歴を記録すること</strong></h3>
+<p>テスト中にデータベース関連の問題が発生した場合，対象となるデータベースに適用された更新の履歴があれば有効です。更新プロセスが自動化されていれば，実行されたすべてのアップグレードスクリプトをデバッグ用の専用テーブルに記録することも難しくありません。リスト４にサンプルのDbHistoryテーブル定義を載せてあります。</p>
+<h2><strong>リスト１ – DbVersion定義</strong></h2>
+<table border="1" cellspacing="0" cellpadding="0"> 
+ <tbody> 
+  <tr> 
+   <td valign="top" width="188"> <p><b>カラム名</b></p> </td> 
+   <td valign="top" width="190"> <p><b>カラム型</b></p> </td> 
+   <td valign="top" width="187">&nbsp;</td> 
+  </tr> 
+  <tr> 
+   <td valign="top" width="188"> <p><b>Version</b></p> </td> 
+   <td valign="top" width="190"> <p>Nvarchar(50)</p> </td> 
+   <td valign="top" width="187"> <p>Not null</p> </td> 
+  </tr> 
+  <tr> 
+   <td valign="top" width="188"> <p><b>UpdatedBy</b></p> </td> 
+   <td valign="top" width="190"> <p>Nvarchar(50)</p> </td> 
+   <td valign="top" width="187"> <p>Not null</p> </td> 
+  </tr> 
+  <tr> 
+   <td valign="top" width="188"> <p><b>UpdatedOn</b></p> </td> 
+   <td valign="top" width="190"> <p>DateTime</p> </td> 
+   <td valign="top" width="187"> <p>Not null</p> </td> 
+  </tr> 
+  <tr> 
+   <td valign="top" width="188"> <p><b>Reason</b></p> </td> 
+   <td valign="top" width="190"> <p>Nvarchar(1000)</p> </td> 
+   <td valign="top" width="187"> <p>Not null</p> </td> 
+  </tr> 
+ </tbody> 
+</table>
+<h2><strong>リスト２ – アップグレードスクリプトのテンプレート</strong></h2>
+<pre><font color="#0000ff">DECLARE</font> @currentVersion [nvarchar](50)<br /><font color="#0000ff">DECLARE</font> @expectedVersion [nvarchar](50)
+<font color="#0000ff">DECLARE</font> @newVersion [nvarchar](50)<br /><font color="#0000ff">DECLARE</font> @author [nvarchar](50)<br /><font color="#0000ff">DECLARE</font> @textcomment [nvarchar](1000)
+
+<font color="#0000ff">SET</font> @expectedVersion = <font color="#ff0000">'10.0.217'</font><br /><font color="#0000ff">SET</font> @newVersion = <font color="#ff0000">'10.0.218'</font><br /><font color="#0000ff">SET</font> @author = <font color="#ff0000">'klukasik'</font><br /><font color="#0000ff">SET</font> @textcomment = <font color="#ff0000">'Sample description of database changes'  </font><br /><br /><font color="#0000ff">SELECT</font> @currentVersion = (<font color="#0000ff">SELECT TOP</font> 1 [Version] <font color="#0000ff">FROM </font>DbVersion <font color="#0000ff">ORDER BY</font> Id <font color="#0000ff">DESC</font>)
+<br /><font color="#0000ff">IF</font> @currentVersion = @expectedVersion<br /><font color="#0000ff">BEGIN TRY</font><br /><font color="#0000ff">      BEGIN TRAN</font><br /><font color="#008000">-- ################################################ BEGIN OF SCRIPT ############################################################</font><br /><font color="#008000">--</font><br /><font color="#008000">#############################################################################################################################  </font><br /><br /><font color="#008000">-- custom database modifications  </font><br /><br /><font color="#008000">--################################################# END OF SCRIPT ############################################################</font><br /><font color="#008000">--</font><br /><font color="#008000">#############################################################################################################################</font><br /><font color="#0000ff">      INSERT INTO</font> DbVersion([Version],[UpdatedBy],[UpdatedOn],[Reason])<br /><font color="#0000ff">            VALUES</font>(@newVersion, @author, <font color="#ff00ff">getdate</font>(), @textcomment)<br /><font color="#0000ff">      COMMIT TRAN</font><br /><font color="#0000ff">      PRINT</font> <font color="#ff0000">'Database has been updated successfully to '</font> + @newVersion<br /><font color="#0000ff">END TRY</font><br /><font color="#0000ff">BEGIN CATCH</font><br /><font color="#0000ff">      IF <font color="#ff00ff">@@TRANCOUNT</font> </font><font color="#000000">&gt; 0</font><br /><font color="#0000ff">            BEGIN</font><br /><font color="#0000ff">                  ROLLBACK TRANSACTION</font><br /><font color="#0000ff">            END</font><br /><font color="#0000ff">      SELECT</font><br /><font color="#ff00ff">        ERROR_NUMBER</font>() <font color="#0000ff">AS</font> ErrorNumber,<br /><font color="#ff00ff">        ERROR_SEVERITY</font>() <font color="#0000ff">AS</font> ErrorSeverity,<br /><font color="#ff00ff">        ERROR_STATE</font>() <font color="#0000ff">AS</font> ErrorState,<br /><font color="#ff00ff">        ERROR_PROCEDURE</font>() <font color="#0000ff">AS</font> ErrorProcedure,<br /><font color="#ff00ff">        ERROR_LINE</font>() <font color="#0000ff">AS</font> ErrorLine,<br /><font color="#ff00ff">        ERROR_MESSAGE</font>() <font color="#0000ff">AS</font> ErrorMessage;
+<br /><font color="#0000ff">    DECLARE</font> @ErrorMessage <font color="#0000ff">NVARCHAR</font>(<font color="#ff00ff">max</font>),<br />              @ErrorSeverity <font color="#0000ff">INT</font>,<br />              @ErrorState <font color="#0000ff">INT</font>;
+<br /><font color="#0000ff">    SET</font> @ErrorMessage = <font color="#ff00ff">ERROR_MESSAGE</font>();<br /><font color="#0000ff">    SET</font> @ErrorSeverity = <font color="#ff00ff">ERROR_SEVERITY</font>();<br /><font color="#0000ff">    SET</font> @ErrorState = <font color="#ff00ff">ERROR_STATE</font>();
+<br /><font color="#0000ff">    RAISERROR</font>(@ErrorMessage,@ErrorSeverity,@ErrorState);<br /><font color="#0000ff">    RETURN</font>;<br /><font color="#0000ff">END CATCH</font>;<br /><font color="#0000ff">ELSE</font><br /><font color="#0000ff">BEGIN</font><br /><font color="#0000ff">      PRINT</font> <font color="#ff0000">'Invalid database version - expecting: '</font> + @expectedVersion + <font color="#ff0000">'currently: '</font> + @currentVersion<br /><font color="#0000ff">END</font></pre>
+<h2><strong>リスト３ – PSake UpgraeDatabaseタスクとPowerShellヘルパ</strong></h2>
+<pre><font color="#0000ff">Task</font> <font color="#800080">UpgradeDatabase</font> <font color="#004080">-depends <font color="#800080">Initialize</font> -description</font> <font color="#800040">&quot;Upgrades db with SQL scripts&quot;</font> {<br /><font color="#ff0000">    $logFile <font color="#000000">=</font> &quot;$log_dir</font><font color="#800040">\DatabaseUpgrade.log&quot; </font><br /><font color="#004080">    if</font> (<font color="#0000ff">Test-Path</font> <font color="#ff0000">$logFile</font>)<br />    {<br /><font color="#0000ff">       Remove-Item</font> <font color="#ff0000">$logFile</font>
+    }<br /><font color="#ff0000">    $connectionString</font> = <font color="#ff0000">$script:tokens</font><font color="#800040">[&quot;@@ConnectionString@@&quot;</font><font color="#000000">]</font><br /><font color="#ff0000">       $getVersionQuery</font> = <font color="#800040">&quot;SELECT TOP 1 Version FROM dbo.</font><font color="#800040">DbVersion ORDER BY [Id] DESC&quot; </font><br /><font color="#ff0000">    $dbConnectionStringBuilder</font> = <font color="#0000ff">New-Object</font> <font color="#800080">System.</font><font color="#800080">Data.</font><font color="#800080">SqlClient.</font><font color="#800080">SqlConnectionStringBuilder</font><br /><font color="#ff0000">    $dbConnectionStringBuilder</font>.set_ConnectionString(<font color="#ff0000">$connectionString</font>)
+<br /><font color="#ff0000">    $dbVersion</font> = <font color="#0000ff">Get-DbVersion</font> <font color="#ff0000">$dbConnectionStringBuilder $getVersionQuery</font><br /><font color="#0000ff">    Write-Output</font> <font color="#800040">(&quot;Initial db version is {0}&quot;</font> <font color="#c0c0c0">-f</font> <font color="#ff0000">$dbVersion</font>)
+<br /><font color="#004080">    while</font> (<font color="#ff0000">$true</font>)<br />       {<br /><font color="#ff0000">        $files</font> = <font color="#0000ff">Get-ChildItem</font> (<font color="#800040">&quot;$database_upgrade_scripts_dir\Upgrade_{0}_*.sql&quot;</font> <font color="#c0c0c0">- f</font> <font color="#ff0000">$dbVersion</font>)
+<br /><font color="#004080">        if</font> (<font color="#ff0000">$files <font color="#c0c0c0">-ne</font> $null</font>)<br />             {<br />            <font color="#ff0000">$upgraded <font color="#c0c0c0">=</font> $true </font><br /><font color="#004080">            foreach</font> (<font color="#ff0000">$file <font color="#004080">in</font> $files</font>)<br />                    {<br /><font color="#0000ff">                Write-Output</font> (<font color="#800040">&quot;[</font>$(<font color="#ff0000">$dbConnectionStringBuilder</font>.DataSource)<font color="#800040"> /</font> $(<font color="#ff0000">$dbConnectionStringBuilder.</font>InitialCatalog)<font color="#800040">] Upgrading with {0}...&quot;</font> <font color="#c0c0c0">-f</font> <font color="#ff0000">$file</font>.Name)<br /><font color="#ff0000">                $sqlMessage</font> = <font color="#0000ff">Run-Sql</font> <font color="#ff0000">$file $dbConnectionStringBuilder $true </font><br /><font color="#ff0000">                $nl</font> <font color="#c0c0c0">= [<font color="#008080">Environment</font>]::</font>NewLine<br /><font color="#0000ff">                Write-Output</font> (<font color="#800040">&quot;Executing</font> <font color="#ff0000">$file.$nl$sqlMessage</font><font color="#800040">&quot;</font>) <font color="#c0c0c0">|</font> <font color="#0000ff">Out-File</font> <font color="#ff0000">$logFile</font><font color="#004080">-append</font><br /><font color="#004080">                if</font> (<font color="#c0c0c0">! </font>(<font color="#ff0000">$sqlMessage</font> <font color="#c0c0c0">-like</font> <font color="#800000">&quot;*Database has been updated successfully to*&quot;</font>))<br />                          {<br /><font color="#004080">                    throw</font> <font color="#800040">&quot;Something went wrong. </font><font color="#800040">See</font> <font color="#ff0000">$logFile</font><font color="#800040">&quot; </font>
+                }<br />            }<br /><font color="#ff0000">            $dbVersion</font> <font color="#c0c0c0">= </font><font color="#0000ff">Get-DbVersion</font> <font color="#ff0000">$dbConnectionStringBuilder $getVersionQuery</font><br /><font color="#004080">            if </font>(<font color="#ff0000">$upgraded</font>)<br />                    {<br /><font color="#0000ff">                Write-Output</font> (<font color="#800040">&quot;Db version is {0}&quot;</font> <font color="#c0c0c0">-f</font> <font color="#ff0000">$dbVersion</font>)<br />            }<br />         }<br /><font color="#004080">              else</font><br />              {
+<font color="#004080">            break</font><br />         }<br />    }<br />}<br /><font color="#004080">function</font> <font color="#800080">Run-Sql</font>(<font color="#ff0000">$inputFile</font><font color="#c0c0c0">,</font> <font color="#ff0000">$dbConnectionStringBuilder</font><font color="#c0c0c0">, [<font color="#008080">bool</font>]</font>$isFile) {<br /><font color="#ff0000">    $database</font> = <font color="#ff0000">$dbConnectionStringBuilder</font>.InitialCatalog<br />
+<font color="#ff0000">    $ps</font> <font color="#c0c0c0">= [<font color="#008080">PowerShell</font>]::</font>Create()
+<br /><font color="#ff0000">    $e</font> = <font color="#0000ff">New-Object <font color="#800080">System.</font></font><font color="#0000ff"><font color="#800080">Management.</font></font><font color="#0000ff"><font color="#800080">Automation.</font></font><font color="#0000ff"><font color="#800080">Runspaces.</font></font><font color="#0000ff"><font color="#800080">PSSnapInException</font> <font color="#c0c0c0">|</font> Out-Null</font><br /><font color="#ff0000">    $ps</font>.Runspace.RunspaceConfiguration.AddPSSnapIn( <font color="#800040">&quot;SqlServerCmdletSnapin100&quot;</font><font color="#c0c0c0">, [<font color="#008080">ref</font>]</font><font color="#ff0000">$e</font> ) <font color="#c0c0c0">|</font> <font color="#0000ff">Out-Null </font><br /><font color="#ff0000">    $param</font> = <font color="#ff0000">$ps</font>.AddCommand(<font color="#800040">&quot;Invoke-Sqlcmd&quot;</font>).AddParameter(<font color="#800040">&quot;database&quot;</font>, <font color="#ff0000">$dbConnectionStringBuilder</font>.InitialCatalog).AddParameter(<font color="#800040">&quot;serverinstance&quot;</font>, <font color="#ff0000">$dbConnectionStringBuilder</font>.DataSource).AddParameter(<font color="#800040">&quot;Verbose&quot;</font>).AddParameter(<font color="#800040">&quot;QueryTimeout&quot;</font>, <font color="#800080">120</font>)<br /><font color="#004080">     if</font> (<font color="#ff0000">$isFile</font>) {<br /><font color="#ff0000">        $param</font> = <font color="#ff0000">$ps</font>.AddParameter(<font color="#800040">&quot;InputFile&quot;</font>, <font color="#ff0000">$inputFile</font>)<br />    } <font color="#004080">else</font> {<br /><font color="#ff0000">        $param</font> = <font color="#ff0000">$ps</font>.AddParameter(&quot;<font color="#800040">Query</font>&quot;, <font color="#ff0000">$inputFile</font>)<br />    }<br /><font color="#004080">    if</font> (<font color="#c0c0c0">!</font><font color="#ff0000">$dbConnectionStringBuilder</font>.ContainsKey(<font color="#800040">&quot;Integrated Security&quot;</font>) <font color="#c0c0c0">-or</font><font color="#c0c0c0">[<font color="#008080">System.</font></font><font color="#c0c0c0"><font color="#008080">Convert</font>]::</font>ToBoolean(<font color="#ff0000">$dbConnectionStringBuilder</font>.<font color="#800040">&quot;</font><font color="#800040">Integrated Security&quot;</font>) <font color="#c0c0c0">-eq</font> <font color="#ff0000">$false</font>) {<br /><font color="#ff0000">      $param</font> = <font color="#ff0000">$param</font>.AddParameter(<font color="#800040">&quot;username&quot;</font>, <font color="#ff0000">$dbConnectionStringBuilder</font>.<font color="#800040">&quot;</font><font color="#800040">User ID&quot;</font>).AddParameter(<font color="#800040">&quot;password&quot;</font>, <font color="#ff0000">$dbConnectionStringBuilder</font>.Password)<br />    }
+<br /><font color="#004080">    try</font> {<br /><font color="#ff0000">       $ps</font>.Invoke() <font color="#c0c0c0">|</font> <font color="#0000ff">Out-Null</font><br />    } <font color="#004080">catch</font> {<br /><font color="#0000ff">       Write-Output</font> <font color="#ff0000">$ps</font>.Streams<br /><font color="#004080">       throw</font><br />    }
+<br /><font color="#ff0000">    $sqlMessage</font> = <font color="#800040">&quot;&quot;</font><br /><font color="#ff0000">    $nl</font> <font color="#c0c0c0">= [<font color="#008080">Environment</font>]::</font>NewLine<br /><font color="#004080">    foreach</font> (<font color="#ff0000">$verbose</font> <font color="#004080">in</font> <font color="#ff0000">$ps</font>.Streams.Verbose) {<br /><font color="#ff0000">        $sqlMessage</font> <font color="#c0c0c0">+=</font> <font color="#ff0000">$verbose</font>.ToString() <font color="#c0c0c0">+</font> <font color="#ff0000">$nl</font><br />    }<br /><font color="#004080">    foreach</font> (<font color="#ff0000">$error</font> <font color="#004080">in</font> <font color="#ff0000">$ps</font>.Streams.エラー<br /><font color="#ff0000">        $sqlMessage</font> <font color="#c0c0c0">+=</font> <font color="#ff0000">$error.</font>ToString() <font color="#c0c0c0">+</font> <font color="#ff0000">$nl</font><br />    }
+<br /><font color="#004080">    return</font> <font color="#ff0000">$sqlMessage</font><br />}
+<br /><font color="#004080">function</font> <font color="#800080">Invoke-SqlCmdSnapin</font> (<font color="#ff0000">$dbConnectionStringBuilder</font><font color="#c0c0c0">,</font> <font color="#ff0000">$query</font>) {<br /><font color="#008000">   </font><br /><font color="#004080">      if </font>(<font color="#c0c0c0">!</font><font color="#ff0000">$dbConnectionStringBuilder</font>.ContainsKey(<font color="#800040">&quot;Integrated Security&quot;</font>) <font color="#c0c0c0">-or[<font color="#008080">System.</font></font><font color="#c0c0c0"><font color="#008080">Convert</font>]::</font>ToBoolean(<font color="#ff0000">$dbConnectionStringBuilder</font>.<font color="#800040">&quot;</font><font color="#800040">Integrated Security&quot;</font>) <font color="#c0c0c0">-eq</font> <font color="#ff0000">$false</font>) {<br /><font color="#0000ff">             Invoke-SqlCmd</font> <font color="#004080">-query</font> <font color="#ff0000">$query</font> `<br /><font color="#004080">                   -database</font> <font color="#ff0000">$dbConnectionStringBuilder</font>.InitialCatalog `<br />                   -<font color="#004080">serverinstance</font> <font color="#ff0000">$dbConnectionStringBuilder</font>.DataSource `<br /><font color="#004080">                   -username</font> <font color="#ff0000">$dbConnectionStringBuilder</font>.<font color="#800040">&quot;</font><font color="#800040">User ID&quot;</font> `<br /><font color="#004080">                   -password</font> <font color="#ff0000">$dbConnectionStringBuilder</font>.Password<br />      } <font color="#004080">else</font> {<br /><font color="#0000ff">             Invoke-SqlCmd</font> <font color="#004080">-query</font> <font color="#ff0000">$query</font> `<br /><font color="#004080">                   -database</font> <font color="#ff0000">$dbConnectionStringBuilder</font>.InitialCatalog `<br /><font color="#004080">                   -serverinstance</font> <font color="#ff0000">$dbConnectionStringBuilder</font>.DataSource<br />      }<br />}</pre>
+<h3><strong>リスト４ – DbHistory定義</strong></h3>
+<table border="1" cellspacing="0" cellpadding="0"> 
+ <tbody> 
+  <tr> 
+   <td valign="top" width="188"> <p><b>カラム名</b></p> </td> 
+   <td valign="top" width="190"> <p><b>カラム型</b></p> </td> 
+   <td valign="top" width="187">&nbsp;</td> 
+  </tr> 
+  <tr> 
+   <td valign="top" width="188"> <p><b>Filename</b></p> </td> 
+   <td valign="top" width="190"> <p>Nvarchar(50)</p> </td> 
+   <td valign="top" width="187"> <p>Not null</p> </td> 
+  </tr> 
+  <tr> 
+   <td valign="top" width="188"> <p><b>Content</b></p> </td> 
+   <td valign="top" width="190"> <p>Nvarchar(max)</p> </td> 
+   <td valign="top" width="187"> <p>Not null</p> </td> 
+  </tr> 
+  <tr> 
+   <td valign="top" width="188"> <p><b>RunOn</b></p> </td> 
+   <td valign="top" width="190"> <p>DateTime</p> </td> 
+   <td valign="top" width="187"> <p>Not null</p> </td> 
+  </tr> 
+ </tbody> 
+</table>
+<h2><strong>7.最終考察</strong></h2>
+<p>データベースのバージョニングとデリバリ戦略は，大部分のエンタープライズプロジェクトにおいて重要なものです。今回の記事をその指標として，既存のソリューションやプラクティスの再検討に，あるいはスクラッチからの新たな構築に役立てて頂ければと思います。すべてのルールが適応できることはおそらくないでしょうが，少なくともデータベースのアップグレード計画を客観的に評価する上での手助けにはなるはずです。さらなる詳細を知りたい場合，あるいは本記事のアドバイスに対する感想や他の重要なアイデアをお持ちの場合は，質問やコメントをお寄せ頂けください。可能な限り早急にお返事します。私への連絡はEメール<a href="mailto:klukasik@objectivity.co.uk">klukasik@objectivity.co.uk</a>までお送りください。</p>
+<h2><strong>著者について</strong></h2>
+<p><strong><img src="http://www.infoq.com/resource/articles/db-versioning-scripts/ja/resources/KonradLukasik.jpg" vspace="3" hspace="3" align="left" alt="" _href="img://KonradLukasik.jpg" _p="true" />Konrad Lukasik</strong>氏はMicrosoftの技術全般，特に.NETに関する支持者のひとりです。ほぼ10年の間，プロフェッショナルとして業界で経験を積んできました。現在はObjectivityでテクニカルアーキテクトを務め，チームが高品質のソフトウェアを提出ための支援をしています。氏は物事を &quot;よりシンプルにではなく，可能な限りシンプルに&quot; するための努力を続けています。</p><br><br><br><br><br><br></body></html>

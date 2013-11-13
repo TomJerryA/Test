@@ -1,6 +1,9 @@
 <html>
  <head></head> 
- <body> 
+ <body>
+  <div>
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/25.c">Ado&ccedil;&atilde;o &Aacute;gil: a import&acirc;ncia das pr&aacute;ticas t&eacute;cnicas, pensamento sist&ecirc;mico e cultura</a>Simplicidade, feedback, comunica&ccedil;&atilde;o, respeito e coragem. Estes valores do eXtreme Programming (XP) continuam a inspirar a equipe da confer&ecirc;ncia XP Days Benelux 2013. O InfoQ.com entrevistou dois anfitri&otilde;es da confer&ecirc;ncia, Merlijn van Minderhout e Pascal Van Cauwenberghe, sobre as novidades.
+  </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/24.c">XML vs JSON: A diferen&ccedil;a de desempenho era apenas um boato?</a>Muitas das suposi&ccedil;&otilde;es sobre o qu&atilde;o lento, dispendioso e &quot;gordo&quot; o XML &eacute; se comparado &agrave; leveza do JSON, n&atilde;o foram sustentadas pelo teste feito por David Lee, engenheiro l&iacute;der na Marklogic, ap&oacute;s a execu&ccedil;&atilde;o de um experimento &quot;crowd sourcing&quot; com 33 documentos diferentes e aproximadamente 1200 testes, em uma grande quantidade de navegadores e sistemas operacionais. 
   </div> 
@@ -147,9 +150,6 @@
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/26.c">Mais cursos gratuitos de Stanford, incluindo desenvolvimento para iPhone/iPad com iOS 6</a>A Universidade Stanford, uma das l&iacute;deres mundiais em pesquisas em ci&ecirc;ncia da computa&ccedil;&atilde;o, no cora&ccedil;&atilde;o do Silicon Valley, est&aacute; oferecendo novos cursos gratuitos de programa&ccedil;&atilde;o via iTunes U, incluindo alguns focados em desenvolvimento para iPhone e iPad, cobrindo as vers&otilde;es mais recentes do iOS. 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/25.c">Spring para Apache Hadoop 1.0: Big Data mais perto do Spring</a>A SpringSource lan&ccedil;ou a vers&atilde;o 1.0 do Spring para Apache Hadoop. O projeto permite que desenvolvedores escrevam aplica&ccedil;&otilde;es Hadoop integradas ao Spring Framework e facilita a integra&ccedil;&atilde;o com o Spring Batch e Spring Integration. O Spring para Apache Hadoop &eacute; um subprojeto do Spring Data. 
-  </div> 
+  </div>  
  </body>
 </html>

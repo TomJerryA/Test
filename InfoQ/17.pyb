@@ -1,0 +1,127 @@
+<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>Java 7 ソケット・ダイレクト・プロトコル - 一度書けば、どこでも実行できる、ある場所では驚くほどに</h3><p><a target="_blank" href="http://www.infoq.com/articles/Java-7-Sockets-Direct-Protocol"><em>原文(投稿日：2013/08/15)へのリンク</em></a></p>
+<p>この記事は、新しい<a href="http://docs.oracle.com/javase/tutorial/sdp/sockets/">Javaソケット・ダイレクト・プロトコル</a> (SDP)の技術について概説します。SDPは、最近、Java7 SDKで導入された、非常に画期的な技術です。SDPにより、ウルトラ・ハイ・パフォーマンス・コンピューティング(UHPC)環境において、Javaのどこにでもある共通の機能とめったにないユースケースの利点を利用できるようになります。それが、<a href="http://www.InfiniBandta.org/">InfiniBand</a>の<a href="http://en.wikipedia.org/wiki/Remote_Direct_Memory_Access">リモート・ダイレクト・メモリ・アクセス</a> (RDMA) 機能へのネイティブアクセスです。RDMAは、オペレーティングシステムを介さずに、直接、他のコンピュータのメモリにアクセスするように、低遅延アプリケーションのプロトコルを提供します。UHPC環境は、最も厳しい、妥協を許さない低遅延で高いスループットの要求を可能なものにします。そのため、UHPCが最高のRDMA機能を利用できるようにする必要があるのは当然でしょう。Java 7でソケット・ダイレクト・プロトコルを提供するようになり、ネイティブのInfiniBand RDMA機能の全部の力を直接利用できるJavaアプリケーションコードを書けるようなJavaプラットフォームを、今ではUHPC環境で提供しています。</p>
+<p><strong>新しいJavaソケット・ダイレクト・プロトコルを掘り下げてみる前に、JavaのネットワーキングとソケットAPIの歴史を簡単に見てみよう。</strong></p>
+<p>1995年、Sun Microsystemsは世界にJavaを示し、すぐに「Java - 一度書けば、どこでも実行できる(Write Once, Run Everywhere)」というどこででも認識されるキャッチフレーズで、このプラットフォームを広く知らせ始めました。私たちがみんな知っているように、この背後にある考え方はシンプルです。C++コードでアプリケーションを書く代わりに(「どこでも実行できる」という移植性をいくらか持っていても、ビルドやデプロイが非常に難しい)、Javaというものでアプリケーションコードを書き、仮想マシンでビルド/デプロイができます(OS実行環境下ではありません)。これにより、Javaアプリケーションプログラマは、Java仮想マシン(JVM)に移植性を完全に任せ、移植性をまったく気にしなくてよくなりました。JVMは、次のような約束をしました。1つのJava VM(ある特定の基本OS)で動くJavaコードをビルド/デプロイできれば、プラットフォームは、まったく同じコードがどのOSでも(対応するJava VMが利用できれば)動くことを保証します。条件付のコンパイルやプリプロセッサマクロはもう必要ありませんでした。(C++と#ifdefの地獄を覚えていますか? アプリケーションプログラマを苦しめていた重荷を、今ではJVMが解放しているのです。)</p>
+<p>これは、すべて非常に役に立つことであり、アプリケーションプログラミングコミュニティに快く受け入れられました。私たちが知っているように、Javaは、素早く、強烈に、世界中で受け入れられました。コンピューティングの数多くのプログラミング言語プラットフォームの歴史において、それほどのペースで受け入れられたものはありませんでした。</p>
+<p>最初、Sunは、ちょうど3つのオペレーティングシステムで動くJava VMを提供しました。(i) Solaris (ii) Linux (iii) Windowsです。Microsoftは、その2、3年前(1993)に、WindowsでWinSOCKプロトコルスタックを提供したところだったので、WindowsはMicrosoftが完全にサポートするAPIを使って、TCP/IPネットワーキングを実施できました。様々な*nixシステムは、(もちろん)1970年代からTCP/IPを使っていました。MicrosoftのWinSOCKの導入は、Javaがなるべき姿になるためには、絶対に必要なものでした。WinSOCKなしでは、java.net.* やjava.io.* APIをサポートするWindows VMを提供することはできませんでした。それなしでは、Javaは、世界のデスクトップを独占するOSを動かす、完全なネットワーク機能を持つVMをビルドできませんでした。「もしかすると100万デスクトップ」に届くJavaの代わりに、完全にTCP/IPをサポートするWindowsと共に、Javaは今では「もしかすると100億」に届くものになりました。</p>
+<div id="lowerFullwidthVCR"></div>
+<h2><strong>状況が変わる。</strong></h2>
+<p>確かに、Javaは、今でも「一度書けば、どこでも実行できる」ものです。移植性は、今でも最重要事項です。しかし、Java 7とソケット・ダイレクト・プロトコルで、Java VMではもっとずっと多くのことができます。移植性は、唯一の優先事項ではありません。今、ウルトラ・ハイ・パフォーマンスのユースケースに適応させることが、Java VMの重要な優先事項です。ソケット・ダイレクト・プロトコルで、Java VMは、同じネットワーキングと、InfiniBandの本来の力に直接アクセスするソケットAPIを提供できます。InfiniBandは、Ethernetよりもずっと速いものです。InfiniBandは、UHPコンピューティング環境で最適な物理ネットワークレイヤのプロバイダです。</p>
+<p>InfiniBandが何か、Java 7 VMによって、どのようにアプリケーションがネイティブのInfiniBandの機能を使えるようになるのかについて、すぐ後で説明します。</p>
+<p>注目すべきことの1つ(特に歴史的観点から)は、Javaが2つのオペレーティングシステム上でソケット・ダイレクト・プロトコルを提供すると決めたことです。Microsoft Windowsは、これらのオペレーティングシステムのうちの1つでは<i>ありません</i>。Java 7 SDPをサポートする2つのオペレーティングシステムは、SolarisとLinuxです。Solaris SDPサポートは、Solaris 10以降、すべてのバージョンで標準になっています。物理的なInfiniBand NICを持つ限り、Java 7 SDPはすぐに使えるでしょう。Linuxでは、SDPサポートは、Open Fabrics Enterprise Distributionパッケージで配布されます。使っているLinuxのバージョンがOFEDデバイスドライバで設定されているかどうか、そして、物理的なInfiniBand NICアダプタを持っていることを確認するには、単に次のようにタイプします。</p>
+<pre><b>egrep &quot;^[ \t]+ib&quot; /proc/net/dev</b></pre>
+<p>このコマンドで何か出力されたら、このオペレーティングシステムでJava 7 SDPを使う準備ができています。</p>
+<p>すべてのjava.net.*とjava.io.*アプリケーションコードは、もちろんJava 7 VMを使うMicrosoft Windowsで動きますが、ソケット・ダイレクト・プロトコルを使わずに動きます。(そのため、物理レイヤプロバイダとしてEthernetで動きます。) WinSOCK Directを経由して、InfiniBandのサポートを提供するWindows Serverバージョンで動かしても、同じでしょう。もう一度言いますが、すべてMicrosoftで動くでしょう。ただ、Microsoftではないところ (例えば、*nix)と同じくらい速くは動きません。</p>
+<h2><strong>実際に変わったこと。</strong></h2>
+<p>オペレーティングシステムのネットワークプロトコルスタックへのJava APIブリッジについてお話しましょう。まず初めに、ネットワークレイヤの標準<a href="http://www.iso.org/iso/iso_catalogue/catalogue_tc/catalogue_detail.htm?csnumber=20269">開放型システム間相互接続(OSI)モデル</a>を見てみましょう。</p>
+<table border="1" cellspacing="0" cellpadding="0"> 
+ <tbody> 
+  <tr> 
+   <td valign="top" width="31"> <p><b>#</b></p> </td> 
+   <td valign="top" width="108"> <p><b>レイヤ</b></p> </td> 
+   <td valign="top" width="102"> <p><b>プロトコル</b></p> </td> 
+   <td valign="top" width="397"> <p><b>Java SDKコアAPI</b></p> </td> 
+  </tr> 
+  <tr> 
+   <td valign="top" width="31"> <p>7.</p> </td> 
+   <td valign="top" width="108"> <p>アプリケーションレイヤ</p> </td> 
+   <td valign="top" width="102"> <p>HTTP、FTP、SSL等</p> </td> 
+   <td valign="top" width="397"> <p>java.net.HttpURLConnection、javax.servlet.HttpServlet</p> </td> 
+  </tr> 
+  <tr> 
+   <td valign="top" width="31"> <p>6.</p> </td> 
+   <td valign="top" width="108"> <p>プレゼンテーションレイヤ</p> </td> 
+   <td valign="top" width="102">&nbsp;</td> 
+   <td valign="top" width="397"> <p>#Javaでは、アプリケーション/プレゼンテーションOSIレイヤを区別しない</p> </td> 
+  </tr> 
+  <tr> 
+   <td valign="top" width="31"> <p>5.</p> </td> 
+   <td valign="top" width="108"> <p>セッションレイヤ</p> </td> 
+   <td valign="top" width="102"> <p>NetBios、RCP</p> </td> 
+   <td valign="top" width="397"> <p>#OSIセッションレイヤのJava SDKコアサポートはない</p> </td> 
+  </tr> 
+  <tr> 
+   <td valign="top" width="31"> <p>4.</p> </td> 
+   <td valign="top" width="108"> <p>トランスポートレイヤ</p> </td> 
+   <td valign="top" width="102"> <p>TCP、UDP</p> </td> 
+   <td valign="top" width="397"> <p>java.net.Socket、java.net.ServerSocket、java.net.Datagram</p> </td> 
+  </tr> 
+  <tr> 
+   <td valign="top" width="31"> <p>3.</p> </td> 
+   <td valign="top" width="108"> <p>ネットワークレイヤ</p> </td> 
+   <td valign="top" width="102"> <p>IP</p> </td> 
+   <td valign="top" width="397"> <p>Java.net.InetAddress</p> </td> 
+  </tr> 
+  <tr> 
+   <td valign="top" width="31"> <p>2.</p> </td> 
+   <td valign="top" width="108"> <p>データリンクレイヤ</p> </td> 
+   <td valign="top" width="102"> <p>PPP</p> </td> 
+   <td valign="top" width="397"> <p>#OSIデータリンクレイヤのJava SDKコアサポートはない</p> </td> 
+  </tr> 
+  <tr> 
+   <td valign="top" width="31"> <p>1.</p> </td> 
+   <td valign="top" width="108"> <p>物理レイヤ</p> </td> 
+   <td valign="top" width="102"> <p>Ethernet、InfiniBand</p> </td> 
+   <td valign="top" width="397"> <p>#OSI物理レイヤのJava SDKコアサポートはない</p> <p>ただし …</p> <p>&nbsp;</p> <p><b>Java 7 <i>ソケット・ダイレクト・プロトコル</i></b> (InfiniBandからjava.net.* and java.io.* コアAPIへのVMブリッジ)</p> </td> 
+  </tr> 
+ </tbody> 
+</table>
+<p>OSIネットワークレイヤビューにおけるJava 7ソケット・ダイレクト・プロトコルの技術は、Javaアプリケーションコードをできる限り「ハードウェアに近い」ものにします。Java SDPは、VMを通して、アプリケーションコードから*ネイティブ*で*物理的*なInfiniBandへ、*ダイレクト* (SDPの‘D’)ブリッジを提供します。アプリケーションでコアのjava.net.* や java.io.* APIの使用を変えずに、Java 7 SDPの技術によって実現できます。それだけでなく、InfiniBand OSデバイスドライバやライブラリ(別名InfiniBand　VERBレイヤAPI)へJAVA VMの特別なジョイントポイントを構成することで、トランスポートレイヤOSリソース(OSIレイヤ4)のJava APIであるjava.net.* や java.io.* のアプリケーションコードの使用は、従来のネットワークプロトコルスタック(例えば、OSIレイヤ3をバイパスしたり、OSIレイヤ2をバイパスしたりできる)をバイパスしたり、*直接* InfiniBand(OSIレイヤ1)に行ったりできます。パフォーマンス上得られるものは非常に大きくなります。</p>
+<h2><strong>Java 7とソケット・ダイレクト・プロトコルで、JavaはRDMA(リモート・ダイレクト・メモリ・アクセス)をサポートする</strong></h2>
+<p>RDMAとは、リモート・ダイレクト・メモリ・アクセスのことです。RDMAは、ネットワーク上の(*nixユーザアドレス空間を実行している)2つのJava VMプロセス間で、アプリケーションのバッファを動かす方法です。RDMAは従来のネットワークインタフェースとは異なり、オペレーティングシステムをバイパスします。これにより、RDMAを使ってJava SDPは、以下のことを実行できます。(i) 絶対的な低遅延 (ii) 最高のスループット (iii) 最小CPUフットプリント</p>
+<p>RDMAへJavaジョイントポイントを公開することで、SDPは暗黙的にJavaが無理やり「ゼロコピー」の機能を提供するようにします。「ゼロコピー」とは、CPUが1つのメモリから別のメモリにデータをコピーするタスクを実行しないコンピュータの操作のことです。ネットワークプロトコルスタックのゼロコピーバージョンは、特定のアプリケーションプログラムのパフォーマンスを大幅に向上させ、より効率的にシステムリソースを利用します。マシンの別の部分で並行してデータをコピーしながら、CPUが別のタスクに進めるようにして、パフォーマンスを向上させます。また、ゼロコピー操作は、ユーザ空間とカーネル空間の間の時間消費モードの切り替え数を減らし、システムリソースをより効率的に利用できるようにします。単純なシステムコンポーネントでコピーできる時に、高性能のCPUを使って、比較的簡単なタスクである大量のコピー操作を実行するのは無駄なことです。ここで私たちが話しているゼロコピーの機能は、java.nio.channels.FileChannelのtransferTo() APIを使って達成できるゼロコピー機能ではないことに注意する必要があります。これは、もっとずっと高性能です。Java 7 SDPで、ネイティブのInfiniBandゼロコピープロトコル実装を直接使います。</p>
+<h2><strong>典型的なJavaデプロイメントビューの中で、ソケット・ダイレクト・プロトコル機能がどのように見えるのか描いてみよう</strong></h2>
+<p>下図では、Node 1(java.net.Socket <i>writer</i>)とNode 2(java.net.ServerSocket <i>listener</i>)が、SDPをサポートするために構成、起動されたJava 7 VMにどのようにデプロイされるかを描いています。OSのシステムコールやサービスが呼び出されることなく、InfiniBandネットワークの中で、2つのJVMが1つのVMから別のVMヘアプリケーションデータバッファを交換できるようにしています。信じられないことですが、Javaのデータ転送は完全に両方のオペレーティングシステムをバイパスします。</p>
+<p><img src="http://www.infoq.com/resource/articles/Java-7-Sockets-Direct-Protocol/ja/resources/InfiniBandFig1.jpg" alt="" _href="img://InfiniBandFig1.jpg" _p="true" /></p>
+<ol> 
+ <li>Java 7アプリケーション=<b>Node 1</b> (SDPを使うために起動されたJVM)は、java.net.Socket APIを使用し、ネットワーク内のアプリケーションデータのブロックをjava.net.ServerSocket <i>listener</i>へ<i>書き出す</i>。</li> 
+ <li>JVMはSDPを使うために起動されたので、オペレーティングシステムTCP/IPスタックは完全にバイパスされる。アプリケーションデータは、InfiniBandのRDMA機能に直接書き込まれる。(InfiniBandがネットワークインタフェースカードの物理プロバイダでなければならない)</li> 
+ <li>Java 7アプリケーション=<b>Node 2 </b>(SDPを使用するために起動されたJVM)は、java.net.ServerSocket APIを使用し、アプリケーションデータのブロックがjava.net.Socketライタからネットワーク内のRDMAを通って到着するのを聞き出す。(InfiniBandがネットワークインタフェースカードの物理プロバイダでなければならない)</li> 
+ <li>データは、*直接*、Java 7 VMアプリケーションバッファに送られた! Node 1のOSやNode 2のOSから呼ばれるOSシステムやサービスコールは関係していない。<i>これが</i>Java 7ソケット・ダイレクト・プロトコルの力だ。</li> 
+</ol>
+<h2><strong>SDPを使ったJava 7とJava 6で同じアプリケーションを動かす場合、論理的パフォーマンスの違いは何か?</strong></h2>
+<p>下図のさらに詳細な図は、2つの異なるシナリオでNode 2を示しています。(前述した図から)</p>
+<ol> 
+ <li>構成されたSDPでJava 7を使う(下図の左側) Node 1の伝達データをNode 2で受け取ったものは、どのようにOSIネットワークレイヤプロトコルスタックを移動し、Javaアプリケーションに入るのか? 何段階のステップが必要か? たった1段階だ! (下図を参照してください。これはUHPC Javaアプリにとって、素晴らしいニュースです。今、UHPC環境は、Java 7を使って必要なことをできます。)</li> 
+ <li>Java 6を使う(SDPはない - 下図の右側) Node 1の伝達データをNode 2で受け取ったものは、どのようにOSIネットワークレイヤプロトコルスタックを移動し、Javaアプリケーションに入るのか? 何段階のステップが必要か? 5段階必要だ。(下図を参照してください。これは、よく見るTCP/IPプロトコルスタックです。SDPではありません。これは、大抵は動きますが、UHPC環境ではうごきません。UHPC環境は、Java 6を使って必要なことができません。)</li> 
+</ol>
+<p><a href="/resource/articles/Java-7-Sockets-Direct-Protocol/ja/resources/Fig2large.jpg" target="_blank"><img src="http://www.infoq.com/resource/articles/Java-7-Sockets-Direct-Protocol/ja/resources/Fig2small.jpg" _href="img://Fig2small.jpg" _p="true" alt="" /></a></p>
+<h2><strong>ソケット・ダイレクト・プロトコルを使用するためにJava 7 VMをどのように管理し、構成するか?</strong></h2>
+<p>以下は、<a href="http://docs.oracle.com/javase/tutorial/sdp/sockets/index.html">Java 7 SDPを紹介するOracleのチュートリアルページ</a>の構成セクションからまとめています。</p>
+<p>SDP構成ファイルは、Java VMが起動時にローカルファイルシステムから読み込むテキストファイルです。SDP構成ファイルは、ちょうど2つの異なるタイプのエントリがあります。エントリの各タイプは、1行毎に書かれています。</p>
+<ol> 
+ <li>SDP構成<b>コメント</b><b>行</b></li> 
+ <li>SDP構成<b>ルール</b>行</li> 
+</ol>
+<p>コメントは、行の最初にハッシュキャラクタ(#)が置かれています。ハッシュキャラクタの後はすべて無視されます。</p>
+<p>構成<b>ルール</b>行には、ちょうど2つのタイプのルールがあります。</p>
+<ol> 
+ <li>BINDルール</li> 
+ <li>CONNECTルール</li> 
+</ol>
+<p>「バインド」ルールは、TCPソケットがルールに合うアドレスとポートにバインドされた時に、SDPプロトコルトランスポートがいつでも使われるというルールです。「コネクト」ルールは、バインドされていないTCPソケットがルールに合うアドレスとポートに接続しようとした時に、SDPプロトコルトランスポートが使われるというルールです。</p>
+<p>ルールはSDP構成ファイルで決められていますが、Java VMは、InfiniBandのVERBS/RDMAプロトコルスタックを持つ、通常のTCP/IPプロトコルスタックをいつ置き換えるかを、正確に知ることができます。</p>
+<p>最初のキーワードは、ルールが<b>bind</b>ルールか<b>connect</b>ルールかを示します。次のトークンは、ホスト名かリテラルIPアドレスかを指定します。 リテラルIPアドレスを指定する場合、IPアドレスの範囲を示すプレフィックスも指定できます。3番目と最後のトークンはポート番号かポート番号の範囲です。</p>
+<p>このサンプルの構成ファイルの以下の記述を考慮してください。</p>
+<p># Use SDP when binding to 192.0.2.1</p>
+<p>bind 192.0.2.1 *</p>
+<p># Use SDP when connecting to all application services on 192.0.2.*</p>
+<p>connect 192.0.2.0/24 1024-*</p>
+<p>サンプルファイルの最初のルールは、SDPがローカルIPアドレス192.0.2.1のどのポート(*)で使われるかを指定します。InfiniBandアダプタに割り当てられたローカルアドレス毎にバインドルールを追加できます。(<i>InfiniBandアダプタ</i>は、InfiniBandのネットワークインタフェースカード(NIC)と同じです。) いくつかIBアダプタを持っている場合、それらのアダプタに割り当てられた各アドレスに、バインドルールを使いましょう。</p>
+<p>サンプルファイルの2番目のルールは、192.0.2.*に接続する時やターゲットポートが1024かそれよりも大きい時にはいつでもSDPが使われることを指定します。IPアドレスのプレフィックス /24 は、32ビットIPアドレスの最初の24ビットが指定したアドレスに合わなければいけないことを示しています。IPアドレスの各部分は、8ビットを使用します。そのため、24ビットは、IPアドレスが192.0.2で、最後の値は何でも指定できることを示しています。ポートトークンの-*という記述は、「それ以上」であること指定します。1024から2056のようなポートの範囲は有効であり、指定した範囲の終点を含んでいます。</p>
+<h2><strong>ソケット・ダイレクト・プロトコルを使うためにどのようにJava 7 VMを起動するか?</strong></h2>
+<pre>
+&amp;&gt; java \
+-Dcom.sun.sdp.conf=sdp.conf \
+-Djava.net.preferIPv4Stack=true \
+<i>Application.class</i>
+</pre>
+<p>起動されるネットワーク形式として、IPv4Stackを使うことに注意してください。Java 7とInfiniBandは、よりモダンなIPv6ネットワーク形式を使いますが、SolarisとLinuxの2つの間のマッピングはサポートされていません。そのため、SDPを使うJava 7 VMを起動する時は、基礎となって、よく使われる(そして、何十年もの間信頼されている)IPv4ネットワーク形式を常に使ってください。</p>
+<h2><strong>SDPをサポートして起動したJava 7 VMでアプリケーションを動かす時、どのくらいパフォーマンスの<i>改善</i>が期待できるか?</strong></h2>
+<p>これは、もちろん究極の質問です! Java 7 SDPを使うことで、<i>一体</i>何が得られるのでしょうか? この質問に対する答えは、絶対にこの記事の内容から決められるものではありません。パフォーマンスの向上は、様々な要因によります。この記事は終わりに近づいていますが、以下のことは常に本当であることを忘れないでください。</p>
+<p>InfiniBandはEthernetよりもかなり速く、<a href="http://www.hpcadvisorycouncil.com/pdf/IB_and_10GigE_in_HPC.pdf ">High Performance Computing Advisory Councilが発表した</a>総合的な研究によると、InfiniBandは、Ethernet(10GE)よりも600%の低遅延と370%のスループットパフォーマンスを提供することを示す、具体的な測定結果を出しています。</p>
+<p>また、Java 7 SDPはRDMAと最高のゼロコピーの実装を使います。OSネットワークTCP/IPスタックを100%バイパスして伝達されます。そして、カーネルのアドレス空間にあるシステムコールとユーザのアドレス空間にあるアプリケーションコードバッファの間でデータを伝達する時に起こるコンテキストの切り替えも同様です。</p>
+<p>これらのことはすべてJava SDK APIが完全に見える状態で行われます。java.net.*やjava.io.*は1行も変更する必要がありません。</p>
+<p>最後に、物事はいろいろと変化してきましたが、コアJavaの精神は同じままです。今また、Javaの初期の頃のように(地獄のような移植性の複雑さからアプリケーションコードを切り離すためにJVMが重荷を背負った時)、プライオリティ機能を提供するという<i>完全な重荷を、もう一度JVMが背負ったのです</i>。今回は、ソケット・ダイレクト・プロトコル機能です。実際に、オリジナルのJavaのスローガンは、ほぼそのまま残ります。(この刺激的な現代を反映する小さな新しいフレーズです。<b>Java 7 SDP – 一度書けば、どこでも実行できる。ある場所では驚くほどに!</b></p>
+<h2><strong>著者について</strong></h2>
+<p><strong><img src="http://www.infoq.com/resource/articles/Java-7-Sockets-Direct-Protocol/ja/resources/1Ben-Cotton.jpg" vspace="3" hspace="3" align="left" alt="" _href="img://1Ben-Cotton.jpg" _p="true" />Ben D. Cotton III</strong>氏は、J.P.Morgan ChaseのITコンサルタントであり、現在、UHPC LinuxプラットフォームでJavaのデータグリッド技術を使い、リアルタイムの流動性リスクに関する情報を集めています。Ben氏は、Java Community Processのメンバであり、2つのJCPエキスパートグループに属しています。1つは、キャッシングのJava標準APIを定義するグループ(JSR-107)であり、もう1つは分散データグリッドのグループ(JSR-347)です。Ben氏は、1985年5月にRutgers Universityを卒業し、コンピュータサイエンスの学位を取得しました。最初の11年間、AT&amp;T Bell LaboratoriesでC++コードを書き、数多くの特許を持つテレコミュニケーションネットワークの分析をサポートし、プロトコルを規定しました。その後、14年間、低遅延と取引債権/デリバティブ電子商取引、手形交換、値付け、リスクシステムをサポートするJavaコードを書いています。</p><br><br><br><br><br><br></body></html>

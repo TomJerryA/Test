@@ -1,77 +1,23 @@
-<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>Spring para Apache Hadoop 1.0: Big Data mais perto do Spring</h3><p>A SpringSource lan&ccedil;ou a <a href="http://www.springsource.org/spring-data/hadoop">vers&atilde;o 1.0 do Spring para Apache Hadoop</a>. Esse projeto permite que desenvolvedores escrevam aplica&ccedil;&otilde;es <a href="http://pt.wikipedia.org/wiki/Hadoop">Hadoop</a> de forma integrada ao Spring Framework; tamb&eacute;m facilita a integra&ccedil;&atilde;o com o Spring Batch e o Spring Integration. O Spring para Apache Hadoop &eacute; um subprojeto do Spring Data e &eacute; lan&ccedil;ado sob a licen&ccedil;a open source Apache 2.0.</p> 
-<p>Aplica&ccedil;&otilde;es Hadoop normalmente s&atilde;o compostas de uma cole&ccedil;&atilde;o de utilit&aacute;rios de linha de comando, scripts e c&oacute;digo. O Spring para Apache Hadoop fornece um modelo de programa&ccedil;&atilde;o consistente e um modelo de configura&ccedil;&atilde;o declarativa para desenvolver aplica&ccedil;&otilde;es Hadoop.</p> 
-<p>As aplica&ccedil;&otilde;es Hadoop agora podem ser implementadas utilizando o modelo de programa&ccedil;&atilde;o do Spring (inje&ccedil;&atilde;o de depend&ecirc;ncias, POJOs, Helper Templates), e rodar como uma aplica&ccedil;&atilde;o Java padr&atilde;o, em vez de como utilit&aacute;rios de linha de comando. O Spring para Apache Hadoop suporta leitura e escrita no sistema de arquivos <a href="http://en.wikipedia.org/wiki/Hadoop_Distributed_File_System#Hadoop_Distributed_File_System">HDFS</a>, execu&ccedil;&atilde;o de <a href="http://en.wikipedia.org/wiki/MapReduce">MapReduce</a>, jobs <a href="http://hadoop.apache.org/docs/stable/streaming.html">Streaming</a> (utilit&aacute;rio para criar e rodar tarefas MapReduce com qualquer execut&aacute;vel ou script atuando como mapper e/ou reducer) ou <a href="http://en.wikipedia.org/wiki/Cascading">Cascading</a> (framework que permite criar e executar fluxos de processamento de dados em qualquer linguagem baseada na JVM, como Java e JRuby), al&eacute;m de interagir com <a href="http://pt.wikipedia.org/wiki/HBase">HBase</a>, <a href="http://en.wikipedia.org/wiki/Apache_Hive">Hive</a> e <a href="http://en.wikipedia.org/wiki/Pig_(programming_tool)">Pig</a>.</p> 
-<p>Entre as principais funcionalidades do projeto est&atilde;o:</p> 
-<ul> 
- <li>Configura&ccedil;&atilde;o declarativa para criar, configurar e parametrizar a conectividade do Hadoop e dos jobs MapReduce, Streaming, Hive, Pig e Cascading. H&aacute; tamb&eacute;m classes &quot;runner&quot; que executam os diferentes tipos de intera&ccedil;&atilde;o Hadoop: JobRunner, ToolRunner, JarRunner, HiveRunner, PigRunner, CascadeRunner e HdfsScriptRunner.</li> 
- <li>Suporte abrangente para acesso de dados HDFS utilizando qualquer linguagem de script baseada na JVM, como Groovy, JRuby, Jython e Rhino.</li> 
- <li>Classes de template para Pig (PigTemplate) e Hive (HiveTemplate). Essas classes utilit&aacute;rias oferecem tradu&ccedil;&atilde;o de exce&ccedil;&otilde;es, gerenciamento de recursos e funcionalidades leves de mapeamento de objetos.</li> 
- <li>Configura&ccedil;&atilde;o declarativa para HBase e introdu&ccedil;&atilde;o do HBaseTemplate para suporte DAO.</li> 
- <li>Suporte declarativo e program&aacute;tico para Hadoop Tools, incluindo <a href="http://hadoop.apache.org/docs/stable/file_system_shell.html">File System Shell</a> (FsShell) e <a href="http://hadoop.apache.org/docs/stable/distcp.html">Distributed Copy</a> (DistCp).</li> 
- <li>Suporte a seguran&ccedil;a. O Spring para Apache Hadoop leva em conta requisitos de seguran&ccedil;a de um ambiente de execu&ccedil;&atilde;o do Hadoop. Sendo assim, a mudan&ccedil;a de um ambiente de desenvolvimento local para um cluster Hadoop totalmente protegido por Kerberos &eacute; feita de forma transparente.</li> 
- <li>Suporte ao Spring Batch. Com o Batch, m&uacute;ltiplos passos podem ser coordenados de maneira <em>statefull</em> (com estado) e administrados por meio de uma API REST. Por exemplo, a habilidade do Spring Batch em gerenciar o processamento de grandes arquivos pode ser usada para importar e exportar arquivos de um sistema HDFS.</li> 
- <li>Suporte ao Spring Integration. O Spring Integration permite o processamento de fluxos de eventos que podem ser transformados ou filtrados antes de serem lidos e escritos em um sistema HDFS ou outro tipo de armazenamento.</li> 
-</ul> 
-<p>A seguir s&atilde;o mostrados alguns exemplos de configura&ccedil;&otilde;es e trechos de c&oacute;digo, a maioria obtida no <a href="http://blog.springsource.org/2012/02/29/introducing-spring-hadoop/">blog</a> ou no <a href="http://static.springsource.org/spring-hadoop/docs/current/reference/html/">manual de refer&ecirc;ncia</a> do Spring para Hadoop.</p> 
-<p>MapReduce:</p> 
-<pre>
-    &lt;!-- utiliza a configura&ccedil;&atilde;o padr&atilde;o --&gt;
-    &lt;hdp:configuration /&gt;
-
-    &lt;!-- cria o job --&gt;
-    &lt;hdp:job id=&quot;word-count&quot;
-        input-path=&quot;/input/&quot; output-path=&quot;/ouput/&quot;
-        mapper=&quot;org.apache.hadoop.examples.WordCount.TokenizerMapper&quot;
-        reducer=&quot;org.apache.hadoop.examples.WordCount.IntSumReducer&quot; /&gt;
-
-    &lt;!-- roda o job --&gt;
-    &lt;hdp:job-runner id=&quot;word-count-runner&quot; pre-action=&quot;cleanup-script&quot; post-action=&quot;export-results&quot; job=&quot;word-count&quot; run-at-startup=&quot;true&quot; /&gt;
-</pre> 
-<p>HDFS:</p> 
-<pre>
-    &lt;!-- copia um arquivo utilizando Rhino --&gt;
-    &lt;hdp:script id=&quot;inlined-js&quot; language=&quot;javascript&quot; run-at-startup=&quot;true&quot;&gt;
-        importPackage(java.util)
-       
-        name = UUID.randomUUID().toString()
-        scriptName = &quot;src/main/resources/hadoop.properties&quot;
-        // fs - FileSystem instance based on 'hadoopConfiguration' bean
-        fs.copyFromLocalFile(scriptName, name)
-    &lt;/hdp:script&gt;
-</pre> 
-<p>HBase:</p> 
-<pre>
-    &lt;!-- utiliza a configura&ccedil;&atilde;o padr&atilde;o do HBase --&gt;
-    &lt;hdp:hbase-configuration /&gt;
-       
-    &lt;!-- faz a liga&ccedil;&atilde;o com a configura&ccedil;&atilde;o hbase --&gt;
-    &lt;bean id=&quot;hbaseTemplate&quot; class=&quot;org.springframework.data.hadoop.hbase.HbaseTemplate&quot; p:configuration-ref=&quot;hbaseConfiguration&quot; /&gt;
-
-    // l&ecirc; cada linha de uma HBaseTable (Java)
-    List rows = template.find(&quot;HBaseTable&quot;, &quot;HBaseColumn&quot;, new RowMapper() {
-        @Override
-        public String mapRow(Result result, int rowNum) throws Exception {
-            return result.toString();
-        }
-    }));
-</pre> 
-<p>Hive:</p> 
-<pre>
-    &lt;!-- configura a fonte de dados --&gt;
-    &lt;bean id=&quot;hive-driver&quot; class=&quot;org.apache.hadoop.hive.jdbc.HiveDriver&quot; /&gt;
-    &lt;bean id=&quot;hive-ds&quot; class=&quot;org.springframework.jdbc.datasource.SimpleDriverDataSource&quot; c:driver-ref=&quot;hive-driver&quot; c:url=&quot;${hive.url}&quot; /&gt;
-
-    &lt;!-- configura a declara&ccedil;&atilde;o JdbcTemplate padr&atilde;o --&gt;
-    &lt;bean id=&quot;hiveTemplate&quot; class=&quot;org.springframework.jdbc.core.JdbcTemplate&quot; c:data-source-ref=&quot;hive-ds&quot;/&gt;
-</pre> 
-<p>Pig:</p> 
-<pre>
-    &lt;!-- roda um script pig externo --&gt;
-    &lt;hdp:pig-runner id=&quot;pigRunner&quot; run-at-startup=&quot;true&quot;&gt;
-        &lt;hdp:script location=&quot;pig-scripts/script.pig&quot;/&gt;
-    &lt;/hdp:pig-runner&gt;
-</pre> 
-<p>Para come&ccedil;ar com o Spring para Apache Hadoop, baixe o <a href="http://www.springsource.com/download/community?project=Spring%20Data%20Hadoop">projeto</a> ou utilize o artefato Maven <em>org.springframework.data:spring-data-hadoop:1.0.0.RELEASE</em><em>.</em> H&aacute; um exemplo dispon&iacute;vel (<a href="http://static.springsource.org/spring-hadoop/docs/current/reference/html/batch-wordcount.html">Wordcount</a>) no site oficial e tamb&eacute;m um webinar no YouTube (<a href="http://www.youtube.com/watch?v=wlTnBzQ6KDU">Introducing Spring Hadoop</a>).</p> 
-<p>O Spring para Apache Hadoop requer o JDK 6.0 ou superior, Spring Framework 3.0 ou mais recentec (recomenda-se a vers&atilde;o 3.2) e o Apache Hadoop 0.20.2 (recomenda-se a vers&atilde;o 1.0.4). As vers&otilde;es Hadoop YARN, NextGen ou 2.x n&atilde;o s&atilde;o suportadas. Qualquer distribui&ccedil;&atilde;o do Apache Hadoop 1.0.x deve ser suportada; isso inclui distribui&ccedil;&otilde;es como Apache Hadoop padr&atilde;o, Cloudera CDH3 e CDH4, e Greenplum HD.</p> 
-<p>Para informa&ccedil;&otilde;es mais detalhadas, consulte o <a href="http://static.springsource.org/spring-hadoop/docs/1.0.0.RELEASE/reference/html/">Manual de Refer&ecirc;ncia</a> e o <a href="http://static.springsource.org/spring-hadoop/docs/current/api/">Javadoc</a> do projeto. O <a href="https://github.com/SpringSource/spring-hadoop">c&oacute;digo-fonte</a> e <a href="https://github.com/SpringSource/spring-hadoop-samples">exemplos</a> est&atilde;o dispon&iacute;veis no GitHub.</p> 
-<p id="lastElm"></p><br><br><br><br><br><br></body></html>
+<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>Adoção Ágil: a importância das práticas técnicas, pensamento sistêmico e cultura</h3><p>Simplicidade, <i>feedback</i>, comunica&ccedil;&atilde;o, respeito e coragem. Estes valores do eXtreme Programming (XP) continuam a inspirar a equipe da confer&ecirc;ncia <a href="http://www.xpday.net/Xpday2013/FrontPage.html">XP Days Benelux 2013</a>. O programa desta confer&ecirc;ncia consiste em dois dias de sess&otilde;es que abrangem muitos aspectos do <i>Agile</i>, como: t&eacute;cnicas de testes e desenvolvimento, planejamento e clientes, indiv&iacute;duos, equipes, processos e melhoria cont&iacute;nua.</p>
+<p>O InfoQ.com entrevistou dois dos anfitri&otilde;es da confer&ecirc;ncia, Merlijn Van Minderhout e Pascal Van Cauwenberghe, sobre novidades no <i>Agile</i>, transforma&ccedil;&otilde;es &aacute;geis bem sucedidas e as necessidades das organiza&ccedil;&otilde;es Europeias na ado&ccedil;&atilde;o do <i>Agile</i>.</p>
+<p><strong>InfoQ.com: Quais desenvolvimentos novos est&atilde;o ocorrendo nas comunidades &aacute;geis? Qual o motivo para os novos desenvolvimentos? Sabem o que est&aacute; causando isso?</strong></p>
+<blockquote> 
+ <p><strong>Pascal:</strong> Pode ser uma tend&ecirc;ncia em confirma&ccedil;&atilde;o, mas vejo mais sess&otilde;es sobre as praticas t&eacute;cnicas XP e trabalho com c&oacute;digo legado. Passamos por um per&iacute;odo de &quot;r&aacute;pido desenvolvimento&quot; em que a excel&ecirc;ncia t&eacute;cnica tem sido negligenciada, e agora todos estes projetos &quot;&aacute;geis&quot; podem ser paralisados devido a &quot;d&iacute;vida t&eacute;cnica&quot;. Isso &eacute; bom para perceber que mais e mais pessoas tomaram consci&ecirc;ncia do fato de que n&atilde;o h&aacute; como se manter &aacute;gil se n&atilde;o mantiverem c&oacute;digo male&aacute;vel.</p> 
+</blockquote>
+<p><strong>InfoQ.com: H&aacute; trilhas na confer&ecirc;ncia sobre assuntos t&eacute;cnicos, equipes e indiv&iacute;duos, processos e tamb&eacute;m clientes, e planejamento. Se uma transforma&ccedil;&atilde;o &aacute;gil precisasse considerar todas estas &aacute;reas, n&atilde;o seria muito dif&iacute;cil planejar e executar?</strong></p>
+<blockquote> 
+ <p><strong>Pascal:</strong> Em poucas palavras: sim. Em uma resposta mais longa: sim, e &eacute; por isso que &eacute; necess&aacute;ria uma abordagem sist&ecirc;mica (pensamento sist&ecirc;mico, pensamento complexo, teoria das restri&ccedil;&otilde;es…), para gui&aacute;-lo no entendimento do sistema e na percep&ccedil;&atilde;o de como est&atilde;o os pontos de alavancagem. N&atilde;o &eacute; somente um &quot;planejar e executar&quot;, mas um ciclo intermin&aacute;vel de: entender, planejar uma mudan&ccedil;a, realizar um experimento, e revisar. &Eacute; por isso que a organiza&ccedil;&atilde;o por tr&aacute;s do XP Days &eacute; chamada de &quot;Agile Systems&quot;: Pensamentos Sist&ecirc;micos + &Aacute;geis para construir sistemas &aacute;geis.</p> 
+</blockquote>
+<p><strong>InfoQ.com: &Agrave;s vezes ouvimos sobre transforma&ccedil;&otilde;es &aacute;geis que n&atilde;o s&atilde;o bem sucedidas. Sabem as raz&otilde;es pela qual falharam? E o que pode ser feito para aumentar as chances de sucesso com a ado&ccedil;&atilde;o do</strong> <strong>Agile</strong><strong>?</strong></p>
+<blockquote> 
+ <p><strong>Merlijn</strong>: Embora v&aacute;rias pr&aacute;ticas &aacute;geis terem pontos de partida simples, uma transi&ccedil;&atilde;o para o <i>Agile</i> n&atilde;o &eacute; simples. Como dito nas quest&otilde;es e respostas anteriores, envolve v&aacute;rias &aacute;reas. &Eacute; dai que surge a complexidade e &eacute; quando as coisas se tornam complexas: erros ser&atilde;o cometidos. E na verdade, cometer erros (ou n&atilde;o, de prefer&ecirc;ncia cedo e muitas vezes) &eacute; a chave para a aprendizagem efetiva e melhoria. Muitas organiza&ccedil;&otilde;es param no ponto em que falham, em vez de tom&aacute;-lo como um novo ponto de partida.</p> 
+</blockquote>
+<p><strong>InfoQ.com: A ado&ccedil;&atilde;o do</strong> <strong>Agile</strong><strong> na Europa &eacute; diferente se comparada a outros continentes? As organiza&ccedil;&otilde;es t&ecirc;m diferentes necessidades na Europa, ou abordagens diferentes que s&atilde;o usadas ​​pelos</strong> <strong>coaches</strong><strong> </strong><strong>&aacute;geis na Europa?</strong></p>
+<blockquote> 
+ <p><strong>Merlijn</strong>: J&aacute; vi v&aacute;rias diferen&ccedil;as dentro da Europa e mesmo em outro pa&iacute;s. A cultura de uma empresa tem uma grande influ&ecirc;ncia sobre a forma de abordar a mudan&ccedil;a &aacute;gil. Ter mente aberta, toler&acirc;ncia a erros, algu&eacute;m autorizado a falar, etc. Eu diria que a cultura da empresa tem mais influ&ecirc;ncia no sucesso da ado&ccedil;&atilde;o do <i>Agile</i> do que a sua localiza&ccedil;&atilde;o espec&iacute;fica no mundo. Claro que muitas vezes a cultura da empresa est&aacute; fortemente relacionada &agrave; cultura de um pa&iacute;s.</p> 
+</blockquote>
+<p><strong>InfoQ.com: A confer&ecirc;ncia XP Days Benelux cobre mais do que o XP, tamb&eacute;m vejo sess&otilde;es abrangendo Scrum, Kanban e mudan&ccedil;as organizacionais. J&aacute; consideraram alterar o nome da confer&ecirc;ncia?</strong></p>
+<blockquote> 
+ <p><strong>Pascal</strong>: sim, consideramos isso todos os anos. Est&aacute; se tornando um tipo de ritual. E sempre chegamos &agrave; mesma conclus&atilde;o (at&eacute; agora): o &quot;esp&iacute;rito XP&quot;, o valores do XP continuam importantes para n&oacute;s. Estes valores inspiram como organizamos o XP Days: simplicidade, <i>feedback</i>, comunica&ccedil;&atilde;o, respeito e coragem. Coragem para informar o que n&atilde;o funciona; coragem para estar aberto e tentar novas coisas; coragem para reconhecer o que n&atilde;o sabemos (ainda); coragem para ampliar as fronteiras, para sempre tentar fazer o melhor, para n&atilde;o estagnar no conservadorismo confort&aacute;vel. E no final do dia voc&ecirc; n&atilde;o constr&oacute;i sistemas com Post-its. Excelentes pr&aacute;ticas t&eacute;cnicas s&atilde;o um pr&eacute;-requisito para a agilidade sustent&aacute;vel.</p> 
+</blockquote>
+<p>A confer&ecirc;ncia ser&aacute; realizada nos dias 28 e 29 novembro, em Mechelen (B&eacute;lgica). XP Days Benelux &eacute; apoiada pela <a href="http://www.agilesystems.org/">Agile Systems</a>, uma organiza&ccedil;&atilde;o sem fins lucrativos cujos objetivos s&atilde;o desenvolver e difundir conhecimentos e experi&ecirc;ncias relacionadas aos m&eacute;todos &aacute;geis e pensamento sist&ecirc;mico. O InfoQ.com cobriu a confer&ecirc;ncia XP Days Benelux 2012 com not&iacute;cias sobre as <a href="http://www.infoq.com/news/2012/11/xpdays-benelux-day-1">sess&otilde;es do primeiro</a> e <a href="http://www.infoq.com/news/2012/11/xpdays-benelux-day-2">segundo dia</a>.</p><br><br><br><br><br><br></body></html>

@@ -1,21 +1,9 @@
-<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>Docker：具备一致性的自动化软件部署</h3><p>PaaS供应商<a href="https://www.dotcloud.com/">dotCloud</a>开源了自有平台上的关键组件<a href="https://github.com/dotcloud/docker/">Docker</a>。Docker是一种增加了高级API的LinuX Container（LXC）技术，提供了能够独立运行Unix进程的轻量级虚拟化解决方案。它提供了一种在安全、可重复的环境中自动部署软件的方式。</p> 
-<p>Docker使用标准化容器的概念，能够容纳软件组件及其依赖关系——二进制文件、类库、配置文件、脚本、Virtualenv、jar包、gem包、原始码等——而且可以在任何支持<a href="http://en.wikipedia.org/wiki/Cgroups">cgroups</a>的64位（针对x64）Linux内核上运行。这样的容器可以部署在笔记本、分布式基础架构、云端或是其他地方，其对环境的保留适用于广泛的用途：持续部署、Web部署、数据库群集、SOA等等，对此，<a href="http://www.kavistechnology.com/blog/docker-is-open-source/">Mike Kavis在他的博客中这样描述</a>：</p> 
-<p>作为应用开发者，与我相关的用例是使用Docker以简化持续交付过程。在我职业生涯中工作过的每个地方，在那些从大型机到客户端再到云端的岁月里，让不同的环境保持同步并成功测试应用简直是个噩梦。无论我们的流程有多好或者有多糟，在“Dev-QA-Stage-Prod（开发-质量保证-过渡-生产）”的迁移过程中的各个阶段里，代码<b>从来</b>就没有处于相同的环境。最后的结果就是，发布的产品总是出现质量问题。“它在测试阶段是好的”是仅次于“支票已经寄出了”（译者注：the check is in the mail为美国俚语，意指某件应该发生某事但实际情况却与之不符，最早是债务人用于缓和债权人的愤怒情绪的一种借口）的推脱借口。</p> 
-<p>在持续交付（CD）过程中，<i>整个环境</i>随着代码一起在“Dev-QA-Stage-Prod”的不同阶段间迁移。配置问题，系统环境不同的问题，借口都将不复存在。在CD过程中，如果代码在产品阶段出问题，那么在测试阶段也一样有问题。使用Docker的过程中，我知道能够通过编写脚本实现CD流程的自动化。我还知道，因为无需处理所有的安装和配置问题，随着创建新环境的速度加快，产品进入市场的速度也得到了提升。</p> 
-<p>dotCloud的CEO Solomon Hykes<a href="http://www.youtube.com/watch?feature=player_embedded&amp;v=wW9CAH9nSLs">在PyCon上演示了Docker</a>，宣称它是可重复的轻量级虚拟化解决方案，因为“它在进程层面是独立的，而且拥有自己的文件系统”。其API允许系统管理员对容器进行一系列操作：开始、停止、复制、等待、提交、关联标准流、列出文件系统变更等等。</p> 
-<p>Docker的<a href="https://github.com/dotcloud/docker/">主要特性</a>如下：</p> 
-<ul> 
- <li>文件系统隔离：每个进程容器运行在完全独立的根文件系统里。</li> 
- <li>资源隔离：可以使用cgroup为每个进程容器分配不同的系统资源，例如CPU和内存。</li> 
- <li>网络隔离：每个进程容器运行在自己的网络命名空间里，拥有自己的虚拟接口和IP地址。</li> 
- <li>写时复制：采用写时复制方式创建根文件系统，这让部署变得极其快捷，并且节省内存和硬盘空间。</li> 
- <li>日志记录：Docker将会收集和记录每个进程容器的标准流（stdout/stderr/stdin），用于实时检索或批量检索。</li> 
- <li>变更管理：容器文件系统的变更可以提交到新的映像中，并可重复使用以创建更多的容器。无需使用模板或手动配置。</li> 
- <li>交互式Shell：Docker可以分配一个虚拟终端并关联到任何容器的标准输入上，例如运行一个一次性交互shell。</li> 
-</ul> 
-<p>目前，Docker已在Ubuntu 12.04和12.10测试过，但dotCloud表示它应该能够在2.6.24或更高版本的Linux上运行。它还可以在Windows或Mac OS X中，使用<a href="http://www.vagrantup.com/">Vagrant</a>在<a href="https://www.virtualbox.org/">VirtualBox</a>的虚拟机里安装。Docker是用Go语言编写的，并使用了Linux的 <a href="http://blog.dotcloud.com/kernel-secrets-from-the-paas-garage-part-24-c">cgroup</a>、<a href="http://blog.dotcloud.com/under-the-hood-linux-kernels-on-dotcloud-part">namespacing</a>、支持写时复制特性的<a href="http://aufs.sourceforge.net/aufs.html">AUFS</a>文件系统以及<a href="http://lxc.sourceforge.net/">LXC</a>脚本。</p> 
-<p><b>查看英文原文：</b><a href="http://www.infoq.com/news/2013/03/Docker;jsessionid=85EDA67E3A0DC43FA96548D54C3D9D58">Docker: Automated and Consistent Software Deployments</a></p> 
-<hr /> 
-<p>感谢<a href="http://www.infoq.com/cn/bycategory.action;jsessionid=85EDA67E3A0DC43FA96548D54C3D9D58?authorName=康锦龙">康锦龙</a>对本文的审校。</p> 
-<p>给InfoQ中文站投稿或者参与内容翻译工作，请邮件至<a href="mailto:editors@cn.infoq.com">editors@cn.infoq.com</a>。也欢迎大家通过新浪微博（<a href="http://www.weibo.com/infoqchina">@InfoQ</a>）或者腾讯微博（<a href="http://t.qq.com/infoqchina">@InfoQ</a>）关注我们，并与我们的编辑和其他读者朋友交流。</p> 
-<p id="lastElm"></p><br><br><br><br><br><br></body></html>
+<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>Windows Azure SDK 2.2新增Visual Studio 2013、集成登录和过滤器支持</h3><p>微软发布了<a href="http://www.windowsazure.com/en-us/downloads/">Windows Azure SDK 2.2</a>，支持Visual Studio 2013，并直接在Visual Studio内部支持<a href="http://social.msdn.microsoft.com/Forums/windowsazure/en-US/50cc483c-6bb2-4e20-89a5-31f22abacd51/windows-azure-integrated-sign-in-windows-azure-tools-22-for-visual-studio?forum=windowsazuredevelopment">集成登录</a>。除了更新Azure PowerShell Cmdlets和ScriptCenter之外，最近的更新还在Visual Studio中提供了远程调试云服务和SQL数据库防火墙管理。</p>
+<p>最新版本支持集成登录，使开发人员可以在Visual Studio中开发、测试和管理Windows Azure资源，而无需下载或使用管理证书。为了连接到Windows Azure，开发人员需要在Visual Studio的服务器浏览器中右击Windows Azure图标，并在上下文菜单中选择“连接到Windows Azure”选项。</p>
+<p>如果使用集成登录功能，身份验证将由关联到开发人员账户的<a href="http://www.windowsazure.com/en-us/services/active-directory/">Windows Azure活动目录</a>负责处理。该功能不仅使组织和企业的开发人员可以在云上使用与本地开发相同的身份验证模型，而且还提高了安全性。</p>
+<p>通过在Visual Studio 2013的服务器浏览器中点击上下文菜单的“过滤器服务”选项，Windows Azure SDK 2.2允许开发人员过滤订阅服务/区域。它还允许开发人员在“证书”选项卡中使用管理证书功能来管理Windows Azure资源。它还具备远程调试云资源的能力，要做到这一点，需要在发布对话框向导的“常规设置”选项卡中将构建配置选成“调试”。</p>
+<p>最近的更新还提供了在Visual Studio中直接启用和配置安全防火墙的能力。在试图使用Visual Studio的服务器浏览器连接到SQL数据库时，开发人员将收到添加防火墙规则以允许本地IP地址访问的提示。</p>
+<p>随着最近的更新，微软还发布了一套预先配置好的Visual Studio 2013 VM镜像，供MSDN订阅者使用。这些镜像可以从Windows Azure管理门户上获得。另外，产品团队还发布了新的Windows Azure Management Libraries for .NET的预览版，提供了使用C#、VB、C++和F#等.NET语言中的任意一种自动化任务的能力。</p>
+<p><a href="http://weblogs.asp.net/scottgu/archive/2013/10/22/windows-azure-announcing-release-of-windows-azure-sdk-2-2-with-lots-of-goodies.aspx">Scott Guthrie</a>在其博客中研究了新的Windows Azure Management Libraries for .NET的使用方法。目前，该包可以从NuGet上获得。不过，由于该包还只是预览版，在检索包的时候，开发人员需要增加-IncludePrerelease开关。</p>
+<p>除了将Windows Azure PowerShell 0.7.0作为单独的下载外，微软还根据一项开源许可发布了Windows Azure SDK的源代码。PowerShell更新提供了对Windows Azure活动目录身份验证的支持，还提供了用于多媒体服务和SQL数据库的新Cmdlet，以及一个脚本库，其中包含了在Windows Azure上自动化常规任务的示例脚本。</p>
+<p><strong>查看英文原文：</strong><a href="http://www.infoq.com/news/2013/11/win-azure-sdk-2-2-vs2013-support">Windows Azure SDK 2.2 Adds Visual Studio 2013, Integrated Sign-in and Filter Support</a></p><br><br><br><br><br><br></body></html>
