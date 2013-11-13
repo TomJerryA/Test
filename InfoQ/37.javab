@@ -1,0 +1,151 @@
+<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>Deploying it right with AppVeyor CI and PowerShell</h3><h2>Introduction</h2>
+<p>You can find a lot of articles on how to make continuous delivery of a single ASP.NET web application. Many of those articles model a perfect world where a simple, a slightly-modified VS.NET template web application is deployed using Web Deploy. Everything works smoothly in a perfect world.</p>
+<p>Deploying real applications is hard. Questions arise when there are configuration settings in the Registry, custom folders structure, custom permissions, Windows services hosting WCF back-end or you have to deploy to a web cluster.</p>
+<p>In this article we look at the process of setting up continuous delivery for a solution consisting of ASP.NET web application and Windows service to a staging and production environments using PowerShell remoting and AppVeyor CI.</p>
+<h2>Solution overview</h2>
+<p>Our demo solution consists of four projects:</p>
+<ul> 
+ <li>DemoApp.Web - ASP.NET application, front-end</li> 
+ <li>DemoApp.Web.Tests - web application unit tests using VisualStudio testing framework</li> 
+ <li>DemoApp.Service - Windows service hosting WCF services, backend</li> 
+ <li>DemoApp.Service.Tests - Windows service unit tests using NUnit framework</li> 
+</ul>
+<p><img src="http://www.infoq.com/resource/articles/AppVeyor-CI/en/resources/image07.png" alt="" _href="img://image07.png" _p="true" /></p>
+<p>Demo application repository is hosted on <a href="https://bitbucket.org/appveyor/demoapp/src">BitBucket</a>:</p>
+<div id="lowerFullwidthVCR"></div>
+<h2>How are we going to deploy?</h2>
+<p>The first question - how are we going to deploy Windows service? We don’t have “Publish” menu on Windows service and we don’t have config transforms either! Web Deploy doesn’t work here.</p>
+<p>To automate project deployment we’ll use PowerShell deployment framework - <a href="https://github.com/AppVeyor/AppRolla">AppRolla</a>.</p>
+<p>AppRolla uses PowerShell remoting to execute deployment tasks on the target machine. Deployment task downloads application package, unpacks it, updates configuration settings and creates or updates application website and pool. Application package is just a zip with application folder contents uploaded to some external storage and available via HTTP. There is no magic at all - the module is written in PowerShell and could be easily explored or modified.</p>
+<p>To give you a sneak peek of PowerShell deployment let’s create a simple web application and deploy it to a server.</p>
+<p>Perhaps, the most challenging part in the whole process is setting up PowerShell remoting with SSL certificate. We strongly recommend using HTTPS to communicate with remote servers as all traffic is encrypted.</p>
+<p>When you create a new virtual machine on Windows Azure PowerShell remoting will be automatically enabled and configured. PowerShell remoting HTTPS endpoint port 5986 is allowed on firewall and we also add HTTP endpoint to our demo server:</p>
+<p><img src="http://www.infoq.com/resource/articles/AppVeyor-CI/en/resources/2image00.png" alt="" _href="img://2image00.png" _p="true" />&nbsp;<br /> For any other server you can follow this very detailed <a href="https://github.com/AppVeyor/AppRolla/wiki/Configuring-Windows-PowerShell-remoting">guide on how to configure PowerShell remoting</a>.</p>
+<p>To quickly install IIS 7.5 on demo machine we use this PowerShell command:</p>
+<pre>
+Add-WindowsFeature -Name Web-Default-Doc,Web-Dir-Browsing,Web-Http-Errors,Web-Static-Content,Web-Http-Logging,Web-Stat-Compression,Web-Filtering,Web-Net-Ext,Web-Net-Ext45,Web-Asp-Net,Web-Asp-Net45,Web-ISAPI-Ext,Web-Mgmt-Console</pre>
+<p>Let’s create a trivial web application with a single “Hello, world!” page and deploy it to the demo server.</p>
+<p>&nbsp;<img src="http://www.infoq.com/resource/articles/AppVeyor-CI/en/resources/image05.png" alt="" _href="img://image05.png" _p="true" /></p>
+<p>Create a new SimpleWebApp-1.0.zip archive with the first version of default.aspx inside.</p>
+<p>Now, we have to upload application package to some external storage to make it available from target server via HTTP. It could be a web server with FTP enabled, Amazon S3 or Azure blob storage. For our demo we are going to use DropBox. It provides public download links to any items in your DropBox folder.</p>
+<p>Copy SimpleWebApp-1.0.zip to your DropBox folder then right-click the file and select “Share DropBox link”. Open the link in the browser and copy URL of “Download” button:</p>
+<p><img src="http://www.infoq.com/resource/articles/AppVeyor-CI/en/resources/image02.png" alt="" _href="img://image02.png" _p="true" />&nbsp;<br /> Open PowerShell console “As administrator” and change execution policy to allow remote PowerShell scripts:</p>
+<pre>
+Set-ExecutionPolicy RemoteSigned</pre>
+<p>Install AppRolla.ps1 module (it will be installed to your user profile):</p>
+<pre>
+(new-object Net.WebClient).DownloadString(&quot;https://raw.github.com/AppVeyor/AppRolla/master/install.ps1&quot;) | iex</pre>
+<p>Import AppRolla module into your current session:</p>
+<pre>
+Import-Module AppRolla</pre>
+<p>AppRolla has two groups of cmdlets: configuration and deployment. You use configuration cmdlets to define your application and environments.</p>
+<p>Go ahead and add a new “SimpleWebApp” application with only single “website” role:</p>
+<pre>
+New-Application SimpleWebApp   <br />Add-WebsiteRole SimpleWebApp Web -PackageURL &quot;&lt;your-dropbox-download-link&gt;&quot;</pre>
+<p>Define “demo” environment with one server (enter demo server admin credentials when prompted - more about this later):</p>
+<pre>
+New-Environment demo   <br />Add-EnvironmentServer demo &quot;appveyor-demo.cloudapp.net&quot; -Credential (Get-Credential)</pre>
+<p>Deploy “SimpleWebApp” application to “Demo” environment as version 1.0:</p>
+<pre>
+New-Deployment SimpleWebApp 1.0 -to demo<br /></pre>
+<p><a href="/resource/articles/AppVeyor-CI/en/resources/image10.png" _href="resource://image10.png"><img src="http://www.infoq.com/resource/articles/AppVeyor-CI/en/resources/image10small3.jpg" alt="" _href="img://image10small3.jpg" _p="true" /></a></p>
+<p>(Click on the image to enlarge it)</p>
+<p>Voila! You just deployed web application to a demo server using PowerShell:</p>
+<p><img src="http://www.infoq.com/resource/articles/AppVeyor-CI/en/resources/image01.png" alt="" _href="img://image01.png" _p="true" /></p>
+<p>Now, let’s change page contents and deploy another version of our demo app. Change “Hello, world!” to “Hello, world 2.0!” Create a new SimpleWebApp-1.1.zip archive with changed default.aspx and upload to DropBox again.</p>
+<p>Update “website” role to change its package URL to a new value:</p>
+<pre>
+Set-WebsiteRole SimpleWebApp Web -PackageUrl &lt;public-URL-of-SimpleWebApp-1.1&gt;</pre>
+<p>and make a new deployment as version 1.1:</p>
+<pre>
+New-Deployment SimpleWebApp 1.1 -to demo</pre>
+<p><img src="http://www.infoq.com/resource/articles/AppVeyor-CI/en/resources/image09.png" alt="" _href="img://image09.png" _p="true" /></p>
+<p>As you can see from the log a separate folder is created for every new deployment in location c:\applications\&lt;application-name&gt;\&lt;role-name&gt;\&lt;version&gt;. By default, 5 previous deployments are stored on the target server, so the application could be easily rollback to previous version:</p>
+<pre>
+Restore-Deployment SimpleWebApp -on demo</pre>
+<p>To delete all application deployments from demo environment:</p>
+<pre>
+Remove-Deployment SimpleWebApp -from demo</pre>
+<p>We use simple, concise commands to the job!</p>
+<h2>Continuous builds with AppVeyor CI</h2>
+<p><a href="http://www.appveyor.com">AppVeyor CI</a> is a cloud-based continuous integration and deployment platform for Windows developers. It’s hosted, so you don’t need to install and configure it and it’s super easy to setup CI for your project. Oh, and forgot to mention that AppVeyor CI is free for open-source projects!</p>
+<p>To setup your project in AppVeyor CI its sources must be hosted in online source control repository like GitHub, BitBucket or Kiln. Both Git and Mercurial are supported.</p>
+<p>In our tutorial we use Mercurial repository hosted on BitBucket. BitBucket is pretty cool for commercial projects as it offers unlimited private repositories for free.</p>
+<h3>Enable NuGet restore</h3>
+<p>If your solution depends on NuGet package manager do not forget to enable NuGet restore to automatically download packages on build server. Use this <a href="http://docs.nuget.org/docs/workflows/using-nuget-without-committing-packages">guide to enable NuGet package restore</a> and make sure NuGet.exe inside .nuget folder is added to the repository.</p>
+<h3>Add new project</h3>
+<p>OK, let’s start by creating a new project:</p>
+<p><img src="http://www.infoq.com/resource/articles/AppVeyor-CI/en/resources/image03.png" alt="" _href="img://image03.png" _p="true" /></p>
+<p>Once the project is created a new web hook is automatically added to the project repository to kick-off new build on every push.</p>
+<h3>Build configuration and config transforms</h3>
+<p>When deploying with Web Deploy config transforms is a key part in application configuration process. For each environment you are going to deploy to you define a new VS.NET solution configuration and then use config transforms to generate web.config with database connection strings and other application settings specific for each environment. This approach seems natural, but has a number of disadvantages:</p>
+<ul> 
+ <li>Sensitive information like database connection strings is stored in a source control.</li> 
+ <li>Config transform is applied during the build and every time the project is deployed to a different environment it has to be re-built.</li> 
+</ul>
+<p>When deploying with AppVeyor config transforms are helpful, but not essential. By default, VS generates two configurations Debug and Release and this is perfectly OK for many cases. Debug configuration is used locally during development and Release configuration is used by CI process to produce a package that could be deployed to any environment. Config transforms should be “really” used to transform configuration file structure, such as disabling “debug” flag, enabling custom errors, disable tracing or replacing Autofac modules, i.e. configuration common for all environments.</p>
+<p>Go ahead and change project build configuration to Release on its settings page:</p>
+<p><img src="http://www.infoq.com/resource/articles/AppVeyor-CI/en/resources/image08.png" alt="" _href="img://image08.png" _p="true" /></p>
+<p>AppVeyor offers three build scenarios:</p>
+<ul> 
+ <li><b>Visual Studio solution</b> - runs MSBuild against VS.NET solution or project file (search for the first .sln or .*proj if not specified) and packages build results of all projects as artifacts.</li> 
+ <li><b>MSBuild</b> - runs MSBuild on your terms and allow to define custom build artifacts on “Packaging” page.</li> 
+ <li><b>Script</b> - runs specified PowerShell script or batch file. Gives maximum freedom in controlling build process and its results.</li> 
+</ul>
+<h3>Assemblies versioning</h3>
+<p>Every new project build receives a new version which format is specified on “General” tab.</p>
+<p>AppVeyor offers <a href="http://msdn.microsoft.com/en-us/library/System.Version.aspx">Windows style versioning</a> by default (major.minor.{build}.revision), but you can implement any, for example <a href="http://semver.org/">SemVer</a> (major.minor.patch.{build}).</p>
+<p>When “Update assembly version attributes” is enabled AppVeyor will patch all AssemblyInfo.* files in solution directory to set current version.</p>
+<h3>Running tests</h3>
+<p>AppVeyor could discover and run tests in assemblies using these testing frameworks:</p>
+<ul> 
+ <li>MSTest</li> 
+ <li>NUnit</li> 
+ <li>xUnit</li> 
+</ul>
+<p>When “Test” stage is enabled AppVeyor will analyze all assemblies in “out” folder to check if they have references to any supported testing framework. If they do all tests within the assembly will be run using appropriate test runner. Test results from all assemblies are aggregated and shown on UI:</p>
+<p>(Click on the image to enlarge it)</p>
+<p><a href="/resource/articles/AppVeyor-CI/en/resources/image04.png" _href="resource://image04.png"><img src="http://www.infoq.com/resource/articles/AppVeyor-CI/en/resources/image04-small.jpg" alt="" _href="img://image04-small.jpg" _p="true" /></a></p>
+<h3>Build. Test. Package!</h3>
+<p>OK, now let’s kick-off a new build by pushing some changes to a repository or clicking “New build” button.</p>
+<p>For our demo project the build process produced two artifacts: web application and Windows service. Download them to check their contents - they are just regular zips with application files!</p>
+<p>As Windows service package is just basically contents of its “bin” folder to produce a package for web application there are more steps involved:</p>
+<ol> 
+ <li>Web application is built as part of solution.</li> 
+ <li>A new publishing profile with “File system” publishing method is created and WAP project is published using MSBuild and this profile to make sure <b>web.config transforms and other publishing settings are applied</b>.</li> 
+ <li>Published web application is packaged to a zip.</li> 
+</ol>
+<p>Artifacts are stored in Geo-redundant cloud storage and available by unique private download links. To have your own artifacts naming structure and to enable public access you can configure a custom storage.</p>
+<h2>Deploying successful builds to staging</h2>
+<p>Now, let’s setup automated deployment to staging as part of the build process.</p>
+<p>Deployment should be done in a script that can be PowerShell or batch file. Create “deployment” folder in the root of solution repository to hold our deployment scripts.</p>
+<p>Open PowerShell console, navigate to “deployment” folder and run the following command to download template scripts into to current directory:</p>
+<pre>
+(new-object Net.WebClient).DownloadString(&quot;https://raw.github.com/AppVeyor/Deployment/master/install.ps1&quot;) | iex</pre>
+<p>There are three scripts will be added: configure.ps1, project.ps1 and deploy.ps1.</p>
+<p>Basically, to setup deployment we have to edit only one file - project.ps1. This file defines environments we are going to deploy to. Uncomment the line next to new staging environment and add our demo server:</p>
+<pre>
+New-Environment Staging  <br />Add-EnvironmentServer Staging “appveyor-demo.cloudapp.net”</pre>
+<p>Go back to AppVeyor CI and open “Deployment” tab of project settings.</p>
+<p>Select “Run deployment script” and specify script path:</p>
+<pre>
+deployment\deploy.ps1</pre>
+<p>Set the following deployment variables:</p>
+<pre>
+Environment: Staging   <br />ServerUsername: &lt;target-server-username&gt;   <br />ServerPassword: &lt;target-server-password&gt;   <br />ApiAccessKey: &lt;your-appveyor-api-access-key&gt;  <br />ApiSecretKey: &lt;your-appveyor-api-secret-key&gt;</pre>
+<p><img src="http://www.infoq.com/resource/articles/AppVeyor-CI/en/resources/image06small.png" alt="" _href="img://image06small.png" _p="true" />&nbsp;<br /> Both ServerUsername and Password are used to create Credential object for authenticating calls via PowerShell remoting. API keys are required for: a) reading project artifacts to get their package URLs and b) authenticating target server to download artifact packages. AppVeyor API keys could be found on “API Keys” tab of your user profile.</p>
+<p>That’s it! Commit “deployment” folder and push it to repository to start a new build with deployment.</p>
+<h2>How to update connection string in web.config?</h2>
+<p>Deployment variables are passed to the script in $variables parameter which represents a hashtable. To make additional configuration values available to the application or role use “Configuration” parameter for Set-Application, Set-WebsiteRole or Set-ServiceRole cmdlets. Open project.ps1 and add the following statement:</p>
+<pre>
+Set-WebsiteRole $projectName DemoApp.Web -Configuration @{   <br />    “ConnectionStrings.DefaultConnection” = $variables.DefaultConnection   <br />}</pre>
+<p>Then define “DefaultConnection” variable on Deployment settings screen to pass connection string for web application.</p>
+<p>Deployment script applies role configuration to web.config for web apps and app.config for Windows apps using the following rules:</p>
+<ul> 
+ <li>Setting with name “ConnectionStrings.&lt;name&gt;” updates connection string with &lt;name&gt; name in “connectionStrings” section.</li> 
+ <li>Setting with name “AppSettings.&lt;name&gt;” updates “appSettings” value with &lt;name&gt; name.</li> 
+</ul>
+<h2>Conclusion</h2>
+<p>In this article we are not trying to downplay Web Deploy tool which might work well for your web application. But if your project is beyond of a blueprint web application that must be deployed to a clustered environment or you need more flexibility and control over the deployment process it’s definitely worth considering alternative solution like PowerShell remoting. This could be especially appealing for developers with PowerShell skills or those ones using PSake.</p>
+<h2>About the Author</h2>
+<p>​<img src="http://www.infoq.com/resource/articles/AppVeyor-CI/en/resources/Feodor-Gravatar-300.png" vspace="3" hspace="3" align="left" alt="" _href="img://Feodor-Gravatar-300.png" _p="true" /><strong>Feodor Fitsner</strong> is a .NET developer with entrepreneur spirit, being around Windows Web platform for more than 10 years now. Feodor's newest project is Appveyor CI - hosted Continuous Integration solution for .NET developers. Prior to AppVeyor Feodor developed DotNetPanel control panel for Windows hosting and then was working at Microsoft in Azure org.</p><br><br><br><br><br><br></body></html>

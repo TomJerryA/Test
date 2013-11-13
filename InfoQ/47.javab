@@ -1,0 +1,52 @@
+<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>Securing Servers in the Cloud: An Interview With Trend Micro</h3><p>What’s the best way to protect servers in the cloud? How can you account for the transient nature of cloud servers and provide the same protection in the cloud as on on-premises? To find out, InfoQ spoke with Mark Nunnikhoven, principal engineer of cloud &amp; emerging technologies at <a href="http://www.trendmicro.com/us/index.html">Trend Micro</a>. You can find Mark on Twitter as <a href="https://twitter.com/marknca">@marknca</a>.</p>
+<p><b>InfoQ: Where is “cloud security” both more, and less, mature than what we do in on-premises data centers?</b></p>
+<blockquote> 
+ <p>The approach to data center security is pretty mature. There are a few basic design constructs that can be manipulated to meet the specific needs. Most data centers have a defined perimeter, a slow growing inventory and clearly defined processes in place to facilitate changes. The key in this space is control of the entire environment.</p> 
+ <p>In a cloud model, especially public clouds, there is a lot more flexibility. A different security approach is essential because the users and cloud provider share the security responsibilities. It is essential to step back and look at what aspects of the deployment you trust and to what level. There is a decided lack of centralized enforcement of security controls. Security can still be managed centrally by using a product like <a href="http://deepsecurity.trendmicro.com/">Deep Security</a>, but its enforcement is spread through your computing assets.</p> 
+ <p>We’re still exploring what approaches work for what scenarios in the cloud and this is the biggest shift. In the data center, your application is forced into a specific protection paradigm. In the cloud, it’s the other way around. Your security paradigm is adapting to the specifics of your application.</p> 
+</blockquote>
+<p><b>InfoQ: How does the idea of cloud encryption change in light of spying concerns? Does the customer need complete control of keys?</b></p>
+<blockquote> 
+ <p>The recent revelations to the mainstream regarding the level of spying occurring have definitely raised client awareness of the issues around key management. This question is being asked more and more often, but, unfortunately, the answer is unique for each situation because there are so many factors at play.</p> 
+ <p>From a high-level perspective, companies follow the laws in the country (or countries) where they operate, and if your keys and data are under the same jurisdiction, it isn’t difficult for a third-party with sufficient resources to obtain both. In my opinion, it is best to have data in one jurisdiction while having keys under the care of another. This is both a legal and technical challenge to maintaining control of your information.</p> 
+</blockquote>
+<div id="lowerFullwidthVCR"></div>
+<p><b>InfoQ: What does Trend Micro – and others in this space – add to basic cloud security capabilities? When would someone be ok sticking with the “out of the box” experience offered by AWS?</b></p>
+<blockquote> 
+ <p>In my opinion, you are never ok sticking with the “out of the box” experience offered by AWS. AWS themselves operate under a shared responsibility model. They provide world class security up to operating system level. After that, it’s the client’s responsibility to provide security.</p> 
+ <p>AWS provides some tools such as IAM, security groups and network ACLs to help, but you still need to understand how they work. A simple example is an application that accepts file uploads. You can configure every tool AWS provides and your application will still be at risk by users potentially uploading something malicious or unintentionally dangerous.</p> 
+</blockquote>
+<p><b>InfoQ: How do products like the Deep Security offering from Trend Micro assist hybrid cloud scenarios?</b></p>
+<blockquote> 
+ <p>A hybrid cloud scenario is one division of your computing assets; whether it is an AWS instance, a virtual machine or your physical computer. The challenge is that each provider and environment has a different security profile.</p> 
+ <p>Is your backup data center’s firewall configured the same as your primary data center? What about your AWS security groups? Azure? Rackspace? There is a significant amount of effort required to ensure you are uniformly enforcing your security policy.</p> 
+ <p>Deep Security solves this challenge by centralizing the management and enforcement of your security policy. Define it once, regardless of where the agent is located, and the same level of security is applied to all.</p> 
+</blockquote>
+<p><b>InfoQ: How do you account for the transient nature of cloud servers that may be online one hour and off the next? Does that make it harder to secure and track?</b></p>
+<blockquote> 
+ <p>The transient nature of a cloud server does make it harder to track. Most security tools weren’t developed with the idea of a server existing for only 15 minutes. This challenge, however, is a not difficult to overcome. We as an industry, must approach the problem from a different angle than we are used to.</p> 
+ <p>A good approach to the problem is the one we took in Deep Security. Our cloud connector technologies automatically track your AWS instances as they come and go, no intervention needed. Once an instance is terminated, it is removed from your active inventory within Deep Security. You still maintain a full audit trail, but it will not show up as “missing” like it would in traditional tools.</p> 
+</blockquote>
+<p><b>InfoQ: Do cloud server agents behave differently from on-premises server agents? Or are they expected to run regardless of environment?</b></p>
+<blockquote> 
+ <p>We don’t see a big difference in the behavior of cloud server agents when compared to on-premise agents. Deep Security and SecureCloud (our encryption product) were built to work in massive virtualized environment that exhibit a lot of the same behaviors as public clouds.</p> 
+ <p>With a solid design for agent and manager communications, you should not see much of a difference.</p> 
+</blockquote>
+<p><b>InfoQ: How do agents work with the newer class of container-based frameworks (LXC, Docker, Warden) that run on Linux? There’s more focus on virtualizing applications, not entire servers, so how does cloud security change to accommodate this?</b></p>
+<blockquote> 
+ <p>This is a fantastic question. There’s a lot of excitement around containerization right now and rightfully so. Agents still play a role here and they are the best solution around today. These containers still run on top of operating systems, they just hide that level from the application.</p> 
+ <p>I think this is just another example of pushing security further down the stack. With public cloud deployments, we know a lot of clients aren’t particularly engaged in security. They want a strong level of protection behind their deployments, but only want to interact with it when there’s an issue that can’t be solved automatically.</p> 
+ <p>When it comes to containers, I believe we will see a push to blend security into the container primitives. The container will be able to say, “I need the following types of protection” and the platform running the agent will adapt to provide it.</p> 
+</blockquote>
+<p><b>InfoQ: Is there application awareness needed so that a firewall port is open for one app but not another?</b></p>
+<blockquote> 
+ <p>If you had asked me this question two years ago, I would have said an unequivocal “yes,” but now I am not so sure. It is a great capability and can definitely be of use, but we are seeing more and more of one-application systems, so it is not as urgent a requirement as it once was.</p> 
+ <p>In a container scenario like we previous discussed, “per container” awareness will be key, but in today’s public cloud environment we are more likely to see separate instances for each application.</p> 
+</blockquote>
+<p><b>InfoQ: Is an “auto update” capability a must for products that go on cloud servers?</b></p>
+<blockquote> 
+ <p>Absolutely. The biggest push we have seen within the cloud is for fully automated security. With applications scaling up and down as demand requires, users can’t afford to manually update software. Users need to be able to simply state the requirement for a particular product and always have it up to date.</p> 
+ <p>A good example of this in action is the approach we took with the Deep Security Agent. Sure, you can pre-install it on your image and activate it each time you launch a new instance. You can even update it from the manager. But it is far more effective to install and activate it on the fly as new instances launch.</p> 
+</blockquote>
+<h2>About the Interviewee</h2>
+<p><b><img align="left" _p="true" _href="img://Mark_Nunnikhoven.jpg" alt="" src="http://www.infoq.com/resource/articles/security-trend-micro/en/resources/Mark_Nunnikhoven.jpg" />Mark Nunnikhoven</b> is the principal engineer, cloud &amp; emerging technologies, at <a href="http://www.trendmicro.com/us/index.html">Trend Micro</a>. He works with Trend Micro’s R&amp;D group to provide research and help drive innovation on cloud security and usable security systems. He brings more than 15 years of experience in a variety of IT roles – from service delivery to application development to security engineering – to his position at Trend Micro. Mark is an active member for the IEEE and Consortium of Digital Forensics Specialists (CDFS) and holds a number of security certifications and an MSc in information security with a specialization in digital forensics. You can follow Mark on Twitter <a href="http://twitter.com/marknca">@marknca</a>.</p><br><br><br><br><br><br></body></html>

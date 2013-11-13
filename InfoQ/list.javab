@@ -1,6 +1,42 @@
 <html>
  <head></head> 
- <body> 
+ <body>
+  <div>
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/47.javab">Securing Servers in the Cloud: An Interview With Trend Micro</a> 
+  </div>
+  <div>
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/46.javab">Agile Fluency: Finding Agile That's Fit-for-Purpose</a> 
+  </div>
+  <div>
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/45.javab">What to Use on the Microsoft Stack</a> 
+  </div>
+  <div>
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/44.javab">Practical MQTT with Paho</a> MQTT is making the Internet of Things an interoperable and flexible world where the smallest devices can talk to the largest of servers. This article presents the Eclipse Paho project. 
+  </div>
+  <div>
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/43.javab">An interview with Vasco Duarte and Jason Little on Lean Change Management by Happy Melly Express</a> InfoQ interviewed Vasco Duarte on a new publishing business that aims to connect authors with their audience in a sustainable way, and with Jason Little, author about Lean Change Management. 
+  </div>
+  <div>
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/42.javab">API Business Models: 20 Models in 20 Minutes</a> In this keynote from the 2013 API Strategy Conference, John Musser, founder of ProgrammableWeb, reviews the API business models that have been adopted by the worlds leading technology companies. 
+  </div>
+  <div>
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/41.javab">Scrum Master: Position or Role?</a> A Scrum delivery team needs a dedicated Scrum Master. But as the team matures, is this still the case? This article proposes alternatives for mature delivery teams. 
+  </div>
+  <div>
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/40.javab">Interview with Joel Murach - Author of Murach's Android Programming</a> In this review, Anand reviews the recently released Murach's Android Programming authored by Joel Murach. 
+  </div>
+  <div>
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/39.javab">The Integration of Agile and the Project Management Office</a> Agile and the PMO are no longer diametrically opposed. With an ever-changing business landscape, organisations must adopt more nimble approaches, making Agile more suitable than people think. 
+  </div>
+  <div>
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/38.javab">Java 7 Features Which Enable Java 8</a> In this article, Ben Evans explores some features in Java 7 which lay the groundwork for the new features in Java 8. 
+  </div>
+  <div>
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/37.javab">Deploying it right with AppVeyor CI and PowerShell</a> Deploying real applications is hard. Questions arise when there are Registry settings, custom folders structure, or web clusters. Here we look for answers using PowerShell and AppVeyor CI. 
+  </div>
+  <div>
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/36.javab">What Do You Look For In a Servant Leader?</a> In this article, let’s discuss the kind of qualities, preferences, and non-technical skills you might need in a servant leader. 
+  </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/35.javab">9 Fallacies of Java Performance</a>Over the past 18 years Java has evolved into the premiere language of the enterprise. Yet cognitive fallacies persist about Java performance. In this article we examine some popular misconceptions. 
   </div> 

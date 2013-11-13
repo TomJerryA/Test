@@ -1,0 +1,67 @@
+<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>Java 7 Features Which Enable Java 8</h3><p>It's a truism of the tech industry that developers are never happier than when there's free beer or an opportunity to complain about something on offer.</p>
+<p>So despite the efforts of Mark Reinhold and the Java team to involve the community in the roadmap after the Oracle acquisition <a href="http://www.infoq.com/news/2010/09/jdk7-slip">(the Plan A / Plan B decision)</a>, many Java developers feel that Java 7 was &quot;not much of a release&quot;.</p>
+<p>In this article, I'll try to refute this thesis, by exploring the features in Java 7 which lay the groundwork for the new features in Java 8.</p>
+<h2>Diamond operator</h2>
+<p>Java has often been criticised for being overly verbose. One of the most common areas where this complaint is expressed is in assignment. In Java 6, we are forced to write assignment statements like this:</p>
+<p><small><b>Map&lt;String, String&gt; m = new HashMap&lt;String, String&gt;();</b></small></p>
+<p>This statement contains a lot of redundant information - we should be able to somehow have the compiler figure out more of this by itself, and not require the programmer to be quite so explicit.</p>
+<div id="lowerFullwidthVCR"></div>
+<p>In fact, languages like Scala do a large amount of type inference from expressions, and in fact assignment statements can be written as simply as this:</p>
+<p><small><b>val m = Map(&quot;x&quot; -&gt; 24, &quot;y&quot; -&gt; 25, &quot;z&quot; -&gt; 26);</b></small></p>
+<p>The keyword val indicates that this variable may not be reassigned to (like the keyword final for Java variables). No type information is specified about the variable at all - instead the Scala compiler examines the right-hand side of the assignment and determines the correct type for the variable by looking at which value is being assigned.</p>
+<p>In Java 7, some limited type inference capabilities were introduced, and assignment statements can now be written like this:</p>
+<p><small><b>Map&lt;String, String&gt; m = new HashMap&lt;&gt;();</b></small></p>
+<p>The key differences between this and the Scala form is that in Scala, values have explicit types, and it is the type of variables that is inferred. In Java 7, the type of variables is explicit, and type information about values is what is inferred.</p>
+<p>Some developers have complained that they would have preferred the Scala solution, but it turns out to be less convenient in the context of a major feature for Java 8 - lambda expressions.</p>
+<p>In Java 8, we can write a function which adds 2 to an integer like this:</p>
+<p><small><b>Function&lt;Integer, Integer&gt; fn = x -&gt; x + 2;</b></small></p>
+<p>The interface Function is new with Java 8 - it resides in the package java.util.function, along with specialized forms for primitive types. However, we've chosen this syntax as it is very similar to the Scala equivalent and allows the developer to see the similarities more easily.</p>
+<p>By explicitly specifying the type of fn as a Function which takes one Integer argument and returns another Integer, then the Java compiler is able to infer the type of the parameter x - Integer. This is the same pattern that we saw in Java 7 diamond syntax - we specify the types of variables, and infer the type of values.</p>
+<p>Let's look at the corresponding Scala lambda expression:</p>
+<p><small><b>val fn = (x : Int) =&gt; x + 2;</b></small></p>
+<p>Here, we have to explicitly specify the type of the parameter x, as we don't have the precise type of fn, and so we have nothing to infer from. The Scala form is not hugely difficult to read, but the Java 8 form has a certain cleanliness of syntax which can be directly traced back to the diamond syntax of Java 7.</p>
+<h2>Method Handles</h2>
+<p>Method Handles are simultaneously the most important new feature of Java 7, and the one which is least likely to feature in the day-to-day life of most Java developers.</p>
+<p>A method handle is a typed reference to a method for execution. They can be thought of as &quot;typesafe function pointers&quot; (for developers familiar with C/C++) or as &quot;Core Reflection reimagined for the modern Java developer&quot;.</p>
+<p>Method handles play a huge part in the implementation of lambda expressions. Early prototypes of Java 8 had each lambda expression converted to an anonymous inner class at compile time.</p>
+<p>More recent betas are more sophisticated. Let's start by recalling that a lambda expression (at least in Java) comprises a function signature (which in the method handles API will be represented by a MethodType object) and a body, but not necessarily a function name.</p>
+<p>This suggests that we could convert the lambda expression into a synthetic method which has the correct signature and which contains the body of the lambda. For example, our example:</p>
+<p><small><b>Function&lt;Integer, Integer&gt; fn = x -&gt; x + 2;</b></small></p>
+<p>is turned by the Java 8 compiler into a private method with this bytecode:</p>
+<pre>
+ private static java.lang.Integer lambda$0(java.lang.Integer);
+   descriptor: (Ljava/lang/Integer;)Ljava/lang/Integer;
+   flags: ACC_PRIVATE, ACC_STATIC, ACC_SYNTHETIC
+   Code:
+    stack=2, locals=1, args_size=1
+      0: aload_0
+      1: invokevirtual #13 // Method java/lang/Integer.intValue:()I
+      4: iconst_2
+      5: iadd
+      6: invokestatic #8 // Method java/lang/Integer.valueOf:(I)Ljava/lang/Integer;
+      9: areturn</pre>
+<p>This has the correct signature (takes in an Integer, and returns another one), and semantics. To use this lambda expression, we will take a method handle which refers to it and use it to build an object of the appropriate type, as we'll see in the next feature we discuss.</p>
+<h2>invokedynamic</h2>
+<p>The final feature of Java 7 that opens the door for Java 8 is even more esoteric than method handles. This is the new bytecode invokedynamic - the first new bytecode to be added to the platform since Java 1.0. This feature is almost impossible for Java developers to make use of in version 7, because version 7 javac will not, under any circumstances, emit a classfile which contains it.</p>
+<p>Instead, the bytecode was designed for use by developers of non-Java languages, such as JRuby, which require much more dynamic dispatch than Java. To see how invokedynamic works, let's discuss how Java's method calls are compiled into bytecode.</p>
+<p>A standard Java method call will be turned into a piece of JVM bytecodes which is often referred to as a call site. This comprises a dispatch opcode (such as invokevirtual, for regular instance method calls) and a constant (an offset into the Constant Pool of the class) which indicates which method is to be called.</p>
+<p>The different dispatch opcodes have different rules that govern how method lookup is done, but until Java 7 the constant was always a straightforward indication of which method was to be called.</p>
+<p>invokedynamic is different. Instead of providing a constant which directly indicates which method is to be called, invokedynamic instead provides an indirection mechanism that allows user code to decide which method to call at runtime.</p>
+<p>When an invokedynamic site is first encountered, it does not have a known target yet. Instead, a method handle (called a bootstrap method) is invoked. This bootstrap method returns a CallSite object, which contains another method handle, which is the actual target of the invokedynamic call.</p>
+<p>1) invokedynamic site encountered in the execution stream (initially unlinked) 2) Call bootstrap method and return a CallSite object 3) CallSite object contains a method handle (the target) 4) Invoke the target method handle</p>
+<p>The bootstrap method is the way in which user code chooses which method needs to be called. For lambda expressions, the platform uses a library-supplied bootstrap method called a lambda meta-factory.</p>
+<p>This has static arguments which contain a method handle to the synthesized method (see last section), and the correct signature for the lambda.</p>
+<p>The meta-factory returns a CallSite that contains a method handle which will in turn return an instance of the correct type that the lambda expression has been converted to. So a statement like:</p>
+<p><small><b>Function&lt;Integer, Integer&gt; fn = x -&gt; x + 2;</b></small></p>
+<p>is converted to an invokedynamic call like this:</p>
+<pre>
+Code:
+  stack=4, locals=2, args_size=1
+     0: invokedynamic #2, 0 // InvokeDynamic #0:apply:()Ljava/util/function/Function;
+     5: astore_1</pre>
+<p>The invokedynamic bootstrap method is the static method LambdaMetafactory.metafactory(), which returns a CallSite object which is linked to a target method handle, which will return an o bject which implements the Function interface.</p>
+<p>When the invokedynamic instruction is complete, an object which implements Function and which has the lambda expression as the contents of its apply() method is sat on top of the stack, and the rest of the code can proceed normally.</p>
+<h2>Conclusion</h2>
+<p>Getting lambda expressions into the Java platform was always going to be a challenging endeavour, but by ensuring that the proper groundwork was in place, Java 7 eased that effort considerably. Plan B not only provided developers with the early release of Java 7 but also allowed core technologies to be made fully road-tested before their use in Java 8 and especially in lambda expressions.</p>
+<h2>About the Author</h2>
+<p><strong><img src="http://www.infoq.com/resource/articles/Java-7-Features-Which-Enable-Java-8/en/resources/Ben-Evans.jpg" vspace="3" hspace="3" align="left" alt="" _href="img://Ben-Evans.jpg" _p="true" />Ben Evans</strong> is the CEO of jClarity, a startup which delivers performance tools to help development &amp; ops teams. He is an organizer for the LJC (London JUG) and a member of the JCP Executive Committee, helping define standards for the Java ecosystem. He is a Java Champion; JavaOne Rockstar; co-author of “The Well-Grounded Java Developer” and a regular public speaker on the Java platform, performance, concurrency, and related topics.</p><br><br><br><br><br><br></body></html>
