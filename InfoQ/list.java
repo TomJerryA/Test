@@ -1,6 +1,15 @@
 <html>
  <head></head> 
- <body> 
+ <body>
+  <div>
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/31.java">GenMyModel: An Online Real-time Collaborative UML Designer</a>This article contains an interview on GenMyModel’s architecture, technology used and future.
+  </div>
+  <div>
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/30.java">Xamarin’s Rough Transition to 64-bit iOS/OSX</a>In order to support 64-bit iOS and OSX, Xamarin has to make some breaking changes to the way it implements the mapping between C# and Objective-C libraries. Rather than being mapped to 32-bit types, NSInteger and CGFloat are now mapped to the new platform-specific data types nint and nfloat.
+  </div>
+  <div>
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/29.java">Google Releases Dart 1.0</a>Two years after its initial announcement and preview release, Lars Bak announced the first stable release of Dart at Devvox in Belgium today. Dart is Google’s new web programming language and platform for developing modern web applications.
+  </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/28.java">Android Gets Better with App Translation Service</a>Google has officially released its translation service for Android app which enables developers to localize the apps in various languages based on the guidelines in the localization checklist document. 
   </div> 
@@ -141,15 +150,6 @@
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/33.java">LeanSentry Adds Smart Alerts, Error Highlighting and Classic ASP Support</a>LeanSentry, formerly Sentinel has been updated with support for smart alerts, error highlighting, enhanced dashboard, classic ASP support in addition to several diagnostics features. 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/32.java">Asynchronous Gotchas in C#</a>Sometimes the best way to understand pitfalls in one language is to see how another language prevents them. Tomas Petricek, author of Real-World Functional Programming, discusses seven common mistakes found in asynchronous C# code and demonstrates how F# makes them less likely to occur. 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/31.java">Dart's M4 Release Stabilizes Core Libraries</a>The Google Dart team has released milestone 4 of its SDK. While the language had already stabilized in previous milestones, this M4 release stabilizes some core libraries. Performance has also improved. The DartVM, which runs Dart natively, is now between 160% (for the DeltaBlue benchmark) and 200% (for the Richards benchmark) faster than v8. The release also includes the faster dart2js compiler. 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/30.java">Release of the Microsoft Script Explorer Canceled</a>Microsoft has canceled the release of their Script Explorer. This tool was designed to make it easier to find PowerShell scripts located in either public repositories (e.g. TechNet Script Center and PoshCode) or a company’s internal collection. 
-  </div> 
+  </div>    
  </body>
 </html>

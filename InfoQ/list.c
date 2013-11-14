@@ -1,6 +1,9 @@
 <html>
  <head></head> 
- <body> 
+ <body>
+  <div>
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/27.c">Uma introdu&ccedil;&atilde;o a redes neurais utilizando C#</a>Em sua apresenta&ccedil;&atilde;o no evento Build 2013, Introdu&ccedil;&atilde;o a Redes Neurais Utilizando C#, o Dr. James McCaffrey apresentou os conceitos de redes neurais dando aos espectadores uma base s&oacute;lida para um estudo mais aprofundado sobre o tema.
+  </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/26.c">Google Play 4.0: Compra Instant&acirc;nea, propaganda e diversas melhorias</a>O Play Services n&atilde;o suportar&aacute; mais os dispositivos com vers&otilde;es anteriores ao Gingerbread, o Mobile Ads SDK foi inclu&iacute;do no Play 4.0 e o Compra Instant&acirc;nea com o Google Wallet oferece aos comerciantes um novo sistema de pagamento integrado. 
   </div> 
@@ -147,9 +150,6 @@
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/28.c">Software Craftsmen s&atilde;o Egoc&ecirc;ntricos?</a>Em um recente post em seu blog, Ted Neward apontou um lado negro no movimento Software Craftsmanship. De acordo com Neward, a comunidade dos &quot;artes&atilde;os de software&quot; imp&otilde;e uma segrega&ccedil;&atilde;o &agrave; comunidade de desenvolvimento, separando-a entre os craftsmen e os trabalhadores comuns. 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/27.c">Wikimedia adota gera&ccedil;&atilde;o de templates baseada em Lua</a>A Wikimedia adotou a linguagem de programa&ccedil;&atilde;o Lua para gera&ccedil;&atilde;o dos templates de p&aacute;ginas utilizados em diversos sites baseados no MediaWiki. 
-  </div> 
+  </div>  
  </body>
 </html>

@@ -1,7 +1,4 @@
-<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>BDD工具Cucumber开发团队扩大且修复了大量Bug</h3><p><a href="https://github.com/aslakhellesoy">Aslak Helles&oslash;y</a>在上周举行的<a href="http://skillsmatter.com/event/agile-testing/cukeup-2013">Cucumber会议日</a>上谈论Cucumber生态系统时透露，作为一个行为驱动开发（<a href="http://en.wikipedia.org/wiki/Behavior-driven_development">BDD</a>）工具，<a href="http://cukes.info/">Cucumber</a>项目最近扩充了其开发团队，并且通过过去两个月的突击工作解决了大量的开放bug。</p> 
-<p>谈及一封询问Cucumber是否是一个死项目的email时，该项目的创建者和核心开发者Aslak坦诚地说，该项目在过去两年中确实进行缓慢，这从Ruby版本中持续增长的开放bug数就能看出来。但是事情现在发生了转变，一个新的更加庞大的团队已经形成，同时在过去的两个月里差不多有150个bug已经被关闭，将开放bug的数量降低到了20，将解决bug花费的平均时间缩短为了40天。</p> 
-<p>除了新团队之外，今年的工作重点包括两个方面：设计一个新的Gherkin解析器提升Cucumber的内部质量从而能够更容易地修复报告bug；改善现在过于庞杂的wiki文档。根据计划，wiki将迁移到新的web文档网站，从夏天开始wiki将退出舞台。为了实现这个目标，团队需要社区的帮助，引用Aslak的一句话就是“如果所有使用Cucumber的人都能够贡献一个段落，那么这项工作就能完成”。</p> 
-<p>社区能够帮助解决的另外两个常见的问题是：在Cucumber论坛中回答问题而不是等待“权威的”答案；将与Selenium和Maven等工具相关的问题重定向到正确的论坛。这样能够节省团队的时间，使其专注于代码。</p> 
-<p>Cucumber是一个开源的行为驱动开发（BDD）工具，目前支持9种编程语言，包括Ruby、基于JVM的语言和JavaScript。同时，借助于<a href="http://www.specflow.org/">SpecFlow</a>项目可以使用同样的Gherkin语法支持.NET语言。</p> 
-<p><b>查看英文原文</b>：<a href="http://www.infoq.com/news/2013/04/cucumber-ecosystem;jsessionid=7A2F0F79FF11841E2F9D176464AA71E8"><b>BDD Tool Cucumber with a Larger Team and Numerous Bugs Fixed</b></a></p> 
-<p id="lastElm"></p><br><br><br><br><br><br></body></html>
+<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>PostgreSQL再次引入了HStore</h3><p>PostgreSQL 9.4将会再次引入HStore作为文档类型数据的可选列类型。它取代了PostgreSQL在版本9.0中引入的JSON支持。作为一种基于字符串的表示，JSON比二进制结构的HStore要慢很多。同时通过添加布尔类型和整型的支持，新的HStore在语义上等价于JSON。在实际应用中，这样做能够仅通过一个类型转换操作符完成不同格式之间的双向转化。</p>
+<p>最初的HStore格式要回溯到2003年，那时候引入它还仅仅是为了存储键-值对。在这个版本之前，我们还不能使用它来存储类树结构的数据，例如从JSON中发现的那些。</p>
+<p>早期的性能测试结果很理想。根据<a href="http://www.sai.msu.su/~megera/postgres/talks/hstore-dublin-2013.pdf">Oleg Bartunov和Teodor Sigaev提供的介绍</a>，PostgreSQL的新HStore格式在数据加载测试上击败了MongoDB，结果是76秒对8分钟。使用良好调整的索引读取时，PostgreSQL运行测试花费了0.672毫秒，而MongoDB花费了1毫秒。当然，这些报告都是PostgreSQL提供的，还需要由外部的研究者验证。</p>
+<p><b>查看英文原文</b>：<a href="http://www.infoq.com/news/2013/11/Nested-Hstore">Reintroducing Hstore for PostgreSQL</a></p><br><br><br><br><br><br></body></html>

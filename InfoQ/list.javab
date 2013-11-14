@@ -1,6 +1,9 @@
 <html>
  <head></head> 
- <body> 
+ <body>
+  <div>
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/48.javab">Interview with Simon Brown about Sustainable Competence</a> Why are some teams successful while others are less than stellar? Can teams use processes to do their work? How can managers help teams to become better? And do we need incentives to improve the quality of software? InfoQ did an interview with Simon Brown about sustainable competence for continuous improvement, balancing people and processes, and software quality and architecture. 
+  </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/47.javab">Securing Servers in the Cloud: An Interview With Trend Micro</a> 
   </div> 

@@ -1,14 +1,14 @@
 <html>
  <head></head> 
- <body>
-  <div>
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/47.py">モバイルHTML5の問題は？</a>最近のリサーチによると、HTML5の主な問題は一般的に信じられているパフォーマンスではなく、むしろプロファイルやデバッグのためのツール不足と確かなAPIの欠如にあるようだ。
-  </div>
-  <div>
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/46.py">Octokit.NETは.NET Framework 4.5アプリケーションへのGitHubインテグレーションを可能にする</a>GitHubが.NET Framework 4.5アプリケーションへのGitHub APIのインテグレーションを可能にするOctokit.NETをリリースした。これにはFullBuild MSBuildターゲットとOctokit.Tests.Integrationアセンブリを使うことでAPIにアクセスするインテグレーションテストも含まれている。
-  </div>
-  <div>
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/45.py">OpenHABがEclipse SmartHomeとしてEclipseに移行</a>昨日のEclipseConでKai Kreuzer氏がEclipse SmartHome(旧名OpenHAB)のプレゼンテーションを行った。SmartHomeはスマートアプライアンスを統合し，Javaサービスから集中コントロールするサーバコンポーネントで，OSGiおよびEclipse Equinoxをベースに構築されている。どのようなもので，どのように動作するか，今回の記事で確認してほしい。
+ <body> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/47.py">モバイルHTML5の問題は？</a>最近のリサーチによると、HTML5の主な問題は一般的に信じられているパフォーマンスではなく、むしろプロファイルやデバッグのためのツール不足と確かなAPIの欠如にあるようだ。 
+  </div> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/46.py">Octokit.NETは.NET Framework 4.5アプリケーションへのGitHubインテグレーションを可能にする</a>GitHubが.NET Framework 4.5アプリケーションへのGitHub APIのインテグレーションを可能にするOctokit.NETをリリースした。これにはFullBuild MSBuildターゲットとOctokit.Tests.Integrationアセンブリを使うことでAPIにアクセスするインテグレーションテストも含まれている。 
+  </div> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/45.py">OpenHABがEclipse SmartHomeとしてEclipseに移行</a>昨日のEclipseConでKai Kreuzer氏がEclipse SmartHome(旧名OpenHAB)のプレゼンテーションを行った。SmartHomeはスマートアプライアンスを統合し，Javaサービスから集中コントロールするサーバコンポーネントで，OSGiおよびEclipse Equinoxをベースに構築されている。どのようなもので，どのように動作するか，今回の記事で確認してほしい。 
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/44.py">Internet Explorer 11、新しいF12ツール、タッチ改善、WebGL、WebCrypto 、ハードウェア3Dサポートを追加</a>Windows 8.1に搭載されたInternet Explorer 11には、タッチ改善に加えて、新しいF12ツール、WebGL、ハードウェア3Dサポートが含まれている。 
@@ -150,6 +150,6 @@
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/48.py">特許所有者がTCP/IPの知的所有権を主張</a>テキサス州オースティンに本拠を置くネットワークハードウェアベンダが，TCP/IP プロトコルセットの実装に対してロイヤリティを求めると発言している。かつて Dellor という社名だったこの KCIR Networks は，1997年に Comer Labs を買収した際にこの特許を合わせて取得した。特許が出願されたのは 1975年だが，Comer Labs がこれまでにロイヤリティを要求したことはなかった。 
-  </div>    
+  </div> 
  </body>
 </html>

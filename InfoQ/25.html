@@ -1,43 +1,35 @@
-<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>基于经验的SOA成功原则</h3><p>多年以来，我们对<a href="http://www.infoq.com/soa/;jsessionid=9469A5E9FEF8735D80A6B31455A786E0">SOA 原则</a>这一主题以及什么会促进SOA成功，什么会阻碍SOA实施等内容都进行过很多相关的报道。从初期的狂热宣传，到大规模企业的实施、Web服务以及较近期REST带来的影响力。我们可以通过这7年来的文章，对SOA的演进进行追溯。然而，在此期间的成功案例却通常少之又少，据一些数据表明仅有<a href="http://www.infoq.com/news/2008/07/Only1;jsessionid=9469A5E9FEF8735D80A6B31455A786E0">20%的SOA项目获得了成功</a>。其中包括了<a href="http://www.infoq.com/news/2009/01/soa-case-study-cisco;jsessionid=9469A5E9FEF8735D80A6B31455A786E0">CISCO</a>和 <a href="http://www.infoq.com/presentations/SOA-eBay;jsessionid=9469A5E9FEF8735D80A6B31455A786E0">eBay</a>等几个著名的成功案例。</p> 
-<p>InfoQ英文站编辑<a href="http://www.infoq.com/author/Jean~Jacques-Dubray;jsessionid=9469A5E9FEF8735D80A6B31455A786E0">Jean-Jacque Dubray</a>不仅帮助我们追溯了SOA在那段岁月的发展，也分享了不少他的个人观点。他对SOA起到了积极的影响并基于SOA原则部署过很多成功的系统。通过基于这些经验背景的思考，Jean-Jacques（JJ）最近在<a href="http://www.ebpml.org/blog2/index.php/2013/02/21/four-principles-to-succeed-at">博客中发表</a>了他所信奉的四条促进SOA成功的原则：</p> 
-<p>1. 服务接口应该与服务实现解耦</p> 
-<ol start="2"> 
- <li>所有业务逻辑应该标准化</li> 
- <li>变更一个服务应该是非常容易的</li> 
-</ol> 
-<ol> 
- <ul> 
-  <li>在服务消费者准备就绪之前，服务变更对消费者来说应该是不可见的</li> 
-  <li>当服务消费者准备就绪之后，服务变更应该是易于消费的</li> 
- </ul> 
-</ol> 
-<ol start="4"> 
- <li>服务版本控制应该基于兼容性</li> 
-</ol> 
-<p>JJ认为只要你在所有设计和开发阶段一贯地遵守这些原则，成功的机率将会大大提升。虽然这些原则相对来说比较容易理解，但遗憾的是他没有对所列举的这些原则进行更详细的阐述。对于“服务接口”，JJ补充道：</p> 
-<blockquote> 
- <p>大部分人在SOA中遭遇了失败，因为他们认为服务是一种抽象，就好比OO中的“类”。但实际上服务接口是一种契约，通过它可以暴露和控制变更。[...]不要在你的服务边界（service boundaries）上耗费太多精力，应尽可能的将更多的精力花在构建最好的服务接口上（也就是指有效地管理变更）。</p> 
-</blockquote> 
-<p>然而，JJ所做的工作还涉及到围绕SOA相关的其他一些领域，这些领域在过去的时间里也曾引起了很多人的关注。其中包括治理（governance），对此他建议道：</p> 
-<blockquote> 
- <p>不要“过度治理”，治理应该保持最小化并且是基于短期内（3-6个月）的合乎情理的共识。而数据治理（Data Governance）则更为重要，因为你的信息模型发生的任何变更通常都会对服务接口造成影响。</p> 
-</blockquote> 
-<p>松耦合通常作为成功SOA的核心组成部分而被人们广为称道，对于如何实现松耦合，JJ建议道：</p> 
-<blockquote> 
- <p>对消费者交互环境的管理不涉及接口背后的业务逻辑实现。在接口消费者中，不出现重复的涉及对各类记录系统状态管理的业务逻辑。</p> 
-</blockquote> 
-<p>服务复用通常是SOA中另一个被认为非常重要，然而也很难实现的领域。<a href="http://www.infoq.com/news/2009/07/service-reuse;jsessionid=9469A5E9FEF8735D80A6B31455A786E0">早在2009年的时候</a>，我们就援引过Burton的Richard Watson曾经说过的一段话：</p> 
-<blockquote> 
- <p>一个服务可能永远不会被复用，但是我们仍然可以通过其他方式来创造价值：通过适应性和低成本的维护来减少冗余；通过对既定策略的贯彻执行来提升安全性和依从性，以上列举了一些我们期望得到的其他成果。而过于专注在复用上将会蒙蔽我们的双眼，从而导致我们无法看到这些其他的成果。</p> 
-</blockquote> 
-<p>而JJ也赞同这一点：</p> 
-<blockquote> 
- <p>没有人会指望今天构建的一个服务会在从现在开始的三年内被持续的新消费者们不断消费，这是荒唐的想法。如果你想以这种方式进行复用，那么你迟早会失败并最后得出一个例如“SOA不起作用了”这样的愚蠢结论。对于SOA（在现实世界中也是如此）的复用，它是以另外一种方式进行的：并不是一个新的消费者复用一个老的服务；几乎都是一个服务的新版本（变更以支持新消费者）在不打断老消费者的情况下被消费者复用。</p> 
-</blockquote> 
-<p>事实上在2009年的文章中，JJ曾对此有过以下评论：</p> 
-<blockquote> 
- <p>大多数的人仍然无法理解的是：在SOA中的“复用”并不是人们通常听到的“复用”，对它们的理解是不一样的。在SOA中的复用是向前复用（forward reuse），而例如我今天早上听到的复用则是向上复用（upward reuse）。在SOA中，复用意味着为新消费者构建的服务新版本并不会打断现有的老消费者。对于认为某人能在今天设计出一个服务并且可以在两年内被一直“复用”这种想法，很大程度上来说是个幻想。在SOA中，较老的消费者可以“复用”那些为最新消费者而创建的服务新版本。</p> 
-</blockquote> 
-<p>正如最初所提到的，所有这些原则和思想都受到了JJ在这个领域中多年经验的影响。其他人对于这些问题又是怎么认为的呢？你愿意也来分享一下你的经验吗?</p> 
-<p><b>查看原文链接</b>：<a href="http://www.infoq.com/news/2013/02/succeed-soa;jsessionid=9469A5E9FEF8735D80A6B31455A786E0">http://www.infoq.com/news/2013/02/succeed-soa</a></p> 
-<p id="lastElm"></p><br><br><br><br><br><br></body></html>
+<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>我们为何放弃Eclipse，投奔IntelliJ IDEA</h3><p><a href="http://plumbr.eu/about-us">Nikita Salnikov Tarnovski</a>是<a href="http://plumbr.eu/">plumbr</a>的高级开发者，也是一位应用性能调优的专家，他拥有多年的性能调优经验与Java开发经验。很长时间以来，Tarnovski及plumbr的诸多开发者一直在使用<a href="http://www.eclipse.org/">Eclipse</a>进行应用开发，不过随着时间的发展，现在plumbr的很多人都开始放弃Eclipse，转而投向<a href="http://www.jetbrains.com/idea/">IntelliJ IDEA</a>的怀抱。Tarnovski也因此专门<a href="http://plumbr.eu/blog/why-we-dropped-eclipse-in-favour-of-intellij">撰文</a>谈到这个转型背后的原因，并详尽对比了Eclipse与IDEA的各项功能。</p>
+<blockquote>
+  首先说一下背景：长久以来，我们plumbr的所有人一直都在使用Eclipse进行应用开发。不过现在在办公室放眼望去，我发现整个团队都变成了IntelliJ IDEA的用户。那么是什么促成了这种转变，让我们从免费的工具转而投向了每年需要花费600美金才能使用的工具呢？下面我就来谈谈这背后的几个原因，看过之后也许你也会开始考虑转变了。
+</blockquote>
+<p>一段时间以来，我的朋友<a href="https://twitter.com/antonarhipov">Anton Arhipov</a>一直在说服我使用IntelliJ IDEA，一开始我压根就听不进去，直到有一次他使用了快捷键<a href="http://www.jetbrains.com/idea/webhelp/keyboard-shortcuts-you-cannot-miss.html">ALT+ENTER</a>才真正触动了我。根据文档所述，这个快捷键貌似也没什么，只不过是提供了建议的快速修复而已。不过在这个特性背后的诸多IntelliJ特性却让我感到非常振奋。</p>
+<p><b>索引。</b>不知道JetBrains的那帮家伙在背后到底是怎么做的，它的索引真是太快了，并且支持不同的内容。快速索引的好处体现在几个不同的可用性特性上：</p>
+<ul> 
+ <li>在敲入代码时，警告就会立刻出现：在Eclipse中，你需要手动进行分析，不过在IntelliJ中，这种信息反馈却是即时的。</li> 
+ <li>代码完成与代码生成：由于非常快速的索引，这种支持的速度要快上几个数量级。我猜你们肯定都记得在使用List时，Eclipse中那个臭名昭著的<a href="http://docs.oracle.com/javase/7/docs/api/java/awt/List.html">java.awt.List</a>自动导入吧，Eclipse花了好几年才消除这个Bug。在使用IntelliJ时就绝不会遇到这种问题。</li> 
+ <li>ALT+ENTER提供的修复：这个特性真的非常棒，在很多场景下都提供了巨大的帮助，真是震到我了。有时，我甚至怀疑他们是不是在我旁边安插了一个<a href="https://www.mturk.com/mturk/welcome">亚马逊土耳其机器人</a>监视我的输入——IntelliJ给出的建议实在是太帅了。</li> 
+</ul>
+<p><img src="http://infoqstatic.com/resource/news/2013/11/why-drop-eclipse-use-intellij/zh/resources/1.PNG" alt="" _href="img://1.PNG" _p="true" /></p>
+<p><b>语言支持。</b>IntelliJ在处理不同内容类型的方式上看起来是那么自然和统一。无论我使用Java、JavaScript，还是HTML或是JPA查询，IntelliJ提供的语法支持都是那么棒，并且我所执行的操作在各种语言间也是高度统一的。每次从Java切换到其他语言时，我都不需要学习新的快捷键。IntelliJ提供的代码完成支持，特别是对JavaScript的支持是Eclipse力所不逮的，Eclipse在这方面没法与IntelliJ相提并论。</p>
+<p><b>透视图。</b>实际上，IntelliJ并没有提供什么透视图的概念。当我在处理不同的内容时，Eclipse总是试图为我提供“最佳的透视图”。对于我来说，我看到的只是每次从开发切换到调试或是重构透视图时，屏幕的布局就会变得一团糟，Eclipse每次这么做都会让我心烦意乱。IntelliJ则针对操作提供了一个专门的与内容相关的窗口，这让我感到非常舒服，我也很喜欢IntelliJ的这种处理方式。</p>
+<p><b>调试器。</b>IntelliJ的调试器快得没法说，我也不打算再使用Eclipse的调试透视图了。它所提供的特性集也很不错，我最喜欢的是“Smart step into”，这样如果一行中存在多个方法调用，我就可以选择进入到哪个方法中了。</p>
+<p><b>支持。</b>Eclipse是由一个基金会提供支持的。这本身没什么问题，不过这个基金会的不同利益集团会使得管理与执行变得有些困难。对于我这样一个开发者来说，直接的结果就是看到Eclipse对于问题的支持要推迟几个星期，甚至不了了之。IntelliJ则不存在这样的问题，我的问题总是能得到及时的回答，他们也不会互相扯皮。</p>
+<p>下面我再列出几个最近发现的不错的小特性：</p>
+<ul> 
+ <li>JPA查询语法会在输入时得到纠正。这可以给我节省大量的时间，不用非得等到运行时才检查错误。</li> 
+ <li>属性文件集成。在属性文件中，我可以看到某个属性在源代码的哪个地方被使用了，还能快速检测出未被使用的属性。</li> 
+ <li>与不同浏览器的集成。为了测试HTML，我可以从IDE中启动不同的浏览器，这样就不必再单独打开浏览器和测试了。</li> 
+ <li>从IDE中可以直接看到CSS颜色，因此无需再打开浏览器查看了。</li> 
+</ul>
+<p><img src="http://infoqstatic.com/resource/news/2013/11/why-drop-eclipse-use-intellij/zh/resources/2.PNG" alt="" _href="img://2.PNG" _p="true" /></p>
+<p>我可以保证，在你IntelliJ一个月的试用期结束后就再也不想回到过去了。不过坦诚地说，我还漏掉了Eclipse的一个特性——“保存动作”。在按下快捷键CTRL+S时可以创建一系列的触发动作，比如说可以组织导入、完成代码格式化以及添加@Override注解，一切都是自动进行的，这一点我还没有在IntelliJ中发现。</p>
+<p>虽然我们还没有度量从Eclipse转移到IntelliJ之后生产力是否有了提升，不过我们非常喜欢手头上的这个新工具。我们也深信，好的工匠需要用最好的工具才能创造出最棒的艺术品。</p>
+<p>读者Alexandro Blanco给出了这样的留言：</p>
+<blockquote>
+  我使用Eclipse有8年多的时间，前一阵转向了IntelliJ进行Android开发（Android Studio），现在在公司从事Web开发使用的是NetBean。我要说的是，一旦突破使用上的障碍，这两款IDE都要好于Eclipse。
+</blockquote>
+<p>读者Pron则说到：</p>
+<blockquote>
+  我同时在使用IntelliJ与NetBeans（很长时间以前就放弃了Eclipse），很多时候我更喜欢NetBeans。它更加漂亮、整洁、并且与Gradle集成度更好，这正是我急需的，不过IntelliJ对于Clojure则提供了完美的支持。
+</blockquote>
+<p>诸位InfoQ读者，相信国内的开发者还是使用Eclipse的居多。目前，占据主流市场的Java IDE有NetBeans、Eclipse与IntelliJ IDEA，其中前两个是免费的，而IntelliJ IDEA则提供了免费的社区版与收费的旗舰版，社区版在功能上会有一些限制。国内也有一些公司采用IntelliJ IDA进行开发，还有些开发者使用过其中两种，甚至多种IDE。那么你觉得从功能上、特性上、使用便利性上、速度上、以及更新发展等角度来看，哪个IDE是你最心仪的呢？原因有哪些？哪个IDE提供了其他IDE没有提供的优秀特性呢？对于多语言支持，哪个IDE又更胜一筹呢？欢迎各位读者一起讨论。</p><br><br><br><br><br><br></body></html>

@@ -1,6 +1,9 @@
 <html>
  <head></head> 
- <body> 
+ <body>
+  <div>
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/11.htmlb">你要招聘怎样的Scrum Master？</a> 你是否注意过近期的各种招聘Scrum Master的广告呢？某些招聘广告将PMP认证作为应聘的必要条件，某些招聘条件则表示如果你能够在指定时间内完成某个项目，或者满足了某客户的需求，则能够提供额外的奖金。 
+  </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/10.htmlb">Datomic信息模型</a> Clojure的作者Rich Hickey在本文中介绍了Datomic的信息模型，Datomic是一种新型数据库，它被设计为一系列简单服务的组合，并结合了关系型数据库管理系统的能力与NoSQL的可伸缩性。 
   </div> 
@@ -147,9 +150,6 @@
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/12.htmlb">自动化构建：一致性关键之道</a>如果有那么一件事软件开发人员很在行，那一定是将通常需要人工完成的任务自动化。让计算机处理重复乏味的任务将使得大家生活得更轻松，这里我们讨论的是如何让大家专注于他们所关心的事情。然而，研发团队时常会忽略那个最有帮助的受众—他们自己。 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/11.htmlb">深入理解Java内存模型（五）——锁</a>Java线程之间的通信对程序员完全透明，内存可见性问题很容易困扰Java程序员，本文试图揭开Java内存模型神秘的面纱。本文大致分三部分：重排序与顺序一致性；三个同步原语（lock，volatile，final）的内存语义，重排序规则及在处理器中的实现；Java内存模型的设计目标，及其与处理器内存模型和顺序一致性内存模型的关系。 
-  </div> 
+  </div>  
  </body>
 </html>
