@@ -1,7 +1,7 @@
 <html>
  <head></head> 
- <body>
-  <div>
+ <body> 
+  <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/11.htmlb">你要招聘怎样的Scrum Master？</a> 你是否注意过近期的各种招聘Scrum Master的广告呢？某些招聘广告将PMP认证作为应聘的必要条件，某些招聘条件则表示如果你能够在指定时间内完成某个项目，或者满足了某客户的需求，则能够提供额外的奖金。 
   </div> 
   <div> 
@@ -150,6 +150,6 @@
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/12.htmlb">自动化构建：一致性关键之道</a>如果有那么一件事软件开发人员很在行，那一定是将通常需要人工完成的任务自动化。让计算机处理重复乏味的任务将使得大家生活得更轻松，这里我们讨论的是如何让大家专注于他们所关心的事情。然而，研发团队时常会忽略那个最有帮助的受众—他们自己。 
-  </div>  
+  </div> 
  </body>
 </html>

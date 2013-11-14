@@ -1,24 +1,12 @@
-<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>JSON校验综述</h3><p>我们所创建的任何“灵活”或“可扩展的”文件格式，迟早都会因为校验的问题而遭受开发者们的抱怨。在处理校验问题方面有着很多的工具，但是通常可以将它们归为以下几类：</p> 
-<ul> 
- <li>判断数据是否已被正确格式化</li> 
- <li>手动检查形式有误的数据并尝试纠正</li> 
- <li>手动检查形式有误的数据并将有误数据丢弃</li> 
- <li>自动检查形式有误的数据</li> 
-</ul> 
-<p>这篇文章的目的并非为了讨论这些选项，而是对自动校验方面的可用工具包进行了一些总结。</p> 
-<p><b>JSON Schema</b></p> 
-<p><a href="http://json-schema.org/implementations.html">JSON Schema</a> 是一个建议标准，并且已得到了17个不同项目的支持。它可在JavaScript、Java、Python、 Ruby、Perl、 PHP、.NET、ActionScript、C、 Haskell和Erlang等技术中使用。这种格式比VeriJSON更加复杂，模式与实际数据之间的关系几乎很难找到相似之处。然而它的功能也更加广泛，具备支持范围检查的数字、可限制的列表以及在列表中防止重复条目等功能。它同样还支持对<a href="http://json-schema.org/example2.html">其他模式</a><a href="http://json-schema.org/example2.html">的引用</a>，允许你将大型模式拆分成一个个较小的模式。</p> 
-<p><b>Atdgen</b></p> 
-<p>Atdgen对OCaml提供了JSON的序列化与反序列化支持。JSON的模式是使用atd文件创建的。通过一个代码生成器运行这些文件就可以生成OCaml类文件和匹配的对象/JSON转换器。在Atdgen中，校验是在反序列化过程中进行的。</p> 
-<p>atd文件中的校验规则是开放的，开发者可以直接在atd文件中注入任意他们想要的OCaml代码。它支持对二级模式文件的引用。</p> 
-<p><a href="http://mjambon.com/atdgen">Atdgen</a> 基于开源许可可用。</p> 
-<p><b>DataContractJsonSerializer</b></p> 
-<p><a href="http://msdn.microsoft.com/en-us/library/system.runtime.serialization.json.datacontractjsonserializer.aspx">DataContractJsonSerializer</a>基于WCF的DataContractSerializer，它使用类定义和数据契约属性来确定一个JSON文件应该如何进行校验和最终的反序列化。这种方式适合于基本的任务，但是也明显地显现出了性能问题，在字典方面也存在难点。它的校验非常受限于基本结构。</p> 
-<p><b>Json.NET</b></p> 
-<p>James Newton-King的Json.NET是迄今为止最具综合性的JSON序列化和反序列化工具。像DataContractJsonSerializer一样，Json.NET可以使用类来定义它的模式。你可以任意选择使用标准WCF数据契约属性或<a href="http://james.newtonking.com/projects/json/help/index.html?topic=html/SerializationAttributes.htm">JSON.NET 的序列化属性</a>，同时它还支持了大量的类型，包括DataTable 和 nHibernate实体。而就在这个月，<a href="http://james.newtonking.com/archive/2013/04/07/json-net-5-0-release-1-net-4-5-biginteger-read-only-collections.aspx">JSON.NET 5.0</a> （通过BigInteger）支持了无大小限制的整数以及以IEnumerable构造器方式暴露的只读集合（collection）。</p> 
-<p>JSON.NET同样支持通过JSON Schema进行校验。</p> 
-<p><b>VeriJSON</b></p> 
-<p>VeriJSON是一个依赖于基于模式匹配的Objective-C库。模式本身以JSON的方式编写。支持的类型有“number”、“string”、“bool”和“url”。字符串可以通过一个正则表达式来进行约束，而url则可以通过模式进行约束（例如：http，ftp）。以结构化的方式表现数组和对象，并支持可选的属性。</p> 
-<p><a href="https://bitbucket.org/dcutting/verijson">VeriJSON</a>基于开源许可可用。</p> 
-<p><b>英文原文链接</b>：<a href="http://www.infoq.com/news/2013/04/JSON-Validation;jsessionid=2B7CF64A427CBA004904F29E04677746">JSON Validation Roundup</a></p> 
-<p id="lastElm"></p><br><br><br><br><br><br></body></html>
+<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>瞻博网络发布首款软件定义网络软件——OpenContrail</h3><p>基于经授权的<a href="http://en.wikipedia.org/wiki/Apache_License">Apache v2</a>开源软件许可，瞻博网络<a href="http://newsroom.juniper.net/press-releases/juniper-networks-introduces-opencontrail-an-open--nyse-jnpr-1050858">发布</a>了他们自己的软件定义网络解决方案——<a href="http://opencontrail.org/">OpenContrail</a>。这意味着在软件定义网络范畴，除了<a href="http://www.infoq.com/news/2013/08/vmware-networking-storage-sdcc">上个月</a>在VMworld发布的Vwware <a href="http://www.vmware.com/products/nsx/">NSX</a>解决方案之外，大家多了种开源解决方案的选择。</p>
+<p>正如NSX一样，OpenContrail允许在软件虚拟软件切换及虚拟化环境路由两个方面，提供了技术支撑——通过使用通用路由封装（<a href="http://en.wikipedia.org/wiki/Generic_Routing_Encapsulation">GRE</a>）或虚拟可扩展局域网（<a href="http://en.wikipedia.org/wiki/VXLAN">VXLAN</a>）技术提供了覆盖式网络模式。另一方面，OpenContrail也和NSX方案一样能够控制基于网络设备的硬件。 两个平台方案的根本区别在于两者与编排系统（orchestration systems）的连接方式。OpenContrail被设计为能够在<a href="http://www.openstack.org/">OpenStack</a>云管理平台上工作，而NSX是和Vmware的云自动化中心（vCAC）相连。</p>
+<p>OpenContrail作为服务项目的<a href="https://wiki.openstack.org/wiki/Neutron">中子网络</a>（以前称作为量子）供应方与OpenStack整合。称作为“北向（North Bound）”的API直接为应用程序整合提供了可行性，人们将此阐述为<a href="http://opencontrail.org/network-virtualization-architecture-deep-dive/">网络虚拟架构</a>的深入研究。</p>
+<p>OpenContral的核心技术来自与去年瞻博网络所收购的Contrail系统公司，一家由几名瞻博网络公司前雇员创立的软件定义网络（SDN）作为前身。该系统最不同于其他软件定义网络（SDN）方法的地方在于：对应用程序需求及网络能力可管理化方面，系统大大依赖了内部数据模型的使用。</p>
+<p>由思科网络的首席技术官Padamasree Warrior的博客——<a href="http://blogs.cisco.com/datacenter/limitations-of-a-software-only-approach-to-data-center-networking/">Limitations of a Software-Only Approach to Data Center Networking</a>中可以看出，思科在刻意地淡化软件定义网络（SDN）对网络的影响。但不幸的是，这篇<a href="https://www.networkworld.com/community/blog/response-padma-warriors-limitations-software-only-approach-data-center-networking">博客</a>似乎忽略了这样一个事实即NSX不仅仅是款软件，它同样可以用来管理硬件。网络工业评论员——Art Fewell在他的文章中也揭示了这点。瞻博网络同它的最大竞争对手一起为市场推出了这款等同于NSX的开源软件——OpenContrail，这无疑对思科网络产生了巨大的压力，并作用于那些生存在思科网络生态系统之下的产品或公司。</p>
+<p>OpenContrail声明中遗漏的一点是，这份声明并未提及关于创建一个基于“北向（North Bound）”API的开源的实现方法。而这个方法是开放网络基金会（<a href="https://www.opennetworking.org/">ONF</a>）所推进的平面控制协议——OpenFlow或Linux基金会的OpenDaylight的初步方案中的涉及项。瞻博网络此前曾声明将支持<a href="http://en.wikipedia.org/wiki/Openflow">OpenFlow</a>及<a href="http://www.opendaylight.org/">OpenDaylight</a>。在这方面，瞻博网络更胜VMware一筹。然而正因为OpenFlow源自NSX的一个主要组成部分——Nicira，但从NSX的发布声明中并未提及对OpenFlow的支持。同样的，尽管VMware是OpenDaylight项目的成员之一，但在自己的产品上市之前VMware并未选择开放API源码。</p>
+<p>penContrail的API由内部<a href="http://opencontrail.org/opencontrail-architecture-documentation/#section3">数据模型</a>产生，并且支持创建、读取、更新及删除（CRUD）操作，而这些操作通过一个表述性状态转移（RESTful）的接口完成。该项目同样提供了对Python、C++及JavaScript的绑定。应用程序能够直接与API交互，而不需要通过编排系统。借此，InfoQ编辑联系了瞻博网络的首席架构师及软件定义网络（SDN）的首席技术官（CTO）——Kireeti Kompalla了解到关于如何处理多个主体的具体细节：</p>
+<blockquote>
+  所有的数据模型操作，一旦被验证通过并确认，最终写入一个数据库。该数据库呈现层次化结构。因此当编排程序打算为某个项目创建一个新的虚拟网络时，它就必须询问该项目之下已经定义了哪些虚拟网络。
+</blockquote>
+<p>值得注意的是，OpenContrail通过一种分布式哈希表（<a href="http://en.wikipedia.org/wiki/Distributed_hash_table">DHT</a>）NoSQL方式来访问数据库以防止单点失败。</p>
+<p><b>查看英文原文：</b><a href="http://www.infoq.com/news/2013/09/open-contrail-sdn">Juniper Launches OpenContrail for Software Defined Networking</a></p><br><br><br><br><br><br></body></html>

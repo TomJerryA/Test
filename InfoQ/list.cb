@@ -1,6 +1,9 @@
 <html>
  <head></head> 
- <body> 
+ <body>
+  <div>
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/23.cb">Java 7: Uma vis&atilde;o detalhada da nova API de arquivos</a> O Java 7 introduziu o novo pacote de I/O (entrada/sa&iacute;da) de arquivos que oferece um controle refinado sobre as funcionalidades do sistema de arquivos, particularmente para os sistemas com base no POSIX. Esse artigo apresenta uma introdu&ccedil;&atilde;o inicial da nova API e depois explora em detalhes utilizando um exemplo de projeto web para gerenciamento de arquivos, chamado WebFolder. 
+  </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/22.cb">An&aacute;lise do Livro LogStash: Gerenciamento de logs de forma simples</a> O uso de ferramentas como cat, tail, sed awk, perl e grep n&atilde;o escala para um n&uacute;mero maior de hosts e tipos variados de arquivos de log. Neste livro, James Turnbull argumenta de forma convincente pela utiliza&ccedil;&atilde;o do LogStash para centraliza&ccedil;&atilde;o de logs, explicando detalhes de sua implementa&ccedil;&atilde;o dentro do contexto de um projeto de tratamento de logs. 
   </div> 

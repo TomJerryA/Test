@@ -1,24 +1,37 @@
-<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>IntelliJ IDEA 12.1发布 支持JavaFX 2.0</h3><p>JetBrains已经发布IntelliJ IDEA 12.1，该IDE添加了对JavaFX 2.0这一Java客户端平台最新形式的完整支持。<a href="http://www.youtube.com/watch?v=omuW5M1_s2E&amp;feature=player_embedded">所附视频</a>提到，该版本支持“FXML标记、定制CSS、代码完成、导航与搜索、重构、打包工具以及与场景构建器的集成”。</p> 
-<p>首先需要安装Java 7。该IDE会提供一个模版，用于创建新的“hello world”类示例JavaFX应用程序。示例包括一个描述布局的.fxml文件、一个带有处理程序的控制器和一个主类。用户可以直接点击“运行”查看结果。该项目提供了所有你能想到的支持，如代码完成、“快速修复”等等。</p> 
-<p>JetBrains没有提供自己的JavaFX图形UI设计器工具。相反它选择集成了Oracle的场景构建器（<a href="http://www.oracle.com/technetwork/java/javafx/tools/index.html">Scene Builder</a>）。用户可以在场景构建器中打开一个场景，做些修改，这些修改就会在IDEA中反映出来。当然用户也可以直接在IDE 中手动编辑场景。</p> 
-<p>为支持JavaFX构建，IntelliJ也带来了一些打包功能，不过这些功能感觉有点像半成品。比如，从目前情况来看，IDE不能通过UI直接支持原生的打包，用户需要求助于JavaFX Ant任务来处理。我们联系了JetBrains，希望了解一下他们这方面的计划，但截至发稿时他们尚未回复。不过<a href="http://blogs.jetbrains.com/idea/2013/03/packaging-javafx-2-applications-in-intellij-idea-121/#comments">这篇博客</a>说该问题将在12.1.2版本中解决。如果收到JetBrains反馈，我们会更新本文。</p> 
-<p>同样值得注意的是，尽管JavaFX支持也包含在了免费的社区版IDEA中，但JavaFX CSS支持并没有包含进来。这是因为该特性依赖于旗舰版才支持的CSS功能。</p> 
-<p>除了JavaFX 2之外，对Gradle的支持也值得关注，它引入了几个新选项：</p> 
-<p><img src="http://www.infoq.com/resource/news/2013/04/idea-121/zh/resources/1.jpg;jsessionid=2DF1CD9EFCC9C36206E6DF2C73F21C47" width="500" alt="" _href="img://null" _p="true" /></p> 
-<p>如果选择了“Use Gradle Wrapper”，IDE就能自动探测所链接的Gradle项目能否感知包装器（<a href="http://www.gradle.org/docs/current/userguide/userguide_single.html#gradle_wrapper">wrapper-aware</a>），并使用该信息来刷新项目和运行任务。“Use auto-import”意味着IDE会自动发现每个项目结构的变化，并自动刷新到Gradle项目上（比如说，在build.gradle上添加或删除了一个新库，IDE也会相应添加或删除）。</p> 
-<p>此外，还有一些较小的改进，很多与特定JVM 语言的具体特性相关。社区版和旗舰版都有如下特性：</p> 
-<ul> 
- <li>针对Windows的全屏模式</li> 
- <li>支持Groovy 2.1，包括新的注解和编译定制化服务</li> 
- <li>改进了对Scala的支持（语句完成和新编译器）</li> 
-</ul> 
-<p>旗舰版还包括如下特性：</p> 
-<ul> 
- <li>支持Spring Framework 3.2和Play Framework 2.1</li> 
- <li>支持Adobe Gaming SDK</li> 
- <li>通过Source Maps实现了对CoffeeScript、Dart和TypeScript的调试支持</li> 
- <li>改进了对<a href="http://sass-lang.com/">Sass</a>（“Syntactically Awesome Stylesheets”）的支持，包括定制函数定义、自动完成、重命名重构和嵌套属性等</li> 
-</ul> 
-<p>最后，苹果MacBook Pro Retina用户听到这个消息无疑会很高兴：Darkula主题改进了对视网膜屏的<a href="http://www.jetbrains.com/idea/features/darcula_retina.html">支持</a>。</p> 
-<p><b>查看英文原文</b>：<b><a href="http://www.infoq.com/news/2013/04/idea-121;jsessionid=2DF1CD9EFCC9C36206E6DF2C73F21C47">IntelliJ IDEA 12.1 Lands with JavaFX 2.0 Support</a></b></p> 
-<p id="lastElm"></p><br><br><br><br><br><br></body></html>
+<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>Spring Data与MongoDB：不协调的设计</h3><p><a href="http://www.mongodb.org">MongoDB</a>是一款非常知名的NoSQL文档数据库，而<a href="http://www.spring.io">Spring</a>则是Java领域著名的开源框架。除了构成Spring核心的IoC与AOP之外，Spring也有大量应用于各个不同领域的子框架，其中<a href="http://projects.spring.io/spring-data/">Spring Data</a>就是专门针对数据处理的一个子项目。在Spring Data下有<a href="http://projects.spring.io/spring-data-jpa">Spring Data JPA</a>、<a href="http://projects.spring.io/spring-data-mongodb">Spring Data MongoDB</a>、<a href="http://projects.spring.io/spring-data-redis">Spring Data Redis</a>等子项目，从名字就可以看出来这些子项目所针对的目标。其中，Spring Data MongoDB是专门针对MongoDB的一个子项目，旨在通过Spring的方式来操纵MongoDB，那么这种集成是简化了开发还是阻碍了开发呢？</p>
+<p><a href="https://twitter.com/pdeva">Prashant Deva</a>是<a href="http://chrononsystems.com/company">Chronon</a>的创始人与CTO。他是一位持续创业者，还创办了Placid Systems、AntlrStudio及Virtual Ant。作为一名极客，Deva喜欢尝试各种新鲜技术，在使用了Spring Data MongoDB一段时间后，他认为这个框架在设计上存在着严重的问题，并撰写了<a href="http://movingfulcrum.tumblr.com/post/61693014502/spring-data-and-mongodb-a-mismatch-made-in-hell#notes">文章</a>进行了深入且详尽的分析。</p>
+<blockquote>
+  Spring框架开发者们喜欢到处宣扬他们对MongoDB提供的支持，并以此作为优于其他框架的一个资本。不过，如果在真正的项目中使用Spring Data MongoDB的话，你就会发现框架在某些特性上的严重缺失以及设计上的巨大失误。
+</blockquote>
+<p>Spring Data MongoDB试图将ORM风格的架构硬塞到非关系型数据库中，这直接造成在实际项目中根本无法使用的严重后果，下面就来谈谈这背后的原因：</p>
+<h3>无法检索字段，只能获取整个文档</h3>
+<p>这是Spring Data MongoDB设计上最大的瑕疵。它试图用SQL数据库中的行对文档进行建模，并且希望你像ORM一样创建“实体”类。这两者根本就不是一回事。文档可要比SQL数据库中的行复杂多了，也大多了。</p>
+<p>对于SQL数据库中的行来说，它认为你在大多数查询中都会获取到里面的所有数据，否则数据就应该被划分到多张表中。不过文档与之完全不同，文档可以嵌套，很多时候你只想从数据库中获取到文档的一个子集而已。</p>
+<p>但对于Spring Data MongoDB的“实体”模型来说，你不得不在每次查询中都检索出整个文档才行。</p>
+<h3>没有DBRef延迟加载</h3>
+<p>这个就更加疯狂了。如果通过DBRefs来引用其他文档，那么Spring Data MongoDB就会得到整个文档而不是文档引用。如果通过DBRefs连接了大量文档，那么一个只想获得几个字段的简单查询都会导致获取到整个文档图！</p>
+<p>实际情况是这个<a href="https://jira.springsource.org/browse/DATAMONGO-348">Bug报告</a>已经有将近两年时间了，被指定为“低优先级”状态，也没有什么解决方案，这太让人难以置信了，这表明Spring Data MongoDB的愿景与实际的使用之间存在着多么大的差距。</p>
+<h3>不支持游标</h3>
+<p>想要通过游标遍历集合吗？没门。要么就取出整个集合，要么就转而使用原生的Mongo Java驱动。</p>
+<h3>不完备的聚合框架支持</h3>
+<p>Spring Data MongoDB是从不久之前才开始支持MongoDB聚合框架的，就像框架的其他部分一样，这种支持也是个半成品。</p>
+<p>框架文档很少并且容易让人产生混乱，在实际项目中所需的大多数聚合查询都<a href="http://stackoverflow.com/questions/18749596/how-to-convert-this-query-using-spring-mongodb-aggregation-apis">没法在Spring Data MongoDB的文档中找到</a>，你只能使用原生的驱动才行。</p>
+<h3>不完善的索引支持</h3>
+<p>虽然可以通过框架将某个字段标记为“加索引的”，但其他操作却根本就不知道这回事。</p>
+<p>就拿MongoDB中的一个例子来说吧，如果某个字段是唯一且稀疏的，那么你就不能使用“null”值向文档中插入一次以上。这意味着在第2次插入时，该字段就不应该在第1次插入的位置处出现。</p>
+<p>然而，由于Spring强迫你在一个类中定义文档的字段，因此最后需要将null赋给不存在的字段。如果该字段拥有唯一的稀疏索引，那么这会导致运行期错误，因为Spring在根据实体对象创建查询时（以注解的形式直接定义在字段上），它根本就不知道索引的存在。</p>
+<p>Spring还提供了一个ensureIndex()方法用于手工在字段上创建索引，无需使用注解，不过文档中并没有提及何时该使用这种方式、使用的频率是多少，以及调用的性能是怎样的。</p>
+<h3>无法切换数据库</h3>
+<p>很多时候，你希望将数据存储在单个MongoDB实例的不同数据库中，比如说要保持不同客户数据的分离。</p>
+<p>如果使用原生的Mongo驱动，那么切换数据库简直就是小菜一碟，直接调用getDb(dbName)就行了。但如果使用Spring Data MongoDb，那么这几乎是一件无法做到的事情，除非你愿意自己写大量的代码（不过这么做的话在新版框架发布后可能就会出现移植性问题）。</p>
+<h3>让人奇怪的日志框架</h3>
+<p>我已经就Spring的文档问题专门写过一篇<a href="http://movingfulcrum.tumblr.com/post/58723008712/spring-cant-decide-how-it-wants-to-be-configured">文章</a>。Spring文档说它使用的是<a href="http://static.springsource.org/spring/docs/current/spring-framework-reference/html/overview.html#overview-logging">Jakarta Commons Logging</a>，不过Spring Data显然使用的是SLF4J。然而，Spring Data文档却压根儿就没有提过这事。</p>
+<p>这意味着如果开始使用Spring Data，那么你可能就会遇到很多文档中没有提及的运行期错误，这时没别的办法，上<a href="http://stackoverflow.com/questions/16753117/does-spring-data-force-dependency-on-slf4j">StackOverflow</a>上找答案吧。</p>
+<h3>不支持文档的动态特性</h3>
+<p>使用MongoDB这样的面向文档的数据库最大的原因就在于其动态特性了。比如说同一集合中的文档可以不同，这样同一个集合中就可以有多个版本的文档，然后逐渐升级，文档也可以嵌套。键名不必事先知道，这样就可以直接向文档中插入属性映射。</p>
+<p>但事实却是Spring Data MongoDB丢弃了MongoDB的这个最基本的特性，并且试图在其上构建一个确定的、预先定义好的ORM风格的层，这直接造成框架与底层数据库之间的不匹配。</p>
+<h3>结论</h3>
+<p>Spring Data MongoDB似乎是由一些压根儿就没有在真正的项目中用过MongoDB的人设计出来的，它试图将面向文档的数据库硬塞到ORM风格的框架中。</p>
+<p>这导致了框架与数据库之间的不匹配，Spring Data MongoDB反而成为了一个负担而不是帮助我们简化开发。最后，你还是不得不在几乎所有真正的项目开发中使用原生的MongoDB Java驱动。</p>
+<h3>后记</h3>
+<p>各位InfoQ读者，你曾经使用过Spring Data MongoDB进行过MongoDB开发么，你对于Spring Data MongoDB的使用感受是如何呢？是否与Deva的经历一致呢？我曾经在项目中尝试过Spring Data MongoDB，使用下来的一个直观感受就是它将简单的事情搞复杂了。直接使用原生Java驱动来操纵MongoDB是个非常简单且直观的过程，而Spring Data MongoDB却沿用了它一直以来的处理风格，那就是IoC，需要先进行注入，然后从容器中获取所需的对象，将原本很轻松的操作变得复杂起来，不知各位读者有什么样的感受呢，欢迎讨论。</p><br><br><br><br><br><br></body></html>

@@ -1,0 +1,370 @@
+<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>Java 7: Uma visão detalhada da nova API de arquivos</h3><h2>Objetivo do novo pacote file</h2>
+<p>O Java 7 introduziu v&aacute;rias funcionalidades &uacute;teis para a linguagem, incluindo o novo pacote de I/O (entrada/sa&iacute;da) de arquivo que oferece um controle mais refinado na funcionalidade do sistema de arquivos, particularmente para os sistemas com base no <a href="http://pt.wikipedia.org/wiki/POSIX">POSIX</a>, do que o que era poss&iacute;vel utilizando o velho pacote java.io. Esse artigo apresenta primeiramente uma introdu&ccedil;&atilde;o inicial &agrave; nova API e depois explora-o em detalhes utilizando um exemplo de projeto web para gerenciamento de arquivos, chamado WebFolder. Esse projeto oferece um mecanismo de gerenciamento do sistema de arquivos para computadores remotos. Permite opera&ccedil;&otilde;es tais como navegar no sistema de arquivos, inspecionar, renomear, copiar e apagar os arquivos. A nova API de I/O permite estender as capacidades do projeto para manipular conte&uacute;dos de arquivos ZIP e tamb&eacute;m verificar as modifica&ccedil;&otilde;es. O projeto de demonstra&ccedil;&atilde;o pode ser baixado gratuitamente em <a href="http://webfolder.sf.net">http://webfolder.sf.net</a>.</p>
+<p>Apesar da API de manipula&ccedil;&atilde;o b&aacute;sica ter tido algumas atualiza&ccedil;&otilde;es entre as vers&otilde;es, para o Java 7 a equipe decidiu fornecer um pacote alternativo com um novo design para cobrir as opera&ccedil;&otilde;es do sistema de arquivos de uma nova maneira.</p>
+<p>A base da API de manipula&ccedil;&atilde;o de arquivo reside no pacote java.nio.file com os dois sub pacotes java.nio.attribute e java.nio.file.spi. A nova API separa opera&ccedil;&otilde;es relacionadas a arquivos do pacote java.io e tamb&eacute;m fornece m&eacute;todos adicionais que visam tornar o gerenciamento do sistema de arquivos mais simples. Conceitualmente a nova API foi feita como um conjunto de interfaces de entidades cobrindo os objetos b&aacute;sicos do sistema de arquivos e classes operacionais que cobrem opera&ccedil;&otilde;es sobre o pr&oacute;prio sistema de arquivos. O conceito foi herdado do pacote java.util, no qual as Collections e Arrays fornecem muitas opera&ccedil;&otilde;es b&aacute;sicas sobre estrutura de dados de agrega&ccedil;&atilde;o como uma cole&ccedil;&atilde;o e um array respectivamente. O novo pacote cont&eacute;m diferentes nomes de classes base e interfaces para evitar confus&atilde;o, especialmente quando os pacotes java.io e java.nio.file s&atilde;o utilizados juntos.</p>
+<p>O novo pacote n&atilde;o tem apenas uma organiza&ccedil;&atilde;o diferente de classes de suporte de arquivos e opera&ccedil;&otilde;es sobre o sistema de arquivos, tamb&eacute;m amplia as capacidades da API, fornecendo uma maneira simples para copiar e mover arquivos.</p>
+<h2>Compara&ccedil;&atilde;o entre as opera&ccedil;&otilde;es das classes normais e das novas classes</h2>
+<p>A tabela a seguir apresenta uma breve vis&atilde;o das classes e interfaces base de ambos pacotes:</p>
+<table cellpadding="0" cellspacing="0"> 
+ <tbody> 
+  <tr> 
+   <td><strong>Java &lt; 7 java.io, javax.swing.filechooser</strong></td> 
+   <td><strong>Java &gt;= 7 java.nio.file</strong></td> 
+   <td><strong>Coment&aacute;rio</strong></td> 
+  </tr> 
+  <tr> 
+   <td>File</td> 
+   <td>Path e Files</td> 
+   <td>Enquanto a classe File fornece ambas as opera&ccedil;&otilde;es de localiza&ccedil;&atilde;o de arquivos e sistema de arquivos, a nova API dividiu isso em dois. A interface Path fornece apenas a localiza&ccedil;&atilde;o de arquivo e permite opera&ccedil;&otilde;es adicionais relacionadas com caminho, enquanto a classe Files permite a manipula&ccedil;&atilde;o de arquivos com v&aacute;rias novas funcionalidades n&atilde;o dispon&iacute;veis na classe File, como copiar e ler o conte&uacute;do completo do arquivo ou configurar seu propriet&aacute;rio.</td> 
+  </tr> 
+  <tr> 
+   <td>FileSystemView</td> 
+   <td>FileSystem</td> 
+   <td>A classe abstrata FileSystemView fornece uma vis&atilde;o do sistema de arquivos subjacentes, utilizada apenas no contexto de escolha de arquivo no Swing. A classe FileSystem pode representar diferentes sistemas de arquivos definidos localmente ou remotamente, assim como sobre mecanismos alternativos de armazenamento, como imagens ISO ou arquivos ZIP. Essa classe cont&eacute;m f&aacute;bricas que oferecem implementa&ccedil;&otilde;es concretas de diferentes interfaces como a Path.</td> 
+  </tr> 
+  <tr> 
+   <td>No analog</td> 
+   <td>FileStore</td> 
+   <td>Representa alguns atributos do armazenamento do arquivo como, por exemplo, o tamanho total do arquivo. Pode ser obtido por meio de um Path em particular ou do FileSystem.</td> 
+  </tr> 
+ </tbody> 
+</table>
+<p>Assim como uma diferente organiza&ccedil;&atilde;o de objetos e opera&ccedil;&otilde;es, a nova API do sistema de arquivos &eacute; capaz de explorar as funcionalidades relativamente novas do Java, tal como o autoboxing, na maioria dos m&eacute;todos e construtores, e a nova API est&aacute; mais simples e f&aacute;cil para utilizar como resultado dessa nova organiza&ccedil;&atilde;o.</p>
+<div id="lowerFullwidthVCR"></div>
+<p>Nas pr&oacute;ximas se&ccedil;&otilde;es ser&atilde;o detalhadas algumas melhorias espec&iacute;ficas.</p>
+<h2>Percorrer o sistema de arquivos e opera&ccedil;&otilde;es em grupo</h2>
+<p>O novo pacote de arquivo introduz uma nova maneira de percorrer um sistema de arquivos, que pretende melhorar a efici&ecirc;ncia da mem&oacute;ria em compara&ccedil;&atilde;o com a velha vers&atilde;o com base em array e filtros. Concluindo, a nova abordagem possibilita percorrer o sistema de arquivos em profundidade. A nova implementa&ccedil;&atilde;o utiliza o <a href="http://en.wikipedia.org/wiki/Visitor_pattern">padr&atilde;o de projeto Visitor</a>. Mesmo sendo poss&iacute;vel imitar o padr&atilde;o Visitor usando um filtro com um File tradicional nas opera&ccedil;&otilde;es transversais, &eacute; muito mais dif&iacute;cil fornecer um algoritmo simples e eficiente em termos de mem&oacute;ria para uma travessia em v&aacute;rios n&iacute;veis.</p>
+<p>O padr&atilde;o Visitor foi introduzido com a interface FileVisitor. Como a interface &eacute; gen&eacute;rica, &eacute; poss&iacute;vel utiliz&aacute;-la para percorrer o sistema de arquivos por meio de uma implementa&ccedil;&atilde;o b&aacute;sica de File, no entanto, a nova implementa&ccedil;&atilde;o de I/O precisa que o FileVisitor seja utilizado apenas sobre objetos que herdam de Path. A interface declara quatro m&eacute;todos, com o SimpleFileVisitor fornecendo uma implementa&ccedil;&atilde;o da interface que se pode herdar e assim implementar qualquer m&eacute;todo conforme a necessidade de uso. A tabela a seguir apresenta uma vis&atilde;o geral dos m&eacute;todos do FileVisitor e seus comportamentos no SimpleFileVisitor:</p>
+<table cellpadding="0" cellspacing="0"> 
+ <tbody> 
+  <tr> 
+   <td>Nome</td> 
+   <td>Pr&oacute;posito</td> 
+   <td>Padr&atilde;o</td> 
+  </tr> 
+  <tr> 
+   <td>visitFile</td> 
+   <td>Invocado para cada arquivo comum percorrido, incluindo links simb&oacute;licos, a menos que seja definida uma filtragem. Qualquer opera&ccedil;&atilde;o significativa relacionada a arquivos pode ser processada aqui, por exemplo: para fazer um backup ou uma busca por algo no arquivo. Uma decis&atilde;o sobre parar ou continuar percorrendo pode ser tomada. O m&eacute;todo n&atilde;o &eacute; invocado para diret&oacute;rios.</td> 
+   <td>Retorna CONTINUE</td> 
+  </tr> 
+  <tr> 
+   <td>preVisitDirectory</td> 
+   <td>Se o item visitado &eacute; um diret&oacute;rio em vez de um arquivo, ent&atilde;o esse &eacute; o m&eacute;todo invocado ao inv&eacute;s do visitFile. Ele permite pular um diret&oacute;rio em particular, ou criar um diret&oacute;rio correspondente em uma determinada localiza&ccedil;&atilde;o para opera&ccedil;&otilde;es de c&oacute;pia.</td> 
+   <td>Retorna CONTINUE</td> 
+  </tr> 
+  <tr> 
+   <td>postVisitDirectory</td> 
+   <td>O m&eacute;todo &eacute; invocado quando o diret&oacute;rio inteiro foi completamente percorrido. &Eacute; uma maneira conveniente para finalizar opera&ccedil;&otilde;es com o diret&oacute;rio. Por exemplo, se o prop&oacute;sito de percorrer for excluir todos os seus arquivos, ent&atilde;o o pr&oacute;prio diret&oacute;rio pode ser exclu&iacute;do nesse m&eacute;todo.</td> 
+   <td>Retorna CONTINUE</td> 
+  </tr> 
+  <tr> 
+   <td>visitFileFailed</td> 
+   <td>Se alguma exce&ccedil;&atilde;o n&atilde;o tratada ocorrer enquanto estiver percorrendo o sistema de arquivos, ent&atilde;o esse m&eacute;todo &eacute; invocado. Se uma exce&ccedil;&atilde;o for relan&ccedil;ada, ent&atilde;o toda a travessia ser interrompida e a exce&ccedil;&atilde;o ser&aacute; propagada para o c&oacute;digo que iniciou a caminhada no sistema de arquivos, usando o Files.walkFileTree. Uma exce&ccedil;&atilde;o pode ser analisada aqui e a decis&atilde;o por continuar a percorrer pode ser tomada.</td> 
+   <td>Lan&ccedil;a IOException</td> 
+  </tr> 
+ </tbody> 
+</table>
+<p>Essa interface &eacute; bem poderosa, permitindo os casos de uso mais convencionais no sistema de arquivo, incluindo arquivamento, pesquisa, copia ou exclus&atilde;o de arquivos. O tratamento de exce&ccedil;&otilde;es tamb&eacute;m &eacute; bem flex&iacute;vel. Por&eacute;m, se for necess&aacute;rio apenas obter o conte&uacute;do de algum diret&oacute;rio sem percorr&ecirc;-lo em profundidade, &eacute; poss&iacute;vel utilizar a antiga opera&ccedil;&atilde;o do File.list(), ent&atilde;o funcionalidades similares est&atilde;o dispon&iacute;veis na nova API de I/O tamb&eacute;m, embora retorne uma cole&ccedil;&atilde;o ao inv&eacute;s de um array comum.</p>
+<h2>Novas funcionalidades que n&atilde;o existem no java.io</h2>
+<p>Apesar das possibilidades de percorrer o sistema de arquivos e opera&ccedil;&otilde;es de agrupamento oferecidas pela nova API de I/O serem bastante &uacute;teis, elas j&aacute; s&atilde;o suportadas pelo java.io padr&atilde;o. Em complemento, no entanto, a nova API de I/O fornece capacidades espec&iacute;ficas de sistemas operacionais que n&atilde;o s&atilde;o suportadas pelo pacote antigo. Um importante exemplo de funcionalidade &eacute; trabalhar com os links e links simb&oacute;licos, que agora podem ser criados ou processados em qualquer opera&ccedil;&atilde;o de travessia do sistema de arquivos. Essa funcionalidade de trabalhar com links e links simb&oacute;licos funciona somente para sistemas de arquivos que o suportam - caso contr&aacute;rio, uma UnsupportedOperationException ser&aacute; lan&ccedil;ada. Outra extens&atilde;o est&aacute; relacionada com o gerenciamento dos atributos de arquivos como propriet&aacute;rio e permiss&otilde;es. A tabela a seguir fornece uma breve vis&atilde;o geral do link e das opera&ccedil;&otilde;es estendidas de atributos de arquivos. Todas essas opera&ccedil;&otilde;es podem ser realizadas atrav&eacute;s da classe Files.</p>
+<table cellpadding="0" cellspacing="0"> 
+ <tbody> 
+  <tr> 
+   <td>Opera&ccedil;&atilde;o</td> 
+   <td>Prop&oacute;sito</td> 
+   <td>Coment&aacute;rio</td> 
+  </tr> 
+  <tr> 
+   <td>createLink</td> 
+   <td>Criar um link f&iacute;sico mapeado para um certo arquivo.</td> 
+   <td>&nbsp;</td> 
+  </tr> 
+  <tr> 
+   <td>createSymbolicLink</td> 
+   <td>Criar um link simb&oacute;lico mapeado para um arquivo ou diret&oacute;rio.</td> 
+   <td>&nbsp;</td> 
+  </tr> 
+  <tr> 
+   <td>getFileAttributeView</td> 
+   <td>Acessar os atributos do arquivo na forma de uma implementa&ccedil;&atilde;o espec&iacute;fica do sistema de arquivos do FileAttributeView.</td> 
+   <td>Embora este m&eacute;todo traga flexibilidade para fornecer um conjunto de atributos n&atilde;o foram pr&eacute; definidos, ainda &eacute; necess&aacute;rio utilizar a implementa&ccedil;&atilde;o das classes espec&iacute;ficas e como resultado, limitar a portabilidade do c&oacute;digo.</td> 
+  </tr> 
+  <tr> 
+   <td>getOwner</td> 
+   <td>Obter o propriet&aacute;rio do arquivo.</td> 
+   <td>Funciona somente com arquivos de sistemas que suportam o atributo de propriet&aacute;rio.</td> 
+  </tr> 
+  <tr> 
+   <td>getPosixFilePermissions</td> 
+   <td>Obter as permiss&otilde;es do arquivo.</td> 
+   <td>Espec&iacute;fico para o sistema POSIX.</td> 
+  </tr> 
+  <tr> 
+   <td>isSymbolicLink</td> 
+   <td>Indicar se o caminho informado &eacute; de um link simb&oacute;lico.</td> 
+   <td>Espec&iacute;fico para o sistema de arquivos.</td> 
+  </tr> 
+  <tr> 
+   <td>readSymbolicLink</td> 
+   <td>Ler o caminho destino de um link simb&oacute;lico.</td> 
+   <td>Espec&iacute;fico para o sistema de arquivos.</td> 
+  </tr> 
+  <tr> 
+   <td>readAttributes</td> 
+   <td>Ler os atributos do arquivo.</td> 
+   <td>H&aacute; duas varia&ccedil;&otilde;es deste m&eacute;todo, para retornar os atributos de formas diferentes.</td> 
+  </tr> 
+  <tr> 
+   <td>setAttribute</td> 
+   <td>Definir um atributo do arquivo.</td> 
+   <td>O nome do atributo pode ser inclu&iacute;do como qualificador no FileAttributeView.</td> 
+  </tr> 
+ </tbody> 
+</table>
+<p>Verifique a <a href="http://docs.oracle.com/javase/7/docs/api/index.html?java/nio/file/package-summary.html">documenta&ccedil;&atilde;o</a> da nova API de I/O quando for necess&aacute;rio utilizar as opera&ccedil;&otilde;es apresentadas nessa tabela.</p>
+<h3>Observadores</h3>
+<p>A API tamb&eacute;m fornece um mecanismo para monitorar o estado de um arquivo ou diret&oacute;rio em particular, de modo que eventos como cria&ccedil;&atilde;o, modifica&ccedil;&atilde;o ou remo&ccedil;&atilde;o possam ser observados. Infelizmente, o modelo &quot;push&quot; n&atilde;o &eacute; garantido para os eventos observados, e em muitos casos um mecanismo de pool pode ser utilizado, fazendo essa implementa&ccedil;&atilde;o menos atrativa no meu ponto de vista. O servi&ccedil;o de observa&ccedil;&atilde;o &eacute; tamb&eacute;m dependente de sistema, ent&atilde;o n&atilde;o &eacute; poss&iacute;vel construir uma aplica&ccedil;&atilde;o verdadeiramente port&aacute;vel utilizando este servi&ccedil;o. H&aacute; 5 interfaces que cobrem as funcionalidades de observa&ccedil;&atilde;o. A tabela a seguir apresenta uma vis&atilde;o r&aacute;pida das interfaces e seus usos.</p>
+<table cellpadding="0" cellspacing="0"> 
+ <tbody> 
+  <tr> 
+   <td>Interface</td> 
+   <td>Proposito</td> 
+   <td>Uso</td> 
+  </tr> 
+  <tr> 
+   <td>Watchable</td> 
+   <td>Um objeto desse tipo pode ser registrado no servi&ccedil;o de observa&ccedil;&atilde;o. Uma chave de observa&ccedil;&atilde;o &eacute; obtida para ser usada no monitoramento dos eventos de modifica&ccedil;&atilde;o.</td> 
+   <td>Uma implementa&ccedil;&atilde;o concreta da interface foi obtida para registrar o interesse em eventos observados relacionados com o objeto. Note que a interface Path &eacute; um Watchable.</td> 
+  </tr> 
+  <tr> 
+   <td>WatchService</td> 
+   <td>Um servi&ccedil;o dispon&iacute;vel no sistema de arquivos para registrar os objetos Watchable e ent&atilde;o usa o WatchKey para monitorar as modifica&ccedil;&otilde;es.</td> 
+   <td>Um WatchService pode ser obtido do objeto FileSystem.</td> 
+  </tr> 
+  <tr> 
+   <td>WatchKey</td> 
+   <td>Comprovante de registro que &eacute; usado para modificar os eventos de pool.</td> 
+   <td>O objeto pode ser armazenado e ent&atilde;o usado para colocar os eventos no pool de modifica&ccedil;&atilde;o. Ele pode ser usado tamb&eacute;m diretamente para obter o WatchService quando os eventos de modifica&ccedil;&atilde;o est&atilde;o dispon&iacute;veis.</td> 
+  </tr> 
+  <tr> 
+   <td>WatchEvent</td> 
+   <td>Carrega o evento observado.</td> 
+   <td>O objeto WatchEvent &eacute; passado na chamada da notifica&ccedil;&atilde;o de evento, tipo de evento e o caminho do objeto afetado pode ser obtido atrav&eacute;s dele.</td> 
+  </tr> 
+  <tr> 
+   <td>WatchEvent.Kind</td> 
+   <td>Carrega informa&ccedil;&otilde;es do tipo de evento observado.</td> 
+   <td>Usado para especificar os tipos de eventos interessados no registro do Watchable. Ele tamb&eacute;m fornece um WatcheEvent da chamada da notifica&ccedil;&atilde;o.</td> 
+  </tr> 
+ </tbody> 
+</table>
+<p>Gostaria de enfatizar dois cen&aacute;rios que podem ser utilizados o servi&ccedil;o de observa&ccedil;&atilde;o:</p>
+<p>- O primeiro &eacute; quando se faz necess&aacute;rio monitorar as altera&ccedil;&otilde;es de um objeto em particular. Neste caso, um objeto Watchable pode ser registrado no servi&ccedil;o de observa&ccedil;&atilde;o para obter uma chave de observa&ccedil;&atilde;o, e ent&atilde;o com a chave de observa&ccedil;&atilde;o pode ser verificado os eventos de modifica&ccedil;&atilde;o. O mecanismo de pool que recebe a chave de observa&ccedil;&atilde;o n&atilde;o &eacute; bloqueante, ent&atilde;o se um novo evento ocorrer, uma lista vazia de eventos pode ser retornado desse pool. &Eacute; poss&iacute;vel introduzir um tempo de espera para reduzir a sobrecarga do pool, em troca da perda de alguma precis&atilde;o na notifica&ccedil;&atilde;o dos eventos que podem ocorrer;</p>
+<p>- O segundo cen&aacute;rio que utiliza o mecanismo de servi&ccedil;o de observa&ccedil;&atilde;o &eacute; adequado para eventos de modifica&ccedil;&atilde;o do pool relacionados a muitos objetos observados. Como no primeiro cen&aacute;rio, &eacute; necess&aacute;rio registrar todos os objetos observados, entretanto a chave do observador retornada pode ser ignorada. Ao inv&eacute;s de usar a chave do observador do mecanismo de pool, um servi&ccedil;o do mecanismo de pool &eacute; usado para obter as chaves assim que algum evento de modifica&ccedil;&atilde;o ocorrer, e ent&atilde;o processa os eventos usando um opera&ccedil;&atilde;o de pool ao inv&eacute;s da chave do observador. Neste caso uma chave do observador &eacute; garantida para determinado evento. Uma simples thread pode ser usada para gerenciar todas chaves do observador. O servi&ccedil;o de observa&ccedil;&atilde;o do mecanismo de pool &eacute; mais flex&iacute;vel, j&aacute; que pode trabalhar de forma bloqueante, n&atilde;o bloqueante ou bloqueante com timeout. Como resultado ele tamb&eacute;m pode ser mais preciso.</p>
+<p>A seguir ser&atilde;o apresentados alguns exemplos do segundo cen&aacute;rio utilizado no projeto WebFolder.</p>
+<h3>Opera&ccedil;&otilde;es &uacute;teis</h3>
+<p>A pr&oacute;xima funcionalidade central que a nova API de I/O traz &eacute; um conjunto de m&eacute;todos utilit&aacute;rios que tornam o pacote autossuficiente, fazendo com que, para a maioria dos casos de uso, nenhuma funcionalidade adicional do pacote java.io seja necess&aacute;ria. Streams de entrada, streams de sa&iacute;da e canais de bytes s&atilde;o obtidos diretamente usando os m&eacute;todos do Files. Opera&ccedil;&otilde;es completas, como copiar e mover arquivos, s&atilde;o suportadas atrav&eacute;s da API. Para complementar, o conte&uacute;do completo do arquivo pode ser lido agora como uma lista de Strings ou um array de bytes. No entanto note que n&atilde;o h&aacute; par&acirc;metro de controle de tamanho, ent&atilde;o deve-se fazer uma consulta ao tamanho do arquivo para evitar poss&iacute;veis problemas de mem&oacute;ria.</p>
+<h3>Mais detalhes sobre a nova organiza&ccedil;&atilde;o da API de I/O de arquivos</h3>
+<p>Finalmente, o sistema e armazenamento de arquivos s&atilde;o partes essenciais do novo pacote de I/O. Como visto, o elemento chave do pacote &eacute; a localiza&ccedil;&atilde;o do arquivo representado pela interface Path. Uma implementa&ccedil;&atilde;o concreta da interface Path pode ser obtida por meio da classe factory FileSystem, que por sua vez &eacute; obtida atrav&eacute;s da classe factory FileSystems. O diagrama a seguir apresenta o relacionamento entre os elementos chaves da nova API de I/O de arquivos.</p>
+<p><img _p="true" _href="img://3fig1.jpg" alt="" src="http://www.infoq.com/resource/articles/java7-nio2/pt/resources/3fig1.jpg" /></p>
+<p>As informa&ccedil;&otilde;es de armazenamento podem ser obtidas tanto de um arquivo em particular (Path) como do sistema de arquivos (FileSystem).</p>
+<h2>Trabalhando com o sistema de arquivos</h2>
+<p>Todas as implementa&ccedil;&otilde;es dos sistemas de arquivos s&atilde;o guardados pelos seus fornecedores correspondentes, cujas classes base s&atilde;o definidas no pacote java.nio.file.spi. O conceito de fornecedor de servi&ccedil;os permite ao desenvolvedor estender facilmente a cobertura dos sistemas de arquivos. Alguns sistemas de arquivos interessantes s&atilde;o fornecidos no pacote, como por exemplo, um transformador de conte&uacute;do de arquivo ZIP, que possibilita a maioria das opera&ccedil;&otilde;es normais, como: manipula&ccedil;&atilde;o de conte&uacute;do, cria&ccedil;&atilde;o, remo&ccedil;&atilde;o e modifica&ccedil;&atilde;o de arquivos. Veremos um exemplo mais adiante.</p>
+<h2>Opera&ccedil;&otilde;es concorrentes e at&ocirc;micas</h2>
+<p>A vis&atilde;o geral da nova API de I/O ficaria incompleta se n&atilde;o fosse mencionado que a implementa&ccedil;&atilde;o teve grande preocupa&ccedil;&atilde;o com a concorr&ecirc;ncia, e por consequ&ecirc;ncia, a maioria das opera&ccedil;&otilde;es s&atilde;o seguras em ambientes concorrentes. Mover um arquivo tamb&eacute;m &eacute; at&ocirc;mico. Trabalhar com o conte&uacute;do de diret&oacute;rios tamb&eacute;m pode ser seguro ao se obter uma implementa&ccedil;&atilde;o concreta da interface SecureDirectoryStream. Neste caso, todas as opera&ccedil;&otilde;es relacionadas com os diret&oacute;rios permanecem consistentes se o diret&oacute;rio for movido ou modificado por um manipulador externo. Somente caminhos relativos s&atilde;o utilizados ao se fazer isso.</p>
+<h2>Exemplo do mundo real</h2>
+<p>A melhor maneira para se aprender algo novo &eacute; codificando de verdade. Como mencionado anteriormente, o gerenciador de arquivo WebFolder baseado na web foi inicialmente desenvolvido usando java.io e, para auxiliar no aprendizado, o WebFolder foi migrado para o NIO. A seguir ser&atilde;o apresentados os c&oacute;digos atualizados. Os exemplos s&atilde;o pequenos para facilitar a leitura, mas o c&oacute;digo completo pode ser baixado na <a href="http://webfolder.sourceforge.net/">p&aacute;gina web do projeto</a>.</p>
+<p>1. Para obter o conte&uacute;do de um diret&oacute;rio:</p>
+<pre>
+  try (RequestTransalated rt = translateReq(getConfigValue(&quot;TOPFOLDER&quot;, File.separator), req.getPathInfo());
+    DirectoryStream&lt;Path&gt; stream = Files.newDirectoryStream(rt.transPath);) {
+      for (Path entry : stream) {
+        // acrescentando as informa&ccedil;&otilde;es do diret&oacute;rio no modelo.
+        result.add(new Webfile(entry, rt.reqPath));
+      }
+    } catch (Exception ioe) {
+      log(&quot;&quot;, ioe);
+    }
+
+    /* N&atilde;o precisa de bloco finally, uma vez que a API suporta o AutoCloseable e a nova sintaxe do bloco try. */
+</pre>
+<p>Neste exemplo, um modelo de diret&oacute;rio (directory) &eacute; populado para ser apresentado em uma tela de p&aacute;gina web. O Files.newDirectoryStream &eacute; usado para obter o iterador com o conte&uacute;do do diret&oacute;rio.</p>
+<p>2. Percorrer em profundidade:</p>
+<pre>
+  Path ffrom = ….
+  Files.walkFileTree(ffrom, EnumSet.of(FileVisitOption.FOLLOW_LINKS), Integer.MAX_VALUE, new SimpleFileVisitor&lt;Path&gt;() {
+    @Override
+    public FileVisitResult preVisitDirectory(Path dir, BasicFileAttributes attrs) throws IOException {
+      Path targetdir = fto.resolve(fto.getFileSystem().getPath(ffrom.relativize(dir).toString()));
+      try {
+        Files.copy(dir, targetdir, StandardCopyOption.COPY_ATTRIBUTES);
+      } catch (FileAlreadyExistsException e) {
+        if (!Files.isDirectory(targetdir))
+          throw e;
+      }
+      return FileVisitResult.CONTINUE;
+    }
+
+    @Override
+    public FileVisitResult visitFile(Path file, BasicFileAttributes attrs) throws IOException {
+      Path targetfile = fto.resolve(fto.getFileSystem().getPath(ffrom.relativize(file).toString()));
+      Files.copy(file, targetfile, StandardCopyOption.COPY_ATTRIBUTES);
+      return FileVisitResult.CONTINUE;
+   }
+  });
+</pre>
+<p>Este c&oacute;digo copia o conte&uacute;do de um diret&oacute;rio para outro local do sistema de arquivos. O preVisitDirectory se encarrega de copiar o pr&oacute;prio diret&oacute;rio. Desde que o diret&oacute;rio alvo possa ser outro sistema de arquivos, o exemplo &eacute; uma maneira pr&aacute;tica de se extrair todo o conte&uacute;do de um arquivo ZIP enquanto preserva a estrutura de diret&oacute;rio, ou para colocar uma estrutura de diret&oacute;rio dentro de um arquivo ZIP. A op&ccedil;&atilde;o COPY_ATTRIBUTES preserva todos os atributos do arquivo original, inclusive a timestamp, no arquivo copiado.</p>
+<p>Uma implementa&ccedil;&atilde;o similar pode ser usada para apagar todo o conte&uacute;do de um diret&oacute;rio. Neste caso o m&eacute;todo postVisitDirectory deve ser implementado, em vez do preVisitDirectory, para apagar o pr&oacute;prio diret&oacute;rio ap&oacute;s o seu conte&uacute;do ter sido removido.</p>
+<pre>
+  @Override
+  public FileVisitResult postVisitDirectory(Path dir, IOException e) throws IOException {
+    if (e == null) {
+      if (dir.getParent() != null) {
+        Files.delete(dir);
+        return FileVisitResult.CONTINUE;
+      } else
+        return FileVisitResult.TERMINATE;
+    } else {
+      // falha ao percorrer o diret&oacute;rio.
+      throw e;
+    }
+  }
+</pre>
+<p>Este exemplo verifica se o diret&oacute;rio de destino n&atilde;o est&aacute; no n&iacute;vel da raiz antes de apag&aacute;-lo. Todas as poss&iacute;veis exce&ccedil;&otilde;es s&atilde;o propagadas para serem tratadas por quem chama o m&eacute;todo.</p>
+<p>3. Sistema de arquivos do ZIP:</p>
+<pre>
+  FileSystem fs = FileSystems.newFileSystem(zipPath, null);
+  Path zipRootPath = fs.getPath(fs.getSeparator());
+  ….
+  fs.close();
+</pre>
+<p>O zipRootPath pode ser usado para percorrer o conte&uacute;do de um arquivo ZIP para v&aacute;rios prop&oacute;sitos. O sistema de arquivos obtido &eacute; completamente funcional e muitas opera&ccedil;&otilde;es, incluindo: copiar, mover e remover; funcionar&atilde;o. No entanto o servi&ccedil;o de observa&ccedil;&atilde;o n&atilde;o est&aacute; dispon&iacute;vel para o sistema de arquivos do ZIP. Note tamb&eacute;m que o sistema de arquivos &eacute; fechado ap&oacute;s o seu uso. Se outro sistema de arquivos for aberto no mesmo ZIP, ent&atilde;o &eacute; poss&iacute;vel observar uma falha na opera&ccedil;&atilde;o, ent&atilde;o lembre-se desta possibilidade ao escrever o seu c&oacute;digo. O fechamento padr&atilde;o do sistema de arquivos n&atilde;o &eacute; necess&aacute;rio. Parece que o novo pacote de I/O mant&eacute;m somente uma inst&acirc;ncia e cuida da concorr&ecirc;ncia.</p>
+<p>4. Observa&ccedil;&atilde;o:</p>
+<p>H&aacute; diversas formas de se usar um servi&ccedil;o de observa&ccedil;&atilde;o, o c&oacute;digo a seguir ilustra as duas maneiras mais comuns que foram mencionadas anteriormente:</p>
+<pre>
+  WatchService ws = dir.getFileSystem().newWatchService();
+  WatchKey wk = dir.register(ws,  StandardWatchEventKinds.ENTRY_CREATE,
+  StandardWatchEventKinds.ENTRY_DELETE, StandardWatchEventKinds.ENTRY_MODIFY);
+</pre>
+<p>Ap&oacute;s obter uma chave de observa&ccedil;&atilde;o, a chave pode ser passada para uma thread de observa&ccedil;&atilde;o para monitorar os eventos relevantes:</p>
+<pre>
+  @Override
+  public void run() {
+    for (;;) {
+      if (watchKey != null) {
+        for (WatchEvent&lt;?&gt; event : watchKey.pollEvents())
+          updateScreen(event.kind(), event.context());
+      }
+      boolean valid = watchKey.reset();
+      if (!valid) {
+        break;
+      }
+    }
+  }
+</pre>
+<p>Se os eventos n&atilde;o puderem ser consumidos r&aacute;pido o suficiente, ent&atilde;o um evento do tipo OVERFLOW ser&aacute; recebido. A chave de observa&ccedil;&atilde;o pode ser cancelada se n&atilde;o houver mais eventos interessantes nela. Um servi&ccedil;o de observa&ccedil;&atilde;o tamb&eacute;m pode ser fechado ap&oacute;s o seu uso. Outra abordagem &eacute; usar um m&eacute;todo do servi&ccedil;o de observa&ccedil;&atilde;o para sondar eventos de modifica&ccedil;&atilde;o caso haja muitos objetos em observa&ccedil;&atilde;o registrados.</p>
+<pre>
+  public void run() {
+    for (;;) {
+      try {
+        WatchKey watchKey = watchService.take(); // poll(10, );
+        processWatchKey(watchKey);
+      } catch (InterruptedException ie) {
+        break;
+      }
+    }
+  }
+</pre>
+<p>Um servi&ccedil;o de observa&ccedil;&atilde;o pode ser obtido atrav&eacute;s do sistema de arquivos padr&atilde;o e ent&atilde;o usado em uma thread simples de monitora&ccedil;&atilde;o. O m&eacute;todo take() foi usado e, uma vez que foi bloqueado, n&atilde;o h&aacute; la&ccedil;os (for) sendo desperdi&ccedil;ados. O m&eacute;todo processWatchKey tem uma implementa&ccedil;&atilde;o similar a uma anteriormente fornecida, associada &agrave;s chaves de observa&ccedil;&atilde;o de eventos, para apoiar a sondagem. No entanto n&atilde;o h&aacute; loop extra para isso, uma vez que a chave obtida de um servi&ccedil;o observado j&aacute; est&aacute; associada aos eventos.</p>
+<h2>Recapitulando</h2>
+<p>A nova API de I/O de arquivos fornece:</p>
+<p>1. Um poderoso mecanismo para percorrer o sistema de arquivos ajudando a realizar grupo de opera&ccedil;&otilde;es complexas.</p>
+<p>2. Manipula&ccedil;&atilde;o de arquivo espec&iacute;fico e objetos do sistemas de arquivos, e seus atributos como: links, propriet&aacute;rio e permiss&otilde;es.</p>
+<p>3. Um m&eacute;todo utilit&aacute;rio pr&aacute;tico para manipular todo o conte&uacute;do do arquivo, como: ler, copiar e mover.</p>
+<p>4. Um servi&ccedil;o de observa&ccedil;&atilde;o para monitora&ccedil;&atilde;o das modifica&ccedil;&otilde;es no sistema de arquivos.</p>
+<p>5. Opera&ccedil;&otilde;es at&ocirc;micas no sistema de arquivos que fornecem sincroniza&ccedil;&atilde;o de processos realizados no sistema de arquivos.</p>
+<p>6. Sistemas de arquivos personalizados, definidos em determinada organiza&ccedil;&atilde;o de arquivos, como arquivo morto.</p>
+<h2>Migra&ccedil;&atilde;o</h2>
+<p>H&aacute; quatro raz&otilde;es que se deve considerar para a migra&ccedil;&atilde;o de um sistema baseado no antigo pacote de I/O para a nova API:</p>
+<ul class="c6 lst-kix_4t28g99nogz-0 start"> 
+ <li>Apresenta&ccedil;&atilde;o de problemas de mem&oacute;ria, com a implementa&ccedil;&atilde;o de arquivos complexos;</li> 
+ <li>Necessidade de suportar opera&ccedil;&otilde;es em arquivos no formato ZIP;</li> 
+ <li>Necessidade de refinar o controle sobre os atributos do sistema POSIX;</li> 
+ <li>Necessidade de observar os servi&ccedil;os.</li> 
+</ul>
+<p>Como uma regra geral, se dois ou mais desses itens forem necess&aacute;rios no projeto, ent&atilde;o a migra&ccedil;&atilde;o pode valer a pena, caso contr&aacute;rio &eacute; recomendado manter a implementa&ccedil;&atilde;o atual. Uma raz&atilde;o para n&atilde;o migrar &eacute; que a implementa&ccedil;&atilde;o para a nova API de I/O de arquivo n&atilde;o ir&aacute; deixar o c&oacute;digo mais compacto ou mais leg&iacute;vel. Por outro lado, as novas opera&ccedil;&otilde;es para percorrer os arquivos podem ser um pouco mais lentas no primeiro acesso em certas implementa&ccedil;&otilde;es do ambiente de execu&ccedil;&atilde;o. Parece que a implementa&ccedil;&atilde;o da Oracle para Windows faz muito mais cache, que leva uma quantidade de tempo consider&aacute;vel no primeiro acesso. No entanto a implementa&ccedil;&atilde;o da OpenJDK (IcedTea) n&atilde;o apresenta este problema no Linux, por isso parece ser um problema especifico da plataforma/implementa&ccedil;&atilde;o.</p>
+<p>Caso decida realizar a migra&ccedil;&atilde;o, a tabela a seguir apresenta algumas dicas:</p>
+<table cellpadding="0" cellspacing="0"> 
+ <tbody> 
+  <tr> 
+   <td>Atual</td> 
+   <td>Migrado</td> 
+   <td>Coment&aacute;rio</td> 
+  </tr> 
+  <tr> 
+   <td>fileObj = new File(new File(pe1, pe2), pe3)</td> 
+   <td>pathObj = fsObj. getPath(pe1, pe2, pe3)</td> 
+   <td>fsObj pode ser obtido atrav&eacute;s do FileSystems.getDefault(), j&aacute; que o sistema de arquivos est&aacute; preservado no pr&oacute;prio Path, ele pode ser recuperado de qualquer caminho obtido do mesmo sistema de arquivos.</td> 
+  </tr> 
+  <tr> 
+   <td>fileObj.someOperation()</td> 
+   <td>Files.someOperation(pathObj)</td> 
+   <td>Na maioria dos casos as opera&ccedil;&otilde;es tem o mesmo nome, no entanto alguns par&acirc;metros adicionais relacionados com links e atributos podem ser acrescentados.</td> 
+  </tr> 
+  <tr> 
+   <td>fileObj.listFiles()</td> 
+   <td>Files.newDirectoryStream(pathObj)</td> 
+   <td>O Files.walkFileTree permite percorrer em profundidade.</td> 
+  </tr> 
+  <tr> 
+   <td>new FileInputStrean(file)</td> 
+   <td>Files.newInputStream(pathObj)</td> 
+   <td>Op&ccedil;&otilde;es adicionais podem especificar como os arquivos s&atilde;o abertos.</td> 
+  </tr> 
+  <tr> 
+   <td>new FileOutputStream(file)</td> 
+   <td>Files.newOutputStream(pathObj)</td> 
+   <td>Op&ccedil;&otilde;es adicionais podem especificar como os arquivos s&atilde;o abertos.</td> 
+  </tr> 
+  <tr> 
+   <td>new FileWriter(file)</td> 
+   <td>Files.newBufferedWriter(pathObj)</td> 
+   <td>Op&ccedil;&otilde;es adicionais podem especificar como os arquivos s&atilde;o abertos.</td> 
+  </tr> 
+  <tr> 
+   <td>new FileReader(file)</td> 
+   <td>Files.newBufferedReader(pathObj)</td> 
+   <td>Op&ccedil;&otilde;es adicionais podem especificar como os arquivos s&atilde;o abertos.</td> 
+  </tr> 
+  <tr> 
+   <td>new RandomAccessFile(file)</td> 
+   <td>Files.newByteChannel(pathObj)</td> 
+   <td>Op&ccedil;&otilde;es de abertura e cria&ccedil;&atilde;o de atributos de arquivo podem ser especificadas.</td> 
+  </tr> 
+ </tbody> 
+</table>
+<p>A classe File e a interface Path t&ecirc;m duas formas de convers&atilde;o entre elas - o pathObj.toFile() e fileObj.toPath(). Podendo ajudar a reduzir os esfor&ccedil;os da migra&ccedil;&atilde;o e focar somente nas novas funcionalidades oferecidas pela nova API de I/O de arquivo. Como parte do processo de migra&ccedil;&atilde;o, uma substitui&ccedil;&atilde;o da implementa&ccedil;&atilde;o personalizada de c&oacute;pia de arquivos por Files.copy pode ser considerada. A pr&oacute;pria interface Path fornece diversos m&eacute;todos pr&aacute;ticos que podem reduzir o c&oacute;digo necess&aacute;rio, previamente baseado nos objetos Files. Uma vez que o novo c&oacute;digo estiver sendo executado no Java 7 ou superior, vale a pena melhorar o tratamento de exce&ccedil;&otilde;es e a libera&ccedil;&atilde;o de recursos. O c&oacute;digo a seguir demonstra o velho e novo mecanismo:</p>
+<pre>
+  ClosableResource resource = null;
+  try {
+    Resource = new Resource(…);
+    // processando o recurso.
+  } catch(Exception e) {
+  } finally {
+    if (resource != null)
+      try {
+        resource.close();
+      }  catch(Exception e) {
+      }
+  }
+</pre>
+<p>Pode ser substitu&iacute;do por um c&oacute;digo mais compacto, como:</p>
+<pre>
+  try (Resource = new Resource(…);) {
+    // processando o recurso.
+  } catch(Exception e) {
+  }
+</pre>
+<p>O Resource implementa a interface AutoCloseable, e todos os padr&otilde;es provenientes do JRT s&atilde;o AutoCloseable.</p>
+<h2>Sobre o Autor</h2>
+<p><img vspace="3" hspace="3" align="left" _p="true" _href="img://DmitriyRogatkin.jpg" alt="" src="http://www.infoq.com/resource/articles/java7-nio2/pt/resources/DmitriyRogatkin.jpg" /><strong>Dmitriy Rogatkin</strong> &eacute; CTO da WikiOrgCharts, sendo respons&aacute;vel pela dire&ccedil;&atilde;o tecnologica da empresa. Trabalhou anteriormente com tecnologias inicialmente voltadas para softwares corporativos: foi arquiteto chefe por mais de 10 anos na MetricStream, uma empresa l&iacute;der no mercado de software GRC. Adora testar diferentes ideias atrav&eacute;s da cria&ccedil;&atilde;o de softwares open source, variando desde aplica&ccedil;&otilde;es multim&iacute;dia para desktop at&eacute; frameworks e servidores de aplica&ccedil;&otilde;es. Entre seus projetos figuram o <a href="http://tjws.sourceforge.net/">TJWS</a>, um servidor de aplica&ccedil;&otilde;es leve, servindo de alternativa para quando o uso do profile completo do Java EE no servidor de aplica&ccedil;&otilde;es for muito carregado, e a TravelPals, que ajuda a conectar as pessoas enquanto viajam e a planejarem o tempo fora.</p><br><br><br><br><br><br></body></html>

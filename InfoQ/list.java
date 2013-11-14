@@ -2,13 +2,19 @@
  <head></head> 
  <body>
   <div>
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/31.java">GenMyModel: An Online Real-time Collaborative UML Designer</a>This article contains an interview on GenMyModel’s architecture, technology used and future.
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/33.java">Previewing Riak 2.0</a>At RICON West Basho announced the first technical preview of Riak 2.0. Continuing the work on Russell Brown’s RFC, this version brings with it new distributed data types for maps and sets, strong consistency, and deeps ties with Apache Solr.
   </div>
   <div>
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/30.java">Xamarin’s Rough Transition to 64-bit iOS/OSX</a>In order to support 64-bit iOS and OSX, Xamarin has to make some breaking changes to the way it implements the mapping between C# and Objective-C libraries. Rather than being mapped to 32-bit types, NSInteger and CGFloat are now mapped to the new platform-specific data types nint and nfloat.
-  </div>
-  <div>
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/29.java">Google Releases Dart 1.0</a>Two years after its initial announcement and preview release, Lars Bak announced the first stable release of Dart at Devvox in Belgium today. Dart is Google’s new web programming language and platform for developing modern web applications.
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/32.java">The Human Aspects of API Design: An Interview with Apiary's Jakub Nesetril</a>API Design and description is more than just a technical interface contract between machines. Apiary's Co-Founder and CEO Jakub Nesetril points out that the real consumer of an API description is the developer, with all the concerns of engagement, usability and communication that entails. We spoke with Jakub recently about Apiary's approach to API design and emerging API tools and workflows.
+  </div> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/31.java">GenMyModel: An Online Real-time Collaborative UML Designer</a>This article contains an interview on GenMyModel’s architecture, technology used and future. 
+  </div> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/30.java">Xamarin’s Rough Transition to 64-bit iOS/OSX</a>In order to support 64-bit iOS and OSX, Xamarin has to make some breaking changes to the way it implements the mapping between C# and Objective-C libraries. Rather than being mapped to 32-bit types, NSInteger and CGFloat are now mapped to the new platform-specific data types nint and nfloat. 
+  </div> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/29.java">Google Releases Dart 1.0</a>Two years after its initial announcement and preview release, Lars Bak announced the first stable release of Dart at Devvox in Belgium today. Dart is Google’s new web programming language and platform for developing modern web applications. 
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/28.java">Android Gets Better with App Translation Service</a>Google has officially released its translation service for Android app which enables developers to localize the apps in various languages based on the guidelines in the localization checklist document. 
@@ -144,12 +150,6 @@
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/35.java">Leadership for Self-Organized Agile Teams</a>Organizations that implement self-organized agile teams need managers who empowerer the teams by using servant leadership, and who coach and mentor them to learn and continuously improve themselves. 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/34.java">Netflix Gives Up Silverlight, Chooses HTML5</a>Netflix has announced their intent to switch their video player from Silverlight to HTML5, the first implementation of the new player being done in Chrome/Chrome OS, with Windows and Mac OS X following soon. 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/33.java">LeanSentry Adds Smart Alerts, Error Highlighting and Classic ASP Support</a>LeanSentry, formerly Sentinel has been updated with support for smart alerts, error highlighting, enhanced dashboard, classic ASP support in addition to several diagnostics features. 
-  </div>    
+  </div>   
  </body>
 </html>
