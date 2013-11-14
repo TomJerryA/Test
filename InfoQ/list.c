@@ -1,8 +1,8 @@
 <html>
  <head></head> 
- <body>
-  <div>
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/26.c">Google Play 4.0: Compra Instant&acirc;nea, propaganda e diversas melhorias</a>O Play Services n&atilde;o suportar&aacute; mais os dispositivos com vers&otilde;es anteriores ao Gingerbread, o Mobile Ads SDK foi inclu&iacute;do no Play 4.0 e o Compra Instant&acirc;nea com o Google Wallet oferece aos comerciantes um novo sistema de pagamento integrado.
+ <body> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/26.c">Google Play 4.0: Compra Instant&acirc;nea, propaganda e diversas melhorias</a>O Play Services n&atilde;o suportar&aacute; mais os dispositivos com vers&otilde;es anteriores ao Gingerbread, o Mobile Ads SDK foi inclu&iacute;do no Play 4.0 e o Compra Instant&acirc;nea com o Google Wallet oferece aos comerciantes um novo sistema de pagamento integrado. 
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/25.c">Ado&ccedil;&atilde;o &Aacute;gil: a import&acirc;ncia das pr&aacute;ticas t&eacute;cnicas, pensamento sist&ecirc;mico e cultura</a>Simplicidade, feedback, comunica&ccedil;&atilde;o, respeito e coragem. Estes valores do eXtreme Programming (XP) continuam a inspirar a equipe da confer&ecirc;ncia XP Days Benelux 2013. O InfoQ.com entrevistou dois anfitri&otilde;es da confer&ecirc;ncia, Merlijn van Minderhout e Pascal Van Cauwenberghe, sobre as novidades. 
@@ -150,6 +150,6 @@
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/27.c">Wikimedia adota gera&ccedil;&atilde;o de templates baseada em Lua</a>A Wikimedia adotou a linguagem de programa&ccedil;&atilde;o Lua para gera&ccedil;&atilde;o dos templates de p&aacute;ginas utilizados em diversos sites baseados no MediaWiki. 
-  </div>  
+  </div> 
  </body>
 </html>

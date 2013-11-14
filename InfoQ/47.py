@@ -1,87 +1,76 @@
-<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>アジャイルコーチングと組織変化についての動画講義</h3><p><a target="_blank" href="http://www.infoq.com/news/2013/03/video-lessons-coaching-change;jsessionid=0BFB9F6B23A9EA49E085616FA61A14B2"><em>原文(投稿日：2013/03/30)へのリンク</em></a></p> 
-<div class="clearer-space">
- &nbsp;
-</div> 
-<div id="newsContent"> 
- <p>&nbsp;</p> 
- <p>2012年の最後の四半期にアジャイル導入についてのふたつの学習動画がPearson/Addison-Wesleyから発表された。このふたつの動画は、アジャイルコーチングや組織の変化を取り上げており、PearsonのオンラインプラットフォームのInformIT上のLivelessonsからダウンロードできる。</p> 
- <p><a target="_blank" href="http://www.infoq.com/author/Lyssa-Adkins;jsessionid=E919E6AC53207B60FBE4AECFFA2CB87D;jsessionid=0BFB9F6B23A9EA49E085616FA61A14B2">Lyssa Adkins氏</a>による動画、<a target="_blank" href="http://www.informit.com/store/coaching-agile-teams-livelessons-video-training-downloadable-9780321885494">アジャイルチームのコーチング</a>では、“アジャイルコーチが、並外れたパフォーマンスを発揮するチームを作るために必要なスキル、ツール、マインドセットを教える”。マインドセットと行動を変え、組織がアジャイルになるように支援することや、アジャイルの役割や実践、コーチとしての日常業務で発生する状況への対処方法を取り上げている。また、どのようにアジャイルコーチになるか、コーチとしての価値をどのように見せるかについても説明されている。</p> 
- <p><a target="_blank" href="http://www.informit.com/store/agile-transformation-livelessons-video-training-downloadable-9780321887153">アジャイルへの転換</a>という講義では、Jason Little氏が“ビジネスのアジリティへの道筋を作るための4つのステップモデル”を示す。この動画はアジャイルの歴史やビジネス目的、組織文化の理解の仕方、組織の変化とアジャイル認定の基礎を教える。組織への変化の導入や振り返りや計測を行って考えを深めることに役立つ動画であり、リーンスタートアップの手法を導入する方法も説明している。</p> 
- <p>InfoQはPearson Educationの編集者であるJulie Phifer氏にアジャイルコーチングと組織の変化の動画講義について話を聞いた。</p> 
- <p><strong>InfoQ: 昨年、Pearsonはアジャイルコーチングと組織の変化についての講義動画をふたつ公開しました。アジャイルの導入に注目したのはなぜですか。</strong></p> 
- <blockquote> 
-  <p><strong>Julie:</strong>顧客から、アジャイルの背景にある思想に共鳴しているが所属している組織にアジャイルを導入するのが難しい、との声を頻繁に聞いていました。少なくとも考えている以上に難しいというのです。このような顧客からアジャイルの機微について多くの問い合わせを受けました。このような状況で、アジャイルについての動画トレーニングを提供するのは明らかにチャンスだと思えたのです。</p> 
- </blockquote> 
- <p><strong>InfoQ: このふたつの動画ではLyssa Adkins氏とJason Little死が講師をしています。なぜですか。</strong></p> 
- <blockquote> 
-  <p><strong>Julie:</strong> Lyssa Adkinsは実力のある作家で、ダイナミックな個性を持ち、素晴らしいプレゼンタでもあります。著書、<i>Coaching Agile Teams</i>はアジャイルコミュニティにしっかりと受け入れられています。彼女の仕事を動画の形式に持ち込むのはとても自然なことのように思えました。Jason Littleは、同僚の編集者がソルトレークシティで開催されたAgile 2011カンファレンスで彼のセッションを見たのがきっかけです。その編集者には、彼が他のプレゼンタにはできないようなかたちで聴衆としっかり結びついていたように思えました。また、私たちは彼の考えにも共鳴しています。彼を動画講義の講師の候補にするのはとても自然なことでした。</p> 
- </blockquote> 
- <p><strong>InfoQ: 動画トレーニングはどうですか。例えば、ウェビナーやオンラインカンファレンス、書籍での学習と比べてどのような利点がありますか。</strong></p> 
- <blockquote> 
-  <p><strong>Julie:</strong> LiveLessonsのすべての動画は録画の前に一定期間の商品開発を行います。この開発には作者だけでなく、編集チームやレビュワーも加わります。書籍の執筆と同じように、扱うトピックのアウトラインを注意深く検討します。それから、スタジオで動画を作成し、商品としての価値を最大化します。他のオフラインの教材と比べ、LiveLessonsは、長い間繰り返し視聴できる、消化できる内容を提供します。</p> 
- </blockquote> 
- <p><strong>InfoQ: プロがこの動画を使って自身の能力開発をするにはどうすればいいですか。</strong></p> 
- <blockquote> 
-  <p><strong>Julie:</strong> 私たちは顧客がさまざまな方法で学習をすることをしっかりと意識しています。その上で、私たちは動画を顧客の注意を引くためのダイナミックな方法のひとつと考え、顧客が自分の仕事に活かす新しい手法に対するニーズを満たすものだと思っています。動画形式なので、それぞれの学習スタイルに最適化したかたちで専門家から直接学ぶことができます。すべての顧客がカンファレンスに出かけて専門家の発表を聞く時間的、金銭的余裕があるわけではありません。動画形式であれば、濃く空くは時間を犠牲にせずに自宅で学べます。</p> 
- </blockquote> 
- <p><strong>InfoQ: 動画トレーニングは個人向けのトレーニングに適しているのでしょうか。それとも、集団での学習での利用も想定していますか。</strong></p> 
- <blockquote> 
-  <p><strong>Julie:</strong> 個人の学習にも集団での学習にも適していると思います。集団で学習することで生まれる、活発な議論や即座のフィードバック、メンタリングの機会などは個々人の経験を強化するのに役立つはずです。</p> 
- </blockquote> 
- <p><strong>InfoQ: アジャイル導入についての動画は他にも作成する予定ですか。InfoQの読者に将来取り上げる予定のトピックを教えてください。</strong></p> 
- <blockquote> 
-  <p><strong>Julie:</strong> もちろん、アジャイルについての動画は今後も発表します。私たちが出版したアジャイル導入に関する書籍の中でもっとも成功したもののトピックを動画にしようと思っています。</p> 
- </blockquote> 
- <p><a target="_blank" href="http://www.informit.com/store/agile-transformation-livelessons-video-training-downloadable-9780321887153">アジャイルへの転換</a>の作者であるJason Little氏にもインタビューをした。</p> 
- <p><strong>InfoQ: あなたの動画トレーニングはアジャイルへの転換についてです。なぜこのトピックを選んだのですか。</strong></p> 
- <blockquote> 
-  <p><strong>Jason:</strong> PearsonのChrisはAgile 2011の私のセッションに出席していました。私はアジャイルへの転換が組織変化の引き金になることについて話したのですが、彼は話の内容を気に入ってくれたのです。当時、アジャイルコミュニティの関心はアジャイルの導入やアジャイルへの転換に集まっており、アジャイルそれ自体はポイントではないということが忘れられている場合もありました。アジャイルの導入は組織に多大な変化をもたらします。IT部門とチームだけに影響がある話ではありません。私のセッションは、マーケットや大きさ、文化、仕事の探し方などがアジャイルが導入されたときのアプローチに寄与するということをどのように理解するかについて話しました。'アジャイルへの転換'というタイトルにしたのは人々が求めているのがこれだからでした。</p> 
- </blockquote> 
- <p><strong>InfoQ: アジャイルへの転換についての動画トレーニングは&quot;組織変化のための4つのステップ&quot;について説明されています。この4つのステップについて教えてください。なぜ重要なのでしょうか。</strong></p> 
- <blockquote> 
-  <p><strong>Jason:</strong>4つのステップとは、'理解する、教育する、実行する、反省する'です。この4つが重要なのは、アジャイルへのアプローチについての会話を促進するからです。</p> 
-  <p>'理解する'ステップでは、組織が文脈を理解し、どのような方法が最適かを理解するために、アジャイルだけでなく変化をマネジメントすることから、アイディアとツールを取り出す方法について説明します。</p> 
- </blockquote>
- <blockquote> 
-  <p>'教育する'ステップでは、地域で開催されているミートアップグループやカンファレンス、フォーラムなどさまざまな経路を通じてアジャイルを学ぶための方法を紹介します。また、組織の変化を学ぶ方法や人々が変化をどのように処理するかがより重要になるということを説明します。</p> 
- </blockquote>
- <blockquote> 
-  <p>)'実行する'ステップは組織にとって大切だと学んだことともっとも有効な筋道を取ることについてを説明します。もっとも一般的と思われる3つのアプローチを紹介しますが、組織の変化についてはあらゆる可能性があり話題が尽きません。</p> 
- </blockquote>
- <blockquote> 
-  <p>'反省する'ステップでは、組織が振り返りと通じてダイナミックなガバナンスを行う方法について話しています。従業員、マネージャ、幹部、それぞれのレベルでフィードバックが頻繁に生まれ、変化に対するリアクションを学び調整することを強調しています。</p> 
- </blockquote> 
- <p><strong>InfoQ: 動画トレーニングから学べることはどのようなことでしょうか。アジャイルを実行するのにどのように役立ちますか。</strong></p> 
- <blockquote> 
-  <p><strong>Jason:</strong>もっとも重要なメッセージは、アジャイルを脇において、組織の変化に注力したいと思う場合があるということです。組織を変えるためのツールと方法はたくさんあり、素晴らしいケーススタディを学び、それらを真似ることができるのだから、アジャイルであることを制限するな、ということを視聴者に伝えたかったのです。視聴者のスタートを助け、行き詰まらないようにするために自然で簡単に理解できる言葉を使って説明するよう最大限の努力をしたつもりです。</p> 
- </blockquote> 
- <p><strong>InfoQ: アジャイルへの転換は広いトピックなので、動画トレーニングを見た人はさらなる疑問を抱くと思います。質問をする方法はありますか。</strong></p> 
- <blockquote> 
-  <p><strong>Jason:</strong> はい。私のLinkedinのグループに参加できますし、<a target="_blank" href="http://www.agiletransformation.ca/">www.agiletransformation.ca</a>でさらに詳しい記事や情報を手に入れられます。私に直接連絡してもいいでしょう。私はこのトピックについて人と話すのが好きなのです。</p> 
- </blockquote> 
- <p>最後にInfoQは動画<a target="_blank" href="http://www.informit.com/store/coaching-agile-teams-livelessons-video-training-downloadable-9780321885494">アジャイルチームのコーチング</a>の作者であるLyssa Adkins氏に話を聞いた。</p> 
- <p><strong>InfoQ:Pearsonがあなたのアジャイルコーチングについての動画とレーニングを発表しました。なぜ彼らとこの動画を作ろうと思ったのですか。</strong></p> 
- <blockquote> 
-  <p><strong>Lyssa:</strong> 私がPearson LiveLessonsと一緒に働こうと思ったのは、拙著Coaching Agile Teamsには私たちがAgile Coaching Instituteでは教えていない重要なことがあるからです。これに新しい命を吹き込みたいと思っていました。また、直接指導できない世界中のアジャイルの実践者に対して貢献するための方法も欲しかったのです。あらゆる場所に出向くことはできませんが、LiveLessonsなら可能です。</p> 
- </blockquote> 
- <p><strong>InfoQ: ご著書&quot;coaching agile teams&quot;と動画とレーニング&quot;アジャイルコーチング&quot;の関連について教えてください。まずご著書を読んだほうがいいのでしょうか。それとも動画トレーニングから始めた方がいいですか。同じ話題が取り上げられているのでしょうか。</strong></p> 
- <blockquote> 
-  <p><strong>Lyssa:</strong> 本も動画も、アジャイルコーチが正確に必要なトピックを見つけられるようにするため&quot;一口で飲み込めるかたまり&quot;を集めて作っています。アジャイルコーチが継続的にスキルを開発し、マインドセットを調整するためのお供として利用できます。動画だけで取り上げている領域もいくつかあります。その中で重要なのはアジャイルコーチングのコンピテンシーとスキルフレームワークについてです。この領域は書籍で取り上げたのですが、複雑になりすぎてしまい、Agile Coaching Instituteの生徒やコーチしたアジャイルコーチから学んだことを反映することでよりしっかりとした内容になりました。</p> 
- </blockquote> 
- <p><strong>InfoQ: 動画で学習するのはワークショップやクラスでの授業とは違います。教師とのやりとりがないからです。動画でアジャイルコーチングを教えるに当たり、教師と生徒のやりとりないことは障害にならないのでしょうか。</strong></p> 
- <blockquote> 
-  <p><strong>Lyssa: </strong>LiveLessonsでは、直接的な体験の支援なしに、&quot;知的&quot;にトピックを提供しています。そうは言っても、私は単なる&quot;話し手!&quot;ではありません。LiveLessonsではワークブックがあり、これを使えばアジャイルコーチは学習している内容を実際の仕事に持ち込むことが容易になります。</p> 
- </blockquote> 
- <p><strong>InfoQ: アジャイルコーチは動画から何を学べますか。コーチングスキルにどのように役立ちますか。</strong></p> 
- <blockquote> 
-  <p><strong>Lyssa:</strong>LiveLessonsはアジャイルチームをコーチするたくさんのツールや手法と共に、アジャイルコーチが意図しない障害がどこにあるのかを見つけるための深い内容のトピックを提供します。この両方を手に入れれば、アジャイルコーチとしてのアジャイルコーチとしての&quot;やり方&quot;と&quot;あり方&quot;が成長すれば、優れたアジャイルコーチとして人々がアジャイルを楽しむのを助けられるかもしれません。</p> 
- </blockquote> 
- <p><strong>InfoQ:トレーニングの最中や日々の業務に学習した内容を実践したりするときに疑問が生まれたらどうすればいいですか。</strong></p> 
- <blockquote> 
-  <p><strong>Lyssa: </strong>素晴らしいアジャイルコーチになるためにぜひAgile Coaching Instituteへ行ってください。Agile Coaching Instituteは私の活動の中心であり、2、3のチームのスクラムマスタのための学習から始めて組織を助けるための複数のチームアジャイルコーチの学習をするというACI独自の学習パスはアジャイルの能力を拡充します。私たちのコースはこの学習パスに従い、1300人を超えるアジャイルコーチを指導しました。私たちは常にアジャイルコーチングを行う人々を支援するために提供するサービスに磨きをかけ拡充しています。</p> 
- </blockquote> 
- <p>&nbsp;</p> 
- <blockquote></blockquote> 
- <p id="lastElm">&nbsp;</p> 
-</div> 
-<p id="lastElm"></p><br><br><br><br><br><br></body></html>
+<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>モバイルHTML5の問題は？</h3><p><a target="_blank" href="http://www.infoq.com/news/2013/11/mobile-html5"><em>原文(投稿日：2013/11/09)へのリンク</em></a></p>
+<div class="article_page_left news_container text_content_container"> 
+ <div class="text_info"> 
+  <p>最近のリサーチによると、HTML5の主な問題は一般的に信じられているパフォーマンスではなく、むしろプロファイルやデバッグのためのツール不足と確かなAPIの欠如にあるようだ。</p> 
+  <p>世界中から6,000名を超える開発者からの調査、30,000以上のAndroid Playアプリの分析、42のHTML5フレームワークおよびツールの調査、モバイルHTML5 vs. ネイティブに関する32名のトップエキスパートとのインタビュー結果をもとに、VisionMobileは<a href="http://www.developereconomics.com/downloads/can-html5-compete-native/">How can HTML5 compete with Native?</a>というレポートを公表した。本記事では、そこから重要なところを取り上げる。このレポートでは、HTML5アプリケーションで用いられる市場へのルートを以下の4つに分類している。</p> 
+  <ol> 
+   <li>モバイルブラウザ – モバイルデバイス向けに、モバイルブラウザで動作するWebアプリやWebサイト</li> 
+   <li>ネイティブラッパー – ネイティブラッパーにパッケージ化され、アプリストア経由で配信されるWebアプリ</li> 
+   <li>Webからネイティブへのコンバータ – JavaScriptで書かれ、ネイティブコードにコンパイルされたアプリ</li> 
+   <li>ネイティブJavaScript API – Firefox OS、Windows 8、Chrome OSなど、ネイティブにサポートするプラットフォーム向けに書かれたHTML5アプリ</li> 
+  </ol> 
+  <p>レポート結果</p> 
+  <ul> 
+   <li>開発者の61%はモバイルブラウザ向けに書いている。</li> 
+   <li>米国のAndroid Playアプリケーションの63%は、ブラウザに未実装なAPIがあるために、モバイルブラウザ向けのHTML5で書くことが<em>できない</em>。</li> 
+   <li>米国のAndroidアプリの37%はHTML5で実装できるが、もしブラウザがPower ManagementとWiFi APIをサポートすると、それは58%になるだろう。</li> 
+   <li>開発者の39%はモバイルブラウザ以外の3つの市場へのルート向けにHTML5アプリを作っている。</li> 
+   <li>米国のAndroidアプリのうち、49%はネイティブラッパーで、63%はWebからネイティブへのコンバータで、98%はネイティブJavaScriptで、実装することができる。</li> 
+  </ul> 
+  <p>次のチャートは、HTML5の魅力について示している。</p> 
+  <blockquote> 
+   <p><a href="/resource/news/2013/11/mobile-html5/ja/resources/html5-native-1 (1).png" target="_blank"><img src="http://www.infoq.com/resource/news/2013/11/mobile-html5/ja/resources/html5-native-1 (1).png" _href="img://html5-native-1 (1).png" _p="true" alt="" /></a></p> 
+  </blockquote> 
+  <p>次のチャートは、開発者から見たHTML5の不満について示している。</p> 
+  <blockquote> 
+   <p><a href="/resource/news/2013/11/mobile-html5/ja/resources/1html5-native-2.png" target="_blank"><img src="http://www.infoq.com/resource/news/2013/11/mobile-html5/ja/resources/1html5-native-2.png" _href="img://1html5-native-2.png" _p="true" alt="" /></a></p> 
+  </blockquote> 
+  <p>多くの開発者はパフォーマンスがHTML5の主な問題だと考えているが、この分野のエキスパートたちをインタビューした結果、このレポートの作者はそれは間違いだと考えた。というのも、新世代のハードウェア、JavaScriptコンパイラの改善、Asm.jsを使うという選択肢などにより、パフォーマンスは自然と改善されつつあるためだ。これには政治が関係している。もっと言うと、主要なブラウザベンダーはモバイルOSベンダーでもあり、各自のアプリストア経由でアプリケーションを配布することに関心があるということだ。GoogleはネイティブのChromeアプリを推奨し、Appleは最新のHTML5を実装しているように見えるが、「WebGLなどのパフォーマンス絡みのAPIは取り残されている」。またレポートによると、HTML5の神話の1つは開発が簡単であることだが、実際には十分なデバッグおよびプロファイルのツールがないため、開発は非常に困難だ。</p> 
+  <p>米国のGoogle Playアプリで最も使われているAPIは以下である。</p> 
+  <blockquote> 
+   <p><a href="/resource/news/2013/11/mobile-html5/ja/resources/html5-native-3.png" target="_blank"><img src="http://www.infoq.com/resource/news/2013/11/mobile-html5/ja/resources/html5-native-3.png" _href="img://html5-native-3.png" _p="true" alt="" /></a></p> 
+  </blockquote> 
+  <p>現在のHTML5 API標準化状況とブラウザへの導入を以下に示す。</p> 
+  <blockquote> 
+   <p><a href="/resource/news/2013/11/mobile-html5/ja/resources/html5-native-4.png" target="_blank"><img src="http://www.infoq.com/resource/news/2013/11/mobile-html5/ja/resources/html5-native-4.png" _href="img://html5-native-4.png" _p="true" alt="" /></a></p> 
+  </blockquote> 
+  <p>次の表は、市場へのルートごとに、実装されると効果があるAPIと、もしそうなれば、どれくらいのアプリがHTML5で実装されるかを示している。</p> 
+  <table width="500" border="1" cellspacing="0" cellpadding="2"> 
+   <tbody> 
+    <tr> 
+     <td width="166" valign="top"> <p style="margin-right: 0px;" dir="ltr">市場へのルート</p> </td> 
+     <td width="166" valign="top">API</td> 
+     <td width="166" valign="top">アプリの%</td> 
+    </tr> 
+    <tr> 
+     <td width="166" valign="top">モバイルブラウザ</td> 
+     <td width="166" valign="top">Power management</td> 
+     <td width="166" valign="top">13%</td> 
+    </tr> 
+    <tr> 
+     <td width="166" valign="top">ネイティブラッパー</td> 
+     <td width="166" valign="top">Power management</td> 
+     <td width="166" valign="top">12%</td> 
+    </tr> 
+    <tr> 
+     <td width="166" valign="top">Webからネイティブへの変換</td> 
+     <td width="166" valign="top">WiFi</td> 
+     <td width="166" valign="top">21%</td> 
+    </tr> 
+    <tr> 
+     <td width="166" valign="top">ネイティブJavaScript API</td> 
+     <td width="166" valign="top">Calendar</td> 
+     <td width="166" valign="top"> <p>1.4%</p> </td> 
+    </tr> 
+   </tbody> 
+  </table> 
+  <p>このレポートは結論として、次のような見解とHTML5への提言を述べている。</p> 
+  <ul> 
+   <li>ブラウザはPower ManagementとWiFiをはじめとして、もっとHTML5 APIを実装すべきだ。開発者はブラウザベンダーにもっとAPIを実装するようプッシュすべきだ。</li> 
+   <li>ネイティブJavaScriptアプリのための標準化されたパッケージング方法が開発されるべきだ。それによって、一度アプリをパッケージ化すれば、それをサポートしている任意のプラットフォームで動かすことができる。</li> 
+   <li>クッキー関連の不安やプライバシー懸念を軽減するため、デバイスアイデンティティAPIが開発されるべきだ。</li> 
+   <li>開発者はHTML5によりもたらされる可能性、真の利点と欠点について、もっと知識を得るべきだ。</li> 
+   <li>デバッグツールの生成を可能にするDebug APIが開発されるべきだ。</li> 
+  </ul> 
+ </div> 
+</div><br><br><br><br><br><br></body></html>

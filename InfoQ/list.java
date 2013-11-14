@@ -1,17 +1,17 @@
 <html>
  <head></head> 
- <body>
-  <div>
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/28.java">Android Gets Better with App Translation Service</a>Google has officially released its translation service for Android app which enables developers to localize the apps in various languages based on the guidelines in the localization checklist document.
-  </div>
-  <div>
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/27.java">Project Monaco Brings Visual Studio to the Web</a>Microsoft has released Visual Studio Online which brings a form of the its popular software development IDE to the web. As part of this release small teams of developers can use this service for free, and use it from non-Windows based clients.
-  </div>
-  <div>
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/26.java">Pivotal's Reactor Goes GA</a>This week, Pivotal released version 1.0 of its project Reactor for general availability. Reactor provides low-level abstractions for an event-driven, reactive programming model, and is a component member of the Spring IO Platform in its &quot;IO Foundation&quot; layer.
-  </div>
-  <div>
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/25.java">Developing iOS &amp; Android Apps with C# in Visual Studio</a>Xamarin partnerships with Microsoft to let developers build iOS and Android applications in Visual Studio. Xamarin University teaches developers how to do that.
+ <body> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/28.java">Android Gets Better with App Translation Service</a>Google has officially released its translation service for Android app which enables developers to localize the apps in various languages based on the guidelines in the localization checklist document. 
+  </div> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/27.java">Project Monaco Brings Visual Studio to the Web</a>Microsoft has released Visual Studio Online which brings a form of the its popular software development IDE to the web. As part of this release small teams of developers can use this service for free, and use it from non-Windows based clients. 
+  </div> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/26.java">Pivotal's Reactor Goes GA</a>This week, Pivotal released version 1.0 of its project Reactor for general availability. Reactor provides low-level abstractions for an event-driven, reactive programming model, and is a component member of the Spring IO Platform in its &quot;IO Foundation&quot; layer. 
+  </div> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/25.java">Developing iOS &amp; Android Apps with C# in Visual Studio</a>Xamarin partnerships with Microsoft to let developers build iOS and Android applications in Visual Studio. Xamarin University teaches developers how to do that. 
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/24.java">Windows/Windows Phone Takes a Step Towards Unification</a>Microsoft has taken the first step towards unifying the Windows 8 and Windows Phone stores. Developers no longer have to register for each platform separately. Those already registered for both will be receiving a free renewal for one year in compensation. 
@@ -150,6 +150,6 @@
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/30.java">Release of the Microsoft Script Explorer Canceled</a>Microsoft has canceled the release of their Script Explorer. This tool was designed to make it easier to find PowerShell scripts located in either public repositories (e.g. TechNet Script Center and PoshCode) or a company’s internal collection. 
-  </div>     
+  </div> 
  </body>
 </html>
