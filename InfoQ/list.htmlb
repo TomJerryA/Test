@@ -2,6 +2,9 @@
  <head></head> 
  <body>
   <div>
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/13.htmlb">Codenvy背后的技术--一次与CEO TylerJewell的深入访谈</a> Codenvy是个在线IDE(集成开发环境)，它支持使用Java、JavaScript、HTML5、PHP、Ruby和其它语言开发应用程序，同时也内置支持在PaaS上部署这些应用。本文描述了与其CEO Tyler Jewell的一次访谈，其中主要讲述了Codenvy背后所包含的技术。 
+  </div> 
+  <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/12.htmlb">如何在Azure环境里做好信息传递可扩展性经验分享</a> 本文介绍建立一个在Azure上使用Azure服务总线, 高吞吐量短信平台的必要步骤。在这篇文章中提出的解决方案是在响应由客户的具体要求，建立一个基于Windows Azure技术的复杂远程信息处理应用。 
   </div> 
   <div> 
@@ -147,9 +150,6 @@
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/14.htmlb">从WordPress看开源平台的发展</a>很少有人知道，地球上六分之一的网站采用Wordpress架构，在Alexa排名前10万的网站中，有16.7%使用了WordPress。如果把WordPress看做一个开放平台的话，它比Facebook更有影响力。而事实上，它就是这样的一个平台。 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/13.htmlb">深入理解Java内存模型（六）——final</a>StartFragmentJava线程之间的通信对程序员完全透明，内存可见性问题很容易困扰Java程序员，本文试图揭开Java内存模型神秘的面纱。本文大致分三部分：重排序与顺序一致性；三个同步原语（lock，volatile，final）的内存语义，重排序规则及在处理器中的实现；Java内存模型的设计目标，及其与处理器内存模型和顺序一致性内存模型的关系。 
   </div>  
  </body>
 </html>

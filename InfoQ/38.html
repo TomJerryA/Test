@@ -1,28 +1,5 @@
-<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>Google发布用于Google眼镜的Mirror API</h3><p>Google发布了用于为Google Glass编写应用的<a href="https://developers.google.com/glass/v1/reference/">Mirror API</a>，并发布了Google Glass设备的最终规格参数。</p> 
-<p>Google Glass使用了时间轴的概念，它由一系列包含文本、图片、视频或富HTML的卡片组成。用户可以在镜框上敲击手指，以浏览卡片。卡片由用户通过诸如拍照等方式生成，或是接受自某个用户订阅的服务。卡片可以归类，对此，用户可以选择浏览整个卡片集或是仅仅查看归类后的封面。另外，可以将特定的命令与卡片关联：比如内嵌的Reply或Read Aloud等命令，或是由卡片开发者自定义的命令。</p> 
-<p>从开发者的角度看，使用Glass设备意味着就要用 <a href="https://developers.google.com/glass/v1/reference/">Google Mirror API</a>编写Glass应用。这是一套RESTful API，使用JSON在设备和后端服务之间传输数据，并使用OAuth 2.0进行用户认证。Google则是这些服务与Glass设备之间所有通信的媒介。</p> 
-<p>Google提供了<a href="https://github.com/googleglass/mirror-quickstart-java">Java</a> 和<a href="https://github.com/googleglass/mirror-quickstart-python">Python</a>实现的入门项目，还提供了许多用于Go、PHP、.NET、Ruby和Dart编程的类库。点击<a href="https://glass-java-starter-demo.appspot.com/">https://glass-java-starter-demo.appspot.com/</a>，可以查看Java入门项目展示。下面是使用HTTP、Java和Python向时间轴中插入卡片的示例：</p> 
-<pre>
-POST /mirror/v1/timeline HTTP/1.1<br />Host: www.googleapis.com<br />Authorization: Bearer {auth token}<br />Content-Type: application/json<br />Content-Length: 26<br />{ &quot;text&quot;: &quot;Hello world&quot; } 
-<p>TimelineItemtimelineItem = new TimelineItem();<br />timelineItem.setText(&quot;Hello world&quot;);<br />service.timeline().insert(timelineItem).execute();</p><p>timeline_item = {'text': 'Hello world'}<br />service.timeline().insert(body=timeline_item).execute()</p></pre> 
-<p>如果成功，服务器应当返回一条201消息，其中带有所创建项目的完整信息：</p> 
-<pre>
-HTTP/1.1 201 Created<br />Date: Tue, 25 Sep 2012 23:30:11 GMT<br />Content-Type: application/json<br />Content-Length: 303<br />{<br />&quot;kind&quot;: &quot;glass#timelineItem&quot;,<br />&quot;id&quot;: &quot;1234567890&quot;,<br />&quot;selfLink&quot;: &quot;https://www.googleapis.com/mirror/v1/timeline/1234567890&quot;,<br />&quot;created&quot;: &quot;2012-09-25T23:28:43.192Z&quot;,<br />&quot;updated&quot;: &quot;2012-09-25T23:28:43.192Z&quot;,<br />&quot;etag&quot;: &quot;\&quot;G5BI0RWvj-0jWdBrdWrPZV7xPKw/t25selcGS3uDEVT6FB09hAG-QQ\&quot;&quot;,<br />&quot;text&quot;: &quot;Hello world&quot;<br />} 
-</pre> 
-<p>其他与时间轴相关的操作包括：读取时间轴中的卡片、将卡片归类以及访问卡片附件。卡片附件包括诸如图片等二进制信息。</p> 
-<p>Google Glass应用可以包含很多功能，比如支持订阅、访问时间轴或改变位置时通知用户、诸如在卡片上渲染地图等位置相关操作，以及管理联系人等。全部API调用都通过OAuth保护。用户还可以与Google Now互动，使用语音命令进行获取信息、口述邮件、设置约会等操作。</p> 
-<p>随着第一批<a href="http://www.theverge.com/2013/4/15/4228666/first-google-glass-devices-coming-off-production-line">Google Glass设备即将走下产品线</a>，Google发布了一个用于管理Glass设备的配套Android应用——<a href="https://play.google.com/store/apps/details?id=com.google.glass.companion">MyGlass</a>，同时发布了<a href="http://support.google.com/glass/answer/3064128?hl=en&amp;ref_topic=3063354">Glass设备的最终规格参数</a>：</p> 
-<ul> 
- <li>显示：640x360p，“相当于8英尺外的25英寸高分辨率屏幕”</li> 
- <li>摄像：图片——500万像素，视频——720p</li> 
- <li>音频：骨传导传感器</li> 
- <li>网络连接：支持WiFi和蓝牙</li> 
- <li>存储：总存储空间16GB，其中12GB可用，并与Google云进行同步</li> 
- <li>电池：正常使用情况下续航时间为一天</li> 
-</ul> 
-<p>Google Glass设备可以通过WiFi或带有蓝牙功能的手机连接到互联网。</p> 
-<p><b>查看英文原文：</b><a href="http://www.infoq.com/news/2013/04/Glass-Mirror-API;jsessionid=8C810BDEC9AF931F64F63E099C0ECD0F"><b>Google Releases Mirror API for Glass</b></a></p> 
-<hr /> 
-<p>感谢<a href="http://www.infoq.com/cn/bycategory.action;jsessionid=8C810BDEC9AF931F64F63E099C0ECD0F?authorName=臧秀涛">臧秀涛</a>对本文的审校。</p> 
-<p>给InfoQ中文站投稿或者参与内容翻译工作，请邮件至<a href="mailto:editors@cn.infoq.com">editors@cn.infoq.com</a>。也欢迎大家通过新浪微博（<a href="http://www.weibo.com/infoqchina">@InfoQ</a>）或者腾讯微博（<a href="http://t.qq.com/infoqchina">@InfoQ</a>）关注我们，并与我们的编辑和其他读者朋友交流。</p> 
-<p id="lastElm"></p><br><br><br><br><br><br></body></html>
+<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>Monaco项目将Visual Studio带到了Web上</h3><p>Microsoft公司的副总裁Soma Somasegar于近日宣布Visual Studio Online已正式对外发布。所有可以运行现代Web浏览器的设备都能够使用<a href="http://visualstudio.com/vsonline">Visual Studio Online</a>进行开发。这标志着Microsoft在Visual Studio的交付上发生了重大的变化，用户现在能够在各种各样的平台上使用它，包括iPad、Android、Windows RT以及其他与传统的Windows桌面平台相似的设备。</p>
+<p>VSO提供了一个统一的产品，它结合了之前由Team Foundation Service提供的一些已有操作和基于 “Monaco”的项目开发的新功能。新VSO的功能表现在两个方面：与应用程序生命周期维护或者软件开发过程相关的功能；传统IDE的体验能力。ALM功能包括托管的源代码控制，追踪滞留的项目和一个构建服务。IDE部分目前支持Azure Web网站的创建和编辑。</p>
+<p>VSO提供的另外一个功能是一个称为Application Insights的工具，设计它的目的是在生产环境中的应用程序上提供“实时遥测数据”。这些信息的目的是提供性能和使用上的数据。Application Insights目前还是预览版，它支持.NET和Java应用程序、Windows Phone 8和Web应用程序。VSO将提供弹性的加载测试服务（Elastic Load Testing Service），允许开发者通过一个可配置数量的并发用户测试他们的应用程序从而指出弱点或者性能差的代码。最后VSO将会提供构建的能力。</p>
+<p>支持VSO现在也是Visual Studio Express的一部分，这个组合可以免费支持最多有5个用户的小组，这意味着更小的开发者小组可以很容易地开发针对Microsoft平台的软件，而不需要前期进行财政投资。Visual Studio 2012的用户可以通过最新发布的Update 4获得VSO支持。</p>
+<p><strong>查看英文原文：</strong><a href="http://www.infoq.com/news/2013/11/VSOnline">Project Monaco Brings Visual Studio to the Web</a></p><br><br><br><br><br><br></body></html>

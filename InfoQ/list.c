@@ -1,6 +1,9 @@
 <html>
  <head></head> 
- <body> 
+ <body>
+  <div>
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/29.c">Android 4.4 KitKat: Diversas novidades para os desenvolvedores</a>O Google lan&ccedil;ou o Android 4.4 (KitKat) com: menor uso de mem&oacute;ria, modo de imers&atilde;o, estilos transl&uacute;cidos, impress&atilde;o da tela, diversos frameworks (impress&atilde;o, armazenamento, transi&ccedil;&otilde;es), e o Chromium WebView.
+  </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/28.c">Google abre c&oacute;digo-fonte do Gumbo, uma biblioteca para parsing de HTML5</a>O Google abriu o c&oacute;digo-fonte do Gumbo, uma biblioteca para parsing de HTML escrita em C. O Gumbo segue o algoritmo de parsing de HTML5, passando em todos os testes da biblioteca html5lib-0.95, al&eacute;m de ter sido testado em 2,5 bilh&otilde;es de p&aacute;ginas indexadas pelo Google. 
   </div> 
@@ -147,9 +150,6 @@
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/30.c">MongoDB 2.4: busca textual, sharding e mais</a>O time de desenvolvimento do MongoDB anunciou a vers&atilde;o 2.4 de seu banco de dados NoSQL, agora com a fun&ccedil;&atilde;o de busca textual, uma das funcionalidades mais esperadas para o projeto. Conhe&ccedil;a os detalhes. 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/29.c">Microsoft disponibiliza exemplos de c&oacute;digo Kinect para Windows</a>A Microsoft lan&ccedil;ou recentemente no CodePlex 22 exemplos de c&oacute;digo aberto sob a licen&ccedil;a Apache 2.0. Os exemplos, que tamb&eacute;m est&atilde;o inclu&iacute;dos no conjunto de ferramentas do Kinect para Windows, mostram como utilizar v&aacute;rios recursos do Kinect, como: &aacute;udio, intera&ccedil;&otilde;es b&aacute;sicas, cores, profundidade, rastreamento de rosto, infravermelho, slideshow com gestos, voz, WPF, XNA, e outros. 
-  </div> 
+  </div>  
  </body>
 </html>

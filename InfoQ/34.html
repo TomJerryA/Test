@@ -1,18 +1,28 @@
-<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>可移植类库（Portable Class Library）已支持Noda Time</h3><p><a href="http://noda-time.blogspot.com/2013/04/noda-time-v110-released.html">Noda Time</a>是用于.NET的高级日期/时间库，其最新版本适用于Windows 8、Windows Phone 7和Windows Phone 8。该版本还提供了NuGet包和全面的<a href="http://noda-time.googlecode.com/hg-history/1.1.x/docs/userguide/index.html">用户指南</a>。</p> 
-<p>Noda Time将类型系统分为两类，即本地类型与全球类型。</p> 
-<p>本地类型不会绑定到任何时区，但可能会包含一个日历组件。这与DateTimeKind被设置Unspecified的DateTime类相似。此外，Noda Time还支持只有时间或只有日期的值。</p> 
-<p>全球类型基于Instant的概念。一个Instant是通用时间系统中的某个特定时刻。为了与其他系统兼容，它以时间片（tick）为单位，从世界标准时间1970年1月1日（Unix纪元）开始计算，这里每毫秒被划分为1万个时间片，从而能够支持非常高的精度。但应该指出的是，某些科学仪器能够以小到10<sup>-18</sup>秒的时间片来测量时间。</p> 
-<p>诸如ZonedDateTime等类会将Instant与时区信息结合起来。与DateTimeOffset不同，ZonedDateTime包含了需要显示给用户的实际时区信息。</p> 
-<p>下面这幅来自其文档的转换图展现了这些核心类型是如何关联的：</p> 
-<p><img src="http://www.infoq.com/resource/news/2013/04/Noda-Time-1-1/zh/resources/1.png;jsessionid=AE44EB47B19661FDE2F2FB264CFB56E1" alt="" _href="img://null" _p="true" /></p> 
-<p>与BCL相比，Noda Time的另一个优势是对历史日期的支持。BCL的DateTime类表示的最小值是公元元年。Noda Time则支持表示到大约公元前27000年，可以用于应用中对古埃及和中国的年表进行的比较。</p> 
-<p>Noda Time同时支持Windows和Olson时区数据库。由于各国政府经常会修改时区相关的法律，因此Noda Time允许开发者加入较新版本的数据库。</p> 
-<p>在Noda Time中，Period和Duration有着不同的含义。Duration表示一段固定长度的时间，可用时间片进行计量。而Period则是抽象的概念，例如“一个月”或“两周”。“由Period表示的时间流逝的总量并不是固定的：始于1月1日的‘一个月’，实际上比从2月1日开始的‘一个月’要长，因为2月总是比1月短。”</p> 
-<p>在面向Java的Joda Time的基础上，Noda Time是为了修正<a href="http://noda-time.blogspot.com/2011/08/what-wrong-with-datetime-anyway.html">.NET日期/时间类中现存的许多问题</a>而设计的。例如，它允许开发者直接表示日期而无需时间组件，从而避免不必要的时区转化将“12月10日零点”意外地变成“12月9日晚11点”这样的问题。</p> 
-<p>Noda Time提供了IClock接口以支持测试。它通过SystemClock和FakeClock实现。初始化之后就可以手动递增FakeClock，或为它设置固定步长的自动增量。</p> 
-<p>Noda Time基于Apache许可提供。</p> 
-<p><b>查看英文原文</b>：<a href="http://www.infoq.com/news/2013/04/Noda-Time-1-1;jsessionid=AE44EB47B19661FDE2F2FB264CFB56E1">Portable Class Library Support for Noda Time</a></p> 
-<hr /> 
-<p>感谢<a href="http://www.infoq.com/cn/bycategory.action;jsessionid=AE44EB47B19661FDE2F2FB264CFB56E1?authorName=臧秀涛">臧秀涛</a>对本文的审校。</p> 
-<p>给InfoQ中文站投稿或者参与内容翻译工作，请邮件至<a href="mailto:editors@cn.infoq.com">editors@cn.infoq.com</a>。也欢迎大家通过新浪微博（<a href="http://www.weibo.com/infoqchina">@InfoQ</a>）或者腾讯微博（<a href="http://t.qq.com/infoqchina">@InfoQ</a>）关注我们，并与我们的编辑和其他读者朋友交流。</p> 
-<p id="lastElm"></p><br><br><br><br><br><br></body></html>
+<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>IT领域2014年发展趋势</h3><p>虽然2013年还有将近两个月才结束，但是有关2014年的发展趋势已经开始见诸于各个媒体。可以预见，在新的一年，云服务、大数据、安全问题、内存计算等都将是发展的热点区域。</p>
+<p>InfoWorld主编Eric Knorr<a href="http://www.infoworld.com/t/cloud-computing/9-trends-2014-and-beyond-230099" target="_blank">总结</a>了九个方面的发展趋势，其中云计算领域的热点最多。</p>
+<p><em>云将是新硬件</em>。相信Pivotal公司的CEO Paul Maritz的观点吧：新的计算平台驱动着产业的巨变——从PC到客户端到服务器到互联网。对于服务器、存储器、网络设备这些要迎合应用程序扩展性的“大机器”，我们必须对其基础设施进行可视化和集中控制——也就是软件定义。最后这个趋势将超越SDN，会包括数据中心的每一个系统，一直到HVAC。公共云供应商提供的先进的软件控制方案将继续涌向企业。</p>
+<p><em>“参与系统（systems of engagement）”引领潮流</em>。为什么你需要大范围的云的伸缩性呢？这不同于老式的企业“记录系统（systems of record）”，如ERP，在这种系统里数据模型很少变化，并且你很难知道有多少人在使用这个系统。现在云系统的趋势是“systems of engagement”：面向用户的网络或移动端应用，这些应用的用法可能随量级而变化。</p>
+<blockquote> 
+ <p>优化用户交互是当今最热门的研究领域，这一研究推动着弹性基础设施、新数据库技术的发展，也推动着大数据分析收集技术的发展（主要针对网络点击流量以及一些其它用户数据）。基于Hadoop应用的数据分析技术是上个十年中最伟大的企业级技术。在其之后是NoSQL数据库，如MongoDB、Cassandra、Couchbase。这些数据库伸缩性好，并且可以对数据模型进行动态修改。</p> 
+</blockquote>
+<p><em>云计算集成移至前端</em>。伴随着基于云的分析数据存储量的增加，大数据倾向于维持现状。一般的云计算，特别是存储自身数据的SaaS应用，很有可能重蹈覆辙，采用孤立组织——在这种组织中，关于同一个产品和用户的两个有些许差异的副本分散在孤立的数据存储中(一同存储的还有应该共享的、有价值的过程)。</p>
+<blockquote> 
+ <p>解决方案有两个：云端整合与提供更多、更好的API接口。云端整合服务商比比皆是，包括Cordys, Dell Boomi, IBM Cast Iron, Informatica, Layer 7, MuleSoft, SnapLogic, 和WS02等。此外，API现在也有了它们自己的“军团”——如Apigee公司提供的API解决方案，这些API允许企业发布与保持企业自己的公有API。</p> 
+</blockquote>
+<p><em>企业开发用户开始转向PaaS</em>。到目前为止，PaaS的主要用户是商用软件开发者和专业服务公司。但是伴随着越来越多的企业推出他们自己的网络和移动应用，企业开发者将看到诸如Microsoft Azure、Pivotal Cloud Foundry、Red Hat OpenShift、SalesForce Heroku等PaaS供应商能为他们带来的益处。这些供应商在云端提供应用程序敏捷编码、测试、部署所需的工具和服务。</p>
+<p>除了云计算之外，大数据领域也位列其中。<em>大数据将超越自身</em>。大数据分析具有光辉的前景，但短期来看，很多大数据解决方案还不能解决实际问题。从长远来看，大数据技术将不止限于优化电子商务，更加推动各种产业——从制造业到交通运输到电网——的发展。</p>
+<blockquote> 
+ <p>但是这些产业需要工业网络（也被成为物联网）上线。在这个网络中，相互连接的传感器将通过传递大量的遥测信息来改进产品设计，提高错误预测准确度等。通用电气和IBM是这个领域早期的领导者，我们在这个领域只是刚刚起步。若干年后当工业网全面展开时，大数据会变得非常非常大。届时人们将急需大量的大数据解决方案。同时，如果2014年要有什么泡沫要破灭的话，大数据首当其冲。</p> 
+</blockquote>
+<p>接下来就是安全问题。<em>身份（Identity）是新的安全问题</em>。这种说法有一点夸张，但事实是我们必须拓展身份以满足内部部署应用和SaaS应用的需求。管理什么人可以访问哪些内容——并移除离职职工的账户——这一工作已经变得越来越重要，越来越复杂。微软、Okta、Salesforce等公司正在推出这类解决方案。没有云端身份认证管理，企业将无法安全、有效的实施公共云解决方案。</p>
+<p><em>内存是新的存储方式</em>。大内存在两个方面迅速发展。在软件方面,每一个相关的数据库供应商都在添加内存功能（主要用于分析），同时他们也在急剧缩减处理庞大过程工作的时间。硬件方面，像Condusiv Technologies和<a href="http://www.infoworld.com/d/virtualization/review-flash-your-way-better-vmware-performance-229521">PernixData</a>一类的解决方案商在服务器端装配一个大的使用闪存的分布式缓存，通过这种方式他们可以减少实现SAN的读写操作量。</p>
+<p><em>JavaScript的势头不可阻挡</em>。由于源源不断的移动设备（包括新电视、汽车等等）的推出，当今硬件设备的用户多样性高于之前任何时刻。大家都不想给每一个平台开发单独的、原生的用户应用程序。如果你想要使用单一的代码库，你必须要保证你的应用程序可以运行在一个浏览器中——也就是说，这个程序必须是一个基于JavaScript/HTML5的程序。</p>
+<blockquote> 
+ <p>有着Famo.us这种机构不断推动Javascript的发展，我们不难理解貌似每周都有新的Javascript框架推出。此外，像PhoneGap这样的跨平台的移动开发环境允许JavaScript应用程序和本地应用程序的快捷转换。</p> 
+</blockquote>
+<p><em>开发者依旧是主导</em>。如果说这些预言中有什么共通之处的话，那就是两年前Marc Andreessen的预言——软件正在吞噬整个世界。有这么多平台要写——甚至数据中心的基础设施也变成可编程化的了——我们已经没有足够的开发者来完成这些代码了。贪得无厌的需求带来了高薪水和高职位，至少对于那些拥有对应技能的人，情况是如此的。我们能不能找更有效、更好的方式来训练这方面的人才呢？</p>
+<p>Eric最后总结道：这九个趋势展示了短时间内的大量变化。至少这些预测中对于IT产业的暗示是非常有意思的。</p>
+<blockquote> 
+ <p>举个例子说，如果软件定义了基础设施，那么包括网络设备在内的硬件将会变得更商品化。如果应用程序最终可以实现开发者只写一次代码就能在多个平台运行，那么客户端的选择将会变得越来越不重要。此外，软件的交付方式永远的改变了。IBM、Oracle、SAP以及其它的供应商深深地陷入到了这种能够持续从用户身上获得大量利益的组织模式，因此它们要保持这些商品。但是这些令人兴奋的新东西呢？主要是开源的SaaS或者便宜的手机应用程序。在我看来这些产业需要重新校准他们的收入预期，虽然其中有很多“暴发户”已经获得了高额收入。</p> 
+ <p>当云技术和移动世界不再有商业技术垄断之后，企业IT将如何来应对这一局面呢？许多公司逐步认识到，公司需要为用户布置各种各样的网络和移动应用程序，并观察哪一种效果最好。企业IT能够有足够的技术和技能来让这些成为现实么？还是企业将被迫转向SaaS供应商、敏捷开发公司或者其他外部供应商——然后企业IT仅仅处理一些简单的工作。</p> 
+</blockquote><br><br><br><br><br><br></body></html>

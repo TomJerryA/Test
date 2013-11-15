@@ -1,88 +1,68 @@
-<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>深入理解Java内存模型（六）——final</h3><p>与前面介绍的锁和volatile相比较，对final域的读和写更像是普通的变量访问。对于final域，编译器和处理器要遵守两个重排序规则：</p><ol> 
- <li>在构造函数内对一个final域的写入，与随后把这个被构造对象的引用赋值给一个引用变量，这两个操作之间不能重排序。</li> 
- <li>初次读一个包含final域的对象的引用，与随后初次读这个final域，这两个操作之间不能重排序。</li> 
-</ol><p>下面，我们通过一些示例性的代码来分别说明这两个规则：</p><pre>
-public class FinalExample {
-    int i;                            //普通变量
-    final int j;                      //final变量
-    static FinalExample obj;
-
-    public void FinalExample () {     //构造函数
-        i = 1;                        //写普通域
-        j = 2;                        //写final域
-    }
-
-    public static void writer () {    //写线程A执行
-        obj = new FinalExample ();
-    }
-
-    public static void reader () {       //读线程B执行
-        FinalExample object = obj;       //读对象引用
-        int a = object.i;                //读普通域
-        int b = object.j;                //读final域
-    }
-}
-</pre><p>这里假设一个线程A执行writer ()方法，随后另一个线程B执行reader ()方法。下面我们通过这两个线程的交互来说明这两个规则。</p><h2>写final域的重排序规则</h2><p>写final域的重排序规则禁止把final域的写重排序到构造函数之外。这个规则的实现包含下面2个方面：</p><ul> 
- <li>JMM禁止编译器把final域的写重排序到构造函数之外。</li> 
- <li>编译器会在final域的写之后，构造函数return之前，插入一个StoreStore屏障。这个屏障禁止处理器把final域的写重排序到构造函数之外。</li> 
-</ul><p>现在让我们分析writer ()方法。writer ()方法只包含一行代码：finalExample = new FinalExample ()。这行代码包含两个步骤：</p><ol> 
- <li>构造一个FinalExample类型的对象；</li> 
- <li>把这个对象的引用赋值给引用变量obj。</li> 
-</ol><p>假设线程B读对象引用与读对象的成员域之间没有重排序（马上会说明为什么需要这个假设），下图是一种可能的执行时序：</p><p><img src="http://www.infoq.com/resource/articles/java-memory-model-6/zh/resources/11.png;jsessionid=A4AAB2962F595F57F0701DE289FFB288" alt="" _href="img://null" _p="true" /></p><p>在上图中，写普通域的操作被编译器重排序到了构造函数之外，读线程B错误的读取了普通变量i初始化之前的值。而写final域的操作，被写final域的重排序规则“限定”在了构造函数之内，读线程B正确的读取了final变量初始化之后的值。</p><p>写final域的重排序规则可以确保：在对象引用为任意线程可见之前，对象的final域已经被正确初始化过了，而普通域不具有这个保障。以上图为例，在读线程B“看到”对象引用obj时，很可能obj对象还没有构造完成（对普通域i的写操作被重排序到构造函数外，此时初始值2还没有写入普通域i）。</p><h2>读final域的重排序规则</h2><p>读final域的重排序规则如下：</p><ul> 
- <li>在一个线程中，初次读对象引用与初次读该对象包含的final域，JMM禁止处理器重排序这两个操作（注意，这个规则仅仅针对处理器）。编译器会在读final域操作的前面插入一个LoadLoad屏障。</li> 
-</ul><p>初次读对象引用与初次读该对象包含的final域，这两个操作之间存在间接依赖关系。由于编译器遵守间接依赖关系，因此编译器不会重排序这两个操作。大多数处理器也会遵守间接依赖，大多数处理器也不会重排序这两个操作。但有少数处理器允许对存在间接依赖关系的操作做重排序（比如alpha处理器），这个规则就是专门用来针对这种处理器。</p><p>reader()方法包含三个操作：</p><ol> 
- <li>初次读引用变量obj;</li> 
- <li>初次读引用变量obj指向对象的普通域j。</li> 
- <li>初次读引用变量obj指向对象的final域i。</li> 
-</ol><p>现在我们假设写线程A没有发生任何重排序，同时程序在不遵守间接依赖的处理器上执行，下面是一种可能的执行时序：</p><p><img src="http://www.infoq.com/resource/articles/java-memory-model-6/zh/resources/22.png;jsessionid=A4AAB2962F595F57F0701DE289FFB288" alt="" _href="img://null" _p="true" /></p><p>在上图中，读对象的普通域的操作被处理器重排序到读对象引用之前。读普通域时，该域还没有被写线程A写入，这是一个错误的读取操作。而读final域的重排序规则会把读对象final域的操作“限定”在读对象引用之后，此时该final域已经被A线程初始化过了，这是一个正确的读取操作。</p><p>读final域的重排序规则可以确保：在读一个对象的final域之前，一定会先读包含这个final域的对象的引用。在这个示例程序中，如果该引用不为null，那么引用对象的final域一定已经被A线程初始化过了。</p><h2>如果final域是引用类型</h2><p>上面我们看到的final域是基础数据类型，下面让我们看看如果final域是引用类型，将会有什么效果？</p><p>请看下列示例代码：</p><pre>
-public class FinalReferenceExample {
-final int[] intArray;                     //final是引用类型
-static FinalReferenceExample obj;
-
-public FinalReferenceExample () {        //构造函数
-    intArray = new int[1];              //1
-    intArray[0] = 1;                   //2
-}
-
-public static void writerOne () {          //写线程A执行
-    obj = new FinalReferenceExample ();  //3
-}
-
-public static void writerTwo () {          //写线程B执行
-    obj.intArray[0] = 2;                 //4
-}
-
-public static void reader () {              //读线程C执行
-    if (obj != null) {                    //5
-        int temp1 = obj.intArray[0];       //6
-    }
-}
-}
-</pre><p>这里final域为一个引用类型，它引用一个int型的数组对象。对于引用类型，写final域的重排序规则对编译器和处理器增加了如下约束：</p><ol> 
- <li>在构造函数内对一个final引用的对象的成员域的写入，与随后在构造函数外把这个被构造对象的引用赋值给一个引用变量，这两个操作之间不能重排序。</li> 
-</ol><p>对上面的示例程序，我们假设首先线程A执行writerOne()方法，执行完后线程B执行writerTwo()方法，执行完后线程C执行reader ()方法。下面是一种可能的线程执行时序：</p><p><img src="http://www.infoq.com/resource/articles/java-memory-model-6/zh/resources/33.png;jsessionid=A4AAB2962F595F57F0701DE289FFB288" alt="" _href="img://null" _p="true" /></p><p>在上图中，1是对final域的写入，2是对这个final域引用的对象的成员域的写入，3是把被构造的对象的引用赋值给某个引用变量。这里除了前面提到的1不能和3重排序外，2和3也不能重排序。</p><p>JMM可以确保读线程C至少能看到写线程A在构造函数中对final引用对象的成员域的写入。即C至少能看到数组下标0的值为1。而写线程B对数组元素的写入，读线程C可能看的到，也可能看不到。JMM不保证线程B的写入对读线程C可见，因为写线程B和读线程C之间存在数据竞争，此时的执行结果不可预知。</p><p>如果想要确保读线程C看到写线程B对数组元素的写入，写线程B和读线程C之间需要使用同步原语（lock或volatile）来确保内存可见性。</p><h2>为什么final引用不能从构造函数内“逸出”</h2><p>前面我们提到过，写final域的重排序规则可以确保：在引用变量为任意线程可见之前，该引用变量指向的对象的final域已经在构造函数中被正确初始化过了。其实要得到这个效果，还需要一个保证：在构造函数内部，不能让这个被构造对象的引用为其他线程可见，也就是对象引用不能在构造函数中“逸出”。为了说明问题，让我们来看下面示例代码：</p><pre>
-public class FinalReferenceEscapeExample {
-final int i;
-static FinalReferenceEscapeExample obj;
-
-public FinalReferenceEscapeExample () {
-    i = 1;                              //1写final域
-    obj = this;                          //2 this引用在此“逸出”
-}
-
-public static void writer() {
-    new FinalReferenceEscapeExample ();
-}
-
-public static void reader {
-    if (obj != null) {                     //3
-        int temp = obj.i;                 //4
-    }
-}
-}
-</pre><p>假设一个线程A执行writer()方法，另一个线程B执行reader()方法。这里的操作2使得对象还未完成构造前就为线程B可见。即使这里的操作2是构造函数的最后一步，且即使在程序中操作2排在操作1后面，执行read()方法的线程仍然可能无法看到final域被初始化后的值，因为这里的操作1和操作2之间可能被重排序。实际的执行时序可能如下图所示：</p><p><img src="http://www.infoq.com/resource/articles/java-memory-model-6/zh/resources/44.png;jsessionid=A4AAB2962F595F57F0701DE289FFB288" alt="" _href="img://null" _p="true" /></p><p>从上图我们可以看出：在构造函数返回前，被构造对象的引用不能为其他线程可见，因为此时的final域可能还没有被初始化。在构造函数返回后，任意线程都将保证能看到final域正确初始化之后的值。</p><h2>final语义在处理器中的实现</h2><p>现在我们以x86处理器为例，说明final语义在处理器中的具体实现。</p><p>上面我们提到，写final域的重排序规则会要求译编器在final域的写之后，构造函数return之前，插入一个StoreStore障屏。读final域的重排序规则要求编译器在读final域的操作前面插入一个LoadLoad屏障。</p><p>由于x86处理器不会对写-写操作做重排序，所以在x86处理器中，写final域需要的StoreStore障屏会被省略掉。同样，由于x86处理器不会对存在间接依赖关系的操作做重排序，所以在x86处理器中，读final域需要的LoadLoad屏障也会被省略掉。也就是说在x86处理器中，final域的读/写不会插入任何内存屏障！</p><h2>JSR-133为什么要增强final的语义</h2><p>在旧的Java内存模型中 ，最严重的一个缺陷就是线程可能看到final域的值会改变。比如，一个线程当前看到一个整形final域的值为0（还未初始化之前的默认值），过一段时间之后这个线程再去读这个final域的值时，却发现值变为了1（被某个线程初始化之后的值）。最常见的例子就是在旧的Java内存模型中，String的值可能会改变（参考文献2中有一个具体的例子，感兴趣的读者可以自行参考，这里就不赘述了）。</p><p>为了修补这个漏洞，JSR-133专家组增强了final的语义。通过为final域增加写和读重排序规则，可以为java程序员提供初始化安全保证：只要对象是正确构造的（被构造对象的引用在构造函数中没有“逸出”），那么不需要使用同步（指lock和volatile的使用），就可以保证任意线程都能看到这个final域在构造函数中被初始化之后的值。</p><h2>参考文献</h2><ol> 
- <li> <p><a href="http://www.amazon.com/Java-Concurrency-Practice-Brian-Goetz/dp/0321349601/ref=pd_sim_b_1">&nbsp;Java Concurrency in Practice</a></p> </li> 
- <li> <p><a href="http://www.cs.umd.edu/users/pugh/java/memoryModel/jsr-133-faq.html">&nbsp;JSR 133 (Java Memory Model) FAQ</a></p> </li> 
- <li> <p><a href="http://www.amazon.com/Java-Concurrency-Practice-Brian-Goetz/dp/0321349601/ref=pd_sim_b_1">&nbsp;Java Concurrency in Practice</a></p> </li> 
- <li> <p><a href="http://gee.cs.oswego.edu/dl/jmm/cookbook.html">&nbsp;The JSR-133 Cookbook for Compiler Writers</a></p> </li> 
-</ol><p><a href="http://download.intel.com/products/processor/manual/253668.pdf">Intel&reg; 64 and IA-32 ArchitecturesvSoftware Developer’s Manual Volume 3A: System Programming Guide, Part 1</a></p><h2>关于作者</h2><p><strong>程晓明</strong>，Java软件工程师，国家认证的系统分析师、信息项目管理师。专注于并发编程，就职于富士通南大。个人邮箱：<a href="mailto:asst2003@163.com">asst2003@163.com</a>。</p><div class="clearer-space"></div><br><br><br><br><br><br></body></html>
+<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>Codenvy背后的技术--一次与CEO TylerJewell的深入访谈</h3><p>与<a href="http://www.eclipse.org/orion/">Eclipse Orion</a>，<a href="https://c9.io/">Cloud9</a>及其它新一代IDE一样，<a href="https://codenvy.com/">Codenvy</a> 也是其中一员。它们都试图转变开发人员创建软件的方式，为他们提供可以在任何主流浏览器上执行的前端界面，以及可以在服务器或云中执行的后端，该部分将处理所有的力气活：编译、代码分析、构建、预备、发布等等。</p>
+<p>Codenvy可以支持多种语言的在线开发，其中有Java、JavaScript、HTML5、CSS、PHP、Python、Ruby及XML。同时更多的工作也在进行中，以便支持更多语言，同时为社区提供所需工具用来添加想要的语言。对于框架也是一样的，Codenvy目前支持Spring、Node.js、JSP、Rails、GWT和Django等框架。对于Android开发的支持也在Google I/O 2013对外发布了。</p>
+<p>应用程序在IDE里就可以往不同PaaS上发布：Amazon（Elastic Beanstack）、CloudBees、Cloud Foundry、GAE、Heroku、OpenShift、AppFog和Tier3。</p>
+<p>对于代码仓库，Codenvy一开始就支持GitHub和<a href="https://bitbucket.org/">BitBucket</a>，随后支持Git和Mercurial代码库，但是最近添加了对Assembla、BeanStalk、Codebase、Deveo、GitEnterprise、Gitorious、PikaCode、ProjectLocker和Unfuddle的支持。Codenvy使用Jenkins、Hudson或CloudBees来持续集成。</p>
+<p>Codenvy支持结对编程，它含有实时多光标协作功能。其代码编辑器包含有语法高亮，代码补全和重构功能。</p>
+<p>我们采访了Tyler Jewell，Codenvy的CEO，以便挖掘出那些为该IDE提供动力的技术背后所存在的更多细节。</p>
+<div id="lowerFullwidthVCR"></div>
+<p><b>InfoQ</b><b>：Codenvy是由什么构造的？其背后技术、服务器和客户端都是什么？</b></p>
+<blockquote> 
+ <p><b>TJ</b><b>：</b>Codenvy作为一个云系统，包含有多个节点来处理路由，负载平衡，身份管理，IDE，生成器，运行器和分析器。核心IDE本身是用Java编写的，并由GWT生产优化后的客户端JavaScript。对于大部分浏览器和服务器之间的沟通，我们则采用WebSockets。其它在系统中广泛使用的技术包括：Apache Web Services，CloudFoundry，Gluster，CodeMirror，Collide（协同编辑器），Hadoop和Apache Pig。其实Codenvy的核心是作为构建云IDE的平台。在内部，我们利用一个运行时框架来管理发现，加载，协调和激活分层扩展。扩展是以插件形式打包好提供语言、框架、编辑器、文件管理、生成器指令和运行器指令。然后我们创建一个IDE框架链接各个插件并部署到云框架，用来提供租赁、灵活性、日志记录、身份管理和隔离控制。我们建立了自己的多租户IP，这样在单个JVM上就能运行最多250个IDE，同时也防止IDE在执行生成和运行流程时产生拥堵现象。我们针对OAuth创建了自己的拓展，用来允许入站身份验证请求，以及向外拓展身份到云下游以简化用户工作流。我们使用puppet和大量的Bash脚本来处理与Devops相关的问题。而我们的网站，作为独立于我们云生命周期的产品，是通过JavaScript、Yeoman、Grunt和Jekyll撰写的。而对于工具，我们则大量使用GitHub、Jira、Confluence和Selenium。Codenvy的原始代码是通过使用Eclipse和IntelliJ来撰写的，但是现在大部分Codenvy是通过Codenvy本身来撰写的。</p> 
+ <p>我们使用超过100多个开源库来创建运行现有Codenvy的各种元素。</p> 
+</blockquote>
+<p><b>InfoQ: Codenvy</b><b>是在哪里运行的，在您自己的服务器上，还是在云里？到底是哪个？</b></p>
+<blockquote> 
+ <p><b>TJ</b><b>：</b>我们有开发（验收测试），临时（完整的测试环境），准产品（允许市场营销、技术支持和文档参与进来的最终确定版本），以及产品等不同环境。我们在AWS上运行产品。准产品则在我们自己位于欧洲的数据中心内，执行于Eucalyptus之上。我们将临时环境运行于AWS，这样就能进行Devops配置，测试多种不允许内部访问的云API，以及执行大规模的测试。我们的开发服务器环境都是包装有Codenvy的单服务器，它们能根据配置执行于1到2个虚拟机上。针对每个功能特征，我们使用开发环境（能同时运行6个）驱动从PM和用户那所获取的验收标准。在Sprint中，验收服务器会在我们自己的数据中心中运行每个功能。当Sprint结束后，临时环境和预产品环境将通过Puppet程序自动更新。</p> 
+</blockquote>
+<p><b>InfoQ</b><b>：</b><b>你们是否有打算支持其它语言呢？如果是，那将是哪些？</b></p>
+<blockquote> 
+ <p><b>TJ</b><b>：</b>目前就我看来，我们不可能支持太多的语言。在这里，我们有两个方向可以考虑：一是全新的语言，需要专门的构建和运行环境来执行；另外就是可以运行于VM的语言，类似那些执行于JVM的。如果单靠我们自己团队，有太多的环境需要支持，因此我们把社区引入进来。我们一直在努力完成内部所使用的SDK，然后将其发布出去，这样大家就能创建自己的扩展和插件。它的架构和Eclipse插件相符，只会更广泛一点。Codenvy内部是个完整的构建子系统和执行Cloud Foundry的运行环境。因此，如果开发人员想往系统中添加新语言，比如：C，就需要添加常用的IDE部件（文档、语法、调试、重构和宏）。同时也需要给Codenvy相应指令去操作构建系统（make）和运行环境。</p> 
+ <p>我们的首要任务就是将该SDK发布出去，而这将是在今年；随后，我们的第二个重点是将围绕不同框架和语言的社区组织起来。我们也有来自外部的人有兴趣参与到C、C++，Objective C、Go、Scala、Plan等语言中。</p> 
+</blockquote>
+<p><b>InfoQ</b><b>：</b><b>那对框架/PaaS/CI的支持呢？</b></p>
+<blockquote> 
+ <p><b>TJ</b><b>：</b>在每个Sprint中我们都尝试添加新的东西。我们执行为期两周的Sprint，因此这方面的列表总是在变化。之所以Codenvy这么快能走红，是因为我们有个广泛的集成，而且也没有放缓的倾向。我们最新列表也是广泛分布的。我们为GitHub、Bitbucket、AWS、Google App Engine、Heroku、Cloud Foundry、OpenShift、CloudBees、Tier3和AppFog所提供的高度支持，感到非常自豪。我们也刚刚完成大概10个git供应商的认证，因此我们将更新所有规范和how-to，以更好地与各供应商协作。</p> 
+ <p>对于CI的支持，我们启用了post-comment hooks，以及让Web Service直接调用CI供应者。</p> 
+</blockquote>
+<p><b>InfoQ</b><b>：</b><b>该SDK提供了什么？我理解是开发人员能够自己添加语言或平台。还有该SDK将在什么时候发布？</b></p>
+<blockquote> 
+ <p><b>TJ</b><b>：</b>该SDK提供了一个API用于编写分层拓展；一个API用于分离UI、数据（文档）和事件模型，以便单独考虑；API文档；一组插件实例，比如我们给Java所设计的那样；一个专门的SDK云允许开发人员上传插件测试。插件本身将通过Java和GWT来编写。除非是在开发模式下运行，否则GWT需要11分钟编译。我们打算让GWT为Codenvy设置一个开发模式，但是从简化创建流程的最初目的上看，我们需要开发人员上传插件到Codenvy的伙伴云中，在那里我们可以编译、打包以及集成到运行时中。</p> 
+ <p>该SDK云的最初版本会发布于2013年夏天。我们已经签订了好几个ISV合作伙伴，他们对此非常期待，因此这是我们内部的最高优先级。</p> 
+ <p>在首次发布后，我们将创建Codenvy WAR文件包。这样开发人员就可以在Tomcat中运行Codenvy的单服务器版本，同时本地构建和发布插件。该版本将会有点棘手，因为它没有包含对运行器的支持。由于我们使用的是Clound Foundry执行运行器，目前为止还没有找到一个简单的方法将运行器包装到单服务器模式。我们将允许开发人员映射他们的“云运行器”到Tomcat中运行来处理localhost系统。因此如果在localhost的浏览器中执行“Run”，也将触发你在同一机器中所定义的进程命令。</p> 
+</blockquote>
+<p><b>InfoQ</b><b>：</b><b>Codenvy</b><b>能离线工作吗？如果不能，你们的计划是什么？</b></p>
+<blockquote> 
+ <p><b>TJ</b><b>：</b>我们不支持离线工作。在某种程度该话题本身就能成为一个初步招股说明书（a red herring）。从UserVoice获知，该特性是排名第4或第5个大家所需要的。但是当我们询问开发人员他们为什么需要这个特性时，答案却每个都不一样。有些人担心飞机旅行，需要完全离线；而有些则考虑如果只有部分网络访问能力的话，情况会怎么样；但大部分人并不认为如果没有该功能会是个大问题，而提出该需求本身也是件非常自然的事。</p> 
+ <p>提供离线支持的一部分在于决定哪些可以离线。我们可以很容易地提供一个文本编辑器，但不会有对Git指令、构建、调试、运行或部署的支持。因此，从最基本层面看，初始阶段允许开发人员离线时有个只读模式是有一定道理的。而这在将来也非常容易做到。除此之外，不同层次的离线功能将取决于你是否可以或愿意允许在客户端安装它们。如果系统完全基于浏览器，那么我们可以同步Git代码库，并提供编辑功能。如果允许我们在桌面上安装软件，那么我们也可以在本地创建一个完全同步的构建和运行器。</p> 
+ <p>在这方面，我们还在评估哪方面是我们想做的，并希望与社区进行更多的讨论。</p> 
+</blockquote>
+<p><b>InfoQ</b><b>：</b><b>你能就Codenvy对JRebel、Rally Dev和Tasktop的集成上提供更多的细节吗？</b></p>
+<blockquote> 
+ <p><b>TJ</b><b>：</b>为协调Java工程我们提供了JRebel。首先建立一个单一且永久的运行器，然后在生成器和运行器集群间激活JRebel。</p> 
+ <p>我们会在今年年底讨论我们将为Rally和TaskTop做哪些工作。</p> 
+</blockquote>
+<p><b>InfoQ</b><b>：</b><b>目前只有社区版是可用的。你们打算什么时候推出其它已经宣布定价的版本呢？</b></p>
+<blockquote> 
+ <p><b>TJ</b><b>：</b>其实，我们已经有一些付费服务可供出售。现在，我们为那些个人使用者提供了“<a href="http://codenvy.tumblr.com/post/53453250776/codenvy-early-adopter-program">早期采用者项目</a>”，并提供66%的折扣。随着时间的展开,我们对于在每一个版本中增加的高级特性更有自信,价格将会逐年增加.</p> 
+</blockquote>
+<p><b>InfoQ</b><b>：</b><b>企业版将包含什么？</b></p>
+<blockquote> 
+ <p><b>TJ: </b>Codenvy企业版将会是一个安装在防火墙后能管理大量开发者的云系统.迄今为止使用的客户都是那些有监管，合规，安全，外包管理需求的.企业版除了包含公共云的特性之外还加入了一些特殊功能: a) LDAP(轻量级目录访问协议)&amp;认证集成,b)集群,负载均衡,和高可用性策略控制,和c)分析和汇报以衡量采购，参与度，以及开发团队、工作空间和项目的活力。现在，客户们自己提供硬件，然后在Tier3、AWS、Eucalyptus或OpenStack上运行Codenvy Enterprise。</p> 
+ <p>有趣的是，很多Codenvy Enterprise的早期使用者并没有把它当作Eclipse的替代品。相反，它被作为一个辅助的系统。很多情况下，我们会替换离岸开发人员运行缓慢的VDI或TS环境。在其他情况下，当花时间在有限窗口下编程比学会如何配置开发环境更重要的时候，我们正在变成新员工、实习生或合作伙伴的培训基地。就算作为辅助使用，开发人员还是可以推广自己的云，只是他们需要自己负责管理桌面，并让IT负责管理Codenvy。</p> 
+</blockquote>
+<p><b>InfoQ</b><b>：</b><b>对于将来，你们有什么计划？</b></p>
+<blockquote> 
+ <p><b>TJ</b><b>：</b>我们非常有幸拥有30个工程师在我们的开发团队。他们都是非常出色的系统工程师，在构建大而复杂的系统上有很丰富经验。我想这也正是他们的动力之源，促使他们开发设计出了大量能帮助开发人员自动化复杂工作流的项目。我们的精力将分散到以下这几个分类中：</p> 
+ <p>1) 支持开发人员。更多的语言，更多的框架，更多的云集成和其他云服务将被引进。我希望在年底能集成250个技术到Codenvy中。此外，由于与Trigger.IO和Google的合作，我们已公开承诺将添加Android和iOS开发。</p> 
+ <p>2) 支持独立软件开发商（ISV）。在第三季度，我们将交付各种ISV软件包，这样用户就能自定义模板，推广示例应用程序，以及内部构建/测量/跟踪开发活动。最终，我们希望所有ISV都能在线配置自定义的、按需的IDE。这一点，在很多方面，需要结合他们在SDK方面的情况。</p> 
+ <p>3) 支持企业。我们寻求更多的POC，及在大企业中的安装。我们已经在一些大公司上完成安装，但是我们想再完成大概25个后，再宣称Codenvy Enterprise GA。任何想自己运行开发云的公司，都可以联系我们，我们将非常荣幸。</p> 
+</blockquote>
+<h2>关于被访者</h2>
+<p><img src="http://infoqstatic.com/resource/articles/codenvy-interview/zh/resources/1016030.jpg" style="float: left; margin-right: 10px" alt="" _href="img://null" _p="true" /> <b>Tyler Jewell</b>是Codenvy的CEO。同时也是Toba Capital的投资合伙人，他主要关注中间件和应用开发投资。他是WSO2、Exo Platform和Codenvy的董事会成员，同时也投资了Cloudant、ZeroTurnaround、InfoQ和AppHarbor。</p>
+<div style="clear:both">
+ &nbsp;
+</div>
+<p><strong>参考英文原文：</strong><a href="http://www.infoq.com/articles/codenvy-interview">The Technology behind Codenvy. An Interview with Tyler Jewell, CEO</a></p>
+<hr />
+<p>感谢<a href="http://www.infoq.com/cn/author/陈菲">陈菲</a>对本文的审校。</p>
+<p>给InfoQ中文站投稿或者参与内容翻译工作，请邮件至<a href="mailto:editors@cn.infoq.com">editors@cn.infoq.com</a>。也欢迎大家通过新浪微博（<a href="http://www.weibo.com/infoqchina">@InfoQ</a>）或者腾讯微博（<a href="http://t.qq.com/infoqchina">@InfoQ</a>）关注我们，并与我们的编辑和其他读者朋友交流。</p><br><br><br><br><br><br></body></html>
