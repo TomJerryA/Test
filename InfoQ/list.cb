@@ -1,7 +1,7 @@
 <html>
  <head></head> 
- <body>
-  <div>
+ <body> 
+  <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/23.cb">Java 7: Uma vis&atilde;o detalhada da nova API de arquivos</a> O Java 7 introduziu o novo pacote de I/O (entrada/sa&iacute;da) de arquivos que oferece um controle refinado sobre as funcionalidades do sistema de arquivos, particularmente para os sistemas com base no POSIX. Esse artigo apresenta uma introdu&ccedil;&atilde;o inicial da nova API e depois explora em detalhes utilizando um exemplo de projeto web para gerenciamento de arquivos, chamado WebFolder. 
   </div> 
   <div> 

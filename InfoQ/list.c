@@ -1,8 +1,8 @@
 <html>
  <head></head> 
- <body>
-  <div>
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/28.c">Google abre c&oacute;digo-fonte do Gumbo, uma biblioteca para parsing de HTML5</a>O Google abriu o c&oacute;digo-fonte do Gumbo, uma biblioteca para parsing de HTML escrita em C. O Gumbo segue o algoritmo de parsing de HTML5, passando em todos os testes da biblioteca html5lib-0.95, al&eacute;m de ter sido testado em 2,5 bilh&otilde;es de p&aacute;ginas indexadas pelo Google.
+ <body> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/28.c">Google abre c&oacute;digo-fonte do Gumbo, uma biblioteca para parsing de HTML5</a>O Google abriu o c&oacute;digo-fonte do Gumbo, uma biblioteca para parsing de HTML escrita em C. O Gumbo segue o algoritmo de parsing de HTML5, passando em todos os testes da biblioteca html5lib-0.95, al&eacute;m de ter sido testado em 2,5 bilh&otilde;es de p&aacute;ginas indexadas pelo Google. 
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/27.c">Uma introdu&ccedil;&atilde;o a redes neurais utilizando C#</a>Em sua apresenta&ccedil;&atilde;o no evento Build 2013, Introdu&ccedil;&atilde;o a Redes Neurais Utilizando C#, o Dr. James McCaffrey apresentou os conceitos de redes neurais dando aos espectadores uma base s&oacute;lida para um estudo mais aprofundado sobre o tema. 
@@ -150,6 +150,6 @@
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/29.c">Microsoft disponibiliza exemplos de c&oacute;digo Kinect para Windows</a>A Microsoft lan&ccedil;ou recentemente no CodePlex 22 exemplos de c&oacute;digo aberto sob a licen&ccedil;a Apache 2.0. Os exemplos, que tamb&eacute;m est&atilde;o inclu&iacute;dos no conjunto de ferramentas do Kinect para Windows, mostram como utilizar v&aacute;rios recursos do Kinect, como: &aacute;udio, intera&ccedil;&otilde;es b&aacute;sicas, cores, profundidade, rastreamento de rosto, infravermelho, slideshow com gestos, voz, WPF, XNA, e outros. 
-  </div>  
+  </div> 
  </body>
 </html>

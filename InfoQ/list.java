@@ -2,10 +2,13 @@
  <head></head> 
  <body>
   <div>
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/33.java">Previewing Riak 2.0</a>At RICON West Basho announced the first technical preview of Riak 2.0. Continuing the work on Russell Brown’s RFC, this version brings with it new distributed data types for maps and sets, strong consistency, and deeps ties with Apache Solr.
-  </div>
-  <div>
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/32.java">The Human Aspects of API Design: An Interview with Apiary's Jakub Nesetril</a>API Design and description is more than just a technical interface contract between machines. Apiary's Co-Founder and CEO Jakub Nesetril points out that the real consumer of an API description is the developer, with all the concerns of engagement, usability and communication that entails. We spoke with Jakub recently about Apiary's approach to API design and emerging API tools and workflows.
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/34.java">How DevOps Complements Agile at Nokia Entertainment</a>Agile has the manifesto and principles, it focuses on people, clarity for the stakeholders, faster delivery, and happier customers, so why would you need DevOps? John Clapham from Nokia Entertainment in Bristol talked at the Agile Methods in the Finance Sector and Complex Environment conference about what DevOps is and what it has brought to their business.
+  </div> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/33.java">Previewing Riak 2.0</a>At RICON West Basho announced the first technical preview of Riak 2.0. Continuing the work on Russell Brown’s RFC, this version brings with it new distributed data types for maps and sets, strong consistency, and deeps ties with Apache Solr. 
+  </div> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/32.java">The Human Aspects of API Design: An Interview with Apiary's Jakub Nesetril</a>API Design and description is more than just a technical interface contract between machines. Apiary's Co-Founder and CEO Jakub Nesetril points out that the real consumer of an API description is the developer, with all the concerns of engagement, usability and communication that entails. We spoke with Jakub recently about Apiary's approach to API design and emerging API tools and workflows. 
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/31.java">GenMyModel: An Online Real-time Collaborative UML Designer</a>This article contains an interview on GenMyModel’s architecture, technology used and future. 
@@ -147,9 +150,6 @@
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/36.java">Async for .NET and Silverlight 4</a>Microsoft has released the final version of Microsoft.Bcl.Async. This package allows developers using .NET 4, Silverlight 4, and Windows Phone 7.5 to use the async features found in C# 5 and VB 11. 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/35.java">Leadership for Self-Organized Agile Teams</a>Organizations that implement self-organized agile teams need managers who empowerer the teams by using servant leadership, and who coach and mentor them to learn and continuously improve themselves. 
-  </div>   
+  </div>  
  </body>
 </html>
