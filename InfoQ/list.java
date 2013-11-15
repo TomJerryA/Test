@@ -1,11 +1,11 @@
 <html>
  <head></head> 
- <body>
-  <div>
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/36.java">Applying Security by Design with the CMMI for Development</a>To enable development of secure products, processes covering the software development life cycle have to include security activities. Winfried Russwurm from Siemens and Peter Panholzer from Limes Security facilitated a workshop at the SEPG Europe 2013 conference where they explored security activities and presented the Application Guide for Improving Processes for Secure Products.
-  </div>
-  <div>
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/35.java">Apcera Continuum</a>Cloud startup Apcera is making its Continuum product more visible with the launch of a new website on 14 Nov.
+ <body> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/36.java">Applying Security by Design with the CMMI for Development</a>To enable development of secure products, processes covering the software development life cycle have to include security activities. Winfried Russwurm from Siemens and Peter Panholzer from Limes Security facilitated a workshop at the SEPG Europe 2013 conference where they explored security activities and presented the Application Guide for Improving Processes for Secure Products. 
+  </div> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/35.java">Apcera Continuum</a>Cloud startup Apcera is making its Continuum product more visible with the launch of a new website on 14 Nov. 
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/34.java">How DevOps Complements Agile at Nokia Entertainment</a>Agile has the manifesto and principles, it focuses on people, clarity for the stakeholders, faster delivery, and happier customers, so why would you need DevOps? John Clapham from Nokia Entertainment in Bristol talked at the Agile Methods in the Finance Sector and Complex Environment conference about what DevOps is and what it has brought to their business. 
@@ -150,6 +150,6 @@
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/38.java">More on Immutable Collections in .NET</a>Since we last reported on Immutable Collections in January, the API has evolved and a lot more has been revealed about the inner workings. 
-  </div>   
+  </div> 
  </body>
 </html>

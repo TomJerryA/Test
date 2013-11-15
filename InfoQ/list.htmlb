@@ -1,7 +1,7 @@
 <html>
  <head></head> 
- <body>
-  <div>
+ <body> 
+  <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/13.htmlb">Codenvy背后的技术--一次与CEO TylerJewell的深入访谈</a> Codenvy是个在线IDE(集成开发环境)，它支持使用Java、JavaScript、HTML5、PHP、Ruby和其它语言开发应用程序，同时也内置支持在PaaS上部署这些应用。本文描述了与其CEO Tyler Jewell的一次访谈，其中主要讲述了Codenvy背后所包含的技术。 
   </div> 
   <div> 
@@ -150,6 +150,6 @@
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/14.htmlb">从WordPress看开源平台的发展</a>很少有人知道，地球上六分之一的网站采用Wordpress架构，在Alexa排名前10万的网站中，有16.7%使用了WordPress。如果把WordPress看做一个开放平台的话，它比Facebook更有影响力。而事实上，它就是这样的一个平台。 
-  </div>  
+  </div> 
  </body>
 </html>

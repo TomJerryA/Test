@@ -2,7 +2,10 @@
  <head></head> 
  <body>
   <div>
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/29.c">Android 4.4 KitKat: Diversas novidades para os desenvolvedores</a>O Google lan&ccedil;ou o Android 4.4 (KitKat) com: menor uso de mem&oacute;ria, modo de imers&atilde;o, estilos transl&uacute;cidos, impress&atilde;o da tela, diversos frameworks (impress&atilde;o, armazenamento, transi&ccedil;&otilde;es), e o Chromium WebView.
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/30.c">O presente e o futuro do desempenho dos aplicativos web moveis</a>Em um artigo s&oacute;lido, bem fundamentado, Drew Crawford exp&otilde;e todas as raz&otilde;es pelas quais ele acredita que os aplicativos web mobile s&atilde;o lentas hoje e porque ele n&atilde;o espera por uma melhoria relevante no futuro pr&oacute;ximo.
+  </div> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/29.c">Android 4.4 KitKat: Diversas novidades para os desenvolvedores</a>O Google lan&ccedil;ou o Android 4.4 (KitKat) com: menor uso de mem&oacute;ria, modo de imers&atilde;o, estilos transl&uacute;cidos, impress&atilde;o da tela, diversos frameworks (impress&atilde;o, armazenamento, transi&ccedil;&otilde;es), e o Chromium WebView. 
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/28.c">Google abre c&oacute;digo-fonte do Gumbo, uma biblioteca para parsing de HTML5</a>O Google abriu o c&oacute;digo-fonte do Gumbo, uma biblioteca para parsing de HTML escrita em C. O Gumbo segue o algoritmo de parsing de HTML5, passando em todos os testes da biblioteca html5lib-0.95, al&eacute;m de ter sido testado em 2,5 bilh&otilde;es de p&aacute;ginas indexadas pelo Google. 
@@ -147,9 +150,6 @@
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/31.c">Usando deployments “can&aacute;rio” para testes em produ&ccedil;&atilde;o</a>Conhe&ccedil;a as pr&aacute;ticas da empresa Nolio que utiliza a t&eacute;cnica de &quot;canary deployments&quot; para testar software em produ&ccedil;&atilde;o, redirecionando um subgrupo de usu&aacute;rios para uma nova funcionalidade como parte das pr&aacute;ticas de entregas cont&iacute;nuas. 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/30.c">MongoDB 2.4: busca textual, sharding e mais</a>O time de desenvolvimento do MongoDB anunciou a vers&atilde;o 2.4 de seu banco de dados NoSQL, agora com a fun&ccedil;&atilde;o de busca textual, uma das funcionalidades mais esperadas para o projeto. Conhe&ccedil;a os detalhes. 
   </div>  
  </body>
 </html>
