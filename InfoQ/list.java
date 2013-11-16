@@ -1,6 +1,9 @@
 <html>
  <head></head> 
- <body> 
+ <body>
+  <div>
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/37.java">Oracle Releases Videos and Slides from the 2013 JVM Language Summit</a>Oracle have released videos and slides from the 2013 JVM Language Summit, which saw uses of the JVM from the biggest data to the smallest mobiles, and future performance advances in the JVM runtime. Read on to find out more about what was covered.
+  </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/36.java">Applying Security by Design with the CMMI for Development</a>To enable development of secure products, processes covering the software development life cycle have to include security activities. Winfried Russwurm from Siemens and Peter Panholzer from Limes Security facilitated a workshop at the SEPG Europe 2013 conference where they explored security activities and presented the Application Guide for Improving Processes for Secure Products. 
   </div> 
@@ -147,9 +150,6 @@
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/39.java">First Look at Visual Studio 2012 Update 3 Shows Modest Updates</a>The first preview of the forthcoming 3rd Update to Visual Studio has been released. This release focuses primarily on bug fixes and improvements to Team Foundation Server 2012. 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/38.java">More on Immutable Collections in .NET</a>Since we last reported on Immutable Collections in January, the API has evolved and a lot more has been revealed about the inner workings. 
-  </div> 
+  </div>  
  </body>
 </html>

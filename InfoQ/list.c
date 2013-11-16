@@ -1,8 +1,8 @@
 <html>
  <head></head> 
- <body>
-  <div>
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/30.c">O presente e o futuro do desempenho dos aplicativos web moveis</a>Em um artigo s&oacute;lido, bem fundamentado, Drew Crawford exp&otilde;e todas as raz&otilde;es pelas quais ele acredita que os aplicativos web mobile s&atilde;o lentas hoje e porque ele n&atilde;o espera por uma melhoria relevante no futuro pr&oacute;ximo.
+ <body> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/30.c">O presente e o futuro do desempenho dos aplicativos web moveis</a>Em um artigo s&oacute;lido, bem fundamentado, Drew Crawford exp&otilde;e todas as raz&otilde;es pelas quais ele acredita que os aplicativos web mobile s&atilde;o lentas hoje e porque ele n&atilde;o espera por uma melhoria relevante no futuro pr&oacute;ximo. 
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/29.c">Android 4.4 KitKat: Diversas novidades para os desenvolvedores</a>O Google lan&ccedil;ou o Android 4.4 (KitKat) com: menor uso de mem&oacute;ria, modo de imers&atilde;o, estilos transl&uacute;cidos, impress&atilde;o da tela, diversos frameworks (impress&atilde;o, armazenamento, transi&ccedil;&otilde;es), e o Chromium WebView. 
@@ -150,6 +150,6 @@
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/31.c">Usando deployments “can&aacute;rio” para testes em produ&ccedil;&atilde;o</a>Conhe&ccedil;a as pr&aacute;ticas da empresa Nolio que utiliza a t&eacute;cnica de &quot;canary deployments&quot; para testar software em produ&ccedil;&atilde;o, redirecionando um subgrupo de usu&aacute;rios para uma nova funcionalidade como parte das pr&aacute;ticas de entregas cont&iacute;nuas. 
-  </div>  
+  </div> 
  </body>
 </html>
