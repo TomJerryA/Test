@@ -2,7 +2,13 @@
  <head></head> 
  <body>
   <div>
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/37.java">Oracle Releases Videos and Slides from the 2013 JVM Language Summit</a>Oracle have released videos and slides from the 2013 JVM Language Summit, which saw uses of the JVM from the biggest data to the smallest mobiles, and future performance advances in the JVM runtime. Read on to find out more about what was covered.
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/39.java">Microsoft Ditches the Stack Ranking System. Yahoo! Lays off 600 because of It</a>Yahoo! has recently laid off about 600 employees based on a ranking system introduced last year, while Microsoft is ditching their system to relieve some of the pressure from their staff.
+  </div>
+  <div>
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/38.java">DXperience 13.2 Adds ASP.NET Icon Library, New Themes, Extended Smart Tag Support and Enhancements</a>The upcoming release of DevExpress DXperience 13.2 will include new ASP.NET icon library, moderno theme based on CSS3, new themes for WinForms based on Visual Studio in addition to smart tag support for all controls including WinForms data editors library.
+  </div> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/37.java">Oracle Releases Videos and Slides from the 2013 JVM Language Summit</a>Oracle have released videos and slides from the 2013 JVM Language Summit, which saw uses of the JVM from the biggest data to the smallest mobiles, and future performance advances in the JVM runtime. Read on to find out more about what was covered. 
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/36.java">Applying Security by Design with the CMMI for Development</a>To enable development of secure products, processes covering the software development life cycle have to include security activities. Winfried Russwurm from Siemens and Peter Panholzer from Limes Security facilitated a workshop at the SEPG Europe 2013 conference where they explored security activities and presented the Application Guide for Improving Processes for Secure Products. 
@@ -144,12 +150,6 @@
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/41.java">Tabris 1.0: Cross-platform Mobile Development in Java</a>After three years in development, EclipseSource has released Tabris 1.0, a cross-platform Java mobile development framework for iOS and Android. 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/40.java">Meteor Introduces Tighter NPM Integration, Overhauled Package Management</a>The Meteor Development Group released Meteor 0.6.0 on April 4th as a major overhaul to its package management system as well as growing NPM package support. 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/39.java">First Look at Visual Studio 2012 Update 3 Shows Modest Updates</a>The first preview of the forthcoming 3rd Update to Visual Studio has been released. This release focuses primarily on bug fixes and improvements to Team Foundation Server 2012. 
-  </div>  
+  </div>   
  </body>
 </html>

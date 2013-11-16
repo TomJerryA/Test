@@ -1,6 +1,9 @@
 <html>
  <head></head> 
- <body> 
+ <body>
+  <div>
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/0.javab">Learning and Liminality in Agile Adoptions</a> In this 4th article in the series about Open Agile Adoption Dan Mezick presents an approach to take advantage of the natural stress that come about when making change in organisations to help achieve sustainable agile transitions. 
+  </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/49.javab">Costin Leau on Elasticsearch, BigData and Hadoop</a> Elasticsearch is an open source, distributed real-time search and analytics engine for the cloud. The first milestone of elasticsearch-hadoop 1.3.M1 was released last month. InfoQ spoke with Costin Leau about Elasticsearch and how it integrates with Hadoop and other Big Data technologies. 
   </div> 
@@ -147,9 +150,6 @@
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/1.javab">Cloudberry: An HTML5 Cloud Phone Platform for Mobile Devices</a>In this article, authors introduce Cloudberry, an HTML5-based cloud phone software which offers the benefit of changing features on mobile devices almost instantly. They also talk about challenges. 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/0.javab">Designing and Implementing Hypermedia APIs</a>This article (the second in a four-part series) focuses on the design of a hypermedia server based on the API designed for the class scheduling problem domain outlined in part one of the series. 
-  </div> 
+  </div>  
  </body>
 </html>
