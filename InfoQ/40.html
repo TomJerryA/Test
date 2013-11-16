@@ -1,21 +1,135 @@
-<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>jQuery 2.0发布：不再支持IE6/7/8</h3><p>jQuery 2.0最新<a href="http://blog.jquery.com/2013/04/18/jquery-2-0-released/" target="_blank">发布</a>,不再支持IE6/7/8,尺寸更小运行更快,完全兼容jQuery 1.9 API。不过jQuery 1.x将继续支持IE6/7/8。</p> 
-<p>最新的jQuery 2.0不仅抛弃了IE6/7/8,而且如果用户在IE9和10中选择“兼容性视图”，那么也会受到影响。为了避免新版本的IE使用兼容老版本的模式，jQuery团队建议开发者使用<a href="http://msdn.microsoft.com/en-us/library/cc288325(v=vs.85).aspx">X-UA-Compatible</a>标记或者HTTP头部，后者会获得更好的性能体验。</p> 
-<p>同时，jQuery 2.0的尺寸也比1.9.1缩小了12%，瘦身的主要是那些为了兼容IE6/7/8的补丁代码。而且，开发者可以构建一个<a href="https://github.com/jquery/jquery/#readme" target="_blank">更小、更轻量</a>的版本。</p> 
-<p>随着jQuery 2.0的发布，jQuery团队对1.x版本的一些环境将不再提供支持，因为2.x版本会是更好的选择。它们包括：</p> 
+<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>NoSQL数据库面面观</h3><p><a href="http://github.com/le0pard/">Alexey Vasiliev</a>是一位知名的Web开发者与Linux系统管理员，曾参与开发过多个项目，如<a href="https://github.com/le0pard/falcon">falcon</a>、<a href="https://github.com/le0pard/mongodb_logger">mongodb_logger</a>、<a href="https://github.com/railsware/sht_rails">sht_rails</a>及<a href="https://github.com/railsware/piro">piro</a>等项目。近日，Vasiliev就当前各种NoSQL数据库的优势与劣势<a href="http://leopard.in.ua/2013/11/08/nosql-world/">撰文</a>进行了详尽的分析。这些分析与比较将会对广大开发者项目的NoSQL数据库选型提供一定的帮助与指导作用。</p>
+<p>NoSQL数据库现在已经变得非常流行了，在NoSQL这个大概念下实际上包含了大量的方式与项目，旨在实现各种数据库模型，他们与传统的关系型数据库管理系统存在着非常大的差别，而传统的关系型数据库系统是通过SQL的方式来访问数据的。在NoSQL领域中，传统观念中的模式可以通过不同的数据结构来实现，如散列表、数组、树、图等等。</p>
+<p>术语“NoSQL”最早出现在上个世纪90年代末期，然而真正为大家所熟知则是在2009年中期。起初，它只是由Carlo Strozzi创建的一个小型开源数据库，将所有数据以ASCII文件的形式存储，并使用shell脚本而非SQL来访问这些数据。这个数据库与当前的“NoSQL”概念并没有任何相似之处。</p>
+<p>Johan Oskarsson在2009年6月于旧金山组织了一场会议，讨论IT市场的新技术、数据存储与处理等主题。之所以会举办这场会议的主要原因在于BigTable和Dynamo等新产品的出现。“NoSQL”这个术语则是由来自RackSpace的Eric vans提出的。这个术语原本就是用在这场会议当中的，也没有什么更深层次的含义。不过最后的结果却是它迅速在互联网上蔓延开来，成为IT领域的一个新趋势。随后，Pramod J.Sadalage与Martin Fowler编写了“<a href="http://www.amazon.com/NoSQL-Distilled-Emerging-Polyglot-Persistence/dp/0321826620">NoSQL Distilled</a>”一书，旨在对日益庞大的NoSQL世界进行组织。</p>
+<p>现在大约有150多种NoSQL数据库（<a href="http://nosql-database.org/">nosql-database.org</a>），下面就来探讨一下NoSQL的主要发展方向。</p>
+<h2>列簇存储</h2>
+<p>面向列的DBMS是这样一种数据库管理系统，它将数据表存储为数据列而非行的形式。从物理上来说，表是列的集合，每一列从本质上来说都是只有一个字段的表。这些数据库通常用于分析系统、商业智能与分析型数据存储。</p>
+<p>优点：</p>
 <ul> 
- <li>Google Chrome附加组件</li> 
- <li>Mozilla XUL应用程序和Firefox扩展</li> 
- <li>Firefox OS应用程序</li> 
- <li>Chrome OS应用程序</li> 
- <li>Windows 8 Store (“Modern/Metro UI”) 应用程序</li> 
- <li>BlackBerry 10 WebWorks应用程序</li> 
- <li>PhoneGap/Cordova应用程序</li> 
- <li>Apple UIWebView类</li> 
- <li>Microsoft WebBrowser控件</li> 
- <li>Node.js</li> 
-</ul> 
-<p>jQuery社区最近比较活跃，几天前，jQuery Mobile 1.3.0刚刚<a href="http://www.infoq.com/cn/news/2013/03/jquery-mobile-1.3.0;jsessionid=EF6AD64BD0829344ED8080B5979D640C" target="_blank">发布</a>，更新主要集中在响应式的web设计并新增了多个移动应用的widget。响应式web设计(RWD)旨在提供最佳的用户浏览体验，不管使用的是什么设备、什么浏览器。RWD使用CSS媒体查询(media queries)语言在浏览器中动态适配页面布局，而不是在服务端检测用户代理（User Agent）。因此，它不仅可以根据不同的屏幕尺寸渲染页面，还能响应设备的横竖屏切换。</p> 
-<p>jQuery作为众多JS框架之一，历来褒贬不一。之前，InfoQ曾经报道过“<a href="http://www.infoq.com/cn/news/2012/08/jQuery-choice;jsessionid=EF6AD64BD0829344ED8080B5979D640C">选择jQuery的理由</a>”，国内外社区均发表了自己的看法。正方认为jQuery能够简化工作、与Visual Studio IDE集成、动画效果不比Flash差、加载更快等，反方则认为“jQuery污染了两个名字jQuery和$”、第三方插件质量良莠不齐等。</p> 
-<p>针对jQuery的插件问题，不久前，基于GitHub的jQuery插件资源库业已<a href="http://www.infoq.com/cn/news/2013/03/jquery-github-plugin-repo;jsessionid=EF6AD64BD0829344ED8080B5979D640C" target="_blank">发布</a>。自从一年多以前，早先的jQuery插件站点<a href="http://blog.jquery.com/2011/12/08/what-is-happening-to-the-jquery-plugins-site/">关闭</a>以来，jQuery Foundation团队就在着手搭建一个能够更智能地抵御垃圾的插件系统。作为<a href="http://jquery.org/team/">jQuery Foundation的秘书长</a>，Scott Gonzalez同时也是新站点在<a href="https://github.com/jquery/plugins.jquery.com/graphs/contributors">GitHub上最大的贡献者</a>。他说到，这个新站点“将通过某个大多数垃圾制造者都不会关注的提交过程 —— 修订控制系统，来减少垃圾的数量。”利用GitHub钩子（Hooks），第三方jQuery插件的开发者将获得前所未有的丰富工具集。</p> 
-<p>对IE老版本的支持一致让前端开发者头疼，不过，读者从之前的<a href="http://www.infoq.com/cn/news/2013/03/modern-ie;jsessionid=EF6AD64BD0829344ED8080B5979D640C" target="_blank">新闻</a>中会发现，由微软开发的<a href="http://www.modern.ie/">modern.ie</a>包含了各种免费工具和资源，有了这些就可以使用各种版本的IE浏览器测试代码和网站。它包含一个<a href="http://www.modern.ie/en-US/report">代码检测向导</a>，该向导能够定位常见的为支持旧版IE浏览器而引入的问题。该引擎扫描所请求网站的HTML5兼容性问题，还提供了能够确保你的网站在各种浏览器和移动设备上都可以正常运行的提示与技巧。直到2014年1月10日为止，<a href="http://modern.ie/">modern.ie</a>还可免费使用<a href="http://www.browserstack.com/">BrowserStack</a>三个月，让你可在各种浏览器上测试网站。它还为<a href="https://chrome.google.com/webstore/detail/test-ie/eldlkpeoddgbmpjlnpfblfpgodnojfjl">Google Chrome</a><a href="https://addons.mozilla.org/en-US/firefox/addon/test-ie/">和</a><a href="https://addons.mozilla.org/en-US/firefox/addon/test-ie/">Firefox</a>提供了BrowserStack插件，有了这款插件，你可以从这些浏览器中一键访问这项虚拟测试服务。&nbsp;</p> 
-<p id="lastElm"></p><br><br><br><br><br><br></body></html>
+ <li>可以比较数据，因为在表的一列中，数据通常都是同种类型的。</li> 
+ <li>可以通过便宜、性能一般的硬件实现高速的查询性能；由于压缩的原因，相对于关系型数据库来说，这种方式磁盘上的数据所占据的空间要少5到10倍。</li> 
+</ul>
+<p>缺点：</p>
+<ul> 
+ <li>通常没有事务。</li> 
+ <li>对于熟悉传统RDBMS的开发者来说存在不少限制。</li> 
+</ul>
+<p>典型代表：</p>
+<ul> 
+ <li>HBase</li> 
+ <li>Cassandra</li> 
+ <li>Accumulo</li> 
+ <li>Amazon SimpleDB</li> 
+</ul>
+<h2>键值存储</h2>
+<p>你可以通过这种数据库将键值对存储到持久化存储中，随后使用键来读取值。那么对于这种初看起来用途非常有限的解决方案来说有哪些好处呢？在根据键来保存/读取值时，系统是非常高效的，因为它没有SQL处理器、索引系统以及分析系统等诸多限制。这种解决方案提供了最高效的性能，代价最低的实现以及可伸缩性。</p>
+<p>优点：</p>
+<ul> 
+ <li>RDBMS太慢了，SQL游标的负担过于沉重。</li> 
+ <li>采用RDBMS的解决方案来存储少量数据的代价有些大。</li> 
+ <li>没必要使用SQL查询、索引、触发器、存储过程、临时表、表单以及视图等等。</li> 
+ <li>由于其轻量级的设计，键值数据库可以很容易实现可伸缩性以及高性能。</li> 
+</ul>
+<p>缺点：</p>
+<ul> 
+ <li>关系型数据库的限制可以从底层就确保数据的完整性，而键值存储就没有这些限制，数据的完整性是由应用来控制的。在这种情况下，数据的完整性可能会由于应用代码的错误而做一些妥协。</li> 
+ <li>在RDBMS中，如果模型设计良好，那么数据库的逻辑结构就能完全反映出存储数据的结构，并且与应用的结构有所不同（数据是独立于应用的）。对于键值存储来说，要想取得这种效果是非常困难的事情。</li> 
+</ul>
+<p>典型代表：</p>
+<ul> 
+ <li>Amazon DynamoDB</li> 
+ <li>Riak</li> 
+ <li>Redis</li> 
+ <li>LevelDB</li> 
+ <li>Scalaris</li> 
+ <li>MemcacheDB</li> 
+ <li>Kyoto Cabinet</li> 
+</ul>
+<h2>文档存储</h2>
+<p>文档存储指的是用于存储、搜索与管理面向文档的信息（半结构化数据）的程序，其中心概念就是文档。具体的面向文档数据库的实现是不同的，不过总的来说，他们都会以各种标准化格式对数据（文档）进行封装与加密，主要格式有XML、YAML、JSON、BSON、PDF等等。</p>
+<p>优点：</p>
+<ul> 
+ <li>足够灵活的查询语言。</li> 
+ <li>易于水平扩展。</li> 
+</ul>
+<p>缺点：</p>
+<p>在很多时候原子性是得不到保障的。</p>
+<p>典型代表：</p>
+<ul> 
+ <li>MongoDB</li> 
+ <li>Couchbase</li> 
+ <li>CouchDB</li> 
+ <li>RethinkDB</li> 
+</ul>
+<h2>图型数据库</h2>
+<p>图型数据库指的是使用图结构的数据库，通过结点、边与属性来表示和存储数据。根据定义，图型数据库是一种提供了无需索引而彼此邻接的存储系统。这意味着每个元素都包含了直接指向邻接元素的指针，因此没必要再通过索引进行查找了。</p>
+<p>优点：</p>
+<ul> 
+ <li>对于关联数据集的查找速度更快。</li> 
+ <li>可以很自然地扩展为更大的数据集，因为他们无需使用代价高昂的连接运算符。</li> 
+</ul>
+<p>缺点：</p>
+<ul> 
+ <li>RDBMS可以用在更为通用的场景下，图型数据库只适合类似于图的数据。</li> 
+</ul>
+<p>典型代表：</p>
+<ul> 
+ <li>Neo4j</li> 
+ <li>FlockDB</li> 
+ <li>InfoGrid</li> 
+ <li>OrientDB</li> 
+</ul>
+<h2>多模数据库</h2>
+<p>这些数据库包含了多种数据库的特性。</p>
+<p>有两种不同的产品分组可以认为是多模的：</p>
+<ul> 
+ <li>支持多种数据模型和用例的多模数据库。 比如说，ArangoDB宣称它拥有键值存储的好处，同时还提供了面向文档以及图型数据库的支持。</li> 
+ <li>支持多种模式的通用目的的数据库。 比如说，Oracle的MySQL 5.6支持SQL方式的访问，也可以通过Memcached API实现键值访问。</li> 
+</ul>
+<p>典型代表：</p>
+<ul> 
+ <li>ArangoDB</li> 
+ <li>Aerospike</li> 
+ <li>Datomic</li> 
+</ul>
+<h2>对象数据库</h2>
+<p>数据库中的数据都建模为对象、属性、方法以及类。面向对象的数据库通常适合于需要高性能数据处理的应用，这种应用一般都有非常复杂的结构。</p>
+<p>优点：</p>
+<ul> 
+ <li>相比于关系元组来说，对象模型最适合于展现现实世界，对于复杂、多方位的对象来说尤为如此。</li> 
+ <li>使用层次特性来组织数据。</li> 
+ <li>访问数据时并不需要专门的查询语言，因为访问是直接面向对象的。然而，有时也是需要使用查询的。</li> 
+</ul>
+<p>缺点</p>
+<ul> 
+ <li>在RDBMS中，由于表的创建、修改或是删除而导致的模式修改通常并不依赖于应用。在使用对象数据库的应用中，模式修改类通常意味着还要对与当前类关联的其他应用类进行修改。这会导致对整个系统进行修改。</li> 
+ <li>对象数据库通常会通过单独的API与特定的语言绑定，只有通过该API才能查询数据。在这方面，RDBMS就做得很好，这要归功于它所使用的通用查询语言。</li> 
+</ul>
+<p>典型代表：</p>
+<ul> 
+ <li>VelocityDB</li> 
+ <li>Objectivity</li> 
+ <li>ZODB</li> 
+ <li>Siaqodb</li> 
+ <li>EyeDB</li> 
+</ul>
+<h2>多维数据库</h2>
+<p>这是针对在线分析处理的一种数据库，它可以从各种关系型数据库中检索数据，并且以某种方式将信息组织为类别和段当中。</p>
+<p>典型代表：</p>
+<ul> 
+ <li>GlobalsDB</li> 
+ <li>Intersystems Cache</li> 
+ <li>SciDB</li> 
+ <li>Rasdaman</li> 
+</ul>
+<h2>多值数据库</h2>
+<p>多维数据库的变种。主要的特性是支持使用属性来存储值的列表。</p>
+<p>典型代表：</p>
+<ul> 
+ <li>Rocket U2</li> 
+ <li>OpenInsight</li> 
+ <li>Reality</li> 
+</ul>
+<h2>总结</h2>
+<p>NoSQL的发展速度异常迅猛，不过这并不意味着关系型数据库就没落了。他们还会在很多场景下发挥着巨大的作用，并且与NoSQL数据库共存。我们现在处在多种持久化存储共存的时代，并不存在处于垄断地位的关系型数据库与NoSQL数据库。架构师们对数据库的选择将会基于数据存储本身的特性，以及所预估的数据量。</p><br><br><br><br><br><br></body></html>

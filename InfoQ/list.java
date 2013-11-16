@@ -1,11 +1,11 @@
 <html>
  <head></head> 
- <body>
-  <div>
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/39.java">Microsoft Ditches the Stack Ranking System. Yahoo! Lays off 600 because of It</a>Yahoo! has recently laid off about 600 employees based on a ranking system introduced last year, while Microsoft is ditching their system to relieve some of the pressure from their staff.
-  </div>
-  <div>
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/38.java">DXperience 13.2 Adds ASP.NET Icon Library, New Themes, Extended Smart Tag Support and Enhancements</a>The upcoming release of DevExpress DXperience 13.2 will include new ASP.NET icon library, moderno theme based on CSS3, new themes for WinForms based on Visual Studio in addition to smart tag support for all controls including WinForms data editors library.
+ <body> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/39.java">Microsoft Ditches the Stack Ranking System. Yahoo! Lays off 600 because of It</a>Yahoo! has recently laid off about 600 employees based on a ranking system introduced last year, while Microsoft is ditching their system to relieve some of the pressure from their staff. 
+  </div> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/38.java">DXperience 13.2 Adds ASP.NET Icon Library, New Themes, Extended Smart Tag Support and Enhancements</a>The upcoming release of DevExpress DXperience 13.2 will include new ASP.NET icon library, moderno theme based on CSS3, new themes for WinForms based on Visual Studio in addition to smart tag support for all controls including WinForms data editors library. 
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/37.java">Oracle Releases Videos and Slides from the 2013 JVM Language Summit</a>Oracle have released videos and slides from the 2013 JVM Language Summit, which saw uses of the JVM from the biggest data to the smallest mobiles, and future performance advances in the JVM runtime. Read on to find out more about what was covered. 
@@ -150,6 +150,6 @@
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/41.java">Tabris 1.0: Cross-platform Mobile Development in Java</a>After three years in development, EclipseSource has released Tabris 1.0, a cross-platform Java mobile development framework for iOS and Android. 
-  </div>   
+  </div> 
  </body>
 </html>
