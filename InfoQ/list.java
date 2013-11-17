@@ -1,6 +1,9 @@
 <html>
  <head></head> 
- <body> 
+ <body>
+  <div>
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/40.java">Interview with Kevin Behr on Continuous Improvement Kung-Fu</a>At the recent DevOps Days in New York, Kevin Behr, co-author of “The Visible Ops Handbook” and ”The Phoenix Project”, and Jesse Palmer gave a talk on how they instilled a continuous improvement culture into an operations team. InfoQ interviewed Kevin Behr to know more about the approach that was taken.
+  </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/39.java">Microsoft Ditches the Stack Ranking System. Yahoo! Lays off 600 because of It</a>Yahoo! has recently laid off about 600 employees based on a ranking system introduced last year, while Microsoft is ditching their system to relieve some of the pressure from their staff. 
   </div> 
@@ -147,9 +150,6 @@
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/42.java">JavaScript Memory Analyzer in Visual Studio 2012 Identifies Leaks in Windows Store Apps</a>Visual Studio 2012 Update 1 includes a new JavaScript Memory Analyzer for Windows 8 which identifies potential memory leaks to enable developers to fix their apps before submission to Windows Store. 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/41.java">Tabris 1.0: Cross-platform Mobile Development in Java</a>After three years in development, EclipseSource has released Tabris 1.0, a cross-platform Java mobile development framework for iOS and Android. 
-  </div> 
+  </div>  
  </body>
 </html>
