@@ -1,7 +1,7 @@
 <html>
  <head></head> 
- <body>
-  <div>
+ <body> 
+  <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/1.javab">Implementing High Performance Parsers in Java</a> On certain occasions you will need to build your own parser, eg if there is nothing standard that fits the bill. This article walks through the steps of building a high performance parser 
   </div> 
   <div> 
@@ -150,6 +150,6 @@
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/2.javab">New Book: jQuery, jQuery UI And jQuery Mobile</a>“jQuery, jQuery UI and jQuery Mobile” takes you through the various jQuery libraries and also covers the plugin-architecture provided by jQuery. 
-  </div>  
+  </div> 
  </body>
 </html>

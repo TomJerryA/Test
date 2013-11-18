@@ -1,6 +1,18 @@
 <html>
  <head></head> 
- <body> 
+ <body>
+  <div>
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/1.py">EclipseがJCPに参加</a>JCP(Java Community Process) EC(Executive Committee)に新たに選出されたメンバが来週就任し，Javaプログラム言語の方向性に対して影響力を行使し始める。その中のひとつであるEclipse財団は，今後２年間にわたってこの決議機関に席を持つことになる。
+  </div>
+  <div>
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/0.py">アジャイルチームにとって楽しさは重要か</a>アジャイルチームで働くのはストレスフルになる場合がある。例えば、顧客のニーズが不明瞭であったり、やらなければならなかったことがたくさんあったり、チームのメンバが困難に直面したりする場合だ。楽しさはストレスを低減し、モチベーションを増やし、生産性をあげるのだろうかという疑問を持つこともあるだろう。これが正しいのなら、アジャイルチームに楽しさを持ち込むにはどうしたらいいのだろうか。
+  </div>
+  <div>
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/49.py">Peter Bell氏に聞くNoSQLのトレンド</a>Peter Bell氏が現在のNoSQLのトレンドを紹介している。NoSQLは高速進化しているデータベースの分野でさまざまなソリューションを提供する。
+  </div>
+  <div>
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/48.py">アジャイル導入の技術的実践、システム思考、文化の問題</a>単純さ、フィードバック、コミュニケーション、尊敬と勇気。これらのエクストリームプログラミング(XP)の価値はいまだにXP Days Benelux 2013カンファレンスのチームに刺激を与えている。InfoQはカンファレンスの主催者であるMerlijn van Minderhout氏とPascal Van Cauwenberghe氏に、アジャイルでの新しい開発、アジャイルへうまく移行すること、アジャイル推進のためのヨーロッパ地域の組織の必要性について話を聞いた。
+  </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/47.py">モバイルHTML5の問題は？</a>最近のリサーチによると、HTML5の主な問題は一般的に信じられているパフォーマンスではなく、むしろプロファイルやデバッグのためのツール不足と確かなAPIの欠如にあるようだ。 
   </div> 
@@ -138,18 +150,6 @@
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/2.py">GoogleとOperaがWebKitをフォーク，SamsungはFirefoxと共同でServoを推進</a>２つの主要なブラウザ開発チームが先頃，パラレルアーキテクチャを目指すことを発表した。WebKitフォークのBlinkを採用するGoogleとOpera，そして共同でServoをプッシュするMozillaとSamsungだ。 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/1.py">Google+ Sign-In：連合アイデンティティ、認証、セマンティック アクティビティストリーム</a>Google+ Sign-Inは、Google+ のソーシャルネットワークを拡張して、サードパーティのWebサイト、デスクトップアプリケーションやモバイルアプリケーションまで入り込み、さらにIDプロバイダとしてのGoogleの位置をTwitterやFacebookなど、他のもの並に強固する。2月26日に発表した新サービスでは、認証、認可、活動共有の機能を提供する。更にユーザー　エンゲージメント、溜まり場、Android アプリの自動ダウンロードをサポートする。 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/0.py">情報を統合しDevOps文化を改善する</a>Appsecuteプラットフォームはアプリケーションライフサイクルに関連する情報を統合することでコラボレーションを促進し生産性を上げる。このSoftware as a Service (SaaS)プラットフォームは人や統合されたプラットフォームから直接メッセージを受け取り、それを組織内のすべての人が閲覧できるように集約する。 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/49.py">Martin Fowler氏が21世紀のソフトウェアデザインについて講演</a>Martin Fowler氏が21世紀のソフトウェアデザインについて講演した。スキーマ無しデータ構造、NoSQLと一貫性、最後にソフトウェアデザインの価値の３つを話した。 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/48.py">特許所有者がTCP/IPの知的所有権を主張</a>テキサス州オースティンに本拠を置くネットワークハードウェアベンダが，TCP/IP プロトコルセットの実装に対してロイヤリティを求めると発言している。かつて Dellor という社名だったこの KCIR Networks は，1997年に Comer Labs を買収した際にこの特許を合わせて取得した。特許が出願されたのは 1975年だが，Comer Labs がこれまでにロイヤリティを要求したことはなかった。 
-  </div> 
+  </div>     
  </body>
 </html>

@@ -1,35 +1,11 @@
-<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>Google+ Sign-In：連合アイデンティティ、認証、セマンティック アクティビティストリーム</h3><p><a target="_blank" href="http://www.infoq.com/news/2013/04/google-plus-federated-identity;jsessionid=DC838EB3646E4698CDA4FA34E9E31F28"><em>原文(投稿日：2013/04/04)へのリンク</em></a></p> 
-<div class="clearer-space">
- &nbsp;
-</div> 
-<div id="newsContent"> 
- <p><a target="_blank" href="http://googleplusplatform.blogspot.com.au/2013/02/google-plus-sign-in.html">Google+ Sign-In</a>は、Google+ のソーシャルネットワークを拡張して、サードパーティのWebサイト、デスクトップアプリケーションやモバイルアプリケーションまで入り込み、さらにIDプロバイダとしてのGoogleの位置をTwitterやFacebookなど、他のもの並に強固する。2月26日に発表した新サービスでは、認証、認可、活動共有の機能を提供する。更にユーザー　エンゲージメント、溜まり場、Android アプリの自動ダウンロードをサポートする。</p> 
- <p>新しいサービスの議論は、Facebookとの <a target="_blank" href="http://www.theverge.com/2013/2/26/4030970/google-plus-sign-in-takes-on-facebook-connect-and-frictionless-sharing">予期される競争</a>が支配的だったが、技術的観点から、隠れている<a target="_blank" href="https://developers.google.com/+/">Google+ API</a>に目を向けるのは、いかに新しいフィーチャが動作し、使用するために配置されている標準のいくつかを理解するのに役立つ。</p> 
- <!-- <h3>Authentication and Authorization</h3> --> 
- <p>シンプルな[g+ | Sign In] <a target="_blank" href="https://developers.google.com/+/web/signin/">ボタン</a>は、サードパーティのWebページ、デスクトップやモバイルアプリケーションへの入り口を提供する。これは、ユーザーのGoogle+プロファイル用のアクセストークンを要求するアプリケーションを開始するプロセスを起動する。協調動作は、<a target="_blank" href="https://developers.google.com/+/web/signin/#using_the_client-side_flow">クライアント側のフロー</a>を介してウェブブラウザで行われるか、<a target="_blank" href="https://developers.google.com/+/web/signin/server-side-flow">サーバー側のフロー</a>を使ってバックエンドAPIの操作を介して行われる。ユーザーがまだGoogle+で認証されていない場合、認証は、サインインの一部として実行される。ユーザーはまた、サードパーティ製アプリケーションに与えたいアクセスのレベルを求められる。アクセスレベル、または<i>スコープ</i>は以下のことを含めることができる。</p> 
- <ul> 
-  <li>userinfo.email: ユーザの電子メールアドレスのみを提供する</li> 
-  <li>plus.me: ユーザーのGoogle+のプロファイル情報を提供する</li> 
-  <li>plus.login: サークルにアクセスし、ユーザーのGoogle+アクティビティストリームへの活動を書き込む能力を与えることで、他のスコープを拡張する</li> 
- </ul> 
- <p>このアクセスの協調動作は、認証と認可の組合せで<a target="_blank" href="http://openid.net/connect/">OpenID Connect</a>ドラフト標準に従っており、これ自身が最近批准された<a target="_blank" href="http://www.rfc-editor.org/rfc/rfc6749.txt">OAuth 2</a>プロトコルにもとづいている。認証は、Googleの認証システム内で完全に処理され、サードパーティのアプリケーションを必要としない。OpenID Connectの層認証は、効果的にユーザーのGoogle+のプロファイルにアクセス権を付与することで、サードパーティのアプリケーションにユーザーを認証する。OpenID Connectは、OAuthの認証プロトコル上に認証を重ねており、ユーザーのGoogle+ プロファイルにアクセスを許すことで、効果的にユーザーをサードパーティ製のアプリに認証する。OpenIDファウンデーションの議長でOpenID Connectの共著者である<a target="_blank" href="http://openid.net/foundation/leadership/">Nat Sakimura</a>氏は、OpenID, OAuth、OpenID Connect間の違いといかにアプリケーションがGoogle+サインインのようなサービスを使ってアクセスを要求するユーザーの身元を確認しているかについて<a target="_blank" href="http://nat.sakimura.org/2011/05/15/dummys-guide-for-the-difference-between-oauth-authentication-and-openid/">素晴らしい説明</a>を提供している。</p> 
- <p>ユーザーは、アクセスを取り消すか、または共有設定を変更することがきる <a target="_blank" href="http://plus.google.com/apps">アプリ設定ページ</a>を使って、自分のアプリの権限を見直すことができる。</p> 
- <!-- <h3>Moments</h3> --> 
- <p>サードパーティ製アプリケーションは、Google+ API内でアプリケーション内アクティビティを管理するために、そのアクセストークンを使えるようになった。Googleは、これらのアクティビティを &quot;<a target="_blank" href="https://developers.google.com/+/api/latest/moments">Moments</a>&quot; として参照し、Google+ APIは、momentsを挿入、リスト、削除するための簡単なCRUDインターフェースを提供している。MomentsにはActivityTypeと呼ばれる、さまざまなタイプがある。すべてのアクティビティには、名前、説明、サムネイル、そして<i>itemtype</i>（これは、アクティビティの主題である）がある。Itemtypeは<a target="_blank" href="http://schema.org">schema.org</a> &quot;<a target="_blank" href="http://schema.org/Thing">Thing</a>&quot;のサブタイプでなければならない。例えば、<a target="_blank" href="http://schema.org/Book">Book</a>, <a target="_blank" href="http://schema.org/Place">Place</a> あるいは <a target="_blank" href="http://schema.org/Person">Person</a>。更に、項目は、関連項目用の<a target="_blank" href="http://schema.org">schema.org</a>マークアップを持つHTMLページへのURL参照を持たなければならない。こうして、Google+の統合は、構造化されたマークアップの&quot;セマンティックWeb&quot;の開発を促進し、これは、また <a target="_blank" href="http://googleblog.blogspot.com.au/2011/06/introducing-schemaorg-search-engines.html">検索エンジンに有用</a>である。アクティビティのリストは非常に包括的だ。</p> 
- <ul> 
-  <li>AddActivityは、項目タイプ、名前、説明およびサムネイルを持つ一般的なアクティビティ</li> 
-  <li>BuyActivityは、項目の購入を表す</li> 
-  <li>CheckinActivityは、ある場所からチェックインしているユーザーを表し、アドレスと位置情報の追加属性を持つ</li> 
-  <li>CommentActivityは、ユーザーがブログの記事、本や他の創造的な仕事にコメントする時に適切だ。</li> 
-  <li>CreateActivityは、ユーザーが創造的な仕事を作成するときのため。</li> 
-  <li>DiscoverActivityは、ユーザーが創造的な仕事を発見したときのため。</li> 
-  <li>ListenActivityは、音楽の録音を聴くユーザーを表し、曲、アルバム、アーティストのメタデータ用の追加属性を提供する。</li> 
-  <li>ReserveActivityは、レストランやホテルなどのローカルビジネスの予約を行っているユーザーを意味する。</li> 
-  <li>ReviewActivityは、格付け情報を持つ項目のレビュー。</li> 
-  <li>WantActivityは、例えば、アプリケーションの希望リストに項目を追加する場合、ユーザがアイテムを望んでいることを示す。</li> 
- </ul> 
- <p>Google+のアクティビティストリームへの、これらのmomentsの提示と配置は、すべてのユーザーの許可設定に基づいて、Google+のによって処理される。</p> 
- <p>この短いレビューは、Sign-Inによりローンチされた新しい Google+のフィーチャの表面を撫でたに過ぎないが、ソーシャルアクティビティストリームへのセマンティックマークアップの拡張と一緒に、新しい認証と認可の標準の面白い例を提供している。</p> 
- <p id="lastElm">&nbsp;</p> 
-</div> 
-<p id="lastElm"></p><br><br><br><br><br><br></body></html>
+<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>EclipseがJCPに参加</h3><p><a target="_blank" href="http://www.infoq.com/news/2013/11/eclipse-joins-jcp"><em>原文(投稿日：2013/11/07)へのリンク</em></a></p>
+<div class="article_page_left news_container text_content_container"> 
+ <div class="text_info"> 
+  <p>JCP(Java Community Process) EC(Executive Committee / 執行委員会)に新たに選出されたメンバが来週就任し，Javaプログラム言語の方向性に対して影響力を行使し始める。その中のひとつである<a href="http://www.eclipse.org" target="_blank">Eclipse財団</a>は，今後２年間にわたってこの決議機関に席を持つことになる。</p> 
+  <p>Eclipse財団の同委員会への参加には，全体の14%の支持率に当たる221の同意票が投じられた。これは公開選挙された議席候補の中では最高の得票数だ。今回の投票では，もっとも得票の多い8候補がECに選出される。得票上位４候補の任期は２年，それ以外は１年だ。Eclipse財団に2年の任期が与えられたことは，フリーのオープンソースJava IDEで知られる同組織が，今後数年間にわたるJSRへの投票権と，Javaプログラム言語の仕様承認権を手に入れたことを意味している。</p> 
+  <p>再任された候補の中には，Eclipse財団に次ぐ13%の支持を得た<a href="http://twitter.com" target="_blank">Twitter</a>と，同じく2011年に選任されていた<a href="http://www.azulsystems.com/" target="_blank">Azul Systems</a>が含まれている。Azul Systemsと同社CTOのGil Tiene氏は，今年サンフランシスコで開催された<a href="http://www.infoq.com/news/2013/10/azul-jcp-member-of-the-year">Java OneカンファレンスでJCP Member of the Yearにも選ばれている</a>。同賞はその年において，Javaコミュニティにもっとも大きな影響を与えた人物あるいは企業を認定するものだ。Azul Systemsは投票の10%に当たる166票を獲得し，１年間の任期でECメンバの座に着くことになる。</p> 
+  <p>JCPは今年，承認議席3と選出議席2を廃止して，ECメンバの合計数を25に削減した。その内の１議席はOracleが確保し，残る議席を，委員会メンバによる投票プロセスを通じて選ぶように定められている。1,088の投票権所有者中，今回投票を行ったのは24.77%に過ぎなかったが，2012年に確認された投票率は23.70%であったので，それに比較すれば向上している。</p> 
+  <p>昨年の投票後に<a href="http://www.infoq.com/jp/news/2012/11/jcpec2012">InfoQが伝えた</a>ように，今年はJCP改革の節目となる年でもあった。2012年の選挙以前，JCPは２つの業務執行委員会で構成されていた。JavaのStandardおよびEnterprise(SE/EE)エディションを扱う委員会と，Micro Edition(ME)を担当する委員会だ。いずれの委員会も，承認10議席と選出5議席，合わせて15議席から構成されていた。投票されるメンバはいずれも３年間の任期を持ち，承認/選出数が毎年5名になるように期間をずらして設定されていた。今年は選出議席の任期が変更されて，上位当選者の任期を2年，下位を1年のみとするようになっている。</p> 
+  <p>選挙結果に関する全報告が <a href="http://www.jcp.org/en/whatsnew/elections">JCPのWebサイトに紹介</a>されている。JCPとECに関しては<a href="http://www.jcp.org/en/procedures/jcp2_9">JCP 2.0 Process Document</a>として，同じく上記のWebサイトで確認できる。</p> 
+ </div> 
+</div><br><br><br><br><br><br></body></html>
