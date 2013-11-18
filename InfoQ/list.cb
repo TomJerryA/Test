@@ -1,6 +1,9 @@
 <html>
  <head></head> 
- <body> 
+ <body>
+  <div>
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/24.cb">Kanban - Apenas senso comum?</a> Sabe-se que a no&ccedil;&atilde;o de heur&iacute;stica &eacute; poderosa no desenvolvimento de produtos. O Manifesto &Aacute;gil, por sua vez, pode ser visto como um conjunto de heur&iacute;sticas com pr&aacute;ticas e processos. O modelo &quot;Pensamento Kanban&quot; inclui cinco heur&iacute;sticas que encapsulam as &aacute;reas principais para se dar enfoque, acompanhado de mais tr&ecirc;s impactos que encapsulam as &aacute;reas de melhoria. 
+  </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/23.cb">Java 7: Uma vis&atilde;o detalhada da nova API de arquivos</a> O Java 7 introduziu o novo pacote de I/O (entrada/sa&iacute;da) de arquivos que oferece um controle refinado sobre as funcionalidades do sistema de arquivos, particularmente para os sistemas com base no POSIX. Esse artigo apresenta uma introdu&ccedil;&atilde;o inicial da nova API e depois explora em detalhes utilizando um exemplo de projeto web para gerenciamento de arquivos, chamado WebFolder. 
   </div> 

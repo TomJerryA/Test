@@ -2,13 +2,16 @@
  <head></head> 
  <body>
   <div>
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/43.java">Power Productivity Tools for VS 2013</a>Since 2010 the Power Productivity Tools have been Microsoft’s test bed for new Visual Studio features, some of which were incorporated in VS. This new version for VS 2013 brings 11 new and updated features including the ability see documentation without leaving the code editor.
-  </div>
-  <div>
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/42.java">An Interview with Greg Finzer of Compare .NET Objects</a>Writing code to compare objects can be tedious, especially when dealing with large objects or deep graphs. And when the classes change errors often slip in. One way to reduce the potential for error is to rely on a library such as Greg Finzer’s Compare .NET Objects. This library offer reasonable performance for up to 10,000 objects.
-  </div>
-  <div>
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/41.java">Teradata Offers Data Warehouse as a Service as Part of Their Cloud Strategy</a>Teradata revamps its cloud offering, offers Data Warehouse Data Platform as a Service solution. Teradata Cloud is aspiring to become a worthy competitor to Amazon Redshift, with a richer set of predefined libraries and a more effective way of loading data.
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/44.java">Amazon RDS Supports PostgreSQL</a>Amazon RDS adds PostgreSQL to the list of databases supported by the service. The launch supports Postgres version 9.3.1 with plans to support new versions as they become available.
+  </div> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/43.java">Power Productivity Tools for VS 2013</a>Since 2010 the Power Productivity Tools have been Microsoft’s test bed for new Visual Studio features, some of which were incorporated in VS. This new version for VS 2013 brings 11 new and updated features including the ability see documentation without leaving the code editor. 
+  </div> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/42.java">An Interview with Greg Finzer of Compare .NET Objects</a>Writing code to compare objects can be tedious, especially when dealing with large objects or deep graphs. And when the classes change errors often slip in. One way to reduce the potential for error is to rely on a library such as Greg Finzer’s Compare .NET Objects. This library offer reasonable performance for up to 10,000 objects. 
+  </div> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/41.java">Teradata Offers Data Warehouse as a Service as Part of Their Cloud Strategy</a>Teradata revamps its cloud offering, offers Data Warehouse Data Platform as a Service solution. Teradata Cloud is aspiring to become a worthy competitor to Amazon Redshift, with a richer set of predefined libraries and a more effective way of loading data. 
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/40.java">Interview with Kevin Behr on Continuous Improvement Kung-Fu</a>At the recent DevOps Days in New York, Kevin Behr, co-author of “The Visible Ops Handbook” and ”The Phoenix Project”, and Jesse Palmer gave a talk on how they instilled a continuous improvement culture into an operations team. InfoQ interviewed Kevin Behr to know more about the approach that was taken. 
@@ -147,9 +150,6 @@
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/46.java">Database Lifecycle Management Guidance Updated by Microsoft</a>Microsoft recently updated database lifecycle management guidance page with SQL Server DLM diagram along with curated resources for SQL Server Data Tools, SQL Server Management Studio and Windows Azure SQL Database. 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/45.java">Database Lifecycle Management Guidance Updated</a>Microsoft recently updated database lifecycle management guidance page with SQL Server DLM diagram along with curated resources for SQL Server Data Tools, SQL Server Management Studio and Windows Azure SQL Database. 
-  </div>    
+  </div>  
  </body>
 </html>

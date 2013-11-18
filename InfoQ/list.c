@@ -2,7 +2,10 @@
  <head></head> 
  <body>
   <div>
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/31.c">Twitter abre o c&oacute;digo do Summingbird</a>O Twitter abriu o c&oacute;digo do Summingbird, uma biblioteca para constru&ccedil;&atilde;o de solu&ccedil;&otilde;es MapReduce que permite a execu&ccedil;&atilde;o em batch, real-time ou h&iacute;brido.
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/32.c">iOS vs Android: Resultados e opini&otilde;es sobre o desenvolvimento nas duas plataformas</a>Cameron Henneke, fundador e desenvolvedor do GQueues, um gerenciador de tarefas online, adaptou a vers&atilde;o em HTML5 de seu aplicativo m&oacute;vel para iOS e Android. Durante o projeto, Henneke registrou todo o esfor&ccedil;o de desenvolvimento envolvido em ambas as plataformas e comparou os resultados em seu blog. Veja um resumo dos resultados obtidos e trechos de uma entrevista conduzida pelo InfoQ.
+  </div> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/31.c">Twitter abre o c&oacute;digo do Summingbird</a>O Twitter abriu o c&oacute;digo do Summingbird, uma biblioteca para constru&ccedil;&atilde;o de solu&ccedil;&otilde;es MapReduce que permite a execu&ccedil;&atilde;o em batch, real-time ou h&iacute;brido. 
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/30.c">O presente e o futuro do desempenho dos aplicativos web moveis</a>Em um artigo s&oacute;lido, bem fundamentado, Drew Crawford exp&otilde;e todas as raz&otilde;es pelas quais ele acredita que os aplicativos web mobile s&atilde;o lentas hoje e porque ele n&atilde;o espera por uma melhoria relevante no futuro pr&oacute;ximo. 
@@ -147,9 +150,6 @@
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/33.c">Backbone.js 1.0: primeira vers&atilde;o maior em 2 anos</a>Ap&oacute;s dois anos e meio de desenvolvimento, a vers&atilde;o 1.0 do Backbone.js foi lan&ccedil;ada. O Backbone.js &eacute; uma popular biblioteca JavaScript que segue o modelo Model/View, utilizada por v&aacute;rios aplicativos web populares, incluindo USA Today, Rdio e Airbnb. Veja o que mudou. 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/32.c">Windows Embedded 8: vers&atilde;o final e alinhamento com Windows 8</a>A Microsoft lan&ccedil;ou o Windows Embedded 8, vers&atilde;o est&aacute;vel para uso em produ&ccedil;&atilde;o. Destinado a fabricantes de equipamentos originais (OEMs) e em ambientes especializados, esta s&eacute;rie de lan&ccedil;amentos marca o alinhamento de bases de c&oacute;digo entre a vers&atilde;o Embedded e o Windows 8. 
   </div>  
  </body>
 </html>

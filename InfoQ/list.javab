@@ -1,7 +1,7 @@
 <html>
  <head></head> 
- <body>
-  <div>
+ <body> 
+  <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/2.javab">Author Q&amp;A: Java Coding Guidelines</a> Most developers agree that there is a need to write secure code, but often find that the pressures of getting something shipped can constrain their ability to do so. Others may just not know where to start. InfoQ had the opportunity to speak with the authors of Java Coding Guidelines to discuss how their new book can help developers write better code. 
   </div> 
   <div> 
@@ -150,6 +150,6 @@
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/3.javab">DevOps @ Prezi</a>DevOps@Prezi is the second article of the “Monthly DevOps War Stories” series. Each month we hear what DevOps brings to a different organisation. This time we hear about &quot;learning devops from within&quot;. 
-  </div>  
+  </div> 
  </body>
 </html>
