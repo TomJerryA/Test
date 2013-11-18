@@ -1,6 +1,9 @@
 <html>
  <head></head> 
- <body> 
+ <body>
+  <div>
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/2.javab">Author Q&amp;A: Java Coding Guidelines</a> Most developers agree that there is a need to write secure code, but often find that the pressures of getting something shipped can constrain their ability to do so. Others may just not know where to start. InfoQ had the opportunity to speak with the authors of Java Coding Guidelines to discuss how their new book can help developers write better code. 
+  </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/1.javab">Implementing High Performance Parsers in Java</a> On certain occasions you will need to build your own parser, eg if there is nothing standard that fits the bill. This article walks through the steps of building a high performance parser 
   </div> 
@@ -147,9 +150,6 @@
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/3.javab">DevOps @ Prezi</a>DevOps@Prezi is the second article of the “Monthly DevOps War Stories” series. Each month we hear what DevOps brings to a different organisation. This time we hear about &quot;learning devops from within&quot;. 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/2.javab">New Book: jQuery, jQuery UI And jQuery Mobile</a>“jQuery, jQuery UI and jQuery Mobile” takes you through the various jQuery libraries and also covers the plugin-architecture provided by jQuery. 
-  </div> 
+  </div>  
  </body>
 </html>

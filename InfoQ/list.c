@@ -1,6 +1,9 @@
 <html>
  <head></head> 
- <body> 
+ <body>
+  <div>
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/31.c">Twitter abre o c&oacute;digo do Summingbird</a>O Twitter abriu o c&oacute;digo do Summingbird, uma biblioteca para constru&ccedil;&atilde;o de solu&ccedil;&otilde;es MapReduce que permite a execu&ccedil;&atilde;o em batch, real-time ou h&iacute;brido.
+  </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/30.c">O presente e o futuro do desempenho dos aplicativos web moveis</a>Em um artigo s&oacute;lido, bem fundamentado, Drew Crawford exp&otilde;e todas as raz&otilde;es pelas quais ele acredita que os aplicativos web mobile s&atilde;o lentas hoje e porque ele n&atilde;o espera por uma melhoria relevante no futuro pr&oacute;ximo. 
   </div> 
@@ -147,9 +150,6 @@
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/32.c">Windows Embedded 8: vers&atilde;o final e alinhamento com Windows 8</a>A Microsoft lan&ccedil;ou o Windows Embedded 8, vers&atilde;o est&aacute;vel para uso em produ&ccedil;&atilde;o. Destinado a fabricantes de equipamentos originais (OEMs) e em ambientes especializados, esta s&eacute;rie de lan&ccedil;amentos marca o alinhamento de bases de c&oacute;digo entre a vers&atilde;o Embedded e o Windows 8. 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/31.c">Usando deployments “can&aacute;rio” para testes em produ&ccedil;&atilde;o</a>Conhe&ccedil;a as pr&aacute;ticas da empresa Nolio que utiliza a t&eacute;cnica de &quot;canary deployments&quot; para testar software em produ&ccedil;&atilde;o, redirecionando um subgrupo de usu&aacute;rios para uma nova funcionalidade como parte das pr&aacute;ticas de entregas cont&iacute;nuas. 
-  </div> 
+  </div>  
  </body>
 </html>

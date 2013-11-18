@@ -1,9 +1,34 @@
-<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>从WordPress看开源平台的发展</h3><p>说起开放平台，大家应该都知道是很厉害的东西，按2011年的数据，Facebook的应用数超过了55万，这些应用每天被安装的次数超过2000万次。</p><p>但是很少有人知道，地球上六分之一的网站采用<a href="http://wordpress.org/">Wordpress</a>架构，在Alexa排名前10万的网站中，有16.7%使用了WordPress。如果把WordPress看做一个开放平台的话，它比Facebook更有影响力。而事实上，它就是这样的一个平台。</p><h2>什么是开源平台</h2><p>开放平台之所以能大规模流行，是因为它释放了控制权：你可以为平台开发应用，使用平台的用户、流量和用户关系，并从中获得收益。小团队利用它实现了自身的成长和盈利，大平台则更好的满足了用户的长尾需求，将用户牢牢粘住。</p><p>这是一个天才的构想，无论从商业还是从用户需求角度来讲。但这个架构存在一个核心的问题，那就是开放平台是中心化的。当然，这更多的是应用开发商的问题，因为小扎是不会去考虑Facebook倒闭的时候上边的应用开发者要怎么活的。</p><p>从这个角度看，WordPress是一个更进一步的平台，它不但释放了控制权，还释放了所有权。给WordPress开发插件的开发者从来没担心过Automattic公司倒闭会对自己造成影响，而用户，绝大部分都不知道Automattic公司和WordPress是什么关系。这正是开源运动带给我们最核心的价值，它承诺用户得到的东西永远不会失去，即使它不会变好，那它也不会变得更坏。哪怕天荒地老、海枯石烂，只要你能找到服务器，你就可以继续你已经习以为常的工作和生活。不要说和那些商业公司的忽悠比，这简直比男女朋友的承诺都靠谱。</p><p>我把这种同时释放控制权和所有权的平台称作开源平台，WordPress、Vanilla论坛、Concrete5 CMS都是这类平台。</p><h2>开源平台如何商业化？</h2><p>商、商业化？是的，你没看错。我们生活在一个商业社会，离开了钱什么事情都无法推进。开源软件并不活在真空中，它一样要和那些商业软件竞争，融入商业的链条是不可避免的。所有将开源项目运营的风生水起的团队，对商业的理解都入木三分。</p><p>我们来看看WordPress。其实最开始，WordPress是一个功能很一般的程序，性能更是悲剧，直到今天它对内存的吞噬都是虚拟主机商会呼吸的痛，那么它凭什么一统天下？</p><p>答案是生态系统。我们已经生活在一个平台的时代，用户选择一个产品，不单会考虑产品本身，更多的会考虑产品背后的生态。一个能运行Android系统的电视盒，对用户来说意味着数以万计的可运行应用。你可以很容易做一个比它更优秀的电视盒，但如果只能运行你的专有系统，那么用户不会掏钱的，得生态者得天下。</p><p>而构建生态系统本质上就是构建一个可持续发展的多方收益模式。大家可能都知道WordPress是<a href="http://www.gnu.org/licenses/gpl-2.0.html">GPLV2</a>的协议，但WordPress专门为插件部分做了一个特例申明，使其不受GPL约束。你可以给WordPress设计模板、开发插件，然后按你的想法去处理：收费、闭源、使用GPL或者<a href="http://www.wtfpl.net/">DWTFYW</a>协议。更让人称赞的是，只要你贡献出这些扩展，它就成为整个WordPress用户群、甚至全人类的财富，整个生态就更向前进了一步。和某些开放平台比起来，这种进步可能太慢，但它却不会因为某天商业公司的老总不小心脑袋被电梯夹了而坍塌。</p><p>正是这种缓慢而切实的进步，在十年的时间里一点点蔓延，直到渗透至互联网的各个角落。到去年，WordPress光是免费插件就超过1.9万，累计下载量超过2.85亿次。WordPress甚至造就了一个行业，一套优秀的WordPress收费模板，能在定价100美金的情况下一个月卖出去几百套。</p><p>第三方挣钱后，Automattic并没有跳出来要分钱，而是选择了以增强用户体验为切入点的双赢方式：</p><ul> 
- <li>为了解决没有服务器也想用WordPress用户的需求，Automattic推出了WordPress托管服务，采用免费+增值的方式，通过直接收费和google adsense挣钱</li> 
- <li>为了帮助用户远离垃圾留言，Automattic推出了AKismet服务，这个服务对个人免费，对企业收费</li> 
- <li>为了让用户随时能备份数据，Automattic推出vaultpress收费备份服务 无需更多举例，在庞大的用户基数上，每一项增强服务都能带来真金白银。</li> 
-</ul><h2>开源平台如何控制用户行为？</h2><p>和开放平台不同，开源平台控制不了具体的用户行为，你不可能越过之前的授权协议去对某个用户的行为指指点点。但幸运的是，通过产品设计，我们可以在宏观上影响用户行为。人类其实是很简单的生物，这可不光是喵星人的想法，科学家也这么想，让两组人听一个建议，被要求一直点头的那个组对建议的同意度明显比被要求一直摇头组高。</p><p>好了，我们还是讨论地球上的事吧，我来告诉你WordPress是怎么影响用户行为的。开源软件最麻烦的问题就是用户随意修改代码，一方面我们设计好的行为被改变了，另一方面用户的随意行为也会带来软件的不稳定从而增加客服压力。</p><p>WordPress没有强制不允许用户修改代码，而是做了一件看起来毫无关联的事情：他们提供了WordPress的在线升级，只要你点击一下按钮，整个WordPress就变成全新的了，只要10秒钟！多么棒的用户体验！</p><p>但在方便的同时，对代码的修改会全部丢失，如果想保留你的修改，只有把改动做成可重用的主题或者插件。这是我见过最聪明的决定，一石三鸟：</p><ol> 
- <li>提供了NB的用户体验；</li> 
- <li>锁定了核心代码，不允许修改；</li> 
- <li>扩展功能被封装成插件，刺激了生态系统的增长。</li> 
-</ol><p>我把这个方式直接应用到了<a href="http://teamtoy.net/">TeamToy</a>上，短短一个月贡献出来的插件数量已经达到两位数了。</p><p>管中窥豹，我想你已经想出了更多好点子。不过正是因为这是引导，只有真正共赢的决定才会有效果，如果用户收益不够，用户会选择从这个体系中脱离出去。这正是经营开源平台最重要的地方：艺术的平衡多方的利益。</p><h2>结语</h2><p>作为世界一流的开源平台，WordPress是个非常值得研究的对象，有太多可圈可点之处，这里和大家分享的只是我在TeamToy实践中验证过的一些细节，也希望更多的同学能从代码层次跳出来，从更高的层次上去理解开源和开放。</p><div class="clearer-space"></div><br><br><br><br><br><br></body></html>
+<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>博文共赏：Martin Fowler对将page对象用于Web测试的基本经验法则</h3><p>InfoQ编辑注：本文源自Martin Fowler，文章最初由ThoughtWorks工程师黄博文<a href="http://huangbowen.net/blog/2013/09/17/page-object/">翻译在自己的博客上</a>，并由译者本人推荐至InfoQ中文站博文共赏专栏。本译文在Martin Fowler本人的许可下，由InfoQ中文站进行修订后，在这里给大家分享。</p>
+<p>当你在为Web页面编写测试时，你需要操作该Web页面上的元素来点击链接或验证显示的内容。然而，如果你在测试代码中直接操作HTML元素,那么你的代码是及其脆弱的，因为UI会经常变动。一个page对象可以封装一个HTML页面或部分页面，你可以通过提供的应用程序特定的API来操作页面元素，而不需要在HTML中四处搜寻。</p>
+<p><img width="500" _p="true" _href="img://null" src="http://infoqstatic.com/resource/articles/martin-fowler-basic-rule-of-thumbon-for-Web-testing/zh/resources/1009111.png" alt="" /></p>
+<p>page对象的一个基本经验法则是，凡是人类能做的事，page对象通过软件客户端都能够做到。它也应当提供一个易于编程的接口并隐藏窗口中低层的部件。所以访问一个文本框应该通过一个访问方法（accessor method）来实现字符串的获取与返回，复选框应当使用布尔值，按钮应当被表示为行为导向的方法名。page对象应当将在GUI控件上所有查询和操作数据的行为封装为方法。一个好的经验法则是，即使改变具体的控制，page对象的接口也不应当发生变化。</p>
+<p>尽管该术语是”页面“对象，并不意味着针对每个页面建立一个这样的对象，比如页面有重要意义的元素可以独立为一个page对象[1]。所以，一个显示多个相册的页面可以有一个相册列表的page对象，该对象包含了几个相册page对象。也有可能会有一个页眉page对象及一个页脚page对象。也就是说，如果某些复杂UI的层次结构只是用来组织UI，那么它就不应当与page对象扯上关系。经验法则的目的在于通过给页面建模，从而对应用程序的使用者变得有意义。</p>
+<p>同样，如果你导航到另一个页面，初始page对象应当返回另一个page对象作为新页面[2]。一般而言，page对象的操作应当返回基本类型（字符串，日期）或另一个page对象。</p>
+<div id="lowerFullwidthVCR"></div>
+<p>一个有意见分歧的地方是page对象是否应自身包含断言，或者仅仅提供数据给测试脚本来设置断言。在page对象中包含断言的倡导者认为，这有助于避免在测试脚本中出现重复的断言，可以更容易的提供更好的错误信息，并且提供更接近<a href="http://martinfowler.com/bliki/TellDontAsk.html">只做不问</a>风格的API。不在page对象中包含断言的倡导者则认为,包含断言会混合访问页面数据和实现断言逻辑的职责，并且导致page对象过于臃肿。</p>
+<p>我赞成在page对象中不包含断言。我认为你可以通过为常用的断言提供断言库的方式来消除重复，这还可以提供更好的诊断。[3]</p>
+<p>page对象通常用于测试中，但自身不应包含断言。它们的职责是提供对基本页面状态的访问，实现断言逻辑则是测试客户端的职责。</p>
+<p>我所描述的这个模式针对HTML，但同样的模式也同样适用于任何UI技术。我见过这种模式有效的隐藏了Java swing UI的细节，并且我深信它已经被广泛的应用于几乎所有其他的UI框架。</p>
+<p>并行问题是另一个page对象可以封装的话题。这可能涉及异步操作中隐藏不作为异步呈现给用户的异步性，也有可能涉及封装UI框架中你不得不担心的UI和工作线程之间分配行为的线程问题。</p>
+<p>page对象在测试中的使用非常常见，但是也被用于在应用程序上层提供一个脚本接口。一般而言，我们最好将脚本接口置于UI下层，这样做的复杂底，执行速度快。然而，对于在UI层有太多行为ide应用程序而言，使用page对象可能是在槽糕的工作中最好的选择。（但是尽量将UI操作逻辑移入到page对象中，长期来看会导致更好的脚本以及更健康的UI。）</p>
+<p>使用一些<a href="http://martinfowler.com/bliki/DomainSpecificLanguage.html">领域特定语言</a>来书写测试非常普遍，比如Cucumber或一门内部DSL。如果你尽量在page对象层级之上编写测试DSL，那么你可以通过一个解析器将DSL声明转换为调用page对象。</p>
+<blockquote> 
+ <p>如果你在测试方法中使用了WebDriver API，那么你做错了 —— <a href="http://blog.rocketpoweredjetpants.com/">Simon Stewart</a>.</p> 
+</blockquote>
+<p>对于那些将逻辑从页面元素中剥离的模式（例如<a href="http://martinfowler.com/eaaDev/PresentationModel.html">Presentation Model</a>，<a href="http://martinfowler.com/eaaDev/SupervisingPresenter.html">Supervising Controller</a>及<a href="http://martinfowler.com/eaaDev/PassiveScreen.html">Passive View</a>)而言，在UI层面做测试用处不大，所以也不太需要page对象了。</p>
+<p>page对象是封装的一个典型示例。它们从其它组件（如测试）部件中隐藏了UI结构的细节。如果你自问“我如何能从软件测试中隐藏细节？”，当你做开发时在这样的情况采用page对象不失于一个好的设计原则。封装体现了两方面的好处。我已经强调，通过将操作UI的逻辑限制到单个地方有助于你修改逻辑而不影响系统的其他组件。一个间接的好处是使测试端代码更容易理解，因为逻辑是关于测试的意图，而不会被UI细节搞乱。</p>
+<h2>延伸阅读</h2>
+<p>我刚开始将这种模式命名为<a href="http://martinfowler.com/eaaDev/WindowDriver.html">窗口驱动</a>(Window Driver)。然而自从Selenium web测试框架使用“page object”这个名称，page对象变成了常用的名称。</p>
+<p><a href="https://code.google.com/p/selenium/wiki/PageObjects">Selenium的维基</a>强烈推荐使用page对象，并提供了如何使用它们的建议。它也赞成page对象不包含断言。</p>
+<h2>致谢</h2>
+<p>Perryn Fowler、Pete Hodgson及Simon Stewart为这篇博客的草稿提供了非常有用的意见。同样像往常一样我非常感激ThoughtWorks软件开发列表中的形形色色的参与者提供的建议和修正意见。</p>
+<h2>脚注</h2>
+<ol> 
+ <li>有观点认为”page对象“名称是一个误导，因为它让你认为一个页面只能有一个page对象。面板对象这样的命名可能会更好，但是page对象这个命名已经被广泛接受。Page对象再次验证了命名是计算机科学中唯二的<a href="http://martinfowler.com/bliki/TwoHardThings.html">两件困难事</a>之一。</li> 
+ <li>page对象负责创建其他的page对象（比如导航）是共同的建议。然而，一些从业者更喜欢page对象返回一些通用的浏览器上下文，并且测试来居于测试流程（特别是条件流）中的上下文来控制page对象的创建。他们的偏好是基于测试脚本知道期望的下个页面是哪个这一事实，所以page对象自身并需要这些逻辑。使用静态类型语言的从业者更偏好这样，因为静态类型语言通常以类型标记来表示页面导航。</li> 
+ <li>page对象中包含断言也行，尽管大多数人（比如我）更青睐无断言风格。这些断言应该检查页面或应用程序在此时此刻的不变量，而不是测试探索的具体东西。</li> 
+</ol>
+<p>本文出处：<a href="http://martinfowler.com/bliki/PageObject.html">http://martinfowler.com/bliki/PageObject.html</a></p>
+<hr />
+<p>感谢<a href="http://www.infoq.com/cn/author/杨赛">杨赛</a>对本文的审校。</p>
+<p>给InfoQ中文站投稿或者参与内容翻译工作，请邮件至<a href="mailto:editors@cn.infoq.com">editors@cn.infoq.com</a>。也欢迎大家通过新浪微博（<a href="http://www.weibo.com/infoqchina">@InfoQ</a>）或者腾讯微博（<a href="http://t.qq.com/infoqchina">@InfoQ</a>）关注我们，并与我们的编辑和其他读者朋友交流。</p><br><br><br><br><br><br></body></html>

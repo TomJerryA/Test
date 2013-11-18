@@ -1,6 +1,15 @@
 <html>
  <head></head> 
- <body> 
+ <body>
+  <div>
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/43.java">Power Productivity Tools for VS 2013</a>Since 2010 the Power Productivity Tools have been Microsoft’s test bed for new Visual Studio features, some of which were incorporated in VS. This new version for VS 2013 brings 11 new and updated features including the ability see documentation without leaving the code editor.
+  </div>
+  <div>
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/42.java">An Interview with Greg Finzer of Compare .NET Objects</a>Writing code to compare objects can be tedious, especially when dealing with large objects or deep graphs. And when the classes change errors often slip in. One way to reduce the potential for error is to rely on a library such as Greg Finzer’s Compare .NET Objects. This library offer reasonable performance for up to 10,000 objects.
+  </div>
+  <div>
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/41.java">Teradata Offers Data Warehouse as a Service as Part of Their Cloud Strategy</a>Teradata revamps its cloud offering, offers Data Warehouse Data Platform as a Service solution. Teradata Cloud is aspiring to become a worthy competitor to Amazon Redshift, with a richer set of predefined libraries and a more effective way of loading data.
+  </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/40.java">Interview with Kevin Behr on Continuous Improvement Kung-Fu</a>At the recent DevOps Days in New York, Kevin Behr, co-author of “The Visible Ops Handbook” and ”The Phoenix Project”, and Jesse Palmer gave a talk on how they instilled a continuous improvement culture into an operations team. InfoQ interviewed Kevin Behr to know more about the approach that was taken. 
   </div> 
@@ -141,15 +150,6 @@
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/45.java">Database Lifecycle Management Guidance Updated</a>Microsoft recently updated database lifecycle management guidance page with SQL Server DLM diagram along with curated resources for SQL Server Data Tools, SQL Server Management Studio and Windows Azure SQL Database. 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/44.java">Go Big: CA World 2013 Opening Keynote</a>Continuing our tradition of on the spot conference reporting, here are the raw notes from CA World 2013’s opening keynote. CA World is focused on products, techniques, and technologies in the areas of SaaS, Mobile, DevOps, and Big Data. The first keynote is led by Mike Gregoire, CA Technologies new CEO. 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/43.java">Vaughn Vernon on Advanced Architecture Styles with DDD</a>Using the Hexagonal architecture style allows for delaying decisions for architectural mechanisms and promotes using the same internal API irrespective of type of client, Vaughn Vernon explained last week when describing different architecture styles from a DDD perspective; the classical Layered Architecture and the more advanced Hexagonal and Actor Model styles. 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/42.java">JavaScript Memory Analyzer in Visual Studio 2012 Identifies Leaks in Windows Store Apps</a>Visual Studio 2012 Update 1 includes a new JavaScript Memory Analyzer for Windows 8 which identifies potential memory leaks to enable developers to fix their apps before submission to Windows Store. 
-  </div> 
+  </div>    
  </body>
 </html>

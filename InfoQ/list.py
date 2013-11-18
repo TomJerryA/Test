@@ -1,17 +1,17 @@
 <html>
  <head></head> 
- <body>
-  <div>
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/1.py">EclipseがJCPに参加</a>JCP(Java Community Process) EC(Executive Committee)に新たに選出されたメンバが来週就任し，Javaプログラム言語の方向性に対して影響力を行使し始める。その中のひとつであるEclipse財団は，今後２年間にわたってこの決議機関に席を持つことになる。
-  </div>
-  <div>
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/0.py">アジャイルチームにとって楽しさは重要か</a>アジャイルチームで働くのはストレスフルになる場合がある。例えば、顧客のニーズが不明瞭であったり、やらなければならなかったことがたくさんあったり、チームのメンバが困難に直面したりする場合だ。楽しさはストレスを低減し、モチベーションを増やし、生産性をあげるのだろうかという疑問を持つこともあるだろう。これが正しいのなら、アジャイルチームに楽しさを持ち込むにはどうしたらいいのだろうか。
-  </div>
-  <div>
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/49.py">Peter Bell氏に聞くNoSQLのトレンド</a>Peter Bell氏が現在のNoSQLのトレンドを紹介している。NoSQLは高速進化しているデータベースの分野でさまざまなソリューションを提供する。
-  </div>
-  <div>
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/48.py">アジャイル導入の技術的実践、システム思考、文化の問題</a>単純さ、フィードバック、コミュニケーション、尊敬と勇気。これらのエクストリームプログラミング(XP)の価値はいまだにXP Days Benelux 2013カンファレンスのチームに刺激を与えている。InfoQはカンファレンスの主催者であるMerlijn van Minderhout氏とPascal Van Cauwenberghe氏に、アジャイルでの新しい開発、アジャイルへうまく移行すること、アジャイル推進のためのヨーロッパ地域の組織の必要性について話を聞いた。
+ <body> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/1.py">EclipseがJCPに参加</a>JCP(Java Community Process) EC(Executive Committee)に新たに選出されたメンバが来週就任し，Javaプログラム言語の方向性に対して影響力を行使し始める。その中のひとつであるEclipse財団は，今後２年間にわたってこの決議機関に席を持つことになる。 
+  </div> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/0.py">アジャイルチームにとって楽しさは重要か</a>アジャイルチームで働くのはストレスフルになる場合がある。例えば、顧客のニーズが不明瞭であったり、やらなければならなかったことがたくさんあったり、チームのメンバが困難に直面したりする場合だ。楽しさはストレスを低減し、モチベーションを増やし、生産性をあげるのだろうかという疑問を持つこともあるだろう。これが正しいのなら、アジャイルチームに楽しさを持ち込むにはどうしたらいいのだろうか。 
+  </div> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/49.py">Peter Bell氏に聞くNoSQLのトレンド</a>Peter Bell氏が現在のNoSQLのトレンドを紹介している。NoSQLは高速進化しているデータベースの分野でさまざまなソリューションを提供する。 
+  </div> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/48.py">アジャイル導入の技術的実践、システム思考、文化の問題</a>単純さ、フィードバック、コミュニケーション、尊敬と勇気。これらのエクストリームプログラミング(XP)の価値はいまだにXP Days Benelux 2013カンファレンスのチームに刺激を与えている。InfoQはカンファレンスの主催者であるMerlijn van Minderhout氏とPascal Van Cauwenberghe氏に、アジャイルでの新しい開発、アジャイルへうまく移行すること、アジャイル推進のためのヨーロッパ地域の組織の必要性について話を聞いた。 
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/47.py">モバイルHTML5の問題は？</a>最近のリサーチによると、HTML5の主な問題は一般的に信じられているパフォーマンスではなく、むしろプロファイルやデバッグのためのツール不足と確かなAPIの欠如にあるようだ。 
@@ -150,6 +150,6 @@
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/2.py">GoogleとOperaがWebKitをフォーク，SamsungはFirefoxと共同でServoを推進</a>２つの主要なブラウザ開発チームが先頃，パラレルアーキテクチャを目指すことを発表した。WebKitフォークのBlinkを採用するGoogleとOpera，そして共同でServoをプッシュするMozillaとSamsungだ。 
-  </div>     
+  </div> 
  </body>
 </html>

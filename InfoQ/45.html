@@ -1,16 +1,25 @@
-<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>Netflix放弃Silverlight，拥抱HTML5</h3><p>Netflix宣布准备将其视频播放器从Silverlight转换到HTML5，他们将首先完成针对Chrome/Chrome OS的新播放器的实现，而针对Windows和Mac OS X的版本也将紧随其后。</p> 
-<p>Netflix的云系统架构总监Adrian Cockcroft表示，在北美的<a href="http://www.infoq.com/presentations/Netflix-Architecture;jsessionid=080BFD12E6619360FE44739E05807626">下载流量中Netflix占据了1/3的份额</a>，而且到目前为止这些流量全部都是由一个Silverlight应用处理的，不过这一现状即将改变。</p> 
-<p>Netflix近期宣布准备从Silverlight<a href="http://techblog.netflix.com/2013/04/html5-video-at-netflix.html">转向HTML5</a>。之所以这样决定， 主要原因之一在于他们考虑到微软宣称<a href="http://support.microsoft.com/gp/lifean45#sl5">将在2021年停止对Silverlight 5的支持</a>，但却对Silverlight 6只字未提。Netflix还对用户在看视频前必须安装Silverlight插件这一限制表示不满，而且部分用户由于安全原因拒绝安装这样的插件。此外还有一个问题，那就是较新的浏览器不支持插件，例如iOS上的Safari或Windows 8/Metro上的IE。我们还可以补充一个问题：<a href="http://www.microsoft.com/getsilverlight/locale/en-us/html/installation-win-SL5.html">Windows 8和Linux并未出现在Silverlight兼容的操作系统列表中</a>。针对Netflix的这一消息，大部分评论要求提供对Linux的官方支持。</p> 
-<p>Netflix将通过转向HTML5解决以上问题，他们已经开发了第一个应用，而且正在Chrome OS环境中进行测试。Google也已经对实现Netflix所需的大量HTML5<a>增强</a> 表现出了兴趣，并将其命名为“HTML5高级视频扩展”：</p> 
-<ul> 
- <li><a href="http://www.w3.org/TR/media-source/">媒体来源扩展</a>——允许应用使用JavaScript进行流式内容传输。这让Web应用能够灵活地选择合适的CDN进行流传输，并且当一个CDN出现问题时切换到另一个。</li> 
- <li><a href="https://dvcs.w3.org/hg/html-media/raw-file/tip/encrypted-media/encrypted-media.html">加密媒体扩展</a>——增加对DRM的支持。</li> 
- <li><a href="http://www.w3.org/TR/WebCryptoAPI/">Web加密API</a>——一套支持加密的JavaScript API。Netflix会将大部分后端服务器通信进行加密，以保证访问者的隐私安全。Netflix还会向其服务器回传大量日志信息，更精确地说，根据Cockcroft的消息，这大约占据了整个北美上传流量的4.5%。</li> 
-</ul> 
-<p>目前Netflix使用Pepper插件来满足加密需求，一直会用到Google在Chrome中实现Web加密API<a>时为止</a> ，Netflix打算届时开始在Windows和Mac OS X下测试其HTML5视频应用。</p> 
-<p>至少从2010年当<a href="http://www.infoq.com/news/2010/09/Silverlight-Web-Apps;jsessionid=080BFD12E6619360FE44739E05807626">人们开始争论Silverlight的前景</a>时开始，关于它要死掉的传闻起就已经在传播了。2011年，<a href="http://www.infoq.com/news/2011/09/Silverlight-5-RC;jsessionid=080BFD12E6619360FE44739E05807626">微软通过发布Silverlight 5给出了将继续支持该平台的信号</a>。然而紧随其后消息却与之矛盾，再就是微软决定<a href="http://www.infoq.com/news/2011/09/Metro-Plug-ins;jsessionid=080BFD12E6619360FE44739E05807626">在IE Metro中停止支持任何插件</a>。如果此前还有任何怀疑的话，现在我们可以非常自信地说，Silverlight已经没有前途了。随着Flash正在遭受相似的窘境，未来数年内，只剩下HTML5去占据RIA市场了。</p> 
-<p><b>查看英文原文</b>：<a href="http://www.infoq.com/news/2013/04/Netflix-Silverlight-HTML5;jsessionid=080BFD12E6619360FE44739E05807626">Netflix Gives Up Silverlight, Chooses HTML5</a></p> 
-<hr /> 
-<p>感谢<a href="http://www.infoq.com/cn/bycategory.action;jsessionid=080BFD12E6619360FE44739E05807626?authorName=臧秀涛">臧秀涛</a>对本文的审校。</p> 
-<p>给InfoQ中文站投稿或者参与内容翻译工作，请邮件至<a href="mailto:editors@cn.infoq.com">editors@cn.infoq.com</a>。也欢迎大家通过新浪微博（<a href="http://www.weibo.com/infoqchina">@InfoQ</a>）或者腾讯微博（<a href="http://t.qq.com/infoqchina">@InfoQ</a>）关注我们，并与我们的编辑和其他读者朋友交流。</p> 
-<p id="lastElm"></p><br><br><br><br><br><br></body></html>
+<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>Apigee现在支持Node.js 并开源了Volos</h3><p>Apigee Edge现在支持Node.js并且已经开源了<a href="https://github.com/apigee/volos">Volos</a>，一个包含了一组API管理模块的项目。</p>
+<p>Apigee于最近<a href="https://blog.apigee.com/detail/nodejs_extending_the_programmability_of_the_apigee_api_platform">增加了Node.js和NPM模块支持</a>，用户能够使用它们构建新的API、移动应用后端、mashups和复合服务。我们采访了Apigee的首席架构师Greg Brail以便于更深入地了解开发者能够在Apigee平台上使用Node.js完成哪些工作。</p>
+<p><strong>InfoQ：针对Edge平台进行编程的时候用户究竟能够使用JavaScript/Node.js做哪些事情？</strong></p>
+<blockquote> 
+ <p><b>GB: </b>非常明确，目前你能够编写Node.js Web应用（使用标准的“http”和“https”模块）并将它们部署到Apigee Edge上，或者在我们的云中，或者在你自己的数据中心中。部署的应用能够访问一个完整的Node.js环境，能够使用托管在NPM中的绝大部分模块。我们的环境可能依然存在一些不兼容的地方——例如，并不支持依赖于本地C或者C++代码的模块。</p> 
+ <p>因为这些脚本运行在Edge内部，就像我们已有的API代理那样，所以它们支持Edge的各种部署能力，例如通过同样的UI和API将不同的版本部署到不同虚拟环境中的能力，跨多个地理区划自动部署的能力。我们会收集所有由Edge传入Node.js程序的API调用数据，所以你能够分析流量，甚至可以从定制数据中产生自定义报表。</p> 
+ <p>另外，你能够将Node.js脚本和我们已有的策略类库结合起来，包括安全策略（例如OAuth）、流量管理（例如限额和峰值限制）、安全威胁检查等内容。</p> 
+</blockquote>
+<p><b>InfoQ</b><b>：我注意到你还支持一些</b><b>Objective-C</b><b>、</b><b>Java</b><b>、</b><b>.NET</b><b>、</b><b>Ruby</b><b>和</b><b>JavaScript SDK</b><b>。用户能够使用它们在</b><b>Edge</b><b>平台上构建同样的功能么，就像</b><b>Node.js</b><b>可以实现的那样？这之间有什么区别？</b></p>
+<blockquote> 
+ <p><b>GB: </b>Edge平台始终都包含一个运行时，它能够运行使用我们自己的配置模式定义的API代理，现在它还将包含另一个运行时，该运行时能够执行使用Node.js构建的HTTP服务器。另一方面，SDK是Edge提供的各种API的客户端，以便于客户端可以直接使用它们。例如，SDK让开发者能够构建针对多种移动平台的应用，或者构建其他应用，它们使用Edge作为后端实现数据存储和推通知等功能。</p> 
+ <p>也就是说，Edge是一个服务器，而Node.js能力是一种将代码部署到服务器上的新方式。服务器还包含一群API可以为现代应用提供关键功能，客户端则可以很容易地通过SDK访问这些API。</p> 
+ <p>Apigee还开源了<a href="https://github.com/apigee/volos">Volos</a>，这是一组为API OAuth 2.0授权、密钥验证、限额管理和缓存提供支持的Node.js模块。Volos能够独自地运行，或者它能够被设置为与<a href="http://apigee.com/about/products/edge">Apigee Edge</a>通信从而获得开发者、应用和API管理方面的支持，或者Volos应用可以被直接部署到Apigee平台上。</p> 
+</blockquote>
+<p>比较Volos与Edge，Brail说：</p>
+<blockquote> 
+ <p>Volos的设计目的之一就是为了利用Edge的许多功能。例如，Volos中的OAuth和限额模块能够在本地运行，但是它们还可以与Edge通信，这意味着它按照这种方式使用OAuth能力。当然，如果你将一个Volos应用程序部署到Edge上运行，那么它可以直接使用那些能力。所以，它不一定是一个二选一/或者的情况。</p> 
+</blockquote>
+<p>也就是说，Edge在精细化管理方面拥有很多深度的能力，不仅能够管理开发者、应用程序和所有集合，还能够支持分布式限额和深度分析等棘手的事情。</p>
+<p>关于Apigee对Volos将来的计划，Brail说：</p>
+<blockquote> 
+ <p>我们计划向Volos中添加更多的模块，让它成为在Node.js中构建产品质量的API最好的工具集。当然，我们将确保Edge是运行这些应用的最优方案，确保这些应用在Edge上运行的时候它们能够利用Edge产品的所有能力和服务性。</p> 
+</blockquote>
+<p>此外，Apigee也为API的构建和管理提供了支持，这些API在新的或者已经存在的后端或数据服务和客户端之间。</p>
+<p><b>查看英文原文</b>：<a href="http://www.infoq.com/news/2013/11/apigee-nodejs-volos">Apigee Now Supports Node.js and Open Sources Volos</a></p><br><br><br><br><br><br></body></html>

@@ -1,8 +1,26 @@
-<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>微软发布支持.NET及Silverligh4的Async包</h3><p>微软发布了Microsoft.Bcl.Async的最终版本。该包允许开发者在.NET 4、Silverlight 4和Windows Phone 7.5使用C# 5和VB中的异步特性。</p> 
-<p>该包由三个库组成：Microsoft.Bcl、Microsoft.Bcl.Async和Microsoft.Bcl.Build。由于使用了<a href="http://msdn.microsoft.com/en-us/library/db7849ey.aspx">程序集统一</a>的方式，解决方案中的所有工程都必须引用这三个库。</p> 
-<p><a href="https://www.nuget.org/packages/Microsoft.CompilerServices.AsyncTargetingPack">Microsoft.Bcl.Async</a>取代了Async Targeting Pack，后者已从NuGet中移除。</p> 
-<p><b>查看英文原文</b>：<a href="http://www.infoq.com/news/2013/04/Async-dotnet4;jsessionid=CB054D831D727258B5355BF04620CE06">Async for .NET and Silverlight 4 </a></p> 
-<hr /> 
-<p>感谢<a href="http://www.infoq.com/cn/bycategory.action;jsessionid=CB054D831D727258B5355BF04620CE06?authorName=臧秀涛">臧秀涛</a>对本文的审校。</p> 
-<p>给InfoQ中文站投稿或者参与内容翻译工作，请邮件至<a href="mailto:editors@cn.infoq.com">editors@cn.infoq.com</a>。也欢迎大家通过新浪微博（<a href="http://www.weibo.com/infoqchina">@InfoQ</a>）或者腾讯微博（<a href="http://t.qq.com/infoqchina">@InfoQ</a>）关注我们，并与我们的编辑和其他读者朋友交流。</p> 
-<p id="lastElm"></p><br><br><br><br><br><br></body></html>
+<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>Xamarin到64位iOS/OSX平台的粗野过渡</h3><p>当Xamarin开始自己的iOS项目的时候，设备仅能够在32位模式下使用，也就是32位版本的NSInteger和CGFloat。当他们开始调查64位OSX的时候，他们意识到自己对那些数据类型的假设是错误的。<a href="http://tirania.org/monomac/archive/2013/Nov-11.html">Miguel继续说</a>：</p>
+<blockquote> 
+ <p>我们将需要审计我们的所有API从而实现合适的类型映射，同时我们将破坏源码的兼容性，使用类似于下面的代码：</p> 
+ <pre>
+var foo = new Xxx ();
+int count = foo.GetRowCount ();
+// oops, can not cast a long into an int.</pre> 
+ <p>当我们把源码的破坏和Apple拥有一个32位兼容性故事，同时我们仅有一些遗留类库依赖于32位API的事实结合起来的时候，我们意识到我们并不急于转移到64位的世界。</p> 
+</blockquote>
+<p>随着仅能引入64位类库的Mountain Lion的出现，他们看到了改变这种设计的需要。而Apple提供32位和64位版本的iPhone 5的决定进一步加剧了这种局面。为了处理这些新的挑战，Xamarin已经创建了三个新的数据类型：</p>
+<ul> 
+ <li>nint</li> 
+ <li>nuint</li> 
+ <li>nfloat</li> 
+</ul>
+<p>这些新的结构被定义为32位或者64位，依赖于代码编译的目标平台。但是故事的内容远不止如此。原始的数学运算使用特殊的IL指令进行操作（例如加法），而用户定义的结构需要调用op_Addition方法。</p>
+<p>对于性能敏感的代码而言这可能会引发一些小的但是值得注意的影响。因为在使用本地类库的时候这些类型是非常基础的，AOT编译器会被修改为重新解释使用这些类型的操作。Miguel继续说：</p>
+<blockquote> 
+ <p>op_Addition调用最终会和本地ECMA CIL add指令一样。IL可能看起来很恐怖，但是本地代码也是如此。</p> 
+</blockquote>
+<p>一些人可能会想知道为什么Xamarin不使用IntPtr——支持平台特定整数的CLR数据类型。Miguel写道：</p>
+<blockquote> 
+ <p>我们选择了nint和nuint而不是内置的IntPtr和UIntPtr，因为前者让人感觉是自然的“原生整型”，而IntPtr则是文化相关的，它已经有指针或者一个本地符号。另外，我们并没有等价的本地浮点类型。</p> 
+ <p>我们选择避免使用名称NSInteger和CGFloat有几个方面的原因：一般情况下功能已经足够，它们可能值得在Mono中用于除了Mac和iOS之外的地方；同时感觉这些是真正的VM支持的类型，而不是一些类型定义或者别名。在理想的情况下，这些最终会成为C#标准的一部分。</p> 
+</blockquote>
+<p><b>查看英文原文</b>：<a href="http://www.infoq.com/news/2013/11/64-Bit-Xamarin">Xamarin’s Rough Transition to 64-bit iOS/OSX</a></p><br><br><br><br><br><br></body></html>
