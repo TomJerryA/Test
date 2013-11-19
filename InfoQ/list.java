@@ -2,7 +2,10 @@
  <head></head> 
  <body>
   <div>
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/44.java">Amazon RDS Supports PostgreSQL</a>Amazon RDS adds PostgreSQL to the list of databases supported by the service. The launch supports Postgres version 9.3.1 with plans to support new versions as they become available.
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/45.java">Apportable brings Objective-C to Android</a>Apportable offers iOS developers the possibility to publish their software for the Android ecosystem. Programmers can use the Apportable SDK and a set of command line tools to cross-compile their apps without having to apply major changes to the objective-c code base. Alternatively, Apportable also offers the conversion of applications as a service.
+  </div> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/44.java">Amazon RDS Supports PostgreSQL</a>Amazon RDS adds PostgreSQL to the list of databases supported by the service. The launch supports Postgres version 9.3.1 with plans to support new versions as they become available. 
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/43.java">Power Productivity Tools for VS 2013</a>Since 2010 the Power Productivity Tools have been Microsoft’s test bed for new Visual Studio features, some of which were incorporated in VS. This new version for VS 2013 brings 11 new and updated features including the ability see documentation without leaving the code editor. 
@@ -147,9 +150,6 @@
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/47.java">Microsoft Offers Module to Scale Out Real-time Node.js Applications</a>A new open-source contribution from Microsoft uses the Windows Azure Service Bus to provide scale out support for real-time Node.js applications. This module, called socket.io-servicebus, connects multiple servers running the popular Socket.IO module. This contribution is yet another example of Microsoft embracing Node.js and integrating it with Microsoft products and services. 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/46.java">Database Lifecycle Management Guidance Updated by Microsoft</a>Microsoft recently updated database lifecycle management guidance page with SQL Server DLM diagram along with curated resources for SQL Server Data Tools, SQL Server Management Studio and Windows Azure SQL Database. 
   </div>  
  </body>
 </html>

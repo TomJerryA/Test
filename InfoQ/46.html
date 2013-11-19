@@ -1,26 +1,30 @@
-<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>拥抱Node？最新的AWS云提供Node.js应用服务</h3><p>最近，Amazon Web Services（AWS）团队在<a href="http://aws.amazon.com/elasticbeanstalk/">Elastic Beanstalk</a>服务中加入了对Node.js的支持，使它所支持的平台的集合处于行业领先地位。除了Node.js，AWS Elastic Beanstalk还支持开发者打包、部署和管理使用Java、PHP、.NET、Ruby和Python开发的应用。AWS加入了“青睐Node.js的云服务”这个竞争激烈的领域，并将尝试通过整合其他顶级AWS服务来让自己与众不同。</p> 
-<p>在一篇关于向AWS Elastic Beanstalk<a href="http://www.allthingsdistributed.com/2013/03/beanstalk-a-la-node.html">添加Node.js的博客文章中</a>，AWC的首席技术官Werner Vogels解释了将这个日趋流行的平台纳入支持范围的一些原因。</p> 
-<p>我花了大量的时间与许多在游戏和移动领域工作的AWS开发者沟通，他们中的大部分都在寻找适合自己的Web应用的Node.js。凭借其异步的事件驱动编程模型，Node.js允许开发者们处理大量并发连接并保持低延迟。这些开发者们一般使用与我们的一个数据服务相结合的EC2实例来创建Web服务，这些Web服务可用于数据检索或创建动态的手机界面。</p> 
-<p>针对Elastic Beanstalk中的Node.js，AWS团队的Jeff Barr列出了<a href="http://aws.typepad.com/aws/2013/03/aws-elastic-beanstalk-for-nodejs.html">一些他喜欢的特性</a>：</p> 
-<ul> 
- <li>开发者选择<a href="http://nginx.org/">Nginx</a>或<a href="http://httpd.apache.org/">Apache</a>作为自己Node.js应用的反向代理。如果应用的客户端需要建立起直接连接，开发者甚至可以选择不使用任何代理。</li> 
- <li>根据应用需要，配置HTTP和TCP的负载均衡。如果应用使用WebSockets，那么对应用的工作负载而言，TCP负载均衡可能更加适用。</li> 
- <li>使用应用需要的特定版本的Node.js，或提供用于启动Node.js应用的命令，以配置Node.js栈。开发者还可以使用<a href="https://npmjs.org/">npm</a>管理依赖关系。</li> 
- <li>当使用Nginx或Apache时，通过配置gzip压缩和静态文件以帮助提升性能。使用gzip压缩，开发者可以减少面向客户端的响应的大小，从而加快传输速度。使用静态文件，开发者可以让Nginx或Apache快速提供静态资源（例如图片或CSS），而不必与Node.js应用在执行的数据密集型处理争抢时间。</li> 
- <li>将应用与<a href="http://aws.amazon.com/rds/">Amazon RDS</a>无缝整合，以便在相关的数据存储中存储和检索数据。</li> 
- <li>定制自己的EC2实例，或使用Elastic Beans配置文件将应用连接到AWS资源（访问 <a href="http://docs.aws.amazon.com/elasticbeanstalk/latest/dg/create_deploy_nodejs_custom_container.html">AWS Elastic Beanstalk开发者指南</a>以进一步了解配置文件）。</li> 
- <li>在<a href="http://aws.amazon.com/vpc/">Amazon虚拟私有云</a>中运行Node.js应用以获得额外的网络控制。</li> 
-</ul> 
-<p>除了以上列出的特性，Elastic Beanstalk还支持<a href="http://docs.aws.amazon.com/elasticbeanstalk/latest/dg/create_deploy_nodejs.sdlc.html">Git整合</a>、<a href="http://docs.aws.amazon.com/elasticbeanstalk/latest/dg/create_deploy_nodejs_express_elasticache.html">高可用性集群</a>以及<a href="http://docs.aws.amazon.com/elasticbeanstalk/latest/dg/create_deploy_nodejs_custom_container.html">使用针对特定环境的变量</a>。2012年12月，AWS初次尝试涉足Node.js领域，并为Node.js开发者<a href="http://aws.amazon.com/about-aws/whats-new/2012/12/04/introducing-the-aws-sdk-for-node-js/">发布了一套SDK</a>。该SDK支持使用绝大多数AWS服务，包括Amazon DynamoDB、Amazon Simple Storage Service (S3)、Amazon Relational Database Service (RDS)、Amazon Simple Queue Service (SQS)和Amazon Elastic Compute Cloud (EC2)等。</p> 
-<p>AWS与其他许多提供Node.js应用服务的云服务建立了连接。除Google App Engine外，几乎每个主流平台即服务（PaaS）厂商都提供了基于Node.js的fabric（注：fabric计算，指的是由松散耦合的存储、网络、高速宽带连接所组成的并行处理高性能计算系统。），包括<a href="https://devcenter.heroku.com/articles/nodejs">Heroku</a>， <a href="http://www.windowsazure.com/en-us/develop/nodejs/">Windows Azure</a>， <a href="https://www.openshift.com/paas">Open Shift</a>， <a href="https://www.engineyard.com/products/cloud/features">Engine Yard</a>，以及众多Cloud Foundry的提供者。这些厂商也都在与<a href="https://www.nodejitsu.com/">Nodejitsu</a>竞争，它是Node.js领域的精神领袖并提供专用的平台。那么这些厂商如何体现自己的独特性？一种方法是通过工具来体现。Werner Vogels指明了Elastic Beanstalk是如何与众多顶级平台的开发工具紧密结合的。</p> 
-<p>开发者可以在除GovCloud外的任何AWS域中部署和管理应用。有许多工具适用于应用的部署和管理，开发者可以选择自己喜好进行选择。Java应用的开发者可以使用用于Eclipse的AWS工具包；.NET应用的开发者则可以使用用于Visual Studio的AWS工具包；如果开发者希望在命令行中工作，可以与Git一起使用一个名为“eb”的命令行工具。诸如eXoCloud IDE等合作伙伴也提供与Elastic Beanstalk的整合。</p> 
-<p><a href="https://codenvy.com/features">Codenvy</a>从exoCloud中独立出来，它针对用于Node.js部署的Elastic Beanstalk，为开发者提供一个基于云的开发环境。</p> 
-<p>云服务提供商为了在同类对手中寻求差异化竞争，除了为开发者提供构建和部署Node.js应用的工具外，正在整合额外服务并提供应对应用管理中的“困难”问题的解决方案。在Elastic Beans上运行Node.js的一个有吸引力的因素，是能够轻松地整合AWS提供的许多应用服务。Node.js应用在AWS环境里运行，将能够以低延迟使用数据库、存储、计算、队列、缓存以及其他许多服务。诸如Windows Azure这样的云也拥有相似的价值主张，在其上<a href="http://www.windowsazure.com/en-us/develop/nodejs/">部署Node.js应用的开发者</a>同样能够使用不同的本地服务集合，包括数据库、存储和消息传递。如<a href="https://addons.heroku.com/">Heroku</a>和<a href="https://www.nodejitsu.com/paas/addons/">Nodejitsu</a>这样的供应商则没有自己的额外应用服务集，但它们维护了一个策划管理的目录，列出了能够与其上运行的应用整合的服务。</p> 
-<p>除了提供额外服务作为差异化竞争手段外，云服务提供商还兜售自己具有让应用部署和管理变得更容易的能力。这意味着支持基于Web的源代码管理仓库——像AWS、Windows Azure和Nodejitsu这些云所做的那样——并提供持续部署服务，例如Nodejitsu通过TravisCI支持这一服务。高质量监控和响应系统，让开发者和管理员的容量管理工作变得简单了许多。AWS拥有用于监控云的使用情况并自动调整应用环境大小的产品，而<a href="http://www.allthingsdistributed.com/2013/03/beanstalk-a-la-node.html">Werner Vogels描绘</a>了Elastic Beanstalk如何帮助提供具有全部管理能力的应用。</p> 
-<p>Elastic Beanstalk能够自动化提供、监控和配置许多AWS基础资源，例如Elastic负载均衡、自动扩展和EC2。Elastic Beanstalk还提供了用于部署应用、处理日志并自定义EC2实例的自动化工具。</p> 
-<p>请密切关注这一领域。云服务提供商正在提高其平台的应用管理能力，并提供本地的或整合的服务以提升其平台上运行的应用有效性。</p> 
-<p><b>查看英文原文</b>：<a href="http://www.infoq.com/news/2013/03/aws-node-elastic-beanstalk;jsessionid=49D954C1216E042A1F4C3C62CC38DC9E">Got Node? AWS Latest Cloud to Offer Node.js Application Services</a></p> 
-<hr /> 
-<p>感谢<a href="http://www.infoq.com/cn/bycategory.action;jsessionid=49D954C1216E042A1F4C3C62CC38DC9E?authorName=崔康">崔康</a>对本文的审校。</p> 
-<p>给InfoQ中文站投稿或者参与内容翻译工作，请邮件至<a href="mailto:editors@cn.infoq.com">editors@cn.infoq.com</a>。也欢迎大家通过新浪微博（<a href="http://www.weibo.com/infoqchina">@InfoQ</a>）或者腾讯微博（<a href="http://t.qq.com/infoqchina">@InfoQ</a>）关注我们，并与我们的编辑和其他读者朋友交流。</p> 
-<p id="lastElm"></p><br><br><br><br><br><br></body></html>
+<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>深圳Test The Web Forward活动回顾：追求更高质量的测试案例</h3><p>2013年11月9日，由W3C，Adobe，Intel，Google主办的<a href="http://testthewebforward.org/events/2013/shenzhen.html">Test The Web Forward （简称TTWF）2013深圳站</a>在深圳市举办。<a href="http://testthewebforward.org/">TTWF</a>是由Adobe、Intel、Google、百度、微软等W3C成员在世界各地组织的系列现场极限编程活动，自2012年6月在美国旧金山举办之后，已经在北京、巴黎、悉尼、西雅图、东京、上海等城市举办过，主要围绕行业密切关注的HTML、CSS、SVG等标准进行测试。经过近1年半的发展，该活动目前已经正式成为了W3C的官方活动。</p>
+<p>这次深圳站的活动是该活动在中国举行的第三届。与前两届相比，由于本次活动与W3C两年一次的高端TPAC峰会并会进行，有众多W3C的专家亲临现场。这里面最著名的当属现代互联网技术的发明人，W3C总监Tim Berners-Lee爵士。据悉，本次活动也是蒂姆爵士首次公开在中国参加W3C举办的官方活动。出席本次活动的还有包括W3C的测试工作领导者Tobie Langel，CSS工作组主席Peter Linss，WCAG工作组主席Andrew Kirkpatrick，W3C交互技术领域专家吴小倩， Web信息无障碍计划专家张昆在内40多名国内外知名专家。此外，HTML5中国兴趣小组对本次活动也给予了极大的支持。活动的特邀主持人是来自于Adobe美国总部的Rebecca Hauck女士，她不仅是CSS工作组专家成员，也是Test the Web Forward活动的发起人之一。</p>
+<p>本次会议的主题演讲来自于<a href="http://www.chinaw3c.org/">W3C 中国区</a>总部经理李安琪。安琪女士介绍了W3C的组织架构，以及标准化HTML5规范的过程。</p>
+<p>之后，来自Intel公司的专家张敏进行了题为“如何阅读W3C规范”以及“使用testharness.js” 的演讲，介绍了编写W3C测试用例前的准备工作。“W3C规范不是网页编程人员的用户手册，更多的是面向浏览器厂商等等的实现标准”。“testharness是一个测试框架，可以用来简化和执行我们编写的W3C测试用例”。</p>
+<p>随后，Intel公司的专家张志强分别进行了题为“如何编写W3C Reftests”和“如何审核W3C测试用例”的演讲，从规范示例入手详细阐述了如何编写高质量的测试检查点和测试用例，并分析了如何让自己的测试用例更容易的通过W3C的审核，及如何审核他人提交的测试用例。“W3C规范里面的各种例子，都是测试用例的最好的参考”、“编写W3C测试用例，需要避免过长的手动的测试步骤”。</p>
+<p>本次TTWF的编码环节主要针对四个功能：HTML5 Forms，CSS Basic User Interface，CSS Shapes，以及CSS Masking。整个活动持续了10个小时，吸引了超过280名来自深圳，广州，珠海，台湾，香港和日本的Web工程师参加。</p>
+<p>InfoQ中文站在会场上跟李安琪和Tobie Langel进行了简短的访谈，对TTWF活动，以及W3C HTML工作组的状态进行了更多了解。</p>
+<p><b>InfoQ</b><b>：TTWF</b><b>已经在中国举行了三届，和以往相比，我们这次活动有什么不同？</b></p>
+<blockquote> 
+ <p><strong>李安琪：</strong>更多的W3C工作组专家在场，阵容更强大；内容上，从追求数量，到追求更高质量的测试案例，更注重活动的教育性。</p> 
+</blockquote>
+<p><b>InfoQ</b><b>：国内企业如何通过TTWF</b><b>活动来提高自己在国际化标准上的影响力？</b></p>
+<blockquote> 
+ <p><strong>李安琪：</strong>积极参与，积极贡献，在社区继续发声，善于分享；善于发现具有中文特色的问题，提出解决方案，如中文版式等（Chinese Layout）。</p> 
+</blockquote>
+<p><b>InfoQ</b><b>：除了TTWF</b><b>，W3C</b><b>还有没有别的形式来推动测试相关的工作？</b></p>
+<blockquote> 
+ <p><strong>Tobie Langel：</strong>主要是通过开放Web平台测试项目和本地社区的兴趣组。我们做了不少努力来让测试变得比从前简单，例如集中存放文档，统一流程和工具，简化测试用例的审查过程，及时运行测试并发布测试结果，以及让开发人员在设备上更容易的运行我们的测试用例。</p> 
+</blockquote>
+<p><b>InfoQ</b><b>：W3C</b><b>内部是否有专门负责测试相关内容的工作组？</b></p>
+<blockquote> 
+ <p><strong>Tobie Langel：</strong>开发Web平台测试项目可以算是这样的工作组。测试本身并不属于W3C标准化的一部分，它们主要来自于W3C之外，我们渴望我们的成员和社区进行更多的贡献。</p> 
+</blockquote>
+<p><b>InfoQ</b><b>：W3C</b><b>的标准众多，很多标准也在演化过程中，如果测试人员希望来贡献测试用例，他们应该着重关注哪些标准？</b></p>
+<blockquote> 
+ <p><strong>李安琪：</strong>选择已经达到Last Call或者CR状态的标准来进行测试。</p> 
+</blockquote>
+<hr />
+<p>感谢<a href="http://www.infoq.com/cn/author/杨赛">杨赛</a>对本文的审校。</p>
+<p>给InfoQ中文站投稿或者参与内容翻译工作，请邮件至<a href="mailto:editors@cn.infoq.com">editors@cn.infoq.com</a>。也欢迎大家通过新浪微博（<a href="http://www.weibo.com/infoqchina">@InfoQ</a>）或者腾讯微博（<a href="http://t.qq.com/infoqchina">@InfoQ</a>）关注我们，并与我们的编辑和其他读者朋友交流。</p><br><br><br><br><br><br></body></html>

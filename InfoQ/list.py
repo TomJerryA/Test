@@ -1,6 +1,18 @@
 <html>
  <head></head> 
- <body> 
+ <body>
+  <div>
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/5.py">SQLの復活</a>データベース開発の新潮流はSQLへの回帰を示している。しかし、従来のリレーショナルデータベースをより優れたハードウエアに乗せるのではなく、シャードを使ったアーキテクチャでもなく、NewSQLを通じてだ。
+  </div>
+  <div>
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/4.py">Rodney Viana氏の.NETデバッグ用WinDbgエクステンション</a>.NETアプリケーションの実行が失敗したとき，多くの場合はメモリダンプが残るだけである。Visual Studioではメモリダンプを扱えないので，代わりにWinDbgというツールを使わなければならない。このとき合わせて使用されるのがSOS.dllやPsscor4.dllといった，.NET固有の詳細情報を取得するエクステンションだ。これらはパワフルではあるが使用が難しいので，時には開発者自身がエクステンションを作ることもある。そのような開発者のひとり，Rodney Viana氏がnetext 1.6.1をオープンソースプロジェクトとしてリリースした。
+  </div>
+  <div>
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/3.py">GlassFish Commercial Editionの提供が終了</a>Oracleは先頃，Java EEとGrassFish Servcerに関するロードマップの最新版を発表した。2013年7月12日にリリースされたJava EE 7に合わせて，GlassFish Server Open Source Edition 4の提供が開始されたが，今週になってOracleは，Glass Fush 4の商用サポートバージョンを提供しないことを明言した。GlassFish 4はJava EE 7のリファレンス実装であり，Java EE 7認証を受けた唯一のアプリケーションサーバだ。
+  </div>
+  <div>
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/2.py">スクラムへの盲信</a>ブログ記事 &quot;The Scrum Holy War(スクラム聖戦)&quot;は，スクラムへの宗教的信念の存在を警告すると同時に，スクラムによって企業が救われない理由について説明している。
+  </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/1.py">EclipseがJCPに参加</a>JCP(Java Community Process) EC(Executive Committee)に新たに選出されたメンバが来週就任し，Javaプログラム言語の方向性に対して影響力を行使し始める。その中のひとつであるEclipse財団は，今後２年間にわたってこの決議機関に席を持つことになる。 
   </div> 
@@ -138,18 +150,6 @@
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/6.py">Gartnerの示す情報インフラ技術トレンド: ビッグデータ，NoSQL，インメモリ・コンピューティング</a>ビッグデータとNoSQLデータベース，そしてインメモリ・コンピューティングが，2013年以降の現代的な情報管理において重要な役目を果たすテクノロジだ – Gartner はそのように予想する。同社の調査チームがリリースした 最新レポート には，情報インフラストラクチャとガバナンスに影響を与えるであろう最先端の技術トレンドとして，この３つが示されている。 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/5.py">ESBツーリングを強化したWSO2 Developer Studio 3.0と3.1</a>WSO2 Developer Studio 3.0と3.1はESBとレジストリリソースエディタツールが改善され、性能が良くなった。また、Eclipse Juno SR2をベースにしており、JAX-RS RESTコード生成をサポートする。 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/4.py">Visual Studio 2012 Update 2正式リリース</a>Microsoftは、Visual Studio 2012のUpdate 2を正式にリリースした。この更新では、いくつかの新機能と多くの大きな修正と振る舞いの修正が含まれている。 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/3.py">EZNamespaceExtensions.Net v2013がコンテキストメニューとサムネイル、アイコン、プロパティシートのサポートを追加</a>EZNamespaceExtensions.Net v2013によって、Visual Studio を使って、Windows Explorerエクステンションを開発できる。更に多段サブフォルダー、サムネイルビュー、アイコン、プロパティシート、情報ティップなどをサポートしている。 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/2.py">GoogleとOperaがWebKitをフォーク，SamsungはFirefoxと共同でServoを推進</a>２つの主要なブラウザ開発チームが先頃，パラレルアーキテクチャを目指すことを発表した。WebKitフォークのBlinkを採用するGoogleとOpera，そして共同でServoをプッシュするMozillaとSamsungだ。 
-  </div> 
+  </div>     
  </body>
 </html>

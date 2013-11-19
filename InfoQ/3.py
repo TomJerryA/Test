@@ -1,51 +1,23 @@
-<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>EZNamespaceExtensions.Net v2013がコンテキストメニューとサムネイル、アイコン、プロパティシートのサポートを追加</h3><p><a target="_blank" href="http://www.infoq.com/news/2013/04/eznamespaceextensions-net-v2013;jsessionid=082A55FB605751269A1EF709CCEC1BC7"><em>原文(投稿日：2013/04/05)へのリンク</em></a></p> 
-<div class="clearer-space">
- &nbsp;
-</div> 
-<div id="newsContent"> 
- <p>Logic NP Softwareがリリースした<a target="_blank" href="http://www.ssware.com/eznamespaceextensions/eznamespaceextensions.htm">EZNamespaceExtensions.Net v2013</a>は、.NETでシェルやWindowsエクスプローラの名前空間エクステンションを開発することができる。簡単に使えるオブジェクトモデルを採用して、シェルの名前空間エクステンションをWindows Explorerにスムーズかつシームレスに統合できる。拡張機能のルック＆フィールと機能がアクティブなWindowsエクスプローラのフォルダと似たようになる。</p> 
- <p>EZNamespaceExtensions.Netは、以下の<a target="_blank" href="http://www.ssware.com/eznamespaceextensions/eznamespaceextensions.htm#features">Windows Explorerフィーチャ</a>と機能をサポートする。</p> 
- <ul> 
-  <li>フォルダと非フォルダアイテム</li> 
-  <li>マルチレベルのサブフォルダ</li> 
-  <li>自動サブフォルダナビゲーション</li> 
-  <li>アイテムのコンテキストメニューとバックグラウンドコンテキストメニュー</li> 
-  <li>複数の列を持つ詳細およびレポートビューのサポート</li> 
-  <li>サムネイルビュー、カット、コピーと貼り付け</li> 
-  <li>グループビューとカテゴリ</li> 
-  <li>アイテムのアイコンとオーバーレイアイコン</li> 
-  <li>アイテムの自動名称変更機能</li> 
-  <li>アイテムのプロパティシートと情報ティップ</li> 
- </ul> 
- <p>EZNamespaceExtensionsはまた、メインのWindows Explorerのフレームメニューにメニュー項目を統合し、名前空間エクステンション内からのドラッグアンドドロップをサポートすることにより、Windowsエクスプローラのツールバーにボタンを追加する機能を提供する。また、ファイルやフォルダのように、名前空間エクステンションに項目を表示することができる。</p> 
- <p><a target="_blank" href="http://www.ssware.com/eznamespaceextensions/eznamespaceextensions.htm#features">EZNamespaceExtensions.Net v2013</a>と連携するためには、Visual Studio 2012に統合されているシェル名前空間エクステンション プロジェクトテンプレートを利用する必要がある。 それは自動的に名前空間エクステンションの開発に必要なコードとファイルを生成する。</p> 
- <p>プロジェクトは、インストールフォルダの中にあるRegisterExtensionDotNet40.exeユーティリティを使って、変更、構築、登録できる。また、名前空間エクステンションを見るために、そしてマイコンピュータの下に表示されるためにRestartExplorer.exeユーティリティを使用して、Windows Explorerを再起動する必要がある。</p> 
- <p>InfoQは、LogicNP Softwareのシニア開発者であるHimangi G氏に、EZNamespaceExtensions.Netの可能性について詳しく話を聞いた。</p> 
- <p><strong>InfoQ: .NETでWindowsエクスプローラの名前空間エクステンションの開発に対するニーズは、何ですか？</strong></p> 
- <blockquote>
-  .NETにおけるWindowsエクスプローラの名前空間エクステンションの開発は、開発者が自分の好きな.NETプログラミング言語であるC＃やVB.NETが使えるのと、.NETテクノロジと基本クラスライブラリ(BCL)の培った知識やスキルを利用できることです。.NETを使って名前空間エクステンションを開発すると、開発者は自分に有利な膨大な基本クラスライブラリ（BCL）を使用することができます。
- </blockquote> 
- <p><strong>InfoQ: EZNamespaceExtensions.Net V2013を使用して開発できるアプリケーションの種類を教えて下さい。</strong></p> 
- <blockquote>
-  EZNamespaceExtensions.Net 2013を使用して開発することができるのは、Windowsエクスプローラに統合され、ファイルのオープン/保存ダイアログに統合されたソフトウェアの以下の様な種類です。 
+<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>GlassFish Commercial Editionの提供が終了</h3><p><a target="_blank" href="http://www.infoq.com/news/2013/11/glassfish-commercial-dead"><em>原文(投稿日：2013/11/07)へのリンク</em></a></p>
+<div class="article_page_left news_container text_content_container"> 
+ <div class="text_info"> 
+  <p>Oracleは先頃，<a href="https://blogs.oracle.com/theaquarium/entry/java_ee_and_glassfish_server">Java EEとGrassFish Servcerに関するロードマップの最新版</a>を発表した。2013年7月12日にリリースされたJava EE 7に合わせて，GlassFish Server Open Source Edition 4の提供が開始されたが，今週になってOracleは，Glass Fush 4の商用サポートバージョンを提供しないことを明言した。Java EE 7適合を実現したアプリケーションサーバとしてはTmaxSoftのJEUS 8があるが，リリースされるのは来年だ。したがってJava EE 7のリファレンス実装であるGlass Fish 4が，現時点では唯一のJava EE認証済アプリケーションサーバということになる。</p> 
+  <p>OracleはGlassFish Server Open Source Editionについて，おもな目的がJava プラットフォーム Enterprise Editionの最新リリースを適用することであり，それは今後も変わることはない，と明言している。GlassFishの最新ロードマップは次のとおりだ。</p> 
   <ul> 
-   <li>文書管理ソフトウェア</li> 
-   <li>コンテンツ管理ソフトウェア</li> 
-   <li>情報管理ソフトウェア</li> 
-   <li>仮想ドライブ</li> 
-   <li>FTPプログラム</li> 
-   <li>データベースブラウザまたはフロントエンド</li> 
-   <li>プロトコルハンドラ</li> 
+   <li>JavaOne 2013で発表されたように，GlassFish Server Open Source Edition 4.1のリリースが2014年に予定されている。</li> 
+   <li>ソースのトランク(truck)は今後， GlassFish Server Open Source Edition 5に移行する。前回のリリースと同じステップを経由して，Java EE 8のリファレンス実装になる予定である。</li> 
+   <li>Oracleは今後，商用サポート付きのGlassFishをリリースしない。GlassFish 4のCommercial Editionは提供されない予定である。</li> 
   </ul> 
- </blockquote> 
- <p><strong>InfoQ: アプリケーションを配布するときV2013 EZNamespaceExtensions.Netのライセンスを購入する必要がありますか？</strong></p> 
- <blockquote>
-  いいえ、EZNamespaceExtensions.Net V2013には、ロイヤリティフリーの再配布ライセンスが含まれていますので、あなたの開発した名前空間エクステンションとEZNamespaceExtensions.Netバイナリを無料で再配布することができます。
- </blockquote> 
- <p><strong>InfoQ: EZNamespaceExtensions.Net V2013を使うと、どのぐらい簡単にアプリケーションを開発できるのですか？</strong></p> 
- <blockquote>
-  EZNamespaceExtensions.Netを使えば、Visual Studio IDEのプロジェクトウィザードで名前空間エクステンションの開発を直ちに開始出来ます。シンプルで、良く設計され、徹底的にテストされたAPIフレームワークを持っていますので、名前空間エクステンションの開発に要するのは、週/月ではなく、時間/日の単位になります。あなたの名前空間エクステンションをWindowsエクスプローラとすべてのアプリケーションのファイルオープン/保存ダイアログにシームレスに統合できるように、フル機能をサポートしています。それには、あなたの開発した名前空間エクステンションを簡単にデプロイできる登録ユーティリティが含まれています。 
- </blockquote> 
- <p id="lastElm">&nbsp;</p> 
-</div> 
-<p id="lastElm"></p><br><br><br><br><br><br></body></html>
+  <p>既存のGlassFish 2および3のユーザに対するサポートは，Oracleの<a href="http://www.oracle.com/us/support/lifetime-support/index.html">ライフタイムサポートの方針</a>に従って継続される。GlassFish 2および3を新規購入したユーザには今後もサポートが行われるが，現行および将来のバージョンがサポートされない以上，これは強引な販売方法だろう。Java EE SDKには引き続きGlassFishがバンドルされるが，おもに開発者やコミュニティの要請によるものだ。コミュニティからのコントリビュートやバグ報告，およびGlassFishフォーラムへの参加は，今後も引き続き推奨される。</p> 
+  <p>GlassFish 4に商用サポートを求めるユーザは，Oracle以外のサポートを探さなくてはならなくなる。OracleがJava 6のサポートを完了したとき，Red HatがOpenJDK 6を引き継いで，Java 6ユーザに対する事実上の拡張サポートを行った例がある。これを考えれば，Red HatがGlassFishのサポートを継続することもあり得るだろう。もうひとつの選択肢は，商用サポートのあるJava EEアプリケーションサーバに移行することだ。選択対象となりそうなJava EEサーバは多数存在する。Java EE認証を取得したアプリケーションサーバは，<a href="http://www.oracle.com/technetwork/java/javaee/overview/compatibility-jsp-136984.html">Java EE Compatibility</a>の一覧で確認することができる。その場合，アプリケーションが必要とするJava EEバージョンとプロファイルには注意しなくてはならない。商用サポートのあるオープンソース製品を引き続き使用したければ，まず思い浮かぶのはWildFlyとJBoss EAPだろう。この２つはコードベースは同じだが，ビルドの違うものだ。Oracleが推奨するのは，同社の商用サポート付きアプリケーションサーバであるWebLogicへの移行だ。必要な費用の詳細は，<a href="http://www.oracle.com/us/corporate/pricing/technology-price-list-070617.pdf">Oracle Technology Global Price List</a>で確認することができる。</p> 
+  <p>Oracleは商用ライセンスでGlassFish Serverを使用しているユーザに，WebLogic Serverへの移行を開始するように勧めている。その理由は次のとおりだ。</p> 
+  <ul> 
+   <li>Java EE標準に従って開発されたアプリケーションは，GlassFish ServerにもOracle WebLogic Serverにもデプロイ可能である。</li> 
+   <li>さらにGlassFish ServerとOracle WebLogic Serverには，実装依存のデプロイメントディスクリプタについても互換性がある。</li> 
+   <li>GlassFish Server 3.xとOracle WebLogic Serverは相当量のコードを共有しているため，コンフィギュレーションや(拡張)機能に類似する点が多い。共有されるコードにはJPA, JAX-RS, WebSocket, CDI, Bean Validation, JSF, JAX-WS, JAXB, WS-ATなどが含まれる。</li> 
+   <li>Oracle GlassFish Server 3.xとOracle WebLogic Server 12cは，いずれもOracle Access Manager, Oracle Coherence, Oracle Directory Server, Oracle Virtual Directory, Oracle Database, Oracle Enterprise Managerをサポートするとともに，その基盤であるOracle JDKのサポートも行うことができる立場にある。</li> 
+  </ul> 
+  <p>GlassFishからWebLogicへの置き換えであっても，アプリケーションサーバの変更であることに変わりはない。商用サポート版のGlassFishへの移行や，あるいはWildFlyからJBoss EAPへの移行に比べれば，詳細な計画や多くの労力が必要になる。開発作業についてはGlassFish上で継続して，その成果をWebLogicにデプロイして活用する方法も可能だ，とOracleは述べている。ただしこの方法ならば，JavaEE準拠のアプリケーションサーバ間のどれでも可能なことにも注意すべきだ。無償版のWebLogicサーバを開発用に直接使用する，という選択肢もあるだろう。</p> 
+  <p>参考資料として，ソフトウェアアーキテクトのMarkus Eisele氏が &quot;<a href="http://blog.eisele.net/2013/11/rip-glassfish-thanks-for-all-fish.html">R.I.P. GlassFish - Thanks for all the fish</a>&quot; と題したブログ記事を書いている。GlashFishのサポートが完了したことについての，洞察力にあふれた解説資料だ。Oracleで製品マネージャの職にあるBruno Borges氏も &quot;<a href="https://blogs.oracle.com/brunoborges/entry/6_facts_about_glassfish_announcement">6 Facts About GlassFish Announcement</a>&quot; という記事を投稿して，今回の発表で想定される誤解について釈明している。</p> 
+ </div> 
+</div><br><br><br><br><br><br></body></html>
