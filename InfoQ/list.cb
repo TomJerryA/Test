@@ -1,6 +1,9 @@
 <html>
  <head></head> 
- <body> 
+ <body>
+  <div>
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/25.cb">O estado do NoSQL</a> Stefan Edlich, professor acad&ecirc;mico da universidade Beuth Hochschule de Tecnologia de Berlim, Alemanha, fez uma an&aacute;lise do NoSQL, considerando sua evolu&ccedil;&atilde;o, impacto financeiro, os padr&otilde;es ou a falta deles, o cen&aacute;rio atual, os livros, os l&iacute;deres e alguns rec&eacute;m-chegados, concluindo que NoSQL veio para ficar. 
+  </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/24.cb">Kanban - Apenas senso comum?</a> Sabe-se que a no&ccedil;&atilde;o de heur&iacute;stica &eacute; poderosa no desenvolvimento de produtos. O Manifesto &Aacute;gil, por sua vez, pode ser visto como um conjunto de heur&iacute;sticas com pr&aacute;ticas e processos. O modelo &quot;Pensamento Kanban&quot; inclui cinco heur&iacute;sticas que encapsulam as &aacute;reas principais para se dar enfoque, acompanhado de mais tr&ecirc;s impactos que encapsulam as &aacute;reas de melhoria. 
   </div> 

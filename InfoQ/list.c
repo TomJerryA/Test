@@ -1,8 +1,8 @@
 <html>
  <head></head> 
- <body>
-  <div>
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/33.c">Processamento em lote no Java EE 7 e melhorias no Spring Batch</a>Dentre as novas especifica&ccedil;&otilde;es introduzidas no Java EE 7 est&aacute; a JSR-352, que define um modelo de programa&ccedil;&atilde;o para processamento em lote dentro da plataforma Java EE. Essa nova especifica&ccedil;&atilde;o baseia-se fortemente no projeto Spring Batch da VMware.
+ <body> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/33.c">Processamento em lote no Java EE 7 e melhorias no Spring Batch</a>Dentre as novas especifica&ccedil;&otilde;es introduzidas no Java EE 7 est&aacute; a JSR-352, que define um modelo de programa&ccedil;&atilde;o para processamento em lote dentro da plataforma Java EE. Essa nova especifica&ccedil;&atilde;o baseia-se fortemente no projeto Spring Batch da VMware. 
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/32.c">iOS vs Android: Resultados e opini&otilde;es sobre o desenvolvimento nas duas plataformas</a>Cameron Henneke, fundador e desenvolvedor do GQueues, um gerenciador de tarefas online, adaptou a vers&atilde;o em HTML5 de seu aplicativo m&oacute;vel para iOS e Android. Durante o projeto, Henneke registrou todo o esfor&ccedil;o de desenvolvimento envolvido em ambas as plataformas e comparou os resultados em seu blog. Veja um resumo dos resultados obtidos e trechos de uma entrevista conduzida pelo InfoQ. 
@@ -150,6 +150,6 @@
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/34.c">Melhoria de processos de neg&oacute;cios usando Agile: discuss&otilde;es recentes</a>Organiza&ccedil;&otilde;es querem melhorar seus processos de neg&oacute;cios e nos dias de hoje precisam fazer essa melhoria de forma r&aacute;pida. &Eacute; poss&iacute;vel utilizar t&eacute;cnicas &aacute;geis para melhoria de processos de neg&oacute;cios? 
-  </div>  
+  </div> 
  </body>
 </html>

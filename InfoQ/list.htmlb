@@ -1,16 +1,16 @@
 <html>
  <head></head> 
- <body>
-  <div>
+ <body> 
+  <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/19.htmlb">全程软件测试实践：从需求到运营</a> 之前一篇文章《软件测试转型之路》介绍过我们转型的一些实践，下文将介绍从2011年3月至今，持续改进的全程软件测试实践活动。 
-  </div>
-  <div>
+  </div> 
+  <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/18.htmlb">IT架构设计框架：ADMIT</a> ADMIT详细表述了任何 IT架构工作中都应考虑的决策点。虽然ADMIT格式与其他企业架构框架类似，但ADMIT更关注影响最终结果的特性和驱动力，这使得它可以与其他形式化的企业架构设计和评价方法学结合使用。 
-  </div>
-  <div>
+  </div> 
+  <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/17.htmlb">采访ServiceStack的项目领导Demis Bellot——第1部分</a> ServiceStack是一个开源的、支持.NET与Mono平台的REST Web Services框架。InfoQ有幸与Demis Bellot深入地讨论了这个项目。在这篇两部分报道的第1部分中，我们主要谈论了ServiceStack项目建立的原动力，以及项目中的各种设计方案选择。 
-  </div>
-  <div>
+  </div> 
+  <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/16.htmlb">高德LBS开放平台产品总监房芳谈LBS应用的需求和创新空间</a> InfoQ编辑在大会上对高德LBS开放平台产品总监房芳进行了一次采访，交流了API开发的难点、LBS应用需求和创新空间、有哪些案例可以学习、还有多少市场可以挖掘等话题。 
   </div> 
   <div> 
@@ -150,6 +150,6 @@
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/20.htmlb">开发者需要了解的WebKit</a>Paul Irish是著名的前端开发工程师，同时他也是Chrome开发者关系团队成员。针对大家对WebKit的种种误解，他在自己的博客发表了《WebKit for Developers》一文，试图为大家解惑WebKit的同与不同。 
-  </div>     
+  </div> 
  </body>
 </html>

@@ -2,9 +2,12 @@
  <head></head> 
  <body>
   <div>
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/5.javab">Estimating on agile projects: what’s the story, what’s the point?</a> Ever wondered about how and why we estimate on agile projects? In his first article on InfoQ, David Morris draws on his own experience with since the 90s, and that of several leading agile writers, to explore the topic of agile estimating: what it is, how we typically do it, why we should bother, a brief appraisal of the #NoEstimates debate, and closes with some advice for people new to it all. 
+  </div> 
+  <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/4.javab">What’s Next in Software Analytics</a> In this article, a panel of experts in software analytics discuss the important and overlooked aspects of the software analytics field. Topics covered include what software analytics mean to the developers, practitioners, and information analysts and the opportunities for “natural” software analytics based on statistical natural language processing (NLP). 
-  </div>
-  <div>
+  </div> 
+  <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/3.javab">The Best Process Is No Process</a> Bureaucracy often plagues large product development efforts. Just like technical debt slows down development, process debt slows down your business. Have you ever experienced 12,096,000% savings in time? Clarify strategy. Automate processes. Parallelize work. Collaborate intently. Did you know a hidden MS project default may be causing inflexibility? Eliminate process debt. Get to market faster 
   </div> 
   <div> 
@@ -147,9 +150,6 @@
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/6.javab">Refactoring Legacy Applications: A Case Study</a>To refactor legacy code, the ideal is to have a suite of unit tests to prevent regressions. However it's not always that easy. This article describes a methodology to safely refactor legacy code. 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/5.javab">Application Security Testing: The Double-sided Black Box</a>In this article, Rohit Sethi discusses the opaque nature of security verification tools and processes and the potential for false negatives not covered by techniques like automated dynamic testing. 
-  </div>   
+  </div>  
  </body>
 </html>

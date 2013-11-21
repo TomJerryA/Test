@@ -1,23 +1,23 @@
 <html>
  <head></head> 
- <body>
-  <div>
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/11.py">Google、Dart 1.0をリリース</a>最初の発表とプレビュー版リリースから2年、Devvox in Belgiumにて、Lars Bak氏がDartの最初の安定版リリースを発表した。DartはGoogleの新しいWebプログラミング言語であり、最新のWebアプリケーションを開発するためのプラットフォームだ。
-  </div>
-  <div>
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/10.py">VIsual StudioでC#を使ってiOSとAndroidアプリを開発する</a>XamarinがMicrosoftとパートナーシップを結んだ。開発者がVisual StudioでiOSとAndroidアプリを作成できるようにし、Xamarin Universityでその方法を開発者に教える。
-  </div>
-  <div>
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/9.py">Apigee、Node.jsをサポートしVolosをオープンソース化</a>Apigee EdgeがNode.jsをサポートし、API管理モジュールを含むプロジェクト、Volosをオープンソース化した。
-  </div>
-  <div>
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/8.py">Windows Azure SDK 2.2、Visual Studio 2013、統合サインイン、フィルタリングのサポートを追加</a>MicrosoftはWindows Azure SDK 2.2をリリースした。これはVisual Studio 2013をサポートし、Visual Studio内からの統合サインインやサブスクリプション/リージョンのフィルタリングをサポートする。また、MSDNサブスクライバが利用するWindows Azure管理ポータル内で、Visual Studio 2013が利用できるよう事前設定したVMイメージも提供する。
-  </div>
-  <div>
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/7.py">Goが4周年</a>Goプロジェクトは4周年を迎えた。InfoQはGoのこれまでとこれからをまとめた。
-  </div>
-  <div>
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/6.py">Entity Framework 6に起動時間とエンティティ実体化の問題</a>Entity Framework 6を使用する開発者から，起動時間の遅延とエンティティ実体化の遅さが報告されている。しかし製品チームがすばやい修正パッチで問題のひとつに対処し，Microsoftも他のバグフィックスに向けて作業している。新たなパッチも近いうちにリリースされる予定だ。
+ <body> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/11.py">Google、Dart 1.0をリリース</a>最初の発表とプレビュー版リリースから2年、Devvox in Belgiumにて、Lars Bak氏がDartの最初の安定版リリースを発表した。DartはGoogleの新しいWebプログラミング言語であり、最新のWebアプリケーションを開発するためのプラットフォームだ。 
+  </div> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/10.py">VIsual StudioでC#を使ってiOSとAndroidアプリを開発する</a>XamarinがMicrosoftとパートナーシップを結んだ。開発者がVisual StudioでiOSとAndroidアプリを作成できるようにし、Xamarin Universityでその方法を開発者に教える。 
+  </div> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/9.py">Apigee、Node.jsをサポートしVolosをオープンソース化</a>Apigee EdgeがNode.jsをサポートし、API管理モジュールを含むプロジェクト、Volosをオープンソース化した。 
+  </div> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/8.py">Windows Azure SDK 2.2、Visual Studio 2013、統合サインイン、フィルタリングのサポートを追加</a>MicrosoftはWindows Azure SDK 2.2をリリースした。これはVisual Studio 2013をサポートし、Visual Studio内からの統合サインインやサブスクリプション/リージョンのフィルタリングをサポートする。また、MSDNサブスクライバが利用するWindows Azure管理ポータル内で、Visual Studio 2013が利用できるよう事前設定したVMイメージも提供する。 
+  </div> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/7.py">Goが4周年</a>Goプロジェクトは4周年を迎えた。InfoQはGoのこれまでとこれからをまとめた。 
+  </div> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/6.py">Entity Framework 6に起動時間とエンティティ実体化の問題</a>Entity Framework 6を使用する開発者から，起動時間の遅延とエンティティ実体化の遅さが報告されている。しかし製品チームがすばやい修正パッチで問題のひとつに対処し，Microsoftも他のバグフィックスに向けて作業している。新たなパッチも近いうちにリリースされる予定だ。 
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/5.py">SQLの復活</a>データベース開発の新潮流はSQLへの回帰を示している。しかし、従来のリレーショナルデータベースをより優れたハードウエアに乗せるのではなく、シャードを使ったアーキテクチャでもなく、NewSQLを通じてだ。 
@@ -150,6 +150,6 @@
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/12.py">IBMのMobile First - MBaaS，ビッグデータ，それ以上のものをエンタープライズに</a>IBMは現在のモバイルコンピューティングのトレンドをキャッチアップする包括的システムないしスイート，あるいは同社の説明ではアプリケーションポートフォリオを構築した。Mobile Firstという名のこのシステムは，トレンドに乗り切れていない組織がいまだテーブルに残したままの数十億ドルの市場から，ユーザ企業がシェアを獲得するためデザインされたものだ。 
-  </div>       
+  </div> 
  </body>
 </html>

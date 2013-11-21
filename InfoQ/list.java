@@ -1,26 +1,26 @@
 <html>
  <head></head> 
- <body>
-  <div>
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/2.java">Microsoft to Stop Honoring SHA1 Certificates for SSL and Code Signing</a>Following recommendations by the US National Institute of Standards and Technology, Microsoft intends to stop honoring SHA1 for SSL and Code Signing certificates. This policy will begin in 2017 and applies to Windows Vista, Windows Server 2008, and later operating systems.
-  </div>
-  <div>
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/1.java">Studio Enterprise 2013 v3 Adds ThemeRoller, VS 2013 Bootstrap Project Template and Mobile Controls</a>ComponentOne has recently released Studio Enterprise 2013 v3 with a new ThemeRoller for ASP.NET, mobile controls, support for Windows 8.1 and Visual Studio 2013 in addition to a new project template based on Bootstrap theming framework.
-  </div>
-  <div>
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/0.java">Cascading 2.5 Supports Hadoop 2</a>New version of Cascading released this week incorporates Hadoop 2 support and includes Cascading Lingual - an open source project that provides a comprehensive ANSI SQL interface for accessing Hadoop-based data
-  </div>
-  <div>
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/49.java">Vaughn Vernon: Reactive Domain-Driven Design</a>Vaughn Vernon, author of Implementing Domain-Driven Design, recently talked about using Scala and the Actor Model implementation Akka together with Doman-Driven Design as a means to remove some of the architecture overhead typically found in event-driven or hexagonal architectures.
-  </div>
-  <div>
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/48.java">Practices for Scaling Agile in Enterprises</a>Enterprises that are adopting agile organizational-wide will at some time have to scale their agile practices. In a session at the Agile Methods in the Finance Sector and Complex Environment conference, attendees shared their experiences with scaling agile in enterprises.
-  </div>
-  <div>
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/47.java">RadControls for ASP.NET AJAX Q3 2013 SP1 Adds Visual Studio 2013 and Internet Explorer 11 Support</a>Telerik has released an update to their RadControls for ASP.NET AJAX Q3 2013 control suite with support for Visual Studio 2013 and Internet Explorer 11 including several new features and bug fixes.
-  </div>
-  <div>
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/46.java">Actors Made Easy with C# and TPL DataFlow</a>For some design problems actors can make all the difference. An Actor is an independent entity that can respond to and send messages. In a way it is like its own little program running inside another process. But building actors in languages that don’t natively support them can be difficult, but Johan Olsson found a way to simplify the process using TPL DataFlow.
+ <body> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/2.java">Microsoft to Stop Honoring SHA1 Certificates for SSL and Code Signing</a>Following recommendations by the US National Institute of Standards and Technology, Microsoft intends to stop honoring SHA1 for SSL and Code Signing certificates. This policy will begin in 2017 and applies to Windows Vista, Windows Server 2008, and later operating systems. 
+  </div> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/1.java">Studio Enterprise 2013 v3 Adds ThemeRoller, VS 2013 Bootstrap Project Template and Mobile Controls</a>ComponentOne has recently released Studio Enterprise 2013 v3 with a new ThemeRoller for ASP.NET, mobile controls, support for Windows 8.1 and Visual Studio 2013 in addition to a new project template based on Bootstrap theming framework. 
+  </div> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/0.java">Cascading 2.5 Supports Hadoop 2</a>New version of Cascading released this week incorporates Hadoop 2 support and includes Cascading Lingual - an open source project that provides a comprehensive ANSI SQL interface for accessing Hadoop-based data 
+  </div> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/49.java">Vaughn Vernon: Reactive Domain-Driven Design</a>Vaughn Vernon, author of Implementing Domain-Driven Design, recently talked about using Scala and the Actor Model implementation Akka together with Doman-Driven Design as a means to remove some of the architecture overhead typically found in event-driven or hexagonal architectures. 
+  </div> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/48.java">Practices for Scaling Agile in Enterprises</a>Enterprises that are adopting agile organizational-wide will at some time have to scale their agile practices. In a session at the Agile Methods in the Finance Sector and Complex Environment conference, attendees shared their experiences with scaling agile in enterprises. 
+  </div> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/47.java">RadControls for ASP.NET AJAX Q3 2013 SP1 Adds Visual Studio 2013 and Internet Explorer 11 Support</a>Telerik has released an update to their RadControls for ASP.NET AJAX Q3 2013 control suite with support for Visual Studio 2013 and Internet Explorer 11 including several new features and bug fixes. 
+  </div> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/46.java">Actors Made Easy with C# and TPL DataFlow</a>For some design problems actors can make all the difference. An Actor is an independent entity that can respond to and send messages. In a way it is like its own little program running inside another process. But building actors in languages that don’t natively support them can be difficult, but Johan Olsson found a way to simplify the process using TPL DataFlow. 
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/45.java">Apportable brings Objective-C to Android</a>Apportable offers iOS developers the possibility to publish their software for the Android ecosystem. Programmers can use the Apportable SDK and a set of command line tools to cross-compile their apps without having to apply major changes to the objective-c code base. Alternatively, Apportable also offers the conversion of applications as a service. 
@@ -150,6 +150,6 @@
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/4.java">Major Performance Improvements in CA Clarity 13.2</a>CA Clarity, an enterprise resource planning tool specifically designed for large IT organizations and consulting firms, has undergone a major redesign to fix its performance issues. In some cases average response time has gone from a frustrating 5 seconds to roughly 0.6 sec. 
-  </div>        
+  </div> 
  </body>
 </html>
