@@ -1,0 +1,161 @@
+<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>アジャイル時代のモデリング: アジャイルチーム拡大のためにはコードの次に何を保つべきなのか</h3><p>もはやアジャイルソフトウェア開発手法はソフトウェア開発の主流になりました。動くコード（そして自動化テスト）は一番重要なチー ム成果物として扱われることになりました。</p>
+<p>モデリングはもういらない？UMLは死んだ？私はそう思いません。</p>
+<p>私はこの記事でアジャイル時代に相応しいモデリングの適切な役割について探って見たいです。特に、複数のチームへのスケーリングと システムの”全体像”への理解共有がなぜ必須になるのかについて話をしたいです。<br /> &nbsp;</p>
+<h2><strong>アジャイル開発で設計はどこにあるのか？</strong></h2>
+<blockquote>
+ <br /> コードが正しくても、それが全体的な正しさを意味することではない。　－Grady Booch
+</blockquote>
+<p>始める前に、私はスクラムを使った最小限のアジャイルチームプロセスを説明したいです。図１は意図的に最低限の必須要素だけ残して単 純化したプロセスを表しています。</p>
+<ol> 
+ <li>”ユーザの要求”は”製品バックログ”にリストアップされます。</li> 
+ <li>開発チームはそのリストから作業対象を選んでスプリントと呼ばれる短期イテレーションで実装を行います。</li> 
+ <li>各スプリント毎にチームは”動くソフトウェア”（又は”進捗”）として”製品コード”と”テストコード”を作り出す。</li> 
+</ol>
+<p><img src="http://www.infoq.com/resource/articles/kenji-modeling-agile/ja/resources/Figure-1-Scrum-In-and-Outsmall.png" alt="" _href="img://Figure-1-Scrum-In-and-Outsmall.png" _p="true" /></p>
+<p><b><small>図１．シンプルなスクラム構成</small></b></p>
+<div id="lowerFullwidthVCR"></div>
+<p>この最小限のフレームワークの中で、チームのインプットとなるのが”ユーザ要求”としての”プロダクトバックログ”です。そして、アウ トプットは”動くソフト ウェア”としてのコード（”製品コード”と”テストコード”）です。 そこには他の設計要素が明示的に現れてはいません。スプリントの中で作られたすべての意図的な設計はチームの財産として実行コートの中に組み込まれるのが 望ましいですが、そこには直接コード化されない情報もあります。スクラムは開発プロセスであり、設計に関しては敢えて何も言及していませんが、設計と設 計活動はチーム内部であいかわらず行われています。</p>
+<p>Grady Booch氏は”<a href="http://www.informit.com/articles/article.aspx?p=1405569">コー ドは真実ではあるが、すべての事実ではない</a>” と語っています。だから、もしそこにコードで表現又は伝われない情報が残されるとしたら、私達はその情報をどこに格納できるでしょうか？その質問に対する 答えがこの記事の内容です。</p>
+<h2><br /> <strong>文書化はアジャイルではない？</strong></h2>
+<blockquote>
+ <br /> モデルは対話を含むべきだ。　-&nbsp;Craig Larman と Bas Vodde
+</blockquote>
+<p>”私達の頭の中です！”これは先の質問に対する答えの中の一つです。 朝会、ペアプログラミング、設計ワークショップを含む全ての社会的実践行動はすべてチームメンバー間の意識合わせと継続的な意識統合の為のものです。で も、チームが大きくなれば場所的に分散されるし、メンバーがチームから離れることもあり、”頭の中の設計”は早くも消えて行きます。だから、私達は文書化 を通して情報共有を行い、システム・ソフトウェアに関する共通の理解を保つ必要があります。</p>
+<p>一方、アジャイル開発では対話が文書化より価値があるということを明らかにしたため、（コードと情報が重複されやすい）重たい設計書を 書くことはあんまり良いアプローチではありません。文書化に対して取るべき正しいアプローチは効果的な対話の為のものを作ることです。そして、それはコー ドを補足する一番シンプルなモデルになるべきです。</p>
+<p>コードの視覚化はモデルが持つ一つの利点です。つまり、テキストだけだと特定コンテキストのコミュニケーションでは十分ではないという ことです。図２はテキストのみのコミュニケーションがどれだけ惨めに失敗するかを表しています（この例を紹介してくれたJeff Patton氏に感謝します）。</p>
+<p><img src="http://www.infoq.com/resource/articles/kenji-modeling-agile/ja/resources/1Cake_Wrecks.jpg" alt="" _href="img://1Cake_Wrecks.jpg" _p="true" /></p>
+<p><b><small>図２．テキストのみのコミュニケーションが失敗する例<br /> <br /> むちゃくちゃケーキ<br /> </small></b><small>”スザンヌさんのご多幸を祈ります<br /> </small><small style="font-weight: bold;">その下に</small><small><br /> あな たと離れて寂しくなります。”</small><b><small><br /> </small></b></p>
+<p>この”むちゃくちゃケーキ”はあるケーキ屋さんへの電話注文処理ミスで作られたと思われます。もし注文者が簡単な画（そしてテキスト も）を 使うことができたら、このようなむちゃくちゃケーキは避けられたかもしれません。時には”一枚の画が１０００個の言葉より良い場合”もあります。</p>
+<p>では、アジャイルチームに役に立つモデルとはどんなものでしょうか？</p>
+<h2><br /> <strong>アジャイルモデリングと二つのモデルカテゴリー</strong><br /> &nbsp;</h2>
+<blockquote>
+ 赤ちゃんのようなモデリングを維持しよう。でも、官僚主義は風呂の外へ捨てましょう - Scott Ambler
+</blockquote>
+<p>&quot;<a href="http://www.agilemodeling.com/">ア ジャイルモデリング</a>はあなたのアジャイルチームに有効なモデリングと文書化の実例の集まりです。このモデリン グ方法はアジャイル開発の価値と原則を守りながらあなたがモデリングの恵みを受けられるように手伝います。重要なのは納品物としての設計書ではなく、<span style="font-weight: bold;">対 話を支えるモデル</span>です。</p>
+<p>我々は既にアジャイル開発に必要な事例と原則を持っています。そして、モデルを作るとき一番大事なルールはシステム設計の<span style="font-weight: bold;">”全体像”又は”鳥瞰図”を視覚化してコミュニケーションを行う</span>こ とで、コードのみでそれを達成するのは難しいです。モデルなしだと、チームはまるで”群盲象を評す”状態になります。個々の人はそれぞれ象の部分だけを 触って、その情報を収集・分析し それが象だということを分かるまでは長時間がかかるでしょう。</p>
+<p>私がおすすめする”全体像”のモデルは維持と管理で構成されます。</p>
+<ol> 
+ <li>チームがシステム全体構造の概略的なアイデアを取得するためのシステム”<span style="font-weight: bold;">アー キテクチャ</span>”</li> 
+ <li>チームが問題ドメインで使われる概念の理解を手伝える”<span style="font-weight: bold;">ド メインモデル</span>”</li> 
+ <li>システムの一般ユーザを理解し、彼らがシステムから利益を得る方法に対する”<span style="font-weight: bold;">キー ユーズケース</span>”</li> 
+</ol>
+<p>それらはすべてシステム全体を理解する為には必須的です。モデルなしで、あなたはどうやってシステム全体を理解できるでしょうか？も し、あなたが大規模のコードベースを持ち、不完全な小さなビューに基づいた仮定で”全体像”を作ったとしたら、そのコードベースを維 持・保守する選択肢は少ないはずです。<br /> この ”全体像”はチームのシステムモデルに対する意識を統一するだけではなく、コーディング作業中に行うコミュニケーションを支える用語集にもなります。例え ば、コード構造に加えてクラス、メソッド、変数、データ、設定などプログラム構成要素のネーミングにより詳細化されます。言い換えれば、そのモデルはチー ムが継続的にシステムに対する理解を共有する為だけでなく、一貫したコードベースを維持するためにも重要なものです。</p>
+<p>一方では、コードに組み込まれたら使い捨てになる臨時的なモデルもあります。通常、ホワイトボードに描かれた相互作用を記述する一般的 なクラス図とシーケンス図がそれに該当します。このようなモデルは対話を支えた後、コードの中に取り込まれ、消えます。</p>
+<p>したがってこのアイデアの中核はモデルを２種類に分けることです。一つは財産として継続的に更新して<span style="font-weight: bold;">維持するモデル</span>で、もう 一つは効果的にコミュニケーションを行うために使う<span style="font-weight: bold;">臨時 的なモデル</span>です。&nbsp;私達は前者を”維持モデル”、後者を”臨時モデル”と言います。（図３）　”維持”が” 凍結”を意味しないということを覚えて下さい。それよりは更新を続いて、時間の経過とともに成長するもので す。次の章で、私はアジャイルチームの為の３つの”維持モデル”を提案します。</p>
+<p><img src="http://www.infoq.com/resource/articles/kenji-modeling-agile/ja/resources/Figure-3-Keeps-and-Tempssmall.png" alt="" _href="img://Figure-3-Keeps-and-Tempssmall.png" _p="true" /></p>
+<p><b><small>図３．”維持”と”臨時”を使ったアジャイルモデリング</small></b></p>
+<h2><br /> <strong>維持モデル</strong></h2>
+<p><br /> 開発の内容により（人数、システムの重要度、要求の安定性、エンタプライズか組込みか）維持するモデルの変わります。私の経験による と、以下の案がおすすめです。</p>
+<ol> 
+ <li>アーキテクチャとしてのクラス／パッケージ図</li> 
+ <li>ドメインモデルとしてのクラス図／ER図</li> 
+ <li>キーユースケースとしてのユースケース図＋シーケンス／コミュニケーション図</li> 
+</ol>
+<p>私達は主にUMLを使いますが、真面目に厳格なUML仕様に従う必要はありません。私達がUMLを使う理由はそれが十分な標準ダイアグ ラムの持っているし、多くの教育資料が公開されているからです。時にはデータとプロセスに関するERD（Entity-Relation Diagram)とDFD(Data Flow Diagram)も同じ理由で使われます。</p>
+<p>図４は３つの”維持モデル”のルールを画で描いたものです。簡単に言えば、”アーキテクチャ”は構造を表し、”ドメインモデル”は問題 領域の中核概念を表し、そして”キーユースケース”はシステム の使用例を表します。</p>
+<p><img src="http://www.infoq.com/resource/articles/kenji-modeling-agile/ja/resources/Figure-4-Arch-DM-UC.png" alt="" _href="img://Figure-4-Arch-DM-UC.png" _p="true" /></p>
+<p><b><small>図４．アーキテクチャ、ドメインモデル、そしてキーユースケース</small></b></p>
+<p>これから私はこの３つに対して一つづつ私のチームからの具体的な例を図と一緒に説明します。</p>
+<h3>１．アーキテクチャとしてのクラス／パッケージ図</h3>
+<p>アーキテクチャは全体システムの構造を表します。それはよく<span style="font-weight: bold;">全 般的階層（レイヤ）</span>を 表す為、一般的にクラス又はパッケージ図を使います。例えば、UIとデータベースを持つアプリケーションは、一般的にUIからデータベースまでの水平的な 階層構造を持ちます。そして、一つのユー スケースはそれらのレイヤを通って目的を達成します。</p>
+<p>他の“MVC” (Model-View-Controller)のようなアーキテクチャパターンを全体的階層として選べます。&nbsp;図５はMVCアーキテ クチャをベースにしたアーキテクチャのパッケージ図の例です。</p>
+<p>チームメンバーがアーキテクチャに適するコードが書けるよう、チーム全員がアーキテクチャ構成要素のロールと意味を理解しな ければなりません。</p>
+<p>”依存関係”はパッケージ間の不要なカップリング又は循環依存関係を避ける為によく使われます。アーキテクチャの視点から見ると、パッ ケージ間の循環依存関係は苦しいテストと長時間の遅延を引き起こす一番の原因です。</p>
+<p>（イメージをクリックをすると拡大されます）</p>
+<p><a href="/resource/articles/kenji-modeling-agile/ja/resources/MVC.png" target="_blank"><img src="http://www.infoq.com/resource/articles/kenji-modeling-agile/ja/resources/MVCsmall.png" _href="img://MVCsmall.png" _p="true" alt="" /></a></p>
+<p><b><small>図５．アーキテクチャとしてのクラス／パッケージ図（例）</small></b></p>
+<h3>２．ドメインモデルとしてのクラス図／ER図</h3>
+<p>ドメインモデルはアプリケーション動作の問題領域に対する概念的な分類法を説明します。コミュニケーションレベルで、ドメインモデルに 出る単語は”<a href="http://martinfowler.com/bliki/UbiquitousLanguage.html">ユ ビキタス言語</a>”となり、ユーザ、ドメイン専門家、ビジネスアナリス ト、テスター、そして開発者を含む全てのステークホルダーのコミュニティで使われます。</p>
+<p>プログラミングレベルでも、ドメインモデルはまた、クラス、データ、メソッドなどの各種プログラム要素のネーミングを支えます。概念分 類（通常”エンティティ”と呼ばれる）の大半は、データベース内の永続化データ構造にマップされ、多くの場合、アプリケーション自体よりも長い寿 命を持ちます。そしてもしあなたが”MVC&quot;アーキテクチャを選択した場合、そのドメインモデル（又はエンティティ）は通常論理構造上の” M”パッケージに常駐されます。RubyOnRailsタイプのアプリケーションでは、リレーショナルデータベースとより直接的に結びついているため、ド メインモデルの表現にはER図 がより適切です。</p>
+<p>なお、ドメインモデルは時間の経過に応じて成長することに注意して下さい。ドメインは問題に対しての理解とコミュニケー ションの中核であるため、成長していくドメインモデルをチーム内部（広い意味でプロジェクト関連者全体）で維持することは一つの大きいなテーマとして<a href="http://www.amazon.com/Domain-Driven-Design-Tackling-Complexity-Software/dp/0321125215">Eric EvansのDDD（Domain-Driven Development)</a>で十分に議論されています。</p>
+<p>図６は一枚のクラス図でドメインモデルを表現した例です。</p>
+<p>（イメージをクリックをすると拡大されます）</p>
+<p><a href="/resource/articles/kenji-modeling-agile/ja/resources/JomtPresentation.png" target="_blank"><img src="http://www.infoq.com/resource/articles/kenji-modeling-agile/ja/resources/JomtPresentationsmall.png" _href="img://JomtPresentationsmall.png" _p="true" alt="" /></a></p>
+<p><b><small>図６．ドメインモデルとしてのクラス図（例）</small></b></p>
+<h3>キーユースケースとしてのユースケースとシーケンス／コミュニケーション図</h3>
+<p>キーユースケースは一般的にユーザの観点でシステムを表すために使われます。ユースケースを維持モデルにする理由は二つの理由がありま す。１つ目は開発者がシステムを開発して行く中で、誰がシステムを使うかとユーザがシステムを通して何を果たしようとするのかを時々忘れてしまうからで す。&nbsp;ユースケースは開発者をユーザ視点に帰し、ユーザとのコミュニケーションをよくします（他の文書ではよくこのようなことをユーザ に取り込む （Geek to users）と言います）。</p>
+<p>&nbsp;もう一つの理由は、キーユースケースとその詳細としてのシーケンス図とコミュニケーション図は開発者の為の教育用 のサンプルにもなるからです。それらはユーザの目的を達成する為に、システムの中のいろんなオブジェクトがどうやってアーキテクチャの中の異なる階層で動 くのかを説明しま す。具体的なサンプルとしてのUIからデータベースまでの垂直端面を絵描くことはアーキテクチャの中であなたがどう実装するのか を説明することになります。</p>
+<p>キーユースケースはすべての状況を全部持っている分けてはありません。ただ、代表的なものを選び、それをシンプルに保ちます。</p>
+<p>（イメージをクリックをすると拡大されます）</p>
+<p><a href="/resource/articles/kenji-modeling-agile/ja/resources/Astah Modeling.png" target="_blank"><img src="http://www.infoq.com/resource/articles/kenji-modeling-agile/ja/resources/1Astah Modelingsmall.png" _href="img://1Astah Modelingsmall.png" _p="true" alt="" /></a></p>
+<p><b><small>図７．キーユースケースとしてのユースケース図（例）</small></b></p>
+<p>（イメージをクリックをすると拡大されます）</p>
+<p><a href="/resource/articles/kenji-modeling-agile/ja/resources/Create-Class-Diagram.png" target="_blank"><img src="http://www.infoq.com/resource/articles/kenji-modeling-agile/ja/resources/Create-Class-Diagramsmall.png" _href="img://Create-Class-Diagramsmall.png" _p="true" alt="" /></a></p>
+<p><b><small>図８．キーユースケース詳細としてのコミュニケーション図（例）</small></b></p>
+<p>図７はシステムユーザの一般的なシステム使用例を明確にしたユースケース図です。ユースケース図は包括的である必要はありませんが、シ ステムのコンテキストを掴む必要はあります。&nbsp;サンプルユースケースとして選択した黄色いユースケース（”Create Class Diagram&quot;)は図８のコミュニケーション図を詳細化ものです。このサンプルを通して、チームがどうやってキーユースケースで説明された機能をアーキ テクチャとドメインモデル（図５と図６）が実際動いて 遂行されるかを理解共有できます。アーキテクチャ、ドメインモデル、そしてキーユースケースの間の関係について探るため図４をもう一度よく見ましょう。</p>
+<p>あなたは設計ツールを使ってそのような図を簡単に維持補修したり、大きいサイズの紙に印刷したり、そして壁に貼っつけることができま す。その壁はその後、私が次の章で議論しようするモデリングワークショップの議論の場となります。</p>
+<h3><br /> <strong>スケーリング</strong></h3>
+<blockquote>
+ <br /> 分割して潰すよりは、XPチームで潰してから分割するほうがいい。-Kent Beck
+</blockquote>
+<p>１０名未満の小さな開発チームでは、コーディング作業後にモデルを維持する必要がないかも知りません。　開発規模が大きくなり複数の チームになると、モデリングの必要性も大きくなります。</p>
+<p>しかし、あなたが知らない誰かに渡すために（実装なしの）重い文章化に時間を書けないで下さい。チームが大きくなったとしても、あなたはキーユース を達成するために全層を通る簡単な実装を先に作る必要があります。それはアーキテクチャシードを作成し、動くコードと”維持”モデルを使ってサブチームと 意識共有するために必要です。言い換えれ ば、”分割して問題を潰す”（問題を先に机上に分割し、サブチームは問題を解決させるために、仕様だけを渡す）しようとしないで下さ い。その代わりに、”潰した後、分割”（詳細はCraig LarmanとBas Voddeが書いた”<a href="http://www.infoq.com/articles/large-scale-agile-design-and-architecture">大 規模アジャイル設計＆アーキテクチャ</a>”を参照）をおすすめします。</p>
+<p>ここで、私は複数のチームがどうやって”維持”モデルを使って”全体像”を意識共有するのかを説明します。最初の解決は”タイガーチーム”と呼ばれる一箇所に集まった１０名以下のチームにより行われます。&nbsp;最初の処理が終わった後、前述した”維持モデル”がシ<span style="font-weight: bold;">ステムを理解するためのコミュニケーションを支える良い文書化</span>として使われます。スプリント１で、タイガーチームは最初のシードアーキテクチャと維持モデルバージョン１．０としてのSAD（Software Architecture Document)を確立し、最初のキーユースケースを潰していきます。それらのモデルは仕様ではなくて、システムに対する理解の土台になります。そしてもう一度言っておきますが、サブチームにドキュメントだけを渡してはいけません。</p>
+<p><img src="http://www.infoq.com/resource/articles/kenji-modeling-agile/ja/resources/Figure-9-Subteams.png" alt="" _href="img://Figure-9-Subteams.png" _p="true" /></p>
+<p><b><small>図９．タイガーチームとサブチーム</small></b></p>
+<p>設計意図と理解を共有する一番最適な方法はサブチームと共に<span style="font-weight: bold;">モデリングワークショップを開く</span>ことです。 （図９）</p>
+<p>（イメージをクリックをすると拡大されます）</p>
+<p><a href="/resource/articles/kenji-modeling-agile/ja/resources/Workshop.JPG" target="_blank"><img src="http://www.infoq.com/resource/articles/kenji-modeling-agile/ja/resources/Workshopsmall.jpg" _href="img://Workshopsmall.jpg" _p="true" alt="" /></a></p>
+<p><b><small>図１０．壁に貼り付けた維持モデルを利用したモデリングワークショップ</small></b></p>
+<p>モデリングワークショップでは、タイガーチームメンバー一人（図９の&quot;Ken&quot;)が最初にアーキテクチャドキュメントをモデルを通して説明します。 一般的な質問と解答で、彼はサブチームとシステムのコアコンセプトと構造に対する理解を共有します。彼はシステムコンポネントがユーザの目的を達成するた め、どのように動くのかをキーユースケースを使って説明します。そして、彼はそのユースケースの中から一つ又は二つぐらいをサブチームと一緒に臨時モデル ともしかしたらペアープロ グラミングを使って設計をします。</p>
+<p>SADを完璧に作ろうとしないで下さい。ハンドオーバと豊富な会話をしなくても、意識共有を確立する方法として、ワークショップをおすすめします。</p>
+<p>フィードバックはサブチームワークショップの重要な部分です。図９で、サブチーム１の”Ken”とサブチーム２の”Tom”はタイガーチームに対してフィードバックを行い、他のメンバー達と議論し、 維持モデルを改善します。図１１はワークショップ中に作られたクラス図で、印刷物の上に多くのコメントか追加されています。</p>
+<p>（イメージをクリックをすると拡大されます）</p>
+<p><a href="/resource/articles/kenji-modeling-agile/ja/resources/AfterWorkshop.JPG" target="_blank"><img src="http://www.infoq.com/resource/articles/kenji-modeling-agile/ja/resources/AfterWorkshopsmall.jpg" _href="img://AfterWorkshopsmall.jpg" _p="true" alt="" /></a></p>
+<p><b><small>図１１．ワークショップ後、</small></b><b><small>コメントが追記されたアーキ テクチャ説明用クラス図</small></b></p>
+<p>ワークショップは繰り返して開催します。そして、”モデル”ではなく、”モデリング”を使って理解を高めます。ここで言 う”モデリング”は動詞で、”対話を支えるモデル作り”の意味していることに注意して下さい。</p>
+<h3><br /> <strong>知識の伝達者としての人</strong></h3>
+<blockquote> 
+ <p><br /> 多くの設計情報が集団の記憶に残されています&nbsp;– Grady Booch</p> 
+</blockquote>
+<p>&quot;維持モデル”とコードがシステムを維持・成長させる為に必要なほとんどの知識をカーバーしているとしても、まだチームメンバーの頭にしか残っていない知 識が必ず存在します。Grady Boochはそれを”<a href="http://www.computer.org/portal/web/computingnow/onarchitecture">集団記憶</a>”と名づけました。</p>
+<p>日本には”伊勢神宮”と呼ばれる神社があります。伊勢神宮は同じ大きさの二つの建物が隣接しています。そして彼らは２０年に一度、向こう側の建物に 移転しします。それは建物の再建だけでなく、神聖な服や宝物のリニュアルを含みます。神社の移転式で、神社の建築に関する知識は次の世代へ渡されます。そ こに設計文書はありますが、技術、ツールそして実践は前後の世代が一緒に再建築を行う中で渡されることになります。”経験は最高の先生”です。そして、一 緒に作業することこそ一番豊富に設計知識を伝える方法であることを覚えて下さい。</p>
+<p><img src="http://www.infoq.com/resource/articles/kenji-modeling-agile/ja/resources/Ise_Shrine_Naiku.jpg" alt="" _href="img://Ise_Shrine_Naiku.jpg" _p="true" /></p>
+<p><small><b>伊勢神宮（写真は<a href="http://ja.wikipedia.org/wiki/%E7%A5%9E%E5%AE%AE%E5%BC%8F%E5%B9%B4%E9%81%B7%E5%AE%AE">Wikipedi</a>a から）</b></small></p>
+<h3><br /> <strong>モデリングのヒント</strong></h3>
+<p><br /> 私が前述したアイデアと経験に基き、あなたの日々のモデリング作業又はモデリングワークショップで使えるいくつかの最後のヒント をここで紹介します。</p>
+<ul> 
+ <li>リバースとモデル：　多くのUMLツールはジャストインタイム方式でコードを視覚化する”リバースエンジニアリング”機能を提供していま すそのツールの一部は快適な”ドラッグ・アンド・ドロップ”ソース読込機能だけではなく、その上Githubリポジトリからソースを詠み込む機 能も持っています。あなたは”維持モデル”だけではなく、コードベースからリーバスエンジニアリングして 作られたパッケージ図とクラス図を用いたカジュアルなモデリングもできます。</li> 
+ <li>印刷と手書き：　前述したのように、よいインタラクティブなモデリングワークショップは壁（又は テーブル）に貼り付けた大きいな紙用いて彼らと対話をすることにより促進されます。図１１のように印刷した大きい紙に直接内容とコメントを書いて下さい。　</li> 
+ <li>ホワイトボード上にプロジェクターを映し、直接書く：　ワークショップで使えるもう一つのモデリング共有法はホワイトボードに映された画に対して” 印刷と手書き”をシミュレートすることです。プロジェクトでホワイトボードに”維持モデル”を映し、その上にコメント又は内容を直接書きます。</li> 
+ <li>回顧：　私は”維持モデル”のシンプル版を提案しましたが、それはあなたのコンテキストには合わないかも知りません。だから、最初は私の提案又は あなたがが考えたものから”維持モデル”を開始して下さい。そして各スプリント毎にあなたのモデルに対して回顧を行い、どのモデルがよく動いているのか、 どのモデルが要る又は要らないのかに対して検討し ます。あなたの”維持モデル”を見つけなさい。</li> 
+ <li>マインドマップモデリング：　UMLと他のソフトウェアエンジニアリングダイアグラムはユーザとの討論、計画立案、そしてその他のいろんな場合にうま く機能しないですが、その活動は重要です。それらの状況に対してマインドマッピングを使って下さい。”Mind MapとUMLを使ったアジャイルモデリング”の詳細に関しては<a href="http://www.stickyminds.com/s.asp?F=S11861_ART_2">ユーザと一緒 に作った”ユーザストーリ探究”のサンプル</a>を参照して下さい。</li> 
+</ul>
+<p>（イメージをクリックをすると拡大されます）</p>
+<p><a href="/resource/articles/kenji-modeling-agile/ja/resources/Figure-12-mindmap.png" target="_blank"><img src="http://www.infoq.com/resource/articles/kenji-modeling-agile/ja/resources/Figure-12-mindmapsmall.png" _href="img://Figure-12-mindmapsmall.png" _p="true" alt="" /></a></p>
+<h2><br /> <strong>結論</strong></h2>
+<p><br /> この記事で、私はどうやってスクラムみたいなアジャイ ル開発フレームワーク合うモデリングを行えるのかと、あなたの製品サイクル全般に渡って維持できるモデルを提案しました。そして、私は設計意図の伝達とシ ステムに対する理解共有を行うためにモデリングワークショップを促進することをおすすめしました。それらの実勢はチーム規模が大きくなり複数のサブチーム になった場合、もっと重要になります。</p>
+<h2><br /> <strong>謝辞</strong></h2>
+<p><br /> 私の記事にコメントしてくれたHiroki Kondo氏, Alex Papadimoulis氏 、Scott Reece氏に感謝したいです。そして、記事のレビューと編集を担当したBen Lindersにも感謝します。モデリングワークショップの重要性を最初に説明し、飛行機の中で貴重なお時間を使って、この記事に対する根本的な提案をくださった Craig Larman氏に特別に感謝します。</p>
+<h2><br /> <strong>読み進むと</strong></h2>
+<p><br /> アジャイル開発上の設計に関しての議論は古くから行われました。Martin Flower氏とJack Reeves氏の名著を読んで下さい。</p>
+<ul> 
+ <li><a href="http://martinfowler.com/articles/designDead.html">Martin Fowler, 2004 , “Is Design Dead?”</a></li> 
+ <li><a href="http://martinfowler.com/distributedComputing/thud.html">Martin Fowler, 1997 , “The Almighty Thud”</a></li> 
+ <li><a href="http://www.developerdotstar.com/mag/articles/reeves_design.html">Jack Reeves, 1992 , “What is Software Design?”</a></li> 
+</ul>
+<p>アジャイルモデリングの概念は”Agile Modeling&quot;の本で最初に説明されています。そして、&quot;実践UML”第３版で再びこの話題を扱っています。</p>
+<ul> 
+ <li><a href="http://www.amazon.co.jp/%E3%82%A2%E3%82%B8%E3%83%A3%E3%82%A4%E3%83%AB%E3%83%A2%E3%83%87%E3%83%AA%E3%83%B3%E3%82%B0%E2%80%95XP%E3%81%A8%E7%B5%B1%E4%B8%80%E3%83%97%E3%83%AD%E3%82%BB%E3%82%B9%E3%82%92%E8%A3%9C%E5%AE%8C%E3%81%99%E3%82%8B%E3%83%97%E3%83%A9%E3%82%AF%E3%83%86%E3%82%A3%E3%82%B9-OOP-Foundations%E3%82%B7%E3%83%AA%E3%83%BC%E3%82%BA-%E3%82%B9%E3%82%B3%E3%83%83%E3%83%88%E3%83%BBW%E3%83%BB%E3%82%A2%E3%83%B3%E3%83%96%E3%83%A9%E3%83%BC/dp/4798102636/ref=sr_1_1?s=books&amp;ie=UTF8&amp;qid=1384702065&amp;sr=1-1&amp;keywords=%E3%82%A2%E3%82%B8%E3%83%A3%E3%82%A4%E3%83%AB%E3%83%A2%E3%83%87%E3%83%AA%E3%83%B3%E3%82%B0">ス コット・W・アンブラー、 2002, “アジャイルモデリング” </a></li> 
+ <li><a href="http://www.amazon.com/Applying-UML-Patterns-Introduction-Object-Oriented/dp/0131489062/">ク レーグ・ラーマン、2007、“実践UML 第3版 オブジェクト指向分析設計と反復型開発入門” </a></li> 
+</ul>
+<p>モデリングワークショップのアイデアは、主にCraig LarmanとBas Voddeの本からインスピレーションを受けました。</p>
+<ul> 
+ <li><a href="http://www.amazon.com/Practices-Scaling-Lean-Agile-Development/dp/0321636406">Craig Larman and Bas Vodde, 2010, “Practices for Scaling Lean &amp; Agile Development” </a>&nbsp;</li> 
+ <li>次の内容はダウンロードできます <a href="http://www.infoq.com/resource/articles/large-scale-agile-design-and-architecture/en/resources/large-scale%20agile%20design%20and%20architecture%20ways%20of%20working%20-%20sample%20chapter%20-%20larman%20and%20vodde.pdf">Chapter 8 from &quot;Practices for Scaling Lean &amp; Agile Development: Large, Multisite, and Offshore Product Development with Large-Scale Scrum&quot;</a></li> 
+</ul>
+<p>”維持モデル”と”臨時モデル”のアイデアはこの図から持ってきました。</p>
+<ul> 
+ <li><a href="http://www.ss.com.au/articles/Agile%20Modeling.pdf">Strategic Systems, 2012, “Agile Modeling by Example</a>”</li> 
+</ul>
+<p>同じ問題とコンテキストを扱っているもう一つのInfoQ記事です。まだ、２部を待ち続けています。</p>
+<ul> 
+ <li><a href="http://www.infoq.com/articles/agile-modeling-part-one">Lee Ackerman, 2011, “Agile Modeling: Enhancing Communication and Understanding”</a></li> 
+</ul>
+<p>アジャイル開発とアーキテクチャに関してもっと広く扱っている記事</p>
+<ul> 
+ <li><a href="http://mysite.verizon.net/dennis.mancl/splash10/">Bill Opdyke, Dennis Mancl, Steve Fraser, “Architecture in an Agile world, 2010”, SPLASH workshop</a></li> 
+</ul>
+<p><br /> 私はワークショップに参加し、”アジャイル開発”における”アーキテクチャ”について議論しました。その二つは対立関係ではありません。</p>
+<h2><br /> <strong>著者について</strong></h2>
+<p><br /> <img src="http://www.infoq.com/resource/articles/kenji-modeling-agile/ja/resources/Kenji-Hiranabe.jpg" vspace="3" hspace="3" align="left" alt="" _href="img://Kenji-Hiranabe.jpg" _p="true" />平 鍋健児氏はアジャイルソフトウェア開発専門家、作者/翻訳者そして<a href="http://astah.net">Change Vision</a>社のCEOである。彼は協力ゲーム形のソフトウェア開発を考え、もっと生産的、協力的、そして楽しくする方法を探し続け ている。　&nbsp;２００８年、アジャイル実践への貢献でGordon Pask賞を受賞した。　</p><br><br><br><br><br><br></body></html>

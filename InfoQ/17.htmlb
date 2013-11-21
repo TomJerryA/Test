@@ -1,25 +1,116 @@
-<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>阅读者（二十三）——《精益和敏捷开发大型应用指南》</h3><p>阅读此书纯属偶然，亦为缘分。彼时我刚刚进入一家大型传统能源企业IT部门做敏捷咨询工作，苦苦思索如何在这样的大型企业团队开展好敏捷实践，它就出现了，犹如黑夜里的一盏明灯，给我指明了方向。阅读本书起初是为其名字所吸引，对Craig Larman为何方神圣毫无概念。当注意到译者为我司同事并看过了译者序之后，更加确信此书为我当时之需。因此，我想结合我的咨询工作谈谈对本书内容的理解。</p><p>闲话少说，阅读完本书之后总体感觉为，此书为传统大型IT部门多团队实施敏捷之得力帮手：首先，它列出了复杂问题的思考工具，让我既见树木又见森林，透过现象看本质，深刻理解实践背后的原则与价值观；其次，它给出了大型组织实施敏捷的具体方式及尝试方法，尤其是如何组织团队、提高团队适应能力、培养学习型团队以及各个角色如何做好职责转变等；其三，它描述了传统企业常见的团队组织方式并分析其利弊，犹如一面镜子映射到客户部门，让一些表面问题突显其深层原因，从而帮助我在给出建议时既能考虑如何治标，又能知道长期发展如何治本；最后，本书打开了精益与敏捷开发知识之门，各章基本都有丰富的推荐资源，少则两三本，多则十几本，如果你想成为这个领域的专家，此乃最便捷的入口。</p><p>本书分为三个部分，首先来看看第一部分，思考工具。正如作者所说，这部分内容是大规模Scrum和敏捷开发取得成功的基石。个人认为第一部分的五章，每章都是一本书的内容，作者通过自己的语言将这些具有深厚理论基础的工具简明扼要、纲举目张地描述出来， 详细总结如下：</p><p>第2章——系统思考：一种既见树木又见森林地分析问题的工具。作者提到：</p><p>大规模地实施Scrum、精益思想和敏捷原则并不是孤立于开发团队存在的，它受到产品管理、预算、测试、发布、管理方法和人力资源政策的制约。因此，在大规模实施敏捷方法的过程中，与同事们在即将改变的大环境中一起讨论心智模型、因果关系、反馈回路、管理机制（或管理幻觉）是非常有用的。</p><p>因此，在分析一个问题的时候要找到与之关联的其他因素，分析根因、全盘着眼、系统思考才能给出合理的建议。例如，我在客户现场遇到一个问题，某团队在回顾会议中很多人提到团队无法按时完成Sprint承诺的任务，基本每个Sprint都如此。后来我们组织该团队主要成员，从三个不同视角——产品负责人、项目经理、团队，画出了与此问题相关的系统循环图，最后发现这根本不是一个问题，而是一种合理的表象。其真正原因在于，在当前Scrum组织中，产品负责人、团队以及项目经理之间还没有明确各自角色应该承担的任务，比如产品负责人应该为每个Sprint列出需求列表并排定优先级，同时相信团队的选择完成哪些需求；项目经历负责协调资源帮助团队解决问题，完成承诺；团队专心于完成产品事项。当整个系统中所有角色的权利与义务都得到履行时，团队完成每个Sprint承诺的任务也就水到渠成。而现在完不成恰恰反应了各个角色对于Scrum的价值观理解不足，没有扮演好对应的角色。比如我们观察到，多路需求来源，优先级混乱，Sprint中期插入的临时任务很多导致团队不能专心工作等等。因此我们要解决的真正问题就显现出来了，那就是从澄清各个角色应该承担的职责入手，让各自扮演好自身的角色！</p><p>关于系统思考有很多经典书籍，个人觉得丹尼斯&middot;舍伍德 的《系统思考：学习型组织必备读本》是很好的入门读本。</p><p>第3章——精益思想：本章详述了精益思想、精益目标、精益基础、14项基本原则以及精益产品开发等等。因为敏捷的价值观和原则很大部分受到精益思想的启发，比如敏捷实践中的故事墙就受到精益中看板的启发；持续集成受到“停工与修复”思想影响；回顾会议也是精益思想支柱之一——持续改善——的体现。这些知识给我的咨询工作提供了理论支持，帮助我清晰透彻地向项目经理、产品负责人、团队成员解释Scrum每个实践背后的深层次价值观，做到知其然且知其所以然；此外，本章对于人们容易误解的部分，比如精益思想的两大支柱等，也做了详细解释。在第3.3节，作者用一幅图浓缩了精益思想的精华，即图3-1精益思想屋：<br /> 
- <pic>
-  <img src="http://www.infoq.com/resource/articles/large-scale-scrum/zh/resources/101.png;jsessionid=82A092A07B53582839FCB6FABD86B2F4" width="600" alt="" _href="img://101.png" _p="true" />
-  <br /> 如果你想对精益思想有个概览和全局把握，那就仔细研究一下这幅图吧。
- </pic> </p><p>若要对精益思想进行更深入的理解，可以参考阅读其他书籍。其中， 詹姆斯 P.沃麦克（James P.Womack） / （英）丹尼尔 T.琼斯（Daniel T.Jones）的《精益思想》一书可谓介绍精益思想的经典书籍。该书书已有10余年的历史，销售数十万册。如果你觉得这本书还不够，可以参考作者在本章最后一节——推荐资源中列出的九本书。</p><p>第4章——排队论：排队论作为一种用来研究事物如何排队通过系统的分析工具，反映在用精益“均衡”原则减少可变性，更重要的则是通过注重小批量和短周期实现流动，Scrum支持排队论的管理含义。个人觉得本章十分具有指导意义的是第4.7节——在Scrum中使用排队管理。作者分析了如何通过减少可变性以及限制排队规模来做好排队管理，提到了一些实践，诸如时间盒、清晰精细、规模相似的用户故事、稳定的特性团队等等。同时指出了常见项目管理中不太好的做法。我在客户现场的确观察到了，比如通过增加员工利用率或多任务处理，或增加更多的开发人员来减少过排队现象。这些做法在短期内能看到一些效果，但是给员工带来的自由度少、压力大，同时费用高昂，可持续性和可扩展性差。</p><p>第5章——错误的两分法：本章主要解释一些在敏捷开发中常见的容易被大家误解的问题。5.4节——误解，澄清了很多常见的对敏捷、Scrum的误解，比如“敏捷不需要文档”、“敏捷就是迭代”等，让我们正确认识敏捷价值观、敏捷实践。我在阅读完本节之后，对于客户现场常见的问题都有了更加清晰的答案。</p><p>第6章——掌握敏捷精髓：本章内容如题，是深入学习敏捷必须掌握的部分。我始终认为，敏捷的价值观就是敏捷实践的内功心法，只有掌握好心法，招式才能运用自如。第6.3节的“十二条敏捷原则”，为团队实施敏捷开发给出了具体可行的建议。</p><p>本书的第一部分是铺垫和基础，第二部分“组织工具”则给出了在大型团队实施敏捷开发的具体解决方案。如果你在敏捷开发中面临如下问题，就请认真研读这部分内容吧：</p><ul> 
- <li>什么是特性团队，为什么需要特性团队，它的优势是什么？</li> 
- <li>传统组件团队的问题有哪些？</li> 
- <li>如何建立自组织团队？</li> 
- <li>团队如何进行决策？</li> 
- <li>如何有效管理多个协作团队的需求？</li> 
- <li>在精益和敏捷开发原则下，如何建立一个模型来协调好任务、人员、结构、奖金、流程以及策略，从而适应组织变革？</li> 
- <li>如何进行大型Scrum开发？</li> 
- <li>在实施大型Scrum开发过程可能遇到的问题有哪些以及如何应对？</li> 
-</ul><p>总体说来，这部分从更高层次展示了在一个精益和敏捷原则指导下具有多团队的Scrum组织是如何建立、协作并运行的。本部分的五章内容，组织思路很清晰，其目标是给出大型Scrum的组织框架，下图给出了这几章的递进关系：</p><p>&nbsp;<img src="http://www.infoq.com/resource/articles/large-scale-scrum/zh/resources/02.png;jsessionid=82A092A07B53582839FCB6FABD86B2F4" width="600" alt="" _href="img://02.png" _p="true" /></p><p> 
- <pic>
-  值得一提的是，作者在第11章指出，所谓的“大型Scrum开发”指的是一般的Scrum开发加上一套适合大型多团队、多地点、离岸敏捷开发的做法。作者描述了小于10个团队的大型Scrum框架（图11-1 大型Scrum开发框架1），以及扩展到多个团队（一般多于10个团队）的大型Scrum开发框架（图11-2 大型Scrum开发框架2），这对于我们实施Scrum开发给出了具体可行的操作方法。
- </pic> </p><p>结合我在客户现场的经验，遇到的是6个10人左右的团队一起合作进行大型Scrum开发，其组织方式类似于图11-2，在实施过程中暴露出不少问题。最严重的问题还是各个Scrum团队之间的局部优化，虽然有多个产品负责人负责准备产品待办事项列表，但是各个团队在实施时，需要相互协作和配合。问题在于需要协作的部分，其优先级在各个团队内却大相径庭，所以某些团队高优先级的story因为得不到支持而被block，从而造成大量浪费，可见以特性团队作为基础来构建大型Scrum团队是多么重要！</p><p>本书第三部分，杂记，仅包含一章内容——Scrum简介。本章详细描述了Scrum实施中的角色、实践以及常见问题，如Sprint计划会议、产品待办事项表提炼、Sprint评审会议等等。本章提到的各个实践，在传统团队转型过程中常常会遇到很大挑战，比如我们在客户现场常常遇到的一些挑战为：</p><ul> 
- <li>每日例会太浪费时间，我们没什么可说的，团队成员期望取消；</li> 
- <li>Story的故事点估算对于我一个开发人员来说没什么意义，开发人员期望取消；</li> 
- <li>回顾会议我也不知道说什么，时间太长，团队成员期望取消；</li> 
- <li>原来的PM们不知道怎么做好角色转换，反倒成了团队实施Scrum的绊脚石；</li> 
- <li>团队成员抱怨Scrum不好，搞得一点自己的时间都没有，太累了；</li> 
-</ul><p>在阅读完本章之后，我找到了一些答案。首先是明白了每个实践怎么去实施，原则是什么；然后知道如何说服团队成员看到它的价值，当然也包括如何去培训PM转变职能和思想。除此之外，正如作者所说：</p><blockquote> 
- <p>Scrum是揭露组织问题的简易框架。</p> 
-</blockquote><p>在组织运用Scrum框架之后能迅速暴露组织内的弱点，作为咨询顾问，利用这些弱点就找到了改进的起点。</p><p>此外， 本书的内容组织方式也值得推荐。首先，在每章背后都有“结论”一节，总结本章主要内容，起到梳理知识的作用；其次，在每章最后给出“推荐资源”，这比在全书最后给出更有效，因为读者可以迅速找到对应主题的资源延伸阅读。特别是对于本书第一部分的各章，这种方式十分有效。</p><p>最后，我还要强调任何实践都是招式。招式不是最重要的，重要的是内功心法，也就是背后的价值观和原则。对于Scrum来说即精益思想和敏捷价值观。值得庆幸的是，要想深入理解这些价值观，本书的前几章已经为我们开启了登堂之门。</p><div class="clearer-space"></div><br><br><br><br><br><br></body></html>
+<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>采访ServiceStack的项目领导Demis Bellot——第1部分</h3><p><a href="http://www.servicestack.net/">ServiceStack</a>是一个开源的、支持.NET与Mono平台的REST Web Services框架。InfoQ有幸与<a href="https://www.google.com/url?sa=t&amp;rct=j&amp;q=&amp;esrc=s&amp;source=web&amp;cd=1&amp;cad=rja&amp;ved=0CDEQFjAA&amp;url=https%3A%2F%2Ftwitter.com%2Fdemisbellot&amp;ei=gGy7UNvtJY3LrQeatoD4CQ&amp;usg=AFQjCNEU3uqXYfZ_lpYyk3nn-imiJxQs-g&amp;sig2=8G-nPhx88v7WlhAg8cD50g">Demis Bellot</a>深入地讨论了这个项目。在这篇两部分报道的第1部分中，我们主要谈论了ServiceStack项目建立的原动力，以及项目中的各种设计方案选择。</p>
+<p><b>InfoQ: </b><b>你是否认为微软对服务的实现方式有什么问题？ServiceStack</b><b>又是怎样解决这些问题的呢？</b></p>
+<p><b>Demis: </b>有一些问题是由于微软一直以来自认为良好的框架设计的方式所造成的常见问题，另一些问题的根源是由于微软的设计总是倾向于满足设计器优先的工具，并且试图为使用设计器作为向导的开发者提供一套熟悉的API，而这种设计倾向造成了一些副作用：</p>
+<ul> 
+ <li>在服务API设计时提倡用C#进行远程过程调用（RPC）的方法调用，这导致了非常细粒度（chatty）的设计，并且产生了许多特定于客户端的API。</li> 
+ <li>企图将脆弱的、臃肿的、低效并且过于复杂的SOAP以及WS-*序列化格式进行标准化。</li> 
+ <li>试图通过繁重的人为抽象、UI设计器以及各种大型工具达到简化终端用户开发的目的。</li> 
+ <li>为了尝试给开发者展现一个人为定制的服务端对象模型，创建了繁重的抽象API。</li> 
+ <li>试图通过一个共享的抽象对象模型将所有网络终结点（endpoint）统一起来。</li> 
+ <li>过度使用XML配置与代码生成。</li> 
+ <li>没有预先考虑可测试性与性能。</li> 
+</ul>
+<h2>RPC方法签名</h2>
+<p>由于微软过于追求为开发者提供一套熟悉的RPC API，并在VS.NET中提供丰富的UI工具（例如“添加服务引用”对话框）以保证上手的简易性，其代价就是推广了远程服务中的各种反模式，从长期来看将导致不必要的不协调与脆弱性。不幸的是，微软长期以来在其发布的每个web service框架中都持续使用这种设计方式，这种方式提倡创建RPC服务API的设计方式，造成了开发者在意识中将远程服务也当作本地方法一样调用。这种结果的害处是多方面的，远程服务意味着它包装了一个外部依赖，对它的调用要比本地方法慢上几百万倍，并且更容易受外界的影响而发生错误。将隐式的服务契约与服务端RPC方法签名绑定在一起，就意味着你的API服务契约和服务端的实现紧密耦合在一起了。由于没有规定一个定义良好的边界，导致了糟糕的关注分离，并且出现了将繁重的ORM数据模型通过网络返回给客户端的糟糕实践。从定义上来说，这种数据模型的关系型结构与循环式关系对于数据迁移对象（DTO）来说并非一种好的选择，它使调用可能偶尔会失败。这种方式还将隐式的服务契约与你的底层关系型数据库（RDBMS）数据模型耦合在一起，这样在进行修改时就会产生额外的冲突。而且远程API与调用它们的服务端网站是无连接的，而这些调用的方法在客户端代理部署后也会不断地演化。理想的框架应该能够提倡可演化的、灵活的API设计，以避免在服务端改变时产生运行时错误。</p>
+<p>这些有一张关于WCF提倡的细粒度的RPC API方式与ServiceStack所鼓励的基于消息的API方式的<a href="http://www.servicestack.net/files/slide-35.png">不同之处的对比图</a>。此外，这个<a href="http://www.servicestack.net/files/slide-34.png">用ServiceStack重写Web API的入门教程</a>的示例则展示了基于消息的API如何减少细粒度调用，增加了服务的可重用性。</p>
+<p>ServiceStack采用了Martin Fowler所推荐的远程服务最佳实践，因此避免了之前困扰着.NET web service开发者的很多潜在问题：</p>
+<div id="lowerFullwidthVCR"></div>
+<h2>远程门面</h2>
+<p>远程门面提倡使用基于消息的、粗粒度的批量调用接口。它能够将通信次数减至最低，并促进了创建更少但是可用性更好、并且支持版本化的服务接口。ServiceStack采取了<a href="https://github.com/ServiceStack/ServiceStack/wiki/Advantages-of-message-based-web-services">基于消息的设计</a>确保开发者始终创建粗粒度的API设计。</p>
+<h2>数据迁移对象（MSDN）</h2>
+<p>数据迁移对象要求使用特定用途的POCO以创建web service响应的数据格式。ServiceStack一直鼓励使用DTO，它本身与它的实现完全解耦，并且存在于一个没有外部依赖也不需要具体实现的程序集中。这种策略允许将定义服务端的服务类型共享给所有.NET客户端，因而提供了一个端到端的类型化API，并且无需使用代码生成。</p>
+<h2>网关（Gateway）（MSDN）</h2>
+<p>网关的作用是将所有服务端通信包装起来，隐藏在一个显式定义并且可重用的客户端网关之后。这种最佳实践和代码生成的代理（例如WCF）有所不同，后者将代码生成的类型与底层的服务客户端揉合在一起，使得生成结果难以模拟（mock）、测试以及替换为不同的实现，也经常导致对现有服务的改变会造成客户端代码的编译错误。这一点对ServiceStack来说很少会成为问题，因为它能够重用通用的服务客户端，因此在接口方面唯一需要改变的东西仅限于类型本身而已。并且由于基于消息的设计的优势，无论新增或移除任何功能都不会影响到现有的客户端。</p>
+<p>ServiceStack<a href="https://github.com/ServiceStack/ServiceStack/wiki/Clients-overview">在它的通用并且可重用的类型化.NET服务客户端</a>采用了网关模式。我们同时支持<a href="https://github.com/ServiceStack/ServiceStack/wiki/SilverlightServiceClient">Silverlight</a>、<a href="https://github.com/ServiceStack/ServiceStack/wiki/Javascript-client">JavaScript</a>、<a href="https://github.com/ServiceStack/ServiceStack/wiki/Dart-Client">Dart</a>甚至是<a href="https://github.com/ServiceStack/ServiceStack/wiki/Messaging-and-redis">MQ（消息队列）的客户端</a>。让所有<a href="https://github.com/ServiceStack/ServiceStack/wiki/Clients-overview">.NET服务客户端</a>都共享相同的接口，这使测试（通过注入或者写日志方式）变得简单，而且能够方便地在JSON、XML、JSV、MessagePack以及ProtoBuf等现有的客户端之间进行切换，而无需改动应用程序的代码。这就允许你在开发时使用类似于JSON这样便于调试的文本格式，随后在部署构建时切换为使用.NET上速度最快的二进制格式，例如<a href="https://github.com/ServiceStack/ServiceStack/wiki/MessagePack-Format">Message Pack</a>或<a href="https://github.com/ServiceStack/ServiceStack/wiki/Protobuf-format">ProtoBuf</a>，以降低数据传输量并实现最高的性能。</p>
+<h2>SOAP Web Services</h2>
+<p>以当前的情况来看，SOAP这种技术是不应该继续存在的，或者说应该仅仅限制在那些它还能够带来一些好处的地方使用。它的存在本身就是基于一个错误的假设，即为了实现数据的互交换性，必须表现出复杂性，要尽可能的严格与明确，这使得基于它的所有现实都必须实现一个复杂的schema以进行通信。而事实上，之与相对设计方式反而被证明是正确的，如果使用了类似于JSON、CVS、Protocol Buffers、MessagePack、及BSON等最小化并且灵活的格式，就会大大减少实现的障碍与复杂性，结果的生成会更快，互操作性与版本能力也会更强。</p>
+<p>我总是觉得这件事很难想象，尽管SOAP是建立在HTTP基础之上的，但它的设计者们在开发出WSDL时似乎完全没有吸取那些宝贵的经验。WSDL所引入的类型、消息、操作、端口、绑定以及服务这些概念真的能够取代HTTP中简单的URL标识符，以及Accept/Content-Type这些头信息吗？我觉得这一点也不难判断啊。</p>
+<p>虽然它名为SOAP（简单对象访问协议），但它既不简单，也不是什么对象访问协议，而且对于开发服务来说，它在许多方面都显示出它是个糟糕的选择，例如：</p>
+<ul> 
+ <li>臃肿而缓慢——通常各种尺寸与性能指标评比中都会作为反例出现。</li> 
+ <li>脆弱——对命名空间、字段、枚举或类型的改变都会造成运行时异常。</li> 
+ <li>在编程时难以使用——它本身不能够自然地映射为任何对象类型系统，在与应用程序代码进行转换时经常造成各种冲突。</li> 
+ <li>违反了HTTP——HTTP对于分布式访问提供了简单的谓词（verb），例如GET方法应该是无副作用的，因此可以被缓存在客户端以及中间服务器（例如代理）上。而由于每个SOAP请求都是一个HTTP POST方法，它就无法利用HTTP中最主要的一项好处。</li> 
+ <li>可访问性糟糕——一个SOAP消息在本质上就是为了传送定制的XML内容体与SOAP头的一个抽象容器。这种方式很糟糕，因为抽象消息格式需要花费你更多的精力去实现访问与序列化，同时为你的数据提供了弱类型的访问。而且它限制了只有能够收发SOAP消息的客户端才能够访问你的服务。由于它实在无法提供任何有意义的价值，许多Web API已经不再把响应封装在消息容器内，而是简单地将序列化的JSON与XML按原样输出，这种实践被称为POX/J（<a href="http://en.wikipedia.org/wiki/Plain_Old_XML">Plain Old XML</a>）。</li> 
+ <li>复杂 – SOAP、WSDLs、UDDI、WS-*带来了不必要的复杂性。最终恐怕只有这些规格说明的参与者（或者SOAP框架开发者）能够良好地理解整个WS-*系列技术，以及使用那些它们曾经打算正式采用的一些大型复杂框架去以最好的方式去实现它了。</li> 
+ <li>鼓励代码生成——由于它的复杂性，如果不使用SOAP框架及代码生成的代理，一般来说是难以手工实现SOAP的。</li> 
+</ul>
+<p>由于SOAP明显背离了服务的核心优势，所以它能够流行起来实在是一个令人吃惊的事实。我曾有许多年为政府项目与大型企业开发服务的经验，很不幸的是其中的许多项目都有一个必需实现的要求，即把他们的服务暴露为SOAP终结点。不过许多互联网公司与专注于创造价值的创业公司都不太会使用这门技术了，他们更多地选择创建简单的HTTP API，返回单纯的XML或者JSON格式的响应。</p>
+<p>虽然在多数情况下SOAP是一个糟糕的选择，但ServiceStack还是为你创建的服务提供了对SOAP终结点的支持，因为如今仍然有许多现存的企业系统只能够与SOAP终结点进行通信。这一点也和ServiceStack的核心目标相一致，即为你的服务提供最大化的功能性、可访问性以及连接方式。</p>
+<p>SOAP在设计上是一种非常脆弱的格式，如果某个服务稍稍偏离了WSDL，而客户端又是由这个WSDL生成的，那你通常就会看到运行时错误的发生。虽然在静态类型系统中，快速失败被视为一种优势，但对于远程服务来说就不是一种理想的方式了，因为你通常希望能够实现向前兼容与向后兼容，因此服务端的API改变不会破坏现有的客户端。这一目标显然被WCF忽略了，它提倡RPC方法签名、SOAP格式以及代码生成，这可以说是当今的所有web service实现技术中最为脆弱的组合了。</p>
+<h2>SOAP与Protocol Buffers</h2>
+<p>将SOAP与Google的<a href="http://code.google.com/p/protobuf/">Protocol Buffers</a>进行一下对比是很有趣的，它是Google推出的一种简单的接口描述语言（IDL），Google在其内部的所有RPC协议与文件格式中几乎都使用了该技术：</p>
+<ul> 
+ <li>它比SOAP小了好几倍，而速度要快上几个数量级</li> 
+ <li>它使用了一种简单的领域特定语言（DSL）来定义基于消息的API</li> 
+ <li>使用.proto文件来定义类型，对于编程语言来说在编程角度上非常适合</li> 
+ <li>包括了对多版本管理的实现</li> 
+ <li>为Python、Java与C++提供了原生的客户端与服务端绑定</li> 
+</ul>
+<p><a href="http://wiki.msgpack.org/display/MSGPACK/Design+of+RPC">MessagePack RPC</a>以及用于开发Facebook的<a href="http://thrift.apache.org/">Apache Thrift</a>是另外两个流行的开源选择，它们都提供了快速的，简单的IDL，并且为多数主流平台提供了绑定。</p>
+<p>虽然是由不同的公司开发，但以上每个IDL都比SOAP更简单、快速并且易于使用。从SOAP的规格说明书的厚度来看，它应该是由委员会所开发的，但显然完全没有考虑过性能，大小以及易于实现。</p>
+<h2>JSON</h2>
+<p>虽然在大小与性能方面有优势，但Protocol Buffers与MessagePack都有一个问题，即它们使用了二进制格式。由于基于文本的格式与协议更易于创建、维护及调试，它们经常成为整个开放web的更流行的选择。近年来，在基于文本的数据互交换格式上的赢家显而易见是JSON，这是一个简单的、紧凑的自描述文本格式，它的主要优势是能够在所有支持JavaScript的浏览器上进行直接应用，只需使用浏览器内置的“eval()”语句就能够立即将其转换为JavaScript对象了。由于它的流行性，主流浏览器如今都加入了对JSON的原生支持，它们为eval()方法提供了一个更安全的替代方案，可以在老浏览器上提供一个基于<a href="https://github.com/douglascrockford/JSON-js/blob/master/json2.js">JavaScript的备选实现方式</a>。如果想更多的了解JSON以及它的好处，我推荐你去看看Douglas Crockford这个有趣的演讲——<a href="http://www.infoq.com/presentations/Heretical-Open-Source">“Heresy &amp; Heretical Open Source”</a>。</p>
+<p>由于它的普遍性、功能多样并且易于使用，JSON在多数平台上都得到了原生的支持，并且很快地成为了开发Web API的首选数据格式，尤其是使用在Ajax客户端的时候。</p>
+<p>从我自身的经验来看，我认为JSON对于实现服务是一种优秀的格式。它是一种更精简、灵活、容忍度高并且适应性更强的格式，并且它易于创建、调用以及调试，比起SOAP减少了冲突并提高了生产力。当我们开始ServiceStack项目时，JSON的唯一问题就是.NET Framework自带的序列化器比XML序列化器还要慢。出于对性能上的严谨态度，我们并不愿意接受这点不足，因此我们发布了我们自己实现的序列化器，<a href="http://www.servicestack.net/mythz_blog/?p=344">它比任何其它.NET JSON序列化器都要快上3倍以上</a>，并且比.NET Framework中的任何序列化器（包括二进制序列化器）都要快上2.5倍以上。</p>
+<p>继承了JSON保持体积最小的精神，我们也开发了<a href="http://www.servicestack.net/mythz_blog/?p=176">JSV格式</a>，它类似于JSON，但使用了CVS风格的转义功能，使得它比JSON略微加快，更精简并且更便于人类阅读，它不仅能够用于.NET与.NET服务的交互，而且能够用以解析查询字符串，<a href="https://github.com/ServiceStack/ServiceStack/wiki/Serialization-deserialization">在ServiceStack的GET请求中是能够允许传递复杂的对象图的</a>。</p>
+<h2>ServiceStack与WCF方式</h2>
+<p>虽然WCF与ServiceStack在实现方式上是完全不同的服务框架，但它们却有着非常类似的目标。ServiceStack在创建服务上采取了一种非常面向服务的方式，它的设计经过了做好，能够以最大程度重用的方式达到服务的实现。通过代码优先、类型化设计的方式，我们能够为你的服务提供更强大的智能推断，以允许你自动地生成XSD、WSDL文件，自动生成元数据页，并且自动暴露预定义的路径。每个新加入的功能、特性、终结点与Content-Type都是围绕着你的现有模型创建的，并且不需要任何额外的操作以及对应用程序代码的任何改动就可以立即获得新功能。我们将这种方式理解为从一个代码优先的模型开始，作为最权威的部分，随后再将其功能暴露出来。</p>
+<p>WCF的目标也是提供一个服务框架，以支持在多种终结点上运行服务，但他们站在一个不同的视角，并且为所有网络终结点提供了一个统一的抽象，你必须对服务进行配置以绑定到终结点。作为WCF的主要目标之一，他们是少数几个在最终实现中对WS-*系列技术提供了深入支持的框架。</p>
+<p>我们最终的目标都是提供一个易于使用的服务框架，我们只是在如何取得简便性上有着完全不同的想法。</p>
+<h2>简便性与处理复杂性</h2>
+<p>WCF看起来比较喜欢繁重的抽象，用复杂的运行时XML配置进行管理，以及用大型工具为开发者提供端到端的连接能力。这个抽象层包含了许多复杂的技术：经过抽象的人工服务端对象模型很复杂、配置很复杂、WSDL很复杂、SOAP/WS-*也很复杂。最终结果是，为了对这些主题有一个良好的理解，对每个主题都需要看好几本书才行。</p>
+<h2>抽象</h2>
+<p>有一种陈旧的观念认为处理复杂性的解决之道就是添加更高层的抽象。这种方式的问题在于，只有这种抽象的设计很完美，它才能够显出效果。（例如编程语言比机器代码更合适）否则当你遇到了一些预料之外的行为，或者是配置、整合与互操作性上的问题是，你需要去理解在这些抽象层之下到底发生了什么。在这种情况中添加更多的抽象实际上只会增加开发者必须去熟悉的概念，以及当他们针对高级别抽象层进行开发时额外的认知。这也使得理解你的代码库更加困难，因为你必须理解每一个之下都发生了些什么。WCF的服务端对象模型是全新的、并且不够自然，这进一步放大了问题，新的开发者们对此一无所知，因为这种模型是独一无二的，并且它完全没有对服务或HTTP领域中的概念知识作出任何指导。因此当开发者们之后转而使用最好的服务框架时，他们从WCF中学到的东西完全没有用武之地。与其投入时间去阅读那些如何使用WCF的书籍，还不如把时间花在学习HTTP与TCP/IP上，因为即使你转而使用其它web service框架，这些知识依然能起到作用，它们是完全独立于编程语言或平台的。</p>
+<p>从技术实现的层面来说，过多的抽象会导致不必要的性能负担，并且这种性能问题很难优化。因为当你尝试直接与底层API打交道时，这些抽象会产生阻碍以及各种强制性的阻力。而我们的方式是只在绝对必要时才会添加抽象，例如我们的<a href="https://github.com/ServiceStack/ServiceStack/blob/master/src/ServiceStack.Interfaces/ServiceHost/IHttpRequest.cs">IHttpRequest</a>与<a href="https://github.com/ServiceStack/ServiceStack/blob/master/src/ServiceStack.Interfaces/ServiceHost/IHttpResponse.cs">IHttpResponse</a>封装对于为ASP.NET与自托管的HttpListener提供一个通用的API就是必需的。相比起添加抽象层的方式，我们更倾向于添加一些非强制性的特性，它们只是将一些底层接口与一些常见功能包装起来，以实现DRY。这种方式带来的好处就是允许终端用户自由地调用各种方式，并在他们自己开发的类库中加入自己定义的功能增强，以促进他们实现精益的、DRY以及可读性良好的代码库。暴露底层API能够确保我们保持框架的灵活性，用户可以通过多种方式进行访问而得已完整地控制系统的输出，也因为用户可以<a href="https://github.com/ServiceStack/ServiceStack/wiki/Customize-HTTP-Responses">定制返回的响应</a>，因此他们不会受到任何限制，而得已控制返回的每一个字节。</p>
+<h2>WCF的抽象</h2>
+<p>WCF为服务采取了一种统一的方式，它促进所支持的所有终结点都<a href="http://xkcd.com/927/">标准化为一个单一的人为抽象模型</a>。这种方式也遇到了抽象的通用原则所产生的副作用，即一个统一的抽象模型要为每一种试图抽象化的实现承担所有的复杂性，因而它们只能够处理各种终结点的特性的交集部分，而且为每个结终点实现最低程度的通用功能。结果就是生成了一个不完整的外部API，并且由于抽象的存在阻碍了对底层终结点的访问，使得这种API的可访问性与可配置能力都大大削弱了。</p>
+<p>要彻底了解WCF的功能需要强大的技术能力，需要你投入巨大的精力研究各种技术资源。但本质上来看这种精力投入是一种浪费行为，因为WCF与其它平台上的一些采用了标准方式开发的框架相比，生产力与功能都有所欠缺。对于终端用户来说，哪怕是为了稍稍掌握一些WCF的使用经验，也需要投入大得多的精力。出于以上原因，我不希望看到有人去使用类似于WCF之类的框架，或者是它那种统一的终结点的抽象方式。由于它的复杂性与庞大的技术实现细节，我也很怀疑它是否能够保持演化，以适应新的开发范式或是服务开发模式。我怀疑WCF会遭受到与WebForms相同的命运，退化为一个过时的技术，最终被微软下一代框架取而代之。</p>
+<p>除了现有的REST、SOAP、MQ以及RCON之外，我们也计划为ServiceStack加入更多的终结点。但由于我们采取了一种基于约定的方式，我们会避免使用繁重的配置。我们所采用的基于消息的设计方式会避免使用大型工具，并简化必须实现的外部接口部分。<a href="https://github.com/ServiceStack/ServiceStack/wiki/New-Api">首先从C#开始</a>，逐渐移植其它语言，这使得终端用户可以立即使用新功能，而无需任何额外的投入。我们的<a href="https://github.com/ServiceStack/ServiceStack/wiki/Architecture-overview">松耦合架构</a>不存在统一的抽象模型，这可以允许我们加入互不冲突的新终结点与特性，而不会为现有的组件带来强制的复杂性。</p>
+<p>总而言之，我们提供了一个特性完整、性能更好并且更易于理解的服务框架，它的代码库也更加精益和灵活，并且使用它进行开发和维护所需的技术投入要小的多。</p>
+<h2>繁重的配置</h2>
+<p>WCF所推崇的另一个概念是XML配置，而这也是我们无法苟同的，它妨碍了测试，并且需要投入更多精力进行维护。只有你的应用程序中真正可配置的部分才应该放在你的应用配置文件中，定义及组织你的服务依赖应该交给代码去做，这种方式的额外优点在于它便于调试，而且可以在编译时静态地进行验证。WCF需要大量的配置，<a href="https://github.com/ServiceStack/ServiceStack.Examples/blob/master/src/Backbone.Todos/Global.asax.cs">在ServiceStack中创建一个完整的应用程序</a>所需的代码量比起一个的WCF Service所需的XML WCF 配置还要小。如果把配置信息放在IOC（控制反转）这一怪，那代码会更干净与整洁，因为它直接就可以引用你所需的特性的.NET API了。</p>
+<h2>大型工具</h2>
+<p>大型工具的问题在于，当你打算在其中尝试些新功能，或者是某些不在其设计初衷里的功能时，它就无能为力了。也就是说你成为了这个工具的奴隶，只能提供一些它所支持的功能。而且框架一旦进行了重写，大型工具就无法继续使用，因为它们所提倡的繁重的、复杂的代码库是很难演化或者是重构的。我推测这就是微软为什么总是重写新的服务框架，而不是改进现有的框架的原因。也是为什么Web API不能够重用MVC现有的抽象方式，并且不支持SOAP的缘故，尽管它们都采用了相同的RPC API设计方式，并且它的自托管功能选项也是基于WCF创建的。</p>
+<p>由于ServiceStack是基于ASP.NET的最底层创建的，因此它提供了<a href="http://www.servicestack.net/mvc-powerpack/">对ASP.NET MVC良好的集成能力</a>，也能够方便地重用MVC中许多组件现有的功能实现，例如<a href="https://github.com/ServiceStack/ServiceStack/wiki/Authentication-and-authorization">Authentication filter attribute</a>、<a href="https://github.com/ServiceStack/ServiceStack/wiki/Caching">Caching</a>与<a href="https://github.com/ServiceStack/ServiceStack/wiki/Sessions">Session</a> provider等等。你也可以<a href="https://github.com/ServiceStack/ServiceStack.UseCases/blob/master/CustomAuthenticationMvc/Controllers/HomeController.cs#L35-L37">在MVC中方便地调用ServiceStack服务</a>，比起C#方法直接调用只是稍稍麻烦一点。</p>
+<h2>ServiceStack的复杂性</h2>
+<p>ServiceStack与WCF相反，它看起来要简单许多。例如<a href="https://github.com/ServiceStack/ServiceStack/wiki/Architecture-overview">ServiceStack的架构只要一页纸就能画下</a>。<a href="http://www.servicestack.net/ServiceStack.Hello/#rootpath">启用它只需在web.config中加入一行</a>，告诉ASP.NET将所有请求转发给ServiceStack即可。</p>
+<h2>约定与人为的复杂性</h2>
+<p>ServiceStack与微软开发类库与框架所采用的方式，其观念上的最大不同或许就是在如何最好地处理复杂性这一点上了。微软倾向于明确性，XML方式的可配置能力，引入繁重的抽象层（为了前瞻性而支持所有潜在的用例），依赖于抽象层将简单的面向用户的门面经过改头换面后暴露出去，为了方便使用设计器工具及新手开发者进行优化。微软的主要动力是为开发者提供一个熟悉的编程模型，并且通过使用大型工具来简化模型的上手难度。从WebForms中就可以看出这一点，它为WinForm开发者提供了一个基于事件的编程模型来开发网站，WCF则让开发者使用传统的C#方法与接口方式去创建远程服务。它们采取的方式通常会导致完成功能需要投入大量的技术精力去研究巨大的代码库。</p>
+<p>与之相反，我们将大型的代码库当作<a href="http://steve-yegge.blogspot.com/2007/12/codes-worst-enemy.html">代码的最大敌人</a>，并且避免引入人为的复杂性，这是我们的主要目标之一。比方说我们强烈反对引入新概念、抽象或编程模型。我们崇尚小巧的低级别接口，它与底层领域1对1进行映射，以实现灵活性的最大化，减少冲突，并且在需要进一步定制化时将转换的复杂性降至最低。通过可重用的工具类与扩展方法保证了DRY与高级别的功能。我们采取一种代码优先的开发模型，通过代码去捕捉用户意愿的本质，这促进了一种更优雅、不妥协的设计方式，避免了使用设计器工具时所带来的转换的复杂性。我们的所有类库都使用POCO，以获得最大的可重用性，并且我们内置的转换器可以简化在领域特定模型中进行转换所需的精力。</p>
+<p>我们为用户展现了一种基于消息设计的最佳实践，为从头开始开发的服务提供了一种最优的方式。服务就是普通的C#类，无需关注任何终结点的问题，因为这种依赖是可以自动解析的，这种方式会促使用户采用良好的代码实践。</p>
+<p>约定以及减少对外部知识的了解是我们处理复杂性最好的武器。相比明确的指定实现方式，更好的办法是提供一个基于约定的默认行为，使它按预计的方式运行。这就让用户不必一定要学习你的框架API，因为我们可以假定预计的标准行为的结果，并允许我们随时提供更多的能力，比方说，它能够自动支持外部所调用的所有内置终结点与格式。你也可以让你的服务<a href="https://github.com/ServiceStack/ServiceStack/wiki/Service-return-types">返回任意的响应</a>，它会自动序列化为所请求的Content-Type。</p>
+<h2>达成简单性</h2>
+<p>我们相信，达成简单性的最好方式就是在第一时间避免各种复杂性，我们采取了以下方式：</p>
+<ul> 
+ <li>去除了各种不必要的部分与堆积的抽象——而是直接基于ASP.NET基本的IHttpHandler接口所创建。</li> 
+ <li>约定胜于配置——所有实现了IService的服务都会被自动加载，并且随时使用。</li> 
+ <li>合理的默认表现——ServiceStack可直接被外部调用，无需进一步的配置。</li> 
+ <li>支持全部特性——所有内置的格式与终结点都默认可用，预定义的约定路由也自动可用，但也可以通过配置关掉它。</li> 
+ <li>自动探索——ServiceStack包含了一个元数据页面，列举了全部的服务、所处的路由、XSD及WSDL等等。</li> 
+ <li>未引入新的构造函数——ASP.NET开发者能够立即了解如何定制化HTTP请求与响应。</li> 
+ <li>以C#语言开发——以C#语言开发，并且以无冲突的方式添加新特性，因此在普通的开发过程中就能够立即应用这些新特性了。</li> 
+ <li>追求生产力——在ServiceStack中的每个请求DTO都必须是唯一的，它允许你在调用服务时只提供请求DTO的名称与内容就可以了。</li> 
+ <li>围绕POCO开发功能——你可以在ServiceStack中使用同一个POCO作为DTO、OrmLite、Data Model、Cache、Session以及Config等等。</li> 
+ <li>使用基于消息的设计——比起RPC方法签名，绑定至一个单一的模型更易于实现和推断。</li> 
+ <li>灵活——提供一系列<a href="https://github.com/ServiceStack/ServiceStack/wiki/Order-of-Operations">Custom Filter以及可以插入实现的事件钩子</a>，以此定制Request与Response管道中每一阶段的行为。</li> 
+</ul>
+<h2>避免大型工具与代码生成</h2>
+<p>我们并不喜欢代码生成，因为我们相信它为项目带来了不必要的麻烦，我们也反对在开发工作的核心部分依赖于任何大型工具。</p>
+<p>由于你的ServiceStack服务的服务契约在设计上是由你的请求与响应DTO维护的，我们就能够提供一个类型化的端到端的API，只需要你用来创建服务的那些类型以及那些通用的、可重用的.NET客户端就可以了。这允许我们为任何.NET上的服务框架提供一个最简洁的、类型化的以及端到端的API。</p>
+<h2>可测试性</h2>
+<p>基于WCF的设计方式以及它对配置的严重依赖，看起来WCF在设计时完全没有考虑到可测试性。而这一点是ServiceStack的核心目标之一，我们默认提供了一个内置的（并且可重写的）IOC容器，鼓励在一开始就遵循良好的开发实践。开发一个服务只需实现一个不包括任何方法的IService接口，或者从其它现有的Service类、或ServiceBase类继承即可，这些类都是可独立测试的，并且完全可以mock。这一系列努力的成果就是，你所实现的<a href="https://github.com/ServiceStack/ServiceStack/blob/master/tests/ServiceStack.WebHost.IntegrationTests/Tests/WebServicesTests.cs">单元测试可以用作XML、JSON、JSV以及SOAP的集成测试。</a>我们所提供的自托管HttpListener类型使得进行内存中的集成测试非常方便。</p>
+<h2>性能</h2>
+<p>性能是ServiceStack的首要目标之一，我们<a href="https://github.com/mythz/ScalingDotNET">将性能视为最重要的特性</a>。基于消息的设计提倡更少的网络调用，我们也很小心地保证只暴露那些运行快速的面向用户的API。一般情况下我们不接受来自外部的贡献代码，因为它们会包含速度较慢的代码。我们对自己的实现是全力以赴的，我们没有使用任何运行时的反射或者正规表达式匹配，而是采用其它更快的解决方案。</p>
+<h2>最快的序列化格式</h2>
+<p>我们开发并维护着<a href="https://github.com/ServiceStack/ServiceStack.Text">.NET上最快的JSON、JSV以及CSV文本序列化器</a>，同时允许以<a href="https://github.com/ServiceStack/ServiceStack/wiki/Plugins">插件</a>的方式使用<a href="https://github.com/ServiceStack/ServiceStack/wiki/MessagePack-Format">Message Pack</a>与<a href="https://github.com/ServiceStack/ServiceStack/wiki/Protobuf-format">Protocol Buffers</a>这两个.NET上最快的二进制序列化器。</p>
+<h2>丰富的Caching Provider</h2>
+<p>由于缓存是创建高性能服务不可或缺的技术，我们提供了一个丰富的<a href="https://github.com/ServiceStack/ServiceStack/wiki/Caching">Caching Provider模型</a>，包含了对各种内存缓存、Redis、Memcached、Azure以及Amazon后台的实现。缓存API会保证使用最优化的格式，比方说，如果客户端支持，我们会将压缩后的JSON输出缓存起来，并在之后发生调用时直接将缓存中的内容输出到响应流中，这就保证了托管代码能产生最快的响应速度。</p>
+<h2>修复了.NET中的性能问题</h2>
+<p>每次我们找出微软的类库中的瓶颈时，我们都会使用更快速的实现去替代它。我们已经实现了自己的<a href="http://www.servicestack.net/mythz_blog/?p=344">JSON序列化器</a>，作为插件的Gzip和Deflate压缩类库，并且提供了自己的<a href="https://github.com/ServiceStack/ServiceStack/wiki/Sessions">Session实现</a>，它能够与以上任意一种Caching provider相配合使用，<a href="http://stackoverflow.com/q/3629709/85785">它的出现也避免了困扰ASP.NET开发者已久的严重性能问题</a>。</p>
+<h2>为最快的分布式NoSQL数据库提供最好的客户端</h2>
+<p>出于我们对开发高性能服务的技术追求，我们为<a href="http://redis.io/topics/benchmarks">最快的分布式NoSQL数据库Redis</a>开发并维护着一个<a href="https://github.com/ServiceStack/ServiceStack.Redis">.NET上最好的C# Redis客户端</a>。</p>
+<h2>关于受访者</h2>
+<p><img _p="true" _href="img://null" src="http://infoqstatic.com/resource/articles/interview-servicestack/zh/resources/1111010.jpg" style="float: left; margin-right: 10px" alt="" /><b>Demis Bellot</b>是来自Stack Exchange的一位开发者，他维护着StackOverflow Careers 2.0的后台网站以及基于ServiceStack创建的MQ服务。他同时也是ServiceStack的创始人以及项目领导。</p>
+<div style="clear:both"></div>
+<p><strong>查看英文原文：</strong><a href="http://www.infoq.com/articles/interview-servicestack">Interview With Demis Bellot, Project Lead of ServiceStack - Part 1</a></p><br><br><br><br><br><br></body></html>

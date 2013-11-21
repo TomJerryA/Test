@@ -1,54 +1,42 @@
-<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>百度技术沙龙第37期回顾：MySQL优化实践（含资料下载）</h3><p>在4月20日由<a href="http://weibo.com/baidutech">@百度</a>主办、<a href="http://e.weibo.com/infoqchina">@InfoQ</a>负责策划组织和实施的<a href="http://www.infoq.com/cn/zones/baidu-salon/;jsessionid=DF38FDEBFF1D73EB55EE71C7FF3D272F">第37期百度技术沙龙</a>活动上，百度运维部DBA王剑英和人人网数据中心技术副总监刘启荣分享了各自的MySQL优化实践经验，话题涉及“SEQDB——高性能KV型MySQL存储引擎”，以及“MySQL运维感悟”等。本文将对他们各自的分享做下简单的回顾，同时提供相关资料的下载。</p> 
-<p><strong>主题一：SEQDB——高性能KV型MySQL存储引擎 （<a href="http://pan.baidu.com/share/link?shareid=572641&amp;uk=3223972836">下载讲稿</a>）</strong></p> 
-<p>百度运维部DBA王剑英介绍了他们的技术选型过程，他首先列举了三个不同的业务场景，并分析了使用Innodb的解决方案。通过对于Innbodb的测试，他发现Innodb不能很好的满足百度的业务需求，主要是存在如下的问题：</p> 
-<ol> 
- <li>数据量超过内存，IO bound时，依赖IOPS。</li> 
- <li>Innodb不能发挥高性能IO设备的潜能。</li> 
- <li>Innodb不能达到100ms以下99.99%的SLA，达不到业务场景的要求。</li> 
-</ol> 
-<p>为了完全发挥SSD的潜能，使得QPS&gt;=IOPS、低延迟，并且实现SQL接口、经验的复用，他们提出了如下的两套解决方案：</p> 
-<p><img width="500px" src="http://www.infoq.com/resource/news/2013/04/baidu-salon37-summary/zh/resources/1.png;jsessionid=DF38FDEBFF1D73EB55EE71C7FF3D272F" alt="" _href="img://1.png" _p="true" /></p> 
-<p>经过了一系列的对比，他们选择写一套自己的引擎。同时，为了提高面向业务的性能实现，他们选择在功能上放弃join、range、group by等复杂的查询功能，不做全功能引擎，简化复杂度，只支持基于主键的增删改查。</p> 
-<p>百度的Sequentialdb总体构架如下：</p> 
-<p><img width="500px" src="http://www.infoq.com/resource/news/2013/04/baidu-salon37-summary/zh/resources/2.png;jsessionid=DF38FDEBFF1D73EB55EE71C7FF3D272F" alt="" _href="img://2.png" _p="true" /></p> 
-<p>随后他从细节上分享了百度对于SEQDB的设计细节，包括应用的访问模型、索引结构、数据查找、垃圾回收、元信息位图和BLOCK管理等实现。</p> 
-<p>最后他分享了其他经验：</p> 
-<ol> 
- <li>对于索引常驻内存安全性，建议使用一主多从和备库的结构，内存的安全性是足够的，索引放在磁盘上访问成本太高；</li> 
- <li>SSD损坏的月概率是0.1%以下，远低于HDD，如果磁盘损坏则无法恢复；</li> 
- <li>时延敏感型应用，瓶颈会出现在写binlog上，建议调整sync_binlog，将binlog迁移到SSD上；</li> 
- <li>毫秒级别超时API满足业务的延时需求</li> 
-</ol> 
-<p><strong>主题二：MySQL运维感悟（<a href="http://pan.baidu.com/share/link?shareid=572668&amp;uk=3223972836">下载讲稿</a>）</strong></p> 
-<p>人人网数据中心技术副总监刘启荣的介绍这9年来运维MySQL的一些经验和心得：包括MySQL数据从单台演化到一个集群的过程中，所遇到过的一些问题以及所采用的解决方案、在数据库管理过程中认知的转换与变化、在整体性能优化中的各方面的取舍等。</p> 
-<p>他根据数据库机器规模的不同阶段分享了具体的实践经验：</p> 
-<ol> 
- <li> <p>在一个台服务器的阶段：备份</p> 大家一般处于应用的初期，此时性能不是最重要的，要做好备份；</li> 
- <li> <p>在两台服务器的阶段：监控</p> 这个阶段一般都会建立主/从的数据库架构，由于宕机造成数据差异、网络问题、从库空间不足或者主库binlog丢失都会导致同步的问题。为了解决这个问题，需要做好监控，开启sql_thread、io_thread，并且延时主从备份。</li> 
- <li> <p>在十台服务器的阶段：散列</p> 如果面临频繁写操作，突然宕机的状况将会增多，这个时候需要对数据库做散列。</li> 
- <li> <p>在一百台服务器的阶段：Proxy Cluster</p> HA的可靠性将会降低，需要使用proxy cluster、HA、备份、在线的DDL同时使用；</li> 
- <li> <p>在一千台服务器的阶段：系统化</p> DBA开始远离业务，部门之间的协作需求也越来越多，然而由于“人永远不靠谱”，需要标准化、自动化、统一化和流程化来保障运营需要。</li> 
-</ol> 
-<p><strong>百度技术沙龙三周年</strong></p> 
-<p>本期是百度技术“三周年”，沙龙的第一期讲师刘洪清、LAMP人社区的潘少宁、往期讲师王集鹄等嘉宾也来到现场与参会者一起为沙龙庆生。</p> 
-<p><strong>Open Space（开放式讨论环节）</strong></p> 
-<p>为了促进参会者与我们每期的嘉宾以及讲师近距离交流，深入探讨在演讲过程中的疑问，本次活动依然设置了Open Space（开放式讨论）环节。</p> 
-<p>在Open Space的总结环节，几位话题小组长分别对讨论的内容进行了总结。</p> 
-<blockquote> 
- <p>王剑英：我们针对不同的应用场景讨论了MySQL与不同引擎的结合方案；</p> 
- <p>刘启荣：从数据库优化的角度，对数据库选型、引擎、拆分等方面来分享了大家的经验；</p> 
- <p>DSpark：主要是和几个朋友讨论了Python和大数据使用相关的内容；</p> 
- <p>王集鹄：关注了PC和移动端感应器的区别，同时比较了Native和HTML5 App的用户体验的差异，还讨论了前端CSS的模块话处理方案；</p> 
- <p>&nbsp;</p> 
-</blockquote> 
-<p>会后，一些参会者也通过新浪微博分享了他们的参会感受：</p> 
-<blockquote> 
- <p><a href="http://weibo.com/wxianfeng">wxianfeng</a>：好多关键词啊：TPS、 QPS、SSD、HDD、IOPS、RAID 5、INNODB、handler socket、SeqDB、 binlog、位图、Master-Slave、snapshot……另外 @四喜和丸子 的演讲好搞笑啊, 祝百度技术沙龙越办越好.</p> 
- <p><a href="http://weibo.com/u/1365616043">太微左桓</a>：昨天的百度技术沙龙没听懂多少东西，不过惊喜却是遇到了王集鹄老师，一轮OpenSpace，收获是巨大的。很庆幸没有中途离场，现在想起来，还是忍不住的亢奋。</p> 
- <p><a href="http://weibo.com/leakingfore">快盘-符小钻</a>： 百度技术沙龙听 @四喜和丸子 讲 mysql 维护，苦逼地发现百实例级别的问题我们都碰到了。再往后，把完善的监控和自动化部署做好，千实例级别完全没有问题。再深入一些，可以根据我们业务的需求做深度定制的存储引擎。抑或是通用的数据分区方案。</p> 
- <p><a href="http://weibo.com/u/1868089925">harry小淫既天才</a>：从上年刚进百度实习就开始参加了百度技术沙龙，到现在有好几期了。很喜欢这种开放自由交流的感觉，也开阔了视眼。今天是小度沙龙三周年，祝小龙龙越办越好，影响越来越大。</p> 
- <p><a href="http://weibo.com/jannio">Artisan_code</a>：人很不靠谱，靠技术来约束。百度技术沙龙，人之出，性本懒。人的自制力是不靠谱的，需要周围的环境来约束，想腐败都不行。</p> 
-</blockquote> 
-<p>有关百度技术沙龙的更多信息，可以通过新浪微博关注<a href="http://weibo.com/baidutech">@百度技术沙龙</a>，或者关注InfoQ官方微信：infoqchina，InfoQ上也总结了过往36期所有百度技术沙龙的演讲视频和资料等，感兴趣的读者可以<a href="http://www.infoq.com/cn/zones/baidu-salon/;jsessionid=DF38FDEBFF1D73EB55EE71C7FF3D272F">直接浏览内容</a>。</p> 
-<p><strong>特别提示：</strong>第38期百度技术沙龙将在5月25日，在<strong>深圳</strong>举行，欢迎关注<a href="http://weibo.com/infoqchina">@InfoQ</a>、<a href="http://weibo.com/baidutech">@百度技术沙龙</a>获取后续的轰动信息。</p> 
-<p id="lastElm"></p><br><br><br><br><br><br></body></html>
+<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>在软件开发中应用80：20原则</h3><p><a href="http://www.blogger.com/profile/17371102366836131341">Jim Bird</a>是一位经验丰富的软件开发经理、项目经理与CTO，专注于软件开发与维护中疑难问题的解决、软件质量管理与安全领域。在过去的15年间，Jim曾管理过团队建设与高性能的财务系统。他的主要兴趣在于如何帮助小团队更有效地构建真正的软件：高质量、安全、高性能且易使用。近日，Jim<a href="http://swreflections.blogspot.ca/">撰文</a>谈到了如何在软件开发中应用流行的<a href="http://www.informit.com/articles/article.aspx?p=1984066">80：20原则</a>，颇具代表意义。</p>
+<p>很多经理都不想陷入太多的思考当中，他们喜欢简单的原则，快速且直接的审视问题的方式并能找准问题的方向。越简单，越好。其中最为有效的一个原则就是<a href="http://en.wikipedia.org/wiki/Pareto_principle">80：20原则</a>：</p>
+<blockquote>
+  80%的效果是由20%的原因导致的，或者是80%的结果来自于20%的努力。 
+</blockquote>
+<p>这是收益递减的另一方面：相对于做得越多，得到越少来说，你可以实现做得少但得到多的结果，方式就是通过更加聪明而非更加努力的工作。</p>
+<p>不用太费力你就能发现在软件开发中80：20原则的用武之地。比如说，80%的性能改进是通过优化20%的代码实现的，虽然在性能优化这个领域实际的比率可能更加接近于90：10，甚至是99：1。不过，无论是80：20、90：10还是70：30，这个原则本质上没什么差别。</p>
+<h2>80：20，谁使用什么，你需要交付的到底是什么</h2>
+<p>在软件开发中，另一个众所周知的80：20原则就是80%的用户只使用了20%的特性。这来自于Standish Group在2002年的一项<a href="http://luuduong.com/blog/archive/2009/03/04/applying-the-quot8020-rulequot-with-the-standish-groups-software-usage.aspx">研究成果</a>，他们发现：</p>
+<ul> 
+ <li>45%的特性是从来没有被使用过的</li> 
+ <li>19%的特性很少为人使用</li> 
+ <li>16%的特性有时会被使用</li> 
+ <li>只有20%的特性是被频繁使用的</li> 
+</ul>
+<p>这个发现对<a href="http://pragprog.com/magazines/2011-02/way-of-the-agile-warrior">敏捷</a>与精益开发产生了深远的影响，它鼓励人们将精力放在<a href="http://www.jamesshore.com/Articles/Business/Software%20Profitability%20Newsletter/Phased%20Releases.html">最小的特性集</a>或是最小的产品上，即便在大规模的企业项目中亦如此。相对于设计与规划大量的特性来说，定义重要且有用的特性才是正确之道：<a href="http://www.romanpichler.com/blog/agile-product-innovation/the-vision-the-product-backlog-and-the-minimal-viable-product/">定义好特性的优先级</a>，然后以稳健的步伐尽快交付。</p>
+<p>Standish Group最新的研究成果表明缩小思考范围，交付更少的特性是促使软件项目成功的关键之所在。有超过70%的小项目是成功交付的，而很多大型项目在延迟交付、预算超支以及漏掉关键特性上的可能性要超出小项目的两倍之多。</p>
+<h2>80：20，Bug与测试</h2>
+<p>代码质量、Bug与测试是另一个适用于80：20原则的领域：</p>
+<ul> 
+ <li>80%的Bug是由20%的代码造成的</li> 
+ <li>90%的停机是由10%（甚至更少）的缺陷造成的</li> 
+</ul>
+<p>Bug总是集中爆发在某几部分代码中，特别是严重的Bug；而大多数严重的问题都是由少数几个Bug导致的。</p>
+<blockquote>
+ <a href="http://www.crn.com/news/security/18821726/microsofts-ceo-80-20-rule-applies-to-bugs-not-just-features.htm">Windows与Office中80%的错误与崩溃是由检测出的20%的Bug造成的</a>。
+</blockquote>
+<p>理解大多数严重的Bug发生在何处，为什么会在那里，该如何去做才能防止这些Bug的产生，你应该将时间花在这方面。还有些研究发现你所编写的一半代码是没有Bug的，而大多数Bug都出现在10—20%的代码中间，通常来说，这10—20%的代码是经常被改动的代码。每次发现代码中的Bug时就表明还有更多Bug需要修复。你发现的Bug越多，剩下的Bug也就越多，这是一种恶性循环。每次碰到那些高风险代码时，甚至在你尝试修复一些问题时，那么很有可能你会将事情搞得越来越糟而不是越来越好：当开发者修复容易出错的代码中的一个Bug时，有20%的机会他会引入新的Bug，即所谓的副作用。</p>
+<p>大多数容易出错的模块都是非常复杂的，也是很难理解的，因此也是难以修复的。有些Bug要比其他Bug更难以修复。有时是因为代码质量很差、有时是因为问题难以重现和调试、有时是因为他们隐藏得更深。</p>
+<h2>80：20，哪些代码被修改了，修改频率是多少</h2>
+<p>Michael Feathers发现80：20原则也适用于代码随时间变化的频率：</p>
+<blockquote>
+ 80%的修改发生在20%的代码上
+</blockquote>
+<p>很多代码一旦写完之后就再也不会被修改了，比如说静态与标准化的接口、基本的配置等等。还有些代码一直都在发生着变化：20%的特性花了80%的时间，他们经常会根据需求的变化而发生变化；需要不断优化的核心代码、还有些代码会经常发生变化是因为出现了太多的Bug。</p>
+<p>向已有的方法添加代码要比添加新方法容易，向已有的类添加新方法要比添加新的类容易。</p>
+<p>这样，<a href="http://michaelfeathers.typepad.com/michael_feathers_blog/2012/12/behavioral-economics-and-code.html">很多系统最后都会有几个非常庞大的类，包含了大量的方法</a>，随着代码的不断变更，这些类将会变得越来越大。</p>
+<h2>80：20与编程时间</h2>
+<p><a href="http://stackoverflow.com/questions/608748/how-to-avoid-the-80-20-rule-in-software-development">前80%的代码只花了20%的时间</a>，而剩下的20%的代码则花了其余的80%的时间。完成某个功能通常并不会花太多时间，特别是采用迭代与渐进的方式、频繁且快速的交付的情况下。</p>
+<p>不过在背后通常还会有大量工作等待你去完成，比如说处理边界情况、处理错误，确保系统的性能与可伸缩性，寻找并修复各种Bug，部署前的各种调整等等。客户通常并不理解为什么最后的20%工作要花费那么多的时间。程序员也经常忘记这一点，因此在估算时就会发生各种偏差。这也是开发者经常出现估算错误的原因所在。</p>
+<h2>80：20与软件开发管理</h2>
+<p>时刻谨记80：20原则可以节省你大量的金钱与时间，将精力专注于重要的事情上可以不断提升你成功的可能性。哪些事情是重要的呢？比如说重要的特性、大多数严重的Bug出现的代码区域（需要花费最多时间去修复的Bug），经常会发生变化的代码。你与你的团队应该将注意力放在这些地方上才能确保最后的成功。</p><br><br><br><br><br><br></body></html>

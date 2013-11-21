@@ -1,88 +1,447 @@
-<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>深入理解Java内存模型（七）——总结</h3><p>顺序一致性内存模型是一个理论参考模型，JMM和处理器内存模型在设计时通常会把顺序一致性内存模型作为参照。JMM和处理器内存模型在设计时会对顺序一致性模型做一些放松，因为如果完全按照顺序一致性模型来实现处理器和JMM，那么很多的处理器和编译器优化都要被禁止，这对执行性能将会有很大的影响。</p><p>根据对不同类型读/写操作组合的执行顺序的放松，可以把常见处理器的内存模型划分为下面几种类型：</p><ol> 
- <li>放松程序中写-读操作的顺序，由此产生了total store ordering内存模型（简称为TSO）。</li> 
- <li>在前面1的基础上，继续放松程序中写-写操作的顺序，由此产生了partial store order 内存模型（简称为PSO）。</li> 
- <li>在前面1和2的基础上，继续放松程序中读-写和读-读操作的顺序，由此产生了relaxed memory order内存模型（简称为RMO）和PowerPC内存模型。</li> 
-</ol><p>注意，这里处理器对读/写操作的放松，是以两个操作之间不存在数据依赖性为前提的（因为处理器要遵守as-if-serial语义，处理器不会对存在数据依赖性的两个内存操作做重排序）。</p><p>下面的表格展示了常见处理器内存模型的细节特征：</p><table border="1" cellspacing="0" cellpadding="0"> 
+<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>全程软件测试实践：从需求到运营</h3><p>之前一篇文章《<a href="http://www.infoq.com/cn/articles/transformation-way-software-testing/">软件测试转型之路</a>》介绍过我们转型的一些实践，下文将介绍从2011年3月至今，持续改进的全程软件测试实践活动。</p>
+<h2>1 全程软件测试图解</h2>
+<p>传统的软件测试，可以简单描述为下图所示：</p>
+<p><img alt="" src="http://infoqstatic.com/resource/articles/whole-software-testing-practice-requirements-to-operational/zh/resources/1016000.png" _p="true" href="img://null" /></p>
+<p>图-1-传统交付测试</p>
+<p>开发人员完成任务之后，最后交付给测试人员，这种模式下，测试人员不能及早发现需求阶段的缺陷，同时测试工作的开展也滞后了，产品质量得不到有效的过程控制和分析，总体进度可能会由于返工问题造成拖延。</p>
+<p>那什么是全程软件测试，如下图所示：</p>
+<div id="lowerFullwidthVCR"></div>
+<p>(点击图像放大)</p>
+<p><a href="http://infoqstatic.com/resource/articles/whole-software-testing-practice-requirements-to-operational/zh/resources/1016001.png"><img width="500" alt="" src="http://infoqstatic.com/resource/articles/whole-software-testing-practice-requirements-to-operational/zh/resources/1016001.png" _href="img://1016001.png" _p="true" /></a></p>
+<p>图-2-全程软件测试图</p>
+<p>在整个SDLC中，三条角色主线和四个阶段。</p>
+<p>三条角色主线：开发、QA、测试，文中主要讲解测试。</p>
+<p>四个阶段：需求、开发、发布、日常运营。</p>
+<p>简单来说可以归纳为下图所示：</p>
+<p><img width="500" _p="true" _href="img://null" src="http://infoqstatic.com/resource/articles/whole-software-testing-practice-requirements-to-operational/zh/resources/10160020.png" alt="" /></p>
+<p>图-3-全程软件测试概述</p>
+<p>测试人员贯穿这四个阶段，开展测试活动，试实践活动简单描述如下图所示：</p>
+<p>(点击图像放大)</p>
+<p><a href="http://infoqstatic.com/resource/articles/whole-software-testing-practice-requirements-to-operational/zh/resources/1027000.png"><img width="500" alt="" src="http://infoqstatic.com/resource/articles/whole-software-testing-practice-requirements-to-operational/zh/resources/1027000.png" _href="img://1027000.png" _p="true" /></a></p>
+<p>图-4-全程软件测试概述</p>
+<p>每个阶段也有开发人员对应的活动，以及QA人员对应的活动。</p>
+<p>对于产品而言，每次版本迭代，都会经历：需求、开发、发布，最后推向日常运营，发布阶段虚线指向的需求阶段和日常运营阶段，并不是一个终止阶段，而是不断迭代的过程。</p>
+<p>那测试人员是如何开展全程软件测试活动的呢？</p>
+<h2>2 需求阶段测试</h2>
+<p>在需求阶段，开发人员、测试人员、QA人员主要做的事情，如下表所示：</p>
+<p> </p>
+<table cellspacing="0" cellpadding="0" border="1"> 
  <tbody> 
   <tr> 
-   <td valign="top" width="85"> <p>内存模型名称</p> </td> 
-   <td valign="top" width="85"> <p>对应的处理器</p> </td> 
-   <td valign="top" width="85"> <p>Store-Load 重排序</p> </td> 
-   <td valign="top" width="85"> <p>Store-Store重排序</p> </td> 
-   <td valign="top" width="85"> <p>Load-Load 和Load-Store重排序</p> </td> 
-   <td valign="top" width="85"> <p>可以更早读取到其它处理器的写</p> </td> 
-   <td valign="top" width="85"> <p>可以更早读取到当前处理器的写</p> </td> 
+   <td width="72" valign="top"> <p>阶段</p> </td> 
+   <td width="155" valign="top"> <p>开发人员</p> </td> 
+   <td width="145" valign="top"> <p>测试人员</p> </td> 
+   <td width="182" valign="top"> <p>QA人员</p> </td> 
   </tr> 
   <tr> 
-   <td valign="top" width="85"> <p>TSO</p> </td> 
-   <td valign="top" width="85"> <p>sparc-TSO</p> <p>X64</p> </td> 
-   <td valign="top" width="85"> <p>Y</p> </td> 
-   <td valign="top" width="85">&nbsp;</td> 
-   <td valign="top" width="85">&nbsp;</td> 
-   <td valign="top" width="85">&nbsp;</td> 
-   <td valign="top" width="85"> <p>Y</p> </td> 
-  </tr> 
-  <tr> 
-   <td valign="top" width="85"> <p>PSO</p> </td> 
-   <td valign="top" width="85"> <p>sparc-PSO</p> </td> 
-   <td valign="top" width="85"> <p>Y</p> </td> 
-   <td valign="top" width="85"> <p>Y</p> </td> 
-   <td valign="top" width="85">&nbsp;</td> 
-   <td valign="top" width="85">&nbsp;</td> 
-   <td valign="top" width="85"> <p>Y</p> </td> 
-  </tr> 
-  <tr> 
-   <td valign="top" width="85"> <p>RMO</p> </td> 
-   <td valign="top" width="85"> <p>ia64</p> </td> 
-   <td valign="top" width="85"> <p>Y</p> </td> 
-   <td valign="top" width="85"> <p>Y</p> </td> 
-   <td valign="top" width="85"> <p>Y</p> </td> 
-   <td valign="top" width="85">&nbsp;</td> 
-   <td valign="top" width="85"> <p>Y</p> </td> 
-  </tr> 
-  <tr> 
-   <td valign="top" width="85"> <p>PowerPC</p> </td> 
-   <td valign="top" width="85"> <p>PowerPC</p> </td> 
-   <td valign="top" width="85"> <p>Y</p> </td> 
-   <td valign="top" width="85"> <p>Y</p> </td> 
-   <td valign="top" width="85"> <p>Y</p> </td> 
-   <td valign="top" width="85"> <p>Y</p> </td> 
-   <td valign="top" width="85"> <p>Y</p> </td> 
+   <td width="72" valign="top"> <p>需求阶段</p> </td> 
+   <td width="155" valign="top"> 
+    <ul> 
+     <li>用户故事分析</li> 
+     <li>用户故事估时</li> 
+    </ul> </td> 
+   <td width="145" valign="top"> 
+    <ul> 
+     <li>参与用户故事分析、挖掘故事含混性</li> 
+     <li>参考经验库质疑开发的时间估算</li> 
+    </ul> </td> 
+   <td width="182" valign="top"> 
+    <ul> 
+     <li>保证确认需求活动符合需求管理过程</li> 
+     <li>管理用户故事评审</li> 
+     <li>管理需求变更</li> 
+    </ul> </td> 
   </tr> 
  </tbody> 
-</table><p>在这个表格中，我们可以看到所有处理器内存模型都允许写-读重排序，原因在第一章以说明过：它们都使用了写缓存区，写缓存区可能导致写-读操作重排序。同时，我们可以看到这些处理器内存模型都允许更早读到当前处理器的写，原因同样是因为写缓存区：由于写缓存区仅对当前处理器可见，这个特性导致当前处理器可以比其他处理器先看到临时保存在自己的写缓存区中的写。</p><p>上面表格中的各种处理器内存模型，从上到下，模型由强变弱。越是追求性能的处理器，内存模型设计的会越弱。因为这些处理器希望内存模型对它们的束缚越少越好，这样它们就可以做尽可能多的优化来提高性能。</p><p>由于常见的处理器内存模型比JMM要弱，java编译器在生成字节码时，会在执行指令序列的适当位置插入内存屏障来限制处理器的重排序。同时，由于各种处理器内存模型的强弱并不相同，为了在不同的处理器平台向程序员展示一个一致的内存模型，JMM在不同的处理器中需要插入的内存屏障的数量和种类也不相同。下图展示了JMM在不同处理器内存模型中需要插入的内存屏障的示意图：</p><p><img width="500px;" src="http://www.infoq.com/resource/articles/java-memory-model-7/zh/resources/1.png;jsessionid=DDD4B6E115D910476CCA791CF2934D5A" alt="" _href="img://null" _p="true" /></p><p>如上图所示，JMM屏蔽了不同处理器内存模型的差异，它在不同的处理器平台之上为java程序员呈现了一个一致的内存模型。</p><h2>JMM，处理器内存模型与顺序一致性内存模型之间的关系</h2><p>JMM是一个语言级的内存模型，处理器内存模型是硬件级的内存模型，顺序一致性内存模型是一个理论参考模型。下面是语言内存模型，处理器内存模型和顺序一致性内存模型的强弱对比示意图：</p><p><img width="500px;" src="http://www.infoq.com/resource/articles/java-memory-model-7/zh/resources/22.png;jsessionid=DDD4B6E115D910476CCA791CF2934D5A" alt="" _href="img://null" _p="true" /></p><p>从上图我们可以看出：常见的4种处理器内存模型比常用的3中语言内存模型要弱，处理器内存模型和语言内存模型都比顺序一致性内存模型要弱。同处理器内存模型一样，越是追求执行性能的语言，内存模型设计的会越弱。</p><h2>JMM的设计</h2><p>从JMM设计者的角度来说，在设计JMM时，需要考虑两个关键因素：</p><ul> 
- <li>程序员对内存模型的使用。程序员希望内存模型易于理解，易于编程。程序员希望基于一个强内存模型来编写代码。</li> 
- <li>编译器和处理器对内存模型的实现。编译器和处理器希望内存模型对它们的束缚越少越好，这样它们就可以做尽可能多的优化来提高性能。编译器和处理器希望实现一个弱内存模型。</li> 
-</ul><p>由于这两个因素互相矛盾，所以JSR-133专家组在设计JMM时的核心目标就是找到一个好的平衡点：一方面要为程序员提供足够强的内存可见性保证；另一方面，对编译器和处理器的限制要尽可能的放松。下面让我们看看JSR-133是如何实现这一目标的。</p><p>为了具体说明，请看前面提到过的计算圆面积的示例代码：</p><pre>
-double pi  = 3.14;    //A
-double r   = 1.0;     //B
-double area = pi * r * r; //C
-</pre><p>上面计算圆的面积的示例代码存在三个happens- before关系：</p><ol> 
- <li>A happens- before B；</li> 
- <li>B happens- before C；</li> 
- <li>A happens- before C；</li> 
-</ol><p>由于A happens- before B，happens- before的定义会要求：A操作执行的结果要对B可见，且A操作的执行顺序排在B操作之前。 但是从程序语义的角度来说，对A和B做重排序即不会改变程序的执行结果，也还能提高程序的执行性能（允许这种重排序减少了对编译器和处理器优化的束缚）。也就是说，上面这3个happens- before关系中，虽然2和3是必需要的，但1是不必要的。因此，JMM把happens- before要求禁止的重排序分为了下面两类：</p><ul> 
- <li>会改变程序执行结果的重排序。</li> 
- <li>不会改变程序执行结果的重排序。</li> 
-</ul><p>JMM对这两种不同性质的重排序，采取了不同的策略：</p><ul> 
- <li>对于会改变程序执行结果的重排序，JMM要求编译器和处理器必须禁止这种重排序。</li> 
- <li>对于不会改变程序执行结果的重排序，JMM对编译器和处理器不作要求（JMM允许这种重排序）。</li> 
-</ul><p>下面是JMM的设计示意图：</p><p><img width="500px;" src="http://www.infoq.com/resource/articles/java-memory-model-7/zh/resources/33.png;jsessionid=DDD4B6E115D910476CCA791CF2934D5A" alt="" _href="img://null" _p="true" /></p><p>从上图可以看出两点：</p><ul> 
- <li>JMM向程序员提供的happens- before规则能满足程序员的需求。JMM的happens- before规则不但简单易懂，而且也向程序员提供了足够强的内存可见性保证（有些内存可见性保证其实并不一定真实存在，比如上面的A happens- before B）。</li> 
- <li>JMM对编译器和处理器的束缚已经尽可能的少。从上面的分析我们可以看出，JMM其实是在遵循一个基本原则：只要不改变程序的执行结果（指的是单线程程序和正确同步的多线程程序），编译器和处理器怎么优化都行。比如，如果编译器经过细致的分析后，认定一个锁只会被单个线程访问，那么这个锁可以被消除。再比如，如果编译器经过细致的分析后，认定一个volatile变量仅仅只会被单个线程访问，那么编译器可以把这个volatile变量当作一个普通变量来对待。这些优化既不会改变程序的执行结果，又能提高程序的执行效率。</li> 
-</ul><h2>JMM的内存可见性保证</h2><p>Java程序的内存可见性保证按程序类型可以分为下列三类：</p><ol> 
- <li>单线程程序。单线程程序不会出现内存可见性问题。编译器，runtime和处理器会共同确保单线程程序的执行结果与该程序在顺序一致性模型中的执行结果相同。</li> 
- <li>正确同步的多线程程序。正确同步的多线程程序的执行将具有顺序一致性（程序的执行结果与该程序在顺序一致性内存模型中的执行结果相同）。这是JMM关注的重点，JMM通过限制编译器和处理器的重排序来为程序员提供内存可见性保证。</li> 
- <li>未同步/未正确同步的多线程程序。JMM为它们提供了最小安全性保障：线程执行时读取到的值，要么是之前某个线程写入的值，要么是默认值（0，null，false）。</li> 
-</ol><p>下图展示了这三类程序在JMM中与在顺序一致性内存模型中的执行结果的异同：</p><p><img width="500px;" src="http://www.infoq.com/resource/articles/java-memory-model-7/zh/resources/4.png;jsessionid=DDD4B6E115D910476CCA791CF2934D5A" alt="" _href="img://null" _p="true" /></p><p>只要多线程程序是正确同步的，JMM保证该程序在任意的处理器平台上的执行结果，与该程序在顺序一致性内存模型中的执行结果一致。</p><h2>JSR-133对旧内存模型的修补</h2><p>JSR-133对JDK5之前的旧内存模型的修补主要有两个：</p><ul> 
- <li>增强volatile的内存语义。旧内存模型允许volatile变量与普通变量重排序。JSR-133严格限制volatile变量与普通变量的重排序，使volatile的写-读和锁的释放-获取具有相同的内存语义。</li> 
- <li>增强final的内存语义。在旧内存模型中，多次读取同一个final变量的值可能会不相同。为此，JSR-133为final增加了两个重排序规则。现在，final具有了初始化安全性。</li> 
-</ul><h2>参考文献</h2><ol> 
- <li><a href="http://www.amazon.com/Computer-Architecture-Fourth-Quantitative-Approach/dp/0123704901/ref=sr_1_10/102-0116773-7214567?ie=UTF8&amp;s=books&amp;qid=1188797467&amp;sr=1-10">Computer Architecture: A Quantitative Approach, 4th Edition</a></li> 
- <li><a href="http://www.hpl.hp.com/techreports/Compaq-DEC/WRL-95-7.pdf">Shared memory consistency models: A tutorial</a></li> 
- <li><a href="http://www.intel.com/content/dam/www/public/us/en/documents/manuals/itanium-architecture-software-developer-rev-2-3-vol-2-manual.pdf">Intel&reg; Itanium&reg; Architecture Software Developer’s Manual Volume 2: System Architecture</a></li> 
- <li><a href="http://www.amazon.com/Concurrent-Programming-Windows-Joe-Duffy/dp/032143482X/ref=sr_1_1?ie=UTF8&amp;s=books&amp;qid=1262571776&amp;sr=1-1">Concurrent Programming on Windows</a></li> 
- <li><a href="http://www.cs.umd.edu/users/pugh/java/memoryModel/jsr-133-faq.html">JSR 133 (Java Memory Model) FAQ</a></li> 
- <li><a href="http://gee.cs.oswego.edu/dl/jmm/cookbook.html">The JSR-133 Cookbook for Compiler Writers</a></li> 
- <li><a href="http://www.ibm.com/developerworks/java/library/j-jtp03304/index.html">Java theory and practice: Fixing the Java Memory Model, Part 2</a></li> 
-</ol><h2>关于作者</h2><p><strong>程晓明</strong>，Java软件工程师，国家认证的系统分析师、信息项目管理师。专注于并发编程，就职于富士通南大。个人邮箱：<a href="mailto:asst2003@163.com">asst2003@163.com</a>。</p><div class="clearer-space"></div><br><br><br><br><br><br></body></html>
+</table>
+<p></p>
+<p>作为测试人员的主要实践如下：</p>
+<p><strong>参与用户故事分析、挖掘故事含混性</strong></p>
+<p>在sprint会议上，对用户故事进行分析，检查功能性需求和非功能性需求是否描述清晰，其中可以将非功能性需求作为验收要点，例如一个用户故事：</p>
+<p>“客户希望提高响应时间”</p>
+<p>测试人员应当协助开发人员消除故事的含混性：提高什么的响应时间和响应时间为多少？可以建议修改为：</p>
+<p>“客户信息普通查询返回结果的响应时间为5s内”</p>
+<p>说明在“客户信息”模块，进行“普通查询”操作，返回结果的时间在5s内，这个陈述句已经清晰表达了，也达到了消除含混性的效果。同样，测试人员可以编写提高查询效率的用户故事：</p>
+<p>“客户在信息查询模块，进行普通查询，能够在5s内返回结果”</p>
+<p>“备注：5s为非功能性需求，也是验收要点”</p>
+<p><strong>参考经验库质疑开发的时间估算</strong></p>
+<p>在sprint会议上，开发人员根据经验出牌（团队自己定义的规则，用扑克牌）估算时间，当给出最终结果的时候，测试人员应当对其进行质疑。测试人员借鉴历史经验库：开发人员在某方面的技能如何、该模块曾经产生过何种程度的缺陷、修复缺陷的消耗时间是多少等等，综合考虑，提出疑问，让开发估算最终的时间，尽可能考虑这些因素。当然，测试人员能够质疑的其中一个前提是：测试人员具备相关开发经验。</p>
+<p>小结：在需求阶段，测试人员要发挥作用，减少含混性需求引入到开发阶段、同时协助开发做好时间估算。</p>
+<h2>3 开发阶段测试</h2>
+<p>在开发阶段，开发人员、测试人员、QA人员主要做的事情，如下表所示：</p>
+<p> </p>
+<table cellspacing="0" cellpadding="0" border="1"> 
+ <tbody> 
+  <tr> 
+   <td width="72" valign="top"> <p>阶段</p> </td> 
+   <td width="155" valign="top"> <p>开发人员</p> </td> 
+   <td width="145" valign="top"> <p>测试人员</p> </td> 
+   <td width="182" valign="top"> <p>QA人员</p> </td> 
+  </tr> 
+  <tr> 
+   <td width="72" valign="top"> <p>开发阶段</p> </td> 
+   <td width="155" valign="top"> 
+    <ul> 
+     <li>架构评审</li> 
+     <li>功能要点确认</li> 
+     <li>编码开发</li> 
+     <li>单元测试</li> 
+     <li>开发自测</li> 
+     <li>代码评审</li> 
+     <li>Bug Fix</li> 
+    </ul> </td> 
+   <td width="145" valign="top"> 
+    <ul> 
+     <li>功能要点确认</li> 
+     <li>测试用例设计</li> 
+     <li>用例评审</li> 
+     <li>测试探索</li> 
+     <li>功能测试</li> 
+     <li>Bug Tracking</li> 
+     <li>回归测试</li> 
+     <li>系统测试</li> 
+     <li>验收测试</li> 
+    </ul> </td> 
+   <td width="182" valign="top"> 
+    <ul> 
+     <li>管理评审活动</li> 
+     <li>管理文档产物</li> 
+    </ul> </td> 
+  </tr> 
+ </tbody> 
+</table>
+<p></p>
+<p>作为测试人员的主要实践如下：</p>
+<p><strong>功能要点确认</strong></p>
+<p>Xmind是一个非常好用的脑图工具，通常在开发人员进行编码前，测试人员会针对需求处理的用户故事，与开发人员进行确认，修正理解偏差，确保需求理解一致。</p>
+<p><img width="550" alt="" src="http://infoqstatic.com/resource/articles/whole-software-testing-practice-requirements-to-operational/zh/resources/1016005.png" _p="true" href="img://null" /></p>
+<p>图-5-脑图用例模板</p>
+<p><strong>测试用例设计</strong></p>
+<p>测试人员主要设计测试故事点，使用DSL(Domain Specific language)，infoq文章（<a href="http://www.infoq.com/cn/articles/leveraging-dsl-in-agile-test">敏捷测试之借力DSL</a>），对测试用例进行描述，包括三个基本要素：</p>
+<p>Feature、Scenario、Example，补充要素：xmind、Requirement。</p>
+<p>Feature：把测试分类到某个模块，并对这个特性本身的业务目的进行相关描述，带进业 务目标，传递业务知识。</p>
+<p>Scenario：标明这个Feature的测试场景，可以使用文字描述步骤，或者使用xmind脑图</p>
+<p>描述，场景中的数据使用Examples中列出的。</p>
+<p>Example：引出具体的数据表格把用到的数据都展示出来，避免相同步骤因为测试数据 的变化而重复若干遍造成冗余。</p>
+<p>Xmind：脑图文件，展示测试故事点</p>
+<p>Requirement：关联需求管理系统的需求id。</p>
+<p><strong>用例评审</strong></p>
+<p>主要是坚持同行评审的原则，主要在测试组内进行，负责该任务的开发人员也会参与，简单来说就是对测试用例进行查漏补缺的工作。</p>
+<p><strong>测试探索</strong></p>
+<p>进行了“功能要点确认”和“用例评审”后，为了保证测试场景的覆盖率，需要再进行测试探索。在开发人员完成雏形之后，使用探索式测试的策略，对功能基本流程进行有目的的快速走查，挖掘功能不确定的地方和补充测试场景，避免不确定的因素拖延到开发阶段后期，造成返工。</p>
+<p>其中：功能测试、Bug Tracking、回归测试、系统测试、验收测试都是日常测试工作所需环节。</p>
+<p><strong>燃尽图发布</strong></p>
+<p>另外，测试人员还有一项重要工作，每日发布燃尽图，让团队了解当前进度情况，总结问题</p>
+<p>所在，寻求耗时超过预期时间任务的解决办法。</p>
+<p><img width="500" alt="" src="http://infoqstatic.com/resource/articles/whole-software-testing-practice-requirements-to-operational/zh/resources/1016006.png" _href="img://null" _p="true" /></p>
+<p>图-6-燃尽图</p>
+<p>图形特点：</p>
+<p>1）剩余工时在计划基准上方，代表进度有所延迟，应抓紧进度；</p>
+<p>发现此类问题，需要分析总结，原则是保证交付时间，对相应任务进行调整，拥抱变化，发现任务粒度太大，该拆分的继续拆分；对于重构需要慎重，不要过度深入重构，给测试带来额外工作量，影响整个进度，对于整个版本而言，只有开发、测试在承诺的时间内完成任务，才是真正完成，仅仅开发完成交付算不上成功。</p>
+<p>2）剩余工时在计划基准接近，代表进展良好，继续保持；</p>
+<p>此时也需要查看在这种进度下，优先级高的任务是否得到时间保证，而不是因为处理完简单任务才使得燃尽图长的好看。往往有些开发人员，喜欢挑着任务来做，把简单易做、优先级的任务先完成了，因为这些总在预期内能够完成，所以前期燃尽图的趋势看起来没有问题。</p>
+<p><strong>缺陷经验库</strong></p>
+<p>每个团队都存在开发/测试新人和开发/测试老人，当测试人员与开发新人进行需求确认的时候，还需要进行缺陷经验教训的提醒，避免多走弯路。</p>
+<p>(点击图像放大)</p>
+<p><a href="http://infoqstatic.com/resource/articles/whole-software-testing-practice-requirements-to-operational/zh/resources/1016007.png"><img width="550" alt="" src="http://infoqstatic.com/resource/articles/whole-software-testing-practice-requirements-to-operational/zh/resources/1016007.png" _href="img://1016002.png" _p="true" /></a></p>
+<p>图-7-缺陷总结</p>
+<p><strong>提升开发自测质量</strong></p>
+<p>测试人员可以提供相关<a href="http://www.ibm.com/developerworks/cn/web/1303_sujg_webchecklist1/index.html">checklist</a>（大家可以根据原作者提供的修改为符合团队的）帮助开发人员在编码过程中关注开发自测的要点，从而提升质量。</p>
+<p>(点击图像放大)</p>
+<p><a href="http://infoqstatic.com/resource/articles/whole-software-testing-practice-requirements-to-operational/zh/resources/1016008.png"><img width="550" alt="" src="http://infoqstatic.com/resource/articles/whole-software-testing-practice-requirements-to-operational/zh/resources/1016008.png" _href="img://1016002.png" _p="true" /></a></p>
+<p>图-8-web软件测试checklist</p>
+<p><strong>持续集成</strong></p>
+<p>利用持续集成（Jenkins）平台，做到快速的构建开发代码，自动的单元测试化，来提高开发代码的效率和质量。</p>
+<p>负责单元测试的开发人员，会收到失败构建的邮件；</p>
+<p>负责集成测试的开发人员，会收到失败构建的邮件；</p>
+<p>负责自动化测试（Selenium）的测试负责人员，会收到失败构建的邮件；</p>
+<p>这种方式，确保单元测试、集成测试、自动化测试，有相关人员关注和维护。</p>
+<p>(点击图像放大)</p>
+<p><a href="http://infoqstatic.com/resource/articles/whole-software-testing-practice-requirements-to-operational/zh/resources/1016009.png"><img width="550" alt="" src="http://infoqstatic.com/resource/articles/whole-software-testing-practice-requirements-to-operational/zh/resources/1016009.png" _href="img://1016002.png" _p="true" /></a></p>
+<p>图-9-持续集成</p>
+<p><strong>Sonar反馈</strong></p>
+<p>Sonar is an open platform to manage code quality. As such, it covers the 7 axes of code quality。</p>
+<p>(点击图像放大)</p>
+<p><a href="http://infoqstatic.com/resource/articles/whole-software-testing-practice-requirements-to-operational/zh/resources/1016010.png"><img width="550" alt="" src="http://infoqstatic.com/resource/articles/whole-software-testing-practice-requirements-to-operational/zh/resources/1016010.png" _href="img://1016002.png" _p="true" /></a></p>
+<p>图-10-sonar分析结果</p>
+<p>测试人员主要反馈问题如下：</p>
+<p>Code coverage：团队要求代码覆盖率在80%以上；</p>
+<p>Test success：团队要求测试成功率在100%；</p>
+<p>Duplications：团队要求代码重复率在10%以下；</p>
+<p>Violations：团队要求Major类别的代码规则缺陷在20以下；</p>
+<p>开发团队必须保证每个环境的质量目标，才能够保证整个的质量目标。</p>
+<p>小结：</p>
+<p>测试人员与开发人员永远不是敌对关系，而是协助关系，确切来说是质量天枰的两边，任何一边的工作没有做好，都会失去平衡。</p>
+<h2>4 发布阶段测试</h2>
+<p>在发布阶段，开发人员、测试人员、QA人员主要做的事情，如下表所示：</p>
+<p> </p>
+<table cellspacing="0" cellpadding="0" border="1"> 
+ <tbody> 
+  <tr> 
+   <td width="72" valign="top"> <p>阶段</p> </td> 
+   <td width="155" valign="top"> <p>开发人员</p> </td> 
+   <td width="145" valign="top"> <p>测试人员</p> </td> 
+   <td width="182" valign="top"> <p>QA人员</p> </td> 
+  </tr> 
+  <tr> 
+   <td width="72" valign="top"> <p>发布阶段</p> </td> 
+   <td width="155" valign="top"> 
+    <ul> 
+     <li>上线申请</li> 
+     <li>上线部署</li> 
+     <li>服务监控</li> 
+    </ul> </td> 
+   <td width="145" valign="top"> 
+    <ul> 
+     <li>测试报告</li> 
+     <li>线上功能检查</li> 
+    </ul> </td> 
+   <td width="182" valign="top"> 
+    <ul> 
+     <li>管理评审活动</li> 
+     <li>管理文档产物</li> 
+    </ul> </td> 
+  </tr> 
+ </tbody> 
+</table>
+<p></p>
+<p>作为测试人员的主要实践如下：</p>
+<p><strong>测试报告</strong></p>
+<p>完成验收测试，提供测试报告，给出测试数据度量，例如：</p>
+<ul> 
+ <li><b>测试发现缺陷总数：</b>测试过程中产生的去除状态为“无效”、“不用改”的缺陷数目。</li> 
+ <li><b>测试发现严重缺陷数：</b>测试过程中产生的并去除状态为“无效”、“不用改”的、且严重性为“Major”和“Critical”的缺陷总数目。</li> 
+ <li><b>测试发现缺陷修复数：</b>测试过程中产生的状态为“已关闭”的缺陷数量；</li> 
+ <li><b>未解决缺陷数：</b>去除状态为“无效”、“不用改”、“关闭”的缺陷总数。</li> 
+ <li><b>缺陷修复率：</b>（测试发现缺陷的修复数）&divide;（测试发现缺陷总数）&times;100％</li> 
+ <li><b>严重缺陷率：</b>（测试发现严重缺陷数）&divide;（测试发现缺陷总数）&times;100％</li> 
+ <li><b>严重缺陷修复率：</b>（已修复的严重缺陷数）&divide;（测试发现严重缺陷数）&times;100％</li> 
+ <li><b>测试需求覆盖率：</b>已测试需求个数&divide;需求总数&times;100%</li> 
+</ul>
+<p><strong>缺陷统计分析报告</strong></p>
+<p>另外，测试人员还有一项重要工作，对当前版本的缺陷进行统计分析：</p>
+<p>按缺陷级别统计： </p>
+<table cellspacing="0" cellpadding="0" border="0"> 
+ <tbody> 
+  <tr> 
+   <td width="91"> <p>&nbsp;</p> </td> 
+   <td width="82"> <p><b>Critical</b></p> </td> 
+   <td width="74"> <p><b>Major</b></p> </td> 
+   <td width="83"> <p><b>Medium</b></p> </td> 
+   <td width="74"> <p><b>Minor</b></p> </td> 
+   <td width="75"> <p><b>总计</b></p> </td> 
+  </tr> 
+  <tr> 
+   <td width="91"> <p>首页</p> </td> 
+   <td width="82"> <p>0</p> </td> 
+   <td width="74"> <p>0</p> </td> 
+   <td width="83"> <p>1</p> </td> 
+   <td width="74"> <p>0</p> </td> 
+   <td width="75"> <p><b>1</b></p> </td> 
+  </tr> 
+  <tr> 
+   <td width="91"> <p>模块一</p> </td> 
+   <td width="82"> <p>0</p> </td> 
+   <td width="74"> <p>0</p> </td> 
+   <td width="83"> <p>0</p> </td> 
+   <td width="74"> <p>2</p> </td> 
+   <td width="75"> <p><b>2</b></p> </td> 
+  </tr> 
+  <tr> 
+   <td width="91"> <p>模块二</p> </td> 
+   <td width="82"> <p>0</p> </td> 
+   <td width="74"> <p>1</p> </td> 
+   <td width="83"> <p>2</p> </td> 
+   <td width="74"> <p>10</p> </td> 
+   <td width="75"> <p><b>13</b></p> </td> 
+  </tr> 
+  <tr> 
+   <td width="91"> <p>模块三</p> </td> 
+   <td width="82"> <p>0</p> </td> 
+   <td width="74"> <p>0</p> </td> 
+   <td width="83"> <p>1</p> </td> 
+   <td width="74"> <p>4</p> </td> 
+   <td width="75"> <p><b>5</b></p> </td> 
+  </tr> 
+  <tr> 
+   <td width="91"> <p>模块四</p> </td> 
+   <td width="82"> <p>0</p> </td> 
+   <td width="74"> <p>0</p> </td> 
+   <td width="83"> <p>1</p> </td> 
+   <td width="74"> <p>2</p> </td> 
+   <td width="75"> <p><b>3</b></p> </td> 
+  </tr> 
+  <tr> 
+   <td width="91"> <p>模块五</p> </td> 
+   <td width="82"> <p>0</p> </td> 
+   <td width="74"> <p>0</p> </td> 
+   <td width="83"> <p>3</p> </td> 
+   <td width="74"> <p>2</p> </td> 
+   <td width="75"> <p><b>5</b></p> </td> 
+  </tr> 
+  <tr> 
+   <td width="91"> <p>模块六</p> </td> 
+   <td width="82"> <p>0</p> </td> 
+   <td width="74"> <p>1</p> </td> 
+   <td width="83"> <p>0</p> </td> 
+   <td width="74"> <p>1</p> </td> 
+   <td width="75"> <p><b>2</b></p> </td> 
+  </tr> 
+  <tr> 
+   <td width="91"> <p>模块七</p> </td> 
+   <td width="82"> <p>0</p> </td> 
+   <td width="74"> <p>2</p> </td> 
+   <td width="83"> <p>0</p> </td> 
+   <td width="74"> <p>6</p> </td> 
+   <td width="75"> <p><b>8</b></p> </td> 
+  </tr> 
+  <tr> 
+   <td width="91"> <p>sonar</p> </td> 
+   <td width="82"> <p>0</p> </td> 
+   <td width="74"> <p>1</p> </td> 
+   <td width="83"> <p>2</p> </td> 
+   <td width="74"> <p>0</p> </td> 
+   <td width="75"> <p><b>3</b></p> </td> 
+  </tr> 
+  <tr> 
+   <td width="91"> <p><b>总计</b></p> </td> 
+   <td width="82"> <p><b>0</b></p> </td> 
+   <td width="74"> <p><b>5</b></p> </td> 
+   <td width="83"> <p><b>10</b></p> </td> 
+   <td width="74"> <p><b>27</b></p> </td> 
+   <td width="75">&nbsp;</td> 
+  </tr> 
+ </tbody> 
+</table>
+<p></p>
+<p><img width="500" alt="" src="http://infoqstatic.com/resource/articles/whole-software-testing-practice-requirements-to-operational/zh/resources/1016012.png" _href="img://null" _p="true" /></p>
+<p>图-11-缺陷统计</p>
+<p>按缺陷来源统计： </p>
+<table cellspacing="0" cellpadding="0" border="0"> 
+ <tbody> 
+  <tr> 
+   <td width="91">&nbsp;</td> 
+   <td width="82"> <p><b>开发1</b></p> </td> 
+   <td width="74"> <p><b>开发2</b></p> </td> 
+   <td width="83"> <p><b>开发3</b></p> </td> 
+   <td width="74"> <p><b>开发4</b></p> </td> 
+   <td width="74"> <p><b>开发5</b></p> </td> 
+   <td width="75"> <p><b>遗留</b></p> </td> 
+  </tr> 
+  <tr> 
+   <td width="91"> <p>Critical</p> </td> 
+   <td width="82"> <p>0</p> </td> 
+   <td width="74"> <p>0</p> </td> 
+   <td width="83"> <p>0</p> </td> 
+   <td width="74"> <p>0</p> </td> 
+   <td width="74"> <p>0</p> </td> 
+   <td width="75"> <p>0</p> </td> 
+  </tr> 
+  <tr> 
+   <td width="91"> <p>Major</p> </td> 
+   <td width="82"> <p>1</p> </td> 
+   <td width="74"> <p>2</p> </td> 
+   <td width="83"> <p>0</p> </td> 
+   <td width="74"> <p>0</p> </td> 
+   <td width="74"> <p>0</p> </td> 
+   <td width="75"> <p>2</p> </td> 
+  </tr> 
+  <tr> 
+   <td width="91"> <p>Medium</p> </td> 
+   <td width="82"> <p>1</p> </td> 
+   <td width="74"> <p>7</p> </td> 
+   <td width="83"> <p>0</p> </td> 
+   <td width="74"> <p>1</p> </td> 
+   <td width="74"> <p>0</p> </td> 
+   <td width="75"> <p>1</p> </td> 
+  </tr> 
+  <tr> 
+   <td width="91"> <p>Minor</p> </td> 
+   <td width="82"> <p>1</p> </td> 
+   <td width="74"> <p>7</p> </td> 
+   <td width="83"> <p>4</p> </td> 
+   <td width="74"> <p>6</p> </td> 
+   <td width="74"> <p>3</p> </td> 
+   <td width="75"> <p>6</p> </td> 
+  </tr> 
+  <tr> 
+   <td width="91"> <p><b>总计</b></p> </td> 
+   <td width="82"> <p><b>3</b></p> </td> 
+   <td width="74"> <p><b>16</b></p> </td> 
+   <td width="83"> <p><b>4</b></p> </td> 
+   <td width="74"> <p><b>7</b></p> </td> 
+   <td width="74"> <p><b>3</b></p> </td> 
+   <td width="75"> <p><b>9</b></p> </td> 
+  </tr> 
+ </tbody> 
+</table>
+<p></p>
+<p>按缺陷状态统计： </p>
+<table cellspacing="0" cellpadding="0" border="0"> 
+ <tbody> 
+  <tr> 
+   <td width="91"> <p><b>缺陷总数</b></p> </td> 
+   <td width="82"> <p><b>已关闭缺陷数</b></p> </td> 
+   <td width="74"> <p><b>遗留</b></p> </td> 
+   <td width="83"> <p><b>缺陷修复率</b></p> </td> 
+   <td width="74"> <p><b>严重缺陷数</b></p> </td> 
+   <td width="74"> <p><b>严重缺陷率</b></p> </td> 
+   <td width="74"> <p><b>已关闭严重缺陷数</b></p> </td> 
+   <td width="75"> <p><b>严重缺陷修复率</b></p> </td> 
+  </tr> 
+  <tr> 
+   <td width="91"> <p>42</p> </td> 
+   <td width="82"> <p>40</p> </td> 
+   <td width="74"> <p>2</p> </td> 
+   <td width="83"> <p>95%</p> </td> 
+   <td width="74"> <p>5</p> </td> 
+   <td width="74"> <p>12%</p> </td> 
+   <td width="74"> <p>5</p> </td> 
+   <td width="75"> <p>100%</p> </td> 
+  </tr> 
+ </tbody> 
+</table>
+<p></p>
+<p>测试进度和问题分析：</p>
+<ol> 
+ <li>从BUG的严重级别分布来看，Major级别以上的BUG占12%，占的比重不高，说明大部分的主要功能已经实现了；</li> 
+ <li>其中在sonar定义级别的缺陷，主要集中在代码规范和单元测试覆盖率，说明代码质量有待提高；</li> 
+ <li>版本测试的前期时间较充足，后期随着开发提交完成的功能点增多，BUG数量增多，剩余测试时间变得紧张；</li> 
+ <li>在版本测试期间，发现测试环境存在一次代码被覆盖、两次因开发人员操作失误影响测试执行的情况；</li> 
+</ol>
+<p>小结：</p>
+<p>测试人员应当持续反馈、改进、总结每个版本发生的问题（不管是缺陷，还是过程中出现的），并对缺陷进行分析，总结出一些规律，帮助开发人员建立良好的习惯，改进代码的质量。</p>
+<h2>5 日常运营阶段测试</h2>
+<p>在日常运营阶段，开发人员、测试人员、QA人员主要做的事情，如下表所示： </p>
+<table cellspacing="0" cellpadding="0" border="1"> 
+ <tbody> 
+  <tr> 
+   <td width="72" valign="top"> <p>阶段</p> </td> 
+   <td width="155" valign="top"> <p>开发人员</p> </td> 
+   <td width="145" valign="top"> <p>测试人员</p> </td> 
+   <td width="182" valign="top"> <p>QA人员</p> </td> 
+  </tr> 
+  <tr> 
+   <td width="72" valign="top"> <p>日常运营</p> </td> 
+   <td width="155" valign="top"> <p>生产故障登记</p> </td> 
+   <td width="145" valign="top"> 
+    <ul> 
+     <li>版本问题反馈和改进提议</li> 
+     <li>生产故障分析</li> 
+    </ul> </td> 
+   <td width="182" valign="top"> <p>管理日常运营活动</p> </td> 
+  </tr> 
+ </tbody> 
+</table>
+<p></p>
+<p>日常运营阶段，并不是终止阶段，即便需求、开发、发布阶段暂停活动，只要产品提供服务，日常运营都存在着。</p>
+<p>作为测试人员的主要实践如下：</p>
+<p><strong>版本问题反馈和改进提议</strong></p>
+<p>对日常运营发生的问题，总结反馈，提出改进建议，并且跟踪实施。</p>
+<p><strong>生产故障分析</strong></p>
+<p>协助开发排查生产故障，避免测试场景的遗漏。</p>
+<h2>6 总结</h2>
+<p>软件测试并不是保证产品质量的最后一道防线，测试人员也不是，测试人员的工作完全可以由更加资深的开发人员来完成，不过现实总是残酷的，目前测试与开发的比例为：1:3，在成熟的团队是这样子，另外一些还在持续改进的团队，由于资源不足，可能去到1:7。开发人员在相当长的一段时间内不可能完全替代测试人员，有个关键要素：思维方式不同，有句古话来形容：江山易改本性难移。当开发人员的思维方式改变的时候，那就成为测试人员了，倒不如把测试人员独立出来更好，并且培养给开发人员一定的测试素养，这个对保证产品质量都是有帮助的。</p>
+<p>全程软件测试实践，强调的是贯穿每个阶段的测试活动，不论是开发、还是测试，要理解双方的活动价值，什么时候该做什么事情，什么事情该做到什么程度才算好，保证每个环节的质量，才能够保证产品的全程质量，另外产品质量不是测试出来的，而是构建过程中沉淀下来的，开发人员的素养、测试人员的素养、以及团队对开发测试过程的重视程度，决定了产品质量。产品质量就如同一块蛋糕，应当切分为小块，落实到每个人手里，让每个人尝到甜头，担当起来。</p>
+<h2>作者简介</h2>
+<p><strong>李乐</strong>（<a href="http://jooben.blog.51cto.com/">博客</a>，<a href="http://weibo.com/iamlile">微博</a>），测试经理，6年以上工作经验，目前就职于ChinaCache质量部。</p><br><br><br><br><br><br></body></html>

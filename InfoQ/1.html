@@ -1,40 +1,5 @@
-<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>Blink其实都在意料之中——Chromium Committer朱永盛访谈</h3><p>朱永盛, Web技术和WebKit/Chromium社区的爱好者和贡献者。2010年之前，从事于XML和XSLT编译器的开发和优化工作。自2010年开始，参与开发过多个基于WebKit/Chromium的项目，一直对WebKit/Chromium开源社区保持关注和贡献，去年成为Chromium项目的Committer。</p> 
-<p>作为QCon北京2013“跨终端的Web”的演讲嘉宾，朱永盛接受了InfoQ的采访。采访内容如下：</p> 
-<p><strong>InfoQ：能否讲讲您与WebKit、Chromium项目的渊源</strong></p> 
-<blockquote> 
- <p><strong>朱永盛：</strong>在业余时间里，发表关于WebKit/Chromium技术内幕的文章，分享个人在项目的经历和理解，和大家一起交流学习心得。具体见个人微博http://blog.csdn.net/milado_nju。联系方式是<a href="mailto:yongsheng@chromium.org">yongsheng@chromium.org</a>。</p> 
-</blockquote> 
-<p><strong>InfoQ：究竟什么是WebKit？</strong></p> 
-<blockquote> 
- <p><strong>朱永盛：</strong>这其实是一个很难的问题，因为WebKit本身的确是很复杂，经常容易被人误解。WebKit只是一个渲染引擎，不是浏览器，主要用来将HTML页面渲染成可视化的图像结果。它包括WebCore，JavaScript，WebKit Ports等，这其中WebKit Ports是很大的一块，而且是平台相关的。所以基于WebKit的浏览器一般需要有不同的WebKit Port。</p> 
- <p>同时，WebKit离一个完整的浏览器非常非常地远，这是因为浏览器还有很多其它的功能。拿Chromium来说，它是一个基于WebKit的浏览器，WebKit用来渲染网页，但是，Chromium做了很多其它的工作，主要两部分：第一，WebKit的Chromium port，这里面主要是Chromium需要将WebKit运行在不同平台(Windows, Mac, Linux等)和图形工具上（skia)；第二，很多新框架和浏览器功能，包括多进程模型，沙箱模型，各种HTML5功能实现，GPU硬件加速机制等等。</p> 
-</blockquote> 
-<p><strong>InfoQ：WebKit Ports是什么？</strong></p> 
-<blockquote> 
- <p><strong>朱永盛：</strong>WebKit的渲染一部分工作是平台独立的（例如HTML解析等），但是还有很大一部分是需要依赖平台的功能（如系统调用），也需要平台上的其它库（如图形库skia，cairo）。平台有多个，例如Windows，Linux，Mac等。同一平台上，也有不同的图形库，这样组合起来就会有很多不同的可能，一个WebKit Port可能就是基于一个这样的组合来实现的。</p> 
-</blockquote> 
-<p><strong>InfoQ：浏览器都使用WebKit，就意味着Web的统一和封闭吗？</strong></p> 
-<blockquote> 
- <p><strong>朱永盛：</strong>相信看了上面的描述，你也很难相信使用WebKit就代表Web会很好的统一和封闭了。因为虽然都叫WebKit，但是WebKit是开放的，它虽然包含了相同的基础架构，但是每个WebKit Port都有不同的实现，导致很多的不一致性，需要大家共同努力。至于封闭问题，这个也是仁者见仁的问题了。本身WebKit是开源的，与其不停的争论，不如大家都参与进去，共同推动Web技术的发展。</p> 
-</blockquote> 
-<p><strong>InfoQ：作为WebKit和Chromium项目的参与者以及Chromium的committer，能否和大家分享一下参与这种著名开源项目的感受？</strong></p> 
-<blockquote> 
- <p><strong>朱永盛：</strong>个人还是很喜欢开源的风格，因为你可以从中学习任何你想知道的东西，而且可以参与。这两个项目里面有很多非常资深的人，但是他们很随和，当然也少不了争论。举个例子来说，基本上当我提交代码补丁后，他们都会很快的反应并给予很多的意见帮忙改进他们，完全是技术讨论，能收获很多。如果想参与到他们中来，建议从一些小的问题入手，找资深的人给些建议，相信可以很快地成长的。</p> 
-</blockquote> 
-<p><strong>InfoQ：对前端开发者来说，了解WebKit如何解析渲染网页，会给他们带来怎样的经验和启示？ </strong></p> 
-<blockquote> 
- <p><strong>朱永盛：</strong>我一直相信这样一个道理，了解背后原理的人总是对问题理解地更深刻。这就像是用C语言编程的人应该了解C语言背后的东西，这样写出的代码更高效。同样，当你了解WebKit是如何工作的时候，知道什么事情它能够高效的做到，什么事情它会比较费时，这绝对会有助于你更深刻的理解你的代码是怎样被执行，从而设计并改进他们。</p> 
-</blockquote> 
-<p><strong>InfoQ：您对Google Blink项目有什么看法？</strong></p> 
-<blockquote> 
- <p><strong>朱永盛：</strong>其实这个并不令人吃惊，因为之前就有很多关于这方面的讨论，如果你关注WebKit的邮件列表就会发现。Google有很多新的功能希望加入WebKit中，但是WebKit可能并不认可，双方分歧越来越多，终于分道扬镳，就像当年的WebKit之于KHTML一样。目前，Blink就是WebKit，没有太多的变动，只是删除了些不用的代码。未来，Blink应该会有很多新颖的功能，大家拭目以待。 以上仅是代表我个人的观点。</p> 
-</blockquote> 
-<p><strong>InfoQ：如果在InfoQ开设专栏详述WebKit内幕，您有什么计划？</strong></p> 
-<blockquote> 
- <p><strong>朱永盛：</strong>一直想把WebKit内部的技术逐一介绍出来，目前的打算是列出一个系统的提纲出来，然后逐步介绍提纲中各个专题的技术内部。因为涉及的技术很多，所以可能这会是一个较长的过程。</p> 
-</blockquote> 
-<p>(采访内容完)</p> 
-<p><strong>特别提醒：</strong></p> 
-<p>QCon北京2013即将在本周四（25号）于北京国际会议中心召开。无论您是否身处会场，都可以通过<a href="http://e.weibo.com/infoqchina">InfoQ微博</a>、微信：infoqchina，来获得场内最新资讯，slides下载信息等内容。</p> 
-<p>腾讯大讲堂仍将鼎力支持QCon：除所有的Keynote之外，二号厅A的其余4个专题16场演讲，都会在大讲堂进行视频直播，敬请关注。</p> 
-<p id="lastElm"></p><br><br><br><br><br><br></body></html>
+<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>RadControls for ASP.NET AJAX Q3 2013 SP1新增Visual Studio 2013和Internet Explorer 11支持</h3><p><a href="http://blogs.telerik.com/blogs/13-11-14/q3-2013-sp1-of-radcontrols-for-asp.net-ajax-is-live">Telerik</a>于近日发布了<a href="http://www.telerik.com/products/aspnet-ajax.aspx">RadControls for ASP.NET AJAX Q3 2013 Service Pack 1</a>，支持<a href="http://blogs.msdn.com/b/somasegar/archive/2013/11/13/visual-studio-2013-launch-announcing-visual-studio-online.aspx">Visual Studio 2013</a>、<a href="http://en.wikipedia.org/wiki/Internet_Explorer_11">Internet Explorer 11</a>和PDF分页。它还为导出到PDF提供了额外的样式表支持，并且包含了PageOrientation属性，通过该属性，可以横向或纵向导出PDF文档。该版本还修复了导出到PDF时与SkinChooser有关的一个问题。</p>
+<p>除了增加新方法GetVersion（）用于以字符串形式返回控件的当前版本外，该Service Pack还提供了在RadScheduler的MonthView中调整约会的能力。</p>
+<p>从这个版本开始，用户将可以在iPad上体验到改进的RadEditor渲染模式。而且，用户可以对新版本中包含的Demo进行重新设计和重新分组，通过这样一种方式，用户可以方便地浏览这些Demo。</p>
+<p>另一方面，它还更新了ComboBox控件。更新之后，当用户选中CheckAll复选框时，会同时触发客户端和服务端事件。除了上述更新以外，SP1版本还包含了多项<a href="http://www.telerik.com/products/aspnet-ajax/whats-new/release-history/q3-2013-sp1-version-2013-3-1114.aspx">Bug修复</a>，并改进了AsyncUpload、AutoCompleteBox、Button、Calendar、Captcha、DropDownList、DropDownTree、Editor、Grid、PersistenceFramework及其它更多控件。</p>
+<p><b>查看英文原文：</b><b><a href="http://www.infoq.com/news/2013/11/radcontrols-aspnet-ajax-q3-sp1">RadControls for ASP.NET AJAX Q3 2013 SP1 Adds Visual Studio 2013 and Internet Explorer 11 Support</a></b></p><br><br><br><br><br><br></body></html>

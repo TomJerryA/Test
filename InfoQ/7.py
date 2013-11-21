@@ -1,60 +1,17 @@
-<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>BlossomがDartに移行</h3><p><a target="_blank" href="http://www.infoq.com/news/2013/04/blossom-dart-switch;jsessionid=FDE796277A073BA4D30C4BB12C9E551B"><em>原文(投稿日：2013/04/08)へのリンク</em></a></p> 
-<div class="clearer-space">
- &nbsp;
-</div> 
-<div id="newsContent"> 
- <p>Thomas Schranz氏は自社製品の <a target="_blank" href="http://blossom.io">Blossom</a> を，<a target="_blank" href="http://www.dartlang.org">Dart</a> に移植すると <a target="_blank" href="http://www.ramen.io/post/46936028144/we-are-switching-to-dart-why">ブログ記事</a> に発表した。Blossom は開発チームのための製品で，Webベースのカンバン方式ボードである。DartはGoogleの開発した，JavaScriptの代替として利用可能な新しいWebプログラミング言語とプラットフォームだ。</p> 
- <p>今回の決定について氏は，JavaScriptエコシステムのフラグメンテーションに対して同社がこれまで長く抱いていた不満の結果だ，と <a target="_blank" href="http://www.ramen.io/post/46936028144/we-are-switching-to-dart-why">書いている</a>。</p> 
- <blockquote> 
-  <p><a target="_blank" href="https://www.blossom.io">Blossom</a> ではJavaScriptを積極的に利用しました。JavaScriptはいろいろな面で素晴らしい言語です。ただし，その暗黒面を回避する手段を知っているならば，ですが。というのは，JavaScriptのエコシステムには，多くの面で重要なものが欠けていると思うからなのです。コア部分に関しては特にです。</p> 
-  <p>何か事を始めようするとき，スタート地点に立つまでに乗り越えなければならない障害が多すぎます。この点が非常に不満なのです。エコシステムの新参者の目には，これがどう映っているのかは分かりません。学習曲線の上昇率としては比較的高い反面，疑問に感じる部分もたくさんあるのではないのでしょうか。</p> 
- </blockquote> 
- <p>結果として同社は，アプリケーションのフロントエンドを段階的にDartへ移行することを決定した。それまでのフロントエンドは <a target="_blank" href="http://coffeescript.org">CoffeeScript</a>, <a target="_blank" href="http://backbonejs.org">Backbone.js</a>, <a target="_blank" href="http://underscorejs.org">Underscore.js</a>, <a target="_blank" href="http://jquery.com">jQuery</a> を採用して，これらを <a target="_blank" href="http://brunch.io">Brunch</a> で組み立てる，という構成だった。</p> 
- <p>InfoQではSchranz氏に，今回の変更について詳しく聞くことにした。</p> 
- <p><b>Dartはまだ若い言語です。なぜ今，このような移行をしようと決意したのでしょう？</b></p> 
- <blockquote> 
-  <p>Dartは確かに，他の言語と比べれば新しい言語です。しかしツーリングや標準ライブラリ，パッケージ管理システムなどが充実しているので，JavaScriptのエコシステムよりも使いやすいものに仕上がっています。</p> 
-  <p>JavaScriptの世界にはフラグメンテーションが多すぎます。コンポーネントに関しては特にそうです。パッケージの管理，モジュール操作，非同期コードや依存性，コレクションの反復処理にさえ，競合する方法が山のように作られています。その結果が，ライブラリ同士の相性の悪さになって現れているのです。独自のエコシステムに引き込もうとするものがあり，それを無視しようと「車輪の再発明」を試みるものがある，といった具合です。私はJavaScriptコミュニティが，RubyやPython，Dartなどの言語のコミュニティに比べて，<a target="_blank" href="http://en.wikipedia.org/wiki/Not_invented_here">NIHシンドローム</a> に冒されている度合いが強いのではないか，と思っています。</p> 
-  <p>そのことが不要な複雑さを生み出しているのです。初心者を困惑させるだけではありません。何年もJavaScriptを書いてきた人たちさえも混乱させているのです。Dartに移行するというのは，表面的にはリスクを伴った行動に思えるかも知れません。しかし私には，JavaScriptに固執することの方がよほどリスクが多いように思えてなりません。</p> 
- </blockquote> 
- <p><b>Dartのどのような部分がBlossomに向いているのでしょうか？</b></p> 
- <blockquote>
-  フロントエンドのコードベースを開発するに当たって，私たちはより生産性の高い方法をずっと探していました。Dartはその点，非常に優れた基盤を提供してくれます。Dart VMのおかげでセーブ・リロードの開発サイクルが非常に短縮されますし，パワフルなコードアナライザも提供されています。このため，Dartエディタでの作業は快適です。自動補完やリファクタリング，デバッグなどの機能が，JavaScriptでは実現できていないレベルでサポートされています。さらにパッケージマネージャや選択的な型付け，一貫性のある標準ライブラリなどのおかげで，コードベースを論理的に検討することも容易です。Dartは単なるプログラミング言語ではなく，さまざまな補助機構を装備しているのです。それを理解することが大切です。結合された開発エクスペリエンスがあるという点が，Dartのすばらしさです。
- </blockquote> 
- <p><b>ですがDartはまだ，開発のアルファ段階です。</b><b>APIもまだ確定ではありません。それが問題になることはないのでしょうか？</b></p> 
- <blockquote>
-  言語のセマンティクスやシンタクスはすでに，かなり安定していると思っています。とは言っても，Dartチームは1.0に向けて作業していますから，その過程でAPIレベルでも数多くの改善が実施されています。ただし幸運なことにDartには，先程述べたような充実したツールサポートがあります。非推奨とマークされたメソッドはエディタが教えてくれますし，必要ならば 
-  <a target="_blank" href="http://www.youtube.com/watch?v=P7htQQQmpGM">コードベースを自動的にアップデートしてくれるクリーンアップツール</a> も提供されています。もっとも，ブログやメーリングリストをフォローさえしていれば，手作業で更新を行うのも大した手間ではありません。
- </blockquote> 
- <p><b>今は切り替えプロセスの真っ只中で，アプリケーションをひとつひとつ移行しているところだと思いますが，</b><b>JavaScriptからDartコードへの対応，あるいはその逆で，どのようなことを経験しましたか？</b></p> 
- <blockquote>
-  <a target="_blank" href="http://www.dartlang.org/articles/js-dart-interop/">js相互運用パッケージ</a> というものが用意されています。これを使えば，JavaScriptオブジェクトの生成や関数のコール，さらにはDart関数をJavaScriptから呼び出すことも可能です。これだけで相互運用性については，かなりの部分がカバーされます。ただしBlossomに関しては，相互運用ライブラリはさほど必要ではありませんでした。 既存のBackbone.jsコードベースの独立性がもともと高く，ウィジェットからウィジェットに置き換える作業も比較的簡単だったからです。アプリケーションの一部については，Dartで置き換えるために 
-  <a target="_blank" href="http://pub.dartlang.org/packages/route">Justin Fagnani氏のルーティングパッケージ</a> も使用しています。今のところ，移行は予想したよりも簡単です。
- </blockquote> 
- <p><b>これまでDartプラットフォームで開発作業を続けてきて，JavaScriptの場合と比べてどうでしたか？</b></p> 
- <blockquote>
-  とても快適ですよ。一貫性のある開発エクスペリエンスのおかげで，エコシステムの基本的なビルディングブロックに無駄な作業を強いられることもなく，自分たちの製品開発に集中することができています。本当に信じられないくらいです。JavaScriptでコードを書いていた頃は，
-  <tt>undefined</tt> をチェックする処理があちらこちらに散らばっていました。まともな言語ならば例外をスローするような場合でも，JavaScriptでは動作を続けようとする傾向があるからです。こんなに解放感を味わえたのは，何年も前，PHPからRubyとRailsフレームワークに切り替えた時以来です。当時はその作業も，リスキーで非常識だと言われたものです。
- </blockquote> 
- <p><b>これまでにDartに移植されたコードは，おおよそどの位ですか？</b></p> 
- <blockquote>
-  現時点では５％程度です。新しい機能をDartで実装していますし，既存部分の移植も継続的に行っています。
- </blockquote> 
- <p><b>同じような移植を行っている製品アプリケーションで，何か知っているものはありますか？</b></p> 
- <blockquote>
-  JavaScriptからDartに移行しているアプリケーションは，これ以外には知りません。ですが今後，もっと同じような発表があったとしても，驚きはしないと思います。Dartコミュニティは拡大していますし，1.0マイルストーンを待ちきれない人たちもたくさんいます。Dartをサポートするサービスもいくつか始まりました。例えば 
-  <a target="_blank" href="http://drone.io">drone.io</a> という継続的インテグレーションサービスは，たくさんのDartのオープンソースパッケージが，テストのために使用しています。
- </blockquote> 
- <p><b>現時点で，Dartへの移行を他の企業にも奨めますか？</b></p> 
- <blockquote>
-  移行するには少し早いかも知れませんが，Dartに注目して，その言語やツール，特にWeb UIに関していろいろ試してみることは，間違いなく奨められます。次の週末にでもぜひ試してみてください。
- </blockquote> 
- <p><b>Dartの将来性についてはどうでしょう，広く普及すると思いますか？</b></p> 
- <blockquote>
-  Dartの将来には期待できると思います。Web開発のおもしろさを思い出させてくれます。プラットフォームに関係する人たちも最高で，コミュニティとパッケージがすでに立ち上がってきています。Webのアプリケーションを開発するのは楽しいですよ。
- </blockquote> 
- <p>Dartが <a target="_blank" href="http://blog.chromium.org/2011/10/dart-language-for-structured.html">最初に発表された</a> 1年半前には，その言語やアプローチに対して <a target="_blank" href="http://www.quirksmode.org/blog/archives/2011/10/dart_or_why_jav.html">批判的な</a> 声が <a target="_blank" href="http://www.sitepoint.com/google-dart-fail/">非常に多かった</a>。しかしそれ以降，Dartプラットフォームは着実に進歩している。JetBrainsのWebStormやIntelliJなど，サードパーティのIDEにも <a target="_blank" href="http://plugins.jetbrains.com/plugin/?id=6351">Dartのサポートが追加されている</a>。サーバサイドDartアプリケーションを <a target="_blank" href="http://www.heroku.com">Heroku</a> にデプロイすることも可能になった。</p> 
- <p>Blossomは一般公開されている製品アプリケーションとして，初めてDartに移植されたものだ。これが諺で言う「最初に跳ぶ羊」になり，他が追随することになるのかどうか。それは時が経てば分かるだろう。</p> 
- <p id="lastElm">&nbsp;</p> 
-</div> 
-<p id="lastElm"></p><br><br><br><br><br><br></body></html>
+<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>Goが4周年</h3><p><a target="_blank" href="http://www.infoq.com/news/2013/11/go-four-years"><em>原文(投稿日：2013/11/11)へのリンク</em></a></p>
+<div class="article_page_left news_container text_content_container"> 
+ <div class="text_info"> 
+  <p>昨日Goプロジェクトは<a href="http://blog.golang.org/4years">4周年</a>を迎えた(Go1がリリースされたのは2012年3月。4周年は<a href="http://golang.org/doc/faq#What_is_the_status_of_the_project">プロジェクトの立ち上げ</a>からの計算)。GoはGoogleでRobert Griesemer氏、Rob Pike氏、Ken Thompsonwas氏によって開発され、オープンソースになる前にIan Taylor氏とRuss Cox氏が加わった。<a href="http://golang.org/doc/faq#creating_a_new_language">FAQ</a>によれば、</p> 
+  <blockquote> 
+   <p>Goはシステムプログラミング向けの既存言語と環境に対する不満から生まれました。プログラミングは難しくなりすぎました。原因のひとつは言語の選択です。効率的にコンパイルでき、効率的に実行できて、プログラミングが簡単な言語を選ぶ必要がありますが、メインストリームの言語でこの3つを同時に満たす言語はありませんでした。安全性と実行の効率性よりもプログラミングしやすさを選ぶ開発者はC++やJavaよりもPythonやJavaScriptのような動的型付け言語を選びました。</p> 
+   <p>Goは動的言語のプログラミングしやすさと静的言語の効率性と安全性を合体させる試みです。また、ネットワークコンピューティング、マルチコアコンピューティングをサポートしたモダンな言語にすることも目標です。そして、高速に動作することも目指しています。つまり、単一のサーバで大きな実行可能ファイルをコンパイルするのにも数秒しかかからないことです。これらの目的を達成するには、多くの言語的課題を解決する必要があります。例えば、表現豊かでかつ軽量な型システム、並列処理とガベージコレクション、堅牢な依存定義などです。これらはライブラリやツールでは解決できない課題です。新しい言語が必要だったのです。</p> 
+  </blockquote> 
+  <p>Goの最新のリリースは1.1。2013年5月にリリースされている。Go 1.2は今月後半に発表される予定。<a href="http://golang.org/doc/go1compat">互換性ドキュメント</a>はGo 1によって将来かかれるプログラムの互換性を押し進め、互換性に対して積極的に取り組むようだ。これはほかの静的言語にない特徴だ。</p> 
+  <p>最初にリリースされてから、Goを使う企業が増えている。パッケージアプリケーション用軽量コンテナツールを提供する<a href="http://docker.io/">Docker</a>、マシンイメージを自動作成するツール<a href="http://packer.io/">Packer</a>、分散メッセージングプラットフォームである<a href="http://bitly.github.io/nsq/">BitlyのNSQ</a>、インフラ自動化システムである<a href="https://juju.ubuntu.com/">CanonicalのJuJu</a>、<a href="http://golang.org/wiki/Projects">その他にも多くのプロジェクト</a>で使われている。Free Software Foundationでさえ、デフォルトの言語として<a href="http://gcc.gnu.org/ml/gcc/2013-11/msg00153.html">GoでJavaを置き換える</a>ことについて議論している。DockerチームはなぜGoに移行したかについての<a href="http://www.slideshare.net/jpetazzo/docker-and-go-why-did-we-decide-to-write-docker-in-go">プレゼンを提供している</a>。</p> 
+  <p>運用側にとってGoの魅力はGoのプログラムはターゲットプラットフォーム上にある単一の実行ファイルに静的にリンクされていることだ。システムは追加のバイナリを事前にインストールしておく必要はない。また、衝突なしでサイドバイサイドで異なるバージョンを実行することも特に心配する必要はない。LinuxやJavaのようにライブラリをばらまいて、特定のセットアップ方法や事前にパスを構築するためのリゾルバが必要になるのとは大違いだ(すべてのプログラムで静的バイナリが重複してしまうのが欠点だが、ディスク容量は安い。大量のプロセスが立ち上がる環境では、メモリの圧迫の方が現実的な心配事だろうが、デブオプのツールは長時間は実行されない傾向がある)。</p> 
+  <p>高可用性を持つマルチスレッドプログラムはGoの<a href="http://golang.org/doc/faq#goroutines">goroutines</a>の恩恵を受けるだろう。goroutinesはマルチスレッド実行がErlangやOccamと似た方法でリクエストを処理できるようにする。これらの仕組みはHoare氏の<a href="http://ja.wikipedia.org/wiki/Communicating_Sequential_Processes">Communicating Sequential Processes</a>(CSP)をベースにしている。メモリやスレッディングアクセスに対処する代わりに、CSPはそれぞれメッセージ/タスクのキューを持ち、これらのメッセージ/タスクをほかのCSPへ送信する。この処理はブロッキングで非同期の処理で各(ブロッキング)CSPは返却メッセージとして返却値をオリジナルのCSPへ送り返す。</p> 
+  <p>Cloud Foundryは<a href="http://blog.cloudfoundry.com/2013/11/09/announcing-cloud-foundry-cf-v6/">RubyからGoへ移行した</a>。コマンドラインツールを事前設定なしに動作させるためだ。実際、バックエンドのサービスと通信する軽量なツールになった。もはやツールを頻繁に更新する必要はなく、小さなツールになっている。</p> 
+  <p>数週間のうちにリリースされる予定の<a href="http://golang.org/doc/go1.2">Go 1.2</a>では、3つのインデックスを使ったスライスができるようになっている。例えば、<code>a[1:10]</code>という表現では、配列aの要素の1から10まで取り出せるが、<code>a[1:2:10]</code>という表現でスライスのキャパシティを定義できる。また、 will slice out every other value. A minor clarification on where <code>nil</code>が使われている部分が少しきれいになったことで参照時に混乱が生まれるかもしれない。その他の変更は<a href="http://golang.org/doc/go1.2">リリースノート</a>に記載されている。</p> 
+  <p>Goに対する批判として、Goが古いリターンコード方式を採用していることが挙げられる。現在広く普及している<a href="http://golang.org/doc/faq#exceptions">例外をベース</a>とした方式ではないのだ。そして、Erlangと違い、goroutinesはデフォルトでは同期ではないマップを受け渡すことができるため、<a href="http://golang.org/doc/faq#atomic_maps">メモリを汚染</a>する場合がある。明らかなのはGoはニッチなユースケースに適用しやすいということだ。また、JavaやErlangのような言語と比べて、Cの軽量で安全な代替となるのはGoだろう。</p> 
+ </div> 
+</div><br><br><br><br><br><br></body></html>

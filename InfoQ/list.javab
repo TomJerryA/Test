@@ -1,6 +1,12 @@
 <html>
  <head></head> 
- <body> 
+ <body>
+  <div>
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/4.javab">What’s Next in Software Analytics</a> In this article, a panel of experts in software analytics discuss the important and overlooked aspects of the software analytics field. Topics covered include what software analytics mean to the developers, practitioners, and information analysts and the opportunities for “natural” software analytics based on statistical natural language processing (NLP). 
+  </div>
+  <div>
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/3.javab">The Best Process Is No Process</a> Bureaucracy often plagues large product development efforts. Just like technical debt slows down development, process debt slows down your business. Have you ever experienced 12,096,000% savings in time? Clarify strategy. Automate processes. Parallelize work. Collaborate intently. Did you know a hidden MS project default may be causing inflexibility? Eliminate process debt. Get to market faster 
+  </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/2.javab">Author Q&amp;A: Java Coding Guidelines</a> Most developers agree that there is a need to write secure code, but often find that the pressures of getting something shipped can constrain their ability to do so. Others may just not know where to start. InfoQ had the opportunity to speak with the authors of Java Coding Guidelines to discuss how their new book can help developers write better code. 
   </div> 
@@ -144,12 +150,6 @@
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/5.javab">Application Security Testing: The Double-sided Black Box</a>In this article, Rohit Sethi discusses the opaque nature of security verification tools and processes and the potential for false negatives not covered by techniques like automated dynamic testing. 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/4.javab">Fn.py: Enjoy Functional Programming in Python</a>Despite the fact that Python is not a pure-functional programming language, it's multi-paradigm and it gives you enough freedom to take advantage of the functional programming approach. 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/3.javab">DevOps @ Prezi</a>DevOps@Prezi is the second article of the “Monthly DevOps War Stories” series. Each month we hear what DevOps brings to a different organisation. This time we hear about &quot;learning devops from within&quot;. 
-  </div> 
+  </div>   
  </body>
 </html>

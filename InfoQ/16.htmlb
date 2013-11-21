@@ -1,122 +1,57 @@
-<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>Fn.py：享受Python中的函数式编程</h3><p>尽管Python事实上并不是一门纯函数式编程语言，但它本身是一门多范型语言，并给了你足够的自由利用函数式编程的便利。函数式风格有着各种理论与实际上的好处（你可以在<a href="http://docs.python.org/2/howto/functional.html#introduction">Python的文档</a>中找到这个列表）：</p><ul> 
- <li>形式上可证</li> 
- <li>模块性</li> 
- <li>组合性</li> 
- <li>易于调试及测试</li> 
-</ul><p>虽然这份列表已经描述得够清楚了，但我还是很喜欢Michael O.Church在他的文章“<a href="http://michaelochurch.wordpress.com/2012/12/06/functional-programs-rarely-rot/">函数式程序极少腐坏</a>（Functional programs rarely rot）”中对函数式编程的优点所作的描述。我在PyCon UA 2012期间的讲座“<a href="http://kachayev.github.com/talks/uapycon2012/index.html">Functional Programming with Python</a>”中谈论了在Python中使用函数式方式的内容。我也提到，在你尝试在Python中编写可读同时又可维护的函数式代码时，你会很快发现诸多问题。</p><p>fn.py类库就是为了应对这些问题而诞生的。尽管它不可能解决所有问题，但对于希望从函数式编程方式中获取最大价值的开发者而言，它是一块“电池”，即使是在命令式方式占主导地位的程序中，也能够发挥作用。那么，它里面都有些什么呢？</p><h2>Scala风格的Lambda定义</h2><p>在Python中创建Lambda函数的语法非常冗长，来比较一下：</p><p>Python</p><pre>
-map(lambda x: x*2, [1,2,3])
-</pre><p>Scala</p><pre>
-List(1,2,3).map(_*2)
-</pre><p>Clojure</p><pre>
-(map #(* % 2) '(1 2 3))
-</pre><p>Haskell</p><pre>
-map (2*) [1,2,3]
-</pre><p>受Scala的启发，Fn.py提供了一个特别的_对象以简化Lambda语法。</p><pre>
-from fn import _
-
-assert (_ + _)(10, 5) = 15
-assert list(map(_ * 2, range(5))) == [0,2,4,6,8]
-assert list(filter(_ &lt; 10, [9,10,11])) == [9]
-</pre><p>除此之外还有许多场景可以使用_：所有的算术操作、属性解析、方法调用及分片算法。如果你不确定你的函数具体会做些什么，你可以将结果打印出来：</p><pre>
-from fn import _ 
-
-print (_ + 2) # &quot;(x1) =&gt; (x1 + 2)&quot; 
-print (_ + _ * _) # &quot;(x1, x2, x3) =&gt; (x1 + (x2 * x3))&quot;
-</pre><h2>流（Stream）及无限序列的声明</h2><p>Scala风格的惰性求值（Lazy-evaluated）流。其基本思路是：对每个新元素“按需”取值，并在所创建的全部迭代中共享计算出的元素值。Stream对象支持&lt;&lt;操作符，代表在需要时将新元素推入其中。</p><p>惰性求值流对无限序列的处理是一个强大的抽象。我们来看看在函数式编程语言中如何计算一个斐波那契序列。</p><p>Haskell</p><pre>
-fibs = 0 : 1 : zipWith (+) fibs (tail fibs)
-</pre><p>Clojure</p><pre>
-(def fib (lazy-cat [0 1] (map + fib (rest fib))))
-</pre><p>Scala</p><pre>
-def fibs: Stream[Int] = 
-     0 #:: 1 #:: fibs.zip(fibs.tail).map{case (a,b) =&gt; a + b} 
-</pre><p>现在你可以在Python中使用同样的方式了：</p><pre>
-from fn import Stream 
-from fn.iters import take, drop, map
-from operator import add
-
-f = Stream()
-fib = f &lt;&lt; [0, 1] &lt;&lt; map(add, f, drop(1, f))
-
-assert list(take(10, fib)) == [0,1,1,2,3,5,8,13,21,34]
-assert fib[20] == 6765
-assert list(fib[30:35]) == [832040,1346269,2178309,3524578,5702887]
-</pre><h2>蹦床（Trampolines）修饰符</h2><p>fn.recur.tco是一个不需要大量栈空间分配就可以处理TCO的临时方案。让我们先从一个递归阶乘计算示例开始：</p><pre>
-def fact(n):
-     if n == 0: return 1
-     return n * fact(n-1)
-</pre><p>这种方式也能工作，但实现非常糟糕。为什么呢？因为它会递归式地保存之前的计算值以算出最终结果，因此消耗了大量的存储空间。如果你对一个很大的n值（超过了sys.getrecursionlimit()的值）执行这个函数，CPython就会以此方式失败中止：</p><pre>
-&gt;&gt;&gt; import sys
-&gt;&gt;&gt; fact(sys.getrecursionlimit() * 2)
-... many many lines of stacktrace ...
-RuntimeError: maximum recursion depth exceeded
-</pre><p>这也是件好事，至少它避免了在你的代码中产生严重错误。</p><p>我们如何优化这个方案呢？答案很简单，只需改变函数以使用尾递归即可：</p><pre>
-def fact(n, acc=1):
-     if n == 0: return acc
-     return fact(n-1, acc*n)
-</pre><p>为什么这种方式更佳呢？因为你不需要保留之前的值以计算出最终结果。可以在Wikipedia上查看更多<a href="http://www.google.com/url?q=http%3A%2F%2Fen.wikipedia.org%2Fwiki%2FTail_call&amp;sa=D&amp;sntz=1&amp;usg=AFQjCNEu4mNimTv-aGzZPMC1yMqAvtfIhQ">尾递归调用优化</a>的内容。可是……Python的解释器会用和之前函数相同的方式执行这段函数，结果是你没得到任何优化。</p><p>fn.recur.tco为你提供了一种机制，使你可以使用“蹦床”方式获得一定的尾递归优化。同样的方式也使用在诸如Clojure语言中，主要思路是将函数调用序列转换为while循环。</p><pre>
-from fn import recur
-
-@recur.tco 
-def fact(n, acc=1):
-     if n == 0: return False, acc
-     return True, (n-1, acc*n)
-</pre><p>@recur.tco是一个修饰符，能将你的函数执行转为while循环并检验其输出内容：</p><ul> 
- <li>(False, result)代表运行完毕</li> 
- <li>(True, args, kwargs)代表我们要继续调用函数并传递不同的参数</li> 
- <li>(func, args, kwargs)代表在while循环中切换要执行的函数</li> 
-</ul><h2>函数式风格的错误处理</h2><p>假设你有一个Request类，可以按照传入其中的参数名称得到对应的值。要想让其返回值格式为全大写、非空并且去除头尾空格的字符串，你需要这样写：</p><pre>
-class Request(dict):
-     def parameter(self, name):
-         return self.get(name, None)
-
-r = Request(testing=&quot;Fixed&quot;, empty=&quot; &quot;)
-param = r.parameter(&quot;testing&quot;)
-if param is None:
-     fixed = &quot;&quot;
-else:     
-     param = param.strip()
-     if len(param) == 0:
-         fixed = &quot;&quot;
-     else:
-        fixed = param.upper() 
-</pre><p>额，看上去有些古怪。用fn.monad.Option来修改你的代码吧，它代表了可选值，每个Option实例可代表一个Full或者Empty（这点也受到了Scala中<a href="http://www.scala-lang.org/api/current/index.html#scala.Option">Option</a>的启发）。它为你编写长运算序列提供了简便的方法，并且去掉除了许多if/else语句块。</p><pre>
-from operator import methodcaller
-from fn.monad import optionable
-
-class Request(dict):
-     @optionable
-     def parameter(self, name):
-         return self.get(name, None)
-
-r = Request(testing=&quot;Fixed&quot;, empty=&quot; &quot;)
-fixed = r.parameter(&quot;testing&quot;) 
-          .map(methodcaller(&quot;strip&quot;)) 
-          .filter(len) 
-          .map(methodcaller(&quot;upper&quot;)) 
-          .get_or(&quot;&quot;)
-</pre><p>fn.monad.Option.or_call是个便利的方法，它允许你进行多次调用尝试以完成计算。例如，你有一个Request类，它有type，mimetype和url等几个可选属性，你需要使用最少一个属性值以分析它的“request类型”：</p><pre>
-from fn.monad import Option 
-
-request = dict(url=&quot;face.png&quot;, mimetype=&quot;PNG&quot;) 
-tp = Option \ 
-         .from_value(request.get(&quot;type&quot;, None)) \ # check &quot;type&quot; key first 
-         .or_call(from_mimetype, request) \ # or.. check &quot;mimetype&quot; key 
-         .or_call(from_extension, request) \ # or... get &quot;url&quot; and check extension 
-         .get_or(&quot;application/undefined&quot;)
-</pre><h2>其余事项？</h2><p>我仅仅描述了类库的一小部分，你还能够找到并使用以下功能：</p><ul> 
- <li>22个附加的itertools代码段，以扩展内置module的功能的附加功能</li> 
- <li>将Python 2和Python 3的迭代器（iterator）（如range，map及filtter等等）使用进行了统一，这对使用跨版本的类库时非常有用</li> 
- <li>为函数式组合及partial函数应用提供了简便的语法</li> 
- <li>为使用高阶函数（apply，flip等等）提供了附加的操作符</li> 
-</ul><h2>正在进行中的工作</h2><p>自从在Github上发布这个类库以来，我从社区中收到了许多审校观点、意见和建议，以及补丁和修复。我也在继续增强现有功能，并提供新的特性。近期的路线图包括以下内容：</p><ul> 
- <li>为使用可迭代对象（iterable），如foldl，foldr增加更多操作符</li> 
- <li>更多的monad，如fn.monad.Either，以处理错误记录</li> 
- <li>为大多数module提供C-accelerator</li> 
- <li>为简化lambda arg1: lambda arg2:…形式而提供的curry函数的生成器</li> 
- <li>更多文档，更多测试，更多示例代码</li> 
-</ul><h2>链接</h2><p>如果你想了解这个类库的更多信息，可以使用以下资源：</p><ul> 
- <li><a href="http://pypi.python.org/pypi?:action=display&amp;name=fn">PyPI</a>上的类库</li> 
- <li><a href="https://github.com/kachayev/fn.py">GitHub</a>上的源代码</li> 
- <li><a href="https://github.com/kachayev/fn.py#fnpy-enjoy-fp-in-python">文档</a></li> 
- <li><a href="https://github.com/kachayev/fn.py#installation">安装方法</a></li> 
-</ul><h2>关于作者</h2><p><strong>Alexey Kachayev</strong>是一个精力充沛且狂热的程序员，开源社区的活跃者，并经常在各种技术会议中进行演讲。他是Kitapps Inc的CTO。Alexey在Python、Erlang、Clojure及函数式编程语言（如Haskel及Lisp）等方面经验最丰富。他主要的兴趣所在是分布式应用、云计算、实时web和编译原理等。Alexey也为CPython解释器和Storm（实时数据处理器）贡献过自己的力量。</p><p><strong>查看英文原文</strong>：<a href="http://www.infoq.com/cn/articles/;jsessionid=106DBBCA89F39DD7C04E254655F675A3">Fn.py: Enjoy Functional Programming in Python</a></p><hr /><p>感谢<a href="http://www.infoq.com/cn/bycategory.action;jsessionid=106DBBCA89F39DD7C04E254655F675A3?authorName=杨赛">杨赛</a>对本文的审校。</p><p>给InfoQ中文站投稿或者参与内容翻译工作，请邮件至<a href="mailto:editors@cn.infoq.com">editors@cn.infoq.com</a>。也欢迎大家通过新浪微博（<a href="http://www.weibo.com/infoqchina">@InfoQ</a>）或者腾讯微博（<a href="http://t.qq.com/infoqchina">@InfoQ</a>）关注我们，并与我们的编辑和其他读者朋友交流。</p><div class="clearer-space"></div><br><br><br><br><br><br></body></html>
+<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>高德LBS开放平台产品总监房芳谈LBS应用的需求和创新空间</h3><p>在2013年10月的阿里云开发者大会上，作为合作伙伴出席的高德地图宣布与阿里云深入合作推出LBS云，其LBS开放平台与阿里云进行了打通，双方的数据共享，用户账号打通。此前，高德地图API已经跟淘宝和新浪微博实现了账户打通，共享酒店、团购、打车、旅游等服务数据。</p>
+<p>高德地图API 是一套应用程序接口，向所有基于位置的开发者和企业免费开放。根据高德地图产品经理的介绍，其API特点为：</p>
+<ul> 
+ <li>覆盖Android、iOS、Windows Phone三个平台和浏览器。</li> 
+ <li>地图矢量引擎，数据传输量小。</li> 
+ <li>地图3D技术，可以从各个角度显示地图。</li> 
+ <li>全新动画效果。</li> 
+ <li>支持3D离线地图。</li> 
+ <li>包含团购和优惠搜索。</li> 
+ <li>包含步行路线规划。</li> 
+ <li>Android Map API完全兼容Google Android Map API风格。</li> 
+</ul>
+<p>除了HTML5矢量3D地图，其开放平台还提供街景地图API、导航地图API、增强现实(AR)实景导航API。除了最基础的地图展现之外，开发者还可以基于其API实现地图上的标注，比如标注兴趣点、路线、路面状况，基于位置点到兴趣点的查询服务，包括出行规划服务等。</p>
+<p>InfoQ编辑在大会上对高德LBS开放平台产品总监房芳进行了一次采访，交流了API开发的难点、LBS应用需求和创新空间、有哪些案例可以学习、还有多少市场可以挖掘等话题。</p>
+<p><strong>InfoQ：您认为地图API开发的难点在哪里？在高德地图API开发的过程中，你们是如何解决这些难点的？</strong></p>
+<blockquote> 
+ <p><strong>房芳：</strong>高德地图API&nbsp; 产品上的难点主要集中在如何在简单易用API和个性化API的取舍和兼容上。保证用户能开发符合自己应用风格的同时降低用户的使用难度，解决方案主要依赖产品团队与技术团队沟通及用户的调研和反馈上。在控制耗电量上我们也做了大量改进，例如在操作线程和刷新率，优化地图数据减少网络请求，减少绘制元素等方面做了优化。</p> 
+</blockquote>
+<div id="lowerFullwidthVCR"></div>
+<p><strong>InfoQ：就您目前的观察，地图API的需求在哪些领域应用的比较成熟，在哪些领域还刚刚起步，甚至还没有起步，但是有很大潜力的？</strong></p>
+<blockquote> 
+ <p><strong>房芳：</strong>地图API 有基于位置的都有需求，现在看来查找出行路线，附近找美食，找宾馆，找车，交友等基本涵盖了生活上的大部分需求。与每个人自己所在位置的生活需求都是我们要发展的方向。我比较看好旅游的GPS服务，例如基于所在位置像有个导游一样实时的播报导游词。再有现在的移动设备（手机、相机等）的相片有EXIF信息里可存储位置信息，如何利用好照片的这个信息也可值得思考，在很火的可穿戴设备上取到位置信息进行分析和展现都是很好的方向。</p> 
+</blockquote>
+<p><strong>InfoQ：就你们目前对国际上各类应用的研究，现在对LBS应用商业化方面，感觉比较成熟的方向有哪些，可以给开发者做一些推荐么？</strong></p>
+<blockquote> 
+ <p><strong>房芳：</strong>LBS是移动互联网新型的一个产业，对于商业化来讲，国内外都没有一个可以成功借鉴的经验，没有很成熟的对LBS进行了商业化的案例。</p> 
+ <p>咱们先说国外的情况。国外LBS开放平台做得好的就是Google，还有前一段比较有名的Mapbox。他们目前都是通过提供服务来商业化的途径，也就是说我提供服务，你付我钱：调用多少次地图、调用多少次服务，我就付多少钱；或者是开发者的数据存储在Google上或Mapbox上，占用多大的空间，付多少钱，大概是这样的一个模式。这种模式也没有成规模。</p> 
+ <p>国内来讲，这种模式现在看来是不太行得通。为什么？因为国内整个互联网、移动互联网的环境，就是一个免费的环境。国内的用户没有习惯去付费使用什么东西，所以说这种按服务付费的模式目前来讲是在国内是行不通的。在商业化方面，所有跟LBS有关的这些互联网和移动互联网企业都还在摸索的过程中。虽然是在摸索，但也会有一些重点的发展方向。比如说大家都熟知的O2O闭环，就是看能不能通过LBS开放平台形成O2O交易的分成；还有基于位置的精准广告；然后就是看LBS云能不能产生什么模式。大概会在这个三点上重点的去探索。</p> 
+</blockquote>
+<p><strong>InfoQ：你觉得像打车应用这样的模式如何？还有面向企业内部的，比如像物流公司他们内部会有一些系统是在卡车上装GPS，通过LBS服务来管理？</strong></p>
+<blockquote> 
+ <p><strong>房芳：</strong>物流公司这种行业用户跟移动互联网、生活服务领域里的LBS服务是有区别的。其实整个LBS发展的历史，是先从行业开始，然后才是移动互联网。行业本身有行业的规矩，基本上是按服务付费的；但是高德LBS开放平台主要是针对移动互联网的，针对生活服务领域的，所以说也不太一样。</p> 
+ <p>我认为打车应用是典型的LBS，生活服务领域内的O2O的创新。但是，它现在也没有真正从平台本身盈利，也是在一个攒用户、攒流量、卡位置的一个阶段。</p> 
+</blockquote>
+<p><strong>InfoQ：除了酒店、团购、打车、旅游之外，您对平行实境类游戏的发展潜力怎么看？您觉得结合LBS服务是否有可能打造更加有创造力、跟现实结合更加紧密的游戏，比如Ingress正在进行的尝试？</strong></p>
+<blockquote> 
+ <p><strong>房芳：</strong>其实LBS行业本身的特性就是有限时性的位置性。其实LBS未来的一个技术领域的一个方向，有很大的想像空间的，就是增强现实和虚拟现实，AR方面的。比如说AR导航，AR的地图搜索，AR的地图展示，当然在游戏领域里，Ingress它确实是就是很创造性的基于LBS限时性很强的、互动性很强的游戏。在国内其实已经有一些LBS游戏领域的应用了，比如说我们前一段跟西山居合作的《争宠》游戏，它就是基于LBS的，主要是基于用户现实的位置去做一些战斗。</p> 
+ <p>但是，争宠还没有虚拟现实的这些特性。至于说这个在游戏领域，未来LBS是不是有很大的发展方向，或者说是不是有很大的结合点，我觉得想象空间是很大的，但是就是估计还需要时间，为什么呢？因为国内的这些游戏玩家也有个特点，就是很宅，宅男，让他们改变一种游戏的方式，让他必须得去实地去参与这种增强现实的游戏，我觉得还需要一定的时间。</p> 
+ <p>但是我觉得，肯定会是一个很好的方向，肯定有特别大的想象空间。</p> 
+</blockquote>
+<p><strong>InfoQ：现在手机用定位服务，还是耗电比较大，定位还是比较慢的，这方面现在有哪些技术上的进展？</strong></p>
+<blockquote> 
+ <p><strong>房芳：</strong>咱们现在提供的定位服务都是一个综合定位服务。什么叫综合定位服务呢？就是说我基于GPS定位，WIFI信号定位和基站信号定位为一体的综合服务。只要这个服务是综合的，就会有很大的这个改进的空间。</p> 
+ <p>其实定位服务为什么耗电量比较大？有两个主要因素，第一个主要因素就是GPS定位本身，你涉及到GPS硬件设备本身，它耗电量大，这是硬件设备要解决的问题，第二就是我定位次数太多了，我不断的在定位。这两个是造成这个定位耗电量大的主要原因。</p> 
+ <p>怎么解决呢？其实也是通过综合服务本身来解决。因为定位一定是要结合应用场景的，以后要智能化，我结合你的应用场景来决定我这个综合的定位服务是采取GPS定位多，还是WIFI定位多，还是基站的定位多。那你比如说可以按时间维度来算，因为手机上都有一个传感器，这个大家也都知道，现在技术比较新颖的，就是利用这个传感器来去判断一些定位的应用场景，来去做一些定位服务的优化。比如说，我可以得知用户现在是在走路，那么步行的时候，就没有必要像开车那样，我的定位次数就可以去调整。如果我现在判断用户是在开车，就是不一样的。还有空间上的，就比如说我现在可以精准的判断用户现在是在室内，就是根据它WIFI信号的多少，或者基站信号的强弱，距离，等等，很复杂的这些因素，我可以判断这个用户现在是在室内，或者说这个用户在室外但是也离室内很近，那么我一定不会开启GPS定位，就是因为室内定位和基站定位精度也慢慢就是在变得更加精确。</p> 
+ <p>定位本身就是一个大数据的问题。你的数据越多，它的算法相对来讲也比较简单，也比较固定，你的定位就越明确，尤其是WIFI和基站定位。再比如说一些应用场景，比如说我是一个天气预报APP，去定位的时候，我就没有必要告诉你我是在哪条街，哪条门牌号下，我就告诉你在那个城市，或者说我在海淀区，还是朝阳区就可以了。必须得结合应用场景，再利用手机上先进的传感器等等，就是综合的解决这种耗电量大的问题和定位慢的问题。</p> 
+</blockquote>
+<p><strong>InfoQ：关于可穿戴设备这块，高德有没有做一些有趣的尝试？</strong></p>
+<blockquote> 
+ <p><strong>房芳：</strong>我觉得可穿戴设备一定是以后移动互联网未来的一个特别重要的方向。当然就是最具有想像空间的是那个Google眼镜，我个人比较看好Google眼镜。</p> 
+ <p>目前来讲已经合作的可穿戴设备里头，可以举几个例子，比如说宠物项圈是我们以前的合作的一个案例。因为大家现在养宠物的人越来越多，宠物经常会丢，丢了宠物大家会很伤心，有的硬件厂商开发了宠物项圈，这个宠物项圈就可以定位这个宠物的大概的位置，这是一个。</p> 
+ <p>还有就是手表，三星前一段发布的那个智能手表，我们高德合作了一些老人和小孩用的手表，也是Android系统，它可以知道这个老人和小孩大概的位置在哪，或者说他现在是不是身体的情况不太好，等等这些都可以感知，所以老人和小孩携带这个便携式手表，目前也是可以实施的合作点。</p> 
+ <p>还有现在比较流行的健康手环，可以记录你每天步行了多少，每天做了多少运动，身体状况是什么样，你的睡眠是多少。健康手环也会是一个现在可以实施的一个合作点。</p> 
+ <p>当然未来要是Google眼镜，或者说可穿戴眼镜设备要是火起来，真正成熟了之后想像空间就更大了，因为它有可能改变我们整个目前的二维或者3D地图的这个领域。戴上Google眼镜，我就完全是虚拟现实的，整个虚拟现实的导航，我不是说展示一张二维的或三维的地图的导航，你就是看到真实场景，它在给你导航。比如说我想搜索附近的餐馆，也不是说你展现在地图上的一个餐馆，就是一个二维地图上的餐馆，那就是结合真实场景的，就是附近有什么餐馆，大概有多少米，都可以显示给大家。可穿戴式的眼镜未来有太大的想像空间了，但就是可能时机还不成熟。</p> 
+</blockquote>
+<h2>嘉宾简介</h2>
+<p><strong>房芳</strong>，高德LBS开放平台产品总监，北京航空航天大学硕士研究生毕业，2007年加入高德，负责MapABC地图API相关产品的设计和研发，并参与了google地图、腾讯地图、苹果地图在线服务提供等重要合作项目。2011年开始负责推出MapABC地图服务平台，为行业用户提供完整的LBS解决方案。2012年，根据公司战略的调整，全面向互联网和移动互联网转型，开始担任高德地图开放平台产品总监，负责高德地图开放平台全线产品。</p><br><br><br><br><br><br></body></html>

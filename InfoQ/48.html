@@ -1,58 +1,8 @@
-<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>ZeroTurnaround宣布发布LiveRebl 2.6版</h3><p>ZeroTurnaround宣布旗下的软件发布自动化工具LiveRebel 2.6已经可用。</p> 
-<p>2.6版添加了下列特性：</p> 
-<ul> 
- <li>支持使用Java、PHP、Python、Perl和Ruby等语言构建的应用。</li> 
- <li>数据库更新和版本控制，使运维团队能随着关联应用而更新或回滚数据库的变更。</li> 
- <li>多平台更新，对于使用多个平台和数据库构建的应用，团队能够 将其发布到不同的环境中。</li> 
- <li>属性管理， 支持针对场景背后的环境 使用特定配置,从而把一个单独的应用发布到若干不相似的环境中。</li> 
- <li>监控应用和服务器的实时健康情况。</li> 
-</ul> 
-<p>InfoQ就LiveRebel对ZeroTurnaround的产品市场经理Krishnan Badrinarayanan进行了采访。</p> 
-<p><b>我想你们对LiveRebel的定位是一款测试和发布工具，而非持续集成工具。LiveRebel对测试和发布做了哪些改进？</b></p> 
-<blockquote> 
- <p>在考虑发布应用时,可以把持续集成工具当作增强型脚本。它什么都能做,但开发者得负责全部的编码和维护工作。持续集成工具并不了解开发者的环境、配置、数据库和其他信息，它们只是一个接一个地触发和执行任务，并且记录成功或失败等信息。</p> 
- <p>LiveRebel的处理方式有所不同,它知道环境的所有信息，包括运行的是哪些服务器,部署的是哪些应用和哪个版本等。它能够管理特定于环境的属性，并对其进行版本控制。它还能够知道数据库 和环境的改变，同样可以对其进行版本控制。</p> 
- <p>我们可以举一个典型的用例 ：一个敏捷开发团队每几天进行一次发布更新。测试团队接收到每个发布包后，使用LiveRebel自动将代码、数据库和配置等内容部署到测试环境中。一旦部署完毕，LiveRebel会自动调用测试脚本。 测试通过之后，运维团队即可将应用部署到试机环境中。LiveRebel会自动调用冒烟测试。最后，运维团队能够在不停机状态下将应用部署到生产环境中。如果部署过程中有任何环节失败了，LiveRebel将自动回滚所做的变更。</p> 
- <p>最后LiveRebel就可以将应用——包括代码、数据库和配置等全部同步的内容——发布到各种环境了，现在支持物理环境、虚拟环境或云环境 。部署也会进行版本管理，而且是自动化、完全可回溯且可测试的。可以预见，其结果是团队能更好地进行管理并加速发布，无需在高质量和打断用户体验之间做出妥协。</p> 
-</blockquote> 
-<p><b>确实需要持续集成工具吗，或者说LiveRebel能否执行持续集成功能?</b></p> 
-<blockquote> 
- <p>他们占据着不同的细分市场。LiveRebel并不负责构建，它负责的是构建以后的事。LiveRebel是一款发布自动化工具，也可以与流行的持续集成工具集成。例如，如果开发团队过去使用的是 手工打包发布，现在他们可以使用LiveRebel命令中心来上传所打的包，然后快速安全地将其部署到多种环境中。</p> 
- <p>然而，如果团队使用的是像Jenkins、Hudson或Bamboo这样的持续集成工具的话，他们可以安装LiveRebel插件，并创建部署任务， 这些任务会将部署转LiveRebel。然后，LiveRebel会部署发布包，包括代码、数据库和配置等内容，在 不停机的状态下将它们一起部署到所选的环境中，而且部署操作有故障保护的。</p> 
-</blockquote> 
-<p><b>你能谈一下属性管理吗？</b></p> 
-<blockquote> 
- <p>在通过测试、试机、生产等阶段发布应用时，或者将应用部署到 客户或外部的环境时，开发者所遇到的环境属性、环境变量和配置会有所不同。这往往是通过为每个环境都打一个单独的包来解决的。 这意味着面向不同环境的发布会有细微的不同，可能无法完全测试。有些人会通过内部开发的脚本和工具将特定于环境的属性外化， 以此来解决问题。</p> 
- <p>有了LiveRebel，发布工程师可以针对每个环境指定应用适用的属性集，LiveRebel可以把相同的包发布到选定环境中，并应用各自的属性集。缺少某些属性时，它甚至还会给出警告。</p> 
- <p>这意味着，在测试、试机和生产等环境中，开发者能够进行同样的发布过程，而且可以确保在提交给用户充分测试。</p> 
-</blockquote> 
-<p><b>监控能力怎么样呢？</b></p> 
-<blockquote> 
- <p>LiveRebel提供了基本的应用和服务器监控功能，在监控界面上 ，它在每个应用和服务器旁都放有一个 图标。该图标会基于服务器或应用接收到的请求数而跳动，而且会根据运行健康状态由绿变红。鼠标划过该图标时，它会弹出一个框，上面显示响应吞吐量等关键统计信息。它还不能替代成熟的应用性能监控产品，但它确实能够提供用于监控服务器和应用的健康状况的关键指标。</p> 
-</blockquote> 
-<p><b>LiveRebel</b><b>支持如Ant、Maven和Gradle等常用的构建工具吗？</b></p> 
-<blockquote> 
- <p>支持。LiveRebel提供了功能齐全的命令行接口和REST API。所以，利用几行脚本，工程师即可将LiveRebel与发布工具集成起来。</p> 
-</blockquote> 
-<p><b>LiveRebel</b><b>能和Hudson，Bamboo和TeamCity等各种源代码控制系统集成吗？</b></p> 
-<blockquote> 
- <p>LiveRebel有现成的Hudson、Jenkins和Bamboo插件。支持TeamCity的插件正在开发中。插件可以通过相应的插件菜单来安装，而且可以通过设置使其与LiveRebel安全地通信。 设置完毕之后，通过LiveReblel，开发者能够<a>自动地将可发布的产品从持续集成工具部署到所选环境中</a> ，而且这是不需要停机的。所有部署都有故障保护，也就是说，如果有失败发生，LiveRebel能在用户受到影响之前自动回滚任何修改。任何源代码控制系统都可以。为了管理应用配置，LiveRebel使用了GIT。</p> 
-</blockquote> 
-<p><b>这与它的姊妹产品JRebel看起来完全不同，两者之间有什么协作么？</b></p> 
-<blockquote> 
- <p>当然有了，这是我们帮助软件更快推向世界使命的一部分！我们帮助软件团队把开发和发布应用的过程变得更愉快更有效率。</p> 
-</blockquote> 
-<p><b>它支持哪些操作系统，包括Windows、Unix和Linux吗？</b></p> 
-<blockquote> 
- <p>这些都支持，而且还支持MacOS X。这儿有一个的<a href="http://zeroturnaround.com/software/liverebel/what-we-support/%20-%20headline">完整清单</a>。</p> 
-</blockquote> 
-<p><b>你们的网站说它是免费的,那么你们的定价模型是什么？</b></p> 
-<blockquote> 
- <p>LiveRebel对于管理2个以内的服务器是免费的，也就是开发者至多可以在两台服务器上免费部署应用,数据库服务器不算在内。管理任何额外的服务器每年需要$420。</p> 
-</blockquote> 
-<p>Badrinarayanan告诉InfoQ，下一步产品开发将集中在增加平台覆盖面和提供发布管理支持。关于LiveRebel更多信息请访问<a href="http://www.liverebel.com/">这里</a>。</p> 
-<p><b>查看英文原文</b>：<a href="http://www.infoq.com/news/2013/03/LiveRebel2.6;jsessionid=5476E00BCFD74A667F5FD826DB2555D9">ZeroTurnaround has Announced the Availability of LiveRebel 2.6</a></p> 
-<hr /> 
-<p>感谢<a href="http://www.infoq.com/cn/bycategory.action;jsessionid=5476E00BCFD74A667F5FD826DB2555D9?authorName=臧秀涛">臧秀涛</a>对本文的审校。</p> 
-<p>给InfoQ中文站投稿或者参与内容翻译工作，请邮件至<a href="mailto:editors@cn.infoq.com">editors@cn.infoq.com</a>。也欢迎大家通过新浪微博（<a href="http://www.weibo.com/infoqchina">@InfoQ</a>）或者腾讯微博（<a href="http://t.qq.com/infoqchina">@InfoQ</a>）关注我们，并与我们的编辑和其他读者朋友交流。</p> 
-<p id="lastElm"></p><br><br><br><br><br><br></body></html>
+<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>Oracle发布2013 JVM语言峰会的视频和幻灯片</h3><p>Oracle<a href="http://www.oracle.com/technetwork/java/javase/community/jvmls2013-2013900.html">发布了2013 JVM语言峰会的视频和幻灯片</a>，该会议是在今年7月份举行的。JVM语言峰会为研究人员和使用JVM开发替代语言的语言设计人员或者JVM设计人员报告如何利用平台提供了机会。</p>
+<p>自第一次发布以来，Java平台已经极大地受益于标准JVM规范。该规范引入了字节码和兼容性层，允许程序在任何体系结构上运行。尽管最初解释执行，但JVM很早就已经有一个JIT优化器，用于提升执行速度和整个平台的性能。目前，JVM是一个能使Java应用程序执行速度接近于C的强力工具。</p>
+<p>按照一直以来的规定，字节码独立于Java，以允许Java未来与其它语言共存（并使Java编译器的工作更简单；通过将优化工作下移到运行时环境而不是编译器，新版本的JVM已经提升了现有Java代码的速度，而且不需要重新编译）。<a href="http://wiki.jvmlangsummit.com/Main_Page">自2008年以来</a>，JVM峰会就已经将JVM开发人员和JVM之上的开发人员聚集到一起。</p>
+<p>在今年的峰会上，出现了非Java语言，如<a href="http://www.oracle.com/ocom/groups/public/@otn/documents/webcontent/2013519.pdf">Scala实战故事</a>（<a href="http://medianetwork.oracle.com/video/player/2623635250001">视频</a>）、<a href="http://www.oracle.com/technetwork/java/jvmls2013vitek-2013524.pdf">Java中的R</a>（<a href="http://medianetwork.oracle.com/video/player/2623518144001">视频</a>）以及<a href="http://www.oracle.com/technetwork/java/jvmls2013breslav-2013924.pdf">Kotlin反射</a>（<a href="http://medianetwork.oracle.com/video/player/2623518144001">视频</a>）。JRuby的Charles Nutter也出席了会议，谈论了<a href="http://www.oracle.com/technetwork/java/jvmls2013nutter-2013526.pdf">Java本地运行时</a>（<a href="http://medianetwork.oracle.com/video/player/2630340184001">视频</a>、<a href="http://github.com/jnr/">Github项目</a>和<a href="http://search.maven.org/#search%7Cgav%7C1%7Cg%3A%22com.github.jnr%22%20AND%20a%3A%22jffi%22">Maven中心资产</a>），它使用了一个JNI目前允许的本地代码规范的更优化版本，旨在为Java提供一个真正的POSIX层。</p>
+<p>会议还论及了JVM上的工作，包括<a href="http://www.oracle.com/technetwork/java/jvmls2013szegedi-2013520.pdf">在JVM上适配Nashorn</a>（<a href="http://medianetwork.oracle.com/video/player/2623645004001">视频</a>）以及<a href="http://www.oracle.com/technetwork/java/jvmls2013lager-2014150.pdf">Nashorn实战故事</a>（<a href="http://medianetwork.oracle.com/video/player/2630340183001">视频</a>）。性能方面的讨论包括<a href="http://www.oracle.com/technetwork/java/jvmls2013kuksen-2014088.pdf">Lambda表达式性能</a>（<a href="http://medianetwork.oracle.com/video/player/2623576348001">视频</a>）、<a href="http://www.oracle.com/technetwork/java/jvmls2013ship-2014087.pdf">JVM基准测试</a>（<a href="http://medianetwork.oracle.com/video/player/2630310904001">视频</a>）、<a href="http://www.oracle.com/technetwork/java/jvmls2013sciam-2013525.pdf">Java的封装对象</a>（<a href="http://medianetwork.oracle.com/video/player/2623645005001">视频</a>）、<a href="http://www.oracle.com/technetwork/java/jvmls2013cook-2014086.pdf">混合分布计算</a>（<a href="http://medianetwork.oracle.com/video/player/2623639771001">视频</a>）<a href="http://www.oracle.com/technetwork/java/jvmls2013caspole-2013527.pdf">项目Sumatra</a>和<a href="http://www.oracle.com/technetwork/java/jvmls2913wuerth-2013918.pdf">GPU卸载</a>（<a href="http://medianetwork.oracle.com/video/player/2623576344001">视频</a>）。会议还介绍了其它底层组件，如<a href="http://www.oracle.com/technetwork/java/jvmls2013smith-2013923.pdf">面向编译器作者的Java 8</a>（<a href="http://medianetwork.oracle.com/video/player/2630340185001">视频</a>）和<a href="http://www.oracle.com/technetwork/java/jvmls2013heid-2013922.pdf">JVM桥方法</a>（<a href="http://medianetwork.oracle.com/video/player/2630340182001">视频</a>）。</p>
+<p>关于大企业和大数据的内容在<a href="http://www.oracle.com/technetwork/java/jvmls2013manson-2013920.pdf">Google的OpenJDK</a>（<a href="http://medianetwork.oracle.com/video/player/2630310903001">视频</a>）、<a href="http://www.oracle.com/technetwork/java/jvmls2013click-2013921.pdf">大数据</a>（<a href="http://medianetwork.oracle.com/video/player/2623581169001">视频</a>）和<a href="http://www.oracle.com/technetwork/java/jvmls2013rose-2013919.pdf">数据并行编程</a>（<a href="http://medianetwork.oracle.com/video/player/2623639770001">视频</a>）中进行了表述。由于峰会还包含了<a href="http://www.oracle.com/technetwork/java/jvmls2013forax-2014151.pdf">JSR 292 on Android</a>（<a href="http://medianetwork.oracle.com/video/player/2630340186001">视频</a>），它事实上已经涵盖了从大数据到移动设备的全部内容。</p>
+<p>JVM语言峰会汇聚了各种各样的商业组织、研究者和语言开发人员，这一切的结果是在已经投资于平台的人们和打算投资于平台的人们之间建立了一条双向通道。如果读者想先睹为快，那么从这些视频中可以对JVM的未来可能会在哪里有些许了解。</p>
+<p><b>查看英文原文：</b><b><a href="http://www.infoq.com/news/2013/11/jvm-language-summit">Oracle Releases Videos and Slides from the 2013 JVM Language Summit</a></b></p><br><br><br><br><br><br></body></html>

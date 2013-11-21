@@ -1,6 +1,18 @@
 <html>
  <head></head> 
- <body> 
+ <body>
+  <div>
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/19.htmlb">全程软件测试实践：从需求到运营</a> 之前一篇文章《软件测试转型之路》介绍过我们转型的一些实践，下文将介绍从2011年3月至今，持续改进的全程软件测试实践活动。 
+  </div>
+  <div>
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/18.htmlb">IT架构设计框架：ADMIT</a> ADMIT详细表述了任何 IT架构工作中都应考虑的决策点。虽然ADMIT格式与其他企业架构框架类似，但ADMIT更关注影响最终结果的特性和驱动力，这使得它可以与其他形式化的企业架构设计和评价方法学结合使用。 
+  </div>
+  <div>
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/17.htmlb">采访ServiceStack的项目领导Demis Bellot——第1部分</a> ServiceStack是一个开源的、支持.NET与Mono平台的REST Web Services框架。InfoQ有幸与Demis Bellot深入地讨论了这个项目。在这篇两部分报道的第1部分中，我们主要谈论了ServiceStack项目建立的原动力，以及项目中的各种设计方案选择。 
+  </div>
+  <div>
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/16.htmlb">高德LBS开放平台产品总监房芳谈LBS应用的需求和创新空间</a> InfoQ编辑在大会上对高德LBS开放平台产品总监房芳进行了一次采访，交流了API开发的难点、LBS应用需求和创新空间、有哪些案例可以学习、还有多少市场可以挖掘等话题。 
+  </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/15.htmlb">书评与采访：《探索 Meteor》</a> Tom Coleman和Sacha Greif今天发布了《探索Meteor》，这是一本介绍Meteor的书。Meteor是一个基于JavaScript的web框架，它的目的是简化实时web应用程序的开发。为展示Meteor的特性以及它的整个生态系统，本书以“Microscope”这个应用程序作为讲解的示例，这是一个类似于Hacker News及Reddit的简单网站，但加入了实时数据的功能。 
   </div> 
@@ -138,18 +150,6 @@
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/20.htmlb">开发者需要了解的WebKit</a>Paul Irish是著名的前端开发工程师，同时他也是Chrome开发者关系团队成员。针对大家对WebKit的种种误解，他在自己的博客发表了《WebKit for Developers》一文，试图为大家解惑WebKit的同与不同。 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/19.htmlb">深入理解Java内存模型（七）——总结</a>Java线程之间的通信对程序员完全透明，内存可见性问题很容易困扰Java程序员，本文试图揭开Java内存模型神秘的面纱。本文大致分三部分：重排序与顺序一致性；三个同步原语（lock，volatile，final）的内存语义，重排序规则及在处理器中的实现；Java内存模型的设计目标，及其与处理器内存模型和顺序一致性内存模型的关系。 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/18.htmlb">一次推荐算法的普及性讨论</a>在这个相对比较偏学术的讨论中，作者和百度的前技术委员会主席廖若雪就推荐算法的基本概念，算法和架构、策略、机器学习之间的关系，以及算法应用的几点经验进行了沟通，希望能对想对算法有所了解的同学有所帮助。 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/17.htmlb">阅读者（二十三）——《精益和敏捷开发大型应用指南》</a>此书为传统大型IT部门多团队实施敏捷之得力帮手，首先列出了复杂问题的思考工具，其次给出了大型组织实施敏捷的具体方式及尝试方法，尤其是如何组织团队、提高团队适应能力、培养学习型团队以及各个角色如何做好职责转变等，此外还描述了传统企业常见的团队组织方式并分析其利弊。 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/16.htmlb">Fn.py：享受Python中的函数式编程</a>尽管Python事实上并不是一门纯函数式编程语言，但它本身是一门多范型语言，并给了你足够的自由从函数式编程方式中受益。fn.py类库就是为了帮助Python开发者使用函数式编程方式开发而诞生的。 
-  </div> 
+  </div>     
  </body>
 </html>

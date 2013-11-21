@@ -1,11 +1,70 @@
-<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>Backbone.js 1.0: primeira versão maior em 2 anos</h3><p>Ap&oacute;s dois anos e meio de desenvolvimento, a vers&atilde;o 1.0 do Backbone.js foi lan&ccedil;ada. O Backbone.js &eacute; uma popular biblioteca JavaScript que segue o modelo Model/View, utilizada por v&aacute;rios aplicativos web populares, incluindo USA Today, Rdio e Airbnb.</p> 
-<p>O Backbone.js oferece tr&ecirc;s principais componentes de constru&ccedil;&atilde;o para os usu&aacute;rios:</p> 
-<ol start="1"> 
- <li>Os <strong>Models</strong> s&atilde;o usados para representar objetos persistentes. Usando a funcionalidade de sincroniza&ccedil;&atilde;o do Backbone.js, os modelos podem automaticamente sincronizar com uma fonte de dados remota (por padr&atilde;o, um Web Service RESTful). Da mesma forma, o Backbone.js oferece facilidades para gerenciar e sincronizar cole&ccedil;&otilde;es de modelos com o servidor.</li> 
- <li>As<strong> </strong><strong>Views</strong> s&atilde;o usadas na constru&ccedil;&atilde;o de interfaces de aplica&ccedil;&otilde;es web e podem ser configuradas para ouvir eventos de mudan&ccedil;as dos modelos que elas representam, tornando f&aacute;cil manter a interface atualizada com o modelo e vice-versa.</li> 
- <li>O <strong>roteador</strong><em> </em>(router) d&aacute; suporte a navega&ccedil;&atilde;o em uma aplica&ccedil;&atilde;o Backbone.js. Embora as aplica&ccedil;&otilde;es baseadas em Backbone.js sejam normalmente interfaces de uma p&aacute;gina, &eacute; desej&aacute;vel ter URLs que possam ser adicionadas aos favoritos, al&eacute;m de se permitir a utiliza&ccedil;&atilde;o do bot&atilde;o voltar na navega&ccedil;&atilde;o. O roteador do Backbone.js adiciona essas funcionalidades atrav&eacute;s da nova API de hist&oacute;rico do HTML5 e, quando esta &uacute;ltima n&atilde;o &eacute; suportada, utiliza o modelo antigo de hash de URL.</li> 
-</ol> 
-<p>A vers&atilde;o 1.0 do Backbone.js traz algumas mudan&ccedil;as em compara&ccedil;&atilde;o com vers&otilde;es da s&eacute;rie 0.9, que incluem uma maneira mais inteligente de realizar atualiza&ccedil;&otilde;es em massa de cole&ccedil;&otilde;es; decodifica&ccedil;&atilde;o autom&aacute;tica de segmentos de URL; e os novos m&eacute;todos <strong>listenTo</strong> e <strong>stopListening</strong> para emissores de eventos. Por padr&atilde;o, a valida&ccedil;&atilde;o de modelos agora &eacute; adiada at&eacute; o momento em que os modelos s&atilde;o salvos, enquanto em vers&otilde;es anteriores, a valida&ccedil;&atilde;o ocorria imediatamente ao configurar as propriedades de um modelo. Nenhuma dessas mudan&ccedil;as acarreta quebra de compatibilidade, portanto atualiza&ccedil;&otilde;es da vers&atilde;o 0.9 para 1.0 devem ser tranquilas.</p> 
-<p>A premissa essencial no cora&ccedil;&atilde;o do Backbone tem sido sempre encontrar e descobrir o conjunto m&iacute;nimo de primitivas na estrutura&ccedil;&atilde;o de dados (Modelos e Cole&ccedil;&otilde;es) e de interface do usu&aacute;rio (Views e URLs) que sejam &uacute;teis na constru&ccedil;&atilde;o de aplica&ccedil;&otilde;es web com JavaScript. Continuaremos procurando esse tipo espec&iacute;fico de caracter&iacute;stica, e se voc&ecirc; acha que encontrou uma dessas caracter&iacute;sticas, avise-nos. Em um ecossistema onde frameworks abrangentes do tipo &quot;decidimos-tudo-por-voc&ecirc;&quot; s&atilde;o comuns, e muitas bibliotecas exigem que seu site seja reestruturado para se encaixar nas apar&ecirc;ncias e comportamentos padr&otilde;es delas, o Backbone continuar&aacute; a ser uma ferramenta que lhe d&aacute; a liberdade para projetar a experi&ecirc;ncia completa para suas aplica&ccedil;&otilde;es web.</p> 
-<p>A vers&atilde;o 1.0 do Backbone.js pode ser baixada como uma &uacute;nico arquivo fonte JavaScript. A vers&atilde;o minimizada e comprimida tem 6.3KB. O Backbone.js tem como depend&ecirc;ncias o underscore.js, assim como o jQuery ou o Zepto, quando se faz uso de funcionalidades que trabalham com DOM, como as Views e o Router.</p> 
-<p id="lastElm"></p><br><br><br><br><br><br></body></html>
+<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>Processamento em lote no Java EE 7 e melhorias no Spring Batch</h3><p>O Java EE 7 foi lan&ccedil;ado em junho trazendo um conjunto de novas especifica&ccedil;&otilde;es, entre elas a JSR-352. Essa nova especifica&ccedil;&atilde;o define um modelo de programa&ccedil;&atilde;o para processamento em lote dentro da plataforma Java EE e baseia-se fortemente no projeto <a href="http://www.springsource.org/spring-batch">Spring Batch</a> da VMware. O Spring Batch tamb&eacute;m recebeu aten&ccedil;&atilde;o recentemente por conta de um lan&ccedil;amento importante que traz configura&ccedil;&otilde;es mais enxutas e simplifica o acesso a dados.</p>
+<p>A JSR-352 (Batch Applications for the Java Platform) oferece aos desenvolvedores um modelo de programa&ccedil;&atilde;o para desenvolver sistemas de processamento em lote robustos. O ponto central desse modelo de programa&ccedil;&atilde;o &eacute; um padr&atilde;o de desenvolvimento emprestado do Spring Batch: o <i>Reader-Processor-Writer</i>. Esse pattern incentiva os desenvolvedores a adotar um estilo padr&atilde;o de processamento orientado a peda&ccedil;os (chunks).</p>
+<p><img src="http://www.infoq.com/resource/news/2013/11/javaee7-spring-batch/pt/resources/jsr-352.jpg" alt="" _href="img://jsr-352.jpg" _p="true" /></p>
+<p>O padr&atilde;o <i>Reader-Processor-Writer</i> &eacute; composto por um fluxo de trabalho de tr&ecirc;s passos que os desenvolvedores devem seguir:</p>
+<ul> 
+ <li>Uma classe <a href="http://javaee-spec.java.net/nonav/javadocs/javax/batch/api/chunk/ItemReader.html">ItemReader</a> que consome um peda&ccedil;o do dado a ser processado (normalmente um &uacute;nico registro);</li> 
+ <li>Um <a href="http://javaee-spec.java.net/nonav/javadocs/javax/batch/api/chunk/ItemProcessor.html">ItemProcessor</a> que processa cada um dos peda&ccedil;os, aplicando a l&oacute;gica de neg&oacute;cio e de dom&iacute;nio;</li> 
+ <li>E, finalmente, um <a href="http://javaee-spec.java.net/nonav/javadocs/javax/batch/api/chunk/ItemWriter.html">ItemWriter</a> para o qual os registros ser&atilde;o delegados ap&oacute;s o processamento e agregados.</li> 
+</ul>
+<p>De acordo com a especifica&ccedil;&atilde;o, os <i>Jobs</i> (tarefas) s&atilde;o descritos atrav&eacute;s de documentos XML e cont&eacute;m <i>Steps</i> (passos) no fluxo de processamento. Cada <i>Step</i> &eacute; respons&aacute;vel por descrever como cada peda&ccedil;o de dado ser&aacute; processado e qual o intervalo entre os commits. Requisitos mais complexos para se processar determinados <i>Steps</i> do fluxo de trabalho podem ser implementados com um <a href="http://javaee-spec.java.net/nonav/javadocs/javax/batch/api/Batchlet.html">batchlet</a>. Um <i>batchlet</i> &eacute; a vers&atilde;o da JSR-352 para o <a href="http://static.springsource.org/spring-batch/apidocs/org/springframework/batch/core/step/tasklet/Tasklet.html">tasklet</a> do Spring Batch, o qual oferece estrat&eacute;gias para processar <i>Steps</i>.</p>
+<p>A JSR-352 tamb&eacute;m emprega o padr&atilde;o do Spring Batch para acessar e controlar <i>jobs</i>. <i>Jobs</i> s&atilde;o invocados atrav&eacute;s de um <a href="http://javaee-spec.java.net/nonav/javadocs/javax/batch/operations/JobOperator.html">JobOperator</a> e os resultados s&atilde;o acess&iacute;veis atrav&eacute;s de um <i>JobRepository</i>. No Spring Batch o nome <a href="http://static.springsource.org/spring-batch/apidocs/org/springframework/batch/core/repository/JobRepository.html">JobRepository</a>permanece o mesmo, enquanto o <i>JobOperator</i> &eacute; chamado de <a href="http://static.springsource.org/spring-batch/apidocs/org/springframework/batch/core/launch/JobLauncher.html">JobLauncher</a>.</p>
+<p>A forma de defini&ccedil;&atilde;o de jobs no Java EE 7 &eacute; um pouco diferente do Spring Batch. Os desenvolvedores s&atilde;o obrigados a colocar os documentos XML de configura&ccedil;&atilde;o de jobs no diret&oacute;rio <strong>META-INF/batch-jobs</strong> dos projetos. Com o Spring Batch, os desenvolvedores podem colocar as configura&ccedil;&otilde;es de jobs em qualquer local do contexto do Spring para torn&aacute;-las dispon&iacute;veis no container.</p>
+<p>Os arquivos XML de configura&ccedil;&atilde;o de jobs no Java EE 7 definem classes concretas para as interfaces <i>ItemReader</i>, <i>ItemProcessor</i> e <i>ItemWriter</i>, al&eacute;m de especificar o tamanho do <i>buffer</i>, o intervalo entre commits e a pol&iacute;tica de <i>checkpoints</i>. A pol&iacute;tica de checkpoints indica como os commits ser&atilde;o tratados. O valor padr&atilde;o &eacute; &quot;item&quot;, mas os desenvolvedores podem optar por usar &quot;time&quot; (tempo) como estrat&eacute;gia. O primeiro caso especifica o n&uacute;mero de registos processados, enquanto o &uacute;ltimo descreve os segundos decorridos entre um commit e outro.</p>
+<pre>
+&lt;job xmlns=&quot;http://batch.jsr352/jsl&quot;&gt;
+    &lt;step id=&quot;myStep&quot;&gt;
+        &lt;chunk
+                reader=&quot;MyItemReader&quot;
+                writer=&quot;MyItemWriter&quot;
+                processor=&quot;MyItemProcessor&quot;
+                buffer-size=&quot;5&quot;
+                checkpoint-policy=&quot;item&quot;
+                commit-interval=&quot;10&quot; /&gt;
+    &lt;/step&gt;
+&lt;/job&gt;
+</pre>
+<p>A configura&ccedil;&atilde;o de jobs no Spring Batch &eacute; quase id&ecirc;ntico ao Java EE 7. A exce&ccedil;&atilde;o &eacute; que os passos (steps) s&atilde;o colocados em uma diretiva <i>tasklet</i>. Os atributos reader, process e writer de configura&ccedil;&atilde;o dos chunks (peda&ccedil;os) s&atilde;o refer&ecirc;ncias para beans que existem no contexto da aplica&ccedil;&atilde;o. A partir da vers&atilde;o 2.2.0, o intervalo de commits na configura&ccedil;&atilde;o de chunks indica quantos itens devem ser processados ​​antes de se efetivar um commit.</p>
+<pre>
+&lt;job id=&quot;myJob&quot;&gt;
+    &lt;step id=&quot;myStep&quot;&gt;
+        &lt;tasklet&gt;
+            &lt;chunk
+                    reader=&quot;myItemReader&quot;
+                    processor=&quot;myItemProcessor&quot;
+                    writer=&quot;myItemWriter&quot;
+                    commit-interval=&quot;2&quot; /&gt;
+        &lt;/tasklet&gt;
+    &lt;/step&gt;
+&lt;/job&gt;  
+
+&lt;bean class=&quot;...MyItemReader&quot; /&gt;
+&lt;bean class=&quot;...MyItemProcessor&quot; /&gt;
+&lt;bean class=&quot;...MyItemWriter&quot; /&gt;
+</pre>
+<p>Embora o Spring Batch esteja atualmente sendo trabalhado para se tornar aderente &agrave; JSR-352, ele vai al&eacute;m da especifica&ccedil;&atilde;o para oferecer aos desenvolvedores uma perfeita integra&ccedil;&atilde;o com outros componentes do ecossistema Spring. No caso do processamento em lote, o Spring Data pode ser aproveitado diretamente como uma inst&acirc;ncia de <i>ItemReader</i> no padr&atilde;o <i>Reader-Processor-Writer</i>, para permitir que os desenvolvedores recuperem <i>chunks</i> de um reposit&oacute;rio de dados do <a href="http://www.springsource.org/spring-data">Spring Data</a>. A vers&atilde;o 2.2.0 do Spring Batch oferece interface simplificada para bancos de dados MongoDB e Neo4J usando o Spring Data.</p>
+<p>Al&eacute;m da interface simplificada para leitura de v&aacute;rias fontes de dados, a &uacute;ltima vers&atilde;o do Spring Batch disponibiliza uma extens&atilde;o para configura&ccedil;&atilde;o do Spring Java, de forma a simplificar as funcionalidades de processamento em lote. Para habilitar essa configura&ccedil;&atilde;o simplificada, os desenvolvedores s&oacute; precisam fornecer a anota&ccedil;&atilde;o @EnableBatchProcessing em uma classe anotada com @Configuration. A partir dessa classe, qualquer recurso de processamento em lote, como a JobRepository e JobLauncher, pode ser diretamente injetado sem nenhuma configura&ccedil;&atilde;o adicional.</p>
+<pre>
+@Configuration
+@EnableBatchProcessing
+public class AppConfig {
+    @Autowired
+    private JobBuilderFactory jobs;
+
+    @Bean
+    public Job job() {
+        return jobs.get(&quot;myJob&quot;).start(step1()).next(step2()).build();
+    }
+
+    @Bean
+    protected Step step1() {
+       ...
+    }
+
+    @Bean
+    protected Step step2() {
+     ...
+    }
+}
+</pre>
+<p>Al&eacute;m das melhorias no Spring Batch 2.2.0 para recupera&ccedil;&atilde;o de dados e configura&ccedil;&atilde;o, esse lan&ccedil;amento tamb&eacute;m atualizou sua depend&ecirc;ncia com o framework Spring. Agora os desenvolvedores que quiserem utilizar a &uacute;ltima vers&atilde;o do Spring Batch ter&atilde;o que atualizar a vers&atilde;o do Spring para a 3.1.2 (m&iacute;nima).</p><br><br><br><br><br><br></body></html>

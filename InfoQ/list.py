@@ -2,16 +2,34 @@
  <head></head> 
  <body>
   <div>
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/5.py">SQLの復活</a>データベース開発の新潮流はSQLへの回帰を示している。しかし、従来のリレーショナルデータベースをより優れたハードウエアに乗せるのではなく、シャードを使ったアーキテクチャでもなく、NewSQLを通じてだ。
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/11.py">Google、Dart 1.0をリリース</a>最初の発表とプレビュー版リリースから2年、Devvox in Belgiumにて、Lars Bak氏がDartの最初の安定版リリースを発表した。DartはGoogleの新しいWebプログラミング言語であり、最新のWebアプリケーションを開発するためのプラットフォームだ。
   </div>
   <div>
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/4.py">Rodney Viana氏の.NETデバッグ用WinDbgエクステンション</a>.NETアプリケーションの実行が失敗したとき，多くの場合はメモリダンプが残るだけである。Visual Studioではメモリダンプを扱えないので，代わりにWinDbgというツールを使わなければならない。このとき合わせて使用されるのがSOS.dllやPsscor4.dllといった，.NET固有の詳細情報を取得するエクステンションだ。これらはパワフルではあるが使用が難しいので，時には開発者自身がエクステンションを作ることもある。そのような開発者のひとり，Rodney Viana氏がnetext 1.6.1をオープンソースプロジェクトとしてリリースした。
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/10.py">VIsual StudioでC#を使ってiOSとAndroidアプリを開発する</a>XamarinがMicrosoftとパートナーシップを結んだ。開発者がVisual StudioでiOSとAndroidアプリを作成できるようにし、Xamarin Universityでその方法を開発者に教える。
   </div>
   <div>
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/3.py">GlassFish Commercial Editionの提供が終了</a>Oracleは先頃，Java EEとGrassFish Servcerに関するロードマップの最新版を発表した。2013年7月12日にリリースされたJava EE 7に合わせて，GlassFish Server Open Source Edition 4の提供が開始されたが，今週になってOracleは，Glass Fush 4の商用サポートバージョンを提供しないことを明言した。GlassFish 4はJava EE 7のリファレンス実装であり，Java EE 7認証を受けた唯一のアプリケーションサーバだ。
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/9.py">Apigee、Node.jsをサポートしVolosをオープンソース化</a>Apigee EdgeがNode.jsをサポートし、API管理モジュールを含むプロジェクト、Volosをオープンソース化した。
   </div>
   <div>
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/2.py">スクラムへの盲信</a>ブログ記事 &quot;The Scrum Holy War(スクラム聖戦)&quot;は，スクラムへの宗教的信念の存在を警告すると同時に，スクラムによって企業が救われない理由について説明している。
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/8.py">Windows Azure SDK 2.2、Visual Studio 2013、統合サインイン、フィルタリングのサポートを追加</a>MicrosoftはWindows Azure SDK 2.2をリリースした。これはVisual Studio 2013をサポートし、Visual Studio内からの統合サインインやサブスクリプション/リージョンのフィルタリングをサポートする。また、MSDNサブスクライバが利用するWindows Azure管理ポータル内で、Visual Studio 2013が利用できるよう事前設定したVMイメージも提供する。
+  </div>
+  <div>
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/7.py">Goが4周年</a>Goプロジェクトは4周年を迎えた。InfoQはGoのこれまでとこれからをまとめた。
+  </div>
+  <div>
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/6.py">Entity Framework 6に起動時間とエンティティ実体化の問題</a>Entity Framework 6を使用する開発者から，起動時間の遅延とエンティティ実体化の遅さが報告されている。しかし製品チームがすばやい修正パッチで問題のひとつに対処し，Microsoftも他のバグフィックスに向けて作業している。新たなパッチも近いうちにリリースされる予定だ。
+  </div> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/5.py">SQLの復活</a>データベース開発の新潮流はSQLへの回帰を示している。しかし、従来のリレーショナルデータベースをより優れたハードウエアに乗せるのではなく、シャードを使ったアーキテクチャでもなく、NewSQLを通じてだ。 
+  </div> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/4.py">Rodney Viana氏の.NETデバッグ用WinDbgエクステンション</a>.NETアプリケーションの実行が失敗したとき，多くの場合はメモリダンプが残るだけである。Visual Studioではメモリダンプを扱えないので，代わりにWinDbgというツールを使わなければならない。このとき合わせて使用されるのがSOS.dllやPsscor4.dllといった，.NET固有の詳細情報を取得するエクステンションだ。これらはパワフルではあるが使用が難しいので，時には開発者自身がエクステンションを作ることもある。そのような開発者のひとり，Rodney Viana氏がnetext 1.6.1をオープンソースプロジェクトとしてリリースした。 
+  </div> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/3.py">GlassFish Commercial Editionの提供が終了</a>Oracleは先頃，Java EEとGrassFish Servcerに関するロードマップの最新版を発表した。2013年7月12日にリリースされたJava EE 7に合わせて，GlassFish Server Open Source Edition 4の提供が開始されたが，今週になってOracleは，Glass Fush 4の商用サポートバージョンを提供しないことを明言した。GlassFish 4はJava EE 7のリファレンス実装であり，Java EE 7認証を受けた唯一のアプリケーションサーバだ。 
+  </div> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/2.py">スクラムへの盲信</a>ブログ記事 &quot;The Scrum Holy War(スクラム聖戦)&quot;は，スクラムへの宗教的信念の存在を警告すると同時に，スクラムによって企業が救われない理由について説明している。 
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/1.py">EclipseがJCPに参加</a>JCP(Java Community Process) EC(Executive Committee)に新たに選出されたメンバが来週就任し，Javaプログラム言語の方向性に対して影響力を行使し始める。その中のひとつであるEclipse財団は，今後２年間にわたってこの決議機関に席を持つことになる。 
@@ -132,24 +150,6 @@
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/12.py">IBMのMobile First - MBaaS，ビッグデータ，それ以上のものをエンタープライズに</a>IBMは現在のモバイルコンピューティングのトレンドをキャッチアップする包括的システムないしスイート，あるいは同社の説明ではアプリケーションポートフォリオを構築した。Mobile Firstという名のこのシステムは，トレンドに乗り切れていない組織がいまだテーブルに残したままの数十億ドルの市場から，ユーザ企業がシェアを獲得するためデザインされたものだ。 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/11.py">Spotifyはどうやってアジャイルをスケールアウトしたか: Henrik Kniberg氏へのインタビュー</a>昨年11月、SpotifyはScaling Agile @ Spotify with Tribes, Squads, Chapters &amp; Guildsと題したペーパーを発表した。私は最近、Henrik Kniberg氏にこのペーパーと現在の状況について質問する機会を得た。 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/10.py">Microsoft Office Developer Tools が検索設定テンプレート、アプリ検証、Azureでのデバッグを提供。</a>最近リリースされたMicrosoft Office Developer Tools for Visual Studio 2012は、新しい検索設定プロジェクトテンプレート、サブミッションプロセス中のアプリ検証とWindows Azureでのデバッグ機能を提供している。 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/9.py">Struts 1が寿命を迎える</a>Apache財団の発表によれば、JavaのMVCウェブフレームワークであるStruts 1が寿命を迎えた。ある意味では、この動きは単純に、Strutsチームがバージョン2の開発に注力しているという既成事実を公式に認めただけだ。Struts 1の最後のリリースは2008年のバージョン1.3.10だ。コードとドキュメントは今後も入手できるが、今後はセキュリティパッチやバグ修正は提供されない。 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/8.py">Windows Azure Mobile ServicesのAndroid対応、Active Directory、ローカライズ、東アジアリージョン</a>MicrosoftはWindows Azureでいくつかのアップデートをリリースした。Android対応、Active Directory対応、HTTPレスポンスコードによるアプリケーション監視, 新しい5つの言語対応、22カ国以上のAzureストア等である。 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/7.py">BlossomがDartに移行</a>Thomas Schranz氏は自社製品のBlossomをDartに移植するとブログ記事に発表した。Blossomは開発チームのための製品で，Webベースのカンバン方式ボードである。DartはGoogleの開発した，JavaScriptの代替として利用可能な新しいWebプログラミング言語とプラットフォームだ。 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/6.py">Gartnerの示す情報インフラ技術トレンド: ビッグデータ，NoSQL，インメモリ・コンピューティング</a>ビッグデータとNoSQLデータベース，そしてインメモリ・コンピューティングが，2013年以降の現代的な情報管理において重要な役目を果たすテクノロジだ – Gartner はそのように予想する。同社の調査チームがリリースした 最新レポート には，情報インフラストラクチャとガバナンスに影響を与えるであろう最先端の技術トレンドとして，この３つが示されている。 
-  </div>     
+  </div>       
  </body>
 </html>

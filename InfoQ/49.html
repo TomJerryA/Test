@@ -1,34 +1,9 @@
-<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>NoSQL基准对比Aerospike、Cassandra、Couchbase和MongoDB</h3><p>为了查看Aerospike、Cassandra、Couchbase和MongoDB这些数据库在处理插入吞吐量、最大吞吐量时的表现以及故障恢复期间的延迟时间和行为，最近的一个基准集合对这些数据库做了比较。</p> 
-<p><a href="http://www.thumbtack.net/about.html">Thumbtack Technology</a>发布了两个基准白皮书，其中包含了一些键—值存储的比较结果：<a href="http://www.thumbtack.net/solutions/documents/Ultra-HighPerformanceNoSQLBenchmarking.pdf"><i>超高性能</i><i> NoSQL</i><i>基准</i><i>: </i><i>分析持久性和性能权衡</i></a><i> (PDF) </i>和 <a href="http://www.thumbtack.net/solutions/documents/NoSQLFailoverCharacteristics_000.pdf"><i>NoSQL</i><i>故障恢复</i><i>特性</i><i>: Aerospike</i><i>、</i><i>Cassandra</i><i>、</i><i>Couchbase</i><i>和</i><i>MongoDB</i></a><i> (PDF)</i><i>。</i>这两个基准都试图检测“直面客户的应用程序，它们需要非常高的吞吐量和低延迟时间，同时其信息又能够使用键-值模式表示”。</p> 
-<p>Thumbtack使用了一个改善版本的<a href="http://research.yahoo.com/node/3202"><i>Yahoo! </i><i>云服务</i></a><i><u>基准</u></i><i> (YCSB)</i> ，该基准可以克服使用高容量多客户端时遇到的一些限制。YCSB的变化已经写入了第一个白皮书并且提交回了社区。</p> 
-<p>测试的NoSQL数据库包括<a href="http://www.aerospike.com/">Aerospike</a>、<a href="http://cassandra.apache.org/">Cassandra</a>、<a href="http://www.couchbase.com/">Couchbase</a> （1.8 和2.0）和 <a href="http://www.infoq.com/news/2013/04/mongodb.org;jsessionid=23D5201AC8523FFE50B83FEFB92E9A91">MongoDB</a>。第一个是商业化产品，最后一个是文档数据存储而不是键-值存储，但是因为“在我们遇到的客户端中经常考虑将它用于相似类型的应用程序中”，所以我们将之包含了进来。所有的数据库都使用其提供商提供的建议做了优化。测试系统使用SSD存储，而没有使用旋转磁盘。白皮书中详细记录了测试所使用的方法论、客户端、工作量配置以及硬件配置等信息。</p> 
-<p>Thumbtack承认它们和“Aerospike、Couchbase以及10gen有商业和（或）战略合作关系”，同时使用的硬件也是从Aerospike租用的。</p> 
-<p>下面列出了一些测试的基准结果。</p> 
-<p><b>插入吞吐量</b></p> 
-<p>数据库通过YCSB的加载路由执行了大量插入，载入了初始的工作集合。Couchbase在工作集合载入内存中时结果很好，但是在工作集合载入SSD时遇到了问题，Couchbase 1.8没有完成操作，而对Couchbase 2.0而言则必须使用较小的集合和异步模式。图中蓝色圆柱表示的就是Couchbase，Aerospike处在第二位。</p> 
-<p><b>图</b><b>1</b><b>：插入吞吐量</b></p> 
-<p><img src="http://www.infoq.com/resource/news/2013/04/NoSQL-Benchmark/zh/resources/1.png;jsessionid=23D5201AC8523FFE50B83FEFB92E9A91" _href="img://null" _p="true" alt="" /></p> 
-<p><b>注意：</b>对Couchbase 2.0而言，SSD吞吐量使用的样本较小，同时是异步模式；而对Couchbase 1.8而言，即使减少数据集也不能加载。</p> 
-<p><b>最大吞吐量</b></p> 
-<p>该测试使用了一个“强持久性模型，在复制时使用了一个相对服务器的RAM而言非常大的数据集。该测试打算作为保证强持久性的事务型数据的使用典范”。</p> 
-<p>在这个图表中并没有Couchbase，因为使用同步复制时它无法完成测试。</p> 
-<p><b>图</b><b>2</b><b>：最大吞吐量——</b><b>SSD</b><b>支持的数据集</b></p> 
-<p><img src="http://www.infoq.com/resource/news/2013/04/NoSQL-Benchmark/zh/resources/2.png;jsessionid=23D5201AC8523FFE50B83FEFB92E9A91" _href="img://null" _p="true" alt="" /></p> 
-<p>在使用异步复制时，内存中的结果如下：</p> 
-<p><b>图</b><b>3</b><b>：最大吞吐量——内存数据集</b></p> 
-<p><img src="http://www.infoq.com/resource/news/2013/04/NoSQL-Benchmark/zh/resources/3.png;jsessionid=23D5201AC8523FFE50B83FEFB92E9A91" _href="img://null" _p="true" alt="" /></p> 
-<p><b>延迟时间</b><b>/</b><b>吞吐量</b></p> 
-<p>基准还测量了在不同级别的传输下读取和更新的延迟时间。下面的图表包含了一个完整视图和每个对应的缩放视图。</p> 
-<p><b>图</b><b>4a</b><b>——</b><b>4d</b><b>：延迟时间</b><b>/</b><b>吞吐量结果（平衡负载）</b></p> 
-<p><img src="http://www.infoq.com/resource/news/2013/04/NoSQL-Benchmark/zh/resources/4.png;jsessionid=23D5201AC8523FFE50B83FEFB92E9A91" _href="img://null" _p="true" alt="" /></p> 
-<p><b>故障恢复</b></p> 
-<p>Thumbtack还模拟了一个硬件错误，以便查看在一个节点无法工作时会发生什么：</p> 
-<p><img src="http://www.infoq.com/resource/news/2013/04/NoSQL-Benchmark/zh/resources/5.png;jsessionid=23D5201AC8523FFE50B83FEFB92E9A91" _href="img://null" _p="true" alt="" /></p> 
-<p><b>注意：</b>以上结果依赖于使用的驱动，像Hector这样较新的驱动能恢复到100%的吞吐量。同时假设监控脚本完美。</p> 
-<p>基准还测量了宕机时间，例如集群从发生错误开始到能够响应所需要的时间，所有数据库显示的值都合理：</p> 
-<p><b>图</b><b>6</b><b>：宕机时间、异步复制和基于</b><b>RAM</b><b>的数据集</b></p> 
-<p><img src="http://www.infoq.com/resource/news/2013/04/NoSQL-Benchmark/zh/resources/6.png;jsessionid=23D5201AC8523FFE50B83FEFB92E9A91" _href="img://null" _p="true" alt="" /></p> 
-<p>Thumbtack基准还包含了很多其他不同情况下的不同结果，但是此处并没有包含这些内容。</p> 
-<p><a href="http://www.networkworld.com/news/tech/2012/102212-nosql-263595.html">另一个NoSQL基准</a>发布于2012年10月，其中对比了Cassandra、HBase、MongoDB和Rick。这些测试中还包含了MySQL，作为针对SQL技术的一个参考。</p> 
-<p><b>查看英文原文</b>：<a href="http://www.infoq.com/news/2013/04/NoSQL-Benchmark;jsessionid=23D5201AC8523FFE50B83FEFB92E9A91"><b>NoSQL Benchmark Compares Aerospike, Cassandra, Couchbase and MongoDB</b></a></p> 
-<p id="lastElm"></p><br><br><br><br><br><br></body></html>
+<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>Riak 2.0预览</h3><p>在RICON West大会上Basho宣布<a href="http://basho.com/introducing-riak-2-0/">Riak 2.0的首个技术预览版</a>发布。该版本继续了<a href="https://github.com/basho/riak/issues/354">Russell Brown RFC</a>的工作，它为<a href="https://gist.github.com/russelldb/7316f83ddd38965d9f76">maps和sets</a>带来了新的分布式数据类型。</p>
+<p>最近软件产业中的一个重要的主题是，人们希望拥有有更强保证的NoSQL类型的数据库。Basho通过发布Riak这个强一致性的选择作为回应。每一个桶（bucket）类型都能够被设置为使用强一致性或者保留默认行为，也就是高可用性/最终一致性。</p>
+<p>桶类型是另一个新特性。虽然数据依然被存储在桶中，但是出于配置目的这些桶可以被组织成桶类型。组中的每一个桶都会继承桶类型中的属性，但是这些属性可以被重写。</p>
+<p>Riak 2中的全文检索已经被完全重新设计。新版本“直接使用<a href="http://lucene.apache.org/solr/">Apache Solr</a> 全文文档索引引擎”，包括对Solr客户端查询API的完整支持。</p>
+<p>新版本还改进了Riak中的<a href="https://github.com/basho/riak/issues/355">安全模型</a>，</p>
+<blockquote> 
+ <p>Basho设计的Riak牢记重要数据的重要性。它其中的数据是否影响收入、用户体验或者甚至是患者的健康（与NHS的情况一样），Riak确保这些重要的数据始终都是可用的。但是，这些重要的数据通常也是敏感的数据。Riak 2.0能够通过管理者访问权利向这些数据中添加安全性和现在常用的各种安全认证模型的插件。</p> 
+</blockquote>
+<p><b>查看英文原文</b>：<a href="http://www.infoq.com/news/2013/11/Riak-2-Preview">Previewing Riak 2.0</a></p><br><br><br><br><br><br></body></html>
