@@ -1,133 +1,60 @@
-<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>开发者需要了解的WebKit</h3><p><a href="http://paulirish.com/about/">Paul Irish</a>是著名的前端开发工程师，同时他也是Chrome开发者关系团队成员，jQuery团队成员，Modernizr、 Yeoman、CSS3 Please和HTML5 Boilerplate的lead developer。针对大家对WebKit的种种误解，他在自己的博客发表了<a href="http://paulirish.com/">《WebKit for Developers》</a>一文，试图为大家解惑。</p><p>对许多开发者来说，WebKit就像一个黑盒。我们把HTML、CSS、JS和其他一大堆东西丢进去，然后WebKit魔法般的以某种方式把一个看起来不错的网页展现给我们。但事实上，Paul的同事Ilya Grigorik说：</p><blockquote> 
- <p>WebKit才不是个黑盒。它是个白盒。并且，它是个打开的白盒。</p> 
-</blockquote><p>所以让我们来花些时间了解这些事儿：</p><ul> 
- <li>什么是WebKit？</li> 
- <li>什么不是WebKit？</li> 
- <li>基于WebKit的浏览器是如何使用WebKit的？</li> 
- <li>为什么又有不同的WebKit？</li> 
-</ul><p>现在，特别是Opera宣布将浏览器引擎转换为WebKit之后，我们有很多使用WebKit的浏览器，但是我们很难去界定它们有哪些相同与不同。下面我争取为这个谜团做些解读。而你也将会更懂得判断浏览器的不同，了解如何在正确的地方报告bug，还会了解如何在特定浏览器下高效开发。</p><p><strong>标准Web浏览器组件</strong></p><p>让我们列举一些现代浏览器的组件：</p><ul> 
- <li>HTML、XML、CSS、JavsScript解析器</li> 
- <li>Layout</li> 
- <li>文字和图形渲染</li> 
- <li>图像解码</li> 
- <li>GPU交互</li> 
- <li>网络访问</li> 
- <li>硬件加速</li> 
-</ul><p>这里面哪些是WebKit浏览器共享的？差不多只有前两个。其他部分每个WebKit都有各自的实现，所谓的“port”。现在让我们了解一下这是什么意思……</p><p><strong>WebKit Ports是什么？</strong></p><p>在WebKit中有不同的“port”，但是这里允许我来让WebKit hacker，Sencha的工程主管Ariya Hidayat来解释：</p><blockquote> 
- <p>WebKit最常见的参考实现是Apple在Mac OS X上的实现（这也是<a href="http://lists.kde.org/?l=kfm-devel&amp;m=104197092318639&amp;w=2">最早和最原始的WebKit库</a>）。但是你也能猜到，在Mac OS X下，许多不同的接口在很多不同的原生库下被实现，大部分集中在<a href="https://developer.apple.com/technologies/mac/">CoreFoundation</a>。举例来说，如果你定义了一个纯色圆角的按钮，WebKit知道要去哪里，也知道要如何去绘制这个按钮。但是，绘制按钮的工作最终还是会落到<a href="http://developer.apple.com/library/ios/#documentation/CoreGraphics/Reference/CoreGraphics_Framework/_index.html">CoreGraphics</a>去。</p> 
-</blockquote><p>上面已经提到，CoreGraphics只是Mac port的实现。不过Mac Chrome用的是<a href="http://www.chromium.org/developers/design-documents/graphics-and-skia">Skia</a>。</p><blockquote> 
- <p>随时间推移，WebKit被“port”（移植）到了各个不同的平台，包括桌面端和移动端。这种做法被称作“WebKit port”。对Windows版Safari来说，Apple通过<a href="http://developer.apple.com/opensource/internet/webkit_sptlib_agree.html">（有限实现的）Windows版本CoreFoundation</a> 来port WebKit。</p> 
-</blockquote><p>……不过Windows版本的Safari<a href="http://www.macworld.com/article/1167904/safari_6_available_for_mountain_lion_and_lion_but_not_windows.html">现在已经死掉了</a>。</p><blockquote> 
- <p>除此之外，还有很多很多其它的“port”（<a href="http://trac.webkit.org/wiki#WebKitPorts">参见列表</a>）。Google创建并维护着它的Chromium port。这其实也是一个基于Gtk+的WebKitGtk。诺基亚通过收购Trolltech，维护着以<a href="http://doc.qt.nokia.com/qtwebkit.html">QtWebKit module</a>而闻名的WebKit Qt port。</p> 
-</blockquote><p>让我们看看其中一些WebKit ports：</p><ul> 
- <li>Safari 
+<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>采访ServiceStack的项目领导Demis Bellot——第2部分</h3><p><a href="http://www.servicestack.net/">ServiceStack</a>是一个开源的、支持.NET与Mono平台的REST Web Services框架。InfoQ有幸与<a href="https://www.google.com/url?sa=t&amp;rct=j&amp;q=&amp;esrc=s&amp;source=web&amp;cd=1&amp;cad=rja&amp;ved=0CDEQFjAA&amp;url=https%3A%2F%2Ftwitter.com%2Fdemisbellot&amp;ei=gGy7UNvtJY3LrQeatoD4CQ&amp;usg=AFQjCNEU3uqXYfZ_lpYyk3nn-imiJxQs-g&amp;sig2=8G-nPhx88v7WlhAg8cD50g">Demis Bellot</a>深入地讨论了这个项目。在这篇两部分报道的第2部分中，我们更多地了解了ServiceStack的特性，并谈论了微软与Mono在.NET开源世界中所扮演的角色。你可以在<a href="http://www.infoq.com/articles/interview-servicestack">这里找到本次采访的第1部分</a>内容。</p>
+<p><b>InfoQ</b><b>：基于消息的Web service</b><b>到底是什么？</b></p>
+<p><b>Demis</b><b>：</b>本质上，基于消息的服务是一个以传递消息作为通信方式的系统。不妨将RPC方法和一个基于消息的API做一个比喻，它们的区别就类似于Smalltalk或<a href="http://stackoverflow.com/a/982356/85785">Object-C的消息发送机制</a>与普通的静态C方法调用的区别。方法调用与它们所调用的实例是紧密耦合的，而在一个基于消息的系统中，请求会通过消息传递给接收者。而接收者不一定要亲自去处理该消息，因为它可以选择将该请求委托给某个替代的接收者去进行处理。</p>
+<p>基于消息的设计在ServiceStack中是通过将某个服务请求查询（Services Request Query）转换为一个请求数据迁移对象（Request DTO）实现的，并且该对象与其它任何实现完全解耦。你可以从宏观角度上将一个ServiceStack请求想象成一个Smalltalk运行时方法调用，ServiceStack host在这里就是扮演了接收者，HTTP谓词（Verb）扮演了选择器，而请求DTO则扮演了消息。</p>
+<p>请求被发送到哪个终结点（endpoint）上并不重要，因为你可以从PathInfo、QueryString与请求体中的任意组合中得出请求的详细信息。在请求绑定过程之后，该请求会遍历所有用户自定义的过滤器以及进行检查的预处理器，并且该请求在到达实际的服务实现之前可以选择在预处理器中进行处理。一旦请求达到了服务之后，它就会调用最配备的选择器，在默认情况下它会查找与当前的HTTP谓词同名的方法，如果该方法不存在，它就会转而调用一个能够捕获“任意”请求的方法，该方法可以处理来自任意终结点、或以任何格式进行路由的请求。即使在服务的实现内部，也可以继续将请求委托给某个替代的服务，如果需要的话，它还可以进一步将请求代理（proxy）发送至一个远程的分区（shard）实例。</p>
+<p>从概念上来说，对ServiceStack的使用只是将某个消息发送给一个ServiceStack实例而已，客户端并不关注最终处理该消息的是谁，它只需知道某个响应对请求进行了回复，或者对于单向消息来说，它只需知道该请求已经被成功接受了就可以了。而一个RPC API调用从概念上来说意味着你调用了某个远程方法，这就使得请求与远程实现的方法签名被紧密耦合了。</p>
+<div id="lowerFullwidthVCR"></div>
+<p><a href="https://github.com/ServiceStack/ServiceStack/wiki/Advantages-of-message-based-web-services">采用基于消息的设计有许多天然的益处</a>，与它们的远亲RPC相比，它们提供了更好的适应性、灵活性以及版本控制能力。举一个这方面益处的例子吧，当你将一个请求发送至它的单向终结点时，如果ServiceStack实例配置了一个消息队列（MQ）主机，该请求就会被自动委托给配置好的MQ中介（Broker）并在后台进行处理。因此即使ServiceStack主机停机，等待处理的消息也不会丢失，在主机下次重启后会自动重新进行处理。这种行为能力都可以由ServiceStack自动实现。如果没有应用任何MQ主机，那么请求就会按照一般的方式进行处理，比如由某个HTTP web工作进程（worker）按同步方式进行处理。</p>
+<p>随着时间的推移，当你不断深入地开发与升级现有的服务，并且所支持的客户端也越来越多时，基于消息的设计也就越来越体现出它所带来的益处。一个最直接的益处就是它不需要使用任何代码生成器就能够提供一个端到端的、类型化的API。而如果没有采用基于消息的设计是不可能实现这一点的，因为这种设计保证了你的Service Contract的核心实现都被封装为可重用的DTO。由于你能够将服务端web service所定义的DTO共享给客户端，你就可以完全省略在传统的开发流程中必须从你的服务的临时WSDL/XSD结构中重新生成客户端代理的这一步骤了。</p>
+<p>类型化的客户端是Native SDK的支柱，它为你的服务的终端用户提供了最大的价值，因为它大大减少了调用你的API所必须承担的大部分重任。有一些公司非常、非常希望你能够使用他们定义的API，因为它的整体业务的成功都依赖于对API的大量应用，而类型化客户端的方式在这种公司中非常之流行。Amazon EC2、Google App Engine、Azure、Facebook、Ebay、Stripe与Braintree等公司都首选采用这种方式。</p>
+<p>更重要的是，基于消息的设计鼓励你设计粗粒度并且重用性更好的服务。与之相反，RPC方法签名通常是为了实现某个单一目标而设计的，这就意味着你必须为满足每个客户端的需求不断地添加更多的RPC方法（这就相当于每次都加入一个新的外部终结点）。相反，基于消息的设计鼓励你通过为现有的服务添加额外功能的方式增强现有服务的能力，因为增加这些额外的功能不会造成任何冲突。采用这种方式的一个额外的好处是，它为那些正在使用你的现有服务的客户端提供了直接的易用工具，因为这些客户端可以很容易地访问到新加的特性，而且不必为了调用新的外部终结点而加入新的代码路径。</p>
+<p>无论任何时候，在实现类似SOA平台这种服务密集型系统时，这种方式都是非常重要的。服务经常会因为新的客户需求而过期。因此，保证你的服务API不要被随时随地来自于客户的特殊需求牵着鼻子走非常重要。从系统的角度出发，可以将API设计想象成将你的内部系统功能暴露为一个通用的、可重用的API。这也是为什么我为所有的服务终结点都实现了基于消息的设计的主要原因，因为粗粒度的API本质上就鼓励设计重用性更好、功能更丰富的API。</p>
+<p>那些在<a href="http://www.servicestack.net/files/messaging.htm">业界处于前列的分布式框架</a>的开发者已经熟知了基于消息设计的各种益处，他们在各种业界领先的平台上应用了基于消息的设计，例如Google的Protocol Buffers、Amazon的Web Services平台、Erlang进程、F#的mailbox、Scala的行为者（actor）、Go的信道（channel）、Dart的Isolate以及Clojure的代理（agent）等等。</p>
+<p><b>InfoQ: </b><b>最近你为ServiceStack</b><b>新加入了razor</b><b>引擎，这使得ServiceStack</b><b>看起来更像是一个完整的web</b><b>框架而不仅仅是一个web service</b><b>框架，促使你这样做的动机是什么？</b></p>
+<p><b>Demis</b><b>：</b>我们一直以来都想为ServiceStack加入良好的HTML处理功能。从一个服务框架的角度来说，HTML只不过是另一种Content-Type而已，但其特殊之处在于它已经被所有的浏览器所支持，这使得它成为了可以在大多数计算机设备上显示一个通用界面的唯一格式。由于ServiceStack可以方便地使用在任何ASP.NET或者MVC web框架中，对于支持HTML的需求也就不那么急迫了，因为对于单页面应用来说，只要能够提供静态内容，并且在需要时去动态加载内容就够了，这一点完全可以通过调用所使用的web框架的功能就可以实现。虽然这种方式已经运行得足够好了，但我们仍然不是非常满意。之前我们只能选择要么在WebForms中使用WCF，但我们觉得WCF在服务端的抽象上面做得太过头了。而如果选择MVC的话，虽然它的框架的功能很全面，但它的复杂性在不断增加，而且每次发布都会加入更多的东西，这使得它没有办法运行在Mono上。</p>
+<p>而最终促使我们提供自己的HTML处理能力的，很大程度上是由于我们立志于为Mono提供完整支持的抱负，这样我们就可以在支持Mono的各种令人振奋的平台上运行我们的软件了。我们所提供的自托管组件HttpListener正在渐渐流行起来，但阻碍它进一步能够得到运用的原因是它不能够生成动态的HTML视图，而WebForms和MVC都对它们的ASP.NET托管服务有这方面的要求，因此我们决定提供一个集成的HTML视图引擎。不幸的是，在当时能够选择的视图引擎要么是我们不太喜欢的WebForms，要么是Razor，它虽然看上去很美，但在当时既不开源也没有良好的文档。因为我们决定基于两种最流行的标记语言：Markdown以及Razor来创建我们自己的视图引擎。ServiceStack的<a href="https://github.com/ServiceStack/ServiceStack/wiki/Architecture-overview">架构非常良好</a>，我们能够在不破坏其它格式与终结点的前提下轻易地加入新的Content-Type。经过两周时间的开发后，<a href="https://github.com/ServiceStack/ServiceStack/wiki/Markdown-Razor">Markdown Razor</a>诞生了，它结合了Markdown这个用以表现内容非常理想的标记语言以及Razor表现动态内容的能力。</p>
+<p>我们对这一成果非常满意，因为我们现在可以使用ServiceStack以及Markdown Razor创建类似于<a href="http://www.servicestack.net/docs/">ServiceStack Docs</a>这样包含大量ajax功能的文档网站了。而Markdown的独特优势在于GitHub对它的原生支持，它能够让我们按原样导入GitHub页面，并且在我们的<a href="https://github.com/ServiceStack/ServiceStack.Examples/tree/master/src/Docs">公共GitHub库</a>上直接进行在线编辑与内容预览。这种解决方案其实仍然不完整，因为Markdown虽然在表现内容上很完美，但并不适合于表现精确的HTML布局，而多数.NET开发者熟悉的Razor其实才是最理想的视图引擎，因此一等到它开源之后，我们就立即把握机会实现了它。来自于<a href="http://nancyfx.org/">NancyFx</a>（另一个优秀的web框架）的一位好朋友也为我们提供了帮助，他告诉了我们让Razor支持VS.NET的智能提示的方法，我们终于为ServiceStack也加入了对Razor视图引擎的支持，这一来它在它所支持的所有主机与平台上都能工作得一样良好了。</p>
+<p>但我们并没有停下脚本，由于我们已经完整的支持了所有特性，并且能够完全控制HTML的生成过程，我们就能够加入一些属于我们的独特功能了，这些功能可以在我们的展示网站<a href="http://razor.servicestack.net/">razor.servicestack.net</a>上看到。我们的虚拟文件系统使我们能够从文件系统之外的地方提供Razor视图，比方说可以内嵌在某个.NET dll内。使用自托管功能，可以将你的网站与Razor视图打包在一个托管的.NET .exe文件内。我们所引入的另一项独特功能，是能够Partial view嵌入在其它类型的视图引擎内，这种功能允许你使用Razor和HTML创建你的页面结构，同时使用Markdown维护你的页面内容，这些内容可以以Partial view的方式很方便地嵌入在页面中。</p>
+<p>我们还为某些MVC特性提供了更有竞争力的替代方案，比如说<a href="http://razor.servicestack.net/#no-ceremony">Cascading Layout模板</a>，它为维护多个网站布局上提供了比MVC中的Area更简便直观的方式。另一个例子是基于node.js的<a href="https://github.com/ServiceStack/Bundler">ServiceStack Bundler</a>，作为MVC Web Optimization的替代方案，它更快、更简便并且更易于跨平台。</p>
+<p><b>InfoQ: </b><b>你觉得在哪些场景中，WCF/Web API/MVC</b><b>也许比ServiceStack</b><b>更适合呢？</b></p>
+<p><b>Demis</b><b>：</b>MVC是一个功能全面的web框架，它更适合于那些拥有大量的服务端生成内容的网站。而ServiceStack更专注于为那些拥有一个重量级服务组件的web应用提供优秀的体验，例如单页面应用就经常会用到一些尖端的JavaScript框架，比如<a href="http://backbonejs.org/">Backbone.js</a>、<a href="http://angularjs.org/">AngularJS</a>，还不断有令人兴奋的新贵加入这个阵营，例如<a href="http://www.dartlang.org/articles/dart-web-components/">Dart的WebComponents</a>。我们也期望我们所提供的集成的Mardkdown与Razor视图引擎能够吸引那些托管大量内容与文档的网站。</p>
+<p>如果你在开发服务端驱动的系统时愿意相信遵循REST和HATEOAS约定所带来的价值，那你应该使用WebAPI，并遵从那个社区的开发文化。而如果你希望为你的服务提供最大化的功能，并且将终结点托管在SOAP、MQ（即将支持TCP）上，那ServiceStack会是更好的选择。</p>
+<p>如果你是一位MVP或是一位微软金牌合伙人，那你会自然地选择继续坚守MVC与Web API技术路线，因为微软会让你一路跟随他们的技术，从SQL Server到AppFabric，最后到Windows Azure。而我们看到了支持伸缩性更强、性能更好的平台所带来的更大的价值，我们将把精力集中在这些平台上，在Amazon的EC2以及Google Compute Engine这样的纯Linux云平台运行我们的软件，提供对替代的关系型数据库解决方案OrmLite、以及各种高性能NoSQL解决方案的支持，并且会继续在Redis以及云端数据存储的集成适配器上加大投入力度。</p>
+<p><b>InfoQ: </b><b>微软之前也和一些开源项目（例如jQuery</b><b>和NuGet</b><b>）达成了合作，而且像Scott Hanselman</b><b>这样的微软员工看起来也对在微软技术平台上采用优秀的开源解决方案表现得非常开放 – </b><b>你觉得这种合作会在整体上为.NET</b><b>社区带来什么好处吗？</b></p>
+<p><b>Demis</b><b>：</b>作为项目领导，我已经将ServiceStack作为一个开源项目运行了4年，打造一个繁荣的开源.NET社区一直是我所非常关心的事，虽然我觉得到目前为止，微软与现有的开源项目的合作还不能让我竖起大拇指，尤其是在.NET方面。目前来看，他们似乎只会在直接竞争失败后才会采用开源的类库。比方说，早在微软正式采用jQuery之前，大多数JavaScript开发者就已经抛弃ASP.NET AJAX JavaScript框架而转投jQuery的怀抱了。</p>
+<p>当NuGet项目刚刚发布的时候，<a href="http://www.developerfusion.com/news/92152/nuget-surprise-update-breaks-openwrap-open-standard-not-so-open/">它就由于缺乏对现有的开源解决方案的支持而遭受批评</a>。但总体而言，我认为NuGet是微软所提供的一个很有帮助的贡献，由于它在VS.NET中提供了一个界面，使得开发者可以方便地引用外部的构件，这就减少了使用开源框架的各种麻烦。自从ServiceStack类库发布在NuGet上以来，我们已经看到了大量的应用，<a href="https://nuget.org/profiles/mythz">最近的18个月中它已经有超过20万次下载了</a>。</p>
+<p>而在开源.NET类库方面，微软仅仅在今年早期推出Web API的时候，首次采用了开源的JSON.NET这个.NET类库。和其它公司一样，对微软来说，当出现了更优秀的开源软件时将其纳入麾下是个正常的选择，尤其是微软自己之前提供的JSON序列化工具在对日期数据的格式化方面没有选择和JSON.NET一样遵循标准，而且在性能上也比不过ServiceStack的序列化工具。对于一个像JSON.NET一样的单独的类库来说，这种方式让它的使用度产生了一次爆发，光是下载量就已经超过其它所有JSON序列化工具的总和了。但这对于对其它类库的应用并没有带来一种光环效应，事实上反而带来了负面的影响。当它成为了这方面的默认类库之后，就意味着.NET开发者如果打算与其背倒而驰而去采用其它替代方案，那他们就必须提出一个合适的理由。选择我们的产品作为替代方案其实已经有了一个非常好的理由，因为它是<a href="http://www.servicestack.net/benchmarks/#burningmonk-benchmarks">.NET平台上最快的JSON序列化工具</a>，这使它在那些关注于性能的公司中非常流行，像StackOverflow<a href="http://blog.stackoverflow.com/2012/02/stack-exchange-open-source-projects/">就采用它处理JSON</a>。但我们在市场上虽然处于第2位，却离头名有了巨大的差距，我们的市场占有率只是JSON.NET的14分之1，而排名第3的开源JSON序列化工具更是只有头名110分之1的市场占有率。在开发高性能的服务时，序列化的性能是至关重要的。因此我们一直将我们的序列化工具视作核心组件，我们承诺将尽力将它保持为最好与最快的序列化工具。</p>
+<p>除了JSON.NET之外，我相信DotNetOpenAuth是在那之后唯一一个被采用的开源.NET类库了，这对于使用者来说就可以避免重复发明轮子的尴尬了。看起来微软现在确实是对于采用他们感兴趣的、更优秀的开源类库持比较开放的态度了，虽然这一改变并没有为整个社区带来太多令人注目的好处。</p>
+<p>但还是要感谢微软在商业模式上的变化，他们已经将更多的东西开源，Windows Azure相关的大多数类库与框架就已经开源了。这是件大好事，一是它降低了每个人采用新软件的门槛，二来它也为减轻Mono社区的负担的带来了直接的好处，因为Mono之前每次都要消耗精力去重新实现相同的功能，而现在他们则可以使用微软的开源版本的软件，并且还可以为其贡献各种补丁包，以改善它对Mono的支持了。<a href="http://www.tryfsharp.org/">F#</a>就是这方面一个很好的例子，它完全开源，并且对Mono的支持程度之高也令人感到吃惊。实际上我个人在<a href="http://www.servicestack.net/mythz_blog/?p=765">F#方面做的各种尝试</a>都是在Mono/OSX平台上用Sublime.Text完成的。微软开源产品之一的<a href="https://github.com/SignalR">SignalR</a>更是拥有了一个活跃的社区，并且在<a href="https://github.com/languages/C%23/most_watched">GitHub C#/.NET的版块上</a>跃居前列，而基于SignalR框架的<a href="http://jabbr.net/">JabbR.net</a>聊天室也成为了.NET开发者的主流选择。</p>
+<p>有一些开源框架首先将其它平台上的流行功能引入到.NET平台上，在微软推出一个完整的解决方案之前填补了某方面的功能空白，但是这些开源框架可谓命运多舛。比方说，<a href="http://whatupdave.com/post/1170718843/leaving-net">在MVC MonoRail框架推出了好几年之后，微软推出了自己的ASP.NET MVC框架</a>，这让该社区的成员感到非常泄气。微软近期在尝试在Entity Framework中加入的ORM Data Access Layer也对之前拥有一个活跃社区，并且在这方面处于领先地位的ORM NHibernate产生了负面的影响。尽管<a href="http://www.servicestack.net/benchmarks/#dapper">EF的速度比起其它任何一个开源的.NET ORM框架都要慢上好几倍</a>，但它的下载量仍然超过了其它所有ORM框架的总和。与之类似的是，微软现在一再重复地创建和发布新的服务框架，许多技术不断出现随后又被淘汰，包括.asmx、CSF、WCF、WCF/REST、WSE、WCF DataServices、WCF RIA Services以及最新的Web API。而在这些年前，已经有许多可替代的开源服务框架提供了足以取而代之的能力。如果不是微软的举动有着许多不确定性，在许多领域都会出现更多的合适的替代方案，以提供给更广大的.NET社区。</p>
+<p>.NET平台有着它独特的地方。微软的推广方式包括合作伙伴频道、传道士（evangelist）、MVP奖励项目，并且完全掌控VS.NET的各个方面。这种方式让微软对大多数开发而言看起来就是整个.NET生态系统的权威发言人，这使得它们完全控制了.NET平台上的各种思想。在过去，微软只是在利用这方面的影响力去推广他们自己的类库与框架，这让许多使用.NET的公司不愿意脱离微软的技术范围而去寻求其它替代方案。我们也在很多场合承受着痛苦：许多开发者希望在工作中采用ServiceStack，但由于微软官方的解决方案的存在，他们无法说服他们的公司去采用其它框架，即使它们展现了各种有用的示例与更好的性能指标。我相信其它许多开源类库与框架也遭受过类似的命运。</p>
+<p>整个大环境导致了开源社区难以振兴，而C#/.NET的流行程度相对也有所下降，近期已经滑出了GitHub（这里可以被视为开源之家）的<a href="https://github.com/languages/C%23/most_watched">Top 10语言的榜单</a>，但仍存在的少数开源.NET项目挽回了这种劣势，并且依靠它们的独立技术建立了围绕它们的社区。Mono项目是目前为止最耀眼的明亮，它的发展情况良好，并且在社区中具有很多优秀的开发者，这一点为.NET应用程序运行在主流的其它平台上，例如iOS、Android、Linux及OSX作出了很大的贡献与价值。对许多项目来说，提供对Mono的支持能够最大程度上扩展它们的应用范围。而我们的最大动力之一就是永远保证ServiceStack在Mono上的第一等支持。不仅Mono，<a href="https://github.com/NancyFx/">NancyFx</a>与<a href="https://github.com/ServiceStack">ServiceStack</a>也尽了它们最大的力量去壮大开源.NET社区，它们都各自吸引了超过200位贡献者，这些贡献者中有许多都是首次为开源项目贡献力量。<a href="https://github.com/mono/MonoGame">MonoGame</a>与<a href="https://github.com/ravendb/ravendb">RavenDB</a>是另两个值得关注的项目，它们正在逐渐流行起来。我们对于能够成为GitHub上排名最高的项目之一，以此促进.NET的开源活动感到非常自豪，但我们也期望能够看到更多的吸引人的.NET社区发展壮大，并且鼓励更多的开发者去尝试开源开发的模型。</p>
+<p>我相信微软的合作模式所带来的最大好处，是让那些可作为替代选择的类库与框架走入了人们的视线。在这种情况下，建立一个更大的开源.NET社区比起让微软独自提供更多的功能能够带来更多的好处。在这一点上，Scott Hanselman在他那<a href="http://www.hanselman.com/blog/">著名的个人博客</a>上多次提到了各种开源类库与框架，以一己之力让大众了解到了这些信息。除了Scott之外，Glenn Block也在其非常活跃的个人twitter帐号<a href="https://twitter.com/gblock">@gblock</a>上推广了许多框架。如果微软能够投入更多力量去提升公众对这些项目的认知度，这将鼓励更多的.NET开发者投身开源世界，并给予那些现有开源项目的开发足够的动力，促使他们继续增强自己的项目，这两点对于维持开源社区的繁荣都是至关重要的组成部分。</p>
+<p>作为一家利益驱动的公司，微软需要一些财政上的激励，以促使它们去推广各种其它的类库与框架。我希望某个组织能够建立一个成功的商业案例，以证明建立一个繁荣的开源.NET社区将鼓励更多的开发者选择.NET，并且因此为Windows服务器工具与Azure服务带来了更多的潜在客户君。即使微软只在Windows Azure的运行环境中推广一些其它的.NET框架，例如它们对<a href="http://www.windowsazure.com/en-us/develop/nodejs/tutorials/web-app-with-express/">Node.js</a>、<a href="http://www.windowsazure.com/en-us/develop/python/tutorials/web-sites-with-django/">Python</a>以及<a href="https://www.windowsazure.com/en-us/develop/java/">Java</a>的支持，这也是一种良好的改进。想要完全壮大开源.NET，需要微软从心底里真正地将开源.NET社区的成长视为它们打算积极进取的目标，到了那时微软就会在它们的MVP奖励计划中认可开源的贡献，并在合作伙伴频道中对其进行推广。我相信如果在未来微软仍旧无动于衷的话，那<a href="http://www.mono-project.com/">Mono项目</a>就是鼓励更多的.NET开发者加入开源的最后希望了。</p>
+<p><b>InfoQ: </b><b>你最近在某个论坛中有这样一条留言：“我希望明年会发展的更好，我已经计划好了一些东西，它们会让你放弃选择其它框架。”你能详细地说明一下你已经为未来计划好了哪些特性吗？</b></p>
+<p><b>Demis</b><b>：</b>呵呵，我是有意在论坛里有所保留的，这样当我们宣布这些功能时就能为人们带来极大的震撼。因为我相信我们能够推出一些独一无二的、值得关注的产品与特性。但总的目标依然是提供一个有价值的服务框架，并且实现WCF中其余的有用功能，以进一步提高ServiceStack的竞争力。我们已经公开了一部分打算在明年推出的特性，包括以下内容：</p>
+<ul> 
+ <li>将Async分支与异步管道进行合并。</li> 
+ <li>创建新的、快速的异步TCP终结点。 
   <ul> 
-   <li>OS X Safari和Windows Safari使用的是不同的port</li> 
-   <li>用于OS X Safari的WebKit Nightly以后会渐渐成为一个边缘版本</li> 
+   <li>为node.js与Dart的服务提供快速的、原生的适配方案。</li> 
   </ul> </li> 
- <li>Mobile Safari 
+ <li>与更多的MQ终结点进行集成（例如RabbitMQ与ZeroMQ）。</li> 
+ <li>与VS.NET进行集成，并且为WCF的“增加服务引用”功能推出改良版的解决方案。</li> 
+ <li>集成的开发工作流，以及对Mono/Linux的更多支持。 
   <ul> 
-   <li>在一个私有代码分支上维护，不过代码现在正在<a href="http://trac.webkit.org/changeset/142373">合并到主干</a></li> 
-   <li>iOS Chrome（使用了Apple的WebView，不过后面的部分有很多不同）</li> 
+   <li>允许自动化发布到Amazon EC2与Google Compute Engine的云平台。</li> 
   </ul> </li> 
- <li>Chrome（Chromium） 
-  <ul> 
-   <li>安卓Chrome（直接使用Chromium port）</li> 
-   <li>Chromium也驱动了<a href="http://browser.yandex.ru/">Yandex Browser</a>、 <a href="http://se.360.cn/">360 Browser</a>、<a href="http://ie.sogou.com/">Sogou Browser</a>，很快，还会有Opera。</li> 
-  </ul> </li> 
- <li><a href="http://trac.webkit.org/wiki#WebKitPorts">还有很多</a>： Amazon Silk、Dolphin、Blackberry、QtWebKit、WebKitGTK+、The EFL port (Tizen)、wxWebKit、WebKitWinCE……</li> 
-</ul><p>不同的port专注于不同的领域。Mac的port注意力集中在浏览器和操作系统的分割上，允许把ObjectC和C++绑定并嵌入原生应用的渲染。Chromium专注在浏览器上。QtWebKit的port在他的跨平台GUI应用架构上给apps提供运行时环境或者渲染引擎。</p><p><strong>WebKit浏览器共享了那些东西？</strong></p><p>首先，让我们来看看这些WebKit ports的共同之处：</p><p>（作者注：很有意思，这些内容我写了很多次，每次Chrome团队成员都给我纠正错误，正如你看到的……）</p><ol> 
- <li>“WebKit在使用相同的方式解析WebKit。”——实际上，Chrome是唯一支持多线程HTML解析的port。</li> 
- <li>“一旦解析完成，DOM树也会构建成相同的样子。”——实际上Shadow DOM只有在Chromium才被开启。所以DOM的构造也是不同的。自定义元素也是如此。</li> 
- <li>“WebKit为每个人创建了‘window’对象和‘document’对象。”——是的，尽管它暴露出的属性和构造函数可以通过<a href="https://trac.webkit.org/wiki/FeatureFlags">feature flags</a>来控制。</li> 
- <li>“CSS解析都是相同的。将CSS解析为对象模型是个相当标准的过程。”——不过，Chrome只支持-webkit-前缀，而Apple和其他的ports支持遗留的-khtml-和-apple-前缀。</li> 
- <li>“布局定位？这些是基本生计问题啊”—— 尽管Sub-pixel layout和saturated layout算法是WebKit的一部分，不过各个port的实现效果还是有很多不同。</li> 
-</ol><p>所以，情况很复杂。</p><p>就像Flickr和GitHub通过flag标识来实现自己的功能一样，WebKit也有相同处理。这允许各个port自行决定是否启用<a href="https://trac.webkit.org/wiki/FeatureFlags">WebKit编译特性标签</a>的各种功能。通过<a href="http://peter.sh/experiments/chromium-command-line-switches/3">命令行开关</a>，或者通过<a href="http://blogs.adobe.com/cantrell/archives/2012/07/all-about-chrome-flags.html">about:flags</a>还可以控制是否通过运行时标识来展示功能特性。</p><p>好，现在让我们再尝试一次搞清楚WebKit究竟有哪些相同…</p><p><strong>每个WebKit port有哪些共同之处</strong></p><ul> 
- <li>DOM、winow、document</li> 
- <li>CSS对象模型</li> 
- <li>CSS解析，键盘事件处理</li> 
- <li>HTML解析和DOM构建</li> 
- <li>所有的布局和定位</li> 
- <li>Chrome开发工具和WebKit检查器的UI与检查器</li> 
- <li>contenteditable、pushState、文件API、大多数SVG、CSS Transform math、Web Audio API、localStorage等功能</li> 
- <li><a href="http://trac.webkit.org/browser/trunk/Source/WebCore">很多其他功能与特性</a></li> 
-</ul><p>这些领域现在有点儿模糊，让我们尝试把事情弄得更清楚一点。</p><p><strong>什么是WebKit port们并没有共享的：</strong></p><ul> 
- <li>GPU相关技术 
-  <ul> 
-   <li>3D转换</li> 
-   <li>WebGL</li> 
-   <li>视频解码</li> 
-  </ul> </li> 
- <li>将2D图像绘制到屏幕 
-  <ul> 
-   <li>解析方式</li> 
-   <li>SVG和CSS渐变绘制</li> 
-  </ul> </li> 
- <li>文字绘制和断字</li> 
- <li>网络层（SPDY、预渲染、WebSocket传输）</li> 
- <li>JavaScript引擎 
-  <ul> 
-   <li>JavaScriptCore 在WebKit repo中。V8和JavaScriptCore被绑定在WebKit中。</li> 
-  </ul> </li> 
- <li>表单控制器的渲染</li> 
- <li>&lt;video&gt;和&lt;audio&gt;的元素表现和解码实现</li> 
- <li>图像解码</li> 
- <li>页面导航 前进/后退 
-  <ul> 
-   <li>pushState()的导航部分</li> 
-  </ul> </li> 
- <li>SSL功能，比如Strict Transport Security和Public Key Pins</li> 
-</ul><p>让我们谈谈其中的2D图像部分： 根据port的不同，我们使用完全不同的库来处理图像到屏幕的绘制过程：</p><p><img src="https://lh6.googleusercontent.com/--WfQB-Tr1sQ/TfHQSfY38FI/AAAAAAAAB8s/DSNAn8F71i8/s800/graphicscontext.png" alt="" _href="https://lh6.googleusercontent.com/--WfQB-Tr1sQ/TfHQSfY38FI/AAAAAAAAB8s/DSNAn8F71i8/s800/graphicscontext.png" _p="true" /></p><p>更宏观一点来看，一个最近刚添加的功能：CSS.supports()在除了没有css3特性检测功能的win和wincairo这两个port之外，在其它所有port中都<a href="http://trac.webkit.org/changeset/142739">可用</a>。</p><p>现在到了卖弄学问的技术时间。上面讲的内容其实并不正确。事实上那是WebCore被共享的东西。而WebCore其实是当大家讨论HTML和SVG的布局、渲染和DOM处理时提到的WebKit。技术上讲，WebKit是WebCore和各种ports之间的绑定层，尽管通常来说这个差别并不那么重要。</p><p>一个图表应该可以帮助大家理解：</p><p><img src="http://paulirish.com/assets/webkit-diagram.png.pagespeed.ce.6jynYojf8j.png" alt="" _href="http://paulirish.com/assets/webkit-diagram.png.pagespeed.ce.6jynYojf8j.png" _p="true" /></p><p>WebKit中的许多组件都是可以更换的（图中标灰色的部分）。</p><p>举个例子来说，Webkit的JavaScript引擎，JavaScriptCore，是WebKit的默认组件。（它最初是当WebKit从KHTML分支时从KJS演变来的）。同时，Chromium port用V8引擎做了替换，还使用了独特的DOM绑定来映射上面的组件。</p><p>字体和文字渲染是平台上的重要部分。在WebKit中有两个独立的文字路径：Fast和Complex。这两者都需要平台特性的支持，但是Fast只需要知道如何传输字型，而Complex实际上需要掌握平台上所有的字符串，并说“请绘制这个吧”。</p><blockquote> 
- <p>&quot;WebKit就像一个三明治。尽管Chromium的包装更像是一个墨西哥卷。一个美味的Web平台墨西哥卷。&quot;</p> 
-</blockquote><p>—— Dimitri Glazkov, Chrome WebKit hacker，Web Components和Shadow DOM拥护者。</p><p>现在，让我们放宽镜头看看一些port和一些子系统。下面是WebKit的5个port；尽管它们共享了WebCore的大部分，但考虑一下它们的stack有哪些不同。</p><table id="wk-matrix"> 
- <tbody> 
-  <tr> 
-   <td>&nbsp;</td> 
-   <th>Chrome (OS X)</th> 
-   <th>Safari (OS X)</th> 
-   <th>QtWebKit</th> 
-   <th>Android Browser</th> 
-   <th>Chrome for iOS</th> 
-  </tr> 
-  <tr> 
-   <th>Rendering</th> 
-   <td>Skia</td> 
-   <td>CoreGraphics</td> 
-   <td>QtGui</td> 
-   <td>Android stack/Skia</td> 
-   <td>CoreGraphics</td> 
-  </tr> 
-  <tr> 
-   <th>Networking</th> 
-   <td>Chromium network stack</td> 
-   <td>CFNetwork</td> 
-   <td>QtNetwork</td> 
-   <td>Fork of Chromium’s network stack</td> 
-   <td>Chromium stack</td> 
-  </tr> 
-  <tr> 
-   <th>Fonts</th> 
-   <td>CoreText via Skia</td> 
-   <td>CoreText</td> 
-   <td>Qt internals</td> 
-   <td>Android stack</td> 
-   <td>CoreText</td> 
-  </tr> 
-  <tr> 
-   <th>JavaScript</th> 
-   <td>V8</td> 
-   <td>JavaScriptCore</td> 
-   <td>JSC (V8 is used elsewhere in Qt)</td> 
-   <td>V8</td> 
-   <td>JavaScriptCore (without JITting) *</td> 
-  </tr> 
- </tbody> 
-</table><p>*iOS Chrome注：你可能知道它使用 UIWebView。由于UIWebView的能力限制。它只能使用移动版Safari的渲染层，JavaScriptCore（而不是V8）和单进程模式。然而，大量的Chromium 代码还是起到了调节作用 ，比如网络层、同步、书签架构、地址栏、度量工具和崩溃报告。（同时，由于JavaScript很少成为移动端的瓶颈，缺少JIT编译器只有很小的影响。）</p><p><strong>好吧，那么我们该怎么办？</strong></p><p><strong>现在所有WebKit完全不同了，我好怕。</strong></p><p>别这样！<a href="http://trac.webkit.org/browser/trunk/LayoutTests">WebKit的layoutTests覆盖面</a>非常广（据最新统计，有28,000 个layoutTests），这些test不仅针对已存在的特性，而且针对任何发现的回归。实际上，每当你探索一些新的或难懂的DOM/CSS/HTML5特性时，在整个web平台上，layoutTests经常已经有了一些奇妙的小demo。</p><p>另外，W3C正在努力研究一致性测试套件。这意味着我们可以期待使用同一个测试套件来测试不同的WebKit port和浏览器，以此来获得更少的怪异模式，和一个带来更少的怪癖模式和更具互操作性的web。对所有参加过<a href="http://testthewebforward.org/">Test The Web Forward</a>活动的人们……致谢！</p><p><strong>Opera刚刚迁移到了WebKit了。会怎样？</strong></p><p>Robert Nyman和 Rob Hawkes也<a href="http://robertnyman.com/2013/02/14/webkit-an-objective-view/">谈到了这个</a> ，但是我会再补充一些：Opera在公告中明显指出<strong>Opera将采用Chromium</strong>。这意味着WebGL，Canvas，HTML5 表单，2D图像实现——Chrome和Opera将在所有这些功能上保持一致。API和后端实现也会完全相同。由于Opera是基于 Chromium，你可以有足够的信心去相信你的尖端工作将会在Chrome和Opera上获得兼容。</p><p>我还应该指出，所有的Opera浏览器都将采用Chromium：包括他的Windows，Mac、Linux版本，和Opera Mobile（完全成熟的移动浏览器）。甚至Opera Mini都将使用基于Chromium的服务器渲染集群来替换当前的基于Presto的服务器端渲染。</p><p><strong>……那WebKit Nightly是什么？</strong></p><p>它是WebKit的<a href="http://trac.webkit.org/browser/trunk/Source/WebKit/mac">mac port</a> ，和Safari运行的二进制文件一样（尽管会替换一些底层库）。因为苹果在项目中起主导地位，所以它的表现和功能与Safari的总是那么一致。在很多情况下，当其它port可能会试验新功能的时候，Apple却显得相对保守。不管怎样，如果你想我用中学一样的类比，想想这个好了：WebKit Nightly对于Safari就像Chromium对于Chrome。</p><p>同样的，<a href="http://paulirish.com/2012/chrome-canary-for-developers/">Chrome Canary</a> 有着最新的WebKit资源。</p><p><strong>告诉我更多的WebKit内幕吧。</strong></p><p>就在这儿了，小伙子：</p><p><a href="https://docs.google.com/presentation/d/1ZRIQbUKw9Tf077odCh66OrrwRIVNLvI_nhLm2Gi__F0/embed?start=false&amp;loop=false&amp;delayms=3000"> <img src="http://paulirish.com/i/x3fb890.png.pagespeed.ic.6nLbkKT48f.png" alt="" _href="http://paulirish.com/i/x3fb890.png.pagespeed.ic.6nLbkKT48f.png" _p="true" /> </a></p><p><strong>扩展阅读：</strong></p><ul> 
- <li><a href="http://www.webkit.org/coding/technical-articles.html">WebKit internals technical articles | webkit.org</a></li> 
- <li><a href="http://robertnyman.com/2013/02/14/webkit-an-objective-view/">WebKit: An Objective View | Robert Nyman &amp; Rob Hawkes</a> (译者注：本文在InfoQ有授权发布的<a href="http://www.infoq.com/cn/news/2013/02/webkit-history-and-now;jsessionid=26E7B8C50F5D45556015EC1064A36419">中文译文</a>)</li> 
- <li><a href="http://ariya.ofilabs.com/2011/06/your-webkit-port-is-special-just-like-every-other-port.html">your webkit port is special (just like every other port) | Ariya Hidayat</a></li> 
- <li><a href="http://blogs.adobe.com/webplatform/2013/01/21/getting-started-with-the-webkit-layout-code/">Getting Started With the WebKit Layout Code | Adobe Web Platform Blog</a></li> 
- <li><a href="http://arunpatole.com/blog/2011/webkit-documentation/">WebKit Documentation Overview | Arun Patole</a></li> 
- <li><a href="http://www.youtube.com/watch?v=RVnARGhhs9w">Rendering in WebKit, by Eric Seidel | YouTube</a></li> 
- <li><a href="http://www.igvita.com/slides/2012/web-performance-for-the-curious/">web performance for the curious | Ilya Grigorik</a></li> 
-</ul><div class="clearer-space"></div><br><br><br><br><br><br></body></html>
+ <li>提供长期稳定的商业服务包签订。</li> 
+ <li>提供一个初学者模板，包含各种流行的单页面应用常用技术，如Backbone.js、AugnlarJS、Yeoman以及Dart。</li> 
+ <li>提供创建CRM与支持SharePoint系统的初学者模板。</li> 
+ <li>重新设计网站，并进一步改善文档。</li> 
+</ul>
+<p><b>InfoQ: Demis</b><b>，非常感谢你抽出时间进行这些访谈。 </b></p>
+<h2>关于受访者</h2>
+<p><img _p="true" _href="img://null" src="http://infoqstatic.com/resource/articles/interview-servicestack-2/zh/resources/1111010.jpg" style="float: left; margin-right: 10px" alt="" /><b>Demis Bellot</b>是来自Stack Exchange的一位开发者，他维护着StackOverflow Careers 2.0的后台网站以及基于ServiceStack创建的MQ服务。他同时也是ServiceStack的创始人以及项目领导。</p>
+<div style="clear:both">
+ &nbsp;
+</div>
+<p><strong>查看英文原文：</strong><a href="http://www.infoq.com/articles/interview-servicestack-2">Interview With Demis Bellot, Project Lead of ServiceStack - Part 2</a></p><br><br><br><br><br><br></body></html>

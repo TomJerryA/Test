@@ -1,34 +1,14 @@
-<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>Rodney Viana为.NET调试开发的WinDbg 扩展介绍</h3><p>当.NET应用程序在产品环境中发生故障的时候，通常留给开发者的仅仅是一个内存dump。因为Visual Studio不能处理dump文件，所以你必须使用一个名为<a href="https://en.wikipedia.org/wiki/WinDbg">WinDbg</a>的工具。该工具通常会和<a href="http://msdn.microsoft.com/en-us/library/bb190764(v=vs.110).aspx">SOS.dll</a>或者<a href="http://blogs.msdn.com/b/tom/archive/2011/04/28/now-available-psscor4-debugger-extension-for-net-4-0.aspx">Psscor4.dll</a>一起使用，它们是能够暴露.NET特定细节的扩展。尽管非常强大，但是它们非常难于使用，因此开发者偶尔会创建自己的扩展。<a href="http://blogs.msdn.com/b/rodneyviana/archive/2013/10/30/hardcore-debugging-for-net-developers-not-for-the-faint-of-heart.aspx">Rodney Viana</a>就是这样的一个开发者，他刚刚发布了<a href="http://netext.codeplex.com/">netext</a> 1.6.1并将该项目开源。</p>
-<p>Netext中的一个有趣功能是，它能够使用一种类似于SQL的语法查询堆。例如，假如你想要查看最近失败的Web请求的列表，因为HttpContext对象已经被缓存了，所以你能够使用下面的语法查看失败的查询：</p>
-<pre>
-!wfrom -type *.HttpContext |
-where ( ($contains(_request._url.m_String, &quot;http:&quot;)) &amp;&amp; 
-(_response._statuscode != 0n200) ) 
-select $addr(), _request._url.m_String, _response._statusCode</pre>
-<p>下面是支持的命令列表：</p>
-<p>显示对象详细信息的命令</p>
+<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>TypeScript综述：新功能、工具和路线图</h3><p>InfoQ上次报道TypeScript是关于<a href="http://www.infoq.com/cn/news/2013/06/typescript09">0.9版本增加泛型</a>。从那以后，作为<a href="http://blogs.msdn.com/b/typescript/archive/2013/08/06/announcing-0-9-1.aspx">0.9.1版本</a>的一部分，微软增加了三个小功能。第一个是“typeof”操作符，它现在可以用在变量声明的类型位置。例如，如果有一个名为M的模块，那么语句“var m：typeof M = M；”会创建一个强类型的变量“m”，它的值是那个模块。Jonathan Turner说，这“在使用形状模块、类的静态部分及枚举时尤其方便，因为他们另外没有一个可以引用的名称。”</p>
+<p>接下来是“this”。在字段初始化器中使用this的规则已经放宽。实际上，这意味着引用类实例的回调函数可以在实例成员中创建和保存。</p>
+<p>0.9.1版本还包含了“no implicit any”选项。正如Visual Basic的Option Strict，如果有任何变量的类型无法推断，就会抛出编译时错误。</p>
+<p>TypeScript接下来的两个版本0.9.5和1.0RC侧重于：</p>
 <ul> 
- <li>!wdo——显示GAC或者堆栈中的ad-hoc对象或者数组</li> 
- <li>!wselect——为数组中的一个对象或者所有条目显示ad-hoc字段（和level字段）</li> 
- <li>!wfrom——执行类似SQL的堆对象分析，支持比较、表达式评估和索引过滤</li> 
+ <li>用户报告的问题</li> 
+ <li>可靠性</li> 
+ <li>CPU和内存使用</li> 
+ <li>符合1.0规范</li> 
 </ul>
-<p>枚举对象</p>
-<ul> 
- <li>!windex——根据不同的过滤器索引并显示对象，例如HttpContext类型的对象</li> 
- <li>!wstack——转储唯一的堆栈对象</li> 
- <li>!wheap——列出没有索引的对象并显示堆样本</li> 
- <li>!wgchandles——转储GC根句柄</li> 
-</ul>
-<p>特殊用途</p>
-<ul> 
- <li>!wdict——显示dictionary对象</li> 
- <li>!whash——显示HashTable对象</li> 
- <li>!whttp——列出HttpContext对象</li> 
- <li>!wconfig——显示所有排列在内存中的.config文件</li> 
- <li>!wservice——列出WCF服务对象</li> 
- <li>!weval——评估表达式列表</li> 
- <li>!wclass——显示“反射的”类定义（字段、属性和方法）</li> 
-</ul>
-<p>Netext还支持能够和聚合、字符串、XML、数组和反射一起使用的<a href="http://netext.codeplex.com/#functions">功能</a>。</p>
-<p>Netext是基于GNU通用公共许可（GNU General Public License）版本2提供的。尽管Rodney Viana是Microsoft的一位雇员，但该项目是一个个人项目，Microsoft并不为其提供支持。</p>
-<p><b>查看英文原文</b>：<a href="http://www.infoq.com/news/2013/11/netext">Introducing Rodney Viana’s WinDbg Extension for .NET Debugging</a></p><br><br><br><br><br><br></body></html>
+<p>在TypeScript 1的最终版本发布以后，微软计划开始在支持异步/等待方面开展工作。这大概可以与我们在C#和Visual Basic中看到的相提并论。该功能在客户端和Node.js编程方面将会很有用。对Mixins和受保护访问的支持也在计划之中。</p>
+<p>随着ECMAScript 6语法的固化，<a href="http://typescript.codeplex.com/wikipage?title=Roadmap&amp;referringTitle=HomegTitle=Home">TypeScript 1.x</a>也将采用它的更多功能。</p>
+<p>在此期间，<a href="http://blogs.jetbrains.com/dotnet/2013/10/typescript-support-resharper-81/">ReSharper已经在8.1版本中增加了对TypeScript的支持</a>，包括输入辅助、动态模板、代码补全和若干基本的重构操作。其中许多与JavaScript共享，并且ReSharper甚至可以使用TypeScript注释“在JavaScript文件中增强代码补全功能”。</p>
+<p><b>查看英文原文：</b><b><a href="http://www.infoq.com/news/2013/11/TypeScript-0-9-1">TypeScript Roundup: New Features, Tools, and a Roadmap</a></b></p><br><br><br><br><br><br></body></html>

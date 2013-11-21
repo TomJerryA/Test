@@ -1,12 +1,6 @@
-<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>Clide介绍，一个“令人愉快的Visual Studio 自动化API”</h3><p>在为Visual Studio编写插件或者扩展的时候，开发者通常必须在EnvDTE和IVs接口之间选择。前者虽然易于使用但是有些限制，后者暴露了Visual Studio的所有内容但是包含了“很多COM包袱”。在尝试创建既易于使用又非常强大的类库的过程中，Clarius Labs提供了<a href="https://www.nuget.org/packages/clide">Clide</a>，他们称之为一个“令人愉快的Visual Studio 自动化API”。</p>
-<p>Clide使用了时髦的.NET API代码风格，例如使用了LINQ和扩展方法。下面是<a href="http://blogs.clariusconsulting.net/kzu/high-level-overview-of-visual-studio-extensibility-apis/">Daniel Cazzulino提供的一段代码示例</a>，该代码可以查询一个解决方案中的所有项目的名称。</p>
-<pre>
-var projects = DevEnv.Get(serviceProvider)
-.SolutionExplorer()
-.Solution
-.Traverse()
-.OfType&lt;IProjectNode&gt;()
-.Select(project =&gt; project.DisplayName)
-.ToList();</pre>
-<p>Clide是一个基于<a href="https://github.com/clariuslabs/clide/blob/master/License.txt">自定义协议</a>发布的<a href="https://github.com/clariuslabs/clide">开源项目</a>。<a href="http://www.nudoq.org/#!/Projects/Clide">文档</a>可以从NuDoq上获取。</p>
-<p><b>查看英文原文</b>：<a href="http://www.infoq.com/news/2013/11/Clide">Introducing Clide, an “Enjoyable Visual Studio Automation API”</a></p><br><br><br><br><br><br></body></html>
+<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>Apportable将Objective-C引入到Android</h3><p><a href="http://www.apportable.com/">Apportable</a>为iOS开发者将他们的软件发布到Android系统中提供了可能性。程序员可以使用Apportable SDK和一系列命令行工具来交叉编译他们的应用，而不需要对其Objective-C代码库做出重大改变。作为另一种选择，Apportable还将这种应用转换的功能提升为了一种服务。在这些已经转换过的应用中，比较出名的就有<a href="https://play.google.com/store/apps/details?id=com.hemispheregames.osmos">Osmos</a>（<a href="https://itunes.apple.com/us/app/osmos/id382991304?mt=8">iOS版</a>）和Bj&ouml;rks多媒体应用<a href="https://play.google.com/store/apps/details?id=com.bjork.biophilia">Biophilia</a>（<a href="https://itunes.apple.com/us/app/bjork-biophilia/id434122935?mt=8">iOS版</a>）。</p>
+<p>除了通过简单命令行工具来交叉编译现有的Objective-C代码以外，Apportable还赋予了访问Android特定功能的能力。在这些特性中包括了能被硬按键所支持的<a href="http://docs.apportable.com/uikit-extensions.html#uikit-extensions">UIKit扩展</a>，多屏幕分辨率，设备硬件信息和Android版本信息。</p>
+<p>Apportable还包含了<a href="http://docs.apportable.com/using-java.html#using-java">BridgeKit</a>，一种允许开发者向其应用添加Java 类文件和访问原生Android功能的类库。Java类文件是通过被包装成Objective-C的对象来进行访问的，该过程允许在Java和Objective-C之间进行原始数据类型的交换。并且还可以在Objective-C类文件中定义回调方法，而且这些方法还能被Java类文件调用。</p>
+<p>Apportable发布了一个针对Xcode 5的初始版SDK，但是官方支持的Xcode版本依然是4.6.3。假如一个软件工程不会在Xcode 5上进行交叉编译，那么Apportable就提供了一个如何将版本降级到4.6.3的<a href="http://docs.apportable.com/index.html">说明</a>，或者也可以切换到其他版本的Xcode上。</p>
+<p>现在有<a href="http://www.apportable.com/pricing">四个许可级别</a>，第一级是免费许可，它允许转换基于诸如OpenAL、CoreFoundation或者CoreGraphics等核心框架的应用。根据原始应用所使用的框架以及所需支持的级别，还有其他等级的证书可供选择，费用从每个开发者每年$1.000到$15.000不等。对于企业许可还有特别的折扣。</p>
+<p><strong>查看英文原文：</strong><a href="http://www.infoq.com/news/2013/11/apportable-ios-to-android">Apportable brings Objective-C to Android</a></p><br><br><br><br><br><br></body></html>

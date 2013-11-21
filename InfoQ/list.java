@@ -1,6 +1,12 @@
 <html>
  <head></head> 
- <body> 
+ <body>
+  <div>
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/4.java">Case Studies of Lean and Kanban from Central Europe</a>The 2013 international conference in Central Europe about Lean and Kanban (LKCE13) included presentations about change management, systems thinking, leadership, learning, and teamwork, and case studies from larger organizations that have applied Lean and Kanban. InfoQ interviewed Arne Roock about deployment of Lean and Kanban in agile software development.
+  </div>
+  <div>
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/3.java">New Owners for Unity.Mvc and Unity.WebAPI</a>The team behind the website FeedbackHound has taken ownership of the Unity.Mvc and Unity.WebAPI. These open source libraries allow for integration between ASP.NET MVC &amp; Web API and Microsoft’s IoC framework, Unity.
+  </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/2.java">Microsoft to Stop Honoring SHA1 Certificates for SSL and Code Signing</a>Following recommendations by the US National Institute of Standards and Technology, Microsoft intends to stop honoring SHA1 for SSL and Code Signing certificates. This policy will begin in 2017 and applies to Windows Vista, Windows Server 2008, and later operating systems. 
   </div> 
@@ -144,12 +150,6 @@
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/5.java">Add-ins Deprecated in Visual Studio 2013</a>Microsoft has deprecated the Visual Studio Add-in infrastructure. According to MSDN, “Visual Studio add-ins are deprecated in Visual Studio 2013. You should upgrade your add-ins to VSPackage extensions.” 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/5.java">Introducing Rodney Viana’s WinDbg Extension for .NET Debugging</a>When a .NET application fails in production the developer is often left with just a memory dump. Since Visual Studio cannot handle dumps, you have to instead look at a tool called WinDbg. Though powerful, these can be difficult to use so developers occasionally create their own extensions. Once such developer is Rodney Viana, who has just released netext 1.6.1 as an open source project. 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/4.java">Major Performance Improvements in CA Clarity 13.2</a>CA Clarity, an enterprise resource planning tool specifically designed for large IT organizations and consulting firms, has undergone a major redesign to fix its performance issues. In some cases average response time has gone from a frustrating 5 seconds to roughly 0.6 sec. 
-  </div> 
+  </div>   
  </body>
 </html>

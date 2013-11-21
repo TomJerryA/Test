@@ -1,27 +1,13 @@
-<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>“Java不会灭亡”后续报道</h3><p>InfoQ中文站之前<a href="http://www.infoq.com/cn/news/2013/10/java-trend" target="_blank">报道</a>过，开发社区中时不时的会有唱衰Java的言论出现，资深评论家Andrew Binstock撰文分析了Java的发展现状和趋势，并看好Java的未来前景。在原文发表之后，开发社区对此展开了热烈的讨论，在各大IT网站的<a href="http://www.drdobbs.com/jvm/1000-responses-to-java-is-not-dying/240162680" target="_blank">评论</a>数超过了一千条，各种观点百花齐放。我们来看看其中的主要观点和Andrew做出的回复。</p>
-<p>Andrew认为Java的发展现状和趋势都看好，主要论据包括：</p>
+<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>Vaughn Vernon谈论响应式领域驱动设计</h3><p>将<a href="http://en.wikipedia.org/wiki/Actor_model">Actor模型</a>与<a href="http://en.wikipedia.org/wiki/Domain-driven_design">领域驱动设计</a>（DDD）结合使用，你或许能够避免在传统的<a href="http://en.wikipedia.org/wiki/Event-driven_architecture">事件驱动</a>或<a href="http://alistair.cockburn.us/Hexagonal+architecture">Hexagonal</a>架构中所经常面对的一些架构上的负担。<a href="http://dddcommunity.org/book/implementing-domain-driven-design-by-vaughn-vernon/">《Implementing Domain-Driven Design》</a>一书的作者<a href="http://vaughnvernon.co/">Vaughn Vernon</a>最近在一个关于使用<a href="http://www.scala-lang.org/">Scala</a>与<a href="http://akka.io/">Akka</a>（Actor模型的一种实现）进行响应式DDD编程的讲座中对这一话题进行了<a href="http://skillsmatter.com/podcast/design-architecture/reactive-ddd-with-scala-and-akka">讲解</a>。</p>
+<p>人们最近经常使用的这个新术语“响应式”其实已经不是什么新鲜的概念了，许多人已经熟悉了对事件和消息进行响应的方式，但它在DDD中的应用却为我们习惯的方式带来了一些改变。在进一步进行解释之前，Vaughn对Actor模型的一些基本特性进行了定义：</p>
 <ul> 
- <li>JavaOne是Java程序员的年度大会，相比较于前两年，最近的一场大会更大、更好，参与的人也更多。Andrew和展台的供应商交流过，他们和Andrew的观点是一致的（真的没有一个人例外），他们都表示今年的关注度都远高于去年，而去年的也比前年的要好。通常，当某种技术开始衰落时，我们最先在它的展会上发现征兆：供应商不想为参与人数少的展会花钱，开发者也需要把他们的旅行经费花在更有价值的事情上。于是，当一个展会冷清得像墓地时，我们就可以知道这种技术的死期到了。</li> 
- <li>Java语言在不断地进步。不管是在语言水平还是JVM水平，Java 7 都是一个重要的版本。而预计明年3月问世的Java 8，更值得我们期待。Java 9的一些特性已经发布，并预计在2016年发布。与Sun公司之前对Java的管理方式不同，Oracle公司坚持每24-30个月更新一次Java版本这一目标。Java 8将会加入闭包（也就是lambda 表达式）。闭包减少代码，减少需要的匿名内部类，并促进函数式编程。更好的模块性（这个将在Java 9中进行完善）将帮助有效管理部件，而几项用来简化语句的改进也将出现在这个版本中。</li> 
- <li>JVM的生态系统很健康，这是证明Java没有在衰退的更有力的证据。JVM也在随着语言版本的更新而更新。Java 7中新加入的字节码（包括invokedynamic），这体现了JVM表现的有多优秀。当JVM中增加了实现Ruby、JRuby指令的本地支持后，它的性能已经远远超越了基于C的Ruby VM。而基于C的Ruby VM多年来一直是Ruby的参考平台。</li> 
- <li>当今对用户体验的关注给Java带来了很大的发展机会，它的发展甚至可能比我们预期还要好。Oracle敏锐地注意到了Java在小型设备中扮演的角色。据该公司描述，当今有30亿台手持设备在运行Java。</li> 
+ <li>直接异步消息传递，它表示某个Actor以异步的方式直接向另一个Actor发送了一条消息。</li> 
+ <li>无锁并行。Actor不对锁进行处理，而是由基础架构进行处理。</li> 
+ <li>无共享。Actor互相之间对对方的内部状态一无所知。</li> 
 </ul>
-<p>对于读者的评论，Andrew表示：“奇怪的是，很少有评论者反驳我的核心观点。也就是说，惯常的偏见说Java即将灭亡这种说法并没有被现实中的现象所支持”。</p>
-<p>这些评论可以归纳为几种主要的观点。最普遍的观点是：Java不会灭亡，但是会成为一种传统的（或者说过时的）语言。Andrew对此给予了反驳，以他的经验来看，传统的语言主要有两个特点：首先，其代码库的增长只限于需要维护现有的代码。也就是说，新的项目基本上不会选择用传统语言来开发。第二个特点是，一些其他语言或者被广泛使用的语言会代替之前用传统语言写的软件来开发。从这个意义上来说，COBOL符合了传统语言的定义。现在的商业应用程序已经不再使用COBOL编写，而是使用大量的其他语言来编写，尤其是Java。</p>
-<blockquote> 
- <p>我不同意这种传统语言的观点，因为我没有找到真正的证据表明Java符合这两个标准中的任何一个。单是Android就能保证很多新的项目将被用Java来编写。同时，在企业中，我也没有看到什么语言已经取代了Java的位置。Spring的流行程度也表明了Java在企业中仍然是一门受欢迎的语言。JavaScript作为面向客户端开发的技术以及在Node.js中的技术可能最终会把Java在Web应用程序的份额中挤掉一部分。以同样的方式，Ruby on Rails也会占据小规模站点的份额。在那些狭小的领域中，Java可能成为那种传统的语言。但是现在断定将要发生事情的程度还为时过早，因为Java编写的WEb框架在新项目中的应用仍十分活跃。</p> 
-</blockquote>
-<p>还有一种观点认为：Java只是看起来要灭亡了，原因在于新入门的开发者更喜欢其它编程语言。Andrew表示认同：</p>
-<blockquote> 
- <p>我同意这是真的。软件开发正在经历新的编程语言的“黄金时代”。在过去的十五年里，D、Erlang、Lua、Ruby、Scala、Groovy、Clojure等语言层出不穷（虽然有些语言发明的时间远在这一时期之前，但却是在这个时期变得流行起来的）。同时一大堆新的语言如Go、Rust、CoffeeScript、R和Haskell等相互竞争来引起注意。在计算机发展史上还从没有哪个时期一样有这么多种语言和技术特点的选择。如果说很多大学的计算机科学课程应用Java作为教学语言的话，这可以表明Java代表了编程语言的现状，而那些新语言则是处于真正兴趣而兴起的事物。我同意这种观点。我喜欢探索新的编程语言，但它们的存在对Java来说并不代表什么。如同一个Reddit网友说的那样“我是编程方面的新手，今年刚刚拿到我的学位，但Java和C#/.NET绝对没有要灭亡的趋势。我现在在做我的第二份工作，并且我的前两份工作都要编写Java。”</p> 
-</blockquote>
-<p>另外一种观点则认为：桌面版的Java已经灭亡了。关于这个观点，Andrew也是倾向于同意：</p>
-<blockquote> 
- <p>除了在一些提供特殊用处的领域外，Java applets几乎彻底消失了。即使是JavaFX，作为一个Swing的重要升级，我不认为它足够让Java在客户端界面开发领域占主要地位，尤其是在桌面应用方面。然而，Java从来就不是桌面应用的主要成员，所以它未来在这方面的缺席并没有真正影响到它的整体健壮性。</p> 
-</blockquote>
-<p>还有不少评论者提到了Oracle的因素。一些人认为，Oracle在开发者中并不是一个受欢迎的公司。它对于从Sun获得的技术资产的处理，尤其是开源项目的处理方式，并没有加强它在程序员之中的声誉。但现阶段Java在Oracle的羽翼下，Andrew相信它能比Sun当年做出更好的推进Java语言的工作。</p>
-<blockquote> 
- <p>我曾在原来那篇文章中提到过这一点，此外，我非常质疑“做一个语言的发展者才是首要价值”。比如JavaScript，它的复兴作用无需赘述。它是一个几乎每个人都抱怨的语言——而且这些年来也没有起色。然而缺乏更新并没有限制其受欢迎程度，尽管大多数开发者希望能看到它能多解决几个约束。</p> 
-</blockquote>
-<p>当然，不少评论者完全同意那篇文章的观点并且认为它说的还不够深刻。他们特别指出Java的生态系统中有很多高质量的工具。尤其是IDE，还有数目庞大的库——而且很多库都是开源的，还有Java字节码出色的可移植性，还有很多可供开发者利用的文档和丰富的资源。可能有人会说这是长时间发展的语言都有的好处，但Andrew认为没有哪种其它编程语言——无论老的还是新的语言——能够拥有这些丰富的资源。</p>
-<p>关于“Java是否会灭亡”的讨论还在继续，InfoQ的读者朋友对此有何看法？欢迎发表自己的观点。</p><br><br><br><br><br><br></body></html>
+<p>促使Vaughn选择使用DDD方式的主要动机之一，是他希望以一种非常明确的方式对业务的核心部分进行建模。而在一个传统的事件驱动架构中，我们除了明确了领域模型的设计之外，领域事件同样也表现了一部分领域概念。这种方式依然没有达到完全的清晰化的目的，因为一旦领域事件被发布之后，要在代码中找出究竟在哪里对事件进行了响应，以及它最终对整个模型产生了怎样的影响，这并不是一件简单的事。</p>
+<p>与事件驱动架构相反，Vaughn发现Actor模型能够表现得非常明确。当某个actor向另一个actor发送消息，必须在代码中非常明确地表现出来。Vaughn所面对的一个问题是，结合使用Actor模型与DDD能为我们带来多大的好处？难道好处仅仅是我们可以使用与以往相同的架构，在各个Aggregate之间发送消息而已吗？他对此疑问的回答是否定的，他相信这种方式可以使我们避免在传统的事件驱动或Hexagonal架构中所经常面对的一些架构上的负担。他认为只要有一种合适的框架，我们就可以将整个架构简单地分解为Controller和Aggregate两种组件，而Actor可扮演控制器的角色，它知道如何将消息发送给模型中的各个Aggregate以进行交互。</p>
+<p>Vaughn认为Actor模型与DDD的结合使用方式是没有什么限制的，对于任何需要实现高伸缩性、高可用性和低延迟的系统来说这一方式都是可用的。Akka是基于Java虚拟机（JVM）编写的，不过Vaughn正在致力于实现Akka.NET，它将把Akka移植到C#和F#语言上。</p>
+<p>Vaughn在今年早期对结合使用Actor模型与DDD的基础知识的<a href="http://www.infoq.com/news/2013/06/actor-model-ddd">发表了一份文章</a>。</p>
+<p><a href="http://www.reactivemanifesto.org/">响应式宣言</a>（Reactive Manifesto）于2013年9月发布，它描述了这个概念中包含的各种核心思想。</p>
+<p><strong>查看英文原文：</strong><a href="http://www.infoq.com/news/2013/11/vernon-reactive-ddd">Vaughn Vernon: Reactive Domain-Driven Design</a></p><br><br><br><br><br><br></body></html>

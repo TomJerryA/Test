@@ -1,65 +1,13 @@
-<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>移动HTML5面对的问题</h3><p>近期的一份研究报告，给出了与一般观点相左的结论，性能并不是HTML5面对的主要问题；相反，性能分析和调试工具的缺失，以及缺少某些特定API才是它的最大问题。</p>
-<p>VisionMobile对全球超过6千名开发者进行了调查，分析了超过3万款Android Play中发布的应用，评测了42款HTML5框架和工具，并就移动HTML5与原生应用之争的话题，访谈了32位顶级专家。最终，VisionMobile对此进行总结，发表了研究报告《<a href="http://www.developereconomics.com/downloads/can-html5-compete-native/">HTML5如何与原生应用竞争？</a>》。以下是该研究中的一些最重要的发现。该报告划分出四类适合HTML5应用的主要市场路径：</p>
-<ol> 
- <li>移动浏览器——针对移动设备开发，适合运行在移动浏览器环境中的Web应用或网页。</li> 
- <li>原生应用包装——将Web应用封装到原生应用中，并通过应用商店发布。</li> 
- <li>Web到原生转换——使用JavaScript编写应用，并编译为原生应用。</li> 
- <li>原生的JavaScript API——针对原生支持HTML5的平台编写应用，例如Firefox OS、Windows 8和chrome OS这样的平台。</li> 
-</ol>
-<p>该报告中的重要发现包括：</p>
+<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>Amazon RDS对PostgreSQL提供了支持</h3><p>Amazon RDS在服务所支持的数据库列表中<a href="http://aws.typepad.com/aws/2013/11/amazon-rds-for-postgresql-now-available.html">添加了PostgreSQL</a>。目前支持<a href="http://www.postgresql.org/docs/9.3/static/release-9-3-1.html">v9.3.1</a>版本的PostgreSQL，并且规划会支持将来的新版本。</p>
+<p>单个Postgres RDS实例能够扩展到3TB数据以及30,000 IOPS。所支持的核心特性为：</p>
 <ul> 
- <li>61%的开发者针对移动浏览器进行开发。</li> 
- <li>在美国区Android Play的应用中，63%的应用无法使用HTML5针对移动浏览器开发，因为浏览器还没有实现这些应用需要的某些API 。</li> 
- <li>在美国，37%的Android应用可以使用HTML5实现，而如果浏览器能够增加电源管理和WiFi相关API，那么这一数字将能够上升到58%。</li> 
- <li>39%的开发者通过移动浏览器之外的其他三种市场路径创建HTML5应用。</li> 
- <li>在美国，49%的Android应用可以使用原生应用封装的方式；63%可以使用Web到原生转换器的方式；而98%可以使用JavaScript的方式。</li> 
+ <li>所有正常RDS所支持的特性，如Multi-AZ Deployments、Provisioned IOPS、虚拟私有云（Virtual Private Cloud）、自动备份（Automated Backups）、Point-in-time恢复以及跨域快照复制（Cross-Region Snapshot copy）。</li> 
+ <li><a href="http://www.postgis.net/">PostGIS</a>空间数据库扩展</li> 
+ <li>PL/Perl、PL/Tcl以及PL/pgSQL语言</li> 
+ <li>全文本搜索字典（Full-text search dictionaries）（<a href="http://www.postgresql.org/docs/9.3/static/dict-int.html">dict_int</a>、<a href="http://www.postgresql.org/docs/9.3/static/dict-xsyn.html">dict_xsyn</a>以及<a href="http://www.postgresql.org/docs/9.3/static/unaccent.html">unaccent</a>）</li> 
+ <li>高级数据类型如<a href="http://www.postgresql.org/docs/9.2/static/hstore.html">Hstore</a>和JSON</li> 
+ <li>支持在数据库会话中，通过<a href="http://www.postgresql.org/docs/9.3/static/dblink.html">dblink</a>连接到其他PostgreSQL数据库</li> 
 </ul>
-<p>下图展示了HTML5吸引人的地方：</p>
-<p><img width="600" _p="true" _href="img://null" alt="" src="http://infoqstatic.com/resource/news/2013/11/mobile-html5/zh/resources/1111003.png" /></p>
-<p>而下图展现了开发者对HTML5的抱怨：</p>
-<p><img width="600" _p="true" _href="img://null" alt="" src="http://infoqstatic.com/resource/news/2013/11/mobile-html5/zh/resources/1111004.png" /></p>
-<p>许多开发者认为性能是HTML5的主要问题，但是在采访过这一领域的许多专家后，报告的作者认为性能是个“伪目标”，因为性能会随着硬件的更新换代、JavaScript编译器的升级、Asm.js等可选项的涌现等原因，而自动得到改善。在这些专家看来，首要问题与政治有关，更确切的说，由于主流浏览器供应商同时也是移动OS供应商，因此他们热衷于通过各自的应用商店来分发应用。Google鼓励原生的Chrome应用，Apple似乎打算实现最新的HTML5标准，但“却遗漏了性能相关的API，例如WebGL。”同样地，根据这份报告，HTML5的神话之一，是开发很简单；但实际上开发很难——因为缺少充足的调试和性能分析工具。</p>
-<p>在美国区的Google Play中，应用程序最常使用的API是：</p>
-<p><img width="600" _p="true" _href="img://null" alt="" src="http://infoqstatic.com/resource/news/2013/11/mobile-html5/zh/resources/1111005.png" /></p>
-<p>目前的HTML5 API标准的状态，以及浏览器的支持情况，如下图所示：</p>
-<p><img width="600" _p="true" _href="img://null" alt="" src="http://infoqstatic.com/resource/news/2013/11/mobile-html5/zh/resources/1111006.png" /></p>
-<p>如果某些特定API能够得以实现，那么对不同的市场路径造成的影响如下表所示。表中展现了如果拥有这些API，使用HTML5开发的应用数量将会上升的比例： </p>
-<table cellspacing="0" cellpadding="0" border="1"> 
- <tbody> 
-  <tr> 
-   <td width="167" valign="top"> <p>市场路径</p> </td> 
-   <td width="167" valign="top"> <p>API</p> </td> 
-   <td width="167" valign="top"> <p>百分比</p> </td> 
-  </tr> 
-  <tr> 
-   <td width="167" valign="top"> <p>移动浏览器</p> </td> 
-   <td width="167" valign="top"> <p>电源管理</p> </td> 
-   <td width="167" valign="top"> <p>13%</p> </td> 
-  </tr> 
-  <tr> 
-   <td width="167" valign="top"> <p>原生应用包装</p> </td> 
-   <td width="167" valign="top"> <p>电源管理</p> </td> 
-   <td width="167" valign="top"> <p>12%</p> </td> 
-  </tr> 
-  <tr> 
-   <td width="167" valign="top"> <p>Web到原生转换</p> </td> 
-   <td width="167" valign="top"> <p>WiFi</p> </td> 
-   <td width="167" valign="top"> <p>21%</p> </td> 
-  </tr> 
-  <tr> 
-   <td width="167" valign="top"> <p>原生JavaScript API</p> </td> 
-   <td width="167" valign="top"> <p>日历</p> </td> 
-   <td width="167" valign="top"> <p>1.4%</p> </td> 
-  </tr> 
- </tbody> 
-</table>
-<p></p>
-<p>针对HTML5领域，这份报告总结出的若干观察和推荐如下：</p>
-<ul> 
- <li>浏览器应该实现更多的HTML5 API，首先从电源管理和WiFi开始。开发者应该推动浏览器厂家实现更多的API。</li> 
- <li>原生JavaScript应用需要标准化打包解决方案，以便实现一次打包就能在任何支持的平台上部署的目标。</li> 
- <li>应该开发设备身份识别API，以减少与cookie和隐私相关的恐惧。</li> 
- <li>开发者需要能够更好地获得HTML5相关知识，包括HTML5能够提供哪些能力、真正的优势和缺点。</li> 
- <li>应该开发调试API，以便创建一系列调试工具。</li> 
-</ul>
-<p><strong>查看英文原文：</strong><a href="http://www.infoq.com/news/2013/11/mobile-html5">What’s the Problem with Mobile HTML5?</a></p><br><br><br><br><br><br></body></html>
+<p>你可以去<a href="http://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/CHAP_PostgreSQL.html">官方文档</a>上了解更多扩展功能。</p>
+<p><a href="http://aws.amazon.com/rds/">Amazon关系型数据服务（RDS，Relational Database Service）</a>是一种在云中简化搭建、操作以及扩展关系型数据库的web服务。RDS已经支持多种其他的数据库引擎，如MySQL、Oracle和SQL Server。</p>
+<p><strong>原文英文链接：</strong><a href="http://www.infoq.com/news/2013/11/amazon-rds-postgresql">Amazon RDS Supports PostgreSQL</a></p><br><br><br><br><br><br></body></html>

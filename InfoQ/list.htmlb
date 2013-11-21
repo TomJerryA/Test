@@ -1,6 +1,9 @@
 <html>
  <head></head> 
- <body> 
+ <body>
+  <div>
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/20.htmlb">采访ServiceStack的项目领导Demis Bellot——第2部分</a> ServiceStack是一个开源的、支持.NET与Mono平台的REST Web Services框架。InfoQ有幸与Demis Bellot深入地讨论了这个项目。在这篇两部分报道的第2部分中，我们更多地了解了ServiceStack的特性，并谈论了微软与Mono在.NET开源世界中所扮演的角色。 
+  </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/19.htmlb">全程软件测试实践：从需求到运营</a> 之前一篇文章《软件测试转型之路》介绍过我们转型的一些实践，下文将介绍从2011年3月至今，持续改进的全程软件测试实践活动。 
   </div> 
@@ -147,9 +150,6 @@
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/21.htmlb">Apache Crunch：用于简化MapReduce编程的Java库</a>Josh Wills在本文中介绍了一个新的Apache孵化器项目Crunch，该项目是用于创建MapReduce流水线的Java库。Crunch建立在一组用于简化MapReduce应用设计的高层抽象之上，还提供了用于实现如连接数据、执行聚合和排序记录等常见任务的模式库。 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/20.htmlb">开发者需要了解的WebKit</a>Paul Irish是著名的前端开发工程师，同时他也是Chrome开发者关系团队成员。针对大家对WebKit的种种误解，他在自己的博客发表了《WebKit for Developers》一文，试图为大家解惑WebKit的同与不同。 
-  </div> 
+  </div>  
  </body>
 </html>
