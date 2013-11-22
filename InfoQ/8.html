@@ -1,13 +1,39 @@
-<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>ActiveMQ 5.9支持Replicated LevelDB Store 和Hawtio Web控制台</h3><p>最新版本的<a href="http://activemq.apache.org/">消息代理Apache ActiveMQ</a>支持<a href="http://activemq.apache.org/leveldb-store.html">LevelDB Store</a>的复制，同时引入了一个新的<a href="http://hawt.io/">Hawtio</a> Web控制台。在之前的版本发布了8个月之后，5.9版本已于最近发布，该版本的新功能和改进包括：</p>
-<ul> 
- <li><a href="http://activemq.apache.org/replicated-leveldb-store.html">Replicated LevelDB Store</a>，一个key-value、基于文件的持久化<a href="https://code.google.com/p/leveldb/">数据库</a>，它使用<a href="http://zookeeper.apache.org/">Apache ZooKeeper</a>从一组代理节点中挑选出一个主节点，然后将所有的更新从主节点同步复制到剩余的代理节点。</li> 
- <li>一个新的代理插件，可以对代理的XML配置进行选择性地变化，这些变化不需要重启就能生效，不会有停机时间。当然，依然有一些变化需要重启代理。</li> 
- <li>Hawtio Web控制台，一个插入式的HTML5 Web管理控制台，支持JVM和一些插件（包括ActiveMQ、<a href="http://camel.apache.org/">Camel</a>和<a href="http://tomcat.apache.org/">Tomcat</a>）。该控制台依赖于服务器端的<a href="http://jolokia.org/">Jolokia</a>（使用JSON格式并通过HTTP传输的远程JMX）。旧的控制台依然可用，但是考虑以后弃用它。</li> 
- <li>通过<a href="http://en.wikipedia.org/wiki/WebSocket">WebSockets</a>支持遥测传输<a href="http://mqtt.org/">MQTT</a>协议。</li> 
- <li>一个Broker Apache Camel组件，促进了Camel功能在ActiveMQ内部的使用。</li> 
- <li>在丢失主节点的状态之后自动重启代理。</li> 
- <li>LevelDB和AMQP强化</li> 
-</ul>
-<p>除了这些新功能之外，该团队还解决了超过<a href="https://issues.apache.org/jira/secure/ReleaseNote.jspa?projectId=12311210&amp;version=12323932">200个问题</a>，大部分是bug修复和功能改进，其中的很多bug是关键级别的。 <br /> <a href="http://activemq.apache.org/amq-message-store.html">AMQ消息存储</a>已经被弃用，以后不应该再使用它。Apache软件基金会的贡献者Christian Posta发布了一篇博客文章对这些<a href="http://www.christianposta.com/blog/?p=326">新功能</a>做了介绍，同时还有Demo和一些视频。</p>
-<p>Apache ActiveMQ是一个开源的消息和集成模式服务器，完全支持<a href="http://www.enterpriseintegrationpatterns.com/index.html">企业集成模式</a>（Enterprise Integration Pattern）。 <br /> <a href="http://activemq.apache.org/apollo/">ActiveMQ Apollo</a>是一个新的消息代理，被称为“ActiveMQ的下一代消息”，它在ActiveMQ的基础上构建。</p>
-<p><b>查看英文原文</b>：<a href="http://www.infoq.com/news/2013/11/activemq-5-9-release">ActiveMQ 5.9 with Replicated LevelDB Store and Hawtio Web Console</a></p><br><br><br><br><br><br></body></html>
+<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>打造基于开源系统的公有云——文思海辉的OpenStack实践</h3><p>鹏博士电信传媒集团是上海A股上市公司，通过收购北京电信通长城宽带等子公司，目前，互联网接入及增值服务业务已占到鹏博士业务总额的95%以上。2012年底，鹏博士通过收购的北京息壤传媒文化有限公司开始对外提供公有云服务， 而支持这套公有云服务的软件是文思海辉的HSCloud，一套基于OpenStack的云计算管理系统。到2013年11月，该公有云平台上的实例数已经超过了一万个。</p>
+<p>为了对这个OpenStack用户案例进行更深入的了解，InfoQ中文站编辑于近日跟文思海辉的云计算团队进行了沟通，包括文思海辉高级副总裁吴凯和多名主要的系统架构师。</p>
+<h2><b>计算资源数据</b></h2>
+<p>整个公有云目前用到的物理机在几百台的规模，分布在北京、佛山、香港等地的多个机房中，集群分布还在不断向各个主要国内节点的机房扩展。根据目前的增长速度，预测到明年将达到三万个实例左右的规模。</p>
+<h2><b>研发与运维</b></h2>
+<p>文思海辉在HSCloud云计算方面的团队，三分之二都是研发，其余的是运维和测试。运维方面，文思海辉负责远程的二线运维，一线运维由鹏博士/息壤的运维团队负责。</p>
+<p>研发团队大约有一半做OpenStack本身的开发，主要用Python。</p>
+<p>研发团队的另一半专注于业务层面和前端控制面板的研发，同时他们也需要了解OpenStack的API。因为业务层面涉及到的很多功能（如提供发票、退款、备案、针对不同渠道商的不同套餐定价等）是OpenStack项目本身所不具备的，所以这一层并没有用Horizon和Keystone，而是自己用Java写的。据透露，微软Azure在国内落地，其业务支撑系统也是由文思海辉所开发的。</p>
+<p>在这个HSCloud云平台上，文思海辉云计算团队对OpenStack本身的改动并不是很多——事实上，修改OpenStack核心代码是需要避免的，因为会导致后续难以升级。HSCloud研发团队的工作重点在于搭建一个“隔离层”，将底层OpenStack提供的功能和上面的业务需求对接起来。隔离层做的事情很多，下面会逐步说明。</p>
+<h2><b>虚拟化方案的选型</b></h2>
+<p>HSCloud之前基于OpenStack Essex版本进行主要扩展。最初选型的时候其实考虑过CloudStack，不过因为觉得OpenStack的支持厂家更多，社区更活跃，在中国的OpenStacker人数又比较多，所以选择了OpenStack。目前看来选择是正确的。</p>
+<p>虚拟化方案主要是基于KVM。VMware方面，主要取决于VMware开放了哪些接口。目前在vCloud层之上进行管理是没有问题的。对于目前有这方面需求的客户，文思海辉提供的方案是两套系统分别运作，通过隔离层实现在一个界面里面管理两套系统。</p>
+<p>IBM小型机虚拟化方案也有需求，基于IBM对Openstack的大力支持，相关接口也已经逐步公开出来。</p>
+<h2><b>存储的选型</b></h2>
+<p>目前以本地存储为主。长期来看，吴凯认为本地存储的方案可以满足大多数的需求。</p>
+<p>客户有共享存储需求的情况，EMC、NetApp、赛门铁克的存储方案都可以接入。基本上只要厂商提供的就可以用。此外，有一个监控录像存储的应用用到了Swift。</p>
+<p>共享存储主要是应对有迁移、虚机HA、大数据类应用需求而储备，这方面文思海辉团队对Ceph、GlusterFS、Sheepdog和Swift都在进行测试，目前各种解决方案还各有优势。</p>
+<p>此外，吴凯表示文思海辉正在跟国内的服务器硬件厂商合作打造自主品牌的Pactera云计算一体机，该方案采用了GlusterFS作为标配。</p>
+<h2>网络的选型</h2>
+<p>一开始上Essex版本的时候Quantum的功能太差，就是用Nova，加上iptables和ebtables自己实现的伪三层软路由来解决网络隔离的问题。</p>
+<p>下一个版本的HSCloud会上虚拟企业私有云（VPDC）的功能，是基于Neutron实现的，用上了Open vSwitch，比较炫。</p>
+<h2><b>遇到的问题和解决方案</b></h2>
+<p>做一套公有云体系，很多挑战是业务上的。文思海辉认为将工作流与OpenStack结合起来，需要考虑很多东西。要确保运营商、渠道分销商、开发商等各个层面都能够获得利润，保证较好的最终用户体验，这一块需要比较多的思考。当然，还需要有足够的决心才能运转下去。</p>
+<p>鹏博士公有云在发展到三、四千台实例的时候，其实遇到了一个很大的性能瓶颈。性能瓶颈来自于几个方面：</p>
+<ol> 
+ <li>抢占资源经常出现，部分用户优先抢占资源造成其他用户性能差、网络慢</li> 
+ <li>OpenStack本身的资源调度策略是比较傻的，可能会从比较远、比较忙的节点调度资源，导致网络慢</li> 
+ <li>业务平台直接调用OpenStack的RESTful接口，调用多了之后遇到压力，响应速度慢</li> 
+</ol>
+<p>这就造成了很多客户停用甚至退款，用户增长出现停滞。由于OpenStack本身在网络隔离和IO隔离方面的实现不够成熟，单靠OpenStack本身无法解决上述问题，因此文思海辉研发团队采取了如下动作：</p>
+<p>首先是计算资源隔离和流量控制。基于libvirt做CPU资源隔离本身是很有效的，CPU忙其实很多时候都是IO等待所引起的。libvirt对IO隔离支持的并不好，所以引入了cgroups来实现IO的控制，给每一台VM做了IOPS的限制。再加上给每台VM做网络连接数的限制，这一块的负载很快就下来了。在管理后台可以很方便的对指定的任意VM设置资源限制，这也可以用于在业务上进行高付费级别和低付费级别的客户的区分对待。</p>
+<p>调度策略方面倒是不难解决，因为OpenStack可定制化是很强的，只要自己写一个调度策略，忽略掉默认的nova.conf就解决了。事实上，OpenStack E版的快照、磁盘管理、迁移的功能都比较弱，也都是自己重写的。</p>
+<p>至于业务平台跟OpenStack的对接压力，则是在隔离层做了重构，加入了RabbitMQ做消息队列。此外还加入了负载均衡，把OpenStack服务组件按照Zone进行了拆分，把负载分摊到多个集群上面。</p>
+<p>另外，一体机方案也对IO和内存带宽做过优化处理，可以进一步缓解这方面的瓶颈。</p>
+<p>经过这些处理和压力测试之后，吴凯表示这套系统再进一步支持到五万台实例也是没有问题的。</p>
+<h2><b>后续升级的挑战</b></h2>
+<p>从2012年9月到2013年11月，OpenStack已经经历了F、G、H三个大版本。如果一直留在E版，那么新版加入的很多功能都难以用上；但是要从E版升级到H版本，相当于要跳跃两个大版本。在建立了自己的工作流之后，要进行这样的升级是比较麻烦的。有“隔离层”的存在，意味着只要新版的API做的事情还跟老版的一样，就不需要动业务逻辑而能够完成底层的升级，这方面倒是问题不大。</p>
+<p>上面提到的一些快照、磁盘管理、迁移的功能，在版本更新后，有的模块自己改的更好用了，有的则消失了，这方面需要做一些整合。</p>
+<p>对于平滑升级、持续集成这一块，文思海辉已经在新版本中考虑了相关机制，也欢迎业界同行交流解决思路分享实践经验。</p><br><br><br><br><br><br></body></html>

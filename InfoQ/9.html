@@ -1,21 +1,4 @@
-<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>Internet Explorer 11增加新的F12工具，改进了触摸、WebGL、WebCrypto和Hardware 3D支持</h3><p>包含在最近发布的Windows 8.1中的<a href="http://windows.microsoft.com/en-us/internet-explorer/ie-11-release-preview">Internet Explorer 11</a> 引入了新的F12工具，支持WebGL和Hardware 3D以及更快的HTTP传输。F12工具允许用户识别和报告页面上的元素（例如链接），同时图像报告功能包含了一个新的用户界面和功能能够更快更容易地进行开发和调试，另外还包括8个工具：DOM资源管理器（DOM Explorer）、控制台（Console）、调试器（Debugger）、网络（Network）、UI响应能力（Responsiveness）、性能分析器（Profiler）、内存（Memory）和模拟（Emulation）。所有工具在F12工具界面中都有自己的标签页，它们使用了Windows 8的简约界面。</p>
-<p>在Microsoft对自己处理安全问题所采取的措施感到满意之后，他们在Internet Explorer 11中添加了<a href="http://en.wikipedia.org/wiki/WebGL">WebGL</a>支持。该版本还支持HTML全屏API能够进行高品质的全屏视频播放，支持TTML、SPD标准的隐藏字幕、最新的HTML5视频媒体流标准、动态TextTrack、简单交付概要（Simple Delivery Profile）、流XHR缓存控制、媒体来源扩展（MSE）和加密的媒体扩展（EME）、SPDY以及WebCrypto。</p>
-<p>Internet Explorer 11还支持<a href="http://www.ecma-international.org/ecma-402/1.0/">ECMAScript国际化API</a>，该API能处理国际的日期和时间格式，另外它还能在不缓存到磁盘的情况下下载视频数据，该功能能够延长电池的寿命。</p>
-<p>新版本还支持模拟的触摸悬停。此外，开发者能够通过新的<a href="http://msdn.microsoft.com/en-us/library/ie/dn254949(v=vs.85).aspx">msZoomTo()</a> API以编程的方式触发平移和缩放，通过动画滚动或者缩放进入（离开）一个区域。Microsoft还支持触摸的HTML5拖放、该功能在之前的Internet Explorer 10中就引入了。</p>
-<p>根据报告，最终版本的Internet Explorer 11将会支持不带前缀的指针事件。Microsoft已经移除了一些旧的功能，例如所有已有的isIE()代码分支、并去除了MSIE和兼容标记。此外，Microsoft已经移除了document.all，使用document.getElementById()，还移除了下面的IE特定的处理函数：</p>
-<ul> 
- <li>attachEvent()</li> 
- <li>detachEvent()</li> 
- <li>window.execScript()</li> 
- <li>window.doScroll()</li> 
- <li>document.fileSize</li> 
- <li>img.fileSize</li> 
- <li>script.onreadystatechange</li> 
- <li>script.readyState</li> 
- <li>document.selection</li> 
- <li>document.createStyleSheet</li> 
- <li>style.styleSheet</li> 
- <li>window.createPopup</li> 
-</ul>
-<p>Windows 7也可以使用Internet Explorer 11，但是很多面向触摸的功能已经被禁用了，因为它们仅能够在Windows 8上使用。</p>
-<p><b>查看英文原文</b>：<a href="http://www.infoq.com/news/2013/11/ie11-developer-features">Internet Explorer 11 Adds New F12 Tools, Improved Touch, WebGL, WebCrypto and Hardware 3D Support</a></p><br><br><br><br><br><br></body></html>
+<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>Unity.Mvc和Unity.WebAPI有了新主人</h3><p><a href="http://blog.feedbackhound.com/taking-ownership-of-unity.mvc-and-unity.webapi">网站FeedbackHound背后的团队取得了Unity.Mvc和Unity.WebAPI的所有权</a>。Unity.Mvc3和Unity.WebAPI项目<a href="http://www.infoq.com/news/2013/11/$Paul%20Hiles">先前由DevTrends管理</a>。这些开源库允许ASP.NET MVC &amp; Web API与微软的Ioc框架Unity集成。针对ASP.NET MVC 4的版本称为<a href="https://www.nuget.org/packages/Unity.Mvc4">Unity.Mvc4</a>，它基于Unity.Mvc3，但由一位独立开发人员管理。</p>
+<p>作为接管项目的一部分，FeedbackHound已经更新了代码，以使用ASP.NET MVC 5和Web API 2。代码现在基于.NET 4.5和Unity 3，已经迁移到GitHub。旧版本将继续在CodePlex上提供。</p>
+<p>作为此次更新的一部分，Unity的注册方式稍有变化。现在，开发人员需要在Application_Start事件中添加对UnityConfig.RegisterComponents的调用。此调用会挂接到App_Start目录下与之匹配的UnityConfig.cs文件，它是在通过NuGet安装库时放在那里的。</p>
+<p><b>查看英文原文：</b><b><a href="http://www.infoq.com/news/2013/11/Unity-MVC-WebAPI">New Owners for Unity.Mvc and Unity.WebAPI</a></b></p><br><br><br><br><br><br></body></html>
