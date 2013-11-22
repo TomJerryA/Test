@@ -1,111 +1,557 @@
-<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>使用HTML5开发体感游戏——VeloMaze的开发简介</h3><p>HTML5现在越来越像一个游戏开发平台。但有时候，游戏领域对于如何应用HTML5的特性设置了相当多的限制条件，尤其是对那些访问硬件设备的接口更是如此。</p><p>在2012年11月初，我加入了copypastel小组，并决定分享我在第三届年度<a href="http://nodeknockout.com/">NodeKO</a>竞赛中开发游戏的经历。尽管由于时间限制无法详解全项目，我相信结果仍旧值得与爱好游戏相关技术的读者们分享。接下来，我打算公开该游戏的技术背景，及其如何在多种网络技术基础之上构建整个项目。应用在该游戏中的技术有：<a href="http://nodejs.org/">Node.js</a>，<a href="http://expressjs.com/">express</a>（静态内容服务），<a href="http://socket.io/">Socket.io</a>（处理客户端和服务器端关于小球往复运动的通讯），<a href="http://sylvester.jcoglan.com/">Sylvester.js</a>（物理引擎的矢量库）和<a href="http://jquery.com/">jQuery</a>。</p><p>那什么是VeloMaze呢？VeloMaze是被许多点状恐龙（迅猛龙）占据的迷宫。迅猛龙希望小球能一直在迷宫中移动。由于迷宫的连续性，它可以说是没有终点的。但是每当你通过一级关卡，就会给你之后的玩家造成更多麻烦，因为他（她）会获得另一个小球！是不是很有趣？这就是迷宫中的生活。</p><p><img src="http://www.infoq.com/resource/articles/html5-motoric-games/zh/resources/6fig1.jpg;jsessionid=6B9B9B9FACB4F8C7042BD669A2478CE3" alt="" _href="img://6fig1.jpg" _p="true" /></p><p>这个游戏非常适合那些在同一个地方，而且每个人都有手机的团队。这在当今是很常见的。这里还有一段解说游戏系统要求的<a href="http://www.youtube.com/watch?v=VUUsnAu1WG4">视频</a>。</p><p>系统运行最重要的条件就是加速计。加速计是测量加速度的设备。带有加速计的设备通常返回重力的角度或者重力的矢量数据。这在某些浏览器中有可能做到，比如在下列网贴中所提及的：</p><ul> 
- <li>Safari on iPhone &amp; iPad 4.2: Accelerometer, WebSockets &amp; better HTML5 support</li> 
- <li>What are good examples of accelerometer usage in HTML5 for websites and webapps?</li> 
- <li>Accelerometer-based game control using an iOS device courtesy of HTML5</li> 
-</ul><p>从描述系统要求的视频中可以注意到，某些笔记本电脑中也配有加速计。相当多新式的MacBook Pro笔记本为防止跌落时造成硬件损伤也安装了加速度计（我那台2009年买的笔记本中就安装着一个）。我觉得以笔记本旋转为基础的游戏开发领域目前还是少有人涉足的地带！下面的图表演示了应用程序架构在上层是如何搭建的。</p><p><img src="http://www.infoq.com/resource/articles/html5-motoric-games/zh/resources/1fig2.jpg;jsessionid=6B9B9B9FACB4F8C7042BD669A2478CE3" alt="" _href="img://1fig2.jpg" _p="true" /></p><p>游戏本身的开发相当容易，但全面支持所有的浏览器和加速度计组合需要做更多的工作，而我们的<a href="http://nodeknockout.com/teams/copypastel">小组</a>只拥有48小时的时间。因此，有些测试我们是没有做的，比如对最新版Android系统的测试；但是我惊喜的发现，我们的游戏在其中却运行的非常好！然而运气只是成功的一部分。在下面的篇幅中，我打算解析游戏玩法的编写，并解释究竟怎样使该游戏具有可玩性。</p><p>读取加速度计数据非常简单，不过标准的缺失使得该过程比预想的更加难以实现。首先，我们快速调查了小组内现有的各种不同的平台和浏览器组合，为适应各种组合方式，编写了如下代码：</p><pre>
-/* 这里检查游览器是否支持DeviceOrientationEvent事件（链接到W3C）。*/
-if (window.DeviceOrientationEvent) {
-    window.addEventListener('deviceorientation', function(e) {
-      // 我们从事件“e”中获取角度值并转化成弧度值。
-      leftRightAngle = e.gamma /90.0*Math.PI/2;
-      frontBackAngle = e.beta /90.0*Math.PI/2;
-    }, false);
-} else if (window.OrientationEvent) { //另一个选项是Mozilla版本同样的东西
-    window.addEventListener('MozOrientation', function(e) {
-      //在这里将长度值当做一个单位，并转换成角度值，看起来运行的不错。
-      leftRightAngle = e.x * Math.PI/2;
-      frontBackAngle = e.y * Math.PI/2;
-    }, false);
-} else {
-    // 自然地，没有浏览器支持的大多数人会获取这个。
-    setStatus('Your device does not support orientation reading. Please use Android 4.0 or later, iOS (MBP laptop 
-is fine) or similar platform.');
-}</pre><p>结果是，代码可以在版本较新的Chrome中正常运行，也有人反馈说说它也可以运行在较新版本的iOS上的Safari浏览器当中（但是我手头上的Safari并不支持）。我决定不再试图寻找那种能读取所有可能用的浏览器中加速度计数据的普适性解决方案，因为现实是我们在Node淘汰赛的编码环节中个只有48小时的时间，而当时游戏的架构还没有完成。</p><p>我决定使用Sylvester，它是一个碰撞检测的向量和矩阵数学库。其实我也可以使用<a href="http://box2d-js.sourceforge.net/">Box2D JS</a>来节省时间，但是由于有过Sylvester的使用经验，并且所需的碰撞检测比较简单，我还是决定使用Sylvester。检查小球是否落到洞里去的代码如下所示：</p><pre>
-function checkBallHole(ball, hole, dropped) {
-    // 用Sylvester定义洞和求的位置为矢量对象
-    var holeVector = $V([hole.x, hole.y]);
-    var ballVector = $V([ball.x, ball.y]);
-    // 在Sylvester中用向量简单的计算距离
-    if (ballVector.distanceFrom(holeVector) &lt; hole.r) {
-      // 用球的位置作为变量执行回调函数
-      dropped(ballVector);
+<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>JavaScript的实例化与继承：请停止使用new关键字</h3><p>JavaScript中的new关键字可以实现实例化和继承的工作，但个人认为使用new关键字并非是最佳的实践，还可以有更友好一些的实现。本文将介绍使用new关键字有什么问题，然后介绍如何对与new相关联的一系列面向对象操作进行封装，以便提供更快捷的、更易让人理解的实现方式。</p>
+<h2>传统的实例化与继承</h2>
+<p>假设我们有两个类，<code>Class:function Class() {}</code>和<code>SubClass:function SubClass(){}</code>，SubClass需要继承自Class。传统方法一般是按如下步骤来组织和实现的：</p>
+<ul> 
+ <li> <p>Class中<strong>被继承的属性和方法</strong>必须放在Class的prototype属性中</p> 
+  <div class="clear"></div> 
+  <div class="related_sponsors visible stacked"> 
+   <div class="gray_section_related only1 fullWidth"> 
+    <div class="related_editorial sponsored only1"> 
+     <p class="title">相关厂商内容</p> 
+     <div class="links"> 
+      <h3 title="" class="entryeventRegistration f_vcrbottom" jsh="{&quot;id&quot;:2533,&quot;title&quot;:&quot;QClub大连站：软件开发过程中的平台、技术选择（2013年11月23日 周六）&quot;}"> <a href="/cn/vendorcontent/show.action?vcr=2533&amp;utm_source=infoq&amp;utm_medium=VCR&amp;utm_campaign=vcr_articles_click"> QClub大连站：软件开发过程中的平台、技术选择（2013年11月23日 周六） </a> </h3> 
+      <h3 title="" class="entryeventRegistration f_vcrbottom" jsh="{&quot;id&quot;:2498,&quot;title&quot;:&quot;百度技术沙龙第四十四期： 大数据面面观（2013年11月23日周六）&quot;}"> <a href="/cn/vendorcontent/show.action?vcr=2498&amp;utm_source=infoq&amp;utm_medium=VCR&amp;utm_campaign=vcr_articles_click"> 百度技术沙龙第四十四期： 大数据面面观（2013年11月23日周六） </a> </h3> 
+      <h3 title="" class="entrypdf f_vcrbottom" jsh="{&quot;id&quot;:2541,&quot;title&quot;:&quot;京东“宙斯杯”创新应用大赛开始了，100万奖金等你拿哦！&quot;}"> <a href="/cn/vendorcontent/show.action?vcr=2541&amp;utm_source=infoq&amp;utm_medium=VCR&amp;utm_campaign=vcr_articles_click" target="_blank"> 京东“宙斯杯”创新应用大赛开始了，100万奖金等你拿哦！ </a> </h3> 
+      <div class="clear"></div> 
+     </div> 
+    </div> 
+   </div> 
+   <div class="clear"></div> 
+  </div> </li> 
+ <li> <p>SubClass中<strong>自己的方法和属性</strong>也必须放在自己prototype属性中</p> </li> 
+ <li> <p>SubClass的prototype对象的prototype(__proto__)属性必须指向的Class的prototype</p> </li> 
+</ul>
+<p>这样一来，由于prototype链的特性，SubClass的实例便能追溯到Class的方法，从而实现继承：</p>
+<div id="lowerFullwidthVCR"></div>
+<pre>
+new SubClass()      Object.create(Class.prototype)
+    |                    |
+    V                    V
+SubClass.prototype ---&gt; { }
+                        { }.__proto__ ---&gt; Class.prototype
+</pre>
+<p>举一个具体的例子：下面的代码中，我们做了以下几件事:</p>
+<ul> 
+ <li> <p>定义一个父类叫做Human</p> </li> 
+ <li> <p>定义一个名为Man的子类继承自Human</p> </li> 
+ <li> <p>子类继承父类的一切属性，并调用父类的构造函数，实例化这个子类</p> </li> 
+</ul>
+<pre>
+// 构造函数/基类
+function Human(name) {
+    this.name = name;
+}
+
+/* 
+    基类的方法保存在构造函数的prototype属性中
+    便于子类的继承
+*/
+Human.prototype.say = function () {
+    console.log(&quot;say&quot;);
+}
+
+/*
+    道格拉斯的object方法（等同于object.create方法）
+*/
+function object(o) {
+    var F = function () {};
+    F.prototype = o;
+    return new F();
+}
+
+// 子类构造函数
+function Man(name, age) {
+    // 调用父类的构造函数
+    Human.call(this, name);
+    // 自己的属性age
+    this.age = age;
+}
+
+// 继承父类的方法
+Man.prototype = object(Human.prototype);
+Man.prototype.constructor = Man;
+
+// 实例化子类
+var man = new Man(&quot;Lee&quot;, 22);
+console.log(man);
+// 调用父类的say方法：
+man.say();
+</pre>
+<p><a href="http://jsfiddle.net/gP9g5/">DEMO</a></p>
+<p>通过上面的代码可以总结出传统的实例化与继承的几个特点：</p>
+<ul> 
+ <li> <p>传统方法中的“类”一定是一个构造函数。</p> </li> 
+ <li> <p>属性和方法绑定在prototype属性上，并借助prototype的特性实现继承。</p> </li> 
+ <li> <p>通过new关键字来实例化一个对象。</p> </li> 
+</ul>
+<p>为什么我会十分的肯定Object.create方法与道格拉斯的object方法是一致呢？因为在MDN上，object方法就是作为Object.create的一个Polyfill方案：</p>
+<ul> 
+ <li> <p><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/create">Object.create</a></p> </li> 
+ <li> <p><a href="http://javascript.crockford.com/prototypal.html">Douglas Crockford's object method</a></p> </li> 
+</ul>
+<h2>new关键字的不足之处</h2>
+<p>在《Javascript语言精粹》（Javascript: The Good Parts）中，道格拉斯认为应该避免使用new关键字：</p>
+<blockquote> 
+ <p>If you forget to include the new prefix when calling a constructor function, then this will not be bound to the new object. Sadly, this will be bound to the global object, so instead of augmenting your new object, you will be clobbering global variables. That is really bad. There is no compile warning, and there is no runtime warning. (page 49)</p> 
+</blockquote>
+<p>大意是说在应该使用new的时候如果忘了new关键字，会引发一些问题。</p>
+<p>当然了，你遗忘使用任何关键字都会引起一系列的问题。再退一步说，这个问题是<a href="http://stackoverflow.com/questions/383402/is-javascript-s-new-keyword-considered-harmful#answer-383503">完全可以避免的</a>：</p>
+<pre>
+function foo()
+{   
+   // 如果忘了使用关键字，这一步骤会悄悄帮你修复这个问题
+   if ( !(this instanceof foo) )
+      return new foo();
+
+   // 构造函数的逻辑继续……
+}
+</pre>
+<p>或者更通用的抛出异常即可</p>
+<pre>
+function foo()
+{
+    if ( !(this instanceof arguments.callee) ) 
+       throw new Error(&quot;Constructor called as a function&quot;);
+}
+</pre>
+<p>又或者按照<a href="http://ejohn.org/blog/simple-class-instantiation/">John Resig的方案</a>，准备一个makeClass工厂函数，把大部分的初始化功能放在一个init方法中，而非构造函数自己中：</p>
+<pre>
+// makeClass - By John Resig (MIT Licensed)
+function makeClass(){
+  return function(args){
+    if ( this instanceof arguments.callee ) {
+      if ( typeof this.init == &quot;function&quot; )
+        this.init.apply( this, args.callee ? args : arguments );
+    } else
+      return new arguments.callee( arguments );
+  };
+}
+</pre>
+<p>在我看来，new关键字不是一个好的实践的关键原因是：</p>
+<blockquote> 
+ <p><a href="http://dailyjs.com/2010/05/24/history-of-javascript-1/">...new is a remnant of the days where JavaScript accepted a Java like syntax for gaining “popularity”. And we were pushing it as a little brother to Java, as a complementary language like Visual Basic was to C++ in Microsoft’s language families at the time.</a></p> 
+</blockquote>
+<p>道格拉斯将这个问题描述为：</p>
+<blockquote> 
+ <p><a href="http://javascript.crockford.com/prototypal.html">This indirection was intended to make the language seem more familiar to classically trained programmers, but failed to do that, as we can see from the very low opinion Java programmers have of JavaScript. JavaScript’s constructor pattern did not appeal to the classical crowd. It also obscured JavaScript’s true prototypal nature. As a result, there are very few programmers who know how to use the language effectively.</a></p> 
+</blockquote>
+<p>简单来说，JavaScript是一种prototypical类型语言，在创建之初，是为了迎合市场的需要，让人们觉得它和Java是类似的，才引入了new关键字。Javascript本应通过它的Prototypical特性来实现实例化和继承，但new关键字让它变得不伦不类。</p>
+<h2>把传统方法加以改造</h2>
+<p>既然new关键字不够友好，那么我们有两个办法可以解决这个问题：一是完全抛弃new关键字，二是把含有new关键字的操作封装起来，只向外提供友好的接口。下面将介绍第二种方法的实现思路，把传统方法加以改造。</p>
+<p>我们开始构造一个最原始的基类<code>Class</code>（类似于JavaScript中的Object类），并且只向外提供两个接口：</p>
+<ul> 
+ <li> <p>Class.extend 用于拓展子类</p> </li> 
+ <li> <p>Class.create 用于创建实例</p> </li> 
+</ul>
+<pre>
+// 基类
+function Class() {}
+
+// 将extend和create置于prototype对象中，以便子类继承
+Class.prototype.extend = function () {};
+Class.prototype.create = function () {};
+
+// 为了能在基类上直接以.extend的方式进行调用
+Class.extend = function (props) {
+    return this.prototype.extend.call(this, props);
+}
+</pre>
+<p>extend和create的具体实现：</p>
+<pre>
+Class.prototype.create = function (props) {
+    /*
+        create实际上是对new的封装；
+        create返回的实例实际上就是new构造出的实例；
+        this即指向调用当前create的构造函数；
+    */
+    var instance = new this();
+    /*
+        绑定该实例的属性
+    */
+    for (var name in props) {
+        instance[name] = props[name];
     }
-}</pre><p>所以事实上这里没有什么复杂的：如果你的小球的中心位于洞内，那么就会触发“dropped”的函数。这段代码在每帧运行一次，那么以前开发过游戏的朋友都知道，这种实现方式可能会造成小球在这一帧内飞跃洞穴而没有掉进去。然而，在日常生活中我们知道，如果你用足够快的速度将小球推向洞穴，它是可以滑过而不掉落的，所以这不是个问题。</p><p>这个游戏中也有墙体，所以碰撞检测也是必须要做的。Sylvester提供了一种目标与计算线状对象的放发，我用的就是这个。简单的代码如下：</p><pre>
-// 计算球和墙壁碰撞时的冲击矢量数据
-function impactBallByWall(ball, wall) {
-    var ballVector = $V([ball.x, ball.y]);
-    // 定义墙体为线段(x1,y1) (x2,y2)
-    var wallSegment = Line.Segment.create(
-	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; $V([wall.sx, wall.sy]),
-	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; $V([wall.dx, wall.dy]));
-	
-    // 计算墙与球的最近点（几乎就要撞上的那个位置）
-    var collisionPoint = wallSegment.pointClosestTo(ballVector)
-	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; .to2D(); // needed by sylvester to convert 3D to 2D vector
-	
-    //sylvester将矢量数据从3D转化成2D所需的变量，然后看这个距离在当前框架内为多少（并不是在两个框架之间差距多少）
-    var dist = collisionPoint.distanceFrom(ballVector);
-	
-    //天真的假设碰撞只发生在球和墙的距离小于球的半径的情况下
-    if (dist &lt; ball.r) {
-        //调整到一个合适的值。较大的逆质量值意味着更大的影响（和较小的质量）
-	var inverseMassSum = 1/100.0;
-	//从球心到碰撞点的向量
-	var differenceVector = collisionPoint.subtract(ballVector);
-	var collisionNormal = differenceVector.multiply(1.0/dist);
-	// 球陷下去的部分相当于在墙内
-	var penetrationDistance = ball.r-dist;
-	//碰撞时球的速率
-	var collisionVelocity = $V([ball.vx, ball.vy]);
-        // 从点属性中我们获得冲击速度
-	var impactSpeed = collisionVelocity.dot(collisionNormal);
-	
-	if (impactSpeed &gt;= 0) {
-	&nbsp;&nbsp;&nbsp; // 计算冲击量。运动能量在每次碰撞是以2-1-0.4=0.6的倍率递减
-	&nbsp;&nbsp;&nbsp; var impulse = collisionNormal.multiply(
-	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; (-1.4)*impactSpeed/(inverseMassSum));
-	&nbsp;&nbsp;&nbsp; //冲击只会作用在球上，因为墙被设计为固定的
-	&nbsp;&nbsp;&nbsp; var newBallVelocity = $V([ball.vx, ball.vy]).add(
-	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; impulse.multiply(inverseMassSum));
-	&nbsp;&nbsp;&nbsp; //把值传回原来的对象
-	&nbsp;&nbsp;&nbsp; ball.vx = newBallVelocity.e(1);
-	&nbsp;&nbsp;&nbsp; ball.vy = newBallVelocity.e(2);
-       }
+    return instance;
+}
+
+Class.prototype.extend = function (props) {
+    /*
+        派生出来的新的子类
+    */
+    var SubClass = function () {};
+    /*
+        继承父类的属性和方法，
+        当然前提是父类的属性都放在prototype中
+        而非上面create方法的“实例属性”中
+    */
+    SubClass.prototype = Object.create(this.prototype);
+    // 并且添加自己的方法和属性
+    for (var name in props) {
+        SubClass.prototype[name] = props[name];
     }
-}</pre><p>在实现小球和墙体的碰撞过程时我做了许多并非真实的假设（但是跟现实足够接近）。首先，墙体的厚度为零（而不是实际上的5像素），而且，我没有计算两帧之间发生了什么。很明显，这会导致游戏中球体有能力穿越墙体。通过创建球体在不同帧之间的运动线段并找出球体三角与墙体之间是否有交叉，就很可以容易的测试到是否会发生碰撞。那么我们就必须要计算小球和墙体发生碰撞的位置。在上文的代码段中，这个位置数据就存在变量“collisionPoint”内（见下图）。</p><p><img src="http://www.infoq.com/resource/articles/html5-motoric-games/zh/resources/2fig3.jpg;jsessionid=6B9B9B9FACB4F8C7042BD669A2478CE3" alt="" _href="img://2fig3.jpg" _p="true" /></p><p>我很喜欢Ganvas和WebGL，但是我们计划使用DOM和jQuery来做渲染，因为我们除了制作球体滚动之外，不需要任何Ganvas和WebGL的特效（如果这样实现，其实是很优雅的，真可惜）。使用DOM渲染的场景在缩放时有点生硬，但它很容易实现。我写了下面的函数用于绘制游戏中的子画面。</p><pre>
-    //设置DOM元素属性以反映sprite对象
-    setElementPosition: function(element, sprite) {
-        // 同步sprite维数
-	sprite.width = (maze.getSquareWidth() * sprite.r * 2);
-	sprite.height = (maze.getSquareHeigth() * sprite.r * 2);
-	var x = sprite.x;
-	var y = sprite.y;
-	/* 在绝对定位中计算样式属性left和top的值
-	* 从而确保点（x,y）在sprire的中心位置（使距离计算更加简单）
-	*/
-	var newLeft = (x * maze.getSquareWidth()&nbsp; - element.width() / 2.0);
-	var newTop = (y * maze.getSquareHeigth()&nbsp; - element.height() / 2.0);
-	// 避免sprite因为受到传感器持续输入的影响而产生的颤抖
-	// 通过一个阈值判断是否显示球在屏幕上的移动。
-	// 这是一个相当大的阈值，对于某些设备来说应该选择较小的值。
-	if (thresholded(element.css('left') - newLeft, 5) !== 0) {
-	&nbsp;&nbsp;  //设置DOM元素的x坐标位置
-	&nbsp;&nbsp;&nbsp; element.css('left', parseInt(newLeft) + 'px');
-	}
-	if (thresholded(element.css('top') - newTop, 5) !== 0) {
-	&nbsp;&nbsp;&nbsp; //设置DOM元素的y坐标位置
-	&nbsp;&nbsp;&nbsp; element.css('top', parseInt(newTop) + 'px');
-	}
-	//设置DOM元素的大小。
-	element.css('width', sprite.width + 'px');
-	element.css('height', sprite.height + 'px');
-	// 球状 DOM元素包含许多层（所有的div），所以重置所有层。
-	element.find('div').each(function () {
-	$(this).css('width', sprite.width + 'px');
-	$(this).css('height', sprite.height + 'px');
-	});
-	// sprite位置的调试信息。通过点击‘enter’显示调试信息。
-	element.find('.location').html('('+parseInt(sprite.x*10)/10.0+','+parseInt(sprite.y*10)/10.0+')');
-    },</pre><p>我做了一个根据视角实时缩放的功能，因此在每个框架中的宽度和高度都是计算得到的。很不幸在游戏中没有体现出这点，因为我们尝试编程控制浏览器旋转失败了（没有用于此项功能的接口，所以这还需要破解）。所以我们最后决定，通知用户关闭手机浏览器的旋转功能，如下图所示：</p><p><img src="http://www.infoq.com/resource/articles/html5-motoric-games/zh/resources/11fig4.jpg;jsessionid=6B9B9B9FACB4F8C7042BD669A2478CE3" alt="" _href="img://11fig4.jpg" _p="true" /></p><p>所有的加速度计数据的读取，物理引擎的运行和DOM渲染都被归拢到一个主循环中了。我将所有的主循环的代码放置到函数“update”中并且每100毫秒运行一次（我知道这不够频繁，但是它在我的设备上运行的很好，所以就暂时忽略这个设定值吧），像这样：</p><pre>
-window.setInterval(function() { update(); }, 100);
-</pre><p>客户端的所有源代码可以点击<a href="https://github.com/raimo/velomaze/blob/master/public/javascripts/main.js">这里</a>获取。</p><p>顺便提一句，我对于新式的视网膜MacBook Pros非常失望，它<a href="http://support.apple.com/kb/HT1935">没有加速度度计</a>（就像我们某位玩家提到的），因为它们的SSD驱动器没有可以移动的部件！所以也许以笔记本旋转为基础的游戏看起来要到此为止了。- @raimo_t</p><h3>关于作者：</h3><p><img src="http://www.infoq.com/resource/articles/html5-motoric-games/zh/resources/raimo.jpg;jsessionid=6B9B9B9FACB4F8C7042BD669A2478CE3" alt="" _href="img://raimo.jpg" _p="true" />Raimo Tuisku 是UserVoice（一种和用户交流的产品）的API/集成系统开发者。他在去年完成了他的计算机科学硕士学位，是位有10年开发经验的资深开发人员。在前往旧金山湾区之前，他为三家芬兰软件公司开发产品和安全接口。除Web和集成之外，Raimo还喜欢开发3D游戏，设计软件架构，开发社交移动版游戏，和环游世界会见新的朋友。你可以在<br /> Twitter上@raimo_t来获知他在APIs、WebGL、HTML5 Canvas和移动版HTML5游戏方面正在进行的工作。</p><p><strong>查看英文原文：</strong><a href="http://www.infoq.com/articles/html5-motoric-games;jsessionid=6B9B9B9FACB4F8C7042BD669A2478CE3">Developing Motoric Games with HTML5 - The Making of VeloMaze</a></p><div class="clearer-space"></div><br><br><br><br><br><br></body></html>
+    SubClass.prototype.constructor = SubClass;
+
+    /*
+        介于需要以.extend的方式和.create的方式调用：
+    */
+    SubClass.extend = SubClass.prototype.extend;
+    SubClass.create = SubClass.prototype.create;
+
+    return SubClass;
+}
+</pre>
+<p>仍然以Human和Man类举例使用说明：</p>
+<pre>
+var Human = Class.extend({
+    say: function () {
+        console.log(&quot;Hello&quot;);
+    }
+});
+
+var human = Human.create();
+console.log(human)
+human.say();
+
+var Man = Human.extend({
+    walk: function () {
+        console.log(&quot;walk&quot;);
+    }
+});
+
+var man = Man.create({
+    name: &quot;Lee&quot;,
+    age: 22
+});
+
+console.log(man);
+// 调用父类方法
+man.say();
+
+man.walk();
+</pre>
+<p><a href="http://jsfiddle.net/VsuA2/">DEMO</a></p>
+<p>至此，基本框架已经搭建起来，接下来继续补充功能。</p>
+<ol> 
+ <li> <p>我们希望把构造函数独立出来，并且统一命名为init。就好像<code>Backbone.js</code>中每一个view都有一个<code>initialize</code>方法一样。这样能让初始化更灵活和标准化，甚至可以把init构造函数借出去</p> </li> 
+ <li> <p>我还想新增一个子类方法调用父类同名方法的机制，比如说在父类和子类的中都定义了一个say方法，那么只要在子类的say中调用<code>this.callSuper()</code>就能调用父类的say方法了。例如：</p> </li> 
+</ol>
+<pre>
+// 基类
+var Human = Class.extend({
+    /*
+        你需要在定义类时定义构造方法init
+    */
+    init: function () {
+        this.nature = &quot;Human&quot;;
+    },
+    say: function () {
+        console.log(&quot;I am a human&quot;);
+    }
+})
+
+var Man = Human.extend({
+    init: function () {
+        this.sex = &quot;man&quot;;
+    },
+    say: function () {
+        // 调用同名的父类方法
+        this.callSuper();
+        console.log(&quot;I am a man&quot;);
+    }
+});
+</pre>
+<p>那么Class.create就不仅仅是new一个构造函数了：</p>
+<pre>
+Class.create = Class.prototype.create = function () {
+    /*
+        注意在这里我们只是实例化一个构造函数
+        而非最后返回的“实例”，
+        可以理解这个实例目前只是一个“壳”
+        需要init函数对这个“壳”填充属性和方法
+    */
+    var instance = new this();
+
+    /*
+        如果对init有定义的话
+    */
+    if (instance.init) {
+        instance.init.apply(instance, arguments);
+    }
+    return instance;
+}
+</pre>
+<p>实现在子类方法调用父类同名方法的机制，我们可以借用<a href="http://ejohn.org/blog/simple-javascript-inheritance/">John Resig的方案</a>：</p>
+<pre>
+
+Class.extend = Class.prototype.extend = function (props) {
+    var SubClass = function () {};
+    var _super = this.prototype;
+     SubClass.prototype = Object.create(this.prototype);
+     for (var name in props) {
+        // 如果父类同名属性也是一个函数
+        if (typeof props[name] == &quot;function&quot; 
+            &amp;&amp; typeof _super[name] == &quot;function&quot;) {
+            // 重新定义用户的同名函数，把用户的函数包装起来
+            SubClass.prototype[name] 
+                = (function (super_fn, fn) {
+                return function () {
+
+                    // 如果用户有自定义callSuper的话，暂存起来
+                    var tmp = this.callSuper;
+                    // callSuper即指向同名父类函数
+                    this.callSuper = super_fn;
+                    /*
+                        callSuper即存在子类同名函数的上下文中
+                        以this.callSuper()形式调用
+                    */
+                    var ret = fn.apply(this, arguments);
+                    this.callSuper = tmp;
+
+                    /*
+                        如果用户没有自定义的callsuper方法，则delete
+                    */
+                    if (!this.callSuper) {
+                        delete this.callSuper;
+                    }
+
+                    return ret;
+                }
+            })(_super[name], props[name])  
+        } else {
+            // 如果是非同名属性或者方法
+            SubClass.prototype[name] = props[name];    
+        }
+
+        ..
+    }
+
+    SubClass.prototype.constructor = SubClass; 
+}
+</pre>
+<p>最后给出一个完整版，并且做了一些优化：</p>
+<pre>
+function Class() {}
+
+Class.extend = function extend(props) {
+
+    var prototype = new this();
+    var _super = this.prototype;
+
+    for (var name in props) {
+
+        if (typeof props[name] == &quot;function&quot; 
+            &amp;&amp; typeof _super[name] == &quot;function&quot;) {
+
+            prototype[name] = (function (super_fn, fn) {
+                return function () {
+                    var tmp = this.callSuper;
+
+                    this.callSuper = super_fn;
+
+                    var ret = fn.apply(this, arguments);
+
+                    this.callSuper = tmp;
+
+                    if (!this.callSuper) {
+                        delete this.callSuper;
+                    }
+                    return ret;
+                }
+            })(_super[name], props[name])
+        } else {
+            prototype[name] = props[name];    
+        }
+    }
+
+    function Class() {}
+
+    Class.prototype = prototype;
+    Class.prototype.constructor = Class;
+
+    Class.extend =  extend;
+    Class.create = Class.prototype.create = function () {
+
+        var instance = new this();
+
+        if (instance.init) {
+            instance.init.apply(instance, arguments);
+        }
+
+        return instance;
+    }
+
+    return Class;
+}
+</pre>
+<p>下面是测试的代码。为了验证上面代码的健壮性，故意实现了三层继承：</p>
+<pre>
+var Human = Class.extend({
+    init: function () {
+        this.nature = &quot;Human&quot;;
+    },
+    say: function () {
+        console.log(&quot;I am a human&quot;);
+    }
+})
+
+var human = Human.create();
+console.log(human);
+human.say();
+
+var Man = Human.extend({
+    init: function () {
+        this.callSuper();
+        this.sex = &quot;man&quot;;
+    },
+    say: function () {
+        this.callSuper();
+        console.log(&quot;I am a man&quot;);
+    }
+});
+
+var man = Man.create();
+console.log(man);
+man.say();
+
+var Person = Man.extend({
+    init: function () {
+        this.callSuper();
+        this.name = &quot;lee&quot;;
+    },
+    say: function () {
+        this.callSuper();
+        console.log(&quot;I am Lee&quot;);
+    }
+})
+
+var person = Person.create();
+console.log(person);
+person.say();
+</pre>
+<p><a href="http://jsfiddle.net/4qRUz/">DEMO</a></p>
+<h2>是时候彻底抛弃new关键字了</h2>
+<p>如果不使用new关键字，那么我们需要转投上两节中反复使用的<code>Object.create</code>来生产新的对象</p>
+<p>假设我们有一个矩形对象：</p>
+<pre>
+var Rectangle = {
+    area: function () {
+        console.log(this.width * this.height);
+    }
+};
+</pre>
+<p>借助Object.create，我们可以生成一个拥有它所有方法的对象：</p>
+<pre>
+var rectangle = Object.create(Rectangle);
+</pre>
+<p>生成之后，我们还可以给这个实例赋值长宽，并且取得面积值</p>
+<pre>
+var rect = Object.create(Rectangle);
+rect.width = 5;
+rect.height = 9;
+rect.area();
+</pre>
+<p>注意这个过程我们没有使用new关键字，但是我们相当于实例化了一个对象(rectangle)，给这个对象加上了自己的属性，并且成功调用了类(Rectangle)的方法。</p>
+<p>但是我们希望能自动化赋值长宽，没问题，那就定义一个create方法：</p>
+<pre>
+var Rectangle = {
+    create: function (width, height) {
+      var self = Object.create(this);
+      self.width = width;
+      self.height = height;
+      return self;
+    },
+    area: function () {
+        console.log(this.width * this.height);
+    }
+};
+</pre>
+<p>使用方式如下：</p>
+<pre>
+var rect = Rectangle.create(5, 9);
+rect.area();
+</pre>
+<p>在纯粹使用Object.create的机制下，我们已经完全抛弃了构造函数这个概念。一切都是对象，一个类也可以是对象，这个类的实例不过是一个它自己的复制品。</p>
+<p>下面看看如何实现继承。我们现在需要一个正方形，继承自这个长方形</p>
+<pre>
+var Square = Object.create(Rectangle);
+
+Square.create = function (side) {
+  return Rectangle.create.call(this, side, side);
+}
+</pre>
+<p>实例化它:</p>
+<pre>
+var sq = Square.create(5);
+sq.area();
+</pre>
+<p>这种做法其实和我们第一种最基本的类似</p>
+<pre>
+function Man(name, age) {
+    Human.call(this, name);
+    this.age = age;
+} 
+</pre>
+<p>上面的方法还是太复杂了，我们希望进一步自动化，于是我们可以写这么一个extend函数</p>
+<pre>
+function extend(extension) {
+    var hasOwnProperty = Object.hasOwnProperty;
+    var object = Object.create(this);
+
+    for (var property in extension) {
+      if (hasOwnProperty.call(extension, property) || typeof object[property] === &quot;undefined&quot;) {
+        object[property] = extension[property];
+      }
+    }
+
+    return object;
+}
+
+/*
+    其实上面这个方法可以直接绑定在原生的Object对象上：Object.prototype.extend
+    但个人不推荐这种做法
+*/
+
+var Rectangle = {
+    extend: extend,
+    create: function (width, height) {
+      var self = Object.create(this);
+      self.width = width;
+      self.height = height;
+      return self;
+    },
+    area: function () {
+        console.log(this.width * this.height);
+    }
+};
+</pre>
+<p>这样当我们需要继承时，就可以像前几个方法一样用了</p>
+<pre>
+var Square = Rectangle.extend({
+    // 重写实例化方法
+    create: function (side) {
+         return Rectangle.create.call(this, side, side);
+    }
+})
+
+var s = Square.create(5);
+s.area();
+</pre>
+<h2>结束语</h2>
+<p>本文对去new关键字的方法做了一些罗列，但工作还远远没有结束，有非常多的地方值得拓展，比如：如何重新定义<code>instance of</code>方法，用于判断一个对象是否是一个类的实例？如何在去new关键字的基础上继续实现多继承？希望本文的内容在这里只是抛砖引玉，能够开拓大家的思路。</p>
+<h2>引用资料</h2>
+<ul> 
+ <li> <p><a href="http://aaditmshah.github.io/why-prototypal-inheritance-matters/">Why Prototypal Inheritance Matters</a></p> </li> 
+ <li> <p><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/create">Object.create</a></p> </li> 
+ <li> <p><a href="http://www.bennadel.com/blog/2184-Object-create-Improves-Constructor-Based-Inheritance-In-Javascript-It-Doesn-t-Replace-It.htm">Object.create() Improves Constructor-Based Inheritance In Javascript - It Doesn't Replace It</a></p> </li> 
+ <li> <p><a href="http://dailyjs.com/2012/06/04/js101-object-create/">JS101: Object.create</a></p> </li> 
+ <li> <p><a href="http://ejohn.org/blog/simple-class-instantiation/">Simple “Class” Instantiation</a></p> </li> 
+ <li> <p><a href="http://stackoverflow.com/questions/4166616/understanding-the-difference-between-object-create-and-new-somefunction-in-j">Understanding the difference between Object.create() and new SomeFunction() in JavaScript</a></p> </li> 
+ <li> <p><a href="http://stackoverflow.com/questions/12592913/what-is-the-reason-to-use-the-new-keyword-here">What is the reason to use the 'new' keyword here?</a></p> </li> 
+ <li> <p><a href="http://stackoverflow.com/questions/13040684/javascript-inheritance-object-create-vs-new">JavaScript inheritance: Object.create vs new</a></p> </li> 
+ <li> <p><a href="http://stackoverflow.com/questions/383402/is-javascript-s-new-keyword-considered-harmful">Is JavaScript 's “new” Keyword Considered Harmful?</a></p> </li> 
+</ul>
+<h2>作者简介</h2>
+<p>李光毅，新晋前端工程师，现就职于爱奇艺，热于前端技术分享。</p>
+<hr />
+<p>感谢<a href="http://www.infoq.com/cn/author/崔康">崔康</a>对本文的审校。</p>
+<p>给InfoQ中文站投稿或者参与内容翻译工作，请邮件至<a href="mailto:editors@cn.infoq.com">editors@cn.infoq.com</a>。也欢迎大家通过新浪微博（<a href="http://www.weibo.com/infoqchina">@InfoQ</a>）或者腾讯微博（<a href="http://t.qq.com/infoqchina">@InfoQ</a>）关注我们，并与我们的编辑和其他读者朋友交流。</p><br><br><br><br><br><br></body></html>

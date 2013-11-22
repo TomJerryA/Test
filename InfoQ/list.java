@@ -2,10 +2,13 @@
  <head></head> 
  <body>
   <div>
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/4.java">Case Studies of Lean and Kanban from Central Europe</a>The 2013 international conference in Central Europe about Lean and Kanban (LKCE13) included presentations about change management, systems thinking, leadership, learning, and teamwork, and case studies from larger organizations that have applied Lean and Kanban. InfoQ interviewed Arne Roock about deployment of Lean and Kanban in agile software development.
-  </div>
-  <div>
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/3.java">New Owners for Unity.Mvc and Unity.WebAPI</a>The team behind the website FeedbackHound has taken ownership of the Unity.Mvc and Unity.WebAPI. These open source libraries allow for integration between ASP.NET MVC &amp; Web API and Microsoft’s IoC framework, Unity.
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/5.java">Agile 2014 Conference Call for Submissions Open</a>Submissions are now open for talk proposals the Agile 2014 conference to be held in Orlando, Florida, USA in July 2014
+  </div> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/4.java">Case Studies of Lean and Kanban from Central Europe</a>The 2013 international conference in Central Europe about Lean and Kanban (LKCE13) included presentations about change management, systems thinking, leadership, learning, and teamwork, and case studies from larger organizations that have applied Lean and Kanban. InfoQ interviewed Arne Roock about deployment of Lean and Kanban in agile software development. 
+  </div> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/3.java">New Owners for Unity.Mvc and Unity.WebAPI</a>The team behind the website FeedbackHound has taken ownership of the Unity.Mvc and Unity.WebAPI. These open source libraries allow for integration between ASP.NET MVC &amp; Web API and Microsoft’s IoC framework, Unity. 
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/2.java">Microsoft to Stop Honoring SHA1 Certificates for SSL and Code Signing</a>Following recommendations by the US National Institute of Standards and Technology, Microsoft intends to stop honoring SHA1 for SSL and Code Signing certificates. This policy will begin in 2017 and applies to Windows Vista, Windows Server 2008, and later operating systems. 
@@ -147,9 +150,6 @@
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/6.java">SQL Makes a Comeback through NewSQL</a>New database developments indicate a return to SQL, but not by running the traditional relational stores on bigger and better hardware, not even on sharded architectures, but through NewSQL solutions. 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/5.java">Add-ins Deprecated in Visual Studio 2013</a>Microsoft has deprecated the Visual Studio Add-in infrastructure. According to MSDN, “Visual Studio add-ins are deprecated in Visual Studio 2013. You should upgrade your add-ins to VSPackage extensions.” 
-  </div>   
+  </div>  
  </body>
 </html>

@@ -1,48 +1,164 @@
-<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>Apache Crunch：用于简化MapReduce编程的Java库</h3><p><a href="http://incubator.apache.org/crunch/">Apache Crunch（孵化器项目）</a>是基于Google的<a href="http://dl.acm.org/citation.cfm?id=1806638">FlumeJava</a>库编写的Java库，用于创建MapReduce流水线。与其他用来创建MapReduce作业的高层工具（如Apache Hive、Apache Pig和Cascading等）类似，Crunch提供了用于实现如连接数据、执行聚合和排序记录等常见任务的模式库。而与其他工具不同的是，Crunch并不强制所有输入遵循同一数据类型。相反，Crunch使用了一种定制的类型系统，非常灵活，能够直接处理复杂数据类型，如时间序列、HDF5文件、Apache HBase表和序列化对象（像protocol buffer或<a href="http://avro.apache.org/">Avro</a>记录）等。</p><p>Crunch并不想阻止开发者以MapReduce方式思考，而是尝试使之简化。尽管MapReduce有诸多优点，但对很多问题而言，并非正确的抽象级别：大部分有意思的计算都是由多个MapReduce作业组成的，情况往往是这样——出于性能考虑，我们需要将逻辑上独立的操作（如数据过滤、数据投影和数据变换）组合为一个物理上的MapReduce作业。</p><p>本质上，Crunch设计为MapReduce之上的一个薄层，希望在不牺牲MapReduce力量（或者说不影响开发者使用MapReduce API）的前提下，更容易在正确的抽象级别解决手头问题。</p><p>尽管Crunch会让人想起历史悠久的Cascading API，但是它们各自的数据模型有很大不同：按照常识简单总结一下，可以认为把问题看做数据流的人会偏爱Crunch和Pig，而考虑SQL风格连接的人会偏爱Cascading和Hive。</p><p><strong>Crunch的理念</strong></p><p>PCollection
- <t>
-  和PTable&lt;K, V&gt;是Crunch的核心抽象，前者代表一个分布式、不可变的对象集合，后者是Pcollection的一个子接口，其中包含了处理键值对的额外方法。这两个核心类支持如下四个基本操作：
- </t></p><ol> 
- <li>
-  <t>
-   parallelDo：将用户定义函数应用于给定PCollection，返回一个新的PCollection作为结果。
-  </t></li> 
- <li>
-  <t></t>groupByKey：将一个PTable中的元素按照键值排序并分组（等同于MapReduce作业中的shuffle阶段）</li> 
- <li>combineValues：执行一个关联操作来聚合来自groupByKey操作的值。</li> 
- <li>union：将两个或多个Pcollection看做一个虚拟的PCollection。</li> 
-</ol><p>Crunch的所有高阶操作（joins、cogroups和set operations等）都是通过这些基本原语实现的。Crunch的作业计划器（job planner）接收流水线开发者定义的操作图，将操作分解为一系列相关的MapReduce作业，然后在Hadoop集群上执行。Crunch也支持内存执行引擎，可用于本地数据上流水线的测试与调试。</p><p>有些问题可以从能够操作定制数据类型的大量用户定义函数受益，而Crunch就是为这种问题设计的。Crunch中的用户定义函数设计为轻量级的，为满足应用程序的需要，仍然提供了完整的访问底层MapReduce API的功能。Crunch开发者也可以使用Crunch原语来定义API，为客户提供涉及一系列复杂MapReduce作业的高级ETL、机器学习和科学计算功能。</p><p><strong>Crunch起步</strong></p><p>可以从<a href="http://incubator.apache.org/crunch/download.html">Crunch的网站</a>下载最新版本的源代码或二进制文件，或者使用在Maven Central发布的<a href="http://repo1.maven.org/maven2/org/apache/crunch/crunch/">dependencies</a>。</p><p>源代码中有很多示例应用。下面是Crunch中WordCount应用的源代码：</p><pre>
-import org.apache.crunch.DoFn;
-import org.apache.crunch.Emitter;
-import org.apache.crunch.PCollection;
-import org.apache.crunch.PTable;
-import org.apache.crunch.Pair;
-import org.apache.crunch.Pipeline;
-import org.apache.crunch.impl.mr.MRPipeline;
-import org.apache.crunch.type.writable.Writables;
-
-public class WordCount {
-  public static void main(String[] args) throws Exception {
-    // Create an object to coordinate pipeline creation and execution.
-    Pipeline pipeline = new MRPipeline(WordCount.class);
-    // Reference a given text file as a collection of Strings.
-    PCollection&lt;String&gt; lines = pipeline.readTextFile(args[0]);
-
-    // Define a function that splits each line in a PCollection of Strings into a
-    // PCollection made up of the individual words in the file.
-    PCollection&lt;String&gt; words = lines.parallelDo(new DoFn&lt;String, String&gt;() {
-      public void process(String line, Emitter&lt;String&gt; emitter) {
-	for (String word : line.split(&quot;\\s+&quot;)) {
-	&nbsp; emitter.emit(word);
-	}
-      }
-    }, Writables.strings()); // Indicates the serialization format
-
-    // The count method applies a series of Crunch primitives and returns
-    // a map of the top 20 unique words in the input PCollection to their counts.
-    // We then read the results of the MapReduce jobs that performed the
-    // computations into the client and write them to stdout.
-     for (Pair&lt;String, Long&gt; wordCount : words.count().top(20).materialize()) {
-      System.out.println(wordCount);
-     }
-   }
-}</pre><p><strong>Crunch优化方案</strong></p><p>Crunch优化器的目标是尽可能减少运行的MapReduce作业数。大多数MapReduce作业都是 IO密集型的，因此访问数据的次数越少越好。公平地说，每种优化器（Hive、Pig、Cascading和Crunch）的工作方式本质上是相同的。但与其他框架不同的是，Crunch把优化器原语暴露给了客户开发人员，对于像构造ETL流水线或构建并评估一组随机森林模型这样的任务而言，构造可复用的高阶操作更容易。</p><p><strong>结论</strong></p><p>Crunch目前仍处于Apache的孵化器阶段，我们非常欢迎社区贡献（<a href="http://incubator.apache.org/projects/crunch.html">参见项目主页</a>）让这个库更好。特别的是，我们正在寻求更高效的MapReduce编译思想（包括基于成本考虑的优化）、新的MapReduce设计模式，还希望支持更多的数据源和目标，如HCatalog、Solr和ElasticSearch等。还有很多把Crunch带向如<a href="http://incubator.apache.org/crunch/scrunch.html">Scala</a>和<a href="https://github.com/viacoban/crackle">Clojure</a>等其他JVM语言的项目，也有很多使用Crunch<a href="https://github.com/dlyubimov/crunchR">以R语言来创建MapReduce流水线</a>的工具。</p><p><strong>关于作者</strong></p><p><img src="http://www.infoq.com/resource/articles/ApacheCrunch/zh/resources/Josh_Wills.jpg;jsessionid=638E7F98C5F7ECA27DF7BA99F9BCE5BC" alt="" _href="img://Josh_Wills.jpg" _p="true" />Josh Wills是Cloudera的数据科学主管，主要负责与客户和工程师一起基于Hadoop为不同行业开发解决方案。他从杜克大学获得数学专业学士学位，又从得克萨斯大学奥斯汀分校获得运筹学专业硕士学位。</p><p><strong>查看英文原文：</strong><a href="http://www.infoq.com/articles/ApacheCrunch;jsessionid=638E7F98C5F7ECA27DF7BA99F9BCE5BC">Apache Crunch: A Java Library for Easier MapReduce Programming</a></p><div class="clearer-space"></div><br><br><br><br><br><br></body></html>
+<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>敏捷时代的建模：敏捷团队的扩张除了代码还需要什么？</h3><p>敏捷方法已经成为了当前软件开发的主流模式，可工作的代码（以及自动化测试）被认为是团队最重要的产出。</p>
+<p>那么是否不再需要建模了呢？UML真的已死？我并不这么认为。</p>
+<p>在本文中，我将探索在敏捷时代，建模方法依然适用并且扮演关键角色的所在。尤其在开发规模扩张到多个团队后，对整个系统的“Big Picture”达成共识将变得非常关键。</p>
+<h2>敏捷中的“设计”在哪里</h2>
+<blockquote> 
+ <p>虽然代码表现了事实，但它并没有表现事实的全部 – Grady Booch</p> 
+</blockquote>
+<p>在开篇部分，我将描述一个使用Scrum的敏捷团队的精简流程。图1展示的是一个经过有意简化的流程，它仅仅保留了关键的部分。</p>
+<ol> 
+ <li>列举在“Product Backlog”中的“用户需求” 。</li> 
+ <li>开发团队从列表中选取一些需求，并在一个较短的迭代（或者一个Sprint）时间内实现它们。</li> 
+ <li>每个Sprint结束后，团队创建了“可工作的软件”（或者是“增量内容”），表现为“产品代码”与“测试代码”。</li> 
+</ol>
+<p><img width="500" src="http://infoqstatic.com/resource/articles/kenji-modeling-agile/zh/resources/1012000.png" alt="" _href="img://null" _p="true" /></p>
+<div id="lowerFullwidthVCR"></div>
+<p><b>图</b><b>1</b><b>，简单的</b><b>Scrum</b><b>框架</b></p>
+<p>在这个最精简的框架中，团队所知的是“Product Backlog”上的“用户需求”，而产出的是代码（“产品代码”与“测试代码“）所呈现的“可工作的软件”。这里并未显式地描述两者间的设计成果。理想的情况是，这个Sprint所产生的设计意图作为团队产出的一部分，已经体现在最终发布的代码中了。但有些信息是无法用代码直接表达的。Scrum本身是一种流程框架，它并不有意图地表现任何设计的部分，但团队中仍然少不了各种各样的设计工作。</p>
+<p>正如Grady Booch所说，“<a href="http://www.informit.com/articles/article.aspx?p=1405569">代码表现了事实，但它并没有表现事实的全部</a>”。因此如果有些信息无法以代码形式进行表述或交流，我们将把这些知识财富保留在哪里呢？这正是本文尝试解答的疑问。</p>
+<h2>写文档就不是敏捷了吗？</h2>
+<blockquote> 
+ <p>建模是为了进行对话 – Craig Larman与Bas Vodde</p> 
+</blockquote>
+<p>对以上问题的一个回答也许是：“在我们的脑海中！”。每日例会、结对编程、设计研讨等等互动性的实践以一种同步的方式持续地将团队成员的思想进行归总。但是当团队开始扩张、或分布在不同地域、或有成员离开团队时，“脑海中的模型”的内容会被很快遗忘。我们需要以文档的形式将对系统的共识保存起来，以分享那些仅用代码形式不易保留及沟通的信息。</p>
+<p>敏捷方法清晰地阐述了一个观点，即对话的价值更胜于文档，因此编写繁重的设计文档（它经常会重复代码中表述的信息）并非正确的途径。我们应该采取的途径是只编写那些使对话更有效的文档，它应该尽可能保持最简单的模型集合，与代码产生互补作用。</p>
+<p>模型胜过代码的一个方面是它的可视化表达能力。换句话说，在某些情况下，文字是一种糟糕的交流媒介。图2表现了文字交流会失效的一种情况（感谢Jeff Patton为我推荐了这本书）。</p>
+<p><img width="500" src="http://infoqstatic.com/resource/articles/kenji-modeling-agile/zh/resources/1012001.jpg" alt="" _href="img://null" _p="true" /></p>
+<p><b>图2，文字交流的失败</b></p>
+<p>我猜测，这个“悲剧的”蛋糕是在给蛋糕厂家的电话答录机留言时的误解造成的（译注：订购者的原意是在“Best wishes Suzanne”这一句下方（Underneath that）加上“We will miss you”）、如果订购者能够用一张简单的图片（配上文字）来表达他的意图，那绝对可以避免这个悲剧。有些时候，真的是“一图胜千言”。</p>
+<p>那么，在敏捷团队中，该怎样为了实现目的而有效地使用模型呢？</p>
+<h2>敏捷建模以及两种模型</h2>
+<blockquote> 
+ <p>保留建模，但去掉那些官僚主义的东西 – Scott Ambler</p> 
+</blockquote>
+<p>“<a href="http://www.agilemodeling.com/">敏捷建模</a>”是一系列可以应用在你的团队里以实现有效建模与文档的实践。这一方法遵循了敏捷价值与原则，并且使你依然可以从建模中受益。这里要强调的是，<b>建模是为了更好地开展对话</b>，而不是仅仅为了信息传递。</p>
+<p>我们的软件开发团队已经在使用敏捷建模的实践与原则，并且发现模型起到的最主要作用是<b>以可视化方式交流系统设计的“</b><b>Big Picture</b><b>”</b>或者说是“鸟瞰图”，这一点是单凭代码难以表现的。缺乏模型的支持，整个团队的工作就好似盲人摸象，“四个盲人在摸象，每个人只能感觉到他所触摸的那一部分，最终花费了许多时间，才把这些部分统一成一个整体：一头大象！”</p>
+<p>我的建议是，保持并维护一个反映“Big Picture”的模型，它应该包括以下内容：</p>
+<ol> 
+ <li>系统的<b>“架构”</b>，以便于团队对于整个系统结构有一个初步的认识。</li> 
+ <li><b>“领域模型”</b>将帮助团队理解问题领域中的各种概念。</li> 
+ <li><b>“关键用例”</b>有助于发现系统的典型用户，并了解他们如何从系统中受益。</li> 
+</ol>
+<p>以上每一点对于建立对系统的理解都是非常关键的。缺少了模型的支持，你又怎样确保达到这种理解程度呢？如果你的代码库内容庞大，但只基于你所看到的一小部分不完整的内容推测系统的“Big Picture”，那么你将会对于如何维护整个代码库做出糟糕的选择。“Big Picture”不仅反映了团队对于系统的理解的模型，并且也构成了他们在对话中以及在代码中所用到的词汇，例如代码的结构，以及各种编程结构的命名方式，包括类、方法、变量、字段、数据、配置等等。换句话说，这些模型不仅对于团队建立起对系统整体的共识非常重要，同时也促使团队保持代码库的一致性与可维护性。</p>
+<p>另一方面，某些临时模型的信息以代码形式记录下来之后，这些模型就会被丢弃。这一类别的模型包含画在白板上的松散类图，它通常包含一些类以及描述这些类的交互情况的时序图。这种模型将鼓励你开展有效的对话，其中产生的各种信息将以代码形式固定下来，并随后丢弃。</p>
+<p>因此这一观点的核心是将模型分为两种类别 – <b>应保留模型</b>将作为资产保留维护，而<b>临时模型</b>则促进了有效的对话。我们将前者称为“应保留模型”或“保留模型”，而将后者称为“临时的模型”或“临时模型”（图3）。要注意的是，“保留模型”并不代表“已冻结的”，而是代表“应长期维护的”，并且将持续发展。在下一节中，我将为敏捷团队推荐三种“保留模型”。</p>
+<p><img width="500" src="http://infoqstatic.com/resource/articles/kenji-modeling-agile/zh/resources/1012002.png" alt="" _href="img://null" _p="true" /></p>
+<p><b>图</b><b>3, </b><b>“应保留的”与“临时的”敏捷模型</b></p>
+<h2>应保留的模型</h2>
+<p>在不同的情况下（人员数量、系统的重要度、需求的稳定程度、是否企业级系统或者嵌入式系统），应保留的模型种类也不同。基于我的经验来看，以下几种模型可以成为应保留的模型：</p>
+<ol> 
+ <li>架构的类图/包图</li> 
+ <li>领域模型的类图/实体关系图</li> 
+ <li>关键用例的用例图 + 时序图/协作图</li> 
+</ol>
+<p>虽然我们主要使用的是UML方式，但你也不必刻意遵守严格的UML规格。之所以选择它是因为它提供了种类丰富的标准图形，并且关于它的各种教材也已经很多了。另外，用于表现数据与流程的实体关系图（ERD）与数据流图（DFD）也会由于相同的原因而在某些地方使用到。</p>
+<p>图4以图形方式显示了这三种应保留的模型的角色。简单地说，“架构”表现了系统结构，“领域模型”表现了问题领域中的关键概念，而“关键用例”则为系统的使用方式提供了示例。</p>
+<p><img width="500" src="http://infoqstatic.com/resource/articles/kenji-modeling-agile/zh/resources/1012003.png" alt="" _href="img://null" _p="true" /></p>
+<p><b>图</b><b>4</b><b>，架构、领域模型以及关键用例</b></p>
+<p>接下来我会以我的某个团队中所使用的真实示例与图片，分别解释这三个模型。</p>
+<h3>1. 架构的类图/包图</h3>
+<p>架构是对整个系统的一种结构化展示，它经常以类图或者包图的典型方式显现<b>全局的层次（</b><b>tier</b><b>或layer</b><b>）</b>。举例来说，一个包含用户界面与数据库的应用程序，经常按照从用户界面到数据库进行水平分层，用例将跨越这些层以实现它的功能。</p>
+<p>像“MVC”（模型-视图-控制器）这样的架构模式也可以作为一个全局架构。图5是某个架构的包图的示例，很显然它是基于某种MVC架构设计的。</p>
+<p>团队中的每个人都应该理解架构中的各个部件的角色与作用，这样才能保证团队成员所编写的代码处于架构中的正确位置。</p>
+<p>在这张图的多个包之间显式地表现了“依赖项”的存在，这样做是为了避免不必要的耦合或循环依赖。因为从架构的视角来说，内部包的循环依赖是最糟糕的问题，它会提高测试的难度，并且增加编译的时间。</p>
+<p>（单击图片以放大）</p>
+<p><a href="http://infoqstatic.com/resource/articles/kenji-modeling-agile/zh/resources/1012004.pn"><img width="500" src="http://infoqstatic.com/resource/articles/kenji-modeling-agile/zh/resources/1012004.png" alt="" _href="img://null" _p="true" /></a></p>
+<p><b>图</b><b>5</b><b>，架构的类图</b><b>/</b><b>包图（示例）</b></p>
+<h3>2. 领域模型的类图或实体关系图</h3>
+<p>领域模型描述了应用程序所在的领域中的概念分类。在人员交流的层面上，领域模型的词汇集将成为“<a href="http://martinfowler.com/bliki/UbiquitousLanguage.html">Ubiquitous Language</a>”，并且在全体项目相关人员之间使用，包括用户、领域专家、业务分析师、测试与开发者。</p>
+<p>而在编码的层面上，领域模型对于为各种编程结构选择合适的命名也是非常重要的，包括类、数据、方法以及其它各种协定。概念分类（经常称为“实体”）中的很大一部分会被映射到数据库中的某个持久化数据结构，并且它们的生命周期往往会长于应用程序本身。通常来说，如果你的应用程序选择了某种“MVC”架构，那么你的领域模型（或者说实体）会驻留于你的逻辑架构中的“M”（模型）包内。而在Ruby on Rails类型的应用程序中，实体关系图将会更加适用于表达某个领域模型，因为模型与关系型数据库的关系更加直接与紧密了。</p>
+<p>还要注意的一点是，领域模型是随着时间进化的。由于领域处于问题理解与通信的核心地带，因此怎样维护在团队中（或更大一些的范围，如整个社区）不断发展的领域模是一个很大的主题，这一点在<a href="http://www.amazon.com/Domain-Driven-Design-Tackling-Complexity-Software/dp/0321125215">Eric Evans的领域驱动设计（DDD）一书</a>中进行了详细的讨论。</p>
+<p>图6是某个以类图方式表现的领域模型示例，它用一张图表现了整个领域。</p>
+<p>（单击图片以放大）</p>
+<p><a href="http://infoqstatic.com/resource/articles/kenji-modeling-agile/zh/resources/1012005.png"><img width="500" src="http://infoqstatic.com/resource/articles/kenji-modeling-agile/zh/resources/1012005.png" alt="" _href="img://null" _p="true" /></a></p>
+<p><b>图</b><b>6</b><b>，领域模型的类图（示例）</b></p>
+<h3>3. 关键用例的用例图与时序图/协作图</h3>
+<p>关键用例经常从用户角度表现系统的使用方式，有两个原因让我们决定将它作为保留模型的一部分。首先，开发者经常会钻进解决方案细节中，而遗忘了系统的用户是谁，以及他们想在系统中完成什么任务。用例能够帮助他们回到用户的视角，同时它也是与用户对话的一种良好的方式（其它文档更适合给技术人员看）。</p>
+<p>其次，用时序图或协作图方式表现关键用例以及它们的运作过程对于开发者来说是一个很好的示范。它们描述了系统架构中不同层次的对象如何协同工作，以完成用户的目标。它表现了一个从用户界面到数据库的纵切面的实际示例，并且告诉你如何在整个架构中实现某个用例。</p>
+<p>关键用例不必完整到覆盖所有的情况，只需挑选那些典型的用例，并使它们保持简单。</p>
+<p>（单击图片以放大）</p>
+<p><a href="http://infoqstatic.com/resource/articles/kenji-modeling-agile/zh/resources/1012006.png"><img width="500" src="http://infoqstatic.com/resource/articles/kenji-modeling-agile/zh/resources/1012006.png" alt="" _href="img://null" _p="true" /></a></p>
+<p><b>图</b><b>7</b><b>，关键用例的用例图（示例）</b></p>
+<p>（单击图片以放大）</p>
+<p><a href="http://infoqstatic.com/resource/articles/kenji-modeling-agile/zh/resources/1012007.png"><img width="500" src="http://infoqstatic.com/resource/articles/kenji-modeling-agile/zh/resources/1012007.png" alt="" _href="img://null" _p="true" /></a></p>
+<p><b>图</b><b>8</b><b>，关键用例机制？？？的协作图（示例）</b></p>
+<p>图7是用例图的一个示例，它使得系统的用户与经典场景更加清晰化。它不需要非常完整，但应该表现出系统的上下文情况。标为黄色的用例（“创建类图”）被选为某个用例示例，具体的设计分解体现在图8的协作图中。通过这一示例，团队能够将他们对架构图与领域模型图（表现在图5与图6中）如何完成关键用例中所描述的特性的理解进行分享。请再次看看图4中架构、领域模型与关键用例这三者的关联吧。</p>
+<p>你可以在画这些图时使用工具，以简化维护工作，然后将它们打印到一张大纸上并粘贴到墙上。这面墙就会成为建模研讨会的讨论场所了（我在下一节中会很快讨论到这部分）。</p>
+<h2>扩张</h2>
+<blockquote> 
+ <p>极限编程团队先实现后分解（conquer and divide），而不是相反（divide and conquer） – Kent Beck</p> 
+</blockquote>
+<p>在一个不到10个开发者的小型团队中，你或许不需要在代码库之外再去维护某些模型了。但是当开发规模扩大到多个团队之后，你就会从建模中获得更大的好处。</p>
+<p>但请记住，不要仅仅为了将知识传递给某个你不认识的人，而花费太多时间去准备繁重的文档（而没有编写任何代码）。即使团队的规模变得更大了，你也应该尝试着首先按照某种简单的垂直划分的方式实现某个关键用例，将它作为架构的一个示例。随后，你将这个示例的可工作代码以及“保留模型”的知识分享给某个子团队。换句话说，不要尝试“先分解后实现”某个用例（在桌面上分解问题，随后将贴在墙上的规格说明丢给某个子团队并让他们实现），而是让他们“先实现后分解”（关于这一话题的更多讨论，请阅读Craig Larman与Bas Vodde的文章——《<a href="http://www.infoq.com/articles/large-scale-agile-design-and-architecture">大规模敏捷设计与架构</a>》）。</p>
+<p>这里，我将描述多个团队如何使用“保留模型”互相交流整个系统的“Big Picture”。首先有一个名为“Tiger”的团队，它有不足10名成员，他们将尝试实现第1部分内容。在首次成功的实现之后，他们就可以将之前所述的各种“保留模型”<b>作为良好的文档，用以互相交流对系统的理解。</b>在Sprint 1中，Tiger团队首先完成了第一个关键用例，它建立起了第一个可作为范例的架构设计，并以此建立了软件架构文档（SAD），作为保留模型的版本1.0。不要把这些模型当做一个规格说明，而是把它们当作建立理解和共识的基础平台。再一次记住，不要仅仅把这些文档的信息简单地传递给子团队。</p>
+<p><img width="500" src="http://infoqstatic.com/resource/articles/kenji-modeling-agile/zh/resources/1012008.png" alt="" _href="img://null" _p="true" /></p>
+<p><b>图</b><b>9</b><b>，</b><b>Tiger</b><b>团队与子团队</b></p>
+<p>沟通设计意图并达成共识的最好方式，就是与子团队一起<b>开展一次建模研讨会</b>（图9）</p>
+<p>（单击图片以放大）</p>
+<p><a href="http://infoqstatic.com/resource/articles/kenji-modeling-agile/zh/resources/1012009.JPG"><img width="500" src="http://infoqstatic.com/resource/articles/kenji-modeling-agile/zh/resources/1012009.JPG" alt="" _href="img://null" _p="true" /></a></p>
+<p><b>图</b><b>10</b><b>，建模研讨会的进程，在墙上显示的是保留模型的内容</b></p>
+<p>在建模研讨会上，Tiger团队的一名成员Ken（见图9）首先解释了SAD，并简单描述了各个模型。在问答阶段，他将核心思想与系统的结构关联在一起。接下来，他以关键用例为例，解释了各个系统组件如何协作以实现某个用户目标，并使用这些组件设计出一至两个关键用例，在实现时可以使用临时模型，并可实行结对编程。</p>
+<p>无需使SAD显得非常完整，以研讨会的形式建立起共识，抛弃信息传递的做法，并开展内容详实的对话，这就非常好了。</p>
+<p>反馈是子团队研讨会的一个重要部分。图9中，子团队1的Ken与子团队2的Tom将结果反馈给Tiger团队，并与其他成员一起讨论如何改善这些保留模型。图11显示了研讨会过程中众人的各种想法，包括了众人的理解与反馈。</p>
+<p>（单击图片以放大）</p>
+<p><a href="http://infoqstatic.com/resource/articles/kenji-modeling-agile/zh/resources/1012010.JPG"><img width="500" src="http://infoqstatic.com/resource/articles/kenji-modeling-agile/zh/resources/1012010.JPG" alt="" _href="img://null" _p="true" /></a></p>
+<p><b>图</b><b>11</b><b>，研讨会结束后的架构图，包含了众人的留言反馈</b></p>
+<p>这种研讨会的方式需要不断保持。并且以建模的过程，而不是最终的模型作为促进理解的方式。请记住，要将“模型”作为一个动词，通过建模以达到对话的目的。</p>
+<h2>人是知识的传送带</h2>
+<blockquote> 
+ <p>许多设计思想都存在于种族记忆（tribal memory）中——Grady Booch</p> 
+</blockquote>
+<p>对于开发与维护系统来说，尽管保留模型以及代码库能够覆盖大部分的必要知识，但仍有一部分隐藏的知识保留在团队成员的脑海中。Grady Booch将其称为种族记忆。</p>
+<p>日本有一所神庙名叫伊势神宫。其中有一座神庙建筑，建立在两个相邻场地的其中一块，并且两块场地具有同样的大小。每隔20年，他们就会把建筑从一处移至另一处。不仅神庙经过了重新建造，并且它的庄严外表与宝库也得到了翻新。这一仪式将建筑的知识从这一代神庙传到下一代。虽然没有任何设计文档，但通过一起进行重新建造的过程，技术、工具以及实践知识都得以从这一代传递到下一代。记住，“经验是最好的老师”，并且只有在众人齐心协力时，才能够传递最丰富的设计知识。</p>
+<p><img width="500" src="http://infoqstatic.com/resource/articles/kenji-modeling-agile/zh/resources/1012011.jpg" alt="" _href="img://null" _p="true" /></p>
+<p><b>伊势神宫（图片来源：</b><b><a href="http://ja.wikipedia.org/wiki/%E7%A5%9E%E5%AE%AE%E5%BC%8F%E5%B9%B4%E9%81%B7%E5%AE%AE">维基百科</a></b><b>）</b></p>
+<h2>建模的小提示</h2>
+<p>理解了我所介绍的思想与经验之后，在最后我将提供一些小提示，你可以在每日的建模会议或研讨会中用到它。</p>
+<ul> 
+ <li>“逆向与模型”，许多UML工具支持“逆向工程”这一特性，它能够将代码即时转换为图形。其中某些工具支持从源代码中进行拖放操作，甚至直接支持Github代码库的URL。你还可以将从代码中逆向工程所得的包与类作为进一步建模的基础。这样，你就不仅仅可以从保留模型开始建模，还能以代码库所生成的模型作为建模的基础。</li> 
+ <li>“打印与绘制”，如同之前所说的，一个具有良好互动性的建模研讨会应该在墙上（或者桌面上）贴上几张大纸，并使用这些纸张开展对话，将心得与反馈直接绘制在这些打印纸上（图11）。</li> 
+ <li>“投影仪与白板”，在研讨会上分享模型的另一种方式是使用投影仪与白板，以模拟“打印与绘制”的情况。使用投影仪在白板上展示保留模型，并在白板上绘制各种留言，或者粘上便条贴。</li> 
+ <li>“回顾”，我在之前推荐了一些我认为最简单的保留模型，但每个团队都可能有不同的情况。因此建议首先从我的建议，或者你觉得合适的模型作为第一部分的保留模型。并在每个Sprint之后为你选择的模型作一个回顾，讨论一下哪些模型起到了良好的作用而哪些没有，以及另外还需要哪些模型。总之，找到你的保留模型。</li> 
+ <li>“思维导图建模“，在与用户交流时、做计划时以及其它一些氛围轻松但非常重要的工作时，UML以及其它软件工程图的作用并不理想，这时就可以使用思维导图了。具体细节请阅读《敏捷建模与思维导图和UML》。<a href="http://www.stickyminds.com/s.asp?F=S11861_ART_2">以下这个示例思维导图是我为某个用户创建的，名为“用户故事探索”。</a></li> 
+</ul>
+<p>（单击图片以放大）</p>
+<p><a href="http://infoqstatic.com/resource/articles/kenji-modeling-agile/zh/resources/1012012..png"><img width="500" src="http://infoqstatic.com/resource/articles/kenji-modeling-agile/zh/resources/1012012..png" alt="" _href="img://null" _p="true" /></a></p>
+<h2>结论</h2>
+<p>在本文中，我详细解释了建模工作将如何适应诸如Scrum这样的敏捷开发框架，并且建议了几种你可以在产品的整个生命周期中保留的模型。我还推荐你开展一个建模研讨会以交流设计意图，并建立起对系统的共识。尤其当团队扩张到多个子团队之后，这种实践会变得愈加重要。</p>
+<h2>致谢</h2>
+<p>我在这里要感谢Hiroki Kondo、Alex Papadimoulis以及Scott Reece的建议，并感谢Ben Linders检阅并编辑了这篇文章。特别要感谢Craig Larman，是他首先介绍了建模（或者将“模型”作为动词亦可）研讨会的重要性，并且还在他的飞行途中为我的这篇文章提供了一些根本性的建议。</p>
+<h2>延伸阅读</h2>
+<p>关于敏捷中设计的讨论由来已久。请参阅Martin Fowler及Jack Reeves的大作。</p>
+<ul> 
+ <li><a href="http://martinfowler.com/articles/designDead.html">Martin Fowler，2004，“Is Design Dead？”</a></li> 
+ <li><a href="http://martinfowler.com/distributedComputing/thud.html">Martin Fowler，1997，“The Almighty Thud”</a></li> 
+ <li><a href="http://www.developerdotstar.com/mag/articles/reeves_design.html">Jack Reeves，1992，“What is Software Design？”</a></li> 
+</ul>
+<p>对于“敏捷建模”的首次讨论是在《Agile Modeling》一书中，而《Applying UML and Patterns》一书的第三版也再次讨论了这个话题。</p>
+<ul> 
+ <li><a href="http://www.amazon.com/Agile-Modeling-Effective-Practices-Programming/dp/0471202827/">Scott Ambler，2002，“Agile Modeling”，John Wiley &amp; Sons Ltd.</a></li> 
+ <li><a href="http://www.amazon.com/Applying-UML-Patterns-Introduction-Object-Oriented/dp/0131489062/">Craig Larman，2007，“Applying UML and Patterns：An Introduction to Object-Oriented Analysis and Design and Iterative Development”</a></li> 
+</ul>
+<p>Craig Larman与Bas Vodde的书籍对建模研讨会的思想有极大的促进。</p>
+<ul> 
+ <li><a href="http://www.amazon.com/Practices-Scaling-Lean-Agile-Development/dp/0321636406">Craig Larman 与 Bas Vodde，2010，“Practices for Scaling Lean &amp; Agile Development”</a></li> 
+</ul>
+<p>你可以免费下载第8章：“Practices for Scaling Lean &amp; Agile Development: Large, Multisite, and Offshore Product Development with Large-Scale Scrum”</p>
+<p>http://large-scale-agile-design-and-architecture-ways-of-working-%20sample%20chapter-%20larman-and-vodde.pdf/</p>
+<p>保留模型与临时模型的想法来自于这张图片。</p>
+<ul> 
+ <li><a href="http://www.ss.com.au/articles/Agile%20Modeling.pdf">Strategic Systems，2012，“Agile Modeling by Example”</a></li> 
+</ul>
+<p>这里还有一篇InfoQ的文章，讨论了同样的问题与情况。目前还在等待第2部分的到来。</p>
+<ul> 
+ <li><a href="http://www.infoq.com/articles/agile-modeling-part-one">Lee Ackerman, 2011, “Agile Modeling: Enhancing Communication and Understanding”</a></li> 
+</ul>
+<p>更广泛的敏捷与架构的主题。</p>
+<p><a href="http://mysite.verizon.net/dennis.mancl/splash10/">Bill Opdyke，Dennis Mancl，Steve Fraser，“Architecture in an Agile world, 2010”，SPLASH workshop</a></p>
+<p>我本人就参加了这些研讨会，会议中讨论了“敏捷中的架构”，这两者并不冲突。</p>
+<h2>关于作者</h2>
+<p><img src="http://infoqstatic.com/resource/articles/kenji-modeling-agile/zh/resources/1012013.jpg" style="float: left; margin-right: 10px" alt="" _href="img://null" _p="true" /><b>Kenji Hiranabe</b>是一位敏捷软件开发的实践者，他还是一位作者与译者，同时也是<a href="http://astah.net/">Change Vision, Inc.</a>公司的CEO。按照他的想法，软件开发就是一种协作式的游戏。他也一直在寻求更好的方式，以提高开发的生产力、协作性以及乐趣。作为他对敏捷实践方面贡献的表彰，他获得了2008年度的Gordon Pask大奖。</p>
+<div style="clear: both">
+ &nbsp;
+</div>
+<p><strong>查看英文原文：</strong><a href="http://www.infoq.com/articles/kenji-modeling-agile">Modeling in the Agile Age: What to Keep Next to Code to Scale Agile Teams</a></p><br><br><br><br><br><br></body></html>
