@@ -1,11 +1,11 @@
 <html>
  <head></head> 
- <body>
-  <div>
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/7.java">Nokia Imaging SDK 1.0 Adds Filters, WinPRT API, Enhancements and Sample Demos</a>Nokia has recently released Imaging SDK 1.0 at the Slush 2013 with 50 built-in filters, improvements related to memory management, WinPRT API library in both managed and native code in addition to sample apps which demonstrate the capabilities of the new features.
-  </div>
-  <div>
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/6.java">Amazon Web Services announces three new instance types</a>Amazon Web Services have announced three new instance types for its Elastic Compute Cloud (EC2) infrastructure as a service. I2 instances use solid state disk (SSD) to deliver high input/output performance, C3 instances tie each virtual CPU to a hardware hyper-thread for compute intensive workloads, and G2 instances offer Nvidia graphics processing units (GPUs) for 3D applications.
+ <body> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/7.java">Nokia Imaging SDK 1.0 Adds Filters, WinPRT API, Enhancements and Sample Demos</a>Nokia has recently released Imaging SDK 1.0 at the Slush 2013 with 50 built-in filters, improvements related to memory management, WinPRT API library in both managed and native code in addition to sample apps which demonstrate the capabilities of the new features. 
+  </div> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/6.java">Amazon Web Services announces three new instance types</a>Amazon Web Services have announced three new instance types for its Elastic Compute Cloud (EC2) infrastructure as a service. I2 instances use solid state disk (SSD) to deliver high input/output performance, C3 instances tie each virtual CPU to a hardware hyper-thread for compute intensive workloads, and G2 instances offer Nvidia graphics processing units (GPUs) for 3D applications. 
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/5.java">Agile 2014 Conference Call for Submissions Open</a>Submissions are now open for talk proposals the Agile 2014 conference to be held in Orlando, Florida, USA in July 2014 
@@ -150,6 +150,6 @@
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/8.java">XAML Spy is Now Free</a>First Floor Software, makers of XAML Spy, is now offering a free version of their flagship product. Known as XAML Spy Express, this product allows developers to browse the visual tree of a running WPF, Silverlight, Windows Phone, or Windows Store application. 
-  </div>   
+  </div> 
  </body>
 </html>
