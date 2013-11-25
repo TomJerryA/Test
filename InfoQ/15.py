@@ -1,17 +1,45 @@
-<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>LLVM開発者らがACM Awards 2012 を受賞</h3><p><a target="_blank" href="http://www.infoq.com/news/2013/04/LLVM-ACM-Award-2012;jsessionid=1014FD95709C69ED4C7C975843AECD32"><em>原文(投稿日：2013/04/12)へのリンク</em></a></p> 
-<div class="clearer-space">
- &nbsp;
-</div> 
-<div id="newsContent"> 
- <p>ACMは2012年のコンピューティング技術革新に対する表彰を行った。LLVM開発者らがソフトウェアシステム賞 (Software System Award) などを受賞している。</p> 
- <p><a target="_blank" href="http://www.acm.org/">ACM</a> (Association for Computing Machinery) は，2012年の &quot;コンピュータネットワーク，情報検索，コンピュータ科学教育，マルチエージェントシステム，コンピュータ技術全般，ユーザインターフェース技術における成果&quot; による，&quot;コンピュータ科学が実世界の課題を解決する上で多大な貢献&quot; に対して，<a target="_blank" href="http://www.acm.org/press-room/news-releases/2013/acm-tech-awards-2012">権威ある６つの賞の授与を発表した</a>。</p> 
- <p>その中のひとつである <a target="_blank" href="http://awards.acm.org/software_system/">ソフトウェアシステム賞</a> は，<a target="_blank" href="http://llvm.org/">LLVM Computer Infrastructure</a> プロジェクトによる貢献に対して，<a target="_blank" href="http://awards.acm.org/citation.cfm?id=3453297&amp;srt=year&amp;year=2012&amp;aw=149&amp;ao=SOFTWSYS&amp;yr=2012">Vikram S Adve</a>，<a target="_blank" href="http://awards.acm.org/citation.cfm?id=5756445&amp;srt=year&amp;year=2012&amp;aw=149&amp;ao=SOFTWSYS&amp;yr=2012">Evan Cheng</a>，<a target="_blank" href="http://awards.acm.org/citation.cfm?id=5074762&amp;srt=year&amp;year=2012&amp;aw=149&amp;ao=SOFTWSYS&amp;yr=2012">Chris Lattner</a> の各氏に贈られた。LLVMはプログラム言語のコード解析と変換を行うための汎用的なツールセットで，そのテクノロジはApple, Adobe, AMD, Arxan, AutoESL, Cray, Google, Intel, National Instruments, nVidia, REAL Software, XMOSなどが開発したさまざまな製品に応用されている。2012年12月にリリースされたLLVM 3.2に続き，<a target="_blank" href="http://llvm.org/docs/ReleaseNotes.html#whatsnew">バージョン3.3</a> が近日中にリリースされる予定だ。</p> 
- <p>1983年に始められたACMソフトウェアシステム賞は，これまで数々の有名人に対して贈られている。Dennis Ritchie, Ken Thompson両氏はUNIXで，Alan Kay氏はSmalltalkで，Michael Stonebraker氏はINGRESで，Vinton Cerf氏はTCP/IPで，Tim Berners-Lee氏はWWWで受賞している。その他にも，ここでは <a target="_blank" href="http://en.wikipedia.org/wiki/Software_System_Award">すべてのリスト</a> を紹介できないほど多くの受賞者がいる。</p> 
- <p><a target="_blank" href="http://dl.acm.org/author_page.cfm?id=81100383891">Martin Casado</a> と <a target="_blank" href="http://dl.acm.org/author_page.cfm?id=81100360141">Dina Katabi</a> の両氏はSDN (Software Defined Networking) の開発で，その年の傑出した若手コンピュータ技術者に与えられる <a target="_blank" href="http://awards.acm.org/hopper">グレース・ホッパー賞 (Grace Murray Hopper Award)</a> を受賞した。Casado氏は，ハードウェアベースのネットワークコンピュータを <a target="_blank" href="https://www.google.com/url?sa=t&amp;rct=j&amp;q=&amp;esrc=s&amp;source=web&amp;cd=1&amp;cad=rja&amp;ved=0CEIQFjAA&amp;url=http%3A%2F%2Fwww.openflow.org%2F&amp;ei=rR1oUfKLO8bQtQbHtYH4Bw&amp;usg=AFQjCNFN3iOsrLxBI4a5lMPwiJI5h2lEcQ&amp;sig2=foyCCBH8pzmtlD4eP-mtWg&amp;bvm=bv.45175338,d.Yms">OpenFlow</a> (オープンなAPIのひとつ) と <a target="_blank" href="https://www.google.com/url?sa=t&amp;rct=j&amp;q=&amp;esrc=s&amp;source=web&amp;cd=1&amp;cad=rja&amp;ved=0CDgQFjAA&amp;url=http%3A%2F%2Fopenvswitch.org%2F&amp;ei=3h1oUcb6IoictQby4oDwBA&amp;usg=AFQjCNEMBSVJPRvNp22GmAGIKJ_gnKiRcg&amp;sig2=QQ6btK-1Dx3Ogkx0XC8HnA&amp;bvm=bv.45175338,d.Yms">OpenVswitch</a> スイッチ，SDNコントローラの NOX と ONIX を使ってソフトウェアで実現した功績を評価された。一方のDina Katabi氏は，新しいアプローチを採用したネットワーク輻輳制御の設計を通じて重要な貢献をしている。</p> 
- <p>Andrei Broder, Moses Charikar, Piotr Indyk の各氏は，大規模データベースで類似したエントリを検索する <a target="_blank" href="http://en.wikipedia.org/wiki/Locality-sensitive_hashing">LSH (Locally-Sensitive Hashing)</a> アルゴリズムによって <a target="_blank" href="http://awards.acm.org/kanellakis">パリス・カネラキス実践的理論賞 (Paris Kanellakis Theory and Practice Award)</a> を受賞した。</p> 
- <p><a target="_blank" href="http://portal.acm.org/author_page.cfm?id=81325489795">Eric Roberts</a> 氏は，コンピュータ科学教育への貢献で <a target="_blank" href="http://awards.acm.org/homepage.cfm?awd=142">カール・カールストローム教育賞 (Karl V. Karlstrom Outstanding Educator Award)</a> を受賞した。<a target="_blank" href="http://dl.acm.org/citation.cfm?id=1076609&amp;coll=DL&amp;dl=GUIDE">Thinking Recursively</a> の著者であるRobert氏は，スタンフォード大学の学部生向けのコンピュータ科学プログラムと，バミューダの公立高校のためのコンピュータ用カリキュラムを開発している。</p> 
- <p>Yoav Shoham 氏とMoshe Tennenholtz氏は <a target="_blank" href="http://awards.acm.org/newell/">アレン・ニューウェル賞 (ACM/AAAI Allen Newell Award)</a> を受賞した。”コンピュータ科学，ゲーム理論，経済学にわたるマルチエージェントシステム&quot; への貢献が認められたものだ。Shoham氏は &quot;分散マルチエージェントシステムを特徴付ける方法論&quot; の，Tenneholtz氏は &quot;意思決定者間の相互作用をコンピュータで表現するための設計・解析への各種アプローチ&quot; の先駆者だ。Tennenholtz氏はさらに，環境との相互作用によって学習するアルゴリズムであるRMaxの開発者でもある。</p> 
- <p>Thomas Bartoschek, Johannes Sch&ouml;ning両氏は，&quot;学校の地理情報科学 (Geoinformatics at School, GI<img alt="" width="12" height="12" src="http://www.infoq.com/mag4media/repositories/fs/news/2013/04/LLVM-ACM-Award-2012/ja/resources/at-sign_arial_12px.gif;jsessionid=90C611FDEEBFB741768E10F2A69E70F4;jsessionid=1014FD95709C69ED4C7C975843AECD32" _href="img://at-sign_arial_12px.gif;jsessionid=90C611FDEEBFB741768E10F2A69E70F4" _p="true" />School)&quot; で <a target="_blank" href="http://awards.acm.org/lawler">ユージン.L.ローラ賞 (Eugene L. Lawler Award)</a> を受賞した。これは学生が &quot;地理情報とユーザインターフェース技術によって自らのコミュニティにおける問題解決を図る&quot; ことを可能にするプログラムだ。</p> 
- <p id="lastElm">&nbsp;</p> 
-</div> 
-<p id="lastElm"></p><br><br><br><br><br><br></body></html>
+<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>Microsoftが放棄したスタックランキングシステムでYahoo!が600人をレイオフ</h3><p><a target="_blank" href="http://www.infoq.com/news/2013/11/stack-ranking-microsoft-yahoo"><em>原文(投稿日：2013/11/16)へのリンク</em></a></p>
+<div class="article_page_left news_container text_content_container"> 
+ <div class="text_info"> 
+  <p>Yahoo!は最近、昨年に導入したランキングシステムに基づき、600人をレイオフした。一方、マイクロソフトはランキングシステムを放棄し、従業員をある種の重圧から解放した。</p> 
+  <p>AllThingsDによれば、新CEOであるMarissa Mayer氏のもと、Yahoo!は昨年、従業員評価システムを導入し、その結果、この数週間で<a href="http://allthingsd.com/20131108/because-marissa-said-so-yahoos-bristle-at-mayers-new-qpr-ranking-system-and-silent-layoffs/">600人近くがレイオフされた</a>。このシステムは同社のマネージャをも慌てさせている。チームのメンバをアンダーフパフォーマーとして分類し、ベルカーブを使った評価システムに従う必要があるからだ。</p> 
+  <blockquote> 
+   <p>従業員を目標未達成にしてしまうことを避けられない場合がありました。こういう場合はとても嫌な気持ちになります。そして、今、私はQPRミーティングでそのようなことについて議論をしなければなりません。ベルカーブに合わせるためには、その従業員に目標未達成であることを伝えなければならないからです。本当は、そうでないにも関わらずです。これはとてもつらいことです。目的を達成できない従業員や間違って採用してしまった従業員を排除する必要があるのは理解できますが、実行するのは気が滅入ります。心の中でも人を失うのは避けたいのです。どのように正当化すればいいのでしょう。</p> 
+  </blockquote> 
+  <p>匿名掲示板で、あるYahoo!の従業員はランキングシステムはマネージャにも適用されるべきだ、と書いている。</p> 
+  <blockquote> 
+   <p>‘時折の目標未達成’という分類はL2とL3の幹部にも適用されるのでしょうか。幹部でも70％も目標を達成していない人がいます。とすると、定義上、彼らは‘時折の目標未達成’に分類されるはずです。</p> 
+  </blockquote> 
+  <p>一方、退任する予定のMicrosoftのCEO、Steve Ballmer氏はスタックランキングシステムを廃止することを決定した。このシステムは、同社の内外から、Microsoftの最も破滅的なシステムだと思われていた。</p> 
+  <blockquote> 
+   <p><a href="http://www.theverge.com/2013/11/12/5094864/microsoft-kills-stack-ranking-internal-structure">The Verge</a>: <em>Vanity Fair</em>コントリビューティングエディタであるKurt Eichenwald氏はMicrosoftの<a href="http://www.theverge.com/2012/7/3/3134719/microsoft-windows-office-loyalty-lost-decade">&quot;失われた10年&quot;と共食い文化</a>の原因として、WindowsとOfficeに執着していることと、同社のスタックランキングシステムを合わせて批判した。氏はこのスタックランキングが同社の最も破滅的なシステムであることを認めている現従業員、元従業員に多く取材をしている。</p> 
+   <p><a href="http://www.businessweek.com/articles/2013-11-13/microsoft-kills-its-hated-stack-rankings-dot-does-anyone-do-employee-reviews-right">Bloomberg Businessweek</a>: Microsoftの元従業員であるDavid Auerbach氏は<em>Bloomberg Businessweek</em>に、スタックランキングシステムが従業員に頼るれるものがないという不安を与え、さらに“<a href="http://www.businessweek.com/articles/2013-11-07/the-annual-performance-review-worthless-corporate-ritual">従業員同士が足を引っ張り合う</a>”ようにしむけていた、と話している。</p> 
+   <p><a href="http://www.forbes.com/sites/petercohan/2013/11/13/marissas-second-epic-fail-microsoft-abolishes-stack-ranking-as-yahoo-ramps-it-up/">Forbes</a>: スタックランキングは、マネージャが従業員をランク付けし、最低ランクの従業員を解雇するという仕組みで、MicrosoftのSteve Ballmer氏がGEから取り入れた恐るべきシステムだ。私が<a href="http://www.forbes.com/sites/petercohan/2012/07/13/why-stack-ranking-worked-better-at-ge-than-microsoft/">2012年7月</a>に書いたように、Microsoftのスタックランキングはめちゃくちゃだった。</p> 
+   <p><a href="http://online.wsj.com/news/articles/SB10001424052702303460004579193951987616572">The Wall Street Journal</a>: Microsoftのランキングは最高経営責任者の<a href="http://topics.wsj.com/person/B/Steve-Ballmer/599">Steve Ballmer氏</a>の元での、昇進と賞与、株式報奨の重要な要素だった。同氏は今年の8月に退任計画を発表している。しかし、Microsoftの現従業員、元従業員はかわりやすいランキング、マネージャ間の権力争い、不健全な競争を生んだこのシステムに不満を募らせていた。</p> 
+  </blockquote> 
+  <p>MicrosoftのHR部門の責任者であるLisa Brummel氏が従業員に送った<a href="http://www.theverge.com/2013/11/12/5094864/microsoft-kills-stack-ranking-internal-structure">メモ</a>によれば、これからは“ノーモアカーブ”であり、“ノーモアレーティング”であり、従業員の成長とチームの協力を強調している。</p> 
+  <blockquote> 
+   <ul> 
+    <li><b>チームワークとコラボレーションに重きを置きます</b>。私たちは今、優れたパフォーマンスに対する考え方を具体化しており、つぎの3つの要素に注目しています。すなわち、まずは自分の仕事、そしてそれだけでなく、ほかの人からのインプットやアイディアをどのように活用できるか、そして、ほかの人の成功にどのように貢献できるか、です。この3つが合わさってどのようなビジネスインパクトを生み出すか着目しています。</li> 
+    <li><b>従業員の成長と開発に重きを置きます</b>。“コネクト”と呼ばれるプロセスを通じて、よりタイムリーなフィードバックと意義深い議論によって従業員の学習、成長、成果を助けるために、最適化を行っています。企業内でひとつの時間軸に従うのではなく、ビジネスの各部分のリズムに合わせてスケジュールを決め、成果や開発について議論する時期や方法を柔軟にします。</li> 
+   </ul> 
+  </blockquote> 
+  <p>ベルカーブのランキングシステムは1980年代にGEの最高経営責任者のJack Welch氏によって広められ、多くの企業で導入された。しかし、<a href="http://www.businessweek.com/articles/2013-11-13/microsoft-kills-its-hated-stack-rankings-dot-does-anyone-do-employee-reviews-right">その中には昨年、このシステムを放棄した企業もある</a>。AdobeとExpediaもそうだ。このシステムの中核のアイディアは企業の従業員の成績はベルカーブに従うということだ。それゆえ従業員は、少数のハイパフォーマーと、多くの平均的な能力の従業員と、少数のアンダーパフォーマーに分けられる。ランキングシステムはアンダーパフォーマーを発見し、除外することで企業の労働力全体を改善し、標準偏差を小さくして、より均質な企業にする。次のグラフに示す通りだ。(出典は<a href="http://web.mit.edu/chintanv/www/Publications/Chintan%20Vaishnav%20Punishing%20by%20Rewards%20for%20Publication%20Final.pdf">Punishing by Rewards: When the Performance Bell-curve Stops Working For You</a><em> - PDF)</em>:</p> 
+  <blockquote> 
+   <p><img src="http://www.infoq.com/resource/news/2013/11/stack-ranking-microsoft-yahoo/ja/resources/1bell-curve-1.png" alt="" _href="img://1bell-curve-1.png" _p="true" /></p> 
+  </blockquote> 
+  <p>しかし、昨年行われたいくつかの研究では、このベルカーブランキングシステムには多くの欠陥があることが指摘されている。<a href="http://www.bchrma.org/wp-content/uploads/2012/11/rb-the-best-and-the-rest.pdf"><em>The Best and the Rest: Revisiting the Norm of Normality of Individual Performance</em></a><em>(PDF)</em>という研究によれば、成績はガウス分布ではなく、次のグラフのような安定分布によって示される。</p> 
+  <blockquote> 
+   <p><img src="http://www.infoq.com/resource/news/2013/11/stack-ranking-microsoft-yahoo/ja/resources/bell-curve-2.png" alt="" _href="img://bell-curve-2.png" _p="true" /></p> 
+  </blockquote> 
+  <p>この研究によれば、大多数の従業員はアンダーパフォーマーであり、ハイパフォーマーは少数しかいない。この研究は、トップパフォーマーを残して残りをレイオフするのではなく、“スパースターを選んで、ボトムラインに影響を与えるポジションに置く”ことを推奨している。</p> 
+  <p>Another study, <a href="http://web.mit.edu/chintanv/www/Publications/Chintan%20Vaishnav%20Punishing%20by%20Rewards%20for%20Publication%20Final.pdf">Punishing by Rewards: When the Performance Bell-curve Stops Working For You</a><em>(PDF)</em>はベルカーブランキングシステムのほかの問題を指摘している。従業員に与える重圧についてだ。</p> 
+  <blockquote> 
+   <p>一定の水準以下であれば、重圧は高いパフォーマンスを導きます。しかし、レイオフが実施されると、重圧は従業員のモラルの低下を引き起こし、パフォーマンスも低下します。成果が一番低い従業員がいなくなると、ベルカーブの固定的な分布に従って、マネージャはハイパフォーマーを平均的な従業員にランク付けしなければなりません。そのような作られた降格によって、ハイパフォーマーはモチベーションを失い、本当に平均的な従業員になってしまいます。そして、小さくなっている会社では、マネージャが従業員を差別化するのが難しくなります。その結果、実際の成果よりも目に見える成果を評価し始めます。ある時点を過ぎると、社会的資本の浸食が企業を不自由にする可能性が生まれます。</p> 
+  </blockquote> 
+  <p>この研究は、重圧とモラルのバランスを取り、レイオフからパフォーマンスの評価を分離することを推奨している。</p> 
+  <blockquote> 
+   <p>固定的な割合の分布に従わず、トップパフォーマーをトップパフォーマーとして評価するセミベルカーブを使うことを推奨します。さらに、重圧とモラルのバランスを取ることも重要です。バランスを取るのは難しいです。特に企業が小さくなっている場合はそうです。重圧を最適なレベルに保ち、モラルを高く保つ唯一の方法は評価プロセスとレイオフを分離することです。</p> 
+  </blockquote>
+ </div> 
+</div><br><br><br><br><br><br></body></html>
