@@ -1,5 +1,37 @@
-<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>XAML Spy is Now Free</h3><p>First Floor Software, makers of XAML Spy, is now offering a free version of their flagship product. Known as <a href="http://xamlspy.com/learn/xaml-spy-express">XAML Spy Express</a>, this product allows developers to browse the visual tree of a running application. Unlike its open source competitor, <a href="http://snoopwpf.codeplex.com/">Snoop</a>, XAML Spy supports Silverlight, Windows Store, and Windows Phone in addition to WPF. Note that examining Silverlight 3/4 apps requires having Silverlight 5 installed.</p>
-<p>XAML Spy also offers a commercial version. That version adds the ability to edit properties much like a web browser’s built-in HTML/CSS debugger. It can also serialize a control back to the XAML that represents its current state.</p>
-<p>Both the free and commercial version of XAML Spy 2 are integrated into Visual Studio. XAML debugging is enabled simply by right-clicking on the project file. There is, however, a performance hit from this so they provide a way to easily disable it as well. And by default it is limited to debug builds only.</p>
-<p>If you prefer to use a stand-alone XAML debugger, XAML Spy 1 is still available. This can be installed side-by-side with XAML Spy 2 and allows developers to attach to any running WPF application. An internal web browser is used for debugging Silverlight applications. In a future update XAML Spy 2 is expected to regain the ability to run outside of Visual Studio.</p>
-<p>XAML Spy relies on what they call the <a href="http://xamlspy.com/learn/spyservice">XAML Spy service</a>. Running applications and debuggers communicate with each other via this service. Unfortunately firewalls and VPN connections can interfere with this service, sometimes even after the VPN connection is dropped.</p><br><br><br><br><br><br></body></html>
+<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>Visual Studio's C++14 Support Grows</h3><p class="Standard">Back in July, Microsoft had <a href="http://www.infoq.com/news/2013/07/vs2013_CPP_compliance">released</a> a roadmap for the integration of modern C++ into Visual Studio.&nbsp; At that time it solidified what C++ language features would be available in VS2013, and now a new CTP is available bringing VC++ closer to C++14 compliance.
+ <o:p></o:p></p>
+<p class="Standard">Titled <a href="http://www.microsoft.com/en-us/download/details.aspx?id=41151">Visual C++ Compiler November 2013 CTP</a>, this package provides the following features: 
+ <o:p></o:p></p>
+<blockquote> 
+ <ul> 
+  <li>Implicit move special member function generation (thus also completing =<i>default</i>) 
+   <o:p></o:p></li> 
+  <li>Reference qualifiers on member functions (a.k.a. <i>&quot;&amp; and &amp;&amp; for *this&quot;</i>) 
+   <o:p></o:p></li> 
+  <li>Thread-safe function local static initialization (a.k.a. &quot;magic statics&quot;) 
+   <o:p></o:p></li> 
+  <li>Inheriting constructors 
+   <o:p></o:p></li> 
+  <li><i>alignof/alignas</i> 
+   <o:p></o:p></li> 
+  <li><i>__func__</i> 
+   <o:p></o:p></li> 
+  <li>Extended <i>sizeof</i> 
+   <o:p></o:p></li> 
+  <li><i>constexpr</i> (except for constructors) 
+   <o:p></o:p></li> 
+  <li><i>noexcept</i> (unconditional) 
+   <o:p></o:p></li> 
+  <li>C++14 <i>decltype</i>(auto)
+   <o:p></o:p></li> 
+  <li>C++14 <i>auto</i> function return type deduction 
+   <o:p></o:p></li> 
+  <li>C++14 generic lambdas (with explicit lambda capture list) 
+   <o:p></o:p></li> 
+  <li>(Proposed for C++17) Resumable functions and <i>await</i>
+   <o:p></o:p></li> 
+ </ul> 
+</blockquote>
+<p class="Standard">An important detail for early-adopters interested in this package—it does not include a “Go Live” license meaning it cannot be used for production code deployment.&nbsp; According to Microsoft’s Stephen T. Lavavey, a “Go Live” license will not be available with this or future VC++ CTPs for VS2013.&nbsp; In short VS Next will be the soonest these features will be available for use in a production setting.&nbsp; Also per <a href="http://blogs.msdn.com/b/vcblog/archive/2013/11/18/announcing-the-visual-c-compiler-november-2013-ctp.aspx?PageIndex=2#comments">Lavavey</a>, the following C++11 core language features remain outstanding: “expression SFINAE, attributes (including those for data-dependency ordering), constexpr on member functions, char16_t/char32_t, Unicode string literals, universal character names in literals, user-defined literals, inline namespaces, unrestricted unions, conditional noexcept, thread_local, [and] a C99-conformant preprocessor…”
+ <o:p></o:p></p>
+<p class="MsoNormal">Microsoft has <a href="http://aka.ms/I0w822">produced</a> a document listing some of the pain points that you may encounter when using this CTP.&nbsp; Notably the new keywords are not supported by IntelliSense and some areas of the IDE.&nbsp; Additional areas to be aware of are that the <i>await</i> keyword requires Windows 8.1 and when using destructors with the CTP, avoid throwing exceptions.</p><br><br><br><br><br><br></body></html>

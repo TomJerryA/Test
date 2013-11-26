@@ -2,6 +2,9 @@
  <head></head> 
  <body> 
   <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/7.javab">Sell Before You Build</a> “Before you write any code, make sure you have a failing test.” This was revolutionary when first pitched in the late 90’s. Many successful entrepreneurs have practiced a similar idea: “Before you build a product/service, make sure you have paying customers.” Naresh Jain explains his approach of finding effective MVPs to validate his Educational Product and why Agile Methods simply fail to do so. 
+  </div> 
+  <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/6.javab">Is Your Application Ready?</a> We mostly ship software by date, squeezing all development and testing efforts toward that deadline. We prioritize what we think is important, and once our application passes a certain quality level, we’re ready to go live. But even when we do ship, can we tell the readiness status of our application? 
   </div> 
   <div> 
@@ -147,9 +150,6 @@
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/8.javab">Self-Organizing Organizations (For Real)</a>All you’ve ever wanted to know about self-organized companies, without daring actually run one. 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/7.javab">Interview &amp; Book Review: “The Phoenix Project, A Novel About IT, DevOps &amp; Helping Your Business Win”</a>This book addresses the divide between business and IT and between dev, ops and other teams in IT. It will resonate at one point or another with anyone who's ever worked in IT. 
   </div> 
  </body>
 </html>

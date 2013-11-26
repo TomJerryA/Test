@@ -1,37 +1,32 @@
-<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>在Twitter，Netty 4 GC开销降为五分之一</h3><p>Netty项目在7月份发布了Netty 4的第一个版本，其性能的显著提升主要来源于垃圾收集开销的降低。在Twitter，Netty 4经过完善已经获得了5倍的性能提升，但也有一些代价。</p>
-<p><a href="http://netty.io/">Netty项目</a>创始人和Twitter软件工程师<a href="http://www.linkedin.com/in/trustin">Trustin Lee</a>从2003年开始就一直编写网络应用程序框架。Netty第一次公开发布是在<a href="http://www.theserverside.com/news/thread.tss?thread_id=26416">2004年6月</a>，其项目<a href="http://netty.io/">主页</a>这样描述它，“一种异步事件驱动的网络应用程序框架，用于可维护的高性能协议服务器和客户端的快速开发。”</p>
-<p>Lee在博文“<a href="https://blog.twitter.com/2013/netty-4-at-twitter-reduced-gc-overhead">Netty 4在Twitter：降低GC开销</a>”中写道，Twitter在许多地方使用Netty实现联网功能：</p>
-<ul> 
- <li><a href="http://twitter.github.io/finagle/">Finagle</a>是我们的<a href="https://blog.twitter.com/2011/finagle-protocol-agnostic-rpc-system">协议无关的RPC系统</a>，用于实现大部分内部服务，如<a href="https://blog.twitter.com/2011/twitter-search-now-3x-faster">搜索</a>，它的传输层建立在Netty上。</li> 
- <li>TFE（Twitter前端）是我们专有的<a href="http://wiki.squid-cache.org/SpoonFeeding">填鸭式</a><a href="http://en.wikipedia.org/wiki/Reverse_proxy">反向代理</a>，它使用Netty为大部分面向公众的HTTP和<a href="http://en.wikipedia.org/wiki/SPDY">SPDY</a>流量提供服务。</li> 
- <li><a href="https://github.com/twitter/cloudhopper-smpp">Cloudhopper</a>每月用Netty向遍布世界各地数以百计的运营商发送数十亿条短信息。</li> 
-</ul>
-<p>Netty包含一个反应堆模式的实现，它同时也是<a href="http://www.playframework.com/">Play框架</a>的核心。Play、Grails和许多其它Web框架都采用一种<a href="http://www.jamesward.com/2011/08/23/war-less-java-web-apps">WAR-less Web应用程序模式</a>，它允许与底层HTTP服务器更紧密地集成。使用内部包含像Netty这种框架的服务器，异步编程会简单很多。异步编程和非阻塞I/O是“响应宣言（<a href="http://www.reactivemanifesto.org/">The Reactive Manifesto</a>）”的核心。InfoQ在“<a href="http://www.infoq.com/cn/news/2013/08/reactive-programming-emerging">新兴趋势：响应式编程</a>”中报道了这一新兴模式。</p>
-<p>Netty 3使用Java对象表示I/O事件。Lee谈道：</p>
+<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>Greg Finzer谈Compare .NET Objects</h3><p>编写对象比较的代码可能非常枯燥，特别是在处理大对象或者深度图的时候。在类变化的时候错误通常会偷偷的溜进去。减少潜在错误的一种方式是依赖于类库，例如Greg Finzer的<a href="http://comparenetobjects.codeplex.com/">Compare .NET Objects</a>。该类库为多达1万个对象的比较提供合理的性能。</p>
+<p><strong>InfoQ：启发你创建Compare .NET Objects类库的第一件事是什么？</strong></p>
 <blockquote> 
- <p>这样简单，但会产生大量的<a href="http://en.wikipedia.org/wiki/Garbage_collection_(computer_science)">垃圾</a>，尤其是在我们这样的规模下。Netty 4在新版本中对此做出了更改，取代生存周期短的事件对象，而以定义在生存周期长的通道对象上的方法处理I/O事件。它还有一个使用池的专用缓冲区分配器。</p> 
- <p>……每当收到新信息或者用户发送信息到远程端，Netty 3均会创建一个新的堆缓冲区。这意味着，对应每一个新的缓冲区，都会有一个‘new byte[capacity]’。这些缓冲区会导致GC压力，并消耗内存带宽：为了安全起见，新的字节数组分配时会用零填充，这会消耗内存带宽。然而，用零填充的数组很可能会再次用实际的数据填充，这又会消耗同样的内存带宽。如果Java虚拟机（JVM）提供了创建新字节数组而又无需用零填充的方式，那么我们本来就可以将内存带宽消耗减少50%，但是目前没有那样一种方式。</p> 
+ <p>当Microsoft发布Developer Tools for Windows Phone 7的时候在Windows Phone 7社区中引发了非常强烈的抗议，因为Microsoft并没有提供一个数据库。而我个人认为这应该是一个非常好的为Windows Phone 7创建一个数据库的机会，因为并没有竞争对手并且有清晰的需求。我过去一直想要创建一个对象数据库从而绕开数年来处理ORM的痛苦。那时候Windows Phone 7允许的应用程序数据最大才是90MB。我们需要在尽可能最小的空间中存储数据，甚至比JSON还小。我发现.NET Framework for Windows Phone 7早期并没有可用的二进制序列化器。在CodePlex上有一个开源的二进制序列化器：<a href="https://slserializelzo.codeplex.com/">https://slserializelzo.codeplex.com/</a>。 我注册并成为了那个项目的测试员。为了验证序列化/反序列化我创建了Compare .NET Objects，而不是手工的编写几百个反射测试。最后，创建Ninja Database Pro的时候我们并没有利用CodePlex序列化类库。但是我们自己的二进制序列化器确实使用了Compare .NET Objects进行所有的集成测试。我将Compare .NET Objects剥离成了一个独立的开源项目，使它可以为开发者社区服务。</p> 
 </blockquote>
-<p>在Netty 4中，代码定义了粒度更细的API，用来处理不同的事件类型，而不是创建事件对象。它还实现了一个新缓冲池，那是一个纯Java版本的<a href="https://www.facebook.com/notes/facebook-engineering/scalable-memory-allocation-using-jemalloc/480222803919">jemalloc</a>（Facebook也在用）。现在，Netty不会再因为用零填充缓冲区而浪费内存带宽了。不过，由于它不依赖于GC，开发人员需要小心内存泄漏。如果忘记在处理程序中释放缓冲区，那么内存使用率会无限地增长。</p>
-<p>这些变化没有向后兼容Netty 3，但其垃圾生成速度是原来的1/5，而垃圾清理速度快了5倍。</p>
-<p>Lee写道：</p>
+<p><strong>InfoQ：你还看见开发者按照其他的方式使用过你的类库么？</strong></p>
 <blockquote> 
- <p>我们比较了两个分别建立在Netty 3和4基础上<a href="http://en.wikipedia.org/wiki/Echo_Protocol">echo</a>协议服务器。（Echo非常简单，这样，任何垃圾的产生都是Netty的原因，而不是协议的原因）。我使它们服务于相同的分布式echo协议客户端，来自这些客户端的16384个并发连接重复发送256字节的随机负载，几乎使千兆以太网饱和。</p> 
- <p>根据测试结果，Netty 4：</p> 
+ <p>我认为Compare .NET Objects非常适合于编写验证ORM映射的集成测试。我为Sogeti工作。在过去的一年我在俄亥俄州航空办公室的一个项目上使用了Compare .NET Objects进行集成测试。在该项目上我们使用了Compare .NET Objects验证Spring Framework .NET映射。我还看见过其他开发人员使用Compare .NET Objects判断一个对象是否是脏对象需要被保存到数据库中，还有人使用它实现审计的目的，有人将它应用于power shell脚本中。</p> 
+</blockquote>
+<p><strong>InfoQ：它支持所有其他的.NET平台么，例如Windows Phone、Windows Store？</strong></p>
+<blockquote> 
+ <p>在代码中有一个针对Silverlight的编译器常量，所以它应该可以在Windows Phone和Silverlight上使用。但是我现在并没有考虑让它兼容Windows Store。最后，我计划实现几个独立的项目，为每一个不同的平台单独构建，类似于我在我们的商业产品中所做的事情那样。</p> 
+</blockquote>
+<p><strong>InfoQ：Compare .NET Objects中是否有一些现在没有但是你想要添加的内容？</strong></p>
+<blockquote> 
+ <p>尽管人们发email感谢我它是一个单独的类，但是我认为是时候将Compare .NET Objects重构为更多可维护的类了。在过去的几年中我一直在添加功能，现在它有很多坏的代码味道。它明显违反了S.O.L.I.D.设计原则，特别是SRP。同时将所有的内容写到一个类中也带来了很多合并上的痛苦。我将在保持向后兼容性的同时添加一个线程安全的选项。</p> 
+</blockquote>
+<p><strong>InfoQ：你发现了没有，反射的使用引发了性能问题？如果是这样，为了缓解它你现在做了什么？</strong></p>
+<blockquote> 
+ <p>如此之多的人在反射引发性能问题的事情上喋喋不休，但是我从来没有真正地看到有很大的影响。之前有一个项目客户端请求将9000个条目加载到Web页面上的一个下拉列表中，加载过程大约花费了20秒钟。我们使用了NHibernate从Oracle数据库中加载数据。NHibernate就使用了反射。所以性能问题在哪里呢？数据库？NHibernate？Internet Explorer？都不是，性能问题是网络带宽。我们最终实现了一个Ajax自动完成下拉列表，它每次仅加载20个条目。如果你正在处理大量的对象，那么比较起来反射引发的担心最少。</p> 
+ <p>我已经在Compare .NET Objects中添加了反射缓存，这样确实有助于提高性能。看看测试项目中的CachingTest就行了。在我的机器上，如果禁用反射缓存比较1万个对象要花费319毫秒，如果启用反射缓存则要花费224毫秒。我会说如果你一次性比较超过1万个对象，那么我不会使用Compare .NET Objects。在那种情况下，我会为那些类重写Equals和GetHashCode方法。</p> 
+</blockquote>
+<p><strong>InfoQ：你现在正在寻找志愿者为Compare .NET Objects工作么？</strong></p>
+<blockquote> 
+ <p>当然，我们有很多工作要做呢：</p> 
  <ul> 
-  <li>GC中断频率是原来的1/5：<b>45.5 vs. 9.2次/分钟</b></li> 
-  <li>垃圾生成速度是原来的1/5：<b>207.11 vs 41.81 MiB/秒</b></li> 
+  <li>将每一种类型的比较器重构为单独的类</li> 
+  <li>线程安全的配置和比较</li> 
+  <li>为每一个平台提供单独的项目：Mono、Silverlight、Windows Phone、Windows Store</li> 
  </ul> 
 </blockquote>
-<p>Lee提到，在Twitter中采用Netty 4还有一些障碍，那就是缓冲区泄漏和核心复杂。该项目希望增加更多功能，包括HTTP/2、异步DNS解析以及客户端HTTP和SOCKS代理支持。</p>
-<p>Yahoo工程部门有一篇类似的文章，内容是关于Netty如何帮助他们成倍地提升<a href="https://github.com/nathanmarz/storm">Storm集群</a>的速度。在名为“<a href="http://yahooeng.tumblr.com/post/64758709722/making-storm-fly-with-netty">Netty让Storm飞速运行</a>”的文章中，Bobby Evans写道：</p>
-<blockquote> 
- <p>在雅虎，我们都是用自己的产品进行开发。在将Netty作为Storm集群的默认消息层之前，我需要一些数据来确认，它与当前的默认消息层zeromq相比怎么样。要做到这一点，我需要一个能够使Storm消息层达到极限的基准测试程序，因此，我写了<a href="https://github.com/yahoo/storm-perf-test">一个</a>。那是一个简单的高速测试，用于确认Storm在不同的Bolt和Spout之间推送消息有多快。它允许同时启动多个具有不同复杂度的Topology来发送定长消息。</p> 
-</blockquote>
-<p>Evans指出，在小规模测试中（没有资源冲突），Netty比zeromq更快（40-100%）。在大规模测试中，它也遇到了性能问题，但减少了解决问题的线程数。</p>
-<blockquote> 
- <p>对于大量短消息而言，Netty的默认设置并不是很好，即使该节点上只有它自己在运行。但是，当把它限制在单线程上，我们每秒能够获得比zeromq多85%到111%的消息，之后网络再次饱和。</p> 
-</blockquote>
-<p>Evans指出，Netty现在是Yahoo Storm集群的默认消息层。</p>
-<p>Netty 4的改进对许多开源项目都大有益处。该框架有一个<a href="http://netty.io/wiki/related-projects.html">长长的相关项目列表</a>，包括<a href="http://akka.io/">Akka</a>、<a href="http://james.apache.org/">Apache James</a>、<a href="http://www.jboss.org/hornetq">HornetQ</a>和<a href="http://vertx.io/">Vert.x</a>，这里仅举这几例。要了解更多关于Netty 4的信息，请查看<a href="http://netty.io/">netty.io</a>或<a href="https://blog.twitter.com/2013/netty-4-at-twitter-reduced-gc-overhead">Lee的博文</a>。</p>
-<p><strong>查看英文原文：</strong><a href="http://www.infoq.com/news/2013/11/netty4-twitter">Netty 4 Reduces GC Overhead by 5x at Twitter</a></p><br><br><br><br><br><br></body></html>
+<p><b>查看英文原文</b>：<a href="http://www.infoq.com/news/2013/11/Compare-Objects">An Interview with Greg Finzer of Compare .NET Objects</a></p><br><br><br><br><br><br></body></html>

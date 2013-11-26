@@ -1,6 +1,15 @@
 <html>
  <head></head> 
- <body> 
+ <body>
+  <div>
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/10.java">Streaming Big Data With Amazon Kinesis</a>Amazon recently announced Kinesis, a service that allows developers to stream large amounts of data from different sources and process it. The service is currently in limited preview.
+  </div> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/9.java">Telerik LightBox Control with Templates, Items Collection, Automatic Resizing and Paging</a>Telerik has added LightBox control to its ASP.NET control suite with support for templates, items collection in addition to advanced features such as automatic resizing, keyboard navigation and paging. 
+  </div> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/8.java">Visual Studio's C++14 Support Grows</a>A new CTP for Visual Studio 2013 allows developers to sample increased support for modern C++11/14 features. The CTP can be used with both Visual Studio Express and VS2013 Professional or greater. 
+  </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/7.java">Nokia Imaging SDK 1.0 Adds Filters, WinPRT API, Enhancements and Sample Demos</a>Nokia has recently released Imaging SDK 1.0 at the Slush 2013 with 50 built-in filters, improvements related to memory management, WinPRT API library in both managed and native code in addition to sample apps which demonstrate the capabilities of the new features. 
   </div> 
@@ -141,15 +150,6 @@
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/11.java">Serializing Immutable Collections in .NET</a>Serialization and immutable collections do mix in .NET, but only if you look to third party libraries like JSON.NET and protobuf-net. 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/10.java">Go Fourth and Grow</a>Go has celebrated its fourth open-source anniversary, and InfoQ looks back at where it came from and where it is going. 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/9.java">Introducing Clide, an “Enjoyable Visual Studio Automation API”</a>When writing an add-in or extension for Visual Studio developers have traditionally had to choose between EnvDTE and the IVs interfaces. In an attempt to create library that is both more powerful than EnvDTE and easier to use than IVs interfaces, Clarius Labs is offering what they call “Clide: An Enjoyable Visual Studio Automation API”. 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/8.java">XAML Spy is Now Free</a>First Floor Software, makers of XAML Spy, is now offering a free version of their flagship product. Known as XAML Spy Express, this product allows developers to browse the visual tree of a running WPF, Silverlight, Windows Phone, or Windows Store application. 
-  </div> 
+  </div>  
  </body>
 </html>

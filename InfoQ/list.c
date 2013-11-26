@@ -1,6 +1,9 @@
 <html>
  <head></head> 
- <body> 
+ <body>
+  <div>
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/34.c">QCon SP 2014: Keynote da NASA, 20 palestrantes confirmados e descontos prorrogados</a>O QCon S&atilde;o Paulo 2014 acontece nos dias 9, 10 e 11 de abril em novo local, com seis tracks simult&acirc;neas. Conhe&ccedil;a as novidades em palestras e palestrantes e aproveite os descontos para inscri&ccedil;&otilde;es antecipadas, prorrogados at&eacute; o dia 27 de novembro.
+  </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/33.c">Processamento em lote no Java EE 7 e melhorias no Spring Batch</a>Dentre as novas especifica&ccedil;&otilde;es introduzidas no Java EE 7 est&aacute; a JSR-352, que define um modelo de programa&ccedil;&atilde;o para processamento em lote dentro da plataforma Java EE. Essa nova especifica&ccedil;&atilde;o baseia-se fortemente no projeto Spring Batch da VMware. 
   </div> 
@@ -147,9 +150,6 @@
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/35.c">Swarming: Ajudando equipes a entregarem mais e melhor</a>O Swarming &eacute; uma t&eacute;cnica que ajuda equipes &aacute;geis a entregar software em funcionamento de forma r&aacute;pida e frequente. Conhe&ccedil;a mais sobre a t&eacute;cnica com base no trabalho de v&aacute;rios especialistas. 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/34.c">Melhoria de processos de neg&oacute;cios usando Agile: discuss&otilde;es recentes</a>Organiza&ccedil;&otilde;es querem melhorar seus processos de neg&oacute;cios e nos dias de hoje precisam fazer essa melhoria de forma r&aacute;pida. &Eacute; poss&iacute;vel utilizar t&eacute;cnicas &aacute;geis para melhoria de processos de neg&oacute;cios? 
-  </div> 
+  </div>  
  </body>
 </html>

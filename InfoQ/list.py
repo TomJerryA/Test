@@ -1,17 +1,17 @@
 <html>
  <head></head> 
- <body>
-  <div>
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/15.py">Microsoftが放棄したスタックランキングシステムでYahoo!が600人をレイオフ</a>Yahoo!は最近、昨年に導入したランキングシステムに基づき、600人をレイオフした。一方、マイクロソフトはランキングシステムを放棄し、従業員をある種の重圧から解放した。
-  </div>
-  <div>
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/14.py">API設計の人的側面: ApiaryのJakub Nesetril氏とのインタビュー</a>API設計とAPI記述はマシン間の単なるインターフェイス規約以上のものだ。Apiaryの共同創業者でCEOのJakub Nesetril氏は、API記述の真の消費者は、課された取り決め、ユーザビリティ、コミュニケーションに関心を持っている開発者である、と指摘する。API設計と新たなAPIツールおよびワークフローに対するApiaryのアプローチについて、Jakub氏から話を聞いた。
-  </div>
-  <div>
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/13.py">GenMyModel: リアルタイムコラボレーションの可能なオンラインUML設計ツール</a>この記事では，GenMyModelのアーキテクチャ，使用するテクノロジ，将来についてのインタビューを紹介する。
-  </div>
-  <div>
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/12.py">すべてが決まっているプロジェクトの成功の陰にあるスクラム</a>価格と完了日が決まっているプロジェクトをスクラムとどのように組み合わせるか? Tim van Baarsen氏が、水面下でスクラムに取り組みながら、すべて決まっているプロジェクトを完成させた自分自身の経験について考察した。
+ <body> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/15.py">Microsoftが放棄したスタックランキングシステムでYahoo!が600人をレイオフ</a>Yahoo!は最近、昨年に導入したランキングシステムに基づき、600人をレイオフした。一方、マイクロソフトはランキングシステムを放棄し、従業員をある種の重圧から解放した。 
+  </div> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/14.py">API設計の人的側面: ApiaryのJakub Nesetril氏とのインタビュー</a>API設計とAPI記述はマシン間の単なるインターフェイス規約以上のものだ。Apiaryの共同創業者でCEOのJakub Nesetril氏は、API記述の真の消費者は、課された取り決め、ユーザビリティ、コミュニケーションに関心を持っている開発者である、と指摘する。API設計と新たなAPIツールおよびワークフローに対するApiaryのアプローチについて、Jakub氏から話を聞いた。 
+  </div> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/13.py">GenMyModel: リアルタイムコラボレーションの可能なオンラインUML設計ツール</a>この記事では，GenMyModelのアーキテクチャ，使用するテクノロジ，将来についてのインタビューを紹介する。 
+  </div> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/12.py">すべてが決まっているプロジェクトの成功の陰にあるスクラム</a>価格と完了日が決まっているプロジェクトをスクラムとどのように組み合わせるか? Tim van Baarsen氏が、水面下でスクラムに取り組みながら、すべて決まっているプロジェクトを完成させた自分自身の経験について考察した。 
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/11.py">Google、Dart 1.0をリリース</a>最初の発表とプレビュー版リリースから2年、Devvox in Belgiumにて、Lars Bak氏がDartの最初の安定版リリースを発表した。DartはGoogleの新しいWebプログラミング言語であり、最新のWebアプリケーションを開発するためのプラットフォームだ。 
@@ -150,6 +150,6 @@
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/16.py">関数を理解するマージツール</a>Plastic SCMを開発したCodice Softwareが，セマンティックマージツール (Semantic Merge Tool) のプレビュー版をリリースした。このツールはコードを解析することで，行単位で比較する多くの同種ツールよりも正確なマージを行うことができる。同社の主席ソフトウェア技術者であるPablo Santos Luaces氏に話を聞いた。 
-  </div>     
+  </div> 
  </body>
 </html>

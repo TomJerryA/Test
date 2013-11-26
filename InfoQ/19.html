@@ -1,5 +1,16 @@
-<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>ASP.NET MVC中基于属性的路由</h3><p>在ASP.NET MVC 4以及之前的版本中，路由选择专门是通过向一个RouteCollection中添加路径来处理的。尽管开始的时候路由使用的是简单的约定，但是随着网站的发展以及特殊情况的积累，它会变得非常复杂。由于路由和它们所适用的控制器是物理隔离的，它能够采取一些侦探性的工作理解关系。</p>
-<p>随着ASP.NET MVC 5的引入，Microsoft希望通过<a href="http://blogs.msdn.com/b/webdev/archive/2013/10/17/attribute-routing-in-asp-net-mvc-5.aspx">使用基于属性的路由</a>简化体验。使用同样的基础模式语法作为命令模型，可以将声明式的Route属性应用到控制器方法上。</p>
-<p>为了给一个给定的控制器指定一个默认的路由，我们可以简单地向类中添加Route属性，属性路径为“{action=method}”，其中的“method”是默认方法的名字。你还可以将RoutePrefix属性应用到一个控制器上，这样可以减少控制器包含的路径的长度。Area注册也可以废弃不用了，用户可以使用RouteArea属性替代。</p>
-<p>这些路由支持约束、可选URI参数以及默认值。MVC约束遵循的规则和<a href="http://www.asp.net/web-api/overview/web-api-routing-and-actions/attribute-routing-in-web-api-2">Web API基于属性的路由</a>相同。</p>
-<p><b>查看英文原文</b>：<a href="http://www.infoq.com/news/2013/11/Attribute-Routing">Attribute Based Routing in ASP.NET MVC</a></p><br><br><br><br><br><br></body></html>
+<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>使用AppDynamics对Healthcare.gov进行性能分析</h3><p>奥巴马医改和<a href="https://www.healthcare.gov/">healthcare.gov</a>网站不断涌现出的灾难性问题，以及遭受的抨击，引发了<a href="http://www.appdynamics.com/">AppDynamics</a>——它是一家业界领先的性能监控公司——对此撰写的一篇<a href="http://www.appdynamics.com/blog/2013/10/25/technical-deep-dive-whats-impacting-healthcare-gov/">深度分析的技术文章</a>。在文章中，AppDynamics描绘了这样一幅图像：在构建网站过程中使用了幼稚可笑的开发计划。</p>
+<p>AppDynamics指出的缺陷涉及了应用服务器端和客户端的性能问题，以及内部API之间不一致的协议。</p>
+<p>其测试的方式是基于<a href="http://www.firefox.com/">Firefox</a>，使用流行的浏览器定制和调试插件<a href="https://addons.mozilla.org/en-US/firefox/addon/greasemonkey/">GreaseMonkey</a>，注入AppDynamics的JavaScript代理。</p>
+<p>通过分析观测到的响应时间指标，“你会发现，在服务器端和客户端，其综合表现都非常糟糕。”</p>
+<p>首先从注册页面开始，分析强调了服务器端和客户端之间各自的响应时间。“该页面需要接近71秒来载入，其中59秒应该归咎于服务器端；而接近12秒应该归咎于客户端的数据载入和渲染。”</p>
+<p>但分析否认道：“没有访问服务器端以测量响应时间，或是访问所有将服务器端与客户端连接在一起的网段来测量延迟，我们就无法完全确定为何客户端如此缓慢。我们都知道应该进行JS和CSS优化，但如果服务器端和/或网络连接非常缓慢，那么其影响就会呈现在在最终用户的浏览器中。”</p>
+<p>下一步，依照网站的工作流测试了是个人档案页面，它在加载结束时呈现为空白页。这是由于某些不正确的Ajax请求：“这种糟糕的Web应用表现会把最终用户逼疯。尽管看起来页面成功载入了（至少对浏览器来说是这样），但实际上并非如此。”</p>
+<p>接下来该文章解释道，Ajax响应返回了HTTP 503状态码（“服务不可用”），意味着HTTP服务器能够接到请求，但由于服务器端的一些问题，无法对此做出任何响应。</p>
+<p>文章总结的一些建议如下：</p>
+<ol> 
+ <li>纠正功能整合错误。文章提出了这样的设想：“显然，在没有恰当的监控和测试的情况下，<a href="https://www.healthcare.gov/">Healthcare.gov</a>就发布了。而这正是一个导致许多用户交互出现失败、抛出异常，以及保险公司收到不完整数据记录表的主要原因。”</li> 
+ <li>识别并解决扩展性方面的瓶颈。“需要快速找出软件中的性能瓶颈，并对其进行调优。”</li> 
+</ol>
+<p>文章指出，“这并不是一个罕见的问题。我们发现许多公司一次又一次重蹈覆辙，他们最终找到我们寻求帮助，以解决其应用性能缺陷。”</p>
+<p>在最后，AppDynamics免费向奥巴马政府提出了一项有助于解决该网站问题的建议：“我们认为美国人民应该享有一套功能合适的、不会浪费他们时间的系统；而且现代化的、服务为导向的应用架构，需要一些针对在这些复杂环境中使用而特别设计的监控工具。有鉴于此，AppDynamics将随时响应政府需求以提供帮助。”</p>
+<p><strong>查看英文原文：</strong><a href="http://www.infoq.com/news/2013/11/Healthcare.gov-Perf-Analysis">Healthcare.gov Performance Analysis by AppDynamics</a></p><br><br><br><br><br><br></body></html>

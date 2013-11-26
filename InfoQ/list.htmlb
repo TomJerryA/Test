@@ -2,6 +2,12 @@
  <head></head> 
  <body> 
   <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/24.htmlb">敏捷与结构性模块化（一）</a> Richard Nicholson先生在其博客上连续发表了三篇关于敏捷与系统结构性模块化关系的文章，这个系列的文章深刻阐述了敏捷与模块化之间的相互关系，具有很好的指导意义，征得作者同意之后，InfoQ将其翻译发表在本站上。 
+  </div> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/23.htmlb">Habya'a（临时拼凑的组件）与技术债务</a> 技术债务并不总是坏事，但我们必须谨慎地管理，因为它会随时间推移呈指数增长。尤其是在敏捷项目中，我们需要对技术债务进行特别关注。Yaser Marey建议将技术债务当作一项风险，使用标准的风险管理流程来管控，并简要介绍了敏捷项目中如何使用该流程。 
+  </div> 
+  <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/22.htmlb">JavaScript的实例化与继承：请停止使用new关键字</a> JavaScript中的new关键字可以实现实例化和继承的工作，但个人认为使用new关键字并非是最佳的实践，还可以有更友好一些的实现。本文将介绍使用new关键字有什么问题，然后介绍如何对与new相关联的一系列面向对象操作进行封装，以便提供更快捷的、更易让人理解的实现方式。 
   </div> 
   <div> 
@@ -144,12 +150,6 @@
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/25.htmlb">详解Java 7中新的文件API</a>Java 7向语言中引入了一些有用的特性，其中包括一个新的I/O文件包。相对于老的java.io包，这个包针对文件系统——特别是基于POSIX的系统——提供了粒度更细的控制功能。本文首先介绍一下新的API，之后通过一个基于Web的文件管理器项目WebFolder来详细探索这些API。 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/24.htmlb">敏捷教练指导的另一种选择</a>Phil Abernathy声称敏捷教练这个角色可能将日暮西山，基于向敏捷团队中加入敏捷实践经理的见解，他提出了敏捷教练的另一种选择。敏捷实践经理将与团队“风险共担（skin in the game）”，其职责不仅仅包括优化团队流程，同时也负责通过产品交付客户价值。 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/23.htmlb">Etsy工程师Sam Haskins谈代码部署，监控与故障处理</a>在本次访谈中，Sam Haskins分享了他在Etsy做DevOps的经验。Etsy使用Git做代码管理，平均每天提交的更新数量在30次左右，有时甚至达到70个。在如此高频率提交代码的情况下，他们如何进行代码审查？如何在每次更新之后监控系统性能？如何处理故障？下面，Sam将一一解答。 
   </div> 
  </body>
 </html>

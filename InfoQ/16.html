@@ -1,27 +1,6 @@
-<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>纵饮Scrum急救液</h3><p>Brian de Haaff在博文“<a href="http://blog.aha.io/index.php/the-holy-scrum-war/">关于‘Scrum’的激烈论争</a>”中指出，那些声称Scrum可以拯救企业的人是错误的。</p>
-<p>Brian说，虽然要尊重一些人对Scrum宗教般的狂热，但也应该明白为什么会存在“Scrum狂热者”。他提供了两种关键的动机：</p>
-<blockquote> 
- <p><b>#1 </b><b>工程师喜欢创建东西</b></p> 
- <p>如果没有发明家和工程师，世界会在哪里？很可能还在山洞里狩猎和采集。工程师创建了我们生活的世界，以及我所深知的由制造重要物品所驱动的一切。Scrum是一种帮助工程师专注于创建的有效方法。它提供了一套准则，用于在一次接一次的冲刺中按照优先级交付真实可用且具备业务质量的软件。把事情做好并把相应的项从清单中划掉是有益的，而Scrum可以保证总是有一个长长的清单，总是有下一项工作可以完成。Scrum可以保证有一个永不完结的待办事项清单。</p> 
- <p><b>#2 </b><b>工程师不喜欢被吼</b></p> 
- <p>说真的，没有人喜欢被吼。Scrum可以帮助工程经理和工程团队，使他们避免因为无法预测完工日期而被吼，因为Scrum不是日期驱动的。Scrum削弱了“日期因素”的观念，并提供了一种方法，使工程师可以有条不紊地由一个功能转到下一个功能，而且没有在规定日期交付工作的压力。</p> 
-</blockquote>
-<p>虽然Brian承认，在定义和管理如何设计产品方面，Scrum是一种行之有效的方法，但争论的关键是，Scrum并没有为创建优秀的产品或者杰出的企业提供必要的输入。</p>
-<blockquote> 
- <p>我认为，人们普遍将Scrum描述为一种改革或交付优秀产品的方法，这是其真正挑战的开始。优秀的产品源于“为什么”包含“什么”以及“如何”交付。Scrum用于“如何”交付是个好方法。这是一种可以为开发生产设施带来效率的方法，在有些环境中工作得很好。</p> 
- <p>然而，Scrum没有解释“为什么”，而这正是产品如何讨人喜欢并赢得市场的潜在策略。</p> 
-</blockquote>
-<p>Scrum的一项潜在原则是，它不会神奇地提供“为什么”。Ken Schwaber在其著作<a href="http://books.google.com/books?id=RpYX01XVMksC&amp;pg=PT92&amp;lpg=PT92&amp;dq=The+minimum+plan+necessary+to+start+a+Scrum+project+consists+of+a+vision+and+a+Product+Backlog.+The+vision+describes+why+the+project+is+being+undertaken+and+what+the+desired+end+sta">《Scrum敏捷项目管理》</a>中写道，产品愿景必须已经明确。</p>
-<blockquote> 
- <p>开始一个Scrum项目所需的最小计划要包含产品愿景和产品Backlog。愿景描述为什么开展该项目以及理想的结束状态是什么。</p> 
-</blockquote>
-<p>Brian断言，在没有“为什么”的情况下，“如果工程师总是专注于已排序事项中的下一项，那么Scrum会对此造成妨碍。” Ilan Goldstein 在Axis Agile上的<a href="http://www.axisagile.com/blog/planning-and-metrics/your-product-vision-in-scrum/">一篇博文</a>中指出，如果没有产品愿景，那么团队最终只会专注于做他们知道的“什么”和“如何”那样的事：</p>
-<blockquote> 
- <p>带着快速投入和开始创建‘东西’的渴望，新的Scrum团队经常会把全部注意力都放在‘什么’（产品Backlog）和‘如何’（冲刺Backlog）上。这就像把运货马车放在了马的前面，因为正是在考虑‘什么’和‘如何’之前，我们需要认真地考虑‘为什么’。这个‘为什么’不会在产品Backlog或者冲刺Backlog中找到，而是包含在一个称为产品愿景的不言自明的独立工件中。</p> 
-</blockquote>
-<p>Brian总结道，在纵饮“Scrum急救液”之前，重要的是要保证没有盲目地将Scrum看作万灵药：</p>
-<blockquote> 
- <p>毫无疑问，Scrum是一项重大举措，它对于工程团队生产力的积极影响无处不在。然而，它仍然只是一种简单的开发方法，而不是创建颇为可观的企业和交付优秀产品的灵丹妙药。在涉及产品交付时，Scrum只占整个过程的33%。</p> 
- <p>Scrum无法拯救企业或者世界，因此要提防有人在你家门口敲门。狂热者来了。</p> 
-</blockquote>
-<p><strong>查看英文原文：</strong><a href="http://www.infoq.com/news/2013/11/scrum-kool-aid">Drinking the Scrum Kool-Aid</a></p><br><br><br><br><br><br></body></html>
+<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>使用TPL DataFlow在C#中轻松创建Actor</h3><p>对于某些设计问题，Actor可以让一切变得不同。<a href="http://en.wikipedia.org/wiki/Actor_model">Actor</a>是一种可以响应和发送消息的独立实体。某种程度上，它就像是在另一个进程中运行属于它自己的小程序。但对于没有原生支持Actor的语言来说，构建Actor可能会非常困难。</p>
+<p>出现的最主要的问题是线程管理。我们通常并不想拦截消息发送者的线程，因为那会给人一种方法调用的语义。且为每个Actor分配一个单独的线程并不会使程序比以前扩展多少，而在上下文切换时，线程就成了一个真正的问题。</p>
+<p>Johan Olsson在TPL DataFlow的基础上构建了自己的Actor库，为C#解决了这一困境。TPL DataFlow旨在通过异步方法将操作连接在一起。在Block之间传递的消息可能会被缓存、分组、分离、转换，或根据应用程序的语义和性能需要进行其他操作。</p>
+<p>该框架的核心是一个封装了ActionBlock的抽象类Actor。ActionBlock在内部处理所有的线程问题，开发者不需要关心线程或任务。之所以是线程安全的，是因为ActionBlock默认会被序列化。如果同时发送两条消息，ActionBlock会缓存第二条消息，直到第一条消息处理完毕。这个行为可以通过<a href="http://msdn.microsoft.com/en-us/library/system.threading.tasks.dataflow.executiondataflowblockoptions(v=vs.110).aspx">ExecutionDataflowBlockOptions</a>进行修改。</p>
+<p>你可以在Johan Olssion的“<a href="http://www.jayway.com/2013/11/15/an-actor-model-implementation-in-c-using-tpl-dataflow/">使用TPL DataFlow在C#中实现Actor模型</a>”的文章中了解他的工作，并查看示例代码。</p>
+<p><b>查看英文原文：</b><a href="http://www.infoq.com/news/2013/11/DataFlow-Actor">Actors Made Easy with C# and TPL DataFlow</a></p><br><br><br><br><br><br></body></html>

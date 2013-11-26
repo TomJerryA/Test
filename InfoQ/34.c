@@ -1,59 +1,54 @@
-<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>Melhoria de processos de negócios usando Agile: discussões recentes</h3><p>Organiza&ccedil;&otilde;es querem melhorar seus processos de neg&oacute;cios e nos dias de hoje precisam fazer essa melhoria de forma r&aacute;pida. &Eacute; poss&iacute;vel utilizar t&eacute;cnicas &aacute;geis para melhoria de processos de neg&oacute;cios?</p> 
-<p>No artigo <a href="http://blogs.hbr.org/cs/2012/10/when_it_comes_to_operational.html">A pr&oacute;xima onda da estrat&eacute;gia de neg&oacute;cios</a>, publicado pela Harvard Business Review, Brad Power compartilha sua vis&atilde;o sobre as abordagens de melhoria de processos de neg&oacute;cio. Apesar da melhoria alcan&ccedil;ada nas &uacute;ltimas d&eacute;cadas, Power percebe uma necessidade cont&iacute;nua das organiza&ccedil;&otilde;es de melhorar seus processos:</p> 
-<blockquote> 
- <p>n&atilde;o &eacute; o momento de celebrar as vit&oacute;rias de ontem. Essas vit&oacute;rias n&atilde;o ir&atilde;o imunizar sua organiza&ccedil;&atilde;o contra o progresso cont&iacute;nuo desta d&eacute;cada. Isso porque a tecnologia da informa&ccedil;&atilde;o ... tornar&aacute; at&eacute; mesmo alguns dos processos de neg&oacute;cios atuais mais proficientes, ultrapassados at&eacute; o final da d&eacute;cada.</p> 
-</blockquote> 
-<blockquote> 
- <p>A quest&atilde;o para um gerenciamento eficiente n&atilde;o &eacute; mais se os processos de sua organiza&ccedil;&atilde;o precisam ser melhorados, mas sim quais, quantos e quando.</p> 
-</blockquote> 
-<p>Uma das coisas que mudou de acordo com Brad Power &eacute; que a melhoria do processo precisa ser mais r&aacute;pida:</p> 
-<blockquote> 
- <p>As empresas hoje precisam ser capazes de fazer mudan&ccedil;as em seus processos em dias ou semanas, e n&atilde;o em meses ou anos.</p> 
-</blockquote> 
-<p>Em uma <a href="http://blogs.hbr.org/cs/2012/12/in_my_last_post_i_1.html">continua&ccedil;&atilde;o</a>, tamb&eacute;m escrita por Brad Power, o autor descreve novas formas de como as organiza&ccedil;&otilde;es podem melhorar seus processos:</p> 
-<blockquote> 
- <p>Estou me referindo coletivamente a essas abordagens de melhoria de processos como &quot;Estrat&eacute;gia de Processos 2.0&quot;. Elas est&atilde;o sobre os ombros dos m&eacute;todos da &quot;Estrat&eacute;gia de Processos 1.0&quot;: Lean, Six Sigma, e a Reengenharia de Neg&oacute;cios.</p> 
-</blockquote> 
-<p>Power afirma que uma abordagem &aacute;gil &eacute; necess&aacute;ria para satisfazer a crescente necessidade de velocidade na melhoria dos processos:</p> 
-<blockquote> 
- <p>Para tornar mais r&aacute;pidas as opera&ccedil;&otilde;es e as melhorias, a Estrat&eacute;gia de Processos 2.0 far&aacute; um uso maior de experimentos r&aacute;pidos e processos de gest&atilde;o mais &aacute;geis.</p> 
-</blockquote> 
-<p>No site InfoWorld, Bob Lewis publicou o artigo <a href="http://www.infoworld.com/t/agile-development/adapt-agile-build-better-business-204332">Adapte-se ao Agile para construir um neg&oacute;cio melhor</a>, sugerindo como conseguir mudan&ccedil;as no neg&oacute;cio utilizando Scrum. Primeiro Lewis deixa claro que implementar mudan&ccedil;as em um neg&oacute;cio &eacute; diferente de entregar software:</p> 
-<blockquote> 
- <p>Mudan&ccedil;as nos neg&oacute;cios, ent&atilde;o, envolveriam mais do que apenas lan&ccedil;ar uma nova parte de um software e esperar que todos descubram como us&aacute;-lo para melhorar o neg&oacute;cio. Essa mudan&ccedil;a acompanha tarefas adicionais, como por exemplo, planejar a melhoria dos processos e pr&aacute;ticas do neg&oacute;cio, realizar treinamentos, comunicar, fazer mudan&ccedil;as cont&aacute;beis, redefinir m&eacute;tricas de desempenho e muitas outras coisas.</p> 
-</blockquote> 
-<p>As hist&oacute;rias de usu&aacute;rio no backlog de produtos precisam cobrir tudo o que for necess&aacute;rio para fazer a mudan&ccedil;a nos neg&oacute;cios. Os itens do backlog ir&atilde;o &quot;descrever como o trabalho &eacute; feito usando o novo software&quot;, que na verdade &eacute; a inten&ccedil;&atilde;o da mudan&ccedil;a do neg&oacute;cio.</p> 
-<blockquote> 
- <p>Quando chega a hora de trabalhar em uma hist&oacute;ria, aspectos que n&atilde;o t&ecirc;m nada a ver com o software ser&atilde;o atribu&iacute;dos a equipes de neg&oacute;cios com as qualifica&ccedil;&otilde;es apropriadas, que, al&eacute;m de trabalhar diretamente com o desenvolvedor, ter&atilde;o suas pr&oacute;prias responsabilidades. Por exemplo, &quot;Educar os usu&aacute;rios no novo processo e software.&quot; Isto entrar&aacute; no backlog, gerenciado da mesma forma que qualquer outra est&oacute;ria de usu&aacute;rio.</p> 
-</blockquote> 
-<p>Para definir as prioridades na mudan&ccedil;a do neg&oacute;cio, o autor sugere a utiliza&ccedil;&atilde;o da Teoria das Restri&ccedil;&otilde;es (TOC) de Goldratt:</p> 
-<blockquote> 
- <p>A Teoria das Restri&ccedil;&otilde;es funciona por meio do estabelecimento de uma meta clara - por exemplo, reduzir o custo incremental, diminuir o tempo do ciclo, aumentar a capacidade de processamento. Em seguida, essa Teoria identifica a maior barreira existente para alcan&ccedil;ar a meta. Este &eacute; o gargalo - a restri&ccedil;&atilde;o. Livre-se da restri&ccedil;&atilde;o, e voc&ecirc; estar&aacute; mais perto de alcan&ccedil;ar o seu objetivo. Em seguida, identifique a maior restri&ccedil;&atilde;o restante, e livre-se dela tamb&eacute;m.</p> 
-</blockquote> 
-<p>De acordo com Lewis, usar Scrum combinado com a Teoria das Restri&ccedil;&otilde;es, para fazer mudan&ccedil;a no neg&oacute;cio, ajuda as organiza&ccedil;&otilde;es a tornarem-se empresas &aacute;geis.</p> 
-<blockquote> 
- <p>O que torna uma empresa &aacute;gil &eacute; a capacidade de projetar, planejar e alcan&ccedil;ar uma mudan&ccedil;a intencional, de forma r&aacute;pida e confi&aacute;vel.</p> 
-</blockquote> 
-<p>Na publica&ccedil;&atilde;o <a href="http://agilemanagement.net/index.php/Blog/change_management_vs_process_evolution/">Gerenciamento de mudan&ccedil;as vs evolu&ccedil;&atilde;o de processos</a>, David Anderson descreve suas ideias sobre melhoria de processos de neg&oacute;cios, as quais chama de gerenciamento de mudan&ccedil;as:</p> 
-<blockquote> 
- <p>Mudan&ccedil;as nos processos, ou mudan&ccedil;as na estrutura organizacional, est&atilde;o constituem a disciplina usada para trazer um pouco de controle e de governan&ccedil;a para estas atividades chamadas de gerenciamento de mudan&ccedil;as.</p> 
-</blockquote> 
-<p>David Anderson tamb&eacute;m explica porque a ado&ccedil;&atilde;o de Agile nas organiza&ccedil;&otilde;es, que tamb&eacute;m &eacute; uma gest&atilde;o de mudan&ccedil;a, &agrave;s vezes &eacute; um desafio:</p> 
-<blockquote> 
- <p>&Eacute; ir&ocirc;nico que a abordagem para as transi&ccedil;&otilde;es para o Agile tenham sido muito n&atilde;o-&aacute;geis. Grandes projetos for&ccedil;am-nos a seguir um plano. O motivo de que muitas transi&ccedil;&otilde;es para o Agile s&atilde;o dif&iacute;ceis e pouco produtivas pode estar na abordagem utilizada para o dom&iacute;nio do problema. O que n&oacute;s precisamos &eacute; de uma abordagem &aacute;gil para mudar - uma abordagem que incorpore feedback e evolua conforme uma nova informa&ccedil;&atilde;o &eacute; apresentada.</p> 
-</blockquote> 
-<p>Assim como Bob Lewis, David Anderson tamb&eacute;m se refere &agrave; Teoria das Restri&ccedil;&otilde;es (ToC) de Goldratt. Anderson sugere aplicar as cinco etapas de foco da ToC como uma solu&ccedil;&atilde;o para o gerenciamento de mudan&ccedil;a evolutiva, concentrando-se na maior restri&ccedil;&atilde;o e eliminando-a:</p> 
-<blockquote> 
- <p>Essencialmente, pequenas mudan&ccedil;as foram feitas e as sucessivas altera&ccedil;&otilde;es n&atilde;o poderiam ser previstas com muita anteced&ecirc;ncia - talvez s&oacute; as pr&oacute;ximas 2 ou 3 etapas, na melhor das hip&oacute;teses. Uma transi&ccedil;&atilde;o completa n&atilde;o poderia ser prevista.</p> 
-</blockquote> 
-<p>M&eacute;todos como <a href="http://www.infoq.com/br/minibooks/priming-kanban-jesper-boeg;jsessionid=6FF77A7F7D8F837046E5341A7FC724D3">Kanban</a> e Lean Startup podem ajudar a encontrar as maiores restri&ccedil;&otilde;es que impedem a melhoria na organiza&ccedil;&atilde;o:</p> 
-<blockquote> 
- <p>O Kanban oferece &agrave;s empresas a capacidade de mudan&ccedil;a evolutiva. ... Com o Kanban usamos crit&eacute;rios de adequa&ccedil;&atilde;o ... para avaliar o processo atual e determinar como podemos guiar as mudan&ccedil;as para produzir uma evolu&ccedil;&atilde;o apta ao nosso processo.</p> 
- <p>Da mesma forma, o Lean Startup surgiu como abordagem de Eric Ries a evolu&ccedil;&atilde;o do modelo de neg&oacute;cio. ... Com o Lean Startup os crit&eacute;rios de aptid&atilde;o s&atilde;o mais diretamente relacionadas com o mercado ... O conceito de valida&ccedil;&atilde;o de hip&oacute;teses de neg&oacute;cio, no Lean Startup, &eacute; o processo de aplicar um crit&eacute;rio de aptid&atilde;o num sentido evolucion&aacute;rio.</p> 
-</blockquote> 
-<p>Na publica&ccedil;&atilde;o <a href="http://www.softwareag.com/blog/reality_check/index.php/process-power/process-improvement/">Como as organiza&ccedil;&otilde;es alcan&ccedil;am a melhoria real em seu processos</a>, o chefe de BPM Empresarial da AG Software, Joerg Klueckmann, descreve as experi&ecirc;ncias de organiza&ccedil;&otilde;es com a melhoria de processos. Uma dessas organiza&ccedil;&otilde;es &eacute; a Cable &amp; Wireless:</p> 
-<blockquote> 
- <p>A excel&ecirc;ncia nos processos est&aacute; na vis&atilde;o central da Cable &amp; Wireless. A empresa elevou o BPM de seu setor de TI a um n&iacute;vel de neg&oacute;cio mais estrat&eacute;gico na organiza&ccedil;&atilde;o, e compartilha suas experi&ecirc;ncias, que v&atilde;o desde o nascimento de um processo at&eacute; o alcance da excel&ecirc;ncia.</p> 
- <p>Uma das melhores pr&aacute;ticas de melhoria de processo na empresa &eacute; seu processo Agile. O Agile &eacute; capaz de ajudar a mudar rapidamente e al&eacute;m disso, ter processos &aacute;geis n&atilde;o significa simplesmente Desenvolvimento &Aacute;gil em TI. Trata-se tamb&eacute;m de mudan&ccedil;as r&aacute;pidas e orientadas para o neg&oacute;cio.</p> 
-</blockquote> 
-<p id="lastElm"></p><br><br><br><br><br><br></body></html>
+<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>QCon SP 2014: Keynote da NASA, 20 palestrantes confirmados e descontos prorrogados</h3><p>O <a href="http://qconsp.com">QCon S&atilde;o Paulo 2014</a> acontece nos dias 9, 10 e 11 de abril e trar&aacute; muitas novidades importantes. Com novo local e seis tracks simult&acirc;neas, o maior evento independente para arquitetos e l&iacute;deres t&eacute;cnicos ser&aacute; realizado no <a href="http://qconsp.com/venue-hotel">WTC Events Center</a>, em S&atilde;o Paulo/SP.</p>
+<p>Os descontos para inscri&ccedil;&otilde;es antecipadas foram prorrogados at&eacute; o dia 27 de novembro (esta quarta-feira). <a href="http://qconsp.com/registration">Fa&ccedil;a sua inscri&ccedil;&atilde;o e reserve sua vaga!</a></p>
+<h2>Temas, Palestras e Palestrantes</h2>
+<p>A quatro meses do evento, j&aacute; temos definidas todas as tracks, um keynote e 20 palestrantes confirmados. Conhe&ccedil;a as tracks:</p>
+<ul class="c9 lst-kix_pu7fgusb6lni-0 start"> 
+ <li><strong>De Projetos a Produtos: DevOps, Continuous Delivery e al&eacute;m</strong> - Automa&ccedil;&otilde;es, t&eacute;cnicas e integra&ccedil;&otilde;es para gerar produtos na velocidade da internet</li> 
+ <li><strong>Front-end universe: JS, HTML5 e novas fronteiras da UX</strong> - Tirando proveito das principais plataformas da web moderna, rumo ao 'user delight'</li> 
+ <li><strong>Din&acirc;micas e Funcionais: Linguagens e T&eacute;cnicas para o Dev Poliglota</strong> - Unindo as for&ccedil;as de linguagens funcionais, din&acirc;micas e h&iacute;bridas</li> 
+ <li><strong>Arquiteturas que Voc&ecirc; Sempre Quis Conhecer</strong> - Li&ccedil;&otilde;es reais em aplica&ccedil;&otilde;es inovadoras de alto volume e complexidade</li> 
+ <li><strong>Big Data, Data Science e o Poder dos Dados</strong> - Como processar e alavancar grandes volumes de dados em ambientes distribu&iacute;dos e complexos</li> 
+ <li><strong>Fronteiras do Desenvolvimento</strong> - Novas t&eacute;cnicas e plataformas, e inova&ccedil;&otilde;es com linguagens e ferramentas tradicionais</li> 
+ <li><strong>Mobile: Port&aacute;teis e Furiosos</strong> - Domando desafios do desenvolvimento m&oacute;vel, do nativo ao h&iacute;brido &agrave; mobile web.</li> 
+ <li><strong>Desempenho e Escalabilidade na Pr&aacute;tica</strong> - Criando arquiteturas para exceder limites</li> 
+ <li><strong>Criando Culturas e Equipes que Funcionam</strong> - Colabora&ccedil;&atilde;o, princ&iacute;pios e aprendizado para o m&aacute;ximo desempenho em times de software</li> 
+ <li><strong>Java na Crista da Onda</strong> - Inova&ccedil;&otilde;es em plataformas, frameworks, APIs e linguagens</li> 
+</ul>
+<p>Tr&ecirc;s <strong>palestrantes internacionais</strong> j&aacute;<strong> </strong>fecharam sua presen&ccedil;a:</p>
+<ul class="c9 lst-kix_agbvnoycwjly-0 start"> 
+ <li><a href="http://www.linkedin.com/in/rwitoff">Rob Witoff</a>, Pioneiro em Data Science na NASA</li> 
+ <li><a href="http://it.linkedin.com/pub/mario-fusco/3/721/346">Mario Fusco</a>, Senior Software Engineer da Red Hat e criador do Hammurabi e Lambdaj</li> 
+ <li><a href="http://ca.linkedin.com/in/floydm">Floyd Marinescu</a>, CEO e idealizador dos sites InfoQ e eventos QCon</li> 
+</ul>
+<p>E a <strong>elite do desenvolvimento</strong> de software no Brasil estar&aacute; bem representada no evento:</p>
+<ul class="c9 lst-kix_7xepaptbdxmc-0 start"> 
+ <li><a href="http://nandovieira.com/">Nando Vieira</a> - Guru de Ruby/JS e fundador da Hellobits</li> 
+ <li><a href="http://br.linkedin.com/in/akitaonrails">Fabio Akita</a> - Co-fundador da Codeminer 42</li> 
+ <li><a href="http://www.tridedalo.com.br/fabiane/">Fabiane Nardon</a> - Chief Scientist na TailTarget e Java Champion</li> 
+ <li><a href="https://twitter.com/gniemeyer">Gustavo Niemeyer</a> - L&iacute;der T&eacute;cnico da Canonical e criador do juju e go-qml</li> 
+ <li><a href="http://www.linkedin.com/in/andrefatala">Andr&eacute; Fatala</a> e <a href="https://twitter.com/rpedigoni">Renato Pedigoni</a> - Gerentes de P&amp;D, Magazine Luiza</li> 
+ <li><a href="http://br.linkedin.com/in/michaelnascimento">Michael Nascimento</a> - Systems Architect na TecSinapse &amp; Java Champion</li> 
+ <li><a href="http://blog.gilliard.eti.br/">Gilliard Cordeiro</a> - Coordenador de P&amp;D, TJ-MS e Autor</li> 
+ <li><a href="http://br.linkedin.com/in/camposr75">Rodrigo Campos</a> - Diretor de Opera&ccedil;&otilde;es de TI no Walmart.com</li> 
+ <li><a href="https://twitter.com/lcparzianello">Luiz Parzianello</a> - Gerente de Desenvolvimento na RBS</li> 
+ <li><a href="http://br.linkedin.com/in/vechiato/pt">Marcus Vechiato</a> - Gerente de Opera&ccedil;&otilde;es de TI da Locaweb</li> 
+ <li><a href="http://br.linkedin.com/in/paulovittor23">Paulo Vitor</a> e <a href="http://br.linkedin.com/pub/alexsandro-terto/20/574/47b">Alexsandro Terto</a> - Arquitetos de Solu&ccedil;&otilde;es na Abril Digital</li> 
+ <li><a href="http://bernarddeluna.com/">Bernard de Luna</a> - Head de Produtos no site Videolog.tv</li> 
+ <li><a href="http://sergiolopes.org/">Sergio Lopes</a> - L&iacute;der T&eacute;cnico na Caelum</li> 
+ <li><a href="http://andregarzia.com/pages/pt/">Andr&eacute; Garzia</a> - Desenvolvedor web/mobile e volunt&aacute;rio da Mozilla Brasil</li> 
+ <li><a href="https://twitter.com/heynemann">Bernardo Heynemann</a> - Desenvolvedor de Webapps de larga escala na Globo.com</li> 
+</ul>
+<p>As 17 palestras confirmadas (ser&atilde;o mais de 50) j&aacute; cobrem t&oacute;picos que v&atilde;o de DevOps a Mobile, passando por JavaScript, HTML5, Ruby, Big Data, Cases de Arquitetura, Desempenho e Escalabilidade, Cloud Computing, Cultura e Equipes, e mais.</p>
+<h2>Tutoriais</h2>
+<p>O QCon SP 2014 abre mais uma vez com o Dia de Tutoriais, que foi sucesso de p&uacute;blico e cr&iacute;tica na edi&ccedil;&atilde;o anterior (315 participantes e mais de 92% de aprova&ccedil;&atilde;o). Dos 8 tutoriais previstos j&aacute; temos dois confirmados:</p>
+<ul class="c9 lst-kix_kl4c8kxh7jzc-0 start"> 
+ <li><strong>Lambdas in Java,</strong> com Mario Fusco (Red Hat Italy)</li> 
+ <li><strong>RESTful Web APIs</strong>, com Eder Ignatowicz (Dextra)</li> 
+</ul>
+<p>Os Tutoriais acontecer&atilde;o no mesmo centro de eventos que a Confer&ecirc;ncia, facilitando o acesso e o planejamento dos participantes.</p>
+<h2>Mais novidades</h2>
+<p>Atendendo a <strong>feedback</strong> dos participantes da &uacute;ltima edi&ccedil;&atilde;o, foi escolhido um novo local com infraestrutura maior e mais sofisticada, cercado por dezenas de op&ccedil;&otilde;es de restaurantes e hot&eacute;is.</p>
+<p>No novo espa&ccedil;o, ser&atilde;o 6 salas para palestras, com capacidade total de <strong>mais de 1.200 lugares</strong>, mais conforto, espa&ccedil;o reservado para maleiro e credenciamento distribu&iacute;do.</p>
+<p>O networking dos participantes tamb&eacute;m ser&aacute; estendido, com a inclus&atilde;o de intervalos entre todas as palestras e servi&ccedil;o de buffet aprimorado. Tamb&eacute;m est&atilde;o programados mais eventos sociais para participantes e palestrantes.</p>
+<h2>Inscri&ccedil;&otilde;es e mais detalhes</h2>
+<p>O <a href="http://qconsp.com">site do evento</a> ser&aacute; constantemente atualizado para incluir descri&ccedil;&otilde;es completas de palestras, biografias dos palestrantes e outros detalhes. Fa&ccedil;a a sua <a href="http://qconsp.com/registration">inscri&ccedil;</a><a href="http://qconsp.com/registration">&atilde;o</a> antecipada!</p><br><br><br><br><br><br></body></html>
