@@ -1,30 +1,19 @@
-<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>Googleの Goが近々1.1をリリース</h3><p><a target="_blank" href="http://www.infoq.com/news/2013/04/go_beta1_1;jsessionid=ED5A1FCF78B954AE6A14C246AF2664CD"><em>原文(投稿日：2013/04/11)へのリンク</em></a></p> 
-<div class="clearer-space">
- &nbsp;
-</div> 
-<div id="newsContent"> 
- <p style="margin-bottom: 0in"><span lang="en-US">Googleの Goプログラミング言語バージョン1.1のリリースが近いので、開発者チームは、最新ベータのリリースを<a target="_blank" href="https://groups.google.com/d/msg/golang-nuts/bQDzp4IYI1o/zHOiBy5BvO0J">アナウンス</a>した。これには、新フィーチャの動作するプレビューが提供されている。特に、幾つかのユースケースでは、予想スピードが30%-40%増加した。Goのバージョン1.1は、1年ちょっと前の2012年3月にリリースされ、これまでGoogleは、バグ修正をリリースしてきたが、バージョン1.1は、 <a target="_blank" href="http://tip.golang.org/doc/go1.1">新フィーチャ</a>をもたらすとともに、1.Xバージョンとの後方互換性を維持している。アップデートは、ツールセット、言語フィーチャ、標準ライブラリへの変更に影響する。 </span></p> 
- <p style="margin-bottom: 0in"><b>言語の新フィーチャ</b></p> 
- <ul> 
-  <li>0 による整数除算</li> 
-  <li><a target="_blank" href="http://tip.golang.org/ref/spec#Method_values">メソッド値</a></li> 
-  <li><span lang="en-US">Returnの要求 – 以前は、値を返す関数は、明示的に “return”あるいは panicを呼び出す事が必要だったが、これが<a target="_blank" href="http://tip.golang.org/ref/spec#Terminating_statements">ステートメントを終了させること</a>の追加によって緩和された。</span></li> 
- </ul> 
- <p style="margin-bottom: 0in"><b>ツール/実装</b></p> 
- <ul> 
-  <li>gccgo – <a target="_blank" href="http://www.infoq.com/news/2013/03/gcc48_released;jsessionid=3A861514DDE9FC467269B4FFD5020CF7;jsessionid=ED5A1FCF78B954AE6A14C246AF2664CD">バージョン4.8 GCC</a> (GNU Compiler Collection)、２０１３年３月にリリースされたは、Go 1.1を部分的にサポートしているが、５月にリリース予定のGCC 4.8.1は、1.1を完全にサポートする。</li> 
-  <li>64ビット実装上でのint/unitは、64ビットとして定義された。このことがこれらの型が32ビットのみであると期待しているプログラムでは問題になる可能性がある。</li> 
-  <li>64ビットシステム上でのヒープサイズ – これは数十GBに拡張された（正確なサイズはシステムに依存し、最終決定していない）。</li> 
-  <li>go コマンド 
-   <ul> 
-    <li>コンパイル、テスト、およびコードを実行する際のエラーメッセージがもっと分かりやすくなった。</li> 
-    <li>go getを使うために$GOPATH をセットしなければならない。$GOROOTと等しくするのは認められなくなった。</li> 
-   </ul> </li> 
-  <li>go fix は、1.0.X から 1.1にコードを移行できるように調整された。（1.0.X 以前のコードは、直接 Go 1.1にアップグレードできない）</li> 
-  <li>競合の検出 – 競合状態に悩まされている開発者は、go testで新しいオプション<a target="_blank" href="http://tip.golang.org/doc/articles/race_detector.html"> -race</a>の恩恵が受けられる。Linux、OS X と Windows の 64 ビットプラットフォームで現在利用可能だ。</li> 
- </ul> 
- <p style="margin-bottom: 0in">Goの開発者は、いくつか（しかしすべてではない）ユースケースでパフォーマンスの大幅な増加を報告している。これらの増加は、コンパイラのコード生成の改善、より良いマップ実装、ネットワーク アプリケーションにおけるコンテキスト切り替えの削減、ガベージ コレクターの改善によってもたらされた。</p> 
- <p style="margin-bottom: 0in"><span lang="en-US">主要なプラットフォーム(Windows, Linux, OS X,など) で<a target="_blank" href="https://code.google.com/p/go/downloads/list?q=go1.1beta2">利用できる</a>ダウンロードは、バージョン 1.1 Beta 2である。 開発のペースが非常に早いので、より新しいバージョンが出る可能性があり、そして出るだろう、ということに注意して欲しい。開発者は、既存のコードを再コンパイルすることで、新しい1.1のフィーチャを利用できる。</span></p> 
- <p id="lastElm">&nbsp;</p> 
-</div> 
-<p id="lastElm"></p><br><br><br><br><br><br></body></html>
+<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>"Luca, フォース(force)を使え" - Jenkins開発者が１ヶ月分のGitHubコミットを消失</h3><p><a target="_blank" href="http://www.infoq.com/news/2013/11/use-the-force"><em>原文(投稿日：2013/11/12)へのリンク</em></a></p>
+<div class="article_page_left news_container text_content_container"> 
+ <div class="text_info"> 
+  <p>昨日，<a href="https://groups.google.com/forum/#!topic/jenkinsci-dev/-myjRIPcVwU">Jenkinsプロジェクト</a>の開発者が誤って，JenkinsコードベースのGitリポジトリをストアしている<a href="https://github.com/jenkinsci/">GitHubレポジトリ</a>に<a href="https://groups.google.com/d/msg/jenkinsci-dev/-myjRIPcVwU/t4nkXONp8qgJ">強制的なプッシュ</a>を実行してしまい，数ヶ月間のコミットを紛失した。理解あるコミュニティによって問題はすぐに解決されたものの，この件は，GitHubの備えるオープン性 (<a href="https://github.com/jenkinsci">Jenkins CIの機構</a>と組み合わせれば，誰でも任意のリポジトリにコミットできる) が，問題を拡大する可能性のあることを浮き彫りにした。</p> 
+  <p>Ｇｉｔの強制プッシュ(force push) – <code>git push -force</code>で実行する – は，サーバに指定したコンテントをプッシュして，リファレンス(ブランチあるいはタグ)の内容を置き換えるように指示するものだ。通常，Gitのリポジトリに許されているのは，<em>ファーストフォワード</em>プッシュに限定されている - すなわち，プッシュするリファレンスは，その先祖として現行のリファレンスを持っていなければならない。強制プッシュはこの制限を取り除いて，現行のコンテントを置き換えることができる。</p> 
+  <p>Gitリポジトリの設定では，<a href="http://www.kernel.org/pub/software/scm/git/docs/git-config.html">git config</a>の値 &quot;<code>receive.denyNonFastForwards true</code>&quot; を使って，この動作の許可あるいは禁止を指定することができる。強制的な操作の防止にはこれを利用する。</p> 
+  <p>強制的なプッシュが便利な場合もある。例えば <code>git filter-branch</code> のようなリファクタあるいはフィルタ操作が実行されると，コミットが現行ブランチの先祖ではなくなるため，通常の操作は不可能になる。別の利用ケースとして，ミラーリングが有効な場合に，２つのリポジトリの内容を同期させることで，エラーを発生させずに変更内容をパスすることができる。</p> 
+  <p><a href="https://groups.google.com/d/msg/jenkinsci-dev/-myjRIPcVwU/t4nkXONp8qgJ">今回のケースで起きた</a>のは次のようなものだ - Gerritミラーリングプラグインをテスト中だったLucaは，Jenkinsリポジトリ用として，リポジトリセットをローカルにチェックアウトしていた。Gerritのミラーはこのローカルリポジトリからコンテントを取得するようにセットアップされていた。結果的にすべてのリポジトリが，彼の手元にあるチェックアウトからミラーするようになっていたのだ。不運なことに，そのレポジトリはしばらく更新されていなかったため，すべてのリポジトリを以前の状態にリセットすることになってしまった。</p> 
+  <p>幸運なことに，現在はすべてのリポジトリが元に戻されている - Gitバージョン管理システム(あるいはどのDVCSでも)のメリットのひとつとして，任意のクローンからリポジトリを再生可能なことがあり，これを実行するのは簡単だった。GitHubのサポートも非常に効果的だった。コンテントを再取得するために，サーバ側のreflog (ブランチ内の変更を識別するために使用)を提供してくれたのだ。しかし，将来的にこの問題を緩和するためには，２つの重要な疑問に答を出さなければならない：</p> 
+  <ul> 
+   <li>ユーザが複数のリポジトリにコミットするのは妥当なことだろうか，あるいはレビュー/プルリクエストのように，管理されたチャネルを通じて変更を伝えるべきだろうか？</li> 
+   <li>GitHubにおいて，<code>denyNonFastForwards</code>設定オプションを提供することは適切だろうか？</li> 
+  </ul> 
+  <p>GitHubの有力なライバルである<a href="http://bitbucket.org">BitBucket</a>では，<a href="https://bitbucket.org/site/master/issue/3338/git-allow-option-to-enable-disable-force">nonFastForwardsを無効にするオプション</a>を提供している。BitBuckerはAtlassianによって継続され，現在はDVCSのひとつであるMercurialの公式サイトとして使用されている。しかしながら，BitBucketが有名になったのはGitのホスティングソリューションとしてであり，そのGit管理ソリューションである<a href="https://www.atlassian.com/it/software/stash/overview">Atlassian Stash</a>はGitリポジトリに特化したものだ。</p> 
+  <p>皮肉にもLucaは，Gerritをベースとするリポジトリを提供する<a href="http://gerritforge.com">GerritForge</a>という会社を持っている。先日著した <a href="http://www.infoq.com/articles/learning-gerrit-code-review"> Learning Gerrit Code Review</a> という本は，InfoQでもレビューしたばかりだ。JenkinsのリポジトリがGerritのようなレビューベースのツールを使っていれば，今回のことは起きなかったかも知れない。</p> 
+  <p>GitHubがnonFastForwardsの設定機能を提供するまでの措置として，Jenkinsの開発者は，GitHubリポジトリへのプッシュを追跡して実行した変更とコミットのSHA値を記録する<a href="https://groups.google.com/forum/#!topic/jenkinsci-dev/dD-sumd81pU">ツールを作成した</a>。皮肉なことに彼らは，<code>rsync</code>を使ってリポジトリを複数の場所にバックアップすることを提案している。</p> 
+  <p>強力な機能には大きな責任が伴う。GuiHubでforceオプションを使用するのはまさにそのケースだ。今後GitHubがこれを禁止するオプションを提供するかどうかに関わらず，バックアップされていない巨大な公開リポジトリをホストする場合には注意が必要だ。</p> 
+ </div> 
+</div><br><br><br><br><br><br></body></html>

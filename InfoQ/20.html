@@ -1,9 +1,14 @@
-<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>Windows Azure SDK 2.2新增Visual Studio 2013、集成登录和过滤器支持</h3><p>微软发布了<a href="http://www.windowsazure.com/en-us/downloads/">Windows Azure SDK 2.2</a>，支持Visual Studio 2013，并直接在Visual Studio内部支持<a href="http://social.msdn.microsoft.com/Forums/windowsazure/en-US/50cc483c-6bb2-4e20-89a5-31f22abacd51/windows-azure-integrated-sign-in-windows-azure-tools-22-for-visual-studio?forum=windowsazuredevelopment">集成登录</a>。除了更新Azure PowerShell Cmdlets和ScriptCenter之外，最近的更新还在Visual Studio中提供了远程调试云服务和SQL数据库防火墙管理。</p>
-<p>最新版本支持集成登录，使开发人员可以在Visual Studio中开发、测试和管理Windows Azure资源，而无需下载或使用管理证书。为了连接到Windows Azure，开发人员需要在Visual Studio的服务器浏览器中右击Windows Azure图标，并在上下文菜单中选择“连接到Windows Azure”选项。</p>
-<p>如果使用集成登录功能，身份验证将由关联到开发人员账户的<a href="http://www.windowsazure.com/en-us/services/active-directory/">Windows Azure活动目录</a>负责处理。该功能不仅使组织和企业的开发人员可以在云上使用与本地开发相同的身份验证模型，而且还提高了安全性。</p>
-<p>通过在Visual Studio 2013的服务器浏览器中点击上下文菜单的“过滤器服务”选项，Windows Azure SDK 2.2允许开发人员过滤订阅服务/区域。它还允许开发人员在“证书”选项卡中使用管理证书功能来管理Windows Azure资源。它还具备远程调试云资源的能力，要做到这一点，需要在发布对话框向导的“常规设置”选项卡中将构建配置选成“调试”。</p>
-<p>最近的更新还提供了在Visual Studio中直接启用和配置安全防火墙的能力。在试图使用Visual Studio的服务器浏览器连接到SQL数据库时，开发人员将收到添加防火墙规则以允许本地IP地址访问的提示。</p>
-<p>随着最近的更新，微软还发布了一套预先配置好的Visual Studio 2013 VM镜像，供MSDN订阅者使用。这些镜像可以从Windows Azure管理门户上获得。另外，产品团队还发布了新的Windows Azure Management Libraries for .NET的预览版，提供了使用C#、VB、C++和F#等.NET语言中的任意一种自动化任务的能力。</p>
-<p><a href="http://weblogs.asp.net/scottgu/archive/2013/10/22/windows-azure-announcing-release-of-windows-azure-sdk-2-2-with-lots-of-goodies.aspx">Scott Guthrie</a>在其博客中研究了新的Windows Azure Management Libraries for .NET的使用方法。目前，该包可以从NuGet上获得。不过，由于该包还只是预览版，在检索包的时候，开发人员需要增加-IncludePrerelease开关。</p>
-<p>除了将Windows Azure PowerShell 0.7.0作为单独的下载外，微软还根据一项开源许可发布了Windows Azure SDK的源代码。PowerShell更新提供了对Windows Azure活动目录身份验证的支持，还提供了用于多媒体服务和SQL数据库的新Cmdlet，以及一个脚本库，其中包含了在Windows Azure上自动化常规任务的示例脚本。</p>
-<p><strong>查看英文原文：</strong><a href="http://www.infoq.com/news/2013/11/win-azure-sdk-2-2-vs2013-support">Windows Azure SDK 2.2 Adds Visual Studio 2013, Integrated Sign-in and Filter Support</a></p><br><br><br><br><br><br></body></html>
+<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>Telerik LightBox控件支持模板、Items集合、尺寸自动调整和分页</h3><p><a href="http://www.telerik.com/products/aspnet-ajax.aspx">Telerik ASP.NET</a>控件套件中的<a href="http://www.telerik.com/products/aspnet-ajax/lightbox.aspx">LightBox弹出窗口</a>控件支持模板，这使它具备了包含不同类型内容的能力，如图片、iFrames、HTML代码和ASP.NET服务器控件。它还使开发人员能够将其绑定到不同的数据源，如SqlDataSource、LinqDataSource、EntityDataSource和ObjectDataSource。</p>
+<p>该控件包含尺寸自动调整、键盘导航、分页和模态等功能，使开发人员可以为打开、隐藏、下一页和上一页等操作设置尺寸调整和淡出的动画类型。通过在Visual Studio 2013的工具箱中双击该控件，可以将其添加到页面，用法如下所示：</p>
+<pre>
+&lt;telerik:RadLightBox ID=&quot;RadLightBox1&quot; runat=&quot;server&quot; 
+DataSourceID=&quot;SqlDataSource1&quot;
+DataImageUrlField=&quot;ImageUrl&quot;
+DataTitleField=&quot;ImageName&quot;
+DataDescriptionField=&quot;ImageInfo&quot;&gt;
+&lt;/telerik:RadLightBox&gt;</pre>
+<p>在上述代码中，控件绑定到一个SQL Server数据源。也可以采用与其它控件一样的方式，在后台代码中绑定控件。LightBox包含一个Items集合，该集合可以通过三种不同的方式进行管理，包括在控件声明中、使用C#或VB的后台代码和使用客户端JavaScript API。</p>
+<p>要使用Items集合，首先创建一个RadLightBoxItem对象，然后添加所需的描述、标题、URL、宽度和高度。最后，将这个对象添加到RadLightBox实例的Items集合中，代码如下：</p>
+<pre>RadLightBox1.Items.Add(newItem); </pre>
+<p><code>Telerik</code><code>软件开发工程师<a href="http://blogs.telerik.com/blogs/13-11-07/easily-display-any-type-of-content-in-a-popup-with-telerik's-asp.net-lightbox-control">Daniel Peichev</a>在他的博文里考察了在特定的触发控件和Items集合的项之间建立关系所需的步骤。</code></p>
+<p><b>查看英文原文：</b><b><a href="http://www.infoq.com/news/2013/11/telerik-lightbox-control">Telerik LightBox Control with Templates, Items Collection, Automatic Resizing and Paging</a></b></p><br><br><br><br><br><br></body></html>

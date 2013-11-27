@@ -1,33 +1,16 @@
-<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>Aerospike, Cassandra, Couchbase、MongoDBを比較したNoSQLベンチマーク</h3><p><a target="_blank" href="http://www.infoq.com/news/2013/04/NoSQL-Benchmark;jsessionid=6327CD913D5869C7605B2AC916C1E453"><em>原文(投稿日：2013/04/12)へのリンク</em></a></p> 
-<div class="clearer-space">
- &nbsp;
-</div> 
-<div id="newsContent"> 
- <p>Aerospike, Cassandra, Couchbase, MongoDBAを比較した最近のベンチーマークから、インサート スループット、最大スループット、レイテンシ、フェイルオーバー中の動作がどうなのかを知ることができる。</p> 
- <p><a target="_blank" href="http://www.thumbtack.net/about.html">Thumbtack Technology</a>が幾つものキー－値ストアを比較した結果について、２つのベンチマーク白書をリリースした。<a target="_blank" href="http://www.thumbtack.net/solutions/documents/Ultra-HighPerformanceNoSQLBenchmarking.pdf"><em>Ultra-High Performance NoSQL Benchmarking: Analyzing Durability and Performance Tradeoffs</em></a><em> (PDF) </em>そして <a target="_blank" href="http://www.thumbtack.net/solutions/documents/NoSQLFailoverCharacteristics_000.pdf"><em>NoSQL Failover Characteristics: Aerospike, Cassandra, Couchbase, MongoDB</em></a><em> (PDF). </em>である。両ベンチマークとも狙っているのは、「非常に高いスループットと低レイテンシを必要とする、利用者が直接使うアプリケーションをテストして、その情報をキー－値スキーマを使って表すこと」である。</p> 
- <p>Thumbtackが使用したのは、<a target="_blank" href="http://research.yahoo.com/node/3202"><em>Yahoo! Cloud Serving Benchmark</em></a><em> (YCSB)</em>の改良バージョンで、非常に高いボリュームと複数クライアントを使用している時に達してしまう、いくつかの制限を解決した、とされている。 YCSBの変更は、最初のホワイトペーパーにドキュメント化されており、コミュニティに再度コミットされている。</p> 
- <p>テストされたNoSQLデータベースは、<a target="_blank" href="http://www.aerospike.com/">Aerospike</a>, <a target="_blank" href="http://cassandra.apache.org/">Cassandra</a>, <a target="_blank" href="http://www.couchbase.com/">Couchbase</a> (1.8 と 2.0),<a target="_blank" href="mongodb.org;jsessionid=58BD2F44633E5455B45820D11047C59E;jsessionid=6327CD913D5869C7605B2AC916C1E453">MongoDB</a>である。 最初のは有償製品で、最後のは、ドキュメントデータストアで、キー－値ストアではないが、「我々の経験では、顧客はしばしば同様な種類のアプリケーション用とそれを考えている」のでそれを含めた。全てのデータベースは、それらをサポートしているベンダーが推奨している方法で最適化されている。テストシステムは、回転するディスクではなく、SSDストレージを使った。ホワイトペーパーには、使われた方法論、クライアントとワークロードの設定、ハードウェア設定などに関して詳しい情報が記載されている。</p> 
- <p>Thumbtackは、“戦略的そして/あるいは商業的関係が Aerospike, Couchbase, 10gen” とあることを認め、使用されたハードウェアは、Aerospikeから借りた。</p> 
- <p>以下にベンチマークの結果を載せる。</p> 
- <p><strong>インサート スループット</strong></p> 
- <p>データベースが初期のワーキングセットを読み込む際、幾つものインサートを実行するYCSBの読み込みルーティングを使っている。Couchbaseは、ワーキングセットをメモリに読み込むときは、いい結果を示しているが、SSDに読み込む際には、問題があり、Couchbase 1.8は操作を終了せず、Couchbase 2.0ではもっと小さなセットと非同期モードを使わなければならなかった。それを示すのに濃淡のかかった青が使われている。Couchbaseが２番目である。</p> 
- <p class="image-wide"><a href="$image[4].png;jsessionid=58BD2F44633E5455B45820D11047C59E;jsessionid=6327CD913D5869C7605B2AC916C1E453"><img style="background-image: none; border-right-width: 0px; padding-left: 0px; padding-right: 0px; display: inline; border-top-width: 0px; border-bottom-width: 0px; border-left-width: 0px; padding-top: 0px" title="image" border="0" alt="image" _p="true" _href="img://NoSQL-benchmark-1.png" src="http://www.infoq.com/resource/news/2013/04/NoSQL-Benchmark/en/resources/NoSQL-benchmark-1.png;jsessionid=58BD2F44633E5455B45820D11047C59E;jsessionid=6327CD913D5869C7605B2AC916C1E453" /></a></p> 
- <p><strong>最大スループット</strong></p> 
- <p>このテストが使用しているのは、“強い耐久性モデルで、使用しているデータセットは、レプリケートされる時に、サーバーのRAMよりずっと大きくなる。このテストは、意図的に、強い耐久性の保証を必要とするトランザクショナルなデータの使用法をモデル化している。”</p> 
- <p>Couchbaseがグラフに出ていないのは、同期レプリケーションを使うと、テストが終了しなかったからである。</p> 
- <p class="image-wide"><a href="$image[9].png;jsessionid=58BD2F44633E5455B45820D11047C59E;jsessionid=6327CD913D5869C7605B2AC916C1E453"><img style="background-image: none; border-right-width: 0px; padding-left: 0px; padding-right: 0px; display: inline; border-top-width: 0px; border-bottom-width: 0px; border-left-width: 0px; padding-top: 0px" title="image" border="0" alt="image" _p="true" _href="img://NoSQL-benchmark-2.png" src="http://www.infoq.com/resource/news/2013/04/NoSQL-Benchmark/en/resources/NoSQL-benchmark-2.png;jsessionid=58BD2F44633E5455B45820D11047C59E;jsessionid=6327CD913D5869C7605B2AC916C1E453" /></a></p> 
- <p>非同期レプリケーションが適用されたときの、インメモリの結果である。</p> 
- <p class="image-wide"><a href="$image[14].png;jsessionid=58BD2F44633E5455B45820D11047C59E;jsessionid=6327CD913D5869C7605B2AC916C1E453"><img style="background-image: none; border-right-width: 0px; padding-left: 0px; padding-right: 0px; display: inline; border-top-width: 0px; border-bottom-width: 0px; border-left-width: 0px; padding-top: 0px" title="image" border="0" alt="image" _p="true" _href="img://NoSQL-benchmark-3.png" src="http://www.infoq.com/resource/news/2013/04/NoSQL-Benchmark/en/resources/NoSQL-benchmark-3.png;jsessionid=58BD2F44633E5455B45820D11047C59E;jsessionid=6327CD913D5869C7605B2AC916C1E453" /></a></p> 
- <p><strong>レイテンシー/スループット</strong></p> 
- <p>ベンチマークは、様々なレベルのトラフィックでリードとアップデートのレイテンシーを測定した。以下のグラフには、これらのそれぞれに対する全体ビューと拡大ビューが載せてある。</p> 
- <p class="image-wide"><a href="$image[22].png;jsessionid=58BD2F44633E5455B45820D11047C59E;jsessionid=6327CD913D5869C7605B2AC916C1E453"><img style="background-image: none; border-right-width: 0px; padding-left: 0px; padding-right: 0px; display: inline; border-top-width: 0px; border-bottom-width: 0px; border-left-width: 0px; padding-top: 0px" title="image" border="0" alt="image" _p="true" _href="img://NoSQL-benchmark-4.png" src="http://www.infoq.com/resource/news/2013/04/NoSQL-Benchmark/en/resources/NoSQL-benchmark-4.png;jsessionid=58BD2F44633E5455B45820D11047C59E;jsessionid=6327CD913D5869C7605B2AC916C1E453" /></a></p> 
- <p><strong>フェイルオーバー</strong></p> 
- <p>Thumbtackは、ノードがダウンした時に何が起きるかを見ようとしている。ハードウェア故障のシミュレーションである。</p> 
- <p class="image-wide"><a href="$image[27].png;jsessionid=58BD2F44633E5455B45820D11047C59E;jsessionid=6327CD913D5869C7605B2AC916C1E453"><img style="background-image: none; border-right-width: 0px; padding-left: 0px; padding-right: 0px; display: inline; border-top-width: 0px; border-bottom-width: 0px; border-left-width: 0px; padding-top: 0px" title="image" border="0" alt="image" _p="true" _href="img://NoSQL-benchmark-5.png" src="http://www.infoq.com/resource/news/2013/04/NoSQL-Benchmark/en/resources/NoSQL-benchmark-5.png;jsessionid=58BD2F44633E5455B45820D11047C59E;jsessionid=6327CD913D5869C7605B2AC916C1E453" /></a></p> 
- <p>ダウンタイムも測定された。すなわち故障の後にクラスターが応答できるように、全てのデータベースが合理的な値を表示するのに必要な時間である。</p> 
- <p class="image-wide"><a href="$image[32].png;jsessionid=58BD2F44633E5455B45820D11047C59E;jsessionid=6327CD913D5869C7605B2AC916C1E453"><img style="background-image: none; border-right-width: 0px; padding-left: 0px; padding-right: 0px; display: inline; border-top-width: 0px; border-bottom-width: 0px; border-left-width: 0px; padding-top: 0px" title="image" border="0" alt="image" _p="true" _href="img://NoSQL-benchmark-6.png" src="http://www.infoq.com/resource/news/2013/04/NoSQL-Benchmark/en/resources/NoSQL-benchmark-6.png;jsessionid=58BD2F44633E5455B45820D11047C59E;jsessionid=6327CD913D5869C7605B2AC916C1E453" /></a></p> 
- <p>Thumbtackのベンチマークには、様々なケースの結果がもっと含まれているが、ここには示されていない。</p> 
- <p><a target="_blank" href="http://www.networkworld.com/news/tech/2012/102212-nosql-263595.html">別の　NoSQL ベンチマーク</a>は、2012年10月に公開され、Cassandra、 HBase、MongoDB、Riak が比較された。MySQLもSQL技術に対する参照としてこのテストに含まれた。</p> 
- <p id="lastElm">&nbsp;</p> 
-</div> 
-<p id="lastElm"></p><br><br><br><br><br><br></body></html>
+<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>DevOpsはアジャイルをどう補完するのか</h3><p><a target="_blank" href="http://www.infoq.com/news/2013/11/devops-complements-agile-nokia"><em>原文(投稿日：2013/11/15)へのリンク</em></a></p>
+<div class="article_page_left news_container text_content_container"> 
+ <div class="text_info"> 
+  <p>アジャイルがすべてのように見える時代に、なぜこうもDevOpsが注目を集めているのだろうか。ブリストルのNokia Entertainmentから来た<a href="http://www.infoq.com/author/John-Clapham">John Clapham</a>氏は語る。アジャイルにはマニフェストと原則があり、人とステークフォルダの明確化、よりすばやいデリバリー、より幸福な顧客にフォーカスしている。なぜDevOpsが必要なのだろうか？ <a href="http://www.conferences.unicom.co.uk/agileincomplexenvironments/">Agile Methods in the Finance Sector and Complex Environment</a>というカンファレンスで、John氏はDevOpsとは何か、DevOpsはビジネスに何をもたらすのか説明した。</p> 
+  <p>Nokia Entertainmentはアジャイルソフトウェア開発を実践していたが、3か月のリリーススケジュールで動いていた。デリバリーをもっとすばやくする方法を求めて、彼らはDevOpsが役に立つかどうか調査した。DevOps苦労話の<a href="http://www.infoq.com/articles/monthly-devops-01-nokia">DevOps @ Nokia Entertainment</a>で、John氏はそう説明した。もし本当にDevOpsに価値があるなら、理解したいし育てたいとJohn氏は言う。だが、植物を育てるのと同様に、それが必要とする状態を理解する必要がある。それはアジャイルとは違うかもしれない。</p> 
+  <p>多くの組織では、次のような緊張関係がIT運用と開発を隔てている。</p> 
+  <ul> 
+   <li>安定性 vs 変化</li> 
+   <li>運用カルチャー vs 開発カルチャー</li> 
+  </ul> 
+  <p>もし緊張関係が足らないなら、どちらも独自の技術的課題を抱えているということだ。</p> 
+  <p>Nokia Entertainmentは、協力と信頼のカルチャーを作る必要があった。それにより、知識と責任を共有できるようになる。これらは人的側面に気を配り、永続的に続くかのような組織に変化をもたらした。</p> 
+  <p>継続的デリバリーなどの取り組みとともに、DevOpsはNokia Entertainmentの実行スピードを徹底的に改善した。デリバリーは2倍すばやくなった。DevOpsを実践することは、安定性と変化のどちらかではなく、2つのバランスを見つけるのに役立った。品質、コスト、効率を改善するのにも役立ったし、IT運用が早期に関わることで、製品の信頼性も高まった。また、こうしたアプローチは、自律性と専門技能へのフォーカスをもたらし、モチベーションを高めるのに役立った。これにより従業員との関係も改善された。強固なDevOpsカルチャーは社員を引き付けて、つなぎ留めるのにも有用だと多くの組織が報告している。</p> 
+  <p>DevOpsがアジャイルと違うのは、熱心なコミュニティによってドライブされていることだ。その善し悪しは、時が教えてくれるだろう、とJohn氏は言う。今のところ、DevOpsはいかしたパッケージであり、ソフトウェアをデリバリーする上でよく見られるけれども困難な問題に取り組むためのパターンだ。カルチャーにフォーカスして共有することは、Nokia Entertainmentによい結果をもたらした。だが、それが継続するかどうかは興味深いところだ。</p> 
+ </div> 
+</div><br><br><br><br><br><br></body></html>

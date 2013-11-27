@@ -1,30 +1,10 @@
-<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>聪明的客户端，木讷的服务器？AWS发布浏览器中使用的JavaScript SDK</h3><p>多年以来，虽然依旧依赖于服务器侧代码来做一些繁重的工作，但开发者一直在要求客户侧代码来分担更多的内容。AWS发布了一套JavaScript SDK，以期改变这一模式。该SDK能够在浏览器中安全地访问AWS服务，从而在某些情况下消除了对<b>任何</b>服务器侧代码的需求。</p>
-<p>在<a href="http://aws.typepad.com/aws/2013/10/developer-preview-aws-sdk-for-javascript.html">宣布该SDK开发者预览版的博客文章</a>中，AWS团队概述了这套SDK支持的四项AWS服务：</p>
-<blockquote> 
- <p>使用SDK可以直接调用以下AWS服务：</p> 
- <ul> 
-  <li><a href="http://aws.amazon.com/s3/">Amazon S3</a>：存储和检索任何规模的对象</li> 
-  <li><a href="http://aws.amazon.com/sqs/">Amazon SQS</a>：对消息队列进行读取和写入</li> 
-  <li><a href="http://aws.amazon.com/sns/">Amazon SNS</a>：生成和处理对移动设备或其他分布式服务的通知</li> 
-  <li><a href="http://aws.amazon.com/dynamodb/">Amazon DynamoDB</a>：以任何访问速率，存储和检索任何总量的数据</li> 
- </ul> 
- <p>对于上述四项服务，SDK能够访问其全部功能。我们可以创建和填充S3存储桶、管理消息队列、创建、填充和查询DynamoDB表，并使用其他更多功能！</p> 
-</blockquote>
-<p>对某些应用来说，这一功能能够完全消除对Web服务器的需求。亚马逊S3支持静态Web应用托管，这使得向存储桶上传网站并在其中运行成为可能。静态应用可以通过诸如<a href="http://docs.aws.amazon.com/AmazonS3/latest/dev/WebsiteHosting.html">S3</a>、<a href="https://www.dropbox.com/help/201/en">Dropbox</a>以及<a href="http://nginx.org/en/">nginx这样的高性能HTTP服务器</a>，轻松地进行扩展。</p>
-<p>软件先驱Dave Winer<a href="http://scripting.com/2013/11/01/amazonBreaksThroughOnStaticJavascriptApps">看好这项发布</a>，并认为我们正处于一场“真正的技术突破”的风口浪尖。现在，静态应用的开发者们不必构建调用Web服务的代理服务器并必须扩展以满足需求，而是能够只依赖Web服务提供者来交付必要的扩展。在2012年，Dropbox就认可了这一模式，而且Winer预见了未来。</p>
-<blockquote> 
- <p>一年以前，<a href="https://tech.dropbox.com/2012/08/some-love-for-javascript-applications-2/">Dropbox做了一些神奇的事情</a>。</p> 
- <p>基本上，他们在dropbox.com中吸收了代理服务器的功能，使人们不必再创建中间服务器。出乎意料的是，人们也无需编写服务器软件来构建链接到Dropbox。这样就消除了扩展问题；也避免了集资或是把用户卖给广告商的情况。</p> 
- <p>扩展工作本身依旧需要完成，但现在是由Dropbox来进行。他们解决这个问题的方法，并不是向广告商兜售用户，而是向使用服务的人们收费。完美的方案。这种经济模式恰到好处。</p> 
-</blockquote>
-<p>Winer一直鼓励其他公司学习这个模式，他很高兴看到AWS发布了这样的SDK。</p>
-<blockquote> 
- <p>我一直尝试尽可能向这些公司里的其他人游说，鼓动他们去做与Dropbox同样的事情。如果其中有那么几家听了我的建议，那么我们很快就能看到关键的大规模运用，而后某些真正有趣的东西就会浮现出来。各种类型的应用都有可能。然而没有人去做这样的事情——直到今天，当亚马逊公布其用在浏览器中的<a href="http://aws.typepad.com/aws/2013/10/developer-preview-aws-sdk-for-javascript.html">AWS SDK for JavaScript</a>。理论上说，该SDK对亚马逊的Web服务的事情，与Dropbox所做的相同。从亚马逊的公告来看，人们可以直接访问服务器，来做那些过去需要使用代理服务器才能做的事情。</p> 
-</blockquote>
-<p>虽然不是所有的公共Web服务都拥有认证层，但显然AWS拥有。AWS是如何<a href="http://aws.typepad.com/aws/2013/10/developer-preview-aws-sdk-for-javascript.html">解决纯客户侧应用所面对的认证问题</a>的？</p>
-<blockquote> 
- <p>如果曾使用过AWS SDK和API，那么你就会知道，每个请求都必须得到你的AWS证书的签名。然而几乎毫无疑问，谁都不希望在HTML或JavaScript应用中包含自己的证书，因为任何人都能够查看并使用它们。相反，你应该使用我们的<a href="http://aws.typepad.com/aws/2013/05/aws-iam-now-supports-amazon-facebook-and-google-identity-federation.html">Web身份联盟</a>特性，对你的应用的用户进行认证。通过将WIF结合到你的应用里，你可以利用公共身份提供者（<a href="https://www.facebook.com/about/login/">Facebook</a>、<a href="https://developers.google.com/+/">Google</a>或<a href="http://login.amazon.com/">登录亚马逊</a>），来创建一系列临时性安全证书。</p> 
-</blockquote>
-<p>AWS的身份和访问管理（IAM）服务，让开发者能够注册某个应用与特定的身份提供者，以便通过该特定提供者认证的用户能够<a href="http://docs.aws.amazon.com/STS/latest/UsingSTS/CreatingWIF.html">获得预定的角色</a>。他们近期发布的<a href="https://web-identity-federation-playground.s3.amazonaws.com/index.html">Web身份联盟体验网站</a>，简化了模拟这些身份交互并观察输出的工作。对于想要为其AWS资源制定身份政策并测试用户访问场景的开发者来说，这将有所帮助。</p>
-<p>按典型的AWS风格，现在已经有了<a href="https://aws.amazon.com/sdkforbrowser/">一个专门用来学习SDK的网站</a>，提供了基础性的<a href="http://aws.amazon.com/developers/getting-started/browser/">帮助演练</a>和<a href="https://forums.aws.amazon.com/forum.jspa?forumID=148">支持论坛</a>。这一新兴的支持服务，只是整个AWS家族的一个子集，但它面向需要诸如存储和消息等能力的应用构建者。我们有理由期待SDK在未来会增加额外的服务，例如ElastiCache、Simple Email Service，甚至是EC2.</p>
-<p><strong>查看英文原文：</strong><a href="http://www.infoq.com/news/2013/11/aws-sdk-javascript">Smart Clients, Dumb Servers? AWS Releases SDK for JavaScript in the Browser</a></p><br><br><br><br><br><br></body></html>
+<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>Pivotal Reactor发布1.0</h3><p><a href="http://gopivotal.com/">Pivotal</a>恰当命名的开源反应式编程类库“Reactor”到达了一个里程碑，该类库于最近对外发布了<a href="https://spring.io/blog/2013/11/12/it-can-t-just-be-big-data-it-has-to-be-fast-data-reactor-1-0-goes-ga">1.0版本</a>。Reactor为事件驱动、反应式编程模型提供了一个低级别的抽象，同时它还是<a href="https://spring.io/platform">Spring IO平台</a>的一个组件成员，在它的“IO基础”层。</p>
+<p>虽然Reactor的内部并没有直接依赖于Spring框架，但是Reactor是作为Spring IO平台的一个基础组件而设计的。该<a href="https://github.com/reactor/reactor/wiki">项目的wiki</a>中提到，它能够借助于“reactor-spring”模块为Spring提供“开箱即用的支持”，但是核心API是作为一个自包含的类库提供的，同时可以在一个Spring应用程序上下文的外部使用。</p>
+<p>开发者能够借助于Reactor构建高吞吐量、低延迟时间的应用程序，这类应用程序每秒钟可能必须处理几千、几万或者甚至是几百万的并发请求。实际上，在宣布该版本发布的博客文章中提到，在一台标准的开发者笔记本上Reactor每秒钟能够处理“一千到一千五百万事件”。该博客文章还提醒大家一定要注意，无论如何“Reactor是否能够快速运转一定程序上取决于任务”。</p>
+<p>Reactor中的很多灵感来源于<a href="http://en.wikipedia.org/wiki/Reactor_pattern">Reactor设计模式</a>，该模式为异步事件的分发和处理定义了一个模型。但是该模式并不是构建Reactor的唯一灵感源泉，发布说明中提到其他的灵感来源于很多开源项目和类库，包括即将发布的Java 8。Reactor从这些领域借鉴了一些理念以便于为Streams和Promises这样的异步编程技术提供抽象。</p>
+<p>为了简化与它的集成，Reactor为许多流行的类库和语言提供了内置的良好支持。随着对自己宣传口号“快速数据（Fast Data）”的强化，该项目确信公众能够注意到它的高吞吐量<a href="http://lmax-exchange.github.io/disruptor/files/Disruptor-1.0.pdf">LMAX Disruptor</a> API（为了创建超高性能的金融交易而设计）。</p>
+<p>项目的“reactor-tcp”模块提供了一个由<a href="http://netty.io/">Netty</a>支持的TCP客户端和服务器API。Netty是一个JVM网络类库，它提供了一个“异步事件驱动的网络应用程序框架和工具……可用于高性能和高扩展性程序”。</p>
+<p>它提供语法简化并支持函数式编程技术，将Groovy作为一流语言提供支持，包括使用闭包作为回调。Reactor提供了一个综合的Groovy DSL，用户能够通过该DSL享受简化的配置体验。Java 8也是作为一流语言提供支持的，通过Reactor的API可以利用lambda表达式，还能将方法引用作为回调。Clojurewerkz项目，<a href="https://github.com/clojurewerkz/meltdown">Meltdown</a>，提供了一个从Clojure到Reactor的接口。Reactor团队强调类库的API已经被设计为可扩展的…所以非JVM语言也能够从它的产品中受益。</p>
+<p>Reactor的源码可以<a href="https://github.com/reactor/reactor/wiki">免费从GitHub上获取</a>到，它是基于Apache许可的。另外，还可以获取到quickstart和示例项目，通过具体的示例指导新手入门。最近重新设计的<a href="http://www.spring.io/">Spring.IO 网站</a>上的<a href="http://spring.io/guides">指南部分</a>还提供了一个<a href="http://spring.io/guides/gs/messaging-reactor/">全面的“入门”教程</a>。</p>
+<p>用户还可以从Maven Central上获取到针对各种Reactor模块的Maven构件，这在<a href="https://spring.io/blog/2013/11/12/it-can-t-just-be-big-data-it-has-to-be-fast-data-reactor-1-0-goes-ga#apache-licensed-with-a-friendly-community">发布说明的底部</a>有提到。</p>
+<p><b>查看英文原文</b>：<a href="http://www.infoq.com/news/2013/11/reactor-goes-ga">Pivotal's Reactor Goes GA</a></p><br><br><br><br><br><br></body></html>

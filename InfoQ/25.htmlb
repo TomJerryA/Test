@@ -1,378 +1,283 @@
-<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>详解Java 7中新的文件API</h3><p>Java 7向语言中引入了一些有用的特性，其中包括一个新的I/O文件包。相对于老的java.io包，这个包针对文件系统——特别是基于POSIX的系统——提供了粒度更细的控制功能。本文首先介绍一下新的API，之后通过一个基于Web的文件管理器项目WebFolder来详细探索这些API。该项目提供了一种管理远程计算机上文件系统的机制。它支持文件系统的遍历以及文件的查看、重命名、复制和删除等操作。我们可以利用新的I/O文件包扩展该项目，使之能够操作ZIP文件的内容，并能监视修改操作。WebFolder可以免费从<a href="http://webfolder.sf.net" target="_blank">http://webfolder.sf.net</a>下载。</p><p>尽管基本文件操作API在不同版本之间的确也有些更新，但Java团队决定为Java 7提供一个新设计的替代包，以一种新的方式来涵盖文件系统操作。</p><p>基本文件操作API仍然位于java.nio.file包及其两个子包java.nio.file.attribute和java.nio.file.spi中。新API把文件相关的操作从java.io包中分离出来，而且为使文件系统的管理更为直观，还提供了一些额外的方法。概念上，新API构建为一组实体接口和操作类，其中实体接口包含的是一个文件系统中的基本对象，而操作类包含的是文件系统自身之上的操作。这一理念从java.util包继承而来，在java.util包中，像Collections和Arrays等类提供了很多操作，分别用于集合和数组等基本聚合数据结构。为避免混淆，尤其是要避免java.io包和java.nio.file一起使用时出现问题，新包中的基类和接口采取了不同的命名方法。</p><p>新包不仅重新组织了支持文件和文件系统操作的类，还扩展了API的功能，比如提供了更为简单的文件复制和移动方式。</p><h3>常规文件操作与新文件操作相关类之对比</h3><p>下表是这些包中基类和接口的简单概述：</p><table cellspacing="0" cellpadding="0" border="1" style="width: 100%;"> 
- <tbody> 
-  <tr> 
-   <td>Java &lt; 7 java.io，javax.swing.filechooser</td> 
-   <td>Java &gt;= 7 java.nio.file</td> 
-   <td>注释</td> 
-  </tr> 
-  <tr> 
-   <td>File</td> 
-   <td>Path和Files</td> 
-   <td>File类同时提供了文件位置和文件系统操作，而新API将其分为两部分。Path提供的只是一个文件位置，还支持与路径相关的额外操作；Files支持文件操作，还提供了很多File类中没有的新功能，比如复制或读取整个文件的内容，或者设置文件属主。</td> 
-  </tr> 
-  <tr> 
-   <td>FileSystemView</td> 
-   <td>FileSystem</td> 
-   <td>FileSystemView类提供了底层文件系统的一个视图，仅用于Swing文件选择器的上下文中。FileSystem类可以表示定义于本地、远程或其他可选存储机制（如ISO映像或ZIP归档）之上的不同文件系统。FileSystem类包含了一些工厂，用于提供如Path等不同接口的具体实现。</td> 
-  </tr> 
-  <tr> 
-   <td>没有类似的类</td> 
-   <td>FileStore</td> 
-   <td>表示文件存储相关的某些属性，如文件大小。可以从一个特定的Path或FileSystem类重新获取。</td> 
-  </tr> 
- </tbody> 
-</table><p>除了对象和操作的组织方式不同之外，新文件系统API能够在大多数方法和构造器中利用相当新的Java特性，如自动装箱（autoboxing），因而新API用起来更整洁，也更容易。<br /> 下面几部分我们会更详细地看一下特定改进。</p><h3>文件系统遍历与分组操作</h3><p>新文件包引入了一种新的文件系统遍历方法，相比于之前基于数组和过滤器的版本，内存使用效率有所改进。此外，新方法也使深度遍历文件系统成为可能。新的实现使用了访问者设计模式。尽管可以模仿访问者模式，使用支持普通文件的过滤器来执行遍历操作，但要提供简单且内存高效的多层遍历算法会困难得多。</p><p>访问者模式是作为FileVisitor接口引入的。因为这是个泛型接口，你可能会认为可以使用基于File的实现来遍历文件系统，然而新I/O文件只支持实现了Path接口的对象。该接口声明了四个方法，SimpleFileVisitor类是该接口的一个实现，开发者可以继承这个类，这样在给定情况下只需实现所需的任何方法即可。下表简要概述了FileVisitor的各个方法以及它们在SimpleFileVisitor类中的行为：</p><table cellspacing="0" cellpadding="0" border="1" style="width: 100%;"> 
- <tbody> 
-  <tr> 
-   <td>方法名</td> 
-   <td>用途</td> 
-   <td>默认情况</td> 
-  </tr> 
-  <tr> 
-   <td>visitFile</td> 
-   <td>除非定义了过滤控制，否则会在遍历的每个普通文件（包括符号链接）上调用该方法。任何有意义的文件相关操作都可以在此处理，比如备份文件或查找文件内容。也可以在这里决定遍历是继续还是停止。该方法不会在目录上调用。</td> 
-   <td>返回CONTINUE</td> 
-  </tr> 
-  <tr> 
-   <td>preVisitDirectory</td> 
-   <td>如果访问的项是目录而非文件，调用的将是该方法而非visitFile。它支持跳过特定目录，也支持为复制操作在目标位置创建相应的目录。</td> 
-   <td>返回CONTINUE</td> 
-  </tr> 
-  <tr> 
-   <td>postVisitDirectory</td> 
-   <td>该方法在整个目录的遍历已经完成时调用，可以方便地结束目录上的操作。比如，如果遍历的目的是删除所有文件，那么目录本身可以在该方法中删除。</td> 
-   <td>返回CONTINUE</td> 
-  </tr> 
-  <tr> 
-   <td>visitFileFailed</td> 
-   <td>如果在文件系统遍历过程中出现任何未处理的异常，则会调用该方法。如果异常被重新抛出，那么所有遍历都将停止，而且异常会被传播到使用Files.walkFileTree启动文件系统遍历的代码处。可以在这里分析异常并决定是否继续遍历。</td> 
-   <td>重新抛出IOException</td> 
-  </tr> 
- </tbody> 
-</table><p>正如你所看到的，该接口非常强大，支持文件系统上的大部分习惯操作，包括归档、搜索、备份和删除文件。其异常处理也非常灵活。然而，如果只是需要获取某个目录的内容而无需深度遍历，使用老式的File.list()操作就很方便，新IO文件中也有一个类似的功能，不过返回的是一个集合而非纯数组。</p><h3>java.io包中没有的新特性</h3><p>尽管新IO文件提供的文件系统遍历和分组操作确实非常有用，但标准的java.io包也支持这些操作。不过新IO文件提供了旧包所没有的特定于操作系统的功能。对链接和符号链接的支持就是一个重要例子，现在它们可以在任何文件系统遍历操作中创建或处理。当然，只有在支持链接和符号链接的文件系统中才能工作，否则会抛出UnsupportedOperationException。另一个扩展是能够管理文件属性，如属主和权限。重复一下，如果底层文件系统不支持，会抛出IOException或UnsupportedOperationException。下表是对链接和扩展文件属性相关操作的简要概述。所有这些操作都可以从Files类调用。</p><table cellspacing="0" cellpadding="0" border="1" style="width: 100%;"> 
- <tbody> 
-  <tr> 
-   <td>操作</td> 
-   <td>用途</td> 
-   <td>注释</td> 
-  </tr> 
-  <tr> 
-   <td>createLink</td> 
-   <td>创建映射到某个文件的硬连接</td> 
-   <td>&nbsp;</td> 
-  </tr> 
-  <tr> 
-   <td>createSymbolicLink</td> 
-   <td>创建映射到文件或目录的符号链接</td> 
-   <td>&nbsp;</td> 
-  </tr> 
-  <tr> 
-   <td>getFileAttributeView</td> 
-   <td>以特定于文件系统实现的FileAttributeView形式访问属性</td> 
-   <td>虽然该方法带来了提供一组预定义属性集的灵活性，但使用的仍是具体实现类，因此限制了代码的可移植性</td> 
-  </tr> 
-  <tr> 
-   <td>getOwner</td> 
-   <td>获得文件属主</td> 
-   <td>只能用于支持属主属性的文件系统</td> 
-  </tr> 
-  <tr> 
-   <td>getPosixFilePermissions</td> 
-   <td>获得文件权限</td> 
-   <td>特定于POSIX系统</td> 
-  </tr> 
-  <tr> 
-   <td>isSymbolicLink</td> 
-   <td>判断给定路径是否为符号链接</td> 
-   <td>特定文件系统</td> 
-  </tr> 
-  <tr> 
-   <td>readSymbolicLink</td> 
-   <td>读取符号链接的目标路径</td> 
-   <td>特定文件系统</td> 
-  </tr> 
-  <tr> 
-   <td>readAttributes</td> 
-   <td>读取文件属性</td> 
-   <td>该方法有两个以不同形式返回属性的变体</td> 
-  </tr> 
-  <tr> 
-   <td>setAttribute</td> 
-   <td>设置文件属性</td> 
-   <td>属性名可能包含FileAttributeView限定词</td> 
-  </tr> 
- </tbody> 
-</table><p>如果打算使用表中列出的操作，请参考新IO文件的文档。</p><h4>监视</h4><p>该API也提供了一种监视机制，因此可以针对事件（如创建、修改和删除）监视特定文件或目录的状态。遗憾的是，该API并不保证为监视事件采用推送模型，而且大部分情况下会使用轮询机制，在我看来，这降低了实现的吸引力。监视服务也依赖于系统，所以无法利用这种服务构建真正可移植的应用。有5个接口涵盖了该功能。下表是这些接口及其用法的简要概述。</p><table cellspacing="0" cellpadding="0" border="1" style="width: 100%;"> 
- <tbody> 
-  <tr> 
-   <td>接口</td> 
-   <td>用途</td> 
-   <td>用法</td> 
-  </tr> 
-  <tr> 
-   <td>Watchable</td> 
-   <td>这种类型的对象可以注册到监视服务中。注册后得到的WatchKey可用于监控事件修改。</td> 
-   <td>必须通过该接口的某个具体实现来注册感兴趣的与对象关联的监视事件。请注意，Path也扩展了Watchable接口。</td> 
-  </tr> 
-  <tr> 
-   <td>WatchService</td> 
-   <td>文件系统中用于注册Watchable对象的服务，使用WatchKey来监控修改。</td> 
-   <td>WatchService可以从FileSytem对象获得。</td> 
-  </tr> 
-  <tr> 
-   <td>WatchKey</td> 
-   <td>监视键是注册所得到的凭据，用于查询修改事件。</td> 
-   <td>该对象可以保存下来，之后用于查询修改事件。当存在相关修改事件时，可以直接从WatchService获得WatchKey对象。</td> 
-  </tr> 
-  <tr> 
-   <td>WatchEvent</td> 
-   <td>携带监视事件。</td> 
-   <td>WatchEvent对象会被传给事件通知调用，可以从中获得事件种类和受影响对象的路径。</td> 
-  </tr> 
-  <tr> 
-   <td>WatchEvent.Kind</td> 
-   <td>携带监视事件的种类信息。</td> 
-   <td>用于在注册Watchable对象时指定感兴趣的特定事件类型。在通知调用的WatchEvent中也有提供。</td> 
-  </tr> 
- </tbody> 
-</table><p>这里强调两个可能会使用监视服务的场景。一个是，只需要监控特定对象的修改时。在这种情况下，Watchable对象可以注册到监视服务中并获得监视键，监视键用于轮询修改事件。针对监视键的轮询机制不是阻塞的，因此即使未出现新事件，轮询仍然会获得一个空列表。为减轻轮询的负载，可以在两次轮询间引入一个延迟；作为代价，这会丢失一些通知事件发生时的精度。第二个场景利用了监视服务的监视机制，适于轮询与多个被监视对象相关的修改事件。和第一个场景一样，需要注册所有的Watchable对象，不过可以忽略返回的监视键。这里没有使用监视键的轮询机制，而是使用服务轮询机制来检索与所激发修改事件相关的监视键，然后使用针对监视键的轮询操作来处理事件。在这种情况下，监视键应保证指定了某些事件。可以使用一个线程来管理所有的监视键。监视服务的轮询机制更为灵活，因为它支持阻塞（blocking）、非阻塞（non-blocking）和带超时的阻塞（blocking with timeout）等操作。所以也能够更精确。后面我们会看一个有关第二个场景的例子，前面提到的WebFolder项目用到了它。</p><h4>工具操作</h4><p>新I/O文件的下一个主要特性是一组工具方法。这组方法使新包成为自给自足的，因为大部分使用情况下都不需要调用标准java.io包中的功能。输入流、输出流和字节通道都可以直接使用Files类的方法获得。该API支持完整的操作，如复制或移动文件。此外，整个文件的内容可被当作字符串列表或字节数组读出。不过需要注意的是，因为没有大小控制参数，所以为避免可能出现的内存问题，必须添加获取文件大小的操作。</p><h4>新I/O文件组织的更多信息</h4><p>最后，文件系统与存储是新I/O文件包的主要部分。正如我们所看到的，文件位置是通过Path接口表示的，这是该包的关键要素。开发者需要利用FileSystem工厂获得该接口的具体实现，而文件系统工厂又必须通过FileSystems工厂获得。下表显示了新I/O关键要素之间的关系。</p><p><img src="http://www.infoq.com/resource/articles/java7-nio2/zh/resources/13fig1.jpg;jsessionid=FF160FF1B4C655821C1715EE1D645129" alt="" _href="img://13fig1.jpg" _p="true" /></p><p>存储信息可以从文件系统上的特定文件（Path）获得。</p><h3>使用文件系统</h3><p>所有文件系统实现都由相应提供者负责支持，实现的基类定义在java.nio.file.spi包中。服务提供者的概念使开发者能够轻松地扩展到更多文件系统。有些有趣的文件系统提供者是包装过的，比如有的会变换ZIP文件的内容，支持如内容的遍历和文件的创建、删除及修改等功能。后面我们会看一个例子。</p><h3>并发与原子操作</h3><p>如果不提一下新IO文件对并发的支持，概述将是不完整的。新IO文件高度支持并发，因此大部分操作在并发环境中是安全的。移动文件也是原子的。通过获取SecureDirectoryStream接口的具体实现来操作目录内容也是安全的。在这种情况下，即使目录被外部攻击者移动或修改，所有目录相关操作仍然具有一致性。这里只接收相对路径。</p><h3>实例</h3><p>学习新东西最好的方法就是动手编程。上面提到的基于Web的文件管理器WebFolder最初是用java.io包开发的，因此我决定使用新IO文件来迁移一下该项目。如此将有助于更好地理解I/O文件中的概念，而且相对于其他更严肃的项目，我可以用特定应用来评估新的API。这里我有意让示例代码小一些，完整的源代码可以从<a href="http://webfolder.sourceforge.net/">项目网站</a>下载。</p><p><strong>1.获取一个目录下的内容</strong></p><pre>
-try (RequestTransalated rt = translateReq(getConfigValue(&quot;TOPFOLDER&quot;, File.separator),
-req.getPathInfo());
+<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>利用Spec Flow编写自动化验收测试</h3><h2>对验收测试、Gherkin及Spec Flow的介绍</h2>
+<p>验收测试或功能测试是验证系统是否满足需求的一种测试。这些测试作为黑盒测试的一种，与其内部具体执行无关。验收测试只是用来验证系统是否符合某一需求。</p>
+<p>现在我们一起看下面这个关于网页登录功能的需求：</p>
+<pre>
+Feature: Login
+  In order to access my account
+  As a user of the website
+  I want to log into the website
 
-	DirectoryStream&lt;Path&gt; stream = Files.newDirectoryStream(rt.transPath);) {
+Scenario: Logging in with valid credentials
+  Given I am at the login page
+  When I fill in the following form
+  | field | value |
+  | Username | xtrumanx |
+  | Password | P@55w0Rd |
+  And I click the login button
+  Then I should be at the home page
+</pre>
+<p>其可读性非常强，是吧？以上的详细需求是通过Gherkin语言来描述的。Gherkin是一种领域特定语言，它允许我们在不解释具体执行细节的情况下，详细描述应用应该如何执行。以上详细需求的大部分内容是由自由文字组成；只有几个特定的Gherkin关键字：Feature、Scenario、Given、When、And和Then，其他的都是自由文字，并且主要记录了功能特性是如何被使用的。</p>
+<p>Gherkin是一种基于行的编程语言，场景中的每一行（Line）就是一个步骤（Step）。“Logging in with valid credentials”场景中的第一个步骤是“Given I am at the login page”。该步骤需要一个具体步骤定义，这样我们的测试执行者（test runner）才能知道如何去完成该步骤。Spec Flow中的步骤定义其实就是一个带有变量的方法,而该变量包含有该步骤的具体文本。所有步骤定义方法都需包含于一个含有Binding属性的类中。</p>
+<pre>
+[Binding]
+class LoginStepDefinitions
+{
+  [Given(&quot;I am at the login page&quot;)]
+  public void GivenIAmAtTheLoginPage()
+  {
+    // TODO
+  }
+}
+</pre>
+<p>上面的类和方法名都是随意的。真正重要的是应用到类和方法中的变量。如果没有它们，Spec Flow就无法确认步骤定义方法和具体步骤的绑定关系。</p>
+<div id="lowerFullwidthVCR"></div>
+<p>现在就剩下步骤定义执行了。而这时候就该WatiN和Nunit上场了。</p>
+<p>WatiN是一个基于浏览器的自动化工具。我们将利用它来打开一个IE实例，浏览URL，填充表格，点击按钮或链接等。与此同时，我们将利用NUnit来断言我们的期望。尽管如此，WatiN和NUnit并非是必需的。也可以使用Selenium进行浏览器自动化；而事实上，任何单元测试框架都可用来断言，甚至可以使用Windows自带的应用自动化库，比如：<a href="http://white.codeplex.com/">White</a>，然后为相应的Windows Forms或WPF应用编写自动化验收测试。</p>
+<p>现在我们就来尝试为一个真实应用创建实际的验收测试。针对本文，我们将使用<a href="http://specflowdemoapp.apphb.com/">该实例程序</a>。读者可以从这里的<a href="https://bitbucket.org/xtrumanx/spec-flow-demo-app">repository</a>获取一份。该repository还包含完整的验收测试工程，但是我还是建议通过执行本文剩下的内容来创建自己的验收测试代码。</p>
+<h2>先决条件</h2>
+<p>Spec Flow为所有支持的第三方测试运行器授权以运行真正繁重的验收测试。正如前面所提的，我们将使用<a href="http://www.nunit.org/">NUnit</a>执行测试和<a href="http://watin.org/">WatiN</a>自动化浏览器。以下就是如何使用WatiN自动化浏览器为WatiN执行谷歌查询的例子(来自WaitN网站)。</p>
+<pre>
+[Test]
+public void SearchForWatiNOnGoogle()
+{
+  using (var browser = new IE(&quot;http://www.google.com&quot;))
+  {
+    browser.TextField(Find.ByName(&quot;q&quot;)).TypeText(&quot;WatiN&quot;);
+    browser.Button(Find.ByName(&quot;btnG&quot;)).Click();
 
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; for (Path entry : stream) {
+    Assert.IsTrue(browser.ContainsText(&quot;WatiN&quot;));
+  }
+}
+</pre>
+<p>上面的测试创建了一个新IE实例，然后将Google的URL传给构造器，然后由构造器让浏览器跳转到Google页面。随后寻找命名为“q”的文本框。该文本框就是你要输入具体查询内容的地方。找到该文本框后，输入“WatiN”。紧接着，查找命名为“btnG”的按钮，然后点击它。最后，由一个断言来确定页面上存在有“WatiN”（可以是页面上任何地方）。</p>
+<p>以上的代码为我们快速展示了通过WatiN自动化常规任务是多么的简单，这些任务可以是在浏览器上执行例如填写文本框、点击按钮等动作。</p>
+<p>接下来，就可以在Visual Studio中为你的验收测试创建新的类库工程。当你下载完NUnit和WatiN后，你将需要添加必需的DLL到你的验收测试工程中。从你的NUnit下载中添加一个nunit.framework.dll引用到你的验收测试工程。对于WatiN，你则需要添加两个DLL引用到你的验收测试工程：Interop.SHDocVw.dll和WatiN.Core.dll。</p>
+<p><img alt="" src="http://infoqstatic.com/resource/articles/Spec-Flow/zh/resources/1017001.jpg" _href="img://null" _p="true" /></p>
+<p>值得一提的是，你可以通过NuGet获取NUnit和WatiN这两个项目。这两个都很容易在NuGet中找到，并能自动添加到你的工程中。如果你已经在你的项目中使用NuGe了，大可以通过它下载这两个项目。</p>
+<p>从网站上获取一份<a href="http://www.specflow.org/">Spec Flow</a>，然后安装到你的系统中。跟NUnit和WatiN不同，你需要在系统中安装Spec Flow，而不是简单的拷贝Dll文件。Spec Flow自带有某些工具，每次往项目中添加一个特性文件，它都会创建相应的隐藏代码文件。另外，在你编辑特性文件时，它还带有一些语法高亮和其他调整。</p>
+<p>成功安装Spec Flow后，检查安装目录（默认为Program Files）。里面有一堆DLL文件，但是你只需要添加该引用到你的工程中：TechTalk.SpecFlow.dll。</p>
+<h2>建立验收测试工程</h2>
+<p>在我们进一步编写验收测试之前，我们需要建立我们的验收测试工程。我们将在工程中添加几个文件夹以便使项目更有条理。</p>
+<p>Features</p>
+<p>所有的说明都放在这个文件夹下。</p>
+<p>StepDefinitions</p>
+<p>所有情景步骤的步骤定义将放在这个文件夹下</p>
+<p>StepHelpers</p>
+<p><img alt="" src="http://infoqstatic.com/resource/articles/Spec-Flow/zh/resources/1017002.jpg" _href="img://null" _p="true" /></p>
+<h2>创建Spec Flow特性文件</h2>
+<p>在Features文件夹中添加一个新的名字为Login.feature的Spec Flow特性文件。该文件带有针对场景中新增特性的规格说明。可以将其删除，然后添加以下文本。</p>
+<pre>
+Feature: Login</pre>
+<p>Feature在Gherkin中是关键字。它需要在每个feature文件中出现一次，紧接着它是一个冒号和其特性名。然后你可以通过任意行的自由文字来描述该特性。为了保持简易性，Gherkin的创建者建议用户尽量将文档保持最短，并遵循以下格式：</p>
+<pre>
+In order to realize a named business value
+As an explicit system actor
+I want to gain some beneficial outcome which furthers the goal
+</pre>
+<p>个人看来，我更倾向于跳过上述描述，像登录这样能自我描述的特性，如果你尝试依据某一特定格式将其描述的话，反而让人困惑；有的时候很难区分出第一行中的“named business value”和第三行中你应描述的“beneficial outcome”之间的不同。需要记住的是该部分是自由文字，你可以任意描述。接下来就让我们先跳过这一段，开始编写情景。</p>
+<pre>
+Feature: Login
+Scenario: Logging in with valid credentials</pre>
+<p>跟Feature一样，Scenario也是Gherkin的一个关键字，其后面紧接着一个冒号和其命名。跟Feature不同的是，scenario不能在一行中就完成，它需要由各个步骤一起来完成scenario。我们可以想一想：我们需要做什么通过有效凭证来成功登录？</p>
+<ol> 
+ <li>填写登录表单</li> 
+ <li>点击登录按钮</li> 
+</ol>
+<p>但是且慢，在我们能够填写登录表单前，我们需要打开有着登录表单的页面。之后，我们需要检查我们是否成功登录。可以假设在登录后，我们将被重定向到主页，从而意味着我们已经成功登录。</p>
+<p>现在我们的scenario有了前提条件（比如：我们必须在登录页面）和后置条件（比如：我们在主页）。Gherkin中，前提条件需从关键字Given开始，而后置条件需要由关键字When开始。</p>
+<pre>
+Feature: Login
 
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; result.add(new Webfile(entry, rt.reqPath)); // 添加目录
-element info in model
+Scenario: Logging in with valid credentials
+Given I am at the 'Login' page
+When I fill in the following form
+| field    | value    |
+| Username | testuser |
+| Password | testpass |
+And I click the 'Login' button
+Then I should be at the 'Home' page
+</pre>
+<p>是否注意到它的类表结构？Spec Flow会自动将第一行斜体化，该行在管道限制行中，并由管道开始。第一行为表头，紧接着各行中的每列将指代表头中定义的任意文本。比如，Password就是field在第二行的内容，而testuser则是value列在第一行的值。</p>
+<p>同时，也应注意到由And开始的步骤。And关键字可以使用于任一步骤之后，并将被自动认为与前一步骤属于同一类型。如果And步骤紧接着Given步骤， 那么该步骤也被认为是一个Given步骤。在上述例子中，该And步骤被认为是When步骤。When步骤不用做pre或post条件，但是scenario需要这一部分用于进一步执行。</p>
+<p>创建第一个步骤定义</p>
+<p>现在我们完成了对Login特性的定义，但是我们的test runner还不知道如何执行该特性情景中的每一个步骤。我们需要为Login特性情景中的4个步骤一一定义。为了完成这个，我们将在Step目录中创建一个类，并将其命名为LoginSteps。为了让Spec Flow知道该类含有步骤定义，我们给该类绑定下Binding属性。该Binding属性属于TechTalk.SpecFlow命名空间的一部分。</p>
+<pre>
+using TechTalk.SpecFlow;
 
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; }
+[Binding]
+class LoginSteps
+{
+}
+</pre>
+<p>接下来，我们需要给每个步骤创建一个方法。该方法将告诉Spec Flow如何执行每一步骤。现在我们就只为第一个步骤进行具体步骤定义：“Given I am at the ‘Login’page”。</p>
+<pre>
+[Given(&quot;I am at the 'Login' page&quot;)
+public void GivenIAmAtTheLoginPage()
+{
+  // TODO
+}
+</pre>
+<p>请注意到该方法带有一个属性。该属性将告诉Spec Flow此方法所指代的步骤，每个步骤都有相应的属性。任何一个feature文件中的任意一个以关键字“Given”开始的步骤，紧接着的文本是“I am at the ‘Login’page”的都将会与该方法配对。</p>
+<p>现在我们需要为该步骤定义编写具体执行。我们需要告诉WatiN启动浏览器，然后访问程序登录页面。但是在这之前我们需要创建一个浏览器实例。我们也要确保scenario中剩余步骤也将使用该浏览器实例。为了保证scenario中所有步骤使用的是同一个浏览器实例，我们需要为浏览器对象创建一个实例，并将其保存于ScenarioContext字典中。ScenarioContext字典可以用于保存Scenario执行过程中的数据。我们还要创建一个名为WebBrowser的helper类，该类将保存scenario执行时的浏览器实例。</p>
+<pre>
+using TechTalk.SpecFlow;
+using WatiN.Core;
 
-} catch (Exception ioe) {
+static class WebBrowser
+{
+  public static IE Current
+  {
+    get
+    {
+      if(!ScenarioContext.Current.ContainsKey(&quot;browser&quot;))
+        ScenarioContext.Current[&quot;browser&quot;] = new IE();
 
-	log(&quot;&quot;, ioe);
-
-}&nbsp; // 因为API支持AutoCloseable和新的try块语法，所以这里没有finally块</pre><p>这个例子填充了一个将由页面视图绘制的目录模型。Files.newDirectoryStream用于获取目录内容的迭代器。</p><p><strong>2. 深度遍历</strong></p><pre>
-Path ffrom = ….
-
-Files.walkFileTree(ffrom, EnumSet.of(FileVisitOption.FOLLOW_LINKS), Integer.MAX_VALUE,
-
-&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;new SimpleFileVisitor&lt;Path&gt;() {
-
-&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;@Override
-
-&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;public FileVisitResult preVisitDirectory(Path dir,
-
-BasicFileAttributes attrs)
-
-&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;throws IOException {
-
-&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;Path targetdir =
-fto.resolve(fto.getFileSystem().getPath(ffrom.relativize(dir).toString()));
-
-&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;try {
-
-&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;Files.copy(dir, targetdir,
-StandardCopyOption.COPY_ATTRIBUTES);
-
-&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;} catch (FileAlreadyExistsException e) {
-
-&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;if (!Files.isDirectory(targetdir))
-
-&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;throw e;
-
-&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;}
-
-&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;return FileVisitResult.CONTINUE;
-
-&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;}
-
-&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;@Override
-
-&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;public FileVisitResult visitFile(Path file, BasicFileAttributes
-attrs) throws IOException {
-
-&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;Path targetfile = fto.resolve(fto.getFileSystem()
-
-&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; .getPath(ffrom.relativize(file).toString()));
-
-&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;Files.copy(file, targetfile,
-StandardCopyOption.COPY_ATTRIBUTES);
-
-&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;return FileVisitResult.CONTINUE;
-
-&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;}
-
-});</pre><p>这段代码将文件系统上一个目录的内容复制到另一个位置。preVisitDirectory负责复制目录本身。因为目标可以是另一个文件系统，该例子既可以方便地在保存目录结构的同时提取ZIP归档文件的全部内容，也可以方便地将目录结构存入ZIP归档文件中。COPY_ATTRIBUTES选项会把源文件的所有属性（包括时间戳）保存到目标文件中。</p><p>类似实现可用于删除一个目录的所有内容，在这种情况下必须实现postVisitDirectory方法，而不是preVisitDirectory，因为删除内容之后才能删除目录本身。</p><pre>
-@Override
-
-public FileVisitResult postVisitDirectory(Path dir, IOException e) throws IOException {
-
-&nbsp;&nbsp; &nbsp;if (e == null) {&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;
-
-&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;if (dir.getParent() != null) {
-
-&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;Files.delete(dir);
-
-&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;return FileVisitResult.CONTINUE;
-
-&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;} else
-
-&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;return FileVisitResult.TERMINATE;
-
-&nbsp;&nbsp; &nbsp;} else {
-
-&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;// 目录迭代失败
-
-&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;throw e;
-
-&nbsp;&nbsp; &nbsp;}
-
-}</pre><p>该例子在删除前会检查以确保目标并非根目录。所有可能的异常都会向上传播，由某个调用者处理。</p><p><strong>3.来自ZIP的文件系统</strong></p><pre>
-FileSystem fs = FileSystems.newFileSystem(zipPath, null);
-
-Path zipRootPath = fs.getPath(fs.getSeparator());
-
-….
-
-Fs.close();</pre><p>zipRootPath可以随意遍历ZIP文件的内容。所得的文件系统功能全面，支持大部分操作（包括复制、移动和删除）。不过ZIP文件系统不能使用监视服务。还请注意，该文件系统用完后必须关闭。如果要在同一个ZIP上打开另一个文件系统，操作会失败，因此编写代码时请将这种可能性牢记在心。然而默认的文件系统无需关闭。看起来新I/O文件包只维护了一个文件系统实例，并负责处理并发。</p><p><strong>4.监视</strong></p><p>监视服务有多种使用方法，这里会说明两种最常见的，前面也有所提及。</p><pre>
-WatchService ws = dir.getFileSystem().newWatchService();
-
-WatchKey wk = dir.register(ws,&nbsp; StandardWatchEventKinds.ENTRY_CREATE,
-StandardWatchEventKinds.ENTRY_DELETE, StandardWatchEventKinds.ENTRY_MODIFY);</pre><p>获得监视键之后，可以将其传给监视线程来监控相关事件。</p><pre>
-@Override
-
-public void run() {
-
-&nbsp;&nbsp; &nbsp;for (;;) {
-
-&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;if (watchKey != null) {
-
-&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;for (WatchEvent&lt;?&gt; event : watchKey.pollEvents()) {
-
-&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;updateScreen(event.kind(), event.context());
-
-&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;}
-
-&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;boolean valid = watchKey.reset();
-
-&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;if (!valid) {
-
-&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;break;
-
-&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;}
-
+      return ScenarioContext.Current[&quot;browser&quot;] as IE;
     }
+  }
+}
+</pre>
+<p>以上的Helper类含有Current属性，它将获取现有浏览器用于目前正在执行的scenario。如果它没在ScenarioContext字典中找到浏览器实例，它将创建一个新浏览器实例，然后将其添加到字典中。这样存在于字典中的浏览器实例又回来了。</p>
+<p>最后，我们终于可以回去实现我们的步骤定义了。在示例应用中，登录页面存在于http://localhost:9876/authentication/login。我们将通过让当前Scenario浏览器实例定位到该URL以执行我们的步骤定义。我们可以通过浏览器实例回到主页，然后点击登录链接来执行我们的步骤定义，而这在现在看来是最简单的。然后，我们将重构我们的步骤定义，这样我们只要有一个步骤定义就能解决应用中所有页面跳转问题。</p>
+<pre>
+[Given(&quot;I am at the 'Login' page&quot;)
+public void GivenIAmAtTheLoginPage()
+{ 
+  // Make sure to add the namespace the WebBrowser class is inside 
+  WebBrowser.Current.GoTo(&quot;http://localhost:9876/authentication/login&quot;);
+} 
+</pre>
+<h2>结尾</h2>
+<p>现在我们已经为尝试执行验收测试做好准备了。虽然我们还没完成所有的步骤定义，但是我们想在进一步深入前，确保各方面都已经正确衔接上。在执行测试之前，我们要保证所有加到工程中的引用都已设置成了Copy Local。如果是通过NuGet添加的WatiN，Interop.SHDocVw DLL则默认将它的Embed Interop属性设置成True。这时，需要确保将Embed Interop属性设置成false，这样才能将它的Copy Local属性设置成True。</p>
+<p>同时，我们也需要在单线程的Apartment State中运行NUnit，不然就不能自动化IE浏览器。之所以选择IE，而非Firefox是因为Firefox持续更新它的主要版本，而这会不断破坏WatiN与Firefox之间的衔接。</p>
+<p>设置NUnit的Apartment State需要使用到配置文件。往工程中添加一个app.config文件，并添加以下配置。</p>
+<pre>
+&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot; ?&gt;
+&lt;configuration&gt;
+  &lt;configSections&gt;
+    &lt;sectionGroup name=&quot;NUnit&quot;&gt;
+      &lt;section name=&quot;TestRunner&quot; type=&quot;System.Configuration.NameValueSectionHandler&quot;/&gt;
+    &lt;/sectionGroup&gt;
+  &lt;/configSections&gt;
+  &lt;NUnit&gt;
+    &lt;TestRunner&gt;
+      &lt;!-- Valid values are STA,MTA. Others ignored. --&gt;
+      &lt;add key=&quot;ApartmentState&quot; value=&quot;STA&quot; /&gt;     
+    &lt;/TestRunner&gt;
+  &lt;/NUnit&gt;
+&lt;/configuration&gt;
+</pre>
+<h2>执行验收测试</h2>
+<p>Login.feature文件将有个名字为Login.feature.cs（或者.vb）的代码隐藏文件。该文件是含有TestFixture属性的类，这样NUnit才能知道需要测试哪个类。如果你的Visual Studio中已经安装了NUnit测试运行插件，比如：TestDriven.Net或ReSharper，那么你就可以使用Login.feature.cs文件来运行测试。如果你没有相应的测试插件，那么你可以打开NUnit自带的、位于应用目录下的测试运行器，然后将其指向由验收测试产生的配置文件中，这样它将定位Login.feature.cs中的测试设置。</p>
+<p>在执行测试前，保证应用的服务器处于运行状态。然后运行程序,一个新的IE实例将被打开，并跳转到登陆页面。如果做到了这些，那就说明各个部分已经被正确配置，我们就可以继续完成剩余的步骤定义。如果IE没有打开，或没有跳转到登陆页面，那就要进一步调试了。</p>
+<h2>完成剩余的步骤定义</h2>
+<p>编写剩余步骤定义将会非常简单。你只需对WatiN API有一定了解，这样就可以配置WatiN以填写表单或查找按钮和链接，然后对其点击。</p>
+<p>首先，我们尝试情景中的第二个步骤：“When I fill in the following Form”。需要在LoginSteps类中创建一个方法，并带有一个变量将其绑定到我们目前正在工作的步骤上。</p>
+<pre>
+[When(&quot;I fill in the following form&quot;)]
+public void WhenIFillInTheFollowingForm(TechTalk.SpecFlow.Table table)
+{
+  // TODO
+}
+</pre>
+<p>注意传到该步骤定义中的参数。该Table对象包含有我们在情景中所描述的值。而WatiN在其命名空间中也有一个Table类，为了避免冲突，我对该Table对象采用了完全限定名。该Table对象将由行组成。行中的每列可以通过索引或列名来获取。列名由情景中表的第一行来定义。</p>
+<pre>
+[When(&quot;I fill in the following form&quot;)]
+public void WhenIFillInTheFollowingForm(TechTalk.SpecFlow.Table table)
+{
+  foreach(var row in table.Rows)
+  {
+    var textField = WebBrowser.Current.TextField(Find.ByName(row[&quot;field&quot;]));
 
-}</pre><p>如果事件消耗速度不够快，则会收到OVERFLOW事件。如果对监视键的事件没有兴趣了，可以取消。监视服务也可以用完后关闭。还有一种方法是，在注册了多个被监视对象的情况下，使用监视服务方法来轮询修改事件。这种方法更适合WebFolder应用。</p><pre>
-public void run() {
+    if(!textField.Exists)
+      Assert.Fail(&quot;Expected to find a text field with the name of '{0}'.&quot;, row[&quot;field&quot;]);
+    textField.TypeText(row[&quot;value&quot;]);
+}  
+}
+</pre>
+<p>是的，只需要5行，我们就完成了填写表单的步骤定义。我们首先循环表中的行，然后试图查找相应的带有命名属性的field文本，用来匹配当前行中field列值。如果没有匹配到相应的文本field，测试将会失败（但是会有相应信息被记录下来）。但是如果我们找到一个匹配的文本field，WatiN将会被指示输入在当前行所找到的列值。</p>
+<p>接下来剩余的步骤定义也基本类似。以下就是我们下个步骤的代码：“And I click the ‘Login’button”。</p>
+<pre>
+[When(&quot;I click the 'Login' button&quot;)]
+public void AndIClickTheLoginButton()
+{
+  var loginButton = WebBrowser.Current.Button(Find.ByValue(&quot;Login&quot;));
 
-&nbsp;&nbsp; &nbsp;for (;;) {
+  if(!loginButton.Exists)
+    Assert.Fail(&quot;Expected to find a button with the value of 'Login'.&quot;);
 
-&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;try {
+  loginButton.Click();
+}
+</pre>
+<p>而最后一步，我们则需要弄清如何去验证我们是否在主页上。我们可以检测其文件标题来看它是否满足我们的需要；或者检测URL来查看其是否与期望的主页URL匹配。这里我们将通过URL来检测。但需要记住的是步骤定义的执行会完全依赖于具体应用：如果我们大量使用Ajax进行页面切换，URL可能不会被更新，从而可能无法验证我们是否在正确页面上。</p>
+<pre>
+[Then(&quot;I should be at the 'Home' page&quot;)]
+public void ThenIShouldBeAtTheHomePage()
+{
+  var expectedURL = &quot;http://localhost:9876/&quot;;
+  var actualURL = WebBrowser.Current.Url;
+  Assert.AreEqual(expectedURL, actualURL);
+}
+</pre>
+<p>现在重新执行验收测试，而这次它将执行所有步骤。如果成功了，那么恭喜你，你成功地通过Spec Flow编写了第一个验收测试。</p>
+<h2>重构测试代码</h2>
+<p>现在我们的步骤定义已经成功运行了，可是我们还是需要停下来回顾一下。我们已经有了针对登录按钮的步骤定义，有很大可能我们的应用中将有大量的按钮。我们是否为验收测试集中的每个按钮提供一个步骤定义呢？这些步骤定义中唯一一个需要修改的地方就是WatiN在某页面上寻找期望按钮所对应的具体文本，以下就是个例子：</p>
+<pre>
+[When(&quot;I click the 'Login' button&quot;)]
+public void AndIClickTheLoginButton()
+{
+  var loginButton = WebBrowser.Current.Button(Find.ByValue(&quot;Login&quot;));
 
-&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;WatchKey watchKey = watchService.take(); // poll(10, );
+  if(!loginButton.Exists)
+    Assert.Fail(&quot;Expected to find a button with the value of 'Login'.&quot;);
 
-&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;processWatchKey(watchKey);
+  loginButton.Click();
+}
 
-&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;} catch (InterruptedException ie) {
+[When(&quot;I click the 'Register' button&quot;)]
+public void AndIClickTheRegisterButton()
+{
+  var registerButton = WebBrowser.Current.Button(Find.ByValue(&quot;Register&quot;));
 
-&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;break;
+  if(!registerButton.Exists)
+    Assert.Fail(&quot;Expected to find a button with the value of 'Register'.&quot;);
 
-&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;}
+  registerButton.Click();
+}
+</pre>
+<p>幸运的是，Spec Flow为该问题提供了解决方案。你可以使用正则表达式，该表达式必须是传递给绑定属性的字符串，这样我们就将不同步骤绑定到同一个步骤定义。任何由该正则表达式捕获的文本都可以当作一个参数传递给步骤定义。具体例子如下：</p>
+<pre>
+[When(&quot;I click the '(.*)' button&quot;)]
+public void AndIClickAButton(string buttonText)
+{
+  var button = WebBrowser.Current.Button(Find.ByValue(buttonText));
 
-&nbsp;&nbsp; &nbsp;}
+  if(!button.Exists)
+    Assert.Fail(&quot;Expected to find a button with the value of '{0}'.&quot;, buttonText);
 
-}</pre><p>一个监视线程是为默认文件系统获取的，之后会用在一个单一的监控线程中。这里使用了take操作，因为它是阻塞的，所以不会浪费循环。为支持轮询，processWatchKey方法的实现与上面类似，也关联了监视事件。不过，这里不需要额外的循环，因为从监视服务获得的键已经与事件关联了起来。</p><h3>概括</h3><p>新I/O文件提供的内容包括：</p><ol> 
- <li>强大的文件系统遍历机制，可以进行复杂的分组操作。</li> 
- <li>可以操作具体的文件、文件系统对象及其属性（如链接、属主和权限）。</li> 
- <li>用于处理整个文件内容的便捷的工具方法，如读取、复制和移动等。</li> 
- <li>用于监控文件系统修改的监视服务。</li> 
- <li>文件系统上的原子操作，提供了针对文件系统的进程同步。</li> 
- <li>可以定制定义于特定文件组织形式（如归档文件）之上的文件系统。</li> 
-</ol><h3>迁移</h3><p>之所以考虑将基于老式I/O包的系统迁移到新I/O包上，有如下四个原因：</p><ul> 
- <li>用到复杂的文件遍历实现时，会发现内存问题</li> 
- <li>需要支持ZIP归档文件中的文件操作</li> 
- <li>需要细粒度地控制POSIX系统中的文件属性</li> 
- <li>需要监视服务</li> 
-</ul><p>根据经验，如果有两项或两项以上适用于项目，迁移就是值得的，否则我建议仍使用当前实现。一个不迁移的理由是，新I/O文件实现并不能使代码更紧凑、可读性更好。另一方面，在第一次访问特定的运行时实现时，新的文件遍历操作性能可能稍显不好。看起来Oracle在Windows上的实现做了很多缓存，致使第一次访问消耗的时间比较显著。然而Linux上的OpenJDK（IcedTea）实现就没有这种问题，所以该问题似乎依赖于具体的平台/实现。</p><p>如果决定迁移，下表提供了一些技巧：</p><table cellspacing="0" cellpadding="0" border="1" style="width: 100%;"> 
- <tbody> 
-  <tr> 
-   <td>当前实现</td> 
-   <td>迁移后</td> 
-   <td>注释</td> 
-  </tr> 
-  <tr> 
-   <td>fileObj = new File(new File(pe1, pe2), pe3)</td> 
-   <td>pathObj = fsObj. getPath(pe1, pe2, pe3)</td> 
-   <td>fsObj可以作为FileSystems.getDefault()的结果获得，因为文件系统保存在Path本身之中，所以该对象可以从来自同一文件系统的任何现有路径获得</td> 
-  </tr> 
-  <tr> 
-   <td>fileObj.someOperation()</td> 
-   <td>Files.someOperation(pathObj)</td> 
-   <td>尽管可以添加一些与链接和属性相关的额外参数，但大部分情况下操作名是相同的</td> 
-  </tr> 
-  <tr> 
-   <td>fileObj.listFiles()</td> 
-   <td>Files.newDirectoryStream(pathObj)</td> 
-   <td>Files.walkFileTree应该用于深度遍历</td> 
-  </tr> 
-  <tr> 
-   <td>new FileInputStrean(file)</td> 
-   <td>Files.newInputStream(pathObj)</td> 
-   <td>可以指定如何打开文件的额外选项</td> 
-  </tr> 
-  <tr> 
-   <td>new FileOutputStream(file)</td> 
-   <td>Files.newOutputStream(pathObj)</td> 
-   <td>可以指定如何打开文件的额外选项</td> 
-  </tr> 
-  <tr> 
-   <td>new FileWriter(file)</td> 
-   <td>Files.newBufferedWriter(pathObj)</td> 
-   <td>可以指定如何打开文件的额外选项</td> 
-  </tr> 
-  <tr> 
-   <td>new FileReader(file)</td> 
-   <td>Files.newBufferedReader(pathObj)</td> 
-   <td>可以指定如何打开文件的额外选项</td> 
-  </tr> 
-  <tr> 
-   <td>new RandomAccessFile(file)</td> 
-   <td>Files.newByteChannel(pathObj)</td> 
-   <td>可以指定打开选项和文件创建属性</td> 
-  </tr> 
- </tbody> 
-</table><p>File类和Path接口之间有两种转换方法：pathObj.toFile()和fileObj.toPath()。这有助于减少迁移所需的努力，人们得以将精力集中在新I/O文件提供的新功能上。作为迁移过程的一部分，可以考虑用Files.copy替换定制的文件复制方式。Path接口本身提供了很多便利方法，可以减少以前基于File对象编码时的代码量。因为新代码将运行于Java 7或更高版本之上，改进异常处理和资源释放是值得的。下面代码说明了旧的机制和新的机制：</p><pre>
-ClosableResource resource = null;
-
-try {
-
-&nbsp;&nbsp;&nbsp;&nbsp; Resource = new Resource(…);
-
-// 资源处理
-
-} catch(Exception e) {
-
-} finally {
-
-&nbsp;&nbsp; &nbsp;if (resource != null)
-
-&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;try {
-
-&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;resource.close();
-
-        }&nbsp; catch(Exception e) {
-
-        }
-
-}</pre><p>可以替换为下面更为紧凑的代码：</p><pre>
-try (Resource = new Resource(…);) {
-
-&nbsp;&nbsp;&nbsp;&nbsp; // 资源处理
-
-&nbsp;
-
-} catch(Exception e) {
-
-}</pre><p>Resource必须实现AutoCloseable接口，所有来自JRT的标准资源都实现了该接口。</p><h3>关于作者</h3><p><img src="http://www.infoq.com/resource/articles/java7-nio2/zh/resources/DmitriyRogatkin.jpg;jsessionid=FF160FF1B4C655821C1715EE1D645129" alt="" _href="img://DmitriyRogatkin.jpg" _p="true" />Dmitriy Rogatkin是WikiOrgCharts公司的CTO，负责把握公司的技术方向。他之前主要从事企业级软件开发相关的技术：他在MetricStream这家领先的企业级GRC软件公司担任了十多年首席架构师。他喜欢通过创建开源软件（从多媒体桌面应用到框架，再到应用服务器）来检验不同的想法。在他的诸多项目当中，TJWS是一个微型应用服务器，在完整的Java EE Profile应用服务器耗费太高时，可以将TJWS作为一种选择；而TravelsPal可以帮助人们在旅行和规划时间时联系彼此。<br /> 查看英文原文：<a href="http://www.infoq.com/articles/java7-nio2;jsessionid=FF160FF1B4C655821C1715EE1D645129">A Detailed Look at The New File API in Java 7</a></p><div class="clearer-space"></div><br><br><br><br><br><br></body></html>
+  button.Click();
+}
+</pre>
+<p>该步骤定义可以是以下任意一种：</p>
+<ul> 
+ <li>点击‘登陆’按钮</li> 
+ <li>点击‘注册’按钮</li> 
+ <li>点击‘任意文本’按钮</li> 
+</ul>
+<p>你可以使用该技巧来让所有步骤定义可重用。让所有的步骤定义都具有可重用性是个非常好的想法，我们应该避免编写只有某一特定情景才可以用的步骤定义。可重用性允许你写出的Scenario能立即使用，因为你已经拥有一个可以重复使用的步骤定义。但是也没必要在需要前就把步骤定义编写出来，在需要时编写就好了。大多数情况下，你的测试所需要做的基本上是同样的事情：跳转到一个页面，填写表单，点击之类的。只有在极少数情况下，你才需要为一个情景编写特殊步骤定义，比如验证jQuery UI日历是否在点击一个需要日期值的文本框时弹出，这样不寻常的例子时候才需要。</p>
+<h2>对于具体如何重构你的步骤定义，我将其作为练习留给你，确保每个都具有可重用性。之后，你就可以编写新的特性文件，而因为所需的步骤定义都已经准备好了，它们都可以立刻工作。当然，你将需要更多的步骤定义来自动化不同行为（比如：点击一个链接），你也需要进一步改善当前步骤定义，以便在不同情景中也能使用。你将注意到我们的表单填充步骤定义中处理的表单只带有文本框。如果你想勾选复选框，通过value或ID寻找按钮，或其它与表单相关操作，那你就需要在表单填充步骤定义中添加相应的逻辑。</h2>
+<h2>总结</h2>
+<p>总之，以上就是使用Spec Flow编写验收测试之旅。尽管如此，Spec Flow依然有更多特性需要你自己去发现。比如：Spec Flow还有个跟踪机制，因此你能跟踪某个指定特性在特定特性，情景或步骤前后是如何执行某些代码。对于以下情况，它就会起到非常大的作用，比如：如果你需要在完成含有登陆功能的场景后的登出；测试前准备数据库，或只是简单地在每个测试结束后关闭浏览器窗口。</p>
+<p>随着测试不断被创建，你会发现完成验收测试集所需的时间也会随之增加。但是你的测试执行得越快，你就能越快得到回馈，并找到问题所在。你需要尽可能快地执行你的测试。方法之一就是将你的测试并行化，而非按顺序执行，所有测试将一起执行，而且将更快结束。但是Spec Flow并没有提供并行处理功能，因此需要从别处想办法。如果你使用NUnit，你可以查看PNUnit看其是否满足你的并行需求。</p>
+<p>Gherkin，我们曾经是使用DSL来编写我们的详细需求，它被设计作为衔接技术人员与非技术利益相关者之间的桥梁，以便他们在某一特定特性应该如何运行上能够达成一致。有的团队甚至有非技术利益相关者参与到使用Given-When-Then语句来编写实际详细需求。可以想象到，培训大家如何做到这点并不太难，但是其结果却大大不同。</p>
+<p>也有一部分人更进一步地使用Spec Flow。他们在开始所有新特性开发时，首先就是编写详细需求，接着单元测试，最后才是真正的编码。然后他们通过常规的TDD red-green-refactor循环通过单元测试，最后通过验收测试。如果你已经在实践TDD，打算为项目编写验收测试，那你应该尝试下验收测试驱动开发。</p>
+<p>无论你是通过什么途径，你都需确保它对你、还有你的工程都要行之有效。如果你还处于建模状态，并不断修改你的应用，持续更新验收测试可能会造成一定时间拖延。什么时候应该着手编写验收测试是你的决定，只有你能保证它将发生。</p>
+<h2>关于作者</h2>
+<p><img src="http://infoqstatic.com/resource/articles/Spec-Flow/zh/resources/1017003.JPG" style="float: left; margin-right: 10px" alt="" _href="img://null" _p="true" /> <b>Mustafa Saeed Haji Ali</b> 现居于Hargeisa，Somaliland。作为一名软件开发工程师，他通常利用ASP.Net MVC来工作。Mustafa热衷于测试和使用JaveScript框架，比如:KnockoutJS,AngularJS和SignalR。在传播最佳实践上，Mustafa也有极大的热情。</p>
+<div style="clear:both">
+ &nbsp;
+</div>
+<p><strong>参考英文原文:</strong> <a href="http://www.infoq.com/articles/Spec-Flow">Writing Automated Acceptance Tests with Spec Flow</a></p>
+<hr />
+<p>感谢<a href="http://www.infoq.com/cn/author/陈菲">陈菲</a>对本文的审校。</p>
+<p>给InfoQ中文站投稿或者参与内容翻译工作，请邮件至<a href="mailto:editors@cn.infoq.com">editors@cn.infoq.com</a>。也欢迎大家通过新浪微博（<a href="http://www.weibo.com/infoqchina">@InfoQ</a>）或者腾讯微博（<a href="http://t.qq.com/infoqchina">@InfoQ</a>）关注我们，并与我们的编辑和其他读者朋友交流。</p><br><br><br><br><br><br></body></html>

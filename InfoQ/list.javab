@@ -2,6 +2,9 @@
  <head></head> 
  <body> 
   <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/8.javab">Contrasting Backbone and Angular</a> Victor Savkin presents in detail the pros and cons of using Backbone.js and Angular.js to create web applications, comparing the two frameworks with each other. 
+  </div> 
+  <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/7.javab">Sell Before You Build</a> “Before you write any code, make sure you have a failing test.” This was revolutionary when first pitched in the late 90’s. Many successful entrepreneurs have practiced a similar idea: “Before you build a product/service, make sure you have paying customers.” Naresh Jain explains his approach of finding effective MVPs to validate his Educational Product and why Agile Methods simply fail to do so. 
   </div> 
   <div> 
@@ -147,9 +150,6 @@
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/9.javab">Design Pattern Automation</a>Most boilerplate code stems from repetitive implementation of design patterns that are so well-understood that they could be implemented automatically if we had a way to teach it to compilers. 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/8.javab">Self-Organizing Organizations (For Real)</a>All you’ve ever wanted to know about self-organized companies, without daring actually run one. 
   </div> 
  </body>
 </html>

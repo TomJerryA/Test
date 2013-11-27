@@ -1,36 +1,12 @@
-<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>継続的デリバリがイノベーションを加速する</h3><p><a target="_blank" href="http://www.infoq.com/news/2013/04/cd-speeds-up-innovation;jsessionid=CDC69D4B5CAA7A35A24BB91119F164D0"><em>原文(投稿日：2013/04/13)へのリンク</em></a></p> 
-<div class="clearer-space">
- &nbsp;
-</div> 
-<div id="newsContent"> 
- <p>Thoughtworks が先日公開した白書で取り上げた <a target="_blank" href="http://www.thoughtworks-studios.com/register?destination=node/10946">継続的デリバリ (CD, Continuous Delivery) の成熟モデル</a> は，多くの企業がイノベーションの重要性を理解しながらも，ビジネスリーダの要求に対して十分な速さでソフトウェアを提供できていない，という調査結果に対する回答だ。そこでは企業における継続的デリバリのレベルの低さが，戦略的パートナとしてのソフトウェア開発チームの立場を阻害すると同時に，ビジネスの要求に対してソフトウェアのリリースが遅れを取る原因となっている，と説明されている。</p> 
- <p>Thoughtworksが意図するのは，プロセスとツールの <a target="_blank" href="http://consultantsmind.com/2012/07/01/maturity-model/">ギャップを評価する手段として成熟度モデルを利用</a> することによって，企業が改善すべき領域の明確化を可能にすることだ。彼らは継続的デリバリを，ソフトウェア開発の生産性を期待されるレベル以上に向上し得るソリューションとして捉える。それによって技術部門内に，企業の戦略的方向性に重要な役割を果たす能力が生まれることを期待しているのだ。白書では，以下のようなレベルと成果が詳細に説明されている。</p> 
- <blockquote> 
-  <ul> 
-   <li>5: 最適化 – <a target="_blank" href="http://www.startuplessonslearned.com/2009/06/why-continuous-deployment.html">継続的デプロイ</a> の実現により，ビジネス上の実験とイノベーションを実現する。</li> 
-   <li>4: 定量的管理 – リリース・オンデマンド: ソフトウェアは常にリリース可能な状態にある。リリースタイムボックスが明確に定義されると同時に，ビジネスニーズを十二分に満足する。</li> 
-   <li>3: 明確化 – リリース候補版の定期的提供: リリースタイムボックスは明確に定義されているが，着想から製品リリースまでの期間はビジネス上のニーズに達していない。</li> 
-   <li>2: 管理 – 計画的リリース: リリースタイムボックスは明確に定義されているが，着想から製品リリースまでの期間はビジネスニーズに達していない。</li> 
-   <li>1: 初期状態 – アドホックなデプロイ。</li> 
-  </ul> 
- </blockquote> 
- <div>
-  成熟度モデルは５つのレベルに分割されている。 レベル４をクリアできていない企業は，要求されるペースでイノベーションを実現するために苦労しているはずだ。またレベル３以下の企業の大部分は，ビジネスリーダや市場の要求を満足できないだろう。
+<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>Simian Armyを使わないPagerDutyの復元性テスト</h3><p><a target="_blank" href="http://www.infoq.com/news/2013/11/dod-lon-day1-failure-testing"><em>原文(投稿日：2013/11/12)へのリンク</em></a></p>
+<div class="article_page_left news_container text_content_container"> 
+ <div class="text_info"> 
+  <p><a href="http://www.pagerduty.com/">PagerDuty</a>の<a href="http://www.devopsdays.org/events/2013-london/proposals/Failure%20Friday!%20-%20Start%20injecting%20failure%20today/">Doug Barth</a>氏が，特別な自動化作業を前もって用意することなくシステムの復元性テストを開始するという，同社で実施したアプローチについて，<a href="https://speakerdeck.com/dougbarth/failure-friday-start-injecting-failure-today">DevOps Days Londonで講演した</a>。目標としたのは障害発生点の早期発見と，１週間に１時間の時間枠を設けて，その対処方法についてオープンに議論することだ。</p> 
+  <p class="MsoNormal"><span lang="EN-GB">Netflixで有名な<a href="http://techblog.netflix.com/2011/07/netflix-simian-army.html">simian army</a>のようなカバレッジで障害テストを自動化することは，PagerDutyのマルチクラウド環境では実現不可能だ。また，社内の自動ツールに投資したとしても，初期結果を得るまでには時間を要する。</span><span lang="EN-GB">そこで同社では，&quot;Failure Friday&quot; と名付けた手動の障害テストアプローチを採用することにした。</span><span lang="EN-GB">毎週金曜日の1時間を使って一連の &quot;アタック&quot; (障害を引き起こす) を実行し，”犠牲者” (テスト対象のシステム)の反応をチェックするのだ。</span></p> 
+  <p class="MsoNormal"><span lang="EN-GB">アタックとアタックの間，システムは通常の動作状態に戻される。</span><span lang="EN-GB">大きな障害が発生した (例えば障害発生後，犠牲者システムへ送られたリクエストが，他のサービスインスタンスによって処理されなくなったような) 場合，アタックは中止される。</span><span lang="EN-GB">この時はセッションを停止して，システムを一旦，手動で回復させる。</span><span lang="EN-GB">その上で次の金曜日に，恒久的な対策をテストするのだ。</span><span lang="EN-GB">そういったことがなければ，アタックは1時間，セッションが終了するまで継続される。</span></p> 
+  <p class="MsoNormal"><span lang="EN-GB">アタックの方法は，<a href="http://cassandra.apache.org/">Cassandra</a>データベースインスタンスの停止やサーバインスタンスの再起動といった簡単な障害シミュレーションから始まり，より複雑な，ネットワーク分離 (IPテーブルの設定ミスによりドロップしたパケットの特定ポートへの転送) やノードの能力低下 (<a href="http://www.linuxfoundation.org/collaborate/workgroups/networking/netem#Emulating_wide_area_network_delays">netemのネットワークエミュレーション</a>を使用) のシミュレーションにまで及ぶ。</span></p> 
+  <p class="MsoNormal"><span lang="EN-GB">システムの問題解決に加えて，障害の処理とテストの必要性に関する全般的な意識向上などが，期待される効果として挙げられる。</span><span lang="EN-GB">しかしそれよりも氏が強調したのは，実際に体験するまでの間に陳腐化したり不正確なものになるような，単なる理論的知識ではなく，故意に発生させた障害を経験し理解した結果として，新たなオンコール対応技術者(開発あるいは運用において)の数的拡大が可能になるという，副次的な効果の方だ。</span><span lang="EN-GB">その他にも期待していなかった効果として，シミュレーションの難しいコンポーネント障害の所在が明らかになったことがある。これが要因となってアーキテクチャが変更され，システム全体のテスト性を向上することができた。</span></p> 
+  <p class="MsoNormal"><span lang="EN-GB">実務的組織の観点から氏は，実施記録と活動時間，発見項目と障害記録に加えて，ダッシュボードと測定基準を公開することの重要性にも言及した。</span><span lang="EN-GB">さらに氏は，監視システムが所定の動作をしていることの確認のため，セッション中も警告を停止しないことを推奨した。ただし，故意に起こした障害がアラームエスカレーションされるのを避けるため，アタックセッションの実施をすべての人々に周知することも付け加えている。</span>
+   <o:p></o:p></p> 
  </div> 
- <div>
-  &nbsp;
- </div> 
- <div>
-  Thoughtworksは白書のために，325の事業とITプロフェッショナルへの調査を含むリサーチの実施をForrester Consultingに依頼している。
- </div> 
- <div>
-  &nbsp;
- </div> 
- <div>
-  今回のCDモデルを通じて明らかになったギャップを埋めるための有用な追加情報がInfoQにはある。昨年初めに公開した，
-  <a target="_blank" href="http://www.infoq.com/articles/Continuous-Delivery-Maturity-Model;jsessionid=2E1F70D9DCB3675A2373C5EEFD39B775;jsessionid=CDC69D4B5CAA7A35A24BB91119F164D0">継続的デリバリの適用</a> を支援するモデルに関する記事だ。ThoughtWorksの主任コンサルタントである Jez Humble氏も先頃，
-  <a target="_blank" href="http://www.infoq.com/presentations/Adopting-Continuous-Delivery;jsessionid=2E1F70D9DCB3675A2373C5EEFD39B775;jsessionid=CDC69D4B5CAA7A35A24BB91119F164D0">継続的デリバリを実現する上でもっとも重要なファクタ</a> についての講演を行っている。
- </div> 
- <p id="lastElm">&nbsp;</p> 
-</div> 
-<p id="lastElm"></p><br><br><br><br><br><br></body></html>
+</div><br><br><br><br><br><br></body></html>

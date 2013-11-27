@@ -1,8 +1,14 @@
 <html>
  <head></head> 
- <body>
-  <div>
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/10.java">Streaming Big Data With Amazon Kinesis</a>Amazon recently announced Kinesis, a service that allows developers to stream large amounts of data from different sources and process it. The service is currently in limited preview.
+ <body> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/12.java">Release of BizTalk Services Signals “Cloud First” Transition for Microsoft Integration Platform</a>After a long incubation period, Microsoft released its cloud-based integration tool called Windows Azure BizTalk Services. While reiterating their commitment to their on-premises integration tools, Microsoft has said that it will push innovation to its cloud platform first. 
+  </div> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/11.java">Microsoft Envisions One OS Running on Mobile Devices and Sensors</a>During a UBS Global Technology Conference held last week, Microsoft’s Julie Larson-Green, EVP Devices and Studios, discussed her company’s approach to today’s software market, providing insights especially into the mobile device operating systems space. We selected the most interesting fragments from the session’s transcript (HTML, DOCX). 
+  </div> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/10.java">Streaming Big Data With Amazon Kinesis</a>Amazon recently announced Kinesis, a service that allows developers to stream large amounts of data from different sources and process it. The service is currently in limited preview. 
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/9.java">Telerik LightBox Control with Templates, Items Collection, Automatic Resizing and Paging</a>Telerik has added LightBox control to its ASP.NET control suite with support for templates, items collection in addition to advanced features such as automatic resizing, keyboard navigation and paging. 
@@ -145,11 +151,5 @@
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/13.java">Windows Azure SDK 2.2 Adds Visual Studio 2013, Integrated Sign-in and Filter Support</a>Microsoft has released Windows Azure SDK 2.2 with support for integrated sign-in, Visual Studio 2013 in addition to the ability to filter subscriptions/regions. The latest update also provides a set of pre-configured VM images of VS 2013 available within the Windows Azure Management Portal for use by MSDN subscribers. 
   </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/12.java">Using Process Improvement for Repeatable Results with Agile</a>On November 14 and 15 the SEPG Europe 2013 conference will be held in Amsterdam. The conference program covers experience stories and presentations on using the Capability Maturity Model Integrated™ (CMMI) in agile environments. InfoQ will cover this conference, and did interviews about how the CMMI can support agile adoption and the focus of the SEPG Europe conference. 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/11.java">Serializing Immutable Collections in .NET</a>Serialization and immutable collections do mix in .NET, but only if you look to third party libraries like JSON.NET and protobuf-net. 
-  </div>  
  </body>
 </html>

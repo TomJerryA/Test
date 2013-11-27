@@ -1,6 +1,27 @@
 <html>
  <head></head> 
- <body> 
+ <body>
+  <div>
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/22.py">Simian Armyを使わないPagerDutyの復元性テスト</a>PagerDutyのDoug Barth氏が，特別な自動化作業を前もって用意することなくシステムの復元性テストを開始するという，同社で実施したアプローチについて，DevOps Days Londonで講演した。目標としたのは障害発生点の早期発見と，１週間に１時間の時間枠を設けて，その対処方法についてオープンに議論することだ。
+  </div>
+  <div>
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/21.py">DevOpsはアジャイルをどう補完するのか</a>アジャイルにはマニフェストと原則があり、人とステークフォルダの明確化、よりすばやいデリバリー、より幸福な顧客にフォーカスしている。なぜDevOpsが必要なのだろうか？ Agile Methods in the Finance Sector and Complex Environmentというカンファレンスで、ブリストルのNokia Entertainmentから来たJohn Clapham氏がDevOpsとは何か、DevOpsはビジネスに何をもたらすのかを語った。
+  </div>
+  <div>
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/20.py">Android、アプリ翻訳サービスで改善</a>Googleが公式にAndroidアプリの翻訳サービスをリリースした。開発者はローカライゼーションチェックリストにあるガイドラインに基づいて、アプリをさまざまな言語にローカライズすることができる。
+  </div>
+  <div>
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/19.py">&quot;Luca, フォース(force)を使え&quot; - Jenkins開発者が１ヶ月分のGitHubコミットを消失</a>昨日，Jenkinsプロジェクトの開発者が誤って，JenkinsコードベースのGitリポジトリをストアしているGitHubレポジトリに強制的なプッシュを実行してしまい，数ヶ月間のコミットを紛失した。何が起きたのか，将来同じことを繰り返さないためには何が必要か，検証してみたい。
+  </div>
+  <div>
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/18.py">スマートクライアント・Dumbサーバを実現？AWSがWebブラウザのJavaScript向けSDKをリリース</a>ここ数年、開発者は何らかの力仕事をサーバサイドのコードに頼り続けていたものの、クライアントサイドのコードにより多くの仕事をするよう求めていた。AWSは、ブラウザからAWSのサービスへの安全なアクセスを行うJavaScript SDKのリリースによって、そのモデルを刷新している。これにより、いくつかのケースでは、サーバサイドのコードをまったく必要としなくなっているのである。
+  </div> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/17.py">企業におけるアジャイルスケーリングのプラクティス</a>組織規模でアジャイルを採用している企業は，時としてアジャイルプラクティスの適用範囲を拡大する必要に迫られる。&quot;Agile Methods in the Finance Sector and Complex Environment” カンファレンスでのセッションでは，企業におけるアジャイルのスケーリング実践経験が参加者によって発表された。 
+  </div> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/16.py">Apcera Continuum</a>クラウドスタートアップのApceraが11月14日，新たなWebサイトをローンチして，同社製品であるContinuumの詳細を公開した。 
+  </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/15.py">Microsoftが放棄したスタックランキングシステムでYahoo!が600人をレイオフ</a>Yahoo!は最近、昨年に導入したランキングシステムに基づき、600人をレイオフした。一方、マイクロソフトはランキングシステムを放棄し、従業員をある種の重圧から解放した。 
   </div> 
@@ -129,27 +150,6 @@
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/23.py">JSONバリデーションのまとめ</a>どんな “柔軟な” すなわち “拡張性のある” ファイルフォーマットを作っても、遅かれ早かれ開発者のグループがバリデーションに関して文句を言い始める。JSONには、幾つもの選択肢が出てき始めている。 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/22.py">継続的デリバリがイノベーションを加速する</a>Thoughtworks が先日公開した白書で取り上げた継続的デリバリ (CD, Continuous Delivery) の成熟モデルは，多くの企業がイノベーションの重要性を理解しながらも，ビジネスリーダの要求に対して十分な速さでソフトウェアを提供できていないという調査結果に対する回答だ。 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/21.py">Aerospike, Cassandra, Couchbase、MongoDBを比較したNoSQLベンチマーク</a>最近のベンチマークセットがAerospike, Cassandra, Couchbase、MongoDBを比較して、インサート スループット、最大スループット、レイテンシ、フェイルオーバー中の動作がどうなのかを知ることができる。 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/20.py">CouchDB 1.3.0が新しいフィーチャとアルゴリズムの改善を追加</a>Apache Software Foundation がリリースしたCouchDB 1.3.0には、Fix _session, Cross Origin Resource Sharing (CORS)のサポートと追加のフィーチャとアルゴリズムの改善が含まれている。 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/19.py">Googleの Goが近々1.1をリリース</a>Googleの Goバージョン1.1はベータで、著しいパフォーマンスの増加が報告され、新しいツールセットと言語フィーチャをもたらす。Go 1.0との後方互換性を維持し、殆どの場合、このリリースを利用するのに必要なのは再コンパイルだけである。 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/18.py">BDDツール、Cucumberがチームを大きくして、多くのバグを修正。</a>Cucumber、ビヘイビア駆動開発、BDD、ツールは最近、チームを増強し、この２ヶ月間の集中的な作業によりバグを大幅に減らした、とAslak Helles&oslash;y氏が明らかにした。先週開かれた CucumberカンファレンスデーにおいてCucumberのエコシステムについて話した時のことである。 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/17.py">安定したチーム作りと機能不全なチームの対処</a>複数のプロジェクトにわたる安定したチームを持つことは、アジャイルソフトウェア開発にとってプラスになる。安定したチーム作りとその育成について、また機能不全なチームの対処について、さまざまな人がブログに記事を書いている。 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/16.py">関数を理解するマージツール</a>Plastic SCMを開発したCodice Softwareが，セマンティックマージツール (Semantic Merge Tool) のプレビュー版をリリースした。このツールはコードを解析することで，行単位で比較する多くの同種ツールよりも正確なマージを行うことができる。同社の主席ソフトウェア技術者であるPablo Santos Luaces氏に話を聞いた。 
-  </div> 
+  </div>      
  </body>
 </html>
