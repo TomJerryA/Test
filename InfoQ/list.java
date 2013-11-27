@@ -1,6 +1,9 @@
 <html>
  <head></head> 
- <body> 
+ <body>
+  <div>
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/13.java">How to Scale the Product Owner Role</a>The product owner role from Scrum is used to interface between the business and development. In larger organization with complex products and many decisions that need to be made, having this role filled in by one person is often not feasible. InfoQ did an interview with Timo Punkka about the role of the product owner, lean portfolio management, and customer collaboration.
+  </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/12.java">Release of BizTalk Services Signals “Cloud First” Transition for Microsoft Integration Platform</a>After a long incubation period, Microsoft released its cloud-based integration tool called Windows Azure BizTalk Services. While reiterating their commitment to their on-premises integration tools, Microsoft has said that it will push innovation to its cloud platform first. 
   </div> 
@@ -147,9 +150,6 @@
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/14.java">OData Scaffolding is Visual Studio 2013</a>One of the new features in VS 2013 is OData Scaffolding. Like MVC Scaffolding, this feature is designed as both a training aid and to speed development. However, it requires a bit more setup than the MVC version. 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/13.java">Windows Azure SDK 2.2 Adds Visual Studio 2013, Integrated Sign-in and Filter Support</a>Microsoft has released Windows Azure SDK 2.2 with support for integrated sign-in, Visual Studio 2013 in addition to the ability to filter subscriptions/regions. The latest update also provides a set of pre-configured VM images of VS 2013 available within the Windows Azure Management Portal for use by MSDN subscribers. 
-  </div> 
+  </div>  
  </body>
 </html>

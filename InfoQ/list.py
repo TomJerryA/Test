@@ -1,20 +1,20 @@
 <html>
  <head></head> 
- <body>
-  <div>
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/22.py">Simian Armyを使わないPagerDutyの復元性テスト</a>PagerDutyのDoug Barth氏が，特別な自動化作業を前もって用意することなくシステムの復元性テストを開始するという，同社で実施したアプローチについて，DevOps Days Londonで講演した。目標としたのは障害発生点の早期発見と，１週間に１時間の時間枠を設けて，その対処方法についてオープンに議論することだ。
-  </div>
-  <div>
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/21.py">DevOpsはアジャイルをどう補完するのか</a>アジャイルにはマニフェストと原則があり、人とステークフォルダの明確化、よりすばやいデリバリー、より幸福な顧客にフォーカスしている。なぜDevOpsが必要なのだろうか？ Agile Methods in the Finance Sector and Complex Environmentというカンファレンスで、ブリストルのNokia Entertainmentから来たJohn Clapham氏がDevOpsとは何か、DevOpsはビジネスに何をもたらすのかを語った。
-  </div>
-  <div>
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/20.py">Android、アプリ翻訳サービスで改善</a>Googleが公式にAndroidアプリの翻訳サービスをリリースした。開発者はローカライゼーションチェックリストにあるガイドラインに基づいて、アプリをさまざまな言語にローカライズすることができる。
-  </div>
-  <div>
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/19.py">&quot;Luca, フォース(force)を使え&quot; - Jenkins開発者が１ヶ月分のGitHubコミットを消失</a>昨日，Jenkinsプロジェクトの開発者が誤って，JenkinsコードベースのGitリポジトリをストアしているGitHubレポジトリに強制的なプッシュを実行してしまい，数ヶ月間のコミットを紛失した。何が起きたのか，将来同じことを繰り返さないためには何が必要か，検証してみたい。
-  </div>
-  <div>
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/18.py">スマートクライアント・Dumbサーバを実現？AWSがWebブラウザのJavaScript向けSDKをリリース</a>ここ数年、開発者は何らかの力仕事をサーバサイドのコードに頼り続けていたものの、クライアントサイドのコードにより多くの仕事をするよう求めていた。AWSは、ブラウザからAWSのサービスへの安全なアクセスを行うJavaScript SDKのリリースによって、そのモデルを刷新している。これにより、いくつかのケースでは、サーバサイドのコードをまったく必要としなくなっているのである。
+ <body> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/22.py">Simian Armyを使わないPagerDutyの復元性テスト</a>PagerDutyのDoug Barth氏が，特別な自動化作業を前もって用意することなくシステムの復元性テストを開始するという，同社で実施したアプローチについて，DevOps Days Londonで講演した。目標としたのは障害発生点の早期発見と，１週間に１時間の時間枠を設けて，その対処方法についてオープンに議論することだ。 
+  </div> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/21.py">DevOpsはアジャイルをどう補完するのか</a>アジャイルにはマニフェストと原則があり、人とステークフォルダの明確化、よりすばやいデリバリー、より幸福な顧客にフォーカスしている。なぜDevOpsが必要なのだろうか？ Agile Methods in the Finance Sector and Complex Environmentというカンファレンスで、ブリストルのNokia Entertainmentから来たJohn Clapham氏がDevOpsとは何か、DevOpsはビジネスに何をもたらすのかを語った。 
+  </div> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/20.py">Android、アプリ翻訳サービスで改善</a>Googleが公式にAndroidアプリの翻訳サービスをリリースした。開発者はローカライゼーションチェックリストにあるガイドラインに基づいて、アプリをさまざまな言語にローカライズすることができる。 
+  </div> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/19.py">&quot;Luca, フォース(force)を使え&quot; - Jenkins開発者が１ヶ月分のGitHubコミットを消失</a>昨日，Jenkinsプロジェクトの開発者が誤って，JenkinsコードベースのGitリポジトリをストアしているGitHubレポジトリに強制的なプッシュを実行してしまい，数ヶ月間のコミットを紛失した。何が起きたのか，将来同じことを繰り返さないためには何が必要か，検証してみたい。 
+  </div> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/18.py">スマートクライアント・Dumbサーバを実現？AWSがWebブラウザのJavaScript向けSDKをリリース</a>ここ数年、開発者は何らかの力仕事をサーバサイドのコードに頼り続けていたものの、クライアントサイドのコードにより多くの仕事をするよう求めていた。AWSは、ブラウザからAWSのサービスへの安全なアクセスを行うJavaScript SDKのリリースによって、そのモデルを刷新している。これにより、いくつかのケースでは、サーバサイドのコードをまったく必要としなくなっているのである。 
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/17.py">企業におけるアジャイルスケーリングのプラクティス</a>組織規模でアジャイルを採用している企業は，時としてアジャイルプラクティスの適用範囲を拡大する必要に迫られる。&quot;Agile Methods in the Finance Sector and Complex Environment” カンファレンスでのセッションでは，企業におけるアジャイルのスケーリング実践経験が参加者によって発表された。 
@@ -150,6 +150,6 @@
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/23.py">JSONバリデーションのまとめ</a>どんな “柔軟な” すなわち “拡張性のある” ファイルフォーマットを作っても、遅かれ早かれ開発者のグループがバリデーションに関して文句を言い始める。JSONには、幾つもの選択肢が出てき始めている。 
-  </div>      
+  </div> 
  </body>
 </html>
