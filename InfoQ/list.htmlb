@@ -1,6 +1,12 @@
 <html>
  <head></head> 
- <body> 
+ <body>
+  <div>
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/27.htmlb">Java SE 8: 标准库增强</a> Lambda表达式是Java SE 8的核心功能，大部分的改进都围绕lambda表达式展开。（Jigsaw项目已经被推迟到Java SE 9。）关于lambda表达式的内容，已经在上一篇文章中进行了说明。这篇文章主要介绍Java SE 8中包含的其他Java标准库的增强。 
+  </div>
+  <div>
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/26.htmlb">Java 7 SDP：一次编写，到处运行，有时还运行得超炫！</a> 本文介绍了Java 7 SDK最近新引入的Java套接字直接协议（Sockets Direct Protocol，SDP）。SDP技术能让超高性能计算（Ultra High Performance Computing，UHPC）社区用Java语言对InfiniBand远程直接内存存取（Remote Direct Memory Access，RDMA）进行native访问，不需要操作系统的参与就能直接访问其他计算机的内存。 
+  </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/25.htmlb">利用Spec Flow编写自动化验收测试</a> 验收或功能测试是验证系统是否满足需求的一种测试。这些测试作为黑盒测试的一种,与其内部具体执行无关。而MustafaSaeed HajAli则向我们展示了如何使用SpecFlow来自动化这些测试。 
   </div> 
@@ -144,12 +150,6 @@
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/28.htmlb">深入浅出node.js游戏服务器开发——基于Pomelo的MMO RPG开发</a>Pomelo是杭州网易研究院发布的基于Node.js开源游戏框架，本篇是连载内容的第三篇，为大家介绍如何使用Pomelo框架来搭建MMO RPG服务器，并分析其设计思路和实现方法。以此来帮助大家更好的理解和使用Pomelo框架，理解Pomelo框架游戏开发的基础流程，使用方法和设计理念。 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/27.htmlb">函数式反应型编程(FRP) - 实时互动应用开发的新思路</a>本文详细讲解JavaScript编程的一种新型编程模型：利用函数式编程(Functional Programming)的思想和方法(函数、高阶函数)来支持Reactive Programming，来达到所谓的Functional Reactive Programming，简称FRP。它从新的视角关注数据流，代码更接近于只描述做什么(what)的声明式(declarative)代码，简洁又直观。 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/26.htmlb">交付云计算的复杂性</a>即便在21世纪初的今天，计算看起来仍然更像是一门艺术而非科学。然而，背后的原因恐怕连最资深的业内人士也无法说清。最可能的原因是，IT从多种角度思考最终产品、应用和数据。打个比方，就像三个盲人摸象，因为摸到的位置不同，所以每个人心中的大象也各不相同。 
-  </div> 
+  </div>   
  </body>
 </html>

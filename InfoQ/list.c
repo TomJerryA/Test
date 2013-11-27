@@ -1,8 +1,8 @@
 <html>
  <head></head> 
- <body>
-  <div>
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/35.c">OpenKit: quadro de l&iacute;deres sociais entre diversas plataformas</a>Quando o OpenFeint foi descontinuado no final de 2012, muitos desenvolvedores de jogos iOS e Android ficaram sem funcionalidades sociais ou conex&otilde;es com redes sociais em seus softwares. Os jogos populares como Ninja Fruit, Fieldrunners ou Pocket God foram afetados. Agora, os cofundadores do OpenFeint liberaram o OpenKit, uma API substituta para servi&ccedil;os sociais entre v&aacute;rias plataformas.
+ <body> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/35.c">OpenKit: quadro de l&iacute;deres sociais entre diversas plataformas</a>Quando o OpenFeint foi descontinuado no final de 2012, muitos desenvolvedores de jogos iOS e Android ficaram sem funcionalidades sociais ou conex&otilde;es com redes sociais em seus softwares. Os jogos populares como Ninja Fruit, Fieldrunners ou Pocket God foram afetados. Agora, os cofundadores do OpenFeint liberaram o OpenKit, uma API substituta para servi&ccedil;os sociais entre v&aacute;rias plataformas. 
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/34.c">QCon SP 2014: Keynote da NASA, 20 palestrantes confirmados e descontos prorrogados</a>O QCon S&atilde;o Paulo 2014 acontece nos dias 9, 10 e 11 de abril em novo local, com seis tracks simult&acirc;neas. Conhe&ccedil;a as novidades em palestras e palestrantes e aproveite os descontos para inscri&ccedil;&otilde;es antecipadas, prorrogados at&eacute; o dia 27 de novembro. 
@@ -150,6 +150,6 @@
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/36.c">Agile Brazil 2013: Submiss&atilde;o de palestras fecha este final de semana</a>O Agile Brazil 2013, a maior confer&ecirc;ncia Agile do pa&iacute;s, acontece este ano em Bras&iacute;lia, trazendo palestras e keynotes com grandes personalidades do Brasil e do exterior, e promovendo t&oacute;picos importantes como governo, grandes empresas e startups. A chamada de submiss&otilde;es fecha este final de semana. 
-  </div>  
+  </div> 
  </body>
 </html>

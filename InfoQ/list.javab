@@ -1,7 +1,7 @@
 <html>
  <head></head> 
- <body>
-  <div>
+ <body> 
+  <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/9.javab">Agility, Big Data, and Analytics</a> How do you bringing agility into big data analytics? Learn what makes analytics uniquely different than application development, and how to adapt agile principles and practices to the nuances of analytics. Examine how the disciplines of data science and software development complement one another, and how these intersect in an agile project environment. 
   </div> 
   <div> 
@@ -150,6 +150,6 @@
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/10.javab">Growing EAI with Apache Camel</a>This article shows practical examples of typical integration challenges and explores how Apache Camel can meet them in the context of an integration solution that grows over time. 
-  </div>  
+  </div> 
  </body>
 </html>

@@ -1,9 +1,11 @@
-<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>Google提供更好的Android应用程序翻译服务</h3><p>近期举行的<a href="http://www.androidcentral.com/google-s-app-translation-service-now-open-all-developers-use">Google I/O</a>大会上，Google展示了应用程序翻译服务的预览版。最近，Google官方发布了该服务，将提供给所有Android开发者使用。该服务支持开发者通过Google Play开发者控制中心购买专业的应用程序翻译。</p>
-<p>要想使用这套翻译服务，开发者可以访问Android开发者门户中提供的本地化列表，针对自己的应用程序选择想要翻译的目标语言。另外，Google建议开发者在开发者控制中心里查看统计章节，以了解安装情况。</p>
-<p><a href="http://developer.android.com/distribute/googleplay/publish/localizing.html">本地化列表</a>文档展示了在翻译过程中，开发者需要注意的五个关键方面，包括：明确目标语言、地域、最终敲定的本地化设计、管理字串、翻译UI中的字串，以及测试本地化应用程序。</p>
-<p>在APK章节底部的开发者控制中心里，开发者将能够直接上传应用程序的字串资源文档，选择语言和专业翻译供应商，来开始新的或管理现存的翻译。</p>
-<p>开发者控制中心支持其用户与翻译供应商沟通，并下载完整的字串文件。一旦用户完成本地化测试，就可以在Google Play中选择本地化商店列表的文字和图片，以升级方式来发布应用程序。Google公布了一批<a href="http://developer.android.com/distribute/googleplay/spotlight/localization.html">成功案例</a>，介绍了开发者使用应用程序翻译服务预览版的情况。</p>
-<p><strong>查看英文原文：</strong><a href="http://www.infoq.com/news/2013/11/app-translation-service">Android Gets Better with App Translation Service</a></p>
-<hr />
-<p>感谢<a href="http://www.infoq.com/cn/author/李彬">李彬</a>对本文的审校。</p>
-<p>给InfoQ中文站投稿或者参与内容翻译工作，请邮件至<a href="mailto:editors@cn.infoq.com">editors@cn.infoq.com</a>。也欢迎大家通过新浪微博（<a href="http://www.weibo.com/infoqchina">@InfoQ</a>）或者腾讯微博（<a href="http://t.qq.com/infoqchina">@InfoQ</a>）关注我们，并与我们的编辑和其他读者朋友交流。</p><br><br><br><br><br><br></body></html>
+<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>使用亚马逊Kinesis处理大批量数据</h3><p>亚马逊<a href="http://aws.typepad.com/aws/2013/11/amazon-kinesis-real-time-processing-of-streamed-data.html">近期</a>公布了一项名为Kinesis的服务，它支持开发者从不同来源传输大量的数据并进行处理。该服务目前处于有限预览阶段。</p>
+<p>Kinesis到底是什么？它与<a href="http://aws.amazon.com/sqs/">SQS</a>有什么不同？对此，<a href="http://www.reddit.com/r/programming/comments/1qzohv/amazon_aws_now_does_massive_streaming_data_kinesis/cdilarh">BuckKniferson</a><a href="http://www.reddit.com/r/programming/comments/1qzohv/amazon_aws_now_does_massive_streaming_data_kinesis/cdisi0a">解释道</a>：</p>
+<blockquote> 
+ <p>看起来Kinesis将包装SQS队列并将计算实例自动扩展为新产品。Kinesis能能接受每秒百万条POST请求，将其作为流进行实时处理。用户可以将流数据直接发送给S3、发送给自己的应用进行处理、发送给关系型存储，以及类似多种途径……都是实时完成的。</p> 
+ <p>SQS消息被限定在256kb的文本消息（一般来说是JSON格式，但用户也可以根据喜好选择）。Kinesis流则享有MB/S的量级，而且据我所知，它可以通过HTTP PUT接收任何类型的数据。</p> 
+ <p>此外，应用可以从不同区域访问Kinesis流数据，且在24小时之内可用；而SQS消息则依赖于区域并且不可持久。如果某个区域超出范围，或是出现了某些故障，那么用户的SQS消息就丢失了。而且我认为SQS没有可以与Kinesis相媲美的可扩展性和IO。我尚未见到SQS公开发布的IOPS保证；但Kinesis每个分片能够接收1000条/秒的PUT请求。</p> 
+</blockquote>
+<p>使用Kinesis流的应用能够捕捉、存储和传输数据，对这三者来说都可以拥有多个读取和写入方。每个流的容量按分片来定义；每个分片能够执行1000条写事务，最高位1MB/秒——而且支持在不停机状态下，通过增加或移除分片，来扩展每个流的容量。</p>
+<p>开发者可以使用Kinesis客户端库来构建使用Kinesis的应用。生产者方面使用<a href="http://docs.aws.amazon.com/kinesis/latest/APIReference/API_PutRecord.html">PutRecord API</a> 来推送数据。而在消费者方面，开发者提供一个<a href="http://docs.aws.amazon.com/kinesis/latest/dev/kinesis-record-processor-app.html">IRecordProcessor</a>的实现，一旦新记录创建成功，客户端将“推送”它们。此外，还有一些更底层的接口，例如<a href="http://docs.aws.amazon.com/kinesis/latest/APIReference/API_GetShardIterator.html">GetShardIterator</a>和<a href="http://docs.aws.amazon.com/kinesis/latest/APIReference/API_GetNextRecords.html">GetNextRecords</a>。在处理一条记录后，消费者代码可以把它存储在某个AWS存储服务（S3、RedShift、DynamoDB）上，或是将其传递给另一个Kinesis流。</p>
+<p>Kinesis支持的实时处理与<a href="http://www.datasciencecentral.com/profiles/blogs/batch-vs-real-time-data-processing">批处理</a>（例如Hadoop提供的那样）不同，因为当数据可用时它将会得到尽快处理，而不必凑成批次进行执行。亚马逊列出了日志处理、社交媒体数据处理、金融事务实时处理和在线机器学习等内容，作为部分可行的使用案例。最后，另一个支持大量数据实时复杂处理的类似产品是<a href="http://storm-project.net/">Storm</a>。</p>
+<p><strong>查看英文原文：</strong><a href="http://www.infoq.com/news/2013/11/aws-kinesis">Streaming Big Data With Amazon Kinesis</a></p><br><br><br><br><br><br></body></html>

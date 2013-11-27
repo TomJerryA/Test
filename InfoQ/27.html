@@ -1,46 +1,20 @@
-<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>CloudStack 4.3功能前瞻</h3><p>本则新闻由CloudStack Committer李学辉撰写，CloudStack中国社区的白清杰推荐，最初发布于CloudStack中国社区官方博客。CloudStack最早是由VMOps公司开发的开源虚拟化环境管理软件，之后该公司被思杰收购。2012年4月，思杰决定将CloudStack贡献给Apache软件基金会，成为Apache孵化项目之一。现在，CloudStack常被作为IT基础架构的综合管理系统用于搭建企业内部的私有云。</p>
-<p>CloudStack 4.3已经Feature Freeze了，不会再有新功能加入到这个版本里。我们也可以坐下来看看哪些功能是值得期待的。首先，4.3的UI也秉承扁平化设计，看着更加简洁清爽。见下图：</p>
-<p><img width="600" _href="img://null" _p="true" src="http://infoqstatic.com/resource/news/2013/11/cloudstack-4.3features-Prospects/zh/resources/1014000.png" alt="" /></p>
-<p>接下来我们从CloudStack4.3的设计文档出发，来了解一下这个版本的功能有哪些。</p>
-<p><strong>1. 数据库的高可用性</strong></p>
-<p>当前CloudStack的数据库的备份方案基本上是使用Mysql的backup-standby方案，同时只会有一个DB是激活状态，如果遇到问题，需要切换到备份服务器，主数据库的稳定性尤其重要。而数据库的高可用则是想达到“双活”的数据库群集效应，也就是同时有多个数据库是主控的。在经过一系列调研后，从MariaDB, Percona Xtra DB, SkySql和Mysql中选择使用Mysql的双活设置。Mysql的双向复制需要在连接器上配置在Mysql集群中主控服务器宕机后，从Slave服务器上读写数据，因此相应的管理端的程序要做相应改变。</p>
-<p>由于数据库相对稳定，并且当前大多数部署规模单节点数据库服务器的I/O都足够应付，而数据库的备份也有相应方案避免数据丢失，新的数据库HA在公有云或企业内部私有云上都会有需求，不过这会增加管理服务器的复杂性，所以我认为这个功能期待指数三星半。</p>
-<p><strong>2. 动态调整计算资源方案</strong></p>
-<p>我经常被问到一个事情：从模板创建的虚机能否将系统盘（根卷）进行扩展？ 之前的回答也一直是不可以。在4.3中，用户创建虚机时不仅可以对根卷进行扩展，还能指定任意的CPU和内存的数量，这比从管理员提前预置的计算方案里选择要灵活的多，这个功能不管是在私有云还是公有云都有广泛的需求。中国用户也特别喜欢类似阿里云的根据一定的步长任意设置各种资源的公有云自服务门户。不过从设计文档来看，网络带宽还没法任意设置，估计要等以后版本了。</p>
-<p>这个功能很适用，尤其是扩充根卷，这样在制作模板的时候就可以尽可能地小了，当然任意指定CPU和内存也是相当受欢迎的，综合评定这个功能很期待。</p>
-<p><strong>3. 客户虚机支持GPU/vGPU</strong></p>
-<p>现在的物理服务器都有强大的显卡，特别是一些图形工作站的机器，甚至比CPU的计算能力还强，因此，如果可以利用显卡的GPU进行计算，那将会极大的提高资源的利用率。另一方面，很多应用对于显示的要求都比较高，比如PhotoShop，AutoCAD以及一些3D游戏等，这些应用很多也都可以在虚机里运行，只是很难达到物理机上的效果。为了使性能有所提升，让虚机跳过Hypervisor直连GPU是个不错的想法。</p>
-<p>GPU也属于计算资源，它不像CPU那样，可以超配；也就是说一个拥有4个GPU模块的主机，同时只能为其上的4个虚机提供GPU直连服务。另外，GPU 编程还是比较复杂的，这里需要Hypervisor的支持，此功能目前在设计里也只会支持XenServer。要使用的朋友还是要特别留意一下。如果考虑 CloudStack本身的服务器虚拟化而非桌面虚拟化的特性，这种应用上的需求应该不是很广泛。</p>
-<p><strong>4. Hyper-V Server 2012的支持</strong></p>
-<p>Hyper-V是微软的虚拟化技术，记得早在CloudStack4.0版本时期就是要支持Hyper-V，根据国内Hyper-V的市场占有情况，这个功能在当时也是非常期待的。但开源就是这样，由于种种原因，这个功能一直到4.2版本里也没能支持。在解决了集成API的许可问题后，目前来看4.3是很有可能支持Hyper-V了。</p>
-<p>CloudStack对于Hyper-V的支持将会采用与KVM Agent类似的方式，通过WMI来与Hyper-V主机通信，从而控制虚拟机。应该来说新的Hypervisor的支持都是一个很大的功能模块，它要考虑整个云平台各Hypervisor的能用功能，还要考虑各个Hypervisor自身的功能特点，这包括网络和存储的功能及硬件的支持。不管怎么说，如果CloudStack能支持Hyper-V并稳定运行，那对于它自己无疑是个巨大的加分。相信很多基于CloudStack的ISV都在等待这个功能。</p>
-<p><strong>5. KVM支持Linux本地VxLAN</strong></p>
-<p>CloudStack中高级资源域通常使用VLAN进行隔离（虽然4.2版本以后也支持安全组）；VLAN的硬伤是协议本身的限制：&lt;=4095的 VLAN ID。那么当为了隔离每个账户使用一个VLAN ID时，一个资源域最多的账户数就有极大的限制；而实际上你能使用的VLAN ID要远小于4095，因为如果真的配置交换机4095个VLAN，那它将疲于奔命。一般情况下，一个数据中心等同于一个资源域，可想而知，大规模部署 VLAN的限制问题将会显现。VxLAN就是在这个背景下应运而生的。你可以认为VxLAN是VLAN在二层的基础上对报文进行UDP的封装；它最多可支持超过1600万个隔离网络，这在一个数据中心里应该是足够用了。由于NTT一直在使用CloudStack，他们这种规模的公司对于VxLAN是有迫切的需求的，因此他们的工程师完成了VxLAN的功能并贡献给Apache社区。其功能的实现上也于VLAN相似。在添加资源域时网络设置使用VXLAN隔离来宾网络，在设置来宾网络vNet（相当于VLAN ID）范围时，也不用考虑4095的限制。</p>
-<p><img width="600" _href="img://null" _p="true" src="http://infoqstatic.com/resource/news/2013/11/cloudstack-4.3features-Prospects/zh/resources/1014001.png" alt="" /></p>
-<p>由于这个功能是CloudStack的一个功能，它不依赖于像Nexus 1000v这样支持VxLAN的设备，所以这个功能需要Hypervisor的支持。CloudStack4.3只会先针对KVM的Hypervisor 支持这个功能，并且Linux的Kernel版本要高于3.7；在配置KVM主机是要使用Linux本地的Birdge而非Open vSwitch。由于这些限制，这些功能在4.3里使用应该还是有点复杂度，给四星。</p>
-<p><strong>6. 增强的系统虚拟机升级策略</strong></p>
-<p>系统虚拟机在CloudStack里扮演重要角色，从功能上讲，系统虚拟机分成二级存储系统虚机，控制台系统虚机以及虚拟路由器；它们分别用来完成模板、镜像、ISO的下载，基于Web的虚机控制台和客户虚机的网络功能。对于不同的Hypervisor，系统虚机的模板不同，但同一个模板可以配置成不同的角色来完成上述三种虚机的功能。如果是小规模的部署，由于系统虚机无状态的特性，可以上传新的模板，破坏掉当前的系统虚拟机，它会自动重建。当然整个过程不仅较慢，且问题时有发生；也没有很好的指导文档或常见问题说明。试想大型生产环境里更新系统虚机特别是虚拟路由器还是挺有风险的，因为用户的服务会中断，不是逼不得已不会有人想这么做。4.3里将提供新的API用于系统虚机模板的升级，你只要提供相应的信息，要升级的资源域，等信息即可。</p>
-<p>由于 本身系统虚机是一个相对稳定的单位，从以往来看CloudStack的升级伴随需要系统虚机的升级并不多（4.0到4.2之间的变化需要升级系统虚机），这个功能应该不会有太多人用到。评定三星半。</p>
-<p><strong>7. 重构测试框架Marvin</strong></p>
-<p>如果大家知道Apache CloudStack的吉祥物：踩在云中的猴子，知道Cloudmonkey；那么对于Marvin应该不陌生。Cloudmonkey强大的功能是基于 Marvin实现的，Marvin是CloudStack里用Python实现的测试框架，包括完整的API封装并完成相应的单元测试。这个功能的重构与稍后提到的Spring模块化相关。对于API的测试是整个框架的核心，新的设计将采用XML/JSON的方式定义API的发送和响应，针对每个API，可以用单独的一组发送/接收脚本处理，这也体现的模块化的思想。另外一个功能是异常和断言，计划使用DSL的形式，由于本人对DSL不了解，无法给出更详细的说明，感兴趣的朋友可以在wiki上查找一下：Domain Specification Language。不从事CloudStack开发的人对这部分内容可以忽略。</p>
-<p><strong>8. 迁移NFS二级存储到对象存储上</strong></p>
-<p>在CloudStack4.2上已经支持使用对象存储Amazon S3或OpenStack Swift作为二级存储，对整个云环境提供模板，快照和ISO的服务。CloudStack在设计上也尽量保证与Amazon EC2/S3在API上的兼容，以便企业客户可以无缝地从Amazon转到CloudStack。但是当时缺少一个方便的功能：如何将现有客户环境从 NFS二级存储迁到对象存储上。这个功能的基本思路是NFS二级存储与对象存储共同存在，新的资源（包括快照，模板等）都会在对象存储上创建；只有读和删除操作会在NFS二级存储中执行，模板，卷的复制也只会在对象存储上，这样就保证二级存储在资源域的范围内，而对象存储是整个云环境。这样，存储在对象存储的模板，快照等，将不需要跨资源域的复制功能。</p>
-<p>国内对于Amazon的使用并不普遍，对象存储目前也都是在试水阶段，用户使用对象存储的话要单独配置。在4.3里，并没有提供将NFS二级存储的所有内容迁移到对象存储的功能，也就是说，用户还是需要乃至NFS的二级存储。对于很大规模的部署，可以考虑一下，对于小规模的建议还是不要等待这个功能。</p>
-<p><strong>9. 模块化Spring标准框架的使用</strong></p>
-<p>如果最一开始CloudStack广受争议的是其模块耦合度太高，新手难以开发，那从4.1到4.2，CloudStack在努力做出改变，而4.3上面改的更彻底，要添加新的插件或API也非常容易上手，只要对Spring框架熟悉，你对整个启动和初始化过程会很快上手。而国内熟悉SSH的是相当庞大的一群人，CloudStack采用标准化框架会使更多人聚拢在其周围。这一框架的调整带来很多开发的便利，何乐而不为呢？唯一的问题是基于之前 CloudStack版本（4.0版本或更早）的ISV，如果维护自己的版本，那代码合并的工作量挺大。我稍后也会专门写一篇文章来看下如何在 CloudStack4.3上开发一个新的API。</p>
-<p><strong>10. 监测虚拟路由器的状态</strong></p>
-<p>前面提到的系统虚拟机的升级实际上可以包含这个功能，我们知道虚拟路由器上很多进程在提供各种各样的服务：dnsmasq用于DHCP，haproxy用于LB，Apache Web服务器，sshd等。这些服务的监测可以保证：1、实时检测服务的状态；2、收集告警回送给接收器，通常是管理服务器。这些监控软件在发现服务进程异常时不仅会发送告警给管理端，还会根据设置对服务进程进行重启操作，并且这些都会在事件服务器里记录。相信以后遇到虚拟路由器的问题会大大减少。</p>
-<p><strong>11. VPC里的VPN远程访问</strong></p>
-<p>在4.2及之前的版本里，虚拟路由器一直提供用户远程VPN的接入操作，在4.3里，使用VPC网络的用户也可以远程接入VPC的虚拟路由器，然后设置网络ACL来控制接入的用户对VPC里某些网络分层（Network Tier）或所有的网络层的虚机进行访问。</p>
-<p><strong>12. 报告物理CPU个数</strong></p>
-<p>如果你注意到最开始提供的仪表板截图出现的“Sockets”，那就是指云环境里物理CPU个数的指标。这是一个比较小的功能增强，相信以后每个版本都会丰富这些统计数据。像这样的统计功能，当然是多多益善了。</p>
-<p><strong>13. 虚拟路由器站到站的VPN连接</strong></p>
-<p>从设计上来看，这个功能是针对VPC网络的；站到站的VPN，即Site-to-Site VPN，这个功能在两个VPC网络上使用是极其便利的，它可以在任何两个VPC环境中设置，而不是限定在一个数据中心或一个区域，甚至是一个云平台中。参见下图，注意左下角的SITE-TO-SITE VPNS:</p>
-<p><img width="600" _href="img://null" _p="true" src="http://infoqstatic.com/resource/news/2013/11/cloudstack-4.3features-Prospects/zh/resources/1014002.png" alt="" /></p>
-<p>只要在双方的VPC虚拟路由器上设置相应的CIDR等参数，就可以方便的打通站到站的VPN隧道。这对于大型企业或跨国公司的IT环境来说无疑提供了巨大的便利。</p>
-<p>除此之外，CloudStack还会提供一些功能来支持新的设备，根据以往的经验，设计文档并不能完全代表该功能在最终的发布版本里一定实现，一般情况下会少一些，我们还是小小的期待一下吧。希望这些功能都如约而至。</p>
-<p>微博：@lee-xh&nbsp;&nbsp; @CloudStack中国</p>
-<p>QQ群：236581725</p>
-<p>中国社区：<a href="http://www.cloudstack-china.org">http://www.cloudstack-china.org</a></p>
-<p>PDF版本下载地址：<a href="http://pan.baidu.com/s/1raovn">http://pan.baidu.com/s/1raovn</a></p>
-<p><strong>原文地址：</strong><a href="http://www.cloudstack-china.org/2013/11/2702.html">CloudStack 4.3功能前瞻</a></p><br><br><br><br><br><br></body></html>
+<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>Visual Studio提升了对C++14的支持</h3><p>在今年的七月份Microsoft就<a href="http://www.infoq.com/news/2013/07/vs2013_CPP_compliance">发布</a>了将现代C++集成到Visual Studio中的路线图。Visual Studio 2013中将会包含的C++语言特性在那个时候就已经固定了下来，现在一个新的CTP版本已经发布了，该版本让VC++更加接近于C++14。</p>
+<p>该包的标题为<a href="http://www.microsoft.com/en-us/download/details.aspx?id=41151">Visual C++ Compiler November 2013 CTP</a>，它提供了下面的特性：</p>
+<ul> 
+ <li>隐式移动（move）特殊的成员函数（也实现了=default）</li> 
+ <li>成员函数上的引用限定符（也称为 <i>&quot;&amp; and &amp;&amp; for *this&quot;</i><i>）</i></li> 
+ <li>线程安全的函数本地静态初始化（也称为“神奇的静态化”）</li> 
+ <li>继承构造函数</li> 
+ <li><i>alignof/alignas</i></li> 
+ <li><i>__func__</i></li> 
+ <li>扩展的<i>sizeof</i></li> 
+ <li><i>constexpr</i> （除了构造函数）</li> 
+ <li><i>noexcept</i>（无条件的）</li> 
+ <li>C++14 <i>decltype</i>（自动）</li> 
+ <li>C++14 <i>auto</i> 函数返回值类型推理</li> 
+ <li>C++14 泛型lambda（支持显式的lambda捕获列表）</li> 
+ <li>(C++17的提议) 可恢复的函数和 <i>await</i></li> 
+</ul>
+<p>对于那些对该包感兴趣的早期采纳者而言，一个重要的细节是该包并没有包含“Go Live”许可，这意味着它不能在产品代码开发中使用。根据Microsoft公司的Stephen T. Lavavey所提供的信息，该版本以及将来的Visual Studio 2013 VC++ CTP版本都不会包含“Go Live”许可。总之，Visual Studio Next将会是最快的可以在产品环境中使用这些特性的版本。Lavavey还<a href="http://blogs.msdn.com/b/vcblog/archive/2013/11/18/announcing-the-visual-c-compiler-november-2013-ctp.aspx?PageIndex=2#comments">透露</a>，下面的C++11核心语言特性依然悬而未决：“表达式SFINAE、属性（包含用于数据依赖排序的那些）、成员函数上的常量表达式（constexpr）、char16_t/char32_t、Unicode字符串字面值、字面值中的通用字符名、用户定义的字面值、内联命名空间、自由的（unrestricted）联合、有条件的noexcept、thread_local和遵循C99规范的预处理器….”。</p>
+<p>Microsoft已经<a href="http://aka.ms/I0w822">发布</a>了一篇文档，其中列出了在使用该CTP的时候用户有可能会遇到的一些痛点。特别是智能感知（IntelliSense）和IDE某些区域不支持的新关键词。另外一个需要注意的内容是<i>await</i>关键词需要Windows 8.1，同时不要在使用析构函数的时候抛出异常。</p>
+<p><b>查看英文原文</b>：<a href="http://www.infoq.com/news/2013/11/VC13_CTP1">Visual Studio's C++14 Support Grows</a></p><br><br><br><br><br><br></body></html>

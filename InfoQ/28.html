@@ -1,6 +1,22 @@
-<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>XAML Spy现在免费了</h3><p>XAML Spy的创建者First Floor Software目前为他们的旗舰产品提供了一个免费版本。免费产品的名字是<a href="http://xamlspy.com/learn/xaml-spy-express">XAML Spy Express</a>，开发者能够使用它浏览运行应用程序的可视树。和它的开源竞争对手<a href="http://snoopwpf.codeplex.com/">Snoop</a>不同的是，XAML Spy支持Silverlight、Windows Store、Windows Phone和WPF。要注意的是，检查Silverlight 3/4的应用需要安装Silverlight 5.</p>
-<p>XAML Spy还提供了一个商业版本。该版本增加了属性编辑能力，很像一个Web浏览器内置的HTML/CSS调试器。该版本还能够将一个控件序列化回代表它当前状态的XAML。</p>
-<p>免费版和商业版的XAML Spy 2都被集成到了Visual Studio中。我们可以简单地在项目文件上右击启用XAML调试。但是启用之后会有一定的性能影响，因此还提供了一种方式可以很容易地禁用它。默认情况下它仅限于调试构建。</p>
-<p>如果你喜欢使用一个独立的XAML调试器，那么你可以使用XAML Spy 1。它能够和XAML Spy 2安装在一起，并且允许开发者附加到任意运行的WPF应用程序上。调试Silverlight应用程序时会使用一个内部的Web浏览器。在将来的更新中，XAML Spy 2将期望重新获得在Visual Studio之外运行的能力。</p>
-<p>XAML Spy依赖于<a href="http://xamlspy.com/learn/spyservice">XAML Spy服务</a>。运行的应用程序和调试器使用该服务完成彼此之间的通信。不幸的是，防火墙和VPN连接会受到该服务的影响，甚至有时候VPN连接之后会掉线。</p>
-<p><b>查看英文原文</b>：<a href="http://www.infoq.com/news/2013/11/XAML-Spy-Free">XAML Spy is Now Free</a></p><br><br><br><br><br><br></body></html>
+<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>《基于Oracle的SQL优化》作者谈SQL优化的重要性</h3><p>在刚刚结束的Oracle技术嘉年华上，Oracle ACE、中航信资深DBA<a href="http://weibo.com/dbsnake">崔华</a>发布了个人新书<a href="http://product.china-pub.com/3768855">《基于Oracle的SQL优化》</a>。InfoQ对他进行了简短的采访，谈了谈这本书的写作初衷以及对Oracle的展望。</p>
+<p><strong>InfoQ：为什么会写这样一本关于SQL优化的书？</strong></p>
+<blockquote> 
+ <p>随着我这几年在国内Oracle圈子里知名度的提高，使得我有机会接触到各种各样有问题的系统，在做了大量的实际诊断和优化工作后我发现，绝大多数的系统的性能问题都是由于当初开发人员不懂Oracle数据库、不懂如何在Oracle数据库里写出高质量的SQL所导致。这样的系统的性能问题，单靠高水准的Oracle DBA来调整是非常痛苦的一件事情，很多时候是事倍功半。</p> 
+ <p>为了能从根本上解决这种问题，扭转这种局面，我萌生了撰写一本专门的、系统的、从本质上阐述如何在Oracle数据库里写出高质量的SQL的一本书，这就是《基于Oracle的SQL优化》这本书的由来。我希望通过这本书教会所有阅读过本书的开发人员如何在Oracle数据库里写出高质量的SQL以及如何在Oracle数据库里对有性能问题的SQL做诊断和调整，这样就能从源头上保证由这些开发人员所开发的系统在SQL上是没有性能问题的，随之而来的那些由于SQL的撰写不当而导致的各种性能问题也就不复存在了，如果真能做到这一点，我个人认为会是一件功德无量的事情。</p> 
+</blockquote>
+<p><strong>InfoQ：SQL优化对应用系统的意义是什么？</strong></p>
+<blockquote> 
+ <p>数据库性能优化是系统生命周期中不可缺少的一环，我们大多数的数据库都或多或少遇到一些性能问题。特别是随着业务的发展、数据量的增加、系统用户数的增多、以及系统之间越来越复杂的接口，都会导致系统的性能越来越恶化。怎么样去优化一套数据库，我们需要掌握很多的知识，包括存储子系统、操作系统、数据库甚至还有业务逻辑。很多人面对性能问题不知如何下手。</p> 
+ <p>好在，数据库的性能问题至少有80%以上都是由于SQL性能较差所导致，同时随着硬件性能的提升和硬件价格越来越便宜，硬件所带来的系统瓶颈相对越来越小，所以在大多数情况下，我们优化数据库也就是优化SQL语句。这意味着只要我们做好了SQL优化，我们在大多数情况下就能保证应用系统在数据库端是没有明显性能问题的。</p> 
+</blockquote>
+<p><strong>InfoQ：面对NoSQL的冲击，传统关系型数据库的定位是什么？</strong></p>
+<blockquote> 
+ <p>我个人觉得NoSQL、大数据相关技术并不会对像Oracle、DB2这样的传统关系型数据库厂商造成大的冲击，更不用谈取代了——因为它们各自的适用场景并不相同。</p> 
+ <p>事实上，像Oracle、DB2这样的传统关系型数据库厂商并不排斥NoSQL和大数据相关技术，比如我看到Oracle应对NOSQL和大数据技术的措施为：</p> 
+ <ol> 
+  <li>提供对NoSQL的支持功能（如基于Berkeley DB的Oracle自己的NoSQL）</li> 
+  <li>提供了专门针对大数据的软硬一体的解决方案（如Big Data Appliance大数据一体机）</li> 
+ </ol> 
+ <p>我个人认为像Oracle、DB2这样的传统关系型数据库厂商未来的定位会是拥抱像NoSQL和大数据这样的新技术并朝着云数据库的方向发展——未来会出现大规模公有云和私有云的盛行，到时候用户用数据库就好像现在用水电一样方便，是真正的DBaaS（Database as a service)。</p> 
+</blockquote>
+<p>《基于Oracle的SQL优化》适合使用Oracle数据库的开发人员、Oracle DBA和其他对Oracle数据库感兴趣的读者，也可以作为各院校相关专业的教学辅导和参考用书。该书目前已经在<a href="http://product.china-pub.com/3768855">China-Pub</a>和<a href="http://www.amazon.cn/%E5%9F%BA%E4%BA%8EOracle%E7%9A%84SQL%E4%BC%98%E5%8C%96-%E5%B4%94%E5%8D%8E/dp/B00GOIVE20/ref=pd_sim_b_1">亚马逊</a>预售，详细内容可参看相关页面。</p><br><br><br><br><br><br></body></html>
