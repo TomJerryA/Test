@@ -1,24 +1,10 @@
-<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>MicrosoftがScript Explorerのリリースをキャンセル</h3><p><a target="_blank" href="http://www.infoq.com/news/2013/04/Script-Explorer-Canceled;jsessionid=2C888FC172455B01D0F083B1F93A7048"><em>原文(投稿日：2013/04/17)へのリンク</em></a></p> 
-<div class="clearer-space">
- &nbsp;
-</div> 
-<div id="newsContent"> 
- <p>MicrosoftはScript Explorerのリリースをキャンセルした。このツールは，外部リポジトリ (TechNet Script Center, PoshCodeなど) あるいは企業の内部コレクションにあるPowerShellスクリプトを，容易に見つけられるようにデザインされたものだ。</p> 
- <p><a target="_blank" href="http://blogs.msdn.com/b/powershell/archive/2013/04/05/microsoft-script-explorer-next-steps.aspx">PowerShellチームは次のように書いている</a>。</p> 
- <blockquote> 
-  <p>今回の解析結果の中から，Script Explorerプレリリース版の適用と利用状況が，私たちの期待したレベルに達していないことが分かりました。理由のひとつとして，PowerShellスクリプトの検索と共有に関する市場においてユーザにはすでに多数の選択肢が存在し，既存のメカニズムを今後も継続利用するという内容が大部分を占めていた，という事実があります。結論として私たちは，Script ExplorerプロジェクトをRTMとしないことを決定しました。</p> 
- </blockquote> 
- <p>プレビュー版の所有者は，公開リポジトリのサポートに必要なサービスが終了する2013年7月14までは，ツールを継続して使用することができる。</p> 
- <p>Microsoftは代替製品として，次のようなものをリストアップしている。</p> 
- <ul> 
-  <li><a target="_blank" href="http://technet.microsoft.com/en-us/scriptcenter/">TechNet Script Center</a></li> 
-  <li><a target="_blank" href="http://poshcode.org/">PowerShell Code Repository</a></li> 
-  <li><a target="_blank" href="http://powershell.com/">PowerShell.com</a></li> 
-  <li><a target="_blank" href="http://powershell.org/">PowerShell.org</a></li> 
-  <li><a target="_blank" href="http://www.idera.com/Free-Tools/PowerShell-Plus/">PowerShell Plus</a>, <a target="_blank" href="http://www.idera.com/Free-Tools/PowerShell-scripts/">PowerShell Scripts</a> (Idera)</li> 
-  <li><a target="_blank" href="http://www.powergui.org/">PowerGUI</a> (Quest)</li> 
-  <li><a target="_blank" href="http://www.sapien.com/software/powershell_studio">PowerShell Studio</a> (SAPIEN)</li> 
- </ul> 
- <p id="lastElm">&nbsp;</p> 
-</div> 
-<p id="lastElm"></p><br><br><br><br><br><br></body></html>
+<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>Apportable、AndroidにObjective-Cを持ち込む</h3><p><a target="_blank" href="http://www.infoq.com/news/2013/11/apportable-ios-to-android"><em>原文(投稿日：2013/11/18)へのリンク</em></a></p>
+<div class="article_page_left news_container text_content_container"> 
+ <div class="text_info"> 
+  <p><a href="http://www.apportable.com/">Apportable</a>はiOS開発者がAndroid向けソフトウェアを配布する可能性をもたらす。Apportable SDKとコマンドラインツールを使うことで、プログラマはObjective-Cのコードに大きく手を加えることなく、アプリをクロスコンパイルすることができる。また、Apportableはアプリ変換サービスも提供する。すでに変換されたアプリには、<a href="https://play.google.com/store/apps/details?id=com.hemispheregames.osmos">Osmos</a> (<a href="https://itunes.apple.com/us/app/osmos/id382991304?mt=8">iOS version</a>)やBj&ouml;rkのマルチメディアアプリ<a href="https://play.google.com/store/apps/details?id=com.bjork.biophilia">Biophilia</a> (<a href="https://itunes.apple.com/us/app/bjork-biophilia/id434122935?mt=8">iOS version</a>)といったよく知られたタイトルもある。</p> 
+  <p>シンプルなコマンドラインツールを使って既存のObjective-Cソースをクロスコンパイルするだけでなく、 ApportableはAndroid固有の機能へのアクセスも許している。たとえば<a href="http://docs.apportable.com/uikit-extensions.html#uikit-extensions">UIKit拡張</a>は、ハードウェアボタン、異なる画面解像度、デイバスハードウェア情報やAndroidバージョン情報をサポートする。</p> 
+  <p>Apportableには<a href="http://docs.apportable.com/using-java.html#using-java">BridgeKit</a>も含まれている。このライブラリを使うことで、開発者はアプリにJavaクラスを追加して、Androidネイティブ機能にアクセスすることができる。Javaクラスはラッパーオブジェクト経由でObjective-Cからアクセスでき、JavaとObjective-C間のプリミティブデータ型を交換することができる。また、Javaクラスによって呼び出させるObjective-Cクラスのコールバックメソッドを定義することもできる。</p> 
+  <p>ApportableはXcode 5用SDKの最初のバージョンをリリースしているが、公式にサポートされているXcodeのバージョンはまだ4.6.3だ。ソフトウェアプロジェクトがXcode 5でクロスコンパイルできない場合に備え、Apportableはバージョン4.6.3へのダウングレード方法や、Xcodeのバージョンを切り替える方法について<a href="http://docs.apportable.com/index.html">説明</a>している。</p> 
+  <p>Apportableには<a href="http://www.apportable.com/pricing">4つのライセンスレベル</a>があり、フリーライセンスでは、OpenAL、CoreFoundation、CoreGraphicsといったコアフレームワークに基づいたアプリを変換することができる。もとのアプリで使われているフレームワークと必要なサポートレベルによって、開発者1人1年当たり$1.000と$15.000のライセンスがある。また、エンタープライズライセンスとして特別割引もある。</p> 
+ </div> 
+</div><br><br><br><br><br><br></body></html>

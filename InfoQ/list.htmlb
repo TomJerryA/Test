@@ -1,10 +1,13 @@
 <html>
  <head></head> 
- <body>
-  <div>
+ <body> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/28.htmlb">采访《Murach’s Android Programming》一书的作者Joel Murach</a> Murach Publishing依然在定期出版新的书籍，坚持为开发者们提供高质量的内容。由Joel Murach所编写的《Murach’s Android Programming》试图为Android开发进行一个全方面的知识介绍，书中包含了大量的截图及代码示例，以帮助开发者应对真实世界的各种场景。 
+  </div> 
+  <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/27.htmlb">Java SE 8: 标准库增强</a> Lambda表达式是Java SE 8的核心功能，大部分的改进都围绕lambda表达式展开。（Jigsaw项目已经被推迟到Java SE 9。）关于lambda表达式的内容，已经在上一篇文章中进行了说明。这篇文章主要介绍Java SE 8中包含的其他Java标准库的增强。 
-  </div>
-  <div>
+  </div> 
+  <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/26.htmlb">Java 7 SDP：一次编写，到处运行，有时还运行得超炫！</a> 本文介绍了Java 7 SDK最近新引入的Java套接字直接协议（Sockets Direct Protocol，SDP）。SDP技术能让超高性能计算（Ultra High Performance Computing，UHPC）社区用Java语言对InfiniBand远程直接内存存取（Remote Direct Memory Access，RDMA）进行native访问，不需要操作系统的参与就能直接访问其他计算机的内存。 
   </div> 
   <div> 
@@ -148,8 +151,5 @@
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/29.htmlb">从赌钱游戏看PageRank算法</a>PageRank算法有着非常高的知名度和普及度，我们将以PageRank算法为例讲述“并行计算+数据算法”的经典搭配，并且这种“海量数据并行处理、迭代多轮后收敛”的分析过程也跟其他的数据挖掘或者机器学习算法应用类似，能起到很好的参考作用。 
   </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/28.htmlb">深入浅出node.js游戏服务器开发——基于Pomelo的MMO RPG开发</a>Pomelo是杭州网易研究院发布的基于Node.js开源游戏框架，本篇是连载内容的第三篇，为大家介绍如何使用Pomelo框架来搭建MMO RPG服务器，并分析其设计思路和实现方法。以此来帮助大家更好的理解和使用Pomelo框架，理解Pomelo框架游戏开发的基础流程，使用方法和设计理念。 
-  </div>   
  </body>
 </html>

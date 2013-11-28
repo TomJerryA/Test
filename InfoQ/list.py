@@ -2,6 +2,15 @@
  <head></head> 
  <body> 
   <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/25.py">Apportable、AndroidにObjective-Cを持ち込む</a>ApportableはiOS開発者がAndroid向けソフトウェアを配布する可能性をもたらす。Apportable SDKとコマンドラインツールを使うことで、プログラマはObjective-Cのコードに大きく手を加えることなく、アプリをクロスコンパイルすることができる。また、Apportableはアプリ変換サービスも提供する。 
+  </div> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/24.py">Amazon RDS、PostgreSQLをサポート</a>Amazon RDSがサポートするデータベースにPostgreSQLが追加された。まずはPostgresのversion 9.3.1をサポートし、新しいバージョンが利用可能なればサポートしていく計画だ。 
+  </div> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/23.py">PivotalがCloud FoundryベースのPivotal CFを発表</a>Pivotalは本日，Pivotal CFの提供開始を発表した。Cloud Foundyをベースとしたエンタープライズプラットフォームに加えて，Apache Hadoopや分析サービスなどのPivotal Oneサービスも合わせて提供される。発表についての意見は，gopivotal.comで受け付けている。 
+  </div> 
+  <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/22.py">Simian Armyを使わないPagerDutyの復元性テスト</a>PagerDutyのDoug Barth氏が，特別な自動化作業を前もって用意することなくシステムの復元性テストを開始するという，同社で実施したアプローチについて，DevOps Days Londonで講演した。目標としたのは障害発生点の早期発見と，１週間に１時間の時間枠を設けて，その対処方法についてオープンに議論することだ。 
   </div> 
   <div> 
@@ -141,15 +150,6 @@
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/26.py">Dartの M4リリースがコアライブラリを安定化</a>Google DartがDart SDKのマイルストーン 4をリリースした。言語は既に、以前のマイルストーンで安定化したが、このM4リリースは幾つかのコアライブラリを安定化させた。パフォーマンスも向上した。Dartをネイティブで動かすDartVMは、160% (DeltaBlueベンチマークで)から200% (Richardsベンチマークで)Chromeを動かしているJavaScriptエンジンのv8よりも早くなった。このリリースには、高速化されたdart2jsコンパイラーが含まれている。 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/25.py">MicrosoftがScript Explorerのリリースをキャンセル</a>MicrosoftはScript Explorerのリリースをキャンセルした。このツールは外部リポジトリ (TechNet Script Center, PoshCodeなど) あるいは企業の内部コレクションにあるPowerShellスクリプトを容易に見つけられるようにデザインされたものだ。 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/24.py">IntelliJ IDEA 12.1がJavaFX 2.0を新たにサポート</a>JetBrainsがIntelliJ IDEA 12.1の提供を開始した。Javaクライアントプラットフォームの最新実装であるJavaFX 2.0のフルサポートを実現している。この人気IDEの新バージョンにはGradle, Scala, Groovy, Play Framework用の新機能も含まれている。 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/23.py">JSONバリデーションのまとめ</a>どんな “柔軟な” すなわち “拡張性のある” ファイルフォーマットを作っても、遅かれ早かれ開発者のグループがバリデーションに関して文句を言い始める。JSONには、幾つもの選択肢が出てき始めている。 
   </div> 
  </body>
 </html>

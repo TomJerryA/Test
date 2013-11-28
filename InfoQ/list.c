@@ -1,6 +1,9 @@
 <html>
  <head></head> 
- <body> 
+ <body>
+  <div>
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/36.c">JavaScript: Visualize o fluxo de c&oacute;digo com o TraceGL</a>A Rik Arends lan&ccedil;ou o TraceGL, uma nova ferramenta para depurar aplica&ccedil;&otilde;es JavaScript usando depura&ccedil;&atilde;o por trilhas. A fim de tornar mais f&aacute;cil depurar navegadores complexos e aplica&ccedil;&otilde;es baseadas em Node.js, a ferramenta captura, visualiza e permite que o usu&aacute;rio navegue na trilha de execu&ccedil;&atilde;o, enquanto a aplica&ccedil;&atilde;o est&aacute; sendo executada.
+  </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/35.c">OpenKit: quadro de l&iacute;deres sociais entre diversas plataformas</a>Quando o OpenFeint foi descontinuado no final de 2012, muitos desenvolvedores de jogos iOS e Android ficaram sem funcionalidades sociais ou conex&otilde;es com redes sociais em seus softwares. Os jogos populares como Ninja Fruit, Fieldrunners ou Pocket God foram afetados. Agora, os cofundadores do OpenFeint liberaram o OpenKit, uma API substituta para servi&ccedil;os sociais entre v&aacute;rias plataformas. 
   </div> 
@@ -147,9 +150,6 @@
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/37.c">PuppetLabs e Opscode mostram como constru&iacute;ram suas comunidades open source</a>Ser educado com as pessoas e expl&iacute;cito e transparente sobre como as coisas s&atilde;o feitas: estes s&atilde;o os ingredientes fundamentais para o crescimento das comunidades - dizem Luke Kanies, CEO e fundador da PuppetLabs e Adam Jacob, co-fundador da Opscode e criador da Chef. 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/36.c">Agile Brazil 2013: Submiss&atilde;o de palestras fecha este final de semana</a>O Agile Brazil 2013, a maior confer&ecirc;ncia Agile do pa&iacute;s, acontece este ano em Bras&iacute;lia, trazendo palestras e keynotes com grandes personalidades do Brasil e do exterior, e promovendo t&oacute;picos importantes como governo, grandes empresas e startups. A chamada de submiss&otilde;es fecha este final de semana. 
-  </div> 
+  </div>  
  </body>
 </html>

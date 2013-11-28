@@ -2,13 +2,19 @@
  <head></head> 
  <body>
   <div>
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/16.java">Salesforce go API-first with Salesforce1</a>At the recent Dreamforce event in San Francisco Salesforce launched their Salesforce1 platform. The initial deliverables focus on mobile, and aim to improve on the earlier ‘Touch’ user interface by having a richer set of underlying application programming interfaces (APIs). The launch has been accompanied by new application and admin mobile apps.
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/18.java">Managing Business Change with Scrum at FloraHolland</a>FloraHolland wanted to realize change goals for business units in parallel with their daily business, and decided to use Scrum to manage their business changes. A session from the XP Days Benelux 2013 conference which shows how a Job Demands-Resources model was used by several business units to adopt Scrum and agile elements to change their way of working.
   </div>
   <div>
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/15.java">Noda Time 1.2 Released with XML, JSON Serialization and Text Formatting</a>The recently released Noda Time 1.2 provides support for XML and JSON serialization, text formatting and also includes an assembly that enables developers to handle JSON serialization.
-  </div>
-  <div>
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/14.java">T-shaped Hybrids in the Multi-disciplinary Team</a>A survey of recent commentary and presentations by Ken Schwaber and others on the merits of the multidisciplinary, T-shaped, team-member within an empowered cross-functional team.
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/17.java">YourKit Released the 2013 Version of its Profilers</a>For the recent 2013 version release of their Java Profiler, YourKit focused on improving its high level data collection features. The intention of the so called J2EE high level profiling is to get insight into the logical processing, rather than just providing timing information.
+  </div> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/16.java">Salesforce go API-first with Salesforce1</a>At the recent Dreamforce event in San Francisco Salesforce launched their Salesforce1 platform. The initial deliverables focus on mobile, and aim to improve on the earlier ‘Touch’ user interface by having a richer set of underlying application programming interfaces (APIs). The launch has been accompanied by new application and admin mobile apps. 
+  </div> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/15.java">Noda Time 1.2 Released with XML, JSON Serialization and Text Formatting</a>The recently released Noda Time 1.2 provides support for XML and JSON serialization, text formatting and also includes an assembly that enables developers to handle JSON serialization. 
+  </div> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/14.java">T-shaped Hybrids in the Multi-disciplinary Team</a>A survey of recent commentary and presentations by Ken Schwaber and others on the merits of the multidisciplinary, T-shaped, team-member within an empowered cross-functional team. 
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/13.java">How to Scale the Product Owner Role</a>The product owner role from Scrum is used to interface between the business and development. In larger organization with complex products and many decisions that need to be made, having this role filled in by one person is often not feasible. InfoQ did an interview with Timo Punkka about the role of the product owner, lean portfolio management, and customer collaboration. 
@@ -144,12 +150,6 @@
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/19.java">Apigee Now Supports Node.js and Open Sources Volos</a>Apigee Edge now supports Node.js and has open sourced Volos, a project containing a set of API management modules. 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/18.java">Attribute Based Routing in ASP.NET MVC</a>ASP.NET MVC 5 introduces the same attribute based routing used by Web API 2. This optional syntax allows routes to be registered declaratively instead of by manipulating a RouteCollection. 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/17.java">Reintroducing Hstore for PostgreSQL</a>PostgreSQL 9.4 will be reintroducing Hstore as the column type of choice for document-style data. This supersedes PostgreSQL’s JSON support which was introduced in version 9.0 and early tests show it to be significantly faster than MongoDB for some operations. 
-  </div>    
+  </div>   
  </body>
 </html>

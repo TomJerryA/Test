@@ -1,37 +1,32 @@
-<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>Spring Data与MongoDB：不协调的设计</h3><p><a href="http://www.mongodb.org">MongoDB</a>是一款非常知名的NoSQL文档数据库，而<a href="http://www.spring.io">Spring</a>则是Java领域著名的开源框架。除了构成Spring核心的IoC与AOP之外，Spring也有大量应用于各个不同领域的子框架，其中<a href="http://projects.spring.io/spring-data/">Spring Data</a>就是专门针对数据处理的一个子项目。在Spring Data下有<a href="http://projects.spring.io/spring-data-jpa">Spring Data JPA</a>、<a href="http://projects.spring.io/spring-data-mongodb">Spring Data MongoDB</a>、<a href="http://projects.spring.io/spring-data-redis">Spring Data Redis</a>等子项目，从名字就可以看出来这些子项目所针对的目标。其中，Spring Data MongoDB是专门针对MongoDB的一个子项目，旨在通过Spring的方式来操纵MongoDB，那么这种集成是简化了开发还是阻碍了开发呢？</p>
-<p><a href="https://twitter.com/pdeva">Prashant Deva</a>是<a href="http://chrononsystems.com/company">Chronon</a>的创始人与CTO。他是一位持续创业者，还创办了Placid Systems、AntlrStudio及Virtual Ant。作为一名极客，Deva喜欢尝试各种新鲜技术，在使用了Spring Data MongoDB一段时间后，他认为这个框架在设计上存在着严重的问题，并撰写了<a href="http://movingfulcrum.tumblr.com/post/61693014502/spring-data-and-mongodb-a-mismatch-made-in-hell#notes">文章</a>进行了深入且详尽的分析。</p>
-<blockquote>
-  Spring框架开发者们喜欢到处宣扬他们对MongoDB提供的支持，并以此作为优于其他框架的一个资本。不过，如果在真正的项目中使用Spring Data MongoDB的话，你就会发现框架在某些特性上的严重缺失以及设计上的巨大失误。
+<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>API设计中人的因素：专访Apiary的Jakub Nesetril</h3><p>API的设计与描述并不仅仅是机器之间的技术接口。 API Design and description is more than just a technical interface contract between machines. <a href="http://apiary.io">Apiary</a>的联合创始人兼CEO Jakub Nesetril指出API描述的真正使用者是开发人员，需要考虑到开发人员的参与、可用性以及交流等方面。最近，就API设计以及API工具和工作流，我们与Apiary进行了交流。</p>
+<p><strong>InfoQ: Jakub，你最近在API Strategy会议做了关于</strong><a href="http://www.infoq.com/presentations/API-Design-Best-Practices"><strong>API设计最佳实践</strong></a><strong>的演讲。你提到了“构建API并没有绝对正确的方式”。能谈一下你的这一理念吗，它是如何影响Apiary正在做的事情的？</strong></p>
+<blockquote> 
+ <p><b>JN:</b>：长期以来，API被视为两个电脑程序之间的接口。实际上，API是开发人员之间的接口——也就是真实的人之间。如果开发人员不了解怎样使用API，那么一切都完蛋了——你的项目肯定会失败。</p> 
+ <p>API（以及更通用意义上的软件接口）非常类似于UI设计：它受到时尚周期的影响，并且不同的文化背景会有差异（在编程中，指的就是语言和框架的文化），对此很容易形成成见，但是针对什么是正确的设计，没有人能达成共识。</p> 
+ <p>探寻“唯一正确的”UI设计是很愚蠢的做法，与此类似，API设计中也没有唯一的金科玉律。但是，有一些技术可以改变既有的主观性。在UI界面的演化中，我们看到近十年来，出现的趋势是关注以用户为中心的设计和用户体验。我们需要将这种方式拿到API开发之中，与客户和利益相关方实现敏捷、快速集成以及紧密的反馈环路。</p> 
 </blockquote>
-<p>Spring Data MongoDB试图将ORM风格的架构硬塞到非关系型数据库中，这直接造成在实际项目中根本无法使用的严重后果，下面就来谈谈这背后的原因：</p>
-<h3>无法检索字段，只能获取整个文档</h3>
-<p>这是Spring Data MongoDB设计上最大的瑕疵。它试图用SQL数据库中的行对文档进行建模，并且希望你像ORM一样创建“实体”类。这两者根本就不是一回事。文档可要比SQL数据库中的行复杂多了，也大多了。</p>
-<p>对于SQL数据库中的行来说，它认为你在大多数查询中都会获取到里面的所有数据，否则数据就应该被划分到多张表中。不过文档与之完全不同，文档可以嵌套，很多时候你只想从数据库中获取到文档的一个子集而已。</p>
-<p>但对于Spring Data MongoDB的“实体”模型来说，你不得不在每次查询中都检索出整个文档才行。</p>
-<h3>没有DBRef延迟加载</h3>
-<p>这个就更加疯狂了。如果通过DBRefs来引用其他文档，那么Spring Data MongoDB就会得到整个文档而不是文档引用。如果通过DBRefs连接了大量文档，那么一个只想获得几个字段的简单查询都会导致获取到整个文档图！</p>
-<p>实际情况是这个<a href="https://jira.springsource.org/browse/DATAMONGO-348">Bug报告</a>已经有将近两年时间了，被指定为“低优先级”状态，也没有什么解决方案，这太让人难以置信了，这表明Spring Data MongoDB的愿景与实际的使用之间存在着多么大的差距。</p>
-<h3>不支持游标</h3>
-<p>想要通过游标遍历集合吗？没门。要么就取出整个集合，要么就转而使用原生的Mongo Java驱动。</p>
-<h3>不完备的聚合框架支持</h3>
-<p>Spring Data MongoDB是从不久之前才开始支持MongoDB聚合框架的，就像框架的其他部分一样，这种支持也是个半成品。</p>
-<p>框架文档很少并且容易让人产生混乱，在实际项目中所需的大多数聚合查询都<a href="http://stackoverflow.com/questions/18749596/how-to-convert-this-query-using-spring-mongodb-aggregation-apis">没法在Spring Data MongoDB的文档中找到</a>，你只能使用原生的驱动才行。</p>
-<h3>不完善的索引支持</h3>
-<p>虽然可以通过框架将某个字段标记为“加索引的”，但其他操作却根本就不知道这回事。</p>
-<p>就拿MongoDB中的一个例子来说吧，如果某个字段是唯一且稀疏的，那么你就不能使用“null”值向文档中插入一次以上。这意味着在第2次插入时，该字段就不应该在第1次插入的位置处出现。</p>
-<p>然而，由于Spring强迫你在一个类中定义文档的字段，因此最后需要将null赋给不存在的字段。如果该字段拥有唯一的稀疏索引，那么这会导致运行期错误，因为Spring在根据实体对象创建查询时（以注解的形式直接定义在字段上），它根本就不知道索引的存在。</p>
-<p>Spring还提供了一个ensureIndex()方法用于手工在字段上创建索引，无需使用注解，不过文档中并没有提及何时该使用这种方式、使用的频率是多少，以及调用的性能是怎样的。</p>
-<h3>无法切换数据库</h3>
-<p>很多时候，你希望将数据存储在单个MongoDB实例的不同数据库中，比如说要保持不同客户数据的分离。</p>
-<p>如果使用原生的Mongo驱动，那么切换数据库简直就是小菜一碟，直接调用getDb(dbName)就行了。但如果使用Spring Data MongoDb，那么这几乎是一件无法做到的事情，除非你愿意自己写大量的代码（不过这么做的话在新版框架发布后可能就会出现移植性问题）。</p>
-<h3>让人奇怪的日志框架</h3>
-<p>我已经就Spring的文档问题专门写过一篇<a href="http://movingfulcrum.tumblr.com/post/58723008712/spring-cant-decide-how-it-wants-to-be-configured">文章</a>。Spring文档说它使用的是<a href="http://static.springsource.org/spring/docs/current/spring-framework-reference/html/overview.html#overview-logging">Jakarta Commons Logging</a>，不过Spring Data显然使用的是SLF4J。然而，Spring Data文档却压根儿就没有提过这事。</p>
-<p>这意味着如果开始使用Spring Data，那么你可能就会遇到很多文档中没有提及的运行期错误，这时没别的办法，上<a href="http://stackoverflow.com/questions/16753117/does-spring-data-force-dependency-on-slf4j">StackOverflow</a>上找答案吧。</p>
-<h3>不支持文档的动态特性</h3>
-<p>使用MongoDB这样的面向文档的数据库最大的原因就在于其动态特性了。比如说同一集合中的文档可以不同，这样同一个集合中就可以有多个版本的文档，然后逐渐升级，文档也可以嵌套。键名不必事先知道，这样就可以直接向文档中插入属性映射。</p>
-<p>但事实却是Spring Data MongoDB丢弃了MongoDB的这个最基本的特性，并且试图在其上构建一个确定的、预先定义好的ORM风格的层，这直接造成框架与底层数据库之间的不匹配。</p>
-<h3>结论</h3>
-<p>Spring Data MongoDB似乎是由一些压根儿就没有在真正的项目中用过MongoDB的人设计出来的，它试图将面向文档的数据库硬塞到ORM风格的框架中。</p>
-<p>这导致了框架与数据库之间的不匹配，Spring Data MongoDB反而成为了一个负担而不是帮助我们简化开发。最后，你还是不得不在几乎所有真正的项目开发中使用原生的MongoDB Java驱动。</p>
-<h3>后记</h3>
-<p>各位InfoQ读者，你曾经使用过Spring Data MongoDB进行过MongoDB开发么，你对于Spring Data MongoDB的使用感受是如何呢？是否与Deva的经历一致呢？我曾经在项目中尝试过Spring Data MongoDB，使用下来的一个直观感受就是它将简单的事情搞复杂了。直接使用原生Java驱动来操纵MongoDB是个非常简单且直观的过程，而Spring Data MongoDB却沿用了它一直以来的处理风格，那就是IoC，需要先进行注入，然后从容器中获取所需的对象，将原本很轻松的操作变得复杂起来，不知各位读者有什么样的感受呢，欢迎讨论。</p><br><br><br><br><br><br></body></html>
+<p><strong>InfoQ:现在有很多的API描述标准可供采用，包括你自己的</strong><a href="http://apiblueprint.org/"><strong>API Blueprint</strong></a><strong>。有一些是基于JSON、Markdown、YAML或XML的。你认为哪种方式最好呢？相对其他可选方案，是什么促使你选择了Markdown呢？</strong></p>
+<blockquote> 
+ <p><b>JN: </b>当Apiary成立的时候，XML、JSON以及YAML格式就已经存在了，我们曾经努力尝试不引入新的格式。但我们强烈感觉到这些语言太复杂了，尤其是考虑到其他角色——如技术文档编写人员或API的使用者——要参与进来的时候。当它们要携带大量人类可读的文本内容时会相当繁琐，但是好的API文档一般都会包含这样的信息。</p> 
+ <p>我们寻找一种在开发人员内部比较流行的格式，它能够用来编写结构化的数据，同时又能书写成段的文字。我们想找一种人类很易于读写的形式。希望它能够很容易被技术人员和非技术人员所理解。多年以来，markdown几乎被所有的开源项目所使用，同时也是GitHub Pages和Jekyll出版系统的核心。开发人员已经使用它很多年了。</p> 
+</blockquote>
+<p><strong>InfoQ:有些开发人员倡议将超媒体（hypermedia）作为契约式API开发的可选方案。这个问题似乎已经有很显然的答案了，但是关于契约API和无契约API，你是怎么看的？</strong></p>
+<blockquote> 
+ <p><b>JN: </b>我们可以看到超媒体有很大的潜力，但是到目前为止的推动力还是很有限。超媒体的问题在于采用情况。如果能够被广泛采用，我们可能会看到在API的使用方面会有快速的增长，但是契约的作用依然存在，它促成了校验、自动化测试以及工具。如果没有更好的工具支持，这种状况还会持续下去。但是有一些很优秀的人正在完善工具的功能，所以我们将来会看到它的进展。</p> 
+</blockquote>
+<p><strong>InfoQ:针对基于blueprint的API实现，你最近建立了</strong><a href="http://blog.apiary.io/2013/10/17/How-to-test-api-with-api-blueprint-and-dredd/"><strong>Dredd工具</strong></a><strong>进行自动化测试。在API设计和开发方面，你似乎在尝试特有的工作流程。能描述一下吗？</strong></p>
+<blockquote> 
+ <p><b>JN: </b>在过去的十年间，软件开发有了一定的转变，从传统、静态的瀑布设计转变为更为敏捷的迭代。在敏捷中，我们看到了自动化测试、代码覆盖率以及持续集成这样的事情。但是在API和接口契约方面，我们看起来依然处于1999年代——预先设计、规模宏大的开发工程、陈旧的文档、没有代码覆盖率、没有持续集成。在Apiary，我们正在试图改变这一点。</p> 
+ <p>在这方面，Dredd就是一个很好的例子。所有的开发人员都知道单调的、易出错的手工任务应该自动化执行。确保API文档处于最新的状态就是一项这样的任务。每个人都讨厌维护文档。借助于Dredd，我们可以将代码覆盖情况转移到API文档之中，这种方式能够与任何已有的持续集成提供商兼容。</p> 
+</blockquote>
+<p><strong>InfoQ:开发人员的参与（engagement）看起来是API采用和成功的“秘籍（secret sauce）”。在开发人员的参与方面，每个人所缺失的是什么呢？</strong></p>
+<blockquote> 
+ <p><b>JN: </b>对可用性以及授权的关注依然是很少的。如果你看一下所有成功的API项目（以及更普遍来讲，以开发人员为中心的公司），它们的产品中都有很强大的品牌、很好的用户体验，它们允许用户所做的事情超出了用户最初的想象。这不是火箭技术，但是更加难以重新创造。设身处地为用户着想并不是很容易获得或通过训练就能得到的技能。这就是为什么Apiary的很多API设计会将相关人员聚集在一起：API设计人员、API开发人员以及API使用人员，创造一个环境让这些人很容易地进行协作。</p> 
+</blockquote>
+<p><strong>InfoQ:Apiary有25,000在开发的API，你有没有规划利用一下这个市场地位，比如说创建API市场或仓库？</strong></p>
+<blockquote> 
+ <p><b>JN: </b>这个数字每周都在增长，所以很难进行精确统计。我们有35,000个 API，并且这一数字还在攀升。就在一年前，行业分析还曾经严肃地讨论世界上的API数量一共是50,000或80,000。现在我们知道，这个数字要大得多得多。尽管Apiary的快速增长只是过去12个月内的事情，但是行业内的大多数人都在使用机构提供的或自定义的工具。这里面还有很大的成长空间。</p> 
+ <p>我们只关注一件事——只做我们能做好的——那就是帮助开发人员的工具。API市场或仓库的理念看起来很吸引人，但是我们并没有看到它能够带来的附加价值。</p> 
+</blockquote>
+<p>Apiary Inc.总部位于旧金山，工程人员位于捷克共和国的布拉格。它由Jakub Nesetril和Jan Moravec创建，并在2012年底发布了API设计平台的公测版，这是一个创新性的产品。到目前为止，Apiary已有超过35,000个API，这是世界范围内最大的一个API集合。它的早期客户是Akamai或GoodData的开发人员门户。我们最近与Jakub Nesetril就API设计、描述、工具以及测试进行了交流。</p>
+<p><strong>原文英文链接：</strong><a href="http://www.infoq.com/news/2013/11/apiary-jakub-nesetril-interview">The Human Aspects of API Design: An Interview with Apiary's Jakub Nesetril</a></p><br><br><br><br><br><br></body></html>
