@@ -1,7 +1,7 @@
 <html>
  <head></head> 
- <body>
-  <div>
+ <body> 
+  <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/11.javab">Author Q&amp;A and Book Excerpt: Directing the Agile Organisation</a> Evan Leybourn has written a book titled Governing the Agile Organisation in which he presents ideas about using agile approaches to management and a number of case studies on how the techniques have been applied in a number of disparate organisations. 
   </div> 
   <div> 
@@ -150,6 +150,6 @@
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/12.javab">What Scrum Master Are You Hiring?</a>Have you looked at some of the ads for Scrum Masters lately? Some ads include the need for PMPs or they say they will give you a bonus if you complete the project... 
-  </div>  
+  </div> 
  </body>
 </html>

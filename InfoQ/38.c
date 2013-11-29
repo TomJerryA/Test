@@ -1,57 +1,23 @@
-<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>Desenvolvedores e suas personalidades: dados da nova pesquisa da Evans Data</h3><p>A <a href="http://www.evansdata.com/">Evans Data Corporation</a> (EDC) conduziu, recentemente, uma pesquisa online com o intuito de decifrar as atitudes, padr&otilde;es adotados e inten&ccedil;&otilde;es dos desenvolvedores em rela&ccedil;&atilde;o ao mercado de trabalho. A pesquisa foi feita atrav&eacute;s de uma entrevista detalhada com 457 desenvolvedores do Painel Internacional de Desenvolvedores da EDC, que, de acordo com a pr&oacute;pria EDC, inclui cerca de 75 mil desenvolvedores provenientes de 85 pa&iacute;ses, e cujo recrutamento foi realizado da forma mais natural poss&iacute;vel, sem que os desenvolvedores tivessem rela&ccedil;&atilde;o com a plataforma ou os fornecedores.</p> 
-<h2>Motiva&ccedil;&atilde;o</h2> 
-<p>Quando o assunto abordado &eacute; a motiva&ccedil;&atilde;o no trabalho, os desenvolvedores com menos de 25 anos de idade come&ccedil;am sendo mais curiosos, ent&atilde;o passam, em sua maioria, a querer aperfei&ccedil;oar as suas habilidades e, em seguida, em torno de 50-55 anos de idade, t&ecirc;m um tempo em que gostam de contribuir para a comunidade. Tornam-se mais curiosos depois dos 55, mas tamb&eacute;m mantendo o desejo de aprender mais. Veja um resumo no gr&aacute;fico a seguir:</p> 
-<p><img src="http://www.infoq.com/resource/news/2013/04/desenvolvedores-personalidade/pt/resources/101.png;jsessionid=E6A7BCE796AAF95197E434A418E2C574" alt="" _href="img://101.png" _p="true" /></p> 
-<h2>Pr&ecirc;mios e Gratifica&ccedil;&atilde;o</h2> 
-<p>Quanto &agrave; gratifica&ccedil;&atilde;o ou pr&ecirc;mios pelo esfor&ccedil;o, o estudo revela que a grande maioria dos desenvolvedores prefere pr&ecirc;mios virtuais (badges, n&iacute;veis, pontos de lideran&ccedil;a, e assim por diante), em vez de reais (dinheiro, f&eacute;rias, software). Dois ter&ccedil;os dos desenvolvedores tendem a preferir o reconhecimento proveniente de seus pares:</p> 
-<p><img src="http://www.infoq.com/resource/news/2013/04/desenvolvedores-personalidade/pt/resources/02.png;jsessionid=E6A7BCE796AAF95197E434A418E2C574" alt="" _href="img://02.png" _p="true" /></p> 
-<h2>Preocupa&ccedil;&otilde;es com a carreira</h2> 
-<p>Os desenvolvedores foram indagados sobre as principais preocupa&ccedil;&otilde;es para suas carreiras, o futuro da plataforma em que est&atilde;o desenvolvendo, suas habilidades, e as ferramentas que usam. Os desenvolvedores consideram que o decl&iacute;nio de suas plataformas ou ferramentas s&atilde;o mais preocupantes do que suas habilidades se tornarem ultrapassadas. A EDC interpreta essas respostas como &quot;Um desenvolvedor sempre pode aprender novas habilidades, mas se j&aacute; investiu anos de sua vida e possivelmente muito dinheiro no desenvolvimento de uma aplica&ccedil;&atilde;o para uma plataforma ou tecnologia espec&iacute;fica e a plataforma se torna irrelevante no mercado, ent&atilde;o suas perdas podem ser potencialmente grandes.&quot; Veja os resultados completos para uma das perguntas da pesquisa:</p> 
-<h2>Qual dos seguintes itens &eacute; o MAIS preocupante na sua carreira?</h2> 
-<table cellspacing="0" cellpadding="0"> 
- <tbody> 
-  <tr> 
-   <td> <p>A plafaforma que escolhi est&aacute; em decl&iacute;nio, se tornando irrelevante ou obsoleta</p> </td> 
-   <td> <p>29.6%</p> </td> 
-  </tr> 
-  <tr> 
-   <td> <p>As tecnologias e ferramentas que uso est&atilde;o abandonadas ou descontinuadas</p> </td> 
-   <td> <p>21.2%</p> </td> 
-  </tr> 
-  <tr> 
-   <td> <p>Minhas habilidades de desenvolvimento est&atilde;o se tornando irrelevantes ou obsoletas</p> </td> 
-   <td> <p>17.8%</p> </td> 
-  </tr> 
-  <tr> 
-   <td> <p>A plataforma que escolhi, definitivamente, n&atilde;o prosperou</p> </td> 
-   <td> <p>12.2%</p> </td> 
-  </tr> 
-  <tr> 
-   <td> <p>Desconhecer a pr&oacute;xima grande onda tecnol&oacute;gica</p> </td> 
-   <td> <p>9.6%</p> </td> 
-  </tr> 
-  <tr> 
-   <td> <p>Outro</p> </td> 
-   <td> <p>9.6%</p> </td> 
-  </tr> 
- </tbody> 
-</table> 
-<h2>Introvertidos ou extrovertidos?</h2> 
-<p>Os programadores s&atilde;o estereotipados como <a href="http://pt.wikipedia.org/wiki/Geek">geeks</a> introvertidos, ou at&eacute; mesmo <a href="http://pt.wikipedia.org/wiki/Nerds">nerds</a>, mas, como se veem? Os desenvolvedores, na sua maioria, acham que s&atilde;o extrovertidos, sendo que metade se considera moderadamente extrovertida. Os resultados foram consistentes atrav&eacute;s de diferentes pa&iacute;ses.</p> 
-<p><img src="http://www.infoq.com/resource/news/2013/04/desenvolvedores-personalidade/pt/resources/03.png;jsessionid=E6A7BCE796AAF95197E434A418E2C574" alt="" _href="img://03.png" _p="true" /></p> 
-<h2>Intuitivos ou l&oacute;gicos?</h2> 
-<p>Outra pergunta foi feita para medir o quanto os desenvolvedores confiam na intui&ccedil;&atilde;o e o quanto confiam na l&oacute;gica. Os resultados obtidos foram os esperados, ou seja, 85% dos desenvolvedores se colocaram no lado l&oacute;gico dessa equa&ccedil;&atilde;o:</p> 
-<p><img src="http://www.infoq.com/resource/news/2013/04/desenvolvedores-personalidade/pt/resources/04.png;jsessionid=E6A7BCE796AAF95197E434A418E2C574" alt="" _href="img://04.png" _p="true" /></p> 
-<p>As 200 p&aacute;ginas da pesquisa cont&ecirc;m apresentam v&aacute;rias outras quest&otilde;es relacionadas aos desenvolvedores, como:</p> 
-<ul> 
- <li>O que deixa um desenvolvedor animado sobre uma ferramenta ou tecnologia?</li> 
- <li>Por que desenvolvedores se tornam desenvolvedores?</li> 
- <li>Quantos desenvolvedores mudariam suas carreiras t&eacute;cnicas por mais dinheiro?</li> 
- <li>Quais s&atilde;o as fontes mais confi&aacute;veis sobre tecnologias emergentes.</li> 
- <li>As principais raz&otilde;es para assistirem <a href="http://www.google.com/url?q=http%3A%2F%2Fpt.wikipedia.org%2Fwiki%2FWebinar&amp;sa=D&amp;sntz=1&amp;usg=AFQjCNGerWukRZpmtmpTMGDKlYqS5z_Neg">Webconfer&ecirc;ncias</a>.</li> 
- <li>O melhor tempo de dura&ccedil;&atilde;o para v&iacute;deos educacionais.</li> 
- <li>Quais as motiva&ccedil;&otilde;es para abandonar uma plataforma.</li> 
- <li>Quais empresas que os desenvolvedores acreditam ser as mais relevantes.</li> 
-</ul> 
-<p>Entre muitas outras perguntas.</p> 
-<p id="lastElm"></p><br><br><br><br><br><br></body></html>
+<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>O que deve e o que não deve ser feito em uma API Web</h3><p>H&aacute; uma s&eacute;rie de discuss&otilde;es em torno do <a href="http://pt.wikipedia.org/wiki/REST">REST</a> e das <a href="http://en.wikipedia.org/wiki/Web_api">APIs web</a> nas listas e f&oacute;runs de discuss&atilde;o, e na opini&atilde;o de <a href="http://gotocon.com/berlin-2013/speaker/Oliver+Wolf">Oliver Wolf</a>, consultor s&ecirc;nior na InnoQ, n&atilde;o h&aacute; uma verdade absoluta. Foi assim que Wolf iniciou a sua <a href="http://gotocon.com/berlin-2013/presentation/Web%20API%20DOs%20and%20DON'Ts">palestra</a> <a href="http://www.google.com/url?q=http%3A%2F%2Fgotocon.com%2Fberlin-2013%2Fpresentation%2FWeb%2520API%2520DOs%2520and%2520DON'Ts&amp;sa=D&amp;sntz=1&amp;usg=AFQjCNFwOLLI5aJuA5Khi6knAveDvZR1Og">&quot;</a><a href="http://gotocon.com/berlin-2013/presentation/Web%20API%20DOs%20and%20DON'Ts">O que deve e o que n&atilde;o deve ser feito em uma API Web</a>&quot;, na confer&ecirc;ncia <a href="http://gotocon.com/berlin-2013/speaker/Oliver+Wolf">GOTO Berlin</a>.</p>
+<p><strong>N&atilde;o pense em termos de endpoints.</strong> A <a href="http://pt.wikipedia.org/wiki/SOAP">especifica&ccedil;&atilde;o SOAP</a> possui uma fachada com um ponto de entrada &uacute;nico. Em contraste com a web, que possui v&aacute;rios pontos de entrada que s&atilde;o constru&iacute;dos a partir de relacionamentos e interconex&otilde;es, tendo a hiperm&iacute;dia como um elemento cr&iacute;tico. Em vez de fazer com que a sua API se torne um buraco negro com apenas uma via de entrada, deve-se utilizar controles de hiperm&iacute;dia para vincular as suas representa&ccedil;&otilde;es de recursos, de modo que tenham significado para o seu p&uacute;blico.</p>
+<p><strong>N&atilde;o exponha o seu modelo de dom&iacute;nio em sua API.</strong> Um problema presente em v&aacute;rios modelos &eacute; que estes cont&ecirc;m somente dados, sendo carentes de todos os tipos de comportamento (chamados de <a href="http://www.martinfowler.com/bliki/AnemicDomainModel.html">modelos an&ecirc;micos</a>). A exposi&ccedil;&atilde;o de um modelo como este acaba gerando recursos <a href="http://en.wikipedia.org/wiki/CRUD">CRUD</a> (Create, Read, Update, Delete). Isto n&atilde;o &eacute; necessariamente um ponto negativo, pois &agrave;s vezes tudo o que se precisa &eacute; de uma API CRUD pura. Entretanto, um problema em se expor somente um modelo CRUD &eacute; que um cliente usando uma API precisa de muito conhecimento: quais a&ccedil;&otilde;es podem ser executadas em quais recursos; em qual ordem fazer as coisas etc. Muita l&oacute;gica est&aacute; presente no cliente, gerando um acoplamento forte entre o cliente e o servidor.</p>
+<p><strong>Projete sua API al&eacute;m da inten&ccedil;&atilde;o.</strong> Pense sobre o que o seu cliente quer e o que far&aacute;. Ocasionalmente isto requer um equil&iacute;brio entre clareza e flexibilidade, o qu&atilde;o limpa e simples a sua API deve ser versus qual flexibilidade &eacute; necess&aacute;ria. Um modo flex&iacute;vel, por&eacute;m mais imperativo de consultar quais s&atilde;o os clientes mais rent&aacute;veis, poderia ser assim:</p>
+<pre>
+GET /customers?sortBy=grossmargin&amp;order=descending
+</pre>
+<p>Em contrapartida, um estilo mais declarativo que exp&otilde;e a inten&ccedil;&atilde;o, por&eacute;m menos flex&iacute;vel, poderia ser assim:</p>
+<pre>
+GET /most_profitable_customers
+</pre>
+<p>A ideia central de Oliver aqui &eacute; pensar sobre o que um cliente precisa para usar a sua API, qual seria o seu objetivo e tentar adat&aacute;-la para este fim.</p>
+<p><strong>N&atilde;o abuse dos verbos GET e POST.</strong> Basicamente significa que n&atilde;o se deve utiliz&aacute;-los da forma errada e que violem a especifica&ccedil;&atilde;o HTTP. Deve-se, por exemplo, n&atilde;o utilizar os verbos GET e POST para deletar um recurso. Os verbos HTTP s&atilde;o definidos por uma raz&atilde;o, eles possuem qualidades complementares e ganha-se muito ao seguir a especifica&ccedil;&atilde;o. Utilizar os verbos transmite inten&ccedil;&atilde;o, o que o cliente espera fazer e qual o comportamento o cliente pode esperar do servidor.</p>
+<p><strong>N&atilde;o limite as suas op&ccedil;&otilde;es de c&oacute;digos de erro em 200 e 500.</strong> Utilize todo o espectro de c&oacute;digos de erro, h&aacute; 160 c&oacute;digos de erro para se escolher e h&aacute; um para quase todos os tipos de erro conceb&iacute;veis. Utilizar o c&oacute;digo de erro correto &eacute; chave para o tratamento adequado do erro no cliente.</p>
+<p>Um problema comum &eacute; os servidores retornarem 200 (OK), embora tenha ocorrido um erro. Fingir que est&aacute; tudo bem quando na verdade n&atilde;o est&aacute;, nem sempre &eacute; uma boa ideia.</p>
+<p><strong>N&atilde;o ignore o cache.</strong> Haver&aacute; caches envolvidos, sejam quais forem, e estes s&atilde;o uma parte muito importante da web. Auxilie os caches adicionando cabe&ccedil;alhos de cache apropriados. Se, por exemplo, n&atilde;o quiser que o cache seja realizado, seja explicito e o desligue.</p>
+<p>Uma das melhores formas de se controlar o caching &eacute; utilizar validadores, de prefer&ecirc;ncia Etags, que permitem ao lado do servidor agir sobre dados arbitr&aacute;rios. Uma ETag &eacute; apenas um valor que o servidor gera e passa para o cache, e &eacute; posteriormente devolvido ao servidor pelo cache, que questiona o servidor sobre a recentidade do recurso.</p>
+<p><strong>N&atilde;o obrigue versionamento.</strong> O que &eacute; considerado como uma altera&ccedil;&atilde;o de um recurso, na maioria das vezes &eacute; de fato uma altera&ccedil;&atilde;o na representa&ccedil;&atilde;o. O recurso continua sendo o mesmo e mant&eacute;m a mesma URL, sendo assim evite versionar a URL. Em vez disso deve haver uma nova vers&atilde;o do tipo de media, adicionando-se v2, por exemplo:</p>
+<pre>
+Content-Type=application/vnd.company.v2+xml
+</pre>
+<p><strong>N&atilde;o utilize extens&otilde;es na</strong> <strong>negocia&ccedil;&atilde;o</strong><strong> de conte&uacute;do.</strong> A forma adequada de se negociar sobre um formato de representa&ccedil;&atilde;o &eacute; atrav&eacute;s do uso do Accept e Content-Type no cabe&ccedil;alho.</p>
+<p>A <a href="http://gotocon.com/berlin-2013/">GOTO Berling Conference 2013</a> foi a primeira confer&ecirc;ncia GOTO em Berlin, e reuniu 420 participantes e 80 palestrantes.</p><br><br><br><br><br><br></body></html>

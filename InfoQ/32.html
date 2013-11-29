@@ -1,12 +1,19 @@
-<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>瞻博网络发布首款软件定义网络软件——OpenContrail</h3><p>基于经授权的<a href="http://en.wikipedia.org/wiki/Apache_License">Apache v2</a>开源软件许可，瞻博网络<a href="http://newsroom.juniper.net/press-releases/juniper-networks-introduces-opencontrail-an-open--nyse-jnpr-1050858">发布</a>了他们自己的软件定义网络解决方案——<a href="http://opencontrail.org/">OpenContrail</a>。这意味着在软件定义网络范畴，除了<a href="http://www.infoq.com/news/2013/08/vmware-networking-storage-sdcc">上个月</a>在VMworld发布的Vwware <a href="http://www.vmware.com/products/nsx/">NSX</a>解决方案之外，大家多了种开源解决方案的选择。</p>
-<p>正如NSX一样，OpenContrail允许在软件虚拟软件切换及虚拟化环境路由两个方面，提供了技术支撑——通过使用通用路由封装（<a href="http://en.wikipedia.org/wiki/Generic_Routing_Encapsulation">GRE</a>）或虚拟可扩展局域网（<a href="http://en.wikipedia.org/wiki/VXLAN">VXLAN</a>）技术提供了覆盖式网络模式。另一方面，OpenContrail也和NSX方案一样能够控制基于网络设备的硬件。 两个平台方案的根本区别在于两者与编排系统（orchestration systems）的连接方式。OpenContrail被设计为能够在<a href="http://www.openstack.org/">OpenStack</a>云管理平台上工作，而NSX是和Vmware的云自动化中心（vCAC）相连。</p>
-<p>OpenContrail作为服务项目的<a href="https://wiki.openstack.org/wiki/Neutron">中子网络</a>（以前称作为量子）供应方与OpenStack整合。称作为“北向（North Bound）”的API直接为应用程序整合提供了可行性，人们将此阐述为<a href="http://opencontrail.org/network-virtualization-architecture-deep-dive/">网络虚拟架构</a>的深入研究。</p>
-<p>OpenContral的核心技术来自与去年瞻博网络所收购的Contrail系统公司，一家由几名瞻博网络公司前雇员创立的软件定义网络（SDN）作为前身。该系统最不同于其他软件定义网络（SDN）方法的地方在于：对应用程序需求及网络能力可管理化方面，系统大大依赖了内部数据模型的使用。</p>
-<p>由思科网络的首席技术官Padamasree Warrior的博客——<a href="http://blogs.cisco.com/datacenter/limitations-of-a-software-only-approach-to-data-center-networking/">Limitations of a Software-Only Approach to Data Center Networking</a>中可以看出，思科在刻意地淡化软件定义网络（SDN）对网络的影响。但不幸的是，这篇<a href="https://www.networkworld.com/community/blog/response-padma-warriors-limitations-software-only-approach-data-center-networking">博客</a>似乎忽略了这样一个事实即NSX不仅仅是款软件，它同样可以用来管理硬件。网络工业评论员——Art Fewell在他的文章中也揭示了这点。瞻博网络同它的最大竞争对手一起为市场推出了这款等同于NSX的开源软件——OpenContrail，这无疑对思科网络产生了巨大的压力，并作用于那些生存在思科网络生态系统之下的产品或公司。</p>
-<p>OpenContrail声明中遗漏的一点是，这份声明并未提及关于创建一个基于“北向（North Bound）”API的开源的实现方法。而这个方法是开放网络基金会（<a href="https://www.opennetworking.org/">ONF</a>）所推进的平面控制协议——OpenFlow或Linux基金会的OpenDaylight的初步方案中的涉及项。瞻博网络此前曾声明将支持<a href="http://en.wikipedia.org/wiki/Openflow">OpenFlow</a>及<a href="http://www.opendaylight.org/">OpenDaylight</a>。在这方面，瞻博网络更胜VMware一筹。然而正因为OpenFlow源自NSX的一个主要组成部分——Nicira，但从NSX的发布声明中并未提及对OpenFlow的支持。同样的，尽管VMware是OpenDaylight项目的成员之一，但在自己的产品上市之前VMware并未选择开放API源码。</p>
-<p>penContrail的API由内部<a href="http://opencontrail.org/opencontrail-architecture-documentation/#section3">数据模型</a>产生，并且支持创建、读取、更新及删除（CRUD）操作，而这些操作通过一个表述性状态转移（RESTful）的接口完成。该项目同样提供了对Python、C++及JavaScript的绑定。应用程序能够直接与API交互，而不需要通过编排系统。借此，InfoQ编辑联系了瞻博网络的首席架构师及软件定义网络（SDN）的首席技术官（CTO）——Kireeti Kompalla了解到关于如何处理多个主体的具体细节：</p>
-<blockquote>
-  所有的数据模型操作，一旦被验证通过并确认，最终写入一个数据库。该数据库呈现层次化结构。因此当编排程序打算为某个项目创建一个新的虚拟网络时，它就必须询问该项目之下已经定义了哪些虚拟网络。
-</blockquote>
-<p>值得注意的是，OpenContrail通过一种分布式哈希表（<a href="http://en.wikipedia.org/wiki/Distributed_hash_table">DHT</a>）NoSQL方式来访问数据库以防止单点失败。</p>
-<p><b>查看英文原文：</b><a href="http://www.infoq.com/news/2013/09/open-contrail-sdn">Juniper Launches OpenContrail for Software Defined Networking</a></p><br><br><br><br><br><br></body></html>
+<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>YourKit发布了Java Profiler 2013</h3><p>在最近发布的2013版Java Profiler中，YourKit着重提升了它的高层（level）数据收集功能。所谓的J2EE高层性能分析的目的是能够洞悉逻辑处理而不仅仅是提供时间信息。</p>
+<p>高层性能分析所需要的数据——例如SQL语句、JNDI调用或者JSP请求——是使用探针（probes）收集的。在之前的版本中，这些探针是通过字节码的再转换附加到代码上或者从代码中移除的。这一过程造成了一些负载同时还需要类的再转换，此外该功能在使用的JVM上还有可能会被禁用。</p>
+<p>在2013版的Java Profiler中，探针现在始终都会被附加到代码上，但是激活（activation）和停用（deactivation）是由探针代码内部简单的复选框（checks）控制的。</p>
+<p>除了减少开销之外，这样还可以让探针状态的变化立即生效。</p>
+<p>探针有3种状态：<i>on</i>、<i>off</i> 和 <i>auto</i> ，在CPU性能分析模式下auto将会激活探针。</p>
+<p>性能图表（Performance Charts）主要的新功能是能够对探针收集的数据进行可视化和关联。例如，它能够将高CPU负载和数据库调用的数量或者将内存消耗和servlet调用的数量关联起来。这些类型的高层分析通常是由APM工具提供的，并不会展现在分析工具里面，因为后者所做的工作更加细致。但是，如果你想要查看系统中的哪些部分是相互影响的，那么关联功能给出了一个很好的切入点。</p>
+<p>CPU性能分析增加了配置项：</p>
+<ul> 
+ <li>现在还能够分析那些通常会被排除的方法，例如getter和setter函数。</li> 
+ <li>UI可以选择性地显示那些执行时间在1毫秒之内的方法。</li> 
+</ul>
+<p>对于性能分析，同样也有一些新功能：</p>
+<ul> 
+ <li>对于<i>Date</i>或者原始类型包装器这样的简单对象其对应的值会被显示出来。这样不需要进入它们就能够查看它们所代表的值，加快了分析的速度。</li> 
+ <li>以后将无法展开对象树中的自引用（Self References），这样可以防止用户进入无限递归的引用路径。</li> 
+</ul>
+<p>当然，为了包含默认方法的性能分析新版本还扩展了Java 8的支持，同时所有新版本的IDE都支持集成。使用TestNG执行测试现在也能够很容易地分析。</p>
+<p>YourKit给出的报价是每个开发者$499，或者每个浮动许可$2,499。如果购买时间不满一年那么升级是免费的，否则的话只能享受40%的优惠。</p>
+<p><b>查看英文原文</b>：<a href="http://www.infoq.com/news/2013/11/yourkit-2013">YourKit Released the 2013 Version of its Profilers</a></p><br><br><br><br><br><br></body></html>

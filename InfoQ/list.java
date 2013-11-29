@@ -1,6 +1,15 @@
 <html>
  <head></head> 
- <body> 
+ <body>
+  <div>
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/22.java">List &amp; Label 19 Adds Report Parameters, Collection Variables, OData and REST Data Providers</a>The recently released List &amp; Label 19 provides support for report parameters, collection variables, new chart types such as combined, stacked, funnel, pipeline, shapefile and donut in addition to support for OData and REST data providers.
+  </div>
+  <div>
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/21.java">PayPal Switches from Java to JavaScript</a>PayPal has decided to use JavaScript from browser all the way to the back-end server for web applications, giving up legacy code written in JSP/Java.
+  </div>
+  <div>
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/20.java">How to Target Intrinsic Motivators - Champfrogs Checklist</a>Jurgen Appelo has released a tool to help target intrinsic motivators in teams and individuals, his -Champfrogs checklist.
+  </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/19.java">Experiences from Enterprise Integration with REST</a>Large-scale legacy replacement is the hardest job in the IT industry and REST over HTTP is an attractive option for many of these projects. Architecturally REST has proven scalability and to fit in well with domain modelling, Brandon Byars, a principal consultant at Thoughtworks, claims when sharing his experiences from using RESTful integration in large scale legacy replacement projects. 
   </div> 
@@ -141,15 +150,6 @@
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/23.java">Pivotal Announces Pivotal CF Based on CloudFoundry</a>Today, Pivotal announced the availability of Pivotal CF, an enterprise cloud platform based on Cloud Foundry, along with a number of Pivotal One services such as an Apache Hadoop and Analytics service. A reply of the announcement is available from gopivotal.com 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/22.java">Presto: Facebook’s Distributed SQL Query Engine</a>Facebook has open-sourced Presto, their distributed SQL query engine. Presto uses a pipelined architecture rather than the Map/Reduce design found elsewhere. In production since early this year, Facebook has since “deployed in multiple geographical regions and [they] have successfully scaled a single cluster to 1,000 nodes”. 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/21.java">Use the Force, Luca - Jenkins Developer Wipes out a Month of Commits on GitHub</a>Yesterday, a developer on the Jenkins project accidentally triggered a force push on the GitHub repositories that store the Git repositories for the Jenkins codebase, wiping out several months of commits. InfoQ looks at what happened and what needs to prevent this re-occuring in the future. 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/20.java">Testing Resiliency at PagerDuty Without a Simian Army</a>Doug Barth, from PagerDuty, talked at DevOps Days London about their approach to start resiliency testing their systems without dedicating a lot of automation effort upfront. The goal was to quickly start learning about failure points and openly discuss how to fix them with only one hour per week of effort. 
-  </div> 
+  </div>    
  </body>
 </html>

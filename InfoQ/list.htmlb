@@ -1,10 +1,10 @@
 <html>
  <head></head> 
- <body>
-  <div>
+ <body> 
+  <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/30.htmlb">Tiago Garcez访谈：为什么实施敏捷？</a> InfoQ采访了Tiago Garcez，谈论了这样一些问题：为什么敏捷更适合应对企业面临的挑战，敏捷能够创造的价值，以及如何启动向敏捷的过渡。 
-  </div>
-  <div>
+  </div> 
+  <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/29.htmlb">解析精益产品开发（三）——面向价值的可视化</a> 用户故事图谱和任务看板、版本和迭代燃尽图，可视化已经成为敏捷和精益产品开发必选实践。可视化真的重要吗？我们将从一个真实团队的实践开始，探讨可视化的作用，以及如何让可视化发挥效用。 
   </div> 
   <div> 
@@ -150,6 +150,6 @@
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/31.htmlb">对比iOS中的四种数据存储</a>你是用什么方法来持久保存数据的？这是在几乎每一次关于iOS技术的交流或讨论都会被提到的问题，而且大家对这个问题的热情持续高涨。本文主要从概念上把“数据存储”这个问题进行剖析，并且结合各自特点和适用场景给大家提供一个选择的思路，并不详细介绍某一种方式的技术细节。 
-  </div>   
+  </div> 
  </body>
 </html>

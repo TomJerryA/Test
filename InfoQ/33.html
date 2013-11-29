@@ -1,24 +1,7 @@
-<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>适合敏捷开发的合同模式：目标价格，风险均摊</h3><p>敏捷给产品开发带来的价值已经日益被软件开发业界所认可，从几个人的创业公司到几十万人的跨国企业，越来越多的产品团队采用敏捷的方式收集分析需求、开发产品、乃至部署运维。然而，传统的软件合同与敏捷开发方式相互冲突，往往会导致产品失败或大大降低敏捷给产品开发带来的价值。在11月7日召开的Agile Singapore大会上，来自挪威PROMIS公司的Trond &Aring;sheim展示了一种适合敏捷开发的合同模式。</p>
-<p>Trond首先回顾了传统的两种软件开发合同模式：固定价格（Fixed Price）和时间材料（Time&amp;Material）。</p>
-<p>固定价格模式将风险全部转给供应商，因此需求越抽象、需求变更越频繁、需求范围越模糊，供应商的风险越高。为了降低风险，供应商势必要求客户在开发启动前就明确需求范围、提供详尽的需求描述、控制需求变更频度——这样的做法毫无疑问是与敏捷价值相冲突的，所以毫不奇怪基于固定价格模式的敏捷开发很容易以失败告终。</p>
-<p>时间材料模式则将风险全部放在客户方，容易导致客户方对于供应商持有很高的不信任感，这也是不利于客户协作的。</p>
-<p>Trond介绍了适合敏捷开发的合同模式：目标价格（Target Price）。在目标价格的基础上，客户和供应商以预先商定的比率（一般而言50：50）共同承受收益或亏损。Trond用图表很好地比较了这三种合同模式。</p>
-<p><img src="http://infoqstatic.com/resource/news/2013/11/agile-target-price/zh/resources/PastedGraphic-1.png" alt="" _href="img://PastedGraphic-1.png" _p="true" /></p>
-<p>Trond列举了目标价格模式对敏捷开发友善之处：</p>
-<ul> 
- <li>风险由客户和供应商均摊；</li> 
- <li>供应商可以在较大的不确定性的基础上估算成本、制定解决方案；</li> 
- <li>客户不必从一开始就提供详尽的需求；</li> 
- <li>供求双方均不需在投标阶段花费大量时间和资源制作规格说明书、详细设计和计划（无论是否敏捷开发，这些东西往往在开发过程中很快就失去其作用，反而持续束缚团队开发出真正有用的产品）。</li> 
-</ul>
-<p>Trond介绍了一个在挪威IT业界行之有年的基于目标价格模式的合同模型：PS2000 Agile。这个合同模型曾经于2008 - 2011年帮助一个一亿元挪威克朗的项目取得成功。具体介绍可以参看<a href="http://www.dataforeningen.no/ps2000-standard-contract-english-version.4599105-146042.html">这里</a>。</p>
-<p>此外，Trond也谈到了敏捷合同应该具备的特点：</p>
-<ul> 
- <li>在合同期间能够很好地应对客户不断变化的商业环境和冲击；</li> 
- <li>在开发期间更灵活地处理需求和范围变化；</li> 
- <li>引入更多专职于与团队协作的客户；</li> 
- <li>减少冗员，使计划、控制和跟踪更加有效率；</li> 
- <li>通过每日站会持续跟踪进度和，降低不确定性；</li> 
- <li>鼓励团队自我组织。</li> 
-</ul>
-<p>关于Agile Singapore大会：这是由<a href="http://www.rallydev.com/">Rally Software</a>和<a href="http://www.odd-e.com/">Odd-e</a>联合冠名赞助的在新加坡举办的第一届敏捷盛会，于2013年11月7 - 8日在新加坡滨海湾金沙大酒店会议中心召开，Kent Back, Jim McCarthy, David Hussman等敏捷思想领袖出席大会并做主题演讲。</p><br><br><br><br><br><br></body></html>
+<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>Noda Time 1.2发布，支持XML、JSON序列化和文本格式化</h3><p><a href="http://nodatime.org/">Noda Time 1.2</a>已经发布，除了提供一个用于处理JSON序列化的可选程序集外，还支持XML、二进制序列化和文本格式化。它还提供了对类型Duration、OffsetDateTime和ZonedDateTime进行格式化和解析的能力，并包含方法Interval.Contains（）和ZonedDateTime.Calendar（），此外，还修复了若干Bug。</p>
+<p>最新版本提供了对程序集NodaTime.Serialization.JsonNet的支持。该程序集使用Json.NET 4.5.11构建，同时适用于便携式和桌面平台。此外，它还在JsonSerializer和JsonSerializerSettings上提供了一个扩展的ConfigureForNodaTime方法。类型NodaConverters为每个转换器提供了公共的静态只读字段，所有这些转换器都是不可变的。或者，开发人员可以基于使用NodaPatternConverter的模式创建自定义转换器。</p>
+<p>Noda Time 1.2更改了若干API，如引入新类DurationPattern、OffsetDateTimePattern和ZonedDateTimePattern。这些类分别表示解析和格式化Duration、OffsetDateTime和ZonedDateTime的模式。它还引入了新属性GeneralsoPattern、BclRoundtripPattern和FullRoundtripPattern。这些属性提供对模式o/O、r和s的编程访问。该版本还包含DateTimeZoneNotFoundException、CalendarSystem和InvalidNodaDataException。</p>
+<p>在Noda Time 1.2中，类型Instant、OffsetDateTime、ZonedDateTime、LocalDateTime, LocalDate、LocalTime、Offset、Interval、Duration和PeriodBuilder均实现了IXmlSerializable接口，开发人员可以对它们进行序列化。此外，这些类型也实现了ISerializable接口，开发人员可以使用BinaryFormatter通过[Serializable]属性对它们进行序列化。</p>
+<p>最新版本除了包含新的Era.AnnoMartyrum外，还包含InstantPattern.WithMinMaxLabels（），前者用来取代先前命名错误的AnnoMartyrm，后者提供了替换用于格式化最小和最大时刻的文本的能力。除了ParseResult.Exception外，它还增加了方法Interval.Contains（）、ZonedDateTime.Calendar和ZonedDateTime.GetZoneInterval（）。其中，ParseResult.Exception提供对GetValueOrThrow（）方法可能抛出的异常的直接访问。</p>
+<p>在先前的版本中，创建超出long.MaxValue刻度的Period时会发生不正确溢出。除了修复该Bug外，Noda Time 1.2还修复了另一个Bug。当使用月末和接近闰年的值调用Period.Between（）时，后者会导致这个方法返回一个正数和负数混合的结果。对于现有的Instant模式n、g和d，该版本还取消了对它们的大写别名的支持。</p>
+<p><b>查看英文原文：</b><b><a href="http://www.infoq.com/news/2013/11/noda-time-1-2">Noda Time 1.2 Released with XML, JSON Serialization and Text Formatting</a></b></p><br><br><br><br><br><br></body></html>
