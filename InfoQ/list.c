@@ -1,6 +1,9 @@
 <html>
  <head></head> 
- <body> 
+ <body>
+  <div>
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/37.c">AWS anuncia tr&ecirc;s novos tipos de inst&acirc;ncias</a>A Amazon Web Services acaba de anunciar tr&ecirc;s novos tipos de inst&acirc;ncia do seu servi&ccedil;o Elastic Compute Cloud (EC2). S&atilde;o as inst&acirc;ncias do tipo I2 que usam discos de estado s&oacute;lido (SSD) para melhor performance de I/O, C3 para processamentos mais intensos e G2 que oferecem processamento baseado em GPUs Nvidia para processamento gr&aacute;fico.
+  </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/36.c">JavaScript: Visualize o fluxo de c&oacute;digo com o TraceGL</a>A Rik Arends lan&ccedil;ou o TraceGL, uma nova ferramenta para depurar aplica&ccedil;&otilde;es JavaScript usando depura&ccedil;&atilde;o por trilhas. A fim de tornar mais f&aacute;cil depurar navegadores complexos e aplica&ccedil;&otilde;es baseadas em Node.js, a ferramenta captura, visualiza e permite que o usu&aacute;rio navegue na trilha de execu&ccedil;&atilde;o, enquanto a aplica&ccedil;&atilde;o est&aacute; sendo executada. 
   </div> 
@@ -147,9 +150,6 @@
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/38.c">Desenvolvedores e suas personalidades: dados da nova pesquisa da Evans Data</a>A empresa Evans Data realizou um estudo abrangente para descobrir caracter&iacute;sticas do perfil dos desenvolvedores. Os desenvolvedores s&atilde;o introvertidos ou extrovertidos? S&atilde;o intuitivos ou l&oacute;gicos? Preferem recompensas virtuais ou reais? O que &eacute; mais preocupante para suas carreiras? Entre muitas outras quest&otilde;es. 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/37.c">PuppetLabs e Opscode mostram como constru&iacute;ram suas comunidades open source</a>Ser educado com as pessoas e expl&iacute;cito e transparente sobre como as coisas s&atilde;o feitas: estes s&atilde;o os ingredientes fundamentais para o crescimento das comunidades - dizem Luke Kanies, CEO e fundador da PuppetLabs e Adam Jacob, co-fundador da Opscode e criador da Chef. 
-  </div> 
+  </div>  
  </body>
 </html>

@@ -1,14 +1,14 @@
 <html>
  <head></head> 
- <body>
-  <div>
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/28.py">Amazon Web Services、新しいインスタンスタイプを3つ発表</a>Amazon Web ServicesはEC2 (Elastic Compute Cloud) IaaSの新しいインスタンスタイプを3つ発表した。I2インスタンスはSSDを使って、高いI/O性能を実現する。C3インスタンスは高負荷な計算のために各仮想CPUをハードウェアハイパースレッドに結びつける。G2インスタンスは3Dアプリケーション向けにNvidiaのGPUを提供する。
-  </div>
-  <div>
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/27.py">Vaughn Vernon氏、リアクティブドメイン駆動設計について語る</a>Implementing Domain-Driven Designの著者であるVaughn Vernon氏が、イベント駆動やヘキサゴナルアーキテクチャでよく見られるアーキテクチャオーバーヘッドを取り除く手段として、ScalaとAkka（アクターモデルの実装）をドメイン駆動設計と組み合わせて使うことについて説明した。
-  </div>
-  <div>
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/26.py">ActiveMQ 5.9：LevelDB ストアのレプリケーション、およびHawtio ウェブコンソールに対応</a>メッセージブローカの Apache ActiveMQ の最新バージョン5.9 は、200件以上の問題点修正とともに、LevelDBのレプリケーションをサポートする機能と、新しい Hawtio ウェブコンソールを追加した。
+ <body> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/28.py">Amazon Web Services、新しいインスタンスタイプを3つ発表</a>Amazon Web ServicesはEC2 (Elastic Compute Cloud) IaaSの新しいインスタンスタイプを3つ発表した。I2インスタンスはSSDを使って、高いI/O性能を実現する。C3インスタンスは高負荷な計算のために各仮想CPUをハードウェアハイパースレッドに結びつける。G2インスタンスは3Dアプリケーション向けにNvidiaのGPUを提供する。 
+  </div> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/27.py">Vaughn Vernon氏、リアクティブドメイン駆動設計について語る</a>Implementing Domain-Driven Designの著者であるVaughn Vernon氏が、イベント駆動やヘキサゴナルアーキテクチャでよく見られるアーキテクチャオーバーヘッドを取り除く手段として、ScalaとAkka（アクターモデルの実装）をドメイン駆動設計と組み合わせて使うことについて説明した。 
+  </div> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/26.py">ActiveMQ 5.9：LevelDB ストアのレプリケーション、およびHawtio ウェブコンソールに対応</a>メッセージブローカの Apache ActiveMQ の最新バージョン5.9 は、200件以上の問題点修正とともに、LevelDBのレプリケーションをサポートする機能と、新しい Hawtio ウェブコンソールを追加した。 
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/25.py">Apportable、AndroidにObjective-Cを持ち込む</a>ApportableはiOS開発者がAndroid向けソフトウェアを配布する可能性をもたらす。Apportable SDKとコマンドラインツールを使うことで、プログラマはObjective-Cのコードに大きく手を加えることなく、アプリをクロスコンパイルすることができる。また、Apportableはアプリ変換サービスも提供する。 
@@ -150,6 +150,6 @@
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/29.py">自己組織型アジャイルチームにおけるリーダシップ</a>自己組織型アジャイルチームを実践する組織には，奉仕型リーダシップでチームを支援し，チーム自身が継続的な向上を学ぶように指導，助言できるマネージャが必要だ。 
-  </div>    
+  </div> 
  </body>
 </html>

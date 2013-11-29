@@ -1,33 +1,120 @@
-<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>从赌钱游戏看PageRank算法</h3><p>谈到并行计算应用，会有人想到PageRank算法，我们有成千上万的网页分析链接关系确定排名先后，借助并行计算完成是一个很好的场景。长期以来，Google的创始发明PageRank算法吸引了很多人学习研究，据说当年Google创始者兴奋的找到Yahoo!公司，说他们找到一种更好的搜索引擎算法，但是被Yahoo!公司技术人员泼了冷水，说他们关心的不是更好的技术，而是搜索的盈利。后来Google包装成了“更先进技术的新一代搜索引擎”的身份，逐渐取代了市场，并实现了盈利。</p><p>由于PageRank算法有非常高的知名度和普及度，我们接下来以PageRank算法为例讲述“并行计算+数据算法”的经典搭配，并且这种“海量数据并行处理、迭代多轮后收敛”的分析过程也跟其他的数据挖掘或者机器学习算法应用类似，能起到很好的参考作用。</p><p>下面是PageRank算法的公式：</p><p><img src="http://www.infoq.com/resource/articles/gamble-and-pagerank/zh/resources/101.png;jsessionid=DF14BD36CD136AF46617D2861E7F333E" _href="img://101.png" _p="true" width="500" alt="" /></p><p>我们其实可以直接阐述该公式本身，并介绍如何使用并行计算套用上面公式得到各网页的PageRank值，这样虽然通过并行计算方式完成了PageRank计算，但是大家仍然不明白上面的PageRank公式是怎么来的。</p><p>我们把这个PageRank算法公式先放在一边，看看一个赌钱的游戏：<br /> 有甲、乙、丙三个人赌钱，他们的输赢关系如下：</p><blockquote> 
- <p>甲的钱输给乙和丙<br /> 乙的钱输给丙<br /> 丙的钱输给甲</p> 
-</blockquote><p>例如，甲、乙、丙各有本钱100元，按照以上输赢关系，玩一把下来：</p><blockquote> 
- <p>甲输给乙50元、输给丙50元<br /> 乙输给丙100元<br /> 丙输给甲100元</p> 
-</blockquote><p>如果仅是玩一把的话很容易算出谁输谁赢<br /> 但如果他们几个维持这样的输赢关系，赢的钱又投进去继续赌，这样一轮一轮赌下去的话，最后会是什么样子呢？</p><p>我们可以写个单机程序看看，为了方便计算，初始本钱都设为1块钱，用x1，x2，x3代表甲、乙、丙：<br /> double x1=1.0,x2=1.0,x3=1.0;<br /> 用x1_income，x2_income，x3_income代表每赌一把后各人赢的钱，根据输赢关系：</p><blockquote> 
- <p>double x2<em> income =x1/2.0;<br /> double x3</em> income =x1/2.0+x2;<br /> double x1_ income =x3;</p> 
-</blockquote><p>最后再把各人赢的钱覆盖掉本钱，继续往下算。完整程序如下：</p><pre>
-// Gamble单机程序<br />
-public class Gamble<br />
-{<br />
-public static double x1=1.0,x2=1.0,x3=1.0;<br />
-
-public static void playgame(){
-<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; double x2_income=x1/2.0;<br /> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;double x3_income=x1/2.0+x2;<br /> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;double x1_income=x3;<br /> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; x1=x1_income;<br /> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;x2=x2_income;<br /> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;x3=x3_income;<br /> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;System.out.println(&quot;x1:&quot;+x1+&quot;, x2:&quot;+x2+&quot;, x3:&quot;+x3);<br /> } &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  public static void main(String[] args){<br /> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;for(int i=0;i&lt;500;i++){<br /> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;System.out.print(&quot;第&quot;+i+&quot;轮 &quot;);<br /> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;playgame();<br /> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br /> }<br /> }</p></pre><p>我们运行500轮后，看到结果如下：</p><p class="image-wide"><img src="http://www.infoq.com/resource/articles/gamble-and-pagerank/zh/resources/02.png;jsessionid=DF14BD36CD136AF46617D2861E7F333E" _href="img://02.png" _p="true" width="600" alt="" /></p><p>我们发现，从107轮后，各人的输赢结果就一直是<br /> x1:1.2000000000000002, x2:0.6000000000000001, x3:1.2000000000000002<br /> …...</p><blockquote> 
- <p>可能你都没想到会有这么个规律，这样一直赌下去，虽然各人每轮有输有赢，但是多轮后的输赢结果居然保持平衡，维持不变了。用技术术语来说就是多轮迭代后产生了收敛，用俗话来讲，就是玩下去甲和丙是不亏的，乙不服输再继续赌下去，也不会有扳本的机会的。</p> 
-</blockquote><p>我们再把输赢关系稍微改一下：丙的钱输给甲和乙<br /> double x2_income=x1/2.0+x3/2.0;<br /> double x3_income=x1/2.0+x2;<br /> double x1_income=x3/2.0;</p><p>运行10000轮后，发现又收敛了：<br /> x1:0.6666666666666667, x2:1.0, x3:1.3333333333333333<br /> …<br /> 不过这次就变成了“甲是输的，乙保本，丙是赢的”，我们发现收敛的结果可用于排名，如果给他们做一个赌王排名的话，很显然：“丙排第一，乙第二、甲第三”。</p><p>那么这样的收敛是在所有情况下都会发生吗，什么情况不会收敛呢？<br /> 我们回过头观察上面的输赢关系，甲、乙、丙三人互相各有输赢，导致钱没有流走，所以他们三人才一直可以赌下去，如果把输赢关系改一下，让甲只输钱，不赢钱，如下：<br /> double x2_income=x1/2.0+x3/2.0;<br /> double x3_income=x1/2.0+x2;<br /> double x1_income=0;</p><p>那么运行下来会是什么结果呢？</p><p class="image-wide"><img src="http://www.infoq.com/resource/articles/gamble-and-pagerank/zh/resources/03.png;jsessionid=DF14BD36CD136AF46617D2861E7F333E" _href="img://03.png" _p="true" width="600" alt="" /></p><p>我们发现很多轮后，全部为0了。我们分析一下过程，第一轮后，甲的钱就输光了，没有赢得一分钱。但是乙和丙各有输赢，他们一直赌到2000多轮时，乙的钱全部输光了，甲乙都没钱投进来赌了，导致丙再也赢不到钱了，最后所有人结果都变为0了。</p><blockquote> 
- <p>我们再分析一下输赢关系，甲的钱全部输给丙和乙后，丙跟乙赌，赢的多输的少，于是所有的钱慢慢都被丙赢走了，导致最后无法维持一个平衡的输赢结果。因此，如果我们要维持平衡和收敛，必须保证赢了钱的人不准走，必须又输给别人才行，让钱一直在三人圈里转不流失。换句话说，如果存在某人只输不赢，那么这个游戏就玩不下去。</p> 
-</blockquote><p>赌钱游戏讲完了，我们再看看PageRank算法的公式：</p><p class="image-wide"><img src="http://www.infoq.com/resource/articles/gamble-and-pagerank/zh/resources/04.png;jsessionid=DF14BD36CD136AF46617D2861E7F333E" _href="img://04.png" _p="true" width="600" alt="" /></p><p>上面的L(B)代表页面B指向其他页面的连接数，我们举个例子：</p><p>假设有A、B、C三张网页，他们的链接关系如下：</p><blockquote> 
- <p>A包含B和C的链接<br /> B包含C的链接<br /> C包含A的链接</p> 
-</blockquote><p>根据上面的公式，得到各网页PR值如下：</p><blockquote> 
- <p>PR(B)=PR(A)/2;<br /> PR(B)=PR(A)/2+PR(C);<br /> PR(A)=PR(C);</p> 
-</blockquote><p>可以回过头对照一下，把A、B、C改成甲、乙、丙就是上面举的赌钱游戏例子。</p><p>那么q是干吗的？公式里的q叫做逃脱因子，名字很抽象，目的就是用于解决上面赌钱游戏中“只输不赢”不收敛的问题，1-q会保证其中一个PR值为0时计算下来不会全部为0，那么加了这么一个(…)*q+1-q的关系后，整体的PR值会变化吗？</p><p>当每个页面的初始PR值为1时，0&lt;=q&lt;=1(计算时通常取值0.8)，我们把所有页面的PR值相加看看，假设有n张网页：</p><p>PR(x1)+ PR(x2)+ …+PR(xn)<br /> =( (PR(x2)/ L(x2)+ … )<em>q+1-q) + … + ( (PR(x1)/ L(x1)+ … )</em>q+1-q)<br /> =(PR(x1)<em> L(x1)/L(x1) + PR(x2)</em> L(x2)/L(x2) + … + PR(xn)<em> L(xn)/L(xn))q + n(1-q)<br /> =( PR(x1) + PR(x2) + … + PR(xn))</em>q + n - n<em>q<br /> =n</em>q + n – n*q<br /> = n</p><p>由于初始PR值为1，所以最后所有页面的PR值相加结果还是为n，保持不变，但是加上(…)*q+1-q的关系后，就避免了PR值为0可以寻求收敛进行排序。</p><p>当然实际应用中，这个公式还可以设计的更复杂，并可以通过高等代数矩阵旋转求解，我们这里只是为了理解原理，并不是为了做搜索算法，所以就不再深入下去了。</p><blockquote> 
- <p>总结：世界的很多东西都是零和游戏，就像炒股，股民赚的钱也就是机构亏的钱，机构赚的钱也就是股民亏的钱，也许股民们应该研究一下PageRank算法，看看股市起起落落的背后是不是收敛了，收敛了说明炒下去永远别想解套，而且机构永远不会亏。</p> 
-</blockquote><p>如何使用并行计算方式求PR值：<br /> 我们这里通过fourinone提供的各种并行计算模式去设计，思路方法可以有很多种。<br /> 第一次使用可以参考<a href="http://fourinone.iteye.com/blog/1171541">分布式计算上手demo指南</a>，开发包下载地址：<a href="http://www.skycn.com/soft/68321.html">http://www.skycn.com/soft/68321.html</a></p><p>思路一：可以采取工人互相合并的机制（工人互相合并及receive使用可参见<a href="http://fourinone.iteye.com/blog/1569747">sayhello demo</a>），每个工人分析当前网页链接，对每个链接进行一次PR值投票，通过receive直接投票到该链接对于网页所在的工人机器上，这样经过一轮工人的互相投票，然后再统计一下本机器各网页所得的投票数得到新的PR值。但是这种方式，对于每个链接投票，都要调用一次receive到其他工人机器，比较耗用带宽，网页数量庞大链接众多时要调用很多次receive，导致性能不高。</p><p>思路二：由于求PR值的特点是输入数据大，输出数据小，也就是网页成千上万占空间多，但是算出来的PR值占空间小，我们姑且用内存可以装下。因此我们优先考虑每个工人统计各自机器上的网页，计算各链接对应网页的所得投票，然后返回工头统一合并得到各网页的PR值。可以采用最基本的“总—分—总”并行计算模式实现（请参考分布式计算上手demo指南）。<br /> 并行计算的拆分和合并设计如下：</p><p class="image-wide"><img src="http://www.infoq.com/resource/articles/gamble-and-pagerank/zh/resources/05.png;jsessionid=DF14BD36CD136AF46617D2861E7F333E" _href="img://05.png" _p="true" width="600" alt="" /></p><p>可以看到：</p><blockquote> 
- <p>工人负责统计各自机器上网页的各个链接的PR得票。<br /> 工头负责合并累加得到各链接对应网页的新PR值，并迭代计算。</p> 
-</blockquote><h4>程序实现：</h4><p>PageRankWorker：是一个PageRank工人实现，为了方便演示，它通过一个字符串数组代表包括的链接（实际上应该从本地网页文件里获取）<br /> links = new String[]{&quot;B&quot;,&quot;C&quot;};<br /> 然后对链接集合中的每个链接进行PR投票<br /> for(String p:links)<br /> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; outhouse.setObj(p, pr/links.length);</p><p>PageRankCtor：是一个PageRank包工头实现，它将A、B、C三个网页的PageRank初始值设置为1.00，然后通过doTaskBatch进行阶段计算，doTaskBatch提供一个栅栏机制，等待每个工人计算完成才返回，工头将各工人返回的链接投票结果合并累加：<br /> pagepr = pagepr+(Double)prwh.getObj(page);<br /> 得到各网页新的PR值（这里取q值为1进行计算），然后连续迭代500轮计算。</p><h4>运行步骤：</h4><p>1、 &nbsp;启动ParkServerDemo（它的IP端口已经在配置文件指定）</p><p>java -cp fourinone.jar; ParkServerDemo</p><p class="image-wide"><img src="http://www.infoq.com/resource/articles/gamble-and-pagerank/zh/resources/06.png;jsessionid=DF14BD36CD136AF46617D2861E7F333E" _href="img://06.png" _p="true" width="600" alt="" /></p><p>2、运行A、B、C三个PageRankWorker，传入不同的IP和端口号<br /> java &nbsp;-cp fourinone.jar; PageRankWorker localhost 2008 A</p><p>java &nbsp;-cp fourinone.jar; PageRankWorker localhost 2009 B</p><p>java &nbsp;-cp fourinone.jar; PageRankWorker localhost 2010 C</p><p class="image-wide"><img src="http://www.infoq.com/resource/articles/gamble-and-pagerank/zh/resources/07.png;jsessionid=DF14BD36CD136AF46617D2861E7F333E" _href="img://07.png" _p="true" width="600" alt="" /></p><p>3、运行PageRankCtor<br /> java -cp fourinone.jar; PageRankCtor</p><p class="image-wide"><img src="http://www.infoq.com/resource/articles/gamble-and-pagerank/zh/resources/08.png;jsessionid=DF14BD36CD136AF46617D2861E7F333E" _href="img://08.png" _p="true" width="600" alt="" /></p><p>我们可以看到跟开始的单机程序的结果是一样的，同时各工人窗口依次输出了各自的PR值：</p><p class="image-wide"><img src="http://www.infoq.com/resource/articles/gamble-and-pagerank/zh/resources/09.png;jsessionid=DF14BD36CD136AF46617D2861E7F333E" _href="img://09.png" _p="true" width="600" alt="" /></p><p>完整demo源码如下：</p><pre>
-// ParkServerDemo
-import com.fourinone.BeanContext;<br />
-public class ParkServerDemo{<br />
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;public static void main(String[] args){<br />
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;BeanContext.startPark();<br />
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br />
-}<p>&nbsp;</p><p>// PageRankWorker import com.fourinone.MigrantWorker;<br /> import com.fourinone.WareHouse;<br /> import com.fourinone.Workman;</p><p>public class PageRankWorker extends MigrantWorker{<br /> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;public String page = null;<br /> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;public String[] links = null;<br /> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;public PageRankWorker(String page, String[] links){<br /> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;this.page = page;<br /> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;this.links = links;<br /> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}</p><p><span style="font-family: Arial, Verdana, sans-serif;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>public WareHouse doTask(WareHouse inhouse) {<br /> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Double pr = (Double)inhouse.getObj(page);<br /> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;System.out.println(pr);<br /> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;WareHouse outhouse = new WareHouse();<br /> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;for(String p:links)<br /> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;outhouse.setObj(p, pr/links.length);//对包括的链接PR投票</p><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return outhouse;<br /> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br /> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;public static void main(String[] args){<br /> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;String[] links = null;<br /> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if(args[2].equals(&quot;A&quot;))<br /> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;    links = new String[]{&quot;B&quot;,&quot;C&quot;};//A页面包括的链接<br /> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;else if(args[2].equals(&quot;B&quot;))<br /> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;    links = new String[]{&quot;C&quot;};<br /> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;else if(args[2].equals(&quot;C&quot;))<br /> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;links = new String[]{&quot;A&quot;}; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;PageRankWorker mw = new PageRankWorker(args[2],links);<br /> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;mw.waitWorking(args[0],Integer.parseInt(args[1]),&quot;pagerankworker&quot;);<br /> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br /> }</p><p>// PageRankCtor<br /> import com.fourinone.Contractor;<br /> import com.fourinone.WareHouse;<br /> import com.fourinone.WorkerLocal;<br /> import java.util.Iterator;</p><p>public class PageRankCtor extends Contractor{<br /> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;public WareHouse giveTask(WareHouse inhouse){<br /> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;WorkerLocal[] wks = getWaitingWorkers(&quot;pagerankworker&quot;);<br /> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;System.out.println(&quot;wks.length:&quot;+wks.length);&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <br /> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;for(int i=0;i&lt;500;i++){//500轮<br /> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;WareHouse[] hmarr = doTaskBatch(wks, inhouse);<br /> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;WareHouse prwh = new WareHouse();<br /> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;for(WareHouse result:hmarr){<br /> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;for(Iterator iter=result.keySet().iterator();iter.hasNext();){<br /> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;String page = (String)iter.next();<br /> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Double pagepr = (Double)result.getObj(page);<br /> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if(prwh.containsKey(page))<br /> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;pagepr = pagepr+(Double)prwh.getObj(page);<br /> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;prwh.setObj(page,pagepr);<br /> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br /> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br /> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;inhouse = prwh;//迭代<br /> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;System.out.println(&quot;No.&quot;+i+&quot;:&quot;+inhouse);<br /> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br /> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return inhouse;<br /> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; }&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <br /> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;public static void main(String[] args){<br /> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;PageRankCtor a = new PageRankCtor();<br /> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;WareHouse inhouse = new WareHouse();<br /> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;inhouse.setObj(&quot;A&quot;,1.00d);//A的pr初始值<br /> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;inhouse.setObj(&quot;B&quot;,1.00d);//B的pr初始值<br /> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;inhouse.setObj(&quot;C&quot;,1.00d);//C的pr初始值<br /> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;a.giveTask(inhouse);<br /> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;a.exit(); &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br /> }</p></pre><p>&nbsp;</p><div class="clearer-space"></div><br><br><br><br><br><br></body></html>
+<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>解析精益产品开发（三）——面向价值的可视化</h3><p>用户故事图谱和任务看板、版本和迭代燃尽图，可视化已经成为敏捷和精益产品开发必选实践。可视化真的重要吗？我们将从一个真实团队的实践开始，探讨可视化的作用，以及如何让可视化发挥效用。</p>
+<h2>1. 一个团队实例</h2>
+<p>这是一个50人左右的团队，做企业级存储和数据管理产品，他们通过实施产品开发中的价值、技术风险和价值流动过程的可视化，促进了团队的沟通、决策、自我管理和持续改进。</p>
+<h3>1.1 可视化价值</h3>
+<p>图1是团队使用的用户故事图谱，它集成了产品目标、产品功能项以及产品的发布计划。</p>
+<p><img width="550" _p="true" _href="img://null" alt="" src="http://infoqstatic.com/resource/articles/value-oriented-visualization/zh/resources/1018000.png" /></p>
+<p>图1 用户故事图谱实例</p>
+<p>图中左上部的两张纸上的内容分别是主要用户需求和产品目标，它们也是产品功能定义的出发点和依据。顶部彩色的纸条是业务类别，例如对于数据管理产品，其业务类别分别是数据创建、数据存储、数据使用、数据共享、数据销毁以及系统管理等。从左至右把这些业务类别串起来就构成了用户使用系统的主流程，也就是业务流程。</p>
+<p>每个业务类别下面有数个到数十个白色的纸条，它们是以用户故事的形式描述产品功能项。功能项按重要程度自上而下排列，靠上的是重要和基础的功能项，靠下的是次要和补充的功能项。</p>
+<p>以排列好的用户故事为基础，团队制定发布计划，图中三条贯穿左右的红色曲线分别对应着三次发布，它们由对用户有意义的产品功能集构成。</p>
+<p>项目启动时团队定义用户故事图谱的第一个版本，产品开发过程中随着对产品认知的深入，再持续地调整和更新。用户故事图谱系统整合了产品的目标、功能和发布计划，它促进团队沟通和理解产品目标和价值，并积极主动地参与协作。</p>
+<h3>1.2 可视化风险</h3>
+<p>产品开发过程中必须应对各类风险，图 ㈡是团队使用的技术风险矩阵，它综合呈现技术风险的内容及发生的可能性、影响大小、以及应对方案。</p>
+<p><img width="500" _p="true" _href="img://null" alt="" src="http://infoqstatic.com/resource/articles/value-oriented-visualization/zh/resources/1018001.png" /></p>
+<p>图2 技术风险矩阵</p>
+<p>矩阵的横坐标是风险发生可能性，从左往右分别是低、中、高；纵坐标是风险可能带来的影响，从下往上分别是低、中、高，风险项被按照其可能性和影响贴在相应的位置。团队要关注的是靠上和靠右的风险，特别是右上角高可能和高影响的风险，并制定应对措施，如提前进行技术评估、技术验证，或设计替代方案等，这些应对措施通常会转化成团队的技术任务。图中附在风险项之上的蓝色纸片是该风险的应对措施。风险矩阵只用于跟踪尚未解除的风险，随着项目的进展风险项被不断添加和移除。</p>
+<div>
+ 风险矩阵帮助团队有效管理技术风险，它的核心可以用下面的公式表示：
+</div>
+<pre>
+风险 =  f(可能性，影响) – 应对方案</pre>
+<p>产品开发中主要包含三类风险，分别是：业务风险——产品能解决客户的问题，并被市场所需要吗？管理风险——管理和协作方式能保证质量、效率和响应能力吗？技术风险——所采取的技术方案、基础设施能支持我们开发出所设想的功能并满足非功能需求吗？以上的风险矩阵中只包含技术风险，而不包含其它两类风险。管理风险和业务风险在本文的后半部分介绍的其它实践中会有涉及。</p>
+<h3>1.3 可视化价值流动</h3>
+<p>价值项和风险的可视化只是开始。产品开发过程中，这些价值项要经过分析、开发、验证等过程才能交付给用户得以实现，我们把这一过程看成是价值流动的过程。</p>
+<p><img width="550" _p="true" _href="img://null" alt="" src="http://infoqstatic.com/resource/articles/value-oriented-visualization/zh/resources/1018002.png" /></p>
+<p>图3 价值流的可视化（开发看板）</p>
+<p>图3中团队用开发看板可视化了价值流动过程。看板呈现了价值项从进入开发环节开始（图中的需求接收），到分析、实现、验证、交付验收直至发布的流动过程。图中上方的列标题是价值流动过程所要经过的阶段，其中分析和实现阶段又被用虚线分割成两列，分别表示正在进行和已经完成（图中的Done）两个状态。一个典型的用户需求在发布前会从左至右依次流经以上的各个阶段。</p>
+<p>看板横向上被分成5行——称为5个泳道，最上方的泳道用以处理紧急的用户需求，相对其它需求它们的优先级更高。其它4个泳道分别对应4个按用户需求类别划分的10人左右的开发团队。</p>
+<p>当价值项的流动被阻碍时，团队会用黄色的黏贴纸附加在该需求上并标记阻碍原因（如图中最左上方的需求项所示）。另外如果价值项在某个阶段堆积，也就是图中的某个阶段出现较长的队列，这本身就说明了这个阶段的流动不够顺畅，存在潜在的瓶颈和问题。</p>
+<p>价值项以用户故事卡表示，图 ㈣是一个典型的用户故事卡，它包含的信息有，1）用户故事的描述和编号 2）涉及的具体开发任务，以及这些任务完成的情况 3）负责人 4）最晚的交付时间（部分用户故事包含） 5）开始和结束的时间 6）在每个状态下所经历的天数。其中最后两项属于统计信息，用于团队的定期回顾和分析，它对团队的持续改进意义重大，这在以后讨论精益度量的文章中会有进一步阐述。</p>
+<p><img width="500" _p="true" _href="img://null" alt="" src="http://infoqstatic.com/resource/articles/value-oriented-visualization/zh/resources/1018003.png" /></p>
+<p>图4 看板上的用户故事的详图</p>
+<p>需求项所使用的颜色也是有意义的，如黄色表示有固定完成时间要求的需求项，蓝色表示一般的需求项，红色表示产品缺陷。</p>
+<p>通过以上的实践，团队实现了价值和价值流的端到端的可视化，建立了对于产品开发目标、价值以及价值流动的集成认知，促进了团队沟通，自我管理和持续改善。但这只是特定团队的实践，现实中不同的团队有不同的上下文和目标，需要根据现实情况构建适合自身的可视化实践。这就要求团队深刻理解“为什么要可视化？”和“如何让可视化更有效？”下面我们将讨论这个两个问题，并以为此基础构建面向价值的产品开发可视化体系，我们还将看到更多的可视化实践案例。</p>
+<h2>2. 为什么要可视化？</h2>
+<p>产品开发过程中，团队需要动态处理各种信息，其中既有来自外部的信息，如用户需求、商业环境等，也有来自内部的信息如产品目标、开发进度、技术风险等。即时地获取和有效整合、沟通这些信息，是成功的关键。反之，信息分散和信息在传递中的失真则导致沟通问题甚至是产品开发的失败。</p>
+<blockquote>
+ 信息分散和信息传递导致沟通问题，甚至是产品开发的失败。 
+</blockquote>
+<p><b>信息分散 </b><b>—— </b><b>倚天屠龙的困境：</b>在产品开发中，信息分散是指：信息散布于各地（如不同的个人或团队），不能被有效地整合。小说《倚天屠龙记》中，一本武功秘籍被分成两份，分别藏于倚天剑和屠龙刀中，没有人能同时手握两件兵器（获取信息），即使两件兵器在手，也不知道如何合二为一（整合信息），产生有用的知识，所以我们把信息分散称为“<b>倚天屠龙的困境”，</b>它在产品开发中司空见惯，如：</p>
+<ul> 
+ <li>业务人员已经知道用户需求变更，而开发人员还在基于老的的需求工作，到交付的时候才知道白费力了；</li> 
+ <li>管理子系统团队和应用子系统团队都忙于自认为重要的特性开发，在发布时才发现，由于相互依赖的功能没有完成，不能完整交付任何对用户有意义的产品；</li> 
+ <li>应用层的工程师加班加点用复杂算法实现了一个紧急需求，却因影响产品性能被用户拒收。和底层驱动工程师讨论性能调优时，才知道只要简单地打开一个底层开关就可以实现同样的功能，而且不影响性能。</li> 
+</ul>
+<p>产品开发中，信息分散于不同的人、团队和层级中，可视化直观地呈现和系统整合分散的信息，形成有用的知识，从而帮助整个团队方便地获取知识并做出有利于整体目标的决策。</p>
+<p><b>信息传递 </b><b>—— </b><b>拷贝走样的悲剧：</b>前些年，电视综艺节目中流行一个叫“拷贝不走样”的栏目，一组人排成纵队，依次用动作表达是一个词语，由最后一个人复原。多数情况下，“拷贝不走样”成了“拷贝走样”，信息失真了，观众欢乐了。</p>
+<p>“拷贝走样”在产品开发中时常发生，但它带来的并不是欢乐，有时甚至是悲剧。1999年12月19日，价值1.25亿美元的美国火星气象探测器在进入轨道时坠毁，因为一个团队提供了英制的信息，而另一个团队把它当成了公制，导致飞行器进入了过低的轨道。在产品开发中，当我们听到下面的说法时，说明拷贝走样的悲剧正在发生：</p>
+<ul> 
+ <li>“我不是告诉过你…….”</li> 
+ <li>“项目计划里不是写的清清楚楚的吗？”</li> 
+ <li>“我以为你的意思是……”</li> 
+ <li>“听好了，我说的是…… ，而不是…… ”。</li> 
+</ul>
+<p>管理学之父德鲁克说：“每一次传递都会使信息减少一半，噪音增加一倍”。可视化实践让产品开发的整体目标、当前状态和问题一目了然，这样可以及时发现沟通的需要，并减少中间环节。</p>
+<p>有效的可视化让团队成员及时、方便和直接的获取信息，促使成员间更加自主和直接的沟通，做出面向整体目标的决策，避免“倚天屠龙的窘境”和“拷贝走样的悲剧”。</p>
+<blockquote>
+ 可视化帮助团队直观呈现和系统整合信息，促进团队直接和自主地沟通。 
+</blockquote>
+<p>可视化是信息整合和沟通的工具，它不应该是简单地堆砌信息，有效的可视化应该是目标明确和结构清晰的，它应该抓住产品开发过程的核心，促进信息的整合和沟通，这也是接下来我们设计可视化方案的基本指导。</p>
+<h4>3. 产品开发过程可视化的核心 —— 价值定义和价值流动</h4>
+<p>如图5所示，产品开发是从用户问题开始，经过一系列步骤，到交付解决方案解决客户问题的价值流动过程，它这分别对应着价值定义、价值流动和价值交付。</p>
+<p><img width="500" _p="true" _href="img://null" alt="" src="http://infoqstatic.com/resource/articles/value-oriented-visualization/zh/resources/1018004.png" /></p>
+<p>图5 产品开发模型</p>
+<p>如果把价值交付看着价值流动的一个环节，那么“<b>发现和定义价值”</b>和“<b>让价值有效流动”</b>，就成为产品开发过程的两个核心。相应的，可视化也应该围绕这两个核心展开。</p>
+<blockquote>
+ 产品开发过程可视化的核心是：
+ <b>价值定义</b>和
+ <b>价值流动</b>。 
+</blockquote>
+<h2>4. 价值可视化</h2>
+<p>产品目标决定产品的功能项，并通过产品发布计划得以实现。如图 ㈥所示产品目标、功能项和发布计划三者相互作用，是价值定义的重要部分。然而，现实中用户的需求与我们设想不会总是一致，市场环境也会发生变化，我们不可能从一开始就把握所有需求。用户价值定义背后一定蕴含着不确定性，带来业务上的风险，Tom Demarco 在《与熊共舞》一书中把风险和不确定性比作熊，一个成功的产品开发就是“与熊共舞”的艺术。挑战不确定性和风险是企业获得竞争优势的不二法门。可以说不确定性本身就蕴含着巨大的价值，是产品价值定义的一部分。</p>
+<p><img width="300" _p="true" _href="img://null" alt="" src="http://infoqstatic.com/resource/articles/value-oriented-visualization/zh/resources/1018005.png" /></p>
+<p>图6 产品开发的目标、功能项及规划</p>
+<p>综上所述，价值定义由产品目标、功能项和发布计划的有机结合，以及其中蕴含的不确定性构成。图6是对其完整的表述。</p>
+<blockquote>
+ 产品目标、功能项和发布计划间有机结合，以及其背后的不确定性定义了产品的价值。
+</blockquote>
+<p><img width="500" _p="true" _href="img://null" alt="" src="http://infoqstatic.com/resource/articles/value-oriented-visualization/zh/resources/1018006.png" /></p>
+<p>图7 用户故事图谱的示意</p>
+<p>图7是前面团队所使用过的“用户故事图谱”实践的示意，它整合了产品目标、功能项和发布计划。但是，另一方面，用户故事图谱的实践没有体现以下两个方面的信息：</p>
+<ol> 
+ <li>产品目标是如何映射成功能项的</li> 
+ <li>背后有什么样的不确定性和风险</li> 
+</ol>
+<p>就以上两点， “影响<span class="ck ck-857" data-id="ck-857">地图</span>”的实践要做的更好。事实上，“影响<span class="ck ck-857" data-id="ck-857">地图</span>”也是前面提到的团队后来使用的可视化实践之一。</p>
+<p>我们在这一系列文章的上一篇——<a href="http://www.infoq.com/cn/articles/value-in-product-development">产品开发中的价值</a>中已经详细介绍过影响<span class="ck ck-857" data-id="ck-857">地图</span>。这里我们再做一个概括，如图 ㈧所示，影响<span class="ck ck-857" data-id="ck-857">地图</span>建立了从产品目标到功能项之间的详细映射，它背后的理念是：1）产品开发的目的不是完成特定的功能项，而是实现产品目标；2）只有通过影响特定的角色才能实现产品目标；3）为了对角色产生影响就需要开发特定的功能。</p>
+<p>依照上面的理念，影响<span class="ck ck-857" data-id="ck-857">地图</span>在产品目标和功能项之间建立了四级映射关系，分别是1）产品的目标是什么（Why）；2）要通过影响谁来实现产品目标（Who）；3）要怎样影响这些角色（How）；4）为产生影响要做出什么功能（What）。</p>
+<p><img width="550" _p="true" _href="img://null" alt="" src="http://infoqstatic.com/resource/articles/value-oriented-visualization/zh/resources/1018007.png" /></p>
+<p>图8 影响<span class="ck ck-857" data-id="ck-857">地图</span>建立了产品目标和功能项之间的映射关系</p>
+<p>图8的下半部分是一个影响<span class="ck ck-857" data-id="ck-857">地图</span>的实例，它要实现的业务目标是“6个月内同样的客服数目可以支持两倍的用户数”，为了实现这样的目标，我们需要影响到1）客服人员，如让他们更快地定位到问题，或者引导用户上论坛 2）初级用户，如希望他们在打电话前去论坛寻找答案 3) 高级用户，如主动回答论坛上的问题。产品功能也要围绕如何产生这些影响定义。</p>
+<p>图中还定义了第一次发布要包含的内容，也就是一个简单的发布计划。发布计划不是功能项的简单叠加，而是要在影响<span class="ck ck-857" data-id="ck-857">地图</span>树上找到实现产品目标的最快和最便捷的路径，并且保证每次发布都是概念上完整的产品，让我们以最快的方式一步步地达成产品目标。一个产品或项目往往有超过一个产品目标，这时就需要多个影响<span class="ck ck-857" data-id="ck-857">地图</span>。</p>
+<p><img _p="true" _href="img://null" alt="" src="http://infoqstatic.com/resource/articles/value-oriented-visualization/zh/resources/1018008.png" /></p>
+<p>图9 影响<span class="ck ck-857" data-id="ck-857">地图</span>呈现了两类假设</p>
+<p>与用户故事图谱相同，影响<span class="ck ck-857" data-id="ck-857">地图</span>可视化了产品目标、功能项和发布计划之间的关联。而且更进一步，它呈现了产品目标到功能项之间的映射。同时，这一映射把两类业务假设也显式的呈现了出来，如图 ㈨它们分别是：</p>
+<ol> 
+ <li>功能假设：假设通过设想的功能能对角色产生期望的影响</li> 
+ <li>影响假设：假设对角色产生这样的影响会促进目标的实现</li> 
+</ol>
+<p>例如在上面的例子中，我们假设：为常见的问题提供论坛链接，可以引导用户更多的上论坛；同时还假设：如果用户更多的上论坛就能减轻客服的工作负载，从而服务更多的用户。这些假设是否成立带来了产品开发业务上的不确定性和风险。可以说把握了这些假设，也就把握了业务的不确定性和风险。假设需要在开发和价值交付过程中不断地被验证和调整。</p>
+<p>用户故事图谱和影响<span class="ck ck-857" data-id="ck-857">地图</span>是两种价值定义的可视化方法，它们既相似又有不同的侧重，适合于不同的上下文，下表给出了两者的比较和使用建议。</p>
+<p>(点击图像放大)</p>
+<p><a href="http://infoqstatic.com/resource/articles/value-oriented-visualization/zh/resources/1021001.png"> <img width="600" _p="true" _href="img://null" alt="" src="http://infoqstatic.com/resource/articles/value-oriented-visualization/zh/resources/1021001.png" /></a></p>
+<p>事实上，上面的团队在项目初期使用了用户故事图谱来组织需求，随着项目的进展而换成了影响<span class="ck ck-857" data-id="ck-857">地图</span>。因为随着产品开发的深入和早期的交付，团队越来越发现1）业务的不确定性比想象的高很多 2）项目范围开始蔓延，需要用目标加以约束。用户故事图谱为这两个问题提供了很好的解决方案。</p>
+<h2>5. 价值流的可视化</h2>
+<p>价值的可视化只是开始，产品开发是从分析、实现、到交付以解决客户问题的价值流动过程，其目标是，让价值项快速而可持续地流向最终用户。价值流可视化帮助我们端到端地审视产品开发过程，理清价值流动过程，发现和消除阻碍价值流动的因素。</p>
+<p><img width="500" _p="true" _href="img://null" alt="" src="http://infoqstatic.com/resource/articles/value-oriented-visualization/zh/resources/1018010.png" /></p>
+<p>图10 看板实践的示意图</p>
+<p>图 ㈩是上面的团队所使用的看板可视化实践的示意，团队可视化了1）价值的流动过程：反应价值项从左到右移动，及其进展和等待的状态2）问题和阻碍因素，如：因多任务或对特定资源和人的依赖等造成的等待；技术障碍或外部输入不具备等带来的阻碍 3）系统的瓶颈：瓶颈约束了团队的价值交付能力，要识别瓶颈并不困难，只要观察功能项在什么地方总是发生堆积和排队就可以了，这和高速公路或机场通道的瓶颈处总是出现排队和滞留是一样的。要想改善车辆和旅客的流量，就必须解决瓶颈上的问题；同样，要想让产品开发的价值流动更顺畅，首先必须了解瓶颈在哪里。</p>
+<blockquote>
+ 价值流反应需求从产品概念到产品交付的价值流动过程。可视化价值流关注价值的流动过程、流动中的阻碍因素和系统的瓶颈。 
+</blockquote>
+<p>价值流的最后一个环节是价值的交付，这时价值得到实现，或者不确定性得到验证，并反馈到价值定义，调整价值定义。例如，影响<span class="ck ck-857" data-id="ck-857">地图</span>某一分支的假设被证实，就有理由加大在这一分支上的投入。反之，如果假设被否定，则需要考虑如何调整。这两点都可能导致价值定义的变更，让产品开发更灵活和有针对性，更好的解决市场和用户的问题，创造竞争优势。</p>
+<h2>6. 总结</h2>
+<p><img width="500" _p="true" _href="img://null" alt="" src="http://infoqstatic.com/resource/articles/value-oriented-visualization/zh/resources/1018011.png" /></p>
+<p>图11 面向价值的端到端可视化体系</p>
+<p>我们从一个团队的实践开始，提供了一个面向价值的端到端的可视化实践体系，它促进了信息的整合和沟通。图 11是这个可视化体系的抽象表达，其核心是价值定义和价值流动（价值交付被看着流动的一个环节）。最后要提醒的是，不要简单拷贝其它团队的可视化实践，也包本文的实践。关键在于从自身现实出发，认清要通过可视化解决什么问题，把握可视化的基本原则构建自己的可视化体系。</p>
+<p>在可视化的基础上，下两篇文章我们将讨论如何让价值的流动更加顺畅、灵活，从而提高产品开发过程效率和对外的响应能力。</p>
+<h2>作者简介</h2>
+<p><strong>何勉</strong>，现任职上海贝尔公司，曾任软件开发工程师、项目经理、部门经理，精益和敏捷教练等职。当前主要关注：产品开发中的价值发现、澄清和验证过程，积极实践各类方法提高这一过程的有效性，如实例化需求（SBE）和影响<span class="ck ck-857" data-id="ck-857">地图</span>（Impact Mapping）等。精益产品开发和看板方法的实施，是Agile China 2013“精益和看板”模块的制作人，兼任大会程序委员会主席。精益创业和精益用户体验设计，帮助中小创新型企业落实相关实践。新浪微博：<a href="http://weibo.com/hemian">@何勉</a></p><br><br><br><br><br><br></body></html>
