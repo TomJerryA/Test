@@ -1,6 +1,15 @@
 <html>
  <head></head> 
- <body> 
+ <body>
+  <div>
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/28.py">Amazon Web Services、新しいインスタンスタイプを3つ発表</a>Amazon Web ServicesはEC2 (Elastic Compute Cloud) IaaSの新しいインスタンスタイプを3つ発表した。I2インスタンスはSSDを使って、高いI/O性能を実現する。C3インスタンスは高負荷な計算のために各仮想CPUをハードウェアハイパースレッドに結びつける。G2インスタンスは3Dアプリケーション向けにNvidiaのGPUを提供する。
+  </div>
+  <div>
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/27.py">Vaughn Vernon氏、リアクティブドメイン駆動設計について語る</a>Implementing Domain-Driven Designの著者であるVaughn Vernon氏が、イベント駆動やヘキサゴナルアーキテクチャでよく見られるアーキテクチャオーバーヘッドを取り除く手段として、ScalaとAkka（アクターモデルの実装）をドメイン駆動設計と組み合わせて使うことについて説明した。
+  </div>
+  <div>
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/26.py">ActiveMQ 5.9：LevelDB ストアのレプリケーション、およびHawtio ウェブコンソールに対応</a>メッセージブローカの Apache ActiveMQ の最新バージョン5.9 は、200件以上の問題点修正とともに、LevelDBのレプリケーションをサポートする機能と、新しい Hawtio ウェブコンソールを追加した。
+  </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/25.py">Apportable、AndroidにObjective-Cを持ち込む</a>ApportableはiOS開発者がAndroid向けソフトウェアを配布する可能性をもたらす。Apportable SDKとコマンドラインツールを使うことで、プログラマはObjective-Cのコードに大きく手を加えることなく、アプリをクロスコンパイルすることができる。また、Apportableはアプリ変換サービスも提供する。 
   </div> 
@@ -141,15 +150,6 @@
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/29.py">自己組織型アジャイルチームにおけるリーダシップ</a>自己組織型アジャイルチームを実践する組織には，奉仕型リーダシップでチームを支援し，チーム自身が継続的な向上を学ぶように指導，助言できるマネージャが必要だ。 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/28.py">NetflixがSilverlightを見限り，HTML5を選択</a>Netflixは自社のビデオプレーヤをSilverlightからHTML5に切り替えると発表した。新しいプレーヤは最初Chrome/Chrome OSに実装されるが，間もなくWindowsとMac OS Xにも用意されるという。 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/27.py">C#の非同期の落とし穴</a>時々 1 つの言語の落とし穴を理解する最良の方法は、別の言語がそれらをどのように防いでいるかを参考にすることである。Real-World Functional Programmingの著者であるTomas Petricek氏は、非同期なC# コードに見られる６つの一般的な誤りについて説明し、どのように F# がそれらの発生する可能性を少なくしているかを示している。 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/26.py">Dartの M4リリースがコアライブラリを安定化</a>Google DartがDart SDKのマイルストーン 4をリリースした。言語は既に、以前のマイルストーンで安定化したが、このM4リリースは幾つかのコアライブラリを安定化させた。パフォーマンスも向上した。Dartをネイティブで動かすDartVMは、160% (DeltaBlueベンチマークで)から200% (Richardsベンチマークで)Chromeを動かしているJavaScriptエンジンのv8よりも早くなった。このリリースには、高速化されたdart2jsコンパイラーが含まれている。 
-  </div> 
+  </div>    
  </body>
 </html>

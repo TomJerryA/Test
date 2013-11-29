@@ -1,8 +1,8 @@
 <html>
  <head></head> 
- <body>
-  <div>
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/19.java">Experiences from Enterprise Integration with REST</a>Large-scale legacy replacement is the hardest job in the IT industry and REST over HTTP is an attractive option for many of these projects. Architecturally REST has proven scalability and to fit in well with domain modelling, Brandon Byars, a principal consultant at Thoughtworks, claims when sharing his experiences from using RESTful integration in large scale legacy replacement projects.
+ <body> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/19.java">Experiences from Enterprise Integration with REST</a>Large-scale legacy replacement is the hardest job in the IT industry and REST over HTTP is an attractive option for many of these projects. Architecturally REST has proven scalability and to fit in well with domain modelling, Brandon Byars, a principal consultant at Thoughtworks, claims when sharing his experiences from using RESTful integration in large scale legacy replacement projects. 
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/18.java">Managing Business Change with Scrum at FloraHolland</a>FloraHolland wanted to realize change goals for business units in parallel with their daily business, and decided to use Scrum to manage their business changes. A session from the XP Days Benelux 2013 conference which shows how a Job Demands-Resources model was used by several business units to adopt Scrum and agile elements to change their way of working. 
@@ -150,6 +150,6 @@
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/20.java">Testing Resiliency at PagerDuty Without a Simian Army</a>Doug Barth, from PagerDuty, talked at DevOps Days London about their approach to start resiliency testing their systems without dedicating a lot of automation effort upfront. The goal was to quickly start learning about failure points and openly discuss how to fix them with only one hour per week of effort. 
-  </div>  
+  </div> 
  </body>
 </html>
