@@ -1,12 +1,76 @@
-<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>谷歌发布Dart 1.0</h3><p>在初次公告并发布预览版两年以后，Lars Bak于11月14日在<a href="http://www.devoxx.be/">Devvox比利时会议</a>上<a href="http://googledevelopers.blogspot.com/2013/11/dart-10-stable-sdk-for-structured-web.html">宣布了Dart的第一个稳定版本</a>。<a href="https://www.dartlang.org/">Dart</a>是谷歌的新Web编程语言和平台，用于开发现代Web应用程序。</p>
-<p>Dart 1.0附带了<a href="https://www.dartlang.org/">重新设计过的网站</a>、Dart VM、Dart2JS（将Dart编译成JavaScript代码）、<a href="https://www.dartlang.org/tools/editor/">基于Eclipse的IDE</a>和<a href="https://www.dartlang.org/tools/dartium/">Dartium</a>。Dartium是一个专门构建的包含Dart VM的Chrome。</p>
-<p>在过去的两年里，Dart的性能获得了显著提升。Dart代码可以以两种方式运行：一种是使用本地的Dart VM，上半年，<a href="http://www.infoq.com/cn/news/2013/05/Dart-Java-DeltaBlue">它在某个基准测试中击败了JVM</a>。对于本身不支持Dart的浏览器（当前没有浏览器产品支持Dart），可以使用dart2js工具将Dart代码编译成JavaScript。最近，<a href="https://www.dartlang.org/performance/">在某个基准测试中，dart2js生成的JavaScript其性能超过了手写的JavaScript代码</a>。此外，生成的JavaScript代码量也已经<a href="http://googledevelopers.blogspot.com/2013/11/dart-10-stable-sdk-for-structured-web.html">显著减少</a>：</p>
-<blockquote> 
- <p>同样地，dart2js输出的代码量已经大幅减少。与一年前相比，它现在为游戏“<a href="http://dart-lang.github.io/pop-pop-win/">扎气球扫雷</a>”生成的代码<a href="http://work.j832.com/2013/10/dart-to-javascript-output-size-what.html">少了40%</a>。VM的性能也不断提高；根据基准测试结果，它现在比在V8中运行的惯用JavaScript快42%到130%。</p> 
-</blockquote>
-<p><img width="600" alt="" src="http://infoqstatic.com/resource/news/2013/11/dart-10/zh/resources/1015000.png" _href="img://null" _p="true" /></p>
-<p>在<a href="http://googledevelopers.blogspot.com/2013/11/dart-10-stable-sdk-for-structured-web.html">公告博文</a>中，团队还披露了一些已经在生产环境中使用Dart的公司的名称。今年早些时候，<a href="http://www.infoq.com/news/2013/04/blossom-dart-switch">InfoQ与Blossom的人进行了交谈</a>，他们已经逐步地将其应用程序移植到Dart。其它Dart用户还包括<a href="http://www.montagebook.com/">Montage</a>、<a href="https://www.soundtrap.com/">Soundtrap</a>、<a href="http://mandrill.com/">Mandrill</a>、谷歌内部的CRM应用程序以及<a href="http://www.google.com/elections/ed/de/districts">谷歌选举</a>。</p>
-<p>在Dart库方面也有许多事发生。Dart的包资源库<a href="http://pub.dartlang.org/">Dart Pub</a>现在包含500个用户贡献的包。谷歌还把若干自有框架移植到了Dart，包括<a href="http://www.infoq.com/cn/news/2013/06/angularjs-dart">将热门框架AngularJS移植到Dart</a>并命名为<a href="https://github.com/angular/angular.dart">Angular.dart</a>，以及将<a href="http://www.infoq.com/news/2013/05/webcomponents">Web组件Shim库</a><a href="http://www.infoq.com/cn/news/2013/07/dart-polymer-web-ui">Polymer移植到Dart</a>。</p>
-<p>谷歌现在正式宣布，Dart已经稳定并且为生产做好准备。Dart 1.0免费而且开源，读者<a href="https://www.dartlang.org/">可以从其网站上下载适用于所有主要平台的版本</a>。焕然一新的网站上包含了一段<a href="https://www.dartlang.org/#code">5分钟的Dart演示</a>，以及<a href="https://www.dartlang.org/codelabs/darrrt/">一个长1小时的教程</a>。</p>
-<p><strong>查看英文原文：</strong><a href="http://www.infoq.com/news/2013/11/dart-10">Google Releases Dart 1.0</a></p>
-<p><img width="600" alt="" src="http://www.infoq.com/mag4media/repositories/fs/news/2013/11/dart-10/zh/resources/null" _href="img://null" _p="true" /></p><br><br><br><br><br><br></body></html>
+<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>高德地图LBS开放平台系列沙龙现场实录：常见问题答疑、省电技巧、摇摇公交离线查询思路分享、新版SDK功能介绍</h3><p>2013年11月28日，高德地图在一场小规模的LBS开放平台开发者活动上分享了有关LBS的技术答疑、如何开发出省电高效的地理位置类应用的技巧、如何利用高德地图API在自己的应用中添加定制化的点等。清华大学的姜海老师也作为高德地图的合作伙伴进行了分享，他开发的iOS应用“摇摇公交”获得了2012高德地图杯中国LBS应用大赛二等奖。</p>
+<p>首先，LBS开放平台产品经理张群对开发者们经常问到的问题进行了答疑。</p>
+<p>Q：高德地图API目前支持哪些开发平台？</p>
+<p>A：目前支持iOS、Android、WP、Windows 8、黑莓和HTML5。</p>
+<p>Q：开发者利用高德API制作了付费应用，是否需要给高德付费？</p>
+<p>A：目前，高德地图API是完全免费的，但是有并发数与访问限制（具体限制见<a href="http://api.amap.com/support/faq">高德地图API官网</a>）。</p>
+<p>对于想要得到更多资源的用户，可以升级到高德地图API专业版，预计在今年12月底会上线。</p>
+<p>Q：是否支持国外地图和定位？</p>
+<p>A：目前支持大陆和港澳台，国外暂不支持。港澳现在已经支持基站定位，台湾地图预计到12月底就会有，基站定位预计到明年会跟进。</p>
+<p>对于确实需要同时支持国内外地图的开发者，因为高德地图采用了国测局的gcj-02坐标系，跟Google、苹果等地图供应商是一致的，而且也有合作，可以直接迁移过去。</p>
+<p>Q：高德地图API的优势在哪里？</p>
+<p>A：支持的平台多；自采数据，自融合，数据更新频率和准确性高。基础底图一个季度一更新，其他数据审核通过即更新；阿里云的硬件条件；跟几亿条淘宝门址数据融合，更精准的geocoding，通过地址就可以定位，比地理编码更精细，准确度大大提高；在传统GIS行业的积累。</p>
+<p>Q：新版API性能如何？</p>
+<p>A：旧版是2D栅格数据，新的3D版本使用OpenGL内核绘制矢量地图，消耗会比旧版增加一些，但有一些技巧可以提高效率、省电。</p>
+<p>Q：高德是否提供服务器端的API？</p>
+<p>A：有基于REST的接口，开发者以http请求方式发送参数即可使用搜索接口。这个接口暂时没有上官网，目前是通过一些渠道分发给少量用户。年底会正式上线。对于免费用户有次数限制。</p>
+<p>Q：高德地图API支持哪些定位方式？</p>
+<p>A：Wifi+cell、GPS、混合，三种模式。返回的地址可以在Google地图和苹果地图正确显示。</p>
+<p>Q：是否支持GIS平台的特有数据格式？</p>
+<p>A：用户需求量还比较小，暂时不支持。但是，其实这些数据格式都是公开的，读取的实现并不复杂。</p>
+<p>Q：高德地图的实时交通覆盖多少城市？</p>
+<p>A：旧版支持33个城市，新版增加到47个城市（见<a href="http://api.amap.com/support/faq">官方FAQs</a>）</p>
+<p>Q：通过cell方式取到了基站的位置，如何转换成经纬度数据？</p>
+<p>A：这方面需求较小，暂不提供。</p>
+<p>Q：高德地图API免费的时限有多久？会不会用着用着又不免费了？</p>
+<p>A：高德地图API会一直免费，只是有调用次数的限制。12月底要推出的收费专业版主要是做底图的定制化和一些功能的封装，高德内部有一个政企部门专门负责这一块。</p>
+<p>Q：如果发现地图数据有错误，有哪些方法反馈？</p>
+<p>A：你可以反馈到我们的API邮箱和技术支持群，另外高德地图App自己也有一个反馈入口。收到反馈后，数据生产部门在验证后会立刻更新，预计几个星期就能完成修复。</p>
+<p>Q：高德地图API在带宽使用效率方面是否有改进计划？</p>
+<p>A：建议使用离线数据以避免加载请求。</p>
+<p>接下来，高德地图API产品经理朴春值分享了Android 3D Map SDK的优化经验，以提升App的效率、降低耗电量。省电主要有几个方面可以实现：</p>
+<ol> 
+ <li> 硬件方面：尽量减少使用GPS硬件、陀螺仪的次数。Wifi和基站的误差大约在150m左右，可以考虑以时间和距离两个纬度减少定位频率，如1分钟定位一次，走50m定位一次等。陀螺仪也是很灵敏的，默认可能0.01度就会触发，可以设置为1度甚至2度变更才触发</li> 
+ <li> 减少网络使用：压缩传输数据、多用内存缓存和本地缓存。减少数据传输方面，以前的栅格切片一个20k，对应的矢量地图只有2~3k；用json相比xml也可以减少传输的数据量</li> 
+ <li> 代码方面：主要是CPU、IO、启动线程数量这三方面。用内存缓存来减少IO。记得停止线程以控制线程数量。降低OpenGL es的刷新率，默认是70帧，其实50帧就够了，地图不动的时候是不用刷新的</li> 
+ <li> 减少绘制：屏幕以外的地图不用绘制</li> 
+ <li> 上线新版之前做好测试，确保CPU占用率无明显增长，内存占用不会一直增多，流量和电量消耗比之前好。可以使用top命令或ADT工具查看占用率</li> 
+</ol>
+<p>朴春值还分享了如何使用API来添加自定义的点，包括设置自定义锚点图的相对位置、拖拽实现、个性化图片展示、以及动画点的实现等。</p>
+<p>然后，清华大学的<a href="http://www.ie.tsinghua.edu.cn/teacher/view.php?Tid=52">姜海老师</a>分享了从做摇摇公交积累的一些数据和心得。姜海自己的研究方向是离散选择、数据挖掘、优化模型和算法，摇摇公交是为了解决自己的痛点而开发的一个应用，目前仅支持iOS，已经在AppStore上积累了20万用户。</p>
+<p>姜海介绍，在他做摇摇公交之前，市场上已经有了很多公交类App，包括百度背景的创始人做的爱帮公交、8684公交、个人开发者做的公交闹铃、图吧地图的彩虹公交、搜狗公交、百度公交、以及大连团队做的熊猫公交等。</p>
+<p>为什么公交类应用这么火，以至于很多做了地图应用的厂家还要单独做一个公交类应用？姜海引用了百度的一句话：</p>
+<p>“百度地图有三分之二的用户都用它来查公交。”</p>
+<p>但是，姜海觉得这些应用都太难用了。他用数据表示其他用户也对这些应用不满意：在一次公交类应用的调查中，42%用户对流量消耗不满意，40%用户对查询结果不满意。尤其对于2G网络的用户来说，在线查询往往只能看菊花转个不停；而离线查询方面，要么必须输入站点，要么基于之前在线的浏览历史，用户体验并不好。</p>
+<p>为什么离线搜索这么难做？姜海表示这是因为手机的内存和计算能力有限，PC上的算法在手机上都不好用。而为了在本地储存更多数据，也会导致离线包越来越大。据说8684每年的带宽成本要好几万，都是用户下载离线包给下的。</p>
+<p>摇摇公交主要有两件事是自己做的：</p>
+<p>1、离线查询算法 2、数据结构</p>
+<p>这两块是摇摇公交的核心竞争力。摇摇公交目前为14个城市提供离线数据，北京的离线包包含八万多个POI地名。至于GPS调用、城市信息、地图展示，都是直接用高德API实现的。POI匹配和路线查询，针对在14个城市、网络不好的用户采用自主方案匹配，对于其他用户采用高德的匹配方案。</p>
+<p>产品设计方面，摇摇公交采取如下思路：</p>
+<p>1、用户在搜索时，提供一个只搜索目的地的简洁界面，无需输入起点 2、通过摇手机或点搜索按钮触发搜索之后，应用会搜索起点附近1.5km内的10个车站和终点附近的10个车站，计算出可搭乘的路径，一般有20多条路径 3、对这些路径按起点车站进行分类，并用不同颜色标注可直达的车、需要换乘的车等 4、无论是在线还是离线查询都会上传信息用于统计，同时给用户建立profile判断其偏好，比如他是喜欢多走路还是喜欢坐地铁，在之后的搜索中影响他获取结果的排序</p>
+<p>姜海表示本来想月底发布Android版，现在决定只放SDK，因为自己精力有限，宁愿把这个开放出去，让想做的人去把应用做出来，说不定会有更多创意。</p>
+<p>最后，高德移动端SDK产品经理李乐介绍了本次新版SDK的一些更新内容。各平台共有的更新包括：</p>
+<ul> 
+ <li> 增加绘制大地曲线，用于绘制航线</li> 
+ <li> 增加驾车返回途径城市的功能</li> 
+ <li> 47个城市实时交通支持</li> 
+ <li> 在矩形和圆形之外，增加多边形区域POI搜索</li> 
+</ul>
+<p>Android SDK特有的更新：</p>
+<ul> 
+ <li> 开放OpenGL接口CustomRenderer类</li> 
+ <li> 支持将view转化为marker图标</li> 
+ <li> 添加获得当前可见区域内所有marker的方法GetMapScreenMarkers</li> 
+ <li> 开放默认定位图标的旋转</li> 
+ <li> 自定义绘制实时路况的道路标记颜色，包括畅通、缓慢、拥堵、极度拥堵四个级别</li> 
+</ul>
+<p>iOS SDK特有的更新：</p>
+<ul> 
+ <li> 默认显示指南针</li> 
+ <li> 默认显示比例尺</li> 
+ <li> overlay支持绘制虚线</li> 
+ <li> 开放定位参数的设置接口MAMapView LocationOption</li> 
+ <li> 新增zoomlevel属性</li> 
+ <li> Annotation数组，调整地图视窗到合适的显示范围</li> 
+</ul>
+<p>另外，高德地图12月将发布的新版本将支持室内地图，覆盖全国三千多个商场等建筑。SDK对室内地图的支持会迟一些才有。</p><br><br><br><br><br><br></body></html>

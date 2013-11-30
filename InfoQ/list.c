@@ -1,8 +1,8 @@
 <html>
  <head></head> 
- <body>
-  <div>
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/38.c">O que deve e o que n&atilde;o deve ser feito em uma API Web</a>Oliver Wolf, consultor s&ecirc;nior na InnoQ, compartilha as suas opini&otilde;es sobre endpoints, modelos de dom&iacute;nio, cache, controle de vers&otilde;es, e outros t&oacute;picos em torno do REST e APIs web, provenientes de listas de e-mail e outros f&oacute;runs de discuss&atilde;o, em uma palestra na confer&ecirc;ncia GOTO Berlin.
+ <body> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/38.c">O que deve e o que n&atilde;o deve ser feito em uma API Web</a>Oliver Wolf, consultor s&ecirc;nior na InnoQ, compartilha as suas opini&otilde;es sobre endpoints, modelos de dom&iacute;nio, cache, controle de vers&otilde;es, e outros t&oacute;picos em torno do REST e APIs web, provenientes de listas de e-mail e outros f&oacute;runs de discuss&atilde;o, em uma palestra na confer&ecirc;ncia GOTO Berlin. 
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/37.c">AWS anuncia tr&ecirc;s novos tipos de inst&acirc;ncias</a>A Amazon Web Services acaba de anunciar tr&ecirc;s novos tipos de inst&acirc;ncia do seu servi&ccedil;o Elastic Compute Cloud (EC2). S&atilde;o as inst&acirc;ncias do tipo I2 que usam discos de estado s&oacute;lido (SSD) para melhor performance de I/O, C3 para processamentos mais intensos e G2 que oferecem processamento baseado em GPUs Nvidia para processamento gr&aacute;fico. 
@@ -150,6 +150,6 @@
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/39.c">Ansible: uma nova op&ccedil;&atilde;o para gerenciamento de configura&ccedil;&atilde;o</a>O Ansible &eacute; a mais recente promessa para a pr&oacute;xima gera&ccedil;&atilde;o de sistemas de gerenciamento de configura&ccedil;&atilde;o, independente de linguagem de programa&ccedil;&atilde;o, utilizando SSH como camada de comunica&ccedil;&atilde;o, operacional com linguagens de programa&ccedil;&atilde;o com suporte a JSON. Conhe&ccedil;a o novo projeto. 
-  </div>  
+  </div> 
  </body>
 </html>

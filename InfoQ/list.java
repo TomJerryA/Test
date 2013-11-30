@@ -2,13 +2,19 @@
  <head></head> 
  <body>
   <div>
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/22.java">List &amp; Label 19 Adds Report Parameters, Collection Variables, OData and REST Data Providers</a>The recently released List &amp; Label 19 provides support for report parameters, collection variables, new chart types such as combined, stacked, funnel, pipeline, shapefile and donut in addition to support for OData and REST data providers.
-  </div>
-  <div>
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/21.java">PayPal Switches from Java to JavaScript</a>PayPal has decided to use JavaScript from browser all the way to the back-end server for web applications, giving up legacy code written in JSP/Java.
-  </div>
-  <div>
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/20.java">How to Target Intrinsic Motivators - Champfrogs Checklist</a>Jurgen Appelo has released a tool to help target intrinsic motivators in teams and individuals, his -Champfrogs checklist.
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/24.java">Is Getting Rid of All Projects a Good Idea?</a>At the XP Days Benelux conference, Paul Kuijten did a session called &quot;kill all projects&quot; where he questioned if getting rid of all projects could be a good idea. InfoQ did an interview with Paul about project management practices that can be valuable for agile, and the funding of product development.
+  </div> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/23.java">A/B Testing for Mobile Applications</a>Best.ly offers support for A/B-testing mobile applications without the need for code changes and resubmitting to an app store. Currently, there is only a native library for the iOS platform but libraries for the Android eco-system are already in development and will be available soon. Experiments can be administrated online, adjusted during runtime and monitored in realtime. 
+  </div> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/22.java">List &amp; Label 19 Adds Report Parameters, Collection Variables, OData and REST Data Providers</a>The recently released List &amp; Label 19 provides support for report parameters, collection variables, new chart types such as combined, stacked, funnel, pipeline, shapefile and donut in addition to support for OData and REST data providers. 
+  </div> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/21.java">PayPal Switches from Java to JavaScript</a>PayPal has decided to use JavaScript from browser all the way to the back-end server for web applications, giving up legacy code written in JSP/Java. 
+  </div> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/20.java">How to Target Intrinsic Motivators - Champfrogs Checklist</a>Jurgen Appelo has released a tool to help target intrinsic motivators in teams and individuals, his -Champfrogs checklist. 
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/19.java">Experiences from Enterprise Integration with REST</a>Large-scale legacy replacement is the hardest job in the IT industry and REST over HTTP is an attractive option for many of these projects. Architecturally REST has proven scalability and to fit in well with domain modelling, Brandon Byars, a principal consultant at Thoughtworks, claims when sharing his experiences from using RESTful integration in large scale legacy replacement projects. 
@@ -144,12 +150,6 @@
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/25.java">Developing iOS &amp; Android Apps with C# in Visual Studio</a>Xamarin partnerships with Microsoft to let developers build iOS and Android applications in Visual Studio. Xamarin University teaches developers how to do that. 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/24.java">Windows/Windows Phone Takes a Step Towards Unification</a>Microsoft has taken the first step towards unifying the Windows 8 and Windows Phone stores. Developers no longer have to register for each platform separately. Those already registered for both will be receiving a free renewal for one year in compensation. 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/23.java">Pivotal Announces Pivotal CF Based on CloudFoundry</a>Today, Pivotal announced the availability of Pivotal CF, an enterprise cloud platform based on Cloud Foundry, along with a number of Pivotal One services such as an Apache Hadoop and Analytics service. A reply of the announcement is available from gopivotal.com 
-  </div>    
+  </div>  
  </body>
 </html>
