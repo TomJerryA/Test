@@ -2,7 +2,10 @@
  <head></head> 
  <body>
   <div>
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/24.java">Is Getting Rid of All Projects a Good Idea?</a>At the XP Days Benelux conference, Paul Kuijten did a session called &quot;kill all projects&quot; where he questioned if getting rid of all projects could be a good idea. InfoQ did an interview with Paul about project management practices that can be valuable for agile, and the funding of product development.
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/25.java">Increasing Pace of Change Drives Agile In Enterprise Applications</a>The pace of organizational change and technology adoption is increasing which means that enterprise software development needs to find ways to keep pace with these changes. The rise of big data is also driving the need to undertake many experiment and adapt rapidly. Blogger Matt Asay recently wrote about this in a post titled &quot;Hey, Enterprise Developers! Get Agile Or Get Steamrollered&quot;
+  </div> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/24.java">Is Getting Rid of All Projects a Good Idea?</a>At the XP Days Benelux conference, Paul Kuijten did a session called &quot;kill all projects&quot; where he questioned if getting rid of all projects could be a good idea. InfoQ did an interview with Paul about project management practices that can be valuable for agile, and the funding of product development. 
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/23.java">A/B Testing for Mobile Applications</a>Best.ly offers support for A/B-testing mobile applications without the need for code changes and resubmitting to an app store. Currently, there is only a native library for the iOS platform but libraries for the Android eco-system are already in development and will be available soon. Experiments can be administrated online, adjusted during runtime and monitored in realtime. 
@@ -147,9 +150,6 @@
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/26.java">Pivotal's Reactor Goes GA</a>This week, Pivotal released version 1.0 of its project Reactor for general availability. Reactor provides low-level abstractions for an event-driven, reactive programming model, and is a component member of the Spring IO Platform in its &quot;IO Foundation&quot; layer. 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/25.java">Developing iOS &amp; Android Apps with C# in Visual Studio</a>Xamarin partnerships with Microsoft to let developers build iOS and Android applications in Visual Studio. Xamarin University teaches developers how to do that. 
   </div>  
  </body>
 </html>

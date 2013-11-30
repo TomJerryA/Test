@@ -1,22 +1,21 @@
-<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>Developing iOS & Android Apps with C# in Visual Studio</h3><p>Xamarin partnerships with Microsoft to let developers build iOS and Android applications in Visual Studio. <a href="http://xamarin.com/university">Xamarin University</a> teaches developers how to do that.</p>
-<p>Xamarin has announced today a partnership with Microsoft to provide up-to-date support for developers working in C# and Visual Studio to build fully native cross platform mobile applications that run on iOS, Android, beside Windows which is already supported. The agreement covers the following aspects:</p>
-<ul> 
- <li>Xamarin is to collaborate with Microsoft to better integrate their technology into MS developer tools and services. Xamarin is one of the VS 2013 SimShim partners, releasing an integrated version of their tools the same day Microsoft releases Visual Studio. Xamarin now includes Microsoft Portable Class Libraries which initially had a restriction to be used only on Windows, but <a href="http://www.infoq.com/news/2013/10/portablePCL">that restriction was recently lifted</a>.</li> 
- <li>The recently launched <a href="http://xamarin.com/university">Xamarin University</a> will be available for free for a limited number of MSDN subscribers. The online school’s training courses teach developers how to create cross platform mobile apps for iOS and Android.</li> 
- <li>MSDN subscribers will also have <a href="http://xamarin.com/msdn">special pricing</a> for Xamarin subscriptions.</li> 
-</ul>
-<p>We asked Xamarin if they intend to extend their cooperation with Microsoft in this area. Nat Friedman, Xamarin CEO and cofounder, said they are working on that but did not provide details at this time:</p>
-<blockquote> 
- <p>We’re working closely with Microsoft to make it easier than ever to build native Windows, Android and iOS apps in Visual Studio, giving the best possible development experience to developers who are increasingly going mobile. We’re in deep discussions with Microsoft to align roadmaps and will have more information on future integration at a later date.</p> 
+<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>Increasing Pace of Change Drives Agile In Enterprise Applications</h3><p>The rapid pace of change has been researched and documented by numerous comentators and this has been linked to the need for organizations which develop enterprise softtware to adopt Agile approaches. &nbsp;Blogger <a href="http://readwrite.com/author/matt-asay#awesm=~ooHnUOUMM61VG3">Matt Asay</a>&nbsp;of MongoDB wrote about this in a recent post titled &quot;<a href="http://readwrite.com/2013/11/27/agile-development-software#awesm=~ooGSrAFVwyoTQk">Hey, Enterprise Developers! Get Agile Or Get Steamrollered</a>&quot; in which he talks about the need to &quot;<em>make each release a non-eve</em><em>nt</em>&quot;.</p>
+<p>He states that&nbsp;</p>
+<blockquote>
+ Agile development is no longer an alternative way to develop software. With the pace of technology adoption accelerating at a frenetic pace, agile is increasingly the only way to develop software. That is, if you want to stay in busines
 </blockquote>
-<p>The Xamarin University will have for beginning two 1-month courses starting in January and February 2014 with the following curriculum:</p>
-<ul> 
- <li>iOS and Android Fundamentals</li> 
- <li>The Mobile App Lifecycle</li> 
- <li>Native UI and Controls</li> 
- <li>Cross-platform Architecture</li> 
- <li>Mobile Best Practices</li> 
- <li>Secure Backend Integration</li> 
- <li>Advanced topics such as memory management best practices</li> 
-</ul>
-<p>The training includes over 20 hours of live online classes with experts from Xamarin, 2 hours of one-to-one coaching with a mobile developer, on demand videos, tutorials, labs, and code samples, and a dedicated forum. The seats are limited.</p><br><br><br><br><br><br></body></html>
+<p>He quotes Forrester researcher&nbsp;<a href="http://blogs.forrester.com/diego_lo_giudice">Diego Lo Giudice</a> who <a href="http://blogs.forrester.com/diego_lo_giudice/13-09-11-app_dev_pros_have_been_using_metrics_for_the_wrong_reason_control_its_time_to_use_metrics_to_vali">says</a></p>
+<blockquote>
+ Within the modern applications era, regardless of whether new software applications are being developed and delivered for mobile, tablets, or the Web, the truly successful app-dev leaders will be those who focus on delivering constant value and incremental improvement to their business.
+</blockquote>
+<p>He talks about the need to be able to release frequently and how</p>
+<blockquote>
+ Product stability comes from releasing code more frequently, not less. You want each release to be a non-event, not a major launch.
+</blockquote>
+<p>He references a recent Harvard Business Review post which looks at the increasing <a href="http://blogs.hbr.org/2013/11/the-pace-of-technology-adoption-is-speeding-up/">pace of change</a>&nbsp;and shows how in many domains the rate of change has increased. &nbsp;In that article, Rita McGrath says</p>
+<blockquote>
+ As you can see from the chart, innovations introduced more recently are being adopted more quickly. By analogy, firms with competitive advantages in those areas will need to move faster to capture those opportunities that present themselves.
+</blockquote>
+<p>His final argument for agile adoption is the uptake of Big Data and the need to experiment quickly</p>
+<blockquote>
+ Big Data is new, and let's face it: most companies are likely going to fail as they start their projects. After all, it’s almost guaranteed that companies won’t know which data to capture, or how to leverage it, without trial and error. It therefore becomes critical to design for failure, with an agile approach that reduces the cost of failure, both in terms of time and money
+</blockquote><br><br><br><br><br><br></body></html>
