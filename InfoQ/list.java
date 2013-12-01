@@ -1,14 +1,14 @@
 <html>
  <head></head> 
- <body>
-  <div>
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/28.java">A Few Highlights from QConSF2013- Part 1 of 2</a>On each day of the 3-day conference at the inviting environs offered at the Hyatt there was a jam-packed schedule of speakers, exhibits and activities that made for some difficult decisions as to which tracks and what happening to attend.
-  </div>
-  <div>
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/27.java">Continuous Security Testing With Gauntlt</a>James Wickett, from Gauntlt core team, gave a tutorial at Velocity Conf London about integrating security testing in the continuous integration cycle for early feedback on application security level. James stressed the importance of regularly checking for security as release delivery rates increase with continuous delivery.
-  </div>
-  <div>
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/26.java">Leveraging DDD in Core-Business Applications Using Entity Framework</a>Domain-Driven Design, DDD, is all about the domain, not about persistence. With a history of database programming for 25 years, later years using Entity Framework, Julie Lerman, a consultant on the .NET platform and a Microsoft MVP, in a recent presentation at the &Oslash;redev developer conference shares her persistence experiences when moving into DDD.
+ <body> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/28.java">A Few Highlights from QConSF2013- Part 1 of 2</a>On each day of the 3-day conference at the inviting environs offered at the Hyatt there was a jam-packed schedule of speakers, exhibits and activities that made for some difficult decisions as to which tracks and what happening to attend. 
+  </div> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/27.java">Continuous Security Testing With Gauntlt</a>James Wickett, from Gauntlt core team, gave a tutorial at Velocity Conf London about integrating security testing in the continuous integration cycle for early feedback on application security level. James stressed the importance of regularly checking for security as release delivery rates increase with continuous delivery. 
+  </div> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/26.java">Leveraging DDD in Core-Business Applications Using Entity Framework</a>Domain-Driven Design, DDD, is all about the domain, not about persistence. With a history of database programming for 25 years, later years using Entity Framework, Julie Lerman, a consultant on the .NET platform and a Microsoft MVP, in a recent presentation at the &Oslash;redev developer conference shares her persistence experiences when moving into DDD. 
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/25.java">Increasing Pace of Change Drives Agile In Enterprise Applications</a>The pace of organizational change and technology adoption is increasing which means that enterprise software development needs to find ways to keep pace with these changes. The rise of big data is also driving the need to undertake many experiment and adapt rapidly. Blogger Matt Asay recently wrote about this in a post titled &quot;Hey, Enterprise Developers! Get Agile Or Get Steamrollered&quot; 
@@ -150,6 +150,6 @@
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/29.java">Google Releases Dart 1.0</a>Two years after its initial announcement and preview release, Lars Bak announced the first stable release of Dart at Devvox in Belgium today. Dart is Google’s new web programming language and platform for developing modern web applications. 
-  </div>    
+  </div> 
  </body>
 </html>
