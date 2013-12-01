@@ -2,7 +2,16 @@
  <head></head> 
  <body>
   <div>
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/25.java">Increasing Pace of Change Drives Agile In Enterprise Applications</a>The pace of organizational change and technology adoption is increasing which means that enterprise software development needs to find ways to keep pace with these changes. The rise of big data is also driving the need to undertake many experiment and adapt rapidly. Blogger Matt Asay recently wrote about this in a post titled &quot;Hey, Enterprise Developers! Get Agile Or Get Steamrollered&quot;
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/28.java">A Few Highlights from QConSF2013- Part 1 of 2</a>On each day of the 3-day conference at the inviting environs offered at the Hyatt there was a jam-packed schedule of speakers, exhibits and activities that made for some difficult decisions as to which tracks and what happening to attend.
+  </div>
+  <div>
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/27.java">Continuous Security Testing With Gauntlt</a>James Wickett, from Gauntlt core team, gave a tutorial at Velocity Conf London about integrating security testing in the continuous integration cycle for early feedback on application security level. James stressed the importance of regularly checking for security as release delivery rates increase with continuous delivery.
+  </div>
+  <div>
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/26.java">Leveraging DDD in Core-Business Applications Using Entity Framework</a>Domain-Driven Design, DDD, is all about the domain, not about persistence. With a history of database programming for 25 years, later years using Entity Framework, Julie Lerman, a consultant on the .NET platform and a Microsoft MVP, in a recent presentation at the &Oslash;redev developer conference shares her persistence experiences when moving into DDD.
+  </div> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/25.java">Increasing Pace of Change Drives Agile In Enterprise Applications</a>The pace of organizational change and technology adoption is increasing which means that enterprise software development needs to find ways to keep pace with these changes. The rise of big data is also driving the need to undertake many experiment and adapt rapidly. Blogger Matt Asay recently wrote about this in a post titled &quot;Hey, Enterprise Developers! Get Agile Or Get Steamrollered&quot; 
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/24.java">Is Getting Rid of All Projects a Good Idea?</a>At the XP Days Benelux conference, Paul Kuijten did a session called &quot;kill all projects&quot; where he questioned if getting rid of all projects could be a good idea. InfoQ did an interview with Paul about project management practices that can be valuable for agile, and the funding of product development. 
@@ -141,15 +150,6 @@
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/29.java">Google Releases Dart 1.0</a>Two years after its initial announcement and preview release, Lars Bak announced the first stable release of Dart at Devvox in Belgium today. Dart is Google’s new web programming language and platform for developing modern web applications. 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/28.java">Android Gets Better with App Translation Service</a>Google has officially released its translation service for Android app which enables developers to localize the apps in various languages based on the guidelines in the localization checklist document. 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/27.java">Project Monaco Brings Visual Studio to the Web</a>Microsoft has released Visual Studio Online which brings a form of the its popular software development IDE to the web. As part of this release small teams of developers can use this service for free, and use it from non-Windows based clients. 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/26.java">Pivotal's Reactor Goes GA</a>This week, Pivotal released version 1.0 of its project Reactor for general availability. Reactor provides low-level abstractions for an event-driven, reactive programming model, and is a component member of the Spring IO Platform in its &quot;IO Foundation&quot; layer. 
-  </div>  
+  </div>    
  </body>
 </html>
