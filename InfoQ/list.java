@@ -1,6 +1,9 @@
 <html>
  <head></head> 
- <body> 
+ <body>
+  <div>
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/29.java">The Costs of Versioning an API</a>Versioning of services is something which has been a cornerstone problem of SOA. There are many examples over the years of experiences gained and shared, but little in the way of concretely comparing and contrasting different approaches. Jean-Jacques Dubray has written about the experiences of his team in this area and some equations they have developed to try to illustrate the differences.
+  </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/28.java">A Few Highlights from QConSF2013- Part 1 of 2</a>On each day of the 3-day conference at the inviting environs offered at the Hyatt there was a jam-packed schedule of speakers, exhibits and activities that made for some difficult decisions as to which tracks and what happening to attend. 
   </div> 
@@ -147,9 +150,6 @@
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/30.java">Xamarin’s Rough Transition to 64-bit iOS/OSX</a>In order to support 64-bit iOS and OSX, Xamarin has to make some breaking changes to the way it implements the mapping between C# and Objective-C libraries. Rather than being mapped to 32-bit types, NSInteger and CGFloat are now mapped to the new platform-specific data types nint and nfloat. 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/29.java">Google Releases Dart 1.0</a>Two years after its initial announcement and preview release, Lars Bak announced the first stable release of Dart at Devvox in Belgium today. Dart is Google’s new web programming language and platform for developing modern web applications. 
-  </div> 
+  </div>  
  </body>
 </html>
