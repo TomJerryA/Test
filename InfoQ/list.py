@@ -1,6 +1,15 @@
 <html>
  <head></head> 
- <body> 
+ <body>
+  <div>
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/31.py">Amazon Kinesisでビッグデータをストリーム処理</a>Amazonがさまざまなソースにある大規模データをストリーム処理できるサービス、Kinesisを発表した。現在、限定プレビューとして利用できる。
+  </div>
+  <div>
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/30.py">Nokia Imaging SDK 1.0、フィルター、WinPRT API、機能強化、サンプルデモを追加</a>Slush 2013にて、NokiaがImaging SDK v1.0をリリースした。これには50の組み込みフィルター、メモリ管理関連の改善、マネージドおよびネイティブコードのWinPRT APIライブラリ、新機能をデモするサンプルアプリが含まれている。
+  </div>
+  <div>
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/29.py">PivotalがReactorをGAリリース</a>Pivotalは今週，プロジェクトReactorのバージョン1.0を一般向けにリリースした。イベント駆動でリアクティブなプログラミングモデル用に低レベルの抽象化を提供するReactorは，Spring IO Platformの&quot;IO Foundation”レイヤの構成メンバだ。
+  </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/28.py">Amazon Web Services、新しいインスタンスタイプを3つ発表</a>Amazon Web ServicesはEC2 (Elastic Compute Cloud) IaaSの新しいインスタンスタイプを3つ発表した。I2インスタンスはSSDを使って、高いI/O性能を実現する。C3インスタンスは高負荷な計算のために各仮想CPUをハードウェアハイパースレッドに結びつける。G2インスタンスは3Dアプリケーション向けにNvidiaのGPUを提供する。 
   </div> 
@@ -141,15 +150,6 @@
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/32.py">QConSF 2013のスケジュールが公開</a>なぜしっかりとチューニングされたシステムが、優れているが未熟なシステムよりも高性能なのか。FacebookのKeith Adams氏がQCon San Franciscoのキーノートでこの質問に答える。カンファレンスのスケジュールが決まり、昨年より40％多い参加者が見込まれている。3週間前だが、10月25日までに参加登録すれば400ドル割引される。 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/31.py">Docker, Inc: dotCloud、オールインワンのコンテナ技術に賭ける</a>PaaSプロバイダのdotCloudが、自らの最新オープンソーステクノロジーに合わせて社名を変更した。Docker, IncはスタンドアロンのPaaSプロダクトを提供し続けるが、社名と同じソフトウェアの成長と商業化にそのフォーカスを移すことになる。Dockerの急激な成長とプロダクトの向かう先について、CEOのBen Golub氏に話を聞いた。 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/30.py">C++アプリケーションにOSGi APIを提供するC++ Micro Services</a>EclipseCon EuropeでSascha Zelzer氏がC++ Micro Servicesプロジェクトを発表した。標準OSGiレイヤにおける同種のAPIに倣って，C++プログラムにOSGiサービスレイヤを提供することが目標だ。詳細は本文を読んで確認してほしい。 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/29.py">自己組織型アジャイルチームにおけるリーダシップ</a>自己組織型アジャイルチームを実践する組織には，奉仕型リーダシップでチームを支援し，チーム自身が継続的な向上を学ぶように指導，助言できるマネージャが必要だ。 
-  </div> 
+  </div>    
  </body>
 </html>

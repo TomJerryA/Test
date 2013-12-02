@@ -1,56 +1,14 @@
-<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>自己組織型アジャイルチームにおけるリーダシップ</h3><p><a target="_blank" href="http://www.infoq.com/news/2013/04/leadership-self-organized-teams;jsessionid=B93C2281432718325F847AD9EB09D44E"><em>原文(投稿日：2013/04/18)へのリンク</em></a></p> 
-<div class="clearer-space">
- &nbsp;
-</div> 
-<div id="newsContent"> 
- <p>自己組織型アジャイルチームを実践している組織にもマネージャは必要だ。しかし，マネージャがチームと接する方法が違ってくる。目標達成を目指して努力を続けるチームは，マネージャに仕事のやり方を指示されたり，管理されたりはしない。奉仕型リーダシップ(Servant Leadership)を持ったマネージャによって支えられた彼らは，学習を通じて自らを継続的に向上させるように指導され，方向付けられるのだ。</p> 
- <p>デジタルマーケティングエージェンシCiplexの創設者であるIlya Pozin氏は，LinkedInにポストした <a target="_blank" href="http://www.linkedin.com/today/post/article/20130320152447-5799319-want-your-company-to-grow-fire-your-managers">会社を成長させたい？マネージャを解雇しなさい！</a> という記事の中で，仕事の質的向上と社員の幸福のために自らが実践したことを説明している。これによって氏の会社は顧客を満足させ，コストを低減し，全体としてよい結果を得ることに成功した。氏が実現したのは，学習と継続的向上をサポートするリーダシップを持った，目標指向のチーム文化だ。これらはアジャイルソフトウェア開発で使用されるものに極めて近い。つまり氏は自身の会社で，自己組織型アジャイルチームによく似たチームを作り上げたことになる。</p> 
- <blockquote> 
-  <p>３～５人のチームを編成して，それまでのチームあるいはチームメンバの &quot;上司&quot; を排除しました。チーム内にあった &quot;上級&quot; あるいは &quot;VP&quot; などの肩書も段階的に廃止しました。 リーダはチーム内で自然発生的に生まれるものですが，厳格な報告体制は必要ないのです。</p> 
- </blockquote> 
- <p>マネージャはチームに対して目標を示すが，どうすればよいのかは話さない。 チームはスクラムのスプリントのような形式で作業して，自身の向上のために絶えず考察を繰り返す。</p> 
- <blockquote> 
-  <p>各チームには目標を与えました。ごく短期間 – １，２週間程度 – で評価が可能なものです。これによってメンバは，何を得るために働いているのかを正しく理解できるようになります – どうやって(How)ではなく，なぜ(Why)に注目するようになるのです。目標と一貫した時間枠を与えられたチームは，自分たちのパフォーマンスを知り，以前のミスから学習し，次の時間枠には改善できるようになります。</p> 
- </blockquote> 
- <p>チームは奉仕型リーダシップによって管理される。</p> 
- <blockquote> 
-  <p>(...) マネージャあるいは上司は，チームをサポートするために改めて配置されます。チームのために働き，チームが必要とするものに対して支援を行うのです。上級幹部であった者も，部下に対して仕事の内容や方法を指示するのではなく，彼らの支援とサポートを行うようになります。</p> 
- </blockquote> 
- <p>一方でチームメンバには，解決しなければならない問題，解決可能な問題の中から，何かを学ぶように指導する。</p> 
- <blockquote> 
-  <p>メンバを叱ったり，問題を解決してやるのではありません – そうではなく，彼らをガイドし，サポートするのです。問題があるときにも，いきなり手綱を握ってその問題を取り上げるのではなく，解決に導くような鍵となる質問を彼らにしてください。</p> 
- </blockquote> 
- <p>上記のLinkedInへの投稿は，自己組織型チームにおけるリーダシップが，いかに企業の業績に繋がるものであるかを示すものだ。InfoQでは今年の初めに <a target="_blank" href="http://www.infoq.com/articles/self-organizing-organizations;jsessionid=604F6089C743B4536E5D68D39675739B;jsessionid=B93C2281432718325F847AD9EB09D44E">self-organizing organizations (for real)</a> (自己組織型組織の現実) と題した記事を公開した。そこには自己組織型を実現するにはどうすればよいのか，彼らがそこから何を学んだか，ということに関して述べられている。</p> 
- <p>DZoneの記事 <a target="_blank" href="http://agile.dzone.com/articles/what-does-self-organizing-team">what does a self-organizing team has to do with leadership?</a> (自己組織型チームにおけるリーダシップの役割) ではGil Zilberfeld氏が，アジャイルチームをリードするということ，リーダシップを取り入れるために組織ができることなどについて語っている。氏が挙げるテーマは &quot;自己組織型チームにリーダは必要なのか？&quot; というものだ。</p> 
- <blockquote> 
-  <p>望むと望まざるに関わらず，リーダは現れます。それも自己組織化のひとつなのです。リーダはひとりかも知れませんし，異なったタイプや影響力を持ったリーダが複数人現れるかも知れません。前もって誰がリーダになるかを知ることはできませんし，それを指示することもできないのです。</p> 
- </blockquote> 
- <p>氏によると，自己組織型チームの管理には従来とは違う管理スタイルが求められる。チームがより効率的になることを支援するようにチームをサポートし，ガイドすることが必要なのだ。</p> 
- <blockquote> 
-  <p>(...) 命令管理のピラミッド下にあるチームに比較して，自己組織型チームがより効率的であることを認識しなければなりません。マネージャとしての私たちは一歩退いて，チームが自律的に効率化できるようにする必要があるのです。</p> 
-  <p>(...)効果的なマネージャになるには，自己組織型チームに自らを進化させる方法を理解する必要があります。彼らには複雑性と不確実性のすべてを説明することが必要です。一歩退くことによって，外部から影響を与える術を理解させるのです。</p> 
- </blockquote> 
- <p><a target="_blank" href="http://inside.godaddy.com/leading-agile-team-owning-cats/">leading an agile team is like owning cats</a> (アジャイルチームをリードするのは猫を飼うようなもの) というブログ投稿でMike Bovich氏は，アジャイルリーダがチームをサポートするために何ができるかを，アナロジを使って説明している。最初に述べているのは，自己組織型アジャイルチームが，自分たちの管理される方法を変えたいと願っていることだ。</p> 
- <blockquote> 
-  <p>効果的なアジャイルリーダであるためには，チームをコントロールすることは諦めて，チームに尽くす意思を持たなければなりません。これはおそらく，多くのリーダにとってもっとも困難なことでしょう – 私たちの直感に反していますから。しかし，成功のためには絶対に必要なことです。</p> 
- </blockquote>
- <blockquote> 
-  <p>開発者というのは複雑です。それぞれが違う波長で行動します。それを理解するには，時間を掛ける以外に方法はありません。彼らは猫のように，純粋に関心を持っているのか，単にそのふりをしようとしているのかを見分けることができるのです。時間を費やすことには，それだけの価値があります。無視すれば，生産性の損失という見返りを受けることになるでしょう。</p> 
- </blockquote> 
- <p>アジャイルリーダシップは，仕事とオフの時間的バランスの取れた持続可能な開発を促進するべきだ，と氏は言う。</p> 
- <blockquote> 
-  <p>チームにハードな作業を求めるのはよいですが，無理をさせてはいけません。そして作業が終わったときには，リラックスできる時間を必ず確保してください。チームが過酷な作業をしたところで，誰にも，何のメリットもありません。生産性は落ちますし，士気は低下します。アジャイルリーダとして，チームにハイパフォーマンスを求めるのは構いません。バランスを保つのを忘れないでください。</p> 
- </blockquote> 
- <p>ブログ記事 <a target="_blank" href="https://www.valueflowquality.com/the-forgotten-agile-members-management-and-executives/">the forgotten agile members: management and executives</a> (忘れられたアジャイルメンバたち：マネージャと幹部) ではSteve Martin氏が，アジャイル転換を成功させるにはマネージャと幹部の役割を変える必要がある，という説明をしている。</p> 
- <blockquote> 
-  <p>自己組織的かつ管理権を持ったアジャイルチームが存在するということが，上位マネージメントが関与しない事を意味するのではありません。彼ら自身がマネージメント層なのです。マネージャの役割がなければ，一般的に期待されるようなメリットを得られないアジャイル展開が実施される危険性があります。それでも転換は行われます。上位マネージメントは，これを実現するために不可欠です。チームのメンバの役割が変わると同時に，彼らに求められる役割もまた変わるのです。</p> 
- </blockquote> 
- <p>リーダシップ，そしてマネージャおよび幹部とチームの間のコラボレーションは，アジャイルへの転換や，それに関連するすべてのコントリビューションにおいて必要不可欠なものなのだ。</p> 
- <blockquote> 
-  <p>上位マネージメントは有効でなければなりませんが，指示をする必要はありません。この差は微妙で，訓練が必要です。</p> 
-  <p>マネージャの役割は。毎日の管理配置業務から，メンタや問題解決者としての役割に移行します。</p> 
-  <p>チームもまたオープンでなければなりませんし，上位マネージメントとのフィードバックのやり取りにも積極的でなければなりません。</p> 
- </blockquote> 
- <p id="lastElm">&nbsp;</p> 
-</div> 
-<p id="lastElm"></p><br><br><br><br><br><br></body></html>
+<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>PivotalがReactorをGAリリース</h3><p><a target="_blank" href="http://www.infoq.com/news/2013/11/reactor-goes-ga"><em>原文(投稿日：2013/11/13)へのリンク</em></a></p>
+<div class="article_page_left news_container text_content_container"> 
+ <div class="text_info"> 
+  <p>オープンソースらしく単純な名前の<a href="http://gopivotal.com" target="_blank">Pivotal</a>のライブラリ “Reactor” が，先の火曜日に，バージョン1.0の<a href="https://spring.io/blog/2013/11/12/it-can-t-just-be-big-data-it-has-to-be-fast-data-reactor-1-0-goes-ga" target="_blank">GA(General Availability)リリース</a>というマイルストンに達した。イベント駆動でリアクティブなプログラミングモデル用に低レベルの抽象化を提供するReactorは，<a href="https://spring.io/platform" target="_blank">Spring IO Platform</a>の&quot;IO Foundation&quot;レイヤの構成メンバだ。</p> 
+  <p>ReactorはSpring IO Platformの基本的なコンポーネントとして設計されているが，それ自身はSpring Frameworkへの直接的な依存性を持っていない。<a href="https://github.com/reactor/reactor/wiki" target="_blank">プロジェクトのwiki</a>には，&quot;reactor-spring&quot; モジュールによってSpringを &quot;ネイティブにサポート&quot;するが，コアAPIは自己完結的なライブラリとして提供されているので，Springのアプリケーションコンテキスト外でも利用可能だ，と説明されている。</p> 
+  <p>Reactorは &quot;毎秒数千，数万，あるいは数百万という並列要求を処理する必要のある&quot; ，高スループットで低レイテンシなアプリケーション開発を可能にする。確かにリリース発表のブログ記事では，Reactorを &quot;標準的な開発用ラップトップ上で毎秒1,000～1,500万のイベント&quot; を処理する能力がある，としているが，同時に &quot;アプリケーションの処理内容に ... Reactorの処理能力の低下は，処理するタスクに大きく依存&quot; することも明記されている。</p> 
+  <p>Reactorの発想の大部分は，イベントディスパッチによる非同期処理モデルを定義した<a href="http://en.wikipedia.org/wiki/Reactor_pattern" target="_blank">Reactorデザインパターン</a>から得たものだ。プロジェクトにインスピレーションを与えたのは，しかしながらデザインパターンのみではない。他にリリースノートには，多数のオープンソースプロジェクト，さらには近く公開されるJava 8 リリースが引用されている。Reactorはこれらの領域からコンセプトを借用して，StreamsやPromisesといった非同期プログラム技術を抽象化して提供しているのだ。</p> 
+  <p>Reactorはインテグレーションを簡素化するために，さまざまな有名ライブラリや言語に対して，充実したサポートを組み込みで提供している。またキャッチフレーズである &quot;Fast Data&quot; をさらに強調するものとして，&quot;極めてハイパフォーマンスな金融取引を実現するために&quot; 設計された，高スループットの<a href="http://lmax-exchange.github.io/disruptor/files/Disruptor-1.0.pdf" target="_blank">LMAX Disruptor</a>用のAPIについて明記することも忘れていない。</p> 
+  <p>さらにプロジェクトでは，<a href="http://netty.io" target="_blank">Netty</a>ベースのTCPクライアントおよびサーバ用APIを備えた “reactor-tcp” モジュールを開発，提供している。Nettyは “高パフォーマンス，高スケーラビリティの ... 非同期イベント駆動のネットワークアプリケーションフレームワークとツーリング” 提供するJVM用のネットワークライブラリだ。</p> 
+  <p>文法面でのシンプルさと関数プログラミングサポートの両方を提供するため，主要言語としてGroovyを採用し，Closureをコールバックとして使用する。ReactorはGroovy DSLを広範に採用することで，シンプルなコンフィギュレーション体験を提供している。Java 8も主要な開発言語の対象とされていて，ReactorのAPIではコールバックとしてメソッド参照に加えて，ラムダを活用するように設計されている。またClojurewerkzのプロジェクトである<a href="https://github.com/clojurewerkz/meltdown" target="_blank">Meltdown</a>では，ClojureからReactorへのインターフェースを提供している。ReactorチームはライブラリのAPIについて，&quot;拡張性を備えた設計である ... したがって，非JVM言語でも利用可能&quot; である点を強調している。</p> 
+  <p>ReactorのソースコードはApacheライセンスで公開されていて，<a href="https://github.com/reactor/reactor" target="_blank">GitHubから自由に取得することができる</a>。初学者を具体的な例でガイドするために，クイックスタート資料やサンプルプロジェクトも用意されている。デザインを一新した<a href="http://www.spring.io" target="_blank">Spring.IO webサイト</a>の<a href="http://spring.io/guides" target="_blank">ガイドの章</a>にも，<a href="http://spring.io/guides/gs/messaging-reactor/" target="_blank">総合的な &quot;Getting Started&quot;</a> チュートリアルがある。</p> 
+  <p>さまざまなReactorのモジュールはMavenのリソースとしても提供されていて，<a href="https://spring.io/blog/2013/11/12/it-can-t-just-be-big-data-it-has-to-be-fast-data-reactor-1-0-goes-ga#apache-licensed-with-a-friendly-community" target="_blank">リリースノートの末尾</a>に説明があるように，Maven Centralから入手可能だ。</p> 
+ </div> 
+</div><br><br><br><br><br><br></body></html>

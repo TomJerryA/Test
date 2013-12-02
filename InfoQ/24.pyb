@@ -1,0 +1,130 @@
+<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>Microsoftの技術の活用方法</h3><p><a target="_blank" href="http://www.infoq.com/articles/Microsoft-Stack-2013"><em>原文(投稿日：2013/11/11)へのリンク</em></a></p>
+<p>近頃、Microsoftの技術スタックにはさまざまな流れがあり、開発者は取り残され、どの技術に注力するべきか迷っています。さらに、MicrosoftがSilverlightような技術を公式に非推奨にせずに、ゆっくりとなくなっていくのに任せているため、さらに混乱を引き起こしています。ほとんど知られていないドキュメント、&quot;<a href="http://go.microsoft.com/?linkid=9832707">.NET Technology Guide for Business Applications</a>&quot;をひもとくのがひとつの解決方法です。このガイドは今年のはじめにリリースされ、Microsoftの技術の方向性やどのような記述を使うべきでないかを教えてくれます。</p>
+<p>この記事では読者の皆さんがMicrosoftと関連する技術を探索するための良きスタート地点になるでしょう。</p>
+<p>(クリックして拡大)</p>
+<p><a href="/resource/articles/Microsoft-Stack-2013/ja/resources/image1.png" target="_blank"><img src="http://www.infoq.com/resource/articles/Microsoft-Stack-2013/ja/resources/image1small.jpg" _href="img://image1small.jpg" _p="true" alt="" /></a></p>
+<h2>&nbsp;</h2>
+<h2><strong>SilverlightとFlashからすぐに卒業しよう</strong></h2>
+<p>&nbsp;</p>
+<div id="lowerFullwidthVCR"></div>
+<p>WinFormsやWeb Formsのような古い.NETの技術はまだ居場所があります。しかし、<a href="https://en.wikipedia.org/wiki/Silverlight">Silverlight</a>やFlashのようなRIAコンテナはもう終わりです。次の図の通り、MicrosoftはSilverlight 5の10年のライフサイクルを待ちたいと思っていないようです。2015年の終わりまでに、RIAコンテナを閉め出したいと思っています。</p>
+<p>(クリックして拡大)</p>
+<p><a href="/resource/articles/Microsoft-Stack-2013/ja/resources/image2.png" target="_blank"><img src="http://www.infoq.com/resource/articles/Microsoft-Stack-2013/ja/resources/image2small.png" _href="img://image2small.png" _p="true" alt="" /></a></p>
+<p>ハイエンドのアプリケーションでは、完全なネイティブアプリが好ましいです。ローエンドでは、HTML5の能力が向上すると考えられています。どちらに進めばいいかは明示されていませんが、技術の選択については次のように書かれています。</p>
+<blockquote> 
+ <ul> 
+  <li>ネイティブアプリケーションへ移行する場合、どのようなWindowsデバイスでもネイティブにXAML/.NETをターゲットにすることで既存のスキルを活用し、さらには既存のコードを再利用できます。移植可能なライブラリを使うことでバイナリを異なるプラットフォームで共有することもできます。</li> 
+  <li>ブラウザベースのHTML5アプリ向けには、Microsoftは最新の標準に準拠したデバイス向けにアプリケーションを作成するためのツールやフレームワークを提供します。SilverlightはHTMLと相互運用性があるため、順次移行することができます。<br /> &nbsp;</li> 
+ </ul> 
+</blockquote>
+<h2><strong>モバイル<br /> <br type="_moz" /> </strong></h2>
+<h3><strong>Windows 8ストア向けの3つの等価な選択肢</strong></h3>
+<p>過去、MicrosoftはWindows 8ストアアプリの開発に特定の技術を推奨するのを嫌がっていました。この傾向は今もかわりません。.NET/XAML、C++、JavaScript/HTML5からどの技術を選択するのかは、その開発者の好み次第です。</p>
+<p>このような状況をふまえた上で、MicrosoftはC++は性能が良いと見なしています。再利用性はあまり考慮されていません。なぜなら、3つのプラットフォームはどれもWindows PhoneとWindowsディスクトップでコードとリソースを再利用できるからです。</p>
+<h3><strong>Windows Phone向けネイティブオプション</strong></h3>
+<p>Windows Phoneで推奨されているのは、.NETとC++です。ここでもC++は性能上有利です。しかし、開発者が得意な方を選ぶのが良いとされています。</p>
+<p>Windows Phoneは<a href="https://en.wikipedia.org/wiki/PhoneGap">PhoneGap/Apache Cordova</a>と互換性がありますが、まったく言及されていません。おそらく、PhoneGapは小さなデバイスにおいて.NETやC++とくらべ貧弱な性能しか出ないと見なされているからでしょう。2013年のBuildカンファレンスでは、性能は最も重要なトピックであり、ユーザビリティやビジュアルデザイン、OS統合などのトピックを押しのけていました。</p>
+<h3><strong>モバイルウェブ: Web Forms以外</strong></h3>
+<p>すべてのモバイルデバイスで動作するウェブベースのソリューションの選択肢はたくさんあります。<a href="https://en.wikipedia.org/wiki/Modernizr">Modernizer</a>を使ったASP.NET MVCが最も基本的な推奨技術です。この技術を使って<a href="http://www.asp.net/single-page-application">Single Page Application</a> (ASP.NET SPA)を作るという選択肢もあるでしょう。MicrosoftはSPAを技術というよりデザインパターンだと考えています。<a href="http://knockoutjs.com/">Knockout</a>と<a href="http://www.breezejs.com/">Breeze</a>もライブラリとして薦めています。</p>
+<p><a href="https://en.wikipedia.org/wiki/Create%2C_read%2C_update_and_delete">CRUD</a>スタイルのアプリケーションを素早く作るには<a href="https://en.wikipedia.org/wiki/LightSwitch#Visual_Studio_LightSwitch">LightSwitch</a>も選択肢に入ります。LightSwitchはHTMLの描画をほとんど操作できませんが、開発者はさまざまなスクリーンサイズに合わせて自力でレイアウトする必要がありません。</p>
+<p><a href="http://www.asp.net/web-pages">ASP.NET Web Pages</a>は4番目の選択肢です。Razorのシンタックスのおかげで、PHPやクラシックASPに似た開発経験を提供してくれます。</p>
+<p>古いASP.NETレンダリングツールキットであるWeb Formsは言及されていません。未だに開発が続けられており、理論上、デバイスに固有なHTMLを描画する能力もあるものの、実際にはWeb Formsは実力を発揮できません。Web Formsが出力するHTMLとJavaScriptが非効率的で、さらに<a href="http://msdn.microsoft.com/en-us/library/ms972976.aspx">view state</a>は簡単に携帯端末のネットワークコネクションを圧迫してしまいます。<br /> &nbsp;</p>
+<h2><strong>サービス<br /> <br type="_moz" /> </strong></h2>
+<p>多くのアプリケーションは外部のデータストレージや処理に頼っているため、サーバサイドの開発は引き続き重要です。Microsoftがこの分野で現役であると考えている技術は6つあります。</p>
+<h3><strong>第1の選択肢: ASP.NET Web API</strong></h3>
+<p>Microsoftによれば、新しいプロジェクトのデフォルトの選択肢は<a href="http://www.asp.net/web-api">ASP.NET Web API</a>であるべきです。RESTパターンに従い、&quot;Akamai、Windows Azure CDN、 Level3など&quot;のインターネットキャッシュに互換性があるサービスを開発するときに便利です。</p>
+<p>Web APIを使う場合、開発者は<a href="http://www.odata.org/">OData</a>に着目するといいでしょう。ODataはRESTエンドポイントの公開形式とJSONを標準化します。</p>
+<h3><strong>第2の選択肢: WCF</strong></h3>
+<p>特定のトランスポートプロトコルやメッセージフォーマットに依存しないため、WCFはWeb APIよりも柔軟な選択肢だと考えられています。例えば、TCPや名前付きパイプを使ったバイナリメッセージで高い性能を得るという使い方があります。欠点は、WCFは扱いにくいということです。特に、JSONやSOAPベースではないフォーマットの場合は使いにくいでしょう。</p>
+<p>WCFはRPCスタイルの通信を念頭に置いて、企業で使われるために設計されました。一般公開されるRESTスタイルのデザインパターンも実現可能ですが、その場合は、WCFは望ましい選択肢ではありません。</p>
+<h3><strong>ODataを使ったWCF</strong></h3>
+<p>CRUDスタイルのサービスレイヤを開発するときにWCFを使いたいのなら<a href="http://msdn.microsoft.com/en-us/data/odata.aspx">WCF Data Services</a>を使うのがいいでしょう。ASP.NET Web APIを使ったODataライブラリを使い、<a href="http://msdn.microsoft.com/en-us/data/ef.aspx">Entity Framework</a>も使えます。</p>
+<h3><strong>Workflow Services</strong></h3>
+<p><a href="http://msdn.microsoft.com/en-us/library/dd456788.aspx">Workflow Services</a>は<a href="http://msdn.microsoft.com/en-us/vstudio/jj684582.aspx">Windows Workflow</a>とWCFの統合です。すでに内部でWindows Workflowを使っている場合にのみ、利用するのが良さそうです。Microsoftはほかの使用理由を示していません。</p>
+<h3><strong>SignalRを使った双方向通信</strong></h3>
+<p>.NETベースのクライアントを使っているなら、WCFはしっかり調整された双方向通信の選択肢を多数提供します。しかし、.NETとウェブベースのクライアントの両方をサポートしたいなら、<a href="http://signalr.net/">SignalR</a>がいいでしょう。</p>
+<p>Microsoftによれば、SignalRは&quot;数百万ユーザ&quot;までスケールできるそうです。ウェブクライアントは<a href="https://en.wikipedia.org/wiki/WebSockets">WebSockets</a>を使うのが推奨されていますが、必要であれば、自動的にロングポーリングのような古い方式に切り替えます。</p>
+<p>SignalRはa <a href="http://blogs.microsoft.co.il/blogs/ranw/archive/2012/12/29/using-signalr-with-net-client.aspx">.NETクライアント向けのライブラリ</a>を提供するので、ウェブやネイティブクライアントがサービスを共有できます。</p>
+<h3><strong>LightSwitch、その他のODataプロバイダ</strong></h3>
+<p>MicrosoftがどのくらいODataを愛しているかは言い尽くせません。WCFとWeb APIのODataについてはすでに言及しましたが、それだけではありません。ODataはLightSwitchクライアントでも使えますし、LightSwitchのサーバサイドでも素早くサービスレイヤを開発するのに使えるかもしれません。</p>
+<p>MicrosoftによればLightSwitchにはコーディングが必要ないものの、柔軟性を失います。<br /> &nbsp;</p>
+<h2><strong>中小規模のビジネスアプリケーション向けガイダンス<br /> <br type="_moz" /> </strong></h2>
+<p>Microsoftは中小規模のビジネス向けのガイダンスを次のように書いています。</p>
+<blockquote> 
+ <ul> 
+  <li>完全な早さと市場投入時間の短さ</li> 
+  <li>生産性と低コスト</li> 
+  <li>簡単に使い始められる</li> 
+  <li>市場の製品とのコラボレーションと統合</li> 
+  <li>クラウドの俊敏さとコスト低減の機会</li> 
+ </ul> 
+</blockquote>
+<p>普通の日本語に変換すれば、&quot;素早く、安くすること&quot;です。</p>
+<h3><strong>中小規模事業者向けウェブアプリ</strong></h3>
+<p>きれいでないCRUDスタイルのアプリケーションを素早く作る場合は、Microsoftは引き続き、LightSwitchを推奨しています。このツールは非プログラマ向けと説明されていました。多くの人はAccessを置き換えるものととらえていました。しかし、この見方は薄れつつあります。というのはLightSwitchはアプリケーションを素早く作りたいIT部門向けのツールとして提供されているからです。</p>
+<p>次は<a href="http://www.asp.net/web-forms">Web Forms</a>です。Web Formsは未だに新しいプロジェクト向けに推されています。MicrosoftはWeb Formsを、簡単に使えるLightSwitchと複雑なASP.NET MVCの中間に位置すると見なしています。リッチなデータグリッドなどの特徴はまだ企業内部アプリケーションとして適しているのです。</p>
+<p>ASP.NET Web Pagesは言及されていますが、わずかです。レンダリングをWeb Formsよりも制御したいのなら、ASP.NET MVCがいいでしょう。しかし、Microsoftは学習曲線が長いことを注意しています。</p>
+<h3><strong>Windowsディスクトップ向けアプリケーション</strong></h3>
+<p>MFCやATL/WTLのようなC++ベースのGUIツールキットはすべてリストから外れています。一方、.NETのオリジナルのUIツールキットである<a href="https://en.wikipedia.org/wiki/Windows_Forms">WinForms</a>は未だに有効な選択肢と考えられています。<a href="https://en.wikipedia.org/wiki/Windows_Presentation_Foundation">WPF</a>もそうです。両者はデータバインディング、async/await、WCFあるいはSignalRを使った双方向通信などモダンなコンセプトをサポートします。</p>
+<p>WPFとWinFormsのどちらを使うかについてはいくつか考慮する点があります。</p>
+<p>まずは難易度です。熟練の開発者であったとしても、WinFormsはWPFよりも遥かに簡単です。WinFormsはとても単純なデータバインディングを使い、クラシックなMVCやMVPを使って開発できます。一方、WPFを使うには複雑なデータバインディングフレームワークを理解し、MVVPパターンを正確に適用しなければなりません。また、WPFをうまく使うには、リソースディクショナリ、コンバータ、ICommand、XAMLのテンプレートエンジンの知識が必要です。</p>
+<p>Windows PhoneやWindows 8ストアをターゲットにしているのなら、XAMLの使い方を学ばなければなりません。したがって、この場合はWPFを使ってプラットフォームをまたがってコードを共有できるようにしておくのがいいでしょう。</p>
+<p>WPFの柔軟な描画エンジンはWinFormsよりもニッチなアプリケーションを開発できます。しかし、コストはかかります。たいていの場合、WPFアプリケーションはWinFormsアプリケーションよりも性能が悪いです。</p>
+<p>LightSwitchはおそらくウェブクライアントで利用できるもの以上を提供しません。したがって、選択する理由は特にないでしょう。</p>
+<h3><strong>クライアント-サーバは避けるべき</strong></h3>
+<p>Microsoftが&quot;クライアント-サーバ&quot;というとき、データベースと直接接続するアプリケーションを指し示しています。これが未だに一般的なパターンであることはMicrosoftも認めていますが、彼らは新しいプロジェクトには3層の設計をして、クライアントとデータベースの間にサービス層を挟むことを推奨しています。こうすることで、拡張性が増し、ファイアウォールやその他の障害物をくぐることができます。さらに、データベースドライバが使えないプラットフォームへアプリケーションを移植することもできます。</p>
+<h3><strong>&quot;モダナイゼーション&quot; - Windowsディスクトップを去る</strong></h3>
+<p>Microsoftはディスクトップアプリケーションを&quot;モダナイズ&quot;するためアドバイスをたくさん提供しています。ほとんどはアプリケーションをほかのプラットフォームに移植する方法についてのアドバイスですが、中にはWindowsディスクトップを去るつもりのない開発者にも役に立つアドバイスもあります。</p>
+<blockquote> 
+ <ul> 
+  <li>Model-View-ViewModelデザインパターン(MVVM)を使う: Microsoftのクライアントプラットフォーム(WPFを含む)はMVVMを使うと簡単にアプリケーションが開発できます。状態と振る舞いを表示からしっかりと分離できるので、きれいでメンテナンスしやすいコードを作成し、簡単に複数のデバイスに共有できます。</li> 
+  <li>クライアントのロジックにポータブルクラスライブラリを使う: .NETのポータブルクラスライブラリを使うことでディスクトップWindows Storeアプリ、Windows Phoneアプリのような複数のプラットフォーム間でバイナリを共有できます。ポータブルクラスライブラリを使ってクライアントロジック実装することでマルチプラットフォームのアプリケーションを簡単に実現できます。</li> 
+  <li>ユーザエクスペリエンスをモダナイズする: 今日のエンドユーザが要求するコンセプトはデスクトップ向けの.NETのでの最新のイノベーションによって実現できます。&quot;fast and fluid&quot;,&quot;authentically digital&quot;,&quot;do more with less&quot;というようなデザイン原則はXAMLのデザインにモダンなUIを使用し、アニメーションを慎重に使い、非同期プログラミングを活用することで既存のディスクトップアプリケーションに適用できます。</li> 
+  <li>ビジネスロジックをサーバへ移動する: 2層のアプリケーション(クライアント/サーバ)の場合、新しいデバイスに展開するのは難しいです。ビジネスロジックをサービスへと分離し、ほかのデバイスやフォームでも再利用できるようにしておくのがいいでしょう。</li> 
+  <li>クラウドへの拡張: Windows Azureはクラウドへビジネスロジックを移行するためのたくさんのソリューションを提供します。クラウドサービスへロジックを移動すると既存のソリューションの弾力性と拡張性が改善し、複数のデバイスで利用できるようになります。</li> 
+ </ul> 
+</blockquote>
+<h3><strong>AndroidとiOSでの.NET</strong></h3>
+<p>Microsoftは複数のパートナーとともにモダナイゼーションを実現するべく動いています。</p>
+<blockquote> 
+ <ul> 
+  <li><a href="http://xamarin.com/">Xamarin</a>はC#のコードをWindows、Windows Phone、iOS、Androidデバイスで共有できるようにします。基底のAPIへのアクセスを提供し、仕立てられたビューを作成できます。また、デバイス間でクライアントロジックを再利用できます。</li> 
+  <li>ITR-Mobilityの<a href="http://ifactr.com/">iFactr</a>と<a href="http://monocross.net/">MonoCross</a>はC#で企業向けモバイルアプリケーションをメジャーなモバイルプラットフォーム向けに構築するためのソリューションを提供します。Abstract UIやEnterprise Data Synchronizationのようなサービスを提供し、デバイスをまたがったビジネスアプリケーションを提供します。</li> 
+  <li>Art in Softの<a href="http://mobilize.net/home-0/">Mobilize.NET</a>はレガシなアプリケーションをウェブやモバイル、クラウドといったモダンなプラットフォームへ移行するソリューションとサービスを提供します。ランタイムなしで既存のソースコードを新しいコードへ変換します。</li> 
+  <li><a href="https://www.citrix.com/go/mobile-sdk-for-windows-apps.html">Citrix Mobile SDK</a> for Windows ApplicationsはLOB Windowsアプリケーションをモバイル化するリッチなツールキットを提供し、タッチ操作しやすい新しいアプリケーションを書いて中央のサーバ(Citrix XenApp/XenDesktop)で実行できるようにし、Citrix Receiverを使ってモバイルでバイスからアクセスできるようにします。</li> 
+ </ul> 
+</blockquote>
+<p>追記: MicrosoftがXamarinとMonoCrossを積極的に推しているという事実は、MicrosoftがMonoの作者たちを訴えるのではないかという長く言われてきた噂が噂に過ぎないことを明らかにしているでしょう。<br /> &nbsp;</p>
+<h2><strong>大規模なミッションクリティカルアプリケーション向けのガイダンス<br /> <br type="_moz" /> </strong></h2>
+<p>大企業のミッションクリティカルアプリケーションの場合は、コストや生産性ではなく複雑さの管理とサービスの品質にフォーカスが移ります。これらのガイドラインはデータ駆動アプリケーションやCRUDアプリケーション向けではありません。そのようなアプリケーションを作る開発者は小規模/中規模向けのビジネスガイドラインを使うほうがいいでしょう。大規模なミッションクリティカルアプリケーション向けのガイドラインは多くの連携部分とサブシステムで構成されているシステム向けです。</p>
+<h3><strong>企業でのウェブアプリケーション</strong></h3>
+<p>この点ではMicrosoftの態度ははっきりしています。ミッションクリティカルなウェブサイトではASP.NET MVCを使うべきだということです。アーキテクチャ上の唯一の問題はSingle Page Applicationデザインパターンを使うかどうかです。</p>
+<p>Web FormsやWeb Pagesは使うべきではありません。コントロールがきかず、MVCスタックがテストできないからです。その結果、クオリティ・オブ・サービスに制限がかかります。</p>
+<h3>企業向けディスクトップアプリケーション</h3>
+<p>より小規模のアプリケーションと同様、Microsoftは推薦する技術としてWPFとWinFormsを挙げています。さらに、Win32や<a href="https://en.wikipedia.org/wiki/Microsoft_Foundation_Class_Library">MFC</a>を使ったC++も選択肢に挙げています。C++の使用はMicrosoft Officeに匹敵するような大規模で工期の長いプロジェクトで推奨されています。</p>
+<h3><strong>企業でのWindowsストア/Windows Phone</strong></h3>
+<p>この分野の推奨事項についてMicrosoftは&quot;‘新興のアプリケーションパターン'の章で記載されている推奨内容と同様&quot;ということ以上は何も語っていません。自信があるという状態ではなさそうですが、これらのプラットフォームを完全に捨てているというわけでもなさそうです。</p>
+<h2><strong>Patterns and Practices</strong></h2>
+<p>Microsoftガイドラインの最後の20ページを製品についての説明を脇において、Patterns and Practicesに着目しています。</p>
+<h3><strong>制御の反転</strong></h3>
+<p>Microsoftは驚くべき時間を依存関係の挿入(dependency injection)と制御の反転(inversion of control)の説明に費やしています。9つの異なる制御の反転のコンテナを示しています。このうちの大部分はMicrosoftが関係していない、コミュニティプロジェクトです。示されているフレームワークの多くは実際はIoCのコンテナであり、依存関係の挿入のフレームワークではありません。</p>
+<p>Microsoftがコンポジットルート(DIパターン)を推奨しているのか、サービスロケータ(IoCコンテナパターン)を推奨しているのか判然としないため、依存関係の挿入と制御の反転の間で混乱が起きており、フラストレーションがたまります。Mark Seemann氏が言うとおり、<a href="http://www.infoq.com/articles/Succeeding-Dependency-Injection">両者は根本的には正反対のもの</a>だからです。</p>
+<p>Microsoftは&quot;単一責任の原則(Single Responsibility Principle,SRP)&quot;を使って依存関係の挿入を正当化します。彼らによればSRPによって、たとえば、コンストラクタに15の依存があるクラスが出来上がります。これらの依存を&quot;分離する&quot;ため、コンストラクタから依存を引き離し、IoCコンテナを使って依存を注入することを推奨します。</p>
+<p>またMicrosoftは<a href="https://en.wikipedia.org/wiki/Aspect-oriented_programming">アスペクト指向プログラミング</a>を使って、間接化のためのレイヤを追加し、依存性を注入することを推奨しています。</p>
+<h3><strong>境界のあるコンテキストと複雑さの管理</strong></h3>
+<p>複雑さを管理するために、Microsoftは数ページを使って、&quot;境界のあるコンテキスト&quot;とはどのような概念なのか説明しています。この概念はEric Evans氏の著書に基づいています。アプリケーションを小さなパーツに分けて共有する部分を限定的にするというのが基本的な考え方です。下図は、異なるバックエンドと共通のUIを持った4つの分離されたスタックで構成されているアプリケーションの例です。</p>
+<p>(クリックして拡大)</p>
+<p><a href="/resource/articles/Microsoft-Stack-2013/ja/resources/image3.png" target="_blank"><img src="http://www.infoq.com/resource/articles/Microsoft-Stack-2013/ja/resources/image3small.png" _href="img://image3small.png" _p="true" alt="" /></a></p>
+<p>この分野でのMicrosoftの推奨事項は多くの点で合理的です。境界のあるコンテキストを使うことで、ミッションクリティカルな部分を特定し、その部分にコマンドクエリ責務分離(CQRS)やドメイン駆動設計(DDD)のようなよりコストがかかるパターンを自動テスト付きで導入する一方、付随的な部分はより軽量なCRUDスタイルのアプリケーションにします。もちろん、レガシコードもひとつのパーツにして分離し、ゆっくりと置き換えを行います。</p>
+<h3><strong>通信と防腐</strong></h3>
+<p>境界のあるコンテキストの間で情報を共有する場合、Microsoftは可能な限り、非同期メッセージングを使うことを推奨しています。別のパーツが動作不良を起こしたとしても、各パーツが独立して動作できるからです。単純なシナリオの場合、名前付きパイプとMicrosoft Message Queuesは簡単な選択肢です。より複雑なシステムの場合はサービスバスが必要でしょう。MicrosoftはWindows Server Service Bus、Windows Azure Service Bus、NServiceBusに言及していますが、どれかを特別に推奨してはいません。</p>
+<p>境界のあるコンテキストが公開するサービスは防腐レイヤで守られている必要があります。パブリックな関数を守るパラメータチェックと同様に、防腐レイヤは不正なメッセージから基底にあるデータストアを守ります。やってくるメッセージを検証し、必要な変換を行い、不正なデータが処理され保存されるようにします。このような一連の処理は普通の.NETのコードで実現できます。しかし、ビジネスルールが頻繁に変わる複雑なシナリオの場合は、MicrosoftはルールエンジンとBizTalkのような統合プラットフォームを使うことを推奨しています。</p>
+<h3><strong>レガシコードの移行</strong></h3>
+<p>レガシコードを処理する第一歩はファザードを作ることです。このファザードは永続的でスケーラブルなキャッシュのようなモダンな技術を使い、古いコードがどのようなパターンを作っていても隠蔽します。レガシなコードは回避され、ファザードは新しいサービスレイヤにリダイレクトします。<br /> &nbsp;</p>
+<h2><strong>結論<br /> <br type="_moz" /> </strong></h2>
+<p>MicrosoftはSilverlightと.NET Remoting以外の.NET向けのすべてのネイティブ、ウェブ、通信フレームワークを支持しています。また、いくつかのシナリオにおいてはC++とJavaScriptも奨めています。VB 6やクラシックASPのような古いプラットフォームはもはや言及されていません。いまだに古い技術を使っている企業は可能な限り早く移行したほうがいいでしょう。</p>
+<p>また、予想通り、引き続き依存関係の挿入の重要さを強調しています。特にASP.NET MVCとEntity Frameworkで顕著です。BizTalkは一度は死んだ技術だと思われていましたが、オンサイトとクラウドを統合しようとする企業が現れたために新しい命が吹き込まれました。<br /> &nbsp;</p>
+<h2><strong>著者について<br /> <br type="_moz" /> </strong></h2>
+<p><b><img src="http://www.infoq.com/resource/articles/Microsoft-Stack-2013/ja/resources/jonathan-allen.jpg" vspace="3" hspace="3" align="left" alt="" _href="img://jonathan-allen.jpg" _p="true" />Jonathan Allen</b>は2006年より、InfoQで記事を書き、現在は.NETのリードエディタ。ニュースや記事の執筆に興味のある方はjonathan@infoq.comへ連絡してほしい。</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p><br><br><br><br><br><br></body></html>
