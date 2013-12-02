@@ -1,6 +1,9 @@
 <html>
  <head></head> 
- <body> 
+ <body>
+  <div>
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/31.htmlb">敏捷与结构性模块化（二）</a> 在上一篇文章中，介绍了结构性模块化与敏捷之间的关系，在这个系列的第二篇文章中，我们将会研讨OSGi™，在实现JavaTM的结构性模块化方面，OSGi扮演了核心的角色；OSGi与流行的敏捷方法论之间存在着自然的联系。 
+  </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/30.htmlb">Tiago Garcez访谈：为什么实施敏捷？</a> InfoQ采访了Tiago Garcez，谈论了这样一些问题：为什么敏捷更适合应对企业面临的挑战，敏捷能够创造的价值，以及如何启动向敏捷的过渡。 
   </div> 
@@ -147,9 +150,6 @@
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/32.htmlb">函数式反应型编程(FRP) —— 实时互动应用开发的新思路</a>本文详细讲解JavaScript编程的一种新型编程模型：利用函数式编程(Functional Programming)的思想和方法(函数、高阶函数)来支持Reactive Programming，来达到所谓的Functional Reactive Programming，简称FRP。它从新的视角关注数据流，代码更接近于只描述做什么(what)的声明式(declarative)代码，简洁又直观。 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/31.htmlb">对比iOS中的四种数据存储</a>你是用什么方法来持久保存数据的？这是在几乎每一次关于iOS技术的交流或讨论都会被提到的问题，而且大家对这个问题的热情持续高涨。本文主要从概念上把“数据存储”这个问题进行剖析，并且结合各自特点和适用场景给大家提供一个选择的思路，并不详细介绍某一种方式的技术细节。 
-  </div> 
+  </div>  
  </body>
 </html>

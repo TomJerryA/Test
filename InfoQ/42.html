@@ -1,11 +1,17 @@
-<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>DXperience 13.2加入了ASP.NET图标库、新主题、支持扩展智能标签，并进行了功能改进</h3><p>即将到来的DevExpress DXperience 13.2版本将加入一个新的<a href="https://community.devexpress.com/blogs/aspnet/archive/2013/11/07/asp-net-icon-library-what-s-new-in-13-2.aspx">图标库</a>，使用它非常方便，只需设置DevExpress ASP.NET控件的IconID属性即可。举例来说，如果你打算在导航条控件中加入某个图标，只需使用Items.Image.IconID属性即可。当你选中IconID属性时会打开一个编辑器对话框，你可以在其中任何选择图标。</p>
-<p><img alt="" src="http://infoqstatic.com/resource/news/2013/11/dxperience-13-2/zh/resources/1118002.png" _href="img://null" _p="true" /></p>
-<p>根据官方的消息，图标库中所包含的标签将会继承自ImageProperties类，并且每个图标都有16*16和32*32两种格式，并且提供彩色与灰度两种格式。</p>
-<p>此外，这次更新还会加入一个新的<a href="https://community.devexpress.com/blogs/aspnet/archive/2013/11/13/asp-net-moderno-theme-what-39-s-new-in-13-2.aspx">Moderno</a>主题，其中有大量元素使用了CSS3的高级技术进行描述。由于该主题提供了更大的补白（padding）尺寸，因此也能够完全兼容触摸式移动设备。</p>
-<p><img alt="" src="http://infoqstatic.com/resource/news/2013/11/dxperience-13-2/zh/resources/1118003.png" _href="img://null" _p="true" /></p>
-<p>即将到来的版本会包含三个新的WinForms主题，不仅如此，所有的控制设计器现在都支持Visual Studio色彩主题，这样在设计时的体验就会更好。这一新功能还允许开发者调整设计器的皮肤设定，实现与Visual Studio的色彩主题保持风格一致。新版本还为所有控件都加入了智能标签的支持，包括Windows Data Editors库，例如BarCodeControl、ButtonEdit、CalcEdit、CheckButton和 ComboBoxEdit。</p>
-<p>DXperience 13.2会包含一套新的ribbon风格的控件，还加入了对数据绑定、影响式布局、富客户端事件以及模板的支持。新的ASP.NET Spreadsheet控件也会随着新版本发布而推出，它提供了自动生成用户界面的功能，还包括一个自动化的方程式计算引擎、内置的电子表格功能、单元格引用与单元格格式化功能。这个控件还包括图表、图片显示、worksheet管理等等特性。</p>
-<p>Grid控件加入了对批量编辑的支持，它允许开发者在客户端对一批记录进行更改，并用一个请求就将全部的更改信息发送至服务端。新版本加入了一个新的Token Box控件，它允许用户从一个预定义的列表和图例复选框中选择数据，这样就能够使终端用户切换各种图表元素的显示与关闭了。另一方面，图表控件将能够根据图表大小和缩放比例显示合适的数据。</p>
-<p>DXperience 13.2会包含一个新的取色器（color picker），它允许用户从一个下拉列表中选取定制的色彩，并将该集合保存在cookie中。新版本还加入了一个新的MVC扩展功能，它支持数据绑定、帮助文字显示、标签（tab），group box容器等等，并且与DevExpress data editor进行了无疑的集成。在13.2中新推出的Grid lookup扩展功能能够支持多记录选择、数据项模型和高级过滤选项。</p>
-<p>即将到来的新版本会包含一个新的评价（rating）扩展，并支持只读模式，此外每个扩展项和扩展图片都能够定制标题。新版本还加入了对SharePoint 2013的支持。</p>
-<p><strong>查看英文原文：</strong><a href="http://www.infoq.com/news/2013/11/dxperience-13-2">DXperience 13.2 Adds ASP.NET Icon Library, New Themes, Extended Smart Tag Support and Enhancements</a></p><br><br><br><br><br><br></body></html>
+<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>分享基于REST的企业集成经验</h3><p>“如何替换大型遗留系统，是IT业界的一大难题”，ThoughtWorks的首席咨询师<a href="http://brandonbyars.com/about/">Brandon Byars</a>，在分享其在大型遗留替换项目中使用<a href="http://en.wikipedia.org/wiki/Representational_state_transfer#Applied_to_Web_Services">RESTful</a>集成的<a href="http://martinfowler.com/articles/enterpriseREST.html">经验</a>时这样说道。</p>
+<p>Brandon认为对大多数这类项目来说，<a href="http://en.wikipedia.org/wiki/Representational_state_transfer">REST</a>都要比HTTP吸引人。它易于使用和理解，不需要大型框架。在架构方面，他坚信REST已经被证明是可伸缩的，并且适用于领域建模。他发现很多时候，针对REST的讨论都是关于一些小的细节，而不是对项目成功更加重要的部署和测试方案。</p>
+<p>Brandon的第一个建议是，在开发中使用逻辑环境来满足不同团队和角色的需要：</p>
+<blockquote> 
+ <p>逻辑环境是一组适当隔离的相互关联的应用程序、服务和基础组件，可以满足业务和开发的需要。</p> 
+</blockquote>
+<p>接着，他描述了几种不同的技术，这些都是值得使用和为其维护环境的。而环境的版本控制是他坚决反对的，他认为这样会使系统严重地复杂化。</p>
+<p>Brandon的经验是，错误地定义数据边界，是架构师所犯的最昂贵的错误。一个常见的反模式是，将某个实体的所有信息都保存到单个数据存储中，并在需要的时候导出。他认为如果对<a href="http://en.wikipedia.org/wiki/Master_data_management">主数据管理</a>（MDM）认识肤浅就会支持这种方案。相反，他的解决方案是将各个团队的定义包装在一个<a href="http://en.wikipedia.org/wiki/Domain-driven_design#Bounded_context">边界上下文</a>中。边界上下文是<a href="http://en.wikipedia.org/wiki/Domain-driven_design">领域驱动开发</a>中的概念，在边界上下文中，一个术语不管用于何处，都表示相同的含义。</p>
+<blockquote> 
+ <p>每个业务单元对于相同的实体都有不同的模型，可以在它们的边界上下文中进行显式的翻译。</p> 
+</blockquote>
+<p>在应对分布式系统时，Brandon建议将针对高级特性的用户故事分组成史诗，并用这些史诗来度量进展。这可以避免对进展产生错觉的情况。大多数故事完成意味着团队正处于交付过程中，但少量故事未完成则会妨碍特性的演示。</p>
+<blockquote> 
+ <p>程序级别的度量使得史诗成为跟踪团队速率的首要标准，因为团队用户故事的速率会造成对进度的错觉。</p> 
+</blockquote>
+<p>Brandon最后强调，尽管他支持使用RESTful服务的方案，相信它能简化开发，但REST还远不是银弹。</p>
+<p><strong>原文英文地址：</strong><a href="http://www.infoq.com/news/2013/11/rest-enterprise-integration">Experiences from Enterprise Integration with REST</a></p><br><br><br><br><br><br></body></html>
