@@ -2,7 +2,10 @@
  <head></head> 
  <body>
   <div>
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/39.c">Anunciado o lan&ccedil;amento do Visual Studio 2013</a>A Microsoft fez diversos comunicados importantes para desenvolvedores: entre eles, a disponibiliza&ccedil;&atilde;o para download do Visual Studio 2013.
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/40.c">ASP.NET MVC 5: Melhorias de autentica&ccedil;&atilde;o com filtros</a>O ASP.NET MVC 5, fornecido com o Visual Studio 2013 Developer Preview, permite que os desenvolvedores apliquem filtros de autentica&ccedil;&atilde;o capazes de autenticar usu&aacute;rios utilizando diversos controles de terceiros ou um controle de autentica&ccedil;&atilde;o customizado. Eric Vogel demonstrou recentemente seu uso com um exemplo pr&aacute;tico.
+  </div> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/39.c">Anunciado o lan&ccedil;amento do Visual Studio 2013</a>A Microsoft fez diversos comunicados importantes para desenvolvedores: entre eles, a disponibiliza&ccedil;&atilde;o para download do Visual Studio 2013. 
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/38.c">O que deve e o que n&atilde;o deve ser feito em uma API Web</a>Oliver Wolf, consultor s&ecirc;nior na InnoQ, compartilha as suas opini&otilde;es sobre endpoints, modelos de dom&iacute;nio, cache, controle de vers&otilde;es, e outros t&oacute;picos em torno do REST e APIs web, provenientes de listas de e-mail e outros f&oacute;runs de discuss&atilde;o, em uma palestra na confer&ecirc;ncia GOTO Berlin. 
@@ -147,9 +150,6 @@
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/41.c">Valor de neg&oacute;cio: como priorizar o backlog e o que ele realmente significa</a>Ron Jeffries, um dos tr&ecirc;s fundadores do Extreme Programming (XP), esclarece qual &eacute; o verdadeiro valor para uma empresa, auxiliando a prioriza&ccedil;&atilde;o correta do backlog de desenvolvimento de um produto. 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/40.c">TDC 2013 Florian&oacute;polis: inscri&ccedil;&otilde;es abertas</a>Nos dias 24, 25 e 26 de maio, em Florian&oacute;polis, ser&aacute; realizada a edi&ccedil;&atilde;o 2013 do The Developer's Conference, uma das maiores confer&ecirc;ncias para desenvolvedores no Brasil. O destaque do evento &eacute; a diversidade de assuntos distribu&iacute;dos em 21 trilhas, incluindo: Java, Arquitetura, .NET, Cloud Computing, Games, Android, Empreendedorismo, Web e Mobile. 
   </div>  
  </body>
 </html>

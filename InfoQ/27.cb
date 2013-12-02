@@ -1,0 +1,94 @@
+<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>Resumo do JavaOne 2013: Java 8 é revolucionário. O Java está de volta</h3><p>De 22 a 26 de setembro ocorreu em S&atilde;o Francisco a confer&ecirc;ncia JavaOne 2013. O evento teve in&iacute;cio no domingo, com um <a href="http://medianetwork.oracle.com/video/player/2685497644001">Keynote Estrat&eacute;gico</a> apresentado pelos funcion&aacute;rios da Oracle <a href="http://www.linkedin.com/pub/peter-utzschneider/11/983/276">Peter Utzschneider</a>, <a href="http://www.linkedin.com/in/nandiniramani">Nandini Ramani</a> e <a href="http://www.linkedin.com/pub/cameron-purdy/0/10/23a">Cameron Purdy</a>.</p>
+<p>Esta foi a d&eacute;cima oitava edi&ccedil;&atilde;o do Java One e mais uma vez a comunidade Java demonstrou sinais de crescimento. Na sua palestra, Utzschneider afirmou que a comunidade Java continua sendo a maior comunidade do mundo de uma plataforma de desenvolvimento e afirmou que o n&uacute;mero de JUGs crescem 10% ao ano.</p>
+<h2>O futuro do Java</h2>
+<p>Ramani comentou sobre o atual estado do Java e enumerou diferentes SDKs da plataforma: Java SE 7, CDC 1.1 (baseado no SE 1.4.2), CLDC (baseado no SE 1.3) e Java ME, apenas para destacar algumas. No passado, estas implementa&ccedil;&otilde;es atendiam mercados verticais espec&iacute;ficos, mas a cada implementa&ccedil;&atilde;o, estas SDKs divergiram, tornando-se espec&iacute;ficas. Com o Java 8, existir&aacute; um perfil que substituir&aacute; o CDC.</p>
+<p>Entre o Java ME e Java SE, as APIs ser&atilde;o bem similares e a linguagem suportar&aacute; em ambas todas as funcionalidades. Java 8 proporcionar&aacute; a unifica&ccedil;&atilde;o da plataforma: portabilidade de c&oacute;digo, APIs e ferramental comum - desde SE embarcado at&eacute; desenvolvimento no servidor com Java EE. No futuro, existir&aacute; somente um tipo de desenvolvedor Java.</p>
+<p><img _p="true" _href="img://3image00.png" alt="" src="http://www.infoq.com/resource/articles/javaone2013-roundup/pt/resources/3image00.png" /></p>
+<p>Outros pilares estrat&eacute;gicos da plataforma incluem: releases sincronizados (o acesso &quot;early&quot; ao Java 8 j&aacute; est&aacute; dispon&iacute;vel) e a parceria com fornecedores (ARM, Freescale, Qualcomm) para fazer do Java um &quot;cidad&atilde;o de primeira classe&quot; em chipsets. Em Agosto, a Oracle lan&ccedil;ou o programa &quot;Java Plataform Integrator&quot; para adaptar e ampliar de maneira simples o Java Embedded.</p>
+<div id="lowerFullwidthVCR"></div>
+<p>Lan&ccedil;ado no &uacute;ltimo ver&atilde;o americano, o Java EE 7 foi um grande marco e tema principal das &uacute;ltimas duas confer&ecirc;ncias Java One. Na palestra, Purdy destacou tr&ecirc;s &aacute;reas no EE 7: produtividade do desenvolvedor, atendimento das expectativas das empresas e HTML5.</p>
+<p><img _p="true" _href="img://1image02.png" alt="" src="http://www.infoq.com/resource/articles/javaone2013-roundup/pt/resources/1image02.png" /></p>
+<p>Dois anos atr&aacute;s, quando o Java EE 7 foi anunciado, o principal tema era Cloud Computing. Agora, EE7 possui tantas funcionalidades para facilitar o deploy em nuvem, incluindo avan&ccedil;os na seguran&ccedil;a, recursos padr&otilde;es, gera&ccedil;&atilde;o de schemas, API client de servi&ccedil;os RESTful e a adapta&ccedil;&atilde;o do JSF para aplica&ccedil;&otilde;es multi-tenant. Por &uacute;ltimo, Cameron anunciou que o <a href="http://avatar.java.net/">Projeto Avatar</a> &eacute; agora de c&oacute;digo fonte aberto. Este projeto &eacute; an&aacute;logo ao Node.js, mas &eacute; executado na JVM.</p>
+<h2>Java 8 Is Revolutionary, Java Is Back</h2>
+<p>O grande assunto da confer&ecirc;ncia foi o Java 8, exemplificado por <a href="http://www.linkedin.com/in/markreinhold">Mark Reinhold</a> no seu <a href="http://medianetwork.oracle.com/video/player/2685720528001">Keynote T&eacute;cnico</a>. Java 8 possui muitas novas funcionalidades, incluindo uma nova API de Data e Hora (<a href="http://jcp.org/en/jsr/detail?id=310">JSR 310</a>), o motor para JavaScript Nashorn, Type Annotations (<a href="http://jcp.org/en/jsr/detail?id=308">JSR 308</a>), perfis Compactos e o projeto Lambda (<a href="http://jcp.org/en/jsr/detail?id=335">JSR 335</a>).</p>
+<p>Lambda &eacute; a maior atualiza&ccedil;&atilde;o ao modelo de programa&ccedil;&atilde;o desde o in&iacute;cio da plataforma e &eacute; ainda maior que Generics. &Eacute; a primeira vez que &eacute; realizada uma evolu&ccedil;&atilde;o coordenada da m&aacute;quina virtual, a linguagem e suas bibliotecas. E, segundo Mark Reinhold, o resultado final ainda n&oacute;s d&aacute; a sensa&ccedil;&atilde;o que continuamos programando em Java.</p>
+<p><a href="http://www.linkedin.com/in/briangoetz">Brian Goetz</a>, arquiteto da plataforma Java na Oracle, demonstrou como lambdas podem remover grande parte do c&oacute;digo de infraestrutura (boilerplate). Antes das lambdas, os desenvolvedores utilizavam em muitos casos uma abordagem pouco expressiva, geralmente atrav&eacute;s de inner classes. Goetz apresentou o seguinte exemplo.</p>
+<pre>
+Collection&lt;Person&gt; people = …;
+
+    Iterator&lt;Person&gt; ip = people.iterator();
+    while (ip.hasNext()) {
+        Person p = ip.next();
+        if (p.getAge() &gt; 18) {
+            ip.remove();
+        }
+    }
+</pre>
+<p>Para resumir esta id&eacute;ia, desenvolvedores podem reescrever este teste como no exemplo a seguir:</p>
+<pre>
+   Collections.removeAll(people,
+                          new Predicate&lt;Person&gt;() {
+                              public boolean test(Person p) {
+                                  return p.getAge() &gt; 18;
+                              }
+                          });
+</pre>
+<p>Atrav&eacute;s de lambdas, isto &eacute; muito mais simples:</p>
+<pre>
+   Collections.removeAll(people, p -&gt; p.getAge() &gt; 18);
+</pre>
+<p>Lambdas n&atilde;o representam apenas uma sintaxe mais elegante, ela utiliza invokedynamic para gerar um bytecode mais compacto e perform&aacute;tico. Para provar que a linguagem e suas APIs evolu&iacute;ram, Goetz falou sobre a nova API de stream e como ela pode ser utilizada para realizar opera&ccedil;&otilde;es em massa (bulk operations) em cole&ccedil;&otilde;es. Por exemplo:</p>
+<pre>
+int highestWeight = people.stream()
+    	                      .filter(p -&gt; p.getGender() == MALE)
+    	                      .mapToInt(p -&gt; p.getWeight())
+    	                      .max();
+</pre>
+<p>Este recurso prov&ecirc; sintaxe, desempenho e abstra&ccedil;&atilde;o, e abre oportunidades de paralelismo. No Java 7 foi adicionado um novo framework para decomposi&ccedil;&atilde;o de Fork/Join, mas a sua API manteve-se complexa. Com Java 8, &eacute; necess&aacute;rio somente a modifica&ccedil;&atilde;o de uma linha da API: a mudan&ccedil;a de stream() para parallelStream():</p>
+<pre>
+   int highestWeight = people.parallelStream()
+    	                      .filter(p -&gt; p.getGender() == MALE)
+    	                      .mapToInt(p -&gt; p.getWeight())
+    	                      .max();
+</pre>
+<p>Para aprender mais sobre o projeto Lambda, veja <a href="http://openjdk.java.net/projects/lambda/">http://openjdk.java.net/projects/lambda</a> ou <a href="https://jdk8.java.net/">download Java 8</a>.</p>
+<h2>NetBeans 7.4</h2>
+<p><a href="http://www.linkedin.com/pub/john-ceccarelli/1/704/95b">John Ceccarelli</a>, diretor de engenharia do NetBeans, apresentou uma demonstra&ccedil;&atilde;o de um jogo de Xadrez HTML5 (escrito em Knockout.js). Ele demonstrou como aprimorar as configura&ccedil;&otilde;es de tunning do NetBeans de maneira similar ao Firebug e ao Chrome Developer Tools e visualizar o resultado destas configura&ccedil;&otilde;es sem a necessidade de recarregar a p&aacute;gina. Ele trabalha de maneira muito similar ao plugin IntelliJ IDEA's LiveEdit.</p>
+<p>No &uacute;ltimo ano, o NetBeans introduziu o projeto Easel, que foi projetado para adicionar suporte HTML 5 ao NetBeans. Ceccarelli comentou que a rea&ccedil;&atilde;o da comunidade foi muito positiva, requisitando esta funcionalidade nos projetos EE. O lan&ccedil;amento do NetBeans 7.4 RC1 foi realizado poucos momentos antes da JavaOne e incluem suporte ao HTML5, Java EE, Java Web e projetos Maven Web.</p>
+<p>Al&eacute;m do &quot;live editing&quot; de HTML e CSS, o NetBeans 7.4 incluiu suporte aos frameworks JavaScript Angular, jQuery e Knockout.js. Isto significa que o editor &eacute; capaz de lidar com todos ids do DOM e nome de model no JavaScript. O NetBeans 7.4 &eacute; todo dedicado a web mobile e modelos h&iacute;bridos mobile (atrav&eacute;s do suporte a Cordova 3.0). &Eacute; interessante como a funcionalidade de &quot;live editing&quot; tamb&eacute;m pode ser utilizada em dispositivos m&oacute;veis. O &uacute;ltimo release candidate desta vers&atilde;o pode ser baixado em <a href="https://netbeans.org/">netbeans.org</a>.</p>
+<p>O servidor de Xadrez mencionado na demonstra&ccedil;&atilde;o foi escrito utilizando Java EE 7 e instalado no GlassFish 4. A aplica&ccedil;&atilde;o possui cinco m&oacute;dulos distintos: Chess Endpoint, Player Registration, Chess Engine, Chess Game Manager e Persistence Manager.</p>
+<p><img _p="true" _href="img://1image03.png" alt="" src="http://www.infoq.com/resource/articles/javaone2013-roundup/pt/resources/1image03.png" /></p>
+<p>O Chess Server utiliza muita das tecnologias Java EE, incluindo: Web Sockets, Batch, EJB, JPA, JAX-Rs 2.0. Toda a comunica&ccedil;&atilde;o entre cliente e servidor &eacute; realizada atrav&eacute;s de JSON. <a href="http://www.linkedin.com/pub/santiago-pericas-geertsen/0/685/905">Santiago Pericas-Geertsen</a>, um membro do time do GlassFish, demonstrou como &eacute; simples a configura&ccedil;&atilde;o do endpoint de um Socket com Java EE 7:</p>
+<pre>
+   @ServerEndpoint(value = &quot;/chessserver&quot;,
+                    encoders = MessageEncoder.class,
+                    decoders = MessageDecoder.class);
+    public class ChessServerEndpoint {
+
+        @Inject private GameCatalog catalog;
+
+        @OnMessage
+        public Message onMessage(String message, Session session) {
+            return message.processMe(this);
+        }
+        ...
+    }
+</pre>
+<p>A API cliente para comunica&ccedil;&atilde;o com o endpoint &eacute; similar e possui implementa&ccedil;&atilde;o simples.</p>
+<p>A &uacute;ltima inova&ccedil;&atilde;o t&eacute;cnica apresentada no keynote t&eacute;cnico da Oracle foi o DukePad. O <a href="https://wiki.openjdk.java.net/display/OpenJFX/DukePad">DukePad</a>, &eacute; um tablet desenvolvido no estilo &quot;fa&ccedil;a voc&ecirc; mesmo&quot; e &eacute; baseado no Raspberry PI e em JavaSE 8 Embedded. No projeto, a performance do CPU deixou a desejar: a CPU do Raspberry PI possui velocidade equivalente ao Pentium II, 14 vezes mais lento que o Samsung Galaxy S4 e entre 94-100 vezes mais lento que um n&uacute;cleo do processador Intel I7. Contudo, a GPU &eacute; razo&aacute;vel, 400 vezes mais r&aacute;pida que a do Pentium II em 1996.</p>
+<p>O <a href="http://openjdk.java.net/projects/openjfx/">OpenJFX</a>, possui quase todos seus componentes com c&oacute;digo fonte aberto, incluindo os prot&oacute;tipos de iOS e Android. Os apresentadores mencionaram que f&oacute;runs s&atilde;o saud&aacute;veis e recebem diversos relat&oacute;rios de bugs dos usu&aacute;rios e diversas contribui&ccedil;&otilde;es da comunidade. O JavaFX est&aacute; inclu&iacute;do no JavaSE 8.</p>
+<p>Para o futuro e o Java 9, a Oracle possui diversas iniciativas. As principais s&atilde;o a inclus&atilde;o do Java em GPUs, Reification (ajustes em Generics), JNI 2.0, estruturas de dados eficientes em mem&oacute;ria e uma plataforma modular denominada Jigsaw.</p>
+<h2>A comunidade Java</h2>
+<p>O <a href="http://medianetwork.oracle.com/video/player/2698223954001">Java Community Keynote</a>, foi apresentado por <a href="http://ca.linkedin.com/pub/donald-smith/6/945/6a0">Donald Smith</a>, Diretor S&ecirc;nior de Ger&ecirc;ncia de Produtos da Oracle. Ele trouxe diversas pessoas ao palco para falar sobre inspiradores casos de sucesso da tecnologia Java.</p>
+<p><a href="http://www.linkedin.com/in/toriwieldt">Tori Wieldt</a>, falou sobre o <a href="https://www.java.net/challenge">Raspberry Pi Challenge</a> e a participa&ccedil;&atilde;o de 25 desenvolvedores em sete projetos. O projeto Heart of Glass (monitorar batimentos card&iacute;acos em tempo real com o Google Glass) e MTAAS (Monster Truck como Servi&ccedil;o) foram dois processos bem sucedidos que emergiram deste evento. Tamb&eacute;m foi anunciado que a Oracle assinou um acordo de OEM com a funda&ccedil;&atilde;o Raspberry Pi para incluir o Java SE na imagem dos Raspberry Pi.</p>
+<p>Outros an&uacute;ncios not&aacute;veis no keynote da comunidade inclu&iacute;ram: o <a href="https://squareup.com/">Square</a> se tornou um membro do OpenJDK e o <a href="http://www.devoxx.com/display/4KIDS/Home">Devoxx4Kid</a> est&aacute; a procura de pais e l&iacute;deres de JUG para serem anfitri&otilde;es de seus workshops. Tamb&eacute;m merece destaque o demo do Aditya Gupta. O adolescente apresentou um projeto no Minecraft, criado com <a href="http://www.linkedin.com/in/arunpgupta">Arun Gupta</a>, e o <a href="http://www.minecraftforge.net/">Minecraft Forge</a>, em que porcos voaram e explos&otilde;es criaram novas explos&otilde;es.</p>
+<p>A <a href="https://academy.oracle.com/">Oracle Academy</a> tamb&eacute;m foi mencionada por Alison Derbenwick Miller. Ela oferece curr&iacute;culos para estudantes K-12, bem como para universidades. Ela educou 2.5 milh&otilde;es de estudantes no &uacute;ltimo ano e oferece workshops aos estudantes, programas de desenvolvimento de professores e descontos em certifica&ccedil;&otilde;es.</p>
+<p>Tamb&eacute;m relacionado a educa&ccedil;&atilde;o, ainda foram apresentados no keynote da comunidade muitas demonstra&ccedil;&otilde;es rob&ocirc;s. James Gosling tamb&eacute;m foi convidado para falar sobre seu atual trabalho.</p>
+<h2>A prova que Java est&aacute; de volta</h2>
+<p>Ambos os Keynotes foram substanciais nas raz&otilde;es da volta do Java. Java 8, traz a esperan&ccedil;a de tornar a programa&ccedil;&atilde;o em Java divertida novamente (atrav&eacute;s da redu&ccedil;&atilde;o de c&oacute;digo de infraestrutura) e diversas APIs presentes no Java EE 7 tornar&atilde;o simples a constru&ccedil;&atilde;o de aplica&ccedil;&otilde;es modernas. Al&eacute;m disto, provas adicionais s&atilde;o apresentadas nos seguintes artigos:</p>
+<ul class="c14 lst-kix_8vc6xrnyddfe-0 start"> 
+ <li>Wired's <a href="http://www.wired.com/wiredenterprise/2013/09/the-second-coming-of-java/">The Second Coming of Java: A Relic Returns to Rule Web</a></li> 
+ <li>Dr. Dobb's <a href="http://www.drdobbs.com/jvm/if-java-is-dying-it-sure-looks-awfully-h/240162390">If Java Is Dying, It Sure Looks Awfully Healthy</a></li> 
+</ul>
+<p>Se voc&ecirc; n&atilde;o teve a oportunidade de ir ao JavaOne este ano, voc&ecirc; deveria adicionar esta confer&ecirc;ncia ao seu calend&aacute;rio do ano que vem. Se n&atilde;o pelo conte&uacute;do t&eacute;cnico, participe pelo networking. O evento de aprecia&ccedil;&atilde;o da Oracle ofereceu bebida e comida gr&aacute;tis, al&eacute;m do show do Maroon 5 e Black Keys. As festas voltaram e o sal&atilde;o da confer&ecirc;ncia estava lotado.</p>
+<p>Mais do que tudo, o entusiasmo da comunidade de desenvolvimento parece estar mais forte e vivo do que nunca.</p><br><br><br><br><br><br></body></html>

@@ -2,6 +2,9 @@
  <head></head> 
  <body>
   <div>
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/32.htmlb">保护好你的秘密</a> Dennis Sosnoski 解释了理应安全的连接怎么会被降级，安全级别和它最容易被攻破的薄弱点处于同一水平。还有最强的加密形式在私钥暴露后面对数据捕获和破解是多么脆弱。本文将介绍一些办法，可以让数据交换更加安全，让别人难以窥伺或篡改。 
+  </div> 
+  <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/31.htmlb">敏捷与结构性模块化（二）</a> 在上一篇文章中，介绍了结构性模块化与敏捷之间的关系，在这个系列的第二篇文章中，我们将会研讨OSGi™，在实现JavaTM的结构性模块化方面，OSGi扮演了核心的角色；OSGi与流行的敏捷方法论之间存在着自然的联系。 
   </div> 
   <div> 
@@ -147,9 +150,6 @@
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/33.htmlb">goroutine背后的系统知识</a>Go语言从诞生到普及已经三年了，先行者大都是Web开发的背景，也有了一些普及型的书籍，可系统开发背景的人在学习这些书籍的时候，总有语焉不详的感觉，网上也有若干流传甚广的文章，可其中或多或少总有些与事实不符的技术描述。希望这篇文章能为比较缺少系统编程背景的Web开发人员介绍一下goroutine背后的系统知识。 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/32.htmlb">函数式反应型编程(FRP) —— 实时互动应用开发的新思路</a>本文详细讲解JavaScript编程的一种新型编程模型：利用函数式编程(Functional Programming)的思想和方法(函数、高阶函数)来支持Reactive Programming，来达到所谓的Functional Reactive Programming，简称FRP。它从新的视角关注数据流，代码更接近于只描述做什么(what)的声明式(declarative)代码，简洁又直观。 
   </div>  
  </body>
 </html>

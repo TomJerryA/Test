@@ -1,207 +1,130 @@
-<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>函数式反应型编程(FRP) —— 实时互动应用开发的新思路</h3><p>请先看<a href="http://nec.netease.com/weekly/frp/flicker-search.html">一个非常简单的小应用</a>，它允许用户在一个搜索输入框里输入关键词，然后在其下方的结果区域实时显示从<a href="http://flicker.com">Flicker</a>网站搜索得到的图片，当用户输入的关键词发生变化，显示的图片也会随即跟着发生变化。</p><p><img width="500px;" src="http://www.infoq.com/resource/articles/functional-reactive-programming/zh/resources/1.png;jsessionid=404C358968DD80DF16527306AB521DA7" title="Flicker实时搜索" alt="" _href="img://null" _p="true" /></p><p>这实际上便是一种reactive能力。而类似这种能自动对外部环境的变化作出响应的系统我们称之为反应型系统(<a href="http://en.wikipedia.org/wiki/Reactive_system">Reactive System</a>)。典型的外部环境变化包括外部输入信号的变化、事件的发生，而且系统的响应通常是实时的。互动系统是最重要的一种反应型系统，它不但能响应外部环境的变化，还会将自己的内部状态通过某种方式反馈给外部观察者。</p><h2>二、如何构建Reactive System?</h2><p>如果要开发上面的这个Flicker实时搜索小应用，应该怎么做呢？</p><p>别忙，程序员在动手开发之前应该首先把软件要做什么尽可能搞清楚。虽然这是个很小的应用，但我们仍然可以把它做的事情用一个简单但更清晰的流程图表示出来：</p><p><img width="500px;" src="http://www.infoq.com/resource/articles/functional-reactive-programming/zh/resources/2.png;jsessionid=404C358968DD80DF16527306AB521DA7" title="Flicker实时搜索功能流程图" alt="" _href="img://null" _p="true" /></p><p>用户在输入框键入各种关键词向Flicker发出搜索请求，它们就像一道不断流向Flicker服务器的”请求流”，服务器处理完请求后向客户端返回搜索结果，形成了一道“应答流”，客户端将“应答流”转换成“图片流”注入到网页中的结果区域。只要用户的输入发生变化，这些流中的内容也跟着改变，网页中显示的图片也就跟着变化。</p><p>功能不复杂，试着把它变成程序。</p><h3>Callback Style</h3><p>通过处理相应的事件便能响应用户的输入，那么就可以采用大家所熟悉的注册event callback的方式来做：</p><pre class="brush: js;">
-//处理response的回调函数
-var responseHandler = function (answer)
-{
-  //根据response创建image nodes
-  var nodes = buildImages(answer);
-  //用image nodes动态更新显示区域
-  swapChildren($('images'), nodes);
-}
-
-//搜索框回调函数
-var searchHandler = function (txt)
-{
-  //发送request,并注册该次request的回调
-  requestFlickerSearch(txt, responseHandler);
-}
-
-//使指定的输入框具有实时flicker搜索能力
-function enableFlickerSearch(nodeId)
-{
-  //注册搜索输入框回调
-  registerCallback($(nodeId), searchHandler);
-}
-
-enableFlickerSearch('search');
-</pre><h3>X Style</h3><p>上面这种方式是大家最熟悉的，也是最常用的。但今天我要给大家看看另外一种不同的方式，暂时称之为X Style吧。</p><p>核心代码如下：</p><pre class="brush: js;">
-//将指定的输入框包装成具有flicker search能力的输入框，
-//并返回相关联的实时图片流
-function makeFlickerImagesStream(searchEditId)
-{
-  //根据指定的搜索输入框内容创建request stream
-  var requestE = extractValueE(searchEditId).
-                  calmE(1000).
-                  mapE(flickrSearchRequest);
-  //根据request stream创建response stream
-  var responseE = getForeignWebServiceObjectE(requestE); 
-  //根据response stream创建image DOM stream
-  var imagesE = responseE.mapE(createImageNodes);
-  return imagesE;
-}
-
-function start() 
-{
-  //创建一个实时图片流，流中的内容根据&quot;search&quot;输入框内容的变化而变化
-  var imageNodes = makeFlickerImagesStream(&quot;search&quot;);
-
-  //用imageNodes图片流里的内容动态更新images节点
-  insertDomE(imageNodes,&quot;images&quot;);
-}
-</pre><p>注意到makeFlickerImageStream的实现里有requestE, responseE, imagesE这样的变量，从名字上很容易将它们和之前流程图中的“请求流”“应答流”“图片流”对应起来。</p><p>目前为止，这两种方式看起来代码量差不多，没感觉X风格有什么特别的。 好，假设这个Flicker实时搜索框被做成了独立的控件，对于使用者来说是一个黑盒子，内部实现不可见，如果想添加一个黄色图片过滤功能，不是一古脑儿显示搜索得到的所有图片，而是过滤掉黄色图片只在结果区域显示健康图片，这时该怎么做？</p><p>对于callback风格的实现来说，应用代码只有这一行，其它的都不可见。</p><pre class="brush: js;">
-enableFlickerSearch('search');
-</pre><p>你能想到一种不修改搜索框控件内部实现的方案吗？至少我没有想到。</p><p>一个比单纯修改模块内部实现更好的方案也许是同时修改接口和控件实现以便让用户去定制如何处理response:</p><pre class="brush: js;">
-enableFlickerSearch('search', customResponseHandler);
-</pre><p>那么用户可以在这个定制的处理函数中先过滤图片再显示出来。</p><p>对于X风格实现，start函数才是应用层的代码。如果要过滤掉黄色图片，很简单，只要将最后一行代码改变一下就行了：</p><pre class="brush: js;">
-function start() 
-{
-  //创建一个实时图片流，流中的内容根据&quot;search&quot;输入框内容的变化而变化
-  var imageNodes = makeFlickerImagesStream(&quot;search&quot;);
-
-  //用指定的健康图片判断函数healthy
-  //对imageNodes进行过滤得到健康图片流
-  var healthyImageNodes = 
-        imageNodes.filterE(healthy);
-  //用过滤得到的健康图片流里的内容动态更新images节点
-  insertDomE(healthyImageNodes,&quot;images&quot;);
-}
-</pre><p>看见了吗？完全不需要修改控件内部的实现就轻松实现了新功能。</p><h2>三、另外一个例子－Drag and Drop</h2><p>现在请看另一个<a href="http://nec.netease.com/weekly/frp/drag-drop.html">鼠标拖拽的小例子</a>。</p><p>对于这样一种交互操作，如果抛开实现细节，用自然语言通常会怎么描述它呢？我想极有可能是这样：</p><blockquote> 
- <p>当鼠标左键按下时便开始移动拖拽，直到鼠标左键抬起时停止。</p> 
-</blockquote><p>这句话实际上定义出了拖拽交互的功能规约(function specification)，有了规约便可以写出代码。</p><p>这次先来看看X风格的代码实现：</p><pre class="brush: js;">
-function start() {  
-  //为节点创建和它绑定的拖拽消息流
-  var posE = dragE($('dragTarget'));
-
-  //根据拖拽消息去调整节点的位置
-  posE.doE(function(m) {
-    $('dragTarget').style.left = m.clientX;
-    $('dragTarget').style.top = m.clientY;
-  });
-}
-</pre><p>这段代码很简单，注释里的解释应该清楚了。但是，最关键的用来创建拖拽消息流的dragE是怎么实现的呢？它在这里：</p><pre class="brush: js;">
-function dragE(target) 
-{
-  //鼠标左键按下消息流
-  var mousedown = extractEventE(target,'mousedown');
-  //鼠标左键抬起消息流
-  var mouseup = extractEventE(document, &quot;mouseup&quot;);
-  //鼠标移动消息流
-  var mousemove = extractEventE(document, &quot;mousemove&quot;);
-  //返回一个拖拽消息流:
-  //每当有鼠标左键按下消息时它就输出鼠标移动消息，
-  //直到鼠标左键抬起才停止输出鼠标移动消息，
-  //当下一次鼠标左键按下时又重复以上模式。
-  return mousedown.thenE(function (_)
-                         { 
-                           return mousemove.untilE(mouseup);
-                         });
-}
-</pre><p>这些代码暂时看不懂没关系，只要注意最后return出去的表达式中的thenE和untilE，这和之前自然语言描述中的<strong>“当...发生时便开始... ，直到....”</strong>一一对应，代码就象对自然语言的直接翻译！</p><p>如果换用callback的方式怎么做呢？这里就不写了，读者可以自己尝试一下，看看最终出来的代码的语义和自然语言的描述差别有多大。</p><h2>四、Functional Reactive Programming</h2><p>上面两例中X风格的代码主要描述系统中数据(消息)流的结构关系，至于环境变化如何导致某些数据流变化，这些变化了的数据流又如何导致其它的相关数据流变化，压根儿不需要关心。这是一种编程范式，称之为<a href="http://en.wikipedia.org/wiki/Reactive_programming">Reactive Programming</a>。</p><p>而主要利用函数式编程(Functional Programming)的思想和方法(函数、高阶函数)来支持Reactive Programming就是所谓的<a href="http://en.wikipedia.org/wiki/Functional_reactive_programming">Functional Reactive Programming</a>，简称FRP。</p><p>现在可以给X正名了，它就是FRP。</p><h3>FRP vs. Callback</h3><p>程序员在写代码之前，首先会需要一个功能规约，而规约的描述形式并不固定，可以是流程图(第一个例子)，可以是自然语言(第二个例子)，也可以是其它的方式，只要能精准方便地表达意图就好。</p><p>当有了规约之后，FRP编程就像照镜子，代码基本上就是规约的直接映射。</p><p><img src="http://www.infoq.com/resource/articles/functional-reactive-programming/zh/resources/3.png;jsessionid=404C358968DD80DF16527306AB521DA7" width="500px;" alt="" _href="img://null" _p="true" /></p><p>而写callback风格的代码，就得费力地咀嚼规约，艰难地消化，最后挤出的代码就像一坨缠来绕去的线团，它呈现出来的样子和程序真正的意图相去甚远。</p><p><img width="500px;" src="http://www.infoq.com/resource/articles/functional-reactive-programming/zh/resources/4.png;jsessionid=404C358968DD80DF16527306AB521DA7" alt="" _href="img://null" _p="true" /></p><h3>为什么？</h3><p>为什么callback风格的代码会表现成这样，背后的原因是什么？请读者带着这个问题边思考边往下看，在文章的后面作者会给出自己的结论。</p><h2>五、Flapjax</h2><p>本文的所有示例都利用了一个叫<a href="http://www.flapjax-lang.org">Flapjax</a>的库。简单来说，它就是一个支持FRP的JavaScript框架。接下来将以它为参考详细介绍FRP的各种概念。</p><h3>1、基本思想</h3><p>引起实时互动系统发生变化的最根本的自变量是<strong>时间</strong>，变化的环境和各种事件(比如键盘、鼠标、网络）归根结底都是由时间的变化引起的，时间是本质特征，从一开始就要考虑。</p><p>那些对外部环境具有反应能力、随时间变化的数据被抽象为一种叫信号(Signal)的概念。</p><h3>2、信号</h3><p>信号分为两种，分别叫事件流(Event Stream)和行为(Behavior)。</p><h3>Event Stream</h3><p><img width="500px;" src="http://www.infoq.com/resource/articles/functional-reactive-programming/zh/resources/5.png;jsessionid=404C358968DD80DF16527306AB521DA7" alt="" _href="img://null" _p="true" /></p><p>事件流可以看成时间轴上无限长的数据流，这个里面流淌的数据代表着一个个事件，它们在时间轴上是离散的。</p><h4>Behavior</h4><p><img width="500px;" src="http://www.infoq.com/resource/articles/functional-reactive-programming/zh/resources/6.png;jsessionid=404C358968DD80DF16527306AB521DA7" alt="" _href="img://null" _p="true" /></p><p>行为也是随时间变化的数据，它在时间轴上是连续的。</p><h4>信号的类型</h4><p>信号(EventStream和Behavior)都是First-Class Value，所以它们也有自己的类型。 信号所代表的随时间变化的数据的类型X决定了信号的类型。记为：EventStream X 或 Behavior X。</p><p>比如：</p><ul> 
- <li>代表输入框内容变化的事件流，类型为EventStream String</li> 
- <li>随时间不停变化的数值，类型为Behavior Number</li> 
-</ul><h4>函数角度看信号</h4><p>如果从函数式编程的角度来看，behavior可以看成这样一个函数：输入某个时刻，它计算得到在那个时刻自身的采样值。</p><p><img width="500px;" src="http://www.infoq.com/resource/articles/functional-reactive-programming/zh/resources/7.png;jsessionid=404C358968DD80DF16527306AB521DA7" alt="" _href="img://null" _p="true" /></p><p>同样地，event stream也可以看成这样一个函数：输入也是某个时刻，如果在这个时刻有事件发生就把相应的event数据返回出来，否则就返回一个特殊的nothing表示没有任何事件发生。</p><p><img width="500px;" src="http://www.infoq.com/resource/articles/functional-reactive-programming/zh/resources/8.png;jsessionid=404C358968DD80DF16527306AB521DA7" alt="" _href="img://null" _p="true" /></p><h3>3、Event Stream</h3><h4>基本API</h4><pre class="brush: js;">
-//为指定DOM节点创建鼠标左键按下的事件流
-es1 = extractEventE(targetDom, &quot;mousedown&quot;);
-
-//为指定DOM节点创建内容动态更新事件流，
-//每当节点内容发生变化，这个事件流里都会产生相应的事件
-es2 = extractValueE(searchEdit);
-
-//创建会且只会发生一个事件的事件流，
-//这个唯一的事件所携带的信息是调用者传入的参数
-es3 = oneE(&quot;hello world&quot;);
-
-//永远也不会有事件发生的事件流
-nothingEs = zeroE();
-
-//将事件流中的动态内容注入到指定的dom节点上，
-//此后只要事件流里有新的事件发生，
-//这个节点的内容就会跟着新事件的内容自动发生变化。
-insertDomE(es2, &quot;result&quot;);
-</pre><h4>转换和组合</h4><p>除了基本API，框架还提供了相应的API对事件流进行转换或者将多个事件流组合成新的更复杂的事件流。常用的有：</p><ul> 
- <li> <p>过滤<br /> filterE(sourceEs, pred)会用谓词函数pred对事件流sourceEs进行过滤生成一个新的事件流，所有出现在sourceEs并且被pred判断为true的事件都会出现在新生成的事件流中。</p> <p><img width="500px;" src="http://www.infoq.com/resource/articles/functional-reactive-programming/zh/resources/9.png;jsessionid=404C358968DD80DF16527306AB521DA7" alt="" _href="img://null" _p="true" /></p> </li> 
- <li> <p>映射<br /> mapE(f, sourceEs)会用转换函数f对事件流sourceEs进行转换生成一个新的事件流，所有出现在sourceEs中的事件都会被f转换成新的事件并出现在新生成的事件流中。</p> <p><img width="500px;" src="http://www.infoq.com/resource/articles/functional-reactive-programming/zh/resources/10.png;jsessionid=404C358968DD80DF16527306AB521DA7" alt="" _href="img://null" _p="true" /></p> </li> 
- <li> <p>合并<br /> mergeE(es1, es2)会把两个事件流es1和es2合并成一个新的事件流，所有出现在es1或者es2中的事件都会出现在新生成的事件流中。</p> <p><img width="500px;" src="http://www.infoq.com/resource/articles/functional-reactive-programming/zh/resources/11.png;jsessionid=404C358968DD80DF16527306AB521DA7" alt="" _href="img://null" _p="true" /></p> </li> 
- <li> <p>直到<br /> es1.untilE(es2)会根据两个事件流es1和es2生成一个新的事件流，es1出现的所有事件都会出现在新生成的事件流中，直到es2的第一个事件发生，此后结果事件流中将不再发生任何事件。就好像es2中的事件是一个永久的阻断信号，它一旦出现，意味着此后es1中的事件都被阻断不再进入结果事件流中。</p> <p><img width="500px;" src="http://www.infoq.com/resource/articles/functional-reactive-programming/zh/resources/12.png;jsessionid=404C358968DD80DF16527306AB521DA7" alt="" _href="img://null" _p="true" /></p> </li> 
- <li> <p>当...发生时便...<br /> srcEs.thenE(f)会根据事件流srcEs和函数f生成一个新的事件流，这里的f必须是一个输入为event输出为EventStream的函数。每当srcEs中出现一个事件，都会把这个事件传给f计算得到一个临时事件流，接下来这个临时事件流中的事件都会出现在最终的结果事件流中，直到srcEs中再次有新的事件发生，又会重新调用f得到另一个临时事件流并替换掉老的，同时结果事件流开始接收这个最新产生的临时事件流中的事件。srcEs中不断有事件发生，上述过程也就不断重复。在前文鼠标拖拽的例子中，正是这个方法使得拖拽事件流的表达非常接近自然语言的描述。熟悉FP的读者一定已经发现，如果把事件流看成是[Monad](http://en.wikipedia.org/wiki/Monad<em>(functional</em>programming))的话，那么thenE就相当于它的bind操作。实际上在Flapjax里，这个方法的名字确实是叫bindE，为了使代码的可读性更好，作者对Flapjax做了小小的修改和扩展，为bindE取了个别名thenE。本文所有示例使用的都是这个定制版Flapjax。</p> <p><img width="500px;" src="http://www.infoq.com/resource/articles/functional-reactive-programming/zh/resources/13.png;jsessionid=404C358968DD80DF16527306AB521DA7" alt="" _href="img://null" _p="true" /></p> </li> 
-</ul><h3>4、Behavior</h3><h4>基本API</h4><pre class="brush: js;">
-//最基本的behavior就是时间本身！
-//timerB创建一个表示系统时间值的behavior，
-//输入参数表示它每隔多长时间(毫秒)更新一次
-behavior1 = timerB(1000);
-
-//创建一种特殊的常量型behavior
-//任何时刻它的值都等于你传进去的值
-cb = constantB(&quot;老子是个常量&quot;);
-
-//valueNow获取behavior在当前时刻的值
-v = valueNow(behavior1);
-
-//为指定DOM节点创建相关的behavior，
-//它的值会自动随着节点的内容变化而变化
-domb = extractValueB(dom);
-
-//把behavior的动态内容注入到dom节点上，
-//此后只要behavior的值发生变化，
-//这个dom节点的内容就会自动发生变化。
-insertDomB(behavior1, &quot;timer&quot;);
-</pre><h4>Lift</h4><p>Number类型的数据有加减乘除等运算操作，和它对应的Behavior Number类型的行为也有相应的addB、subB、mulB、divB这些运算操作。比如这样一个调用</p><pre class="brush: js;">
-b3 = addB(b1, b2);
-</pre><p>就会根据b1和b2这两个行为生成一个新的行为b3，并且任何时刻b3的值都会等于同时刻b1和b2的值之和。其它运算符的语义可以依此类推。有了这些操作后就意味着behavior是可以直接运算的！这使得我们可以像写普通运算表达式那样方便地创建复杂行为。</p><p>addB可以看成是把＋这个原本作用在Number类型数据上的运算提升(lift)后得到的作用在Behavior Number类型上的运算，其它运算符同此类比。</p><p><img width="500px;" src="http://www.infoq.com/resource/articles/functional-reactive-programming/zh/resources/14.png;jsessionid=404C358968DD80DF16527306AB521DA7" alt="" _href="img://null" _p="true" /></p><p>Flapjax提供了lift这个API，它能将计算普通值的函数提升为计算相应behavior的函数。比如标准数学库中的sqrt函数的类型是输入参数为Number类型输出结果为Number类型：</p><pre class="brush: js;">
-Math.sqrt: Number -&gt; Number
-</pre><p>它的提升版本(lifted version)可以这样得到：</p><pre class="brush: js;">
-sqrtB = lift(Math.sqrt);
-</pre><p>得到的sqrtB是一个新的函数，类型是输入参数为Behavior Number输出结果为Behavior Number:</p><pre class="brush: js;">
-sqrtB: Behavior Number -&gt; Behavior Number
-</pre><p>很明显，lift是一个输入参数为函数输出结果也为函数的高阶函数。</p><p>接下来就可以直接调用sqrtB：</p><pre class="brush: js;">
-//b1是个behavior，b2是调用生成的新的behavior，
-//b2在任何时刻的值都等于b1同时刻值的平方根。
-b2 = sqrtB(b1); 
-</pre><p>实际上之前的addB的定义是这样的：</p><pre class="brush: js;">
-addB = lift(function (v1,v2){
-              return v1 + v2;
-            });
-</pre><p>请看<a href="http://nec.netease.com/weekly/frp/timer2.html">这个演示</a>，它通过以上介绍的方式定义了多个behavior，并将它们在网页上呈现出来。</p><h3>5、更多的信号和组合操作</h3><p>Flapjax还提供了更多的信号：</p><pre class="brush: js;">
-mouseLeftB
-mouseTopB
-getWebServiceObjectE(requestE)
-......
-</pre><p>更多的组合操作：</p><pre class="brush: js;">
-collectE
-calmE
-switchB
-condB
-......
-</pre><p>具体请查阅参考手册。</p><h2>六、FRP的优势</h2><p>在FRP的编程模型里，基本信号可以在不做任何修改的情况下被转换或者组合成新的复杂信号，而新的复杂信号又可以在不做任何修改的情况下被转换或者组合成更复杂的信号，就像乐高积木的搭建，这个过程可以一直进行下去，直到构建出足够复杂的信号以满足系统的需求。</p><p><img width="500px;" src="http://www.infoq.com/resource/articles/functional-reactive-programming/zh/resources/15.png;jsessionid=404C358968DD80DF16527306AB521DA7" alt="" _href="img://null" _p="true" /></p><p>这正是程序员梦寐以求的组合能力(Composability)！</p><p>现在重新回到前文提出的那个问题，为什么callback风格的代码总是像一坨线团一样那么地杂乱？让我们先来看看一个通用的event-driven框架大概是什么样的：</p><p><img width="500px;" src="http://www.infoq.com/resource/articles/functional-reactive-programming/zh/resources/16.png;jsessionid=404C358968DD80DF16527306AB521DA7" alt="" _href="img://null" _p="true" /></p><p>请读者回想一下，程序中注册的事件回调处理函数的返回值一般都是什么类型？想必要么是void要么是一个表示执行状态的状态码，不太可能让返回值可以随意使用各种数据类型，这是因为一个事件驱动框架要通用地处理各种callback，就只能让它的返回值类型足够通用，void便是首选。因此，回调与回调之间是无法直接传递类型丰富的数据的，它们只能通过修改应用程序的共享状态来间接地通讯，这迫使程序员不得不把应用逻辑分割得支离破碎，从而丧失了核心的组合能力！这便是callback风格程序的最大问题。</p><p>Callback模型关注控制流，但它对控制流的描述不具有很好的组合性。FRP模型换了一个视角，关注数据流，且数据流的组合能力极佳，使得代码更接近于只描述做什么(what)的声明式(declarative)代码，而不是描述怎么做(how)的命令式(imperative)代码，相当简洁和直观，更符合人的自然思维!</p><h2>七、实现简述</h2><p>实现一个FRP框架最关键的是要在信号之间合理有序地传播变化，通常分为两种做法：</p><h3>1、Push方式</h3><p>信号主动把变化传播给受影响的其它信号。</p><ul> 
- <li>优点：外部的变化是同步处理的，系统的反应延迟小。</li> 
- <li>缺点:<br /> 
-  <ul> 
-   <li>所有构建出来的信号不管程序是否真的需要，都会参与更新和计算，有可能存在大量无用功；</li> 
-   <li>无用信号必须显式地从数据流网络中删除才有可能被回收，资源管理较麻烦，常常造成资源泄漏。</li> 
-  </ul> </li> 
-</ul><h3>2、Pull方式</h3><p>信号主动去查询可能会影响到自己的信号是否发生了变化，如果发生变化就进行重计算。</p><ul> 
- <li>优点： 
-  <ul> 
-   <li>按需计算，只有真正被程序需要(即被取值)的信号才参与更新和计算。</li> 
-   <li>信号在程序里没有了任何引用就会被自动回收掉，资源管理简单。</li> 
-  </ul> </li> 
- <li>缺点:<br /> 
-  <ul> 
-   <li>外部的变化采用异步处理，系统的反应延迟依赖于pull的频率。</li> 
-   <li>当没有变化发生时，仍然会以固定频率pull，也存在一定的消耗。</li> 
-  </ul> </li> 
-</ul><p>Flapjax采用的是push的方式。</p><h2>八、其它的FRP框架</h2><p>FRP最早发源于<a href="http://www.haskell.org">Haskell</a>社区，在Haskell社区里有许多关注点不同实现方式各异的FRP框架，比如：</p><ul> 
- <li>Fran</li> 
- <li>Yampa</li> 
- <li>Reactive</li> 
- <li>....</li> 
-</ul><p><a href="http://docs.racket-lang.org/frtime">FrTime</a>是用<a href="http://racket-lang.org">Racket(Scheme)</a>语言实现的一款FRP框架，它背后的团队和Flapjax的团队是同一个，所以它们在理念、设计和实现上都极为相似。</p><p>LuaTime是笔者在几年前为<a href="http://www.lua.org">Lua</a>语言实现的FRP框架，它在API的设计上主要参考了FrTime，但是底层的实现采用了pull的方式。这个项目计划在今年年内开源。</p><h2>九、相关研究</h2><ul> 
- <li><a href="http://msdn.microsoft.com/en-us/data/gg577609.aspx">Microsoft Reactive Extensions</a><br /> 微软用于解决实时互动、异步编程问题的跨语言的开发框架，基本思想和FRP极为类似：将变化的数据抽象出来，称之为IObservable，并为其定义各种转换和组合操作。它背后的主要设计者是Haskell社区的大牛。</li> 
- <li><a href="http://www.cs.umd.edu/projects/PL/arrowlets">Arrowlets</a><br /> FRP关注数据流，Arrowlets和callback一样关注控制流，但它利用[Arrow](http://en.wikipedia.org/wiki/Arrow<em>(computer</em>science) )这种计算模型使得控制流具备了很好的组合能力。</li> 
- <li>Promise or Future<br /> 在JavaScript社区中很流行的对异步编程的解决方案，有无数的实现库。</li> 
- <li>Sandglass<br /> 笔者所在团队设计的一种基于Behavior Tree模型的AI编程语言，为Behavior Tree引入了协作式多任务机制和显式的时间控制机制，支持以同步化的思维来写异步程序，能编译成标准的JavaScript。</li> 
-</ul><h2>关于作者</h2><p><b>邓际锋</b>，来自网易公司杭州研究院前台技术中心引擎技术组。</p><p>我们团队的努力方向包括：</p><ul> 
- <li>开发跨平台实时互动多媒体应用解决方案；</li> 
- <li>为儿童和非技术人员开发更自然更有趣的创作工具；</li> 
- <li>探索各种更自然高效的编程模型并积极实践；</li> 
- <li>编程语言及相关工具的设计与实现;</li> 
-</ul><p>你可以通过新浪微博<a href="http://weibo.com/ideamonad">@邓际锋</a>或者邮箱soloist.deng at gmail.com与我联系。</p><div class="clearer-space"></div><br><br><br><br><br><br></body></html>
+<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>保护好你的秘密</h3><p>在自由黑客和政府特工的两面夹击下，想要安全地交换数据很难。大多数安全数据交换都以公钥加密为基础，而公钥加密依赖于信任，可那些窃取数据的人都是滥用信任方面的专家。理应安全的连接也会被降级，安全级别和它最容易被攻破的薄弱点处于同一水平，并且即便最强的加密形式在私钥暴露后面对数据捕获和破解也非常脆弱。</p>
+<p>但我们仍然有办法可以保护秘密，特别是在数据交换双方都可控的情况下。本文会介绍一些能够确保应用数据交换安全的办法，在眼下以及可预见的将来都能防止数据被泄露。还会给出应用安全技术的Java代码示例。此外你还将学会如何保护自己的在线访问。</p>
+<h2>信任管理机构</h2>
+<p>大多数数据交换都以公钥加密作为安全基础。公钥加密的基本原理是使用一对密钥，一把是需要绝对保密的私钥，一把是可以随意分发的公钥。这两把密钥要相互配合使用，任何持有公钥的人都可以对数据加密，而加密后的数据只能由持有私钥的你解密；并且你用私钥加密的数据只有持有公钥的人才能解密。</p>
+<p>用公钥加密的作用很明显，因为这样其他人可以向你发送私密消息。而用私钥加密的作用不是那么显而易见，但它在保证安全方面的作用同样重要，因为它可以对消息签名。你能为任何你想发送的数据计算出一个安全摘要（一般是一个很难做逆向计算的哈希码），然后用私钥对摘要加密，并同时发送数据和经过加密的摘要。任何持有你的公钥的人都可以解密你发送的摘要，并在他们收到数据上重新计算摘要。这样他们既能确保他们收到的就是你发送的数据（如果摘要值相互匹配），又能保证确实是你发送的数据（因为用你的公钥解密了经过加密的摘要）。</p>
+<p>公钥通常以证书的形式分发，也就是说它们会被封装在一个标明你是谁的信封内。这个信封由证书颁发机构签名，可以佐证你的身份。有些证书颁发机构是根机构，也就是说对他们自身的证书是可以直接信任的。其他机构用经由某些第三方机构签名的证书，形成了最终以某个根机构为基础的可信链条。</p>
+<p>只要证书颁发机构完全值得信赖，这就是优秀的身份验证系统，所谓值得信赖是指证书颁发机构既要诚实又要够资格。在过去20年里出过一些事故，有些人能拿到冠以其他组织名称的证书，这表明某些机构达不到应有的资质水准。甚至还有更糟的情况出现，证书颁发机构本身都会受到损害，机构的密钥被盗，窃贼可以自己创建可信的证书。</p>
+<div id="lowerFullwidthVCR"></div>
+<p>Mozilla 产品 (包括Firefox) 用 <a href="http://www.mozilla.org/projects/security/certs/included/index.html">166个受信根证书</a> 表示至少70个不同的机构。看起来好像被授于这么高的信任程度的机构太多了，但这仅仅是冰山一角。还有很多机构凭借经由这些根机构签名的证书取得了信任，并且这种转授的信任还能扩展到更多层级。受信的证书颁发机构的总数量绝对数以百计，而且很可能有上千个 (没人真的知道，但 <a href="https://www.eff.org/observatory">EFF SSL Observatory</a> 在2010年从公共网站上找出了650多个)。</p>
+<h2>安全和中间人</h2>
+<p>所以浏览器（或者程序代码，比如在Java 7的标准版中有81个受信根证书）中有这么<b>多</b>受信的证书颁发机构签发证书。这是什么情况？</p>
+<p>当用SSL协议（实际上是TLS，跟SSL原理相同的现代替代品）创建连接时，要依靠服务器提供的证书来保证初始数据交换的保密性。这个连接在到达服务器的路由中要经过一些中间介质，并且只要这些中间介质都是“诚实”可信的（即他们在往两边传输数据时都不会修改），那这个连接或多或少是安全的（我们后面再详细讨论或多或少）。</p>
+<p>但如果中间介质中有一个不诚实，你就很容易遭受到中间人攻击。对TLS来说，最简单的中间人攻击是使用伪造的服务器证书，攻击者用由自己的私钥生成的证书冒充服务器的证书。狡诈的中间介质把这个伪造的证书发送到你的客户端，客户端就会连接到中间介质，然后中间介质再单独建立一个到服务器的安全连接。它在连接的两端中间转发数据，给你造成直接连接到服务器的假象。这样中间介质既可以看到你们发送的所有数据，也能根据需要篡改任何数据。</p>
+<p>出现这种欺诈性中间介质的可能性有多大？很不幸，可能性非常大。路由器上经常会出现一些会被黑客（自由职业者或得到政府资助的人）攻陷的漏洞。信誉好的制造商在发现漏洞后会为路由器发布固件更新包，但我们大多数人不会更新家里或办公室里的路由器，所以<a href="http://www.wired.com/threatlevel/2013/09/nsa-router-hacking/">它们可能会因为已知的问题被攻破</a>。最近有报道暗示，路由器制造商在某些情况下甚至会故意在他们的路由器中<a href="http://www.nytimes.com/interactive/2013/09/05/us/documents-reveal-nsa-campaign-against-encryption.html?ref=us&amp;_r=0">制造后门</a> ，以方便政府部门访问(在<a href="http://www.cbsnews.com/8301-18560_162-57527441/huawei-probed-for-security-espionage-risk/">美国讽刺性地指责中国制造商华为的所作所为</a>中曾提到过)。</p>
+<p>对企业级路由中的这类问题我们实在是无能为力，但对于家用和小型商用产品，我们可以用开源固件代替由制造商提供的固件。像<a href="http://www.dd-wrt.com/site/index">DD-WRT</a>、<a href="http://www.polarcloud.com/tomato">Tomato</a>、<a href="https://openwrt.org/">OpenWrt</a> 之类的可选项能在大多数有线和wifi路由器上使用，它们既有经过强化的功能，又可以保证你运行的开源代码至少有很多人看过（不能保证没有漏洞，但至少没有那种可能是故意植入的明显漏洞）。</p>
+<p>在某些情况下(比如外交会议上的自由wifi访问)，有些组织会故意使用欺诈性路由器，以便可以观察通过理应安全的连接交换的数据。规模更大的也有，互联网服务提供商可能会<a href="https://www.eff.org/nsa-spying">让政府直接访问他们的路由器</a>。</p>
+<p>即便控制不了路由器，坏蛋们有时也能用DNS欺骗实施中间人攻击。他们会用一个错误的主机IP地址迷惑DNS服务器，这个地址通常指向由坏蛋控制的系统。当你的客户端想要连接到某台主机时，它会要求DNS服务器提供这台主机的IP地址，而DNS服务器就会从它的缓冲池中取出（错误的）地址给你。然后你就连到了错误的系统上，它或者直接假装成你想要连接的系统，或者自己再建立一条到初始目标系统的连接，充当欺诈性的中间介质。</p>
+<p>所以在你每次建立安全连接时，有些人可能已经潜入到了你和服务器之间的数据交换环节中。如果真能靠证书保证数据交换双方的身份，这不是什么大问题，可惜证书做不到啊。取得客户端信任的证书颁发机构有上百（或上千）个，其中一旦有一个发出了冒充你的目标主机的证书，那他们就全都会遭受到中间人攻击。只要想到证书颁发机构的发行被黑，或者在验证身份时犯了错误就觉得相当恐怖了，但还不止这样，你还要考虑到这些证书颁发机构中有很多或者在独裁政府的直接控制之下，或者会受到他们的恐吓。所以公共认证系统实际上已经出现了破损，尽管我们还有继续使用它的必要，但绝不能认为它是安全的。</p>
+<h2>更安全的认证</h2>
+<p>你可以采取一些措施以免受到假冒证书的侵害。浏览器一般会毫无疑问地接受由受信机构签发的任何证书，但有些浏览器插件会在网站使用的证书发生变化时发出警告。以Firefox为例， <a href="https://addons.mozilla.org/en-us/firefox/addon/certificate-patrol">Certificate Patrol插件</a> 就是干这个的(也有人提出了一个加强请求，要在Firefox核心代码中实现这个证书警告功能，但目前只能用插件)。用上这种浏览器插件后，当你回到之前访问过的安全网站，而它出示了一个不同的证书时，你最起码能察觉到可能出问题了，但你还要深入了解问题的细节，以决定是否相信新的证书，因为证书经常因为合法的原因而更换（包括变得太老了，因为证书也有有效期）。有些大型网站会有很多持有不同证书的服务器，访问这种网站时你也会受到警告。</p>
+<p>在程序代码里可做的事情更多。比如你用Java写代码时，可以覆盖默认的证书处理机制，用更安全的技术绕过证书处理机制。这在客户端代码中很容易实现，只要把所期望的服务器证书放在密钥库中，在建立连接时只能使用这个特定的证书就可以了。下面是这种办法的样例代码，用java.security 和 javax.net.ssl包中的几个类来实现这种处理：</p>
+<pre>
+public static void main(String[] args) throws IOException,  
+        GeneralSecurityException { 
+        // 打开密钥库
+        KeyStore keyStore = KeyStore.getInstance(&quot;JKS&quot;);
+        FileInputStream fis = new FileInputStream(Constants.TRUSTSTORE_NAME);
+        keyStore.load(fis, Constants.TRUSTSTORE_PASS.toCharArray()); 
+        // 创建只信任这个服务器证书的信任管理器
+        String alg = TrustManagerFactory.getDefaultAlgorithm();
+        TrustManagerFactory tmfact = TrustManagerFactory.getInstance(alg);
+        tmfact.init(keyStore);
+        X509TrustManager tm = (X509TrustManager)tmfact.getTrustManagers()[0]; 
+        // 创建连接 (并确保它是安全的)
+        URL url = new URL(args[0]);
+        HttpURLConnection conn = (HttpURLConnection)url.openConnection();
+        if (!(conn instanceof HttpsURLConnection)) {
+            System.err.println(&quot;Connection is not secured!&quot;);
+        } 
+        // 配置SSL连接，使用我们的信任管理器
+        SSLContext context = SSLContext.getInstance(&quot;TLS&quot;);
+        context.init(null, new TrustManager[] { tm }, null);
+        SSLSocketFactory sockfactory = context.getSocketFactory();
+        ((HttpsURLConnection)conn).setSSLSocketFactory(sockfactory); 
+        // 打开到服务器的连接
+        conn.connect();
+        conn.getInputStream();
+        System.out.println(&quot;Got connection to server!&quot;);
+    }</pre>
+<p>从注释中可以看到，这段代码读取包含证书的密钥库，创建一个只相信那个证书的TrustManager ，在建立SSL/TLS连接时迫使它使用这个TrustManager 。如果你试图连接到使用不同证书的服务器，认证会失败，连接被阻止。</p>
+<p>完整的代码放在 <a href="https://github.com/dsosnoski/keep-secrets">github 代码库</a>中的com.sosnoski.certs.UseCert类里。com.sosnoski.certs.GetCert类获取由服务器提供的证书并保存在UseCert使用的密钥库里，所以你可以轻松地尝试一下。不过你要注意，大型安全网站可能有几台持有不同证书的服务器，所以你保存的证书有时可能不能用。</p>
+<h2>成为证书颁发机构</h2>
+<p>有时你要处理很多证书，比如当你提供了一种或多种服务，要求每个得到授权的客户端都使用各自的证书时（客户端经过TLS认证）。在这种情况下，为服务器维护能及时更新的信任库可能会变成巨大的管理负担，特别是在客户端证书到期需要更换时。好在你不用做这么多工作也可以维护访问控制，你可以自行建立一个证书颁发机构，并且只信任那个机构发行的证书。</p>
+<p>有些商业或开源工具可以帮你创建这种定制的证书颁发机构。OpenSSL (http://www.openssl.org/) 是其中用得最多的工具之一（尽管要实现功能完整的证书颁发机构还有更好的选择——见下一节）。从名字就能看出来，OpenSSL是SSL/TLS协议的开源实现。它既能处理原有证书，也可以创建新证书，并且它可以运行在各种平台上，包括Linux、MacOS X和Windows。</p>
+<p>网上有几篇用OpenSSL搭建自有证书颁发机构的指南 (比如 <a href="https://help.ubuntu.com/community/OpenSSL#SSL_Certificates">这篇在Ubuntu上的</a>)，所以我们就不在这里介绍太多细节了。其基本过程相当容易，请看下面这些Linux/Unix 终端命令(有缩进的行，可能会因为页面宽度换行)：</p>
+<ol> 
+ <li>创建OpenSSL 证书颁发机构的默认目录结构： <pre>
+mkdir demoCA    
+mkdir demoCA/private    
+mkdir demoCA/newcerts    
+echo '01' &gt; demoCA/serial    
+touch demoCA/index.txt</pre> </li> 
+ <li>为证书颁发机构创建公私密钥对，并把私钥导出到刚创建的目录中： <pre>
+mkdir demoCA    
+mkdir demoCA/private    
+mkdir demoCA/newcerts    
+echo '01' &gt; demoCA/serial    
+touch demoCA/index.txt</pre> </li> 
+ <li>为证书颁发机构创建一个为期10年的自签名证书，并将证书导出到刚创建的目录中： <pre>
+openssl genrsa -out ca-keypair.pem 2048
+openssl pkey -in ca-keypair.pem -out 
+  demoCA/private/cakey.pem</pre> </li> 
+ <li>为用户创建公-私密钥对，并导出证书颁发机构发行证书的请求（在要持有证书的系统上运行）： <pre>
+openssl req -new -x509 -days 3650 -key ca-keypair.pem    
+  -sha256 -out demoCA/cacert.pem     
+[respond to prompts with certificate authority identity]</pre> </li> 
+ <li>对证书签名 (在证书颁发机构所在系统上运行)： <pre>
+openssl ca -out user-cert.crt -policy policy_anything     
+  -md sha256 -infiles user-cert.req     
+[respond to prompts to sign and commit certificate]</pre> </li> 
+</ol>
+<p>上面使用了2048位 RSA 密钥，目前一般认为是安全的。3072位的密钥有更强的防护级别，而真正的偏执狂会用4096位的密钥。在建立安全连接时，比较长的密钥会增加一些系统开销，但除非是最繁忙的网站，否则一般不会有什么显著影响。要改变密钥长度，只要在两个“openssl genrsa ...”命令中换掉“2048”就可以了。</p>
+<p>你自然要严格控制对证书颁发机构的访问，尤其要保证用来签发证书的私钥绝对不能泄漏。你还要建立一套管理流程，所有申请证书的人的身份和授权都要进行验证。</p>
+<p>前面的Java代码很容易用到你的证书颁发机构中。只要用证书颁发机构的证书代替某个特定服务器的证书放到你的信任库中，那么任何经由那个机构签名的证书都会得到客户端的认可。根本不需要改代码。</p>
+<h2>机构给的，机构收回</h2>
+<p>要构建一个完备的证书颁发机构，实际上还有一项工作要做：在证书发出去之后，要能撤销。</p>
+<p>证书撤销是指之前发行的证书不再有效，或者是因为你终止了证书持有者对服务的访问，或者因为你给他们发了新证书替换原来的证书。如果某个证书的持有者怀疑他们的系统被非法访问并且他们的私钥可能已经泄漏了，就需要做这种替换。在理想情况下绝不会发生这种事情，但为了以防万一，你应该公布一份<a href="http://en.wikipedia.org/wiki/Certificate_revocation_list">CRL</a> 并进行检查。</p>
+<p>也可以不做直接CRL检查，采用比较新的替代方案， <a href="http://en.wikipedia.org/wiki/Online_Certificate_Status_Protocol">在线证书状态协议</a> (OCSP)。按照 OCSP，可以在代码中向与发行证书的颁发机构相关联的服务器发送一个请求，直接检查证书的当前状态。如果证书是用来建立安全连接的，OCSP检查可以和建立连接同步进行，这样可以降低系统开销。连接建立好以后发现证书不对也没关系，只要在使用安全连接交换数据之前得到检查结果就行。 还有一种叫做<a href="http://en.wikipedia.org/wiki/OCSP_Stapling">OCSP 吻合</a>的技术，服务器可以主动要求发行机构对它的证书进行检查，验证后能得到一个经过签名的时间戳，这样客户端就知道服务器的证书仍然是被证书颁发机构认可的。</p>
+<p>如果你准备构建一个带有撤销处理的证书颁发机构，那么最好是使用<a href="http://www.ejbca.org/">EJBCA</a>之类的工具。 EJBCA是基于EJB技术的开源企业级证书颁发机构。它提供了生成和管理证书的全部功能，包括对直接CRL和OCSP的支持。</p>
+<p>当前的大多数浏览器都默认实现了证书的OCSP 检查。在Java代码中，你可以使用系统属性<strong>com.sun.net.ssl.checkRevocation=true</strong> 启用证书检查， 启用OCSP 检查的属性是 <strong>ocsp.enable=true </strong><strong>和</strong><strong> com.sun.security.enableCRLDP=true</strong> (或者非Sun/Oracle JVM上与之等价的属性)。</p>
+<h2>协商的弱点</h2>
+<p>对于欺诈性路由器或其他中间介质来说，假证书是伪造理应安全连接最直接的方式，但不是唯一的方式。客户端和服务器在建立连接时需要进行协商，而另一类攻击就是以破坏协商过程为基础。这类攻击的目标是将最终连接的安全性减弱到可以被轻易攻破的水平。</p>
+<p>要了解这类攻击的工作原理，需要先掌握一点TLS的工作原理。TLS连接使用的会话跟你在浏览器中登入网站后得到的东西类似。只不过在TLS中，会话在客户端和服务端是各自独立维护的，但它在两端都表示允许双方安全通信的共享状态信息。其中包括一个用来加密双方传递信息的密钥，还有用来维持安全性的序列和其他控制信息（因为TLS不仅有保密能力，还会做消息完整性检查，以检测信息在传输过程中是否被修改过）。</p>
+<p>TLS会话从一个被称做“握手”的消息交换开始。客户端先向服务器发起一个请求，告诉服务器它所支持的最高TLS版本、可用的加密算法套件列表（用来标识连接的安全算法），以及其他辅助信息。服务器从客户端所支持的协议版本和加密算法套件中选出一个作为响应，同时把它的证书发过去。客户端验证服务器的证书，生成一个密值，并用服务器证书中的公钥加密后发送给服务器。双方用以这个密值为基础计算出的密钥对通过安全连接交换的数据进行加密和签名。</p>
+<p>欺诈性中间介质很可能会干扰握手的初始阶段，因为在交换第一个消息时是没有经过加密和签名的。特别是可以弱化客户端所期望的TLS版本和/或加密算法套件。比如中间介质可能会修改消息，只让客户端使用SSL 2.0。</p>
+<p>这个协议之所以有被降级的危险，是因为SSL协议的早期版本有一些众所周知的弱点。在确保连接使用了脆弱的协议后，欺诈性中间介质就可以利用一个或多个弱点来打破连接的安全性。</p>
+<p>TLS 1.1及更高版本对这类降级攻击做了防护，包括在握手末尾使用覆盖所有消息的签名。但这些防护有时会出现漏洞，不过至少在应用程序的数据交换中有更坚实的办法可以规避这种攻击。</p>
+<h2>协商强度</h2>
+<p>对付降级攻击最好办法很简单：只允许安全连接使用TLS协议的特定可信版本。可惜在使用浏览器时这个办法有点不切实际，因为你想用的“安全”网站可能没有及时升级它们所支持的协议。不过大多数浏览器至少还能让你把安全连接限制在比较新的协议版本上， 在狂野的web上也就只能这样了。</p>
+<p>但如果连接的两端都在你的控制之下，限制协议版本这个办法非常管用，对于企业数据交换来说这是最佳实践。你应该确保无论是客户端代码还是服务端代码，两边都要强制采用这种办法。</p>
+<p>在Java客户端代码中最简便的做法是用系统属性<strong>https.protocols=TLSv1.1</strong> (或 <strong>TLSv1.2</strong>)。这种办法的唯一限制是所有安全连接都只能使用同一种协议。如果你想控制每个连接所用的协议，可以调整由<strong>javax.net.ssl.SSLContext</strong> 返回的<strong>SSLSocketFactory</strong> 。请参照<a href="https://github.com/dsosnoski/keep-secrets">github代码库</a> 上的 <strong>com.sosnoski.tls.ForceTls</strong> 类实现。</p>
+<p>在服务端一般用应用服务器上的选项做这个控制。比如在使用带Java连接器的Tomcat时，可以用<strong>&lt;Connector&gt;</strong> 元素上的<strong>sslEnabledProtocols</strong> 限制协议套件，所以跟上面客户端的配置相匹配的应该是<strong>&lt;Connector …sslEnabledProtocols=&quot;TLSv1.1&quot; …/&gt;</strong>。而在用 APR 连接器时应该是 <strong>SSLProtocol</strong> 属性。</p>
+<h2>你说过或做过的任何事都能用来并且会被用来对付你</h2>
+<p>现在你已经见过一些让安全连接更难以被打破的技术了。但如果服务器的私钥受到损害，这些技术就全都失效了，因为任何可以访问私钥的人都可以在会话建立时解密消息查看会话密钥，然后用会话密钥解密会话中交换的所有数据。所以确保你的私钥绝对私密至关重要，千万不要把它们暴露在你自有的系统之外。</p>
+<p>但有时私钥确实会受损，或者因为系统被黑，或者因为有访问权限的内部人士，或者因为政府的命令。如果你知道密钥已经暴露了，可以生成新的公私密钥对和新的证书，把旧证书撤销掉，这样客户端就不会再接受它（这一步很重要，否则拿到旧私钥的人仍然可以用旧证书冒充你）。但这样只是照顾到了将来的数据交换，如果窃取了私钥的人监测并记录下了以前的会话，他们仍能用旧密钥解密并查看以前会话中交换的数据。</p>
+<p>有种安全连接的保护方法甚至连这种回溯性破解也可以防护。它被称为“完全正向保密（perfect forward secrecy）”，它为客户端和服务器端提供了一种为会话创建共享密钥的办法，而这个密钥不会暴露给任何监测数据交换的人（即便监测者能够得到服务器的私钥，只要它只是个监测者而不是中间人）。</p>
+<p>正向保密的标准实现是采用某种Diffie-Hellman 密钥交换。Diffie-Hellman 的基本思想是利用整数模素数群的乘法性质。计算某个数的幂在群中的值很容易，即便这个群和幂都很大也没关系。但用已知的数学知识做逆向计算非常困难，即给定一个数和一个值，很难根据这个群中的值算出这个数的幂是多少（这被称为离散对数问题）。Diffie-Hellman 密钥交换的双方都使用相同的群和原根，但所用的幂和生成的值不同，然后他们互相交换由各自的幂生成的值。最终双方都得到了一个结合了两个私密幂的共享值。任何监测数据交换的人要想得到私密幂，都要做逆向工作去解决计算困难的离散对数问题，并且只要值足够大，以现有的技术计算出结果所需要的时间让这种计算失去了实际意义。</p>
+<p>但对浏览器来说有个坏消息，很多web服务器都不支持安全连接的完全正向保密。部分原因是这样会增加一些开销（用基于椭圆曲线的Diffie-Hellman变体代替离散对数可以降低这种开销），但经常仅仅是因为用了过时的安全实现。Google在对正向保密的支持上非常积极主动，并且最近其他主流网站也开始支持它了。在Chrome浏览器中，你可以点击绿色锁图标查看某个安全站点是否使用了完全正向保密（可以在连接的详细信息中看看它是否给出了包含字母&quot;DHE&quot;的密钥交换，比如“ECDHE_RSA”）。</p>
+<p>在Java程序代码中要求使用正向保密相当容易。还是使用系统属性，<strong>https.cipherSuites=TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA</strong>。如果你想控制每条连接上的协议，可以采用跟控制协议版本号相同的办法，请参考<a href="https://github.com/dsosnoski/keep-secrets">github 代码库</a>中的<strong>com.sosnoski.tls.ForceSuite</strong> 类。</p>
+<p>那个密码套件的名称看起来相当神秘，但如果你把它拆开来看就很好懂了。 “TLS” 自然是指TLS协议。 “ECDHE” 是说使用带有短暂性密钥的椭圆曲线Diffie-Hellman密钥交换（也就是说要为每个会话创建新密钥并且事后也不会记下来）。“RSA”表明用RSA 非对称加密保护TLS握手的安全。 “AES_128_CBC” 是说在密码块链接模式中用带有128位密钥的AES 非对称加密保护真正的数据交换。最后的 “SHA” 表明用 SHA 安全哈希算法。</p>
+<p>这可能是在Oracle的Java 7上用TLS 1.1所能用到的最好密码套件。如果用TLS 1.2 ，你可以升级成<strong>TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256</strong>，使用更强(也更安全)的 SHA2 摘要算法。理想情况下，用GCM（伽罗瓦​​/计数器模式）之类的模式代替CBC更好，但Oracle的 Java 7 JSSE (Java 安全套接字扩展)实现还不支持。</p>
+<p>你可能还要考虑从 “<strong>ECDHE</strong>” 去掉“<strong>EC</strong>”。密码学大师布鲁斯&middot;施奈尔现在<a href="http://www.theguardian.com/world/2013/sep/05/nsa-how-to-remain-secure-surveillance">推荐优先选用离散对数而不是椭圆曲线加密</a> (在这篇文章中还有很多非常棒的建议，教你如何保证自己以及你的数据交换的安全)。椭圆曲线技术更快，但可能会有政府组织故意引入的弱点。但大多数商业安全网站目前似乎只支持Diffie-Hellman的椭圆曲线版本，所以这个例子里就用它了。</p>
+<p>在服务端一般用应用服务器上的配置选项控制密码套件。比如在使用带Java连接器的Tomcat时，可以用<strong>&lt;Connector&gt;</strong> 元素上的<strong>ciphers</strong> 属性限制密码套件，所以跟上面客户端的配置相匹配的应该是<strong>&lt;Connector … ciphers=&quot;TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA&quot; …/&gt;</strong>。而在用 APR 连接器时应该是<strong>SSLCipherSuite</strong>属性。</p>
+<p>关于Diffie-Hellman密钥交换还有一段有趣的历史， 它最初发表于1976 年(由Whitfield Diffie 和 Martin Hellman提出) ，但实际上几年之前英国 GCHQ（一个目前受到广泛关注的组织，因为他们对网上发生的，好吧，所有事情进行监测）就已经把它发明出来了。 GCHQ由于某些原因不想把他们的发明成果公诸于众，于是就变成Diffie 和 Hellman 独立发明并推出了这项技术。</p>
+<h2>时间与安全</h2>
+<p>安全总是相对的，并且随着密码学知识和计算机技术的不断进步，安全性会随着时间减弱。在30年前号称最先进的国家级安全性的东西现在可以轻松破解，并且我们有充分的理由相信这一原则在将来也同样适用。</p>
+<p>如果能够正确实现，本文所讨论的技术可以帮你防护目前已知的最重要的攻击，包括要在合理的时间内找出会话密钥的暴力攻击（即便这种攻击来自在专用硬件上花了大钱的组织）。这应该能防止任何人成功篡改你的数据交换，并且（抛开在算法中隐藏的后门不谈）应该能够确保你的数据至少在接下来的10到20年，甚至更长的时间内是保密的。但它很可能无法保证数据在100或200年后还是保密的，如果数据被保存下来，并且有人有充分的动机要用那时侯的工具获取数据的话。对于大多数业务或个人数据来说那不是个问题，因为相对长期保密性而言，我们更加关心近期的保密性，但在考虑数据安全时记得这一点是件好事。</p>
+<p>对于正在运行的程序，你需要每隔几年就审查一下安全协议和套件，并在恰当的时候按新标准升级程序的安全性。虽然那样仍然无法防止有人捕获并最终解密你的数据，但最起码在当前可以保护你的数据不被篡改，短期内也别人也无法查看你的数据。</p>
+<h2>收尾</h2>
+<p>如今数据通信安全受到的威胁很多，将来肯定还会变得更糟，尤其是考虑到政府层面的黑客行为后。一些发达国家已经有了大量的数据收集和网络破坏程序。随着网络军备竞赛不断热化，那些还没有这种程序的将来很可能也要构建了，所以即便相信你的政府不会觊觎你的数据，你也要考虑其他“不怀好意”的政府的行动。</p>
+<p>本文介绍的办法可以让别人更难查看或修改你的数据交换。这种强化的办法是安全的重要组成部分，但远不是唯一的部分。比如说你在数据交换时用了完全正向保密机制，但如果数据只是保存在安全性很差的数据库里，那正向完全保密对数据安全也起不到多大作用。真正的安全要求围绕系统和程序做多层次防护。还要求你具备防御性思维，在证明其安全性之前，进入系统的任何东西都是可疑的。所以对你所信任的人和物一定要谨慎，保护好你的秘密！</p>
+<h2>关于作者</h2>
+<p><img alt="" style="float: left; margin-right: 10px" src="http://infoqstatic.com/resource/articles/keeping-your-secrets/zh/resources/1021002.jpg" _href="img://null" _p="true" /> <strong>Dennis Sosnoski</strong> 是一名Java 和 Scala 开发人员，有多年的数据通信和企业系统开发经验，并积累了很强的安全背景。他在全球范围内为客户提供咨询和培训服务，特别是在web服务领域 (包括他的 <a href="http://www.sosnoski.com/security.html">Web 服务的安全性</a> 课程)，他即将通过他的新网站<a href="http://www.azdeo.com">Azdeo</a>推出保证个人数据交换安全的几个产品中的第一个。Dennis在Java社区中也很活跃，经常在各种用户组和会议上演讲，为在线技术出版方供稿，为一些开源项目做贡献（包括Apache CXF web服务框架，他目前正在整合WS-ReliableMessaging 和 WS-SecureConversation）。访问他的 <a href="http://www.sosnoski.com">咨询和培训服务网站</a> 可以了解他的背景和服务的详细信息。</p>
+<div style="clear: both">
+ &nbsp;
+</div>
+<p><strong>原文英文链接：</strong><a href="http://www.infoq.com/articles/keeping-your-secrets">Keeping Your Secrets</a></p>
+<hr />
+<p>感谢<a href="http://www.infoq.com/cn/author/侯伯薇">侯伯薇</a>对本文的审校。</p>
+<p>给InfoQ中文站投稿或者参与内容翻译工作，请邮件至<a href="mailto:editors@cn.infoq.com">editors@cn.infoq.com</a>。也欢迎大家通过新浪微博（<a href="http://www.weibo.com/infoqchina">@InfoQ</a>）或者腾讯微博（<a href="http://t.qq.com/infoqchina">@InfoQ</a>）关注我们，并与我们的编辑和其他读者朋友交流。</p><br><br><br><br><br><br></body></html>

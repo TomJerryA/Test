@@ -1,6 +1,12 @@
 <html>
  <head></head> 
- <body> 
+ <body>
+  <div>
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/31.java">Visual Commander Professional v1.3 Introduces 99 Commands, 50 Extensions and C# Syntax Highlighting</a>The recently released Visual Commander Professional v1.3 includes 99 commands, 50 extensions including syntax highlighting for C#. It also provides an ability to select default language for new commands and extensions by selecting the macro language in addition to several improvements.
+  </div>
+  <div>
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/30.java">Amazon re:invent roundup</a>Amazon announced a number of new services at the recent re:invent conference in Las Vegas: Amazon WorkSpaces - Desktop Computing in the Cloud, Identity and Access Management using SAML, Amazon AppStream - Delivering Streaming Applications from the Cloud, Amazon Kinesis - Streaming Big Data, CloudTrail - Capturing AWS API Activity, Postgres support in RDS and new EC2 instance types
+  </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/29.java">The Costs of Versioning an API</a>Versioning of services is something which has been a cornerstone problem of SOA. There are many examples over the years of experiences gained and shared, but little in the way of concretely comparing and contrasting different approaches. Jean-Jacques Dubray has written about the experiences of his team in this area and some equations they have developed to try to illustrate the differences. 
   </div> 
@@ -144,12 +150,6 @@
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/32.java">The Human Aspects of API Design: An Interview with Apiary's Jakub Nesetril</a>API Design and description is more than just a technical interface contract between machines. Apiary's Co-Founder and CEO Jakub Nesetril points out that the real consumer of an API description is the developer, with all the concerns of engagement, usability and communication that entails. We spoke with Jakub recently about Apiary's approach to API design and emerging API tools and workflows. 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/31.java">GenMyModel: An Online Real-time Collaborative UML Designer</a>This article contains an interview on GenMyModel’s architecture, technology used and future. 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/30.java">Xamarin’s Rough Transition to 64-bit iOS/OSX</a>In order to support 64-bit iOS and OSX, Xamarin has to make some breaking changes to the way it implements the mapping between C# and Objective-C libraries. Rather than being mapped to 32-bit types, NSInteger and CGFloat are now mapped to the new platform-specific data types nint and nfloat. 
-  </div> 
+  </div>   
  </body>
 </html>
