@@ -2,6 +2,15 @@
  <head></head> 
  <body> 
   <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/34.py">DXperience 13.2 - 新しいASP.NETアイコンライブラリ，新テーマ，スマートタグサポートの拡大と強化</a>まもなくリリースされるDevExpress DXperience 13.2には，新しいASP.NETアイコンライブラリ，CSS3ベースのmodernoテーマ，Visual StudioのWinForms用の新テーマ，さらにはWinFormsデータ編集ライブラリを含む全コントロール対象のスマートタグサポートが含まれている。 
+  </div> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/33.py">Oracleが2013 JVM Language Summitのビデオとスライド資料をリリース</a>Oracleが今年7月に行われた2013 JVM Language Summitのビデオとスライドを公開した。巨大なビッグデータから小さなモバイルまで及ぶJVMの利用例に加えて，JVMランタイムの将来的なパフォーマンス向上も紹介されている。本記事でその内容を確認してほしい。 
+  </div> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/32.py">CMMI開発で実現する設計レベルのセキュリティ</a>セキュアな製品開発を可能にするためには，ソフトウェア開発ライフサイクルのプロセス全般においてセキュリティ活動が実施される必要がある。SiemensのWinfried Russwurm氏とLimes SecurityのPeter Panholzer氏は， SEPG Europe 2013カンファレンスで開催したワークショップでセキュリティ活動について調査し，Application Guide for Improving Processes for Secure Productsを公開した。 
+  </div> 
+  <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/31.py">Amazon Kinesisでビッグデータをストリーム処理</a>Amazonがさまざまなソースにある大規模データをストリーム処理できるサービス、Kinesisを発表した。現在、限定プレビューとして利用できる。 
   </div> 
   <div> 
@@ -141,15 +150,6 @@
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/35.py">CiscoがH.264デコーダをオープンソース化，Mozilla Firefoxで使用可能に</a>Ciscoが次週のIETF議会に先立って，H.264デコーダをMozilla Firefoxで利用可能なBSDライセンスで公開すると発表した。これによってすべてのブラウザがH.264をサポート可能になる。 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/34.py">Eclipse財団がヨーロッパ支部をローンチ</a>本日のEclipseCon EuropeにおいてEclipse財団は，ヨーロッパのオープンソースコミュニティのサポートと促進を目的として，同財団のヨーロッパ支部を設立すると発表した。詳細は本文を参照してほしい。 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/33.py">GOTO Berlin: 自分の公開APIを使うときの課題</a>自分のAPIを使うことが課題になることがある。GOTO Berlinカンファレンスで、Soundcloudのエンジニアリングディレクター、Phil Calcado氏が巨大なRailsアプリケーションを管理、再構築した経験について語った。 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/32.py">QConSF 2013のスケジュールが公開</a>なぜしっかりとチューニングされたシステムが、優れているが未熟なシステムよりも高性能なのか。FacebookのKeith Adams氏がQCon San Franciscoのキーノートでこの質問に答える。カンファレンスのスケジュールが決まり、昨年より40％多い参加者が見込まれている。3週間前だが、10月25日までに参加登録すれば400ドル割引される。 
   </div> 
  </body>
 </html>

@@ -1,26 +1,47 @@
-<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>QConSF 2013のスケジュールが公開</h3><p><a target="_blank" href="http://www.infoq.com/news/2013/10/qconsf2013"><em>原文(投稿日：2013/10/21)へのリンク</em></a></p>
+<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>CMMI開発で実現する設計レベルのセキュリティ</h3><p><a target="_blank" href="http://www.infoq.com/news/2013/11/security-by-design-cmmi"><em>原文(投稿日：2013/11/15)へのリンク</em></a></p>
 <div class="article_page_left news_container text_content_container"> 
  <div class="text_info"> 
-  <p>FacebookのKeith Adams氏がQConSF 2013のキーノートスピーカーに決まった。氏はFacebookのHipHop Virtual Machineの創立者のひとりだ。<a href="http://qconsf.com/schedule?utm_source=infoq&amp;utm_medium=news&amp;utm_campaign=10212013news">カンファレンスのスケジュールも決まり</a>、参加者は昨年よりも40%多い。3週間前だが、<a href="http://qconsf.com/registration?utm_source=infoq&amp;utm_medium=news&amp;utm_campaign=10212013news">10月25日までに参加登録すれば</a>400ドル割引される。</p> 
-  <p><u><strong>Facebookのキーノート: &quot;The Unreasonable Effectiveness of Tuning&quot;</strong></u></p> 
-  <p>&quot;直感に反しているが、チューニングの効果は、基礎により優れた技術を使う効果を圧倒する場合が多い。しっかりとチューニングされている出来の悪いシステムは出来はよいが未熟なシステムよりも性能がよい。キーノートの<a href="http://qconsf.com/keynote/unreasonable-effectiveness-tuning?utm_source=infoq&amp;utm_medium=news&amp;utm_campaign=10212013news">プレゼン</a>で氏は次の話題を取り上げる予定だ。</p> 
-  <ul> 
-   <li>&nbsp;エビデンスベース: しっかりチューニングされた既存のシステムが未熟な設計より優れた性能を発揮した例</li> 
-   <li>&nbsp;悲劇: この事実を無視していることで技術の進歩が制限されている</li> 
-   <li>&nbsp;複雑な技術プロジェクトを計画することの難しさ&nbsp;</li> 
-  </ul> 
-  <p><u><strong>トレーニング @ QConSF 2013</strong></u></p> 
-  <p class="p1">QConSFでは2日間の<a href="http://qconsf.com/tutorials?utm_source=infoq&amp;utm_medium=news&amp;utm_campaign=10212013news">ハンズオンのチュートリアル</a>があり、次のトピックを取り上げている。</p> 
-  <ul> 
-   <li>高性能コンピューティングの専門家であるAzul Systemsの共同創立者兼CTOである<strong>Gil Tene氏</strong>による<a href="http://qconsf.com/tutorial/lock-free-and-high-performance-concurrent-algorithms?utm_source=infoq&amp;utm_medium=news&amp;utm_campaign=10212013news">Lock-free and High-Performance Concurrent Algorithms</a></li> 
-   <li>ドメイン駆動設計の創始者である<strong>Eric Evans氏</strong>による<a href="http://qconsf.com/tutorial/domain-driven-overview?utm_source=infoq&amp;utm_medium=news&amp;utm_campaign=10212013news">Domain-Driven Overview</a></li> 
-   <li>Azul Systemsの共同創立者兼CTOである<strong>Gil Tene氏</strong>による<a href="http://qconsf.com/tutorial/how-debug-your-slow-java-gc-times?utm_source=infoq&amp;utm_medium=news&amp;utm_campaign=10212013news">How to Debug your Slow Java GC Times</a></li> 
-   <li>継続的デリバリの専門家である<strong>Tim Brown氏</strong>と&quot;Continuous Delivery&quot;の著者である<strong>Jez Humble氏</strong>による<a href="http://qconsf.com/tutorial/secrets-infrastructure-code-day-1-2?utm_source=infoq&amp;utm_medium=news&amp;utm_campaign=10212013news">Secrets of Infrastructure as Code</a></li> 
-   <li><strong>Mike Amundsen氏</strong>による<a href="http://qconsf.com/tutorial/restful-web-apis?utm_source=infoq&amp;utm_medium=news&amp;utm_campaign=10212013news">RESTful Web APIs</a></li> 
-   <li>...などほか多数(<a href="http://qconsf.com/tutorials?utm_source=infoq&amp;utm_medium=news&amp;utm_campaign=10212013news">すべてのリストはここで見られる</a>)</li> 
-  </ul> 
-  <p>QConSFには100人以上が登壇し、6つのトラックが並列して走り、パティーやネットワーキングの機会もある。QConに参加したことがないなら、<a href="http://www.infoq.com/qcon_sf2012">過去のセッションを見るといいだろう</a>。学習してネットワーキングして、Java、Web API、データサイエンス、HTML5/JavaScript、 モバイル、アジャイル、アーキテクチャの世界でおこっているイノベーションを追跡できるイベントはほかにない。</p> 
-  <p><a href="http://qconsf.com/registration/?utm_source=infoq&amp;utm_medium=news&amp;utm_campaign=10212013news">参加登録</a>は<strong>10月25日までは</strong>400ドル安い<strong>1995ドル</strong>。グループ割引もある。QConはInfoQ.comがプロデュースする年次のイベントで、ロンドン、サンフランシスコ、ニューヨーク、北京、上海、深＝A東京、サンパウロで開催されている。<a href="http://qconferences.com">http://qconferences.com</a></p> ・ 
-  <p><a href="https://twitter.com/QConSF">Twitter</a>と<a href="https://www.facebook.com/QCon">Facebook</a>で最新の情報を参照されたい。</p> 
+  <p>セキュアな製品開発を可能にするためには，ソフトウェア開発ライフサイクルのプロセス全般においてセキュリティ活動が実施される必要がある。&quot;開発開始の時点からセキュリティを適切に考慮しておく必要があります。製品はその設計からセキュアでなくてはならないのです。&quot; SiemensのWinfried Russwurm氏とLimes SecurityのPeter Panholzer氏は言う。氏らは<a href="http://www.sepg.unicom.co.uk/"> SEPG Europe 2013</a>カンファレンスで開催したワークショップでセキュリティ活動についての調査を実施し，<a href="http://cmmiinstitute.com/resource/security-by-design-with-cmmi-for-development-version-1-3/"> Application Guide for Improving Processes for Secure Products</a>を公開している。</p> 
+  <p>氏らはワークショップの参加者に対して，セキュリティを拡大し，よりセキュアな製品を作り出すために実施するべき開発アクティビティを考えるように求めた上で，挙げられたアイデアを次のように分類した。</p> 
+  <blockquote> 
+   <p>組織：</p> 
+   <ul> 
+    <li>セキュリティ専門家の手配</li> 
+    <li>セキュリティに関する意識の向上と文化の確立</li> 
+    <li>セキュリティトレーニングの提供</li> 
+    <li>セキュリティポリシの確立と展開</li> 
+   </ul> 
+   <p>要件</p> 
+   <ul> 
+    <li>利害関係者としてのハッカーの認識</li> 
+    <li>セキュリティリスク分析の実施</li> 
+    <li>ユーザストーリやシナリオなど，セキュリティ要件の定義</li> 
+   </ul> 
+   <p>アーキテクチャ</p> 
+   <ul> 
+    <li>インターフェース設計におけるセキュリティリスクの重視</li> 
+    <li>セキュリティのためのアーキテクチャ規則とガイドライン</li> 
+    <li>セキュリティのための実証済アーキテクチャの特定と適用</li> 
+   </ul> 
+   <p>実装</p> 
+   <ul> 
+    <li>セキュアなソフトウェア用のコーディング標準を適用</li> 
+    <li>コードのセキュリティをチェックするツールの使用</li> 
+   </ul> 
+   <p>テスト</p> 
+   <ul> 
+    <li>セキュリティテストの立案と実施</li> 
+    <li>セキュリティテストを自動化するツールの採用</li> 
+   </ul> 
+   <p>ライフサイクル全般</p> 
+   <ul> 
+    <li>セキュリティレビューや検証の実施</li> 
+    <li>リスク評価を行うために，リスクソースとカテゴリの識別</li> 
+    <li>他の企業や地域社会から学んだ教訓の適用</li> 
+    <li>セキュリティ問題に対処するためのソーシャルメディアポリシの確立</li> 
+   </ul> 
+  </blockquote> 
+  <p>CMMIは今年始め，<a href="http://cmmiinstitute.com/resource/security-by-design-with-cmmi-for-development-version-1-3/">Application Guide for Improving Processes for Secure Products</a>を公開している。このアプリケーションガイドには技術のセキュリティ的側面，プロジェクトのセキュリティ管理，組織のセキュリティ的トピックといった，新たなプロセス領域に関する記述が含まれている。このガイドは，CMMI-DEV(Capability Maturity Model Integration for Development)と合わせて使用することで，プロセスの改善を実現し，採用する組織によるユーザへのセキュリティ保障を可能にする。</p> 
+  <p><a href="http://cmmiinstitute.com/">CMMI Institute</a>ではガイドの著作者たちの協力の下，採用した組織からの意見や感想を幅広く求めている。</p> 
  </div> 
 </div><br><br><br><br><br><br></body></html>

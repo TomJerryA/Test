@@ -1,23 +1,11 @@
-<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>Eclipse財団がヨーロッパ支部をローンチ</h3><p><a target="_blank" href="http://www.infoq.com/news/2013/10/eclipse-foundation-europe"><em>原文(投稿日：2013/10/29)へのリンク</em></a></p>
+<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>DXperience 13.2 - 新しいASP.NETアイコンライブラリ，新テーマ，スマートタグサポートの拡大と強化</h3><p><a target="_blank" href="http://www.infoq.com/news/2013/11/dxperience-13-2"><em>原文(投稿日：2013/11/16)へのリンク</em></a></p>
 <div class="article_page_left news_container text_content_container"> 
  <div class="text_info"> 
-  <p>本日のEclipseCon Europeにおいて，Eclipse財団(Eclipse Foundation)が<a href="http://eclipse.org/org/press-release/20131029_efe.php">Eclipse Foundation Europe GmbH(有限会社)をローンチした</a>。ドイツのツヴィンゲンベルク(ヘッセン州)に拠点を置き，Eclipce財団のヨーロッパ支部となるこの財団は，同地のEclipseオープンコミュニティのサポート促進を目的として設立されたものだ。</p> 
-  <p>コミュニティの1/4以上が居住するヨーロッパで毎年開催される<a href="http://www.eclipsecon.org/europe2013/">EclipseCon Europe</a>，同じく毎年開催の<a href="http://www.eclipsecon.org/france2013/toulouse">EclipseCon France</a>と，拡大する財団の活動に対して，かねてから地元でのサポートが必要とされていた。</p> 
-  <p>新たなEclipse Foundation EuropeのマネージングディレクタにはRalph Mueller氏が任命された。氏はこれまでの<a href="https://www.eclipsecon.org/europe2013/past-conferences">EclipseCon Europe</a>(さらにはEclipse Summit Europeイベント)において，重要な役割を果たしてきた人物だ。</p> 
-  <p>ヨーロッパに財団が設立された理由，ドイツに拠点を置いた理由については<a href="http://eclipse.org/org/press-release/20131029_efe_faq.php">FAQ</a>に説明されている：</p> 
-  <p><b>なぜドイツに設立されたのですか？</b></p> 
-  <blockquote> 
-   <p>簡単に言えば，Ralph Mueller氏の住む場所だからです。氏はEclipse Foundation Europeのマネージングディレクタとして，その職務を担当する予定です。ヨーロッパのEclipseコミュニティに精通した者のひとりとして，氏は長年にわたって私たちの現地スタッフをリードする存在でありました。</p> 
-  </blockquote> 
-  <p><b>Eclipse Foundation Europeはドイツの非営利法人なのでしょうか？</b></p> 
-  <blockquote> 
-   <p>厳密には，そうではありません。EFEはGmbHとして法人化されていますから，一般的にはドイツの営利目的法人ということになります。ただしこれは，Eclipse財団のビジネスモデルの変更を意図したものではありません。私たちの事業に利益を求めるつもりはないのです。ドイツの税制ないし規制上の要件においては，EFEは実質上，非営利団体として運営されます。</p> 
-   <p>EFEの設立に向けて作業するに当たって，私たちは連盟(Verein)や公益法人など，さまざまな選択肢を検討しました。結果としてGmbHが，私たちのニーズにもっとも適したアプローチだったのです。</p> 
-  </blockquote> 
-  <p><b>ヨーロッパに居住するEclipse財団のメンバは，EFEにメンバシップを移動する必要がありますか？ 会費をユーロで支払うことは可能でしょうか？</b></p> 
-  <blockquote> 
-   <p>いいえ。すべての会員は引き続き，米国法人のEclipse財団に直接所属することになります。従って会費も米ドルで支払う必要があります。</p> 
-  </blockquote> 
-  <p>ちなみに，Eclipse Foundation Europeではプロジェクトのホストは行わず，引き続きカナダのマスタでホストされることになる。</p> 
+  <p>DXperience 13.2には新しい<a href="https://community.devexpress.com/blogs/aspnet/archive/2013/11/07/asp-net-icon-library-what-s-new-in-13-2.aspx">アイコンライブラリ</a>が付属する。DevExpress ASP.NETのコントロールからは，IconIDプロパティを使って利用できる。ナビゲーションバーコントロールにアイコンが必要ならばItems.Image.IconIDプロパティを使う，という具合だ。IconIDプロパティを選択すれば，アイコンの選択が可能な編集ダイアログが表示される。<br /> <br /> <img src="http://www.infoq.com/resource/news/2013/12/dxperience-13-2/ja/resources/Icon_Library.png" alt="" _href="img://Icon_Library.png" _p="true" /></p> 
+  <p>公式発表によると，ライブラリに含まれるアイコンはImagePropertiesクラスから継承され，16x16と32x32フォーマットのカラーおよびグレースケールの形式が用意される。<br /> <br /> さらに，要素の大部分の描画に最新のCSS3技術を使用した<a href="https://community.devexpress.com/blogs/aspnet/archive/2013/11/13/asp-net-moderno-theme-what-39-s-new-in-13-2.aspx">Moderno</a>テーマも追加される。パッドのサイズが大きいため，タッチベースのモバイルデバイスにも問題なく対応する。</p> 
+  <p><a href="/resource/news/2013/12/dxperience-13-2/ja/resources/Moderno_Padding_Original.png" target="_blank"><img src="http://www.infoq.com/resource/news/2013/12/dxperience-13-2/ja/resources/Moderno_Padding.png" alt="" _href="img://Moderno_Padding.png" _p="true" /></a></p> 
+  <p>今回のリリースにはWinForms用のテーマが３つ，新たに含まれる。Visual Studio Color Themeがすべてのコントロールデザイナでサポートされることも合わせて，従来より改良されたデザイン時エクスペリエンスを提供する。新機能を使えば，デザイナのスキン設定を修正して，Visual Studioのカラーテーマにマッチさせることも可能になる。スマートタグのサポートも含まれている。BarCodeControlやButtonEdit, CalcEdit, CheckButton, ComboBoxEditなど，WinForms Data Editors Libraryのコントロールも含むすべてのコントロールが対象だ。</p> 
+  <p>DXperience 13.2の新しいリボンコントロールは，データバインディングをサポートすると同時に，テンプレートに加えてレイアウトやリッチクライアント側のイベントにも対応する。ASP.NETスプレッドシートコントロールも今回のリリースで新しくなった。自動化された数式演算エンジン，スプレッドシート組み込み関数，セル参照，セルフォーマットなどの機能を備えたＵＩの自動生成が可能だ。グラフ生成や画像，ワークシート管理などの機能も装備する。<br /> <br /> Gridコントロールではバッチ編集がサポートされた。レコードをクライアント側でバッチ編集して，単一のリクエストでサーバに送信することができる。Token Ｂｏｘという新しいコントロールが追加され，定義済のリストと凡例チェックボックスを使って，グラフ要素のさまざまな表示形式をユーザが選択できるようになる。ちなみにチャートコントロールは，グラフのサイズやズームレベルに基づいてデータレンダリングを行う。</p> 
+  <p>カラー選択コントロールも新しくなった。クッキーのコレクションとして指定されるドロップダウンを通じて，独自の色を選択することができる。データバインディングやヘルプテキスト描画，タブ，グループボックスコンテナをサポートする，新しいMVCエクステンションも追加された。DevExpressデータエディタとシームレスに統合されている。Grid検索エクステンションには，今回のリリースで複数レコード選択のサポート，項目テンプレート，高度なフィルタオプションなどが追加される。格付け(Rating)コンポーネントも新たに追加された。その他にも，読取り専用モードのサポートや，各エクステンションのタイトルやイメージのカスタマイズ，SharePoint 2013サポートなどが含まれている。</p> 
  </div> 
 </div><br><br><br><br><br><br></body></html>

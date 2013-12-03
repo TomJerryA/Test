@@ -1,26 +1,37 @@
-<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>Xamarin到64位iOS/OSX平台的粗野过渡</h3><p>当Xamarin开始自己的iOS项目的时候，设备仅能够在32位模式下使用，也就是32位版本的NSInteger和CGFloat。当他们开始调查64位OSX的时候，他们意识到自己对那些数据类型的假设是错误的。<a href="http://tirania.org/monomac/archive/2013/Nov-11.html">Miguel继续说</a>：</p>
-<blockquote> 
- <p>我们将需要审计我们的所有API从而实现合适的类型映射，同时我们将破坏源码的兼容性，使用类似于下面的代码：</p> 
- <pre>
-var foo = new Xxx ();
-int count = foo.GetRowCount ();
-// oops, can not cast a long into an int.</pre> 
- <p>当我们把源码的破坏和Apple拥有一个32位兼容性故事，同时我们仅有一些遗留类库依赖于32位API的事实结合起来的时候，我们意识到我们并不急于转移到64位的世界。</p> 
-</blockquote>
-<p>随着仅能引入64位类库的Mountain Lion的出现，他们看到了改变这种设计的需要。而Apple提供32位和64位版本的iPhone 5的决定进一步加剧了这种局面。为了处理这些新的挑战，Xamarin已经创建了三个新的数据类型：</p>
+<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>QCon北京2014大会正式启动，12月31日前7折优惠报名</h3><p>QCon北京2014大会日前已经启动，将于4月25日～27日在北京国际会议中心举行。</p>
+<p>本次大会已是QCon在北京涵盖包括知名网站案例分析、云计算架构案例、推荐系统工程实践、安全专题、扩展性、可用性与高性能、大数据处理与大数据应用等15大专题，拟邀请近百位嘉宾现场分享。12月31日前报名可享受7折优惠。</p>
+<p>鉴于QCon北京大会规模的不断扩大，自2011年起，QCon北京大会的参会人数就已超过1000人，为给参会者更多的选择，2014年的大会将革新议程，15个专题中会有5个贯穿全天的长专题，并通过增设晚场主题演讲、丰富晚场活动等新形式，在80余场演讲分享之外，为大家提供除更多的交流学习机会，以满足参会者的不同需求。</p>
+<p>目前已确定的技术专题如下：</p>
 <ul> 
- <li>nint</li> 
- <li>nuint</li> 
- <li>nfloat</li> 
+ <li><strong>知名网站案例分析</strong> 成功的网站发展历程中的经验教训</li> 
+ <li><strong>构建高效能团队</strong> 适应公司发展的，有效推动业务的，持续改进的高效能团队</li> 
+ <li><strong>敏捷测试</strong> 怎样持续敏捷地创造价值，为谁创造价值</li> 
+ <li><strong>云计算架构案例</strong> 设计云计算，不只是部署</li> 
+ <li><strong>推荐系统工程实践</strong> 探讨推荐系统的系统、架构、算法和策略，分享各大公司在应用推荐系统时的工程技术和实战经验</li> 
+ <li><strong>安全专题</strong> 白帽子分享知名互联网公司安全经验，黑帽子同台竞技见招拆招</li> 
+ <li><strong>跨终端的Web</strong> 从浏览器端到服务器端、PC端到移动端；开发到测试、简单应用到富客户端Web应用</li> 
+ <li><strong>扩展性、可用性与高性能</strong> 讨论大型复杂系统中，如何在架构设计、代码、运维体系等方面达到扩展性、可用性与高性能</li> 
+ <li><strong>大数据处理与大数据应用</strong> 关注大数据处理和分析的最新技术和工具，以及互联网公司的创新数据产品</li> 
+ <li><strong>移动应用案例分析</strong> 移动浪潮席卷全球，设计、技术和商业的完美融合才是最重要的产品元素</li> 
+ <li><strong>文化专题</strong> 团队文化究竟是什么？如何被创建、传承与发扬？</li> 
+ <li><strong>未来的开发者工具</strong> IDE、编辑器、编程语言的未来</li> 
+ <li><strong>尖端之上的Java</strong> 企业级开发核心生产力的最新信息与框架分享</li> 
+ <li><strong>自动化运维</strong> 系统架构设计，CDN加速、日志搜集、故障定位，都是当今自动化运维追求的目标</li> 
+ <li><strong>持续集成与持续交付</strong> 促进开发流程中的协作，来达到更快、更可靠、低成本的自动化软件交付</li> 
 </ul>
-<p>这些新的结构被定义为32位或者64位，依赖于代码编译的目标平台。但是故事的内容远不止如此。原始的数学运算使用特殊的IL指令进行操作（例如加法），而用户定义的结构需要调用op_Addition方法。</p>
-<p>对于性能敏感的代码而言这可能会引发一些小的但是值得注意的影响。因为在使用本地类库的时候这些类型是非常基础的，AOT编译器会被修改为重新解释使用这些类型的操作。Miguel继续说：</p>
-<blockquote> 
- <p>op_Addition调用最终会和本地ECMA CIL add指令一样。IL可能看起来很恐怖，但是本地代码也是如此。</p> 
-</blockquote>
-<p>一些人可能会想知道为什么Xamarin不使用IntPtr——支持平台特定整数的CLR数据类型。Miguel写道：</p>
-<blockquote> 
- <p>我们选择了nint和nuint而不是内置的IntPtr和UIntPtr，因为前者让人感觉是自然的“原生整型”，而IntPtr则是文化相关的，它已经有指针或者一个本地符号。另外，我们并没有等价的本地浮点类型。</p> 
- <p>我们选择避免使用名称NSInteger和CGFloat有几个方面的原因：一般情况下功能已经足够，它们可能值得在Mono中用于除了Mac和iOS之外的地方；同时感觉这些是真正的VM支持的类型，而不是一些类型定义或者别名。在理想的情况下，这些最终会成为C#标准的一部分。</p> 
-</blockquote>
-<p><b>查看英文原文</b>：<a href="http://www.infoq.com/news/2013/11/64-Bit-Xamarin">Xamarin’s Rough Transition to 64-bit iOS/OSX</a></p><br><br><br><br><br><br></body></html>
+<p><a href="http://qconbeijing.com">QCon北京2014大会官网</a>已经发布，正式接受报名，12月31日前可以享受7折优惠，单张门票节省1440元（原价4800元），团购（5人以上，含5人）享有更多优惠，详情请邮件qcon【at】cn.infoq.com或者致电010-64738142。</p>
+<p>另外，QCon组委会亦欢迎对上述专题所包含的技术有实践经验的专家提交演讲议题（包括题目、内容介绍、专家介绍、面向群体、为什么参会者会感兴趣等，越详细越好！）。邮件至speakers@cn.infoq.com，组委会审核后会择优选择，提交话题但不能分享的专家有机会免费参加QCon，或者受邀参加QCon上海2014并参与分享。</p>
+<p>如果对QCon还不甚了解，以下方式可以帮助您进一步了解此大会：</p>
+<ul> 
+ <li>在InfoQ网站搜索<a href="http://www.infoq.com/cn/search.action?queryString=qcon&amp;page=1&amp;searchOrder=">QCon新闻</a></li> 
+ <li>查看InfoQ已发布的<a href="http://www.infoq.com/cn/presentations?utm_source=infoq&amp;utm_medium=breadcrumbs_feature&amp;utm_campaign=breadcrumbs">QCon演讲视频</a></li> 
+ <li>在微博上搜索“<a href="http://s.weibo.com/weibo/qcon?topnav=1&amp;wvr=5&amp;topsug=1">#QCon#</a>”话题</li> 
+ <li>关注QCon演讲嘉宾的微信公众号并查阅他们的历史消息：MacTalk、道哥的黑板报、人生如戏、……</li> 
+</ul>
+<p>若您对大会赞助、展示、媒体合作感兴趣，请按如下分类邮箱联系，我们将尽快予以回复：</p>
+<ul> 
+ <li>会务咨询：<a href="mailto:qcon@cn.infoq.com">qcon@cn.infoq.com</a></li> 
+ <li>赞助咨询：<a href="mailto:sponsor@cn.infoq.com">sponsor@cn.infoq.com</a></li> 
+ <li>媒体合作：<a href="mailto:media@cn.infoq.com">media@cn.infoq.com</a></li> 
+</ul>
+<p>&nbsp;</p><br><br><br><br><br><br></body></html>

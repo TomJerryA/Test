@@ -1,25 +1,49 @@
-<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>Apigee现在支持Node.js 并开源了Volos</h3><p>Apigee Edge现在支持Node.js并且已经开源了<a href="https://github.com/apigee/volos">Volos</a>，一个包含了一组API管理模块的项目。</p>
-<p>Apigee于最近<a href="https://blog.apigee.com/detail/nodejs_extending_the_programmability_of_the_apigee_api_platform">增加了Node.js和NPM模块支持</a>，用户能够使用它们构建新的API、移动应用后端、mashups和复合服务。我们采访了Apigee的首席架构师Greg Brail以便于更深入地了解开发者能够在Apigee平台上使用Node.js完成哪些工作。</p>
-<p><strong>InfoQ：针对Edge平台进行编程的时候用户究竟能够使用JavaScript/Node.js做哪些事情？</strong></p>
+<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>定义DevOps 2.0：统一工具 + 环境整合？</h3><p>UnitedStack的运维工程师Jim Jiang（<a href="http://weibo.com/u/2070644157">@蒋闻天</a>）同学在自己11月底的一篇博客文章《<a href="http://blog.jimflying.com/?p=131">DevOps 2.0</a>》中提出了自己对DevOps理念及相关工具演变的一个解读。他在从宏观角度分析了Foreman、Puppet、Juju、Razor、Crowbar、Chef和TripleO整个体系的关系和异同之后提出了一个观点：</p>
 <blockquote> 
- <p><b>GB: </b>非常明确，目前你能够编写Node.js Web应用（使用标准的“http”和“https”模块）并将它们部署到Apigee Edge上，或者在我们的云中，或者在你自己的数据中心中。部署的应用能够访问一个完整的Node.js环境，能够使用托管在NPM中的绝大部分模块。我们的环境可能依然存在一些不兼容的地方——例如，并不支持依赖于本地C或者C++代码的模块。</p> 
- <p>因为这些脚本运行在Edge内部，就像我们已有的API代理那样，所以它们支持Edge的各种部署能力，例如通过同样的UI和API将不同的版本部署到不同虚拟环境中的能力，跨多个地理区划自动部署的能力。我们会收集所有由Edge传入Node.js程序的API调用数据，所以你能够分析流量，甚至可以从定制数据中产生自定义报表。</p> 
- <p>另外，你能够将Node.js脚本和我们已有的策略类库结合起来，包括安全策略（例如OAuth）、流量管理（例如限额和峰值限制）、安全威胁检查等内容。</p> 
+ <p>我将TripleO之前的DevOps称为DevOps的1.0时代，而TripleO之后的DevOps称为DevOps 2.0 新时代。2.0 时代的一个显著特点是任何DevOps行为都有API，通过在外部编写程序我们可以主导DevOps的整个过程。</p> 
 </blockquote>
-<p><b>InfoQ</b><b>：我注意到你还支持一些</b><b>Objective-C</b><b>、</b><b>Java</b><b>、</b><b>.NET</b><b>、</b><b>Ruby</b><b>和</b><b>JavaScript SDK</b><b>。用户能够使用它们在</b><b>Edge</b><b>平台上构建同样的功能么，就像</b><b>Node.js</b><b>可以实现的那样？这之间有什么区别？</b></p>
+<p>在Jim Jiang同学看来，DevOps世界的本质其实是五大块：Provison，Software Install，Configuration，State Management，以及Orchestration。</p>
+<p>五大块的定义分别是：</p>
 <blockquote> 
- <p><b>GB: </b>Edge平台始终都包含一个运行时，它能够运行使用我们自己的配置模式定义的API代理，现在它还将包含另一个运行时，该运行时能够执行使用Node.js构建的HTTP服务器。另一方面，SDK是Edge提供的各种API的客户端，以便于客户端可以直接使用它们。例如，SDK让开发者能够构建针对多种移动平台的应用，或者构建其他应用，它们使用Edge作为后端实现数据存储和推通知等功能。</p> 
- <p>也就是说，Edge是一个服务器，而Node.js能力是一种将代码部署到服务器上的新方式。服务器还包含一群API可以为现代应用提供关键功能，客户端则可以很容易地通过SDK访问这些API。</p> 
- <p>Apigee还开源了<a href="https://github.com/apigee/volos">Volos</a>，这是一组为API OAuth 2.0授权、密钥验证、限额管理和缓存提供支持的Node.js模块。Volos能够独自地运行，或者它能够被设置为与<a href="http://apigee.com/about/products/edge">Apigee Edge</a>通信从而获得开发者、应用和API管理方面的支持，或者Volos应用可以被直接部署到Apigee平台上。</p> 
+ <ol> 
+  <li>自动把系统和软件安装好，不管是物理机还是虚拟机。（Provison）</li> 
+  <li>对机器上安装的程序进行配置并且进行统一管理和收敛。（Configration）</li> 
+  <li>掌控集群的状态，不管是资源状态还是安装状态，只要是状态我们都需要知道。（State）</li> 
+  <li>在集群上方便的安装软件 （Software）</li> 
+  <li>编写一个剧本将资源的调度和软件的配置协调起来。（Orchestration）</li> 
+ </ol> 
 </blockquote>
-<p>比较Volos与Edge，Brail说：</p>
+<p>Jim Jiang同学对现有的各个运维自动化工具列了一个表格：</p>
+<p><img src="http://infoqstatic.com/resource/news/2013/12/devops-2-0/zh/resources/full_devops.jpg" alt="image" _href="img://aFVYoLrVbUmJz5SjSpiWlTRBuN_o73p90HSqEQCbvZrA6p-KyC0geMvGjcu46vvdl1ml_EGJ7rsdKwjB6_0I_gEb2mPN85oijbech4nCaFRV_jeeQs3sd6mo" _p="true" width="500" /></p>
+<p>上图中除了最底层以外的其他工具都无法覆盖所有的五大块，因此Jim同学说：</p>
 <blockquote> 
- <p>Volos的设计目的之一就是为了利用Edge的许多功能。例如，Volos中的OAuth和限额模块能够在本地运行，但是它们还可以与Edge通信，这意味着它按照这种方式使用OAuth能力。当然，如果你将一个Volos应用程序部署到Edge上运行，那么它可以直接使用那些能力。所以，它不一定是一个二选一/或者的情况。</p> 
+ <p>传统的DevOps不是缺胳膊就是少腿，整合起来很尴尬。</p> 
 </blockquote>
-<p>也就是说，Edge在精细化管理方面拥有很多深度的能力，不仅能够管理开发者、应用程序和所有集合，还能够支持分布式限额和深度分析等棘手的事情。</p>
-<p>关于Apigee对Volos将来的计划，Brail说：</p>
+<p>最重要的是，在传统的DevOps工具下，</p>
 <blockquote> 
- <p>我们计划向Volos中添加更多的模块，让它成为在Node.js中构建产品质量的API最好的工具集。当然，我们将确保Edge是运行这些应用的最优方案，确保这些应用在Edge上运行的时候它们能够利用Edge产品的所有能力和服务性。</p> 
+ <p>整个架构被一刀切为了两部分，管理物理设备的部分和管理虚拟化两个部分。</p> 
+ <p>… …这个方案看起来很不错，但是要运行起来关键是要一个粘合程序，能协调全部的工作，否则离不开人工干预。</p> 
+ <p>……粘合程序为了迎合其他组件而做出一些不得已的妥协，和臭名昭著的中间件是一个道理，会变得越来越臃肿，越来越和初衷不同，等到实在忍受不了这种事情了以后必然要重构。</p> 
 </blockquote>
-<p>此外，Apigee也为API的构建和管理提供了支持，这些API在新的或者已经存在的后端或数据服务和客户端之间。</p>
-<p><b>查看英文原文</b>：<a href="http://www.infoq.com/news/2013/11/apigee-nodejs-volos">Apigee Now Supports Node.js and Open Sources Volos</a></p><br><br><br><br><br><br></body></html>
+<p>那么Jim Jiang同学提倡的TripleO又是怎么一回事呢？这在他的另一篇文章《<a href="http://blog.jimflying.com/?p=112">TripleO, Openstack Deploy On Baremetal Openstack</a>》进行了更加详细的描述：</p>
+<blockquote> 
+ <p>TripleO的目标是简化OpenStack部署，它开发了一个自运维的OpenStack基础设施，它由裸机安装部分(nova baremetal or ironic)、软件安装部分(diskimage-builder)、Orchestration工具（Heat）、镜像内DevOps工具(Puppet Or Chef)组成。</p> 
+</blockquote>
+<p>TripleO这个名称的来源是“OpenStack deployed on and with OpenStack”这个词组，意思是“用OpenStack部署，部署在OpenStack之上的OpenStack”。</p>
+<p>这样做的好处是什么呢？Jim Jiang同学总结了两点：</p>
+<ol> 
+ <li>只用一个工具就能把一个集群管理起来，不用依赖于一大堆第三方工具的堆砌</li> 
+ <li>用Ironic组件屏蔽了物理层的实现，抽象出相同的接口给Nova调用，对上层透明</li> 
+</ol>
+<p>Jim Jiang不是第一位提及DevOps 2.0概念的同学。在2012年6月，GigaOM上发布了一篇名为《<a href="http://gigaom.com/2012/06/16/star-treks-dr-mccoy-and-devops-2-0/">Star Trek’s Dr. McCoy and DevOps 2.0</a>》的文章，最早提出了DevOps 2.0的概念。该文作者Dave Roberts是<a href="http://www.servicemesh.com/blog/">ServiceMesh</a>公司的CMO、战略SVP和布道师。</p>
+<p>Dave在文章中对DevOps提出了如下定义：</p>
+<blockquote> 
+ <p>DevOps有点像是《星际旅行》里面的那个传送装置。DevOps的目标是创建一系列流程+工具的组合，这套组合可以将一个现代企业应用在它的开发环境中解耦，再在宇宙另一端的生产环境上重现。传送后的应用必须能够保持正常运行的状态——有求必应。</p> 
+</blockquote>
+<p>Dave描述的“传统DevOps”跟“现代DevOps”最大的区别在于，传统DevOps对底层物理设备的管理无能为力，而DevOps 2.0则可以将防火墙、负载均衡一并纳入。这点和Jim Jiang同学的观点一致。</p>
+<p>纳入物理设备也可以用另一种方式理解，那就是“带着环境一起走”：</p>
+<blockquote> 
+ <p>环境本身也成为了软件设计中的一部分，并跟随应用逻辑一起，从生命周期的一个阶段转入下一个阶段。</p> 
+</blockquote>
+<p>无独有偶，在今年QCon上海《来自一线的敏捷实战》专题上，爱立信软件开发高级专家蔡煜（<a href="http://weibo.com/124565421">@larrycaiyu</a>）分享了一个建设建立了ETA (Environment Tools Automation）团队的经验。蔡煜认为从团队的角度来看，一个团队如果光做工具，或者光做版本控制，光做持续集成，光做自动化这些，那么是很容易被孤立的，发展的空间很小，也没有成就感。而ETA这三部分工作如果有机会合在一块，事情的发展就会顺利的多。虽然跟DevOps这个话题没有直接的关系，但表明在其他领域也有人关注环境与软件整合的问题。</p>
+<p>你对于DevOps 2.0的概念怎么看？或者换句话说，你对于物理环境和虚拟环境统一管理、环境本身与软件设计的整合这样一个方向有什么看法？欢迎交流！</p><br><br><br><br><br><br></body></html>

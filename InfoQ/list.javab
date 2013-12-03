@@ -2,6 +2,9 @@
  <head></head> 
  <body>
   <div>
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/14.javab">Building Innovative Organizations with Lean Thinking</a> For a modern IT company, innovation is equally critical to the company, its clients and its staff. Jeff discussed the important ingredients needed to create a culture of innovation in an organization. Drawing on his experiences at Thoughtworks Chengdu he examines the importance of leadership, lean thinking, problem solving mindset and people factors in fostering innovation. 
+  </div> 
+  <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/13.javab">The Subject and Discipline of Business Architecture</a> This article defines the subject and discipline of Business Architecture. In contrast with other approaches, only business functionality and business information may be considered architectural entities that together form the subject of Business Architecture.The discipline of Business Architecture on the other hand is a description of the primary and secondary tasks of a Business Architect. 
   </div> 
   <div> 
@@ -147,9 +150,6 @@
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/15.javab">Queues – the true enemy of flow</a>Most project management offices measure activity to control delivery times. This article argues that tracking and quantifying queues is a better way to improve cycle time reduction and predictability. 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/14.javab">Interview and Book Excerpt: Mastering the Requirements Process</a>Suzanne and James Robertson have released the 3rd edition of their book Mastering the Requirements Process. This edition includes material focused on requirements in agile projects and outsourcing. 
   </div>  
  </body>
 </html>
