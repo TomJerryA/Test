@@ -1,6 +1,32 @@
-<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>VS 2013 的 Power Productivity Tools</h3><p>从2010年开始Power Productivity Tools就已经成为Microsoft新Visual Studio功能的测试床，其中的一些内容也已经被合并到了Visual Studio中。针对Visual Studio 2013的新版本带来了11个新的和更新的功能，包括不需要离开代码编辑器就能够查看文档的能力。</p>
-<p>查看帮助（Peek Help，alt-F1）是查看定义（Peek Definition，alt-F12）功能的补充。这两个功能都会依据你当前正在编辑的代码文件显示与选中的关键词、类或者函数相关的信息。小窗口仍然会内嵌到代码文件的窗口中，直到你按下Escape键为止。</p>
-<p>新Visual Studio还从Eclipse等其他的IDE中汲取了一些灵感，它现在能够在解决方案资源管理器（Solution Explorer）窗格中显示哪一些源码文件有错误。你甚至能够过滤解决方案资源管理器让它仅显示当前有错误的文件，该功能对于处理重构期间发生的破坏性变化是十分有帮助的。</p>
-<p>一个潜在有用的调试功能是“时间戳标注（Timestamp margin）”。你能够通过打开这个选项向自己的调试和追踪声明中自动地添加时间戳，而不需要手工地添加。它们会使用不同的颜色显示在一个不同的列中，这样能够让它在水平空间成本上更加易读。</p>
-<p>如果想要了解更多信息或者想查看新的和更新功能的完整列表，可以从MSDN库中检出<a href="http://visualstudiogallery.msdn.microsoft.com/dbcb8670-889e-4a54-a226-a48a15e4cace">Productivity Power Tools 2013</a>。</p>
-<p><b>查看英文原文</b>：<a href="http://www.infoq.com/news/2013/11/PPT-2013">Power Productivity Tools for VS 2013</a></p><br><br><br><br><br><br></body></html>
+<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>List & Label 19支持报表参数、集合变量、OData和REST数据提供器</h3><p><a href="http://www.combit.net/en/">List &amp; Label 19</a>已经发布，新版本支持报表参数、集合变量、可扩展区域、交互式排序，同时还引入了新的图表，例如：组合图（combined）、堆放图（stacked）、漏斗图（funnel）、管道图（pipeline）、shapefile和环形图（donut）。另外，它还为OData和REST数据提供器提供了支持，包括固定宽度的legend。 <br /> List &amp; Label 19拥有创造用户界面的能力，它支持高分辨率的便携式设备，例如平板电脑。该功能能够确保可以清晰地显示文本，防止字体显示为小尺寸。此外，LL19兼容Windows 8.1、Visual Studio 2013和第三方IDE Embarcadero RAD Studio XE5。借助于最新版本的LL19，我们能够在任意兼容HTML5的浏览器中显示SVG输出格式。 <br /> 在一个InfoQ的采访中，List &amp; Label的董事总经理兼发展部主管Jochen Bartlau分享了更多包含在新版本中的功能。</p>
+<p><b>InfoQ</b><b>：报表参数和集合变量功能的意义在哪？</b></p>
+<blockquote> 
+ <p>这两个都是<a href="http://www.combit.net/en/reporting-tool/report-generator-List-Label-new-version/">List &amp; Label 19</a>的重要功能，同时它们也为扩展接下来版本中的报表工具建立了良好的基础。集合参数是一个真正的创新，我之前从来没有在任何其他的报表产品中看到过这样的功能。该功能允许用户根据条件添加属性——你能够容易地定义一个名为“CategoryColor”的颜色变量，然后在任何条件格式中使用它，例如，如果序列号编码了必须的信息那么仅仅需要基于序列号的前两个字符。如果数据没有提前针对报表做优化那么该功能是非常有帮助的。</p> 
+ <p>报表参数允许用户创建灵活的报表，而不是必须得为每一个客户设计单独的报表；现在可以很容易地为产品或者年份这样的信息提供下拉列表，并且允许最终用户从任意参数排列中选择。当然，这些下拉列表中的数据变量可以从数据库中读取。List &amp; Label对参数的支持非常彻底，它提供了不同类型的参数，例如date、boolean、text，甚至支持依赖参数（某个参数的数据根据另一个参数的选择值进行过滤）。</p> 
+</blockquote>
+<p><b>InfoQ</b><b>：你能与我们分享一下</b><b>shapefile</b><b>图表的使用么？</b></p>
+<blockquote> 
+ <p>Shapefiles是在地图上可视化数据事实上的标准。因特网上到处都是免费的shapefiles，能够显示分布在国家、州、甚至更小范围上的数据。Shapefile图表和LL19中的其他图表紧密集成在一起。</p> 
+ <p>它使用的数据和所有其他类型的图表一样。将它集成进已有的报表中简直是小菜一碟。我们甚至支持通常会伴随着shapefiles的属性数据库。在这种情况下，报表中的数据能够很容易地被链接到一个国家的属性上（例如它的ISO码）。</p> 
+</blockquote>
+<p><b>InfoQ</b><b>：</b><b>Shapefile</b><b>和地理数据可视化（</b><b>geovisualization</b><b>）有什么不同？</b></p>
+<blockquote> 
+ <p>Shapefiles可远不止地理数据可视化那么简单。后者是它的一个重要用例，用户能够容易地创建他们自己的shapefiles显示地板、座椅规划或者任何其他的任意图形数据。因为数据格式是标准化的，所以很多CAD应用程序都支持导出shapefiles。我们提供了一个大型影院座椅计划的示例，它展示了该功能的潜能。所有的应用程序，如果它们需要显示分布在全球或者局部范围的数据，那么它们都能够立即从该功能中受益。</p> 
+</blockquote>
+<p><b>InfoQ</b><b>：你能详细地描述一个环形图的使用场景么？</b></p>
+<blockquote> 
+ <p>环形图是List &amp; Label图表家族新增的一个非常漂亮的功能。从根本上说，它是现有饼状图的一个轻量级变体。它支持完全自定义——设置“洞”的大小和设置标签、值、字体和颜色一样简单。</p> 
+</blockquote>
+<p><b>InfoQ</b><b>：你能解释一下</b><b>OData</b><b>数据提供器的重要性么？</b></p>
+<blockquote> 
+ <p>OData已经成为Web数据库的一个非常通用的数据格式。Microsoft决定通过向LightSwitch中添加OData支持进一步推动它的发展。虽然它之前能够绑定到OData源（例如，使用JSON数据提供器），但是实现过程异常麻烦。现在的新数据提供器甚至支持元数据解析，所有的表、关系和数据类型都会自动解析。关联的数据仅会按需查询，确保性能得到优化。</p> 
+</blockquote>
+<p><b>InfoQ</b><b>：</b><b>List &amp; Label 19</b><b>中的</b><b>REST</b><b>数据提供器可以服务于哪些目的？</b></p>
+<blockquote> 
+ <p>REST提供器开创了一个全新的数据源世界，内容管理系统、售票系统和许多其他的Web服务都提供了用于查询数据的REST服务。通过添加REST支持，使用云数据已经变得轻而易举。</p> 
+</blockquote>
+<p><b>InfoQ</b><b>：你能与我们分享一下</b><b> List &amp; Label</b><b>未来的路线图么</b><b>?</b></p>
+<blockquote> 
+ <p>我们很有可能会沿着之前版本所采用的路线图继续走下去——密切关注市场动态同时尽量尽快地跟随发展潮流。我期望在接下来的几个月中提供越来越多的桌面即服务（Desktop as a Service）。这样就能够在平板电脑或者手机这样的现代设备上使用“传统”应用程序。我们一定会为这些场景提供最佳支持——LL19中的高DPI支持仅仅是我们向这个方向迈出的第一步。除了发展云和Web功能之外，我们还将进一步提升我们的优势。我们的报表设计器是一个标志性功能，希望大家时不时地关注一下确信我们再一次树立了可用性标准。</p> 
+</blockquote>
+<p><b>查看英文原文</b>：<a href="http://www.infoq.com/news/2013/11/list-label-19">List &amp; Label 19 Adds Report Parameters, Collection Variables, OData and REST Data Providers</a></p><br><br><br><br><br><br></body></html>

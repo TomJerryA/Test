@@ -1,9 +1,21 @@
-<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>Riak 2.0预览</h3><p>在RICON West大会上Basho宣布<a href="http://basho.com/introducing-riak-2-0/">Riak 2.0的首个技术预览版</a>发布。该版本继续了<a href="https://github.com/basho/riak/issues/354">Russell Brown RFC</a>的工作，它为<a href="https://gist.github.com/russelldb/7316f83ddd38965d9f76">maps和sets</a>带来了新的分布式数据类型。</p>
-<p>最近软件产业中的一个重要的主题是，人们希望拥有有更强保证的NoSQL类型的数据库。Basho通过发布Riak这个强一致性的选择作为回应。每一个桶（bucket）类型都能够被设置为使用强一致性或者保留默认行为，也就是高可用性/最终一致性。</p>
-<p>桶类型是另一个新特性。虽然数据依然被存储在桶中，但是出于配置目的这些桶可以被组织成桶类型。组中的每一个桶都会继承桶类型中的属性，但是这些属性可以被重写。</p>
-<p>Riak 2中的全文检索已经被完全重新设计。新版本“直接使用<a href="http://lucene.apache.org/solr/">Apache Solr</a> 全文文档索引引擎”，包括对Solr客户端查询API的完整支持。</p>
-<p>新版本还改进了Riak中的<a href="https://github.com/basho/riak/issues/355">安全模型</a>，</p>
+<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>多功能团队中的T型混合人才</h3><p>软件开发方法与工具杂志（Methods &amp; Tools software development magazine）的编辑<a href="http://blog.martinig.ch/about/">Franco Martinig</a>、Scrum的共同缔造者以及其他一些评论人士，近期分别撰写并发表了有关复合型开发者——又被称为T型人才——价值的文章或见解。这些评价并不是孤立的观点；此外，它们揭示了在得到授权的团队中，复合型人才是怎样越来越被视作关键部分的。</p>
+<p>Martinig最近<a href="http://blog.martinig.ch/software-development/looking-for-renaissance-style-software-development/">撰文</a>探讨了“文艺复兴风格的软件开发”，在其中，他描写了跨职能的“<a href="http://en.wikipedia.org/wiki/T-shaped_skills">T型</a>”开发者的价值：他们能够担任多重角色，并对分析、测试和客户交互做出贡献。</p>
+<p>Schwaber也在最近一篇<a href="http://kenschwaber.wordpress.com/2013/11/03/cross-functional-teams/">博客</a>中表示，团队中每位成员的集体经验和外围技能，都能够在问题处理过程中扮演至关重要的角色：</p>
 <blockquote> 
- <p>Basho设计的Riak牢记重要数据的重要性。它其中的数据是否影响收入、用户体验或者甚至是患者的健康（与NHS的情况一样），Riak确保这些重要的数据始终都是可用的。但是，这些重要的数据通常也是敏感的数据。Riak 2.0能够通过管理者访问权利向这些数据中添加安全性和现在常用的各种安全认证模型的插件。</p> 
+ <p>团队中的每个人都将贡献出自己的技能和经验，尽可能将需求转变为他们有可能实现的增量。一个人永远无法预测，自己的某种鲜有用到的洞见、记忆或技能，是否会在未来的某一时刻会发挥作用。这就是Scrum团队之美——意料之外的日益增长的协同效果。</p> 
 </blockquote>
-<p><b>查看英文原文</b>：<a href="http://www.infoq.com/news/2013/11/Riak-2-Preview">Previewing Riak 2.0</a></p><br><br><br><br><br><br></body></html>
+<p>Zumobi创始人John San Giovani最近做了一场题为“<a href="http://www.youtube.com/watch?feature=player_embedded&amp;v=mQywiaQXUeI">艺术家与极客的混合体</a>”的TED演讲。演讲中，他介绍了Zumobi如何致力于招聘拥有更广泛经验且能够“让右脑发挥作用”的员工。此外，他还描绘了随着个体之间不同的兴趣和经验相互交融而来的“万能牌（wildcard）”，是如何带来独特的解决方案的。类似地，ThoughtWorks硬件破解实验室主管Peter McWilliams是一位技术领域的艺术家，也在其演讲中补充<a href="http://www.jahya.net/blog/?2013-08-the-artist-geek-hybrid">介绍</a>了团队秘密武器超集方面的价值：</p>
+<blockquote> 
+ <p>这并不仅仅是来自学科交叉领域的万能牌所带来的价值，它还涉及了在多重方面和多重途径中的能量。</p> 
+</blockquote>
+<p>简单组建跨职能团队，并不总是足以促进内部T型人才的出现。Martinig和Shwebber都探讨了在传统组织机构架构中，职称如何塑造了职责的绝对边界。Martinig认为，诸如“程序员、软件测试员、DBA和业务分析”等标签，将会抑制人们与各自领域之外的环境进行的协作。对此他写到：</p>
+<blockquote> 
+ <p>大型软件开发机构经常选择一种泰勒式（<a href="http://zh.wikipedia.org/wiki/%E7%A7%91%E5%AD%A6%E7%AE%A1%E7%90%86">tayloristic</a>）方法，依据专长对人们进行划分：程序员、软件测试者、DBA、业务分析等。这种简仓形式的分隔，会在开发者的脑海中造成“阶层”的暗示。</p> 
+</blockquote>
+<p>成为T型的团队成员是一种有意识的行动。针对测试人员如何进行T型转变，以成为有助于团队开发和分析力量的多面手，Paddy Power PLC的原理性敏捷测试工程师<a href="http://mysoftwarequality.wordpress.com/author/mysoftwarequality/">Augusto Evangelisti</a>在博客中给出了一篇<a href="http://mysoftwarequality.wordpress.com/2013/09/15/get-in-shape-to-become-an-agile-tester/">入门教程</a>。他描述了不愿意跨出自己角色的测试者，并建议使用宕机时间来积极地与BA和开发者进行协作——进行前瞻性的学习并提供帮助。</p>
+<p>在围绕着QCon主题演讲“<a href="http://www.infoq.com/interviews/berglund-product-owners">首先消灭全部产品所有者</a>”的<a href="http://www.infoq.com/interviews/berglund-product-owners">采访</a>中，演讲者——来自GitHub的Tim Berglund——介绍了这样一种信念：在强有力的跨职能团队中，产品所有者的角色应该由团队成员分享。Berglund描绘了这样的场景：“所有对构建某物负有责任的人，也即是所有负责定义产品的人。”他建议在产品整个生命周期过程中对团队进行授权，从而鼓励他们对该领域富于激情，并使他们对自己的产品拥有更强烈的主人翁意识。</p>
+<p>对于成为T型人才的好处，Evangelisti总结道：</p>
+<blockquote> 
+ <p>所以，不要再放任自己继续停留在单调的I型人才角色里，因为这些人即将失去工作。相反，努力成为一种T型敏捷测试人员（或团队成员），这样你将对团队更有价值、更称职，同时最重要的是，永远不会因为同事们不知道如何帮助你，而导致自己像个疯子一样卡在测试（活动）中。欢迎来到跨职能敏捷团队的世界，这里没有角色，只有活动。</p> 
+</blockquote>
+<p><strong>查看英文原文：</strong><a href="http://www.infoq.com/news/2013/11/t-shaped-hybrids">T-shaped Hybrids in the Multi-disciplinary Team</a></p><br><br><br><br><br><br></body></html>

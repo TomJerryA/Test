@@ -1,6 +1,9 @@
 <html>
  <head></head> 
- <body> 
+ <body>
+  <div>
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/32.java">Experiencing Language Barriers with an Improvisational Theatre Workshop</a>In the XP Days workshop Agile cross borders, Hoang-Anh PHAN &amp; Anais Victor explored how you can deal with language barriers in a multi cultural organization. They work for the Vietnamese company Officience who provides outsourcing services to French customer, using the English language to communicate and work together.
+  </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/31.java">Visual Commander Professional v1.3 Introduces 99 Commands, 50 Extensions and C# Syntax Highlighting</a>The recently released Visual Commander Professional v1.3 includes 99 commands, 50 extensions including syntax highlighting for C#. It also provides an ability to select default language for new commands and extensions by selecting the macro language in addition to several improvements. 
   </div> 
@@ -147,9 +150,6 @@
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/33.java">Previewing Riak 2.0</a>At RICON West Basho announced the first technical preview of Riak 2.0. Continuing the work on Russell Brown’s RFC, this version brings with it new distributed data types for maps and sets, strong consistency, and deeps ties with Apache Solr. 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/32.java">The Human Aspects of API Design: An Interview with Apiary's Jakub Nesetril</a>API Design and description is more than just a technical interface contract between machines. Apiary's Co-Founder and CEO Jakub Nesetril points out that the real consumer of an API description is the developer, with all the concerns of engagement, usability and communication that entails. We spoke with Jakub recently about Apiary's approach to API design and emerging API tools and workflows. 
-  </div> 
+  </div>  
  </body>
 </html>

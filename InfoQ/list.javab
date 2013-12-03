@@ -1,7 +1,7 @@
 <html>
  <head></head> 
- <body>
-  <div>
+ <body> 
+  <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/14.javab">Building Innovative Organizations with Lean Thinking</a> For a modern IT company, innovation is equally critical to the company, its clients and its staff. Jeff discussed the important ingredients needed to create a culture of innovation in an organization. Drawing on his experiences at Thoughtworks Chengdu he examines the importance of leadership, lean thinking, problem solving mindset and people factors in fostering innovation. 
   </div> 
   <div> 
@@ -150,6 +150,6 @@
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/15.javab">Queues – the true enemy of flow</a>Most project management offices measure activity to control delivery times. This article argues that tracking and quantifying queues is a better way to improve cycle time reduction and predictability. 
-  </div>  
+  </div> 
  </body>
 </html>

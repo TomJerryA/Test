@@ -1,6 +1,9 @@
 <html>
  <head></head> 
- <body> 
+ <body>
+  <div>
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/33.htmlb">规划和掌控复杂项目</a> 一般来说，规划和编制预算,都是在对开发成果的预测的基础上进行的。很多时候，开发团队对故事进行了估算，但整个项目的预算却又与该估算相互独立。特别是在复杂项目中，这往往会带来出乎意料的结果（不欢迎的）。来自超越预算理论的洞见能够帮助我们增加灵活度并专注于业务价值。 
+  </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/32.htmlb">保护好你的秘密</a> Dennis Sosnoski 解释了理应安全的连接怎么会被降级，安全级别和它最容易被攻破的薄弱点处于同一水平。还有最强的加密形式在私钥暴露后面对数据捕获和破解是多么脆弱。本文将介绍一些办法，可以让数据交换更加安全，让别人难以窥伺或篡改。 
   </div> 
@@ -147,9 +150,6 @@
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/34.htmlb">全功能团队 - 数据篇</a>在《建设全功能团队》和《建设全功能团队——实践篇》两篇文章中，我的同事胡凯曾介绍过建设全功能团队的必要性和良好实践，此后在围绕这一话题的讨论中，很多人都分享了自己的理解，或看好，或看淡。在ThoughtWorks有许多团队一直在建设全功能团队方面实践着，在这篇文章中我希望与大家分享我从这些团队收集到的过去一年来的数据，以及更切身的理解。 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/33.htmlb">goroutine背后的系统知识</a>Go语言从诞生到普及已经三年了，先行者大都是Web开发的背景，也有了一些普及型的书籍，可系统开发背景的人在学习这些书籍的时候，总有语焉不详的感觉，网上也有若干流传甚广的文章，可其中或多或少总有些与事实不符的技术描述。希望这篇文章能为比较缺少系统编程背景的Web开发人员介绍一下goroutine背后的系统知识。 
-  </div> 
+  </div>  
  </body>
 </html>

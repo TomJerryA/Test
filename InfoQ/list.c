@@ -1,8 +1,8 @@
 <html>
  <head></head> 
- <body>
-  <div>
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/41.c">REST e a Internet das Coisas</a>A Internet das Coisas j&aacute; est&aacute; a&iacute; e o IETF iniciou uma s&eacute;rie de esfor&ccedil;os de padroniza&ccedil;&atilde;o nesta &aacute;rea. Entre eles destaca-se o grupo de trabalho Constrained RESTful Environments (CoRE), o qual busca prover abordagens REST para dispositivos com recursos restritos. H&aacute; tamb&eacute;m um projeto Java para apoiar este trabalho.
+ <body> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/41.c">REST e a Internet das Coisas</a>A Internet das Coisas j&aacute; est&aacute; a&iacute; e o IETF iniciou uma s&eacute;rie de esfor&ccedil;os de padroniza&ccedil;&atilde;o nesta &aacute;rea. Entre eles destaca-se o grupo de trabalho Constrained RESTful Environments (CoRE), o qual busca prover abordagens REST para dispositivos com recursos restritos. H&aacute; tamb&eacute;m um projeto Java para apoiar este trabalho. 
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/40.c">ASP.NET MVC 5: Melhorias de autentica&ccedil;&atilde;o com filtros</a>O ASP.NET MVC 5, fornecido com o Visual Studio 2013 Developer Preview, permite que os desenvolvedores apliquem filtros de autentica&ccedil;&atilde;o capazes de autenticar usu&aacute;rios utilizando diversos controles de terceiros ou um controle de autentica&ccedil;&atilde;o customizado. Eric Vogel demonstrou recentemente seu uso com um exemplo pr&aacute;tico. 
@@ -150,6 +150,6 @@
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/42.c">Devemos criar hist&oacute;rias de usu&aacute;rio para a nossa d&iacute;vida t&eacute;cnica?</a>Equipes &aacute;geis algumas vezes apresentam dificuldades com o planejamento de tarefas puramente t&eacute;cnicas, tais como aquelas relacionadas a d&iacute;vida t&eacute;cnica. Essas tarefas n&atilde;o tem valor direto para o usu&aacute;rio do sistema, mas precisam ser feitas para entregar o software funcionando. Devemos criar hist&oacute;rias de usu&aacute;rio para lidar com tarefas t&eacute;cnicas e d&iacute;vida t&eacute;cnica? 
-  </div>  
+  </div> 
  </body>
 </html>
