@@ -2,7 +2,10 @@
  <head></head> 
  <body>
   <div>
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/32.java">Experiencing Language Barriers with an Improvisational Theatre Workshop</a>In the XP Days workshop Agile cross borders, Hoang-Anh PHAN &amp; Anais Victor explored how you can deal with language barriers in a multi cultural organization. They work for the Vietnamese company Officience who provides outsourcing services to French customer, using the English language to communicate and work together.
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/33.java">Microsoft Joins Forces with RedGate and Clickberry to Offer Node.js Tools for Visual Studio</a>NTVS, short for Node.js Tools for Visual Studio, offers Node.js developers a fully featured IDE complete with Intellisense, package management, profiling, and debugging. NTVS is a joint effort by Microsoft’s Python Tools team, RedGate, Clickberry, and others.
+  </div> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/32.java">Experiencing Language Barriers with an Improvisational Theatre Workshop</a>In the XP Days workshop Agile cross borders, Hoang-Anh PHAN &amp; Anais Victor explored how you can deal with language barriers in a multi cultural organization. They work for the Vietnamese company Officience who provides outsourcing services to French customer, using the English language to communicate and work together. 
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/31.java">Visual Commander Professional v1.3 Introduces 99 Commands, 50 Extensions and C# Syntax Highlighting</a>The recently released Visual Commander Professional v1.3 includes 99 commands, 50 extensions including syntax highlighting for C#. It also provides an ability to select default language for new commands and extensions by selecting the macro language in addition to several improvements. 
@@ -147,9 +150,6 @@
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/34.java">How DevOps Complements Agile at Nokia Entertainment</a>Agile has the manifesto and principles, it focuses on people, clarity for the stakeholders, faster delivery, and happier customers, so why would you need DevOps? John Clapham from Nokia Entertainment in Bristol talked at the Agile Methods in the Finance Sector and Complex Environment conference about what DevOps is and what it has brought to their business. 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/33.java">Previewing Riak 2.0</a>At RICON West Basho announced the first technical preview of Riak 2.0. Continuing the work on Russell Brown’s RFC, this version brings with it new distributed data types for maps and sets, strong consistency, and deeps ties with Apache Solr. 
   </div>  
  </body>
 </html>

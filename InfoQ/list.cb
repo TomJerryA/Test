@@ -1,6 +1,9 @@
 <html>
  <head></head> 
- <body> 
+ <body>
+  <div>
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/28.cb">MuleSoft no Brasil: integra&ccedil;&atilde;o, tend&ecirc;ncias e planos para o pa&iacute;s</a> A MuleSoft, uma das principais empresas voltadas &agrave; integra&ccedil;&atilde;o de sistemas e com forte tradi&ccedil;&atilde;o open source, est&aacute; aportando no Brasil. Entrevistamos Edgar Silva, respons&aacute;vel pelo estabelecimento e crescimento da empresa no Brasil. Edgar nos fala n&atilde;o s&oacute; da empresa e o mercado, mas tamb&eacute;m sobre conceitos de integra&ccedil;&atilde;o de sistemas e tend&ecirc;ncias tecnol&oacute;gicas na &aacute;rea de ESBs, servi&ccedil;os e APIs. 
+  </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/27.cb">Resumo do JavaOne 2013: Java 8 &eacute; revolucion&aacute;rio. O Java est&aacute; de volta</a> Em setembro ocorreu em S&atilde;o Francisco a confer&ecirc;ncia JavaOne 2013. No Keynote inicial, os funcion&aacute;rios da Oracle funcion&aacute;rios da Oracle Peter Utzschneider,Nandini Ramani e Cameron Purdy afirmaram que a comunidade Java continua sendo a maior comunidade do mundo de uma plataforma de desenvolvimento e que o n&uacute;mero de JUGs crescem 10% ao ano. 
   </div> 
