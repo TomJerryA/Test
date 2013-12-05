@@ -1,14 +1,14 @@
 <html>
  <head></head> 
- <body>
-  <div>
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/37.java">Wix 3.8 Adds VS 2013 Support in Votive and WiX Native Library and Bootstrapper Application Functions</a>Wix 3.8 has been released with support for Visual Studio 2013 in Votive and WiX native libraries. The release also includes bootstrapper application functions which extends WixStandardBootstrapperApplication including the ability to detect Windows 8.1 in Burn.
-  </div>
-  <div>
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/36.java">Famo.us launches first public access to its Javascript platform</a>The team that built the Famo.us Javascript platform plans their first preview release of their app layer code on December 5th, 2013 as a foreshadowing of their platform's client-side prowess.
-  </div>
-  <div>
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/35.java">QCon London '14: Damian Conway, Tim Lister, Gunter Dueck Keynotes, 45% Speakers Confirmed (Mar 3-7)</a>45/100 speakers and 3 keynotes have been confirmed for QCon London 2014 (Mar 3-7, 2014). The eight annual conference will feature talks from language pioneers, project leads, and practitioner case studies from companies like Netflix, NASA, Spotify, Financial Times, and more. You can get in early by reserving your seat now saving &pound;325 by Dec 15th.
+ <body> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/37.java">Wix 3.8 Adds VS 2013 Support in Votive and WiX Native Library and Bootstrapper Application Functions</a>Wix 3.8 has been released with support for Visual Studio 2013 in Votive and WiX native libraries. The release also includes bootstrapper application functions which extends WixStandardBootstrapperApplication including the ability to detect Windows 8.1 in Burn. 
+  </div> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/36.java">Famo.us launches first public access to its Javascript platform</a>The team that built the Famo.us Javascript platform plans their first preview release of their app layer code on December 5th, 2013 as a foreshadowing of their platform's client-side prowess. 
+  </div> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/35.java">QCon London '14: Damian Conway, Tim Lister, Gunter Dueck Keynotes, 45% Speakers Confirmed (Mar 3-7)</a>45/100 speakers and 3 keynotes have been confirmed for QCon London 2014 (Mar 3-7, 2014). The eight annual conference will feature talks from language pioneers, project leads, and practitioner case studies from companies like Netflix, NASA, Spotify, Financial Times, and more. You can get in early by reserving your seat now saving &pound;325 by Dec 15th. 
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/35.java">Go Steadily Advances as Go 1.2 is Released</a>The Go programming language has just released version 1.2, bringing with it some language changes and improved networking performance on Windows and the BSD platforms. 
@@ -150,6 +150,6 @@
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/40.java">Interview with Kevin Behr on Continuous Improvement Kung-Fu</a>At the recent DevOps Days in New York, Kevin Behr, co-author of “The Visible Ops Handbook” and ”The Phoenix Project”, and Jesse Palmer gave a talk on how they instilled a continuous improvement culture into an operations team. InfoQ interviewed Kevin Behr to know more about the approach that was taken. 
-  </div>    
+  </div> 
  </body>
 </html>

@@ -1,13 +1,13 @@
-<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>Vaughn Vernon谈论响应式领域驱动设计</h3><p>将<a href="http://en.wikipedia.org/wiki/Actor_model">Actor模型</a>与<a href="http://en.wikipedia.org/wiki/Domain-driven_design">领域驱动设计</a>（DDD）结合使用，你或许能够避免在传统的<a href="http://en.wikipedia.org/wiki/Event-driven_architecture">事件驱动</a>或<a href="http://alistair.cockburn.us/Hexagonal+architecture">Hexagonal</a>架构中所经常面对的一些架构上的负担。<a href="http://dddcommunity.org/book/implementing-domain-driven-design-by-vaughn-vernon/">《Implementing Domain-Driven Design》</a>一书的作者<a href="http://vaughnvernon.co/">Vaughn Vernon</a>最近在一个关于使用<a href="http://www.scala-lang.org/">Scala</a>与<a href="http://akka.io/">Akka</a>（Actor模型的一种实现）进行响应式DDD编程的讲座中对这一话题进行了<a href="http://skillsmatter.com/podcast/design-architecture/reactive-ddd-with-scala-and-akka">讲解</a>。</p>
-<p>人们最近经常使用的这个新术语“响应式”其实已经不是什么新鲜的概念了，许多人已经熟悉了对事件和消息进行响应的方式，但它在DDD中的应用却为我们习惯的方式带来了一些改变。在进一步进行解释之前，Vaughn对Actor模型的一些基本特性进行了定义：</p>
-<ul> 
- <li>直接异步消息传递，它表示某个Actor以异步的方式直接向另一个Actor发送了一条消息。</li> 
- <li>无锁并行。Actor不对锁进行处理，而是由基础架构进行处理。</li> 
- <li>无共享。Actor互相之间对对方的内部状态一无所知。</li> 
-</ul>
-<p>促使Vaughn选择使用DDD方式的主要动机之一，是他希望以一种非常明确的方式对业务的核心部分进行建模。而在一个传统的事件驱动架构中，我们除了明确了领域模型的设计之外，领域事件同样也表现了一部分领域概念。这种方式依然没有达到完全的清晰化的目的，因为一旦领域事件被发布之后，要在代码中找出究竟在哪里对事件进行了响应，以及它最终对整个模型产生了怎样的影响，这并不是一件简单的事。</p>
-<p>与事件驱动架构相反，Vaughn发现Actor模型能够表现得非常明确。当某个actor向另一个actor发送消息，必须在代码中非常明确地表现出来。Vaughn所面对的一个问题是，结合使用Actor模型与DDD能为我们带来多大的好处？难道好处仅仅是我们可以使用与以往相同的架构，在各个Aggregate之间发送消息而已吗？他对此疑问的回答是否定的，他相信这种方式可以使我们避免在传统的事件驱动或Hexagonal架构中所经常面对的一些架构上的负担。他认为只要有一种合适的框架，我们就可以将整个架构简单地分解为Controller和Aggregate两种组件，而Actor可扮演控制器的角色，它知道如何将消息发送给模型中的各个Aggregate以进行交互。</p>
-<p>Vaughn认为Actor模型与DDD的结合使用方式是没有什么限制的，对于任何需要实现高伸缩性、高可用性和低延迟的系统来说这一方式都是可用的。Akka是基于Java虚拟机（JVM）编写的，不过Vaughn正在致力于实现Akka.NET，它将把Akka移植到C#和F#语言上。</p>
-<p>Vaughn在今年早期对结合使用Actor模型与DDD的基础知识的<a href="http://www.infoq.com/news/2013/06/actor-model-ddd">发表了一份文章</a>。</p>
-<p><a href="http://www.reactivemanifesto.org/">响应式宣言</a>（Reactive Manifesto）于2013年9月发布，它描述了这个概念中包含的各种核心思想。</p>
-<p><strong>查看英文原文：</strong><a href="http://www.infoq.com/news/2013/11/vernon-reactive-ddd">Vaughn Vernon: Reactive Domain-Driven Design</a></p><br><br><br><br><br><br></body></html>
+<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>Mongo + Node：DigitalOcean宣布支持MEAN Stack镜像</h3><p>云服务供应商DigitalOcean这两天宣布<a href="https://www.digitalocean.com/blog_posts/announcing-mean-one-click-install-application">推出基于MEAN组合的镜像</a>。至此，DigitalOcean支持的应用组合数量已经到达9个，分别是LAMP、Ruby on Rails、Redmine、Ghost、Wordpress、Dokku、Docker、GitLab、以及MEAN。</p>
+<p><img src="http://infoqstatic.com/resource/news/2013/12/mean-digitalocean/zh/resources/Snip20131205_4.png" alt="" _href="img://Snip20131205_4.png" _p="true" /></p>
+<p>MEAN组合，即MongoDB、Express、Angular、Node的组合。该组合的出处难以考证，不过根据一次<a href="https://developers.google.com/live/shows/913996610">GDG活动的介绍</a>，MongoDB内核工程师、<a href="http://www.ascotproject.com/">the Ascot Project</a>联合创始人Valeri Karpov最早开始使用这套组合。Valeri Karpov在<a href="http://thecodebarbarian.wordpress.com/2013/04/29/easy-web-prototyping-with-mongodb-and-nodejs/">其2013年4月的一篇博客</a>中提到自己在一次<a href="http://francescak.me/blog/2013/04/09/fintech-hackathon-recap/">FinTech Hackathon</a>上使用该组合构建了自己的应用，并表示自己在开发the Ascot Project当中也是采用MEAN组合开发。整个2013年，Valeri在多处活动中分享自己使用MEAN组合开发应用的经验，最近的一次是在<a href="http://nodesummit.com/">Node Summit</a>上（<a href="http://www.slideshare.net/vkarpov15/mean-stack-node-summit-valeri-karpov">Slides地址</a>）。</p>
+<p>也是在2013年4月前后，IBMdW上开始发布名为《<a href="http://www.ibm.com/developerworks/mobile/library/mo-nodejs-1/index.html">Developing mobile apps with Node.js and MongoDB</a>》的系列文章，作者是四个IBM的实习生，他们针对IBM Passes产品开发了一套完全基于Node的后端。文中表示：</p>
+<blockquote> 
+ <p>我们的团队使用Node开发的方案要比实现相同功能的Java方案节省了40%的开发用时，我们还对两种方案进行了全面的性能测试，结果显示Node方案有更好的可伸缩性和更高的硬件利用率。</p> 
+</blockquote>
+<p>从2013年中到2013年底期间，社区开始逐步完善围绕MEAN组合的一系列资源。2013年6月前后，Linnovate软件工程师<a href="http://www.amoshaviv.com/">Amos Haviv</a>在Github上创建了一个<a href="https://github.com/linnovate/mean">MEAN框架项目</a>，最早的<a href="https://github.com/linnovate/mean/commit/e99fafff2c9d4ef7544f8fffa921ce8ceab26629">项目说明</a>表示：</p>
+<blockquote> 
+ <p>该框架希望为所有基于Mongo、Angular、Express和Node的项目提供一个好用的起点，同时也是我们公司Web应用的一个起点。</p> 
+</blockquote>
+<p>目前，该项目在Github上获得了1951个星标，477个fork。该项目还创建了一个叫做<a href="http://mean.io/">mean.io</a>的独立页面，方便开发者们快速获取打包的安装包并快速上手。Linnovate目前也是MEAN组合的强力推动者，鼓励初创企业们拥抱MEAN以快速完成原型开发，实现<a href="http://www.meanleanstartupmachine.com/">精益</a>。</p>
+<p>你是否会采用MEAN Stack进行应用开发？你是否尝试过这个组合，感觉如何？欢迎交流你的观点。</p><br><br><br><br><br><br></body></html>

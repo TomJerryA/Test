@@ -2,6 +2,9 @@
  <head></head> 
  <body>
   <div>
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/35.htmlb">JSIL：将CIL编译为JavaScript时所遇的挑战</a> 本文介绍了JSIL，这是一个将.NET转换为JavaScript的编译器，同时详细地讲解了将CIL代码编译为跨浏览器的JavaScript时所遇到的各种困难。 
+  </div> 
+  <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/34.htmlb">重构遗留程序的一次案例学习</a> 重构遗留代码的理想方式是建立一套单元测试，以避免出现回归缺陷，但做到这一点往往并不容易。本文描述了一种可以安全地重构遗留代码的方法。 
   </div> 
   <div> 
@@ -147,9 +150,6 @@
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/37.htmlb">Windows与Mac开发领域的两个全新成功案例</a>Embarcadero网站为我们分享了FireMonkey在Windows与Mac开发领域的两个全新成功案例：Bremmers Audio Design的MultitrackStudio以及Porter Lee公司的BEAST警方证物管理系统。 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/36.htmlb">Delphi 18周年庆：持续创新与全新跨设备支持</a>遥想1995年2月14日，英巴卡迪诺在加州旧金山的西部软件开发大会上正式推出了第一版Delphi。结合了16位Windows本机代码编译器、可视化组件体系架构（属性、方法与事件）、可视化双向工具IDE，一举超越了此前十二年Turbo Pascal所积累的全部创新成果。很多开发者可能还没有开始关注Delphi解决方案的最新动态，下面我们就简单介绍以往八个版本中所包含的创新内容。 
   </div>  
  </body>
 </html>

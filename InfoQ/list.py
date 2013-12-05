@@ -1,6 +1,12 @@
 <html>
  <head></head> 
- <body> 
+ <body>
+  <div>
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/38.py">APIのバージョニングコスト</a>サービスのバージョニングは、SOAにおける重要な問題になってきている。何年もの間、さまざまな経験を共有してきたが、それぞれのアプローチを具体的に比較、対比するというやり方はほとんどなかった。Jean-Jacques Dubray氏がこの領域におけるチームの経験と、違いを示そうと作成しようとした方程式について書いた。
+  </div>
+  <div>
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/37.py">モバイルアプリのA/Bテスト</a>Best.lyはモバイルアプリ向けのA/Bテストをサポートするサービスだ。コードの変更もApp Storeへの再提出も必要ない。今のところ、iOSプラットフォーム向けのネイティブライブラリしかないが、Android向けのライブラリもすでに開発中で、間もなく利用可能になる。実験はオンラインで管理され、実行中に調整したり、リアルタイムにモニタリングできる。
+  </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/36.py">RESTを使ったエンタープライズ統合から学んだこと</a>大規模なレガシー置き換えはIT業界における苦行であり、こうしたプロジェクトの多くで、REST over HTTPを使うのが魅力的な選択肢になる。アーキテクチャ上、RESTはスケーラブルであり、ドメインモデリングにフィットすることがわかっている。Thoughtworksの主任コンサルタントのBrandon Byars氏はこう言って、大規模なレガシー置き換えプロジェクトでRESTful統合を使った経験について語った。 
   </div> 
@@ -144,12 +150,6 @@
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/40.py">Google Play 4.0、さらにサービスを追加</a>Play ServicesはGingerbreadよりも前のデバイスをサポートしなくなる。Play 4.0にはMobile Ads SDKが含まれ、Wallet Instant Buyにより新しい統合購入システムが提供される。 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/39.py">EclipseのM2Mプロジェクト</a>EclipseConでBenjamin Cab&eacute;氏がEclipseのマシン to マシン(m2m)プロジェクトを紹介した。 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/38.py">なぜGerritはBuckを選んだのか</a>６ヶ月前，Gerritプロジェクトは既存のMavenビルドから，Buckをベースとしたビルドシステムへの移行を開始した。そして2.8ストリームでは，Buckがデフォルトのビルドになった。EclipseConでShawn Pearce氏はこの切り替えの理由に加えて，ビルドシステム自体についても少し説明した。Buckの内容とMavenに対するアドバンテージについて，本文から読み取ってほしい。 
-  </div> 
+  </div>   
  </body>
 </html>
