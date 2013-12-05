@@ -1,7 +1,7 @@
 <html>
  <head></head> 
- <body>
-  <div>
+ <body> 
+  <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/35.htmlb">JSIL：将CIL编译为JavaScript时所遇的挑战</a> 本文介绍了JSIL，这是一个将.NET转换为JavaScript的编译器，同时详细地讲解了将CIL代码编译为跨浏览器的JavaScript时所遇到的各种困难。 
   </div> 
   <div> 
@@ -150,6 +150,6 @@
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/37.htmlb">Windows与Mac开发领域的两个全新成功案例</a>Embarcadero网站为我们分享了FireMonkey在Windows与Mac开发领域的两个全新成功案例：Bremmers Audio Design的MultitrackStudio以及Porter Lee公司的BEAST警方证物管理系统。 
-  </div>  
+  </div> 
  </body>
 </html>

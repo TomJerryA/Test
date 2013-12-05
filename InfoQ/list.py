@@ -1,11 +1,11 @@
 <html>
  <head></head> 
- <body>
-  <div>
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/38.py">APIのバージョニングコスト</a>サービスのバージョニングは、SOAにおける重要な問題になってきている。何年もの間、さまざまな経験を共有してきたが、それぞれのアプローチを具体的に比較、対比するというやり方はほとんどなかった。Jean-Jacques Dubray氏がこの領域におけるチームの経験と、違いを示そうと作成しようとした方程式について書いた。
-  </div>
-  <div>
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/37.py">モバイルアプリのA/Bテスト</a>Best.lyはモバイルアプリ向けのA/Bテストをサポートするサービスだ。コードの変更もApp Storeへの再提出も必要ない。今のところ、iOSプラットフォーム向けのネイティブライブラリしかないが、Android向けのライブラリもすでに開発中で、間もなく利用可能になる。実験はオンラインで管理され、実行中に調整したり、リアルタイムにモニタリングできる。
+ <body> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/38.py">APIのバージョニングコスト</a>サービスのバージョニングは、SOAにおける重要な問題になってきている。何年もの間、さまざまな経験を共有してきたが、それぞれのアプローチを具体的に比較、対比するというやり方はほとんどなかった。Jean-Jacques Dubray氏がこの領域におけるチームの経験と、違いを示そうと作成しようとした方程式について書いた。 
+  </div> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/37.py">モバイルアプリのA/Bテスト</a>Best.lyはモバイルアプリ向けのA/Bテストをサポートするサービスだ。コードの変更もApp Storeへの再提出も必要ない。今のところ、iOSプラットフォーム向けのネイティブライブラリしかないが、Android向けのライブラリもすでに開発中で、間もなく利用可能になる。実験はオンラインで管理され、実行中に調整したり、リアルタイムにモニタリングできる。 
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/36.py">RESTを使ったエンタープライズ統合から学んだこと</a>大規模なレガシー置き換えはIT業界における苦行であり、こうしたプロジェクトの多くで、REST over HTTPを使うのが魅力的な選択肢になる。アーキテクチャ上、RESTはスケーラブルであり、ドメインモデリングにフィットすることがわかっている。Thoughtworksの主任コンサルタントのBrandon Byars氏はこう言って、大規模なレガシー置き換えプロジェクトでRESTful統合を使った経験について語った。 
@@ -150,6 +150,6 @@
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/40.py">Google Play 4.0、さらにサービスを追加</a>Play ServicesはGingerbreadよりも前のデバイスをサポートしなくなる。Play 4.0にはMobile Ads SDKが含まれ、Wallet Instant Buyにより新しい統合購入システムが提供される。 
-  </div>   
+  </div> 
  </body>
 </html>

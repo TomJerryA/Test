@@ -1,6 +1,40 @@
-<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>DXperience 13.2 Adds ASP.NET Icon Library, New Themes, Extended Smart Tag Support and Enhancements</h3><p>The upcoming release of DXperience 13.2 will include a new <a href="https://community.devexpress.com/blogs/aspnet/archive/2013/11/07/asp-net-icon-library-what-s-new-in-13-2.aspx">icon library</a> which you can easily use with DevExpress ASP.NET controls using IconID property. For instance, if you need to include an icon with the navigation bar control you can use Items.Image.IconID property. As soon as you select IconID property, an editor dialog is displayed using which you can choose an icon.<br /> <br /> <img src="http://www.infoq.com/resource/news/2013/11/dxperience-13-2/en/resources/Icon_Library.png" alt="" _href="img://Icon_Library.png" _p="true" /></p>
-<p>According to official sources, the icons included with the library are inherited from ImageProperties class and are available in 16x16 and 32x32 formats in both color and gray scale formats.<br /> <br /> Moreover, the release will also include a new <a href="https://community.devexpress.com/blogs/aspnet/archive/2013/11/13/asp-net-moderno-theme-what-39-s-new-in-13-2.aspx">Moderno</a> theme which make use of advanced CSS3 techniques to draw many of the elements. The theme is also fully compatible with touch based mobile devices since it has bigger padding sizes.</p>
-<p><a href="/resource/news/2013/11/dxperience-13-2/en/resources/Moderno_Padding_Original.png"><img src="http://www.infoq.com/resource/news/2013/11/dxperience-13-2/en/resources/Moderno_Padding.png" alt="" _href="img://Moderno_Padding.png" _p="true" /></a></p>
-<p>The upcoming release will include three new themes for WinForms in addition to Visual Studio Color Theme support across all control designers, which provides an enhanced design time experience. This new capability will enable developers to modify skin settings of the designer to match with the color theme of Visual Studio. It will also ship with smart tag support for all controls including WinForms Data Editors Library such as&nbsp; BarCodeControl, ButtonEdit, CalcEdit, CheckButton and ComboBoxEdit.</p>
-<p>DXperience 13.2 will include a new ribbon control with support for data binding, responsive layout and rich client side events in addition to templates. The new ASP.NET Spreadsheet control which ships with the upcoming release provides an ability to automatically generate UI including an automated formula calculation engine, built-in spreadsheet functions, <br /> cell references and cell formatting. The control will also have features such as charting, pictures and worksheet management.<br /> <br /> The Grid control provides support for batch edit, which enables developers to modify a batch of records on the client side and send it to the server in one request. The new release include a new Token Box control which enables users to select values from a predefined list and legend checkboxes which provides an ability for end users to toggle the visibility of various chart elements. On the other hand, the chart control renders data based on chart size and zoom level. </p>
-<p>DXperience 13.2 will have a new color picker control which enables users to select custom colors via its dropdown by maintaining the collection in cookies. It also will have a new MVC extension with support for data binding, help text rendering, tab, group box containers including seamless integration with DevExpress data editors. The Grid lookup extension available with 13.2 provides support for multiple record selection, item templates and advanced filtering options. <br /> &nbsp;<br /> The upcoming release will also include a new rating extension with support for read-only mode in addition to customizable titles for each extension item and item images including support for SharePoint 2013.</p><br><br><br><br><br><br></body></html>
+<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>How Retrospectives Can Support Learning in Lean Startup</h3><p>The build-measure-learn feedback loop in lean startup aims to help entrepreneurs to learn about the needs of their customers. Agile retrospectives are a way to reflect and learn and to agree on changes that are needed.&nbsp;Below are some examples describing&nbsp;how lean startup&nbsp;can be supported with agile retrospectives&nbsp;to learn and take actions.</p>
+<p>In the blog post <a href="http://www.fastcompany.com/3012877/dialed/3-rules-every-entrepreneur-should-live-by">3 rules every entrepreneur should live by</a>, Michelle Serro shared the benefits that she gets from doing agile retrospectives:&nbsp;</p>
+<blockquote> 
+ <p>In Agile, “retrospectives” are meetings that take place at the end of a period of work (…) where the team sits together to talk about what’s working, what isn’t, what opportunities people are seeing, and which challenges they are facing. It’s about constantly checking in and questioning whether our stated approach is still making sense given everything new we’re learning as we iterate.</p> 
+</blockquote>
+<p>Michelle describes the 3 important rules for working that that she learned from retrospectives. The first rule is to “Acknowledge Early. Address Often” by using retrospectives to address issues quickly in a positive atmosphere:</p>
+<blockquote> 
+ <p>People were eager to identify anything that was standing in the way of doing great work--that became the de facto agenda item for each meeting. What’s standing in your way? And, how can we remove that obstacle together? The goal is to learn and get better as soon as possible.</p> 
+</blockquote>
+<p>Her second rule is to &quot;Disable Auto-Pilot&quot; which helps her to stay alert:</p>
+<blockquote> 
+ <p>With Agile, you simply are not allowed to assume everything is ok unless you hear otherwise. The point is to forever question whether you are still on the best path as a team and as a company given all the new input you receive each day.</p> 
+</blockquote>
+<p>The third rule “Plan to Pivot” fits retrospectives to the lean startup, as Michelle explains:</p>
+<blockquote> 
+ <p>The retrospective asks not to simply look back on the past week, but all the way back to our initial intentions. What’s more, it sets the stage for the entire team to be willing to make a pretty dramatic change of direction as soon as you get the first hints that it may be required. That doesn’t mean throwing away everything you’ve done and starting over, but it does mean you are mentally open to identifying a better opportunity that may be completely tangential to the business you initially started.</p> 
+</blockquote>
+<p>“A static business model canvas is as useless as a static 60 page business plan” said Tristan Kromer in his blog post <a href="http://grasshopperherder.com/the-one-minute-retro/">the one minute retro</a>. His opinion is that retrospectives help you to get to the fundamentals of lean startup. He describes the one minute retro, which for him is a way to establish a habit of doing retrospectives:</p>
+<blockquote> 
+ <ol> 
+  <li>Set a timer for one minute.</li> 
+  <li>Ask the group, “What’s the one thing in the last sprint/meeting/day/fortnight that you would like to change or improve about the way we do business/our meeting format/our coding practice/the way we order lunch?”</li> 
+  <li>Start the timer.</li> 
+  <li>Write something down on your sticky note.</li> 
+  <li>When the timer goes off, collect all the feedback.</li> 
+ </ol> 
+ <p>It’s the person running the retro’s job to take the feedback and choose one and only one thing to improve for the next time period.</p> 
+</blockquote>
+<p>Tristan explains that it is important to select only one learning from the one minute retro to work on to:</p>
+<blockquote> 
+ <ul> 
+  <li>limits scope creep (which exists in process improvements as well as technical specifications);</li> 
+  <li>gives the team small wins to help show positive progress;</li> 
+  <li>is just about all you can manage in a short sprint anyway.</li> 
+ </ul> 
+</blockquote>
+<p>One minute retrospectives help&nbsp;to learn and find quick wins in a limited amount of time, said Tristan:</p>
+<blockquote> 
+ <p>The point here is to establish the habit of a retro rather than have a perfect retro. (…) Until you cover the basics, getting into the details is irrelevant.</p> 
+</blockquote><br><br><br><br><br><br></body></html>

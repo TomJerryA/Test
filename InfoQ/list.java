@@ -1,6 +1,9 @@
 <html>
  <head></head> 
- <body> 
+ <body>
+  <div>
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/38.java">How Retrospectives Can Support Learning in Lean Startup</a>The build-measure-learn feedback loop in lean startup aims to help entrepreneurs to learn about the needs of their customers. Agile retrospectives are a way to reflect and learn and to agree on changes that are needed. Some examples describing how lean startup can be supported with agile retrospectives to learn and take actions.
+  </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/37.java">Wix 3.8 Adds VS 2013 Support in Votive and WiX Native Library and Bootstrapper Application Functions</a>Wix 3.8 has been released with support for Visual Studio 2013 in Votive and WiX native libraries. The release also includes bootstrapper application functions which extends WixStandardBootstrapperApplication including the ability to detect Windows 8.1 in Burn. 
   </div> 
@@ -147,9 +150,6 @@
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/41.java">Teradata Offers Data Warehouse as a Service as Part of Their Cloud Strategy</a>Teradata revamps its cloud offering, offers Data Warehouse Data Platform as a Service solution. Teradata Cloud is aspiring to become a worthy competitor to Amazon Redshift, with a richer set of predefined libraries and a more effective way of loading data. 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/40.java">Interview with Kevin Behr on Continuous Improvement Kung-Fu</a>At the recent DevOps Days in New York, Kevin Behr, co-author of “The Visible Ops Handbook” and ”The Phoenix Project”, and Jesse Palmer gave a talk on how they instilled a continuous improvement culture into an operations team. InfoQ interviewed Kevin Behr to know more about the approach that was taken. 
-  </div> 
+  </div>  
  </body>
 </html>

@@ -1,13 +1,26 @@
-<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>Amazon RDS对PostgreSQL提供了支持</h3><p>Amazon RDS在服务所支持的数据库列表中<a href="http://aws.typepad.com/aws/2013/11/amazon-rds-for-postgresql-now-available.html">添加了PostgreSQL</a>。目前支持<a href="http://www.postgresql.org/docs/9.3/static/release-9-3-1.html">v9.3.1</a>版本的PostgreSQL，并且规划会支持将来的新版本。</p>
-<p>单个Postgres RDS实例能够扩展到3TB数据以及30,000 IOPS。所支持的核心特性为：</p>
+<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>金山云总裁谈为什么要做云主机、为什么只有大公司能做公有云、以及为什么创业者不应该再盲目涌入游戏行业了</h3><p>2013年12月5日，金山云宣布正式对外开放其云计算平台的五条产品线，即在原来的云存储业务之上，再开放云主机、云硬盘、负载均衡和数据库业务。InfoQ中文站向金山云总裁王育林了解到金山云服务的当前状态，以及对云计算产业链下一步发展方向的观点。</p>
+<h2><b>金山云相关数据</b></h2>
 <ul> 
- <li>所有正常RDS所支持的特性，如Multi-AZ Deployments、Provisioned IOPS、虚拟私有云（Virtual Private Cloud）、自动备份（Automated Backups）、Point-in-time恢复以及跨域快照复制（Cross-Region Snapshot copy）。</li> 
- <li><a href="http://www.postgis.net/">PostGIS</a>空间数据库扩展</li> 
- <li>PL/Perl、PL/Tcl以及PL/pgSQL语言</li> 
- <li>全文本搜索字典（Full-text search dictionaries）（<a href="http://www.postgresql.org/docs/9.3/static/dict-int.html">dict_int</a>、<a href="http://www.postgresql.org/docs/9.3/static/dict-xsyn.html">dict_xsyn</a>以及<a href="http://www.postgresql.org/docs/9.3/static/unaccent.html">unaccent</a>）</li> 
- <li>高级数据类型如<a href="http://www.postgresql.org/docs/9.2/static/hstore.html">Hstore</a>和JSON</li> 
- <li>支持在数据库会话中，通过<a href="http://www.postgresql.org/docs/9.3/static/dblink.html">dblink</a>连接到其他PostgreSQL数据库</li> 
+ <li>金山云存储目前的使用量在百PB级，目前在全国十多个机房的总容量约为EB级</li> 
+ <li>金山云存储目前客户有上百家，大客户几十家，快盘目前已经不是最大客户。其中，视频客户的体量不大，只有几百T</li> 
+ <li>存储定价在0.32元/G&middot;月，主要是冷数据</li> 
+ <li>云主机定价为4核8G双机年价格19400元</li> 
+ <li>存储IO方面，在1m块、dsync模式下，可达到80 Mbps的性能</li> 
+ <li>金山云目前70~80人的研发团队，有一半以上在做存储的研发与产品化</li> 
 </ul>
-<p>你可以去<a href="http://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/CHAP_PostgreSQL.html">官方文档</a>上了解更多扩展功能。</p>
-<p><a href="http://aws.amazon.com/rds/">Amazon关系型数据服务（RDS，Relational Database Service）</a>是一种在云中简化搭建、操作以及扩展关系型数据库的web服务。RDS已经支持多种其他的数据库引擎，如MySQL、Oracle和SQL Server。</p>
-<p><strong>原文英文链接：</strong><a href="http://www.infoq.com/news/2013/11/amazon-rds-postgresql">Amazon RDS Supports PostgreSQL</a></p><br><br><br><br><br><br></body></html>
+<h2><b>技术选型</b></h2>
+<p>云主机完全是自主研发，此前一直对内部提供Web服务、数据库服务与API服务等。虚拟化机制方面，Xen和KVM都有，根据应用划分，整体来说KVM多一些。云主机支持CPU、内存、存储、带宽、防火墙策略自定义配置，提供Web、SSH、RDP、VNC管理方式，以及ARP攻击、MAC欺骗防护，以及租户间隔离。</p>
+<p>云硬盘跟云主机配套提供，采用本地存储。单盘容量为T级，支持挂载多块硬盘、支持跨云主机挂载。5个9的可用性，支持快照，支持热迁移，秒级实现配置变更。</p>
+<p>数据库运行在弹性存储之上，RDS基于MySQL，本次发布；BigTable基于HBase做的修改，尚未正式发布，正在内部使用。</p>
+<p>CDN和蓝汛合作。</p>
+<h2>产品战略与云计算产业链</h2>
+<p>王育林认为，云存储相比云计算其实更容易赚钱：云存储是增量服务，历史用量稳定，增量也可以清晰的预估，不用准备特别大的冗余，成本容易控制；而云计算则需要为峰值准备资源，峰值有多少往往是无法预估的，需要准备大量冗余。金山云之所以要做云主机这一块业务，是因为开发者更愿意选择能够提供一揽子服务的提供商，只提供一个存储服务太单薄，提供全套服务是势在必行。</p>
+<p>金山云主要面向的领域有商业办公领域、游戏、电商（目前有凡客和小米商城），以及传统企业。王育林表示，现在很多企业业务已经连入互联网，包括银行内部的业务也已经接入IDC，企业对于ERP、OA等内部系统可以从外部、从移动终端访问的需求越来越大，私有云跟公有云的区分已经不明显。私有云主要是从SI的角度做，内部扩展性终究会遇到问题，跟公网联通才是大方向。AWS获得大企业订单、EMC开始做公有云存储，都说明企业选择公有云是必然的方向。</p>
+<p>王育林介绍金山云目前已经在混合云方面有一些进展，比如今年3月推出的快盘商业版，本身同时支持公网和局域网同步，在使用效率方面并没有遇到障碍。金山云跟SI也有一些大项目的合作，但王育林表示SI合作伙伴并不是金山云重点培育的方向，他们更关注互联网开发者生态的培养。</p>
+<p>王育林认为只有大公司才能做公有云，他提出了两点理由：</p>
+<ol> 
+ <li>大公司内部的需求足够大，有条件准备足够的冗余。小公司需要做到这一点需要冒极大的成本风险</li> 
+ <li>大公司能够为开发者提供成熟的生态环境。腾讯的游戏，阿里的电商，是他们做公有云背后的生态</li> 
+</ol>
+<p>王育林表示，金山+小米的组合，可以覆盖办公、安全、游戏等领域，横跨手机、电视、路由等终端，这是金山云的优势。比如，金山云可以跟小米游戏合作为开发者提供游戏推送服务和支付服务，还可以跟多盟合作为开发者提供广告接入服务。对于API和API之上的一层，金山云非常重视。云平台只给开发者提供底层服务是远远不够的，更重要的是解决开发者的指导问题。比如，现在很多创业团队都涌入到游戏领域，但这个领域已经非常饱和了。云服务提供商应该引导开发者看到更加广泛的领域，比如电视，比如可穿戴设备，比如商业办公，比如医疗。王育林提到一个在线印刷的新兴业务，这个业务把用户拍下来上传到云存储的照片直接印刷成画册，再通过快递寄给用户，这样的模式他认为就很好。</p>
+<p>做云的公司，都在努力打通硬件、软件、环境、网络、变现这五个环节。王育林认为随着云计算领域的标准逐渐统一，未来会有更好的发展。</p><br><br><br><br><br><br></body></html>
