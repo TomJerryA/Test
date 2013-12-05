@@ -1,5 +1,28 @@
-<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>RadControls for ASP.NET AJAX Q3 2013 SP1新增Visual Studio 2013和Internet Explorer 11支持</h3><p><a href="http://blogs.telerik.com/blogs/13-11-14/q3-2013-sp1-of-radcontrols-for-asp.net-ajax-is-live">Telerik</a>于近日发布了<a href="http://www.telerik.com/products/aspnet-ajax.aspx">RadControls for ASP.NET AJAX Q3 2013 Service Pack 1</a>，支持<a href="http://blogs.msdn.com/b/somasegar/archive/2013/11/13/visual-studio-2013-launch-announcing-visual-studio-online.aspx">Visual Studio 2013</a>、<a href="http://en.wikipedia.org/wiki/Internet_Explorer_11">Internet Explorer 11</a>和PDF分页。它还为导出到PDF提供了额外的样式表支持，并且包含了PageOrientation属性，通过该属性，可以横向或纵向导出PDF文档。该版本还修复了导出到PDF时与SkinChooser有关的一个问题。</p>
-<p>除了增加新方法GetVersion（）用于以字符串形式返回控件的当前版本外，该Service Pack还提供了在RadScheduler的MonthView中调整约会的能力。</p>
-<p>从这个版本开始，用户将可以在iPad上体验到改进的RadEditor渲染模式。而且，用户可以对新版本中包含的Demo进行重新设计和重新分组，通过这样一种方式，用户可以方便地浏览这些Demo。</p>
-<p>另一方面，它还更新了ComboBox控件。更新之后，当用户选中CheckAll复选框时，会同时触发客户端和服务端事件。除了上述更新以外，SP1版本还包含了多项<a href="http://www.telerik.com/products/aspnet-ajax/whats-new/release-history/q3-2013-sp1-version-2013-3-1114.aspx">Bug修复</a>，并改进了AsyncUpload、AutoCompleteBox、Button、Calendar、Captcha、DropDownList、DropDownTree、Editor、Grid、PersistenceFramework及其它更多控件。</p>
-<p><b>查看英文原文：</b><b><a href="http://www.infoq.com/news/2013/11/radcontrols-aspnet-ajax-q3-sp1">RadControls for ASP.NET AJAX Q3 2013 SP1 Adds Visual Studio 2013 and Internet Explorer 11 Support</a></b></p><br><br><br><br><br><br></body></html>
+<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>Visual Commander专业版v1.3 包含99个命令、50个扩展，支持C#语法高亮</h3><p><a href="http://vlasovstudio.com/visual-commander/professional_edition.html">Visual Commander Professional v1.3</a>已经发布，新版本包含99个命令、50个扩展，用户可以通过单击命令（Commands）窗口的添加（Add）按钮或者通过导入引入它们。它还引入了语法高亮，同时集成了Visual Studio文本编辑器允许用户编辑代码，并为Edit.FindNextSelected、Edit.FindPreviousSelected、Edit.FindNext和Edit.FindPrevious 命令添加了录制功能。</p>
+<p>Visual Commander v1.3能够通过宏语言选择为新的命令和扩展提供选择默认语言的能力。它还修复了ReflectionTypeLoadException，当在同一台机器上安装了多个版本的Visual Studio时会发生该异常；另外还修复了FileNotFoundException，该异常在通过完整路径引用定制的程序集时会被抛出。最近发布的版本改进了对代码中保护者CR的存储处理，并对异常处理做了一些增强。</p>
+<p>用户能够通过扩展在Visual Studio 2013/2012/2010中自动化重复的任务——或者通过使用C#、VB创建新的命令及扩展， 或者通过重用之前版本中已有的Visual Studio宏。除此之外，它还能够为Visual Studio文本编辑器录制并回放键盘命令。</p>
+<p>借助于Visual Commander，用户能够重新分配录制宏（Record Macro，Ctrl+Shift+R）和运行宏（Run Macro，Ctrl+Shift+P）命令，只需要在Visual Studio键盘选项中人工地重新指定VCmd.RecordMacro和VCmd.RunMacro命令即可。此外，扩展还存储了所有的设置，包括命令、扩展和&quot;%APPDATA%\Sergey Vlasov\Visual Commander\1.0\snippets.vcmd&quot;中的临时宏。</p>
+<p>“现在还没有可用于Visual Commander的 API。你可以为命令指定快捷键同时使用标准的Visual Studio接口将它们添加到工具栏上。”Visual Commander的首席开发者<a href="http://vlasovstudio.com/about.html">Sergey Vlasov</a>说。 <br /> InfoQ采访了Sergey以期了解与该Visual Studio扩展相关的更多内容。</p>
+<p><b>InfoQ</b><b>：能与我们分享一下创建</b><b>Visual Commander</b><b>的真实目的么？</b></p>
+<blockquote> 
+ <p>创建Visual Commander的主要目的是为了让开发者能够在Visual Studio 2012/2013中使用已经存在的宏命令。从Visual Studio 6开始Visual Studio就支持宏命令，为了提升生产力开发者创建了很多自定义命令，但是Visual Studio 2012移除了该功能，这让很多开发者无所适从。同时现在也没有任何其他的第三方工具具有该功能。</p> 
+</blockquote>
+<p><b>InfoQ</b><b>：</b><b>Visual Commander</b><b>确实能够提升开发者的生产力么？</b></p>
+<blockquote> 
+ <p>绝对的。对于常用的任务你可以创建一个命令序列去编辑代码、改变Visual Studio选项或者修改你的解决方案，然后使用一个键盘快捷键或者通过鼠标单击调用它。</p> 
+</blockquote>
+<p><b>InfoQ </b><b>：你能与我们分享任意一个成功使用该产品的案例么？</b></p>
+<blockquote> 
+ <p><a href="http://visualstudio.uservoice.com/forums/121579-visual-studio/suggestions/2650757-bring-back-macros">Jeff Relf</a>在Visual Studio用户声音上提交了自己使用Visual Commander专业版“带回宏”的体验。在<a href="http://visualstudiogallery.msdn.microsoft.com/deda8ac1-75e6-4068-89ab-b607cee38f2d">Visual Studio Gallery</a>上的Visual Commander页面上列出了3条评论和Q&amp;A。</p> 
+</blockquote>
+<p><b>InfoQ</b><b>：你能够透露一下</b><b>Visual Commander</b><b>未来的路线图么？</b></p>
+<blockquote> 
+ <p>我计划提升Visual Commander与Visual Studio的集成，让它更加易用：</p> 
+ <ol> 
+  <li>支持重新排序，在VCmd菜单中对Visual Commander命令排序。</li> 
+  <li>为Visual Studio键盘选项的键盘绑定添加自定义命令名。</li> 
+  <li>添加明确的菜单命令可以将记录的宏保存为命令。</li> 
+  <li>我想找到一种方式可以为命令编辑启用智能感知，但是现在遇到了Visual Studio扩展性的限制。</li> 
+ </ol> 
+</blockquote>
+<p><b>查看英文原文</b>：<a href="http://www.infoq.com/news/2013/12/visual-commander-pro-1-3">Visual Commander Professional v1.3 Introduces 99 Commands, 50 Extensions and C# Syntax Highlighting</a></p><br><br><br><br><br><br></body></html>

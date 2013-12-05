@@ -2,6 +2,15 @@
  <head></head> 
  <body> 
   <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/36.py">RESTを使ったエンタープライズ統合から学んだこと</a>大規模なレガシー置き換えはIT業界における苦行であり、こうしたプロジェクトの多くで、REST over HTTPを使うのが魅力的な選択肢になる。アーキテクチャ上、RESTはスケーラブルであり、ドメインモデリングにフィットすることがわかっている。Thoughtworksの主任コンサルタントのBrandon Byars氏はこう言って、大規模なレガシー置き換えプロジェクトでRESTful統合を使った経験について語った。 
+  </div> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/36.py">Salesforce、Salesforce1でAPIファーストに向かう</a>サンフランシスコで開かれたDreamforceにおいて、SalesforceがSalesforce1プラットフォームをローンチした。最初に提供するのはモバイルにフォーカスしたもので、基本となるAPIセットをもっと豊富にすることで、これまでの「Touch」ユーザインターフェイスを改善することを目指している。ローンチにあわせて、新しいアプリケーションと管理モバイルアプリも発表された。 
+  </div> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/35.py">Microsoftがモバイルデバイスとセンサに対応する単一OSを計画中</a>先週開催されたUBS Global Technology Conferenceの期間中，MicrosoftでDevices and Studios部門を担当する上級副社長のJulie Larson-Green氏は，今日のソフトウェアマーケットに対するMicrosoftのアプローチについて講演を行い，特にモバイルデバイスオペレーティングシステムの世界における同社の見解を提供した。ここではそのセッションの原稿(HTML，DOCX)の中から，特に興味を引く部分を選び出して紹介する。 
+  </div> 
+  <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/34.py">DXperience 13.2 - 新しいASP.NETアイコンライブラリ，新テーマ，スマートタグサポートの拡大と強化</a>まもなくリリースされるDevExpress DXperience 13.2には，新しいASP.NETアイコンライブラリ，CSS3ベースのmodernoテーマ，Visual StudioのWinForms用の新テーマ，さらにはWinFormsデータ編集ライブラリを含む全コントロール対象のスマートタグサポートが含まれている。 
   </div> 
   <div> 
@@ -141,15 +150,6 @@
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/38.py">なぜGerritはBuckを選んだのか</a>６ヶ月前，Gerritプロジェクトは既存のMavenビルドから，Buckをベースとしたビルドシステムへの移行を開始した。そして2.8ストリームでは，Buckがデフォルトのビルドになった。EclipseConでShawn Pearce氏はこの切り替えの理由に加えて，ビルドシステム自体についても少し説明した。Buckの内容とMavenに対するアドバンテージについて，本文から読み取ってほしい。 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/37.py">2.0リリースでクラウドへと向かうEclipse Code Recommender</a>Eclipse Code Recommenders 2.0がリリースされた。リコメンデーションを拡張し，他ユーザのスニペットを取得する新しいクラウドソーシング機構に加えて，開発途中ながらJavaDocの&quot;関連項目&quot;コールの記述を動的ドキュメントによってアノテートするテクノロジも備えている。詳細は本文で確認してほしい。 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/36.py">ゼロから始めるドメイン駆動設計</a>ドメインはビジネスを説明し、ドメイン駆動設計では、ドメインはアプリケーションの最も重要な構成要素だ、とAndras Nemes氏がドメイン駆動設計に基づいたウェブサービス開発についての連載ブログ記事の初回で説明している。氏の目的はDDDのすべてを説明するのではなく、初学者でも学習できるようにすることだ。 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/35.py">CiscoがH.264デコーダをオープンソース化，Mozilla Firefoxで使用可能に</a>Ciscoが次週のIETF議会に先立って，H.264デコーダをMozilla Firefoxで利用可能なBSDライセンスで公開すると発表した。これによってすべてのブラウザがH.264をサポート可能になる。 
   </div> 
  </body>
 </html>

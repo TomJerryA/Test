@@ -2,7 +2,25 @@
  <head></head> 
  <body>
   <div>
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/33.java">Microsoft Joins Forces with RedGate and Clickberry to Offer Node.js Tools for Visual Studio</a>NTVS, short for Node.js Tools for Visual Studio, offers Node.js developers a fully featured IDE complete with Intellisense, package management, profiling, and debugging. NTVS is a joint effort by Microsoft’s Python Tools team, RedGate, Clickberry, and others.
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/37.java">Wix 3.8 Adds VS 2013 Support in Votive and WiX Native Library and Bootstrapper Application Functions</a>Wix 3.8 has been released with support for Visual Studio 2013 in Votive and WiX native libraries. The release also includes bootstrapper application functions which extends WixStandardBootstrapperApplication including the ability to detect Windows 8.1 in Burn.
+  </div>
+  <div>
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/36.java">Famo.us launches first public access to its Javascript platform</a>The team that built the Famo.us Javascript platform plans their first preview release of their app layer code on December 5th, 2013 as a foreshadowing of their platform's client-side prowess.
+  </div>
+  <div>
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/35.java">QCon London '14: Damian Conway, Tim Lister, Gunter Dueck Keynotes, 45% Speakers Confirmed (Mar 3-7)</a>45/100 speakers and 3 keynotes have been confirmed for QCon London 2014 (Mar 3-7, 2014). The eight annual conference will feature talks from language pioneers, project leads, and practitioner case studies from companies like Netflix, NASA, Spotify, Financial Times, and more. You can get in early by reserving your seat now saving &pound;325 by Dec 15th.
+  </div> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/35.java">Go Steadily Advances as Go 1.2 is Released</a>The Go programming language has just released version 1.2, bringing with it some language changes and improved networking performance on Windows and the BSD platforms. 
+  </div> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/35.java">Using Agile to Build a Distributed Development Team</a>In &quot;experiences with a distributed agile team&quot;, Joost Mulders and Andriy Korpan presented how they integrated a near shore development team from the Ukraine in a Dutch product development organization using agile practices. At the XP Days Benelux 2013 conference they talked about the do’s and don’ts of distributed agile. 
+  </div> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/34.java">General availability of Google Compute Engine</a>The Google Compute Engine (GCE) infrastructure as a service (IaaS) is now in general availability. The launch also brings price cuts, a new storage model, expanded operating system support and live migration capabilities for transparent maintenance. 
+  </div> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/33.java">Microsoft Joins Forces with RedGate and Clickberry to Offer Node.js Tools for Visual Studio</a>NTVS, short for Node.js Tools for Visual Studio, offers Node.js developers a fully featured IDE complete with Intellisense, package management, profiling, and debugging. NTVS is a joint effort by Microsoft’s Python Tools team, RedGate, Clickberry, and others. 
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/32.java">Experiencing Language Barriers with an Improvisational Theatre Workshop</a>In the XP Days workshop Agile cross borders, Hoang-Anh PHAN &amp; Anais Victor explored how you can deal with language barriers in a multi cultural organization. They work for the Vietnamese company Officience who provides outsourcing services to French customer, using the English language to communicate and work together. 
@@ -132,24 +150,6 @@
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/40.java">Interview with Kevin Behr on Continuous Improvement Kung-Fu</a>At the recent DevOps Days in New York, Kevin Behr, co-author of “The Visible Ops Handbook” and ”The Phoenix Project”, and Jesse Palmer gave a talk on how they instilled a continuous improvement culture into an operations team. InfoQ interviewed Kevin Behr to know more about the approach that was taken. 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/39.java">Microsoft Ditches the Stack Ranking System. Yahoo! Lays off 600 because of It</a>Yahoo! has recently laid off about 600 employees based on a ranking system introduced last year, while Microsoft is ditching their system to relieve some of the pressure from their staff. 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/38.java">DXperience 13.2 Adds ASP.NET Icon Library, New Themes, Extended Smart Tag Support and Enhancements</a>The upcoming release of DevExpress DXperience 13.2 will include new ASP.NET icon library, moderno theme based on CSS3, new themes for WinForms based on Visual Studio in addition to smart tag support for all controls including WinForms data editors library. 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/37.java">Oracle Releases Videos and Slides from the 2013 JVM Language Summit</a>Oracle have released videos and slides from the 2013 JVM Language Summit, which saw uses of the JVM from the biggest data to the smallest mobiles, and future performance advances in the JVM runtime. Read on to find out more about what was covered. 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/36.java">Applying Security by Design with the CMMI for Development</a>To enable development of secure products, processes covering the software development life cycle have to include security activities. Winfried Russwurm from Siemens and Peter Panholzer from Limes Security facilitated a workshop at the SEPG Europe 2013 conference where they explored security activities and presented the Application Guide for Improving Processes for Secure Products. 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/35.java">Apcera Continuum</a>Cloud startup Apcera is making its Continuum product more visible with the launch of a new website on 14 Nov. 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/34.java">How DevOps Complements Agile at Nokia Entertainment</a>Agile has the manifesto and principles, it focuses on people, clarity for the stakeholders, faster delivery, and happier customers, so why would you need DevOps? John Clapham from Nokia Entertainment in Bristol talked at the Agile Methods in the Finance Sector and Complex Environment conference about what DevOps is and what it has brought to their business. 
-  </div>  
+  </div>    
  </body>
 </html>

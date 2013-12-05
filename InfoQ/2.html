@@ -1,9 +1,28 @@
-<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>微软将停止接受用于SSL和代码签名的SHA1证书</h3><p>美国国家标准和技术研究所建议，在2014年1月之后，不要再信任SHA1。但世界范围内已颁发的证书98%基于该标准，所以立即改变是不可能的。因此，<a href="http://blogs.technet.com/b/pki/archive/2013/11/12/sha1-deprecation-policy.aspx">微软规定，网站要在2017年1月1日之前用一个更安全的版本替换其SSL证书。</a></p>
-<p>需要为代码签名的应用程序供应商也受到了影响。不过，他们要在2016年1月1日前取得新的代码签名证书。“微软会接受时间戳在2016年1月1日之前的SHA1代码签名证书，直到他们认为SHA1很容易受到原像（pre-image）攻击。”</p>
-<p>微软会在2015年中段对这些策略进行复审。下面是可能影响微软时间表的两个主要因素：</p>
-<blockquote> 
- <p>安全社区是否还认为SHA1对原像攻击具有抵抗力，以及</p> 
- <p>生态系统中是否有无法切换到SHA2的重要部分。不能升级到SHA2的第三方遗留系统和嵌入式设备可能尤其容易受到攻击。我们将继续针对生态系统的这个部分收集数据。</p> 
-</blockquote>
-<p>根据当前所写内容，SHA1弃用策略将适用于Windows Vista、Windows Server 2008及其后的操作系统。为了使用SHA2，那些仍然运行着Windows XP的机器至少需要升级到Service Pack 3。Windows Server 2003 Service Pack 2也支持SHA2。</p>
-<p><b>查看英文原文：</b><b><a href="http://www.infoq.com/news/2013/11/SHA-1">Microsoft to Stop Honoring SHA1 Certificates for SSL and Code Signing</a></b></p><br><br><br><br><br><br></body></html>
+<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>OSGi中该使用Blueprint还是声明式服务？</h3><p>在OSGi中，服务是实现bundle间交互和应用灵活性的基石。借助于服务，我们能够降低bundle之间的耦合，更加有利于软件的重用，通过强调面向接口编程，可以提高软件的灵活性与设计水平。</p>
+<p>传统方式下，我们注册服务都是在bundle的激活器（Activator）中使用BundleContext.registerService()方法完成的。而服务的获取需要通过BundleContext.getServiceReference()获取ServiceReference实例，进而使用BundleContext.getService()得到真正的服务实例。这种方式虽然能够完成服务的发布与使用，但是有一定的不足，具体来讲：</p>
+<ol> 
+ <li>产生较多的样板式代码。OSGi的bundle是动态化的，伴随着bundle的安装和卸载，它所发布的服务也会动态地处于可用或不可用的状态，因此每次使用服务的时候，我们都需要借助BundleContext对象去服务注册中心查找，而不能通过一次查找，一劳永逸地持有服务对象的引用。尽管有ServiceListener和ServiceTracker帮助我们监听和跟踪服务的状态，但是总体而言这种方式较为繁琐且容易出错。</li> 
+ <li>影响启动时间，服务在激活器中注册时，需要实例化所有要发布的服务对象，因为激活器的start()方法是同步调用的，所以会影响到整个应用的启动时间。</li> 
+ <li>加大内存的占用，在激活器中注册服务时，我们需要实例化所有的服务对象，但是这些服务在应用运行期间，并不一定会用到，这在无形中加大了内存的占用。</li> 
+ <li>API依赖引起的平台侵入性。使用传统方式注册和使用服务，会用到大量的OSGi API，从而产生与OSGi平台的耦合，如果要将代码复用到非OSGi场景之中，需要较多的重构工作。</li> 
+</ol>
+<p>OSGi通过<a href="http://wiki.osgi.org/wiki/Declarative_Services">声明式服务</a>（Declarative Service）以及<a href="http://wiki.osgi.org/wiki/Blueprint">Blueprint</a>规范来解决这些问题。声明式服务基于组件模型理论，最早出现在R4 compendium规范之中，而Blueprint规范来源于Spring Dynamic Modules项目，最早出现于R4.2企业规范之中。</p>
+<p>这两种方式的实现原理与适用场景均有所不同，最近来自Redhat的首席软件工程师Ioannis Canellos<a href="http://www.javacodegeeks.com/2013/11/thoughts-on-blueprint-and-declarative-services-dependency-injection-or-dependency-management.html">撰文对此进行了分析</a>。</p>
+<p>Blueprint是针对OSGi的依赖注入解决方案，用法非常类似Spring。当使用服务的时候，Blueprint会马上创建并注入一个代理（Proxy）。对这些服务进行调用时，如果服务在当前不可用的话，将会产生阻塞，直至能够获取到服务或超时。</p>
+<p>声明式服务的处理方式有着较大的差异。声明式服务是一种组件模型，它简化了组件的创建过程，这些组件会发布和使用OSGi服务。Ioannis并没有将声明式服务视为依赖注入的解决方案，而是将其视为具备依赖管理功能的组件模型。我们需要以声明的方式定义组件及其依赖，框架会基于依赖的满足情况来管理组件的生命周期。这意味着，只有组件的依赖完全满足的时候，才会处于激活（activated）状态，一旦依赖出现了缺失，组件就会处于停用（deactivated）状态。因此，声明式服务没有使用代理，但是能保证只要组件处于激活的状态，它的内部依赖就是已满足的。</p>
+<p>从上面的介绍可以看出，两种方式的最大区别在于Blueprint采用了代理的方式，而声明式服务采用的是级联的方式（cascading），也就是激活或停用组件基于依赖是否能够满足。Ioannis更倾向于级联的方式，因为代理的方式无法保证底层对象的状态以及可用性。级联的方式能够更好地处理OSGi框架的动态化特性。</p>
+<p>在使用代理方式时，如果服务对象在运行期不存在了，将会导致错误。另外一个问题在于即便服务的依赖还没有得到满足，也是可以发布服务的。而调用时，将会导致挂起，代理会等待未满足的依赖，这个过程会一直持续，直到依赖满足或超时为止。</p>
+<p>Ioannis在文章中还举了一个现实中的例子来阐述这一过程。如下图：</p>
+<p><img width="600" _p="true" _href="img://null" alt="" src="http://infoqstatic.com/resource/news/2013/12/osgi-blueprint-or-ds/zh/resources/1204004.png" /></p>
+<p>此时应用由四部分组成，即展现层、Item Service、DataStore以及数据库。在OSGi中展现层可以使用基于HttpService注册的servlet，Item Service为封装了逻辑的OSGi服务，而DataStore是用来与数据库交互的OSGi服务。Web应用依赖于Item Service，而Item Service又依赖于DataStore。</p>
+<p>当DataStore没有配置或不可用时，代理方式和级联方式分别会发生什么呢？在代理模式下，Item Service将会被注入DataStore的代理。即便没有可用的DataStore，Item Service也会被注册到服务注册中心，发送到Web应用的请求将会阻塞，等待可用的DataStore。而在声明式服务的级联场景下，情况会截然不同，Item Service只有在DataStore存在的时候才会注册为服务，同样，只有Item Service可用时，Web应用才会处于可用的状态。所以我们能够保证当Web应用可用的时候，它的依赖层级都是满足的。当DataStore可用的时候，Item Service和Web应用会自动探测到这种变化，并使自身处于可用的状态。</p>
+<p>总之，声明式服务是很强大的依赖管理工具，级联的方式对于构建健壮的动态化、模块化应用是很有价值的；而Blueprint简单易用，尤其是对于熟悉Spring的开发人员来说更是如此。Ioannis认为当构建的组件没有服务依赖时或不会将自身导出为服务时，Blueprint方式很适合；而在其他的情况下，“等待服务”的方案更为合适，如shell命令或camel routes，因为在这里会有很长的依赖链，组件又是高度动态化的，声明式服务更好一些。</p>
+<p>在<a href="http://wiki.osgi.org/wiki/Category:Component_Models">OSGi的官方站点</a>的介绍中，声明式服务、Blueprint以及Apache iPOJO，均被归类为组件模型。按照《OSGi实战》一书的作者们看来，这两种组件模型的适用场景可以归结为：</p>
+<ol> 
+ <li>声明式服务主要用于创建可快速启动的轻量级组件；</li> 
+ <li>Blueprint主要用于创建高度可配置的企业级应用。</li> 
+</ol>
+<p>Blueprint阻塞机制的一个好处在于能够应对在bundle更新期间服务取消和发布对框架的影响。除此之外，因为Blueprint方式使用了代理机制，因此服务必须要以接口的方式发布。</p>
+<p>除了官方的两种组件模型外，<a href="http://felix.apache.org/site/apache-felix-ipojo.html">Apache iPOJO</a>也是OSGi中常见的组件模型。它的实现机制与上面的两种方式又有所不同，iPOJO也是基于代理的机制，但是会使用字节码生成机制，而不是Java的动态代理机制，这样的话，就解除了服务必须要实现接口的限制。另一方面，当服务不可用时，调用线程不会阻塞，而是会使用null对象来进行处理，这个null对象基于模拟对象模式创建，所有的方法不执行任何操作，根据方法的返回类型生成默认的返回值，如null、0或者false。除此之外，iPOJO还支持提供默认实现。</p>
+<p>根据我们上面的分析，可以看出每种方式都有其优势和适用场景，我们在使用的时候，有必要对内部原理有一定的了解，只有这样，当遇到相关的问题时，才能快速地进行分析和定位。</p>
+<p><a href="http://stackoverflow.com/search?q=Blueprint+Declarative+Services">在Stackoverflow上</a>，也有很多关于这两种模式的讨论，感兴趣的读者，可以对这个话题进行进一步的研究。</p><br><br><br><br><br><br></body></html>

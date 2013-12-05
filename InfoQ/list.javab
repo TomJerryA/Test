@@ -2,6 +2,9 @@
  <head></head> 
  <body> 
   <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/15.javab">To Execution profile or to Memory Profile? That is the question.</a> There are times when memory profiling will provide a clearer picture than execution profiling to find execution hot spots. In this article Kirk Pepperdine talks through some indicators for determining when to use which kind of profiler. 
+  </div> 
+  <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/14.javab">Building Innovative Organizations with Lean Thinking</a> For a modern IT company, innovation is equally critical to the company, its clients and its staff. Jeff discussed the important ingredients needed to create a culture of innovation in an organization. Drawing on his experiences at Thoughtworks Chengdu he examines the importance of leadership, lean thinking, problem solving mindset and people factors in fostering innovation. 
   </div> 
   <div> 
@@ -147,9 +150,6 @@
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/16.javab">Interview: Sam Haskins from Etsy on Code Deployment, Monitoring and Failure Procedures</a>Sam Haskins from Etsy talks about code management with Github, fast deployments with feature flags and no packaging, canary releasing, voluntary code reviews, CI with Jenkins, monitoring and failures. 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/15.javab">Queues – the true enemy of flow</a>Most project management offices measure activity to control delivery times. This article argues that tracking and quantifying queues is a better way to improve cycle time reduction and predictability. 
   </div> 
  </body>
 </html>

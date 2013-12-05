@@ -1,25 +1,279 @@
-<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>全功能团队 - 数据篇</h3><p>在《<a href="http://www.infoq.com/cn/articles/hk-build-full-function-team;jsessionid=1046A20EE2EB74FC5778329CA6669704">建设全功能团队</a>》和《<a href="http://www.infoq.com/cn/articles/hk-build-full-function-team-practice;jsessionid=1046A20EE2EB74FC5778329CA6669704">建设全功能团队——实践篇</a>》两篇文章中，我的同事<a href="http://www.iamhukai.com/">胡凯</a>曾介绍过建设全功能团队的必要性和良好实践，此后在围绕这一话题的讨论中，很多人都分享了自己的理解，或看好，或看淡。在<a href="http://www.thoughtworks.com/cn/">ThoughtWorks</a>有许多团队一直在建设全功能团队方面实践着，在这篇文章中我希望与大家分享我从这些团队收集到的过去一年来的数据，以及更切身的理解。</p><h2>简短回顾</h2><h3>全功能团队</h3><p>它不仅是由一专多能的多面手成员组成的软件开发团队，而且是所有成员共同分担职责的团队。团队中的各项职责不再与具体的人员耦合，每一个人都有可能做并且有能力做超过一种传统角色所做的事：例如在某个时刻，开发人员在做测试，测试人员在做业务分析，业务分析人员在做部署；前端开发、后端开发、数据库维护被开发人员一视同仁；所有的人都能与客户沟通，也承担着只有传统的项目经理才闹心的项目风险。</p><h3>来自软件开发业界的质疑</h3><p>在关于全功能团队的讨论中，最激烈的质疑集中在能力和效率两个方面：</p><ul> 
- <li>从效率上看，除非团队小得可怜，分工是必然的：团队成员频繁地转换工作职能，就意味着要不时地做点不是特别熟练的事，这是否降低了效率呢？比如，重复性高的测试工作虽然入门简单，但一个传统开发人员也需要一些时间的经验积累，才能替代专职QA，做到快速且高效地测试；又是不是应该找专人来做部署呢？</li> 
- <li>从能力上看，分工似乎是必需的：让业务分析人员明白代码实现是不是有必要，会不会强人所难？开发人员有较强的代码和业务阅读能力，但是否同样具有同样水平的测试用例设计能力？即便是多面手团队具备的技能深度也是有限的。</li> 
-</ul><p>带着这样的问题，我们在过去一年里用实践里证明了全功能团队的可行性，并在团队成员培养和项目可持续进展上都受益不少。</p><h2>我们怎么做到的</h2><h3>针对效率问题</h3><p>对效率的通常考虑方式源于工业化生产，认为分工后的重复性工作能提高劳动熟练度，从而提高生产效率。但是，知识工作不是流水线上拧螺丝，它的核心问题是效果 (Effectiveness) 而不是效率 (Efficient) <sup>1</sup>。通俗地说，打字最快的不一定是好程序员，100行代码也不一定比一行代码更有价值。所以，对有价值的软件开发者而言，真正重要的是知道要做什么、为什么、怎么正确地做到。</p><p>全功能团队中，我们让成员做不同角色的职责，就是要打破知识壁垒，让大家都站在不同的角度看我们的软件，传递知识、扩展认知；等再回过头看自己原来做的“本职”工作时，从其他角色的角度得到的知识会帮助我们用更正确方式地做对的事。同时，培养多面手团队成员的益处也在于，可以按需调整做某件事的人数或安排人员的替补，这对团队的人员利用率提升是很有帮助的。</p><p><strong>我们这样做</strong>：</p><ul> 
- <li>我们不为前端开发、后端开发和运维工作划分岗位，要求所有开发人员接触到所有层次的代码和环境。有了全面的了解之后，再没有人“因为没做过所以不敢碰“，所以接下来就是提升各自能力来把事情做得更好了。</li> 
- <li>我们每两周轮换做测试工作的成员。做测试人员期间，他会测试开发完成的功能以及回归测试各个组件，这有助于他了解系统的整体行为；同时他带去了自己的开发经验，不仅能在外部功能层次测试，还能深入代码挖掘，比专职的测试人员更能找到潜在的缺陷。</li> 
- <li>我们的业务分析人员要计划每次部署和安排部署前的回归测试，对待部署的功能须十分清晰；他们要为每个待开发功能准备全面的验收条件，甚至写出验收测试描述(Given/When/Then)<sup>2</sup>，这样的用户故事可读性非常好，因为验收测试可直接拿来与客户或开发人员交流。</li> 
- <li>我们没有固定的人与客户做接口沟通，所有的轮值测试人员都需要向客户展示完成的功能以确认验收，所有的人都有义务向客户询问疑难的需求，所有的人轮流做迭代报告或主持回顾会议。</li> 
- <li>所有项目上的信息都在团队内共享，结对编程也2、3天一轮换，这减少了团队成员的上下文盲点，便于各人迅速定位并正确处理问题。</li> 
-</ul><h3>针对能力问题</h3><p>对能力的担心是可以理解的：对不熟练的事甚至头一次做的事，谁都不能很有把握独立做到；每个人的技术能力是有限的，职责的切换意味着挑战来临。然而这是一个团队，没有人孤军奋战，也不会安排成员做登天的事。</p><p>全功能团队在能力问题上重视的是团队成员的成长和项目的可持续进展。培养成员逐渐胜任某项新职责是对他能力的拉伸，只要方法得当，团队就会平稳地在几个月后收获一批一专多能的多面手成员。而这种成长也不是以暂时牺牲项目进展为代价的，项目和人员成长不站在对立面。</p><p><strong>我们这样做</strong>：</p><ul> 
- <li>将职责和个人去耦合之后，提炼出若干职责，如业务分析、测试、前端开发、数据库维护、部署等。</li> 
- <li>我们为每项职责找出领导者，称为教练。教练是某一职责上的专家，如测试教练，他是测试工作上能力最强又所知最多的人，由他来辅导测试技能尚需锻练的人，通过结对的方式面授机宜，帮助他适应“新角色”的工作。</li> 
- <li>“新人”成长后，教练会跟踪其工作的进展，并只在复杂情况下才伸手帮忙，如某些紧急应对。教练也担负者第一时间响应客户疑问的责任，他们是客户与开发团队关于某方面工作的接口，客户知道想要跟踪某项工作的进展情况，只要联系他即可。</li> 
- <li>某职责上的教练也常是其他职责上的“新人”，他也需要被帮助，需要同样努力胜任新职责。</li> 
- <li>从项目的可持续进展上看，全功能团队能够轻易地克服人员短板，并保持很高的团队凝聚力。因为团队里都是多面手成员，且大家保持了非常频繁交流和信息共享，各个人即便相互替换位置来做事情也很容易。</li> 
-</ul><p>我所在的团队里，有很多事都是其他非全功能团队无法想象的：</p><ul> 
- <li>没有专职的测试人员和部署人员，所有人都有能力做开发、测试和向产品环境部署，即便是才加入团队半年的大学毕业生，也能独挑这副担子了。项目的缺陷和交付进度依旧保持平均数目，并未出现由于没有“专职”人员而导致的不“专业”。</li> 
- <li>从不因为某人的突然请假而阻碍某件工作。这得益于多面手成员们每天充分的信息共享和结对工作，任何一个人请假了立即有人能顶替他做好职责。</li> 
- <li>从项目中移出成员比较容易，不会因关键人物的离开导致项目遇险。四个月前，当时做业务分析兼项目经理的女同事突然得知怀孕需要休假，我们也只做了简单的交接，就完成了这次人员变更，并保持了平稳的项目交付能力；如今这项职责早已向另一成员成功交接。</li> 
-</ul><h2>用数据说话</h2><h3>问题1： 没有了专职测试人员之后，系统新增功能的缺陷数目是否显著增加呢？</h3><p><strong>答案：没有</strong>。图1显示的是我所在的项目过去一年半内的缺陷数曲线。竖线标示的是自2012年7月1日起，团队取消了专职测试人员，以两周一轮换的频率让所有开发人员轮流做测试。由图可见，这个实践开始之后的缺陷并未较之前显著增加，7月初和10月初两次重大发布仍然是影响缺陷曲线的最重要因素。</p><p><a src="/mag4media/repositories/fs/articles/full-function-team-about-data/zh/resources/1.png"><img width="800px" src="http://www.infoq.com/resource/articles/full-function-team-about-data/zh/resources/1.png;jsessionid=1046A20EE2EB74FC5778329CA6669704" alt="" _href="img://null" _p="true" /></a></p><p>图1 取消专职测试人员前后的缺陷数曲线</p><h3>问题2：全功能团队中的成员角色切换甚至人员变更较频繁，有没有对项目的交付进度产生严重影响？</h3><p><strong>答案：没有</strong>。图2是我所在的项目近一年来的团队人员变更情况与交付速率曲线的对比，这里的交付速率数值仅包含具有业务价值的用户故事卡的点数，而其他的如技术卡和缺陷卡的工作量是单另进行统计的。在2012年7月到8月这段时间内，团队的成员调整的较频繁，同时伴随成员调整，各人的角色也在调整，参照交付速率曲线来看，在这段变更时期以及之后的适应期里，团队仍然保持了如以往的交付节奏和速度；交付速率曲线上在1-4月、4-7月、7-10月体现出的冲高而后渐落的变化模式，也与项目在4月、7月、10月的三次重大新功能发布相契合。前文图1也参证了在7月到8月这段时间里，项目的缺陷数目并未显著爆发。所以我们观察到的是项目交付进度未受影响。</p><p><a src="/mag4media/repositories/fs/articles/full-function-team-about-data/zh/resources/2.png"><img width="800px" src="http://www.infoq.com/resource/articles/full-function-team-about-data/zh/resources/2.png;jsessionid=1046A20EE2EB74FC5778329CA6669704" alt="" _href="img://null" _p="true" /></a></p><p>图2 团队人员变更与交付速率按月对比</p><h3>问题3：全功能团队强调一人多用，那它真的比普通团队的人才利用率高吗？</h3><p><strong>答案：是的</strong>。图3-1, 3-2是在<a href="http://www.thoughtworks.com/cn/">ThoughtWorks</a>西安办公室做的一次关于各人所担任过的团队职责的调查结果。来自包括我所在的团队在内的几个团队共38人参与调查，他们自认为的本职角色大多为开发人员（78.9%），具体的本职角色统计如图3-1所示，角色比例与业界数据3 相去甚远。但他们在团队中做过的职责都不止一个，如图3-2所示，以人数所占比例最高的开发人员为例，他们中77%的人做过测试工作，23%的人做过项目管理，30％的人做过业务分析，40%的人做过运维。从数据可见，全功能团队中不易出现因为某角色人员的缺席导致的交付阻塞，因为其他角色的人可以转换职责来代替缺席者。建设这样的团队对多个团队之间共享人才、提高公司整体人员利用率会有帮助。</p><p><a src="/mag4media/repositories/fs/articles/full-function-team-about-data/zh/resources/3.png"><img width="500px" src="http://www.infoq.com/resource/articles/full-function-team-about-data/zh/resources/3.png;jsessionid=1046A20EE2EB74FC5778329CA6669704" alt="" _href="img://null" _p="true" /></a></p><p>图3-1 所有参与调查者职位的分布比例</p><p><a src="/mag4media/repositories/fs/articles/full-function-team-about-data/zh/resources/4.png"><img width="800px" src="http://www.infoq.com/resource/articles/full-function-team-about-data/zh/resources/4.png;jsessionid=1046A20EE2EB74FC5778329CA6669704" alt="" _href="img://null" _p="true" /></a></p><p>图3-2 参与调查者所担任职责的调查结果</p><h2>结论</h2><p>从我观察到的ThoughtWorks全功能团队的实践以及收集到的数据来看，建设全功能团队在中小型项目里能顺利进行。我们按照良好实践所做的尝试和努力，让项目、个人以及公司都受益了。那些来自软件开发业界的忧虑，从本文谈及的实践以及数据来看也应该释然了。</p><h2>注解与参考</h2><ol> 
- <li> <p>Peter Druker, 
-   <the effective="" executive=""></the> </p> </li> 
- <li> <p><a href="https://sites.google.com/site/unclebobconsultingllc/the-truth-about-bdd">Uncle Bob’s post</a>, Nov 2008</p> </li> 
- <li> <p>通过招聘网站估算出的数字，如果需求是基本平衡的，市场所提供的职位数量比例与相关从业者的比例应当基本一致。对某主流招聘网站IT板块进行搜索得到：35000开发职位，14000测试职位，12000分析职位。</p> </li> 
-</ol><hr /><p>感谢<a href="http://www.infoq.com/cn/bycategory.action;jsessionid=1046A20EE2EB74FC5778329CA6669704?authorName=张凯峰">张凯峰</a>对本文的审校。</p><p>给InfoQ中文站投稿或者参与内容翻译工作，请邮件至<a href="mailto:editors@cn.infoq.com">editors@cn.infoq.com</a>。也欢迎大家通过新浪微博（<a href="http://www.weibo.com/infoqchina">@InfoQ</a>）或者腾讯微博（<a href="http://t.qq.com/infoqchina">@InfoQ</a>）关注我们，并与我们的编辑和其他读者朋友交流。</p><div class="clearer-space"></div><br><br><br><br><br><br></body></html>
+<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>重构遗留程序的一次案例学习</h3><p>遗留代码经常是腐臭的，每个优秀的开发者都想把它重构。而进行重构的一个理想的先决条件是，它应该包含一组单元测试用例，以避免产生回归缺陷。但是为遗留代码编写单元测试可不是件容易的事，因为它经常是一团糟。要想为遗留代码编写有效的单元测试，你大概得先把它重构一下。但要重构它，你又需要单元测试来确保你没有破坏任何功能。这种状况相当于要回答是先有鸡还是先有蛋。这篇文章通过分享一个我曾参与过的真实案例，描述了一种可以安全地重构遗留代码的方法。</p>
+<h2>问题描述</h2>
+<p>在这篇文章中，我将用一个真实案例来描述测试与重构遗留系统的有效实践。这个例子的代码由Java编写，不过这个实践对其它语言也是适用的。我将原始场景稍做了些改动以免误伤无辜，并稍做简化以便让它更容易被理解。这篇文章所介绍的实践帮助我重构了近期我所参与的一个遗留系统。</p>
+<p>这篇文章并不打算介绍单元测试与重构的基本技巧。你可以通过阅读相关书籍以学习该主题的更多内容，如<a href="http://martinfowler.com/">Martin Fowler</a>的<a href="http://www.amazon.com/Refactoring-Improving-Design-Existing-Code/dp/0201485672">《重构：改善既有代码的设计》</a>及<a href="https://twitter.com/JoshuaKerievsky">Joshua Kerievsky</a>的<a href="http://www.amazon.com/Refactoring-Patterns-Joshua-Kerievsky/dp/0321213351">《重构与模式》</a>。相对而言，这篇文章的内容将描述一些真实场景中的复杂性，我也希望它能够为解决这些复杂性提供一些有用的实践。</p>
+<p>在这个案例中我将描述一个虚构的资源管理系统，其中资源指的是可指派给其任务的某个人。可以为某个资源指派一个HR票据（ticket）或者IT票据，也可以为某个资源指派一个HR请求或IT请求。资源经理可以记录某个资源处理某项任务的预计时间，而资源本身可以记录他们在某个票据或请求上工作的实际时间。</p>
+<p><img width="500" _p="true" _href="img://null" alt="" src="http://infoqstatic.com/resource/articles/refactoring-legacy-applications/zh/resources/1021003.png" /></p>
+<p>可以用饼图的方式表示资源的使用情况，图中同时显示了预计时间与实际花费的时间。</p>
+<div id="lowerFullwidthVCR"></div>
+<p><img width="500" _p="true" _href="img://null" alt="" src="http://infoqstatic.com/resource/articles/refactoring-legacy-applications/zh/resources/1021004.png" /></p>
+<p>好像不太复杂嘛？不过，真实的系统能够为资源分配多种类型的任务，当然从技术上讲这也不是多么复杂的设计。但当我初次看到系统的代码时，我感觉自己似乎看到了一件老古董，从中看得出代码是如何从开始逐步进化的（或者不如说是退化的）。在一开始，这一系统仅能用来处理请求，之后才加入了处理票据以及其它类型任务的功能。某位工程师开始编写代码以处理请求：首先从数据库中获取数据，随后按照饼图的方式显示数据。他甚至没有考虑过要将信息组织为合适的对象：</p>
+<pre>
+class ResourceBreakdownService {
+    public Map search (Session context) throws SearchException{   
+
+        //omitted twenty or so lines of code to pull search criteria out of context 
+and verify them, such as the below:
+        if(resourceIds==null || resourceIds.size ()==0){
+            throw new SearchException(“Resource list is not provided”);
+        }
+        if(resourceId!=null || resourceIds.size()&gt;0){
+                 resourceObjs=resourceDAO.getResourceByIds(resourceIds);
+        }       
+
+        //get workload for all requests
+
+        Map requestBreakDown=getResourceRequestsLoadBreakdown (resourceObjs,startDate,
+finishDate);
+        return requestBreakDown;
+   }
+}</pre>
+<p>我相信你肯定被这段代码里的坏味道吓到了吧？比方说，你大概很快就会发现<b>search</b>并不是一个有意义的名称，还有应该使用Apache Commons类库中的<b>CollectionUtils.isEmpty()</b>方法来检测一个集合，此外你大概也会疑惑该方法返回的Map对象到底包含了些什么？</p>
+<p>别着急，坏味道陆续有来。接下来的一位工程师继承了先人的衣钵，按照相同的方式对票据进行了处理，以下就是修改后的代码：</p>
+<pre>
+// get workload for all tickets
+
+Map ticketBreakdown =getResourceRequestsLoadBreakdown(resourceObjs,startDate,
+finishDate,ticketSeverity);
+Map result=new HashMap();
+for(Iterator i = resourceObjs.iterator(); i.hasNext();) {
+    Resource resource=(Resource)i.next();
+    Map requestBreakdown2=(Map)requestBreakdown.get(resource);
+    List ticketBreakdown2=(List)ticketBreakdown.get(resource);
+    Map resourceWorkloadBreakdown=combineRequestAndTicket(requestBreakdown2, 
+ticketBreakdown2);
+    result.put(resource,resourceWorkloadBreakdown)
+}
+return result;</pre>
+<p>先不管那糟糕的命名、失衡的代码结构以及其它任何代码美观度上的问题了。这段代码中最坏的味道就是它返回的<b>Map</b>对象了，这个<b>Map</b>对象完全是个黑洞，里面塞满了各种数据，但又不会提示你里面究竟包含的是什么。我只能编写了一些调试代码，将Map中的内容循环打印出来后，才看懂了它的数据结构。</p>
+<p>在这个示例中，<b>{}</b> 代表一个Map，<b>=&gt;</b> 代表健值映射，而<b>[] </b>代表一个集合：</p>
+<pre>
+{resource with id 30000=&gt; [
+    SummaryOfActualWorkloadForRequestType,
+    SummaryOfEstimatedWorkloadForRequestType,
+    {30240=&gt;[
+             ActualWorkloadForReqeustWithId_30240,
+             EstimatedWorkloadForRequestWithId_30240],                  
+             30241=&gt;[
+                 ActualWorkloadForReqeustWithId_30241,
+                 EstimatedWorkloadForRequestWithId_30241]
+     }
+     SummaryOfActualWorkloadForTicketType,
+     SummaryOfEstimatedWorkloadForTicketType,
+     {20000=&gt;[
+             ActualWorkloadForTicketWithId_2000,
+             EstimatedWorkloadForTicketWithId_2000],
+     }                 
+     ]
+}</pre>
+<p>这个糟糕的数据结构使得数据的编码与解码逻辑在直观上非常冗长乏味，可读性很差。</p>
+<h2>集成测试</h2>
+<p>希望我已经让你认识到这段代码确实是非常复杂的。如果在开始重构之前让我首先解开这团乱麻，然后理解每一行代码的意图，那我非疯了不可。为了保持我的心智健全，我决定采用一种自顶向下的方式来理解代码逻辑。也就是说，我决定首先尝试一下这个系统的功能，进行一些调试，以了解系统的整体情况，而不是一上来就直接阅读代码，并试图从中推断出代码的逻辑。</p>
+<p>我所使用的方法与编写测试代码完全相同，传统的方法是编写小段的测试代码以验证每一段代码路径，如果每一段测试都通过，那么当所有的代码路径组织在一起之后，方法能够按照预期方式工作的机会就很高了。但这种传统方式在这里行不通，<b> ResourceBreakdownService</b>简直就是一个<a href="http://c2.com/cgi/wiki?GodClass">“上帝类”</a>，如果我仅凭着对系统整体情况的一些了解就对这个类进行分解，很可能会造成很多问题 – 在遗留系统的每个角落里都有可能隐藏着众多不为人知的秘密。</p>
+<p>我编写了以下这个简单的测试，它反映了我对整个系统的理解：</p>
+<pre>
+public void testResourceBreakdown(){
+    Resource resource=createResource();
+    List requests=createRequests();
+    assignRequestToResource(resource, requests);
+    List tickets=createTickets();
+    assignTicketToResource(resource, tickets);
+    Map result=new ResourceBreakdownService().search(resource);
+    verifyResult(result,resource,requests,tickets);
+}</pre>
+<p>注意一下<b>verifyResult()</b>这个方法，我首先循环式地将result的内容打印出来，以找出其中的结构，随后<b>verifyResult()</b>方法根据这个结构对结果进行验证，确保其中包含了正确的数据：</p>
+<pre>
+private void verifyResult(Map result, Resource rsc, List&lt;Request&gt; requests, 
+List&lt;Ticket&gt; tickets){    
+    assertTrue(result.containsKey(rsc.getId()));
+       
+    // in this simple test case, actual workload is empty
+    UtilizationBean emptyActualLoad=createDummyWorkload();        
+    List resourceWorkLoad=result.get(rsc.getId());        
+     
+    UtilizationBean scheduleWorkload=calculateWorkload(rsc,requests);
+    assertEquals(emptyActualLoad,resourceWorkLoad.get(0));       
+    assertEquals(scheduleWorkload,resourceWorkLoad.get(1));                       
+                       
+    Map requestDetailWorkload = (Map)resourceWorkLoad.get(3);
+    for (Request request : requests) {
+    assertTrue(requestDetailWorkload.containsKey(request.getId());
+    UtilizationBean scheduleWorkload0=calculateWorkload(rsc,request);
+    assertEquals(emptyActualLoad,requestDetailWorkload.get(request.getId()).get(0));
+    assertEquals(scheduleWorkload0,requestDetailWorkload.get(request.getId()).get(1));               
+    }
+
+    // omit code to check tickets
+       ...
+}</pre>
+<h2>用临时方案绕过障碍</h2>
+<p>以上测试用例看起来简单，但实际却隐含了许多复杂性。首先，<b>ResourceBreakdownService().search</b>方法与运行时紧密相关，它需要访问数据库、其它服务，或许还有些不为人知的依赖项。而且和许多遗留系统一样，这个系统也没有建立任何单元测试的架构。为了访问运行时服务，唯一的选择就是启动整个系统，这不仅造成巨大的开销，而且也带来了很大的不便。</p>
+<p><b>ServerMain</b>类启动了整个系统的服务端功能，这个类也是个老古董了，你完全可以从中观察到它的进化过程。这个系统的编写时间已经超过10年了，当时还没有<a href="http://www.springsource.org/">Spring</a>、<a href="http://www.hibernate.org/">Hibernate</a>这些东西，<a href="http://www.jboss.org/">JBoss</a>和<a href="http://tomcat.apache.org/">Tomcat</a>也才刚刚冒头。因此那些勇敢的先驱们不得不手工打造了许多工具，他们创建了一个自制的集群、一个缓存服务、一个连接池以及其它许多东西。之后他们在某种程度上引入了JBoss和Tomcat（但不幸的是他们仍然保留了那些手工艺品，导致了现在的代码中存在着两种事务管理机制以及三种连接池）。</p>
+<p>我决定将<b>ServerMain</b>复制到<b>TestServerMain</b>类中，但运行<b>TestServerMain.main()</b>方法产生了以下失败信息：</p>
+<pre>
+org.springframework.beans.factory.BeanInitializationException: Could not load
+ properties; nested exception is
+java.io.FileNotFoundException: class path resource [database.properties] cannot
+ be opened because it does not exist
+at
+org.springframework.beans.factory.config.PropertyResourceConfigurer.
+postProcessBeanFactory(PropertyResourceConfigurer.java:78)</pre>
+<p>好吧，它还挺灵活！我随意拿了个<b>database.properties</b>文件，把它放到测试类的文件夹中并再次运行测试。但这一次程序又抛出了下面的异常：</p>
+<pre>
+java.io.FileNotFoundException: .\server.conf (The system cannot find the file specified)
+    at java.io.FileInputStream.open(Native Method)
+    at java.io.FileInputStream.&lt;init&gt;(FileInputStream.java:106)
+    at java.io.FileInputStream.&lt;init&gt;(FileInputStream.java:66)
+    at java.io.FileReader.&lt;init&gt;(FileReader.java:41)
+    at com.foo.bar.config.ServerConfigAgent.parseFile(ServerConfigAgent.java:1593)
+    at com.foo.bar.config.ServerConfigAgent.parseConfigFile(ServerConfigAgent.java:1720)
+    at com.foo.bar.config.ServerConfigAgent.parseConfigFile(ServerConfigAgent.java:1712)
+    at com.foo.bar.config.ServerConfigAgent.readServerConf(ServerConfigAgent.java:1581)
+    at com.foo.bar.ServerConfigFactory.initServerConfig(ServerConfigFactory.java:38)
+    at com.foo.bar.util.HibernateUtil.setupDatabaseProperties(HibernateUtil.java:207)
+    at com.foo.bar.util.HibernateUtil.doStart(HibernateUtil.java:135)
+    at com.foo.bar.util.HibernateUtil.&lt;clinit&gt;(HibernateUtil.java:125)
+</pre>
+<p>看起来只要找到server.conf文件就可以了，但这种方式让我有些不爽。仅仅才编写了一个简单的测试用例，就暴露出了代码中的一个问题。正如<b>HibernateUtil</b>的名字所建议的，它仅仅关心数据库信息，而这些信息应该都由<b>database.properties</b>文件提供，为什么还需要访问用以配置服务端启动信息的<b>server.conf</b>文件呢？这里似乎暗示代码散发出坏味道了：当你感觉到自己如同在读一本侦探小说，不断地问“为什么”的时候，这就意味着代码是糟糕的。如果我再多花一些时间完整地看一下<b>ServerConfigFactory</b>、<b>HibernateUtil</b>和<b>ServerConfigAgent</b>这些类，大概能够找到让<b>HibernateUtil</b>直接使用<b>database.properties</b>的方法吧。但那个时候的我已经心烦意乱了，始终没法让程序启动。顺便说一句，这里有一种处理它的临时方案，这把武器就是<a href="http://eclipse.org/aspectj/">AspectJ</a>：</p>
+<pre>
+void around():
+    call(public static void com.foo.bar.ServerConfigFactory.initServerConfig()){
+    System.out.println(&quot;bypassing com.foo.bar.ServerConfigFactory.initServerConfig&quot;);
+}</pre>
+<p>让我用直白一点的方式为不了解AspectJ的读者介绍一下以上代码的含义吧：当运行时准备调用<b>ServerConfigFactory.initServerConfig()</b>方法，让它打印出一条信息，然后跳过该方法的执行并直接返回。听起来好像是某种hack，但它大大降低了开销。遗留系统中充斥着问题与谜团，与其打交道的每一时刻都得采取些策略。眼下，从客户满意度这点看来，对我来说最有意义的事情就是修复这个资源管理系统中的缺陷，并改善它的性能。其它方面的代码整理并不是我的当前目标，但我已记住了这个问题，我决定之后再回来处理<b>ServerMain</b>中的问题。</p>
+<p>接下来，在每一处<b>HibernateUtil</b>需要读取<b>server.conf</b>文件的地方，我都强制让它从<b>database.properties</b>中进行读取。</p>
+<pre>
+String around():call(public String com.foo.bar.config.ServerConfig.getJDBCUrl()){
+    // code omitted, reading from database.properties
+}
+
+   String around():call(public String com.foo.bar.config.ServerConfig.getDBUser()){
+    // code omitted, reading from database.properties 
+}</pre>
+<p>接下来的工作你大概能猜到了，如果使用临时方案会比较方便又显得自然，那就使用它。而如果有现成的mock对象可以使用，那么就重用它们。举例来说，<b>TestServerMain.main()</b>方法在某一时刻会产生如下错误：</p>
+<pre>
+- Factory name: java:comp/env/hibernate/SessionFactory
+- JNDI InitialContext properties:{}
+- Could not bind factory to JNDI
+javax.naming.NoInitialContextException: Need to specify class name in environment 
+or system property, or as an applet
+parameter, or in an application resource file: java.naming.factory.initial
+    at javax.naming.spi.NamingManager.getInitialContext(NamingManager.java:645)
+    at javax.naming.InitialContext.getDefaultInitCtx(InitialContext.java:288)</pre>
+<p>这是由于JBoss命名服务未启动造成的，虽然我也可以使用相同的hack技术作为临时方案，但<b>InitialContext</b>是一个庞大的Javax接口，它包含了数量众多的方法，我可不想把每个方法都用hack方式给补完，那实在太冗长了。我很快发现Spring里已经包含了一个mock的<b>SimpleNamingContext</b>类了，那么就把它放到测试里去试试：</p>
+<pre>
+SimpleNamingContextBuilder builder = new SimpleNamingContextBuilder();
+builder.bind(“java:comp/env/hibernate/SessionFactory”,sessionFactory);
+builder.activate();</pre>
+<p>经过几次反复的修改后，我终于能够成功地运行<b>TestServerMain.main()</b>方法了。它比起<b>ServerMain</b>来说要简单许多，不仅mock了许多JBoss的服务，而且完全避免了集群管理的麻烦。</p>
+<h2>创建构造块</h2>
+<p><b>TestServerMain</b>连接了某个真实的数据库，而遗留系统往往会在存储过程、甚至是触发器中隐藏了各种出人意料的逻辑。基于对系统整体情况的考虑，我认为在当前状况下试图理解数据库中的所有奥秘、并以此创建一个伪造的数据库是一个不明智的选择，因此我决定仍然在测试用例中访问真实的数据库。</p>
+<p>这些测试用例必须保证它们能够重复运行，以确保我对产品代码所做的任何小改动都能够通过测试。每一次运行，测试用例都会在数据库中创建资源与请求。与单元测试的习惯作法不同的是，有时你并不希望在每次运行之后对测试用例所创建的各种数据进行清理。我们目前为止所做的测试与重构练习更像是一次实地考查的探索——通过对遗留系统进行测试的方式来学习它的功能。为了确保一切功能都像预期一样工作，你也许需要在数据库中检查由测试用例所创建的数据，或者需要在运行时使用这些数据。这就意味着测试用例每一次运行时都要在数据库中创建新的唯一实体，以避免与其它测试用例相冲突。最好能编写一些实用工具类以方便地创建这些实体。</p>
+<p>以下是一个创建<b>资源</b>的简单构造块：</p>
+<pre>
+public static ResourceBuilder newResource (String userName) {
+    ResourceBuilder rb = new ResourceBuilder();
+    rb.userName = userName + UnitTestThreadContext.getUniqueSuffix();
+    return rb; }
+
+public ResourceBuilder assignRole(String roleName) { 
+    this.roleName = roleName + UnitTestThreadContext.getUniqueSuffix();
+    return this; 
+}
+ public Resource create() {
+    ResourceDAO resourceDAO = new ResourceDAO(UnitTestThreadContext.getSession());
+    Resource rs;
+     if (StringUtils.isNotBlank(userName)) {
+         rs = resourceDAO.createResource(this.userName);
+     } else {
+         throw new RuntimeException(&quot;must have a user name to create a resource&quot;);
+     }
+ 
+     if (StringUtils.isNotBlank(roleName)) {
+         Role role = RoleBuilder.newRole(roleName).create();
+     rs.addRole(role);
+     }
+     return rs;
+ }
+ 
+ public static void delete(Resource rs, boolean cascadeToRole) {
+     Session session = UnitTestThreadContext.getSession();
+     ResourceDAO resourceDAO = new ResourceDAO(session);
+     resourceDAO.delete(rs);
+ 
+     if (cascadeToRole) {
+         RoleDAO roleDAO = new RoleDAO(session);
+     List roles = rs.getRoles();
+     for (Object role : roles) {
+         roleDAO.delete((Role)role);
+         }
+     }
+ }</pre>
+<p><b>ResourceBuilder</b>是创建者模式与工厂模式的一个实现，你可以以方法链接的形式使用它：</p>
+<pre>
+ResourceBuilder.newResource(“Tom”).assignRole(“Developer”).create();</pre>
+<p>其中包含了一个打扫战场的方法<b>delete()</b>，在这次重构练习的早期，我并没有非常频繁地调用<b>delete()</b>方法，因为我经常启动整个系统并添加一些测试数据以检查饼图是否正确显示。</p>
+<p><b>UnitTestThreadContext</b>类非常有用，它保存了某个特定于线程的Hibernate Session对象，并且为你打算创建的实体提供了唯一字符串作为名称前缀，以此保证实体的唯一性。</p>
+<pre>
+public class UnitTestThreadContext {
+     private static ThreadLocal&lt;Session&gt; threadSession=new ThreadLocal&lt;Session&gt;();
+     private static ThreadLocal&lt;String&gt; threadUniqueId=new ThreadLocal&lt;String&gt;();
+     private final static SimpleDateFormat dateFormat = new SimpleDateFormat(&quot;yyyy/MM/
+dd HH_mm_ss_S&quot;);
+     
+     public static Session getSession(){&gt;
+         Session session = threadSession.get();
+     if (session==null) {
+         throw new RuntimeException(&quot;Hibernate Session not set!&quot;);
+     }
+     return session;
+     }
+
+     public static void setSession(Session session) {
+               threadSession.set(session);
+     }
+     
+     public static String getUniqueSuffix() {
+         String uniqueId = threadUniqueId.get();
+         if (uniqueId==null){
+            uniqueId = &quot;-&quot;+dateFormat.format(new Date());
+        threadUniqueId.set(uniqueId);
+         }
+         return uniqueId;        
+     }
+
+     …
+ }
+</pre>
+<h2>完成重构</h2>
+<p>现在我终于可以启动一个最小化的可运行架构，并执行这个简单的测试用例了：</p>
+<pre>
+protected void setUp() throws Exception {
+     TestServerMain.run(); //setup a minimum running infrastructure
+ }
+     
+ public void testResourceBreakdown(){
+     Resource resource=createResource(); //use ResourceBuilder to build unique resources
+     List requests=createRequests(); //use RequestBuilder to build unique requests
+     assignRequestToResource(resource, requests);
+     List tickets=createTickets(); //use TicketBuilder to build unique tickets
+     assignTicketToResource(resource, tickets);
+     Map result=new ResourceBreakdownService().search(resource);
+     verifyResult(result);       
+ }    
+    
+ protected void tearDown() throws Exception {
+     // use TicketBuilder.delete() to delete tickets
+     // use RequestBuilder.delete() to delete requests
+     // use ResourceBuilder.delete() to delete resources    </pre>
+<p>接下来我又编写了多个更复杂的测试用例，并且一边重构产品代码一边编写测试代码。</p>
+<p>有了这些测试用例，我就可以将<b>ResourceBreakdownService</b>那个上帝类一点点进行分解。具体的细节就不必多啰嗦了，市面上已经有许多优秀书籍指导你如何安全地进行重构。为了本文的完整性，以下是重构后的结构图：</p>
+<p><img width="600" _p="true" _href="img://null" alt="" src="http://infoqstatic.com/resource/articles/refactoring-legacy-applications/zh/resources/1021005.png" /></p>
+<p>那个恐怖的“数组套Map再套数组再套Map……”数据结构现在已经组织为新的<b>ResourceLoadBucket</b>类了，它的实现用到了<a href="http://en.wikipedia.org/wiki/Composite_pattern">组合模式</a>。它首先包含了某个特别级别的预计完成时间和实际完成时间，下一个级别的完成时间将通过<b>aggregate()</b>方法聚合之后得到。最终的代码干净了许多，而且性能也更好。它也暴露了隐藏在原始代码的复杂性中的一些缺陷。当然，我也同时改进了我的测试用例。</p>
+<p>在整个练习中，我始终坚持从系统的整体方向进行思考的原则，我从这个方向开始了重构之路，并始终保持正确的方向。那些相对于手头上的任务来说不太重要的问题就用临时方案绕过它。此外，我建立了一个具有最小可行性的测试架构，让我的团队也可以使用它继续重构其它一些领域。在测试构架中依然保留了一些hack的部分，因为从业务的角度来说没有太大的必要去清理它们。我所获的不仅是重构了一块非常复杂的功能区域，并且加深了对遗留系统的理解。将遗留系统当作一件易碎的瓷器并不会使你感觉更安全，只有大胆地深入它的内在并进行重构，才能使你的遗留系统在未来也能够继续它的使命。</p>
+<h2>关于作者</h2>
+<p><img _p="true" _href="img://null" alt="" style="float: left; margin-right: 10px" src="http://infoqstatic.com/resource/articles/refactoring-legacy-applications/zh/resources/1021006.jpg" /> <b>Chen Ping</b> 住在中国上海，她于2005年计算机硕士毕业后，曾分别就职于朗迅与摩根士丹利，目前在HP担任开发经理一职。工作之余，她还喜欢学习一些中医知识。</p>
+<div style="clear: both">
+ &nbsp;
+</div>
+<p><strong>查看英文原文：</strong><a href="http://www.infoq.com/articles/refactoring-legacy-applications">Refactoring Legacy Applications: A Case Study</a></p><br><br><br><br><br><br></body></html>

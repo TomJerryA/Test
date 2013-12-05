@@ -1,42 +1,10 @@
-<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>在软件开发中应用80：20原则</h3><p><a href="http://www.blogger.com/profile/17371102366836131341">Jim Bird</a>是一位经验丰富的软件开发经理、项目经理与CTO，专注于软件开发与维护中疑难问题的解决、软件质量管理与安全领域。在过去的15年间，Jim曾管理过团队建设与高性能的财务系统。他的主要兴趣在于如何帮助小团队更有效地构建真正的软件：高质量、安全、高性能且易使用。近日，Jim<a href="http://swreflections.blogspot.ca/">撰文</a>谈到了如何在软件开发中应用流行的<a href="http://www.informit.com/articles/article.aspx?p=1984066">80：20原则</a>，颇具代表意义。</p>
-<p>很多经理都不想陷入太多的思考当中，他们喜欢简单的原则，快速且直接的审视问题的方式并能找准问题的方向。越简单，越好。其中最为有效的一个原则就是<a href="http://en.wikipedia.org/wiki/Pareto_principle">80：20原则</a>：</p>
-<blockquote>
-  80%的效果是由20%的原因导致的，或者是80%的结果来自于20%的努力。 
+<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>微软携手RedGate和Clickberry提供Node.js Tools for Visual Studio</h3><p>NTVS是<a href="https://nodejstools.codeplex.com/">Node.js Tools for Visual Studio</a>的缩写，它为Node.js开发人员提供了一个带有智能提示、包管理、性能分析及调试功能的全功能IDE。</p>
+<p>NTVS既支持本地调试，也支持远程调试。在远程调试的情况下，它还支持MacOS和Linux。调试器的大部分工作是由Clickberry的Dmitry Tretyakov完成的。</p>
+<p>包管理通过<a href="https://npmjs.org/">NPM</a>，也就是Node Packaged Modules，进行处理。Red Gate的Bart Read为该功能提供了用户界面。</p>
+<p>出现如此多的第三方是因为多个支持Node.js的项目开始于大致相同的时间。而且，它们在很大程度上基于Python Tools for Visual Studio（PTVS）。因此，当微软的PTVS团队意识到发生了什么的时候，他们决定征集社区贡献。一个名为dinov的Reddit用户<a href="http://www.reddit.com/r/programming/comments/1r78oq/microsoft_launches_nodejs_tools_for_visual_studio/cdkl422">说</a>：</p>
+<blockquote> 
+ <p>我在微软从事NTVS方面的工作，它主要由微软构建。但是，在发布之前，我们也与其他组织或个人进行了合作。</p> 
+ <p>在从事这项工作的过程中，我们看到了几个为VS提供Node.js支持的不同尝试，包括RedGate的Visual Node和由一些个人开发的另一个“NTVS”。在发布之前，我们联系了他们，向它们开放了代码，并很高兴地接受了他们的贡献。最值得注意的贡献是NPM支持，这是来自RedGate的一个非常重要的功能。</p> 
 </blockquote>
-<p>这是收益递减的另一方面：相对于做得越多，得到越少来说，你可以实现做得少但得到多的结果，方式就是通过更加聪明而非更加努力的工作。</p>
-<p>不用太费力你就能发现在软件开发中80：20原则的用武之地。比如说，80%的性能改进是通过优化20%的代码实现的，虽然在性能优化这个领域实际的比率可能更加接近于90：10，甚至是99：1。不过，无论是80：20、90：10还是70：30，这个原则本质上没什么差别。</p>
-<h2>80：20，谁使用什么，你需要交付的到底是什么</h2>
-<p>在软件开发中，另一个众所周知的80：20原则就是80%的用户只使用了20%的特性。这来自于Standish Group在2002年的一项<a href="http://luuduong.com/blog/archive/2009/03/04/applying-the-quot8020-rulequot-with-the-standish-groups-software-usage.aspx">研究成果</a>，他们发现：</p>
-<ul> 
- <li>45%的特性是从来没有被使用过的</li> 
- <li>19%的特性很少为人使用</li> 
- <li>16%的特性有时会被使用</li> 
- <li>只有20%的特性是被频繁使用的</li> 
-</ul>
-<p>这个发现对<a href="http://pragprog.com/magazines/2011-02/way-of-the-agile-warrior">敏捷</a>与精益开发产生了深远的影响，它鼓励人们将精力放在<a href="http://www.jamesshore.com/Articles/Business/Software%20Profitability%20Newsletter/Phased%20Releases.html">最小的特性集</a>或是最小的产品上，即便在大规模的企业项目中亦如此。相对于设计与规划大量的特性来说，定义重要且有用的特性才是正确之道：<a href="http://www.romanpichler.com/blog/agile-product-innovation/the-vision-the-product-backlog-and-the-minimal-viable-product/">定义好特性的优先级</a>，然后以稳健的步伐尽快交付。</p>
-<p>Standish Group最新的研究成果表明缩小思考范围，交付更少的特性是促使软件项目成功的关键之所在。有超过70%的小项目是成功交付的，而很多大型项目在延迟交付、预算超支以及漏掉关键特性上的可能性要超出小项目的两倍之多。</p>
-<h2>80：20，Bug与测试</h2>
-<p>代码质量、Bug与测试是另一个适用于80：20原则的领域：</p>
-<ul> 
- <li>80%的Bug是由20%的代码造成的</li> 
- <li>90%的停机是由10%（甚至更少）的缺陷造成的</li> 
-</ul>
-<p>Bug总是集中爆发在某几部分代码中，特别是严重的Bug；而大多数严重的问题都是由少数几个Bug导致的。</p>
-<blockquote>
- <a href="http://www.crn.com/news/security/18821726/microsofts-ceo-80-20-rule-applies-to-bugs-not-just-features.htm">Windows与Office中80%的错误与崩溃是由检测出的20%的Bug造成的</a>。
-</blockquote>
-<p>理解大多数严重的Bug发生在何处，为什么会在那里，该如何去做才能防止这些Bug的产生，你应该将时间花在这方面。还有些研究发现你所编写的一半代码是没有Bug的，而大多数Bug都出现在10—20%的代码中间，通常来说，这10—20%的代码是经常被改动的代码。每次发现代码中的Bug时就表明还有更多Bug需要修复。你发现的Bug越多，剩下的Bug也就越多，这是一种恶性循环。每次碰到那些高风险代码时，甚至在你尝试修复一些问题时，那么很有可能你会将事情搞得越来越糟而不是越来越好：当开发者修复容易出错的代码中的一个Bug时，有20%的机会他会引入新的Bug，即所谓的副作用。</p>
-<p>大多数容易出错的模块都是非常复杂的，也是很难理解的，因此也是难以修复的。有些Bug要比其他Bug更难以修复。有时是因为代码质量很差、有时是因为问题难以重现和调试、有时是因为他们隐藏得更深。</p>
-<h2>80：20，哪些代码被修改了，修改频率是多少</h2>
-<p>Michael Feathers发现80：20原则也适用于代码随时间变化的频率：</p>
-<blockquote>
- 80%的修改发生在20%的代码上
-</blockquote>
-<p>很多代码一旦写完之后就再也不会被修改了，比如说静态与标准化的接口、基本的配置等等。还有些代码一直都在发生着变化：20%的特性花了80%的时间，他们经常会根据需求的变化而发生变化；需要不断优化的核心代码、还有些代码会经常发生变化是因为出现了太多的Bug。</p>
-<p>向已有的方法添加代码要比添加新方法容易，向已有的类添加新方法要比添加新的类容易。</p>
-<p>这样，<a href="http://michaelfeathers.typepad.com/michael_feathers_blog/2012/12/behavioral-economics-and-code.html">很多系统最后都会有几个非常庞大的类，包含了大量的方法</a>，随着代码的不断变更，这些类将会变得越来越大。</p>
-<h2>80：20与编程时间</h2>
-<p><a href="http://stackoverflow.com/questions/608748/how-to-avoid-the-80-20-rule-in-software-development">前80%的代码只花了20%的时间</a>，而剩下的20%的代码则花了其余的80%的时间。完成某个功能通常并不会花太多时间，特别是采用迭代与渐进的方式、频繁且快速的交付的情况下。</p>
-<p>不过在背后通常还会有大量工作等待你去完成，比如说处理边界情况、处理错误，确保系统的性能与可伸缩性，寻找并修复各种Bug，部署前的各种调整等等。客户通常并不理解为什么最后的20%工作要花费那么多的时间。程序员也经常忘记这一点，因此在估算时就会发生各种偏差。这也是开发者经常出现估算错误的原因所在。</p>
-<h2>80：20与软件开发管理</h2>
-<p>时刻谨记80：20原则可以节省你大量的金钱与时间，将精力专注于重要的事情上可以不断提升你成功的可能性。哪些事情是重要的呢？比如说重要的特性、大多数严重的Bug出现的代码区域（需要花费最多时间去修复的Bug），经常会发生变化的代码。你与你的团队应该将注意力放在这些地方上才能确保最后的成功。</p><br><br><br><br><br><br></body></html>
+<p>由于它使用了内建的JavaScript编辑器，NTVS需要Visual Studio专业版或者更高版本。</p>
+<p><b>查看英文原文：<a href="http://www.infoq.com/news/2013/12/NTVS">Microsoft Joins Forces with RedGate and Clickberry to Offer Node.js Tools for Visual Studio</a></b></p><br><br><br><br><br><br></body></html>

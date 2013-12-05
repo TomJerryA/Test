@@ -1,42 +1,27 @@
-<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>Applying Security by Design with the CMMI for Development</h3><p><span style="font-size: 12px;">To enable development of secure products, processes covering the software development life cycle have to include security activities. “Security must be considered right from the beginning and the products have to be secure by design” said Winfried Russwurm from Siemens and Peter Panholzer from Limes Security. They facilitated a workshop at the </span><a href="http://www.sepg.unicom.co.uk/" style="font-size: 12px;">SEPG Europe 2013</a><span style="font-size: 12px;"> conference where they explored security activities and presented the </span><a href="http://cmmiinstitute.com/resource/security-by-design-with-cmmi-for-development-version-1-3/" style="font-size: 12px;">Application Guide for Improving Processes for Secure Products</a><span style="font-size: 12px;">.</span></p>
-<p>Winfried and Peter asked the workshop attendants to come up with&nbsp;dedicated development activities that need to be done to enhance security and to create a more secure product. They categorized the&nbsp;ideas that the attendants brought up:</p>
-<blockquote> 
- <p>Organization:</p> 
- <ul> 
-  <li>Arrange for security experts</li> 
-  <li>Increase security awareness and develop a security culture</li> 
-  <li>Provide security training</li> 
-  <li>Develop and deploy security policies</li> 
- </ul> 
- <p>Requirements:</p> 
- <ul> 
-  <li>Identify hackers as stakeholders</li> 
-  <li>Do a security risk analysis</li> 
-  <li>Define security requirements, e.g. with security user stories and scenarios</li> 
- </ul> 
- <p>Architecture</p> 
- <ul> 
-  <li>Focus on security risks in interface design</li> 
-  <li>Architecture rules and guidelines for security</li> 
-  <li>Identify and apply proven architectures for security</li> 
- </ul> 
- <p>Implementation</p> 
- <ul> 
-  <li>Apply coding standards for secure software</li> 
-  <li>Use tooling to check code on security</li> 
- </ul> 
- <p>Testing</p> 
- <ul> 
-  <li>Plan and do security testing</li> 
-  <li>Use tools to automate security testing</li> 
- </ul> 
- <p>Full Life Cycle</p> 
- <ul> 
-  <li>Perform security reviews and verifications</li> 
-  <li>Identify risk sources and categories to do a risk assessment</li> 
-  <li>Apply lessons learned from other companies and communities</li> 
-  <li>Establish social media policies for dealing with security issues</li> 
- </ul> 
+<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>Famo.us launches first public access to its Javascript platform</h3><p>The team that built the <a href="http://Famo.us">Famo.us Javascript platform</a> plans their first preview release of their app layer code on December 5th, 2013 as a foreshadowing of their platform's client-side prowess. Written in pure Javascript, Famo.us has attracted over 70,000 developers while still in an alpha preview, lured by the promise of native app performance within the browser without the need for a plugin.</p>
+<p>Discontent with the browser's native rendering ability, the team designed Famo.us to completely replace the browser's rendering engine &quot;using such sophisticated mathematics and physics that you would not ever want to look at it. Your eyes would go cross,&quot; says founder <a href="https://twitter.com/stevenewcomb">Steve Newcomb</a>. Such low-level complexity is required to forego the browser's native rendering, but it is not the place where 98% of developers will plug into, says Newcomb. &quot;We've spent the last years just building a syntactical sugar layer that should replace jQuery in total.&quot; Thereby, Newcomb and company are ensuring all modern browsers -- Safari, Chrome, Firefox, and IE10+ -- will prove compatible.</p>
+<p>It is precisely such ubiquitous adoption that the Famo.us team hopes to achieve: a full replacement for jQuery with hooks at every experience level -- from the designer to the seasoned Javascript engineer. Completely free and open source with over five million in funding thus far, Famo.us has four different levels of interaction. &quot;Easiest level is the designer,&quot; says Newcomb. &quot;Designers don't have to code at all. Every widget and every template has embedded sliders in them. All a designer has to do is to change the sliders. The variations you can get from changing the sliders is unbelievable.&quot; Second, beneath the designer layer lies all the syntactic sugar for developers to wire into the growing library of composable widgets and templates -- the Famo.us team believes the vast bulk of application development will consist here, as templates and widgets are woven together to form apps. Thirdly, platform developers may wish to go underneath the widgets and templates to produce more original user experiences, such as a proprietary UI -- something Samsung, an early investor in Famo.us, may want to pursue, says Newcomb. Finally, a deep-dive into the bowels of the Famo.us math and physics engines are reserved for the truly geeky, says Newcomb.</p>
+<p>Therein lies the ambition of the Famo.us team: they're offering a new approach to application development, away from the world of jQuery-based DOM traversal and manipulation to a platform that expects coders to manipulate surfaces and enliven their physics engine. Famo.us will render as HTML, webGL, and canvas. Starting December 5th, the team intends on rolling out weekly additions to its growing library of widgets, templates, and apps.</p>
+<p>Famo.us has announced official partnerships with <a href="http://meteor.com">Meteor</a>, <a href="http://firebase.com">Firebase</a>, <a href="leapmotion.com">LeapMotion</a>, and the <a href="http://http://backbonejs.org/">backbone js library</a>. Currently, the code is in private alpha, and they plan on releasing a public beta late February 2014. Once released, the entire platform will be available under the <a href="http://www.mozilla.org/MPL/2.0/">Mozilla Public License MPL v2</a>, enabling free access to the code, while still allowing companies to develop proprietary widgets and templates. Dave Fetterman, Famo.us VP of Engineering, who founded the <a href="https://developers.facebook.com/">Facebook Developer Platform</a> and launched the <a href="https://www.facebook.com/f8">F8 conferences</a>, will be guiding Famo.us through its beta launch.</p>
+<blockquote>
+  &quot;For years, there really hasn't been a very robust Javascript development platform. And we don't want to be the type of platform that's a widget, or that's a plugin, or that's just a part of your solution. We want to be the type of platform that people dedicate their careers to. We plan on being around for a very long time,&quot; says Newcomb. 
 </blockquote>
-<p>Earlier this year the CMMI Institute published the <a href="http://cmmiinstitute.com/resource/security-by-design-with-cmmi-for-development-version-1-3/">Application Guide for Improving Processes for Secure Products</a>.&nbsp; This application guide&nbsp;contains&nbsp;additional process areas&nbsp;about security aspects of engineering,&nbsp; managing security in projects, and organizational security topics. The guide&nbsp;can be used with the&nbsp;Capability Maturity Model Integration for Development (CMMI-DEV) to improve processes so that organizations using them can provide security assurance for their customer.</p>
-<p>The <a href="http://cmmiinstitute.com/">CMMI Institute</a> together with the authors of the guide&nbsp;would like to hear from organizations that have used the guide, and&nbsp;they welcome any feedback.</p><br><br><br><br><br><br></body></html>
+<p>To that end, the Famo.us team will release three widgets and one application on December 5th. By leveraging <a href="http://codepen.io/">Codepen</a> as a partner for displaying these releases, the Famo.us team is providing an interactive experience for each of these newly released widgets:</p>
+<h3><a href="http://bit.ly/1eJsK6a">A Twitter App</a></h3>
+<p class="codepen" data-default-tab="result" data-user="befamous" data-slug-hash="ac53af08967073df60ceaf28c0c76007" data-theme-id="2352" data-height="350">&nbsp;</p>
+<script async="" src="//www.codepen.io/assets/embed/ei.js"></script>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<h3><a href="http://bit.ly/18ivwv8">A jQuery-esque lightbox widget</a></h3>
+<p class="codepen" data-default-tab="result" data-user="befamous" data-slug-hash="442915109539f48b92700c137c3fafe9" data-theme-id="2352" data-height="350">&nbsp;</p>
+<script async="" src="//www.codepen.io/assets/embed/ei.js"></script>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<h3><a href="http://bit.ly/IHupPC">A button widget</a></h3>
+<p class="codepen" data-default-tab="result" data-user="befamous" data-slug-hash="c3147502f9f7f897a8197ed4b6dbcb5f" data-theme-id="2352" data-height="350">&nbsp;</p>
+<script async="" src="//www.codepen.io/assets/embed/ei.js"></script>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<h3><a href="http://bit.ly/1bef9j9">A one-to-many widget.</a></h3>
+<p class="codepen" data-default-tab="result" data-user="befamous" data-slug-hash="373819beb72b28945fa06e4346e20b54" data-theme-id="2352" data-height="350">&nbsp;</p>
+<script async="" src="//www.codepen.io/assets/embed/ei.js"></script><br><br><br><br><br><br></body></html>
