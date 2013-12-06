@@ -1,6 +1,9 @@
 <html>
  <head></head> 
- <body> 
+ <body>
+  <div>
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/42.c">Android: Novo servi&ccedil;o de tradu&ccedil;&atilde;o de aplica&ccedil;&otilde;es</a>O Google lan&ccedil;ou oficialmente um servi&ccedil;o de tradu&ccedil;&atilde;o para aplica&ccedil;&otilde;es Android que permitem que os desenvolvedores disponibilizem os aplicativos em diversos idiomas, com base nas boas pr&aacute;ticas do documento que identifica os principais pontos chaves de localiza&ccedil;&atilde;o.
+  </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/41.c">REST e a Internet das Coisas</a>A Internet das Coisas j&aacute; est&aacute; a&iacute; e o IETF iniciou uma s&eacute;rie de esfor&ccedil;os de padroniza&ccedil;&atilde;o nesta &aacute;rea. Entre eles destaca-se o grupo de trabalho Constrained RESTful Environments (CoRE), o qual busca prover abordagens REST para dispositivos com recursos restritos. H&aacute; tamb&eacute;m um projeto Java para apoiar este trabalho. 
   </div> 
@@ -147,9 +150,6 @@
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/43.c">AWS se junta a concorr&ecirc;ncia dos provedores de Cloud e oferece suporte ao Node.js</a>A AWS se juntou ao repleto time de provedores de cloud que oferecem suporte ao Node.js atrav&eacute;s do seu servi&ccedil;o Elastic Beanstalk e tentar&aacute; se diferenciar oferecendo integra&ccedil;&atilde;o com seus principais servi&ccedil;os. 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/42.c">Devemos criar hist&oacute;rias de usu&aacute;rio para a nossa d&iacute;vida t&eacute;cnica?</a>Equipes &aacute;geis algumas vezes apresentam dificuldades com o planejamento de tarefas puramente t&eacute;cnicas, tais como aquelas relacionadas a d&iacute;vida t&eacute;cnica. Essas tarefas n&atilde;o tem valor direto para o usu&aacute;rio do sistema, mas precisam ser feitas para entregar o software funcionando. Devemos criar hist&oacute;rias de usu&aacute;rio para lidar com tarefas t&eacute;cnicas e d&iacute;vida t&eacute;cnica? 
-  </div> 
+  </div>  
  </body>
 </html>

@@ -1,1 +1,73 @@
-<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>Windows与Mac开发领域的两个全新成功案例</h3><p>Embarcadero网站为我们分享了FireMonkey在Windows与Mac开发领域的两个全新成功案例：Bremmers Audio Design的MultitrackStudio以及Porter Lee公司的BEAST警方证物管理系统。</p><p><b>MultitrackStudio</b><b>公司的</b><b>Windows</b><b>开发人员利用</b><b>FireMonkey</b><b>为</b><b>Mac OS X</b><b>系统平台开发出音乐软件</b><b> - </b><a href="http://www.embarcadero.com/home/multitrackstudio-uses-firemonkey-to-create-application-on-mac-os-x">http://www.embarcadero.com/home/multitrackstudio-uses-firemonkey-to-create-application-on-mac-os-x</a></p><p>来自Bremmers Audio Design 公司的MultitrackStudio (<a href="http://www.multitrackstudio.com/">http://www.multitrackstudio.com/</a>)是一款多音轨音乐录音软件，能够支持音频及MIDI音轨的录制、编辑及混音等工作。随着Mac设备在全球各地普及率的不断攀升，MultitrackStudio的开发人员们意识到将这款应用产品推向Mac OS X系统平台的迫切性。Delphi XE2 RTL（运行时库函数及<a>过程</a>[ys1]）为他们提供了大量通用函数的跨平台版本，帮助开发人员针对任意C或Cocoa框架进行编程工作。在编写了包括Core Audio及Audio Units在内的一系列Mac专用代码后，开发人员终于完成了一套Mac平台的可运行版本。“FireMonkey源代码由于不涉及任何OS专用代码，因此非常易于理解，”公司创始人Giel Bremmers指出。“这使得我们能够根据实际情况对应用程序功能进行定制。FireMonkey应用样式易于编辑，我们也在工作中逐步发现了它的简便与强大。”</p><p><b>Porter Lee</b><b>公司利用</b><b>FireMonkey</b><b>为</b><b>Mac OS X</b><b>及</b><b>iPad</b><b>打造应用程序</b> - <a href="http://www.embarcadero.com/home/porter-lee-uses-delphi-xe2-and-firemonkey-for-the-leading-police-evidence-management-system-in-the-united-states">http://www.embarcadero.com/home/porter-lee-uses-delphi-xe2-and-firemonkey-for-the-leading-police-evidence-management-system-in-the-united-states</a></p><p>Porter Lee公司利用Visual Studio、Delphi XE2及FireMonkey的强强组合为用户带来BEAST(<a href="http://www.porterlee.com/index.html">http://www.porterlee.com/</a>)应用，一款领先的美国警方证物管理系统。“Delphi XE2与FireMonkey所带来的技术与功能真的令我们印象深刻，”Porter Lee首席开发人员Murugan Ramalingame表示。“在Delphi快速原型开发功能及强大原型向成品转化能力的支持下，我们节省了大量工作时间，”Ramalingame解释道。“现在有了在Mac OS X环境下创建iPad应用以及RAD云技术的帮助，我们获得了前所未有的市场竞争力并成功推动业务快速步入良性发展轨道。”</p><p>大家可以在以下链接中了解客户对FireMonkey的更多评论信息： <a href="http://www.embarcadero.com/products/firemonkey/testimonials">http://www.embarcadero.com/products/firemonkey/testimonials</a></p><p><b>了解更多</b><b>FireMonkey</b><b>在</b><b>Windows</b><b>、</b><b>Mac</b><b>及</b><b>iOS</b><b>开发工作中的作用</b></p><p>观看下列免费请求式网络研讨内容，进一步了解FireMonkey的方方面面：</p><p>&sect; 利用单一代码基创建Window及Mac OS应用程序 - <a href="http://www.embarcadero.com/landing-pages/delphi-build-windows-mac-applications">http://www.embarcadero.com/landing-pages/delphi-build-windows-mac-applications</a></p><p>&sect; 软件开发人员需要掌握的Mac开发规则- <a href="http://www.embarcadero.com/landing-pages/firemonkey-build-windows-mac-applications">http://www.embarcadero.com/landing-pages/firemonkey-build-windows-mac-applications</a></p><p>视频资料-我们在YouTube网站上的Embarcadero页面提供超过四十段视频资料，帮您了解如何利用FireMonkey开发Windows及Mac应用程序 - <a href="http://www.youtube.com/playlist?list=PL83C66E7311DAAE1E&amp;feature=plcp">http://www.youtube.com/playlist?list=PL83C66E7311DAAE1E&amp;feature=plcp</a></p><p>参加每周“Windows与Mac开发入门》电子课程- <a href="http://forms.embarcadero.com/forms/AMUSCA1205-06FireMonkeyWebinarSeries">http://forms.embarcadero.com/forms/AMUSCA1205-06FireMonkeyWebinarSeries</a></p><p><b>查看英文原文</b>：<a href="http://blogs.embarcadero.com/firemonkey/index.php/2012/05/06/two-new-firemonkey-success-stories/">http://blogs.embarcadero.com/firemonkey/index.php/2012/05/06/two-new-firemonkey-success-stories/</a></p><div class="clearer-space"></div><br><br><br><br><br><br></body></html>
+<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>敏捷与结构性模块化（三）</h3><p>该系列的<a href="http://www.infoq.com/cn/articles/agile-and-structural-modularity-part1">第一篇文章</a>介绍了结构性模块化和敏捷的根本性的关系，在<a href="http://www.infoq.com/cn/articles/agile-and-structural-modularity-part2">第二篇</a>中我们了解到如何使用OSGi实现高度敏捷和高度可维护的软件系统。</p>
+<p>第三篇文章基于标题为“现实世界的挑战：基于OSGi/Bndtools的开发、发布和版本控制的工作流程”（<i>Workflow for Development, Release and Versioning with OSGi / Bndtools: Real World Challenges</i>，<a href="http://www.osgi.org/CommunityEvent2012/Schedule">http://www.osgi.org/CommunityEvent2012/Schedule</a>）的演讲。在这篇演讲中西门子团队展示了这些业务驱动的解决方案。这些方案实现了基于OSGi的高度敏捷的<i>持续</i><i>集成环境</i>。</p>
+<h2>需求</h2>
+<p>西门子公司技术研究部门由许多具有不同技能的工程师所组成，他们的领域涵盖计算机科学、数学、物理、机械工程和电气工程。该部门向西门子的业务单位提供了基于神经网络技术和其他的机器学习算法的解决方案。比起理想化的概念，西门子的业务部门更需要可以运行的样例产品。所以该部门需要为业务部门快速地建立解决方案的原型。</p>
+<p><img width="600" _p="true" _href="img://null" alt="" src="http://infoqstatic.com/resource/articles/agile-and-structural-modularity-part3/zh/resources/1107000.png" /></p>
+<p>图 1： <b>西门子的产品库</b></p>
+<p>为了快速地建立原型，理想的方案是建立一个软件组件库，并以此为核心，这样西门子的研发团队就可以快速地发布新的功能，业务部门也能够很快地提供新的产品。</p>
+<p>实现这一目标所采用的解决方案必须满足以下要求：</p>
+<ol> 
+ <li><i>可重复构建</i>：解决方案必须能够保证即使过了很多年，依然能够基于完全相同的源码和依赖进行重新构建。这样西门子可以持续支持多个被不同客户使用的发行版本。</li> 
+ <li><i>可靠的版本</i>：通过使用OSGi的语义化版本命名，构建过程中所有发布的组件版本永远能够正确地对应其语义，西门子可以快速且可靠地组装出组件的集合（包括他们自己的软件、第三方软件和开源软件），并且高度确信它们可以正常运作。</li> 
+ <li><i>全程可追踪</i>：软件所发布的所有组件，与QA测试过的组件，总是完全相同的，并且，能够追溯到它们的源码和依赖性。这使得从测试状态变为可发布状态的过程中，不再需要进行重新构建工作。</li> 
+</ol>
+<p>最后，单独的软件组件和最终所组成的产品，必须有统一的应用启动、生命周期和配置方式。</p>
+<h2>解决方法</h2>
+<p>他们选择OSGi作为实现模块化的框架，这个决定基于OSGi技术的成熟度、支撑OSGi实现的开放行业规范以及OSGi联盟的技术管理。这个<i>持续</i><i>集成</i>的解决方案基于开发和发布/产品的OSGi Bundle 库（Development and Release/Production OSGi Bundle Repository, OBR）. 由于OSGi的组件完全是自描述的（<i>需求和功能</i>的元数据），特定的业务功能可以动态地根据模块间的依赖关系从有关的库中自动加载。</p>
+<p>西门子的团队也想实施“所测即所发布” (<i>What You Test Is What You Release, </i>WYTIWYR)的最佳实践。用于发布的软件<b>不应该</b>在测试以后重建，在测试过程中，构建环境有可能会发生改变。许多组织确实在发布过程中重新构建软件产品，比如从1.0.0.BETA变为1.0.0.RELEASE。这一常用但不算太好的方法是因为依赖关系是由组件的名字来实现的。</p>
+<p>最后从技术角度来看，解决方案必须有以下特点：</p>
+<ul> 
+ <li>可以与标准的开发工具一起使用，如Java中的Eclipse；</li> 
+ <li>对OSGi强有力的支持；</li> 
+ <li>支持不同软件库的理念；</li> 
+ <li>支持自动的语义化版本（即自动计算需要<i>导入的版本范围</i>，并且自动增加<i>输出的版本号</i>）——因为这一过程对人类来说实在太繁琐了！</li> 
+</ul>
+<p>基于这些原因西门子公司选择了<a href="http://bndtools.org/">Bndtools</a>。</p>
+<h3>解决方案</h3>
+<p><b>下面一系列的图示解释了西门子公司解决方案的关键属性。</b></p>
+<p><img width="600" _p="true" _href="img://null" alt="" src="http://infoqstatic.com/resource/articles/agile-and-structural-modularity-part3/zh/resources/1107001.png" /></p>
+<p><b>图</b><b> 2: </b>以库为中心、快速迭代并且在开发过程实现版本重用</p>
+<p>Bndtools是一个以库为中心的工具，让开发者可以从多个<i>OSGi Bundle</i><i>库（OBR）</i>中取得OSGi的bundle。除了本地用于开发的读写库之外，开发者也可以从其他只读库中寻找OSGi bundle，比如，组合使用公司内部的开源库、公司专有的库和经批准的第三方库等。开发者可以很容易地从一个经认证的库列表中选择所需的库，并从中选取所需的组件，并把它们拖到Bndtools的工作区之中。</p>
+<p>开发者将本地工作的代码放入SVN库。SVN库只存放在制件（Work-In-Progress, WIP）。Jenkins的<i>持续集成</i>服务器不停地构建、测试并将建好的OSGi组件加入共享的只读开发库中。这些组件可以马上通过Bndtools被所有的开发人员使用。</p>
+<p>随着开发人员的快速开发，每天会进行多次的构建，这将会变得难以管理，对每次开发构建都增加版本号确实是没有意义的。由于这个原因，在开发环境中我们允许重复地使用版本号。</p>
+<p><img width="600" _p="true" _href="img://null" alt="" src="http://infoqstatic.com/resource/articles/agile-and-structural-modularity-part3/zh/resources/1107002.png" /></p>
+<p>图 3:&nbsp; 发布</p>
+<p>就绪之后，开发团队可以将模块发布到只读的QA库。</p>
+<p><img width="600" _p="true" _href="img://null" alt="" src="http://infoqstatic.com/resource/articles/agile-and-structural-modularity-part3/zh/resources/1107003.png" /></p>
+<p>图 4:&nbsp; 锁定</p>
+<p>当模块一旦进入QA后，在开发库中它就变成只读的了。任何修改或重新构建都会失败。如要修改，开发人员必须增加版本号。</p>
+<p><img width="600" _p="true" _href="img://null" alt="" src="http://infoqstatic.com/resource/articles/agile-and-structural-modularity-part3/zh/resources/1107004.png" /></p>
+<p>图 5:&nbsp; 版本递增</p>
+<p>开发人员可以使用Bndtools的自动化语义版本功能来实现版本的递增，从而确保当前的版本号能够表达出目前的WIP版本与之前版本的区别。根据前面文章中对语义版本规则的讨论：</p>
+<ol> 
+ <li>1.0.0 =&gt; 1.0.1 … “缺陷修正”</li> 
+ <li>1.0.0 =&gt; 1.1.0 … “新的功能”</li> 
+ <li>1.0.0 =&gt; 2.0.0 … “破坏性的变化”</li> 
+</ol>
+<p>我们可以看到新的1.0.1版本是一个缺陷修正版本。</p>
+<h2>再看敏捷成熟度模型</h2>
+<p><b>在前面的文章中我们讨论了敏捷成熟度模型。根据该模型对西门子的解决方案进行评估，所有高度敏捷系统所必需的特征它都满足。</b></p>
+<ul> 
+ <li><i>委托（Devolution）</i>：通过Bndtools对OSGi库进行方便的使用</li> 
+ <li><i>模块化及服务（Modularity&amp;Service）</i>：整体的解决方案。决策中必不可少的一部分就是采用以OSGi为中心的方案。</li> 
+</ul>
+<p>正如Kirk Knoernschild在DEVOXX2012上的演讲“<a href="http://http/www.devoxx.com/display/DV12/Architecture+All+the+Way+Down%C2%A0Social">自上而下的架构（Architecture All the Way Down）</a>”所讲的，敏捷运动专注于实现在敏捷开发时社交和流程（Social and Process）的方面，但根本性的因素——“结构性的模块化”——并没有被重视。那些想在庞大的代码库中实现“<i>敏捷</i>”的人对此应该深有体会。西门子公司通过OSGi实现结构性的模块化，由此达到敏捷的目标，与此同时也实现了社交和流程方面的敏捷开发。</p>
+<p><a href="http://bndtools.org/">Bndtools</a>是促成这一解决方案的关键。同时，西门子公司的业务需求也反过来促进和形成了Bndtools的关键功能。在此我感谢西门子公司允许这些工作成果被Paremus和OSGi联盟所使用。</p>
+<h2>Bndtools的更多信息</h2>
+<p>Bndtools基于<a href="http://www.aqute.biz/About/CV">Peter Kriens</a>的<a href="http://www.aqute.biz/Bnd/Bnd">bnd</a>项目，这个GITGHUB项目由Neil Barlett在2009年早期开始，bnd是<i>业界创建OSGi bundle的事实标准</i>。Bndtools包括了Neil在培训时帮助学生开发的一系列工具，以及<a href="https://blogs.paremus.com/category/sigil/">Paremus在SIGIL项目</a>上的一些工具。</p>
+<p><a href="http://www.slideshare.net/mfrancis/easy-peasy-os-gi-development-with-bndtools-neil-bartlett">Neil Barlett已经多次陈述</a>过Bndtools的目标，即让开发敏捷和模块化的Java应用变得<b>更容易</b>，<b>而不是更难</b>。西门子的项目显示Bndtools能够迅速达到这个核心的目标。Bndtools得到了越来越多的开源社区和软件供应商的支持，这其中就包括了Paremus的长期支持。现阶段Bndtools的目标是支持OSGi Blueprint、与Maven更好的集成以及在OSGi云计算环境里便捷地加载运行时发布版本的适配器（runtime release adaptor），这样的环境包括Paremus的Service Fabric。</p>
+<p>更多关于OSGi／Bndtools的理念可以在Neil Barlett 2013年5月在日本OSGi用户组的演讲材料找到：<a href="https://adaptevolve.paremus.com/wp-content/uploads/2013/06/NeilBartlett-OSGiUserForumJapan-20130529.pdf">NeilBartlett-OSGiUserForumJapan-20130529</a>。对那些想实现Java/OSGi敏捷开发的公司来说，Paremus提供这方面的工程咨询服务，以帮助他们实现该目标。Paremus也为各公司的开发人员提供现场的高级OSGi培训。如有兴趣可以<a href="http://www.paremus.com/contact/contact.html">联系我们</a>。</p>
+<h3>最后的章节</h3>
+<p>在敏捷和模块化系列的最后一篇里，我会讨论敏捷和运行时平台（Runtime Platform）。敏捷的运行时平台是Paremus从2004年来就专注的领域，那时Service Fabric刚刚发布最初的版本，当时还被称为Infiniflow。对于敏捷运行时环境的追求使Paremus从2005年起采用了OSGi，并在2009年成为了OSGi联盟的会员。</p>
+<p>但是OSGi的运行环境并不统一。尽管OSGi在基础上使敏捷的运行时环境成为可能，但单纯地使用OSGi并不能保证运行环境的敏捷。用OSGi建立脆弱的系统也是可能的。下一代的动态模块化平台，如Paremus的Service Fabric，不但必须使用OSGi，而且必须要采纳OSGi本身所基于的根本性的设计理念。</p>
+<p>原文地址：https://adaptevolve.paremus.com/?p=1380</p>
+<h2>作者简介</h2>
+<p><i><strong>Richard Nicholson</strong></i>是Paremus 的CEO和创始人，这是一个2001年成立的软件公司，总部位于英国。</p>
+<p>在意识到高度可维护以及高度敏捷的系统在本质上必须是高度模块化的之后，Paremus在2004年开始研究下一代的软件系统。这种持续的努力体现在了Paremus Service Fabric产品之中，这是一个高度可适应的、基于OSGi的自装配运行时，可用于企业级和云环境。作为OSGi联盟的主席（2010-2012），Richard开始推进OSGi Cloud并鼓励OSGi联盟参与到敏捷软件社区中。</p>
+<p>Richard在很多的研究领域都保持了浓厚的兴趣，这支撑了Service Fabric的研发，他的研究领域包括复杂的适应性系统（Complex Adaptive System）以及敏捷（Agility）、模块化组装（Modular Assembly）、结构化多样性（Structural Diversity）和适应性（Adaption）之间的关系。</p>
+<p>成立Paremus之前，Richard在花旗集团/Salomon Smith Barney，领导着欧洲系统工程（European System Engineering）相关的工作。Richard获得了曼切斯特大学的物理学荣誉学位，并在格林尼治皇家天文台（ Royal Greenwich Observatory）获得天体学物理博士。</p>
+<p>Richard的博客：<a href="http://adaptevolve.paremus.com"><i>http://adaptevolve.paremus.com</i></a><i>。</i></p>
+<p>Paremus的博客：<a href="http://blogs.paremus.com"><i>http://blogs.paremus.com</i></a><i>。</i></p>
+<hr />
+<p>感谢<a href="http://www.infoq.com/cn/author/张卫滨">张卫滨</a>对本文的审校。</p>
+<p>给InfoQ中文站投稿或者参与内容翻译工作，请邮件至<a href="mailto:editors@cn.infoq.com">editors@cn.infoq.com</a>。也欢迎大家通过新浪微博（<a href="http://www.weibo.com/infoqchina">@InfoQ</a>）或者腾讯微博（<a href="http://t.qq.com/infoqchina">@InfoQ</a>）关注我们，并与我们的编辑和其他读者朋友交流。</p><br><br><br><br><br><br></body></html>

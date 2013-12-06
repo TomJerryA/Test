@@ -1,7 +1,7 @@
 <html>
  <head></head> 
- <body>
-  <div>
+ <body> 
+  <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/16.javab">Beyond Data Mining</a> In this article, author talks about the need for a change in the predictive modeling community’s focus and compares the four types of data mining: algorithm mining, landscape mining, decision mining, and discussion mining. 
   </div> 
   <div> 
@@ -150,6 +150,6 @@
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/18.javab">Analyzation of Parse MBaaS</a>The explosive growth of Mobile Backend as a Service (MBaaS) is proof that a significant percentage of mobile application developers prefer the easy way out. 
-  </div>  
+  </div> 
  </body>
 </html>
