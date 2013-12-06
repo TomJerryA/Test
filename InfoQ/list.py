@@ -1,6 +1,9 @@
 <html>
  <head></head> 
- <body> 
+ <body>
+  <div>
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/39.py">Kevin Behr氏に聞く，継続的改善の技術(Kung-Fu)</a>先頃ニューヨークで開催されたDevOps Daysで，&quot;The Visible Ops Handbook&quot;と&quot;The Phoenix Project&quot;の著者のひとりであるKevin Behr氏は，Jesse Palmer氏とともに，常態的にオーバーワークにある運用チームに継続的改善の文化をいかに浸透させるか，というテーマで講演を行った。InfoQではKevin Behr氏にインタービューし，採用されたアプローチについて詳しく聞いた。
+  </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/38.py">APIのバージョニングコスト</a>サービスのバージョニングは、SOAにおける重要な問題になってきている。何年もの間、さまざまな経験を共有してきたが、それぞれのアプローチを具体的に比較、対比するというやり方はほとんどなかった。Jean-Jacques Dubray氏がこの領域におけるチームの経験と、違いを示そうと作成しようとした方程式について書いた。 
   </div> 
@@ -147,9 +150,6 @@
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/41.py">Google Espresso: Android UI のクラウド型高速自動化テスト</a>Google 製のオープンソース Espressoは、Android の自動テストフレームワークであり、クラウド上の x86 マシンでマルチスレッド環境でテストを実行することができ、UIテストに関する平行性の課題を解決する。 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/40.py">Google Play 4.0、さらにサービスを追加</a>Play ServicesはGingerbreadよりも前のデバイスをサポートしなくなる。Play 4.0にはMobile Ads SDKが含まれ、Wallet Instant Buyにより新しい統合購入システムが提供される。 
-  </div> 
+  </div>  
  </body>
 </html>

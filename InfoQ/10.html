@@ -1,9 +1,35 @@
-<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>Studio Enterprise 2013 v3新增了ThemeRoller、VS2013 Bootstrap项目模板和移动设备控件</h3><p>ComponentOne最近发布了<a href="http://www.youtube.com/watch?v=Iczxy01KXzI">Studio Enterprise 2013 v3</a>，其中加入了一个可在WinForms和ASP.NET中使用的高级主题化机制，另外还有新的ASP.NET和Windows Store开发的控件，并且加入了对Visual Studio 2013、Windows 8.1和Bootstrap的支持。</p>
-<p>最新版本为ASP.NET Wijmo产品加入了ThemeRoller这一新功能 ，它能够允许开发者在各种主流平台上对他们的应用程序主题进行定制。新版本还加入了新的基于移动设备的ListView和AppView控件，它们使开发者能够方便地创建适应于以触摸功能为主的移动应用。</p>
-<p>ListView控件允许使用者创建各种列表，以满足数据显示、导航和搜索结果的各种需求。而AppView控件能够自动适应最佳的屏幕宽度，并且内置了导航和以AJAX方式加载内容的功能。此外，Studio for WinRT XAML扩展包含了Sparkline、DropDown和Maps等控件，并且对PdfViewer、FlexGrid和RichTextBox等控件的功能进行了增强。</p>
-<p><img width="600" src="http://infoqstatic.com/resource/news/2013/11/studio-enterprise-2013-v3/zh/resources/1122000.png" alt="" _href="img://null" _p="true" /></p>
-<p>Sparkline控件允许用户在狭小的空间内展现图形。另一方面，下拉控件允许用户使用定制化的编辑器进行数据加载，而Map控件则能够显示各种数据源的信息。</p>
-<p><img width="600" src="http://infoqstatic.com/resource/news/2013/11/studio-enterprise-2013-v3/zh/resources/1122001.png" alt="" _href="img://null" _p="true" /></p>
-<p>Studio Enterprise 2013 v3增加了对Windows 8.1和Visual Studio 2013的支持，并且新增了一个新的基于<a href="http://our.componentone.com/2013/11/14/using-bootstrap-with-studio-for-asp-net-wijmo/">Bootstrap</a>主题框架的项目模板。此外还有一个新的RadialMenu控件，它基于C1Command平台，允许开发者在未安装Microsoft Excel的情况下将数据导出成Excel格式。</p>
-<p>新的版本为RichTextBox控件加入了拼写检查和多语言字典的支持，另外还支持将图片和UI控件导出成PDF格式。另一方面，3D图表控件现在支持视频卡硬件加速特性了，它允许开发者利用图形卡的各种功能。</p>
-<p><strong>查看英文原文：</strong><a href="http://www.infoq.com/news/2013/11/studio-enterprise-2013-v3">Studio Enterprise 2013 v3 Adds ThemeRoller, VS 2013 Bootstrap Project Template and Mobile Controls</a></p><br><br><br><br><br><br></body></html>
+<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>Kevin Behr谈持续改进</h3><p><a href="http://www.devopsdays.org/">DevOps Days</a>于近日在纽约举行。Kevin Behr是“<a href="http://en.wikipedia.org/wiki/The_Visible_Ops_Handbook">可视化Ops手册</a>”的合著者以及“<a href="http://itrevolution.com/books/phoenix-project-devops-book/">凤凰项目</a>”的创始人之一。他和Jesse Palmer就如何将持续提升文化逐步导入总是处于过劳状态的运维团队这一问题作了一次<a href="http://vimeo.com/album/2573383/video/77233580">演讲</a>。</p>
+<p>据Kevin和Jesse说，通过这个持续提升的过程，团队工作经历了一个根本性转变：Dev团队和Ops团队密切合作，不必要的工作及返工均稳步减少。他们认为缺少一种合乎逻辑的表述来指导其工作和任务，当得出这一结论的时候，该过程还帮助团队取得了重大的突破性进展。</p>
+<p>他们开始对当前现实进行诊断，其过程基于数个理论框架，如<a href="http://en.wikipedia.org/wiki/Theory_of_constraints">约束理论</a>和<a href="http://en.wikipedia.org/wiki/Cynefin">Cynefin</a>，后者作为诊断过程的指导性框架，用于推理复杂系统的演化性质及其内在不确定性。通过使用<a href="http://en.wikipedia.org/wiki/Current_reality_tree_(Theory_of_constraints)">当前现实树</a>，他们将组织的主要问题映射到导致问题产生的根本原因上。</p>
+<p>另外，通过Mike Rother在其著作<a href="http://www.amazon.com/Toyota-Kata-Managing-Improvement-Adaptiveness/dp/0071635238">《丰田套路》</a>中提出的名为<a href="http://www.lean.org/kata/">改善套路</a>的技术，团队开始进行短期、有限的试验。改善套路是一种将科学方法引入组织日常活动的方式，用于解决问题及其根本原因。本例所使用的具体改善套路基于每日站立会议，会上要回答如下五个问题：</p>
+<ul> 
+ <li>目标状态是什么？</li> 
+ <li>当前状态是什么？</li> 
+ <li>要达到目标状态，主要障碍是什么？</li> 
+ <li>今天针对哪个障碍进行试验？</li> 
+ <li>试验如何做以及试验结果如何展示？</li> 
+</ul>
+<p>例如，一个常见的抱怨是“<a href="http://c2.com/cgi/wiki?NotEnoughTime">我们没有足够的时间</a>”。团队进一步挖掘发现，在特定的时间点上，每个人都总是设法找出最有用的事来做，但没有一种全局视野，因此，他们采用了<a href="http://en.wikipedia.org/wiki/Kanban_(development)">看板</a>。看板允许团队将整个价值流可视化，对流程进行管理，以及为量化试验和进展做好准备。</p>
+<p>在这个过程中，团队识别出若干目标状态，如“偿还技术债务”或“管理未计划的工作”。为了达到这些目标状态，团队做了若干试验，如定义关键技术债务项目或者创建简单的项目计划使组织不会忘记较大的活动。这些试验产生了具体的结果：通过进行<a href="http://en.wikipedia.org/wiki/Root_cause_analysis">根本原因分析</a>避免<a href="http://www.urbandictionary.com/define.php?term=Groundhog%20Day%20Effect">土拨鼠日效应</a>是其中之一。运维团队还开始与开发团队一起解决常见问题，如改善发布过程。由于已经在两个团队之间建立了反馈回路，所以才能做到这一点。</p>
+<p>InfoQ就演讲中提到的部分技术和实践向Kevin提了几个问题：</p>
+<p><b>在您演讲过程中，您阐释了那个组织在那样的背景下所采取的改善套路。您总是使用同样的改善套路，还是根据组织背景从多种改善套路里选择一种？</b></p>
+<blockquote>
+ 改善套路有许多种形式。通常，在开始时，我们采取的改善套路与Mike Rother在其著作《丰田套路》里所描述的改善套路类似。我们的版本称为Opsflow，是该方法的一部分或者一种更广泛的形式。它使用各种方法和会议从七个维度推动组织学习，以创建一种互适应的创新能力，并在缩短价值交付周期和等待时间的同时，发展/培养潜在的才能。
+</blockquote>
+<p><b>您提到，目标状态不仅仅是一个目标或者KPI。关于这点，您能详细阐述一下吗？什么是目标状态？</b></p>
+<blockquote>
+ 目标太远了，分分秒秒的工作决策难以对其产生影响。与目标相比，挑战可能是完成工作的一个更小单位（数个挑战可能会使团队更接近目标），但目标状态还要小，与工作人员关系也更近：它是对个体工作人员的隐喻工作站或工作中心的一项或多项度量。可以是过程级度量（部件日输出量）或者知识工作度量。考虑一下，在办公桌前如何工作才能够完成一项挑战。弄清楚如何度量所能够达到的状态。这有助于在开始阶段就在这方面进行经常地训练，使它更容易领会和学习。
+</blockquote>
+<p><b>您通过什么途径来找出目标状态？</b></p>
+<blockquote>
+ 我们使用许多技术，但最好是利用组织的目标/任务/策略/计划/尝试，不管怎样，管理方法是任务定义。所有的目标状态需要在管理部门建立的通道内——然后他们会给予指导，只为确保这些目标状态能够使我们更接近挑战，进而使我们所有人都更接近目标。
+</blockquote>
+<p><b>您是如何决定关注什么目标状态的？</b></p>
+<blockquote>
+  我们使用由Eli Goldratt的约束理论改编而来的思考工具，如当前现实树、未来现实树、转换树和目标映射。我们还会借助David Snowden设计的方法和会议，如“未来倒推（Future Backwards）”、“仪式性异议（Ritual Dissent）”及其它，来避免认知偏见并识别需要改变的基础状态。
+</blockquote>
+<p><b>对于持续学习或持续调适，最难的是在“持续”部分。很容易出现这样的情况，开始的时候充满动力，但随着时间推移，动力慢慢消失。关于保持长远地持续调适，您有什么建议或技巧吗？</b></p>
+<blockquote>
+ 是的！首先保证学习形式正确而深入。通过学习科学方法建立和培育科学家文化。制定能够培养文化守护者的培训和二次培训计划。另外，引入周回顾，讨论失败和庆祝成功。我们看到了持续努力最难的部分，所遇到的每个挑战很快就被另一个代替，这让人觉得像在跑步机上（在同样的地方工作——不过没有一鸣惊人的成功）。由于失败改善比率低，人们会觉得沮丧。当团队定期回顾其成功和经验教训时，他们可以利用成就感来激发更多改善。这是关键。
+</blockquote>
+<p><b>查看英文原文：</b><a href="http://www.infoq.com/news/2013/11/behr-continuous-improvement">Interview with Kevin Behr on Continuous Improvement Kung-Fu</a></p><br><br><br><br><br><br></body></html>

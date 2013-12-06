@@ -1,14 +1,8 @@
-<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>TypeScript综述：新功能、工具和路线图</h3><p>InfoQ上次报道TypeScript是关于<a href="http://www.infoq.com/cn/news/2013/06/typescript09">0.9版本增加泛型</a>。从那以后，作为<a href="http://blogs.msdn.com/b/typescript/archive/2013/08/06/announcing-0-9-1.aspx">0.9.1版本</a>的一部分，微软增加了三个小功能。第一个是“typeof”操作符，它现在可以用在变量声明的类型位置。例如，如果有一个名为M的模块，那么语句“var m：typeof M = M；”会创建一个强类型的变量“m”，它的值是那个模块。Jonathan Turner说，这“在使用形状模块、类的静态部分及枚举时尤其方便，因为他们另外没有一个可以引用的名称。”</p>
-<p>接下来是“this”。在字段初始化器中使用this的规则已经放宽。实际上，这意味着引用类实例的回调函数可以在实例成员中创建和保存。</p>
-<p>0.9.1版本还包含了“no implicit any”选项。正如Visual Basic的Option Strict，如果有任何变量的类型无法推断，就会抛出编译时错误。</p>
-<p>TypeScript接下来的两个版本0.9.5和1.0RC侧重于：</p>
-<ul> 
- <li>用户报告的问题</li> 
- <li>可靠性</li> 
- <li>CPU和内存使用</li> 
- <li>符合1.0规范</li> 
-</ul>
-<p>在TypeScript 1的最终版本发布以后，微软计划开始在支持异步/等待方面开展工作。这大概可以与我们在C#和Visual Basic中看到的相提并论。该功能在客户端和Node.js编程方面将会很有用。对Mixins和受保护访问的支持也在计划之中。</p>
-<p>随着ECMAScript 6语法的固化，<a href="http://typescript.codeplex.com/wikipage?title=Roadmap&amp;referringTitle=HomegTitle=Home">TypeScript 1.x</a>也将采用它的更多功能。</p>
-<p>在此期间，<a href="http://blogs.jetbrains.com/dotnet/2013/10/typescript-support-resharper-81/">ReSharper已经在8.1版本中增加了对TypeScript的支持</a>，包括输入辅助、动态模板、代码补全和若干基本的重构操作。其中许多与JavaScript共享，并且ReSharper甚至可以使用TypeScript注释“在JavaScript文件中增强代码补全功能”。</p>
-<p><b>查看英文原文：</b><b><a href="http://www.infoq.com/news/2013/11/TypeScript-0-9-1">TypeScript Roundup: New Features, Tools, and a Roadmap</a></b></p><br><br><br><br><br><br></body></html>
+<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>Teradata将在云战略中提供数据仓库服务</h3><p>近日，商业分析公司Teradata<a href="http://www.teradata.com/News-Release/2013/The-Teradata-Cloud-Proven-Technology-and-Industry-Expertise-Delivering-Best-of-Breed-Data-Warehouse-and-Analytics-as-a-Service/">宣布</a>推出他们的云产品<a href="http://www.teradata.com/cloud/">Teradata云</a>，这是一项用软件即服务（SaaS）模型将数据仓库带到云端的服务。在这项新的服务中，用户可以按月订购ETL、商业智能和Teradata的数据库。这项新服务目前仅向美国开放，不过很快就会向欧洲推出，接下来还将推广到全球。</p>
+<p>Teradata云现在解决的是三段处理中的第一段，将数据加载到云端。另外两段分别是探索平台和数据管理组件。</p>
+<p>从技术角度来看，现阶段的Teradata云是所有云服务中最接近<a href="http://aws.amazon.com/redshift/">亚马逊Redshift</a>的。Teradata在他们的云中提供了物理上的专用硬件，特别适合那些数据不能跟其他数据集配合的大型公司。Teradata给<a href="http://www.teradata.com/Teradata_Workload_Management/">Teradata工作负载管理器</a>定位的卖点是它比亚马逊的<a href="http://aws.amazon.com/datapipeline/">数据管道</a>功能更加丰富。</p>
+<p><a href="http://www.asterdata.com/product/database.php">Aster数据库</a>探索平台可以从数据集中抽取重要见解。像路径及模式分析、统计分析及其他分析<a href="http://www.asterdata.com/product/advanced-analytics.php">等</a>常见的分析需求有预定义的分析包可用。在这些包的上面，Teradata提供了一个开发者库，其中有支持常见统计及数学计算相关任务的函数。Aster 数据库可以让使用MapReduce的SQL查询并行执行。</p>
+<p>基于Hadoop的<a href="http://hortonworks.com/products/hdp-2/">Hortonworks</a>数据平台（HDP）对数据管理提供了支持。HDP能够捕获、存储并精炼原始数据，将它转换成适合商业分析师以及数据科学家和金融工程师使用的数据结构。</p>
+<p>云中的<a href="http://www.teradata.com/cloud/">Teradata数据仓库</a>马上就会成为云平台的一部分。探索平台和数据管理组件将在2014年第一季度推出。这将让Teradata 的统一数据架构完全为受管的SaaS云服务而生。</p>
+<p>Teradata还会提供平台中所有这三个组件的咨询服务，缩短客户实现所需的推出时间。咨询团队还为那些想要从头开始实现全套解决方案，集成已有商业智能工具，以及要做数据驱动业务决策的客户提供帮助。</p>
+<p><b>查看英文原文：</b><a href="http://www.infoq.com/news/2013/11/teradata-cloud-strategy">Teradata Offers Data Warehouse as a Service as Part of Their Cloud Strategy</a></p><br><br><br><br><br><br></body></html>

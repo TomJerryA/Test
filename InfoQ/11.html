@@ -1,162 +1,51 @@
-<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>StackOverFlow精彩问答赏析：有jQuery背景的开发者如何建立起AngularJS的思维模式？</h3><p>【编辑注】本文来自StackOverFlow上How do I “think in AngularJS” if I have a jQuery background?一题中得票最高的回答。该回答得票超过3000次，回答者Josh David Miller是活跃于开源社区的开发者，也是Emergenesis公司的联合创始人。该答案最初由数云架构师韩铮翻译并发布在<a href="http://hanzheng.github.io/tech/angularjs/2013/10/28/translate-how-do-i- in-angularjs-if-i-have-a-jquery-background.html">自己的博客</a>上，在征得Josh同意后由韩铮本人推荐给 InfoQ进行分享，并在经过InfoQ社区编辑崔康审校后发布在此。</p>
-<h2>1. 不要先设计页面，然后再使用DOM操作来改变它的展现</h2>
-<p>在jQuery中，你通常会设计一个页面，然后再给它动态效果。这是因为jQuery的设计就是为了扩充DOM并在这个简单的前提下疯狂的生长的。</p>
-<p>但是在AngularJS里，必须从头开始就在头脑中思考架构。必须从你想要完成的功能开始，然后设计应用程序，最后来设计视图，而非“我有这么一个DOM片段，我想让他可以实现XXX效果”。</p>
-<h2>2. 不要用AngularJS来加强jQuery</h2>
-<p>类似的，不要以这样的思维开始：用jQuery来做X，Y和Z，然后只需要把AngularJS的models和controllers加在这上面。这在刚开始的时候显得非常诱人，这也是为什么我总是建议AngularJS的新手完全不使用jQuery，至少不要在习惯使用“Angular Way”开发之前这么做。</p>
-<p>我在邮件列表里看到很多开发者使用150或200行代码的jQuery插件创造出这些复杂的解决方案，然后使用一堆callback函数以及$apply把它粘合到AngularJS里，看起来复杂难懂；但是他们最终还是把它搞定了！问题是在大多数情况下这些jQuery插件可以使用很少的AngularJS代码重写，而且所有的一切都很简单直接容易理解。</p>
-<p>这里的底线是：当你选择解决方案时，首先“think in AngularJS”；如果想不出一个解决方案，去社区求助；如果还是没有简单的解决方案，再考虑使用jQuery。但是不要让jQuery成为你的拐杖，导致你永远无法真正掌握AngularJS。</p>
-<h2>3. 总是以架构的角度思考</h2>
-<p>首先要知道Single-page应用是应用，不是网页。所以我们除了像一个客户端开发者般思考外，还需要像一个服务器端开发者一样思考。我们必须考虑如何把我们的应用分割成独立的，可扩展且可测试的组件。</p>
-<p>那么如何做到呢？如何“think in AngularJS”？这里有一些基本原则，对比jQuery。</p>
-<h4>视图是“Official Record”</h4>
-<p>在jQuery里，我们编程改变视图。我们会将一个下拉菜单定义为一个ul ：</p>
-<pre>&lt;ul class=&quot;main-menu&quot;&gt;
-    &lt;li class=&quot;active&quot;&gt; &lt;a href=&quot;#/home&quot;&gt;Home&lt;/a&gt; &lt;/li&gt;
-    &lt;li&gt; &lt;a href=&quot;#/menu1&quot;&gt;Menu 1&lt;/a&gt; 
-        &lt;ul&gt;
-            &lt;li&gt;&lt;a href=&quot;#/sm1&quot;&gt;Submenu 1&lt;/a&gt;&lt;/li&gt; 
-            &lt;li&gt;&lt;a href=&quot;#/sm2&quot;&gt;Submenu 2&lt;/a&gt;&lt;/li&gt;
-            &lt;li&gt;&lt;a href=&quot;#/sm3&quot;&gt;Submenu 3&lt;/a&gt;&lt;/li&gt;
-        &lt;/ul&gt;
-    &lt;/li&gt;
-    &lt;li&gt; &lt;a href=&quot;#/home&quot;&gt;Menu 2&lt;/a&gt; &lt;/li&gt;
-&lt;/ul&gt;
-</pre>
-<p>在jQuery里，我们会在应用逻辑里这样启用这个下拉菜单：</p>
-<pre>
-$('.main-menu').dropdownMenu();
-</pre>
-<p>当我们只关注视图，这里不会立即明显的体现出任何（业务）功能。对于小型应用，这没什么不妥。但是在规模较大的应用中，事情就会变得难以理解且难以维护。</p>
-<p>而在AngularJS里，视图是基于视图的功能。ul声明就会像这样：</p>
-<pre>&lt;ul class=&quot;main-menu&quot; dropdown-menu&gt; ... &lt;/ul&gt;
-</pre>
-<p>这两种方式做了同样的东西，但是在AngularJS的版本里任何人看到这个模版都可以知道将会发生什么事。不论何时一个新成员加入开发团队，他看到这个就会知道有一个叫做dropdownMenu的directive作用在这个标签上；他不需要靠直觉去猜测代码的功能或者去看任何代码。视图本身告诉我们会发生什么事。清晰多了。</p>
-<p>首次接触AngularJS的开发者通常会问这样一个问题：如何找到所有的某类元素然后给它们加上一个directive。但当我们告诉他：别这么做时，他总会显得非常的惊愕。而不这么做的原因是这是一种半jQuery半AngularJS的方式，这么做不好。这里的问题在于开发者尝试在 AngularJS的环境里“do jQuery”。这么做总会有一些问题。视图是official record（译者注：作者可能想表达视图是一等公民）。在一个directive外，绝不要改变DOM。所有的directive都应用在试图上，意图非常清晰。</p>
-<p>记住：不要设计，然后写标签。你需要架构，然后设计。</p>
-<h3>数据绑定</h3>
-<p>这是到现在为止最酷的AngularJS特性。这个特性使得前面提到的很多DOM操作都显得不再需要。AngularJS会自动更新视图，所以你自己不用这么做！在jQuery里，我们响应事件然后更新内容，就像这样：</p>
-<pre>$.ajax({ 
-    url: '/myEndpoint.json', 
-    success: function ( data, status ) { 
-        $('ul#log').append('&lt;li&gt;Data Received!&lt;/li&gt;'); 
-    } 
-});
-</pre>
-<p>对应的视图:</p>
-<pre>&lt;ul class=&quot;messages&quot; id=&quot;log&quot;&gt; &lt;/ul&gt;
-</pre>
-<p>除了要考虑多个方面，我们也会遇到前面视图中的问题。但是更重要的是，需要手动引用并更新一个DOM节点。如果我们想要删除一个log条目，也需要针对DOM编码。那么如何脱离DOM来测试这个逻辑？如果想要改变展现形式怎么办？</p>
-<p>这有一点凌乱琐碎。但是在AngularJS里，可以这样来实现：</p>
-<pre>$http('/myEndpoint.json').then(function (response) {
-    $scope.log.push({
-        msg: 'Data Received!'
-    });
-});
-</pre>
-<p>视图看起来是这个样子的：</p>
-<pre>&lt;ul class=&quot;messages&quot;&gt; &lt;li ng-repeat=&quot;entry in log&quot;&gt;&lt;/li&gt; &lt;/ul&gt;
-</pre>
-<p>但是其实还可以这样来做：</p>
-<pre>&lt;div class=&quot;messages&quot;&gt; &lt;div class=&quot;alert&quot; ng-repeat=&quot;entry in log&quot;&gt;  &lt;/div&gt; &lt;/div&gt;
-</pre>
-<p>现在如果我们想使用Bootstrap的alert boxes，而不是一个无序列表，根本不需要改变任何的controller代码！更重要的是，不论log在何处或如何被更新，视图便会随之更新。自动的。巧妙！</p>
-<p>尽管我没有在这里展示，数据绑定其实是双向的。所以这些log信息在视图里也可以是可编辑的。只需要这么做：</p>
-<pre>&lt;input ng-model=&quot;entry.msg&quot; /&gt;
-</pre>
-<p>。简单快乐。</p>
-<h3>清晰的模型（Model）层</h3>
-<p>在jQuery里，DOM在一定程度上扮演了模型的角色。但在AngularJS中，我们有一个独立的模型层可以灵活的管理。完全与视图独立。这有助于上述的数据绑定，维护了关注点的分离（独立的考虑视图和模型），并且引入了更好的可测性。后面还会提到这点。</p>
-<h3>关注点分离</h3>
-<p>上面所有的内容都与这个愿景相关：保持你的关注点分离。视图负责展现将要发生的事情；模型表现数据；有一个service层来实现可复用的任务；在 directive里面进行DOM操作和扩展；使用controller来把上面的东西粘合起来。这在其他的答案里也有叙述，我在这里只增加关于可测试性的内容，在后面的一个段落里详述。</p>
-<h3>依赖注入</h3>
-<p>依赖注入帮我们实现了关注点分离。如果你来自一个服务器语言（java或php），可能对这个概念已经非常熟悉，但是如果你是一个来自jQuery的客户端开发者，这个概念可能看起来有点傻而多余。但其实不是的。。。</p>
-<p>大体来讲，DI意味着可以非常自由的声明组件，然后在另一个组件里，只需要请求一个该组件的实例，就可以得到它。不需要知道（关心）加载顺序，或者文件位置，或类似的事情。这种强大可能不会立刻显现，但是我只提供一个（常见。。）的例子：测试。</p>
-<p>就说在你的应用里，我们需要一个服务通过REST API来实现服务器端存储，并且根据不同的应用状态，也有可能使用（客户端）本地存储。当我们运行controller的测试时，不希望必须和服务器交互 —— 毕竟是在测试controller逻辑。我们可以只添加一个与本来使用的service同名的mock service，injector会确保controller自动得到假的那个service —— controller不会也不需要知道有什么不同。</p>
-<p>说起测试……</p>
-<h2>4. 总是 —— 测试驱动开发</h2>
-<p>这其实是关于架构的第3节。但是它太重要了，所以我把它单独拿出来作为一个顶级段落。</p>
-<p>在所有那些你见过，用过或写过的jQuery插件中，有多少是有测试集的？不多，因为jQuery经不起测试的考验。但是AngularJS可以。</p>
-<p>在jQuery中，唯一的测试方式通常是独立地创建附带sample/demo页面的组件，然后我们的测试在这个页面上做DOM操作。所以我们必须独立的开发一个组件，然后集成到应用里。多不方便！在使用jQuery开发时，太多的时间，我们挑选迭代而非测试驱动开发。谁又能责怪我们呢？</p>
-<p>但是因为有了关注点分离，我们可以在AngularJS中迭代地做测试驱动开发！例如，想要一个超级简单的directive来展现我们的当前路径。可以在视图里声明：</p>
-<pre>&lt;a href=&quot;/hello&quot; when-active&gt;Hello&lt;/a&gt;
-</pre>
-<p>OK，现在可以写一个测试：</p>
-<pre>it('should add &quot;active&quot; when the route changes', inject(function () {
-    var elm = $compile('&lt;a href=&quot;/hello&quot; when-active&gt;Hello&lt;/a&gt;')($scope);
-    $location.path('/not-matching');
-    expect(elm.hasClass('active')).toBeFalsey();
-    $location.path('/hello');
-    expect(elm.hasClass('active')).toBeTruthy();
-}));
-</pre>
-<p>执行这个测试来确认它是失败的。然后我们可以开始写这个directive了：</p>
-<pre>.directive('whenActive', function ($location) {
-    return {
-        scope: true,
-        link: function (scope, element, attrs) {
-            scope.$on('$routeChangeSuccess', function () {
-                if ($location.path() == element.attr('href')) {
-                    element.addClass('active');
-                } else {
-                    element.removeClass('active');
-                }
-            });
-        }
-    };
-});
-</pre>
-<p>测试现在通过了，然后我们的menu按照请求的方式执行。开发过程既是迭代的也是测试驱动的。太酷了。</p>
-<h2>5. 概念上，Directives并不是打包的jQuery</h2>
-<p>你经常会听到“只在directive里做DOM操作”。这是必需的。请给它应有的尊重！</p>
-<p>但让我们再深入一点……</p>
-<p>一些directive仅仅装饰了视图中已经存在的东西（想想ngClass）并且因此有时候仅仅直接做完DOM操作然后就完事了。但是如果一个 directive像一个“widget”并且有一个模版，那么它也要做到关注点分离。也就是说，模版本身也应该很大程度上与其link和 controller实现保持独立。</p>
-<p>AngularJS拥有一整套工具使这个过程非常简单;有了ngClass我们可以动态地更新class；ngBind使得我们可以做双向数据绑定。ngShow和ngHide可编程地展示和隐藏一个元素；以及更多地 —— 包括那些我们自己写的。换句话说，我们可以做到任何DOM操作能实现的特性。DOM操作越少，directive就越容易测试，也越容易给它们添加样式，在未来也越容易拥抱变化，并且更加的可复用和发布。</p>
-<p>我见过很多AngularJS新手，把一堆jQuery扔到directive里。换句话说，他们认为“因为不能在controller里做DOM操作，就把那些代码弄到directive里好了”。虽然这么做确实好一些，但是依然是错误的。</p>
-<p>回想一下我们在第3节里写的那个logger。即使要把它放在一个directive里，我们依然希望用“Angular Way”来做。它依然没有任何DOM操作！有很多时候DOM操作是必要的，但其实比你想的要少得多！在应用里的任何地方做DOM操作之前，问问你自己是不是真的需要这么做。有可能有更好的方式。</p>
-<p>这里有一个示例，展示出了我见过最多的一种模式。我们想做一个可以toggle的按钮。（注意：这个例子有一点牵强、啰嗦，这是为了表达出使用同样方式处理问题的更复杂的情况。）</p>
-<pre>.directive('myDirective', function () {
-    return {
-        template: '&lt;a class=&quot;btn&quot;&gt;Toggle me!&lt;/a&gt;',
-        link: function (scope, element, attrs) {
-            var on = false;
-            $(element).click(function () {
-                if (on) {
-                    $(element).removeClass('active');
-                } else {
-                    $(element).addClass('active');
-                }
-                on = !on;
-            });
-        }
-    };
-});
-</pre>
-<p>这里有一些错误的地方。首先，jQeury根本没必要出现。我们在这里做的事情都根本用不着jQuery！其次，即使已经将jQuery用在了页面上，也没有理由用在这里。第三，即使假设这个directive依赖jQuery来工作，jqLite(angular.element)在加载后总会使用jQuery！所以我们没必要使用$ —— 用angular.element就够了。第四，和第三条紧密关联，jqLite元素不需要被$封装 —— 传到link里的元素本来就会是一个jQuery元素！第五，我们在前面段落中说过，为什么要把模版的东西混到逻辑里？</p>
-<p>这个directive可以（即使是更复杂的情况下！）写得更简单：</p>
-<pre>.directive('myDirective', function () {
-    return {
-        scope: true,
-        template: '&lt;a class=&quot;btn&quot; ng-class=&quot;{active: on}&quot; ng-click=&quot;toggle()&quot;&gt;Toggle me!&lt;/a&gt;',
-        link: function (scope, element, attrs) {
-            scope.on = false;
-            scope.toggle = function () {
-                scope.on = !$scope.on;
-            };
-        }
-    };
-});
-</pre>
-<p>再一次地，模版就在模版里，当有样式需求时，你（或你的用户）可以轻松的换掉它，不用去碰逻辑。重用性 —— boom！</p>
-<p>当然还有其他的好处，像测试 —— 很简单！不论模版中有什么，directive的内部API从来不会被碰到，所以重构也很容易。可以不碰directive就做到任意改变模版。不论你怎么改，测试总是通过的。</p>
-<p>所以如果directive不仅仅是一组类似jQuery的函数，那他们是什么？Directive实际是HTML的扩展。如果HTML没有做你需要它做的事情，你就写一个directive来实现，然后就像使用HTML一样使用它。</p>
-<p>换句话说，如果AngularJS库没有做的一些事情，想想开发团队会如何完成它来配合ngClick，ngClass等。</p>
-<h2>总结</h2>
-<p>不要用jQuery。连include也不要。它会让你停滞不前。如果遇到一个你认为已经知道如何使用jQuery来解决的问题，在使用$之前，试试想想如何在AngularJS的限制下解决它。如果你不知道，问！20次中的19次，最好的方式不需要jQuery。如果尝试使用jQuery会增加你的工作量。</p>
-<hr />
-<p>这是我目前最长的Stack Overflow回答。事实上，这个答案太长了，我都要填一个Captcha了。但是就如我常说的：能说多时候说的少其实就是懒。</p>
-<p>希望这个答案对你有用。</p>
-<p><strong>原文英文地址：</strong> <a href="http://stackoverflow.com/questions/14994391/how-do-i-think-in-angularjs-if-i-have-a-jquery-background">http://stackoverflow.com/questions/14994391/how-do-i-think-in-angularjs-if-i-have-a-jquery-background</a></p>
-<hr />
-<p>感谢<a href="http://www.infoq.com/cn/author/崔康">崔康</a>对本文的审校。</p>
-<p>给InfoQ中文站投稿或者参与内容翻译工作，请邮件至<a href="mailto:editors@cn.infoq.com">editors@cn.infoq.com</a>。也欢迎大家通过新浪微博（<a href="http://www.weibo.com/infoqchina">@InfoQ</a>）或者腾讯微博（<a href="http://t.qq.com/infoqchina">@InfoQ</a>）关注我们，并与我们的编辑和其他读者朋友交流。</p><br><br><br><br><br><br></body></html>
+<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>钟型曲线——微软对现有的员工排名制度开刀而雅虎却依此裁员600人</h3><p>近期，雅虎依据去年引入的一套员工评估系统（钟型曲线）裁员600名。与此同时，微软却正开始着手对其存在多年的员工排名（Stack Ranking）制度进行改革，以缓解其自身的员工压力。</p>
+<p>据AllThingsD的报道（译注：AllThingsD是一家致力于报导高新技术、互联网及媒体新闻的网站）——在雅虎新首席执政官Marissa Mayer的倡导下，雅虎在去年引入了一套员工评价系统。这直接导致了过去几周中，雅虎大刀阔斧地进行了公司<a href="http://allthingsd.com/20131108/because-marissa-said-so-yahoos-bristle-at-mayers-new-qpr-ranking-system-and-silent-layoffs/">裁员600名</a>。然而，该评估系统却遭到了雅虎管理层的反对。这是因为雅虎要求管理层必须在团队中必须选出表现不佳的成员，而这仅仅是为了遵循钟型曲线（Bell Curve）为依据评估系统的指标：</p>
+<blockquote>
+ 我不得不对某位员工给出几次“未达标”，而对此我感到非常不舒服。现在，我不得不在我的季度绩效评审会议中对此进行讨论。而就我个人而言，为了满足钟型曲线的指标，我不得不告诉我的员工我必须给他们几次“未达标”。这样做令我感到很不舒服，因为事实上这些员工并非如此。我理解我们必须末位淘汰，但这种评估手段是有问题的。我尝试以理服人，但我们该怎样给员工交待呢？
+</blockquote>
+<p>通过雅虎内部的匿名消息公告，一名雅虎员工认为这样的评估系统也应该应用在对管理层的考核中：</p>
+<blockquote>
+ 该员工问道：这样的几次“未达标”是否也应该同样应用于L2和L3的执行管理层？在每次的目标评审会议中，我们都注意到有些资深员工甚至有70%的目标“未达标”。如此一来，根据评估系统的定义，这种情况属于“未达标”一类。只要有2次“未达标”，公司就能撵那个人走。如果这样做没错，我们为何看不到处于公司顶层的执行官或其他高层也有“未达标”现象，（也许他们能够自己设置防护措施以保证他们的目标能够被“达到”），我们现在并未看到高层被裁掉的例子。
+</blockquote>
+<p>与此同时，微软即将离任的首席执行官Steve Ballmer已经决定摒弃微软实行多年的“员工排名”制度（Stack Ranking）。无论是公司内部还是外部都认为该员工评估系统是微软历史上最狗血的流程：</p>
+<blockquote> 
+ <a href="http://www.theverge.com/2013/11/12/5094864/microsoft-kills-stack-ranking-internal-structure">The Verge</a>：Vanity Fair的著名编辑Kurt Eichenwald曾指责微软的一系列基于Windows系统及Office软件的狂热行为，并将公司内部的“员工排名”制度称作为
+ <a href="http://www.theverge.com/2012/7/3/3134719/microsoft-windows-office-loyalty-lost-decade">“失落的一代”及食人文化</a>。Eichenwald曾面谈过一些前微软员工及微软的现员工，他们都觉得“员工排名”制度是软件巨人内部最狗血的流程。
+ <br /> 
+ <br /> 
+ <a href="http://www.businessweek.com/articles/2013-11-13/microsoft-kills-its-hated-stack-rankings-dot-does-anyone-do-employee-reviews-right">Bloomberg Businessweek</a>：前微软员工David Auerback近期在接受Bloomberg Businessweek的访问时，告诉记者“员工排名”制度让员工感到无助并似乎“
+ <a href="http://www.businessweek.com/articles/2013-11-07/the-annual-performance-review-worthless-corporate-ritual">鼓励人们在同事背后捅刀子</a>”。
+ <br /> 
+ <br /> 
+ <a href="http://www.forbes.com/sites/petercohan/2013/11/13/marissas-second-epic-fail-microsoft-abolishes-stack-ranking-as-yahoo-ramps-it-up/">福布斯（Forbes）</a>：“员工排名”制度强制管理者对自己的员工进行评级并干掉底层的员工，这是微软的Steve Ballmer从通用电气学来的可怕理论。正如我在
+ <a href="http://www.forbes.com/sites/petercohan/2012/07/13/why-stack-ranking-worked-better-at-ge-than-microsoft/">2012年7月</a>的文章中写道的，微软的“员工排名”制度就是一团乱麻。
+ <br /> 
+ <br /> 
+ <a href="http://online.wsj.com/news/articles/SB10001424052702303460004579193951987616572">华尔街日报（The Wall Street Journal）</a>：虽然“员工排名”制度是首席执行官
+ <a href="http://topics.wsj.com/person/B/Steve-Ballmer/599">Steve Ballmer</a>之所以获得众多奖金及公司期权奖励的关键因素，而他在今年8月宣布自己计划在一年内退休。然而许多微软的前员工与现员工抱怨道，该系统只能带来变化无常的绩效级别、管理者之间的权力斗争以及员工之间的非正常竞争。
+</blockquote>
+<p>根据微软人力资源主任Lisa Brummel发给全体员工的<a href="http://www.theverge.com/2013/11/12/5094864/microsoft-kills-stack-ranking-internal-structure">内部声明</a>，今后微软不会再有“曲线”也不会再有“排名”。未来，微软反倒会把更多的重点放在员工成长与团队协作上：</p>
+<blockquote> 
+ <b>员工考察的重点会转移到团队精神与协作上</b>。对于什么是我们所期待的成功的绩效，未来我们将给出更具体的定义。我们将集中在3个因素上——不仅仅停留在自己的工作上、鼓励员工从他人的建议中得到启发尊重别人的意见、能够帮助别人成功。更重要的是这3点加起来能够带来更大的商业影响力。
+ <br /> 
+ <br /> 
+ <b>员工考察的重点会转移到员工成长与发展上</b>。通过一个叫作“连接”的流程，我们将逐渐优化更及时的反馈及更有意义的讨论，以此帮助我们的员工学习成长并获得更大的收获。考评的周期将和每个业务部门的节奏挂钩，我们将引入更灵活的绩效讨论及发展机制，而不是整个公司就遵循一个时间线。我们相信这个新的方法将会适应我们加速的业务发展周期以及团队运作的不同规划。
+</blockquote>
+<p>许多公司所应用的钟型曲线（Bell Curve）排名制度是由通用电气的首席执行官Jack Welch在80年代所兴起的，但他们中的一些公司<a href="http://www.businessweek.com/articles/2013-11-13/microsoft-kills-its-hated-stack-rankings-dot-does-anyone-do-employee-reviews-right">已经开始摒弃这种方法</a>其中包括了Adobe和Expedia。这种评估制度的中心思想在于，公司认为每个公司员工的绩效将遵循一个钟型曲线即存在一小撮的高绩效员工以及一小撮的低绩效员工（“未达标”）。人们认为该制度能够定位并劝退那小部分的低绩效员工，从而提升整体的绩效水平。人们还认为执行该制度能够得到更小的标准偏差以获得更和谐的公司环境，正如下图表所示（<a href="http://web.mit.edu/chintanv/www/Publications/Chintan%20Vaishnav%20Punishing%20by%20Rewards%20for%20Publication%20Final.pdf">由文章“通过奖励的惩罚：当绩效钟型曲线不再适用</a>”）：</p>
+<blockquote> 
+ <p><a href="http://www.infoq.com/resource/news/2013/11/stack-ranking-microsoft-yahoo/en/resources/bell-curve-1.png" target="_blank"><img title="image" style="border: 0px currentcolor; border-image: none; display: inline; background-image: none;" alt="image" src="http://www.infoq.com/resource/news/2013/11/stack-ranking-microsoft-yahoo/en/resources/bell-curve-1.png" border="0" _href="img://bell-curve-1.png" _p="true" /></a></p> 
+</blockquote>
+<p>但过去的某些研究学术表明该钟型排名制度有着一系列的缺点。“最佳与其他人：重审个人绩效普遍性的范式”一文表明帕累托（Paretian）分布比起高斯（Gaussian）分布能适合代表绩效曲线的图形，正如下图表所示：</p>
+<blockquote> 
+ <p><a href="/resource/news/2013/11/stack-ranking-microsoft-yahoo/en/resources/bell-curve-2.png" target="_blank"><img title="image" style="border: 0px currentcolor; border-image: none; display: inline; background-image: none;" alt="image" src="http://www.infoq.com/resource/news/2013/11/stack-ranking-microsoft-yahoo/en/resources/bell-curve-2.png" border="0" _href="img://bell-curve-2.png" _p="true" /></a></p> 
+</blockquote>
+<p>根据该研究表明绝大多数的员工属于低绩效者（左边），而仅仅只有一小部分员工是高绩效员工（右边）。这项研究并非建议保留最佳绩效者而把所有其他人都开除，相反研究鼓励“有选择地为某些关键岗位挑选更佳员工，以便他们能够充分发挥所长提高公司业绩”。</p>
+<p>另一项学术——“<a href="http://web.mit.edu/chintanv/www/Publications/Chintan%20Vaishnav%20Punishing%20by%20Rewards%20for%20Publication%20Final.pdf">通过奖励的惩罚：当绩效钟型曲线不再适用</a>”则列举了钟型曲线排名制度的种种问题，这包括了该制度下员工产生的压力：</p>
+<blockquote>
+  我们观察到当这种压力维持在某个程度时，这将导致更高的绩效。相反如果一味的裁员，该种压力将大大减弱员工士气从而导致低绩效。当底部的低绩效员工离开后，钟型曲线的不灵活性将迫使管理者把那些曾经的高绩效者（与劳动力市场的其他人相比）归为中庸。更有甚者在一个规模逐渐缩小的公司里，管理者往往很难区别员工的绩效。在到达某个程度后，社会资本的消亡将成为公司的羁绊。
+</blockquote>
+<p>这项学术的建议是在压力和士气之间保持平衡，从而消除以裁员为目的的绩效评估。</p>
+<blockquote>
+ 我们建议灵活地采用办钟型曲线的排名制度，不固定分布的百分比而去奖励真正的最佳绩效者。此外，我们建议平衡压力与士气。我们意识到特别是在规模逐渐缩小的公司里，这种平衡是非常难维持的。我们能预见的唯一方式是将压力保持在最佳的水平，并将士气维持在较高的水平。这样才有可能在某种程度上消除以裁员为目的的绩效评估流程所带来的问题。
+</blockquote>
+<p><b>查看英文原文：</b><a href="http://www.infoq.com/news/2013/11/stack-ranking-microsoft-yahoo">Microsoft Ditches the Stack Ranking System. Yahoo! Lays off 600 because of It</a></p><br><br><br><br><br><br></body></html>
