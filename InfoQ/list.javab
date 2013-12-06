@@ -1,6 +1,9 @@
 <html>
  <head></head> 
- <body> 
+ <body>
+  <div>
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/16.javab">Beyond Data Mining</a> In this article, author talks about the need for a change in the predictive modeling community’s focus and compares the four types of data mining: algorithm mining, landscape mining, decision mining, and discussion mining. 
+  </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/15.javab">Applying Lean Thinking to Software Development</a> Lean’s major concept is about reducing waste, meaning anything in your production cycle that is not adding value to the customer is considered waste and should therefore be removed from the process. Steven Peeters explains how you can apply Lean principles in an IT environment. 
   </div> 
@@ -147,9 +150,6 @@
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/18.javab">Analyzation of Parse MBaaS</a>The explosive growth of Mobile Backend as a Service (MBaaS) is proof that a significant percentage of mobile application developers prefer the easy way out. 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/17.javab">Evaluating Agile and Scrum with Other Software Methodologies</a>Capers Jones compare the effectiveness of Agile and Scrum with a sample of contemporary software development methods using several standard metrics. 
-  </div> 
+  </div>  
  </body>
 </html>

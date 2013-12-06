@@ -1,6 +1,9 @@
 <html>
  <head></head> 
- <body> 
+ <body>
+  <div>
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/36.htmlb">天生一对：云与DevOps</a> 云计算和DevOps间的关系到底是什么呢：难道DevOps真的只是“针对云的IT”？只能在云中执行DevOps？只能通过DevOps运行云？针对这三个问题，其答案都是否定的。云和DevOps是相互独立的，但是在通过IT交付商业价值上却是相辅相成的。 
+  </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/35.htmlb">JSIL：将CIL编译为JavaScript时所遇的挑战</a> 本文介绍了JSIL，这是一个将.NET转换为JavaScript的编译器，同时详细地讲解了将CIL代码编译为跨浏览器的JavaScript时所遇到的各种困难。 
   </div> 
@@ -147,9 +150,6 @@
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/38.htmlb">自动化错误报告：通往更高软件质量的大门</a>无知是福，但对于软件bug而言，这种态度触及了底线。那些能够揪出bug并改善软件质量的，将收获客户极大的信任，更高的报酬，更低廉的维护成本，并且难以被其竞争对手替代。 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/37.htmlb">Windows与Mac开发领域的两个全新成功案例</a>Embarcadero网站为我们分享了FireMonkey在Windows与Mac开发领域的两个全新成功案例：Bremmers Audio Design的MultitrackStudio以及Porter Lee公司的BEAST警方证物管理系统。 
-  </div> 
+  </div>  
  </body>
 </html>
