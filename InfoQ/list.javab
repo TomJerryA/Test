@@ -1,6 +1,9 @@
 <html>
  <head></head> 
- <body> 
+ <body>
+  <div>
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/17.javab">Writing Automated Tests with Jazz Automation</a> Jazz Automation is a testing framework built to automate and speed up acceptance/functional testing for all types of web based systems or static websites and in any industry. It also lends itself to easily implement automated integration testing. Historically this type of testing has been all manual, labor intensive, and inaccurate. 
+  </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/16.javab">Beyond Data Mining</a> In this article, author talks about the need for a change in the predictive modeling community’s focus and compares the four types of data mining: algorithm mining, landscape mining, decision mining, and discussion mining. 
   </div> 
@@ -147,9 +150,6 @@
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/19.javab">Application Performance Management Maturity Model</a>In this article, author Jim Hirschauer justifies the importance of application performance management (APM) process in organizations. He also describes a maturity model for APM. 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/18.javab">Analyzation of Parse MBaaS</a>The explosive growth of Mobile Backend as a Service (MBaaS) is proof that a significant percentage of mobile application developers prefer the easy way out. 
-  </div> 
+  </div>  
  </body>
 </html>
