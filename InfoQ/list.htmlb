@@ -1,7 +1,7 @@
 <html>
  <head></head> 
- <body>
-  <div>
+ <body> 
+  <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/37.htmlb">敏捷与结构性模块化（三）</a> 该系列的第一篇文章介绍了结构性模块化和敏捷的根本性的关系，在第二篇中我们了解到如何使用OSGi实现高度敏捷和高度可维护的软件系统。 
   </div> 
   <div> 
@@ -150,6 +150,6 @@
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/39.htmlb">林仕鼎谈数据中心计算（二）：存储资源分层</a>在之前的对话中，百度基础体系首席架构师林仕鼎先生提到要将数据中心当做逻辑上的一台机器来设计架构。在林仕鼎看来，这种软件设计理念的变化包含很多方面，但最基本的一点就是：分层。一个存储系统有三个层：block层，stream层，以及table层。CCDB的设计是，我把这三个层放在一块儿，放在一台机器上面去。然后，机器和机器之间连起来，就把每个层直接扩展到多机了。 
-  </div>  
+  </div> 
  </body>
 </html>

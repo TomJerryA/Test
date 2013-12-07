@@ -1,6 +1,9 @@
 <html>
  <head></head> 
- <body> 
+ <body>
+  <div>
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/39.java">RadControls for WPF and Silverlight Q2 2013 SP1 with Entity Framework 6 Support and Several Features</a>Telerik has released RadControls for WPF and Silverlight Q2 2013 SP1 with the ability to change application icon set during runtime in addition to support for Entity Framework 6. It also provides an ability to pass event arguments to command when using Telerik EventToCommandBehavior in addition to several new features and improvements.
+  </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/38.java">How Retrospectives Can Support Learning in Lean Startup</a>The build-measure-learn feedback loop in lean startup aims to help entrepreneurs to learn about the needs of their customers. Agile retrospectives are a way to reflect and learn and to agree on changes that are needed. Some examples describing how lean startup can be supported with agile retrospectives to learn and take actions. 
   </div> 
@@ -147,9 +150,6 @@
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/42.java">An Interview with Greg Finzer of Compare .NET Objects</a>Writing code to compare objects can be tedious, especially when dealing with large objects or deep graphs. And when the classes change errors often slip in. One way to reduce the potential for error is to rely on a library such as Greg Finzer’s Compare .NET Objects. This library offer reasonable performance for up to 10,000 objects. 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/41.java">Teradata Offers Data Warehouse as a Service as Part of Their Cloud Strategy</a>Teradata revamps its cloud offering, offers Data Warehouse Data Platform as a Service solution. Teradata Cloud is aspiring to become a worthy competitor to Amazon Redshift, with a richer set of predefined libraries and a more effective way of loading data. 
-  </div> 
+  </div>  
  </body>
 </html>
