@@ -1,7 +1,7 @@
 <html>
  <head></head> 
- <body>
-  <div>
+ <body> 
+  <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/17.javab">Writing Automated Tests with Jazz Automation</a> Jazz Automation is a testing framework built to automate and speed up acceptance/functional testing for all types of web based systems or static websites and in any industry. It also lends itself to easily implement automated integration testing. Historically this type of testing has been all manual, labor intensive, and inaccurate. 
   </div> 
   <div> 
@@ -150,6 +150,6 @@
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/19.javab">Application Performance Management Maturity Model</a>In this article, author Jim Hirschauer justifies the importance of application performance management (APM) process in organizations. He also describes a maturity model for APM. 
-  </div>  
+  </div> 
  </body>
 </html>
