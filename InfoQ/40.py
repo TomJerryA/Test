@@ -1,12 +1,12 @@
-<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>Google Play 4.0、さらにサービスを追加</h3><p><a target="_blank" href="http://www.infoq.com/news/2013/11/google-play-services-4"><em>原文(投稿日：2013/11/02)へのリンク</em></a></p>
+<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>Teradataがクラウド戦略の一環としてデータウェアハウス・アズ・ア・サービスを提供</h3><p><a target="_blank" href="http://www.infoq.com/news/2013/11/teradata-cloud-strategy"><em>原文(投稿日：2013/11/18)へのリンク</em></a></p>
 <div class="article_page_left news_container text_content_container"> 
  <div class="text_info"> 
-  <p>Play ServicesはGingerbreadよりも前のデバイスをサポートしなくなる。Play 4.0にはMobile Ads SDKが含まれ、Wallet Instant Buyにより新しい統合購入システムが提供される。</p> 
-  <p><a href="http://developer.android.com/google/play-services/index.html">Play Services 4.0</a>で注目すべき変更は、Playの新しいアップデートが得られないFroyoサポートの中止だ。Googleはその根拠として、Froyo以前を使っているAndroidデバイスは全体の3%に満たないと述べている。</p> 
-  <p>Play Services 4.0で魅力的な機能強化は<a href="http://developer.android.com/google/play-services/ads.html">Google Mobile Ads SDK</a>が含まれたことだ。このSDKを使うようアプリケーションをアップデートすると、今後はデバイスに他のアップデートを配信する必要はない。キャリアによるOSアップデートを待たずとも、SDKはPlay Store appを使って自動的にアップデートされるためだ。SDKを組み込んだアプリはPlay Store appのないデバイスにもインストールできるが、この場合、SDKは自動的にアップデートされない。</p> 
-  <p>開発者は主要なモバイルOS（Android、iOS、Windows Phone）でモバイルアドネットワークによる広告のマネタイズが可能になる。Googleによれば、SDKにはまもなく、モバイルアプリ向けのDFP、Ad Exchange、Search Adsなどのアドネットワークのサポートも入るそうだ。</p> 
-  <p><a href="http://developer.android.com/google/play-services/wallet.html">Google Wallet Instant Buy</a>はGoogle WalletとGoogle+サインオン、不正検出のための24時間トランザクションモニタリングシステムによる購入処理を提供する。このサービスは購入プロセス全体を簡素化する。請求および配送先などの情報はGoogleによって提供、管理されるので、アプリケーションごとに毎回ユーザが記入する必要はなくなる。ただし、現在のところ、このサービスが利用できるのは米国内の業者に限られる。</p> 
-  <p>MapsおよびLocationサービスはバッテリー消費量が減り、レスポンスが改善された。</p> 
-  <p>Play Servicesには広告、認証、Google+、ゲーム、地図、ロケーション、ウォレット、パノラマなど多数のサービスが含まれている。これらはGoogleによって自動的に透過的にアップデートされるため、キャリアのOSアップデートの遅延を迂回することができる。このアプローチはプラットフォームのフラグメンテーション対策として、開発者の負担を軽減するためのものだ。今後も対応サービスは増えるだろう。</p> 
+  <p>ビジネス分析会社のTeradataは，クラウド製品の<a href="http://www.teradata.com/cloud/">Teradata Cloud</a>を<a href="http://www.teradata.com/News-Release/2013/The-Teradata-Cloud-Proven-Technology-and-Industry-Expertise-Delivering-Best-of-Breed-Data-Warehouse-and-Analytics-as-a-Service/">発表した</a>。データウェアハウスをクラウド上で，ソフトウェア・アズ・ア・サービス(SaaS)モデルとして提供する新サービスだ。新たなサービスの一部として，ETLの利用，ビジネスインテリジェンス，Teradataのデータベースなどの月額課金での提供も含まれている。現在は米国と欧州が提供範囲だが，間もなく他の地域にも提供される予定だ。</p> 
+  <p>Teradata Cloudは３つのプロセスに対処している。最初はクラウドへのデータロードであり，あと２つはディスカバリプラットフォームとデータ管理コンポーネントである。</p> 
+  <p>技術的な立場から見たTeradata Cloudは，他のどのクラウド製品よりも<a href="http://aws.amazon.com/redshift/">Amazon Redshift</a>に近いものだと言える。Teradataは，クラウド内に物理的な専用ハードウェアを提供する。この方法は，他のデータセットと共存させたくないデータを所持する大企業には魅力的なものだ。<a href="http://www.teradata.com/Teradata_Workload_Management/">Teradata Workload Manager</a>のセールスポイントもまた，Amazonの<a href="http://aws.amazon.com/datapipeline/">Data Pipleline</a>よりも豊富な機能セットにある。</p> 
+  <p><a href="http://www.asterdata.com/product/database.php">Aster Database</a>ディスカバリプラットフォームは，データセットから重要な見解を導き出すためのツールだ。パス分析やパターン分析，統計的分析<a href="http://www.asterdata.com/product/advanced-analytics.php">その他</a>の一般的な分析要件については，分析パッケージが予め用意されている。これらパッケージの上には，一般的な統計処理や計算関連タスク用の機能を備えた開発者用ライブラリも提供されている。Aster DatabaseではMapReduceを使用して，SQLベースのクエリの並列実行が可能だ。</p> 
+  <p>Data Managementは，Hadoopをベースとした<a href="http://hortonworks.com/products/hdp-2/">Hortonworks Data Platform</a>によって実現されている。HDPでは生データのキャプチャや保存，洗練化といった操作に加えて，ビジネスアナリストやデータ科学者，クオンツ(金融工学の手法を用いた分析を行う専門家)が必要とするデータ構造への変換を行うことができる。</p> 
+  <p>Teradata のクラウド<a href="http://www.teradata.com/cloud/">Data Warehouse</a>は，同社のクラウドプラットフォームの一部としてすでに提供中である。ディスカバリプラットフォームとデータ管理コンポーネントについては，2014年の第１四半期のロールアウトされる予定だ。これによって同社のUnified Data Architectureは，完全なSaaSクラウドサービスの形で実現されることになる。</p> 
+  <p>ユーザの実装ニーズを市場に投入する時間を短縮するために，Teradataでは，プラットフォームの重要な３つのコンポーネントを対象としたコンサルティングサービスも提供している。コンサルティングチームはさらに，ベース部分からの完全なソリューション実装，既存のビジネスインテリジェンスツールとの統合，データ駆動型の意思決定を行うビジネス実現の支援といった作業の実施も目指している。</p> 
  </div> 
 </div><br><br><br><br><br><br></body></html>

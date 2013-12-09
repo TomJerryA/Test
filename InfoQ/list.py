@@ -1,6 +1,30 @@
 <html>
  <head></head> 
- <body> 
+ <body>
+  <div>
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/47.py">BizTalk Servicesのリリースが告げる，Mirosoft統合プラットフォームの&quot;クラウドファースト”転向</a>長く続いたインキュベーション期間を経てMicrosoftは，Windows Azure BizTalk Servicesと名付けたクラウドベースの統合ツールをリリースした。オンプレミスの統合ツールへの取り組みについて繰り返し強調している同社は，しかしながらイノベーションの推進においてはクラウドプラットフォームを優先する，と述べている。
+  </div>
+  <div>
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/46.py">TelerikのListBoxコントロール - テンプレート，Itemsコレクション，自動サイズ変更，ページングをサポート</a>Telerikが自社のASP.NETコントロールスイートに追加したListBoxコントロールは，テンプレートやItemsコレクションのサポートに加えて，自動サイズ変更やキーボードナビゲーション，ページングといった高度な機能を備えている。
+  </div>
+  <div>
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/45.py">Agile 2014カンファレンス講演募集が開始</a>2014年7月に米国フロリダ州オーランドで開催されるAgile 2014カンファレンスに向けて，講演提案の募集が開始された。
+  </div>
+  <div>
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/44.py">Studio Enterprise 2013 v3がリリース - ThemeRoller, VS 2013 Bootstrapプロジェクトテンプレート，モバイルコントロールを追加</a>ComponentOneが先日Studio Enterprise 2013 v3をリリースした。新開発のThemeRoller for ASP.NET，モバイルコントロール，Windows 8.1とVisual Studio 2013のサポートに加えて，Bootstrapテーマフレームワークをベースとした新しいプロジェクトテンプレートが追加されている。
+  </div>
+  <div>
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/43.py">Cascading 2.5がHadoop 2をサポート</a>今週リリースされたCascadingの新バージョンにはHadoop 2のサポートとCascading Lingualが含まれている。Cascading Lingualは，Hadoopベースのデータにアクセスする手段として包括的なANSI SQLインターフェースを提供する，オープンソースのプロジェクトだ。
+  </div>
+  <div>
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/42.py">RadControls for ASP.NET AJAX Q3 2013 SP1がリリース，Visual Studio 2013とInternet Explorer 11のサポートを追加</a>Telerikが同社のRadControls for ASP.NET AJAX Q3 2013コントロールスイートのアップデートをリリースした。Visual Studio 2013とInternet Explorer 11をサポートし，いくつかの新機能とバグフィックスを含む。
+  </div>
+  <div>
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/41.py">スクラムを使ってFloraHollandのビジネスを変える</a>FloraHollandは日々の業務と平行してビジネスユニットのゴールを変えたいと考えており、スクラムを使って変革を実行した。XP Days Benelux 2013カンファレンスのセッションで、Job Demands-Resources modelを使って複数のビジネスユニットにスクラムとアジャイルの要素を適用し、仕事の仕方を変えたことが紹介された。
+  </div>
+  <div>
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/40.py">Teradataがクラウド戦略の一環としてデータウェアハウス・アズ・ア・サービスを提供</a>Teradataは同社のクラウドサービスを改良し，データウェアハウス・データプラットフォーム・アズ・ア・サービスとして提供する。この製品Teradata Cloudは，定義済みライブラリによる豊富な機能セットと効率的なデータロードにより，Amazon Redshiftのライバルとなることを目指している。
+  </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/39.py">Kevin Behr氏に聞く，継続的改善の技術(Kung-Fu)</a>先頃ニューヨークで開催されたDevOps Daysで，&quot;The Visible Ops Handbook&quot;と&quot;The Phoenix Project&quot;の著者のひとりであるKevin Behr氏は，Jesse Palmer氏とともに，常態的にオーバーワークにある運用チームに継続的改善の文化をいかに浸透させるか，というテーマで講演を行った。InfoQではKevin Behr氏にインタービューし，採用されたアプローチについて詳しく聞いた。 
   </div> 
@@ -126,30 +150,6 @@
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/49.py">Peter Bell氏に聞くNoSQLのトレンド</a>Peter Bell氏が現在のNoSQLのトレンドを紹介している。NoSQLは高速進化しているデータベースの分野でさまざまなソリューションを提供する。 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/48.py">アジャイル導入の技術的実践、システム思考、文化の問題</a>単純さ、フィードバック、コミュニケーション、尊敬と勇気。これらのエクストリームプログラミング(XP)の価値はいまだにXP Days Benelux 2013カンファレンスのチームに刺激を与えている。InfoQはカンファレンスの主催者であるMerlijn van Minderhout氏とPascal Van Cauwenberghe氏に、アジャイルでの新しい開発、アジャイルへうまく移行すること、アジャイル推進のためのヨーロッパ地域の組織の必要性について話を聞いた。 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/47.py">モバイルHTML5の問題は？</a>最近のリサーチによると、HTML5の主な問題は一般的に信じられているパフォーマンスではなく、むしろプロファイルやデバッグのためのツール不足と確かなAPIの欠如にあるようだ。 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/46.py">Octokit.NETは.NET Framework 4.5アプリケーションへのGitHubインテグレーションを可能にする</a>GitHubが.NET Framework 4.5アプリケーションへのGitHub APIのインテグレーションを可能にするOctokit.NETをリリースした。これにはFullBuild MSBuildターゲットとOctokit.Tests.Integrationアセンブリを使うことでAPIにアクセスするインテグレーションテストも含まれている。 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/45.py">OpenHABがEclipse SmartHomeとしてEclipseに移行</a>昨日のEclipseConでKai Kreuzer氏がEclipse SmartHome(旧名OpenHAB)のプレゼンテーションを行った。SmartHomeはスマートアプライアンスを統合し，Javaサービスから集中コントロールするサーバコンポーネントで，OSGiおよびEclipse Equinoxをベースに構築されている。どのようなもので，どのように動作するか，今回の記事で確認してほしい。 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/44.py">Internet Explorer 11、新しいF12ツール、タッチ改善、WebGL、WebCrypto 、ハードウェア3Dサポートを追加</a>Windows 8.1に搭載されたInternet Explorer 11には、タッチ改善に加えて、新しいF12ツール、WebGL、ハードウェア3Dサポートが含まれている。 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/43.py">Netty 4がTwitterのGCオーバーヘッドを1/5に削減</a>Netty Projectは７月，Netty 4の最初のバージョンをリリースした。おもにガベージコレクションのオーバーヘッドを削減することによって，大幅なパフォーマンスの向上を実現している。TwitterはNetty 4を組み込むことで５倍のパフォーマンス向上を実現したが，いくつか問題もあった。 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/42.py">Phusion Passengerアプリサーバ、Node.jsをサポート</a>もともとRubyをターゲットにしていた人気のあるWebアプリケーションサーバ、Phusion PassengerがNode.jsアプリをサポートした。この機能は今年初めに、Passengerのエンタープライズ版で取り入れられたが、フリー版の4.0.21リリースでオープンソース化された。Phusion PassengerはNode.jsにスケーリング、統計情報、監視、マルチテナント性をもたらす。InfoQはPhusionのCTO、Hongli Lai氏に話を聞いた。 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/41.py">Google Espresso: Android UI のクラウド型高速自動化テスト</a>Google 製のオープンソース Espressoは、Android の自動テストフレームワークであり、クラウド上の x86 マシンでマルチスレッド環境でテストを実行することができ、UIテストに関する平行性の課題を解決する。 
-  </div> 
+  </div>         
  </body>
 </html>

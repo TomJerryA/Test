@@ -1,11 +1,19 @@
-<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>OpenHABがEclipse SmartHomeとしてEclipseに移行</h3><p><a target="_blank" href="http://www.infoq.com/news/2013/10/eclipse-smarthome"><em>原文(投稿日：2013/10/31)へのリンク</em></a></p>
+<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>Agile 2014カンファレンス講演募集が開始</h3><p><a target="_blank" href="http://www.infoq.com/news/2013/11/agile2014-submissions-open"><em>原文(投稿日：2013/11/22)へのリンク</em></a></p>
 <div class="article_page_left news_container text_content_container"> 
  <div class="text_info"> 
-  <p>昨日のEclipseConでKai Kreuzer氏が，<a href="http://openhab.org">OpenHAB</a>に関する<a href="https://www.eclipsecon.org/europe2013/eclipse-smart-home">プレゼンテーション</a>(<a href="https://www.eclipsecon.org/europe2013/sites/eclipsecon.org.europe2013/files/Eclipse%20SmartHome.pdf">スライド資料</a>) を行った。OpenHABは，家庭内のスマートアプライアンスやデバイスを統合するサーバコンポーネントである。汎用的な制御機構を設定して，モバイルデバイスやWebアプリケーション，あるいはスクリプティングシステムからの操作に対応する。</p> 
-  <p>OpenHABは当初，GPLでライセンスされたオープンソースプロジェクトだった。現在は<a href="http://eclipse.org/proposals/technology.smarthome/">Eclipse SmartHomeへの移行</a>のため，<a href="https://github.com/openhab/openhab/commit/69cfed024230dfc839d2ec03ab7daec8b9c6f7ce">EPLにライセンスが変更</a>されている。プロジェクトが公開しているJavaベースのサーバ (EclipseConではRaspberry Piで動作する様子が公開された) には，<a href="http://openhab.org/index.php/start/">40以上のバインディング</a>が提供されている。その対象はModBusやAsterisk, Philips hue, Samsung など，さまざまな多数のデバイスだ。</p> 
-  <p>SmartHomeの目標は，接続されたすべてのコンポーネントを汎用的なコントロール機構でユーザインターフェースから操作可能な，シンプルなドロップインサーバを提供することにある。このようなデバイスには独自のモバイルアプリケーションを用意しているものも多いが，デバイスをコントロールするためにモバイルアプリの起動が必要であったり，統合することができないなどといった問題がある。SmartHomeをメインハブとして使用することにより，すべてのデバイスをひとつのモバイルアプリあるいはWebサイトでコントロールできると同時に，個々のコンポーネントを操作するスクリプトのセットアップが可能になるのだ。</p> 
-  <p>OpenHABのランタイムはEclipse Equinoxがベースで，各コンポーネントはOSGiサービスの形式で実装されている。それぞれの間の通信はEventBus上で行われる。これはつまり，動作環境上でイベントの監視やデータ編集を行うプラグインあるいはバンドルを誰でも開発可能ということだ。コンポーネント全体の構成を永続的に表現するアイテムマップも構築されている。システムの拡張に伴ってマップも更新されるので，イベントベースのトリガを追跡しなくても，システムの現在の状況を確認することが可能である。</p> 
-  <p>そして最後に，SmartHome Designerという，Eclipse RCPベースのアプリケーションツールが用意されている。スマートホームのドラッグ・アンド・ドロップによる設定や，デバイスをON/OFFするスクリプトを構築するためのルールを取得することが可能だ。</p> 
-  <p>OpenHABのサイトには<a href="http://demo.openhab.org">デモが公開されている</a>。また今週末には，Eclipse SmartHomeレビューが予定されている。</p> 
+  <p><a href="http://agilealliance.org">Agile Alliance</a>は，2014年7月28日から8月1日の期間，フロリダ州オーランドで開催予定のAgile 2014<a href="http://agile2014.agilealliance.org/">カンファレンス</a>に向けた講演<a href="http://agile2014.agilealliance.org/speakers/">提案</a>の募集を開始したと発表した。</p> 
+  <p>カンファレンスの議長であるMitch Lacey氏は，次のように述べている。</p> 
+  <blockquote>
+   Agile Alianceの年次カンファレンスは，私たちの知識と経験を共有する素晴らしいチャンスです。昨年は38カ国から1,800人近いアジャイリストが，公認の専門家，著者，先駆者たちの話を聞くために集結しました。200程度用意されている講演枠を巡っての競争は，激化の一途です。講演するテーマを持ったアジャイリストには，早々の応募をお勧めします。
+  </blockquote> 
+  <p>カンファレンスへの応募は相互レビューによって選別される。早めにプロポーザルを提出してレビューを受ければ，レビュー結果に対応してプロポーザルを修正するチャンスがある。</p> 
+  <p>講演応募者に対しては，17あるカンファレンスの<a href="http://agile2014.agilealliance.org/program/subpage/">トラック</a>を慎重にレビューして，提案するトピックに最も相応しいトラックに応募するように勧めている。小規模なチームでアジャイルを使い始める場合のヒントから，長年の経験に基づいた高度な企業戦略まで，各トラックはアジャイルのあらゆる面をカバーする。</p> 
+  <p>Agile Allianceの議長であるRebecca Parsons氏は，カンファレンスの注目点を次のように述べている:</p> 
+  <blockquote>
+   今年のカンファレンスのテーマは，過去数年の内容を引き継いだものになっています。参加者がカンファレンス終了後すぐに利用できるような実践的アドバイスと合わせて，ソフトウェア開発と私たちの産業に対する影響において，アジャイルがその進化と成熟を継続するにはどうするべきか，という点にも重点を置いています。
+  </blockquote> 
+  <p><span class="text"><span>提案システムは2014年2月19日まで開かれる予定だ。</span></span></p> 
+  <p>&nbsp;</p> 
+  <p>&nbsp;</p> 
  </div> 
 </div><br><br><br><br><br><br></body></html>

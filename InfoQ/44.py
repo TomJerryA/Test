@@ -1,23 +1,9 @@
-<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>Internet Explorer 11、新しいF12ツール、タッチ改善、WebGL、WebCrypto 、ハードウェア3Dサポートを追加</h3><p><a target="_blank" href="http://www.infoq.com/news/2013/11/ie11-developer-features"><em>原文(投稿日：2013/11/07)へのリンク</em></a></p>
+<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>Studio Enterprise 2013 v3がリリース - ThemeRoller, VS 2013 Bootstrapプロジェクトテンプレート，モバイルコントロールを追加</h3><p><a target="_blank" href="http://www.infoq.com/news/2013/11/studio-enterprise-2013-v3"><em>原文(投稿日：2013/11/20)へのリンク</em></a></p>
 <div class="article_page_left news_container text_content_container"> 
  <div class="text_info"> 
-  <p>最近リリースされたWindows 8.1に搭載された<a href="http://windows.microsoft.com/en-us/internet-explorer/ie-11-release-preview">Internet Explorer 11</a>には、高速なHTTP転送に加えて、新しいF12ツール、WebGL、ハードウェア3Dサポートが含まれている。F12ツールは、リンクや画像などのページ要素の確認とレポートを可能にし、開発とデバッグをすばやく簡単にするための新しいUIおよび機能を含んでいる。F12ツールには、DOM Explorer、Console、Debugger、Network、UI Responsiveness、Profiler、Memory、Emulationといった8つのツールが含まれており、各ツールごとにタブが用意され、Windows 8のミニマリストインターフェイスで提供される。</p> 
-  <p>IE 11には、セキュリティ問題の対策が施された<a href="http://en.wikipedia.org/wiki/WebGL">WebGL</a>のサポートが含まれている。また、高品質のフルスクリーンビデオ再生をもたらすHTML Full Screen API、TTML(クローズドキャプションのSDP標準)、動的TextTracks、Simple Delivery Profile、ストリーミングのXHRキャッシュコントロール、Media Source Extensions (MSE)、Encrypted Media Extensions (EME)を含む最新のHTML5ビデオメディアストリーミング標準、SPDY、さらにはWebCryptoのサポートも提供する。<br /> <br /> IE 11には国際化された日付や時刻フォーマットを扱う<a href="http://www.ecma-international.org/ecma-402/1.0/">ECMAScript Internationalization API</a>のサポートや、ディスクにキャッシュせずにビデオデータをダウンロードする機能も含まれている。これはバッテリーの持ちを良くするのにつながる。</p> 
-  <p>またタッチによるhoverシミュレートもサポートしている。さらに開発者は、新しい<a href="http://msdn.microsoft.com/en-us/library/ie/dn254949(v=vs.85).aspx">msZoomTo()</a> APIを使うことで、プログラムからパンとズームをトリガーし、あるエリアをアニメーション付きでスクロールやズームイン、アウトすることができる。またIE 10で取り入れられたタッチ対応HTML5ドラッグ・アンド・ドロップもサポートしている。<br /> <br /> 入ってきた報告によると、IE 11の最終版はプレフィックスなしのポインターイベントをサポートしているようだ。MicrosoftはMSIEおよび互換トークンを削除するのに加え、既存のisIE()コードブランチのような古い機能を削除した。さらに、document.allを削除して、document.getElementById()を利用するようになった。これには以下のIE固有ハンドラの削除も含まれている。</p> 
-  <ul> 
-   <li>attachEvent()</li> 
-   <li>detachEvent()</li> 
-   <li>window.execScript()</li> 
-   <li>window.doScroll()</li> 
-   <li>document.fileSize</li> 
-   <li>img.fileSize</li> 
-   <li>script.onreadystatechange</li> 
-   <li>script.readyState</li> 
-   <li>document.selection</li> 
-   <li>document.createStyleSheet</li> 
-   <li>style.styleSheet</li> 
-   <li>window.createPopup</li> 
-  </ul> 
-  <p>なお、Internet Explorer 11はWindows 7でも利用可能だが、多くのタッチ向けの機能はWindows 8でしか動かないため無効化されている。</p> 
+  <p>ComponentOneが<a href="http://www.youtube.com/watch?v=Iczxy01KXzI">Studio Enterprise 2013 v3</a>をリリースした。WinFormsとASP.NET両方に対応した先進的なテーマ機能，ASP.NET用の新しいコントロール，Windows Store対応の開発機能に加えて，Visual Studio 2013, Windows 8.1, Bootstrapのサポートが追加されている。</p> 
+  <p>最新リリースにはThemeRoller for ASP.NET Wijmoが追加されている。主要なプラットフォームすべてに対して，テーマを使ったアプリケーションのカスタマイズが可能になる。モバイルベースのListViewとAppViewの各コントロールも新たに含まれている。タッチ操作を中心としたモバイルアプリケーションを簡単に作成できる。<br /> <br /> ListViewコントロールではデータ表示やナビゲーション，検索結果などのリストを作成することができる。AppViewコントロールは，組み込みナビゲーションやAJAXでロードされるコンテンツを持った画面で使用するのに適している。Studio for WinRT XAMLには他にもSparkline, DropDown, Mapなどのコントロールが新たに加わり，PdfViewer, FlexGrid, RichTextBoxといったコントロールが拡張されている。<br /> <br /> <img src="http://www.infoq.com/resource/news/2013/12/studio-enterprise-2013-v3/ja/resources/Figure_1_Componentone_Original.png" alt="" _href="img://Figure_1_Componentone_Original.png" _p="true" /></p> 
+  <p>Sparklineコントロールは小さなスペースでトレンドを表示することができる。またDropDownコントロールはカスタムエディタを使ってデータを投入する機能を，Mapコントロールはさまざまなソースの情報を表示する機能を，それぞれ提供する。<br /> <br /> <img src="http://www.infoq.com/resource/news/2013/12/studio-enterprise-2013-v3/ja/resources/Figure_2_Componentone.png" alt="" _href="img://Figure_2_Componentone.png" _p="true" /><br /> <br /> Studio Enterprise 2013 v3はWindows 8.1とVisual Studio 2013をサポートする。これには<a href="http://our.componentone.com/2013/11/14/using-bootstrap-with-studio-for-asp-net-wijmo/">Bootstrap</a>テーマフレームワークをベースとする，新しいプロジェクトテンプレートが使用されている。C1CommandプラットフォームベースのRadiaMenuコントロールも新たに加えられた。Microsoft Excelがインストールされていない環境でも，Excelにデータをエクスポートすることができる。</p> 
+  <p>最新リリースのRichTextBoxコントロールには，スペルチェックや多言語辞書のサポートが追加され，イメージとUIコントロールのPDFエクスポートが可能になった。また3Dチャートコントロールでは，グラフィック能力を最大限に活用するために，グラフィックカードのハードウェアアクセラレーション機能がサポートされている。</p> 
  </div> 
 </div><br><br><br><br><br><br></body></html>
