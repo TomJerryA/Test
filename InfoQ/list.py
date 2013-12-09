@@ -1,8 +1,8 @@
 <html>
  <head></head> 
- <body>
-  <div>
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/48.py">Noda Time 1.2リリース，XMLとJSONのシリアライゼーションとテキスト変換をサポート</a>先日リリースされたNoda Time 1.2には，XMLとJSONのシリアライゼーションのサポートとテキスト変換に加えて，JSONシリアライゼーションを処理するアセンブリも含まれている。
+ <body> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/48.py">Noda Time 1.2リリース，XMLとJSONのシリアライゼーションとテキスト変換をサポート</a>先日リリースされたNoda Time 1.2には，XMLとJSONのシリアライゼーションのサポートとテキスト変換に加えて，JSONシリアライゼーションを処理するアセンブリも含まれている。 
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/47.py">BizTalk Servicesのリリースが告げる，Mirosoft統合プラットフォームの&quot;クラウドファースト”転向</a>長く続いたインキュベーション期間を経てMicrosoftは，Windows Azure BizTalk Servicesと名付けたクラウドベースの統合ツールをリリースした。オンプレミスの統合ツールへの取り組みについて繰り返し強調している同社は，しかしながらイノベーションの推進においてはクラウドプラットフォームを優先する，と述べている。 
@@ -150,6 +150,6 @@
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/0.py">アジャイルチームにとって楽しさは重要か</a>アジャイルチームで働くのはストレスフルになる場合がある。例えば、顧客のニーズが不明瞭であったり、やらなければならなかったことがたくさんあったり、チームのメンバが困難に直面したりする場合だ。楽しさはストレスを低減し、モチベーションを増やし、生産性をあげるのだろうかという疑問を持つこともあるだろう。これが正しいのなら、アジャイルチームに楽しさを持ち込むにはどうしたらいいのだろうか。 
-  </div>  
+  </div> 
  </body>
 </html>

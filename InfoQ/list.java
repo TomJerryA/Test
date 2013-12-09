@@ -1,6 +1,9 @@
 <html>
  <head></head> 
- <body> 
+ <body>
+  <div>
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/40.java">A first look at Opserver, Stack Exchange's monitoring solution</a>Opserver is an open source monitoring solution, released by StackExchange, of StackOverflow's fame. Opserver provides a quick overall view of each monitored system's health, while allowing the user to deep dive using a drill-down approach. InfoQ talked with Nick Crave, one of Opserver’s creators, for additional insight.
+  </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/39.java">RadControls for WPF and Silverlight Q2 2013 SP1 with Entity Framework 6 Support and Several Features</a>Telerik has released RadControls for WPF and Silverlight Q2 2013 SP1 with the ability to change application icon set during runtime in addition to support for Entity Framework 6. It also provides an ability to pass event arguments to command when using Telerik EventToCommandBehavior in addition to several new features and improvements. 
   </div> 
@@ -147,9 +150,6 @@
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/43.java">Power Productivity Tools for VS 2013</a>Since 2010 the Power Productivity Tools have been Microsoft’s test bed for new Visual Studio features, some of which were incorporated in VS. This new version for VS 2013 brings 11 new and updated features including the ability see documentation without leaving the code editor. 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/42.java">An Interview with Greg Finzer of Compare .NET Objects</a>Writing code to compare objects can be tedious, especially when dealing with large objects or deep graphs. And when the classes change errors often slip in. One way to reduce the potential for error is to rely on a library such as Greg Finzer’s Compare .NET Objects. This library offer reasonable performance for up to 10,000 objects. 
-  </div> 
+  </div>  
  </body>
 </html>

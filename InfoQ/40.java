@@ -1,34 +1,65 @@
-<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>Interview with Kevin Behr on Continuous Improvement Kung-Fu</h3><p>At the <a href="http://www.devopsdays.org/events/2013-newyork/program/">recent</a> <a href="http://www.devopsdays.org/">DevOps Days</a> in New York, <a href="http://www.kevinbehr.com/">Kevin Behr</a>, co-author of <a href="http://en.wikipedia.org/wiki/The_Visible_Ops_Handbook">“The Visible Ops Handbook”</a> and <a href="http://itrevolution.com/books/phoenix-project-devops-book/">”The Phoenix Project”</a>, and Jesse Palmer gave a <a href="http://vimeo.com/album/2573383/video/77233580">talk</a> on how they instilled a continuous improvement culture into an operations team that was in a permanent state of overwork.</p>
-<p>According to Kevin and Jesse, through this process of continuous improvement the team’s work went through a radical change: Dev and Ops are working closely together and unnecessary work and rework are being steadily eliminated. The process also helped the team achieve an important breakthrough when they came to the conclusion that a coherent narrative to guide their work, a mission, was missing.</p>
-<p>They started with a diagnosis of the current reality. This diagnosis was supported on several frameworks, like the <a href="http://en.wikipedia.org/wiki/Theory_of_constraints">theory of constraints</a> and <a href="http://en.wikipedia.org/wiki/Cynefin">Cynefin</a>, a framework to reason about the evolutionary nature of complex systems and their inherent uncertainty as the guiding frameworks. By using a <a href="http://en.wikipedia.org/wiki/Current_reality_tree_(Theory_of_constraints)">current reality tree</a>, they mapped the top problems the organization was having to the root causes that created them.</p>
-<p>The team also started doing short, bounded experiments through a technique promoted by Mike Rother’s <a href="http://www.amazon.com/Toyota-Kata-Managing-Improvement-Adaptiveness/dp/0071635238">“Toyota Kata”</a> book, the <a href="http://www.lean.org/kata/">improvement kata</a>. An improvement kata is a way to bring the scientific method to the daily activities of an organization, in order to solve problems and their root causes. The specific improvement kata used in this instance was based on a daily stand-up meeting where five questions were answered:</p>
-<ul> 
- <li>What is your target condition?</li> 
- <li>What is the current condition?</li> 
- <li>What are the main obstacles to achieving the target condition?</li> 
- <li>Which obstacle will you experiment on today?</li> 
- <li>What is your experiment and how can we see the results of the experiment?</li> 
-</ul>
-<p>For instance, one common complaint was <a href="http://c2.com/cgi/wiki?NotEnoughTime">“We don’t have enough time”</a>. The team dug deeper and found that everyone was constantly trying to find the most useful thing to do on a given point in time, but without visibility to the whole picture, so they adopted <a href="http://en.wikipedia.org/wiki/Kanban_(development)">Kanban</a>. Kanban allowed the team to visualize their entire value stream, manage their flow and set the stage to measure their experiments and progress.</p>
-<p>In the process, the team identified several target conditions, such as “Pay down technical debt” or “Manage unplanned work”. To achieve these target conditions several experiments were done, such as defining critical technical debt projects or creating simple project plans so the team didn’t loose track of bigger activities. These experiments led to concrete results: doing <a href="http://en.wikipedia.org/wiki/Root_cause_analysis">root cause analysis</a> to avoid the <a href="http://www.urbandictionary.com/define.php?term=Groundhog%20Day%20Effect">Groundhog Day</a> effect was one of them. The operations team also started to solve common issues with the development team, such as improving the deployment procedures. This was possible because a feedback loop was built between the two teams.</p>
-<p>InfoQ asked Kevin about some of the techniques and practices mentioned in the talk:</p>
-<p><strong>During your talk, you explained the improvement kata used on that organization and on that context. Do you always use the same improvement kata or are there multiple improvement katas to choose from, depending on context?</strong></p>
-<blockquote> 
- <p>There are many forms. We often start with the improvement kata similar to what Mike Rother describes in his book “The Toyota Kata”. Our version is part of an approach or broader form we call Opsflow. It uses various methods and assemblies to hit the seven dimensions of organizational learning in order to build co-adaptive innovation capabilities and to evolve/cultivate latent talent while reducing cycle and wait time for value delivery.</p> 
+<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>A first look at Opserver, Stack Exchange's monitoring solution</h3><p><a href="https://github.com/opserver/opserver">Opserver</a> is an open source monitoring solution, released by <a href="http://www.stackexchange.com/">Stack Exchange</a>, of <a href="http://www.stackoverflow.com/">Stack Overflow</a>'s fame. Unusually in the monitoring tool's space, is is built on top of the .Net Framework.</p>
+<p>Opserver aims to provide a quick overall view of each monitored system's health, but allowing the user to deep dive using a drill-down approach. As <a href="http://nickcraver.com">Nick Craver</a>, one of Opserver's creator told InfoQ:</p>
+<blockquote>
+ We believe a monitoring system should show you systems at a high level, present what’s wrong, and allow you to drill in for more detail.
 </blockquote>
-<p><strong>You mentioned that a target condition is not just a goal or a KPI. Can you elaborated on that? What is a target condition? </strong></p>
+<p>Opserver is organized around web dashboards, each one specialized on a given system. Opserver currently supports <a href="http://www.microsoft.com/sql">SQL Server</a>, <a href="http://www.elasticsearch.org/">ElasticSearch</a>, <a href="http://haproxy.1wt.eu/">HAProxy</a>, <a href="https://github.com/NickCraver/StackExchange.Exceptional">StackExchange.Exceptional</a> and <a href="http://redis.io/">Redis</a>. It also uses <a href="http://www.solarwinds.com/network-performance-monitor.aspx">SolarWinds' Orion</a>, a commercial tool, to provide infrastructure and network monitoring. An Opserver installation does not require using all these systems, as they can be configured on an opt-in basis.</p>
+<p>Taking SQL Server as an example, Opserver provides high-level information on CPU and memory consumption or the overall health of databases:</p>
+<p>(Click on the image to enlarge it)</p>
+<p><a _href="resource://OpServer_SQLServer_Dashboard_full.png" href="/resource/news/2013/12/first_look_at_opserver/en/resources/OpServer_SQLServer_Dashboard_full.png"><img alt="Opserver's SQL Server Dashobard" _href="img://OpServer_SQLServer_Dashboard.png" _p="true" src="http://www.infoq.com/resource/news/2013/12/first_look_at_opserver/en/resources/OpServer_SQLServer_Dashboard.png" /></a></p>
+<p>Below the 10,000 feet view, Opserver provides additional data. For instance, it provides a list of the top queries, sorted by multiple criteria (total duration, average CPU consumption). For each query, it provides more detailed information, including its query execution plan (a detailed breakdown of the steps taken to execute the query).</p>
+<p>(Click on the image to enlarge it)</p>
+<p><a _href="resource://OpServer_SQLServer_TopQueries_full.png" href="/resource/news/2013/12/first_look_at_opserver/en/resources/OpServer_SQLServer_TopQueries_full.png"><img alt="Opserver's SQL Server Top Queries" _href="img://OpServer_SQLServer_TopQueries.png" _p="true" src="http://www.infoq.com/resource/news/2013/12/first_look_at_opserver/en/resources/OpServer_SQLServer_TopQueries.png" /></a></p>
+<p>There are a few steps to take in order to setup Opserver. Besides github's Opserver <a href="https://github.com/opserver/opserver">readme</a> file, <a href="http://dannysorensen.azurewebsites.net/2013/11/using-stack-exchanges-opserver-step-1-will-it-build/">some</a> <a href="http://patpack.blogspot.pt/2013/10/setting-up-stackexchanges-opserver.html">users</a> have described their setup experiences. In a nutshell, the code must be cloned from github, compiled and published on an IIS server. There is also the need to perform some configurations, of which there are two types: security settings and system's settings. Opserver provides examples for each settings definition, based on the ones used on Stack Exchange itself. These examples can be found at &lt;site root&gt;\Config.</p>
+<p>The SecuritySettings.config file is the place where items such as the authentication methods are defined:</p>
+<pre>
+&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;
+&lt;SecuritySettings provider=&quot;AD&quot;&gt;
+    &lt;!-- Optional, these networks can see the 
+	overview dashboard without authentication --&gt;
+    &lt;InternalNetworks&gt;
+        &lt;Network name=&quot;SE Internal&quot; cidr=&quot;10.0.0.0/8&quot; /&gt;
+    &lt;/InternalNetworks&gt;
+&lt;/SecuritySettings&gt;
+
+&lt;!-- 
+Example of global access for everyone:
+&lt;SecuritySettings provider=&quot;alladmin&quot; /&gt;
+--&gt;</pre>
+<p>There is one configuration file per system. The currently supported format is JSON. Here's an example of a SQL Server configuration:</p>
+<pre>
+{
+    &quot;defaultConnectionString&quot;: &quot;Data Source=$ServerName$;Initial Catalog=master;Integrated Security=SSPI;&quot;,
+    &quot;clusters&quot;: [ // clusters are only available for SQL Server 2012
+        {
+        	&quot;name&quot;: &quot;NY-SQLCL04&quot;,
+        	&quot;refreshIntervalSeconds&quot;: 20,
+        	&quot;nodes&quot;: [
+        		{ &quot;name&quot;: &quot;NY-SQL03&quot; }
+        	]
+        }
+    ],
+    &quot;instances&quot;: [
+        { // This instance cannot use the defaultConnectionString, 
+	 // so it has to specify its own.
+            &quot;name&quot;: &quot;NY-DB05&quot;,
+            &quot;connectionString&quot;: &quot;Data Source=NY-DB05;Initial Catalog=bob;Integrated Security=SSPI;&quot;, 
+        },
+        // The server name on defaultConnectionString gets replaced by &quot;name&quot;
+        { &quot;name&quot;: &quot;NY-DESQL01&quot; }     ]
+}</pre>
+<p>If Opserver does not cover a given scenario, there are some extensibility points to augment the tool with additional dashboards and configuration options. There are plans to make this process easier and more powerful in the future:</p>
 <blockquote> 
- <p>Goals are too far off to impact with minute by minute work decisions. Challenges may be smaller units of accomplishment than goals (several challenges may lead you closer to a goal) but even smaller and closer to the worker is the target condition: a measurement or measurements that are at the individual worker's metaphorical workstation or work center. Could be a process level metric (widget output per day) or a knowledge work metric. Think how I must work at my desk so that we can achieve a challenge. Figure out how to measure that as a condition you could obtain.&nbsp; It helps to be coached in this extensively at the onset. It is easier caught then taught.</p> 
+ <p>The biggest upcoming change as time allows is putting in a plugin model.&nbsp; People will be able to add tabs, views, pollers etc. that others can use.&nbsp; For example you could put a MongoDB monitoring tab up top with any level of detail you want inside.</p> 
 </blockquote>
-<p><strong>What mechanisms do you use to find target conditions?</strong></p>
+<p>The team also has other goals in the tool's roadmap:</p>
 <blockquote> 
- <p>We use many techniques but the best leverage are organization’s goal/missions/tactics/plans/sorties, what ever the management approach is to mission definition. All target conditions need to be inside of a corridor that management establishes - then they coach only to make sure the target conditions will get us closer to the challenges which move us all closer to the goal.</p> 
+ <p>It’ll also integrate heavily with our monitoring solution, keeping data history and not just real-time data.&nbsp;</p> 
+ <p>I plan on including functionality for other third-party tools in the base install to enhance Opserver if you’re using them.&nbsp; For example, <a href="http://sqlblog.com/blogs/adam_machanic/archive/2011/04/30/twenty-nine-days-of-activity-monitoring-a-month-of-activity-monitoring-part-30-of-30.aspx">sp_WhoIsActive</a> is already integrated, things like <a href="http://www.brentozar.com/blitz/">sp_Blitz</a>,<a href="http://www.brentozar.com/askbrent/">sp_AskBrent</a>, and larger products like <a href="http://www.sqlsentry.com/">SQL Sentry</a> will be tied in.&nbsp; They’ll absolutely not be required, just add views and details if they’re there...since the information they provide will then be available.&nbsp;</p> 
+ <p>Opserver also exposes almost all the data it has via JSON in a REST-feeling way. I plan to make all data available this way so the UI is totally optional.&nbsp; This allows whomever to write scripts against routes returning JSON to use in other ways, it really opens up many use cases.</p> 
 </blockquote>
-<p><strong>How do you decide what target condition to focus on?</strong></p>
+<p>InfoQ asked why Stack Exchange decided to build its own monitoring tool. Nick told us that it grew organically:</p>
 <blockquote> 
- <p>We use thinking tools adapted from Eli Goldratt’s theory of constraints such as current reality tree, future reality tree, transition tree and goal mapping. We also use methods and assembles designed by David Snowden such as future backwards, ritual dissent and others to help get around cognitive bias and identify root conditions that need to be changed.</p> 
+ <p>It started out as a central exception log viewer from our StackExchange.Exceptional database, a central log location for all our applications. From there as a spare time project I started adding aspects of monitoring that didn’t exist, or didn’t exist correctly already (e.g.: an <a href="https://connect.microsoft.com/SQLServer/feedback/details/779206/sql-server-2012-alwayson-availability-groups-dashboard-stops-updating-after-thread-exhaustion#details">issue</a> with SQL Server 2012's AlwaysOn monitoring).</p> From there I started adding SQL features for things we like to keep an eye on because I wanted a single place to view all our systems. After that, I started adding all the systems we use at Stack Exchange...the goal shifted from filling the gaps in existing monitoring to having a single pane of glass view of our infrastructure. 
 </blockquote>
-<p><strong>One of the most difficult things on continuous learning, or continuous adaptation is the &quot;continuous&quot; part. It is easy to start with lots of momentum, but that can fade over time. Do you have any tips and tricks on sustaining the continuous adaptation on the long run?</strong></p>
-<blockquote> 
- <p>Yes! First make sure the forms are learned correctly and deeply. Establish and cultivate a culture of scientists by making learning about the scientific method. Create a coaching and second coaching program that establishes culture keepers. Also introduce weekly retrospectives that talk about failure and celebrate success. We see that the hardest part to sustaining efforts is that each challenge when met is immediately replaced with another so it can feel like you are on a treadmill (in same place working - but no big bang success). Since the improvement to fail ratio is low it can feel discouraging. When teams regularly look back on their success and lessons they can use that sense of accomplishment to motivate even more improvement. That is key.</p> 
-</blockquote><br><br><br><br><br><br></body></html>
+<p>&nbsp;</p><br><br><br><br><br><br></body></html>
