@@ -1,6 +1,12 @@
 <html>
  <head></head> 
- <body> 
+ <body>
+  <div>
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/39.htmlb">恒拓开源陈操谈去IOE方案的普及对独立开发商的机遇与挑战</a> 在2013年阿里云开发者大会上，恒拓开源技术副总监陈操跟InfoQ中文站编辑谈到了去IOE的普及状况，成本评估，推广心得，以及对独立开发商的机遇与挑战等话题。 
+  </div>
+  <div>
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/38.htmlb">iOS开发工具——网络封包分析工具Charles</a> iOS开发工具系列文章第三篇，上一篇是 http://www.infoq.com/cn/articles/crashlytics-crash-statistics-tools 
+  </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/37.htmlb">敏捷与结构性模块化（三）</a> 该系列的第一篇文章介绍了结构性模块化和敏捷的根本性的关系，在第二篇中我们了解到如何使用OSGi实现高度敏捷和高度可维护的软件系统。 
   </div> 
@@ -144,12 +150,6 @@
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/41.htmlb">多设备企业环境下的C++</a>无论是在谈话、社交网络还是和一些产业文章中，你一定听说过在企业内部支持多设备的需求。像BYOD（自带设备）这样的词条已出现在多数文章和企业战略中。企业组织需要支持大量类型的设备，以便使员工更有工作效率。现代企业同时要支持包括多层系统、云计算、REST和SOAP web services等更多类型的软件架构。 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/40.htmlb">性能测试面面观——HP性能测试专家宗刚访谈</a>宗刚是2013北京QCon测试专题的受邀讲师。在这个访谈中，宗刚对性能测试领域内的许多问题做了深入的回答。 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/39.htmlb">林仕鼎谈数据中心计算（二）：存储资源分层</a>在之前的对话中，百度基础体系首席架构师林仕鼎先生提到要将数据中心当做逻辑上的一台机器来设计架构。在林仕鼎看来，这种软件设计理念的变化包含很多方面，但最基本的一点就是：分层。一个存储系统有三个层：block层，stream层，以及table层。CCDB的设计是，我把这三个层放在一块儿，放在一台机器上面去。然后，机器和机器之间连起来，就把每个层直接扩展到多机了。 
-  </div> 
+  </div>   
  </body>
 </html>

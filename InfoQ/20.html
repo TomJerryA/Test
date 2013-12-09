@@ -1,14 +1,28 @@
-<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>Telerik LightBox控件支持模板、Items集合、尺寸自动调整和分页</h3><p><a href="http://www.telerik.com/products/aspnet-ajax.aspx">Telerik ASP.NET</a>控件套件中的<a href="http://www.telerik.com/products/aspnet-ajax/lightbox.aspx">LightBox弹出窗口</a>控件支持模板，这使它具备了包含不同类型内容的能力，如图片、iFrames、HTML代码和ASP.NET服务器控件。它还使开发人员能够将其绑定到不同的数据源，如SqlDataSource、LinqDataSource、EntityDataSource和ObjectDataSource。</p>
-<p>该控件包含尺寸自动调整、键盘导航、分页和模态等功能，使开发人员可以为打开、隐藏、下一页和上一页等操作设置尺寸调整和淡出的动画类型。通过在Visual Studio 2013的工具箱中双击该控件，可以将其添加到页面，用法如下所示：</p>
-<pre>
-&lt;telerik:RadLightBox ID=&quot;RadLightBox1&quot; runat=&quot;server&quot; 
-DataSourceID=&quot;SqlDataSource1&quot;
-DataImageUrlField=&quot;ImageUrl&quot;
-DataTitleField=&quot;ImageName&quot;
-DataDescriptionField=&quot;ImageInfo&quot;&gt;
-&lt;/telerik:RadLightBox&gt;</pre>
-<p>在上述代码中，控件绑定到一个SQL Server数据源。也可以采用与其它控件一样的方式，在后台代码中绑定控件。LightBox包含一个Items集合，该集合可以通过三种不同的方式进行管理，包括在控件声明中、使用C#或VB的后台代码和使用客户端JavaScript API。</p>
-<p>要使用Items集合，首先创建一个RadLightBoxItem对象，然后添加所需的描述、标题、URL、宽度和高度。最后，将这个对象添加到RadLightBox实例的Items集合中，代码如下：</p>
-<pre>RadLightBox1.Items.Add(newItem); </pre>
-<p><code>Telerik</code><code>软件开发工程师<a href="http://blogs.telerik.com/blogs/13-11-07/easily-display-any-type-of-content-in-a-popup-with-telerik's-asp.net-lightbox-control">Daniel Peichev</a>在他的博文里考察了在特定的触发控件和Items集合的项之间建立关系所需的步骤。</code></p>
-<p><b>查看英文原文：</b><b><a href="http://www.infoq.com/news/2013/11/telerik-lightbox-control">Telerik LightBox Control with Templates, Items Collection, Automatic Resizing and Paging</a></b></p><br><br><br><br><br><br></body></html>
+<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>Famo.us 首次发布自己的Javascript 平台</h3><p>构建<a href="http://famo.us/">Famo.us JavaScript平台</a>的团队计划在2013年12月5号发布他们的第一个应用层代码预览版，作为发布平台客户端的一个铺垫。Famo.us完全是使用JavaScript编写的，它已经吸引了超过7万名开发者，但是依然是alpha预览版；它诱惑人的原因是承诺不需要插件就能够在浏览器中实现本地应用性能。</p>
+<p>由于对浏览器的本地渲染能力不满意，团队设计了Famo.us，目的是完全替代浏览器的渲染引擎“使用如此精细的数学和物理学但是你未尝会想再见到它，你的眼睛会穿越”创建者<a href="https://twitter.com/stevenewcomb">Steve Newcomb</a>说。要放弃浏览器的本地渲染这些底层的（low-level）复杂性是必须的，但是这并不是98%的开发者的接入位置，Newcomb说。“在过去的一年中我们仅做了一件事情，那就是构建一个可以完全替代jQuery的语法糖层”。因此，Newcomb和他的公司确信所有的现代浏览器——Safari、Chrome、Firefox和IE 10+——都将会证明它的兼容性。</p>
+<p>非常明确的是Famo.us团队希望他们的平台能够被普遍地采用：作为jQuery的一个完整替代品，它适合于每一个经验层次——从设计者到老道的JavaScript工程师。Famo.us完全免费并且开源，迄今为止融资了超过5百万的资金，它有4个不同级别的交互。“最容易的级别是设计师，他们根本不需要任何编码。每一个部件（widget）和每一个模板都已经嵌入了滑动条。对于一个设计者而言，他必须做的所有工作就是改变滑动条。你能够通过改变滑动条得到不可思议的变种。”Newcomb说。其次，设计层下面是为开发者准备的所有语法糖，该层让开发者能够接入日益增长的由部件和模板组成的类库——Famo.us团队相信大量的应用程序开发将会包含在这里，因为将模板和部件交织在一起会形成应用。再次，平台开发者可能会想深入到部件和模板下面创造更加原始的用户体验，例如创造一个自己专有的UI——例如Famo.us的早期投资者Samsung就可能想做这样的工作，Newcomb说。最后，我们也为真正的极客保留了深入到Famo.us内部的数学和物理学引擎的能力。</p>
+<p>这其中包含了Famo.us团队的野心：他们正在提供一种新的应用程序开发方式，让程序员远离使用jQuery进行DOM遍历和操作的世界，迁移到一个希望程序员操作表面同时能够让他们的物理引擎充满活力的平台。Famo.us将会渲染为HTML、WebGL和canvas。从12月5号开始，团队打算为它们日益增长的部件、模板和应用类库推出每周新增。</p>
+<p>Famo.us已经宣布了自己跟<a href="http://meteor.com/">Meteor</a>、<a href="http://firebase.com/">Firebase</a>、<a href="http://www.infoq.com/news/2013/12/leapmotion.com">LeapMotion</a>和<a href="http://http/backbonejs.org/">backbone.js类库</a>的官方伙伴关系。现在，代码正在内部alpha阶段，他们计划在2014年2月份发布一个公共测试版。一旦发布，用户将可以基于<a href="http://www.mozilla.org/MPL/2.0/">Mozilla公共许可MPL v2</a>使用整个平台，该许可允许使用者免费访问代码，同时也允许公司开发专有的部件和模板。Famo.us的副总裁Dave Fetterman（<a href="https://developers.facebook.com/">Facebook开发者平台</a>的创建者和<a href="https://www.facebook.com/f8">F8大会</a>的发起者）将会通过它的测试版发布引导Famo.us。</p>
+<blockquote> 
+ <p>“多年以来，实际上一直没有一个非常强健的JavaScript开发平台。同时我们也不想成为这样类型的平台：这是一个部件，或者这是一个插件，或者这仅仅是你解决方案的一部分。我们想成为那种值得人们可以为它奉献自己职业生涯的平台。我们计划在很长的一段时间内围绕着该目标努力，”Newcomb说。</p> 
+</blockquote>
+<p>最后，Famo.us团队将会在12月5号发布三个部件和一个应用程序。通过将<a href="http://codepen.io/">Codepen</a>作为显示这些版本的合作伙伴，Famo.us团队正在为所有这些新发布的部件提供一个交互式体验：</p>
+<h3><a href="http://bit.ly/1eJsK6a">A Twitter App</a></h3>
+<p data-height="350" data-theme-id="2352" data-slug-hash="ac53af08967073df60ceaf28c0c76007" data-user="befamous" data-default-tab="result" class="codepen">&nbsp;</p>
+<script async="" src="//www.codepen.io/assets/embed/ei.js"></script>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<h3><a href="http://bit.ly/18ivwv8">A jQuery-esque lightbox widget</a></h3>
+<p data-height="350" data-theme-id="2352" data-slug-hash="442915109539f48b92700c137c3fafe9" data-user="befamous" data-default-tab="result" class="codepen">&nbsp;</p>
+<script async="" src="//www.codepen.io/assets/embed/ei.js"></script>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<h3><a href="http://bit.ly/IHupPC">A button widget</a></h3>
+<p data-height="350" data-theme-id="2352" data-slug-hash="c3147502f9f7f897a8197ed4b6dbcb5f" data-user="befamous" data-default-tab="result" class="codepen">&nbsp;</p>
+<script async="" src="//www.codepen.io/assets/embed/ei.js"></script>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<h3><a href="http://bit.ly/1bef9j9">A one-to-many widget.</a></h3>
+<p data-height="350" data-theme-id="2352" data-slug-hash="373819beb72b28945fa06e4346e20b54" data-user="befamous" data-default-tab="result" class="codepen">&nbsp;</p>
+<script async="" src="//www.codepen.io/assets/embed/ei.js"></script>
+<p><b>查看英文原文</b>：<a href="http://www.infoq.com/news/2013/12/famous_launches_first_access">Famo.us launches first public access to its Javascript platform</a></p><br><br><br><br><br><br></body></html>

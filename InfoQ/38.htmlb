@@ -1,16 +1,87 @@
-<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>自动化错误报告：通往更高软件质量的大门</h3><p>无知是福，但是在处理软件bug的时候，这句话并不适用。</p><p>软件质量专家会告诉我们，那些努力找出bug并且提高软件质量的公司可以得到客户更多的信任，得到更高的利润，降低开发和维护的费用，简化交付的流程，同时还可以避免客户的流失。</p><p><b>软件质量是个大工程</b></p><p>如果你觉得软件质量没有什么大不了的，那么就来看看<a href="http://en.wikipedia.org/wiki/Capers_Jones">Capers Jones</a>在2011年6月<a href="http://asq.org/pub/sqp/index.html">软件质量杂志上发表的文章</a>（这份杂志由美国质量协会主办）：</p><ul> 
- <li>高质量软件的发布周期比低质量软件短15%。</li> 
- <li>高质量软件从第一个版本发布到之后五年的周期里花费的总费用比低质量软件低30%。</li> 
- <li>高质量软件每年的维护费用比低质量软件低40%。</li> 
- <li>规模越大的软件，质量越是一个重要的因素。</li> 
-</ul><p>根据Jones的观点，软件测试在查找bug时的有效性有限，还不到35%。</p><p>考虑到软件质量对公司业务的影响，开发团队都在寻找新的提高软件质量的方法。其中最有前景的方法就是自动化错误报告（Automated Error Reporting），这种方法以用户为基础来确定软件的错误和异常。</p><p><a href="/resource/articles/Error-Reporting/zh/resources/fig1large.jpg;jsessionid=8BCAD99229237E758FA58D778140DFE7"><img src="http://www.infoq.com/resource/articles/Error-Reporting/zh/resources/1.jpg;jsessionid=8BCAD99229237E758FA58D778140DFE7" alt="" _href="img://null" _p="true" /></a></p><p><b>我们的目标是让错误报告变得易用、完整和可自定义</b></p><p>有许多让用户参与到软件纠错当中的方法，比如邮件和论坛社区，自定义的软件功能，Windows Error Reporting（WER）和各种现成的解决方案。</p><p>但是这些方法都不一定比自动错误报告有效：有的方法会让用户承担过多的责任；有的方法不能收集到精确的信息；有的方法不能捕捉关键的特征，如变量运行时的赋值可能就是一种关键特征；有的方法不能把错误提交到通用的错误跟踪系统里面。</p><p>我们的目标是让错误报告变得易用、完整和可自定义，这就要求用户可以方便地提交错误报告，开发人员也可以方便地理解错误报告。这可不是一件简单的事情，每个错误报告都应该包括完整的堆栈追踪信息和有助于查找、修复bug的上下文信息。自动错误报告还应该可以和bug追踪工具整合在一起。</p><p>Andrew Neville表示：“自动化错误报告让用户可以十分方便地提交错误报告。只要用户按发送键，我们就可以收到修正错误所需的所有信息。使用了自动化错误报告之后，我们让用户可以更方便地与我们沟通。”Andrew Neville是<a href="http://www.nevilleandrowe.co.uk/">Neville&amp;Rowe</a>的一名资深软件工程师，在Red Gate的<a href="http://www.red-gate.com/products/dotnet-development/smartassembly/features/#automated-error-reporting">SmartAssembly</a>中使用了自动化错误报告，从而使商业智能分析软件ImpactEdge可以很好地追踪bug。</p><p><b>认识自动化错误报告</b></p><p>自动化错误报告的价值在于让开发团队了解到未知异常的详细信息。它从五个方面为软件开发带来了好处：</p><ol> 
- <li>它为用户提供了一种有效的反馈途径，增加了用户和开发团队之间的沟通效率。</li> 
- <li>它让开发团队了解到哪些bug是最容易发生的，让开发团队可以根据事实情况而不是猜测来修正bug。</li> 
- <li>它让开发团队可以更快的修复bug。</li> 
- <li>它可以以更低的代价确认和修复bug。</li> 
- <li>它可以让开发团队在发布软件之前获得更多的前期用户反馈。如果开发团队正在使用敏捷开发，自动化错误报告可以让开发团队根据用户的反馈快速制定出迭代的计划，从而缩短迭代的周期。</li> 
-</ol><p>微软MVP和IT顾问<a href="https://plus.google.com/115066362677679691816#115066362677679691816/posts">Ed Blankenship</a>解释说：“知道异常发生的频率对于修复异常来说是非常有帮助的。知道bug的详细信息对于修复bug也是必不可缺的。“</p><p><b>自动化错误报告是怎样工作的</b></p><p>一个理想的自动化错误报告系统可以让用户方便地告诉开发团队软件产品的问题在哪里。在理想状态下，当软件发生异常的时候，用户应该可以得到一个简单明了的错误提示并且可以通过用户界面发送错误报告。这可以大大节省用户花在描述和反馈错误上的时间。所有的必要信息都应该被自动收集，而不需要用户操心。</p><p><a href="/resource/articles/Error-Reporting/zh/resources/fig2large.jpg;jsessionid=8BCAD99229237E758FA58D778140DFE7"><img src="http://www.infoq.com/resource/articles/Error-Reporting/zh/resources/2.jpg;jsessionid=8BCAD99229237E758FA58D778140DFE7" alt="" _href="img://null" _p="true" /></a></p><p>&nbsp;</p><p>一个错误报告应该包括了完整的堆栈信息和异常上下文信息，包括运行时变量的值。</p><p>另外一个特性是用户可以在异常报告中添加额外的自定义信息。这些信息包括日志文件，截图，或者是用户的联系信息。</p><p><img src="http://www.infoq.com/resource/articles/Error-Reporting/zh/resources/3.jpg;jsessionid=8BCAD99229237E758FA58D778140DFE7" alt="" _href="img://null" _p="true" /></p><p><b>隐私问题和不合理的错误报告</b></p><p>发送错误报告的时候经常会出现下面三个问题：</p><ol> 
- <li>错误报告会附带用户的隐私信息。</li> 
- <li>用户反复遇到相同的错误，但是每次系统都要求用户重新发送一次错误报告。</li> 
- <li>开发团队不停地收到相同的错误报告。</li> 
-</ol><p>第一个问题涉及到用户的信任程度。再好的错误报告系统也不可能保证绝对不会把用户的隐私信息传送给开发团队。好的错误报告系统应该考虑到敏感信息的问题，这样可以尽量避免发送敏感信息。如果开发团队没有能够控制敏感信息的传送与否，那么错误报告系统应该可以让用户选择是否信任开发团队并且把敏感信息发送给开发团队。</p><p>第二个问题的解决方法是用户应该可以自定义错误报告发送系统。</p><p>Red Gate的程序员Alex Davies说他总是会在合适的时候才显示错误报告提示，并且给用户“不要再提醒了。总是发送报告。”的选项。</p><p>针对第三个问题，开发团队应该把错误报告进行分类。Davies告诉我们应该把收到的错误报告与bug追踪系统进行同步以甄别是否是一个有效的错误报告。</p><p><b>使日常工作更加方便</b></p><p>随着时间的推移，自动化错误报告的好处就会显现出来。其中有一条是最重要的，那就是可以让用户和开发团队都可以更方便地工作。一个IT决策者讲的话很好的概括了这一点：</p><p>“用户只需要点一下按钮就可以把信息反馈给开发团队。这避免了不停地电话或者邮件以及不完整的错误报告。这的确可以让用户和开发团队都更方便地工作。“</p><h2>作者简介</h2><p><a href="/resource/articles/Error-Reporting/zh/resources/fig2large.jpg;jsessionid=8BCAD99229237E758FA58D778140DFE7">Laila Lotfi就职于</a><a href="http://www.red-gate.com/">Red Gate Software</a>的.NET工具组，同时也是<a href="http://www.simple-talk.com/">Simple-Talk</a>网站的贡献者之一。Red Gate开发的软件工具在全球有超过50万个用户，主要是.NET开发者和SQL Server专家。该公司通过自由的网络社群网站、技术刊物以及会议赞助等行为进行市场活动，每年影响到上百万人群。</p><p><b>查看英文原文</b>：<a href="http://www.infoq.com/articles/Error-Reporting;jsessionid=8BCAD99229237E758FA58D778140DFE7">Automated Error Reporting: The Gateway to Better Quality</a></p><hr /><p>感谢<a href="http://www.infoq.com/cn/bycategory.action;jsessionid=8BCAD99229237E758FA58D778140DFE7?authorName=杨赛">杨赛</a>对本文的审校。</p><p>给InfoQ中文站投稿或者参与内容翻译工作，请邮件至<a href="mailto:editors@cn.infoq.com">editors@cn.infoq.com</a>。也欢迎大家通过新浪微博（<a href="http://www.weibo.com/infoqchina">@InfoQ</a>）或者腾讯微博（<a href="http://t.qq.com/infoqchina">@InfoQ</a>）关注我们，并与我们的编辑和其他读者朋友交流。</p><div class="clearer-space"></div><br><br><br><br><br><br></body></html>
+<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>iOS开发工具——网络封包分析工具Charles</h3><p><img width="500" alt="" src="http://infoqstatic.com/resource/articles/network-packet-analysis-tool-charles/zh/resources/1009000.png" _href="img://null" _p="true" /></p>
+<h2>简介</h2>
+<p><a href="http://www.charlesproxy.com/">Charles</a>是在Mac下常用的截取网络封包的工具，在做iOS开发时，我们为了调试与服务器端的网络通讯协议，常常需要截取网络封包来分析。Charles通过将自己设置成系统的网络访问代理服务器，使得所有的网络访问请求都通过它来完成，从而实现了网络封包的截取和分析。</p>
+<p>Charles是收费软件，可以免费试用30天。试用期过后，未付费的用户仍然可以继续使用，但是每次使用时间不能超过30分钟，并且启动时将会有10秒种的延时。</p>
+<p>因此，该付费方案对广大用户还是相当友好的，即使你长期不付费，也能使用完整的软件功能。只是当你需要长时间进行封包调试时，会因为Charles强制关闭而遇到影响。</p>
+<p>Charles主要的功能包括：</p>
+<ol> 
+ <li>支持SSL代理。可以截取分析<a href="http://zh.wikipedia.org/wiki/%E5%AE%89%E5%85%A8%E5%A5%97%E6%8E%A5%E5%B1%82">SSL</a>的请求。</li> 
+ <li>支持流量控制。可以模拟慢速网络以及等待时间（latency）较长的请求。</li> 
+ <li>支持AJAX调试。可以自动将json或xml数据格式化，方便查看。</li> 
+ <li>支持AMF调试。可以将Flash Remoting 或 Flex Remoting信息格式化，方便查看。</li> 
+ <li>支持重发网络请求，方便后端调试。</li> 
+ <li>支持修改网络请求参数。</li> 
+ <li>支持网络请求的截获并动态修改。</li> 
+ <li>检查HTML，CSS和RSS内容是否符合<a href="http://validator.w3.org/">W3C标准</a>。</li> 
+</ol>
+<h2>安装Charles</h2>
+<p>去Charles的官方网站（http://www.charlesproxy.com）下载最新版的Charles安装包，是一个dmg后缀的文件。打开后将Charles拖到Application目录 下即完成安装。</p>
+<div id="lowerFullwidthVCR"></div>
+<h2>安装SSL证书</h2>
+<p>如果你需要截取分析SSL协议相关的内容。那么需要安装Charles的CA证书。具体步骤如下：</p>
+<ol> 
+ <li>去 <a href="http://www.charlesproxy.com/ssl.zip">http://www.charlesproxy.com/ssl.zip</a> 下载CA证书文件。</li> 
+ <li>解压该zip文件后，双击其中的.crt文件，这时候在弹出的菜单中选择“总是信任”，如下所示： <p><img width="500" alt="" src="http://infoqstatic.com/resource/articles/network-packet-analysis-tool-charles/zh/resources/1009001.png" _href="img://null" _p="true" /></p> </li> 
+ <li>从钥匙串访问中即可看到添加成功的证书。如下所示： <p><img width="500" alt="" src="http://infoqstatic.com/resource/articles/network-packet-analysis-tool-charles/zh/resources/1009002.png" _href="img://null" _p="true" /></p> </li> 
+</ol>
+<div style="clear:both">
+ &nbsp;
+</div>
+<h2>将Charles设置成系统代理</h2>
+<p>之前提到，Charles是通过将自己设置成代理服务器来完成封包截取的，所以使用Charles的第一步是将其设置成系统的代理服务器。</p>
+<p>启动Charles后，第一次Charles会请求你给它设置系统代理的权限。你可以输入登录密码授予Charles该权限。你也可以忽略该请求，然后在需要将Charles设置成系统代理时，选择菜单中的 &quot;Proxy&quot; -&gt; &quot;Mac OS X Proxy&quot;来将Charles设置成系统代理。如下所示：</p>
+<p><img width="500" alt="" src="http://infoqstatic.com/resource/articles/network-packet-analysis-tool-charles/zh/resources/1009003.png" _href="img://null" _p="true" /></p>
+<p>之后，你就可以看到源源不断的网络请求出现在Charles的界面中。</p>
+<h2>Charles主界面介绍</h2>
+<p><img width="500" alt="" src="http://infoqstatic.com/resource/articles/network-packet-analysis-tool-charles/zh/resources/1009004.jpg" _href="img://null" _p="true" /></p>
+<p>Charles主要提供2种查看封包的视图，分别名为“Structure”和&quot;Sequence&quot;。</p>
+<ol> 
+ <li>Structure视图将网络请求按访问的域名分类。</li> 
+ <li>Sequence视图将网络请求按访问的时间排序。</li> 
+</ol>
+<p>大家可以根据具体的需要在这两种视图之前来回切换。</p>
+<p>对于某一个具体的网络请求，你可以查看其详细的请求内容和响应内容。如果响应内容是JSON格式的，那么Charles可以自动帮你将JSON内容格式化，方便你查看。</p>
+<h2>过滤网络请求</h2>
+<p>通常情况下，我们需要对网络请求进行过滤，只监控向指定目录服务器上发送的请求。对于这种需求，我们有2种办法。</p>
+<ol> 
+ <li> <p>在主界面的中部的Filter栏中填入需要过滤出来的关键字。例如我们的服务器的地址是：http://yuantiku.com，那么只需要在Filter栏中填入yuantiku即可。</p> </li> 
+ <li> <p>在Charles的菜单栏选择&quot;Proxy&quot;-&gt;&quot;Recording Settings&quot;，然后选择Include栏，选择添加一个项目，然后填入需要监控的协议，主机地址，端口号。这样就可以只截取目标网站的封包了。如下图所示：</p> </li> 
+</ol>
+<p><img width="500" alt="" src="http://infoqstatic.com/resource/articles/network-packet-analysis-tool-charles/zh/resources/1009005.jpg" _href="img://null" _p="true" /></p>
+<p>通常情况下，我们使用方法1做一些临时性的封包过滤，使用方法2做一些经常性的封包过滤。</p>
+<h2>截取iPhone上的网络封包</h2>
+<p>Charles通常用来截取本地上的网络封包，但是当我们需要时，我们也可以用来截取其它设备上的网络请求。下面我就以iPhone为例，讲解如何进行相应操作。</p>
+<h4>Charles上的设置</h4>
+<p>要截取iPhone上的网络请求，我们首先需要将Charles的代理功能打开。在Charles的菜单栏上选择“Proxy”-&gt;&quot;Proxy Settings&quot;，填入代理端口8888，并且勾上&quot;Enable transparent HTTP proxying&quot; 就完成了在Charles上的设置。如下图所示:</p>
+<p><img width="500" alt="" src="http://infoqstatic.com/resource/articles/network-packet-analysis-tool-charles/zh/resources/1009006.jpg" _href="img://null" _p="true" /></p>
+<h4>iPhone上的设置</h4>
+<p>首先我们需要获取Charles运行所在电脑的IP地址，打开Terminal，输入<code>ifconfig en0</code>, 即可获得该电脑的IP，如下图所示：</p>
+<p><img width="500" alt="" src="http://infoqstatic.com/resource/articles/network-packet-analysis-tool-charles/zh/resources/1009007.jpg" _href="img://null" _p="true" /></p>
+<p>在iPhone的 “设置”-&gt;“无线局域网“中，可以看到当前连接的wifi名，通过点击右边的详情键，可以看到当前连接上的wifi的详细信息，包括IP地址，子网掩码等信息。在其最底部有“HTTP代理”一项，我们将其切换成手动，然后填上Charles运行所在的电脑的IP，以及端口号8888，如下图所示：</p>
+<p><img width="500" alt="" src="http://infoqstatic.com/resource/articles/network-packet-analysis-tool-charles/zh/resources/1009008.jpg" _href="img://null" _p="true" /></p>
+<p>设置好之后，我们打开iPhone上的任意需要网络通讯的程序，就可以看到Charles弹出iPhone请求连接的确认菜单（如下图所示），点击“Allow”即可完成设置。</p>
+<p><img width="500" alt="" src="http://infoqstatic.com/resource/articles/network-packet-analysis-tool-charles/zh/resources/1009009.jpg" _href="img://null" _p="true" /></p>
+<h2>截取SSL信息</h2>
+<p>Charles默认并不截取SSL的信息，如果你想对截取某个网站上的所有SSL网络请求，可以在该请求上右击，选择SSL proxy，如下图所示：</p>
+<p><img width="500" alt="" src="http://infoqstatic.com/resource/articles/network-packet-analysis-tool-charles/zh/resources/1009010.jpg" _href="img://null" _p="true" /></p>
+<p>这样，对于该Host的所有SSL请求可以被截取到了。</p>
+<h2>模拟慢速网络</h2>
+<p>在做iPhone开发的时候，我们常常需要模拟慢速网络或者高延迟的网络，以测试在移动网络下，应用的表现是否正常。Charles对此需求提供了很好的支持。</p>
+<p>在Charles的菜单上，选择&quot;Proxy&quot;-&gt;&quot;Throttle Setting&quot;项，在之后弹出的对话框中，我们可以勾选上“Enable Throttling”，并且可以设置Throttle Preset的类型。如下图所示：</p>
+<p><img width="500" alt="" src="http://infoqstatic.com/resource/articles/network-packet-analysis-tool-charles/zh/resources/1009011.jpg" _href="img://null" _p="true" /></p>
+<p>如果我们只想模拟指定网站的慢速网络，可以再勾选上图中的&quot;Only for selected hosts&quot;项，然后在对话框的下半部分设置中增加指定的hosts项即可。</p>
+<h2>修改网络请求内容</h2>
+<p>有些时候为了调试服务器的接口，我们需要反复尝试不同参数的网络请求。Charles可以方便地提供网络请求的修改和重发功能。只需要在以往的网络请求上点击右键，选择“Edit”，即可创建一个可编辑的网络请求。如下所示：</p>
+<p><img width="500" alt="" src="http://infoqstatic.com/resource/articles/network-packet-analysis-tool-charles/zh/resources/1009012.jpg" _href="img://null" _p="true" /></p>
+<p>我们可以修改该请求的任何信息，包括url地址，端口，参数等，之后点击“Execute”即可发送该修改后的网络请求（如下图所示）。Charles支持我们多次修改和发送该请求，这对于我们和服务器端调试接口非常方便。</p>
+<p><img width="500" alt="" src="http://infoqstatic.com/resource/articles/network-packet-analysis-tool-charles/zh/resources/1009013.jpg" _href="img://null" _p="true" /></p>
+<h2>总结</h2>
+<p>通过Charles软件，我们可以很方便地在日常开发中，截取和调试网络请求内容，分析封包协议以及模拟慢速网络。用好Charles可以极大的方便我们对于带有网络请求的App的开发和调试。</p>
+<p>参考链接：</p>
+<ol> 
+ <li><a href="http://www.charlesproxy.com/overview/about-charles/">Charles主要的功能列表</a></li> 
+ <li><a href="http://www.charlesproxy.com/">Charles官网</a></li> 
+</ol>
+<hr />
+<p>感谢<a href="http://www.infoq.com/cn/author/李永伦">李永伦</a>对本文的审校。</p>
+<p>给InfoQ中文站投稿或者参与内容翻译工作，请邮件至<a href="mailto:editors@cn.infoq.com">editors@cn.infoq.com</a>。也欢迎大家通过新浪微博（<a href="http://www.weibo.com/infoqchina">@InfoQ</a>）或者腾讯微博（<a href="http://t.qq.com/infoqchina">@InfoQ</a>）关注我们，并与我们的编辑和其他读者朋友交流。</p><br><br><br><br><br><br></body></html>
