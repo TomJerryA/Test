@@ -1,33 +1,20 @@
-<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>An Interview with Greg Finzer of Compare .NET Objects</h3><p>Writing code to compare objects can be tedious, especially when dealing with large objects or deep graphs. And when the classes change errors often slip in. One way to reduce the potential for error is to rely on a library such as Greg Finzer’s <a href="http://comparenetobjects.codeplex.com/">Compare .NET Objects</a>. This library offer reasonable performance for up to 10,000 objects.</p>
-<p>InfoQ: What first inspired you to create the Compare .NET Objects library?</p>
+<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>Open Source SQL-in-Hadoop Solutions: Where Are We?</h3><p>With Facebook recently releasing <a href="http://www.infoq.com/news/2013/11/Presto">Presto as open source</a>, the already crowded SQL-in-Hadoop market just became a tad more intricate. A number of open source tools are competing for the attention of developers: Hortonworks <a href="http://hortonworks.com/labs/stinger/">Stinger initiative</a> around Hive, <a href="http://incubator.apache.org/drill/">Apache Drill</a>, <a href="http://tajo.incubator.apache.org/">Apache Tajo</a>, Cloudera’s <a href="http://www.cloudera.com/content/cloudera/en/products-and-services/cdh/impala.html">Impala</a>, Salesforce’s <a href="https://github.com/forcedotcom/phoenix">Phoenix</a> (for HBase) and now Facebook’s Presto.</p>
+<p>Organizations already using Hadoop in production are demanding interactive SQL query support and a smooth integration with existing BI tools. Vijay Madhavan (eBay) states in his blog post <a href="http://zettanalytics.blogspot.ie/2013/06/sql-in-hadoop.html">SQL in Hadoop landscape</a>:</p>
 <blockquote> 
- <p>When Microsoft Released the Developer Tools for Windows Phone 7 there was a great outcry on the Windows Phone 7 forums against Microsoft for not providing a database. I decided that this would be a great opportunity to create a database for Windows Phone 7 since there was no competition and there was clear demand. I had always wanted to create an object database to bypass years of pain dealing with ORMs. Back then Windows Phone 7 only allowed a maximum of 90MB for application data. The data needed to be saved in the least space possible, even smaller than JSON. I found out early on that no binary serializer was available in the .NET Framework for Windows Phone 7. There was an open source binary serializer on CodePlex: https://slserializelzo.codeplex.com/. I signed up to be the tester on that project. Rather than writing several hundred reflection tests by hand, I created Compare .NET Objects to verify the serialization/deserialization. In the end, we didn’t leverage the CodePlex serialization library to create Ninja Database Pro. However we did use Compare .NET Objects for all the integration tests for our own binary serializer. I spun off Compare .NET Objects into its own open source project as a benefit for the developer community.</p> 
+ <p>Most of the current map-reduce based systems for analysis including current versions of Hive, Pig, Cascading work well in the non-interactive and batch SLA domain. Many products are attempting to support real-time and interactive SLAs by offering interactive &quot;SQL in Hadoop&quot; solutions.</p> 
 </blockquote>
-<p>InfoQ: What other ways do you see people using your library?</p>
-<blockquote> 
- <p>I think Compare .NET Objects is well suited for writing integration tests to verify ORM mappings. I work for Sogeti for my day job. I used Compare .NET Objects this past year in integration tests for a project at Office of Aviation for the State of Ohio. On that project we used Compare .NET Objects to verify Spring Framework .NET mappings. I have seen other people using Compare .NET Objects to determine if an object is dirty and needs to be saved to a database, for auditing purposes, and in power shell scripts.</p> 
-</blockquote>
-<p>InfoQ: Do you support any other .NET platforms (e.g. Windows Phone, Windows Store)?</p>
-<blockquote> 
- <p>There is a compiler constant for Silverlight in the code so it should work with Windows Phone and Silverlight. I haven’t looked at making it compatible with Windows Store yet. Eventually I plan to make separate projects and builds for each of the different platforms similar to what I have done with our commercial products.</p> 
-</blockquote>
-<p>InfoQ: If there anything that Compare .NET Objects not do that you want to add?</p>
-<blockquote> 
- <p>Although people have sent me emails thanking me that it is a single class, I think it is time to refactor Compare .NET Objects into more maintainable classes. After years of adding features, it has a lot of code smells. It definitely violates S.O.L.I.D. design principles especially SRP. There has also been a great deal of merge pain caused by having everything all in one class. I would like to add a thread safe option while maintaining backward compatibility.</p> 
-</blockquote>
-<p>InfoQ: Do you find that the use of reflection causes performance problems? If so, what have you done to mitigate it?</p>
-<blockquote> 
- <p>As much as people harp on reflection causing performance problems, I have never actually seen a large impact. I think back to a project where a client asked for 9000 items to be loaded into a drop down on a web page. It took 20 seconds to load the drop down. We used NHibernate to load the data from an Oracle database. NHibernate uses reflection. So where was the performance problem? The database? NHibernate? Internet Explorer? No, the performance problem was the network bandwidth. We ended up implementing an Ajax autocomplete dropdown loading only 20 at a time. If you are dealing with large numbers of objects, reflection will be the least of your worries comparatively.</p> 
-</blockquote>
-<blockquote> 
- <p>I have added reflection caching in Compare .NET Objects which does help with the performance. See the CachingTest in the test project. On my machine with reflection caching disabled it takes 319 milliseconds to compare 10,000 objects. With reflection caching enabled it takes 224 milliseconds. I would say that if you are comparing more than 10,000 objects at once, I would not use Compare .NET Objects. In that case I would override Equals and GetHashCode for those classes.</p> 
-</blockquote>
-<p>InfoQ: Are you currently looking for volunteers to work on Compare .NET Objects?</p>
-<blockquote> 
- <p>Sure. There is a lot of work to do:</p> 
- <ul> 
-  <li>Refactor comparers into separate classes for each type</li> 
-  <li>Thread safe configuration and comparison</li> 
-  <li>Separate projects for each platform: Mono, Silverlight, Windows Phone, Windows Store</li> 
- </ul> 
-</blockquote><br><br><br><br><br><br></body></html>
+<p>Use cases for SQL-in-Hadoop solutions include supporting interactive ad-hoc queries, supporting reporting/visualization using BI systems like MicroStrategy/Tableau, and multi-source data (e.g.: behavioral data in HDFS must be joined to demographic data in an RDBMS or other source).</p>
+<p>Many of these SQL-in-Hadoop solutions have certain aspects in common:</p>
+<ol> 
+ <li>On the metadata level it seems that <a href="http://www.infoq.com/articles/HadoopMetadata">HCatalog</a>/Hive Metastore establishes itself as the de-facto standard for managing schemata across different datasources.</li> 
+ <li>Then, there are certain data formats, such as <a href="$parquet.io">Parquet</a> and <a href="http://www.bigdatarepublic.com/author.asp?section_id=2840&amp;doc_id=262757">ORC</a>, which—for selected workloads—are becoming increasingly popular and more widely used in the wild.</li> 
+ <li>Most of the solutions seem to support a wide range of ANSI SQL (in different versions: <a href="http://en.wikipedia.org/wiki/SQL-92">1992</a>, <a href="http://en.wikipedia.org/wiki/SQL:1999">1999</a>, <a href="http://en.wikipedia.org/wiki/SQL:2003">2003</a>).</li> 
+</ol>
+<p>Above points should help users to move between different SQL-in-Hadoop solutions without too much migration headache.</p>
+<p>But, there are also some notable differences as shown below:</p>
+<ul> 
+ <li>Some of the solutions are Apache-backed and with that community-based (Stinger, Drill, Tajo) while others are owned by single entities (Impala, Phoenix, Presto).</li> 
+ <li>Further, some are limited in terms of datasources they can query to the Hadoop ecosystem, while others are from an architectural perspective more flexible and also allow to query relational databases and NoSQL data stores in-situ (Presto, Drill).</li> 
+ <li>Another difference is the operations allowed on the data: some are pure (distributed) query engines while others permit update operations.</li> 
+</ul>
+<p>In the past 10 to 18 months more and more people and commercial entities have <a href="http://hadapt.com/blog/2013/10/02/classifying-the-sql-on-hadoop-solutions/">decided</a> to give it a try and realised a low-latency, ad-hoc SQL access to data stored in Hadoop. However, due to overlapping use cases and preferences in terms of environments there is likely room for more than one SQL-in-Hadoop solution, in the long run.</p><br><br><br><br><br><br></body></html>

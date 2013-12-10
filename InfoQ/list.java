@@ -2,7 +2,10 @@
  <head></head> 
  <body>
   <div>
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/41.java">Hour of Code - Huge Support and Traction for the Computer Science Education Week</a>Programming is natural for most of us. But not so much for everyone else, especially the next generation. Code.org wants to change that. During this Computer Science Education week they got major support from Obama to Zuckerberg and Gates. We all have a responsibility to spread the word and encourage everyone to give it a try. Computer Literacy is the a next big challenge after Literacy.
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/42.java">Open Source SQL-in-Hadoop Solutions: Where Are We?</a>With Facebook recently releasing Presto as open source, the already crowded SQL-in-Hadoop market just became a tad more intricate. A number of open source tools are competing for the attention of developers: Hortonworks Stinger initiative around Hive, Apache Drill, Apache Tajo, Cloudera’s Impala, Salesforce’s Phoenix (for HBase) and now Facebook’s Presto.
+  </div> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/41.java">Hour of Code - Huge Support and Traction for the Computer Science Education Week</a>Programming is natural for most of us. But not so much for everyone else, especially the next generation. Code.org wants to change that. During this Computer Science Education week they got major support from Obama to Zuckerberg and Gates. We all have a responsibility to spread the word and encourage everyone to give it a try. Computer Literacy is the a next big challenge after Literacy. 
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/40.java">A first look at Opserver, Stack Exchange's monitoring solution</a>Opserver is an open source monitoring solution, released by StackExchange, of StackOverflow's fame. Opserver provides a quick overall view of each monitored system's health, while allowing the user to deep dive using a drill-down approach. InfoQ talked with Nick Crave, one of Opserver’s creators, for additional insight. 
@@ -147,9 +150,6 @@
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/45.java">Apportable brings Objective-C to Android</a>Apportable offers iOS developers the possibility to publish their software for the Android ecosystem. Programmers can use the Apportable SDK and a set of command line tools to cross-compile their apps without having to apply major changes to the objective-c code base. Alternatively, Apportable also offers the conversion of applications as a service. 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/44.java">Amazon RDS Supports PostgreSQL</a>Amazon RDS adds PostgreSQL to the list of databases supported by the service. The launch supports Postgres version 9.3.1 with plans to support new versions as they become available. 
   </div>  
  </body>
 </html>

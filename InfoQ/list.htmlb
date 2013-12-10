@@ -1,6 +1,9 @@
 <html>
  <head></head> 
- <body> 
+ <body>
+  <div>
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/40.htmlb">云端监控和移动测试释疑——对话Just.me工程副总裁Kevin Nilson</a> 云端监控和服务器管理区别甚远。在2013上海JavaOne大会上，just.me工程部副总裁Kevin Nilson讲述了云端部署的必要措施，其中涵盖一些AWS平台管理操作时的注意事项。 
+  </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/39.htmlb">恒拓开源陈操谈去IOE方案的普及对独立开发商的机遇与挑战</a> 在2013年阿里云开发者大会上，恒拓开源技术副总监陈操跟InfoQ中文站编辑谈到了去IOE的普及状况，成本评估，推广心得，以及对独立开发商的机遇与挑战等话题。 
   </div> 
@@ -147,9 +150,6 @@
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/42.htmlb">书评：Java应用架构</a>《Java应用架构：以OSGi为例讲解模块化模式》是Kirk Knoernschild编写的一本优秀图书，它列出了模块化系统设计的模式。在本书的开始讲述了模块化的概要理由，主体部分介绍了模块化开发的18个模式列表，最后是一个OSGi的例子。InfoQ与Kirk进行了交流以了解本书的更多情况。 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/41.htmlb">多设备企业环境下的C++</a>无论是在谈话、社交网络还是和一些产业文章中，你一定听说过在企业内部支持多设备的需求。像BYOD（自带设备）这样的词条已出现在多数文章和企业战略中。企业组织需要支持大量类型的设备，以便使员工更有工作效率。现代企业同时要支持包括多层系统、云计算、REST和SOAP web services等更多类型的软件架构。 
-  </div> 
+  </div>  
  </body>
 </html>

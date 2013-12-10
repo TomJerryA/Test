@@ -1,20 +1,33 @@
-<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>Visual Studio提升了对C++14的支持</h3><p>在今年的七月份Microsoft就<a href="http://www.infoq.com/news/2013/07/vs2013_CPP_compliance">发布</a>了将现代C++集成到Visual Studio中的路线图。Visual Studio 2013中将会包含的C++语言特性在那个时候就已经固定了下来，现在一个新的CTP版本已经发布了，该版本让VC++更加接近于C++14。</p>
-<p>该包的标题为<a href="http://www.microsoft.com/en-us/download/details.aspx?id=41151">Visual C++ Compiler November 2013 CTP</a>，它提供了下面的特性：</p>
-<ul> 
- <li>隐式移动（move）特殊的成员函数（也实现了=default）</li> 
- <li>成员函数上的引用限定符（也称为 <i>&quot;&amp; and &amp;&amp; for *this&quot;</i><i>）</i></li> 
- <li>线程安全的函数本地静态初始化（也称为“神奇的静态化”）</li> 
- <li>继承构造函数</li> 
- <li><i>alignof/alignas</i></li> 
- <li><i>__func__</i></li> 
- <li>扩展的<i>sizeof</i></li> 
- <li><i>constexpr</i> （除了构造函数）</li> 
- <li><i>noexcept</i>（无条件的）</li> 
- <li>C++14 <i>decltype</i>（自动）</li> 
- <li>C++14 <i>auto</i> 函数返回值类型推理</li> 
- <li>C++14 泛型lambda（支持显式的lambda捕获列表）</li> 
- <li>(C++17的提议) 可恢复的函数和 <i>await</i></li> 
-</ul>
-<p>对于那些对该包感兴趣的早期采纳者而言，一个重要的细节是该包并没有包含“Go Live”许可，这意味着它不能在产品代码开发中使用。根据Microsoft公司的Stephen T. Lavavey所提供的信息，该版本以及将来的Visual Studio 2013 VC++ CTP版本都不会包含“Go Live”许可。总之，Visual Studio Next将会是最快的可以在产品环境中使用这些特性的版本。Lavavey还<a href="http://blogs.msdn.com/b/vcblog/archive/2013/11/18/announcing-the-visual-c-compiler-november-2013-ctp.aspx?PageIndex=2#comments">透露</a>，下面的C++11核心语言特性依然悬而未决：“表达式SFINAE、属性（包含用于数据依赖排序的那些）、成员函数上的常量表达式（constexpr）、char16_t/char32_t、Unicode字符串字面值、字面值中的通用字符名、用户定义的字面值、内联命名空间、自由的（unrestricted）联合、有条件的noexcept、thread_local和遵循C99规范的预处理器….”。</p>
-<p>Microsoft已经<a href="http://aka.ms/I0w822">发布</a>了一篇文档，其中列出了在使用该CTP的时候用户有可能会遇到的一些痛点。特别是智能感知（IntelliSense）和IDE某些区域不支持的新关键词。另外一个需要注意的内容是<i>await</i>关键词需要Windows 8.1，同时不要在使用析构函数的时候抛出异常。</p>
-<p><b>查看英文原文</b>：<a href="http://www.infoq.com/news/2013/11/VC13_CTP1">Visual Studio's C++14 Support Grows</a></p><br><br><br><br><br><br></body></html>
+<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>微软设想在移动设备和传感器上运行同一款操作系统</h3><p>Julie Larson-Green是微软设备与工作室部门执行副总裁。在11月中下旬<a href="http://www.ubs.com/global/en/investment-bank/key-investor-conferences/global/_jcr_content/par/accordionbox_12/linklist_4/link.1319112588.file/bGluay9wYXRoPS9jb250ZW50L2RhbS9JbnZlc3RtZW50QmFuay9kb2N1bWVudHMvY29uZmVyZW5jZXMvR1RDLUZpbmFsLUFnZW5kYS0xMS0xOC0xMy5wZGY=/GTC-Final-Agenda-11-18-13.pdf">瑞银全球技术大会</a>期间，她谈论了其公司对当今软件市场的看法，尤其是发表了对移动设备操作系统领域的见解。本文节选了会议记录（<a href="http://view.officeapps.live.com/op/view.aspx?src=http://www.microsoft.com/investor/downloads/events/UBS_LarsonGreen.docx">HTML</a>、<a href="http://www.microsoft.com/investor/downloads/events/UBS_LarsonGreen.docx">DOCX</a>）中最令人关注的片段。</p>
+<p>Larson-Green对问题的回答表明，微软在移动领域的竞争中“落后了许多圈”。她承认，微软在7月份开始的<a href="http://www.infoq.com/news/2013/07/microsoft-reorganization">大规模重组</a>就是由它在竞争起步阶段的失败引起的。与此同时，由于“移动性是人们生活、工作和交互的重要组成部分”，微软已经决定，将非常积极主动地参与移动市场。</p>
+<p>当谈及Steve Ballmer即将退休，Larson-Green试图消除人们对微软没有清晰方向的担忧：</p>
+<blockquote> 
+ <p>我们作为一个管理团队协同工作，因此，它不依赖于一个决策者，我觉得可以这样说，齐心协力为高价值活动规划路线图和方向是一项团队工作，我们希望在我们认为人们需要而且想要的设备上将这些活动交付给客户。因此，那[Steve Ballmer的退休]根本不会减缓我们的脚步。</p> 
+</blockquote>
+<p>在移动竞争中，微软似乎正开足马力追赶竞争对手，而Larson-Green也谈到了桌面操作系统的未来：</p>
+<blockquote> 
+ <p>因此，我认为，在很长一段时期内，在我有生之年，它会一直存在，也会有台式计算机，通过使用针对生产力和输入进行了高度优化的鼠标，人们在上面做精密操作。</p> 
+</blockquote>
+<p>不过，他们的关注重点是：</p>
+<blockquote> 
+ <p>运行在手腕上，或者戴在头上，或者装在口袋里的设备。人们会想要与它们交互，并通过它们读邮件、听通知、访问工作所需的企业数据以及与朋友和家人交流。</p> 
+</blockquote>
+<p>当谈及过往的突破性成果，如苹果的第一代iPhone和新的触控输入接口，Larson-Green认为，在不久的将来，他们的Kinect技术将会扮演一个类似的重要角色：</p>
+<blockquote> 
+ <p>另一个拐点将会出现，而且将起源于硬件输入模型。那就是为什么人们会看到我们做有关Kinect、有关手势的事，看到我们做有关语音的事。还有一样东西即将到来，所有这些东西得合到一起。我的意思是，微软可以说最早提出平板电脑的概念，但是，能够使其成为一个可随身携带设备的技术条件尚不具备。可以做笔记以及随身携带的平板电脑概念落地为一台重达5磅的中型便携式电脑。而现在，它是一块造型优美的小薄片。因此，所有那些因素得合到一起，而且我们认为，它会起源于硬件输入模型，或者有关硬件的用户体验拐点，这就是我们专注于设备的原因。</p> 
+</blockquote>
+<p>不仅涉及智能手机和平板电脑，而且还有整个传感器世界：</p>
+<blockquote> 
+ <p>因此，传感器将成为人们如何探讨事物的重要组成部分。这也适用于我们已经谈论过的部分事物——可以看到人们戴在手腕上的所有这些健身设备，它们做一些有趣的事。那还可以有什么扩展应用呢？我们可以构建什么样的传感器和产品来为人们的日常生活提供帮助，从让人知道他做的俯卧撑完全没有达到他自认为可以达到的下降幅度，到让人知道其心率过高，压力过大，需要好好休息一下，再到让人知道其所要乘坐的公交车在其所在的公交站晚点，公交车的到站时间延迟了。</p> 
+ <p>因此，通过使用一种新的方式思考人们如何与技术交互，我们可以把许多事情放在一起做。正如鼠标是一项发明，触控是一项发明，将会有下一个新的交互方法出现。那就是为什么我们一段时间以来专注并从事自然用户接口方面的工作了。</p> 
+</blockquote>
+<p>而这需要一个新的应用程序交互层次：</p>
+<blockquote> 
+ <p>由于有如此多的东西是专用的，所以我考虑使应用程序彼此互连，而人们将开始见证新的应用程序集成方式。个人及其位置的智能信息将有许多来自Web。</p> 
+</blockquote>
+<p>人们禁不住会想知道，微软的多个操作系统——Windows、Windows RT和Windows Phone——如何纳入Larson-Green所指的新世界。虽然没有谈及细节，但她明确表示：</p>
+<blockquote> 
+ <p>我们将不会有三个[操作系统]。我们确信会有这样一个世界，它有一个具备更高移动灵活性的操作系统，而且该系统没有电池寿命风险和安全风险。但是，它还是以牺牲灵活性为代价。因此，我们相信那个愿景和方向，我们将继续沿着这条路走下去。</p> 
+</blockquote>
+<p>对电池寿命和安全的关切，加上灵活性的损失表明微软已经将Windows RT选为未来面向桌面和设备的通用操作系统。（当然，还会有面向后端和云的Windows Server，但那是另一回事了。）关于<a href="http://www.infoq.com/news/2011/01/Will-Microsoft-Unify-OSes">统一操作系统</a>的信息早在2011年就开始出现了，微软最初对此予以否认，但<a href="http://www.infoq.com/news/2012/06/Windows-Phone-8">一年后这一说法又被提及</a>，而<a href="http://www.infoq.com/cn/news/2013/11/Store-Unification">近日Windows和Windows Phone应用商店的合并</a>进一步佐证了这一说法。</p>
+<p><b>查看英文原文：</b><b><a href="http://www.infoq.com/news/2013/11/microsoft-windows-mobile">Microsoft Envisions One OS Running on Mobile Devices and Sensors</a></b></p><br><br><br><br><br><br></body></html>

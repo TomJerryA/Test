@@ -1,8 +1,8 @@
 <html>
  <head></head> 
- <body>
-  <div>
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/49.py">Amazon re:inventのまとめ</a>Amazonはロサンゼルスで開かれたre:inventカンファレンスで、たくさんの新サービスを発表した。Amazon WorkSpaces - デスクトップコンピューティングをクラウドで、SAMLを使用したIdentity and Access Management、Amazon AppStream - クラウドからアプリケーションをストリーミング提供、Amazon Kinesis - ビッグデータをストリーム処理、CloudTrail - AWS APIコールの記録を保存、RDSのPostgresサポート、新しいEC2インスタンスタイプ
+ <body> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/49.py">Amazon re:inventのまとめ</a>Amazonはロサンゼルスで開かれたre:inventカンファレンスで、たくさんの新サービスを発表した。Amazon WorkSpaces - デスクトップコンピューティングをクラウドで、SAMLを使用したIdentity and Access Management、Amazon AppStream - クラウドからアプリケーションをストリーミング提供、Amazon Kinesis - ビッグデータをストリーム処理、CloudTrail - AWS APIコールの記録を保存、RDSのPostgresサポート、新しいEC2インスタンスタイプ 
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/48.py">Noda Time 1.2リリース，XMLとJSONのシリアライゼーションとテキスト変換をサポート</a>先日リリースされたNoda Time 1.2には，XMLとJSONのシリアライゼーションのサポートとテキスト変換に加えて，JSONシリアライゼーションを処理するアセンブリも含まれている。 
@@ -150,6 +150,6 @@
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/1.py">EclipseがJCPに参加</a>JCP(Java Community Process) EC(Executive Committee)に新たに選出されたメンバが来週就任し，Javaプログラム言語の方向性に対して影響力を行使し始める。その中のひとつであるEclipse財団は，今後２年間にわたってこの決議機関に席を持つことになる。 
-  </div>  
+  </div> 
  </body>
 </html>
