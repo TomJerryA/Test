@@ -1,8 +1,8 @@
 <html>
  <head></head> 
- <body>
-  <div>
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/43.c">Microsoft une for&ccedil;as com RedGate e Clickberry para oferecer ferramentas Node.Js no Visual Studio</a>NTVS, uma abrevia&ccedil;&atilde;o em ingl&ecirc;s de Ferramentas Node.js para Visual Studio, oferece a desenvolvedores Node.js uma IDE completa e cheia de recursos que inclui o Intellisense, gerenciamento de pacotes, debug e controle de perfis. NTVS &eacute; uma uni&atilde;o de for&ccedil;as coordenado pelo time de desenvolvimento de ferramentas Python da Microsoft com a RedGate, Clickberry entre outros.
+ <body> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/43.c">Microsoft une for&ccedil;as com RedGate e Clickberry para oferecer ferramentas Node.Js no Visual Studio</a>NTVS, uma abrevia&ccedil;&atilde;o em ingl&ecirc;s de Ferramentas Node.js para Visual Studio, oferece a desenvolvedores Node.js uma IDE completa e cheia de recursos que inclui o Intellisense, gerenciamento de pacotes, debug e controle de perfis. NTVS &eacute; uma uni&atilde;o de for&ccedil;as coordenado pelo time de desenvolvimento de ferramentas Python da Microsoft com a RedGate, Clickberry entre outros. 
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/42.c">Android: Novo servi&ccedil;o de tradu&ccedil;&atilde;o de aplica&ccedil;&otilde;es</a>O Google lan&ccedil;ou oficialmente um servi&ccedil;o de tradu&ccedil;&atilde;o para aplica&ccedil;&otilde;es Android que permitem que os desenvolvedores disponibilizem os aplicativos em diversos idiomas, com base nas boas pr&aacute;ticas do documento que identifica os principais pontos chaves de localiza&ccedil;&atilde;o. 
@@ -150,6 +150,6 @@
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/44.c">Melhorando a Cultura DevOps com Informa&ccedil;&otilde;es Consolidadas</a>A plataforma Appsecute visa melhorar a colabora&ccedil;&atilde;o e aumentar a produtividade por meio da consolida&ccedil;&atilde;o da informa&ccedil;&atilde;o associada ao ciclo de vida de uma aplica&ccedil;&atilde;o. A plataforma de software como servi&ccedil;o (SaaS) aceita mensagens diretamente de pessoas e de outras plataformas de tecnologicas integradas, assim ela agrega eventos de forma online e que possam ser visualizados por todos em uma organiza&ccedil;&atilde;o. 
-  </div>  
+  </div> 
  </body>
 </html>

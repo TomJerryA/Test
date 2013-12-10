@@ -2,7 +2,10 @@
  <head></head> 
  <body>
   <div>
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/40.java">A first look at Opserver, Stack Exchange's monitoring solution</a>Opserver is an open source monitoring solution, released by StackExchange, of StackOverflow's fame. Opserver provides a quick overall view of each monitored system's health, while allowing the user to deep dive using a drill-down approach. InfoQ talked with Nick Crave, one of Opserver’s creators, for additional insight.
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/41.java">Hour of Code - Huge Support and Traction for the Computer Science Education Week</a>Programming is natural for most of us. But not so much for everyone else, especially the next generation. Code.org wants to change that. During this Computer Science Education week they got major support from Obama to Zuckerberg and Gates. We all have a responsibility to spread the word and encourage everyone to give it a try. Computer Literacy is the a next big challenge after Literacy.
+  </div> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/40.java">A first look at Opserver, Stack Exchange's monitoring solution</a>Opserver is an open source monitoring solution, released by StackExchange, of StackOverflow's fame. Opserver provides a quick overall view of each monitored system's health, while allowing the user to deep dive using a drill-down approach. InfoQ talked with Nick Crave, one of Opserver’s creators, for additional insight. 
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/39.java">RadControls for WPF and Silverlight Q2 2013 SP1 with Entity Framework 6 Support and Several Features</a>Telerik has released RadControls for WPF and Silverlight Q2 2013 SP1 with the ability to change application icon set during runtime in addition to support for Entity Framework 6. It also provides an ability to pass event arguments to command when using Telerik EventToCommandBehavior in addition to several new features and improvements. 
@@ -147,9 +150,6 @@
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/44.java">Amazon RDS Supports PostgreSQL</a>Amazon RDS adds PostgreSQL to the list of databases supported by the service. The launch supports Postgres version 9.3.1 with plans to support new versions as they become available. 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/43.java">Power Productivity Tools for VS 2013</a>Since 2010 the Power Productivity Tools have been Microsoft’s test bed for new Visual Studio features, some of which were incorporated in VS. This new version for VS 2013 brings 11 new and updated features including the ability see documentation without leaving the code editor. 
   </div>  
  </body>
 </html>

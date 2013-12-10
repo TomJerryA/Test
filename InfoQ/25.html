@@ -1,29 +1,6 @@
-<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>关于Hadoop你需要知道的几件事情</h3><p>在当今的技术领域，大数据是个热门的IT流行词语。为了减轻处理大量数据时的复杂度，<a href="http://www.apache.org/" target="_blank">Apache</a>开发了<a href="http://hadoop.apache.org/" target="_blank">Hadoop</a>——一个可靠的、可扩展的分布式计算框架。Hadoop特别适合大数据处理任务，并且它可以利用其分布式的文件系统，可靠并且低成本的将数据块复制到集群中的节点上去，从而使数据能在本地机器上进行处理。Anoop Kumar从十个方面<a href="http://www.developer.com/db/10-facts-about-hadoop.html" target="_blank">讲解</a>了利用Hadoop处理大数据所需要的技巧。</p>
-<p>对于<strong>从HDFS中导入/导出数据</strong>方面，Anoop指出，在Hadoop的世界中，数据可以从多种不同的来源中被导入到Hadoop分布式文件系统中（<a href="http://hadoop.apache.org/docs/r1.0.4/hdfs_design.html" target="_blank">HDFS</a>）。在向HDFS中导入数据后，将通过用<a href="http://en.wikipedia.org/wiki/Mapreduce" target="_blank">MapReduce</a>或者其他语言比如<a href="http://hive.apache.org/" target="_blank">Hive</a>、<a href="http://pig.apache.org/" target="_blank">Pig</a>等来对数据进行某一层次的处理。</p>
-<blockquote> 
- <p>Hadoop系统不仅提供了处理大量数据的灵活性，并且同时也可以对数据进行过滤和聚合等处理，并且被处理转换过的数据可以导出到外部数据库或者其他使用<a href="http://sqoop.apache.org/" target="_blank">Sqoop</a>的数据库中。从<a href="http://www.mysql.com/" target="_blank">MySQL</a>、SQL Server或者<a href="http://www.mongodb.org/" target="_blank">MongoDB</a>等其他数据库中导出数据也是一个强大的功能。这样的益处是可以更好的控制数据。</p> 
-</blockquote>
-<p>第二个方面是<strong>HDFS中的数据压缩</strong>，Hadoop中的数据存储在HDFS上，并且支持数据的压缩与解压缩。数据压缩可以通过一些压缩算法来实现，例如<a href="http://bzip.org/" target="_blank">bzip2</a>、<a href="http://www.gnu.org/software/gzip/" target="_blank">gzip</a>、LZO等。不同的算法可以根据其功能在不同的情况下使用，比如压缩/解压缩的速度或者文件分割的能力等。</p>
-<p>在<strong>Hadoop的转换</strong>方面，Hadoop是一个用于提取和转换大量数据的理想环境。同时，Hadoop提供了一个可扩展、可靠的并且分布式的处理环境。通过使用MapReduce、Hive和Pig等，可以用很多种方式来提取并转换数据。</p>
-<blockquote> 
- <p>一旦输入数据被导入或放置到HDFS中，之后Hadoop集群可以被用于并行转换大型数据集。正如刚才提到的，数据转换可以通过可用工具来实现。例如，如果你想把数据转换为一个被制表符分开的文件，那么MapReduce则是最好的工具之一。同理，Hive和<a href="http://www.python.org/" target="_blank">Python</a>可以被用于清理和转换地理事件的数据资料。</p> 
-</blockquote>
-<p>对于<strong>如何实现通用的任务</strong>，Anoop介绍说，有很多通用的任务需要在数据的日常处理中被完成，并且其使用频率是很高的。一些如Hive、Pig和MapReduce等可用的语言可以协助你完成这些任务，并使你的生活更加轻松。</p>
-<blockquote> 
- <p>有时候一个任务可以通过多种方式来实现。在这种情况下开发人员或者架构师得做出正确的决定，从而实施最正确的方案。例如，Hive和Pig提供了数据流和查询之间的一个抽象层，并且提供了它们编译产生的MapReduc工作流。MapReduce的功能可以用于扩展查询。Hive可以用HiveQL（像SQL一样的说明性语言）来建立并且分析数据。并且，可以通过在Pig Latin中写入操作来利用Pig语言。</p> 
-</blockquote>
-<p><strong>在Hadoop组合大量数据</strong>，一般情况下，为了得到最终的结果，数据需要加入多个数据集一起被处理和联合。Hadoop中有很多方法可以加入多个数据集。MapReduce提供了Map端和Reduce端的数据连接。这些连接是非平凡的连接，并且可能会是非常昂贵的操作。Pig和Hive也具有同等的能力来申请连接到多个数据集。Pig提供了复制连接，合并连接和倾斜连接（skewed join），并且Hive提供了map端的连接和完整外部连接来分析数据。一个重要的事实是，通过使用各种工具，比如MapReduce、Pig和Hive等，数据可以基于它们的内置功能和实际需求来使用它们。</p>
-<p>如何在<strong>Hadoop分析大量数据</strong>，Anoop指出，通常，在大数据/Hadoop的世界，一些问题可能并不复杂，并且解决方案也是直截了当的，但面临的挑战是数据量。在这种情况下需要不同的解决办法来解决问题。一些分析任务是从日志文件中统计明确的ID的数目、在特定的日期范围内改造存储的数据、以及网友排名等。所有这些任务都可以通过Hadoop中的多种工具和技术如MapReduce、Hive、Pig、<a href="http://giraph.apache.org/" target="_blank">Giraph</a>和<a href="http://mahout.apache.org/" target="_blank">Mahout</a>等来解决。这些工具在自定义例程的帮助下可以灵活地扩展它们的能力。</p>
-<blockquote> 
- <p>例如，图和机器学习的问题可以通过使用一个Giraph框架被解决，而不是通过MapReduce任务解决，这样可以避免写复杂的算法。Giraph框架在解决图和机器学习问题时比MapReduce任务更加有用，因为一些问题可能需要运用迭代的步骤来解决。</p> 
-</blockquote>
-<p><strong>Hadoop世界中的调试</strong>，调试在任何一个开发过程中都永远是个重要的过程。Hadoop环境中对于调试的需求和对Hadoop本身的需求一样重要。有一种说法是格式错误和意外的输入是很常见的，这将造成一切事务在一个较高的规模上中断。这也是处理大规模非结构化数据中的一个不幸的缺点。</p>
-<blockquote> 
- <p>虽然，单个任务被隔离并且给予了不同组的输入，但当跟踪各种事件时，它需要理解每个任务的状态。这可以通过多种可用的工具和技术来支持调试Hadoop任务的过程，从而实现目标。例如，为了避免任何工作失败，有一种方法可以跳过坏记录，并且可以使用MapReduce中的计数器来跟踪不良记录等。</p> 
-</blockquote>
-<p><strong>易于控制的Hadoop系统</strong>，产品开发是一项重要的活动，系统维护也是同样重要的，它有助于决定产品的未来。在Hadoop中，环境设置、维护和环境监测、以及处理和调整MapReduce任务都非常需要从Hadoop系统中受益。为此Hadoop提供了很大的灵活性来控制整个系统，Hadoop的可在三种不同的模式中进行配置：即独立模式、伪分布式模式和完全分布式模式。</p>
-<blockquote> 
- <p>在<a href="http://ganglia.sourceforge.net/" target="_blank">Ganglia</a>框架的帮助下，整个系统可以被监测并且能对节点的健康状态进行跟踪。另外，参数配置功能提供了对MapReduce的任务控制。Hadoop系统有很好的灵活性可以轻松搞定整个系统的级别控制。</p> 
-</blockquote>
-<p><strong>可扩展的持久性</strong>。有很多选择可以处理海量的结构化和非结构化的数据，但是储存海量数据的可扩展性仍然是数据世界中的主要问题之一。Hadoop系统打算用<a href="http://accumulo.apache.org/" target="_blank">Accumulo</a>来缓解这个问题。Accumulo是被谷歌的<a href="http://en.wikipedia.org/wiki/BigTable" target="_blank">BigTable</a>的设计所启发的，并且建立在Hadoop、<a href="http://zookeeper.apache.org/" target="_blank">Zookeeper</a> 和<a href="http://thrift.apache.org/" target="_blank">Thrift</a>的基础之上，同时它给Hadoop提供可扩展的、分布式的、且基于单元持久性的数据备份。Acumulo带来了一些BigTable设计之上的改进，以一种基于单元的访问控制和服务器端的编程机制来帮助在数据管理过程中修改不同点的键/值对。</p>
-<p><strong>Hadoop中的数据读取和写入</strong>发生在HDFS上。HDFS即Hadoop的分布式文件系统，并且是具有容错性的分布式文件系统。它在对进行文件流读取的大型文件进行了优化，而且和I/O吞吐量相比，更倾向于低延迟。有很多可以高效的从HDFS中读取和写入文件的方法，比如说API文件系统、MapReduce以及高级串行化库等。</p><br><br><br><br><br><br></body></html>
+<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>Go 1.2发布，稳定性提升</h3><p>近日，开源编程语言Go发布了<a href="http://blog.golang.org/go12">1.2版</a>，该版本作了语言修订，工具改进和标准库更新等一系列变化。Go<a href="http://www.infoq.com/news/2013/11/go-four-years/">源于</a>Google的一个研究性项目，而今被用于各类公司和项目开发。继五月份发布1.1版本以来，时隔7个月后的新版本标志着Go语言的成熟。</p>
+<p>一如先前报道，1.2版的两个主要变化表现在空值处理和数组切片。空值处理方面，与先前内存存取行为固有的潜在不安全性相比，如今能保证只在有限的几类特定情境中发生运行时崩溃。数组切片新增了像指定大小一样提前指定切片容量的功能。切片方面的变化对现存代码几近无影响，但空值方面变化意味着Go 1.2兴许能找到需要人工更正的容错代码。</p>
+<p>为减轻同一线程中协程间发生的饥饿现象，协程提供了调度时抢占功能。协程栈的最小容量被增加到8KB，最大容量现在也能配置。默认情况下，64位系统的最大容量是1GB，32位系统是250MB。</p>
+<p>Windows和BSD平台上的Go用户会欣喜于1.2版本的网络性能已堪比Linux和Mac OS X平台的1.1版本。据开发团队所言，这些变化能带来约30％的性能提升。1.2版本的所有用户都应发现Go在bzip2解压和JSON编码实现上的性能提升。</p>
+<p>详尽变化可参照<a href="http://golang.org/doc/go1.2">Go 1.2发行说明</a>。</p>
+<p><b>查看英文原文：</b><a href="http://www.infoq.com/news/2013/12/golang12">Go Steadily Advances as Go 1.2 is Released</a></p><br><br><br><br><br><br></body></html>

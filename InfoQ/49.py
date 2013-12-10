@@ -1,30 +1,24 @@
-<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>Peter Bell氏に聞くNoSQLのトレンド</h3><p><a target="_blank" href="http://www.infoq.com/news/2013/11/nosql-trends"><em>原文(投稿日：2013/11/05)へのリンク</em></a></p>
+<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>Amazon re:inventのまとめ</h3><p><a target="_blank" href="http://www.infoq.com/news/2013/12/aws-reinvent-2013"><em>原文(投稿日：2013/12/02)へのリンク</em></a></p>
 <div class="article_page_left news_container text_content_container"> 
  <div class="text_info"> 
-  <p>Peter Bell氏が現在のNoSQLのトレンドを紹介している。NoSQLは高速進化しているデータベースの分野でさまざまなソリューションを提供する。氏は自身が創立した<a class="c7" href="http://praglearn.com">Pragmatic Learning</a>でトレーナーを努め、GitHubのトレーニングチームのメンバでもあり、開発者の採用と管理を支援する企業<a class="c7" href="http://speakgeek.co">Speak Geek</a>の創業者でもある。定期的にMongoDB、Neo4j、RedisのようなNoSQLについてトレーニングとプレゼンを行っており、MongoDBマスターでもある。</p> 
-  <p><strong>InfoQ: ここ数年で新しいNoSQLは新しいソリューションだけに適用できる二次的な技術から、多くのアプリケーションの標準的な技術スタックへと進化しました。何がこのような高速な進化を実現したのでしょうか。</strong></p> 
-  <blockquote> 
-   <p>NoSQLを推進したのは3つの力です。まず、需要です。ここ数年のインターネットとモバイルトラフィックの興隆によって、多くの企業が数年前には考えられなかったスケールに対処しています。従来のリレーショナルデータベースは簡単にノードをまたいでスケーリングできるように設計されていません。したがって、NoSQLは素早く簡単に、そしてコスト効率がよい方法でスケールしたい企業で人気になったのです。</p> 
-   <p>そして可用性です。ここ数年でオープンソースソフトウエアは大変成熟しました。現在、成熟したオープンソースのNoSQLが多く利用できます。企業は自身のニーズに合ったデータベースを選択できるのです。</p> 
-   <p>そして、NoSQLがトレンディだということです。私は関係データベースのほうが適切なアプリケーションにもNoSQLが使われている場合があると思います。でも、NoSQLデータベースが新奇なものから、メインストリームへ、そして、ありふれたものになるにつれて、開発者が適切な選択をするようになると願っています。</p> 
-  </blockquote> 
-  <p><strong>InfoQ: 最近、比較的新しいベンダが参入してきて、NewSQLという名称で呼ばれているようです(これらのベンダ以外では使われていない名称のようですが)。NewSQLとは何なのでしょう。NewSQLはトランザクショナルなデータベースの保証を要求する企業ユーザの間で、非関係データベースの利用を増やすでしょうか。</strong></p> 
-  <blockquote> 
-   <p>NewSQLという言葉はNuoDBのような簡単にノードをまたいでスケールできる能力とSQLのサポートを併せ持つモダンなデータベースに対して使われます。例えば、ひとつのサーバでは処理できないロードを抱えてしまいながらも、SQLに対応していないデータベースに対してプログラミングできるように開発者を再教育するのは避けたい場合、NewSQLは検討に値するでしょう。今はNewSQL革命の始まりのときだと思います。ただし、あるケースではNoSQLのほうが関係モデルよりも優れた抽象を提供するのは間違いない一方で、プログラミングしやすいスケーラブルなデータベースが適している場合もあります。</p> 
-  </blockquote> 
-  <p><strong>InfoQ: Neo4Jのようなグラフデータベースはノード間の関連をモデル化するグラフ理論に基づいています。これは複雑なように思えますが、どのような利点があるのでしょうか。この分野はメインストリームに受け入れられる余地はありますか。</strong></p> 
-  <blockquote> 
-   <p>世界はグラフです。異なる役割の複数のグループに属するユーザのファイルのアクセス権を管理する場合、どの友人がデリーのレストランをおすすめしてくれるか、上海からロンドンへの荷物湯輸送の最適な経路の計算、いずれの場合もドメインをモデル化するのにグラフは最適です。eコマースからコンテンツ管理、バイオインフォマティクスからレコメンデーションまで、グラフは既存のデータから多くの価値を引き出します。例えば、“Kevin Baconの6次”をSQLを使って求めることを考えてください。cypher (Neo4jで利用されるSQLに似たグラフ問い合わせ言語)を使えば簡単です。</p> 
-   <p>Facebookは独自のグラフ検索を立ち上げました。Googleはナレッジグラフを利用して検索結果を改善しています。グラフデータベースはスタートアップにとっても大企業にとっても最も興味深いイノベーションの源泉になりつつあると思います。初めてグラフデータベースを使ったとき、私はソーシャルアプリケーションのようなニッチな分野でしか使えないと思いました(Glassdoorはneo4jを使っています)。しかし、neo4jを使うにつれてグラフベースのモデルを活用できない分野はほとんどないということに思い至りました。ストレージソリューションにおいて、グラフが第一のモデリングパラダイムになるとは思いませんが、幅広い分野で利用できると思います。</p> 
-  </blockquote> 
-  <p><strong>InfoQ: Redisは&quot;先進的なkey-value&quot;ストアと自称しています。しかし、あなたは単なるkey-valueストア以上のものだと指摘しているようですね。それはどういう意味ですか。</strong></p> 
-  <blockquote> 
-   <p>Redisはkey:valueストア(ドキュメント、グラフ、列指向ではなく)ですが、単なるキーとバリューではありません。Redisはリスト、セット、ソートセット、pub:sub機能を提供し、幅広い問題を解決できます。さらにインメモリソリューションであるためスナップショットやログをディスクに残せます。Redisは一般用途向けではありませんが、データ永続化ソリューションについて何らかの意思決定をするなら、どんなものか見てみる価値はあります。素晴らしい機能を備えていますので。</p> 
-  </blockquote> 
-  <p><strong>InfoQ: 知っておくべきほかのトレンドはありますか。</strong></p> 
-  <blockquote> 
-   <p>NoSQL後の次の大きなトレンドは不変データストアです。ここ数年で、複数のサーバをまたがった効率的なスケーリング処理における関数型プログラミングの価値について多くの議論がされてきました。共有の変化しやすい状態を最小限にすることで関数型プログラミングモデルは、オブジェクト指向プログラミングを苦しめたデットロックの問題を回避したのです。</p> 
-   <p>しかし、スケーリングにとって共有の変化しやすい状態が問題であれば、データベースが変化しやすいをなぜ許すのでしょう。この点について考えると、データベースは巨大な共有の変化しやすいデータストア(サーバ間で共有されるグローバル変数のコレクションににています)にすぎないことがわかります。多くの企業(Twitterを含む)が不変のデータストアの性質を検証しています。新しい事実は記録できるものの、既に記録したデータは変更もできなければ削除もできないデータベースです。このトレンドを追いかけるのにちょうどいいのはDatomicでしょう。これはClojureの作者であるRich Hickey氏が作っているデータストアです。</p> 
-  </blockquote>
+  <p><a href="http://reinvent.awsevents.com/index.html">AWS re:invent</a> 2013がロサンゼルスで11月12日から15日まで開かれた。<a href="http://www.youtube.com/watch?v=8ISQbdZ7WWc#t=2">1日目のキーノート</a>にはAmazon Web Services (AWS) SVPの<a href="http://www.linkedin.com/pub/andy-jassy/0/615/8b1">Andy Jassy</a>氏が、<a href="http://www.youtube.com/watch?v=Waq8Y6s1Cjs#t=1">2日目のキーノート</a>にはAWS CTOの<a href="http://www.infoq.com/author/Werner-Vogels">Werner Vogels</a>氏が登壇した。このイベントは今回が二度目の開催で、AWSがローンチされてから7年になる。</p> 
+  <p><b>Amazon WorkSpaces - デスクトップコンピューティングをクラウドで</b></p> 
+  <p>今回のショーで最初の大きなローンチは<a href="http://aws.typepad.com/aws/2013/11/amazon-workspaces-desktop-computing-in-the-cloud.html">WorkSpaces</a>だった。これはWindows 7デスクトップを仮想プライベートクラウド (VPC) にホストするサービスだ。Standard WorkSpaceは1ユーザ月$35で、1つの仮想CPU、3.75GiB RAM、S3による50GBの永続的ストレージを持つマシンを提供する。月$60出せば、2倍のCPU/RAM/ストレージを備えたPerformance WorkSpaceを得ることができる。各バンドルには、AdobeのReaderおよびFlash、Firefox、Internet Explorer 9、7-Zip、JRE (Java Runtime Environment) といったソフトウェアが含まれている。月にもう$15支払うことで、Microsoft Office ProfessionalとTrend Micro Worryが追加される。</p> 
+  <p>WorkSpacesには、PC-over-IP (<a href="http://en.wikipedia.org/wiki/Pcoip#PCoIP_Protocol">PCoIP</a>) プロトコルで接続するアプリケーションを使って、デスクトップ、ノートパソコン、iPadやAndroidタブレット（Kindleを含む）からアクセスできる。WorkSpacesのあるVPCは、IPsec VPNを使って企業ネットワークに接続して、Active Directoryやその他イントラネットリソースにアクセスすることもできる。</p> 
+  <p>そのプライスポイントをm1.mediumインスタンスと比較するのは興味深い。このインスタンスは1つのvCPU、3.75GiB RAM、410GBの大容量のインスタンスストレージを備えているが、S3への自動バックアップ機能はない。これらのVMはオンデマンド購入で月$86.40だが、1年のヘビーユース・リザーブドインスタンスを利用すると月$48.60になる。ただし、これはLinuxインスタンスの場合であって、Windowsライセンス分の料金は無視している。月$15のMS Office追加料金は、Office 365 Small Business Premiumのサブスクリプション料金とまったく同じだ。</p> 
+  <p>AmazonはオンプレミスのVDI (Virtual Desktop Infrastructure) との<a href="http://aws.typepad.com/aws/2013/11/tco-comparison-amazon-workspaces-and-traditional-virtual-desktop-infrastructure-vdi.html">コスト比較</a>をし、国内1000ユーザの事例で59.26%のコスト節減がもたらされると述べている。実際にそうした効果が得られるかどうかは、スケールとソフトウェア割引が得られるかに非常に依存している。WorkSpacesの料金は、CitrixやVMwareのような従来のVDIサプライヤー（そして、そうしたソリューションをデプロイ、サポートする社内チーム）にプレッシャーをかけるだろう。</p> 
+  <p><b>SAMLを使用したIdentity and Access Management</b></p> 
+  <p>Amazonは<a href="http://docs.aws.amazon.com/STS/latest/UsingSTS/Welcome.html">STS</a> (Security Token Service)に<a href="http://en.wikipedia.org/wiki/Saml">SAML</a> (Security Assertion Markup Language) v2のサポートを追加した。これによりユーザはActive Directoryのような社内システムとのID連携を使って、AWS Management Consoleにサインインすることができる。管理だけでなく、同じトークンをAWS内の他のリソースへのアクセスに使うことができる。</p> 
+  <p><b>Amazon AppStream - クラウドからアプリケーションをストリーミング提供</b></p> 
+  <p><a href="http://aws.typepad.com/aws/2013/11/amazon-appstream-deliver-streaming-applications-from-the-cloud.html">AppStream</a>はAmazonクラウドにアプリケーションをホストして、デスクトップやモバイルデバイスで動くクライアントにアプリケーションのUIをストリームするサービスだ。クラウドのサーバサイドは、2D、3DレンダリングをサポートするGPUを使った新しい<a href="http://www.infoq.com/jp/news/2013/11/aws-3-new-instance-types">G2インスタンスタイプ</a>を活用することができ、アプリケーションはWindows 2008 R2で動作する。</p> 
+  <p>AppStreamはサーバAPI (XStxServer) とクライアントAPI (XStxClient) で構成され、連携してコネクション、コンテンツストリーミング、ユーザ入力を処理する。コネクションのためのセッションIDを発行する認証と認可のための使用権限管理（エンタイトルメント）サービスもある。こうしたAPIを利用するため、既存のデータベース中心のクライアント/サーバーアプリをストリームするのに使われている<a href="http://www.cloudhouse.com/">CloudHouse</a>や、モバイルデバイス上の高スループットグラフィックスに最適化したVDIソリューションを提供する<a href="http://www.framehawk.com/">FrameHawk</a>のようなものとは違って、AppStreamはグラフィック負荷の高いアプリケーションを新たに構築するという用途に向いている。</p> 
+  <p><b>Amazon Kinesis - ビッグデータをストリーム処理</b></p> 
+  <p>ストリーミングに関連してローンチされたもう1つのプロダクトが<a href="http://aws.typepad.com/aws/2013/11/amazon-kinesis-real-time-processing-of-streamed-data.html">Kinesis</a>だ。これは巨大なリアルタイムデータストリームを取り込んで分析を実行するためのサービスだ。Roopesh Shenoy氏はこのサービスがSQS (Simple Queuing Service) やその他ビッグデータツールとどう違うのか<a href="http://www.infoq.com/jp/news/2013/12/aws-kinesis">調べている</a>。Kinesisの料金は、シャード数（データ書き込みレートを決定付ける。それぞれ1MB/sをサポート）とデータPUTオペレーション数に基づいている。ローンチ時点で利用できるのは、プレビューグループに限定されている。</p> 
+  <p><b>CloudTrail - AWS APIコールの記録を保存</b></p> 
+  <p><a href="http://aws.typepad.com/aws/2013/11/aws-cloudtrail-capture-aws-api-activity.html">CloudTrail</a>は人気のあるAWSサービス（Elastic Compute Cloud、Elastic Block Store、Virtual Private Cloud、Relational Database Service、Identity and Access management、Security Token Service、Redshift）の「<a href="http://aws.typepad.com/aws/2013/11/aws-cloudtrail-capture-aws-api-activity.html">ブラックボックス</a>」型監査証跡を提供する。これはAWS Management Console、AWS CLI、あるいはSDK、どこからやって来たのかに関わらず、サービスに対するすべてのAPIコールを記録する。イベントはJSONで表現され、S3バケットに格納される。また、イベントをSNS (Simple Notification Service) トピックに送ることもでき、<a href="http://en.wikipedia.org/wiki/Siem">SIEM</a> (Security Information and Event Management) ツールとの統合手段を提供する。Amazonはたくさんのパートナーが S3経由でCloudTrailにアクセスするログ分析アプリケーションを提供することを期待している。ログデータを格納するS3（および通知のためのSNS）の費用を除き、CloudTrail自体には料金は発生しない。S3そのものは対象となっていないが、オブジェクトレベルのアクションのモニタリングは、管理アクションよりもはるかに多くのデータを生成することになるだろう。ローンチ時点でCloudTrailが使えるのは、米国東 (Virginia) リージョンと米国西 (Oregon) リージョンに限られる。</p> 
+  <p><b>RDSのPostgresサポート</b></p> 
+  <p>AmazonのRDS (Relational Database Service) は最初MySQLをサポートし、以後、OracleとWindows SQL Serverが追加された。そして今、データベースインスタンスの立ち上げ時のエンジン選択ステージの選択肢として<a href="http://aws.typepad.com/aws/2013/11/amazon-rds-for-postgresql-now-available.html">PostgreSQL</a>も提供されるようになった。フォールトバウンダリをまたがったフェイルオーバー（マルチAZデプロイメント）、パフォーマンス保証（プロビジョンドIOPS）、VPC内のオペレーション、S3への自動バックアップ、ポイントインタイムリカバリ、クロスリージョンスナップショットとともに、すべてのリージョンがサポートされる。</p> 
+  <p><b>新しいEC2インスタンスタイプ</b></p> 
+  <p><a href="http://www.infoq.com/jp/news/2013/11/aws-3-new-instance-types">新しいインスタンスタイプが3つ</a>が発表された。<a href="http://aws.typepad.com/aws/2013/11/coming-soon-the-i2-instance-type-high-io-performance-via-ssd.html">I2インスタンス</a>はSSDを使って、高いI/Oパフォーマンスを実現する。<a href="http://aws.typepad.com/aws/2013/11/a-generation-of-ec2-instances-for-compute-intensive-workloads.html">C3インスタンス</a>は高負荷な計算のために各仮想CPUをハードウェアハイパースレッドに結びつける。<a href="http://aws.typepad.com/aws/2013/11/build-3d-streaming-applications-with-ec2s-new-g2-instance-type.html">G2インスタンス</a>は3Dアプリケーション向けにNvidiaのGPUを提供する。</p> 
  </div> 
 </div><br><br><br><br><br><br></body></html>
