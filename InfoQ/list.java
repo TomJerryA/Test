@@ -2,7 +2,10 @@
  <head></head> 
  <body>
   <div>
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/46.java">TypedMVVM Uses TypeScript to Build Windows Store Apps with WinJS</a>TypedMVVM is a collection of samples and libraries developed by Davide Zordan which enables enable developers to build Windows Store apps using WinJS, TypeScript and MVVM.
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/47.java">Visual Commander Brings Back Visual Studio Macros</a>Vlasov Studio has released an extension for VS 2010 and later that restores the ability to create and run macros in both VB and C#.
+  </div> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/46.java">TypedMVVM Uses TypeScript to Build Windows Store Apps with WinJS</a>TypedMVVM is a collection of samples and libraries developed by Davide Zordan which enables enable developers to build Windows Store apps using WinJS, TypeScript and MVVM. 
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/45.java">Benefits-led Process Improvement Using the CMMI</a>Achieving a maturity level is a target often used in CMMI based process improvement programs. It can be important for organizations to have insight in the relation between a maturity level and business goals, and to know the business benefits. An interview with Michelle Krupa on changing an improvement program from being CMMI Maturity Level based to a benefits led approach. 
@@ -147,9 +150,6 @@
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/0.java">Cascading 2.5 Supports Hadoop 2</a>New version of Cascading released this week incorporates Hadoop 2 support and includes Cascading Lingual - an open source project that provides a comprehensive ANSI SQL interface for accessing Hadoop-based data 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/49.java">Vaughn Vernon: Reactive Domain-Driven Design</a>Vaughn Vernon, author of Implementing Domain-Driven Design, recently talked about using Scala and the Actor Model implementation Akka together with Doman-Driven Design as a means to remove some of the architecture overhead typically found in event-driven or hexagonal architectures. 
   </div>  
  </body>
 </html>

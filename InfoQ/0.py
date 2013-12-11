@@ -1,55 +1,25 @@
-<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>アジャイルチームにとって楽しさは重要か</h3><p><a target="_blank" href="http://www.infoq.com/news/2013/11/fun-important-agile-teams"><em>原文(投稿日：2013/11/07)へのリンク</em></a></p>
+<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>複合型チームにおけるT字型スペシャリストの価値</h3><p><a target="_blank" href="http://www.infoq.com/news/2013/11/t-shaped-hybrids"><em>原文(投稿日：2013/11/27)へのリンク</em></a></p>
 <div class="article_page_left news_container text_content_container"> 
  <div class="text_info"> 
-  <p>アジャイルチームで働くのはストレスフルになる場合がある。例えば、顧客のニーズが不明瞭であったり、やらなければならなかったことがたくさんあったり、チームのメンバが困難に直面したりする場合だ。楽しさはストレスを低減し、モチベーションを増やし、生産性をあげるのだろうかという疑問を持つこともあるだろう。これが正しいのなら、アジャイルチームに楽しさを持ち込むにはどうしたらいいのだろうか。</p> 
-  <p><a href="http://agileyammering.com/2013/07/31/are-you-having-fun/">are you having fun?</a>という記事で、Valerie Santillo氏はなぜアジャイルチームにとって楽しさが大切なのか説明している。</p> 
+  <p>ソフトウェア開発技術誌Methods &amp; Tools編集者の<a href="http://blog.martinig.ch/about/">Franco Martinig</a>氏，Scrum創案者のひとりである<a href="http://kenschwaber.wordpress.com/">Ken Shwaber</a>氏など評論家が先日，多能性を持った開発者，いわゆるT字型スペシャリストの価値をテーマにした執筆と講演を行った。この論評は単独のものではない。ある種の権限を所持するチームの重要な構成要素として，多能的なスペシャリストに対する認知度がいかに高まっているのかを論じるものだ。</p> 
+  <p>Martinig氏は先日，自身が命名した &quot;ルネッサンス型ソフトウェア開発&quot; に関する記事を書いた。その中で氏は，クロスファンクショナル(cross-functional, 機能横断的)な&quot;T字型&quot;開発者，すなわち解析やテスト，ユーザ対応など，複数の仕事でチームに貢献できる人材の持つメリットについて述べている。</p> 
+  <p>Schwaber氏もまた，チームメンバ個々の持つ集団体験や周辺スキルが問題解決プロセスにおいて重要な役割を果たし得る，という内容のブログ記事を書いている:</p> 
   <blockquote> 
-   <p>チームメイトと一緒にいるのが楽しいときはよいチームにいるということです。私の場合、楽しく仕事をするのはとても重要なことです。とても難しく楽しくもないプロジェクトも経験してきましたが、くだらない仕事にもかかわらず素晴らしい時間を過ごすことができました。</p> 
-   <p>スクラムマスターとして、チームのメンバの笑い声を聞けるのは素晴らしいことです。働いている人が楽しいのなら、仕事も好きになるでしょうし、よりしっかりと働くでしょう。最終製品も良いものになるはずです。楽しくないのなら、やり方を考え直した方がいいです。ハッピーアワーを一緒に過ごしたり、散歩に出かけたり、インタラクディブで魅力的な(そして少しばかばかしい)チームエクササイズを実行しましょう。</p> 
+   <p>チームに所属する人はすべて，最大限の要求に対して最大限の成果を上げるという，チームの目標に貢献できるスキルと経験を持っています。それまではほとんど使われなかった洞察や記憶，スキルなども，いつ役に立つか分かりません。それがスクラムチームの美しさ，予期せぬ成長の相乗効果なのです。</p> 
   </blockquote> 
-  <p>Alex Krause氏も<a href="http://www.core-dump.net/management/my-top-10-learnings-as-a-product-owner/">top 10 learning's as a product owner</a>という記事で楽しさと成功を祝うことについて書いている。</p> 
+  <p>Zumobi創業者のJohn San Giovani氏は先頃，&quot;<a href="http://www.youtube.com/watch?feature=player_embedded&amp;v=mQywiaQXUeI">The Artist-Geek Hybrid</a>&quot; と題したTEDトークを行った。そこで氏は，Zumobiが広範な経験と &quot;パーティに右脳を提供する&quot; 人材を採用しようとしていることを，私たちに語っている。氏の説明によれば，ユニークなソリューションとは，個々のさまざまな関心や経験の交わる &quot;ワイルドカード&quot; が生み出すものなのだ。ThoughtWorksのハードウェアハック研究所で責任者を務めるテクノロジアーティストのPeter McWIlliams氏は，この講演について<a href="http://www.jahya.net/blog/?2013-08-the-artist-geek-hybrid">報告</a>するとともに，その上位集合であるチームのワイルドカードにも価値がある，と付け加えている:</p> 
   <blockquote> 
-   <p>ミーティングに楽しさを持ち込めば、ミーティングはますます楽しくなります。ミーティングが参加して楽しいものになれば、だれもが参加したくなります。そして、成功を祝うことを忘れないでください。スプリントのレビューにキャンディを持ち込みましょう。大きなリリースの後はビールかシャンパンです。</p> 
+   <p>ワイルドカードの持つ価値は，専門分野と専門分野の交差によるものに限りません。複数の観点，複数のアプローチにもパワーがあるのです。</p> 
   </blockquote> 
-  <p>Ian Mitchell氏はスプリントのレビューとは何か、どのようにすればいいのかについて<a href="https://sites.google.com/site/wicmitchell/home/sprint-reviews-in-practice">sprint reviews in practice</a>というブログ記事で書いている。スプリントレビューに楽しさを持ち込むとレビューが行われる機会も増える。</p> 
+  <p>内在するTを引き出すためには，クロスファンクショナルなグループを作り上げるだけで十分だとは限らない。Martinig氏とShwebber氏はともに，従来型の組織構造における役職名が，責任の絶対的境界を作り出している点を指摘する。Martinig氏は &quot;プログラマ，ソフトウェアテスタ，DBA，ビジネスアナリスト&quot; といったレッテルが結果的に，個人が自身の領域から踏み出してコラボレーションすることを阻害しているとして，次のように書いている:</p> 
   <blockquote> 
-   <p>クッキーや飲み物を持ち込みましょう。レビューのところどころに短い運動やゲーム休憩を挟みましょう。居酒屋クイズみたいなものが人気のようですが、勝った人に小さなご褒美をあげるケースもあります。</p> 
+   <p>大規模なソフトウェア開発組織では，個々の経験に従って人材をプログラマやソフトウェアテスタ，DBA，ビジネスアナリストというように分離する，テイラー主義(tayloristic)的なアプローチを選択しがちです。このような部門分割は同時に，開発者の心に暗黙的な &quot;階層構造&quot; をも作り上げるのです。</p> 
   </blockquote> 
-  <p>Catia Oliveira氏は<a href="http://scrumplicity.wordpress.com/2012/08/07/scrum-master-tip-6-retrospectives-2/">Scrum Master TIP #6 – Retrospectives</a>というブログ記事で、結果を残すために激務を遂行する人はなぜ振り返りが嫌いなのかを説明している。</p> 
+  <p>T字型のチームメンバになるというのは意識的な行動だ。Paddy Power PLCでアジャイルテスト主席技術者を務める<a href="http://mysoftwarequality.wordpress.com/author/mysoftwarequality/">Augusto Evangelisti</a>氏は，テスト担当者を対象に，チームの開発および解析力に貢献できるオールラウンダへとT字化するための<a href="http://mysoftwarequality.wordpress.com/2013/09/15/get-in-shape-to-become-an-agile-tester/">入門記事を</a>ブログに書いている。自分の役割から踏み出すことに消極的なテスタに対して，氏はその必要性を説く。BAや開発者と積極的にコラボレーションして，前向きに学び支援することに自身の時間を充てるよう，氏は彼らに勧めている。</p> 
+  <p>GitHubのTim Berglund氏にQConで行った基調講演 &quot;<a href="http://www.infoq.com/presentations/product-manager">First Kill All The Product Owners</a>&quot; について<a href="http://www.infoq.com/interviews/berglund-product-owners">インタビュー</a>したとき，氏はプロダクトオーナの役割について，能力のあるクロスファンクショナルチームが全体として担うべきだ，という考えを説明してくれた。&quot;何かを開発する上で責任のある人々すべてが，そのプロダクトの定義に責任を持つ&quot; というのが，氏の提示するシナリオだ。製品のライフサイクル全体を通じてチームに権限を与えることにより，その領域に対してのチームの熱意を高め，製品に対する当事者意識の向上を実現できるのだ。<img alt="" height="1" src="http://www.infoq.com/mag4media/repositories/fs/news/2013/11/t-shaped-hybrids/en/resources/iI-bKhqNWCUS2qO_bItH0Z9vYj_m28MgdRSegAysC2l-sk9Vd1jGvGLTwY85GOAffR94FbwU_Tr5OC6nhftio4LlslP5Joi7D1VpbWPVzJcgjUercIobnkuVBQ" width="1" _href="img://iI-bKhqNWCUS2qO_bItH0Z9vYj_m28MgdRSegAysC2l-sk9Vd1jGvGLTwY85GOAffR94FbwU_Tr5OC6nhftio4LlslP5Joi7D1VpbWPVzJcgjUercIobnkuVBQ" _p="true" /></p> 
+  <p>Evangelisti氏は最後に，T字型スペシャリストになることのメリットを次のように要約する:</p> 
   <blockquote> 
-   <p>振り返りでは、チームのメンバは人間関係について聞かれ、“最後のスプリントでうまくいかなかったこと”の総括と対処方法の策定を求められます。つまり失敗したことについてです。(…) 期日や範囲を守れなかったり、ソフトウエアではなくてバグをリリースしてしまったりするのは、純粋な嫌な失敗なのです。明らかに、毎日、一生懸命働いたのですから、そのような過去の失敗を振り返るのは嫌でしょう。そんなことについて話したりするのが簡単で楽しいことだと思いますか。</p> 
-  </blockquote> 
-  <p>スクラムマスターの仕事は振り返りのときにチームのメンバを楽しませることだ。Catia氏は次のように書く。</p> 
-  <blockquote> 
-   <p>振り返りを楽しくしましょう。恥ずかしくないものにし、格式張らず、つらくないようにします。失敗を話やすくします。一緒に楽しみ成長しやすくします。</p> 
-  </blockquote> 
-  <p>InfoQは近頃、<a href="http://www.infoq.com/news/2013/10/roleplaying-games-agile-coaching">ロールプレイングゲームのダンジョンマスタとして学んだことをアジャイルコーチングに活用する</a>ことについて、Guillaume Duquesnay氏にインタビューし、幸せと楽しさの重要さについて語ってもらった。</p> 
-  <blockquote> 
-   <p>幸福さや楽しさといったものを (より多くの価値を提供する，という意味の) 生産性と結びつけるのは，少し慎重になる必要があると思います。私の始めた方法はそうではなく，それらを目標に結びつけます。目標の実現が人々を幸せにする，という考え方なのです。楽しさという点は，パフォーマンス上のトリガだとは思いません。改善の前には，時には厳しいことも言わなければなりません。(…) 責任を取ることは楽しいことではありません。共同責任ならばなおさらです。信用できる人からのフィードバックは楽しくなくても，ストレートで思いやりに満ちています。</p> 
-  </blockquote> 
-  <p><a href="http://flowchainsensei.wordpress.com/2013/06/13/hyper-joyful/">hyper-joyful</a>というブログ記事で、Bob Marshall氏は職場での喜びとうれしさについて書いている。</p> 
-  <blockquote> 
-   <p>私はソフトウエア開発や製品開発の世界(ほかの多くの職場でも同様ですが)で喜びにフォーカスがあたっているとは思いません。</p> 
-  </blockquote> 
-  <blockquote> 
-   <p>この記事のタイトルを“hyper-joyful”としたのは“hyper-productivity”という概念に対するリアクションです。“hyper-productivity”は最近、私が何度も議論していることです。“hyper-productive”という言葉を聞くたびに、私は軽蔑的で残念で悲しい気持ちにならざるを得ません。アジャイルはそのような野心的目標を達成するものではありません。一体、誰が“hyper-productivity”という言葉からよい気持ちを受けるのでしょうか。(…) 個人的には、“hyper-joyful”について仲間たちが話しているときのほうが幸せな気分になります。</p> 
-  </blockquote> 
-  <p><a href="http://rgalen.com/agile-training-news/2013/9/16/the-agile-project-manager-can-agile-teams-get-burned-out">can agile teams get &quot;burned out&quot;?</a>というブログ記事で<a href="http://www.infoq.com/author/Robert-Galen">Robert Galen氏</a>がチームが燃え尽きてしまうときの原因と指標について、そしてチームのリフレッシュについて書いている。燃え尽きの指標のひとつはユーモアと楽しさの欠如だ。チームが集中しすぎているとこのような欠乏状態に陥りがちだ。氏はリフレッシュやチームの再配置についていくつかの提案をしている。そのひとつが“Go Have Fun”だ。</p> 
-  <blockquote> 
-   <p>オフィスを出て、チームが楽しめることをしましょう。チームとしてでも個人としてでもかまいません。私は楽しむために集まることに力を割いているチームを知っています。また、チームのメンバ家族とともに特別な時間を過ごすことを認めているチームも知っています。この両方を実施しているチームもあります。アジャイルリーダーとして、私はチームの活動に資金提供することもあります。チームのメンバに対する私からの条件は楽しい時間を過ごし、ストレスを発散することです。</p> 
-  </blockquote> 
-  <p>自分自身が欲しているものがわかっていない顧客とともに働くチームはフラストレーションがたまりがちだ、と指摘するのはRudi van der Made氏だ。氏は<a href="http://agilethings.nl/scrum-is-fun/">Scrum is fun</a>というブログ記事でスクラムがどのようにしてこの問題に対処するかを説明している。</p> 
-  <blockquote> 
-   <p>(…) スクラムの人気と成功は、この手法がフラストレーションに対処し、解決してくれることのおかげです。複雑なチームワークを楽してくれ、副産物として品質と生産性が得られるのです。</p> 
-  </blockquote> 
-  <p>コミュニケーションを改善するのがスクラムをより楽しくする第一の秘訣だ。例えば、開発者に毎日スタンドアップを実施させる。</p> 
-  <blockquote> 
-   <p>何度かやってみると、静かに一人で黙々と作業するのが好きな開発者もコミュニケーションをし始めるのがわかります。各自の仕事に少しだけ定期的なミーティングを入れるだけでこれだけ大きなことが得られるのです。より生き生きとした職場環境になりますし、その結果楽しさも増します。</p> 
-  </blockquote> 
-  <p>そして、ビジネスサイドの関与を大きくすることが第二の秘訣だ。</p> 
-  <blockquote> 
-   <p>プロダクトオーナを継続的に関与させることも優れたスクラムの実践のひとつです。すべての利害関係者とコミュニケーションし、プロダクトバックログを管理するのはプロダクトオーナの重要な仕事です。しかし、スプリントのときに開発チームに関与するのもプロダクトオーナの重要な仕事です。スプリントの終わりにそのプロダクトが&uml;リリース可能&uml;かどうか判断するのはプロダクトオーナが関与するしかありません。</p> 
-  </blockquote> 
-  <p>アジャイルチームにとって楽しさは重要だろうか。チームに楽しさをもたらすためにあなたは何をしたか。</p> 
+   <p>ですから，遠からず職を失うようなつまらないI字型スペシャリストは止めて，T字型のアジャイルテスタ（あるいはチームメンバ）になってください。そうすればあなたは，チームにとって今よりも重要な，もっと価値のある存在になるでしょう。そして何よりも，自分独自のテスト手法（アクティビティ）に常軌を逸して固執しないことです。あなたの同僚が，あなたを手助けできなくなってしまいますから！クロスファンクショナルなアジャイルチームの世界へようこそ！ここには立場の違いというものはありません。アクティビティこそが問題なのです。</p> 
+  </blockquote>
  </div> 
 </div><br><br><br><br><br><br></body></html>
