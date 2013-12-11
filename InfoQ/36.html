@@ -1,148 +1,21 @@
-<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>实际项目中的常见算法</h3><p>【编者按】本文原始内容来源于<a href="http://cstheory.stackexchange.com/questions/19759/core-algorithms-deployed/19773#19773">stackexchange</a>，遵循<a href="http://creativecommons.org/licenses/by-sa/3.0/">cc-wiki</a>协议；</p>
-<p>近日<a href="http://cstheory.stackexchange.com/posts/19759/revisions">Emanuele Viola</a>在Stackexchange上提了这样的一个<a href="http://cstheory.stackexchange.com/questions/19759/core-algorithms-deployed/19773#19773">问题</a>，他希望有人能够列举一些目前软件、硬件中正在使用的算法的实际案例来证明算法的重要性，对于大家可能给到的回答，他还提出了几点要求：</p>
-<ol> 
- <li>使用这些算法的软件或者硬件应该是被广泛应用的；</li> 
- <li>例子需要具体，并给出确切的系统、算法的引用地址；</li> 
- <li>在经典的本科生或者博士的课程中应该教过这些算法或者数据结构；</li> 
-</ol>
-<p><a href="http://cstheory.stackexchange.com/posts/19773/revisions">Vijay D</a>的回复获得了最佳答案，他的具体回复内容如下：</p>
-<h2>Linux内核中的基本数据结构和算法</h2>
-<ol> 
- <li><a href="https://github.com/mirrors/linux-2.6/blob/master/lib/llist.c">链表</a>、<a href="https://github.com/mirrors/linux-2.6/blob/master/include/linux/list.h">双向链表</a>和<a href="https://github.com/mirrors/linux-2.6/blob/master/include/linux/llist.h">无锁链表</a></li> 
- <li> <p><a href="https://github.com/mirrors/linux-2.6/blob/39caa0916ef27cf1da5026eb708a2b8413156f75/lib/btree.c">B+ 树</a>，代码中的注释将会告诉你一些教科书中不能学到的内容：</p> 
-  <blockquote> 
-   <p>这是一个简单的B+树实现，我写它的目的是作为练习，并以此了解B+树的工作原理。结果该实现发挥了它的实用价值。</p> 
-   <p>...</p> 
-   <p>一个不经常在教科书中提及的技巧：最小值应该放在右侧，而不是左侧。一个节点内所有被使用的槽位应该在左侧，没有使用的节点应该为NUL，大部分的操作只遍历一次所有的槽位，在第一个NUL处终止。</p> 
-  </blockquote></li> 
- <li> <p><a href="https://github.com/mirrors/linux-2.6/blob/master/include/linux/plist.h">带权重的有序列表</a>用于<a href="https://github.com/mirrors/linux-2.6/blob/b3a3a9c441e2c8f6b6760de9331023a7906a4ac6/include/linux/rtmutex.h">互斥锁</a>、<a href="https://github.com/mirrors/linux-2.6/blob/f0d55cc1a65852e6647d4f5d707c1c9b5471ce3c/drivers/powercap/intel_rapl.c">驱动</a>等；</p> </li> 
- <li><a href="https://github.com/mirrors/linux-2.6/blob/master/include/linux/rbtree.h">红黑树</a><a href="http://lwn.net/Articles/184495/">用于</a>调度、虚拟内存管理、跟踪文件描述符和目录条目等；</li> 
- <li><a href="https://github.com/mirrors/linux-2.6/blob/master/include/linux/interval_tree.h">区间树</a></li> 
- <li><a href="https://github.com/mirrors/linux-2.6/blob/master/include/linux/radix-tree.h">Radix树</a>，用于内存管理、NFS相关查找和网络相关的功能； 
-  <blockquote> 
-   <p>radix树的一个常见的用法是保存页面结构体的指针；</p> 
-  </blockquote></li> 
- <li><a href="https://github.com/mirrors/linux-2.6/blob/b3a3a9c441e2c8f6b6760de9331023a7906a4ac6/include/linux/prio_heap.h">优先级堆</a>，文字上的描述，主要是在教科书中实现，用于<a href="https://github.com/mirrors/linux-2.6/blob/42a2d923cc349583ebf6fdd52a7d35e1c2f7e6bd/include/linux/cgroup.h">control group系统</a>; 
-  <blockquote> 
-   <p>包含指针的只允许简单插入的静态大小优先级堆，基于CLR（算法导论）第七章</p> 
-  </blockquote></li> 
- <li> <p>哈希函数，引用Knuth和他的一篇论文：</p> 
-  <blockquote> 
-   <p>Knuth建议选择与机器字长所能表达的最大整数约成黄金比例的素数来做乘法散列，Chuck Lever 证实了这个技术的有效性；</p> 
-   <p><a href="http://www.citi.umich.edu/techreports/reports/citi-tr-00-1.pdf">http://www.citi.umich.edu/techreports/reports/citi-tr-00-1.pdf</a></p> 
-   <p>这些选择的素数是位稀疏的，也就是说对他们的操作可以使用位移和加法来替换机器中很慢的乘法操作；</p> 
-  </blockquote></li> 
- <li> <p>有些代码，比如这个<a href="https://github.com/mirrors/linux-2.6/blob/0b1e73ed225d8f7aeef96b74147215ca8b990dce/drivers/staging/lustre/lustre/lov/lov_pool.c">驱动</a>，他们是自己实现的哈希函数</p> </li> 
- <li><a href="https://github.com/mirrors/linux-2.6/blob/master/include/linux/hashtable.h">哈希表</a>，用于实现<a href="https://github.com/mirrors/linux-2.6/blob/42a2d923cc349583ebf6fdd52a7d35e1c2f7e6bd/fs/inode.c">索引节点</a>、<a href="https://github.com/mirrors/linux-2.6/blob/ff812d724254b95df76b7775d1359d856927a840/fs/btrfs/check-integrity.c">文件系统完整性检查</a>等；</li> 
- <li><a href="https://github.com/mirrors/linux-2.6/blob/master/include/linux/bitmap.h">位数组</a>，用于处理flags、中断等，在Knuth第四卷中有对其特性的描述；</li> 
- <li><a href="https://github.com/mirrors/linux-2.6/blob/master/include/linux/semaphore.h">Semaphores</a> 和 <a href="https://github.com/mirrors/linux-2.6/blob/master/include/linux/spinlock.h">spin locks</a></li> 
- <li>二叉树搜索用于<a href="https://github.com/mirrors/linux-2.6/blob/b3a3a9c441e2c8f6b6760de9331023a7906a4ac6/drivers/sh/intc/chip.c">中断处理</a>、<a href="https://github.com/mirrors/linux-2.6/blob/10d0c9705e80bbd3d587c5fad24599aabaca6688/drivers/base/regmap/regcache.c">登记缓存查找</a>等；</li> 
- <li><a href="https://github.com/mirrors/linux-2.6/blob/b3a3a9c441e2c8f6b6760de9331023a7906a4ac6/fs/befs/btree.c">使用B-树进行二叉树查找</a>；</li> 
- <li><a href="https://github.com/mirrors/linux-2.6/blob/a9238741987386bb549d61572973c7e62b2a4145/drivers/acpi/acpica/nswalk.c">深度优先搜索</a>和他的变体被应用于<a href="https://github.com/mirrors/linux-2.6/blob/b3a3a9c441e2c8f6b6760de9331023a7906a4ac6/fs/configfs/dir.c">目录配置</a>； 
-  <blockquote> 
-   <p>在命名空间树中执行一个修改过的深度优先算法，开始（和终止于）start_handle所确定的节点。当与参数匹配的节点被发现以后，回调函数将会被调用。如果回调函数返回一个非空的值，搜索将会立即终止，这个值将会回传给调用函数；</p> 
-  </blockquote></li> 
- <li><a href="https://github.com/mirrors/linux-2.6/blob/4fbf888accb39af423f271111d44e8186f053723/kernel/locking/lockdep.c">广度优先搜索</a>用于在运行时检查锁的正确性；</li> 
- <li>链表上的<a href="https://github.com/mirrors/linux-2.6/blob/master/lib/list_sort.c">合并排序</a>用于<a href="https://github.com/mirrors/linux-2.6/blob/42a2d923cc349583ebf6fdd52a7d35e1c2f7e6bd/fs/ubifs/gc.c">垃圾回收</a>、<a href="https://github.com/mirrors/linux-2.6/blob/ff812d724254b95df76b7775d1359d856927a840/fs/btrfs/raid56.c">文件系统管理</a>等；</li> 
- <li>在某个<a href="https://github.com/mirrors/linux-2.6/blob/b3a3a9c441e2c8f6b6760de9331023a7906a4ac6/drivers/media/common/saa7146/saa7146_hlp.c">驱动程序的库函数</a>里，冒泡排序居然也被实现了</li> 
- <li> <p><a href="https://github.com/mirrors/linux-2.6/blob/b3a3a9c441e2c8f6b6760de9331023a7906a4ac6/lib/ts_kmp.c">Knuth-Morris-Pratt 字符串匹配</a>；</p> 
-  <blockquote> 
-   <p>Knuth、Morris和 Pratt [1]实现了一个线性时间复杂度字符串匹配算法。该算法完全规避了对转换函数DELTA的显式计算。其匹配时间为O(n)（其中n是文本长度），只使用一个辅助函数PI[1...m]（其中m是模式的长度），模式的预处理时间是O(m)。PI这个数组允许DELTA函数在需要时能迅速运行。大体上，对任意状态q=0,1,...,m和任意SIGMA中的字符&quot;a&quot;，PI[&quot;q&quot;]保存了独立于&quot;a&quot;的信息，并用于计算DELTA(&quot;q&quot;, &quot;a&quot;)。由于PI这个数组只包含m个条目，而DELTA包含O(m|SIGMA|)个条目，我们通过计算PI进而在预处理时间保存|SIGMA|的系数，而非计算DELTA。</p> 
-   <p>[1] Cormen, Leiserson, Rivest, Stein Introdcution to Algorithms, 2nd Edition, MIT Press</p> 
-   <p>[2] See finite automation theory</p> 
-  </blockquote></li> 
- <li> <p>Boyer-Moore模式匹配，如下是引用和对其他算法的使用建议；</p> 
-  <blockquote> 
-   <p>Boyer-Moore字符串匹配算法:</p> 
-   <p>[1] A Fast String Searching Algorithm, R.S. Boyer and Moore. Communications of the Association for Computing Machinery, 20(10), 1977, pp. 762-772. <a href="http://www.cs.utexas.edu/users/moore/publications/fstrpos.pdf">http://www.cs.utexas.edu/users/moore/publications/fstrpos.pdf</a></p> 
-   <p>[2] Handbook of Exact String Matching Algorithms, Thierry Lecroq, 2004 <a href="http://www-igm.univ-mlv.fr/~lecroq/string/string.pdf">http://www-igm.univ-mlv.fr/~lecroq/string/string.pdf</a></p> 
-   <p>注意：由于Boyer-Moore（BM）自右向左做匹配，有一种可能性是一个匹配分布在不同的块中，这种情况下是不能找到任何匹配的。</p> 
-   <p>如果你想确保这样的事情不会发生，使用Knuth-Pratt-Morris（KMP）算法来替代。也就是说，根据你的设置选择合适的字符串查找算法。</p> 
-   <p>如果你使用文本搜索架构来过滤、网络入侵检测（NIDS）或者任何安全为目的，那么选择KMP。如果你关乎性能，比如你在分类数据包，并应用服务质量（QoS）策略，并且你不介意可能需要在分布在多个片段中匹配，然后就选择BM。</p> 
-  </blockquote></li> 
-</ol>
-<h2>Chromium 浏览器中的数据结构和算法</h2>
-<ol> 
- <li><a href="https://code.google.com/p/chromium/codesearch#chromium/src/v8/src/splay-tree.h">伸展树</a> 
-  <blockquote> 
-   <p>此树会被分配策略参数化，这个策略负责在C的自由存储空间和区域中分配列表，参见zone.h</p> 
-  </blockquote></li> 
- <li>Demo中使用了<a href="https://code.google.com/p/chromium/codesearch#chromium/src/native_client_sdk/src/examples/demo/voronoi/index.html">Voronoi</a>图</li> 
- <li><a href="https://code.google.com/p/chromium/codesearch#chromium/src/chrome/browser/ui/cocoa/tabs/tab_strip_controller.mm">基于Bresenham算法的标签管理</a></li> 
-</ol>
-<p>同时，代码中还包含了一些第三方的算法和数据结构，例如：</p>
-<ol> 
- <li><a href="https://code.google.com/p/chromium/codesearch#chromium/src/third_party/bintrees/bintrees/bintree.py">二叉树</a></li> 
- <li><a href="https://code.google.com/p/chromium/codesearch#chromium/src/third_party/bintrees/bintrees/rbtree.py">红黑树</a></li> 
- <li><a href="https://code.google.com/p/chromium/codesearch#chromium/src/third_party/bintrees/bintrees/avltree.py">AVL树</a></li> 
- <li>用于压缩的<a href="https://code.google.com/p/chromium/codesearch#chromium/src/third_party/zlib/deflate.c">Rabin-Karp字符串匹配</a></li> 
- <li><a href="https://code.google.com/p/chromium/codesearch#chromium/src/native_client/src/trusted/validator_ragel/dfa_traversal.py">计算自动机的后缀</a></li> 
- <li>苹果实现的<a href="https://code.google.com/p/chromium/codesearch#chromium/src/third_party/WebKit/Source/wtf/BloomFilter.h">布隆过滤器</a></li> 
- <li><a href="https://code.google.com/p/chromium/codesearch#chromium/src/third_party/libvpx/source/libvpx/vp8/common/textblit.c">布氏算法</a></li> 
-</ol>
-<h2>编程语言类库</h2>
-<ol> 
- <li><a href="http://www.cplusplus.com/reference/stl/">C++ STL</a>，包含的有列表、堆、栈、向量、<a href="http://www.cplusplus.com/reference/algorithm/">排序、搜索和堆操作算法</a></li> 
- <li><a href="http://docs.oracle.com/javase/7/docs/api/">Java API </a>非常广泛，包含的太多</li> 
- <li><a href="http://www.boost.org/doc/libs/1_55_0/libs/algorithm/doc/html/index.html#algorithm.description_and_rationale">Boost C++ 类库</a>，包含了诸如Boyer-Moore和Knuth-Morris-Pratt字符串匹配算法等；</li> 
-</ol>
-<h2>分配和调度算法</h2>
-<ol> 
- <li>最近最少使用算法有多种实现方式，在Linux内核中是基于<a href="https://github.com/mirrors/linux-2.6/blob/master/include/linux/list_lru.h">列表实现</a>的；</li> 
- <li>其他可能需要了解的是先入先出、最不常用和轮询；</li> 
- <li>VAX、VMS系统中大量使用FIFO的变体；</li> 
- <li><a href="http://dl.acm.org/citation.cfm?id=4750">Richard Carr</a>的<a href="http://en.wikipedia.org/wiki/Page_replacement_algorithm#Clock">时钟算法</a>被用于Linux中页面帧替换；</li> 
- <li>Intel i860处理器中使用了随机替换策略；</li> 
- <li><a href="http://en.wikipedia.org/wiki/Adaptive_Replacement_Cache">自适应缓存替换</a>被用于一些IBM的存储控制中，由于<a href="http://www.varlena.com/GeneralBits/96.php">专利原因</a>在PostgreSQL只有简单的应用；</li> 
- <li>Knuth在TAOCP第一卷中提到的<a href="http://en.wikipedia.org/wiki/Buddy_memory_allocation">伙伴内存分配算法</a>被用于Linux内核中，FreeBSD和<a href="http://www.facebook.com/notes/facebook-engineering/scalable-memory-allocation-using-jemalloc/480222803919">Facebook</a>都在使用jemalloc并发分配器；</li> 
-</ol>
-<h2>*nix系统中的核心组件</h2>
-<ol> 
- <li>grep和awk都实现了使用Thompson-McNaughton-Yamada构建算法实现从正则表达式中创建NFA</li> 
- <li>tsort实现了拓扑排序</li> 
- <li>fgrep实现了<a href="http://en.wikipedia.org/wiki/Aho%E2%80%93Corasick_string_matching_algorithm">Aho-Corasick 字符串匹配算法</a>；</li> 
- <li>GNU grep，据作者Mike Haertel所说，<a href="http://lists.freebsd.org/pipermail/freebsd-current/2010-August/019310.html">实现了Boyer-Moore算法</a>；</li> 
- <li>Unix中的crypt(1)实现了<a href="http://zh.wikipedia.org/zh/%E6%81%A9%E5%B0%BC%E6%A0%BC%E7%8E%9B%E5%AF%86%E7%A0%81%E6%9C%BA">哑谜机</a>（Enigma Machine）中的加密算法的变种；</li> 
- <li>Doug Mcllroy基于和James合作的原型实现的<a href="http://www.cs.dartmouth.edu/~doug/diff.pdf">Unix diff</a>，比用来计算Levenshtein距离的标准动态规划算法更好，Linux版本被用来计算最短编辑距离；</li> 
-</ol>
-<h2>加密算法</h2>
-<ol> 
- <li><a href="http://en.wikipedia.org/wiki/Merkle_tree">Merkle树</a>，尤其是Tiger Tree Hash的变种，用于点对点的程序，例如<a href="https://github.com/gtk-gnutella/bitter">GTK Gnutella</a> 和<a href="http://en.wikibooks.org/wiki/LimeWire">LimeWire</a>;</li> 
- <li><a href="http://en.wikipedia.org/wiki/MD5">MD5</a>用于为软件包提供校验码，还用于*nix系统（<a href="https://github.com/mirrors/linux-2.6/blob/b3a3a9c441e2c8f6b6760de9331023a7906a4ac6/crypto/md5.c">Linux实现</a>）中的完整性校验，同时他还支持Windows和OS X系统；</li> 
- <li><a href="http://www.openssl.org/">OpenSSL</a>实现了需要加密算法，诸如AES，Blowfish，DES，SHA-1，SHA-2，RSA，DES等；</li> 
-</ol>
-<h2>编译器</h2>
-<ol> 
- <li>yacc和bison实现了<a href="http://en.wikipedia.org/wiki/LALR_parser">LALR解析器</a></li> 
- <li>支配算法用于基于SSA形式的最优化编译器；</li> 
- <li>lex和flex将正则表达式编译为NFA；</li> 
-</ol>
-<h2>压缩和图片处理</h2>
-<ol> 
- <li> <p>为GIF图片格式而出现的Lempel-Zivsraf算法在图片处理程序中经常被应用，从一个简单的*nix组件转化为一个复杂的程序；</p> </li> 
- <li> <p>运行长度编码被用于生成PCX文件（用于Paintbrush这个程序中），压缩BMP文件和TIFF文件；</p> </li> 
- <li> <p>小波压缩（Wavelet压缩）是JPEG 2000的基础，所以所有生成JPEG 2000文件的数码相机都是实现了这个算法；</p> </li> 
- <li> <p>Reed-Solomon纠错用于<a href="https://github.com/mirrors/linux-2.6/blob/b3a3a9c441e2c8f6b6760de9331023a7906a4ac6/lib/reed_solomon/reed_solomon.c">Linux内核</a>、CD驱动、条形码读取，并且结合卷积从航行团队进行图片传输；</p> </li> 
-</ol>
-<h2>冲突驱动条款学习算法（Conflict Driven Clause Learning）</h2>
-<p>自2000年以来，在工业标准中的SAT（布尔满足性问题）求解器的运行时间每年都在成倍减少。这一发展的一个非常重要的原因是冲突驱动条款学习算法（Conflict Driven Clause Learning）的使用，它结合了Davis Logemann和Loveland的约束编程和人工智能研究技术的原始论文中关于布尔约束传播的算法。具体来说，工业建模中SAT被认为是一个简单的问题（<a href="http://rjlipton.wordpress.com/2009/07/13/sat-solvers-is-sat-hard-or-easy/">见讨论</a>）。对我来说，这是近代最伟大的成功故事之一，因为它结合了先进的算法、巧妙的设计思路、实验反馈，并以一致的共同努力来解决这个问题。<a href="http://dl.acm.org/citation.cfm?id=1536637">Malik和Zhang的CACM论文是一个很好的阅读材料</a>。许多大学都在教授这个算法，但通常是在逻辑或形式化方法的课程中。</p>
-<h2>微博热议</h2>
-<p>Databricks大数据公司联合创始人<a href="http://weibo.com/hashjoin">@hashjoin</a>首先并在微博上传播了这个内容：</p>
+<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>开源SQL in Hadoop解决方案：我们处于什么位置？</h3><p>随着Facebook开源了最近发布的<a href="http://www.infoq.com/news/2013/11/Presto">Presto</a>，已经非常拥挤的SQL in Hadoop市场变得更加错综复杂。一些开源工具正在努力获得开发者的注意：Hortonworks 围绕着Hive创建的<a href="http://hortonworks.com/labs/stinger/">Stinger</a>、<a href="http://incubator.apache.org/drill/">Apache Drill</a>、<a href="http://tajo.incubator.apache.org/">Apache Tajo</a>、Cloudera的<a href="http://www.cloudera.com/content/cloudera/en/products-and-services/cdh/impala.html">Impala</a>、Salesforce的<a href="https://github.com/forcedotcom/phoenix">Phoenix</a>（用于HBase）以及现在的Facebook Presto。</p>
+<p>已经在产品环境中使用Hadoop的组织需要交互式的SQL查询支持，同时能够与已有的BI工具进行平滑的集成。来自于eBay的Vijay Madhavan在他的博客<a href="http://zettanalytics.blogspot.ie/2013/06/sql-in-hadoop.html">Hadoop场景中的SQL</a>一文中声称：</p>
+<p>现在大部分基于Map-Reduce的分析系统能够在非交互式和批量SLA领域良好地工作，包括当前版本的Hive、Pig、Cascading。许多产品正在努力通过提供交互式“SQL in Hadoop”解决方案支持实时交互式SLA。</p>
 <blockquote> 
- <p>很多学生和软件工程师都会好奇自己过去学习的算法有什么实际应用的价值。这个StackExchange的回答列出了各种经典算法在几个开源项目中的应用。<a href="http://t.cn/8kAP4yG">http://t.cn/8kAP4yG</a> 作者罗列出了从最基础的hash table到字符串匹配和加密算法等在Chromium和Linux内核的代码。查看开源代码是学习算法实现一个好途径。</p> 
+ <p>SQL in Hadoop解决方案的用例包括支持交互式ad-hoc查询；支持使用MicroStrategy 或者Tableau 这样的BI系统进行报表/可视化；支持多来源（multi-source）数据，例如HDFS中的行为型数据必须被连接到RDBMS或者其他来源中的人口统计数据。</p> 
 </blockquote>
-<p>大家也纷纷发表了自己的看法：</p>
-<p><a href="http://weibo.com/n/GeniusVczh">@GeniusVczh</a>：</p>
-<blockquote> 
- <p>所谓的算法实现就跟背书一样，所以如果不是为了学习语法，千万不要看那些带代码的编程书，或者编程书里面的代码。以学习为目的的话，东西就自己做，然后自己用，用出翔了，你就知道他为什么不好了。</p> 
-</blockquote>
-<p><a href="http://weibo.com/n/%E5%B7%A6%E8%80%B3%E6%9C%B5%E8%80%97%E5%AD%90">@左耳朵耗子</a>：</p>
-<blockquote> 
- <p>说算法没啥用的人基本上说明他只在简单的堆砌业务功能代码的井底中。</p> 
-</blockquote>
-<p><a href="http://weibo.com/n/%E8%96%9B%E6%AD%A3%E5%8D%8E-%E4%B8%AD%E5%9B%BD%E7%A7%91%E5%AD%A6%E9%99%A2">@薛正华-中国科学院</a>：</p>
-<blockquote> 
- <p>我一直觉得在讲述每一个技术前，最好先让大家知道这个技术能干什么，曾经干过什么，将来或许能用在什么地方。这会增加大家对技术的兴趣、理解和灵活运用，会让大家学的更好。这挺重</p> 
-</blockquote>
-<p><strong>原始问题链接：<a href="http://cstheory.stackexchange.com/questions/19759/core-algorithms-deployed/19773#19773">Core algorithms deployed</a></strong></p>
-<p>感谢吴峰光对本文的审校。</p><br><br><br><br><br><br></body></html>
+<p>很多这样的SQL in Hadoop解决方案在某些方面有共同点：</p>
+<ol> 
+ <li>在元数据层面上，好像<a href="http://www.infoq.com/articles/HadoopMetadata">HCatalog</a>/Hive Metastore将它们自己制定成了跨不同数据源管理模式事实上（de-facto）的标准。</li> 
+ <li>然后有某些数据格式，例如<a href="http://www.infoq.com/news/2013/12/$parquet.io">Parquet</a>和<a href="http://www.bigdatarepublic.com/author.asp?section_id=2840&amp;doc_id=262757">ORC</a>，它们对于选择的工作负载而言正在变得越来越流行，同时在自然环境中使用的也越来越广泛。</li> 
+ <li>大部分解决方案好像都支持各种各样的ANSI SQL（不同的版本：<a href="http://en.wikipedia.org/wiki/SQL-92">1992</a>、<a href="http://en.wikipedia.org/wiki/SQL:1999">1999</a>、<a href="http://en.wikipedia.org/wiki/SQL:2003">2003</a>）。</li> 
+</ol>
+<p>上面几点可以帮助用户在不同的SQL in Hadoop解决方案之间迁移，不会有很多令人头痛的问题。</p>
+<p>但是也有一些值得注意的区别，如下所示：</p>
+<ul> 
+ <li>解决方案中的一部分是由Apache支持的，同时也伴随着社区的支持（Stinger、Drill、Tajo）；其他的则是由单独的实体组织拥有（Impala、Phoenix、Presto）。</li> 
+ <li>另外，有一部分解决方案在数据源方面有一些限制，它们能够查询Hadoop生态系统；而另一些从架构的角度看更加灵活，可以查询关系型数据库和NoSQL数据存储（Presto、Drill）。</li> 
+ <li>另一点是允许在数据上执行的操作不同：有一些是纯（分布式）查询引擎，而另一些则允许执行更新操作。</li> 
+</ul>
+<p>在过去的10到18个月中，有越来越多的人和商业实体已经<a href="http://hadapt.com/blog/2013/10/02/classifying-the-sql-on-hadoop-solutions/">决定</a>尝试一下，对存储在Hadoop中的数据实现低延迟、<a name="OLE_LINK18"></a><a name="OLE_LINK17">ad-hoc</a> SQL访问。无论怎样，从长远来看由于重叠的用例和环境喜好的不同有适合多种SQL in Hadoop解决方案生存的空间。</p>
+<p><b>查看英文原文</b>：<a href="http://www.infoq.com/news/2013/12/open-source-sql-hadoop-solutions">Open Source SQL-in-Hadoop Solutions: Where Are We?</a></p><br><br><br><br><br><br></body></html>

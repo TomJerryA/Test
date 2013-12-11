@@ -2,10 +2,16 @@
  <head></head> 
  <body>
   <div>
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/49.java">Firefox 26 Blocks Java</a>Mozilla Firefox 26 now blocks all Java plug-ins by default due to security concerns but allows users to run such plug-ins if they want to.
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/1.java">Oracle Invites Community to Weigh-In on Java EE 8</a>In keeping with their tradition of community collaboration on the Java platform, Oracle is asking the enterprise development community to participate in a survey to help define the requirements for the next version of Java Enterprise Edition, Java EE 8.
   </div>
   <div>
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/48.java">Rocket to Mars: A Sprint Planning Game</a>“Many team and their product owners believe that the team's unique job is to deliver more and more story points, but we consider this to be a complete misunderstanding of the relation between the team and the product owner” said Damien Thouvenin and Pierrick Revol. They ran a sprint planning game on investing time to produce stories, investigate issues, reduce technical debt, or do training.
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/0.java">Interview with David Haney, Creator of SimplSockets</a>We interviewed David Haney, creator of SimplSockets for .NET about TCP programming in the modern age.
+  </div> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/49.java">Firefox 26 Blocks Java</a>Mozilla Firefox 26 now blocks all Java plug-ins by default due to security concerns but allows users to run such plug-ins if they want to. 
+  </div> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/48.java">Rocket to Mars: A Sprint Planning Game</a>“Many team and their product owners believe that the team's unique job is to deliver more and more story points, but we consider this to be a complete misunderstanding of the relation between the team and the product owner” said Damien Thouvenin and Pierrick Revol. They ran a sprint planning game on investing time to produce stories, investigate issues, reduce technical debt, or do training. 
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/47.java">Visual Commander Brings Back Visual Studio Macros</a>Vlasov Studio has released an extension for VS 2010 and later that restores the ability to create and run macros in both VB and C#. 
@@ -144,12 +150,6 @@
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/4.java">Case Studies of Lean and Kanban from Central Europe</a>The 2013 international conference in Central Europe about Lean and Kanban (LKCE13) included presentations about change management, systems thinking, leadership, learning, and teamwork, and case studies from larger organizations that have applied Lean and Kanban. InfoQ interviewed Arne Roock about deployment of Lean and Kanban in agile software development. 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/3.java">New Owners for Unity.Mvc and Unity.WebAPI</a>The team behind the website FeedbackHound has taken ownership of the Unity.Mvc and Unity.WebAPI. These open source libraries allow for integration between ASP.NET MVC &amp; Web API and Microsoft’s IoC framework, Unity. 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/2.java">Microsoft to Stop Honoring SHA1 Certificates for SSL and Code Signing</a>Following recommendations by the US National Institute of Standards and Technology, Microsoft intends to stop honoring SHA1 for SSL and Code Signing certificates. This policy will begin in 2017 and applies to Windows Vista, Windows Server 2008, and later operating systems. 
   </div>   
  </body>
 </html>

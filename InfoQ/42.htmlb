@@ -1,80 +1,212 @@
-<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>书评：Java应用架构</h3><p>《Java应用架构：以OSGi为例讲解模块化模式》（Java Application Architecture: Modularity Patterns with Examples using OSGi）是Kirk Knoernschild编写的一本优秀图书，它通过18个模式列表来讲解怎样在应用程序的设计中实现模块化设计。</p><p>本书的第一部分介绍了使用模块化的理由，这是通过介绍运行时和开发时的模块化支持进行的。接下来，介绍了它是如何在设计时能够有利于架构并展现了怎样与面向服务的架构进行集成。最后，会有一个参考样例来展示这些功能如何组合在一起。</p><p>本书的第二部分是模式的列表，它分成五个不同的部分，这些模式可以在<a href="http://www.kirkk.com/modularity/pattern-catalog/" target="_blank">该站点的模式目录中找到</a>:</p><ul> 
- <li><b>基本模式（Base Pattern）</b> 
-  <ul> 
-   <li><a href="http://www.kirkk.com/modularity/2009/12/manage-relationships/" target="_blank">管理关系（Manage Relationships）</a> – 设计模块关系。</li> 
-   <li><a href="http://www.kirkk.com/modularity/2009/12/module-reuse/" target="_blank">模块重用（Module Reuse）</a> – 强调模块级别的重用。</li> 
-   <li><a href="http://www.kirkk.com/modularity/2009/12/cohesive-modules/" target="_blank">模块内聚（Cohesive Modules）</a> – 模块的行为应该只服务于一个目的。</li> 
-  </ul> </li> 
- <li><b>依赖模式（Dependency Pattern）</b> 
-  <ul> 
-   <li><a href="http://www.kirkk.com/modularity/2009/12/acyclic-relationships/" target="_blank">非循环关系（Acyclic Relationships）</a> – 模块关系必须是非循环的。</li> 
-   <li><a href="http://www.kirkk.com/modularity/2009/12/levelize-modules/" target="_blank">等级化模块（Levelize Modules）</a> – 模块关系应该是等级化的。</li> 
-   <li><a href="http://www.kirkk.com/modularity/2009/12/physical-layers/" target="_blank">物理分层（Physical Layers）</a> – 模块关系不应该违反概念上的分层。</li> 
-   <li><a href="http://www.kirkk.com/modularity/2009/12/container-independence/" target="_blank">容器独立（Container Independence）</a> – 模块应该独立于运行时容器。</li> 
-   <li><a href="http://www.kirkk.com/modularity/2009/12/independent-deployment/" target="_blank">独立部署（Independent Deployment）</a> – 模块应该是独立的可部署单元。</li> 
-  </ul> </li> 
- <li><b>可用性模式</b> 
-  <ul> 
-   <li><a href="http://www.kirkk.com/modularity/2009/12/published-interface/" target="_blank">发布接口（Published Interface）</a> – 使模块的发布接口众所周知。</li> 
-   <li><a href="http://www.kirkk.com/modularity/2009/12/external-configuration/" target="_blank">外部配置（External Configuration）</a> – 模块应该可以在外部进行配置。</li> 
-   <li><a href="http://www.kirkk.com/modularity/2010/08/defaultimplementation/" target="_blank">默认实现（Default Implementation）</a> – 为模块提供一个默认实现。</li> 
-   <li><a href="http://www.kirkk.com/modularity/2009/12/module-facade/" target="_blank">模块门面（Module Facade）</a> – 创建一个门面，使其担当细粒度模块底层实现的粗粒度入口。</li> 
-  </ul> </li> 
- <li><b>扩展性模式</b> 
-  <ul> 
-   <li><a href="http://www.kirkk.com/modularity/2009/12/abstract-modules/" target="_blank">抽象化模块（Abstract Modules）</a> – 依赖于模块的抽象元素。</li> 
-   <li><a href="http://www.kirkk.com/modularity/2009/12/implementation-factory/" target="_blank">实现工厂（Implementation Factory）</a> – 使用工厂来创建模块的实现类。</li> 
-   <li><a href="http://www.kirkk.com/modularity/2009/12/separate-abstractions/" target="_blank">分离抽象（Separate Abstraction）</a> – 将抽象与实现它们的类放在各自独立的模块之中。</li> 
-  </ul> </li> 
- <li><b>通用模式</b> 
-  <ul> 
-   <li><a href="http://www.kirkk.com/modularity/2009/12/colocate-exceptions/" target="_blank">就近异常（Colocate Exceptions）</a> – 异常应该接近抛出它们的类或接口。</li> 
-   <li><a href="http://www.kirkk.com/modularity/2009/12/levelized-build/" target="_blank">等级化构建（Levelize Build:）</a> – 按照模块的等级执行构建。</li> 
-   <li><a href="http://www.kirkk.com/modularity/2009/12/test-module-2/" target="_blank">测试模块（Test Module）</a> – 每个模块应该有一个对应的测试模块，用来校验模块的行为并阐述其用法。</li> 
-  </ul> </li> 
-</ul><p>本书的最后一部分涵盖了模式化的应用程序，它使用OSGi作为Java模块系统的样例。尽管这一部分是特定于OSGi的，但是本书其他部分所讲解的模式可以用于Java的任意模块系统，包括即将到来的Jigsaw项目。对于那些没有运行时模块系统但又想构建模块化软件的人们来说，这也是一个很好的指导。</p><p>InfoQ联系到了Kirk，并询问了他关于软件和模块化的一些想法，我们的讨论是从过去几十年来软件的复杂性是如何变化开始的：</p><blockquote> 
- <p><b>Kirk</b>: 毫无疑问，在过去的几十年中软件获得了持续的增长。更加强大的硬件以及更具表现力的编程语言使得创建强大的软件系统更为容易。</p> 
- <p>如今，大多数的开发人员不用再过多担心要应对严格的内存限制以及有限的处理能力。例如，一项由Jyv&auml;skyl&auml;进行的研究显示，在1990年存在1200亿行代码，到2000年这个数字已经增长了一倍多到了2500亿行。这个研究也声明代码行数每七年就翻一倍。</p> 
- <p>这是很令人吃惊的并且需要对此有清醒的认识，它意味着相对于某些人编写第一行代码的时候，我们在未来的七年中将会编写比以前更多的代码。在很多方面来看，这种代码上的增长并不是一件坏事。如果软件没有增长和进化，它最终就会消亡。使用软件的人们很自然地希望从它身上得到更多，所以我们要推出新的版本并进行更新来支持我们的用户。但是更多的代码会意味着更多的维护工作。更大的系统天生就会比那些较小的系统维护起来更为困难。</p> 
-</blockquote><p><b>Info</b><strong>Q：在软件的设计和架构方面，有什么影响吗？</strong></p><blockquote> 
- <p><b>Kirk</b>令人遗憾的是，目前还没有明显的影响。在很多方面，我们依然还是以相同的方式来设计软件，就像15或20年前所做的那样。但是，这不会持续太久，有些事情需要发生变化。</p> 
- <p>开发庞大的软件已经不合适了。SOA以及服务在正确的方向上迈出了一步，但是只解决了所面临挑战的一部分。服务设计中最复杂的一个方面就是确定服务的粒度。如果太粗粒度的话，在跨各种上下文方面服务的用处就不大（例如可重用性），而太细粒度的话，对于发挥作用来说服务所做的就有所不足（如可用性）。
-  <!-- This highlights an interesting dilemma. --></p> 
- <p>正如我在本书中所讨论的，最大化重用会使可用变得复杂。单个抽象层次并不能解决这个问题。更多的层级是必要的，而模块化就是下一个等级，模块化就是下一步，它会帮助你实现“一直向下的”架构。（译者注：作者在书中借鉴了“海龟背地球”的故事，原文是“turtles all the way down”。如想更多地了解英文中的这个俗语，读者可以参考维基百科的如下地址：http://en.wikipedia.org/wiki/Turtles_all_the_way_down。在本书中，作者使用了类似的词汇“architecture all the way down”，指的是架构不仅要关注高层的服务，还要关注中间的模块和包甚至底层的代码，我们将这个短语译为“一直向下的架构”。）</p> 
- <p>最终形成的结果就是，你在合适等级的粒度上使用已有的模块来组装服务，模块是与服务不同等级的粒度，这有助于你实现一直向下的架构。</p> 
-</blockquote><p><strong>InfoQ：JVM中模块化的未来如何？</strong></p><blockquote> 
- <p><b>Kirk</b>：构建于JVM之上的模块化方面，有很多的事情正在进行。目前，OSGi正在应用于各个主要厂商的产品之中并且在很多的组织中都是可以使用的。</p> 
- <p>令人遗憾的是，OSGi在企业中还没有获得驱动力。有些人说它太复杂，但他们真正想说的是设计模块化的软件是很困难的。正如你所熟悉的Frederick Brooks所言，这个问题是以软件开发的本质复杂性为核心的。架构和设计是十分困难的。</p> 
- <p>然而，有弹性的、高适应性的、灵活的以及可维护的软件是成功的关键，尤其是今天快节奏的企业环境中，在企业中交付需要比以往更大的软件开发团队。当然，OSGi并不是唯一的模块系统。Oracle也在努力将Jigsaw加入到Java SE之中，这将会在2013年可用（译者注：Jigsaw已经推迟到了预计2015年发布的Java SE9之中，本文的最初发表日期为2012年7月）。Java平台将会支持模块化，它将会改变设计软件系统的方式。</p> 
-</blockquote><p><b>In</b><strong>foQ：是什么促使你决定编写《Java应用架构》这本书？</strong></p><blockquote> 
- <p><b>Kirk</b>：大约在10年以前，我认识到我所设计的软件有一个严重的问题。我们将所有的精力放在设计良好的类结构上，然后我们将所有的东西打包到一个巨大的可部署单元中，如WAR或EAR文件。这感觉起来并不好。所有的努力是用来创建灵活的软件，但是我们在重用、可维护性以及灵活性方面并没有看到明显的收益。</p> 
- <p>与此同时，我签署了本人第二本书的合约并计划编写关于软件模式的内容。我将自己在软件设计方面所面临的严重问题带到了写作之中；感觉有些东西丢失了，而这使得我苦苦追寻的收益不可能实现。我一直以来就是Bob Martin的<a href="http://en.wikipedia.org/wiki/SOLID_(object-oriented_design)" target="_blank">SOLID</a>原则和<a href="http://www.amazon.com/Design-Patterns-Elements-Reusable-Object-Oriented/dp/0201633612" target="_blank">GOF模式（译者注：参见机械工业出版社的《设计模式：可复用面向对象软件的基础》）</a>的忠实粉丝。我还开始研究Clemens Szyperski的作品，此人是<a href="http://www.amazon.com/Component-Software-Object-Oriented-Programming-Edition/dp/0201745720" target="_blank">《Component Software: Beyond Object-Oriented Programming》</a>（译者注：该书中文版由电子工业出版社引进，中文书名为《构件化软件--超越面向对象编程》）一书的作者，以及John Lakos的作品，此人编写了<a href="http://www.amazon.co.uk/Large-Scale-C-Software-Design-APC/dp/0201633620" target="_blank">《Large Scale C++ Software Design》</a>（译者注：该书中文版由中国电力出版社引进，中文书名为《大规模C++程序设计》）。我接受了所有的这些理念，并且改变了自己设计软件系统的方式，也就是关注JAR文件并将其视为模块化单元。</p> 
- <p>在过去的几年中，我完善了这种方式。通过将JAR文件作为模块化单元，我突然能够实现很多以前苦苦追寻的收益。你在本书中看到的很多模式都是10年前开始的结果。同时，我曾经还有一本完成大约70%的书，但是它里面没有包含我在同一时期所使用的很多理念。所以我暂时停止了那本书，而是花费时间继续证明这些模式，大约在两三年前，遇到到一个很有耐心的出版人，让我相信一切已经就绪。可能这更多地描述了这本书是怎么来的，而不是我为什么要写它。</p> 
- <p>最终，我写这本书是因为这些模式异乎寻常地改善了我开发的系统，我希望将它们与全世界共享。</p> 
-</blockquote><p><strong>InfoQ：这本书是特定于OSGi的吗？</strong></p><blockquote> 
- <p><b>Kirk</b>：绝对不是这样的。它不特定于任何的模块框架。这些模式甚至整本书在设计之时就是要借助标准Java所能提供的特性来进行使用的。实际上，在2006年之前，我并没有接触过OSGi，这已经是我开始探索这个问题四年之后的事情了。</p> 
- <p>我发现OSGi后感觉茅塞顿开。我发现了一个志同道合的社区以及对众多模式提供运行时支持的框架。当我学习OSGi的时候，我开始思考将已有的应用迁移至OSGi都需要些什么。</p> 
- <p>本书提供了一些关于OSGi的样例，但是主要是用来讲述OSGi的威力以及让大家简单了解将系统从标准Java迁移到OSGi都需要做什么。</p> 
-</blockquote><p><b>Info</b><strong>Q：如果你不使用OSGi或Jigsaw，能进行模块化吗？</strong></p><blockquote> 
- <p><b>Kirk</b>：绝对是可以的。在第二章中，我讨论了模块化的两个方面——运行时模型（runtime model）和开发模型（development model）。开发模型又可以进一步划分为编程模型（programming model）和设计范式（design paradigm）。
-  <!--?p--></p> 
- <p>模块框架会为你提供编程模型和运行时模型。但是不会有什么框架帮助你设计很好的一组模块。这个任务留给了开发人员，这也是本书关注的焦点。</p> 
- <p>我想与面向对象范式做一个类比。仅仅因为语言支持继承、多态、封装以及动态绑定并不能保证产生伟大的面向对象软件。设计模式会帮助你做到这一点。</p> 
- <p>对于模块化来说是同样的道理。即便你使用了模块化框架，并不能保证会有模块化的软件。所以本书的目的在于帮助你首先设计模块化的软件，不管你使用的是OSGi、Jigsaw还是标准的Java。按照这种方式，你可以马上使用本书的理念，而且没有必要采用任何新的框架也不用任何额外的基础设施投资。</p> 
- <p>大多数的样例代码使用标准的Java来论证理念。我也增加了一些基于OSGi的代码样例，它们用来阐述你能够从运行时模块化中所获得的收益。所以，书中的理念除了帮助你在当下设计模块化的软件以外，当运行时模块化可用并且你决定使用它的时候，这些理念也会为你做好准备。</p> 
-</blockquote><p><b>Info</b><strong>Q：模块化只是有关于重用吗？</strong></p><blockquote> 
- <p><b>Kirk</b>：重用是有意思的，因为它具有卖点。我的意思是在过去几十年主要的技术趋势中，都将重用作为其主要的优势。在90年代，它是面向对象编程。稍后就是基于组件的开发（component-based development）。然后我们接触到的就是面向服务的架构。</p> 
- <p>具有讽刺意味的是，它们中的每一个都没有达到预期，众多的开发团队依然在重用中挣扎。重用当然是模块化的优势之一，但它并不是灵丹妙药。模块化填补了其他技术手段无法填补的空白，因为模块化允许你在不同等级的抽象和粒度上来关注设计。如果你阅读本书第二章和第五章的话，你会发现这个空白在哪里以及模块化如何提供帮助。</p> 
- <p>但是，模块化也有其他的优势。这包括更好的可维护性、依赖管理以及增强理解复杂软件系统的能力。在本书第一部分有几章详细讨论了这些理念。</p> 
-</blockquote><p><b>Inf</b><strong>oQ：模块化能够用于已有的系统吗，或者它需要进行预先设计吗？系统能不能重构得更加模块化？</strong></p><blockquote> 
- <p><b>Kirk</b>：如果你在考虑架构和设计的时候，就开始思考模块化的话。这样会更加容易一些。但是，如果你面临的是已有系统，你依然可以对其进行模块化，如果你具备良好的类设计更是如此。实际上，本书的第八章，就会带你做一个练习，我们会使用模式对并不那么模块化的已有系统进行几次重构。最后能够得到高度模块化的系统，这是阐述模块化收益的一个很有力的例子。</p> 
- <p>在你做这些练习的时候，通常会发现有意思的事情。你会发现在类设计中存在一些你以前所不知道的缺陷。例如，几乎所有的团队都想对软件系统进行分层。通常，这意味着他们具有展现层、领域层以及数据访问层。但这是逻辑分层。也就是，它们在理念上存在于类结构中，但并不是物理上的可部署单元。</p> 
- <p>当试图将你的软件划分为模块的时候，你会开始关注可部署单元。当你这样做的时候，你一般会发现这其中存在一些我们事先并不知道的违反逻辑分层的地方。关于这个问题，在物理分层模式中我进行了更多的讨论。</p> 
-</blockquote><p><b>Info</b><strong>Q：对于Java模块化的未来，你怎么看？</strong></p><blockquote> 
- <p><b>Kirk</b>：模块化将会改变我们在Java平台上开发和交付软件系统的方式。在开发的角度来看，它填补了其他主要的设计范式所遗留的空白。在软件交付的角度来看，它标志着庞大和静态平台的终结。这将会促使更为强大的生态系统涌现，开发人员能够很容易地通过仓库提供模块。</p> 
- <p>鉴于在移动生态系统中应用商店获得了令人兴奋的成功，这种仓库将有可能会成为“企业模块商店”。有些模块可能会是免费的，但是另外一些可能会付费才能使用。这就会允许通过不同的来源将运行时环境拼凑完整。在有些时候，有可能环境本身也是根据应用程序的基础设施需求来进行组装的。</p> 
-</blockquote><p>本书中完整的模式列表可以在<a href="http://modularity.kirkk.com" target="_blank">本书的站点上</a>找到（以及<a href="http://modularity.kirkk.com/jaamain.html" target="_blank">移动优化版本</a>）。本书的<a href="http://modularity.kirkk.com/JAASample.pdf" rel="nofollow" target="_blank">一个样例</a>可以在线获取，书中模式的样例可以在<a href="https://github.com/pragkirk/poma" target="_blank">GitHub上得到</a>。本书可以在Amazon上<a href="http://www.amazon.com/gp/product/0321247132/" target="_blank">购买印刷版</a>以及<a href="http://www.amazon.com/gp/product/B007KOGS5U/" target="_blank">Kindle</a>和<a href="http://itunes.apple.com/us/book/java-application-architecture/id510941880" target="_blank">iBooks</a>格式的电子版。</p><p>&nbsp;</p><p class="MsoPlainText">这些Q&amp;A基于Kirk Knoernschild编写的《Java应用架构：以OSGi为例讲解模块化模式》一书，该书由Pearson/Prentice Hall Professional在2012年3月出版，ISBN为0321247132。关于更多的信息，可以访问该<a target="_blank" href="http://www.informit.com/title/0321247132">站点</a>。（译者注：本书的中文版由机械工业出版社华章图书引进，目前本人正在翻译，预计今年9月份可以出版，关注模块化和OSGi技术的读者敬请期待。最终的中文版书名有待编辑和出版社确认。关于内容和术语的翻译，您如果有好的建议，欢迎与我联系交流。）</p><h2>关于本书作者</h2><p><strong><img vspace="4" hspace="4" align="left" _p="true" _href="img://kirk.jpg" alt="" src="http://www.infoq.com/resource/articles/java-application-architecture/en/resources/kirk.jpg;jsessionid=C10FD9EC933373DD92AB58CE04055653;jsessionid=B4DC99E68988EA0CA963C95DBA7FBA09" />Kirk Knoernschild</strong>是一位软件工程师，热衷于构建伟大的软件。他对设计、架构、应用开发平台、敏捷开发以及IT产业的整体情况都有很大的兴趣，尤其是与软件开发相关的内容。他的新书《Java应用架构：以OSGi为例讲解模块化模式》出版于2012年，介绍了18个帮助你设计模块化软件的模式。你可以访问他的<a target="_blank" href="http://techdistrict.kirkk.com">个人站点</a>。</p><div style="clear:both">
- &nbsp;
-</div><h2>关于评论者</h2><p><strong><img vspace="4" hspace="4" align="left" _p="true" _href="img://alexblewitt.jpg" alt="" src="http://www.infoq.com/resource/articles/java-application-architecture/en/resources/alexblewitt.jpg;jsessionid=C10FD9EC933373DD92AB58CE04055653;jsessionid=B4DC99E68988EA0CA963C95DBA7FBA09" />Dr Alex Blewitt</strong>工作于伦敦的一家投资银行，但依然在抽时间了解OSGi与Eclipse的新闻。尽管曾经作为EclipseZone的编辑和Eclipse Ambassador的候选人，但是他的日常角色与Eclipse或Java毫无关系。除此以外的时间他会用来陪伴自己的家人，并在天气晴好的时候带他们乘飞机旅行。</p><div class="clearer-space">
- &nbsp;
-</div><br><br><br><br><br><br></body></html>
+<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>博文共赏：在Node.js中使用声明式缓存</h3><h2>Why</h2>
+<p>写了多年的 Java 程序，即使在转投 <a href="http://nodejs.org">Node</a> 之后，仍然对 <a href="http://projects.spring.io/spring-framework">Spring 框架</a> 的 IoC 、Declarative XXX 记忆犹新，以至于当 <a href="http://nodejs.org">Node</a> 项目要用到缓存时，自然地想起了 <a href="http://docs.spring.io/spring/docs/current/spring-framework-reference/html/cache.html#cache-annotations">Declarative caching</a>，就有了山寨一把的想法。。。</p>
+<h3>问题</h3>
+<p>为什么用缓存就不说了，地球猿都知道，直接看问题，假设我们有一个查询客户信息的函数：</p>
+<pre>
+/** Find customer from db by id.
+  @param id [Integer|String] customer id
+  @param cb [Function] callback (err, customer)
+*/
+function findCustomer(id, cb) {
+  db.query(&quot;SELECT * FROM tbl_customers WHERE id = ?&quot;, [id], cb);
+}
+</pre>
+<ul> 
+ <li>本文的示例代码假设读者了解 <a href="http://nodejs.org">Node</a> 及异步编程，如果了解 <a href="http://underscorejs.org">Underscore.js</a>, <a href="https://github.com/caolan/async#readme">Async.js</a> 会更有帮助</li> 
+ <li>简单起见，示例代码忽略了数据库/Cache Server 连接的建立、释放，以及部分的异常处理</li> 
+</ul>
+<p>要对 customers 进行缓存，无非是先检查 cache ，命中则直接返回，否则查询数据库，先缓存结果然后返回。 最显而易见的实现大概是这样的：</p>
+<pre>
+// The cached version of findCustomer.
+function findCustomerWithCache(id, cb) {
+  fromCache('customer:' + id, function(err, cust) {
+    if (err) return cb(err);
+
+    if (cust) {  // cache hit
+      cb(null, cust);
+    }
+    else {  // cache missed
+      loadAndCacheCustomer(id, cb);
+    }
+  });
+}
+</pre>
+<p>以下是辅助函数的定义，假设 <code>cached</code> 是我们使用的缓存服务实例:</p>
+<pre>
+/** Try to retrieve item with key k from cache.
+  @param k [String] key of the cached item
+  @param cb [Function] callback (err, v) v is the cached item, false if NOT found
+*/
+var fromCache = cached.get;
+
+/** Save value v to cache with key k.
+  @param dur [Integer] seconds before cache expires
+  @param k [String] key of the cached item
+  @param v [Any] item to be cached
+  @param cb [Function] callback (err, v)
+*/
+function toCache(dur, k, v, cb) {
+  cached.set(k, v, dur, function(err) {
+    cb(err, v);
+  });
+}
+
+// find customer from db, and cache it before return the result
+function loadAndCacheCustomer(id, cb) {
+  var _cacheCust, _loadAndCache;
+  _cacheCust = function(cust, cb) {
+    toCache(86400, 'customer:' + id, cust, cb);  // caching for 1 day
+  };
+
+  _loadAndCache = async.compose(_cacheCust, findCustomer);
+  _loadAndCache(id, cb);
+}
+</pre>
+<p>很好，现在调用 <code>findCustomerWithCache</code> 函数就能够利用到缓存了。</p>
+<p>现在的问题是：</p>
+<ol> 
+ <li>凡是有一个需要缓存的 <code>findXXX</code> 函数，都要编写配套的 <code>findXXXWithCache</code> <code>loadAndCacheXXX</code></li> 
+ <li>使用或不使用缓存，需要调用不同的函数，这意味着一旦切换，就要修改所有的函数调用处</li> 
+</ol>
+<h2>利用高阶函数重用代码</h2>
+<p>首先考虑通过函数重用来解决第一个问题：如果有一个通用的函数能够代为处理缓存相关的事务，只在缓存没有命中时调用实际的查询过程，就达到目的了。</p>
+<h3>API 设计</h3>
+<p>设计一个函数 (api) 最好的方法就是首先把期望的使用形式写出来。所以这个关于缓存的高阶函数，暂且命名为 <code>withCache</code> ，或许这么用起来会不错：</p>
+<pre>
+// The cached version of findCustomer.
+function findCustomerWithCache(id, cb) {
+  var _getKey = function(id) { return 'customer:' + id; };
+  withCache(86400, _getKey, findCustomer, id, cb);
+}
+</pre>
+<p>也就是说，我们只要把数据查询过程 <code>findCustomer</code> 委托给一个高阶函数 <code>withCache</code> ，并且设定缓存时长以及 key 的生成规则，就可以了，缓存检查、更新的整个流程都由这个函数封装，从而达到重用的目的。</p>
+<h3>封装缓存流程</h3>
+<pre>
+/** The generic caching routine.
+  @param dur [Integer] seconds before cache expires
+  @param keyBuilder [Function] (args...) given the arguments, return a unique cache key
+  @param fn [Function] the actual data loading routine
+  @param args... [Any...] arguments applys to fn to load data
+  @param cb [Function] callback (err, data) applys to fn to receive data
+ */
+function withCache(dur, keyBuilder, fn) {
+  var args, cb, key;
+  args = Array.prototype.slice.call(arguments, 3, -1);
+  cb   = _.last(arguments);             // the callback function
+  key  = keyBuilder.apply(null, args);  // compute cache key
+
+  fromCache(key, function(err, data) {
+    if (err) return cb(err);
+
+    if (data) {  // cache hit
+      cb(null, data);
+    }
+    else {  // cache missed
+      loadAndCacheData.call(null, dur, key, fn, args, cb);
+    }
+  });
+}
+
+/** Load from db using fn.
+  and cache it using the given key before return the result.
+ */
+function loadAndCacheData(dur, key, fn, args, cb) {
+  var _cacheData = _.partial(toCache, dur, key);
+  async.compose(_cacheData, fn).apply(null, args.concat(cb));
+}
+</pre>
+<p>一旦缓存流程被封装起来，重用就变得容易了，现在我们可以对任意的数据查询函数应用缓存了。</p>
+<p>用高阶函数封装过程，这也是函数式编程重用代码的一种最基本的方法，就像 <code>each</code> <code>map</code> <code>reduce</code> 等函数对集合应用的封装一样。</p>
+<p>注意到 <code>withCache</code> 函数的签名，参数的排列顺序不是随意的，而是考虑了它们的适用范围 (或稳定程度)，使得函数重用更为方便，现在很容易做到：</p>
+<pre>
+var withOneDayCache = _.partial(withCache, 86400);
+
+// the same as: withCache(86400, _getKey, findCustomer, id, cb);
+var _getKey = function(id) { return 'customer:' + id; };
+withOneDayCache(_getKey, findCustomer, id, cb);
+
+// exactly the same as the findCustomerWithCache function above
+var findCustomerWithOneDayCache = _.partial(withOneDayCache, _getKey, findCustomer);
+</pre>
+<h2>函数代理</h2>
+<p>现在我们距离声明式缓存仅一步之遥，不过在此之前，我们还可以再进一步：我们想要以更接近‘声明式’地获取 <code>findCustomerWithOneDayCache</code> 这样的函数。</p>
+<p>以 <a href="http://docs.spring.io/spring/docs/current/spring-framework-reference/html/cache.html#cache-annotations">Spring Declarative annotation-based caching</a> 为参照：</p>
+<pre>
+@Cacheable(&quot;customers&quot;)
+public Customer findCustomer(Integer id);
+</pre>
+<p>在 <a href="http://nodejs.org">Node</a> 中，我们希望能够以以下方式‘声明’某个函数‘应该使用缓存’：</p>
+<pre>
+findCustomerWithCache = cacheable(findCustomer, { ns: 'customer', dur: 86400 });
+</pre>
+<p>为便于理解，可将 <code>cacheable</code> 类比为 <a href="http://docs.spring.io/spring/docs/current/spring-framework-reference/html/aop-api.html#aop-pfb">Spring ProxyFactoryBean</a>，通过它，我们可以获得一个代理，其表现形式无异于原函数 (如本例中 <code>findCustomer</code>)，却能够在背后默默地帮我们完成缓存的相关处理。</p>
+<p>为实现这一机制，我们首先需要一个通用的 cache key 生成方式:</p>
+<pre>
+/** Generates cache key using function arguments.
+  @param ns [String] namespace, prefix of the cache key
+  @param args [Array] arguments for loading data
+ */
+function getKey(ns, args) { return ns + ':' + ... }
+</pre>
+<p>使用前缀 + 参数列表自动生成 cache key ，对于含有多个参数的情况，可以使用 hash (参考<a href="http://docs.spring.io/spring/docs/current/spring-framework-reference/html/cache.html#cache-annotations-cacheable-default-key">Default Key Generation</a>)，这里我就不写了。</p>
+<p>接下来就简单了，利用之前的成果，我们很容易就可以写出满足上述形式的 <code>cacheable</code> 函数：</p>
+<pre>
+/** Wrap the given function fn to use the caching service.
+  @param fn [Function] (args..., cb) the actual data loading routine
+  @param opts [Object] options
+    ns:  [String] namespace, prefix of the cache key
+    dur: [Integer] seconds before cache expires
+ */
+function cacheable(fn, opts) { return _.partial(withCache, opts, getKey, fn); }
+</pre>
+<p>当然， <code>withCache</code> 需要稍稍改动：接受一个 options 对象作为参数。</p>
+<h2>声明式缓存</h2>
+<p>好了，就差最后一步：如何能够在不影响代码的情况下，随意设置缓存参数 (是否缓存、缓存时长等)？</p>
+<p>老办法，首先设定我们的期望，假设 <code>findCustomer</code> 是由 <code>customers</code> 模块提供的，可以这样使用:</p>
+<pre>
+var custs = require('customers');
+custs.findCustomer(1, function(err, customer) {
+  // do something with the customer
+  ...
+});
+</pre>
+<p>我们希望缓存对 <code>findCustomer</code> 的使用者是透明的，即无论缓存与否或缓存多长时间，上述代码都不需要修改。</p>
+<p>要解决这个问题，可以利用 <a href="http://nodejs.org">Node</a> 模块的<a href="http://nodejs.org/api/modules.html#modules_caching">缓存特性</a>。 即，我们可以在应用 (进程) 初始化时 (通常叫做 prelude script)，将 <code>customers</code> 模块的 <code>findCustomer</code> 替换成 cacheable 的版本，只要模块缓存没有被清空，随后所有对于该模块的 require 都将得到修订后的版本， <code>findCustomer</code> 函数自然就是 cacheable 版的了。</p>
+<p>为此我们先准备一个函数，帮助我们修订指定的模块：</p>
+<pre>
+/** Replace the function fn in a module m, to a cacheable one.
+  @see http://nodejs.org/api/modules.html#modules_caching
+  @param m [Object] module object
+  @param fn [String] name of the function
+  @param opts [Object] cache options
+    ns:  [String] namespace, prefix of the cache key
+    dur: [Integer] seconds before cache expires
+ */
+function cache(m, fn, opts) { m[fn] = cacheable(m[fn], opts); }
+</pre>
+<p>现在我们建立一个 <code>caches.js</code> ，如何命名这个文件并不重要，重要的是它需要被包含在 prelude script 中。 请把它类比为 Spring Beans 定义文件 (通常是 XML)，我们把缓存相关的‘声明’都放在这儿：</p>
+<pre>
+var custs  = require('customers'),
+  whatever = require('whatever');
+
+cache(custs,    'findCustomer',       { ns: 'customer', dur: 86400 });
+cache(custs,    'findCustomerByName', { ns: 'customer', dur: 86400 });
+cache(whatever, 'findWhatever',       { ns: 'whatever', dur: 0     });
+...
+</pre>
+<p>好了，现在我们可以‘声明’某个特定的函数是否以及如何使用缓存，而且随时修改这些‘声明’都不会对代码造成冲击。</p>
+<h2>最后</h2>
+<p>需要了解的是， <a href="http://docs.spring.io/spring/docs/current/spring-framework-reference/html/cache.html">Spring Cache Abstraction</a> 主要包括了缓存 api 的抽象，以便在不影响代码的情况下随意切换不同的缓存服务，本文讨论更多的是类似 <a href="http://docs.spring.io/spring/docs/current/spring-framework-reference/html/cache.html#cache-annotations">Declarative annotation-based caching</a> 的特性。</p>
+<p>相比于切换缓存服务，缓存配置变更的概率显然要大得多，更值得我们去仔细的管理，所以就不在此讨论 caching api 的抽象了。</p>
+<p>另外，本文中讨论的实现方法依赖 <a href="http://nodejs.org/api/modules.html#modules_caching">Node Module Caching</a> 特性 (如果模块被解析为同一个文件，则永远得到同一个对象)，因此该方法有效的前提是：</p>
+<ol> 
+ <li>同一个模块不会被解析到不同的文件，详情参考 <a href="http://nodejs.org/api/modules.html#modules_modules">Node 文档</a></li> 
+ <li>模块缓存不会被清除</li> 
+</ol>
+<p>所以在应用这一方法之前，还请仔细评估上诉的前提条件。</p>
+<p>原文地址：<a href="http://www.xinthink.com/node/2013/11/02/node-decl-cache.html">在 Node.js 中使用声明式缓存</a></p>
+<h2>作者简介</h2>
+<p><img _p="true" _href="img://null" src="http://infoqstatic.com/resource/articles/using-declarative-cache-in-nodejs/zh/resources/00000.png" style="float: left; margin-right: 10px" alt="" /><b>吴颖昕：</b>作为Java程序员在华为混了几年，现供职于LightInTheBox，仍然从事Java开发，也开始接触到Node.js。 没有什么显赫的经历，属于半路出家、自学成才，什么都会点，又什么都不精的典型。 曾经深信面向对象是世上最好的编程范式，没有之一，而今天终于相信，多样性对于软件开发领域同样是不可或缺的，按需选择，最合适的才是最好的。 最近着迷于函数式编程，希望通过接触多种编程范式开拓自己的思路。<br /> 电邮: yingxinwu.g@gmail.com<br /> 博客: xinthink.com</p>
+<hr />
+<p>感谢<a href="http://www.infoq.com/cn/author/田永强">田永强</a>对本文的审校。</p>
+<p>给InfoQ中文站投稿或者参与内容翻译工作，请邮件至<a href="mailto:editors@cn.infoq.com">editors@cn.infoq.com</a>。也欢迎大家通过新浪微博（<a href="http://www.weibo.com/infoqchina">@InfoQ</a>）或者腾讯微博（<a href="http://t.qq.com/infoqchina">@InfoQ</a>）关注我们，并与我们的编辑和其他读者朋友交流。</p><br><br><br><br><br><br></body></html>

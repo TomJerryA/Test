@@ -2,7 +2,10 @@
  <head></head> 
  <body>
   <div>
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/45.c">Pr&aacute;ticas para escalar o Agile nas Empresas</a>Empresas que est&atilde;o adotando Agile de forma ampla em algum momento ter&atilde;o que escalar suas pr&aacute;ticas &aacute;geis. Em uma sess&atilde;o da confer&ecirc;ncia &quot;M&eacute;todos &aacute;geis no setor financeiro e em ambientes complexos&quot;, os participantes compartilharam suas experi&ecirc;ncias de como est&atilde;o escalando Agile nas empresas.
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/46.c">Go avan&ccedil;a a todo o vapor: vers&atilde;o 1.2 &eacute; liberada</a>Acaba de ser lan&ccedil;ada a vers&atilde;o 1.2 da linguagem de programa&ccedil;&atilde;o Go, que tr&aacute;s algumas mudan&ccedil;as na linguagem e tamb&eacute;m melhorias na performance de rede para as plataformas Windows e BSD.
+  </div> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/45.c">Pr&aacute;ticas para escalar o Agile nas Empresas</a>Empresas que est&atilde;o adotando Agile de forma ampla em algum momento ter&atilde;o que escalar suas pr&aacute;ticas &aacute;geis. Em uma sess&atilde;o da confer&ecirc;ncia &quot;M&eacute;todos &aacute;geis no setor financeiro e em ambientes complexos&quot;, os participantes compartilharam suas experi&ecirc;ncias de como est&atilde;o escalando Agile nas empresas. 
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/44.c">Reduza o desperd&iacute;cio atrav&eacute;s da mudan&ccedil;a do m&eacute;todo cascata para m&eacute;todo &aacute;gil</a>O desenvolvimento de software enxuto diz: toda iniciativa que n&atilde;o est&aacute; criando valor para o cliente &eacute; considerado desperd&iacute;cio. Como a transi&ccedil;&atilde;o do m&eacute;todo cascata para um m&eacute;todo &aacute;gil pode ajudar as empresas a reduzir o desperd&iacute;cio? 
@@ -147,9 +150,6 @@
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/47.c">Entrega Cont&iacute;nua aumenta a velocidade de inova&ccedil;&atilde;o</a>A Thoughtworks publicou recentemente um documento, incluindo um modelo de maturidade para a entrega cont&iacute;nua como uma resposta &agrave; pesquisa que indica que a maioria das empresas entendem a import&acirc;ncia da inova&ccedil;&atilde;o, mas n&atilde;o s&atilde;o capazes de entregar software de forma r&aacute;pida o suficiente para atender as necessidades de seus l&iacute;deres empresariais. 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/46.c">AWS se junta &agrave; concorr&ecirc;ncia dos provedores de Cloud e oferece suporte ao Node.js</a>A AWS se juntou ao repleto time de provedores de cloud que oferecem suporte ao Node.js atrav&eacute;s do seu servi&ccedil;o Elastic Beanstalk e tentar&aacute; se diferenciar oferecendo integra&ccedil;&atilde;o com seus principais servi&ccedil;os. 
   </div>  
  </body>
 </html>

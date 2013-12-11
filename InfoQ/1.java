@@ -1,6 +1,20 @@
-<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>Studio Enterprise 2013 v3 Adds ThemeRoller, VS 2013 Bootstrap Project Template and Mobile Controls</h3><p><a href="http://www.componentone.com/">ComponentOne</a> has released <a href="http://www.youtube.com/watch?v=Iczxy01KXzI">Studio Enterprise 2013 v3</a> with an advanced theming mechanism for both WinForms and ASP.NET, new controls for ASP.NET and Windows Store development in addition to support for Visual Studio 2013, Windows 8.1 and Bootstrap.</p>
-<p>The latest release has added ThemeRoller for ASP.NET Wijmo that enables developers to customize their application with themes across all major platforms. It also include new mobile based ListView and AppView controls, which provides an ability for the developers to create adaptive touch-centric mobile applications easily. <br /> <br /> While the ListView control enables you to create lists for data display, navigation and search results the AppView control makes optimum use of the screen with built-in navigation and AJAX-loaded content. Moreover, the latest release also includes Sparkline, DropDown, Maps controls in addition to enhancements for PdfViewer, FlexGrid and RichTextBox controls.</p>
-<p><img _p="true" _href="img://Figure_1_Componentone_Original.png" alt="" src="http://www.infoq.com/resource/news/2013/11/studio-enterprise-2013-v3/en/resources/Figure_1_Componentone_Original.png" /></p>
-<p>The Sparkline control enable users to visualize trends in small spaces. On the other hand, the drop down control provides an ability to populate data with custom editors and map control displays information from various sources.</p>
-<p><img src="http://www.infoq.com/resource/news/2013/11/studio-enterprise-2013-v3/en/resources/Figure_2_Componentone.png" alt="" _href="img://Figure_2_Componentone.png" _p="true" /><br /> <br /> Studio Enterprise 2013 v3 provides support for Windows 8.1 and Visual Studio 2013 with a new project template based on <a href="http://our.componentone.com/2013/11/14/using-bootstrap-with-studio-for-asp-net-wijmo/">Bootstrap</a> theming framework. It also includes a new RadialMenu control based on C1Command platform and enables developers to export data to Excel without installing Microsoft Excel.</p>
-<p>The latest release has added spell-checking and multi-language dictionary support to RichTextBox control including the ability to export images and UI controls to PDF. On the other hand, the 3D chart control provides support for graphics card hardware acceleration features which enables developers to leverage graphics capabilities.</p><br><br><br><br><br><br></body></html>
+<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>Oracle Invites Community to Weigh-In on Java EE 8</h3><p>In keeping with their tradition of community collaboration on the Java platform, Oracle is inviting the enterprise development community to participate in a survey to help define requirements for the next version of Java Enterprise Edition, Java EE 8.</p>
+<p>The survey has 19 questions classified into the following categories:</p>
+<ul> 
+ <li>New JSRs</li> 
+ <li>HTML5</li> 
+ <li>User Interface Architecture</li> 
+ <li>Templating</li> 
+ <li>NoSQL</li> 
+ <li>CDI enhancements: 
+  <ul> 
+   <li>Security Interceptors</li> 
+   <li>Implicit Producers</li> 
+   <li>Expanding the use of stereotypes</li> 
+   <li>Timer Service</li> 
+   <li>More general use of CDI events</li> 
+  </ul> </li> 
+</ul>
+<p>Each question provides sufficient background on the related technology concept to help participants make an informed decision.</p>
+<p>The whole survey can be completed in 10 minutes and there is room for free-text comments.</p>
+<p>You can find the survey at <a href="https://blogs.oracle.com/theaquarium/entry/we_need_your_help_java">https://blogs.oracle.com/theaquarium/entry/we_need_your_help_java</a>.</p><br><br><br><br><br><br></body></html>
