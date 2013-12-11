@@ -1,6 +1,9 @@
 <html>
  <head></head> 
- <body> 
+ <body>
+  <div>
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/45.c">Pr&aacute;ticas para escalar o Agile nas Empresas</a>Empresas que est&atilde;o adotando Agile de forma ampla em algum momento ter&atilde;o que escalar suas pr&aacute;ticas &aacute;geis. Em uma sess&atilde;o da confer&ecirc;ncia &quot;M&eacute;todos &aacute;geis no setor financeiro e em ambientes complexos&quot;, os participantes compartilharam suas experi&ecirc;ncias de como est&atilde;o escalando Agile nas empresas.
+  </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/44.c">Reduza o desperd&iacute;cio atrav&eacute;s da mudan&ccedil;a do m&eacute;todo cascata para m&eacute;todo &aacute;gil</a>O desenvolvimento de software enxuto diz: toda iniciativa que n&atilde;o est&aacute; criando valor para o cliente &eacute; considerado desperd&iacute;cio. Como a transi&ccedil;&atilde;o do m&eacute;todo cascata para um m&eacute;todo &aacute;gil pode ajudar as empresas a reduzir o desperd&iacute;cio? 
   </div> 
@@ -147,9 +150,6 @@
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/46.c">AWS se junta &agrave; concorr&ecirc;ncia dos provedores de Cloud e oferece suporte ao Node.js</a>A AWS se juntou ao repleto time de provedores de cloud que oferecem suporte ao Node.js atrav&eacute;s do seu servi&ccedil;o Elastic Beanstalk e tentar&aacute; se diferenciar oferecendo integra&ccedil;&atilde;o com seus principais servi&ccedil;os. 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/45.c">Aplicativos Windows no Android, Android no BlackBerry e um telefone baseado no Ubuntu</a>A comunidade de desenvolvedores de plataformas m&oacute;veis teve diversas not&iacute;cias em fevereiro: BlackBerry rodando aplicativos Android, aparelhos Android rodando aplica&ccedil;&otilde;es Windows e o an&uacute;ncio da data de lan&ccedil;amento de um telefone baseado no Ubuntu. 
-  </div> 
+  </div>  
  </body>
 </html>

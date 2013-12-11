@@ -2,7 +2,13 @@
  <head></head> 
  <body>
   <div>
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/47.java">Visual Commander Brings Back Visual Studio Macros</a>Vlasov Studio has released an extension for VS 2010 and later that restores the ability to create and run macros in both VB and C#.
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/49.java">Firefox 26 Blocks Java</a>Mozilla Firefox 26 now blocks all Java plug-ins by default due to security concerns but allows users to run such plug-ins if they want to.
+  </div>
+  <div>
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/48.java">Rocket to Mars: A Sprint Planning Game</a>“Many team and their product owners believe that the team's unique job is to deliver more and more story points, but we consider this to be a complete misunderstanding of the relation between the team and the product owner” said Damien Thouvenin and Pierrick Revol. They ran a sprint planning game on investing time to produce stories, investigate issues, reduce technical debt, or do training.
+  </div> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/47.java">Visual Commander Brings Back Visual Studio Macros</a>Vlasov Studio has released an extension for VS 2010 and later that restores the ability to create and run macros in both VB and C#. 
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/46.java">TypedMVVM Uses TypeScript to Build Windows Store Apps with WinJS</a>TypedMVVM is a collection of samples and libraries developed by Davide Zordan which enables enable developers to build Windows Store apps using WinJS, TypeScript and MVVM. 
@@ -144,12 +150,6 @@
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/2.java">Microsoft to Stop Honoring SHA1 Certificates for SSL and Code Signing</a>Following recommendations by the US National Institute of Standards and Technology, Microsoft intends to stop honoring SHA1 for SSL and Code Signing certificates. This policy will begin in 2017 and applies to Windows Vista, Windows Server 2008, and later operating systems. 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/1.java">Studio Enterprise 2013 v3 Adds ThemeRoller, VS 2013 Bootstrap Project Template and Mobile Controls</a>ComponentOne has recently released Studio Enterprise 2013 v3 with a new ThemeRoller for ASP.NET, mobile controls, support for Windows 8.1 and Visual Studio 2013 in addition to a new project template based on Bootstrap theming framework. 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/0.java">Cascading 2.5 Supports Hadoop 2</a>New version of Cascading released this week incorporates Hadoop 2 support and includes Cascading Lingual - an open source project that provides a comprehensive ANSI SQL interface for accessing Hadoop-based data 
-  </div>  
+  </div>   
  </body>
 </html>

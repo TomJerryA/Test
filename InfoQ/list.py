@@ -1,11 +1,11 @@
 <html>
  <head></head> 
- <body>
-  <div>
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/1.py">内発的動機づけのために - Champfrogs Checklist</a>Jurgen Appelo氏がチームや個人の内発的動機づけを助けるツール、Champfrogs Checklistをリリースした。
-  </div>
-  <div>
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/0.py">複合型チームにおけるT字型スペシャリストの価値</a>裁量権を持ったクロスファンクショナルチームにおいて複数の専門分野を備えたT字型チームメンバのメリットをテーマに，Ken Schwaber氏らが先日発表した論評および講演について，その概要をお届けする。
+ <body> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/1.py">内発的動機づけのために - Champfrogs Checklist</a>Jurgen Appelo氏がチームや個人の内発的動機づけを助けるツール、Champfrogs Checklistをリリースした。 
+  </div> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/0.py">複合型チームにおけるT字型スペシャリストの価値</a>裁量権を持ったクロスファンクショナルチームにおいて複数の専門分野を備えたT字型チームメンバのメリットをテーマに，Ken Schwaber氏らが先日発表した論評および講演について，その概要をお届けする。 
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/49.py">Amazon re:inventのまとめ</a>Amazonはロサンゼルスで開かれたre:inventカンファレンスで、たくさんの新サービスを発表した。Amazon WorkSpaces - デスクトップコンピューティングをクラウドで、SAMLを使用したIdentity and Access Management、Amazon AppStream - クラウドからアプリケーションをストリーミング提供、Amazon Kinesis - ビッグデータをストリーム処理、CloudTrail - AWS APIコールの記録を保存、RDSのPostgresサポート、新しいEC2インスタンスタイプ 
@@ -150,6 +150,6 @@
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/3.py">GlassFish Commercial Editionの提供が終了</a>Oracleは先頃，Java EEとGrassFish Servcerに関するロードマップの最新版を発表した。2013年7月12日にリリースされたJava EE 7に合わせて，GlassFish Server Open Source Edition 4の提供が開始されたが，今週になってOracleは，Glass Fush 4の商用サポートバージョンを提供しないことを明言した。GlassFish 4はJava EE 7のリファレンス実装であり，Java EE 7認証を受けた唯一のアプリケーションサーバだ。 
-  </div>   
+  </div> 
  </body>
 </html>

@@ -1,7 +1,32 @@
-<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>Noda Time 1.2发布，支持XML、JSON序列化和文本格式化</h3><p><a href="http://nodatime.org/">Noda Time 1.2</a>已经发布，除了提供一个用于处理JSON序列化的可选程序集外，还支持XML、二进制序列化和文本格式化。它还提供了对类型Duration、OffsetDateTime和ZonedDateTime进行格式化和解析的能力，并包含方法Interval.Contains（）和ZonedDateTime.Calendar（），此外，还修复了若干Bug。</p>
-<p>最新版本提供了对程序集NodaTime.Serialization.JsonNet的支持。该程序集使用Json.NET 4.5.11构建，同时适用于便携式和桌面平台。此外，它还在JsonSerializer和JsonSerializerSettings上提供了一个扩展的ConfigureForNodaTime方法。类型NodaConverters为每个转换器提供了公共的静态只读字段，所有这些转换器都是不可变的。或者，开发人员可以基于使用NodaPatternConverter的模式创建自定义转换器。</p>
-<p>Noda Time 1.2更改了若干API，如引入新类DurationPattern、OffsetDateTimePattern和ZonedDateTimePattern。这些类分别表示解析和格式化Duration、OffsetDateTime和ZonedDateTime的模式。它还引入了新属性GeneralsoPattern、BclRoundtripPattern和FullRoundtripPattern。这些属性提供对模式o/O、r和s的编程访问。该版本还包含DateTimeZoneNotFoundException、CalendarSystem和InvalidNodaDataException。</p>
-<p>在Noda Time 1.2中，类型Instant、OffsetDateTime、ZonedDateTime、LocalDateTime, LocalDate、LocalTime、Offset、Interval、Duration和PeriodBuilder均实现了IXmlSerializable接口，开发人员可以对它们进行序列化。此外，这些类型也实现了ISerializable接口，开发人员可以使用BinaryFormatter通过[Serializable]属性对它们进行序列化。</p>
-<p>最新版本除了包含新的Era.AnnoMartyrum外，还包含InstantPattern.WithMinMaxLabels（），前者用来取代先前命名错误的AnnoMartyrm，后者提供了替换用于格式化最小和最大时刻的文本的能力。除了ParseResult.Exception外，它还增加了方法Interval.Contains（）、ZonedDateTime.Calendar和ZonedDateTime.GetZoneInterval（）。其中，ParseResult.Exception提供对GetValueOrThrow（）方法可能抛出的异常的直接访问。</p>
-<p>在先前的版本中，创建超出long.MaxValue刻度的Period时会发生不正确溢出。除了修复该Bug外，Noda Time 1.2还修复了另一个Bug。当使用月末和接近闰年的值调用Period.Between（）时，后者会导致这个方法返回一个正数和负数混合的结果。对于现有的Instant模式n、g和d，该版本还取消了对它们的大写别名的支持。</p>
-<p><b>查看英文原文：</b><b><a href="http://www.infoq.com/news/2013/11/noda-time-1-2">Noda Time 1.2 Released with XML, JSON Serialization and Text Formatting</a></b></p><br><br><br><br><br><br></body></html>
+<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>如何拓展产品负责人的角色</h3><p>Scrum中的产品负责人（product owner）是业务和开发之间的接口。在复杂大型企业中，由于有复杂的产品和需要做很多的决策，使得由一人充当这样的角色通常并不可行。在这种情况下，就需要扩充产品负责人的角色。</p>
+<p>在<a href="http://www.xpday.net/">Benelux 2013 XP Days大会</a>上，Timo Punkka将在一个专题讨论会上讨论了<a href="http://www.xpday.net/Xpday2013/XPDays/Program.html#session_162">拓展产品负责人角色</a>的可能解决方案。InfoQ就产品负责人的角色、精益管理和客户协作等问题采访了他。</p>
+<p><b>InfoQ：你在Benelux XP Days 2013上的主题演讲将谈到扩展产品负责人角色。你能举例子说明吗，以及什么时候需要这样做？</b></p>
+<blockquote> 
+ <b>Timo：</b>有很多原因。显然，当企业规模扩大时，其可扩展性将会影响各方面；技术、业务、战略等，但在我看来，最主要的原因是需要不断作出决策的数量。企业需要在不同的产品和产品线、短期收入和长期生存、销售产品和销售服务等等之间取得平衡。作出决策需要用最佳最可靠的信息，并且每个人都需要保持一致把这些决策付诸行动。做出这些权衡决策通常被称为路线图或组合管理。对于一个产品负责人来说，工作显得太多了。 
+ <br /> 
+ <br /> 也就是说，很多时候是敏捷是以开发开始，并有一个产品负责人――这样的团队模式有助于让开发团队对优先级有清晰的认识。然而，在工作分配到团队的backlog前，依然有大量需要做决策的事情。这就是扩展其角色所带来的帮助。
+</blockquote>
+<p><b>InfoQ：有时我知道团队对产品负责人有很高的期望，而产品负责人却很难满足这些期望，你是这样认为吗？</b></p>
+<blockquote>
+ <b>Timo：</b>是的，我也这样认为。而且不单是开发团队，就连作为企业也认为如果选择了敏捷开发模型，则只关注开发功能 ――并且仍然希望这会解决一切问题。事实并非如此。敏捷开发将最终影响整个企业。例如在开发和产品管理中，可以立竿见影地看到效果。是的，我的意思是产品管理者是在使用敏捷的企业中。 
+ <br /> 
+ <br /> 也许产品负责人不应设定这些期望，但并没有意识到还有什么其他实际上是需要去做的，以及它们需要如何改变。产品负责人面对的事情的状态，可能是利益相关者（stakeholders）们要在危机会议、多种方案之间艰难抉择其优先级并找出理由。正因为如此，他们没有意识到，其实可以自己主动地工作，以更好地了解并对路线图和投资作出决策。 
+ <br /> 
+ <br /> 每一个人都需要对这样的工作负责。对于一个产品负责人来说任务显得过于繁重了。
+</blockquote>
+<p><b>InfoQ：如何做才能扩展产品负责人的角色？</b></p>
+<blockquote>
+ <b>Timo：</b>我经常谈到层次――在敏捷的场景下也许令人惊讶。我的意思不是指象命令链那样的层次，而是指专注于不同时间跨度的角色层次结构。角色专注于那些影响不同时间跨度的决策。例如，产品负责人通常专注于当前的版本，但产品管理更应关注跨越几个版本的路线图。使用象游戏魂斗罗那样，在角色和规划层次之间构建的合作等级，是具有协作性和能动态变化。专注于特定的时间跨度的人并不是孤立的工作，或只是每隔一段时间交接给下一手负责人。来自不同规划层次的人会合作，这为定位和对方向的共同理解提供了机会。
+</blockquote>
+<p><b>InfoQ：在你的演讲中，你将会谈到精益组合管理。你能解析这是什么吗，以及它能如何在商业和敏捷IT团队之间带来沟通的桥梁？</b></p>
+<blockquote>
+ <b>Timo：</b>精益组合管理建立在对敏捷开发来说极其重要的魔法――公开透明之上。在许多场合我曾与一些企业一起工作，这些企业是有更多的“项目”在进行，而不是人们努力去做这些项目（译者注：这里作者意指传统的软件项目开发，没调动人的积极性）。我们已经太习惯了，如“我们必须至少从这里开始”的说法 ，这让我们在项目进展中变得盲目。精益投资组合管理，或者我意思是，当我使用这个词的时候，它指导我们限制正在做的事情的数量。其实我提倡放弃做项目的概念，并专注于在开发流程中，使用频繁的发布。在有的环境下发布的版本可能只是一个计划项，但当然最好是实际上交付给用户使用。
+ <br /> 
+ <br /> 这带来了很多好处。一旦限制了正在进行的事情的数量，其状态将更清晰地展现在大家眼前。拥有一个稳定的节奏进行决策，也将能减少危机会议的次数。当我们要经常停下来重新同步计划，我们也有机会去开发每个迭代周期中最有价值的部分，并更早关注下一个迭代，这才更有意义。
+</blockquote>
+<p><b>InfoQ：演讲中有一些真实的用户协作的案例吗？</b></p>
+<blockquote>
+ <b>Timo：</b>在研讨会期间，我们会做的一项工作，就是针对一个有很复杂的分布式客户链的虚构组织，完成一个可视化的反馈路径矩阵。反馈是必要的，并应该尽可能有不同的形式，并要在不同的规划层次中存在。除了敏捷开发中典型的规划和审查会议，我们的例子还包括：客户代表小组，不同的利益相关者群组的专题讨论、来自不同利益相关者群组的参与者的专题讨论、针对不同用户体验研究和实地考察。当客户链在地理上是分布式的时候，我们还需要使用如传统的调查和问卷的做法，但是使用它们去支持其他做法，这是更有协作性的实践。
+</blockquote>
+<p>InfoQ报道过了11月28——29日在比利时梅赫伦举办的XP Days Benelux大会。早前，InfoQ采访了大会的两位主持关于敏捷开发新趋势、成功的敏捷转变和欧洲企业对敏捷的采纳。</p>
+<p><b>查看英文原文：</b><a href="http://www.infoq.com/news/2013/11/scale-product-owner-xpdays">How to Scale the Product Owner Role</a></p><br><br><br><br><br><br></body></html>
