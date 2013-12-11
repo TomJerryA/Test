@@ -1,38 +1,6 @@
-<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>不可忽视的日志</h3><p>在软件开发中，日志是一项必不可少又不是那么重要的“功能”，毕竟，产品的业务逻辑模块对客户来说才是最有价值的。但是，随着软件开发和部署模式的变化发展，日志的重要性正在不断提高。软件架构师Vlad Mihalcea<a href="http://java.dzone.com/articles/21st-century-logging" target="_blank">解释</a>了其中的缘由。</p>
-<p>Vlad认为日志应当得到比我们现在给予它的更多的关心：</p>
-<blockquote> 
- <p>我认为当设计一个应用的时候，很大一部分精力都投入到了构建客户业务逻辑模型上。这个业务模型将映射到一个持久化存储上（作为一个RDBMS或NoSQL解决方案）。日志模块有以下框架可供选择：web、中间件、批处理任务、或者可能是通过<a href="http://logging.apache.org/log4j/1.2/" target="_blank">log4j</a> 或<a href="http://logback.qos.ch/" target="_blank">logback</a>实现的<a href="http://www.slf4j.org/" target="_blank">SLF4J</a> （Simple Logging Facade for Java）。这几乎是我参与的所有的应用出现的现象，并且日志一直都是个二等公民，且依赖于良好的旧的字符串日志框架。</p> 
- <p>但是最近我开始意识到现在的字符串日志系统还有更多的东西需要记录，特别是如果我的系统被部署到云端并且利用了自动伸缩的优势时，然后收集文本文件并且将它们聚集到一个公共的地方——这种做法看起来就像是骇客的行为。</p> 
-</blockquote>
-<p>他谈到了自己最近在日志开发方面的变化，在其最新的应用程序中，Vlad实现了一个拥有更复杂信息的通知机制，因为只有基于字符串的日志是不够的。</p>
-<blockquote> 
- <p>我得感谢和我一起工作的一个同事，当他说“通知机制是我们应用程序的核心”时，他开启了我的视野。我之前还从未想过将日志作为任何一个应用程序的核心。业务逻辑才是应用程序的核心，而不是日志。但他的话中也有很多事实，因为如果你没有一个好的机制了解你的系统是否真的在做那些期望的事，你没法部署任何东西。</p> 
-</blockquote>
-<p>Vlad设计的通知都是些比较复杂的对象（调试通知比错误通知的数据更少），并且NoSQL文档数据库是一个存储我们日志的绝佳数据库。一个通知包含了以下各种类型的数据：</p>
-<ul> 
- <li>当前正在执行的任务</li> 
- <li>数据的来源</li> 
- <li>日志起源的组件</li> 
- <li>抛出的异常</li> 
- <li>输入的参数</li> 
- <li>承载着我们请求的Spring集成消息的历史记录</li> 
-</ul>
-<p>他提到，既然能够在一种少模式的方式下存储复杂的对象，那么也能够查询日志，并且日志查询结果到达的顺序并不要紧。因为可以依据来源和创建时间来给它们排序。这样就可以拥有一个安排好的任务，便于在检测到太多错误条目时生成警报和报告。这是一个客户定制的日志的实现，因为还没有为通知使用专有的框架，但Vlad从中得到了更多的价值，比从经典的基于字符串的日志文件中得到的多得多。</p>
-<p>Vlad依然认为log4j和logback是很棒的实现方案，并且还没有替换它们。</p>
-<blockquote> 
- <p>我们只是加了一些额外的日志特性来克服它们的局限性。但即使是用着最新的logback存放器，我依然认为当前的基于字符串的日志对于生产系统需求来说还是太过简单了。如果你使用它们更多目的是为了调试，并且在生产环境中有额外的监控方法的话，那么也许是时候用一个能同时为开发和生产环境工作的智能日志解决方案了。</p> 
-</blockquote>
-<p>如果说十年前，当关系型数据库（RDBMS）统治着存储世界时，这是很难实现的，并且基于文件的日志系统是个很好的折中方案。但Vlad认为现在已经有方法实现更好的日志框架了。</p>
-<blockquote> 
- <p>现在的基于字符串的文件日志模型也许已经很有效率了，尤其是当我们的服务器在单个机器中垂直缩放时。但在一个有着很多水平分布的服务器的世界中，这种状况需要额外的处理方案。</p> 
- <p>大公司们已经采用了这种新一代日志系统了，比如<a href="https://github.com/facebook/scribe" target="_blank">Facebook Scribe</a>和 <a href="http://blog.linkedin.com/2011/01/11/open-source-linkedin-kafka/" target="_blank">LinkedIn Kafka</a>日志处理系统。我真的很喜欢LinkedIn的解决方案，并且它激励了我去探寻一个工作在CQRS模式下的新的日志系统。在这个日志系统中，日志整体像一个事件一样存储在日志数据库中，并且每个事件通过一系列的处理程序来更新当前系统状态。这种方法结合了日志和监视器，并且监视器命令直接进入缓存中的最新系统状态，这些系统状态包括：警报、状态报告、当前系统状态的监控视图。</p> 
-</blockquote>
-<p>软件工程师成富在&quot;<a href="http://www.ibm.com/developerworks/cn/java/j-lo-practicelog/index.html" target="_blank">Java 日志管理最佳实践</a>”中也谈到了日志的重要性：</p>
-<blockquote> 
- <p>对于现在的应用程序来说，日志的重要性是不言而喻的。很难想象没有任何日志记录功能的应用程序运行在生产环境中。日志所能提供的功能是多种多样的，包括记录程序运行时产生的错误信息、状态信息、调试信息和执行时间信息等。在生产环境中，日志是查找问题来源的重要依据。应用程序运行时的产生的各种信息，都应该通过日志 API 来进行记录。很多开发人员习惯于使用 System.out.println、System.err.println 以及异常对象的 printStrackTrace 方法来输出相关信息。这些使用方式虽然简便，但是所产生的信息在出现问题时并不能提供有效的帮助。这些使用方式都应该改为使用日志 API。使用日志 API 并没有增加很多复杂度，但是所提供的好处是显著的。</p> 
-</blockquote>
-<p>对于Java在日志方面的API，成富指出，尽管记录日志是应用开发中并不可少的功能，在 <a href="http://www.oracle.com/technetwork/java/javase/downloads/index.html" target="_blank">JDK</a> 的最初版本中并不包含日志记录相关的 API 和实现。相关的 API（java.util.logging 包，JUL）和实现，直到 JDK 1.4 才被加入。因此在日志记录这一个领域，社区贡献了很多开源的实现。其中比较流行的包括 log4j 及其后继者 logback。除了真正的日志记录实现之外，还有一类与日志记录相关的封装 API，如 Apache Commons Logging 和 SLF4J。这类库的作用是在日志记录实现的基础上提供一个封装的 API 层次，对日志记录 API 的使用者提供一个统一的接口，使得可以自由切换不同的日志记录实现。比如从 JDK 的默认日志记录实现 JUL 切换到 log4j。这类封装 API 库在框架的实现中比较常用，因为需要考虑到框架使用者的不同需求。在实际的项目开发中则使用得比较少，因为很少有项目会在开发中切换不同的日志记录实现。</p>
-<p>成富认为记录日志只是有效地利用日志的第一步：</p>
-<blockquote> 
- <p>更重要的是如何对程序运行时产生的日志进行处理和分析。典型的情景包括当日志中包含满足特定条件的记录时，触发相应的通知机制，比如邮件或短信通知；还可以在程序运行出现错误时，快速地定位潜在的问题源。这样的处理和分析的能力对于实际系统的维护尤其重要。当运行系统中包含的组件过多时，日志对于错误的诊断就显得格外重要。</p> 
-</blockquote><br><br><br><br><br><br></body></html>
+<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>Wix 3.8支持VS 2013 Votive和WiX原生库以及引导器应用程序函数</h3><p>Windows安装包工具<a href="http://wixtoolset.org/">Wix</a>发布了<a href="https://wix.codeplex.com/releases/view/115492">3.8版本</a>，支持Visual Studio 2013 Votive和WiX原生库。它包含扩展自WixStandardBootstrapperApplication的引导器应用程序函数（bootstrapper application function）。该版本除了可以使用Visual Studio 2013检测WixVSExtension中的属性外，还可以在Burn中检测出当前系统是否为Windows 8.1。</p>
+<p>该版本除WixStandardBootstrapperApplication主题外，还更新了fun.AutoVersion处理器函数以提供自动化版本号。此外，CloseApplication中的选项将发送结束会话消息，如果程序仍然运行，开发者会看到一个弹出消息。如果忽略这种温和的请求，该功能还将中止进程。</p>
+<p>ThmUtil支持隐藏控件和透明图像，LocUtil支持收集默认语言资源，而不是要求特定区域的语言资源。</p>
+<p>Wix 3.8修复了一些缺陷，如Publish@Property不接受WixVariable、运行x64 MSBuild的时候缺少AssemblyFolder、从Visual Studio 2010收集项目时.resx文件会产生错误，以及引导器变量在重启之后没有赋值等。该版本还提供了.NET Framework 4.5属性的文档，修复了当CPU 100%时会挂起heat.exe的问题。</p>
+<p>上一个版本中，当指定斯洛文尼亚语后会产生错误ID，3.8版也修复了这个问题。此外，WixVSExtension可以识别所有的Visual Stidio 2013 SKU版本，同时还修复了Visual Studio Add Reference对话框不显示BootstrapperCore程序集的问题。</p>
+<p><strong>原文英文地址：</strong><a href="http://www.infoq.com/news/2013/12/wix-3-8">http://www.infoq.com/news/2013/12/wix-3-8</a></p><br><br><br><br><br><br></body></html>

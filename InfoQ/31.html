@@ -1,32 +1,7 @@
-<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>API设计中人的因素：专访Apiary的Jakub Nesetril</h3><p>API的设计与描述并不仅仅是机器之间的技术接口。 API Design and description is more than just a technical interface contract between machines. <a href="http://apiary.io">Apiary</a>的联合创始人兼CEO Jakub Nesetril指出API描述的真正使用者是开发人员，需要考虑到开发人员的参与、可用性以及交流等方面。最近，就API设计以及API工具和工作流，我们与Apiary进行了交流。</p>
-<p><strong>InfoQ: Jakub，你最近在API Strategy会议做了关于</strong><a href="http://www.infoq.com/presentations/API-Design-Best-Practices"><strong>API设计最佳实践</strong></a><strong>的演讲。你提到了“构建API并没有绝对正确的方式”。能谈一下你的这一理念吗，它是如何影响Apiary正在做的事情的？</strong></p>
-<blockquote> 
- <p><b>JN:</b>：长期以来，API被视为两个电脑程序之间的接口。实际上，API是开发人员之间的接口——也就是真实的人之间。如果开发人员不了解怎样使用API，那么一切都完蛋了——你的项目肯定会失败。</p> 
- <p>API（以及更通用意义上的软件接口）非常类似于UI设计：它受到时尚周期的影响，并且不同的文化背景会有差异（在编程中，指的就是语言和框架的文化），对此很容易形成成见，但是针对什么是正确的设计，没有人能达成共识。</p> 
- <p>探寻“唯一正确的”UI设计是很愚蠢的做法，与此类似，API设计中也没有唯一的金科玉律。但是，有一些技术可以改变既有的主观性。在UI界面的演化中，我们看到近十年来，出现的趋势是关注以用户为中心的设计和用户体验。我们需要将这种方式拿到API开发之中，与客户和利益相关方实现敏捷、快速集成以及紧密的反馈环路。</p> 
-</blockquote>
-<p><strong>InfoQ:现在有很多的API描述标准可供采用，包括你自己的</strong><a href="http://apiblueprint.org/"><strong>API Blueprint</strong></a><strong>。有一些是基于JSON、Markdown、YAML或XML的。你认为哪种方式最好呢？相对其他可选方案，是什么促使你选择了Markdown呢？</strong></p>
-<blockquote> 
- <p><b>JN: </b>当Apiary成立的时候，XML、JSON以及YAML格式就已经存在了，我们曾经努力尝试不引入新的格式。但我们强烈感觉到这些语言太复杂了，尤其是考虑到其他角色——如技术文档编写人员或API的使用者——要参与进来的时候。当它们要携带大量人类可读的文本内容时会相当繁琐，但是好的API文档一般都会包含这样的信息。</p> 
- <p>我们寻找一种在开发人员内部比较流行的格式，它能够用来编写结构化的数据，同时又能书写成段的文字。我们想找一种人类很易于读写的形式。希望它能够很容易被技术人员和非技术人员所理解。多年以来，markdown几乎被所有的开源项目所使用，同时也是GitHub Pages和Jekyll出版系统的核心。开发人员已经使用它很多年了。</p> 
-</blockquote>
-<p><strong>InfoQ:有些开发人员倡议将超媒体（hypermedia）作为契约式API开发的可选方案。这个问题似乎已经有很显然的答案了，但是关于契约API和无契约API，你是怎么看的？</strong></p>
-<blockquote> 
- <p><b>JN: </b>我们可以看到超媒体有很大的潜力，但是到目前为止的推动力还是很有限。超媒体的问题在于采用情况。如果能够被广泛采用，我们可能会看到在API的使用方面会有快速的增长，但是契约的作用依然存在，它促成了校验、自动化测试以及工具。如果没有更好的工具支持，这种状况还会持续下去。但是有一些很优秀的人正在完善工具的功能，所以我们将来会看到它的进展。</p> 
-</blockquote>
-<p><strong>InfoQ:针对基于blueprint的API实现，你最近建立了</strong><a href="http://blog.apiary.io/2013/10/17/How-to-test-api-with-api-blueprint-and-dredd/"><strong>Dredd工具</strong></a><strong>进行自动化测试。在API设计和开发方面，你似乎在尝试特有的工作流程。能描述一下吗？</strong></p>
-<blockquote> 
- <p><b>JN: </b>在过去的十年间，软件开发有了一定的转变，从传统、静态的瀑布设计转变为更为敏捷的迭代。在敏捷中，我们看到了自动化测试、代码覆盖率以及持续集成这样的事情。但是在API和接口契约方面，我们看起来依然处于1999年代——预先设计、规模宏大的开发工程、陈旧的文档、没有代码覆盖率、没有持续集成。在Apiary，我们正在试图改变这一点。</p> 
- <p>在这方面，Dredd就是一个很好的例子。所有的开发人员都知道单调的、易出错的手工任务应该自动化执行。确保API文档处于最新的状态就是一项这样的任务。每个人都讨厌维护文档。借助于Dredd，我们可以将代码覆盖情况转移到API文档之中，这种方式能够与任何已有的持续集成提供商兼容。</p> 
-</blockquote>
-<p><strong>InfoQ:开发人员的参与（engagement）看起来是API采用和成功的“秘籍（secret sauce）”。在开发人员的参与方面，每个人所缺失的是什么呢？</strong></p>
-<blockquote> 
- <p><b>JN: </b>对可用性以及授权的关注依然是很少的。如果你看一下所有成功的API项目（以及更普遍来讲，以开发人员为中心的公司），它们的产品中都有很强大的品牌、很好的用户体验，它们允许用户所做的事情超出了用户最初的想象。这不是火箭技术，但是更加难以重新创造。设身处地为用户着想并不是很容易获得或通过训练就能得到的技能。这就是为什么Apiary的很多API设计会将相关人员聚集在一起：API设计人员、API开发人员以及API使用人员，创造一个环境让这些人很容易地进行协作。</p> 
-</blockquote>
-<p><strong>InfoQ:Apiary有25,000在开发的API，你有没有规划利用一下这个市场地位，比如说创建API市场或仓库？</strong></p>
-<blockquote> 
- <p><b>JN: </b>这个数字每周都在增长，所以很难进行精确统计。我们有35,000个 API，并且这一数字还在攀升。就在一年前，行业分析还曾经严肃地讨论世界上的API数量一共是50,000或80,000。现在我们知道，这个数字要大得多得多。尽管Apiary的快速增长只是过去12个月内的事情，但是行业内的大多数人都在使用机构提供的或自定义的工具。这里面还有很大的成长空间。</p> 
- <p>我们只关注一件事——只做我们能做好的——那就是帮助开发人员的工具。API市场或仓库的理念看起来很吸引人，但是我们并没有看到它能够带来的附加价值。</p> 
-</blockquote>
-<p>Apiary Inc.总部位于旧金山，工程人员位于捷克共和国的布拉格。它由Jakub Nesetril和Jan Moravec创建，并在2012年底发布了API设计平台的公测版，这是一个创新性的产品。到目前为止，Apiary已有超过35,000个API，这是世界范围内最大的一个API集合。它的早期客户是Akamai或GoodData的开发人员门户。我们最近与Jakub Nesetril就API设计、描述、工具以及测试进行了交流。</p>
-<p><strong>原文英文链接：</strong><a href="http://www.infoq.com/news/2013/11/apiary-jakub-nesetril-interview">The Human Aspects of API Design: An Interview with Apiary's Jakub Nesetril</a></p><br><br><br><br><br><br></body></html>
+<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>PagerDuty实现弹性测试不需要Simian Army</h3><p>来自于<a href="http://www.pagerduty.com/">PagerDuty</a>的<a href="http://www.devopsdays.org/events/2013-london/proposals/Failure%20Friday!%20-%20Start%20injecting%20failure%20today/">Doug Barth</a>在伦敦的<a href="https://speakerdeck.com/dougbarth/failure-friday-start-injecting-failure-today">DevOps日上谈论</a>了他们是如何在前期没有投入大量自动化努力的情况下开始弹性化测试自己的系统的。他们的目标是快速地了解错误点，然后每周拿出一个小时的时间公开讨论如何解决这些错误。</p>
+<p>在PagerDuty，自动化错误测试要实现和Netflix著名的<a href="http://techblog.netflix.com/2011/07/netflix-simian-army.html">Simian Army</a>同样的覆盖范围是不可能的，原因是他们的多云环境以及自己所投资的内部自动化工具对最初结果的延迟。因此他们选择了人工的失败测试方法，绰号为“失败的周五（Failure Friday）”。该方法的内容就是每周五拿出一个小时的时间来设法制定一个“攻击（attacks，引发失败的问题）”列表，同时检查“受害者（victim，被测试的系统）”是如何反应的。</p>
+<p>在攻击期间，系统会被恢复到正常的工作状态。如果系统被破坏的很严重，那么攻击就会停止，例如在失败之后发送给受害者的请求不会被其他的服务实例获得。在这种情况下，会话会被停止同时系统会被人工地恢复。下一个周五会对永久性的修复进行测试。否则的话攻击就会持续，直到长达一个小时的会话结束。</p>
+<p>攻击策略很多，从快速失败的模拟（例如停止一个<a href="http://cassandra.apache.org/">Cassandra</a>数据库实例或者重新启动一个服务器实例）到更复杂的网络隔离（配置错误的IP表丢失进入一个特定端口的包）或者运行缓慢节点（使用<a href="http://www.linuxfoundation.org/collaborate/workgroups/networking/netem#Emulating_wide_area_network_delays">netem的网络仿真</a>）的模拟。</p>
+<p>解决系统中的问题同时提高大家需要对错误进行处理和测试的意识是这样做的一些可预期的好处。但是Doug还强调了一些意想不到的好处，例如在发现了暴露的问题并理解了引发失败的原因之后，我们就能够减轻增加新的随叫随到的人（开发或者运维人员）的压力，这与等到不会引发错误的那些很有可能会过时或者不精确的理论知识截然相反。另一个计划之外的收益是，这样能够揭露模拟组件失败的困难，进而导致系统架构产生提高整体可测试性的变化。</p>
+<p>Doug提到，在实际的组织中保持日志和操作时间、发现和跟踪问题以及分享仪表盘和指标的重要性。他还推荐大家在会话期间不要关闭警报，因为这样不仅能够检查监控是否在按照预期正常运行；同时还能够将攻击会话通知所有人，避免引发的错误导致警报升级。</p>
+<p><b>查看英文原文</b>：<a href="http://www.infoq.com/news/2013/11/dod-lon-day1-failure-testing">Testing Resiliency at PagerDuty Without a Simian Army</a></p><br><br><br><br><br><br></body></html>

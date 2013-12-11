@@ -1,27 +1,6 @@
-<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>OWASP发布Web应用程序的十大安全风险</h3><p><a href="mailto:https://www.owasp.org">Open Web Application Security Project（OWASP）</a>是世界范围内的非盈利组织，关注于提高软件的安全性。它们的使命是使应用软件更加安全，使企业和组织能够对应用安全风险作出更清晰的决策。目前，OWASP在全球有超过140个分会，其中包括<a href="mailto:http://www.owasp.org.cn/">中文分会</a>。该组织从2003年开始每隔几年就会发布Web应用程序的十大安全风险，针对云计算的安全问题，还提出过云计算十大安全风险，可参考<a href="mailto:https://www.owasp.org/index.php/Category:OWASP_Cloud_%25E2%2580%2590_10_Project">主站</a>和<a href="mailto:http://www.owasp.org.cn/owasp-project/Cloud-10">中文站</a>的文档。2013年6月，它们发布了最新的Web应用十大安全风险。完整的风险列表和多种语言文档可以在<a href="mailto:https://www.owasp.org/index.php/Category:OWASP_Top_Ten_Project">该地址</a>进行下载。中国分会也提供了<a href="mailto:http://www.owasp.org.cn/owasp-project/2013top10">中文版文档的下载服务</a>。该文档基于Creative Commons Attribution ShareAlike 3.0 license许可协议。</p>
-<p>相对于2010版的十大风险，该版本新添加了一类风险,以涵盖更普遍、更重要的安全漏洞; 并基于最新的流行程度数据，对一些风险重新排序。另外，该版本通过创建一类特定风险而引入了“组件安全”风险, 并移除了2010年版中的A6“安全配置错误”风险。</p>
-<p>2013年版的OWASP十大风险文档所基于的8个数据组由7家专业的应用安全公司提供。数据涵盖了来自上百家组织上千个应用,超过500,000个漏洞。根据所有这些相关数据挑选和排序,并与可利用性、可检测性和影响程度的综合评估产生了排名前十的安全风险列表。</p>
-<p>OWASP十大风险的首要目的是培训开发人员、设计人员、架构师、经理和企业组织,让他们认识到最严重的Web应用程序安全漏洞所产生的后果。文档中提供了防止这些高风险问题的基本方法,并提供了获得这些方法的来源。</p>
-<p>具体来讲，2013版的十大安全风险为：</p>
-<p><b>A1 –</b>注入（Injection）</p>
-<p>注入攻击漏洞,例如SQL、OS以及LDAP注入。这些攻击发生在当不可信的数据作为命令或者查询语句的一部分,被发送给解释器的时候。攻击者发送的恶意数据可以欺骗解释器,以执行计划外的命令或者在未被恰当授权时访问数据。</p>
-<p><b>A2-</b><b>失效的身份认证和会话管理（</b>Broken Authentication and Session Management<b>）</b><b> </b></p>
-<p>与身份认证和会话管理相关的应用程序功能往往得不到正确的实现,这就导致了攻击者破坏密码、密匙、会话令牌或攻击其他的漏洞去冒充其他用户的身份。</p>
-<p><b>A3-</b><b>跨站脚本</b><b> (</b>Cross-Site Scripting<b>，</b><b>XSS)</b></p>
-<p>当应用程序收到含有不可信的数据,在没有进行适当的验证和转义的情况下,就将它发送给一个网页浏览器,这就会产生跨站脚本攻击(简称XSS)。XSS允许攻击者在受害者的浏览器上执行脚本,从而劫持用户会话、危害网站、或者将用户转向至恶意网站。</p>
-<p><b>A4-</b><b>不安全的直接对象引用（</b>Insecure Direct Object References<b>）</b></p>
-<p>当开发人员暴露一个对内部实现对象的引用时,例如,一个文件、目录或者数据库密匙, 就会产生一个不安全的直接对象引用。在没有访问控制检测或其他保护时,攻击者会操控这些引用去访问未授权数据。</p>
-<p><b>A5–</b><b>安全配置错误（</b>Security Misconfiguration<b>）</b></p>
-<p>好的安全需要对应用程序、框架、应用程序服务器、Web服务器、数据库服务器以及平台定义和执行的安全配置。由于许多设置的默认值并不是安全的,因此,必须定义、实施和维护这 些设置。这包含了对所有的软件保持及时地更新,包括所有应用程序的库文件。</p>
-<p><b>A6 –</b><b>敏感信息泄漏（</b>Sensitive Data Exposure<b>）</b></p>
-<p>许多Web应用程序没有正确保护敏感数据,如信用卡、税务ID和身份验证凭据。攻击者可能会窃取或篡改这些弱保护的数据以进行信用卡诈骗、身份窃取或其他犯罪。敏感数据值需额外的保护,比如在存放或在传输过程中的加密,以及在与浏览器交换时进行特殊的预防措施。</p>
-<p><b>A7 –</b><b>功能级访问控制缺失（</b>Missing Function Level Access Control<b>）</b></p>
-<p>大多数Web应用程序的功能在UI中可见以前,会验证功能级别的访问权限。但是,应用程序需要在每个功能被访问时在服务器端执行相同的访问控制检查。如果请求没有被验证,攻击者能够伪造请求从而在未经适当授权时访问功能。</p>
-<p><b>A8 –</b><b>跨站请求伪造</b><b> (</b>Cross-Site Request Forgery<b>，</b><b>CSRF)</b></p>
-<p>一个跨站请求伪造攻击迫使登录用户的浏览器将伪造的HTTP请求,包括该用户的会话cookie和其他认证信息,发送到一个存在漏洞的Web应用程序。这就允许攻击者迫使用户浏览器向存在漏洞的应用程序发送请求,而这些请求会被应用程序认为是用户的合法请求。</p>
-<p><b>A9 –</b><b>使用含有已知漏洞的组件（</b>Using Components with Known Vulnerabilities<b>）</b></p>
-<p>组件,比如:库文件、框架和其他软件模块,几乎总是以全部的权限运行。如果一个带有漏洞的组件被利用,这种攻击可以造成更为严重的数据丢失或服务器接管。应用程序使用带有已知漏洞的组件会破坏应用程序防御系统,并使一系列可能的攻击和影响成为可能。</p>
-<p><b>A10 –</b><b>未验证的重定向和转发（</b>Unvalidated Redirects and Forwards<b>）</b></p>
-<p>Web应用程序经常将用户重定向和转发到其他网页和网站,并且利用不可信的数据去判定目的页面。如果没有得到适当验证,攻击者可以重定向受害用户到钓鱼软件或恶意网站, 或者使用转发去访问未授权的页面。</p>
-<p>在OWASP的文档中，有各安全风险的案例以及预防办法，除此之外还有丰富的参考文档。不过，该组织也提示我们，不应仅关注这十大风险，正如在<a href="https://www.owasp.org/index.php/OWASP_Guide_Project">《OWASP开发者指南》</a>和<a href="https://www.owasp.org/index.php/Cheat_Sheets">《OWASP Cheat Sheet》</a>中所讨论的,能影响整个Web应用程序安全的漏洞成百上千。这些指南是当今Web应用程序开发人员的必读资料。而<a href="https://www.owasp.org/index.php/Category:OWASP_Testing_Project">《OWASP测试指南》</a>和 <a href="https://www.owasp.org/index.php/Category:OWASP_Code_Review_Project">《OWASP代码审查指南》</a>则能够指导人们有效地查找Web应用程序中的漏洞。</p>
-<p>随着Web应用程序积累的用户信息越来越多，越来越敏感，安全问题的重要性也被提升到了前所未有的程度。对比OWASP所列出的十大安全风险，我们能够排查出Web程序的很多漏洞，从而帮助我们构建更为安全的网络应用，减少终端用户的上网风险。关于OWASP所提供的更多安全知识，请参阅其主站和中文分会站点，据了解，为了让更多的中国开发者了解这十大风险，中文分会还会组织相关的培训。</p><br><br><br><br><br><br></body></html>
+<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>RadControls for WPF and Silverlight Q2 2013 SP1支持Entity Framework 6并新增和改进了一些特性</h3><p>Telerk最近发布了RadControls for <a href="http://www.telerik.com/products/wpf/whats-new/release-history/q3-2013-sp1-version-2013-3-1204.aspx">WPF</a> and <a href="http://www.telerik.com/products/silverlight/whats-new/release_notes/q3-2013-sp1-version-2013-3-1204-2208085825.aspx">Silverlight</a> Q2 2013 SP1，支持Entity Framework 6，并且能再运行时修改应用程序图标集。它还能够在使用Telerik EventToCommandBehavior时，将事件实参传递给命令，并且还包含很多新特性和改进。</p>
+<p>Barcode控件可以根据文本的长度和指定的ErrorCorrectionLevel来自动选择版本。另一方面，Diagram控件公开了一个在连接器激活前触发的事件。</p>
+<p>用于WPF和Silverlight的GridView可以为新行设计无效编辑模式状态。此外，编辑器被相对地拉高了，以适应其父行的高度，并且还支持EditTrigger。最新版还改进了相应模板的可视优化，以及使用选取矩形的交叉点来选择形状。它还修复了当动态修改RadMap.MaxZoomLevel属性时抛出IndexOutOfRangeException的缺陷，并且支持OpenStreet地图提供器。</p>
+<p>在设置NumberDecimalDigit时，NumericUpDown控件可以将小数显示为有效数字，并且还提供了一个属性，用于修改NumberDecimalSeparator。PDFViewer控件也得到了更新，支持阴影、RunLenghtDecode、ColorSpaces、ClearDocument()方法，并且提供了一种在DocumentSource中获取异常的机制。另一方面，PropertyGrid控件添加了ItemChanged事件、编辑器缓存，以及展开和折叠组的功能。</p>
+<p>Spreadsheet控件也包含在最新发布的SP1版本中，支持SUMIF、COUNTIF、LOOKUP和INDEX函数，支持在查找和替换内容时使用通配符。RadControls for WPF and Silverlight Q2 2013 SP1还为PivotGrid、RibbonView、RichTextBox、TabControl和TreeListView提供了一些新特性和改进。</p>
+<p><strong>原文英文链接：</strong><a href="http://www.infoq.com/news/2013/12/radcontrols-wpf-silverlight-sp1">RadControls for WPF and Silverlight Q2 2013 SP1 with Entity Framework 6 Support and Several Features</a></p><br><br><br><br><br><br></body></html>

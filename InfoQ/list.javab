@@ -1,10 +1,10 @@
 <html>
  <head></head> 
- <body>
-  <div>
+ <body> 
+  <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/20.javab">Inter-thread communications in Java at the speed of light</a> Developing a light-weight, lockless, inter-thread communication framework in Java without using any locks, synchronizers, semaphores, waits, notifies; and no queues, messages, events or any other concurrency specific words or tools. Just get POJOs communicating behind plain old Java interfaces. 
-  </div>
-  <div>
+  </div> 
+  <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/19.javab">Key Takeaway Points and Lessons Learned from QCon San Francisco 2013</a> This article summarizes the key takeaways and highlights from QCon San Francisco 2013 as blogged and tweeted by attendees. Over the course of the next 4 months, InfoQ will be publishing most of the conference sessions online, including 19 video interviews that were recorded by the InfoQ editorial team. The publishing schedule can be found on the QCon San Francisco web site. 
   </div> 
   <div> 
@@ -150,6 +150,6 @@
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/22.javab">Capturing Compliance Requirements: A Pattern-Based Approach</a>Assuring compliance across an enterprise needs a holistic approach for defining process &amp; system controls. This article covers a new pattern-based framework to manage process compliance requirements. 
-  </div>   
+  </div> 
  </body>
 </html>

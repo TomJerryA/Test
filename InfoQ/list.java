@@ -2,7 +2,19 @@
  <head></head> 
  <body>
   <div>
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/42.java">Open Source SQL-in-Hadoop Solutions: Where Are We?</a>With Facebook recently releasing Presto as open source, the already crowded SQL-in-Hadoop market just became a tad more intricate. A number of open source tools are competing for the attention of developers: Hortonworks Stinger initiative around Hive, Apache Drill, Apache Tajo, Cloudera’s Impala, Salesforce’s Phoenix (for HBase) and now Facebook’s Presto.
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/46.java">TypedMVVM Uses TypeScript to Build Windows Store Apps with WinJS</a>TypedMVVM is a collection of samples and libraries developed by Davide Zordan which enables enable developers to build Windows Store apps using WinJS, TypeScript and MVVM.
+  </div> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/45.java">Benefits-led Process Improvement Using the CMMI</a>Achieving a maturity level is a target often used in CMMI based process improvement programs. It can be important for organizations to have insight in the relation between a maturity level and business goals, and to know the business benefits. An interview with Michelle Krupa on changing an improvement program from being CMMI Maturity Level based to a benefits led approach. 
+  </div> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/44.java">Modernization Is Not Optional</a>Most large organizations have allowed their systems to evolve without good architecture and governance. The result is a &quot;hair ball&quot; of systems interfaces and dependencies which greatly increase complexity, risk and the cost of change. David Sprott describes how systems modernization should be a collaboration between business management and IT. 
+  </div> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/43.java">Visual Studio 2013.1 RC1 Available</a>The first update for VS2013 is bringing bug fixes and the oft-requested support for systems running Internet Explorer 9. 
+  </div> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/42.java">Open Source SQL-in-Hadoop Solutions: Where Are We?</a>With Facebook recently releasing Presto as open source, the already crowded SQL-in-Hadoop market just became a tad more intricate. A number of open source tools are competing for the attention of developers: Hortonworks Stinger initiative around Hive, Apache Drill, Apache Tajo, Cloudera’s Impala, Salesforce’s Phoenix (for HBase) and now Facebook’s Presto. 
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/41.java">Hour of Code - Huge Support and Traction for the Computer Science Education Week</a>Programming is natural for most of us. But not so much for everyone else, especially the next generation. Code.org wants to change that. During this Computer Science Education week they got major support from Obama to Zuckerberg and Gates. We all have a responsibility to spread the word and encourage everyone to give it a try. Computer Literacy is the a next big challenge after Literacy. 
@@ -138,18 +150,6 @@
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/49.java">Vaughn Vernon: Reactive Domain-Driven Design</a>Vaughn Vernon, author of Implementing Domain-Driven Design, recently talked about using Scala and the Actor Model implementation Akka together with Doman-Driven Design as a means to remove some of the architecture overhead typically found in event-driven or hexagonal architectures. 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/48.java">Practices for Scaling Agile in Enterprises</a>Enterprises that are adopting agile organizational-wide will at some time have to scale their agile practices. In a session at the Agile Methods in the Finance Sector and Complex Environment conference, attendees shared their experiences with scaling agile in enterprises. 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/47.java">RadControls for ASP.NET AJAX Q3 2013 SP1 Adds Visual Studio 2013 and Internet Explorer 11 Support</a>Telerik has released an update to their RadControls for ASP.NET AJAX Q3 2013 control suite with support for Visual Studio 2013 and Internet Explorer 11 including several new features and bug fixes. 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/46.java">Actors Made Easy with C# and TPL DataFlow</a>For some design problems actors can make all the difference. An Actor is an independent entity that can respond to and send messages. In a way it is like its own little program running inside another process. But building actors in languages that don’t natively support them can be difficult, but Johan Olsson found a way to simplify the process using TPL DataFlow. 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/45.java">Apportable brings Objective-C to Android</a>Apportable offers iOS developers the possibility to publish their software for the Android ecosystem. Programmers can use the Apportable SDK and a set of command line tools to cross-compile their apps without having to apply major changes to the objective-c code base. Alternatively, Apportable also offers the conversion of applications as a service. 
   </div>  
  </body>
 </html>
