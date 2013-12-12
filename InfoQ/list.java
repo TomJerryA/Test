@@ -2,10 +2,13 @@
  <head></head> 
  <body>
   <div>
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/1.java">Oracle Invites Community to Weigh-In on Java EE 8</a>In keeping with their tradition of community collaboration on the Java platform, Oracle is asking the enterprise development community to participate in a survey to help define the requirements for the next version of Java Enterprise Edition, Java EE 8.
-  </div>
-  <div>
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/0.java">Interview with David Haney, Creator of SimplSockets</a>We interviewed David Haney, creator of SimplSockets for .NET about TCP programming in the modern age.
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/2.java">Advice on When to Repay Technical Debt</a>An exploration of recent advice from Henrik Knibert, Ward Cunningham and Hayim Makabee on technical debt, how to make the most of it and when to pay it off.
+  </div> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/1.java">Oracle Invites Community to Weigh-In on Java EE 8</a>In keeping with their tradition of community collaboration on the Java platform, Oracle is asking the enterprise development community to participate in a survey to help define the requirements for the next version of Java Enterprise Edition, Java EE 8. 
+  </div> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/0.java">Interview with David Haney, Creator of SimplSockets</a>We interviewed David Haney, creator of SimplSockets for .NET about TCP programming in the modern age. 
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/49.java">Firefox 26 Blocks Java</a>Mozilla Firefox 26 now blocks all Java plug-ins by default due to security concerns but allows users to run such plug-ins if they want to. 
@@ -147,9 +150,6 @@
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/5.java">Agile 2014 Conference Call for Submissions Open</a>Submissions are now open for talk proposals the Agile 2014 conference to be held in Orlando, Florida, USA in July 2014 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/4.java">Case Studies of Lean and Kanban from Central Europe</a>The 2013 international conference in Central Europe about Lean and Kanban (LKCE13) included presentations about change management, systems thinking, leadership, learning, and teamwork, and case studies from larger organizations that have applied Lean and Kanban. InfoQ interviewed Arne Roock about deployment of Lean and Kanban in agile software development. 
-  </div>   
+  </div>  
  </body>
 </html>

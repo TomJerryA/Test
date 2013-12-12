@@ -1,7 +1,7 @@
 <html>
  <head></head> 
- <body>
-  <div>
+ <body> 
+  <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/42.htmlb">博文共赏：在Node.js中使用声明式缓存</a> 写了多年的 Java 程序，即使在转投 Node 之后，仍然对 Spring 框架的 IoC 、Declarative XXX 记忆犹新，于是在 Node 项目中要用到缓存时，自然地想起了 Declarative caching，就有了山寨一把的想法。 
   </div> 
   <div> 
@@ -150,6 +150,6 @@
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/44.htmlb">遗留系统的技术栈迁移</a>本文介绍了如何针对遗留系统进行技术栈迁移。文中给出了一些最佳实践，迁移步骤和案例分析。 
-  </div>  
+  </div> 
  </body>
 </html>
