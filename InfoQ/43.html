@@ -1,31 +1,33 @@
-<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>Cloudant创始人谈大数据的发展</h3><p><a href="https://cloudant.com/" target="_blank">Cloudant</a>是一款分布式数据库服务，其创始人Adam Kocoloski最近就大数据相关话题接受了媒体<a href="http://www.odbms.org/blog/2013/11/on-big-data-interview-with-adam-kocoloski/" target="_blank">采访</a>，他认为“我们生产大数据的能力将超越存储大数据的能力。我预言在不久的将来，你将看到大数据科学家更强调判断大数据是否值得存储的分析能力。”</p>
-<p>就“当我们管理和分析企业的大数据时，能得到什么”这个问题，Adam表示，当今网络应用程序和传感器网络收集着越来越多的数据，这些数据是一个潜在的商业金矿。但对大规模的人与人之间事务、事件与事件之间因果关系进行建模是非常困难的，而且诸如数据仓库、商业智能类的传统企业系统十分笨重，不能快速地提取有价值的信息。</p>
+<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>Google眼镜开发工具箱允许开发者使用Xamarin.Android构建Google眼镜应用</h3><p>Google最近在开发者事件上发布了<a href="https://components.xamarin.com/view/googleglass">Google眼镜开发工具箱</a>（Glass Developer Kit，简称GDK），借助于该工具箱开发者能够使用C#和Xamarin.Android构建运行在Google眼镜上的本地应用程序。根据官方所提供的信息，开发者将能够很容易地找到该工具箱中所包含的工具和功能，因为很多API已经在现在的Android应用中使用了。</p>
+<p>对于参与Google眼镜探索程序的开发者而言该工具箱是完全免费的。该工具箱是Android SDK的一个<a href="http://developers.google.com/glass/develop/gdk/index">插件</a>，它能够访问跨平台的Glassware API；同时它还提供了一个示例Demo，开发者能够使用C#编写运行在Google眼镜上的应用。</p>
+<p>InfoQ采访了ASPInsider 和Xamarin的软件开发人员<a href="https://twitter.com/chrisntr">Chris Hardy</a>以期了解与Xamarin.Android和Google眼镜开发工具箱相关的更多内容。 </p>
+<p><b>InfoQ</b><b>：</b><b> Xamarin.Android</b><b>是什么？</b></p>
 <blockquote> 
- <p>科学家是天生的问题终结者,他们常常思考什么工具能解决特定的数据工作挑战。对大数据领域，特别是对于企业而言，能够应对这些挑战变得越来越重要。</p> 
- <p>总而言之，科学家让这一切变得容易。他们的分析方法将孤立的颗粒间的碰撞转化为分布式大学研究系统和并行计算的模型。换句话说，我们可以共同应对过滤大数据这一挑战并获得有效信息。在我的工作中，我们通过盲分析和机器学习来解决这个问题。我想你很快将看到这些方法在企业数据分析领域广泛应用。</p> 
+ <p>Xamarin.Android是一个开发工具，开发者能够借助于该工具使用强大的C#语言和公共语言运行时/.NET框架编写本地Android应用。</p> 
 </blockquote>
-<p>对于近期的数据科学的发展，Adam认为，我们生成数据的能力将超越储存数据的能力。</p>
+<p><b>InfoQ</b><b>：</b><b> Google</b><b>眼镜的服务目的是什么？</b></p>
 <blockquote> 
- <p>我认为你很快将看到数据科学家将判断数据是否进行存储作为研究的重点。诚然，大量的数据是导致这一现象的原因，但更重要的原因是我们向分布式数据生成阶段的跃变——来自移动设备、传感网络，以及即将到来的物联网将产生各种数据。现在，一个企业可以很方便地在自己的数据中心建立Hadoop，然后向其中“倾倒”数据，尤其是在这个企业有后期提炼有效数据的计划时。但当大量的数据来自分布式系统时，这个过程就没那么容易了。机器学习算法可以辨别有价值的数据，这将帮助我们有效地应对“数据洪流”。作为物理学家，我们认识到大数据引领的方式：我们不可能把所有数据写下来。这是数据科学家必须要学会权衡的一件事情：当你在收集数据的时候，你就需要决定把哪些数据扔掉。</p> 
+ <p>Google眼镜的目的是为佩带者提供有用的信息，让他们不必花时间从自己的口袋中掏出自己的移动设备。为了显示这些信息它在你视野的右上角提供了一个很小的屏幕。它还包含了一个摄像头和骨传导扬声器。</p> 
 </blockquote>
-<p>考虑到当今大数据的相关技术，在Adam看来，过滤大数据、获取有效信息过程面临的最大挑战是机器学习过程中缺乏精确的仿真。</p>
+<p><b>InfoQ</b><b>：你能与我们分享一下开发基于</b><b>Xamarin.Android</b><b>的应用都需要哪些工具么？</b></p>
 <blockquote> 
- <p>Cloudant是一个操作性数据存储工具，而不是大数据也不是像Hadoop一样的离线分析平台。这说明我们必须应对应用程序获取的、并且在它们运行过程会改变的可变数据。</p> 
- <p>根据我的经验，大数据面临的最大挑战是机器学习过程中缺乏精确的仿真。我所说的精确的仿真是如同布鲁克海文国家实验室使用相对论重离子对撞机进行的恒星粒子探测实验仿真。人们将机器学习应用到很多领域，但他们经常没有认识到在合适的训练数据上进行建模的重要性。不充分理解整个工作流程就进行训练集训练当然是一件轻松的事情。当他们这么做时，他们没有认识到自己没有合理的应用机器学习算法。</p> 
+ <p>官方的<a href="http://xamarin.com/android">Xamarin</a>网站上对开发所需的工具作了很好的概述，在Mac上你可以使用Xamarin Studio，而在Windows上你可以使用Xamarin Studio、Visual Studio 2010、2012或者是2013进行开发。大多数人使用Visual Studio开发Xamarin.Android应用程序，因为他们感觉使用Visual Studio IDE非常自在。</p> 
 </blockquote>
-<p>Adam认为，对大数据集进行数据分割是一个伟大的工程，但在某种意义上这个工程也是一个黑盒子，你很难去了解你的分析方法中的哪些部分是工作的，哪些部分又是不工作的。数据集越大，一个变量就越有可能和其它变量产生非线性关系。这个现象让人们很难去推论数据，也更要求数据科学家在建立训练集时注意线性技术和非线性技术的平衡与结合。</p>
-<p>为什么盲分析方法对大数据十分重要？Adam表示，人总是天然倾向于寻找信号。这是我们进化的一个特征。例如我们可能认为丛林里有只老虎，误判断有老虎总好过没有意识到有老虎。如果我们看到分布的数据里有一个“肿块”，我们将尽我们所能对其进行梳理。于是我们就带来了偏差。</p>
+<p><b>InfoQ</b><b>：假如我使用</b><b>GDK</b><b>开发了一个应用。那么我将能够通过</b><b>Google</b><b>眼镜看到哪些信息呢？</b></p>
 <blockquote> 
- <p>而当你进行盲检测时，你很有可能避免这种偏差。大数据科学家也是人，而且当他们处理大数据时，他们无法依赖于数据可视化。我们不大容易看到不能可视化的东西。相较于寻找数据中的信号，我们更需要识别噪声——那些我们不需要的数据——然后反向选择那些我们想保留的数据。</p> 
+ <p>你可以看到能够在屏幕上显示的任何信息，你能够获得屏幕的完全访问权限，所以可以在上面自定义绘制一些内容，例如在一个WebView中显示一个网站、播放一段视频或者显示设备上的照相机（这对应用程序中的二维码扫描是非常有用的）。一般情况下，你会想使用大字体显示简洁的信息，让用户清晰地看到相关内容。这些内容显示在Google眼镜的显示器上，该显示器被Google称为是“一个高分辨率的显示器，相当于从8英尺远的地方看一个25英寸的高清屏幕”。</p> 
 </blockquote>
-<p>对于机器学习是不是分析大数据的正确方法这个问题，Adam认为，机器学习提高信噪比的潜力是任何手动构造的分析方法都无法比拟的。机器学习有这个潜力，要很好的使用它，你需要正确理解训练数据集。机器学习不是灵丹妙药。算法有薄弱的地方，在有些地方它们效果会很差。当你使用各种各样的机器学习方法时，你需要牢记这些方法的薄弱点都在哪里。</p>
-<p>对于NewSQL和NoSQL的发展，Adam认为事务（transaction）最终不会终结NoSQL。主要原因有二：</p>
-<ul> 
- <li>现在有很多并且不断在增多的问题不需要事务性语义。</li> 
- <li>移动计算导致大规模处理事务在技术层面是不可行的。</li> 
-</ul>
-<p>诸如通讯录、博客、内容管理系统类的应用程序可以存储大量的数据，并且它们不需要高度的事务完整性。使用内在的执行模式和行级锁的系统——例如一个关系型数据库管理系统（RDBMS）——不需要将这些应用程序变得过度复杂化。&nbsp;</p>
+<p><b>InfoQ</b><b>：</b><b>Google</b><b>眼镜开发工具箱有没有为那些没有</b><b>Google</b><b>眼镜的开发人员提供模拟器？</b></p>
 <blockquote> 
- <p>人们普遍认为NoSQL数据库的流行源自关系数据库不能进行水平规模扩展。如果NewSQL能够为大分布式数据库和云服务提供支持事务（transactional integrity），这会削弱NoSQL流行的趋势么？我认为不会，因为移动计算机处理技术带来了新的挑战（例如离线应用程序数据和数据库同步），而且这些挑战不能用事务系统解决。</p> 
- <p>一个偶尔与云连接的移动设备在网络不好的情况下会带来痛苦的延迟，这时封锁关系数据库管理系统（RDBMS）的一行是不实际的。此外，许多NoSQL系统带来了新的特性（高度一致性，多文件事务）和逼近ACID事务的新策略（事件溯源）——移动设备告诉我们，我们需要重新审视移动背后的信息理论。</p> 
-</blockquote><br><br><br><br><br><br></body></html>
+ <p>现在Google并没有为那些没有Google眼镜的开发者提供模拟器，我们推荐他们通过下面的链接注册：<a href="http://www.google.com/glass/start/how-to-get-one/?source=xamarin">http://www.google.com/glass/start/how-to-get-one/?source=xamarin</a>， 注册之后的几周内他们会收到期望加入Google眼镜探索者的邀请（当然这完全取决于Google）。</p> 
+</blockquote>
+<p><b>InfoQ</b><b>：你能与我们分享一个使用</b><b>Xamarin.Android</b><b>开发</b><b>Google</b><b>眼镜应用的示例程序么？</b></p>
+<blockquote> 
+ <p>有一个<a href="https://www.dropbox.com/s/f1z1r5lzohgsly2/GoogleGlassSampleStopwatch.zip">Stopwatch</a>应用示例，它就是一个使用Xamarin.Android开发的Google眼镜应用。</p> 
+</blockquote>
+<p><b>InfoQ</b><b>：我们能够使用</b><b>Xamarin.Android</b><b>开发哪些类型的应用？</b></p>
+<blockquote> 
+ <p>你能够使用Xamarin.Android开发所有类型的应用，你并不会受限于任何特定类型的API或者Xamarin平台的任意限制，一些示例应用程序是： <br /> <a href="http://xamarin.com/apps#rdio">Rdio</a>：该应用是使用C#开发的，能够运行在iOS 和Windows Phone平台上。 <br /> <a href="http://xamarin.com/apps#direct-energy">Direct Energy</a>：该应用是使用C#开发的一个iOS应用。</p> 
+ <p><a href="https://play.google.com/store/apps/details?id=com.fds.infiniteflight&amp;hl=en">Infinite Flight</a>：该应用是使用C#开发的，能够运行在iOS 和Windows Phone平台上。</p> 
+</blockquote>
+<p><b>查看英文原文</b>：<a href="http://www.infoq.com/news/2013/12/glass-developer-kit">Glass Developer Kit Enables Developers to Build Apps for Google Glass using Xamarin.Android</a></p><br><br><br><br><br><br></body></html>

@@ -1,32 +1,17 @@
-<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>Microsoft Envisions One OS Running on Mobile Devices and Sensors</h3><p>During a <a href="http://www.ubs.com/global/en/investment-bank/key-investor-conferences/global/_jcr_content/par/accordionbox_12/linklist_4/link.1319112588.file/bGluay9wYXRoPS9jb250ZW50L2RhbS9JbnZlc3RtZW50QmFuay9kb2N1bWVudHMvY29uZmVyZW5jZXMvR1RDLUZpbmFsLUFnZW5kYS0xMS0xOC0xMy5wZGY=/GTC-Final-Agenda-11-18-13.pdf">UBS Global Technology Conference</a> held last week, Microsoft’s Julie Larson-Green, EVP Devices and Studios, discussed her company’s approach to today’s software market,&nbsp;providing insights especially into the mobile device operating systems space. We selected the most interesting fragments from the session’s transcript (<a href="http://view.officeapps.live.com/op/view.aspx?src=http://www.microsoft.com/investor/downloads/events/UBS_LarsonGreen.docx">HTML</a>, <a href="http://www.microsoft.com/investor/downloads/events/UBS_LarsonGreen.docx">DOCX</a>).</p>
-<p>Answering to a question suggesting that Microsoft is “multiple laps behind”&nbsp;in the mobile space race,&nbsp;Larson-Green acknowledged that the <a href="http://www.infoq.com/news/2013/07/microsoft-reorganization">major reorganization</a> that was&nbsp;started in July was triggered by their lost start in the competition,&nbsp;Microsoft being determined to be very present and active in the mobile market because “mobility is a huge part of how people live and work and interact today.”</p>
-<p>Talking about Steve Ballmer’s undergoing retirement, Larson-Green tried to dismiss fears that Microsoft does not have a clear&nbsp;direction:</p>
-<blockquote> 
- <p>We work together as a management team, and so it's not as dependent on one decider, I guess I would call it, as it is a group effort for us to work together and plan the roadmap and the direction for the high value activities that we want to deliver to customers on the devices that we think people need and want. So that [Ballmer’s retirement] hasn't slowed us down at all.</p> 
-</blockquote>
-<p>While Microsoft seems to be running on all cylinders to catch up with the competition in the mobile race, Larson-Green still sees a future for the desktop operating system:</p>
-<blockquote> 
- <p>So I think there will always be for a long time, for my lifetime, there will be desktop computers where people are doing precision movements with a mouse which are highly tuned towards productivity and typing.</p> 
-</blockquote>
-<p>but their focus seems to be on devices running</p>
-<blockquote> 
- <p>on your wrist, or something on your head, or something in your pocket that you will want to interact and see your e-mails, hear notifications, get access to corporate data that you need to do your job, as well as interact with friends and family.</p> 
-</blockquote>
-<p>Alluding to past breakthroughs such as Apple’s first iPhone&nbsp;and its novel touch input interface,&nbsp;Larson-Green believes that their Kinect technology will play a similar major role in the near future:</p>
-<blockquote> 
- <p>There will be another inflection point and it's going to come from the hardware input model. So that's why you've seen us doing things with Kinect, with gesture. You see us doing things with voice. There's one coming. And all the things have to come together. I mean we were first with tablets you could say. But, the technology wasn't actually there to make it a mobile thing that you would carry around. The idea of a tablet, being able to take notes, take it with you, was stuck on a five-pound luggable. And now it's in a sleek, thin little piece. So all those elements have to come together and we believe it comes from an input model, or user experience inflection point with the hardware, which is why we're in devices.</p> 
-</blockquote>
-<p>Not only the smartphones and tablets will be involved, but the entire world of sensors:</p>
-<blockquote> 
- <p>So sensors are going to become a big part of how you think about things. So some of the things we've been talking about ‑‑ you see all these fitness devices that people wear on their wrists and they do some interesting things. What's the extension of that? What are the sensors and things that we could build that would help you in your daily life, from telling you that you didn't quite do your pushups as far down as you really thought you could go, to letting you know that your heart rate is too high and you must be stressed out, take a deep breath, to letting you know when your bus is running late at your bus stop and ‑‑ your bus stop is running late.</p> 
- <p>So there's lots of things we can do by bringing those things together in a new way of thinking about how people interact with technology. Just as the mouse was an invention, touch was an invention, there will be the next new way to interact. And that's why we've been focusing on natural user interface for a while, working on that.</p> 
-</blockquote>
-<p>And this will require a new level of application interaction:</p>
-<blockquote> 
- <p>I think connecting apps to each other, because so many things are special purpose, you'll start to see new ways for apps to integrate across. I think there's a lot that's going to come from the web in smart information about you and your location.</p> 
-</blockquote>
-<p>One cannot stop wondering where the multiple Microsoft operating systems&nbsp;– Windows, Windows RT, Windows Phone&nbsp;– fit into this new world hinted by Larson-Green. Without entering into details, she made it clear that:</p>
-<blockquote> 
- <p>We're not going to have three [OSes].&nbsp;We do think there's a world where there is a more mobile operating system that doesn't have the risks to battery life, or the risks to security. But, it also comes at the cost of flexibility. So we believe in that vision and that direction and we're continuing down that path.</p> 
-</blockquote>
-<p>The battery life and security concerns, plus the loss of flexibility suggests that Microsoft has picked Windows RT as their future common operating system for the desktop and devices. (Of course, there will also be Windows Server for the back-end and the cloud, but that is another story.) Information about <a href="http://www.infoq.com/news/2011/01/Will-Microsoft-Unify-OSes">OS unification</a> started to appear back in 2011, initially denied by Microsoft, but <a href="http://www.infoq.com/news/2012/06/Windows-Phone-8">reiterated a year later</a>, and reinforced by the recent <a href="http://www.infoq.com/news/2013/11/Store-Unification">consolidation of the Windows and Windows Phone app stores</a>.</p><br><br><br><br><br><br></body></html>
+<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>Oracle Tunes Java's Internal String Representation</h3><p>&nbsp;In an ongoing effort to improve Java performance, Oracle has announced a change in the internal representation of strings in the String class as of Java 1.7.0_06.</p>
+<p class="MsoNormal">
+ <o:p></o:p></p>
+<p class="MsoNormal">The change, removing two non-static fields from the underlying String implementation, was done to help prevent memory leaks. 
+ <o:p></o:p></p>
+<p class="MsoNormal">The original String implementation is based on four non-static fields. The first is char[] value, which contains the characters comprising the String. The second is int offset which holds the index of the first character from the value array. The third is int count storing the number of characters to be used. Fourth is int hash, which holds a cached value of the String hash code.
+ <o:p></o:p></p>
+<p class="MsoNormal">Oracle reported that a performance issue could arise in the original implementation when a String is created using the String.substring() call. Substring() is called internally by many other API calls like Pattern.split(). When String.substring() is called, it refers to the internal char[] value from the original String characters. 
+ <o:p></o:p></p>
+<p class="MsoNormal">The previous implementation was designed that way in order to produce a memory savings, since the substring would still refer to the original character data. In addition String.substring() would run in constant time (O (1)) unlike the new implementation that runs in linear (O(n)) time. 
+ <o:p></o:p></p>
+<p class="MsoNormal">However the old implementation had the possibility of producing a memory leak in cases where an application would extract a small String from an originally large String and then discard the original String. In such a scenario, a live reference to the underlying original large char [] value from the original String is still retained, holding on to possibly many unused bytes of data.
+ <o:p></o:p></p>
+<p class="MsoNormal">To avoid this situation in earlier versions, Oracle suggests calling the new String(String) constructor on the small String. That API copies only the required section of the underlying char[] thereby unlinking the new smaller String from the original large parent String.
+ <o:p></o:p></p>
+<p class="MsoNormal">In the new paradigm, the String offset and count fields have been removed, so substrings no longer share the underlying char [] value.
+ <o:p></o:p></p><br><br><br><br><br><br></body></html>

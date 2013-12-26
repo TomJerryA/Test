@@ -1,48 +1,12 @@
-<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>YourKit Released the 2013 Version of its Profilers</h3><p>For the recent 2013 version release of their Java Profiler, YourKit focused on improving its high level data collection features. The intention of the so called J2EE high level profiling is to get insight into the logical processing, rather than just providing timing information.</p>
-<div>
- The data needed for high level profiling, like SQL statements, JNDI calls or JSP invocations, are gathered using so called probes. In previous versions, these probes were attached to and removed from the code by using byte code retransformation. This process created some load and required class retransformation, a feature which might be disabled on the used JVM.
-</div>
-<div>
- As of the 2013 version, probes are now always attached to the code, but the activation and deactivation are controlled by simple checks inside the probe code.
-</div>
-<div>
- Additionally to reduce overhead, this will cause changes to the probe state be effective immediately.
-</div>
-<div>
- There are 3 states for probes: 
- <em>on</em>, 
- <em>off</em> and 
- <em>auto</em>, where auto will activate probes when in CPU profiling mode.
-</div>
-<div>
- &nbsp;
-</div>
-<div>
- The main new feature, Performance Charts, is visualizing and correlating the data gathered by probes. It allows for example to correlate a high CPU load with the number of database calls, or the memory consumption with number of servlet calls. Those types of high level analysis are usually provided by APM tools and not present in profilers, which work on a much more detailed level. However, it gives a good starting point for seeing which parts of the system might interact with each other.
-</div>
-<div>
- &nbsp;
-</div>
-<div>
- CPU profiling received additions to configuration:
-</div>
-<ul> 
- <li>It is now possible to also instrument methods which are normally excluded, like getters and setters.</li> 
- <li>The UI can optionally display methods which are executing in less then a millisecond.&nbsp;</li> 
-</ul>
-<div>
- For memory profiling, there are also additions:
-</div>
-<ul> 
- <li>For simple objects like <em>Date</em>, or the primitive type wrappers, the corresponding value is displayed. This removes the need to drill into them to discover what value they carry, which speeds up analysis.</li> 
- <li>Self references in the are no longer expandable in the object tree, which prevents from accidentally drilling down reference paths which will indefinitely recurse.</li> 
-</ul>
-<div>
- Of course support for Java 8 has been extended to include default method profiling, and newer versions of all IDEs are supported for integration. Executing tests with TestNG can now also be profiled easier.
-</div>
-<div>
- &nbsp;
-</div>
-<div>
- YourKit is starting at $499 per developer, or $2,499 per floating license. Upgrading is free if the purchase was less than a year ago, otherwise it enables to use a 40% discount.&nbsp;
-</div><br><br><br><br><br><br></body></html>
+<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>Hadoop Jobs on GPU with ParallelX</h3><p>The <a href="http://en.wikipedia.org/wiki/MapReduce">MapReduce</a> paradigm is not always ideal when dealing with large computationally intensive algorithms. A small team of entrepreneurs is building a product called <a href="http://www.parallelx.com/">ParallelX</a> to solve that bottleneck by harnessing the power of GPUs to give <a href="http://hadoop.apache.org/">Hadoop</a> jobs a significant boost.</p>
+<p>ParallelX is “a GPU compiler that translates the code you’ve written in Java to OpenCL, and executing it on our AWS GPU cloud”, says co-founder<a href="https://twitter.com/tonydiepenbrock">Tony Diepenbrock</a>. The end product is a service similar to Amazon’s&nbsp;<a href="http://aws.amazon.com/elasticmapreduce/">Elastic MapReduce</a>, except it will make use of the <a href="http://aws.amazon.com/ec2/instance-types">EC2 GPU instances</a>.</p>
+<p>Amazon is of course not the only cloud provider proposing GPU servers, and companies like <a href="http://www.softlayer.com/dedicated-servers/high-performance-computing">IBM/Softlayer</a> or <a href="http://www.nimbix.net/nvidia/">Nimbix</a> also offer servers with NVidia GPUs. When asked whether ParallelX is going to support different providers than Amazon, Tony replies “Not any time soon, but we will have an SDK available for customers with in-house Hadoop clusters. Most of the GPU cloud providers offer GPUs in HPC clouds but we want cheap GPUs in the cloud. After all, that is what Hadoop is designed for–cheap commodity hardware.”</p>
+<p>To understand a bit better what the ParallelX compiler does, it is important to note that there are different types of GPUs along with different parallel computing platforms such as <a href="http://www.nvidia.com/object/cuda_home_new.html">CUDA</a> or <a href="http://en.wikipedia.org/wiki/OpenCL">OpenCL</a>. Where ParallelX fits in is that, as Tony mentions, the “compiler will translate the JVM bytecode to OpenCL 1.2 code, which will then pass through the OpenCL compiler to get compiled into shader assembly to execute on the GPU. There is now FPGA hardware that also is capable of running OpenCL code, but support for generalized parallel hardware will be supported in the future.” Even if it does not support reflection or native calls in the Java source code, ParallelX’s goal is to ensure that developers have to make as little code changes as necessary to their MapReduce jobs.</p>
+<p>As the ParallelX team is looking into increasing throughput for I/O-bound jobs, Tony notes that they are “also going to support real-time processing, queries expressed in Pig and Hive code, and streaming of large data sets for I/O bound jobs. Using our pipelining framework, I/O throughput almost reached the computing throughput of the GPUs in our tests.”</p>
+<p>Although they are focusing their efforts on the <a href="http://docs.aws.amazon.com/ElasticMapReduce/latest/DeveloperGuide/emr-plan-hadoop-differences.html">Amazon Hadoop distribution</a>, the team is planning to target other popular Hadoop distributions such as <a href="http://www.cloudera.com/content/cloudera/en/products-and-services/cdh.html">Cloudera's CDH</a>, and it will undoubtedly be useful to take advantage of the many improvements to <a href="http://hive.apache.org/">Hive</a> and <a href="http://pig.apache.org/">Pig</a> offered by these commercial distributions in the context of ParallelX.</p>
+<p>The story of ParallelX is one of a kind, and Tony relates the odyssey of this project over the past 2.5 years <a href="https://medium.com/game-changing-ideas/c3c516146599">in an article</a>, starting with a social network for fraternities, a widget for Facebook and culminating into a tool to identify plagiarized code. These projects had something in common: graph analytics and algorithms on GPU, which is where the idea for ParallelX came from almost naturally.</p>
+<p>There are many different workloads that can be a good fit for ParallelX. The focus is on high-performance computing, for example Machine Learning and heavy analytics like graph processing. As an illustration of its capabilities, the ParallelX team was able to cluster in under one second a large fraternity network on a single GPU, something which used to take an hour parallelized across six computers otherwise. But in practice there is no limit, as anything that is written for MapReduce can be compiled to the GPU with ParallelX.</p>
+<p>The ParallelX team is planning to publish its data and a whitepaper in the future to demonstrate the performance of their Hadoop-to-GPU compiler on real-world workloads. The community response has been slightly divided on the topic, and <a href="https://news.ycombinator.com/item?id=6762653">some are waiting</a> for this whitepaper before switching gears, as can be seen in the comments when this was posted on <a href="https://news.ycombinator.com/">Hacker News</a>: “Extraordinary claims require extraordinary evidence.”</p>
+<p>You can already get a taste of the power of GPU on Hadoop by using <a href="https://code.google.com/p/aparapi/">Aparapi</a>, a Java API that allows you to execute specific code fragments on the GPU by converting the Java bytecode to OpenCL, which could be embedded in any MapReduce job written in Java.</p>
+<p>ParallelX could be a significant step in democratizing Hadoop to a research-oriented audience with needs for increasingly complex algorithms. Graph analysis algorithms for example can get very good performance today using the<a href="http://en.wikipedia.org/wiki/Bulk_synchronous_parallel">Bulk Synchronous Parallel (BSP)</a> model democratized by <a href="http://hama.apache.org/">Apache Hama</a>, and if ParallelX can be combined to projects like <a href="http://giraph.apache.org/">Apache Giraph</a> which runs graph algorithms as MapReduce jobs, it could be a worthwhile addition to any data scientist’s graph analytics toolkit.</p>
+<p>You can <a href="http://www.parallelx.com/">sign-up for the beta online</a> by entering your email address. ParallelX is planning to support a freemium plan with limited storage but access to powerful GPUs.</p><br><br><br><br><br><br></body></html>

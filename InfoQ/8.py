@@ -1,9 +1,25 @@
-<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>Windows Azure SDK 2.2、Visual Studio 2013、統合サインイン、フィルタリングのサポートを追加</h3><p><a target="_blank" href="http://www.infoq.com/news/2013/11/win-azure-sdk-2-2-vs2013-support"><em>原文(投稿日：2013/11/11)へのリンク</em></a></p>
+<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>Firefox 26がJavaをブロック</h3><p><a target="_blank" href="http://www.infoq.com/news/2013/12/firefox-26-blocks-java"><em>原文(投稿日：2013/12/11)へのリンク</em></a></p>
 <div class="article_page_left news_container text_content_container"> 
  <div class="text_info"> 
-  <p>Microsoftは<a href="http://www.windowsazure.com/en-us/downloads/">Windows Azure SDK 2.2</a>をリリースした。これはVisual Studio 2013をサポートし、Visual Studio内からの<a href="http://social.msdn.microsoft.com/Forums/windowsazure/en-US/50cc483c-6bb2-4e20-89a5-31f22abacd51/windows-azure-integrated-sign-in-windows-azure-tools-22-for-visual-studio?forum=windowsazuredevelopment">統合サインイン</a>をサポートする。また最新のアップデートは、アップデートされたAzure PowerShellコマンドレットとScriptCenterに加え、Visual Studio内のリモートデバッグクラウドサービスとSQLデータベースのためのファイアウォール管理を提供する。<br /> <br /> 最新のリリースでは、統合サインインをサポートする。これにより開発者は管理証明書をダウンロードもしくは使用することなく、Visual Studio内でWindows Azureリソースの開発、テスト、管理ができるようになる。Windows Azureに接続するには、Visual StudioのServer ExplorerにあるWindows Azureアイコンを右クリックし、コンテキストメニューの<em>Connect to Windows Azure</em>を選択する。</p> 
-  <p>統合サインインを利用すると、認証はあなたのアカウントに関連付けられている<a href="http://www.windowsazure.com/en-us/services/active-directory/">Windows Azure Active Directory</a>を使って処理される。これにより、組織や企業は、オンプレミスで開発者に使っているのと同じ認証モデルをクラウドで使えるようにするとともに、セキュリティも改善する。 <br /> <br /> Windows Azure SDK 2.2はVisual Studio 2013内のServer Explorerにあるコンテキストメニュー<em>Filter Services</em>を右クリックすると、サブスクリプション/リージョンをフィルタリングすることができる。また、Cerificatesタブからは、管理証明書を使ってWindows Azureリソースを管理することもできる。パブリッシュダイアログウィザードのCommon SettingsタブのBuild ConfigurationでDebugを選択することで、リモートでクラウドリソースをデバッグすることもできる。</p> 
-  <p>最新のアップデートは、Visual Studioから直接、セキュリティファイアウォールを有効にして設定する機能も提供する。Visual StudioのServer Explorerを使ってSQLデータベースに接続しようとすると、ローカルIPアドレスからアクセスできるようファイアウォールルールの追加を促されるだろう。<br /> <br /> 最新のアップデートにあわせて、MSDNサブスクライバが利用するWindows Azure管理ポータル内で、Visual Studio 2013が利用できるよう事前設定したVMイメージもリリースされた。さらに、プロダクトチームは新しいWindows Azure Management Libraries for .NETのプレビュー版もリリースした。これにはC#、VB、C++、F#といった.NET言語を使ったタスクを自動化する機能が含まれている。</p> 
-  <p><a href="http://weblogs.asp.net/scottgu/archive/2013/10/22/windows-azure-announcing-release-of-windows-azure-sdk-2-2-with-lots-of-goodies.aspx">Scott Guthrie</a>氏はブログで、現在NuGetから利用可能になっている新しいWindows Azure Management Libraries for .NETの使い方を説明した。ただし、パッケージはまだプレビュー版なので、パッケージを取得するには -IncludePrerelease スイッチを追加する必要がある。<br /> <br /> また、MicrosoftはWindows Azure SDKのソースコードをオープンソースライセンスでリリースし、Windows Azure PowerShell 0.7.0を別ダウンロードとしてリリースした。PowerShellアップデートは、Windows Azure Active Directory認証のサポートと、メディアサービスとSQLデータベースのための新しいコマンドレットを提供する。また、Windows Azureでよくあるタスクを自動化するサンプルスクリプトを提供するScript Centerも含まれている。</p> 
+  <p>MozillaのFirefox 26は現在，セキュリティ上の懸念を理由に，デフォルトですべてのJavaプラグインをブロックしている。ただしユーザが希望すれば，プラグインを実行することが可能だ。</p> 
+  <p>ブラウザに対するセキュリティの懸念から，<a href="http://www.infoq.com/jp/news/2011/10/mozilla-java">MozillaがブロックリストへのJavaの登録を検討した</a>のは2011年のことだ。しかしその時点では，何の決定も下されなかった。今年に入ってMozillaでは，使用するプラグインをユーザが選択できるようにするClick-to-Play(CtP)機能を開発し，そのテストを続けてきた。しかしプロセスは順調に進まず，Javaに依存するWebサイトやユーザに影響を与えている。</p> 
+  <p>9月になってMozillaは，<a href="https://bugzilla.mozilla.org/show_bug.cgi?id=914690">全バージョンのJavaバージョンをunsafeとマークすると決定</a>して，Firefox 24でそれを実行した。しかし，それによってアプリケーションやWebサイトが動作しなくなってしまったユーザのほとんどが，何が起こったのかを理解していなかった。彼らはCtPを使ってJavaを有効にできるということが分からなかったため，いくつかのプラグインを見ることができず，結果的にCtPは役に立たなかった。それどころか<a href="https://bugzilla.mozilla.org/show_bug.cgi?id=914690#c65">CtPのUIが表示されないケースさえあったのだ</a>。少なくともいくつかの国では，多数のネットバンクユーザが影響を被っている:</p> 
+  <blockquote> 
+   <p><a href="https://bugzilla.mozilla.org/show_bug.cgi?id=914690#c40">Knud Berggreen</a>: Java Plugin 7 update 45をブロックしないでください！ 国中のログインがブロックされて，デンマーク国民すべてに影響します。</p> 
+   <p><a href="https://bugzilla.mozilla.org/show_bug.cgi?id=914690#c91">etoxsg</a>: Javaプラグインをインストールしなくてもサービスを提供できるオンライン銀行は，ノルウェーには数えるほどしかありません。ノルウェー，スウェーデン，デンマークの全世帯の90%が，オンラインバンキングにJavaプラグインを必要としているのです。そうですから，Mozillaが事前の予告なくすべてのJavaをブロックすると決めたとき，私は友人や近所の人たちや家族を相手に，8件の訪問対応と15件の電話対応をしなければなりませんでした。</p> 
+  </blockquote> 
+  <p>その他のコミュニティの反応は:</p> 
+  <blockquote> 
+   <p><a href="https://bugzilla.mozilla.org/show_bug.cgi?id=914690#c33">Tomasz</a>: あからさまな言い方で申し訳ありません，でもユーザとして言いたい – FFがJavaをブロックするなんて，こんな超無責任な決定を一体誰がしたんですか！</p> 
+   <p>おかげで私は，オンライン取引口座にログインできなくなってしまいました。銀行で使っているアプリが &quot;Javaバージョン1.5以降が必要です&quot; とメッセージボックスを表示するのです。セキュリティ問題どころではありません。単に動かないのです。</p> 
+   <p><a href="https://bugzilla.mozilla.org/show_bug.cgi?id=914690#c30">ipatrol</a>: あなた方，頭がおかしくなったんじゃないですか？ Javaは動的コンテントを支える３大テクノロジのひとつなんですよ！ ハンマーを持ち出して些細なバグを叩き潰して，ちょっとしたUIの微調整って，落ち着き払って何を言ってるんですか？</p> 
+  </blockquote> 
+  <p>Java SEエンジニアリングマネージャの<a href="https://bugzilla.mozilla.org/show_bug.cgi?id=914690#c92">Roger</a>は，この問題についてこう述べている:</p> 
+  <blockquote> 
+   <p>FFがJava 7u45の脆弱性を指摘していることについて，非常に多くの人々がjava.comサイトに報告を寄せています。その対策はIEを使用することだ，と言う人もたくさんいます。関連用語の検索結果数は天井知らずです。今回の処置を実施したFFチームの，これがエンドユーザのソリューションとして意図したことだったのでしょうか。メッセージ表示に関する混乱と，Javaを実行可能にする方法のユーザビリティに問題があったのではないかと思います。今回の新たなブロックが，FFユーザの行動にどのような影響を与えているか，何か統計情報はありませんか？</p> 
+  </blockquote> 
+  <p>Mozillaは一旦はブロックを解除することにしたが，この措置はCtPが修正されるまでの一時的なものだった。10月末にMozillaは，再びセキュリティ上の問題を理由に，ベータ版の<a href="https://blog.mozilla.org/futurereleases/2013/10/31/click-to-play-plugins-ready-to-test-in-firefox-beta/">FirefoxでFlash以外のプラグインをブロックする</a>と発表した。</p> 
+  <p>結果的に，今年末にリリースされたFirefox 26では，<a href="http://www.mozilla.org/en-US/firefox/26.0/releasenotes">すべてのWebサイトを対象としてJavaプラグインはデフォルトでブロックされている</a>。CtPユーザインターフェースがユーザに対して，必要な場合にJavaを有効にする方法を知らせるのに十分役立っているか，疑問の余地は残る。</p> 
+  <p>ユーザのコンピュータ内のセキュリティホールに関しては，長い間，WindowsとFlashが非難の的になってきた。そして今では，Javaがその圧力を感じるようになっている。Oracleはこれまで，この問題にそれほど注意を払っていないようだった。しかしその考え方は改められたらしく，この10月には四半期に最低１回提供されるCritical Patch Updateとして，127件のセキュリティを修正するアップデートがリリースされた。</p> 
  </div> 
 </div><br><br><br><br><br><br></body></html>

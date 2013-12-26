@@ -1,6 +1,51 @@
 <html>
  <head></head> 
- <body> 
+ <body>
+  <div>
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/15.py">CMMIを使用した成果主導の改善プロセス</a>CMMIを基盤とするプロセス改善プログラムは多くの場合，特定の成熟度レベルの達成を目標に据える。組織としては，成熟度レベルとビジネス上の目標との関連性を見通し，改善によって期待できるビジネス上のメリットを知ることが重要になる。CMMI成熟度を基準としたものから成果主導アプローチに改善プログラムを変更することについて，Michelle Krupa氏にインタビューした。
+  </div>
+  <div>
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/14.py">バグ退治でテストを改善する</a>Testing Portugal 2013において、Klaus Olsen氏はバグ退治のテクニック、探索テストのスタイルについてプレゼンテーションした。
+  </div>
+  <div>
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/13.py">GoogleがChromeアプリのオフライン機能強化とMacサポートを発表</a>Googleは先日，同社のChromeアプリの構想にMacのサポートを加えることを発表した。Chromeアプリは，クロスプラットフォームのアプリケーション開発をWeb技術を使って実現するもので，Chromeをランタイムとして使用する。今回の発表は，９月から本格的に始まった，GoogleによるChromeアプリの再プロモーションと並行して行われた。
+  </div>
+  <div>
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/12.py">学習する組織における自己啓発のサポート</a>組織は従業員を通して学習する。アジャイルなやり方を仕事に導入するには、組織は従業員の自己啓発をサポートする必要がある。
+  </div> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/12.py">Opserver概要 - Stack Exchangeの監視ツール</a>OpserverはStackOverflowで有名なStackExchangeの開発したオープンソースの監視ツールだ。監視対象である各システム状態の全体像をすばやく把握するためのものだが，ドリルダウンアプローチを使うことで，さらに深い調査を行うこともできる。InfoQでは詳細を知るために，開発者のひとりであるNick Crave氏にインタビューした。 
+  </div> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/11.py">QConSF2013ハイライト - パート１</a>Hyattの提供する魅惑的な施設で行われた３日間のカンファレンスには，どの日も講演や展示，アクティビティなどのスケジュールがぎっしり詰まっていて，どのトラックやイベントに参加するべきかの決断に迷うほどだった。 
+  </div> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/10.py">Netflix、ビッグデータがビジネス判断を動かす</a>NetflixのJeff Magnusson氏が、彼らのData Platform as a ServiceについてQCon SF 2013でプレゼンテーションをした。このプレゼンテーションをフォローアップして、技術スタックがどうなっていて、それがNetflixの重要なビジネス判断にどう役立っているのか説明する。 
+  </div> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/9.py">技術的負債を清算するときのアドバイス</a>Henrik Knibert氏、Ward Cunningham氏、Hayim Makabee氏が技術的負債の清算について解説している。 
+  </div> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/8.py">Firefox 26がJavaをブロック</a>MozillaのFirefox 26は現在，セキュリティ上の懸念を理由にデフォルトですべてのJavaプラグインをブロックしている。ただしユーザが希望すれば，プラグインを実行することは可能だ。 
+  </div> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/7.py">Gauntltによる継続的セキュリティテスト</a>GauntltコアチームのJames Wickett氏はVelocity Conf Londonで，アプリケーションのセキュリティレベルに関するフィードバックの迅速化を目的とした，継続的インテグレーションサイクルへのセキュリティテスト統合についての解説を行った。氏が強調したのは，継続的デリバリによるリリースデリバリ率の増加に伴う，定期的セキュリティチェックの重要性だ 
+  </div> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/6.py">ふりかえりはリーンスタートアップの学習をどのようにサポートするか</a>リーンスタートアップの「構築-計測-学習」というフィードバックループは、起業家が顧客のニーズについて学ぶのに役に立つ。アジャイルの「ふりかえり」は、必要とされる変化について考え、学習し、そして合意するための方法だ。以下では、アジャイルのふりかえりがリーンスタートアップの学習と行動をどのようにサポートするのか、いくつかの事例を挙げる。 
+  </div> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/5.py">Entity FrameworkベースのコアビジネスアプリケーションでDDDを活用する</a>ドメイン駆動設計(Domain-Driven Design/DDD)とはすなわちドメインだ，永続性ではない。データベースプログラミングに25年のキャリアを持ち，近年はEntity Frameworkを使用しているJulie Lerman氏は，.NETプラットフォームのコンサルタントであり，Microsoft MVPという人物だ。その氏が先日，&Oslash;redev開発者カンファレンスで，DDDに移行した時の永続性に関する経験を公開してくれた。 
+  </div> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/4.py">Hour of Code - コンピュータサイエンス教育週間をサポート</a>プログラミングは私たちの多くにとって自然なことだ。だが、他の人たち、特に次の世代にとっては必ずしもそうではない。Code.orgはそれに挑もうとしている。コンピュータサイエンス教育週間に際し、彼らはObama大統領からZuckerberg氏やGates氏まで、大きなサポートを得た。 私たちには、その言葉を広めて、みんなに試してみるよう働きかける責任がある。コンピュータリテラシーは、読み書きの後に続く次の大きな課題だ。 
+  </div> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/3.py">Google Compute Engineの一般提供</a>Google Computer Engine (GCE) インフラストラクチャ・アズ・ア・サービスの一般向け提供(GA/General Availability)が開始された。ローンチには価格の引き下げに加え，新たなストレージモデル，サポート対象オペレーティングシステムの拡張，透過的メンテナンスのためのライブマイグレーション機能も含まれる。 
+  </div> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/2.py">プロジェクトはすべてやめるべきか？</a>XP Days Beneluxカンファレンスで行った&quot;Kill all projects&quot;と題するセッションの中で，Paul Kuijten氏は，すべてのプロジェクトを廃止することを提案した。InfoQでは氏にインタビューして，アジャイルにとって価値のあるプロジェクト管理や製品開発の資金について話を聞いた。 
+  </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/1.py">内発的動機づけのために - Champfrogs Checklist</a>Jurgen Appelo氏がチームや個人の内発的動機づけを助けるツール、Champfrogs Checklistをリリースした。 
   </div> 
@@ -105,51 +150,6 @@
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/18.py">スマートクライアント・Dumbサーバを実現？AWSがWebブラウザのJavaScript向けSDKをリリース</a>ここ数年、開発者は何らかの力仕事をサーバサイドのコードに頼り続けていたものの、クライアントサイドのコードにより多くの仕事をするよう求めていた。AWSは、ブラウザからAWSのサービスへの安全なアクセスを行うJavaScript SDKのリリースによって、そのモデルを刷新している。これにより、いくつかのケースでは、サーバサイドのコードをまったく必要としなくなっているのである。 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/17.py">企業におけるアジャイルスケーリングのプラクティス</a>組織規模でアジャイルを採用している企業は，時としてアジャイルプラクティスの適用範囲を拡大する必要に迫られる。&quot;Agile Methods in the Finance Sector and Complex Environment” カンファレンスでのセッションでは，企業におけるアジャイルのスケーリング実践経験が参加者によって発表された。 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/16.py">Apcera Continuum</a>クラウドスタートアップのApceraが11月14日，新たなWebサイトをローンチして，同社製品であるContinuumの詳細を公開した。 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/15.py">Microsoftが放棄したスタックランキングシステムでYahoo!が600人をレイオフ</a>Yahoo!は最近、昨年に導入したランキングシステムに基づき、600人をレイオフした。一方、マイクロソフトはランキングシステムを放棄し、従業員をある種の重圧から解放した。 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/14.py">API設計の人的側面: ApiaryのJakub Nesetril氏とのインタビュー</a>API設計とAPI記述はマシン間の単なるインターフェイス規約以上のものだ。Apiaryの共同創業者でCEOのJakub Nesetril氏は、API記述の真の消費者は、課された取り決め、ユーザビリティ、コミュニケーションに関心を持っている開発者である、と指摘する。API設計と新たなAPIツールおよびワークフローに対するApiaryのアプローチについて、Jakub氏から話を聞いた。 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/13.py">GenMyModel: リアルタイムコラボレーションの可能なオンラインUML設計ツール</a>この記事では，GenMyModelのアーキテクチャ，使用するテクノロジ，将来についてのインタビューを紹介する。 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/12.py">すべてが決まっているプロジェクトの成功の陰にあるスクラム</a>価格と完了日が決まっているプロジェクトをスクラムとどのように組み合わせるか? Tim van Baarsen氏が、水面下でスクラムに取り組みながら、すべて決まっているプロジェクトを完成させた自分自身の経験について考察した。 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/11.py">Google、Dart 1.0をリリース</a>最初の発表とプレビュー版リリースから2年、Devvox in Belgiumにて、Lars Bak氏がDartの最初の安定版リリースを発表した。DartはGoogleの新しいWebプログラミング言語であり、最新のWebアプリケーションを開発するためのプラットフォームだ。 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/10.py">VIsual StudioでC#を使ってiOSとAndroidアプリを開発する</a>XamarinがMicrosoftとパートナーシップを結んだ。開発者がVisual StudioでiOSとAndroidアプリを作成できるようにし、Xamarin Universityでその方法を開発者に教える。 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/9.py">Apigee、Node.jsをサポートしVolosをオープンソース化</a>Apigee EdgeがNode.jsをサポートし、API管理モジュールを含むプロジェクト、Volosをオープンソース化した。 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/8.py">Windows Azure SDK 2.2、Visual Studio 2013、統合サインイン、フィルタリングのサポートを追加</a>MicrosoftはWindows Azure SDK 2.2をリリースした。これはVisual Studio 2013をサポートし、Visual Studio内からの統合サインインやサブスクリプション/リージョンのフィルタリングをサポートする。また、MSDNサブスクライバが利用するWindows Azure管理ポータル内で、Visual Studio 2013が利用できるよう事前設定したVMイメージも提供する。 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/7.py">Goが4周年</a>Goプロジェクトは4周年を迎えた。InfoQはGoのこれまでとこれからをまとめた。 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/6.py">Entity Framework 6に起動時間とエンティティ実体化の問題</a>Entity Framework 6を使用する開発者から，起動時間の遅延とエンティティ実体化の遅さが報告されている。しかし製品チームがすばやい修正パッチで問題のひとつに対処し，Microsoftも他のバグフィックスに向けて作業している。新たなパッチも近いうちにリリースされる予定だ。 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/5.py">SQLの復活</a>データベース開発の新潮流はSQLへの回帰を示している。しかし、従来のリレーショナルデータベースをより優れたハードウエアに乗せるのではなく、シャードを使ったアーキテクチャでもなく、NewSQLを通じてだ。 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/4.py">Rodney Viana氏の.NETデバッグ用WinDbgエクステンション</a>.NETアプリケーションの実行が失敗したとき，多くの場合はメモリダンプが残るだけである。Visual Studioではメモリダンプを扱えないので，代わりにWinDbgというツールを使わなければならない。このとき合わせて使用されるのがSOS.dllやPsscor4.dllといった，.NET固有の詳細情報を取得するエクステンションだ。これらはパワフルではあるが使用が難しいので，時には開発者自身がエクステンションを作ることもある。そのような開発者のひとり，Rodney Viana氏がnetext 1.6.1をオープンソースプロジェクトとしてリリースした。 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/3.py">GlassFish Commercial Editionの提供が終了</a>Oracleは先頃，Java EEとGrassFish Servcerに関するロードマップの最新版を発表した。2013年7月12日にリリースされたJava EE 7に合わせて，GlassFish Server Open Source Edition 4の提供が開始されたが，今週になってOracleは，Glass Fush 4の商用サポートバージョンを提供しないことを明言した。GlassFish 4はJava EE 7のリファレンス実装であり，Java EE 7認証を受けた唯一のアプリケーションサーバだ。 
-  </div> 
+  </div>     
  </body>
 </html>

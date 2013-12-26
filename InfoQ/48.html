@@ -1,54 +1,30 @@
-<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>PayPal从Java切换到JavaScript</h3><p>已经决定使用JavaScript开发Web应用程序，从浏览器一直到后端服务器，并放弃了使用JSP/Java编写的遗留代码。</p>
-<p>PayPal技术总监Jeff Harrell在两篇博文中（<a href="https://www.paypal-engineering.com/2013/06/17/set-my-ui-free-part-1-dust-javascript-templating-open-source-and-more/">解放我的UI第一部分：Dust JavaScript模板、开源等</a>、<a href="https://www.paypal-engineering.com/2013/11/22/node-js-at-paypal/">PayPal的Node.js</a>）解释了他们做出这一决定的原因，并对Web应用程序开发从Java/JSP切换到完全的JavaScript/Node.js技术栈的过程中所产生的若干结论进行了说明。</p>
-<p>据Harrell说，PayPal的网站已经积累了大量的技术债务，他们想要一种“可以使他们摆脱债务而又能带来更大产品灵活性和创新的技术栈”。最初，在使用Web技术的前端工程师和使用Java编码的后端工程师之间存在着巨大的鸿沟。当用户体验设计人员想草绘一些页面时，为了使它们运行，他们不得不要求Java程序员做一些后端编码。这与他们的精益用户体验开发模型不相符：</p>
-<blockquote> 
- <p>当时，我们的UI应用程序基于Java和JSP，使用了一个无弹性、紧耦合而又难以快速行动的专有解决方案。我们的团队发现它与精益用户体验开发模型不相符，而且无法快速行动，因此，他们用脚本语言构建原型，与用户一起测试，然后将代码移植到产品栈中。</p> 
-</blockquote>
-<p>他们想要一个“从底层服务器技术解耦并能使UI设计独立于应用程序语言的模板[解决方案]”，而且它可以工作在多种环境中。他们决定选用<a href="https://github.com/linkedin/dustjs">Dust.js</a>——一个由LinkedIn支持的模板框架——，再加上Twitter的<a href="https://github.com/twitter/bootstrap">Bootstrap</a>和<a href="https://github.com/bower/bower">Bower</a>，后者是一个面向Web的包管理器。之后又加入了<a href="http://lesscss.org/">LESS</a>、<a href="http://requirejs.org/">RequireJS</a>、<a href="http://backbonejs.org/">Backbone.js</a>、<a href="http://gruntjs.com/">Grunt</a>和<a href="http://visionmedia.github.io/mocha/">Mocha</a>等其它部分。</p>
-<p>PayPal的部分页面已经经过重新设计，但他们仍然还有部分页面使用遗留技术栈：</p>
-<blockquote> 
- <p>……我们有C++/XSL和Java/JSP两个遗留技术栈，随着继续推进，我们不打算留下这些UI。JavaScript模板是理想之选。在C++技术栈上，我们构建了一个使用V8引擎执行Dust本地渲染的库——其速度惊人的快！在Java端，我们使用Spring ViewResolver和Rhino集成Dust来渲染页面。</p> 
-</blockquote>
-<p>当时，他们还开始用Node.js进行新页面的原型设计，并认为它“非常巧妙”，进而决定在生产环境对其进行试用。为了达到这一目的，他们还构建了<a href="https://github.com/paypal/kraken-js">Kraken.js</a>，这是一个位于以Node.js为基础的Web框架<a href="http://expressjs.com/">Express</a>之上的 “约定层”。（PayPal最近开源了Kraken.js。）第一个使用Node.js完成的应用程序是账户概览页，据Harrell说，该页面是PayPal的一个最经常访问页面。但是，由于担心Node.js应用程序可能扩展性不好，他们决定创建一个等效的Java应用程序，一旦Node.js应用程序不能正常运行，就可以回退到Java应用程序。下面是关于两种应用程序开发所需工作量的几个结论：</p>
-<p> </p>
-<table cellspacing="0" cellpadding="0" border="1"> 
- <tbody> 
-  <tr> 
-   <td width="151" valign="top">&nbsp;</td> 
-   <td width="161" valign="top"> <p><b>Java/Spring</b></p> </td> 
-   <td width="180" valign="top"> <p><b>JavaScript/Node.js</b></p> </td> 
-  </tr> 
-  <tr> 
-   <td width="151" valign="top"> <p>设置时间</p> </td> 
-   <td width="161" valign="top"> <p>0</p> </td> 
-   <td width="180" valign="top"> <p>2个月</p> </td> 
-  </tr> 
-  <tr> 
-   <td width="151" valign="top"> <p>开发</p> </td> 
-   <td width="161" valign="top"> <p>大约5个月</p> </td> 
-   <td width="180" valign="top"> <p>大约3个月</p> </td> 
-  </tr> 
-  <tr> 
-   <td width="151" valign="top"> <p>工程师</p> </td> 
-   <td width="161" valign="top"> <p>5</p> </td> 
-   <td width="180" valign="top"> <p>2</p> </td> 
-  </tr> 
-  <tr> 
-   <td width="151" valign="top"> <p>代码行数</p> </td> 
-   <td width="161" valign="top"> <p>未说明</p> </td> 
-   <td width="180" valign="top"> <p>未说明，占Java应用程序的66%</p> </td> 
-  </tr> 
- </tbody> 
-</table>
-<p></p>
-<p>JavaScript团队需要两个月的时间进行基础设施的初始设置，但他们创建具有相同功能的应用程序用人更少、耗时更短。他们在生产环境硬件上运行测试套件，得出的结论是Node.js应用程序的性能要优于Java应用程序：</p>
-<blockquote> 
- <p>Node.js应用程序每秒服务的请求数是Java应用程序的两倍。更为有趣的是，在最初的性能结果的产生过程中，Node.js应用程序使用了单核，而Java应用程序使用了五核。我们打算进一步增大这种差异。</p> 
-</blockquote>
-<p>而且：</p>
-<blockquote> 
- <p>对于同一页面，Node.js应用程序的平均响应时间减少了35%。这使得页面提供时间快了200毫秒——用户可以明显地感觉到这种变化。</p> 
-</blockquote>
-<p>结果，PayPal开始在生产环境中使用了尚处于测试阶段的Node.js应用程序，并决定“今后所有面向客户的Web应用程序均基于Node.js构建，”，而现有的部分应用程序也将迁移到Node.js。</p>
-<p>据Harrell说，从浏览器到服务器都使用JavaScript的一个好处是，形成了一个“允许我们在技术栈的任何层次理解和响应用户需求”的团队，消除了前端开发与后端开发之间的鸿沟。</p>
-<p><b>查看英文原文：</b><b><a href="http://www.infoq.com/news/2013/11/paypal-java-javascript">PayPal Switches from Java to JavaScript</a></b></p><br><br><br><br><br><br></body></html>
+<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>VB的未来计划</h3><p><a href="http://blogs.msdn.com/b/lucian/archive/2013/12/13/some-potential-language-ideas-for-future-versions-of-vb.aspx">Lucian Wischik</a> 回应了Mads Torgersen的演讲，提出了Visual Basic语言方面一些可能的变化。这些只是计划，一切还没有定数。这些变化主要是为了减少样板代码，并且没有提供我们在VB 10或11中看到的重大改变。</p>
+<p><strong>只读属性</strong></p>
+<p>只读自动属性与VB语法可谓天作之合。只需要在属性声明前面加上ReadOnly关键字即可。它能保证只生成getter，不过仍然可以在构造函数中设置该值。</p>
+<pre><code>ReadOnly Property Name As String </code></pre>
+<p><strong>注释</strong></p>
+<p>VB中的注释现在不能很好地与隐式续行符配合。因此Lucian列出的的第一个VB特性就是允许在隐式续行符后面使用注释。</p>
+<p><strong>字符串</strong></p>
+<p>Visual Basic中的字符串目前不支持多行。因此首要的任务是允许这一点。其行为类似C#的逐字字符串，但不需要前缀。</p>
+<p>更有趣的特性是字符串插值（String Interpolation）。使用$&quot;前缀，将不需要显式调用String.Format。它还消除了因为算错替代变量的数目和位置而导致的异常。例如下面的代码：</p>
+<pre><code>Dim query = $&quot;http://{ url }?name={ Escape(name) }&amp;id={ Escape(id) }&amp;o=xml&quot; </code></pre>
+<p>在差不多4年前，Miguel de Icaza就曾提议<a href="http://tirania.org/blog/archive/2009/Dec-20.html">在C#中支持字符串插值</a>，并构建了一个工作原型。</p>
+<p><strong>字面量</strong></p>
+<p>Visual Basic的日期字面量基于美国通用标准，这对于非美国开发者是相当不公平的。因此新的计划中可以允许ISO格式化的日期字面量。</p>
+<p>很多语言中已经具备的二进制字面量也被列入计划当中，用&amp;B前缀表示。这对标志位风格的枚举来说是一个福音。</p>
+<p><strong>分部接口和模块</strong></p>
+<p>这项提议允许在VB中加入分部接口和模块，其用法与分部类相似。与分部类相同，这也是为了用于代码生成器。</p>
+<p><strong>空传播</strong></p>
+<p>与C#类似，VB团队也考虑提供空传播操作符。这样在调用方法之前就不再需要空验证。目前他们有两种选择，第一种与C#一样。注意除了?.外，还有?()。</p>
+<pre><code>Dim y As Integer = x?.y?(3)?.z </code></pre>
+<p>如果?.或?(操作符的左边有空值，y将得到默认值z。</p>
+<p><strong>函数参数</strong></p>
+<p>与C#类似，VB也希望params关键字支持IEnumerable类型的参数，而不是只支持数组。</p>
+<p>同样跟C#类似的是，他们也希望能够在out实参中声明本地变量。</p>
+<pre><code>If Integer.TryParse(s, Out x) Then </code></pre>
+<p>这行代码会创建x变量，就好像它是在代码上面的语句中声明的。</p>
+<p>他们也在考虑内联地声明其他变量。</p>
+<pre><code>If ( Dim x = GetValue()) &gt; 15 Then Console .WriteLine(x) </code></pre>
+<p><strong>其他方面</strong></p>
+<p>目前VB使用IsNot进行引用比较，但不能用于类型比较（如TypeOf操作符）。这项建议填补了这一空白。</p>
+<p><strong>原文英文链接：</strong><a href="http://www.infoq.com/news/2013/12/VB-Futures">Future Plans for VB</a></p><br><br><br><br><br><br></body></html>

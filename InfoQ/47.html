@@ -1,32 +1,49 @@
-<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>List & Label 19支持报表参数、集合变量、OData和REST数据提供器</h3><p><a href="http://www.combit.net/en/">List &amp; Label 19</a>已经发布，新版本支持报表参数、集合变量、可扩展区域、交互式排序，同时还引入了新的图表，例如：组合图（combined）、堆放图（stacked）、漏斗图（funnel）、管道图（pipeline）、shapefile和环形图（donut）。另外，它还为OData和REST数据提供器提供了支持，包括固定宽度的legend。 <br /> List &amp; Label 19拥有创造用户界面的能力，它支持高分辨率的便携式设备，例如平板电脑。该功能能够确保可以清晰地显示文本，防止字体显示为小尺寸。此外，LL19兼容Windows 8.1、Visual Studio 2013和第三方IDE Embarcadero RAD Studio XE5。借助于最新版本的LL19，我们能够在任意兼容HTML5的浏览器中显示SVG输出格式。 <br /> 在一个InfoQ的采访中，List &amp; Label的董事总经理兼发展部主管Jochen Bartlau分享了更多包含在新版本中的功能。</p>
-<p><b>InfoQ</b><b>：报表参数和集合变量功能的意义在哪？</b></p>
+<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>采访CaptchaMvc的创建者Vyacheslav Volkov</h3><p>InfoQ采访了<a href="http://captchamvc.codeplex.com/">CaptchaMvc</a>的创建者Vyacheslav Volkov，与他一起探讨了CaptchaMvc项目以及他对验证码未来的看法。</p>
+<p>InfoQ：是什么促使你创建自己的验证码类库？</p>
 <blockquote> 
- <p>这两个都是<a href="http://www.combit.net/en/reporting-tool/report-generator-List-Label-new-version/">List &amp; Label 19</a>的重要功能，同时它们也为扩展接下来版本中的报表工具建立了良好的基础。集合参数是一个真正的创新，我之前从来没有在任何其他的报表产品中看到过这样的功能。该功能允许用户根据条件添加属性——你能够容易地定义一个名为“CategoryColor”的颜色变量，然后在任何条件格式中使用它，例如，如果序列号编码了必须的信息那么仅仅需要基于序列号的前两个字符。如果数据没有提前针对报表做优化那么该功能是非常有帮助的。</p> 
- <p>报表参数允许用户创建灵活的报表，而不是必须得为每一个客户设计单独的报表；现在可以很容易地为产品或者年份这样的信息提供下拉列表，并且允许最终用户从任意参数排列中选择。当然，这些下拉列表中的数据变量可以从数据库中读取。List &amp; Label对参数的支持非常彻底，它提供了不同类型的参数，例如date、boolean、text，甚至支持依赖参数（某个参数的数据根据另一个参数的选择值进行过滤）。</p> 
+ <p>那个时候我正开始使用MVC 3框架。因为需要在自己的项目中使用验证码，所以我开始寻找一个能够解决我的问题的解决方案。但是我能够找到的所有方案都仅能够在MVC 2上使用，有一些甚至根本无法使用。在搜索了这么多内容之后，我决定编写自己的验证码实现，因此也就出现了CaptchaMvc类库的第一个版本。这个版本非常简单，但是即使是这样，它也是受欢迎的。</p> 
 </blockquote>
-<p><b>InfoQ</b><b>：你能与我们分享一下</b><b>shapefile</b><b>图表的使用么？</b></p>
+<p>InfoQ：CaptchaMvc和其他的验证码类库之间有什么不同？</p>
 <blockquote> 
- <p>Shapefiles是在地图上可视化数据事实上的标准。因特网上到处都是免费的shapefiles，能够显示分布在国家、州、甚至更小范围上的数据。Shapefile图表和LL19中的其他图表紧密集成在一起。</p> 
- <p>它使用的数据和所有其他类型的图表一样。将它集成进已有的报表中简直是小菜一碟。我们甚至支持通常会伴随着shapefiles的属性数据库。在这种情况下，报表中的数据能够很容易地被链接到一个国家的属性上（例如它的ISO码）。</p> 
+ <p>CaptchaMvc是一个有弹性的、简单的解决方案，它能够解决你项目中所有与验证码相关的问题。你需要做的所有事情就是向你的项目中添加一个类库，添加之后验证码就准备就绪了。该项目拥有使用验证码所需要的所有内容：</p> 
+ <ul> 
+  <li>有两种类型的验证码，普通的和数学的</li> 
+  <li>支持在session或者cookie中存储验证码</li> 
+  <li>支持“智能验证码”</li> 
+  <li>能够很容易地扩展默认实现</li> 
+ </ul> 
+ <p>该项目也在不断地演变，我会尽量支持所有人提出的需求。我认为这些就是区分它和其他项目的主要内容。</p> 
 </blockquote>
-<p><b>InfoQ</b><b>：</b><b>Shapefile</b><b>和地理数据可视化（</b><b>geovisualization</b><b>）有什么不同？</b></p>
+<p>InfoQ：你能预见一下什么时候将不再需要验证码么？或者说可能不再有效？</p>
 <blockquote> 
- <p>Shapefiles可远不止地理数据可视化那么简单。后者是它的一个重要用例，用户能够容易地创建他们自己的shapefiles显示地板、座椅规划或者任何其他的任意图形数据。因为数据格式是标准化的，所以很多CAD应用程序都支持导出shapefiles。我们提供了一个大型影院座椅计划的示例，它展示了该功能的潜能。所有的应用程序，如果它们需要显示分布在全球或者局部范围的数据，那么它们都能够立即从该功能中受益。</p> 
+ <p>我们都在梦想那个时候。针对机器人的保护将会一直需要，而验证码仅仅是实现这种保护的方式之一。有各种各样不需要验证码的技术。例如，一些开发者会创建一个“假的”输入域，同时让该域对用户隐藏，当一个机器人试图填充表单的时候，它很有可能会填写该域。</p> 
+ <p>尽管如此，我们也很难说验证码能够有效地防止垃圾邮件，有许多服务允许绕过验证码。验证码仅能够增强你的网站对机器人的防护，但是并不能提供全面的保护。</p> 
 </blockquote>
-<p><b>InfoQ</b><b>：你能详细地描述一个环形图的使用场景么？</b></p>
+<p>InfoQ：你列出该项目支持ASP.NET MVC 3、4和5。这些版本之间真的有很多区别么？</p>
 <blockquote> 
- <p>环形图是List &amp; Label图表家族新增的一个非常漂亮的功能。从根本上说，它是现有饼状图的一个轻量级变体。它支持完全自定义——设置“洞”的大小和设置标签、值、字体和颜色一样简单。</p> 
+ <p>这些版本之间几乎没有什么不同，仅仅是类库中使用了MVC 4中添加的AllowAnonymousAttribute属性。</p> 
 </blockquote>
-<p><b>InfoQ</b><b>：你能解释一下</b><b>OData</b><b>数据提供器的重要性么？</b></p>
+<p>InfoQ：如果你可以修改ASP.NET MVC插件/类库支持的任何内容，那么你会修改什么？</p>
 <blockquote> 
- <p>OData已经成为Web数据库的一个非常通用的数据格式。Microsoft决定通过向LightSwitch中添加OData支持进一步推动它的发展。虽然它之前能够绑定到OData源（例如，使用JSON数据提供器），但是实现过程异常麻烦。现在的新数据提供器甚至支持元数据解析，所有的表、关系和数据类型都会自动解析。关联的数据仅会按需查询，确保性能得到优化。</p> 
+ <p>ASP.NET MVC是一个非常了不起的Web框架，我喜欢它所使用的架构解决方案。对于ASP.NET Web API有一个地方我不喜欢，那就是我们不能多次读取请求中的内容。我清楚为什么要这么设计，ASP.NET Web API中的内容体被看作是仅能够读取一次的单向流，但是有时候这样让人非常不方便。</p> 
+ <p>我想要改变WPF\Silverlight\XAML中的很多内容，但是这个主题应该在另一个采访中讨论。</p> 
 </blockquote>
-<p><b>InfoQ</b><b>：</b><b>List &amp; Label 19</b><b>中的</b><b>REST</b><b>数据提供器可以服务于哪些目的？</b></p>
+<p>InfoQ：什么是“智能验证码”，它和正常的验证码之间有什么区别？</p>
 <blockquote> 
- <p>REST提供器开创了一个全新的数据源世界，内容管理系统、售票系统和许多其他的Web服务都提供了用于查询数据的REST服务。通过添加REST支持，使用云数据已经变得轻而易举。</p> 
+ <p>基本的想法是让验证码对用户更加友好，在最好的情况下用户永远不会看到验证码。有多种技术能够让验证码更加友好。例如，有一种技术称为“假输入域”。CaptchaMvc支持多种技术能够区分用户和机器人。让我简短的介绍一下每一种技术：</p> 
+ <ul> 
+  <li>假的输入（类名—FakeInputIntelligencePolicy）——使用一个“假的”输入域，正如我前面所写的。</li> 
+  <li>JavaScript（类名—JavaScriptIntelligencePolicy）——尝试着去检查用户是否启用了JavaScript，如果用户禁用了JavaScript那么用户必须输入一个验证码</li> 
+  <li>响应时间（类名—ResponseTimeIntelligencePolicy）——允许你设置一个时间，在该时间内验证码将被认为无效。假如一个机器人请求一个表单，填充它并提交…页面加载和提交之前的间隔时间可能会少于一秒——没有人能够做到这一点。</li> 
+  <li>多种方式的组合（类名—MultiIntelligencePolicy）——允许你将不同的策略联合到一起。</li> 
+ </ul> 
+ <p>我想要给出一个允许你设置“智能验证码”的代码示例，下面是一个我在我的<a href="http://vvson.net/">网站</a>上使用的代码示例：</p> 
+ <pre>
+CaptchaUtils.CaptchaManager.IntelligencePolicy = new 
+MultiIntelligencePolicy(
+new FakeInputIntelligencePolicy(),
+new JavaScriptIntelligencePolicy(),
+new ResponseTimeIntelligencePolicy(TimeSpan.FromSeconds(3)));</pre> 
+ <p>现在，我正编写一个将会支持ASP.NET Web API的新版本。到目前为止这就是我的所有计划，但是将来的事情可能会有所变化，我将会添加一些其他的内容。</p> 
 </blockquote>
-<p><b>InfoQ</b><b>：你能与我们分享一下</b><b> List &amp; Label</b><b>未来的路线图么</b><b>?</b></p>
-<blockquote> 
- <p>我们很有可能会沿着之前版本所采用的路线图继续走下去——密切关注市场动态同时尽量尽快地跟随发展潮流。我期望在接下来的几个月中提供越来越多的桌面即服务（Desktop as a Service）。这样就能够在平板电脑或者手机这样的现代设备上使用“传统”应用程序。我们一定会为这些场景提供最佳支持——LL19中的高DPI支持仅仅是我们向这个方向迈出的第一步。除了发展云和Web功能之外，我们还将进一步提升我们的优势。我们的报表设计器是一个标志性功能，希望大家时不时地关注一下确信我们再一次树立了可用性标准。</p> 
-</blockquote>
-<p><b>查看英文原文</b>：<a href="http://www.infoq.com/news/2013/11/list-label-19">List &amp; Label 19 Adds Report Parameters, Collection Variables, OData and REST Data Providers</a></p><br><br><br><br><br><br></body></html>
+<p><b>查看英文原文</b>：<a href="http://www.infoq.com/news/2013/12/CaptchaMvc">Interview with Vyacheslav Volkov, Creator of CaptchaMvc</a></p><br><br><br><br><br><br></body></html>

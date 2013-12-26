@@ -1,6 +1,54 @@
-<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>Salesforce go API-first with Salesforce1</h3><p>At the recent <a href="https://www.salesforce.com/dreamforce/DF13/">Dreamforce event</a> in San Francisco Salesforce launched their <a href="http://www.salesforce.com/salesforce1/">Salesforce1</a> platform. The initial deliverables focus on mobile, and aim to improve on the earlier ‘Touch’ user interface by having a richer set of underlying application programming interfaces (APIs). The launch has been accompanied by new application and admin mobile apps.</p>
-<p>The primary new mobile app replaces the ‘Chatter’ app. It has improved support for customisations within Salesforce.com, which created a significant functionality gap between the desktop experience and previous mobile applications. The app also offers access to services, reports and dashboards that weren’t accessible before. Much of the new functionality has already been made available as part of a large scale beta test, where it was incorporated into recent releases of ‘Chatter’.</p>
-<p>Their <a href="http://developer.salesforce.com/platform/overview">developer overview</a> states that ‘The Salesforce1 Platform brings together Force.com, Heroku, and ExactTarget into one family of cloud services - all built API first - to help deliver apps that connect products, users, and next generation experiences.’ The focus on mobile continues with an SDK to build custom iOS and Android mobile apps connected to the platform APIs. Standalone mobile apps have been launched to work with Sales Cloud, Service Cloud and Marketing Cloud services, each build on the Salesforce1 APIs. The new admin application ‘Salesforce1 A’ allows new users to be provisioned, and the locking of existing accounts.</p>
-<p>What Salesforce haven’t yet done is converge their platform as a service (PaaS) offerings. A new edition of Heroku branded Heroku1 has been released that ‘simplifies Salesforce integration and adds enterprise support’, but developers might find themselves needing to separately access Force.com, Heroku and ExactTarget APIs for composite applications. This is clearly demonstrated by the diversity of documentation on the <a href="http://developer.salesforce.com/resources">Salesforce1 Development Resources</a> and <a href="http://docs.developer.salesforce.com/docs">Developer Documentation</a> sites.</p>
-<p>Heroku1 brings a new feature called ‘Connect’ that provides bi-directional data sync between Heroku Postgress and Salesforce. This will allow access to core customer data from apps written in Heroku’s supported languages: Ruby, Node.js, Java and Python. Previously access to that data via Force.com forced the use of Salesforce’s own <a href="https://www.salesforce.com/us/developer/docs/apexcode/Content/apex_intro_what_is_apex.htm">Apex</a> language.</p>
-<p>Use of the new APIs isn’t just for mobile. Applications were demonstrated using connected devices ranging from jet engines to toothbrushes, showing that Salesforce is trying to seize its part of the Internet of things. GPS and RFID data sources have also been integrated to help target marketing and streamline customer service processes.</p><br><br><br><br><br><br></body></html>
+<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>How Can You Learn Early and Fast?</h3><p>Agile suggest that teams should fail-fast to enable quick learning from mistakes. Learning from failure is one approach, you can also learn early and fast from successes, by doing experimentation, or by using a plan for knowledge acquisition.</p>
+<p>In the blog post <a href="http://stop-failing-so-fast/">stop failing so fast</a>, Sami Honkonen explains why the goal is not to fail but to succeed:</p>
+<blockquote> 
+ <p>Failing fast doesn’t actually mean you should aim to fail fast. Failing fast is easy. It’s failing fast and well within the context of trying to succeed that matters. If you’re not even trying to succeed your experiments are meaningless.</p> 
+</blockquote>
+<p>Experiments can help you to learn and increase the chance on success, as Sami describes:</p>
+<blockquote> 
+ <p>When we learn to deal with mistakes productively they become a tool. To test an idea (or an assumption within an idea), we design an experiment, we act confident that the assumption is true and give it a shot as if we already knew it will work. If it does work, perfect. If it doesn’t, we learn from it. Rinse and repeat systematically.</p> 
+</blockquote>
+<p>Jerry Neumann states that&nbsp;<a href="http://reactionwheel.net/2013/04/you-cant-learn-from-failure-you-can.html">you can't learn from failure, you can only learn from success</a>:</p>
+<blockquote> 
+ <p>Any complicated system is too complicated to learn from failure. Yes, you can learn a few tricks, like: &quot;don't spend all your money on fancy chairs&quot; or &quot;don't hire your college drinking buddies as EVPs of Business Development.&quot; But you can also spend your life learning about every mistake every startup founder ever made in all of recorded history and I guarantee that when you start your company you will discover all new mistakes to make. (…)</p> 
+ <p>You should be spending your time trying to learn from success. The successful entrepreneurs I have known have had the ability to look at a failure, any failure, and pull out the couple of things that were done right. These are what they focused on.</p> 
+</blockquote>
+<p>“We learn as much from our successes as from our failure and I suspect we learn much more” said Bruce Nussbaum. In his blog post <a href="http://creativeintelligencebook.com/post/41570210573/stop-fetishizing-failure">stop fetishizing failure</a> he proposes a “play mode” to deal with problems and to learn:</p>
+<blockquote> 
+ <p>Failure is usually associated with problem-solving. There’s an assumption that there is one right problem with one right answer and if you can’t get it, you fail. But what if you don’t even know what the problems are and there are lots of ways of dealing with them? I prefer the Play mode of dealing with challenges. When you play, there are rules but they change as you play the game. There are different outcomes to playing a game, different ways of winning. When something doesn’t work, you try another. You do work arounds. Is that Failure? I don’t think so.</p> 
+</blockquote>
+<p>Michael Plishka shared his thoughts on playing as a way to learn faster in his blog post <a href="http://zenstorming.wordpress.com/2013/05/29/innovation-failure-gaming-fun/">innovation – it was never about failure</a>. His view on learning from failure is:</p>
+<blockquote> 
+ <p>Failure, as Nussbaum points out in the above article, is indeed painful and can be limiting.&nbsp; There is a finality to the term failure that is unforgiving. When a bridge ‘fails’ it goes down and people get hurt. When there’s a power ‘failure,’ electricity simply isn’t there. Failures are an absence of&nbsp; success, and as voids they carry no information other than there’s no success to be found there.</p> 
+</blockquote>
+<p>And his view on learning from success is:</p>
+<blockquote> 
+ <p>Success (…) is (…) not educational at all if things work and we don’t know why they work. We’ll go along happy as larks thinking all is well until things go bad.</p> 
+</blockquote>
+<p>If we don’t learn from failure nor from success, how do we learn? Michael wrote:</p>
+<blockquote> 
+ <p>We learn from probing, through curiosity, tinkering, experimenting.&nbsp; The instant we allow there to be voids of ’failure’ and ‘success’, there is no possibility for learning, for growth. It’s only when we step back and ask, “Where am I going? How will I get there? How does this event help or hinder the journey?” that design/innovation can occur.</p> 
+</blockquote>
+<p>Al Shalloway reminds us that failure is not a goal, and suggest to focus on learning quickly in his blog post <a href="http://www.netobjectives.com/blogs/why-i-hate-fail-fast-and-good-enough">why I hate “fail fast” and “good enough”</a>:</p>
+<blockquote> 
+ <p>No matter how you speak about it, failure has a negative connotation. We don’t set out to fail No one is proud of failure, although we may be proud of overcoming failure. The mere term “fail fast” implies we don’t want to fail slow – we want to get through the failure as soon as possible. The truth is, what we really mean, is to learn fast. To correct quickly if we are off course. That we don’t even consider going off course a failure. With this attitude we actually never fail. Fail fast is not our goal. Learn fast is.</p> 
+</blockquote>
+<p>In stead of having failures and learn from them, you can plan to learn as <a href="http://alistair-cockburn/">Alistair Cockburn</a> describes in his report <a href="http://alistair.cockburn.us/Disciplined+Knowledge+Acquisition+in+Product+Development">how “learn early, learn often” takes us beyond risk reduction</a> where he explores approaches to learn earlier during product development:</p>
+<blockquote> 
+ <p>The problem is not that learning doesn’t happen in the ordinary approach, the problem is that the learning comes at integration and again at sales, i.e., late. These are often the first moments when the team members are forced to put their ideas together, and the first time that the customer, user or buyer gets to see the new system.</p> 
+</blockquote>
+<p>He mentions four categories of knowledge that projects need to acquire to reduce risks during development.</p>
+<blockquote> 
+ <ul> 
+  <li>What is the right thing to build.</li> 
+  <li>How much it will cost to develop.</li> 
+  <li>Whether adequate people are on the team, and how they best work together.</li> 
+  <li>Where their technical ideas are flawed.</li> 
+ </ul> 
+</blockquote>
+<p>To support learning earlier, activities need to be included in the project plan. Alistair describes how this impacts the project plan:</p>
+<blockquote> 
+ <p>The old-style, and still frequently used, project plan is a list of the tasks to be performed to construct the system. An effective, rapid and low cost planning method of this type is “Blitz Planning” [AC-bp]. This conventional project plan still provides a good starting point, serving to peek ahead at what is involved in developing the system and delivering approximate size and difficulty for the effort.</p> 
+ <p>The more recent, agile-style project plan is simply a list of all the features or user stories [W-us] to be built in a single list, usually with the highest business value item placed at the top of the list (see above for the reasons this may not be the best order to place them in).</p> 
+ <p>The knowledge-acquisition approach, on the contrary, starts with a brainstorming of the four categories of knowledge needing to be acquired, along with the starting set of features to be delivered, making five categories of possible work efforts. These are artfully interleaved into a sequence of work assignments designed to reduce risk, deliver crucial information, and develop product capability in an “optimal” way.</p> 
+</blockquote>
+<p>What have you done to learn early and fast?</p><br><br><br><br><br><br></body></html>

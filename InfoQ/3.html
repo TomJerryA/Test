@@ -1,13 +1,40 @@
-<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>Mongo + Node：DigitalOcean宣布支持MEAN Stack镜像</h3><p>云服务供应商DigitalOcean这两天宣布<a href="https://www.digitalocean.com/blog_posts/announcing-mean-one-click-install-application">推出基于MEAN组合的镜像</a>。至此，DigitalOcean支持的应用组合数量已经到达9个，分别是LAMP、Ruby on Rails、Redmine、Ghost、Wordpress、Dokku、Docker、GitLab、以及MEAN。</p>
-<p><img src="http://infoqstatic.com/resource/news/2013/12/mean-digitalocean/zh/resources/Snip20131205_4.png" alt="" _href="img://Snip20131205_4.png" _p="true" /></p>
-<p>MEAN组合，即MongoDB、Express、Angular、Node的组合。该组合的出处难以考证，不过根据一次<a href="https://developers.google.com/live/shows/913996610">GDG活动的介绍</a>，MongoDB内核工程师、<a href="http://www.ascotproject.com/">the Ascot Project</a>联合创始人Valeri Karpov最早开始使用这套组合。Valeri Karpov在<a href="http://thecodebarbarian.wordpress.com/2013/04/29/easy-web-prototyping-with-mongodb-and-nodejs/">其2013年4月的一篇博客</a>中提到自己在一次<a href="http://francescak.me/blog/2013/04/09/fintech-hackathon-recap/">FinTech Hackathon</a>上使用该组合构建了自己的应用，并表示自己在开发the Ascot Project当中也是采用MEAN组合开发。整个2013年，Valeri在多处活动中分享自己使用MEAN组合开发应用的经验，最近的一次是在<a href="http://nodesummit.com/">Node Summit</a>上（<a href="http://www.slideshare.net/vkarpov15/mean-stack-node-summit-valeri-karpov">Slides地址</a>）。</p>
-<p>也是在2013年4月前后，IBMdW上开始发布名为《<a href="http://www.ibm.com/developerworks/mobile/library/mo-nodejs-1/index.html">Developing mobile apps with Node.js and MongoDB</a>》的系列文章，作者是四个IBM的实习生，他们针对IBM Passes产品开发了一套完全基于Node的后端。文中表示：</p>
+<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>过程改进：认证导向VS.获益导向</h3><p>在基于CMMI的过程改进项目中，往往以达到某个成熟度级别作为目标。然而，对组织机构来说，能够洞见某个成熟度级别与其业务目标之间的关系，并了解从自身的过程改进中能够预期获得哪些收益，也许更加重要。在<a href="http://www.sepg.unicom.co.uk/">SEPG Europe 2013</a>大会上，SITA（国际航空电信协会）的项目组合主管Michelle Krupa畅谈了改进项目从认证导向转变为获益导向的过程中所遇到的挑战。</p>
+<p>在接受InfoQ采访的过程中，Michelle解释了SITA过程改进项目，如何从以CMMI成熟度等级为基础，转变成一套获益导向的方法。</p>
+<p><strong>InfoQ</strong><strong>：感谢Michelle接受我们的采访。首先，能否请你为那些不了解SITA的读者，介绍一下你们主要从事何种类型的业务？</strong></p>
 <blockquote> 
- <p>我们的团队使用Node开发的方案要比实现相同功能的Java方案节省了40%的开发用时，我们还对两种方案进行了全面的性能测试，结果显示Node方案有更好的可伸缩性和更高的硬件利用率。</p> 
+ <p><strong>Michelle</strong><strong>：</strong>针对航空运输、全球分销系统和政府客户，SITA提供和管理基于全世界最昂贵网络的业务解决方案。我们与行业组织合作，以提供通讯和IT组合服务——特别是针对航空运输行业（ATI）。与ATI携手，我们创新并开发了许多信息技术应用以及通信服务。</p> 
 </blockquote>
-<p>从2013年中到2013年底期间，社区开始逐步完善围绕MEAN组合的一系列资源。2013年6月前后，Linnovate软件工程师<a href="http://www.amoshaviv.com/">Amos Haviv</a>在Github上创建了一个<a href="https://github.com/linnovate/mean">MEAN框架项目</a>，最早的<a href="https://github.com/linnovate/mean/commit/e99fafff2c9d4ef7544f8fffa921ce8ceab26629">项目说明</a>表示：</p>
+<p><strong>InfoQ</strong><strong>：你们改进项目的目标是达到CMMI成熟度等级3级。为何选择这一目标？</strong></p>
 <blockquote> 
- <p>该框架希望为所有基于Mongo、Angular、Express和Node的项目提供一个好用的起点，同时也是我们公司Web应用的一个起点。</p> 
+ <p><strong>Michelle</strong><strong>：</strong>我们过去曾经认为，从事软件开发和质量方面工作的组织机构达到该等级后，将在其质量、交付和目标实现方面，拥有一定程度的可重复性。</p> 
 </blockquote>
-<p>目前，该项目在Github上获得了1951个星标，477个fork。该项目还创建了一个叫做<a href="http://mean.io/">mean.io</a>的独立页面，方便开发者们快速获取打包的安装包并快速上手。Linnovate目前也是MEAN组合的强力推动者，鼓励初创企业们拥抱MEAN以快速完成原型开发，实现<a href="http://www.meanleanstartupmachine.com/">精益</a>。</p>
-<p>你是否会采用MEAN Stack进行应用开发？你是否尝试过这个组合，感觉如何？欢迎交流你的观点。</p><br><br><br><br><br><br></body></html>
+<p><strong>InfoQ</strong><strong>：你们的改进项目的启动基于某个业务案例。但随后它遇到了预算削减。那么该项目是如何应对这一问题的？</strong></p>
+<blockquote> 
+ <p><strong>Michelle：</strong>我们的项目泰然自若地面对这一现实。我们查看自己能做哪些事情，以及必须应对哪些事情。此外，我们尝试着使用内部资源，而不是寻求外部过程顾问的支持。我们有一位主任评估师（Lead Appraiser），他同时也是经过认证的SEI教练。因此在培训层面，我们能够在一定程度上节约成本。</p> 
+ <p>后来我们发现，来自内部的知识和经验对我们的帮助有其限度。于是，我们离开那位内部主任评估师，开始寻找某个咨询公司以填补缺口——我们希望这一咨询公司不止拥有相关经验，还能够与我们组织机构的文化相匹配。</p> 
+</blockquote>
+<p><strong>InfoQ</strong><strong>：你提到了“避免困难的事情”。能否展开说一说这个话题？</strong></p>
+<blockquote> 
+ <p><strong>Michelle：</strong>当然，我们在不知不觉间避免了困难的事情，不过这从来不是一件刻意去做的事情。我们的过程已经达到了成熟度等级2级的目标，而且我们的项目也在使用这些过程。然而，从评测结果来看他们并不是非常有效。我们评测了所有能够评测的内容，而不仅仅是那些指标项。在深入考察组织机构时，我们发现尽管改进项目似乎是在遵循这些过程，但实际上这一切并未深入根植于团队中，而且项目经理们更像是过程经理。</p> 
+</blockquote>
+<p><strong>InfoQ</strong><strong>：为了改变改进项目的焦点，同时确保依旧朝着原有的成熟度等级3级目标前进，你们做了哪些事情？</strong></p>
+<blockquote> 
+ <p><strong>Michelle：</strong>我们回过头来重新查看业务案例，从而审视我们的改进项目打算输出什么结果，以及为什么要输出这些内容。虽然我们的目标是最终达成成熟度等级3级，但是这同时也意味着要从中得到一系列的收益。</p> 
+ <p>我们查看SITA的战略视图和战略目标，并将每个项目的收益与战略目标相对照。我找到身为改进项目赞助者的高级副总裁，并与他一道识别出获益的赞助者与我们的内部客户——他们都向这位高级副总裁汇报。我们构建起一套关键收益指标（KBI），并定义了支持的KPI。我们每个解决方案分支领域的副总裁都参与了定义和确认KBI及KPI的细节层面。</p> 
+</blockquote>
+<p><strong>InfoQ</strong><strong>：你提到重新定义了项目目标，那么新目标是什么？它对项目产生怎样的了帮助？</strong></p>
+<blockquote> 
+ <p><strong>Michelle：</strong>现在，项目的焦点已经转移到交付这些收益并查看投资回报率的方面。成熟度等级3级依旧是个目标，但是看到收益交付则是当下的焦点。这帮助我们聚焦于正确的事情。使用业务概念来将可能影响该项目的事情联系在一起；让各解决方案分支领域副总裁们关注查看在改进项目投入资金所产生的价值；从而提高了改进项目整体的可见性和战略重要性。</p> 
+</blockquote>
+<p><strong>InfoQ</strong><strong>：在这个改进项目中，你有哪些经验或教训希望与我们InfoQ的读者们分享？</strong></p>
+<blockquote> 
+ <p><strong>Michelle：</strong>我们的经验和教训有：</p> 
+ <p>不要让认证成为驱动改进项目的动力。</p> 
+ <p>先理解业务对改进项目的需求，然后满足它们。</p> 
+ <p>不要让评测空等，否则你会迷失方向。</p> 
+ <p>透明性和责任制是项目成功的伙伴，即时他们有时候会带来痛楚。</p> 
+ <p>发起人制度至关重要，你需要能够利用政治的力量。</p> 
+ <p>将过程切实部署，如果它们未能得以运用，那么你将无法从中获得收益。</p> 
+ <p>拥有过程并不等于交付了收益。</p> 
+</blockquote>
+<p><strong>查看英文原文：</strong><a href="http://www.infoq.com/news/2013/12/benefits-led-improvement-cmmi">Benefits-led Process Improvement Using the CMMI</a></p><br><br><br><br><br><br></body></html>

@@ -2,7 +2,55 @@
  <head></head> 
  <body>
   <div>
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/2.java">Advice on When to Repay Technical Debt</a>An exploration of recent advice from Henrik Knibert, Ward Cunningham and Hayim Makabee on technical debt, how to make the most of it and when to pay it off.
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/17.java">Hadoop Jobs on GPU with ParallelX</a>The MapReduce paradigm is not always ideal when dealing with large computationally intensive algorithms. A small team of entrepreneurs is building a product called ParallelX to solve that bottleneck by harnessing the power of GPUs to give Hadoop jobs a significant boost.
+  </div>
+  <div>
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/16.java">How Can You Learn Early and Fast?</a>Agile suggest that teams should fail-fast to enable quick learning from mistakes. Learning from failure is one approach, you can also learn early and fast from successes, by doing experimentation, or by using a plan for knowledge acquisition.
+  </div>
+  <div>
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/15.java">DevExpress Universal 13.2 Introduces Token Box Control</a>DevExpress has included Token Box control in the latest release 13.2 which enables you to auto-complete values from a predefined list either by selection from the dropdown window list or manual input.
+  </div>
+  <div>
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/14.java">ASP.NET Identity Preview 2.0 Adds Account Confirmation, Password Reset and Security Token Provider</a>Microsoft has recently released ASP.NET Identity Framework with support for account confirmation, password reset, security token provider in addition to the ability to make use of IQueryable on UsersStore and RolesStore.
+  </div>
+  <div>
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/13.java">Android 4.4 KitKat and the Secret Key Factory</a>With the introduction of Android 4.4, developers are being asked to change the way symmetric keys are generated from Unicode passphrases via the SecretKeyFactory.
+  </div>
+  <div>
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/12.java">The API Orchestration Layer</a>The traditional resource-oriented API model may not satisfy the most important of your API consumers. Daniel Jacobson of Netflix asserts that good API design is about knowing your API consumers and optimizing your API for that audience.
+  </div>
+  <div>
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/11.java">Oracle Tunes Java's Internal String Representation</a>In an ongoing effort to improve Java performance, Oracle has announced a change in the internal representation of Strings as of Java 1.7.0_06.
+  </div>
+  <div>
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/10.java">IntelliJ 13 Released</a>Jetbrains has announced the release of IntelliJ IDEA version 13 Community Edition and Ultimate edition. Both feature a completely revamped user interface, including support for Android, Java 8 (including Lambda expressions) and many other development technologies introduced this year.
+  </div>
+  <div>
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/9.java">Experiences from Applying Kanban at SAP</a>The experiences with more than two years of applying Kanban at SAP were presented by Alexander Gerber and Martin Engel at Lean Kanban Central Europe. Their case study showed how they supported the implementation of lean and agile processes. InfoQ interviewed them about how Kanban was introduced and received within SAP, the training approach and the experiences from teams with the Kanban practices
+  </div> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/9.java">Interview with Vyacheslav Volkov, Creator of CaptchaMvc</a>InfoQ interviewed Vyacheslav Volkov, creator of CaptchaMvc, about his project and the future of captcha’s in general. 
+  </div> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/8.java">Async, LINQ, and the Future of RxJS</a>Reactive Extensions for JavaScript 2.2 includes an optional component for working with asynchronous data sources. Known as rx.async.js, this fulfills the need for binding to events, callbacks, and promises. And in the horizon is support for LINQ style query expression parsing. 
+  </div> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/7.java">Xen Project Releases 1.0 of Mirage OS</a>Mirage OS is a ‘cloud operating system’ that seeks to avoid security vulnerabilities and bloat by facilitating the creation of single purpose virtual appliances. Applications are developed in the OCaml functional programming language and compiled into standalone ‘unikernels’ that run directly on the Xen hypervisor. 
+  </div> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/6.java">Behaviour-Driven Development Tool Jasmine 2.0 Released</a>The recently released version 2.0 of Jasmine, a Behaviour-Driven Development, BDD, testing framework for JavaScript, comes with improved support for Node.js, major work on increasing the internal quality and some backwards compatibility breaking changes. 
+  </div> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/5.java">Splitforce A/B Testing for Mobile Applications</a>As mobile applications are becoming a more central part of companies' IT strategies, testing and analyzing those applications becomes more important. Whereas functional testing of code is part of every project, analyzing behavior and conversion rates is still very new to the mobile sector. Splitforce offers tools and services for application developers to instrument apps for in-app analysis. 
+  </div> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/4.java">A Proposal for a Database URI Standard</a>David Wheeler has proposed a standard URI format for database connections. This proposal would allow applications built on different technologies to share the same connection string. That would be beneficial for a wide variety of tools including report builders, automated build and deploy tools, and ORMs. 
+  </div> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/3.java">Essential Studio Enterprise 2013 Volume 4 Adds LightSwitch, Localization and New Improvements</a>Syncfusion has released Essential Studio Enterprise Edition 2013 Volume 4 with new JavaScript controls such as rich-text editor, map, tree map, range navigator, barcode, date-time picker and rotator in addition to extensions for LightSwitch. It also includes 3D chart support for WinRT, WPF, Silverlight, and Windows Phone suites including format manipulation libraries for Windows Phone. 
+  </div> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/2.java">Advice on When to Repay Technical Debt</a>An exploration of recent advice from Henrik Knibert, Ward Cunningham and Hayim Makabee on technical debt, how to make the most of it and when to pay it off. 
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/1.java">Oracle Invites Community to Weigh-In on Java EE 8</a>In keeping with their tradition of community collaboration on the Java platform, Oracle is asking the enterprise development community to participate in a survey to help define the requirements for the next version of Java Enterprise Edition, Java EE 8. 
@@ -102,54 +150,6 @@
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/21.java">PayPal Switches from Java to JavaScript</a>PayPal has decided to use JavaScript from browser all the way to the back-end server for web applications, giving up legacy code written in JSP/Java. 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/20.java">How to Target Intrinsic Motivators - Champfrogs Checklist</a>Jurgen Appelo has released a tool to help target intrinsic motivators in teams and individuals, his -Champfrogs checklist. 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/19.java">Experiences from Enterprise Integration with REST</a>Large-scale legacy replacement is the hardest job in the IT industry and REST over HTTP is an attractive option for many of these projects. Architecturally REST has proven scalability and to fit in well with domain modelling, Brandon Byars, a principal consultant at Thoughtworks, claims when sharing his experiences from using RESTful integration in large scale legacy replacement projects. 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/18.java">Managing Business Change with Scrum at FloraHolland</a>FloraHolland wanted to realize change goals for business units in parallel with their daily business, and decided to use Scrum to manage their business changes. A session from the XP Days Benelux 2013 conference which shows how a Job Demands-Resources model was used by several business units to adopt Scrum and agile elements to change their way of working. 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/17.java">YourKit Released the 2013 Version of its Profilers</a>For the recent 2013 version release of their Java Profiler, YourKit focused on improving its high level data collection features. The intention of the so called J2EE high level profiling is to get insight into the logical processing, rather than just providing timing information. 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/16.java">Salesforce go API-first with Salesforce1</a>At the recent Dreamforce event in San Francisco Salesforce launched their Salesforce1 platform. The initial deliverables focus on mobile, and aim to improve on the earlier ‘Touch’ user interface by having a richer set of underlying application programming interfaces (APIs). The launch has been accompanied by new application and admin mobile apps. 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/15.java">Noda Time 1.2 Released with XML, JSON Serialization and Text Formatting</a>The recently released Noda Time 1.2 provides support for XML and JSON serialization, text formatting and also includes an assembly that enables developers to handle JSON serialization. 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/14.java">T-shaped Hybrids in the Multi-disciplinary Team</a>A survey of recent commentary and presentations by Ken Schwaber and others on the merits of the multidisciplinary, T-shaped, team-member within an empowered cross-functional team. 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/13.java">How to Scale the Product Owner Role</a>The product owner role from Scrum is used to interface between the business and development. In larger organization with complex products and many decisions that need to be made, having this role filled in by one person is often not feasible. InfoQ did an interview with Timo Punkka about the role of the product owner, lean portfolio management, and customer collaboration. 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/12.java">Release of BizTalk Services Signals “Cloud First” Transition for Microsoft Integration Platform</a>After a long incubation period, Microsoft released its cloud-based integration tool called Windows Azure BizTalk Services. While reiterating their commitment to their on-premises integration tools, Microsoft has said that it will push innovation to its cloud platform first. 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/11.java">Microsoft Envisions One OS Running on Mobile Devices and Sensors</a>During a UBS Global Technology Conference held last week, Microsoft’s Julie Larson-Green, EVP Devices and Studios, discussed her company’s approach to today’s software market, providing insights especially into the mobile device operating systems space. We selected the most interesting fragments from the session’s transcript (HTML, DOCX). 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/10.java">Streaming Big Data With Amazon Kinesis</a>Amazon recently announced Kinesis, a service that allows developers to stream large amounts of data from different sources and process it. The service is currently in limited preview. 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/9.java">Telerik LightBox Control with Templates, Items Collection, Automatic Resizing and Paging</a>Telerik has added LightBox control to its ASP.NET control suite with support for templates, items collection in addition to advanced features such as automatic resizing, keyboard navigation and paging. 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/8.java">Visual Studio's C++14 Support Grows</a>A new CTP for Visual Studio 2013 allows developers to sample increased support for modern C++11/14 features. The CTP can be used with both Visual Studio Express and VS2013 Professional or greater. 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/7.java">Nokia Imaging SDK 1.0 Adds Filters, WinPRT API, Enhancements and Sample Demos</a>Nokia has recently released Imaging SDK 1.0 at the Slush 2013 with 50 built-in filters, improvements related to memory management, WinPRT API library in both managed and native code in addition to sample apps which demonstrate the capabilities of the new features. 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/6.java">Amazon Web Services announces three new instance types</a>Amazon Web Services have announced three new instance types for its Elastic Compute Cloud (EC2) infrastructure as a service. I2 instances use solid state disk (SSD) to deliver high input/output performance, C3 instances tie each virtual CPU to a hardware hyper-thread for compute intensive workloads, and G2 instances offer Nvidia graphics processing units (GPUs) for 3D applications. 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/5.java">Agile 2014 Conference Call for Submissions Open</a>Submissions are now open for talk proposals the Agile 2014 conference to be held in Orlando, Florida, USA in July 2014 
-  </div>  
+  </div>          
  </body>
 </html>

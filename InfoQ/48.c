@@ -1,10 +1,27 @@
-<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>DevCamp: um novo evento na região de Campinas</h3><p>Nos dias 10 e 11 de maio, em Campinas-SP, acontecer&aacute; a primeira edi&ccedil;&atilde;o do <a href="http://www.devcamp.com.br/">Devcamp</a>, confer&ecirc;ncia com objetivo de promover o compartilhamento de experi&ecirc;ncias e a democratiza&ccedil;&atilde;o da informa&ccedil;&atilde;o entre a comunidade e incluir definitivamente Campinas no cen&aacute;rio dos grandes eventos de TI do Brasil.</p> 
-<p>Com boa parte da <a href="http://www.devcamp.com.br/programacao.php">programa&ccedil;&atilde;o</a> definida, o evento contar&aacute; mais de 20 apresenta&ccedil;&otilde;es de palestrantes renomados no cen&aacute;rio nacional e ser&aacute; dividido em tr&ecirc;s trilhas:</p> 
-<ul> 
- <li>Dev Roots: com palestras direcionadas a desenvolvedores e com assuntos diretamente ligados a programa&ccedil;&atilde;o e arquitetura;</li> 
- <li>Al&eacute;m do c&oacute;digo: com assuntos que afetam o dia-a-dia do desenvolvimento de software mas extrapolam as linhas de c&oacute;digo;</li> 
- <li>Se liga nisso: com palestras de profissionais altamente reconhecidos no mercado falando sobre sua trajet&oacute;ria e palestras de temas inovadores que ser&atilde;o tend&ecirc;ncia no mercado de TI.</li> 
-</ul> 
-<p>Entre as palestras confirmadas, est&atilde;o nomes conhecidos como Paulo Silveira, Alexandre Freire, Rafael Buzon, Bill Coutinho, Luca Bastos, Fabio Lima Santos, Leandro Guimar&atilde;es e Manoel Pimentel.</p> 
-<p>As inscri&ccedil;&otilde;es est&atilde;o com valor promocional at&eacute; 21 de abril, e o evento ocorrer&aacute; no Centro de Conven&ccedil;&otilde;es da Unicamp, a partir das 8:30 da manh&atilde;. Novidades do evento podem ser acompanhadas pela conta no Twitter <a href="https://twitter.com/DevCampinas">@devcamp</a> e no <a href="http://www.devcamp.com.br/">site</a>.</p> 
-<p id="lastElm"></p><br><br><br><br><br><br></body></html>
+<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>Neo4j 2.0: Novo navegador e esquema</h3><p>A <a href="http://neotechnology.com/">Neo Technology</a> disponibilizou o <a href="http://www.neo4j.org/download">Neo4j 2.0</a>, agora com novo navegador de grafos, r&oacute;tulos nos n&oacute;s, esquema opcional e aprimoramento da linguagem de consulta Cypher.</p>
+<p>O destaque do Neo4j 2.0 vai para o novo navegador gr&aacute;fico que permite visualizar e editar os dados na forma de grafo ou tabular. A imagem a seguir demonstra uma base de dados de filmes, destacando um ator em particular e seu relacionamento com os filmes que atuou (em cinza) e com outros atores (em vermelho):</p>
+<p><a href="/resource/news/2013/12/neo4j-2/pt/resources/neo4j-2.png" target="_blank"><img title="image" style="border-left-width: 0px; border-right-width: 0px; background-image: none; border-bottom-width: 0px; padding-top: 0px; padding-left: 0px; display: inline; padding-right: 0px; border-top-width: 0px" border="0" alt="image" src="http://www.infoq.com/resource/news/2013/12/neo4j-2/pt/resources/neo4j-2.png" _href="img://neo4j-2.png" _p="true" /></a></p>
+<p>Os n&oacute;s agora podem ter r&oacute;tulos e desta forma &eacute; poss&iacute;vel marcar os n&oacute;s pertencentes a um grupo. Cada n&oacute; pode ter m&uacute;ltiplos r&oacute;tulos.</p>
+<p>No que parece ser um retorno para as bases de dados relacionais, o Neo4j 2.0 agora suporta a adi&ccedil;&atilde;o opcional de esquema. O objetivo &eacute; adicionar meta informa&ccedil;&otilde;es que aprimoram a execu&ccedil;&atilde;o das consultas.</p>
+<p>A linguagem de consulta Cypher foi aprimorada com as cl&aacute;usulas OPTIONAL MATCH e MERGE, al&eacute;m de padr&otilde;es de n&oacute;s literais e a habilidade para retornar mapa e cole&ccedil;&otilde;es de literais.</p>
+<p>O InfoQ.com entrevistou Michael Hunger, l&iacute;der da Spring Integration, desenvolvedor e evangelista da Neo Technology, para conhecer sobre as novas funcionalidades do Neo4j 2.0, o uso do esquema e o que est&aacute; planejado no roadmap.</p>
+<p><strong>InfoQ.com: H&aacute; algum problema de compatibilidade entre o Neo4j 2.0 e as vers&otilde;es anteriores?</strong></p>
+<p><strong>Hunger:</strong> Sim, o Neo4j tem uma grande quebra de compatibilidade devido ao aprimoramento do modelo de dados com a adi&ccedil;&atilde;o do conceito de r&oacute;tulos e informa&ccedil;&otilde;es opcionais de esquema.</p>
+<p>A linguagem de consulta Cypher tamb&eacute;m passou por uma grande evolu&ccedil;&atilde;o desde a vers&atilde;o 1.9 e para os usu&aacute;rios da API embarcada tornou-se obrigat&oacute;rio as transa&ccedil;&otilde;es tamb&eacute;m para leitura e muitos itens depreciados foram removidos.</p>
+<p>Mais informa&ccedil;&otilde;es podem ser obtidas nas <a href="http://www.neo4j.org/release-notes#2.0.0">notas de publica&ccedil;&atilde;o da vers&atilde;o 2.0</a> e no <a href="http://docs.neo4j.org/chunked/2.0.0/deployment-upgrading.html#deployment-upgrading-two-zero">documento que aborda a atualiza&ccedil;&atilde;o para a vers&atilde;o 2.0</a>.</p>
+<p><strong>InfoQ.com: Como o novo esquema introduzido tornar&aacute; as consultas mais r&aacute;pidas?</strong></p>
+<p><strong>Hunger:</strong> As informa&ccedil;&otilde;es opcionais de esquema (r&oacute;tulos) permitem que os &iacute;ndices e restri&ccedil;&otilde;es &uacute;nicas sejam automaticamente utilizados nas consultas para transformar as condi&ccedil;&otilde;es dos filtros em pesquisas de &iacute;ndices. Tamb&eacute;m pode ser usado r&oacute;tulos como parte das consultas, dessa forma a base de dados somente procurar&aacute; nos sub conjuntos de toda a base de dados quando pesquisar por informa&ccedil;&otilde;es n&atilde;o indexadas. E como terceiro aspecto, as informa&ccedil;&otilde;es dos r&oacute;tulos est&atilde;o incorporadas nos registros dos n&oacute;s, fazendo dos testes nos n&oacute;s existentes contra os rotulados uma opera&ccedil;&atilde;o instant&acirc;nea e n&atilde;o precisar&aacute; pesquisar em mais propriedades ou relacionamentos.</p>
+<p><strong>InfoQ.com: O que ocorre quando a base &eacute; alterada? Tem que atualizar manualmente o esquema tamb&eacute;m?</strong></p>
+<p><strong>Hunger:</strong> Os &iacute;ndices e restri&ccedil;&otilde;es ser&atilde;o mantidos nas mudan&ccedil;as dos dados.</p>
+<p>Por exemplo: a adi&ccedil;&atilde;o de novos r&oacute;tulos fornecer&aacute; tamb&eacute;m novas defini&ccedil;&otilde;es de &iacute;ndices e restri&ccedil;&otilde;es, mas os dados existentes ser&atilde;o ampliados com os novos r&oacute;tulos e ser&aacute; automaticamente indexado por tr&aacute;s das cenas.</p>
+<p><strong>InfoQ.com: Qual o roadmap para o Neo4j?</strong></p>
+<p><strong>Hunger:</strong> Temos o seguinte roadmap para as pr&oacute;ximas vers&otilde;es:</p>
+<p>- aprimoramento continuo da experi&ecirc;ncia do usu&aacute;rio;</p>
+<p>- desempenho (leitura, escrita, linguagem de consulta);</p>
+<p>- aumento (artificial) dos limites dos n&oacute;s, relacionamentos;</p>
+<p>- melhoria na importa&ccedil;&atilde;o e exporta&ccedil;&atilde;o;</p>
+<p>- BI e integra&ccedil;&atilde;o;</p>
+<p>- aprimoramento operacional;</p>
+<p>- algum desenvolvimento de big data e computa&ccedil;&atilde;o em grafo;</p>
+<p>- simplificar a experi&ecirc;ncia com instala&ccedil;&atilde;o;</p>
+<p>- melhorar a comunica&ccedil;&atilde;o remota e drivers.</p><br><br><br><br><br><br></body></html>

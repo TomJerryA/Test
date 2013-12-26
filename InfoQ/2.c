@@ -1,9 +1,54 @@
-<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>Android 4.2.2: Foco em melhorias de segurança</h3><p>O <a href="http://developer.android.com/about/versions/jelly-bean.html">Android 4.2</a> Jelly Bean foi atualizado com recursos adicionais para melhorar a seguran&ccedil;a de aplica&ccedil;&otilde;es. A nova vers&atilde;o inclui um recurso com o qual os usu&aacute;rios ser&atilde;o capazes de verificar um aplicativo antes de instal&aacute;-lo, evitando assim que aplicativos maliciosos entrem no dispositivo m&oacute;vel. O Android 4.2.2 tamb&eacute;m tem a capacidade de bloquear a instala&ccedil;&atilde;o caso o aplicativo seja perigoso.</p> 
-<p>Se uma aplica&ccedil;&atilde;o tentar enviar um SMS para qualquer servi&ccedil;o que possa gerar custos adicionais, o Android ir&aacute; exibir uma notifica&ccedil;&atilde;o e ser&aacute; poss&iacute;vel decidir entre permitir que o aplicativo envie a mensagem ou bloque&aacute;-lo.</p> 
-<p>&Eacute; poss&iacute;vel ainda configurar uma VPN de modo que o aparelho n&atilde;o tenha acceso &agrave; rede at&eacute; que uma conex&atilde;o &agrave; VPN seja estabelecida. Al&eacute;m disso, a implementa&ccedil;&atilde;o libcore SSL fornece suporte ao &quot;certificate pinning&quot;, e as permiss&otilde;es foram organizadas em grupos. Essa vers&atilde;o tamb&eacute;m fornece informa&ccedil;&otilde;es detalhadas sobre as permiss&otilde;es com apenas um clique do usu&aacute;rio.</p> 
-<p>No Android 4.2.2, aplicativos que utilizam a <a href="http://developer.android.com/about/versions/android-4.2.html">API level 17</a> ter&atilde;o a op&ccedil;&atilde;o de exporta&ccedil;&atilde;o configurada como <em>false</em> por padr&atilde;o para cada ContentProvider, o que acaba reduzindo a superf&iacute;cie de ataque padr&atilde;o para aplicativos. Essa atualiza&ccedil;&atilde;o reduz tamb&eacute;m potenciais ataques de escalada de privil&eacute;gios de root, j&aacute; que a daemon instalada n&atilde;o roda com o usu&aacute;rio root.</p> 
-<p>Al&eacute;m disso, o script de carregamento agora aplica a sem&acirc;ntica O_NOFOLLOW para prevenir ataques relacionados a symlink; tamb&eacute;m implementa FORTIFY_SOURCE, que &eacute; usado pelas bibliotecas do sistema e pelos aplicativos para prevenir corrup&ccedil;&atilde;o da mem&oacute;ria.</p> 
-<p>A partir da vers&atilde;o 4.2.2 o SO foi modificado para utilizar o <a href="http://www.openssl.org/">OpenSSL</a> para as implementa&ccedil;&otilde;es padr&atilde;o de <a href="http://developer.android.com/reference/java/security/SecureRandom.html">SecureRandom</a> e <a href="http://en.wikipedia.org/wiki/RSA_(algorithm)">Cipher.RSA</a>. A vers&atilde;o tamb&eacute;m adiciona suporte a SSLSocket para <a href="http://en.wikipedia.org/wiki/Transport_Layer_Security">TLSv1.1</a> e TLSv1.2 usando OpenSSL 1.0.1 e reduz a superf&iacute;cie de ataque para aplica&ccedil;&otilde;es. Al&eacute;m disso, inclui corre&ccedil;&otilde;es de seguran&ccedil;a para as bibliotecas open source <a href="http://www.webkit.org/">WebKit</a>, <a href="http://www.libpng.org/pub/png/libpng.html">libpng</a>, OpenSSL e <a href="http://www.xmlsoft.org/">LibXML</a>.</p> 
-<p>Segundo Fred Chung, da equipe do Google de rela&ccedil;&otilde;es com desenvolvedores do Android, a abordagem recomendada &eacute; &quot;gerar uma chave AES aleat&oacute;ria na primeira execu&ccedil;&atilde;o e guardar essa chave no armazenamento interno&quot;.</p> 
-<p>O Android 4.2.2 introduz depura&ccedil;&atilde;o segura via USB. Quando essa funcionalidade &eacute; ativada, fica garantido que apenas computadores autorizados pelo usu&aacute;rio possam acessar o interior de um dispositivo USB conectado, usando a ferramenta <a href="http://developer.android.com/tools/help/adb.html">ADB</a> inclu&iacute;da no <a href="http://developer.android.com/sdk/index.html">Android SDK</a>.</p> 
-<p id="lastElm"></p><br><br><br><br><br><br></body></html>
+<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>Planos futuros para o C#</h3><p>No <a href="http://ndc-london.com/">NDC Londres</a>, Mads Torgersen, membro do time de design do C#, prop&ocirc;s mudan&ccedil;as para a linguagem C#. Deve ser ressaltado que s&atilde;o apenas propostas e que n&atilde;o existem garantias de que ir&atilde;o aparecer em alguma vers&atilde;o espec&iacute;fica da linguagem. <a href="http://damieng.com/blog/2013/12/09/probable-c-6-0-features-illustrated">Damien Guard</a> postou um resumo e uma breve an&aacute;lise dessas propostas e aqui v&atilde;o alguns dos principais t&oacute;picos.</p>
+<h2>Propriedades somente leitura</h2>
+<p>Propriedades somente leitura v&atilde;o permitir que desenvolvedores declarem propriedades e os valores que elas armazenam em uma &uacute;nica linha.</p>
+<pre>
+
+<p>public int X { get; } = x;</p>
+
+</pre>
+<h2>&nbsp;</h2>
+<h2>Uso de tipos est&aacute;ticos</h2>
+<p>Visual Basic e Java j&aacute; permitem que desenvolvedores importem m&oacute;dulos (classes est&aacute;ticas em C#) no namespace. Isso permite remover c&oacute;digos repetitivos como &quot;Math.&quot; na frente de fun&ccedil;&otilde;es comumente utilizadas.</p>
+<h2>Construtores prim&aacute;rios</h2>
+<p>Colocando par&acirc;metros ap&oacute;s o nome da classe, os desenvolvedores n&atilde;o precisar&atilde;o explicitamente criar construtores. Isso elimina a necessidade de copiar os valores dos par&acirc;metros dos construtores nos campos privados.</p>
+<pre>
+
+<p>public class Point(int x, int y) {</p>
+
+<p>private int x, y;</p>
+
+<p>}</p>
+
+</pre>
+<h2>Express&otilde;es de propriedade e m&eacute;todo</h2>
+<p>Express&otilde;es de propriedade eliminariam alguns clich&ecirc;s necess&aacute;rios para propriedades somente leitura.</p>
+<pre>
+
+<p>public double Distance =&gt; Math.Sqrt((X * X) + (Y * Y));</p>
+
+</pre>
+<p>Propriedades de m&eacute;todo fariam o mesmo, exceto que obviamente aceitariam par&acirc;metros.</p>
+<p>Perceba que propriedades parametrizadas ainda n&atilde;o est&atilde;o sendo consideradas. Para um futuro pr&oacute;ximo, isso continua sendo uma funcionalidade apenas do VB.</p>
+<h2>Par&acirc;metros de fun&ccedil;&atilde;o</h2>
+<p>Nos dias de hoje, a maioria dos desenvolvedores n&atilde;o utilizam arrays, exceto quando precisam para a palavra-chave params. Assim, uma proposta &eacute; que a interface IEnumerable&lt;T&gt; tamb&eacute;m suporte params. Se isso for feito, outras linguagens como Visual Basic tamb&eacute;m precisariam dar suporte &agrave; essa funcionalidade.</p>
+<p>Outra proposta &eacute; permitir que vari&aacute;veis locais sejam declaradas utilizando a palavra chave out. Por exemplo,</p>
+<pre>
+
+<p>int.TryParse(&quot;123&quot;, out int x);</p>
+
+</pre>
+<h2>Propaga&ccedil;&atilde;o de null</h2>
+<p>Quando est&atilde;o trabalhando com dados confusos, os desenvolvedores freq&uuml;entemente precisam escrever uma s&eacute;rie de valida&ccedil;&otilde;es de nulo antes de ler uma propriedade ou invocar um m&eacute;todo. A sintaxe ?. eliminaria a necessidade de valida&ccedil;&atilde;o, invocando o m&eacute;todo se o valor que a procede n&atilde;o for nulo.</p>
+<pre>
+
+<p>var bestValue = points?.FirstOrDefault()?.X;</p>
+
+</pre>
+<p>Nesse caso, se points for nulo, ou points.FirstOrDefault() retornar nulo, ent&atilde;o .X &eacute; ignorado e a express&atilde;o retorna nulo. Isso pode ser encadeado com ?? para fornecer um valor padr&atilde;o alternativo.</p>
+<pre>
+
+<p>var bestValue = points?.FirstOrDefault()?.X ?? -1;</p>
+
+</pre>
+<p>Essa sem&acirc;ntica &eacute; encontrada em linguagens de &quot;passagem de mensagens&quot;, como Objective-C e Smalltalk. &Eacute; comumente citada como sendo problem&aacute;tica porque o que poderia ser uma exce&ccedil;&atilde;o de refer&ecirc;ncia nula, &eacute; silenciosamente ignorada.</p>
+<p>Por fim, essas propostas de novas funcionalidades para o C# ajudariam a diminuir o ru&iacute;do e a repeti&ccedil;&atilde;o de c&oacute;digo, mas ainda precisam ser melhor estudadas e detalhadas para uma an&aacute;lise mais concreta dos pr&oacute;s e contras de cada abordagem.</p><br><br><br><br><br><br></body></html>

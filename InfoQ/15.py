@@ -1,45 +1,44 @@
-<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>Microsoftが放棄したスタックランキングシステムでYahoo!が600人をレイオフ</h3><p><a target="_blank" href="http://www.infoq.com/news/2013/11/stack-ranking-microsoft-yahoo"><em>原文(投稿日：2013/11/16)へのリンク</em></a></p>
+<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>CMMIを使用した成果主導の改善プロセス</h3><p><a target="_blank" href="http://www.infoq.com/news/2013/12/benefits-led-improvement-cmmi"><em>原文(投稿日：2013/12/10)へのリンク</em></a></p>
 <div class="article_page_left news_container text_content_container"> 
  <div class="text_info"> 
-  <p>Yahoo!は最近、昨年に導入したランキングシステムに基づき、600人をレイオフした。一方、マイクロソフトはランキングシステムを放棄し、従業員をある種の重圧から解放した。</p> 
-  <p>AllThingsDによれば、新CEOであるMarissa Mayer氏のもと、Yahoo!は昨年、従業員評価システムを導入し、その結果、この数週間で<a href="http://allthingsd.com/20131108/because-marissa-said-so-yahoos-bristle-at-mayers-new-qpr-ranking-system-and-silent-layoffs/">600人近くがレイオフされた</a>。このシステムは同社のマネージャをも慌てさせている。チームのメンバをアンダーフパフォーマーとして分類し、ベルカーブを使った評価システムに従う必要があるからだ。</p> 
+  <p>CMMIを基盤とするプロセス改善プログラムでは，多くの場合，特定の成熟度レベルの達成を目標に据える。組織としては，成熟度レベルとビジネス上の目標との関連性を見通し，改善によって期待できるビジネス上のメリットを知ることが重要になる。SITAでProject Portfolioのディレクタを務めるMichelle Krupa氏は，<a href="http://www.sepg.unicom.co.uk/">SEPG Europe 2013</a>カンファレンスで，認証主導(certification-led)から成果主導(benefits-led)に改善プログラムを移行する上での課題をテーマとして講演を行った。</p> 
+  <p>氏は講演で，CMMI成熟度レベルを基本としていた自分たちの改善プログラムを，成果を主眼点としたアプローチに変更した，と説明している。InfoQでは氏にインタビューして詳しい話を聞いた。</p> 
+  <p><strong>InfoQ: インタビューにご協力頂き，ありがとうございます。</strong><strong>SITAを知らない読者のために，どのような事業を行っているのか説明して頂けますか？</strong></p> 
   <blockquote> 
-   <p>従業員を目標未達成にしてしまうことを避けられない場合がありました。こういう場合はとても嫌な気持ちになります。そして、今、私はQPRミーティングでそのようなことについて議論をしなければなりません。ベルカーブに合わせるためには、その従業員に目標未達成であることを伝えなければならないからです。本当は、そうでないにも関わらずです。これはとてもつらいことです。目的を達成できない従業員や間違って採用してしまった従業員を排除する必要があるのは理解できますが、実行するのは気が滅入ります。心の中でも人を失うのは避けたいのです。どのように正当化すればいいのでしょう。</p> 
+   <p><strong>Michelle: </strong>SITAは，航空輸送や世界規模の流通システム，政府関係のユーザを対象に，世界でもっとも広範なネットワークでのビジネスソリューションの提供と管理を行っています。特に航空輸送業界(ATI / Air Transport Industry)に対しては，通信とITサービスのポートフォリオを提供すべく，業界団体とも協力関係を持っています。ATIとの協力の下，情報技術アプリケーションと通信サービスに関する革新的な開発を実施しています。</p> 
   </blockquote> 
-  <p>匿名掲示板で、あるYahoo!の従業員はランキングシステムはマネージャにも適用されるべきだ、と書いている。</p> 
+  <p><strong>InfoQ:改善プログラムの目標はCMMI成熟度レベル３を取得することでした。なぜ，この目標が選択されたのでしょう？</strong></p> 
   <blockquote> 
-   <p>‘時折の目標未達成’という分類はL2とL3の幹部にも適用されるのでしょうか。幹部でも70％も目標を達成していない人がいます。とすると、定義上、彼らは‘時折の目標未達成’に分類されるはずです。</p> 
+   <p><strong>Michelle: </strong> そのようなレベルの成熟性を達成するには，ソフトウェア開発や品質管理を行う組織に品質や納期，あるいは成果達成の面での再現性が必要になります。それが理由でしょうね。</p> 
   </blockquote> 
-  <p>一方、退任する予定のMicrosoftのCEO、Steve Ballmer氏はスタックランキングシステムを廃止することを決定した。このシステムは、同社の内外から、Microsoftの最も破滅的なシステムだと思われていた。</p> 
+  <p><strong>InfoQ: 改善プログラムは，ビジネス上の理由から開始されたものにも関わらず，後になって予算がカットされていますね。これにはどのように対処しましたか？</strong></p> 
   <blockquote> 
-   <p><a href="http://www.theverge.com/2013/11/12/5094864/microsoft-kills-stack-ranking-internal-structure">The Verge</a>: <em>Vanity Fair</em>コントリビューティングエディタであるKurt Eichenwald氏はMicrosoftの<a href="http://www.theverge.com/2012/7/3/3134719/microsoft-windows-office-loyalty-lost-decade">&quot;失われた10年&quot;と共食い文化</a>の原因として、WindowsとOfficeに執着していることと、同社のスタックランキングシステムを合わせて批判した。氏はこのスタックランキングが同社の最も破滅的なシステムであることを認めている現従業員、元従業員に多く取材をしている。</p> 
-   <p><a href="http://www.businessweek.com/articles/2013-11-13/microsoft-kills-its-hated-stack-rankings-dot-does-anyone-do-employee-reviews-right">Bloomberg Businessweek</a>: Microsoftの元従業員であるDavid Auerbach氏は<em>Bloomberg Businessweek</em>に、スタックランキングシステムが従業員に頼るれるものがないという不安を与え、さらに“<a href="http://www.businessweek.com/articles/2013-11-07/the-annual-performance-review-worthless-corporate-ritual">従業員同士が足を引っ張り合う</a>”ようにしむけていた、と話している。</p> 
-   <p><a href="http://www.forbes.com/sites/petercohan/2013/11/13/marissas-second-epic-fail-microsoft-abolishes-stack-ranking-as-yahoo-ramps-it-up/">Forbes</a>: スタックランキングは、マネージャが従業員をランク付けし、最低ランクの従業員を解雇するという仕組みで、MicrosoftのSteve Ballmer氏がGEから取り入れた恐るべきシステムだ。私が<a href="http://www.forbes.com/sites/petercohan/2012/07/13/why-stack-ranking-worked-better-at-ge-than-microsoft/">2012年7月</a>に書いたように、Microsoftのスタックランキングはめちゃくちゃだった。</p> 
-   <p><a href="http://online.wsj.com/news/articles/SB10001424052702303460004579193951987616572">The Wall Street Journal</a>: Microsoftのランキングは最高経営責任者の<a href="http://topics.wsj.com/person/B/Steve-Ballmer/599">Steve Ballmer氏</a>の元での、昇進と賞与、株式報奨の重要な要素だった。同氏は今年の8月に退任計画を発表している。しかし、Microsoftの現従業員、元従業員はかわりやすいランキング、マネージャ間の権力争い、不健全な競争を生んだこのシステムに不満を募らせていた。</p> 
+   <p><strong>Michelle: </strong>大した問題ではありませんでした。許された予算の中で，やるべきことの何ができるのかを見直してみたのです。外部のプロセスコンサルタントに頼らず，内部リソースを活用する方法を探したところ，SEIトレーナの認定を持った主任鑑定士が社内にいたため，トレーニング並にコストを節約することができました。</p> 
+   <p>この過程で私たちは，社内の知識や経験だけでは限界があることを実感しました。社内の主任鑑定士の協力が得られなくなったので，単に経験を持っているだけでなく，私たちの組織文化にマッチしたコンサルティング会社の力を借りて，そのギャップを埋めることにしました。</p> 
   </blockquote> 
-  <p>MicrosoftのHR部門の責任者であるLisa Brummel氏が従業員に送った<a href="http://www.theverge.com/2013/11/12/5094864/microsoft-kills-stack-ranking-internal-structure">メモ</a>によれば、これからは“ノーモアカーブ”であり、“ノーモアレーティング”であり、従業員の成長とチームの協力を強調している。</p> 
+  <p><strong>InfoQ:&nbsp;&quot;困難なものを避ける&quot;という話をされていましたが，それについて詳しく説明して頂けますか？</strong></p> 
   <blockquote> 
-   <ul> 
-    <li><b>チームワークとコラボレーションに重きを置きます</b>。私たちは今、優れたパフォーマンスに対する考え方を具体化しており、つぎの3つの要素に注目しています。すなわち、まずは自分の仕事、そしてそれだけでなく、ほかの人からのインプットやアイディアをどのように活用できるか、そして、ほかの人の成功にどのように貢献できるか、です。この3つが合わさってどのようなビジネスインパクトを生み出すか着目しています。</li> 
-    <li><b>従業員の成長と開発に重きを置きます</b>。“コネクト”と呼ばれるプロセスを通じて、よりタイムリーなフィードバックと意義深い議論によって従業員の学習、成長、成果を助けるために、最適化を行っています。企業内でひとつの時間軸に従うのではなく、ビジネスの各部分のリズムに合わせてスケジュールを決め、成果や開発について議論する時期や方法を柔軟にします。</li> 
-   </ul> 
+   <p><strong>Michelle: </strong>私たちは当然のように，無意識で困難を避け続けていました。 意図していたのではありません。改善プロセスはML2の目標をすでに達成していましたし，そのプロセスに沿ったものでしたが，測定にはあまり効果がありませんでした。意味のあるものを測定したというより，測定できるものを測定していたのです。私たちは組織の奥深くを調べました。その結果，プロセスに沿っているように思えたプロジェクトが，実はチームに根付いていなかった，ということに気付きました。プロジェクトマネージャというよりも，プロセスマネージャだったのです。</p> 
   </blockquote> 
-  <p>ベルカーブのランキングシステムは1980年代にGEの最高経営責任者のJack Welch氏によって広められ、多くの企業で導入された。しかし、<a href="http://www.businessweek.com/articles/2013-11-13/microsoft-kills-its-hated-stack-rankings-dot-does-anyone-do-employee-reviews-right">その中には昨年、このシステムを放棄した企業もある</a>。AdobeとExpediaもそうだ。このシステムの中核のアイディアは企業の従業員の成績はベルカーブに従うということだ。それゆえ従業員は、少数のハイパフォーマーと、多くの平均的な能力の従業員と、少数のアンダーパフォーマーに分けられる。ランキングシステムはアンダーパフォーマーを発見し、除外することで企業の労働力全体を改善し、標準偏差を小さくして、より均質な企業にする。次のグラフに示す通りだ。(出典は<a href="http://web.mit.edu/chintanv/www/Publications/Chintan%20Vaishnav%20Punishing%20by%20Rewards%20for%20Publication%20Final.pdf">Punishing by Rewards: When the Performance Bell-curve Stops Working For You</a><em> - PDF)</em>:</p> 
+  <p><strong>InfoQ: 成熟度レベル３という当初の目標を維持しながら，改善プログラムのフォーカスを変更するために，どのようなことを行ったのですか？</strong></p> 
   <blockquote> 
-   <p><img src="http://www.infoq.com/resource/news/2013/11/stack-ranking-microsoft-yahoo/ja/resources/1bell-curve-1.png" alt="" _href="img://1bell-curve-1.png" _p="true" /></p> 
+   <p><strong>Michelle: </strong>ビジネスケースに立ち戻ったのです。プログラムの目的と理由について，改めて見直しました。最終的な目標はML3の達成でしたが，それは同時に，一連のメリットを提供するためでもあったのです。</p> 
+   <p>SITAの戦略的ビジョン，SITAの戦略的目標を見つめ直し，プログラムのメリットを戦略的目標へと方向付けました。プログラムのスポンサーである上級副社長のところに行って，スポンサーと社内ユーザのメリットのために共に作業し，すべてを彼に報告しました。主要なメリットの指標を定義した上で，現在はKPIのサポートを定義中です。ソリューションラインの副社長たちがそれぞれ，KBIとKPIの定義と同意に詳細レベルで関与しています。</p> 
   </blockquote> 
-  <p>しかし、昨年行われたいくつかの研究では、このベルカーブランキングシステムには多くの欠陥があることが指摘されている。<a href="http://www.bchrma.org/wp-content/uploads/2012/11/rb-the-best-and-the-rest.pdf"><em>The Best and the Rest: Revisiting the Norm of Normality of Individual Performance</em></a><em>(PDF)</em>という研究によれば、成績はガウス分布ではなく、次のグラフのような安定分布によって示される。</p> 
+  <p><strong>InfoQ: 講演では，プログラムのターゲットが再定義された件について述べていますが，新しいターゲットは何でしょう，どのようなメリットがあるのでしょうか？</strong></p> 
   <blockquote> 
-   <p><img src="http://www.infoq.com/resource/news/2013/11/stack-ranking-microsoft-yahoo/ja/resources/bell-curve-2.png" alt="" _href="img://bell-curve-2.png" _p="true" /></p> 
+   <p><strong>Michelle: </strong>現在の目標は，これまで説明したようなメリットの実現と投資利益率に向けられています。ML3がゴールであることには変わりありませんが，メリットを提供することの方が当面の主眼点です。 これによって，正しい方向に注意を向けることができます。プログラムに影響を与える可能性のあるものをビジネスの言葉で語ることで。ソリューションラインの副社長たちに，プログラムに投資することの価値を認識してもらうことができるのです。その結果として，プログラム全体の可視化と戦略的重要性が向上します。</p> 
   </blockquote> 
-  <p>この研究によれば、大多数の従業員はアンダーパフォーマーであり、ハイパフォーマーは少数しかいない。この研究は、トップパフォーマーを残して残りをレイオフするのではなく、“スパースターを選んで、ボトムラインに影響を与えるポジションに置く”ことを推奨している。</p> 
-  <p>Another study, <a href="http://web.mit.edu/chintanv/www/Publications/Chintan%20Vaishnav%20Punishing%20by%20Rewards%20for%20Publication%20Final.pdf">Punishing by Rewards: When the Performance Bell-curve Stops Working For You</a><em>(PDF)</em>はベルカーブランキングシステムのほかの問題を指摘している。従業員に与える重圧についてだ。</p> 
+  <p><strong>InfoQ: 今回の改善プログラムで得た教訓の中で，InfoQの読者に伝えたいものはありますか？</strong></p> 
   <blockquote> 
-   <p>一定の水準以下であれば、重圧は高いパフォーマンスを導きます。しかし、レイオフが実施されると、重圧は従業員のモラルの低下を引き起こし、パフォーマンスも低下します。成果が一番低い従業員がいなくなると、ベルカーブの固定的な分布に従って、マネージャはハイパフォーマーを平均的な従業員にランク付けしなければなりません。そのような作られた降格によって、ハイパフォーマーはモチベーションを失い、本当に平均的な従業員になってしまいます。そして、小さくなっている会社では、マネージャが従業員を差別化するのが難しくなります。その結果、実際の成果よりも目に見える成果を評価し始めます。ある時点を過ぎると、社会的資本の浸食が企業を不自由にする可能性が生まれます。</p> 
-  </blockquote> 
-  <p>この研究は、重圧とモラルのバランスを取り、レイオフからパフォーマンスの評価を分離することを推奨している。</p> 
-  <blockquote> 
-   <p>固定的な割合の分布に従わず、トップパフォーマーをトップパフォーマーとして評価するセミベルカーブを使うことを推奨します。さらに、重圧とモラルのバランスを取ることも重要です。バランスを取るのは難しいです。特に企業が小さくなっている場合はそうです。重圧を最適なレベルに保ち、モラルを高く保つ唯一の方法は評価プロセスとレイオフを分離することです。</p> 
+   <p><strong>Michelle:</strong> 私たちが学んだことは:</p> 
+   <p>認定のために改善プログラムを進めないこと</p> 
+   <p>ビジネスが改善プログラムに何を求めているか理解し，それを実現すること</p> 
+   <p>測定を滞らせないこと，さもなくば改善の方向性を見失うことになる</p> 
+   <p>透明性と説明責任は，時に傷つけられることがあっても，あなたの友人である</p> 
+   <p>スポンサーシップは非常に重要，政治力を駆使できることが必要だ</p> 
+   <p>プロセスの展開に対処せよ，それなくして結果は得られない</p> 
+   <p>プロセスの実施と成果の獲得は同じではない</p> 
   </blockquote>
  </div> 
 </div><br><br><br><br><br><br></body></html>

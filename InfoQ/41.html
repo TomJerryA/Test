@@ -1,25 +1,40 @@
-<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>如何瞄准内在动机——Champfrogs检查清单</h3><p>Jurgen Appelo最近发布了他的Champfrogs<a href="http://www.noop.nl/2013/02/champfrogs.html">检查清单</a>（Checklist），一个用于理解内在动机的新模型。</p>
-<p>Appelo是<a href="http://www.management30.com/">管理3.0</a>的创建者，同时也是<a href="http://www.noop.nl/">Creative Networker博客</a>的作者。</p>
-<p>通过在管理3.0课程中使用的这种新方式，Appelo暗示我们需要更好的理解与组织内部的个人最相关的内在欲望。</p>
-<p>Sebastian Radics在<a href="http://www.ontheagilepath.net/2013/11/champfrogs-sketchnotes-from-new.html">on the agile path</a> 网站上的博客中这样写道：</p>
+<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>一项针对数据库URI标准的提议</h3><p>大卫&middot;惠勒提出了一种<a href="https://github.com/theory/uri-db">用于数据库连接的标准URI格式</a>。该提议将允许基于不同技术构建的应用程序共用相同的连接串。这对于包括报表设计器、自动构建和部署工具以及ORM在内的众多工具都是有好处的。该提议以db作为方案名，紧随其后是数据库引擎名。这是第一个与当前做法不同的地方。它没有指定具体的驱动程序，而是留给应用程序自己决定。</p>
+<p>对于跨平台的URI标准而言，这是关键。由于连接到同样的数据库引擎常常需要不同的驱动程序名，所以在JDBC、OleDB和ODBC之间共用连接串非常困难。即使在一种API中，也可能有多种驱动程序可用。</p>
+<p>在引擎名之后是一组标准化的参数：用户名、密码、主机、端口和数据库名。这些参数总是以相同的顺序出现，这是又一个与当前做法不同的地方。</p>
+<ul> 
+ <li>db:engine://[username[:password]@]host[:port][/dbname][?params]</li> 
+ <li>db:engine:[dbname][?params]</li> 
+</ul>
+<p>任何数据库在“？”之后指定参数都非常像HTTP请求的查询参数。这些参数会使用标准的键-值格式。</p>
+<p>最后是一个可选段，用符号“#”表示，用于指定具体的表或视图。</p>
+<p><img width="600" _p="true" _href="img://null" alt="" src="http://infoqstatic.com/resource/news/2013/12/DB-URI-Standard/zh/resources/1224000.png" /></p>
+<p>有若干格式都是遵循engine://authority/dbname这一惯例，该格式即是受此启发。</p>
+<ul> 
+ <li><a href="http://www.postgresql.org/docs/9.3/static/libpq-connect.html#LIBPQ-CONNSTRING">PostgreSQL libpq URIs</a></li> 
+ <li><a href="http://docs.sqlalchemy.org/en/rel_0_9/core/engines.html#database-urls">SQLAlchemy URLs</a></li> 
+ <li><a href="http://docs.stackato.com/3.0/user/services/data-services.html#database-url">Stackato数据库URLs</a></li> 
+ <li><a href="https://github.com/kennethreitz/dj-database-url">Django数据库URLs</a></li> 
+ <li><a href="https://github.com/glenngillen/rails-database-url">Rails数据库URLs</a></li> 
+</ul>
+<p>有人对使用前缀“db：”提出了若干反对意见。彼得&middot;艾森特劳特写到，</p>
 <blockquote> 
- <p><i>“</i><i>10</i><i>个内在动机</i><i>…</i><i>对确定真正激励我们的事情提供了一个非常好的方向。</i><i>Champfrogs</i><i>有助于询问自己正确的问题，如果支持你的环境获取并维持动力，同时也是让我转变成一个面向工作场所的人的关键。”</i></p> 
+ <p>我认为前缀db：是没有必要。首先，我认为，RFC 3986的语法规则不允许有两个方案前缀。其次，它没用。假设一款软件能够使用这些URI，那么它也将能够通过方案本身知道需要做什么。</p> 
+ <p>通常，URL确定了用于访问资源的协议，但它并不是资源的性质。例如，一个git库可以通过几种不同的方案访问。没有单独的git：URL系统，更不用说scm：git或者其它什么实现。另外，浏览器能够通过诸如http：和ftp：等几种不同的协议访问文件。没有单独的textfile：或者video：URL方案。真见鬼，文件甚至可能是一个数据库，因此，我希望有个像SQLite的东西，可以接受典型的http：URL作为其数据库URL。</p> 
+ <p>除了要求实现者尽力忠实地遵循RFC 3986外，我不认为有很多东西需要标准化。</p> 
 </blockquote>
-<p>Appelo将检查清单描述为：</p>
+<p>我们也可以反驳上述观点。例如，如果没有一个通用的前缀，开发人员将不得不在操作系统中为应用程序能够连接的每个数据库引擎注册一个单独的前缀。当遇到先前不知道的数据库时，这种方案会允许应用程序提示用户，而不是简单地失败。这类似于每个文件类型都一个单独的前缀，而不是仅仅使用http/https，然后由浏览器决定做什么。</p>
+<p>大卫&middot;惠勒在其<a href="http://theory.so/rfc/2013/11/26/toward-a-database-uri-standard/">声明</a>中提到了其它需要考虑的问题。</p>
 <blockquote> 
- <p>“一个简单的工具，用于改变动因（agents）从而满足人们的想法，随着人们内在的动机和欲望变化”。</p> 
+ <p>首先，权限部分必须包含一个主机地址的要求阻止了可用于连接Unix套接字的只包含一个用户名的URI规范。其中，PostgreSQL和MySQL提供经过身份验证的套接字连接。<a href="http://www.ietf.org/rfc/rfc3986.txt">RFC 3986</a>需要主机名，而其前身<a href="http://www.ietf.org/rfc/rfc3986.txt">RFC 2396</a>并不需要。此外，作为先例，<a href="http://en.wikipedia.org/wiki/File_URI_scheme#Examples">文件URI</a>也不需要。因此，我正考虑允许使用类似的方式连接到PostgreSQL数据库：</p> 
+ <p>db:pg://postgres:secr3t@/</p> 
+ <p>总之，允许用户信息中没有主机名是有意义的。</p> 
+ <p>第二个问题是在权限部分之后的路径部分中不允许相对文件名。这里的问题是，大部分数据库引擎并不使用路径作为数据库名，因此，前面的斜杠毫无意义。例如，在db:pg:localhost/foo中，PostgreSQL数据库的名称是foo，而不是/foo。但在db:firebird:localhost/foo中，Firebird数据库的名称是路径/foo。这样，每一种引擎实现必须知道路径部分是否是一个文件名。</p> 
+ <p>但实际上，有些数据库可能允许为本地连接指定路径，为远程连接指定名称。Informix似乎就支持这种变体。那么如何知道路径是文件路径还是命名的数据库呢？这两种变体是无法区分的。</p> 
+ <p>RFC 2396非常明确地规定，当路径部分在权限部分的后面时必须是绝对路径。但是，RFC 3986只在没有权限部分时才禁止双斜杠。因此，我认为，对于绝对路径，最好是有第二道斜杠。使用简单名称或者相对路径的引擎可以直接将它们放在第一道斜杠后面，而绝对路径可以使用第二道斜杠：</p> 
+ <ul> 
+  <li>绝对路径： db:firebird://localhost//tmp/test.gdb</li> 
+  <li>相对路径： db:firebird://localhost/db/test.gdb</li> 
+  <li>名称： db:postgresql://localhost/template1</li> 
+ </ul> 
 </blockquote>
-<p>因此，这个工具适用于团队管理者、团队领导者、教练、人事文员和所有想要充实自己变更管理领域知识的人。</p>
-<p>从去年9月份开始，Appelo就一直在发布并详细讨论Champfrogs检查清单中的每一个条目。</p>
-<p><a href="http://www.noop.nl/2013/09/the-champfrogs-checklist-curiosity.html">好奇心（Curiosity）</a>：我有很多事情需要调查研究和思考。</p>
-<p><a href="http://www.noop.nl/2013/10/the-champfrogs-checklist-honor.html">荣誉感（Honor）</a>：我个人的价值体现在团队中，这大大提高了我的忠诚度。</p>
-<p><a href="http://www.noop.nl/2013/10/the-champfrogs-checklist-acceptance.html">接受度（Acceptance）</a>：我周围的人能够证明我做了什么，我是谁。</p>
-<p><a href="http://www.noop.nl/2013/10/the-champfrogs-checklist-mastery.html">精通（Mastery）</a>：我的工作对我的能力是一种挑战，但这种挑战依然在我能力范围之内。</p>
-<p><a href="http://www.noop.nl/2013/10/the-champfrogs-checklist-power.html">能量（Power）</a>：我有足够的空间去影响我周围发生的事情。</p>
-<p><a href="http://www.noop.nl/2013/10/the-champfrogs-checklist-freedom.html">自由度（Freedom）</a>：我与其他的人相互独立，我有自己的工作和责任。</p>
-<p><a href="http://www.noop.nl/2013/11/the-champfrogs-checklist-relatedness.html">关联性（Relatedness）</a>：我与我周围的人有良好的社会关系。</p>
-<p><a href="http://feedproxy.google.com/~r/noop/~3/mUWbWK2Ll3c/the-champfrogs-checklist-order.html?utm_source=feedburner&amp;utm_medium=email">有序（Order）</a>：有足够的规则和政策能够构建一个稳定的环境</p>
-<p><a href="http://feedproxy.google.com/~r/noop/~3/em4WDpWWnWI/the-champfrogs-checklist-goal.html?utm_source=feedburner&amp;utm_medium=email">目标（Goal）</a>：我生活的目标体现在我所做的工作中。</p>
-<p><a href="http://www.noop.nl/2013/11/the-champfrogs-checklist-status.html">状态（Status）</a>：我的位置很好，得到了同事的认可</p>
-<p>Appelo表示该模型“宽松地基于<i>Steven Reiss</i>所著的<a href="http://www.amazon.com/gp/product/0425183408/ref=as_li_ss_tl?ie=UTF8&amp;camp=1789&amp;creative=390957&amp;creativeASIN=0425183408&amp;linkCode=as2&amp;tag=noopnl-20">The 16 Basic Desires</a>”。</p>
-<p><b>查看英文原文</b>：<a href="http://www.infoq.com/news/2013/11/intrinsic-motivators">How to Target Intrinsic Motivators - Champfrogs Checklist</a></p><br><br><br><br><br><br></body></html>
+<p><b>查看英文原文：</b><b><a href="http://www.infoq.com/news/2013/12/DB-URI-Standard">A Proposal for a Database URI Standard</a></b></p><br><br><br><br><br><br></body></html>

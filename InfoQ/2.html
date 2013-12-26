@@ -1,28 +1,47 @@
-<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>OSGi中该使用Blueprint还是声明式服务？</h3><p>在OSGi中，服务是实现bundle间交互和应用灵活性的基石。借助于服务，我们能够降低bundle之间的耦合，更加有利于软件的重用，通过强调面向接口编程，可以提高软件的灵活性与设计水平。</p>
-<p>传统方式下，我们注册服务都是在bundle的激活器（Activator）中使用BundleContext.registerService()方法完成的。而服务的获取需要通过BundleContext.getServiceReference()获取ServiceReference实例，进而使用BundleContext.getService()得到真正的服务实例。这种方式虽然能够完成服务的发布与使用，但是有一定的不足，具体来讲：</p>
-<ol> 
- <li>产生较多的样板式代码。OSGi的bundle是动态化的，伴随着bundle的安装和卸载，它所发布的服务也会动态地处于可用或不可用的状态，因此每次使用服务的时候，我们都需要借助BundleContext对象去服务注册中心查找，而不能通过一次查找，一劳永逸地持有服务对象的引用。尽管有ServiceListener和ServiceTracker帮助我们监听和跟踪服务的状态，但是总体而言这种方式较为繁琐且容易出错。</li> 
- <li>影响启动时间，服务在激活器中注册时，需要实例化所有要发布的服务对象，因为激活器的start()方法是同步调用的，所以会影响到整个应用的启动时间。</li> 
- <li>加大内存的占用，在激活器中注册服务时，我们需要实例化所有的服务对象，但是这些服务在应用运行期间，并不一定会用到，这在无形中加大了内存的占用。</li> 
- <li>API依赖引起的平台侵入性。使用传统方式注册和使用服务，会用到大量的OSGi API，从而产生与OSGi平台的耦合，如果要将代码复用到非OSGi场景之中，需要较多的重构工作。</li> 
-</ol>
-<p>OSGi通过<a href="http://wiki.osgi.org/wiki/Declarative_Services">声明式服务</a>（Declarative Service）以及<a href="http://wiki.osgi.org/wiki/Blueprint">Blueprint</a>规范来解决这些问题。声明式服务基于组件模型理论，最早出现在R4 compendium规范之中，而Blueprint规范来源于Spring Dynamic Modules项目，最早出现于R4.2企业规范之中。</p>
-<p>这两种方式的实现原理与适用场景均有所不同，最近来自Redhat的首席软件工程师Ioannis Canellos<a href="http://www.javacodegeeks.com/2013/11/thoughts-on-blueprint-and-declarative-services-dependency-injection-or-dependency-management.html">撰文对此进行了分析</a>。</p>
-<p>Blueprint是针对OSGi的依赖注入解决方案，用法非常类似Spring。当使用服务的时候，Blueprint会马上创建并注入一个代理（Proxy）。对这些服务进行调用时，如果服务在当前不可用的话，将会产生阻塞，直至能够获取到服务或超时。</p>
-<p>声明式服务的处理方式有着较大的差异。声明式服务是一种组件模型，它简化了组件的创建过程，这些组件会发布和使用OSGi服务。Ioannis并没有将声明式服务视为依赖注入的解决方案，而是将其视为具备依赖管理功能的组件模型。我们需要以声明的方式定义组件及其依赖，框架会基于依赖的满足情况来管理组件的生命周期。这意味着，只有组件的依赖完全满足的时候，才会处于激活（activated）状态，一旦依赖出现了缺失，组件就会处于停用（deactivated）状态。因此，声明式服务没有使用代理，但是能保证只要组件处于激活的状态，它的内部依赖就是已满足的。</p>
-<p>从上面的介绍可以看出，两种方式的最大区别在于Blueprint采用了代理的方式，而声明式服务采用的是级联的方式（cascading），也就是激活或停用组件基于依赖是否能够满足。Ioannis更倾向于级联的方式，因为代理的方式无法保证底层对象的状态以及可用性。级联的方式能够更好地处理OSGi框架的动态化特性。</p>
-<p>在使用代理方式时，如果服务对象在运行期不存在了，将会导致错误。另外一个问题在于即便服务的依赖还没有得到满足，也是可以发布服务的。而调用时，将会导致挂起，代理会等待未满足的依赖，这个过程会一直持续，直到依赖满足或超时为止。</p>
-<p>Ioannis在文章中还举了一个现实中的例子来阐述这一过程。如下图：</p>
-<p><img width="600" _p="true" _href="img://null" alt="" src="http://infoqstatic.com/resource/news/2013/12/osgi-blueprint-or-ds/zh/resources/1204004.png" /></p>
-<p>此时应用由四部分组成，即展现层、Item Service、DataStore以及数据库。在OSGi中展现层可以使用基于HttpService注册的servlet，Item Service为封装了逻辑的OSGi服务，而DataStore是用来与数据库交互的OSGi服务。Web应用依赖于Item Service，而Item Service又依赖于DataStore。</p>
-<p>当DataStore没有配置或不可用时，代理方式和级联方式分别会发生什么呢？在代理模式下，Item Service将会被注入DataStore的代理。即便没有可用的DataStore，Item Service也会被注册到服务注册中心，发送到Web应用的请求将会阻塞，等待可用的DataStore。而在声明式服务的级联场景下，情况会截然不同，Item Service只有在DataStore存在的时候才会注册为服务，同样，只有Item Service可用时，Web应用才会处于可用的状态。所以我们能够保证当Web应用可用的时候，它的依赖层级都是满足的。当DataStore可用的时候，Item Service和Web应用会自动探测到这种变化，并使自身处于可用的状态。</p>
-<p>总之，声明式服务是很强大的依赖管理工具，级联的方式对于构建健壮的动态化、模块化应用是很有价值的；而Blueprint简单易用，尤其是对于熟悉Spring的开发人员来说更是如此。Ioannis认为当构建的组件没有服务依赖时或不会将自身导出为服务时，Blueprint方式很适合；而在其他的情况下，“等待服务”的方案更为合适，如shell命令或camel routes，因为在这里会有很长的依赖链，组件又是高度动态化的，声明式服务更好一些。</p>
-<p>在<a href="http://wiki.osgi.org/wiki/Category:Component_Models">OSGi的官方站点</a>的介绍中，声明式服务、Blueprint以及Apache iPOJO，均被归类为组件模型。按照《OSGi实战》一书的作者们看来，这两种组件模型的适用场景可以归结为：</p>
-<ol> 
- <li>声明式服务主要用于创建可快速启动的轻量级组件；</li> 
- <li>Blueprint主要用于创建高度可配置的企业级应用。</li> 
-</ol>
-<p>Blueprint阻塞机制的一个好处在于能够应对在bundle更新期间服务取消和发布对框架的影响。除此之外，因为Blueprint方式使用了代理机制，因此服务必须要以接口的方式发布。</p>
-<p>除了官方的两种组件模型外，<a href="http://felix.apache.org/site/apache-felix-ipojo.html">Apache iPOJO</a>也是OSGi中常见的组件模型。它的实现机制与上面的两种方式又有所不同，iPOJO也是基于代理的机制，但是会使用字节码生成机制，而不是Java的动态代理机制，这样的话，就解除了服务必须要实现接口的限制。另一方面，当服务不可用时，调用线程不会阻塞，而是会使用null对象来进行处理，这个null对象基于模拟对象模式创建，所有的方法不执行任何操作，根据方法的返回类型生成默认的返回值，如null、0或者false。除此之外，iPOJO还支持提供默认实现。</p>
-<p>根据我们上面的分析，可以看出每种方式都有其优势和适用场景，我们在使用的时候，有必要对内部原理有一定的了解，只有这样，当遇到相关的问题时，才能快速地进行分析和定位。</p>
-<p><a href="http://stackoverflow.com/search?q=Blueprint+Declarative+Services">在Stackoverflow上</a>，也有很多关于这两种模式的讨论，感兴趣的读者，可以对这个话题进行进一步的研究。</p><br><br><br><br><br><br></body></html>
+<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>改变敏捷团队的构成</h3><p>今年早些时候，InfoQ在一篇名为<a href="http://www.infoq.com/cn/news/2013/05/stable-teams/">建设稳定的团队并处理团队的功能失调</a>的新闻报道中指出，组织机构往往倾向于建立和培养稳定的团队。不过有些时候也会由于某些因素，导致某支团队（或是许多团队）的构成需要发生转变。当这样的转变势在必行时，我们又该如何推动并完成转变的过程呢？</p>
+<p>在博客文章<a href="http://brodzinski.com/2013/08/teams.html">团队</a>中，Pawel Brodzinski探讨了为何团队的形成需要消耗一定的时间，以及当我们试图改变团队的构成时会有什么影响：</p>
+<blockquote> 
+ <p>Tuckman提出的团队发展模型（Group Development Model）有时候又被描述为组建、激荡、规范、执行等不同阶段。该模型表明，在我们让团队的表现达到良好的水平之前，需要经历一些痛苦的时期。（……）团队重建总是被视作一项巨大的风险，而且一般来说在这一过程中将会遇到糟糕的表现。</p> 
+</blockquote>
+<p>Pawel给出了两类可以改变团队构成的因素：为团队引入新成员以保持团队的勃勃生机，以及帮助那些表现不佳的团队。Pawel认为，为了这些因素而改变团队构成时，需要谨慎地操作：</p>
+<blockquote> 
+ <p>随着每位新成员的加入，团队都会获得一些新鲜血液。而这恰恰是一个借助新人的经验、知识和视角来挑战现有工作方式的机会。（……）这也正是为何我们应该不时为团队引入新人的原因。但是，在为团队大量增加新人之前需要注意的是，如果过分用新人“稀释”团队，我们将回到起点。不管如何，我们可以立刻解散并重组团队。</p> 
+ <p>站在高层次的组织机构视角来看，在短期内保护我们的顶级团队是值得的。然而，从长远角度考虑，将上述文化在团队中传播则是一个更好地选择。但是同样地，在解散自己的明星团队并将成员散布到组织机构各个部分前，请记住这并不是一种能够立刻改变各支团队的魔法，它更像是一种催化剂——或许可以，但也或许不能——帮助在整个公司里传播最佳实践和健康的文化。但是如果谨小慎微地小剂量使用“这服药”，恐怕难以“值回票价”。</p> 
+</blockquote>
+<p>在博客文章<a href="http://agileforeveryone.com/2013/07/23/does-your-team-have-a-bad-apple/">你的团队中是否有</a>害群之马一文中，Edwin Dando探讨了某个行止不端的团队成员将如何导致整个团队的功能失调和崩解。他表示，自己是基于Will Felps、Terence R.Mitchell和Eliza Byington对于<a href="http://openwetware.org/images/a/a5/Final_BA_ROB.pdf">负面的团队成员与功能失调的团队</a>的研究得到了这些结论：</p>
+<blockquote> 
+ <p>如果某个团队中拥有一匹害群之马，那么其他团队成员也会染上他的缺点。当某个团队成员表现出【抑郁的悲观主义者、混蛋或懒鬼】这三种性格之一时，他的队友也会具有相似地行为。当这个坏家伙是个混蛋的时候，其他团队成员也会表现得像个混蛋。当他是个懒鬼的时候，其他人也同样会开始偷懒。</p> 
+ <p>更糟糕的是，团队成员并不仅仅是这样对待他一个人，他们还会这样对待其他所有成员。换句话说，某个人的不良行为拥有一种散射传播效果，会影响整支团队的行为方式。</p> 
+</blockquote>
+<p>这是一项极其重要的发现。一颗烂苹果会带坏整车货物，因为他会改变所有人的行为。</p>
+<p>基于上述结论，当团队包含这样一位害群之马时，我们必须采取行动：</p>
+<blockquote> 
+ <p>我们无法忍受这种行为。它会破坏整个团队，而其恶果也会在产品上体现出来。不要再默默忍受了。最终我们只有三条路可走：</p> 
+ <ol> 
+  <li>什么都不做——随它去。显然这并不是个好的选择。</li> 
+  <li>预防行动——制定团队约定，明确哪些行为可以让我们的团队拥有活力，以及我们哪些行为会带来相反的影响。（……）</li> 
+  <li>为了团队而将其拒之门外。这是否很难？是的，这条路并不好走，但是从没有人说过这是轻而易举的。（……）</li> 
+ </ol> 
+</blockquote>
+<p>针对当我们必须让某人离开或将其赶出团队的情况，Len Lagestee撰写了一篇题为<a href="http://illustratedagile.com/2012/08/30/it-only-takes-one-handling-bad-team-member/">只给一次机会（处理不良团队成员）</a>的博客文章，给出了若干如何处理的建议：</p>
+<blockquote> 
+ <p>定义并沟通你们的价值和准则。（……）价值将驱动你们做出决定。</p> 
+ <p>做好准备。让人力资源部门的人，能够了解敏捷环境中工作所采用的文化和协作期望。</p> 
+ <p>制定计划。这一步可以变得很简单，只需要考虑当识别出第一个问题后，打算如何训练某个人。（……）</p> 
+ <p>给他们一次机会。随着价值的建立，以及人力资源和计划的就绪，为他们提供机会进行改变。限定为他们提供的宽限时间，但是要提供给他们每一个改进的机会。</p> 
+ <p>采取行动。一旦限定宽限时光过去而问题依旧，那么就需要做出最后的裁定——因为你的团队正在观察你将如何处理这一状况。</p> 
+</blockquote>
+<p>Vin D’Amico发表了一篇题为<a href="http://brainslink.com/2013/11/dont-let-your-team-become-complacent-and-predictable/">不要让你的团队变得自满且是可预见的</a>的文章，在其中给出了一条改变团队构成的原因——引入新团队成员：</p>
+<blockquote> 
+ <p>在团队中引入新成员，将有助于孵化出新理念并鼓励创新。新人会带来新体验、新视角和新能量。新人不会受到已经建立起的条条框框和历史决策的约束。他们能够随心所欲地就任何事情发问或对任何事说不。</p> 
+</blockquote>
+<p>他给出了以下若干有助于改变团队构成的建议：</p>
+<ul> 
+ <li>如果你的公司有许多软件开发团队，尝试让开发人员在团队间流动。</li> 
+ <li>如果你的公司比较小，尝试让团队成员之间轮换肩负彼此的责任，以提升跨学科技能。</li> 
+ <li>从公司外部雇佣同行业、不同背景的新人。</li> 
+ <li>在开发团队中引入非技术人员，作为分析师和测试者。</li> 
+ <li>让每个人都不时深入现场，以便让他们都能够观察到真实的商业用户是如何工作的。</li> 
+</ul>
+<p>对于调整团队的构成，你是否也有一些经验想要分享？</p>
+<p><strong>查看英文原文：</strong><a href="http://www.infoq.com/news/2013/12/change-composition-teams">Changing the Composition of Agile Teams</a></p><br><br><br><br><br><br></body></html>

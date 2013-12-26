@@ -1,18 +1,8 @@
-<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>摆脱所有项目是一个好想法么？</h3><p>在<a href="http://www.xpdays.net/">XP Days Benelux 2013大会</a>上的<a href="http://www.xpdays.net/Xpday2013/XPDays/Program.html#session_178">摆脱所有项目</a>会议中，Paul Kuijten对摆脱所有项目是否是一个好想法提出了质疑。InfoQ就对敏捷有价值的项目管理实践和项目开发的资金等相关问题采访了Paul。</p>
-<p><b>InfoQ</b><b>：你的</b><b>XP Days</b><b>会议标题是“摆脱所有项目”。你不认为做出这个声明有点刺耳么？</b></p>
-<blockquote> 
- <p><b>Paul</b><b>：</b> 我并不这样认为，这样做的目的是引发一些不同的思考。我要在该会议上达到的目标是：阐明在复杂的环境中做符合产品开发的项目有多好，同时也是为了探索我们是否能够想出可选的方式，保持利益的同时摆脱缺陷。</p> 
-</blockquote>
-<p><b>InfoQ</b><b>：如果我们停止做项目，那这是否也意味着我们将不再需要项目经理了？</b></p>
-<blockquote> 
- <p><b>Paul</b><b>：</b>是的。事实上我现在在一个非常大型的组织中工作，他们正好免除了项目经理的职称。他们有团队，有产品，这些都是由业务需求直接驱动的。这是否意味着过去称为项目经理的这些人已经没有公司需要的任何技能了呢？并不是这样的。他们通常会转变成另一种角色，这依赖于他们所具备的技能集。</p> 
-</blockquote>
-<p><b>InfoQ</b><b>：你能够列举一些对敏捷团队有价值的管理项目的优秀实践么？</b></p>
-<blockquote> 
- <p><b>Paul</b><b>：</b>管理什么，如何管理，金钱和时间线依然是非常必要的。在我们称之为项目管理的领域中有很多好的实践。如果我们正在做没有项目的产品开发，那么所有的这些方法几乎都非常适合。我们主要想摆脱的实践是那些滥用预测、指挥权以及控制管理的实践。我们发现这些实践和“做项目”捆绑的非常紧密。按照我们的经历，这样做之后项目组织就会遇见很多无暇顾及的事情，主要是与人、质量和价值相关的事情。这就是我认为思考如何实现不“做项目”的开发是值得的原因。</p> 
-</blockquote>
-<p><b>InfoQ</b><b>：如果我们摆脱了所有的项目，那么如何投资产品开发？</b></p>
-<blockquote> 
- <p><b>Paul</b><b>：</b>组织现在投资于他们产品开发的典型方式是通过预算。预算是你可以使用的一种最愚蠢的方式。它将你锁定在了一个年度周期中，这种情况下你会抵制提前一年无法预见的所有事情。这样会敏捷到那里呢？此外，如果到年底的时候人们并没有花完他们请求的预算，那么他们无论如何都会花掉它，因为如果不这样做他们下一年的预算就会减少。越来越多的公司正在以一种迭代的、增量的方式投资于开发，通过它们自己的绩效判断每一笔投资。这样做最紧迫的例子可能是称为“超出预算”的事情。这在很多方面需要“敏捷财政控制”。Svenka Handelsbanken已经在这方面做了多年研究，并且有惊人的成果。</p> 
-</blockquote>
-<p><b>查看英文原文</b>：<a href="http://www.infoq.com/news/2013/11/get-rid-of-projects">Is Getting Rid of All Projects a Good Idea?</a></p><br><br><br><br><br><br></body></html>
+<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>Elastic Mesos服务实现EC2中集群自动化部署</h3><p>EC2用户现在能够自动化部署Apache Mesos了，后者是一个能够在多个数据处理框架之间共享集群资源的开源工具，可以通过大数据创业公司<a href="http://mesosphere.io/">Mesosphere</a>所提供的一个称为<a href="http://mesosphere.io/2013/11/13/elastic-mesos/">Elastic Mesos</a>的新Web服务实现规模化。</p>
+<p>该服务在本质上类似于<a href="http://aws.amazon.com/elasticmapreduce/">Amazon的Elastic MapReduce</a>，因为它会在Amazon EC2实例上安装Mesos依赖的所有内容，包括Zookeeper和HDFS，同时会交付一个准备就绪的集群。最重要的是，没有任何与Elastic Mesos相关的费用，所以你只需要为自己使用的EC2付费。Elastic Mesos现在建议的集群大小限制为6个或者us-east-1区域中的18个m1.large实例，这受制于<a href="https://aws.amazon.com/ec2/pricing/#onDemandTabs">按需实例的价格</a>。</p>
+<p>你能够通过<a href="https://elastic.mesosphere.io/">Elastic Mesos用户界面</a>中所提供的三步操作完成一个Mesos集群的部署，在此过程中你只需要指定想要的集群大小、EC2证书和一个接收通知的email地址即可。完成时间很大程度上取决于EC2实例的配置时间，不同的人可能不一样，Mesosphere估计集群准备好之前大约需要20分钟的时间。</p>
+<p>Mesos最初是由UC Berkeley<a href="http://www.cs.berkeley.edu/~matei/papers/2011/nsdi_mesos.pdf">作为一个研究项目</a>开发的，之后Twitter迅速将它变成了一个功能完整的平台以便于处理自己爆发式的增长。随着Twitter的高级副总裁Christopher Fry将Mesos看作是“<a href="http://www.wired.co.uk/news/archive/2013-11/26/qa-with-chris-fry">自己版本的弹性计算</a>”，现在它已经是<a href="http://mesos.apache.org/">Apache的一个顶级项目</a>了。围绕着Mesos开发一款产品对于Mesosphere而言非常有意义，它的创建者Flo Leibert和Tobi Knaup之前在Twitter和Airbnb工作，这两家公司是Mesos的两个最大采用者。 <a href="http://mesos.apache.org/documentation/latest/powered-by-mesos/">Mesos 的支持者</a>每个月都在增长，现在你能够在Mesos的技术支持名单中找到像Vimeo、OpenTable或者UC Berkeley这样的大牌。</p>
+<p>Elastic Mesos类似于 <a href="http://whirr.apache.org/">Apache Whirr</a>，后者是一个能够运行并管理云端服务的开源类库，但是<a href="https://issues.apache.org/jira/browse/WHIRR-121">Whirr 并不支持Mesos</a> 。即使是这样，Elastic Mesos提供了一个自包含的服务，而Whirr则更多的是面向对集群的整个生命周期有更多控制权的系统管理员。</p>
+<p>这是Mesos向主流采用迈出的第一大步，人们经常搞混的一个项目是Hadoop <a href="http://hadoop.apache.org/docs/current/hadoop-yarn/hadoop-yarn-site/YARN.html">YARN</a>。这两个项目确实都有同样的目标，也就是实现无缝地、有效地共享集群，但是到目前为止YARN的采用率更高，因为它是Hadoop 2事实上的调度器。</p>
+<p>虽然这样做对它的采用会有多大的推动作用尚不能知晓，但是Twitter上的社区响应大部分都是正面的。在2013年12月份的Spark Summit 上也已经有了一个教程，该教程详细描述了如何在Elastic Mesos上运行Spark，该教程在Spark社区中引起了非常好的反响。</p>
+<p><b>查看英文原文</b>：<a href="http://www.infoq.com/news/2013/12/elastic-mesos">Elastic Mesos service automates Mesos cluster deployment in EC2</a></p><br><br><br><br><br><br></body></html>

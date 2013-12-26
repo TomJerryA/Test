@@ -2,6 +2,42 @@
  <head></head> 
  <body> 
   <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/4.htmlb">Codenvy架构：第一部分</a> Tyler Jewell是Codenvy的CEO，他在这篇分为两部分的文章中介绍了Codenvy（一个云IDE）的架构，包括平台、插件架构、工作空间、集群管理、多租户实现、IDE协作、发布模型和用于开发的SCRUM流程。 
+  </div> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/3.htmlb">在Node.js中搭建缓存管理模块</a> 这个问题其实也是在问，为什么不使用现有的Cache存储系统，比如Redis，比如Memcached。不是说Redis不够好，只是在处理某些场景中使用的Redis会显的太“笨重”了——Redis的优势之一在于能够供多进程共享，有完善的备份和恢复机制。但反过来想，如果你的缓存仅供单个进程，单个Node实例使用，并且可以容忍缓存的丢失，承受冷启动。那么是值得用不到500行的代码来搭建一个速度更快的缓存模块。 
+  </div> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/2.htmlb">采访和书评：《Essential Scrum》</a> 由Kenny Rubin 所著的《Essential Scrum》更加深入地阐释Scrum。该书除了对Scrum及其价值、原则和实践进行了介绍以外，还是如何实施Scrum的灵感源泉。 
+  </div> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/1.htmlb">虚拟专家座谈会：迈向云开发</a> InfoQ就云开发的现状、推荐工具、反面模式和如何入门的问题与三位意见领袖进行了交流。我们的专家组成员是Adron Hall、Magnus M&aring;rtensson和Andy Piper。 
+  </div> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/0.htmlb">前端工程精粹（三）：本地调试与数据模拟</a> 自Web项目诞生以来，程序员们渐渐把整个项目的开发拆分为了前端与后端两个部分。随着项目复杂度的不断增加，同时为了快速迭代出更多Web项目，IT界就把两个部分的工作分成了两个工种来完成--前端开发工程师以及后端XX语言开发工程师(我们在此简称为FE与RD)。 
+  </div> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/49.htmlb">实现软件生命周期整合（第2部分）</a> 在本文中，我们将关注软件交付专业人员在实现端到端的软件交付流程时应采取的一些实用步骤。 
+  </div> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/48.htmlb">聊聊并发（八）——Fork/Join框架介绍</a> Fork/Join框架是Java7提供的一个用于并行执行任务的框架， 是一个把大任务分割成若干个小任务，最终汇总每个小任务结果后得到大任务结果的框架。 
+  </div> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/47.htmlb">Promise/A的误区以及实践</a> 本文从什么是Promise、Promise/A模式与同步模式有什么联系、以及Promise细节等方面入手细致讲解Promise现有的误区与背后的技术分析。 
+  </div> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/46.htmlb">探讨NuoDB数据库的架构—2</a> 在本文的第2部分，作者为我们展示了事务系统的实现原理、管理层的作用、所有组件的协同工作方式，以及NuoDB今后的规划。 
+  </div> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/45.htmlb">云服务代理商：您所需要了解的</a> Winston Bumpus作为DMTF的董事会主席，为我们介绍了云服务代理商，在如何从多个供应商那选择和使用最合适云服务上提供指导的代理商。 
+  </div> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/44.htmlb">Jepsen：测试PostgreSQL、Redis、MongoDB以及Riak的分区容忍性</a> 在本文中，我们将探索分布式数据库在设计上的一些考虑，以及它们是如何对网络分区的情况作出响应。 
+  </div> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/43.htmlb">程序人生的四个象限和两条主线</a> 我发现技术人员的职业生涯形态并不是千变万化的，绝大多数都大同小异，可以用四个象限和两条主线概括清楚。虽然我无法代替你去定义人生的意义，但是我可以和大家分享下各种职业规划下的人生都是什么样子的。 
+  </div> 
+  <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/42.htmlb">博文共赏：在Node.js中使用声明式缓存</a> 写了多年的 Java 程序，即使在转投 Node 之后，仍然对 Spring 框架的 IoC 、Declarative XXX 记忆犹新，于是在 Node 项目中要用到缓存时，自然地想起了 Declarative caching，就有了山寨一把的想法。 
   </div> 
   <div> 
@@ -114,42 +150,6 @@
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/6.htmlb">百度移动统计分析介绍与进阶经验分享</a> 为了让开发者更加深入的了解百度移动统计，InfoQ邀请了该产品的产品经理袁泽陆撰写本文，详细介绍百度移动统计产品、如何使用、移动应用分析常见问题解释等。 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/5.htmlb">线程池规模调优</a> 大小合适的线程池允许运行尽可能多的请求，只要硬件和软件支持合理。这篇文章我们探讨了如何遵从“测量不猜”典故去合理设置线程池。 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/4.htmlb">论软件生命周期集成</a> 对于许多组织而言，是否有综合性的软件交付实践会决定了项目的成败。这时，就应该将精益思想（Lean thinking）应用到软件交付的实践中，并创建和维护从构想到实现的软件流，消除断点，实现实时协作。 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/3.htmlb">恒生电子李文松：做金融的也需要很漂亮很友好的界面</a> 在2013年10月24日的阿里云开发者大会上，恒生电子互联网服务事业群首席架构师李文松以阿里云金融合作伙伴的身份，跟阿里云业务架构师赵楠林（三冬）一起接受了InfoQ中文站的采访。我们希望能够通过这次采访了解金融互联网发展的一些状态，以及开发者在金融行业的这样一个转变中有哪些机遇和挑战。 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/2.htmlb">大数据安全: Hadoop安全模型的演进</a> 在这篇文章中，凯文T.史密斯聚焦于大数据安全的重要性，并讨论了Hadoop安全模型的演进。 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/1.htmlb">大数据处理之如何确保断电不丢数据</a> 这篇文件将围绕这个新接口对其实现细节进行简单的分析，从而希望找出一种合理使用hsync()的策略，避免重要数据丢失。 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/0.htmlb">书评：Java核心编程卷1——基础</a> Cay Horstmann与Gary Cornell合著的Java核心编程已经出版了，与之前的版本一样，这是一本明晰且拥有大量颇具价值的示例的书籍。 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/49.htmlb">Peter Kriens重返OSGi联盟</a> Peter Kriens是OSGi的推动者之一，到2012年初为止他一直在这里担任总监长达11年。InfoQ联系到了Peter，与他讨论了重返OSGi及其jpm4j项目的最新情况。 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/48.htmlb">书评：使用Android SDK构建应用，第2版</a> Android开发者手册是一本针对移动开发者的参考书，可以作为编程实践的权威指南，值得每一位开发者拥有。 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/47.htmlb">国防工业中的敏捷</a>国防工业通常被认为是一种”非敏捷的”文化。严格按照等级划分的团队，很少有协作的自由而且被强制要求通过合同规定的工件沟通。在本文中，Jeff Plummer分享了在他领导的团队中成功为国防工业应用敏捷原则和实践的经验。 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/46.htmlb">用户实例：DubDubDeploy</a>最初Donte Ormsby联系我们的时候，仅仅是写了一封友好的信，说他发现一个非常棒的工具能简化ASP.NET的网站部署，并认为我们的读者可能感兴趣。经过进一步交谈，我们认为介绍DubDub部署最好的办法就是让Donte来给读者讲述他亲身经历的故事。 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/45.htmlb">林仕鼎谈数据中心计算（三）：学术界与工业界，以及未来展望</a>在《林仕鼎谈数据中心计算》的第一部分，百度基础体系首席架构师林仕鼎先生提到要将数据中心当做逻辑上的一台机器来设计架构。在之后的对话中，林仕鼎具体介绍了对数据中心的存储资源做逻辑分层、物理映射的思路。在接下来的对话中，林仕鼎会介绍他对于“为什么以前的系统做的并不是很好”的理解，以及“为什么会想要去做这个系统”的原因。此外，对话中也会涉及到他对12306系统的部分解读，以及一些相关问题的看法。 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/44.htmlb">遗留系统的技术栈迁移</a>本文介绍了如何针对遗留系统进行技术栈迁移。文中给出了一些最佳实践，迁移步骤和案例分析。 
   </div> 
  </body>
 </html>

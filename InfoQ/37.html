@@ -1,31 +1,24 @@
-<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>全球编程马拉松活动AngelHack创始人问答：希望做出全世界最好的Hackathon</h3><p>2013年12月7~8日，全球编程马拉松活动<a href="http://angelhack.com/">AngelHack</a>即将来到北京。AngelHack目前已经在包括上海和香港在内的40多个城市举办过，其创始人和主要的推动者Greg Gopman是目前定居硅谷的创业家，在创办AngelHack之前曾创办过三家公司。</p>
-<p>现在各个开发者平台的编程马拉松活动已经很多，为什么Greg Gopman想要专门创建一家公司来专门做中立的编程马拉松活动？这样的活动能带来什么价值？硅谷和世界上其他地方的编程马拉松有什么不同？以下是Greg Gopman对这些问题的解答。</p>
-<p><strong>InfoQ：如你所说，AngelHack的目标是为了帮助开发者们建立更紧密的联系，认识新朋友，学习新的开发工具，以及找乐子。为什么你会投入到这个工作当中，有什么故事吗？</strong></p>
+<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>DevExpress ASP.NET Grid控件引入了批量编辑功能</h3><p>包含在最近发布的13.2版本中的DevExpress ASP.NET Grid控件（<a href="http://demos.devexpress.com/ASPxGridViewDemos/Default.aspx">ASPxGridView</a>）允许ASP.NET和MVC开发者在客户端批量修改Grid数据，然后在一个请求中将这些数据发送到服务器。它让最终用户只使用键盘就能完成记录的编辑工作，不需要使用鼠标。</p>
+<p>ASPxGridView控件已经被更新，更新后的控件允许最终用户在修改的数据被发送到服务器之前预览这些数据。此外，还能够为修改后的单元格选择颜色。</p>
+<p>借助于GridView控件，如果用户在<a href="http://demos.devexpress.com/ASPxGridViewDemos/GridEditing/BatchEditing.aspx">批量编辑</a>阶段执行了任何操作那么他们将能够获得有用的通知。例如，如果你从一个单元格中选择了值之后试图对列进行排序，那么你将看到下面的信息：</p>
+<p><img width="600" src="http://www.infoq.com/mag4media/repositories/fs/news/2013/12/devpress-grid-batch-edit/zh/resources/null" alt="" _href="img://null" _p="true" /></p>
+<p>为了启用批量编辑功能，你需要将Mode属性设置为Batch。设置完成之后，你就能够使用内嵌的编辑器修改数据了，同时修改后的单元格会显示为绿色。一旦你启用了批量编辑功能，所有的变化都会保存在客户端直到单击了Save链接为止。当然，你还可以通过单击Cancle链接取消所有的修改。</p>
+<p>InfoQ采访了DevExpress的软件开发人员Mehul Harry以便于了解与ASPxGridView控件相关的更多信息。</p>
+<p><b>InfoQ</b><b>：你能与我们分享一下</b><b>GridView</b><b>批量编辑功能的好处么？</b></p>
 <blockquote> 
- <p>Greg Gopman：两年前我搬到了硅谷，当时我希望做的项目就是能够为社区带来增值的事情，我希望通过这种方式表达我对创业者的尊重。Hackathon当时已经很火，但大部分公司都会在自己的Hackathon上强迫开发者使用自己的技术栈，保留自己的知识产权，他们的活动没有灵魂。我觉得社区在很长的时间内都被不公正的对待，所以我希望做出全世界最好的Hackathon，把它做成一个极客狂欢的party，开发者在这里可以用任何自己喜欢的工具和技术做自己喜欢的东西。大家很喜欢这样的活动，所以我决定将AngelHack引入全球的各个城市。过去两年间我一直致力于此。</p> 
+ <p>GridView批量编辑功能的好处如下：</p> 
+ <ul> 
+  <li>用户通过批量编辑功能修改DevExpress ASPxGridView控件中的记录仅需要使用键盘。这样能够节省时间，因为他们不需要动鼠标。</li> 
+  <li>一旦用户完成了编辑或者插入操作，他们能一次性地审查所有的变化。</li> 
+  <li>用户还能够一次性取消或者保存他们的修改。</li> 
+ </ul> 
 </blockquote>
-<p><strong>InfoQ：为什么这次会来北京组织这次hackathon？</strong></p>
+<p><b>InfoQ</b><b>：批量编辑功能支持触摸么？</b><b> </b></p>
 <blockquote> 
- <p>Greg Gopman：其实我们老早就盯上北京了。我们在扩展至40个城市的过程中一直观察着这边。每个人都说自己想要在中国发展业务，但是如果你想在亚洲获得增长，在进入新市场之前很重要的一点是建立正确的关系。在这次AngelHack北京站的筹备中，i-Click Interactive跟我们达成了极好的默契，他们在三个月前飞到我这里来敲定了这次合作。有了他们的支持，我们逐步引入了十多个支持者来启动这次活动，这有望成为有史以来最好的AngelHack之一。</p> 
+ <p>是的，DevExpress ASP.NET控件支持<a href="https://www.devexpress.com/products/net/controls/touch.xml">触摸</a>。实际上，我们有一个新的<a href="https://community.devexpress.com/blogs/aspnet/archive/2013/11/13/asp-net-moderno-theme-what-39-s-new-in-13-2.aspx">主题</a>，它在触摸设备和桌面浏览器上都能很好地工作。</p> 
 </blockquote>
-<p><strong>InfoQ：你过去在包括上海、香港在内的40多个城市举办了hackathon，你自己也做过不少有意思的项目。你认为你见过的最有意思的项目是啥？</strong></p>
+<p><b>InfoQ</b><b>：你能与我们分享一些批量编辑功能的应用场景么？</b></p>
 <blockquote> 
- <p>Greg Gopman：我最喜欢的app之一是在上海Hackathon上的一个叫做AngelHack Race的游戏：黑客们在游戏中驾驶溜溜车进行比赛，在赛道上要跃过各种各样的肥皂路障，如果撞到肥皂你会变干净，但同时也会失控。这个游戏没有胜利者：）</p> 
- <p>我还很喜欢香港赛场的一个叫做<a href="https://medium.com/design-ux/bb582274b93f">Ripple</a>的应用。我跟他们的开发者一直保持接触，探索未来有没有更多的玩法。</p> 
+ <p>批量编辑功能对于那些需要编辑一组数据同时在最终用户做好将变化上传并提交到数据库的准备之前不会更新数据的用户而言是非常有用的。</p> 
 </blockquote>
-<p><strong>InfoQ：你认为自己是个黑客吗？你是如何定义“黑客”一词的？你觉得这个词的涵义是否正在变化？</strong></p>
-<blockquote> 
- <p>Greg Gopman：我认为黑客是那些能够针对一个问题找到有创意的快速解法的人。一个能够在未知领域面对挑战的开发者。一个盒子外的思考者。我当然认为自己是个黑客啦。</p> 
-</blockquote>
-<p><strong>InfoQ：你将Hackathon的参与者分为搞开发的hacker/黑客、搞设计的hipster/嬉客、以及搞商业模式的hipster/商客。这三类人群之间的关系在旧金山、硅谷一带，跟世界上其他地方有什么不同吗？</strong></p>
-<blockquote> 
- <p>Greg Gopman：在硅谷一带，黑客是最受尊重的，嘻客开始越来越受到尊重，商客嘛，大家不怎么把他们当回事。旧金山的黑客们是金字塔的塔尖：没有伟大的开发者就没有创新。在其他国家，创业者的成功与否很大程度上取决于后台和关系，这很不一样。硅谷完全是产品导向，开发者在这个游戏中占据绝对地位。</p> 
-</blockquote>
-<p>相关资料：</p>
-<p>2013年AngelHack北京站活动简介</p>
-<p>本次活动汇聚超过150位黑客和编程开发人员、超过18000元人民币的总额奖金、以及众多从美国硅谷远渡重洋来华考察的具影响力人物。北京的首届AngelHack将会聚焦开发手机应用程序，邀请全北京的编程社区团体开发人员和设计师。</p>
-<p>AngelHack本次活动的合作伙伴有：爱点击亚洲互动广告、Beijing Commons以及SegmentFault。合作媒体有：长城会、腾讯、36氪以及InfoQ。</p>
-<p><a href="https://yoopay.cn/event/AppHACKBeijing">AngelHack北京站报名地址</a></p>
-<p><a href="http://www.flickr.com/photos/angelhack/sets/">AngelHack历届照片</a></p>
-<p><a href="http://www.youtube.com/angelhackhq">AngelHack历届视频</a></p>
-<p>AngelHack北京站联系邮箱： Beijing@AngelHack.com</p><br><br><br><br><br><br></body></html>
+<p><strong>查看英文原文：</strong><a href="http://www.infoq.com/news/2013/12/devpress-grid-batch-edit">DevExpress ASP.NET Grid Control Introduces Batch Edit</a></p><br><br><br><br><br><br></body></html>

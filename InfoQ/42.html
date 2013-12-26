@@ -1,17 +1,15 @@
-<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>分享基于REST的企业集成经验</h3><p>“如何替换大型遗留系统，是IT业界的一大难题”，ThoughtWorks的首席咨询师<a href="http://brandonbyars.com/about/">Brandon Byars</a>，在分享其在大型遗留替换项目中使用<a href="http://en.wikipedia.org/wiki/Representational_state_transfer#Applied_to_Web_Services">RESTful</a>集成的<a href="http://martinfowler.com/articles/enterpriseREST.html">经验</a>时这样说道。</p>
-<p>Brandon认为对大多数这类项目来说，<a href="http://en.wikipedia.org/wiki/Representational_state_transfer">REST</a>都要比HTTP吸引人。它易于使用和理解，不需要大型框架。在架构方面，他坚信REST已经被证明是可伸缩的，并且适用于领域建模。他发现很多时候，针对REST的讨论都是关于一些小的细节，而不是对项目成功更加重要的部署和测试方案。</p>
-<p>Brandon的第一个建议是，在开发中使用逻辑环境来满足不同团队和角色的需要：</p>
+<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>大模型问题继续折磨着Entity Framework和NHibernate</h3><p>使用EDMX模型为Entity Framework生成类的时候，大小非常重要。默认情况下，模型中的实体越多，生成操作执行的越慢。下面是引自<a href="https://entityframework.codeplex.com/workitem/1829">David Obando提供的bug报告</a>中的一段内容。本文中提到的表格来自于AdventureWorks的示例数据库。</p>
 <blockquote> 
- <p>逻辑环境是一组适当隔离的相互关联的应用程序、服务和基础组件，可以满足业务和开发的需要。</p> 
+ <p>如果EDMX模型中仅有一个实体类型（SalesOrderHeader），那么具体化需要840毫秒（中间值，运行10次）；但是当EDMX模型包含更多模型的时候，例如一个有67个实体类型和92个关联的模型，同样的测试会消耗7246毫秒（中间值，运行10次）。</p> 
 </blockquote>
-<p>接着，他描述了几种不同的技术，这些都是值得使用和为其维护环境的。而环境的版本控制是他坚决反对的，他认为这样会使系统严重地复杂化。</p>
-<p>Brandon的经验是，错误地定义数据边界，是架构师所犯的最昂贵的错误。一个常见的反模式是，将某个实体的所有信息都保存到单个数据存储中，并在需要的时候导出。他认为如果对<a href="http://en.wikipedia.org/wiki/Master_data_management">主数据管理</a>（MDM）认识肤浅就会支持这种方案。相反，他的解决方案是将各个团队的定义包装在一个<a href="http://en.wikipedia.org/wiki/Domain-driven_design#Bounded_context">边界上下文</a>中。边界上下文是<a href="http://en.wikipedia.org/wiki/Domain-driven_design">领域驱动开发</a>中的概念，在边界上下文中，一个术语不管用于何处，都表示相同的含义。</p>
+<p>该性能问题在Entity Framework 6中存在，同时也能够在Entity Framework 5中重现。</p>
+<p>根据一个Reddit用户对NinetiesGuy的处理，你能使用<a href="http://msdn.microsoft.com/en-us/library/gg679352(v=vs.103).aspx">AsNoTracking</a>选项作为一种变通。但是这样做能够引发其他的问题。Frans Bouma响应说“AsNoTracking意味着实体对象不可以也不能够被用于变化追踪场景，所以实际上是一个只读对象”。</p>
+<p>LLBL Gen Pro ORM的开发者Frans Bouma在他的文章《<a href="http://weblogs.asp.net/fbouma/archive/2013/12/09/fetch-performance-of-various-net-orm-data-access-frameworks.aspx">各种.NET ORM/数据访问框架的性能</a>》中进一步讨论了这个问题。在该文章中，他阐述了如果打开变化追踪选项，那么Entity Framework和NHibernate实例化实体所消耗的时间比其他的ORM或者手工编码的对象要高出一个数量级。</p>
+<p>对于该测试，“每一个操作都包含了一个从数据库中获取31465个实体的查询，然后在单独的对象中实例化它们并将其存储到一个集合中。给出的平均时间是在每一个框架上执行10次操作的平均时间（忽略这里面最慢的和最快的操作）。</p>
+<p><img width="600" _p="true" _href="img://null" alt="" src="http://infoqstatic.com/resource/news/2013/12/EF-Large-Models/zh/resources/12230001.png" /></p>
+<p>谈到NHibernate的结果，他<a href="http://www.reddit.com/r/dotnet/comments/1sgwjm/fetch_performance_of_various_net_orm_dataaccess/cdy02bw">写道</a>：</p>
 <blockquote> 
- <p>每个业务单元对于相同的实体都有不同的模型，可以在它们的边界上下文中进行显式的翻译。</p> 
+ <p>我提供了在NHibernate代码上执行测试时的一个配置文件的屏幕截图，目的是为了查看为什么它会这么慢。当包含一个没有关系的实体的时候，NHibernate代码耗时停留在1500ms左右，Entity Framework大约是1100ms。缓慢来自于模型中更多的关系，这正是问题的关键：没有必要让它影响单一类型集合的获取，其他的关系并没有什么作用，ORM清楚这些内容。</p> 
+ <p>缓慢并不受集合大小的影响，影响速度的是模型大小：关系越多，获取速度越慢。你或许会觉得集合大小也会影响速度，但是你指的是那些愚蠢的ORM，它们将越来越多的实体存储到一个集合中，这确实会变得越来越慢，因为为了避免集合中的实体重复在向该集合中添加一个实体之前首先会执行list.Contains(toAdd)方法，因而存储的实体越多，速度就越慢。但是这与我们所讲的内容并没有什么关联，在我说的场景里面模型中的关系越多，速度就越慢。这就是我选择这个实体和这个数据库的原因：如果一个ORM中包含草率的代码，那么它就不能处理正常大小的模型，正如它所展示的。</p> 
 </blockquote>
-<p>在应对分布式系统时，Brandon建议将针对高级特性的用户故事分组成史诗，并用这些史诗来度量进展。这可以避免对进展产生错觉的情况。大多数故事完成意味着团队正处于交付过程中，但少量故事未完成则会妨碍特性的演示。</p>
-<blockquote> 
- <p>程序级别的度量使得史诗成为跟踪团队速率的首要标准，因为团队用户故事的速率会造成对进度的错觉。</p> 
-</blockquote>
-<p>Brandon最后强调，尽管他支持使用RESTful服务的方案，相信它能简化开发，但REST还远不是银弹。</p>
-<p><strong>原文英文地址：</strong><a href="http://www.infoq.com/news/2013/11/rest-enterprise-integration">Experiences from Enterprise Integration with REST</a></p><br><br><br><br><br><br></body></html>
+<p><b>查看英文原文</b>：<a href="http://www.infoq.com/news/2013/12/EF-Large-Models">Large Model Problems Continue to Plague Entity Framework, NHibernate</a></p><br><br><br><br><br><br></body></html>

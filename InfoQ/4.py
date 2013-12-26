@@ -1,34 +1,37 @@
-<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>Rodney Viana氏の.NETデバッグ用WinDbgエクステンション</h3><p><a target="_blank" href="http://www.infoq.com/news/2013/11/netext"><em>原文(投稿日：2013/11/08)へのリンク</em></a></p>
+<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>Hour of Code - コンピュータサイエンス教育週間をサポート</h3><p><a target="_blank" href="http://www.infoq.com/news/2013/12/hourofcode"><em>原文(投稿日：2013/12/09)へのリンク</em></a></p>
 <div class="article_page_left news_container text_content_container"> 
  <div class="text_info"> 
-  <p>.NETアプリケーションの実行が失敗したとき，多くの場合はメモリダンプが残るだけである。Visual Studioではメモリダンプを扱えないので，代わりに<a href="https://en.wikipedia.org/wiki/WinDbg">WinDbg</a>というツールを使わなければならない。このとき合わせて使用されるのが<a href="http://msdn.microsoft.com/en-us/library/bb190764(v=vs.110).aspx">SOS.dll</a>や<a href="http://blogs.msdn.com/b/tom/archive/2011/04/28/now-available-psscor4-debugger-extension-for-net-4-0.aspx">Psscor4.dll</a>といった，.NET固有の詳細情報を取得するエクステンションだ。これらはパワフルではあるが使用が難しいので，時には開発者自身がエクステンションを作ることもある。そのような開発者のひとり，<a href="http://blogs.msdn.com/b/rodneyviana/archive/2013/10/30/hardcore-debugging-for-net-developers-not-for-the-faint-of-heart.aspx">Rodney Viana</a>氏が<a href="http://netext.codeplex.com/">netext</a> 1.6.1をオープンソースプロジェクトとしてリリースした。</p> 
-  <p>netextのユニークな部分は，SQLライクな文法を使ってヒープの内容を問合せできることだ。例えば，最近発生したWeb要求のエラー一覧を見たいとしよう。HttpRequestオブジェクトはキャッシュされているので，次のような指示を使ってエラー終了したクエリを探すことができる：</p> 
-  <pre><p>!wfrom -type *.HttpContext |<br />where ( ($contains(_request._url.m_String, &quot;http:&quot;)) &amp;&amp; (_response._statuscode != 0n200) ) <br />select $addr(), _request._url.m_String, _response._statusCode</p></pre> 
-  <p>サポートされるコマンドは次のものだ：</p> 
-  <p>オブジェクトの詳細を表示するコマンド</p> 
-  <ul> 
-   <li>!wdo - その時点でのオブジェクトまたは配列を，GACまたはStackから表示する。</li> 
-   <li>!wselect - その時点でのオブジェクトあるいは配列の全項目のフィールド(とレベルフィールド)を表示する。</li> 
-   <li>!wfrom - ヒープオブジェクトのSQLライクな解析を実行する。比較，式評価，インデックス付きのフィルタリングなどの操作が可能だ。</li> 
-  </ul> 
-  <p>オブジェクトの列挙</p> 
-  <ul> 
-   <li>!windex – HttpContext型のオブジェクトというように，異なるフィルタに基づくオブジェクトのインデックス付けと表示を行う。</li> 
-   <li>!wstack – 独自スタック上のオブジェクトをダンプする。</li> 
-   <li>!wheap – インデックスを伴わないオブジェクトの一覧と，ヒープの限定的なサンプリング情報を表示する。</li> 
-   <li>!wgchandles – GCルートハンドルをダンプする。</li> 
-  </ul> 
-  <p>特殊な機能</p> 
-  <ul> 
-   <li>!wdict – ディクショナリオブジェクトを表示する。</li> 
-   <li>!whash – ハッシュテーブルオブジェクトを表示する。</li> 
-   <li>!whttp – HttpContextオブジェクト一覧を表示する。</li> 
-   <li>!wconfig – メモリ内の .configファイル行をすべて表示する。</li> 
-   <li>!wservice – WCFサービスオブジェクト一覧を表示する。</li> 
-   <li>!weval – 式リストを評価する。</li> 
-   <li>!wclass – &quot;refrect&quot; されたクラス定義 (フィールド，プロパティ，メソッド) を表示する。</li> 
-  </ul> 
-  <p>さらにアグリゲーションや文字列， XML，配列，リフレクションを操作する<a href="http://netext.codeplex.com/#functions">関数</a>もサポートする。</p> 
-  <p>NetextはGNU General Public License バージョン２を適用して公開されている。Rodney Viana氏はMicrosoftの社員だが，この開発は氏の個人的なプロジェクトとして見なされていて，Microsoftのサポートは受けていない。</p> 
+  <p dir="ltr" style="line-height:1.15;margin-top:0pt;margin-bottom:0pt;"><span style="font-size: 15px; font-family: Arial; background-color: transparent; vertical-align: baseline; white-space: pre-wrap;">コンピュータとソフトウェアは、まぎれもなく、私たちの生活の重要な部分を占めている。私たちの多くは、ソフトウェア開発者としての仕事を楽しみ、天職を見つけ出して満足しているだろう。</span></p> 
+  <p>&nbsp;</p> 
+  <p><span style="font-size: 15px; font-family: Arial; background-color: transparent; vertical-align: baseline; white-space: pre-wrap;">でも、学校でのコンピュータ教育、大学でのコンピュータサイエンスはどうだろうか？ Officeとアルゴリズムを学べば十分なのだろうか？ 基本的なプログラミングの概念を理解している人は、業界外にどれくらいいるのだろうか？ これは全員が学ぶべきものだろうか、それとも、そんな必要はないだろうか？</span></p> 
+  <p>&nbsp;</p> 
+  <p><span style="font-size: 15px; font-family: Arial; background-color: transparent; vertical-align: baseline; white-space: pre-wrap;">2013年12月9・5日のコンピュータサイエンス教育週間、非営利団体の<a href="http://code.org" style="text-decoration:none;" target="_blank">Code.org</a>が<a href="http://www.youtube.com/watch?v=6XvmhE1J9PY" target="_blank">Barack Obama</a>大統領、Bill Gates氏、Mark Zuckerberg氏、<a href="http://www.virgin.com/richard-branson/hour-of-code" style="text-decoration:none;" target="_blank">Richard Branson</a>氏、<a href="https://www.youtube.com/watch?v=IHMKQQQ8-Jo" style="text-decoration:none;" target="_blank">Jack Dorsey</a>氏といった著名人からのサポートを得て、プログラミングの基本概念「命令、繰り返し、条件分岐」を全員に学んでもらう大きなキャンペーンを開始した。初日だけで、400万人もの人たちが学び、1億行に相当するコードが書かれた。</span></p> 
+  <p>&nbsp;</p> 
+  <p><a href="http://csedweek.org/learn" target="_blank"><img src="http://www.infoq.com/resource/news/2013/12/hourofcode/ja/resources/1Code.org_Example.jpg" _href="img://1Code.org_Example.jpg" _p="true" alt="" /></a></p> 
+  <p dir="ltr" style="line-height:1.15;margin-top:0pt;margin-bottom:0pt;">&nbsp;</p> 
+  <p dir="ltr" style="line-height:1.15;margin-top:0pt;margin-bottom:0pt;"><span style="font-size: 15px; font-family: Arial; background-color: transparent; vertical-align: baseline; white-space: pre-wrap;">そこでは<a href="http://blockly.org/" style="text-decoration:none;" target="_blank">blockly</a>のドラッグ＆ドロッププログラミングの愛嬌のあるバージョンが使われている。スプライトとしてAngry BirdsとPlants vs. Zombiesを使い、Gates氏が「if文」を説明したり、Zuckerberg氏が「繰り返し」について話すビデオがちりばめられた、20のシンプルな課題を提供している。</span></p> 
+  <p dir="ltr" style="line-height:1.15;margin-top:0pt;margin-bottom:0pt;"><span style="font-size: 15px; font-family: Arial; background-color: transparent; vertical-align: baseline; white-space: pre-wrap;">たった数分間と相当の反復により、最年少の生徒ですら、ソフトウェアを構築する基本概念を理解することができる。これはすごいことだ。</span></p> 
+  <p>&nbsp;</p> 
+  <p><span style="font-size: 15px; font-family: Arial; background-color: transparent; font-weight: bold; vertical-align: baseline; white-space: pre-wrap;">声を大にして主張したい。</span><span style="font-size: 15px; font-family: Arial; background-color: transparent; vertical-align: baseline; white-space: pre-wrap;">プログラマである親は全員、休日前の気の抜けた時間を使って、生徒の学校に働きかけよう。<a href="http://hourofcode.com" style="text-decoration:none;" target="_blank">hourofcode.com</a>の取り組みを子供たちに<a href="http://csedweek.org/promote" target="_blank">プロモート</a>し、子供たちがこの1時間の課題を経験する余地と機会を作るのだ。学校がサポートしてくれなくても、家や図書館でもできる。課題はPC、Mac、タブレット、スマートフォン（私はこれで試した）など、最近のブラウザを備えたデバイスなら何でも動くはずだ。</span></p> 
+  <p dir="ltr" style="line-height:1.15;margin-top:0pt;margin-bottom:0pt;">&nbsp;</p> 
+  <p dir="ltr" style="line-height:1.15;margin-top:0pt;margin-bottom:0pt;"><span style="font-size: 15px; font-family: Arial; background-color: transparent; vertical-align: baseline; white-space: pre-wrap;">今週、米国のAppleおよびMicrosoftの主要なお店で、「Hour of Code」ワークショップが開かれる。Code.orgのチュートリアルはMicrosoft、Google、Twitter、Facebookのエンジニアによって開発され、20の言語で利用できる。</span></p> 
+  <p dir="ltr" style="line-height:1.15;margin-top:0pt;margin-bottom:0pt;">&nbsp;</p> 
+  <p dir="ltr" style="line-height:1.15;margin-top:0pt;margin-bottom:0pt;"><a href="https://www.youtube.com/watch?v=nKIu9yen5nc" target="_blank"><img src="http://www.infoq.com/resource/news/2013/12/hourofcode/ja/resources/1Code.org_Gates.jpg" width="300" vspace="10" hspace="10" _href="img://1Code.org_Gates.jpg" _p="true" alt="" /></a>&nbsp;<span style="font-size: 15px; font-family: Arial; background-color: transparent; vertical-align: baseline; white-space: pre-wrap;"><a href="http://www.youtube.com/watch?v=mgooqyWMTxk&amp;feature=youtu.be" target="_blank"><img src="http://www.infoq.com/resource/news/2013/12/hourofcode/ja/resources/1Code.org_Zuckerberg.jpg" width="260" _href="img://1Code.org_Zuckerberg.jpg" _p="true" alt="" /></a></span></p> 
+  <p dir="ltr" style="line-height:1.15;margin-top:0pt;margin-bottom:0pt;"><span style="font-size: 15px; font-family: Arial; background-color: transparent; vertical-align: baseline; white-space: pre-wrap;">私たちにとっては小さなことだが、これでプログラミングがいかに簡単かを理解できた人にとっては大きなことだ。だが、これは単なる出発点にすぎない。Code.orgはそれについても考慮しており、さまざまな方向性のチュートリアルと引き続き学ぶためのポインタを提供している。</span></p> 
+  <p>&nbsp;</p> 
+  <p dir="ltr" style="line-height:1.15;margin-top:0pt;margin-bottom:0pt;"><span style="font-size: 15px; font-family: Arial; background-color: transparent; vertical-align: baseline; white-space: pre-wrap;">コンピュータリテラシーに関する議論はずっと続いてきたもので、「<a href="http://www.infoq.com/jp/articles/systems-development-discipline" style="text-decoration:none;" target="_blank">ソフトウェアクラフトマンシップ</a>」ムーブメントにもつながりがある。コードを教えることに関する記事や活動は、ますます増えて重要になってきている。</span></p> 
+  <p>&nbsp;</p> 
+  <p dir="ltr" style="line-height:1.15;margin-top:0pt;margin-bottom:0pt;"><span style="font-size: 15px; font-family: Arial; background-color: transparent; vertical-align: baseline; white-space: pre-wrap;"><a href="https://www.codeschool.com/" style="text-decoration:none;">codeschool</a>、<a href="http://www.codecademy.com/" style="text-decoration:none;">code academy</a>、<a href="https://www.khanacademy.org/cs" style="text-decoration:none;">Khan Academyのプログラミング講座</a>といったオンラインプログラムや、シカゴの<a href="http://devbootcamp.com/" style="text-decoration:none;">devbootcamp</a>、<a href="http://www.chesnok.com/daily/category/teaching/" style="text-decoration:none;">開発者に高校の授業で話をしてもらう</a>、コードを学びたい人のための<a href="http://www.meetup.com/find/?keywords=girls+code&amp;radius=Infinity" style="text-decoration:none;">ミートアップ</a>といったオフライン活動もある。</span></p> 
+  <p dir="ltr" style="line-height:1.15;margin-top:0pt;margin-bottom:0pt;">&nbsp;</p> 
+  <p dir="ltr" style="line-height:1.15;margin-top:0pt;margin-bottom:0pt;"><span style="font-size: 15px; font-family: Arial; background-color: transparent; vertical-align: baseline; white-space: pre-wrap;">プログラミングをもっと簡単に学ぶための手段としては、<a href="http://en.wikipedia.org/wiki/Logo_(programming_language)" style="text-decoration:none;">Logo</a>以来、最近だと、<a href="http://scratch.mit.edu/" style="text-decoration:none;">Scratch</a>や<a href="http://www.kickstarter.com/projects/danshapiro/robot-turtles-the-board-game-for-little-programmer" style="text-decoration:none;">Robot Turtles</a>などがある。興味深いことに、こうした言語の多くは本質的に関数型であり、並行して動作し、ミュータブルな状態がない。これはスプレッドシートにも同じことが言える。<a href="http://www.infoq.com/interviews/peyton-jones-cas" style="text-decoration:none;">Simon Peyton Jones</a>氏が指摘するように、スプレッドシートはこれまで最も普及した（関数型）プログラミング言語だろう。Adam Wiggins氏も、プログラミング教育における「ゼロセットアップ」とタスク指向の必要性について書いた<a href="https://medium.com/the-truant-haruspex/5367171478b7" style="text-decoration:none;">エッセイ</a>で、スプレッドシートを賞賛している。</span></p> 
+  <p>&nbsp;</p> 
+  <p dir="ltr" style="line-height:1.15;margin-top:0pt;margin-bottom:0pt;"><span style="font-size: 15px; font-family: Arial; background-color: transparent; vertical-align: baseline; white-space: pre-wrap;">コンピュータ教育という重要なトピックが、もっと親や先生、行政から注目を集め、子供たちがソフトウェアやソフトウェア開発を理解する方法が変わることを望んでいる。結局のところ、彼らが世界を動かすコードを書く次の世代になるのだから。</span></p> 
+  <p dir="ltr" style="line-height:1.15;margin-top:0pt;margin-bottom:0pt;">&nbsp;</p> 
+  <p dir="ltr" style="line-height:1.15;margin-top:0pt;margin-bottom:0pt;">&nbsp;</p> 
+  <p dir="ltr" style="line-height:1.15;margin-top:0pt;margin-bottom:0pt;"><a href="https://www.facebook.com/Code.org" style="text-decoration:none;"><span style="font-size: 15px; font-family: Arial; color: rgb(17, 85, 204); background-color: transparent; text-decoration: underline; vertical-align: baseline; white-space: pre-wrap;">Facebook</span></a><span style="font-size: 15px; font-family: Arial; background-color: transparent; vertical-align: baseline; white-space: pre-wrap;"> </span><span style="text-decoration: underline; font-size: 15px; font-family: Arial; color: rgb(17, 85, 204); background-color: transparent; vertical-align: baseline; white-space: pre-wrap;"><a href="http://twitter.com/codeorg" style="text-decoration:none;">Twitter</a></span></p> 
+  <div>
+   &nbsp;
+  </div> 
+  <p>&nbsp;</p> 
  </div> 
 </div><br><br><br><br><br><br></body></html>

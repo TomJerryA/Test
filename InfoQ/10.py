@@ -1,27 +1,24 @@
-<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>VIsual StudioでC#を使ってiOSとAndroidアプリを開発する</h3><p><a target="_blank" href="http://www.infoq.com/news/2013/11/visual-studio-ios-android"><em>原文(投稿日：2013/11/13)へのリンク</em></a></p>
+<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>Netflix、ビッグデータがビジネス判断を動かす</h3><p><a target="_blank" href="http://www.infoq.com/news/2013/12/netflix-bigdata-decisions"><em>原文(投稿日：2013/12/12)へのリンク</em></a></p>
 <div class="article_page_left news_container text_content_container"> 
  <div class="text_info"> 
-  <p>XamarinがMicrosoftとパートナーシップを結んだ。開発者がVisual StudioでiOSとAndroidアプリを作成できるようにし、<a href="http://xamarin.com/university">Xamarin University</a>でその方法を開発者に教える。</p> 
-  <p>Xamarinは本日、Microsoftとのパートナーシップを発表した。C#とVisual Studioを使っている開発者が、すでにサポートしているWindowsだけでなく、iOSとAndroidで動く完全にネイティブなクロスプラットフォーム・モバイルアプリを作成 できるよう、最新のサポートを提供する。今回の提携には以下が含まれている。</p> 
+  <p>Netflixのデータプラットフォームアーキテクトのマネージャー、Jeff Magnusson氏が、彼らのData Platform as a ServiceについてQCon SF 2013で<a href="http://www.slideshare.net/JeffMagnusson/qcon-sf-netflix-hadoop-platform-as-a-service">プレゼンテーション</a>をした。このプレゼンテーションをフォローアップして、技術スタックがどうなっていて、それがNetflixの重要なビジネス判断にどう役立っているのか説明する。</p> 
+  <p>Netflixは世界中で3000万人以上のサブスクライバを抱えている。ユーザは<a href="http://netflix.com">NetflixのWebサイト</a>を訪問するうちに、様々なデータポイントを提供する。ビデオの再生、評価付け、検索といったイベントは記録されて分析される。時間、日付、地理的位置、デバイス、ページの閲覧やスクロールといった振る舞いも、イベントが発生したコンテキストをもたらし、ユーザを分類するのに使われる。彼らは、サイトとのエンゲージメントを高め、どのシリーズに<a href="http://www.nytimes.com/2013/02/25/business/media/for-house-of-cards-using-big-data-to-guarantee-its-popularity.html?_r=0">次に投資すべき</a>かといったビジネス判断をするために、これらのデータを利用している。</p> 
+  <p>この他、<a href="http://www.nielsen.com/">Nielsen</a>やソーシャルデータといったサードパーティからのメタデータも、プラットフォームに対するエンゲージメントや新たなサブスクライバをもたらすのに貢献している。</p> 
+  <p><a href="http://www.slideshare.net/adrianco/netflix-architecture-tutorial-at-gluecon">2009年以来</a>、Netflixはクラウドで運用されており、Hadoopプラットフォームを使っている。彼らが使っている重要なインフラストラクチャ、Big Dataブロックは以下のようになっている。</p> 
   <ul> 
-   <li>XamarinはMicrosoftと協力して、自社技術をMS開発者ツールおよびサービスに統合する。XamarinはVS 2013 SimShipパートナーとして、MicrosoftがVisual Studioをリリースするのと同じ日に、自社のツールの統合バージョンをリリースする。XamarinにはMicrosoft Portable Class Librariesが含まれるようになる。これはもともとWindowsでしか使えないという制限があったが、<a href="http://www.infoq.com/news/2013/10/portablePCL">最近、その制限が解かれた</a>。</li> 
-   <li>限定数のMSDNサブスクライバ向けに、最近立ち上がった<a href="http://xamarin.com/university">Xamarin University</a>がフリーで利用可能になる。このオンラインスクールのトレーニングコースでは、iOSとAndroid向けクロスプラットフォームのモバイルアプリの作り方を開発者に教える。</li> 
-   <li>MSDNサブスクライバに対し、Xamarinのサブスクリプションの<a href="http://xamarin.com/msdn">特別価格</a>が提供される。</li> 
+   <li><b>Amazon S3:</b> <a href="http://aws.amazon.com/s3/">Amazon S3</a>は内部データパイプラインツールのUrsulaを使って、様々なデバイスからの何十億ものイベントを記録するのに使われる。S3はHadoopジョブを実行するElastic Map Reduce (EMR) クラスタの<a href="http://techblog.netflix.com/2013/01/hadoop-platform-as-service-in-cloud.html">真実を語る資料</a>として使われる。</li> 
+   <li><b>Hadoop:</b> Apache <a href="http://hadoop.apache.org/">Hadoop</a>は分散計算のベースラインライブラリとして使われる。HadoopはAWSのElastic Map Reduceクラスタにデプロイされ、各ノードが提供するストレージのHDFSを使う代わりに、S3バケットストレージを利用している。これは直感に反している。Hadoopが利用するデータの局所性原則に反して、S3からEMRノードへのデータ移動を引き起こすおそれがあるためだ。だが、その一方で、S3は単一の真実を語る資料となり、EMRクラスタはほぼリアルタイムにフィットするよう拡張、サイズ変更できることを意味する。</li> 
+   <li><b>Hive:</b> NetflixのHiveはアドホッククエリと軽量アグリゲーションに使われる。これに対して、PigはETLともっと複雑なデータフローに使われる。データ移動において、複雑なオペレーションを接続するのにも利用される。</li> 
+   <li><b>Genie:</b> <a href="http://techblog.netflix.com/2013/06/genie-is-out-of-bottle.html">Genie</a>はHadoop PaaS技術で、EMRにジョブを投入するのに使われる。GenieはRESTful APIを提供し、開発者は組み込み関数を扱ってHadoopクラスタを動かしたりメンテナンスする必要がなくなる。GenieはGitHub<a href="https://github.com/Netflix/genie">リポジトリ</a>からフォークできる。</li> 
+   <li><b>Franklin:</b> <a href="http://www.slideshare.net/JeffMagnusson/qcon-sf-netflix-hadoop-platform-as-a-service">Franklin</a>はメタデータAPIで、RDS、Redshift、Cassandra、Teradata、S3といったソースから情報を抽出するのに使われる。<a href="http://www.slideshare.net/adrianco/migrating-netflix-from-oracle-to-global-cassandra">2011年</a>にOracleデータセンタベースのソリューションからAWSクラウドへ移行して以来、Netflixでのオンラインデータ収集にはCassandraが使われている。Teradataは主にデータセンターで使われているが、Netflixが<a href="http://www.infoq.com/jp/news/2013/12/teradata-cloud-strategy#theCommentsSection">Teradata Cloud</a>に参加するというTeradataの発表で、これも変わるだろう。</li> 
+   <li><b>Forklift:</b> <a href="http://www.slideshare.net/JeffMagnusson/qcon-sf-netflix-hadoop-platform-as-a-service">Forklift</a>はデータストア間で分析データを移動するのに使われる。データのソースとターゲットには、Hive、RDBMS、S3、Rなどが使える。</li> 
+   <li><b>Sting:</b> <a href="http://www.slideshare.net/JeffMagnusson/qcon-sf-netflix-hadoop-platform-as-a-service">Sting</a>はGenieジョブの結果をアドホックに可視化するのに使われる。データセットをメモリに保持することで、スライシングやダイシングといったOLAPオペレーションを1秒以下の応答時間で提供する。</li> 
+   <li><b>Lipstick:</b> <a href="http://www.slideshare.net/Hadoop_Summit/magnusson-smith-june27140pmroom210av2?from_search=1">Lipstick</a>はユーザがPigジョブのデータフローと全体のジョブ進捗を可視化するのに使われる。これにより、詰まったジョブ、間違った出力データ、失敗したジョブがひと目でわかり、修正して正しく実行するのに役立つ。</li> 
   </ul> 
-  <p>この分野におけるMicrosoftとの協力を拡大するつもりがあるのか、私たちはXamarinに尋ねた。XamarinのCEOで共同創業者のNat Friedman氏は、そのように進めているが、現時点では詳しく言えないと述べた。</p> 
-  <blockquote> 
-   <p>私たちはVisual StudioにおけるWindows、Android、iOSアプリ作成がこれまでより簡単になるよう、Microsoftと緊密に仕事をしています。これからモバイルへと向かう開発者にとって、これは最高の開発体験をもたらすでしょう。ロードマップを合わせるために、私たちはMicrosoftと深く議論しているところで、後日、詳しい情報が出せるでしょう。</p> 
-  </blockquote> 
-  <p>Xamarin Universityは2014年の1月と2月に次のようなカリキュラムで1ヶ月のコースを始める。</p> 
-  <ul> 
-   <li>iOSとAndroidの基礎</li> 
-   <li>モバイルアプリのライフサイクル</li> 
-   <li>ネイティブUIおよびコントロール</li> 
-   <li>クロスプラットフォーム・アーキテクチャ</li> 
-   <li>モバイルのベストプラクティス</li> 
-   <li>セキュアなバックエンド統合</li> 
-   <li>メモリ管理のベストプラクティクスなど最新トピック</li> 
-  </ul> 
-  <p>トレーニングには、Xamarinのエキスパートとの20時間を超えるライブのオンライン授業、モバイル開発者との2時間の1対1コーチング、オンデマンドビデオ、チュートリアル、ラボ、コードサンプル、専用フォーラムが含まれている。ただし、席は限られている。</p> 
+  <p>こうしたツールとともに、NetflixはCuratorなど数々のヘルパーツールを開発している。<a href="http://techblog.netflix.com/2011/11/introducing-curator-netflix-zookeeper.html">Curator</a>はApache Zookeeperを使いやすくするJavaライブラリ群だ。Curatorを使うと堅牢なクライアントを作るのが簡単になり、<a href="http://www.slideshare.net/randgalt/curator-intro?from_search=3">安全でないクライアント呼び出し</a>をしたり、リクエストを間違って成功だと思ってしまうといった落とし穴を避けることができる。</p> 
+  <p>上に説明したテクノロジースタックのうち、本当に重要なアプリケーションは、Netflixレコメンデーションだ。レコメンデーション結果はNetflixの全ビデオストリームの約75%を<a href="http://www.wired.com/underwire/2013/08/qq_netflix-algorithm/">動かしている</a>。レコメンデーションを動かすシステムのひとつに、<a href="http://www.slideshare.net/Hadoop_Summit/hadoop-and-cloud-at-netflix?from_search=3">マルコフ連鎖</a>を使って、映画を状態としてモデル化し、状態遷移の確率を計算するものがある。RDBMSでは週に一度、ストアドプロシージャとして、うまくスケールできない高価なコピーとして実行される。Hadoopを使うことで、これはデータをコピーする必要なしにスケールできるようになり、PigやJava Map Reduceジョブを使うことで、ストアドプロシージャよりもメンテナンスが簡単になる。</p> 
+  <p><a name="h.1fob9te"></a>マルコフ連鎖は遷移確率行列に従って状態群の離散時間確率過程を記述したものだ。映画をノードとしてモデル化し、ダブルパスのMap Reduceジョブを使うことで、Netflixはあるノードから別のノードへの遷移確率を計算できる。これがレコメンデーション値となる。将来の値は現在の値にのみ依存しており、Hadoopノードで状態を保持する必要がない。これはMap Reduceジョブにぴったりだ。</p> 
+  <p>Netflixがレコメンデーションエンジンで考慮しているパラメータはこれだけではない。コンテキストも考慮すべき興味深い面だ。ユーザは、見ているデバイスが何か、家にいるか、休暇中か、何時か、何曜日かによって、異なるコンテンツを鑑賞したいかもしれない。コンテキストと鑑賞の嗜好を相関付けるのには様々な課題があり、Netflixもまだ解決できてはいない。</p> 
+  <p>Netflixのビッグデータアーキテクチャは、別の業界や競合他社に簡単にコピーされるようなものではない。だが、構成要素のいくつかはオープンソースであり、彼らの<a href="https://github.com/netflix">GitHubアカウント</a>で利用可能になっている。ビッグデータアーキテクチャの開発をはじめたいと思っている組織にとって、これらは出発点となるだろう。そしてNetflixが示してきたように、ビッグデータ戦略は後で付け足すものではなく、事前に計画し、何年もかけて徹底的に実行する必要がある。</p> 
  </div> 
 </div><br><br><br><br><br><br></body></html>

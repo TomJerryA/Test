@@ -1,10 +1,17 @@
-<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>微软携手RedGate和Clickberry提供Node.js Tools for Visual Studio</h3><p>NTVS是<a href="https://nodejstools.codeplex.com/">Node.js Tools for Visual Studio</a>的缩写，它为Node.js开发人员提供了一个带有智能提示、包管理、性能分析及调试功能的全功能IDE。</p>
-<p>NTVS既支持本地调试，也支持远程调试。在远程调试的情况下，它还支持MacOS和Linux。调试器的大部分工作是由Clickberry的Dmitry Tretyakov完成的。</p>
-<p>包管理通过<a href="https://npmjs.org/">NPM</a>，也就是Node Packaged Modules，进行处理。Red Gate的Bart Read为该功能提供了用户界面。</p>
-<p>出现如此多的第三方是因为多个支持Node.js的项目开始于大致相同的时间。而且，它们在很大程度上基于Python Tools for Visual Studio（PTVS）。因此，当微软的PTVS团队意识到发生了什么的时候，他们决定征集社区贡献。一个名为dinov的Reddit用户<a href="http://www.reddit.com/r/programming/comments/1r78oq/microsoft_launches_nodejs_tools_for_visual_studio/cdkl422">说</a>：</p>
-<blockquote> 
- <p>我在微软从事NTVS方面的工作，它主要由微软构建。但是，在发布之前，我们也与其他组织或个人进行了合作。</p> 
- <p>在从事这项工作的过程中，我们看到了几个为VS提供Node.js支持的不同尝试，包括RedGate的Visual Node和由一些个人开发的另一个“NTVS”。在发布之前，我们联系了他们，向它们开放了代码，并很高兴地接受了他们的贡献。最值得注意的贡献是NPM支持，这是来自RedGate的一个非常重要的功能。</p> 
-</blockquote>
-<p>由于它使用了内建的JavaScript编辑器，NTVS需要Visual Studio专业版或者更高版本。</p>
-<p><b>查看英文原文：<a href="http://www.infoq.com/news/2013/12/NTVS">Microsoft Joins Forces with RedGate and Clickberry to Offer Node.js Tools for Visual Studio</a></b></p><br><br><br><br><br><br></body></html>
+<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>行为驱动开发工具Jasmine 2.0发布</h3><p><a href="https://github.com/pivotal/jasmine">Jasmine</a>是一个针对<a href="http://en.wikipedia.org/wiki/JavaScript">JavaScript</a>的<a href="http://en.wikipedia.org/wiki/Behavior-driven_development">行为驱动开发</a>的测试框架，该框架的最新版本改进了对<a href="http://nodejs.org/">Node.js</a>的支持，同时还做了一些提升内部质量的工作。最近发布的2.0版本包含以下变化：</p>
+<ul> 
+ <li>增强了对Node.js的支持，在新版本中所有的Node测试成为了Jasmine<a href="http://en.wikipedia.org/wiki/Continuous_integration">持续集成</a>测试的一部分。集成测试还包括针对许多Web浏览器的测试，例如：Firefox、Chrome、Safari和Internet Explorer。</li> 
+ <li>新版本放弃了对Ruby的依赖，取而代之的是Node.js和<a href="http://gruntjs.com/">Grunt.js</a>。这样减少了代码量，同时还针对社区做了很多简化以便于在添加贡献代码之前验证其功能。</li> 
+ <li>通过使用Jasmine测试它自身的代码提高了Jasmine的质量。</li> 
+</ul>
+<p>有一些变化破坏了它与之前版本的向后兼容性，此类变化包括：</p>
+<ul> 
+ <li>异步测试的语法发生了变化，现在可以提供一个回调函数。</li> 
+ <li>针对报道员的接口已经被取代；这导致回调的使用方式发生了变化，同时也降低了自定义实现和Jasmine之间的耦合性。</li> 
+ <li>用于相等性检查的代码已经被替换，这可能会引发不同的行为。</li> 
+</ul>
+<p>除了这些变化之外，新版本还修复了一些问题和bug。但是最大的一组变化来自于<a href="https://github.com/pivotal/jasmine/blob/master/release_notes/20.md#massive-refactoring-and-better-testing">重构</a>，这几乎牵涉到了代码库中的所有对象，新版本使用了一种更加一致的编码风格，目的是为了提升测试、简化核心团队的开发工作，同时能够让社区更加容易地扩展Jasmine。</p>
+<p>团队还更新了<a href="http://jasmine.github.io/2.0/introduction.html">Jasmine的介绍</a>，强调了2.0的变化。</p>
+<p>Jasmine是一个针对JavaScript代码的行为驱动开发的测试框架，它不依赖于任何其他的JavaScript框架或者<a href="http://en.wikipedia.org/wiki/Document_Object_Model">文档对象模型</a>（DOM）。 <br /> 有一个对Jasmine用户可用的<a href="https://groups.google.com/forum/#!forum/jasmine-js">邮件列表</a>，该列表有超过800位成员，到目前为止有近600个主题。在今年的早些时候还<a href="http://shop.oreilly.com/product/0636920028277.do">出版</a>了一本使用Jasmine进行JavaScript测试的书。</p>
+<p>Jasmine是由<a href="http://pivotallabs.com/author/dwfrank/">Davis W.Frank</a>创建的，现在由3位开发人员<a href="https://github.com/pivotal/jasmine#maintainers">维护</a>，它是一个开源产品，基于的协议是MIT许可。</p>
+<p><b>查看英文原文</b>：<a href="http://www.infoq.com/news/2013/12/bdd-jasmine-2-released">Behaviour-Driven Development Tool Jasmine 2.0 Released</a></p><br><br><br><br><br><br></body></html>

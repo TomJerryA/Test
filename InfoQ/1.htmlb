@@ -1,300 +1,124 @@
-<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>大数据处理之如何确保断电不丢数据</h3><p>今年7、8月份杭州实行拉闸限电时，导致阿里余杭机房的机器意外断电，造成HDFS集群上的部分数据丢失。</p>
-<p>在Hadoop 2.0.2-alpha之前，HDFS在机器断电或意外崩溃的情况下，有可能出现正在写的数据丢失的问题。而最近刚发布的CDH4中HDFS在Client端提供了hsync()的方法调用(<a href="https://issues.apache.org/jira/browse/HDFS-744">HDFS-744</a>)，从而保证在机器崩溃或意外断电的情况下，数据不会丢失。这篇文件将围绕这个新的接口对其实现细节进行简单的分析，从而希望找出一种合理使用hsync()的策略，避免重要数据丢失。</p>
-<h2>HDFS中sync()，hflush()和hsync()的差别</h2>
-<p>在hsync()之前，HDFS就已经提供了sync()和hflush()的调用，单从方法的名称上看，很难分辨这三个方法之间的区别。咱们先从这几个方法之间的差别介绍起。</p>
-<p>在HDFS中，调用hflush()会将Client端buffer中的存放数据更新到Datanode端，直到收到所有Datanode的ack响应时结束调用。这样可保证在hflush()调用结束时，所有的Client端都可以读到一致的数据。HDFS中的sync()本质也是调用hflush()。</p>
-<p>hsync()则是除了确保会将Client端buffer中的存放数据更新到Datanode端外，还会确保Datanode端的数据更新到物理磁盘上，这样在hsync()调用结束后，即使Datanode所在的机器意外断电，数据并不会因此丢失。而hflush()在机器意外断电的情况下却有可能丢失数据，因为Client端传给Datanode的数据可能存在于Datanode的cache中，并未持久化到磁盘上。下图描述了从Client发起一次写请求后，在HDFS中的数据包传递的流程。</p>
-<p><img width="500" alt="" src="http://infoqstatic.com/resource/articles/large-data-processing-ensuring-data-not-lost-when-power-off/zh/resources/0930008.png" _href="img://null" _p="true" /></p>
-<div id="lowerFullwidthVCR"></div>
-<h2>hsync()的实现本质</h2>
-<p>hsync()执行时，实际上会在对应Datanode的机器上产生一个fsync的系统调用，从而将内存中的相关文件的数据更新到磁盘。</p>
-<p>Client端执行hsync时，Datanode端会识别到Client发送过来的数据包中的syncBlock_字段为true，从而判定需要将内存中的数据更新到磁盘。此时会在BlockReceiver.java的flushOrSync()中执行如下语句：</p>
-<pre>
-((FileOutputStream)cout).getChannel().force(true);</pre>
-<p>而FileChannel的force(boolean metadata)方法在JDK中，底层为于<a href="https://github.com/awh/openjdk7/blob/master/jdk/src/solaris/native/sun/nio/ch/FileDispatcherImpl.c#L132">FileDispatcherImpl.c</a>中调用fsync或fdatasync。metadata为true时执行fsync，为false时执行fdatasync。</p>
-<pre>
-Java_sun_nio_ch_FileDispatcherImpl_force0(JNIEnv *env, jobject this, 
-jobject fdo, jboolean md)
-{
-    jint fd = fdval(env, fdo);
-    int result = 0;
-
-    if (md == JNI_FALSE) {
-        result = fdatasync(fd);
-    } else {
-        result = fsync(fd);
-    }
-    return handle(env, result, &quot;Force failed&quot;);
-}
-
-</pre>
-<p>当Datanode将数据持久化到磁盘上后，会发ack响应给Client端。当收到所有Datanode的ack响应时，hsync()的调用结束。</p>
-<p>值得注意的是，fsync或fdatasync本身是一个非常耗时的调用，因为磁盘的读写速度远低于内存的读写速度。在不调用fsync或fdatasync的情况下，数据可能保存在各级cache中。</p>
-<p><img width="500" alt="" src="http://infoqstatic.com/resource/articles/large-data-processing-ensuring-data-not-lost-when-power-off/zh/resources/0930009.png" _href="img://null" _p="true" /></p>
-<p>最开始笔者在测hsync()的读写性能时，发现不同机器上测试结果hsync()耗时差别巨大，有的集群平均调用耗时为4ms，而有的集群平均调用耗时则需25ms。后来在公司各位大神的点拨下才意识到是跟Linux文件系统的机制有关。在这种情况下，只有一探Linux相关部分的源码才能解开心中的疑惑，下面这节就将从更底层的角度来解析与hsync()密切相关的系统调用fsync及fdatasync方法。</p>
-<h2>fsync和fdatasync的大致实现过程</h2>
-<p>对ext4格式的文件系统来说，fsync和fdatasync方法的实现代码位于fs/ext4/fsync.c这个文件中。在追加写文件的情况下，fsync和fdatasync的流程几乎一致，因为对HDFS的写操作基本都是追加写，下面我们只讨论追加写文件下的情景。ext4格式的文件系统中布局大致如下： </p>
-<table cellspacing="0" cellpadding="0" border="1"> 
- <tbody> 
-  <tr> 
-   <td width="74" valign="top"> <p><b>Group 0 Padding</b></p> </td> 
-   <td width="58" valign="top"> <p><b>Super Block</b></p> </td> 
-   <td width="100" valign="top"> <p><b>Group Descriptors</b></p> </td> 
-   <td width="84" valign="top"> <p><b>Reserved GDT Blocks Data</b></p> </td> 
-   <td width="66" valign="top"> <p><b>Data Block Bitmap</b></p> </td> 
-   <td width="66" valign="top"> <p><b>inode Bitmap</b></p> </td> 
-   <td width="55" valign="top"> <p><b>inode Table</b></p> </td> 
-   <td width="64" valign="top"> <p><b>Data Blocks</b></p> </td> 
-  </tr> 
-  <tr> 
-   <td width="74" valign="top"> <p>1024 bytes</p> </td> 
-   <td width="58" valign="top"> <p>1 block</p> </td> 
-   <td width="100" valign="top"> <p>many blocks</p> </td> 
-   <td width="84" valign="top"> <p>many blocks</p> </td> 
-   <td width="66" valign="top"> <p>1 block</p> </td> 
-   <td width="66" valign="top"> <p>1 block</p> </td> 
-   <td width="55" valign="top"> <p>many block</p> </td> 
-   <td width="64" valign="top"> <p>many more blocks</p> </td> 
-  </tr> 
- </tbody> 
-</table>
-<p></p>
-<p>在我们追加写文件时，涉及到修改的有DataBlock BitMap、inode BitMap、inode Table、Data Blocks。但从代码中来看，实际上对文件的追加会被合并成两次写(这里是指逻辑意义上的两次写，实际在从系统Cache刷新到磁盘时，读写操作会被再次合并)，第一次为写DataBlock和DataBlock Bitmap，第二次为写inode BitMap和更新inode BitMap中的inode。ext4为了支持更大的容量，使用了extend tree来实现块映射。在追加文件的情况下，fsync和fdatasync除了更新inode中的extend tree外，还会更新inode中文件大小，块计数这些metadata。对fsync来说，还会修改inode中的文件修改时间、文件访问时间（在mount选项不含noatime的情况下）和inode修改时间。</p>
-<h2>写障碍和Disk Cache的影响</h2>
-<p>在了解了fsync()和fdatasync()方法会对文件系统进行的改动后，离找出之前为什么在不同集群上hsync()的调用平均耗时的原因仍还有一段距离。这时我发现了不同的磁盘挂载选项会影响到fsync()和fdatasync()的执行时间，进而确定是写障碍和Disk Cache在搞怪。下面这节就将分析写障碍和Disk Cache对hsync()方法调用耗时的影响。</p>
-<p>由于市面上大部分的磁盘都是带Disk Cache的，这导致在不开启写障碍的情况下，机器意外断电可能会对其造成metadata的不一致。对ext4这种journal文件系统来说，journal写入一个事务后，会对metadata进行更新，更新完成后会将该事务标记从未执行修改为完成。举个例子，加入我们要创建并写一个文件，那么在journal中可能会产生三个事务。那么创建并写一个文件的执行流程如下：</p>
-<p><img width="500" alt="" src="http://infoqstatic.com/resource/articles/large-data-processing-ensuring-data-not-lost-when-power-off/zh/resources/0930010.png" _href="img://null" _p="true" /></p>
-<p>在磁盘没有Disk Cache的情况下，即时机器意外断电，那么重启自检时，可通过journal中最后事务的状态来对metadata进行重新执行修复或者废弃该事务。从而保证了metadata的一致性。但在磁盘有Disk Cache的情况下，IO事件会当数据写到Disk Cache中就响应完成。虽然journal按上图的流程进行执行，但是执行完成后这些数据仍可能有部分并未持久化到磁盘上。假如在执行第6个步骤的时候机器意外断电，同时第4个步骤中的数据暂未更新到磁盘，而第1，2，3，5个步骤的数据已经同步到磁盘的话。这时机器重启自检时，由于第5个步骤中journal的执行状态为未完成，会重新执行第6个步骤一次。但第6个步骤对metadata的修改是建立在第4个步骤已经完成的基础之上的，由于第4个步骤并未持久化到磁盘，所以重新执行第6个步骤时会发生异常，造成metadata的错误。</p>
-<p><img width="500" alt="" src="http://infoqstatic.com/resource/articles/large-data-processing-ensuring-data-not-lost-when-power-off/zh/resources/0930011.png" _href="img://null" _p="true" /></p>
-<p>Linux中为了避免这一情况，可以在ext4的mount选项中加barrier=1,data=ordered开启写障碍，来确保数据持久化到磁盘的顺序。在写障碍前的数据会先于写障碍后的数据刷新到磁盘，Linux会在journal的事务写到Disk Cache中后放置一个写障碍。这样journal的事务位于写障碍之前，而对应的metadata的修改数据位于写障碍之后。避免了Disk Cache中合并IO时，对读写操作进行重排序后，由于读写操作执行顺序的改变而造成意外断电后metadata无法修复的情况。</p>
-<p>关闭写障碍，即ext4的mount选项为barrier=0时，除了有可能造成在机器断电或异常崩溃重启后metadata错误外，fsync和fdatasync的调用还会在数据更新到Disk Cache时就返回，而非等到数据刷新到磁盘上后才结束调用。因为在不开写障碍的情况下，Linux会将此时的磁盘当做没有Disk Cache的磁盘来处理，当数据只是更新到Disk Cache，就会认为该IO操作已完成，这也正是前文中提到的不同集群上hsync()的平均调用时长差别巨大的原因。所以关闭写障碍的情况下，调用fsync或fdatasync并不能确保数据在机器断电或异常崩溃时不丢失。</p>
-<p>Disk Cache的存在可以提高磁盘每秒的吞吐量，通过重排序IO，尽量将IO读写变成顺序读写提高速率，同时减少文件系统碎片。而通过开启写障碍，可避免意外断电情形下metadata异常，同时确保调用fsync或fdatasync时Disk Cache中的数据持久到磁盘。</p>
-<h2>开启journal的影响</h2>
-<p>除了写障碍和Disk Cache会影响到hsync()的调用时长外，Datanode上文件系统有没有打开journal也是影响因素之一。关闭journal的情况下可以减少hsync()的调用时长。</p>
-<p>在不开启journal的情况下，调用fsync或fdatasync主要是由<a href="https://github.com/torvalds/linux/blob/master/fs/libfs.c#L897">generic_file_fsync</a>这个方法来实现将数据刷新到磁盘。在追加写文件的情况下，不论是fsync还是fdatasync，在<a href="https://github.com/torvalds/linux/blob/master/fs/libfs.c#L897">generic_file_fsync</a>这个方法中都会先更新Data Block数据，再更新inode数据。如果执行fsync或fdatasync的文件为新创建的文件，在不开启journal的情况下，还会在更新完文件的inode后，更新该文件的父结点的Data Block和inode。</p>
-<p>而开启journal的情况下，调用fsync或fdatasync会先写Data Block，然后提交journal的事务。虽然调用fsync或fdatasync是指定对某个文件进行操作，但在ext4中，整个文件系统只有一个journal文件，提交journal的修改事务时会将整个文件系统的metadata的修改事务一并提交。在文件系统写入操作频繁时，这一步操作会比较耗时。</p>
-<h2>fsync及fdatasync耗时测试</h2>
-<h6>测试使用的代码如下：</h6>
-<p>代码中以追加的方式向一个已存在的文件写入4k数据，4k刚好为内存页和磁盘块的大小。下面分别以几种模式来测试fsync和fdatasync的耗时。</p>
-<pre>
-#define BLOCK_LEN 1024
-
-static long long microseconds(void) {
-        struct timeval tv;
-        long long mst;
-
-        gettimeofday(&amp;tv, NULL);
-        mst = ((long long)tv.tv_sec) * 1000000;
-        mst += tv.tv_usec;
-        return mst;
-}
-
-int main(void) {
-        int block = open(&quot;./block&quot;, O_WRONLY|O_APPEND, 0644);
-        long long block_start, block_end, fdatasync_time, fsync_time;
-
-        char block_buf[BLOCK_LEN];
-        int i = 0;
-        for(i = 0; i &lt; BLOCK_LEN; i++){
-                block_buf[i] = i % 50;
-        }
-
-        if (write(block, block_buf, BLOCK_LEN) == -1) {
-                perror(&quot;write&quot;);
-                exit(1);
-        }
-        block_start = microseconds();
-        fdatasync(block);
-        block_end = microseconds();
-        fdatasync_time = block_end - block_start;
-
-        if (write(block, block_buf, BLOCK_LEN) == -1) {
-                perror(&quot;write&quot;);
-                exit(1);
-        }
-        block_start = microseconds();
-        fsync(block);
-        block_end = microseconds();
-        fsync_time = block_end - block_start;
-
-        printf(&quot;fdatasync spent: %lld, fsync spent: %lld\n&quot;,
-               fdatasync_time,
-               fsync_time);
-
-        close(block);
-        exit(0);
-}
-</pre>
-<p><strong>测试准备</strong></p>
+<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>虚拟专家座谈会：迈向云开发</h3><p>开发者正在不断体验多种不同的云环境。当在云中工作时，开发者应如何改变他们的思考方式？是否有某些云环境更适合于刚准备入门的开发者？而那些目前尚未涉及云开发的开发者们又如何在此领域获得相应技能呢？</p>
+<p>为了回答这些问题，InfoQ就云开发的现状、推荐工具和反面模式与三位意见领袖进行了交流。我们的专家组成员是：</p>
 <ul> 
- <li>文件系统：ext4</li> 
- <li>操作系统内核：Linux 2.6.18-164.el5</li> 
- <li>硬盘型号：WDC WD1003FBYX-1 1V02，SCSI接口</li> 
- <li>通过sdparm--set=WCE /dev/sdx开启Disk Write Cache，sdparm--clear=WCE /dev/sdx关闭Disk Write Cache</li> 
- <li>通过barrier=1,data=ordered开启写障碍，barrier=0关闭写障碍</li> 
- <li>通过tune4fs-O has_journal /dev/sdxx开启Journal，tune4fs-O ^has_journal /dev/sdxx关闭Journal</li> 
+ <li><a href="http://adron.me/">Adron Hall</a>，通晓多种语言的码农和开发人员布道师。</li> 
+ <li><a href="http://magnusmartensson.com/">Magnus M&aring;rtensson</a>，微软MVP，担任瑞典Active Solution顾问公司的云架构师。</li> 
+ <li><a href="http://andypiper.co.uk/about/">Andy Piper</a>，热衷于推动Cloud Foundry的开发人员。</li> 
 </ul>
-<p>关闭Disk Cache，关闭Journal</p>
-<table cellspacing="0" cellpadding="0" border="1"> 
- <tbody> 
-  <tr> 
-   <td width="284" valign="top"> <p>类型</p> </td> 
-   <td width="284" valign="top"> <p>耗时（微秒）</p> </td> 
-  </tr> 
-  <tr> 
-   <td width="284" valign="top"> <p>fdatasync</p> </td> 
-   <td width="284" valign="top"> <p>8368</p> </td> 
-  </tr> 
-  <tr> 
-   <td width="284" valign="top"> <p>fsync</p> </td> 
-   <td width="284" valign="top"> <p>8320</p> </td> 
-  </tr> 
- </tbody> 
-</table>
-<table cellspacing="0" cellpadding="0" border="1"> 
- <tbody> 
-  <tr> 
-   <td width="62" valign="top"> <p>Device</p> </td> 
-   <td width="64" valign="top"> <p>wrqm/s</p> </td> 
-   <td width="62" valign="top"> <p>w/s</p> </td> 
-   <td width="62" valign="top"> <p>wkB/s</p> </td> 
-   <td width="73" valign="top"> <p>avgrq-sz</p> </td> 
-   <td width="77" valign="top"> <p>avgqu-sz</p> </td> 
-   <td width="51" valign="top"> <p>await</p> </td> 
-   <td width="56" valign="top"> <p>svctm</p> </td> 
-   <td width="62" valign="top"> <p>%util</p> </td> 
-  </tr> 
-  <tr> 
-   <td width="62" valign="top"> <p>sdi</p> </td> 
-   <td width="64" valign="top"> <p>0.00</p> </td> 
-   <td width="62" valign="top"> <p>120.00</p> </td> 
-   <td width="62" valign="top"> <p>480.00</p> </td> 
-   <td width="73" valign="top"> <p>8.00</p> </td> 
-   <td width="77" valign="top"> <p>1.00</p> </td> 
-   <td width="51" valign="top"> <p>8.33</p> </td> 
-   <td width="56" valign="top"> <p>8.33</p> </td> 
-   <td width="62" valign="top"> <p>100.00</p> </td> 
-  </tr> 
- </tbody> 
-</table>
-<p>可以看到，iostat为8ms，对inode、Data Block、inode Bitmap、DataBlock Bitmap的数据更新合并为了一次写操作。</p>
-<p>关闭Disk Cache，开启Journal</p>
-<table cellspacing="0" cellpadding="0" border="1"> 
- <tbody> 
-  <tr> 
-   <td width="284" valign="top"> <p>类型</p> </td> 
-   <td width="284" valign="top"> <p>耗时（微秒）</p> </td> 
-  </tr> 
-  <tr> 
-   <td width="284" valign="top"> <p>fdatasync</p> </td> 
-   <td width="284" valign="top"> <p>33534</p> </td> 
-  </tr> 
-  <tr> 
-   <td width="284" valign="top"> <p>fsync</p> </td> 
-   <td width="284" valign="top"> <p>33408</p> </td> 
-  </tr> 
- </tbody> 
-</table>
-<table cellspacing="0" cellpadding="0" border="1"> 
- <tbody> 
-  <tr> 
-   <td width="64" valign="top"> <p>Device</p> </td> 
-   <td width="64" valign="top"> <p>wrqm/s</p> </td> 
-   <td width="56" valign="top"> <p>w/s</p> </td> 
-   <td width="62" valign="top"> <p>wkB/s</p> </td> 
-   <td width="73" valign="top"> <p>avgrq-sz</p> </td> 
-   <td width="77" valign="top"> <p>avgqu-sz</p> </td> 
-   <td width="57" valign="top"> <p>await</p> </td> 
-   <td width="59" valign="top"> <p>svctm</p> </td> 
-   <td width="56" valign="top"> <p>%util</p> </td> 
-  </tr> 
-  <tr> 
-   <td width="64" valign="top"> <p>sdi</p> </td> 
-   <td width="64" valign="top"> <p>37.00</p> </td> 
-   <td width="56" valign="top"> <p>74.00</p> </td> 
-   <td width="62" valign="top"> <p>444.00</p> </td> 
-   <td width="73" valign="top"> <p>11.95</p> </td> 
-   <td width="77" valign="top"> <p>1.22</p> </td> 
-   <td width="57" valign="top"> <p>16.15</p> </td> 
-   <td width="59" valign="top"> <p>13.32</p> </td> 
-   <td width="56" valign="top"> <p>99.90</p> </td> 
-  </tr> 
- </tbody> 
-</table>
-<p>通过使用blktrace跟踪对磁盘块的读写，发现此处写journal会比较耗时，下面的记录为fsync过程中对磁盘发送的写操作，已预处理掉了大部分不重要的信息，可以看到，后面三条记录都是journal的写操作（通过此处kjournald的进程id为3001来识别）。 </p>
-<table cellspacing="0" cellpadding="0" border="1"> 
- <tbody> 
-  <tr> 
-   <td width="36" valign="top"> <p>0,0</p> </td> 
-   <td width="31" valign="top"> <p>13</p> </td> 
-   <td width="31" valign="top"> <p>1</p> </td> 
-   <td width="104" valign="top"> <p>0.000000000</p> </td> 
-   <td width="49" valign="top"> <p>8835</p> </td> 
-   <td width="25" valign="top"> <p>A</p> </td> 
-   <td width="39" valign="top"> <p>W</p> </td> 
-   <td width="253" valign="top"> <p>2855185 + 8 &lt;- (8,129) 2855184</p> </td> 
-  </tr> 
-  <tr> 
-   <td width="36" valign="top"> <p>0,0</p> </td> 
-   <td width="31" valign="top"> <p>4</p> </td> 
-   <td width="31" valign="top"> <p>5</p> </td> 
-   <td width="104" valign="top"> <p>0.000313001</p> </td> 
-   <td width="49" valign="top"> <p>3001</p> </td> 
-   <td width="25" valign="top"> <p>A</p> </td> 
-   <td width="39" valign="top"> <p>W</p> </td> 
-   <td width="253" valign="top"> <p>973352281 + 8 &lt;- (8,129) 973352280</p> </td> 
-  </tr> 
-  <tr> 
-   <td width="36" valign="top"> <p>0,0</p> </td> 
-   <td width="31" valign="top"> <p>4</p> </td> 
-   <td width="31" valign="top"> <p>1</p> </td> 
-   <td width="104" valign="top"> <p>0.000305325</p> </td> 
-   <td width="49" valign="top"> <p>3001</p> </td> 
-   <td width="25" valign="top"> <p>A</p> </td> 
-   <td width="39" valign="top"> <p>W</p> </td> 
-   <td width="253" valign="top"> <p>973352273 + 8 &lt;- (8,129) 973352272</p> </td> 
-  </tr> 
-  <tr> 
-   <td width="36" valign="top"> <p>0,0</p> </td> 
-   <td width="31" valign="top"> <p>4</p> </td> 
-   <td width="31" valign="top"> <p>12</p> </td> 
-   <td width="104" valign="top"> <p>0.014780357</p> </td> 
-   <td width="49" valign="top"> <p>3001</p> </td> 
-   <td width="25" valign="top"> <p>A</p> </td> 
-   <td width="39" valign="top"> <p>WS</p> </td> 
-   <td width="253" valign="top"> <p>973352289 + 8 &lt;- (8,129) 973352288</p> </td> 
-  </tr> 
- </tbody> 
-</table>
-<p></p>
-<p>开启Disk Cache，开启写障碍，开启Journal</p>
-<table cellspacing="0" cellpadding="0" border="1"> 
- <tbody> 
-  <tr> 
-   <td width="284" valign="top"> <p>类型</p> </td> 
-   <td width="284" valign="top"> <p>耗时（微秒）</p> </td> 
-  </tr> 
-  <tr> 
-   <td width="284" valign="top"> <p>fdatasync</p> </td> 
-   <td width="284" valign="top"> <p>23759</p> </td> 
-  </tr> 
-  <tr> 
-   <td width="284" valign="top"> <p>fsync</p> </td> 
-   <td width="284" valign="top"> <p>25006</p> </td> 
-  </tr> 
- </tbody> 
-</table>
-<p>从结果可以看到，Disk Cache的开启可以合并更多IO，从而减少耗时。</p>
-<p>值得注意的是，在开启Disk Cache时，iostat的await是按照从内存写完到Disk Cache中来统计耗时，并非是按照写到磁盘上来计时，所以此种情况下iostat的await参数会比较小，并无参考意义。</p>
-<h2>小结</h2>
-<p>从这次测试结果可以看到，虽然CDH4提供了hsync()方法，但是若我们对每次写操作都执行hsync()，会严重加剧磁盘的写延迟。通过一些策略，比方说定期执行hsync()或当存在于Cache中的数据达到一定数目时，执行hsync()会是更可行的方案，从而尽量减少机器意外断电所带来的影响。</p>
-<p><strong>附：术语解释</strong></p>
-<ul> 
- <li>Hadoop: Apache基金会的开源项目，用于海量数据存储与计算。</li> 
- <li>CDH4: Cloudera公司在Apache社区发行版基础之上进行改进后的发行版，更稳定更适用于生产环境。</li> 
- <li>Namenode: Hadoop的HDFS模块中管理所有文件元数据的组件。</li> 
- <li>Datanode: Hadoop的HDFS模块中存储文件实际数据的组件。</li> 
- <li>HDFS Client: 这里指连接HDFS对其中文件进行读写操作的客户端。</li> 
-</ul>
+<p><b>InfoQ</b><b>：是不是一位云开发人员的工具箱相比于普通开发者会有很大不同？如果是这样的话，那么在你们看来，云开发者更依赖于哪些传统的web</b><b>开发者不会使用的工具呢？</b></p>
+<blockquote> 
+ <p><b>Hall</b>：首先我会定义当听到“云开发人员”这个词时会想到什么。一名云开发人员就是负责这样的代码解决方案的人，解决方案是基于水平扩展的、分布式的、幂等的和异步处理，同时具有可伸缩、高度可用和弹性存储的特点。</p> 
+ <p>我说在回答这个问题时当然应完全根据这个定义。一名普通的开发人员经常是在某个传统的RDBMS数据库的基础之上构建应用，在此过程中他会使用某个框架或是其它基于此框架之上的工具，并受到垂直扩展的限制。这并不是不好的开发方式，但是对于云或其它任何可水平扩展的环境来说，以这种方式来构建应用或服务效率会非常低。一旦达到最大物理扩展极限，开发者就完全无能为力了，因为他再也没有办法使用任何合理的方式来提升性能。</p> 
+ <p>一位云开发人员会横跨广阔的资源范围来构建应用，他经常将某个应用的功能拆分成更为具体的服务或模块。云开发人员也常需要涉足于某些含有更多语言的工具包，这些语言包括从JavaScript到C#、Ruby或其它语言等。这样做的原因固然经常是出于必要，但在很大程度上也是为了在每个特定工作最适合使用的工具之间提供匹配。</p> 
+ <p>所以，简而言之，云开发人员的工具绝对是不同的。</p> 
+</blockquote>
+<blockquote> 
+ <p><b>M&aring;rtensson</b>：云开发人员需要用很多与非云开发环境不同的思考方法来武装自己。较之于其他寄宿（host）选项而言，当处于云部署平台时，你可以很容易地获取到很多东西。良好的云平台会提供一个工具集，这个工具集与你可能使用过的相比显得非常不同。它可拥有“无限的”存储空间，该空间同时具有自动备份、内建的缓存功能、强有力的服务总线和其他特性。</p> 
+ <p>公平来说，你完全没有必要仅为了获得此工具箱而去100%买入云计算。如果需要的话，你完全可以只是使用来自云平台的如服务总线这样的某一项服务。与任何非云环境的寄宿类型不同的是，工具箱中拥有更多 “工具”，比如快速弹性、内建容错、故障转移，以及你可以在任何时候按需优化费用的完全可度量的服务等。这些云特点常被引为<a href="http://www.nist.gov/itl/cloud">NIST云计算定义</a>。我认为，云开发人员有非常多的工具待去了解和运用。合适地运用这些工具可以助你构建那些以前看起来近乎不可能的、或者即使可能但也是代价昂贵的解决方案。如果这些特性被滥用的话，那么云开发人员则会冒着失去获得强大力量的希望的风险，甚至于冒着构建了更为昂贵的解决方案的风险。因为能力越强大，责任也越多。</p> 
+ <p>最后，如果我们再多谈论点传统开发人员工具，其实对于云开发人员和其他类型的开发人员来说，这些工具都是极其一致的。按照我的经验，虽然在Windows Azure平台上使用PowerShell可以在云环境中获得很多收益，并且也自动化了构建和部署。但对于大多数其他寄宿情形来说，这种做法也可以获得同样的效果。我只是觉得在一个像云这样的内在的分布式环境中这样做是很自然的。对于任何一个想使用云来让自己能力更强大的开发人员，我的建议是去学习和了解云计算的真正力量。它们是你的新工具，将会助力你实现从一名传统开发者成为云开发人员的目标，你曾经为此有过一段痛苦的时光甚至于以前这只能是一种奢望！</p> 
+</blockquote>
+<blockquote> 
+ <p><b>Piper</b>：好问题，这也是我一直仔细考虑的问题之一。Adron在一件事上绝对正确，就是云带来的是规模——无论是就数据本身而言（同时到达的数据量，或存储的数据量）还是就你如何在云环境中为了获得可用性而扩展你的应用至跨地理位置的多个实例而言。也就是说，虽然很多专为这个新时代而创建的工具和技术（如Riak和其他的分布式数据库）纷纷出现，并且与以前比工具箱中出现了很多不同的工具，我总是倾向于认为，开发者使用新的云平台的最重要的一件事，就是忘掉他们过去的假设——换种方式来思考如何部署应用。</p> 
+ <p>给开发人员提供一致的体验是构建能支持云应用的操作系统的目标之一。我们宁愿如此简单：用Ruby或node.js或随便某个工具来编写一个简单web应用，然后本地运行，或者运行在自己的单一服务器上，亦或运行在一个可缩放的弹性的云环境中。所以我们构建一个抽象层来隐藏不同的云基础设施（AWS、OpenStack或无论什么）之间的差异，让开发人员能够很轻松地部署应用。这确实意味着他们需要意识到不能依赖于自己应用的位置、硬编码的IP地址或其他配置，这些都是不好的做法，而应是在编码时应尽可能将代码与数据库（它们有可能会改变）之间解耦。所以思考方式和架构都是不同的，不过最起码很多工具和代码都可以保持不变。</p> 
+</blockquote>
+<p><b>InfoQ</b><b>：你们认为哪些IDE</b><b>最适合于云开发？开发者应为些IDE</b><b>添加哪些东西来增强其云开发的能力？你们对基于云的IDE</b><b>有兴趣吗？</b></p>
+<blockquote> 
+ <p><b>Piper</b>：很个人的说我是有潜在偏见的（作为一个Eclipse提交者），我很喜欢Eclipse，也是IntelliJ和RubyMine的粉丝。现在大部分成熟的IDE都拥有非常好的插件与云服务进行交互，比如有低级别的AWS Explorer，也有提供了平滑的构建/测试/部署体验Eclipse的Cloud Foundty集成插件。</p> 
+ <p>我曾使用过像Eclipse Orin和Cloud9这样的基于云的IDE和编辑器，它们都非常方便。我很高兴地看到它们演进得也很快，从而可以利用最新的web特性。</p> 
+ <p>当然很可能具有讽刺意味的是，我自己的开发者工具集根本不是以IDE为中心的。我将一天的大部分时间都花在Sublime Text以及命令行上，并且我也是Ubuntu的包管理和OS X的自制软件开源包管理器的大粉丝 :-)。</p> 
+</blockquote>
+<blockquote> 
+ <p><b>M&aring;rtensson</b>：听到Andy这么说很有趣，因为我有类似的背景，不过刚好相反。我是一个Microsoft/C#/Windows Azure的开发人员，这使得我在面对IDE环境和开发体验上极具偏见。最近Microsoft在Visual Studio中实现无缝的云开发体验上投入的努力是无与伦比的，而这是我在Visual Studio身上前所未见。它们确实做出了巨大的努力来支持快速和强有力的云开发。Visual Studio中的Server Explorer能够踏足任何云账户并和运行其上的任何服务进行交互。你可以管理它们，监控它们，并可以在云上运行类似于IntelliTrace和性能监视器这样的工具。然后你可以下载结果并在Visual Studio中进行分析。很自然地，你能在本地构建和测试任何云应用，包括最近加入的非超级管理员模式的计算模拟器（Express版本）。随后你可以将应用作为一个单元推送到位于Windows Azure上的自己的网站和云服务中。我在Visual Studio IDE所见到的用于云开发的（读作：Windows Azure开发）部分在Visual Studio历史上是无与伦比的。干了这杯Kool-Aid？是啊！大口地享受它吧！</p> 
+</blockquote>
+<blockquote> 
+ <p><b>Hall</b>：很明显有至上之选：Cloud9IDE。</p> 
+ <p>虽然如此，在现在很多情况下IDE看起来有所妨碍。当某个人需要在具有很多种语言和工具的不同环境之间切换时，最容易的就是抓到Sublime或类似的某个东西并运行。</p> 
+ <p>在重量级有像Visual Studio、Eclipse、IntelliJ、WebStorm和其他应用工具等这样的IDE。这些都很好，并且为一种或某几种语言提供了钩子以方便日常的运维编码工作。但是有可能当某一天快要结束时，某个不在那个IDE范围之内的语言突然冒出来，那就毁了你这一天。</p> 
+ <p>另外一方面，如果一个团队能够专注于某个特定IDE，使用它来加载任何开发所需要的一切，并且IDE能够和首选的云环境协同工作，那么Visual Studio和其他几个IDE就会脱颖而出。一个很好的例子就是用于Visual Studio的AWS的.NET插件。这个特殊的插件是我所见过的仅有的没有将开发者绑定于实际云的工具集。它只是极大地简化了部署和查看云服务，这些都不用离开Visual Studio。对于.NET开发者来说，这是极大的好处，因为他们总是被鼓励并习惯于在云开发过程中一直呆在一种IDE中。</p> 
+ <p>然而，在大多数web开发和云环境中，你会推送一些东西并使用像SSH这样的工具。在这种情形中Visual Studio和Windows通常都不是首选者（non-starter：比赛中不是首发的队员）。让Windows和Visual Studio与SSH和其他Linux或相关环境一起工作所花费的时间会非常让人沮丧。此时，非常戏剧性的是，像下面这样做反而容易得多，抓到一个终端，学会如何摆弄它，然后SSH连接到在这些终端，实际上就可以工作了。即使在使用Windows Azure，如果你并不打算在Windows上寄宿或也不想使用Visual Studio的至Azure的私有钩子，那么完全可以甩开基于Windows的开发工具转而使用运行于Linux或OS-X之上的来自于JetBrains的工具。从这些工具上获取好处，你的开发团队最终会感谢你。云毕竟是源自于Unix并将在多年来已成为Unix技术世界一部分的很多理念的基础上继续演化着。</p> 
+</blockquote>
+<p><b>InfoQ</b><b>：当开发者在构建云规模的应用时，应避免哪些反面模式呢？云提供商又如何避免你们犯这些错误，或反过来说，让你们做些错误的事情？</b></p>
+<blockquote> 
+ <p><b>Hall</b>：在开发云分布式应用时，开发者会掉入很多巨大的陷阱之中。</p> 
+ <p>我曾一次又一次看到的最大问题是，他们更愿意搭建单一的数据中心（比如AWS，一个区域等）。使用局限于某个数据中心的框架栈和故障转移所构建的某个应用仍然趋向于引起很多停机情况，比如“East 1 AWS Failure”，绰号为复活节故障。</p> 
+ <p>另外一个很大的问题就是很多提供商——好吧，也许是所有的提供商——仍然还有很多SPOFs（单点故障）。Windows Azure在几个月前由于其证书问题而打破了大数据中心的故障记录。AWS也出现过由于数据中心的某个网络设备而导致的故障。Rackspace同样也有类似的问题，也鼓励了人们使用机架设备，这又在已有的其他故障点之上生成了更多的SPOFs。整个想法是想让云架构具有弹性，而这些情况适得其反。</p> 
+ <p>从纯粹的开发者角度来看，最大的错误在于很容易在云的计算和存储环境中只是简单地构建一个传统的垂直堆叠在一起的应用。在云环境中使用按照传统架构信条所构建的应用会付出高昂的代价昂贵，并且效率很低。然而一次又一次，我看到人们只是重新实现某个垂直设计的应用；Sharepoint，WebSphere和其他所能想到的。他们通常只有单一的RDBMS，在此之上有个数据层，以及一个或者可能是几个应用节点，而这几个应用节点却位于某个有着SPOF的缓存层之上。</p> 
+ <p>总的来看，云开发中有很多反面模式，而运维和开发总是很容易实现它们。</p> 
+</blockquote>
+<blockquote> 
+ <p><b>M&aring;rtensson</b>：一个真正而又常见的反面模式就是将老的思考方式应用到新的范式上。比如认证；“我们想让顾客能够使用他们自己已有的Google，Yahoo！，Facebook和Microsoft帐号来认证我们的服务。当然我们也需要标准的用户名/密码登录方式。”你来找出其中的缺陷！基本上就是他们说想要设法变得很时髦，然后又想通过将自己的祖母带到聚会上来回归保守。如果这确实是你的开发和维护工作所要关注的，当然你可以运行并处理自己的用户名/密码认证服务。但如果你正在采用所有的方式来外部化自己的应用的认证，那么就需要通过将自己寄宿的认证服务（术语也称为安全令牌服务 STS）从你的应用中分离出来，然后才能真正实现这些方式。简而言之，你的应用不应关心任何认证。然而它应拥有一个可信任的、为你处理这个单独的关注点的标识符提供者。如果你不保存密码，则你根本不用保留此职责。最开初的表述是害怕由于不提供的标准的用户名/密码认证选项从而失去顾客。但这只会增加你的工作负荷，并且你将会失去使用云服务进行外部化认证的好处。如果你不能公正地对待这种新的模式，除了在开始就以完全错误的方式来使用它这种坏处之外，你最终还将会损害自己的业务。</p> 
+</blockquote>
+<blockquote> 
+ <p><b>Piper</b>：好吧，说到现在我已经很难在Adron和Magnus所阐述的常见反面模式之外再添加其他内容了——这些我都见到过。有个很明确的倾向就是以传统的方式思考并构建垂直而不是水平扩展的应用。在这样的情况下，当一个开发者“发现”像RabbitMQ这样的异步消息传递和像Redis这样的内存中的数据结构，然后想到，哦，这是一种“全新”的做事方法时，我总是很吃惊。不，完全不是，这些概念已经出现了很长一段时间，而云平台比曾经任何时候都提供了一个幂等的、最终一致的服务模式。</p> 
+ <p>在云提供商如何帮助你避免失误方面，就我自己来说，Cloud Foundry尽了其最大努力尽可能地来提供作为其环境一部分的有用配置信息，所以你可以编码来从配置信息中去查找值而不用硬编码端口、数据库设置等。这并不妨碍你硬编码，但是这样做确实不是一件好想法。</p> 
+</blockquote>
+<p><b>InfoQ</b><b>：Redmonk</b><b>的Stephen O’Grady</b><b>曾经说过“云计算的最重要特征：进入的低门槛。”你们认为哪些云对于开发人员来说学习会更容易一些？不仅只是让开发者注册，而且还向开发者展示了该如何开始部署应用这些方面，谁工作做得好？对于开发人员仍然还存在哪些进入门槛？</b></p>
+<blockquote> 
+ <p><b>M&aring;rtensson</b>：在瑞典我们说“'tala i egen sak”，意思就是说你是偏颇地来表达自己关于事情的看法。再次说明，我是一名虔诚的.NET/Visual Studio/C#开发人员。当然就会偏向Windows Azure云。仍然……哦！不用暴露我的年纪，我在这个持续的消防比赛中已经有很好的数十年的经历，而且我还从来没有在Microsoft看见过像这样的事情。也许巧合的是，微软的云的气息到来适逢其时？也许只是因为这就是应当做的？但我还从来没有在Microsoft身上见过如此致力于推动技术变迁的情况。并不仅是VB和C#，还有很多。Microsoft为现在的Windows Azure的多种平台和IDE构建和维护了工具集和SDK。PHP、Java、Node.js、Ruby、Python &amp; Visual Studio、Eclipse和开发一次并可给很多不同类型设备发送消息的能力；这些设备有iOS、Android、Window Phone和Windows 8。挑选你的毒药吧！今天谁是对Linux最大的开源贡献者？是的，这就对了，但是谁又曾知道这些呢？对于那些泡在这个空间的人以及那些知道Microsoft的人来说，这是一笔非常大交易！这是一个拥抱多元化的全新的Microsoft，并且它意识到许多公司为了日常运营将会使用很多服务和平台来构建自己的现实世界。这就是我们现在所处的情形，而Microsoft就在这儿。有哪个其他的栈/平台能匹配这个呢？</p> 
+</blockquote>
+<blockquote> 
+ <p><b>Hall</b>：对于任何PaaS（平台即服务），进入门槛都尽可能如你所能达到的一样低。当我们深入探讨这些时，这会得到一些奇怪的比较结果。Window Azure据称首先是PaaS，然后才是IaaS（基础设施即服务），它以这种方式开始，然后努力推广它。AWS甚至都没有提到过PaaS这个词，即使他们拥有很多提供了PaaS风格的单一命令行（某些时候要点击）部署方式的服务和特征。而对于其他那些没有一个明确的PaaS说法的环境，门槛过多，而且很笨重，并且我觉得不太值得提及。所以对于那些没有一个合理的PaaS说法的我将会在其他时候再讨论。</p> 
+ <p>这带来了另外一个关键之处，在AWS上实际运行的所有PaaS服务都是怎么样的。Heroku、EngineYard、AppHarbor、AppFpg和几乎每个Cloud Foundry或OpenShift PaaS服务都安装在AWS上。所以很明显，如果某个应用包含了AWS的服务和AWS提供了PaaS服务的客户，那么它在可用性方面就大幅领先于其他人。即使我们回溯并只是看看首批AWS客户的安装和使用，这些客户在使用Beanstalk、EC2或S3，其安装和使用都极其简单。签约、检查认证机制或类似于通过邮件发送的编码令牌，然后安装好上面所提到的项目之一并启动，你就已经在运行一个应用了。</p> 
+ <p>可以说最严重的障碍都在基于Heroku、EngineYard、Cloud Foundry和OpenShift的PaaS中被移除了。在上面这样PaaS环境中可以很容易地安装、使用和部署应用，这些恰好都是位于AWS中。</p> 
+ <p>但是对于Windows Azure，Windows Azure团队和努力将这些云选项从一个“绝对不”移动到“嘿，这是非常容易的且功能丰富的”。 Windows Azure，我不会再为回答这个问题而谈论其过去，它已经戏剧性地重新定义了如何更贴近部署，并积极地比几乎其他每一个PaaS或IaaS服务提供商提供了更多的部署选项和部署能力。另外其已转变为多语言的，在这场由AWS扮演兔子的龟兔赛跑中获胜。比如AWS节点Beanstalk功能。在Windows Azure能够极为容易地、优雅地和极好地在AWS上部署基于Node.js的应用差不多一年之后，AWS才实现。加上它可以围绕Node.js来定价，对于小型的共享的云寄宿模型来说，.NET、PHP和其他的应用已经为零。这对于开发者来说当然非常棒，他们可以在运营之前测试、调试大多数的应用。</p> 
+ <p>总的来说，上面几乎涵盖了我个人所使用和一直关注的主要提供商的基本内容。Windows Azure、AWS、Cloud Foundry、OpenShlft、Heroku、EngineYard都是现在值得关注的主要公司，它们正在这个空间内做着繁重的创新工作，并正在逐渐地前进以移除更多的进入门槛。</p> 
+</blockquote>
+<blockquote> 
+ <p><b>Piper</b>：我喜欢Redmonk的这些家伙！他们都是非常聪明的人，并且我推荐那些任何不熟悉他们意见的人去寻找他们。开发者都是新的拥护者。</p> 
+ <p>所以，是的，我完全同意进入的低门槛对于开发人员快速采用我们所讨论的云技术来说非常重要。实际上，这就是某个“啊哈时刻”，这可以让我从自己以前在IBM的角色转换到VMware的Cloud Foundry上来——本地编码应用的能力，无需任何改变地将其推送至云上，然后在几秒钟内将其扩展。鉴于我的角色，不用想就我可以说，很明显，Cloud Foundry进入门槛很低……但就如Adron所说，我想很多相似的PaaS提供商都是这样，如Heroku。我同样对为所见过的在Visual Studio和Azure环境中开发者所展示的工具集成所惊叹，在这个环境中开发者会觉得走向云的旅程十分愉快。我应该指出的是，很多云提供商，特别是PaaS提供商也拥有工作得很好的IDE插件。然而对于真正地低进入门槛，我仍然喜欢源自于Github命令行方式的克隆，本地构建和测试，然后从命令行推送至云的体验， Cloud Foundry和几个其他云提供商都提供了这种——这比需要一个IDE更轻量级。</p> 
+</blockquote>
+<p><b>InfoQ</b><b>：对于开发者来说哪些事情在过去曾经是很难的，而现在由于云变得简单多了？而且，有没有某些事情在过去是简单地忽略掉或者根本不做，而现在变得简单明了的？</b></p>
+<blockquote> 
+ <p><b>M&aring;rtensson</b>：这是一个大局观的问题。当我们开发时什么是重要的？我们会在某一天回忆起云之前的“黑暗时代”并问自己在那个时代我们是曾经如何让一切运转起来的吗？构建一个全球可伸缩的供几十万甚至上亿用户使用的解决方案确实不是我们大部分人都曾经做过的。但是我们确实可以做到这一点。如果我们业务比像Facebook那样构建自己的数据中心要小得多的话，那么能有机会看到过自己能做到哪一步吗？如果有一个了解了云平台的力量的像样的架构师的话，我就敢说再开发这样的解决方案甚至都不再是什么难事了。现在没有新成立的公司会说“好吧，我们现在获得一笔风险投资，让我们出去采购一些服务器回来。”如果我们展望未来并设想我们开发将会所使用的环境，我确信CPU的能力、内存的大小、存储容量、甚至互联网的速度对于我们构建应用的方式的重要性会越来越小。相反我们会开始依赖于总会有足够的容量给我们正在做的无论什么东西，以及能满足我们的服务所要求的无论什么样的使用模式的需要。当然事情在未来仍然会出现中断，并且某些时候服务会出现故障。但不应会出现这样的情形，即我们不得不恐慌地冲到市中心去买一个全新的硬盘驱动器。我们的服务将会是自愈的。在这个大局观中我们会使用新的模式来开发，这些模式从开始就会把所有这些问题都考虑进来，而且我们从来也不会再关心是否拥有足够的计算能力。</p> 
+</blockquote>
+<blockquote> 
+ <p><b>Hall</b>：我将建议的是排在前三名的事物：</p> 
+ <ol> 
+  <li>已经影响到开发人员能如何来开发的最大的影响是能力，即仅需在这儿或那儿点击一些选项或某个脚本就可以让整个运行开发环境跑起来。服务器、测试服务器、UAT服务器等。在以前，即使在简单的虚拟化下这些在很多方式上都会受到限制。但是现在，在拥有AWS、Azure以及其他类似云环境所提供的云计算能力的情形下前面那些都完全不再是问题。以前需要耗时几小时或几天甚至几个月的事情现在几分钟之内就可以完成，并且以一种能向前移动并保留全部努力的方式工作，而这种方式在6-7年前完全无法想象可以这样做的。</li> 
+  <li>跨地理边界的分发系统的能力，这在6-7年前，即便不用花费数百万美元资本投资，也会需要数十万。现在每个月仅只需要几百或几千美元，一个庞大的、跨越广为分散的多个国家的分布式系统在几分钟之内就可以安装并运转起来，并准备好投入使用。</li> 
+  <li>与垂直叠高的方法相比，分布式系统正在成为普遍的做法。随着这种改变，隐藏在幂等、弹性、自愈、异步、可伸缩、高度可用性系统背后的思想在大大小小公司的绝大多数程序员中出现。随着越来越多的开发者转向水平扩展的做法，垂直扩展背后的极端受限的设计逐渐地被扔到路旁。随后一系列很多用来增强利用这些功能的能力的语言和框架应运而生。这种观念模式和方法的变化一直在持续进行着，并日益增强着云计算的能力。</li> 
+ </ol> 
+ <p>……这就是在我脑袋中立刻能想到的排在前三的最重要的事物。现在已经发生那么多的变化，获得了很多的进展，以至于关于这个话题有人能写一本书了。</p> 
+</blockquote>
+<blockquote> 
+ <p><b>Piper</b>：对于开发人员来说，云让哪些变得容易呢？</p> 
+ <ol> 
+  <li>按需的、潜在的可自由支配的环境。实际上，像Vagrant这样的本地工具还一如既往是开发者的朋友，但是能快速提供和千篇一律的克隆环境以及能以通常很小的代价运行这些环境的能力也极具价值。这对于开发和运维活动一直是巨大的推动力——开发者不用再面对运营维护者的突发奇想，开发者曾经得去为他们提供新的环境。这并不是为了敲打运营团队——新的云工具和环境也为他们提供更多的敏捷性。“作为服务”是*aaS缩写的关键部分。</li> 
+  <li>可伸缩性、可用性、弹性。我想Magnus和Adron对这部分已经说得很好。在这里除了将它们归结为这三原则之一之外，我无法再补充什么了。</li> 
+  <li>我认为有两件事——“大数据”和“物联网”——因为云的可用性在很大程度上变得更有能力。垂直扩展的大数据库这许多年来已经成为可能，但是具有海量存储容量、复制、MapReduce等特性的分布式数据库更倾向于与云联系在一起。传感器的连通性、数据的采集和对数据的响应一直以来都是只以单点为基础，但是现在的开发者已经可以构建复杂的能实现自己想法的系统，使用云结构的灵活性构建的系统只有零或很少几个故障点。</li> 
+  <li>上面只是一个快速总结。这是一个技术演变具有深远影响的领域。</li> 
+ </ol> 
+</blockquote>
+<p><b>InfoQ</b><b>：虽然很多开发人员都开始花费大量的时间来开发云应用，现实是还有很大一部分开发者在其日常工作中都没有理由去接触云。假定这部分开发者没有充足的自由时间来体验云环境，那么你们会推荐他们做什么以便与最新的云服务和战略与时俱进？你们自己又是怎样跟上这种不停向前流动的云空间的呢？</b></p>
+<blockquote> 
+ <p><b>Hall</b>：对于那些没有接触过云/公共云或刚出现的私有云的开发者来说，我发现两种很有用的方式非常重要。</p> 
+ <ol> 
+  <li>学习一般的分布式系统。这些包括分布式数据库、分布式计算（网格计算等）、通过自动化或大量其他选项进行的跨分布式环境的网络管理。这段时间也出版了很多书籍，这些都能在这上面给予他们很多帮助，因为很多工作都已经极大地学术化了（对那些实际上正试图利用分布式系统的编码人员或运营人员并不是很有用），但其中很多东西在日常的开发和运营中基本上没用。</li> 
+  <li>当这样做有用时候，尽量尝试在日常的开发过程中小规模地引入它们。即使没有用到云，从分布式角度而不是垂直式角度出发来构建某个系统也可以拥有强有力、有用性和健壮性这样的特性。下面就是我这段时间来一直坚决鼓励的一个做法的要旨：除非应用只是临时性的，否则请不要开发纯粹的垂直式应用。如果某个应用的期望生命周期超过一年的话，那么请按水平扩展的、可伸缩的架构来构建该应用，这样它在一个分布式系统环境之中也能很好地工作。</li> 
+ </ol> 
+</blockquote>
+<blockquote> 
+ <p><b>M&aring;rtensson</b>：向云迈出第一步很容易。首先我想提醒的是最大的问题是，从广泛和普遍采用云计算方面来看，我们目前处于哪个位置？我是一名云计算的倡导者和忠实信徒，并且我真的很想相信现在我们正准备促进云的大爆炸。这就是说很多即使不是所有的信号都在指着这个方向：培训公司在这上面的兴趣在显著增加，顾问们注意到更多关于云的喋喋不休，更多的客户正在激起兴趣而提供商的市场份额也在持续增长。我实在看不到一些关于正在快速增加地采用云技术的反面迹象。传统寄宿选项仍会继续挣扎求生并尽一切能力来显示自己仍是可替代的选项，但在我看来这只是延缓了它们无法避免的命运的到来。特别如果你认为混合场景也是一种真正的云场景的话，我想我们应也将看到一个快速应用需求。如果我们谈论技术采用生命周期，我认为我们在甲板上已拥有了早先的采用者，我们正站在深渊的边缘，深渊将早先的采用者们与其它分割开来。</p> 
+ <p>云平台的提供商们正在尽力做到很容易就能采用并平滑地过渡到各自产品。比如Microsoft最近对于某些试用场合就取消了信用卡的要求。为了回答这个问题，开始与云计算同行将会实际上已经是很容易的了。你不需要花费大量时间来上手。你可以仅仅需用几分钟时间来注册并获得一个试用的可运行版本。实际上拥有一个已分配给自己的MSDN订阅的每个人都已在云中有一个个人的开发/测试环境。所需要的就是<a href="http://bit.ly/140uyUP">激活MSDN订阅上的Windows Azure</a>，这大概需要2分钟左右。大量的在线指南可以帮助你将自己的第一个应用部署到平台。例如<a href="http://magnusmartensson.com/">我博客</a>上的视频演示。确实地如果你有15分钟的话，我敢打赌你肯定能将自己的第一个应用在Windows Azure云上正式运行起来。这可能是一件简单得也许微不足道的事情，但它真的很酷很让人耳目一新。</p> 
+</blockquote>
+<blockquote> 
+ <p><b>Piper</b>：我想PaaS所提供的任何东西都是瞄着提供一个无阻力的部署表面——AppEngine、Cloud Foundry、Heroku、OpenShift以及Azure的涉及PaaS的很多方面等等确实都是这样。如果在自己所选的平台上没有尽力提供一种在其上部署应用的简单方式，那么很有可能你开始就没有做对。当你开始寻找自己应用中的可伸缩性和数据访问方面某些问题时，学习曲线上仍然还有很多要去学习。</p> 
+ <p>个人来说虽然我发现像O’Reilly这样的出版社所出版的很多不错的语言和编程指南书籍常常都有好几年的生存期，但由于云领域的快速创新，“云”相关的书籍显然还没有老到有这种火候。只要等待一个月，AWS就会已引入一个全新的API或调降了价格，某个PaaS提供商就会宣布有了新的合作者、插件或功能！这就是说在博客中挖来挖去并跟随Twitter上的那些能推荐很好的链接的家伙会更有用。我发现两个特别的来源是很有价值的。Github活动feed让我能跟随自己的联系人所评级或创建的新的项目、apps和库。DevOps每周简讯（云和开发空间的每周汇总邮件）也是一个获取关于最新进展的摘要信息的有用途径。</p> 
+</blockquote>
 <h2>作者简介</h2>
-<p><strong>黄浩松</strong>，华南农业大学学生，现于阿里巴巴数据平台实习。微博ID：<a href="http://julialang.org/">@华农金中菊</a></p><br><br><br><br><br><br></body></html>
+<p><img src="http://infoqstatic.com/resource/articles/virtual-panel-development-in-cloud/zh/resources/1024003.jpg" style="float: left; margin-right: 10px" alt="" _href="img://null" _p="true" /> <b>Adron Hall</b>：软件架构师、工程师、程序猿、码农、分布式系统的拥护者。他是位多产的开源贡献者，<a href="https://github.com/Adron">积极使用Github</a>来贡献项目。你可以在<a href="http://compositecode.com/">CompositeCode.Com</a>上了解他的思想，还可以在Twitter上的<a href="https://twitter.com/adron">@adron</a>跟随他。</p>
+<div style="clear:both">
+ &nbsp;
+</div>
+<p><img src="http://infoqstatic.com/resource/articles/virtual-panel-development-in-cloud/zh/resources/1024004.jpg" style="float: left; margin-right: 10px" alt="" _href="img://null" _p="true" /> <b><a href="http://magnusmartensson.com/">Magnus M&aring;rtensson</a></b>：就职于瑞典的Active Solution顾问公司，担任云架构师/开发者。他是Windows Azure MVP、Windows Azure的业内人士、Windows Azure顾问。你可以在<a href="http://magnusmartensson.com/">MagnusMartensson.com</a>上阅读其著述，还可以在Twitter上的<a href="https://twitter.com/noopman">@noopman</a>跟随他。</p>
+<div style="clear:both">
+ &nbsp;
+</div>
+<p><img src="http://infoqstatic.com/resource/articles/virtual-panel-development-in-cloud/zh/resources/1024005.jpg" style="float: left; margin-right: 10px" alt="" _href="img://null" _p="true" /> <b>AndyPiper</b>：倡导Cloud Foundry的开发者。他的日常工作是包含以下内容的有趣混合：技术市场、业务开发、与开发者交谈、各种会议上的公开演讲、撰写文档和示例、向工程师抱怨其中断了事情、博客和推特、还有就是组织活动。从<a href="http://andypiper.co.uk/about/">这儿</a>可以了解他更多东西，还可以在Twitter上的<a href="https://twitter.com/andypiper">@andypiper</a>跟随他。</p>
+<div style="clear:both">
+ &nbsp;
+</div>
+<p><strong>查看英文原文：</strong><a href="http://www.infoq.com/articles/virtual-panel-development-in-cloud">Virtual Panel: Adjusting to Development in the Cloud</a></p>
+<hr />
+<p>感谢<a href="http://www.infoq.com/cn/author/侯伯薇">侯伯薇</a>对本文的审校。</p>
+<p>给InfoQ中文站投稿或者参与内容翻译工作，请邮件至<a href="mailto:editors@cn.infoq.com">editors@cn.infoq.com</a>。也欢迎大家通过新浪微博（<a href="http://www.weibo.com/infoqchina">@InfoQ</a>）或者腾讯微博（<a href="http://t.qq.com/infoqchina">@InfoQ</a>）关注我们，并与我们的编辑和其他读者朋友交流。</p><br><br><br><br><br><br></body></html>

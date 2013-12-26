@@ -1,14 +1,38 @@
-<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>すべてが決まっているプロジェクトの成功の陰にあるスクラム</h3><p><a target="_blank" href="http://www.infoq.com/news/2013/11/scrum-fixed-everything-success"><em>原文(投稿日：2013/11/12)へのリンク</em></a></p>
+<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>学習する組織における自己啓発のサポート</h3><p><a target="_blank" href="http://www.infoq.com/news/2013/12/support-personal-development"><em>原文(投稿日：2013/12/12)へのリンク</em></a></p>
 <div class="article_page_left news_container text_content_container"> 
  <div class="text_info"> 
-  <p>価格と完了日が決まっているプロジェクトをスクラムとどのように組み合わせるか? Tim van Baarsen氏が、水面下でスクラムに取り組みながら、すべて決まっているプロジェクトを完成させた自分自身の経験について<a href="http://blog.trifork.com/2013/08/22/lessons-learned-how-to-do-scrum-in-a-fixed-price-project/">考察した</a>。</p> 
-  <p>最初の要求からバックログを作成し、Tim氏のチームは、定期的なスプリントで繰り返しリリースをし始めた。進捗を示し、バーンダウンで視覚化することで、非常に細かいタイムボックスと仕様がなくても、予測可能になり、うまく適応できるようになった。そのプロジェクトは、予算内で期日通りに納品された。</p> 
-  <p>完全に制約のあるプロジェクトにおけるスコープの調節方法を理解するのを助けるために、Tim氏は次のように書いた。“「すべてが決まっているプロジェクト」でも、要求はその内に変わることは分かっています。いつもそうですから。”</p> 
-  <p>そして、続けて述べた。“変更要求は、私たちのアジャイルアプローチにはあまり合っていません。それでも、できるだけ柔軟に対応したいので、なるべく<b>要求を交換する</b>ようにします。”</p> 
-  <p>Tim氏は、“要求の交換”のことを、理解できる範囲で変更を扱う仕組みとして述べている。余分なストーリーやあまり重要ではないストーリーを新しいものと取り替えれば、ストーリー全体の大きさは変わらない。これらの“要求の変更”を通して、作業の全体量を一定に保つことで、変更のリスクは軽減される。</p> 
-  <p>2013年の初めに、Peter Vaihansky氏が、大きなプロジェクトを完全に制約できるかどうかという疑問を<a href="http://www.techwell.com/2013/07/how-agile-can-deliver-fixed-budget-not-fixed-price-promise">投げかけた</a>。McKinseyとOxford大学のBT Centre for Major Programme Managementによる調査を引用して、すべてが決まっているプロジェクトの成功は神話であると、Peter氏は指摘する。その調査は、5,400以上のITプロジェクトやソフトウェアプロジェクト(特に大規模なもの)を調べたもので、平均して、<a href="http://www.mckinsey.com/insights/business_technology/delivering_large-scale_it_projects_on_time_on_budget_and_on_value">66パーセントのプロジェクトが予算を超え、33パーセントはスケジュールが遅れている</a>。</p> 
-  <p>Peter氏の記事は、すべてが決まったプロジェクトは、大抵、フィードバックループの欠如が原因で失敗すると述べている。Peter氏によると、決まった価格を決まった予算に置き換えることでこれは解決できる。”あなたの財政的な支出は上限が決まっていて、締め切りもおそらく決まっています。しかし、プロジェクトが実際にどのように進んでいるかという<a href="http://kenschwaber.wordpress.com/2011/05/03/empiricism-the-act-of-making-decisions-based-on-what-is/">現実に基づいて</a>、範囲は変化し、要求も変わるでしょう。”</p> 
-  <p>アジャイルプロジェクトの成功は、常に関係する人々にかかっている。プロジェクトの最初に、Tim氏は、クロスファンクショナルな“タイガーチーム”を作った。また、Tim氏は従来のプロダクトオーナーが必要であることも認識していた。完全な仕様は“プロジェクトを実施するために必要なこと”に絞り込まれ、誰かが顧客の要求を理解し、責任を持って決定していた。</p> 
-  <p>プロダクトオーナーと要求を変更するプロセスを通して、チームは時間を延ばさずに、変更に応える手法をやって見せた。プロダクトオーナーがスコープを調節することで、最低限実現できる製品が、決まった時間内に納品できたのだ。</p> 
+  <p>組織は従業員を通して学習する。アジャイルなやり方を仕事に導入するには、組織は従業員の自己啓発をサポートする必要がある。</p> 
+  <p>Dave Moran氏は「<a href="http://www.softwareresults.us/2013/01/become-learning-organization-not-copycat.html">Become a Learning Organization, Not a Copycat</a>」というブログ記事で、アジャイルをサポートするには学習する組織を作る必要があると述べた。</p> 
+  <blockquote> 
+   <p>Peter Senge氏が「The Fifth Discipline: The Art &amp; Practice of The Learning Organization<img border="0" alt="" src="http://www.infoq.com/mag4media/repositories/fs/news/2013/12/support-personal-development/en/resources/ir?t=softwar06-20&amp;l=as2&amp;o=1&amp;a=0385517254" width="1" height="1" _href="img://ir?t=softwar06-20&amp;l=as2&amp;o=1&amp;a=0385517254" _p="true" />」（邦訳『学習する組織――システム思考で未来を創造する』）で指摘しているように、学習する組織にいる人にはある性質があります。学習する組織にいる人の重要な特性とは、自己マスタリーを追い求めていること – 「特別なレベルの熟達」を得ようと努力していることです。</p> 
+  </blockquote> 
+  <p>学習する組織では、人々が継続的に学習し、自己研鑽に励んでいる。</p> 
+  <blockquote> 
+   <p>学習する組織を育むためには、マネジメントが知識を横展開することを促すことにより、学習をサポートすることが重要です。トヨタはこれを<i>ヨコテン</i>と呼んでいます。そして、その基本ルールの1つが、「何か新しいことを学んだり、改善方法を発見した人には、その知識を共有する責任がある」というものです。</p> 
+  </blockquote> 
+  <p>Anders Ivarsson氏は<a href="http://labs.spotify.com/2013/11/21/personal-development-at-spotify/">Spotifyにおける自己啓発</a>について書いている。従業員にキャリア機会を提供するため、Spotifyは「アドオン」というものを作っているそうだ。</p> 
+  <blockquote> 
+   <p>アドオンとは、新しいスキルや普段の役割以外の責務を探求するための手段です。キャリアをある役割から別の役割へと進んでいく階段のように考えるのではなく、普段の役割に長期的あるいは短期的に追加できる、スキルや責務範囲のタグが集まったタグクラウドのように考えるのです。</p> 
+   <p>個人とSpotifyの両方に役立つアドオンの例として、スピーカーアドオンがあります。スピーカーアドオンを持っている人は、時間の一部を世界中で開かれるカンファレンスのプレゼンに費やせます。また、スピーカーとしてのトレーニングを受けることで、スピーキングスキルを磨き、さらにSpotifyの代表として話すことができます。こうして、スピーキングはあなたの責務の一部となり、普段の責務に加えて、それをやることになります。</p> 
+  </blockquote> 
+  <p>Simon Cromarty氏は人材育成と投資に関するブログ記事で、Red Gateにおける自己啓発とキャリアアップのマニフェストについて共有している。</p> 
+  <blockquote> 
+   <p>私たちは以下のことを信じています。</p> 
+   <ol> 
+    <li>継続的啓発は、全員にとって良いことであり、必要なことです</li> 
+    <li>人は皆、違っています</li> 
+    <li>たった1つの「キャリアパス」はありません</li> 
+    <li>肩書きは答えではありません</li> 
+    <li>「進行方向」が重要です</li> 
+    <li>自己啓発は共同努力です</li> 
+    <li>もし役割に不慣れなら、基本に徹しましょう</li> 
+   </ol> 
+  </blockquote> 
+  <p>これら7項目について、詳しくは<a href="http://dev.red-gate.com/personal-development-manifesto/">自己啓発マニフェスト</a>に説明されている。</p> 
+  <p>Ryan Olivett氏は「<a href="http://lithespeed.com/developing-learning-culture-personal-a3-template/">Developing a Learning Culture: Intro to the Personal A3 Template</a>」で、自己学習のためのA3テンプレートについて説明した。このテンプレートはトヨタのA3問題解決に基づいており、従業員が自分のものとして自己啓発するという、学習するカルチャーを築くのに使うことができる。</p> 
+  <blockquote> 
+   <p>従業員は個人のA3レポートを作ります。これは、キャリア改善行動を記録・計画するためのキャリアロードマップを作るにあたり、自分の強みと情熱について戦略的に考えるのに役立ちます。最終的には、従業員が継続的に自己のスキルを改善するよう促します。従業員は、プロセスを手助けしてフィードバックを与えてくれる、メンターとパートナーを選びます。</p> 
+  </blockquote> 
+  <p>学習する組織になるために、あなたの組織は何か自己啓発のサポートをしているだろうか？</p> 
  </div> 
 </div><br><br><br><br><br><br></body></html>

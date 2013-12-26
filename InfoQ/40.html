@@ -1,7 +1,9 @@
-<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>针对移动应用的A/B测试</h3><p>Best.ly支持移动应用的A/B测试，不需要改变代码然后再重新提交到应用商店中。现在只有一个针对iOS平台的本地类库，但是针对Android生态系统的类库已经在开发中，很快就会发布。</p>
-<p>A/B测试通常会在市场营销和广告行业中使用以便于优化客户的点击率。例如一个网站发布了两个版本（A和B），它们在某一方面有所不同。测试用户被分为两组，每一组使用一个版本的网站。在测试的最后对比两个网站版本的转换率从而决定哪一个版本更加成功。然后将赢得比赛的版本发布给所有的用户使用。</p>
-<p>注册之后，Best.ly会让移动应用的开发者在线管理不同的应用程序。对于每一个应用程序可能会有任意数量的实验，在每一个试验中有任意数量的变量（variations）。一个实验表示应用程序中需要进行测试的一个组件，一个变量表示一个组件的不同版本。</p>
-<p>我们能够通过一个<a href="http://cocoapods.org/">CocoaPod类库</a>实现Best.ly和iOS应用程序的集成。实验中的不同变量声明为块，在Objective-C结构中指一个lambda表达式或者闭包（closure）。实际上应该执行哪一个块是由Best.ly类库选择的，这依赖于实验的管理设置。</p>
-<p>在测试期间，Best.ly能够在一个仪表盘上实时地监控用户行为。变量的权重（weights）可以在运行时修改，想要的实验变量最终可以提交。在提交了一个变量之后，实验就会完成，然后所有的用户将会使用选择的变量。因为是Best.ly选择需要执行的变量，所以调整变量权重或者提交一个变量的时候并不需要修改应用程序代码，同时也不需要将应用重新提交到应用商店上。</p>
-<p><a href="http://best.ly/pricing">价格</a>取决于被测试应用程序的月用户量。月用户数为200是免费的、月用户数达到2000每月$19、达到20.000每月$79、达到200.000每月$399。购买之后可以使用所有的计划，包括多变量测试和一个无限数量的实验。</p>
-<p><b>查看英文原文</b>：<a href="http://www.infoq.com/news/2013/11/ab-testing-for-mobile-apps">A/B Testing for Mobile Applications</a></p><br><br><br><br><br><br></body></html>
+<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>Oracle优化Java字符串内部表示</h3><p>为了不断改善Java性能，Oracle已经宣布自Java 1.7.0_06开始更改String类中的字符串内部表示。</p>
+<p>此次更改删除了String底层实现中的两个非静态字段，这样做有助于防止内存泄漏。</p>
+<p>原来的String实现基于四个非静态字段。第一个是char[]值，它包含组成String的字符。第二个是int offset，它保存值数组中第一个字符的索引。第三个是int count，它保存用到的字符数。第四个是int hash，它保存String哈希码的缓存值。</p>
+<p>Oracle报告称，当调用String.substring（）创建String时，原来的实现会产生性能问题。许多其它API，如Pattern.split（），都会在内部调用substring（）。当String.substring（）被调用时，它会引用原来的包含组成String的字符的内部char[]。</p>
+<p>原先的实现之所以采用这种设计方式是为了节省内存，因为子串仍然会引用原来的字符数据。除此之外，String.substring（）的运行时间是一个常量（O（1）），而不像新的实现那样，有一个线性（O（n））运行时间。</p>
+<p>不过，如果应用程序从原来的长字符串中抽取一个短字符串，并随后丢弃原来的字符串，那么在这种情况下可能会产生内存泄漏。在这个场景中，仍然存在一个活引用，指向原来字符串底层那个原来较大的char[]值，这可能会占据许多不再使用的数据字节。</p>
+<p>在早期版本中，Oracle建议在短字符串上调用new String（String）构造函数来避免这种情况。那个API只复制所需的底层char[]的一部分，从而解除新的较短的字符串与原来的较长的父字符串的关联。</p>
+<p>新规范删除了String的offset和count字段，因此子串不再共享底层的char[]值。</p>
+<p><b>查看英文原文：<a href="http://www.infoq.com/news/2013/12/Oracle-Tunes-Java-String">Oracle Tunes Java's Internal String Representation</a></b></p><br><br><br><br><br><br></body></html>

@@ -1,21 +1,173 @@
-<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>书评：Java核心编程卷1——基础</h3><p>现在已经步入了21世纪，我们很难想象曾经Java相关的图书是那样的稀少，但这就是Java刚出现时的情况。那时所有与Java相关的图书基本上都是由Sun公司的几个工程师们所发布的，比如说Arthur Van Hoff et.al所写的“Hooked on Java”以及Patrick Naughton所写的“The Java Handbook”。</p>
-<p>当然了，这些图书填补了Java的空白，不过每本书都有3、400页，这些图书都假设读者了解程序，特别是面向对象程序设计。</p>
-<p>1996年Cay Horstmann与Gary Cornell出版了名为“Java核心编程”的图书，这本书有600多页，它没有做任何假定，从头开始教授读者Java，这本书的风格清晰且可读性强，不禁让我们回想起早期Brian Kernighan与Patrick Henry Winston的编程课程。</p>
-<p>17年转瞬即逝，Horstmann与Cornell又出版了<a href="http://www.informit.com/title/0137081898">Java核心编程第9版</a>。该版共分为两卷，卷1（基础）有974页，卷2（高级特性）甚至达到了1128页。你可以在书中找到有关Java 7（最新的JDK版本）的一切内容，包括集合、泛型、并发以及从JDK的首个版本发布以来Java的所有特性。</p>
-<p>新版的编写风格依然清晰且具有很强的可读性，并且提供了大量的示例，这些示例虽然基本但却很重要。显然，作者在创建这些示例时经过了大量的思考，示例非常详尽，为读者提供了很有价值的参考。书中充斥了大量的“C++注释”，旨在以Java的方式来指导C++程序员。</p>
-<p>（单击下图以放大查看）</p>
+<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>前端工程精粹（三）：本地调试与数据模拟</h3><p>自Web项目诞生以来，程序员们渐渐把整个项目的开发拆分为了前端与后端两个部分。随着项目复杂度的不断增加，同时为了快速迭代出更多Web项目，IT界就把两个部分的工作分成了两个工种来完成--前端开发工程师以及后端XX语言开发工程师(我们在此简称为FE与RD)。所以，在一个Web项目开发过程中，就出现了前后端定义数据接口、参数等等工作，同时产生了一个巨大的耦合问题--前端工程师完全需要依赖后端工程师的数据接口以及后端联调环境。当一个FE快速完成了页面的搭建，需要后端数据来完成页面交互等工作时，他唯一能做的就是等待RD完成他的工作，有时甚至还需要RD来搭建一个联调环境等等。</p>
+<p>也许更多时候情况比我上述所说的更复杂，需要项目管理者协调好项目进度、前后端协同开发等等问题。当然更多时候FE希望自己能解决这些问题，靠别人不如靠自己，对吧？这时候为了不依赖后端工程师，可以自己搞定后端环境及数据，都需要准备什么呢？下面我来举例:</p>
+<ul> 
+ <li>完整的server支持，可以真实运行模板、后端程序等，同时最好满足可以跨平台运行、支持常用后端语言(java、php)等</li> 
+ <li>模拟url请求，能够有控制url请求的能力，不是单纯的直接访问返回内容的server，通过控制url来解决ajax请求模拟返回的功能</li> 
+ <li>数据模拟，有本地数据mock的能力，分离模板与对后端数据的依赖，使得fe能独立于rd进行项目开发</li> 
+</ul>
+<p>如果可以达到以上要求，你便能拥有一套完整的本地开发环境，拥有独立开发前端项目的环境以及解决与后端开发的耦合问题。使用过FIS2.0的用户也许会发现，FIS2.0可以完整解决以上的问题，在任何地方、任何环境都可以独立开发，接下来我为大家介绍下FIS本地开发环境是如何做到这些要求的。</p>
+<h2>一个轻巧独立的服务器</h2>
+<p>我们需要一个什么样的Server？</p>
+<ul> 
+ <li>可以监听请求，负责对页面请求进行响应</li> 
+ <li>后端语言的解析能力，比如可运行java、php等，不是简单的静态Web服务器</li> 
+ <li>易搭建，没有繁琐的安装过程，尽可能的不依赖其他复杂环境</li> 
+ <li>性能与可伸缩性，可快速的响应请求，同时稳定响应一定级别的并发数</li> 
+ <li>平台需求，可跨平台运行，解决使用不同平台开发的用户需求</li> 
+ <li>可靠性，可稳定长期运行，有服务器异常处理机制等</li> 
+</ul>
+<p>以上这些就是我们总结出一个合理可靠轻巧的服务器需要达到的要求，它是本地开发环境的基石。面对需求，我们需要的就是解决这些需求，当然从最开始用很挫的方式一步一步尝试，到最后发现需要怎么实现这个server，经历的痛苦也是不言而喻的。最后我们发现需要实现以下内容以及找到了一些匹配的“轮子”来做这些事：</p>
+<ul> 
+ <li>为了可跨平台部署及易搭建，我们选择了用JAVA开发。</li> 
+ <li>为了满足性能需求，我们需要多个CGI进程来处理并发请求，同时需要一个队列来保证接受请求不会丢失</li> 
+ <li>为了可以运行PHP程序，我们选择使用PHP-CGI进行解析以及通过Fastcgi协议与其通信</li> 
+ <li>为了可扩展不同的Web服务，我们需要一个可灵活扩展的Servlet容器，可处理不同的Web应用</li> 
+ <li>为了保证服务器的稳定性，我们需要一个服务器守护进程，保证服务器是正常运行的</li> 
+</ul>
+<p>我们需要一个强大的HTTP SERVER来监听请求、分析HTTP协议、创建socket通讯，同时还得需要一个Servlet容器来扩展不同的Servlet服务，进行不同Web应用的解析，因此我们选择了JETTY来作为SERVER的Web服务器。JETTY可做作为Web服务器嵌入到JAVA程序中，而且是轻量级、性能极高的，同时提供灵活可扩展的Servlet容器，满足开发针对各类Web应用的业务Servlet。</p>
 <div id="lowerFullwidthVCR"></div>
-<p class="image-wide"><a href="/resource/articles/core-java-fundamentals/en/resources/listing.png" _href="resource://listing.png"><img _p="true" _href="img://Listing Small.jpg" alt="" src="http://www.infoq.com/resource/articles/core-java-fundamentals/en/resources/Listing Small.jpg" /></a></p>
-<p>卷1首先介绍了Java的历史以及语言设计者的最高诉求（健壮、可移植、多线程等等）。然后是一个简洁的上手指南，包括下载与安装Java语言环境（包括JDK与Eclipse IDE）的说明。这部分提供了一些可靠的代码示例，你可以通过一些可视化的Applets来测试安装环境。</p>
-<p>接下来介绍了最基本的数据类型以及语法、程序结构和控制流，详细解释了BigNumber、BigDecimal与BigInteger。</p>
-<p>介绍完基础内容后，本书又开始详细介绍面向对象编程（OOP）。拥有C语言等过程式背景的程序员一般都会觉得向OO转变是个比较困难的过程。Java核心编程这本书在这方面做得非常棒。讨论首先从一些基本的UML、直观的示例以及Java中的类与对象开始。接下来继续深入到Java风格的OO中，包括类文件与构造方法。本章最后给出了一些“类设计提示”，这是用于创建良好、可读且可重用代码的最佳实践。</p>
-<p>OO讨论之后的几章会开始介绍继承、接口与内部类，并给出了相应的Java实现。</p>
-<p>接下来的4章有300页，是关于图形编程开发的，包括主要的Swing组件、字体、使用颜色、处理鼠标与键盘事件、布局管理器、Applets以及部署策略，如浏览器、Java Web Start与JAR文件。我比较失望的是书中并未提及JavaFX，因为JavaFX现在已经成为Java核心库的一部分了，并且作为Swing的扩展使用。</p>
-<p>再往下的一章介绍了异常处理，显然这里会介绍调试技巧、日志以及如何使用调试器。后面的一章介绍了泛型编程。即便是有经验的Java程序员在这个主题上也会遇到问题，不过介绍的过程却是非常清晰的。本书还介绍了Java 7“Project Coin”中所引入的新的钻石表示法。然后开始介绍Java Collections与Maps，包括一些算法，并且简要介绍了老式的Collections与Maps，如Hashtable、Vector与Enumeration。</p>
-<p>本书最后通过108页的篇幅从头开始介绍多线程。该章以“什么是线程”开始，然后介绍“线程状态”，给出一个漂亮的状态图，介绍了通过“同步”进行的转换并讨论了竞态条件。接下来介绍了Java 5中引入的java.util.concurrent组件。然后介绍了Executors与线程池，“同步”组件，通过使用线程来确保Swing UI的响应性讨论了SwingWorker的概念。</p>
-<p>我认为加入多线程一章是个很好的决定，而在之前的版本中这一章被放到了卷2中。并发对于所有重要的Java代码来说都是很必要的，并不应该被当作高级特性。然而，我很遗憾地看到关于Streams与Readers的章节被放到了卷2中，因为他们也是基础的主题，卷2在今年3月出版。</p>
-<p>自从1995年首次发布以来Java得到了长足的发展，这不仅体现在表达性方面，周边的生态系统亦是如此。Java核心编程内容很多但却十分详尽，读起来没有压力，对于程序员新手、来自其他语言的程序员、甚至是高级Java开发者（想要在手边放一本能够清晰展现Java核心的各个主题的图书）来说都是一本非常不错的图书。</p>
-<h2>关于本书作者</h2>
-<p><span style="color: rgb(34, 34, 34); font-family: arial, sans-serif; font-size: 13px;"><img vspace="3" hspace="3" align="left" src="http://www.infoq.com/resource/articles/core-java-fundamentals/en/resources/cayHorstmann.jpg" alt="" _href="img://cayHorstmann.jpg" _p="true" /><strong>Cay S. Horstmann</strong> 是“Scala for the Impatient”（Addison-Wesley，2012） 的作者，也是“Core JavaServer Faces”第3版（Prentice Hall，2010）的合著者。他是圣何塞州立大学计算机科学系的教授，Java Champion，也经常在各种开发者会议上进行演讲。</span></p>
-<p>&nbsp;</p>
-<p><b>查看英文原文：</b><a href="http://www.infoq.com/articles/core-java-fundamentals">Book Review: Core Java Volume 1 - Fundamentals</a></p><br><br><br><br><br><br></body></html>
+<p>选择了JETTY，就意味着sever天生就可以运行JSP/Servlet，剩下我们需要解决的就是如何运行PHP了。为了跨平台且满足高效的性能，我们选择了使用FASTCGI开发扩展与PHP-CGI进行通信，server将CGI环境变量和标准输入发送到FastCGI子进程php-cgi，子进程完成处理后将标准输出和错误信息从同一连接返回Server。我们为了可以解决并发请求必须启动多个PHP-CGI进程，保持可以多线程处理请求。同时需要一个进程管理器对PHP-CGI进行管理，比如当PHP-CGI处理了几千个请求有内存溢出现象时，需要KILL掉重新启动新的PHP-CGI进程，以及当PHP-CGI进程出现异常情况挂掉后，会及时发现且启动新的进程保持可用的进程数。</p>
+<p>当然你会发现做这些事是十分困难的，需要将HTTP SERVER与PHP-CGI建立链接、通过FASTCGI协议封装请求与PHP-CGI进行通信等等。我们最开始也尝试过且成功的运行了服务器，只是发现并不是那么完美，特别是在进程管理方面。最后我们发现了一个牛逼且轻巧的东西——php-java-bridge，利用其对PHP-CGI封装的FastCGIServlet,与JETTY进行完美对接，可在多平台且高性能的运行PHP。其实php-java-bridge的作用不止于此，它最厉害的地方是可以在PHP中运行JAVA程序，这就是另外一个扩展点了。</p>
+<p>有了以上这些开源的东西，我们要做的就是把这个服务器如何搭建起来，建立对应的Web应用。JETTY作为内嵌Web服务器，需要一个基础的Web.xml初始化参数，同时建立WebAppContext来负责处理Web应用请求。在Jetty中，有几个比较重要的模块：</p>
+<ul> 
+ <li>Connector负责解析服务器请求并产生应答，不同的Connector用于处理不同协议的请求。</li> 
+ <li>Handler用于处理经过Connector解析的请求并产生应答内容，同样可以通过配置不同的Handler来负责处理不同的请求。</li> 
+ <li>TheadPool：管理和调度多个线程，用于服务于多个连接请求。</li> 
+ <li>Server代表一个Jetty服务器对象，主要作用是协同Connector、Handler和TheadPool的工作。</li> 
+</ul>
+<p>JETTY启动需要做的事，启动ThreadPool线程池，启动设置到 Server 的 Handler，通常这个 Handler 会有很多子 Handler，这些 Handler 将组成一个 Handler 链。最后会启动 Connector，打开端口，接受客户端请求。在启动handler时，会启动Handler链上的子Handler，比如我们针对运行一个Web应用程序创建一个WebAppContext，同时在WebAppContext初始化时设置处理请求时对应的Servlet，这样配置的请求都会传送到这个WebAppContext进行处理。</p>
+<p>下面一段伪代码说明如何启动Jetty及配置可处理PHP程序的Web应用程序：</p>
+<pre>
+//context
+HandlerCollection hc = new HandlerCollection();
+WebAppContext context = new WebAppContext(root, &quot;/&quot;);
+
+//set default descriptor
+String descriptor = Thread.currentThread().getClass().getResource(&quot;/jetty/Web.xml&quot;).toString();
+context.setDefaultsDescriptor(descriptor);
+
+//Servlet
+Iterator&lt;Entry&lt;String, String&gt;&gt; iter = map.entrySet().iterator();
+while(iter.hasNext()){
+	Entry&lt;String, String&gt; entry = iter.next();
+	String key = entry.getKey().toLowerCase();
+	String value = entry.getValue();
+	System.setProperty(&quot;php.java.bridge.&quot; + key, value);
+}
+context.addServlet(FastCGIServlet.class, &quot;*.php&quot;);
+context.addEventListener(new ContextLoaderListener());
+
+hc.addHandler(context);
+Server server = new Server(port);
+server.setHandler(hc);
+try {
+	server.start();
+} catch(Exception e){
+	System.out.print(&quot;fail&quot;);
+}</pre>
+<p>启动Server时，添加一个WebAppContext处理请求php的文件，同时使用php-java-bridge中的FastCGIServlet来解析php程序，这样一个PHP服务器就打造出来了。同理，可以利用这样的原理处理其他支持CGI的后端语言程序。</p>
+<p><img width="600" _p="true" _href="img://null" alt="" src="http://infoqstatic.com/resource/articles/front-end-engineering-pristine-part3/zh/resources/1123000.jpg" /></p>
+<p>从启动Server的代码中，大家可以发现我们会设置一个路由页面路径或者一个工程目录，这相当于Tomcat、Apache设置Web工程目录，是服务器访问文件的根目录。还有一个需要注意的问题是从Server访问的文件都是可以正常上线的代码，而非还需要被“处理”的源码。</p>
+<p>源码!=上线代码，这个关系开发者应该都是了解。随着很多自动化工具的诞生，我们开发的代码都是会经过工具处理后才会发布到线上机器，这个过程就是所谓的编译过程。在本地开发时，我们依然需要将源码编译发布到一个本地临时预览环境中，通过Server去访问Web工程。这样的目的就是让Sever是个完全独立的东西，只是接受HTTP请求、分析URL、解析代码就够了，至于代码编译发布的工作就不需要交给Server去做了。而且，也没必要同时再Server中实现一遍编译工作，Server和编译上线是没有关系的，它的责任就是负责本地服务器的作用。</p>
+<h2>一个可模拟的环境</h2>
+<p>有了本地运行服务器作为基石，接下来我们就可以打造属于FE自己的开发环境。也许你会发现通过Server你可以正常访问到你工程中的页面，但是与后端对接的数据接口怎么办？异步请求怎么处理？突然发现还有很多请求问题没有得到完美的解决。在联调环境中，也许RD会为项目配置好服务转发规则，不论是使用的是Aapache、Tomcat,还是lighttpd。当然作为本地Server，你依然可以解决这个问题。</p>
+<ol> 
+ <li>制定一套转发配置的规则</li> 
+ <li>打造一个Rewrite模块，可以与Server配合使用</li> 
+</ol>
+<p>当然你会想到既然我们使用了Jetty，就可以使用其rewrite配置，但这并不能达到我们的要求而且过于复杂。比如我们要运行PHP项目时，我们可能需要在FastCGIServlet处理URL转发的问题，相当麻烦，而且使Server不够独立、过于复杂。所以我们是这样做的：</p>
+<ol> 
+ <li>一个conf文件配置URL转发规则</li> 
+ <li>一个PHP文件充当一个Route模块</li> 
+</ol>
+<p>所以我们的Server就需要有两种状态，一种是不转发状态，一种是全部URL转发到Router文件中。因此我们的Server需要这样改造：</p>
+<pre>
+//context
+HandlerCollection hc = new HandlerCollection();
+WebAppContext context;
+if(rewrite){
+	context = new FISWebAppContext(root, &quot;/&quot; + script);
+} else {
+	context = new WebAppContext(root, &quot;/&quot;);
+}
+
+//set default descriptor
+String descriptor = Thread.currentThread().getClass().getResource
+(&quot;/jetty/Web.xml&quot;).toString();
+context.setDefaultsDescriptor(descriptor);
+
+//Servlet
+if(hasCGI){
+	Iterator&lt;Entry&lt;String, String&gt;&gt; iter = map.entrySet().iterator();
+	while(iter.hasNext()){
+		Entry&lt;String, String&gt; entry = iter.next();
+		String key = entry.getKey().toLowerCase();
+		String value = entry.getValue();
+		System.setProperty(&quot;php.java.bridge.&quot; + key, value);
+	}
+	context.addServlet(FastCGIServlet.class, &quot;*.php&quot;);
+	context.addEventListener(new ContextLoaderListener());
+}
+hc.addHandler(context);
+Server server = new Server(port);
+server.setHandler(hc);
+try {
+	server.start();
+} catch(Exception e){
+	System.out.print(&quot;fail&quot;);
+}</pre>
+<p>同时我们需要构造FISWebAppContext继承WebAppContext类重写doScope方法</p>
+<pre>
+class FISWebAppContext extends WebAppContext {
+		
+	private String filename = &quot;/index.php&quot;;
+	
+	public FISWebAppContext(String root, String input) {
+		super(root, &quot;/&quot;);
+		filename = input;
+	}
+
+	@Override
+	public void doScope(String target, Request baseRequest,
+			HttpServletRequest request, HttpServletResponse response)
+			throws IOException, ServletException {
+		super.doScope(filename, baseRequest, request, response);
+	}
+}</pre>
+<p>当我们启动Server时，如果添加了rewrite参数，便将所有的请求转发到路由页面中，默认是index.php，路由页面将根据转发配置规则进行URL处理。我们可将各类URL都由路由页面转发不同的文件中进行处理，比如一个异步请求需要返回JSON数据，一个模拟线上URL显示模板页面等等。</p>
+<p><img width="600" _p="true" _href="img://null" alt="" src="http://infoqstatic.com/resource/articles/front-end-engineering-pristine-part3/zh/resources/1123001.jpg" /></p>
+<p>在rewrite模式下，我们会将所有的请求都转发到index.php中，比如下面的情况:</p>
+<p><img width="600" _p="true" _href="img://null" alt="" src="http://infoqstatic.com/resource/articles/front-end-engineering-pristine-part3/zh/resources/1123002.jpg" /></p>
+<p>当我们把路由页面写成一个固定内容时，任何请求都是返回index.php里的内容，所以我们需要根据不同的URI来做不同的处理，比如：</p>
+<p><img width="600" _p="true" _href="img://null" alt="" src="http://infoqstatic.com/resource/articles/front-end-engineering-pristine-part3/zh/resources/1123003.jpg" /></p>
+<p>这时我们对URI为&quot;/a.js&quot;的请求做了特殊处理，返回一个JS内容。其实路由页面的作用就是要针对URI做不同的处理，就像lighttpd一样需要一个配置文件，将线上URI转发对应上服务器的各个文件，因此我们也需要类似一个Rewrite库以及配置文件：</p>
+<p><img width="600" _p="true" _href="img://null" alt="" src="http://infoqstatic.com/resource/articles/front-end-engineering-pristine-part3/zh/resources/1123004.jpg" /></p>
+<p>我们根据server.conf的配置来控制URI找到对应的文件，当然这是最基本的要求。同时我们也可以模拟一些Ajax请求,来满足异步数据的获取：</p>
+<p><img width="600" _p="true" _href="img://null" alt="" src="http://infoqstatic.com/resource/articles/front-end-engineering-pristine-part3/zh/resources/1123005.jpg" /></p>
+<p>你会发现现在解决了很多问题，静态资源可以访问了、异步数据也可以获取了，当然根据不同类型的项目，我们还需要模板。为了达到需求，我们为Rewrite模块添加一类转发类型</p>
+<p><img width="600" _p="true" _href="img://null" alt="" src="http://infoqstatic.com/resource/articles/front-end-engineering-pristine-part3/zh/resources/1123006.jpg" /></p>
+<p>Rewrite模块提供灵活的添加转发规则的机制，可让我们在不重启Server的情况下动态对转发配置进行修改。根据项目情况可以具体打造路由页面、Rewrite模块以及Server.conf,来合理的模拟开发环境。</p>
+<p>大家可能会发现一个问题，我们的路由页面和转发配置放在哪？其实我们的源码会经过编译后发布到本地预览环境中，在没有rewrite状态时，Server会根据URL请求直接读取到预览环境中的文件。当启动rewrite模式时，Server会将请求都转发到路由页面，同时路由页面还需要找到转发配置文件进行分析，找到被转发的文件进行渲染。当你发现配置文件、路由页面和你的项目文件都有路径关系时，那就代表其实这三样都应该发布在预览环境中的，同时转发配置文件应该跟随源码进行维护。</p>
+<h2>我们需要的数据</h2>
+<p>通过以上努力，我们已经可以正常在本地运行页面了，当然我们还缺数据。通常页面所需要的数据基本分为两种，一种是页面渲染时由后端传入的数据，一种是通过Ajax请求获取的数据。通过请求获取的数据，我们可以通过控制URL的方式来获取，那由后端传入的数据我们该怎么做呢？</p>
+<p>通过以上的路由页面的处理流程可以发现，处理模板有个独立的过程：</p>
+<p><img width="600" _p="true" _href="img://null" alt="" src="http://infoqstatic.com/resource/articles/front-end-engineering-pristine-part3/zh/resources/1123007.jpg" /></p>
+<p>在开发的过程中，我们可以建立模板与测试数据的对应关系，将测试数据与源码工程一起维护。当源码工程进行编译发布到预览环境中,浏览预览环境中的模板时，可以获取测试数据进行渲染,同时也可对测试数据进行在线编辑。</p>
+<p><img width="600" _p="true" _href="img://null" alt="" src="http://infoqstatic.com/resource/articles/front-end-engineering-pristine-part3/zh/resources/1123008.jpg" /></p>
+<p>对于测试数据的管理，一方面我们可以根据与后端的数据接口创建测试数据，一方面我们可以通过某种方式获取线上或沙盒环境的真实数据进行调试。</p>
+<p><img width="600" _p="true" _href="img://null" alt="" src="http://infoqstatic.com/resource/articles/front-end-engineering-pristine-part3/zh/resources/1123009.jpg" /></p>
+<h4>FIS的本地开发环境</h4>
+<p>从上文的介绍中，我们了解到建立一个本地开发环境都需要哪些必须的条件。下面我简单的为大家介绍下FIS的本地开发环境是怎么样的。</p>
+<ul> 
+ <li>独立、跨平台、高性能的Server</li> 
+ <li>路由页面</li> 
+ <li>Rewrite模块</li> 
+ <li>测试数据模块</li> 
+</ul>
+<p>以上四样法宝构成了一个本地开发环境，开发者将开发代码经过FIS编译后发布到本地的临时预览目录，通过Server可预览页面，具体的大家可以动手尝试下[Fis官网](http://fis.baidu.com)提供的Demo。</p>
+<p>纵观以上流程，你会发现fis-plus提供的整个本地调试预览都是依赖本文最开始提出的三个要求来进行打造的，你可以根据项目以及环境的实际情况打造属于你们团队自己的调试平台。一个好的易用的本地调试辅助开发工具，可以有效的提高开发联调效率同时减少一些繁琐重复甚至是烦人的环节。程序员们当然希望拥有更多的时间去面对写码，而不是浪费太多时间以及精力在搭环境、催单子、找接口人等环节。FIS本地辅助开发工具就是秉着此原则和要求不断挖掘以及通用化FE的本地开发需求，希望可以给大家带来更多的帮助和想法。</p>
+<h2>作者简介</h2>
+<p><strong>袁方</strong>，百度Web前端研发部前端集成解决方案（FIS）小组核心成员，负责FIS本地开发环境的设计与开发、参与实现PC端解决方案等项目，全面负责FIS与百度各产品线前端团队合作落地。</p>
+<hr />
+<p>感谢<a href="http://www.infoq.com/cn/author/崔康">崔康</a>对本文的审校。</p>
+<p>给InfoQ中文站投稿或者参与内容翻译工作，请邮件至<a href="mailto:editors@cn.infoq.com">editors@cn.infoq.com</a>。也欢迎大家通过新浪微博（<a href="http://www.weibo.com/infoqchina">@InfoQ</a>）或者腾讯微博（<a href="http://t.qq.com/infoqchina">@InfoQ</a>）关注我们，并与我们的编辑和其他读者朋友交流。</p><br><br><br><br><br><br></body></html>

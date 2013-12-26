@@ -1,17 +1,49 @@
-<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>Goが4周年</h3><p><a target="_blank" href="http://www.infoq.com/news/2013/11/go-four-years"><em>原文(投稿日：2013/11/11)へのリンク</em></a></p>
+<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>Gauntltによる継続的セキュリティテスト</h3><p><a target="_blank" href="http://www.infoq.com/news/2013/11/velocity-eu-day1-gauntlt"><em>原文(投稿日：2013/11/30)へのリンク</em></a></p>
 <div class="article_page_left news_container text_content_container"> 
  <div class="text_info"> 
-  <p>昨日Goプロジェクトは<a href="http://blog.golang.org/4years">4周年</a>を迎えた(Go1がリリースされたのは2012年3月。4周年は<a href="http://golang.org/doc/faq#What_is_the_status_of_the_project">プロジェクトの立ち上げ</a>からの計算)。GoはGoogleでRobert Griesemer氏、Rob Pike氏、Ken Thompsonwas氏によって開発され、オープンソースになる前にIan Taylor氏とRuss Cox氏が加わった。<a href="http://golang.org/doc/faq#creating_a_new_language">FAQ</a>によれば、</p> 
+  <p><a href="http://gauntlt.org/">Gauntlt</a>コアチームのJames Wickett氏は<a href="http://www.slideshare.net/wickett/gauntlt-velocity-eu2013">Velocity Conf London</a>で，アプリケーションのセキュリティレベルに関するフィードバックの迅速化を目的とした，継続的インテグレーションサイクルへのセキュリティテスト統合についての<a href="http://velocityconf.com/velocityeu2013">解説</a>を行った。氏が強調したのは，継続的デリバリによるリリースデリバリ率の増加に伴う，定期的セキュリティチェックの重要性だ。リリース後のセキュリティチェックと長期的な外部監査では，氏によれば，もはや十分とは言えない。アプリケーションの安全を維持し，セキュリティ低下を防止するためには，運用(Ops)と開発(Dev)双方への継続的なフィードバックが必要なのだ。</p> 
+  <p class="MsoNormal">
+   <o:p></o:p></p> 
+  <p class="MsoNormal"><span lang="EN-GB"><a href="http://github.com/GAUNTLT/GAUNTLT"><span lang="EN-US">Gauntlt</span></a></span>はこの考えを実践するために，<a href="http://en.wikipedia.org/wiki/Behavior-driven_development">ビヘイビア駆動開発</a>のツールとして評価の高い<a href="http://cukes.info/">Cucumber</a>と，一連のオープンソースのセキュリティテストツールをベースとした，セキュリティテスト自動化フレームワークを提供している。Gauntltは<a href="http://rubygems.org/gems/gauntlt">Ruby gem</a>として入手可能なので，継続的インテグレーションの<a href="http://www.infoq.com/articles/preparing-for-cd-in-the-enterprise">デリバリパイプライン</a>の一部として，Ruby環境でテストを実行することができる。次の例では，<a href="http://cukes.info/reports.html">Cucumberの場合</a>と同じようなHTMLテストを生成する:
+   <o:p></o:p></p> 
+  <p class="MsoNormal"><span courier="courier"><code>bundle exec gauntlt --format html &gt; out.html</code></span><span courier="courier">
+    <o:p></o:p></span></p> 
+  <p class="MsoNormal">Gauntltには，事前に定義された一連の”アタックアダプタ”と，それを使ったアタックをまとめたセットが同梱されている。アタックアダプタはアタックの各ステップを，種類別に実行可能なセキュリティツールにマッピングしたものだ:
+   <o:p></o:p></p> 
+  <ul> 
+   <li><span lang="EN-GB"><a href="http://www.arachni-scanner.com/">Arachni</a> (<a href="http://en.wikipedia.org/wiki/Cross-site_scripting">XSS</a>のテスト)</span></li> 
+   <li><span lang="EN-GB"><a href="https://github.com/mozilla/Garmr">Garmr</a>&nbsp;(ログインフロー内の新なたログインページや安全でない参照のテスト)</span></li> 
+   <li><span lang="EN-GB"><a href="http://sqlmap.org/">SQLmap</a>&nbsp;(<a href="http://en.wikipedia.org/wiki/SQL_injection">SQLインジェクション</a>攻撃のテスト)</span></li> 
+   <li><span lang="EN-GB"><a href="http://dirb.sourceforge.net/about.html">dirb</a>&nbsp;(Webオブジェクト設定のテスト)</span></li> 
+   <li><span lang="EN-GB"><a href="https://github.com/iSECPartners/sslyze">SSlyze</a>&nbsp;(SSLサーバ設定のテスト)</span></li> 
+   <li><span lang="EN-GB"><a href="http://nmap.org/">NMap</a>&nbsp;(想定外のオープンポートに関するテスト)</span></li> 
+  </ul> 
+  <p class="MsoNormal">現在のツールセットを拡張するのは，特殊な既定ステップを使ってバイナリコマンドラインの呼び出しを指示し，その実行後の出力をチェックする方法でのみ可能である。
+   <o:p></o:p></p> 
+  <p class="MsoNormal">
+   <o:p>
+    &nbsp;
+   </o:p>Gauntltは内部的にCucumberを実行しているので，Gauntltのアタック定義ファイルはCucumberの機能ファイルに変換される。Cucumberの各シナリオが特定のアタックに対応する。例えば<code>port-check.attack</code>というアタックファイルでは，対象ホストに想定外のポートがオープンされていないことを確認するために<code>nmap</code>を使用するかも知れない:
+   <o:p></o:p></p> 
   <blockquote> 
-   <p>Goはシステムプログラミング向けの既存言語と環境に対する不満から生まれました。プログラミングは難しくなりすぎました。原因のひとつは言語の選択です。効率的にコンパイルでき、効率的に実行できて、プログラミングが簡単な言語を選ぶ必要がありますが、メインストリームの言語でこの3つを同時に満たす言語はありませんでした。安全性と実行の効率性よりもプログラミングしやすさを選ぶ開発者はC++やJavaよりもPythonやJavaScriptのような動的型付け言語を選びました。</p> 
-   <p>Goは動的言語のプログラミングしやすさと静的言語の効率性と安全性を合体させる試みです。また、ネットワークコンピューティング、マルチコアコンピューティングをサポートしたモダンな言語にすることも目標です。そして、高速に動作することも目指しています。つまり、単一のサーバで大きな実行可能ファイルをコンパイルするのにも数秒しかかからないことです。これらの目的を達成するには、多くの言語的課題を解決する必要があります。例えば、表現豊かでかつ軽量な型システム、並列処理とガベージコレクション、堅牢な依存定義などです。これらはライブラリやツールでは解決できない課題です。新しい言語が必要だったのです。</p> 
+   <pre><code> <p class="MsoNormal"><span style="font-family:" courier="">Feature: nmap attacks for example.com 
+       <o:p></o:p></span></p> <p class="MsoNormal"><span style="font-family:" courier="">&nbsp;</span><span style="font-family:" courier="">&nbsp;&nbsp; Background: 
+       <o:p></o:p></span></p> <p class="MsoNormal"><span style="font-family:" courier="">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Given &quot;nmap&quot; is installed 
+       <o:p></o:p></span></p> <p class="MsoNormal"><span style="font-family:" courier="">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; And the following profile: 
+       <o:p></o:p></span></p> <p class="MsoNormal"><span style="font-family:" courier="">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; | name &nbsp;&nbsp;&nbsp;&nbsp;| value &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;| 
+       <o:p></o:p></span></p> <p class="MsoNormal"><span style="font-family:" courier="">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; | hostname | example.com |
+       <o:p></o:p></span></p> <p class="MsoNormal"><span style="font-family:" courier="">&nbsp;</span><span style="font-family:" courier="">&nbsp;&nbsp; Scenario: Verify that there are no unexpected ports open 
+       <o:p></o:p></span></p> <p class="MsoNormal"><span style="font-family:" courier="">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; When I launch an &quot;nmap&quot; attack with: 
+       <o:p></o:p></span></p> <p class="MsoNormal"><span style="font-family:" courier="">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &quot;&quot;&quot; 
+       <o:p></o:p></span></p> <p class="MsoNormal"><span style="font-family:" courier="">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; nmap -F &lt;hostname&gt; 
+       <o:p></o:p></span></p> <p class="MsoNormal"><span style="font-family:" courier="">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &quot;&quot;&quot; 
+       <o:p></o:p></span></p> <p class="MsoNormal"><span style="font-family:" courier="">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Then the output should not contain: 
+       <o:p></o:p></span></p> <p class="MsoNormal"><span style="font-family:" courier="">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &quot;&quot;&quot; 
+       <o:p></o:p></span></p> <p class="MsoNormal"><span style="font-family:" courier="">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 25/tcp 
+       <o:p></o:p></span></p> <p class="MsoNormal"><span style="font-family:" courier="">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &quot;&quot;&quot;
+       <o:p></o:p></span></p> </code></pre> 
   </blockquote> 
-  <p>Goの最新のリリースは1.1。2013年5月にリリースされている。Go 1.2は今月後半に発表される予定。<a href="http://golang.org/doc/go1compat">互換性ドキュメント</a>はGo 1によって将来かかれるプログラムの互換性を押し進め、互換性に対して積極的に取り組むようだ。これはほかの静的言語にない特徴だ。</p> 
-  <p>最初にリリースされてから、Goを使う企業が増えている。パッケージアプリケーション用軽量コンテナツールを提供する<a href="http://docker.io/">Docker</a>、マシンイメージを自動作成するツール<a href="http://packer.io/">Packer</a>、分散メッセージングプラットフォームである<a href="http://bitly.github.io/nsq/">BitlyのNSQ</a>、インフラ自動化システムである<a href="https://juju.ubuntu.com/">CanonicalのJuJu</a>、<a href="http://golang.org/wiki/Projects">その他にも多くのプロジェクト</a>で使われている。Free Software Foundationでさえ、デフォルトの言語として<a href="http://gcc.gnu.org/ml/gcc/2013-11/msg00153.html">GoでJavaを置き換える</a>ことについて議論している。DockerチームはなぜGoに移行したかについての<a href="http://www.slideshare.net/jpetazzo/docker-and-go-why-did-we-decide-to-write-docker-in-go">プレゼンを提供している</a>。</p> 
-  <p>運用側にとってGoの魅力はGoのプログラムはターゲットプラットフォーム上にある単一の実行ファイルに静的にリンクされていることだ。システムは追加のバイナリを事前にインストールしておく必要はない。また、衝突なしでサイドバイサイドで異なるバージョンを実行することも特に心配する必要はない。LinuxやJavaのようにライブラリをばらまいて、特定のセットアップ方法や事前にパスを構築するためのリゾルバが必要になるのとは大違いだ(すべてのプログラムで静的バイナリが重複してしまうのが欠点だが、ディスク容量は安い。大量のプロセスが立ち上がる環境では、メモリの圧迫の方が現実的な心配事だろうが、デブオプのツールは長時間は実行されない傾向がある)。</p> 
-  <p>高可用性を持つマルチスレッドプログラムはGoの<a href="http://golang.org/doc/faq#goroutines">goroutines</a>の恩恵を受けるだろう。goroutinesはマルチスレッド実行がErlangやOccamと似た方法でリクエストを処理できるようにする。これらの仕組みはHoare氏の<a href="http://ja.wikipedia.org/wiki/Communicating_Sequential_Processes">Communicating Sequential Processes</a>(CSP)をベースにしている。メモリやスレッディングアクセスに対処する代わりに、CSPはそれぞれメッセージ/タスクのキューを持ち、これらのメッセージ/タスクをほかのCSPへ送信する。この処理はブロッキングで非同期の処理で各(ブロッキング)CSPは返却メッセージとして返却値をオリジナルのCSPへ送り返す。</p> 
-  <p>Cloud Foundryは<a href="http://blog.cloudfoundry.com/2013/11/09/announcing-cloud-foundry-cf-v6/">RubyからGoへ移行した</a>。コマンドラインツールを事前設定なしに動作させるためだ。実際、バックエンドのサービスと通信する軽量なツールになった。もはやツールを頻繁に更新する必要はなく、小さなツールになっている。</p> 
-  <p>数週間のうちにリリースされる予定の<a href="http://golang.org/doc/go1.2">Go 1.2</a>では、3つのインデックスを使ったスライスができるようになっている。例えば、<code>a[1:10]</code>という表現では、配列aの要素の1から10まで取り出せるが、<code>a[1:2:10]</code>という表現でスライスのキャパシティを定義できる。また、 will slice out every other value. A minor clarification on where <code>nil</code>が使われている部分が少しきれいになったことで参照時に混乱が生まれるかもしれない。その他の変更は<a href="http://golang.org/doc/go1.2">リリースノート</a>に記載されている。</p> 
-  <p>Goに対する批判として、Goが古いリターンコード方式を採用していることが挙げられる。現在広く普及している<a href="http://golang.org/doc/faq#exceptions">例外をベース</a>とした方式ではないのだ。そして、Erlangと違い、goroutinesはデフォルトでは同期ではないマップを受け渡すことができるため、<a href="http://golang.org/doc/faq#atomic_maps">メモリを汚染</a>する場合がある。明らかなのはGoはニッチなユースケースに適用しやすいということだ。また、JavaやErlangのような言語と比べて、Cの軽量で安全な代替となるのはGoだろう。</p> 
+  <p class="MsoNormal">氏は &quot;<a href="http://www.infoq.com/news/2010/06/rugged-software-manifesto">頑丈なソフトウェアマニフェスト(Rugged Software Manifesto)</a>” に触発されて，アプリケーションのセキュリティテストに対する強い主張を持ったフレームワークとしてGauntltを作り上げた。<span lang="EN-GB">その最終的な目標は，開発(Dev)，運用(Ops)とセキュリティチームとのコミュニケーションの促進だ。 </span>セキュリティ的考慮と監視機能を<a href="http://en.wikipedia.org/wiki/DevOps">DevOps</a>に統合するというテーマでは，<a href="http://devopsweekly.com/">DevOps Weekly</a>創刊者の<a href="http://www.infoq.com/author/Gareth-Rushgrove">Gareth Rushgrove</a>氏も，<a href="http://vimeo.com/75665772">セキュリティ監視</a>に関する<a href="http://velocityconf.com/velocityeu2013/public/schedule/detail/33016">記事</a>の中で取り上げている。
+   <o:p></o:p></p> 
  </div> 
 </div><br><br><br><br><br><br></body></html>

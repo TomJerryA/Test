@@ -1,23 +1,557 @@
-<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>国防工业中的敏捷</h3><p>每当我听到其他软件负责人抱怨他们的“类瀑布”开发流程，我总问他们为什么不尝试些更敏捷的方法呢。而最常见的回答就是他们不知道如何开始。事实上，如果一本书通篇都在以敏捷开发为主题，也不会使敏捷更容易。向项目管理团队解释你想放弃已知的一切，然后去试那些完全不一样的东西确实需要一整本来描述，而这将需要些功夫来销售。这类改变往往让管理团队畏惧。</p><p>可事实上，敏捷开发是非常简单，而且是可高度定制化的。你可以在开发流程的任意地方开始实行敏捷原则，并做出修改直到它完美地适合你的团队。之所以相信这点，是因为我亲眼见证过。我工作的国防工业是一个你写任意一行代码，都需要等到足够的纸质文档被创建为止，而这些纸张能足足消耗掉森林中一堆动物的家园。但是，即是在这种看起来“非敏捷”的文化中，我们也已成功地应用了敏捷原则和实践。通过几个版本的学习，我的团队现在遵循一个定制的，非常有效并适合我们“国防工业”的环境的敏捷流程。本篇文章讲述了我们的敏捷软件开发流程和我们如何从传统的瀑布开发流程迁移到敏捷开发中的故事。</p><h2>流程</h2><h3>改变1：采用迭代开发</h3><p>敏捷开发最根本的部分就是持续集成和测试。敏捷流程致力于快速和频繁发布代码，以让终端用户和利益相关者使用功能（尽管不完善）可用的软件同时，提出建议以适时调整。尽早发布可以工作的软件就好比购买了保险来对抗失败的可能性。如果你想交付客户喜欢并且最终会使用的软件，那就将其分块并及早和频繁地展示给客户。否则你最后交付给客户的可能就是客户去年某个时候他们觉得他们当时想要的软件。</p><p>采用迭代的开发风格，对我们是一个巨大的变化，尤其是对一个原来需要先把所有事情都写出来的流程来说。我们的传统“瀑布”流程要求系统工程师给出需求，然后将其细化为软件需求，最后移交给开发团队（被放置在架子上并忽略不计）。只有在软件需求最终确定并被批准后，开发团队才能开始编码。使对持续集成的过渡成为可能的是使团队认识到“足够好”其实比“完美”要更好。我的意思是，系统团队获得许可可以在流程开始的时候就给软件开发团队一个原始的系统部件。然后软件团队可允许使用这些原始部件开始实现原型。这些早期的实现，反过来可以发现缺陷，从而引导出新的和更好的系统部件。团队不需要从开始时就有“完美”的部件。他们只需一个简易的起点以及时间来做更多细小的改变。</p><p>我们敏捷的第一步开始于将一个1年之久的瀑布式项目转换为数个8星期长的迭代。这些“迷你瀑布”帮我们解决了几个问题，并把经常被忘记的主要流程问题拖到聚光灯下-即整合的成本。每个发布仅有一次代码集成就是个噩梦，我们总是要花上比原计划更多的时间来处理。但是因为这个问题并不频繁，而且如此可怕，我们都假装它不存在直到下个版本计划。当转换到一个使我们每隔一个月都要经历这种痛苦的流程时，明显说明了我们有问题。我们通过每一个迭代来学习，进步，并且在集成时变得更有效率。在年底第六个迭代时，我们解决集成问题的效率以及团队无连接问题比第一次提高了两倍。</p><p>在接下来的几个版本中我们开始缩短迭代周期直到找到最适合我们的。现在我的团队采用两周作为一个迭代周期。每两周我们就交付可以工作的，经过测试的软件，并重新计划接下来两周的工作。在早期迭代中，软件和系统团队一起合作创建需求，原型和设计—一个团队的输出正好作为其他团队的输入。随着迭代的深入，每个团队都重定义他们的部件并收集终端用户和利益相关者的反馈。在晚一些的迭代里，原型变为对产品代码的缺陷修改和对相应的两周内要处理和集成的开发工作。总体来说，迭代开发的优点是让人吃惊的：</p><ul> 
- <li>系统工程师最终定义什么是<em>正确的</em>系统（在国防工业中非常重要）</li> 
- <li>软件开发可以更早地开始，并且可以真正为系统部件做出贡献。</li> 
- <li>测试人员得以看到不断演变的功能，使他们获得更多的知识和自信来玩转系统并找出问题，而非简单测试需求。</li> 
- <li>集成总是痛苦的，但是集成只有两周工作量的代码是很容易管理的。另外频繁集成能让你学到导致痛苦的原因，然后在下一次迭代中修复它。</li> 
- <li>查找并修复在过去2周内代码中的缺陷比试图解决在几个月都没碰的代码中要容易得多。</li> 
- <li>集成使你与测试团队建立起更紧密的关系。开发人员和测试人员一起工作，而不是像对手一样。</li> 
- <li>当事情开始往错的方向发展时，我们可以尽早调整和校正。</li> 
-</ul><h3>改变2：保持任务小型化</h3><p>迭代开发主要的销售点就是它允许更频繁的修正，并能在缺陷变得不可收拾之前找到问题。这些概念也能在个人层面应用。比如如果迭代长达8周，一个开发者为这个8周任务一直工作，而他可能在整个8周内都向错误的方向行进，如果想改正这8周所造成的问题，大量的加班和其他员工的帮助是很难避免的。</p><p>在经历过多次这种问题后，我们采用了一条即“任何任务不可超过40小时”的规则。这意味着开发者必须把他们的工作粒度降低到40小时以内。这只是一个简单的流程改变，但是带来的益处却非常大。任何任务不可超过40小时意味着：</p><ul> 
- <li>团队不会为每一个任务产生大量代码，这就使更高质量的代码检查成为可能-甚至能发现死锁和竞态条件。在一个时间检查8周的代码，换句话说，只能找到注释里的拼写错误。</li> 
- <li>管理者，同伴，代码检查者以及测试员等有更好的机会理解40小时或以内完成的工作。比如，一个32小时的任务“在地图上立体地显示同类出租物业”就比400小时，更为复杂的“地图特性”要容易讨论，检查和测试。</li> 
- <li>40小时的开发即使方向错误也很容易改正。</li> 
-</ul><h3>改变3：使用伙伴体制</h3><p>结对编程是一个在“极限编程”中定义的新概念，两个程序员结成一对完成一切事情。该想法认为两个开发者共用一个键盘更容易在第一次时开发出正确的软件，并可节省软件开发生命周期的后端时间，虽然我从来没有看到过它在学术界之外获得应用，我也不知道哪个开发者愿意一周5天，一天8小时都和同事坐在一起，但这个概念还是非常有意思。</p><p>相对于结对编程，我的团队使用“伙伴体制”（对了，就像在幼儿园的实地考察）。伙伴体制严格上说不是结对编程。但我们借用了它的核心概念并针对我们团队的文化做了相应的改变，以保持它的优点。每一个程序员在日常工作时都有一个“伙伴”。在一个开发者开始一个任务之前（记住，在我们的流程里没有计划任务允许大于40小时的工作价值）他必须与他的“伙伴”会面，解释问题以及对该任务采用的方法。此过程只需要5分钟，却节省了很多时间。</p><p>伙伴体制也适用于架构和设计层面。在设计阶段，特性设计师要至少每隔一天就和他的伙伴会面讨论对他们设计主线的更改。通过这一流程变化，我们能在第一时间设计出正确的东西，并且显著减少在开发阶段发现严重的设计问题的可能性。</p><p>伙伴体制的优点包括：</p><ul> 
- <li>你的“伙伴”处在一个做代码检查的更好位置因为他们理解你要创造“什么”以及“为什么”。</li> 
- <li>在尝试一个解决方案之前，通过对话来讨论它，往往会发现很多陷阱并能防止弯路。我已经记不清有多少次，在准备任务的前五分钟讨论后所得的结果是“哇，这个方法是错的。”</li> 
- <li>万一你赢了彩票或者退休了，你正好训练了一个替代者。</li> 
-</ul><h2>我们未来方向</h2><p>一个软件流程会由于团队持续学习并发现什么能让工作更好而不断演进。我们的团队从把一个火炉管道瀑布流程迁移到使用紧密集成，具有适应性的敏捷中取得了很多进步。我们还在继续改进一些事情：</p><ul> 
- <li>我们已经开始从传统的需求，那些“早”部件中迁移开。相应地，将那些高层次的概念，用例，用户故事，和系统线程带入中心舞台。但需求，这一无法避免的“邪恶东西”，仍将作为对政府的承包存在，但他们真的是一个可怕的开始点。</li> 
- <li>我们正在努力进一步完善我们的未完成任务栏和迭代规划流程，以改善我们估计的准确性。软件开发估计是一个很难掌握的技巧，但对预算和截至日期都是铁定的行业来说，是极端重要的。</li> 
- <li>频繁迭代使得开发和测试团队紧密耦合成一个团队，但是我们仍然想把系统工程师也加入到其中。</li> 
-</ul><h2>总结</h2><p>这篇文章描述了国防工业领域的一个开发团队遵循的简单的敏捷流程。它也提供了关于如何从痛苦的瀑布流程迁移到更为敏捷的流程上的一些启示。运行敏捷并不需要记住无数书本内容，或一个背后印有“SCRUM大师”标签的长袍。读书以及参加培训会给你新主意，但变成“敏捷”最重要的特性是愿意做出微小的变化和调整。简单来说，敏捷就是意味着当某些事情行不通时要有做出改变的能力。</p><h2>关于作者</h2><p><img style="float:left" src="http://www.infoq.com/resource/articles/agile-defense-industry/zh/resources/1jeffPlummer.jpg;jsessionid=D1F9EB41B8E2179AD10CBCEAA8A4B56F" alt="" _href="img://null" _p="true" /><strong>Jeff Plummer</strong>是通用动力公司C4系统小组的某一集成产品团队负责人，他负责指挥和管理团队中的系统，软件和测试工程师。大家可以通过<a href="mailto:plummeronsoftware@gmail.com">plummeronsoftware@gmail.com</a>和Jeff沟通，讨论问题。</p><div style="clear:both">
- &nbsp;
-</div><p><strong>查看英文原文</strong>：<a href="http://www.infoq.com/articles/agile-defense-industry;jsessionid=D1F9EB41B8E2179AD10CBCEAA8A4B56F">Agile in the Defense Industry</a></p><div class="clearer-space"></div><br><br><br><br><br><br></body></html>
+<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>Promise/A的误区以及实践</h3><h2>什么是Promise</h2>
+<p>Promise是一种让异步代码书写起来更优雅的模式，能够让异步操作代码像同步代码那样书写并且阅读，比如下面这个异步请求的例子：</p>
+<pre>
+$.get(&quot;/js/script,js&quot;, function () {
+    // callback to do
+})</pre>
+<p>就可以改写为Promise模式：</p>
+<pre>
+var promise = $.get(&quot;/js/script&quot;);</pre>
+<p>返回值promise即代表操作的最终结果。返回值promise也可以作为“第一类对象”（<a href="http://en.wikipedia.org/wiki/First-class_citizen">First-class object</a>）被当做参数传递。这个模式最大的优势就是避免了传统异步操作代码中，回调函数嵌套回调函数的糟糕情况。</p>
+<p>如果你之前对Promise模式有所了解的话（可以参考InfoQ之前的这篇<a href="http://www.infoq.com/cn/news/2011/09/js-promise">文章</a>），谈到Promise，最先想到的一定是它的<code>then</code>函数，的确它非常重要，在Promise模式的定义中(<a href="http://wiki.commonjs.org/wiki/Promises/A">CommonJS Promises/A</a>)中，<code>then</code>函数是这么被定义的：</p>
+<blockquote> 
+ <p>（原文）A promise is defined as an object that has a function as the value for the property then: <code>then(fulfilledHandler, errorHandler, progressHandler)</code></p> 
+ <p>（译）一个promise被定义为一个拥有then属性的对象，并且此then属性的值为一个函数: <code>then(fulfilledHandler, errorHandler, progressHandler)</code></p> 
+</blockquote>
+<p>也就是说每一个promise结果一定会自带一个then函数，通过这个<code>then</code>函数，我们可以添加promise转变到不同状态(定义中promise只有三种状态，unfulfilled, fulfilled, failed.这里说的状态转变即从unfulfilled至fulfilled，或者从unfulfilled至failed)时的回调，还可以监听progress事件，拿上面的代码为例：</p>
+<pre>
+var fulfilledHandler = function () {}
+var errorHandler = function () {}
+var progressHandler = function () {}
+
+$.get(&quot;/js/script&quot;).then(fulfilledHandler, errorHandler, progressHandler)</pre>
+<p>这有一些类似于</p>
+<pre>
+$.ajax({
+    error: errorHandler,
+    success: fulfilledHandler,
+    progress: progressHandler
+})</pre>
+<p>这个时候你会感到疑惑了，上面两种方式看上去不是几乎一模一样吗？——但promise的重点并非在上述各种回调函数的聚合，<strong>而是在于提供了一种同步函数与异步函数联系和通信的方式</strong>。之所以感到相似这也是大部分人对Promise的理解存在的误区，只停留在<code>then</code>的聚合(aggregating)功能。甚至在一些著名的类库中也犯了同样的错误(下面即以jQuery举例)。下面通过列举两个常见的误区，来让人们对Promise有一个完整的认识。</p>
+<h2>Promise/A模式与同步模式有什么联系？</h2>
+<p>抛开Promise，让我们看看同步操作函数最重要的两个特征</p>
+<ul> 
+ <li>能够返回值</li> 
+ <li>能够抛出异常</li> 
+</ul>
+<p>这其实和高等数学中的<a href="http://zh.wikipedia.org/wiki/%E5%A4%8D%E5%90%88%E5%87%BD%E6%95%B0">复合函数</a>(function composition)很像：你可以将一个函数的返回值作为参数传递给另一个函数，并且将另一个函数的返回值作为参数再传递给下一个函数……像一条“链”一样无限的这么做下去。更重要的是，如果当中的某一环节出现了异常，这个异常能够被抛出，传递出去直到被<code>catch</code>捕获。</p>
+<p>而在传统的异步操作中不再会有返回值，也不再会抛出异常——或者你可以抛出，但是没有人可以及时捕获。这样的结果导致必须在异步操作的回调中再嵌套一系列的回调，以防止意外情况的发生。</p>
+<p>而Promise模式恰好就是为这两个缺憾准备的，它能够实现函数的复合与异常的抛出（冒泡直到被捕获）。符合Promise模式的函数必须返回一个promise，无论它是fulfilled状态也好，还是failed(rejected)状态也好，我们都可以把它当做同步操作函数中的一个返回值：</p>
+<pre>
+$.get(&quot;/user/784533&quot;) // promise return
+.then(function parseHandler(info) {
+    var userInfo = parseData(JSON.parse(info));
+    return resolve(userInfo); // promise return
+})
+.then(getCreditInfo) // promise return
+.then(function successHandler(result) {
+    console.log(&quot;User credit info: &quot;, result);
+}, function errorHandler(error) {
+    console.error(&quot;Error:&quot;, error);
+})</pre>
+<p>``` 上面的例子中，<code>$.get</code>与<code>getCreditInfo</code>都为异步操作，但在Promise模式下，（形式上）转化为了链式的顺序操作</p>
+<p><code>$.get</code>返回的promise由<code>parseHandler</code>进行解析，返回值“传入”<code>getCreditInfo</code>中，而<code>getCreditInfo</code>的返回值同时“传入”<code>successHandler</code>中。</p>
+<p>之所以要在传入二字上注上引号，因为并非真正把promise当做值传递进入函数中，但我们完全可以把它理解为传入，并且改写为同步函数的形式，这样以来函数复合便一目了然：</p>
+<pre>
+try {
+    var info = $.get(&quot;/user/784533&quot;); //Blocking
+    var userInfo = parseData(JSON.parse(info));
+    
+    var resolveResult = parseData(userInfo);
+    var creditInfo = getCreditInfo(resolveResult); //Blocking
+
+    console.log(&quot;User credit info: &quot;, result);
+} cacth(e) {
+    console.error(&quot;Error:&quot;, error);
+}</pre>
+<p>但是在jQuery1.8.0版本之前，比如jQuery1.5.0（jQuery在1.5.0版本中引入Promise，在1.8.0开始得到修正），存在无法捕获异常的问题：</p>
+<pre>
+var step1 = function() {
+    console.log(&quot;------step1------&quot;);
+    var d = $.Deferred();
+    d.resolve('Some data');
+    return d.promise();
+},
+
+step2 = function(str) {
+    console.log(&quot;------step2------&quot;);
+    console.log(&quot;step2 recevied: &quot;, str);
+
+    var d = $.Deferred();
+    // 故意在fulfilled hanlder中抛出异常
+    d.reject(new Error(&quot;This is failing!!!&quot;));
+    return d.promise();
+},
+
+step3 = function(str) {
+    console.log(&quot;------step3------&quot;);
+    console.log(&quot;step3 recevied: &quot;, str);
+
+    var d = $.Deferred();
+    d.resolve(str + ' to display');
+    return d.promise();
+},
+
+completeIt = function(str) {
+    console.log(&quot;------complete------&quot;);
+    console.log(&quot;[complete]------&gt;&quot;, str);
+},
+
+handleErr = function(err) {
+    console.log(&quot;------error------&quot;);
+    console.log(&quot;[error]------&gt;&quot;, err);
+};   
+
+step1().
+then(step2).
+then(step3).
+then(completeIt, handleErr);</pre>
+<p>上述代码在<a href="http://ajax.googleapis.com/ajax/libs/jquery/1.5.0/jquery.min.js">jQuery-1.5.0</a>中运行的结果：</p>
+<pre>
+------step1------
+------step2------
+step2 recevied:  Some data
+------step3------
+step3 recevied:  Some data
+------complete------
+[complete]------&gt; Some data</pre>
+<p>在step2中，在解析step1中传递的值后故意抛出了一个异常，但是我们在最后定义的<code>errorHandler</code>却没有捕获到这个错误。</p>
+<p>忽略捕获异常的错误，上面的结果还反映出另一个问题，最后一步<code>completeHandler</code>中处理的值应该是由step3中决定的，也就是step3中的</p>
+<pre>
+d.resolve(str + ' to display');</pre>
+<p>最后应打印出的结果为</p>
+<pre>
+some data to display</pre>
+<p>而在<a href="http://ajax.googleapis.com/ajax/libs/jquery/1.5.0/jquery.min.js">jQuery-1.9.0</a>中异常是可以捕获的，运行结果为：</p>
+<pre>
+------step1------
+------step2------
+step2 recevied:  Some data
+------error------
+[error]------&gt; Error {}  </pre>
+<p>但是打印出的结果仍然有问题</p>
+<p>注意到step3没有执行，因为step3中只定义了fulfilled的回调，异常只有在最后<code>errorhandler</code>才被捕获。</p>
+<p>其实我们可以试试，在step3中添加处理异常的回调函数：</p>
+<pre>
+step1().
+then(step2).
+then(step3, function (str) {
+    console.log(&quot;------[error] step3------&quot;);
+    console.log(&quot;step3 revecied: &quot;, str);
+
+    var d = $.Deferred();
+    d.resolve(str + ' to display');
+    return d.promise();    
+}).
+then(completeIt, handleErr);</pre>
+<p>运行结果如下:</p>
+<pre>
+------step1------
+------step2------
+step2 recevied:  Some data
+------[error] step3------ 
+step3 revecied:  Error {} 
+------complete------ 
+[complete]------&gt; Error: This is failing!!! to display </pre>
+<p>虽然错误在step3被捕获了，但是由于我们将错误信息传递了下去，最后一步打印出的仍然是error消息</p>
+<h2>细节：返回Promise</h2>
+<p>让我们继续看看Promise/A定义的第二段：</p>
+<blockquote> 
+ <p>（原文）This function should return a new promise that is fulfilled when the given fulfilledHandler or errorHandler callback is finished. This allows promise operations to be chained together. The value returned from the callback handler is the fulfillment value for the returned promise. If the callback throws an error, the returned promise will be moved to failed state.</p> 
+ <p>（译文）这样的函数应该返回一个新的promise，该promise是被指定回调函数(成功执行或者捕获异常)解析之后的结果。如此一来promise之间的操作便能链式的串联起来。回调函数返回的值是解析返回的promise的结果。如果回调函数抛出了异常，返回的promise便会转化为异常状态</p> 
+</blockquote>
+<p>这段定义告诉我们两点：</p>
+<ol> 
+ <li>无论返回值是fulfilled也好，还是被rejected也好，必须返回一个新的promise；</li> 
+ <li><code>then</code>关键字并非只是各个回调的填充器，在输入的同时它同时也输出新的promise，以便形成链式;</li> 
+</ol>
+<p>同样以jQuery的代码为例：</p>
+<pre>
+var step1 = function() {
+    console.log(&quot;------step1------&quot;);
+    var d = $.Deferred();
+    d.resolve('Some data');
+    return d.promise();
+};
+
+var step2 = function (result) {
+    console.log(&quot;------step2------&quot;);
+    console.log(&quot;step2 recevied: &quot; + result);
+    var d = $.Deferred();
+    d.resolve(&quot;step2 resolve: &quot; + result);
+    return d.promise();
+}
+
+var step3 = function (result) {
+    console.log(&quot;------step3------&quot;);
+    console.log(&quot;step3 recevied: &quot; + result);
+    var d = $.Deferred();
+    d.reject(new Error(&quot;This is failing!!!&quot;));
+    return d.promise();
+}
+
+var promise = step1();
+
+var promise1 = promise.then(step2);
+var promise2 = promise.then(step3);</pre>
+<p>var promise1 = promise.then(step2); var promise2 = promise.then(step3); ``` step1返回的promise是fulfilled状态，但不同的是step2 fulfilled之后，返回一个仍然可被解析的promise(1)，而step3则抛出一个异常(promise2)。</p>
+<p>按照定义所说，promise1与promise2是相互不同的promise，无论是被正确解析还是抛出异常，返回的都应该是一个独立的promise。</p>
+<p>为了验证产生的是否为独立的promise，只需看他们的执行结果如何，接着给promise1和promise2定义fulfilled和failed回调函数：</p>
+<pre>
+promise1.then(function (result) {
+    console.log(&quot;Success promise1: &quot;, result);
+}, function () {
+    console.log(&quot;Failed promise1: &quot;, result);
+})
+
+promise2.then(function (result) {
+    console.log(&quot;Success promise2: &quot;, result);
+}, function (result) {
+    console.log(&quot;Failed promise2: &quot;, result);
+}) </pre>
+<p>让我们看看在jQuery-1.5.0中执行的结果：</p>
+<pre>
+Success promise1:  Some data
+Success promise2:  Some data </pre>
+<p>虽然是一个被抛出的异常，但仍然可以被正确解析，并且解析使用的参数是上一个promise的返回值</p>
+<p>在jQuery-1.9.0中：</p>
+<pre>
+Success promise1:  step2 resolve: Some
+Failed promise2:  Error {}</pre>
+<p>能被正常解析。</p>
+<h2>实践</h2>
+<p>完整认识了promise之后，我们可以用简单的代码实现一个Promise模式。</p>
+<p>参照jQuery的<code>Deferred</code>，我们可以了解Promise的大致结构：</p>
+<pre>
+var Promise = function () {}
+
+Promise.prototype.when = function () {
+    // to do
+}
+
+Promise.prototype.resolve = function () {
+    // to do
+}
+
+Promise.prototype.rejected = function () {
+    // to do
+}</pre>
+<p>Promise.prototype.rejected = function () { // to do } ``` 并且我们用最简单一个异步操作<code>setTimeout</code>来验证我们的Promise是否奏效：</p>
+<pre>
+var delay = function (throwError) {
+    var promise = new Promise();
+
+    if (throwError) {
+        promise.reject(new Error(&quot;ERROR&quot;));
+        return promise;
+    }
+
+    setTimeout(function () {
+        promise.resolve(&quot;some data&quot;);
+    }, 1000);
+
+    return promise;
+}
+
+delay().then(function (result) {
+    console.log(result);
+}).then(function () {
+    console.log(&quot;This is the second successHandler&quot;);    
+}).then(function () {
+    console.log(&quot;This is the third successHandler&quot;);
+})</pre>
+<p>首先我们要为每一个Promise准备一个<strong>队列</strong>来存储自己的回调函数</p>
+<pre>
+function Promise() {
+    this.callbacks = [];
+}</pre>
+<p>我们可以暂且把<code>then()</code>理解为往队列中填入回调的函数，并且为了能以链式的形式添加处理函数，最后必须返回当前promise：</p>
+<pre>
+Promise.prototype.then = function (successHandler, failedHandler) {
+    this.callbacks.push({
+        resolve: successHandler,
+        reject: failedHandler
+    });
+
+    return this;
+}</pre>
+<p>} ``` 其实resolve和reject虽然名称不同，但是都是执行各自对应的回调函数，于是可以抽象出一个公共的<code>complete</code>方法：</p>
+<pre>
+Promise.prototype = {
+    resolve: function (result) {
+        this.complete(&quot;resolve&quot;, result);
+    },
+
+    reject: function (result) {
+        this.complete(&quot;reject&quot;, result);
+    },
+
+    complete: function (type, result) {
+        // to do
+    }
+}</pre>
+<p>complete的工作非常显而易见，根据type不同执行回调函数出队，以result为参数，执行相应type的的函数：</p>
+<pre>
+complete: function (type, result) {
+    this.callbacks.shift()[type](result);
+}</pre>
+<p>但是这样只能执行队首回调函数，在链式的情况下，可能在<code>callbacks</code>中添加了多个回调函数，为了实现链式的执行，需要把<code>callbacks</code>中的回调全部出队，<code>complete</code>可以改进为：</p>
+<pre>
+complete: function (type, result) {
+    while(this.callbacks.length) {
+        this.callbacks.shift()[type](result);
+    }
+}</pre>
+<p>完整版如下：</p>
+<pre>
+function Promise() {
+    this.callbacks = [];
+}
+
+Promise.prototype = {
+    resolve: function (result) {
+        this.complete(&quot;resolve&quot;, result);
+    },
+
+    reject: function (result) {
+        this.complete(&quot;reject&quot;, result);
+    },
+
+    complete: function (type, result) {
+        while(this.callbacks[0]) {
+            this.callbacks.shift()[type](result);
+        }
+    },
+
+    then: function (successHandler, failedHandler) {
+        this.callbacks.push({
+            resolve: successHandler,
+            reject: failedHandler
+        });
+
+        return this;
+    }
+}</pre>
+<p>第一个版本即完成，可以看到测试上面开始例子的结果，能够顺利打印出信息。</p>
+<p>接下来我们来完成处理异常部分</p>
+<p>首先我们写一个能够故意抛出异常的测试用例</p>
+<pre>
+delay(true).then(function (result) {
+    console.log(result);
+}, function firstErrorHandler(error) {
+    console.error(&quot;First failedHandler catch: &quot;, error);
+
+    var promise = new Promise();
+    promise.resolve(&quot;some data&quot;);
+    return promise;
+
+}).then(function secondSucHandler(result) {
+    console.log(&quot;Second successHandler recevied: &quot;, result);
+}, function (error) {
+    console.error(&quot;Second failedHandler catch: &quot;, error);
+})</pre>
+<p>我们在delay中抛出异常，希望在<code>firstErrorHandler</code>捕获异常后，返回一个能fulfilled的promise，并且用<code>secondSucHandler</code>顺利解析、</p>
+<p>如果直接用上面版本执行，会发现没有任何结果，为什么？</p>
+<p><strong>因为在执行<code>delay()</code>时，第一个<code>reject</code>也同时被执行，但此时<code>then</code>函数还没执行，也就是处理reject的handler还没有被定义。</strong>当然也就不会有任何结果了。反过来也能想通，也就能说通resolve能被执行。</p>
+<p>那么我们只要在reject函数中加上一定的延时即可：</p>
+<pre>
+...
+reject: function (result) {
+    var _this = this;
+    setTimeout(function () {
+        _this.complete(&quot;reject&quot;, result);    
+    });
+},
+...</pre>
+<p>执行测试代码结果如下：</p>
+<pre>
+First failedHandler catch:  Error
+Second failedHandler catch:  Error</pre>
+<p>虽然错误被捕获了，但错误被一直传递一下去了，这也就是我们之前说的jQuery无法返回新的promise，接下来要解决这个问题。</p>
+<p>我们来写一个更复杂的测试用例，来验证下面的解决方案：</p>
+<pre>
+delay()
+// ------Level 1------
+.then(function FirstSucHandler(result) {
+    console.log(&quot;First successHandler recevied: &quot;, result);
+
+    var p = new Promise();
+    p.reject(new Error(&quot;This is a test&quot;));
+    return p;                    
+
+}, function FirstErrorHandler(error) {
+    console.error(&quot;Second failedHandler catch: &quot;, error);
+})
+// ------Level 2------
+.then(function SecondSucHandler(result) {
+    console.log(&quot;Second successHandler recevied: &quot;, result);            
+})
+// ------Level 3------
+.then(function ThirdSucHandler(result) {
+    console.log(&quot;Third successHandler recevied: &quot;, result);
+}, function ThirdErrorHandler(error) {
+    console.error(&quot;Third failedHandler catch: &quot;, error);
+})
+// ------Level 4------
+.then(function FourSucHandler(result) {
+    console.log(&quot;Fourth successHandler recevied: &quot;, result);
+})</pre>
+<p>正确的执行顺序应该是<code>FirstSucHandler</code>fulfilled之后抛出异常，略过<code>SecondSucHandler</code>，异常被<code>ThirdErrorHandler</code>捕获，并且返回一个新的promise，由<code>FourSucHandler</code>解析。</p>
+<p>接下来还要修复并且考虑这些问题 1. 当异常被捕获之后将阻止异常往下传递 2. 定义中描述在fulfilled之后必须返回一个新的promise，但如果没有返回新的promise，或者是返回其他的值，应该作何处理？</p>
+<p>对于第二点，我们暂且处理规则是：</p>
+<ol> 
+ <li>如果没有返回值，那么下一个回调函数将继续解析上一promise</li> 
+ <li>如果返回值存在，但返回值不为promise，默认调用resolve handler，并且返回值作为回调函数的参数传入</li> 
+</ol>
+<p>大致流程图如下所示</p>
+<pre>
+                                push
+                                 |
+                    [successHandler, errorHandler]
+                    ...
+            -------&gt;[successHandler, errorHandler]
+            |                    | 
+            |                  shift
+            |                    |
+            |                 execute 
+            |        succussHandler or errorHandler
+            |                    |
+            |                    |
+            |          ----------------------
+            |          |                    |
+            |         return               return
+            ----Auto--promise         nothing or not promise
+            |                               |
+            &lt;--------------- Manual --------|</pre>
+<p>``` 从上图中可以看出，promise模式是一个周而复始执行resolve或者reject过程，每一轮必须执行二者之一，必然导致一组回调函数出队。如果抛出异常，但这组回调函数中没有异常处理函数<code>errorHandler</code>，那么这组回调函数便作废，直到找到下一个能捕获异常的回调函数。直到队列中回调函数全部出队。看来我们有必要写一个“直到找到我们需要的函数”的函数：</p>
+<pre>
+getCallbackByType: function (type) {
+    if (callbacks.length) {
+
+        var callback = callbacks.shift()[type];
+
+        while (!callback) {
+            callback = callbacks.shift()[type];
+        }                    
+
+    }
+
+    return callback;
+}</pre>
+<p>从上图中可以看出所有的promise可以共用一个<code>callbacks</code>队列，并且考虑到需要判断返回值是否为promise类型，我们最好还需要一个标志位，做如下修改：</p>
+<pre>
+var callbacks = [];
+
+function Promise() {
+    this.isPromise = true;
+}
+...</pre>
+<p>根据以上描述，这类似于一个递归的过程</p>
+<pre>
+promise --&gt; resolve/reject ---&gt; promise ---&gt; resolve/reject</pre>
+<p>注意在上面Level 1的<code>FirstSucHandler</code>中，新返回的promise执行了reject，这会自动使队列一组回调函数出队并执行。但面对一些没有返回值的情况应该怎么办，那么就应该遵循我上面说的标准，要么执行上一个promise，要么默认执行下一个resolve：</p>
+<pre>
+...
+executeInLoop: function (promise,result) {
+    // 1.如果回调队列还没有被清空  
+    // 2.或者没有返回值，
+    // 3.或者有返回值但不是promise
+    if ((promise &amp;&amp; !promise.isPromise || !promise) &amp;&amp; callbacks.length) {
+        // 默认执行resolve
+        var callback = this.getCallbackByType(&quot;resolve&quot;);
+
+        if (callback) {
+            var promise = callback(promise? promise: result);
+            this.executeInLoop(promise, promise? promise: result);
+        }
+    }
+},
+...
+</pre>
+<p>最后Complete函数也要做相应修改：</p>
+<pre>
+...
+complete: function (type, result) {
+
+    var callback = this.getCallbackByType(type);
+
+    if (callback) {
+        var promise = callback(result);    
+        this.executeInLoop(promise, promise? promise: result);
+    }
+},
+...
+</pre>
+<p>最后贴上完整版代码：</p>
+<pre>
+var callbacks = [];
+
+function Promise() {
+    this.isPromise = true;
+}
+Promise.prototype = {
+resolve: function (result) {
+this.complete(&quot;resolve&quot;, result);
+},
+reject: function (result) {
+var _this = this;
+setTimeout(function () {
+_this.complete(&quot;reject&quot;, result);
+});
+},
+executeInLoop: function (promise,result) {
+// 如果队列里还有函数 并且（ 要么 没有返回一个值 或者 （有返回值但不是promise类型））
+if ((promise &amp;&amp; !promise.isPromise || !promise) &amp;&amp; callbacks.length) {
+var callback = this.getCallbackByType(&quot;resolve&quot;);
+if (callback) {
+var promise = callback(promise? promise: result);
+this.executeInLoop(promise, promise? promise: result);
+}
+}
+},
+getCallbackByType: function (type) {
+if (callbacks.length) {
+var callback = callbacks.shift()[type];
+while (!callback) {
+callback = callbacks.shift()[type];
+}
+}
+return callback;
+},
+complete: function (type, result) {
+var callback = this.getCallbackByType(type);
+if (callback) {
+var promise = callback(result);
+/*
+1. 有返回值，promise类型
+2. 有返回值，其他类型
+3. 无返回值
+*/
+this.executeInLoop(promise, promise? promise: result);
+}
+},
+then: function (successHandler, failedHandler) {
+callbacks.push({
+resolve: successHandler,
+reject: failedHandler
+});
+return this;
+}
+}</pre>
+<p>并附上执行结果：</p>
+<pre>
+First successHandler recevied:  some data 
+Third failedHandler catch:  Error {} 
+Fourth successHandler recevied:  Error {} </pre>
+<h2>参考文献</h2>
+<ul> 
+ <li><a href="http://modernjavascript.blogspot.com/2013/08/promisesa-understanding-by-doing.html">Promises/A+ - understanding the spec through implementation</a></li> 
+ <li><a href="http://modernjavascript.blogspot.hk/2013/09/promise-patterns.html">Promise patterns</a></li> 
+ <li><a href="https://gist.github.com/domenic/3889970">You're Missing the Point of Promises</a></li> 
+ <li><a href="http://msdn.microsoft.com/en-us/magazine/gg723713.aspx">Creating Responsive Applications Using jQuery Deferred and Promises</a></li> 
+ <li><a href="http://blogs.msdn.com/b/ie/archive/2011/09/11/asynchronous-programming-in-javascript-with-promises.aspx">Asynchronous Programming in JavaScript with “Promises”</a></li> 
+ <li><a href="http://blog.mediumequalsmessage.com/promise-deferred-objects-in-javascript-pt1-theory-and-semantics">Promise &amp; Deferred objects in JavaScript Pt.1: Theory and Semantics.</a></li> 
+ <li><a href="https://gist.github.com/unscriptable/814052">tiny Promise.js</a></li> 
+</ul>
+<h2>作者简介</h2>
+<p>李光毅，新晋前端工程师，现就职于爱奇艺，热于前端技术分享。联系邮箱：juststayinvegas@gmail.com</p><br><br><br><br><br><br></body></html>
