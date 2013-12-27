@@ -1,32 +1,32 @@
 <html>
  <head></head> 
- <body>
-  <div>
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/17.java">Hadoop Jobs on GPU with ParallelX</a>The MapReduce paradigm is not always ideal when dealing with large computationally intensive algorithms. A small team of entrepreneurs is building a product called ParallelX to solve that bottleneck by harnessing the power of GPUs to give Hadoop jobs a significant boost.
-  </div>
-  <div>
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/16.java">How Can You Learn Early and Fast?</a>Agile suggest that teams should fail-fast to enable quick learning from mistakes. Learning from failure is one approach, you can also learn early and fast from successes, by doing experimentation, or by using a plan for knowledge acquisition.
-  </div>
-  <div>
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/15.java">DevExpress Universal 13.2 Introduces Token Box Control</a>DevExpress has included Token Box control in the latest release 13.2 which enables you to auto-complete values from a predefined list either by selection from the dropdown window list or manual input.
-  </div>
-  <div>
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/14.java">ASP.NET Identity Preview 2.0 Adds Account Confirmation, Password Reset and Security Token Provider</a>Microsoft has recently released ASP.NET Identity Framework with support for account confirmation, password reset, security token provider in addition to the ability to make use of IQueryable on UsersStore and RolesStore.
-  </div>
-  <div>
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/13.java">Android 4.4 KitKat and the Secret Key Factory</a>With the introduction of Android 4.4, developers are being asked to change the way symmetric keys are generated from Unicode passphrases via the SecretKeyFactory.
-  </div>
-  <div>
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/12.java">The API Orchestration Layer</a>The traditional resource-oriented API model may not satisfy the most important of your API consumers. Daniel Jacobson of Netflix asserts that good API design is about knowing your API consumers and optimizing your API for that audience.
-  </div>
-  <div>
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/11.java">Oracle Tunes Java's Internal String Representation</a>In an ongoing effort to improve Java performance, Oracle has announced a change in the internal representation of Strings as of Java 1.7.0_06.
-  </div>
-  <div>
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/10.java">IntelliJ 13 Released</a>Jetbrains has announced the release of IntelliJ IDEA version 13 Community Edition and Ultimate edition. Both feature a completely revamped user interface, including support for Android, Java 8 (including Lambda expressions) and many other development technologies introduced this year.
-  </div>
-  <div>
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/9.java">Experiences from Applying Kanban at SAP</a>The experiences with more than two years of applying Kanban at SAP were presented by Alexander Gerber and Martin Engel at Lean Kanban Central Europe. Their case study showed how they supported the implementation of lean and agile processes. InfoQ interviewed them about how Kanban was introduced and received within SAP, the training approach and the experiences from teams with the Kanban practices
+ <body> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/17.java">Hadoop Jobs on GPU with ParallelX</a>The MapReduce paradigm is not always ideal when dealing with large computationally intensive algorithms. A small team of entrepreneurs is building a product called ParallelX to solve that bottleneck by harnessing the power of GPUs to give Hadoop jobs a significant boost. 
+  </div> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/16.java">How Can You Learn Early and Fast?</a>Agile suggest that teams should fail-fast to enable quick learning from mistakes. Learning from failure is one approach, you can also learn early and fast from successes, by doing experimentation, or by using a plan for knowledge acquisition. 
+  </div> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/15.java">DevExpress Universal 13.2 Introduces Token Box Control</a>DevExpress has included Token Box control in the latest release 13.2 which enables you to auto-complete values from a predefined list either by selection from the dropdown window list or manual input. 
+  </div> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/14.java">ASP.NET Identity Preview 2.0 Adds Account Confirmation, Password Reset and Security Token Provider</a>Microsoft has recently released ASP.NET Identity Framework with support for account confirmation, password reset, security token provider in addition to the ability to make use of IQueryable on UsersStore and RolesStore. 
+  </div> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/13.java">Android 4.4 KitKat and the Secret Key Factory</a>With the introduction of Android 4.4, developers are being asked to change the way symmetric keys are generated from Unicode passphrases via the SecretKeyFactory. 
+  </div> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/12.java">The API Orchestration Layer</a>The traditional resource-oriented API model may not satisfy the most important of your API consumers. Daniel Jacobson of Netflix asserts that good API design is about knowing your API consumers and optimizing your API for that audience. 
+  </div> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/11.java">Oracle Tunes Java's Internal String Representation</a>In an ongoing effort to improve Java performance, Oracle has announced a change in the internal representation of Strings as of Java 1.7.0_06. 
+  </div> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/10.java">IntelliJ 13 Released</a>Jetbrains has announced the release of IntelliJ IDEA version 13 Community Edition and Ultimate edition. Both feature a completely revamped user interface, including support for Android, Java 8 (including Lambda expressions) and many other development technologies introduced this year. 
+  </div> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/9.java">Experiences from Applying Kanban at SAP</a>The experiences with more than two years of applying Kanban at SAP were presented by Alexander Gerber and Martin Engel at Lean Kanban Central Europe. Their case study showed how they supported the implementation of lean and agile processes. InfoQ interviewed them about how Kanban was introduced and received within SAP, the training approach and the experiences from teams with the Kanban practices 
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/9.java">Interview with Vyacheslav Volkov, Creator of CaptchaMvc</a>InfoQ interviewed Vyacheslav Volkov, creator of CaptchaMvc, about his project and the future of captcha’s in general. 
@@ -150,6 +150,6 @@
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/21.java">PayPal Switches from Java to JavaScript</a>PayPal has decided to use JavaScript from browser all the way to the back-end server for web applications, giving up legacy code written in JSP/Java. 
-  </div>          
+  </div> 
  </body>
 </html>

@@ -1,34 +1,29 @@
-<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>Apcera Continuum</h3><p><a target="_blank" href="http://www.infoq.com/news/2013/11/apcera"><em>原文(投稿日：2013/11/15)へのリンク</em></a></p>
+<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>JavascriptプラットフォームのFamo.usが初の公式アクセス版をローンチ</h3><p><a target="_blank" href="http://www.infoq.com/news/2013/12/famous_launches_first_access"><em>原文(投稿日：2013/12/04)へのリンク</em></a></p>
 <div class="article_page_left news_container text_content_container"> 
  <div class="text_info"> 
-  <p>クラウドスタートアップのApceraが11月14日，新たな<a href="http://apcera.com/">Webサイト</a>をローンチして，同社製品であるContinuumの詳細を公開した。</p> 
-  <p>Continuumは同社創業者のDerek Collison氏が開発に関与したオープンソースPaaSである，PivotalのCloud Foundryに対抗する製品だ。Pivotalが商用版<a href="http://www.infoq.com/news/2013/11/pivotal-cf">Pivotal CF</a>の最新リリースで，VMwareによる既存のエンタープライズインフラストラクチャとの統合を実現したのに対して，Apceraはより総合的なポリシーベースのアプローチを中心とする。製品を紹介するブログ記事 “<a href="http://apcera.com/blog/why-were-here/">Why we’re here</a>” にCollison氏は，次のように書いている：</p> 
+  <p><a href="http://Famo.us">Famo.us Javascript platform</a>を開発したチームは2013年12月5日，同プラットフォームの能力をクライアント側に展開するための準備段階として，アプリケーションレイヤのコードを初めてプレビューリリースする予定である。JavaScriptのみで記述されているFamo.usは，現在まだアルファ版プレビューにも関わらず，70,000人を越える開発者の注目を集めている。プラグインを必要とせず，ブラウザ上でネイティブアプリのパフォーマンスを実現できる点がその魅力だ。</p> 
+  <p>Famo.usは，ブラウザ本来のレンダリング機能との関連性を完全に断ち切っている。&quot;ユーザがおそらく見たいとも思わない，高度な数学や物理学を駆使して&quot;，ブラウザのレンダリングエンジンを完全に置き換えるように設計されているのだ。&quot;きっと目が回ってしまいますよ&quot; と語るのは，プロジェクトの創設者である<a href="https://twitter.com/stevenewcomb">Steve Newcomb</a>氏だ。ブラウザのレンダリングという壁を乗り越えるには，このような低レベルの工夫も必要なのだ。しかし開発者の98%が注目しているのはそこではないはずだ，とも氏は言う。&quot;この数年間は，jQueryを完全に置き換え可能なシンタックスシュガーの開発に費やしてきました。&quot; その結果として，Newcomb氏と同社は，現代的なブラウザのすべて -- Safari, Chrome, Firefox, IE10 -- で動作を保証するに至っている。</p> 
+  <p>Famo.usチームが求めたのは，まさにこの普遍的な対応性，すなわち，デザイナからベテランのJavascript技術者まで，すべてのエクスペリエンスのレベルを満たす，jQueryの完全なリプレースなのだ。500万件を数える資金援助によって支えられて，完全無償のオープンソースプロダクトであるFamo.usには，４つの異なる操作レベルがある。&quot;一番簡単なレベルがデザイナです&quot; とNewcomb氏は言う。 &quot;デザイナでは，まったくコードを書く必要がありません。ウィジェットやテンプレートすべてにスライダが埋め込まれていますから，ユーザはただ，それを操作すればよいのです。スライダを変化させることで得られるバリエーションは無限大です。&quot; そのデザイナレイヤの下にはすべてのシンタックスシュガーがあり，ＵＩを構成するウィジェットとテンプレート，およびそれらを格納して拡張を続けるライブラリと結び付いている -- 開発されるアプリケーションの大多数はこのレイヤで，テンプレートとウィジェットを組み合わせて構成されるものになる，とFamo.usチームは考えている。３つめはウィジェットとテンプレートの下にある，プラットフォーム開発者がオリジナルなユーザエクスペリエンスを追求する部分だ。例えばプロプライエタリなUIを，初期のFamo.usに投資していたSamsungあたりが追求するかも知れない，とNewcomb氏は述べている。最後にFamo.usの内部深くにある数学的，物理学的エンジンは，Newcomb氏によれば，真のギークのためのものだ。</p> 
+  <p>その構造の中には，Famo.usチームのある願望が潜んでいる -- 彼らはアプリケーション開発の新たなアプローチを提案している。jQueryベースのDOM解析処理から，コード開発者がアプリケーションの外観を操作して，彼らの提供する物理エンジンを活用するようなプラットフォームへの移行だ。HTML，webGL，キャンバスのレンダリングはFamo.usが行う。チームは12月5日を起点として，ウィジェットやテンプレート，アプリケーションのライブラリ拡張を週単位でロールアウトしていく計画だ。</p> 
+  <p>Famo.usは <a href="http://meteor.com">Meteor</a>, <a href="http://firebase.com">Firebase</a>, <a href="leapmotion.com">LeapMotion</a>, <a href="http://http://backbonejs.org/">backbone js ライブラリ</a> との公式なパートナシップを発表した。コードは現在プライベートアルファ版で，2014年2月下旬に公式ベータ版のリリースが予定されている。リリース後は，プラットフォーム全体が<a href="http://www.mozilla.org/MPL/2.0/">Mozilla Public License MPL v2</a>の下で公開される予定だ。すべてのコードには自由にアクセス可能になるが，企業によるプロプライエタリなウィジェットやテンプレートの開発も認められる。ローンチを指揮するのは，Famo.usの開発担当副社長であり，<a href="https://developers.facebook.com/">Facebook Developer Platform</a>の創設や<a href="https://www.facebook.com/f8">F8カンファレンス</a>のローンチも行っているDave Fetterman氏である。</p> 
   <blockquote>
-   競合他社に先んじるエンタープライズITのためには，システムのポリシを中心として，複数のデリバリモデル(IaaS, PaaS, SaaS)をうまく組み合わせ，ネットワーク通信の意味的認識を実現する必要があります。 
-   <div>
-    &nbsp;
-   </div> 
-   <div>
-    今日のPaaSは，開発者の負担を低減するという目的の枠内であるという意味から，いまだクラウドコンピューティングモデルの第1世代にあると言えます。PaaSに欠けているのは，ガバナンスやポリシ，コンプライアンス，認証と識別，セキュリティ，監査性などといった，クリティカルな企業ニーズへの対応能力です。PaaSを利用している人たちを見るに付け，その限界を感じずにはいられません。単独ですべてのデリバリモデルを要求通りに実行可能で，開発(Dev)と運用(Ops)の両方を促進できるような，完全な企業レベルのプラットフォームはこれまで存在しませんでした。それが実現できるかどうかさえ，これまで明らかではなかったのです。
-   </div> 
+    &quot;本当の意味で堅牢なJavascript開発プラットフォームというのは，長く存在しませんでした。単なるウィジェットやプラグイン，ソリューションの一部に過ぎないようなプラットフォームは必要ではありません。人々がキャリアを賭けるに値するようなプラットフォームが必要なのです。そのようなものを，これまで長く求めてきました。&quot; とNewcomb氏は語る。
   </blockquote> 
-  <p>メッセージングに &quot;高性能なNATSサーバ&quot;の<a href="https://groups.google.com/forum/#!topic/natsio/amSefF3TbDI">gnatsd</a>を使用するなど，Continuumはいくつかオープンソースのコンポーネントを使用している。そうでありながらApceraは，製品をオープンソースとして世に出す方法を選択しなかった。Collison氏はこの製品のより多くの部分をオープンソースとする約束をする一方で，Continumが完全なオープンソースでない理由を次のように説明している：</p> 
-  <blockquote>
-   エコシステムは微妙なバランスの上に構築されています。Google内部からVMwareへと移った私の以前の開発では，この目標達成のためのさまざまなツールがありました。そこで賭け金(table stakes)となるのは，多くの場合，ツールやソフトウェア，プラットフォームなどのオープンソース化です。これによって発展は推進されるでしょうが，それ自体がエコシステムへの関与性を解決し，長く求められる存在にするかといえば，同意はできません。 
-   <div>
-    &nbsp;
-   </div> 例えばシステムがオープンソースではあるが，プログラミングや拡張，構成変更といった作業がまったく不可能なよう，故意に構築されていたとしましよう。恐らくはエコシステムの誰か他のメンバが，そのプラットフォームを別方向に進めようとするでしょう。ここに暗黙的なフォークの問題が発生します。あなたの所持するバージョンは，リーダたちのコードから乖離し始めます。メインブランチにマージする場合のコストは高まる一方です。これは今日の市場において，オープンソース化をおもなエコシステム構築の手段としている，多くのIaaSやPaaSソリューションに共通して見られる問題です。 
-  </blockquote> 
-  <p>ApceraがContinuumでデモしている機能の中には，<a href="http://www.infoq.com/jp/news/2013/11/dotcloud-renamed-docker">Docker</a>による軽量仮想化(Lightweight Virtulaization)アプローチに極めて近いものもあった。Collison氏は現在進行中の開発内容についても説明してくれた：</p> 
-  <blockquote>
-   Continuumでは，私たちが見るものはすべてジョブ，すなわちプラットフォームによる実行，管理，監視と，ユーザによる更新，レポート，制御が可能なワークロードなのです。OSか，既存アプリか，Webか，あるいは最新のフレームワークを使用したモバイルアプリかといった違いは，私たちにもプラットフォームにも影響しません。 
-   <div>
-    &amp;nbsdp;
-   </div> 上で述べた目標の大部分を達成するためには，これらのものすべてに独立性が必要となります。そのに関しては，私たちApceraでは常にアイソレーションコンテキスト(Isolation Contexts)を観点とする会話をしています。アイソレーションコンテキストは常に分離され，隔離され，自立しています。それを達成には多くの方法があるはずです。ハイパーバイザ上の完全な仮想化，LinuxコンテナやSolaris Zonesのような軽量プリミティブ，さらにはBromiumなどの企業によって認知度を得た，ハードウェアCPUによて直接駆動されるマイクロタスク仮想化などが選択肢となります。 
-   <div>
-    &nbsp;
-   </div> 最初のバージョンはLinuxコンテナの下でプリミティブを使って実装しました。他にもさまざまな方法があるでしょう。複合構成やハイブリッドは普通ですし，ひとつのサイズではすべてに対応できません。定義には自立性(automous)が挙げられていないかも知れませんが，これは私たちにとって非常に重要です。ここで言う自立性とは，システム内のすべてのジョブがポリシによって許可および定義された端点を通じてのみコミュニケーションを行う，という意味です。このポリシはネットワークレイヤへの物理的アクセスから，アドレッシング，検出，さらには上述した通信プロトコルの意味的認知までもカバーします。これもまた極めて強力なパターンのひとつであって，アプリケーションSDNと表現する人もいます。この問題に正面から取り組んだのは，私たちが初めてでしょう。さらに，現代的なプラットフォームとしては当然ですが，ユーザに対してすべて透過的です。何かを変更，移動，再始動した場合には，区別されていない重労働のすべてをCotinuumが引き受けます。さらにシステム内で発生するすべての状態遷移を記録する監査ログも提供されています。ポリシをアーキテクチャの中心に組み込んだことで，ユーザに対する可視性，洞察性，コンプライアンスを第1日から提供することができます。 
-  </blockquote> 
-  <p>Apceraは<a href="http://www.infoq.com/presentations/Go-Google">Go</a>プログラム言語の積極的なアーリーアダプタでもあり，プラットフォーム全体で幅広く使用している。高度なコンカレントアプリケーションに適したGoのメリットを活かすべく，当面はCloud Foundryが同社のルータやログシステム，ヘルスマネージャ，<a href="http://blog.cloudfoundry.com/2013/11/09/announcing-cloud-foundry-cf-v6/">CLI</a>などのコンポーネントの移行を行う。</p> 
+  <p>それに向けてFamo,usチームは，３つのウィジェットと１つのアプリケーションを12月5日にリリースする。リリースでは<a href="http://codepen.io/">Codepen</a>をパートナに活用して，新しいウィジェットそれぞれ用の対話型エクスペリエンスが用意される予定だ。</p> 
+  <h3><a href="http://bit.ly/1eJsK6a">Twitterアプリ</a></h3> 
+  <p class="codepen" data-default-tab="result" data-user="befamous" data-slug-hash="ac53af08967073df60ceaf28c0c76007" data-theme-id="2352" data-height="350">&nbsp;</p> 
+  <script async="" src="//www.codepen.io/assets/embed/ei.js"></script> 
+  <p>&nbsp;</p> 
+  <p>&nbsp;</p> 
+  <h3><a href="http://bit.ly/18ivwv8">jQuery風のライトボックス・ウィジェット</a></h3> 
+  <a href="http://bit.ly/18ivwv8"> <p class="codepen" data-default-tab="result" data-user="befamous" data-slug-hash="442915109539f48b92700c137c3fafe9" data-theme-id="2352" data-height="350">&nbsp;</p> <script async="" src="//www.codepen.io/assets/embed/ei.js"></script> <p>&nbsp;</p> <p>&nbsp;</p> </a> 
+  <h3><a href="http://bit.ly/IHupPC">ボタンウィジェット</a></h3> 
+  <p class="codepen" data-default-tab="result" data-user="befamous" data-slug-hash="c3147502f9f7f897a8197ed4b6dbcb5f" data-theme-id="2352" data-height="350">&nbsp;</p> 
+  <script async="" src="//www.codepen.io/assets/embed/ei.js"></script> 
+  <p>&nbsp;</p> 
+  <p>&nbsp;</p> 
+  <h3><a href="http://bit.ly/1bef9j9">1対多ウィジェット</a></h3> 
+  <p class="codepen" data-default-tab="result" data-user="befamous" data-slug-hash="373819beb72b28945fa06e4346e20b54" data-theme-id="2352" data-height="350">&nbsp;</p> 
+  <script async="" src="//www.codepen.io/assets/embed/ei.js"></script>
  </div> 
 </div><br><br><br><br><br><br></body></html>

@@ -1,28 +1,36 @@
-<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>企業におけるアジャイルスケーリングのプラクティス</h3><p><a target="_blank" href="http://www.infoq.com/news/2013/11/practices-scaling-agile"><em>原文(投稿日：2013/11/19)へのリンク</em></a></p>
+<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>QCon New York 2014の参加登録が始まった</h3><p><a target="_blank" href="http://www.infoq.com/news/2013/12/qcon-nyc-2014"><em>原文(投稿日：2013/12/16)へのリンク</em></a></p>
 <div class="article_page_left news_container text_content_container"> 
  <div class="text_info"> 
-  <p>組織規模でアジャイルを採用している企業は，時としてアジャイルプラクティスの適用範囲を拡大する必要に迫られる。そのような場合には，複数の相互依存的なチームを組織するのが一般的な方法だ。チーム間のコラボレーションの実現を通じて，企業全体が同じやり方でアジャイルプラクティスを実践する方法を探すのだ。</p> 
-  <p>Frank Langeveld氏が<a href="http://www.conferences.unicom.co.uk/agileincomplexenvironments/">Agile Methods in the Finance Sector and Complex Environment</a>カンファレンスで行った30分のセッションでは，企業におけるアジャイルのスケーリングについて，参加者の間で経験や意見が交わされた。セッションはまず，アジャイルのスケーリングに関する実践経験の発表を希望する参加者に対して，起立を求めることから始まった。４人が立ち上がると，氏は彼らひとりひとりのプラクティスについて30秒間で説明するように求め，それらをフリップに書き留めた。プラクティスがわずか４つだったので，氏は各発表者に対して，プラクティスの説明と質疑応答の時間として５分間割り当てることにした。質問はプラクティスの明確化を目的とするものに限定した上で，ごく短時間に留めた。プラクティスの有効性に関する議論が起きた場合は，セッションリーダが停止することにした。</p> 
-  <p>発表された４つのプラクティスは次のものだ：</p> 
+  <p><a href="https://qconnewyork.com/?utm_source=infoq&amp;utm_medium=news&amp;utm_campaign=12162013news"><strong>QCon New York 2014 (June 9-13)</strong></a>の参加登録が始まった。このブルックリン橋のNew York Marriottで開催されるイベントは今回で3回目を迎え、100名のスピーカーが登壇し、15のトラックが行われ、さまざまな人脈作りの機会を提供する。<strong>12月21日</strong>までに参加登録すれば、<a href="https://qconnewyork.com/registration?utm_source=infoq&amp;utm_medium=news&amp;utm_campaign=12162013news"><strong>$800割引</strong></a>される。</p> 
+  <p>QCon New Yorkは専門家によるカンファレンスで、ソフトウェア開発チームにイノベーションをもたらす人たち、チームリーダー、アーキテクト、プロジェクトマネージャー、エンジニアリングディレクターに向けて開催される。1日と半日の<strong>2日間のチュートリアル(6月9-10日(月-火))</strong>と<strong>3日間のカンファレンス(6月11-13日(水-金))</strong>で構成される。</p> 
+  <p>以下に、ページビューに基づくQCon New York 2013プレゼンテーションのトップ10を挙げる。</p> 
+  <ol> 
+   <li><a href="http://infoq.com/news/2013/06/netflix?utm_source=infoq&amp;utm_medium=news&amp;utm_campaign=12162013news">How Netflix Deploys Code</a> - <strong>Jeremy Edberg,</strong>&nbsp;Netflixの信頼性アーキテクト</li> 
+   <li><a href="http://infoq.com/presentations/datomic-functional-database?utm_source=infoq&amp;utm_medium=news&amp;utm_campaign=12162013news">The Functional Database</a> - <strong>Rich Hickey</strong>,&nbsp;ClojureとDatomicの作者</li> 
+   <li><a href="http://infoq.com/presentations/linkedin-architecture-stack?utm_source=infoq&amp;utm_medium=news&amp;utm_campaign=12162013news">Lessons from Building and Scaling LinkedIn</a> - <strong>Jay Kreps</strong>,&nbsp;LinkedInの主任エンジニア</li> 
+   <li><a href="http://infoq.com/presentations/twitter-soa?utm_source=infoq&amp;utm_medium=news&amp;utm_campaign=12162013news">Decomposing Twitter: Adventures in Service-Oriented Architecture</a> - <strong>Jeremy Cloud</strong>,&nbsp;TwitterのTweetサービスチームの技術リード</li> 
+   <li><a href="http://infoq.com/interviews/meijer-monads?utm_source=infoq&amp;utm_medium=news&amp;utm_campaign=12162013news">Erik Meijer on Monads</a> - <strong>Erik Meijer,</strong> LINQaのCreator Rx &nbsp;&nbsp;</li> 
+   <li><a href="http://infoq.com/presentations/java-g1?utm_source=infoq&amp;utm_medium=news&amp;utm_campaign=12162013news">Deep Dive into G1 Garbage Collector</a> - <strong>Charlie Hunt,</strong> Javaパフォーマンス本の著者、<strong>Monica Beckwith</strong>,&nbsp;Garbage First Garbage Collectorのパフォーマンスリード&nbsp;</li> 
+   <li><a href="http://infoq.com/presentations/java-concurrent-animation?utm_source=infoq&amp;utm_medium=news&amp;utm_campaign=12162013news">Java Concurrent Animated </a>- <strong>Victor Grazi,</strong> Java Concurrent Animatedの作者&nbsp;</li> 
+   <li><a href="http://infoq.com/presentations/graph-database-theory?utm_source=infoq&amp;utm_medium=news&amp;utm_campaign=12162013news">A Little Graph Theory for the Busy Developer </a>- <strong>Jim Webber</strong>, &quot;Rest in Practice&quot;の共著者&nbsp;</li> 
+   <li><a href="http://infoq.com/presentations/storm-lessons?utm_source=infoq&amp;utm_medium=news&amp;utm_campaign=12162013news">Lessons Learned Building Storm</a> - <strong>Nathan Marz</strong>,&nbsp;StormおよびCascalogオープンソースプロジェクトの作者</li> 
+   <li><a href="http://infoq.com/presentations/io-functional-side-effects?utm_source=infoq&amp;utm_medium=news&amp;utm_campaign=12162013news">Purely Functional I/O</a> - <strong>Runar Bjarnason</strong>, &quot;Functional Programming in Scala&quot;の共著者&nbsp;</li> 
+  </ol> 
+  <p>以下に、<a href="https://qconnewyork.com/ny2013/index.html">QCon New York 2013</a>で人気のあったトラックを挙げる。</p> 
   <ul> 
-   <li>リスク値ライフサイクル</li> 
-   <li>ユースケースモデリング</li> 
-   <li>2層プロジェクト構造</li> 
-   <li>ベストプラクティスの組み合わせ</li> 
+   <li><strong>Continuous</strong>&nbsp;<strong>Delivery</strong>&nbsp;-&nbsp;ボタンを押すように、ソフトウェアをオンデマンドでリリースする方法を学ぶ</li> 
+   <li><strong>Architectures You've Always Wondered About</strong>&nbsp;-&nbsp; Twitter、eBay、Amazon、Facebook、LinkedIn、Netflixといった、世界的に有名で膨大なアクセスのあるWebアプリケーションから直接学ぶ</li> 
+   <li><strong>Real Life Cloud Computing</strong>&nbsp;-&nbsp; クラウドコンピューティングのケーススタディ、ベストプラクティス、技術概要について学ぶ</li> 
+   <li><strong>Applied Data Science</strong>&nbsp;-&nbsp;主なビッグデータのインフラの作り方について学ぶ（NumPy/Rなどによるデータの高速処理、ビッグデータからの予測、リアルタイム処理、可視化、機械学習など）</li> 
+   <li><strong>Hot Technologies for Financial Services</strong>&nbsp;-&nbsp;資本および為替市場、小売/投資銀行、取引システム、クレジットカード会社、取引所などに関する最先端技術を見る</li> 
+   <li><strong>Culture</strong>&nbsp;-&nbsp;人をひきつけるチームを作り、それを維持する方法を学ぶ</li> 
+   <li><strong>HTML5 and Modern Web Languages</strong>&nbsp;-&nbsp;HTML5開発フレームワークおよび言語を使った最新イノベーションについて調べる</li> 
+   <li><strong>Robustness and High Availability</strong>&nbsp;-&nbsp;高可用、高性能のシステムを計画、構築、サポートするための最新の方法論、テクニック、ツールについて学ぶ</li> 
   </ul> 
-  <p>以下は発表された各プラクティスの要約である：</p> 
-  <blockquote> 
-   <p><strong>プラクティス１:</strong> リスク値ライフサイクル(Risk-Value Lifecycle)は，Rational Unified Processで提唱されたリスク軽減手法だ。アジャイルプロジェクトにも適用可能なこの手法は，<a href="http://epf.eclipse.org/wikis/epfpractices/practice.mgmt.risk_value_lifecycle.base/guidances/practices/risk_value_lifecycle_847D8B7D.html">Eclipse Practice</a>として知られている。プロジェクト開始における最大のリスクは，多くの場合において，すべての利害関係者の関与のもとに判断する必要がある。したがって(方向付け(inception)フェーズにおける)最初のイテレーションの中心は，問題解決において利害関係者すべての同意を得ることに置かれるべきだ。十分な関与が得られなければ，彼らの問題を解決し得るソリューションの提供は望めない。推敲(elaboration)フェーズのイテレーションではプロダクトの完成保証に，続く作成(construction)フェーズではプロダクトにおける要件機能の実現に，それぞれ重点を置く必要がある。さらに移行(transition)フェーズでは，ユーザに対するプロダクトの可用性保証がリスク管理の中心になる。すなわちリスク値ライフサイクルとは，プロジェクトのライフサイクルを通じた価値提供において発生する，さまざまなリスクの管理を支援するものなのだ。</p> 
-  </blockquote> 
-  <blockquote> 
-   <p><strong>プラクティス２:</strong> ユースケースモデリング(Use Case Modeling)は，アジャイルプロジェクトの要件管理をスケーリングするプラクティスとして利用することができる。ユーザストーリは仕様決定時には有効だが，システムのコンテキストの資料化や抽象性を扱う場合は役に立たない。ここはユースケースが真価を発揮する領域なのだ。ユースケース内におけるユーザストーリを捕捉することにより，ユーザストーリ間の関係を示すことができる。企業レベルのビジネスプロセスやビジネスルールにユーザストーリをマッチさせる上でも，ユースケースモデリングは効果的な手法だ。</p> 
-  </blockquote> 
-  <blockquote> 
-   <p><strong>プラクティス３:</strong> ２層プロジェクト構造(Two Layer Project Structure)は，PMO(Project Management Office)においてウォーターフォールとアジャイルの両方，さらには他の形式のプロジェクトの管理も可能にする。このプロジェクト構造は，プロジェクト管理レイヤと実行レイヤとから構成される。プロジェクト管理レイヤは，異なるプロジェクト形式に対して共通使用されることにより，関係者に対する同一形式の報告を可能にする。一方でプロジェクトマネージャには，自身のプロジェクトを管理しやすい方法に実行レイヤを定義する自由が与えられている。アジャイルのイテレーション，複数のプロダクトや大規模プロダクトのパーツを単一プロジェクト管理するためのマルチトラック，ウォーターフォールのフェーズなどが考えられるものだ。一方のプロジェクト管理レイヤにも “定義”，”実行”，”クローズ” というフェーズが存在する。ウォーターフォールを例にすれば，設計作業を実行層に，実装と構築の作業をプロジェクト管理層の実行フェーズに割り当てらればよいだろう。スクラムを採用するプロジェクトならば，スプリントを実行フェーズとするかも知れない。アジャイルのイテレーションを実行するユーザインターフェースチームと，ウォーターフォールでプロセスを運用するバックエンドチーム，というように，異なる実行層を持つチーム同士でプロジェクトを構成することも可能だろう。</p> 
-  </blockquote> 
-  <blockquote> 
-   <p><strong>プラクティス４:</strong> アジャイルを企業レベルにスケールする場合，異なったメソッドのプラクティスを組み合わせて，その企業独自の大規模アジャイルアプローチを構築できる組織ならば好都合だろう。&quot;何でも少しずつ(a bit of everything)” と呼ぶべきこの方法は，企業内で利用可能なものを基本的に使って，ベストプラクティスの再利用と組み合わせを行い，アジャイルをスケールする，というものだ。</p> 
-  </blockquote> 
-  <p>読者の企業でアジャイルのスケールするならば，どの方法を選択するだろう？</p> 
+  <p>QCon New York 2013から得られた重要なポイントや学べた教訓については、<a href="http://www.infoq.com/articles/qcon-new-york-2013?utm_source=infoq&amp;utm_medium=news&amp;utm_campaign=12162013news"><strong>ここ</strong></a>で読むことができる。QCon New York 2013の参加者調査によると、<strong>回答者の92.86%が、同僚にもQConを推薦するつもりだ</strong>と回答している。</p> 
+  <p>QCon New York 2014も同じように、ソフトウェア開発の専門家による専門家のためのテーマやプレゼンテーションが特徴だ。&nbsp;</p> 
+  <p>参加登録は、3日間のカンファレンスで<strong>$1,495 ($800割引)</strong>だ。<a href="https://qconnewyork.com/registration?utm_source=infoq&amp;utm_medium=news&amp;utm_campaign=12162013news"><strong>今登録すれば割引を受けられる</strong></a><strong>。</strong></p> 
+  <p>企業およびグループ割引もある。詳しくは、<a href="mailto:register@qconnewyork.com">register@qconnewyork.com</a>&nbsp;までメールしてほしい。</p> 
+  <p>(イベントに興味のあるスピーカーへ：QCon New York 2014には公式の募集はないが、まだ<a href="https://qconnewyork.com/submissions?utm_source=infoq&amp;utm_medium=news&amp;utm_campaign=12162013news">ここから講演の応募</a>ができる)</p> 
  </div> 
 </div><br><br><br><br><br><br></body></html>

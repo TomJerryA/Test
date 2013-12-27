@@ -2,16 +2,25 @@
  <head></head> 
  <body>
   <div>
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/15.py">CMMIを使用した成果主導の改善プロセス</a>CMMIを基盤とするプロセス改善プログラムは多くの場合，特定の成熟度レベルの達成を目標に据える。組織としては，成熟度レベルとビジネス上の目標との関連性を見通し，改善によって期待できるビジネス上のメリットを知ることが重要になる。CMMI成熟度を基準としたものから成果主導アプローチに改善プログラムを変更することについて，Michelle Krupa氏にインタビューした。
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/18.py">ビヘイビア駆動開発ツール、Jasmine 2.0がリリースされた</a>JavaScriptのビヘイビア駆動開発テスティングフレームワーク、Jasmineのバージョン2.0がリリースされた。今回のリリースには、Node.jsサポートの改善と品質向上への取り組み、いくつかの後方互換性を壊す変更が含まれている。
   </div>
   <div>
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/14.py">バグ退治でテストを改善する</a>Testing Portugal 2013において、Klaus Olsen氏はバグ退治のテクニック、探索テストのスタイルについてプレゼンテーションした。
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/17.py">QCon New York 2014の参加登録が始まった</a>QCon New York 2014 (June 9-13)の参加登録が始まった。このイベントは今回で3回目を迎え、継続的デリバリー、データサイエンス、HTML5、アジャイル、アーキテクチャなどに関する専門家によるセッションとケーススタディが特徴だ。
   </div>
   <div>
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/13.py">GoogleがChromeアプリのオフライン機能強化とMacサポートを発表</a>Googleは先日，同社のChromeアプリの構想にMacのサポートを加えることを発表した。Chromeアプリは，クロスプラットフォームのアプリケーション開発をWeb技術を使って実現するもので，Chromeをランタイムとして使用する。今回の発表は，９月から本格的に始まった，GoogleによるChromeアプリの再プロモーションと並行して行われた。
-  </div>
-  <div>
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/12.py">学習する組織における自己啓発のサポート</a>組織は従業員を通して学習する。アジャイルなやり方を仕事に導入するには、組織は従業員の自己啓発をサポートする必要がある。
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/16.py">JavascriptプラットフォームのFamo.usが初の公式アクセス版をローンチ</a>Famo.us Javascript platformを開発したチームが2013年12月5日，同プラットフォームの能力をクライアント側に展開するための準備段階として，アプリケーションレイヤのコードを初めてプレビューリリースする。
+  </div> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/15.py">CMMIを使用した成果主導の改善プロセス</a>CMMIを基盤とするプロセス改善プログラムは多くの場合，特定の成熟度レベルの達成を目標に据える。組織としては，成熟度レベルとビジネス上の目標との関連性を見通し，改善によって期待できるビジネス上のメリットを知ることが重要になる。CMMI成熟度を基準としたものから成果主導アプローチに改善プログラムを変更することについて，Michelle Krupa氏にインタビューした。 
+  </div> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/14.py">バグ退治でテストを改善する</a>Testing Portugal 2013において、Klaus Olsen氏はバグ退治のテクニック、探索テストのスタイルについてプレゼンテーションした。 
+  </div> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/13.py">GoogleがChromeアプリのオフライン機能強化とMacサポートを発表</a>Googleは先日，同社のChromeアプリの構想にMacのサポートを加えることを発表した。Chromeアプリは，クロスプラットフォームのアプリケーション開発をWeb技術を使って実現するもので，Chromeをランタイムとして使用する。今回の発表は，９月から本格的に始まった，GoogleによるChromeアプリの再プロモーションと並行して行われた。 
+  </div> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/12.py">学習する組織における自己啓発のサポート</a>組織は従業員を通して学習する。アジャイルなやり方を仕事に導入するには、組織は従業員の自己啓発をサポートする必要がある。 
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/12.py">Opserver概要 - Stack Exchangeの監視ツール</a>OpserverはStackOverflowで有名なStackExchangeの開発したオープンソースの監視ツールだ。監視対象である各システム状態の全体像をすばやく把握するためのものだが，ドリルダウンアプローチを使うことで，さらに深い調査を行うこともできる。InfoQでは詳細を知るために，開発者のひとりであるNick Crave氏にインタビューした。 
@@ -141,15 +150,6 @@
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/21.py">DevOpsはアジャイルをどう補完するのか</a>アジャイルにはマニフェストと原則があり、人とステークフォルダの明確化、よりすばやいデリバリー、より幸福な顧客にフォーカスしている。なぜDevOpsが必要なのだろうか？ Agile Methods in the Finance Sector and Complex Environmentというカンファレンスで、ブリストルのNokia Entertainmentから来たJohn Clapham氏がDevOpsとは何か、DevOpsはビジネスに何をもたらすのかを語った。 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/20.py">Android、アプリ翻訳サービスで改善</a>Googleが公式にAndroidアプリの翻訳サービスをリリースした。開発者はローカライゼーションチェックリストにあるガイドラインに基づいて、アプリをさまざまな言語にローカライズすることができる。 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/19.py">&quot;Luca, フォース(force)を使え&quot; - Jenkins開発者が１ヶ月分のGitHubコミットを消失</a>昨日，Jenkinsプロジェクトの開発者が誤って，JenkinsコードベースのGitリポジトリをストアしているGitHubレポジトリに強制的なプッシュを実行してしまい，数ヶ月間のコミットを紛失した。何が起きたのか，将来同じことを繰り返さないためには何が必要か，検証してみたい。 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/18.py">スマートクライアント・Dumbサーバを実現？AWSがWebブラウザのJavaScript向けSDKをリリース</a>ここ数年、開発者は何らかの力仕事をサーバサイドのコードに頼り続けていたものの、クライアントサイドのコードにより多くの仕事をするよう求めていた。AWSは、ブラウザからAWSのサービスへの安全なアクセスを行うJavaScript SDKのリリースによって、そのモデルを刷新している。これにより、いくつかのケースでは、サーバサイドのコードをまったく必要としなくなっているのである。 
-  </div>     
+  </div>    
  </body>
 </html>
