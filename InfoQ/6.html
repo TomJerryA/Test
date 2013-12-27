@@ -1,9 +1,15 @@
-<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>在基于Entity Framework的核心业务应用中使用DDD</h3><p>“<a href="http://en.wikipedia.org/wiki/Domain-driven_design">领域驱动开发</a>（DDD）所关注的是领域，而不是持久化”，<a href="http://thedatafarm.com/blog/">Julie Lerman</a>最近在瑞典的&Oslash;redev开发者大会上这样<a href="http://vimeo.com/78893724">说道</a>。</p>
-<p>Julie从2003年以来一直是<a href="http://mvp.microsoft.com/en-us/mvp/Julie%20Lerman-8987">微软最有价值专家</a>，.NET平台顾问，曾关注数据库编程25年，然后使用<a href="http://msdn.microsoft.com/en-us/data/aa937723">Entity Framework</a>（EF），但现在受到了关注领域的DDD的启发。</p>
-<p>她的经验是，很多使用DDD的人不关心持久化，数据库是开发最后才会考虑的事。但长远来看，我们仍然需要将数据存入数据库，并且尽管Julie关注的是领域，但她仍然希望尽早确定应该什么时候引入持久化。</p>
-<p>对于Julie来说，DDD中最重要的概念是<a href="http://en.wikipedia.org/wiki/Domain-driven_design#Bounded_context">边界上下文</a>，它让我们以一种更加结构化的方式在子系统中思考问题，而不是在同一时间考虑应用程序的全部内容，如实体、行为等。在处理顾客服务的时候，可以不用关心与其他子系统（如市场）的交互。我们可能会需要某个标识，或很少的来自其他上下文的信息，但这些大部分都属于一个上下文领域的边界。这意味着我们在考虑持久化的时候，可以只关注一部分实体。</p>
-<p>在处理不同的实体（如客户）时，它在不同的上下文中重新定义客户实体，尽管它们都持久化在相同的Customer表中。她发现一个潜在的扩展是使用不同的表甚至数据库，将这些上下文彻底分离开来。</p>
-<p>对Julie来说，<a href="http://en.wikipedia.org/wiki/Value_object">值对象</a>一直是一个混乱的概念。它从DDD专家那里听到过5种不同的解释，它们全都正确，并且丰富了她的视野。现在，Julie认为值对象是没有标识的不可变对象，</p>
-<p>一般情况下，Julie也将领域模型作为数据模型使用，但她发现在一些非常复杂的领域中（如遗留数据库），需要分离的持久化模型。</p>
-<p>在今年早些时候，Julie撰写了<a href="http://www.infoq.com/cn/news/2013/10/data-driven-to-ddd">三篇文章</a>，讲述了她从数据驱动开发转移到DDD时所学到的东西。</p>
-<p><strong>原文英文链接：</strong><a href="http://www.infoq.com/news/2013/11/leveraging-ddd-ef">http://www.infoq.com/news/2013/11/leveraging-ddd-ef</a></p><br><br><br><br><br><br></body></html>
+<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>IDC预测2017年PaaS市场规模将达140亿美元</h3><p>由于快速的程序开发和低廉IT成本带来的高利润，PaaS产业将快速发展。分析公司IDC最近发布了一份<a href="http://www.infoworld.com/d/cloud-computing/paas-market-reach-14-billion-2017-idc-says-230440" target="_blank">研究报告</a>，该报告声称由于PaaS公司基础设施成本的降低和程序开发速度的提升，PaaS在全球市场的规模将实现从38亿美元（去年）到高达140亿美元（2017年）的飞跃。根据IDC的预测，PaaS在此段时间的年复合增长率大约为30%，相比之下，IT行业总体的年复合增长率仅仅为4%。</p>
+<p>报告同时指出，其对PaaS做出如此增长预期是的原因是“存在更迅速接受购买PaaS提议的迹象和关于过去几年的新的信息，特别是有关微软Azure的接受和市场渗透的信息”。IDC将PaaS分为几个子块，包括APaaS（应用平台服务）、DPaaS（数据库平台服务）、基于云的测试和IPaaS（集成平台服务）。 同时报告指出，越来越多的PaaS供应商将目光聚集到特定行业， IDC认为这些公司是在通过与通用PaaS供应商（如Salesforce.com、Microsoft和IBM）合作来“对冲自己的风险”，报告原文写道：“通过这种方式，他们将不需要再次研发通用平台服务，从而可以集中精力研发实现他们自己增值价值的部分。” IDC认为，通常情况下公司更喜欢使用公用PaaS——因为公有PaaS可以降低IT基础设施成本，提供高可用性和高扩展。报告也指出，PaaS让公司更容易地实现功能和负载测试、部署软件，这些都提高了公司开发应用的速度。</p>
+<p>这对程序员的影响还并不明朗。“公有PaaS对IT员工的潜在影响还是一个很大的未知数，”报告指出：“公有PaaS通过一点或几点因素提高了开发者生产力，但开发者自身利益究竟发生了什么呢？企业是更好的利用了IT的价值呢？还是企业夺走了一些甚至全部利益导致了开发者自身利益的降低？答案还并不明晰。” 报告还指出PaaS收益存在地理差异，2012年，65.2%的PaaS收益来自美国，但是IDC认为这个数字在2017年将降至62.3%。这是因为大部分PaaS服务都是从美国起步的，这导致了地理差异。 但是PaaS将在包括日本的亚洲太平洋一带继续“蓬勃发展”。2012年此地带占全部财政收入的14.1，预测表面这个数字将在2017年上涨为19%。 欧洲，中东和非洲地区2012年PaaS财政收入占总额20.7%，预测表明这个数字在2017年将会有些许跌落，跌至18.7%。</p>
+<p>PaaS的红火为微软Azure带来了机会。Dr.Dobb‘s主编Andrew做了深入的<a href="http://www.drdobbs.com/cloud/doing-it-right-how-microsoft-made-the-ri/240163573" target="_blank">分析</a>：</p>
+<blockquote> 
+ <p>最近，微软发布了季度财政报告，报告中的利润（revenue）和收入（income）两项均创了新高。这对那些长久以来的批评者是一个震撼的消息——他们一直认为微软已不能跟上高技术市场的步伐，特别是自后PC时代以来。正是微软在产业中的成功，特别是服务端技术的成功使这些数字得以产生。并且公司在这些方面的市场份额仍在增长中。这些增长的一个重要因素正是Windows Azure——微软的云平台——的迅速发展。</p> 
+ <p>Azure于2010发布。发布初期，我还以为这是一款没有什么新意的产品，只是为了与一些类似产品——亚马逊、谷歌应用程序引擎（GAE）、IBM、HP、Oracle、ATT的云服务——竞争市场。但是事实并非如此，Azure不同于这些产品，特别是GAE这种产品——Azure对各种技术表现优秀，即使是公司尚未出售或签署的技术。这极大地颠覆了严格控制用户禁止其在Azure实例上运行Linux和Java的传统做法。相比之下，GAE无法提供任何与之竞争的服务。GAE VM的操作系统是一个通用的Linux实现，并且它只能支持部分Java（它禁止了很多AWT类）。数据库方面，谷歌提供了其专利技术，而Azure在云端则提供了SQLServer的实例。这是微软和谷歌的历次竞争中，微软第一次提供了开放了更多的产品。</p> 
+ <p>Azure迅速地发展着。随后的一个版本的Azure允许站点在本地硬件运行Azure，这种融合本地和云端的方式是其它供应商没有提供的。之后我会提到，这种整合方式为开发者带来了更大的利益。由于这些英明的决策，所有的Windows的商店成为了Azure的早期采用者,随后是在微软平台式运行后端技术的企业们。Azure虽然起步慢，但它随后发展稳健，现在它在云计算提供商中排行第二，位列亚马逊之后。（根据所引用的报告，亚马逊占有了云托管平台市场71%的份额，Azure占据了20%的份额。）</p> 
+</blockquote>
+<p>JP Morgenthal是IT战略和云计算方面的世界顶级专家。他<a href="http://www.infoq.com/cn/articles/PaaS_Is_The_Word" target="_blank">认为</a>PaaS乃是大势所趋：</p>
+<blockquote> 
+ <p>云计算不仅仅只是一个信息技术的流行字眼，它是代表着架构的最终前进方向，而且要求必须在流程和操作方面做出改变。很多组织的经验证明，以自顶向下的方式来是非常成功有效的，这种方式将使得它们有足够的能力构建和管理共享资源计算环境。这是一个非常关键的基础步骤，它使得IT组织能够培养配置及容量管理、治理和监控方面的实践能力，最终有能力创建和维护一个PaaS环境。</p> 
+ <p>平台即服务将会很快成为IT组织关注的重点内容之一，尤其是那些已经成功迁移到云计算平台的成熟组织。平台的选择与团队在PaaS环境下的管理和运维能力息息相关。每一种平台架构都有自身的优势和不足，例如某些平台着重于安全性和高可用性，而有些则认为安全性和高可用性完全是用户的责任。不仅如此，PaaS容器的大量出现，也会让您的技术部门重新考虑如何开发应用以及如何重构某些应用使之更加适用于云环境。</p> 
+</blockquote>
+<p>云计算包括PaaS的发展势头迅猛，从QCon技术大会的主题中就可以发现这种趋势。最近两年在中国大陆多地举行的QCon全球技术大会都设立了“云计算”专题，以刚刚结束的QCon上海技术大会为例，特别设立了<a href="http://www.qconshanghai.com/node/151">云计算架构与案例</a>、<a href="http://www.qconshanghai.com/node/316">大数据处理技术</a>、<a href="http://www.qconshanghai.com/node/147">扩展性、可用性与高性能</a>等相关的专题。而在即将举行的QCon北京2014技术大会上，同样也包括了“云计算架构案例”，感兴趣的读者可以访问<a href="http://qconbeijing.com/">QCon北京2014大会官网</a>了解更多详情。</p><br><br><br><br><br><br></body></html>

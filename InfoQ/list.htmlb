@@ -1,6 +1,9 @@
 <html>
  <head></head> 
- <body> 
+ <body>
+  <div>
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/4.htmlb">JavaOne 2013综述：Java 8是革命性的，Java回来了</a> JavaOne 2013已于近日在旧金山举行，时间从9月22日到9月26日。如果读者错过了，本文为你带来了会议要闻的综合报道。 
+  </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/4.htmlb">Codenvy架构：第一部分</a> Tyler Jewell是Codenvy的CEO，他在这篇分为两部分的文章中介绍了Codenvy（一个云IDE）的架构，包括平台、插件架构、工作空间、集群管理、多租户实现、IDE协作、发布模型和用于开发的SCRUM流程。 
   </div> 
@@ -147,9 +150,6 @@
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/7.htmlb">如何让你的内存NoSQL数据库为企业应用做好准备</a> 在本文中，作者Yiftach Schoolman阐述了如何克服管理云端的内存NoSQL数据库所面临的七项最大挑战。他详细讨论了可用性、网络分裂期间及之后的一致性、数据持久化、可伸缩性以及运维开销等挑战的应对方式。 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/6.htmlb">百度移动统计分析介绍与进阶经验分享</a> 为了让开发者更加深入的了解百度移动统计，InfoQ邀请了该产品的产品经理袁泽陆撰写本文，详细介绍百度移动统计产品、如何使用、移动应用分析常见问题解释等。 
-  </div> 
+  </div>  
  </body>
 </html>

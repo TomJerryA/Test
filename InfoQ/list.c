@@ -1,6 +1,9 @@
 <html>
  <head></head> 
- <body> 
+ <body>
+  <div>
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/4.c">Os custos para versionamento de uma API</a>Controle de vers&atilde;o para servi&ccedil;os &eacute; algo que tem sido um problema fundamental para SOA. H&aacute; muitos exemplos de experi&ecirc;ncias adquiridas e compartilhadas ao longo dos &uacute;ltimos anos, poucos desses exemplos foram comparados de maneira concreta e contrastados &agrave;s diferentes abordagens existentes. Jean-Jacques Dubray publicou sobre as experi&ecirc;ncias de sua equipe nesta &aacute;rea.
+  </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/3.c">PayPal muda de Java para JavaScript</a>PayPal decidiu usar JavaScript de ponta-a-ponta, do browser at&eacute; o servidor de backend para aplica&ccedil;&otilde;es web, descontinuando o c&oacute;digo legado escrito em JSP/Java. 
   </div> 
@@ -147,9 +150,6 @@
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/5.c">Novidades da Microsoft e Amazon para o Android</a>O Windows Azure agora possui um SDK Android incluindo notifica&ccedil;&otilde;es push para dispositivos, e a Amazon disponibilizou uma API de an&uacute;ncios que pode ser utilizada em dispositivos Android, em paralelo com o Google AdMob. Conhe&ccedil;a os detalhes. 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/4.c">Cresce competi&ccedil;&atilde;o entre implementa&ccedil;&otilde;es do Hadoop para consultas em tempo real</a>Stinger, a nova iniciativa da Hortonworks, entra na disputa com o Apache Drill e o Cloudera Impala pela melhor implementa&ccedil;&atilde;o do Hadoop para consultas em tempo real. Conhe&ccedil;a as novidades. 
-  </div> 
+  </div>  
  </body>
 </html>

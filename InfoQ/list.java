@@ -1,6 +1,9 @@
 <html>
  <head></head> 
- <body> 
+ <body>
+  <div>
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/18.java">Improving Product Development with Flow Thinking</a>A case study on creating buy-in and commitment for flow thinking using a mental model and metaphor was presented at the Lean Kanban Central Europe conference. InfoQ interviewed H&aring;kan Forss and Erik Sch&ouml;n about their journey from methods &amp; tools to principles &amp; mindset and how they use visual management to implement flow thinking and improve the product development flow at Ericsson.
+  </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/17.java">Hadoop Jobs on GPU with ParallelX</a>The MapReduce paradigm is not always ideal when dealing with large computationally intensive algorithms. A small team of entrepreneurs is building a product called ParallelX to solve that bottleneck by harnessing the power of GPUs to give Hadoop jobs a significant boost. 
   </div> 
@@ -147,9 +150,6 @@
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/22.java">List &amp; Label 19 Adds Report Parameters, Collection Variables, OData and REST Data Providers</a>The recently released List &amp; Label 19 provides support for report parameters, collection variables, new chart types such as combined, stacked, funnel, pipeline, shapefile and donut in addition to support for OData and REST data providers. 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/21.java">PayPal Switches from Java to JavaScript</a>PayPal has decided to use JavaScript from browser all the way to the back-end server for web applications, giving up legacy code written in JSP/Java. 
-  </div> 
+  </div>  
  </body>
 </html>

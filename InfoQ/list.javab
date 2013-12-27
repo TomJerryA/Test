@@ -1,6 +1,9 @@
 <html>
  <head></head> 
- <body> 
+ <body>
+  <div>
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/34.javab">Oleg Shilo on CS-Script and Notepad++</a> When you just want to try out some code, Visual Studio can feel like overkill. So some developers turn to lightweight editors such as Notepad++ for their scripting needs. Oleg Shilo talks about his project to add better CS-Script plugin for Notepad++. 
+  </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/33.javab">Building a Real-time, Personalized Recommendation System with Kiji</a> Jon Natkins explains in this article how to create a personalized recommendation system fed with large amounts of real-time data using Kiji, which leverages HBase, Avro, Map-Reduce and Scalding. 
   </div> 
@@ -147,9 +150,6 @@
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/36.javab">What Do You Look For In a Servant Leader?</a> In this article, let’s discuss the kind of qualities, preferences, and non-technical skills you might need in a servant leader. 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/35.javab">9 Fallacies of Java Performance</a>Over the past 18 years Java has evolved into the premiere language of the enterprise. Yet cognitive fallacies persist about Java performance. In this article we examine some popular misconceptions. 
-  </div> 
+  </div>  
  </body>
 </html>

@@ -1,14 +1,17 @@
 <html>
  <head></head> 
- <body>
-  <div>
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/18.py">ビヘイビア駆動開発ツール、Jasmine 2.0がリリースされた</a>JavaScriptのビヘイビア駆動開発テスティングフレームワーク、Jasmineのバージョン2.0がリリースされた。今回のリリースには、Node.jsサポートの改善と品質向上への取り組み、いくつかの後方互換性を壊す変更が含まれている。
-  </div>
-  <div>
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/17.py">QCon New York 2014の参加登録が始まった</a>QCon New York 2014 (June 9-13)の参加登録が始まった。このイベントは今回で3回目を迎え、継続的デリバリー、データサイエンス、HTML5、アジャイル、アーキテクチャなどに関する専門家によるセッションとケーススタディが特徴だ。
-  </div>
-  <div>
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/16.py">JavascriptプラットフォームのFamo.usが初の公式アクセス版をローンチ</a>Famo.us Javascript platformを開発したチームが2013年12月5日，同プラットフォームの能力をクライアント側に展開するための準備段階として，アプリケーションレイヤのコードを初めてプレビューリリースする。
+ <body> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/19.py">Reactive Extensions for C++の紹介</a>Rx.cppとしても知られるReactive Extensions for C++が、WinRTでも（C++/CXを使って）、OS Xでも（clangを使って）利用できるようになった。まだ初期段階だが、最後のプレビュー以来、多くの仕事がなされている。 
+  </div> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/18.py">ビヘイビア駆動開発ツール、Jasmine 2.0がリリースされた</a>JavaScriptのビヘイビア駆動開発テスティングフレームワーク、Jasmineのバージョン2.0がリリースされた。今回のリリースには、Node.jsサポートの改善と品質向上への取り組み、いくつかの後方互換性を壊す変更が含まれている。 
+  </div> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/17.py">QCon New York 2014の参加登録が始まった</a>QCon New York 2014 (June 9-13)の参加登録が始まった。このイベントは今回で3回目を迎え、継続的デリバリー、データサイエンス、HTML5、アジャイル、アーキテクチャなどに関する専門家によるセッションとケーススタディが特徴だ。 
+  </div> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/16.py">JavascriptプラットフォームのFamo.usが初の公式アクセス版をローンチ</a>Famo.us Javascript platformを開発したチームが2013年12月5日，同プラットフォームの能力をクライアント側に展開するための準備段階として，アプリケーションレイヤのコードを初めてプレビューリリースする。 
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/15.py">CMMIを使用した成果主導の改善プロセス</a>CMMIを基盤とするプロセス改善プログラムは多くの場合，特定の成熟度レベルの達成を目標に据える。組織としては，成熟度レベルとビジネス上の目標との関連性を見通し，改善によって期待できるビジネス上のメリットを知ることが重要になる。CMMI成熟度を基準としたものから成果主導アプローチに改善プログラムを変更することについて，Michelle Krupa氏にインタビューした。 
@@ -148,8 +151,5 @@
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/22.py">Simian Armyを使わないPagerDutyの復元性テスト</a>PagerDutyのDoug Barth氏が，特別な自動化作業を前もって用意することなくシステムの復元性テストを開始するという，同社で実施したアプローチについて，DevOps Days Londonで講演した。目標としたのは障害発生点の早期発見と，１週間に１時間の時間枠を設けて，その対処方法についてオープンに議論することだ。 
   </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/21.py">DevOpsはアジャイルをどう補完するのか</a>アジャイルにはマニフェストと原則があり、人とステークフォルダの明確化、よりすばやいデリバリー、より幸福な顧客にフォーカスしている。なぜDevOpsが必要なのだろうか？ Agile Methods in the Finance Sector and Complex Environmentというカンファレンスで、ブリストルのNokia Entertainmentから来たJohn Clapham氏がDevOpsとは何か、DevOpsはビジネスに何をもたらすのかを語った。 
-  </div>    
  </body>
 </html>
