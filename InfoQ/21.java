@@ -1,51 +1,24 @@
-<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>PayPal Switches from Java to JavaScript</h3><p>PayPal has decided to use JavaScript from browser all the way to the back-end server for web applications, giving up&nbsp;legacy code written in JSP/Java.</p>
-<p>Jeff Harrell, Director of Engineering at PayPal, has explained in a couple of blog posts (<a href="https://www.paypal-engineering.com/2013/06/17/set-my-ui-free-part-1-dust-javascript-templating-open-source-and-more/">Set My UI Free Part 1: Dust JavaScript Templating, Open Source and More</a>, <a href="https://www.paypal-engineering.com/2013/11/22/node-js-at-paypal/">Node.js at PayPal</a>) why they decided&nbsp;and some conclusions&nbsp;resulting from switching their web application development&nbsp;from Java/JSP to a complete JavaScript/Node.js stack.</p>
-<p>According to Harrell, PayPal’s websites had accumulated a good deal of technical debt, and they wanted a “technology stack free of this which would enable greater product agility and innovation.” Initially, there was a significant divide between front-end engineers working in web technologies and back-end ones coding in Java. When a UX person wanted to sketch up some pages, they had to ask Java programmers to do some back-end wiring to make it work. This did not fit with their Lean UX development model:</p>
+<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>Ionic HTML5 Mobile Framework Alpha Preview</h3><p><a href="http://ionicframework.com/">Ionic</a> is a new user interface framework for building hybrid mobile applications with HTML5 that bills itself as the &quot;bond between native and HTML5&quot;. It provides many of the essential mobile user interface paradigms, such as simple items like <a href="http://ionicframework.com/docs/components/">lists</a>, <a href="http://ionicframework.com/docs/components/">tab bars</a> and <a href="http://ionicframework.com/docs/components/">toggle switches</a>. It also provides more complex visual layout examples such as <a href="http://ionicframework.com/docs/angularjs/controllers/side-menu/">menus that slide out to reveal content underneath</a>.</p>
+<p>Ionic says that it has a heavy emphasis on performance and looks to maximize its speed through limiting DOM interaction, eliminating jQuery altogether and using specific hardware accelerated CSS transitions like `translate(z)` to trigger the GPU on mobile devices, which provides hardware accelerated interactions as opposed to those provided by the underpowered mobile browser.</p>
+<p>The focus on performance means that Ionic only supports iOS6 and above and Android 4.1 and above. &quot;Devices have gotten much faster in the last year or so, but HTML5 Frameworks are still pretty conservative&quot;, said Max Lynch, CTO at Drifty, the company behind Ionic . &quot;With Ionic, we are being aggressive about only supporting newer devices, and adding lots of support for touch gestures, animations, and native-style UI elements.&quot;</p>
+<h2>AngularJS Foundation</h2>
+<p>Built on top of the popular <a href="http://angularjs.org/">AngularJS framework</a> from Google, Ionic utilizes AngularJS to provide the application structure, while Ionic itself focuses on the user interface. This means that all views, application routing and controllers are handled by AngularJS. Ionic does provide a set of directives for it's components so the developer can define Ionic UI components using Angular's ability to create custom HTML elements. For instance, an Ionic mobile list with inertia scrolling can be created using the `list` directive.</p>
+<pre>
+&lt;list&gt;
+&lt;item ng-repeat=&quot;item in items&quot; item=&quot;item&quot;&gt;&lt;/item&gt;
+&lt;/list&gt;</pre>
+<p>Ionic also depends on Angular for touch support, animations between views, sanitizing HTML for safe input, and XHR calls.</p>
+<p>Ionic does mention that in the future they plan to support other frameworks <a href="http://ionicframework.com/docs/guide/installation.html">like EmberJS and Knockout</a>.</p>
+<h2>Response</h2>
+<p>The <a href="https://news.ycombinator.com/item?id=6780535">response to the release</a> included the <a href="http://venturebeat.com/2013/11/20/html5-vs-native-vs-hybrid-mobile-apps-3500-developers-say-all-three-please/">usual debate</a> about trying to build native applications with HTML5, along with some concern about lack of support for versions of Android prior to 4.1. User ValentineC wrote:</p>
 <blockquote> 
- <p>At the time, our UI applications were based on Java and JSP using a proprietary solution that was rigid, tightly coupled and hard to move fast in. Our teams didn’t find it complimentary to our Lean UX development model and couldn’t move fast in it so they would build their prototypes in a scripting language, test them with users, and then later port the code over to our production stack.</p> 
+ <p>&quot;While I agree with the decision to support iOS 6 and up, I believe Android upgrade paths aren't as clear cut. I'm working on a project with China-designed phones and many of them are using older versions of Android as a point of product differentiation.</p> 
+ <p>Hope it's something you guys will reconsider.&quot;</p> 
 </blockquote>
-<p>They&nbsp;wanted a “templating [solution that] must be decoupled from the underlying server technology and allow us to evolve our UIs independent of the application language” and that would work with multiple environments. They&nbsp;decided to&nbsp;go with&nbsp;<a href="https://github.com/linkedin/dustjs">Dust.js</a>&nbsp;– a templating framework backed up by LinkedIn&nbsp;– , plus Twitter’s <a href="https://github.com/twitter/bootstrap">Bootstrap</a>&nbsp;and <a href="https://github.com/bower/bower">Bower</a>, a package manager for the web. Additional pieces added later were <a href="http://lesscss.org/">LESS</a>, <a href="http://requirejs.org/">RequireJS</a>, <a href="http://backbonejs.org/">Backbone.js</a>, <a href="http://gruntjs.com/">Grunt</a>, and <a href="http://visionmedia.github.io/mocha/">Mocha</a>.</p>
-<p>Some of PayPal’s pages have been redesigned but they still had some of the legacy stack:</p>
-<blockquote> 
- <p>… we have legacy C++/XSL and Java/JSP stacks, and we didn’t want to leave these UIs behind as we continued to move forward. JavaScript templates are ideal for this. On the C++ stack, we built a library that used V8 to perform Dust renders natively – this was amazingly fast! On the Java side, we integrated Dust using a Spring ViewResolver coupled with Rhino to render the views.</p> 
-</blockquote>
-<p>At that time, they also started using Node.js for prototyping new pages, concluding that it was “extremely proficient” and decided to try it in production. For that they also built <a href="https://github.com/paypal/kraken-js">Kraken.js</a>, a “convention layer” placed on top of <a href="http://expressjs.com/">Express</a>&nbsp;which is a&nbsp;Node.js-based web framework. (PayPal has recently open sourced Kraken.js.) The first application to be done in Node.js was the account overview page, which is one of the most accessed PayPal pages, according to Harrell. But because they were afraid the app might not scale well, they decided to create an equivalent Java application to fall back to in case the Node.js one won’t work. Following are some conclusions regarding the development effort required for both apps:</p>
-<table cellspacing="0" cellpadding="2" width="500" border="1" unselectable="on"> 
- <tbody> 
-  <tr> 
-   <td valign="top" width="166">&nbsp;</td> 
-   <td valign="top" width="166"><strong>Java/Spring</strong></td> 
-   <td valign="top" width="166"><strong>JavaScript/Node.js</strong></td> 
-  </tr> 
-  <tr> 
-   <td valign="top" width="166">Set-up time</td> 
-   <td valign="top" width="166">0</td> 
-   <td valign="top" width="166">2 months</td> 
-  </tr> 
-  <tr> 
-   <td valign="top" width="166">Development</td> 
-   <td valign="top" width="166">~5 months</td> 
-   <td valign="top" width="166">~3 months</td> 
-  </tr> 
-  <tr> 
-   <td valign="top" width="166">Engineers</td> 
-   <td valign="top" width="166">5</td> 
-   <td valign="top" width="166">2</td> 
-  </tr> 
-  <tr> 
-   <td valign="top" width="166">Lines of code</td> 
-   <td valign="top" width="166">unspecified</td> 
-   <td valign="top" width="166">66% of unspecified</td> 
-  </tr> 
- </tbody> 
-</table>
-<p>The JavaScript team needed 2 months for the initial setup of the infrastructure, but they created with fewer people an application with the same functionality in less time. Running the test suite on production hardware, they concluded that the Node.js app was performing better than the Java one, serving:</p>
-<blockquote> 
- <p>Double the requests per second vs. the Java application. This is even more interesting because our initial performance results were using a single core for the node.js application compared to five cores in Java. We expect to increase this divide further.</p> 
-</blockquote>
-<p>and having</p>
-<blockquote> 
- <p>35% decrease in the average response time for the same page. This resulted in the pages being served&nbsp;200ms faster— something users will definitely notice.</p> 
-</blockquote>
-<p>As a result, PayPal began using the Node.js application&nbsp;in beta in production, and have decided that “all of our consumer facing web applications going forward will be built on Node.js,” while some of the existing ones are being ported to Node.js.</p>
-<p>One of the benefits of using JavaScript from browser to server&nbsp;is, according to Harrell, the elimination of a divide between front and back-end development by having one team “which allows us to understand and react to our users’ needs at any level in the technology stack.”</p><br><br><br><br><br><br></body></html>
+<h2>Availability</h2>
+<p>The current version of Ionic is an <a href="https://github.com/driftyco/ionic/releases">Alpha release</a>. It's installable via the command line as an NPM library, which will generate your project for you using the Ionic seed, and includes everything you need to build an application with Ionic and AngularJS:</p>
+<ul> 
+ <li>sudo npm install –g ionic</li> 
+ <li>ionic start myproject</li> 
+</ul>
+<p>Ionic is open source and offered under the <a href="https://github.com/driftyco/ionic/blob/master/LICENSE">MIT license</a>.</p><br><br><br><br><br><br></body></html>

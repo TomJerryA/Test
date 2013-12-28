@@ -2,7 +2,16 @@
  <head></head> 
  <body>
   <div>
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/18.java">Improving Product Development with Flow Thinking</a>A case study on creating buy-in and commitment for flow thinking using a mental model and metaphor was presented at the Lean Kanban Central Europe conference. InfoQ interviewed H&aring;kan Forss and Erik Sch&ouml;n about their journey from methods &amp; tools to principles &amp; mindset and how they use visual management to implement flow thinking and improve the product development flow at Ericsson.
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/21.java">Ionic HTML5 Mobile Framework Alpha Preview</a>Ionic is a new user interface framework for building hybrid mobile applications with HTML5 that bills itself as the &quot;bond between native and HTML5&quot;. It provides many of the essential mobile user interface paradigms, such as simple items like lists, tab bars and toggle switches. It also provides more complex visual layout examples such as menus that slide out to reveal content underneath.
+  </div>
+  <div>
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/20.java">Xamarin Studio 4.2 Introduces Improved Account Management, Project System, Debugging and Bug Fixes</a>Xamarin Studio 4.2 has been released with the ability to log directly into your iOS developer account from within the IDE in addition to several improvements related to project system with support for Portable Class Library (PCL) projects in both iOS and Android as it enable C# developers to share code across devices.
+  </div>
+  <div>
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/19.java">Spring 4 Enhances Support for Java 8, Java EE 7, REST and HTML5</a>Last Thursday, Pivotal released Spring 4.0, the first major release since 2009. The new release supports Java 8 with expression of callbacks using lambdas, JSR 310 Date and Time API, and parameter name discovery.
+  </div> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/18.java">Improving Product Development with Flow Thinking</a>A case study on creating buy-in and commitment for flow thinking using a mental model and metaphor was presented at the Lean Kanban Central Europe conference. InfoQ interviewed H&aring;kan Forss and Erik Sch&ouml;n about their journey from methods &amp; tools to principles &amp; mindset and how they use visual management to implement flow thinking and improve the product development flow at Ericsson. 
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/17.java">Hadoop Jobs on GPU with ParallelX</a>The MapReduce paradigm is not always ideal when dealing with large computationally intensive algorithms. A small team of entrepreneurs is building a product called ParallelX to solve that bottleneck by harnessing the power of GPUs to give Hadoop jobs a significant boost. 
@@ -141,15 +150,6 @@
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/25.java">Increasing Pace of Change Drives Agile In Enterprise Applications</a>The pace of organizational change and technology adoption is increasing which means that enterprise software development needs to find ways to keep pace with these changes. The rise of big data is also driving the need to undertake many experiment and adapt rapidly. Blogger Matt Asay recently wrote about this in a post titled &quot;Hey, Enterprise Developers! Get Agile Or Get Steamrollered&quot; 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/24.java">Is Getting Rid of All Projects a Good Idea?</a>At the XP Days Benelux conference, Paul Kuijten did a session called &quot;kill all projects&quot; where he questioned if getting rid of all projects could be a good idea. InfoQ did an interview with Paul about project management practices that can be valuable for agile, and the funding of product development. 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/23.java">A/B Testing for Mobile Applications</a>Best.ly offers support for A/B-testing mobile applications without the need for code changes and resubmitting to an app store. Currently, there is only a native library for the iOS platform but libraries for the Android eco-system are already in development and will be available soon. Experiments can be administrated online, adjusted during runtime and monitored in realtime. 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/22.java">List &amp; Label 19 Adds Report Parameters, Collection Variables, OData and REST Data Providers</a>The recently released List &amp; Label 19 provides support for report parameters, collection variables, new chart types such as combined, stacked, funnel, pipeline, shapefile and donut in addition to support for OData and REST data providers. 
-  </div>  
+  </div>    
  </body>
 </html>

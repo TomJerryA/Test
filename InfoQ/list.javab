@@ -1,7 +1,7 @@
 <html>
  <head></head> 
- <body>
-  <div>
+ <body> 
+  <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/34.javab">Oleg Shilo on CS-Script and Notepad++</a> When you just want to try out some code, Visual Studio can feel like overkill. So some developers turn to lightweight editors such as Notepad++ for their scripting needs. Oleg Shilo talks about his project to add better CS-Script plugin for Notepad++. 
   </div> 
   <div> 
@@ -150,6 +150,6 @@
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/36.javab">What Do You Look For In a Servant Leader?</a> In this article, let’s discuss the kind of qualities, preferences, and non-technical skills you might need in a servant leader. 
-  </div>  
+  </div> 
  </body>
 </html>
