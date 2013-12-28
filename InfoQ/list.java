@@ -2,13 +2,22 @@
  <head></head> 
  <body>
   <div>
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/21.java">Ionic HTML5 Mobile Framework Alpha Preview</a>Ionic is a new user interface framework for building hybrid mobile applications with HTML5 that bills itself as the &quot;bond between native and HTML5&quot;. It provides many of the essential mobile user interface paradigms, such as simple items like lists, tab bars and toggle switches. It also provides more complex visual layout examples such as menus that slide out to reveal content underneath.
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/24.java">RESTful Web Services Framework Jersey 2.5 Released</a>The RESTful Web Services Framework Jersey 2.5 was recently released, bringing support for the latest version of Jetty web server, an upgrade of the Apache Connector and numerous defects corrected. Features added in earlier releases, after the major 2.0 release in June, include support for OAuth and Spring 3.
   </div>
   <div>
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/20.java">Xamarin Studio 4.2 Introduces Improved Account Management, Project System, Debugging and Bug Fixes</a>Xamarin Studio 4.2 has been released with the ability to log directly into your iOS developer account from within the IDE in addition to several improvements related to project system with support for Portable Class Library (PCL) projects in both iOS and Android as it enable C# developers to share code across devices.
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/23.java">Hadoop-as-a-Service Provider Qubole Now Runs on Google Compute Engine</a>Qubole, a managed Hadoop-as-a-Service offering is now available on Google Compute Engine (GCE). Qubole was so far only available on Amazon's AWS and this announcement follows only a few days after Google releasing GCE into general availability.
   </div>
   <div>
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/19.java">Spring 4 Enhances Support for Java 8, Java EE 7, REST and HTML5</a>Last Thursday, Pivotal released Spring 4.0, the first major release since 2009. The new release supports Java 8 with expression of callbacks using lambdas, JSR 310 Date and Time API, and parameter name discovery.
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/22.java">Producing Software, Professionally</a>&quot;Producing Software, Professionally&quot; was the theme of the inaugural Agile Singapore Conference 2013. The conference was a seminal event for the Agile community in Southeast Asia.
+  </div> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/21.java">Ionic HTML5 Mobile Framework Alpha Preview</a>Ionic is a new user interface framework for building hybrid mobile applications with HTML5 that bills itself as the &quot;bond between native and HTML5&quot;. It provides many of the essential mobile user interface paradigms, such as simple items like lists, tab bars and toggle switches. It also provides more complex visual layout examples such as menus that slide out to reveal content underneath. 
+  </div> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/20.java">Xamarin Studio 4.2 Introduces Improved Account Management, Project System, Debugging and Bug Fixes</a>Xamarin Studio 4.2 has been released with the ability to log directly into your iOS developer account from within the IDE in addition to several improvements related to project system with support for Portable Class Library (PCL) projects in both iOS and Android as it enable C# developers to share code across devices. 
+  </div> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/19.java">Spring 4 Enhances Support for Java 8, Java EE 7, REST and HTML5</a>Last Thursday, Pivotal released Spring 4.0, the first major release since 2009. The new release supports Java 8 with expression of callbacks using lambdas, JSR 310 Date and Time API, and parameter name discovery. 
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/18.java">Improving Product Development with Flow Thinking</a>A case study on creating buy-in and commitment for flow thinking using a mental model and metaphor was presented at the Lean Kanban Central Europe conference. InfoQ interviewed H&aring;kan Forss and Erik Sch&ouml;n about their journey from methods &amp; tools to principles &amp; mindset and how they use visual management to implement flow thinking and improve the product development flow at Ericsson. 
@@ -141,15 +150,6 @@
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/28.java">A Few Highlights from QConSF2013- Part 1 of 2</a>On each day of the 3-day conference at the inviting environs offered at the Hyatt there was a jam-packed schedule of speakers, exhibits and activities that made for some difficult decisions as to which tracks and what happening to attend. 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/27.java">Continuous Security Testing With Gauntlt</a>James Wickett, from Gauntlt core team, gave a tutorial at Velocity Conf London about integrating security testing in the continuous integration cycle for early feedback on application security level. James stressed the importance of regularly checking for security as release delivery rates increase with continuous delivery. 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/26.java">Leveraging DDD in Core-Business Applications Using Entity Framework</a>Domain-Driven Design, DDD, is all about the domain, not about persistence. With a history of database programming for 25 years, later years using Entity Framework, Julie Lerman, a consultant on the .NET platform and a Microsoft MVP, in a recent presentation at the &Oslash;redev developer conference shares her persistence experiences when moving into DDD. 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/25.java">Increasing Pace of Change Drives Agile In Enterprise Applications</a>The pace of organizational change and technology adoption is increasing which means that enterprise software development needs to find ways to keep pace with these changes. The rise of big data is also driving the need to undertake many experiment and adapt rapidly. Blogger Matt Asay recently wrote about this in a post titled &quot;Hey, Enterprise Developers! Get Agile Or Get Steamrollered&quot; 
   </div>    
  </body>
 </html>

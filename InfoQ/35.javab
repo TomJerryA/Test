@@ -1,11 +1,233 @@
-<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>9 Fallacies of Java Performance</h3><p>Java performance has the reputation of being something of a Dark Art. Partly this is due to the sophistication of the platform, which makes it hard to reason about in many cases. However, there has historically also been a trend for Java performance techniques to consist of a body of folk wisdom rather than applied statistics and empirical reasoning. In this article, I hope to address some of the most egregious of these technical fairytales.</p><h2>1. Java is slow</h2><p>Of all the most outdated Java Performance fallacies, this is probably the most glaringly obvious.</p><p>Sure, back in the 90s and very early 2000s, Java could be slow at times.</p><p>However we have had over 10 years of improvements in virtual machine and JIT technology since thenand Java's overall performance is now screamingly fast.</p><p>In six separate <a href="http://www.techempower.com/blog/2013/04/05/frameworks-round-2/">web performance benchmarks</a>, Java frameworks took 22 out of the 24 top-four positions.</p><p>The JVM's use of profiling to only optimize the commonly-used codepaths, but to optimize those heavily has paid off. JIT-compiled Java code is now as fast as C++ in a large (and growing) number of cases.</p><p>Despite this, the perception of Java as a slow platform persists, perhaps due to a negative historical bias from people who had experiences with early versions of the Java platform.</p><p>We suggest remaining objective and assessing up-to-date performance results before jumping to conclusions.</p><h2>2. A single line of Java means anything in isolation</h2><p>Consider the following short line of code:</p><pre>
-MyObject obj = new MyObject();</pre><p>To a Java developer, it seems obvious that this code must allocate an object and run the appropriate constructor.</p><p>From that we might begin to reason about performance boundaries. We know that there is some finite amount of work that must be going on, and so we can attempt to calculate performance impact based on our presumptions.</p><p>This is a cognitive bias that can trap us into thinking that we know, a priori, that any work will need to be done at all.</p><p>In actuality, both javac and the JIT compiler can optimize away dead code. In the case of the JIT compiler, code can even be optimized away speculatively, based on profiling data. In such cases the line of code won't run at all, and so it will have zero performance impact.</p><p>Furthermore, in some JVMs, such as JRockit, the JIT compiler can even decompose object operations so that allocations can be avoided even if the code path is not completely dead.</p><p>The moral of the story here is that context is significant when dealing with Java performance, and premature optimization can produce counter-intuitive results. For best results don’t attempt to optimize prematurely. Instead always build your code and use performance tuning techniques to locate and correct your performance hot spots.</p><h2>3. A microbenchmark means what you think it does</h2><p>As we saw above, reasoning about a small section of code is less accurate than analyzing overall application performance.</p><p>Nonetheless developers love to write microbenchmarks. The visceral pleasure that some people derive from tinkering with some low-level aspect of the platform seems to be endless.</p><p>Richard Feynman once said: &quot;The first principle is that you must not fool yourself - and you are the easiest person to fool&quot;. Nowhere is this truer than when writing Java microbenchmarks.</p><p>Writing good microbenchmarks is profoundly difficult. The Java platform is sophisticated and complex, and many microbenchmarks only succeed in measuring transient effects, or other unintended aspects of the platform.</p><p>For example, a naively written microbenchmark will frequently end up measuring the timing subsystem or perhaps garbage collection rather than the effect it was trying to capture.</p><p>Only developers and teams that have a real need for should write microbenchmarks. These benchmarks should be published in their entirety (including source code), and should be reproducible and subject to peer review and deep scrutiny.</p><p>The Java platform's many optimizations imply that statistics of individual runs matters. A single benchmark must be run many times and the results aggregated to get a really reliable answer.</p><p>If you feel you must write microbenchmarks, then a good place to start is by reading the paper &quot;Statistically Rigorous Java Performance Evaluation&quot; by Georges, Buytaert, Eeckhout. Without proper treatment of the statistics, it is very easy to be misled.</p><p>There are well-developed tools and communities around them (for example, Google's Caliper) - if you absolutely must write microbenchmarks, then do not do so by yourself - you need the viewpoints and experience of your peers.</p><h2>4. Algorithmic slowness is the most common cause of performance problems</h2><p>A very familiar cognitive fallacy among developers (and humans in general) is to assume that the parts of a system that they control are the important ones.</p><p>In Java performance, this manifests itself by Java developers believing that algorithmic quality is the dominant cause of performance problems. Developers think about code, so they have a natural bias towards thinking about their algorithms.</p><p>In practice, when dealing with a range of real-world performance problems, algorithm design was found to be the fundamental issue less than 10% of the time.</p><p>Instead, garbage collection, database access and misconfiguration were all much more likely to cause application slowness than algorithms.</p><p>Most applications deal with relatively small amounts of data, so that even major algorithmic inefficiencies don't often lead to severe performance problems. To be sure, we are acknowledging that the algorithms were suboptimal; nonetheless the amount of inefficiency they added was small relative to other, much more dominant performance effects from other parts of the application stack.</p><p>So our best advice is to use empirical, production data to uncover the true causes of performance problems. Measure; don't guess!</p><h2>5. Caching solves everything</h2><p>&quot;Every problem in Computer Science can be solved by adding another level of indirection&quot;</p><p>This programmer's aphorism, attributed to David Wheeler (and thanks to the Internet, to at least two other Computer Scientists), is surprisingly common, especially among web developers.</p><p>Often this fallacy arises due to analysis paralysis when faced with an existing, poorly understood architecture.</p><p>Rather than deal with an intimidating extant system, a developer will frequently choose to hide from it by sticking a cache in front and hoping for the best. Of course, this approach just complicates the overall architecture and makes the situation worse for the next developer who seeks to understand the status quo of production.</p><p>Large, sprawling architectures are written one line, and one subsystem at a time. However, in many cases simpler, refactored architectures are more performant - and they are almost always easier to understand.</p><p>So when you are evaluating whether caching is really necessary, plan to collect basic usage statistics (miss rate, hit rate, etc.) to prove that the caching layer is actually adding value.</p><h2>6. All apps need to be concerned about Stop-The-World</h2><p>A fact of life of the Java platform is that all application threads must periodically stop to allow Garbage Collection to run. This is sometimes brandished as a serious weakness, even in the absence of any real evidence.</p><p>Empirical studies have shown that human beings cannot normally perceive changes occurring as frequently as one every 200ms.</p><p>Consequently for applications that have a human as their primary user, a Stop-The-World (STW) pause of 200ms or under is of no concern. 200ms is an interesting threshold because young collections frequently take less than 200ms to complete.</p><p>There are a minority of applications (such as low-latency trading, or mechanical control systems) for which a 200ms pause is unacceptable. Unless your application is in that minority it is unlikely your users will perceive any impact from the garbage collector.</p><p>It is also worth mentioning that in any system where there are more application threads than physical cores, the operating system scheduler will have to intervene to time-slice access to the CPUs. Stop-The-World sounds scary, but in practice, every application (whether JVM or not) has to deal with contended access to scarce compute resources.</p><p>Without measurement, it isn't clear that the JVM's approach has any meaningful additional impact on application performance.</p><p>In summary, determine whether pause times are actually affecting your application by turning on GC logs. Analyze the logs (either by hand, or with scripting or a tool) to determine the pause times. Then decide whether these really pose a problem for your application domain. Most importantly, ask yourself a most poignant question: have any users actually complained?</p><h2>7. Hand-rolled Object Pooling is appropriate for a wide range of apps</h2><p>One common response to the feeling that Stop-The-World pauses are somehow bad is for application groups to invent their own memory management techniques within the Java heap. Often this boils down to implementing an object pooling (or even full-blown reference-counting) approach and requiring any code using the domain objects to participate.</p><p>This technique is almost always misguided. It often has its roots in the distant past, where object allocation was expensive and mutability was deemed inconsequential. The world is very different now.</p><p>Modern hardware is incredibly efficient at allocation; the bandwidth to memory is at least 2 to 3GB on recent desktop or server hardware. This is a big number; outside of specialist use cases it is not that easy to make real applications saturate that much bandwidth.</p><p>Object pooling is generally difficult to implement correctly (especially when there are multiple threads at work) and has several negative requirements that render it a poor choice for general use:</p><ul> 
- <li>All developers who touch the code must be aware of pooling and handle it correctly</li> 
- <li>The boundary between &quot;pool-aware&quot; and &quot;non-pool-aware&quot; code must be known and documented</li> 
- <li>All of this additional complexity must be kept up to date, and regularly reviewed</li> 
- <li>If any of this fails, the risk of silent corruption (similar to pointer re-use in C) is reintroduced</li> 
-</ul><p>In summary, object pooling should only be used when GC pauses are unacceptable, and intelligent attempts at tuning and refactoring have been unable to reduce pauses to an acceptable level.</p><h2>8. CMS is always a better choice of GC than Parallel Old</h2><p>By default, the Oracle JDK will use a parallel, stop-the-world collector for collecting the old generation.</p><p>An alternative choice is Concurrent-Mark-Sweep (CMS). This allows application threads to continue running throughout most of the GC cycle, but it comes at a price, and with quite a few caveats.</p><p>Allowing application threads to run alongside GC threads invariably results in application threads mutating the object graph in a way that would affect the liveness of objects. This has to be cleaned up after the fact, and so CMS actually has two (usually very short) STW phases.</p><p>This has several consequences:</p><ol> 
- <li>All application threads have to be brought to safe points and stopped twice per full collection;</li> 
- <li>Whilst the collection is running concurrently, application throughput is reduced (usually by 50%);</li> 
- <li>The overall amount of bookkeeping (and CPU cycles) in which the JVM engages to collect garbage via CMS is considerably higher than for parallel collection.</li> 
-</ol><p>Depending on the application circumstances these prices may be worth paying or they may not. But there’s no such thing as a free lunch. The CMS collector is a remarkable piece of engineering, but it is not a panacea.</p><p>So before concluding that CMS is your correct GC strategy, you should first determine that STW pauses from Parallel Old are unacceptable and can't be tuned. And finally, (and I can’t stress this enough), be sure that all metrics are obtained on a production-equivalent system.</p><h2>9. Increasing the heap size will solve your memory problem</h2><p>When an application is in trouble and GC is suspected, many application groups will respond by just increasing the heap size. Under some circumstances, this can produce quick wins and allow time for a more considered fix. However, without a full understanding of the causes of the performance problem, this strategy can actually make matters worse.</p><p>Consider a badly coded application that is producing too many domain objects (with a typical lifespan of say two to three seconds). If the allocation rate is high enough, garbage collections could occur so rapidly that the domain objects are promoted into the tenured (old) generation. Once in tenured, the domain objects die almost immediately, but they would not be collected until the next full collection.</p><p>If this application has its heap size increased, then all we're really doing is adding space for relatively short-lived domain objects to propagate into and die. This can make the length of Stop-The-World pauses worse for no benefit to the application.</p><p>Understanding the dynamics of object allocation and lifetime before changing heap size or tuning other parameters is essential. Acting without measuring can make matters worse. The tenuring distribution information from the garbage collector is especially important here.</p><h2>Conclusion</h2><p>When it comes to Java performance-tuning intuition is often misleading. We require empirical data and tools to help us visualize and understand the platform's behavior.</p><p>Garbage Collection provides perhaps the best example of this. The GC subsystem has incredible potential for tuning and for producing data to guide tuning, but for production applications it is very hard to make sense of the data produced without resorting to tools.</p><p>The default should always be to run any Java process (in development or production) with at least these flags: <br /> -verbose:gc (print the GC logs) <br /> -Xloggc: (for more comprehensive GC logging) <br /> -XX:+PrintGCDetails (for more detailed output) <br /> -XX:+PrintTenuringDistribution (displays the tenuring thresholds assumed by the JVM)</p><p>and then to use a tool to analyze the logs - either handwritten scripts and some graph generation, or a visual tool such as the (open-source) GCViewer or jClarity Censum.</p><h2>About the Author</h2><p><strong><img vspace="3" hspace="3" align="left" src="http://www.infoq.com/resource/articles/9_Fallacies_Java_Performance/en/resources/Ben-Evans.jpg;jsessionid=44BDC286A2AB34DCEB9F8142E54C7A88" alt="" _href="img://Ben-Evans.jpg" _p="true" />Ben Evans</strong> is the CEO of jClarity, a startup which delivers performance tools to help development &amp; ops teams. He is an organizer for the LJC (London JUG) and a member of the JCP Executive Committee, helping define standards for the Java ecosystem. He is a Java Champion; JavaOne Rockstar; co-author of “The Well-Grounded Java Developer” and a regular public speaker on the Java platform, performance, concurrency, and related topics.</p><p>&nbsp;</p><p>&nbsp;</p><div class="clearer-space"></div><br><br><br><br><br><br></body></html>
+<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>Retrospectives Applied as “PROspectives"</h3><p>We can view all situations in our work (and life!) as opportunities from which to learn how to better handle similar situations in future. Looking back and asking, “How did I manage to…” is useful, but the more essential question is “How will I deal with future situations like this to improve my results?”</p>
+<p>I call such reflections “PROspectives” instead of “retrospectives”.</p>
+<p>We learn for the future many times every day. We learn to be on time at the bus stop, to deal with a new feature on our smartphone, to discuss in more useful ways with our boss.</p>
+<p>And we know <b>the more we reflect, the more we learn and improve.</b></p>
+<p>Yet we often forget to use such learning opportunities during longer situations and processes. How often do you reflect on how you organize the eight hours of your workday? Or your weekend? Or how you managed to complete a specific and complex work package within a period of three weeks?</p>
+<p>Furthermore, we seldom use this approach together with our co-workers or partners. How often do you analyze the way you together with your family managed your holiday? Or consider with your partner how to deal with the housekeeping? Or reflect with your team about how you managed your teamwork over the last four hours or five days?</p>
+<div id="lowerFullwidthVCR"></div>
+<p>Let’s be honest. Normally, we only undertake such reflections if we are forced to, especially in critical and unexpected situations. That means under time pressure and emotionalized:</p>
+<p>“The dishwasher has been filled with dirty dishes for two days! It’s ALWAYS up to me to turn it on!” (But right now, you both have to leave for the theatre…)</p>
+<p>“AB36CZ is not working - and we have to deliver it today at 6:00 p.m.! It was your job AGAIN, Bill, to do this. We cannot trust your commitments!” (And it is 2:00 p.m. with about six hours of work to do).</p>
+<p>It might be helpful to increase the motivation to reflect regularly or more often, independently of acute, unexpected problems and without time pressure?</p>
+<p>First of all:</p>
+<ul> 
+ <li><b>Avoid making a reflection session seem to be a psychological or therapeutic session. </b></li> 
+</ul>
+<p>And make clear that:</p>
+<ul> 
+ <li><b>such a session is a short (but not too short or terse) event with a chance to celebrate and sustain all that is working reasonably well (and offer some coffee and cake to celebrate!) and to uncover ideas for perhaps small future improvements. </b></li> 
+ <li><b>it is, to keep it short, not a review to analyze failures and to invest a lot of time to dig out root causes, and to point fingers at people responsible for failures.</b></li> 
+</ul>
+<p><b>All this is supported by calling these events “PROspectives”. </b></p>
+<p>Following Norman L. Kerth’s <a href="http://www.retrospectives.com/pages/Anatomy.html">Mining for Gold Exercise</a>, these are the core issues of a PROspective:</p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<i><b>What worked well that we don’t want to forget? <br /> </b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;This list is for those things that most agree worked well and that we want to continue doing on &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;the next project.&nbsp;</i></p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<i><b>What did we learn? <br /> </b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Here is where we document causes and effects that have lead to learning.</i></p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<i><b>What should we do differently next time? <br /> </b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;This list is for issues that need to be done better next time.</i></p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<i><b>What still puzzles us? <br /> </b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;This list is for issues that the project team doesn’t have enough information or skill to resolve. &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;The issues on this list often require training or more thorough investigation.</i></p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<i><b>What do we need to discuss in more detail? <br /> </b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Issues on this list are things that need further discussion, clarification, information, etc.&nbsp;&nbsp;</i></p>
+<p><i> </i><b>Steps to handle core issues: </b>&nbsp;</p>
+<ol> 
+ <li><b>Warm up&nbsp;</b><b>--&gt;</b><b>&nbsp;Platform for confidence and trust</b></li> 
+ <li><b>Sprint- (release-) panorama</b></li> 
+ <li><b>Appreciate what is working well and sustain and increase it with the UUS tool</b></li> 
+ <li><b>Find specific actions items for improvements with the PLUS tool</b></li> 
+ <li><b>If necessary, apply the impediment solvent</b></li> 
+ <li><b>Second-order PROspective</b></li> 
+ <li><b>Teamwork Backlog</b></li> 
+</ol>
+<p>The following suggestions apply to a PROspective held at the end of a time-boxed phase of work by which the team delivered a useful result either for specific stakeholders or for the team itself as a prerequisite for the next time box.</p>
+<p>The time box might be something like a sprint of one to four weeks (typical for agile development practices) or could last about two to four months for a release.</p>
+<p>If you apply a PROspective to a work process longer than four months - maybe as a debriefing or post mortem reflection of a whole project - be aware that you might not find enough learning and improvement opportunities because there might be not many or even any sufficiently similar situations in future.</p>
+<p>A PROspective is too heavy a method for shorter phases of work, like only several hours. You’d be better off with something leaner, for example <a href="http://www.korn.ch/team-process-modules/team-process-modules-Dateien/frame.htm">slide 24 (Reflect the Process)</a>. If you want to apply these suggestions to produce results other than at the end of a time-boxed phase of work, you may take these steps as inspiration for an adapted version appropriate for your situation.</p>
+<p><b>The steps of a process-pattern to perform a PROspective are a pattern, not a cookbook. Always adapt it to make it appropriate for the specific context.</b></p>
+<p>A PROspective that covers a time box of about two to four weeks of work should require two hours to complete. At the end of two to six months of work, it should take about three hours. In any case, avoid a strict time limit. Respect the needs of the participants to have enough time to reflect, learn, and invent actions for improvements. Too much steering will kill creativity. Take in account these two of the four principles of Open Space:</p>
+<p><i> </i></p>
+<p><i>Whatever happens is the only thing that could've.</i></p>
+<p><i> </i></p>
+<p><i>When it's over, it's over.</i></p>
+<p><i> </i>Don’t worry if the PROspective needs more time than planned. As long as the participants - the owners and beneficiaries of the PROspective - are willing to continue, it is fine. You, as the facilitator, are responsible for keeping the process on track to enable reflection, learning, and inventing actions for improvements. If you think the team has lost track of that and the meeting has become a waste of time then share that impression with the participants. If they want to go on anyway, it is their decision. You are the enabler, not the director.</p>
+<h2>1. Warm up --&gt; Platform for confidence and trust&nbsp;</h2>
+<h3>Don’t start with funny warm-up games!</h3>
+<p>You are working as an adult with adults. To start a PROspective by playing with balls, for example, may undermine the PROspective’s reputation and intent as an event for learning and improvement in a context of professional business-driven work. Some participants may think that they slipped into a therapeutic encounter group.</p>
+<p>Instead, <b>keep it lean and focused on the outcome</b>.</p>
+<p>Offer this <b>PROspective manifesto </b>(on a flipchart on the wall):</p>
+<p><b><font color="#008000">We intend to create learning and improvement for our future way of work by</font></b></p>
+<ul> 
+ <li><b><font color="#008000">uncovering, sustaining, and enhancing our success patterns</font></b></li> 
+ <li><b><font color="#008000">seeking improvements</font></b></li> 
+ <li><b><font color="#008000">learning from and with each other</font></b></li> 
+ <li><b><font color="#008000">defining concrete actions and tasks to improve our future way of work so that the effort invested in this PROspective is paid back to each of us</font></b>&nbsp;</li> 
+</ul>
+<p>If you, as the facilitator of the PROspective, can see strong signs that all participants support this manifesto, you can go to step two.</p>
+<p>If you suspect that there may be some aloofness to one or more points, it is important to work out just how far the participants accept this manifesto. <b>Scaling Poker</b> may be useful for that:</p>
+<p>Give this scale:</p>
+<p>0 = I disagree with the manifesto completely</p>
+<p>10 = I fully support the manifesto</p>
+<p>Have participants write their score from 0 to 10 on a small card and put the cards backside up in a pile on the table. The facilitator shuffles the cards, turns them over, and sorts them into columns to build a <b>bar chart</b> on the table:</p>
+<p><img src="http://www.infoq.com/resource/articles/retrospectives-as-prospectives/en/resources/2Fig1.png" alt="" _href="img://2Fig1.png" _p="true" /></p>
+<p>The facilitator firstly <b>appreciates </b>the high scores (8, 9, 10 in this example) and <b>explicitly accepts</b> the moderate scores (5 and 6).</p>
+<p>Next, the facilitator asks the participants to split into small circles of two or three people to consider these issues:</p>
+<ul> 
+ <li>How can the success of this PROspective be supported, taking in account the aloofness to one or more points of the PROspective manifesto?</li> 
+ <li>What show stoppers must be avoided?</li> 
+</ul>
+<p>Each circle writes its ideas on sticky note and adds it to the bar chart:&nbsp;</p>
+<p><img src="http://www.infoq.com/resource/articles/retrospectives-as-prospectives/en/resources/1Fig2.png" alt="" _href="img://1Fig2.png" _p="true" />&nbsp;</p>
+<p>The facilitator thanks all for their ideas, mounts all notes on the flipchart with the PROspective manifesto, and expresses confidence that the PROspective will work fine by keeping in mind the manifesto and the additional notes.</p>
+<p>The facilitator must also accept unrealistic ideas like “Don’t take longer than 20 minutes so we can return to our work.” But 20 minutes later he can ask all participants, as the owners and beneficiaries of the PROspective, if they want to continue. It is up to THEM, not to the facilitator, to decide this.</p>
+<p>Remove the bar chart from the table. It has done its job.</p>
+<p>If there are HEAVY concerns, the facilitator has to moderate a solution-focused conversation (see <a href="http://www.sfwork.com/jsp/index.jsp?mnk=c10">What is SF?</a>) with all participants on how to deal with them.</p>
+<p><b>Don’t start with the next step of the PROspective as long as there is still any heavy concern or aloofness against the PROspective manifesto. </b>At worst, find a new date for the PROspective and use the time to build a better platform.&nbsp;</p>
+<h2>2. Sprint- (release-) panorama</h2>
+<h3>2.1. Brainstorming&nbsp;</h3>
+<p><b>Draw a grid on a wall: </b></p>
+<p><img src="http://www.infoq.com/resource/articles/retrospectives-as-prospectives/en/resources/Fig3b.png" alt="" _href="img://Fig3b.png" _p="true" /></p>
+<p><b>Each participant writes significant occurrences, situations or activities on sticky notes and places them on this grid.</b>&nbsp;</p>
+<p>Attention:</p>
+<ul> 
+ <li>Use specific occurrences, situations or activities, not general statements</li> 
+ <li>Do not allow discussions or deals among participants</li> 
+</ul>
+<p><img src="http://www.infoq.com/resource/articles/retrospectives-as-prospectives/en/resources/Fig4c.png" alt="" _href="img://Fig4c.png" _p="true" /></p>
+<h3>2.2. Reflecting the panorama in pairs&nbsp;</h3>
+<p>In pairs, participants reflect on the panorama. They may move or rework their own sticky notes but not those of others. Discussion may take place only within the pairs.</p>
+<h3>2.3. Refactoring and clustering all together&nbsp;</h3>
+<p>All participants as a team change, remove, or add sticky notes.</p>
+<p>All notes that belong to the same or similar topics or aspect are marked as such, maybe with colored glue dots.</p>
+<ul> 
+ <li>This should take no more than 15 minutes. No exhausting discussions!</li> 
+</ul>
+<p><img src="http://www.infoq.com/resource/articles/retrospectives-as-prospectives/en/resources/Fig5b.png" alt="" _href="img://Fig5b.png" _p="true" />&nbsp;</p>
+<h3>2.4. All together: Selecting the hot spots&nbsp;</h3>
+<p>All participants as a team select the <b>two or three most important topics, aspects, or standalone issues </b>(such as number three below)<b> that worked well.</b></p>
+<p>The team also selects the <b>two or three most important topics, aspects, or standalone issues</b> <b>which must be significantly improved</b>.</p>
+<p><img src="http://www.infoq.com/resource/articles/retrospectives-as-prospectives/en/resources/Fig6b.png" alt="" _href="img://Fig6b.png" _p="true" />&nbsp;</p>
+<h2>3. Appreciate all that is working well and sustain and increase it with the UUS tool</h2>
+<p><b>Work out&nbsp;</b><b>for the up to three best</b><b>&nbsp;things: </b></p>
+<p>(Based on the <a href="http://solworld.ning.com/group/microtoolsandtheplusmodel/forum/topics/2102269:Topic:3785">micro tools</a> developed by Michael Hjerth, www.solutionwork.se)</p>
+<p><b><font color="#ff0000">U</font></b><b>TILIZE SUCCESS (SEARCH)</b></p>
+<ul> 
+ <li>How do you know that it was successful? (Ask “What else?” to find more than one aspect.)</li> 
+ <li>How can others recognize that is was successful? (This is a typical systemic question to change the focus by slipping into the shoes of others to uncover more signs of success.)</li> 
+</ul>
+<p><b><font color="#ff0000">U</font></b><b>TILIZE SUCCESS (STABILIZE AND AFFIRM)</b></p>
+<ul> 
+ <li>How did you do that? What else?</li> 
+ <li>What did you learn from it?</li> 
+</ul>
+<p><b><font color="#ff0000">S</font></b><b>TEPPING THE SCALE</b></p>
+<ul> 
+ <li>What will you do more as a result of this, to sustain or even increase it?</li> 
+ <li>What needs to be the <b>very first step</b>? How will you know that this step was successful? <b><font color="#0000ff">--&gt;</font></b><b> <font color="#0000ff">Put this in the Teamwork Backlog.</font></b></li> 
+ <li>What will you do differently as a result of this to sustain or even increase it?</li> 
+ <li>What needs to be the <b>very first step</b>? How will you know that this step was successful? <b><font color="#0000ff">--&gt;</font></b><b> <font color="#0000ff">Put this in the Teamwork Backlog.</font></b></li> 
+</ul>
+<p><b>Why is it important to invest so much effort to reflect upon what is working well?</b></p>
+<p>Imagine a family that only mentions what is bad and not working. No one says a word about the good things. This family will find it hard to appreciate their few good experiences, at least. The family cannot cultivate good experiences or grow. Imagine the mood…and how the family will sort through tough situations.</p>
+<p>Understand that we are not asking facilitators and participants to only discuss positive aspects and to neglect difficulties, problems, and failures. But do take care of what has been working based on the resources to sustain those practices. Otherwise, they will wither and vanish. No athlete will improve through only excercizing his weak muscles. He has to take care of his top-performing muscles with the same or even greater intensity.</p>
+<h2>4. Find specific action items for improvements with the PLUS tool</h2>
+<p><b>Work out&nbsp;for the up to three things to be improved:</b></p>
+<p>(Based on the <a href="http://solworld.ning.com/group/microtoolsandtheplusmodel/forum/topics/2102269:Topic:3785">micro tools</a> developed by Michael Hjerth, www.solutionwork.se)</p>
+<p><b><font color="#ff0000">P</font></b><b>LATFORM: The point of departure for searching for what works and what should be improved or changed </b></p>
+<ul> 
+ <li>What is your concern? What bothers you?</li> 
+ <li>What is the broader task or job? What is its purpose?</li> 
+ <li>How does your concern affect this purpose?&nbsp;</li> 
+</ul>
+<p><b><font color="#ff0000">L</font></b><b>OOK AT A POSSIBLE BETTER SITUATION</b></p>
+<ul> 
+ <li>Suppose you have worked out a way to change the recent situation:</li> 
+ <li>What is your <b>best hope</b> as a result of this?</li> 
+ <li>What is <b>the least</b> that you need to see happen?</li> 
+</ul>
+<p><b><font color="#ff0000">U</font></b><b>TILIZE PREVIOUS SUCCESS</b></p>
+<ul> 
+ <li>Imagine a scale from 0 to 10 where the 10 stands for your best hope:</li> 
+ <li>Where on that scale would you place the recent situation?</li> 
+ <li>How have you managed the recent situation so that you place it here (e.g. on a 3) and not one or two points <b>lower</b> on that scale? (e.g. as a 2 or 1)</li> 
+ <li>How have you managed to live with the recent situation? (Ask “What else?” to find more than one aspect.)</li> 
+ <li>When has it been a bit better, if at all? How did you contribute to this <b>positive difference</b>? (Ask “What else?” to find more than one aspect.)&nbsp;</li> 
+</ul>
+<p><b><font color="#ff0000">S</font></b><b>TEPPING THE SCALE</b></p>
+<ul> 
+ <li>What can you do now to rise, maybe by one point only, on the scale?</li> 
+ <li>What needs to come as the <b>very first step</b>? How will you notice that this step was successful? <b><font color="#0000ff">--&gt;</font></b><b> <font color="#0000ff">Put this in the Teamwork Backlog</font>.</b></li> 
+</ul>
+<p>It is important here to avoid the words “problem” and “solution”.</p>
+<p>The word “problem” often connotes something that is given and not changeable. It’s an inescapable fact. It’s said that problems are problems because we call them problems. It’s better to talk about “situations”. Situations are fluid and can have different colors: stressing one person; motivating others; preferred; changing; long-lasting; appropriate; hindering; sustaining…</p>
+<p>(Of course, a complicated “chess problem” can be challenging in a positive way. The emotional ascription of “problem” depends on the context.)</p>
+<p>The word “solution” often is associated with the “solved problem” as a persistent result rather than as an adaptive, step-by-step process towards a changed (and hopefully better fitting) situation. Politicians and tough managers will say, “We have the solution for xyz.” I prefer to talk about “changing the situation” rather than finding a definite “solution”.</p>
+<h2>5. If necessary, apply the impediment-solvent</h2>
+<p>If you find that at STEPPING THE SCALE that a serious impediment seems to block the next, even small step, you may apply the following impediment solvent”.</p>
+<h3>5.1. How easy is it to eliminate or bypass this impediment?</h3>
+<p>Have the team estimate the ease of eliminating or only bypassing the obstacle from 0 (absolutely no chance) to 10 (very easy). This is the same as planning poker or a magic estimation.</p>
+<p>0-------<b><font color="#0000ff">3</font></b>-------------------10</p>
+<p><b>Ah, a 3!</b>&nbsp;</p>
+<h3>5.2. What makes this <font color="#008000">chance</font> a 3 and not a 2 or even a 1? What else? What else? What else?</h3>
+<p>0<b><font color="#008000">====</font><font color="#0000ff">3</font></b>-------------------10&nbsp;</p>
+<h3>5.3. What can you do, <font color="#008000">using what is already available</font>, to eliminate or to bypass this impediment?&nbsp;</h3>
+<ul> 
+ <li>Which are the first concrete, small, possible steps? What else? What else?</li> 
+ <li>Which of those steps is the easiest?</li> 
+ <li>Who makes this step together with whom?</li> 
+ <li>How will you know that this step was successful? <b><font color="#0000ff">--&gt;</font></b><b><font color="#0000ff"> Put this in the Teamwork Backlog</font>.</b>&nbsp;</li> 
+</ul>
+<h3>5.4. Imagine that the chance to eliminate or to bypass this impediment is a 4 or 5.&nbsp;</h3>
+<p>0<b><font color="#008000">====</font><font color="#0000ff">3</font><font color="#ff0000">==4==5</font></b>----------10</p>
+<ul> 
+ <li>What is the difference between the 3-rated chance to eliminate/bypass the impediment and the chance rated 4 or 5 to eliminate/bypass the impediment?</li> 
+ <li>How can you contribute to increasing the chance from a 3 to a 4 or 5? What else? What else?</li> 
+ <li>What might be the easiest of these alternatives?</li> 
+</ul>
+<ul> 
+ <li>What is a very first concrete and small step toward a 4 or 5?</li> 
+ <li>Who makes this step together with whom?</li> 
+ <li>How will you know that this step was successful? <b><font color="#0000ff">--&gt;</font></b><b> <font color="#0000ff">Put this in the Teamwork Backlog</font>.</b></li> 
+</ul>
+<p><b>The mechanism of this impediment solvent is based on five ingredients:</b></p>
+<ol> 
+ <li>In step 5.1, the intention to eliminate or reduce the impediment is expanded to the alternative possibility to bypass the impediment. Very often, bypassing is not seen as an option. We often fixate on eliminating/reducing only.</li> 
+ <li>In step 5.2, the focus shifts from “how to eliminate/bypass” the impediment to the chance to do so and available resources that contribute to this chance.</li> 
+ <li>In step 5.3, these now uncovered resources are used as tools for a first step to eliminate/bypass the impediment. The “What else? What else?” questions broaden the spectrum of alternatives.</li> 
+ <li>In step 5.4 a slightly enhanced chance is imagined and possible alternatives for own contributions are explored</li> 
+ <li>All this helps us to escape, step by step, from the “problem” trance that typically makes impediments seem indomitable at first. As long as we stay in this trance, we will either be frozen or will try to handle the impediment in a traditional way with a limited set of methods.</li> 
+</ol>
+<h2>6. Second-order PROspective</h2>
+<p>This is the PROspective of the PROspective meant to gather learning to improve the next PROspective. For this, we use the UUS tool:</p>
+<p><b><font color="#ff0000">U</font></b><b>TILIZE SUCCESS (SEARCH)</b></p>
+<ul> 
+ <li>What were the best things we did during this PROspective?</li> 
+ <li>What will others who hear/see the results of our PROspective say was the best?</li> 
+</ul>
+<p><b><font color="#ff0000">U</font></b><b>TILIZE SUCCESS (STABILIZE AND AFFIRM)</b></p>
+<ul> 
+ <li>How did we do that?</li> 
+ <li>What did we learn from it?</li> 
+</ul>
+<p><b><font color="#ff0000">S</font></b><b>TEPPING THE SCALE</b></p>
+<ul> 
+ <li>What will we do more of as a result of this? <font color="#0000ff"><b>Put it in the </b><b>--&gt;</b></font><b><font color="#0000ff"> Teamwork Backlog</font>.</b></li> 
+ <li>What will we do differently as a result of this? <font color="#0000ff"><b>Put it in the </b><b>--&gt;</b></font><b><font color="#0000ff"> Teamwork Backlog</font>.</b></li> 
+</ul>
+<h2>7. Teamwork Backlog</h2>
+<p>All participants as a team</p>
+<ul> 
+ <li>Consolidate the Teamwork Backlog (clustering similar next steps, maybe rephrasing some steps, ordering the steps).</li> 
+ <li>Visualize it as a task board or Kanban board.</li> 
+ <li>Agree on how to manage and monitor the execution of the planned steps (maybe by having once or twice a week a short team aperitif (or beer) that works like a daily standup in front of the teamwork task board).</li> 
+</ul>
+<h2>Conclusions and further reading</h2>
+<p>This kind of PROspective is in line with important core principles and values behind lean and agile:</p>
+<ul> 
+ <li>Working towards a “preferred situation” as a vision</li> 
+ <li>Observe and adapt</li> 
+ <li>Act with small steps</li> 
+ <li>Respect people and their needs</li> 
+ <li>Build on and sustain what works</li> 
+ <li>Search and use existing resources and opportunities</li> 
+</ul>
+<p>Don’t confuse a PROspective with naive positive thinking and don’t see it as an invitation to put on rose-colored glasses. It is an offer to handle situations that are working poorly or not well enough in a constructive and respectful way.</p>
+<p>This way is called “solution-focused work”. You are invited to read this <a href="http://www.sfwork.com/jsp/index.jsp?mnk=c10">brief introduction</a> and to learn a bit more by reading <a href="http://www.learningreflections.org/wp-content/uploads/2012/01/ExecSummaries-The-Solutions-Focus.pdf">this article</a>. You may find much more about solution-focused work in organizations at <a href="http://www.solworld.org/notes/Jumpstart_into_Solution_Focus">Jumpstart into Solution Focus</a>.</p>
+<p>Of course, the wording “solution-focused” (or “solution orientation”) may be misleading, as I explained in step 4 above. Inspired by the work of <a href="http://www.centrumpsr.eu/indexenglish.htm">Tomasz Switek</a>, I prefer to use “solution and situation focus”.</p>
+<h2>About the Author</h2>
+<p><img src="http://www.infoq.com/resource/articles/retrospectives-as-prospectives/en/resources/HansP.jpg" vspace="3" hspace="3" align="left" alt="" _href="img://HansP.jpg" _p="true" />Dr. <strong>Hans-Peter Korn</strong> works in organisation development, personnel development, and change and knowledge management. He has recent experience as agile coach and consultant with a pragmatic understanding of agile derived from his work in large enterprises. He is co-editor and author of the books <i>Agiles IT-Management in gro&szlig;en Unternehmen</i>, Symposion Publishing 2013 and <i>Solution-Focused Management</i>, Hampp 2006.</p><br><br><br><br><br><br></body></html>

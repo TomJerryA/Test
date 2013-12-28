@@ -1,17 +1,17 @@
-<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>Is Getting Rid of All Projects a Good Idea?</h3><p><span style="font-size: 12px;">In the session </span><a href="http://www.xpdays.net/Xpday2013/XPDays/Program.html#session_178" style="font-size: 12px;">kill all projects</a><span style="font-size: 12px;">&nbsp;at the </span><a href="http://www.xpdays.net/" style="font-size: 12px;">XP Days Benelux 2013 conference</a><span style="font-size: 12px;">, Paul Kuijten questioned&nbsp;if&nbsp;getting rid of all projects could be a good idea. InfoQ did an interview with Paul about project management practices that can be valuable for agile, and the&nbsp;funding of&nbsp;product development.</span></p>
-<p><strong>InfoQ: Your XP Days session is titled &quot;Kill all projects&quot;. Isn't that a harsh statement to make?</strong></p>
-<blockquote> 
- <p><strong>Paul:</strong> I don't think so. It is intended to provoke some different thinking. My aim for the session was to clarify how well &quot;doing projects&quot; fits with product development in a complex environment, and to see if we can come up with alternative ways, keeping the benefits, and getting rid of the flaws.&nbsp;&nbsp;&nbsp;</p> 
-</blockquote>
-<p><strong>InfoQ:&nbsp;If we stop doing projects, does that also mean that we do not need project managers anymore?</strong></p>
-<blockquote> 
- <p><strong>Paul: </strong>Yes. As a matter of fact, I now work with a very large organization that just got rid of the job title project manager. They have teams, they have products, and these are directly driven by business needs. Does this mean that these people they used to call project manager don't have any skills that the company still needs? Not at all. They typically transition to another role, depending on their skill set.</p> 
-</blockquote>
-<p><strong>InfoQ: Can you mention some of the good practices for managing projects that can be valuable for agile teams?</strong></p>
-<blockquote> 
- <p><strong>Paul:</strong> Managing the what, the how, the money and the timelines is still very much necessary. There are tons of good practices in what we call project management. Almost all of them are very applicable if you are doing product development without projects. The practices we mainly want to get rid of are the ones misused for predictive and command and control management. We have found these are very closely tied in with &quot;doing projects&quot;. And then there are things that a project organization in our experience isn't concerned enough with, mainly having to do with people, quality and value. That's why I think it is worth thinking about how to do development without &quot;doing projects&quot;</p> 
-</blockquote>
-<p><strong>InfoQ: If we kill all projects, How do you fund your product development?</strong></p>
-<blockquote> 
- <p><strong>Paul: </strong>The typical way organizations fund their product development now is through budgets. A budget is about the dumbest instrument that you could use. It locks you into an annual cycle in which you resist anything you didn't foresee a year ahead. How agile is that? Furthermore, if people didn't need the budget they requested by the end of the year, they will spend it anyway, because otherwise you get less budget next year. More and more companies are funding their development in an iterative and incremental way, judging every investment by its own merits. The most pressing example of this would be something called &quot;beyond budgeting&quot;. It's in many ways &quot;agile for financial controllers&quot;. Svenka Handelsbanken has been doing this for many years now, and with astonishing results.&nbsp;</p> 
-</blockquote><br><br><br><br><br><br></body></html>
+<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>RESTful Web Services Framework Jersey 2.5 Released</h3><p>The RESTful Web Services Framework <a href="https://jersey.java.net/download.html">Jersey 2.5</a> was recently released, bringing support for the latest version of <a href="http://www.eclipse.org/jetty/">Jetty</a> web server, an upgrade of the Apache Connector and numerous defects corrected.</p>
+<p><a href="https://jersey.java.net/release-notes/2.5.html"> Changes</a> in the Java-based Jersey framework include:</p>
+<ul> 
+ <li>Support for version 9 of the Jetty web server and servlet container. This includes both a Jersey Server container based on a Jetty HTTP and Servlet container, and a Jersey Client connector supporting synchronous as well as asynchronous client invocation using the Jetty Fluent Client API.</li> 
+ <li>The Apache Connector now uses the <a href="http://hc.apache.org/httpcomponents-client-4.3.x/index.html">Apache HttpClient 4.3</a>, which itself is a major refactoring with several <a href="http://www.apache.org/dist/httpcomponents/httpclient/RELEASE_NOTES-4.3.x.txt">new features and improvements</a>.</li> 
+ <li>Over 60 bug fixes, including multi value http headers not correctly read and component registration through package scanning missing components.</li> 
+</ul>
+<p>Changes in earlier releases, after the major <a href="http://www.infoq.com/news/2013/06/Jersey_2_0_released">2.0 release</a> in June, include:</p>
+<ul> 
+ <li>Support for <a href="http://en.wikipedia.org/wiki/OAuth">OAuth1</a> acting as a consumer or a service provider and <a href="http://oauth.net/2/">OAuth2</a> acting as a consumer only.</li> 
+ <li>Ability for a client to configure or override connection properties on a per-request basis.</li> 
+ <li>Support for https when using <a href="https://grizzly.java.net/">Grizzly</a> or Apache Connector.</li> 
+ <li>Support for <a href="http://projects.spring.io/spring-framework/">Spring 3</a>, enabling injection of Spring managed beans into Jersey managed resource classes as well as allowing for JAX-RS resource classes to be managed by Spring instead of Jersey.</li> 
+ <li>Including the 2.5 release, 30 improvements have been made and more than 160 bugs fixed.</li> 
+</ul>
+<p><a href="https://jersey.java.net/documentation/latest/">Documentation</a> has been upgraded for the new release including <a href="https://jersey.java.net/documentation/latest/migration.html">issues when migrating</a> from earlier 2.* releases to 2.5.</p>
+<p>Jersey 2.5 is a reference implementation of the <a href="https://jax-rs-spec.java.net/nonav/2.0/apidocs/index.html">JAX-RS 2.0 API Specification</a>, (<a href="http://jcp.org/en/jsr/detail?id=339">JSR 339</a>), released in May 2013, and a member of the <a href="https://glassfish.java.net/">GlassFish</a>&nbsp;application server project. It is <a href="https://jersey.java.net/license.html">dual licensed</a> under 2 OSI approved licenses.</p><br><br><br><br><br><br></body></html>

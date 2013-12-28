@@ -1,7 +1,7 @@
 <html>
  <head></head> 
- <body>
-  <div>
+ <body> 
+  <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/5.htmlb">DDD &amp; DDDLib在恒拓开源的发展历程与推广经验</a> 本文主要介绍为什么我们在恒拓开源内部推广DDD，我们如何通过开发DDDLib和Koala等工具来完善这一过程，推广过程中遇到了哪些问题，以及我们如何解决这些问题。 
   </div> 
   <div> 
@@ -150,6 +150,6 @@
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/8.htmlb">建立学习与创新的文化</a> Jeff介绍了一个大型工程企业的员工如何通过在工作中进行持续学习的方式建立起创新文化的一系列步骤。在一个传统的工作环境中，工程团队通常倾向于等待业务方面的决策，并朝着既定的决策方向开始执行。而如今我们则看到，工程团队也会向业务决策者提出有钻研价值的新方向。 
-  </div>  
+  </div> 
  </body>
 </html>

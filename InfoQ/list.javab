@@ -1,6 +1,9 @@
 <html>
  <head></head> 
- <body> 
+ <body>
+  <div>
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/35.javab">Retrospectives Applied as “PROspectives&quot;</a> We can view situations in our work as opportunities from which to learn how to better handle similar situations in future, by looking back and asking “How will I deal with future situations like this to improve my results?” PROspectives help us to reflect more often, independently of acute, unexpected problems and without time pressure, to uncover ideas for future improvements. 
+  </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/34.javab">Oleg Shilo on CS-Script and Notepad++</a> When you just want to try out some code, Visual Studio can feel like overkill. So some developers turn to lightweight editors such as Notepad++ for their scripting needs. Oleg Shilo talks about his project to add better CS-Script plugin for Notepad++. 
   </div> 
@@ -147,9 +150,6 @@
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/37.javab">Deploying it right with AppVeyor CI and PowerShell</a> Deploying real applications is hard. Questions arise when there are Registry settings, custom folders structure, or web clusters. Here we look for answers using PowerShell and AppVeyor CI. 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/36.javab">What Do You Look For In a Servant Leader?</a> In this article, let’s discuss the kind of qualities, preferences, and non-technical skills you might need in a servant leader. 
-  </div> 
+  </div>  
  </body>
 </html>
