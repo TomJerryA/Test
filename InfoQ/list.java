@@ -2,13 +2,16 @@
  <head></head> 
  <body>
   <div>
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/24.java">RESTful Web Services Framework Jersey 2.5 Released</a>The RESTful Web Services Framework Jersey 2.5 was recently released, bringing support for the latest version of Jetty web server, an upgrade of the Apache Connector and numerous defects corrected. Features added in earlier releases, after the major 2.0 release in June, include support for OAuth and Spring 3.
-  </div>
-  <div>
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/23.java">Hadoop-as-a-Service Provider Qubole Now Runs on Google Compute Engine</a>Qubole, a managed Hadoop-as-a-Service offering is now available on Google Compute Engine (GCE). Qubole was so far only available on Amazon's AWS and this announcement follows only a few days after Google releasing GCE into general availability.
-  </div>
-  <div>
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/22.java">Producing Software, Professionally</a>&quot;Producing Software, Professionally&quot; was the theme of the inaugural Agile Singapore Conference 2013. The conference was a seminal event for the Agile community in Southeast Asia.
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/25.java">Facebook’s Release Process Behind the Move from Web-based to Native App</a>Chaitanya Mishra, from Facebook, spoke at Velocity Conf London last month about the approach to scale Facebook’s Android app from a web view interface to a full-fledged native app. To achieve this transition each product team took ownership of their features on Android. A core integration team regression tests and focuses on global app optimization over individual features optimization.
+  </div> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/24.java">RESTful Web Services Framework Jersey 2.5 Released</a>The RESTful Web Services Framework Jersey 2.5 was recently released, bringing support for the latest version of Jetty web server, an upgrade of the Apache Connector and numerous defects corrected. Features added in earlier releases, after the major 2.0 release in June, include support for OAuth and Spring 3. 
+  </div> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/23.java">Hadoop-as-a-Service Provider Qubole Now Runs on Google Compute Engine</a>Qubole, a managed Hadoop-as-a-Service offering is now available on Google Compute Engine (GCE). Qubole was so far only available on Amazon's AWS and this announcement follows only a few days after Google releasing GCE into general availability. 
+  </div> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/22.java">Producing Software, Professionally</a>&quot;Producing Software, Professionally&quot; was the theme of the inaugural Agile Singapore Conference 2013. The conference was a seminal event for the Agile community in Southeast Asia. 
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/21.java">Ionic HTML5 Mobile Framework Alpha Preview</a>Ionic is a new user interface framework for building hybrid mobile applications with HTML5 that bills itself as the &quot;bond between native and HTML5&quot;. It provides many of the essential mobile user interface paradigms, such as simple items like lists, tab bars and toggle switches. It also provides more complex visual layout examples such as menus that slide out to reveal content underneath. 
@@ -147,9 +150,6 @@
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/29.java">The Costs of Versioning an API</a>Versioning of services is something which has been a cornerstone problem of SOA. There are many examples over the years of experiences gained and shared, but little in the way of concretely comparing and contrasting different approaches. Jean-Jacques Dubray has written about the experiences of his team in this area and some equations they have developed to try to illustrate the differences. 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/28.java">A Few Highlights from QConSF2013- Part 1 of 2</a>On each day of the 3-day conference at the inviting environs offered at the Hyatt there was a jam-packed schedule of speakers, exhibits and activities that made for some difficult decisions as to which tracks and what happening to attend. 
-  </div>    
+  </div>  
  </body>
 </html>

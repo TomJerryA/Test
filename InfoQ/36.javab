@@ -1,132 +1,75 @@
-<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>What Do You Look For In a Servant Leader?</h3><p>In my article, <a href="http://www.infoq.com/articles/what-scrum-master-are-you-hiring">Which Scrum Master Are You Hiring</a>, I suggested you articulate the type of leader you might be hiring. Why? You might not be hiring a “Scrum Master” at all—but you are likely hiring a servant leader.</p>
-<p>In this article, let’s discuss the kind of qualities, preferences, and non-technical skills you might need in a servant leader, your potential Scrum Master, agile project manager, potential account manager, or whatever role you need filled.</p>
-<h2>Start With Qualities, Preferences, and Non-Technical Skills</h2>
-<p>Your servant leader has talents that are different from the technical skills. You could lump them all into one bucket called “talents.” But I have found that not so useful. Instead, I like to differentiate those into qualities, the talents that a person exhibits that are culture-sensitive; preferences, innate behaviors that are part of a person’s personality; and non-technical skills, such as interpersonal skills that a person has acquired over the years.</p>
-<p>No matter what position this person has, let’s start with non-technical qualities, preferences, and non-technical skills. Those are the characteristics that will help a candidate succeed in the position and fit into your organization's culture.</p>
-<p>Notice that I am <i>not</i> suggesting you start with a certification. Why not? While this person needs to embody agile values, principles, and of course, practices, a certification is no guarantee of that. However, the non-technical characteristics, the qualities, preferences and non-technical skills that you require in this servant leader role will help you define what you do need. We will discuss certification later.</p>
-<p>What do you need in your position? Again, it depends on the servant leader you are hiring. Let’s take a few of the examples.</p>
+<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>Monty Taylor and Jim Blair on CI and Test Automation at OpenStack</h3><p>The <a href="http://www.openstack.org/">OpenStack</a> community has a team working on CI and test automation for the OpenStack developers submitting code.</p>
+<p>They run their own infrastructure - an OpenStack cloud by itself.</p>
+<p>Given the complexity of the project, with dozens of dependent projects and over 300 contributors submitting patches every month, standard CI systems simply wouldn't work.</p>
+<p>We talked with <a href="http://www.hpcloud.com/author/monty-taylor">Monty Taylor</a> and <a href="http://www.linkedin.com/pub/james-blair/36/1b2/98a">James Blair</a> to investigate the build and test challenges they face, and how they managed to tackle them.&nbsp;</p>
+<p><strong>InfoQ: Today, how many commits does your CI system handle every day? How about 6 months later when Icehouse is releasing?</strong></p>
+<blockquote> 
+ <p><strong>Monty</strong>: During the peak, I think we landed around 400 commits a day. That's only the ones that succeeded, which is less than the number of changes that we test, because they only land if they passed the tests.</p> 
+ <p><strong>Jim</strong>: And when the commit is reviewed, we test them again before we merge it.</p> 
+ <p><strong>Monty</strong>: For each of those commits that we merge, there are about 8-10 different jobs that we run. And since we run them once on upload and once again before landing, that makes 20 jobs per change. There was a period of time, during the peak, where we ran 10,000 jobs in a day.</p> 
+ <p>I think we doubled our velocity from Grizzly to Havana. I believe we have been consistently doubling each cycle, so by the time Icehouse releases, I expect this will double again.</p> 
+</blockquote>
 <div id="lowerFullwidthVCR"></div>
-<h2>Is Your ”Scrum Master” Working as an Agile Project Manager?</h2>
-<p>For the sake of argument, let’s say you have an agile project manager, someone who helps the team define the charter, set the release criteria for the project, facilitates the team’s work, and also is the interface with the operations committee or the PMO or some other decision-making or governance body. This person’s job is to represent the team at the project portfolio decision meetings, and to advocate for the team. This person is the outward face of the team.</p>
-<p>In the previous article, Ruth decided to hire a very senior person who could perform both these servant leader activities and the project portfolio activities. You might disagree with Ruth’s decision, but that’s the decision she made (I certainly did!). What qualities, preferences, and non-technical skills would she look for in a candidate?</p>
-<h2>Servant Leaders Must Enjoy Working with People</h2>
-<p>One of the major qualities of a servant leader is that he or she enjoys working with people. Servant leaders serve the people on the project. They also serve the people in the organization. They might have to keep the goals of the project in mind, as they facilitate the people, but remember, they are <i>not</i> “driving the project to completion.” That is not the job of a servant leader, no matter what this job is called.</p>
-<p>This role facilitates the people doing the work. Here, Ruth decided to hire a senior person, because this person needs to interact at the project portfolio level to advocate for the team. Ruth suspects that the team will be able to facilitate itself pretty soon. I was nervous about Ruth’s assumption, because in my experience it takes a while for a new team to fully transition to agile. She wanted someone who was also a great negotiator, and could communicate well, both in email and in person.</p>
-<p>She needed someone who was, as she said, a good “diagnoser.” Someone who could look at the project measurements, hold up a mirror to the team, and ask, “What’s going on?” Ruth was sure that was some sort of an agile skill, so she knew she needed someone experienced in agile. She also knew she needed someone who could learn enough about their system quickly.</p>
-<p>If we summarize Ruth’s criteria for her servant leader, here’s what her first iteration looks like:</p>
-<h5>Essential skills for Ruth’s Agile Project Manager</h5>
-<ul> 
- <li>High collaboration skills with the project team and project portfolio team</li> 
- <li>High facilitation skills with the project team</li> 
- <li>High negotiation skills with the project portfolio team</li> 
- <li>High communication skills across the organization</li> 
- <li>Diagnostic skills for what’s going on in the team</li> 
- <li>Able to learn our system quickly</li> 
-</ul>
-<p>Ruth might have other desirable qualities, preferences, or skills, such as budgeting, or ability to travel. The fact that she wants someone who can work at the project portfolio level is part of her culture.</p>
-<p>That’s just one kind of servant leader. There are others.</p>
-<h4>What Happens When Your “Scrum Master” is a Manager?</h4>
-<p>Harry was the senior manager who was trying to make Scrum stick. He noticed that the teams were not sticking to Scrum—they were doing water-scrum-fall—because the people are not being loyal to their project teams. The people were loyal to their functional silos.</p>
-<p>When you have a strong matrix organization and a weak project organization, as Harry had, it’s quite easy for people to do the work for their functional teams. Their managers ask them, “Can you do this little task for me?” Who wants to say “No,” to a manager?</p>
-<p>Those little tasks take time away from project work and make it more difficult to accomplish the project work.</p>
-<p>What can you do? Ask the managers to help the projects, not help other work.</p>
-<p>I had suggested they change the organization to remove the many managers and create project-based teams instead. You should have seen the look of horror on his face! Not going to happen. Instead, he suggested that the managers become Scrum Masters for other project teams—not their own projects. Well, okay, that might work.</p>
-<p>When Harry wrote the job description for these Scrum Masters, it was clear he was focusing on impediment removal:</p>
-<ul> 
- <li>High collaboration skills with the other managers</li> 
- <li>High facilitation skills with the project team</li> 
- <li>High negotiation skills with the other managers</li> 
- <li>High diagnostic skills for what’s going on in the team</li> 
-</ul>
-<p>Harry wanted the organization to complete its transition to agile and he was willing to make the managers Scrum Masters for cross-functional teams. He wanted the managers to work across the organization to accomplish this.</p>
-<h2>When Your Servant Leader’s Primary Role is Coaching</h2>
-<p>I normally separate facilitating the team from the coaching. But Valerie decided that she needed just one person in this position. And, the coaching would have to be subtle.</p>
-<p>To me, this is a tall order. Subtle coaching as part of facilitation? This might require a very special person. I asked Valerie what the activities and deliverables were. “Retrospectives with action items are the first piece. If we don’t have retros with action items, we are still doing something wrong. So we need someone who can facilitate our retrospectives.” I asked about metrics, because I had not seen any velocity or burn-up charts or any other useful charts.</p>
-<p>“Yes, we need data, too. But we can’t have someone beating the team over the head with data. Otherwise this will turn into command and control again”. I agreed with her.</p>
-<p>Valerie needs someone with very strong facilitative skills. They need the ability to run retrospectives and be able to suggest alternative approaches to the team at any time. Someone who understands what data is valuable in agile and what data is not valuable.</p>
-<p>Valerie’s initial draft for her essential qualities, preferences, and skills were these:</p>
-<ul> 
- <li>Strong facilitation: in retrospectives, team meetings, and one-on-one</li> 
- <li>Strong coaching skills: one-on-one and in teams</li> 
- <li>High collaboration skills in the team</li> 
- <li>Able to suggest data gathering approaches to the team</li> 
-</ul>
-<p>As an initial draft to use in a job analysis, these are great. Valerie will be able to use these to create her interview questions and auditions.</p>
-<h2>Leading Geographically Distributed Teams is More Difficult</h2>
-<p>Once you add in the stress of managing a geographically distributed team, you need not only a change agent, as in Anne’s case, but someone who can understand the cultures of the people in different places.</p>
-<p>If you are lucky, and you have a geographically distributed team with people in just one country, you might not have too many cultural issues. My experience is that when you have distributed projects, you have projects with people who are many time zones away, and who represent multiple cultures. You have problems with language, how to share the stories, and coming to a common understanding of what done means.</p>
-<p>Your servant leader needs to help facilitate the team meetings. First find a meeting time that everyone can make. Then make sure everyone understands what’s going on.</p>
-<p>Does your servant leader need to access the people on the project through managers in different countries? Sometimes that happens. Does the leader need to make it easy for people to explain, “I don’t understand the wording of the story. I need more information.” That happens too.</p>
-<p>It’s quite common that a story that appears easy to one person in one time zone is non-trivial to a person in another time zone. A servant leader may have to act as a coach, to help people articulate why they are not done with a story, and diagnose remaining work to see if the rest of the team can assist with work for that story. This can be quite difficult, the more time zones separating the people. It can also appear to the distributed people that the leader is criticizing the distributed folks. This takes talent and subtlety. Maybe the team doesn’t have a common definition of done.</p>
-<p>Arriving at a common definition of done is not trivial when people are partway around the world. It is easy for people to misunderstand words and not just miss a deadline, but create the wrong thing entirely.</p>
-<p>Servant leaders for geographically distributed teams need to learn to build trust, to help people learn to collaborate, to help people learn to speak in a way that creates teamwork, and to avoid the management insertion that too often occurs. There are many potential pitfalls in geographically distributed agile teams.</p>
-<p>Anne decided these were the essential qualities, preferences, and skills:</p>
-<ul> 
- <li>Able to facilitate phone calls all over the world</li> 
- <li>Able to manage these people’s managers—high negotiation skills, political capital</li> 
- <li>Able to recognize small wins and help the team deliver without being command and control</li> 
- <li>Influential in the team to deliver fast wins</li> 
-</ul>
-<p>Anne was so successful the project grew into a program. That turned into a headache for Anne.</p>
-<h2>Managing Programs Requires Other Skills</h2>
-<p>A geographically distributed project is one thing. A geographically distributed program is another beast. A program is several projects, all coordinated to meet one business objective.</p>
-<p>Managing programs requires coordination and collaboration across the organization.</p>
-<h2>What Does a “Real” Scrum Master Require?</h2>
-<p>By now, you’re probably wondering, what the heck are the qualities, preferences, and non-technical skills for a real Scrum Master? Let’s assume we have a collocated five-to-seven person team and the Scrum Master only has this job, no other.</p>
-<p>Remember a Scrum Master is also a change agent. Here’s a full job analysis, according to the <a href="http://www.jrothman.com/wp-content/uploads/2013/03/HiringGeeksThatFitTemplates.pdf">job analysis template</a> from <i>Hiring Geeks That Fit:</i> </p>
-<table cellspacing="0" cellpadding="0" border="0"> 
- <tbody> 
-  <tr> 
-   <td valign="top" width="259"> <p>Defining Questions</p> </td> 
-   <td valign="top" width="379"> <p>Needs and Observations</p> </td> 
-  </tr> 
-  <tr> 
-   <td valign="top" width="259"> <p>Who interacts with this person?</p> </td> 
-   <td valign="top" width="379"> <p>Team members and any of their manager(s)</p> <p>Product owner, Other coaches</p> </td> 
-  </tr> 
-  <tr> 
-   <td valign="top" width="259"> <p>What roles does this person have in this job?</p> </td> 
-   <td valign="top" width="379"> <p>Coach/Facilitator</p> <p>Organizational change agent</p> </td> 
-  </tr> 
-  <tr> 
-   <td valign="top" width="259"> <p>What level is the company willing to pay for?</p> <p>What’s the management component?</p> </td> 
-   <td valign="top" width="379"> <p>?</p> <p>Manage own backlog</p> <p>Provide feedback for project portfolio</p> </td> 
-  </tr> 
-  <tr> 
-   <td valign="top" width="259"> <p>What are the job's activities and deliverables?</p> <p>What periodic deliverables are required?</p> </td> 
-   <td valign="top" width="379"> <p>Coach team(s)</p> <p>Facilitate team meetings</p> <p>Ensure information radiators are up to date. Does the team need other radiators?</p> <p>Advocate for the team</p> <p>Identify and remove impediments</p> <p>Coach on agile practices</p> <p>Help team see what they are doing to see how they can improve</p> <p>Coach on technical practices</p> <p>Help the team become self-sufficient</p> </td> 
-  </tr> 
-  <tr> 
-   <td valign="top" width="259"> <p>What are the essential qualities, preferences, and non-technical skills? Initiative? Flexibility? Communications skills? Ability to handle projects of varying scope? Ability to work on multiple projects at one time? Influence and negotiation skills? Goal-orientation? Technical leadership and problem-solving skills? Responsibility and independence? Passion for learning? Teamwork skills? Others?</p> </td> 
-   <td valign="top" width="379"> <p>Initiative</p> <p>Flexibility</p> <p>Communications</p> <p>Resilience</p> <p>Determination</p> <p>Perseverance</p> <p>Ability to find another option</p> <p>Recognition of management power, but not intimidated by it. Ability to use that power.</p> </td> 
-  </tr> 
-  <tr> 
-   <td valign="top" width="259"> <p>What are the desirable qualities, preferences, and non-technical skills?</p> </td> 
-   <td valign="top" width="379"> <p>Able to live with the ambiguities in the organization.</p> <p>Able to live with conflict.</p> </td> 
-  </tr> 
-  <tr> 
-   <td valign="top" width="259"> <p>What are the essential technical skills? Functional skills? Product-domain skills? Technology/tool skills? Industry experience? Others?</p> </td> 
-   <td valign="top" width="379"> <p>Coaching</p> <p>Feedback</p> <p>One-on-ones</p> <p>Agile practices</p> </td> 
-  </tr> 
-  <tr> 
-   <td valign="top" width="259"> <p>What are the desirable technical skills?</p> </td> 
-   <td valign="top" width="379"> <p>Facilitation</p> <p>Influence</p> </td> 
-  </tr> 
-  <tr> 
-   <td valign="top" width="259"> <p>What is the required minimum level of education, training, or experience?</p> </td> 
-   <td valign="top" width="379"> <p>At least two years working on an agile team releasing product.</p> </td> 
-  </tr> 
-  <tr> 
-   <td valign="top" width="259"> <p>What are the corporate cultural-fit factors? What benefits should be offered? Company growth? Cash position? Industry leadership? Entrepreneurial environment? Benefits? Company size? Others?</p> </td> 
-   <td valign="top" width="379"> <p>Check to see that your culture is close enough to the candidate’s culture.</p> </td> 
-  </tr> 
-  <tr> 
-   <td valign="top" width="259"> <p>What elimination factors should be considered? Travel? Availability? Salary? Others?</p> </td> 
-   <td valign="top" width="379"> <p>Command-and-control people, People who inflict help, Highly judgmental people, people who are easily frustrated are not good candidates for this role.</p> </td> 
-  </tr> 
- </tbody> 
-</table>
-<p></p>
-<p>A job analysis requires thought. The good news is that you can iterate on it. Once you have a job analysis, you can craft interview questions and even an audition to know if you are hiring the right people.</p>
-<h2>About the Author</h2>
-<p><b><img src="http://www.infoq.com/resource/articles/what-do-you-look-for-in-a-servant-leader/en/resources/johanna-rothman.jpg" vspace="3" hspace="3" align="left" alt="" _href="img://johanna-rothman.jpg" _p="true" />Johanna Rothman</b> is the author of <a href="http://leanpub.com/hiringgeeks">Hiring Geeks That Fit</a> as well as several other books. She consults, speaks, and writes on managing high-technology product development. She enables managers, teams, and organizations to become more effective by applying her pragmatic approaches to the issues of project management, risk management, and people management. Read more of her writing on <a href="http://jrothman.com/">jrothman.com</a>.</p><br><br><br><br><br><br></body></html>
+<p><strong>InfoQ: What are the test jobs you run?</strong></p>
+<blockquote> 
+ <p><strong>Jim</strong>: There is a coding style check. This is important because we have so many collaborators working, we have to make sure people follow the same coding conventions and use the same coding styles. It’s one of our simplest jobs, but also one of our most important.</p> 
+ <p>There are unit test jobs, simple jobs just testing the project in question, no network interactions with other components. We do that for a couple of supported platforms: 2.6, 2.7 and 3.3. We run our 2.6 jobs on CentOS, and our 2.7 jobs on Ubuntu.</p> 
+ <p>Then there are the integration test jobs. That's where we use <a href="http://devstack.org/">DevStack</a> to install all of the components, then we run templates on all of those components after they have been setup on a single node cloud instance. And we run several variations of that - all of the components can be configured in different ways, they can use different databases or messages queues, etc. We could run a lot of variations butwe try to keep it small and run only the most sensible variations: <a href="http://www.mysql.com/">MySQL</a>, <a href="http://www.postgresql.org/">PostgreSQL</a>, <a href="http://www.rabbitmq.com/">RabbitMQ</a>.</p> 
+ <p><strong>Monty</strong>: We’re actually talking of adding <a href="http://zeromq.org/">ZeroMQ</a> tests.</p> 
+ <p><strong>Jim</strong>: If a component becomes really important in the community and more and more people are using it, and if more people are willing to help debug problems, then we'll start running tests for that as well.</p> 
+</blockquote>
+<p><strong>InfoQ: Who writes these test jobs?</strong></p>
+<blockquote> 
+ <p><strong>Monty</strong>: The developers. We have a small QA team primarily focusing on the machinery of testing systems rather than the test content itself. So we require that our developers write tests. They write unit tests and integration tests.</p> 
+ <p><strong>Jim</strong>: In fact, we are talking about getting even stricter about that in the cycle: if you want to land a change, you need to have already written all the integration tests for that change.</p> 
+ <p><strong>Monty</strong>: We consider if it's not tested, it's broken. It's usually true.</p> 
+ <p><strong>Jim</strong>: Especially because the project moves so quickly. There are so many pieces, it's just too easy for somebody to accidentally break it.</p> 
+</blockquote>
+<p><strong>InfoQ: Are you covering performance test?</strong></p>
+<blockquote> 
+ <p><strong>Jim</strong>: Not yet, we’d like to get to the point where we can. I think Boris Pavlovic is working on a performance testing system called <a href="https://wiki.openstack.org/wiki/Rally">Rally</a>. Joe Gordon has been working on scalability testing which is a bit different from performance testing but pretty related. We'd like to do those things.</p> 
+ <p>There are many things we are not testing. But there is nothing that we are planning on not testing. We want to test everything but it takes time.</p> 
+ <p>For this cycle, we are focusing a lot on upgrade testing. We have a small bit of upgrade testing now, but we want to do a lot more.</p> 
+</blockquote>
+<p><strong>InfoQ: How long does it take to run a single test job on an instance?</strong></p>
+<blockquote> 
+ <p><strong>Monty</strong>: It takes about 20-40 minutes, depending on the cloud instance.</p> 
+ <p><strong>Jim</strong>: We have done a lot of work to parallelize our testing and not only by running all of these different variants at the same time. We build a test framework called Test Repository for most of our unit tests which is really good at executing tests in parallel. It gives results pretty fast.</p> 
+ <p><strong>Monty</strong>: Also <a href="https://github.com/openstack-infra/zuul">Zuul</a>, written by Jim, which allows us to run sets of jobs to test changes in parallel, but keeping their sequence at the same time.</p> 
+</blockquote>
+<p><strong>InfoQ: How many machines do you have to run the tests? What is the configuration for the instances used to run each of the test jobs?</strong></p>
+<blockquote> 
+ <p><strong>Monty</strong>: We have no machines. All of our tests are running in public clouds. We have public cloud accounts donated by Rackspace and HP, and thankfully, they don't charge us any money. We have pretty much as many instances as we want.</p> 
+ <p><strong>Jim</strong>: During the last cycle, I think we've peaked at 340 instances running in parallel. Each instance is a VM. For integration tests, we start with a very basic VM - 8GB of ram with Ubuntu Precise, and whatever goes along with this amount of ram. So we'll grab a node and let DevStack install the cloud on this very basic VM.</p> 
+ <p><strong>Monty</strong>: It's more complicated than that, but that's the basic idea. We have a thing called <a href="https://github.com/openstack-infra/nodepool">nodepool</a>, which manages the collection of VMs that run this, prepare them by caching. We want to pre-download everything that DevStack will want to download from the internet, so that the tests themselves won't need to touch the internet.</p> 
+ <p><strong>Jim</strong>: And when we're done, we delete it.</p> 
+ <p>Also, we spin up many more VMs than our successful test jobs. Because of Zuul speculation model, sometimes it will be half way through a test, then realizing it will need something from somewhere else, so it no longer needs to run this test, it needs to run a different one, so we'll kill it and shoot up another one. If we run 10000 jobs a day, we might actually spin-up 100000 VMs.</p> 
+</blockquote>
+<p><strong>InfoQ: Can we consider Zuul as an improvement to the nvie git branch model that OpenStack is adopting? It seems that Zuul doesn't work if we have too many working branches.</strong></p>
+<blockquote> 
+ <p><strong>Monty</strong>: We actually don't use the nvie get branch model. Because we use <a href="https://code.google.com/p/gerrit/">Gerrit</a>, it's actually much closer to the Linux kernel model where people send in patches via email. We don't make branches and then merge them. To a degree, each change winds up being like a virtual private branch. Rather than fixing a change by making a new commit and adding on top of the branch, we just amend the previous change. So we are working on individual commits that are going to land, rather than working on a branch merge model.</p> 
+ <p>A developer could use a local branching model on their laptop if they want to, those branches aren't published branches. I don't know what branches Jim may use on his laptop. I use git in a weird way without any branches, I just reset refs a lot on my master because I'm crazy - I don't recommend it to people who are new to git.</p> 
+ <p>It's actually Gerrit that forms the basis of our patch git workflow.</p> 
+ <p><strong>Jim</strong>: We want to make sure that when people are reviewing, they are reviewing individual commits. Ideally, for each commit that goes into the project, that commit has been looked up properly. There are no messy branches. It’s very deliberate about making each commit as good as it can be and then merging that.</p> 
+</blockquote>
+<p><strong>InfoQ: Besides Zuul, you mentioned using Gearman to make Jenkins scalable, using Logstash to debug, and Test Repository to stream the test output automatically to committers. Currently, how is the feedback mechanism working? What do you want it to be like?</strong></p>
+<blockquote> 
+ <p><strong>Monty</strong>: It’s getting better and better all the time. There are several things about this. Gearman is for Jenkins scalability. Jenkins was actually designed to be only a master, but there was a hack later. We now run a Jenkins master with a number of slaves to execute test jobs. We run a lot more parallel test jobs than most Jenkins installations do. There are many design points in Jenkins that involve global locking, and when you are using it the way we do, we consistently hit scaling problems.</p> 
+ <p><strong>Jim</strong>: Because Jenkins wasn't designed to be used the way we do.</p> 
+ <p><strong>Monty</strong>: So we wrote the Gearman plugin for Jenkins to allow Jenkins to register all of the jobs as potential Gearman jobs into the Gearman server. Then we can have multiple Jenkins masters for the same set of jobs, so Gearman will parcel out the jobs so that if one Jenkins master runs into scaling problem, we just make another Jenkins master.</p> 
+ <p><strong>Jim</strong>: Usually, after adding about 100 slaves to a Jenkins master, it will start to have problems. Like I mentioned, we had about 340 at once. That means we need about 3.4 Jenkins masters to handle that kind of load.</p> 
+ <p><strong>Monty</strong>: The other one that is really interesting, especially in the last cycle, is to setup the Logstash cluster. Each DevStack installation installs the entire cloud, then run tests against it. Even just installing the cloud produces a bunch of logs - you get nova logs, glance logs, etc. If there is a problem, it’s really hard for a developer to debug. So all of these logs are thrown into a very large Logstash cluster which indexes the logs using elastic search. We can then have developers look through the logs, looking for a pattern of what is happening. Joe Gordon and Sean Dague and Clark Boylan wrote the <a href="https://github.com/openstack-infra/elastic-recheck">Elastic Recheck</a>.</p> 
+ <p><strong>Jim</strong>: And I wrote the graphs for it.</p> 
+ <p><strong>Monty</strong>: As we hit flaky jobs that fail the tests, we'll then run scripts on Logstash to see if it is a type of failure that we have seen before. If it is, then we'll send you a link to what the bug might be. That is very helpful for people to find complex problems.</p> 
+ <p><strong>Jim</strong>: I think this is really unique and cutting-edge. There aren't many projects that are this big and running so many tests and generating so much data that is available to help developers. As a developer working on your machine, it is very hard to see all of the problems that might come up after running your code a lot. Our test system runs your code a lot! And we will be working more in this cycle to see if we can automatically classify and identify changes and behaviors that might help developers track down problems.</p> 
+</blockquote>
+<p><strong>InfoQ: In general, what do you think is the hardest thing when working on this whole automation thing?</strong></p>
+<blockquote> 
+ <p><strong>Monty</strong>: We have a lot of developers writing a lot of clouds. Our workload doubles every 6 months, the commit loads just keeps going up, we have to imagine what the next set of problems is going to be before they happen. Because once they happen, there is not enough time to develop a system that can fix it. Automating not to solve today’s problems but to solve problems that will come in the next 3 months.</p> 
+ <p>And because we do all of this testing and changes are required to pass them, you have to make sure this system works every time. We have to be able to run the tests 10000 times a day so if the machinery isn't good, you might return errors to developers that aren't errors with their code, but errors in the machinery. We have to be very careful to write very solid automation, otherwise it's worse than having no automation. Also the internet breaks all the time. We have to work around the internet breaking - that's about half of what we do. All the sites, they all break. You don’t notice unless you’re hitting them with automation 10000 times a day! If Github is down 1% of the time, as a user that’s fine, you just retry. If my test systems are pulling from Github 10000 times a day, then that's 100 failures.</p> 
+ <p>Actually we are very good performance testers of the two public cloud providers we run on. Sometimes we notice a problem, we'll call their operators and say, &quot;Hi, is there a networking problem in your datacenter?&quot; And they say, &quot;Oh yes, we just noticed it that too!&quot;</p> 
+ <p><strong>Jim</strong>: Both of them are OpenStack clouds. So basically we are running tests for OpenStack on OpenStack. On one hand we are testing the project code itself, on another hand we are testing it on the operations side. It is actually very cool.</p> 
+</blockquote>
+<h2>About the Interviewees</h2>
+<p><strong><img src="http://www.infoq.com/resource/articles/interview-openstack-ci-test-automation/en/resources/Monty.jpg" vspace="3" hspace="3" align="left" alt="" _href="img://Monty.jpg" _p="true" />Monty Taylor</strong> is a Distinguished Technologist at HP, Member of the OpenStack Technical Committee and OpenStack Foundation Board of Directors. He leads the teams that run the OpenStack Developer Infrastructure, Ironic Bare Metal service and the TripleO project using OpenStack to deploy OpenStack. He is one of the OpenStack Founders and currently sits on both the OpenStack Foundation Board and the OpenStack Technical Committee.</p>
+<p><strong>Jim Blair</strong> is now the Principal Infrastructure Software Developer for OpenStack, as well as OpenStack CI core developer. He's also on the OpenStack Technical Committee and is the PTL of the OpenStack Infrastructre Program. He currently works for the OpenStack Foundation.</p><br><br><br><br><br><br></body></html>

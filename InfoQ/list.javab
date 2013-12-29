@@ -2,6 +2,9 @@
  <head></head> 
  <body>
   <div>
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/36.javab">Monty Taylor and Jim Blair on CI and Test Automation at OpenStack</a> Monty Taylor and James Blair talk about the build and test challenges they face at OpenStack, and how they managed to tackle them. Managing hundreds of VMs on public clouds, integrating up to 400 commits a day and running thousands of test jobs on them are some of the challenges described. 
+  </div> 
+  <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/35.javab">Retrospectives Applied as “PROspectives&quot;</a> We can view situations in our work as opportunities from which to learn how to better handle similar situations in future, by looking back and asking “How will I deal with future situations like this to improve my results?” PROspectives help us to reflect more often, independently of acute, unexpected problems and without time pressure, to uncover ideas for future improvements. 
   </div> 
   <div> 
@@ -147,9 +150,6 @@
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/38.javab">Java 7 Features Which Enable Java 8</a> In this article, Ben Evans explores some features in Java 7 which lay the groundwork for the new features in Java 8. 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/37.javab">Deploying it right with AppVeyor CI and PowerShell</a> Deploying real applications is hard. Questions arise when there are Registry settings, custom folders structure, or web clusters. Here we look for answers using PowerShell and AppVeyor CI. 
   </div>  
  </body>
 </html>
