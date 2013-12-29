@@ -2,7 +2,10 @@
  <head></head> 
  <body>
   <div>
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/25.java">Facebook’s Release Process Behind the Move from Web-based to Native App</a>Chaitanya Mishra, from Facebook, spoke at Velocity Conf London last month about the approach to scale Facebook’s Android app from a web view interface to a full-fledged native app. To achieve this transition each product team took ownership of their features on Android. A core integration team regression tests and focuses on global app optimization over individual features optimization.
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/26.java">Are REST Alternatives Needed?</a>Ole Lensmar, creator of SoapUI, has asked whether REST is really appropriate for architectures that require real-time, asynchronous interactions and binary protocols. In his article he discusses these areas and believes that alternative approaches are required.
+  </div> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/25.java">Facebook’s Release Process Behind the Move from Web-based to Native App</a>Chaitanya Mishra, from Facebook, spoke at Velocity Conf London last month about the approach to scale Facebook’s Android app from a web view interface to a full-fledged native app. To achieve this transition each product team took ownership of their features on Android. A core integration team regression tests and focuses on global app optimization over individual features optimization. 
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/24.java">RESTful Web Services Framework Jersey 2.5 Released</a>The RESTful Web Services Framework Jersey 2.5 was recently released, bringing support for the latest version of Jetty web server, an upgrade of the Apache Connector and numerous defects corrected. Features added in earlier releases, after the major 2.0 release in June, include support for OAuth and Spring 3. 
@@ -147,9 +150,6 @@
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/30.java">Amazon re:invent roundup</a>Amazon announced a number of new services at the recent re:invent conference in Las Vegas: Amazon WorkSpaces - Desktop Computing in the Cloud, Identity and Access Management using SAML, Amazon AppStream - Delivering Streaming Applications from the Cloud, Amazon Kinesis - Streaming Big Data, CloudTrail - Capturing AWS API Activity, Postgres support in RDS and new EC2 instance types 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/29.java">The Costs of Versioning an API</a>Versioning of services is something which has been a cornerstone problem of SOA. There are many examples over the years of experiences gained and shared, but little in the way of concretely comparing and contrasting different approaches. Jean-Jacques Dubray has written about the experiences of his team in this area and some equations they have developed to try to illustrate the differences. 
   </div>  
  </body>
 </html>
