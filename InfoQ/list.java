@@ -1,6 +1,9 @@
 <html>
  <head></head> 
- <body> 
+ <body>
+  <div>
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/27.java">DevDocs, a One Stop Shop for Reference Documentation</a>DevDocs combines multiple reference documentation sets, commonly used by software developers, in a single web site. DevDocs takes advantage of this centralization to offer crosscutting features such as a searchable interface, keyboard shortcuts, common layouts or a common table of contents. DevDocs currently includes documentation for HTML, HTTP, Javascript and Ruby, among others.
+  </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/26.java">Are REST Alternatives Needed?</a>Ole Lensmar, creator of SoapUI, has asked whether REST is really appropriate for architectures that require real-time, asynchronous interactions and binary protocols. In his article he discusses these areas and believes that alternative approaches are required. 
   </div> 
@@ -147,9 +150,6 @@
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/31.java">Visual Commander Professional v1.3 Introduces 99 Commands, 50 Extensions and C# Syntax Highlighting</a>The recently released Visual Commander Professional v1.3 includes 99 commands, 50 extensions including syntax highlighting for C#. It also provides an ability to select default language for new commands and extensions by selecting the macro language in addition to several improvements. 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/30.java">Amazon re:invent roundup</a>Amazon announced a number of new services at the recent re:invent conference in Las Vegas: Amazon WorkSpaces - Desktop Computing in the Cloud, Identity and Access Management using SAML, Amazon AppStream - Delivering Streaming Applications from the Cloud, Amazon Kinesis - Streaming Big Data, CloudTrail - Capturing AWS API Activity, Postgres support in RDS and new EC2 instance types 
-  </div> 
+  </div>  
  </body>
 </html>
