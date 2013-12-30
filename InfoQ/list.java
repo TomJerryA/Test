@@ -1,8 +1,8 @@
 <html>
  <head></head> 
- <body>
-  <div>
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/26.java">Are REST Alternatives Needed?</a>Ole Lensmar, creator of SoapUI, has asked whether REST is really appropriate for architectures that require real-time, asynchronous interactions and binary protocols. In his article he discusses these areas and believes that alternative approaches are required.
+ <body> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/26.java">Are REST Alternatives Needed?</a>Ole Lensmar, creator of SoapUI, has asked whether REST is really appropriate for architectures that require real-time, asynchronous interactions and binary protocols. In his article he discusses these areas and believes that alternative approaches are required. 
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/25.java">Facebook’s Release Process Behind the Move from Web-based to Native App</a>Chaitanya Mishra, from Facebook, spoke at Velocity Conf London last month about the approach to scale Facebook’s Android app from a web view interface to a full-fledged native app. To achieve this transition each product team took ownership of their features on Android. A core integration team regression tests and focuses on global app optimization over individual features optimization. 
@@ -150,6 +150,6 @@
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/30.java">Amazon re:invent roundup</a>Amazon announced a number of new services at the recent re:invent conference in Las Vegas: Amazon WorkSpaces - Desktop Computing in the Cloud, Identity and Access Management using SAML, Amazon AppStream - Delivering Streaming Applications from the Cloud, Amazon Kinesis - Streaming Big Data, CloudTrail - Capturing AWS API Activity, Postgres support in RDS and new EC2 instance types 
-  </div>  
+  </div> 
  </body>
 </html>

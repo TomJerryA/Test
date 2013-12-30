@@ -1,38 +1,20 @@
-<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>使用CMMI-DEV模型进行安全的设计</h3><p>为了达到开发高安全性产品的目的，软件开发生命周期所涉及到的流程必须包含安全性方面的行为。在<a href="http://www.sepg.unicom.co.uk/">2013年SEPG欧洲大会</a>上，西门子的Winfried Russwurm以及Limes Security公司的Peter Panholzer高呼：“我们必须从最初阶段就将软件的安全性考虑进去，我们必须基于软件设计开发产品”。在会上，他们举办了一个关于探索软件安全性的研讨会，同时还提出了关于<a href="http://cmmiinstitute.com/resource/security-by-design-with-cmmi-for-development-version-1-3/">开发高安全性产品改进流程的指导手册</a>。（译注：SEPG为软件工程流程组织的缩写，Software Engineering Process Group）</p>
-<p>Winfried和Peter向与会者呼吁，针对软件的安全性我们必须有专门的软件开发活动以创造出更安全的软件产品。他们将与会者提出的意见归纳为以下几个方面：</p>
-<blockquote>
-  组织架构方面： 
- <ul> 
-  <li>安排专职的安全专家</li> 
-  <li>增进软件安全意识并且打造安全性的企业文化</li> 
-  <li>提供关于安全方面的培训</li> 
-  <li>建立并实行安全性的策略</li> 
- </ul> 需求方面： 
- <ul> 
-  <li>在项目利益相关者中引入“黑客”</li> 
-  <li>进行安全风险分析</li> 
-  <li>定义安全性需求，比如：关于安全性的用户用例或场景</li> 
- </ul> 架构方面： 
- <ul> 
-  <li>在接口设计方面注重考虑安全风险</li> 
-  <li>落实关于安全性的架构规则及纲领</li> 
-  <li>对于软件安全性寻找并应用行之有效的架构</li> 
- </ul> 实施方面： 
- <ul> 
-  <li>为软件安全性应用编程准则</li> 
-  <li>使用工具来检验代码安全性</li> 
- </ul> 测试方面： 
- <ul> 
-  <li>计划并进行软件安全性测试</li> 
-  <li>使用工具来进行自动化的软件安全性测试</li> 
- </ul> 开发生命周期： 
- <ul> 
-  <li>进行软件安全性评审及验证</li> 
-  <li>辨别风险来源、分类并进行风险评估</li> 
-  <li>学习其他公司及社区做得好的方面</li> 
-  <li>建立关于如何处理安全性问题的社会媒体政策</li> 
- </ul> 
+<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>Hadoop即服务提供商Qubole现在运行在Google Compute Engine上</h3><p>Qubole是一家托管的Hadoop即服务提供商，用户<a href="http://googlecloudplatform.blogspot.com/2013/12/qubole-helps-you-run-hadoop-on-google-compute-engine.html">现在能够</a>在Google Compute Engine（GCE）上使用该服务了。在这之前Qubole只能在Amazon的AWS上<a href="http://www.qubole.com/company/partners/">使用</a>，在Google宣布对<a href="http://www.infoq.com/news/2013/12/gcega">公众开放GCE</a>之后不久Qubole就宣布了这一消息。</p>
+<p>社区对该消息的反映大部分都是积极的，人们好像认为<a href="http://nosql.mypopescu.com/post/69829120078/google-compute-engine-and-data">大数据主题</a>会成为GCE潜在的<a href="http://gigaom.com/2013/12/13/maybe-big-data-is-the-killer-app-for-googles-cloud/">杀手级应用</a>。来自于DataStax的Alex Popescu这样写道：</p>
+<blockquote> 
+ <p>如果你仔细看看这些内容，那么你将会注意到这样一个主题：覆盖来自于任意角度的数据；使用DataStax的Cassandra/DSE处理OLTP，使用DataTorrent进行流处理，Qubole用于Hadoop，MapR用于Hadoop这样的解决方案。我能够看见这种情况持续了一段时间，同时正在让Google Compute Engine成为Amazon Web服务的一个强力竞争者。</p> 
 </blockquote>
-<p>今年早些时候，CMMI Institute发布了<a href="http://cmmiinstitute.com/resource/security-by-design-with-cmmi-for-development-version-1-3/">关于开发高安全性产品改进流程的指导手册</a>。这份指导手册对软件安全性的3个方面给出了更详细的流程说明。这3个方面包括：软件工程的安全性方面、软件项目的安全性管理以及组织中的安全性话题。我们可以运用这份指导手册以及能力成熟度CMMI-DEV模型为我们的客户提供更可靠的软件安全保障。</p>
-<p>指导手册的作者们以及<a href="http://cmmiinstitute.com/">CMMI Institute</a>都期望能够听到来自读者的声音、获得来自运用这份指导手册的机构的反馈。</p>
-<p><b>查看英文原文：</b><a href="http://www.infoq.com/news/2013/11/security-by-design-cmmi">Applying Security by Design with the CMMI for Development</a></p><br><br><br><br><br><br></body></html>
+<p>Hadoop即服务（HaaS也被称为云端Hadoop）也带来了一些不同的选项：</p>
+<ul> 
+ <li>动摇你自己的部署，也就是在一个像GCE或者EC2这样的IaaS平台上安装Apache Hadoop或者一个分布式服务（例如Cloudera、Hortonworks、MapR）。这样能够对运行的服务进行细粒度的控制，但是也带来了部署和管理上的复杂性。</li> 
+ <li>预打包的服务，例如Amazon的<a href="http://aws.amazon.com/elasticmapreduce/">EMR</a>或者<a href="#foundation-services">Savvis的大数据服务</a>，该服务有助于降低部署复杂性并且为已安装的服务提供中层控制。</li> 
+ <li>托管的HaaS，例如Qubole和<a href="http://mortardata.com/">Mortar</a>，有希望<a href="https://vimeo.com/80872062">降低部署和管理的复杂性</a>。</li> 
+</ul>
+<p>与本地部署相比HaaS的<a href="https://vimeo.com/80872062">关键区别</a>在于：弹性、现货定价、计算和存储之间的分离（例如像Amazon S3或者<a href="https://cloud.google.com/products/cloud-storage/">Google云存储</a>这样的最终一致性对象存储）和增强的安全标准。像Qubole这样的托管HaaS服务<a href="https://vimeo.com/80872062">往往</a>用于开发场景，用于评估和测试、短暂运行的分析工作以及实现混合云设置。但是它们也有各自的一些限制：</p>
+<ul> 
+ <li>将数据放入云端同时再次将其从云端取出都有它们各自的价格标记。</li> 
+ <li>由于法律规定可能会涉及到隐私和数据保护问题，这可能会阻止或者限制用例。</li> 
+ <li>24/7操作的TCO必须在具体分析的基础上进行计算。</li> 
+ <li>Hadoop、Hive等服务和最终一致性对象存储一般会存在不匹配的情况。</li> 
+</ul>
+<p>Ashish Thusoo和Joydeep Sen Sarma在Facebook工作期间丰富了自己运行Hadoop和Hive的经验，在那里他们管理着一个数据基础设施团队。然后，在2012年6月，他们创建了<a href="http://www.qubole.com/">Qubole</a>，并且在2013年4月获得了<a href="http://gigaom.com/2013/04/23/hadoop-startup-qubole-raises-7m-for-hive-as-a-service/">700万美元的A轮融资</a>。Joydeep深入介绍了他们在实现自己的HaaS服务时所面对的挑战，同时在他的Hive London Meetup谈话“<a href="http://sdrv.ms/11XQ5K6">云友好的Hadoop和Hive</a>”中还对内部原理做了讲解。另外，Christian Prokopp (Rangespan的数据科学家)最近还写了一个详细的纲要以及Qubole与EMR之间的对比。</p>
+<p><strong>查看英文原文：</strong><a href="http://www.infoq.com/news/2013/12/qubole-on-gce">Hadoop-as-a-Service Provider Qubole Now Runs on Google Compute Engine</a></p><br><br><br><br><br><br></body></html>
