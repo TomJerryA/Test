@@ -2,7 +2,13 @@
  <head></head> 
  <body>
   <div>
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/27.java">DevDocs, a One Stop Shop for Reference Documentation</a>DevDocs combines multiple reference documentation sets, commonly used by software developers, in a single web site. DevDocs takes advantage of this centralization to offer crosscutting features such as a searchable interface, keyboard shortcuts, common layouts or a common table of contents. DevDocs currently includes documentation for HTML, HTTP, Javascript and Ruby, among others.
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/29.java">Ruby 2.1.0 Released, Delivering new GC</a>Ruby 2.1 has been released, with the biggest addition being a completely new garbage collector that promises much better performance.
+  </div>
+  <div>
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/28.java">Trifacta Seeks to Simplify Data Wrangling-as-a-Service</a>Trifacta, a data analysis services platform, recently received VC investment to advance on their efforts of making data wrangling easier for data analysts. The goal is to collect, cleanse and munge data in a fraction of the time and effort it currently takes.
+  </div> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/27.java">DevDocs, a One Stop Shop for Reference Documentation</a>DevDocs combines multiple reference documentation sets, commonly used by software developers, in a single web site. DevDocs takes advantage of this centralization to offer crosscutting features such as a searchable interface, keyboard shortcuts, common layouts or a common table of contents. DevDocs currently includes documentation for HTML, HTTP, Javascript and Ruby, among others. 
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/26.java">Are REST Alternatives Needed?</a>Ole Lensmar, creator of SoapUI, has asked whether REST is really appropriate for architectures that require real-time, asynchronous interactions and binary protocols. In his article he discusses these areas and believes that alternative approaches are required. 
@@ -144,12 +150,6 @@
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/33.java">Microsoft Joins Forces with RedGate and Clickberry to Offer Node.js Tools for Visual Studio</a>NTVS, short for Node.js Tools for Visual Studio, offers Node.js developers a fully featured IDE complete with Intellisense, package management, profiling, and debugging. NTVS is a joint effort by Microsoft’s Python Tools team, RedGate, Clickberry, and others. 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/32.java">Experiencing Language Barriers with an Improvisational Theatre Workshop</a>In the XP Days workshop Agile cross borders, Hoang-Anh PHAN &amp; Anais Victor explored how you can deal with language barriers in a multi cultural organization. They work for the Vietnamese company Officience who provides outsourcing services to French customer, using the English language to communicate and work together. 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/31.java">Visual Commander Professional v1.3 Introduces 99 Commands, 50 Extensions and C# Syntax Highlighting</a>The recently released Visual Commander Professional v1.3 includes 99 commands, 50 extensions including syntax highlighting for C#. It also provides an ability to select default language for new commands and extensions by selecting the macro language in addition to several improvements. 
-  </div>  
+  </div>   
  </body>
 </html>

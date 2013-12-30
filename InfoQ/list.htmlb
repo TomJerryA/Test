@@ -1,6 +1,9 @@
 <html>
  <head></head> 
- <body> 
+ <body>
+  <div>
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/6.htmlb">软件正在吞噬组织机构中的“烟囱”</a> Luke Kanies是Puppet Labs的首席执行官，他探讨了软件正在如何接管那些过去一直由硬件实现的功能；以及在人们如何共事方面，这一变迁引发了怎样的剧变。 
+  </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/5.htmlb">DDD &amp; DDDLib在恒拓开源的发展历程与推广经验</a> 本文主要介绍为什么我们在恒拓开源内部推广DDD，我们如何通过开发DDDLib和Koala等工具来完善这一过程，推广过程中遇到了哪些问题，以及我们如何解决这些问题。 
   </div> 
@@ -147,9 +150,6 @@
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/9.htmlb">使用Flurry来统计和分析用户行为</a> 本文介绍了Flurry的基本功能以及如何利用Flurry做自定义的统计和分析，文章最后也将Flurry与业界其它同类工具做了对比和总结。 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/8.htmlb">建立学习与创新的文化</a> Jeff介绍了一个大型工程企业的员工如何通过在工作中进行持续学习的方式建立起创新文化的一系列步骤。在一个传统的工作环境中，工程团队通常倾向于等待业务方面的决策，并朝着既定的决策方向开始执行。而如今我们则看到，工程团队也会向业务决策者提出有钻研价值的新方向。 
-  </div> 
+  </div>  
  </body>
 </html>

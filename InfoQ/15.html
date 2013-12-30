@@ -1,46 +1,19 @@
-<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>GenMyModel：在线实时协作UML设计器</h3><p>本文包含了对<a href="http://www.genmymodel.com/">GenMyModel</a>的架构、使用的技术和未来规划的采访。</p>
-<p>GenMyModel是一个能生成Java、Spring和SQL代码的在线实时协作UML建模工具。模型是基于UML2元数据模型，并能导出为SVG、JPEG和UML/<a href="http://en.wikipedia.org/wiki/XML_Metadata_Interchange">XMI</a>格式。目前，该工具能生成类图和用例图，但其他的――如活动图、序列图将在今后添加。该工具能和GitHub整合。</p>
-<p>GenMyModel最近获得了对在线协作功能的支持，能让多用户同时在同一个模型上工作。我们期望了解更多关于该工具的架构、使用的技术和未来发展，其问题得到了首席技术官和创始人Thomas Legrand和Chief Business首席业务官和创始人St&eacute;phane Deveaux的解答。</p>
-<p><b>InfoQ：什么技术能让GenMyModel这么强大？</b></p>
-<blockquote>
- GenMyModel主要是用Java和Google Web Toolkit。前端使用包括HTML 5技术和GWT编写,后端则是J2EE应用。对于核心的建模模块,我们使用GWT开发了对UML建模型的实现。在服务端，我们特定的基于SQL的存储系统能将模型及历史保存起来。模型库是处于托管的并且在云端由若干服务器组成。 
- <br /> 
- <br /> 对于导出的功能而言，我们设计了一个可靠的框架以创建和运行模型，使的这些模型的转换能和基于模版的代码生成器结合。关于工具包，我们团队的所有成员都有各自的杀手锏！但Eclipse和在线IDE如Codeny是80%的时间都在使用。我们的缺陷跟踪系统和敏捷项目管理系统是基于神奇的JIRA。而持续测试和交付管理过程是由Jenkins和Sonar去管理。
+<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>Reactive Extensions for JavaScript瘦身不再支持旧浏览器</h3><p>RxJS 2.2进行了瘦身，在默认构建中只支持ECMA Script 5浏览器。这意味着使用Reactive Extensions for JavaScript需要IE 9、Firefox 4、Safari 6、Chrome 19或更新的版本。要想支持旧版本需要使用rx.compact.js来提供缺失的<a href="https://en.wikipedia.org/wiki/Polyfill">Polyfills</a>。</p>
+<p>要进一步瘦身，开发者可以使用Rx-Lite（也叫rx.lite.js）。该库只包含最常用的特性。<a href="http://blogs.msdn.com/b/rxteam/archive/2013/12/13/rxjs-2-2-released.aspx">Rx团队的博客</a>中这样说道，</p>
+<blockquote> 
+ <p>为了避免RxJS中点菜式的传统，仅使用需要的部分，该版本只包含最常用的工厂方法中的操作符、标准查询操作符、基于时间的操作符、绑定操作符（如广播）和异步操作符（如Rx.Observable.fromEvent、Rx.Observeable.fromPromise等）。还有一个兼容版本rx.lite.compat.js，支持老一些的浏览器。整个库压缩后只有7kb大小，这在没有多少成本的情况下提供了很多可能性。</p> 
 </blockquote>
-<p><b>InfoQ：你们是如何协作的？要同步这些UML图的目的是什么？</b></p>
-<blockquote>
-  多年以来，开发人员试图在一起设计软件架构，我们很高兴能为数百万人提供这个令人兴奋的体验。当输入你希望与之共享的人的EMAIL地址，将会发生如下的事情：你能在实时编辑、移动和删除同一个模型。所有的这些图形和模型的改变（你看到的）都是实时发生的。不同于协作绘图工具，GenMyModel始终保证遵守UML。在协同设计中的任何时候，你可以生成图片、报告和代码。对于终端用户是不需要解决冲突，也没有锁和解锁的限制。在模型中，有一个聊天框让团队成员了解各自的进度。幕后关键的一点是，无论是图形和模型都是在服务器端同步的。我们的机制可以确保你始终获得的是遵守UML模型的同步图形。因为一切都保存在我们的模型库中，我们将在短期内能够提取标签和注释的修订历史。
+<p>和完整版一样，Rx-Lite也是为ECMAScript 5而设计，并为老浏览器提供了可选的兼容库。</p>
+<p>RxJS 2.2中还有一些其他方面的重大改变。首先是Rx.Observable.prototype.scan的行为，“因其属于Reactive Extensions for .NET，所以也发生了改变”。声明中还说道，</p>
+<blockquote> 
+ <p>这是为了反映其他语言中的行为，如F#、Haskell等。基本规则是，如果有一个空的且有种子的可观察序列，那么应该产生（yield）这个种子。或者如果序列为空且没有种子，那么它就应该是一个空序列。这与旧版本不同，在旧版本中，即使空序列有种子，也不会产生任何东西。</p> 
 </blockquote>
-<p><b>InfoQ：你们将来打算支持除了Java和SQL外的其他语言吗？</b></p>
-<blockquote>
- 绝对是的，这是多么令人兴奋！PHP、Javascript、C#、C++和其他语言……深入其机制而言，我们已经准备好在支持一大批广泛而复杂的语言和框架。可以想像这能满足数百万目标群体的期望！当然这只是时间和优先级问题。这就是为什么我们会提出上传用户自己的生成器的原因。我们不相信旧式的MDA工具，它们中的大部分关注用户的需求而不是灵活的生成器。如果有人认为使用GenMyModel提供的生成器在Java中生成的代码丢失了构造函数，我保证这不是一个大问题：“这里有模版，用户可以自定义”。这就是我想说的。我们将在2014年达成这个目标并欢迎提供各样的贡献。 
-</blockquote>
-<p><b>InfoQ：你们打算什么时候推出beta版本？</b></p>
-<blockquote>
- 将在2014年第二季度发布，但还没最后准备好。数千IT工程师每周都参与使用beta版并提供宝贵的反馈意见。这就是从开始到目前所做的一切：告诉我们你所喜欢的功能，我们将尽力实现。这就是实时协作概念是如何提出的。我们跟用户接触的越紧密，则愈能彰显我们的价值。在不久的将来，我们的目标是扩大到整个UML范畴并且有其他的图（序列、活动，然后?）,并缓和跟逆向工程之间的跨度。我们需要大家的帮助以设计那些功能而现在定价的计划可能会造成一些障碍。 
- <br /> 
- <br /> 在另一方面，事实上越来越多的用户和公司在咨询专业版的授权。目前，我们在研究所有的问题并且我们逐一回答每一个案例。
-</blockquote>
-<p><b>InfoQ：目前你能提供任何的价格体系么？</b></p>
-<blockquote>
- 很诚恳地说，目前还是太早所以还不是太准确。目前来说beta版本对公众和个人项目来说是免费的。个人项目的数量限制可以发邮件给我们通过即可。我们尝试根据得到的反馈去制订最佳的价格体系。
- <br /> 
- <br /> 我要强调如下三点： 
- <ul> 
-  <li>我们相信开源并且我们希望GenMyModel成为公开的项目。这也是个象征，软件建模进入新的纪元。公开的项目将永久免费</li> 
-  <li>对那些需要个人项目的开发者降低门槛，每个授权将小于10美元</li> 
-  <li>为企业提供额外的专业服务（每月50-150美元）</li> 
- </ul> 
-</blockquote>
-<p><b>InfoQ：在发展路线图中有什么其他特性？</b></p>
-<blockquote>
- 让我们总结下即将要实施的： 
- <ul> 
-  <li>更多的图：活动图、序列图</li> 
-  <li>更多的代码生成器：用户能自己上传</li> 
-  <li>版本控制管理</li> 
-  <li>从Git中逆向工程，首先生成的是Java</li> 
- </ul> 其他功能也将增加并且路线图也需要转向。任何人都可以通过UserVoice的通道
- <a href="http://genmymodel.uservoice.com/">http://genmymodel.uservoice.com</a>提出想法或者功能的改善。
-</blockquote>
-<p><b>查看英文原文：</b><a href="http://www.infoq.com/news/2013/11/genmymodel-uml-designer">GenMyModel: An Online Real-time Collaborative UML Designer</a></p><br><br><br><br><br><br></body></html>
+<p>其他方便的变动是将四个函数移动到新的库中：</p>
+<ul> 
+ <li>Rx.Observable.toAsync移动到rx.async.js</li> 
+ <li>Rx.Observable.start移动到rx.async.js</li> 
+ <li>Rx.HistoricalScheduler移动到rx.virtualtime.js</li> 
+ <li>Rx.VirtualTimeScheduler移动到rx.virtualtime.js</li> 
+</ul>
+<p>同样，这也是为了降低核心文件的大小。我们将在<a href="http://www.infoq.com/cn/news/2013/12/RxJS-Futures">关于RxJS未来的报道</a>中深入介绍rx.async.js。</p>
+<p><strong>原文链接：</strong><a href="http://www.infoq.com/news/2013/12/RxJS-22">Reactive Extensions for JavaScript Loses Weight and Older Browsers</a></p><br><br><br><br><br><br></body></html>

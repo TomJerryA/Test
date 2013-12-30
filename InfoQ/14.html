@@ -1,23 +1,21 @@
-<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>TechEd 2013：通过Cloud OS、Visual Studio等构建微软生态社区</h3><p>2013年12月5日，TechEd 2013大会在北京召开，这次大会围绕“创新、开放、社区”为主题， 来自云微软和相关合作伙伴、社区的技术专家在会上和大家分享了微软的最新技术进展，今年是TechEd进入中国20年，微软在会上正式宣布启动<a href="http://www.mscloudclub.com/CloudOS2013Contest/">第二届微软云创益</a>大赛，开发者可以通过<a href="http://www.mscloudclub.com/CloudOS2013Contest/">大赛官网</a>报名参赛。</p>
-<h2>大会相关数据</h2>
+<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>Reactive Extensions for C++简介</h3><p><a href="http://msopentech.com/blog/2013/12/05/ms-open-tech-hub-releases-rx-2-2/">Reactive Extensions for C++</a>（也叫Rx.cpp）,已经可以在WinRT（C++/CX）和OS X（clang）中使用了。 尽管还很年轻，但很多工作已经在上一个预览版中完成了。</p>
+<p>Scheduling is a cornerstone of Reactive Extensions. 调度是Reactive Extensions中的*** 该版本中共有5个调度器，其中还包括一个专门为Windows的HWND消息环而设计的调度器。</p>
 <ul> 
- <li>微软企业级业务目前占微软全球业务的55%</li> 
- <li>55%的《财富》500强企业使用Windows Azure</li> 
- <li>企业社交软件Yammer现拥有超过800万的注册用户</li> 
- <li>Windows Azure上约有8.5亿个伟健</li> 
- <li>Visual Studio 2012累计下载突破600万次</li> 
- <li>74家合作伙伴提供123款Visual Studio 2013的延伸产品</li> 
+ <li>Immediate</li> 
+ <li>CurrentThread</li> 
+ <li>EventLoop</li> 
+ <li>NewThread</li> 
+ <li>Window</li> 
 </ul>
-<h2>Cloud OS</h2>
-<p>作为同时提供跨越私有云、公有云和混合云服务的企业，微软2012年提出了“三云合一”统一管理的Cloud OS云操作系统理念，并于今年11月15日面向国内用户正式开始发布，Clouds OS以Windows Azure、Windows Sever和System Center为核心，通过Hyper-V虚拟化技术，实现大规模虚拟化、高性能存储、软件定义网络（SDN）和混合业务连续性方案。</p>
-<p>在存储方面，Windows Server 2012 R2的Storage Spaces使用SSD固态硬盘加HDD硬盘提供基于策略的分层功能，降低存储的成本；另外，Hyper-V提供了诸如点对点VPN网关等内置功能，桥接物理网络和虚拟网络，通过System Center 2012 R2进行负载迁移。</p>
-<p>就现在看来，微软全球的Azure用户以企业级用户为主，其中，Azure自6月6日在国内开发公测以来，已经拥有2000余家用户，其中70多家是付费用户，目前，微软还在考察游戏等市场的潜力。</p>
-<p>为了促进Clouds OS的普及，微软启动了“以全云，筑创想”为主题的第二届微软云创意大赛，并于今天正式接受<a href="http://www.mscloudclub.com/CloudOS2013Contest/">报名</a>。</p>
-<h2>Visual Studio</h2>
-<p>会上，微软全球开发平台事业部全球资深副总裁潘正磊女士分享了微软的Visual Studio的一些数据和团队经验，潘提到自一年前Visual Studio 2012发布以来，它已经成为微软有史以来普及速度最快的Visual Studio版本，目前下载量已经突破了600万次，在VS 2012发布后的14个月中，微软还发布了Visual Studio 2013、Visual Studio Online已经Visual 2012的4个版本更新。</p>
-<p>Visual Studio 2013加入了诸如Azure网站实时调试、能耗报告、用户界面相应诊断等功能，同时，Visual Studio 2013以及Team Foundation Server 2013还提供了敏捷开发的支持，通过结合Windows Server 和Systems Center，推动DevOps的发展。</p>
-<p>潘说到市场的变化太快，为了迎合新的机遇和挑战，Visual Studio开发团队通过敏捷的方式加速产品的开发进程，目前Visual Studio开发团队以3个星期作为一个Sprint、6个月计划一个Season、并使用18个月实现一个Vison。他们将整个团队分拆成一个个实体的功能团队，每个团队有12到18个人，自主掌握开发进度和功能需求。</p>
-<h2>开发者支持</h2>
-<p>开发者生态系统是这次大会的主题之一，目前微软和中国移动、联通、支付宝等企业达成了合作协议，Windows 8以及Windows Phone平台软件可以通过相关的SDK实现移动支付。微软还和Unity3D、cocos2D-x、Xamarin建立了合作伙伴关系，为开发者提供游戏开发引擎工具和技术支持。</p>
-<h2>相关下载</h2>
-<p>12月6日大会结束之后，雅虎可以在<a href="http://www.microsoftvirtualacademy.com/#?fbid=hxEXor0QakO">微软虚拟学院</a>下载北京分会场所有的视频和讲师讲稿。</p><br><br><br><br><br><br></body></html>
+<p>对于Rx开发者来说，对“与STL算法等价的异步”操作符应该非常熟悉：OrderBy、ForEach、Using、Scan、Throttle、TakeUntil、Skip、SkipUntil、ToVector、ToList、Zip、Concat、CombineLatest、Merge、ToAsync、Using、ConnectableObservable、Multicast、Publish、PublishLast、RefCount、ConnectForever、SubscribeOn、ObserveOn。</p>
+<p>WinRT的C++/CX所特有的特性包括：BindCommand、DeferOperation、CoreDispatcherScheduler、FromEventPattern、FromAsyncPattern和ReactiveCommand。最后一个特性来自<a href="http://www.reactiveui.net/">Paul Betts的ReactiveUI</a>。</p>
+<p>面是一个示例，通过一个范围创建一个可观察对象（observable）：</p>
+<pre>//Declare an observable 
+auto values1 = rxcpp::Range(1, 10); 
+rxcpp::from(values1)    
+    .for_each(      
+        [](int p) {         
+        cout &lt;&lt; p &lt;&lt; endl;  
+});</pre>
+<p><a href="http://rxcpp.codeplex.com/">Rx.cpp的源代码</a>位于CodePlex，支持Apache License 2.0许可。</p>
+<p><strong>原文链接：</strong><a href="http://www.infoq.com/news/2013/12/rx-cpp">Introducing Reactive Extensions for C++</a></p><br><br><br><br><br><br></body></html>
