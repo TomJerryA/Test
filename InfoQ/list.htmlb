@@ -2,6 +2,9 @@
  <head></head> 
  <body>
   <div>
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/7.htmlb">用Spring实现非端到端验收测试</a> 验收测试让交付团队超越了基本的持续集成，即验证应用程序是否为用户提供了有价值的功能。不过对于刚开始尝试部署流水线的团队来说，想要自动化验收测试，需要跨过三大门槛。 
+  </div> 
+  <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/6.htmlb">软件正在吞噬组织机构中的“烟囱”</a> Luke Kanies是Puppet Labs的首席执行官，他探讨了软件正在如何接管那些过去一直由硬件实现的功能；以及在人们如何共事方面，这一变迁引发了怎样的剧变。 
   </div> 
   <div> 
@@ -147,9 +150,6 @@
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/10.htmlb">Datomic信息模型</a> Clojure的作者Rich Hickey在本文中介绍了Datomic的信息模型，Datomic是一种新型数据库，它被设计为一系列简单服务的组合，并结合了关系型数据库管理系统的能力与NoSQL的可伸缩性。 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/9.htmlb">使用Flurry来统计和分析用户行为</a> 本文介绍了Flurry的基本功能以及如何利用Flurry做自定义的统计和分析，文章最后也将Flurry与业界其它同类工具做了对比和总结。 
   </div>  
  </body>
 </html>

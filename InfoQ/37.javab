@@ -1,151 +1,149 @@
-<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>Deploying it right with AppVeyor CI and PowerShell</h3><h2>Introduction</h2>
-<p>You can find a lot of articles on how to make continuous delivery of a single ASP.NET web application. Many of those articles model a perfect world where a simple, a slightly-modified VS.NET template web application is deployed using Web Deploy. Everything works smoothly in a perfect world.</p>
-<p>Deploying real applications is hard. Questions arise when there are configuration settings in the Registry, custom folders structure, custom permissions, Windows services hosting WCF back-end or you have to deploy to a web cluster.</p>
-<p>In this article we look at the process of setting up continuous delivery for a solution consisting of ASP.NET web application and Windows service to a staging and production environments using PowerShell remoting and AppVeyor CI.</p>
-<h2>Solution overview</h2>
-<p>Our demo solution consists of four projects:</p>
+<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>Preparing for Your First MongoDB Deployment: Backup and Security</h3><p>In the <a href="http://www.infoq.com/articles/mongodb-deployment-monitoring">first article of this two part series</a>, we discussed how many of the concepts, operations and processes for deploying Relational Databases can be directly applied to MongoDB, along with hardware selection and best practices for deployment and monitoring.</p>
+<p>In this article we focus on protecting your deployment with backup tools and security policies.</p>
+<h2>MongoDB Backup and Restore</h2>
+<p>There are three common approaches to backing up a MongoDB database:</p>
 <ul> 
- <li>DemoApp.Web - ASP.NET application, front-end</li> 
- <li>DemoApp.Web.Tests - web application unit tests using VisualStudio testing framework</li> 
- <li>DemoApp.Service - Windows service hosting WCF services, backend</li> 
- <li>DemoApp.Service.Tests - Windows service unit tests using NUnit framework</li> 
+ <li>Cloud backups with <a href="https://mms.mongodb.com/">MongoDB Management Service</a> (MMS)</li> 
+ <li>Making file system copies</li> 
+ <li>Using the <b>mongodump</b> tool packaged with MongoDB</li> 
 </ul>
-<p><img src="http://www.infoq.com/resource/articles/AppVeyor-CI/en/resources/image07.png" alt="" _href="img://image07.png" _p="true" /></p>
-<p>Demo application repository is hosted on <a href="https://bitbucket.org/appveyor/demoapp/src">BitBucket</a>:</p>
+<h3>Backups with MongoDB Management Service (MMS)</h3>
+<p>In addition to monitoring discussed in the previous article, MMS provides a fully managed, cloud-based <a href="https://mms.mongodb.com/">backup solution</a> that is hosted in reliable, redundant and secure datacenters.</p>
+<p>The MMS Backup agent is locally installed to the MongoDB cluster and performs an initial synchronization, before then streaming encrypted and compressed data from the MongoDB oplog (used in MongoDB replica sets) to MMS.&nbsp; Snapshots are created every 6 hours.</p>
+<p><img alt="" _href="img://2Fig1.png" _p="true" src="http://www.infoq.com/resource/articles/mongodb-deployment-backup-security/en/resources/2Fig1.png" /></p>
 <div id="lowerFullwidthVCR"></div>
-<h2>How are we going to deploy?</h2>
-<p>The first question - how are we going to deploy Windows service? We don’t have “Publish” menu on Windows service and we don’t have config transforms either! Web Deploy doesn’t work here.</p>
-<p>To automate project deployment we’ll use PowerShell deployment framework - <a href="https://github.com/AppVeyor/AppRolla">AppRolla</a>.</p>
-<p>AppRolla uses PowerShell remoting to execute deployment tasks on the target machine. Deployment task downloads application package, unpacks it, updates configuration settings and creates or updates application website and pool. Application package is just a zip with application folder contents uploaded to some external storage and available via HTTP. There is no magic at all - the module is written in PowerShell and could be easily explored or modified.</p>
-<p>To give you a sneak peek of PowerShell deployment let’s create a simple web application and deploy it to a server.</p>
-<p>Perhaps, the most challenging part in the whole process is setting up PowerShell remoting with SSL certificate. We strongly recommend using HTTPS to communicate with remote servers as all traffic is encrypted.</p>
-<p>When you create a new virtual machine on Windows Azure PowerShell remoting will be automatically enabled and configured. PowerShell remoting HTTPS endpoint port 5986 is allowed on firewall and we also add HTTP endpoint to our demo server:</p>
-<p><img src="http://www.infoq.com/resource/articles/AppVeyor-CI/en/resources/2image00.png" alt="" _href="img://2image00.png" _p="true" />&nbsp;<br /> For any other server you can follow this very detailed <a href="https://github.com/AppVeyor/AppRolla/wiki/Configuring-Windows-PowerShell-remoting">guide on how to configure PowerShell remoting</a>.</p>
-<p>To quickly install IIS 7.5 on demo machine we use this PowerShell command:</p>
-<pre>
-Add-WindowsFeature -Name Web-Default-Doc,Web-Dir-Browsing,Web-Http-Errors,Web-Static-Content,Web-Http-Logging,Web-Stat-Compression,Web-Filtering,Web-Net-Ext,Web-Net-Ext45,Web-Asp-Net,Web-Asp-Net45,Web-ISAPI-Ext,Web-Mgmt-Console</pre>
-<p>Let’s create a trivial web application with a single “Hello, world!” page and deploy it to the demo server.</p>
-<p>&nbsp;<img src="http://www.infoq.com/resource/articles/AppVeyor-CI/en/resources/image05.png" alt="" _href="img://image05.png" _p="true" /></p>
-<p>Create a new SimpleWebApp-1.0.zip archive with the first version of default.aspx inside.</p>
-<p>Now, we have to upload application package to some external storage to make it available from target server via HTTP. It could be a web server with FTP enabled, Amazon S3 or Azure blob storage. For our demo we are going to use DropBox. It provides public download links to any items in your DropBox folder.</p>
-<p>Copy SimpleWebApp-1.0.zip to your DropBox folder then right-click the file and select “Share DropBox link”. Open the link in the browser and copy URL of “Download” button:</p>
-<p><img src="http://www.infoq.com/resource/articles/AppVeyor-CI/en/resources/image02.png" alt="" _href="img://image02.png" _p="true" />&nbsp;<br /> Open PowerShell console “As administrator” and change execution policy to allow remote PowerShell scripts:</p>
-<pre>
-Set-ExecutionPolicy RemoteSigned</pre>
-<p>Install AppRolla.ps1 module (it will be installed to your user profile):</p>
-<pre>
-(new-object Net.WebClient).DownloadString(&quot;https://raw.github.com/AppVeyor/AppRolla/master/install.ps1&quot;) | iex</pre>
-<p>Import AppRolla module into your current session:</p>
-<pre>
-Import-Module AppRolla</pre>
-<p>AppRolla has two groups of cmdlets: configuration and deployment. You use configuration cmdlets to define your application and environments.</p>
-<p>Go ahead and add a new “SimpleWebApp” application with only single “website” role:</p>
-<pre>
-New-Application SimpleWebApp   <br />Add-WebsiteRole SimpleWebApp Web -PackageURL &quot;&lt;your-dropbox-download-link&gt;&quot;</pre>
-<p>Define “demo” environment with one server (enter demo server admin credentials when prompted - more about this later):</p>
-<pre>
-New-Environment demo   <br />Add-EnvironmentServer demo &quot;appveyor-demo.cloudapp.net&quot; -Credential (Get-Credential)</pre>
-<p>Deploy “SimpleWebApp” application to “Demo” environment as version 1.0:</p>
-<pre>
-New-Deployment SimpleWebApp 1.0 -to demo<br /></pre>
-<p><a href="/resource/articles/AppVeyor-CI/en/resources/image10.png" _href="resource://image10.png"><img src="http://www.infoq.com/resource/articles/AppVeyor-CI/en/resources/image10small3.jpg" alt="" _href="img://image10small3.jpg" _p="true" /></a></p>
-<p>(Click on the image to enlarge it)</p>
-<p>Voila! You just deployed web application to a demo server using PowerShell:</p>
-<p><img src="http://www.infoq.com/resource/articles/AppVeyor-CI/en/resources/image01.png" alt="" _href="img://image01.png" _p="true" /></p>
-<p>Now, let’s change page contents and deploy another version of our demo app. Change “Hello, world!” to “Hello, world 2.0!” Create a new SimpleWebApp-1.1.zip archive with changed default.aspx and upload to DropBox again.</p>
-<p>Update “website” role to change its package URL to a new value:</p>
-<pre>
-Set-WebsiteRole SimpleWebApp Web -PackageUrl &lt;public-URL-of-SimpleWebApp-1.1&gt;</pre>
-<p>and make a new deployment as version 1.1:</p>
-<pre>
-New-Deployment SimpleWebApp 1.1 -to demo</pre>
-<p><img src="http://www.infoq.com/resource/articles/AppVeyor-CI/en/resources/image09.png" alt="" _href="img://image09.png" _p="true" /></p>
-<p>As you can see from the log a separate folder is created for every new deployment in location c:\applications\&lt;application-name&gt;\&lt;role-name&gt;\&lt;version&gt;. By default, 5 previous deployments are stored on the target server, so the application could be easily rollback to previous version:</p>
-<pre>
-Restore-Deployment SimpleWebApp -on demo</pre>
-<p>To delete all application deployments from demo environment:</p>
-<pre>
-Remove-Deployment SimpleWebApp -from demo</pre>
-<p>We use simple, concise commands to the job!</p>
-<h2>Continuous builds with AppVeyor CI</h2>
-<p><a href="http://www.appveyor.com">AppVeyor CI</a> is a cloud-based continuous integration and deployment platform for Windows developers. It’s hosted, so you don’t need to install and configure it and it’s super easy to setup CI for your project. Oh, and forgot to mention that AppVeyor CI is free for open-source projects!</p>
-<p>To setup your project in AppVeyor CI its sources must be hosted in online source control repository like GitHub, BitBucket or Kiln. Both Git and Mercurial are supported.</p>
-<p>In our tutorial we use Mercurial repository hosted on BitBucket. BitBucket is pretty cool for commercial projects as it offers unlimited private repositories for free.</p>
-<h3>Enable NuGet restore</h3>
-<p>If your solution depends on NuGet package manager do not forget to enable NuGet restore to automatically download packages on build server. Use this <a href="http://docs.nuget.org/docs/workflows/using-nuget-without-committing-packages">guide to enable NuGet package restore</a> and make sure NuGet.exe inside .nuget folder is added to the repository.</p>
-<h3>Add new project</h3>
-<p>OK, let’s start by creating a new project:</p>
-<p><img src="http://www.infoq.com/resource/articles/AppVeyor-CI/en/resources/image03.png" alt="" _href="img://image03.png" _p="true" /></p>
-<p>Once the project is created a new web hook is automatically added to the project repository to kick-off new build on every push.</p>
-<h3>Build configuration and config transforms</h3>
-<p>When deploying with Web Deploy config transforms is a key part in application configuration process. For each environment you are going to deploy to you define a new VS.NET solution configuration and then use config transforms to generate web.config with database connection strings and other application settings specific for each environment. This approach seems natural, but has a number of disadvantages:</p>
+<p>MMS Backup is the only solution that supports point-in-time recovery for replica sets and cluster-wide snapshots of sharded clusters. Oplog data for the last 24 hours is stored and can be applied to create a custom snapshot of a replica set. For sharded clusters, the balancer is paused every 6 hours and a no-op token is inserted across all shards, mongos’ and config servers. The oplog can be applied to all replica sets in the cluster until the point in which the token was inserted, providing a consistent snapshot across the cluster.</p>
+<p>To restore data, snapshots are sent via SCP directly to your server, or a custom URL can be generated to download them. MMS requires two-factor authentication for all restores.</p>
+<p>For more details on the backups with MMS service, checkout the <a href="https://mms.mongodb.com/help/backup/">documentation page</a> on MongoDB website.</p>
+<h3>File System Backups</h3>
+<p>File system backups, such as that provided by Linux LVM, quickly and efficiently create a consistent snapshot of the file system that can be copied for backup and restore purposes. For more information on how to use file system snapshots to create a backup of MongoDB, refer to the <a href="http://docs.mongodb.org/manual/tutorial/backup-databases-with-filesystem-snapshots/">Backup and Restore with File System Snapshots</a> documentation.</p>
+<p><b><small><font color="#80ff00">mongodump</font></small></b></p>
+<p><b><small><a href="http://docs.mongodb.org/manual/reference/program/mongodump/">mongodump</a></small></b> is a tool bundled with MongoDB that performs a live backup of the data in MongoDB. <small><b>mongodump</b></small> may be used to dump an entire database, collection, or result of a query<s>.</s> <b><small>mongodump</small></b><i> </i>can produce a dump of the data that reflects a single moment in time by dumping the <i>oplog</i> and then replaying it during <b><a href="http://docs.mongodb.org/manual/reference/program/mongorestore/#bin.mongorestore">mongorestore</a></b>, a tool that imports content from BSON database dumps produced by <b>mongodump</b>. <b>mongodump</b> can also work against an inactive set of database files.</p>
+<p>More information on creating backups can be found on the <a href="http://docs.mongodb.org/manual/administration/backups/">Backup and Restoration Strategies</a> MongoDB Documentation page.</p>
+<h2>Security</h2>
+<p>As with all software, administrators of MongoDB must consider security and risk exposures for a MongoDB deployment. There are no magic solutions for risk mitigation, and maintaining a secure MongoDB deployment is an ongoing process.</p>
+<h3>Defense in Depth</h3>
+<p>A <i>Defense in Depth</i> approach is recommended for securing MongoDB deployments, and it addresses a number of different methods for managing risk and reducing risk exposure.</p>
+<p>The intention of a <i>Defense In Depth</i> approach is to layer your environment to ensure there are no exploitable single points of failure that could allow an intruder or untrusted party to access the data stored in a MongoDB database. The most effective way to reduce the risk of exploitation is to run MongoDB in a trusted environment, to limit access, to follow a system of least privileges, to follow a secure development lifecycle, and to follow deployment best practices.</p>
+<p>Any database handling sensitive information needs to offer holistic approaches to security, encompassing:</p>
 <ul> 
- <li>Sensitive information like database connection strings is stored in a source control.</li> 
- <li>Config transform is applied during the build and every time the project is deployed to a different environment it has to be re-built.</li> 
+ <li>User rights management to restrict access to sensitive data, implemented through authentication and authorization controls;</li> 
+ <li>Logging operations against the database in an audit trail;</li> 
+ <li>Data protection via encryption of data in-motion over the network and at rest in persistent storage;</li> 
+ <li>Environmental and process controls.</li> 
 </ul>
-<p>When deploying with AppVeyor config transforms are helpful, but not essential. By default, VS generates two configurations Debug and Release and this is perfectly OK for many cases. Debug configuration is used locally during development and Release configuration is used by CI process to produce a package that could be deployed to any environment. Config transforms should be “really” used to transform configuration file structure, such as disabling “debug” flag, enabling custom errors, disable tracing or replacing Autofac modules, i.e. configuration common for all environments.</p>
-<p>Go ahead and change project build configuration to Release on its settings page:</p>
-<p><img src="http://www.infoq.com/resource/articles/AppVeyor-CI/en/resources/image08.png" alt="" _href="img://image08.png" _p="true" /></p>
-<p>AppVeyor offers three build scenarios:</p>
-<ul> 
- <li><b>Visual Studio solution</b> - runs MSBuild against VS.NET solution or project file (search for the first .sln or .*proj if not specified) and packages build results of all projects as artifacts.</li> 
- <li><b>MSBuild</b> - runs MSBuild on your terms and allow to define custom build artifacts on “Packaging” page.</li> 
- <li><b>Script</b> - runs specified PowerShell script or batch file. Gives maximum freedom in controlling build process and its results.</li> 
-</ul>
-<h3>Assemblies versioning</h3>
-<p>Every new project build receives a new version which format is specified on “General” tab.</p>
-<p>AppVeyor offers <a href="http://msdn.microsoft.com/en-us/library/System.Version.aspx">Windows style versioning</a> by default (major.minor.{build}.revision), but you can implement any, for example <a href="http://semver.org/">SemVer</a> (major.minor.patch.{build}).</p>
-<p>When “Update assembly version attributes” is enabled AppVeyor will patch all AssemblyInfo.* files in solution directory to set current version.</p>
-<h3>Running tests</h3>
-<p>AppVeyor could discover and run tests in assemblies using these testing frameworks:</p>
-<ul> 
- <li>MSTest</li> 
- <li>NUnit</li> 
- <li>xUnit</li> 
-</ul>
-<p>When “Test” stage is enabled AppVeyor will analyze all assemblies in “out” folder to check if they have references to any supported testing framework. If they do all tests within the assembly will be run using appropriate test runner. Test results from all assemblies are aggregated and shown on UI:</p>
-<p>(Click on the image to enlarge it)</p>
-<p><a href="/resource/articles/AppVeyor-CI/en/resources/image04.png" _href="resource://image04.png"><img src="http://www.infoq.com/resource/articles/AppVeyor-CI/en/resources/image04-small.jpg" alt="" _href="img://image04-small.jpg" _p="true" /></a></p>
-<h3>Build. Test. Package!</h3>
-<p>OK, now let’s kick-off a new build by pushing some changes to a repository or clicking “New build” button.</p>
-<p>For our demo project the build process produced two artifacts: web application and Windows service. Download them to check their contents - they are just regular zips with application files!</p>
-<p>As Windows service package is just basically contents of its “bin” folder to produce a package for web application there are more steps involved:</p>
-<ol> 
- <li>Web application is built as part of solution.</li> 
- <li>A new publishing profile with “File system” publishing method is created and WAP project is published using MSBuild and this profile to make sure <b>web.config transforms and other publishing settings are applied</b>.</li> 
- <li>Published web application is packaged to a zip.</li> 
-</ol>
-<p>Artifacts are stored in Geo-redundant cloud storage and available by unique private download links. To have your own artifacts naming structure and to enable public access you can configure a custom storage.</p>
-<h2>Deploying successful builds to staging</h2>
-<p>Now, let’s setup automated deployment to staging as part of the build process.</p>
-<p>Deployment should be done in a script that can be PowerShell or batch file. Create “deployment” folder in the root of solution repository to hold our deployment scripts.</p>
-<p>Open PowerShell console, navigate to “deployment” folder and run the following command to download template scripts into to current directory:</p>
-<pre>
-(new-object Net.WebClient).DownloadString(&quot;https://raw.github.com/AppVeyor/Deployment/master/install.ps1&quot;) | iex</pre>
-<p>There are three scripts will be added: configure.ps1, project.ps1 and deploy.ps1.</p>
-<p>Basically, to setup deployment we have to edit only one file - project.ps1. This file defines environments we are going to deploy to. Uncomment the line next to new staging environment and add our demo server:</p>
-<pre>
-New-Environment Staging  <br />Add-EnvironmentServer Staging “appveyor-demo.cloudapp.net”</pre>
-<p>Go back to AppVeyor CI and open “Deployment” tab of project settings.</p>
-<p>Select “Run deployment script” and specify script path:</p>
-<pre>
-deployment\deploy.ps1</pre>
-<p>Set the following deployment variables:</p>
-<pre>
-Environment: Staging   <br />ServerUsername: &lt;target-server-username&gt;   <br />ServerPassword: &lt;target-server-password&gt;   <br />ApiAccessKey: &lt;your-appveyor-api-access-key&gt;  <br />ApiSecretKey: &lt;your-appveyor-api-secret-key&gt;</pre>
-<p><img src="http://www.infoq.com/resource/articles/AppVeyor-CI/en/resources/image06small.png" alt="" _href="img://image06small.png" _p="true" />&nbsp;<br /> Both ServerUsername and Password are used to create Credential object for authenticating calls via PowerShell remoting. API keys are required for: a) reading project artifacts to get their package URLs and b) authenticating target server to download artifact packages. AppVeyor API keys could be found on “API Keys” tab of your user profile.</p>
-<p>That’s it! Commit “deployment” folder and push it to repository to start a new build with deployment.</p>
-<h2>How to update connection string in web.config?</h2>
-<p>Deployment variables are passed to the script in $variables parameter which represents a hashtable. To make additional configuration values available to the application or role use “Configuration” parameter for Set-Application, Set-WebsiteRole or Set-ServiceRole cmdlets. Open project.ps1 and add the following statement:</p>
-<pre>
-Set-WebsiteRole $projectName DemoApp.Web -Configuration @{   <br />    “ConnectionStrings.DefaultConnection” = $variables.DefaultConnection   <br />}</pre>
-<p>Then define “DefaultConnection” variable on Deployment settings screen to pass connection string for web application.</p>
-<p>Deployment script applies role configuration to web.config for web apps and app.config for Windows apps using the following rules:</p>
-<ul> 
- <li>Setting with name “ConnectionStrings.&lt;name&gt;” updates connection string with &lt;name&gt; name in “connectionStrings” section.</li> 
- <li>Setting with name “AppSettings.&lt;name&gt;” updates “appSettings” value with &lt;name&gt; name.</li> 
-</ul>
+<p>MongoDB 2.4 introduced a number of capabilities to address the requirements above, and MongoDB 2.6 continues to build upon those capabilities. <a href="http://www.mongodb.com/subscription/development/downloads">A developer preview release of MongoDB Enterprise 2.6</a> is available now.</p>
+<h3>Authentication</h3>
+<p>The authentication of entities accessing MongoDB can be managed from within the database itself or via integration with external security mechanisms including <a href="http://docs.mongodb.org/manual/tutorial/control-access-to-mongodb-with-kerberos-authentication/">Kerberos services</a> with MongoDB Enterprise 2.4 or <a href="http://docs.mongodb.org/master/tutorial/configure-ldap-sasl-authentication/">LDAP</a>, Windows Active Directory and <a href="http://docs.mongodb.org/master/tutorial/configure-x509/">x.509 certification authorities</a> when using MongoDB 2.6.</p>
+<h3>Authorization</h3>
+<p>MongoDB allows administrators to define the permissions an application or user has, and what data they can see when querying the database. MongoDB has a number of <a href="http://docs.mongodb.org/manual/reference/user-privileges/">built-in roles</a>, and with MongoDB 2.6, the ability to configure <a href="http://docs.mongodb.org/master/release-notes/2.6/#user-defined-roles">granular user-defined roles</a>. For example, some users may have the right to view a record, but never to update or delete it.</p>
+<p>Developed with input from leading security professionals, MongoDB 2.6 offers <a href="http://docs.mongodb.org/master/release-notes/2.6/#redact-stage-to-provide-filtering-for-field-level-access-control">field level security</a> enforcing fine grained security authorization controls to sensitive data, with the ability to define declarative security policies which are implemented at run time. By enforcing control at the field level, a single document describing an asset can contain data with multiple security levels, avoiding the complexity of separating information with different security levels across multiple databases.</p>
+<h3>Auditing</h3>
+<p>MongoDB 2.6 adds support for logging of administrative actions taken against the database by maintaining an <a href="http://docs.mongodb.org/master/core/auditing/#auditing">audit log</a>. For ease of use, audit logs distributed across a MongoDB cluster can be merged into a single log, enabling the association of events from a single operation that affected multiple nodes.</p>
+<h3>Encryption</h3>
+<p>MongoDB provides capabilities to encrypt data in motion over the network and at rest in permanent storage.</p>
+<p><a href="http://docs.mongodb.org/manual/tutorial/configure-ssl/">Support for SSL</a> allows clients to connect to MongoDB over an encrypted channel. MongoDB supports <a href="http://docs.mongodb.org/manual/reference/configuration-options/#sslFIPSMode">FIPS 140-2 encryption</a> if run in FIPS Mode with a FIPS validated Cryptographic module.</p>
+<p>There are multiple ways to encrypting data at rest with MongoDB.&nbsp; One approach is to encrypt field-level data within the application layer, using the requisite encryption type that is appropriate for the application.</p>
+<p>Another option is to use third-party libraries such as NcryptFS and LUKS that provide disk-level encryption for Linux as part of the operating system kernel, providing advanced key management that ensures only authorized processes can access this data. For Windows platforms, technologies such as IBM Guardium Data Encryption, BitLocker Drive Encryption and TrueCrypt can also be used.</p>
+<p>The following is a checklist of the key steps to creating a secure deployment </p>
+<table cellspacing="0" cellpadding="0" border="0"> 
+ <tbody> 
+  <tr> 
+   <td valign="top"> <p><small><b>Prepare Secure Operating Environment</b></small></p> </td> 
+   <td valign="top">&nbsp;</td> 
+  </tr> 
+  <tr> 
+   <td valign="top"> <p><small>Install MongoDB Enterprise Edition</small></p> </td> 
+   <td valign="top"> <p><small><a href="https://www.mongodb.com/products/downloads/mongodb-enterprise">Production release</a></small></p> <p><small><a href="http://www.mongodb.com/subscription/development/downloads">Development release</a></small></p> </td> 
+  </tr> 
+  <tr> 
+   <td valign="top"> <p><small>Configure network (firewall, bind IP addresses, VPN, etc.)</small></p> </td> 
+   <td valign="top"> <p><small>Review platform-specific documentation</small></p> <p><small><a href="http://docs.mongodb.org/manual/core/security-network/">MongoDB network documentation</a></small></p> </td> 
+  </tr> 
+  <tr> 
+   <td valign="top"> <p><small>Create MongoDB user account &amp; permissions</small></p> </td> 
+   <td valign="top"> <p><small>Review platform-specific and filesystem documentation for creating OS logins and permissions</small></p> </td> 
+  </tr> 
+  <tr> 
+   <td valign="top"> <p><small>Configure encrypted file system</small></p> </td> 
+   <td valign="top"> <p><small>Linux: <a href="http://www.gazzang.com/products/zncrypt/mongodb">Gazzang zNcrypt</a>, <a href="https://access.redhat.com/site/documentation/en-US/Red_Hat_Enterprise_Linux/6/html/Security_Guide/sect-Security_Guide-LUKS_Disk_Encryption.html">LUKS</a></small></p> <p><small>Windows: <a href="http://www-03.ibm.com/software/products/en/infosphere-guardium-data-encryption">IBM Guardium Data Encryption</a>, <a href="http://technet.microsoft.com/en-us/library/cc732774.aspx">BitLocker Drive Encryption</a>, <a href="http://www.truecrypt.org/">TrueCrypt</a></small></p> </td> 
+  </tr> 
+  <tr> 
+   <td valign="top">&nbsp;</td> 
+   <td valign="top">&nbsp;</td> 
+  </tr> 
+  <tr> 
+   <td valign="top"> <p><small><b>Prepare MongoDB Deployment</b></small></p> </td> 
+   <td valign="top">&nbsp;</td> 
+  </tr> 
+  <tr> 
+   <td valign="top"> <p><small>Configure preferred external authentication</small></p> </td> 
+   <td valign="top"> <p><small><a href="http://docs.mongodb.org/master/tutorial/configure-ldap-sasl-authentication/">LDAP documentation</a></small></p> <p><small><a href="http://docs.mongodb.org/manual/tutorial/control-access-to-mongodb-with-kerberos-authentication/">Kerberos documentation</a></small></p> <p><small><a href="http://docs.mongodb.org/ecosystem/tutorial/configure-red-hat-enterprise-linux-identity-management/">Red Hat IdM documentation</a></small></p> </td> 
+  </tr> 
+  <tr> 
+   <td valign="top"> <p><small>Configure inter-cluster authentication</small></p> </td> 
+   <td valign="top"> <p><small><a href="http://docs.mongodb.org/master/tutorial/configure-x509/">x.509 Certificate documentation</a></small></p> </td> 
+  </tr> 
+  <tr> 
+   <td valign="top"> <p><small>Setup SSL certificates</small></p> </td> 
+   <td valign="top"> <p><small><a href="http://docs.mongodb.org/manual/tutorial/configure-ssl/">SSL documentation</a></small></p> </td> 
+  </tr> 
+  <tr> 
+   <td valign="top"> <p><small>Enable FIPS mode</small></p> </td> 
+   <td valign="top"> <p><small><a href="http://docs.mongodb.org/manual/reference/configuration-options/#sslFIPSMode">FIPS mode documentation</a></small></p> </td> 
+  </tr> 
+  <tr> 
+   <td valign="top"> <p><small>Configure auditing</small></p> </td> 
+   <td valign="top"> <p><small><a href="http://docs.mongodb.org/master/core/auditing/#_auditing">Auditing of administrative actions (MongoDB)</a></small></p> <p><small><a href="http://www.ibm.com/developerworks/data/library/techarticle/dm-1306mongodb/">Administration of read/write operations (Guardium)</a></small></p> </td> 
+  </tr> 
+  <tr> 
+   <td valign="top">&nbsp;</td> 
+   <td valign="top">&nbsp;</td> 
+  </tr> 
+  <tr> 
+   <td valign="top"> <p><small><b>Define Users and Roles</b></small></p> </td> 
+   <td valign="top">&nbsp;</td> 
+  </tr> 
+  <tr> 
+   <td valign="top"> <p><small>Document roles that will access the system</small></p> </td> 
+   <td valign="top"> <p><small>Project team process</small></p> </td> 
+  </tr> 
+  <tr> 
+   <td valign="top"> <p><small>Create MongoDB admin account</small></p> </td> 
+   <td valign="top"> <p><small><a href="http://docs.mongodb.org/manual/reference/method/db.addUser/">Add User to MongoDB</a></small></p> </td> 
+  </tr> 
+  <tr> 
+   <td valign="top"> <p><small>Configure permissions for each role</small></p> </td> 
+   <td valign="top"> <p><small><a href="http://docs.mongodb.org/master/reference/user-privileges/">Built-in (standard) MongoDB roles</a></small></p> <p><small><a href="http://docs.mongodb.org/master/release-notes/2.6/#user-defined-roles">User defined roles</a></small></p> </td> 
+  </tr> 
+  <tr> 
+   <td valign="top"> <p><small><i>Optional Advanced Configuration: </i>Implement field level security</small></p> </td> 
+   <td valign="top"> <p><small><a href="http://docs.mongodb.org/master/release-notes/2.6/#redact-stage-to-provide-filtering-for-field-level-access-control">Redaction documentation</a></small></p> </td> 
+  </tr> 
+  <tr> 
+   <td valign="top">&nbsp;</td> 
+   <td valign="top">&nbsp;</td> 
+  </tr> 
+  <tr> 
+   <td valign="top"> <p><small><b>Monitor the Deployment</b></small></p> </td> 
+   <td valign="top">&nbsp;</td> 
+  </tr> 
+  <tr> 
+   <td valign="top"> <p><small>Configure MongoDB Management Service</small></p> </td> 
+   <td valign="top"> <p><small><a href="https://mms.mongodb.com/help/">MMS documentation</a></small></p> </td> 
+  </tr> 
+  <tr> 
+   <td valign="top"> <p><small>Monitor and apply latest patches</small></p> </td> 
+   <td valign="top"> <p><small><a href="https://groups.google.com/forum/#!forum/mongodb-announce">Subscribe to the MongoDB Announcements Google Group for availability of the latest releases and patches </a></small></p> <p><small>Monitor patch alerts and updates for infrastructure (server, network and storage components, OS, middleware, etc.)</small></p> </td> 
+  </tr> 
+ </tbody> 
+</table>
+<p></p>
+<h3>Query Injection</h3>
+<p>As a client program assembles a query in MongoDB, it builds a BSON object, not a string. Thus traditional SQL injection attacks should not pose a risk to the system for queries submitted as BSON objects.</p>
+<p>However, several MongoDB operations permit the evaluation of arbitrary Javascript expressions and care should be taken to avoid malicious expressions. Fortunately most queries can be expressed in BSON and for cases where Javascript is required, it is possible to mix Javascript and BSON so that user-specified values are evaluated as values and not as code.</p>
 <h2>Conclusion</h2>
-<p>In this article we are not trying to downplay Web Deploy tool which might work well for your web application. But if your project is beyond of a blueprint web application that must be deployed to a clustered environment or you need more flexibility and control over the deployment process it’s definitely worth considering alternative solution like PowerShell remoting. This could be especially appealing for developers with PowerShell skills or those ones using PSake.</p>
+<p>MongoDB users rely on the best practices discussed in both this and <a href="http://www.infoq.com/articles/mongodb-deployment-monitoring">the first article</a> to maintain the highly available, secure and scalable operations demanded by businesses today.</p>
+<p>These and other best practices are discussed in detail in the <a href="http://info.10gen.com/rs/10gen/images/10gen-MongoDB_Operations_Best_Practices.pdf">MongoDB Operations Guide</a> (opens a .pdf)</p>
 <h2>About the Author</h2>
-<p>​<img src="http://www.infoq.com/resource/articles/AppVeyor-CI/en/resources/Feodor-Gravatar-300.png" vspace="3" hspace="3" align="left" alt="" _href="img://Feodor-Gravatar-300.png" _p="true" /><strong>Feodor Fitsner</strong> is a .NET developer with entrepreneur spirit, being around Windows Web platform for more than 10 years now. Feodor's newest project is Appveyor CI - hosted Continuous Integration solution for .NET developers. Prior to AppVeyor Feodor developed DotNetPanel control panel for Windows hosting and then was working at Microsoft in Azure org.</p><br><br><br><br><br><br></body></html>
+<p><strong><img hspace="3" alt="" vspace="3" align="left" _href="img://mat_keep.jpg" _p="true" src="http://www.infoq.com/resource/articles/mongodb-deployment-backup-security/en/resources/mat_keep.jpg" />Mat Keep</strong> (@matkeep) is part of the MongoDB product marketing team, responsible for building the vision, positioning and content for MongoDB’s products and services, including the analysis of market trends and customer requirements. Prior to MongoDB, Mat was director of product management at Oracle Corp. with responsibility for the MySQL database in web, telecoms, cloud and big data workloads. This followed a series of sales, business development and analyst / programmer positions with both technology vendors and end-user companies.</p><br><br><br><br><br><br></body></html>

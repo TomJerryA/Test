@@ -1,11 +1,11 @@
 <html>
  <head></head> 
- <body>
-  <div>
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/29.java">Ruby 2.1.0 Released, Delivering new GC</a>Ruby 2.1 has been released, with the biggest addition being a completely new garbage collector that promises much better performance.
-  </div>
-  <div>
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/28.java">Trifacta Seeks to Simplify Data Wrangling-as-a-Service</a>Trifacta, a data analysis services platform, recently received VC investment to advance on their efforts of making data wrangling easier for data analysts. The goal is to collect, cleanse and munge data in a fraction of the time and effort it currently takes.
+ <body> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/29.java">Ruby 2.1.0 Released, Delivering new GC</a>Ruby 2.1 has been released, with the biggest addition being a completely new garbage collector that promises much better performance. 
+  </div> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/28.java">Trifacta Seeks to Simplify Data Wrangling-as-a-Service</a>Trifacta, a data analysis services platform, recently received VC investment to advance on their efforts of making data wrangling easier for data analysts. The goal is to collect, cleanse and munge data in a fraction of the time and effort it currently takes. 
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/27.java">DevDocs, a One Stop Shop for Reference Documentation</a>DevDocs combines multiple reference documentation sets, commonly used by software developers, in a single web site. DevDocs takes advantage of this centralization to offer crosscutting features such as a searchable interface, keyboard shortcuts, common layouts or a common table of contents. DevDocs currently includes documentation for HTML, HTTP, Javascript and Ruby, among others. 
@@ -150,6 +150,6 @@
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/33.java">Microsoft Joins Forces with RedGate and Clickberry to Offer Node.js Tools for Visual Studio</a>NTVS, short for Node.js Tools for Visual Studio, offers Node.js developers a fully featured IDE complete with Intellisense, package management, profiling, and debugging. NTVS is a joint effort by Microsoft’s Python Tools team, RedGate, Clickberry, and others. 
-  </div>   
+  </div> 
  </body>
 </html>
