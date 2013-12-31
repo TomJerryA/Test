@@ -1,28 +1,45 @@
-<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>Famo.us 首次发布自己的Javascript 平台</h3><p>构建<a href="http://famo.us/">Famo.us JavaScript平台</a>的团队计划在2013年12月5号发布他们的第一个应用层代码预览版，作为发布平台客户端的一个铺垫。Famo.us完全是使用JavaScript编写的，它已经吸引了超过7万名开发者，但是依然是alpha预览版；它诱惑人的原因是承诺不需要插件就能够在浏览器中实现本地应用性能。</p>
-<p>由于对浏览器的本地渲染能力不满意，团队设计了Famo.us，目的是完全替代浏览器的渲染引擎“使用如此精细的数学和物理学但是你未尝会想再见到它，你的眼睛会穿越”创建者<a href="https://twitter.com/stevenewcomb">Steve Newcomb</a>说。要放弃浏览器的本地渲染这些底层的（low-level）复杂性是必须的，但是这并不是98%的开发者的接入位置，Newcomb说。“在过去的一年中我们仅做了一件事情，那就是构建一个可以完全替代jQuery的语法糖层”。因此，Newcomb和他的公司确信所有的现代浏览器——Safari、Chrome、Firefox和IE 10+——都将会证明它的兼容性。</p>
-<p>非常明确的是Famo.us团队希望他们的平台能够被普遍地采用：作为jQuery的一个完整替代品，它适合于每一个经验层次——从设计者到老道的JavaScript工程师。Famo.us完全免费并且开源，迄今为止融资了超过5百万的资金，它有4个不同级别的交互。“最容易的级别是设计师，他们根本不需要任何编码。每一个部件（widget）和每一个模板都已经嵌入了滑动条。对于一个设计者而言，他必须做的所有工作就是改变滑动条。你能够通过改变滑动条得到不可思议的变种。”Newcomb说。其次，设计层下面是为开发者准备的所有语法糖，该层让开发者能够接入日益增长的由部件和模板组成的类库——Famo.us团队相信大量的应用程序开发将会包含在这里，因为将模板和部件交织在一起会形成应用。再次，平台开发者可能会想深入到部件和模板下面创造更加原始的用户体验，例如创造一个自己专有的UI——例如Famo.us的早期投资者Samsung就可能想做这样的工作，Newcomb说。最后，我们也为真正的极客保留了深入到Famo.us内部的数学和物理学引擎的能力。</p>
-<p>这其中包含了Famo.us团队的野心：他们正在提供一种新的应用程序开发方式，让程序员远离使用jQuery进行DOM遍历和操作的世界，迁移到一个希望程序员操作表面同时能够让他们的物理引擎充满活力的平台。Famo.us将会渲染为HTML、WebGL和canvas。从12月5号开始，团队打算为它们日益增长的部件、模板和应用类库推出每周新增。</p>
-<p>Famo.us已经宣布了自己跟<a href="http://meteor.com/">Meteor</a>、<a href="http://firebase.com/">Firebase</a>、<a href="http://www.infoq.com/news/2013/12/leapmotion.com">LeapMotion</a>和<a href="http://http/backbonejs.org/">backbone.js类库</a>的官方伙伴关系。现在，代码正在内部alpha阶段，他们计划在2014年2月份发布一个公共测试版。一旦发布，用户将可以基于<a href="http://www.mozilla.org/MPL/2.0/">Mozilla公共许可MPL v2</a>使用整个平台，该许可允许使用者免费访问代码，同时也允许公司开发专有的部件和模板。Famo.us的副总裁Dave Fetterman（<a href="https://developers.facebook.com/">Facebook开发者平台</a>的创建者和<a href="https://www.facebook.com/f8">F8大会</a>的发起者）将会通过它的测试版发布引导Famo.us。</p>
+<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>高德发布LBS数据托管融合平台：“云图”</h3><p>2013年12月28日，高德地图举办了年终的应用评选，并在活动上发布了新的开放平台产品“云图”，鉴于高德和阿里的深度合作关系， 云图是在阿里云上进行部署，云图的目的是为开发者提供统一的LBS应用数据托管融合平台，在之前的QCon北京上我们在<a href="http://www.infoq.com/cn/presentations/how-to-develop-lbs-mobile-application-under-internet-map-changes">采访高德地图的朴春植</a>时也曾谈到这个话题。</p>
+<h2>“云图”</h2>
+<p>在会上，高德LBS开放平台与大数据融合部门总经理田密首先谈到了2013年终移动领域的格局变化，他说道：</p>
 <blockquote> 
- <p>“多年以来，实际上一直没有一个非常强健的JavaScript开发平台。同时我们也不想成为这样类型的平台：这是一个部件，或者这是一个插件，或者这仅仅是你解决方案的一部分。我们想成为那种值得人们可以为它奉献自己职业生涯的平台。我们计划在很长的一段时间内围绕着该目标努力，”Newcomb说。</p> 
+ <p>移动设备已经在各个领域全面超越了PC，这虽然是我们所预见到的，但是没有想到会这么快，另外4G牌照也已经发下来了，这对于十分依赖网络的地图等移动产品来说是一个好的机遇。</p> 
 </blockquote>
-<p>最后，Famo.us团队将会在12月5号发布三个部件和一个应用程序。通过将<a href="http://codepen.io/">Codepen</a>作为显示这些版本的合作伙伴，Famo.us团队正在为所有这些新发布的部件提供一个交互式体验：</p>
-<h3><a href="http://bit.ly/1eJsK6a">A Twitter App</a></h3>
-<p data-height="350" data-theme-id="2352" data-slug-hash="ac53af08967073df60ceaf28c0c76007" data-user="befamous" data-default-tab="result" class="codepen">&nbsp;</p>
-<script async="" src="//www.codepen.io/assets/embed/ei.js"></script>
-<p>&nbsp;</p>
-<p>&nbsp;</p>
-<h3><a href="http://bit.ly/18ivwv8">A jQuery-esque lightbox widget</a></h3>
-<p data-height="350" data-theme-id="2352" data-slug-hash="442915109539f48b92700c137c3fafe9" data-user="befamous" data-default-tab="result" class="codepen">&nbsp;</p>
-<script async="" src="//www.codepen.io/assets/embed/ei.js"></script>
-<p>&nbsp;</p>
-<p>&nbsp;</p>
-<h3><a href="http://bit.ly/IHupPC">A button widget</a></h3>
-<p data-height="350" data-theme-id="2352" data-slug-hash="c3147502f9f7f897a8197ed4b6dbcb5f" data-user="befamous" data-default-tab="result" class="codepen">&nbsp;</p>
-<script async="" src="//www.codepen.io/assets/embed/ei.js"></script>
-<p>&nbsp;</p>
-<p>&nbsp;</p>
-<h3><a href="http://bit.ly/1bef9j9">A one-to-many widget.</a></h3>
-<p data-height="350" data-theme-id="2352" data-slug-hash="373819beb72b28945fa06e4346e20b54" data-user="befamous" data-default-tab="result" class="codepen">&nbsp;</p>
-<script async="" src="//www.codepen.io/assets/embed/ei.js"></script>
-<p><b>查看英文原文</b>：<a href="http://www.infoq.com/news/2013/12/famous_launches_first_access">Famo.us launches first public access to its Javascript platform</a></p><br><br><br><br><br><br></body></html>
+<p>随后田密又从如下的几个方面谈目前对移动开发者的利好消息：</p>
+<ol> 
+ <li>亿级用户量的移动产品不断涌现；</li> 
+ <li>垂直行业的的纵深发展并开始进行整合；</li> 
+ <li>移动支付习惯已经养成，交易额激增；</li> 
+</ol>
+<p>田密表示，虽然形势很好，但是对于LBS的消费行为还是处于初级阶段，LBS行业的开发者变现仍然遭遇瓶颈。这也是本次发布“云图”的目的：即提供一站式的数据解决方案和亿万用户资源，促成用户数据与高德海量数据自主融合，从而实现共赢 。从功能上看云图主要提供如下支持：</p>
+<ol> 
+ <li>通过开放位置数据的存储服务、空间计算和检索能力、地图渲染引擎帮助开发者轻松定制个性化地图、减轻负担，降低开发成本，提高开发效率。</li> 
+ <li>提供更炫的个性地图能力、基于地理信息的数据图，同时建立数据分享生态圈，让开发者将数据存储在云上，实现应用间相互导流。</li> 
+</ol>
+<p>在未来，各个应用可以在云图中托管数据平台，同时还可以将自己的数据授权或者交易给第三方使用，同时，通过高德地图导入进来的流量将会开放给所有的接入开发者。</p>
+<h2>年度LBS应用评选</h2>
+<p>高德地图基于今年的应用使用、发展对比，评选出了两类移动应用奖项，并邀请了获奖的开发团队范本、360手环卫士做了相应分享：</p>
+<h3>年度移动应用奖</h3>
+<ul> 
+ <li>移动应用奖：在路上</li> 
+ <li>社交应用奖：陌陌</li> 
+ <li>餐饮应用奖：饭本</li> 
+ <li>运动应用奖：骑记</li> 
+ <li>企业应用奖：华住酒店（汉庭）</li> 
+ <li>社区服务应用：拼豆小区</li> 
+</ul>
+<h3>创新应用奖</h3>
+<ul> 
+ <li>最佳创新应用奖：360儿童卫士手环</li> 
+ <li>最佳设计应用奖：征宠</li> 
+ <li>最佳技术应用奖：点道理室内地图</li> 
+</ul>
+<h2>开放讨论环节</h2>
+<p>最后的开放讨论环节，来自高德、阿里、友盟的负责人分别谈到了他们对于LBS应用前景的看法：</p>
+<blockquote> 
+ <ul> 
+  <li>友盟副总裁姜文一：常见的对于移动应用的衡量指标对于LBS应用都不适用，难以用留存率等来做评估，个人认为运动、生活化电商是下一个发展方向；</li> 
+  <li>高德地图副总裁郄建军：位置服务有三个阶段，我们最早对LBS有了解是从签到服务开始的，然后位置社交服务是第二个阶段，现在有了更好的、更接地气的方式：生活服务，以打车为例，解决了出行打车难的问题、点评解决了找饭馆难的问题；这是一个大而美的时代，将会出更多小而美的应用；</li> 
+  <li>阿里巴巴云计算平台业务总监杨名：高德的云图是构建在阿里云上的，我们对于技术生态社区的看法是一致的，就是通过闭环的平台为生态中的开发者服务；</li> 
+ </ul> 
+</blockquote>
+<p>InfoQ也将会放出对云图产品的详细报道，看在移动应用领域如何把握先机。</p><br><br><br><br><br><br></body></html>

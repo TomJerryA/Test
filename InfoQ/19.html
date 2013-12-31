@@ -1,49 +1,17 @@
-<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>Java性能优化的最差实践</h3><p>是的，你没有看错，是“最差实践”。关于Java性能优化的方法已经有很多文章讨论过，其中总有一些不值得提倡甚至应该杜绝的方法，需要让开发者时刻保持警觉。</p>
-<p>Ben Evans和Martin Verburg在Java性能优化方面有着丰富的实践经验，他们<a href="http://www.oraclejavamagazine-digital.com/javamagazine/20131112" target="_blank">总结</a>了一些“最差实践”。</p>
-<p>“态度”的最差实践：</p>
-<blockquote> 
- <p>永远不要考虑所谓的可靠性、保障性、优雅、灵活架构、易理解，甚至不要去考虑正确性。最重要的是快速得到结果。谁关心你明天是不是对的？重中之重是尽快得到结果（任何结果）——如果你比别人快，你就可以定义什么是正确。聪明的开发者关注性能，而不是什么其它的东西。</p> 
-</blockquote>
-<p>“使用基准(Benchmark)”的最差实践：</p>
-<blockquote> 
- <p>不要怀疑你在网上查到的基准——它怎么会有错呢？遵循这个基准，当然你也要清楚地认识到基准总是和现实世界中应用程序性能密切相连的（连维基百科都是这么认为的）。微基准（Microbenchmark）是最好的基准方式。微基准做起来很有趣，一旦你了解应用程序的底层细节行为之后，你可以很容易地依此进行推断，得到其余部分的性能表现。通过最好的微基准你可以发现Java虚拟机（JVM）在某些底层方面的性能表现上是有微妙的不同的——当聚合为一个整体时，这个结果是十分重要的。</p> 
-</blockquote>
-<p>“处理数据和结果”的最差实践：</p>
-<blockquote> 
- <p>“不要自我重复”（Don’t Repeat Yourself）原则是现代软件开发的重要组成部分。就性能而言，它意味着开发者不要进行多次性能测试。开发者还有很多其它开发工作要做，不把时间浪费在无聊的重复性能测试上是非常重要的。毕竟你是一个专业的开发者，你可以将测试设置的很完美然后通过一次测试就找到所有的bug。</p> 
- <p>忽略那些所谓的“统计学意义”和“分布图”。这很可能是一群永远不能成为酷炫的“摇滚明星”的数学呆子提出来的。执行一次测试，测量均值（这里说的均值，就是对各值取平均），至此你就结束了对这些数据的分析。然后你就可以回归到一个性能工程师的真正工作——让你的应用程序中的每一个算法都发挥出它们最佳的性能。</p> 
- <p>测量事物是针对那些没有像你一样敏锐的洞察力的人而言的。是你开发的应用程序，所以你很了解问题都在哪里。算法优化是很难的，这也是专业人士花费时间的地方，不要去考虑收集和分析数据。</p> 
-</blockquote>
-<p>“优化算法”的最差实践：</p>
-<blockquote> 
- <p>你基本能判断出瓶颈的所在。相信你那惊人的分析技巧——这种技巧将引领你找出“罪魁祸首”，这些“罪魁祸首”的代码往往不是你写的。</p> 
- <p>幸运的是，优化别人的代码是容易的。首先，找到那些简单的、未优化算法的代码。理想的候选代码是包含长时间运行的循环，并在循环中设有条件检查的代码。谨记，一般例子的算法都是差劲的。你比其它人更了解你的数据集，因此你应该花足够的时间设计一个适合你的数据的算法。像你这样聪明、有才华的人设计出的算法一定远好于那些平庸的、凑合的教科书提供的实例。</p> 
- <p>不要担心设计算法会花费很多时间。这是实现性能优化过程中最重要的部分，并且想要做好它必须要像你这样的能人。</p> 
-</blockquote>
-<p>“优化JVM”的最差实践：</p>
-<blockquote> 
- <p>你没有必要再在最新的Java版本上进行测试了，也没有必要追踪最小的版本号。你的程序在不同的Java版本间的表现不会有多少差异。</p> 
- <p>不过，通过设置传递给Java的参数配置，你可以让程序实现更好的性能。没必要为此去总结什么系统性的东西——你只需要找出你认为与问题有关的参数配置，然后随意调整他们直到达到最好的组合效果——更好的性能，而且没有额外的副作用。</p> 
- <p>在JVM中有一百多个性能优化配置。尽可能多的用吧。有些配置看似做的是相互冲突的、矛盾的事情，但别担心。像你这样的专业人士甚至是可以使用在Java Hot Spot VM源代码中的那些未加文档说明的配置。</p> 
-</blockquote>
-<p>“理解硬件”的最差实践：</p>
-<blockquote> 
- <p>理解CPU是件浪费时间的事情——而且这项工作应该留给硬件工程师。一个天才软件工程师不应该去考虑L3缓存的问题，也不应该去考虑数据是在内存中是如何存储的。</p> 
- <p>固态硬盘在所有情况下都跑的更快，所以一直使用它们。没必要去衡量实际吞吐量和其它可观察量。牢记，性能越高越好，因此多买些RAM，并且扩展堆的大小。</p> 
-</blockquote>
-<p>“采纳性能建议”的最差实践：</p>
-<blockquote> 
- <p>性能建议就像美酒：随着时间的流逝，这个建议会变得更好，而且它永远不会过时。1990年提出来的性能建议至今依旧是十分准确的。你应该深刻地认识到最初提出这些建议的工程师是一群多么卓越的人。他们很可能就是像你一样的人。</p> 
-</blockquote>
-<p>“和团队一起工作”的最差实践：</p>
-<blockquote> 
- <p>牢记，要谨慎地保管你的性能测试和成果。否则，其它人可能盗取你的劳动果实然后宣称是他们自己的。永远不要让他们独自审核你的工作。他们只会在你的工作上添乱，并且让你偏离你原本显而易见的正确结论。</p> 
- <p>更好的办法是让别人替你去做那些无聊的工作。如果有人已经做过了类似的工作，并且已经将自己的工作成果写在博文里或者Stack Overflow网站上了（特别是当他们有很高的信誉度时），采用他们的结论吧——这已经很够用了。毕竟，两个程序的表现能多大区别呢？毕竟都是Java（或者都是JVM）的，不是么？</p> 
- <p>不管是采用优化算法的办法还是采用新的又快又炫的技术，一旦你得到了如何提高性能的方法，你最好多用些时间“吓唬”你的同事，让他们接受你的方法，而不是浪费时间让他们独立检查你的结论。</p> 
- <p>无时不刻的提醒他们谁是老大，而且永远不要用文档说明或者解释你的原因——你最不想要的就是他们把你辛辛苦苦调整好的系统弄乱。</p> 
-</blockquote>
-<p>“检查技术”的最差实践：</p>
-<blockquote> 
- <p>当把应用程序框架当作一个整体来考虑时，永远记得密切关注最新的技术。如果你不能完全理解这项技术（牢记你是天才），那这项技术一定有什么地方不对。</p> 
-</blockquote>
-<p>&nbsp;<strong>特别提醒</strong>：这些最差实践的内容都是以反语的方式来叙述的，因此需要正确理解，尽量避免这些最差实践。</p><br><br><br><br><br><br></body></html>
+<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>开发M7移动应用，Android开发者必备的42个链接 —— 移动开发技术周报</h3><p>以下是本周移动开发技术周报的推荐资料。祝大家新年快乐！</p>
+<h3>工具：</h3>
+<ol> 
+ <li><a href="http://android-developers.blogspot.tw/2013/12/new-tools-to-take-your-games-to-next.html">使用新工具让您的安卓游戏到新的境界</a>：根据统计，有四分之三的使用者会使用安卓平板来玩游戏，谷歌最近提供了两套新工具让游戏开发者可以开发出更好的游戏，分别是LiquidFun及Google Play Games plug-in for Unity，也在Google Play中增加了新的游戏类别。</li> 
+</ol>
+<h3>技巧：</h3>
+<ol> 
+ <li><a href="http://engineering.pinterest.com/post/67769846580/behind-the-pins-building-pinterest-3-0-for-ios">Pinterest3.0设计分析</a>：这篇由Pinterest工程师撰写的文章分析了Pinterest如何把iOS6的界面及使用者体验更改成iOS7的设计方式，包括如何使用UICollectionView、调用iOS7 APIs、新版手势设计。</li> 
+ <li><a href="http://conradstoll.com/blog/2013/11/24/developing-for-the-m7">开发Ｍ7移动应用</a>：M7是Apple提供的动作协同处理器(motion co-processor)，现在iPhone5S、iPad Air、iPad mini 2都自带了M7。这篇文章以<a href="http://conradstoll.com/runtime/">Runtime</a>这个移动应用来分析要如何设计动作协同处理器的相关应用，包括CMStepCounter、CMMotionActivityManager、CMMotionActivity的使用方式。</li> 
+ <li><a href="http://blog.jobbole.com/52477/">忘记NSURLConnection，拥抱NSURLSession吧</a>：在2013年的WWDC上，Apple揭开了NSURLConnection继任者的面纱：NSURLSession。与NSURLConnection相比NSURLSession最直接的差别就是提供了配置每个会话的缓存、协议、Cookie、证书政策，使得这个框架的网路基础架构和部分应用程序独立工作、不会互相干扰。</li> 
+ <li><a href="http://weblog.invasivecode.com/post/45058779586/caemitterlayer-and-the-ios-particle-system-lets">如何做出像是Apple 12 Days背景颗粒效果</a>：相信大家都有使用12 Days来下载由苹果所提供的圣诞节礼物，背景类似下雪的效果让人更多过圣诞节的气氛。这篇文章将手把手教你实现这种下雪的特殊效果，将会使用CAEAGLLayer, CAEmitterLayer, CAGradientLayer, CAReplicatorLayer, CAScrollLayer, CAShapeLayer, CATextLayer, CATransformLayer来设计。</li> 
+</ol>
+<h3>杂货：</h3>
+<ol> 
+ <li><a href="http://cogitolearning.co.uk/?p=858">Android开发者必备的42个链接</a>：这篇文章根据官方网站、教程、视屏教程、工具、App界面设计、牛人博客做的个别的推荐，适合各种类型的开发者浏览订阅。</li> 
+ <li><a href="https://developer.apple.com/tech-talks/videos/">iOS7 Tech Talk视频</a>：在前几期的移动周报，我们提到Apple将在全世界举办Tech Talk拉近与开发者的距离并推广使用iOS7开发，以加快转换到iOS7的进程。在举办完活动之后，Apple提供了视屏及简报在开发者中心上，让没去到的开发者也可以深入的了解iOS7的新技术及新知识，裡面包括了如何进阶使用OpenGL ES 3.0、开发摩登的移动应用及移动游戏、利用Spirit Kit开发2D游戏、iOS7的安全及隐私问题等等。</li> 
+</ol><br><br><br><br><br><br></body></html>
