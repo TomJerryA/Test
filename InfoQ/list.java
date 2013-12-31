@@ -2,7 +2,10 @@
  <head></head> 
  <body>
   <div>
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/30.java">Behaviour-Driven Development: Value through Collaboration</a>The goal of a software project is to deliver value to stakeholders and Behaviour-Driven Development, (BDD), is designed for that, Viktor Farcic, a software developer working on transitions from waterfall to agile processes, states in the first of four blog posts describing his view on BDD.
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/31.java">Forecasting at Twitter</a>Arun Kejariwal, from Twitter, talked at Velocity Conf London last month about forecasting algorithms used at Twitter to proactively predict system resource needs as well as business metrics such as number of users or tweets. Given the dynamic nature of their data stream, they found that a refined ARIMA model works well once its forecasting error is known and outliers removed.
+  </div> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/30.java">Behaviour-Driven Development: Value through Collaboration</a>The goal of a software project is to deliver value to stakeholders and Behaviour-Driven Development, (BDD), is designed for that, Viktor Farcic, a software developer working on transitions from waterfall to agile processes, states in the first of four blog posts describing his view on BDD. 
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/29.java">Ruby 2.1.0 Released, Delivering new GC</a>Ruby 2.1 has been released, with the biggest addition being a completely new garbage collector that promises much better performance. 
@@ -147,9 +150,6 @@
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/35.java">Using Agile to Build a Distributed Development Team</a>In &quot;experiences with a distributed agile team&quot;, Joost Mulders and Andriy Korpan presented how they integrated a near shore development team from the Ukraine in a Dutch product development organization using agile practices. At the XP Days Benelux 2013 conference they talked about the do’s and don’ts of distributed agile. 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/34.java">General availability of Google Compute Engine</a>The Google Compute Engine (GCE) infrastructure as a service (IaaS) is now in general availability. The launch also brings price cuts, a new storage model, expanded operating system support and live migration capabilities for transparent maintenance. 
   </div>  
  </body>
 </html>

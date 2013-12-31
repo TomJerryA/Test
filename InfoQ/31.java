@@ -1,28 +1,25 @@
-<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>Visual Commander Professional v1.3 Introduces 99 Commands, 50 Extensions and C# Syntax Highlighting</h3><p><a href="http://vlasovstudio.com/visual-commander/professional_edition.html">Visual Commander Professional v1.3</a> has been released with the ability to create 99 commands and 50 extensions either by pressing the Add button in the Commands window or by import. It introduces syntax highlightingand also integrates Visual Studio text editor to enable developers to edit code and added recording for Edit.FindNextSelected, Edit.FindPreviousSelected, Edit.FindNext and Edit.FindPrevious commands.</p>
-<p>Visual Commander v1.3 provides an ability to select default language for new commands and extensions by selecting the macro language. It also provides fixes for ReflectionTypeLoadException, which occurs when multiple versions of Visual Studio are installed on the same machine in addition to a fix for FileNotFoundException that throws when custom assemblies are referenced with the full path. The recent release includes improved storage processing to preserver CR in code and several enhancements in exception handling.</p>
-<p>The extension enables developers to automate repetitive tasks in Visual Studio 2013/2012/2010 either by creating new commands and extensions in C#, VB or by reusing existing Visual Studio macros from previous versions. It also provides an ability to record and playback keyboard commands for the Visual Studio text editor.</p>
-<p>With the help of Visual Commander, Record Macro (Ctrl+Shift+R) and Run Macro (Ctrl+Shift+P) commands can be reassigned by manually assigning them in Visual Studio keyboard options for the VCmd.RecordMacro and VCmd.RunMacro commands. Moreover, the extension stores all the settings including commands, extensions and the temporary macro in &quot;%APPDATA%\Sergey Vlasov\Visual Commander\1.0\snippets.vcmd&quot;.</p>
-<p>&quot;There is no API for Visual Commander at the moment. You can assign shortcuts to the commands and add them to the toolbar using standard Visual Studio interface,&quot; said <a href="http://vlasovstudio.com/about.html">Sergey Vlasov</a>, Lead Developer, Visual Commander.<br /> <br /> InfoQ had a chat with Sergey to know more about his Visual Studio extension.</p>
-<p><strong>InfoQ - Can you share with us the real purpose behing the creation of Visual Commander?</strong></p>
+<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>Forecasting at Twitter</h3><p><a href="http://velocityconf.com/velocityeu2013/public/schedule/speaker/150556">Arun Kejariwal</a>, from Twitter, talked at <a href="http://velocityconf.com/velocityeu2013">Velocity Conf London</a> last month about <a href="http://www.slideshare.net/arunkejariwal/gimme-more-supporting-user-growth-in-a-performant-and-efficient-fashion">forecasting algorithms used at Twitter</a> to proactively predict system resource needs as well as business metrics such as number of users or tweets. Given the dynamic nature of their data stream, they found that a refined <a href="http://en.wikipedia.org/wiki/Autoregressive_integrated_moving_average">ARIMA model</a> works well once its forecasting error is known and outliers removed.</p>
+<p class="MsoNormal"><span lang="EN-GB">Besides the actual forecast correctness (assessed <i>a posterior</i> by comparing estimations to actual results over time), other important criteria for assessing forecasting applicability at Twitter are the model’s ability to handle both seasonality (i.e. accommodate the recurring patterns of usage on a daily basis) and trends (bursts of usage during major sports events, for example). As Twitter grew its user base worldwide trending becomes harder to cope with without adequate forecasting models</span>:
+ <o:p></o:p></p>
 <blockquote>
-  The main goal for Visual Commander was to give developers the ability to run existing macro commands in Visual Studio 2012/2013. Visual Studio supported macro commands since Visual Studio 6, lots of custom commands were created to improve productivity and removal of this feature in Visual Studio 2012 left many developers empty handed. Also no other 3rd party tool have this functionality at this moment. 
+ As the user base and engagement grows, forecasting business metrics such as Tweets, Favorites, Photos, etc becomes non-trivial owing to an underlying trend and the aforementioned seasonality. In such cases, use of linear regression for forecasting is ill-advised as linear regression does not capture the seasonality of the time series. To alleviate this limitation, we have been exploring the use of ARIMA models which explicitly model trend and seasonal component of a given time series and consequently yield statistically robust forecasts.
+ <br /> 
 </blockquote>
-<p><strong>InfoQ - Does Visual Commander improve developer productivity?</strong></p>
+<p class="MsoNormal">Nevertheless, applying the ARIMA model blindly to a time series does not necessarily result in adequate forecasts. This is mostly due to the fact that the model breaks down the time series into multiple shorter time periods. If an abnormal time period does not show the seasonality, then the overall forecast seasonality nearly disappears as well. Furthermore, if the boundary data points of a given time period happen to be <a href="http://en.wikipedia.org/wiki/Outliers">outliers</a> the overall forecast is skewed as well. Thus an initial forecast needs to be analysed and some data cleansing might be needed to reach a more accurate and useful forecast. Arun mentioned also that outliers are reported to development teams to investigate if they were due to code changes or not.</p>
+<p class="MsoNormal"><img src="http://www.infoq.com/resource/news/2013/12/twitter-forecasting/en/resources/ARIMA_based_forecast.png" alt="" _href="img://ARIMA_based_forecast.png" _p="true" /></p>
+<p class="MsoNormal" align="center" style="text-align:center"><i><span lang="EN-GB">ARIMA forecast with a downwards spike (outlier) in the first time period&nbsp;</span></i><i><span lang="EN-GB">(graph courtesy of Arun Kejariwal)</span></i></p>
+<p class="MsoNormal" align="center" style="text-align:center"><i><span lang="EN-GB">
+   <o:p></o:p></span></i></p>
+<p class="MsoNormal"><img src="http://www.infoq.com/resource/news/2013/12/twitter-forecasting/en/resources/1ARIMA_based_forecast_without_initial_spike.png" alt="" _href="img://1ARIMA_based_forecast_without_initial_spike.png" _p="true" /></p>
+<p class="MsoNormal" align="center" style="text-align:center"><i><span lang="EN-GB">ARIMA forecast without first time period</span></i>&nbsp;containing outlier&nbsp;<i><span lang="EN-GB">(graph courtesy of Arun Kejariwal)
+   <o:p></o:p></span></i></p>
+<p class="MsoNormal"><span lang="EN-GB"><br /> Besides ARIMA, other models (e.g. <a href="http://en.wikipedia.org/wiki/Holt-Winters">Holt-Winters</a>, <a href="http://en.wikipedia.org/wiki/Smoothing_spline">Spline</a> and <a href="http://en.wikipedia.org/wiki/Linear_regression">linear regression</a>) are applied at Twitter depending on the type of resource being forecasted, as Arun told InfoQ:</span></p>
 <blockquote>
-  Absolutely. For common tasks you can create a command sequence to edit code, change Visual Studio options or modify your solution and then invoke it with a single mouse click or a keyboard shortcut. 
+ We have been exploring a large set of forecasting models. Which model to use is context dependent and directly relates to model selection problem (which is an active area of research).
+ <br /> 
 </blockquote>
-<p><strong>InfoQ - Can you share any case study where the product has been tested successfully?</strong></p>
-<blockquote> 
- <a href="http://visualstudio.uservoice.com/forums/121579-visual-studio/suggestions/2650757-bring-back-macros">Jeff Relf</a> posted his experience using Visual Commander Professional to the &quot;Bring back Macros&quot; thread on VS uservoice. The Visual Commander page on 
- <a href="http://visualstudiogallery.msdn.microsoft.com/deda8ac1-75e6-4068-89ab-b607cee38f2d">Visual Studio Gallery</a> lists 3 reviews and Q&amp;A. 
-</blockquote>
-<p><strong>InfoQ - Can you disclose the future roadmap of Visual Commander?</strong></p>
 <blockquote>
-  I plan to improve Visual Commander integration with Visual Studio and make it easier to use: 
- <ol> 
-  <li>Add the ability to reorder and sort Visual Commander commands in the VCmd menu.</li> 
-  <li>Add custom command names for keyboard binding to Visual Studio keyboard options.</li> 
-  <li>Add explicit menu command to save recorder macro as a command.</li> 
-  <li>I'd like to find a way to enable intellisense for command editing, but currently hitting limitations of Visual Studio extensibility.</li> 
- </ol> 
-</blockquote><br><br><br><br><br><br></body></html>
+ In the absence of seasonality, use of linear regression is preferred as it is, relatively speaking, computationally less expensive than other models. In the presence of a non-linear trend, one can employ a quadratic model or some such. However, in the presence of trend and seasonality, selection of a forecasting becomes non-trivial.
+ <br /> 
+</blockquote>
+<p class="MsoNormal"><span lang="EN-GB">According to Arun, Twitter’s forecasts are typically limited to a few weeks ahead for technical issues (e.g. in-house system capacity upgrades). Longer time spans are applied occasionally for some business metrics (e.g. number of users). In the near future they plan to use forecasts for elastic scaling as well.</span></p><br><br><br><br><br><br></body></html>
