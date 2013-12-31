@@ -1,22 +1,13 @@
-<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>变化节奏越来越快推动了敏捷在企业应用程序开发中的应用</h3><p>许多评论员已经研究论述了高速变化的节奏，并把它与开发企业软件的组织采用敏捷方法的需求联系在一起。MongoDB博客作者<a href="http://readwrite.com/author/matt-asay#awesm=~ooHnUOUMM61VG3">Matt Asay</a>最近在题为“<a href="http://readwrite.com/2013/11/27/agile-development-software#awesm=~ooGSrAFVwyoTQk">喂，企业开发人员们！要敏捷还是要失败</a>”的博文中写到了这一点，他还谈到，组织需要“使每个版本的发布成为一件平常事”。</p>
-<p>他写到：</p>
-<blockquote> 
- <p>敏捷开发不再是软件开发的一种可选方法。随着技术采用的节奏以惊人的速度加快，敏捷日益成为软件开发的唯一方法。那是说，如果想生存下去。</p> 
-</blockquote>
-<p>他还引用了Forrester研究员<a href="http://blogs.forrester.com/diego_lo_giudice">Diego Lo Giudice</a>的<a href="http://blogs.forrester.com/diego_lo_giudice/13-09-11-app_dev_pros_have_been_using_metrics_for_the_wrong_reason_control_its_time_to_use_metrics_to_vali">说法</a>：</p>
-<blockquote> 
- <p>在现代应用程序时代，不管是否有新的软件应用程序正在开发出来并应用于手机、平板或者Web，真正成功的应用程序开发领导者是那些致力于交付恒定价值并逐步改善自身业务的。</p> 
-</blockquote>
-<p>他谈了能够经常发布的必要性以及如何做：</p>
-<blockquote> 
- <p>产品稳定性源于更经常地发布代码，而不是更少地。要使每个版本的发布成为一件平常事，而不是一次重大发布。</p> 
-</blockquote>
-<p>他参考了最近发布的Harvard商业评论。该评论着眼于越来越快地<a href="http://blogs.hbr.org/2013/11/the-pace-of-technology-adoption-is-speeding-up/">变化节奏</a>，并指出变化速度在许多领域是如何地越来越快。在那篇文章中，RitaMcGrath写到：</p>
-<blockquote> 
- <p>正如读者在图表中看到的那样，更近引入的创新采用速度更快。同样，在那些领域有竞争优势的公司需要更快地行动，以便抓住那些机会表现自己。</p> 
-</blockquote>
-<p>关于采用敏捷，他论述的最后一点是将其应用于大数据以及需要快速对此进行试验：</p>
-<blockquote> 
- <p>大数据是新鲜事物，我们要面对现实：大多数企业很可能会因为开始项目而面临失败。毕竟，几乎可以肯定，没有试错过程，企业不知道获取哪些数据，或者如何利用数据。因此，计划到会失败变得很关键，而借助敏捷方法可以降低失败成本，无论是在时间方面，还是在金钱方面。</p> 
-</blockquote>
-<p><b>查看英文原文：</b><b><a href="http://www.infoq.com/news/2013/11/change-agile-enterprise">Increasing Pace of Change Drives Agile In Enterprise Applications</a></b></p><br><br><br><br><br><br></body></html>
+<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>在GPU上运行Hadoop任务？ParallelX或许将带来更多帮助</h3><p>在面对大规模计算密集型算法时，<a href="http://en.wikipedia.org/wiki/MapReduce">MapReduce</a>范式的表现并不总是很理想。为了解决其瓶颈，一支小型创业团队构建了名为<a href="http://www.parallelx.com/">ParallelX</a>的产品——它将通过利用GPU的运算能力，为<a href="http://hadoop.apache.org/">Hadoop</a>任务带来显著的提升。</p>
+<p>ParallelX的联合创始人<a href="https://twitter.com/tonydiepenbrock">Tony Diepenbrock</a>表示，这是一个“GPU编译器，它能够把用户使用Java编写的代码转化为OpenCL，并在亚马逊AWS GPU云上运行”。它的最终产品是一项与亚马逊<a href="http://aws.amazon.com/elasticmapreduce/">Elastic MapReduce</a>类似的服务，只不过不同之处在于它将利用<a href="http://aws.amazon.com/ec2/instance-types">EC2 GPU实例类型</a>。</p>
+<p>毫无疑问，亚马逊并不是唯一一家提供GPU服务器的云服务提供商，其他诸如<a href="http://www.softlayer.com/dedicated-servers/high-performance-computing">IBM/Softlayer</a>或<a href="http://www.nimbix.net/nvidia/">Nimbix</a>等公司也提供使用NVidia GPU的服务器。然而，当被问起ParallelX是否将会支持亚马逊之外的其他不同云服务提供商时，Tony的答复是“暂时还没有，不过我们将拥有一套SDK，供使用内部Hadoop集群的客户使用。大部分GPU云服务提供商在HPC云中提供GPU，但我们希望能够以比较低廉的价格使用云服务中的GPU。毕竟，这正是Hadoop的设计初衷——便宜的商用硬件。”</p>
+<p>在更好地理解ParallelX编译器能够做哪些事情之前，我们需要了解现在有不同类型的GPU，它们配备了不同的并行计算平台，例如<a href="http://www.nvidia.com/object/cuda_home_new.html">CUDA</a>或<a href="http://en.wikipedia.org/wiki/OpenCL">OpenCL</a>。Tony提到，ParallelX所适用的工作场景是“编译器将把JVM字节码转换为OpenCL 1.2的代码，从而能够通过OpenCL编译器编译为Shader汇编，以便在GPU上运行。现在同样也有一些FPGA硬件能够运行OpenCL代码，但是要想获得对于广义并行硬件的支持，可能还需要等到未来的某一天。”尽管ParallelX并不支持Java源代码中的反射或原生调用，它的目标依旧是确保开发者只须要对其MapReduce任务的代码进行必要的调整——越少越好。</p>
+<p>随着ParallelX团队开始研究I/O-Bound任务的吞吐量增长，Tony发现他们的产品“也能够支持实时处理、以Pig和Hive代码表示的查询，以及针对I/O Bound任务的大数据集流。在我们测试中，使用我们的流水线框架，I/O吞吐几乎能够达到GPU计算吞吐能力的水平。”</p>
+<p>虽然ParallelX团队目前正在专注于针对<a href="http://docs.aws.amazon.com/ElasticMapReduce/latest/DeveloperGuide/emr-plan-hadoop-differences.htmlhttp:/docs.aws.amazon.com/ElasticMapReduce/latest/DeveloperGuide/emr-plan-hadoop-differences.html">亚马逊的Hadoop版本分支</a>的努力，但他们也在规划为其他流行的Hadoop版本分支（例如<a href="http://www.cloudera.com/content/cloudera/en/products-and-services/cdh.html">Cloudera's CDH</a>）进行开发， 而且毫无疑问，在ParallelX的环境中，利用这些商业分支对<a href="http://hive.apache.org/">Hive</a>和<a href="http://pig.apache.org/">Pig</a>进行的诸多改进，将是一件非常有益的事情。</p>
+<p>ParallelX拥有独一无二的演进故事，Tony在<a href="https://medium.com/game-changing-ideas/c3c516146599">一篇文章</a>中介绍了这个已经持续了2.5年的史诗般项目的历程：首先起于为某社团开发的一个社交网络，随后是用于Facebook的Widget插件，接下来则是一个识别剽窃代码的工具。这些项目拥有一些共性：图解分析与基于GPU的算法——几乎，ParallelX的理念便由此自然而然地浮现出来了。</p>
+<p>ParallelX适合许多种不同的工作负载，不过它主要聚焦在像机器学习这样的高性能计算和图形处理这样的繁重分析方面。ParallelX团队举了一个例子来说明其能力：它能够在一秒内，将一个大型社团联谊网络在单一GPU上进行集群——在过去，这需要并行利用六台计算机，耗时一小时才能完成。而且在实践中并无限制，任何针对MapReduce编写的程序都可以使用ParallelX编译为GPU可运行的代码。</p>
+<p>ParallelX团队正在规划在未来发布它的数据和白皮书，以展示这个“从Hadoop到GPU”的编译器在面对现实世界中的工作负载时的性能。对于这个话题，社区的反响中存在一些轻微的不同声音。<a href="https://news.ycombinator.com/item?id=6762653">一些人正在等着</a>阅读这份白皮书，而后再决定是否转型到ParallelX。当这一消息在<a href="https://news.ycombinator.com/">Hacker News</a>上发布后，我们可以在评论中找到类似的言论：“非凡的声明需要非凡的佐证。”</p>
+<p>现在，开发者已经能够使用<a href="https://code.google.com/p/aparapi/">Aparapi</a>，来体验一下在Hadoop上运用GPU能力的感觉。Aparapi是一套Java API，通过将Java字节码转化为OpenCL，支持开发者在GPU上运行特定的代码段，而且这些代码段能够嵌入到任何用Java编写的MapReduce任务中。</p>
+<p>在面向对复杂算法的需求越来越旺盛的研究人群，推广Hadoop的过程中，ParallelX可能会成为意义深远的一步。例如，通过使用由<a href="http://hama.apache.org/">Apache Hama</a>推广的<a href="http://zh.wikipedia.org/wiki/%E6%95%B4%E4%BD%93%E5%90%8C%E6%AD%A5%E5%B9%B6%E8%A1%8C%E8%AE%A1%E7%AE%97%E6%A8%A1%E5%9E%8B">整体同步并行计算</a>模型，图解分析算法能够获得非常好的性能表现，而如果ParallelX能够与诸如<a href="http://giraph.apache.org/">Apache Giraph</a>——它能够将图解分析算法作为MapReduce任务运行——这样的项目相结合，将为任何数据科学家的图解分析工具箱增添一件有价值的工具。</p>
+<p>读者现在可以使用电子邮件地址，<a href="http://www.parallelx.com/">在线注册ParallelX的Beta版本</a>。ParallelX拟将支持一套免费增值计划（freemium plan），允许访问强大的GPU，并使用有限的存储空间。</p>
+<p><strong>查看英文原文：</strong><a href="http://www.infoq.com/news/2013/12/hadoop-gpu-parallelx">Hadoop Jobs on GPU with ParallelX</a></p><br><br><br><br><br><br></body></html>

@@ -1,67 +1,40 @@
-<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>Java 7 Features Which Enable Java 8</h3><p>It's a truism of the tech industry that developers are never happier than when there's free beer or an opportunity to complain about something on offer.</p>
-<p>So despite the efforts of Mark Reinhold and the Java team to involve the community in the roadmap after the Oracle acquisition <a href="http://www.infoq.com/news/2010/09/jdk7-slip">(the Plan A / Plan B decision)</a>, many Java developers feel that Java 7 was &quot;not much of a release&quot;.</p>
-<p>In this article, I'll try to refute this thesis, by exploring the features in Java 7 which lay the groundwork for the new features in Java 8.</p>
-<h2>Diamond operator</h2>
-<p>Java has often been criticised for being overly verbose. One of the most common areas where this complaint is expressed is in assignment. In Java 6, we are forced to write assignment statements like this:</p>
-<p><small><b>Map&lt;String, String&gt; m = new HashMap&lt;String, String&gt;();</b></small></p>
-<p>This statement contains a lot of redundant information - we should be able to somehow have the compiler figure out more of this by itself, and not require the programmer to be quite so explicit.</p>
+<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>I’d Rather Be Coding – Writing Things Down</h3><p>Developers really hate spending time writing, unless what they are writing is code. They have good reasons for this distaste, however.</p>
+<ul> 
+ <li>If it’s not code, it can’t be run through a compiler to make sure it makes sense.</li> 
+ <li>If it’s not code, it doesn’t get executed, so it may never be used to accomplish anything.</li> 
+ <li>If it’s not code, it can’t have tests against it, so there’s no way to prove that it is truthful and correct.</li> 
+ <li>Agile even de-emphasized documentation in the Manifesto: <i>Working software over comprehensive documentation.</i></li> 
+</ul>
+<p>So is all documentation bad? I think you know the answer.</p>
+<h2>Why Write Things Down?</h2>
+<p>There are many times in the life of a project when a little documentation goes a long way. But to get those benefits, developers must take time away from coding to write things down.&nbsp; Here are some examples where I think they will find the juice was worth the squeeze.</p>
+<h2>Remembering Why You Made Decisions</h2>
+<p>If a project goes on much longer than a few months, there will be times when decisions are made that change the course of the development effort. It may be a decision to use (or explicitly avoid) a particular tool, framework, or platform.&nbsp; It may be a decision to write tests a certain way, or not write them at all for some cases.&nbsp; It may be a decision to throw away all the practices you would normally engage in and do things in a completely different way.&nbsp; These decisions will happen, and they tend to last.</p>
+<p>Someday, long after these decisions were made, someone on the team (usually a new addition, they’re so annoying, aren’t they?) will ask “Why are we doing this?” What answer will they receive?&nbsp;</p>
+<p>If one or more people on the team have good memories and have been with the project long enough, maybe the new team member will get the actual reason.&nbsp; But in most cases, I’m afraid the answer will be, “Because we’ve always done it that way.”&nbsp; That is not an answer anyone really wants to hear.</p>
 <div id="lowerFullwidthVCR"></div>
-<p>In fact, languages like Scala do a large amount of type inference from expressions, and in fact assignment statements can be written as simply as this:</p>
-<p><small><b>val m = Map(&quot;x&quot; -&gt; 24, &quot;y&quot; -&gt; 25, &quot;z&quot; -&gt; 26);</b></small></p>
-<p>The keyword val indicates that this variable may not be reassigned to (like the keyword final for Java variables). No type information is specified about the variable at all - instead the Scala compiler examines the right-hand side of the assignment and determines the correct type for the variable by looking at which value is being assigned.</p>
-<p>In Java 7, some limited type inference capabilities were introduced, and assignment statements can now be written like this:</p>
-<p><small><b>Map&lt;String, String&gt; m = new HashMap&lt;&gt;();</b></small></p>
-<p>The key differences between this and the Scala form is that in Scala, values have explicit types, and it is the type of variables that is inferred. In Java 7, the type of variables is explicit, and type information about values is what is inferred.</p>
-<p>Some developers have complained that they would have preferred the Scala solution, but it turns out to be less convenient in the context of a major feature for Java 8 - lambda expressions.</p>
-<p>In Java 8, we can write a function which adds 2 to an integer like this:</p>
-<p><small><b>Function&lt;Integer, Integer&gt; fn = x -&gt; x + 2;</b></small></p>
-<p>The interface Function is new with Java 8 - it resides in the package java.util.function, along with specialized forms for primitive types. However, we've chosen this syntax as it is very similar to the Scala equivalent and allows the developer to see the similarities more easily.</p>
-<p>By explicitly specifying the type of fn as a Function which takes one Integer argument and returns another Integer, then the Java compiler is able to infer the type of the parameter x - Integer. This is the same pattern that we saw in Java 7 diamond syntax - we specify the types of variables, and infer the type of values.</p>
-<p>Let's look at the corresponding Scala lambda expression:</p>
-<p><small><b>val fn = (x : Int) =&gt; x + 2;</b></small></p>
-<p>Here, we have to explicitly specify the type of the parameter x, as we don't have the precise type of fn, and so we have nothing to infer from. The Scala form is not hugely difficult to read, but the Java 8 form has a certain cleanliness of syntax which can be directly traced back to the diamond syntax of Java 7.</p>
-<h2>Method Handles</h2>
-<p>Method Handles are simultaneously the most important new feature of Java 7, and the one which is least likely to feature in the day-to-day life of most Java developers.</p>
-<p>A method handle is a typed reference to a method for execution. They can be thought of as &quot;typesafe function pointers&quot; (for developers familiar with C/C++) or as &quot;Core Reflection reimagined for the modern Java developer&quot;.</p>
-<p>Method handles play a huge part in the implementation of lambda expressions. Early prototypes of Java 8 had each lambda expression converted to an anonymous inner class at compile time.</p>
-<p>More recent betas are more sophisticated. Let's start by recalling that a lambda expression (at least in Java) comprises a function signature (which in the method handles API will be represented by a MethodType object) and a body, but not necessarily a function name.</p>
-<p>This suggests that we could convert the lambda expression into a synthetic method which has the correct signature and which contains the body of the lambda. For example, our example:</p>
-<p><small><b>Function&lt;Integer, Integer&gt; fn = x -&gt; x + 2;</b></small></p>
-<p>is turned by the Java 8 compiler into a private method with this bytecode:</p>
-<pre>
- private static java.lang.Integer lambda$0(java.lang.Integer);
-   descriptor: (Ljava/lang/Integer;)Ljava/lang/Integer;
-   flags: ACC_PRIVATE, ACC_STATIC, ACC_SYNTHETIC
-   Code:
-    stack=2, locals=1, args_size=1
-      0: aload_0
-      1: invokevirtual #13 // Method java/lang/Integer.intValue:()I
-      4: iconst_2
-      5: iadd
-      6: invokestatic #8 // Method java/lang/Integer.valueOf:(I)Ljava/lang/Integer;
-      9: areturn</pre>
-<p>This has the correct signature (takes in an Integer, and returns another one), and semantics. To use this lambda expression, we will take a method handle which refers to it and use it to build an object of the appropriate type, as we'll see in the next feature we discuss.</p>
-<h2>invokedynamic</h2>
-<p>The final feature of Java 7 that opens the door for Java 8 is even more esoteric than method handles. This is the new bytecode invokedynamic - the first new bytecode to be added to the platform since Java 1.0. This feature is almost impossible for Java developers to make use of in version 7, because version 7 javac will not, under any circumstances, emit a classfile which contains it.</p>
-<p>Instead, the bytecode was designed for use by developers of non-Java languages, such as JRuby, which require much more dynamic dispatch than Java. To see how invokedynamic works, let's discuss how Java's method calls are compiled into bytecode.</p>
-<p>A standard Java method call will be turned into a piece of JVM bytecodes which is often referred to as a call site. This comprises a dispatch opcode (such as invokevirtual, for regular instance method calls) and a constant (an offset into the Constant Pool of the class) which indicates which method is to be called.</p>
-<p>The different dispatch opcodes have different rules that govern how method lookup is done, but until Java 7 the constant was always a straightforward indication of which method was to be called.</p>
-<p>invokedynamic is different. Instead of providing a constant which directly indicates which method is to be called, invokedynamic instead provides an indirection mechanism that allows user code to decide which method to call at runtime.</p>
-<p>When an invokedynamic site is first encountered, it does not have a known target yet. Instead, a method handle (called a bootstrap method) is invoked. This bootstrap method returns a CallSite object, which contains another method handle, which is the actual target of the invokedynamic call.</p>
-<p>1) invokedynamic site encountered in the execution stream (initially unlinked) 2) Call bootstrap method and return a CallSite object 3) CallSite object contains a method handle (the target) 4) Invoke the target method handle</p>
-<p>The bootstrap method is the way in which user code chooses which method needs to be called. For lambda expressions, the platform uses a library-supplied bootstrap method called a lambda meta-factory.</p>
-<p>This has static arguments which contain a method handle to the synthesized method (see last section), and the correct signature for the lambda.</p>
-<p>The meta-factory returns a CallSite that contains a method handle which will in turn return an instance of the correct type that the lambda expression has been converted to. So a statement like:</p>
-<p><small><b>Function&lt;Integer, Integer&gt; fn = x -&gt; x + 2;</b></small></p>
-<p>is converted to an invokedynamic call like this:</p>
-<pre>
-Code:
-  stack=4, locals=2, args_size=1
-     0: invokedynamic #2, 0 // InvokeDynamic #0:apply:()Ljava/util/function/Function;
-     5: astore_1</pre>
-<p>The invokedynamic bootstrap method is the static method LambdaMetafactory.metafactory(), which returns a CallSite object which is linked to a target method handle, which will return an o bject which implements the Function interface.</p>
-<p>When the invokedynamic instruction is complete, an object which implements Function and which has the lambda expression as the contents of its apply() method is sat on top of the stack, and the rest of the code can proceed normally.</p>
-<h2>Conclusion</h2>
-<p>Getting lambda expressions into the Java platform was always going to be a challenging endeavour, but by ensuring that the proper groundwork was in place, Java 7 eased that effort considerably. Plan B not only provided developers with the early release of Java 7 but also allowed core technologies to be made fully road-tested before their use in Java 8 and especially in lambda expressions.</p>
+<p>Remember that if you receive an answer like that, you always have a choice. You can keep doing things the way you’ve always done them, because you’re used to the pain, or because it’s safer, since you don’t remember why you started doing them that way.&nbsp; Alternatively, you can make a change and hope that you’ve considered all the possible repercussions.&nbsp; After all, what could go wrong? Well, as it turns out… plenty. For example:</p>
+<ul> 
+ <li>You could go down a path that has already been explored and rejected, wasting precious project time and effort.</li> 
+ <li>You could frustrate your customer by making a change that is in conflict with the way the business needs the system to work.</li> 
+ <li>You could violate a compliance issue that was being mitigated by the way you were doing it, and get yourself and/or your customer in legal trouble.</li> 
+</ul>
+<p>All of these consequences could be avoided by just taking the time to write things down. When your team makes a decision that changes the way you work, write down the date you made the decision and the logic behind it (if you’re good, you might even have a process for making the decision that would produce artifacts you can point to).&nbsp; Then later, when someone asks the question “why you’re doing things that way or using that tool”, you can answer their question with confidence.</p>
+<h2>Preparing For Automating An Annoying Process</h2>
+<p>Developers frequently find processes they want to automate.&nbsp; These are the ones that they repeat regularly and which waste precious development time. However, all too often I come across manual processes that are performed infrequently (maybe once every few weeks), and involve a series of steps that must be followed in a specific order.&nbsp; If no one bothers to write this process down, there’s a good chance it will be performed incorrectly or steps will be missed, wasting even more time.&nbsp; Furthermore, there’s no practical way to automate a process without first writing down the steps.</p>
+<p>If you find yourself performing a task with multiple steps – and there’s a good chance you’ll have to do it again, write the steps down. This will save time when the next person has to perform the process manually, and will prepare you for the day when you finally get so frustrated that you automate it.</p>
+<h2>Covering Your Posterior</h2>
+<p>On Agile projects, as the manifesto describes, we value face-to-face communication.&nbsp; This kind of communication about requirements is the most optimal, as all of the information can be gathered, both verbal and non-verbal.&nbsp; However, there are times when even these words can be misinterpreted, or more likely, misremembered.&nbsp; This can happen on either side: the developer could think they heard something that the customer didn’t say, or the customer could forget (I’m going to assume this mainly happens unintentionally) that he or she told the developer to go in a particular direction. This can result in the developer later having to insist that they were told to take some action, with no way to back up whether or not this is true. In this case, my experience is that the customer almost always wins, and the developer walks away feeling frustrated and possibly abused.</p>
+<p>That doesn’t sound like what developers really want to happen. Let’s see, how could we avoid this situation? I don’t know…maybe we could try writing things down?&nbsp; All it would take is a follow-up email after that phone call or face-to-face meeting that describes in the developer’s words what they think they were told to do.&nbsp; This doesn’t require much effort, and it gives a great audit trail later when the question comes about why the system was developed the way that it was.</p>
+<h2>Ideas For Easy Documentation</h2>
+<p>Documentation is unnatural for most people, and downright painful for most developers. Yet, as illustrated above, it has value. Here are some ideas for making it less like sharp-stick-eye-poking:</p>
+<ul> 
+ <li><b>Do it right away</b><b>.</b><b> </b>Many of us like to procrastinate when it comes to the stuff we don’t like to do. Don’t do it with this kind of documentation.&nbsp; It’s best when it’s fresh, and it comes easier when you don’t have to stop and remember.&nbsp; As soon as you have the conversation, find a workstation or a mobile device and write down the summary.</li> 
+ <li><b>Find good tools to help.</b><b> </b>Speaking of mobile devices, there are just so many great tools out there now for writing these things down. Back in the day, we had to go find the right place on a wiki and use some non-intuitive markup language to document even the simplest things. Now, there are the ubiquitous Evernote and OneNote, and so many like them; there are blogs and microblogs (is Twitter out of the question for your project?); and if all else fails, there’s email.&nbsp; Find your favorite.</li> 
+ <li><b>Keep it short.</b><b> </b>It doesn’t have to be a novel every time you document a discussion.&nbsp; Even if you can’t use Twitter, pretend that you are by being succinct and to the point. What can you say in 140 characters that is descriptive enough to be useful but short enough to get the point across quickly?&nbsp; The likelihood that a document will ever be read more than once is inversely proportional to its size.</li> 
+ <li><b>Put it where you can find it again.</b><b> </b>Writing things down doesn’t help you if you can’t find what you wrote down when you need it.&nbsp; Put it somewhere that will be the most obvious place to look (e.g. in an already established project documentation repository, in the same place you put your source code, in an email to everyone on the team), and ideally where it’s electronically searchable.&nbsp; Don’t just write it on the whiteboard in your team area (although you might want to do this in addition to putting it somewhere for the long-term). You might try putting it several places and see where it gets found… you could even collect metrics on where content was found to decide on which is the best place to store it!<b> </b>I know, this might sound like crazy talk to some.</li> 
+</ul>
+<h2>It Needs To Be a Habit</h2>
+<p>As I said, documenting these little occurrences in your everyday project life is not going to be natural; you’re going to have to force it.&nbsp; I know you’d rather be coding, but make yourself do it; I promise it’s worth the effort.&nbsp; If you make yourself jump right to your note-taking system the moment something happens, pretty soon it will be second nature.&nbsp; Then you’ll wonder how you ever got by without it.</p>
 <h2>About the Author</h2>
-<p><strong><img src="http://www.infoq.com/resource/articles/Java-7-Features-Which-Enable-Java-8/en/resources/Ben-Evans.jpg" vspace="3" hspace="3" align="left" alt="" _href="img://Ben-Evans.jpg" _p="true" />Ben Evans</strong> is the CEO of jClarity, a startup which delivers performance tools to help development &amp; ops teams. He is an organizer for the LJC (London JUG) and a member of the JCP Executive Committee, helping define standards for the Java ecosystem. He is a Java Champion; JavaOne Rockstar; co-author of “The Well-Grounded Java Developer” and a regular public speaker on the Java platform, performance, concurrency, and related topics.</p><br><br><br><br><br><br></body></html>
+<p><strong><img src="http://www.infoq.com/resource/articles/id-rather-be-coding-writing-things-down/en/resources/Nate-McKie.png" vspace="3" hspace="3" align="left" alt="" _href="img://Nate-McKie.png" _p="true" />Nate McKie</strong> is co-founder and CTO of <a href="http://www.asynchrony.com">Asynchrony</a>, an IT consulting firm in St. Louis, Missouri. Nate spearheaded the effort to make Asynchrony a leading practitioner of Agile techniques and ideas and to spread the disciplines of quality code and rapid implementation throughout its commercial and government customer base. In his role, Nate drives the technical aspects of the company and teaches Agile techniques to clients. You can follow Asynchrony on Twitter via @asynchrony and Nate McKie via @natemckie.</p><br><br><br><br><br><br></body></html>

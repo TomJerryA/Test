@@ -1,6 +1,9 @@
 <html>
  <head></head> 
- <body> 
+ <body>
+  <div>
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/38.javab">I’d Rather Be Coding – Writing Things Down</a> For lots of reasons, most developers hate writing down anything that isn’t code. The Agile Manifesto deemphasizes documentation, but there are times on a project when a little documentation can go a long way. In this article, we will explore why collaboration over comprehensive documentation shouldn’t mean “NO” documentation – and when you should stop coding and start writing things down. 
+  </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/37.javab">Preparing for Your First MongoDB Deployment: Backup and Security</a> This article we focuses on the database backup tools and security policies when deploying MongoDB NoSQL databases. Topics like cloud backups with MongoDB Management Service (MMS), authentication, and authorization are covered. 
   </div> 
@@ -147,9 +150,6 @@
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/40.javab">Interview with Joel Murach - Author of Murach's Android Programming</a> In this review, Anand reviews the recently released Murach's Android Programming authored by Joel Murach. 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/39.javab">The Integration of Agile and the Project Management Office</a> Agile and the PMO are no longer diametrically opposed. With an ever-changing business landscape, organisations must adopt more nimble approaches, making Agile more suitable than people think. 
-  </div> 
+  </div>  
  </body>
 </html>
