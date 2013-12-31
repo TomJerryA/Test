@@ -1,7 +1,7 @@
 <html>
  <head></head> 
- <body>
-  <div>
+ <body> 
+  <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/7.htmlb">用Spring实现非端到端验收测试</a> 验收测试让交付团队超越了基本的持续集成，即验证应用程序是否为用户提供了有价值的功能。不过对于刚开始尝试部署流水线的团队来说，想要自动化验收测试，需要跨过三大门槛。 
   </div> 
   <div> 
@@ -150,6 +150,6 @@
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/10.htmlb">Datomic信息模型</a> Clojure的作者Rich Hickey在本文中介绍了Datomic的信息模型，Datomic是一种新型数据库，它被设计为一系列简单服务的组合，并结合了关系型数据库管理系统的能力与NoSQL的可伸缩性。 
-  </div>  
+  </div> 
  </body>
 </html>

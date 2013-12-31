@@ -1,6 +1,9 @@
 <html>
  <head></head> 
- <body> 
+ <body>
+  <div>
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/30.java">Behaviour-Driven Development: Value through Collaboration</a>The goal of a software project is to deliver value to stakeholders and Behaviour-Driven Development, (BDD), is designed for that, Viktor Farcic, a software developer working on transitions from waterfall to agile processes, states in the first of four blog posts describing his view on BDD.
+  </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/29.java">Ruby 2.1.0 Released, Delivering new GC</a>Ruby 2.1 has been released, with the biggest addition being a completely new garbage collector that promises much better performance. 
   </div> 
@@ -147,9 +150,6 @@
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/34.java">General availability of Google Compute Engine</a>The Google Compute Engine (GCE) infrastructure as a service (IaaS) is now in general availability. The launch also brings price cuts, a new storage model, expanded operating system support and live migration capabilities for transparent maintenance. 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/33.java">Microsoft Joins Forces with RedGate and Clickberry to Offer Node.js Tools for Visual Studio</a>NTVS, short for Node.js Tools for Visual Studio, offers Node.js developers a fully featured IDE complete with Intellisense, package management, profiling, and debugging. NTVS is a joint effort by Microsoft’s Python Tools team, RedGate, Clickberry, and others. 
-  </div> 
+  </div>  
  </body>
 </html>
