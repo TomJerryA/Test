@@ -2,7 +2,10 @@
  <head></head> 
  <body>
   <div>
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/32.java">Nevron Open Vision Enables Cross Platform Application Development with Windows, WPF and Silverlight</a>The recently released Nevron Open Vision enable development of cross platform presentation layer applications with support for Windows Forms, Windows Presentation Framework (WPF) and Silverlight. It will be soon updated to support Mac OS, iOS, Android and WinRT.
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/33.java">ORM Tool Hibernate 4.3 Released, Implementing JPA 2.1 Specification</a>The final version of the Object-Relational Mapping, ORM framework Hibernate 4.3 was recently released and is now a certified implementation of the JPA 2.1 specification, (JSR 338), released in May 2013.
+  </div> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/32.java">Nevron Open Vision Enables Cross Platform Application Development with Windows, WPF and Silverlight</a>The recently released Nevron Open Vision enable development of cross platform presentation layer applications with support for Windows Forms, Windows Presentation Framework (WPF) and Silverlight. It will be soon updated to support Mac OS, iOS, Android and WinRT. 
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/31.java">Forecasting at Twitter</a>Arun Kejariwal, from Twitter, talked at Velocity Conf London last month about forecasting algorithms used at Twitter to proactively predict system resource needs as well as business metrics such as number of users or tweets. Given the dynamic nature of their data stream, they found that a refined ARIMA model works well once its forecasting error is known and outliers removed. 
@@ -147,9 +150,6 @@
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/35.java">QCon London '14: Damian Conway, Tim Lister, Gunter Dueck Keynotes, 45% Speakers Confirmed (Mar 3-7)</a>45/100 speakers and 3 keynotes have been confirmed for QCon London 2014 (Mar 3-7, 2014). The eight annual conference will feature talks from language pioneers, project leads, and practitioner case studies from companies like Netflix, NASA, Spotify, Financial Times, and more. You can get in early by reserving your seat now saving &pound;325 by Dec 15th. 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/35.java">Go Steadily Advances as Go 1.2 is Released</a>The Go programming language has just released version 1.2, bringing with it some language changes and improved networking performance on Windows and the BSD platforms. 
   </div>  
  </body>
 </html>

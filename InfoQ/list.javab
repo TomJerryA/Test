@@ -1,7 +1,7 @@
 <html>
  <head></head> 
- <body>
-  <div>
+ <body> 
+  <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/38.javab">I’d Rather Be Coding – Writing Things Down</a> For lots of reasons, most developers hate writing down anything that isn’t code. The Agile Manifesto deemphasizes documentation, but there are times on a project when a little documentation can go a long way. In this article, we will explore why collaboration over comprehensive documentation shouldn’t mean “NO” documentation – and when you should stop coding and start writing things down. 
   </div> 
   <div> 
@@ -150,6 +150,6 @@
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/40.javab">Interview with Joel Murach - Author of Murach's Android Programming</a> In this review, Anand reviews the recently released Murach's Android Programming authored by Joel Murach. 
-  </div>  
+  </div> 
  </body>
 </html>

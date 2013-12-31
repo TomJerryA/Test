@@ -1,7 +1,7 @@
 <html>
  <head></head> 
- <body>
-  <div>
+ <body> 
+  <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/8.htmlb">API业务模型：如果通过API获取回报</a> 我们如何靠API来赚钱？在2013年API战略大会上，Programmable Web创始人John Musser在主题演讲中，点评了世界领先的技术企业们运用过的不同API业务模型。John将各式各样的模型整理成四大核心类别——“免费”、“开发者付费”、“开发者得偿”和“非直接收入”，并展示了API的实现如何与不同的业务战略相匹配。除此之外，他还给出了第五类模型：内部使用，并给出了忠告：“内部使用或许是API最重要的应用场景”。 
   </div> 
   <div> 
@@ -150,6 +150,6 @@
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/11.htmlb">你要招聘怎样的Scrum Master？</a> 你是否注意过近期的各种招聘Scrum Master的广告呢？某些招聘广告将PMP认证作为应聘的必要条件，某些招聘条件则表示如果你能够在指定时间内完成某个项目，或者满足了某客户的需求，则能够提供额外的奖金。 
-  </div>  
+  </div> 
  </body>
 </html>
