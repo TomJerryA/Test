@@ -1,8 +1,8 @@
 <html>
  <head></head> 
- <body>
-  <div>
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/34.java">FutureOps with Immutable Infrastructures and Built-in Failure Recovery</a>Mitchell Hashimoto, creator of Vagrant, gave a talk last month at Velocity Conf London about his vision for a “FutureOps” with immutable infrastructures and built-in failure recovery.
+ <body> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/34.java">FutureOps with Immutable Infrastructures and Built-in Failure Recovery</a>Mitchell Hashimoto, creator of Vagrant, gave a talk last month at Velocity Conf London about his vision for a “FutureOps” with immutable infrastructures and built-in failure recovery. 
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/33.java">ORM Tool Hibernate 4.3 Released, Implementing JPA 2.1 Specification</a>The final version of the Object-Relational Mapping, ORM framework Hibernate 4.3 was recently released and is now a certified implementation of the JPA 2.1 specification, (JSR 338), released in May 2013. 
@@ -150,6 +150,6 @@
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/36.java">Famo.us launches first public access to its Javascript platform</a>The team that built the Famo.us Javascript platform plans their first preview release of their app layer code on December 5th, 2013 as a foreshadowing of their platform's client-side prowess. 
-  </div>  
+  </div> 
  </body>
 </html>
