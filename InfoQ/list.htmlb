@@ -1,6 +1,12 @@
 <html>
  <head></head> 
- <body> 
+ <body>
+  <div>
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/10.htmlb">Android事件传递机制</a> Android基本事件构成了丰富的操作和体验方式。所有的触屏操作都基于Android的基本事件，本文结合Android系统源码剖析了Android事件的传递机制，比较深入的分析了事件处理方法，并结合实际例子分析了事件传递流程。 
+  </div>
+  <div>
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/9.htmlb">与Costin Leau谈论Elasticsearch，大数据及Hadoop</a> Elasticsearch是一个开源的分布式实时搜索与分析引擎，支持云服务。作为Elasticsearch-hadoop的第一个里程碑，它的1.3.M1版本在十月上旬发布了。InfoQ与Costin Leau进行了一次对话，谈论了Elasticsearch的搜索与分析引擎，以及它是如何与Hadoop或其它的大数据技术相结合的。 
+  </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/8.htmlb">API业务模型：如果通过API获取回报</a> 我们如何靠API来赚钱？在2013年API战略大会上，Programmable Web创始人John Musser在主题演讲中，点评了世界领先的技术企业们运用过的不同API业务模型。John将各式各样的模型整理成四大核心类别——“免费”、“开发者付费”、“开发者得偿”和“非直接收入”，并展示了API的实现如何与不同的业务战略相匹配。除此之外，他还给出了第五类模型：内部使用，并给出了忠告：“内部使用或许是API最重要的应用场景”。 
   </div> 
@@ -144,12 +150,6 @@
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/13.htmlb">Codenvy背后的技术--一次与CEO TylerJewell的深入访谈</a> Codenvy是个在线IDE(集成开发环境)，它支持使用Java、JavaScript、HTML5、PHP、Ruby和其它语言开发应用程序，同时也内置支持在PaaS上部署这些应用。本文描述了与其CEO Tyler Jewell的一次访谈，其中主要讲述了Codenvy背后所包含的技术。 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/12.htmlb">如何在Azure环境里做好信息传递可扩展性经验分享</a> 本文介绍建立一个在Azure上使用Azure服务总线, 高吞吐量短信平台的必要步骤。在这篇文章中提出的解决方案是在响应由客户的具体要求，建立一个基于Windows Azure技术的复杂远程信息处理应用。 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/11.htmlb">你要招聘怎样的Scrum Master？</a> 你是否注意过近期的各种招聘Scrum Master的广告呢？某些招聘广告将PMP认证作为应聘的必要条件，某些招聘条件则表示如果你能够在指定时间内完成某个项目，或者满足了某客户的需求，则能够提供额外的奖金。 
-  </div> 
+  </div>   
  </body>
 </html>

@@ -1,80 +1,62 @@
-<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>使用Flurry来统计和分析用户行为</h3><h2>简介</h2>
-<p><img width="600" src="http://infoqstatic.com/resource/articles/use-flurry-to-statistics-and-analysis-user-behavior/zh/resources/1030200.png" alt="" _href="img://null" _p="true" /></p>
-<p><a href="http://www.flurry.com/">Flurry</a>是一家专门为移动应用提供数据统计和分析的公司。他们的数据统计分析SDK支持的平台包括iPhone, iPad, Android, Windows Phone, Java ME和BlackBerry。使用Flurry服务的公司包括eBay、Yahoo、Hulu和Skype等超过11万家公司，涉及的应用超过36万个。</p>
-<p>利用Flurry提供的分析平台，我们可以很容易地自动统计出应用的使用情况，例如：</p>
-<ol> 
- <li>每天（每周或每月）登录用户数，应用使用次数</li> 
- <li>每天（每周或每月）新用户数，活跃用户数</li> 
- <li>用户的所在地、年龄、性别的分布情况</li> 
-</ol>
-<p>Flurry也可以自动统计出移动设备的分类情况，例如：</p>
-<ol> 
- <li>使用3G，Wifi的会话比例</li> 
- <li>使用iOS系统各版本(例如iOS6.0, iOS7.0等)的比例</li> 
- <li>使用iOS各种设备（例如iPhone4, iPhone5等)的比例</li> 
-</ol>
-<p>除了上面介绍的自动统计项目，Flurry SDK也提供了统计用的相关API，便于我们针对自己产品的特点，做针对性的统计。例如统计应用中某个按钮的按下次数，或者网络请求的平均响应时间等。</p>
-<h2>Flurry的基本使用</h2>
-<h3>注册和下载对应SDK</h3>
-<p>使用Flurry前，需要先到官方网站<a href="http://www.flurry.com/">http://www.flurry.com/</a>注册账号。然后登录到Flurry后台，依次选择 <code>&quot;Applications&quot; -&gt; “Add a New Application&quot;</code> ，增加一个需要统计分析的应用。如下图所示：</p>
+<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>与Costin Leau谈论Elasticsearch，大数据及Hadoop</h3><p><a href="http://www.elasticsearch.org/">Elasticsearch</a>是一个开源的分布式实时搜索与分析引擎，支持云服务。它是基于<a href="http://lucene.apache.org/core/">Apache Lucene</a>搜索引擎的类库创建的，提供了全文搜索能力、多语言支持、专门的查询语言、支持地理位置服务、基于上下文的搜索建议、自动完成以及搜索片段（snippet）的能力。</p>
+<p>Elasticsearch支持RESTful的API，可以使用JSON通过HTTP调用它的各种功能，包括搜索、分析与监控。此外，它还为Java、PHP、Perl、Python以及Ruby等<a href="http://www.elasticsearch.org/guide/">各种语言</a>提供了原生的客户端类库。Elasticsearch可以在Apache 2许可下进行使用。作为<a href="http://elasticsearch.org/hadoop">Elasticsearch-hadoop</a>的第一个里程碑，它的1.3.M1版本在十月上旬<a href="http://www.elasticsearch.org/blog/elasticsearch-and-hadoop/">发布</a>了。</p>
+<p>InfoQ与Elasticsearch团队的Costin Leau进行了一次对话，谈论了Elasticsearch的搜索与分析引擎，以及它是如何与Hadoop或其它的大数据技术相结合的。</p>
+<p><b>InfoQ</b><b>：你好Costin</b><b>，你能为我们描述一下Elasticsearch</b><b>是什么，以及它是如何实现大数据方面的需求的吗？</b></p>
+<blockquote> 
+ <p>Elasticsearch是一个高伸缩、高可用、基于Apache Lucene的开源搜索与分析引擎。通过它你可以很方便地对数据进行深入挖掘，可以随时放大与缩小搜索与分析的区间，并且这一切都是实时的。为了提供了一个优秀的用户体验，我们对Elasticsearch投入了很大的精力。Elasticsearch本身的各种选项已有了良好的默认值，使用户能够更方便地上手。但我们也为用户提供了全方面的选项，在必要的情况下，可以对该引擎的几乎每个方面进行定制。</p> 
+ <p>举例来说，当你使用它搜索数据的时候，可以使用传统的查询（‘查找满足条件Y的所有项X’）进行过滤（在Elasticsearch术语中称为“视图”），高亮显示搜索片段，为每条结果提供相应的上下文。也可以使用地理位置（‘查找在Z里之内的所有项’），或是为用户提供搜索关键字建议，并且提供了强大的聚合（即Elasticsearch中的“分面”（facet））能力，例如时间分布图或者统计图。</p> 
+ <p>Elasticsearch既可以搜索、也可以保存数据。它提供了一种半结构化、不依赖schema并且基于JSON的模型，你可以直接传入原始的JSON文档，Elasticsearch会自动地检测出你的数据类型，并对文档进行索引。你也可以对schema映射进行定制，以实现你的目的，例如对单独的字段或文档进行boost映射，或者是定制全文搜索的分析方式等等。</p> 
+ <p>你既可以在自己的膝上电脑中启用一个小型实例，也可以在云端启用几十乃至几百个实例，只需要一些极小的改变而已。Elasticsearch会自动进行横向扩展，它能够随着你的应用一起成长。</p> 
+ <p>Elasticsearch运行在JVM之上，它使用JSON格式，通过RESTful HTTP接口的方式访问，因此任何一种客户端或语言都能够与其交互。目前已经有了<a href="http://www.elasticsearch.org/guide/clients/">大量的客户端和框架的整合方案</a>，包括对多种编程语言的支持，通过这些原生的API与专门的DSL将不一致的地方最小化，并实现性能最大化。</p> 
+ <p>Elasticsearch非常适合于大数据的场合，它的高伸缩性与分布式架构的本质使得对大量信息的搜索与存储都可以在近乎实时的情况下完成。通过Elasticsearch-Hadoop这个项目，我们使Hadoop使用者（这里也包括<a href="http://hive.apache.org/">Hive</a>、<a href="http://pig.apache.org/">Pig</a>和<a href="http://www.cascading.org/">Cascading</a>）能够用一个成熟的搜索引擎来增强他们的工作流。我们还为他们提供了一种丰富的语言，能够让他们更好地表达意图，因而更准确地获得想要的结果，并且速度也大大提高了。</p> 
+</blockquote>
 <div id="lowerFullwidthVCR"></div>
-<p><img width="600" src="http://infoqstatic.com/resource/articles/use-flurry-to-statistics-and-analysis-user-behavior/zh/resources/1030201.png" alt="" _href="img://null" _p="true" /></p>
-<p>然后，在接下来的界面之后根据你的应用类型，选择iPhone或iPad应用。如下图所示：</p>
-<p><img width="600" src="http://infoqstatic.com/resource/articles/use-flurry-to-statistics-and-analysis-user-behavior/zh/resources/1030202.png" alt="" _href="img://null" _p="true" /></p>
-<p>接着，填入应用的名字和分类（名字仅用作在Flurry后台和自己的其它应用区分，不需要和应用的真实名字相同），之后点击&quot;Create App&quot;，如下所示：</p>
-<p><img width="600" src="http://infoqstatic.com/resource/articles/use-flurry-to-statistics-and-analysis-user-behavior/zh/resources/1030203.png" alt="" _href="img://null" _p="true" /></p>
-<p>到此，我们就成功在后台创建了一个新的应用统计和分析项目。点击下图中的&quot;Download&quot;，可以下载需要集成在应用中的SDK。而下图中的提示2中的Key：<code>X28BBKTNZ9H3VYTBDBG3</code>则是我们在集成时用于标识自己应用的ID。</p>
-<p><img width="600" src="http://infoqstatic.com/resource/articles/use-flurry-to-statistics-and-analysis-user-behavior/zh/resources/1030204.png" alt="" _href="img://null" _p="true" /></p>
-<h3>集成SDK</h3>
-<p>我们将下载后的SDK解压，可以看到文件列表如下。列表中对我们最重要的文件是Flurry目录下的<code>flurry.h</code>文件和<code>libFlurry_4.3.0.a</code>文件。这2个文件需要复制到Xcode的工程中去。</p>
-<p>而<code>ProjectApiKey.txt</code>文件中记录了我们之前创建的应用ID，在在代码中调用SDK初使化时需要使用。</p>
-<p><img width="600" src="http://infoqstatic.com/resource/articles/use-flurry-to-statistics-and-analysis-user-behavior/zh/resources/1030205.png" alt="" _href="img://null" _p="true" /></p>
-<p>接着我们打开Xcode工程，将之前下载解压的Flurry目录拖动添加到工程中，同时在工程的.pch文件中加上 <code>#import &quot;Flurry.h&quot;</code>，如下图所示：</p>
-<p><img width="600" src="http://infoqstatic.com/resource/articles/use-flurry-to-statistics-and-analysis-user-behavior/zh/resources/1030206.png" alt="" _href="img://null" _p="true" /></p>
-<p>接着我们在<code>Link Binary With Libraries</code>中加入如下2个依赖的framework:</p>
-<ul> 
- <li>Security.framework</li> 
- <li>SystemConfiguration.framework。</li> 
-</ul>
-<p><img width="600" src="http://infoqstatic.com/resource/articles/use-flurry-to-statistics-and-analysis-user-behavior/zh/resources/1030207.png" alt="" _href="img://null" _p="true" /></p>
-<p>接着我们打开 <code>AppDelegate.m</code>，在<code>- (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions</code>方法中，加入代码<code>[Flurry startSession:@&quot;X28BBKTNZ9H3VYTBDBG3&quot;];</code>，如下图所示：</p>
-<p><img width="600" src="http://infoqstatic.com/resource/articles/use-flurry-to-statistics-and-analysis-user-behavior/zh/resources/1030208.png" alt="" _href="img://null" _p="true" /></p>
-<p>这样，就完成了Flurry最简单的集成。通过以上短短几步，Flurry就可以帮我们完成应用的基本使用数据的统计和分析。</p>
-<h3>自定义统计项</h3>
-<p>Flurry提供了<code>logEvent</code>函数，用于实现自定义的统计项。默认情况下，该函数接受一个参数，用于表示当前统计项的名字。</p>
-<p>例如我们的界面中有2个按钮，我们想统计它们各自被用户的点击次数，则可以如下代码实现。在该代码中，我们定义了2个自定义的统计项，名字分别为<code>First Button Pressed</code>和<code>Second Button Pressed</code>。</p>
-<p><img width="600" src="http://infoqstatic.com/resource/articles/use-flurry-to-statistics-and-analysis-user-behavior/zh/resources/1030209.png" alt="" _href="img://null" _p="true" /></p>
-<p><code>logEvent</code>函数也支持添加各种参数，用于做更加精细的统计，例如，我们想在统计用户在同一个页面，点击时不同按钮的次数分布，看哪些按钮更加常用，则统计代码可以如下实现：</p>
-<p><img width="600" src="http://infoqstatic.com/resource/articles/use-flurry-to-statistics-and-analysis-user-behavior/zh/resources/1030210.png" alt="" _href="img://null" _p="true" /></p>
-<p><code>logEvent</code>函数也支持统计时间，常常用来统计某个复杂的网络操作的耗时或者用户对于某些界面的响应时间。例如，我们想统计用户停留在某个提示界面的时间，则可以用如下代码完成：</p>
-<p><img width="600" src="http://infoqstatic.com/resource/articles/use-flurry-to-statistics-and-analysis-user-behavior/zh/resources/1030211.png" alt="" _href="img://null" _p="true" /></p>
-<h3>查看统计结果</h3>
-<p>完成上面的自定义统计的代码后，待应用发布后，我们就可以从后台的<code>Events</code>栏中看到相应的统计结果了。如下图所示：</p>
-<p><img width="600" src="http://infoqstatic.com/resource/articles/use-flurry-to-statistics-and-analysis-user-behavior/zh/resources/1030212.png" alt="" _href="img://null" _p="true" /></p>
-<h3>统计Crashlog</h3>
-<p>Flurry从4.2.3开始，支持应用的Crashlog统计。只需要在<code>AppDelegate.m</code>文件 中，调用完<code>startSession</code>方法后，再调用如下代码即可：</p>
-<p><code>[Flurry setCrashReportingEnabled:YES];</code></p>
-<p>之后就可以从后台的<code>Errors</code>项中，获得应用的Crashlog信息。</p>
-<h2>和其它统计分析平台的对比</h2>
-<p>和著名的统计工具<a href="http://www.google.com/analytics/">Google Analytics</a>相比，Flurry的优点是：</p>
-<ol> 
- <li>Flurry专门针对移动端做了许多优化。</li> 
- <li>Flurry没有被墙的问题。</li> 
-</ol>
-<p>Flurry缺点是:</p>
-<ol> 
- <li>Google Analytics的统计功能相对更强大一些。</li> 
- <li>Google Analytics可以和网页版的统计数据做整合。</li> 
-</ol>
-<p>和国内的分析平台<a href="http://www.umeng.com/">友盟</a>相比，Flurry的优点是：</p>
-<ol> 
- <li>使用Flurry的应用相对更多。根据Flurry和友盟的官方数据，有超过36万应用使用Flurry<sup><a href="http://www.flurry.com/big-data.html">1</a> </sup>，有超过18万应用使用友盟<sup><a href="http://www.umeng.com/analytics">2</a></sup>。</li> 
- <li>Flurry是国外的公司，保持独立和专注，数据安全性更高；友盟现在已经<a href="http://tech.163.com/13/0426/16/8TDB6H1N00094MOK.html">被阿里收购</a>，当用户的应用涉及领域和阿里有类似或重合的时候，那么该统计数据有潜在的安全性问题。</li> 
-</ol>
-<p>Flurry的缺点是：</p>
-<ol> 
- <li>友盟因为是中国公司，所以对国内开发者非常友善，相关的文档或界面都是中文的。而Flurry并不提供中文的后台管理界面或相关文档。</li> 
- <li>Flurry的服务器在国外，在响应速度上应该相对比友盟慢一些。但在测试中，Flurry服务器都保证了500ms左右的响应时间，还是比较好的。</li> 
-</ol>
-<h2>总结</h2>
-<p>本文介绍了Flurry的基本功能以及如何做自定义的统计，最后与业界其它同类工具做了对比。我也将相关示例代码整理到github上，地址是：<a href="https://github.com/tangqiaoboy/FlurryUsageSample">https://github.com/tangqiaoboy/FlurryUsageSample</a>，愿本文能帮助你更加方法地做应用的统计和分析工作。</p><br><br><br><br><br><br></body></html>
+<p><b>InfoQ</b><b>：Elasticsearch</b><b>是用于实时全文搜索的。你能否告诉我们实时的全文搜索与传统的数据搜索有什么不同吗？</b></p>
+<blockquote> 
+ <p>按照通俗的说法，传统的搜索其实就是全文搜索的一个子集。</p> 
+ <p>大多数数据存储系统都是基于元数据，或是原始数据的某些部分实现搜索功能的。出于效率方面的原因，那些我们认为相关的数据子集（例如对象的id、name等等）会被索引，而其余部分则被忽略。与原始数据大小相比，所生成的索引数据量比较小，但它没有完全覆盖到所有的数据集。全文搜索解决这个问题的方式是对整个数据资料进行索引和搜索，代价就是对存储空间的需求增加。</p> 
+ <p>传统的搜索通常是与结构化数据相关的，因为对用户来说结构化数据更容易理解哪些数据是相关的，而哪些是不相关的。但当前的业务中，大多数数据都是非结构化的。你会将所有数据一次性保存起来，在需要的时候再去获取它的各种不同格式与结构的值，在这种情况下就必需用到全文搜索的方式，因为你已经无法忽略任何数据了。</p> 
+ <p>Elasticsearch同时支持结构化数据搜索与全文搜索，它提供了大量的查询选项，包括关键字、布尔查询、过滤器以及模糊查询等方式，所有这些都选项都可以通过一个丰富的查询语言来完成。</p> 
+ <p>请注意，Elasticsearch与简单的全文搜索相比，还提供了以下一些额外的特性：</p> 
+ <ul> 
+  <li>地理位置查询：根据数据的地理位置查找结果。</li> 
+  <li>聚合/分面：在查询的时候进行数据聚合，例如查找在某一天之内，访问过你的网站中某篇特定文章，或者是某些标签的用户来自哪些国家。由于聚合是实时计算的，因此当查询变化时，聚合也会相应的变化。换句话说，就是你总能获取数据集的即时反馈。</li> 
+ </ul> 
+</blockquote>
+<p><b>InfoQ</b><b>：在使用Elasticsearch</b><b>时，有哪些设计上的考虑呢？</b></p>
+<blockquote> 
+ <p>数据是王道，因此要专注于对它的处理。为了让Elasticsearch能够按照你设想的方式处理数据，它必须理解你的“需求”。虽然它能够尽最大努力去猜测你要的数据，但你的领域知识对于进行正确的配置以支持你的需求来说才是最有价值的部分。这些都可以归结为数据的粒度或者是组织方式。让我们拿日志这个常见的需求来举个例子：与其把所有的日志记录都放在一个巨大的索引里，更好的方法是将日志记录按照时间进行分解，因此每月、每周或者每天的数据都可以对应一条索引。这种分解方式能够在你处理数据巨量增长、以及删除或者归档旧数据时带来许多便利。</p> 
+</blockquote>
+<p><b>InfoQ</b><b>：能否请你谈谈Elasticsearch</b><b>引擎所支持的设计与架构模式呢？</b></p>
+<blockquote> 
+ <p>一个索引包括了多个分片，每个分片本身就是一个迷你的搜索引擎。一个索引本质上就是对应着一系列分片的虚拟命名空间。多分片的方式能够简化横向扩展任务，只需添加新的节点即可。而创建分发分片对每个主分片的数据进行复制能够实现高可用性，并增加读取时的吞吐能力。</p> 
+ <p>查询某个索引是一种分布式操作，这意味着Elasticsearch不得不对索引中的每个分片的数据复制进行查询，并将结果整理到一个单一的结果集中。而对多个索引进行查询只是将相同的步骤进一步扩大了而已。在设计你的数据存储架构时，这种方式能够带来极大的灵活性。</p> 
+ <p>而如果用户了解他的应用程序特定的一些领域知识，那就可以对查询进行优化，使查询只触及相关的分片。在同样的硬件条件下，这种方式可以支持更大的负载。</p> 
+</blockquote>
+<p><b>InfoQ</b><b>：Elasticsearch</b><b>是怎样支持数据的可伸缩性的呢？ </b></p>
+<blockquote> 
+ <p>为了支持高可用性与高伸缩性，Elasticsearch本身就是分布式设计的。从顶层的角度来说，Elasticsearch在索引（或者集合）中保存文档（或者数据记录），每个集合又分解为多个小块，称为分片。索引越大，所需要分配的分片越多（不必担心会创建过多的分片，它的开销很小）。取决于Elasticsearch的设置和规模，分片会在集群中均匀地平均分布，有两个原因：</p> 
+ <p>出于冗余方面的原因：默认情况下，Elasticsearch为每个分片都准备了一份拷贝，一旦某个节点停机了，备份的分片就能接替它的位置。</p> 
+ <p>出于性能方面的原因：每个查询都发生在某个索引上，并且会在多个分片中并行运行，这种工作流方式是改善性能的关系所在。如果感觉运行速度缓慢，只需简单地在集群中加入新的机器，Elasticsearch就会自动地将分片与查询进行分布到新添加的机器上。</p> 
+ <p>这种方式让使用Elasticsearch的组织可以自由选择进行纵向扩展（如果节点运行缓慢就升级硬件）或者横向扩展（如果集群整体速度慢就加入更多的节点）。</p> 
+</blockquote>
+<p><b>InfoQ</b><b>：在使用这种解决方案时有什么限制，或者是要特别留意的地方吗？ </b></p>
+<blockquote> 
+ <p>我认为最大的挑战是用户从SQL的世界来到了这个基于上下文的搜索世界时所面对的新理念，对于获取独立的数据项（传统的数据获取）来说，方法基本还是一样的，只要指定id然后取回数据就可以了。但对于数据探索来说，所使用的各种构造就有所不同了，例如采用不同类型的分析方式，或是使用哪种类型的搜索或匹配算法（如模糊查询等等）。</p> 
+</blockquote>
+<p><b>InfoQ</b><b>：你能否说说联合使用Elasticsearch</b><b>与Hadoop</b><b>技术具有什么优势吗？</b></p>
+<blockquote> 
+ <p>Hadoop在设计上就是一个分布式的，面向批处理的平台，用以处理大数据集。虽然它是一个非常强大的工具，但它的批处理的本质意味着在处理结果时需要花费一定时间。此外，用户必需重新为各种操作编写代码。Hive或者Pig这样的类库能起到一定作用，但不能完全解决问题，想象一下在Map/Reduce中重新实现地理位置查询的难度吧。</p> 
+ <p>而使用Elasticsearch，你就可以将搜索工作交给搜索引擎去完成，而专注于其它方面的工作，例如数据转换。Elasticsearch-Hadoop项目为Hadoop提供了直接的整合功能，因此用户使用起来没有任何障碍，我们为vanilla Map/Reduce提供了专门的InputFormat与OutputFormat，为Cascading的数据读写提供了Taps，并为Pig和Hive提供了Storages。这样你就可以以HDFS一样方式的访问Elasticsearch的数据了。</p> 
+ <p>通常来说，与Hadoop进行整合的数据存储系统都可能会成为系统的瓶颈，这是由于每个job在集群中的各种任务会造成大量的请求。而Map/Reduce模型的分布式特性用于Elasticsearch上会配合得非常良好，因为我们能够将某个特定查询所生产的Map/Reduce任务数量与Elasticsearch的分片数量相关联。这样每次有查询运行时，系统就会动态地按照Hadoop的划分生成一个数值，该数值与Elasticsearch的可用分片数量成正比，这样各个job就能够并行地运行了。你可以按照Elasticsearch的数量对Hadoop集群进行扩展，或者是反过来也可以。</p> 
+ <p>此外，这种整合将分片的信息暴露给Hadoop，以此可以实现协同定位。Job的任务会在每个Elasticsearch分片所在的同一台机器上运行，通过实现数据本地化消除了网络的开销，并改善了性能。出于这个原因，我们建议你在相同的机器上运行Elasticsearch和Hadoop集群，尤其是他们能够互相平衡资源的使用情况（I/O与CPU）。</p> 
+ <p>最后但也是很重要的一点是，Elasticsearch能够提供近乎实时的响应速度（毫秒等级），这极大的改善了Hadoop job的执行速度以及执行的各种开销，在类似于<a href="http://aws.amazon.com/elasticmapreduce/">Amazon EMR</a>这种“租用的资源”上运行时的改善尤其明显。</p> 
+</blockquote>
+<p><b>InfoQ</b><b>：Spring</b><b>框架与Elasticsearch</b><b>是否能够进行整合呢？ </b></p>
+<blockquote> 
+ <p>当然能了，请去查看一下Github上的<a href="http://www.github.com/SpringSource/spring-data-elasticsearch">Spring Data Elasticsearch</a>项目。该项目是由我们的社区成员组织Biomed Central启动的，而我们也乐于和他们共同参与开发的过程，使用并改善这一项目。该项目提供了一个大家所熟悉的Spring模板，作为一个高级别的抽象层。<a href="https://github.com/spring-projects/spring-data-elasticsearch#elasticsearchrepository">Repository</a>的实现是基于Elasticsearch的功能，另外还通过XML、JavaConfig和CDI提供了各种配置能力。我们目前正致力于将各种整合项目聚合在一起，其中最受关注的就是David Piloto开发的<a href="https://github.com/dadoonet/spring-elasticsearch">spring-elasticsearch</a>项目了。</p> 
+</blockquote>
+<h2>关于受访人</h2>
+<p><img _p="true" _href="img://null" alt="" style="float: left; margin-right: 10px" src="http://infoqstatic.com/resource/articles/costin-elasticsearch-bigdata/zh/resources/1118004.jpg" /><b>Costin Leau</b>是ElasticSearch的一位工程师，目前在从事NoSQL与大数据技术的研究。作为一名开源方面的老手，Costin带领了多个Spring项目的开发，并编写了一份OSGi规格说明书。</p>
+<div style="clear:both"></div>
+<p><strong>查看英文原文：</strong><a href="http://www.infoq.com/articles/costin-elasticsearch-bigdata">Costin Leau on Elasticsearch, BigData and Hadoop</a></p><br><br><br><br><br><br></body></html>

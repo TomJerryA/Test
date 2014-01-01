@@ -1,6 +1,9 @@
 <html>
  <head></head> 
- <body> 
+ <body>
+  <div>
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/39.javab">Tracking Schedule Progress in Agile</a> The challenge of knowing whether we are on track to deliver haunts projectmanagers and developmentmanagers at various levels as their organizations take on agile approaches to product and project development. Driving towards smaller work items and lower work in process brings the benefits of both better project risk management as well as more effective agile execution and learning. 
+  </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/38.javab">I’d Rather Be Coding – Writing Things Down</a> For lots of reasons, most developers hate writing down anything that isn’t code. The Agile Manifesto deemphasizes documentation, but there are times on a project when a little documentation can go a long way. In this article, we will explore why collaboration over comprehensive documentation shouldn’t mean “NO” documentation – and when you should stop coding and start writing things down. 
   </div> 
@@ -147,9 +150,6 @@
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/41.javab">Scrum Master: Position or Role?</a> A Scrum delivery team needs a dedicated Scrum Master. But as the team matures, is this still the case? This article proposes alternatives for mature delivery teams. 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/40.javab">Interview with Joel Murach - Author of Murach's Android Programming</a> In this review, Anand reviews the recently released Murach's Android Programming authored by Joel Murach. 
-  </div> 
+  </div>  
  </body>
 </html>
