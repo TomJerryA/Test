@@ -1,12 +1,33 @@
-<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>Simian Armyを使わないPagerDutyの復元性テスト</h3><p><a target="_blank" href="http://www.infoq.com/news/2013/11/dod-lon-day1-failure-testing"><em>原文(投稿日：2013/11/12)へのリンク</em></a></p>
+<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>QCon London '14: 基調講演はDamian Conway, Tim Lister, Gunter Dueckの各氏, 講演者は45%が確定 (3月3〜7日)</h3><p><a target="_blank" href="http://www.infoq.com/news/2013/12/qcon-london-2014"><em>原文(投稿日：2013/12/04)へのリンク</em></a></p>
 <div class="article_page_left news_container text_content_container"> 
  <div class="text_info"> 
-  <p><a href="http://www.pagerduty.com/">PagerDuty</a>の<a href="http://www.devopsdays.org/events/2013-london/proposals/Failure%20Friday!%20-%20Start%20injecting%20failure%20today/">Doug Barth</a>氏が，特別な自動化作業を前もって用意することなくシステムの復元性テストを開始するという，同社で実施したアプローチについて，<a href="https://speakerdeck.com/dougbarth/failure-friday-start-injecting-failure-today">DevOps Days Londonで講演した</a>。目標としたのは障害発生点の早期発見と，１週間に１時間の時間枠を設けて，その対処方法についてオープンに議論することだ。</p> 
-  <p class="MsoNormal"><span lang="EN-GB">Netflixで有名な<a href="http://techblog.netflix.com/2011/07/netflix-simian-army.html">simian army</a>のようなカバレッジで障害テストを自動化することは，PagerDutyのマルチクラウド環境では実現不可能だ。また，社内の自動ツールに投資したとしても，初期結果を得るまでには時間を要する。</span><span lang="EN-GB">そこで同社では，&quot;Failure Friday&quot; と名付けた手動の障害テストアプローチを採用することにした。</span><span lang="EN-GB">毎週金曜日の1時間を使って一連の &quot;アタック&quot; (障害を引き起こす) を実行し，”犠牲者” (テスト対象のシステム)の反応をチェックするのだ。</span></p> 
-  <p class="MsoNormal"><span lang="EN-GB">アタックとアタックの間，システムは通常の動作状態に戻される。</span><span lang="EN-GB">大きな障害が発生した (例えば障害発生後，犠牲者システムへ送られたリクエストが，他のサービスインスタンスによって処理されなくなったような) 場合，アタックは中止される。</span><span lang="EN-GB">この時はセッションを停止して，システムを一旦，手動で回復させる。</span><span lang="EN-GB">その上で次の金曜日に，恒久的な対策をテストするのだ。</span><span lang="EN-GB">そういったことがなければ，アタックは1時間，セッションが終了するまで継続される。</span></p> 
-  <p class="MsoNormal"><span lang="EN-GB">アタックの方法は，<a href="http://cassandra.apache.org/">Cassandra</a>データベースインスタンスの停止やサーバインスタンスの再起動といった簡単な障害シミュレーションから始まり，より複雑な，ネットワーク分離 (IPテーブルの設定ミスによりドロップしたパケットの特定ポートへの転送) やノードの能力低下 (<a href="http://www.linuxfoundation.org/collaborate/workgroups/networking/netem#Emulating_wide_area_network_delays">netemのネットワークエミュレーション</a>を使用) のシミュレーションにまで及ぶ。</span></p> 
-  <p class="MsoNormal"><span lang="EN-GB">システムの問題解決に加えて，障害の処理とテストの必要性に関する全般的な意識向上などが，期待される効果として挙げられる。</span><span lang="EN-GB">しかしそれよりも氏が強調したのは，実際に体験するまでの間に陳腐化したり不正確なものになるような，単なる理論的知識ではなく，故意に発生させた障害を経験し理解した結果として，新たなオンコール対応技術者(開発あるいは運用において)の数的拡大が可能になるという，副次的な効果の方だ。</span><span lang="EN-GB">その他にも期待していなかった効果として，シミュレーションの難しいコンポーネント障害の所在が明らかになったことがある。これが要因となってアーキテクチャが変更され，システム全体のテスト性を向上することができた。</span></p> 
-  <p class="MsoNormal"><span lang="EN-GB">実務的組織の観点から氏は，実施記録と活動時間，発見項目と障害記録に加えて，ダッシュボードと測定基準を公開することの重要性にも言及した。</span><span lang="EN-GB">さらに氏は，監視システムが所定の動作をしていることの確認のため，セッション中も警告を停止しないことを推奨した。ただし，故意に起こした障害がアラームエスカレーションされるのを避けるため，アタックセッションの実施をすべての人々に周知することも付け加えている。</span>
-   <o:p></o:p></p> 
+  <p><a href="http://qconlondon.com/?utm_source=infoq&amp;utm_medium=news&amp;utm_campaign=12042013news">QCon London 2014 (2014年3月3～7日)</a>講演者100人中の45人と，3人の基調講演者が決定した。８年目を迎えるこのカンファレンスでは，言語開発の先駆者やプロジェクトリーダに加えて，NetflixやNASA, Spotify, Financial Times(英国の経済紙)といった企業の実践者によるケーススタディ講演も行われる。参加登録はすでに始まっていて，新たに決定した講演者やセッションは毎週，カンファレンスのサイトに掲載される。<strong>12月15日</strong>までの予約には<strong>325ユーロ</strong>の早期割引もある。</p> 
+  <p>現在決定している基調講演者は:</p> 
+  <ul> 
+   <li><a href="http://qconlondon.com/london-2014/speaker/Damian+Conway?utm_source=infoq&amp;utm_medium=news&amp;utm_campaign=12042013news"><strong>Damian Conway</strong> </a>- Perl研究者，&quot;Perl Best Practices&quot;著者</li> 
+   <li><strong>Tim Lister </strong>- Cutter Consortiumフェロー; &quot;Peoplware: Productive Projects and Teams&quot; 著者</li> 
+   <li><strong>Gunter Dueck</strong> – 独IBMの前CTO; 思想家，数学者</li> 
+  </ul> 
+  <p>その他，QCon London 2014で確認している講演者は:</p> 
+  <ul> 
+   <li><a href="http://qconlondon.com/london-2014/speaker/Martin+Thompson?utm_source=infoq&amp;utm_medium=news&amp;utm_campaign=12042013news"><strong>Martin</strong>&nbsp;<strong>Thompson</strong></a> – 高性能コンピューティング(HPC)スペシャリスト</li> 
+   <li><strong><a href="http://qconlondon.com/london-2014/speaker/Erik+Meijer?utm_source=infoq&amp;utm_medium=news&amp;utm_campaign=12042013news">Erik Meijer</a></strong> – LINQ開発者</li> 
+   <li><a href="http://qconlondon.com/london-2014/speaker/Joe+Armstrong?utm_source=infoq&amp;utm_medium=news&amp;utm_campaign=12042013news"><strong>Joe</strong>&nbsp;<strong>Armstrong</strong></a> – Erlangの共同開発者</li> 
+   <li><strong><a href="http://qconlondon.com/london-2014/speaker/Adrian+Cockcroft?utm_source=infoq&amp;utm_medium=news&amp;utm_campaign=12042013news">Adrian Cockcroft</a></strong> – Netflix Cloud Systemsチーム，アーキテクチャディレクタ</li> 
+   <li><a href="http://qconlondon.com/london-2014/speaker/Dave+Farley?utm_source=infoq&amp;utm_medium=news&amp;utm_campaign=12042013news"><strong>Dave</strong>&nbsp;<strong>Farley</strong></a> – 書籍&quot;Continuous Delivery”の共同執筆者</li> 
+   <li><a href="http://qconlondon.com/london-2014/speaker/Tim+Fox?utm_source=infoq&amp;utm_medium=news&amp;utm_campaign=12042013news"><strong>Tim</strong> <strong>Fox</strong> </a>- VMware vert.x プロジェクトリーダ</li> 
+   <li><a href="http://qconlondon.com/london-2014/speaker/Ruslan+Meshenberg?utm_source=infoq&amp;utm_medium=news&amp;utm_campaign=12042013news"><strong>Ruslan</strong>&nbsp;<strong>Meshenberg</strong></a> – Netflix エンジニアリングディレクタ</li> 
+   <li><a href="http://qconlondon.com/london-2014/speaker/Eva+Andreasson?utm_source=infoq&amp;utm_medium=news&amp;utm_campaign=12042013news"><strong>Eva</strong>&nbsp;<strong>Andreasson</strong></a> - 決定型ガベージコレクションの第一人者</li> 
+   <li><a href="http://qconlondon.com/london-2014/speaker/Linda+Rising?utm_source=infoq&amp;utm_medium=news&amp;utm_campaign=12042013news"><strong>Linda</strong>&nbsp;<strong>Rising</strong></a> – 多数の著書を持つパターンの女王</li> 
+   <li><a href="http://qconlondon.com/london-2014/speaker/Michael+T.+Nygard?utm_source=infoq&amp;utm_medium=news&amp;utm_campaign=12042013news"><strong>Michael</strong>&nbsp;<strong>T. Nygard</strong></a> - &quot;Release It!&quot; 著者</li> 
+   <li><a href="http://qconlondon.com/london-2014/speaker/Nathan+Marz?utm_source=infoq&amp;utm_medium=news&amp;utm_campaign=12042013news"><strong>Nathan</strong>&nbsp;<strong>Marz</strong></a> – オープンソースプロジェクトStormとCascalogの開発者</li> 
+   <li><a href="http://qconlondon.com/london-2014/speaker/Stefan+Tilkov?utm_source=infoq&amp;utm_medium=news&amp;utm_campaign=12042013news"><strong>Stefan</strong>&nbsp;<strong>Tilkov</strong></a> – SOAとRESTの権威でinnoQの創設者</li> 
+   <li><strong>Chris</strong>&nbsp;<strong>Mattmann</strong> – NASAに所属するデータ科学者</li> 
+  </ul> 
+  <p>QCon Londonは，技術チームのリーダやアーキテクト，プロジェクトマネージャ，ソフトウェア技術者に対象を限定した，最高レベルのエンタープライズソフトウェア開発カンファレンスである。情報収集や人的ネットワーク構築，さらにはJavaやビッグデータ，アジャイル，クラウドコンピューティング，HTML5/モバイル，アーキテクチャなどのコミュニティで起きているイノベーションを追う上で，英国においては類を見ないイベントだ。</p> 
+  <p>今年QCon London 2013には1,100人を越える参加者 – 今日までのQConでは最大規模のものだ – があり，数千のツィートと数百のブログ記事を生み出した。それらすべては &quot;<a href="http://www.infoq.com/articles/QCon-London-2013">Key Takeaway Points and Lessons Learned from QCon London 2013</a>&quot; にまとめられている。読者もぜひQCon London 2014に参加してほしい。<a href="https://secure.trifork.com/london-2014/registration/?utm_source=infoq&amp;utm_medium=news&amp;utm_campaign=12042013news"><strong>12月15日までの登録には325ユーロのディスカウントがある。</strong></a>&nbsp;</p> 
+  <p><b>同僚と一緒に参加したい？</b>&nbsp;社内の５人以上でグループとして登録すれば，QCon Londonの特別値引きが受けられる。<a href="https://secure.trifork.com/london-2014/registration/?utm_source=infoq&amp;utm_medium=news&amp;utm_campaign=12042013news">詳細はこちらをクリックしてほしい</a>。</p> 
+  <p>QConはDanish GOTOカンファレンスを主催するTriforkとInfoQ.comの共催で行われている。</p> 
+  <p>&nbsp;</p> 
  </div> 
 </div><br><br><br><br><br><br></body></html>

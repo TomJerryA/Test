@@ -1,7 +1,7 @@
 <html>
  <head></head> 
- <body>
-  <div>
+ <body> 
+  <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/11.htmlb">敏捷流畅度：找到适合需求的敏捷方式</a> 敏捷流畅度模型是一种思考与计划敏捷投资的方式，它能够帮助你创建最适合于公司的开发投入、商业需求和客户价值的敏捷环境。James Shore和Diana Larsen曾在2012年的文章“通往流畅敏捷之路”中对其进行了讨论。Diana撰写的本文旨在帮助你有效地使用敏捷流畅度模型。 
   </div> 
   <div> 
@@ -150,6 +150,6 @@
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/14.htmlb">博文共赏：Martin Fowler对将page对象用于Web测试的基本经验法则</a> 一个page对象可以封装一个HTML页面或部分页面，你可以通过提供的应用程序特定的API来操作页面元素，而不需要在HTML中四处搜寻。page对象的一个基本经验法则是，凡是人类能做的事，page对象通过软件客户端都能够做到。 
-  </div>  
+  </div> 
  </body>
 </html>

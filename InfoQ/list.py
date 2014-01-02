@@ -1,6 +1,21 @@
 <html>
  <head></head> 
- <body> 
+ <body>
+  <div>
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/24.py">Twitter、CocoaSPDYをオープンソースに</a>TwitterがCocoaSPDYを開発し、それをオープンソース化した。CocoaSPDYはOSX (Cocoa)とiOS (Cocoa Touch)向けのSPDYフレームワークで、彼らが以前Nettyに寄贈した実装に基づいている。時を同じくして、彼らのiOSアプリケーションも素のHTTPの代わりにSPDYを使うようアップデートされた。Twitterはこれにより通信遅延を最大30%削減でき、「ユーザのネットワーク状況が悪いとき」ほど改善が顕著に見られると説明している。
+  </div>
+  <div>
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/23.py">アジャイルチームの構成を変える</a>「安定したチーム作りと機能不全なチームの対処」でレポートしたように、組織は安定したチームを構築、育成することを望んでいる。だが時として、チーム内あるいはチーム群の構成を変える必要がある。チーム構成を変更する必要があるとき、どのように実施すればよいのだろうか？
+  </div>
+  <div>
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/22.py">QCon London '14: 基調講演はDamian Conway, Tim Lister, Gunter Dueckの各氏, 講演者は45%が確定 (3月3〜7日)</a>QCon London 2014 (2014年3月3～7日)講演者100人中の45人と，3人の基調講演者が決定した。８年目を迎えるこのカンファレンスでは，言語開発の先駆者やプロジェクトリーダに加えて，NetflixやNASA, Spotify, Financial Times(英国の経済紙)といった企業の実践者によるケーススタディ講演も行われる。12月15日までに予約すれば325ユーロの早期割引が受けられる。
+  </div>
+  <div>
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/21.py">即興的な劇場型ワークショップで言葉の壁を経験する</a>XP Daysに行われたAgile Cross BordersワークショップでHoang-Anh PHAN氏とAnais Victor氏は，多文化組織(multi cultural organization)における言葉の壁への対処方法を検討した。両氏はベトナムの企業であるOfficienceに所属する。フランスのユーザを対象としたアウトソーシングサービスを提供している同社では，コミュニケーションや共同作業には英語を使用している。
+  </div>
+  <div>
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/20.py">PayPal社がバックエンドをJavaからJavaScriptへ移行</a>PayPal社はJSPとJavaで書かれたレガシーコードを捨て、ブラウザからWebアプリケーションのバックエンドサーバまで、幅広くJavaScriptを採用することに決めた。
+  </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/19.py">Reactive Extensions for C++の紹介</a>Rx.cppとしても知られるReactive Extensions for C++が、WinRTでも（C++/CXを使って）、OS Xでも（clangを使って）利用できるようになった。まだ初期段階だが、最後のプレビュー以来、多くの仕事がなされている。 
   </div> 
@@ -135,21 +150,6 @@
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/27.py">Vaughn Vernon氏、リアクティブドメイン駆動設計について語る</a>Implementing Domain-Driven Designの著者であるVaughn Vernon氏が、イベント駆動やヘキサゴナルアーキテクチャでよく見られるアーキテクチャオーバーヘッドを取り除く手段として、ScalaとAkka（アクターモデルの実装）をドメイン駆動設計と組み合わせて使うことについて説明した。 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/26.py">ActiveMQ 5.9：LevelDB ストアのレプリケーション、およびHawtio ウェブコンソールに対応</a>メッセージブローカの Apache ActiveMQ の最新バージョン5.9 は、200件以上の問題点修正とともに、LevelDBのレプリケーションをサポートする機能と、新しい Hawtio ウェブコンソールを追加した。 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/25.py">Apportable、AndroidにObjective-Cを持ち込む</a>ApportableはiOS開発者がAndroid向けソフトウェアを配布する可能性をもたらす。Apportable SDKとコマンドラインツールを使うことで、プログラマはObjective-Cのコードに大きく手を加えることなく、アプリをクロスコンパイルすることができる。また、Apportableはアプリ変換サービスも提供する。 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/24.py">Amazon RDS、PostgreSQLをサポート</a>Amazon RDSがサポートするデータベースにPostgreSQLが追加された。まずはPostgresのversion 9.3.1をサポートし、新しいバージョンが利用可能なればサポートしていく計画だ。 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/23.py">PivotalがCloud FoundryベースのPivotal CFを発表</a>Pivotalは本日，Pivotal CFの提供開始を発表した。Cloud Foundyをベースとしたエンタープライズプラットフォームに加えて，Apache Hadoopや分析サービスなどのPivotal Oneサービスも合わせて提供される。発表についての意見は，gopivotal.comで受け付けている。 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/22.py">Simian Armyを使わないPagerDutyの復元性テスト</a>PagerDutyのDoug Barth氏が，特別な自動化作業を前もって用意することなくシステムの復元性テストを開始するという，同社で実施したアプローチについて，DevOps Days Londonで講演した。目標としたのは障害発生点の早期発見と，１週間に１時間の時間枠を設けて，その対処方法についてオープンに議論することだ。 
-  </div> 
+  </div>      
  </body>
 </html>
