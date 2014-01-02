@@ -1,57 +1,62 @@
-<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>Interview with Joel Murach - Author of Murach's Android Programming</h3><p>Murach's Android Programming by Joel Murach provides a comprehensive coverage of the various concepts associated with the development of Android applications with the help of source codes, screenshots and demo apps.</p>
-<p>Android is a mobile operating system used in majority of smartphones and tablet devices. You need to make use of mobile apps available in Google Play Store to interact with these devices. It is easy to develop apps if you know the basic steps and techniques involved with Android programming.</p>
-<p>Joel Murach in his latest book, <a href="http://murach.com/books/andp/index.htm">Murach’s Android programming</a> provides a comprehensive coverage of the various aspects involved with the development of Android apps.</p>
-<p>Section 1 introduces you to the world of Android in addition to usage of Eclipse, development, test and debugging of your first Android app. Section 2 examines the usage of layouts, widgets, themes, styles, menus, preferences, fragments including the techniques to handle events.</p>
-<p>The author examines the usage of threads, files, adapters, intents, services, notification and broadcast receivers with the help of a news reader app in section 3.</p>
-<p>The chapters in section 4 provides the steps required to work with SQLite databases, tabs, custom adapters, content providers and app widgets with the help of a task list app.</p>
+<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>Pragmatic Techniques for Maintaining a Legacy Application</h3><p>A legacy application seldom looks like this:&nbsp;</p>
+<p><img src="http://www.infoq.com/resource/articles/Pragmatic-Legacy-App-Maintenance/en/resources/2Fig1.png" alt="" _href="img://2Fig1.png" _p="true" /></p>
+<p>In this beautiful graph, layers and blocks are clearly separated and communicating through well-defined channels.&nbsp;Blocks can be moved, replaced, or added easily, supporting those important “ibilities”: extensibility, scalability, maintainability…</p>
+<p>In real life, a legacy application probably looks more like this:</p>
+<p><img src="http://www.infoq.com/resource/articles/Pragmatic-Legacy-App-Maintenance/en/resources/1Fig2.png" alt="" _href="img://1Fig2.png" _p="true" /></p>
+<p>And if you are an unfortunate developer who is tasked to maintain the legacy application, you can sometimes feel like the mice in the maze; every time you turn, there are more unexpected nooks and corners, and even death traps.</p>
 <div id="lowerFullwidthVCR"></div>
-<p>“Some Android apps are mind-blowingly good. Others are terrible. Fortunately, the good ones tend to rise to the top,” said Joel in response to a query regarding the quality of current apps.</p>
-<p>In the final section, the author has examined the steps required to deploy an Android app in addition to usage of app widgets, where you will learn the basic steps to add the Google Play services library to a project including the retrieval of SHA-1 fingerprint, MAP API key and current location. Joel also discusses the steps required to register the Maps API key in addition a note which examines whether the GPS has been enabled or not.</p>
-<p>You will also learn the basic technique to display a map, add markers and lines including the usage of Run Tracker app, activity_run_map layout, RunMapactivity and RunTrackerService classes.</p>
-<p>The book also includes an appendix which provides the usage of IntelliJ with Android programming.</p>
-<p>Chapter 1 can be downloded&nbsp;<a href="/resource/articles/joel-murach-android-programming-interview/en/resources/Murach_Android_Programming_Sample_Chapter_1.pdf" _href="resource://Murach_Android_Programming_Sample_Chapter_1.pdf">here</a>.</p>
-<p>InfoQ had a chat with Joel Murach to know information about his book and also on the latest trends on Android mobile apps.</p>
-<p><b>InfoQ: How does the Murach Android Programming book help mobile developers?</b></p>
-<blockquote> 
- <p>First, this book helps developers by teaching them basic Android development skills, even if they don't have any previous experience with Android development. Second, thanks to the way we designed this book, it helps developers by working really well for reference.</p> 
-</blockquote>
-<p><b>InfoQ: </b><b>How easy it is to build Android apps?</b></p>
-<blockquote> 
- <p>If you already have basic Java skills, it's pretty easy to build a simple Android app. Of course, even for a simple app, there are some tricky parts to getting started. For example, you have to handle lifecycle events that may occur on the app such as the user switching screen orientation or navigating to another app to send a text message.</p> 
- <p>Another challenge is getting an app to work correctly for the wide variety of screen sizes and shapes that are available from Android devices. Finally, since the Android operating system provides another API that sits on top of the Java API, there's a whole new API to learn (and it’s a large API).</p> 
- <p>Fortunately, this API is designed to make it as easy as possible for a developer to code a mobile app that runs on an Android device.</p> 
-</blockquote>
-<p><b>InfoQ: Do you see Google adopting Java 8 in the near future?</b></p>
-<blockquote> 
- <p>I don't. For the foreseeable future, I see Android continuing to use its current subset of Java SE 6 features and APIs. Eventually, I think Google will be forced by popular demand to add Java 8 features and APIs to Android, but I think that is at least a few years away.</p> 
-</blockquote>
-<p><b>InfoQ: Can you share with us the purpose for covering the topics using News Reader and Task List apps?</b></p>
-<blockquote> 
- <p>The purpose is to make it easier for the reader to understand how to use features within the context of an app. You could present the features out of context, but then the reader has to figure out how to put the feature in context. This is an extra step that makes it more difficult to understand the feature. The trick, of course, is to keep the sample apps small and simple, so the feature that you're trying to illustrate doesn't get lost in all the other code of the app. I did my best to strike the right balance.</p> 
-</blockquote>
-<p><b>InfoQ: Can you disclose the reason for not covering development of a game app in your book?</b></p>
-<blockquote> 
- <p>I considered covering a game app in this book, but I decided not to because I think it's more common for developers to need to create apps like the ones in this book. These apps display and work with data. If I get feedback from my readers that they would really like to see a game app, I will do my best to add one in the next edition of this book.</p> 
-</blockquote>
-<p><b>InfoQ: </b><b>Is it possible to build Android applications using Visual Studio 2013?</b></p>
-<blockquote> 
- <p>To be honest, I'm not sure about this. With previous editions of Visual Studio, it was possible to build Android apps if you installed certain plug-ins. However, I wouldn’t recommend using Visual Studio for Android development. For now, I'd recommend using Eclipse. Or, if you can’t stand Eclipse, you might want to use IntelliJ, which works more like Visual Studio. In the future, you might want to check out Android Studio, which is currently being developed jointly by IntelliJ and Google, and should be available within the next year or so.</p> 
-</blockquote>
-<p><b>InfoQ: </b><b>There is a general theory that Android based mobile devices consumes more battery power when compared with Windows Phone 8. What is your take on this issue?</b></p>
-<blockquote> 
- <p>I think both of these operating systems handle battery life adequately for most users. I think the battery life for a particular device probably depends more on what apps are running on the device than on the OS. However, I don’t know the low-level technical details of both operating systems, so this is just my take on this issue.</p> 
-</blockquote>
-<p><b>InfoQ: </b><b>Is it possible to build a mobile app which works with both Android and Windows Phone 8 devices?</b></p>
-<blockquote> 
- <p>Yes, you can build the app for one of these devices and then manually port the code to the other. If you structure your code well, this shouldn't be too difficult. Or, if you prefer, you can try using a product that's designed to create cross-platform mobile apps. For example, you can use Xamarin to develop apps that work for Windows Phone, Android, or iOS. These apps can share most of their code, though the code for the user interface is specific to each OS. I don't have experience with of these cross-platform products, so I can't vouch for how well they work.</p> 
-</blockquote>
-<p><b>InfoQ: </b><b>Do you think Murach Android Programming is a complete resource for developers?</b></p>
-<blockquote> 
- <p>No, I didn't design this book as a complete resource for developers. The goal of this book is to help a developer who already has basic Java skills get to a point where he or she has all the fundamental Android development skills. At the end of this book, the reader should have a solid base and should be primed to learn more about whatever part of Android he or she wants to.</p> 
-</blockquote>
-<p><b>InfoQ: </b><b>How do you see the growth and potential of Android apps after 5-10 years?</b></p>
-<blockquote> 
- <p>I see the number of Android apps continuing to grow for the foreseeable future. At some point, maybe in 5-10 years or so, I see growth on smartphones and tablets stagnating. At that point, I see Android apps continuing to grow other types of devices.</p> 
-</blockquote>
-<h2>About the Book Author</h2>
-<p><strong><img src="http://www.infoq.com/resource/articles/joel-murach-android-programming-interview/en/resources/Joel_Murach_Photo.png" vspace="3" hspace="3" align="left" alt="" _href="img://Joel_Murach_Photo.png" _p="true" />Joel Murach</strong> has been writing and editing books about computer programming for over 10 years. During that time, he has written extensively on a wide range of Java, .NET, web, and database technologies. When he's not programming or writing books about programming, he can be found surfing or writing music.</p><br><br><br><br><br><br></body></html>
+<p>I’ve been in charge of maintaining such a legacy application for over two years, and in this article, I want to share my experiences on how to pragmatically maintain a big legacy application.</p>
+<p>I stress the word “pragmatic”; since a legacy application can have a lot of technical debt, it is not feasible or economical to pay off all technical debt; one has to be strategic in choosing the right battles.</p>
+<h4>Spying on enemies</h4>
+<p>A brief description of the massive legacy application that I am maintaining:</p>
+<p><img src="http://www.infoq.com/resource/articles/Pragmatic-Legacy-App-Maintenance/en/resources/2Fig3.png" alt="" _href="img://2Fig3.png" _p="true" /></p>
+<p>The big house is JBoss 4.0. For some reason, JBoss 4.0 was tweaked in some mysterious ways, making it hard to upgrade. So already, the house was not built very strongly (hence it is raining). The two small houses represent two web applications (two WARs) deployed onto JBoss. One house is much smaller, and serves a smaller purpose. Every single page has to be served by two houses. There are three connection pools, two transaction mechanisms, one home-made cache, one home-made cluster mechanism, one home-made RMI mechanism etc.</p>
+<p>The first step for maintaining a legacy application is to understand it. It is impractical for us to understand every detail of the application, but we need to understand the big picture:</p>
+<ol> 
+ <li>Why are there two WARs for serving one single page? How do the two WARs interact with each other? What is the overhead? How can we merge them?</li> 
+ <li>How are transactions handled? Is there a risk for transaction corruption with the interaction between two WARs, three connection pools and two transaction mechanisms?</li> 
+ <li>How do we know if the performance bottleneck is in the database or in the code? If it is in the code, how can we drill down?</li> 
+</ol>
+<p>Analyzing code statically is either inadequate or inaccurate. We developed several tools to spy on the application at runtime to answer these questions. We took care to implement these tools as add-ons: they are not entangled with the application code, so they are not extra code that we have to maintain. For more technical details of these tools, check out my <a href="http://perfspy.blogspot.com/">blog</a>.</p>
+<h3>SQLTracer</h3>
+<p>This tool can be turned on for every single web page, and tracks which SQL queries are issued, how many times each, and elapsed time. And very importantly, it generates tkprof for these queries for performance troubleshooting purpose.</p>
+<p><img src="http://www.infoq.com/resource/articles/Pragmatic-Legacy-App-Maintenance/en/resources/1Fig4.png" alt="" _href="img://1Fig4.png" _p="true" /></p>
+<h4>Technical details</h4>
+<p>SQLTracer spies on JDBC operations using the following logic:, when a page request arrives a javax.servlet.Filter checks if tracing is turned on for that page and stores the page information in a ThreadLocal. When connections are fetched from a connection pool, their actions are intervened by AspectJ advices, which track SQL statements, invocation times and elapsed time. The connections are marked with the same identifier using Oracle dbms_session.set_identifier(), and their actions are traced using dbms_monitor.client_id_trace_enable(). This technique allows tracing different connections.</p>
+<h3>Perfspy</h3>
+<p>PerfSpy is a runtime logging and performance monitoring tool. We use it to spy on individual pages, it will log method invocation, elapsed time, method parameters and return values – in short, it does step-debugging and stores everything for later inspection without you having actually to do step-debugging in an IDE. It does runtime code analysis and figures out performance bottleneck. It has a UI application that shows the method invocation as a tree, and provides ways to manipulate the tree – hide nodes, search nodes, mark nodes etc. Method parameters and values are also presented as trees. Here is a screenshot:</p>
+<p><img src="http://www.infoq.com/resource/articles/Pragmatic-Legacy-App-Maintenance/en/resources/Fig5.png" alt="" _href="img://Fig5.png" _p="true" /></p>
+<p>With this tool, we are able to answer these big questions:</p>
+<p>1) How do the two WARs work together? We can conclude that there is no need for two WARs; it complicates deployment and adds memory and performance overhead, and it is quite easy to merge the two WARs together.</p>
+<p>2) How do the three connection pools and two transaction mechanisms work together? We originally believed that when some code initiated a transaction, it would pass the transaction downward and hence all operations would be done in a single transaction. However we discovered that in some scenarios, transactions are not passed down and operations are not done in a single transaction, which explains many data corruption issues we’ve seen in users’ instances. Perfspy is able to provide the insight because it logs detailed information of method parameters and return values, including their system hash codes. So in the method invocation tree we can see when and where a new connection or Hibernation session, or a new transaction is started.</p>
+<p>3) What is the performance bottleneck for a certain web page? SQLTracer shows performance issues on the database side, PerfSpy shows performance issues on the code side by showing duplicated invocations and elapsed time.</p>
+<h4>Technical details</h4>
+<p>PerfSpy uses AspectJ to do runtime monitoring. PerfSpy has an abstract aspect that does logging, monitoring and tracking. Once this aspect kicks into action, it consults a configuration file to decide how much information it should gather and what code analysis it should perform. To use PerfSpy you write an aspect that extends from the abstract PerfSpy aspect, in which you specify which code flow and what methods in the code flow you’d like to capture.</p>
+<p>Typically an application uses some framework to serve generic purposes, and the application extends that framework to perform specific actions. For example, Struts 1.2 has org.apache.struts.action.Action, which can be extended to serve web page actions. PerfSpy is designed to spy on such frameworks. For example, to use PerfSpy to spy on Struts actions, one can write an aspect which extends from the PerfSpy aspect:</p>
+<pre><font color="#c0c0c0">@Aspect</font><br /><font color="#800040"><b>public</b> <b>class</b></font> PerfSpyStrutsAsepct <b><font color="#800040">extends</font></b> AbstractPerfSpyAspect {<br /><font color="#008040">        //specifies which code flow to spy on</font> <br /><font color="#c0c0c0">        @Pointcut</font>(<font color="#0000ff">&quot;cflow (execute(* org.apache.struts.action.Action.execute(..)))&quot;</font>)<br /><font color="#800040"><b> public</b> <b>void</b></font> cflowOps() {<br />        }
+<br /><font color="#008040">        //specifies which methods in the code flow to spy on</font><br /><font color="#c0c0c0">        @Pointcut</font>(<font color="#0000ff">&quot;execution(* com.myCompony.myPk1.myPk2.*(..))&quot;</font>)<br /><font color="#800040"><b> public</b> <b>void</b></font> withinCflowOps() {<br />        }
+<br />}</pre>
+<p>The configuration file can specify which concrete Struts action class to spy on. In this way, one can turn spying on or off for individual pages.</p>
+<h3>BLSpy</h3>
+<p>BLSpy stands for business logic spy. Often times, our users (and sometimes even ourselves) can become confused about the numbers produced by our legacy application; they’d like to know how the application calculates those numbers. Users can turn on spying for individual types of business numbers.</p>
+<p>With this tool, users are now able to solve such confusion without contacting us. And we ourselves have even detected some calculation flaws with this tool.</p>
+<h4>Technical details</h4>
+<p>BLSpy is developed on top of PerfSpy. PerfSpy allows us to capture the calculation code flow, but we want to present the calculation in business terms to users. For example, we would like to convey messages such as “to calculate the human resource costs for this week for department A, we fetched the time records of the human resources from department A, and found out Jason worked on database maintenance for 20 hours, and his hourly salary is $30...”. To do so we annotate the meaning of the methods that are involved in a calculation flow, and at runtime, extract the meanings and combine with the methods captured by PerfSpy, and present meaningful information to users.</p>
+<h2>Picking battles</h2>
+<p>Legacy applications can be like a mine field. Every place you care&nbsp;to dig, you might find a bigger problem than you expected. It is not feasible or economical to plug up every hole. Usually management likes to shrink the task force maintaining the legacy application ever smaller and smaller, so every investment has to be calculated.</p>
+<p>There is a natural metric that measures defects per function area. The application is used by many users and when they encounter issues they log tickets to us. In the ticket they select the functional area where the issue occurs. This metric is inadequate however because:</p>
+<ol> 
+ <li>This metric doesn’t provide a broad view of architectural level flaws. It is easy to categorize functional issues. On the other hand non-functional issues such as performance issues, scalability issues, and stability issues, although they may manifest themselves in functional areas, their root cause may cross functional area boundaries. For example slowness in creating an order in the order module or slowness to raise a complaint in the complaint module might be caused by the same underlying queuing mechanism.</li> 
+ <li>It creates the motivation to turn around the numbers using “quick and dirty” tactics. For example, our transaction mechanisms results in a lot of dirty issues. The usual “quick and dirty” tactics would be to delete the dirty data directly from the database or work around the dirty data in code, which can turn around the metric quickly but doesn’t improve the system health at all.</li> 
+</ol>
+<p>We decided to create a metric on top of this natural metric, which we call the “high impact” metric. This metric essentially highlights the most impactful problems plaguing the legacy application and asks for upper management’s support for improving the legacy application’s architecture. We define “performance”, “stability”, “dirty data” and some other non-functional problems as “high impact”, because they either take a longer time to solve or often incur user escalation. We categorize every user reported problem into these categories. Below is a simplified illustration of this metric:</p>
+<p><img src="http://www.infoq.com/resource/articles/Pragmatic-Legacy-App-Maintenance/en/resources/Fig6.png" alt="" _href="img://Fig6.png" _p="true" /></p>
+<p>In this diagram, although functional problems occur most often, they are easier to solve and users don’t often escalate them; on the contrary, stability problems, although they occur rarely, are often escalated, and hard to solve. Users tend to be more provoked by stability issues, because they happen randomly, and even tolerant users might not know when and how to prepare for random events. Dirty data is one type of stability issue, we separate it out because dirty data issues used to happen a lot.</p>
+<p>User-wrath (escalation) is a good way to draw upper management’s attention to technical debt, and to convince them to invest on improving the architecture of the legacy application.</p>
+<h2>Fighting battles</h2>
+<p>We know what we want to tackle using the “high impact” metric, and we know how to dig deeper into the dark secretes of the legacy application through the various spying tools, we are ready to engage the fight.</p>
+<p>Refactoring legacy applications can be scary as legacy applications tend to have little unit tests. Our approach is described in this <a href="http://www.infoq.com/articles/refactoring-legacy-applications">article</a>.</p>
+<h2>Conclusion</h2>
+<p>Maintaining legacy applications is an on-going battle. Using the “high-impact” metric, we choose the next big battle to fight. Using the various spying tools we can discover the ins and outs of the enemies. And using the testing framework which we are building and enriching along the way, we are able to conquer the enemy (refactor old code).</p>
+<h2>About the Author</h2>
+<p><strong><img src="http://www.infoq.com/resource/articles/Pragmatic-Legacy-App-Maintenance/en/resources/1Chen-Ping.jpg" vspace="3" hspace="3" align="left" alt="" _href="img://1Chen-Ping.jpg" _p="true" />Chen Ping</strong> lives in Shanghai, China and graduated with a Masters Degree in Computer Science in 2005. Since then she has worked for Lucent and Morgan Stanley. Currently she is working for HP as a Development manager. Outside of work, she likes to study Chinese medicine.</p><br><br><br><br><br><br></body></html>

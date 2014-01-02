@@ -2,6 +2,9 @@
  <head></head> 
  <body>
   <div>
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/40.javab">Pragmatic Techniques for Maintaining a Legacy Application</a> Maintaining a legacy application can make you feel like mice in a maze. In this article Ping Chen shares her experiences on how to pragmatically maintain a large legacy application. &quot;Pragmatic” is the operative word; since a legacy application can have lots of technical debt, one has to be strategic in choosing the right battles. 
+  </div> 
+  <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/39.javab">Tracking Schedule Progress in Agile</a> The challenge of knowing whether we are on track to deliver haunts projectmanagers and developmentmanagers at various levels as their organizations take on agile approaches to product and project development. Driving towards smaller work items and lower work in process brings the benefits of both better project risk management as well as more effective agile execution and learning. 
   </div> 
   <div> 
@@ -147,9 +150,6 @@
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/42.javab">API Business Models: 20 Models in 20 Minutes</a> In this keynote from the 2013 API Strategy Conference, John Musser, founder of ProgrammableWeb, reviews the API business models that have been adopted by the worlds leading technology companies. 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/41.javab">Scrum Master: Position or Role?</a> A Scrum delivery team needs a dedicated Scrum Master. But as the team matures, is this still the case? This article proposes alternatives for mature delivery teams. 
   </div>  
  </body>
 </html>

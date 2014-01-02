@@ -2,9 +2,12 @@
  <head></head> 
  <body>
   <div>
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/11.htmlb">敏捷流畅度：找到适合需求的敏捷方式</a> 敏捷流畅度模型是一种思考与计划敏捷投资的方式，它能够帮助你创建最适合于公司的开发投入、商业需求和客户价值的敏捷环境。James Shore和Diana Larsen曾在2012年的文章“通往流畅敏捷之路”中对其进行了讨论。Diana撰写的本文旨在帮助你有效地使用敏捷流畅度模型。 
+  </div> 
+  <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/10.htmlb">Android事件传递机制</a> Android基本事件构成了丰富的操作和体验方式。所有的触屏操作都基于Android的基本事件，本文结合Android系统源码剖析了Android事件的传递机制，比较深入的分析了事件处理方法，并结合实际例子分析了事件传递流程。 
-  </div>
-  <div>
+  </div> 
+  <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/9.htmlb">与Costin Leau谈论Elasticsearch，大数据及Hadoop</a> Elasticsearch是一个开源的分布式实时搜索与分析引擎，支持云服务。作为Elasticsearch-hadoop的第一个里程碑，它的1.3.M1版本在十月上旬发布了。InfoQ与Costin Leau进行了一次对话，谈论了Elasticsearch的搜索与分析引擎，以及它是如何与Hadoop或其它的大数据技术相结合的。 
   </div> 
   <div> 
@@ -147,9 +150,6 @@
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/14.htmlb">博文共赏：Martin Fowler对将page对象用于Web测试的基本经验法则</a> 一个page对象可以封装一个HTML页面或部分页面，你可以通过提供的应用程序特定的API来操作页面元素，而不需要在HTML中四处搜寻。page对象的一个基本经验法则是，凡是人类能做的事，page对象通过软件客户端都能够做到。 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/13.htmlb">Codenvy背后的技术--一次与CEO TylerJewell的深入访谈</a> Codenvy是个在线IDE(集成开发环境)，它支持使用Java、JavaScript、HTML5、PHP、Ruby和其它语言开发应用程序，同时也内置支持在PaaS上部署这些应用。本文描述了与其CEO Tyler Jewell的一次访谈，其中主要讲述了Codenvy背后所包含的技术。 
-  </div>   
+  </div>  
  </body>
 </html>
