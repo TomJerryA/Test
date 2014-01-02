@@ -1,6 +1,9 @@
 <html>
  <head></head> 
- <body> 
+ <body>
+  <div>
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/35.java">Adding Purpose and Hypotheses to Agile Retrospectives</a>Regularly doing agile retrospectives helps teams to learn and improve themselves. You can make retrospectives more effective by adding purposes and by validating if your retrospective actions are leading to improvement with the usage of hypotheses.
+  </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/34.java">FutureOps with Immutable Infrastructures and Built-in Failure Recovery</a>Mitchell Hashimoto, creator of Vagrant, gave a talk last month at Velocity Conf London about his vision for a “FutureOps” with immutable infrastructures and built-in failure recovery. 
   </div> 
@@ -147,9 +150,6 @@
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/37.java">Wix 3.8 Adds VS 2013 Support in Votive and WiX Native Library and Bootstrapper Application Functions</a>Wix 3.8 has been released with support for Visual Studio 2013 in Votive and WiX native libraries. The release also includes bootstrapper application functions which extends WixStandardBootstrapperApplication including the ability to detect Windows 8.1 in Burn. 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/36.java">Famo.us launches first public access to its Javascript platform</a>The team that built the Famo.us Javascript platform plans their first preview release of their app layer code on December 5th, 2013 as a foreshadowing of their platform's client-side prowess. 
-  </div> 
+  </div>  
  </body>
 </html>

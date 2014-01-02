@@ -1,20 +1,20 @@
 <html>
  <head></head> 
- <body>
-  <div>
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/24.py">Twitter、CocoaSPDYをオープンソースに</a>TwitterがCocoaSPDYを開発し、それをオープンソース化した。CocoaSPDYはOSX (Cocoa)とiOS (Cocoa Touch)向けのSPDYフレームワークで、彼らが以前Nettyに寄贈した実装に基づいている。時を同じくして、彼らのiOSアプリケーションも素のHTTPの代わりにSPDYを使うようアップデートされた。Twitterはこれにより通信遅延を最大30%削減でき、「ユーザのネットワーク状況が悪いとき」ほど改善が顕著に見られると説明している。
-  </div>
-  <div>
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/23.py">アジャイルチームの構成を変える</a>「安定したチーム作りと機能不全なチームの対処」でレポートしたように、組織は安定したチームを構築、育成することを望んでいる。だが時として、チーム内あるいはチーム群の構成を変える必要がある。チーム構成を変更する必要があるとき、どのように実施すればよいのだろうか？
-  </div>
-  <div>
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/22.py">QCon London '14: 基調講演はDamian Conway, Tim Lister, Gunter Dueckの各氏, 講演者は45%が確定 (3月3〜7日)</a>QCon London 2014 (2014年3月3～7日)講演者100人中の45人と，3人の基調講演者が決定した。８年目を迎えるこのカンファレンスでは，言語開発の先駆者やプロジェクトリーダに加えて，NetflixやNASA, Spotify, Financial Times(英国の経済紙)といった企業の実践者によるケーススタディ講演も行われる。12月15日までに予約すれば325ユーロの早期割引が受けられる。
-  </div>
-  <div>
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/21.py">即興的な劇場型ワークショップで言葉の壁を経験する</a>XP Daysに行われたAgile Cross BordersワークショップでHoang-Anh PHAN氏とAnais Victor氏は，多文化組織(multi cultural organization)における言葉の壁への対処方法を検討した。両氏はベトナムの企業であるOfficienceに所属する。フランスのユーザを対象としたアウトソーシングサービスを提供している同社では，コミュニケーションや共同作業には英語を使用している。
-  </div>
-  <div>
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/20.py">PayPal社がバックエンドをJavaからJavaScriptへ移行</a>PayPal社はJSPとJavaで書かれたレガシーコードを捨て、ブラウザからWebアプリケーションのバックエンドサーバまで、幅広くJavaScriptを採用することに決めた。
+ <body> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/24.py">Twitter、CocoaSPDYをオープンソースに</a>TwitterがCocoaSPDYを開発し、それをオープンソース化した。CocoaSPDYはOSX (Cocoa)とiOS (Cocoa Touch)向けのSPDYフレームワークで、彼らが以前Nettyに寄贈した実装に基づいている。時を同じくして、彼らのiOSアプリケーションも素のHTTPの代わりにSPDYを使うようアップデートされた。Twitterはこれにより通信遅延を最大30%削減でき、「ユーザのネットワーク状況が悪いとき」ほど改善が顕著に見られると説明している。 
+  </div> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/23.py">アジャイルチームの構成を変える</a>「安定したチーム作りと機能不全なチームの対処」でレポートしたように、組織は安定したチームを構築、育成することを望んでいる。だが時として、チーム内あるいはチーム群の構成を変える必要がある。チーム構成を変更する必要があるとき、どのように実施すればよいのだろうか？ 
+  </div> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/22.py">QCon London '14: 基調講演はDamian Conway, Tim Lister, Gunter Dueckの各氏, 講演者は45%が確定 (3月3〜7日)</a>QCon London 2014 (2014年3月3～7日)講演者100人中の45人と，3人の基調講演者が決定した。８年目を迎えるこのカンファレンスでは，言語開発の先駆者やプロジェクトリーダに加えて，NetflixやNASA, Spotify, Financial Times(英国の経済紙)といった企業の実践者によるケーススタディ講演も行われる。12月15日までに予約すれば325ユーロの早期割引が受けられる。 
+  </div> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/21.py">即興的な劇場型ワークショップで言葉の壁を経験する</a>XP Daysに行われたAgile Cross BordersワークショップでHoang-Anh PHAN氏とAnais Victor氏は，多文化組織(multi cultural organization)における言葉の壁への対処方法を検討した。両氏はベトナムの企業であるOfficienceに所属する。フランスのユーザを対象としたアウトソーシングサービスを提供している同社では，コミュニケーションや共同作業には英語を使用している。 
+  </div> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/20.py">PayPal社がバックエンドをJavaからJavaScriptへ移行</a>PayPal社はJSPとJavaで書かれたレガシーコードを捨て、ブラウザからWebアプリケーションのバックエンドサーバまで、幅広くJavaScriptを採用することに決めた。 
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/19.py">Reactive Extensions for C++の紹介</a>Rx.cppとしても知られるReactive Extensions for C++が、WinRTでも（C++/CXを使って）、OS Xでも（clangを使って）利用できるようになった。まだ初期段階だが、最後のプレビュー以来、多くの仕事がなされている。 
@@ -150,6 +150,6 @@
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/27.py">Vaughn Vernon氏、リアクティブドメイン駆動設計について語る</a>Implementing Domain-Driven Designの著者であるVaughn Vernon氏が、イベント駆動やヘキサゴナルアーキテクチャでよく見られるアーキテクチャオーバーヘッドを取り除く手段として、ScalaとAkka（アクターモデルの実装）をドメイン駆動設計と組み合わせて使うことについて説明した。 
-  </div>      
+  </div> 
  </body>
 </html>

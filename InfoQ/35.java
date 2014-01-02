@@ -1,28 +1,41 @@
-<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>QCon London '14: Damian Conway, Tim Lister, Gunter Dueck Keynotes, 45% Speakers Confirmed (Mar 3-7)</h3><p>45/100 speakers and 3 keynotes have been confirmed for <a href="http://qconlondon.com/?utm_source=infoq&amp;utm_medium=news&amp;utm_campaign=12042013news">QCon London 2014 (Mar 3-7, 2014)</a>. &nbsp;The eight annual conference will feature talks from language pioneers, project leads, and practitioner case studies from companies like Netflix, NASA, Spotify, Financial Times, and more. Registration is open and new speakers and sessions are being posted to the conference site every week. You can get in early by reserving your seat now <strong>saving &nbsp;&pound;325</strong> by <strong>Dec 15th.</strong></p>
-<p>Keynote speakers confirmed so far:&nbsp;</p>
-<ul> 
- <li><a href="http://qconlondon.com/london-2014/speaker/Damian+Conway?utm_source=infoq&amp;utm_medium=news&amp;utm_campaign=12042013news"><strong>Damian Conway</strong> </a>- Perl Boffin, Author &quot;Perl Best Practices&quot;</li> 
- <li><strong>Tim Lister </strong>- Fellow, Cutter Consortium; Author &quot;Peoplware: Productive Projects and Teams&quot;</li> 
- <li><strong>Gunter Dueck</strong> - Former CTO, IBM Germany; Philosopher and Mathematician</li> 
-</ul>
-<p>Other confirmed speakers for QCon London 2014 include:</p>
-<ul> 
- <li><a href="http://qconlondon.com/london-2014/speaker/Martin+Thompson?utm_source=infoq&amp;utm_medium=news&amp;utm_campaign=12042013news"><strong>Martin</strong>&nbsp;<strong>Thompson</strong></a>&nbsp;- High-Performance Computing Specialist</li> 
- <li><strong><a href="http://qconlondon.com/london-2014/speaker/Erik+Meijer?utm_source=infoq&amp;utm_medium=news&amp;utm_campaign=12042013news">Erik Meijer</a></strong>&nbsp;- Creator of LINQ</li> 
- <li><a href="http://qconlondon.com/london-2014/speaker/Joe+Armstrong?utm_source=infoq&amp;utm_medium=news&amp;utm_campaign=12042013news"><strong>Joe</strong>&nbsp;<strong>Armstrong</strong></a>&nbsp;- Co-inventor of Erlang</li> 
- <li><strong><a href="http://qconlondon.com/london-2014/speaker/Adrian+Cockcroft?utm_source=infoq&amp;utm_medium=news&amp;utm_campaign=12042013news">Adrian Cockcroft</a></strong> - Director of Architecture for the Cloud Systems team at Netflix</li> 
- <li><a href="http://qconlondon.com/london-2014/speaker/Dave+Farley?utm_source=infoq&amp;utm_medium=news&amp;utm_campaign=12042013news"><strong>Dave</strong>&nbsp;<strong>Farley</strong></a>&nbsp;- Co-author of the book &quot;Continuous Delivery&quot;</li> 
- <li><a href="http://qconlondon.com/london-2014/speaker/Tim+Fox?utm_source=infoq&amp;utm_medium=news&amp;utm_campaign=12042013news"><strong>Tim</strong> <strong>Fox</strong> </a>- vert.x Project Lead at VMware</li> 
- <li><a href="http://qconlondon.com/london-2014/speaker/Ruslan+Meshenberg?utm_source=infoq&amp;utm_medium=news&amp;utm_campaign=12042013news"><strong>Ruslan</strong> <strong>Meshenberg</strong></a> - Director of Engineering at Netflix</li> 
- <li><a href="http://qconlondon.com/london-2014/speaker/Eva+Andreasson?utm_source=infoq&amp;utm_medium=news&amp;utm_campaign=12042013news"><strong>Eva</strong> <strong>Andreasson</strong></a> - Pioneer of Deterministic Garbage Collection</li> 
- <li><a href="http://qconlondon.com/london-2014/speaker/Linda+Rising?utm_source=infoq&amp;utm_medium=news&amp;utm_campaign=12042013news"><strong>Linda</strong> <strong>Rising</strong></a> - Queen of Patterns. Author of numerous Books</li> 
- <li><a href="http://qconlondon.com/london-2014/speaker/Michael+T.+Nygard?utm_source=infoq&amp;utm_medium=news&amp;utm_campaign=12042013news"><strong>Michael</strong> <strong>T. Nygard</strong></a> - Author of &quot;Release It!&quot;</li> 
- <li><a href="http://qconlondon.com/london-2014/speaker/Nathan+Marz?utm_source=infoq&amp;utm_medium=news&amp;utm_campaign=12042013news"><strong>Nathan</strong> <strong>Marz</strong> </a>- Creator of the Storm and Cascalog open-source projects</li> 
- <li><a href="http://qconlondon.com/london-2014/speaker/Stefan+Tilkov?utm_source=infoq&amp;utm_medium=news&amp;utm_campaign=12042013news"><strong>Stefan</strong> <strong>Tilkov</strong></a> - SOA and REST authority, innoQ founder</li> 
- <li><strong>Chris</strong>&nbsp;<strong>Mattmann</strong>&nbsp;- Data Scientist, NASA</li> 
-</ul>
-<p>QCon London is the premier enterprise software development conference designed exclusively for technical team leads, architects, project managers, and software engineers. There is no other event in the UK with similar opportunities for learning, networking, and tracking innovation occurring in the Java, Big Data, Agile, Cloud Computing, HTML5/Mobile and Architecture communities.</p>
-<p>QCon London 2013 drew over 1,100 attendees this year - among the largest QCons to date - and elicited thousands of tweets and hundreds of blogs all of which are summarized in the&nbsp;<a href="http://www.infoq.com/articles/QCon-London-2013">Key Takeaway Points and Lessons Learned from QCon London 2013</a>.&nbsp;&nbsp;We hope you can join us for QCon London 2014. <a href="https://secure.trifork.com/london-2014/registration/?utm_source=infoq&amp;utm_medium=news&amp;utm_campaign=12042013news"><strong>Register before December 15th and save &pound;325.</strong></a>&nbsp;</p>
-<p><b>Attending with your colleagues?</b> QCon London offers special savings when you register a group of five or more people from your company. <a href="https://secure.trifork.com/london-2014/registration/?utm_source=infoq&amp;utm_medium=news&amp;utm_campaign=12042013news">Click here for more details</a>. &nbsp;</p>
-<p>QCon is co-produced by InfoQ.com and Trifork, producer of the Danish GOTO conference.</p>
-<p>&nbsp;</p><br><br><br><br><br><br></body></html>
+<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>Adding Purpose and Hypotheses to Agile Retrospectives</h3><p>Regularly doing agile retrospectives helps teams to learn and improve themselves. You can make retrospectives more effective by adding purposes and by validating if your retrospective actions are leading to improvement with the usage of hypotheses.</p>
+<p>Lack of follow through is one of the main reasons why retrospectives sometimes fail to deliver improvements, as Thomas Cagley describes in <a href="http://tcagley.wordpress.com/2013/08/21/retrospectives-obstacles-daily-process-thoughts-august-21-2013/">retrospective obstacles</a>:</p>
+<blockquote> 
+ <p>The worst mistake any team can make is to perform a retrospective then do nothing with the results. While the discussion itself may have been invigorating or cathartic, in the end the team wasted its time.</p> 
+</blockquote>
+<p>To assure that actions are taken, Thomas suggests making the needed improvement explicit and visible:</p>
+<blockquote> 
+ <p>Every retrospective should identify at least one goal or idea for improvement. That goal should be added to the sprint backlog and addressed just any other piece of work that the team has committed to deliver.</p> 
+</blockquote>
+<p>In the blog post <a href="http://www.agile42.com/en/blog/2013/08/28/sprint-retrospectives/">retrospectives that rock</a>, Dave Sharrock explains how you can make retrospectives effective by giving purpose to the meeting:</p>
+<blockquote> 
+ <p>(…) the simplest way to inject another level of energy into the retrospective is simply to provide intent by setting a clear question at the beginning around which to retrospect.</p> 
+ <p>To be valuable, the intent should be clear to all, relevant and definitely not self-serving. These could be focussed on uncovering specific issues tangential to the success of the sprint itself (e.g. what would have to change for the team to deliver twice as many stories in the same amount of time?) or targeted on organizational issues being ignored by the team (e.g. how can we reduce or eliminate the wait for regulatory compliance sign-offs for new features?)</p> 
+</blockquote>
+<p>Bob Marshall explains in <a href="http://flowchainsensei.wordpress.com/2012/05/30/retrospectives-wronger-and-righter/">retrospectives – wronger and righter</a> why he considers the PDCA cycle, which starts with a hypothesis, as one of the roots of retrospectives:</p>
+<blockquote> 
+ <p>How to turn the ordinary retrospective into something extra-ordinary? Go back to its roots. Specifically, PDCA (the Shewhart Cycle). Many folks see the word “Plan” in the simple context of e.g. Sprint Planning and Release Planning (Scrum). But in PDCA proper, derived as it is from Francis Bacon’s original “Scientific Method”, “Plan” means <em>hypothesise</em>:</p> 
+ <ul> 
+  <li>“hypothesis” – <em>plan</em></li> 
+  <li>“experiment” – <em>do</em></li> 
+  <li>“evaluation” – <em>check</em></li> 
+  <li>(Control – a later addition) – <em>act</em></li> 
+ </ul> 
+ <p>In this scheme of things, any retrospective is pointless <em>unless</em> it’s answering the question “did what we expect to happen – <em>our hypothesis</em> – actually happen?”. If so, why so. And if not, why not? <em>Absent an initial hypothesis, we can never ask ourselves this question.</em></p> 
+</blockquote>
+<p>Marc L&ouml;ffler wrote a blog post <a href="http://blog.scrumphony.com/2012/09/inject-purpose-into-retrospectives/">inject purpose into retrospectives</a> where he explains that missing purpose is the root cause that should be addressed to do better retrospectives:</p>
+<blockquote> 
+ <p>Any retrospective without a purpose is a complete waste of time. (the same applies for any other meeting). It doesn’t make sense to change your retrospectives regularly and introduce new ideas as long as there is no purpose behind.</p> 
+</blockquote>
+<p>He adapted the retrospective flow from the <a href="http://www.infoq.com/articles/Agile-Retrospective-Derby-Larsen">Agile Retrospectives book by Diana Larsen and Esther Derby</a> by using hypothesizes in a similar way as they are used in the Lean Startup. Marc extending the “decide what to do” step with “add hypothesis” and introducing a step “check hypothesis” after gathering data:</p>
+<blockquote> 
+ <p>(…) instead of directly generating insight you check the hypotheses from last retrospective. This is really powerful, as it offers you the possibility to check if the tasks from your last retrospectives had the effect you expected (your hypothesis). In most cases you’ll find out that your hypotheses were wrong. In lieu of simply checking if you worked on all of the tasks you identified the last time, you additionally check if they were helpful and had a positive effect. If your hypotheses were wrong this gives you the opportunity to check why they didn’t have the expected outcome.</p> 
+</blockquote>
+<p>Adding hypothesizes and checking them in the next retrospective gives purpose to&nbsp;your retrospectives according to Marc. And it&nbsp;helps to check if your retrospective actions are being valuable:</p>
+<blockquote> 
+ <p>You have to add a hypothesis to any task you identify, otherwise you won’t be able to check if the task helped. Make sure that your hypothesis is testable as described in the scientific method. If your hypothesis is not testable it doesn’t make sense.</p> 
+</blockquote>
+<p>Bob Boyd provides an 8 steps process to do <a href="http://implementingagile.blogspot.nl/2013/01/retrospectives-with-scientific.html">retrospectives with scientific validation</a>. Following lean startup concepts these steps help you to validate if actions from a retrospectives have made the hoped for improvement:</p>
+<blockquote> 
+ <p>1. Clearly state the exact problem the improvement will solve <br /> 2. Clearly state what the results will be with the improvement in place <br /> 3. Develop the falsifiable* hypothesis for the improvement (this is the experiment summary) <br /> 4. Identify the metrics and measures to collect <br /> 5. Identify how the metric data are collected <br /> 6. Identify how the collected data is presented <br /> 7. Identify how the team will know the hypothesis is proven true beyond a reasonable doubt <br /> 8. Identify how the team will know the hypothesis is proven false beyond a reasonable doubt</p> 
+</blockquote><br><br><br><br><br><br></body></html>
