@@ -1,327 +1,54 @@
-<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>如何在Azure环境里做好信息传递可扩展性经验分享</h3><h2>综述</h2>
-<p>本文介绍建立一个在Azure上使用Azure服务总线, 高吞吐量短信平台的必要步骤。在这篇文章中提出的解决方案是在响应由客户的具体要求，建立一个基于Windows Azure技术的复杂远程信息处理应用。</p>
-<h2>在Windows Azure中的通讯服务</h2>
-<p>Windows Azure平台通过不同的技术支持信息通信：</p>
-<ul> 
- <li>存储队列</li> 
- <li>服务总线</li> 
-</ul>
-<p>以下各段将给予每个类型的信息传递技术的概览。</p>
-<h3>存储队列</h3>
-<p>您可以使用Windows Azure中的队列，支持组件之间的异步通信。应用程序中的组件可以发布信息到一个队列。其他组件可以接收信息，并提供处理。队列中提供组件之间耐用的持久性存储，以及负载调平，负载均衡，和缩放的好处。</p>
-<h3>服务总线</h3>
-<p>Windows Azure服务总线为广泛的交流，大型活动分布，命名和服务发布提供了一个托管，安全和广泛可用的基础设施。服务总线为Windows Communication Foundation（WCF）和其他服务端点提供连接选项 - 包括REST端点 - 否则将很难或根本不可能达到。</p>
-<p>针对Windows Server的服务总线是一组可安装的组件，为Windows Sever上提供Windows Azure服务总线的信息传递功能。适用于Windows Server的服务总线，使您能够在自我管理的环境，并在开发计算机上构建，测试和松耦合运行，信息驱动的应用程序。</p>
+<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>必胜宅急送Web app设计背后的思考</h3><p>O2O模式是餐饮业在移动消费趋势下主动拥抱互联网的方向，迎合餐饮消费者从以往经验判断为主转变为依靠移动设备、lbs、社交网络进行立体决策的过程。继App客户端之后，手机web app也逐渐成为O2O中联系消费者和餐饮业的纽带，通过Html5的技术支持，web app设计可以直接适配不同平台的手机屏幕并实现类似App客户端的体验，在O2O双向流程的闭环中加深消费者对品牌的认同和感情认知。</p>
+<p>日前必胜宅急送推出的<a href="http://m.4008123123.com/PHHSMWOS/index.htm">手机订餐web</a>正是其O2O模式的策略补充和深化。FaceUI提供的web app设计包含了对产品背后动机的挖掘和把握，随着项目团队对动机的理解和可用性测试的加深，设计思路也随之发生着变化。</p>
+<h2><b>产品的客户方动机</b></h2>
+<p>即为什么要进行这个web app设计，客户方（甲方）对此产品的定位和要求。不同定位的产品在功能或设计方向上会存在较大的差异。最常见的就是跟风型产品，如早期的各式IM、再到繁多的微博，还有如今火热的即时通讯工具，尤其移动平台的低成本高效率导致扎堆产品应接不暇。这样的产品更多是抱着分一杯羹或他有我也要有的心态定位，更注重被模仿对象的还原度，而不是个性特色。</p>
+<p>必胜宅急送的web app则是定位于O2O方向的探索。相较于传统app客户端，手机web app可以较为轻松地实现跨平台的轻量级应用，脱离于app商店的web降低了初级用户或中老年群体的使用门槛。对客户方来说，依靠url作为入口，web app可以便利地利用公众平台、朋友圈等社交传播网络进行推广。所以虽然手机web app仍然存在一定缺陷，在扩展消费者接触面、提高品牌自身竞争力等方面也极有潜力，这也是产品的功能目标和期望。</p>
+<p><img width="600" _p="true" _href="img://null" src="http://infoqstatic.com/resource/articles/thoughts-behind-the-design-of-the-web-app-bishengzhai/zh/resources/1221003.jpg" alt="" /></p>
+<p>图片1</p>
 <div id="lowerFullwidthVCR"></div>
-<h2>通讯设计模式</h2>
-<h3>使用存储队列构建松散耦合的信息传递方案</h3>
-<p>Windows Azure的队列存储是一个用于存储大量的信息，可以在世界任何地方通过身份验证的调用使用HTTP或HTTPS访问服务。一个单一的队列的信息可高达64KB的大小，队列可以包含数百万条信息，高达100TB的总极限容量的存储帐户。常见队列存储用途包括：</p>
-<ul> 
- <li>建异步处理积压的工作</li> 
- <li>Windows Azure Web角色中传递信息到Windows Azure Worker角色</li> 
-</ul>
-<p>队列服务包含以下组件：</p>
-<p><img _p="true" _href="img://null" src="http://infoqstatic.com/resource/articles/experience-of-scalable-messaging-in-azure-environment/zh/resources/1110000.png" alt="" /></p>
-<ul> 
- <li><b>URL格式：</b>队列可以通过以下URL格式访问： <br /> http://&lt;storage account&gt;.queue.core.windows.net/&lt;queue&gt;<br /> 下面的URL地址针对图中的队列：<br /> http://myaccount.queue.core.windows.net/imagesToDownload</li> 
- <li><b>存储帐户</b>:所有Windows Azure存储是通过一个存储帐户来访问的。存储帐户是访问队列的最高级别的命名空间。帐户内表格和队列内容存储的总大小不能超过100TB。</li> 
- <li><b>队列</b>: 队列中包含一系列信息。所有信息必须在队列中。</li> 
- <li><b>Message:</b> 一个信息,无论任何格式的最大上限是64KB</li> 
-</ul>
-<p>一个涉及多个组件之间的存储队列典型的架构设计模式，可以类似于下列：</p>
-<p><img width="600" _p="true" _href="img://null" src="http://infoqstatic.com/resource/articles/experience-of-scalable-messaging-in-azure-environment/zh/resources/1110001.png" alt="" /></p>
-<p>在这个模式中，多个前端Web Role客户端发送信息到一个或多个存储队列，然后多个Worker Role实例从一个或多个队列读取信息及进行处理。</p>
-<p>上述架构可以通过以下方式缩放：</p>
-<ul> 
- <li>存储队列：当信息并发数量增加，可以增加更多的存储队列</li> 
- <li>Worker Role实例：当信息的数量增加，Worker Role实例的数量可以增加，从而使更多的计算资源可用于处理从队列中的信息。</li> 
-</ul>
-<p>不过，也有数个点，我们需要考虑到，以确保在现实中的架构可以灵活扩展：</p>
-<ul> 
- <li>存储帐户：一个单一的存储帐户的可扩展性目标是每秒5000条信息</li> 
- <li>存储队列：一个单一队列的可扩展性目标是能够处理最多每秒500条信息</li> 
-</ul>
-<p>由于上述两个存储帐户和存储队列的限制，如果我们希望能够同时处理大量信息，我们需要分割我们的存储基础设施成多个队列和/或存储帐户。</p>
-<p>例如，一个客户端以每秒1000条信息的速度传送到Azure存储队列中，我们希望我们的解决方案以无积压及最快的速度来处理信息，那么我们就需要使用4个队列及分割我们我们的信息传递到4个队列中，看下图。</p>
-<p><img width="600" _p="true" _href="img://null" src="http://infoqstatic.com/resource/articles/experience-of-scalable-messaging-in-azure-environment/zh/resources/1110002.png" alt="" /></p>
-<p>每个队列每秒可以处理500个信息，包括入口和出口，如果我们想每个队列尽快处理信息，那么每个队列入口和出口每秒应该处理不超过250个信息。既然我们的入口和出口每秒要处理1000条信息，因此，我们需要共4个队列。Web Role客户端将需要分割信息及均匀地分配到可用的队列以分担工作负载。</p>
-<p>在另一情况下，客户端以每秒10,000条的速度发送信息到存储队列，那么我们就需要创建多个存储帐户分担工作量。为了处理每秒10,000个信息，我们需要2个存储帐户，每个存储账户下, 需要20个队列。</p>
-<h3>利用服务总线主题发布订阅信息</h3>
-<p>服务总线主题和订阅支持信息发布/订阅传递通信模式。当使用主题和订阅，分布式应用程序个组件不直接彼此沟通，而是通过一个主题，充当中介的信息交换。</p>
-<p><img width="600" _p="true" _href="img://null" src="http://infoqstatic.com/resource/articles/experience-of-scalable-messaging-in-azure-environment/zh/resources/1110003.png" alt="" /></p>
-<p>相比在服务总线队列，每个信息是由单一消费者处理的，主题及订阅使用发布/订阅模式提供了一个对多个形式的通信。一个主题注册多个订阅是可能的。当一个信息被发送到一个话题后，它会被每个订阅独立处理。您可以选择为基于每一个订阅基础上的主题, 注册过滤规则，它可以让你过滤/限制主题订阅中接收的信息。</p>
-<p>服务总线主题和订阅，让你在横跨非常大量的用户和应用程序下, 可以扩展到处理一个非常大的信息数目。</p>
-<h3>自动转发链接服务总线实体来缩放单个主题</h3>
-<p>自动转发功能能让您使一个订阅或队列链到相同的服务命名下另一个队列或主题。当自动转发启用，服务总线自动移除被放置在第一个队列或订阅（源）的信息，并把它们放入第二队列或主题（目标）。</p>
-<p>您可以使用自动转发向外扩充一个单独主题。服务总线限制一个主题订阅的数量。可以通过创建第二层主题容纳更多的订阅。需要注意的是，即使你并不受服务总线订阅数目的限制，增加了第二层的主题，可以提高你的主题的整体吞吐量。</p>
-<p><img width="600" _p="true" _href="img://null" src="http://infoqstatic.com/resource/articles/experience-of-scalable-messaging-in-azure-environment/zh/resources/1110004.png" alt="" /></p>
-<p>当把别主题串联起来而得到一个拥有许多订阅的复合主题时，建议你有一个中等数量的第一级主题订阅及许多二级的主题订阅。例如，第一级以20个主题订阅，彼等各自链接到第二层200个主题订阅，允许比第一层200个主题订阅每个链接有20个第二层主题订阅更高的吞吐量。</p>
-<h2>参考案例</h2>
-<p>下面的示例使用中国的Azure公共云计算平台，及解释利用服务总线在中国Azure平台专门所需的编码。使用的Azure SDK 2.0及此示例介绍了Windows Azure服务总线在Azure SDK 2.0提供的，新的事件驱动编程模式。</p>
-<p>Scenario场景</p>
-<p><img width="600" _p="true" _href="img://null" src="http://infoqstatic.com/resource/articles/experience-of-scalable-messaging-in-azure-environment/zh/resources/1110005.png" alt="" /></p>
-<p>上面的例子是基于建立连接汽车远程信息处理方案，其中远程信息处理单位不断发送车数据到云端。各种车辆数据还有多个接收器。为了支持非常高吞吐量的汽车数据到云中，例子采用了2层自动转发的向外扩展做法。在第一层，每款车数据主题有少量订阅, 例如10 个，每个订阅自动转发到第二层主题。每个第二层主题然后有多个订阅 -接收器 Worker Roles. 每个接收器Worker Role包含多个实例。</p>
-<p>取决于实际吞吐量要求，第一层和第二层的主题可以独立扩展, 增加的主题及订阅的数量。以及每个接收器Worker Role可以不断增加对Worker Role实例的向外扩展。</p>
-<p>连接到服务总线</p>
-<p>中国Azure比全球Azure平台有不同端点URL，全球Azure所提供的一些文档和示例代码并不适合使用在Azure中国环境。下面是需要创建连接到Azure中国服务总线的示例代码：</p>
-<pre>
-NamespaceManager namespaceManager;
-MessagingFactory messagingFactory;
-string namespaceAddress = &quot;&lt;your-namespace&gt;&quot;;
-string issuerName = &quot;&lt;your-issuer-name&gt;&quot;;
-string issuerKey = &quot;&lt;your-issuer-key&gt;&quot;;
-string endpointuriAddress = string.Format(&quot;sb://{0}.servicebus.chinacloudapi.cn&quot;, 
-namespaceAddress);
-string stsendpointAddress = string.Format(&quot;https://{0}-sb.accesscontrol.chinacloudapi.
-cn/&quot;, NamespaceAddress);
-
-TokenProvider tp = TokenProvider.CreateSharedSecretTokenProvider(issuerName,
-issuerKey, new Uri(stsendpointAddress));
-namespaceManager = new NamespaceManager(new Uri(endpointuriAddress), tp );
-messagingFactory = MessagingFactory.Create(endpointuriAddress, tp);
-</pre>
-<p>创建主题及自动转发订阅</p>
-<pre>
-public bool CreateTopic(string topicNamePrefix, int topicSuffixIndex, int NumOfTopics)
-{
-       bool success;
-       try
-       {
-           var topic = this.namespaceManager.CreateTopic(string.Format(&quot;{0}_{1}&quot;,
-topicNamePrefix, topicSuffixIndex.ToString()));
- 
-           for (int i = 0; i &lt; NumOfTopics; i++)
-           {
-               CreateSubscription(topicSuffixIndex, i, topic.Path);
-           }
-           success = true;
-       }
-       catch (Exception)
-       {
-           success = false;
-       }
-       return success;
-}
-
-public bool CreateSubscription( int topicSuffixIndex, int subscriptionIndex,
-string srcTopic)
-{
-       bool success = false;
-       string destTopic = srcTopic + subscriptionIndex.ToString();
-       TopicDescription dTopic = null;
-       try
-       {
-           dTopic = this.namespaceManager.GetTopic(destTopic);
-       }
-       catch (Microsoft.ServiceBus.Messaging.MessagingEntityNotFoundException)
-       {
-           dTopic = null;
-       }
- 
-       if (dTopic == null)
-       {
-           dTopic = this.namespaceManager.CreateTopic(destTopic);
- 
-           var subscription = this.namespaceManager.CreateSubscription(dTopic.Path, &quot;
-Subscription_0&quot; );
- 
-       }
- 
-       SubscriptionDescription srcSubscription = new SubscriptionDescription(srcTopic,
-string.Format(&quot;Subscription{0}_{1}&quot;, topicSuffixIndex.ToString(), subscriptionIndex.ToString()));
-       srcSubscription.ForwardTo = dTopic.Path;
-       var ForwardSubscription = this.namespaceManager.CreateSubscription(srcSubscription,
-new SqlFilter(string.Format(&quot;PartitionID='{0}'&quot;, subscriptionIndex.ToString())));
- 
-       return success;
-}
-</pre>
-<p>执行下面的代码片段创建的主题和订阅。下面的代码执行的结果将创建5个第一层主题及10个第二个层主题。每个第一层主题将有10个自动转发订阅到10个第二层主题。</p>
-<pre>
-for (int i = 0; i &lt; 5 i++)
-{
-      CreateTopic(“SBMessageTopic”, i, 10);
-}
-</pre>
-<p>当从Azure管理门户网站查看时，可以查看以下主题：</p>
-<p><img width="600" _p="true" _href="img://null" src="http://infoqstatic.com/resource/articles/experience-of-scalable-messaging-in-azure-environment/zh/resources/1110006.png" alt="" /></p>
-<p>第一层有10个主题订阅：</p>
-<p><img width="600" _p="true" _href="img://null" src="http://infoqstatic.com/resource/articles/experience-of-scalable-messaging-in-azure-environment/zh/resources/1110007.png" alt="" /></p>
-<p>第二层主题包含2个订阅为2个接收器的Work Role。</p>
-<p><img width="600" _p="true" _href="img://null" src="http://infoqstatic.com/resource/articles/experience-of-scalable-messaging-in-azure-environment/zh/resources/1110008.png" alt="" /></p>
-<p>发送信息个到服务总线主题</p>
-<p>下面的示例代码并行发送一批信息到其中一个第一层主题：</p>
-<pre>
-public bool SendMessage(string msgid, string message, string label, int nIterations,
-int NumOfPartitions )
-{
-    bool success = false;
-    string topicName = “sbmessagetopic_0”; 
- 
-    TopicClient topicClient = this.messagingFactory.CreateTopicClient(topicName);
-            
-    List&lt;CustomMessage&gt; MessagesList = new List&lt;CustomMessage&gt;();
-    for (int i = 0; i &lt; nIterations; i++)
-    {
-        CustomMessage customMessage = new CustomMessage() { Body = message, Date =
-DateTime.Now, Label = label , MSGID=msgid};
-        MessagesList.Add(customMessage);
-    }
-                
-    Parallel.ForEach&lt;CustomMessage&gt;(MessagesList, new Action&lt;CustomMessage&gt;(
-    (CarDataMessage) =&gt;
-    {
-         BrokeredMessage bm = null;
-         try
-         {
-             bm = new BrokeredMessage(CarDataMessage);
-             
-             bm.Properties[&quot;PartitionID&quot;] = RandomDigit(1, NumOfPartitions);
-             
-             topicClient.Send(bm);
-                    
-             success = true;
-         }
-         catch (Exception)
-         {
-             // TODO: do something
-         }
-         finally
-         {
-             if (bm != null)
-             {
-                 bm.Dispose();
-             }
-         }
-     }
-     ));
- 
-     return success;
-}
-
-public static string RandomDigit(int size, int length)
-{
-    Random random = new Random();
-    const string digitString = &quot;0123456789&quot;;
-    var chars = Enumerable.Range(0, size)
-                           .Select(x =&gt; digitString[random.Next(0, length)]);
-    return new string(chars.ToArray());
-}
-
-public class CustomMessage
-{
-    private string msgid;
-    private DateTime date;
-    private string body;
-    private string label;
- 
-    public DateTime Date
-    {
-        get { return this.date; }
-        set { this.date = value; }
-    }
- 
-    public string Body
-    {
-        get { return this.body; }
-        set { this.body = value; }
-    }
- 
-    public string Label
-    {
-        get { return this.label; }
-        set { this.label = value; }
-    }
- 
-    public string MSGID
-    {
-        get { return this.msgid; }
-        set { this.msgid = value; }
-    }
-}
-</pre>
-<p>下面的代码片段执行发送信息指令，它发送1000个信息到第一层主题并从第一层主题订阅随机转发每个信息到第二层主题其中一个：</p>
-<pre>
-SendMessage(“Your-Msg-ID”, “Message Text” , “Message Label”, 1000,  10);
-</pre>
-<p>同时发送大量的信息时，建议利用大型Worker Role并且有多个实例，以提高的并行度。</p>
-<p>接收信息</p>
-<p>下面的示例代码在Work Role启动由Azure SDK 2.0提供的事件驱动信息泵：</p>
-<pre>
-public void StartMessagePump(string topicName, string subscriptionName)
-{
-    SubscriptionClient subscriptionClient = this.messagingFactory.
-CreateSubscriptionClient(topicName, subscriptionName, ReceiveMode.PeekLock);
-    var eventDrivenMessagingOptions = new OnMessageOptions();
-    eventDrivenMessagingOptions.AutoComplete = true;
-    eventDrivenMessagingOptions.ExceptionReceived += OnExceptionReceived;
-    eventDrivenMessagingOptions.MaxConcurrentCalls = 256;
- 
-    subscriptionClient.OnMessage(OnMessageArrived, eventDrivenMessagingOptions); 
-}
-</pre>
-<p>当信息到达时, OnMessage（）被调用：</p>
-<pre>
-/// &lt;summary&gt;
-/// This event will be called each time a message arrives.
-/// &lt;/summary&gt;
-/// &lt;param name=&quot;message&quot;&gt;&lt;/param&gt;
-private static void OnMessageArrived(BrokeredMessage message)
-{
-    var custmsg = message.GetBody&lt;CustomMessage&gt;();
- 
-    System.Diagnostics.PerformanceCounter perfCounterReceived =
-        new System.Diagnostics.PerformanceCounter(&quot;ServiceBusDemo&quot;, &quot;Message Receive/
-Sec&quot;, RoleEnvironment.CurrentRoleInstance.Id, false);
-    if (perfCounterReceived != null)
-    {
-        perfCounterReceived.ReadOnly = false;
-        perfCounterReceived.IncrementBy(1);
-    }
- 
- 
-    Trace.WriteLine(string.Format(&quot; &gt; {0} - Received  message for Vehicle: {1} (Thread: {2})&quot;,
-        DateTime.Now, custmsg.MSGID, Thread.CurrentThread.ManagedThreadId));
- 
-    if (custmsg.MSGID == string.Empty)
-        throw new InvalidOperationException(&quot;Invalid Message Id: &quot; + custmsg.MSGID);
-}
-</pre>
-<p>和下面的功能在发生错误时被调用时：</p>
-<pre>
-/// &lt;summary&gt;
-/// Event handler for each time an error occurs.
-/// &lt;/summary&gt;
-/// &lt;param name=&quot;sender&quot;&gt;&lt;/param&gt;
-/// &lt;param name=&quot;e&quot;&gt;&lt;/param&gt;
-static void OnExceptionReceived(object sender, ExceptionReceivedEventArgs e)
-{
-    if (e != null &amp;&amp; e.Exception != null)
-    {
-        Trace.WriteLine(string.Format(&quot; &gt; Exception received: {0}&quot;, e.Exception.Message));
-    }
-}
-</pre>
-<p>下面的代码片段是Worker Role执行run（）方法进行订阅到第二层主题。这个例子进行订阅10个第二层主题：</p>
-<pre>
-for (int i = 0; i &lt; 10; i++)
-{
-      string topic = string.Format(&quot;sbmessagetopic_0{0}&quot;, i.ToString());
-      StartMessagePump(topic, &quot;Subscription_1&quot;);
-} 
-while (true)
-{
-    Thread.Sleep(10000);
-    Trace.TraceInformation(&quot;SBMessageConsumer1 Working&quot;, &quot;Information&quot;);
-}
-</pre>
-<h3>测试服务总线吞吐量</h3>
-<p>当信息到达时，OnMessage（）功能被调用并且它会增加自定义性能计数器来记录并发接收的信息数量。查看时，通过在实时使用Perfmon工具进行监控。</p>
-<p><img _p="true" _href="img://null" src="http://infoqstatic.com/resource/articles/experience-of-scalable-messaging-in-azure-environment/zh/resources/1110009.png" alt="" /></p>
-<p>上面的测试是通过使用一个2芯信息产生者Worker Role实例和一个2芯信息的接收者实例，在1个第一层主题和10个第二层主题。吞吐量保持在每秒1000 - 1200信息之间。</p>
-<p>该解决方案可以通过加入多个第一层主题，以及更多的第二层主题进一步向外扩展。当适当数量的信息接收器的情况下，服务总线解决方案可以轻松地向外扩展支持每秒数千或数万的信息吞吐量。</p>
-<h2>小结</h2>
-<p>本文描述了在Azure上处理应用程序和设备间进行信息传递的不同信息传递组件。此外，这篇文章亦介绍了不同的方式在Azure上来扩展信息传递的基础设施，以向外扩展的方法来处理大量信息传递并发。</p>
+<h2><b>产品的设计动机</b></h2>
+<p>除了实现产品功能概念外（有效性），另外的动机就是减少消费者从登录网站到预览下单的时间（效率）和让消费者接受并喜欢使用宅急送（满意度）。有效性、效率和满意度是评判产品可用性的标准，在以用户为中心的产品设计中作为衡量产品质量的指标。产品设计师基于对市场、用户、产品的理解和积累建立符合可用性诉求的价值倾向，并贯穿在产品之中。</p>
+<p>固然好的设计师擅长如何让产品、功能与用户需求有机结合，但在有些问题上，难以避免与其他项目成员、与客户之间的分歧，这时候采用可用性测试对用户动机研究就成为判断的依据。</p>
+<h2><b>产品的用户动机</b></h2>
+<p>想要立即得到设计师、客户都满意又符合可用性要求的完美方案是不可能的，所以结合项目进度要求，设计团队引入了低保真原型的可用性测试进行循序渐进的设计迭代，力图通过探明用户的动机解决设计上的关键问题。</p>
+<p>对于可用性测试的一个误解是，可用性测试需要花太多时间和金钱。误解的前提是一个成熟完整的测试可能需要若干天数进行准备和测试，再经过一定时间才能整理数据并得出分析结论，由此带来的时间成本和招募成本不利于项目进行。</p>
+<p><img width="600" _p="true" _href="img://null" src="http://infoqstatic.com/resource/articles/thoughts-behind-the-design-of-the-web-app-bishengzhai/zh/resources/1221004.jpg" alt="" /></p>
+<p>图片2 低保真测试原型</p>
+<p>宅急送web app设计团队在线框原型阶段利用AXURE制作手机上可以运行的低保真原型，穿插在设计中间进行快速的可用性测试。测试后的结果会及时反应在设计迭代上，成为下一轮可用性测试的材料或补充，几个额外的问题不会影响测试单元的时长。被测用户也就近从项目外的同事或朋友中筛选，测试任务结束后被测用户的满意度评价作为每轮的组成部分加以收集，最终形成有指导价值的数据样本库。</p>
+<p>即使快速的迭代的低保真测试，招募的用户标准也非常重要，确保测试结果对产品的有效性。团队从宅急送品牌的产品特征、用户个性特征、生活方式和价值观、对技术产品态度几个方面考量，制定招募标准：年龄18-35，近半年网络订餐超过3次、智能手机使用时间超过半年、手机浏览器或app每周使用10小时以上等。</p>
+<p>与招募同时进行的是测试脚本的设计，为被测用户赋予场景化的环境并梳理任务顺序以符合真实习惯。一种任务类型是观察，让用户熟悉界面并对界面进行反馈。另一种任务是操作，设置产品的典型任务如点三份芝香满溢比萨由用户完成。</p>
+<p>因为线框原型在功能、视觉方面的局限性，用户的困惑点相比于上线后的测试可能更多，所以执行过程中的发声思考是非常有效的工具。比如首页某一版方案测试时，可以听到如下用户声音：</p>
+<p><img _p="true" _href="img://null" src="http://infoqstatic.com/resource/articles/thoughts-behind-the-design-of-the-web-app-bishengzhai/zh/resources/1221005.jpg" alt="" /></p>
+<p>图片3 首页线框原型</p>
+<p>“要不是看必胜宅急送的logo，我还以为是个图片类网页”</p>
+<p>“我不清楚这个优惠活动图片跟优惠列表具体有什么分别”</p>
+<p>“点击‘预览菜单’后以为会进入菜单，没想到还要再选一次菜品种类”</p>
+<p>“我会首先看优惠列表中有没有自己喜欢的东西，如果有就直接订购”</p>
+<p>其中部分困惑（1和2）是线框原型带来的测试“噪音”，难以对当前版本提供实际的启发和引导，但3和4则反应了首页在布局和任务流程上存在的问题。被测用户进行发声思考使得行为背后的内容，如理解、计划等转化成明确、能被观察或分析到的数据，沉默的内部心理行为可以帮助测试者从用户角度发现问题本质。</p>
+<p>综合其他用户和后续迭代反馈，最终的首页方案如下：</p>
+<p><img width="600" _p="true" _href="img://null" src="http://infoqstatic.com/resource/articles/thoughts-behind-the-design-of-the-web-app-bishengzhai/zh/resources/1221006.png" alt="" /></p>
+<p>图片4 首页效果图</p>
+<p>设计师对原首页方案上的方向是：简洁明了，突出订餐点单的核心功能，并在首页呈现用户所需要使用的功能入口。但在测试中发现，用户进入首页后受三种不同方向的动机驱动：</p>
+<p>（1）已有明确的订餐目的和菜品，首页需要解决的是快速完成下单流程；</p>
+<p>（2）浏览型用户会期望还原线下餐厅一样随心所欲翻看菜单的体验，再确定菜品和下单与否；</p>
+<p>（3）而对于利益型用户，优惠活动和优惠力度最容易勾起他们的购买欲望。</p>
+<p>所以最终方案在保持订餐的核心功能外，对于不同的入口动机，利用web不局限一屏浏览的特点将菜品类目和优惠列表同时铺展，形成一个信息丰富的展示空间。</p>
+<p>从测试中获得的另一项有价值的发现帮助解决了项目团队内部的分歧。点餐界面存在设计师出于不同考虑的方案：方案1（左边）从用户认知出发，点击“订购”后展现当前菜品数量并要求用户进行确认动作；方案2（右边）站在效率的思路，简化点餐的操作步骤，点击即增加一份菜品，并利用角标的方式帮助用户了解当前数量。</p>
+<p><img width="600" _p="true" _href="img://null" src="http://infoqstatic.com/resource/articles/thoughts-behind-the-design-of-the-web-app-bishengzhai/zh/resources/1221007.jpg" alt="" /></p>
+<p>图片5 订餐页面线框原型</p>
+<p>统计测试数据后，看起来更复杂的方案1的相关任务完成率较高，对比采用方案2的任务完成率较低，被测用户的发声思考也验证了这个结果：被测用户在使用方案1时更明确衔接动作，而对方案2会产生疑惑。</p>
+<p>方案1中下单的操作比方案2多了至少2步，但整体流程上清晰明确，就像线下点餐那样，对每个菜品的数量予以确认，用户自由度较小，很难从当前菜品选择中跳出去。购物车的存在允许用户前往结算界面并支付，弥补了解总体订单情况的便利性。</p>
+<p>方案2最大的优势是在单品数量较少（一份披萨的量较大）的情况下有较高的操作效率，在熟悉操作的情况下即使多份也不逊于方案1。但是随意点击就增加菜品带来的自由度让用户感觉会偏离任务，可以通过购物车减少菜品数量对用户来说也是个隐藏操作，所以用户很容易在方案2中产生困惑。</p>
+<p>最终上线的点单界面如下：</p>
+<p><img width="600" _p="true" _href="img://null" src="http://infoqstatic.com/resource/articles/thoughts-behind-the-design-of-the-web-app-bishengzhai/zh/resources/1221008.png" alt="" /></p>
+<p>图片6 订餐页面效果图</p>
+<p>终版利用上方的悬浮通知优化了方案1不方便查看订单总量的缺点。用户的动机是获得需要的菜品，所以不经确认的下单动作会让用户失去安全感。对于符合用户思维模式的流程，即使步骤略多，在执行时因为习惯或直觉的引导也不会带来太多注意力的分散或负担。用户未必能感受到方案2带来的效率提高，但一旦出现不完善就会招致不满。</p>
+<p>同样在用户不需要为单一目标集中注意力的时候，特意突出的元素也是画蛇添足。这是被否决的一个结算界面原型：</p>
+<p><img _p="true" _href="img://null" src="http://infoqstatic.com/resource/articles/thoughts-behind-the-design-of-the-web-app-bishengzhai/zh/resources/1221009.jpg" alt="" /></p>
+<p>图片7 结算页面线框原型</p>
+<p>App客户端的样式不适合web app，网站上悬浮按钮的设计让用户感受不快，过大的面积也影响清单的查看。用户并不是任何时候都准备下单，只有在核对完自己的菜品和数量，形成支付期望后，“确认下单”才会成为他们准备点击的对象。</p>
+<h2><b>结语</b></h2>
+<p>对动机的挖掘并不是非黑即白的单选项。在低保真原型测试的支持下，通过动机把握，确定产品哪些元素是有益的，哪些元素是无益的，最终形成效果显著的产品方案，获得品质和效率上的双赢。</p>
 <hr />
-<p>感谢<a href="http://www.infoq.com/cn/author/马国耀">马国耀</a>对本文的审校。</p>
+<p>感谢<a href="http://www.infoq.com/cn/author/李永伦">李永伦</a>对本文的审校。</p>
 <p>给InfoQ中文站投稿或者参与内容翻译工作，请邮件至<a href="mailto:editors@cn.infoq.com">editors@cn.infoq.com</a>。也欢迎大家通过新浪微博（<a href="http://www.weibo.com/infoqchina">@InfoQ</a>）或者腾讯微博（<a href="http://t.qq.com/infoqchina">@InfoQ</a>）关注我们，并与我们的编辑和其他读者朋友交流。</p><br><br><br><br><br><br></body></html>

@@ -1,6 +1,9 @@
 <html>
  <head></head> 
- <body> 
+ <body>
+  <div>
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/12.htmlb">必胜宅急送Web app设计背后的思考</a> O2O模式是餐饮业在移动消费趋势下主动拥抱互联网的方向，迎合餐饮消费者从以往经验判断为主转变为依靠移动设备、lbs、社交网络进行立体决策的过程。继App客户端之后，手机web app也逐渐成为O2O中联系消费者和餐饮业的纽带，通过Html5的技术支持，web app设计可以直接适配不同平台的手机屏幕并实现类似App客户端的体验，在O2O双向流程的闭环中加深消费者对品牌的认同和感情认知。 日前必胜宅急送推出的手机订餐web正是其O2O模式的策略补充和深化。FaceUI提供的web app设计包含了对产品背后动机的挖掘和把握，随着项目团队对动机的理解和可用性测试的加深，设计思路也随之发生着变化。 
+  </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/11.htmlb">敏捷流畅度：找到适合需求的敏捷方式</a> 敏捷流畅度模型是一种思考与计划敏捷投资的方式，它能够帮助你创建最适合于公司的开发投入、商业需求和客户价值的敏捷环境。James Shore和Diana Larsen曾在2012年的文章“通往流畅敏捷之路”中对其进行了讨论。Diana撰写的本文旨在帮助你有效地使用敏捷流畅度模型。 
   </div> 
@@ -147,9 +150,6 @@
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/15.htmlb">书评与采访：《探索 Meteor》</a> Tom Coleman和Sacha Greif今天发布了《探索Meteor》，这是一本介绍Meteor的书。Meteor是一个基于JavaScript的web框架，它的目的是简化实时web应用程序的开发。为展示Meteor的特性以及它的整个生态系统，本书以“Microscope”这个应用程序作为讲解的示例，这是一个类似于Hacker News及Reddit的简单网站，但加入了实时数据的功能。 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/14.htmlb">博文共赏：Martin Fowler对将page对象用于Web测试的基本经验法则</a> 一个page对象可以封装一个HTML页面或部分页面，你可以通过提供的应用程序特定的API来操作页面元素，而不需要在HTML中四处搜寻。page对象的一个基本经验法则是，凡是人类能做的事，page对象通过软件客户端都能够做到。 
-  </div> 
+  </div>  
  </body>
 </html>
