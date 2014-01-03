@@ -1,6 +1,9 @@
 <html>
  <head></head> 
- <body> 
+ <body>
+  <div>
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/41.javab">Durandal: Quick Start</a> Durandal is a lightweight JavaScript framework designed to make building Single Page Applications (SPAs) simple and elegant. It has strong support for MVC, MVP and MVVM so that no matter what type of front end architecture you prefer, Durandal can handle the task. 
+  </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/40.javab">Pragmatic Techniques for Maintaining a Legacy Application</a> Maintaining a legacy application can make you feel like mice in a maze. In this article Ping Chen shares her experiences on how to pragmatically maintain a large legacy application. &quot;Pragmatic” is the operative word; since a legacy application can have lots of technical debt, one has to be strategic in choosing the right battles. 
   </div> 
@@ -147,9 +150,6 @@
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/43.javab">An interview with Vasco Duarte and Jason Little on Lean Change Management by Happy Melly Express</a> InfoQ interviewed Vasco Duarte on a new publishing business that aims to connect authors with their audience in a sustainable way, and with Jason Little, author about Lean Change Management. 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/42.javab">API Business Models: 20 Models in 20 Minutes</a> In this keynote from the 2013 API Strategy Conference, John Musser, founder of ProgrammableWeb, reviews the API business models that have been adopted by the worlds leading technology companies. 
-  </div> 
+  </div>  
  </body>
 </html>

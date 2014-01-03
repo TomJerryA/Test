@@ -2,6 +2,9 @@
  <head></head> 
  <body> 
   <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/36.java">OpenAccess ORM Q3 2013 SP1 Adds VS 2013 Support, Discontinued Classic Wizards, Oracle 9i and MySQL 5</a>The recently released OpenAccess ORM Q3 2013 SP1 by Telerik has introduced support for Visual Studio 2013 in addition to extended support for Visual Studio 2008. Moreover, support for classic wizards, Oracle 9i and MySQL 5.0 will be discontinued beginning with the next release of OpenAccess ORM. 
+  </div> 
+  <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/35.java">Adding Purpose and Hypotheses to Agile Retrospectives</a>Regularly doing agile retrospectives helps teams to learn and improve themselves. You can make retrospectives more effective by adding purposes and by validating if your retrospective actions are leading to improvement with the usage of hypotheses. 
   </div> 
   <div> 
@@ -147,9 +150,6 @@
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/38.java">How Retrospectives Can Support Learning in Lean Startup</a>The build-measure-learn feedback loop in lean startup aims to help entrepreneurs to learn about the needs of their customers. Agile retrospectives are a way to reflect and learn and to agree on changes that are needed. Some examples describing how lean startup can be supported with agile retrospectives to learn and take actions. 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/37.java">Wix 3.8 Adds VS 2013 Support in Votive and WiX Native Library and Bootstrapper Application Functions</a>Wix 3.8 has been released with support for Visual Studio 2013 in Votive and WiX native libraries. The release also includes bootstrapper application functions which extends WixStandardBootstrapperApplication including the ability to detect Windows 8.1 in Burn. 
   </div> 
  </body>
 </html>

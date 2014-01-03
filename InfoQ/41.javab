@@ -1,12 +1,179 @@
-<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>Scrum Master: Position or Role?</h3><p>A couple months ago I attended a local Agile user’s group meeting and sat in on the Scrum Master Birds of a Feather session. I created a bit of a stir when I first asked, “How many of you have full time Scrum Masters?” All the other organizations represented turned out to have full time Scrum Masters. So, I then asked my second question, “What do they do?” I guess I had asked the question in a way that implied that full time Scrum Masters was strange, because I was greeted by several moments of complete silence. Most of the people, other than those from my own organization, looked at me like I had three heads. Finally, they indulged the obviously under-educated member of the group, namely me, with explanations directly from The Scrum Guide as to what a Scrum Master does. I shocked them further when I said that we had moved beyond the need to have full time Scrum Masters. I didn’t bother telling them that we actually never had full time Scrum Masters.</p>
-<p>The Scrum Guide generally describes the Scrum Master role as one of teaching, coaching, facilitating, and removing impediments. And when a Scrum team is new, these things take time. A team new to Scrum tries to follow Scrum by the book and needs someone that can do a lot of teaching, coaching, facilitating and removing impediments. But what happens when the delivery team matures? Teaching lessens. Coaching lessens, though there is still need for coaching around constant improvement. Facilitating is still necessary, though this takes up very little time. And impediments lessen as the team learns to deal with them on their own. If one of the team members’ full time job is teaching, coaching, facilitating, and removing impediments and all these things have lessened to where that person is only needed ten to twenty-five percent of their time, what do they do the rest of their time?</p>
-<p>For us, we took the following path. We started with Scrum, though I wouldn’t say strictly by the book. We came from a world where we had project managers running multiple projects, thus working with multiple project teams. Our first step was to train our project managers in Agile. Several of them took advanced courses. A couple even became certified Scrum Masters and Agile Project Managers from the Project Management Institute. Thus, our project managers (PM) became our first Scrum Masters. Due to resourcing constraints (we had more teams than PM’s) and possibly due to a little foresight, we did not immediately dedicate a Scrum Master to a single team. Yes, that’s right, we violated one of the Scrum rules right from the start. Each of our PM’s generally had two teams they worked with as the Scrum Master. This kept them busy, but did not overwhelm them. Their role, as you might guess, was to teach and coach the teams in Scrum, to facilitate the Scrum ceremonies, and to remove team identified impediments. And this worked for the first nine months to a year.</p>
-<p>Fortunately for us, our Scrum teams matured. It became apparent to me that our set up with using PM’s for Scrum Masters was starting to become a problem when during employee one to ones I kept getting asked just what value the PMs (notice they were not referred to as Scrum Masters by the team) were adding to their team. The delivery team members felt like they were being over-managed by multiple people. They had their own functional managers and they had Scrum Masters who were not really part of the delivery team.</p>
-<p>We made our first change in the structure. Each team was allowed to select their own Scrum Master from among the delivery team members. The Scrum Master would still be responsible as a full time delivery team member, but they would also facilitate the Scrum ceremonies and be the first point of contact for impediments to the team. What did we do with the PM’s? At first we left them as PM’s – doing some project management stuff such as cross-team coordination. But we also left them as Agile coaches. And coaching became something a delivery team asked for, not something that we imposed on them. This worked well. Those teams that were more mature in their Agile approach and understanding didn’t feel over-managed. Those teams still coming up to speed had someone they could go to for coaching.</p>
-<p>One more minor transformation occurred as we continued to mature. We elevated the PM’s to program managers rather than project managers. They now became responsible for cross-team initiatives. These are projects that transcend products and have tasks / stories in multiple delivery teams. We also rearranged our management reporting where we went from functional managers / supervisors to delivery team managers / supervisors, a role we call the delivery manager. And it is the delivery manager that is now responsible for the Agile coaching and mentoring. We’re still working the kinks out of this model, but the teams are delivering well, so it seems to be working.</p>
+<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>Durandal: Quick Start</h3><p><a href="http://durandaljs.com/">Durandal</a> is a lightweight JavaScript framework designed to make building Single Page Applications (SPAs) simple and elegant. It has strong support for MVC, MVP and MVVM so that no matter what type of front end architecture you prefer, Durandal can handle the task.</p>
+<p>With <a href="http://requirejs.org/">RequireJS</a> as its base and a thin layer of conventions, Durandal can provide amazing productivity while helping you to maintain SOLID coding practices. Pair that with out-of-the-box support for rich UI composition, modal dialogs, eventing/messaging, widgets, transitions, routing and more....and there's no doubt you'll be able to build whatever apps you can imagine.</p>
+<p>While Durandal has only been publicly available for about a year now, the community has grown at a breakneck pace.</p>
+<p>As a result, <a href="http://www.kickstarter.com/projects/eisenbergeffect/durandal-2014">we’ve launched a Kickstarter</a> to help us accomplish some amazing things in 2014. We hope you’ll check it out. But now, I’d like to show you how to build a simple Durandal application yourself.</p>
+<p>There are several ways to get started with Durandal, depending on your platform choice. While Durandal is a pure JavaScript library, independent of any server-side platforms, we try to package it up in a variety of ways that are appealing to web developers. For this brief tutorial, we’ll use our raw HTML Starter Kit. You can <a href="http://durandaljs.com/version/latest/HTML%20StarterKit.zip">download that directly</a> from the official site’s <a href="http://durandaljs.com/pages/downloads/">downloads page</a>.</p>
+<p>Once you’ve downloaded the HTML Starter Kit and unzipped it, you can actually run the sample app immediately by opening the <i>index.html</i> file in Firefox*, or by spinning up a web server and browsing to the index page.</p>
 <div id="lowerFullwidthVCR"></div>
-<p>For us, Scrum Masters started as positions and evolved to roles as we became more Agile mature. We took the responsibilities of a Scrum Master and divided out the coaching / teaching parts from the facilitation / impediment removing parts. This works well for us allowing the teams to feel self-managed and allowing them to mature at a sustainable pace, as coaching has become something asked for rather than imposed upon them. It also allows more team members to experience the role, as many of the teams will rotate Scrum Master at set time periods. And we’ve found that any type of delivery team member can be a Scrum Master. We have business analysts, developers, and QA testers all being Scrum Masters. We’ve also found that even the coaching / teaching is staying within the delivery teams with the Scrum Masters, as the ones that gravitate to that role are the ones interesting in learning Agile principles and imparting that learning upon their teams.</p>
-<p>Finally, the bottom line that makes management happy is that we have less people doing the same amount of work. We have sixteen delivery teams. Without the need for dedicated Scrum Masters, we’ve saved the need to have sixteen more people and with a fixed budget, that really breaks down to being able to have sixteen delivery teams, rather than only having thirteen teams because we’d need those extra people to fill a position that’s really a role.</p>
-<p>My concern and the reason for this article, is really a warning to all of you out there beginning your Agile journey. If you hire a slew of full time Scrum Masters, which is happening at least here in St. Louis, you need to have a contingent plan as to what you’ll do with them as your delivery teams mature. And at least here, most of the Scrum Masters being hired are coming out of a project management background. Nothing wrong with that, but again, be prepared to answer the question, “Okay, now what do we do with all these PM type people that used to be Scrum Masters?”</p>
+<p><img src="http://www.infoq.com/resource/articles/durandal-javascript-framework/en/resources/Fig.png" alt="" _href="img://Fig.png" _p="true" /></p>
+<p>The starter kit application demonstrates a basic navigation architecture with routing, history, data-binding, modal dialogs and more. But, we’re not going to look at that just yet. Instead, we’re going to write our own little app from scratch. To do this, locate the <i>app</i> folder and delete its contents, then delete the <i>index.html.</i> Now we have a completely blank project, pre-configured with all our scripts and css.</p>
+<p><i>*Note: IE, Chrome and Safari don't like serving the files directly from the file system. If you would like to use one of these browsers, simply use your preferred web server technology to serve the files.</i></p>
+<p><b>Index.html</b><br /> Let’s start by writing our own <i>index.html</i> file. Here’s the markup we’ll use:</p>
+<pre>
+&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+  &lt;head&gt;
+    &lt;link rel=&quot;stylesheet&quot; href=&quot;lib/bootstrap/css/bootstrap.css&quot; /&gt;
+    &lt;link rel=&quot;stylesheet&quot; href=&quot;lib/font-awesome/css/font-awesome.css&quot; /&gt;
+    &lt;link rel=&quot;stylesheet&quot; href=&quot;lib/durandal/css/durandal.css&quot; /&gt;
+    &lt;link rel=&quot;stylesheet&quot; href=&quot;css/starterkit.css&quot; /&gt;
+  &lt;/head&gt;
+  &lt;body&gt;
+    &lt;div id=&quot;applicationHost&quot;&gt;&lt;/div&gt;
+    &lt;script src=&quot;lib/require/require.js&quot; data-main=&quot;app/main&quot;&gt;&lt;/script&gt;
+  &lt;/body&gt;
+&lt;/html&gt;</pre>
+<p>All we have here are a few css files, a single div called “applicationHost” and a single script tag. We’ve added <a href="http://getbootstrap.com/">Bootstrap</a> and <a href="http://fontawesome.io/">FontAwesome</a> here so we can easily make things look decent, but they aren’t required by Durandal. The important piece to notice is the script tag.</p>
+<p>Durandal encourages modular code practices by using RequireJS as one of its core building blocks. In a Durandal app, all JS code is written in modules. The script tag in our <i>index.html</i> loads RequireJS which facilitates the framework’s module strategy. Once the module loader is initialized it then uses the <i>data-main</i> attribute to start up our app. This attribute points to our <i>main</i> module. This is much like the <i>main</i> function in most c-based languages. It is the entry point for our application. Let’s go ahead and create that module now. To do that, first create a file named <i>main.js</i> and place it in the <i>app </i>folder. Here’s the code for that file:</p>
+<pre><u>main.js</u>
+requirejs.config({
+  paths: {
+    'text': '../lib/require/text',
+    'durandal':'../lib/durandal/js',
+    'plugins' : '../lib/durandal/js/plugins',
+    'transitions' : '../lib/durandal/js/transitions',
+    'knockout': '../lib/knockout/knockout-2.3.0',
+    'jquery': '../lib/jquery/jquery-1.9.1'
+    } 
+});
+define(function (require) {
+   var system = require('durandal/system'),
+       app = require('durandal/app');
+   system.debug(true);
+   app.title = 'Durandal Starter Kit';
+   app.configurePlugins({
+     router:true,
+     dialog: true
+   });
+   app.start().then(function() {
+     app.setRoot('shell');
+   });
+});</pre>
+<p>This is pretty standard “boilerplate” configuration for most Durandal apps. But, let’s go over this piece by piece:</p>
+<p>At the top we have the <i>requirejs.config</i> block. This section configures the module system so that it can find our core libraries. It’s just a set of relative paths, so that the first time we reference “jQuery” for example, the module system knows where to load it from. Here you see that we have paths configured for the requirejs text plugin (used to load views), Durandal’s core modules, Knockout and jQuery. In the same way that <a href="http://durandaljs.com/">Durandal</a> uses <a href="http://requirejs.org/">RequireJS</a> for modules, it uses <a href="http://knockoutjs.com/">Knockout</a> for data-binding and <a href="http://jquery.com/">jQuery</a> as its browser abstraction.</p>
+<p>After we set up the RequireJS configuration, we <i>define</i> our main module. All code in Durandal is written in modules and takes the following form:</p>
+<pre>
+define(function (require) {
+  var someModule = require('some/module');
+  ...other modules required here...
+  return someValue;
+});</pre>
+<p>To create a module you call the <i>define</i> function. You pass a function to <i>define</i> which serves as a factory for your module. Whatever you return from this function becomes your module instance. You can return an object to create singleton object modules or a function to create class constructor modules. Additionally, you can declaratively express dependencies upon other modules. To import another module into your module you use the <i>require</i> function.</p>
+<p>In our main module above, you can see that we import or <i>require</i> two of Durandal’s modules: <i>system </i>and <i>app</i>. We then use the <i>system</i> module to turn on framework debugging. After that we use the <i>app</i> module to set our app’s <i>title </i>and load two optional plugins. Finally, we tell the app to <i>start</i>, which is an asynchronous action, and when that completes we call a curious function: <i>setRoot.</i></p>
+<p>The call to <i>setRoot</i> is what actually causes something to be rendered on the screen. You can think of the <i>root</i> as your “main window”, “master layout” or the “shell” of your application. The parameter points to the module which contains our shell’s behavior. The only problem is..that doesn’t exist yet. So, let’s create it.</p>
+<h2>The Shell</h2>
+<p>Most components in Durandal contain both “behavior” and “presentation”. Your application’s shell should be no exception to this rule. We’ll represent these two different concerns by creating two files: a JavaScript file for the behavior and an HTML file for the presentation. Under your <i>app</i> folder create: <i>shell.js</i> and <i>shell.html</i>. I’ll give you the code for each of those now, then we’ll see how it all works.</p>
+<pre><u>shell.js</u>
+define(function (require) {
+  var app = require('durandal/app'),
+      ko = require('knockout');
+  return {
+     name: ko.observable(),
+     sayHello: function() {
+       app.showMessage('Hello ' + this.name() + '! Nice to meet you.', 'Greetings');
+     }
+   };
+});
+<u>shell.html</u>
+&lt;section&gt;
+  &lt;h2&gt;Hello! What is your name?&lt;/h2&gt;
+  &lt;form class=&quot;form-inline&quot;&gt;
+    &lt;fieldset&gt;
+       &lt;label&gt;Name&lt;/label&gt;
+       &lt;input type=&quot;text&quot; data-bind=&quot;value: name, valueUpdate: 'afterkeydown'&quot;/&gt;
+       &lt;button type=&quot;submit&quot; class=&quot;btn&quot; data-bind=&quot;click: sayHello, enable: name&quot;&gt;Click Me&lt;/button&gt;
+    &lt;/fieldset&gt;
+  &lt;/form&gt;
+&lt;/section&gt;</pre>
+<p>Notice that our <i>shell.js</i> defines a module as we have previously discussed. It has dependencies on two other modules: <i>app</i> and <i>knockout</i>. Our module returns an object literal as its definition. This object has one property, <i>name</i>, and one function, <i>sayHello.</i> The <i>name</i> property is special. Here, we have used <a href="http://knockoutjs.com/">Knockout</a> to create an <i>observable</i> property. An observable property supports two-way data-binding to html, change notification and a number of other features. Notice that the <i>sayHello</i> function uses this property to display a message box with Durandal’s <i>app</i> module.</p>
+<p>To fully understand this code, you need to look at it side-by-side with the HTML. Notice how the HTML has <i>data-bind</i> attributes in it. These attributes declaratively connect the HTML to the properties and functions in the module we just looked at. See how the input tag has a <i>data-bind</i> attribute that connections its <i>value</i> to our <i>name</i> property? It also specifies that our property should be updated after key down events (as opposed to focus change, which is the default). Also, take a look at the button. Its <i>click</i> event is bound to our <i>sayHello</i> function. Furthermore, the button will only be enabled when the <i>name</i> property has a truthy value. Pretty cool! Go ahead and run the app by opening <i>index.html</i> in Firefox or spinning up a web server to view it in another browser. When you do this, here’s what’s going to happen:</p>
+<ol> 
+ <li>RequireJS will load.</li> 
+ <li>RequireJS will load your <i>main.js</i> and configure the framework.</li> 
+ <li>Your <i>main.js</i> will present the app by calling <i>setRoot.</i></li> 
+ <li>The <i>shell.js</i> and <i>shell.html</i> files will be loaded, data-bound to one another and injected into the <i>applicationHost</i> div in the page.</li> 
+</ol>
+<p>Once it’s loaded, try typing in the input field and notice how the button’s enabled state changes. Then, click the button to see what happens.</p>
+<h2>Navigation</h2>
+<p>This is all pretty cool, but most applications don’t just have one page. So, let’s turn our <i>shell</i> into a navigation app. To start, rename your <i>shell.js</i> to <i>home.js</i> and your <i>shell.html</i> to <i>home.html</i>. Now, create two new files which will serve as our navigation shell. Here’s the source for the new <i>shell.js</i> and <i>shell.html.</i></p>
+<pre><u>shell.js</u>
+define(function (require) {
+  var router = require('plugins/router');
+  
+  return {
+     router: router,
+     activate: function () {
+       router.map([
+         { route: '', title:'Home', moduleId: 'home', nav: true }
+       ]).buildNavigationModel();
+       return router.activate();
+     }
+   };
+});
+<u>shell.html</u>
+&lt;div&gt;
+ &lt;div class=&quot;navbar navbar-fixed-top&quot;&gt;
+  &lt;div class=&quot;navbar-inner&quot;&gt;
+   &lt;ul class=&quot;nav&quot; data-bind=&quot;foreach: router.navigationModel&quot;&gt;
+    &lt;li data-bind=&quot;css: { active: isActive }&quot;&gt;
+     &lt;a data-bind=&quot;attr: { href: hash }, html: title&quot;&gt;&lt;/a&gt;
+    &lt;/li&gt;
+   &lt;/ul&gt;
+   &lt;div class=&quot;loader pull-right&quot; data-bind=&quot;css: { active: router.isNavigating }&quot;&gt;
+     &lt;i class=&quot;icon-spinner icon-2x icon-spin&quot;&gt;&lt;/i&gt;
+   &lt;/div&gt;
+  &lt;/div&gt;
+ &lt;/div&gt;
+ &lt;div class=&quot;container-fluid page-host&quot; data-bind=&quot;router: { transition:'entrance' }&quot;&gt;&lt;/div&gt;
+&lt;/div&gt;</pre>
+<p>Looking at our navigation shell, you can see the same module pattern. Here we are requiring our router plugin and using that to create an object. We configure the router with a single route that points to our <i>home</i> module. This router configuration specifies the <i>route</i> pattern to match on, the <i>title</i> to display, the <i>moduleId</i> to load when the route is matched and whether or not we should tag this route as part of our visible navigation (<i>nav:true).</i> After we configure our routes, we then call <i>buildNavigationModel</i> which takes the route info, and builds a special collection that we can data-bind to for display as a top-level navigation UI. Finally, we activate the router. All of this takes place inside a function called <i>activate</i>. Every time Durandal presents a component on screen, it will look for an optional <i>activate</i> callback. If present, it will invoke it prior to data-binding. This allows modules to execute custom activation code, such as configuring the application’s router in this case.</p>
+<p>Once again, it’s easiest to understand if you look at the module side-by-side with it’s view. If you do that, you will first see how we are data-binding to the <i>navigationModel</i> property in order to generate a navbar. Each navigable route is turned into an <i>li</i> with a link that is bound to the route’s <i>hash</i> and <i>title</i>. As part of the navbar, we also bind an animating spinner icon to the router’s <i>isNavigating</i> property. As a result, whenever we are in the process of navigating from one page to another, the spinner will be visible and animating.</p>
+<p>At the bottom of the view is a special <i>router</i> binding which connects to our router in the module. This serves as a placeholder where the current “page” will be displayed. The <i>transition</i> property indicates that whenever the page changes, Durandal should use the “entrance” transition animation.</p>
+<p>Go ahead and run it again. It looks pretty similar to before, except now there’s a navbar. It’s not very impressive because we still only have one page. Let’s create a second page so we can navigate back and forth.</p>
+<h2>Mount Rainier</h2>
+<p>Let’s create a second page that calls Flickr and gets back a bunch of pictures to display of Mount Rainier. Our first step is to add another route. Update your shell’s router config so that it has these two routes now:</p>
+<pre>
+{ route:'', title:'Home', moduleId:'home', nav:true },
+{ route:'rainier', title:'Mount Rainier', moduleId:'rainier', nav:true }</pre>
+<p>That’s our original, default home route, plus our new route for the page we are about to add. By now, I hope you see the pattern emerging. We create a module and a view for our new page.</p>
+<pre><u>rainier.js</u>
+define(function (require) {
+  var http = require('plugins/http'),
+      ko = require('knockout');
+  var url = 'http://api.flickr.com/services/feeds/photos_public.gne';
+  var qs = { 
+    tags: 'mount ranier', 
+    tagmode: 'any', 
+    format: 'json' 
+  };
+  return {
+     images: ko.observableArray([]),
+     activate: function () {
+       var that = this;
+       if (this.images().length &gt; 0) {
+           return;
+       }
+     
+       return http.jsonp(url, qs, 'jsoncallback').then(function(response) {
+          that.images(response.items);
+       });
+     }
+   };
+});
+<u>rainier.html</u>
+&lt;section&gt;
+  &lt;h2&gt;Mount Rainier&lt;/h2&gt;
+  &lt;div class=&quot;row-fluid&quot;&gt;
+    &lt;ul class=&quot;thumbnails&quot; data-bind=&quot;foreach: images&quot;&gt;
+      &lt;li&gt;
+         &lt;img style=&quot;width: 260px; height: 180px;&quot; data-bind=&quot;attr: { src: media.m }&quot;/&gt;
+      &lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/div&gt;
+&lt;/section&gt;</pre>
+<p>I bet you can figure out how this works. Our module uses the http plugin to call the Flickr api in its activate callback. It then stores that data in it’s <i>images</i> observable array property. The view simply binds to that array of data.</p>
+<p>If you run the app now, you’ll see two items in the navbar and you’ll be able to navigate back and forth between them. You can also use the browser’s back button. There’s lots more details and tons more that Durandal can do. At this point, you might want to download the original starter kit and take a look at it in more detail to see a few more interesting tidbits. You’ll probably also want to download the official samples to see how other features work, like pub/sub messaging, custom modal dialogs, widgets, advanced view composition and more. If you want to see something really cool, <a href="http://www.kickstarter.com/projects/eisenbergeffect/durandal-2014/posts/695777">check out the app we’ll build as part of our Kickstarter funded training series</a>.</p>
+<p><a href="http://durandaljs.com/">Durandal</a> makes building rich, dynamic JavaScript apps simple by encouraging a modular approach. It’s no surprise that our community is growing so fast. We’re only getting started with our plans and we hope you’ll consider joining us on the adventure. <a href="http://www.kickstarter.com/projects/eisenbergeffect/durandal-2014">Please have a look at our Kickstarter</a>. We’ve got some cool goals for the 2014 year...and some awesome rewards for you. The web is changing, and it’s looking like a bright future is in store. We hope to see you there!</p>
 <h2>About the Author</h2>
-<p><strong><img src="http://www.infoq.com/resource/articles/scrum-master-position-role/en/resources/BrianLawrence.jpg" vspace="3" hspace="3" align="left" alt="" _href="img://BrianLawrence.jpg" _p="true" />Brian Lawrence</strong> is currently an IT Director at TriZetto Provider Solutions in St. Louis, MO, where he is responsible for several Agile and Kanban product development teams, as well as application architecture. He has been a process junky since the days of Edward Yourdan. During his career he’s taken development organizations through several methodology transformations, including Rational Unified Process, Essential Unified Process, and Agile. He loves process improvement and looking at ways of developing software better, faster, and cheaper. His current passion is looking at ways to manage within an Agile environment.</p><br><br><br><br><br><br></body></html>
+<p><strong><img vspace="3" hspace="3" align="left" _p="true" _href="img://Rob1.jpg" alt="" src="http://www.infoq.com/resource/articles/durandal-javascript-framework/en/resources/Rob1.jpg" />Rob Eisenberg</strong> is a JavaScript expert and .NET architect working out of Tallahassee, FL and he is the President of Blue Spire Consulting. Rob got his start with computer programming at the age of nine, when he thoroughly fell in love with his family's new Commodore 64. His fascination with programming started with the Commodore Basic language, then moved to Q Basic and QuickBasic and quickly continued on to C, C++, C# and JavaScript. Rob publishes technical articles regularly at <a href="http://devlicio.us/">devlicio.us</a> and has spoken at regional events and to companies concerning Web and .NET technologies, Agile software practices and UI engineering. He is coauthor of Sam's Teach Yourself WPF in 24 Hours and is the architect and lead developer of the Durandal and Caliburn.Micro frameworks.</p>
+<p>&nbsp;</p><br><br><br><br><br><br></body></html>

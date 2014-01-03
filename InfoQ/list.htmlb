@@ -1,7 +1,10 @@
 <html>
  <head></head> 
- <body>
-  <div>
+ <body> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/13.htmlb">关于Cassandra的错误观点</a> 在本文中，作者Jonathan Ellis将会解答在使用Apache Cassandra这个NoSQL数据库时的各种疑惑，包括架构、部署与配置、性能、查询语言（CQL）以及数据库成熟度等等。 
+  </div> 
+  <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/12.htmlb">必胜宅急送Web app设计背后的思考</a> O2O模式是餐饮业在移动消费趋势下主动拥抱互联网的方向，迎合餐饮消费者从以往经验判断为主转变为依靠移动设备、lbs、社交网络进行立体决策的过程。继App客户端之后，手机web app也逐渐成为O2O中联系消费者和餐饮业的纽带，通过Html5的技术支持，web app设计可以直接适配不同平台的手机屏幕并实现类似App客户端的体验，在O2O双向流程的闭环中加深消费者对品牌的认同和感情认知。 日前必胜宅急送推出的手机订餐web正是其O2O模式的策略补充和深化。FaceUI提供的web app设计包含了对产品背后动机的挖掘和把握，随着项目团队对动机的理解和可用性测试的加深，设计思路也随之发生着变化。 
   </div> 
   <div> 
@@ -148,8 +151,5 @@
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/16.htmlb">高德LBS开放平台产品总监房芳谈LBS应用的需求和创新空间</a> InfoQ编辑在大会上对高德LBS开放平台产品总监房芳进行了一次采访，交流了API开发的难点、LBS应用需求和创新空间、有哪些案例可以学习、还有多少市场可以挖掘等话题。 
   </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/15.htmlb">书评与采访：《探索 Meteor》</a> Tom Coleman和Sacha Greif今天发布了《探索Meteor》，这是一本介绍Meteor的书。Meteor是一个基于JavaScript的web框架，它的目的是简化实时web应用程序的开发。为展示Meteor的特性以及它的整个生态系统，本书以“Microscope”这个应用程序作为讲解的示例，这是一个类似于Hacker News及Reddit的简单网站，但加入了实时数据的功能。 
-  </div>  
  </body>
 </html>
