@@ -1,7 +1,7 @@
 <html>
  <head></head> 
- <body>
-  <div>
+ <body> 
+  <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/41.javab">Durandal: Quick Start</a> Durandal is a lightweight JavaScript framework designed to make building Single Page Applications (SPAs) simple and elegant. It has strong support for MVC, MVP and MVVM so that no matter what type of front end architecture you prefer, Durandal can handle the task. 
   </div> 
   <div> 
@@ -150,6 +150,6 @@
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/43.javab">An interview with Vasco Duarte and Jason Little on Lean Change Management by Happy Melly Express</a> InfoQ interviewed Vasco Duarte on a new publishing business that aims to connect authors with their audience in a sustainable way, and with Jason Little, author about Lean Change Management. 
-  </div>  
+  </div> 
  </body>
 </html>
