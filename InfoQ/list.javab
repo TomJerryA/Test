@@ -2,6 +2,9 @@
  <head></head> 
  <body> 
   <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/42.javab">Design Patterns: Magic or Myth?</a> In this article, author discusses the effectiveness of the usage of design patterns in software development. The analysis is based on surveys and mapping studies conducted to indicate which patterns were considered useful under what circumstances. 
+  </div> 
+  <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/41.javab">Durandal: Quick Start</a> Durandal is a lightweight JavaScript framework designed to make building Single Page Applications (SPAs) simple and elegant. It has strong support for MVC, MVP and MVVM so that no matter what type of front end architecture you prefer, Durandal can handle the task. 
   </div> 
   <div> 
@@ -147,9 +150,6 @@
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/44.javab">Practical MQTT with Paho</a> MQTT is making the Internet of Things an interoperable and flexible world where the smallest devices can talk to the largest of servers. This article presents the Eclipse Paho project. 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/43.javab">An interview with Vasco Duarte and Jason Little on Lean Change Management by Happy Melly Express</a> InfoQ interviewed Vasco Duarte on a new publishing business that aims to connect authors with their audience in a sustainable way, and with Jason Little, author about Lean Change Management. 
   </div> 
  </body>
 </html>

@@ -1,8 +1,8 @@
 <html>
  <head></head> 
- <body>
-  <div>
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/37.java">A Few Highlights from QConSF2013- Part 2 of 2</a>It's one thing having an in-house training program. But there is a certain deeper insight that can be gained from attending a Q-Con conference in person. Which may be one reason why attendance at the globe-hopping event continues to grow.
+ <body> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/37.java">A Few Highlights from QConSF2013- Part 2 of 2</a>It's one thing having an in-house training program. But there is a certain deeper insight that can be gained from attending a Q-Con conference in person. Which may be one reason why attendance at the globe-hopping event continues to grow. 
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/36.java">OpenAccess ORM Q3 2013 SP1 Adds VS 2013 Support, Discontinued Classic Wizards, Oracle 9i and MySQL 5</a>The recently released OpenAccess ORM Q3 2013 SP1 by Telerik has introduced support for Visual Studio 2013 in addition to extended support for Visual Studio 2008. Moreover, support for classic wizards, Oracle 9i and MySQL 5.0 will be discontinued beginning with the next release of OpenAccess ORM. 
@@ -150,6 +150,6 @@
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/39.java">RadControls for WPF and Silverlight Q2 2013 SP1 with Entity Framework 6 Support and Several Features</a>Telerik has released RadControls for WPF and Silverlight Q2 2013 SP1 with the ability to change application icon set during runtime in addition to support for Entity Framework 6. It also provides an ability to pass event arguments to command when using Telerik EventToCommandBehavior in addition to several new features and improvements. 
-  </div>  
+  </div> 
  </body>
 </html>
