@@ -1,6 +1,33 @@
 <html>
  <head></head> 
- <body> 
+ <body>
+  <div>
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/33.py">Xen Project，Mirage 0S 1.0をリリース</a>Mirage OSは &quot;クラウドオペレーティングシステム&quot; である。セキュリティ上の脆弱性回避と，単一目的の仮想アプライアンスの開発容易化による普及を目標とする。アプリケーションは関数型プログラム言語OCamlで開発され，Xen ハイパーバイザ上で直接動作するスタンドアロンの &quot;ユニカーネル&quot; にコンパイルされる。
+  </div>
+  <div>
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/32.py">カンバンで需要と能力のバランスをとる</a>カンバンを使うことで、組織は実施中の作業を把握し、需要と能力のバランスがとれるプルシステムを確立できる。まずは実際の能力がどの程度あるかを見極め、その能力の流れを可視化することだ。InfoQはFlorian Eisenberg氏にインタビューし、どのように需要と能力のバランスをとるかについて話を聞いた。
+  </div>
+  <div>
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/31.py">スプリント計画ゲーム &quot;Rocket to Mars&quot;</a>&quot;ほとんどのチームとそのプロダクトオーナは，より多くのストーリポイントを達成することがチームの唯一の責務だと信じています。しかしこれは，チームとプロダクトオーナの関係を完全に誤解したものだ，と私たちは考えます。&quot; こう語るのはDamien Thouvenin氏とPierrick Revol氏だ。氏らはストーリの創出や問題の調査，技術的負債の削減，およびそれらをトレーニングするための時間的投資を題材としたスプリント計画ゲームを実施した。
+  </div>
+  <div>
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/30.py">TypedMVVM - WinJS Windows StoreアプリをTypeScriptを使って開発</a>TypedMVVMはDavide Zordan氏の開発した，WinJS, TypeScript, MVVMを使用したWindows Storeアプリの開発を可能にするための，サンプルとライブラリのコレクションだ。
+  </div>
+  <div>
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/29.py">モダナイゼーションは避けがたい道</a>ほとんどの大企業が，アーキテクチャやガバナンスを選択を伴わないシステム拡張を容認している。その結果として生み出されるのは，複雑性とリスク，変更コストの著しい増加と &quot;毛糸玉&quot; のようなシステムインターフェースだ。David Sprott氏は，システムのモダナイゼーションはビジネスマネジメントとITの間のコラボレーションであるべきだ，と説明する。
+  </div>
+  <div>
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/28.py">Tererik, Entity Framwork 6のサポートなどの機能を備えたRadControls for WPF and Silverlight Q2 2013 SP1をリリース</a>TelerikがRadControls for WPF and Silverlight Q2 2013 SP1をリリースした。アプリケーション実行中のアイコンセット変更が可能になり，Entity Framework 6がサポートされた。その他にも，Telerik EventToCommandBehaviorの使用時にイベント引数をコマンドに渡すことが可能になるなど，いくつかの新機能と改善点がある。
+  </div>
+  <div>
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/27.py">Wix 3.8リリース，VotiveとWixネイティブライブラリとブートストラッパアプリケーション機能でVS2013をサポート</a>Wix3.8がリリースされた。VotiveとWiXのネイティブライブラリを通じてVisual Studio 2013をサポートする。WixStandardBootstrapperApplicationの拡張によるブートストラッパアプリケーション機能，インストール時にWindows 8.1を検出する機能なども備える。
+  </div>
+  <div>
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/26.py">Visual Commander Professional v1.3リリース，99のコマンドと50のエクステンション，C#対応の構文強調機能を導入</a>先日リリースされたVisual Commander Professional v1.3は99のコマンドと50のエクステンション，C#の構文強調機能などを備える他，マクロ言語を選択することによって新規作成されるコマンドやエクステンションのデフォルト言語の選択も可能になるなど，いくつかの点で改良されている。
+  </div>
+  <div>
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/25.py">Visual Studio 2013 に改善された新規プロジェクトテンプレートとソーシャルアカウント認証が追加</a>近年リリースされてた Visual Studio 2013 では、開発者向けにプロジェクトやアプリケーションの高速な構築が可能なプロジェクトテンプレートが公開
+  </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/24.py">Twitter、CocoaSPDYをオープンソースに</a>TwitterがCocoaSPDYを開発し、それをオープンソース化した。CocoaSPDYはOSX (Cocoa)とiOS (Cocoa Touch)向けのSPDYフレームワークで、彼らが以前Nettyに寄贈した実装に基づいている。時を同じくして、彼らのiOSアプリケーションも素のHTTPの代わりにSPDYを使うようアップデートされた。Twitterはこれにより通信遅延を最大30%削減でき、「ユーザのネットワーク状況が悪いとき」ほど改善が顕著に見られると説明している。 
   </div> 
@@ -123,33 +150,6 @@
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/36.py">Salesforce、Salesforce1でAPIファーストに向かう</a>サンフランシスコで開かれたDreamforceにおいて、SalesforceがSalesforce1プラットフォームをローンチした。最初に提供するのはモバイルにフォーカスしたもので、基本となるAPIセットをもっと豊富にすることで、これまでの「Touch」ユーザインターフェイスを改善することを目指している。ローンチにあわせて、新しいアプリケーションと管理モバイルアプリも発表された。 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/35.py">Microsoftがモバイルデバイスとセンサに対応する単一OSを計画中</a>先週開催されたUBS Global Technology Conferenceの期間中，MicrosoftでDevices and Studios部門を担当する上級副社長のJulie Larson-Green氏は，今日のソフトウェアマーケットに対するMicrosoftのアプローチについて講演を行い，特にモバイルデバイスオペレーティングシステムの世界における同社の見解を提供した。ここではそのセッションの原稿(HTML，DOCX)の中から，特に興味を引く部分を選び出して紹介する。 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/34.py">DXperience 13.2 - 新しいASP.NETアイコンライブラリ，新テーマ，スマートタグサポートの拡大と強化</a>まもなくリリースされるDevExpress DXperience 13.2には，新しいASP.NETアイコンライブラリ，CSS3ベースのmodernoテーマ，Visual StudioのWinForms用の新テーマ，さらにはWinFormsデータ編集ライブラリを含む全コントロール対象のスマートタグサポートが含まれている。 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/33.py">Oracleが2013 JVM Language Summitのビデオとスライド資料をリリース</a>Oracleが今年7月に行われた2013 JVM Language Summitのビデオとスライドを公開した。巨大なビッグデータから小さなモバイルまで及ぶJVMの利用例に加えて，JVMランタイムの将来的なパフォーマンス向上も紹介されている。本記事でその内容を確認してほしい。 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/32.py">CMMI開発で実現する設計レベルのセキュリティ</a>セキュアな製品開発を可能にするためには，ソフトウェア開発ライフサイクルのプロセス全般においてセキュリティ活動が実施される必要がある。SiemensのWinfried Russwurm氏とLimes SecurityのPeter Panholzer氏は， SEPG Europe 2013カンファレンスで開催したワークショップでセキュリティ活動について調査し，Application Guide for Improving Processes for Secure Productsを公開した。 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/31.py">Amazon Kinesisでビッグデータをストリーム処理</a>Amazonがさまざまなソースにある大規模データをストリーム処理できるサービス、Kinesisを発表した。現在、限定プレビューとして利用できる。 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/30.py">Nokia Imaging SDK 1.0、フィルター、WinPRT API、機能強化、サンプルデモを追加</a>Slush 2013にて、NokiaがImaging SDK v1.0をリリースした。これには50の組み込みフィルター、メモリ管理関連の改善、マネージドおよびネイティブコードのWinPRT APIライブラリ、新機能をデモするサンプルアプリが含まれている。 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/29.py">PivotalがReactorをGAリリース</a>Pivotalは今週，プロジェクトReactorのバージョン1.0を一般向けにリリースした。イベント駆動でリアクティブなプログラミングモデル用に低レベルの抽象化を提供するReactorは，Spring IO Platformの&quot;IO Foundation”レイヤの構成メンバだ。 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/28.py">Amazon Web Services、新しいインスタンスタイプを3つ発表</a>Amazon Web ServicesはEC2 (Elastic Compute Cloud) IaaSの新しいインスタンスタイプを3つ発表した。I2インスタンスはSSDを使って、高いI/O性能を実現する。C3インスタンスは高負荷な計算のために各仮想CPUをハードウェアハイパースレッドに結びつける。G2インスタンスは3Dアプリケーション向けにNvidiaのGPUを提供する。 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/27.py">Vaughn Vernon氏、リアクティブドメイン駆動設計について語る</a>Implementing Domain-Driven Designの著者であるVaughn Vernon氏が、イベント駆動やヘキサゴナルアーキテクチャでよく見られるアーキテクチャオーバーヘッドを取り除く手段として、ScalaとAkka（アクターモデルの実装）をドメイン駆動設計と組み合わせて使うことについて説明した。 
-  </div> 
+  </div>          
  </body>
 </html>

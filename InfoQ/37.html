@@ -1,24 +1,8 @@
-<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>DevExpress ASP.NET Grid控件引入了批量编辑功能</h3><p>包含在最近发布的13.2版本中的DevExpress ASP.NET Grid控件（<a href="http://demos.devexpress.com/ASPxGridViewDemos/Default.aspx">ASPxGridView</a>）允许ASP.NET和MVC开发者在客户端批量修改Grid数据，然后在一个请求中将这些数据发送到服务器。它让最终用户只使用键盘就能完成记录的编辑工作，不需要使用鼠标。</p>
-<p>ASPxGridView控件已经被更新，更新后的控件允许最终用户在修改的数据被发送到服务器之前预览这些数据。此外，还能够为修改后的单元格选择颜色。</p>
-<p>借助于GridView控件，如果用户在<a href="http://demos.devexpress.com/ASPxGridViewDemos/GridEditing/BatchEditing.aspx">批量编辑</a>阶段执行了任何操作那么他们将能够获得有用的通知。例如，如果你从一个单元格中选择了值之后试图对列进行排序，那么你将看到下面的信息：</p>
-<p><img width="600" src="http://www.infoq.com/mag4media/repositories/fs/news/2013/12/devpress-grid-batch-edit/zh/resources/null" alt="" _href="img://null" _p="true" /></p>
-<p>为了启用批量编辑功能，你需要将Mode属性设置为Batch。设置完成之后，你就能够使用内嵌的编辑器修改数据了，同时修改后的单元格会显示为绿色。一旦你启用了批量编辑功能，所有的变化都会保存在客户端直到单击了Save链接为止。当然，你还可以通过单击Cancle链接取消所有的修改。</p>
-<p>InfoQ采访了DevExpress的软件开发人员Mehul Harry以便于了解与ASPxGridView控件相关的更多信息。</p>
-<p><b>InfoQ</b><b>：你能与我们分享一下</b><b>GridView</b><b>批量编辑功能的好处么？</b></p>
-<blockquote> 
- <p>GridView批量编辑功能的好处如下：</p> 
- <ul> 
-  <li>用户通过批量编辑功能修改DevExpress ASPxGridView控件中的记录仅需要使用键盘。这样能够节省时间，因为他们不需要动鼠标。</li> 
-  <li>一旦用户完成了编辑或者插入操作，他们能一次性地审查所有的变化。</li> 
-  <li>用户还能够一次性取消或者保存他们的修改。</li> 
- </ul> 
-</blockquote>
-<p><b>InfoQ</b><b>：批量编辑功能支持触摸么？</b><b> </b></p>
-<blockquote> 
- <p>是的，DevExpress ASP.NET控件支持<a href="https://www.devexpress.com/products/net/controls/touch.xml">触摸</a>。实际上，我们有一个新的<a href="https://community.devexpress.com/blogs/aspnet/archive/2013/11/13/asp-net-moderno-theme-what-39-s-new-in-13-2.aspx">主题</a>，它在触摸设备和桌面浏览器上都能很好地工作。</p> 
-</blockquote>
-<p><b>InfoQ</b><b>：你能与我们分享一些批量编辑功能的应用场景么？</b></p>
-<blockquote> 
- <p>批量编辑功能对于那些需要编辑一组数据同时在最终用户做好将变化上传并提交到数据库的准备之前不会更新数据的用户而言是非常有用的。</p> 
-</blockquote>
-<p><strong>查看英文原文：</strong><a href="http://www.infoq.com/news/2013/12/devpress-grid-batch-edit">DevExpress ASP.NET Grid Control Introduces Batch Edit</a></p><br><br><br><br><br><br></body></html>
+<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>Apache Kafka —一个不同的消息系统</h3><p>Apache已经发布了<a href="https://archive.apache.org/dist/kafka/0.8.0/RELEASE_NOTES.html">Kafka 0.8，也是自从成为Apache软件基金会的顶级项目后</a><a href="http://kafka.apache.org/">Kafka</a>的第一个主版本。 Apache Kafka是发布—订阅消息传递，实现了分布式提交日志，适用于离线和在线消息消费。它最初由LinkedIn开发的消息系统，用于低延迟的收集和发送大量的事件和日志数据。最新版本包括群集内复制和多数据目录支持。目前请求处理也是异步的，使用请求处理线程的附属线程池来实现。日志文件可以按年龄进行覆盖，并且日志级别可通过JMX进行动态设置。性能测试工具已提供，帮助解决存在的性能问题，并寻找潜在的性能优化点。</p>
+<p>Kafka是一个分布式，分区化，可复制的提交日志服务。生产者将消息发布到Kafka主题，消费者订阅这些主题并消费这些消息。在Kafka集群上一个服务器称为一个Broker。对于每一个主题，Kafka群集保留一个用于缩放，并行化和容错性的分区。每个分区是一个有序，不可变的消息序列，并不断追加到提交日志文件。分区的消息每个也被赋值一个称为偏移顺序的序列化编号。</p>
+<p><img _p="true" _href="img://log_anatomy.png" alt="" src="http://www.infoq.com/resource/news/2013/12/apache-afka-messaging-system/en/resources/log_anatomy.png" /></p>
+<p>偏移是由消费者来控制。典型的消费者将处理列表中的下一条消息，它可以以任何顺序接收消息，因为Kafka集群为所有发布的消息保留一段可配置的时间。这让消费者很灵活，他们可以来去自由而不影响群集，并适合像Hadoop集群这样的脱机消费者。生产者能够选择那一个主题，主题的那一个分区，来发布该消息。消费者自己也可以分配一个消费者组名，每个消息将发送给每个订阅消费者组的消费者。如果所有的消费者有不同的消费组，那么消息将被广播到每一个消费者。</p>
+<p>Kafka可以像一个传统的消息Broker使用。它具有高吞吐量，内置分区，可复制和容错等特性，这使得它成为大型消息处理应用的理想解决方案。Kafka也可以用于高访问量的网站活动的跟踪机制。网站活动可以被发布，并且可以被实时处理，或加载到Hadoop或离线的数据仓库系统。Kafka也可以用来作为一种日志整合方案。代替工作于日志文件，日志可以作为消息流处理。</p>
+<p>Kafka目前用于LinkedIn，它每天处理超过100亿消息，持续负载平均每秒172,000消息。目前，无论从内部和外部的使用数据的应用程序大量使用多订阅者支持。每个消息发布出来后，基本上会有5.5个消息消费者使用，这导致的结果是每一天将有550亿的消息发送给实时消费者。367个主题涵盖用户活动的主题和运营数据，其中最大将每天增加的平均92GB批量压缩消息。信息保存时间为7天，这些平均约9.5 TB压缩消息跨越主题。除了在线消费者，还有众多的大型Hadoop集群，它们消费频繁，高吞吐量，并行矩阵，作为离线数据负载的一部分。</p>
+<p>作为入门，访问官方的<a href="http://kafka.apache.org/documentation.html">Apache Kafka文档页</a>，你可以学习更多和下载Kafka。也有一篇来自LinkedIn的论文，标题为《<a href="http://sites.computer.org/debull/A12june/pipeline.pdf">构建LinkedIn的实时活动数据管道</a>》 ,该论文讨论Kafka 建立原因和Kafka设计上的特性。</p>
+<p><b>查看英文原文：</b><a href="http://www.infoq.com/news/2013/12/apache-afka-messaging-system">Apache Kafka - A Different Kind of Messaging System</a></p><br><br><br><br><br><br></body></html>

@@ -1,14 +1,24 @@
-<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>PivotalがReactorをGAリリース</h3><p><a target="_blank" href="http://www.infoq.com/news/2013/11/reactor-goes-ga"><em>原文(投稿日：2013/11/13)へのリンク</em></a></p>
+<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>モダナイゼーションは避けがたい道</h3><p><a target="_blank" href="http://www.infoq.com/news/2013/12/modernization-is-not-optional"><em>原文(投稿日：2013/12/10)へのリンク</em></a></p>
 <div class="article_page_left news_container text_content_container"> 
  <div class="text_info"> 
-  <p>オープンソースらしく単純な名前の<a href="http://gopivotal.com" target="_blank">Pivotal</a>のライブラリ “Reactor” が，先の火曜日に，バージョン1.0の<a href="https://spring.io/blog/2013/11/12/it-can-t-just-be-big-data-it-has-to-be-fast-data-reactor-1-0-goes-ga" target="_blank">GA(General Availability)リリース</a>というマイルストンに達した。イベント駆動でリアクティブなプログラミングモデル用に低レベルの抽象化を提供するReactorは，<a href="https://spring.io/platform" target="_blank">Spring IO Platform</a>の&quot;IO Foundation&quot;レイヤの構成メンバだ。</p> 
-  <p>ReactorはSpring IO Platformの基本的なコンポーネントとして設計されているが，それ自身はSpring Frameworkへの直接的な依存性を持っていない。<a href="https://github.com/reactor/reactor/wiki" target="_blank">プロジェクトのwiki</a>には，&quot;reactor-spring&quot; モジュールによってSpringを &quot;ネイティブにサポート&quot;するが，コアAPIは自己完結的なライブラリとして提供されているので，Springのアプリケーションコンテキスト外でも利用可能だ，と説明されている。</p> 
-  <p>Reactorは &quot;毎秒数千，数万，あるいは数百万という並列要求を処理する必要のある&quot; ，高スループットで低レイテンシなアプリケーション開発を可能にする。確かにリリース発表のブログ記事では，Reactorを &quot;標準的な開発用ラップトップ上で毎秒1,000～1,500万のイベント&quot; を処理する能力がある，としているが，同時に &quot;アプリケーションの処理内容に ... Reactorの処理能力の低下は，処理するタスクに大きく依存&quot; することも明記されている。</p> 
-  <p>Reactorの発想の大部分は，イベントディスパッチによる非同期処理モデルを定義した<a href="http://en.wikipedia.org/wiki/Reactor_pattern" target="_blank">Reactorデザインパターン</a>から得たものだ。プロジェクトにインスピレーションを与えたのは，しかしながらデザインパターンのみではない。他にリリースノートには，多数のオープンソースプロジェクト，さらには近く公開されるJava 8 リリースが引用されている。Reactorはこれらの領域からコンセプトを借用して，StreamsやPromisesといった非同期プログラム技術を抽象化して提供しているのだ。</p> 
-  <p>Reactorはインテグレーションを簡素化するために，さまざまな有名ライブラリや言語に対して，充実したサポートを組み込みで提供している。またキャッチフレーズである &quot;Fast Data&quot; をさらに強調するものとして，&quot;極めてハイパフォーマンスな金融取引を実現するために&quot; 設計された，高スループットの<a href="http://lmax-exchange.github.io/disruptor/files/Disruptor-1.0.pdf" target="_blank">LMAX Disruptor</a>用のAPIについて明記することも忘れていない。</p> 
-  <p>さらにプロジェクトでは，<a href="http://netty.io" target="_blank">Netty</a>ベースのTCPクライアントおよびサーバ用APIを備えた “reactor-tcp” モジュールを開発，提供している。Nettyは “高パフォーマンス，高スケーラビリティの ... 非同期イベント駆動のネットワークアプリケーションフレームワークとツーリング” 提供するJVM用のネットワークライブラリだ。</p> 
-  <p>文法面でのシンプルさと関数プログラミングサポートの両方を提供するため，主要言語としてGroovyを採用し，Closureをコールバックとして使用する。ReactorはGroovy DSLを広範に採用することで，シンプルなコンフィギュレーション体験を提供している。Java 8も主要な開発言語の対象とされていて，ReactorのAPIではコールバックとしてメソッド参照に加えて，ラムダを活用するように設計されている。またClojurewerkzのプロジェクトである<a href="https://github.com/clojurewerkz/meltdown" target="_blank">Meltdown</a>では，ClojureからReactorへのインターフェースを提供している。ReactorチームはライブラリのAPIについて，&quot;拡張性を備えた設計である ... したがって，非JVM言語でも利用可能&quot; である点を強調している。</p> 
-  <p>ReactorのソースコードはApacheライセンスで公開されていて，<a href="https://github.com/reactor/reactor" target="_blank">GitHubから自由に取得することができる</a>。初学者を具体的な例でガイドするために，クイックスタート資料やサンプルプロジェクトも用意されている。デザインを一新した<a href="http://www.spring.io" target="_blank">Spring.IO webサイト</a>の<a href="http://spring.io/guides" target="_blank">ガイドの章</a>にも，<a href="http://spring.io/guides/gs/messaging-reactor/" target="_blank">総合的な &quot;Getting Started&quot;</a> チュートリアルがある。</p> 
-  <p>さまざまなReactorのモジュールはMavenのリソースとしても提供されていて，<a href="https://spring.io/blog/2013/11/12/it-can-t-just-be-big-data-it-has-to-be-fast-data-reactor-1-0-goes-ga#apache-licensed-with-a-friendly-community" target="_blank">リリースノートの末尾</a>に説明があるように，Maven Centralから入手可能だ。</p> 
+  <p>世界<a href="http://www.accuity.com/useful-links/bank-rankings/">10大銀行</a>のひとつであるRoyal Bank of Scotlandが先日，18ヶ月に及ぶ <a href="http://www.ft.com/cms/s/0/05cf8cce-5c43-11e3-931e-00144feabdc0.html#axzz2n1p4L5xx">３度目のITシステム障害</a> に見舞われた。同行CEOは &quot;RBSが数十年間に渡って，システムに適切な投資を行っていなかった&quot; ことを認めている。 この事件を契機としてコンサルティング会社<a href="http://everware-cbdi.com/">Everware-CBDI</a>の創業者でCEOであるDavid Sprott氏は，銀行業界に特有と思われる <a href="http://davidsprottsblog.blogspot.com.au/2013/12/systems-failure-at-rbs-again.html">システムのモダナイゼーション(modernization, 近代化) の無視</a> についての記事を執筆した。</p> 
+  <p>根本的な問題として氏が記しているのは，銀行の数の多さとその規模の大きさだ:</p> 
+  <blockquote>
+   “ ... そのためシステムは，アーキテクチャやガバナンスを改良することなく，生きながらえることができたのです。[レガシ]システムは，粘着テープやシーリングワックス(訳注: 封書などを閉じるための蝋)などと同じで，新たな要求に合わせて少しずつ修正されてきました。新しいシステムにはインターフェースや (重複やハードコードされたビジネスルールのような) 依存性を持った実装が次々と作り込まれて，今では毛糸玉のようになっています。&quot;
+  </blockquote> 
+  <p>その結果として，システムに関するノウハウや資料，あるいはコードの不足のために，実装全体を完全に理解できないままにプロセスやソフトウェア，実行環境の変更が実施される時，複雑性とリスクの増大という問題が顕在化する。</p> 
+  <p>氏は，“モダナイゼーション” というものが単なる新プラットフォームへのアプリケーション移行であると誤解されていて，それよりも重要なアーキテクチャ上あるいは組織上の問題が理解されていないのではないか，という懸念を抱いている。そうではない，モダナイゼーションとはもっと広範なものだ，と氏は主張する:</p> 
+  <blockquote> 
+   <ol> 
+    <li>ビジネスとIT管理者の双方がモダナイゼーションの問題と影響を本当に理解するための共通語 (Lingua Franca) の確立。</li> 
+    <li>a)&nbsp;低リスクな変換を促進し，b)&nbsp;継続的に進化する本来のアジャイルアーキテクチャを漸進的に開発するための，ビジネスシステムアーキテクチャの定義。</li> 
+    <li>アーキテクチャの要請に従いながら，企業におけるビジネスシステムのポートフォリオを段階的に合理化するためのロードマップ。</li> 
+    <li>ビジネスシステムを所有するIT組織とビジネスとの統合の実現。</li> 
+    <li>プロセスと情報，およびルールの整合性と一貫性，所有権を確保するための，ビジネスシステムに関するナレッジマネジメントの実践。</li> 
+    <li>継続的なアジャイルのモダナイゼーションと，ビジネスおよびIT両面での絶え間ない進化プロセスの実現。</li> 
+    <li>システムライフサイクルのすべてのステージにおけるアーキテクチャの整合性を確保するための，コーディネーションとガバナンス，リスクマネジメントの確立。</li> 
+   </ol> 
+  </blockquote> 
+  <p>氏は上記のリストについて，この問題がIT部門に限られたものではなく，マネジメント全般の問題であって，ビジネスマネジメントとITが効率的に共同作業を行うことで初めて対応可能なものだ，と指摘している。さらに氏はこれらの問題について，大規模な組織では普遍的に見られるものであることを指摘するとともに，読者に対して &quot;モダナイゼーションは避けられない道&quot; というメッセージを送ることで記事を結んでいる。</p> 
  </div> 
 </div><br><br><br><br><br><br></body></html>

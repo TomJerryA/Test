@@ -1,18 +1,33 @@
-<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>ActiveMQ 5.9：LevelDB ストアのレプリケーション、およびHawtio ウェブコンソールに対応</h3><p><a target="_blank" href="http://www.infoq.com/news/2013/11/activemq-5-9-release"><em>原文(投稿日：2013/11/07)へのリンク</em></a></p>
+<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>Visual Commander Professional v1.3リリース，99のコマンドと50のエクステンション，C#対応の構文強調機能を導入</h3><p><a target="_blank" href="http://www.infoq.com/news/2013/12/visual-commander-pro-1-3"><em>原文(投稿日：2013/12/02)へのリンク</em></a></p>
 <div class="article_page_left news_container text_content_container"> 
  <div class="text_info"> 
-  <p>最新版の<a href="http://activemq.apache.org/">Apache ActiveMQ</a><a href="http://en.wikipedia.org/wiki/Message_broker">メッセージブローカ</a>は<a href="http://activemq.apache.org/leveldb-store.html">LevelDB データストア</a>のレプリケーション機能をサポートし、さらに新しい <a href="http://hawt.io/">Hawtio</a> ウェブコンソールを含んでいる。前回のリリースから８ヶ月経過した最新リリースのバージョン5.9 には、以下のような新しい機能と改良が含まれている。</p> 
-  <ul> 
-   <li><a href="http://activemq.apache.org/replicated-leveldb-store.html">レプリケーション対応の LevelDBデータストア</a>は、キー・バリュー型のファイルベースの永続化<a href="https://code.google.com/p/leveldb/">データベース</a>である。レプリケーションは<a href="http://zookeeper.apache.org/">Apache ZooKeeper</a> を使って行う。ここではブローカノード群から一つのマスターを選び、そのマスターブローカから残りのブローカにすべての更新情報を複製することで同期を実行する。</li> 
-   <li>新しいブローカプラグインは、ブローカのXML設定の部分的な変更に対応した。これによりリスタートなしで設定変更を反映させることが可能となり、ダウンタイムを避ける事ができる。ただし、いつくかの設定項目についてはブローカのリスタートが必要となるものがまだ残っている。</li> 
-   <li>Howtio ウェブコンソールはプラグイン対応の管理用 HTML5ウェブコンソールである。JVMをサポートしており、ActiveMQや、<a href="http://camel.apache.org/">Camel</a>, <a href="http://tomcat.apache.org/">Tomcat</a> などの多数のプラグインに対応している。このコンソールのサーバ側は <a href="http://jolokia.org/">Jolokia</a> に依存している。Jolokia は、HTTP上のJSON 通信をベースにした JMXとHTTPのブリッジである。旧版のコンソールはまだ可動しているが廃止予定である。</li> 
-   <li><a href="http://en.wikipedia.org/wiki/WebSocket">WebSocket</a>上の<a href="http://mqtt.org/">MQTT</a>プロトコルによる、遠隔監視トランスポートをサポート。</li> 
-   <li>Apache Camel ブローカコンポーネントを ActiveMQ内部の Camel 機能のために利用。</li> 
-   <li>マスターノードのステータス情報をロストした際のブローカの自動再起動に対応。</li> 
-   <li>LevelDBと AMQP の強化。</li> 
-  </ul> 
-  <p>開発チームは、これらの新しい機能とともに<a href="https://issues.apache.org/jira/secure/ReleaseNote.jspa?projectId=12311210&amp;version=12323932">２００</a>以上もの課題を解決している。そのほとんどはバグフィクスと改良であり、そのバグの多くは深刻なものであった。<br /> <a href="http://activemq.apache.org/amq-message-store.html">AMQメッセージストア</a>は廃止され今後使われることはない。</p> 
-  <p>Apache Software Founation のコミッター、Christian Posta 氏は、<a href="http://www.christianposta.com/blog/?p=326">これらの新しい機能について</a>デモやビデオを交えたブログ記事を公開している。</p> 
-  <p>Apache ActiveMQ は、オープンソースのメッセージ処理、および<a href="http://www.enterpriseintegrationpatterns.com/index.html">エンタープライズ統合パターン</a>を完全にサポートした統合パターンサーバである。<br /> <a href="http://activemq.apache.org/apollo/">ActiveMQ Apollo</a> は新しいメッセージブローカであり、『ActiveMQ の次世代メッセージング機構』と呼ばれ、ActiveMQ基盤によって構築されたものである。</p> 
+  <p><a href="http://vlasovstudio.com/visual-commander/professional_edition.html">Visual Commander Professional v1.3</a>がリリースされた。Commandsウィンドウで追加ボタンを押下するか，あるいはインポートすることにより，99のコマンドと50のエクステンションを生成することができる。構文の強調表示が導入され，Visual Studioのテキストエディタを統合したコード編集も可能になった。Edit.FindNextSelected, Edit.FindPreviousSelected, Edit.FindNext, Edit.FindPreviousコマンド用の記録も追加されている。</p> 
+  <p>マクロ言語の選択によって新しいコマンドやエクステンション用のデフォルト言語を定義することも可能になった。複数バージョンのVisual Studioが同じマシンにインストールされている場合にReflectionTypeLoadExceptionの発生する問題もフィックスされている。カスタムアセンブリがフルパスで指定されているときにFileNotFoundExceptionがスローされる点も修正された。コード内のCRを保存するためのストレージ処理の改善や，例外操作に対するいくつかの拡張も今回のリリースに含まれている。</p> 
+  <p>新しいコマンドまたはエクステンションをC#やVBで作成するか，あるいは以前のバージョンから既存のVisual Studioマクロを再利用することで，開発者がVisual Studio 2013/2012/2010で行っている繰り返しタスクを自動化することができる。Visual Studioテキストエディタのキーボードコマンドの記録と再生も可能だ。</p> 
+  <p>Visual Commanderを利用すれば，VCmd.RecordMacroとVCmd.RunMacroコマンドをVisual Studioのキーボードオプションに手作業で割り当てることで，Record Macro (コントロール+シフト+R)コマンドとRun Macro(コントロール+シフト+P)コマンドの再割り当てが可能になる。 コマンドやエクステンション，一時的なマクロを含むすべての設定は，&quot;%APPDATA%\Sergey Vlasov\Visual Commander\1.0\snippets.vcmd&quot; にストアされる。</p> 
+  <p>&quot;Visual Commanderには現在，APIがありません。コマンドにショートカットを設定した上で，Visual Studioの標準インタフェースを使って，ツールバーにそのショートカットを設定してください。&quot; と話すのは，Visual Commanderの開発リーダを務めていた<a href="http://vlasovstudio.com/about.html">Sergey Vlasov</a>氏だ。<br /> <br /> InfoQでは氏と会話して，今回リリースされたVisual Studio エクステンションについて詳しく聞いた。</p> 
+  <p><strong>InfoQ – Visual Commander開発の背景となった目的について説明してください。</strong></p> 
+  <blockquote>
+   Visual Commanderの大きな目標は，既存のマクロコマンドをVisual Studio 2012/2013で実行可能にすることでした。Visual StudioではVS6の頃からマクロコマンドがサポートされていて，生産性向上のためにたくさんのカスタムコマンドが開発されました。Visual Studio 2012でこの機能がなくなったため，多くの開発者はその手段を失ってしまったのです。この機能を提供するサードパーティ製ツールも，今のところありません。 
+  </blockquote> 
+  <p><strong>InfoQ – Visual Commanderが開発者の生産性を向上する，ということでしょうか？</strong></p> 
+  <blockquote>
+   もちろんです。コード編集やVisual Studioのオプション変更，あるいはソリューション修正などといった，通常の作業を行うコマンドシーケンスを作成できます。後はマウスのクリックやキーボードショートカットで，それを起動するだけです。
+  </blockquote> 
+  <p><strong>InfoQ – 製品テストの成功例として，何かケーススタディがあれば教えてください。</strong></p> 
+  <blockquote> 
+   <a href="http://visualstudio.uservoice.com/forums/121579-visual-studio/suggestions/2650757-bring-back-macros">Jeff Relf</a>氏が，VS ユーザボイス上の &quot;Bring back Macros&quot; スレッドにVisual Commander Professionalを使用した自身の経験について記事を書いています。
+   <a href="http://visualstudiogallery.msdn.microsoft.com/deda8ac1-75e6-4068-89ab-b607cee38f2d">Visual Studio Gallery</a>のVisual Commanderのページにも，３件のレビューとQ&amp;Aが掲載されています。
+  </blockquote> 
+  <p><strong>InfoQ – Visual Commanderの将来的なロードマップについて教えてください。</strong></p> 
+  <blockquote>
+   Visual Studioとの統合をさらに改善して，より使いやすいものにしたいと思っています: 
+   <ol> 
+    <li>VCmdメニューにあるVisual Commanderのコマンドの順序変更を可能にする。</li> 
+    <li>Visual Studioキーボードオプションでのキーボードバインディング用に，カスタムコマンド名を追加する。</li> 
+    <li>レコードマクロをコマンドとして保存するための，明示的なメニューコマンドを追加する。</li> 
+    <li>コマンド編集にインテリセンスを有効にする手段を見出す。しかしながら，Visual Studioの拡張性の限界に行き当たっているのが現状です。</li> 
+   </ol> 
+  </blockquote>
  </div> 
 </div><br><br><br><br><br><br></body></html>

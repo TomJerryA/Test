@@ -1,12 +1,31 @@
 <div class="text_info"> 
- <p>Googleは最近，Chromeアプリ(Chrome Apps)の新機能を売り込むのに躍起になっている。9月に発表したWindowsサポート版を補うべく，今週にはMacのサポートを発表した。</p> 
- <p><a href="http://developer.chrome.com/apps/about_apps.html">Chromeアプリ</a>は基本的に，Chromeブラウザ上で動作するアプリをオペレーティングシステム上で動作させるものだ。HTMLやCSS，JavaScriptで記述されたアプリケーションが，あたかもネイティブアプリのような振る舞いで動作するようになる。これらのアプリケーションはChrome Shellの中で実行される。Chrome Shellの提供するAPIによって，通常のWebアプリケーションには不可能な，ハードウェアやオペレーティングシステム機能へのアクセスが可能になるのだ。</p> 
- <p>理論的にはChromeアプリは，プラットフォームを選ばずに動作するデスクトップアプリ開発をWeb技術を使って実現したもの，ということになる。同じような機能は何年も前から，AdobeがAIRで実現している。しかしAIRではランタイムが別途必要なのに対して，Chromeにはプラットフォームを越えた膨大なインストールベースがすでに存在している。</p> 
- <h2>新たな注目</h2> 
- <p>以前Chrome Packaged Appsとも呼ばれていたChromeベースのアプリケーションは，Chrome OS以外にもすでに存在していた。当時ある程度の成功は見たものの，パッケージ化されたアプリの数は限定的だった。それらのアプリについても，相変わらずChrome Browserから起動しなければならなかったり，限定的なセキュリティ・サンドボックス内で動作するものが少なくなかった。</p> 
- <p>最近のGoogleは，この種のアプリに以前よりも重点を置いているようだ。<a href="http://chrome.blogspot.com/2013/09/a-new-breed-of-chrome-apps.html">先の９月に</a>Chromeアプリという名称で再ローンチを行ったのに合わせて，オフラインサポート，Chromeブラウザ依存の軽減，クラウド対応などの新機能を発表している。インストール済のChromeアプリを簡単に検索・起動できるChrome App Launcherも新たにローンチされた。ただしこの時点でのサポート対象はWindowsのみだった。</p> 
- <p>今週になってGoogleは，ChromeアプリとChrome App LauncherでMacをサポートすると発表した。さらに同社の<a href="http://www.youtube.com/watch?v=f3NctLbtsNE">Joe Marini氏がChrome Development Summitで行った講演</a>では，オフライン機能の強化，LinuxやiOS, Androidなどサポートプラットフォームの拡大，クラウド同期機能の組み込みなどが説明されている。</p> 
- <p>モバイルサポートは現在，Adobe PhoneGapのオープンソース版である<a href="http://cordova.apache.org/">Apache Cordova</a>によるものが開発中だ。これで作ったChromeアプリは，iOS App StoreやGoogle Playといったデバイスのマーケットプレースにリリースできる。Marini氏によれば，１月始めにはベータ版が出荷される見込みだ。さらに氏は，<a href="http://blog.chromium.org/2013/07/richer-access-to-google-services-and.html">2月に発表されたAPI</a>の中から，アイデンティティやアプリ内決済，アナリティクス，bluetoothなどの重要なものをいくつか取り上げ，解説を行った。</p> 
- <h2>Chromeアプリはどこにある？</h2> 
- <p>デスクトップアプリケーションの開発でWeb開発者や企業がChromeアプリを採用するかどうかは，今後を見なければ分からない。同じ分野には競合するフレームワークとして，最近注目を集めている <a href="https://github.com/rogerwang/node-webkit">node-webkit</a>もあるからだ。それでもGoogleは，今回の発表に合わせて，イメージエディタの<a href="https://chrome.google.com/webstore/detail/pixlr-touch-up/jklljiahjgoglchglekebfljnmbaleig/">Pixlr Touch Up</a>のように高度なChromeアプリ開発を進めるのに留まらず，Google Drive のスプレッドシートアプリで，すでにオフラインでも動作する<a href="http://googledrive.blogspot.com/2013/12/newsheets.html">Googel SheetsのChromeアプリ版までも新たに</a>リリースしている。</p> 
+ <p><a href="http://blog.xen.org/index.php/2013/12/09/announcing-the-1-0-release-of-mirage-os/">Mirage OS</a>は &quot;クラウドオペレーティングシステム&quot; である。セキュリティ上の脆弱性回避と，単一目的の仮想アプライアンスの開発容易化による普及を目標とする。アプリケーションは関数型プログラム言語<a href="https://en.wikipedia.org/wiki/Ocaml">OCaml</a>で開発され，<a href="https://en.wikipedia.org/wiki/Xen">Xen</a> ハイパーバイザ上で直接動作するスタンドアロンの &quot;ユニカーネル&quot; にコンパイルされる。従来型のオペレーティングシステムを排除し，その構造を代替する言語ライブラリに置き換えることによって，従来よりコンパクトで高速に動作し，攻撃対象領域の少ないアプリケーションを実現する。開発したアプリケーションは，AmazonのEC2やRackspace Cloudのような，Xenベースのパブリッククラウドに直接デプロイすることも可能だ。</p> 
+ <p>Mirage OSのアプローチはWebサーバやDNSサーバ，SDN (Software Defined Networking) などのインフラストラクチャソフトウェア開発者たちにアピールするかも知れない。コントリビュータであるケンブリッジ大学の <a href="http://anil.recoil.org/#!">Anil Madhavapeddy</a>氏は，次のようにコメントしている:</p> 
+ <blockquote>
+  Mirageは，OCamlに見られるような現代的モジュラプログラミング技術を用いて，特殊なインフラストラクチャアプリケーションを迅速に構築するという，私たちの夢を表現したものです。これまでに高レベル言語 (大部分はJavaとScala) で記述されたデータセンタツールは数多くありました。その底辺の部分に至るまで関数プログラミング技術を適用したならば，どのようなメリット(とデメリット！) があるのかを追求したいと思ったのです。
+ </blockquote> 
+ <p>システムは現在Xenハイパーバイザを対象としているが，Unixユーザ空間用のバイナリのビルドも可能だ。さらにプロジェクトには，FreeBSDカーネルモジュール用の試験的実装，NS3ネットワークシミュレータ，JavaScriptなどもある。Anil Madhavapeddy氏はさらに言う:</p> 
+ <blockquote>
+  VMWareやKVM, Hyper-Vといった他のハイパーバイザへの移植は，単純に適当なブートローダと仮想デバイスドライバを記述するだけの問題です。これはシステムプログラミングに足を踏み入れようという人にはうってつけのプロジェクトですので，私たちもメールリスト(mirageos-devel@lists.xenproject.org)を通じて，積極的に指導したいと思っています。
+ </blockquote> 
+ <p>Mirage OSが大きな可能性も持つ応用分野は，コンパクトでセキュアな &quot;ドメイン０&quot;，すなわちハイパーバイザの管理に使用される特別なドメインの提供だ。Anil Madhavapeddy氏は，これがMirage開発の背景となった大きな理由のひとつだとしている:</p> 
+ <blockquote>
+  XenServerディストリビューションではここ数年間，単一のモノシリックな &quot;ドメイン０&quot; の必要性を着実に排除しています。Mirageが提供するのは，そのパズルの最後のピース – これまでの管理ツールスタックを，標準的な分散システムプロトコルで相互に通信してコンセンサスを達成する，専門化したマイクロカーネルの集まりに転換するためのプログラミング環境なのです。これに伴って，セキュアなクラウドを構築する上で達成すべき水準は確実に高くなるでしょう。クラスタ内の仮想マシンに配置されたすてべのユーザデータのキーが，管理ツールスタックに保持されることになるからです。
+ </blockquote> 
+ <p>OCamlを選択した理由の質問に対して，同じくケンブリッジ大学のコントリビュータであるRichard Mortier氏は言う:</p> 
+ <blockquote>
+  理由はいくつかあります – 関数型言語としての実績，活発なコミュニティ，ランタイムへの移植が非常に効率的かつ比較的簡単，Xen管理スタックにOCamlで記述された部分がかなりある，強力なモジュールシステムによって効果的なモジュール化システムが実現可能，といったところでしょうか。
+ </blockquote> 
+ <p>TEE (Trusted Execution Environment) との関連性の有無についての質問には，Citrix XenServerシステムアーキテクトの<a href="http://dave.recoil.org/#!">David Scott</a>氏が次のような説明をしている:</p> 
+ <blockquote>
+  私にとってTE(Trusted Execution)には，(1) 意図したバイナリが実行中であることをどうやって確認するのか (2) 意図した動作をコードが行っていることをどうやって確認するのか，という２つの重要な側面があります。Measured Bootのようなテクニックは前者，つまり適切なバイナリの実行をチェックすることに注目しています。これに対してMirageは後者を，次のような方法で支援します。 
+  <list> 
+   <ul> 
+    <li>必要なライブラリのみをリンクすることで，攻撃対象領域を最小化する。</li> 
+    <li>コンフィギュレーションをどこか外部の(おそらくは変更可能な)ファイルシステムに置くのではなく，アプリケーションにリンクさせる。</li> 
+    <li>メモリ破壊やバッファオーバーフロー攻撃といった類いの影響を受けないコード量を最大化する。</li> 
+   </ul> 
+  </list> 
+ </blockquote> 
+ <p>Mirage OSチームでは，組み込みアプリケーションや &quot;モノのインターネット(Internet of Things)&quot; といったユースケースも対象に含めている。Anil Madhavapeddy氏は，&quot;OCamlコンパイラ自体は，非常に小さなターゲット (<a href="http://www.algo-prog.info/ocaml_for_pic/web/">PIC18マイクロコントローラ</a>のような) にも容易に対応できる&quot;ものの，&quot;ビルドシステム関連で多くの作業が必要になる&quot; ことを指摘する。開発チームは先日の休暇を利用して，自分たちのWebページをMirage OSベースのサーバに移行した。その中には，バックエンドとしてRaspberry Piを使用したものもある。</p> 
 </div>

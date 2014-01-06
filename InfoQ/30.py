@@ -1,9 +1,31 @@
-<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>Nokia Imaging SDK 1.0、フィルター、WinPRT API、機能強化、サンプルデモを追加</h3><p><a target="_blank" href="http://www.infoq.com/news/2013/11/nokia-imaging-sdk-1"><em>原文(投稿日：2013/11/22)へのリンク</em></a></p>
+<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>TypedMVVM - WinJS Windows StoreアプリをTypeScriptを使って開発</h3><p><a target="_blank" href="http://www.infoq.com/news/2013/12/typedmvvm"><em>原文(投稿日：2013/12/10)へのリンク</em></a></p>
 <div class="article_page_left news_container text_content_container"> 
  <div class="text_info"> 
-  <p>最近開かれたSlush 2013において、Nokiaが<a href="http://www.nuget.org/packages/NokiaImagingSDK/">Imaging SDK v1.0</a>をリリースした。これにはセピア、白黒、ミラー、トーン、クロマキーといった50の組み込みフィルターが含まれており、開発者はカスタムフィルターを作成したり、オブジェクトを描画するための背景を提供することができる。また最新のリリースは、任意の領域のクロップ、自由な回転、動的フィルタープロパティ、ソーシャルメディアに共有するのに望ましいファイルサイズへのリサイズをサポートする。</p> 
-  <p>SDKには、ランダムアクセスJPEG (RAJPEG) 形式を利用したときのメモリ管理に関連する改善も含まれている。これは高速なプレビュー、回転、クロップ機能のために大きな画像を自動的に解凍、再圧縮する。また、開発者はCamera Helper APIを利用して、簡単にカメラ機能にアクセスできるようになる。<br /> <br /> フィルターは開発者に自動的に強調、フレーム、明度、RGBレベル、色相、彩度を変えるような機能を持ったアプリ開発を可能にする。さらに、クロマキーフィルターは背景とカットオフから画像を合成する機能も提供する。</p> 
-  <p>Nokia Imaging SDK 1.0には、マネージドC#、VBコード、ネイティブC++コードのWinPRT APIライブラリが含まれている。これには大量のクラスとメソッドが含まれており、これらを使って開発者は<a href="http://www.windowsphone.com/en-us/how-to/wp8/start/whats-new-in-windows-phone">Windows Phone 8</a>アプリを構築することができる。<br /> <br /> Nokiaは<a href="http://developer.nokia.com/Resources/Library/Lumia/">Lumia開発者向けライブラリ</a>でフィルタに基づいたサンプルアプリを完全なソースコードとともに3つ提供している（<a href="http://www.windowsphone.com/s?appid=7fa6838e-32c9-44de-b807-09f6ed07fbce">effects</a>、<a href="http://www.windowsphone.com/s?appid=a5090f55-7e12-4a04-a8cc-12bc20827237">explorer</a>、<a href="http://www.windowsphone.com/s?appid=3f98b050-d373-429d-bd9e-994ba34971d1">real-time filter</a>）。これらはWindows storeでダウンロードすることができる。</p> 
-  <p>Nokia Imaging SDK v1.0には、クイックスタートガイド、サンプルプロジェクト、コンパイルエラー情報、APIリファレンス、Nokia Imaging SDKライセンスアグリーメントなど、広範囲に及ぶドキュメントが含まれている。</p> 
+  <p><a href="http://typedmvvm.codeplex.com/">TypedMVVM</a>はDavide Zordan氏の開発した，WinJSや<a href="http://www.typescriptlang.org/">TypeScript</a>, <a href="http://en.wikipedia.org/wiki/Model_View_ViewModel">MVVM</a>を使用してWindows Storeアプリを記述するためのサンプルとライブラリのコレクションだ。<a href="http://msdn.microsoft.com/en-us/library/windows/apps/br229773.aspx">WinJS</a>で開発されたシンプルなWindows StoreナビゲーションアプリのMVVMパターンを通じて，関心事の分離を適用することにより，実世界のシナリオにおけるTypeScriptの使用を可能にする。</p> 
+  <p>氏の説明によれば，すべての .jsソースファイルが，クラス/インターフェース実装を備えた新たなフォルダ構造のTypeScriptに変換されている。designDataがデザインタイムのデータの実装を提供してブレンダビリティ(Blendability, 混合性)を担保する一方で，ライブラリにはTypeScript定義やRelayCommand&lt;T&gt;やViewModelBaseといったTypedMVVMコアクラスが格納されている。パッケージにはサービスやビューモデル，ビューモデルファクトリ用のインターフェース，さらにビューモデルの具象クラスやビュー定義なども含まれる。</p> 
+  <p>InfoQではMicrosoft MVPであるソフトウェアアーキテクト兼開発者の氏にコンタクトを取り，TypedMVVMについて詳しく聞いた。<br /> <br /> <strong>InfoQ: TypedMVVMを開発した背景について説明して頂けますか？</strong></p> 
+  <blockquote>
+   私は構造化された方法でコードを書くのが好きで，&quot;関心事の分離&quot; やオブジェクト指向，モジュール化，テスト容易性，拡張性といったベストプラクティスを受け入れたいと思っています。
+   <br /> 
+   <br /> TypeScriptは開発者に対して，プロフェッショナルなアプリケーションを開発する上で基本的なものだと私が考える機能を，数多く提供してくれます。特に，型のチェックと推論リファクタリング，インテリセンスの完全サポートといった機能は，複雑で大規模なアプリケーションを開発する場合には必須のものです。このような理由から私は，TypeScriptを使用して，MVVMデザインパターンをWinJSナビゲーションアプリに適用する方法を示すような，シンプルなクラスセットを開発しようと思いました。
+  </blockquote> 
+  <p><strong>InfoQ: TypedMVVMを使わずに開発されたWindows Storeアプリとは，どのような違いがあるのでしょう？</strong></p> 
+  <blockquote>
+   WinJSで開発された通常のWindows Storeアプリでは，コア言語としてJavaScriptを使用します。TypedMVVMでコア言語として使用するのはTypeScriptです。TypeScriptは静的型付け，インターフェース，クラス(ほんの数個ですが)を備えていますが，最終的にはプレーンなJavaScriptにコンパイルされます。その他には，ViewModelパターンを初めて使う開発者が，適切な構成とテスト性を備えたコードを記述できるようにするためのヘルパクラスがいくつか含まれています。
+  </blockquote> 
+  <p><strong>InfoQ: TypedMVVMを使用すると，どのようなタイプのアプリケーションが開発可能なのですか？</strong></p> 
+  <blockquote>
+   当面のターゲットは，WinJSフレームワークを使用したWindows Storeアプリです。
+  </blockquote> 
+  <p><strong>InfoQ: TypedMVVMを実装した実際のアプリケーションとして，何かご存じのものはありますか？</strong></p> 
+  <blockquote>
+   リリースされたばかりですので，現時点では，実際のプロジェクトに関する情報はありません。
+   <br type="_moz" /> 
+  </blockquote> 
+  <p><strong>InfoQ: 今後のロードマップについて教えてください。</strong></p> 
+  <blockquote>
+   ロードマップはまだ作成中ですが，制御の逆転(inversion of control)や疎結合メッセージング，アプリケーション固有サービスといったものを考えています。これらは本当に有効なものになるでしょう。
+   <br type="_moz" /> 
+  </blockquote>
  </div> 
 </div><br><br><br><br><br><br></body></html>

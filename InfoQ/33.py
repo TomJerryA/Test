@@ -1,12 +1,34 @@
-<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>Oracleが2013 JVM Language Summitのビデオとスライド資料をリリース</h3><p><a target="_blank" href="http://www.infoq.com/news/2013/11/jvm-language-summit"><em>原文(投稿日：2013/11/15)へのリンク</em></a></p>
+<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>Xen Project，Mirage 0S 1.0をリリース</h3><p><a target="_blank" href="http://www.infoq.com/news/2013/12/mirageos"><em>原文(投稿日：2013/12/23)へのリンク</em></a></p>
 <div class="article_page_left news_container text_content_container"> 
  <div class="text_info"> 
-  <p>Oracleは今年7月に行われた2013 JVM Language Summitの<a href="http://www.oracle.com/technetwork/java/javase/community/jvmls2013-2013900.html">ビデオとスライドを公開した</a>。JVM Language Summitは，JVMを利用してJava以外の言語を開発する研究者や言語設計者が集う機会であると同時に，JVM設計者がプラットフォームの活用方法について報告を行う場でもある。</p> 
-  <p>最初のリリース時からJavaプラットフォームは，バイトコードの導入や，実行アーキテクチャを選ばないプログラムを実現する互換性レイヤなど，標準JVMの仕様から多大な恩恵を受けてきた。開発当初こそインタプリタ動作であったが，非常に早い時期からJITオプティマイザを導入することで，実行速度の向上とプラットフォーム全体のパフォーマンスアップを実現している。今日のJVMは，JavaアプリケーションをCに近い速度で実行可能にする上で，非常に大きな貢献をしている。</p> 
-  <p>バイトコードは当初から，Java以外の言語を併存可能にするという目的で，Javaから仕様面で独立するように意図されていた (またJavaのコンパイラ処理を容易にするために，JVMの新リリースでは，再コンパイルをしなくても既存のJavaコードの実行速度が向上されている)。JVM Summitは<a href="http://wiki.jvmlangsummit.com/Main_Page">2008年から</a>，JVMの開発者と応用開発者たちが一堂に会する場となった。</p> 
-  <p>今年のサミットでは <a href="http://www.oracle.com/ocom/groups/public/@otn/documents/webcontent/2013519.pdf">Scala war stories</a> (<a href="http://medianetwork.oracle.com/video/player/2623635250001">ビデオ</a>) や<a href="http://www.oracle.com/technetwork/java/jvmls2013vitek-2013524.pdf">R in Java</a> (<a href="http://medianetwork.oracle.com/video/player/2623621262001">ビデオ</a>)，あるいは<a href="http://www.oracle.com/technetwork/java/jvmls2013breslav-2013924.pdf">Kotlin Reflection</a> (<a href="http://medianetwork.oracle.com/video/player/2623518144001">ビデオ</a>) といった，非Java言語の話題が見られた。またJRubyのCharles Nutter氏による<a href="http://www.oracle.com/technetwork/java/jvmls2013nutter-2013526.pdf">Java Native Runtime</a> (<a href="http://medianetwork.oracle.com/video/player/2630340184001">ビデオ</a>，<a href="http://github.com/jnr/">githubプロジェクト</a>，<a href="http://search.maven.org/#search%7Cgav%7C1%7Cg%3A%22com.github.jnr%22%20AND%20a%3A%22jffi%22">mavenクラスアセット</a>)も紹介された。現行のJNIよりも最適化されたネイティブコード機構を活用して，本物のPOSIXレイヤをJava用に提供するものだ。</p> 
-  <p>JVMに関する開発動向も紹介された。<a href="http://www.oracle.com/technetwork/java/jvmls2013szegedi-2013520.pdf">fitting Nashhorn on the JVM</a> (<a href="http://medianetwork.oracle.com/video/player/2623645004001">ビデオ</a>) や<a href="http://www.oracle.com/technetwork/java/jvmls2013lager-2014150.pdf">Nashhorn war stories</a> (<a href="http://medianetwork.oracle.com/video/player/2630340183001">ビデオ</a>) の他，<a href="http://www.oracle.com/technetwork/java/jvmls2013kuksen-2014088.pdf">lambda performance</a> (<a href="http://medianetwork.oracle.com/video/player/2623576348001">ビデオ</a>) によるパフォーマス対策，<a href="http://www.oracle.com/technetwork/java/jvmls2013ship-2014087.pdf">JVM benchmarking</a> (<a href="http://medianetwork.oracle.com/video/player/2630310904001">ビデオ</a>)，<a href="http://www.oracle.com/technetwork/java/jvmls2013sciam-2013525.pdf">packed objects in Java</a> (<a href="http://medianetwork.oracle.com/video/player/2623645005001">ビデオ</a>), <a href="http://www.oracle.com/technetwork/java/jvmls2013cook-2014086.pdf">hybrid partial evaluation</a> (<a href="http://medianetwork.oracle.com/video/player/2623639771001">ビデオ</a>) <a href="http://www.oracle.com/technetwork/java/jvmls2013caspole-2013527.pdf">project sumatra</a> (<a href="http://medianetwork.oracle.com/video/player/2623518143001">ビデオ</a>), <a href="http://www.oracle.com/technetwork/java/jvmls2913wuerth-2013918.pdf">GPU offloading</a> (<a href="http://medianetwork.oracle.com/video/player/2623576344001">ビデオ</a>)などが話題に上がっている。その他，<a href="http://www.oracle.com/technetwork/java/jvmls2013smith-2013923.pdf">Java 8 for compiler writers</a> (<a href="http://medianetwork.oracle.com/video/player/2630340185001">ビデオ</a>) や<a href="http://www.oracle.com/technetwork/java/jvmls2013heid-2013922.pdf">JVM bridge methods</a> (<a href="http://medianetwork.oracle.com/video/player/2630340182001"> ビデオ</a>) など，低レベルのコンポーネントも取り上げられた。</p> 
-  <p>大企業やビッグデータでの利用例としては，<a href="http://www.oracle.com/technetwork/java/jvmls2013manson-2013920.pdf">OpenJDK at Google</a> (<a href="http://medianetwork.oracle.com/video/player/2630310903001">ビデオ</a>) や<a href="http://www.oracle.com/technetwork/java/jvmls2013click-2013921.pdf">Big Data</a> (<a href="http://medianetwork.oracle.com/video/player/2623581169001">ビデオ</a>)，<a href="http://www.oracle.com/technetwork/java/jvmls2013rose-2013919.pdf">data parallel programming</a> (<a href="http://medianetwork.oracle.com/video/player/2623639770001">ビデオ</a>) などが紹介された。ビッグデータからモバイルデバイスまで，実質的にすべてをカバーすると言える<a href="http://www.oracle.com/technetwork/java/jvmls2013forax-2014151.pdf">JSR 292 on Android</a> (<a href="http://medianetwork.oracle.com/video/player/2630340186001">ビデオ</a>) のプレゼンテーションもあった。</p> 
-  <p>JVM Language Summitは商業団体，研究所，言語開発者らすべての手法を集結したものだ。その結果は，プラットフォームに投資するものと投資されるものを結ぶ，双方向のチャネルとなって現れている。JVMの将来がどのようなものか覗いてみたいと思うのならば，これらのビデオがその一端を垣間見せてくれるかも知れない。</p> 
+  <p><a href="http://blog.xen.org/index.php/2013/12/09/announcing-the-1-0-release-of-mirage-os/">Mirage OS</a>は &quot;クラウドオペレーティングシステム&quot; である。セキュリティ上の脆弱性回避と，単一目的の仮想アプライアンスの開発容易化による普及を目標とする。アプリケーションは関数型プログラム言語<a href="https://en.wikipedia.org/wiki/Ocaml">OCaml</a>で開発され，<a href="https://en.wikipedia.org/wiki/Xen">Xen</a> ハイパーバイザ上で直接動作するスタンドアロンの &quot;ユニカーネル&quot; にコンパイルされる。従来型のオペレーティングシステムを排除し，その構造を代替する言語ライブラリに置き換えることによって，従来よりコンパクトで高速に動作し，攻撃対象領域の少ないアプリケーションを実現する。開発したアプリケーションは，AmazonのEC2やRackspace Cloudのような，Xenベースのパブリッククラウドに直接デプロイすることも可能だ。</p> 
+  <p>Mirage OSのアプローチはWebサーバやDNSサーバ，SDN (Software Defined Networking) などのインフラストラクチャソフトウェア開発者たちにアピールするかも知れない。コントリビュータであるケンブリッジ大学の <a href="http://anil.recoil.org/#!">Anil Madhavapeddy</a>氏は，次のようにコメントしている:</p> 
+  <blockquote>
+   Mirageは，OCamlに見られるような現代的モジュラプログラミング技術を用いて，特殊なインフラストラクチャアプリケーションを迅速に構築するという，私たちの夢を表現したものです。これまでに高レベル言語 (大部分はJavaとScala) で記述されたデータセンタツールは数多くありました。その底辺の部分に至るまで関数プログラミング技術を適用したならば，どのようなメリット(とデメリット！) があるのかを追求したいと思ったのです。
+  </blockquote> 
+  <p>システムは現在Xenハイパーバイザを対象としているが，Unixユーザ空間用のバイナリのビルドも可能だ。さらにプロジェクトには，FreeBSDカーネルモジュール用の試験的実装，NS3ネットワークシミュレータ，JavaScriptなどもある。Anil Madhavapeddy氏はさらに言う:</p> 
+  <blockquote>
+   VMWareやKVM, Hyper-Vといった他のハイパーバイザへの移植は，単純に適当なブートローダと仮想デバイスドライバを記述するだけの問題です。これはシステムプログラミングに足を踏み入れようという人にはうってつけのプロジェクトですので，私たちもメールリスト(mirageos-devel@lists.xenproject.org)を通じて，積極的に指導したいと思っています。
+  </blockquote> 
+  <p>Mirage OSが大きな可能性も持つ応用分野は，コンパクトでセキュアな &quot;ドメイン０&quot;，すなわちハイパーバイザの管理に使用される特別なドメインの提供だ。Anil Madhavapeddy氏は，これがMirage開発の背景となった大きな理由のひとつだとしている:</p> 
+  <blockquote>
+   XenServerディストリビューションではここ数年間，単一のモノシリックな &quot;ドメイン０&quot; の必要性を着実に排除しています。Mirageが提供するのは，そのパズルの最後のピース – これまでの管理ツールスタックを，標準的な分散システムプロトコルで相互に通信してコンセンサスを達成する，専門化したマイクロカーネルの集まりに転換するためのプログラミング環境なのです。これに伴って，セキュアなクラウドを構築する上で達成すべき水準は確実に高くなるでしょう。クラスタ内の仮想マシンに配置されたすてべのユーザデータのキーが，管理ツールスタックに保持されることになるからです。
+  </blockquote> 
+  <p>OCamlを選択した理由の質問に対して，同じくケンブリッジ大学のコントリビュータであるRichard Mortier氏は言う:</p> 
+  <blockquote>
+   理由はいくつかあります – 関数型言語としての実績，活発なコミュニティ，ランタイムへの移植が非常に効率的かつ比較的簡単，Xen管理スタックにOCamlで記述された部分がかなりある，強力なモジュールシステムによって効果的なモジュール化システムが実現可能，といったところでしょうか。
+  </blockquote> 
+  <p>TEE (Trusted Execution Environment) との関連性の有無についての質問には，Citrix XenServerシステムアーキテクトの<a href="http://dave.recoil.org/#!">David Scott</a>氏が次のような説明をしている:</p> 
+  <blockquote>
+   私にとってTE(Trusted Execution)には，(1) 意図したバイナリが実行中であることをどうやって確認するのか (2) 意図した動作をコードが行っていることをどうやって確認するのか，という２つの重要な側面があります。Measured Bootのようなテクニックは前者，つまり適切なバイナリの実行をチェックすることに注目しています。これに対してMirageは後者を，次のような方法で支援します。 
+   <list> 
+    <ul> 
+     <li>必要なライブラリのみをリンクすることで，攻撃対象領域を最小化する。</li> 
+     <li>コンフィギュレーションをどこか外部の(おそらくは変更可能な)ファイルシステムに置くのではなく，アプリケーションにリンクさせる。</li> 
+     <li>メモリ破壊やバッファオーバーフロー攻撃といった類いの影響を受けないコード量を最大化する。</li> 
+    </ul> 
+   </list> 
+  </blockquote> 
+  <p>Mirage OSチームでは，組み込みアプリケーションや &quot;モノのインターネット(Internet of Things)&quot; といったユースケースも対象に含めている。Anil Madhavapeddy氏は，&quot;OCamlコンパイラ自体は，非常に小さなターゲット (<a href="http://www.algo-prog.info/ocaml_for_pic/web/">PIC18マイクロコントローラ</a>のような) にも容易に対応できる&quot;ものの，&quot;ビルドシステム関連で多くの作業が必要になる&quot; ことを指摘する。開発チームは先日の休暇を利用して，自分たちのWebページをMirage OSベースのサーバに移行した。その中には，バックエンドとしてRaspberry Piを使用したものもある。</p> 
  </div> 
 </div><br><br><br><br><br><br></body></html>

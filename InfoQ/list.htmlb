@@ -2,6 +2,15 @@
  <head></head> 
  <body> 
   <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/16.htmlb">书评：DevOps for Developers</a> 尽管其标题，“DevOps for Developers”是一本面向所有对DevOps感兴趣的入门级书籍，却聚焦三个观点：度量观、流程观和技术观。 
+  </div> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/15.htmlb">今日Java——Cay Horstmann访谈</a> 近日InfoQ荣幸邀约Cay Horstmann，就Java最新形势和Cay的新书Java核心技术：卷一&amp;卷二（第九版）进行探讨。 
+  </div> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/14.htmlb">云PCI合规性：检查表</a> 为了免受那些危险的偷窃商业数据和客户身份信息的黑客攻击，支付卡行业数据安全标准（PCI DSS）提出来种种最佳做法。按这12步就可以设置好一个可用于安全支付环境的框架。 
+  </div> 
+  <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/13.htmlb">关于Cassandra的错误观点</a> 在本文中，作者Jonathan Ellis将会解答在使用Apache Cassandra这个NoSQL数据库时的各种疑惑，包括架构、部署与配置、性能、查询语言（CQL）以及数据库成熟度等等。 
   </div> 
   <div> 
@@ -141,15 +150,6 @@
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/19.htmlb">全程软件测试实践：从需求到运营</a> 之前一篇文章《软件测试转型之路》介绍过我们转型的一些实践，下文将介绍从2011年3月至今，持续改进的全程软件测试实践活动。 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/18.htmlb">IT架构设计框架：ADMIT</a> ADMIT详细表述了任何 IT架构工作中都应考虑的决策点。虽然ADMIT格式与其他企业架构框架类似，但ADMIT更关注影响最终结果的特性和驱动力，这使得它可以与其他形式化的企业架构设计和评价方法学结合使用。 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/17.htmlb">采访ServiceStack的项目领导Demis Bellot——第1部分</a> ServiceStack是一个开源的、支持.NET与Mono平台的REST Web Services框架。InfoQ有幸与Demis Bellot深入地讨论了这个项目。在这篇两部分报道的第1部分中，我们主要谈论了ServiceStack项目建立的原动力，以及项目中的各种设计方案选择。 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/16.htmlb">高德LBS开放平台产品总监房芳谈LBS应用的需求和创新空间</a> InfoQ编辑在大会上对高德LBS开放平台产品总监房芳进行了一次采访，交流了API开发的难点、LBS应用需求和创新空间、有哪些案例可以学习、还有多少市场可以挖掘等话题。 
   </div> 
  </body>
 </html>

@@ -1,6 +1,9 @@
 <html>
  <head></head> 
- <body> 
+ <body>
+  <div>
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/38.java">Strengthening HTTP</a>The recent Snowden revelations have impacted the IETF HTTP/2 Working Group and how the protocol should handle encryption, i.e., should it be mandated? Mark Nottingham, the Working Group chair, shares his thoughts on the discussions so far and gives a clue as to how he sees it being resolved given information so far. He concludes by asking anyone with an opinion to share it with the Working Group.
+  </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/37.java">A Few Highlights from QConSF2013- Part 2 of 2</a>It's one thing having an in-house training program. But there is a certain deeper insight that can be gained from attending a Q-Con conference in person. Which may be one reason why attendance at the globe-hopping event continues to grow. 
   </div> 
@@ -147,9 +150,6 @@
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/40.java">A first look at Opserver, Stack Exchange's monitoring solution</a>Opserver is an open source monitoring solution, released by StackExchange, of StackOverflow's fame. Opserver provides a quick overall view of each monitored system's health, while allowing the user to deep dive using a drill-down approach. InfoQ talked with Nick Crave, one of Opserver’s creators, for additional insight. 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/39.java">RadControls for WPF and Silverlight Q2 2013 SP1 with Entity Framework 6 Support and Several Features</a>Telerik has released RadControls for WPF and Silverlight Q2 2013 SP1 with the ability to change application icon set during runtime in addition to support for Entity Framework 6. It also provides an ability to pass event arguments to command when using Telerik EventToCommandBehavior in addition to several new features and improvements. 
-  </div> 
+  </div>  
  </body>
 </html>
