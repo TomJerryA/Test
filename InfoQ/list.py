@@ -2,31 +2,40 @@
  <head></head> 
  <body>
   <div>
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/33.py">Xen Project，Mirage 0S 1.0をリリース</a>Mirage OSは &quot;クラウドオペレーティングシステム&quot; である。セキュリティ上の脆弱性回避と，単一目的の仮想アプライアンスの開発容易化による普及を目標とする。アプリケーションは関数型プログラム言語OCamlで開発され，Xen ハイパーバイザ上で直接動作するスタンドアロンの &quot;ユニカーネル&quot; にコンパイルされる。
-  </div>
-  <div>
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/32.py">カンバンで需要と能力のバランスをとる</a>カンバンを使うことで、組織は実施中の作業を把握し、需要と能力のバランスがとれるプルシステムを確立できる。まずは実際の能力がどの程度あるかを見極め、その能力の流れを可視化することだ。InfoQはFlorian Eisenberg氏にインタビューし、どのように需要と能力のバランスをとるかについて話を聞いた。
-  </div>
-  <div>
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/31.py">スプリント計画ゲーム &quot;Rocket to Mars&quot;</a>&quot;ほとんどのチームとそのプロダクトオーナは，より多くのストーリポイントを達成することがチームの唯一の責務だと信じています。しかしこれは，チームとプロダクトオーナの関係を完全に誤解したものだ，と私たちは考えます。&quot; こう語るのはDamien Thouvenin氏とPierrick Revol氏だ。氏らはストーリの創出や問題の調査，技術的負債の削減，およびそれらをトレーニングするための時間的投資を題材としたスプリント計画ゲームを実施した。
-  </div>
-  <div>
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/30.py">TypedMVVM - WinJS Windows StoreアプリをTypeScriptを使って開発</a>TypedMVVMはDavide Zordan氏の開発した，WinJS, TypeScript, MVVMを使用したWindows Storeアプリの開発を可能にするための，サンプルとライブラリのコレクションだ。
-  </div>
-  <div>
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/29.py">モダナイゼーションは避けがたい道</a>ほとんどの大企業が，アーキテクチャやガバナンスを選択を伴わないシステム拡張を容認している。その結果として生み出されるのは，複雑性とリスク，変更コストの著しい増加と &quot;毛糸玉&quot; のようなシステムインターフェースだ。David Sprott氏は，システムのモダナイゼーションはビジネスマネジメントとITの間のコラボレーションであるべきだ，と説明する。
-  </div>
-  <div>
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/28.py">Tererik, Entity Framwork 6のサポートなどの機能を備えたRadControls for WPF and Silverlight Q2 2013 SP1をリリース</a>TelerikがRadControls for WPF and Silverlight Q2 2013 SP1をリリースした。アプリケーション実行中のアイコンセット変更が可能になり，Entity Framework 6がサポートされた。その他にも，Telerik EventToCommandBehaviorの使用時にイベント引数をコマンドに渡すことが可能になるなど，いくつかの新機能と改善点がある。
-  </div>
-  <div>
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/27.py">Wix 3.8リリース，VotiveとWixネイティブライブラリとブートストラッパアプリケーション機能でVS2013をサポート</a>Wix3.8がリリースされた。VotiveとWiXのネイティブライブラリを通じてVisual Studio 2013をサポートする。WixStandardBootstrapperApplicationの拡張によるブートストラッパアプリケーション機能，インストール時にWindows 8.1を検出する機能なども備える。
-  </div>
-  <div>
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/26.py">Visual Commander Professional v1.3リリース，99のコマンドと50のエクステンション，C#対応の構文強調機能を導入</a>先日リリースされたVisual Commander Professional v1.3は99のコマンドと50のエクステンション，C#の構文強調機能などを備える他，マクロ言語を選択することによって新規作成されるコマンドやエクステンションのデフォルト言語の選択も可能になるなど，いくつかの点で改良されている。
-  </div>
-  <div>
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/25.py">Visual Studio 2013 に改善された新規プロジェクトテンプレートとソーシャルアカウント認証が追加</a>近年リリースされてた Visual Studio 2013 では、開発者向けにプロジェクトやアプリケーションの高速な構築が可能なプロジェクトテンプレートが公開
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/34.py">Webix 1.3リリース - 新しいスキンとHTML5ビデオを追加，チャートウィジェットをアップデート</a>Webix 1.3がリリースされた。８つの新スキンとHTML5ベースのビデオ要素が追加され，チャートウィジェットは対数スケールが使用できるようにアップデートされている。
+  </div> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/34.py">タッチ対応の円形メニューを作成可能なRadRadiaMenu</a>Telerik RadControls for Windows 8 XAML Q3 2013に含まれるRadRadioMenuを使えば，デスクトップとタッチプラットフォームの両方で円形メニューを開発できる。コントロールはスタンドアロンとコンテキスト，いずれのメニューにも対応する。 
+  </div> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/34.py">Neo4j 2.0, 新しいブラウザとスキーマを装備</a>Neo Technologyは，Neo4j 2.0の一般提供を開始すると発表した。新しいグラフブラウザ，ノードラベル，オプショナルスキーマ，改良型Cypherを備える。 
+  </div> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/33.py">Xen Project，Mirage 0S 1.0をリリース</a>Mirage OSは &quot;クラウドオペレーティングシステム&quot; である。セキュリティ上の脆弱性回避と，単一目的の仮想アプライアンスの開発容易化による普及を目標とする。アプリケーションは関数型プログラム言語OCamlで開発され，Xen ハイパーバイザ上で直接動作するスタンドアロンの &quot;ユニカーネル&quot; にコンパイルされる。 
+  </div> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/32.py">カンバンで需要と能力のバランスをとる</a>カンバンを使うことで、組織は実施中の作業を把握し、需要と能力のバランスがとれるプルシステムを確立できる。まずは実際の能力がどの程度あるかを見極め、その能力の流れを可視化することだ。InfoQはFlorian Eisenberg氏にインタビューし、どのように需要と能力のバランスをとるかについて話を聞いた。 
+  </div> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/31.py">スプリント計画ゲーム &quot;Rocket to Mars&quot;</a>&quot;ほとんどのチームとそのプロダクトオーナは，より多くのストーリポイントを達成することがチームの唯一の責務だと信じています。しかしこれは，チームとプロダクトオーナの関係を完全に誤解したものだ，と私たちは考えます。&quot; こう語るのはDamien Thouvenin氏とPierrick Revol氏だ。氏らはストーリの創出や問題の調査，技術的負債の削減，およびそれらをトレーニングするための時間的投資を題材としたスプリント計画ゲームを実施した。 
+  </div> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/30.py">TypedMVVM - WinJS Windows StoreアプリをTypeScriptを使って開発</a>TypedMVVMはDavide Zordan氏の開発した，WinJS, TypeScript, MVVMを使用したWindows Storeアプリの開発を可能にするための，サンプルとライブラリのコレクションだ。 
+  </div> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/29.py">モダナイゼーションは避けがたい道</a>ほとんどの大企業が，アーキテクチャやガバナンスを選択を伴わないシステム拡張を容認している。その結果として生み出されるのは，複雑性とリスク，変更コストの著しい増加と &quot;毛糸玉&quot; のようなシステムインターフェースだ。David Sprott氏は，システムのモダナイゼーションはビジネスマネジメントとITの間のコラボレーションであるべきだ，と説明する。 
+  </div> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/28.py">Tererik, Entity Framwork 6のサポートなどの機能を備えたRadControls for WPF and Silverlight Q2 2013 SP1をリリース</a>TelerikがRadControls for WPF and Silverlight Q2 2013 SP1をリリースした。アプリケーション実行中のアイコンセット変更が可能になり，Entity Framework 6がサポートされた。その他にも，Telerik EventToCommandBehaviorの使用時にイベント引数をコマンドに渡すことが可能になるなど，いくつかの新機能と改善点がある。 
+  </div> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/27.py">Wix 3.8リリース，VotiveとWixネイティブライブラリとブートストラッパアプリケーション機能でVS2013をサポート</a>Wix3.8がリリースされた。VotiveとWiXのネイティブライブラリを通じてVisual Studio 2013をサポートする。WixStandardBootstrapperApplicationの拡張によるブートストラッパアプリケーション機能，インストール時にWindows 8.1を検出する機能なども備える。 
+  </div> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/26.py">Visual Commander Professional v1.3リリース，99のコマンドと50のエクステンション，C#対応の構文強調機能を導入</a>先日リリースされたVisual Commander Professional v1.3は99のコマンドと50のエクステンション，C#の構文強調機能などを備える他，マクロ言語を選択することによって新規作成されるコマンドやエクステンションのデフォルト言語の選択も可能になるなど，いくつかの点で改良されている。 
+  </div> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/25.py">Visual Studio 2013 に改善された新規プロジェクトテンプレートとソーシャルアカウント認証が追加</a>近年リリースされてた Visual Studio 2013 では、開発者向けにプロジェクトやアプリケーションの高速な構築が可能なプロジェクトテンプレートが公開 
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/24.py">Twitter、CocoaSPDYをオープンソースに</a>TwitterがCocoaSPDYを開発し、それをオープンソース化した。CocoaSPDYはOSX (Cocoa)とiOS (Cocoa Touch)向けのSPDYフレームワークで、彼らが以前Nettyに寄贈した実装に基づいている。時を同じくして、彼らのiOSアプリケーションも素のHTTPの代わりにSPDYを使うようアップデートされた。Twitterはこれにより通信遅延を最大30%削減でき、「ユーザのネットワーク状況が悪いとき」ほど改善が顕著に見られると説明している。 
@@ -141,15 +150,6 @@
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/38.py">APIのバージョニングコスト</a>サービスのバージョニングは、SOAにおける重要な問題になってきている。何年もの間、さまざまな経験を共有してきたが、それぞれのアプローチを具体的に比較、対比するというやり方はほとんどなかった。Jean-Jacques Dubray氏がこの領域におけるチームの経験と、違いを示そうと作成しようとした方程式について書いた。 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/37.py">モバイルアプリのA/Bテスト</a>Best.lyはモバイルアプリ向けのA/Bテストをサポートするサービスだ。コードの変更もApp Storeへの再提出も必要ない。今のところ、iOSプラットフォーム向けのネイティブライブラリしかないが、Android向けのライブラリもすでに開発中で、間もなく利用可能になる。実験はオンラインで管理され、実行中に調整したり、リアルタイムにモニタリングできる。 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/36.py">RESTを使ったエンタープライズ統合から学んだこと</a>大規模なレガシー置き換えはIT業界における苦行であり、こうしたプロジェクトの多くで、REST over HTTPを使うのが魅力的な選択肢になる。アーキテクチャ上、RESTはスケーラブルであり、ドメインモデリングにフィットすることがわかっている。Thoughtworksの主任コンサルタントのBrandon Byars氏はこう言って、大規模なレガシー置き換えプロジェクトでRESTful統合を使った経験について語った。 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/36.py">Salesforce、Salesforce1でAPIファーストに向かう</a>サンフランシスコで開かれたDreamforceにおいて、SalesforceがSalesforce1プラットフォームをローンチした。最初に提供するのはモバイルにフォーカスしたもので、基本となるAPIセットをもっと豊富にすることで、これまでの「Touch」ユーザインターフェイスを改善することを目指している。ローンチにあわせて、新しいアプリケーションと管理モバイルアプリも発表された。 
-  </div>          
+  </div>  
  </body>
 </html>

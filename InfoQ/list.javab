@@ -1,6 +1,9 @@
 <html>
  <head></head> 
- <body> 
+ <body>
+  <div>
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/43.javab">The Sustainability Agenda in Kanban</a> This first article in the series on the Kanban “nine values, three agendas” model, explores the sustainability agenda: a common approach to Kanban adoption at the level of individuals and teams, often motivated by the need for relief from unsustainable practices and workloads. This sustainability agenda draws on the Kanban values transparency, balance, and collaboration. 
+  </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/42.javab">Design Patterns: Magic or Myth?</a> In this article, author discusses the effectiveness of the usage of design patterns in software development. The analysis is based on surveys and mapping studies conducted to indicate which patterns were considered useful under what circumstances. 
   </div> 
@@ -147,9 +150,6 @@
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/45.javab">What to Use on the Microsoft Stack</a> 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/44.javab">Practical MQTT with Paho</a> MQTT is making the Internet of Things an interoperable and flexible world where the smallest devices can talk to the largest of servers. This article presents the Eclipse Paho project. 
-  </div> 
+  </div>  
  </body>
 </html>

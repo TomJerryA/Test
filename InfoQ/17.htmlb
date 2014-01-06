@@ -1,116 +1,69 @@
-<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>采访ServiceStack的项目领导Demis Bellot——第1部分</h3><p><a href="http://www.servicestack.net/">ServiceStack</a>是一个开源的、支持.NET与Mono平台的REST Web Services框架。InfoQ有幸与<a href="https://www.google.com/url?sa=t&amp;rct=j&amp;q=&amp;esrc=s&amp;source=web&amp;cd=1&amp;cad=rja&amp;ved=0CDEQFjAA&amp;url=https%3A%2F%2Ftwitter.com%2Fdemisbellot&amp;ei=gGy7UNvtJY3LrQeatoD4CQ&amp;usg=AFQjCNEU3uqXYfZ_lpYyk3nn-imiJxQs-g&amp;sig2=8G-nPhx88v7WlhAg8cD50g">Demis Bellot</a>深入地讨论了这个项目。在这篇两部分报道的第1部分中，我们主要谈论了ServiceStack项目建立的原动力，以及项目中的各种设计方案选择。</p>
-<p><b>InfoQ: </b><b>你是否认为微软对服务的实现方式有什么问题？ServiceStack</b><b>又是怎样解决这些问题的呢？</b></p>
-<p><b>Demis: </b>有一些问题是由于微软一直以来自认为良好的框架设计的方式所造成的常见问题，另一些问题的根源是由于微软的设计总是倾向于满足设计器优先的工具，并且试图为使用设计器作为向导的开发者提供一套熟悉的API，而这种设计倾向造成了一些副作用：</p>
-<ul> 
- <li>在服务API设计时提倡用C#进行远程过程调用（RPC）的方法调用，这导致了非常细粒度（chatty）的设计，并且产生了许多特定于客户端的API。</li> 
- <li>企图将脆弱的、臃肿的、低效并且过于复杂的SOAP以及WS-*序列化格式进行标准化。</li> 
- <li>试图通过繁重的人为抽象、UI设计器以及各种大型工具达到简化终端用户开发的目的。</li> 
- <li>为了尝试给开发者展现一个人为定制的服务端对象模型，创建了繁重的抽象API。</li> 
- <li>试图通过一个共享的抽象对象模型将所有网络终结点（endpoint）统一起来。</li> 
- <li>过度使用XML配置与代码生成。</li> 
- <li>没有预先考虑可测试性与性能。</li> 
-</ul>
-<h2>RPC方法签名</h2>
-<p>由于微软过于追求为开发者提供一套熟悉的RPC API，并在VS.NET中提供丰富的UI工具（例如“添加服务引用”对话框）以保证上手的简易性，其代价就是推广了远程服务中的各种反模式，从长期来看将导致不必要的不协调与脆弱性。不幸的是，微软长期以来在其发布的每个web service框架中都持续使用这种设计方式，这种方式提倡创建RPC服务API的设计方式，造成了开发者在意识中将远程服务也当作本地方法一样调用。这种结果的害处是多方面的，远程服务意味着它包装了一个外部依赖，对它的调用要比本地方法慢上几百万倍，并且更容易受外界的影响而发生错误。将隐式的服务契约与服务端RPC方法签名绑定在一起，就意味着你的API服务契约和服务端的实现紧密耦合在一起了。由于没有规定一个定义良好的边界，导致了糟糕的关注分离，并且出现了将繁重的ORM数据模型通过网络返回给客户端的糟糕实践。从定义上来说，这种数据模型的关系型结构与循环式关系对于数据迁移对象（DTO）来说并非一种好的选择，它使调用可能偶尔会失败。这种方式还将隐式的服务契约与你的底层关系型数据库（RDBMS）数据模型耦合在一起，这样在进行修改时就会产生额外的冲突。而且远程API与调用它们的服务端网站是无连接的，而这些调用的方法在客户端代理部署后也会不断地演化。理想的框架应该能够提倡可演化的、灵活的API设计，以避免在服务端改变时产生运行时错误。</p>
-<p>这些有一张关于WCF提倡的细粒度的RPC API方式与ServiceStack所鼓励的基于消息的API方式的<a href="http://www.servicestack.net/files/slide-35.png">不同之处的对比图</a>。此外，这个<a href="http://www.servicestack.net/files/slide-34.png">用ServiceStack重写Web API的入门教程</a>的示例则展示了基于消息的API如何减少细粒度调用，增加了服务的可重用性。</p>
-<p>ServiceStack采用了Martin Fowler所推荐的远程服务最佳实践，因此避免了之前困扰着.NET web service开发者的很多潜在问题：</p>
+<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>使用AeroGear框架进行Java EE 移动应用开发</h3><p><a href="http://aerogear.org/">AeroGear</a>是JBoss所推出的一个移动开发框架，它为一些开发类库提供了移动设备的连接能力。它支持在iOS和Android设备上开发web、混合与原生移动应用的开发，还包括了相应的服务端资源，并且加入了对<a href="http://www.jboss.org/resteasy">RESTEasy</a>等现有项目的扩展。</p>
+<p>在AeroGear项目下还有若干个子项目，包括Android Library、AeroGear Connectivity、AeroGear Controller、JavaScript Library、AeroGear Persistence、Security、AeroGear Server Integration以及iOS Library等等。</p>
+<p>AeroGear Security模块提供了基于时间的一次性密码（OTP）功能，支持服务端与客户端的开发，其它的安全provider还包括PicketLink和PicketBox等类库。</p>
+<p>来自JBoss的Jay Balunas与Marius Bogoevici在JavaOne 2012大会上的演讲中介绍了使用AeroGear与PicketLink框架实现Java EE移动应用的安全性的话题。InfoQ与Jay、Marius和Anil Saldhana进行了一次对话，谈论了使用AeroGear框架进行移动开发，以及如何保证移动应用安全性的话题。</p>
+<p><b>InfoQ</b><b>：在移动设备上开发安全的应用，和传统的客户端/</b><b>服务器以及web</b><b>应用程序相比有什么不同呢？</b></p>
+<blockquote> 
+ <p><b>JBoss</b><b>团队：</b>移动设备带来了新的使用方式，例如离线操作，以及对流量更严格的控制要求，因为包含大量请求的chatty式应用会很快耗光你的电池。此外，HTML5的出现重新振兴了富客户端应用，而浏览器而成为了运行时平台。关于认证的方式，使用社交网站的帐号作为身份提供者已经成为了一种常见的需求。随着移动设备的不断涌现，员工们也希望能够使用他们的移动设备完成工作，因此各组织也积极地寻求将它们的服务端应用程序扩展到移动设备上的方法。</p> 
+ <p>另外，移动设备遗失的可能性更大，因此设备上的数据必需被保护起来。移动设备可以在各种Wifi范围和通信服务提供者的范围中使用，因此必须对传输中的数据进行保护以避免被窃取。一台移动设备上可以安装多个应用，每个应用的私有数据应该保证不会泄漏到另外的应用中。通常来说移动操作系统会保证这一点，但还是要对这一点提高警惕。</p> 
+ <p>如果在移动设备上要实现访问机密或专利数据的功能，移动web应用就必须使用现有的企业证书进行身份认证。AeroGear和PicketLink允许这些企业移动应用使用现有的移动应用认证标准。因此，大量的数据转移至客户端，更多地应用逻辑在客户端运行，以及我们所提到过的各种挑战，使得将应用程序的整个安全方案全部放在服务端这种老式的模型已经不再可行了。当然，服务端依然是安全的最后屏障，但现代化的移动应用安全方案需要在客户端与服务端之间存在一种更智能的协作模型。</p> 
+</blockquote>
 <div id="lowerFullwidthVCR"></div>
-<h2>远程门面</h2>
-<p>远程门面提倡使用基于消息的、粗粒度的批量调用接口。它能够将通信次数减至最低，并促进了创建更少但是可用性更好、并且支持版本化的服务接口。ServiceStack采取了<a href="https://github.com/ServiceStack/ServiceStack/wiki/Advantages-of-message-based-web-services">基于消息的设计</a>确保开发者始终创建粗粒度的API设计。</p>
-<h2>数据迁移对象（MSDN）</h2>
-<p>数据迁移对象要求使用特定用途的POCO以创建web service响应的数据格式。ServiceStack一直鼓励使用DTO，它本身与它的实现完全解耦，并且存在于一个没有外部依赖也不需要具体实现的程序集中。这种策略允许将定义服务端的服务类型共享给所有.NET客户端，因而提供了一个端到端的类型化API，并且无需使用代码生成。</p>
-<h2>网关（Gateway）（MSDN）</h2>
-<p>网关的作用是将所有服务端通信包装起来，隐藏在一个显式定义并且可重用的客户端网关之后。这种最佳实践和代码生成的代理（例如WCF）有所不同，后者将代码生成的类型与底层的服务客户端揉合在一起，使得生成结果难以模拟（mock）、测试以及替换为不同的实现，也经常导致对现有服务的改变会造成客户端代码的编译错误。这一点对ServiceStack来说很少会成为问题，因为它能够重用通用的服务客户端，因此在接口方面唯一需要改变的东西仅限于类型本身而已。并且由于基于消息的设计的优势，无论新增或移除任何功能都不会影响到现有的客户端。</p>
-<p>ServiceStack<a href="https://github.com/ServiceStack/ServiceStack/wiki/Clients-overview">在它的通用并且可重用的类型化.NET服务客户端</a>采用了网关模式。我们同时支持<a href="https://github.com/ServiceStack/ServiceStack/wiki/SilverlightServiceClient">Silverlight</a>、<a href="https://github.com/ServiceStack/ServiceStack/wiki/Javascript-client">JavaScript</a>、<a href="https://github.com/ServiceStack/ServiceStack/wiki/Dart-Client">Dart</a>甚至是<a href="https://github.com/ServiceStack/ServiceStack/wiki/Messaging-and-redis">MQ（消息队列）的客户端</a>。让所有<a href="https://github.com/ServiceStack/ServiceStack/wiki/Clients-overview">.NET服务客户端</a>都共享相同的接口，这使测试（通过注入或者写日志方式）变得简单，而且能够方便地在JSON、XML、JSV、MessagePack以及ProtoBuf等现有的客户端之间进行切换，而无需改动应用程序的代码。这就允许你在开发时使用类似于JSON这样便于调试的文本格式，随后在部署构建时切换为使用.NET上速度最快的二进制格式，例如<a href="https://github.com/ServiceStack/ServiceStack/wiki/MessagePack-Format">Message Pack</a>或<a href="https://github.com/ServiceStack/ServiceStack/wiki/Protobuf-format">ProtoBuf</a>，以降低数据传输量并实现最高的性能。</p>
-<h2>SOAP Web Services</h2>
-<p>以当前的情况来看，SOAP这种技术是不应该继续存在的，或者说应该仅仅限制在那些它还能够带来一些好处的地方使用。它的存在本身就是基于一个错误的假设，即为了实现数据的互交换性，必须表现出复杂性，要尽可能的严格与明确，这使得基于它的所有现实都必须实现一个复杂的schema以进行通信。而事实上，之与相对设计方式反而被证明是正确的，如果使用了类似于JSON、CVS、Protocol Buffers、MessagePack、及BSON等最小化并且灵活的格式，就会大大减少实现的障碍与复杂性，结果的生成会更快，互操作性与版本能力也会更强。</p>
-<p>我总是觉得这件事很难想象，尽管SOAP是建立在HTTP基础之上的，但它的设计者们在开发出WSDL时似乎完全没有吸取那些宝贵的经验。WSDL所引入的类型、消息、操作、端口、绑定以及服务这些概念真的能够取代HTTP中简单的URL标识符，以及Accept/Content-Type这些头信息吗？我觉得这一点也不难判断啊。</p>
-<p>虽然它名为SOAP（简单对象访问协议），但它既不简单，也不是什么对象访问协议，而且对于开发服务来说，它在许多方面都显示出它是个糟糕的选择，例如：</p>
-<ul> 
- <li>臃肿而缓慢——通常各种尺寸与性能指标评比中都会作为反例出现。</li> 
- <li>脆弱——对命名空间、字段、枚举或类型的改变都会造成运行时异常。</li> 
- <li>在编程时难以使用——它本身不能够自然地映射为任何对象类型系统，在与应用程序代码进行转换时经常造成各种冲突。</li> 
- <li>违反了HTTP——HTTP对于分布式访问提供了简单的谓词（verb），例如GET方法应该是无副作用的，因此可以被缓存在客户端以及中间服务器（例如代理）上。而由于每个SOAP请求都是一个HTTP POST方法，它就无法利用HTTP中最主要的一项好处。</li> 
- <li>可访问性糟糕——一个SOAP消息在本质上就是为了传送定制的XML内容体与SOAP头的一个抽象容器。这种方式很糟糕，因为抽象消息格式需要花费你更多的精力去实现访问与序列化，同时为你的数据提供了弱类型的访问。而且它限制了只有能够收发SOAP消息的客户端才能够访问你的服务。由于它实在无法提供任何有意义的价值，许多Web API已经不再把响应封装在消息容器内，而是简单地将序列化的JSON与XML按原样输出，这种实践被称为POX/J（<a href="http://en.wikipedia.org/wiki/Plain_Old_XML">Plain Old XML</a>）。</li> 
- <li>复杂 – SOAP、WSDLs、UDDI、WS-*带来了不必要的复杂性。最终恐怕只有这些规格说明的参与者（或者SOAP框架开发者）能够良好地理解整个WS-*系列技术，以及使用那些它们曾经打算正式采用的一些大型复杂框架去以最好的方式去实现它了。</li> 
- <li>鼓励代码生成——由于它的复杂性，如果不使用SOAP框架及代码生成的代理，一般来说是难以手工实现SOAP的。</li> 
-</ul>
-<p>由于SOAP明显背离了服务的核心优势，所以它能够流行起来实在是一个令人吃惊的事实。我曾有许多年为政府项目与大型企业开发服务的经验，很不幸的是其中的许多项目都有一个必需实现的要求，即把他们的服务暴露为SOAP终结点。不过许多互联网公司与专注于创造价值的创业公司都不太会使用这门技术了，他们更多地选择创建简单的HTTP API，返回单纯的XML或者JSON格式的响应。</p>
-<p>虽然在多数情况下SOAP是一个糟糕的选择，但ServiceStack还是为你创建的服务提供了对SOAP终结点的支持，因为如今仍然有许多现存的企业系统只能够与SOAP终结点进行通信。这一点也和ServiceStack的核心目标相一致，即为你的服务提供最大化的功能性、可访问性以及连接方式。</p>
-<p>SOAP在设计上是一种非常脆弱的格式，如果某个服务稍稍偏离了WSDL，而客户端又是由这个WSDL生成的，那你通常就会看到运行时错误的发生。虽然在静态类型系统中，快速失败被视为一种优势，但对于远程服务来说就不是一种理想的方式了，因为你通常希望能够实现向前兼容与向后兼容，因此服务端的API改变不会破坏现有的客户端。这一目标显然被WCF忽略了，它提倡RPC方法签名、SOAP格式以及代码生成，这可以说是当今的所有web service实现技术中最为脆弱的组合了。</p>
-<h2>SOAP与Protocol Buffers</h2>
-<p>将SOAP与Google的<a href="http://code.google.com/p/protobuf/">Protocol Buffers</a>进行一下对比是很有趣的，它是Google推出的一种简单的接口描述语言（IDL），Google在其内部的所有RPC协议与文件格式中几乎都使用了该技术：</p>
-<ul> 
- <li>它比SOAP小了好几倍，而速度要快上几个数量级</li> 
- <li>它使用了一种简单的领域特定语言（DSL）来定义基于消息的API</li> 
- <li>使用.proto文件来定义类型，对于编程语言来说在编程角度上非常适合</li> 
- <li>包括了对多版本管理的实现</li> 
- <li>为Python、Java与C++提供了原生的客户端与服务端绑定</li> 
-</ul>
-<p><a href="http://wiki.msgpack.org/display/MSGPACK/Design+of+RPC">MessagePack RPC</a>以及用于开发Facebook的<a href="http://thrift.apache.org/">Apache Thrift</a>是另外两个流行的开源选择，它们都提供了快速的，简单的IDL，并且为多数主流平台提供了绑定。</p>
-<p>虽然是由不同的公司开发，但以上每个IDL都比SOAP更简单、快速并且易于使用。从SOAP的规格说明书的厚度来看，它应该是由委员会所开发的，但显然完全没有考虑过性能，大小以及易于实现。</p>
-<h2>JSON</h2>
-<p>虽然在大小与性能方面有优势，但Protocol Buffers与MessagePack都有一个问题，即它们使用了二进制格式。由于基于文本的格式与协议更易于创建、维护及调试，它们经常成为整个开放web的更流行的选择。近年来，在基于文本的数据互交换格式上的赢家显而易见是JSON，这是一个简单的、紧凑的自描述文本格式，它的主要优势是能够在所有支持JavaScript的浏览器上进行直接应用，只需使用浏览器内置的“eval()”语句就能够立即将其转换为JavaScript对象了。由于它的流行性，主流浏览器如今都加入了对JSON的原生支持，它们为eval()方法提供了一个更安全的替代方案，可以在老浏览器上提供一个基于<a href="https://github.com/douglascrockford/JSON-js/blob/master/json2.js">JavaScript的备选实现方式</a>。如果想更多的了解JSON以及它的好处，我推荐你去看看Douglas Crockford这个有趣的演讲——<a href="http://www.infoq.com/presentations/Heretical-Open-Source">“Heresy &amp; Heretical Open Source”</a>。</p>
-<p>由于它的普遍性、功能多样并且易于使用，JSON在多数平台上都得到了原生的支持，并且很快地成为了开发Web API的首选数据格式，尤其是使用在Ajax客户端的时候。</p>
-<p>从我自身的经验来看，我认为JSON对于实现服务是一种优秀的格式。它是一种更精简、灵活、容忍度高并且适应性更强的格式，并且它易于创建、调用以及调试，比起SOAP减少了冲突并提高了生产力。当我们开始ServiceStack项目时，JSON的唯一问题就是.NET Framework自带的序列化器比XML序列化器还要慢。出于对性能上的严谨态度，我们并不愿意接受这点不足，因此我们发布了我们自己实现的序列化器，<a href="http://www.servicestack.net/mythz_blog/?p=344">它比任何其它.NET JSON序列化器都要快上3倍以上</a>，并且比.NET Framework中的任何序列化器（包括二进制序列化器）都要快上2.5倍以上。</p>
-<p>继承了JSON保持体积最小的精神，我们也开发了<a href="http://www.servicestack.net/mythz_blog/?p=176">JSV格式</a>，它类似于JSON，但使用了CVS风格的转义功能，使得它比JSON略微加快，更精简并且更便于人类阅读，它不仅能够用于.NET与.NET服务的交互，而且能够用以解析查询字符串，<a href="https://github.com/ServiceStack/ServiceStack/wiki/Serialization-deserialization">在ServiceStack的GET请求中是能够允许传递复杂的对象图的</a>。</p>
-<h2>ServiceStack与WCF方式</h2>
-<p>虽然WCF与ServiceStack在实现方式上是完全不同的服务框架，但它们却有着非常类似的目标。ServiceStack在创建服务上采取了一种非常面向服务的方式，它的设计经过了做好，能够以最大程度重用的方式达到服务的实现。通过代码优先、类型化设计的方式，我们能够为你的服务提供更强大的智能推断，以允许你自动地生成XSD、WSDL文件，自动生成元数据页，并且自动暴露预定义的路径。每个新加入的功能、特性、终结点与Content-Type都是围绕着你的现有模型创建的，并且不需要任何额外的操作以及对应用程序代码的任何改动就可以立即获得新功能。我们将这种方式理解为从一个代码优先的模型开始，作为最权威的部分，随后再将其功能暴露出来。</p>
-<p>WCF的目标也是提供一个服务框架，以支持在多种终结点上运行服务，但他们站在一个不同的视角，并且为所有网络终结点提供了一个统一的抽象，你必须对服务进行配置以绑定到终结点。作为WCF的主要目标之一，他们是少数几个在最终实现中对WS-*系列技术提供了深入支持的框架。</p>
-<p>我们最终的目标都是提供一个易于使用的服务框架，我们只是在如何取得简便性上有着完全不同的想法。</p>
-<h2>简便性与处理复杂性</h2>
-<p>WCF看起来比较喜欢繁重的抽象，用复杂的运行时XML配置进行管理，以及用大型工具为开发者提供端到端的连接能力。这个抽象层包含了许多复杂的技术：经过抽象的人工服务端对象模型很复杂、配置很复杂、WSDL很复杂、SOAP/WS-*也很复杂。最终结果是，为了对这些主题有一个良好的理解，对每个主题都需要看好几本书才行。</p>
-<h2>抽象</h2>
-<p>有一种陈旧的观念认为处理复杂性的解决之道就是添加更高层的抽象。这种方式的问题在于，只有这种抽象的设计很完美，它才能够显出效果。（例如编程语言比机器代码更合适）否则当你遇到了一些预料之外的行为，或者是配置、整合与互操作性上的问题是，你需要去理解在这些抽象层之下到底发生了什么。在这种情况中添加更多的抽象实际上只会增加开发者必须去熟悉的概念，以及当他们针对高级别抽象层进行开发时额外的认知。这也使得理解你的代码库更加困难，因为你必须理解每一个之下都发生了些什么。WCF的服务端对象模型是全新的、并且不够自然，这进一步放大了问题，新的开发者们对此一无所知，因为这种模型是独一无二的，并且它完全没有对服务或HTTP领域中的概念知识作出任何指导。因此当开发者们之后转而使用最好的服务框架时，他们从WCF中学到的东西完全没有用武之地。与其投入时间去阅读那些如何使用WCF的书籍，还不如把时间花在学习HTTP与TCP/IP上，因为即使你转而使用其它web service框架，这些知识依然能起到作用，它们是完全独立于编程语言或平台的。</p>
-<p>从技术实现的层面来说，过多的抽象会导致不必要的性能负担，并且这种性能问题很难优化。因为当你尝试直接与底层API打交道时，这些抽象会产生阻碍以及各种强制性的阻力。而我们的方式是只在绝对必要时才会添加抽象，例如我们的<a href="https://github.com/ServiceStack/ServiceStack/blob/master/src/ServiceStack.Interfaces/ServiceHost/IHttpRequest.cs">IHttpRequest</a>与<a href="https://github.com/ServiceStack/ServiceStack/blob/master/src/ServiceStack.Interfaces/ServiceHost/IHttpResponse.cs">IHttpResponse</a>封装对于为ASP.NET与自托管的HttpListener提供一个通用的API就是必需的。相比起添加抽象层的方式，我们更倾向于添加一些非强制性的特性，它们只是将一些底层接口与一些常见功能包装起来，以实现DRY。这种方式带来的好处就是允许终端用户自由地调用各种方式，并在他们自己开发的类库中加入自己定义的功能增强，以促进他们实现精益的、DRY以及可读性良好的代码库。暴露底层API能够确保我们保持框架的灵活性，用户可以通过多种方式进行访问而得已完整地控制系统的输出，也因为用户可以<a href="https://github.com/ServiceStack/ServiceStack/wiki/Customize-HTTP-Responses">定制返回的响应</a>，因此他们不会受到任何限制，而得已控制返回的每一个字节。</p>
-<h2>WCF的抽象</h2>
-<p>WCF为服务采取了一种统一的方式，它促进所支持的所有终结点都<a href="http://xkcd.com/927/">标准化为一个单一的人为抽象模型</a>。这种方式也遇到了抽象的通用原则所产生的副作用，即一个统一的抽象模型要为每一种试图抽象化的实现承担所有的复杂性，因而它们只能够处理各种终结点的特性的交集部分，而且为每个结终点实现最低程度的通用功能。结果就是生成了一个不完整的外部API，并且由于抽象的存在阻碍了对底层终结点的访问，使得这种API的可访问性与可配置能力都大大削弱了。</p>
-<p>要彻底了解WCF的功能需要强大的技术能力，需要你投入巨大的精力研究各种技术资源。但本质上来看这种精力投入是一种浪费行为，因为WCF与其它平台上的一些采用了标准方式开发的框架相比，生产力与功能都有所欠缺。对于终端用户来说，哪怕是为了稍稍掌握一些WCF的使用经验，也需要投入大得多的精力。出于以上原因，我不希望看到有人去使用类似于WCF之类的框架，或者是它那种统一的终结点的抽象方式。由于它的复杂性与庞大的技术实现细节，我也很怀疑它是否能够保持演化，以适应新的开发范式或是服务开发模式。我怀疑WCF会遭受到与WebForms相同的命运，退化为一个过时的技术，最终被微软下一代框架取而代之。</p>
-<p>除了现有的REST、SOAP、MQ以及RCON之外，我们也计划为ServiceStack加入更多的终结点。但由于我们采取了一种基于约定的方式，我们会避免使用繁重的配置。我们所采用的基于消息的设计方式会避免使用大型工具，并简化必须实现的外部接口部分。<a href="https://github.com/ServiceStack/ServiceStack/wiki/New-Api">首先从C#开始</a>，逐渐移植其它语言，这使得终端用户可以立即使用新功能，而无需任何额外的投入。我们的<a href="https://github.com/ServiceStack/ServiceStack/wiki/Architecture-overview">松耦合架构</a>不存在统一的抽象模型，这可以允许我们加入互不冲突的新终结点与特性，而不会为现有的组件带来强制的复杂性。</p>
-<p>总而言之，我们提供了一个特性完整、性能更好并且更易于理解的服务框架，它的代码库也更加精益和灵活，并且使用它进行开发和维护所需的技术投入要小的多。</p>
-<h2>繁重的配置</h2>
-<p>WCF所推崇的另一个概念是XML配置，而这也是我们无法苟同的，它妨碍了测试，并且需要投入更多精力进行维护。只有你的应用程序中真正可配置的部分才应该放在你的应用配置文件中，定义及组织你的服务依赖应该交给代码去做，这种方式的额外优点在于它便于调试，而且可以在编译时静态地进行验证。WCF需要大量的配置，<a href="https://github.com/ServiceStack/ServiceStack.Examples/blob/master/src/Backbone.Todos/Global.asax.cs">在ServiceStack中创建一个完整的应用程序</a>所需的代码量比起一个的WCF Service所需的XML WCF 配置还要小。如果把配置信息放在IOC（控制反转）这一怪，那代码会更干净与整洁，因为它直接就可以引用你所需的特性的.NET API了。</p>
-<h2>大型工具</h2>
-<p>大型工具的问题在于，当你打算在其中尝试些新功能，或者是某些不在其设计初衷里的功能时，它就无能为力了。也就是说你成为了这个工具的奴隶，只能提供一些它所支持的功能。而且框架一旦进行了重写，大型工具就无法继续使用，因为它们所提倡的繁重的、复杂的代码库是很难演化或者是重构的。我推测这就是微软为什么总是重写新的服务框架，而不是改进现有的框架的原因。也是为什么Web API不能够重用MVC现有的抽象方式，并且不支持SOAP的缘故，尽管它们都采用了相同的RPC API设计方式，并且它的自托管功能选项也是基于WCF创建的。</p>
-<p>由于ServiceStack是基于ASP.NET的最底层创建的，因此它提供了<a href="http://www.servicestack.net/mvc-powerpack/">对ASP.NET MVC良好的集成能力</a>，也能够方便地重用MVC中许多组件现有的功能实现，例如<a href="https://github.com/ServiceStack/ServiceStack/wiki/Authentication-and-authorization">Authentication filter attribute</a>、<a href="https://github.com/ServiceStack/ServiceStack/wiki/Caching">Caching</a>与<a href="https://github.com/ServiceStack/ServiceStack/wiki/Sessions">Session</a> provider等等。你也可以<a href="https://github.com/ServiceStack/ServiceStack.UseCases/blob/master/CustomAuthenticationMvc/Controllers/HomeController.cs#L35-L37">在MVC中方便地调用ServiceStack服务</a>，比起C#方法直接调用只是稍稍麻烦一点。</p>
-<h2>ServiceStack的复杂性</h2>
-<p>ServiceStack与WCF相反，它看起来要简单许多。例如<a href="https://github.com/ServiceStack/ServiceStack/wiki/Architecture-overview">ServiceStack的架构只要一页纸就能画下</a>。<a href="http://www.servicestack.net/ServiceStack.Hello/#rootpath">启用它只需在web.config中加入一行</a>，告诉ASP.NET将所有请求转发给ServiceStack即可。</p>
-<h2>约定与人为的复杂性</h2>
-<p>ServiceStack与微软开发类库与框架所采用的方式，其观念上的最大不同或许就是在如何最好地处理复杂性这一点上了。微软倾向于明确性，XML方式的可配置能力，引入繁重的抽象层（为了前瞻性而支持所有潜在的用例），依赖于抽象层将简单的面向用户的门面经过改头换面后暴露出去，为了方便使用设计器工具及新手开发者进行优化。微软的主要动力是为开发者提供一个熟悉的编程模型，并且通过使用大型工具来简化模型的上手难度。从WebForms中就可以看出这一点，它为WinForm开发者提供了一个基于事件的编程模型来开发网站，WCF则让开发者使用传统的C#方法与接口方式去创建远程服务。它们采取的方式通常会导致完成功能需要投入大量的技术精力去研究巨大的代码库。</p>
-<p>与之相反，我们将大型的代码库当作<a href="http://steve-yegge.blogspot.com/2007/12/codes-worst-enemy.html">代码的最大敌人</a>，并且避免引入人为的复杂性，这是我们的主要目标之一。比方说我们强烈反对引入新概念、抽象或编程模型。我们崇尚小巧的低级别接口，它与底层领域1对1进行映射，以实现灵活性的最大化，减少冲突，并且在需要进一步定制化时将转换的复杂性降至最低。通过可重用的工具类与扩展方法保证了DRY与高级别的功能。我们采取一种代码优先的开发模型，通过代码去捕捉用户意愿的本质，这促进了一种更优雅、不妥协的设计方式，避免了使用设计器工具时所带来的转换的复杂性。我们的所有类库都使用POCO，以获得最大的可重用性，并且我们内置的转换器可以简化在领域特定模型中进行转换所需的精力。</p>
-<p>我们为用户展现了一种基于消息设计的最佳实践，为从头开始开发的服务提供了一种最优的方式。服务就是普通的C#类，无需关注任何终结点的问题，因为这种依赖是可以自动解析的，这种方式会促使用户采用良好的代码实践。</p>
-<p>约定以及减少对外部知识的了解是我们处理复杂性最好的武器。相比明确的指定实现方式，更好的办法是提供一个基于约定的默认行为，使它按预计的方式运行。这就让用户不必一定要学习你的框架API，因为我们可以假定预计的标准行为的结果，并允许我们随时提供更多的能力，比方说，它能够自动支持外部所调用的所有内置终结点与格式。你也可以让你的服务<a href="https://github.com/ServiceStack/ServiceStack/wiki/Service-return-types">返回任意的响应</a>，它会自动序列化为所请求的Content-Type。</p>
-<h2>达成简单性</h2>
-<p>我们相信，达成简单性的最好方式就是在第一时间避免各种复杂性，我们采取了以下方式：</p>
-<ul> 
- <li>去除了各种不必要的部分与堆积的抽象——而是直接基于ASP.NET基本的IHttpHandler接口所创建。</li> 
- <li>约定胜于配置——所有实现了IService的服务都会被自动加载，并且随时使用。</li> 
- <li>合理的默认表现——ServiceStack可直接被外部调用，无需进一步的配置。</li> 
- <li>支持全部特性——所有内置的格式与终结点都默认可用，预定义的约定路由也自动可用，但也可以通过配置关掉它。</li> 
- <li>自动探索——ServiceStack包含了一个元数据页面，列举了全部的服务、所处的路由、XSD及WSDL等等。</li> 
- <li>未引入新的构造函数——ASP.NET开发者能够立即了解如何定制化HTTP请求与响应。</li> 
- <li>以C#语言开发——以C#语言开发，并且以无冲突的方式添加新特性，因此在普通的开发过程中就能够立即应用这些新特性了。</li> 
- <li>追求生产力——在ServiceStack中的每个请求DTO都必须是唯一的，它允许你在调用服务时只提供请求DTO的名称与内容就可以了。</li> 
- <li>围绕POCO开发功能——你可以在ServiceStack中使用同一个POCO作为DTO、OrmLite、Data Model、Cache、Session以及Config等等。</li> 
- <li>使用基于消息的设计——比起RPC方法签名，绑定至一个单一的模型更易于实现和推断。</li> 
- <li>灵活——提供一系列<a href="https://github.com/ServiceStack/ServiceStack/wiki/Order-of-Operations">Custom Filter以及可以插入实现的事件钩子</a>，以此定制Request与Response管道中每一阶段的行为。</li> 
-</ul>
-<h2>避免大型工具与代码生成</h2>
-<p>我们并不喜欢代码生成，因为我们相信它为项目带来了不必要的麻烦，我们也反对在开发工作的核心部分依赖于任何大型工具。</p>
-<p>由于你的ServiceStack服务的服务契约在设计上是由你的请求与响应DTO维护的，我们就能够提供一个类型化的端到端的API，只需要你用来创建服务的那些类型以及那些通用的、可重用的.NET客户端就可以了。这允许我们为任何.NET上的服务框架提供一个最简洁的、类型化的以及端到端的API。</p>
-<h2>可测试性</h2>
-<p>基于WCF的设计方式以及它对配置的严重依赖，看起来WCF在设计时完全没有考虑到可测试性。而这一点是ServiceStack的核心目标之一，我们默认提供了一个内置的（并且可重写的）IOC容器，鼓励在一开始就遵循良好的开发实践。开发一个服务只需实现一个不包括任何方法的IService接口，或者从其它现有的Service类、或ServiceBase类继承即可，这些类都是可独立测试的，并且完全可以mock。这一系列努力的成果就是，你所实现的<a href="https://github.com/ServiceStack/ServiceStack/blob/master/tests/ServiceStack.WebHost.IntegrationTests/Tests/WebServicesTests.cs">单元测试可以用作XML、JSON、JSV以及SOAP的集成测试。</a>我们所提供的自托管HttpListener类型使得进行内存中的集成测试非常方便。</p>
-<h2>性能</h2>
-<p>性能是ServiceStack的首要目标之一，我们<a href="https://github.com/mythz/ScalingDotNET">将性能视为最重要的特性</a>。基于消息的设计提倡更少的网络调用，我们也很小心地保证只暴露那些运行快速的面向用户的API。一般情况下我们不接受来自外部的贡献代码，因为它们会包含速度较慢的代码。我们对自己的实现是全力以赴的，我们没有使用任何运行时的反射或者正规表达式匹配，而是采用其它更快的解决方案。</p>
-<h2>最快的序列化格式</h2>
-<p>我们开发并维护着<a href="https://github.com/ServiceStack/ServiceStack.Text">.NET上最快的JSON、JSV以及CSV文本序列化器</a>，同时允许以<a href="https://github.com/ServiceStack/ServiceStack/wiki/Plugins">插件</a>的方式使用<a href="https://github.com/ServiceStack/ServiceStack/wiki/MessagePack-Format">Message Pack</a>与<a href="https://github.com/ServiceStack/ServiceStack/wiki/Protobuf-format">Protocol Buffers</a>这两个.NET上最快的二进制序列化器。</p>
-<h2>丰富的Caching Provider</h2>
-<p>由于缓存是创建高性能服务不可或缺的技术，我们提供了一个丰富的<a href="https://github.com/ServiceStack/ServiceStack/wiki/Caching">Caching Provider模型</a>，包含了对各种内存缓存、Redis、Memcached、Azure以及Amazon后台的实现。缓存API会保证使用最优化的格式，比方说，如果客户端支持，我们会将压缩后的JSON输出缓存起来，并在之后发生调用时直接将缓存中的内容输出到响应流中，这就保证了托管代码能产生最快的响应速度。</p>
-<h2>修复了.NET中的性能问题</h2>
-<p>每次我们找出微软的类库中的瓶颈时，我们都会使用更快速的实现去替代它。我们已经实现了自己的<a href="http://www.servicestack.net/mythz_blog/?p=344">JSON序列化器</a>，作为插件的Gzip和Deflate压缩类库，并且提供了自己的<a href="https://github.com/ServiceStack/ServiceStack/wiki/Sessions">Session实现</a>，它能够与以上任意一种Caching provider相配合使用，<a href="http://stackoverflow.com/q/3629709/85785">它的出现也避免了困扰ASP.NET开发者已久的严重性能问题</a>。</p>
-<h2>为最快的分布式NoSQL数据库提供最好的客户端</h2>
-<p>出于我们对开发高性能服务的技术追求，我们为<a href="http://redis.io/topics/benchmarks">最快的分布式NoSQL数据库Redis</a>开发并维护着一个<a href="https://github.com/ServiceStack/ServiceStack.Redis">.NET上最好的C# Redis客户端</a>。</p>
+<p><b>InfoQ</b><b>：创建AeroGear</b><b>框架的主要目标和宗旨是什么？</b></p>
+<blockquote> 
+ <p><b>JB</b><b>：</b>AeroGear是作为一个开源项目创建的，它关注的是简化跨多个主流移动客户端进行移动应用开发的难度，并且将Java EE服务端的功能扩展到这些新的客户端中，供开发者使用。</p> 
+ <p>以下是该项目的一些宗旨：</p> 
+ <p>移动web，混合应用（专注于Apache Cordova）和原生应用（专注于iOS和Android）都是有效的客户端开发平台。</p> 
+ <p>在多个客户端中使用一套通用的动词和概念，而针对特定的平台对开发体验进行优化调整。</p> 
+ <p>将Java EE中最好的功能扩展到当前和今后的客户端中。</p> 
+ <p>关注于企业应用，因此安全性、基于服务端的持久化和编程效率是关键所在。</p> 
+</blockquote>
+<p><b>InfoQ</b><b>：在今年的JavaOne</b><b>大会上，你们谈到了使用AeroGear</b><b>和PicketLink</b><b>框架为基于Java</b><b>的移动应用提供端到端的安全性。你们能否深入地讲一讲这个话题，并谈一谈这两个框架是如何互相合作，以实现安全的移动应用的吗？</b></p>
+<blockquote> 
+ <p><b>JB</b><b>：</b>PicketLink提供的解决方案是针对一个通用目的的服务端企业级Java安全框架，而AeroGear建立在它之上，一方面它提供的服务端组件对PicketLink的功能进行了调整，以适用于移动开发的需要。另一方面又提供了客户端组件，基于它创建的富web、混合应用和原生Android/iOS应用将与服务端进行交互。</p> 
+ <p>此外，如同之前提到的那样，对于企业移动应用中每天的活动来说，安全与身份管理是关键所在。AeroGear将配合PicketLink，为移动应用提供各种不同的认证方式，从传统的LDAP方式到当今的基于OAuth的安全选项。</p> 
+</blockquote>
+<p><b>InfoQ</b><b>：是否有工具支持使用AeroGear</b><b>框架开发移动web</b><b>与混合应用呢？</b></p>
+<blockquote> 
+ <p><b>JB</b><b>：</b>AeroGear在推出时就有一系列工具和框架作支持，简化了移动开发者面临的各种任务。</p> 
+ <p>关于IDE方面，JBoss Developer Studio（JBDS）提供了对使用AeroGear开发移动应用的支持，我们正致力于将更多的高级混合应用开发与JavaScript开发的功能整合到JBDS中。同一时间Arquillian项目也取得了进展，它提供了各种“容器内”和“设备上”的测试方式。我们也正在争取先将HTML5和REST功能以插件形式提供给Forge，之后才会尝试创建一个混合式应用的快速开发工具。</p> 
+ <p>关于第3方工具与框架方面，AeroGear开发混合应用时会专门于Apache Cordova。在JavaScript方面，我们在内部已经使用了jQuery，但也在考虑将Backbone.js、Angular.js和其它类库整合进来。</p> 
+</blockquote>
+<p><b>InfoQ</b><b>：在对移动应用进行单元测试，以及在模拟器上进行测试方面有没有提供某种形式的支持呢？</b></p>
+<blockquote> 
+ <p><strong>JB：</strong>Arquillian以及它的扩展Drone和Warp为运行服务端测试与客户端测试提供了一套精密的系统。它不仅支持基于web的应用（包括HTML5应用），也能够通过Arquillian Android支持原生移动应用的测试。</p> 
+</blockquote>
+<p><b>InfoQ</b><b>：PicketLink</b><b>支持怎样的安全框架与类库？</b></p>
+<blockquote> 
+ <p><b>JB</b><b>：</b>PicketLink本身就是一个安全框架，因此它自带的方案就能够实现各种安全标准了。它支持各种认证机制，包括传统的用户/凭据模型，以及各种高级认证机制，包括Kerberos、SAML、OTP、DIGEST等。它还支持各种访问控制机制，包括细粒度的权限模型、XACML、基于规则的Drools认证等等。PicketLink支持兼容LDAP的目录服务器和数据库的身份信息存储。对资源进行OAuth2授权也是受支持的。另外，它还能够与Apache DeltaSpike进行整合，这样就能够与其它安全性类库（例如Apache Shiro）进行互操作了。</p> 
+</blockquote>
+<p><b>InfoQ</b><b>：在使用PicketLink</b><b>时，安全功能——尤其是认证与授权是如何在移动设备中工作的呢？</b></p>
+<blockquote> 
+ <p><b>JB</b><b>：</b>我们谈论的内容不仅限于PicketLink，也应该包括AeroGear。原因在于：PicketLink在设计上是在服务端进行操作的。那么，只要使用一个解耦的认证/授权模型，它就能够整合多种身份管理源与认证过程，并可设定不同的授权策略，以允许开发者对应用逻辑的各种访问点，例如RESTful的终结点或业务方法调用进行保护。除此之外，AeroGear在服务端为保护它的controller中的URL也提供了机制。但移动应用也可以利用客户端的安全性（即使最终的安全性主宰者还是在服务端）。PicketLink还提供了编写认证与复杂的授权/权限模型，在移动设备上使用它可以将服务端的通信降至最少，因为权限信息可以缓存在客户端，因此某些授权操作就可以在这里实现。这种方式能够为移动应用带来实实在在的好处。AeroGear通过这种客户端类库的方式为系统增添了价值。</p> 
+ <p>另一方面，也可以在服务端进行安全性检查，以保持移动应用的轻量级。PicketLink为复杂的授权工作流提供了对OAuth2的支持。</p> 
+</blockquote>
+<p><b>InfoQ</b><b>：这两个项目未来的路线图是怎样的呢？</b></p>
+<blockquote> 
+ <p><b>JB</b><b>：</b>对于AeroGear，我们的首个发布会专注于安全持久化的基础，以及查询和分页。将PicketLink的身份管理和控制功能整合到我们的客户端API中，可以使完全地开发传统的企业应用变得简单，而且是在你所选择的移动客户端（web、混合应用或原生应用）实现的。我们计划在2013年早期发布最终的1.0.0版本。</p> 
+ <p>基于这个框架所能开发出来的应用是非常令人激动的，我们现在正在讨论一些新功能，比如跨客户端的数据同步、统一的原生push（在非原生环境下能够自动降级，并加入了IDM的整合）、消息传递（CDI、JMS等等）、离线的安全持久化、客户端对象验证，以及更多的功能。</p> 
+ <p>关于PicketLink项目，路线图可以在<a href="https://docs.jboss.org/author/display/PLINK/PicketLink3.0-Roadmap">这个链接</a>中找到。</p> 
+ <p>他们的目标也是在2013年早期发布最终的PicketLink v3版本。</p> 
+</blockquote>
 <h2>关于受访者</h2>
-<p><img _p="true" _href="img://null" src="http://infoqstatic.com/resource/articles/interview-servicestack/zh/resources/1111010.jpg" style="float: left; margin-right: 10px" alt="" /><b>Demis Bellot</b>是来自Stack Exchange的一位开发者，他维护着StackOverflow Careers 2.0的后台网站以及基于ServiceStack创建的MQ服务。他同时也是ServiceStack的创始人以及项目领导。</p>
-<div style="clear:both"></div>
-<p><strong>查看英文原文：</strong><a href="http://www.infoq.com/articles/interview-servicestack">Interview With Demis Bellot, Project Lead of ServiceStack - Part 1</a></p><br><br><br><br><br><br></body></html>
+<table cellspacing="0" cellpadding="0" border="1"> 
+ <tbody> 
+  <tr> 
+   <td width="85" valign="top"> <p><img src="http://infoqstatic.com/resource/articles/javaee-mobile-application-development-aerogear/zh/resources/1118030.jpg" _p="true" _href="img://null" alt="" style="float: left" /></p> </td> 
+   <td width="344" valign="top"> <p><b>Marius Bogoevici</b>是Red Hat的一名高级软件工程师，他也是JBoss Developer Framework参考应用TicketMonster的架构师。</p> </td> 
+  </tr> 
+  <tr> 
+   <td width="85" valign="top"> <p><img src="http://infoqstatic.com/resource/articles/javaee-mobile-application-development-aerogear/zh/resources/1118031.jpg" _p="true" _href="img://null" alt="" style="float: left" /></p> </td> 
+   <td width="344" valign="top"> <p><b>Anil Saldhana</b>是JBoss的首席安全架构师，他也是JBoss社区中PicketLink项目的创始人。</p> </td> 
+  </tr> 
+  <tr> 
+   <td width="85" valign="top"> <p><img src="http://infoqstatic.com/resource/articles/javaee-mobile-application-development-aerogear/zh/resources/1118032.jpg" _p="true" _href="img://null" alt="" style="float: left" /></p> </td> 
+   <td width="344" valign="top"> <p><b>Jay Balunas</b>是一Red Hat的一名移动平台架构师，也是AeroGear项目的创始人。</p> </td> 
+  </tr> 
+ </tbody> 
+</table>
+<p><strong>查看英文原文：</strong><a href="http://www.infoq.com/articles/javaee-mobile-application-development-aerogear">Java EE Mobile Application Development using the AeroGear Framework</a></p><br><br><br><br><br><br></body></html>

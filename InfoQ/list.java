@@ -2,7 +2,13 @@
  <head></head> 
  <body>
   <div>
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/38.java">Strengthening HTTP</a>The recent Snowden revelations have impacted the IETF HTTP/2 Working Group and how the protocol should handle encryption, i.e., should it be mandated? Mark Nottingham, the Working Group chair, shares his thoughts on the discussions so far and gives a clue as to how he sees it being resolved given information so far. He concludes by asking anyone with an opinion to share it with the Working Group.
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/40.java">QCon London 2014 Tutorials: Reactive Extensions, Mobile Dev, Agile, Continuous Delivery (March 3-7)</a>Language pioneers, project leads, and seasoned practitioners will provide two days of hands-on tutorials at the eighth annual QCon London (Mar 3-7, 2014). Three to six hours in length, QCon tutorials delve into new technologies, tools, or methodologies driving innovation in enterprise software development. Get in early for the three day conference; reserve your seat now to save &pound;236 by Jan 8th.
+  </div> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/39.java">PowerShell Team Publishes New Set of Desired State Configuration Resources</a>The PowerShell team released a new set of Desired Configuration State (DSC) resources, packaged in five modules: xWebAdministration; xComputerManagement; xPSDesiredStateConfiguration; xNetworking and xHyperV. This release aims to encourage the PowerShell community to author more DSC resources. It also becomes possible with this release to create a web server from scratch using only DSC resources. 
+  </div> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/38.java">Strengthening HTTP</a>The recent Snowden revelations have impacted the IETF HTTP/2 Working Group and how the protocol should handle encryption, i.e., should it be mandated? Mark Nottingham, the Working Group chair, shares his thoughts on the discussions so far and gives a clue as to how he sees it being resolved given information so far. He concludes by asking anyone with an opinion to share it with the Working Group. 
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/37.java">A Few Highlights from QConSF2013- Part 2 of 2</a>It's one thing having an in-house training program. But there is a certain deeper insight that can be gained from attending a Q-Con conference in person. Which may be one reason why attendance at the globe-hopping event continues to grow. 
@@ -144,12 +150,6 @@
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/42.java">Open Source SQL-in-Hadoop Solutions: Where Are We?</a>With Facebook recently releasing Presto as open source, the already crowded SQL-in-Hadoop market just became a tad more intricate. A number of open source tools are competing for the attention of developers: Hortonworks Stinger initiative around Hive, Apache Drill, Apache Tajo, Cloudera’s Impala, Salesforce’s Phoenix (for HBase) and now Facebook’s Presto. 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/41.java">Hour of Code - Huge Support and Traction for the Computer Science Education Week</a>Programming is natural for most of us. But not so much for everyone else, especially the next generation. Code.org wants to change that. During this Computer Science Education week they got major support from Obama to Zuckerberg and Gates. We all have a responsibility to spread the word and encourage everyone to give it a try. Computer Literacy is the a next big challenge after Literacy. 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/40.java">A first look at Opserver, Stack Exchange's monitoring solution</a>Opserver is an open source monitoring solution, released by StackExchange, of StackOverflow's fame. Opserver provides a quick overall view of each monitored system's health, while allowing the user to deep dive using a drill-down approach. InfoQ talked with Nick Crave, one of Opserver’s creators, for additional insight. 
   </div>  
  </body>
 </html>
