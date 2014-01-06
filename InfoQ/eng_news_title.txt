@@ -1,0 +1,1 @@
+Fix ASP.NET Browser Detection Error in Internet Explorer 11

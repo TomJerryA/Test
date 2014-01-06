@@ -1,6 +1,9 @@
 <html>
  <head></head> 
- <body> 
+ <body>
+  <div>
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/41.java">Fix ASP.NET Browser Detection Error in Internet Explorer 11</a>Internet Explorer 11 will not be able to properly run .NET Framework 4.0 based web applications due to an error in the browser detection mechanism, which can be either fixed by installing .NET 4.5 or by adding a .browser file with correct definitions.
+  </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/40.java">QCon London 2014 Tutorials: Reactive Extensions, Mobile Dev, Agile, Continuous Delivery (March 3-7)</a>Language pioneers, project leads, and seasoned practitioners will provide two days of hands-on tutorials at the eighth annual QCon London (Mar 3-7, 2014). Three to six hours in length, QCon tutorials delve into new technologies, tools, or methodologies driving innovation in enterprise software development. Get in early for the three day conference; reserve your seat now to save &pound;236 by Jan 8th. 
   </div> 
@@ -147,9 +150,6 @@
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/43.java">Visual Studio 2013.1 RC1 Available</a>The first update for VS2013 is bringing bug fixes and the oft-requested support for systems running Internet Explorer 9. 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/42.java">Open Source SQL-in-Hadoop Solutions: Where Are We?</a>With Facebook recently releasing Presto as open source, the already crowded SQL-in-Hadoop market just became a tad more intricate. A number of open source tools are competing for the attention of developers: Hortonworks Stinger initiative around Hive, Apache Drill, Apache Tajo, Cloudera’s Impala, Salesforce’s Phoenix (for HBase) and now Facebook’s Presto. 
-  </div> 
+  </div>  
  </body>
 </html>
