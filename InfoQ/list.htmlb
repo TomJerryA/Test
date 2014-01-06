@@ -1,7 +1,7 @@
 <html>
  <head></head> 
- <body>
-  <div>
+ <body> 
+  <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/17.htmlb">使用AeroGear框架进行Java EE 移动应用开发</a> AeroGear是JBoss所推出的一个移动开发框架，它支持在iOS和Android设备上开发web、混合与原生移动应用的开发，还包括了相应的服务端资源，并且加入了对RESTEasy等现有项目的扩展。Jay Balunas与Marius Bogoevici在JavaOne 2012大会上的演讲中介绍了AeroGear框架。InfoQ与他们两位和Anil Saldhana进行了一次对话，谈论了关于移动开发的一些话题。 
   </div> 
   <div> 
@@ -150,6 +150,6 @@
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/20.htmlb">采访ServiceStack的项目领导Demis Bellot——第2部分</a> ServiceStack是一个开源的、支持.NET与Mono平台的REST Web Services框架。InfoQ有幸与Demis Bellot深入地讨论了这个项目。在这篇两部分报道的第2部分中，我们更多地了解了ServiceStack的特性，并谈论了微软与Mono在.NET开源世界中所扮演的角色。 
-  </div>  
+  </div> 
  </body>
 </html>

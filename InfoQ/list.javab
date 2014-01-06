@@ -1,7 +1,7 @@
 <html>
  <head></head> 
- <body>
-  <div>
+ <body> 
+  <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/43.javab">The Sustainability Agenda in Kanban</a> This first article in the series on the Kanban “nine values, three agendas” model, explores the sustainability agenda: a common approach to Kanban adoption at the level of individuals and teams, often motivated by the need for relief from unsustainable practices and workloads. This sustainability agenda draws on the Kanban values transparency, balance, and collaboration. 
   </div> 
   <div> 
@@ -150,6 +150,6 @@
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/45.javab">What to Use on the Microsoft Stack</a> 
-  </div>  
+  </div> 
  </body>
 </html>
