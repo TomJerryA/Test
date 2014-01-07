@@ -1,49 +1,9 @@
-<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>采访CaptchaMvc的创建者Vyacheslav Volkov</h3><p>InfoQ采访了<a href="http://captchamvc.codeplex.com/">CaptchaMvc</a>的创建者Vyacheslav Volkov，与他一起探讨了CaptchaMvc项目以及他对验证码未来的看法。</p>
-<p>InfoQ：是什么促使你创建自己的验证码类库？</p>
-<blockquote> 
- <p>那个时候我正开始使用MVC 3框架。因为需要在自己的项目中使用验证码，所以我开始寻找一个能够解决我的问题的解决方案。但是我能够找到的所有方案都仅能够在MVC 2上使用，有一些甚至根本无法使用。在搜索了这么多内容之后，我决定编写自己的验证码实现，因此也就出现了CaptchaMvc类库的第一个版本。这个版本非常简单，但是即使是这样，它也是受欢迎的。</p> 
-</blockquote>
-<p>InfoQ：CaptchaMvc和其他的验证码类库之间有什么不同？</p>
-<blockquote> 
- <p>CaptchaMvc是一个有弹性的、简单的解决方案，它能够解决你项目中所有与验证码相关的问题。你需要做的所有事情就是向你的项目中添加一个类库，添加之后验证码就准备就绪了。该项目拥有使用验证码所需要的所有内容：</p> 
- <ul> 
-  <li>有两种类型的验证码，普通的和数学的</li> 
-  <li>支持在session或者cookie中存储验证码</li> 
-  <li>支持“智能验证码”</li> 
-  <li>能够很容易地扩展默认实现</li> 
- </ul> 
- <p>该项目也在不断地演变，我会尽量支持所有人提出的需求。我认为这些就是区分它和其他项目的主要内容。</p> 
-</blockquote>
-<p>InfoQ：你能预见一下什么时候将不再需要验证码么？或者说可能不再有效？</p>
-<blockquote> 
- <p>我们都在梦想那个时候。针对机器人的保护将会一直需要，而验证码仅仅是实现这种保护的方式之一。有各种各样不需要验证码的技术。例如，一些开发者会创建一个“假的”输入域，同时让该域对用户隐藏，当一个机器人试图填充表单的时候，它很有可能会填写该域。</p> 
- <p>尽管如此，我们也很难说验证码能够有效地防止垃圾邮件，有许多服务允许绕过验证码。验证码仅能够增强你的网站对机器人的防护，但是并不能提供全面的保护。</p> 
-</blockquote>
-<p>InfoQ：你列出该项目支持ASP.NET MVC 3、4和5。这些版本之间真的有很多区别么？</p>
-<blockquote> 
- <p>这些版本之间几乎没有什么不同，仅仅是类库中使用了MVC 4中添加的AllowAnonymousAttribute属性。</p> 
-</blockquote>
-<p>InfoQ：如果你可以修改ASP.NET MVC插件/类库支持的任何内容，那么你会修改什么？</p>
-<blockquote> 
- <p>ASP.NET MVC是一个非常了不起的Web框架，我喜欢它所使用的架构解决方案。对于ASP.NET Web API有一个地方我不喜欢，那就是我们不能多次读取请求中的内容。我清楚为什么要这么设计，ASP.NET Web API中的内容体被看作是仅能够读取一次的单向流，但是有时候这样让人非常不方便。</p> 
- <p>我想要改变WPF\Silverlight\XAML中的很多内容，但是这个主题应该在另一个采访中讨论。</p> 
-</blockquote>
-<p>InfoQ：什么是“智能验证码”，它和正常的验证码之间有什么区别？</p>
-<blockquote> 
- <p>基本的想法是让验证码对用户更加友好，在最好的情况下用户永远不会看到验证码。有多种技术能够让验证码更加友好。例如，有一种技术称为“假输入域”。CaptchaMvc支持多种技术能够区分用户和机器人。让我简短的介绍一下每一种技术：</p> 
- <ul> 
-  <li>假的输入（类名—FakeInputIntelligencePolicy）——使用一个“假的”输入域，正如我前面所写的。</li> 
-  <li>JavaScript（类名—JavaScriptIntelligencePolicy）——尝试着去检查用户是否启用了JavaScript，如果用户禁用了JavaScript那么用户必须输入一个验证码</li> 
-  <li>响应时间（类名—ResponseTimeIntelligencePolicy）——允许你设置一个时间，在该时间内验证码将被认为无效。假如一个机器人请求一个表单，填充它并提交…页面加载和提交之前的间隔时间可能会少于一秒——没有人能够做到这一点。</li> 
-  <li>多种方式的组合（类名—MultiIntelligencePolicy）——允许你将不同的策略联合到一起。</li> 
- </ul> 
- <p>我想要给出一个允许你设置“智能验证码”的代码示例，下面是一个我在我的<a href="http://vvson.net/">网站</a>上使用的代码示例：</p> 
- <pre>
-CaptchaUtils.CaptchaManager.IntelligencePolicy = new 
-MultiIntelligencePolicy(
-new FakeInputIntelligencePolicy(),
-new JavaScriptIntelligencePolicy(),
-new ResponseTimeIntelligencePolicy(TimeSpan.FromSeconds(3)));</pre> 
- <p>现在，我正编写一个将会支持ASP.NET Web API的新版本。到目前为止这就是我的所有计划，但是将来的事情可能会有所变化，我将会添加一些其他的内容。</p> 
-</blockquote>
-<p><b>查看英文原文</b>：<a href="http://www.infoq.com/news/2013/12/CaptchaMvc">Interview with Vyacheslav Volkov, Creator of CaptchaMvc</a></p><br><br><br><br><br><br></body></html>
+<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>运营将来时：不可变基础设施与内建故障恢复</h3><p>在上个月<a href="http://velocityconf.com/velocityeu2013">伦敦Velocity大会</a>的演讲中，<a href="http://www.vagrantup.com/">Vagrant</a>的缔造者Mitchell Hashimoto介绍了他对于“未来的运营”的愿景，在其中谈到了“<a href="http://www.infoq.com/news/2013/08/immutable-servers">不可变基础设施</a>”与内建的故障恢复。</p>
+<p>Mitchell的愿景涉及了可重复的环境（通过配置管理工具）、超快部署时间（通过预建的静态映像）和服务编制时间（通过分散式编制工具）。在这个情景中，配置全新的服务器与更换故障服务器并没有什么不同。</p>
+<p>这一愿景是构筑在不可变基础设施的理念之上的。在该理念中，机器在启动时得以配置，并将永远不会进行修改。后续出现的任何环境变更，都会通过部署新机器并取代过时的不可变机器（并出现一些警告，例如复杂的数据库服务器变更，或是诸如CSS修改等小型应用变更）来实现。这一理念曾被一些人<a href="http://www.slideshare.net/MaheshKumar135/uncertain-infrastructure-2">视为空想</a>，因为现今在任何系统中都存在大量的外部依赖。</p>
+<p>对Mitchell来说，这个问题由于目前诸如<a href="http://puppetlabs.com/">Puppet</a>或<u><a href="http://www.getchef.com/">Chef</a></u>等配置管理工具而愈加明显。由于包依赖、网络可用性或环境描述中的变更（Chef的<u><a href="http://docs.opscode.com/essentials_cookbooks.html">cookbooks</a></u>或Puppet的<u><a href="http://docs.puppetlabs.com/learning/manifests.html#manifests">manifests</a></u>），相同服务器的可重复部署难以得到保证。Mitchell认为，可预见性的关键是使用预建并且经过测试的机器映像（二进制）——类似于从源代码编译得来的软件二进制包。</p>
+<p>在Mitchell看来，机器映像之所以在过去有着不太好的名声，是因为它们难以维护。但是借助当前的配置管理工具，映像现在易于进化，并且以持续集成的方式构建。<a href="http://sysadvent.blogspot.pt/2013/12/day-14-what-is-packer.html">Packer</a>等新工具能够基于单一的模板和环境描述集合，为多<a href="http://en.wikipedia.org/wiki/Hypervisor">管理程序</a>（VirtualBox、VMWare等等）构建映像，从而进一步简化了任务。</p>
+<p>然而，在映像部署之后（而不是作为部署流程本身的一部分），依旧需要执行服务发现和编制任务（比如建立负载均衡）。<u><a href="http://sysadvent.blogspot.pt/2013/12/day-13-controlling-cluster-of-servers.html">Serf</a></u>是Mitchell开发的另一个用于该领域的工具。他表示，Serf的设计初衷是为了通过松耦合代理和基于流言机制的成员制（新的代理必须与已加入的现有代理联系，才能够加入系统），支持故障探测和恢复。类似地，某个代理探测到故障节点，并向其他代理“传播（gossip）”这一消息——由它们决定是否需要替换该节点。</p>
+<p>Mitchell宣称，这一切的主要价值在于机器映像生成过程中的编制速度，以及配置管理流程的简化（只需要配置Serf代理服务，然后Serf将在机器启动的时候自动启动）。</p>
+<p>在问答环节，Mitchell还表示，在他看来Docker（用于应用容器）、Packer（用于公共基础设施）和Serf（用于服务编制）的共存毫无问题。</p>
+<p><strong>查看英文原文：</strong><a href="http://www.infoq.com/news/2013/12/futureops">FutureOps with Immutable Infrastructures and Built-in Failure Recovery</a></p><br><br><br><br><br><br></body></html>

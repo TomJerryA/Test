@@ -1,47 +1,14 @@
-<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>金山云CTO杨钢：用做WPS的思路重写了一套私有云系统</h3><p>2013年初，金山启动私有云项目，该项目旨在为向金山提出了私有云网盘/存储需求的政府、大型企业以及中型企业提供服务，项目组由金山云CTO杨钢牵头组建。InfoQ中文站对杨钢进行了专访，了解其私有云服务的技术组成和业务状态。</p>
-<p>嘉宾介绍：杨钢，金山云CTO，首席架构师。杨钢曾历任金山办公软件公司技术总监、首席架构师、助理总裁。他2007年开始负责筹建互联网服务研发团队，开展了包括云存储技术在内的多项新技术研发工作。其产品之一便是现在的金山快盘。在他的主导下，快盘推出了开放平台服务，目前已有腾讯（Web QQ）、康佳、创维、金蝶、小米等多个合作伙伴。2012年初金山快盘团队完成拆分时，他作为创始人之一成立金山云公司，现任金山云CTO。 杨钢在2003到2007年的四年时间里担任金山办公软件公司系统架构组长，主持WPS Office 2005（863重大专项课题）及后续版本架构制订和技术攻坚工作。从2008年开始，他又作为技术负责人，参与核高基重大专项《网络化中文办公服务平台的研发及产业化》课题研发工作。在此期间主持完成了云存储、云计算框架等各个子任务。并推出了WPS Office Web、金山快盘等多个产品。</p>
-<p><strong>InfoQ：金山云私有云的模式是局域网/客户自建数据中心模式，还是在金山云的数据中心划分一块私有Zone的模式？</strong></p>
-<blockquote>
- <p>杨钢：我们的客户一般选择两种方式，一种是内网部署，另一种是部署在客户自己指定的机房，比如客户自己在电信机房租的空间。大型企业和政府客户都是采取内网部署机制，主要业务就是把公有云上的文档存储、分享、协作功能搬到局域网。</p> 
- <p>至于放在我们的数据中心私有Zone，目前是没有的。选择私有云的客户都要求环境的可控性，他们要求自己选机房，自己能够看见自己的设备。</p>
-</blockquote>
-<p><strong>InfoQ：你对私有云业务的观点是什么？几年内快速盈利的短期模式，还是可以有持续发展的业务？</strong></p>
-<blockquote>
- <p>杨钢：我认为私有云模式是目前比较清晰的可以盈利的模式，在未来两年的发展趋势会比较乐观，而且再往后的持续发展也是不错的业务。</p> 
- <p>很多客户都接受私有云的这种模式：</p> 
- <ol> 
-  <li>它跟卖软件不同：并不是一次性采购，初期采购价一般远低于传统软件。后续则通过支付服务年费来不断获得功能升级和产品维护。因为是存储型业务，客户对持续维护的需求很高，他希望供应商能保障持续提供服务的能力。</li> 
-  <li>它跟公有云也不同：公有云的出发点是以低成本满足大部分用户的需求，而私有云则是通过人力来提供定制化服务的模式，精细化满足客户的具体需求。</li> 
- </ol> 
- <p>为什么说私有云是可以长期持续的模式？我认为在很长一段时间内，大型企业对把数据放在公共网络上还是不信任的，尤其棱镜门事件之后，政府和中大型企业对公有云的心理障碍变大。私有云在很长一段时间内仍是办公领域的主流。</p>
-</blockquote>
-<p><strong>InfoQ：从技术层面，提供给私有云用户的软件跟金山云公有云的软件是否一致？定制化需求主要在哪些方面？</strong></p>
-<blockquote>
- <p>杨钢：因为上述私有云跟公有云的不同，所以两者在技术上的关注点也是完全不同的。公有云着重于在尽可能低的基础架构成本上提供一些通用性强的服务，而私有云的关注点则在于用较低的人力成本满足定制化需求。</p> 
- <p>就拿设备这个层面来说，公有云往往是一个专业运维团队管理集中在一起的大量服务器，我们用比较便宜的硬盘和服务器组成存储集群，依赖软件进行冗余，同时运维人员的质量是很高的，而且就算多加一些运维，这个成本跟上万台服务器相比是不算什么的。而私有云的话，如果存储量不是特别大，我们都建议用户使用专业存储设备，例如磁盘阵列。实际上，我们对客户那里的环境会做最保守的设计，因为客户那里有可能连机房空调这样的环节都无法保证，所以设备上会倾向于选择最可靠的。顺便说一句，对存储量需求大的客户，我们有专门为私有云客户设计的私有云存储系统，从性能和架构上我们都有信心跟EMC的Isilon进行PK，性价比更高。</p> 
- <p>由于两者之间在运营模式（通用 vs 定制）和设备上的区别，这就决定了在软件层面上，我们的私有云软件是重新开发的，没有直接拿公有云的软件来用。实现上当然参考了很多公有云的技术，但都是重新写的。</p> 
- <p>说到软件实现，这里还是很有意思的。金山私有云这套软件是在C++语言的基础上开发的，但服务端和部分客户端代码是使用我自己维护的一个叫做<a href="https://code.google.com/p/cdec/">C--的编码风格</a>实现的。这个C--项目是我在06、07年那会儿做的，因为一直觉得C++程序员特别难找，甚至于我自己对C++的一些特性也会感到困惑，所以做的这个C--是一个类似C#和Java的语言风格，仍然基于C++的编译器，工具和库跟C++都是共用的，可以无缝的进行跟C++的混合编程。这样做的好处在于一般的程序员只需要一个星期的培训就可以上手，在性能上又有可媲美C++的优化空间，在开发效率和运行效率之间达成一个很好的平衡。当时本来是想用这个改写WPS的，但是WPS的代码量太大，折腾的代价太大，结果用在了这个私有云项目上。</p> 
- <p>其实我觉得严格来说，私有云并不是互联网产品，而是软件产品。互联网团队和软件团队在研发思路、运营思路上是完全不同的。我本人之前是WPS的技术总监兼架构组组长，后来做云，所以能够兼顾这两种不同的文化，这事儿说来也挺有意思的。而且因为我本人负责技术工作，所以两套技术上的共享可以协调，代码之间可以互相借鉴，还能够根据实际情况做联合开发。</p>
-</blockquote>
-<p><strong>InfoQ：一般愿意做私有云项目的都是资金方面给的比较多的大客户，当然给客户做单独的服务，成本是要比公有云高很多的。就你的经验，服务一个大客户，需要投入多少研发，多少运维，多少客服？</strong></p>
-<blockquote>
- <p>杨钢：我们目前提供的服务主要有三种：</p> 
- <p>第一种，面向大型企业和政府部门。这类客户的特点是定制要求非常多，尤其是在安全方面（这里的安全是指国家保密制度相关的安全功能）。公有云在这个需求上几乎没有覆盖，而私有云对保密要求是很多的。</p> 
- <p>不同的客户会有各种功能需求，而且要和客户本身的系统做深度集成。我们要给每个客户提供产品化的方案，那怎么办呢？我们做了一个非常弹性、灵活的引擎，功能以插件的方式提供，融合到一个架构里面。因为客户持续支付服务费，我们都会提供免费升级的服务，这个升级的思路是给引擎升级，而插件不动。这样子，客户可以不断获得新的功能，同时我们团队也不需要维护大量版本分支。这其实是Office和VBA的思路：Office的很多功能是固定的，但是加上VBA就可以做出很多东西来。当然，这个技术实现难度是很高的。</p> 
- <p>因为有这样一套灵活的架构，涉及到定制化方面的插件代码量其实不多，所以架构成熟后，未来预期平均服务一个大客户只需要投入三个人就可以满足定制、运维、客服的需求。</p> 
- <p>第二种，面向中型客户。这类客户一般是民营的行业用户，对定制功能的需求很少，他们会问，跟他们同一行业的国有企业那边是怎么用的，直接抄过来一份用就可以。这类客户我们只需要投入运维和客服即可。</p> 
- <p>第三种服务是培训，就是要教客户怎么使用这套系统。培训一般是集中式培训，一般一个客户需要一两次集中培训。</p>
-</blockquote>
-<p><strong>InfoQ：所以，私有云的产品目前是一个什么状态？我们是用什么机制来做私有云软件的管理、持续集成、自动化测试、分支合并的？</strong></p>
-<blockquote>
- <p>杨钢：现在的版本我们叫做金山私有云2.0，这套引擎是从今年年初立项后开始开发的，现在功能开发已经完成，还在做界面美化、bug修正、测试等完善工作。有十几个客户已经在使用了。</p> 
- <p>为什么从2.0版本开始，这事儿说起来也挺有意思的。其实金山快盘团队最早是从珠海搬到北京的，当时有一部分人选择留在珠海，然后做了1.0版本。今年我们团队在之前的经验上，重新设计架构开发了现在2.0版本。新版本最大的特色有三个：一是新加入的远程网盘客户端，不占本地空间，而且因为客户端没有数据留存，可以提高安全性；二是为定制化而生的引擎加插件设计，可以大批量满足定制需求；三是提供了独立的集群存储产品，给需要大量存储的用户提供一个高性价比的选择。</p> 
- <p>同时今年过年之后，我们会给所有1.0的客户进行升级，把客户也都合并到2.0上。</p> 
- <p>软件维护这一块，因为我们只定制插件开发，不定制引擎，所以引擎是统一开发维护的，这是大部分的代码量。插件代码量相对很少，把插件开发落实到各个小组上，每个小组维护几个插件。在软件开发管理上，基本上跟之前做WPS的方式是一样的。</p>
-</blockquote>
-<p>相关阅读：</p>
-<ul> 
- <li><a href="http://www.infoq.com/cn/articles/yg-wps">WPS技术总监杨钢谈WPS和技术团队</a></li> 
- <li><a href="http://www.infoq.com/cn/news/2013/12/ksyun-storage-product">金山云存储研发总监分享存储服务的产品化经验</a></li> 
- <li><a href="http://www.infoq.com/cn/articles/ucloud-sdn">专访：UCloud季昕华谈网络存储的局限性、SDN在云上的七大应用场景、以及为什么OpenStack还不适合做公有云</a></li> 
-</ul><br><br><br><br><br><br></body></html>
+<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>Spring团队的年度总结</h3><p>来自GoPivotal的工作人员<a href="http://spring.io/team/jlong">Josh Long</a>回顾总结了<a href="http://spring.io/blog/2013/12/31/this-year-in-spring-december-31-2013">在过去的2013年Spring相关领域的重大事件</a>，这其中包括了Spring 4的发布、团队加入GoPivotal等。Josh Long是Apress的《Spring Recipes, 2nd Edition》、O'Reilly的《Pro Spring Roo》以及Pearson的《Livelessons for Spring》这些技术图书的作者。他是多个Spring项目以及<a href="http://www.activiti.org/">Activiti BPMN</a>框架的提交者。Spring社区的“This Week in Spring”基本上都是由他来发布。在Josh Long的年终总结中，在2013年度Spring领域相关的大事包括：</p>
+<ol> 
+ <li><a href="https://spring.io/blog/2013/12/12/announcing-spring-framework-4-0-ga-release">发布Spring 4</a>。这个版本的主要特性包括提升了对REST的支持、对Java EE 7以及Java 8的支持、对websockets的支持，除此之外，还有大量的新特性。关于Spring 4发布的消息，还可以参考<a href="http://www.infoq.com/cn/news/2013/12/spring4-release?utm_source=infoq&amp;utm_medium=popular_links_homepage">这里</a>和<a href="http://www.infoq.com/cn/news/2006/01/spring4">这里</a>。</li> 
+ <li>在2013年3月底，Spring团队加入了<a href="http://www.gopivotal.com/">GoPivotal</a>。EMC将原属于VMware的Spring、<a href="http://www.cloudfoundry.org/">Cloud Foundry</a>等项目组建成立了新的公司，<a href="http://www.infoq.com/cn/news/2012/12/vmware-spins-out-spring">关于该重组，我们曾经在2012年底关注过</a>。</li> 
+ <li>在年度的<a href="http://springone2gx.com/">SprinOne2GX</a>会议上，Spring启用了新的网站主页，<a href="http://spring.io/">Spring.IO</a>。</li> 
+ <li><a href="http://www.infoq.com/news/2013/06/cloudfoundry_v2">Cloud Foundry v2发布</a>。</li> 
+ <li>启动了<a href="http://www.gopivotal.com/press-center/11122013-pivotal-one">Pivotal One</a>，这是一个综合性的平台，它的特性包括Pivotal HD以及Cloud Foundry，同时包括诸多流行的基础设施，如<a href="http://www.rabbitmq.com/">RabbitMQ</a>以及<a href="http://redis.io/">Redis</a>，当然Spring在其中扮演着核心的角色。</li> 
+ <li>在2013年度，很多的项目发布了更新版本，包括<a href="http://projects.spring.io/spring-social/">Spring Social</a>、<a href="http://projects.spring.io/spring-integration">Spring Integration</a>、<a href="http://projects.spring.io/spring-batch">Spring Batch</a>、<a href="http://projects.spring.io/spring-data">Spring Data</a>、<a href="http://projects.spring.io/spring-security">Spring Security</a>以及<a href="http://projects.spring.io/spring-hadoop/">Spring for Hadoop</a>。其中，值得注意的是：Spring Batch添加了新的Java Configuration API并且在设计上支持了新发布的<a href="https://jcp.org/en/jsr/detail?id=352">Batch规范</a>；Spring Integration 3.0新增了众多新的适配器以及功能提升；Spring Security支持Java Configuration API并且针对open-web应用程序提供了众多的功能提升。</li> 
+ <li><a href="http://projects.spring.io/spring-boot">Spring Boot</a>项目的组建。Spring Boot能够对Spring平台以及第三方库进行自动分析，这样就能够在很短的时间内很容易地上手使用Spring。Spring Boot在整个行业都产生了一定的影响力，大家都认为Boot是很高效且富有生产力的。</li> 
+ <li>针对大数据应用的构建，<a href="http://projects.spring.io/spring-xd/">Spring XD</a>项目提供了便利的基础设施。Spring XD是针对数据摄取、实时分析、批处理和数据导出而提供的统一的、分布式的以及可扩展的系统。它的目标是简化大数据应用程序的开发。Spring XD基于Spring Batch和Spring Integration而构建，是一个运行时环境，能够自动处理大数据中常见的任务。</li> 
+ <li>在大数据方面，不得不提的就是<a href="http://www.gopivotal.com/products/pivotal-hd/">Pivotal HD</a>，这是一个企业级的Hadoop发布版。Pivotal HD能够很好地与Spring for Hadoop集成，是Spring XD中自带的数据存储组件。</li> 
+ <li>社区的发展，在过去的一年中，有众多关于Spring的代码、博客、文章、视频以及访谈发布，从而也印证了它强大的影响力。</li> 
+</ol>
+<p>近几年来Java特性有着快速的发展和演进，<a href="http://www.infoq.com/cn/news/2014/01/spring-springs-facing-oracle">Oracle也在鼓励开发人员将应用直接迁移到Java EE之上以抗衡Spring</a>，不过相信在未来的一段时间内，Spring在Java开发领域会持续发挥一定的影响力。我们期待在新的一年中，技术社区能够带来更多新的理念。</p><br><br><br><br><br><br></body></html>

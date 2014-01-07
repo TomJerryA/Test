@@ -1,28 +1,37 @@
-<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>Powershell的期望状态配置支持推、拉模式</h3><p><a href="http://blogs.msdn.com/b/powershell/">Windows PowerShell博客</a>一直在写有关于PowerShell的期望状态配置（Desired State Configuration，DSC）的内容。DSC是Microsoft针对Windows世界计算机配置管理的提议。最新的一篇文章<a href="http://blogs.msdn.com/b/powershell/archive/2013/11/26/push-and-pull-configuration-modes.aspx">解释</a>了DSC是怎样支持推和拉两种配置模式的。</p>
-<p>DSC是PowerShell工具中新增的内容，它让我们能够声明对于给定的节点或者机器什么是期望的配置。这种方式和PowerShell已经支持的命令式风格是不同的。利用DSC的脚本用户仅需要声明想要的配置，不需要关注为了配置一台机器需要执行哪些步骤。PowerShell 的DSC系统会决定应该如何做。</p>
-<p>PowerShell DSC包含资源的概念。资源是允许配置项的构建块，例如：用户、组、服务器角色或者注册表项。PowerShell DSC已经有一些<a href="http://technet.microsoft.com/en-us/library/dn249921.aspx">内置</a>的资源，但是也能够<a href="http://technet.microsoft.com/en-us/library/dn249927.aspx">创建自定义</a>的资源。下面的示例使用<a href="http://technet.microsoft.com/en-us/library/dn282129.aspx">文件</a>资源声明了在本地主机上C:\inetpub\wwwroot文件夹中的内容应该完全复制于 C:\SiteFiles文件夹：</p>
-<pre>
-Configuration SiteConfig
-{
-   # A Configuration block can have zero or more Node blocks
-   Node &quot;localhost&quot;
-   {
-      # File is a built-in resource you can use to manage files and directories
-      # This example ensures files from the source directory are present in the 
-destination directory
-      File MyFileExample
-      {
-         Ensure = &quot;Present&quot;  # You can also set Ensure to &quot;Absent&quot;
-         Type = &quot;Directory“ # Default is “File”
-         Recurse = $true
-         SourcePath = &quot;C:\SiteFiles&quot; # This is a path that has web files
-         DestinationPath = &quot;C:\inetpub\wwwroot&quot; # The path where we want to ensure 
-the web files are present
-      }
-   }
-} </pre>
-<p>为了应用一个配置，PowerShell提供了两种模式：推模式和拉模式。推模式是通过执行 Start-DscConfiguration 命令立即触发的。例如，下面的命令会将当前路径上的配置应用到脚本内部的所有指定节点上：</p>
-<p>Start-DscConfiguration -Wait -Verbose -Path .</p>
-<p>拉模式将主动权交给了节点本身。节点需要轮询一个拉服务器以便于查看是否有新的配置。如果检查到了新配置，那么本地配置管理器（Local Configuration Manager，LCM）——PowerShell DSC的引擎——就会下载并应用它们。拉模式的设置稍微有一点复杂：需要配置拉服务器和一个web网站，同时还需要通过<a href="http://technet.microsoft.com/en-us/library/dn521621.aspx">Set-DscLocalConfigurationManager</a> 命令在每一个目标节点上<a href="http://blogs.msdn.com/b/powershell/archive/2013/11/26/push-and-pull-configuration-modes.aspx">配置</a>一个LCM。 Windows PowerShell团队发布了一篇<a href="http://blogs.msdn.com/b/powershell/archive/2013/11/21/powershell-dsc-resource-for-configuring-pull-server-environment.aspx">文章</a>和一个帮助工具，以便于让用户能够更容易地设置拉服务器。</p>
-<p>尽管大部分工具同时支持这两种模式，但是也有一些工具<a href="http://www.ansibleworks.com/wp-content/uploads/2013/05/AnsibleAgentless.pdf">喜好推模式</a>，例如<a href="http://www.ansibleworks.com/">Ansible</a>；还有一些工具<a href="http://docs.opscode.com/chef_overview_server.html">喜好拉模式</a>，例如<a href="http://puppetlabs.com/">Puppet</a>和<a href="http://www.getchef.com/">Chef</a>。有关于这两种模式的争论有很多。推模式更加简单、更容易控制：它不需要在目标节点上安装任何特定的软件，同时配置在用户请求时才会触发。拉模式的可伸缩性更好，支持丰富的元数据：目标节点自己完成配置工作，使用异步方式，同时拉服务器能够集中存储每一个目标节点状态的元数据。</p>
-<p><b>查看英文原文</b>：<a href="http://www.infoq.com/news/2013/12/powershell-dsc-push-and-pull">Powershell's Desired State Configuration Supports Push And Pull Modes</a></p><br><br><br><br><br><br></body></html>
+<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>优秀的开发人员和测试人员应有的态度</h3><p>Rajaraman Raghuraman是一位具有丰富经验的软件软件从业者，是AgileDevTest博客(http://agiledevtest.blogspot.com)网站的站长，以及电子书《Programmer's Motivation for Beginners》的作者。针对优秀的软件开发人员和测试人员应该具有什么样的职业态度，他专门撰文进行了阐述。</p>
+<p>在<a href="http://agiledevtest.blogspot.com/2013/02/attitude-of-great-software-developer.html">针对软件开发人员的文章</a>中，Raghuraman认为软件开发是一种艺术，而不是一门科学。你可以学习软件开发的各种技术，不过还需要对编码有着充分的热情。如果你是这样的人，那么就可以成为“伟大的开发者”。Raghuraman列出了优秀的开发人员应该具有的态度：</p>
+<p><b>态度</b><b>1</b><b>：缺陷表明我编写优秀代码的能力出现了问题</b></p>
+<p>修改缺陷是软件开发人员的日常活动。显然，缺陷是开发人员最大的敌人。当修改缺陷的时候，又有多少人能想到以下几点呢：</p>
+<ul> 
+ <li>起初的时候，我能做些什么来避免这个缺陷呢？</li> 
+ <li>我怎么能让这个缺陷逃过我的眼睛呢？</li> 
+ <li>好了，既然问题已经产生了。我下次该如何避免相同的错误呢？下一步该做些什么呢？</li> 
+</ul>
+<p>事实上，很少有开发人员这么想。</p>
+<p>愿意成为优秀开发者的人应该将缺陷视为其位置的一种威胁、个人可信性的一种威胁以及编程技巧的一种威胁。正是这种态度能够使其成为伟大的开发者。</p>
+<p><b>态度</b><b>2</b><b>：测试人员，有本事就在我的代码中发现缺陷</b><b> </b></p>
+<p>有多少人具有这样的态度呢？很多开发人员认为测试的任务就是发现缺陷。的确如此，但是这并不意味着开发人员就可以将缺陷视为理所应当的事情。优秀的开发者愿意邀请测试人员在他的代码中寻找缺陷。他们对自己的代码有这样的自信。</p>
+<p><b>态度</b><b>3</b><b>：在代码质量问题上不妥协</b></p>
+<p>对于开发者来说，最重要的事情就是代码质量了。这包括正确的编码标准、使用恰当的设计和重构保证代码更加可维护等等。但是，我们通常会因为一些众所周时的原因在代码质量问题上妥协，比如面临时间和进度的压力。优秀的开发者永远不应该在代码质量上妥协，不管所面临问题是什么。</p>
+<p><b>态度</b><b>4</b><b>：自信但不傲慢</b></p>
+<p>优秀的开发者应该对自己的能力有自信，但是不应该对其他开发人员和测试人员傲慢。他应该始终记住他是团队中的一员，这个团队要准时高质量地完成项目的共同目标。</p>
+<p><b>态度</b><b>5</b><b>：感激测试人员</b></p>
+<p>尽管优秀的开发人员工作非常努力认真，但是测试人员依然可能在他的代码中发现缺陷。如果这样的话，感谢这些优秀的测试人员。优秀的开发人员应该感谢测试人员所发现的缺陷。他应该记住这一点，他的敌人是缺陷，而不是做测试的人。</p>
+<p>在<a href="http://agiledevtest.blogspot.com/2013/02/attitude-of-great-software-tester.html">针对软件测试人员的文章</a>中，Raghuraman认为开发人员和测试人员的工作方向正好相反，但是有着共同的目标，那就是生产高质量的软件。他认为优秀的测试人员应该具有如下的态度：</p>
+<p><b>态度</b><b>1</b><b>：我要不惜一切代价破坏软件</b></p>
+<p>不要产生误解！测试人员的工作就是要发现缺陷，在这个过程中，要随着时间的推移，使软件变得越来越好。缺陷是测试人员的好朋友，因此他最重要的事情就是不惜一切代价破坏软件，发现漏洞。这个过程中，可以系统性地执行测试用例，也可以进行临时测试或探索性测试。</p>
+<p>如果你想成为优秀的测试人员，那么你的态度应该是“不惜任何代价破坏软件并查找缺陷”。</p>
+<p><b>态度</b><b>2</b><b>：优秀的开发人员，我一定要在你的代码中找到缺陷</b></p>
+<p>不知道有多少测试人员能有这样的态度？</p>
+<p>但是如果想成为优秀的测试人员，就需要有这样的态度：不管开发人员多优秀，也要努力在他的代码中找到缺陷。</p>
+<p><b>态度</b><b>3</b><b>：在测试质量问题上不要妥协</b><b> </b></p>
+<p>就像代码质量一样，测试也需要高质量。优秀的测试人员不应该在测试质量上做任何的妥协。</p>
+<p><b>态度</b><b>4</b><b>：感激开发人员</b></p>
+<p>有可能优秀的开发人员编写的代码不包含任何缺陷。难以置信吧？如果是这样的话，那就感谢开发人员吧。</p>
+<p>如果开发人员所编写的代码没有缺陷，优秀的测试人员应该感谢并尊重他们。应该记住这一点，他的朋友不仅仅是缺陷，开发人员也应该是他的朋友。</p>
+<p><b>态度</b><b>5</b><b>：我绝不比开发人员差</b></p>
+<p>在测试领域，是不是有很多人觉得比开发人员低一等？相信有很多这样的人。如果测试人员觉得比开发人员低一等的话，那么他实际上并没有恰当地做好测试工作。正如前面所述，开发人员和测试人员工作方向相反，但是有着共同的目标，那就是生产高质量的软件。</p>
+<p>如果你想成为优秀的测试人员，那应该首先为自己的工作感到骄傲，不要觉得低人一等。</p>
+<p><b>态度</b><b>6</b><b>：要比开发人员懂得更多</b></p>
+<p>有多少测试人员在技术和架构方面懂得比开发人员还多呢？可能并不太多吧。作为测试人员，工作内容不应当仅仅是编写和执行测试用例并报告缺陷。他应该在技术上比开发人员了解得更多，只有这样才能知道在什么地方能够破坏软件并找到缺陷。</p>
+<p>优秀的开发人员和测试人员除了高超的技术技能外，还都具备专业的职业态度，希望Raghuraman的总结对您有所帮助。</p><br><br><br><br><br><br></body></html>
