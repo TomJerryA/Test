@@ -1,6 +1,24 @@
 <html>
  <head></head> 
- <body> 
+ <body>
+  <div>
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/40.py">Twitterでの予測</a>Velocity Conf LondonでTwitterのArun Kejariwal氏がTwitterで使われている予測アルゴリズムについて話した。予測アルゴリズムはシステムリソースの予測とユーザ数やツイート数などビジネス上の指標の予測に使われている。Twitterのデータストリームのダイナミックさを考慮した場合、磨き直したARIMAモデルは一度予測エラーを検出して、異常値を排除できれば有効に働くということがわかった。
+  </div>
+  <div>
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/39.py">RESTの代替は必要か</a>SoapUIの開発者であるOle Lensmar氏が最近、RESTが本当にリアルタイムの非同期のバイナリプロトコルが必要なアーキテクチャにも適しているかどうか疑問を投げかけている。
+  </div>
+  <div>
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/38.py">Glass Developer KitでXamarin Androidを使ったGoogle Glassアプリ開発が可能に</a>先日リリースされたGlass Developer Kitを使うことによって，Google Glassで動作するプログラムをC#とXamarin.Androidで開発することが可能になる。このキットにはクロスプラットフォームAPIと，サンプルとしてデモアプリが含まれている。
+  </div>
+  <div>
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/37.py">HadoopジョブをGPU上で実行するParallelX</a>MapReduceパラダイムは，大規模な計算集約的アルゴリズムを扱う場合には，必ずしも理想的ではない。ある企業家の小さなチームが，これを解決するためにParallelXという製品を開発している。GPUのパワーを活用してHadoopジョブを強力に加速することで，ボトルネックを解消しようというものだ。
+  </div>
+  <div>
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/36.py">ASP.NET Identity Preview 2.0でAccount Confirmation,Password Reset,Security Token Providerの機能をサポート</a>ASP.NET Identity Framework 直近のリリースで、UsersStore と RolesStore で IQueryable が利用可能になったことに加え、Account Confirmation, Password Reset, Security Token Provider の機能をサポートした。
+  </div>
+  <div>
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/35.py">APIオーケストレーション層</a>従来のリソース指向のAPIモデルはAPI利用者の最も重要なことを満たせていないかもしれない。Netflixの Daniel Jacobson氏は、良いAPI設計とはAPI利用者のことを知って、彼らのためにAPIを最適化することだと語っている。
+  </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/34.py">Webix 1.3リリース - 新しいスキンとHTML5ビデオを追加，チャートウィジェットをアップデート</a>Webix 1.3がリリースされた。８つの新スキンとHTML5ベースのビデオ要素が追加され，チャートウィジェットは対数スケールが使用できるようにアップデートされている。 
   </div> 
@@ -132,24 +150,6 @@
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/44.py">Studio Enterprise 2013 v3がリリース - ThemeRoller, VS 2013 Bootstrapプロジェクトテンプレート，モバイルコントロールを追加</a>ComponentOneが先日Studio Enterprise 2013 v3をリリースした。新開発のThemeRoller for ASP.NET，モバイルコントロール，Windows 8.1とVisual Studio 2013のサポートに加えて，Bootstrapテーマフレームワークをベースとした新しいプロジェクトテンプレートが追加されている。 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/43.py">Cascading 2.5がHadoop 2をサポート</a>今週リリースされたCascadingの新バージョンにはHadoop 2のサポートとCascading Lingualが含まれている。Cascading Lingualは，Hadoopベースのデータにアクセスする手段として包括的なANSI SQLインターフェースを提供する，オープンソースのプロジェクトだ。 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/42.py">RadControls for ASP.NET AJAX Q3 2013 SP1がリリース，Visual Studio 2013とInternet Explorer 11のサポートを追加</a>Telerikが同社のRadControls for ASP.NET AJAX Q3 2013コントロールスイートのアップデートをリリースした。Visual Studio 2013とInternet Explorer 11をサポートし，いくつかの新機能とバグフィックスを含む。 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/41.py">スクラムを使ってFloraHollandのビジネスを変える</a>FloraHollandは日々の業務と平行してビジネスユニットのゴールを変えたいと考えており、スクラムを使って変革を実行した。XP Days Benelux 2013カンファレンスのセッションで、Job Demands-Resources modelを使って複数のビジネスユニットにスクラムとアジャイルの要素を適用し、仕事の仕方を変えたことが紹介された。 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/40.py">Teradataがクラウド戦略の一環としてデータウェアハウス・アズ・ア・サービスを提供</a>Teradataは同社のクラウドサービスを改良し，データウェアハウス・データプラットフォーム・アズ・ア・サービスとして提供する。この製品Teradata Cloudは，定義済みライブラリによる豊富な機能セットと効率的なデータロードにより，Amazon Redshiftのライバルとなることを目指している。 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/39.py">Kevin Behr氏に聞く，継続的改善の技術(Kung-Fu)</a>先頃ニューヨークで開催されたDevOps Daysで，&quot;The Visible Ops Handbook&quot;と&quot;The Phoenix Project&quot;の著者のひとりであるKevin Behr氏は，Jesse Palmer氏とともに，常態的にオーバーワークにある運用チームに継続的改善の文化をいかに浸透させるか，というテーマで講演を行った。InfoQではKevin Behr氏にインタービューし，採用されたアプローチについて詳しく聞いた。 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/38.py">APIのバージョニングコスト</a>サービスのバージョニングは、SOAにおける重要な問題になってきている。何年もの間、さまざまな経験を共有してきたが、それぞれのアプローチを具体的に比較、対比するというやり方はほとんどなかった。Jean-Jacques Dubray氏がこの領域におけるチームの経験と、違いを示そうと作成しようとした方程式について書いた。 
-  </div> 
+  </div>       
  </body>
 </html>
