@@ -1,20 +1,7 @@
-<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>Open Source SQL-in-Hadoop Solutions: Where Are We?</h3><p>With Facebook recently releasing <a href="http://www.infoq.com/news/2013/11/Presto">Presto as open source</a>, the already crowded SQL-in-Hadoop market just became a tad more intricate. A number of open source tools are competing for the attention of developers: Hortonworks <a href="http://hortonworks.com/labs/stinger/">Stinger initiative</a> around Hive, <a href="http://incubator.apache.org/drill/">Apache Drill</a>, <a href="http://tajo.incubator.apache.org/">Apache Tajo</a>, Cloudera’s <a href="http://www.cloudera.com/content/cloudera/en/products-and-services/cdh/impala.html">Impala</a>, Salesforce’s <a href="https://github.com/forcedotcom/phoenix">Phoenix</a> (for HBase) and now Facebook’s Presto.</p>
-<p>Organizations already using Hadoop in production are demanding interactive SQL query support and a smooth integration with existing BI tools. Vijay Madhavan (eBay) states in his blog post <a href="http://zettanalytics.blogspot.ie/2013/06/sql-in-hadoop.html">SQL in Hadoop landscape</a>:</p>
-<blockquote> 
- <p>Most of the current map-reduce based systems for analysis including current versions of Hive, Pig, Cascading work well in the non-interactive and batch SLA domain. Many products are attempting to support real-time and interactive SLAs by offering interactive &quot;SQL in Hadoop&quot; solutions.</p> 
-</blockquote>
-<p>Use cases for SQL-in-Hadoop solutions include supporting interactive ad-hoc queries, supporting reporting/visualization using BI systems like MicroStrategy/Tableau, and multi-source data (e.g.: behavioral data in HDFS must be joined to demographic data in an RDBMS or other source).</p>
-<p>Many of these SQL-in-Hadoop solutions have certain aspects in common:</p>
-<ol> 
- <li>On the metadata level it seems that <a href="http://www.infoq.com/articles/HadoopMetadata">HCatalog</a>/Hive Metastore establishes itself as the de-facto standard for managing schemata across different datasources.</li> 
- <li>Then, there are certain data formats, such as <a href="$parquet.io">Parquet</a> and <a href="http://www.bigdatarepublic.com/author.asp?section_id=2840&amp;doc_id=262757">ORC</a>, which—for selected workloads—are becoming increasingly popular and more widely used in the wild.</li> 
- <li>Most of the solutions seem to support a wide range of ANSI SQL (in different versions: <a href="http://en.wikipedia.org/wiki/SQL-92">1992</a>, <a href="http://en.wikipedia.org/wiki/SQL:1999">1999</a>, <a href="http://en.wikipedia.org/wiki/SQL:2003">2003</a>).</li> 
-</ol>
-<p>Above points should help users to move between different SQL-in-Hadoop solutions without too much migration headache.</p>
-<p>But, there are also some notable differences as shown below:</p>
-<ul> 
- <li>Some of the solutions are Apache-backed and with that community-based (Stinger, Drill, Tajo) while others are owned by single entities (Impala, Phoenix, Presto).</li> 
- <li>Further, some are limited in terms of datasources they can query to the Hadoop ecosystem, while others are from an architectural perspective more flexible and also allow to query relational databases and NoSQL data stores in-situ (Presto, Drill).</li> 
- <li>Another difference is the operations allowed on the data: some are pure (distributed) query engines while others permit update operations.</li> 
-</ul>
-<p>In the past 10 to 18 months more and more people and commercial entities have <a href="http://hadapt.com/blog/2013/10/02/classifying-the-sql-on-hadoop-solutions/">decided</a> to give it a try and realised a low-latency, ad-hoc SQL access to data stored in Hadoop. However, due to overlapping use cases and preferences in terms of environments there is likely room for more than one SQL-in-Hadoop solution, in the long run.</p><br><br><br><br><br><br></body></html>
+<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>Agile 2014 Conference Submissions Closing on 14 January</h3><p>Submissions for sessions at the <a href="http://agile2014.agilealliance.org/">Agile 2014</a> conference to be held in Orlando, Florida from 28 July to 1 August close on the 14th of January 2014. &nbsp;The <a href="http://www.agilealliance.org/">Agile Alliance</a> has issued a request for potential speakers to get their <a href="https://submissions.agilealliance.org/sessions">proposals</a> in as soon as possible.</p>
+<p>Prospective speakers can submit their proposals through the conference <a href="https://submissions.agilealliance.org">submission system</a>. &nbsp;</p>
+<p>In 2013 there were over 1000 submissions, this year the organizers are expecting between 1100 and 1200 submissions for the approx 200 available speaking slots.&nbsp;</p>
+<p>Conference chait Mitch Lacey said</p>
+<blockquote>
+ As we expected, there has been a global outpouring of interest for the 200 or so speaker slots for AGILE2014. This is a highly competitive process because it’s such a remarkable opportunity to share your knowledge with Agilists across the world. There’s still time to submit, and if you have a topic, I encourage you to participate.
+</blockquote><br><br><br><br><br><br></body></html>

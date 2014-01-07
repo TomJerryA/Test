@@ -1,1 +1,1 @@
-Fix ASP.NET Browser Detection Error in Internet Explorer 11
+Agile 2014 Conference Submissions Closing on 14 January

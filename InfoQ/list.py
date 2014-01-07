@@ -1,23 +1,23 @@
 <html>
  <head></head> 
- <body>
-  <div>
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/40.py">Twitterでの予測</a>Velocity Conf LondonでTwitterのArun Kejariwal氏がTwitterで使われている予測アルゴリズムについて話した。予測アルゴリズムはシステムリソースの予測とユーザ数やツイート数などビジネス上の指標の予測に使われている。Twitterのデータストリームのダイナミックさを考慮した場合、磨き直したARIMAモデルは一度予測エラーを検出して、異常値を排除できれば有効に働くということがわかった。
-  </div>
-  <div>
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/39.py">RESTの代替は必要か</a>SoapUIの開発者であるOle Lensmar氏が最近、RESTが本当にリアルタイムの非同期のバイナリプロトコルが必要なアーキテクチャにも適しているかどうか疑問を投げかけている。
-  </div>
-  <div>
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/38.py">Glass Developer KitでXamarin Androidを使ったGoogle Glassアプリ開発が可能に</a>先日リリースされたGlass Developer Kitを使うことによって，Google Glassで動作するプログラムをC#とXamarin.Androidで開発することが可能になる。このキットにはクロスプラットフォームAPIと，サンプルとしてデモアプリが含まれている。
-  </div>
-  <div>
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/37.py">HadoopジョブをGPU上で実行するParallelX</a>MapReduceパラダイムは，大規模な計算集約的アルゴリズムを扱う場合には，必ずしも理想的ではない。ある企業家の小さなチームが，これを解決するためにParallelXという製品を開発している。GPUのパワーを活用してHadoopジョブを強力に加速することで，ボトルネックを解消しようというものだ。
-  </div>
-  <div>
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/36.py">ASP.NET Identity Preview 2.0でAccount Confirmation,Password Reset,Security Token Providerの機能をサポート</a>ASP.NET Identity Framework 直近のリリースで、UsersStore と RolesStore で IQueryable が利用可能になったことに加え、Account Confirmation, Password Reset, Security Token Provider の機能をサポートした。
-  </div>
-  <div>
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/35.py">APIオーケストレーション層</a>従来のリソース指向のAPIモデルはAPI利用者の最も重要なことを満たせていないかもしれない。Netflixの Daniel Jacobson氏は、良いAPI設計とはAPI利用者のことを知って、彼らのためにAPIを最適化することだと語っている。
+ <body> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/40.py">Twitterでの予測</a>Velocity Conf LondonでTwitterのArun Kejariwal氏がTwitterで使われている予測アルゴリズムについて話した。予測アルゴリズムはシステムリソースの予測とユーザ数やツイート数などビジネス上の指標の予測に使われている。Twitterのデータストリームのダイナミックさを考慮した場合、磨き直したARIMAモデルは一度予測エラーを検出して、異常値を排除できれば有効に働くということがわかった。 
+  </div> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/39.py">RESTの代替は必要か</a>SoapUIの開発者であるOle Lensmar氏が最近、RESTが本当にリアルタイムの非同期のバイナリプロトコルが必要なアーキテクチャにも適しているかどうか疑問を投げかけている。 
+  </div> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/38.py">Glass Developer KitでXamarin Androidを使ったGoogle Glassアプリ開発が可能に</a>先日リリースされたGlass Developer Kitを使うことによって，Google Glassで動作するプログラムをC#とXamarin.Androidで開発することが可能になる。このキットにはクロスプラットフォームAPIと，サンプルとしてデモアプリが含まれている。 
+  </div> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/37.py">HadoopジョブをGPU上で実行するParallelX</a>MapReduceパラダイムは，大規模な計算集約的アルゴリズムを扱う場合には，必ずしも理想的ではない。ある企業家の小さなチームが，これを解決するためにParallelXという製品を開発している。GPUのパワーを活用してHadoopジョブを強力に加速することで，ボトルネックを解消しようというものだ。 
+  </div> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/36.py">ASP.NET Identity Preview 2.0でAccount Confirmation,Password Reset,Security Token Providerの機能をサポート</a>ASP.NET Identity Framework 直近のリリースで、UsersStore と RolesStore で IQueryable が利用可能になったことに加え、Account Confirmation, Password Reset, Security Token Provider の機能をサポートした。 
+  </div> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/35.py">APIオーケストレーション層</a>従来のリソース指向のAPIモデルはAPI利用者の最も重要なことを満たせていないかもしれない。Netflixの Daniel Jacobson氏は、良いAPI設計とはAPI利用者のことを知って、彼らのためにAPIを最適化することだと語っている。 
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/34.py">Webix 1.3リリース - 新しいスキンとHTML5ビデオを追加，チャートウィジェットをアップデート</a>Webix 1.3がリリースされた。８つの新スキンとHTML5ベースのビデオ要素が追加され，チャートウィジェットは対数スケールが使用できるようにアップデートされている。 
@@ -150,6 +150,6 @@
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/44.py">Studio Enterprise 2013 v3がリリース - ThemeRoller, VS 2013 Bootstrapプロジェクトテンプレート，モバイルコントロールを追加</a>ComponentOneが先日Studio Enterprise 2013 v3をリリースした。新開発のThemeRoller for ASP.NET，モバイルコントロール，Windows 8.1とVisual Studio 2013のサポートに加えて，Bootstrapテーマフレームワークをベースとした新しいプロジェクトテンプレートが追加されている。 
-  </div>       
+  </div> 
  </body>
 </html>

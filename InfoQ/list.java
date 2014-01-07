@@ -1,6 +1,12 @@
 <html>
  <head></head> 
- <body> 
+ <body>
+  <div>
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/43.java">Klaus Olsen Elaborates on Bug Hunting</a>InfoQ spoke with Klaus Olsen to get further details about the bug hunting technique, how it came about and why it is worth using.
+  </div> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/42.java">Agile 2014 Conference Submissions Closing on 14 January</a>Submissions for talks at the Agile 2014 conference to be held in Orlando, Florida in August 2014 close on the 14th of January. The Agile Alliance is calling for interested speakers to submit their proposals soon. 
+  </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/41.java">Fix ASP.NET Browser Detection Error in Internet Explorer 11</a>Internet Explorer 11 will not be able to properly run .NET Framework 4.0 based web applications due to an error in the browser detection mechanism, which can be either fixed by installing .NET 4.5 or by adding a .browser file with correct definitions. 
   </div> 
@@ -144,12 +150,6 @@
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/45.java">Benefits-led Process Improvement Using the CMMI</a>Achieving a maturity level is a target often used in CMMI based process improvement programs. It can be important for organizations to have insight in the relation between a maturity level and business goals, and to know the business benefits. An interview with Michelle Krupa on changing an improvement program from being CMMI Maturity Level based to a benefits led approach. 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/44.java">Modernization Is Not Optional</a>Most large organizations have allowed their systems to evolve without good architecture and governance. The result is a &quot;hair ball&quot; of systems interfaces and dependencies which greatly increase complexity, risk and the cost of change. David Sprott describes how systems modernization should be a collaboration between business management and IT. 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/43.java">Visual Studio 2013.1 RC1 Available</a>The first update for VS2013 is bringing bug fixes and the oft-requested support for systems running Internet Explorer 9. 
-  </div> 
+  </div>  
  </body>
 </html>
