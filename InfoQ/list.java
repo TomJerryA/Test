@@ -1,6 +1,9 @@
 <html>
  <head></head> 
- <body> 
+ <body>
+  <div>
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/44.java">Appcelerator Announces Insights for Tracking Mobile Apps Lifecycle</a>Appcelerator, maker of the Titanium Mobile Development Environment, has recently announced Appcelerator Insights as part of its Appcelerator Analytics product.Insights promises to deliver real-time aggregated analytics aiming at measuring higher-level metrics like user acquisition and retention, engagement, and app performance.
+  </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/43.java">Klaus Olsen Elaborates on Bug Hunting</a>InfoQ spoke with Klaus Olsen to get further details about the bug hunting technique, how it came about and why it is worth using. 
   </div> 
@@ -147,9 +150,6 @@
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/46.java">TypedMVVM Uses TypeScript to Build Windows Store Apps with WinJS</a>TypedMVVM is a collection of samples and libraries developed by Davide Zordan which enables enable developers to build Windows Store apps using WinJS, TypeScript and MVVM. 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/45.java">Benefits-led Process Improvement Using the CMMI</a>Achieving a maturity level is a target often used in CMMI based process improvement programs. It can be important for organizations to have insight in the relation between a maturity level and business goals, and to know the business benefits. An interview with Michelle Krupa on changing an improvement program from being CMMI Maturity Level based to a benefits led approach. 
-  </div> 
+  </div>  
  </body>
 </html>
