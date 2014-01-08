@@ -1,358 +1,108 @@
-<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>Cascading 2.5がHadoop 2をサポート</h3><p><a target="_blank" href="http://www.infoq.com/news/2013/11/cascading"><em>原文(投稿日：2013/11/19)へのリンク</em></a></p>
+<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>エンタープライズ開発者のためのツール表集</h3><p><a target="_blank" href="http://www.infoq.com/news/2013/12/tool-atlas-enterprise-dev"><em>原文(投稿日：2013/12/19)へのリンク</em></a></p>
 <div class="article_page_left news_container text_content_container"> 
  <div class="text_info"> 
-  <p>
-   <!--[if gte mso 9]><xml>
-<o:OfficeDocumentSettings>
-<o:AllowPNG />
-</o:OfficeDocumentSettings>
-</xml><![endif]--></p> 
-  <p>
-   <!--[if gte mso 9]><xml>
-<w:WordDocument>
-<w:View>Normal</w:View>
-<w:Zoom>0</w:Zoom>
-<w:TrackMoves />
-<w:TrackFormatting />
-<w:PunctuationKerning />
-<w:ValidateAgainstSchemas />
-<w:SaveIfXMLInvalid>false</w:SaveIfXMLInvalid>
-<w:IgnoreMixedContent>false</w:IgnoreMixedContent>
-<w:AlwaysShowPlaceholderText>false</w:AlwaysShowPlaceholderText>
-<w:DoNotPromoteQF />
-<w:LidThemeOther>EN-US</w:LidThemeOther>
-<w:LidThemeAsian>X-NONE</w:LidThemeAsian>
-<w:LidThemeComplexScript>X-NONE</w:LidThemeComplexScript>
-<w:Compatibility>
-<w:BreakWrappedTables />
-<w:SnapToGridInCell />
-<w:WrapTextWithPunct />
-<w:UseAsianBreakRules />
-<w:DontGrowAutofit />
-<w:SplitPgBreakAndParaMark />
-<w:EnableOpenTypeKerning />
-<w:DontFlipMirrorIndents />
-<w:OverrideTableStyleHps />
-</w:Compatibility>
-<m:mathPr>
-<m:mathFont m:val="Cambria Math" />
-<m:brkBin m:val="before" />
-<m:brkBinSub m:val="&#45;-" />
-<m:smallFrac m:val="off" />
-<m:dispDef />
-<m:lMargin m:val="0" />
-<m:rMargin m:val="0" />
-<m:defJc m:val="centerGroup" />
-<m:wrapIndent m:val="1440" />
-<m:intLim m:val="subSup" />
-<m:naryLim m:val="undOvr" />
-</m:mathPr></w:WordDocument>
-</xml><![endif]-->
-   <!--[if gte mso 9]><xml>
-<w:LatentStyles DefLockedState="false" DefUnhideWhenUsed="true"
-DefSemiHidden="true" DefQFormat="false" DefPriority="99"
-LatentStyleCount="267">
-<w:LsdException Locked="false" Priority="0" SemiHidden="false"
-UnhideWhenUsed="false" QFormat="true" Name="Normal" />
-<w:LsdException Locked="false" Priority="9" SemiHidden="false"
-UnhideWhenUsed="false" QFormat="true" Name="heading 1" />
-<w:LsdException Locked="false" Priority="9" QFormat="true" Name="heading 2" />
-<w:LsdException Locked="false" Priority="9" QFormat="true" Name="heading 3" />
-<w:LsdException Locked="false" Priority="9" QFormat="true" Name="heading 4" />
-<w:LsdException Locked="false" Priority="9" QFormat="true" Name="heading 5" />
-<w:LsdException Locked="false" Priority="9" QFormat="true" Name="heading 6" />
-<w:LsdException Locked="false" Priority="9" QFormat="true" Name="heading 7" />
-<w:LsdException Locked="false" Priority="9" QFormat="true" Name="heading 8" />
-<w:LsdException Locked="false" Priority="9" QFormat="true" Name="heading 9" />
-<w:LsdException Locked="false" Priority="39" Name="toc 1" />
-<w:LsdException Locked="false" Priority="39" Name="toc 2" />
-<w:LsdException Locked="false" Priority="39" Name="toc 3" />
-<w:LsdException Locked="false" Priority="39" Name="toc 4" />
-<w:LsdException Locked="false" Priority="39" Name="toc 5" />
-<w:LsdException Locked="false" Priority="39" Name="toc 6" />
-<w:LsdException Locked="false" Priority="39" Name="toc 7" />
-<w:LsdException Locked="false" Priority="39" Name="toc 8" />
-<w:LsdException Locked="false" Priority="39" Name="toc 9" />
-<w:LsdException Locked="false" Priority="35" QFormat="true" Name="caption" />
-<w:LsdException Locked="false" Priority="10" SemiHidden="false"
-UnhideWhenUsed="false" QFormat="true" Name="Title" />
-<w:LsdException Locked="false" Priority="1" Name="Default Paragraph Font" />
-<w:LsdException Locked="false" Priority="11" SemiHidden="false"
-UnhideWhenUsed="false" QFormat="true" Name="Subtitle" />
-<w:LsdException Locked="false" Priority="22" SemiHidden="false"
-UnhideWhenUsed="false" QFormat="true" Name="Strong" />
-<w:LsdException Locked="false" Priority="20" SemiHidden="false"
-UnhideWhenUsed="false" QFormat="true" Name="Emphasis" />
-<w:LsdException Locked="false" Priority="59" SemiHidden="false"
-UnhideWhenUsed="false" Name="Table Grid" />
-<w:LsdException Locked="false" UnhideWhenUsed="false" Name="Placeholder Text" />
-<w:LsdException Locked="false" Priority="1" SemiHidden="false"
-UnhideWhenUsed="false" QFormat="true" Name="No Spacing" />
-<w:LsdException Locked="false" Priority="60" SemiHidden="false"
-UnhideWhenUsed="false" Name="Light Shading" />
-<w:LsdException Locked="false" Priority="61" SemiHidden="false"
-UnhideWhenUsed="false" Name="Light List" />
-<w:LsdException Locked="false" Priority="62" SemiHidden="false"
-UnhideWhenUsed="false" Name="Light Grid" />
-<w:LsdException Locked="false" Priority="63" SemiHidden="false"
-UnhideWhenUsed="false" Name="Medium Shading 1" />
-<w:LsdException Locked="false" Priority="64" SemiHidden="false"
-UnhideWhenUsed="false" Name="Medium Shading 2" />
-<w:LsdException Locked="false" Priority="65" SemiHidden="false"
-UnhideWhenUsed="false" Name="Medium List 1" />
-<w:LsdException Locked="false" Priority="66" SemiHidden="false"
-UnhideWhenUsed="false" Name="Medium List 2" />
-<w:LsdException Locked="false" Priority="67" SemiHidden="false"
-UnhideWhenUsed="false" Name="Medium Grid 1" />
-<w:LsdException Locked="false" Priority="68" SemiHidden="false"
-UnhideWhenUsed="false" Name="Medium Grid 2" />
-<w:LsdException Locked="false" Priority="69" SemiHidden="false"
-UnhideWhenUsed="false" Name="Medium Grid 3" />
-<w:LsdException Locked="false" Priority="70" SemiHidden="false"
-UnhideWhenUsed="false" Name="Dark List" />
-<w:LsdException Locked="false" Priority="71" SemiHidden="false"
-UnhideWhenUsed="false" Name="Colorful Shading" />
-<w:LsdException Locked="false" Priority="72" SemiHidden="false"
-UnhideWhenUsed="false" Name="Colorful List" />
-<w:LsdException Locked="false" Priority="73" SemiHidden="false"
-UnhideWhenUsed="false" Name="Colorful Grid" />
-<w:LsdException Locked="false" Priority="60" SemiHidden="false"
-UnhideWhenUsed="false" Name="Light Shading Accent 1" />
-<w:LsdException Locked="false" Priority="61" SemiHidden="false"
-UnhideWhenUsed="false" Name="Light List Accent 1" />
-<w:LsdException Locked="false" Priority="62" SemiHidden="false"
-UnhideWhenUsed="false" Name="Light Grid Accent 1" />
-<w:LsdException Locked="false" Priority="63" SemiHidden="false"
-UnhideWhenUsed="false" Name="Medium Shading 1 Accent 1" />
-<w:LsdException Locked="false" Priority="64" SemiHidden="false"
-UnhideWhenUsed="false" Name="Medium Shading 2 Accent 1" />
-<w:LsdException Locked="false" Priority="65" SemiHidden="false"
-UnhideWhenUsed="false" Name="Medium List 1 Accent 1" />
-<w:LsdException Locked="false" UnhideWhenUsed="false" Name="Revision" />
-<w:LsdException Locked="false" Priority="34" SemiHidden="false"
-UnhideWhenUsed="false" QFormat="true" Name="List Paragraph" />
-<w:LsdException Locked="false" Priority="29" SemiHidden="false"
-UnhideWhenUsed="false" QFormat="true" Name="Quote" />
-<w:LsdException Locked="false" Priority="30" SemiHidden="false"
-UnhideWhenUsed="false" QFormat="true" Name="Intense Quote" />
-<w:LsdException Locked="false" Priority="66" SemiHidden="false"
-UnhideWhenUsed="false" Name="Medium List 2 Accent 1" />
-<w:LsdException Locked="false" Priority="67" SemiHidden="false"
-UnhideWhenUsed="false" Name="Medium Grid 1 Accent 1" />
-<w:LsdException Locked="false" Priority="68" SemiHidden="false"
-UnhideWhenUsed="false" Name="Medium Grid 2 Accent 1" />
-<w:LsdException Locked="false" Priority="69" SemiHidden="false"
-UnhideWhenUsed="false" Name="Medium Grid 3 Accent 1" />
-<w:LsdException Locked="false" Priority="70" SemiHidden="false"
-UnhideWhenUsed="false" Name="Dark List Accent 1" />
-<w:LsdException Locked="false" Priority="71" SemiHidden="false"
-UnhideWhenUsed="false" Name="Colorful Shading Accent 1" />
-<w:LsdException Locked="false" Priority="72" SemiHidden="false"
-UnhideWhenUsed="false" Name="Colorful List Accent 1" />
-<w:LsdException Locked="false" Priority="73" SemiHidden="false"
-UnhideWhenUsed="false" Name="Colorful Grid Accent 1" />
-<w:LsdException Locked="false" Priority="60" SemiHidden="false"
-UnhideWhenUsed="false" Name="Light Shading Accent 2" />
-<w:LsdException Locked="false" Priority="61" SemiHidden="false"
-UnhideWhenUsed="false" Name="Light List Accent 2" />
-<w:LsdException Locked="false" Priority="62" SemiHidden="false"
-UnhideWhenUsed="false" Name="Light Grid Accent 2" />
-<w:LsdException Locked="false" Priority="63" SemiHidden="false"
-UnhideWhenUsed="false" Name="Medium Shading 1 Accent 2" />
-<w:LsdException Locked="false" Priority="64" SemiHidden="false"
-UnhideWhenUsed="false" Name="Medium Shading 2 Accent 2" />
-<w:LsdException Locked="false" Priority="65" SemiHidden="false"
-UnhideWhenUsed="false" Name="Medium List 1 Accent 2" />
-<w:LsdException Locked="false" Priority="66" SemiHidden="false"
-UnhideWhenUsed="false" Name="Medium List 2 Accent 2" />
-<w:LsdException Locked="false" Priority="67" SemiHidden="false"
-UnhideWhenUsed="false" Name="Medium Grid 1 Accent 2" />
-<w:LsdException Locked="false" Priority="68" SemiHidden="false"
-UnhideWhenUsed="false" Name="Medium Grid 2 Accent 2" />
-<w:LsdException Locked="false" Priority="69" SemiHidden="false"
-UnhideWhenUsed="false" Name="Medium Grid 3 Accent 2" />
-<w:LsdException Locked="false" Priority="70" SemiHidden="false"
-UnhideWhenUsed="false" Name="Dark List Accent 2" />
-<w:LsdException Locked="false" Priority="71" SemiHidden="false"
-UnhideWhenUsed="false" Name="Colorful Shading Accent 2" />
-<w:LsdException Locked="false" Priority="72" SemiHidden="false"
-UnhideWhenUsed="false" Name="Colorful List Accent 2" />
-<w:LsdException Locked="false" Priority="73" SemiHidden="false"
-UnhideWhenUsed="false" Name="Colorful Grid Accent 2" />
-<w:LsdException Locked="false" Priority="60" SemiHidden="false"
-UnhideWhenUsed="false" Name="Light Shading Accent 3" />
-<w:LsdException Locked="false" Priority="61" SemiHidden="false"
-UnhideWhenUsed="false" Name="Light List Accent 3" />
-<w:LsdException Locked="false" Priority="62" SemiHidden="false"
-UnhideWhenUsed="false" Name="Light Grid Accent 3" />
-<w:LsdException Locked="false" Priority="63" SemiHidden="false"
-UnhideWhenUsed="false" Name="Medium Shading 1 Accent 3" />
-<w:LsdException Locked="false" Priority="64" SemiHidden="false"
-UnhideWhenUsed="false" Name="Medium Shading 2 Accent 3" />
-<w:LsdException Locked="false" Priority="65" SemiHidden="false"
-UnhideWhenUsed="false" Name="Medium List 1 Accent 3" />
-<w:LsdException Locked="false" Priority="66" SemiHidden="false"
-UnhideWhenUsed="false" Name="Medium List 2 Accent 3" />
-<w:LsdException Locked="false" Priority="67" SemiHidden="false"
-UnhideWhenUsed="false" Name="Medium Grid 1 Accent 3" />
-<w:LsdException Locked="false" Priority="68" SemiHidden="false"
-UnhideWhenUsed="false" Name="Medium Grid 2 Accent 3" />
-<w:LsdException Locked="false" Priority="69" SemiHidden="false"
-UnhideWhenUsed="false" Name="Medium Grid 3 Accent 3" />
-<w:LsdException Locked="false" Priority="70" SemiHidden="false"
-UnhideWhenUsed="false" Name="Dark List Accent 3" />
-<w:LsdException Locked="false" Priority="71" SemiHidden="false"
-UnhideWhenUsed="false" Name="Colorful Shading Accent 3" />
-<w:LsdException Locked="false" Priority="72" SemiHidden="false"
-UnhideWhenUsed="false" Name="Colorful List Accent 3" />
-<w:LsdException Locked="false" Priority="73" SemiHidden="false"
-UnhideWhenUsed="false" Name="Colorful Grid Accent 3" />
-<w:LsdException Locked="false" Priority="60" SemiHidden="false"
-UnhideWhenUsed="false" Name="Light Shading Accent 4" />
-<w:LsdException Locked="false" Priority="61" SemiHidden="false"
-UnhideWhenUsed="false" Name="Light List Accent 4" />
-<w:LsdException Locked="false" Priority="62" SemiHidden="false"
-UnhideWhenUsed="false" Name="Light Grid Accent 4" />
-<w:LsdException Locked="false" Priority="63" SemiHidden="false"
-UnhideWhenUsed="false" Name="Medium Shading 1 Accent 4" />
-<w:LsdException Locked="false" Priority="64" SemiHidden="false"
-UnhideWhenUsed="false" Name="Medium Shading 2 Accent 4" />
-<w:LsdException Locked="false" Priority="65" SemiHidden="false"
-UnhideWhenUsed="false" Name="Medium List 1 Accent 4" />
-<w:LsdException Locked="false" Priority="66" SemiHidden="false"
-UnhideWhenUsed="false" Name="Medium List 2 Accent 4" />
-<w:LsdException Locked="false" Priority="67" SemiHidden="false"
-UnhideWhenUsed="false" Name="Medium Grid 1 Accent 4" />
-<w:LsdException Locked="false" Priority="68" SemiHidden="false"
-UnhideWhenUsed="false" Name="Medium Grid 2 Accent 4" />
-<w:LsdException Locked="false" Priority="69" SemiHidden="false"
-UnhideWhenUsed="false" Name="Medium Grid 3 Accent 4" />
-<w:LsdException Locked="false" Priority="70" SemiHidden="false"
-UnhideWhenUsed="false" Name="Dark List Accent 4" />
-<w:LsdException Locked="false" Priority="71" SemiHidden="false"
-UnhideWhenUsed="false" Name="Colorful Shading Accent 4" />
-<w:LsdException Locked="false" Priority="72" SemiHidden="false"
-UnhideWhenUsed="false" Name="Colorful List Accent 4" />
-<w:LsdException Locked="false" Priority="73" SemiHidden="false"
-UnhideWhenUsed="false" Name="Colorful Grid Accent 4" />
-<w:LsdException Locked="false" Priority="60" SemiHidden="false"
-UnhideWhenUsed="false" Name="Light Shading Accent 5" />
-<w:LsdException Locked="false" Priority="61" SemiHidden="false"
-UnhideWhenUsed="false" Name="Light List Accent 5" />
-<w:LsdException Locked="false" Priority="62" SemiHidden="false"
-UnhideWhenUsed="false" Name="Light Grid Accent 5" />
-<w:LsdException Locked="false" Priority="63" SemiHidden="false"
-UnhideWhenUsed="false" Name="Medium Shading 1 Accent 5" />
-<w:LsdException Locked="false" Priority="64" SemiHidden="false"
-UnhideWhenUsed="false" Name="Medium Shading 2 Accent 5" />
-<w:LsdException Locked="false" Priority="65" SemiHidden="false"
-UnhideWhenUsed="false" Name="Medium List 1 Accent 5" />
-<w:LsdException Locked="false" Priority="66" SemiHidden="false"
-UnhideWhenUsed="false" Name="Medium List 2 Accent 5" />
-<w:LsdException Locked="false" Priority="67" SemiHidden="false"
-UnhideWhenUsed="false" Name="Medium Grid 1 Accent 5" />
-<w:LsdException Locked="false" Priority="68" SemiHidden="false"
-UnhideWhenUsed="false" Name="Medium Grid 2 Accent 5" />
-<w:LsdException Locked="false" Priority="69" SemiHidden="false"
-UnhideWhenUsed="false" Name="Medium Grid 3 Accent 5" />
-<w:LsdException Locked="false" Priority="70" SemiHidden="false"
-UnhideWhenUsed="false" Name="Dark List Accent 5" />
-<w:LsdException Locked="false" Priority="71" SemiHidden="false"
-UnhideWhenUsed="false" Name="Colorful Shading Accent 5" />
-<w:LsdException Locked="false" Priority="72" SemiHidden="false"
-UnhideWhenUsed="false" Name="Colorful List Accent 5" />
-<w:LsdException Locked="false" Priority="73" SemiHidden="false"
-UnhideWhenUsed="false" Name="Colorful Grid Accent 5" />
-<w:LsdException Locked="false" Priority="60" SemiHidden="false"
-UnhideWhenUsed="false" Name="Light Shading Accent 6" />
-<w:LsdException Locked="false" Priority="61" SemiHidden="false"
-UnhideWhenUsed="false" Name="Light List Accent 6" />
-<w:LsdException Locked="false" Priority="62" SemiHidden="false"
-UnhideWhenUsed="false" Name="Light Grid Accent 6" />
-<w:LsdException Locked="false" Priority="63" SemiHidden="false"
-UnhideWhenUsed="false" Name="Medium Shading 1 Accent 6" />
-<w:LsdException Locked="false" Priority="64" SemiHidden="false"
-UnhideWhenUsed="false" Name="Medium Shading 2 Accent 6" />
-<w:LsdException Locked="false" Priority="65" SemiHidden="false"
-UnhideWhenUsed="false" Name="Medium List 1 Accent 6" />
-<w:LsdException Locked="false" Priority="66" SemiHidden="false"
-UnhideWhenUsed="false" Name="Medium List 2 Accent 6" />
-<w:LsdException Locked="false" Priority="67" SemiHidden="false"
-UnhideWhenUsed="false" Name="Medium Grid 1 Accent 6" />
-<w:LsdException Locked="false" Priority="68" SemiHidden="false"
-UnhideWhenUsed="false" Name="Medium Grid 2 Accent 6" />
-<w:LsdException Locked="false" Priority="69" SemiHidden="false"
-UnhideWhenUsed="false" Name="Medium Grid 3 Accent 6" />
-<w:LsdException Locked="false" Priority="70" SemiHidden="false"
-UnhideWhenUsed="false" Name="Dark List Accent 6" />
-<w:LsdException Locked="false" Priority="71" SemiHidden="false"
-UnhideWhenUsed="false" Name="Colorful Shading Accent 6" />
-<w:LsdException Locked="false" Priority="72" SemiHidden="false"
-UnhideWhenUsed="false" Name="Colorful List Accent 6" />
-<w:LsdException Locked="false" Priority="73" SemiHidden="false"
-UnhideWhenUsed="false" Name="Colorful Grid Accent 6" />
-<w:LsdException Locked="false" Priority="19" SemiHidden="false"
-UnhideWhenUsed="false" QFormat="true" Name="Subtle Emphasis" />
-<w:LsdException Locked="false" Priority="21" SemiHidden="false"
-UnhideWhenUsed="false" QFormat="true" Name="Intense Emphasis" />
-<w:LsdException Locked="false" Priority="31" SemiHidden="false"
-UnhideWhenUsed="false" QFormat="true" Name="Subtle Reference" />
-<w:LsdException Locked="false" Priority="32" SemiHidden="false"
-UnhideWhenUsed="false" QFormat="true" Name="Intense Reference" />
-<w:LsdException Locked="false" Priority="33" SemiHidden="false"
-UnhideWhenUsed="false" QFormat="true" Name="Book Title" />
-<w:LsdException Locked="false" Priority="37" Name="Bibliography" />
-<w:LsdException Locked="false" Priority="39" QFormat="true" Name="TOC Heading" />
-</w:LatentStyles>
-</xml><![endif]-->
-   <!--[if gte mso 10]>
-<style>
-/* Style Definitions */
-table.MsoNormalTable
-{mso-style-name:"Table Normal";
-mso-tstyle-rowband-size:0;
-mso-tstyle-colband-size:0;
-mso-style-noshow:yes;
-mso-style-priority:99;
-mso-style-parent:"";
-mso-padding-alt:0in 5.4pt 0in 5.4pt;
-mso-para-margin-top:0in;
-mso-para-margin-right:0in;
-mso-para-margin-bottom:10.0pt;
-mso-para-margin-left:0in;
-line-height:115%;
-mso-pagination:widow-orphan;
-font-size:11.0pt;
-font-family:"Calibri","sans-serif";
-mso-ascii-font-family:Calibri;
-mso-ascii-theme-font:minor-latin;
-mso-hansi-font-family:Calibri;
-mso-hansi-theme-font:minor-latin;}
-</style>
-<![endif]--></p> 
-  <p class="MsoNormal">Hadoopは順調に普及しているが，企業にはまだ，Hadoopベースのアプリケーション開発を迅速かつコスト効率よく行うための適切なアプローチを見つけ出すという，直面した課題が残っている。この目標を達成する手段のひとつが<a href="http://en.wikipedia.org/wiki/Domain-specific_language">DSL(Domain Specific Language)</a>を採用することだ。これによってHadoop実装の相当な簡略化が達成できることも少なくない。</p> 
-  <p class="MsoNormal">低レベルのMapReduce API上に構築された代表的なJava DSLのひとつとして<a href="http://www.cascading.org/">Cascading</a>がある。大規模なデータワークフローを関数型プログラミングで実装するDSLとして2007年に公開されたCascadingは，&quot;配管工事&quot; のメタフォに基づいている。データ処理を馴染み深いもの – パイプ，栓，タプル列，フィルタ，継ぎ手(Join)，トラップなど –で組み上げられたワークフローとして定義するのである。</p> 
-  <p>Cascadingは今週，製品の新バージョン – Cascading 2.5 – を公開した。YARNを含むHadoop 2のサポートが提供されている。同社のプレスリリースによれば，この新リリースには次のような機能がある:</p> 
-  <blockquote> 
-   <ul> 
-    <li>YARNを含むHadoop 2の新機能サポート。Hadoop 2へのアップグレードを計画中のCascadingユーザはこれにより，アプリケーションのシームレスな移行と，YARNなど新しい高度な機能の利用が可能になる。</li> 
-    <li>複雑な表結合(Join)操作のパフォーマンス改善，動的パーティションの最適化，およびHDFSへのデータ格納の効率性向上。</li> 
-    <li>Cloudera, Hortonworks, MapR, Intel, Altiscale, Qubole, Amazon EMRなど，他のHadoopベンダやHadoop・アズ・ア・サービスのプロバイダに対する幅広い互換性の追加。その中にはCascadingユーザに対して，より豊富なデプロイメントオプションや利用可能なサービスをオンプレミス，クラウド上を問わず提供可能なものもある。</li> 
-   </ul> 
-  </blockquote> 
-  <p class="MsoNormal">これと同時にConcurrentも，<a href="http://www.infoq.com/news/2013/02/Lingual">Cascading Lingual</a>の一般提供を発表している。Hadoopベースのデータにアクセスするための包括的ANSI SQLインターフェースを提供する，オープンソースの開発プロジェクトである。このプロジェクトでは高度な業界標準OLAPツールから引用した，7,000以上のSQL-99ステートメントをカバーする。Cascadingによれば:</p> 
-  <blockquote> 
-   <p class="MsoNormal">Hadoopエコシステム内の任意のツールを対象に，幅広いSQLのカバレッジを提供します。Hadoopをシンプルで扱いやすいものにするとともに，たったひとつのSQL文を使うだけで，複数のデータストアを対象とするHadoopへのシステム統合を簡単に実現するという意味で，これは革新的なものです。</p> 
-  </blockquote> 
-  <p class="MsoNormal" style="line-height:normal"><span style="font-size:10.0pt;font-family:&quot;Cambria&quot;,&quot;serif&quot;">InfoQではCascadingの最新リリースについて，Concurrent Inc.のCTOで創設者のChris K Wensel氏と議論する機会を得た。</span></p> 
-  <p class="MsoNormal" style="line-height:normal"><b><span style="font-size:10.0pt;font-family:&quot;Cambria&quot;,&quot;serif&quot;">InfoQ: </span></b><span style="font-size:10.0pt;font-family:&quot;Cambria&quot;,&quot;serif&quot;">Cascading 2.5でYARNをサポートするというのは，正確にはどのようなことなのでしょう - MapReduceコードがYARNのリソースマネージャを使っているという事実を言っているのでしょうか，あるいはCascading独自のアプリケーションマネージャを新たに開発する上で，実際にYARNを利用しているのですか？</span></p> 
-  <p class="MsoNormal" style="line-height:normal"><b><span style="font-size:10.0pt;font-family:&quot;Cambria&quot;,&quot;serif&quot;">Wensel: </span></b><span style="font-size:10.0pt;font-family:&quot;Cambria&quot;,&quot;serif&quot;">Cascading 2.5がYARNを暗黙的にサポートしている，つまりCascading 2.5がHadoop 2をサポートしているためにYARNの機能もサポートされる，という意味です。</span><span style="font-size:10.0pt;font-family:&quot;Cambria&quot;,&quot;serif&quot;">Cascadingのアプリケーション開発で，実際にYARNを利用している訳ではありません。</span></p> 
-  <p class="MsoNormal" style="line-height:normal"><b><span style="font-size:10.0pt;font-family:&quot;Cambria&quot;,&quot;serif&quot;">InfoQ: </span></b><span style="font-size:10.0pt;font-family:&quot;Cambria&quot;,&quot;serif&quot;">Cascadingアプリケーションのパフォーマンスをさらに改善する目的で，Apache Tezを利用する予定はありますか？</span></p> 
-  <p class="MsoNormal" style="line-height:normal"><b><span style="font-size:10.0pt;font-family:&quot;Cambria&quot;,&quot;serif&quot;">Wensel: </span></b><span style="font-size:10.0pt;font-family:&quot;Cambria&quot;,&quot;serif&quot;">はい，そのつもりです。</span><span style="font-size:10.0pt;font-family:&quot;Cambria&quot;,&quot;serif&quot;">Tezの計画は私たちのロードマップにありますので，適切な時期になればアップデートを連絡する予定でいます。</span></p> 
-  <p class="MsoNormal" style="line-height:normal"><b><span style="font-size:10.0pt;font-family:&quot;Cambria&quot;,&quot;serif&quot;">InfoQ: </span></b><span style="font-size:10.0pt;font-family:&quot;Cambria&quot;,&quot;serif&quot;">複雑な表結合のパフォーマンス向上と最適化について，さらに取り組む予定はありますか？</span></p> 
-  <p class="MsoNormal" style="line-height:normal"><b><span style="font-size:10.0pt;font-family:&quot;Cambria&quot;,&quot;serif&quot;">Wensel: </span></b><span style="font-size:10.0pt;font-family:&quot;Cambria&quot;,&quot;serif&quot;">従来よりも複雑で特別な結合対応が利用できるように，APIをアップデートしました。</span><span style="font-size:10.0pt;font-family:&quot;Cambria&quot;,&quot;serif&quot;">ある特定の状況下では，この機能を活用することが可能になるでしょう。</span></p> 
-  <p class="MsoNormal" style="line-height:normal"><b><span style="font-size:10.0pt;font-family:&quot;Cambria&quot;,&quot;serif&quot;">InfoQ: </span></b><span style="font-size:10.0pt;font-family:&quot;Cambria&quot;,&quot;serif&quot;">あなたの意見として，SQLベースの処理が重視されている現状が，Hadoopで開発されたアプリケーションの範囲を限定していると思いますか？</span><span style="font-size:10.0pt;font-family:&quot;Cambria&quot;,&quot;serif&quot;">極めて大きな勢力でありながら，SQLが解決可能な問題の範囲はごく限られています。このことが企業がHadoopを活用する上で，アプリケーションの範囲を限定しているように思うのです。</span></p> 
-  <p class="MsoNormal"><b><span style="font-size:10.0pt;line-height:115%;font-family:&quot;Cambria&quot;,&quot;serif&quot;">Wensel: </span></b><span style="font-size:10.0pt;line-height:115%;font-family:&quot;Cambria&quot;,&quot;serif&quot;;color:#222222;background:white">SQLはその他99%の開発者，アナリスト，あるいはレガシシステムでHadoopの利用を可能にします。</span><span style="font-size:10.0pt;line-height:115%;font-family:&quot;Cambria&quot;,&quot;serif&quot;;color:#222222;background:white">SQLのせいで壁に当たることはあるかも知れません。ですがおよそ90%の問題は，SQLで合理的に表現することができます。Cascadingは戦い方の選択肢を提供するものなのです。</span><span style="font-size:10.0pt;line-height:115%;font-family:&quot;Cambria&quot;,&quot;serif&quot;;color:#222222;background:white">例えば，SQLならば１行でできるようなことのために，まとまったJavaコードを書きたいと思う人がいるでしょうか。</span><span style="font-size:10.0pt;line-height:115%;font-family:&quot;Cambria&quot;,&quot;serif&quot;;color:#222222;background:white">同じように，Javaで記述してテストするのがベストであることをするのに数百行のSQLを書く人もいないはずです。</span><span style="font-size:10.0pt;line-height:115%;font-family:&quot;Cambria&quot;,&quot;serif&quot;;color:#222222;background:white">Cascadingは開発者にフレキシビリティを提供するのです。</span></p> 
-  <p>&nbsp;</p> 
+  <p><a href="http://visionmobile.com">VisionMobile</a>は，<a href="http://www.appdeveloperatlas.com/">500以上のツールを掲載したインタラクティブマップ</a>を製作した。インテグレーションや開発，テスト，デプロイメント，評価，マーケティングと収益化など，エンタープライズソフトウェア開発のあらゆる面をカバーする。マップには各ツールのメリットを簡単に述べた説明文の他に，開発者が業務に適したツールを選ぶ上でのクイックガイドとなる見解が掲載されている。</p> 
+  <p>オンラインマップに加えてVisionMobileでは，各分野の最有力企業とツールを簡単に参照できるような<a href="http://www.appdeveloperatlas.com/#">図表集(atlas)</a>も製作している(Eメール登録が必要)。次に示すのはインテグレーション，開発，テストの各分野のツールである。リスト全体はここに掲載するには長すぎるので，デプロイメントと評価，マーケティングに関しては省略する。</p> 
+  <p><strong>インテグレーション</strong></p> 
+  <table cellspacing="0" cellpadding="2" width="625" border="1"> 
+   <tbody> 
+    <tr> 
+     <td valign="top" width="163"><strong>分野</strong></td> 
+     <td valign="top" width="297"><strong>ツール</strong></td> 
+     <td valign="top" width="163"><strong>企業名</strong></td> 
+    </tr> 
+    <tr> 
+     <td valign="top" width="170">APIアクセスゲートウェイ</td> 
+     <td valign="top" width="297"> <p>Citrix NetScaler Gateway<br /> IBM DataPower<br /> Intel Expressway Service Gateway<br /> Layer7 Mobile Access Gateway<br /> Oracle API Gateway<br /> SAP NetWeaver Mobile<br /> SOA Software API Gateway</p> </td> 
+     <td valign="top" width="163"> <p>Citrix<br /> IBM<br /> Intel<br /> Layer7<br /> Oracle<br /> SAP<br /> SOA Software</p> </td> 
+    </tr> 
+    <tr> 
+     <td valign="top" width="173">API管理</td> 
+     <td valign="top" width="297"> <p>3scale<br /> Apigee (API Console)<br /> Apiphany<br /> Intel Expressway API Manager<br /> Layer7<br /> Mashape<br /> SOA Software API Management<br /> WebServius<br /> WSO2 API Manager</p> </td> 
+     <td valign="top" width="163"> <p>3scale<br /> Apigee<br /> Apiphany<br /> Intel<br /> Layer7<br /> Mashape<br /> SOA Software<br /> WebServius<br /> WSO2</p> </td> 
+    </tr> 
+    <tr> 
+     <td valign="top" width="175">APIディレクトリ</td> 
+     <td valign="top" width="297"> <p>APIhub Repository of APIs<br /> APIs.io API Directory<br /> EXICON API Directory<br /> Mashape API marketplace<br /> Programmable web API Directory<br /> theRightAPI</p> </td> 
+     <td valign="top" width="163"> <p>MuleSoft<br /> APIS.io<br /> EXICON<br /> Mashape<br /> ProgrammableWeb<br /> TheRightAPI</p> </td> 
+    </tr> 
+   </tbody> 
+  </table> 
+  <p><strong>開発</strong></p> 
+  <table cellspacing="0" cellpadding="2" width="638" border="1"> 
+   <tbody> 
+    <tr> 
+     <td valign="top" width="167"><strong>分野</strong></td> 
+     <td valign="top" width="184"><strong>ツール</strong></td> 
+     <td valign="top" width="285"><strong>企業名</strong></td> 
+    </tr> 
+    <tr> 
+     <td valign="top" width="167">HTML5アーキテクチャフレームワーク</td> 
+     <td valign="top" width="184"> <p>Angular<br /> Backbone<br /> Ember<br /> Knockout<br /> Maria</p> </td> 
+     <td valign="top" width="285"> <p>Google<br /> Jeremy Ashkenas<br /> Tilde Inc.<br /> Knockout<br /> Peter Michaux</p> </td> 
+    </tr> 
+    <tr> 
+     <td valign="top" width="167">CSS UIフレームワーク</td> 
+     <td valign="top" width="184"> <p>Bootstrap<br /> Foundation<br /> Junior<br /> Topcoat</p> </td> 
+     <td valign="top" width="285"> <p>Twitter<br /> Zurb<br /> Justin Martin<br /> Adobe</p> </td> 
+    </tr> 
+    <tr> 
+     <td valign="top" width="167">JavaScript UIフレームワーク</td> 
+     <td valign="top" width="184"> <p>Dojo<br /> Enyo<br /> Jo<br /> jqTouch<br /> jQuery Mobile<br /> Kendo UI<br /> Sencha Touch<br /> The M Project<br /> Zepto</p> </td> 
+     <td valign="top" width="285"> <p>The Dojo Foundation<br /> LG Electronics<br /> Dave Balmer<br /> Sencha<br /> The jQuery Foundation<br /> Kendo UI<br /> Sencha<br /> Panacoda<br /> Thomas Fuchs</p> </td> 
+    </tr> 
+    <tr> 
+     <td valign="top" width="167">HTML5ハイブリッドツール</td> 
+     <td valign="top" width="184"> <p>AppGyver Steroids<br /> CocoonJS<br /> Icenium<br /> Intel&reg; XDK<br /> Marmalade SDK<br /> Monaca<br /> MoSync SDK<br /> PhoneGap<br /> Trigger.io</p> </td> 
+     <td valign="top" width="285"> <p>AppGyver<br /> Ludei<br /> Telerik<br /> Intel<br /> Marmalade<br /> Asial Corporation<br /> MoSync<br /> Adobe<br /> Trigger.io</p> </td> 
+    </tr> 
+    <tr> 
+     <td valign="top" width="167">ネイティブコンバータ</td> 
+     <td valign="top" width="184"> <p>Adobe AIR<br /> alcheMo<br /> Appcelerator Titanium<br /> Apportable<br /> Canappi<br /> Codename One<br /> Edgelib<br /> Firemonkey<br /> Gideros<br /> iFactr<br /> Instant Developer<br /> J2me Polish<br /> J2ObjC<br /> Kiahu<br /> Livecode<br /> Mono<br /> Monocross<br /> MoSync SDK<br /> Pixelplant<br /> Qt Project<br /> Sencha Cmd<br /> SIO2 Interactive</p> </td> 
+     <td valign="top" width="285"> <p>Adobe<br /> Innaworks<br /> Appcelerator<br /> Apportable<br /> Canappi<br /> Codename ONE<br /> Elements Interactive Mobile B.V.<br /> Embarcadero Technologies<br /> Gideros Mobile<br /> ITR Mobility<br /> Pro Gamma<br /> Enough Software<br /> Google<br /> Kiahu<br /> RunRev<br /> Xamarin<br /> Monocross<br /> MoSync<br /> Uxebu<br /> Qt Software<br /> Sencha<br /> sio2interactive.com</p> </td> 
+    </tr> 
+    <tr> 
+     <td valign="top" width="167">ネイティブJavaScript APIプラットフォーム</td> 
+     <td valign="top" width="184"> <p>Blackberry Webworks<br /> Chrome OS<br /> Firefox OS<br /> Tizen<br /> Windows 8</p> </td> 
+     <td valign="top" width="285"> <p>Blackberry<br /> Google<br /> Mozilla Corporation<br /> Tizen Assosiation<br /> Microsoft</p> </td> 
+    </tr> 
+    <tr> 
+     <td valign="top" width="167">エンタープライズ用モバイル開発プラットフォーム</td> 
+     <td valign="top" width="184"> <p>5app<br /> Antenna<br /> Appscend<br /> ClickSoftware<br /> DSI<br /> Genero<br /> IBM Worklight<br /> Kiahu<br /> KidoZen<br /> Kony<br /> MicroStrategy<br /> Mobinex Smartface<br /> MobiOne<br /> Netbiscuits<br /> Omnis studio<br /> Rhomobile<br /> Salesforce.com<br /> SAP<br /> Usablenet<br /> Verivo Software</p> </td> 
+     <td valign="top" width="285"> <p>5app<br /> Antenna Software<br /> Appscend<br /> ClickSoftware<br /> Data Systems International<br /> Four Js<br /> IBM<br /> Kiahu<br /> KidoZen<br /> Kony Solutions<br /> MicroStrategy<br /> Mobinex<br /> Genuitec<br /> Netbiscuits<br /> TigerLogic<br /> Motorola Solutions<br /> Salesforce.com<br /> SAP<br /> Usablenet<br /> Verivo Software</p> </td> 
+    </tr> 
+   </tbody> 
+  </table> 
+  <p><strong>テスト</strong></p> 
+  <table cellspacing="0" cellpadding="2" width="637" border="1"> 
+   <tbody> 
+    <tr> 
+     <td valign="top" width="166"><strong>分野</strong></td> 
+     <td valign="top" width="218"><strong>ツール</strong></td> 
+     <td valign="top" width="251"><strong>企業名</strong></td> 
+    </tr> 
+    <tr> 
+     <td valign="top" width="166">アプリケーションテスト自動化</td> 
+     <td valign="top" width="218"> <p>360 Logica<br /> Apkudo<br /> Appurify<br /> Bitbar<br /> BSQUARE<br /> Infostretch<br /> Keynote DeviceAnywhere<br /> Mobile Labs Trust<br /> Perfecto Mobile<br /> Ranorex<br /> Sauce Labs<br /> Soasta CloudTest</p> </td> 
+     <td valign="top" width="251"> <p>360logica software testing<br /> Apkudo<br /> Appurify<br /> Bitbar<br /> BSQUARE<br /> Infostretch Corporation<br /> Keynote Systems<br /> Mobile Labs<br /> Perfecto Mobile<br /> Ranorex<br /> Sauce Labs<br /> Soasta</p> </td> 
+    </tr> 
+    <tr> 
+     <td valign="top" width="166">ベータテスト</td> 
+     <td valign="top" width="218"> <p>360 Logica<br /> 99tests<br /> AppLover<br /> Centercode<br /> Elusivestars<br /> FeedbackArmy.com<br /> HockeyApp<br /> iBetaTest<br /> Launchpad App<br /> Lionbridge<br /> Mob4Hire<br /> Mobtest<br /> Passbrains<br /> Pay4bugs<br /> Soasta CloudTest<br /> Telerik<br /> Testbirds<br /> Testcovery<br /> Testflight<br /> The Beta Family<br /> UserTesting.com<br /> uTest</p> </td> 
+     <td valign="top" width="251"> <p>360logica software testing<br /> 99tests<br /> AppLover<br /> Centercode<br /> Elusive Stars<br /> Feedback Army<br /> Bit Stadium GmbH<br /> GeekSuit LLC.<br /> Launchpad App<br /> LioNBRIDGE Technology<br /> Mob4Hire<br /> Mobtest<br /> PASS Group<br /> Appartisan<br /> Soasta<br /> Telerik<br /> Testbirds<br /> Testcovery<br /> TestFlight<br /> The Beta Family<br /> UserTesting.com<br /> uTest</p> </td> 
+    </tr> 
+    <tr> 
+     <td valign="top" width="166">アプリケーション認定</td> 
+     <td valign="top" width="218"> <p>Alcatel-Lucent (ITE)<br /> Babel Media<br /> Capgemini<br /> Contus Support Interactive<br /> Hexaware Technologies<br /> Intertek<br /> Keynote DeviceAnywhere<br /> Lionbridge<br /> Mob4Hire<br /> Mobile Application Dev.<br /> Mobile Assure<br /> Mobiquest<br /> Mphasis<br /> QualityLogic<br /> Telerik<br /> Truste<br /> UniTesting China<br /> uTest<br /> XBOSoft</p> </td> 
+     <td valign="top" width="251"> <p>Alcatel-Lucent<br /> Babel Media<br /> Capgemini<br /> Mobile Apps Testing<br /> Hexaware Technologies<br /> Intertek<br /> Keynote DeviceAnywhere<br /> LioNBRIDGE Technology<br /> Mob4Hire<br /> Gateway TechnoLabs Pvt Ltd<br /> CSC<br /> Mobiquest<br /> MphasiS<br /> QualityLogic<br /> Telerik<br /> TRUSTe<br /> UniTesting Software Testing<br /> uTest<br /> XBOSof</p> </td> 
+    </tr> 
+    <tr> 
+     <td valign="top" width="166">スプリットテスト</td> 
+     <td valign="top" width="218"> <p>A/B tests by Chris Maddern<br /> Amazon A/B Testing Service<br /> Arise<br /> Artisan Optimize<br /> Clutch.io<br /> Google Analytics<br /> Leanplum<br /> Myna<br /> Optimimo<br /> Optimizely<br /> Pathmapp<br /> PickFu<br /> Switchboard<br /> Swrve<br /> Visual Website Optimizer</p> </td> 
+     <td valign="top" width="251"> <p>Chris Maddern | On Software and Stuff<br /> Amazon<br /> Arise.io<br /> Artisan Mobile<br /> Clutch.io<br /> Google<br /> Leanplum<br /> Myna<br /> Shimply Software Pvt Ltd.<br /> Optimizely<br /> Pathmapp<br /> PickFu<br /> Keepsafe<br /> Swrve<br /> Wingify</p> </td> 
+    </tr> 
+   </tbody> 
+  </table> 
+  <p>この図表集は，すべてのツールと企業の網羅を意図したものではない。</p> 
  </div> 
 </div><br><br><br><br><br><br></body></html>

@@ -1,126 +1,95 @@
-<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>What to Use on the Microsoft Stack</h3><p>Recently there has been a lot of flux in the Microsoft stack, leaving developers and leads wondering which technologies they should focus on. Microsoft's unwillingness to officially deprecate technologies such as Silverlight, instead allowing them to slowly fade away, only compounds the confusion. One way to find out is to review a little known document called the &quot;<a href="http://go.microsoft.com/?linkid=9832707">.NET Technology Guide for Business Applications</a>&quot;. Released earlier this year, the Guide offers insight into where Microsoft intends to put its efforts and what technologies should be avoided.</p>
-<p>This overview is a good place to start your exploration of Microsoft and related technologies.</p>
-<p>(Click on the image to enlarge it)</p>
-<p><a _href="resource://image1.png" href="/resource/articles/Microsoft-Stack-2013/en/resources/image1.png"><img src="http://www.infoq.com/resource/articles/Microsoft-Stack-2013/en/resources/image1small.jpg" alt="" _href="img://image1small.jpg" _p="true" /></a></p>
-<h2>Try to Leave Silverlight and Flash Soon</h2>
-<p>While even old .NET staples like WinForms and Web Forms have found a place, RIA containers such as <a href="https://en.wikipedia.org/wiki/Silverlight">Silverlight</a> and Flash are definitely out. As you can see in figure 5-15 (below), Microsoft doesn't want to wait around for Silverlight 5's planned 10 year lifecycle. They intend to squeeze out RIA containers by the end of 2015.</p>
-<p>(Click on the image to enlarge it)</p>
-<p><a _href="resource://image2.png" href="/resource/articles/Microsoft-Stack-2013/en/resources/image2.png"><img src="http://www.infoq.com/resource/articles/Microsoft-Stack-2013/en/resources/image2small.png" alt="" _href="img://image2small.png" _p="true" /></a></p>
-<p>For high-end applications, fully native technologies are preferred. On the low end, the capabilities of HTML5 are expected to continue to grow. While not pushing developers to go one way or the other, here is what they have to say about the transition:</p>
-<blockquote> 
+<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>Book Review and Interview: Real World OCaml</h3><p>The statically typed functional language <a href="http://ocaml.org/">OCaml</a> has been around for nearly two decades and has influenced languages like F#.</p>
+<p>O'Reilly has released the book <a href="https://realworldocaml.org/">&quot;Real World OCaml&quot;</a> to introduce readers to idiomatic OCaml programming as well as to the language's libraries and tools.</p>
+<p>Similar to O'Reilly's earlier <a href="http://book.realworldhaskell.org/">&quot;Real World Haskell&quot;</a>, the text of &quot;Real World OCaml&quot; can be viewed for free on the website, as well as the numerous inline comments readers and reviewers have provided.</p>
+<p>Ocaml differs from Haskell in many key ways; evaluation strategies (strict in Ocaml vs lazy in Haskell), Monad worship (see interview below), and many more.</p>
+<p>To get an idea of why Ocaml might be worth a serious look, InfoQ talked to 2 of the authors of Real World OCaml, <strong>Yaron Minsky</strong> and <strong>Anil Madhavapeddy</strong>.</p>
+<p>Note: most answers are joint answers written by both, except for those explictly marked out with their names.</p>
+<div id="lowerFullwidthVCR"></div>
+<p><b>InfoQ:</b> <strong>Who uses OCaml today and for what?</strong></p>
+<blockquote>
+ Here are some of the major industrial uses of OCaml. 
  <ul> 
-  <li>If you are transitioning to native applications, you can leverage your existing skills and even code by targeting XAML/.NET natively on any Windows device. Portable libraries will also allow you to share your binaries between different platforms, including Silverlight.</li> 
-  <li>For browser-based HTML5 apps, Microsoft provides leading tools and frameworks to help you create applications for any device based on the latest standards. Silverlight's interoperability with HTML also enables a gradual transition through hybrid applications.</li> 
+  <li>Jane Street (http://janestreet.com) is a trading firm that uses OCaml as its primary language. Jane Street trades billions of dollars a day on a platform that is almost entirely written in OCaml. Yaron is the head of technology there.</li> 
+  <li>Citrix uses OCaml for the XenServer virtual server distribution, which has been downloaded over a million times and powers datacenters such as the Rackspace Cloud. (There's a paper about this at: http://anil.recoil.org/papers/2010-icfp-xen.pdf)</li> 
+  <li>Facebook had been using OCaml to built development tools for years now. Their oldest project is Pfff, which is a set of static analysis tools for a variety of languages, including PHP, C++ and OCaml. <a href="http://github.com/facebook/pfff ">Pfff code</a>.<br /> They've also recently announced a new compiler, called Hack, for a statically typed variant of PHP. The Hack compiler is an impressive accomplishment, being a parallelized compiler that provides nearly instantaneous recompiles for Facebook's multi-million-line PHP codebase. The demo I saw showed the compiler keeping up with a large git rebase, so that the compilation was finished 20 milliseconds after the git rebase.&nbsp;</li> 
+ </ul> There's a growing list of companies that it on the 
+ <a href="http://ocaml.org/learn/companies.html">OCaml website</a>&nbsp;as well as several years of videos online at the 
+ <a href="http://cufp.org/videos">Commercial Uses of Functional Programming</a> workshop archives.
+</blockquote>
+<p>Note: InfoQ recently interviewed Facebook's <a href="http://www.infoq.com/interviews/adams-php-facebook">Keith Adams on the Hack language variant</a> among other topics.</p>
+<p><b>InfoQ:</b> <strong>What drew you to OCaml rather than some of the other functional languages which might have larger communities?</strong></p>
+<blockquote>
+ OCaml has an unusual mix of qualities that make it great for systems development. 
+ <ul> 
+  <li>It's predictable: Performance is both good and easy to reason about. Unlike Scala, it has a GC that is tuned for a functional language, meaning it performs well on allocation-heavy loads that are typical for functional code. And unlike Haskell it is strict, meaning that performance is much easier to reason about. And OCaml's simple runtime makes it easily portable to many platforms, including Javascript (<a href="http://ocsigen.org/js_of_ocaml">see js_of_ocaml</a>).</li> 
+  <li>It's simple: OCaml manages to have a powerful type system that can encode many invariants about your program that still holds together elegantly. That makes it easier to learn and easier to use on a day to day basis.</li> 
+  <li>It's stable: In the last decade OCaml has evolved in a modest and careful way, only adding features that have clear value. That provides a more stable base to engineer on top of.</li> 
  </ul> 
 </blockquote>
-<h2>Mobile</h2>
-<h3>Three Equal but Different Options for Windows 8 Store</h3>
-<p>In the past Microsoft has been reluctant to push developers onto a specific stack when it comes to Windows 8 Store apps. This policy hasn't changed; the number one criteria for choosing between .NET/XAML, C++, and JavaScript/HTML5 is simply which one the developer is most familiar with.</p>
-<p>Beyond that, they cite C++ for its performance advantages. Reusability isn't a high concern because all three platforms are capable of sharing code and resources across Windows Phone and Windows desktop.</p>
-<h3>Native Options for Windows Phone</h3>
-<p>On Windows Phone the recommended technologies are .NET and C++. Again there is a nod to C++'s performance advantage, but mostly they are saying developers should use whatever they are more familiar with.</p>
-<p>Though Windows Phone is compatible with <a href="https://en.wikipedia.org/wiki/PhoneGap">PhoneGap/Apache Cordova</a>, it isn't mentioned at all. Presumably this is because they view PhoneGap as having poorer performance than .NET or C++ on small devices. At the 2013 Build conference performance was far and away the most important topic, pushing out other considerations such as general usability, visual design, and deep OS integration.</p>
-<h3>Mobile Web: Anything but Web Forms</h3>
-<p>If choosing a web-based solution to work across all mobile devices the choices are numerous. ASP.NET MVC with <a href="https://en.wikipedia.org/wiki/Modernizr">Modernizer</a> is the base line recommendation, with the option of building a <a href="http://www.asp.net/single-page-application">Single Page Application</a> (ASP.NET SPA) where appropriate. Microsoft considers SPA to be more design pattern than technology, with <a href="http://knockoutjs.com/">Knockout</a> and <a href="http://www.breezejs.com/">Breeze</a> being highly recommended libraries.</p>
-<p>For quickly putting together <a href="https://en.wikipedia.org/wiki/Create%2C_read%2C_update_and_delete">CRUD</a> style applications <a href="https://en.wikipedia.org/wiki/LightSwitch#Visual_Studio_LightSwitch">LightSwitch</a> is on the table. This offers little control over the HTML rendering, but doesn't require the overhead of having developers build their own layouts for various screen sizes.</p>
-<p><a href="http://www.asp.net/web-pages">ASP.NET Web Pages</a> are the fourth option offered for mobile web. Based on the Razor syntax, this offers a development experience similar to scripting languages such as PHP or classic ASP.</p>
-<p>Not mentioned is the older ASP.NET rendering toolkit, Web Forms. While still in active development and theoretically capable of rendering device-specific HTML, in practice Web Forms hasn't lived up to its potential. The HTML and JavaScript it renders tends to be inefficient and <a href="http://msdn.microsoft.com/en-us/library/ms972976.aspx">view state</a>, which is integral for its more advanced features, can quickly overwhelm a phone's network connection.</p>
-<h2>Services</h2>
-<p>Since most applications rely on external data storage and processing, server-side development continues to be an important consideration. There are currently 6 technology options Microsoft considers to be viable.</p>
-<h3>First Choice: ASP.NET Web API</h3>
-<p>According to Microsoft, the default choice for new projects should be <a href="http://www.asp.net/web-api">ASP.NET Web API</a>. This can be used when developing services that follow REST patterns and is meant to be compatible with Internet caches such as &quot;Akamai, Windows Azure CDN, Level3, and so on&quot;.</p>
-<p>When using Web API developers should focus on <a href="http://www.odata.org/">OData</a>, which standardizes the way REST endpoints are exposed, and JSON.</p>
-<h3>Second Choice: WCF</h3>
-<p>Not being tied to any specific transport protocol or message format, WCF is considered to be a more flexible option than Web API. You can, for example, take advantage of TCP or named pipes with binary messages for improved performance. The downside is that WCF can difficult to work with, especially when you want to expose data in JSON or other non-SOAP based formats.</p>
-<p>WCF was designed with enterprise-facing, RPC-style communication in mind. While public-facing REST-style design patterns are possible, it isn't the preferred option for that use.</p>
-<h3>WCF with OData</h3>
-<p>If you are working on a mostly CRUD style service layer and want to use the WCF stack then <a href="http://msdn.microsoft.com/en-us/data/odata.aspx">WCF Data Services</a> is the way to go. This shares the OData libraries with ASP.NET Web API and is often used in conjunction with <a href="http://msdn.microsoft.com/en-us/data/ef.aspx">Entity Framework</a>.</p>
-<h3>Workflow Services</h3>
-<p><a href="http://msdn.microsoft.com/en-us/library/dd456788.aspx">Workflow Services</a> are a marriage of <a href="http://msdn.microsoft.com/en-us/vstudio/jj684582.aspx">Windows Workflow</a> and WCF. The only reason to use this is if your services are already using Windows Workflow internally. Microsoft cites no other reason for choosing this option.</p>
-<h3>SignalR for Two-Way Communication</h3>
-<p>If you are only using.NET based clients, WCF offers lots of options for fine tuning two-way communication. But if you want something that can support both .NET and web-based clients then <a href="http://signalr.net/">SignalR</a> is a tempting choice.</p>
-<p>According to Microsoft, SignalR can scale to &quot;even millions of users&quot;. For web clients it prefers to use <a href="https://en.wikipedia.org/wiki/WebSockets">WebSockets</a>, but can automatically fall back to older patterns like long polling if necessary.</p>
-<p>SignalR also has a <a href="http://blogs.microsoft.co.il/blogs/ranw/archive/2012/12/29/using-signalr-with-net-client.aspx">library for .NET</a> clients, allowing web and native clients to share services.</p>
-<h3>LightSwitch, Another OData Provider</h3>
-<p>It is hard to overstate how much Microsoft loves OData. We've already seen OData for both WCF and Web API, but it doesn't end there. Though normally used with LightSwitch clients, you could conceivably use LightSwitch's server side capabilities to quickly generate a service tier.</p>
-<p>Microsoft claims LightSwitch requires no coding, but warns that it comes with a loss of flexibility.</p>
-<h2>Guidance for Small and Medium Business Applications</h2>
-<p>Microsoft wrote its guidance for small and medium size businesses with these goals in mind:</p>
+<p><b>InfoQ:</b> <strong>Can you characterize OCaml for our readers - where does it fit in the space of (functional) languages, ie static/dynamic, compiled/VM, memory management, functional/OOP/hybrid/neither, purity, laziness, state management, etc.</strong></p>
 <blockquote> 
- <ul> 
-  <li>Complete velocity and shorter time to market</li> 
-  <li>Productivity and lower costs</li> 
-  <li>Easy to get started</li> 
-  <li>Collaboration and Integration with market products</li> 
-  <li>Cloud agility and cost reductions opportunities</li> 
- </ul> 
+ <p><strong>Yaron</strong>: Sure, let's play feature bingo! OCaml is a statically typed, eager, GC'd, functional language that compiles to native code, as well as providing a yet-more-portable bytecode compiler. It provides good support for pure programming, but side-effects can be used freely, and are not tracked by the type system. It has a powerful module system which provides powerful abstraction tools like functors and first-class modules. It also has an object system, but that is used quite rarely.</p> 
+ <p><strong>Anil</strong>: One of the earliest commercial uses I put OCaml to was to build the XenServer management toolstack, and we found that all three of the major programming styles had a place in the same (large) codebase. We used imperative OCaml to build the low-level functions to interface with the Xen hypervisor, purely functional code to build and test complex algorithms such as the bin-packing scheduler for VM placement, and object-oriented code for services such as logging. <br /> All of these exist within the comforting confines of the ML type system, and you can use all or just one of them as your problem dictates. OCaml is an incredibly pragmatic language that lets you write quick'n'dirty code when you need to (much like a type-safe C), and use the module system to refactor it rapidly when you need to.</p> 
 </blockquote>
-<p>Translated to plain English, this means, &quot;make it quickly and make it cheaply&quot;. Their specific guidance depends on what presentation mode you prefer.</p>
-<h3>Web Apps for Small/Medium Businesses</h3>
-<p>For quick and dirty CRUD style applications, Microsoft is continuing to push LightSwitch as the go-to platform. It was originally described as a tool for non-professional programmers to use. Many thought of it as a multi-tier replacement for Access. That vision seems to have faded as LightSwitch is now being offered more as a tool for IT departments that need to quickly push out applications.</p>
-<p>Next up is <a href="http://www.asp.net/web-forms">Web Forms</a>. Yes, the venerable Web Forms technology is still being recommended for use in new projects. Microsoft sees it as a middle ground between the easy to use but limited LightSwitch and the complexity of ASP.NET MVC. With features such as rich data grids, Web Forms are still well suited for a company's suite of internal applications.</p>
-<p>ASP.NET Web Pages are mentioned, but only briefly. If you want more control over rendering than Web Forms offers, ASP.NET MVC is the tool of choice. However, Microsoft does warn about its longer learning curve.</p>
-<h3>Building for Windows Desktop</h3>
-<p>While all the C++ based GUI toolkits such as MFC and ATL/WTL are off the list, the original .NET UI toolkit <a href="https://en.wikipedia.org/wiki/Windows_Forms">WinForms</a> is still considered a viable option along-side <a href="https://en.wikipedia.org/wiki/Windows_Presentation_Foundation">WPF</a>. Both support modern concepts such as data binding, async/await, and two-way communication using WCF or SignalR.</p>
-<p>The choice between WPF and WinForms involves several considerations:</p>
-<p>First is difficulty. WinForms is much easier to understand than WPF, even for senior developers. WinForms uses very simple data binding and prefers a classic MVC or MVP approach. WPF, on the other hand, requires the user to learn a complex data binding framework in order to correctly use the MVVP pattern. Success with WPF also requires knowledge of resource dictionaries, converters, ICommands, and XAML's templating engine.</p>
-<p>On the other hand, if you intend to also target Windows Phone or Windows 8 Store you are going to need to learn how to use XAML. In that case, starting with WPF will make it more likely you can share code across platforms.</p>
-<p>The flexible rendering engine in WPF also allows for nicer looking applications than can generally be done with WinForms. This comes at a cost; WPF applications often run slower than comparable WinForms applications.</p>
-<p>Mentioned in passing is the LightSwitch desktop client. Presumably, this can't offer anything that isn't available in the web client, so there doesn't seem to be much of a reason to choose this.</p>
-<h3>Client-Server Should be Avoided</h3>
-<p>When Microsoft says &quot;client-server&quot; they specifically mean applications that directly communicat with the database. Though they acknowledge it is still a very common pattern, they want new projects to use a 3-tier design with a service layer sitting between the client and database. This provides better scalability over direct database access and a way to bypass firewalls and other obstacles. Plus, it allows the application to be ported to platforms where database drivers simply are not available.</p>
-<h3>&quot;Modernization&quot; - Leaving the Windows Desktop</h3>
-<p>Microsoft offers a lot of advice on how to &quot;modernize&quot; desktop applications. This advice is mostly about getting the application ready to be ported to other platforms, but there is some useful guidance even if you don't plan on leaving the Windows desktop. Here is their summary:</p>
+<p><b>InfoQ:</b> <strong>Seeing that OCaml is a GC'd language: how suitable is it for low latency applications? Are there ways to keep data structures out of sight of the GC or do bulk allocation of objects (besides encoding them inside primitive arrays)?</strong></p>
 <blockquote> 
- <ul> 
-  <li>Use the Model-View-ViewModel design pattern (MVVM): Microsoft client platforms (including WPF) make it easy to build applications using the MVVM pattern. With this pattern you will get a strong separation of display from state and behavior, which will help you to create clean and maintainable code that can be easily shared between multiple devices.</li> 
-  <li>Use portable class libraries for the client logic: .NET portable libraries allow binaries to be shared between multiple platforms such as the desktop, Windows Store apps, Windows Phone apps, and others. Implementing your client logic with .NET portable libraries will greatly simplify the creation of multiple experiences on multiple platforms.</li> 
-  <li>Modernize your user experience: Concepts that are demanded by today's end users can be implemented with the latest innovations on .NET for the desktop. Design principles such as &quot;fast and fluid,&quot; &quot;authentically digital,&quot; and &quot;do more with less&quot; can be applied to your existing desktop application by employing a modern UI for your XAML design, carefully using animations, and implementing .NET asynchronous programming extensively.</li> 
-  <li>Move the business logic to the server: Two-tier applications (client/server) are significantly harder to extend to new devices. The recommended approach is to clearly separate the business logic into services that can be reused later on other devices and form factors.</li> 
-  <li>Extend to the cloud: Once separated from the client, Windows Azure provides multiple solutions to move the business logic to the cloud. Transforming that logic into cloud services greatly improves the elasticity and scalability of existing solutions, making them ready to embrace multi-device approaches.</li> 
- </ul> 
+ <p><strong>Yaron</strong>: The first thing to understand about OCaml is that allocation, in particular short-lived allocations, are much cheaper than you're used to from languages like C# and Java --- allocating a block on the minor heap requires only three instructions, and collection of those objects is very inexpensive if they don't survive to move to the major heap. So the need to allocate lots of short-lived objects is less of a concern than you'd naively imagine. <br /> That said, if you want to build very high-throughput applications that can process millions of transactions a second, you to need to avoid allocation, particularly long-lived allocations that end up on the major heap. Jane Street's Core library (which is used throughout Real World OCaml) provides tools for creating pooled objects for just this kind of use-case.</p> 
+ <p><strong>Anil</strong>: The OCaml GC is remarkably predictable, and is one of the main reasons we use it to build systems infrastructure. One such project is the Mirage operating system (openmirage.org), which is an entire &quot;library operating system&quot; written in pure OCaml, from the device drivers, to the TCP/IP stack, to the filesystem logic and applications themselves. We compile all this code into a specialized tiny kernel that runs directly on the Xen hypervisor without requiring a full OS stack. Pulling this off while keeping a high performance metric required a certain amount of precision in the fast paths, and OCaml has been fantastic to work with. The GC has been good enough to sustain gigabits of throughput on the pure OCaml TCP/IP stack. I actually built a DNS and SSH server in pure OCaml and evaluated its throughput and latencies vs BIND and OpenSSH in 2007, in this <a href="http://anil.recoil.org/papers/2007-eurosys-melange.pdf">Eurosys 2007</a> paper.</p> 
 </blockquote>
-<h3>.NET on Android and iOS</h3>
-<p>Microsoft is working with several partners to help with the modernization effort. Here is what they have to say about each:</p>
-<blockquote> 
- <ul> 
-  <li><a href="http://xamarin.com/">Xamarin</a> provides a means to share C# code from your applications targeting Windows or Windows Phone with iOS and Android devices. It provides access to the underlying API to create tailored views while reusing the client logic code between devices.</li> 
-  <li>ITR-Mobility <a href="http://ifactr.com/">iFactr</a> and <a href="http://monocross.net/">MonoCross</a> offers a solution for building enterprise mobile applications in C# for delivery on the major mobile platforms. It provides services such as Abstract UI and Enterprise Data Synchronization to enable business applications across a range of devices.</li> 
-  <li><a href="http://mobilize.net/home-0/">Mobilize.NET</a> by Art in Soft provides solutions and services for migrating legacy applications to modern platforms-including the web, mobile, and the cloud-by transforming the existing source code into new code without runtimes for the output application.</li> 
-  <li><a href="https://www.citrix.com/go/mobile-sdk-for-windows-apps.html">Citrix Mobile SDK</a> for Windows Applications provides a rich tool kit for developers to mobilize LOB Windows applications or write new touch-friendly applications executing on central servers (Citrix XenApp/XenDesktop) and accessed from any mobile device with Citrix Receiver.</li> 
- </ul> 
+<p>InfoQ's coverage of the <a href="http://www.infoq.com/news/2013/12/mirageos">Mirage OS 1.0 release</a> provides more details about the project.</p>
+<p><b>InfoQ:</b> <strong>OCaml has a GIL (global lock) which means only one OCaml thread can be active at any time. How big of an issue is this for OCaml users, or are there ways to work around that?&nbsp; Any common libs to support multi-processing with OCaml?</strong></p>
+<blockquote>
+ In OCaml, the primary approach to building parallel systems is by using message passing. Libraries like Async (covered in Real World OCaml) and Lwt that make it easy to build concurrent programs are a critical building block for making larger scale parallel programs. One advantage of using message passing is that your applications can scale to data-center scales, rather than only scaling within a single computer. 
+ <br /> There are various libraries that help you build parallel programs, from Jane Street's Async_parallel, to Lwt's Release module, to the Parmap combinator library. There are also extensions such as JoCaml that provide richer type system extensions for distributed message passing parallelism. 
 </blockquote>
-<p>Side note: The fact that Microsoft is actively promoting Xamarin and MonoCross should finally put to rest the long running rumors that Microsoft intends to sue the makers of Mono.</p>
-<h2>Guidance for Large, Mission Critical Business Applications</h2>
-<p>When it comes to larger companies and their mission critical applications the focus shifts from cost and productivity to complexity management and quality of service. These guidelines are not meant for data driven or CRUD applications, developers working on those should use the small/medium business guidelines. These guidelines are for systems with many interconnected parts and sub-systems with varying amounts of independence.</p>
-<h3>Web Applications in the Enterprise</h3>
-<p>Microsoft is unequivocal on this point, for mission critical web sites you should be using ASP.NET MVC. The only architectural question is whether or not to layer Single Page Application design patterns on top of it.</p>
-<p>Other web technologies such as Web Forms or Web Pages should not be used. They simply don't offer the control and testability of the MVC stack, which in turn limits the Quality of Service that can be obtained.</p>
-<h3>Desktop Applications in the Enterprise</h3>
-<p>As with smaller applications, Microsoft is including WPF and WinForms on its recommended list. To this they add C++ with either Win32 or <a href="https://en.wikipedia.org/wiki/Microsoft_Foundation_Class_Library">MFC</a>. The use of C++ is recommended for very large, long term projects comparable in scale to Microsoft Office. One presumes they are thinking about the difference between AutoCAD and Paint.NET in terms of scale.</p>
-<h3>Windows Store/Windows Phone in the Enterprise</h3>
-<p>Microsoft doesn't really have anything to say in this section besides stating the recommendations are &quot;similar to the recommendations available in the ‘Emerging application patterns' section&quot;. This doesn't instill much confidence but they aren't outright dismissing the platforms either.</p>
-<h2>Patterns and Practices</h2>
-<p>For roughly the last 20 pages of the Guide, Microsoft sets aside the discussion of products and turns their attention to patterns and practices.</p>
-<h3>Inversion of Control</h3>
-<p>Microsoft spends a surprising amount of time discussing dependency injection and inversion of control containers. They list nine separate Inversion of Control Containers, the majority of which are community run projects unaffiliated with Microsoft. It should be noted many of the frameworks they list are not actually IoC Containers but rather Dependency Injection frameworks.</p>
-<p>The confusion between to two continues throughout the section with no clear indication if Microsoft prefers composite roots (a DI pattern) or service locators (an IoC Container pattern), which is rather frustrating because, as Mark Seemann argues, <a href="http://www.infoq.com/articles/Succeeding-Dependency-Injection">they are essentially opposites</a>.</p>
-<p>Microsoft uses the &quot;Single Responsibility Principle&quot; to justify the use of dependency injection. They say SRP can result in classes that could, for example, have 15 dependencies listed in its constructor. In order to &quot;decouple&quot; these dependencies they suggest they be removed from the constructor and instead injected using an Inversion of Control Container.</p>
-<p>Microsoft also mentions using <a href="https://en.wikipedia.org/wiki/Aspect-oriented_programming">Aspect Orientated Programming</a> to add another layer of <a name="_GoBack"></a>indirection and to further inject dependencies.</p>
-<h3>Bounded Context and Complexity Management</h3>
-<p>In order to control complexity, Microsoft spends a few pages discussing the concept of a &quot;bounded context&quot;. Based on the work by Eric Evans, the basic idea is to silo your applications into smaller parts with limited sharing. In the example below, there are four separate stacks with different back ends and a common UI.</p>
-<p>(Click on the image to enlarge it)</p>
-<p><a _href="resource://image3.png" href="/resource/articles/Microsoft-Stack-2013/en/resources/image3.png"><img src="http://www.infoq.com/resource/articles/Microsoft-Stack-2013/en/resources/image3small.png" alt="" _href="img://image3small.png" _p="true" /></a></p>
-<p>Their recommendations in this area make a lot of sense. For bounded contexts you identify as mission critical you can use the more expensive Command and Query Responsibility Separation (CQRS) or Domain Driven Design (DDD) patterns with fully automated tests. Meanwhile ancillary bounded contexts can use a lightweight, CRUD style architecture. Legacy code will of course get its own silo where it can be isolated and slowly replaced.</p>
-<h3>Communication and Anti-Corruption</h3>
-<p>For sharing information between bounded contexts Microsoft recommends using asynchronous messaging wherever possible. This allows each silo to work independently even when other silos fail. For simple scenarios, named pipes and Microsoft Message Queues are easy options, while more complex systems need a service bus. Microsoft mentions Windows Server Service Bus, Windows Azure Service Bus, and NServiceBus without preferring one to another.</p>
-<p>Any services exposed by a bounded context should be protected by an anti-corruption layer. Much like the parameter checks protecting public functions, a bounded context's anti-corruption layer protects the underlying data store from malformed messages. This layer verifies the incoming message, performs any necessary translations, and ensures bad data is processed and stored. This can be done using normal .NET code, but for complex scenarios with lots of frequently changed business rules, Microsoft recommends a rules engine and integration platform such as BizTalk.</p>
-<h3>Mitigating Legacy Code</h3>
-<p>The first step in dealing with legacy code is to create a facade over it. This facade should use modern techniques such as persistent, scalable caches and hide whatever patterns the old code used. Over time, the legacy code will be swapped out and the facades redirected to new service layers.</p>
-<h2>Conclusions</h2>
-<p>Microsoft is standing behind all native, web, and communication frameworks for .NET except Silverlight in the browser and .NET Remoting. They are also recommending C++ and JavaScript in several scenarios. Older platforms such as VB 6 and classic ASP are no longer being mentioned so companies still using need to migrate to newer technologies as soon as possible.</p>
-<p>Expect to see a continued emphasis on dependency injection, especially with ASP.NET MVC and Entity Framework. BizTalk, once thought to be a dead technology, is seeing new life as companies try to integrate on-site and cloud architectures.</p>
-<h2>About the Author</h2>
-<p><b><img align="left" src="http://www.infoq.com/resource/articles/Microsoft-Stack-2013/en/resources/jonathan-allen.jpg" alt="" _href="img://jonathan-allen.jpg" _p="true" />Jonathan Allen</b> has been writing news report for InfoQ since 2006 and is currently the lead editor for the .NET queue. If you are interested in writing news or educational articles for InfoQ please contact him at jonathan@infoq.com.</p>
-<p>&nbsp;</p>
-<p>&nbsp;</p><br><br><br><br><br><br></body></html>
+<p><b>InfoQ:</b>&nbsp; <strong>Are there unique features of OCaml that make it stand out?</strong></p>
+<blockquote>
+ The most distinctive aspect of OCaml is its static type system. If you're used to languages like Java, you'll be surprised at how effective it is at catching bugs at the earliest stage of development. At the same time, the type system is very lightweight, with code that performs like a compiled language but is as terse as a scripting language like Python or Ruby. 
+ <br /> OCaml's `match` statement is a particularly effective tool, providing a form of data-structure-driven case analyses, where the compiler provides compile-time guarantees that you haven't missed any cases (see 
+ <a href="https://realworldocaml.org/v1/en/html/a-guided-tour.html#tuples-lists-options-and-pattern-matching">here</a>). It's also highly efficient and concise (see 
+ <a href="https://realworldocaml.org/v1/en/html/the-compiler-backend-byte-code-and-native-code.html#pattern-matching-optimization">here</a>). 
+</blockquote>
+<p><b>InfoQ:</b> <strong>Many developers prefer JVM based languages because they get access to lots of libraries. What's the OCaml ecosystem like?</strong></p>
+<blockquote>
+ The OCaml ecosystem has made huge steps forward in the last 2-3 years. The biggest improvement is the arrival of OPAM, a sophisticated package manager for OCaml that lets you install packages with complex dependencies with a minimum of fuss. OPAM also lets you try out variants of the compiler very easily, making it easier for the compiler devs to get feedback on their work. 
+ <br /> Of course, Java's ecosystem is way larger than OCaml's, and there's no denying the value of that. But OCaml's tools and libraries are very good and improving rapidly, and they're built for the modern distributed workflow that many of us are now familiar with due to GitHub and Bitbucket. 
+</blockquote>
+<p><strong>InfoQ: How often does the word &quot;monad&quot; occur in the book? Are monads a popular topic in the OCaml space or does the OCaml community have different solutions for the problems monads in Haskell solve, ie like the F# community? Bonus question: what's your favorite monad?</strong></p>
+<blockquote>
+ Monads are important in OCaml, but it's different from a language like Haskell where all imperative programming must be done with a monad. In Haskell, any program that interacts with the outside world (i.e., any useful program) needs to use monads. Because monads aren't needed for imperative programming, monads tend to be more of an advanced topic in OCaml. That said, they're very useful. 
+ <br /> 
+ <br /> My favorite monad is no doubt Async, a library for concurrent programming where a monad is used to represent a computation that may block for a non-deterministic period of time. We use the Async monad to build an HTTP client for the DuckDuckGo search engine in Real World OCaml, including error handling. 
+</blockquote>
+<p><b>InfoQ:</b> <strong>There's an OCaml to Javascript compiler - how complete or useful is it?</strong></p>
+<blockquote>
+ js_of_ocaml is a fantastic tool for generating Javascript from OCaml code. It's good enough that you can compile the OCaml compiler itself into javascript in the form of an interactive toplevel, which you can find at 
+</blockquote>
+<p><b>InfoQ:</b>&nbsp;<strong>On the topic of meta programming: in the book you mention syntax extensions - are they like macros or compiler plugins in other languages? What's the code representation they work with?</strong></p>
+<blockquote>
+ OCaml's meta-programming story is one of the more unique aspects of the language, and is currently under active development. For many years now, we've had `camlp4`, which is a very powerful tool that can be used to arbitrarily change the surface syntax of the language. It operates as a distinct front-end for the compiler, converting source code into OCaml ASTs for the rest of the toolchain to consume. Camlp4 permits dynamically loadable extensions to the language grammar, which can range from adding keywords to entirely new domain-specific languages being embedded into OCaml source code. `camlp4` has been a huge success, leading to a wide variety of important syntax extensions. 
+ <br /> 
+ <br /> The most widely used ones are those that auto-generate functionality for new types, like sexplib, which for generates converters to and from s-expressions, or pa_compare, which generates efficient type-specific comparison functions. The 
+ <a href="https://github.com/mirage/ocaml-cow">COW</a> (Caml on the Web) syntax extension&nbsp;permits XML, HTML, CSS and JSON to be written directly inside OCaml code. 
+ <br /> 
+ <br /> The next version of OCaml (4.02) has also added &quot;extension points&quot; to the core language to make it easier to integrate this functionality with external IDE tools. Extension points develop a single syntax that can accommodate the vast majority of existing extensions. Once this is done, syntax extensions can be implemented as simple AST to AST transformers, with no special parser or AST required. This resulting code will allow for better IDE-like tooling from projects such as Merlin, which had rapidly become the magic IDE tool of choice for many OCaml developers. It adds name completion, Visual Studio-style &quot;intellisense&quot;, build integration and many other features into Vim and Emacs, with support for other IDEs under developent. 
+</blockquote>
+<p><b>InfoQ:</b> <strong>Where does the OCaml community hang out, are there common sites or resources that everyone OCaml newbie must know about?</strong></p>
+<blockquote>
+ A good place to get your bearings on the OCaml community is 
+ <a href="http://ocaml.org/community/">the OCaml.org website</a>. The 
+ <a href="http://ocaml.org/community/">OCaml mailing lists</a> list a number of e-mail groups, with the main list being the oldest and best forum for the language. If you're just starting out, you might prefer the 
+ <a href="http://groups.yahoo.com/neo/groups/ocaml_beginners/info">beginners list</a>. 
+ <br /> 
+ <br /> There are also events where you can meet other OCaml folk in the flesh, including the yearly 
+ <a href="http://ocaml.org/meetings/ocaml/2013/">OCaml Users and Developers Workshop</a>, the periodic OCaml 
+ <a href="http://www.meetup.com/Cambridge-NonDysFunctional-Programmers/events/138406202/">hacking sessions at OCaml Labs in Cambridge</a>, The OCaml Meetups in 
+ <a href="http://www.meetup.com/ocaml-paris/">Paris</a> and 
+ <a href="http://www.meetup.com/NYC-OCaml/">New York</a> as well as the 
+ <a href="http://ocaml.org/meetings/">many other meetings</a>. 
+ <br /> 
+ <br /> There's also an OCaml Planet blog aggregator that is useful to follow if you want to track what many OCaml developers are working on. The IRC channel on FreeNode is also rather popular, and popping in there for quick questions often gets a good response. 
+</blockquote>
+<p><a href="https://realworldocaml.org/v1/en/html/index.html">&quot;Real World OCaml&quot;</a> is available in <a href="http://shop.oreilly.com/product/0636920024743.do">print and ebook form</a> from O˝Reilly, as well as online at the book's site.&nbsp;</p>
+<h2>About the Book Authors</h2>
+<p><strong><img src="http://www.infoq.com/resource/articles/real-world-ocaml-interview/en/resources/anil-madhavapeddy-portrait.jpg" vspace="3" hspace="3" align="left" alt="" _href="img://anil-madhavapeddy-portrait.jpg" _p="true" />Anil Madhavapeddy </strong>is&nbsp;a Senior Research Fellow at the University of Cambridge, based in the Systems Research Group. He was on the original team that developed the Xen hypervisor, and helped develop an industry-leading cloud management toolstack written entirely in OCaml. Prior to obtaining his PhD in 2006 from the University of Cambridge, Anil had a diverse background in industry at Network Appliance, NASA and Internet Vision. In addition to professional and academic activities, he is an active member of the open-source development community with the OpenBSD operating system, is co-chair of the Commercial Uses of Functional Programming workshop, and an author of the O'Reilly Real World OCaml book.</p>
+<p><strong><img src="http://www.infoq.com/resource/articles/real-world-ocaml-interview/en/resources/yaron-minsky-portrait.jpg" vspace="3" hspace="3" align="left" alt="" _href="img://yaron-minsky-portrait.jpg" _p="true" />Yaron Minsky</strong>&nbsp;obtained his PhD in Computer Science from Cornell University in 2002 focusing on distributed systems. In 2003, he joined Jane Street where he founded the quantitative research and technology group there.</p><br><br><br><br><br><br></body></html>

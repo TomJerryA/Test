@@ -1,40 +1,31 @@
-<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>スクラムを使ってFloraHollandのビジネスを変える</h3><p><a target="_blank" href="http://www.infoq.com/news/2013/11/business-scrum-floraholland"><em>原文(投稿日：2013/11/28)へのリンク</em></a></p>
+<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>PowerShellのDesired State Configuration，プッシュモードとプルモードをサポート</h3><p><a target="_blank" href="http://www.infoq.com/news/2013/12/powershell-dsc-push-and-pull"><em>原文(投稿日：2013/12/16)へのリンク</em></a></p>
 <div class="article_page_left news_container text_content_container"> 
  <div class="text_info"> 
-  <p>FloraHollandは世界最大の花市場だ。彼らは日々の業務と平行してビジネスユニットの変革を実現したいと考えていた。そして、スクラムを使ってビジネスの変更を管理しようと決めた。</p> 
-  <p>XP Days Benelux 2013カンファレンスで、FloraHollandのLinda Dorlandt氏とMirna den Blanken氏がスクラムとアジャイルの要素を使って複数のビジネスユニットを変えたかについてプレゼンをした。彼らはロッテルダムのエラスムス大学で教授をつとめるArnold B. Bakker氏が提唱している<a href="http://www.arnoldbakker.com/jdrmodel.php">Job Demands-Resources model</a>を使った。このモデルでは、従業員の幸福の源泉を2つのカテゴリに分類する。ジョブデマンドとジョブリソースだ。</p> 
-  <blockquote> 
-   <p>大規模な調査によれば、ふたつの同時に動くプロセスが存在します。ジョブデマンドが大きければ従業員の精神的肉体的リソースは使い果たされてしまいまい、エネルギーが枯渇し、健康にも支障をきたします。これは健康を損なうプロセスです。反対に、ジョブリソースは従業員のエンゲージメントを増やし、役割を超えたパフォーマンスを発揮します。これは動機付けを伴ったプロセスです。</p> 
-  </blockquote> 
-  <p>彼らはこのモデルをスクラムを使って拡張した。</p> 
-  <p><img src="http://www.infoq.com/resource/news/2013/12/business-scrum-floraholland/ja/resources/Scrum JDR-model FloraHolland.jpg" alt="" _href="img://Scrum JDR-model FloraHolland.jpg" _p="true" /></p> 
-  <p>この組み合わせによって、従業員のエンゲージメントとジョブリソースの関連を探ることができた。まず、ジョブデマンドとジョブリソースの内実を探り、次に、スクラムのどの要素が従業員の仕事に役に立つかを調査した。このモデルによって、スクラムと組織の成果の関係が視覚的にわかるようになり、ビジネスユニットがストレスとなるような動きに対してうまく対処できるようになった。</p> 
-  <p>InfoQはFloraHollandのLinda Dorlandt氏とMirna den Blanken氏にスクラムを使ってビジネスの変更を管理したことについて話を聞いた。</p> 
-  <p><strong>InfoQ: あなたのセッションはスクラムをビジネス部門の人たちがスクラムを使って働き方を変えたという話でした。彼らがどのようにしたのか、ITはどの程度重要だったのか教えてください。</strong></p> 
-  <blockquote> 
-   <p><b>FloraHolland: </b>&quot;日常のビジネスにスクラムを使った&quot;部門はMarket&amp;Information部門、Facilities, Infrastructure&amp;Real Estate部門、Retail Services部門の3つでした。</p> 
-   <p>今、顧客は何を求めているでしょうか。そしてもっと重要なのは、明日の顧客は何を求めるでしょう。市場から収益を得ようと思ったら、このことを肝に銘じなければなりません。そうすることによってのみ、商品を買う顧客の希望を予測することができるのです。FloraHollandはこのことをよく知っており、ここで紹介できることをうれしく思います。Market&amp;Information部門は標準ソフトウェアと統計解析ソフトウエアを使っているので、市場を見据え、カスタムレポートを作成し、顧客を予測します。</p> 
-   <p>Facilities, Infrastructure&amp;Real Estate部門は、FloraHollandの市場で独自の店を持ちたいと考えている企業向けのサービスを提供します。例えば、郵便、複写、クリーニング、セキュリティ、消防、構内物流の整備や修理です。この部門が使っているITシステムはほかとは全くことなります。管理ソフトウエアや、金融、プロジェクト管理ソフトウエア、CADやCAM、セキュリティシステム、ドッキングサービスのプランニングシステムです。</p> 
-   <p>Retail Services部門はパートナーと協力して大規模な小売店向けのトータルコンセプトを開発することで市場の要請に答えます。最も注力しているのは、ヨーロッパの小売店のカテゴリ管理に基づいて棚の開発し利益の改善することです。また、この部門はチェーンとのパートナーシップを支援し、市場を広げ、すべてのチェーンパートナー、すなわち、小売業、花栽培業、買い手のためにバリューチェーンを最適化します。この部門もほかとは違うITシステムを使っています。ほとんどが顧客向けの便利なビジネスコンセプトを作成するためのデザインプログラムです。.</p> 
-  </blockquote> 
-  <p><strong>InfoQ: スクラムは元々、ソフトウエア開発チームをサポートするためのものです。スクラムをビジネス部門に適用しようと考えたのはなぜですか。</strong></p> 
-  <blockquote> 
-   <p><b>FloraHolland: </b>改善を小さく、わかりやすく、柔軟に、そして、喜ぶに値するかたちで行うことは難しいです。FloraHollandにとって(そして多くの組織にとって)一番難しいのは、市場の変化に柔軟に対応することです。新しい商品を長い期間をかけて開発するのは無理です。FloraHollandが注力しているのは、より特化した組織にカスタム化したサービス提供することです。</p> 
-  </blockquote> 
-  <p><strong>InfoQ: 変化を管理するのはソフトウエア開発とどのように違いますか。この違いに対処するためにスクラムを使いましたか。</strong></p> 
-  <blockquote> 
-   <p><b>FloraHolland: </b>ソフトウエア開発とはそれほど違いません。スクラムボード上の付箋に書かれていることは違います。例えば、“ジョブディスクリプション”、“栽培業者とともにモスクワへ視察に行く”、&quot;新しい部門マネージャに対するトレーニング&quot;、&quot;コストアカウンティング&quot;、&quot;&quot;新しい部門のキックオフ&quot;などです。私たちはすべてのスクラムの要素を使っています。ソフトウエア開発との最大の違いは、スクラムの活動が行われる場所と時間です。日常のビジネスと重要な活動を分離し、チームで話し合いを行うことが重要です。スクラムボード/バックログに書かれる内容と日常のビジネスで行われることを分離します。スクラムで実施する改善のために時間を確保し、外から見てもわかるようにします。例えば、すべてのチームはスクラムを使った改善を同じ曜日に実施し、それ以外の曜日はいつもと同じ日常業務をするようにします。</p> 
-  </blockquote> 
-  <p><strong>InfoQ: スクラムを使って3つの別場所にあったビジネス部門をひとつのビジネス部門に統合しました。スクラムはどのように役に立ちましたか。</strong></p> 
-  <blockquote> 
-   <p><b>FloraHolland: </b>ほかのスクラムチームが得ているのと似たような効果を得られました。スプリントのゴール、オーナーシップ、組織の責任、柔軟さを保ちながら組織的変化の構造化すること、必要なときに素早くオーナーが決断すること、周囲を巻き込むこと、スプリントの改善、優先順位などです。</p> 
-   <p>同じ日に同じ場所ですべてのチームとともに働くことで、短い時間で本当の違いを生み出すことが可能になりました。3つの短いスタンドアップミーティングが優れた結果を素早く出すことに貢献する場合もあります。大きなプロジェクトの計画は必要ありません。優れたユーザストーリーと、オーナーからの説明が少しあればいいのです。</p> 
-  </blockquote> 
-  <p><strong>InfoQ: 小さな成果でも大きな成果でもたたえることについても話していましたね。いくつか例を挙げて説明してくださいますか。</strong></p> 
-  <blockquote> 
-   <p><b>FloraHolland: </b>設備管理部門にとっての最初の大きな成果は50人で作成したビジョンでした。彼らはこれを新聞で広めました。最初のページにこのプロセスに関係しているすべての人の写真が掲載されていました。たたえ方の大きさはさまざまです。例えば、チームをほめる、チームの成果を公表する、あるいは、ケーキでお祝いをする、というようなことです。このプロセスで一番特別なのは、オーナー(設備管理部門のマネージャ)の役割です。マネージャはチームの功績を認め、チームに成果を公表させます。常に大規模に祝う必要はありません。チームの成果を認め、組織にその成果を知らしめることもたたえることなのです。</p> 
-   <p>最初のスプリントの終わりには、Market&amp;Information部門のチームのお祝いをしました。彼らは自分たちの成果を紹介できたことでとても喜んでいました。そして、もっと重要なのは、利害関係者にとっても成果がわかることです。チームのメンバを見えるようにして、成果を認め報賞を与えるのは重要なことです。特定のゴールにたどり着いたとき、その瞬間をケーキで祝ったり、顧客と一緒にランチを食べて祝うこともできるでしょう。</p> 
-  </blockquote> 
-  <p>InfoQはXP Days Beneluxカンファレンスの模様を紹介している。以前の記事で、このカンファレンスのホストに<a href="http://www.infoq.com/news/2013/11/agile-adoption-europe-xpdays">アジャイル導入の技術的実践、システム思考、文化の問題</a>について話している。</p> 
+  <p><a href="http://blogs.msdn.com/b/powershell/">Windows PowerShell Blog</a>に現在，PowerShellのDSC(Desired State Configuration)に関する記事が掲載されている。DSCはWindowsでコンピュータの構成管理を行うための，Microsoftからの提案だ。最新の記事のひとつではプッシュとプルという，DSCで選択可能な２つのコンフィギュレーションモードについて<a href="http://blogs.msdn.com/b/powershell/archive/2013/11/26/push-and-pull-configuration-modes.aspx">説明されている</a>。</p> 
+  <p>DSCは指定されたノードあるいはマシンに必要な構成を宣言的に指定する，PowerShellツールの追加機能である。これはPowerShellが元々備えている，命令型のスタイルとは異なったアプローチだ。マシン設定のために実行するステップに注目するのではなく，DSCを利用したスクリプトでは，必要な設定をただ単に記述すればよい。それを実施する方法は，PowerShell DSCシステムが決定してくれるのだ。</p> 
+  <p>PowerShell DSCはリソースという概念を持っている。リソースはユーザやグループ，サーバロール，レジストリエンティティといった項目を設定するブロックを構成するものだ。<a href="http://technet.microsoft.com/en-us/library/dn249921.aspx">組み込み</a>でいくつかのリソースが用意されている他に，<a href="http://technet.microsoft.com/en-us/library/dn249927.aspx">独自の</a>リソースを<a href="http://blogs.msdn.com/b/PowerShell/archive/2013/11/19/resource-designer-tool-a-walkthrough-writing-a-dsc-resource.aspx">作成</a>することもできる。以下の例では<a href="http://technet.microsoft.com/en-us/library/dn282129.aspx">File</a>リソースを使用して，<code>localhost</code>の<code>C:＼inetpub＼wwwroot</code>の内容が<code>C:＼SiteFiles</code>の正確なレプリカであることを定義している。</p> 
+  <pre>
+Configuration SiteConfig
+{
+   # A Configuration block can have zero or more Node blocks
+   Node &quot;localhost&quot;
+   {
+      # File is a built-in resource you can use to manage files and directories
+      # This example ensures files from the source directory are present in the destination directory
+      File MyFileExample
+      {
+         Ensure = &quot;Present&quot;  # You can also set Ensure to &quot;Absent&quot;
+         Type = &quot;Directory“ # Default is “File”
+         Recurse = $true
+         SourcePath = &quot;C:＼SiteFiles&quot; # This is a path that has web files
+         DestinationPath = &quot;C:＼inetpub＼wwwroot&quot; # The path where we want to ensure the web files are present
+      }
+   }
+}</pre> 
+  <p>コンフィギュレーションの適用に関して，PowerShellにはプッシュとプルという２つのモードが用意されている。プッシュモードは，<code>Start-DscConfiguration</code> cmdletを実行することで即時に起動される。例えば下記のコマンドでは，カレントパスにあるコンフィギュレーションが，スクリプトで指定されたすべてのノードに対して適用される。</p> 
+  <pre>
+Start-DscConfiguration -Wait -Verbose -Path .</pre> 
+  <p>プルモードでは，イニシアティブが与えられるのはノード自身だ。プルサーバを監視して，新しいコンフィギュレーションをチェックするのはノードの責任になる。新しいコンフィギュレーションが用意されると，LCM(Local Configuration Manager) - PowerShell DSCのエンジン - がダウンロードと適用を行う。プルモードの設定は少し複雑だ。プルサーバとなるWebサイトの設定や，各ターゲットノードのLCMを，<a href="http://technet.microsoft.com/en-us/library/dn521621.aspx"><code>DscLocalConfigurationManager</code></a>を使って<a href="http://blogs.msdn.com/b/powershell/archive/2013/11/26/push-and-pull-configuration-modes.aspx">設定</a>する必要がある。Windows PowerShellチームでも，プルサーバの設定を簡単にするための<a href="http://blogs.msdn.com/b/powershell/archive/2013/11/21/powershell-dsc-resource-for-configuring-pull-server-environment.aspx">記事</a>とヘルパツールを公開している。</p> 
+  <p>ほとんどのツールが両方のモードをサポートするが，<a href="http://www.ansibleworks.com/">Ansible</a>など<a href="http://www.ansibleworks.com/wp-content/uploads/2013/05/AnsibleAgentless.pdf">プッシュ用</a>のものや，<a href="http://puppetlabs.com/">Puppet</a>や<a href="http://www.getchef.com/">Chef</a>のように<a href="http://docs.opscode.com/chef_overview_server.html">プル用</a>のものもある。どちらのモードにも賛成と反対，さまざまな議論がある。プッシュモードはシンプルで，制御性に優れる。ターゲットノード上に特別なソフトウェアをインストールする必要がない上に，コンフィギュレーションがユーザの要求に従って起動するからだ。一方のプルモードはスケーラビリティに優れ，メタデータ機能が豊富だ。ターゲットノードは自分自身で，非同期的に設定を実行する。またプルサーバには，各ノードの状態に対応するメタデータを集中的に配置することができる。</p> 
  </div> 
 </div><br><br><br><br><br><br></body></html>

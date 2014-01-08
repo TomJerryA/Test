@@ -2,7 +2,10 @@
  <head></head> 
  <body>
   <div>
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/44.java">Appcelerator Announces Insights for Tracking Mobile Apps Lifecycle</a>Appcelerator, maker of the Titanium Mobile Development Environment, has recently announced Appcelerator Insights as part of its Appcelerator Analytics product.Insights promises to deliver real-time aggregated analytics aiming at measuring higher-level metrics like user acquisition and retention, engagement, and app performance.
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/45.java">Intel Pushes Mobile Cross Platform Development with its HTML5 XDK</a>In December 2013, Intel announced its plans to push its latest Intel XDK NEW to the mainstream by making it the official Intel XDK version and inviting all developers to migrate from the previous one by the end of February 2014. Let's look at what Intel XDK is and what is new in its latest release.
+  </div> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/44.java">Appcelerator Announces Insights for Tracking Mobile Apps Lifecycle</a>Appcelerator, maker of the Titanium Mobile Development Environment, has recently announced Appcelerator Insights as part of its Appcelerator Analytics product.Insights promises to deliver real-time aggregated analytics aiming at measuring higher-level metrics like user acquisition and retention, engagement, and app performance. 
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/43.java">Klaus Olsen Elaborates on Bug Hunting</a>InfoQ spoke with Klaus Olsen to get further details about the bug hunting technique, how it came about and why it is worth using. 
@@ -147,9 +150,6 @@
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/47.java">Visual Commander Brings Back Visual Studio Macros</a>Vlasov Studio has released an extension for VS 2010 and later that restores the ability to create and run macros in both VB and C#. 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/46.java">TypedMVVM Uses TypeScript to Build Windows Store Apps with WinJS</a>TypedMVVM is a collection of samples and libraries developed by Davide Zordan which enables enable developers to build Windows Store apps using WinJS, TypeScript and MVVM. 
   </div>  
  </body>
 </html>

@@ -1,17 +1,22 @@
-<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>行为驱动开发工具Jasmine 2.0发布</h3><p><a href="https://github.com/pivotal/jasmine">Jasmine</a>是一个针对<a href="http://en.wikipedia.org/wiki/JavaScript">JavaScript</a>的<a href="http://en.wikipedia.org/wiki/Behavior-driven_development">行为驱动开发</a>的测试框架，该框架的最新版本改进了对<a href="http://nodejs.org/">Node.js</a>的支持，同时还做了一些提升内部质量的工作。最近发布的2.0版本包含以下变化：</p>
-<ul> 
- <li>增强了对Node.js的支持，在新版本中所有的Node测试成为了Jasmine<a href="http://en.wikipedia.org/wiki/Continuous_integration">持续集成</a>测试的一部分。集成测试还包括针对许多Web浏览器的测试，例如：Firefox、Chrome、Safari和Internet Explorer。</li> 
- <li>新版本放弃了对Ruby的依赖，取而代之的是Node.js和<a href="http://gruntjs.com/">Grunt.js</a>。这样减少了代码量，同时还针对社区做了很多简化以便于在添加贡献代码之前验证其功能。</li> 
- <li>通过使用Jasmine测试它自身的代码提高了Jasmine的质量。</li> 
-</ul>
-<p>有一些变化破坏了它与之前版本的向后兼容性，此类变化包括：</p>
-<ul> 
- <li>异步测试的语法发生了变化，现在可以提供一个回调函数。</li> 
- <li>针对报道员的接口已经被取代；这导致回调的使用方式发生了变化，同时也降低了自定义实现和Jasmine之间的耦合性。</li> 
- <li>用于相等性检查的代码已经被替换，这可能会引发不同的行为。</li> 
-</ul>
-<p>除了这些变化之外，新版本还修复了一些问题和bug。但是最大的一组变化来自于<a href="https://github.com/pivotal/jasmine/blob/master/release_notes/20.md#massive-refactoring-and-better-testing">重构</a>，这几乎牵涉到了代码库中的所有对象，新版本使用了一种更加一致的编码风格，目的是为了提升测试、简化核心团队的开发工作，同时能够让社区更加容易地扩展Jasmine。</p>
-<p>团队还更新了<a href="http://jasmine.github.io/2.0/introduction.html">Jasmine的介绍</a>，强调了2.0的变化。</p>
-<p>Jasmine是一个针对JavaScript代码的行为驱动开发的测试框架，它不依赖于任何其他的JavaScript框架或者<a href="http://en.wikipedia.org/wiki/Document_Object_Model">文档对象模型</a>（DOM）。 <br /> 有一个对Jasmine用户可用的<a href="https://groups.google.com/forum/#!forum/jasmine-js">邮件列表</a>，该列表有超过800位成员，到目前为止有近600个主题。在今年的早些时候还<a href="http://shop.oreilly.com/product/0636920028277.do">出版</a>了一本使用Jasmine进行JavaScript测试的书。</p>
-<p>Jasmine是由<a href="http://pivotallabs.com/author/dwfrank/">Davis W.Frank</a>创建的，现在由3位开发人员<a href="https://github.com/pivotal/jasmine#maintainers">维护</a>，它是一个开源产品，基于的协议是MIT许可。</p>
-<p><b>查看英文原文</b>：<a href="http://www.infoq.com/news/2013/12/bdd-jasmine-2-released">Behaviour-Driven Development Tool Jasmine 2.0 Released</a></p><br><br><br><br><br><br></body></html>
+<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>Design Hackathon：豌豆荚的产品创新方式</h3><p>1月3号下午，InfoQ在豌豆荚的办公室参与了一场长达三个小时的Design Hackathon活动，活动的主题是所有现场的人员在豌豆荚产品设计副总裁刘亚平的指导下尝试使用这种方式找到“如何更好地帮助用户发现和获取内容”的解决方案。</p>
+<p>InfoQ在2013年与刘亚平交流时，第一次听到Design Hackathon的话题，当时豌豆荚正在将之运用在新版Windows引导界面设计上，目前Design Hackathon在内部的产品设计中已经被广泛的推广开来，包括2013年发布的豌豆荚视频搜索等都有Design Hackathon的影子。 对于什么是Design Hackathon，刘亚平介绍到：</p>
+<blockquote> 
+ <p>Hackathon，即「黑客马拉松」，是一个流传于程序员和技术爱好者中的活动。在该活动当中，大家相聚在一起，以合作的形式去编程，整个编程的过程几乎没有任何限制或方向。Design Hackathon 类似用「黑客马拉松」的思维做产品设计，它将所有的产品设计师、视觉设计师甚至工程师聚在一起，在一定的时间内，以头脑风暴的方式，最大范围地搜集产品的各种可能性，然后抽象地整理出这些想法背后所隐藏的核心概念和产品需求，快速梳理出正确的产品设计方向，之后将想法转化成可视的手稿和线框图，最终变成产品雏形。</p> 
+</blockquote>
+<p>刘亚平认为，设计是创造性地解决问题的过程，而Design Hackathon在这个过程中具有如下的三个优势：</p>
+<ol> 
+ <li>快速发现海量的可能性</li> 
+ <li>确定方向并拥有落地的细节</li> 
+ <li>激发不同角色团队成员的创意</li> 
+</ol>
+<p>在实施上，Design Hackathon也十分简单，你只需要遵从如下的步骤：</p>
+<ol> 
+ <li>准备阶段：马克笔、铅笔、A3白纸和记事贴</li> 
+ <li>解决问题的方式：在这个阶段确定需要解决的问题是什么，建议采用：How might we...的句式描述问题</li> 
+ <li>头脑风暴：写下自己想到的解决方案，进过N次迭代获得多个想法，在这个过程中不对别人的想法作评价、不太过于抽象答案</li> 
+ <li>卡片分类：将搜集到的想法分成5~7类</li> 
+ <li>方案设计：通过绘图的方式设计出草图，并进行点评；</li> 
+</ol>
+<p>不过刘亚平强调，在Hackathon之后得到的点子还需要接下来由工程师对于实现的细节和难度做评估，通过之后才会进入真正的立项实施环节。</p>
+<p>通过Design Hackathon设计的视频搜索目前已经有超过1000万用户在使用，累计追剧300万部，为了更好的实现“给任何用户的任何移动终端设备获取应用和娱乐内容的入口”，豌豆荚正在将这种产品设计理念更切实的实践着。</p>
+<p>对于Design Hackathon感兴趣的读者，可以下载豌豆荚的指导手册：<a href="http://dn.dl.wdjcdn.com/files/public/Design-Hackathon-Tool-Handbook.pdf">http://dn.dl.wdjcdn.com/files/public/Design-Hackathon-Tool-Handbook.pdf</a></p><br><br><br><br><br><br></body></html>

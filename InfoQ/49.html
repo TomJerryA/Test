@@ -1,26 +1,13 @@
-<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>C#的未来计划</h3><p>在<a href="http://ndc-london.com/">NDC London</a>上，Mads Torgersen提出了对未来C#语言的的计划。需要注意的是，这些只是计划，不会保证在哪个版本发布。<a href="http://damieng.com/blog/2013/12/09/probable-c-6-0-features-illustrated">Damien Guard</a>对这些建议进行了总结和简要的分析，我们在此为您挑选了其中的一些内容。</p>
-<p><strong>只读属性</strong></p>
-<p>只读自动属性将允许开发者在一行代码中声明属性及其后台字段。</p>
-<pre><code>public int X { get; } = x; </code></pre>
-<p><strong>静态类型using语句</strong></p>
-<p>Visual Basic和Java都允许在命名空间中导入模块（C#静态类）。这样可以移除常用的静态函数前面的重复代码，如“Math.”。</p>
-<p><strong>主构造函数</strong></p>
-<p>通过在类名后加上参数，开发者将不再需要显式创建构造函数。这可以移除将构造函数参数复制到私有字段时的冗长代码。</p>
-<pre><code>public class Point(int x, int y)  {     private int x, y; } </code></pre>
-<p><strong>属性和方法表达式</strong></p>
-<p>属性表达式可以为简单的只读属性剔除一些原来必须的样板代码。</p>
-<pre><code>public double Distance =&gt; Math.Sqrt((X * X) + (Y * Y)); </code></pre>
-<p>方法表达式也是如此，当然它们可以接受参数。注意，参数化的属性仍然没有列入考虑范围之内。在未来相当长一段时间里，这只能是VB独有的特性。</p>
-<p><strong>函数参数</strong></p>
-<p>如今大多数开发者从来不用数组，除非要使用params关键字。因此有人提议让params也支持IEnumerable
- <t>
-  接口。如果这样做，其他语言（如Visual Basic）也需要支持。还有人提议可以使用out关键字声明局部变量。例如，
- </t></p>
-<pre><code>int.TryParse(&quot;123&quot;, out int x); </code></pre>
-<p><strong>空传播</strong></p>
-<p>在处理凌乱的数据时，开发者经常需要在读取属性或调用方法前编写一系列空判断逻辑。?.语法将帮助我们剔除这些逻辑，只有当它前面的值不为空时，才会调用后面的方法。</p>
-<pre><code>var bestValue = points?.FirstOrDefault()?.X; </code></pre>
-<p>在本例中，如果points为空，或points.FirstOrDefault()返回空，那么将忽略.X，并返回空。它也可以和??连接使用，以提供可选的默认值。</p>
-<pre><code>var bestValue = points?.FirstOrDefault()?.X ?? -1; </code></pre>
-<p>Objective-C和Smalltalk这样的“消息传递”语言都包含这样的语法。它通常被认为是有问题的，因为本应抛出空引用异常的地方，却悄无声息地被忽略了。</p>
-<p><strong>原文英文链接：</strong><a href="http://www.infoq.com/news/2013/12/CSharp-Futures">Future Plans for C#</a></p><br><br><br><br><br><br></body></html>
+<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>著名国际讲师确认，QCon北京2014火热报名中</h3><p>2014新年第二周，我们为各位关注QCon的读者带来最新的QCon内容进展播报。</p>
+<p>目前QCon组委会已经确认了两位国际嘉宾。他们在去年11月份的旧金山QCon上的分享获得了极高评价。而后面介绍的数位专题出品人，既有QCon的老面孔，也有加入出品人队伍的新角色。</p>
+<p>除InfoQ主站新闻之外，讲师介绍及演讲内容在开幕前会在QCon北京大会官网随时更新，敬请关注：<a href="http://www.qconbeijing.com">www.qconbeijing.com</a>。另外InfoQ微博：<a href="http://weibo.com/infoqchina">@InfoQ</a>、以及InfoQ微信公众号【infoqchina】都会不间断的播报关于QCon的最新信息。。</p>
+<p><strong>国际嘉宾：</strong></p>
+<p><a href="http://www.qconbeijing.com/user/648">Eugene Ciurana，雅虎资深首席工程师，Summly CTO</a>。Eugene是一位活跃在旧金山和莫斯科地区的开源贡献者、布道师、企业家。他专注于构建稳健又可扩展的敏捷开发，在诸如Summly、沃尔玛、AT&amp;T、JP Morgan、Oracle、IBM等公司带领团队设计并开发高性能和大数据系统。同时他也在亚洲、东欧、或硅谷帮助很多创业公司打造他们的坚实技术基础。作为雅虎的资深首席工程署，他带领团队为下一代移动和Web应用设计并开发高扩展性语义化Web系统。Eugene经常用/nick pr3d4t0r的IRC代号活跃在#java, #python, #awk, #R, #iphonedev, 和#security等频道。</p>
+<p><a href="http://www.qconbeijing.com/user/649">Andrew Betts，英国金融时报实验室负责人</a>。Andrew是英国金融时报实验室的负责人，同时也是一位PHP和JavaScript程序员。他的团队致力于研发试验性质的Web技术并发布相关产品——比如金融时报Web App. 在加入金融时报实验室之前，Andrew创建了Web咨询公司Assanka，为诸如News International, The Economist Group and the FT这样的客户打造创新性的Web项目。</p>
+<p><strong>专题出品人：</strong></p>
+<p><a href="http://www.qconbeijing.com/node/449">系统安全设计面面观</a>专题出品人：吴瀚清(<a href="http://weibo.com/u/1707085527">@aullik5</a>) 是安全宝联合产品副总裁，毕业于西安交通大学少年班，在大学期间创立了在中国安全圈内极具影响力的组织“幻影”。2005年加入阿里巴巴，负责应用安全工作。2009年起，加入阿里巴巴云计算有限公司，负责云计算安全、反网络欺诈等工作，是阿里巴巴集团最具价值的安全专家。2012年9月10日他正式加盟创新工场旗下安全宝团队，担任安全宝联合产品副总裁。 吴翰清是还是著名安全图书《 白帽子讲Web安全》的作者，并同时维护有微博<a href="http://weibo.com/u/1707085527">@aullik5</a>，个人网站<a href="http://taosay.net">http://taosay.net</a>，以及他的微信公众帐号：道哥的黑板报。</p>
+<p><a href="http://www.qconbeijing.com/node/453">移动时代的前端</a>专题出品人：鄢学鵾，天猫前端团队负责人，常用ID：三七、秦歌。 曾在网易做过UI Designer，领导过雅虎中国的前端团队和口碑UED，负责过阿里云OS运营。 对Web标准、前端开发模式、性能优化和自动化有较深入的研究， 目前专注于PC到Mobile领域的设计、 技术和业务间的融合。业余时间参入过几本前端书翻译，担任D2前端技术论坛的顾问，并一直主持QCon的前端专题。 其信仰互联网精神（自由、开放、共享、创新），努力玩转设计与技术，尽情享受趣味和创意。</p>
+<p><a href="http://www.qconbeijing.com/node/455">持续集成与持续交付</a>专题出品人：乔梁(<a href="http://weibo.com/tony1130">@乔梁QL</a>) 乔梁，持续集成&amp;持续交付领域专家，致力于帮助企业提高软件交付能力，为多个大型电信企业、互联网企业、移动设备制造商提供相关咨询培训服务。作为该领域的先行者，他在第一时间翻译《持续交付》一书，将相关理念与最佳实践引入中国。该书获得2011年Jolt 杰出大奖，作者Jez Humble与乔梁共事两年，一同开发持续交付商业产品Go。他曾任职ThoughtWorks，为国内多家公司提供咨询服务，后在百度任职高级架构师，深入重点产品线，规划设计并领导了公司级编译集群和产品 线构建集群的建设，以建立持续交付必备的基础技术设施。现在作为中国区第一个敏捷与精益顾问，加入诺基亚（中国）投资有限公司，帮助公司进行组织改进。</p>
+<p><a href="http://www.qconbeijing.com/node/441">大数据处理与大数据应用</a>专题出品人：吴甘沙(<a href="http://weibo.com/wugansha">@吴甘沙</a>) 吴甘沙是英特尔中国研究院的第一位首席工程师，主要研究方向包括大数据的计算范式和架构，软硬件协同设计，数据安全和权利，以及数据作为服务的应用模式和支撑环境。曾经参与和主持移动受控运行时（Managed Runtime）和并行编程等研究项目。发表学术论文10余篇，获得美国专利23项和国际专利10余项，另有17项专利待审中。</p>
+<p>组委会欢迎对本届QCon专题有研究的专家，向speaker【at】cn.infoq.com提交自己认为值得和参会者分享的话题。提交办法具体可参见<a href="http://www.infoq.com/cn/news/2013/12/qconbeijing2014-callforpapers">http://www.infoq.com/cn/news/2013/12/qconbeijing2014-callforpapers</a>。</p>
+<p>自13年12月QCon北京2014大会开放报名以来，已经有数百人注册并确认参会。现在2月19日前报名可以享受8折优惠，单张门票节省960元（原价4800元），团购（5人以上，含5人）享有更多优惠，详情请邮件qcon【at】cn.infoq.com或者致电010-64738142。</p><br><br><br><br><br><br></body></html>

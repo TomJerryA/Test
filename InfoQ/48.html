@@ -1,30 +1,28 @@
-<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>VB的未来计划</h3><p><a href="http://blogs.msdn.com/b/lucian/archive/2013/12/13/some-potential-language-ideas-for-future-versions-of-vb.aspx">Lucian Wischik</a> 回应了Mads Torgersen的演讲，提出了Visual Basic语言方面一些可能的变化。这些只是计划，一切还没有定数。这些变化主要是为了减少样板代码，并且没有提供我们在VB 10或11中看到的重大改变。</p>
-<p><strong>只读属性</strong></p>
-<p>只读自动属性与VB语法可谓天作之合。只需要在属性声明前面加上ReadOnly关键字即可。它能保证只生成getter，不过仍然可以在构造函数中设置该值。</p>
-<pre><code>ReadOnly Property Name As String </code></pre>
-<p><strong>注释</strong></p>
-<p>VB中的注释现在不能很好地与隐式续行符配合。因此Lucian列出的的第一个VB特性就是允许在隐式续行符后面使用注释。</p>
-<p><strong>字符串</strong></p>
-<p>Visual Basic中的字符串目前不支持多行。因此首要的任务是允许这一点。其行为类似C#的逐字字符串，但不需要前缀。</p>
-<p>更有趣的特性是字符串插值（String Interpolation）。使用$&quot;前缀，将不需要显式调用String.Format。它还消除了因为算错替代变量的数目和位置而导致的异常。例如下面的代码：</p>
-<pre><code>Dim query = $&quot;http://{ url }?name={ Escape(name) }&amp;id={ Escape(id) }&amp;o=xml&quot; </code></pre>
-<p>在差不多4年前，Miguel de Icaza就曾提议<a href="http://tirania.org/blog/archive/2009/Dec-20.html">在C#中支持字符串插值</a>，并构建了一个工作原型。</p>
-<p><strong>字面量</strong></p>
-<p>Visual Basic的日期字面量基于美国通用标准，这对于非美国开发者是相当不公平的。因此新的计划中可以允许ISO格式化的日期字面量。</p>
-<p>很多语言中已经具备的二进制字面量也被列入计划当中，用&amp;B前缀表示。这对标志位风格的枚举来说是一个福音。</p>
-<p><strong>分部接口和模块</strong></p>
-<p>这项提议允许在VB中加入分部接口和模块，其用法与分部类相似。与分部类相同，这也是为了用于代码生成器。</p>
-<p><strong>空传播</strong></p>
-<p>与C#类似，VB团队也考虑提供空传播操作符。这样在调用方法之前就不再需要空验证。目前他们有两种选择，第一种与C#一样。注意除了?.外，还有?()。</p>
-<pre><code>Dim y As Integer = x?.y?(3)?.z </code></pre>
-<p>如果?.或?(操作符的左边有空值，y将得到默认值z。</p>
-<p><strong>函数参数</strong></p>
-<p>与C#类似，VB也希望params关键字支持IEnumerable类型的参数，而不是只支持数组。</p>
-<p>同样跟C#类似的是，他们也希望能够在out实参中声明本地变量。</p>
-<pre><code>If Integer.TryParse(s, Out x) Then </code></pre>
-<p>这行代码会创建x变量，就好像它是在代码上面的语句中声明的。</p>
-<p>他们也在考虑内联地声明其他变量。</p>
-<pre><code>If ( Dim x = GetValue()) &gt; 15 Then Console .WriteLine(x) </code></pre>
-<p><strong>其他方面</strong></p>
-<p>目前VB使用IsNot进行引用比较，但不能用于类型比较（如TypeOf操作符）。这项建议填补了这一空白。</p>
-<p><strong>原文英文链接：</strong><a href="http://www.infoq.com/news/2013/12/VB-Futures">Future Plans for VB</a></p><br><br><br><br><br><br></body></html>
+<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>12款免费与开源的NoSQL数据库介绍</h3><p><a href="http://theprofessionalspoint.blogspot.in/p/technologies-delphi-2010-and-xe2.html">Naresh Kumar</a>是位软件工程师与热情的博主，对于编程与新事物拥有极大的兴趣，非常乐于与其他开发者和程序员分享技术上的研究成果。近日，Naresh<a href="http://theprofessionalspoint.blogspot.in/2014/01/12-best-free-and-open-source-nosql.html">撰文</a>谈到了12款知名的免费、开源NoSQL数据库，并对这些数据库的特点进行了分析。</p>
+<p>现在，NoSQL数据库变得越来越流行，我在这里总结出了一些非常棒的、免费且开源的NoSQL数据库。在这些数据库中，MongoDB独占鳌头，拥有相当大的使用量。这些免费且开源的NoSQL数据库具有很好的可伸缩性与灵活性，非常适合于大数据存储与处理。相较于传统的关系型数据库，这些NoSQL数据库在性能上具有很大的优势。然而，这些NoSQL数据库未必最适合你。大多数常见的应用仍然可以使用传统的关系型数据库进行开发。NoSQL数据库依然不太适合于那些任务关键型的事务要求。我对这些数据库进行了一些简单介绍，下面就来看看。</p>
+<p><b>1. MongoDB</b></p>
+<p>MongoDB是个面向文档的数据库，使用JSON风格的数据格式。它非常适合于网站的数据存储、内容管理与缓存应用，并且通过配置可以实现复制与高可用性功能。</p>
+<p>MongoDB具有很强的可伸缩性，性能表现优异。它使用C++编写，基于文档存储。此外，MongoDB还支持全文检索、跨WAN与LAN的高可用性、易于实现的复制、水平扩展、基于文档的丰富查询、在数据处理与聚合等方面具有很强的灵活性。</p>
+<p><b>2. Cassandra</b></p>
+<p>这是个Apache软件基金会的项目，Cassandra是个分布式数据库，支持分散的数据存储，可以实现容错以及无单点故障等。换句话说，“Cassandra非常适合于那些无法忍受数据丢失的应用”。</p>
+<p><b>3. CouchDB</b></p>
+<p>这也是Apache软件基金会的一个项目，CouchDB是另一个面向文档的数据库，以JSON格式存储数据。它兼容于ACID，像MongoDB一样，CouchDB也可以用于存储网站的数据与内容，以及提供缓存等。你可以通过JavaScript在CouchDB上运行MapReduce查询。此外，CouchDB还提供了一个非常方便的基于Web的管理控制台。它非常适合于Web应用。</p>
+<p><b>4. Hypertable</b></p>
+<p>Hypertable模仿的是Google的BigTable数据库系统。Hypertable的创建者将“成为高可用、PB规模的数据库开源标准”作为Hypertable的目标。换言之，Hypertable的设计目标是跨越多个廉价的服务器可靠地存储大量数据。</p>
+<p><b>5. Redis</b></p>
+<p>这是个开源、高级的键值存储。由于在键中使用了hash、set、string、sorted set及list，因此Redis也称作数据结构服务器。这个系统可以帮助你执行原子操作，比如说增加hash中的值、集合的交集运算、字符串拼接、差集与并集等。Redis通过内存中的数据集实现了高性能。此外，该数据库还兼容于大多数编程语言。</p>
+<p><b>6. Riak</b></p>
+<p>Riak是最为强大的分布式数据库之一，它提供了轻松且可预测的伸缩能力，向用户提供了快速测试、原型与应用部署能力，从而简化应用的开发过程。</p>
+<p><b>7. Neo4j</b></p>
+<p>Neo4j是一款NoSQL图型数据库，具有非常高的性能。它拥有一个健壮且成熟的系统的所有特性，向程序员提供了灵活且面向对象的网络结构，可以让开发者充分享受到拥有完整事务特性的数据库的所有好处。相较于RDBMS，Neo4j还对某些应用提供了不少性能改进。</p>
+<p><b>8. Hadoop HBase</b></p>
+<p>HBase是一款可伸缩、分布式的大数据存储。它可以用在数据的实时与随机访问的场景下。HBase拥有模块化与线性的可伸缩性，并且能够保证读写的严格一致性。HBase提供了一个Java API，可以实现轻松的客户端访问；提供了可配置且自动化的表分区功能；还有Bloom过滤器以及block缓存等特性。</p>
+<p><b>9. Couchbase</b></p>
+<p>虽然Couchbase是CouchDB的派生，不过它已经成为了一款功能完善的数据库产品。它向文档数据库转移的趋势会让MongoDB感到压力。每个节点上它都是多线程的，这是个非常主要的可伸缩性优势，特别是当托管在自定义或是Bare-Metal硬件上时更是如此。借助于一些非常棒的集成特性，诸如与Hadoop的集成，Couchbase对于数据存储来说是个非常不错的选择。</p>
+<p><b>10. MemcacheDB</b></p>
+<p>这是个分布式的键值存储系统，我们不应该将其与缓存解决方案搞混；相反，它是个持久化存储引擎，用于数据存储并以非常快速且可靠的方式检索数据。它遵循memcache协议。其存储后端用于Berkeley DB中，支持诸如复制与事务等特性。</p>
+<p><b>11. REVENDB</b></p>
+<p>RAVENDB是第二代开源数据库，它面向文档存储并且无模式，这样就可以轻松将对象存储到其中了。它提供了非常灵活且快速的查询，通过对复制、多租与分片提供开箱即用的支持使得我们可以非常轻松地实现伸缩功能。它对ACID事务提供了完整的支持，同时又能保证数据的安全性。除了高性能之外，它还通过bundle提供了轻松的可扩展性。</p>
+<p><b>12. Voldemort</b></p>
+<p>这是个自动复制的分布式存储系统。它提供了自动化的数据分区功能，透明的服务器失败处理、可插拔的序列化功能、独立的节点、数据版本化以及跨越各种数据中心的数据分发功能。</p>
+<p>各位InfoQ读者，不知在你的项目中曾经、现在或是未来使用了哪些NoSQL数据库。现今的NoSQL世界纷繁复杂，NoSQL数据库也多如牛毛，而且有一些数据库提供了相似的特性，本文所列出的只是其中比较有代表性的12款NoSQL产品。你是否使用过他们呢？是否使用了本文没有介绍的产品呢？他们有哪些特性打动了你，让你决定使用他们呢？非常欢迎将你的经历与看法与我们一起分享。</p><br><br><br><br><br><br></body></html>
