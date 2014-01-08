@@ -2,7 +2,10 @@
  <head></head> 
  <body>
   <div>
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/45.java">Intel Pushes Mobile Cross Platform Development with its HTML5 XDK</a>In December 2013, Intel announced its plans to push its latest Intel XDK NEW to the mainstream by making it the official Intel XDK version and inviting all developers to migrate from the previous one by the end of February 2014. Let's look at what Intel XDK is and what is new in its latest release.
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/46.java">Jez Humble and Gene Kim in Search of High Performing Practices with DevOps Survey</a>Jez Humble and Gene Kim, prominent figures of the DevOps movement, are working with Puppet Labs on the 2013 DevOps Survey Of Practice. The survey's goal is to better understand which IT practices drive an organization to high performance, building upon the 2012 DevOps Survey. The survey will close on the 15th of January and everyone is invited to participate.
+  </div> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/45.java">Intel Pushes Mobile Cross Platform Development with its HTML5 XDK</a>In December 2013, Intel announced its plans to push its latest Intel XDK NEW to the mainstream by making it the official Intel XDK version and inviting all developers to migrate from the previous one by the end of February 2014. Let's look at what Intel XDK is and what is new in its latest release. 
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/44.java">Appcelerator Announces Insights for Tracking Mobile Apps Lifecycle</a>Appcelerator, maker of the Titanium Mobile Development Environment, has recently announced Appcelerator Insights as part of its Appcelerator Analytics product.Insights promises to deliver real-time aggregated analytics aiming at measuring higher-level metrics like user acquisition and retention, engagement, and app performance. 
@@ -147,9 +150,6 @@
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/48.java">Rocket to Mars: A Sprint Planning Game</a>“Many team and their product owners believe that the team's unique job is to deliver more and more story points, but we consider this to be a complete misunderstanding of the relation between the team and the product owner” said Damien Thouvenin and Pierrick Revol. They ran a sprint planning game on investing time to produce stories, investigate issues, reduce technical debt, or do training. 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/47.java">Visual Commander Brings Back Visual Studio Macros</a>Vlasov Studio has released an extension for VS 2010 and later that restores the ability to create and run macros in both VB and C#. 
   </div>  
  </body>
 </html>

@@ -1,7 +1,7 @@
 <html>
  <head></head> 
- <body>
-  <div>
+ <body> 
+  <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/18.htmlb">作者问答 – Java编码规范</a> 大多数开发者都同意编写安全的代码的必要性，但往往因为项目发布的压力使他们放弃了这一追求。而另一些开发者可能仅仅是不知道从哪里开始着手。InfoQ有幸与《Java Coding Guidelines》的作者们进行了一次对话，试图更多地了解他们的新书是如何帮助开发者们编写更好的代码的。 
   </div> 
   <div> 
@@ -150,6 +150,6 @@
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/21.htmlb">敏捷时代的建模：敏捷团队的扩张除了代码还需要什么？</a> 敏捷方法已经成为了当前软件开发的主流模式，可工作的代码（以及自动化测试）被认为是团队最重要的产出。但是对建模的需求依然存在。Kenji Hiranabe在本文中将探索敏捷时代里建模方法依然适用并且扮演关键角色的所在。并关注于讨论当开发规模扩张到多个团队后，对整个系统的“Big Picture”（整体认识）达成共识将变得非常关键。 
-  </div>  
+  </div> 
  </body>
 </html>

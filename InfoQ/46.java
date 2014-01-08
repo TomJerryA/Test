@@ -1,26 +1,25 @@
-<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>TypedMVVM Uses TypeScript to Build Windows Store Apps with WinJS</h3><p><a href="http://typedmvvm.codeplex.com/">TypedMVVM</a> developed by Davide Zordan is a collection of samples and libraries for writing Windows Store apps using WinJS, <a href="http://www.typescriptlang.org/">TypeScript</a> and <a href="http://en.wikipedia.org/wiki/Model_View_ViewModel">MVVM</a>. It enable developers to make use of TypeScript in a real world scenario by applying separation of concerns via the MVVM pattern in a simple Windows Store navigation app developed with <a href="http://msdn.microsoft.com/en-us/library/windows/apps/br229773.aspx">WinJS</a>.</p>
-<p>According to Davide, all the .js source files has been converted to TypeScript with new folder structure including classes/interface implementations. While designData provides implementation for design-time data to enable Blendability, libs include TypeScript definitions and TypedMVVM core classes, particularly RelayCommand&lt;T&gt; and ViewModelBase. The package also includes interfaces for Services, ViewModels and ViewModelFactory in addition to concrete ViewModels implementations and views definitions.</p>
-<p>InfoQ had a chat with <a href="http://www.davidezordan.net/blog">Davide</a>, Software Architect, Developer and Microsoft MVP to know more about TypedMVVM. <br /> <br /> <strong>InfoQ: Can you share with us the purpose behind the development of TypedMVVM?</strong></p>
-<blockquote>
-  I like writing code in a structured way and embracing best practices like separation of concerns, object orientation, modularization, testability, extensibility.
- <br /> 
- <br /> TypeScript is providing developers with a lot of features that are, in my opinion, fundamental for writing professional application. In particular, the possibility to perform type checking and inference, refactoring and full intellisense support is a must need when writing complex and large applications. For these reasons I decided to implement a simple set of classes for illustrating how the MVVM design pattern could be applied in a WinJS navigation application using TypeScript. 
+<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>Jez Humble and Gene Kim in Search of High Performing Practices with DevOps Survey</h3><p><a href="http://continuousdelivery.com/">Jez Humble</a> and <a href="http://www.realgenekim.me/">Gene Kim</a>, prominent figures of the DevOps movement, are working with <a href="http://puppetlabs.com/">Puppet Labs</a> on the <a href="http://www.surveygizmo.com/s3/1483785/DevOps-Survey-2013">2013 DevOps Survey Of Practice</a>. The <a href="http://continuousdelivery.com/2013/12/the-science-behind-the-2013-puppet-labs-devops-survey-of-practice/">survey's goal</a> is to better understand which IT practices drive an organization to high performance. The survey will close on the 15th of January and everyone is <a href="http://www.surveygizmo.com/s3/1483785/DevOps-Survey-2013">invited to participate</a>.</p>
+<p>The 2013 DevOps Survey will try to understand which IT practices enable high-performing organizations. As Jez and Gene <a href="http://continuousdelivery.com/2013/12/the-science-behind-the-2013-puppet-labs-devops-survey-of-practice/">explain on a recent article</a>, they established several research hypotheses that will be put to the test and independently evaluated:</p>
+<blockquote> 
+ <ul> 
+  <li>small teams with high trust that span the entire value stream: Dev, QA, IT Operations and Infosec</li> 
+  <li>shared goals and shared pain that span the entire value stream</li> 
+  <li>small development batch sizes</li> 
+  <li>presence of continuous, automated integration and testing</li> 
+  <li>emphasis on creating a culture of learning, experimentation and innovation</li> 
+  <li>emphasis on creating resilient systems</li> 
+ </ul> 
 </blockquote>
-<p><strong>InfoQ: What is the difference between Windows store apps built with and without TypedMVVM? </strong></p>
+<p>The survey will also test two more overarching hypotheses. It will try to establish how lead time correlates with product quality, customer satisfaction and employee happiness. Building upon last year's survey, which correlated adoption of DevOps practices with higher IT performance, the survey will explore how higher IT performance impacts business performance (e.g: return on assets; market share).</p>
+<p>Gene told InfoQ why he thinks this survey is relevant:</p>
 <blockquote>
-  Traditional Windows Store apps built with WinJS use JavaScript as a core language. TypedMVVM uses TypeScript as a core language which provides support for static typing, interfaces, classes (just to name a few) but, at the end, compiles to plain JavaScript. It also contains some helper classes to help the developer for getting started with the ViewModel pattern in order to write code which is properly architected and testable. 
+  We're testing many of the brilliant foundational theories and practices laid out by Martin Fowler on continuous integration and delivery over the last 15 years, to hopefully show concrete evidence of how it improves performance and productivity, business value or developer happiness. 
 </blockquote>
-<p><strong>InfoQ: What kind of applications cn be developed using TypedMVVM?</strong></p>
+<p>The <a href="https://puppetlabs.com/2013-state-of-devops-infographic">2012 DevOps Survey Of Practice</a>, which had 4039 respondents, <a href="http://www.slideshare.net/realgenekim/2013-velocity-devops-metrics-its-not-just-for-webops-any-more">found out</a> that high performing organizations have some common patterns. When compared with low performing organizations, they deploy about 30x faster with shorter change <a href="http://en.wikipedia.org/wiki/Lead_time">lead times</a>, which can be measured in hours or minutes instead of weeks or months. They also had 50% fewer change failures (e.g.: production outages or service impairments) with a 12x faster mean time to recover.</p>
+<p>The DevOps Surveys of Practice are cross-population studies. Gene and Kim's aforementioned article explains that these studies are a &quot;statistical research technique designed to uncover what factors (e.g., practices, cultural norms, etc.) correlate with outcomes (e.g., IT performance)&quot;, commonly used, for example, in medical research. Cross-population studies are more rigorous than more common approaches to support hypotheses in the world of IT.</p>
+<p><img src="http://www.infoq.com/resource/news/2014/01/2013-devops-survey/en/resources/CrossPopulationStudiesjpg.jpg" alt="Cross-Population Studies" width="500" _href="img://CrossPopulationStudiesjpg.jpg" _p="true" /></p>
+<p>Gene is hoping for a higher percentage of respondents with a developer profile than on the 2012 survey:</p>
 <blockquote>
-  The current target is Windows Store apps using the WinJS framework. 
+  We've already gotten 4000+ responses, beating last year. But we're really hoping to get a large number developer respondents this year, to ensure that we can measure the Dev in DevOps. Last year there was a greater emphasis on the Ops side. 
 </blockquote>
-<p><strong>InfoQ: Are you aware of any real world application where TypedMVVM has been implemented?</strong></p>
-<blockquote>
-  The project has just been released so I don't have, at the moment, information about real projects.
- <br type="_moz" /> 
-</blockquote>
-<p><strong>InfoQ: Can you share the future roadmap of TypedMVVM?</strong></p>
-<blockquote>
-  I'm still in the process of defining the roadmap, however I'm thinking about features like inversion of control, loose coupling messaging and application specific services: these ones would be really useful.
- <br type="_moz" /> 
-</blockquote><br><br><br><br><br><br></body></html>
+<p>The <a href="http://www.surveygizmo.com/s3/1483785/DevOps-Survey-2013">survey will close on January 15th</a>. The results will be published by mid-2014, in time for the Velocity Conference.</p><br><br><br><br><br><br></body></html>

@@ -1,20 +1,20 @@
 <html>
  <head></head> 
- <body>
-  <div>
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/45.py">DevDocs、リファレンスドキュメントのワンストップショップ</a>DevDocsはソフトウェア開発者が共通に使えるよう、複数のリファレンスドキュメントを1つにまとめたWebサイトだ。1つにまとめた利点を活かして、検索インターフェイス、キーボードショートカット、共通のレイアウトや目次など、全API横断して使える機能を提供している。DevDocsには現在、HTML、HTTP、JavaScript、Rubyなどのドキュメントが含まれている。
-  </div>
-  <div>
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/44.py">Producing Software, Professionally</a>初の開催となるAgile Singapore Conference 2013のテーマは「Producing Software, Professionally」だった。このカンファレンスは東南アジアのアジャイルコミュニティにとって重要なイベントだ。
-  </div>
-  <div>
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/43.py">エンタープライズ開発者のためのツール表集</a>VisionMobileは，500以上のツールを掲載したインタラクティブマップを製作した。インテグレーションや開発，テスト，デプロイメント，評価，マーケティングと収益化など，エンタープライズソフトウェア開発のあらゆる面をカバーする。マップには各ツールのメリットを簡単に述べた説明文の他に，開発者が業務に適したツールを選ぶ上でのクイックガイドとなる見解が掲載されている。
-  </div>
-  <div>
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/42.py">オープンソースのSQL-in-Hadoopソリューション:我々はいまどこに？</a>Facebookが最近Prestoをオープンソース化してリリースしたことで、既に飽和状態だったSQL-in-Hadoopマーケットがさらに錯綜している。多数のオープンソースツールが開発者の関心を集めようとしのぎを削っているのだ。Hortonworks社によるHive関連のStinger initiative, Apache Drill, Apache Tajo, Cloudera社の Impala, Salesforce社の Phoenix (for HBase),そして今回のFacebook社のPrestoがこれに挙げられる。
-  </div>
-  <div>
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/41.py">PowerShellのDesired State Configuration，プッシュモードとプルモードをサポート</a>Windows PowerShell Blogに現在，PowerShellのDSC(Desired State Configuration)に関する記事が掲載されている。DSCはWindowsでコンピュータの構成管理を行うための，Microsoftからの提案だ。最新の記事のひとつではプッシュとプルという，DSCで選択可能な２つのコンフィギュレーションモードについて説明されていて，いずれのアプローチにもそれぞれの長所と短所がある。
+ <body> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/45.py">DevDocs、リファレンスドキュメントのワンストップショップ</a>DevDocsはソフトウェア開発者が共通に使えるよう、複数のリファレンスドキュメントを1つにまとめたWebサイトだ。1つにまとめた利点を活かして、検索インターフェイス、キーボードショートカット、共通のレイアウトや目次など、全API横断して使える機能を提供している。DevDocsには現在、HTML、HTTP、JavaScript、Rubyなどのドキュメントが含まれている。 
+  </div> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/44.py">Producing Software, Professionally</a>初の開催となるAgile Singapore Conference 2013のテーマは「Producing Software, Professionally」だった。このカンファレンスは東南アジアのアジャイルコミュニティにとって重要なイベントだ。 
+  </div> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/43.py">エンタープライズ開発者のためのツール表集</a>VisionMobileは，500以上のツールを掲載したインタラクティブマップを製作した。インテグレーションや開発，テスト，デプロイメント，評価，マーケティングと収益化など，エンタープライズソフトウェア開発のあらゆる面をカバーする。マップには各ツールのメリットを簡単に述べた説明文の他に，開発者が業務に適したツールを選ぶ上でのクイックガイドとなる見解が掲載されている。 
+  </div> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/42.py">オープンソースのSQL-in-Hadoopソリューション:我々はいまどこに？</a>Facebookが最近Prestoをオープンソース化してリリースしたことで、既に飽和状態だったSQL-in-Hadoopマーケットがさらに錯綜している。多数のオープンソースツールが開発者の関心を集めようとしのぎを削っているのだ。Hortonworks社によるHive関連のStinger initiative, Apache Drill, Apache Tajo, Cloudera社の Impala, Salesforce社の Phoenix (for HBase),そして今回のFacebook社のPrestoがこれに挙げられる。 
+  </div> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/41.py">PowerShellのDesired State Configuration，プッシュモードとプルモードをサポート</a>Windows PowerShell Blogに現在，PowerShellのDSC(Desired State Configuration)に関する記事が掲載されている。DSCはWindowsでコンピュータの構成管理を行うための，Microsoftからの提案だ。最新の記事のひとつではプッシュとプルという，DSCで選択可能な２つのコンフィギュレーションモードについて説明されていて，いずれのアプローチにもそれぞれの長所と短所がある。 
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/40.py">Twitterでの予測</a>Velocity Conf LondonでTwitterのArun Kejariwal氏がTwitterで使われている予測アルゴリズムについて話した。予測アルゴリズムはシステムリソースの予測とユーザ数やツイート数などビジネス上の指標の予測に使われている。Twitterのデータストリームのダイナミックさを考慮した場合、磨き直したARIMAモデルは一度予測エラーを検出して、異常値を排除できれば有効に働くということがわかった。 
@@ -150,6 +150,6 @@
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/49.py">Amazon re:inventのまとめ</a>Amazonはロサンゼルスで開かれたre:inventカンファレンスで、たくさんの新サービスを発表した。Amazon WorkSpaces - デスクトップコンピューティングをクラウドで、SAMLを使用したIdentity and Access Management、Amazon AppStream - クラウドからアプリケーションをストリーミング提供、Amazon Kinesis - ビッグデータをストリーム処理、CloudTrail - AWS APIコールの記録を保存、RDSのPostgresサポート、新しいEC2インスタンスタイプ 
-  </div>      
+  </div> 
  </body>
 </html>
