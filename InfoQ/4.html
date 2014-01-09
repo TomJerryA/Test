@@ -1,25 +1,8 @@
-<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>我为何停止使用Spring</h3><p><a href="http://java.dzone.com/users/jb30665">Johannes Brodwall</a>是一位程序员、解决方案架构师、用户组与会议组织者、会议演讲者与布道师。Johannes一直在不遗余力地将敏捷原则应用到大型软件项目中，不过他真正感兴趣的是与全世界的程序员分享更多关于编程的有趣经验。目前，Johannes就职于Exilesoft，担任首席科学家一职。近日，Johannes撰写了一篇关于他<a href="http://java.dzone.com/articles/why-i-stopped-using-spring">为何停止使用Spring的文章</a>，在程序员群体中引起了很大的反响。</p>
-<p>我之前发表的一篇题为<a href="http://architects.dzone.com/articles/humble-architects">谦卑的架构师</a>的文章引起了很多争论，特别是Spring与依赖注入框架这个话题，这次我打算来谈谈为什么我要停止Spring。我是挪威最早采用Spring框架的一批人。我们在开发一个大型系统时最后不得不考虑诸如如何重用XML配置文件的各种不同机制等问题。最后，这演变成了@Autowire与component-scan，这种方式解决了大量配置文件的难题，不过却降低了人们了解全部源代码的能力，这直接导致开发者被限制在应用中非常小的部分代码中。随着应用变得越来越复杂，文化、工具、文档等东西导致开发者们不得不在一个个不必要的层次上构建另外一些不必要的层次。</p>
-<p>不久之后，我尝试在不使用依赖注入框架的情况下来构建应用，不过这引发了另外一些问题，那就是何时该使用“new”呢、何时使用setter或是构造器参数呢，哪种类型适合作为依赖呢、哪些东西导致了对基础设施的耦合呢。</p>
-<p>根据直觉我发现DI框架确实能够帮助我改善设计，不过与此同时，我还发现在离开容器时，解决方案变得更小（这很棒！）、理解起来更简单，并且易于测试。这让我感到进退维谷，我发现使用容器的代价是非常高的，它会不断增加复杂性与规模，同时会降低一致性。不过话又说回来，它教会了我一些更棒的设计技巧。</p>
-<p>总的来说，我个人认为一致、小型的系统要比那些为了解耦而解耦的系统更有价值。一致性与解耦是对立的，我站在一致性这一边。同时，我发现依赖注入文化对重用性有更强的偏爱，不过重用会引入耦合。如果模块A重用了模块B，那么我们就说模块A与模块B是耦合的。模块B中的变化可能会对模块A产生更好（修复Bug）或是更糟（引入新的Bug）的影响结果。如果重用所带来的好处更多，那就值得使用；否则就不值得。因此，重用与解耦是对立的两个方面，我自己更偏向于解耦。如果出现冲突，我个人认为优先级应该是一致性大于解耦，解耦大于重用性，而Spring的基因似乎与此相反。</p>
-<p>Johannes的文章发布后，旋即引起了程序员社区的激烈讨论，有些讨论也很有意思，下面摘录几篇：</p>
-<p>Marc Stock说到：</p>
-<blockquote>
-  如果使用Spring的依赖注入增加了系统的复杂性，那么问题的症结在于你自己。我使用Spring有好几年的经历了，它总是让事情变得更棒和更整洁。我不敢说所有的Spring项目都是这样，不过对于依赖注入来说绝对没错。也就是说，我发现有很多使用Spring的方式值得商榷，事实上他们做的很多事情都是不必要的（不过他们却并不这么认为）。如果你能举出Spring依赖注入会引起混乱的例子，我愿意拭目以待。
-</blockquote>
-<p>Johannes Brodwall说到：</p>
-<blockquote>
-  文章的质疑很不错。我来举个简单的例子，假如一个系统有很多层次，所有东西都被加上了@Autowire与component-scan。我尝试实例化其中的某些服务，不过却缺少依赖。最后只能将所有的依赖加进来来实例化测试中所需的一个简单服务，因为查找存在哪些依赖、应该使用哪些依赖来作为模拟花费了我大量的时间。
-</blockquote>
-<p>Hendy Irawan说到：</p>
-<blockquote>
- 文中提到“同时，我发现依赖注入文化对重用性有更强的偏爱，不过重用会引入耦合。如果模块A重用了模块B，那么我们就说模块A与模块B是耦合的”。这里需要对“模块”做一些澄清。接口会帮助我们更好地理解。在重用时，使用的是Spring、CDI还是你自己的什么东西并不重要。你提到“Spring文化”，是真的么？举个例子，使用（c3p0）数据源与PlatformTransactionManager（JpaTransactionManager）来配置一个JPA EntityManager（FactoryBean）。这里会有大量的重用，不过解耦性却很不错。你可以将JPA切换到Hibernate，也可以将c3p0却换到其他数据源，还可以将TransactionManager切换到Hibernate或是JTA的。
- <br /> 
- <br /> 你讨厌XML配置，也讨厌@Autowired，不过配置总归是要有的。如果喜欢set或是new的方式，那么你可以使用注解，文中并没有提及这一点。如果使用的是CDI，那么讨厌@Autowired/@Inject有情可原，不过这是Spring，你有很多选择。根据我的经验，对于后端服务绑定使用注解配置，对于UI组件使用@Inject会更好一些。我们也不使用XML，你可以尝试一下这种方式。
-</blockquote>
-<p>Manuel Rascioni说到：</p>
-<blockquote>
-  这几天我一直在思考是否该使用Spring，现在我觉得使用是值得的。看看整个（Web）应用，你需要这些东西：一个依赖注入管理系统、一个持久化框架、在各个层之间转换对象的东西、一个安全框架与一个AOP系统（管理事务、安全等东西）。你有多种选择，也可以自己创建。如果使用现有的，那需要注意的就是不同框架的集成；如果自己创建，那就需要自己编写大量代码。我的经历告诉我使用Spring可以很好地解决这些问题。它不仅仅是个依赖注入框架，还是一套完整的框架生态系统，可以实现组件之间的解耦，同时又很好地实现了这些框架之间的集成。对于测试来说，我使用mock框架进行单元测试，而没有使用Spring（对于单元测试来说它太慢了）。对于集成测试来说，我们需要使用Spring配置文件。因此，根据我的经验来看，使用Spring是值得的。关于文中提到的耦合，如果模块C需要模块A的一些东西，你是怎么解决的呢？难道是编写一个新的模块，然后复制模块A么？这完全违背了DRY原则吧。
-</blockquote>
-<p>各位InfoQ读者，你是如何看待文中的观点以及各个评论的看法的呢？Spring从诞生到现在已经有很多年了，从最早的依赖注入与面向方面编程到现在的一站式框架体系，Spring本身也变得越来越庞大了，但同时功能也是越来越强大。特别是前不久刚刚发布的Spring 4.0更是增加了不少令人激动的新特性，那么在你的项目与系统中是否使用到了Spring呢？你觉得Spring带给你的好处与它本身的缺陷相比如何呢？换句话说，Spring框架的性价比高么？欢迎发表评论与大家一同分享你的观点与看法。</p><br><br><br><br><br><br></body></html>
+<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>CouchDB创始人加入Salesforce.com，从事非常“酷炫”的基础设施项目</h3><p>近日，<a href="http://www.pcworld.com/article/201046/article.html">NoSQL数据库CouchDB</a>的创始人宣布将加入Salesforce.com，从事一项与厂商云基础设施相关的非常“酷炫”的项目。</p>
+<p>Damien Katz在<a href="http://damienkatz.net/">博客</a>上宣布“从2014年1月开始将会在Salesforce.com继续自己的职业生涯，并且与Pat Helland紧密协作，从事一项将会巩固其基础设施的项目，同时还会改进性能、可靠性与可预测性，此外还将大幅降低生产成本”。这是个非常“酷炫”的项目，我现在还不知道能否披露项目的细节信息。不过如果能圆满完成的话，这个项目将会给我们带来非常积极的影响。</p>
+<p>与此同时，Salesforce.com的发言人却拒绝提供Katz所提及的项目的详细信息。</p>
+<p>虽然长久以来，Salesforce.com一直都在使用Oracle数据库，并作为其平台的底层设施，而且最近又与这个竞争对手签署了一项<a href="http://www.infoworld.com/d/the-industry-standard/oracle-salesforcecom-ink-nine-year-technology-partnership-221465">长期的合约</a>；不过，Salesforce.com也在开源方案上面加紧了脚步，比如说向HBase提供开发资源，收购Heroku，而后者则使用了PostgreSQL。</p>
+<p>有观察者认为，Salesforce.com并不需要Oracle。</p>
+<p>来自Monash Research的分析师Curt Monash在其邮件中提到“显然，Oracle并不适合于Salesforce.com的数据库架构，Salesforce.com很少用到Oracle的关系特性。与10几年前Salesforce.com首次采用Oracle相比，现在在安全与可靠性方面已经有了更多的选择”。</p>
+<p>Katz提到他将与Salesforce.com架构师Pat Helland合作，这一点提供了关于这个项目特性的一些线索。在去年10月份的Ricon West大会上，Helland谈到了Keystone，该设计将会统一并简化多种形式的存储，根据会议的内容，我们计划据此构建存储来实现快速的失败恢复能力。</p>
+<p>虽然消费级的固态硬盘技术费用只占企业级SSD市场的很小一部分，不过消费级的SSD所产生的无法恢复的错误率却很高。通过设计Keystone的架构来存储不变数据，同时使用软件提供的错误检测功能，我们可以非常自信地说，我们能够检测到错误，并且可以从其他地方获得所需的存储数据。</p><br><br><br><br><br><br></body></html>

@@ -1,6 +1,9 @@
 <html>
  <head></head> 
- <body> 
+ <body>
+  <div>
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/5.c">Utilizando retrospectivas para aperfei&ccedil;oamento pessoal</a>Equipes &aacute;geis utilizam retrospectivas para melhorar seu desempenho, refletindo sobre sua forma de trabalhar e definindo a&ccedil;&otilde;es de melhoria. As retrospectivas tamb&eacute;m podem ser utilizadas para o aperfei&ccedil;oamento do desempenho pessoal, adicionalmente ou em substitui&ccedil;&atilde;o &agrave;s avalia&ccedil;&otilde;es de desempenho.
+  </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/4.c">Os custos para versionamento de uma API</a>Controle de vers&atilde;o para servi&ccedil;os &eacute; algo que tem sido um problema fundamental para SOA. H&aacute; muitos exemplos de experi&ecirc;ncias adquiridas e compartilhadas ao longo dos &uacute;ltimos anos, poucos desses exemplos foram comparados de maneira concreta e contrastados &agrave;s diferentes abordagens existentes. Jean-Jacques Dubray publicou sobre as experi&ecirc;ncias de sua equipe nesta &aacute;rea. 
   </div> 
@@ -147,9 +150,6 @@
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/6.c">jQuery Mobile 1.3.0: enfoque no web design responsivo</a>A vers&atilde;o 1.3.0 do jQuery Mobile, o framework JavaScript e HTML5/CSS para aplicativos m&oacute;veis, tem foco em web design responsivo e traz novos componentes gr&aacute;ficos. Saiba mais. 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/5.c">Novidades da Microsoft e Amazon para o Android</a>O Windows Azure agora possui um SDK Android incluindo notifica&ccedil;&otilde;es push para dispositivos, e a Amazon disponibilizou uma API de an&uacute;ncios que pode ser utilizada em dispositivos Android, em paralelo com o Google AdMob. Conhe&ccedil;a os detalhes. 
-  </div> 
+  </div>  
  </body>
 </html>

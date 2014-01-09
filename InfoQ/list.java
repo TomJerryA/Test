@@ -2,7 +2,10 @@
  <head></head> 
  <body>
   <div>
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/47.java">Facebook makes Mercurial faster than Git</a>Facebook has posted on how they've sped up Mercurial to be five times faster than Git in certain operations. Read on to find out what they have changed, and why it makes such a difference for their setup.
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/48.java">Pair Coaching with Agile Teams</a>Agile coaches can coach in pairs instead of coaching individually. Each coach will focus on different aspects of coaching. As every coach has specific experience and skills they can complement each other. Two coaches can collaboratively help individuals or teams to learn and improve when adopting agile.
+  </div> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/47.java">Facebook makes Mercurial faster than Git</a>Facebook has posted on how they've sped up Mercurial to be five times faster than Git in certain operations. Read on to find out what they have changed, and why it makes such a difference for their setup. 
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/46.java">Jez Humble and Gene Kim in Search of High Performing Practices with DevOps Survey</a>Jez Humble and Gene Kim, prominent figures of the DevOps movement, are working with Puppet Labs on the 2013 DevOps Survey Of Practice. The survey's goal is to better understand which IT practices drive an organization to high performance, building upon the 2012 DevOps Survey. The survey will close on the 15th of January and everyone is invited to participate. 
@@ -147,9 +150,6 @@
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/0.java">Interview with David Haney, Creator of SimplSockets</a>We interviewed David Haney, creator of SimplSockets for .NET about TCP programming in the modern age. 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/49.java">Firefox 26 Blocks Java</a>Mozilla Firefox 26 now blocks all Java plug-ins by default due to security concerns but allows users to run such plug-ins if they want to. 
   </div>  
  </body>
 </html>

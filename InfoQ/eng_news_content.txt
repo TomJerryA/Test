@@ -1,1 +1,1 @@
-Facebook stores all of its code in a single repository, which two years ago was based on subversion. Instead of having separate repositories for independent projects (and sharing using a binary repository), the entire codebase is in a single large source repository.
+Stephan Schwab wrote a&nbsp;blog post about the risk and side effects of agile coaching. He described why people might feel threatened when a coach starts working with them:

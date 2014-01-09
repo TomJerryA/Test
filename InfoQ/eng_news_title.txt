@@ -1,1 +1,1 @@
-Facebook makes Mercurial faster than Git
+Pair Coaching with Agile Teams

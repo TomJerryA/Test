@@ -1,6 +1,9 @@
 <html>
  <head></head> 
- <body> 
+ <body>
+  <div>
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/46.py">振る舞い駆動開発(BDD) - コラボレーションによる価値創造</a>ソフトウェアプロジェクトの目的はステークホルダに価値を提供することだ，BDD(Behavior-Driven Development，振る舞い駆動開発)は，そのためにデザインされた – ウォーターフォールからアジャイルプロセスへの移行に取り組むソフトウェア開発者のViktor Farcic氏は，自身のBDDに対する見方を述べた４つのブログ記事の冒頭でこう説明している。
+  </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/45.py">DevDocs、リファレンスドキュメントのワンストップショップ</a>DevDocsはソフトウェア開発者が共通に使えるよう、複数のリファレンスドキュメントを1つにまとめたWebサイトだ。1つにまとめた利点を活かして、検索インターフェイス、キーボードショートカット、共通のレイアウトや目次など、全API横断して使える機能を提供している。DevDocsには現在、HTML、HTTP、JavaScript、Rubyなどのドキュメントが含まれている。 
   </div> 
@@ -147,9 +150,6 @@
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/0.py">複合型チームにおけるT字型スペシャリストの価値</a>裁量権を持ったクロスファンクショナルチームにおいて複数の専門分野を備えたT字型チームメンバのメリットをテーマに，Ken Schwaber氏らが先日発表した論評および講演について，その概要をお届けする。 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/49.py">Amazon re:inventのまとめ</a>Amazonはロサンゼルスで開かれたre:inventカンファレンスで、たくさんの新サービスを発表した。Amazon WorkSpaces - デスクトップコンピューティングをクラウドで、SAMLを使用したIdentity and Access Management、Amazon AppStream - クラウドからアプリケーションをストリーミング提供、Amazon Kinesis - ビッグデータをストリーム処理、CloudTrail - AWS APIコールの記録を保存、RDSのPostgresサポート、新しいEC2インスタンスタイプ 
-  </div> 
+  </div>  
  </body>
 </html>
