@@ -1,20 +1,22 @@
-<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>Firefox 26 Blocks Java</h3><p>Mozilla Firefox 26 now blocks all Java plug-ins by default due to security concerns but allows users to&nbsp;run such plug-ins if they want to.</p>
-<p><a href="http://www.infoq.com/news/2011/10/mozilla-java">Mozilla considered blacklisting Java</a> in its browser for security concerns back in 2011, but no decision was made at that moment. All this year Mozilla has been&nbsp;developing and testing&nbsp;a Click-to-Play&nbsp;(CtP) feature that would allow users to select which&nbsp;plug-ins they want to be enabled. But the process has not run smoothly and has affected websites and users relying on Java.</p>
-<p>In September, Mozilla decided to <a href="https://bugzilla.mozilla.org/show_bug.cgi?id=914690">mark all Java versions as unsafe</a>,&nbsp;feature implemented&nbsp;in Firefox 24,&nbsp;but many users did not understand what happened to their applications and websites that were no longer working, they did not figure out there was a CtP feature that would let them enable Java, then some of the plug-ins&nbsp;were invisible and CtP was not addressing them, and in some cases the <a href="https://bugzilla.mozilla.org/show_bug.cgi?id=914690#c65">CtP UI was not even visible</a>. Many bank users seemed to be affected, at least in some countries:</p>
-<blockquote> 
- <p><a href="https://bugzilla.mozilla.org/show_bug.cgi?id=914690#c40">Knud Berggreen</a>: Java Plugin 7 update 45 should not be blocked! It affects all citizens of Denmark, as the national login is blocked.</p> 
- <p><a href="https://bugzilla.mozilla.org/show_bug.cgi?id=914690#c91">etoxsg</a>: In Norway only a few online banks let you use their services without a java plugin installed I would say that 90% of all households in Norway, Sweden and Denmark need a Java plug-in just for banking.&nbsp;So when you suddenly decided to block ALL Java without prior notice, I had to do 8 house calls and field 15 phone-calls from friends, neighbors and family.</p> 
-</blockquote>
-<p>A couple of other reactions from the community:</p>
-<blockquote> 
- <p><a href="https://bugzilla.mozilla.org/show_bug.cgi?id=914690#c33">Tomasz</a>: Sorry for an explicit message, but, as a user: who took such an ultra-irresponsible decision to block java on FF?!</p> 
- <p>It made me unable to log in to my online trading account because of this. The app used by my bank only displays 'required java version &gt;1.5&quot; in a message box, with no trace of any security issues. It simply doesn't work.</p> 
- <p><a href="https://bugzilla.mozilla.org/show_bug.cgi?id=914690#c30">ipatrol</a>: Have you all suddenly gone insane? Java is one of the three core technologies behind dynamic content! You start pulling out a sledgehammer to go smash a few bugs and you all talk calmly about it as if it were some minor UI tweak?</p> 
-</blockquote>
-<p><a href="https://bugzilla.mozilla.org/show_bug.cgi?id=914690#c92">Roger</a>, a Java SE Engineering Manager, commented on this issue:</p>
-<blockquote> 
- <p>We are seeing a significant number of people report on java.com that FF indicates that Java 7u45 is vulnerable. Many are saying that their solution is to use IE. Searches for related terms are though the roof. Not sure if this was the intended end user solution when the FF team implemented this. The confusion about the messaging and how to allow Java to run appears to be a usability issue. Are there any stats on how this new block is affecting FF users behavior?</p> 
-</blockquote>
-<p>Mozilla decided to revert the blocks at that time, but the measure was temporary until CtP would be fixed.&nbsp;At the end of October, Mozilla announced a beta version of <a href="https://blog.mozilla.org/futurereleases/2013/10/31/click-to-play-plugins-ready-to-test-in-firefox-beta/">Firefox that would block all plug-ins except Flash</a>, citing again security concerns.</p>
-<p>Finally, at the end of the year, Firefox 26&nbsp;now <a href="http://www.mozilla.org/en-US/firefox/26.0/releasenotes">is blocking all Java plug-ins on all websites by default</a>. It remains to see if the CtP user interface is useful enough to let people know how to enable Java when they need to.</p>
-<p>After Windows and Flash took the blame for security&nbsp;holes in users’ computers for years, now it is Java’s turn to feel some of the heat. Oracle did not seem to pay much attention to this issue in the past but that changed considering <a href="http://www.infoq.com/news/2013/10/java-oct-sec-fixes">the 127 security fixes update released in October</a> under&nbsp;the Critical Patch Update program which is supposed to provide security updates at least quarterly.</p><br><br><br><br><br><br></body></html>
+<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>LINQ To Logs And Traces</h3><p>Microsoft Open Technologies recently <a href="http://blogs.msdn.com/b/interoperability/archive/2014/01/06/new-release-tx-linq-to-logs-and-traces.aspx">announced</a> the release of <a href="http://tx.codeplex.com/">Tx</a>, an open source project that can help debugging using Logs/Traces, and building of real-time monitoring and alerting systems.</p>
+<p>Some interesting features&nbsp;–</p>
+<ul> 
+ <li>Allows use of <a href="http://msdn.microsoft.com/en-us/library/bb397926.aspx">LINQ</a> on raw event sources</li> 
+ <li>Enables use of <a href="http://msdn.microsoft.com/en-us/data/gg577609.aspx">Reactive Extensions</a> on real event sources with support for multiplexed event sequences (single sequence containing events of different types in order of occurence).</li> 
+ <li>Possible to provide single query across multiple sources, with same API for both real-time and past history</li> 
+ <li>On historical log/trace files, multiple queries can be performed in one read&nbsp;– for e.g. count all “Warning” events, match “Begin and “End” events and calculate average duration of each activity</li> 
+</ul>
+<p>You can either use <a href="http://www.linqpad.net/">LINQPad</a> for one-off analysis or build .NET applications for building monitoring applications. In LINQPad, the experience of Tx is as if all the events were in a database.&nbsp;</p>
+<p>The release provides 4 different NuGet packages:</p>
+<ul> 
+ <li><a href="http://www.nuget.org/packages/Tx.Core/">Tx.Core</a>&nbsp;– common components not specific to a particular tracing format</li> 
+ <li><a href="http://www.nuget.org/packages/Tx.Windows/">Tx.Windows</a>&nbsp;– Support for Event Tracing For Windows, Event logs, Performance counters from files and real-time counter API, IIS Text logs in W3C format</li> 
+ <li><a href="http://www.nuget.org/packages/Tx.SqlServer/">Tx.SqlServer</a>&nbsp;– SQL Server extended events</li> 
+ <li><a href="http://www.nuget.org/packages/Tx.All/">Tx.All</a>&nbsp;– A convenience package with all of the above</li> 
+</ul>
+<p>Note that Microsoft also advises <a href="http://tx.codeplex.com/SourceControl/latest#Doc/WhenToUse.md">when not to use Tx</a>&nbsp;as well&nbsp;-</p>
+<ul> 
+ <li>When there are no real-time feeds involved and data is already in memory or in a <a href="http://tx.codeplex.com/SourceControl/latest#Source/Tx.Windows/IIS/W3CEnumerable.cs">single file that is easy to parse</a>, the guidance is to use LINQ-To-Objects instead of Tx.</li> 
+ <li>When there are real-time feeds but each feed/file contains only a single type of events, use only Reactive Extensions</li> 
+</ul>
+<p>The tool has been in use internally at Microsoft in the WCF and Service Bus teams and is now open for all .NET developers to use for their own projects. You can have a look at <a href="http://tx.codeplex.com/documentation">the documentation</a> to get started.&nbsp;</p><br><br><br><br><br><br></body></html>

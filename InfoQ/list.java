@@ -2,7 +2,13 @@
  <head></head> 
  <body>
   <div>
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/48.java">Pair Coaching with Agile Teams</a>Agile coaches can coach in pairs instead of coaching individually. Each coach will focus on different aspects of coaching. As every coach has specific experience and skills they can complement each other. Two coaches can collaboratively help individuals or teams to learn and improve when adopting agile.
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/0.java">XAML Spy 2.0.5 Adds Add App Wizard and Feature Improvements</a>XAML Spy has released updates for the month of January with support for Add App Wizard with the ability to navigate installed apps by selecting the Show All Apps button in the XAML Spy Explorer toolbar. The latest release also enables you to activate and disable XAML Spy for multiple projects at a time.
+  </div>
+  <div>
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/49.java">LINQ To Logs And Traces</a>Microsoft Open Technologies recently announced the release of Tx, an open source project that can help debugging using Logs/Traces, and building of real-time monitoring and alerting systems.
+  </div> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/48.java">Pair Coaching with Agile Teams</a>Agile coaches can coach in pairs instead of coaching individually. Each coach will focus on different aspects of coaching. As every coach has specific experience and skills they can complement each other. Two coaches can collaboratively help individuals or teams to learn and improve when adopting agile. 
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/47.java">Facebook makes Mercurial faster than Git</a>Facebook has posted on how they've sped up Mercurial to be five times faster than Git in certain operations. Read on to find out what they have changed, and why it makes such a difference for their setup. 
@@ -144,12 +150,6 @@
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/2.java">Advice on When to Repay Technical Debt</a>An exploration of recent advice from Henrik Knibert, Ward Cunningham and Hayim Makabee on technical debt, how to make the most of it and when to pay it off. 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/1.java">Oracle Invites Community to Weigh-In on Java EE 8</a>In keeping with their tradition of community collaboration on the Java platform, Oracle is asking the enterprise development community to participate in a survey to help define the requirements for the next version of Java Enterprise Edition, Java EE 8. 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/0.java">Interview with David Haney, Creator of SimplSockets</a>We interviewed David Haney, creator of SimplSockets for .NET about TCP programming in the modern age. 
-  </div>  
+  </div>   
  </body>
 </html>

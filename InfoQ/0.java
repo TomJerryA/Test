@@ -1,27 +1,17 @@
-<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>Interview with David Haney, Creator of SimplSockets</h3><p>We interviewed David Haney, creator of <a href="https://github.com/ironyx/simplsockets">SimplSockets</a> for .NET about TCP programming in the modern age.</p>
-<p>InfoQ: These days most people seem to be using HTTP rather than a lower level protocol such as TCP. Why do you think TCP and UDP are still important?</p>
-<blockquote> 
- <p>HTTP is an excellent communication protocol for many purposes and applications. It makes communication very simple by handling message framing, error codes, and other aspects of low level network communication for you. However, this ease of use comes with a substantial amount of overhead which is introduced by the HTTP protocol specification (which builds on top of the TCP protocol). While most applications can benefit greatly from the simplicity of HTTP, some applications deem network performance as absolutely critical to success. These applications aim to squeeze every single spare cycle out of their code in order to maximize throughput, and the overhead of the HTTP protocol and its related headers just doesn't make sense for their needs. Examples of such applications are search engines, distributed caching solutions, and video streaming services. For these sorts of applications, the performance of TCP or UDP simply cannot be matched by HTTP. Though more complex to implement, TCP and UDP offer substantial increases to throughput that allow applications to be as performant as possible.</p> 
+<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>XAML Spy 2.0.5 Adds Add App Wizard and Feature Improvements</h3><p><a href="http://xamlspy.com/download">XAML Spy 2.0.5</a> has been released with an Add App Wizard with which developers will be able to add any XAML app such as Silverlight, Windows Phone, Windows Store and WPF with or without source code easily. It also provide support for spying those XAML apps for which the source code is not available.</p>
+<p>With the help of the latest update, you will be able to navigate installed apps by selecting the <em>Show All Apps</em> button in the <em>XAML Spy Explorer</em> toolbar in addition to the ability to explore Silverlight out of browser and Windows Store apps from within <a href="http://msdn.microsoft.com/en-us/library/dd831853.aspx">Visual Studio 2013</a>.</p>
+<p>It is also possible to enable and disable XAML Spy for multiple projects at a time from the <em>Manage XAML Spy for Solution</em> dialog, which can be opened by right clicking Solution Explorer. As a developer, you will be able to know the name of those projects for which XAML Spy is enabled.<br /> <br /> InfoQ had a chat with Koen Zwikstra, First Floor Software to know more about the latest release.</p>
+<p><strong>InfoQ: Can you share with us the real purpose and benefit of XAML Spy?</strong></p>
+<blockquote>
+  The ultimate purpose of XAML Spy is to save time. XAML Spy provides developers with a unique insight 'under the hood' of their XAML app at runtime. XAML Spy helps developers to understand how their XAML apps really work and helps in quickly identifying possible issues. By providing tools for quickly identifying issues, developer productivity is definitely improved. 
 </blockquote>
-<p>InfoQ: What does SimplSockets offer over .NET’s built-in socket libraries?</p>
-<blockquote> 
- <p>SimplSockets does not aim to reinvent the already well-working wheel that is .NET sockets; it instead builds upon them. When implementing a custom communication protocol over sockets, there are many boilerplate or &quot;classic&quot; problems that must be addressed which are not trivial to solve. For example, you cannot control how a TCP socket delivers your message. It may choose to deliver it in one packet, or ten packets, or even fifty packets, and you must do the manual work of recombining these packets of information into the original message yourself. On top of that, TCP does not tell you how many bytes of the message remain to be received, so you must devise a custom protocol header that lets your receiver know how many more bytes it needs to wait for before the message is complete... And then what happens if you receive some of the message and the sender disconnects? You can't wait forever for the message to be received, and so you must create a timeout or failure system... And so deeper and deeper down the rabbit hole you go as you unwind and resolve more and more issues related to creating a custom protocol.</p> 
-</blockquote>
-<blockquote> 
- <p>Why solve all of these problems yourself when everyone else who uses TCP sockets needs to solve them too? That's precisely what I feel open source libraries are for! Therefore, I built SimplSockets to fill that gap and solve these classic TCP sockets problems in a way that anyone can use and re-use. The custom protocol that it uses comes with an 8 byte overhead per message (not per packet), but I feel that is an excellent tradeoff for the benefits it delivers. One major benefit is client multiplexing: a single open connection to a server can be used by multiple threads in an entirely thread-safe way. This helps to prevent port exhaustion and connection setup/teardown overhead. On the server side, the implementation is entirely asynchronous and takes advantage of completion threads and proprietary object pooling/re-use to enable your application to remain incredibly performant.</p> 
-</blockquote>
-<blockquote> 
- <p>SimplSockets aims to make .NET sockets better and easier to use, not different and proprietary.</p> 
-</blockquote>
-<p>InfoQ: Does SimplSockets offer async/await or IObservable support?</p>
-<blockquote> 
- <p>SimplSockets does not offer async/await or IObservable support, and this is by design. I wanted SimplSockets to be available to people who are not using .NET 4.5 since it does not truly depend upon any of .NET 4.5's introduced features. The targeted framework version is .NET 4.0 to allow more people the ability to use it, though I may introduce an async/await enabled version for .NET 4.5 in the future.</p> 
-</blockquote>
-<p>InfoQ: With any open source project licensing is important. Why did you choose GPL 3 for the SimplSockets license?</p>
-<blockquote> 
- <p>I believe that sharing knowledge is important in learning and growing as both a developer and human being. Having said that, I also believe that you should be paid for work that you do which others profit from. As a result, I chose GPLv3 to balance my philosophies: other open source or free projects can use it for free, while those who plan to profit from it must pay their dues in the form of a commercial license.</p> 
-</blockquote>
-<p>InfoQ: What do you have planned for future versions of SimplSockets?</p>
-<blockquote> 
- <p>The next version will include a more robust communicaton timeout system with configurable timeout intervals. On top of that, I hope to release a version of SimplSockets that operates on the .NET Micro Framework so that .NET driven low level embedded systems can take advantage of it as well. Beyond that roadmap, I plan to entertain any and all suggestions from users of the library and would love to discuss potential improvements; I do not believe for a second that I have all of the answers or have thought of all of the angles!</p> 
+<p><strong>InfoQ: Can you share us the few scenarios where XAML Spy can be used?</strong></p>
+<blockquote>
+  Scenario 1 - Understand how and why visuals are rendered. XAML Spy provides a real-time view of the application's user interface visual tree, with access to all properties of any visual
+ <br /> 
+ <br /> Scenario 2 - Full filesystem access to the app storage. Most XAML apps come with isolated storage on local disk. It's fairly hard to access the folder and files in this storage. XAML Spy makes it super easy to access and modify the files of the isolated storage.
+ <br /> 
+ <br /> Scenario 3 - Performance monitors help identify possible memory and rendering issues. 
+ <br /> 
+ <br /> Scenario 4 - The automation visual tree aids in learning how a XAML app manifests itself to accessibility apps (such as screen readers and other automation tools). 
 </blockquote><br><br><br><br><br><br></body></html>

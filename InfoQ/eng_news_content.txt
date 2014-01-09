@@ -1,1 +1,1 @@
-Stephan Schwab wrote a&nbsp;blog post about the risk and side effects of agile coaching. He described why people might feel threatened when a coach starts working with them:
+With the help of the latest update, you will be able to navigate installed apps by selecting the <em>Show All Apps</em> button in the <em>XAML Spy Explorer</em> toolbar in addition to the ability to explore Silverlight out of browser and Windows Store apps from within Visual Studio 2013.
