@@ -1,40 +1,23 @@
-<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>过程改进：认证导向VS.获益导向</h3><p>在基于CMMI的过程改进项目中，往往以达到某个成熟度级别作为目标。然而，对组织机构来说，能够洞见某个成熟度级别与其业务目标之间的关系，并了解从自身的过程改进中能够预期获得哪些收益，也许更加重要。在<a href="http://www.sepg.unicom.co.uk/">SEPG Europe 2013</a>大会上，SITA（国际航空电信协会）的项目组合主管Michelle Krupa畅谈了改进项目从认证导向转变为获益导向的过程中所遇到的挑战。</p>
-<p>在接受InfoQ采访的过程中，Michelle解释了SITA过程改进项目，如何从以CMMI成熟度等级为基础，转变成一套获益导向的方法。</p>
-<p><strong>InfoQ</strong><strong>：感谢Michelle接受我们的采访。首先，能否请你为那些不了解SITA的读者，介绍一下你们主要从事何种类型的业务？</strong></p>
+<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>Frans Bouma认为代码先行的ORM是“愚蠢的”</h3><p>在使用ORM构建基于数据库的项目时，开发者可以选择是先设计数据库表，还是先设计类或抽象模型。为了展开讨论，我们先列出Frans Bouma的结论：代码先行的ORM是愚蠢的。</p>
 <blockquote> 
- <p><strong>Michelle</strong><strong>：</strong>针对航空运输、全球分销系统和政府客户，SITA提供和管理基于全世界最昂贵网络的业务解决方案。我们与行业组织合作，以提供通讯和IT组合服务——特别是针对航空运输行业（ATI）。与ATI携手，我们创新并开发了许多信息技术应用以及通信服务。</p> 
+ <p>先写代码，比如实体类，与先设计表一样有问题，它们都需要反向工程来得到抽象实体定义，以创建“对方”的元素：对类进行反向工程得到抽象实体定义，然后创建表和映射，或对表进行反向工程得到类，然后创建映射，这两者是等价的。核心问题是，如果先设计类或表，就等于先得到了抽象实体定义的某个投影的最终结果：类不是从天上掉下来的，在决定了领域包含这样一个类型后，它就存在了。例如，一个“Customer”，包含给定的字段：Id、CompanyName、Address等。</p> 
 </blockquote>
-<p><strong>InfoQ</strong><strong>：你们改进项目的目标是达到CMMI成熟度等级3级。为何选择这一目标？</strong></p>
+<p>他还说道，</p>
 <blockquote> 
- <p><strong>Michelle</strong><strong>：</strong>我们过去曾经认为，从事软件开发和质量方面工作的组织机构达到该等级后，将在其质量、交付和目标实现方面，拥有一定程度的可重复性。</p> 
+ <p>我知道“代码先行”的整个思想来源于开发者希望编写代码，用代码来思考，然后将对象持久化到数据库中。但事实是，你持久化到数据库的并不是对象，而是它们的内容，是实体的实例。而一个实体类的实例（即一个对象）则很有可能比实体的实例包含更多的数据，所以看似存储“对象”，实则无法覆盖对象。拿序列化一个对象来打比方，我们序列化的并不是对象，而是其数据的子集，得到的结果与源并不一定匹配。在将数据反序列化为JavaScript对象的时候，我们还能将它视为原始的.NET对象吗？当然不能，它是对象内部的数据，可以存在于任何地方。</p> 
+ <p>那么，当“对象”序列化成JSON时，数据被序列化，这没有异议。但当同样的对象序列化成表行时，对象作为一个整体被序列化，这不是更奇怪吗？如果你仍然坚信ORM就是持久化对象，那么另一个不使用ORM但使用相同数据库的应用程序，在将“对象”持久化为表行时会发生什么呢？这个应用程序（甚至可以用完全不同的语言编写）可以完全正常地读取和消费存储于表行中的实体实例，不需要知道你将其视为一个持久化的.NET对象。因为让人惊奇的是，表行中的内容并不是持久化的对象，而是持久化的实体实例，一个抽象实体定义的实例，不是类定义的实例。</p> 
 </blockquote>
-<p><strong>InfoQ</strong><strong>：你们的改进项目的启动基于某个业务案例。但随后它遇到了预算削减。那么该项目是如何应对这一问题的？</strong></p>
+<p>Reddit用户remy_porter对<a href="http://www.reddit.com/r/programming/comments/1t0rh6/codefirst_or_mapping_is_actually_rather_silly/?already_submitted=true">这个问题有不同的看法</a>，</p>
 <blockquote> 
- <p><strong>Michelle：</strong>我们的项目泰然自若地面对这一现实。我们查看自己能做哪些事情，以及必须应对哪些事情。此外，我们尝试着使用内部资源，而不是寻求外部过程顾问的支持。我们有一位主任评估师（Lead Appraiser），他同时也是经过认证的SEI教练。因此在培训层面，我们能够在一定程度上节约成本。</p> 
- <p>后来我们发现，来自内部的知识和经验对我们的帮助有其限度。于是，我们离开那位内部主任评估师，开始寻找某个咨询公司以填补缺口——我们希望这一咨询公司不止拥有相关经验，还能够与我们组织机构的文化相匹配。</p> 
+ <p>我认为真正糟糕的是EF中的模型先行（Model First）。我痛恨它强制你使用的GUI工具。</p> 
+ <p>我最喜欢的方式是用代码先行来实现一种殊途同归的方案。我以最有意义的方式编写对象模型，再以最有意义的方式编写数据库模型，然后使用FluentAPI来让两者匹配。</p> 
+ <p>不过我承认，我用这种方式只是漫无目的地抛出数据库对象图，因为我告诉过管理层这个应用应该使用NoSQL，但他们却充耳不闻（该数据模型是存储不同结构的文档，但却要求用SQL Server）。</p> 
 </blockquote>
-<p><strong>InfoQ</strong><strong>：你提到了“避免困难的事情”。能否展开说一说这个话题？</strong></p>
+<p>Nishruu倾向于将其用于测试，</p>
 <blockquote> 
- <p><strong>Michelle：</strong>当然，我们在不知不觉间避免了困难的事情，不过这从来不是一件刻意去做的事情。我们的过程已经达到了成熟度等级2级的目标，而且我们的项目也在使用这些过程。然而，从评测结果来看他们并不是非常有效。我们评测了所有能够评测的内容，而不仅仅是那些指标项。在深入考察组织机构时，我们发现尽管改进项目似乎是在遵循这些过程，但实际上这一切并未深入根植于团队中，而且项目经理们更像是过程经理。</p> 
+ <p>没错，我通常使用Fluent API来映射已经设计好的数据库。</p> 
+ <p>代码先行真正有用的场景，是用内存SQLite DB或某种LocalDB来快速进行集成或单元测试。然后可以为测试概括而快速地重新创建数据库结构。</p> 
+ <p>NHibernate就很好，能和内存SQLite DB很好地工作。EF就不尽如人意了，使用LocalDB时只能通过MDF文件重新创建数据库架构（schema）。</p> 
 </blockquote>
-<p><strong>InfoQ</strong><strong>：为了改变改进项目的焦点，同时确保依旧朝着原有的成熟度等级3级目标前进，你们做了哪些事情？</strong></p>
-<blockquote> 
- <p><strong>Michelle：</strong>我们回过头来重新查看业务案例，从而审视我们的改进项目打算输出什么结果，以及为什么要输出这些内容。虽然我们的目标是最终达成成熟度等级3级，但是这同时也意味着要从中得到一系列的收益。</p> 
- <p>我们查看SITA的战略视图和战略目标，并将每个项目的收益与战略目标相对照。我找到身为改进项目赞助者的高级副总裁，并与他一道识别出获益的赞助者与我们的内部客户——他们都向这位高级副总裁汇报。我们构建起一套关键收益指标（KBI），并定义了支持的KPI。我们每个解决方案分支领域的副总裁都参与了定义和确认KBI及KPI的细节层面。</p> 
-</blockquote>
-<p><strong>InfoQ</strong><strong>：你提到重新定义了项目目标，那么新目标是什么？它对项目产生怎样的了帮助？</strong></p>
-<blockquote> 
- <p><strong>Michelle：</strong>现在，项目的焦点已经转移到交付这些收益并查看投资回报率的方面。成熟度等级3级依旧是个目标，但是看到收益交付则是当下的焦点。这帮助我们聚焦于正确的事情。使用业务概念来将可能影响该项目的事情联系在一起；让各解决方案分支领域副总裁们关注查看在改进项目投入资金所产生的价值；从而提高了改进项目整体的可见性和战略重要性。</p> 
-</blockquote>
-<p><strong>InfoQ</strong><strong>：在这个改进项目中，你有哪些经验或教训希望与我们InfoQ的读者们分享？</strong></p>
-<blockquote> 
- <p><strong>Michelle：</strong>我们的经验和教训有：</p> 
- <p>不要让认证成为驱动改进项目的动力。</p> 
- <p>先理解业务对改进项目的需求，然后满足它们。</p> 
- <p>不要让评测空等，否则你会迷失方向。</p> 
- <p>透明性和责任制是项目成功的伙伴，即时他们有时候会带来痛楚。</p> 
- <p>发起人制度至关重要，你需要能够利用政治的力量。</p> 
- <p>将过程切实部署，如果它们未能得以运用，那么你将无法从中获得收益。</p> 
- <p>拥有过程并不等于交付了收益。</p> 
-</blockquote>
-<p><strong>查看英文原文：</strong><a href="http://www.infoq.com/news/2013/12/benefits-led-improvement-cmmi">Benefits-led Process Improvement Using the CMMI</a></p><br><br><br><br><br><br></body></html>
+<p>InfoQ邀请您阅读<a href="http://weblogs.asp.net/fbouma/archive/2013/12/14/code-first-o-r-mapping-is-actually-rather-silly.aspx">Bouma的完整吐槽</a>，并发表您的观点。</p>
+<p><strong>原文英文链接：</strong><a href="http://www.infoq.com/news/2013/12/Code-First-Debate">Frans Bouma Argues Code First O/R Mapping is “Silly”</a></p><br><br><br><br><br><br></body></html>

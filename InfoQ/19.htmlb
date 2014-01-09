@@ -1,447 +1,222 @@
-<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>全程软件测试实践：从需求到运营</h3><p>之前一篇文章《<a href="http://www.infoq.com/cn/articles/transformation-way-software-testing/">软件测试转型之路</a>》介绍过我们转型的一些实践，下文将介绍从2011年3月至今，持续改进的全程软件测试实践活动。</p>
-<h2>1 全程软件测试图解</h2>
-<p>传统的软件测试，可以简单描述为下图所示：</p>
-<p><img alt="" src="http://infoqstatic.com/resource/articles/whole-software-testing-practice-requirements-to-operational/zh/resources/1016000.png" _p="true" href="img://null" /></p>
-<p>图-1-传统交付测试</p>
-<p>开发人员完成任务之后，最后交付给测试人员，这种模式下，测试人员不能及早发现需求阶段的缺陷，同时测试工作的开展也滞后了，产品质量得不到有效的过程控制和分析，总体进度可能会由于返工问题造成拖延。</p>
-<p>那什么是全程软件测试，如下图所示：</p>
+<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>ATDD实战</h3><h2>验收测试驱动开发入门</h2>
+<p><img src="http://infoqstatic.com/resource/articles/atdd-from-the-trenches/zh/resources/1123020.jpg" alt="" _href="img://null" _p="true" /></p>
+<p>你是否遇到过这样的场景：</p>
+<p><img src="http://infoqstatic.com/resource/articles/atdd-from-the-trenches/zh/resources/1123021.jpg" alt="" _href="img://null" _p="true" /></p>
+<p>那么本文就是为您而作——以一个具体的例子阐述了如何基于已有的代码库启用验收测试驱动开发（acceptance-test driven development）。这是<a href="http://blog.crisp.se/2013/07/12/henrikkniberg/the-solution-to-technical-debt">应对技术债解决方案</a>的一部分。</p>
+<p>这是带有一定缺陷的现实世界的样例，并不像教科书中的样例那样完美。所以完全是来自于实战。我只会使用Java与Junit，而没有使用其他的第三方测试框架（这些框架基本上已经被过度使用了）。</p>
+<p><b>免责声明：</b>我并不是说这就是正确地方式，关于ATDD有很多其他的“偏好（flavors）” 。同时，本文中也没有太多新鲜的或革新性的内容，它只是一些确定的实践以及通过辛苦得来的经验。</p>
 <div id="lowerFullwidthVCR"></div>
-<p>(点击图像放大)</p>
-<p><a href="http://infoqstatic.com/resource/articles/whole-software-testing-practice-requirements-to-operational/zh/resources/1016001.png"><img width="500" alt="" src="http://infoqstatic.com/resource/articles/whole-software-testing-practice-requirements-to-operational/zh/resources/1016001.png" _href="img://1016001.png" _p="true" /></a></p>
-<p>图-2-全程软件测试图</p>
-<p>在整个SDLC中，三条角色主线和四个阶段。</p>
-<p>三条角色主线：开发、QA、测试，文中主要讲解测试。</p>
-<p>四个阶段：需求、开发、发布、日常运营。</p>
-<p>简单来说可以归纳为下图所示：</p>
-<p><img width="500" _p="true" _href="img://null" src="http://infoqstatic.com/resource/articles/whole-software-testing-practice-requirements-to-operational/zh/resources/10160020.png" alt="" /></p>
-<p>图-3-全程软件测试概述</p>
-<p>测试人员贯穿这四个阶段，开展测试活动，试实践活动简单描述如下图所示：</p>
-<p>(点击图像放大)</p>
-<p><a href="http://infoqstatic.com/resource/articles/whole-software-testing-practice-requirements-to-operational/zh/resources/1027000.png"><img width="500" alt="" src="http://infoqstatic.com/resource/articles/whole-software-testing-practice-requirements-to-operational/zh/resources/1027000.png" _href="img://1027000.png" _p="true" /></a></p>
-<p>图-4-全程软件测试概述</p>
-<p>每个阶段也有开发人员对应的活动，以及QA人员对应的活动。</p>
-<p>对于产品而言，每次版本迭代，都会经历：需求、开发、发布，最后推向日常运营，发布阶段虚线指向的需求阶段和日常运营阶段，并不是一个终止阶段，而是不断迭代的过程。</p>
-<p>那测试人员是如何开展全程软件测试活动的呢？</p>
-<h2>2 需求阶段测试</h2>
-<p>在需求阶段，开发人员、测试人员、QA人员主要做的事情，如下表所示：</p>
-<p> </p>
-<table cellspacing="0" cellpadding="0" border="1"> 
- <tbody> 
-  <tr> 
-   <td width="72" valign="top"> <p>阶段</p> </td> 
-   <td width="155" valign="top"> <p>开发人员</p> </td> 
-   <td width="145" valign="top"> <p>测试人员</p> </td> 
-   <td width="182" valign="top"> <p>QA人员</p> </td> 
-  </tr> 
-  <tr> 
-   <td width="72" valign="top"> <p>需求阶段</p> </td> 
-   <td width="155" valign="top"> 
-    <ul> 
-     <li>用户故事分析</li> 
-     <li>用户故事估时</li> 
-    </ul> </td> 
-   <td width="145" valign="top"> 
-    <ul> 
-     <li>参与用户故事分析、挖掘故事含混性</li> 
-     <li>参考经验库质疑开发的时间估算</li> 
-    </ul> </td> 
-   <td width="182" valign="top"> 
-    <ul> 
-     <li>保证确认需求活动符合需求管理过程</li> 
-     <li>管理用户故事评审</li> 
-     <li>管理需求变更</li> 
-    </ul> </td> 
-  </tr> 
- </tbody> 
-</table>
-<p></p>
-<p>作为测试人员的主要实践如下：</p>
-<p><strong>参与用户故事分析、挖掘故事含混性</strong></p>
-<p>在sprint会议上，对用户故事进行分析，检查功能性需求和非功能性需求是否描述清晰，其中可以将非功能性需求作为验收要点，例如一个用户故事：</p>
-<p>“客户希望提高响应时间”</p>
-<p>测试人员应当协助开发人员消除故事的含混性：提高什么的响应时间和响应时间为多少？可以建议修改为：</p>
-<p>“客户信息普通查询返回结果的响应时间为5s内”</p>
-<p>说明在“客户信息”模块，进行“普通查询”操作，返回结果的时间在5s内，这个陈述句已经清晰表达了，也达到了消除含混性的效果。同样，测试人员可以编写提高查询效率的用户故事：</p>
-<p>“客户在信息查询模块，进行普通查询，能够在5s内返回结果”</p>
-<p>“备注：5s为非功能性需求，也是验收要点”</p>
-<p><strong>参考经验库质疑开发的时间估算</strong></p>
-<p>在sprint会议上，开发人员根据经验出牌（团队自己定义的规则，用扑克牌）估算时间，当给出最终结果的时候，测试人员应当对其进行质疑。测试人员借鉴历史经验库：开发人员在某方面的技能如何、该模块曾经产生过何种程度的缺陷、修复缺陷的消耗时间是多少等等，综合考虑，提出疑问，让开发估算最终的时间，尽可能考虑这些因素。当然，测试人员能够质疑的其中一个前提是：测试人员具备相关开发经验。</p>
-<p>小结：在需求阶段，测试人员要发挥作用，减少含混性需求引入到开发阶段、同时协助开发做好时间估算。</p>
-<h2>3 开发阶段测试</h2>
-<p>在开发阶段，开发人员、测试人员、QA人员主要做的事情，如下表所示：</p>
-<p> </p>
-<table cellspacing="0" cellpadding="0" border="1"> 
- <tbody> 
-  <tr> 
-   <td width="72" valign="top"> <p>阶段</p> </td> 
-   <td width="155" valign="top"> <p>开发人员</p> </td> 
-   <td width="145" valign="top"> <p>测试人员</p> </td> 
-   <td width="182" valign="top"> <p>QA人员</p> </td> 
-  </tr> 
-  <tr> 
-   <td width="72" valign="top"> <p>开发阶段</p> </td> 
-   <td width="155" valign="top"> 
-    <ul> 
-     <li>架构评审</li> 
-     <li>功能要点确认</li> 
-     <li>编码开发</li> 
-     <li>单元测试</li> 
-     <li>开发自测</li> 
-     <li>代码评审</li> 
-     <li>Bug Fix</li> 
-    </ul> </td> 
-   <td width="145" valign="top"> 
-    <ul> 
-     <li>功能要点确认</li> 
-     <li>测试用例设计</li> 
-     <li>用例评审</li> 
-     <li>测试探索</li> 
-     <li>功能测试</li> 
-     <li>Bug Tracking</li> 
-     <li>回归测试</li> 
-     <li>系统测试</li> 
-     <li>验收测试</li> 
-    </ul> </td> 
-   <td width="182" valign="top"> 
-    <ul> 
-     <li>管理评审活动</li> 
-     <li>管理文档产物</li> 
-    </ul> </td> 
-  </tr> 
- </tbody> 
-</table>
-<p></p>
-<p>作为测试人员的主要实践如下：</p>
-<p><strong>功能要点确认</strong></p>
-<p>Xmind是一个非常好用的脑图工具，通常在开发人员进行编码前，测试人员会针对需求处理的用户故事，与开发人员进行确认，修正理解偏差，确保需求理解一致。</p>
-<p><img width="550" alt="" src="http://infoqstatic.com/resource/articles/whole-software-testing-practice-requirements-to-operational/zh/resources/1016005.png" _p="true" href="img://null" /></p>
-<p>图-5-脑图用例模板</p>
-<p><strong>测试用例设计</strong></p>
-<p>测试人员主要设计测试故事点，使用DSL(Domain Specific language)，infoq文章（<a href="http://www.infoq.com/cn/articles/leveraging-dsl-in-agile-test">敏捷测试之借力DSL</a>），对测试用例进行描述，包括三个基本要素：</p>
-<p>Feature、Scenario、Example，补充要素：xmind、Requirement。</p>
-<p>Feature：把测试分类到某个模块，并对这个特性本身的业务目的进行相关描述，带进业 务目标，传递业务知识。</p>
-<p>Scenario：标明这个Feature的测试场景，可以使用文字描述步骤，或者使用xmind脑图</p>
-<p>描述，场景中的数据使用Examples中列出的。</p>
-<p>Example：引出具体的数据表格把用到的数据都展示出来，避免相同步骤因为测试数据 的变化而重复若干遍造成冗余。</p>
-<p>Xmind：脑图文件，展示测试故事点</p>
-<p>Requirement：关联需求管理系统的需求id。</p>
-<p><strong>用例评审</strong></p>
-<p>主要是坚持同行评审的原则，主要在测试组内进行，负责该任务的开发人员也会参与，简单来说就是对测试用例进行查漏补缺的工作。</p>
-<p><strong>测试探索</strong></p>
-<p>进行了“功能要点确认”和“用例评审”后，为了保证测试场景的覆盖率，需要再进行测试探索。在开发人员完成雏形之后，使用探索式测试的策略，对功能基本流程进行有目的的快速走查，挖掘功能不确定的地方和补充测试场景，避免不确定的因素拖延到开发阶段后期，造成返工。</p>
-<p>其中：功能测试、Bug Tracking、回归测试、系统测试、验收测试都是日常测试工作所需环节。</p>
-<p><strong>燃尽图发布</strong></p>
-<p>另外，测试人员还有一项重要工作，每日发布燃尽图，让团队了解当前进度情况，总结问题</p>
-<p>所在，寻求耗时超过预期时间任务的解决办法。</p>
-<p><img width="500" alt="" src="http://infoqstatic.com/resource/articles/whole-software-testing-practice-requirements-to-operational/zh/resources/1016006.png" _href="img://null" _p="true" /></p>
-<p>图-6-燃尽图</p>
-<p>图形特点：</p>
-<p>1）剩余工时在计划基准上方，代表进度有所延迟，应抓紧进度；</p>
-<p>发现此类问题，需要分析总结，原则是保证交付时间，对相应任务进行调整，拥抱变化，发现任务粒度太大，该拆分的继续拆分；对于重构需要慎重，不要过度深入重构，给测试带来额外工作量，影响整个进度，对于整个版本而言，只有开发、测试在承诺的时间内完成任务，才是真正完成，仅仅开发完成交付算不上成功。</p>
-<p>2）剩余工时在计划基准接近，代表进展良好，继续保持；</p>
-<p>此时也需要查看在这种进度下，优先级高的任务是否得到时间保证，而不是因为处理完简单任务才使得燃尽图长的好看。往往有些开发人员，喜欢挑着任务来做，把简单易做、优先级的任务先完成了，因为这些总在预期内能够完成，所以前期燃尽图的趋势看起来没有问题。</p>
-<p><strong>缺陷经验库</strong></p>
-<p>每个团队都存在开发/测试新人和开发/测试老人，当测试人员与开发新人进行需求确认的时候，还需要进行缺陷经验教训的提醒，避免多走弯路。</p>
-<p>(点击图像放大)</p>
-<p><a href="http://infoqstatic.com/resource/articles/whole-software-testing-practice-requirements-to-operational/zh/resources/1016007.png"><img width="550" alt="" src="http://infoqstatic.com/resource/articles/whole-software-testing-practice-requirements-to-operational/zh/resources/1016007.png" _href="img://1016002.png" _p="true" /></a></p>
-<p>图-7-缺陷总结</p>
-<p><strong>提升开发自测质量</strong></p>
-<p>测试人员可以提供相关<a href="http://www.ibm.com/developerworks/cn/web/1303_sujg_webchecklist1/index.html">checklist</a>（大家可以根据原作者提供的修改为符合团队的）帮助开发人员在编码过程中关注开发自测的要点，从而提升质量。</p>
-<p>(点击图像放大)</p>
-<p><a href="http://infoqstatic.com/resource/articles/whole-software-testing-practice-requirements-to-operational/zh/resources/1016008.png"><img width="550" alt="" src="http://infoqstatic.com/resource/articles/whole-software-testing-practice-requirements-to-operational/zh/resources/1016008.png" _href="img://1016002.png" _p="true" /></a></p>
-<p>图-8-web软件测试checklist</p>
-<p><strong>持续集成</strong></p>
-<p>利用持续集成（Jenkins）平台，做到快速的构建开发代码，自动的单元测试化，来提高开发代码的效率和质量。</p>
-<p>负责单元测试的开发人员，会收到失败构建的邮件；</p>
-<p>负责集成测试的开发人员，会收到失败构建的邮件；</p>
-<p>负责自动化测试（Selenium）的测试负责人员，会收到失败构建的邮件；</p>
-<p>这种方式，确保单元测试、集成测试、自动化测试，有相关人员关注和维护。</p>
-<p>(点击图像放大)</p>
-<p><a href="http://infoqstatic.com/resource/articles/whole-software-testing-practice-requirements-to-operational/zh/resources/1016009.png"><img width="550" alt="" src="http://infoqstatic.com/resource/articles/whole-software-testing-practice-requirements-to-operational/zh/resources/1016009.png" _href="img://1016002.png" _p="true" /></a></p>
-<p>图-9-持续集成</p>
-<p><strong>Sonar反馈</strong></p>
-<p>Sonar is an open platform to manage code quality. As such, it covers the 7 axes of code quality。</p>
-<p>(点击图像放大)</p>
-<p><a href="http://infoqstatic.com/resource/articles/whole-software-testing-practice-requirements-to-operational/zh/resources/1016010.png"><img width="550" alt="" src="http://infoqstatic.com/resource/articles/whole-software-testing-practice-requirements-to-operational/zh/resources/1016010.png" _href="img://1016002.png" _p="true" /></a></p>
-<p>图-10-sonar分析结果</p>
-<p>测试人员主要反馈问题如下：</p>
-<p>Code coverage：团队要求代码覆盖率在80%以上；</p>
-<p>Test success：团队要求测试成功率在100%；</p>
-<p>Duplications：团队要求代码重复率在10%以下；</p>
-<p>Violations：团队要求Major类别的代码规则缺陷在20以下；</p>
-<p>开发团队必须保证每个环境的质量目标，才能够保证整个的质量目标。</p>
-<p>小结：</p>
-<p>测试人员与开发人员永远不是敌对关系，而是协助关系，确切来说是质量天枰的两边，任何一边的工作没有做好，都会失去平衡。</p>
-<h2>4 发布阶段测试</h2>
-<p>在发布阶段，开发人员、测试人员、QA人员主要做的事情，如下表所示：</p>
-<p> </p>
-<table cellspacing="0" cellpadding="0" border="1"> 
- <tbody> 
-  <tr> 
-   <td width="72" valign="top"> <p>阶段</p> </td> 
-   <td width="155" valign="top"> <p>开发人员</p> </td> 
-   <td width="145" valign="top"> <p>测试人员</p> </td> 
-   <td width="182" valign="top"> <p>QA人员</p> </td> 
-  </tr> 
-  <tr> 
-   <td width="72" valign="top"> <p>发布阶段</p> </td> 
-   <td width="155" valign="top"> 
-    <ul> 
-     <li>上线申请</li> 
-     <li>上线部署</li> 
-     <li>服务监控</li> 
-    </ul> </td> 
-   <td width="145" valign="top"> 
-    <ul> 
-     <li>测试报告</li> 
-     <li>线上功能检查</li> 
-    </ul> </td> 
-   <td width="182" valign="top"> 
-    <ul> 
-     <li>管理评审活动</li> 
-     <li>管理文档产物</li> 
-    </ul> </td> 
-  </tr> 
- </tbody> 
-</table>
-<p></p>
-<p>作为测试人员的主要实践如下：</p>
-<p><strong>测试报告</strong></p>
-<p>完成验收测试，提供测试报告，给出测试数据度量，例如：</p>
+<h2>我想做什么</h2>
+<p>几天前，我开始为<a href="http://webwhiteboard.com">webwhiteboard.com</a>（我的小项目）添加密码保护的特性。很久以来，人们就希望有一种密码保护在线白板的方式，现在该实现这个功能了。</p>
+<p>听起来这是一个很简单的特性，但是需要做很多的设计决策。到目前为止，webwhiteboard.com是基于匿名使用的，没有任何的账户、登录或密码这样的东西。什么人能够保护白板呢？谁能访问它呢？如果我忘记密码该怎么办？我们如何在足够安全的同时保证尽可能简单？</p>
+<p>webwhiteboard的代码库有着很棒的单元测试和集成测试的覆盖率。但是它并没有验收测试，也就是站在用户的角度进行端对端流程的测试。</p>
+<h2>设计要素</h2>
+<p>webwhiteboard的主要设计目标是很简单的：尽可能简化登录、账户以及其他繁琐事情的需求。所以我为密码特性建立了两个设计限制：</p>
 <ul> 
- <li><b>测试发现缺陷总数：</b>测试过程中产生的去除状态为“无效”、“不用改”的缺陷数目。</li> 
- <li><b>测试发现严重缺陷数：</b>测试过程中产生的并去除状态为“无效”、“不用改”的、且严重性为“Major”和“Critical”的缺陷总数目。</li> 
- <li><b>测试发现缺陷修复数：</b>测试过程中产生的状态为“已关闭”的缺陷数量；</li> 
- <li><b>未解决缺陷数：</b>去除状态为“无效”、“不用改”、“关闭”的缺陷总数。</li> 
- <li><b>缺陷修复率：</b>（测试发现缺陷的修复数）&divide;（测试发现缺陷总数）&times;100％</li> 
- <li><b>严重缺陷率：</b>（测试发现严重缺陷数）&divide;（测试发现缺陷总数）&times;100％</li> 
- <li><b>严重缺陷修复率：</b>（已修复的严重缺陷数）&divide;（测试发现严重缺陷数）&times;100％</li> 
- <li><b>测试需求覆盖率：</b>已测试需求个数&divide;需求总数&times;100%</li> 
+ <li>对白板设置密码需要用户认证，但是访问密码保护的白板并不需要。也就是说，用户访问保护的白板需要输入密码，而不需要“登录”。</li> 
+ <li>登录会使用第三方的OpenId/Oauth服务提供商，最初会使用Google。按照这种方式，用户就不需要再创建账号了。</li> 
 </ul>
-<p><strong>缺陷统计分析报告</strong></p>
-<p>另外，测试人员还有一项重要工作，对当前版本的缺陷进行统计分析：</p>
-<p>按缺陷级别统计： </p>
-<table cellspacing="0" cellpadding="0" border="0"> 
- <tbody> 
-  <tr> 
-   <td width="91"> <p>&nbsp;</p> </td> 
-   <td width="82"> <p><b>Critical</b></p> </td> 
-   <td width="74"> <p><b>Major</b></p> </td> 
-   <td width="83"> <p><b>Medium</b></p> </td> 
-   <td width="74"> <p><b>Minor</b></p> </td> 
-   <td width="75"> <p><b>总计</b></p> </td> 
-  </tr> 
-  <tr> 
-   <td width="91"> <p>首页</p> </td> 
-   <td width="82"> <p>0</p> </td> 
-   <td width="74"> <p>0</p> </td> 
-   <td width="83"> <p>1</p> </td> 
-   <td width="74"> <p>0</p> </td> 
-   <td width="75"> <p><b>1</b></p> </td> 
-  </tr> 
-  <tr> 
-   <td width="91"> <p>模块一</p> </td> 
-   <td width="82"> <p>0</p> </td> 
-   <td width="74"> <p>0</p> </td> 
-   <td width="83"> <p>0</p> </td> 
-   <td width="74"> <p>2</p> </td> 
-   <td width="75"> <p><b>2</b></p> </td> 
-  </tr> 
-  <tr> 
-   <td width="91"> <p>模块二</p> </td> 
-   <td width="82"> <p>0</p> </td> 
-   <td width="74"> <p>1</p> </td> 
-   <td width="83"> <p>2</p> </td> 
-   <td width="74"> <p>10</p> </td> 
-   <td width="75"> <p><b>13</b></p> </td> 
-  </tr> 
-  <tr> 
-   <td width="91"> <p>模块三</p> </td> 
-   <td width="82"> <p>0</p> </td> 
-   <td width="74"> <p>0</p> </td> 
-   <td width="83"> <p>1</p> </td> 
-   <td width="74"> <p>4</p> </td> 
-   <td width="75"> <p><b>5</b></p> </td> 
-  </tr> 
-  <tr> 
-   <td width="91"> <p>模块四</p> </td> 
-   <td width="82"> <p>0</p> </td> 
-   <td width="74"> <p>0</p> </td> 
-   <td width="83"> <p>1</p> </td> 
-   <td width="74"> <p>2</p> </td> 
-   <td width="75"> <p><b>3</b></p> </td> 
-  </tr> 
-  <tr> 
-   <td width="91"> <p>模块五</p> </td> 
-   <td width="82"> <p>0</p> </td> 
-   <td width="74"> <p>0</p> </td> 
-   <td width="83"> <p>3</p> </td> 
-   <td width="74"> <p>2</p> </td> 
-   <td width="75"> <p><b>5</b></p> </td> 
-  </tr> 
-  <tr> 
-   <td width="91"> <p>模块六</p> </td> 
-   <td width="82"> <p>0</p> </td> 
-   <td width="74"> <p>1</p> </td> 
-   <td width="83"> <p>0</p> </td> 
-   <td width="74"> <p>1</p> </td> 
-   <td width="75"> <p><b>2</b></p> </td> 
-  </tr> 
-  <tr> 
-   <td width="91"> <p>模块七</p> </td> 
-   <td width="82"> <p>0</p> </td> 
-   <td width="74"> <p>2</p> </td> 
-   <td width="83"> <p>0</p> </td> 
-   <td width="74"> <p>6</p> </td> 
-   <td width="75"> <p><b>8</b></p> </td> 
-  </tr> 
-  <tr> 
-   <td width="91"> <p>sonar</p> </td> 
-   <td width="82"> <p>0</p> </td> 
-   <td width="74"> <p>1</p> </td> 
-   <td width="83"> <p>2</p> </td> 
-   <td width="74"> <p>0</p> </td> 
-   <td width="75"> <p><b>3</b></p> </td> 
-  </tr> 
-  <tr> 
-   <td width="91"> <p><b>总计</b></p> </td> 
-   <td width="82"> <p><b>0</b></p> </td> 
-   <td width="74"> <p><b>5</b></p> </td> 
-   <td width="83"> <p><b>10</b></p> </td> 
-   <td width="74"> <p><b>27</b></p> </td> 
-   <td width="75">&nbsp;</td> 
-  </tr> 
- </tbody> 
-</table>
-<p></p>
-<p><img width="500" alt="" src="http://infoqstatic.com/resource/articles/whole-software-testing-practice-requirements-to-operational/zh/resources/1016012.png" _href="img://null" _p="true" /></p>
-<p>图-11-缺陷统计</p>
-<p>按缺陷来源统计： </p>
-<table cellspacing="0" cellpadding="0" border="0"> 
- <tbody> 
-  <tr> 
-   <td width="91">&nbsp;</td> 
-   <td width="82"> <p><b>开发1</b></p> </td> 
-   <td width="74"> <p><b>开发2</b></p> </td> 
-   <td width="83"> <p><b>开发3</b></p> </td> 
-   <td width="74"> <p><b>开发4</b></p> </td> 
-   <td width="74"> <p><b>开发5</b></p> </td> 
-   <td width="75"> <p><b>遗留</b></p> </td> 
-  </tr> 
-  <tr> 
-   <td width="91"> <p>Critical</p> </td> 
-   <td width="82"> <p>0</p> </td> 
-   <td width="74"> <p>0</p> </td> 
-   <td width="83"> <p>0</p> </td> 
-   <td width="74"> <p>0</p> </td> 
-   <td width="74"> <p>0</p> </td> 
-   <td width="75"> <p>0</p> </td> 
-  </tr> 
-  <tr> 
-   <td width="91"> <p>Major</p> </td> 
-   <td width="82"> <p>1</p> </td> 
-   <td width="74"> <p>2</p> </td> 
-   <td width="83"> <p>0</p> </td> 
-   <td width="74"> <p>0</p> </td> 
-   <td width="74"> <p>0</p> </td> 
-   <td width="75"> <p>2</p> </td> 
-  </tr> 
-  <tr> 
-   <td width="91"> <p>Medium</p> </td> 
-   <td width="82"> <p>1</p> </td> 
-   <td width="74"> <p>7</p> </td> 
-   <td width="83"> <p>0</p> </td> 
-   <td width="74"> <p>1</p> </td> 
-   <td width="74"> <p>0</p> </td> 
-   <td width="75"> <p>1</p> </td> 
-  </tr> 
-  <tr> 
-   <td width="91"> <p>Minor</p> </td> 
-   <td width="82"> <p>1</p> </td> 
-   <td width="74"> <p>7</p> </td> 
-   <td width="83"> <p>4</p> </td> 
-   <td width="74"> <p>6</p> </td> 
-   <td width="74"> <p>3</p> </td> 
-   <td width="75"> <p>6</p> </td> 
-  </tr> 
-  <tr> 
-   <td width="91"> <p><b>总计</b></p> </td> 
-   <td width="82"> <p><b>3</b></p> </td> 
-   <td width="74"> <p><b>16</b></p> </td> 
-   <td width="83"> <p><b>4</b></p> </td> 
-   <td width="74"> <p><b>7</b></p> </td> 
-   <td width="74"> <p><b>3</b></p> </td> 
-   <td width="75"> <p><b>9</b></p> </td> 
-  </tr> 
- </tbody> 
-</table>
-<p></p>
-<p>按缺陷状态统计： </p>
-<table cellspacing="0" cellpadding="0" border="0"> 
- <tbody> 
-  <tr> 
-   <td width="91"> <p><b>缺陷总数</b></p> </td> 
-   <td width="82"> <p><b>已关闭缺陷数</b></p> </td> 
-   <td width="74"> <p><b>遗留</b></p> </td> 
-   <td width="83"> <p><b>缺陷修复率</b></p> </td> 
-   <td width="74"> <p><b>严重缺陷数</b></p> </td> 
-   <td width="74"> <p><b>严重缺陷率</b></p> </td> 
-   <td width="74"> <p><b>已关闭严重缺陷数</b></p> </td> 
-   <td width="75"> <p><b>严重缺陷修复率</b></p> </td> 
-  </tr> 
-  <tr> 
-   <td width="91"> <p>42</p> </td> 
-   <td width="82"> <p>40</p> </td> 
-   <td width="74"> <p>2</p> </td> 
-   <td width="83"> <p>95%</p> </td> 
-   <td width="74"> <p>5</p> </td> 
-   <td width="74"> <p>12%</p> </td> 
-   <td width="74"> <p>5</p> </td> 
-   <td width="75"> <p>100%</p> </td> 
-  </tr> 
- </tbody> 
-</table>
-<p></p>
-<p>测试进度和问题分析：</p>
+<h2>实现方式</h2>
+<p>这里有很多尚未确定的事情：我并不确定它会如何工作，更不确定如何去实现它。因此，以下就是我的实现方式（基本的ATDD）：</p>
+<ul> 
+ <li><b>步骤1：</b>在较高的层面编写预计的流程。</li> 
+ <li><b>步骤2：</b>将其转化为可执行的验收测试。</li> 
+ <li><b>步骤3：</b>执行验收测试，但是会失败。</li> 
+ <li><b>步骤4：</b>使得验收测试成功执行。</li> 
+ <li><b>步骤5：</b>清理代码。</li> 
+</ul>
+<p>这是一个迭代式的过程，所以每一步中我都可能会返回上一步进行调整（这是我经常做的事情）。</p>
+<h2>步骤1：编写预计的流程</h2>
+<p>假设这个特性已经完成了。在我睡觉的时候有个天使来了并实现了这个特性。这听起来美妙得难以令人置信！那我该如何对其进行检验呢？要进行手工测试的话，我首先要做什么呢？应该是：</p>
 <ol> 
- <li>从BUG的严重级别分布来看，Major级别以上的BUG占12%，占的比重不高，说明大部分的主要功能已经实现了；</li> 
- <li>其中在sonar定义级别的缺陷，主要集中在代码规范和单元测试覆盖率，说明代码质量有待提高；</li> 
- <li>版本测试的前期时间较充足，后期随着开发提交完成的功能点增多，BUG数量增多，剩余测试时间变得紧张；</li> 
- <li>在版本测试期间，发现测试环境存在一次代码被覆盖、两次因开发人员操作失误影响测试执行的情况；</li> 
+ <li>我创建一个新的白板。</li> 
+ <li>我对其设置一个密码。</li> 
+ <li>Joe试图打开我的白板，被要求输入密码。</li> 
+ <li>Joe输入错误的密码，被拒绝访问。</li> 
+ <li>Joe再次尝试输入正确的密码，可以进行访问。（当然，“Joe”就是我自己，只不过使用另外一个浏览器……）。</li> 
 </ol>
-<p>小结：</p>
-<p>测试人员应当持续反馈、改进、总结每个版本发生的问题（不管是缺陷，还是过程中出现的），并对缺陷进行分析，总结出一些规律，帮助开发人员建立良好的习惯，改进代码的质量。</p>
-<h2>5 日常运营阶段测试</h2>
-<p>在日常运营阶段，开发人员、测试人员、QA人员主要做的事情，如下表所示： </p>
-<table cellspacing="0" cellpadding="0" border="1"> 
+<p>当我编写完这个小的测试脚本后，我意识到要考虑很多可选的流程。但这就是主要的场景。如果我能够让它运行起来，就已经取得了很大的进展。</p>
+<h2>步骤2：将其转化为可执行的验收测试</h2>
+<p>这是一个需要技巧的步骤。我并没有其他端到端的验收测试，所以我该如何开始呢？这个特性会与第三方的认证系统（我最初的选择是使用Janrain）以及数据库交互，并且这里还有Web相关的内容，包括弹出对话框、令牌（token）以及重定向等等。</p>
+<p>现在该退后一步。在解决“我该如何编写这个验收测试”之前，我首先要解决一个更为基本的问题，那就是“基于这个代码库，我到底该怎样编写验收测试呢？”</p>
+<p>为了推进这个问题，我试图识别可以进行测试的“尽可能简单的特性”，这就是今天已经可用的一些特性。</p>
+<h4>步骤2.1 编写尽可能简单的可执行验收测试</h4>
+<p>以下就是我能够想到的测试步骤：</p>
+<ol> 
+ <li>试图打开一个不存在的白板</li> 
+ <li>检查确认无法得到白板</li> 
+</ol>
+<p>我该如何实现这个测试呢？使用什么框架？什么工具？它是否应该涉及到GUI，或者忽略它？是否涉及到客户端代码还是直接与服务器进行交流？</p>
+<p>有很多的问题。技巧在于：不要回答这些问题！只要假设这些问题已经以某种方式很漂亮地解决了，并将测试编写为伪代码的形式。如下。</p>
+<table width="500" cellspacing="0" cellpadding="2" border="1"> 
  <tbody> 
   <tr> 
-   <td width="72" valign="top"> <p>阶段</p> </td> 
-   <td width="155" valign="top"> <p>开发人员</p> </td> 
-   <td width="145" valign="top"> <p>测试人员</p> </td> 
-   <td width="182" valign="top"> <p>QA人员</p> </td> 
-  </tr> 
-  <tr> 
-   <td width="72" valign="top"> <p>日常运营</p> </td> 
-   <td width="155" valign="top"> <p>生产故障登记</p> </td> 
-   <td width="145" valign="top"> 
-    <ul> 
-     <li>版本问题反馈和改进提议</li> 
-     <li>生产故障分析</li> 
-    </ul> </td> 
-   <td width="182" valign="top"> <p>管理日常运营活动</p> </td> 
+   <td width="500" valign="top" bgcolor="#ffffbb"><br /> <font color="#800000"><b>public</b> <b>class</b></font> AcceptanceTest { <br /> @Test <br /> <font color="#800000"><b>public</b> <b>void</b></font> openWhiteboardThatDoesntExist() { <br /> <font color="#008080">//1. 试图打开一个不存在的白板</font> <br /> <font color="#008080">//2. 检查确认无法得到白板</font> <br /> } <br /> }</td> 
   </tr> 
  </tbody> 
 </table>
-<p></p>
-<p>日常运营阶段，并不是终止阶段，即便需求、开发、发布阶段暂停活动，只要产品提供服务，日常运营都存在着。</p>
-<p>作为测试人员的主要实践如下：</p>
-<p><strong>版本问题反馈和改进提议</strong></p>
-<p>对日常运营发生的问题，总结反馈，提出改进建议，并且跟踪实施。</p>
-<p><strong>生产故障分析</strong></p>
-<p>协助开发排查生产故障，避免测试场景的遗漏。</p>
-<h2>6 总结</h2>
-<p>软件测试并不是保证产品质量的最后一道防线，测试人员也不是，测试人员的工作完全可以由更加资深的开发人员来完成，不过现实总是残酷的，目前测试与开发的比例为：1:3，在成熟的团队是这样子，另外一些还在持续改进的团队，由于资源不足，可能去到1:7。开发人员在相当长的一段时间内不可能完全替代测试人员，有个关键要素：思维方式不同，有句古话来形容：江山易改本性难移。当开发人员的思维方式改变的时候，那就成为测试人员了，倒不如把测试人员独立出来更好，并且培养给开发人员一定的测试素养，这个对保证产品质量都是有帮助的。</p>
-<p>全程软件测试实践，强调的是贯穿每个阶段的测试活动，不论是开发、还是测试，要理解双方的活动价值，什么时候该做什么事情，什么事情该做到什么程度才算好，保证每个环节的质量，才能够保证产品的全程质量，另外产品质量不是测试出来的，而是构建过程中沉淀下来的，开发人员的素养、测试人员的素养、以及团队对开发测试过程的重视程度，决定了产品质量。产品质量就如同一块蛋糕，应当切分为小块，落实到每个人手里，让每个人尝到甜头，担当起来。</p>
-<h2>作者简介</h2>
-<p><strong>李乐</strong>（<a href="http://jooben.blog.51cto.com/">博客</a>，<a href="http://weibo.com/iamlile">微博</a>），测试经理，6年以上工作经验，目前就职于ChinaCache质量部。</p><br><br><br><br><br><br></body></html>
+<p>我运行它，并且成功了！太棒了！但是稍等一下，这是错误的！在TDD三角（“红-绿-重构”）中的第一步是<i>红色</i>。所以，我需要让这个测试失败，以证明这是一个需要实现的特性。</p>
+<p><img src="http://infoqstatic.com/resource/articles/atdd-from-the-trenches/zh/resources/1123022.jpg" alt="" _href="img://null" _p="true" /></p>
+<p>我会编写一些真正的测试代码。不过，这些伪代码能够保证我的方向是正确的。</p>
+<h3>步骤2.2 将尽可能简单的验收测试变为红色</h3>
+<p>为了将其变成真正的测试，我构建了一个名为AcceptanceTestClient的类，我假装它已经魔法般地解决了所有的问题并且为我提供了漂亮的、高级的API来运行验收测试。它的使用很简单，如下：</p>
+<p><font color="#0000ff">client</font>.openWhiteboard(<font color="#0000ff">&quot;xyz&quot;</font>); <br /> <i>assertFalse</i>(<font color="#0000ff">client</font>.hasWhiteboard());</p>
+<p>当我编写这些代码的时候，创建了一个API来适应这个测试用例的需求。它应该与伪代码的行数差不多。</p>
+<p>接下来，我使用Eclispe的快捷键自动生成空白版本的AcceptanceTestClient以及我所需要的方法：</p>
+<table width="500" cellspacing="0" cellpadding="2" border="1"> 
+ <tbody> 
+  <tr> 
+   <td width="500" valign="top" bgcolor="#ccffff"><br /> <font color="#800000"><b>public</b> <b>class</b></font> AcceptanceTestClient { <br /> <font color="#800000"><b>public</b> <b>void</b></font> openWhiteboard(String string) { <br /> <font color="#008080">// <b><font color="#0080ff">TODO</font></b> Auto-generated method stub</font> <br /> } <br /> <br /> <font color="#800000"><b>public</b> <b>boolean</b></font> hasWhiteboard() { <br /> <font color="#008080">// <b><font color="#0080ff">TODO</font></b> Auto-generated method stub</font> <br /> <font color="#800000"><b>return</b> <b>false</b></font>; <br /> } <br /> }</td> 
+  </tr> 
+ </tbody> 
+</table>
+<p>以下是完整的测试类：</p>
+<table width="500" cellspacing="0" cellpadding="2" border="1"> 
+ <tbody> 
+  <tr> 
+   <td width="500" valign="top" bgcolor="#ffffbb"><br /> <font color="#800000"><b>public</b> <b>class</b></font> AcceptanceTest { <br /> AcceptanceTestClient <font color="#0000ff">client</font>; <br /> <br /> <font color="#808080">@Test</font> <br /> <font color="#800000"><b>public</b> <b>void</b></font> openWhiteboardThatDoesntExist() { <br /> <font color="#008080">//1. 试图打开一个不存在的白板</font> <br /> <font color="#0000ff">client</font>.openWhiteboard(<font color="#0000ff">&quot;xyz&quot;</font>); <br /> <br /> <font color="#008080">//2. 检查确认我无法得到白板</font> <br /> <i>assertFalse</i>(<font color="#0000ff">client</font>.hasWhiteboard()); <br /> } <br /> }</td> 
+  </tr> 
+ </tbody> 
+</table>
+<p>运行测试，但是它会失败（因为客户端为null）。很好！</p>
+<p>我都做了些什么呢？其实没有太多。但这是一个起点。验收测试的帮助类AcceptanceTestClient已经有了雏形。</p>
+<h3>步骤2.3 将尽可能简单的验收测试变为绿色</h3>
+<p>下一步就是将这个验收测试变为绿色。</p>
+<p><img src="http://infoqstatic.com/resource/articles/atdd-from-the-trenches/zh/resources/1123023.jpg" alt="" _href="img://null" _p="true" /></p>
+<p>我现在所要解决的是一个更为简单的问题。我不需要关心认证以及多用户等等的问题。稍后我可以为这些问题添加测试。</p>
+<p>对于AcceptanceTestClient，实现很标准——模拟数据库（我已经有这样的代码了）并运行一个内存版本的完整的webwhiteboard系统。</p>
+<p>以下为生产环境的设置：</p>
+<p><a href="http://infoqstatic.com/resource/articles/atdd-from-the-trenches/zh/resources/1123024.jpg"> <img width="600" src="http://infoqstatic.com/resource/articles/atdd-from-the-trenches/zh/resources/1123024.jpg" alt="" _href="img://null" _p="true" /></a></p>
+<p>（点击图片放大）</p>
+<p>技术细节：Web Whiteboard使用了GWT（Google Web Toolkit）。任何事情都是使用Java编写的，但是GWT会自动将客户端代码转换为JavaScript，并插入RPC（Remote Procedure Calls）的逻辑，从而封装异步客户端-服务器通信的繁琐细节。</p>
+<p>在验收测试的环境中，我对系统进行了“短路（short circuit）”，移除掉了所有的框架、第三方服务以及网络通信。</p>
+<p><a href="http://infoqstatic.com/resource/articles/atdd-from-the-trenches/zh/resources/1123025.jpg"> <img width="600" src="http://infoqstatic.com/resource/articles/atdd-from-the-trenches/zh/resources/1123025.jpg" alt="" _href="img://null" _p="true" /></a></p>
+<p>（点击图片放大）</p>
+<p>我创建了AcceptanceTest客户端，它会与web whiteboard服务进行交互，就像真实的客户端一样。区别都是在幕后的：</p>
+<ul> 
+ <li>真正的客户端与web whiteboard服务接口进行交互，它会运行在GWT环境之中，这个环境会将请求转换为RPC调用并转发到服务器端。</li> 
+ <li>验收测试客户端也会与web whiteboard服务接口进行交互，但是它会直接连接到本地实现中，运行测试时，没有必要进行RPC调用，因此也没有必要使用GWT。</li> 
+</ul>
+<p>同时，验收测试配置将mongo数据库（基于云的NoSQL数据库）替换为虚拟的内存数据库。</p>
+<p>这种虚拟的原因在于简化环境、让测试运行得更快并且确保独立于框架和网络因素来测试业务逻辑。</p>
+<p>看起来这似乎是一个很复杂的环境搭建过程，但实际上只是包含3行代码的初始化方法。</p>
+<table width="500" cellspacing="0" cellpadding="2" border="1"> 
+ <tbody> 
+  <tr> 
+   <td width="500" valign="top" bgcolor="#ffffbb"><br /> <font color="#800000"><b>public</b> <b>class</b></font> AcceptanceTest { <br /> AcceptanceTestClient <font color="#0000ff">client</font>; <br /> <br /> <font color="#808080">@Before</font> <br /> <font color="#800000"><b>public</b> <b>void</b></font> initClient() { <br /> WhiteboardStorage fakeStorage = <b><font color="#800000">new</font></b> FakeWhiteboardStorage(); <br /> WhiteboardService service = <b><font color="#800000">new</font></b> WhiteboardServiceImpl(fakeStorage); <br /> <font color="#0000ff">client </font>= <b><font color="#800000">new</font></b> AcceptanceTestClient(service); <br /> } <br /> <br /> <font color="#808080">@Test</font> <br /> <font color="#800000"><b>public</b> <b>void</b></font> openWhiteboardThatDoesntExist() { <br /> <font color="#0000ff">client</font>.openWhiteboard(<font color="#0000ff">&quot;xyz&quot;</font>); <br /> <i>assertFalse</i>(<font color="#0000ff">client</font>.hasWhiteboard()); <br /> } <br /> }</td> 
+  </tr> 
+ </tbody> 
+</table>
+<p>WhiteboardServiceImpl是web whiteboard系统中已有的服务端实现。</p>
+<p>注意AcceptanceTestClient的构造函数中接受一个WhiteboardService实例（这种模式称之为”依赖注入“）。这种方式给我们带来了一种便利：它不关心配置。相同的AcceptanceTestClient可以用于真实环境的测试，只需将真实配置的WhiteboardService实例传递给它即可。</p>
+<table width="500" cellspacing="0" cellpadding="2" border="1"> 
+ <tbody> 
+  <tr> 
+   <td width="500" valign="top" bgcolor="#ccffff"><br /> <font color="#800000"><b>public</b> <b>class</b></font> AcceptanceTestClient { <br /> <font color="#800000"><b>private</b> <b>final</b></font> WhiteboardService <font color="#0000ff">service</font>; <br /> <b><font color="#800000">private</font></b> WhiteboardEnvelope <font color="#0000ff">envelope</font>; <br /> <br /> <b><font color="#800000">public</font></b> AcceptanceTestClient(WhiteboardService service) { <br /> <b>this</b>.<font color="#0000ff">service</font> = service; <br /> } <br /> <br /> <font color="#800000"><b>public</b> <b>void</b></font> openWhiteboard(String whiteboardId) { <br /> <b><font color="#800000">boolean</font></b> createIfMissing = <b>false</b>; <br /> <b><font color="#800000">this</font></b>.<font color="#0000ff">envelope</font> = <font color="#0000ff">service</font>.getWhiteboard(whiteboardId, createIfMissing); <br /> } <br /> <br /> <font color="#800000"><b>public</b> <b>boolean</b></font> hasWhiteboard() { <br /> <b><font color="#800000">return</font></b> <font color="#0000ff">envelope</font> != <b><font color="#800000">null</font></b>; <br /> } <br /> }</td> 
+  </tr> 
+ </tbody> 
+</table>
+<p>总而言之，AcceptanceTestClient模拟了真实的web whiteboard客户端所做的事情，同时又为验收测试提供了较高层次的API。</p>
+<p>你可能想知道，“既然我们已经有了WhiteboardService可以进行直接交互，为什么还要AcceptanceTestClient呢？”。这里有两个原因：</p>
+<ol> 
+ <li>WhiteboardService API是更为低层次的，而AcceptanceTestClient就是验收测试所需要的，并且能够使它尽可能地易读。</li> 
+ <li>AcceptanceTestClient隐藏了测试代码不需要的内容，如WhiteboardEnvelope的概念、createIfMissing布尔值以及其他低层次的细节。在现实中，会涉及到更多的服务，如UserService和WhiteboardSyncService。</li> 
+</ol>
+<p>我不会向你过多地阐述AcceptanceTestClient的细节，因为本文不会探究web whiteboard的内部实现。简单来说，AcceptanceTestClient将与白板服务接口交互的低层次细节匹配到验收测试的需要上。这很容易实现，因为真正的客户端代码可以作为如何与服务进行交互的教程。</p>
+<p>到此为止，我们尽可能简单的验收测试可以通过了！</p>
+<table width="500" cellspacing="0" cellpadding="2" border="1"> 
+ <tbody> 
+  <tr> 
+   <td width="500" valign="top" bgcolor="#ffffbb"><br /> <font color="#808080">@Test</font> <br /> <font color="#800000"><b>public</b> <b>void</b></font> openWhiteboardThatDoesntExist() { <br /> <font color="#0000ff">myClient</font>.openWhiteboard(<font color="#0000ff">&quot;xyz&quot;</font>); <br /> <i>assertFalse</i>(<font color="#0000ff">myClient</font>.hasWhiteboard()); <br /> }</td> 
+  </tr> 
+ </tbody> 
+</table>
+<p>下一步要进行一些清理。</p>
+<p><img src="http://infoqstatic.com/resource/articles/atdd-from-the-trenches/zh/resources/1123026.jpg" alt="" _href="img://null" _p="true" /></p>
+<p>实际上，我并没有为此编写任何的生产环境代码（因为这些特性已经存在并且可用），这是测试框架的代码。我需要花几分钟的时间对其进行清理、移除重复内容、让方法名更为整洁等。</p>
+<p>最后，我又添加了一个测试，只是为了完整性，而且它确实很简单。</p>
+<table width="500" cellspacing="0" cellpadding="2" border="1"> 
+ <tbody> 
+  <tr> 
+   <td width="500" valign="top" bgcolor="#ffffbb"><br /> <font color="#808080">@Test</font> <br /> <font color="#800000"><b>public</b> <b>void</b></font> createNewWhiteboard() { <br /> <font color="#0000ff">client</font>.createNewWhiteboard(); <br /> <i>assertTrue</i>(<font color="#0000ff">client</font>.hasWhiteboard()); <br /> }</td> 
+  </tr> 
+ </tbody> 
+</table>
+<p>非常好，我们有了一个测试框架！我们甚至没有使用任何第三方的库，只是Java和Junit。</p>
+<h3>步骤2.4 为密码保护特性编写验收测试代码</h3>
+<p>现在，该对我的密码保护特性添加测试了。</p>
+<p>首先，我将最初的“规范（spec）”复制为伪代码：</p>
+<table width="500" cellspacing="0" cellpadding="2" border="1"> 
+ <tbody> 
+  <tr> 
+   <td width="500" valign="top" bgcolor="#ffffbb"><br /> <font color="#808080">@Test</font> <br /> <font color="#800000"><b>public</b> <b>void</b></font> passwordProtect() { <br /> <font color="#008080">//1. 我创建一个新的白板。</font> <br /> <font color="#008080">//2. 我对其设置一个密码。</font> <br /> <font color="#008080">//3. Joe试图打开我的白板，被要求输入密码。</font> <br /> <font color="#008080">//4. Joe输入错误的密码，被拒绝访问。</font> <br /> <font color="#008080">//5. Joe再次尝试输入正确的密码，可以进行访问。</font> <br /> }</td> 
+  </tr> 
+ </tbody> 
+</table>
+<p>现在，我再次编写测试代码，假设AcceptanceTestClient已经具备了所有需要的东西，并且完全按照我要求的方式，我发现这种技术是相当有用的。</p>
+<table width="500" cellspacing="0" cellpadding="2" border="1"> 
+ <tbody> 
+  <tr> 
+   <td width="500" valign="top" bgcolor="#ffffbb"><br /> <font color="#808080">@Test</font> <br /> <font color="#800000"><b>public</b> <b>void</b></font> passwordProtect() { <br /> <font color="#008080">//1. 我创建一个新的白板。</font> <br /> <font color="#0000ff">myClient</font>.createNewWhiteboard(); <br /> String whiteboardId = <font color="#0000ff">myClient</font>.getCurrentWhiteboardId(); <br /> <br /> <font color="#008080">//2. 我对其设置一个密码。</font> <br /> <font color="#0000ff">myClient</font>.protectWhiteboard(<font color="#0000ff">&quot;bigsecret&quot;</font>); <br /> <br /> <font color="#008080">//3. Joe试图打开我的白板，被要求输入密码。</font> <br /> <b><font color="#800000">try</font></b> { <br /> <font color="#0000ff">joesClient</font>.openWhiteboard(whiteboardId); <br /> <i>fail</i>(<font color="#0000ff">&quot;Expected WhiteboardProtectedException&quot;</font>); <br /> } <b><font color="#800000">catch</font></b> (WhiteboardProtectedException err) { <br /> <font color="#008080">//Good</font> <br /> } <br /> <i>assertFalse</i>(<font color="#0000ff">joesClient</font>.hasWhiteboard()); <br /> <br /> <font color="#008080">//4. Joe输入错误的密码，被拒绝访问。</font> <br /> <b><font color="#800000">try</font></b> { <br /> <font color="#0000ff">joesClient</font>.openProtectedWhiteboard(whiteboardId, <font color="#0000ff">&quot;wildguess&quot;</font>); <br /> <i>fail</i>(<font color="#0000ff">&quot;Expected WhiteboardProtectedException&quot;</font>); <br /> } <strong><font color="#800000">catch</font></strong> (WhiteboardProtectedException err) { <br /> <font color="#008080">//Good</font> <br /> } <br /> <i>assertFalse</i>(<font color="#0000ff">joesClient</font>.hasWhiteboard()); <br /> <br /> <font color="#008080">//5. Joe再次尝试输入正确的密码，可以进行访问。</font> <br /> <font color="#0000ff">joesClient</font>.openProtectedWhiteboard(whiteboardId, <font color="#0000ff">&quot;bigsecret&quot;</font>); <br /> <i>assertTrue</i>(<font color="#0000ff">joesClient</font>.hasWhiteboard()); <br /> }</td> 
+  </tr> 
+ </tbody> 
+</table>
+<p>这个测试代码只需要几分钟就能编写完成，因为我可以在进一步编写代码的时候再将这些逻辑组织起来。这些方法在AcceptanceTestClient中几乎都（还）不存在。</p>
+<p>当我编写这些代码的时候，我需要做出一些设计决策。不要费力去想，做第一时间进入你脑海的事情。完美是足够好的敌人，现在，我已经足够好了，也就是一个可运行的失败的测试用例。稍后，当运行测试变成绿色时，我再进行重构并进一步思考设计。</p>
+<p>现在就进行重构是一件很有诱惑力的事情，尤其是重构这些丑陋的try/catch语句。但是TDD规约中有一点就是在进行重构<i>之前</i>要首先将其变成绿色，因为测试会保护你的重构。所以我决定先暂时等待一下再进行清理。</p>
+<h2>步骤3 执行验收测试，但是会失败</h2>
+<p>按照测试三角，下一步要运行测试，但是会失败。</p>
+<p><img src="http://infoqstatic.com/resource/articles/atdd-from-the-trenches/zh/resources/1123027.jpg" alt="" _href="img://null" _p="true" /></p>
+<p>同样，我使用Eclipse快捷键来创建缺失方法的空白版本。很好！运行测试，看，出现了红色！</p>
+<h2>步骤4：将验收测试变为绿色</h2>
+<p>现在，我需要编写一些生产级别的代码。我为系统添加一些新的概念，有一些所添加的代码并不是试验性的，因此需要进行单元测试。我使用了TDD的方式，它与ATDD类似，但是范围更小一些。</p>
+<p>以下展现了ATDD和TDD如何组合在一起。可以将ATDD视为外部的循环：</p>
+<p><img src="http://infoqstatic.com/resource/articles/atdd-from-the-trenches/zh/resources/1123028.jpg" alt="" _href="img://null" _p="true" /></p>
+<p>对于每个验收测试循环（在特性级别）的回路中，我们都会有很多单元测试的回路（在类和方法级别）。</p>
+<p><img src="http://infoqstatic.com/resource/articles/atdd-from-the-trenches/zh/resources/1123029.jpg" alt="" _href="img://null" _p="true" /></p>
+<p>所以，尽管我在较高的层次上关注于将<i>验收测试</i>变为绿色（这可能会耗费几个小时的时间），但是在较低的层次上我可能会关注于将下一个<i>单元测试</i>变为红色（这可能只会耗费几分钟的时间）。</p>
+<p>这并不是非常严格的TDD（Leather &amp; Whip TDD）。 这更像是“至少要保证单元测试与生产级别的代码是同时提交的”。这种提交每小时会发生多次，大致就可以将其称之为TDD了。</p>
+<h2>步骤5：清理代码</h2>
+<p>像通常那样，在验收测试变成绿色之后，就要进行清理工作了。不要试图越过这个步骤！就像在饭后清洗餐具一样——需要马上去做。</p>
+<p><img src="http://infoqstatic.com/resource/articles/atdd-from-the-trenches/zh/resources/1123030.jpg" alt="" _href="img://null" _p="true" /></p>
+<p>我不仅清理了生产环境中的代码，还清理了测试代码。例如，我将凌乱的try-catch部分抽取到一个帮助方法之中，从而最终实现了漂亮且整洁的测试方法：</p>
+<table width="500" cellspacing="0" cellpadding="2" border="1"> 
+ <tbody> 
+  <tr> 
+   <td width="500" valign="top" bgcolor="#ffffbb"><br /> <font color="#808080">@Test</font> <br /> <font color="#800000"><b>public</b> <b>void</b></font> passwordProtect() { <br /> <font color="#0000ff">myClient</font>.createNewWhiteboard(); <br /> String whiteboardId = <font color="#0000ff">myClient</font>.getCurrentWhiteboardId(); <br /> <br /> myClient.protectWhiteboard(<font color="#0000ff">&quot;bigsecret&quot;</font>); <br /> <br /> assertCantOpenWhiteboard(<font color="#0000ff">joesClient</font>, whiteboardId); <br /> <br /> assertCantOpenWhiteboard(<font color="#0000ff">joesClient</font>, whiteboardId, <font color="#0000ff">&quot;wildguess&quot;</font>); <br /> <br /> <font color="#0000ff">joesClient</font>.openProtectedWhiteboard(whiteboardId, <font color="#0000ff">&quot;bigsecret&quot;</font>); <br /> <i>assertTrue</i>(<font color="#0000ff">joesClient</font>.hasWhiteboard()); <br /> }</td> 
+  </tr> 
+ </tbody> 
+</table>
+<p>我的目标是让验收测试尽可能简短、整洁并且易于使用，以至于注释都是多余的。最初的伪代码或注释会作为模板——“我希望代码就是如此得简洁！”。移除注释会给我一种成就感，它的一个积极作用就是让方法更加简短了。</p>
+<h2>下一步做什么？</h2>
+<p>重复地进行净化。在第一个测试用例通过之后，我就要开始思考缺失了什么。例如，密码保护应该还需要用户认证。所以，我为此添加一个测试、使其变红色、再变成绿色然后进行清理。诸如此类。</p>
+<p>以下就是我（到目前为止）为该特性所添加的完整的测试：</p>
+<ul> 
+ <li>passwordProtectionRequiresAuthentication()</li> 
+ <li>protectWhiteboard</li> 
+ <li>passwordOwnerDoesntHaveToKnowThePassword</li> 
+ <li>changePassword</li> 
+ <li>removePassword</li> 
+ <li>whiteboardPasswordCanOnlyBeChangedByThePersonWhoSetIt</li> 
+</ul>
+<p>当发现缺陷或添加新特性时，我稍后肯定会添加新的测试。</p>
+<p>我总共用了大约两天的时间进行高效地编码。在这个过程中，有很大一部分是回过头去重新编码和设计，并不像本文所展示那样线性进行。</p>
+<h2>那手工测试呢？</h2>
+<p>在自动化测试变成绿色后，我也会进行很多的手工测试。但鉴于自动化测试已经覆盖了基本的功能和很多边界场景，因此手工测试可以更多地关注主观性和探查性的内容。高水平的用户体验是什么样的？流程合理吗？它易于理解吗？我需要在什么地方添加帮助文本？按照美学，设计是否可接受？我不想去争取什么设计大奖，但我也不想让它很丑陋。</p>
+<p>强大的验收测试能够让我们不必再进行单调且重复性的手工测试（也被称为“搞怪测试monkey testing”），进而节省出时间来进行更有意思和更有价值的手工测试。</p>
+<p>理想情况下，我应该在开始阶段就构建验收测试，所以一定程度上来讲这种方式是在偿还技术债。</p>
+<h2>关键点</h2>
+<p>就这样，我希望这个样例对你有用！它阐述了一种典型的场景——“我要实现新的特性，最好要编写验收测试，但是到目前为止还没有这样的测试，我不知道该使用什么框架，甚至不知道该如何开始”。</p>
+<p>我非常喜欢这种模式，借助这种方式我多次走出了困境。总结如下：</p>
+<ol> 
+ <li>在便利的帮助类（在我的场景中也就是AcceptanceTestClient）背后假设封装了复杂的框架。</li> 
+ <li>为已经可以运行的特性编写非常简单的验收测试（如只是打开应用）。使用它来驱动你的AcceptanceTestClient实现以及相关的测试配置（如假的数据库连接和其他外部服务）。</li> 
+ <li>为新的特性编写验收测试。运行它，但是会失败。</li> 
+ <li>使其变成绿色。在编码的过程中，对所有非试验性的内容编写单元测试。</li> 
+ <li>重构。可能会额外编写更多的单元测试或移除多余的测试。保持代码的整洁！</li> 
+</ol>
+<p>完成这些后，你就已经越过了最困难的门槛，已经开始了ATDD！</p>
+<h2>关于作者</h2>
+<p><img src="http://infoqstatic.com/resource/articles/atdd-from-the-trenches/zh/resources/1123031.jpg" style="float: left; margin-right: 10px" alt="" _href="img://null" _p="true" />Henrik Kniberg是斯德哥尔摩<a href="http://www.crisp.se/">Crisp</a>的敏捷/精益教练，主要的工作内容是<a href="http://www.spotify.com/">Spotify</a>。他很乐意帮助公司在软件开发的技术和人力方面取得成功，就像他的图书“<a href="http://www.crisp.se/ScrumAndXpFromTheTrenches.html">Scrum and XP from the Trenches</a>”（本书中文版书名为《硝烟中的Scrum与XP》）、“<a href="http://www.infoq.com/minibooks/kanban-scrum-minibook">Kanban and Scrum, making the most of both</a>”以及“<a href="http://pragprog.com/book/hklean/lean-from-the-trenches">Lean from the Trenches</a>”（本书中文版书名为《精益开发实战：用看板管理大型项目》）所描写的那样。</p>
+<div style="clear:both"></div>
+<p><strong>原文英文链接：</strong><a href="http://www.infoq.com/articles/atdd-from-the-trenches">ATDD From the Trenches</a></p><br><br><br><br><br><br></body></html>
