@@ -1,6 +1,9 @@
 <html>
  <head></head> 
- <body> 
+ <body>
+  <div>
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/20.htmlb">从Reifer的“敏捷方法定量分析”研究中学到的十个知识点</a> Reifer咨询有限责任公司发表了一份名为“敏捷方法定量分析”的基准报告，这份报告比较了敏捷方法软件生产率、成本、持续时间和质量与传统的计划驱动项目的差异。本文从这份研究报告中总结了十个知识点。 
+  </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/19.htmlb">ATDD实战</a> 本文以一个具体的例子阐述了如何基于已有的代码库启用验收测试驱动开发。这是应对技术债解决方案的一部分。 
   </div> 
@@ -147,9 +150,6 @@
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/23.htmlb">Habya'a（临时拼凑的组件）与技术债务</a> 技术债务并不总是坏事，但我们必须谨慎地管理，因为它会随时间推移呈指数增长。尤其是在敏捷项目中，我们需要对技术债务进行特别关注。Yaser Marey建议将技术债务当作一项风险，使用标准的风险管理流程来管控，并简要介绍了敏捷项目中如何使用该流程。 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/22.htmlb">JavaScript的实例化与继承：请停止使用new关键字</a> JavaScript中的new关键字可以实现实例化和继承的工作，但个人认为使用new关键字并非是最佳的实践，还可以有更友好一些的实现。本文将介绍使用new关键字有什么问题，然后介绍如何对与new相关联的一系列面向对象操作进行封装，以便提供更快捷的、更易让人理解的实现方式。 
-  </div> 
+  </div>  
  </body>
 </html>

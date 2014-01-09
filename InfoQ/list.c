@@ -1,8 +1,8 @@
 <html>
  <head></head> 
- <body>
-  <div>
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/6.c">Ca&ccedil;a aos bugs: Aprimorando a capacidade dos testes</a>Na recente confer&ecirc;ncia &quot;Testing Portugal 2013&quot;, Klays Olsen apresentou t&eacute;cnicas para ca&ccedil;ar bugs seguindo o estilo de testes explorat&oacute;rios.
+ <body> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/6.c">Ca&ccedil;a aos bugs: Aprimorando a capacidade dos testes</a>Na recente confer&ecirc;ncia &quot;Testing Portugal 2013&quot;, Klays Olsen apresentou t&eacute;cnicas para ca&ccedil;ar bugs seguindo o estilo de testes explorat&oacute;rios. 
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/5.c">Utilizando retrospectivas para aperfei&ccedil;oamento pessoal</a>Equipes &aacute;geis utilizam retrospectivas para melhorar seu desempenho, refletindo sobre sua forma de trabalhar e definindo a&ccedil;&otilde;es de melhoria. As retrospectivas tamb&eacute;m podem ser utilizadas para o aperfei&ccedil;oamento do desempenho pessoal, adicionalmente ou em substitui&ccedil;&atilde;o &agrave;s avalia&ccedil;&otilde;es de desempenho. 
@@ -150,6 +150,6 @@
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/7.c">Java 8: Express&otilde;es lambda e cole&ccedil;&otilde;es</a>Faltando pouco para o lan&ccedil;amento do Java 8, Brian Goetz publicou uma atualiza&ccedil;&atilde;o do seu artigo “Estado do Lambda”, mencionando as evolu&ccedil;&otilde;es na API de cole&ccedil;&otilde;es e outras &aacute;reas. A introdu&ccedil;&atilde;o de express&otilde;es lambda &eacute; uma das funcionalidades mais esperadas do Java 8, e o suporte a elas na Collections API &eacute; fundamental para garantir ampla utiliza&ccedil;&atilde;o das bibliotecas. 
-  </div>  
+  </div> 
  </body>
 </html>

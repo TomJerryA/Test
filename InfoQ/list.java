@@ -2,10 +2,13 @@
  <head></head> 
  <body>
   <div>
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/0.java">XAML Spy 2.0.5 Adds Add App Wizard and Feature Improvements</a>XAML Spy has released updates for the month of January with support for Add App Wizard with the ability to navigate installed apps by selecting the Show All Apps button in the XAML Spy Explorer toolbar. The latest release also enables you to activate and disable XAML Spy for multiple projects at a time.
-  </div>
-  <div>
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/49.java">LINQ To Logs And Traces</a>Microsoft Open Technologies recently announced the release of Tx, an open source project that can help debugging using Logs/Traces, and building of real-time monitoring and alerting systems.
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/1.java">Carrier IQ's Magnolia Mansourkia Mobley Sets the Record Straight About Mobile Analytic Products</a>In 2011 Trevor Eckhart found logs on his device that he believed were associated with Carrier iQ data. Our response at the time, which has since been confirmed by a detailed FTC investigation, is that the data collection logs were associated with and used by the manufacturer of the device, not Carrier iQ. They were not Carrier iQ logs.
+  </div> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/0.java">XAML Spy 2.0.5 Adds Add App Wizard and Feature Improvements</a>XAML Spy has released updates for the month of January with support for Add App Wizard with the ability to navigate installed apps by selecting the Show All Apps button in the XAML Spy Explorer toolbar. The latest release also enables you to activate and disable XAML Spy for multiple projects at a time. 
+  </div> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/49.java">LINQ To Logs And Traces</a>Microsoft Open Technologies recently announced the release of Tx, an open source project that can help debugging using Logs/Traces, and building of real-time monitoring and alerting systems. 
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/48.java">Pair Coaching with Agile Teams</a>Agile coaches can coach in pairs instead of coaching individually. Each coach will focus on different aspects of coaching. As every coach has specific experience and skills they can complement each other. Two coaches can collaboratively help individuals or teams to learn and improve when adopting agile. 
@@ -147,9 +150,6 @@
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/3.java">Essential Studio Enterprise 2013 Volume 4 Adds LightSwitch, Localization and New Improvements</a>Syncfusion has released Essential Studio Enterprise Edition 2013 Volume 4 with new JavaScript controls such as rich-text editor, map, tree map, range navigator, barcode, date-time picker and rotator in addition to extensions for LightSwitch. It also includes 3D chart support for WinRT, WPF, Silverlight, and Windows Phone suites including format manipulation libraries for Windows Phone. 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/2.java">Advice on When to Repay Technical Debt</a>An exploration of recent advice from Henrik Knibert, Ward Cunningham and Hayim Makabee on technical debt, how to make the most of it and when to pay it off. 
-  </div>   
+  </div>  
  </body>
 </html>
