@@ -1,8 +1,8 @@
 <html>
  <head></head> 
- <body>
-  <div>
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/7.c">Presto: O Sistema para consultas SQL distribu&iacute;das do Facebook</a>O Facebook liberou o c&oacute;digo fonte do Presto, o sistema para consultas SQL distribu&iacute;das. O Presto usa uma arquitetura pipelined em vez do Map/Reduce encontrado em outros softwares para Big Data. Em produ&ccedil;&atilde;o desde o come&ccedil;o do ano, o Facebook j&aacute; o implantou em v&aacute;rias regi&otilde;es geogr&aacute;ficas e conseguiu escalar com sucesso um &uacute;nico cluster de 1.000 n&oacute;s.
+ <body> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/7.c">Presto: O Sistema para consultas SQL distribu&iacute;das do Facebook</a>O Facebook liberou o c&oacute;digo fonte do Presto, o sistema para consultas SQL distribu&iacute;das. O Presto usa uma arquitetura pipelined em vez do Map/Reduce encontrado em outros softwares para Big Data. Em produ&ccedil;&atilde;o desde o come&ccedil;o do ano, o Facebook j&aacute; o implantou em v&aacute;rias regi&otilde;es geogr&aacute;ficas e conseguiu escalar com sucesso um &uacute;nico cluster de 1.000 n&oacute;s. 
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/6.c">Ca&ccedil;a aos bugs: Aprimorando a capacidade dos testes</a>Na recente confer&ecirc;ncia &quot;Testing Portugal 2013&quot;, Klays Olsen apresentou t&eacute;cnicas para ca&ccedil;ar bugs seguindo o estilo de testes explorat&oacute;rios. 
@@ -150,6 +150,6 @@
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/8.c">Agile nas empresas: indo al&eacute;m do setor de desenvolvimento</a>As pr&aacute;ticas &aacute;geis est&atilde;o sendo utilizadas em aspectos dos neg&oacute;cios diferentes do desenvolvimento de software, de acordo com a Gartner. Conhe&ccedil;a tend&ecirc;ncias no uso do Agile em toda a empresa, com exemplos nas &aacute;reas de marketing, vendas e servi&ccedil;os. 
-  </div>  
+  </div> 
  </body>
 </html>

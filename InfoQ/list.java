@@ -1,6 +1,12 @@
 <html>
  <head></head> 
- <body> 
+ <body>
+  <div>
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/3.java">Google Play Services 4.1 Adds Drive Support</a>Google has updated Play Services to include support for Drive, turn-based multiplayer games and more ad networks.
+  </div>
+  <div>
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/2.java">Rackspace Aiding the Introduction of DevOps by Extending Their Managed Cloud Service Levels</a>Rackspace, cloud computing platform provider and founder of OpenStack, is currently introducing its new DevOps Automation Service. They offer managed support for things like infrastructure and workflow automation, monitoring and log aggregation, and source control for infrastructure code.
+  </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/1.java">Carrier IQ's Magnolia Mansourkia Mobley Sets the Record Straight About Mobile Analytic Products</a>In 2011 Trevor Eckhart found logs on his device that he believed were associated with Carrier iQ data. Our response at the time, which has since been confirmed by a detailed FTC investigation, is that the data collection logs were associated with and used by the manufacturer of the device, not Carrier iQ. They were not Carrier iQ logs. 
   </div> 
@@ -144,12 +150,6 @@
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/5.java">Splitforce A/B Testing for Mobile Applications</a>As mobile applications are becoming a more central part of companies' IT strategies, testing and analyzing those applications becomes more important. Whereas functional testing of code is part of every project, analyzing behavior and conversion rates is still very new to the mobile sector. Splitforce offers tools and services for application developers to instrument apps for in-app analysis. 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/4.java">A Proposal for a Database URI Standard</a>David Wheeler has proposed a standard URI format for database connections. This proposal would allow applications built on different technologies to share the same connection string. That would be beneficial for a wide variety of tools including report builders, automated build and deploy tools, and ORMs. 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/3.java">Essential Studio Enterprise 2013 Volume 4 Adds LightSwitch, Localization and New Improvements</a>Syncfusion has released Essential Studio Enterprise Edition 2013 Volume 4 with new JavaScript controls such as rich-text editor, map, tree map, range navigator, barcode, date-time picker and rotator in addition to extensions for LightSwitch. It also includes 3D chart support for WinRT, WPF, Silverlight, and Windows Phone suites including format manipulation libraries for Windows Phone. 
-  </div> 
+  </div>   
  </body>
 </html>
