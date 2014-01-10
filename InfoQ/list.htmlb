@@ -1,7 +1,7 @@
 <html>
  <head></head> 
- <body>
-  <div>
+ <body> 
+  <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/21.htmlb">实现Java中的高性能解析器</a> 在某些情况下，你需要实现自己的解析器，有可能是因为没有标准的做法可以满足你的需求。本文将带你一步一步创建高性能的解析器。 
   </div> 
   <div> 
@@ -150,6 +150,6 @@
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/24.htmlb">敏捷与结构性模块化（一）</a> Richard Nicholson先生在其博客上连续发表了三篇关于敏捷与系统结构性模块化关系的文章，这个系列的文章深刻阐述了敏捷与模块化之间的相互关系，具有很好的指导意义，征得作者同意之后，InfoQ将其翻译发表在本站上。 
-  </div>  
+  </div> 
  </body>
 </html>

