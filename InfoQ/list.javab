@@ -1,6 +1,9 @@
 <html>
  <head></head> 
- <body> 
+ <body>
+  <div>
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/46.javab">Interview and Book Review Change Artistry</a> The book change artistry is a collection of essays from Esther Derby, Don Gray, Johanna Rothman and Gerald M. Weinberg. The essays cover a variety of topics to support professionals in developing their organizational change skills. 
+  </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/45.javab">Book Review and Interview: Real World OCaml</a> The new book Real World OCaml provides a deep dive into the OCaml programming language. InfoQ caught up with the authors to hear about real world Ocaml users, its unique features, and much more. 
   </div> 
@@ -147,9 +150,6 @@
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/48.javab">Interview with Simon Brown about Sustainable Competence</a> Why are some teams successful while others are less than stellar? Can teams use processes to do their work? How can managers help teams to become better? And do we need incentives to improve the quality of software? InfoQ did an interview with Simon Brown about sustainable competence for continuous improvement, balancing people and processes, and software quality and architecture. 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/47.javab">Securing Servers in the Cloud: An Interview With Trend Micro</a> 
-  </div> 
+  </div>  
  </body>
 </html>

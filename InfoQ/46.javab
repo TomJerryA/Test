@@ -1,50 +1,151 @@
-<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>Agile Fluency: Finding Agile That's Fit-for-Purpose</h3><blockquote> 
- <p>&quot;Essentially, all models are wrong, but some are useful.&quot; George E. P. Box, statistician and founder Center for Quality and Productivity Improvement at University of Wisconsin-Madison.</p> 
-</blockquote>
-<p>Word on the street says James Shore and Diana Larsen have developed an AMM (Agile Maturity Model) and are proposing standards and levels for Agile, along with all the attendant assessment and certification schemes.</p>
-<p>Not true! And here's why: we've road tested and published a model focused on benefits and tradeoffs, not judgmental labels of maturity and immaturity.</p>
-<p>About three years ago, we (James Shore and I) began a deliberate review of the ways we were teaching and coaching methods and techniques for incorporating Agile principles and practices in the work of teams. A series of experiments led us to create a draft model.</p>
-<p>We vetted the model with reviewers and revised it iteratively until we felt it was ready–that is, useful enough–for broader distribution. In August 2012, Martin Fowler published our article describing the Agile Fluency model, &quot;<a href="http://agilefluency.com">Your Path through Agile Fluency</a>&quot; on his website.</p>
+<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>Interview and Book Review Change Artistry</h3><p>The book <a href="https://leanpub.com/changeartistry">change artistry</a> is a collection of essays from Esther Derby, Don Gray, Johanna Rothman and Gerald M. Weinberg. The essays cover a variety of topics to support professionals in developing their organizational change skills.</p>
+<p>Change artistry combines the Satir’s Congruence Model with an Aikido framework to help organizations to change in a positive way.</p>
+<p>InfoQ did an interview with Don, Esther and Johanna on their experiences with organizational change, resistance to change, and the importance of the self and congruence in change.</p>
+<p><b>InfoQ: Why do you use them term &quot;change artistry&quot; in your book? Is it really an art to change people, teams, and organizations?</b>&nbsp;</p>
 <blockquote> 
- <p>“We’ve observed that Agile teams develop through four distinct stages of fluency. Fluency is how a team develops software when it’s under pressure. Anyone can follow a set of practices when given time to focus in a classroom; true fluency is a skilful, routine practice that persists when your mind is distracted with other things.</p> For Agile, we’re considering team fluency rather than individual or organizational fluency. Agile development is fundamentally a team effort, and your organization’s success with Agile will depend on the fluency of your teams.&nbsp; 
- <p>&nbsp;</p> 
- <p>Team fluency depends on more than just the capability of the individuals on the team. It also depends on management structures, relationships, organizational culture, and more. Don’t make the mistake of blaming individuals for low team fluency, or assuming that one highly-skilled individual will guarantee high team fluency.”</p> 
+ <p><b>Johanna:</b> It is! Many people think about change as Big. But to make a change, you want to start small. That's why it's change artistry.</p> 
+ <p>If you start big, you often alienate people. When you start small, you help them agree with the change. Or, you can invite them to do something they want to do anyway. When you start big, it's often too much for them to handle.</p> 
+ <p>That's the artistry part.</p> 
+ <p><b>Esther: </b>Let's look at a more commonly used term, &quot;change agent.&quot;</p> 
+ <p>If you look at the definition of agent, there are two main threads. The first definition is someone who acts on behalf of another to complete some transaction. The second definition is a substance that causes a specific reaction when it comes in contact with another substance.</p> 
+ <p>Neither of those metaphors fit how change really happens.</p> 
+ <p>The term Change Artist implies that someone is an artist in change--skillful and adept at helping people and systems change.</p> 
+ <p><b>Don: </b>We use “artistry’ for these reasons.</p> 
+ <ul> 
+  <li>An artist creates new reality.</li> 
+  <li>An artist works with many different tools and materials and creates the new art from the materials at hand.</li> 
+  <li>Artists appreciate and respect the context of their art.</li> 
+  <li>Many ways exist to get to the final art. “Change by the numbers” hasn’t and won't work.</li> 
+ </ul> 
+ <p>In organizations, change artists do “commissioned work”. We use our tools, palettes and skill to help the organization create the change they want, not what we want.</p> 
+ <p>We do separate change artist activities into 4 basic areas. These loosely follow patterns in Aikido.</p> 
+ <ul> 
+  <li>Center</li> 
+  <li>Enter</li> 
+  <li>Turn</li> 
+  <li>Sustain</li> 
+ </ul> 
+ <p><b>Johanna:</b> Organizations change one person at a time. You can apply these lessons to yourself, your team, and your organization. But the organization will still change one person at a time.&nbsp;</p> 
 </blockquote>
 <div id="lowerFullwidthVCR"></div>
-<p><img _p="true" _href="img://1fig1.jpg" alt="" src="http://www.infoq.com/resource/articles/agile-fluency-fit-purpose/en/resources/1fig1.jpg" /></p>
-<p>In short, the Agile Fluency path winds through four variations on Agile teams that we've seen repeatedly across many organizations. We named the variations: Focus on Value (1 star), Deliver Value (2 star), Optimize Value (3 star), and Optimize for Systems (4 star). Our experience showed us that different organizations seemed to find a match for their teams and their business needs in each variation. We also noticed that teams that aspired to 2, 3, or 4 stars seemed to gain fluency in a predictable pattern of first gaining skill at teamwork and focusing on business and customer value, then building enough engineering expertise to deliver value on the market cadence, and so on.</p>
-<h2>People ask: Is the Path through Agile Fluency a Maturity Model?</h2>
-<p>Since that time, we've felt both gratified by our colleagues' positive feedback and challenged by assertions that we've created an Agile maturity model. Viewpoints on a new maturity model varied. Some cried foul! Some applauded! Had we inadvertently created a maturity model? It was never our intention. Imagine our dismay.</p>
-<p>Probably the most well-known &quot;maturity model&quot; (MM) in software development is the CMMI (Capability Maturity Model Integration)–a mashup of the CMM and other MMs. <a href="http://www.cmmifaq.info">Some folks </a>assert that it's a framework for business process improvement, or rather a model for building process improvement systems, for development, acquisition, and services. &quot;Without some insight into and control over their internal business processes, how else can a company know how well they're doing before it's too late to do anything about it?&quot; ask the good folks at the website.</p>
-<p>Well, maybe because, &quot;The projects most worth doing are the ones that will move you DOWN one full level on your process scale.” (DeMarco &amp; Lister, Peopleware) In addition, the focus on codified best practices has come under fire as a one-size-fits-all solution in a world where no two development projects or sectors of the industry are similar enough to warrant a blanket approach.</p>
-<p>In a triumph of circular reasoning, another accreditation body (and seller of certifications) says, &quot;Maturity is indicated by the award of a particular 'Maturity Level'.&quot; We wonder if they've noticed how ludicrous and self-serving that sounds?</p>
-<p>In a mashup of all the definitions we could find, we find maturity models have:</p>
-<ul> 
- <li>a focus on process improvement systems</li> 
- <li>structured levels of “best practices” benchmarks for behaviors, practices, and processes</li> 
- <li>uses including comparative assessments and aids for understanding those comparisons</li> 
-</ul>
-<p>By that definition, our model is NOT a maturity model. First, we describe equally viable stops along a path, rather than hierarchically ascending levels of good, better, best teams. The model is not meant to reflect process improvement, so much as indicators of shifting team focus and organizational investment. Second, while we did intend the Agile Fluency model would describe observable behaviors, including practices and processes, we certainly did not intend our observations to be used as an after-the-fact comparative assessment. Oh horrors!</p>
-<p>Far from using the model as another tool with which to bash teams for their &quot;lack of maturity,&quot; we wanted to create a technique for setting and achieving team-specific aspirations that are best fit for purpose in whatever situation your team finds itself.</p>
-<h2>Finding Your Destination on the Path</h2>
-<p>At XP2013 conference in Vienna, Diana said, &quot;Venice isn't better than Munich just because it's further down the roadway, particularly not if you're looking for Oktoberfest! On the other hand, if you're looking for lavish carnival, Venice is your spot, and you'll be wise to spend the extra fuel to get there.&quot; In Oregon she says, &quot;When traveling Interstate Highway I-5 south from Portland, getting to Ashland with its wonderful, year-round Shakespeare Festival is not better than Salem just because it's further on, if what you need is to do business in the State Capitol.&quot;</p>
-<p>Similarly, a two-star team is neither more or less good than a one-star or three-star team. It all depends on context and, more specifically, fitness-for-purpose. Perhaps it would have been clearer if we had named our Path to Agile Fluency for locations in a park (though stars are easier to find in the icon libraries). We could have chosen names like: the parking lot team, the play ground team, the sports field team, and the hiking trail team. Choosing an area of the park depends entirely on your preferred activity. On the way to the playground, you'll likely have to park the bike or get off the shuttle in the parking lot, and you may have to take the path by the playground before finding your way to the sports field. However, continuing further on to the hiking trail makes no sense if you really wanted to enjoy the swing set and seesaw at the playground.</p>
-<p>To use our Agile Fluency model effectively, we recommend as a first step that you let go of the idea of team maturity or of judging the team on anything other than delivering business benefit. Instead, take the time to understand both:</p>
-<ul> 
- <li>what kind of benefits do you want and need from your team?</li> 
- <li>what investments and trade-offs are you willing and able to make?</li> 
-</ul>
-<h2>Stars or Park Locations?</h2>
-<p>One Star (or Parking Lot) - Do you really need a team that can focus on creating business and customer value? Do you need people who can collaborate on planning, prioritizing, and working to achieve value? Do you want to be able to tell at a glance whether or not the team is making progress toward your delivery goals? If that’s enough for you and will serve your purposes, a team fluently proficient at one star is your best fit. Invest in developing a strong, trusting, collaborative team and a work process design (like Scrum, Kanban, Scrumban) that focuses on prioritizing work by the value it will deliver.</p>
-<p>If that’s exactly what you need, then plan for and invest in building a team culture. You’ve found the right destination. Stop here. But maybe that’s not the best fit for you. Then, consider investing differently.</p>
-<p>Two Star (or Playground) - Do you need the value-focused benefits a one-star team offers and also have customers who demand low or no defects and predictable delivery on a regular, defined cadence? Then you'll need to invest in hiring or, more likely developing, team members who have skill in engineering techniques like continuous integration, TDD, pair programming (or pair everything), continuous deployment, and collective ownership (from Extreme Programming, Software Craftsmanship, DevOps, etc.). The trade-off of lowered productivity while the team gets great at its craft will be worth the cost, because the high payoff is critical to the business.</p>
-<p>Most organizations we've worked with find sufficient value with two-star teams. However, many Agile coaches, thought leaders, and a few business people (including us) would like to see a more ambitious implementation. That may or may not be better for the team and the organization.</p>
-<p>If that’s exactly what you need, then plan for and invest in building a team culture and developing team members’ technical skills. You’ve found the right destination. Stop here. But maybe that’s not the best fit for you. Then, consider investing differently.</p>
-<p>Three Star (or Sports Field) - Do you need all the benefits of a two-star team plus the satisfaction of knowing that your development effort captures all the possible value in its product? Do you want a team (or teams) that understands your business and customer needs so well that they can contribute innovative product development ideas? Are you willing to give the teams continuous access to business knowledge and build trust between the software developers, product developers, and business strategists? Will you assign dedicated product manager/owner expertise (in the form of an individual or a sub-group) to every team for ongoing customer and product discovery? (Ideas from Lean Startup are helpful here.) The benefits of Three-star fluency are often sold as the &quot;promise of Agile,&quot; in spite of the daunting challenges of changing organization structure, redefining management roles, and shifting administrative and operational procedures–which are all necessary to implementing Three-star Agile Fluency. (Tip: Mistrust any OD consultant or Agile coach who tells you this will be simple, fast, and easy or doable by a lone Scrummaster.)</p>
-<p>If that’s exactly what you need, then plan for and invest in building a team culture, developing technical skills, and shifting your organizational design. You’ve found the right destination. Stop here. But maybe that’s not the best fit for you. Then, consider investing differently.</p>
-<p>Four Star (Hiking Trails) - Do you see value in a development team that becomes an integral part of how the organization does business, offers innovative ideas for new products, and engages in conversations about direction setting? Do you want teams that can set aside their own prioritized work to make space for initiatives more important to the whole company? Are you eager to give team members a seat at the decision-making table because you trust they understand how every decision affects every stakeholder in the company? If you aren't a small startup, are you willing to make the investment in a wholesale culture change? Some folks call this &quot;Beyond Agile,&quot; and we've suggested it's where Agile could be headed as the community continues to evolve its understanding of Agile possibilities.</p>
-<p>The park location names may illustrate our intent better, but we find stars easier to remember, if you can also stay aware that more stars is not necessarily better for you, your organization, your situation. What's best is the right fit for your purposes and your ability and willingness to invest time, effort, funding, and social capital to accomplish the shift.</p>
-<h2>Plan Your Team Investments</h2>
-<p>Maturity models point us in the wrong direction, toward evaluation that measures activities rather than results. Agile, with its emphasis on delivering customer, and therefore business, value keeps our eyes on the prize: producing and maintaining high quality, useful, market-driven software. We’ve seen high returns for companies that identify the variety of Agile Fluency that fits their needs, then make the associated investments in culture, training, and structure. We hope the Agile Fluency model will prove to be one of those models that, while not entirely true, still contributes usefully. We offer it as way of thinking about and planning investments to create the conditions of Agile that best fit your development effort, business need, and customer value.</p>
-<h2>About the Author</h2>
-<p><b><img align="left" _p="true" _href="img://DIana Larsen Square Bio Photo.jpg" alt="" src="http://www.infoq.com/resource/articles/agile-fluency-fit-purpose/en/resources/DIana Larsen Square Bio Photo.jpg" />Diana Larsen</b>, founding partner of FutureWorks Consulting, focuses her work on Agile software development, team leadership, and Agile transitions. Deeply in tune with how work teams grow, adapt, and develop, she co-authored <i>Agile Retrospectives: Making Good Teams Great</i>, <i>Liftoff: Launching Agile Teams and Projects</i>, <i>QuickStart Guide to Five Rules for Accelerated Learning</i>, and the article, “<a href="http://agilefluency.com">Your Path through Agile Fluency: A Brief Guide to Success with Agile</a>”</p><br><br><br><br><br><br></body></html>
+<p><b>InfoQ: The book change artistry is a collection of essays from several authors. Why did you choose this format, and what is the connection between the essays?</b>&nbsp;</p>
+<blockquote> 
+ <p><b>Esther: </b>I guess you could say we had two motives in choosing this format: reuse and value.</p> 
+ <p>In September, 2013, the four of us put on a week-long workshop on Change Artistry. We wanted a reader for our participants. So, we started looking at what we had each written about change--and discovered we had a lot of valuable material!</p> 
+ <p>Based on the response from our workshop participants, we decided to make the collection available to everyone.</p> 
+ <p>We've arranged the articles thematically, representing how Change Artists work.&nbsp;</p> 
+ <p><b>Johanna:</b> We wanted to have a gift for the participants at our Change Artistry workshop. We've all been writing for years, so deciding on a book of essays was easy.</p> 
+ <p>When you think about change artistry, there is a series of &quot;steps,&quot; if you will. You need to center yourself, enter into the other person's situation, be able to understand it, so you can turn together. Then, and only then, can you sustain the change.</p> 
+ <p>Each of us is different, so each of us has our own perspective on each of these positions. We thought it would be valuable for our readers to hear from each of us at each position.</p> 
+ <p><b>Don: </b>As change does not follow a linear process, writing a book with linear steps for change artists sends an incorrect message. We selected essays that have stood the test of time. I co-wrote “Managing in Mayberry” in 2001. Every couple of years some one new finds it, and it gets tweeted and retweeted.</p> 
+ <p>We did group the essays in the same four areas; center, enter, turn, and sustain. As change is non-linear, we could have put some essays in multiple (or different) areas.</p> 
+</blockquote>
+<p><b>InfoQ: The first couple of essays in your book focus on the &quot;self&quot;, the change artist. Why is this important?</b></p>
+<blockquote> 
+ <p><b>Esther: </b>You are your most valuable tool in bringing change.<b> </b>&nbsp;</p> 
+ <p>In my experience, the success of any change effort hinges on two things: the ability to enhance the environment so that the desired change emerges naturally, and the ability to connect with people and build trust. The first requires personal skills in observation, systems modeling, choosing how and where to act in complex and ambiguous situations. The second calls for interpersonal skills and the ability to work well with people.&nbsp;</p> 
+ <p><b>Don: </b>The most important relationship for a change artist is the one they have with themselves. Clarity of purpose. Honesty in intent. Compassion for those involved. Understanding the context. Alignment with the change. This relationship cannot be faked. People involved in change can sense a charlatan and will resist and sabotage the effort.</p> 
+ <p>A change artist who doesn’t change is a hypocrite.</p> 
+ <p><b>Johanna: </b>If you, the change artist, are not centered, you cannot hope to change anyone else. When your world is going crazy--and you're going nuts too--how can you effect change? You need to breathe. You need to center yourself. Once you're not frantic, now you have a hope of change.</p> 
+</blockquote>
+<p><b>InfoQ: Establishing a relationship is a prerequisite for change. Can you give us some do's and don'ts for change artists to build a relationship with the people that they will be working with?</b></p>
+<blockquote> 
+ <p><b>Johanna: </b>Building rapport is essential. Otherwise, as we say in the US, &quot;I'm from the IRS, and I'm here to help!&quot;</p> 
+ <p>I like to see what's working first. I bet a bunch of things are working. Build on what's working. Start there.</p> 
+ <p>Ask the people what they would like to change. They often have great ideas. Give credit to the people with the great ideas. If you are the change artist, do you really need the credit?</p> 
+ <p>That's the beginning. There's more, but it's hard to say what, with an emergent project like a change project. (I have a blog post coming on emergent projects, this week.)</p> 
+ <p><b>Esther: </b>Don't start by telling them they've been doing it wrong all along. Spend time understanding their situation, their struggles, and their priorities.&nbsp;</p> 
+ <p><b>Don: </b>My suggestions are to</p> 
+ <ol> 
+  <li>Do what you say you’re going to do.</li> 
+  <li>If you can’t do #1, immediately share what prevents you, and what you can do.</li> 
+  <li>Always work directly with the people affected.</li> 
+  <li>If as a change artist you’re changing too, you’re experiencing the process others go through. This helps with empathy.</li> 
+  <li>Remember that people will embrace change for different reasons and at different rates. Some people embrace the novelty and excitement change brings. Others move reluctantly missing the previous stability and routine. These both can bring their strengths to the change, but in different ways at different times.</li> 
+ </ol> 
+</blockquote>
+<p><b>InfoQ: You described in the book that resistance to change can be viewed as a source of information. Can you give some examples of that?</b></p>
+<blockquote> 
+ <p><b>Johanna: </b>Sure. When people resist change, they do so for any number of reasons. Often, it's because they fear losing *something.* You need to know what that something is.</p> 
+ <p>It could be their competence, or concern that this is a management fad, or &quot;we've tried this here&quot; or any number of other things. Here are things I look for:</p> 
+ <ol> 
+  <li>Date pressures on the system. Is somebody putting pressure on the team to deliver? That's extra pressure. In that case, nobody wants to change. People need time to practice, to learn about this new way of working.</li> 
+  <li>Management interference. When managers change members of the team, it's impossible for a team to work together. Managers often do this instead of managing the project portfolio. Managers do this in the mistaken belief they need experts on teams.</li> 
+  <li>Has management had a fad-of-the-month/year before? What happened? If they have, what are the indications this is any different? Maybe the team is right, and this is going to go away.</li> 
+ </ol> 
+ <p>You can reframe resistance as fear of loss. The question is what are people going to lose? A sense of normalcy? I might agree with them!</p> 
+ <p><b>Esther: </b>First, I wish people would stop using the term resistance. Once you've labeled behavior as &quot;resistance&quot; or designated someone as a &quot;change resistor,&quot; you don't have much option other than to push or pull them in the direction you want them to go. In reality, &quot;resistors&quot; are simply not changing with the speed and enthusiasm you desire. There can be many reasons for this, but if you frame the response as resistance, you aren't likely to uncover that information.</p> 
+ <p><b>Don: </b>May I use the word “reluctance” for “resistance”? To me “resistance” in the context of change labels a person in a not useful way. For me reluctance means I haven’t successfully done 1 - 5 in the answer to question 4. That’s information for me to examine myself, the other person, and the context, and consider what to do next.</p> 
+ <p>If people are reluctant to change, has my view crept into their future and spoiled their desired outcome?</p> 
+ <p><b>Esther: </b>Consider this example. Years ago, when I was a programmer, our managers spearheaded an effort to eliminate unnecessary reports and jobs in our over-night batch system. One of the jobs on the elimination list was a program I'd written. During the deletion review, I flagged that program as one we needed keep.</p> 
+ <p>The analyst who had marked the program for deletion launched into an explanation of all the work she'd done to conclude that no one used the report. She sniffed that holding onto the program just because I wrote it was unprofessional. Then she put the program back on the deletion list.</p> 
+ <p>Once she'd stopped justifying, I was able to explain that while the report from the program might be out of use, the program also preformed calculations that were necessary for several other processes.</p> 
+ <p>This may seem like a trivial example, but it illustrates something important. People who label others as &quot;resisters&quot; assume they have all the relevant information. That is seldom the case. They also assume the &quot;resisters&quot; are holding onto the old way out of selfishness, ignorance, laziness, or some other motive that doesn't reflect intelligence and good will.</p> 
+</blockquote>
+<p><b>InfoQ: What if people keep resisting changes that are needed? Are there ways to convince them to change while keeping a good relationship?</b></p>
+<blockquote> 
+ <p><b>Esther: </b>I'd reframe that to, &quot;What if people choose not to make the changes you believe are needed?&quot;</p> 
+ <p>First, I'd get curious. I'd want to find out why they are making that choice, and what they see that I am missing. They may have good and legitimate reasons. I'd also look for factors in the environment that re-enforce the current pattern, or inhibit the desired change.</p> 
+ <p>Rather than hector them, I'd go about my business, working with people who are curious about the change and want to try it. Very often people come along once they see that it's not awful, and might even work. Sometimes they don't. Then, they often choose to go some place that is a better fit for them.&nbsp;</p> 
+ <p><b>Johanna: </b>I invite people to experiment. I timebox experiments. And, I work with management to stay out of the way. Too often management interferes before the experiment is complete. That resets the experiment to the beginning.</p> 
+ <p><b>Don: </b>Change to something positive (I want to be healthy) works better than change way from something (I want to quit smoking). Are the changes expressed positively in a way that the “resistor” can accept? I’ve heard it said that people don’t mind change. They mind being changed. When two people face the same direction, it’s hard for them to resist. And again ... I resist the word &quot;resistance&quot;.</p> 
+ <p><b>Johanna: </b>People change at their own pace. We have several introductory essays about the change model and how people change. You can't convince people to change. You can lead them to change, and invite them to change. They need to see a transforming idea, and practice it, so they can integrate it into their work. You cannot force it down their throats.</p> 
+</blockquote>
+<p><b>InfoQ: In most projects, project leaders have to negotiate with their stakeholder on what will be delivered. Sometimes there are also negotiations between the project leader and the teams. In agile teams I sometimes see product owners and development teams negotiate. Is negotiation an effective way to collaborate? Are there any alternative ways?</b></p>
+<blockquote> 
+ <p><b>Johanna: </b>Negotiation works. Influence also works.</p> 
+ <p>But, if you're talking about what teams will deliver, I don't see much need for negotiation in agile. Not if you're really doing agile or lean. You have a product owner create a roadmap so people know where you're headed with the product. Then, create a ranked backlog. Now, work until you run out of money or time. What's the point of negotiation?</p> 
+ <p>Maybe you have something else in mind. In a project, reality will always win. In an agile or lean project, you can see reality better than in any other project because of the transparency.</p> 
+ <p><b>Esther:</b> If you can't negotiate, you aren't collaborating, you are taking orders. That goes for project work and change. People don't resist change, they resist control and coercion.</p> 
+</blockquote>
+<p><b>InfoQ: There are many ways to influence people to change their behavior. How they are received by people also varies a lot. Doesn't that make it risky to influence people? What can you do to reduce the chance of failure?</b></p>
+<blockquote> 
+ <p><b>Don: </b>The risk in influencing people comes from loosing sight of their desired outcome and inserting “what we think is best” into our work.&nbsp;</p> 
+ <p><b>Johanna: </b>Influence is always risky. That's okay. We influence all the time. You can reduce your risk by first centering yourself, and understanding what's important to the other person. You can look for short- and long-term solutions that will satisfy both of you. Assume you are in a long term relationship, not a one-time deal. That will help. There's a lot more. I have a whole workshop on influence!</p> 
+ <p>This is why centering yourself is so important, as well as being congruent.</p> 
+ <p><b>Esther: </b>We influence other people every day. But we often aren't consciously aware that we are doing so.</p> 
+ <p>It is true that people respond differently to influence. In my experience, failure usually comes from failing to understand what the other person cares about and values. For example, you aren't likely to influence the head of the finance department by talking about increasing employee happiness if he cares about revenues and costs. The other reason influence fails is the other person feels someone is trying to control, manipulate, or coerce them.</p> 
+ <p><b>Don: </b>If by risk you mean likely to not succeed, see the 5 do’s for a change artists that I mentioned earlier.</p> 
+</blockquote>
+<p><b>InfoQ: One of the essays in the book discusses the concept of congruence. Can you explain it briefly?</b></p>
+<blockquote> 
+ <p><b>Don: </b>For me congruence means keeping myself, the other person, and our surrounding context in mind and as balanced as possible.&nbsp;</p> 
+ <p><b>Johanna: </b>In a conversation, you have yourself, the other person, and the context to consider. Congruence is when you take all three of these things into account. If you don't, you're not congruent.</p> 
+ <p>If you don't take the other person into account, you blame the other person.</p> 
+ <p>If you don't take yourself into account, you placate the other person.</p> 
+ <p>If you don't take the people into account, you're superreasonable.</p> 
+ <p>If you ignore everything, you're irrelevant.</p> 
+ <p>None of these things are good. You need to take all three of these things into account.</p> 
+ <p><b>Esther: </b>In any interaction, there are three basic arenas to balance: your own needs and values, the needs and values of the other(s), and the context. When these are far from balance, connection and change are restrained. When they close to balance, connection, change and learning flow more readily</p> 
+</blockquote>
+<p><b>InfoQ: Why is congruence important in change?</b></p>
+<blockquote> 
+ <p><b>Don:</b> If we remove “the other person” leaving me and the context, I lose sight of what happens to others and what they would like to have happen. I think of this when I hear “drive change”. I’m not a driver. I’m an artist.</p> 
+ <p>If we remove the context, I may have a great time with the other person, but will we do the work necessary?</p> 
+ <p>Removing me means the other person is left to do what they can with what they have, losing the benefit of my artistry.</p> 
+ <p><b>Esther: </b>When I think about many of the &quot;change programs&quot; I've seen over the years, most focus on context. They talk about the reason for change or the business need behind the change. That's the context part. They assume legitimacy for the person asking for change, but they ignore the needs and values of the person(s) who must actually change.</p> 
+ <p>I see this in so-called agile adoptions where the managers want the development teams to change the way they work, but don't see any need to change management practices. Most of these change efforts don't get very far.</p> 
+ <p><b>Johanna: </b>What if you blamed the other people trying to change? That wouldn't be effective, would it? Or, if you placated them? That wouldn't be effective.</p> 
+</blockquote>
+<p><b>InfoQ: At the end of the book there are several essays on the topic &quot;sustain&quot;. In change initiatives we look for ways to make changes sustainable. Can you give some examples of how to do sustainable changes?</b></p>
+<blockquote> 
+ <p><b>Esther:</b> It is critically important to adjust the environment--the organizational system--to sustain change. I've seen many change efforts fail because all of the organizational systems--HR policies, accounting practices, reward structures--continue to re-enforce the old pattern. This happens at two levels. First, the old behavior is naturally supported by the old structures. Second, when there's a contradiction between the message communicated in the desired change and the existing policies and structures, that gap fills with cynicism and fear.</p> 
+ <p><b>Don: </b>For me, “how to do sustainable change” involves understanding</p> 
+ <p>“… the act of playing a game successfully changes the game in itself.” - Jamshid Gharajedaghi</p> 
+ <p>As such, I need to continually work on congruence, making sure I balance myself, have good interactions with the other person, and shift what I do based on changes in the context.</p> 
+ <p>“Today’s problems come from yesterday’s ’solutions’” - Peter Senge</p> 
+ <p><b>Johanna: </b>Here are some ideas:</p> 
+ <ol> 
+  <li>Tell people what the goals are.</li> 
+  <li>Make sure people have time to practice everything they need to do for their change. People don't change overnight. They need practice for everything, to experiment, and then to get good at it.</li> 
+  <li>Ask people to retrospect themselves. If they look back, they will know how their change is proceeding.</li> 
+ </ol> 
+ <p>If you are a manager, make sure you remove the obstacles. Beware, you might be creating obstacles!</p> 
+ <p><b>Esther:</b> A common (too common) example is a situation where people are asked to &quot;work as a team” and yet stack ranked against each other. Ranking encourages people to make themselves look good, often at the expense of others and customer value. People notice when there's a difference between the words and the music … and they usually follow the music.</p> 
+</blockquote>
+<h2>About the Book Authors</h2>
+<p><b><img src="http://www.infoq.com/resource/articles/change-artistry/en/resources/estherderby headshot.jpg" vspace="3" hspace="3" align="left" alt="" _href="img://estherderby headshot.jpg" _p="true" />Esther Derby </b>spent the last twenty-five years helping companies design their environment, culture, and human dynamics for optimum success. You can visit <a href="http://www.estherderby.com ">her website </a>&nbsp;and follow her on twitter: <a href="https://twitter.com/estherderby">@estherderby</a>. If you'd like to learn more about change artistry, join <a href="http://www.estherderby.com/coaching-beyond-the-team-influencing-the-organization">Coaching Beyond the Team</a>.</p>
+<p>&nbsp;</p>
+<p><strong><img src="http://www.infoq.com/resource/articles/change-artistry/en/resources/DonAvilaBeach.jpg" vspace="3" hspace="3" align="left" alt="" _href="img://DonAvilaBeach.jpg" _p="true" />Don Gray</strong>’s<strong> </strong>experience across a variety of industries, from small startups to Fortune 50 organizations, provides a solid platform for assisting clients. He mentors executives, managers and teams through their transition to Agile development practices. Read more about mentoring, coaching and the workshops that he provides <a href="http://donaldegray.com">here</a>.</p>
+<p>&nbsp;</p>
+<p><b><img src="http://www.infoq.com/resource/articles/change-artistry/en/resources/JRothman.png" vspace="3" hspace="3" align="left" alt="" _href="img://JRothman.png" _p="true" />Johanna Rothman</b>, known as the “Pragmatic Manager,” provides frank advice to your tough problems. She helps organizational leaders recognize potential risks, seize opportunities, and remove impediments. Johanna is the author of several books and more than 200 articles. She writes two blogs on her <a href="http://jrothman.com">web site</a>, as well as <a href="http://createadaptablelife.com">here</a>.</p><br><br><br><br><br><br></body></html>

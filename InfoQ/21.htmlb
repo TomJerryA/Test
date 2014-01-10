@@ -1,164 +1,308 @@
-<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>敏捷时代的建模：敏捷团队的扩张除了代码还需要什么？</h3><p>敏捷方法已经成为了当前软件开发的主流模式，可工作的代码（以及自动化测试）被认为是团队最重要的产出。</p>
-<p>那么是否不再需要建模了呢？UML真的已死？我并不这么认为。</p>
-<p>在本文中，我将探索在敏捷时代，建模方法依然适用并且扮演关键角色的所在。尤其在开发规模扩张到多个团队后，对整个系统的“Big Picture”达成共识将变得非常关键。</p>
-<h2>敏捷中的“设计”在哪里</h2>
-<blockquote> 
- <p>虽然代码表现了事实，但它并没有表现事实的全部 – Grady Booch</p> 
-</blockquote>
-<p>在开篇部分，我将描述一个使用Scrum的敏捷团队的精简流程。图1展示的是一个经过有意简化的流程，它仅仅保留了关键的部分。</p>
-<ol> 
- <li>列举在“Product Backlog”中的“用户需求” 。</li> 
- <li>开发团队从列表中选取一些需求，并在一个较短的迭代（或者一个Sprint）时间内实现它们。</li> 
- <li>每个Sprint结束后，团队创建了“可工作的软件”（或者是“增量内容”），表现为“产品代码”与“测试代码”。</li> 
-</ol>
-<p><img width="500" src="http://infoqstatic.com/resource/articles/kenji-modeling-agile/zh/resources/1012000.png" alt="" _href="img://null" _p="true" /></p>
+<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>实现Java中的高性能解析器</h3><p>在某些情况下，你可能需要在Java中实现你自己的数据或语言解析器，也许是这种数据格式或语言缺乏标准的Java或开源解析器可以使用。或者虽然有现成的解析器实现，但它们要么太慢，要么太占内存，要么就是没有符合你所需要的特性。又或者是某个开源的解析器存在缺陷，要么是某个开源解析器的项目中止了，原因不一而足。不过无论原因是什么，总之事实就是你必须要自己去实现这个解析器。</p>
+<p>当你必须自己实现一个解析器时，你对它的期望会有很多，包括性能良好、灵活、特性丰富、方便使用，以及便于维护等等。说到底，这也是你自己的代码。在本文中，我将为你介绍在Java中实现高性能解析器的一种方式，这种方法并且独一无二，但难度适中，不仅实现了高性能，而且它的模块化设计方式也比较合理。这种设计是受到了<a href="http://vtd-xml.sourceforge.net/">VTD-XML</a>的设计方式的启发，后者是我所见过的最快的Java XML解析器，比起StAX和SAX这两种标准的Java XML解析器都要快上许多。</p>
+<h2>两种基本的解析器类型</h2>
+<p>为解析器进行分类的方式有好几种，在这里我将解析器分为两种基础类型：</p>
+<ul> 
+ <li>顺序访问解析器</li> 
+ <li>随机访问解析器</li> 
+</ul>
+<p>顺序访问是指解析器对进行数据进行解析，在数据解析完成后将其转交给数据处理器（processor）的过程。数据处理器只能访问当前正在进行解析的数据，它既不能访问已解析过的数据，也不能访问等待解析的数据。这种解析器也被称为基于事件的解析器，例如SAX和StAX解析器。</p>
+<p>而随机访问解析器是指解析器允许数据处理代码可以随意访问正在进行解析的数据之前和之后的任意数据（随机访问）。这种解析器的例子有XML DOM解析器。</p>
+<p>下图展示了顺序访问解析器与随机访问解析器的不同之处：</p>
 <div id="lowerFullwidthVCR"></div>
-<p><b>图</b><b>1</b><b>，简单的</b><b>Scrum</b><b>框架</b></p>
-<p>在这个最精简的框架中，团队所知的是“Product Backlog”上的“用户需求”，而产出的是代码（“产品代码”与“测试代码“）所呈现的“可工作的软件”。这里并未显式地描述两者间的设计成果。理想的情况是，这个Sprint所产生的设计意图作为团队产出的一部分，已经体现在最终发布的代码中了。但有些信息是无法用代码直接表达的。Scrum本身是一种流程框架，它并不有意图地表现任何设计的部分，但团队中仍然少不了各种各样的设计工作。</p>
-<p>正如Grady Booch所说，“<a href="http://www.informit.com/articles/article.aspx?p=1405569">代码表现了事实，但它并没有表现事实的全部</a>”。因此如果有些信息无法以代码形式进行表述或交流，我们将把这些知识财富保留在哪里呢？这正是本文尝试解答的疑问。</p>
-<h2>写文档就不是敏捷了吗？</h2>
-<blockquote> 
- <p>建模是为了进行对话 – Craig Larman与Bas Vodde</p> 
-</blockquote>
-<p>对以上问题的一个回答也许是：“在我们的脑海中！”。每日例会、结对编程、设计研讨等等互动性的实践以一种同步的方式持续地将团队成员的思想进行归总。但是当团队开始扩张、或分布在不同地域、或有成员离开团队时，“脑海中的模型”的内容会被很快遗忘。我们需要以文档的形式将对系统的共识保存起来，以分享那些仅用代码形式不易保留及沟通的信息。</p>
-<p>敏捷方法清晰地阐述了一个观点，即对话的价值更胜于文档，因此编写繁重的设计文档（它经常会重复代码中表述的信息）并非正确的途径。我们应该采取的途径是只编写那些使对话更有效的文档，它应该尽可能保持最简单的模型集合，与代码产生互补作用。</p>
-<p>模型胜过代码的一个方面是它的可视化表达能力。换句话说，在某些情况下，文字是一种糟糕的交流媒介。图2表现了文字交流会失效的一种情况（感谢Jeff Patton为我推荐了这本书）。</p>
-<p><img width="500" src="http://infoqstatic.com/resource/articles/kenji-modeling-agile/zh/resources/1012001.jpg" alt="" _href="img://null" _p="true" /></p>
-<p><b>图2，文字交流的失败</b></p>
-<p>我猜测，这个“悲剧的”蛋糕是在给蛋糕厂家的电话答录机留言时的误解造成的（译注：订购者的原意是在“Best wishes Suzanne”这一句下方（Underneath that）加上“We will miss you”）、如果订购者能够用一张简单的图片（配上文字）来表达他的意图，那绝对可以避免这个悲剧。有些时候，真的是“一图胜千言”。</p>
-<p>那么，在敏捷团队中，该怎样为了实现目的而有效地使用模型呢？</p>
-<h2>敏捷建模以及两种模型</h2>
-<blockquote> 
- <p>保留建模，但去掉那些官僚主义的东西 – Scott Ambler</p> 
-</blockquote>
-<p>“<a href="http://www.agilemodeling.com/">敏捷建模</a>”是一系列可以应用在你的团队里以实现有效建模与文档的实践。这一方法遵循了敏捷价值与原则，并且使你依然可以从建模中受益。这里要强调的是，<b>建模是为了更好地开展对话</b>，而不是仅仅为了信息传递。</p>
-<p>我们的软件开发团队已经在使用敏捷建模的实践与原则，并且发现模型起到的最主要作用是<b>以可视化方式交流系统设计的“</b><b>Big Picture</b><b>”</b>或者说是“鸟瞰图”，这一点是单凭代码难以表现的。缺乏模型的支持，整个团队的工作就好似盲人摸象，“四个盲人在摸象，每个人只能感觉到他所触摸的那一部分，最终花费了许多时间，才把这些部分统一成一个整体：一头大象！”</p>
-<p>我的建议是，保持并维护一个反映“Big Picture”的模型，它应该包括以下内容：</p>
-<ol> 
- <li>系统的<b>“架构”</b>，以便于团队对于整个系统结构有一个初步的认识。</li> 
- <li><b>“领域模型”</b>将帮助团队理解问题领域中的各种概念。</li> 
- <li><b>“关键用例”</b>有助于发现系统的典型用户，并了解他们如何从系统中受益。</li> 
-</ol>
-<p>以上每一点对于建立对系统的理解都是非常关键的。缺少了模型的支持，你又怎样确保达到这种理解程度呢？如果你的代码库内容庞大，但只基于你所看到的一小部分不完整的内容推测系统的“Big Picture”，那么你将会对于如何维护整个代码库做出糟糕的选择。“Big Picture”不仅反映了团队对于系统的理解的模型，并且也构成了他们在对话中以及在代码中所用到的词汇，例如代码的结构，以及各种编程结构的命名方式，包括类、方法、变量、字段、数据、配置等等。换句话说，这些模型不仅对于团队建立起对系统整体的共识非常重要，同时也促使团队保持代码库的一致性与可维护性。</p>
-<p>另一方面，某些临时模型的信息以代码形式记录下来之后，这些模型就会被丢弃。这一类别的模型包含画在白板上的松散类图，它通常包含一些类以及描述这些类的交互情况的时序图。这种模型将鼓励你开展有效的对话，其中产生的各种信息将以代码形式固定下来，并随后丢弃。</p>
-<p>因此这一观点的核心是将模型分为两种类别 – <b>应保留模型</b>将作为资产保留维护，而<b>临时模型</b>则促进了有效的对话。我们将前者称为“应保留模型”或“保留模型”，而将后者称为“临时的模型”或“临时模型”（图3）。要注意的是，“保留模型”并不代表“已冻结的”，而是代表“应长期维护的”，并且将持续发展。在下一节中，我将为敏捷团队推荐三种“保留模型”。</p>
-<p><img width="500" src="http://infoqstatic.com/resource/articles/kenji-modeling-agile/zh/resources/1012002.png" alt="" _href="img://null" _p="true" /></p>
-<p><b>图</b><b>3, </b><b>“应保留的”与“临时的”敏捷模型</b></p>
-<h2>应保留的模型</h2>
-<p>在不同的情况下（人员数量、系统的重要度、需求的稳定程度、是否企业级系统或者嵌入式系统），应保留的模型种类也不同。基于我的经验来看，以下几种模型可以成为应保留的模型：</p>
-<ol> 
- <li>架构的类图/包图</li> 
- <li>领域模型的类图/实体关系图</li> 
- <li>关键用例的用例图 + 时序图/协作图</li> 
-</ol>
-<p>虽然我们主要使用的是UML方式，但你也不必刻意遵守严格的UML规格。之所以选择它是因为它提供了种类丰富的标准图形，并且关于它的各种教材也已经很多了。另外，用于表现数据与流程的实体关系图（ERD）与数据流图（DFD）也会由于相同的原因而在某些地方使用到。</p>
-<p>图4以图形方式显示了这三种应保留的模型的角色。简单地说，“架构”表现了系统结构，“领域模型”表现了问题领域中的关键概念，而“关键用例”则为系统的使用方式提供了示例。</p>
-<p><img width="500" src="http://infoqstatic.com/resource/articles/kenji-modeling-agile/zh/resources/1012003.png" alt="" _href="img://null" _p="true" /></p>
-<p><b>图</b><b>4</b><b>，架构、领域模型以及关键用例</b></p>
-<p>接下来我会以我的某个团队中所使用的真实示例与图片，分别解释这三个模型。</p>
-<h3>1. 架构的类图/包图</h3>
-<p>架构是对整个系统的一种结构化展示，它经常以类图或者包图的典型方式显现<b>全局的层次（</b><b>tier</b><b>或layer</b><b>）</b>。举例来说，一个包含用户界面与数据库的应用程序，经常按照从用户界面到数据库进行水平分层，用例将跨越这些层以实现它的功能。</p>
-<p>像“MVC”（模型-视图-控制器）这样的架构模式也可以作为一个全局架构。图5是某个架构的包图的示例，很显然它是基于某种MVC架构设计的。</p>
-<p>团队中的每个人都应该理解架构中的各个部件的角色与作用，这样才能保证团队成员所编写的代码处于架构中的正确位置。</p>
-<p>在这张图的多个包之间显式地表现了“依赖项”的存在，这样做是为了避免不必要的耦合或循环依赖。因为从架构的视角来说，内部包的循环依赖是最糟糕的问题，它会提高测试的难度，并且增加编译的时间。</p>
-<p>（单击图片以放大）</p>
-<p><a href="http://infoqstatic.com/resource/articles/kenji-modeling-agile/zh/resources/1012004.pn"><img width="500" src="http://infoqstatic.com/resource/articles/kenji-modeling-agile/zh/resources/1012004.png" alt="" _href="img://null" _p="true" /></a></p>
-<p><b>图</b><b>5</b><b>，架构的类图</b><b>/</b><b>包图（示例）</b></p>
-<h3>2. 领域模型的类图或实体关系图</h3>
-<p>领域模型描述了应用程序所在的领域中的概念分类。在人员交流的层面上，领域模型的词汇集将成为“<a href="http://martinfowler.com/bliki/UbiquitousLanguage.html">Ubiquitous Language</a>”，并且在全体项目相关人员之间使用，包括用户、领域专家、业务分析师、测试与开发者。</p>
-<p>而在编码的层面上，领域模型对于为各种编程结构选择合适的命名也是非常重要的，包括类、数据、方法以及其它各种协定。概念分类（经常称为“实体”）中的很大一部分会被映射到数据库中的某个持久化数据结构，并且它们的生命周期往往会长于应用程序本身。通常来说，如果你的应用程序选择了某种“MVC”架构，那么你的领域模型（或者说实体）会驻留于你的逻辑架构中的“M”（模型）包内。而在Ruby on Rails类型的应用程序中，实体关系图将会更加适用于表达某个领域模型，因为模型与关系型数据库的关系更加直接与紧密了。</p>
-<p>还要注意的一点是，领域模型是随着时间进化的。由于领域处于问题理解与通信的核心地带，因此怎样维护在团队中（或更大一些的范围，如整个社区）不断发展的领域模是一个很大的主题，这一点在<a href="http://www.amazon.com/Domain-Driven-Design-Tackling-Complexity-Software/dp/0321125215">Eric Evans的领域驱动设计（DDD）一书</a>中进行了详细的讨论。</p>
-<p>图6是某个以类图方式表现的领域模型示例，它用一张图表现了整个领域。</p>
-<p>（单击图片以放大）</p>
-<p><a href="http://infoqstatic.com/resource/articles/kenji-modeling-agile/zh/resources/1012005.png"><img width="500" src="http://infoqstatic.com/resource/articles/kenji-modeling-agile/zh/resources/1012005.png" alt="" _href="img://null" _p="true" /></a></p>
-<p><b>图</b><b>6</b><b>，领域模型的类图（示例）</b></p>
-<h3>3. 关键用例的用例图与时序图/协作图</h3>
-<p>关键用例经常从用户角度表现系统的使用方式，有两个原因让我们决定将它作为保留模型的一部分。首先，开发者经常会钻进解决方案细节中，而遗忘了系统的用户是谁，以及他们想在系统中完成什么任务。用例能够帮助他们回到用户的视角，同时它也是与用户对话的一种良好的方式（其它文档更适合给技术人员看）。</p>
-<p>其次，用时序图或协作图方式表现关键用例以及它们的运作过程对于开发者来说是一个很好的示范。它们描述了系统架构中不同层次的对象如何协同工作，以完成用户的目标。它表现了一个从用户界面到数据库的纵切面的实际示例，并且告诉你如何在整个架构中实现某个用例。</p>
-<p>关键用例不必完整到覆盖所有的情况，只需挑选那些典型的用例，并使它们保持简单。</p>
-<p>（单击图片以放大）</p>
-<p><a href="http://infoqstatic.com/resource/articles/kenji-modeling-agile/zh/resources/1012006.png"><img width="500" src="http://infoqstatic.com/resource/articles/kenji-modeling-agile/zh/resources/1012006.png" alt="" _href="img://null" _p="true" /></a></p>
-<p><b>图</b><b>7</b><b>，关键用例的用例图（示例）</b></p>
-<p>（单击图片以放大）</p>
-<p><a href="http://infoqstatic.com/resource/articles/kenji-modeling-agile/zh/resources/1012007.png"><img width="500" src="http://infoqstatic.com/resource/articles/kenji-modeling-agile/zh/resources/1012007.png" alt="" _href="img://null" _p="true" /></a></p>
-<p><b>图</b><b>8</b><b>，关键用例机制？？？的协作图（示例）</b></p>
-<p>图7是用例图的一个示例，它使得系统的用户与经典场景更加清晰化。它不需要非常完整，但应该表现出系统的上下文情况。标为黄色的用例（“创建类图”）被选为某个用例示例，具体的设计分解体现在图8的协作图中。通过这一示例，团队能够将他们对架构图与领域模型图（表现在图5与图6中）如何完成关键用例中所描述的特性的理解进行分享。请再次看看图4中架构、领域模型与关键用例这三者的关联吧。</p>
-<p>你可以在画这些图时使用工具，以简化维护工作，然后将它们打印到一张大纸上并粘贴到墙上。这面墙就会成为建模研讨会的讨论场所了（我在下一节中会很快讨论到这部分）。</p>
-<h2>扩张</h2>
-<blockquote> 
- <p>极限编程团队先实现后分解（conquer and divide），而不是相反（divide and conquer） – Kent Beck</p> 
-</blockquote>
-<p>在一个不到10个开发者的小型团队中，你或许不需要在代码库之外再去维护某些模型了。但是当开发规模扩大到多个团队之后，你就会从建模中获得更大的好处。</p>
-<p>但请记住，不要仅仅为了将知识传递给某个你不认识的人，而花费太多时间去准备繁重的文档（而没有编写任何代码）。即使团队的规模变得更大了，你也应该尝试着首先按照某种简单的垂直划分的方式实现某个关键用例，将它作为架构的一个示例。随后，你将这个示例的可工作代码以及“保留模型”的知识分享给某个子团队。换句话说，不要尝试“先分解后实现”某个用例（在桌面上分解问题，随后将贴在墙上的规格说明丢给某个子团队并让他们实现），而是让他们“先实现后分解”（关于这一话题的更多讨论，请阅读Craig Larman与Bas Vodde的文章——《<a href="http://www.infoq.com/articles/large-scale-agile-design-and-architecture">大规模敏捷设计与架构</a>》）。</p>
-<p>这里，我将描述多个团队如何使用“保留模型”互相交流整个系统的“Big Picture”。首先有一个名为“Tiger”的团队，它有不足10名成员，他们将尝试实现第1部分内容。在首次成功的实现之后，他们就可以将之前所述的各种“保留模型”<b>作为良好的文档，用以互相交流对系统的理解。</b>在Sprint 1中，Tiger团队首先完成了第一个关键用例，它建立起了第一个可作为范例的架构设计，并以此建立了软件架构文档（SAD），作为保留模型的版本1.0。不要把这些模型当做一个规格说明，而是把它们当作建立理解和共识的基础平台。再一次记住，不要仅仅把这些文档的信息简单地传递给子团队。</p>
-<p><img width="500" src="http://infoqstatic.com/resource/articles/kenji-modeling-agile/zh/resources/1012008.png" alt="" _href="img://null" _p="true" /></p>
-<p><b>图</b><b>9</b><b>，</b><b>Tiger</b><b>团队与子团队</b></p>
-<p>沟通设计意图并达成共识的最好方式，就是与子团队一起<b>开展一次建模研讨会</b>（图9）</p>
-<p>（单击图片以放大）</p>
-<p><a href="http://infoqstatic.com/resource/articles/kenji-modeling-agile/zh/resources/1012009.JPG"><img width="500" src="http://infoqstatic.com/resource/articles/kenji-modeling-agile/zh/resources/1012009.JPG" alt="" _href="img://null" _p="true" /></a></p>
-<p><b>图</b><b>10</b><b>，建模研讨会的进程，在墙上显示的是保留模型的内容</b></p>
-<p>在建模研讨会上，Tiger团队的一名成员Ken（见图9）首先解释了SAD，并简单描述了各个模型。在问答阶段，他将核心思想与系统的结构关联在一起。接下来，他以关键用例为例，解释了各个系统组件如何协作以实现某个用户目标，并使用这些组件设计出一至两个关键用例，在实现时可以使用临时模型，并可实行结对编程。</p>
-<p>无需使SAD显得非常完整，以研讨会的形式建立起共识，抛弃信息传递的做法，并开展内容详实的对话，这就非常好了。</p>
-<p>反馈是子团队研讨会的一个重要部分。图9中，子团队1的Ken与子团队2的Tom将结果反馈给Tiger团队，并与其他成员一起讨论如何改善这些保留模型。图11显示了研讨会过程中众人的各种想法，包括了众人的理解与反馈。</p>
-<p>（单击图片以放大）</p>
-<p><a href="http://infoqstatic.com/resource/articles/kenji-modeling-agile/zh/resources/1012010.JPG"><img width="500" src="http://infoqstatic.com/resource/articles/kenji-modeling-agile/zh/resources/1012010.JPG" alt="" _href="img://null" _p="true" /></a></p>
-<p><b>图</b><b>11</b><b>，研讨会结束后的架构图，包含了众人的留言反馈</b></p>
-<p>这种研讨会的方式需要不断保持。并且以建模的过程，而不是最终的模型作为促进理解的方式。请记住，要将“模型”作为一个动词，通过建模以达到对话的目的。</p>
-<h2>人是知识的传送带</h2>
-<blockquote> 
- <p>许多设计思想都存在于种族记忆（tribal memory）中——Grady Booch</p> 
-</blockquote>
-<p>对于开发与维护系统来说，尽管保留模型以及代码库能够覆盖大部分的必要知识，但仍有一部分隐藏的知识保留在团队成员的脑海中。Grady Booch将其称为种族记忆。</p>
-<p>日本有一所神庙名叫伊势神宫。其中有一座神庙建筑，建立在两个相邻场地的其中一块，并且两块场地具有同样的大小。每隔20年，他们就会把建筑从一处移至另一处。不仅神庙经过了重新建造，并且它的庄严外表与宝库也得到了翻新。这一仪式将建筑的知识从这一代神庙传到下一代。虽然没有任何设计文档，但通过一起进行重新建造的过程，技术、工具以及实践知识都得以从这一代传递到下一代。记住，“经验是最好的老师”，并且只有在众人齐心协力时，才能够传递最丰富的设计知识。</p>
-<p><img width="500" src="http://infoqstatic.com/resource/articles/kenji-modeling-agile/zh/resources/1012011.jpg" alt="" _href="img://null" _p="true" /></p>
-<p><b>伊势神宫（图片来源：</b><b><a href="http://ja.wikipedia.org/wiki/%E7%A5%9E%E5%AE%AE%E5%BC%8F%E5%B9%B4%E9%81%B7%E5%AE%AE">维基百科</a></b><b>）</b></p>
-<h2>建模的小提示</h2>
-<p>理解了我所介绍的思想与经验之后，在最后我将提供一些小提示，你可以在每日的建模会议或研讨会中用到它。</p>
+<p><img alt="" src="http://infoqstatic.com/resource/articles/HIgh-Performance-Parsers-in-Java/zh/resources/1202001.png" _p="true" _href="img://null" /></p>
+<p>顺序访问解析器只能让你访问当前正在解析的“视窗”或“事件”，而随机访问解析器允许你任意地浏览所有已解析数据。</p>
+<h2>设计概况</h2>
+<p>我在这里所介绍的解析器设计属于随机访问解析器。</p>
+<p>随机访问解析器的实现通常会慢于顺序访问解析器，因为它们一般都会为已解析数据创建某种对象树，数据处理代码将通过这棵树对数据进行访问。创建这种对象树不仅要花费较长的CPU时间，消耗的内存也很大。</p>
+<p>相对于从已解析数据中创建一棵对象树的方式，另一种性能更佳的方式是为原来的数据缓冲区建立一个对应的索引缓冲区，这些索引会指向在已解析数据中找到的元素的起点与终点。数据处理代码此时不再通过对象树访问数据，而是直接在包括了原始数据的缓冲区中访问已解析数据。以下是对这两种处理方式的图示：</p>
+<p><img width="600" alt="" src="http://infoqstatic.com/resource/articles/HIgh-Performance-Parsers-in-Java/zh/resources/1202002.png" _p="true" _href="img://null" /></p>
+<p>由于我找不到一个更好的名字，因此我将这种方式简单地命名为“索引覆盖解析器”（Index Overlay Parser）。该解析器为原始数据创建了一个覆盖于其上的索引。这种方式让人联想起数据库索引将数据保存在磁盘的方式，它为原始的、未处理的数据创建了一个索引，以实现更快地浏览和搜索数据的目的。</p>
+<p>如同我之前所说的，这种设计方式是受到了VTD-XML（VTD是指虚拟令牌描述符）的启发，因此你也可以把这种解析器称为虚拟令牌描述符解析器。但我还是倾向于索引覆盖这个名字，因为它表现了虚拟令牌描述符的本质，即对原始数据建立的索引。</p>
+<h3>解析器设计概要</h3>
+<p>一种常规的解析器设计方式将解析过程分为两步。第一步是将数据分解为内聚的令牌，一个令牌是已解析数据中的一个或多个字节或字符。第二步是对令牌进行解释，并根据这些令牌构建更大的元素。以下是这两个步骤的图示：</p>
+<p><img alt="" src="http://infoqstatic.com/resource/articles/HIgh-Performance-Parsers-in-Java/zh/resources/1202003.png" _p="true" _href="img://null" /></p>
+<p>这里的元素并不一定是指XML元素（虽然XML元素也是解析器元素），而是指构成解析数据的更大的“数据元素”。比如说，在一个XML文档中元素代表了XML元素，而在一个JSON文档中元素则代表了JSON对象，等等。</p>
+<p>举例来说，<b>&lt;myelement&gt;</b>这个字符串可以被分解为以下几个令牌：</p>
 <ul> 
- <li>“逆向与模型”，许多UML工具支持“逆向工程”这一特性，它能够将代码即时转换为图形。其中某些工具支持从源代码中进行拖放操作，甚至直接支持Github代码库的URL。你还可以将从代码中逆向工程所得的包与类作为进一步建模的基础。这样，你就不仅仅可以从保留模型开始建模，还能以代码库所生成的模型作为建模的基础。</li> 
- <li>“打印与绘制”，如同之前所说的，一个具有良好互动性的建模研讨会应该在墙上（或者桌面上）贴上几张大纸，并使用这些纸张开展对话，将心得与反馈直接绘制在这些打印纸上（图11）。</li> 
- <li>“投影仪与白板”，在研讨会上分享模型的另一种方式是使用投影仪与白板，以模拟“打印与绘制”的情况。使用投影仪在白板上展示保留模型，并在白板上绘制各种留言，或者粘上便条贴。</li> 
- <li>“回顾”，我在之前推荐了一些我认为最简单的保留模型，但每个团队都可能有不同的情况。因此建议首先从我的建议，或者你觉得合适的模型作为第一部分的保留模型。并在每个Sprint之后为你选择的模型作一个回顾，讨论一下哪些模型起到了良好的作用而哪些没有，以及另外还需要哪些模型。总之，找到你的保留模型。</li> 
- <li>“思维导图建模“，在与用户交流时、做计划时以及其它一些氛围轻松但非常重要的工作时，UML以及其它软件工程图的作用并不理想，这时就可以使用思维导图了。具体细节请阅读《敏捷建模与思维导图和UML》。<a href="http://www.stickyminds.com/s.asp?F=S11861_ART_2">以下这个示例思维导图是我为某个用户创建的，名为“用户故事探索”。</a></li> 
+ <li>&lt;</li> 
+ <li>myelement</li> 
+ <li>&gt;</li> 
 </ul>
-<p>（单击图片以放大）</p>
-<p><a href="http://infoqstatic.com/resource/articles/kenji-modeling-agile/zh/resources/1012012..png"><img width="500" src="http://infoqstatic.com/resource/articles/kenji-modeling-agile/zh/resources/1012012..png" alt="" _href="img://null" _p="true" /></a></p>
-<h2>结论</h2>
-<p>在本文中，我详细解释了建模工作将如何适应诸如Scrum这样的敏捷开发框架，并且建议了几种你可以在产品的整个生命周期中保留的模型。我还推荐你开展一个建模研讨会以交流设计意图，并建立起对系统的共识。尤其当团队扩张到多个子团队之后，这种实践会变得愈加重要。</p>
-<h2>致谢</h2>
-<p>我在这里要感谢Hiroki Kondo、Alex Papadimoulis以及Scott Reece的建议，并感谢Ben Linders检阅并编辑了这篇文章。特别要感谢Craig Larman，是他首先介绍了建模（或者将“模型”作为动词亦可）研讨会的重要性，并且还在他的飞行途中为我的这篇文章提供了一些根本性的建议。</p>
-<h2>延伸阅读</h2>
-<p>关于敏捷中设计的讨论由来已久。请参阅Martin Fowler及Jack Reeves的大作。</p>
+<p>一旦数据被分解为令牌，解析器就能够相对容易地了解它的意义，并且决定这些令牌构成的更大的元素。解析器就能够理解一个XML元素是由一个’&lt;’令牌开始，随后是一个字符串（即元素名称），随后有可能是一些属性，最后以一个’&gt;’令牌结尾。</p>
+<h3>索引覆盖解析器设计</h3>
+<p>在这种解析器的设计方式中也包含了两个步骤：输入数据首先被一个令牌生成器（tokenizer）组件分解为令牌，解析器随后将对令牌进行解析，以决定输入数据的一个更大的元素边界。</p>
+<p>你也可以为解析过程加入一个可选的“元素浏览步骤”。如果解析器从解析数据中构建出一棵对象树，它通常会包含在整棵树中进行浏览的链接。如果我们不选择对象树，而是构建出一个元素索引缓冲区，我们也许需要另一个组件以帮助数据处理代码在元素索引缓冲区中进行浏览。</p>
+<p>以下是我们的解析器设计的概要：</p>
+<p><img width="600" alt="" src="http://infoqstatic.com/resource/articles/HIgh-Performance-Parsers-in-Java/zh/resources/1202004.png" _p="true" _href="img://null" /></p>
+<p>我们首先将所有数据读入一个数据缓冲区中，为了能够通过在解析过程中创建的索引对原始数据进行随机访问，所有的原始数据必须已经存在于内存中。</p>
+<p>第二步，令牌生成器会将数据分解为令牌。令牌生成器内部的某个令牌缓冲区会将该令牌的起点索引、终点索引和令牌类型都保留下来。使用令牌缓冲区使你能够查找之前或之后的令牌，在这种设计中解析器会利用到这一项特性。</p>
+<p>第三步，解析器获取了令牌生成器所产生的令牌，根据上下文对其进行验证，并决定它所表示的元素。随后解析器会根据从令牌生成器处获取的令牌构建一个元素索引（即索引覆盖）。解析器会从令牌生成器中一个接一个地获取令牌。因此令牌生成器不必立即将所有数据都分解为令牌，它只需要每次找到一个令牌就行了。</p>
+<p>数据处理代码将浏览整个元素缓冲区，利用它访问原始数据。你也可以选择用一个元素浏览组件将元素缓冲区包装起来，使浏览元素缓冲区的工作更加简单。</p>
+<p>这种设计不会从解析数据中生成一棵对象树，但它确实生成了一个可浏览的结构，即元素缓冲区，索引（即整数数组）将指向包含了原始数据的数据缓冲区。你可以使用这些索引浏览原始数据缓冲区中的所有数据。</p>
+<p>本文的以下部分将分析这种设计的各方面细节。</p>
+<h2>数据缓冲区</h2>
+<p>数据缓冲区是一个包括了原始数据的<b>字节</b>或<b>字符</b>缓冲区，而令牌缓冲区和元素缓冲区则包含了指向数据缓冲区的索引。</p>
+<p>为了实现对解析数据的随机访问，必须以某种形式将它保留在内存中。我们在这里没有选择对象树，而是选择了包含未处理数据本身的数据缓冲区。</p>
+<p>将所有数据全部保留在内存中可能会导致对内存的大量消耗。如果你的数据包含了互相独立的元素，例如日志记录，那么将整个日志文件导入内存很可能会造成崩溃。你应该采取的方式是只导入日志文件的一部分，其中至少包含一条完整的日志记录。由于每一条日志记录都可以不依赖于其它日志记录进行解析和处理，你就不需要将整个日志文件在同一时刻加载到内存里了。我在我的文章《<a href="http://tutorials.jenkov.com/java-howto/iterating-streams-using-buffers.html">使用缓冲区对流进行迭代处理</a>》中描述了如何对一块数据流进行迭代的方式。</p>
+<h2>令牌生成器与令牌缓冲区</h2>
+<p>令牌生成器将数据缓冲区分解为令牌，令牌的信息会保存在令牌缓冲区中，包括以下信息：</p>
 <ul> 
- <li><a href="http://martinfowler.com/articles/designDead.html">Martin Fowler，2004，“Is Design Dead？”</a></li> 
- <li><a href="http://martinfowler.com/distributedComputing/thud.html">Martin Fowler，1997，“The Almighty Thud”</a></li> 
- <li><a href="http://www.developerdotstar.com/mag/articles/reeves_design.html">Jack Reeves，1992，“What is Software Design？”</a></li> 
+ <li>令牌的位置（起始位置的索引）</li> 
+ <li>令牌长度</li> 
+ <li>令牌类型（可选信息）</li> 
 </ul>
-<p>对于“敏捷建模”的首次讨论是在《Agile Modeling》一书中，而《Applying UML and Patterns》一书的第三版也再次讨论了这个话题。</p>
+<p>以上信息都保存在数组中，这里是一段示例代码：</p>
+<pre>
+&nbsp;&nbsp; public class IndexBuffer {
+       public int[]&nbsp; position = null;
+       public int[]&nbsp; length&nbsp;&nbsp; = null;
+       public byte[] type&nbsp;&nbsp;&nbsp;&nbsp; = null; 
+     /* assuming a max of 256 types (1 byte / type) */
+   }</pre>
+<p>当令牌生成器在数据缓冲区中找到令牌之后，它会将该位置（起始位置的索引）插入position数组、将令牌长度插入length数组，并将令牌类型插入type数组。</p>
+<p>如果你不使用这个可选的令牌类型数组，你也可以在需要的时候通过令牌中的数据得出令牌的类型。这是一种性能与内存占用之间的权衡。</p>
+<h2>解析器</h2>
+<p>解析器本质上与令牌生成器非常类似，不同的是它将令牌作为输入，而将元素索引作为输出。和令牌类似，每个元素由它的位置（起始位置的索引）、长度和可选的元素类型几部分组成。用以保存这些数字的结构与保存令牌的结构是完全一样的。</p>
+<p>在这里type数组仍然是可选的。如果你能够从元素的首个字节或字符中很容易地判断元素的类型，那就无需特意保存元素的类型信息。</p>
+<p>在元素缓冲区中所包含的元素的精确粒度取决于被解析的数据，以及之后将对数据进行处理的代码段。举例来说，如果你要实现一个XML解析器，你可能会选择将每个开始标签、属性和结束标签作为独立的“解析元素”。</p>
+<h2>元素缓冲区（索引）</h2>
+<p>解析器所生成的元素缓冲区包含了引向原始数据的索引。这些索引会记录解析器在数据中所找到的元素的位置（起始位置的索引）、长度和类型信息。你可以利用这些索引实现在原始数据的任意浏览。</p>
+<p>从之前的IndexBuffer代码段中，你可以看到元素缓冲区为每个元素保留了9个字节的缓冲区，4个字节用于保存位置、另4个字节用于保存令牌长度，最后1个字节用于保存令牌类型。</p>
+<p>你或许能够通过某些手段来减少IndexBuffer的内存占用。举例来说，如果你确认其中的元素不超过65535个字节，你就可以选择使用short短整数，而不是常规的int整数来保存令牌长度信息，这样每个元素都可以节省两个字节，将整个内存占用减少至每个元素七个字节。</p>
+<p>此外，如果你确认被解析文件的大小不会超过16,777,216个字节，那你只需要三个字节来保存位置信息（起始位置的索引）。那么在position数组中的每个整数的第四个字节就可以用来保存元素类型，这样就可以完全不用使用单独的type数组了。如果你的令牌类型不超过128种，你就可以使用七个字节、而不是八个字节来保存令牌类型，这样一来你就可以使用25个比特来保存位置，使得最大的位置可以达到33,554,432。如果你的令牌类型少于64种，你还可以空出一个比特以保存位置信息。</p>
+<p>VTD-XML实际上将所有这些信息都保存在一个长整数类型中，以达到节省空间的目的。为了将几个分离的字段加载成为一个单独的整数或者长整数，需要进行一些比特操作，也因此会降低一些速度，但好处是节省了部分内存，这就是一种资源的权衡。</p>
+<h2>元素Navigator</h2>
+<p>元素navigator可以帮助处理数据的代码在元素缓冲区中对数据任意浏览。请记住一个语义化的对象或元素（例如一个XML元素）或许会包含多个解析器元素。为了简化浏览的实现，你可以创建一个元素navigator对象，让它负责在语义化对象级别对解析器元素进行浏览的操作。举例来说，XML元素navigator可以通过在开始标签之间跳转的方式实现对元素缓冲区的浏览。</p>
+<p>是否使用元素navigator组件由你自行选择，如果你只需要为某个单一的项目的某一个功能实现解析器，你也可以选择不使用这种方式。但如果你希望实现的解析器能够在多个项目中重用，或者是将它发布为开源代码，你或许需要添加一个元素navigator组件，这取决于对解析数据的浏览的复杂度有多高。</p>
+<h2>案例学习：一个JSON解析器</h2>
+<p>为了让索引覆盖解析器的设计更为直观，我自己实现了一个基于Java的小型JSON解析器，它遵循了索引覆盖解析器设计的方式，你可以在<a href="http://github.com/jjenkov/parsers-in-java">GitHub</a>上找到它的完整代码。</p>
+<p>JSON是JavaScript对象表示法的简称，它是在web服务端和客户端浏览器之间通过AJAX进行数据交换的一种常见数据格式，这是因为web浏览器内置了将JSON转换为JavaScript对象的原生支持。以下篇章中我会假设你已经熟悉JSON格式了。</p>
+<p>这里有一个简单的JSON示例：</p>
+<pre>
+  {&quot;key1&quot;:&quot;value1&quot;,&quot;key2&quot;:&quot;value2&quot;,[&quot;valueA&quot;:&quot;valueB&quot;:&quot;valueC&quot;]}</pre>
+<p>JSON令牌生成器将JSON字符串分别为以下令牌：</p>
+<p><img width="600" alt="" src="http://infoqstatic.com/resource/articles/HIgh-Performance-Parsers-in-Java/zh/resources/1202005.png" _p="true" _href="img://null" /></p>
+<p>这里的下划线强调了每个令牌的长度。</p>
+<p>令牌生成器还将决定每个令牌的基本类型，以下的JSON示例与之前的相同，只是加入了令牌的类型信息：</p>
+<p><img width="600" alt="" src="http://infoqstatic.com/resource/articles/HIgh-Performance-Parsers-in-Java/zh/resources/1202006.png" _p="true" _href="img://null" /></p>
+<p>请注意这里的令牌类型并非语义化，它只是说明了令牌的基本类型是什么，而并没有体现出这些令牌包含了什么内容。</p>
+<p>解析器会分析出基本的令牌类型，并将它们替换为语义化的类型。这里是一个相同的JSON示例，但使用了语义化的类型（即解析器元素）：</p>
+<p><img width="600" alt="" src="http://infoqstatic.com/resource/articles/HIgh-Performance-Parsers-in-Java/zh/resources/1202007.png" _p="true" _href="img://null" /></p>
+<p>当解析器完成了对该JSON对象的解析之后，你将获得一个索引（即元素缓冲区），它由图中所标注的元素的位置、长度和元素类型信息所组成。接下来你就可以对该索引进行浏览，以找出该JSON对象中你所需的数据。</p>
+<h3>JsonTokenizer.parseToken()</h3>
+<p>为了让你了解令牌生成器和解析工作是如何实现的，我会为你展示JsonTokenizer和JsonParser中的核心代码。请记得去<a href="http://github.com/jjenkov/parsers-in-java">Github</a>下载完整的代码。</p>
+<p>以下是JsonTokenizer.parseToken()方法的实现，它将负责解析数据缓冲区中的下一个令牌：</p>
+<pre>
+public void parseToken() {
+     skipWhiteSpace();
+     this.tokenLength = 0;
+	
+     this.tokenBuffer.position[this.tokenIndex] = this.dataPosition;
+     char nextChar = this.dataBuffer.data[this.dataPosition];
+	
+     switch(nextChar) {
+	 case '{'   :
+           this.tokenLength = 1;
+           this.tokenBuffer.type[this.tokenIndex] = 
+TokenTypes.JSON_CURLY_BRACKET_LEFT;
+           break;
+	 case '}'   :  
+           this.tokenLength = 1;
+           this.tokenBuffer.type[this.tokenIndex] = 
+TokenTypes.JSON_CURLY_BRACKET_RIGHT;
+           break;
+	 case '['   :
+           this.tokenLength = 1;
+           this.tokenBuffer.type[this.tokenIndex] = 
+TokenTypes.JSON_SQUARE_BRACKET_LEFT ;
+           break;
+	 case ']'   : 
+           this.tokenLength = 1;
+           this.tokenBuffer.type[this.tokenIndex] = 
+TokenTypes.JSON_SQUARE_BRACKET_RIGHT;
+           break;
+	 case ','   :
+           this.tokenLength = 1;
+           this.tokenBuffer.type[this.tokenIndex] = TokenTypes.JSON_COMMA;
+           break;
+	 case ':'   :  
+           this.tokenLength = 1;
+           this.tokenBuffer.type[this.tokenIndex] = TokenTypes.JSON_COLON;
+           break;
+	 case '&quot;'   :
+           parseStringToken();
+           this.tokenBuffer.type[this.tokenIndex] = TokenTypes.JSON_STRING_TOKEN;
+           break;
+	 default    : 
+           parseStringToken();
+           this.tokenBuffer.type[this.tokenIndex] = TokenTypes.JSON_STRING_TOKEN;
+     }
+     this.tokenBuffer.length[this.tokenIndex] = this.tokenLength;
+  }</pre>
+<p>如你所见，这部分代码非常简单。我们第一步首先调用skipWhiteSpace()方法，它将忽略当前位置的数据中的空格字符。第二步是将令牌长度设为0。第三步，将当前令牌的位置（数据缓冲区中的相对位置）保存在TokenBuffer中。第四步，对下一个字符进行分析，根据字符种类（即令牌种类）的不同，将执行switch—case结构中的某条语句。最后，将当前令牌的长度保存起来。</p>
+<p>以上就是为数据缓冲区生成令牌的全部工作了，请注意，当找到了某个字符串令牌的开头部分之后，令牌生成器就会调用parseStringToken()方法，它会对数据进行完整的扫描，直到找到了该字符串令牌的结束为止。这种方式比起在parseToken()方法中进行各种条件判断并处理各种不同情况执行得会更快，而且实现也更加容易。</p>
+<p>JsonTokenizer中其余的方法都是parseToken()的辅助方法，或者是将数据的位置移至下一个令牌（即当前令牌之后的第一个位置），等等。</p>
+<h4>JsonParser.parseObject()</h4>
+<p>JsonParser类的主要方法是parseObject()，它会检查JsonTokenizer中令牌的类型，并尝试在输入数据中查找该类型的JSON对象。</p>
+<p>以下是parseObject()方法的实现：</p>
+<pre>
+private void parseObject(JsonTokenizer tokenizer) {
+     assertHasMoreTokens(tokenizer);
+     tokenizer.parseToken();
+     assertThisTokenType(tokenizer, TokenTypes.JSON_CURLY_BRACKET_LEFT);
+     setElementData     (tokenizer, ElementTypes.JSON_OBJECT_START);
+     tokenizer.nextToken();
+     tokenizer.parseToken();
+     while( tokenizer.tokenType() != TokenTypes.JSON_CURLY_BRACKET_RIGHT) {                 
+         assertThisTokenType(tokenizer, TokenTypes.JSON_STRING_TOKEN);
+	 setElementData(tokenizer, ElementTypes.JSON_PROPERTY_NAME);          
+         tokenizer.nextToken();
+	 tokenizer.parseToken();
+	 assertThisTokenType(tokenizer, TokenTypes.JSON_COLON);
+	 tokenizer.nextToken();
+	 tokenizer.parseToken();
+	 if(tokenizer.tokenType() == TokenTypes.JSON_STRING_TOKEN) {             
+             setElementData(tokenizer, ElementTypes.JSON_PROPERTY_VALUE);
+	 } else if(tokenizer.tokenType() == TokenTypes.JSON_SQUARE_BRACKET_LEFT) {
+	     parseArray(tokenizer);
+	 }
+         tokenizer.nextToken();
+	 tokenizer.parseToken();
+	 if(tokenizer.tokenType() == TokenTypes.JSON_COMMA) {
+	     tokenizer.nextToken();  //skip , tokens if found here.             
+             tokenizer.parseToken();
+	 }
+      }
+      setElementData(tokenizer, ElementTypes.JSON_OBJECT_END);
+  }
+
+  private void setElementData(JsonTokenizer tokenizer, byte elementType) {
+     this.elementBuffer.position[this.elementIndex] = tokenizer.tokenPosition();     
+     this.elementBuffer.length  [this.elementIndex] = tokenizer.tokenLength();         
+     this.elementBuffer.type    [this.elementIndex] = elementType;      
+     this.elementIndex++;
+  }</pre>
+<p>parseObject()方法能够接受的信息包括：一个左大括（{）后接着一个字符串令牌；或是一个逗号后跟着一个字符串令牌；或是某个数组的开始符号（[）；或是另一个JSON对象。当JsonParser从JsonTokenizer中获得了这些令牌之后，就将它们的开始位置、长度和语义信息保存在它自己的elementBuffer字段中。数据处理代码就可以随后浏览elementBuffer中的信息，从输入数据中获取所需的数据了。</p>
+<p>看过了JsonTokenizer和JsonParser的核心代码部分之后，你应该对令牌生成器和解析器的工作方式有所了解了。如果要完整地了解代码的工作方式，你可能需要查看JsonTokenizer和JsonParser的完整实现。它们的代码都不超过115行，理解它们应该不是难事。</p>
+<h2>性能基准测试</h2>
+<p>VTD-XML已经为它的XML解析器与StAX、SAX和DOM解析器进行过大量的性能基准比较测试了，从性能上来看VTD-XML无疑是最大的赢家。</p>
+<p>为了让使用者对索引覆盖解析器的性能建立起信心，我也对我的JSON解析器实现与Google的JSON解析器——GSON，进行了性能对比。GSON的方式是从某个JSON输入（字符串或流）中创建一棵对象树。</p>
+<p>请记住，GSON是一个非常成熟的产品，品质优秀，经过了大量的测试，并且接受用户的错误报告。而我的JSON解析器还只是处于概念产品的级别。这次测试仅仅是对性能的表现，这个结果也不代表最终的结论。也请注意阅读该测试的相关讨论。</p>
+<p>这里有一些关于构建该测试的具体细节：</p>
 <ul> 
- <li><a href="http://www.amazon.com/Agile-Modeling-Effective-Practices-Programming/dp/0471202827/">Scott Ambler，2002，“Agile Modeling”，John Wiley &amp; Sons Ltd.</a></li> 
- <li><a href="http://www.amazon.com/Applying-UML-Patterns-Introduction-Object-Oriented/dp/0131489062/">Craig Larman，2007，“Applying UML and Patterns：An Introduction to Object-Oriented Analysis and Design and Iterative Development”</a></li> 
+ <li>为了使JIT预热以减少启动时的负载，对该JSON的输入解析一共运行了1千万次。</li> 
+ <li>该测试一共对三个不同的文件重复运行了相同的次数，以测试解析器解析小文件、中等文件和大文件的效果。文件的大小分别为64字节、406字节和1012字节。因此测试的过程就是首先对小文件进行1千万次解析，并分析其结果，然后解析中等文件并分析结果，最后是解析大文件并分析结果。</li> 
+ <li>在解析和分析工作开始前，文件已经全部加载到内存中，因此避免了将文件加载的时间算到整个解析时间里。</li> 
+ <li>对1千万次解析的分析过程会在自己的进程中进行，这意味着每个文件都在独立的进程中进行解析，在每个时间点只有一个文件在进行解析。</li> 
+ <li>每个文件会进行3次分析，因此对文件的1千万次解析工作一共会进行3次，每1次的分析工作是顺序进行的，而没有采用并行方式。</li> 
 </ul>
-<p>Craig Larman与Bas Vodde的书籍对建模研讨会的思想有极大的促进。</p>
+<p>测试结果表格包括以下三列：</p>
 <ul> 
- <li><a href="http://www.amazon.com/Practices-Scaling-Lean-Agile-Development/dp/0321636406">Craig Larman 与 Bas Vodde，2010，“Practices for Scaling Lean &amp; Agile Development”</a></li> 
+ <li>原始数据缓冲区的迭代数目</li> 
+ <li>JSON解析器</li> 
+ <li>GSON</li> 
 </ul>
-<p>你可以免费下载第8章：“Practices for Scaling Lean &amp; Agile Development: Large, Multisite, and Offshore Product Development with Large-Scale Scrum”</p>
-<p>http://large-scale-agile-design-and-architecture-ways-of-working-%20sample%20chapter-%20larman-and-vodde.pdf/</p>
-<p>保留模型与临时模型的想法来自于这张图片。</p>
-<ul> 
- <li><a href="http://www.ss.com.au/articles/Agile%20Modeling.pdf">Strategic Systems，2012，“Agile Modeling by Example”</a></li> 
-</ul>
-<p>这里还有一篇InfoQ的文章，讨论了同样的问题与情况。目前还在等待第2部分的到来。</p>
-<ul> 
- <li><a href="http://www.infoq.com/articles/agile-modeling-part-one">Lee Ackerman, 2011, “Agile Modeling: Enhancing Communication and Understanding”</a></li> 
-</ul>
-<p>更广泛的敏捷与架构的主题。</p>
-<p><a href="http://mysite.verizon.net/dennis.mancl/splash10/">Bill Opdyke，Dennis Mancl，Steve Fraser，“Architecture in an Agile world, 2010”，SPLASH workshop</a></p>
-<p>我本人就参加了这些研讨会，会议中讨论了“敏捷中的架构”，这两者并不冲突。</p>
+<p>第一列中的内容是原始数据缓冲区中的所有数据的迭代数目，这个数字仅仅是用以表示极限的最小时间，即理论上处理所有这些数据的最小时间。当然不可能有任何解析器能够达到这一速度，不过这个数字能够起到参照作用，以显示出解析器和原始迭代速度的差距。第二列中显示了我的JSON解析器的运行时间，第三列则是Google的GSON解析器的运行时间。</p>
+<p>以下数据是对三个文件（64字节、406字节、1012字节）各运行1千万次解析所需的毫秒数： </p>
+<table cellspacing="0" cellpadding="0" border="1"> 
+ <tbody> 
+  <tr> 
+   <td> <p><b>File</b></p> </td> 
+   <td> <p><b>Run</b></p> </td> 
+   <td> <p><b>Iteration</b></p> </td> 
+   <td> <p><b>JSON Parser</b></p> </td> 
+   <td> <p><b>GSON</b></p> </td> 
+  </tr> 
+  <tr> 
+   <td> <p>Small</p> </td> 
+   <td> <p>1</p> </td> 
+   <td> <p>2341</p> </td> 
+   <td> <p>69708</p> </td> 
+   <td> <p>91190</p> </td> 
+  </tr> 
+  <tr> 
+   <td> <p>Small</p> </td> 
+   <td> <p>2</p> </td> 
+   <td> <p>2342</p> </td> 
+   <td> <p>70705</p> </td> 
+   <td> <p>91308</p> </td> 
+  </tr> 
+  <tr> 
+   <td> <p>Small</p> </td> 
+   <td> <p>3</p> </td> 
+   <td> <p>2331</p> </td> 
+   <td> <p>68278</p> </td> 
+   <td> <p>92752</p> </td> 
+  </tr> 
+  <tr> 
+   <td> <p>Medium</p> </td> 
+   <td> <p>1</p> </td> 
+   <td> <p>13954</p> </td> 
+   <td> <p>122769</p> </td> 
+   <td> <p>314266</p> </td> 
+  </tr> 
+  <tr> 
+   <td> <p>Medium</p> </td> 
+   <td> <p>2</p> </td> 
+   <td> <p>13963</p> </td> 
+   <td> <p>131708</p> </td> 
+   <td> <p>316395</p> </td> 
+  </tr> 
+  <tr> 
+   <td> <p>Medium</p> </td> 
+   <td> <p>3</p> </td> 
+   <td> <p>13954</p> </td> 
+   <td> <p>132277</p> </td> 
+   <td> <p>323585</p> </td> 
+  </tr> 
+  <tr> 
+   <td> <p>Big</p> </td> 
+   <td> <p>1</p> </td> 
+   <td> <p>33494</p> </td> 
+   <td> <p>239614</p> </td> 
+   <td> <p>606194</p> </td> 
+  </tr> 
+  <tr> 
+   <td> <p>Big</p> </td> 
+   <td> <p>2</p> </td> 
+   <td> <p>33541</p> </td> 
+   <td> <p>231866</p> </td> 
+   <td> <p>612193</p> </td> 
+  </tr> 
+  <tr> 
+   <td> <p>Big</p> </td> 
+   <td> <p>3</p> </td> 
+   <td> <p>32462</p> </td> 
+   <td> <p>232951</p> </td> 
+   <td> <p>618212</p> </td> 
+  </tr> 
+ </tbody> 
+</table>
+<p></p>
+<p>如你所见，索引覆盖的实现比起GSON（一种对象JSON解析器）要快得多。虽然结果在预计之中，不过你现在能够了解到它们的性能差距到底有多大了。</p>
+<p>值得注意的一点是，在测试进程的执行过程中，内存占用的指标一直非常稳定。尽管GSON创建了大量的对象树，但它的内存占用并没有疯狂地增长。而索引覆盖方式的内存占用也非常稳定，比起GSON还要小了1兆左右，这有可能是因为加载到JVM中的GSON代码库较大的缘故。</p>
+<h2>关于测试结果</h2>
+<p>如果我们只是简单地说对一个为数据创建对象树的解析器（GSON）和一个标记出数据中所找到的元素位置的解析器进行比较，这种说法有欠公平。我们还需要分析一下具体比较了哪些内容。</p>
+<p>在一个运行中的应用程序对文件进行解析通常包含以下步骤：</p>
+<p><img width="600" alt="" src="http://infoqstatic.com/resource/articles/HIgh-Performance-Parsers-in-Java/zh/resources/1202008.png" _p="true" _href="img://null" /></p>
+<p>首先从磁盘或者网络上加载数据，然后对数据进行解析，最后进行数据处理。</p>
+<p>为了准确测量数据解析部分的速度，我将被解析的文件预先加载入内存中，并且测试代码对数据完全不做任何处理。这种方式虽然测量了纯粹的解析速度，但这一性能差别并不能代表在实际运行中的应用程序一定会获得更好的性能，原因如下：</p>
+<p>一个流解析器通常能够在所有数据加载到内存之前就开始解析正在加载中的数据，而我的JSON解析器目前还没有实现这一功能，这意味着虽然它在单纯的解析速度上要快上一筹，但运用在实际运行中的应用程序上时，由于它必须等待所有数据加载完成，因此真实的完成速度不一定会更快。下图就表现了这一过程：</p>
+<p><img alt="" src="http://infoqstatic.com/resource/articles/HIgh-Performance-Parsers-in-Java/zh/resources/1202009.png" _p="true" _href="img://null" /></p>
+<p>为了加快整体的解析速度，你也可以对我的解析器进行一些修改，让它能够边加载数据边进行解析，不过这样做也许会稍稍降低单纯的解析性能。当然，最终的运行速度或者还是得到一些提升。</p>
+<p>与上面的情况类似的是，我的JSON解析器对已解析的数据也没有进行任何处理。如果你需要从大量的已解析数据中抽取字符串，那么GSON已经为你的需求做好了准备工作，因为它已经为已解析数据创建了一棵对象树。下图就表现了这一过程：</p>
+<p><img width="600" alt="" src="http://infoqstatic.com/resource/articles/HIgh-Performance-Parsers-in-Java/zh/resources/1202010.png" _p="true" _href="img://null" /></p>
+<p>如果你打算使用GSON，那么它或许已经为你实现了在数据处理中所需的数据抽取过程，如果整个数据处理过程可以省略数据抽取（例如抽取为字符串）这一步骤，那么它的整体速度还要再快一点。</p>
+<p>因此，为了准确地测量解析器对你的应用程序的影响，你必须将不同的解析器在你的应用程序中的表现进行测量。我仍然确信使用索引覆盖解析器的速度要更快，但具体有多少差距还不好说。</p>
+<h2>对索引覆盖解析器的总体讨论</h2>
+<p>我经常听到一种关于索引覆盖解析器的争论，这种说法认为由于索引覆盖解析器为了实现对原始数据的索引，而不是将原始数据抽取为对象树，它在解析时必须将所有数据读入内存中，这种方式在解析大文件时会对内存产生很大的负担。</p>
+<p>这种说法其实就是表明了流解析器（例如SAX或StAX）能够解析巨大的文件，而不需要将整个文件读入内存中。但这种说法成立的前提是，该文件中的数据可以分为多个小块进行解析与处理，而且每个小块可以独立地被解析与处理。举例来说，一个大XML文件包含了一系列的元素，每个元素都可以进行独立的解析和处理（类似于一个日志记录集合）。但如果你的数据可以以独立的小块进行分别解析的话，那么你也完全可以实现一个能够做到这一点的索引覆盖解析器。</p>
+<p>而如果该文件不能够分解为多个独立的小块进行解析的话，那无论如何你必须将信息加载到某种结构中，以便代码在处理之后的小块时访问这一部分信息。而如果你能够在流解析器中做到这一点的话，那么也同样可以在一个索引覆盖解析器做到这一点。</p>
+<p>那些为输入数据创建对象树的解析器往往会占用更大的内存，因为对象树的内存占用会超过原始数据的尺寸。其原因在于不仅每个对象实例会占用内在，而且对象之间的引用也占用了一部分内存数据。</p>
+<p>此外，由于所有数据必须一次性全部加载到内存中，因此你需要预先为数据缓冲区预留足以保存全部数据的空间。但如果在开始解析某个文件的数据时，你还不知道整个文件的大小，又该怎么做呢？</p>
+<p>假设你有一个允许用户上传文件的web应用程序（或者是web service，或其它类型的服务端应用程序），你很难判断这些文件会有多大，那又如何能够在开始解析之前为它们分配足够大小的缓冲区呢？当然，出于安全性的考虑，你应该设定一个允许上传文件的最大尺寸，否则用户可以通过上传超大文件使你的系统完全崩溃，或者编写一段程序以模拟浏览器上传文件的操作，让这段程序不停地向你的服务器发送数据。你可以考虑为缓冲区分配与允许上传文件的最大尺寸相同的值，这样可以保证你的缓冲区对于有效的上传不会占用所有的内存。如果缓冲的尺寸真的过大，那一定是因为你的用户上传了超大的文件。</p>
 <h2>关于作者</h2>
-<p><img src="http://infoqstatic.com/resource/articles/kenji-modeling-agile/zh/resources/1012013.jpg" style="float: left; margin-right: 10px" alt="" _href="img://null" _p="true" /><b>Kenji Hiranabe</b>是一位敏捷软件开发的实践者，他还是一位作者与译者，同时也是<a href="http://astah.net/">Change Vision, Inc.</a>公司的CEO。按照他的想法，软件开发就是一种协作式的游戏。他也一直在寻求更好的方式，以提高开发的生产力、协作性以及乐趣。作为他对敏捷实践方面贡献的表彰，他获得了2008年度的Gordon Pask大奖。</p>
-<div style="clear: both">
- &nbsp;
-</div>
-<p><strong>查看英文原文：</strong><a href="http://www.infoq.com/articles/kenji-modeling-agile">Modeling in the Agile Age: What to Keep Next to Code to Scale Agile Teams</a></p><br><br><br><br><br><br></body></html>
+<p><img style="float: left; margin-right: 10px" alt="" src="http://infoqstatic.com/resource/articles/HIgh-Performance-Parsers-in-Java/zh/resources/1202011.jpg" _p="true" _href="img://null" /><b>Jakob Jenkov</b>是一位创业者、作者和软件开发者，他目前居住在西班牙巴塞罗那。Jakob从1997年开始学习Java，在1999年作为一名专业的Java开发者开始工作。他目前关注的概念是如何能够跨多个不同的领域（软件、流程、业务等等）保持高效。他持有哥本哈根信息技术大学的IT学科的硕士学位。你可以在他的<a href="http://jenkov.com/">个人网站</a>中更多地了解他的工作内容。</p>
+<div style="clear: both"></div>
+<p><strong>查看英文原文：</strong><a href="http://www.infoq.com/articles/HIgh-Performance-Parsers-in-Java">Implementing High Performance Parsers in Java</a></p><br><br><br><br><br><br></body></html>
