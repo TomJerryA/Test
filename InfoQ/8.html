@@ -1,13 +1,23 @@
-<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>业务流程层的API</h3><p>Netflix API的工程主管<a href="http://www.infoq.com/author/Daniel-Jacobson">Daniel Jacobson</a>最近在<a href="http://thenextweb.com/dd/2013/12/17/future-api-design-orchestration-layer">The Next Web</a>上发表了一篇文章，他表示：我们需要理解谁是API的使用对象，以及他们的使用的方式，并在此基础上进行API设计。这看起来是显而易见、理所应当的事情，然而Daniel接下来写道：过去那种传统的“万应灵药”般的面向资源的API，或许并不能满足使用我们API的用户中最重要的那些人。良好的API设计不只是关于“资源建模、负载格式、如何管理系统版本以及安全”，更加根本的问题是：“谁是这些API的主要受众，以及我们应该如何来针对他们进行优化？”</p>
-<p><a href="http://en.wikipedia.org/wiki/Resource-oriented_architecture">面向资源</a>的API或许适用于“广泛的未知开发者”，但实际上大部分组织机构需要满足的是“少量已知开发者”的需求，以及特定的用例。“他们或许就是API团队楼下的工程师、或许是一家被雇用以开发iPhone应用的合约公司，又或是来自合作公司的一支工程团队，”Daniel写道，而优化API的机会正蕴藏在这些情景中。</p>
-<p>许多公司正在逐渐向其体系架构中引入API编排层——Daniel将其定义为“一个抽象层，它运用通用建模的数据元素和/或特性，并以一种更具体的方式处理它们，从而为某个目标开发者或应用做准备。”Daniel列出了部分编排层的关键准则如下：</p>
-<ol> 
- <li>大部分API提供者设计的目的，都是为了维护数据模型的纯净度。然而在构建 [编排层]时，我们需要做好在某些时候牺牲纯净度以换取优化和/或性能的心理准备。</li> 
- <li>许多API团队设计API，以求让自己更易于提供支持。然而在构建 [编排层]时，我们需要做好可能会对增加团队工作复杂性的心理准备。</li> 
- <li>了解API受众的广度非常重要。针对受众的不同成分，有时候我们或许只需要 [编排层]。而在其他一些情况中，我们除了[编排层]之外，或许还需要[万应灵药]式的基础。</li> 
-</ol>
-<p>第二条准则让人想起了接口设计中常见的类似情况：为一个“聪明的”视频记录软件增加内部复杂度，以便让外部用户更易于使用。</p>
-<p>在文章的最后，Daniel给出了三个常见的用例，包括将编排层用于针对特定设备的包装器、支持一套基于查询的API，以及提供基于经验的API。Daniel表示，针对特定设备的包装器是他所见过的最常见的用例，例如针对iPhone优化的API包装器。此类针对特定设备的包装器一般由API团队为特定消费者提供。相反，基于查询的API把权力交给了API使用者——让使用者掌控，“允许他们就像访问数据库一样，通过灵活的参数和负载去查询[资源]”。</p>
-<p><a href="http://www.infoq.com/news/2013/02/netflix-api-optimization">Netflix采用</a>的模型是基于经验的API，同时也混合了其他两个用例——针对特定设备设计和实现，并由API用户所拥有的包装器。负责的部门被划分为API团队——负责以通用的、可复用的方式提供数据；以及使用者——掌握数据格式和交付。</p>
-<p>Daniel总结道，API团队需要将API的使用者视作设计过程中的伙伴进行协作，以便尽可能地让最终用户获得最佳体验。</p>
-<p><strong>查看英文原文：</strong><a href="http://www.infoq.com/news/2013/12/api-orchestration-layer">The API Orchestration Layer</a></p><br><br><br><br><br><br></body></html>
+<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>微软发布TX（LINQ To Logs And Traces）</h3><p>微软开源技术公司于近日<a href="http://blogs.msdn.com/b/interoperability/archive/2014/01/06/new-release-tx-linq-to-logs-and-traces.aspx">发布</a>了<a href="http://tx.codeplex.com/">Tx</a>，这是一个开源项目，可以使用日志/跟踪文件辅助调试，以及创建实时监控和告警系统。</p>
+<p>下面是几个引人关注的功能——</p>
+<ul> 
+ <li>允许在原始事件源上使用<a href="http://msdn.microsoft.com/en-us/library/bb397926.aspx">LINQ</a></li> 
+ <li>允许在真实事件源上使用“反应式扩展框架（<a href="http://msdn.microsoft.com/en-us/data/gg577609.aspx">Reactive Extensions</a>）”，而且支持事件序列的多路复用（单个包含不同类型事件的序列，其中事件的顺序为其发生顺序）。</li> 
+ <li>可以提供跨多个事件源的单一查询，而且用于实时查询和过去历史查询的API相同。</li> 
+ <li>可以在历史日志和跟踪文件的一次读中执行多个查询——例如：统计所有的“警告”数、匹配“开始”和“结束”事件，以及计算每个活动的平均时长。</li> 
+</ul>
+<p>开发人员可以将<a href="http://www.linqpad.net/">LINQPad</a>用于一次性分析，也可以用于构建监控用的.NET应用程序。在LINQPad中，Tx给人一种所有的事件都在数据库中的感觉。</p>
+<p>该版本提供了四个不同的NuGet包：</p>
+<ul> 
+ <li><a href="http://www.nuget.org/packages/Tx.Core/">Tx.Core</a>——不针对特定跟踪格式的通用组件</li> 
+ <li><a href="http://www.nuget.org/packages/Tx.Windows/">Tx.Windows</a>——支持Windows上的事件跟踪：事件日志、文件中的性能计数器和实时计数器API、W3C格式的IIS Text日志</li> 
+ <li><a href="http://www.nuget.org/packages/Tx.SqlServer/">Tx.SqlServer</a>——SQL Server扩展事件</li> 
+ <li><a href="http://www.nuget.org/packages/Tx.All/">Tx.All</a>——包含上述所有内容的套件</li> 
+</ul>
+<p>请注意，微软也给出了<a href="http://tx.codeplex.com/SourceControl/latest#Doc/WhenToUse.md">什么时候不要用Tx</a>的建议——</p>
+<ul> 
+ <li>当不存在实时订阅而且数据已经存在于内存中或者<a href="http://tx.codeplex.com/SourceControl/latest#Source/Tx.Windows/IIS/W3CEnumerable.cs">单个容易解析的文件</a>中时，指南建议使用LINQ-To-Objects代替Tx。</li> 
+ <li>当存在实时订阅，但每个订阅/文件只包含一种事件类型，只需要使用反应式扩展框架即可。</li> 
+</ul>
+<p>在微软内部，WCF和服务总线团队已经用了这个工具。现在，微软把它开源给所有的.NET开发人员，以便他们在自己的项目中使用它。读者可以看一下<a href="http://tx.codeplex.com/documentation">入门文档</a>。</p>
+<p><b>查看英文原文：</b><b><a href="http://www.infoq.com/news/2014/01/tx-release">LINQ To Logs And Traces</a></b></p><br><br><br><br><br><br></body></html>
