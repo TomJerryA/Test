@@ -2,10 +2,13 @@
  <head></head> 
  <body>
   <div>
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/3.java">Google Play Services 4.1 Adds Drive Support</a>Google has updated Play Services to include support for Drive, turn-based multiplayer games and more ad networks.
-  </div>
-  <div>
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/2.java">Rackspace Aiding the Introduction of DevOps by Extending Their Managed Cloud Service Levels</a>Rackspace, cloud computing platform provider and founder of OpenStack, is currently introducing its new DevOps Automation Service. They offer managed support for things like infrastructure and workflow automation, monitoring and log aggregation, and source control for infrastructure code.
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/4.java">Know about Common Windows Phone App Certification Errors and the Steps to Avoid Them</a>In order to release Windows Phone apps faster you need to build them by incorporating the tips suggested by Windows Phone Store certification and policy team. These tips are mostly scenarios which cause the app approval to fail.
+  </div> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/3.java">Google Play Services 4.1 Adds Drive Support</a>Google has updated Play Services to include support for Drive, turn-based multiplayer games and more ad networks. 
+  </div> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/2.java">Rackspace Aiding the Introduction of DevOps by Extending Their Managed Cloud Service Levels</a>Rackspace, cloud computing platform provider and founder of OpenStack, is currently introducing its new DevOps Automation Service. They offer managed support for things like infrastructure and workflow automation, monitoring and log aggregation, and source control for infrastructure code. 
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/1.java">Carrier IQ's Magnolia Mansourkia Mobley Sets the Record Straight About Mobile Analytic Products</a>In 2011 Trevor Eckhart found logs on his device that he believed were associated with Carrier iQ data. Our response at the time, which has since been confirmed by a detailed FTC investigation, is that the data collection logs were associated with and used by the manufacturer of the device, not Carrier iQ. They were not Carrier iQ logs. 
@@ -147,9 +150,6 @@
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/6.java">Behaviour-Driven Development Tool Jasmine 2.0 Released</a>The recently released version 2.0 of Jasmine, a Behaviour-Driven Development, BDD, testing framework for JavaScript, comes with improved support for Node.js, major work on increasing the internal quality and some backwards compatibility breaking changes. 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/5.java">Splitforce A/B Testing for Mobile Applications</a>As mobile applications are becoming a more central part of companies' IT strategies, testing and analyzing those applications becomes more important. Whereas functional testing of code is part of every project, analyzing behavior and conversion rates is still very new to the mobile sector. Splitforce offers tools and services for application developers to instrument apps for in-app analysis. 
-  </div>   
+  </div>  
  </body>
 </html>
