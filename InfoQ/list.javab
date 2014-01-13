@@ -1,7 +1,7 @@
 <html>
  <head></head> 
- <body>
-  <div>
+ <body> 
+  <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/47.javab">Intelligent Evolution: Making Change Work</a> Some 80% of all improvement and change programmes fail: they did not achieve the expected results, the investment in the change programme was greater than the value achieved, “improvements” were seen as mostly bureaucratic, or changes were abandoned soon after the implementation. Intelligent Evolution ensures long-term business success rather than short-term satisfaction of a standard or theory. 
   </div> 
   <div> 
@@ -150,6 +150,6 @@
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/49.javab">Costin Leau on Elasticsearch, BigData and Hadoop</a> Elasticsearch is an open source, distributed real-time search and analytics engine for the cloud. The first milestone of elasticsearch-hadoop 1.3.M1 was released last month. InfoQ spoke with Costin Leau about Elasticsearch and how it integrates with Hadoop and other Big Data technologies. 
-  </div>  
+  </div> 
  </body>
 </html>

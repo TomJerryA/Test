@@ -1,21 +1,28 @@
-<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>Reactive Extensions for C++简介</h3><p><a href="http://msopentech.com/blog/2013/12/05/ms-open-tech-hub-releases-rx-2-2/">Reactive Extensions for C++</a>（也叫Rx.cpp）,已经可以在WinRT（C++/CX）和OS X（clang）中使用了。 尽管还很年轻，但很多工作已经在上一个预览版中完成了。</p>
-<p>Scheduling is a cornerstone of Reactive Extensions. 调度是Reactive Extensions中的*** 该版本中共有5个调度器，其中还包括一个专门为Windows的HWND消息环而设计的调度器。</p>
-<ul> 
- <li>Immediate</li> 
- <li>CurrentThread</li> 
- <li>EventLoop</li> 
- <li>NewThread</li> 
- <li>Window</li> 
-</ul>
-<p>对于Rx开发者来说，对“与STL算法等价的异步”操作符应该非常熟悉：OrderBy、ForEach、Using、Scan、Throttle、TakeUntil、Skip、SkipUntil、ToVector、ToList、Zip、Concat、CombineLatest、Merge、ToAsync、Using、ConnectableObservable、Multicast、Publish、PublishLast、RefCount、ConnectForever、SubscribeOn、ObserveOn。</p>
-<p>WinRT的C++/CX所特有的特性包括：BindCommand、DeferOperation、CoreDispatcherScheduler、FromEventPattern、FromAsyncPattern和ReactiveCommand。最后一个特性来自<a href="http://www.reactiveui.net/">Paul Betts的ReactiveUI</a>。</p>
-<p>面是一个示例，通过一个范围创建一个可观察对象（observable）：</p>
-<pre>//Declare an observable 
-auto values1 = rxcpp::Range(1, 10); 
-rxcpp::from(values1)    
-    .for_each(      
-        [](int p) {         
-        cout &lt;&lt; p &lt;&lt; endl;  
-});</pre>
-<p><a href="http://rxcpp.codeplex.com/">Rx.cpp的源代码</a>位于CodePlex，支持Apache License 2.0许可。</p>
-<p><strong>原文链接：</strong><a href="http://www.infoq.com/news/2013/12/rx-cpp">Introducing Reactive Extensions for C++</a></p><br><br><br><br><br><br></body></html>
+<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>JCP主席谈JCP.next发展</h3><p>JCP.next包括JSR 348、355和358。这些JSR强调了一些与开放度、敏捷和管理相关的重要事件。Patrick Curran是Java Community Process（JCP）组织的主席。在接受Java Magazine采访时，Curran阐述了JCP追求更高透明度、参与度，拥抱开源过程的进化之路。</p>
+<p>Curran首先提到了JCP急需改变的原因：过去，大家都觉得专家组都应该秘密地开展工作——把自己关到屋子里关上几个月甚至几年，之后突然神秘的推出一种新规范。现在，JSR 348从根本上颠覆了这个范例。JSR 348要求专家小组通过公共邮件列表、公共问题追踪这些方式透明地开展他们的工作。JSR明确地宣布所有的JCP成员和所有的公共成员，在审视、评论、参与流程上享有同样的权利。</p>
+<blockquote> 
+ <p>如今开源实践变得越来越普遍，在这种情况下想要运行一个有效的标准开发流程，透明度和参与度是关键。JSR 348加速了这些实践。JSR 355也是相当的简单。以前我们有两个分开的执行委员会——一个是Java ME，一个是Java SE/EE。现在这两个执行委员会已经合并为一个了。Java ME和Java SE/EE都开始收敛，而且现在也没有必要保持两个执行委员会了。这一改变将大大的简化操作。</p> 
+ <p>JSR 358现在还在进行中。通过强制的使用开源开发流程和为所有JSR申请开源代码许可，JSR 358将把透明度和参与度推到新的高度。这是一项复杂的任务，因为这个任务涉及到修改Java规范参与协议（JSPA），而此协议是每个JCP成员加入组织时都必须签署的协议。想修改这个协议是很难的，因为这其中涉及到一些复杂的法律表述，这些法律表述是用来解决知识产权和许可模型之类的问题的。修改这些表述会产生深远的影响，所以在修改过程中我们必须小心翼翼。总之，实现JSR 358是要花一些时间了。我们已经在JSR 358上研究了一年，未来我们可能还需要一年来完成它。</p> 
+</blockquote>
+<p>对于JCP自身在这场变革中担任的角色，Curran解释道：所有的专家组都是遵守“法律条文”的。现在我们必须要保证的是他们遵守这种“精神”。如果邮件列表中没有收到什么反馈，或者我们忽略了专家组之外的意见、评论，那么建立这个公共邮件列表就失去了意义。我们必须要保证想参与的人知道如何参与，并且能看到他们的参与是有价值的。JSR的主页必须提供关于这些活动的所有信息。</p>
+<blockquote> 
+ <p>我们在尝试通过设置一系列汇报需求来追踪专家组的活动。专家组需要收集信息并将信息示之公众，保证每个人都可以看到这些信息。我们相信通过这些措施我们可以履行承诺。</p> 
+ <p>同时，PMO致力于向大众提供信息，大众可以通过这些信息判断具体某个专家组的会议透明度如何，参与度如何。我们希望通过公开纰漏消息、公众压力和将这些信息纳入JSP投票的参考信息这三方面相结合，最终督促专家组全面履行他们的义务。</p> 
+</blockquote>
+<p>Curran希望使用公共邮件列表和开源开发过程促使大众参与进来，从而使JCP更吸引普通Java开发者参加。</p>
+<blockquote> 
+ <p>目前，我们通过一个名为Adopt-a-JSR的项目招募JUG，通过JUG聚集开发者共同协助JSR这种方式来吸引开发者。这就可能包括审校说明书、测试实施、参与文档之类的活动。我们现在有四十多名JUG作为组员，他们共同代表成千上万的开发者。现在，在JSR 358的工作中，我们面向个体用户定制了一类新的成员。这类新成员也会有新的成员协议书，但他们的协议书会比目前复杂的法律文档简单的多，而且也不需要所在公司的签名，搞到所在公司签名有时候是一件很麻烦的事情。</p> 
+ <p>在招募个人和JUG方面我们已经很成功了，但是我们还需要再接再厉来激发商业团体的参与度。吸引公司参与到JCP的最主要因素是积极的、充满活力的开发流程，所以想要更吸引公司我们就要在流程中拥有更多的JSR。而这并不是执行委员会或者PMO可以直接影响的，因为JSR是由成员发起的。不过，我们希望通过对开源开发流程的介绍，JSR的开源许可，可以显著地提高商业团体参与度。</p> 
+</blockquote>
+<p>对于如何从正反两个方面来促进这次改革，Curran已经有了措施：</p>
+<blockquote> 
+ <p>我们使用一组机制鼓励领导们及时按流程转移他们的工作。正反馈方面，是星级领导项目，这个项目通过每年的JCP奖项挖掘卓越的领导。JCP奖项也挖掘突出的JSR和在过去一年有着突出贡献的会员。 从反面来说，JSR 348提出了超时的概念，对指定时间段内没有达到定义过程阶段的JSR进行重新投票。如果其领导不能为延期辩护，不能让执行委员会相信工作正在有建设性的开展着，那么执行委员会就可以要求撤销JSR。</p> 
+</blockquote>
+<p>Curran总结说，提高透明度、保证参与度对当下保持高效标准开发组织是十分必要的。</p>
+<blockquote> 
+ <p>只有在我们管理制度、流程开放之后，人们才会参与进来。这是至关重要的。这些最佳实践提高我们开发标准的质量。参与者越多，我们就能获得越多观点，解决越多问题。由此产生的技术将令各方面受益。JCP.next是一个连续体，它起始于一些基本的透明度、参与度的改变，进一步融合开源开发流程和开源许可。这些调整保证当我们步入一个更动态、更有竞争力的格局时，Java可以持续保持优势和关联性。</p> 
+</blockquote>
+<p>背景介绍</p>
+<p>Patrick Curran是Java Community Process（JCP）组织的主席。在这份工作中，他管理JCP项目管理办公室（PMO）的所有活动，包括过程发展、组织发展、管理成员、规范指导领导和专家、主持执行委员会会议和管理JCP.org。Curran已经在软件行业干了二十五年了。他在Sun公司和甲骨文公司的工作经历长达二十年。在加入JCP之前，他是Sun用户软件组的Java一致性工程团队的领导。他也是Sun一致性委员会主席，Sun一致性委员会负责制定Sun阳公司关于Java一致性和兼容性的政策和策略。他积极投身于多个组织和社区，其中包括W3C（在这里他是质量保证工作组的领导，也是质量保证兴趣小组的主席）和OASIS（测量指导技术委员会的联合主席）。</p>
+<p>JCP（Java Community Process) 是一个开放的国际组织，主要由Java开发者以及被授权者组成，职能是发展和更新。Java技术和JCP两者的原创者都是SUN计算机公司。然而，JCP已经由SUN于1995年创造Java的非正式过程，演进到如今有数百名来自世界各地Java代表成员一同监督Java发展的正式程序。JCP维护的规范包括J2ME、J2SE、J2EE，XML，OSS，JAIN等。组织成员可以提交JSR（Java Specification Requests），通过特定程序以后，进入到下一版本的规范里面。</p>
+<p>JSR是Java Specification Requests的缩写，意思是Java 规范请求。是指向JCP(Java Community Process)提出新增一个标准化技术规范的正式请求。任何人都可以提交JSR，以向Java平台增添新的API和服务。JSR已成为Java界的一个重要标准。</p><br><br><br><br><br><br></body></html>
