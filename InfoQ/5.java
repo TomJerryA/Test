@@ -1,34 +1,8 @@
-<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>Splitforce A/B Testing for Mobile Applications</h3><p>As mobile applications are becoming a more central part of companies' IT strategies, testing and analyzing those applications also becomes more important. Whereas functional testing of code - for example with the help of unit tests - is probably part of every software project, analyzing user behavior and optimizing conversion rates is still very new to the mobile sector.</p>
-<p><a href="http://www.splitforce.com">Splitforce</a> offers A/B testing for mobile apps, so application developers can optimize their apps' features and user experiences for their key business metrics. Essentially, variations of native applications can be tested without the need to re-submit the app in the app-store, and each variation's effect on user behavior is tracked and analyzed so developers can make product and design decisions based on data. Splitforce currently supports native iOS applications and games based on the <a href="http://unity3d.com/">Unity</a> application engine. According to Splitforce, Android support is planned for the first quarter of 2014.</p>
-<p>With the help of Splitforce's SDK and web services, developers can create experiments that influence the way their mobile apps are experienced on the users' mobile devices. Hard-coded components in the application code are replaced by dynamic components that can be controlled by Splitforce's servers via a web interface. It is possible to create new and tweak existing variations on-the-fly, including what portion of users will experience one variation of the application and what portion another variation. The success of those variations can be analyzed with regard to three different categories:</p>
-<ul> 
- <li><strong>Rates:</strong> Rates are used to analyze how often a certain goal like a purchase or a sign-up is reached as a percentage of total users.</li> 
- <li><strong>Timing:</strong> Timing goals can be used to find out much time a user spends in certain areas of the application or how long it took until the user purchased a product.</li> 
- <li><strong>Quantities:</strong> Quantities offer information about how many times users completed a task like attempting to finish a game level.</li> 
-</ul>
-<p>&nbsp;</p>
-<p>Experiments can be based on variations of text, numbers, colors, booleans or custom subjects. After signing up and defining an experiment, Splitforce creates code-snippets that can be copied and pasted by the application developer into the app's source code. An experiment that tests different button colors and counts purchase events could be added to an iOS application using the following code:</p>
-<blockquote> 
- <code> <pre>
-[[SFManager currentManager] experimentNamed:@&quot;Experiment #1&quot; applyVariationBlock:^(SFVariation *variation) {
-  // Configuration for 'Test Button Colors'
-  UIColor *testSubject = [SFUtils colorFromHexString:variation.variationData[@&quot;Test Button Colors&quot;]];
-  // set special button color  
-} applyDefaultBlock:^(NSError *error) {
-  if (error) NSLog(@&quot;Splitforce Error: %@&quot;, error);
-  // set default button color
-}];  
-</pre> </code> 
-</blockquote>
-<p>In a subsequent section of the application code, the Splitforce server has to be notified, when the desired goal is reached:</p>
-<blockquote> 
- <code> <pre>
-SFVariation *variation = [SFManager.currentManager variationForExperimentNamed:@&quot;Experiment #1&quot;];
-
-[variation goalResultNamed:@&quot;Item Purchased&quot;];
-[variation variationEnded]; 
-</pre> </code> 
-</blockquote>
-<p>Besides inserting pre-generated code snippets, the application developer only has to include libraries in his or her software project and initialize Splitforce during application startup.</p>
-<p>&nbsp;</p>
-<p><a href="https://www.splitforce.com/pricing">Service plans</a> for using Splitforce depend on the number of daily users included in tests of the instrumented applications. Up to 500 daily users are free, up to 5.000 daily users are covered by the entry plan for $299 per month and the pro plan lets developers test up to 75.000 daily active users for a monthly fee of $2.499, with overages ranging from $0.01-$0.05 per 10 daily active users tested. Companies that need to test with more than 75.000 users can apply for the enterprise plan which also offers more support and services than the pre-defined plans.</p><br><br><br><br><br><br></body></html>
+<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>Windows Phone App Certification Errors and the Steps to Avoid Them</h3><p><a href="http://www.windowsphone.com/en-in">Windows Phone</a> Store certification and policy team has published a list of common failures that developers commit during the development phase in addition to the steps to avoid those costly errors, which result in delay in app release. The first and foremost requirement is related to app screenshots which should not include any emulator chrome, frame rate counters or debug information either in altered or in transparent state. Developers should make use of the built-in emulator screenshot tool to capture screenshots as Windows Phone 8 SDK ships with emulators for WVGA, XVGA and 720p resolutions.</p>
+<p>Moreover, <a href="http://msdn.microsoft.com/en-us/library/windowsphone/develop/hh184844(v=vs.105).aspx">screenshots</a> in WVGA resolution should be captured using the dev center feature that automatically scales the XVGA screenshots down to the WVGA resolution. In case if you intend to provide localized apps then you should include one screenshot for each supported language.</p>
+<p>If you submit an app which requires <a href="http://msdn.microsoft.com/en-us/library/windowsphone/develop/hh184840(v=vs.105).aspx">login</a> credentials you should include details of a dummy account in the certification notes in your dev center submission so that the relevant team will be able to test your app completely. If you fail to include this information then your app will be rejected and you will be required to again resubmit the app which will ultimately delay the app release.</p>
+<p>As a developer, you should take steps to prevent the app from unexpected <a href="http://msdn.microsoft.com/en-us/library/windowsphone/develop/hh184840(v=vs.105).aspx">termination</a> during the testing phase by making use of tools such as <a href="https://www.bugsense.com/">BugSense</a> and <a href="http://blogs.msdn.com/b/andypennell/archive/2010/11/01/error-reporting-on-windows-phone-7.aspx">Little Watson</a>, which enables you to collect unhandled exception telemetry data.</p>
+<p>Visual Studio, App Studio and <a href="http://cordova.apache.org/">Apache Cordova</a> provide icons and tile images which you can use in your apps. However, Microsoft suggest you to replace them with your own images since the default images only pin point the required size.</p>
+<p>According to Microsoft, back button should close the app only if the app is on the main page. It should go to the previous page only if it is not on the main page. Moreover, the back button should close an open dialog and soft keyboard.</p>
+<p>Microsoft suggests developers to include a localized app description for each supported language using the built-in emulator. Moreover, you should also make sure to build the app in such a way that it displays properly in both light and dark themes. If you use Visual Studio you can easily toggle between the dark and light themes during the development stage.</p>
+<p><a href="http://blogs.windows.com/windows_phone/b/wpdev/archive/2014/01/10/top-windows-phone-app-certification-failures-and-how-to-avoid-them.aspx">Mike Francis</a> of Windows Phone Store certification and policy team provides the required code for testing the current app theme including few tips for enhancing the quality of your Windows apps.</p><br><br><br><br><br><br></body></html>

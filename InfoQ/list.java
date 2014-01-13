@@ -1,8 +1,14 @@
 <html>
  <head></head> 
- <body>
-  <div>
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/4.java">Know about Common Windows Phone App Certification Errors and the Steps to Avoid Them</a>In order to release Windows Phone apps faster you need to build them by incorporating the tips suggested by Windows Phone Store certification and policy team. These tips are mostly scenarios which cause the app approval to fail.
+ <body> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/6.java">Chef Sugar Aims to Enhance Chef's Recipes Authoring Experience</a>Chef Sugar is an extension to Chef that offers DSL methods to make more readable recipes. Seth Vargo, Chef Sugar's author, recently wrote about his motivations for creating Chef Sugar, highlighting them with examples. InfoQ interviewed Seth to know more about his views on syntactic sugar and the benefits of a plug-in architecture in the context of Chef. 
+  </div> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/5.java">Windows Phone App Certification Errors and the Steps to Avoid Them</a>In order to release Windows Phone apps faster you need to build them by incorporating the tips suggested by Windows Phone Store certification and policy team. These tips are mostly scenarios which cause the app approval to fail. 
+  </div> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/4.java">Know about Common Windows Phone App Certification Errors and the Steps to Avoid Them</a>In order to release Windows Phone apps faster you need to build them by incorporating the tips suggested by Windows Phone Store certification and policy team. These tips are mostly scenarios which cause the app approval to fail. 
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/3.java">Google Play Services 4.1 Adds Drive Support</a>Google has updated Play Services to include support for Drive, turn-based multiplayer games and more ad networks. 
@@ -145,11 +151,5 @@
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/8.java">Async, LINQ, and the Future of RxJS</a>Reactive Extensions for JavaScript 2.2 includes an optional component for working with asynchronous data sources. Known as rx.async.js, this fulfills the need for binding to events, callbacks, and promises. And in the horizon is support for LINQ style query expression parsing. 
   </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/7.java">Xen Project Releases 1.0 of Mirage OS</a>Mirage OS is a ‘cloud operating system’ that seeks to avoid security vulnerabilities and bloat by facilitating the creation of single purpose virtual appliances. Applications are developed in the OCaml functional programming language and compiled into standalone ‘unikernels’ that run directly on the Xen hypervisor. 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/6.java">Behaviour-Driven Development Tool Jasmine 2.0 Released</a>The recently released version 2.0 of Jasmine, a Behaviour-Driven Development, BDD, testing framework for JavaScript, comes with improved support for Node.js, major work on increasing the internal quality and some backwards compatibility breaking changes. 
-  </div>  
  </body>
 </html>

@@ -1,20 +1,78 @@
-<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>Hadoop即服务提供商Qubole现在运行在Google Compute Engine上</h3><p>Qubole是一家托管的Hadoop即服务提供商，用户<a href="http://googlecloudplatform.blogspot.com/2013/12/qubole-helps-you-run-hadoop-on-google-compute-engine.html">现在能够</a>在Google Compute Engine（GCE）上使用该服务了。在这之前Qubole只能在Amazon的AWS上<a href="http://www.qubole.com/company/partners/">使用</a>，在Google宣布对<a href="http://www.infoq.com/news/2013/12/gcega">公众开放GCE</a>之后不久Qubole就宣布了这一消息。</p>
-<p>社区对该消息的反映大部分都是积极的，人们好像认为<a href="http://nosql.mypopescu.com/post/69829120078/google-compute-engine-and-data">大数据主题</a>会成为GCE潜在的<a href="http://gigaom.com/2013/12/13/maybe-big-data-is-the-killer-app-for-googles-cloud/">杀手级应用</a>。来自于DataStax的Alex Popescu这样写道：</p>
-<blockquote> 
- <p>如果你仔细看看这些内容，那么你将会注意到这样一个主题：覆盖来自于任意角度的数据；使用DataStax的Cassandra/DSE处理OLTP，使用DataTorrent进行流处理，Qubole用于Hadoop，MapR用于Hadoop这样的解决方案。我能够看见这种情况持续了一段时间，同时正在让Google Compute Engine成为Amazon Web服务的一个强力竞争者。</p> 
+<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>优秀的领导与差劲的领导</h3><p><a href="http://www.javacodegeeks.com/author/vlad-mihalcea/">Vlad Mihalcea</a>是一位软件架构师，热衷于软件集成、高可伸缩以及并发编程等主题，他感兴趣的领域主要有Java、数据库、事务、NoSQL、OOP、重构与模式以及敏捷和Scrum等。近日Vlad撰写了一篇<a href="http://www.javacodegeeks.com/2014/01/good-vs-bad-leader.html">博文</a>，谈到了团队中优秀的领导与差劲的领导之间的区别、他们在面对同一问题时的不同反应、对团队造成的不同影响等，希望这些分析能对团队中的领导起到警钟的作用。各位团队领导也可以从文中的分析看看自己是不是也陷入了某些怪圈当中，从而提升自己的团队领导力与影响力，为团队带来积极正面的影响。</p>
+<p>软件更多的是对人而非技术的关注。当我从大学毕业时，我想只要掌握了技术就能成为一名优秀的开发者，认为区分经理这个角色好坏的唯一标准就在于他们的技术。不过，过去的经历给我上了生动的一课。有人说人们的技能是无法习得的，只能是天生的，我对这种想法真是无法苟同。</p>
+<p>没有人生来就具备哪种技能，我们都是从观察中学习，复制别人的经验（我们的榜样）。你可以通过阅读图书获得一些宝贵的经验，不过我记得有句老话说得好，我在十几岁时就将这句话摘抄到了一本书的封面上“生命不是从书中学来的，而是将生命的经历变成了书”。</p>
+<p>如果你觉得自己在与人打交道方面有问题，那么你只能不断观察并从中学习，就是这么简单。即便你现在没有领导任何人，学习如何与人打交道也是非常有价值的，特别是在这个以人为本的产业中更是如此。</p>
+<p>虽然遇到优秀的领导总是令人兴奋异常，不过领导力的真正价值其实是通过那些差劲的领导体现出来的。我在这方面就比较幸运，因为我曾遇到过一些非常差劲的领导，他们的差劲程度超乎你的想象。下面我们就来一起看看优秀的领导与差劲的领导之间到底有哪些差别。</p>
+<p><b>责任</b></p>
+<blockquote>
+ 优秀的领导：优秀的领导总是对他所负责的项目担负起责任。如果项目不幸失败了，那么他知道该受责备的人是他自己，并且敢于承认错误。
+ <br /> 
+ <br /> 差劲的领导：差劲的领导觉得这不是他的问题，因此他会想方设法证明是他的团队不行，或是将责任归咎于团队中他不喜欢的那几个成员身上。
 </blockquote>
-<p>Hadoop即服务（HaaS也被称为云端Hadoop）也带来了一些不同的选项：</p>
-<ul> 
- <li>动摇你自己的部署，也就是在一个像GCE或者EC2这样的IaaS平台上安装Apache Hadoop或者一个分布式服务（例如Cloudera、Hortonworks、MapR）。这样能够对运行的服务进行细粒度的控制，但是也带来了部署和管理上的复杂性。</li> 
- <li>预打包的服务，例如Amazon的<a href="http://aws.amazon.com/elasticmapreduce/">EMR</a>或者<a href="#foundation-services">Savvis的大数据服务</a>，该服务有助于降低部署复杂性并且为已安装的服务提供中层控制。</li> 
- <li>托管的HaaS，例如Qubole和<a href="http://mortardata.com/">Mortar</a>，有希望<a href="https://vimeo.com/80872062">降低部署和管理的复杂性</a>。</li> 
-</ul>
-<p>与本地部署相比HaaS的<a href="https://vimeo.com/80872062">关键区别</a>在于：弹性、现货定价、计算和存储之间的分离（例如像Amazon S3或者<a href="https://cloud.google.com/products/cloud-storage/">Google云存储</a>这样的最终一致性对象存储）和增强的安全标准。像Qubole这样的托管HaaS服务<a href="https://vimeo.com/80872062">往往</a>用于开发场景，用于评估和测试、短暂运行的分析工作以及实现混合云设置。但是它们也有各自的一些限制：</p>
-<ul> 
- <li>将数据放入云端同时再次将其从云端取出都有它们各自的价格标记。</li> 
- <li>由于法律规定可能会涉及到隐私和数据保护问题，这可能会阻止或者限制用例。</li> 
- <li>24/7操作的TCO必须在具体分析的基础上进行计算。</li> 
- <li>Hadoop、Hive等服务和最终一致性对象存储一般会存在不匹配的情况。</li> 
-</ul>
-<p>Ashish Thusoo和Joydeep Sen Sarma在Facebook工作期间丰富了自己运行Hadoop和Hive的经验，在那里他们管理着一个数据基础设施团队。然后，在2012年6月，他们创建了<a href="http://www.qubole.com/">Qubole</a>，并且在2013年4月获得了<a href="http://gigaom.com/2013/04/23/hadoop-startup-qubole-raises-7m-for-hive-as-a-service/">700万美元的A轮融资</a>。Joydeep深入介绍了他们在实现自己的HaaS服务时所面对的挑战，同时在他的Hive London Meetup谈话“<a href="http://sdrv.ms/11XQ5K6">云友好的Hadoop和Hive</a>”中还对内部原理做了讲解。另外，Christian Prokopp (Rangespan的数据科学家)最近还写了一个详细的纲要以及Qubole与EMR之间的对比。</p>
-<p><strong>查看英文原文：</strong><a href="http://www.infoq.com/news/2013/12/qubole-on-gce">Hadoop-as-a-Service Provider Qubole Now Runs on Google Compute Engine</a></p><br><br><br><br><br><br></body></html>
+<p><b>努力工作</b></p>
+<blockquote>
+  优秀的领导：团队领导应该是团队成员的榜样。至少，他应该与团队中的其他成员一样努力工作。这仅仅因为他是权威，并不表示他只应该干那些自己喜欢的事情，而将其他无聊的事情留给团队成员去做。
+ <br /> 
+ <br /> 差劲的领导：差劲的领导可不这么想，他觉得自己不应该再写代码了，要不留着其他团队成员干什么。
+</blockquote>
+<p><b>指导</b></p>
+<blockquote>
+  优秀的领导：优秀的领导总是会帮助团队中的初级工程师。他不会让这些初级工程师完成那些过于困难的任务，因为这样很容易造成任务的失败或是无法顺利完成的结果。他知道对团队的投资一定会以质量的形式带来回报。
+ <br /> 
+ <br /> 差劲的领导：差劲的领导并不关心这一点。缺乏经验的团队成员应该通过异常复杂的任务让自己变强，而不管不顾实际情况到底如何。
+</blockquote>
+<p><b>尊重</b></p>
+<blockquote>
+  优秀的领导：优秀的团队领导尊重所有的团队成员，无论他们的经验如何。他深知领导一个团队只有一种方式，那就是通过尊重而不是让人感到畏惧。
+ <br /> 
+ <br /> 差劲的领导：差劲的领导不会尊重任何人，除了他自己。当有人犯错时，他会报以各种嘲讽，然后向更高的管理层报告。
+</blockquote>
+<p><b>向上爬</b></p>
+<blockquote>
+  优秀的领导：优秀的领导相信技术与专业。他尽力完成好本职工作，期望能够获得他期待的合理的位置。 
+ <br /> 
+ <br /> 差劲的领导：差劲的领导没什么技术，不过却擅于拍马屁。他一方面藐视自己的下属，另一方面却对上级趋炎附势。 
+</blockquote>
+<p><b>脾气</b></p>
+<blockquote>
+  优秀的领导：优秀的领导在感情上非常成熟，他知道如何控制自己的情绪。他不会对团队成员大吼大叫，或是威胁他们。
+ <br /> 
+ <br /> 差劲的领导：差劲的领导喜欢炫耀自己的级别，如果不吓吓自己的团队他就没什么好办法。他认为恐惧是非常好的推动力。
+</blockquote>
+<p><b>信任</b></p>
+<blockquote>
+  优秀的领导：优秀的领导非常信任自己的团队成员。他知道自己正与一群优秀的人一起工作，这也是他鼓励大家走出自己的知识舒适区的原因，因此团队成员最后都会学到很多，变得更强。
+ <br /> 
+ <br /> 差劲的领导：差劲的领导不相信任何人，除了他自己。那些缺乏经验的开发者除了写文档外没资格做任何其他事情，或是只能为自己写的代码写一些单元测试而已。
+</blockquote>
+<p><b>任务分配</b></p>
+<blockquote>
+  优秀的领导：优秀的领导选择那些其他人都不愿意做的任务，他向其他人做出了榜样，自己给自己分配了其他人都受够了的那些任务。 
+ <br /> 
+ <br /> 差劲的领导：差劲的领导总是选择自己最喜欢的任务。或许是自己想要尝试的新框架，他可不会将这个机会让给别人。不过，如果他发现太困难，那么就会将它交给团队其他成员来解决。
+</blockquote>
+<p><b>问题报告</b></p>
+<blockquote>
+  优秀的领导：优秀的领导会尽自己所能来解决任何问题。不过有时这也是不够的，因此他会立刻向上级报告问题，接下来采取恰当的动作。 
+ <br /> 
+ <br /> 差劲的领导：差劲的领导总是掩饰问题。他不喜欢报告，因此这可能会影响到他的良好声誉。如果问题出现了，那么他就会找到责任人，因为他自己永远不可能出错。 
+</blockquote>
+<p><b>代码审查</b></p>
+<blockquote>
+  优秀的领导：优秀的领导深信代码审查的价值，鼓励团队参与到审查彼此工作的过程之中。当某个问题重复出现时，他会将其写到共享的知识博客中，这样每个人都能学习到解决问题的更好办法。 
+ <br /> 
+ <br /> 差劲的领导：差劲的领导根本没时间做代码审查，每个人都按照自己的方式工作。如果某人出现了问题，领导只是告诉他一声而已。 
+</blockquote>
+<p><b>挫折</b></p>
+<blockquote>
+  优秀的领导：优秀的领导上级可能是个差劲的领导，他告诉自己绝对不能成为像自己上级那样的人。他足够成熟，能够从他人的错误中学习。 
+ <br /> 
+ <br /> 差劲的领导：差劲的领导想让别人也经历自己还是初级工程师时所犯下的种种错误。 
+</blockquote>
+<p><b>新想法</b></p>
+<blockquote>
+  优秀的领导：优秀的领导更喜欢倾听而不是诉说。他会让所有的团队成员参与到头脑风暴中。他深知伟大的想法可能来自于你意想不到的地方。 
+ <br /> 
+ <br /> 差劲的领导：差劲的领导不喜欢其他人展示的所谓新想法。他的想法总是比其他人的好。如果他听到某个有趣的意见时，他可能对其嗤之以鼻，然后将其汇报给上级，说这个想法是自己想到的。 
+</blockquote>
+<p>差劲的领导是灾难。由差劲的领导所带领的项目最后可能还要花费更多的代价来修复问题，这些代价要远远超过有经验的团队从头开始做的花费。听起来好像是虚构的，不过这些差劲的领导例子却是由真实的情况所启发的。不知你的团队中是否存在文中所述的那种差劲的领导呢？你是如何应对的呢？你认为你所在的组织中，优秀的领导与差劲的领导各占多少呢？</p><br><br><br><br><br><br></body></html>

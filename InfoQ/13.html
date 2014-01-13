@@ -1,9 +1,20 @@
-<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>RxJS的异步、LINQ和未来</h3><p>Reactive Extensions for JavaScript 2.2包含一个可选的组件（rx.async.js），用于异步数据源。它满足了绑定到事件、回调和promise的需要。</p>
-<p>对于标准事件，<a href="https://github.com/Reactive-Extensions/RxJS/blob/master/doc/api/core/observable.md#rxobservablefromeventelement-eventname-selector">Rx.Observable.fromEvent</a>函数只要求对象持有事件和事件名称。 对于自定义事件，<a href="https://github.com/Reactive-Extensions/RxJS/blob/master/doc/api/core/observable.md#rxobservablefromeventpatternaddhandler-removehandler-selector">Rx.Observable.fromEventPattern</a>允许传递单独的函数，用于添加和解除事件处理程序。</p>
-<p>将promise转换为可观察对象（observable）也十分简单。在构造完promise之后，用Rx.Observable.fromPromise包装一下即可。</p>
-<p>对于JavaScript开发者，特别是Node.js开发者来说，回调必然是需要重点考虑的部分。</p>
-<p>因此Async RxJS为<a href="https://github.com/Reactive-Extensions/RxJS/blob/master/doc/api/core/observable.md#rxobservablefromcallbackfunc-scheduler-context-selector">标准</a>和<a href="https://github.com/Reactive-Extensions/RxJS/blob/master/doc/api/core/observable.md#rxobservablefromnodecallbackfunc-scheduler-context-selector">Node风格的回调</a>提供了包装器。后者假设回调的第一个参数用于传递错误信息。</p>
-<p><strong>RxJS的未来</strong></p>
-<p>RxJS未来的一个方向是查询表达式解析。和.NET的LINQ一样，开发者可以在运行时对IndexDB和OData这样的数据源创建查询。尽管OData可以应对大多数场景，但这无疑为创建其他LINQ化的提供器打开了大门。</p>
-<p>Rx要解决的另一个问题是回压（back pressure）。当传入消息过于频繁而无法处理时，Observer可以对源进行节流。</p>
-<p><strong>原文链接：</strong><a href="http://www.infoq.com/news/2013/12/RxJS-Futures">Async, LINQ, and the Future of RxJS</a></p><br><br><br><br><br><br></body></html>
+<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>2014年值得关注的9项技术</h3><p><a href="http://www.infoworld.com/author-bios/andrew-c-oliver">Andrew C. Oliver</a>是一位专业的软件咨询师。他从8岁起开始编程，从Basic与dBase III+开始。他最为人所熟知的就是创建了POI项目，该项目现在托管在Apache上。在Red Hat收购JBoss之前，他还是JBoss的早期开发者之一。Andrew是Open Source Initiative的前董事会成员以及现在的顾问。除此之外，Andrew还是Open Software Integrators的董事长与创建者，这是一家专业的服务机构，分布在达拉谟、北卡罗来纳州以及芝加哥。近日，Andrew撰写了一篇<a href="http://www.infoworld.com/d/application-development/9-technologies-supercharged-2014-233787?page=0,0&amp;source=footer">文章</a>，谈到了2014年值得关注的9项技术。</p>
+<p>2014年充满了各种预测，我们无法控制世界未来的样子，不过我们可以成为自身命运的主人。下面就是2014年值得关注的9项技术，与你一同分享。</p>
+<p><b>1. 文档数据库</b></p>
+<p>很多IT系统基本上都包含了将数据结构写到结构化存储这一部分，同时又要求高并发的性能。文档数据库出现已经有很多年了，其中就有Lotus Domino的Notes Storage Facility，不过NoSQL与大数据革命又燃起了新的领域，其中MongoDB与Couchbase就是其中的佼佼者。</p>
+<p><b>2. 键值存储</b></p>
+<p>有时，你有一张很大的表，可以放到内存中。如果是网格，那么你就可以将内存中的表分发到多个结点上以加快写的速度。如果是个读多写少的小表，那么你可以将其复制到所有结点上，这样读就是个内存中的事情了。无论采用哪种方式，键值存储都值得你好好学习一下。几乎所有的键值存储都可以创建自定义的缓存负载器或是缓存存储，从而实现对RDBMS或是其他数据源的读与写。很多键值存储采用了“稍后写”或是队列写来实现对数据库的写操作。这个领域的典型代表是Couchbase、Memcached、Infinispan与GemFire。</p>
+<p><b>3. 图数据库</b></p>
+<p>从推荐引擎到社交网络和地理分析，再到生物分析，图数据库都带来了极大的便利性。对于传统的RDBMS来说，朋友的朋友这种查询是非常低效的，即便利用最新的特性也没有太大的起色，这是因为其结构就不对。虽然图数据库已经出现了很多年，不过只是最近的数据爆发以及个性推荐等领域才使其变得更加流行。这个领域的典型代表是Neo4j与Apache Giraph。</p>
+<p><b>4. Google Drive/Apps</b></p>
+<p>Google Apps是个办公效率套件。我无法想象再回到原来的通过邮件发送附件的那种方式。最近，我们通过基于JavaScript的宏实现了越来越好的自动化。所有的一切都存储在云端，因此我们可以放心地睡觉。除此之外，可扩展性特性意味着只要我们能够访问云端，那么我们就可以将文档直接与其集成，反之亦然。</p>
+<p><b>5. On-premises搜索</b></p>
+<p>我现在还是能看到有很多人在编写着大量的and/or/like等SQL查询，其实这么做不仅会导致严重的性能问题，还会产生不清晰的代码以及不易使用的接口。这时可以看看Google的服务，无论是数据库、文档还是各种文件系统都行。Apache Solr值得你好好看看。</p>
+<p><b>6. PaaS</b></p>
+<p>无论是公有云还是自己的私有云，你都需要手工安装各种操作系统、应用服务器与应用，然后提前选择好将要部署的服务器与VM数量，这是十几年前的做法。PaaS是未来的趋势，能够做到实时伸缩，自动完成重复性的任务。我们所广泛使用的平台有CloudFoundry、CloudBees与OpenShift。</p>
+<p><b>7. 云IDE</b></p>
+<p>前不久，我们全家在打扫壁橱，我9岁的孩子不认识壁橱里面的一个很大的金属盒子到底是什么，那是什么呢？我们在隔壁房间看着我们的孩子。“我不知道，好像是个Dell的什么东西”。我们发现他确实不知道塔式机箱到底是什么，因为自从他出生以来，我们就一直在使用着笔记本（不过他看到过一台1U服务器，因为我们用它做过Hadoop的测试）。我觉得云IDE可以做到一点，那就是让下一代不知道笔记本到底是什么。为何要在硬盘上安装IDE呢？为什么不打开浏览器，然后就开始编码呢？比如说Codenvy或是Cloud9。</p>
+<p><b>8. Hadoop</b></p>
+<p>无论是使用MapReduce进行复杂的分析，抑或只是想做些日志分析和审计日志，Hadoop都是这个行业中最为火热的一个选择。如果你尚未使用Hadoop做过一些试点项目，那么今年就要考虑做做了。如果已经使用过Hadoop，那么我希望你能在今年对Hadoop有更好的了解与掌握。</p>
+<p><b>9. 集群/分布式文件系统</b></p>
+<p>从集群到HDFS，可伸缩性存储是关键。今年，你要重新思考SAN了。至少，如果还没有尝试过可以先做个试水。我预测会有很多混合方式出现。</p><br><br><br><br><br><br></body></html>

@@ -1,557 +1,123 @@
-<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>JavaScript的实例化与继承：请停止使用new关键字</h3><p>JavaScript中的new关键字可以实现实例化和继承的工作，但个人认为使用new关键字并非是最佳的实践，还可以有更友好一些的实现。本文将介绍使用new关键字有什么问题，然后介绍如何对与new相关联的一系列面向对象操作进行封装，以便提供更快捷的、更易让人理解的实现方式。</p>
-<h2>传统的实例化与继承</h2>
-<p>假设我们有两个类，<code>Class:function Class() {}</code>和<code>SubClass:function SubClass(){}</code>，SubClass需要继承自Class。传统方法一般是按如下步骤来组织和实现的：</p>
-<ul> 
- <li> <p>Class中<strong>被继承的属性和方法</strong>必须放在Class的prototype属性中</p> 
-  <div class="clear"></div> 
-  <div class="related_sponsors visible stacked"> 
-   <div class="gray_section_related only1 fullWidth"> 
-    <div class="related_editorial sponsored only1"> 
-     <p class="title">相关厂商内容</p> 
-     <div class="links"> 
-      <h3 title="" class="entryeventRegistration f_vcrbottom" jsh="{&quot;id&quot;:2533,&quot;title&quot;:&quot;QClub大连站：软件开发过程中的平台、技术选择（2013年11月23日 周六）&quot;}"> <a href="/cn/vendorcontent/show.action?vcr=2533&amp;utm_source=infoq&amp;utm_medium=VCR&amp;utm_campaign=vcr_articles_click"> QClub大连站：软件开发过程中的平台、技术选择（2013年11月23日 周六） </a> </h3> 
-      <h3 title="" class="entryeventRegistration f_vcrbottom" jsh="{&quot;id&quot;:2498,&quot;title&quot;:&quot;百度技术沙龙第四十四期： 大数据面面观（2013年11月23日周六）&quot;}"> <a href="/cn/vendorcontent/show.action?vcr=2498&amp;utm_source=infoq&amp;utm_medium=VCR&amp;utm_campaign=vcr_articles_click"> 百度技术沙龙第四十四期： 大数据面面观（2013年11月23日周六） </a> </h3> 
-      <h3 title="" class="entrypdf f_vcrbottom" jsh="{&quot;id&quot;:2541,&quot;title&quot;:&quot;京东“宙斯杯”创新应用大赛开始了，100万奖金等你拿哦！&quot;}"> <a href="/cn/vendorcontent/show.action?vcr=2541&amp;utm_source=infoq&amp;utm_medium=VCR&amp;utm_campaign=vcr_articles_click" target="_blank"> 京东“宙斯杯”创新应用大赛开始了，100万奖金等你拿哦！ </a> </h3> 
-      <div class="clear"></div> 
-     </div> 
-    </div> 
-   </div> 
-   <div class="clear"></div> 
-  </div> </li> 
- <li> <p>SubClass中<strong>自己的方法和属性</strong>也必须放在自己prototype属性中</p> </li> 
- <li> <p>SubClass的prototype对象的prototype(__proto__)属性必须指向的Class的prototype</p> </li> 
-</ul>
-<p>这样一来，由于prototype链的特性，SubClass的实例便能追溯到Class的方法，从而实现继承：</p>
+<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>教育也敏捷——eduScrum和蓝图教育的经验之谈</h3><p>学校用Scrum帮学生提高学习效率，让他们以一种愉悦的方式培养自己。自发组织起来的学生团队按Sprintsprint的方式学习各种科目，推进他们的学习过程。敏捷可以改善教学质量，提高成绩，激发学生的学习热情。学生团队和教师用回顾会议评估学习过程，并改善Scrum在教学过程中的使用方式。</p>
+<p>在位于亚利桑那州钱德勒市的<a href="http://www.blueprinthighschool.org/">蓝图高中</a>，学生们把Scrum当做一种引人入胜、自发组织的协作方式和动态的工作方式。这所高中由<a href="http://www.blueprinteducation.org/">蓝图教育</a>运营，他们是一家专门为打破传统的学生提供学业选择的非盈利性机构。来自<a href="http://theagileschool.blogspot.nl/">敏捷学校</a>的John Miller在帮蓝图高中部署Scrum，将其作为输送21世纪人才愿景的一部分。</p>
+<p>位于荷兰莱茵河畔阿尔芬镇的<a href="http://www.ashram.nl/">静修学院</a>采用了 <a href="http://eduscrum.nl/en">eduScrum</a>, 一个用在中学/高中教育和中等职业培训中的教育版 Scrum。借助eduScrum，学生们以一种充满活力的、有针对性和有效的方式互相合作。 <a href="http://eduscrum.nl/en/eduscrum-team">eduScrum 团队</a> 由三位独立工作的Scrum教练组成，他们都在支持eduScrum，并一直在改进它。</p>
+<p>InfoQ 采访了来自蓝图教育的 Marmy Kodras和来自敏捷学校的 John Miller，了解Scrum在蓝图高中里的使用情况，还有来自eduScrum和静修学院的Jan van Rossum，了解如何把Scrum用在教学上。</p>
+<p><b>InfoQ</b><b>： </b><b>是什么促使你决定将Scrum</b><b>用在教育上？在你看来Scrum</b><b>对教学有什么用处？</b></p>
+<blockquote> 
+ <p><b>蓝图： </b>蓝图教育大概在三年前开始接触到敏捷的概念，是由当时的董事会成员Kevin Donaldson引入的。作为领导小组，我们开始慢慢地将敏捷和Scrum整合到了我们的规划和活动中，然后又传达给了更多的员工。后来我们跟敏捷接触的机会日渐增多，特别是跟John Miller的接触，他当时受雇于我们的一个学区，我们在John的学校看到了敏捷概念在小学中推广的第一手经验，之后我们就意识到不应该让敏捷只停留在企业层面，这是将它直接推广到课堂上和学生们中间的好机会 。我们有一个为三年级到八年级学生提供的选择性教育计划，并且我们还经营着两个特许高中和经过认证的网校。</p> 
+ <p><b>eduScrum</b><b>： </b>在荷兰，中学教育中经常会有学生组成团队共同解决教育任务或项目。但团队中的成员并不是每个都那么勤奋。所以组队学习不仅是如何组织的问题，还是个关系到个人的过程。它应该有自己的独特之处，因此我们采用了eduScrum。在企业中，Scrum让开发人员以高效、愉悦的方式相互协作。eduScrum根据教育行业的特点对Scrum进行了调整<b>。</b></p> 
+ <p><b>蓝图： </b>敏捷和Scrum所创造的环境让学生可以体验什么是真正的协作，相互合作，可以问责，用他们的创造性解决问题，跳出条条框框，自发组织，站在更高的层面上思考问题，让他们得到其他人没有机会得到的优势。它让教室体验变得更吸引人、更丰富、更受信任、 更有益于学生个性的培养，并带着新的教育通用核心标准（USA）所要求的更强的严谨性唤醒对知识更深的渴望。Scrum有经过证实的检查性、适应性和透明性的基础，它本质上是一个学习框架，经过发展可以应对我们在这个概念的时代中所遇到的挑战。</p> 
+ <p><b>eduScrum</b><b>：</b>借助eduScrum，学生们可以用一种充满活力的、有针对性的、高效的方式合作。eduScrum会激发他们为团队做出贡献，成为有价值的成员。eduScrum创建了一种旨在持续改进的思维定势。学习是关键元素：更聪明的学习，学习更好地合作，学习以便可以更加了解他们。因此eduScrum增加了一个仪式：在团队的创建基础上增加了对个人品质的考虑。这会创建一个强大的小组，组中每个人都以自己的品质为基础做事。不具备某些品质的学生能够从中得到学习的机会。它给出了一个能用在小组中的特别的、充满活力的学习方式。</p> 
+ <p><b>eduScrum</b><b>： </b>我们还开发出了额外的工具，比如回顾。我们，也就是教师们，必须教会学生如何回顾，因此我们开发了专门的工具，在做回顾时用。这些工具对年轻人来说既有挑战性又有吸引力。eduScrum给Scrum增加了一个很强大的教学层。eduScrum的好处跟Scrum类似。用这种方式学习会感到快乐、充满力量并有责任感，学得更快，结果更好。此外，学生还得到了积极的个人发展。eduScrum的秘密就是“主人翁意识”。</p> 
+ <p><b>蓝图：</b>我们愿意采纳敏捷和Scrum的另一个原因是因为我们对学生的关注点已经改变 。我们仍然想让他们拿到高中毕业证，但我们知道在21世纪毕业证对学生来说并不是终点。我们调整了目标，要为他们进入21世纪所做的准备负责，也就是说我们不仅要教他们学会读写和算术。学生们不仅需要高中毕业证，他们还需要具备创造力、协作能力、沟通能力、多元化的知识、问责能力、批判性思维和团队精神等各种技能。这些恰好都是在敏捷和Scrum中有明显体现的技能。</p> 
+</blockquote>
 <div id="lowerFullwidthVCR"></div>
-<pre>
-new SubClass()      Object.create(Class.prototype)
-    |                    |
-    V                    V
-SubClass.prototype ---&gt; { }
-                        { }.__proto__ ---&gt; Class.prototype
-</pre>
-<p>举一个具体的例子：下面的代码中，我们做了以下几件事:</p>
-<ul> 
- <li> <p>定义一个父类叫做Human</p> </li> 
- <li> <p>定义一个名为Man的子类继承自Human</p> </li> 
- <li> <p>子类继承父类的一切属性，并调用父类的构造函数，实例化这个子类</p> </li> 
-</ul>
-<pre>
-// 构造函数/基类
-function Human(name) {
-    this.name = name;
-}
-
-/* 
-    基类的方法保存在构造函数的prototype属性中
-    便于子类的继承
-*/
-Human.prototype.say = function () {
-    console.log(&quot;say&quot;);
-}
-
-/*
-    道格拉斯的object方法（等同于object.create方法）
-*/
-function object(o) {
-    var F = function () {};
-    F.prototype = o;
-    return new F();
-}
-
-// 子类构造函数
-function Man(name, age) {
-    // 调用父类的构造函数
-    Human.call(this, name);
-    // 自己的属性age
-    this.age = age;
-}
-
-// 继承父类的方法
-Man.prototype = object(Human.prototype);
-Man.prototype.constructor = Man;
-
-// 实例化子类
-var man = new Man(&quot;Lee&quot;, 22);
-console.log(man);
-// 调用父类的say方法：
-man.say();
-</pre>
-<p><a href="http://jsfiddle.net/gP9g5/">DEMO</a></p>
-<p>通过上面的代码可以总结出传统的实例化与继承的几个特点：</p>
-<ul> 
- <li> <p>传统方法中的“类”一定是一个构造函数。</p> </li> 
- <li> <p>属性和方法绑定在prototype属性上，并借助prototype的特性实现继承。</p> </li> 
- <li> <p>通过new关键字来实例化一个对象。</p> </li> 
-</ul>
-<p>为什么我会十分的肯定Object.create方法与道格拉斯的object方法是一致呢？因为在MDN上，object方法就是作为Object.create的一个Polyfill方案：</p>
-<ul> 
- <li> <p><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/create">Object.create</a></p> </li> 
- <li> <p><a href="http://javascript.crockford.com/prototypal.html">Douglas Crockford's object method</a></p> </li> 
-</ul>
-<h2>new关键字的不足之处</h2>
-<p>在《Javascript语言精粹》（Javascript: The Good Parts）中，道格拉斯认为应该避免使用new关键字：</p>
+<p><b>InfoQ</b><b>： </b><b>你们在教学中是如何使用Scrum</b><b>的，使用了哪种实践？能给我们举些例子吗？</b></p>
 <blockquote> 
- <p>If you forget to include the new prefix when calling a constructor function, then this will not be bound to the new object. Sadly, this will be bound to the global object, so instead of augmenting your new object, you will be clobbering global variables. That is really bad. There is no compile warning, and there is no runtime warning. (page 49)</p> 
+ <p><b>蓝图：</b>现在我们已经迈出了第一步，通过John Miller把敏捷和Scrum的概念传达给我们的高中生。在我们负责的一个高中里，John非常勤恳地志愿帮助学生理事会在校园里规划和发起一些活动。他通过Scrum看板向他们介绍这些概念，并且从一开始就为他们提供了便利，从他们已经讨论过的如何开发出“是什么” 开始，带领他们通过练习完成“怎么做”。这真的是一个仍然处于早期阶段的试点项目。教师们已经非常顺应这个过程了，我们已经为员工和其他人举办过了一场训练日活动来介绍这些概念，并且一直在加强那所学校里的基础。</p> 
+ <p><b>蓝图： </b>最终目标是在我们所有学校的每一间教室里和所有计划中都用上敏捷和Scrum的概念。我们计划明年在蓝图高中启动一项<b>服务项目学习计划</b> ，这在 <a href="http://theagileschool.blogspot.com/2013/04/service-learning-canvas.html">服务学习曲线</a>里有介绍。</p> 
+ <p><b>eduScrum</b><b>：</b>学校的所有科目中都用了eduScrum。最初是从物理和化学开始的，但现在语文、历史、地理、经济学、数学和生物学都用上了。我们一直在用eduScrum，用在所有教育任务中。在所有科目中，使用Scrum的方式都一样：在组队基础上额外增加对个人品质的考虑，规划扑克，Scrum看板，课上站立会议，燃尽图表，回顾会议，测试，完成状态定义和演示。</p> 
 </blockquote>
-<p>大意是说在应该使用new的时候如果忘了new关键字，会引发一些问题。</p>
-<p>当然了，你遗忘使用任何关键字都会引起一系列的问题。再退一步说，这个问题是<a href="http://stackoverflow.com/questions/383402/is-javascript-s-new-keyword-considered-harmful#answer-383503">完全可以避免的</a>：</p>
-<pre>
-function foo()
-{   
-   // 如果忘了使用关键字，这一步骤会悄悄帮你修复这个问题
-   if ( !(this instanceof foo) )
-      return new foo();
-
-   // 构造函数的逻辑继续……
-}
-</pre>
-<p>或者更通用的抛出异常即可</p>
-<pre>
-function foo()
-{
-    if ( !(this instanceof arguments.callee) ) 
-       throw new Error(&quot;Constructor called as a function&quot;);
-}
-</pre>
-<p>又或者按照<a href="http://ejohn.org/blog/simple-class-instantiation/">John Resig的方案</a>，准备一个makeClass工厂函数，把大部分的初始化功能放在一个init方法中，而非构造函数自己中：</p>
-<pre>
-// makeClass - By John Resig (MIT Licensed)
-function makeClass(){
-  return function(args){
-    if ( this instanceof arguments.callee ) {
-      if ( typeof this.init == &quot;function&quot; )
-        this.init.apply( this, args.callee ? args : arguments );
-    } else
-      return new arguments.callee( arguments );
-  };
-}
-</pre>
-<p>在我看来，new关键字不是一个好的实践的关键原因是：</p>
+<p><b>InfoQ</b><b>： </b><b>你们在学校里是如何确定Scrum</b><b>角色的？谁是Scrum</b><b>教练，谁又是产品所有者，还有你们这么确定的原因是什么？</b></p>
 <blockquote> 
- <p><a href="http://dailyjs.com/2010/05/24/history-of-javascript-1/">...new is a remnant of the days where JavaScript accepted a Java like syntax for gaining “popularity”. And we were pushing it as a little brother to Java, as a complementary language like Visual Basic was to C++ in Microsoft’s language families at the time.</a></p> 
+ <p><b>eduScrum</b><b>：</b> 产品所有者是教师，他们是计划、结果和测验的负责人。他/她为一个为期几周的时期定义准备就绪状态，并告诉学生这一时期的学习目标。产品所有者要决定必须做什么；而Scrum教练和小组来决定如何完成。团队中的Scrum教练就是由学生担任的，他们是由其他学生根据他们的品质和技能选出来的。Scrum教练再根据品质和技能选择其他团队成员。这样形成由四名学生组成的团队。有时出于学习和教导方面的原因，教师也会担任（超级）Scrum教练。每个学生都要学习如何成为一名优秀的Scrum教练，所以教师也是一名（超级）Scrum教练，比如要组织scrum的scrum。</p> 
+ <p><b>eduScrum</b><b>：</b> 我们确定scrum角色的方式跟我们做scrum仪式的办法一样，告诉他们，跟他们一起做。我们，也就是教师们给他们做示范，他们必须按相同的方式去做。</p> 
+ <p><b>蓝图： </b>我们在课堂上并没有强调scrum角色，实际上是转移到自我指导/自发组织的课堂上去了。在某些情况下，教师作为主要的产品所有者，以及scrum教练。有时学生团队既做产品所有者又做scrum教练，我发现在学习团队中有协作性的所有者关系比划分角色效果更好。随着他们在自我导向上的不断成长，会有越来越多的学生从老师那里吸收到产品所有者的角色。大概在两年前我开始做这项工作，等到四年级的时候，课堂上很自然地出现了这种情况。到那学年年终的时候，教师只是给出了一个项目；学生们做出了他们自己的目标和自己的同行评审。这不是纯正的Scrum，我管它叫受Scrum启发的过程，因为Scrum能被称为Scrum有它特定的规则。</p> 
+ <p><b>蓝图：</b>对于蓝图高中学生理事会来说，大家一致同意由整个团队承担产品所有者的角色，但有一个专门的Scrum教练来负责协调、解锁和促进工作。这就是他们的决定，并且效果很好。</p> 
 </blockquote>
-<p>道格拉斯将这个问题描述为：</p>
+<p><b>InfoQ</b><b>： Sprint</b><b>一个Sprint</b><b>是多长时间，你们是根据什么确定这个时间长度的？</b></p>
 <blockquote> 
- <p><a href="http://javascript.crockford.com/prototypal.html">This indirection was intended to make the language seem more familiar to classically trained programmers, but failed to do that, as we can see from the very low opinion Java programmers have of JavaScript. JavaScript’s constructor pattern did not appeal to the classical crowd. It also obscured JavaScript’s true prototypal nature. As a result, there are very few programmers who know how to use the language effectively.</a></p> 
+ <p><b>eduScrum</b><b>： </b><b>一个Sprint</b>Sprint的时间长度是两周。大多数Sprint是4到6节50分钟的课。我们决定维持这个长度是因为比较短的时间让学生有可能马上能反应到他们的学习过程上，并且每隔两周就能改进。</p> 
+ <p><b>蓝图：</b>我们在企业里的Sprint时长是两周。我不太确定我们是怎么得出这个时间范围的，但看起来对我们来说挺合适。四周对于项目来说太长，一周又太短完不成它们。我们每周一开始都作为领导班子（大部分是）聚到一起，或者是一次Sprint中期评审，或者是一次回顾及Sprint规划会议。我们会把它进一步分解为更小的组，都有自己的两周Sprint。蓝图高中的学生理事会也是两周的Sprint，因为它是一项课外活动。</p> 
 </blockquote>
-<p>简单来说，JavaScript是一种prototypical类型语言，在创建之初，是为了迎合市场的需要，让人们觉得它和Java是类似的，才引入了new关键字。Javascript本应通过它的Prototypical特性来实现实例化和继承，但new关键字让它变得不伦不类。</p>
-<h2>把传统方法加以改造</h2>
-<p>既然new关键字不够友好，那么我们有两个办法可以解决这个问题：一是完全抛弃new关键字，二是把含有new关键字的操作封装起来，只向外提供友好的接口。下面将介绍第二种方法的实现思路，把传统方法加以改造。</p>
-<p>我们开始构造一个最原始的基类<code>Class</code>（类似于JavaScript中的Object类），并且只向外提供两个接口：</p>
-<ul> 
- <li> <p>Class.extend 用于拓展子类</p> </li> 
- <li> <p>Class.create 用于创建实例</p> </li> 
-</ul>
-<pre>
-// 基类
-function Class() {}
-
-// 将extend和create置于prototype对象中，以便子类继承
-Class.prototype.extend = function () {};
-Class.prototype.create = function () {};
-
-// 为了能在基类上直接以.extend的方式进行调用
-Class.extend = function (props) {
-    return this.prototype.extend.call(this, props);
-}
-</pre>
-<p>extend和create的具体实现：</p>
-<pre>
-Class.prototype.create = function (props) {
-    /*
-        create实际上是对new的封装；
-        create返回的实例实际上就是new构造出的实例；
-        this即指向调用当前create的构造函数；
-    */
-    var instance = new this();
-    /*
-        绑定该实例的属性
-    */
-    for (var name in props) {
-        instance[name] = props[name];
-    }
-    return instance;
-}
-
-Class.prototype.extend = function (props) {
-    /*
-        派生出来的新的子类
-    */
-    var SubClass = function () {};
-    /*
-        继承父类的属性和方法，
-        当然前提是父类的属性都放在prototype中
-        而非上面create方法的“实例属性”中
-    */
-    SubClass.prototype = Object.create(this.prototype);
-    // 并且添加自己的方法和属性
-    for (var name in props) {
-        SubClass.prototype[name] = props[name];
-    }
-    SubClass.prototype.constructor = SubClass;
-
-    /*
-        介于需要以.extend的方式和.create的方式调用：
-    */
-    SubClass.extend = SubClass.prototype.extend;
-    SubClass.create = SubClass.prototype.create;
-
-    return SubClass;
-}
-</pre>
-<p>仍然以Human和Man类举例使用说明：</p>
-<pre>
-var Human = Class.extend({
-    say: function () {
-        console.log(&quot;Hello&quot;);
-    }
-});
-
-var human = Human.create();
-console.log(human)
-human.say();
-
-var Man = Human.extend({
-    walk: function () {
-        console.log(&quot;walk&quot;);
-    }
-});
-
-var man = Man.create({
-    name: &quot;Lee&quot;,
-    age: 22
-});
-
-console.log(man);
-// 调用父类方法
-man.say();
-
-man.walk();
-</pre>
-<p><a href="http://jsfiddle.net/VsuA2/">DEMO</a></p>
-<p>至此，基本框架已经搭建起来，接下来继续补充功能。</p>
-<ol> 
- <li> <p>我们希望把构造函数独立出来，并且统一命名为init。就好像<code>Backbone.js</code>中每一个view都有一个<code>initialize</code>方法一样。这样能让初始化更灵活和标准化，甚至可以把init构造函数借出去</p> </li> 
- <li> <p>我还想新增一个子类方法调用父类同名方法的机制，比如说在父类和子类的中都定义了一个say方法，那么只要在子类的say中调用<code>this.callSuper()</code>就能调用父类的say方法了。例如：</p> </li> 
-</ol>
-<pre>
-// 基类
-var Human = Class.extend({
-    /*
-        你需要在定义类时定义构造方法init
-    */
-    init: function () {
-        this.nature = &quot;Human&quot;;
-    },
-    say: function () {
-        console.log(&quot;I am a human&quot;);
-    }
-})
-
-var Man = Human.extend({
-    init: function () {
-        this.sex = &quot;man&quot;;
-    },
-    say: function () {
-        // 调用同名的父类方法
-        this.callSuper();
-        console.log(&quot;I am a man&quot;);
-    }
-});
-</pre>
-<p>那么Class.create就不仅仅是new一个构造函数了：</p>
-<pre>
-Class.create = Class.prototype.create = function () {
-    /*
-        注意在这里我们只是实例化一个构造函数
-        而非最后返回的“实例”，
-        可以理解这个实例目前只是一个“壳”
-        需要init函数对这个“壳”填充属性和方法
-    */
-    var instance = new this();
-
-    /*
-        如果对init有定义的话
-    */
-    if (instance.init) {
-        instance.init.apply(instance, arguments);
-    }
-    return instance;
-}
-</pre>
-<p>实现在子类方法调用父类同名方法的机制，我们可以借用<a href="http://ejohn.org/blog/simple-javascript-inheritance/">John Resig的方案</a>：</p>
-<pre>
-
-Class.extend = Class.prototype.extend = function (props) {
-    var SubClass = function () {};
-    var _super = this.prototype;
-     SubClass.prototype = Object.create(this.prototype);
-     for (var name in props) {
-        // 如果父类同名属性也是一个函数
-        if (typeof props[name] == &quot;function&quot; 
-            &amp;&amp; typeof _super[name] == &quot;function&quot;) {
-            // 重新定义用户的同名函数，把用户的函数包装起来
-            SubClass.prototype[name] 
-                = (function (super_fn, fn) {
-                return function () {
-
-                    // 如果用户有自定义callSuper的话，暂存起来
-                    var tmp = this.callSuper;
-                    // callSuper即指向同名父类函数
-                    this.callSuper = super_fn;
-                    /*
-                        callSuper即存在子类同名函数的上下文中
-                        以this.callSuper()形式调用
-                    */
-                    var ret = fn.apply(this, arguments);
-                    this.callSuper = tmp;
-
-                    /*
-                        如果用户没有自定义的callsuper方法，则delete
-                    */
-                    if (!this.callSuper) {
-                        delete this.callSuper;
-                    }
-
-                    return ret;
-                }
-            })(_super[name], props[name])  
-        } else {
-            // 如果是非同名属性或者方法
-            SubClass.prototype[name] = props[name];    
-        }
-
-        ..
-    }
-
-    SubClass.prototype.constructor = SubClass; 
-}
-</pre>
-<p>最后给出一个完整版，并且做了一些优化：</p>
-<pre>
-function Class() {}
-
-Class.extend = function extend(props) {
-
-    var prototype = new this();
-    var _super = this.prototype;
-
-    for (var name in props) {
-
-        if (typeof props[name] == &quot;function&quot; 
-            &amp;&amp; typeof _super[name] == &quot;function&quot;) {
-
-            prototype[name] = (function (super_fn, fn) {
-                return function () {
-                    var tmp = this.callSuper;
-
-                    this.callSuper = super_fn;
-
-                    var ret = fn.apply(this, arguments);
-
-                    this.callSuper = tmp;
-
-                    if (!this.callSuper) {
-                        delete this.callSuper;
-                    }
-                    return ret;
-                }
-            })(_super[name], props[name])
-        } else {
-            prototype[name] = props[name];    
-        }
-    }
-
-    function Class() {}
-
-    Class.prototype = prototype;
-    Class.prototype.constructor = Class;
-
-    Class.extend =  extend;
-    Class.create = Class.prototype.create = function () {
-
-        var instance = new this();
-
-        if (instance.init) {
-            instance.init.apply(instance, arguments);
-        }
-
-        return instance;
-    }
-
-    return Class;
-}
-</pre>
-<p>下面是测试的代码。为了验证上面代码的健壮性，故意实现了三层继承：</p>
-<pre>
-var Human = Class.extend({
-    init: function () {
-        this.nature = &quot;Human&quot;;
-    },
-    say: function () {
-        console.log(&quot;I am a human&quot;);
-    }
-})
-
-var human = Human.create();
-console.log(human);
-human.say();
-
-var Man = Human.extend({
-    init: function () {
-        this.callSuper();
-        this.sex = &quot;man&quot;;
-    },
-    say: function () {
-        this.callSuper();
-        console.log(&quot;I am a man&quot;);
-    }
-});
-
-var man = Man.create();
-console.log(man);
-man.say();
-
-var Person = Man.extend({
-    init: function () {
-        this.callSuper();
-        this.name = &quot;lee&quot;;
-    },
-    say: function () {
-        this.callSuper();
-        console.log(&quot;I am Lee&quot;);
-    }
-})
-
-var person = Person.create();
-console.log(person);
-person.say();
-</pre>
-<p><a href="http://jsfiddle.net/4qRUz/">DEMO</a></p>
-<h2>是时候彻底抛弃new关键字了</h2>
-<p>如果不使用new关键字，那么我们需要转投上两节中反复使用的<code>Object.create</code>来生产新的对象</p>
-<p>假设我们有一个矩形对象：</p>
-<pre>
-var Rectangle = {
-    area: function () {
-        console.log(this.width * this.height);
-    }
-};
-</pre>
-<p>借助Object.create，我们可以生成一个拥有它所有方法的对象：</p>
-<pre>
-var rectangle = Object.create(Rectangle);
-</pre>
-<p>生成之后，我们还可以给这个实例赋值长宽，并且取得面积值</p>
-<pre>
-var rect = Object.create(Rectangle);
-rect.width = 5;
-rect.height = 9;
-rect.area();
-</pre>
-<p>注意这个过程我们没有使用new关键字，但是我们相当于实例化了一个对象(rectangle)，给这个对象加上了自己的属性，并且成功调用了类(Rectangle)的方法。</p>
-<p>但是我们希望能自动化赋值长宽，没问题，那就定义一个create方法：</p>
-<pre>
-var Rectangle = {
-    create: function (width, height) {
-      var self = Object.create(this);
-      self.width = width;
-      self.height = height;
-      return self;
-    },
-    area: function () {
-        console.log(this.width * this.height);
-    }
-};
-</pre>
-<p>使用方式如下：</p>
-<pre>
-var rect = Rectangle.create(5, 9);
-rect.area();
-</pre>
-<p>在纯粹使用Object.create的机制下，我们已经完全抛弃了构造函数这个概念。一切都是对象，一个类也可以是对象，这个类的实例不过是一个它自己的复制品。</p>
-<p>下面看看如何实现继承。我们现在需要一个正方形，继承自这个长方形</p>
-<pre>
-var Square = Object.create(Rectangle);
-
-Square.create = function (side) {
-  return Rectangle.create.call(this, side, side);
-}
-</pre>
-<p>实例化它:</p>
-<pre>
-var sq = Square.create(5);
-sq.area();
-</pre>
-<p>这种做法其实和我们第一种最基本的类似</p>
-<pre>
-function Man(name, age) {
-    Human.call(this, name);
-    this.age = age;
-} 
-</pre>
-<p>上面的方法还是太复杂了，我们希望进一步自动化，于是我们可以写这么一个extend函数</p>
-<pre>
-function extend(extension) {
-    var hasOwnProperty = Object.hasOwnProperty;
-    var object = Object.create(this);
-
-    for (var property in extension) {
-      if (hasOwnProperty.call(extension, property) || typeof object[property] === &quot;undefined&quot;) {
-        object[property] = extension[property];
-      }
-    }
-
-    return object;
-}
-
-/*
-    其实上面这个方法可以直接绑定在原生的Object对象上：Object.prototype.extend
-    但个人不推荐这种做法
-*/
-
-var Rectangle = {
-    extend: extend,
-    create: function (width, height) {
-      var self = Object.create(this);
-      self.width = width;
-      self.height = height;
-      return self;
-    },
-    area: function () {
-        console.log(this.width * this.height);
-    }
-};
-</pre>
-<p>这样当我们需要继承时，就可以像前几个方法一样用了</p>
-<pre>
-var Square = Rectangle.extend({
-    // 重写实例化方法
-    create: function (side) {
-         return Rectangle.create.call(this, side, side);
-    }
-})
-
-var s = Square.create(5);
-s.area();
-</pre>
-<h2>结束语</h2>
-<p>本文对去new关键字的方法做了一些罗列，但工作还远远没有结束，有非常多的地方值得拓展，比如：如何重新定义<code>instance of</code>方法，用于判断一个对象是否是一个类的实例？如何在去new关键字的基础上继续实现多继承？希望本文的内容在这里只是抛砖引玉，能够开拓大家的思路。</p>
-<h2>引用资料</h2>
-<ul> 
- <li> <p><a href="http://aaditmshah.github.io/why-prototypal-inheritance-matters/">Why Prototypal Inheritance Matters</a></p> </li> 
- <li> <p><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/create">Object.create</a></p> </li> 
- <li> <p><a href="http://www.bennadel.com/blog/2184-Object-create-Improves-Constructor-Based-Inheritance-In-Javascript-It-Doesn-t-Replace-It.htm">Object.create() Improves Constructor-Based Inheritance In Javascript - It Doesn't Replace It</a></p> </li> 
- <li> <p><a href="http://dailyjs.com/2012/06/04/js101-object-create/">JS101: Object.create</a></p> </li> 
- <li> <p><a href="http://ejohn.org/blog/simple-class-instantiation/">Simple “Class” Instantiation</a></p> </li> 
- <li> <p><a href="http://stackoverflow.com/questions/4166616/understanding-the-difference-between-object-create-and-new-somefunction-in-j">Understanding the difference between Object.create() and new SomeFunction() in JavaScript</a></p> </li> 
- <li> <p><a href="http://stackoverflow.com/questions/12592913/what-is-the-reason-to-use-the-new-keyword-here">What is the reason to use the 'new' keyword here?</a></p> </li> 
- <li> <p><a href="http://stackoverflow.com/questions/13040684/javascript-inheritance-object-create-vs-new">JavaScript inheritance: Object.create vs new</a></p> </li> 
- <li> <p><a href="http://stackoverflow.com/questions/383402/is-javascript-s-new-keyword-considered-harmful">Is JavaScript 's “new” Keyword Considered Harmful?</a></p> </li> 
-</ul>
-<h2>作者简介</h2>
-<p>李光毅，新晋前端工程师，现就职于爱奇艺，热于前端技术分享。</p>
+<p><b>InfoQ</b><b>： </b><b>你们会对学生在团队中如何工作和学习进行回顾吗？那对你们在教学中采用Scrum</b><b>有什么样的帮助？</b></p>
+<blockquote> 
+ <p><strong>蓝图</strong><strong>：</strong> 我们进行过几次回顾会议，并且会跟成年人的Scrum团队一样根据需要改变它们。</p> 
+ <p><b>eduScrum</b><b>：</b> 学习过程中的每次Sprint都以回顾会议结束，按照完成状态的定义，按照21世纪人才所需的技能（以有效的方式合作，解决问题的能力，创造性思维，自我测试，回顾性思维，思维方式的改变）。我们开发了很多工具做回顾，团队如何协作，团队成员如何做他们的工作，他们用到了哪些个人品质，他们彼此之间学到了什么，在下次Sprint中有什么他们能做得更好。</p> 
+ <p><b>eduScrum</b><b>： </b>对于我们教师来说，这些回顾也非常重要，因为我们可以用它改进eduScrum，也就是我们开发出的那些工具和仪式。作为教师，我们是产品的所有者和超级Scrum教练。我们不参加回顾会议，但结果已经记下来了，所以我们能看到，并且我们可以通过给学生反馈对它做出反应。</p> 
+</blockquote>
+<p><b>InfoQ</b><b>： </b><b>你们用什么技术做回顾会议？为什么选择它们？</b></p>
+<blockquote> 
+ <p><b>蓝图：</b>学生们每天往往用简单的加减增量图做回顾。我们用的是<a href="http://theagileschool.blogspot.nl/2013/03/reflection-nourishment-for-self.html">反思：自组织课堂的食粮</a>和<a href="http://theagileschool.blogspot.nl/2013/03/reflection-activity-glows-grows-knows.html">反思活动： 发光，成长，认识及抛出</a>中介绍的学习矩阵。</p> 
+ <p><b>eduScrum</b><b>：</b> 我们基本上都是用书面回顾。教师在Sprint结束时总会问下面三个问题：在上次Sprint中哪些已经做好了，哪些可以做得更好，在下次Sprint中要做什么特殊动作吗？除此之外，每次Sprint都是以（自行）测试和特殊的回顾项结束的，比如：在这次Sprint中你用到了哪些品质 ，又从团队其他成员身上的品质中学到了什么？另一个经常出现在回顾中的问题是：对团队其他成员的信任程度如何，你想做什么样的改变来加强彼此之间的信任感？我们这么做是因为书面回顾效率高。教师没办法出席每个小组的每次回顾。用这种方式有助于我们对书面回顾进行研究，并据此给他们打分。</p> 
+ <p><b>InfoQ</b><b>： </b><b>学生们对Scrum</b><b>是什么想法？他们喜欢什么，又有哪些让他们觉得困难？</b></p> 
+ <p><b>eduScrum</b><b>：</b> 大多数学生都喜欢用scrum。最重要的反应是：</p> 
+ <ul> 
+  <li>在这些小组中一起工作非常好；共同学习，特别是相互学习受到了大多数学生的赞赏，也让他们感到惊喜。</li> 
+ </ul> 
+ <ul> 
+  <li>Scrum能让他们取得更好的成绩这一点非常好</li> 
+ </ul> 
+ <ul> 
+  <li>通过回顾能学到很多关于合作、互助和培养自身品质及技能的知识</li> 
+ </ul> 
+ <ul> 
+  <li>做规划更容易了，并且对于取得更好的分数很有帮助</li> 
+ </ul> 
+ <p><b>蓝图： </b>学生们很容易接受敏捷和Scrum的概念，并且看起来已经取得了这个过程的所有权，也培养出了问责能力。我觉得它让他们感到自己是一个整体中相互平等的部分，并且他们的创新理念得到了强化。它还让他们不再害怕失败，敢于一次次地尝试，因为这些在敏捷和Scrum中都不会受到惩罚。对于他们来说，这个过程能让他们作为一个团队决定“怎么做”是他们比较喜欢的部分。“困难”可能更多体现在术语和/或他们不明白其价值或目的的步骤细节上，比如回顾矩阵。有时对困难部分做些修改会有帮助。</p> 
+ <p><b>eduScrum</b><b>：</b> 这里有些学生说过的话：</p> 
+ <ul> 
+  <li>“我觉得这是一种好办法，因为很多事都可以自己完成，并且其他人在某种意义上要依赖你。这样你就会变得非常有责任感，并且你要学会应对。你还要学会做好合理的计划，因为你必须自己考虑好，并做好所有事情”</li> 
+ </ul> 
+ <ul> 
+  <li>“我喜欢用这种方式；你能得到工作和学习的自主权。但又能从老师那里得到一些帮助，给你恰如其分的信息，正好满足你的需要。”</li> 
+ </ul> 
+ <ul> 
+  <li>“因为你靠你的小组得到很多自主权，并且你为自己的工作承担了更多的责任。”</li> 
+ </ul> 
+ <ul> 
+  <li><b>“</b><b>这种方式是正确的，因为你真的是跟其他人一起工作，并且如果你对某些内容不理解，小组中的其他成员会帮助你。这样它就更容易了，因为如果你无法领会老师讲的内容，会有其他人换种方式解释给你听。</b>”</li> 
+ </ul> 
+ <ul> 
+  <li><b>“</b>我自己用到的一项重要品质：领导力和任务分解能力。一开始我们有些困惑，但后来我找出了我想要它变成什么样的大致认识。在实验过程中我用到了小组的很多想法和智慧。尽管我主要用的是在课上学到的知识，但小组中的其他人知道在这个情景中该如何匹配。”</li> 
+ </ul> 
+ <ul> 
+  <li>“L.对我来说非常重要。如果我没弄明白，最后总是会问她（很明显我一直在这么干）。不管我什么时候问，总能得到一个既优秀又容易理解的答案。M.非常机智，对实验来说很重要。她应该很快就能拿到主动权。K.是小组中的聪明人。她知道如何使用跟情况相符的理论。J.很有毅力，她会鼓励我们去工作或完成它。”</li> 
+ </ul> 
+ <p><b>蓝图：</b>学生们肯定喜欢它。实际上四年级的学生还写了一首Scrum的歌！我在学年结束时做了一次年度回顾会议，他们想做个Scrum夏令营，希望整个夏天都可以Scrum！他们还把Scrum带回了家，教给他们的父母，把它用在车库售物上。一位四年级的学生说她真的教会了她妈妈，现在她妈妈把Scrum用到了工作上。</p> 
+</blockquote>
+<p><b>InfoQ</b><b>： </b><b>还是那个问题，不过这次是问教师的： </b><b>他们喜欢用Scrum</b><b>教学吗？哪些对他们来说比较容易，哪些比较困难？</b></p>
+<blockquote> 
+ <p><b>eduScrum</b><b>：</b> 大多数教师都喜欢用eduScrum。有些教师发现很难同时推出所有仪式和工具，也就是说Scrum是作为一项变化引入到课堂上的。那会用很长时间，因为你必须非常了解学生。有些教师尝试着逐步引入，但我们现在的经验是最好一次性引入Scrum。过了一段时间后大多数教师都非常踊跃。</p> 
+ <p><b>蓝图： </b>在教师/职工这一级上的推广还没有完成，并且仍处于初期阶段。对于那些用了它的人，他们很喜欢。一般想要用它的教师已经认可了赋予学生权力和让学生协作的想法，不过正在寻找把这些价值落到实处的办法。我发现那些不认可赋予学生权力和让学生协作的价值的老师不买它的帐。我主要关注那些用Scrum提供的正确思维模式寻找解决方案的教师，而不是后者。</p> 
+ <p><b>蓝图：</b>比如科尔特斯的一位教师，说她喜欢它是因为它给了她一个培养四年级学生独立意识的框架。加州圣塔阳兹学校的Chris Scott觉得它的问责和结构比较多，而他更倾向于创造性和授权，这些经常出现在课堂上。Scrum为他提供了挡住混乱的护栏。</p> 
+ <p><b>eduScrum</b><b>：</b>大多数教师都体验了同样的事情。他们说学生更主动了，学习更努力了。他们掌握理论的速度比教师们预计的更快，而结果还跟以前一样，甚至会更好。“这样教学太轻松了。没有障碍，没有激励方面的问题。我可以把全部的精力放在课程的内容上，放在支持这个过程和质量保证上。用eduScrum监督团队工作变得非常简单；大部分工作都是由学生完成的。”</p> 
+ <p><b>蓝图： </b>要跟术语做些斗争，所以我现在正在做Rightshift 学习指南，让它推广起来更容易。我们学到的另一个经验是在形成时给予更多关注的学习团队合作得更好，并且要知道在恰当的时机给出恰当的授权。有些教师马上就能领悟到；有些人则会在如何才能放手上做艰苦斗争。跟我们在管理人员向敏捷转变的过程中见到的一样。工作的世界和课堂惊人的相似。</p> 
+</blockquote>
+<p><b>InfoQ</b><b>： Scrum</b><b>有没有帮你们提升教学质量？你能给几个例子吗？</b></p>
+<blockquote> 
+ <p><b>蓝图： </b>因为它还是这所学校一个新的试点项目，所以我们还没有任何特定的数据和证据能表明它的效果。但看起来它在某种意义上提高了学生的品质，他们觉得自己在如何考虑问题和如何形成各学科的思想上视角更开阔了。他们对如何吸收呈现给他们的信息，以及如何最有效地消化那些信息并展示出来有了更好的认识。它不只是像传统教育那种听讲、浸泡在里面然后再吐出来的方式。</p> 
+ <p><b>eduScrum</b><b>：</b> 我们对230位年龄在12岁到17岁之间的学生进行了研究。结论是：</p> 
+ <ul> 
+  <li>定量： 用了eduScrum的班级测试成绩总是比没用Scrum的班级成绩高；分数差从0，8到1，7（同样的模块，同样的测试）之间。要了解这些成绩的重要性，你必须知道荷兰的测试成绩分值是从0到10的。在荷兰通常5,5是OK的。从2013年开始，团队的成绩力争至少达到6,7；因此成绩看起来甚至更高了。</li> 
+ </ul> 
+ <ul> 
+  <li>定性 
+   <ul> 
+    <li>学科： 大概有一半的学生注意到了学科的改进：他们有更多的乐趣，更加刻苦，速度更快，用更明智的方式学习，能取得更好地成绩。教师们看到了良好的工作环境，并且团队热切地希望能跟他们学习。从2013年开始，团队在Sprint中测试他们的学习质量；他们测试自己是否理解了所学科目及其中的全部细节，因此该科的成绩也得到了提高。</li> 
+    <li>团队： 大概有四分之三的学生增强了协作能力：他们更有乐趣，协作变得更容易，在团队中能发挥的更好，对团队成员更信任，对他们该如何协作充满自信。教师处在轻松愉快的氛围中，团队成员互相帮助和关照。比如这个过程中所包含的给予和接受反馈的方式让他们培养出了更好的反馈技能。</li> 
+    <li>个人发展： 大概有60%的学生说他们对自己的品质有了更好的认识，个人得到了更好的发展，觉得自己有能力承担责任。几乎有40%的学生变得更自信了。教师说那些更安静、低调、勤奋的学生变得更加活跃，因为他们的工作和技能得到了大家的认同。</li> 
+    <li>趣味性： 有一个没想到却很棒的额外好处：超过50%的学生觉得在课堂上更自在了，28%（66名学生）更爱上学了。学生认为这是基于个人品质构建团队的功劳；在课上跟其他同学的接触得到了改善。</li> 
+   </ul> </li>
+ </ul> 
+ <p><b>蓝图： </b>大家都在说学生的投入程度、对学习的热爱程度得到了加强，学生独立思考问题的能力也变强了，彼此也能够换位思考，有更积极的课堂文化。一位四年级的教师说孩子们带病也要坚持上课，因为他们不想错过Scrum。实际上她只能送他们回家。她还说从没见过这么团结的班级。原来最后一天上课时，学生们对于马上要过暑假都很兴奋，还会有点失控。而在她引入Scrum那一年，孩子们在最后一天还在做Scrum，并且觉得很失落，因为这些学生在他们的学习小组中形成了更强的纽带关系。</p> 
+</blockquote>
+<p><b>InfoQ</b><b>： </b><b>你们会向其他教师和学校推荐Scrum</b><b>吗？他们该如何开始？</b></p>
+<blockquote> 
+ <p><b>蓝图：</b>我肯定会向其他学校和教师推荐敏捷和Scrum，因为它只会给那些参与进来的学生和教师增加潜在的可能性。一开始步子可能比较小，但应该持续不断地努力，每天、每周、每月去做。它并不是你在学年开始做一次培训然后就可以置之不理的东西。它是一个生动的、有生命的并且会不断进化的过程，最起码对于我们来说是这样的。我们找出真正有用的，调整没有效果的。我们真的投入到了这个过程中，并且现在它已经是我们企业文化中一块重要的基石了。</p> 
+ <p><b>eduScrum</b><b>：</b> 我们很乐意看到有其他学校的其他教师使用eduScrum 。我们建议他们阅读大量关于Scrum 和 <a href="http://www.eduscrum.nl/en/">eduScrum</a>的内容，然后在课上尝试scrum。如果需要帮助，可以<a href="mailto:info@eduScrum.nl">给eduScrum团队发邮件</a>。</p> 
+ <p><b>蓝图：</b> 科尔特塞拉利昂小学校长Chris Barnes说：“敏捷会改变教育界的游戏规则”。感兴趣的教师可以从<a href="http://theagileschool.blogspot.com/">敏捷学校</a> 下载材料开始。</p> 
+</blockquote>
+<h2>关于作者</h2>
+<p><b>eduScrum</b><b>： </b></p>
+<p><img src="http://infoqstatic.com/resource/articles/scrum-education/zh/resources/1202012.jpg" style="float: left; margin-right: 10px" alt="" _href="img://null" _p="true" /><b>Jan van Rossum</b>是荷兰莱茵河畔阿尔芬镇的<a href="http://www.ashram.nl/">静修学院</a>的一位化学老师，他从1976年8月就开始在此任教。他热衷于通过教育指导、培训和辅导培养学生。他希望学生能培养自己的能力和技能，能在学习中、在团队合作中取得好成绩，并且他希望他们能用最好的方法培养自己。<a href="http://www.janvanrossum.net">这里</a>是他得个人网站。Jan是<a href="http://www.eduscrum.nl/en/">eduScrum</a> 团队中的成员，跟他一起共事的还有Ellen Reehorst 和 Willy Wijnands。给<a href="mailto:info@eduscrum.nl">info@eduScrum.nl</a>发邮件可以联系上这个团队。</p>
+<div style="clear:both"></div>
+<p><b>蓝图</b>：</p>
+<p><img src="http://infoqstatic.com/resource/articles/scrum-education/zh/resources/1202013.jpg" style="float: left; margin-right: 10px" alt="" _href="img://null" _p="true" /><b>Marmmy Kodras</b> 是蓝图教育的运营总监，还是一位经过认证的Scrum教练。她热衷于学习和通过头脑风暴及团队协作进行持续改进。她知道如何协助团队去激发每一个人，让大家贡献自己的聪明才智和技能，创造出个人只能想象的王牌解决方案。在 <a href="http://www.linkedin.com/in/marmykodras">LinkedIn</a>上连接Marmy。</p>
+<div style="clear:both"></div>
+<p><img src="http://infoqstatic.com/resource/articles/scrum-education/zh/resources/1202014.jpg" style="float: left; margin-right: 10px" alt="" _href="img://null" _p="true" /><b>John Miller</b> 是Braintrust咨询集团的敏捷教练。他热衷于将敏捷带给学生和老师，让他们能在21世纪蓬勃发展。John的 tweets 是 @agileschools ，博客在<a href="http://theagileschool.blogspot.com"> 这里</a>。</p>
+<div style="clear:both"></div>
+<p><strong>原文英文链接：</strong><a href="http://www.infoq.com/articles/scrum-education">Scrum for Education - Experiences from eduScrum and Blueprint Education</a></p>
 <hr />
-<p>感谢<a href="http://www.infoq.com/cn/author/崔康">崔康</a>对本文的审校。</p>
+<p>感谢<a href="http://www.infoq.com/cn/author/侯伯薇">侯伯薇</a>对本文的审校。</p>
 <p>给InfoQ中文站投稿或者参与内容翻译工作，请邮件至<a href="mailto:editors@cn.infoq.com">editors@cn.infoq.com</a>。也欢迎大家通过新浪微博（<a href="http://www.weibo.com/infoqchina">@InfoQ</a>）或者腾讯微博（<a href="http://t.qq.com/infoqchina">@InfoQ</a>）关注我们，并与我们的编辑和其他读者朋友交流。</p><br><br><br><br><br><br></body></html>

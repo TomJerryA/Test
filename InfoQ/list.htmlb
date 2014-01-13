@@ -1,6 +1,9 @@
 <html>
  <head></head> 
- <body> 
+ <body>
+  <div>
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/22.htmlb">教育也敏捷——eduScrum和蓝图教育的经验之谈</a> 学校用Scrum帮学生提高学习效率，让他们以一种愉悦的方式培养自己。自发组织起来的学生团队按Sprintsprint的方式学习各种科目，推进他们的学习过程。敏捷可以改善教学质量，提高成绩，激发学生的学习热情。这次InfoQ的访谈对象来自几所采用敏捷方式教学的学校。 
+  </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/21.htmlb">实现Java中的高性能解析器</a> 在某些情况下，你需要实现自己的解析器，有可能是因为没有标准的做法可以满足你的需求。本文将带你一步一步创建高性能的解析器。 
   </div> 
@@ -147,9 +150,6 @@
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/25.htmlb">利用Spec Flow编写自动化验收测试</a> 验收或功能测试是验证系统是否满足需求的一种测试。这些测试作为黑盒测试的一种,与其内部具体执行无关。而MustafaSaeed HajAli则向我们展示了如何使用SpecFlow来自动化这些测试。 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/24.htmlb">敏捷与结构性模块化（一）</a> Richard Nicholson先生在其博客上连续发表了三篇关于敏捷与系统结构性模块化关系的文章，这个系列的文章深刻阐述了敏捷与模块化之间的相互关系，具有很好的指导意义，征得作者同意之后，InfoQ将其翻译发表在本站上。 
-  </div> 
+  </div>  
  </body>
 </html>
