@@ -1,19 +1,9 @@
-<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>Reactive Extensions for JavaScript瘦身不再支持旧浏览器</h3><p>RxJS 2.2进行了瘦身，在默认构建中只支持ECMA Script 5浏览器。这意味着使用Reactive Extensions for JavaScript需要IE 9、Firefox 4、Safari 6、Chrome 19或更新的版本。要想支持旧版本需要使用rx.compact.js来提供缺失的<a href="https://en.wikipedia.org/wiki/Polyfill">Polyfills</a>。</p>
-<p>要进一步瘦身，开发者可以使用Rx-Lite（也叫rx.lite.js）。该库只包含最常用的特性。<a href="http://blogs.msdn.com/b/rxteam/archive/2013/12/13/rxjs-2-2-released.aspx">Rx团队的博客</a>中这样说道，</p>
-<blockquote> 
- <p>为了避免RxJS中点菜式的传统，仅使用需要的部分，该版本只包含最常用的工厂方法中的操作符、标准查询操作符、基于时间的操作符、绑定操作符（如广播）和异步操作符（如Rx.Observable.fromEvent、Rx.Observeable.fromPromise等）。还有一个兼容版本rx.lite.compat.js，支持老一些的浏览器。整个库压缩后只有7kb大小，这在没有多少成本的情况下提供了很多可能性。</p> 
-</blockquote>
-<p>和完整版一样，Rx-Lite也是为ECMAScript 5而设计，并为老浏览器提供了可选的兼容库。</p>
-<p>RxJS 2.2中还有一些其他方面的重大改变。首先是Rx.Observable.prototype.scan的行为，“因其属于Reactive Extensions for .NET，所以也发生了改变”。声明中还说道，</p>
-<blockquote> 
- <p>这是为了反映其他语言中的行为，如F#、Haskell等。基本规则是，如果有一个空的且有种子的可观察序列，那么应该产生（yield）这个种子。或者如果序列为空且没有种子，那么它就应该是一个空序列。这与旧版本不同，在旧版本中，即使空序列有种子，也不会产生任何东西。</p> 
-</blockquote>
-<p>其他方便的变动是将四个函数移动到新的库中：</p>
-<ul> 
- <li>Rx.Observable.toAsync移动到rx.async.js</li> 
- <li>Rx.Observable.start移动到rx.async.js</li> 
- <li>Rx.HistoricalScheduler移动到rx.virtualtime.js</li> 
- <li>Rx.VirtualTimeScheduler移动到rx.virtualtime.js</li> 
-</ul>
-<p>同样，这也是为了降低核心文件的大小。我们将在<a href="http://www.infoq.com/cn/news/2013/12/RxJS-Futures">关于RxJS未来的报道</a>中深入介绍rx.async.js。</p>
-<p><strong>原文链接：</strong><a href="http://www.infoq.com/news/2013/12/RxJS-22">Reactive Extensions for JavaScript Loses Weight and Older Browsers</a></p><br><br><br><br><br><br></body></html>
+<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>了解并避免常见的Windows Phone应用认证错误</h3><p><a href="http://www.windowsphone.com/en-in">Windows Phone</a>软件商店认证与策略团队公布了一份常见错误列表，列出了开发者在开发阶段经常犯下的错误。此外它们还给出了若干建议，帮助开发者避免这些将影响应用发布进度的错误。首先是与应用截图有关的要求：截图中不能包含任何模拟器外框、帧速计数器或调试信息。无论它们处于变化还是透明的状态，都不能出现。开发者应该使用内建的模拟器截屏工具——Windows Phone 8 SDK中提供了支持WVGA、XVGA和720P三种分辨率的模拟器。</p>
+<p>此外，要捕捉WVGA分辨率的<a href="http://msdn.microsoft.com/en-us/library/windowsphone/develop/hh184844(v=vs.105).aspx">截屏</a>，应该使用开发中心提供的相关特性，它将把XVGA截屏自动伸缩到WVGA分辨率的特性。而如果开发者希望提供本地化应用，那么应该为每一种支持的语言分别提供一幅截屏。</p>
+<p>如果开发者提交的应用要求<a href="http://msdn.microsoft.com/en-us/library/windowsphone/develop/hh184840(v=vs.105).aspx">登录</a>凭据，那么在开发中心进行提交时，应该在认证注记中包含对虚拟账号的详细说明，以便相关团队能够完整地测试应用。如果开发者没能提供该信息，那么应用将被拒绝，开发者也将被要求重新提交应用——这最终也会导致应用发布的推迟。</p>
+<p>开发者应该使用诸如<a href="https://www.bugsense.com/">BugSense</a>和<a href="http://blogs.msdn.com/b/andypennell/archive/2010/11/01/error-reporting-on-windows-phone-7.aspx">Little Watson</a>等工具，用来收集未处理的异常遥测数据，以防止应用在测试阶段出现意外<a href="http://msdn.microsoft.com/en-us/library/windowsphone/develop/hh184840(v=vs.105).aspx">终止</a>。</p>
+<p>Visual Studio、App Studio和<a href="http://cordova.apache.org/">Apache Cordova</a>都提供了图标和瓷贴图片，供开发者在应用中使用。不过，微软建议开发者用自己的图片来替换它们，因为默认图片只适用于特定的尺寸。</p>
+<p>微软认为，只有当应用处于其主页的时候，后退按钮才会关闭应用。而当它不在自己的主页时，则应该返回前一页面。此外，后退按钮应该能够关闭对话框和软键盘。</p>
+<p>微软还建议开发者使用内建的模拟器，针对每种支持的语言提供本地化应用描述。此外，开发者还需要确保应用在浅色和深色主题下都能够正确地现实。开发者可以使用Visual Studio，从而能够在开发时轻松地切换浅色和深色主题。</p>
+<p>Windows Phone软件商店认证和政策团队的<a href="http://blogs.windows.com/windows_phone/b/wpdev/archive/2014/01/10/top-windows-phone-app-certification-failures-and-how-to-avoid-them.aspx">Mike Francis</a>，提供了测试当前应用主题所需的代码，以及提升Windows应用质量的一些小窍门。</p>
+<p><strong>查看英文原文：</strong><a href="http://www.infoq.com/news/2014/01/win-phone-certification-errors">Know about Common Windows Phone App Certification Errors and the Steps to Avoid Them</a></p><br><br><br><br><br><br></body></html>

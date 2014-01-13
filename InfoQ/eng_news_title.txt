@@ -1,1 +1,1 @@
-Chef Sugar Aims to Enhance Chef's Recipes Authoring Experience
+AppFuse 3.0 - Java 7, Spring 4, PrimeFaces, Mockito, Bootstrap 3, Wicket
