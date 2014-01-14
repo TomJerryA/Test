@@ -1,7 +1,7 @@
 <html>
  <head></head> 
- <body>
-  <div>
+ <body> 
+  <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/48.javab">Discover and Diagnose Java Concurrency Problems Using Contemplate's ThreadSafe</a> Writing Java software that correctly and safely makes use of concurrency requires careful thought. Software that incorrectly accounts for concurrency can contain intermittent defects that elude even the most rigorous testing regimes. Static analysis tools can analyze source code or compiled bytecode to discover latent bugs hidden within code, long before it is executed. 
   </div> 
   <div> 
@@ -150,6 +150,6 @@
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/0.javab">Learning and Liminality in Agile Adoptions</a> In this 4th article in the series about Open Agile Adoption Dan Mezick presents an approach to take advantage of the natural stress that come about when making change in organisations to help achieve sustainable agile transitions. 
-  </div>  
+  </div> 
  </body>
 </html>

@@ -1,7 +1,7 @@
 <html>
  <head></head> 
- <body>
-  <div>
+ <body> 
+  <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/23.htmlb">《管理不易管理之人》作者问答</a> Mickey Mantle和Ron Lichty写了一本有关管理程序员和雇佣程序员的书。本书分析描述了程序员的特质和程序员团队的特质，讨论了如何管理好他们这个问题。他们将他们多年积累的工具和规则分享给大家。 
   </div> 
   <div> 
@@ -150,6 +150,6 @@
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/26.htmlb">Java 7 SDP：一次编写，到处运行，有时还运行得超炫！</a> 本文介绍了Java 7 SDK最近新引入的Java套接字直接协议（Sockets Direct Protocol，SDP）。SDP技术能让超高性能计算（Ultra High Performance Computing，UHPC）社区用Java语言对InfiniBand远程直接内存存取（Remote Direct Memory Access，RDMA）进行native访问，不需要操作系统的参与就能直接访问其他计算机的内存。 
-  </div>  
+  </div> 
  </body>
 </html>

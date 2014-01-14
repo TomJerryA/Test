@@ -1,1 +1,1 @@
-AppFuse 3.0 - Java 7, Spring 4, PrimeFaces, Mockito, Bootstrap 3, Wicket
+Oracle Seeks Further Feedback on Java EE 8 Plans

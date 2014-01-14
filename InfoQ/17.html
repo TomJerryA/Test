@@ -1,22 +1,16 @@
-<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>Ionic HTML5移动框架发布Alpha预览版</h3><p><a href="http://ionicframework.com/">Ionic</a>是一个新的、可以使用HTML5构建混合移动应用的用户界面框架，它自称为是“本地与HTML5的结合”。该框架提供了很多基本的移动用户界面范例，例如像<a href="http://ionicframework.com/docs/components/">列表</a>（lists）、<a href="http://ionicframework.com/docs/components/">标签页栏</a>（tab bars）和<a href="http://ionicframework.com/docs/components/">触发开关</a>（toggle switches）这样的简单条目。它还提供了更加复杂的可视化布局示例，例如<a href="http://ionicframework.com/docs/angularjs/controllers/side-menu/">在下面显示内容的滑出式菜单</a>。</p>
-<p>Ionic宣称他们极度强调性能，并且通过限制DOM交互、完全移除jQuery以及使用像translate(z)这种特定的硬件加速的CSS滤镜触发移动设备上GPU——与由动力不足的移动浏览器提供的交互相比这种方式提供了硬件加速的交互——等方式使速度最大化。</p>
-<p>专注于性能也意味着Ionic仅支持iOS6及更高版本和Android 4.1及更高版本。“在过去一年左右的时间里，设备更新换代的速度更快，但是HTML5框架依然非常保守”，Drifty（Ionic背后的公司）的CTO Max Lynch说。“对于Ionic，我们非常具有侵略性地做出了仅支持新设备的决定，同时会为触控手势、动画和本地样式的UI元素添加大量支持”。</p>
-<h2>AngularJS基础</h2>
-<p>该框架基于流行的来自于Google的<a href="http://angularjs.org/">AngularJS框架</a>实现，Ionic利用AngularJS提供应用结构，而Ionic本身则关注用户界面。这意味着所有的视图、应用路由和控制器都是由AngularJS处理的。Ionic为它自己的组件提供了一组指令，因此开发者能够使用Angular创建自定义HTML元素的能力定义Ionic UI组件。例如，可以使用“list”指令创建一个带有惯性滚动条的Ionic移动列表。</p>
-<pre>
-&lt;list&gt;
-&lt;item ng-repeat=&quot;item in items&quot; item=&quot;item&quot;&gt;&lt;/item&gt;
-&lt;/list&gt;</pre>
-<p>Ionic对触控、视图间动画、消毒HTML以实现安全输入和XHR调用的支持也依赖于Angular。</p>
-<p>Ionic提到他们计划在将来支持其他的框架，例如<a href="http://ionicframework.com/docs/guide/installation.html">EmberJS和Knockout</a>。</p>
-<h2>响应</h2>
-<p><a href="https://news.ycombinator.com/item?id=6780535">对于该版本的响应</a>包括与试图使用HTML5构建本地应用相关的<a href="http://venturebeat.com/2013/11/20/html5-vs-native-vs-hybrid-mobile-apps-3500-developers-say-all-three-please/">常见争论</a>，同时还有一些人对该框架不支持Android 4.1之前的版本表示担忧。用户ValentineC这样写道：</p>
-<p>“虽然我同意支持iOS6及以上版本的决定，但是我相信Android平台的升级路线还不是很明确。我现在工作的这个项目就使用中国设计的手机，由于产品之间的差异，很多手机都使用了旧版本的Android。希望你们会重新考虑这个决定”。</p>
-<h2>可用性</h2>
-<p>当前版本的Ionic是一个<a href="https://github.com/driftyco/ionic/releases">Alpha版本</a>。作为一个NPM类库你可以通过命令行安装它，它会使用Ionic种子为你生成需要的项目，项目内容包括使用Ionic和AngularJS构建一个应用所需要的所有内容：</p>
-<ul> 
- <li>sudo npm install –g ionic</li> 
- <li>ionic start myproject</li> 
-</ul>
-<p>Ionic是一个开源项目，它基于<a href="https://github.com/driftyco/ionic/blob/master/LICENSE">MIT许可</a>提供。</p>
-<p><strong>查看英文原文：</strong><a href="http://www.infoq.com/news/2013/12/ionic-HTML5-mobile-alpha-preview">Ionic HTML5 Mobile Framework Alpha Preview</a></p><br><br><br><br><br><br></body></html>
+<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>XAML Spy 2.0.5 新增应用添加向导并改进了功能</h3><p><a href="http://xamlspy.com/download">XAML Spy 2.0.5</a>已经发布，新版本有一个应用添加向导（Add App Wizard），开发者能够通过该向导很容易地添加任何带有或者没有源码的XAML应用，例如Silverlight、Windows Phone、Windows Store和WPF应用。除此之外，开发者还能够通过新版本对那些无法获取源码的XAML应用进行探索。</p>
+<p>借助于最新的更新，你可以通过选择<i>XAML Spy Explorer</i> 工具栏中的<i>Show All Apps</i> 按钮导航已经安装的应用，可以在浏览器之外探索Silverlight应用，在<a href="http://msdn.microsoft.com/en-us/library/dd831853.aspx">Visual Studio 2013</a>中探索Windows Store应用。</p>
+<p>用户还能够通过右击解决方案资源管理器打开<i>Manage XAML Spy for Solution</i> 对话框，然后在该对话框中一次性为多个项目启用或禁用XAML Spy。作为一名开发人员，你将能够知道那些启用XAML Spy项目的名字。</p>
+<p>InfoQ采访了First Floor Software公司的Koen Zwikstra以便于了解更多与最新版本相关的内容。</p>
+<p><b>InfoQ:</b><b>你能与我们分享一下</b><b>XAML Spy</b><b>的真实目的和好处么？</b></p>
+<blockquote> 
+ <p>XAML Spy的最终目的是为了节约时间。XAML Spy为开发者提供了一个独一无二的在运行时洞察XAML应用的能力。XAML Spy可以帮助开发者理解他们的XAML应用真正的工作原理，帮助他们快速地识别可能的问题。通过提供的快速识别问题的工具，开发者的生产力得到了有效的提升。</p> 
+</blockquote>
+<p><b>InfoQ:</b><b>你能与我们分享一些</b><b>XAML Spy</b><b>的使用场景么？</b></p>
+<blockquote> 
+ <p>场景 1 ——理解图形部分如何以及为什么呈现。XAML Spy为应用程序的用户界面可视树提供了一个实时的视图，我们能够通过它访问任何图形的所有属性。</p> 
+ <p>场景 2 ——对应用存储的完全文件系统访问。大部分XAML应用在本地磁盘上都会有独立的存储。要访问这个存储中的文件夹和文件是相当困难的。XAML Spy能够让我们非常容易地访问和修改这个独立存储中的文件。</p> 
+ <p>场景 3 ——性能监控可以帮助我们识别可能的内存和渲染问题。</p> 
+ <p>场景 4 —— 自动化可视树，有助于学习一个XAML应用是如何将自己表现为一个可访问应用的（例如屏幕阅读器和其他的自动化工具）。</p> 
+</blockquote>
+<p><b>查看英文原文</b>：<a href="http://www.infoq.com/news/2014/01/xaml-spy-january-update">XAML Spy 2.0.5 Adds Add App Wizard and Feature Improvements</a></p><br><br><br><br><br><br></body></html>
