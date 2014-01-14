@@ -1,11 +1,11 @@
 <html>
  <head></head> 
- <body>
-  <div>
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/8.java">Stimulsoft Reports.Fx 2013.3 Adds Email, AutoPageScale Support Along with Funnel Weighted Slices</a>Stimulsoft Reports.Fx 2013.3 has been released with support for delivering reports through e-mail with e-mail address, subject and text options in addition to a new chart type, Funnel Weighted Slices. It also includes AutoPageScale and a new bands filter option with which you can apply relevant filter to the report in CSV format.
-  </div>
-  <div>
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/7.java">AppFuse 3.0 - Java 7, Spring 4, PrimeFaces, Mockito, Bootstrap 3, Wicket</a>AppFuse 3.0 has been released. AppFuse uses the Maven Archetype plugin to generate a starter Java project, which allows you to quickly get started with a full-stack Java EE application. Version 3.0 is using Mojarra and PrimeFaces for its JSF framework and library, Mockito for its test mocking framework, Bootstrap 3 for its front-end framework, and added Apache Wicket as a Web Framework option.
+ <body> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/8.java">Stimulsoft Reports.Fx 2013.3 Adds Email, AutoPageScale Support Along with Funnel Weighted Slices</a>Stimulsoft Reports.Fx 2013.3 has been released with support for delivering reports through e-mail with e-mail address, subject and text options in addition to a new chart type, Funnel Weighted Slices. It also includes AutoPageScale and a new bands filter option with which you can apply relevant filter to the report in CSV format. 
+  </div> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/7.java">AppFuse 3.0 - Java 7, Spring 4, PrimeFaces, Mockito, Bootstrap 3, Wicket</a>AppFuse 3.0 has been released. AppFuse uses the Maven Archetype plugin to generate a starter Java project, which allows you to quickly get started with a full-stack Java EE application. Version 3.0 is using Mojarra and PrimeFaces for its JSF framework and library, Mockito for its test mocking framework, Bootstrap 3 for its front-end framework, and added Apache Wicket as a Web Framework option. 
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/6.java">Chef Sugar Aims to Enhance Chef's Recipes Authoring Experience</a>Chef Sugar is an extension to Chef that offers DSL methods to make more readable recipes. Seth Vargo, Chef Sugar's author, recently wrote about his motivations for creating Chef Sugar, highlighting them with examples. InfoQ interviewed Seth to know more about his views on syntactic sugar and the benefits of a plug-in architecture in the context of Chef. 
@@ -150,6 +150,6 @@
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/9.java">Experiences from Applying Kanban at SAP</a>The experiences with more than two years of applying Kanban at SAP were presented by Alexander Gerber and Martin Engel at Lean Kanban Central Europe. Their case study showed how they supported the implementation of lean and agile processes. InfoQ interviewed them about how Kanban was introduced and received within SAP, the training approach and the experiences from teams with the Kanban practices 
-  </div>   
+  </div> 
  </body>
 </html>

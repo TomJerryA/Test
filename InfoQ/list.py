@@ -1,6 +1,33 @@
 <html>
  <head></head> 
- <body> 
+ <body>
+  <div>
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/5.py">アジャイルのレトロスペクティブに目標と仮説を加える</a>アジャイルレトロスペクティブを正しく実施することによって，チームは自ら学び，向上することができる。さらに目的を設定し，仮説を使ってレトロスペクティブ活動が改善に結び付いているかを評価することにより，レトロスペクティブはより効果的なものになる。
+  </div>
+  <div>
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/4.py">ORMツール Hibernare 4.3がリリース，JPA 2.1仕様を実装</a>Javaベースのオブジェクト-リレーショナルマッピング(ORM)フレームワークであるHibernate ORM 4.3の最終版が先日リリースされた。2013年5月にリリースされたJPA 2.1仕様 - JSR 338の実装として認定されている。
+  </div>
+  <div>
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/3.py">Ruby 2.1.0リリース，新しいGCを提供</a>Ruby 2.1がリリースされた。最大の改善点は，完全に刷新されたガベージコレクタによるパフォーマンスの大幅な向上だ。
+  </div>
+  <div>
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/2.py">データラングリング・アズ・ア・サービスの簡易化を目指すTrifacta</a>データ解析サービスプラットフォームのTrifactaは先頃，データアナリストのデータラングリング(Data Wrangring)作業支援という同社の活動を推進するため，VCによる出資を受け入れた。目標はデータ収集とクレンジング，マージといった作業を，現在よりはるかに少ない時間と労力で可能にすることだ。
+  </div>
+  <div>
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/1.py">DevExpress Universal 13.2がToken Boxコントロールを新たに追加</a>DevExpressの最新リリースである13.2には，Token Boxコントロールが含まれている。ドロップダウンウィンドウからの値の選択と直接入力のいずれでも，事前に定義したリストを使用した設定値のオートコンプリートが可能だ。
+  </div>
+  <div>
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/0.py">モバイルアプリケーション向けA/Bテストを提供するSplitforce</a>企業のIT戦略でモバイルアプリケーションがますます重要になるにつれて、アプリケーションをテストし分析することがより重要になってきた。ユニットテストを使ったテストなどコードの機能的なテストはすべてのソフトウエアプロジェクトで実施されているだろうが、ユーザの振る舞いを分析しコンバージョン率を最大化するのはモバイル分野ではまだ未開拓だ。
+  </div>
+  <div>
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/49.py">Essential Studio Enterprise 2013 Volume 4リリース，LightSwitchとローカライズ，新機能を提供</a>SyncfusionがEssential Studio Enterprise Edition 2013 Volume 4リリースした。リッチテキストエディタやマップ，ツリーマップ，レンジナビゲータ，バーコード，日時選択コントロール，ローテータなど新しいJavaScriptコントロール，OLAP for LightSwitchクライアント拡張が含まれている。WinRT, WPF, Silverlight, Windows Phoneをサポートする3Dチャート，Winodws Phone用のフォーマット操作ライブラリも合わせて提供される。
+  </div>
+  <div>
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/48.py">DevExpress ASP.NETグリッドコントロールがバッチ編集機能を導入</a>DevExpress ASP.NETの最新リリースである13.2エディションに含まれるGridコントロール(ASPxGridView)では，ASP.NETおよびMVC開発者がクライアント上でグリッドデータをバッチ修正して，単一のリクエストとしてサーバに送信することが可能だ。その他にも，セルのカラー表示や通知ダイアログなどの機能が追加されている。
+  </div>
+  <div>
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/47.py">EC2でMesosによるクラスタの自動デプロイを実現するElastic Mesos</a>EC2上でApache Mesosの自動デプロイが可能になった。Apache Mesosはクラスタのリソース全体を，複数のデータ処理フレームワークで共有するオープンソースツールである。使用されているのは，ビッグデータの新興企業Mesosphereが提供するElastic Mesosという，新しいWebサービスだ。
+  </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/46.py">振る舞い駆動開発(BDD) - コラボレーションによる価値創造</a>ソフトウェアプロジェクトの目的はステークホルダに価値を提供することだ，BDD(Behavior-Driven Development，振る舞い駆動開発)は，そのためにデザインされた – ウォーターフォールからアジャイルプロセスへの移行に取り組むソフトウェア開発者のViktor Farcic氏は，自身のBDDに対する見方を述べた４つのブログ記事の冒頭でこう説明している。 
   </div> 
@@ -123,33 +150,6 @@
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/9.py">技術的負債を清算するときのアドバイス</a>Henrik Knibert氏、Ward Cunningham氏、Hayim Makabee氏が技術的負債の清算について解説している。 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/8.py">Firefox 26がJavaをブロック</a>MozillaのFirefox 26は現在，セキュリティ上の懸念を理由にデフォルトですべてのJavaプラグインをブロックしている。ただしユーザが希望すれば，プラグインを実行することは可能だ。 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/7.py">Gauntltによる継続的セキュリティテスト</a>GauntltコアチームのJames Wickett氏はVelocity Conf Londonで，アプリケーションのセキュリティレベルに関するフィードバックの迅速化を目的とした，継続的インテグレーションサイクルへのセキュリティテスト統合についての解説を行った。氏が強調したのは，継続的デリバリによるリリースデリバリ率の増加に伴う，定期的セキュリティチェックの重要性だ 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/6.py">ふりかえりはリーンスタートアップの学習をどのようにサポートするか</a>リーンスタートアップの「構築-計測-学習」というフィードバックループは、起業家が顧客のニーズについて学ぶのに役に立つ。アジャイルの「ふりかえり」は、必要とされる変化について考え、学習し、そして合意するための方法だ。以下では、アジャイルのふりかえりがリーンスタートアップの学習と行動をどのようにサポートするのか、いくつかの事例を挙げる。 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/5.py">Entity FrameworkベースのコアビジネスアプリケーションでDDDを活用する</a>ドメイン駆動設計(Domain-Driven Design/DDD)とはすなわちドメインだ，永続性ではない。データベースプログラミングに25年のキャリアを持ち，近年はEntity Frameworkを使用しているJulie Lerman氏は，.NETプラットフォームのコンサルタントであり，Microsoft MVPという人物だ。その氏が先日，&Oslash;redev開発者カンファレンスで，DDDに移行した時の永続性に関する経験を公開してくれた。 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/4.py">Hour of Code - コンピュータサイエンス教育週間をサポート</a>プログラミングは私たちの多くにとって自然なことだ。だが、他の人たち、特に次の世代にとっては必ずしもそうではない。Code.orgはそれに挑もうとしている。コンピュータサイエンス教育週間に際し、彼らはObama大統領からZuckerberg氏やGates氏まで、大きなサポートを得た。 私たちには、その言葉を広めて、みんなに試してみるよう働きかける責任がある。コンピュータリテラシーは、読み書きの後に続く次の大きな課題だ。 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/3.py">Google Compute Engineの一般提供</a>Google Computer Engine (GCE) インフラストラクチャ・アズ・ア・サービスの一般向け提供(GA/General Availability)が開始された。ローンチには価格の引き下げに加え，新たなストレージモデル，サポート対象オペレーティングシステムの拡張，透過的メンテナンスのためのライブマイグレーション機能も含まれる。 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/2.py">プロジェクトはすべてやめるべきか？</a>XP Days Beneluxカンファレンスで行った&quot;Kill all projects&quot;と題するセッションの中で，Paul Kuijten氏は，すべてのプロジェクトを廃止することを提案した。InfoQでは氏にインタビューして，アジャイルにとって価値のあるプロジェクト管理や製品開発の資金について話を聞いた。 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/1.py">内発的動機づけのために - Champfrogs Checklist</a>Jurgen Appelo氏がチームや個人の内発的動機づけを助けるツール、Champfrogs Checklistをリリースした。 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/0.py">複合型チームにおけるT字型スペシャリストの価値</a>裁量権を持ったクロスファンクショナルチームにおいて複数の専門分野を備えたT字型チームメンバのメリットをテーマに，Ken Schwaber氏らが先日発表した論評および講演について，その概要をお届けする。 
-  </div> 
+  </div>          
  </body>
 </html>
