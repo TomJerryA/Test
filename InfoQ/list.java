@@ -1,14 +1,14 @@
 <html>
  <head></head> 
- <body>
-  <div>
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/12.java">Oracle Seeks Further Feedback on Java EE 8 Plans</a>Oracle has launched the second part of its Java EE 8 community survey with cloud, security, logging, deployment, testability, pruning, and profiles amongst the topics.
-  </div>
-  <div>
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/11.java">New Education Opportunities for Data Scientists</a>2013 has been rich in announcements for new programs, degrees and grants for aspiring data scientists and Big Data practitioners.
-  </div>
-  <div>
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/10.java">Combining an Agile and Lean Approach</a>Several approaches exist to improve software development, among them are agile and lean. Managers have to decide which approaches to deploy in their organization. Approaches can also be combined depending on the problems that need to be solved. InfoQ interviewed R&eacute;gis Medina about combining agile and lean, focusing on people and learning.
+ <body> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/12.java">Oracle Seeks Further Feedback on Java EE 8 Plans</a>Oracle has launched the second part of its Java EE 8 community survey with cloud, security, logging, deployment, testability, pruning, and profiles amongst the topics. 
+  </div> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/11.java">New Education Opportunities for Data Scientists</a>2013 has been rich in announcements for new programs, degrees and grants for aspiring data scientists and Big Data practitioners. 
+  </div> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/10.java">Combining an Agile and Lean Approach</a>Several approaches exist to improve software development, among them are agile and lean. Managers have to decide which approaches to deploy in their organization. Approaches can also be combined depending on the problems that need to be solved. InfoQ interviewed R&eacute;gis Medina about combining agile and lean, focusing on people and learning. 
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/9.java">Effektif, Tom Baeyens' Latest BPM Venture, Launches Cloud-Based Tool</a>Effektif is launching version 1 of its cloud-based BPM product today. Effektif was started and is lead by Tom Baeyens, the original creator of JBoss' jBPM (acquired by Red Hat) and Activiti, owned by Alfresco. It was set up in partnership with Signavio who invested €1.2m to accelerate development, and who will also be selling the product using their existing channels. 
@@ -150,6 +150,6 @@
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/13.java">Android 4.4 KitKat and the Secret Key Factory</a>With the introduction of Android 4.4, developers are being asked to change the way symmetric keys are generated from Unicode passphrases via the SecretKeyFactory. 
-  </div>    
+  </div> 
  </body>
 </html>
