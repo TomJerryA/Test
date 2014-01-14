@@ -1,8 +1,8 @@
 <html>
  <head></head> 
- <body>
-  <div>
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/9.java">Effektif, Tom Baeyens' Latest BPM Venture, Launches Cloud-Based Tool</a>Effektif is launching version 1 of its cloud-based BPM product today. Effektif was started and is lead by Tom Baeyens, the original creator of JBoss' jBPM (acquired by Red Hat) and Activiti, owned by Alfresco. It was set up in partnership with Signavio who invested €1.2m to accelerate development, and who will also be selling the product using their existing channels.
+ <body> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/9.java">Effektif, Tom Baeyens' Latest BPM Venture, Launches Cloud-Based Tool</a>Effektif is launching version 1 of its cloud-based BPM product today. Effektif was started and is lead by Tom Baeyens, the original creator of JBoss' jBPM (acquired by Red Hat) and Activiti, owned by Alfresco. It was set up in partnership with Signavio who invested €1.2m to accelerate development, and who will also be selling the product using their existing channels. 
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/8.java">Stimulsoft Reports.Fx 2013.3 Adds Email, AutoPageScale Support Along with Funnel Weighted Slices</a>Stimulsoft Reports.Fx 2013.3 has been released with support for delivering reports through e-mail with e-mail address, subject and text options in addition to a new chart type, Funnel Weighted Slices. It also includes AutoPageScale and a new bands filter option with which you can apply relevant filter to the report in CSV format. 
@@ -150,6 +150,6 @@
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/10.java">IntelliJ 13 Released</a>Jetbrains has announced the release of IntelliJ IDEA version 13 Community Edition and Ultimate edition. Both feature a completely revamped user interface, including support for Android, Java 8 (including Lambda expressions) and many other development technologies introduced this year. 
-  </div>  
+  </div> 
  </body>
 </html>
