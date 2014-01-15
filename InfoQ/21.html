@@ -1,6 +1,7 @@
-<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>Ruby 2.1发布，带来新的垃圾收集器</h3><p>Ruby 2.1正式版已经<a href="http://www.ruby-lang.org/en/news/2013/12/25/ruby-2-1-0-is-released/">发布</a>，带来了很多<a href="http://www.infoq.com/news/2013/09/ruby-2-1-gc-revamp">预期</a>的改进，其中包括对垃圾收集器的大幅改动，这一改进将在现在和未来带来一些性能提升。</p>
-<p>Ruby 2.1中的垃圾收集器实现了一种分代垃圾收集形式，Ruby把它的这种实现称为“RGenGC（Restricted Generational Garbage Collection）”。它替换了Ruby之前版本中采用的“Mark &amp; Sweep（标记与清除）”实现。Ruby开发者Koichi Sasada在2013年4月的一次演讲中提到，对Ruby开发者而言，挑战在于实现一个可以在同一堆内处理保护对象和非安全对象的GC算法。</p>
-<p>因为重写所有现有的C扩展以利用新的GC并不现实，所以作为实现的一部分，RGenGC实现中使用了写屏障（Write-Barrier）。就像Sasada在RubyConf 2013的演进（<a href="http://www.atdot.net/~ko1/activities/rubyconf2013-ko1_pub.pdf">PDF</a>）中所解释的那样，最初的两种选择是：A) 根本不实现分代垃圾收集（与Ruby 2.0和之前版本中的做法一样），或B)实现分代垃圾收集，同时需要重写所有C扩展。RGenGC在这两种选择之外提供了第三种方式。</p>
-<p>RGenGC与现有扩展高度兼容，同时仍然带来了性能提升。常用的Array、String、Hash、Object和Numeric等对象都有写屏障保护，因此能够利用RGenGC系统。未来在内部库和外部库上的工作也为以后进一步改进性能带来了可能性。</p>
-<p>新的垃圾收集系统不是唯一的改进，其他改进包括RDoc 4.1.0、RubyGems 2.2.0以及一些库的更新。完整的改进列表请参见该项目GitHub页面的<a href="https://github.com/ruby/ruby/blob/v2_1_0/NEWS">发布说明</a>。</p>
-<p><strong>查看英文原文：</strong><a href="http://www.infoq.com/news/2013/12/ruby21">Ruby 2.1.0 Released, Delivering new GC</a></p><br><br><br><br><br><br></body></html>
+<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>Stimulsoft Reports.Fx 2013.3新增 Email、AutoPageScale支持以及图表组件Funnel Weighted Slices</h3><p>Stimulsoft发布Reprots.Fx 2013.3，有<a href="http://www.stimulsoft.com/en/products/reports-fx-flex">Adobe Flex</a>、<a href="http://www.stimulsoft.com/en/products/reports-fx-php">PHP</a>和<a href="http://www.stimulsoft.com/en/products/reports-fx-java">Java</a>三种版本，支持通过e-mail发送报告。发送时，需要填写e-mail地址、主题和正文三个选项。该版本还新增了一个图表组件——Funnel Weighted Slices，它将数据显示在高度不同的块中，用户可以用它来分析销售水平。</p>
+<p><img _p="true" _href="img://null" src="http://infoqstatic.com/resource/news/2014/01/stimulsoft-reports-fx-2013-3/zh/resources/0115000.png" alt="" /></p>
+<p>最新版本还包含AutoPageScale选项，它提供了打印时在整个页面区域自动缩放报告页的能力。该功能在查看器中默认是启用的，不管纸张尺寸大小，它都可以确保报告打印在整个页面上。不过，如果打印项目时不需要遵循纸张尺寸大小，用户可以禁用这个选项。</p>
+<p>Reports.Fx 2013.3包含一个新的Band Filter选项。在将报告导出成CSV格式的过程中，开发人员可以对报告应用相关的过滤器。</p>
+<p><img _p="true" _href="img://null" src="http://infoqstatic.com/resource/news/2014/01/stimulsoft-reports-fx-2013-3/zh/resources/0115001.png" alt="" /></p>
+<p>Data only选项表示只有像表格和层次“区段（band）”这样的数据区段才会被导出。而Data and Headers/Footers选项不仅允许开发人员导出数据区段，还能导出标题和注脚，All Bands选项则提供一种导出所有报告区段的能力。</p>
+<p><b>查看英文原文：</b><b><a href="http://www.infoq.com/news/2014/01/stimulsoft-reports-fx-2013-3">Stimulsoft Reports.Fx 2013.3 Adds Email, AutoPageScale Support Along with Funnel Weighted Slices</a></b></p><br><br><br><br><br><br></body></html>

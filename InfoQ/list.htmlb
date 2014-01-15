@@ -2,6 +2,9 @@
  <head></head> 
  <body> 
   <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/24.htmlb">使用Jazz Automation编写自动化测试</a> Jazz Automation是一个测试框架，构建它的目的是为所有类型的Web系统或者静态网站自动化同时加速验收/功能测试。它还能够容易地实现自动化集成测试。以前的时候这种类型的测试需要人工完成，劳动强度大又不准确。借助于自动化测试，公司能够创造高质量的应用程序，创造的产品bug更少，同时又加快了投入市场的速度。Jazz Automation支持下面的Web浏览器：IE、Firefox、Safari和Chrome。 
+  </div> 
+  <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/23.htmlb">《管理不易管理之人》作者问答</a> Mickey Mantle和Ron Lichty写了一本有关管理程序员和雇佣程序员的书。本书分析描述了程序员的特质和程序员团队的特质，讨论了如何管理好他们这个问题。他们将他们多年积累的工具和规则分享给大家。 
   </div> 
   <div> 
@@ -147,9 +150,6 @@
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/27.htmlb">Java SE 8: 标准库增强</a> Lambda表达式是Java SE 8的核心功能，大部分的改进都围绕lambda表达式展开。（Jigsaw项目已经被推迟到Java SE 9。）关于lambda表达式的内容，已经在上一篇文章中进行了说明。这篇文章主要介绍Java SE 8中包含的其他Java标准库的增强。 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/26.htmlb">Java 7 SDP：一次编写，到处运行，有时还运行得超炫！</a> 本文介绍了Java 7 SDK最近新引入的Java套接字直接协议（Sockets Direct Protocol，SDP）。SDP技术能让超高性能计算（Ultra High Performance Computing，UHPC）社区用Java语言对InfiniBand远程直接内存存取（Remote Direct Memory Access，RDMA）进行native访问，不需要操作系统的参与就能直接访问其他计算机的内存。 
   </div> 
  </body>
 </html>

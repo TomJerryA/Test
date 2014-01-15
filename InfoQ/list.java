@@ -1,6 +1,9 @@
 <html>
  <head></head> 
- <body> 
+ <body>
+  <div>
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/13.java">Webix 1.4 Released with WebSocket, IndexedDB, Data and Grid Suggest</a>Webix has been updated with support for data-suggest which enables you to make use of images as options. It also adds grid-suggest to select data from a table including support for WebSocket and IndexedDB.
+  </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/12.java">Oracle Seeks Further Feedback on Java EE 8 Plans</a>Oracle has launched the second part of its Java EE 8 community survey with cloud, security, logging, deployment, testability, pruning, and profiles amongst the topics. 
   </div> 
@@ -147,9 +150,6 @@
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/14.java">ASP.NET Identity Preview 2.0 Adds Account Confirmation, Password Reset and Security Token Provider</a>Microsoft has recently released ASP.NET Identity Framework with support for account confirmation, password reset, security token provider in addition to the ability to make use of IQueryable on UsersStore and RolesStore. 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/13.java">Android 4.4 KitKat and the Secret Key Factory</a>With the introduction of Android 4.4, developers are being asked to change the way symmetric keys are generated from Unicode passphrases via the SecretKeyFactory. 
-  </div> 
+  </div>  
  </body>
 </html>

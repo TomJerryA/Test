@@ -1,113 +1,191 @@
-<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>敏捷与结构性模块化（一）</h3><h2>1 简介</h2>
-<p>敏捷开发方法论日益流行，然而大多数“敏捷”专家和分析师都在孤立地讨论敏捷，也就是说忽视了系统“结构”（Kirk Knoernschild是一个例外，他编写了一本名为《Java Application Architecture》的图书阐述这一理念）。考虑到“敏捷”是基础实体的一个重要特性或属性，那么，这种疏忽令人感到很惊讶。一个实体要具有“敏捷”的特性，它必须具有高度的结构性模块化（structural modularity）特征（参见Scott Page的《Diversity &amp; Complexity》）。</p>
-<p>也许正因为这种疏忽，许多组织在敏捷开发流程方面进行投入但忽略了应用程序的结构。除了“如何实现一个敏捷的系统？”这个问题以外, 有人肯定还会问, “如何构建一个在结构上具备高度模块化的系统？”</p>
-<p>这个系列的文章将从探讨结构性模块化和敏捷之间的关系开始。</p>
-<h2>2 结构、模块化与敏捷</h2>
-<p>业务主管和应用开发人员经常面临相同的挑战。无论是商业领域还是服务于商业的软件，它都必须在成本范围内构建和维护。如果要保持实体的持续运营，就必须能够以低成本的方式快速响应难以预料的变化。</p>
-<p>如果我们希望高效地管理一个系统，就必须先理解该系统。只有理解了系统，可控制的变更和定向升级才能成为可能。</p>
-<p>当然，我们并不需要理解系统的每个组成部分的详细情况和特性，只需要理解所负责的系统的相关参数以及相应等级层次的行为即可。</p>
-<div id="lowerFullwidthVCR"></div>
-<h3>隐藏服务实现</h3>
-<p>从外部角度来看，我们仅仅关心系统暴露的行为、提供的服务类型以及该服务的属性。例如，服务可靠吗？与替代方案相比有竞争力吗？</p>
-<p><img width="500" _p="true" _href="img://null" alt="" src="http://infoqstatic.com/resource/articles/agile-and-structural-modularity-part1/zh/resources/1030003.png" /></p>
+<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>使用Jazz Automation编写自动化测试</h3><h2>Jazz Automation介绍</h2>
+<p>Jazz Automation是一个测试框架，构建它的目的是为所有类型的Web系统或者静态网站自动化同时加速验收/功能测试。它还能够容易地实现自动化集成测试。以前的时候这种类型的测试需要人工完成，劳动强度大又不准确。借助于自动化测试，公司能够创造高质量的应用程序，创造的产品bug更少，同时又加快了投入市场的速度。Jazz Automation支持以下Web浏览器：IE、Firefox、Safari和Chrome。 <br /> Jazz Automation和其他的自动化测试框架不同，它允许测试编写者使用纯英语描述软件的工作原理。</p>
+<p>大多数自动化测试框架在执行测试之前必须使用Java和Ruby这样的语言编程，例如Selenium和Cucumber。Jazz Automation提供了一个抽象层，测试编写者和配置人员不需要编程。</p>
+<h2>编写第一个测试脚本</h2>
+<p>让我们看看下面这个测试一个电子商务网站的规格。</p>
+<pre>
+Feature: Go to the Amazon web site, search for Harry Porter in the book section. Find
+ Harry Potter and the Chamber of Secrets (book2) and then add it to the cart.
+   
+   Background: Establish the test settings for the test
+     Given the following settings:
+       | url             | http://www.amazon.com | 
+       | platform        | Vista                 |
+       | browser         | firefox               |
+       | browser version | 23                    |
+   Scenario: Verify that we have an empty cart on the amazon home page
+     Given I am ON the &quot;HomePage&quot;
+     Then I should EXPECT
+       | cartCount       | 0                     |
+   Scenario: Search for Harry Porter from the books category
+     Given I am ON &quot;HomePage&quot;
+     And I click &quot;allButton&quot;
+     And I select
+       | selectCategory  | Books                  |
+     And I enter
+       | searchField     | Harry Potter           | 
+     And I click &quot;go&quot;
+     And I wait 5 seconds
+     Then I should be ON the &quot;SearchResultsPage&quot;
+   Scenario: From the Search Results Page, verify the first result Special
+             Edition Harry Potter Paperback Box Set 
+     Given I am ON &quot;SearchResultsPage&quot;
+     Then I should EXPECT
+       | firstResult           | Special Edition Harry Potter Paperback Box Set |
+       | chamberOfSecretsBook2 | visible
+       |
+   Scenario: Click on the Chamber Of Secrets Book2 to reveal the details
+        Given I am ON &quot;SearchResultsPage&quot; 
+        And I CLICK &quot;chamberOfSecretsBook2&quot;
+        Then I should be ON the &quot;BookDetailPage&quot;
+   Scenario: Verify the details
+        Given I am ON the &quot;BookDetailPage&quot; 
+        Then I should EXPECT
+        | kindlePrice          | $7.99                    |
+        | hardcoverPrice       | $13.94                   |
+        | paperbackPrice       | $8.56                    |
+    Scenario: Add the book to my cart
+      Given I am ON the &quot;BookDetailPage&quot;
+      And I click &quot;hardcover&quot;
+      And I click &quot;addToCart&quot;
+      Then I should be ON the &quot;PreCheckoutPage&quot; 
+    Scenario: On the pre-checkout page, verify the details
+      Given I am ON the &quot;PreCheckoutPage&quot;
+      Then I should EXPECT
+        | orderSubtotal            | 13.94       |
+        | cartCount                | 1           |
+    Scenario: proceed to checkout
+      Given I am ON the &quot;PreCheckoutPage&quot;
+         And I click &quot;proceedToCheckout&quot;
+         Then I should be ON the &quot;SignInPage&quot; 
+         The test script should be extremely easy to read and understand, right? </pre>
+<p>上面显示的测试用例所使用的语言是Gherkin。Gherkin是一种领域特定语言（DSL），它允许用户使用纯的、可理解的英语描述一个应用程序应该如何工作。在开发测试脚本的时候，脚本编写者不需要理解或者描述实现。上面的规格大部分都是自由的文本，但是Gherkin也有一些关键词：<b>Feature</b>、<b>Scenario</b>、<b>Given</b>、<b>When</b>、<b>And</b>和<b>Then</b>。Jazz Automation扩展了这个关键词列表，增加了<b>Expect</b>、<b>On</b>、<b>Click</b>、<b>Hover</b>、<b>Wait</b>、<b>Refresh</b>、<b>Enter</b>、<b>Select</b>、<b>Forward</b>、<b>Backward</b>、<b>Visible</b>和 <b>Invisible</b>。</p>
+<p>与Gherkin相关的内容有很多，本文只讨论了其中的一部分；但是必须要清楚的一件事情是：它使用基于行的格式，必须保证完整性让它能够清楚如何为每一个功能执行相关步骤。</p>
+<p>借助于Jazz Automation，执行上面的测试我们不需要使用Java、Ruby等语言编写任何代码。使用Jazz Automation，每一个网站页面都必须被定义为一个页面（Page）。JSON和XML都可用于页面配置。每一个页面都包含了能够让Jazz Automation验证页面是否被正确加载的高层属性。同时，每一个页面还应该有一个或者多个元素的定义。仔细看看上面的这个规格，你将会注意到有一些单词是用双引号括起来的。双引号中的对象对于Jazz Automation而言是非常重要的。它们代表了页面对象或者页面上的元素。对于每一个项目，这些元素定义在一个或者多个页面文件中。</p>
+<p>让我们看看测试文件夹的目录结构。</p>
+<p><img width="300" src="http://infoqstatic.com/resource/articles/jazz-testing/zh/resources/1212003.png" alt="" _href="img://null" _p="true" /></p>
+<p>首先我们注意一下/features目录。我们应该将所有的测试规格都保存在这里。文件是.feature类型的，Jazz Automation可以一次性执行一个或者多个功能。功能和它们的执行顺序定义在<b>jazz.properties</b>文件中。其次，我们注意到在/pages目录下有一些“页面文件”。该目录是测试配置程序（Test Configurator）定义每一个页面和页面元素的地方，定义的内容将会在测试期间访问。测试规格只能引用在这里定义的页面和在页面文件中定义的页面元素。稍后我们将会介绍如何为页面文件自定义位置。在文章的最后，我们将会介绍强制的<b>jazz.properties</b>文件，现在我们先跳过它。</p>
+<h2>继续页面配置</h2>
+<p>测试配置程序是正确配置一个Jazz Automation测试的关键。Jazz Automation支持使用JSON和XML进行页面配置。</p>
+<p>测试配置员需要对jQuery这样的web技术有一定的经验。测试配置员需要为要访问的每一个Web页面创建一个页面（Page）。</p>
+<p>一个页面有一些必须的属性。每一个页面必须有一个pageName属性，同时至少有一个domElement。功能会频繁地使用pageName，同时它应该是有意义的，这样测试员才能够准确地知道它所引用的Web页面。DomElements是用于验证软件的Web页面元素。通常情况下它们指标签值、下拉框值、图片、按钮、显示的数据（定价等）。这些元素的名称应该是有意义的，这样测试编写者才能够理解每一个组件的目的。</p>
+<p>让我们看看下面这个JSON页面配置。</p>
+<pre>
+{
+    &quot;pageName&quot;:&quot;HomePage&quot;,
+    &quot;title&quot;: &quot;Amazon.com: Online Shopping for Electronics, Apparel, 
+Computers, Books, DVDs &amp; more&quot;,
+    &quot;urlExtension&quot;: &quot;www.amazon.com&quot;,
+      &quot;keyDomElementName&quot;: &quot;searchField&quot;,
+    &quot;domElements&quot; :
+    {
+        &quot;cartCount&quot; :
+        {
+            &quot;jquery&quot;: &quot;$('#nav-cart-count')&quot;
+        },
+        &quot;allButton&quot; :
+        {
+            &quot;jquery&quot;: &quot;$('#nav-search-in')&quot;
+        },
+        &quot;selectCategory&quot; :
+        {
+            &quot;jquery&quot;: &quot;$('#searchDropdownBox')&quot;
+        },
+        &quot;searchField&quot; :
+        {
+            &quot;jquery&quot;: &quot;$('#twotabsearchtextbox')&quot;
+        },
+        &quot;go&quot; :
+        {
+            &quot;jquery&quot;: &quot;$('.nav-submit-input')&quot;
+        }
+    }
+}</pre>
+<p>我们定义一个页面配置文件的关键组件。 </p>
+<table cellspacing="0" cellpadding="0" border="1"> 
+ <tbody> 
+  <tr> 
+   <td width="183" valign="top"> <p>组件</p> </td> 
+   <td width="95" valign="top"> <p>必须</p> </td> 
+   <td width="90" valign="top"> <p>允许为空</p> </td> 
+   <td width="94" valign="top"> <p>允许忽略</p> </td> 
+   <td width="129" valign="top"> <p>注意</p> </td> 
+  </tr> 
+  <tr> 
+   <td width="183" valign="top"> <p>pageName</p> </td> 
+   <td width="95" valign="top"> <p>是</p> </td> 
+   <td width="90" valign="top"> <p>否</p> </td> 
+   <td width="94" valign="top"> <p>否</p> </td> 
+   <td width="129" valign="top"> <p>按照惯例，值应该匹配文件名</p> </td> 
+  </tr> 
+  <tr> 
+   <td width="183" valign="top"> <p>Title</p> </td> 
+   <td width="95" valign="top"> <p>否</p> </td> 
+   <td width="90" valign="top"> <p>是</p> </td> 
+   <td width="94" valign="top"> <p>是</p> </td> 
+   <td width="129" valign="top">&nbsp;</td> 
+  </tr> 
+  <tr> 
+   <td width="183" valign="top"> <p>urlExtension</p> </td> 
+   <td width="95" valign="top"> <p>否</p> </td> 
+   <td width="90" valign="top"> <p>是</p> </td> 
+   <td width="94" valign="top"> <p>否</p> </td> 
+   <td width="129" valign="top">&nbsp;</td> 
+  </tr> 
+  <tr> 
+   <td width="183" valign="top"> <p>keyDomElementName</p> </td> 
+   <td width="95" valign="top"> <p>否</p> </td> 
+   <td width="90" valign="top"> <p>是</p> </td> 
+   <td width="94" valign="top"> <p>是</p> </td> 
+   <td width="129" valign="top"> <p>推荐使用以便于确保在向前移动场景之前页面已经被完全加载，</p> </td> 
+  </tr> 
+  <tr> 
+   <td width="183" valign="top"> <p>domElements</p> </td> 
+   <td width="95" valign="top"> <p>是</p> </td> 
+   <td width="90" valign="top"> <p>否</p> </td> 
+   <td width="94" valign="top"> <p>否</p> </td> 
+   <td width="129" valign="top">&nbsp;</td> 
+  </tr> 
+ </tbody> 
+</table>
 <p></p>
-<p>作为服务的使用者，我们并不关心服务的特性是如何实现的，我们只关心所提供的功能（Capability）是否可以满足我们的需求（Requirement）。</p>
-<h3>理解结构以便管理</h3>
-<p>不同于使用者，服务的实现方式对于服务的提供者而言，是极为重要的。为了更好的理解，我们为负责提供服务的系统建立概念模型，这是通过将系统分解成一组更小的相互关联的单元实现的。如果这个实体是某个公司，这张组件图就代表了“组织结构图（Organization Chart’）”；如果这个实体是软件应用程序，那么这张图就是模块间依赖关系的映射图。</p>
-<p>尝试理解抽象系统的第一步如下图所示。</p>
-<p><img width="500" _p="true" _href="img://null" alt="" src="http://infoqstatic.com/resource/articles/agile-and-structural-modularity-part1/zh/resources/1030004.png" /></p>
-<p>图2: 服务提供者和系统维护者</p>
-<p>从上图的例子，我们可以马上知道：</p>
-<ol> 
- <li>系统由15个组件组成。</li> 
- <li>每个组件的名称。</li> 
- <li>这些模块间的依赖，尽管我们无法知道这些依赖为何存在。</li> 
- <li>尽管我们并不知道每个组件各自所承担的责任，从关联性出发，我们依然可以推断出“Tom”模块在系统中所占据的地位很有可能比“Dick”模块更为重要。</li> 
-</ol>
-<p>需要注意的是，这些组件可能并不是我们所创建的，我们也不必理解这些组件之间的内在结构。就像作为服务的使用者，只需关心服务所提供的功能，我们作为组件的使用者，只是需要它们的功能。</p>
-<h3>需求和功能（Requirements &amp; Capabilities）</h3>
-<p>到目前为止，我们仅仅知道组件之间存在依赖性，并不知道为什么会存在这些依赖性。另外目前的状态是与时间无关的。如果随着时间的推移，发生了变化又该怎样呢？</p>
-<p>最初我们可能会借助于实体的名字，再加上版本号（version）或者版本范围（version range），结构的变化由版本的变化体现出来。然而，如图3所示，版本名称（versioned name）尽管表明了系统的改变，但却无法解释为什么Susan 2.0不能像Susan 1.0那样与Tom 2.1一起协同工作。</p>
-<p>这是为什么呢？</p>
-<p><img width="500" _p="true" _href="img://null" alt="" src="http://infoqstatic.com/resource/articles/agile-and-structural-modularity-part1/zh/resources/1030005.png" /></p>
-<p>图3：如何跟踪结构随时间的变化？系统以前能够正确运行，后来由于一个组件的升级导致整个系统出错。为什么呢？</p>
-<p>只有当我们仔细研究系统的功能和需求后，才能了解问题的原因。Tom 2.1需要管理者（Manager）的功能，这个功能在Susan 1.0中提供。然而稍后的Susan 2.0，由于她的职业规划，决定进行再培训，这时的Susan 2.0被赋予了新的Plumber 1.0功能，也就意味着其不再拥有管理者的功能了。</p>
-<p>这个简单的例子向我们展示了模块间的依赖关系需要由需求和功能来表达，而不是它们的名字（Apache Maven项目最近正在讨论<a href="http://maven.apache.org/enforcer/enforcer-rules/versionRanges.html">为制件的名字采用版本范围</a>。尽管这是一个进步，但依然有缺陷，因为依赖还是用实体的名字来进行描述。）。这些描述应当能显示模块的本质，即模块应当能自我描述（需求、功能以及依赖应该进行文档化，但是随着时间的推移，这些描述会变得过时，如最初的文档制定之后，系统又发生了变化，而文档并没有得到更新。）。</p>
-<p><img width="600" _p="true" _href="img://null" alt="" src="http://infoqstatic.com/resource/articles/agile-and-structural-modularity-part1/zh/resources/1030006.png" /></p>
-<p>图4：组织化结构：按照功能、需求的术语以及语义化的版本来进行定义</p>
-<p>&nbsp;</p>
-<p>如图所示，我们完全可以不引用具体实体的名字，而直接使用需求和功能来描述一个系统</p>
-<h3>系统演化和语义化版本的角色</h3>
-<p>目前，功能与需求是我们了解系统结构的主要途径。然而，要理解时间推移所带来的变化，我们依然还会遇到问题。</p>
-<ul> 
- <li>在组织结构图中，如果某个员工晋升了，那么原有的关联性是否依旧有效（功能增强）？</li> 
- <li>在一组互相关联的软件组件中，如果我们重构了其中的一个模块（可能改变其公开接口），原有的依赖是否依然有效？</li> 
-</ul>
-<p>通过简单的版本化，我们可以观察到系统所发生的变化，却无法了解这些变化所带来的影响。然而，如果采用语义化版本命名方式(见 <a href="http://www.osgi.org/wiki/uploads/Links/SemanticVersioning.pdf">http://www.osgi.org/wiki/uploads/Links/SemanticVersioning.pdf</a>)，我们就能够传达系统变化而带来的潜在影响。</p>
-<p>这可以通过以下的方式实现：</p>
-<ul> 
- <li>将功能根据major.minor.micro 的版本模式来进行版本化。同时我们达成共识，minor 或 micro这两个版本域代表非破坏性的变化（non-breaking change）。例如，2.7.1➞2.8.7。相反，major版本域的变化，例如，2.7.1➞3.0.0表示有破坏性的变化（breaking change），组件的改变可能影响到它的使用者。</li> 
- <li>需求则使用可接受的功能的版本范围来表示。方括号“[”和“]”表示包含此值，而圆括号“(”和“)”表示不含此值。因此，范围[2.7.1,3.0.0) 表示任何版本高于或等于2.7.1并且低于3.0.0（不含3.0.0）的功能都是可接受的</li> 
-</ul>
-<p>使用这种方式，我们可以看到如果Helen代替了Joe，Tom的需求依然会得到满足。然而，同样有管理者功能的Harry却因为其功能仍是1.7版本，不在Tom的[2,3)需求范围内，所以无法进行替换。</p>
-<p>通过使用语义化版本的命名方式可以表达系统变更所带来的影响。再加上需求和功能，我们具备了足够信息，能够保证在满足系统各部分依赖的前提下，进行模块的替换。</p>
-<p>我们的工作到此告一段落，这样简单的系统是敏捷且易维护的！</p>
-<h3>敏捷——从上至下贯穿各层</h3>
-<p>最后的挑战与复杂性息息相关。试想如果下列情况出现时会发生什么：1）系统的规模和难度不断增长？2）系统的模块数量大幅增加，并且模块间的互相依赖性也大幅增加？有些读者在前面的例子中，可能已经注意到出现了某种程度的<a href="http://zh.wikipedia.org/wiki/%E8%87%AA%E7%9B%B8%E4%BC%BC">自相似性</a>（self-similarity），你们或许已经从中猜到了答案。</p>
-<p>服务的使用者选择我们的服务是因为服务所宣称的功能符合它们的需求（见图1）。而提供服务的系统的实现方式，对服务的使用者而言是不可见的。向下的每一层都沿用这一模式。系统的结构自然而然地根据各组件的功能和需求进行描述。（见图4）。这时组件的内部结构对于系统而言是不可见的。如图5所示，许多逻辑层都可能使用这种模式。</p>
-<p><img width="600" _p="true" _href="img://null" alt="" src="http://infoqstatic.com/resource/articles/agile-and-structural-modularity-part1/zh/resources/1030007.png" /></p>
-<p>图5：敏捷的结构：每层只暴露必要的信息。每层都是由组件间的依赖所组成的，这些依赖通过需求和功能来进行表述。</p>
-<p>所有真正敏捷的系统都是以分层的层级结构建立起来的。在每个结构化的层次中，各组件的自描述都遵循以下的规则：只描述当前层次的有关信息，关于更低层次的不必要细节是不会描述的。</p>
-<p>这种模式不断出现于自然系统和人造系统中。自然生态系统中所构建的大量结构都是由嵌套的模块化组件所组成的。例如：</p>
-<ul> 
- <li>生物体</li> 
- <li>器官</li> 
- <li>组织</li> 
- <li>细胞</li> 
-</ul>
-<p>无独有偶，商业组织也有类似结构：</p>
-<ul> 
- <li>组织</li> 
- <li>部门</li> 
- <li>团队</li> 
- <li>个人</li> 
-</ul>
-<p>因此，我们也期望复杂的敏捷软件系统也参照这些最优的解决方案：</p>
-<ul> 
- <li>商业服务</li> 
- <li>粗粒度的业务组件</li> 
- <li>细粒度的子服务</li> 
- <li>代码级别模块</li> 
-</ul>
-<p>这项进程起源于20世纪90年代中后期，许多公司开始采用包括面向服务架构（Service Oriented Architecture，SOA）和企业服务总线（Enterprise Service Buses ，ESB’s）为代表的粗粒度模块化技术。商业程序通过已知的服务接口或消息传递的方式，较为宽松地联系在一起。SOA提倡更加“敏捷”的IT环境，即商业系统应该更加易于升级或替换。</p>
-<p>然而在许多实际场景中，核心的应用程序一直没有更改。很多现有的程序只是简单地将接口暴露为SOA服务。从这一角度来看，SOA实质上并不能如其保证的那样节省开支和使商业快速化：<a href="http://apsblog.burtongroup.com/2009/01/soa-is-dead-long-live-services.html">http://apsblog.burtongroup.com/2009/01/soa-is-dead-long-live-services.html</a>。</p>
-<p>这是因为内部缺乏模块化，加入SOA之后的程序和没加之前一样难以修改</p>
-<h3>变得敏捷？</h3>
-<p>我们将在此章节，对目前为止的观点进行小结。</p>
-<p>为了“敏捷”，系统必须符合以下的特性：</p>
-<ul> 
- <li>层级化的结构（Hierarchical Structure）：系统必须层级化，每一层由更低一层的组件构成。</li> 
- <li>隔离性（Isolation）：对于每个结构化的层级，高度的隔离性确保参与运行的组件的内部结构将是不可见的。</li> 
- <li>抽象化（Abstraction）：对于每一层，参与运行的组件的行为通过需求和功能加以表达。</li> 
- <li>自描述（Self-Describing）：在每层之中，参与运行的模块间的关系都必须是自描述的。也就是说，依赖性定义将通过需求和功能进行表达。</li> 
- <li>变化的影响（Impact of Change）：通过语义化的版本命名，变化对依赖的影响可以进行表述。</li> 
-</ul>
-<p>系统按上述原则建立，将是：</p>
-<ul> 
- <li>易于理解的（Understandable）：基于层级化的结构，系统在每一层的结构都易于理解。</li> 
- <li>高适应性的（Adaptable）：在每一层中，结构性模块化保证了变更的影响可以局限在那些相关的模块内部，高度模块化所建立起来的边界能够保护系统的其他部分不受影响。</li> 
- <li>可演化的（Evolvable）：每层中的组件都可以被代替。因此，系统可以支持多样化（diversity）并且是可演化的。</li> 
-</ul>
-<p>系统可以通过结构性模块化来实现敏捷。</p>
-<p>在这个系列的下一部分，我们将会讨论OSGi™——Java™的模块化框架——如何满足结构性模块化的需求，从而为流行的敏捷方法学奠定基础，最终形成敏捷的企业。</p>
-<p><strong>原文英文地址：</strong><a href="https://adaptevolve.paremus.com/?p=1264">Agility and Structural Modularity – part I</a></p>
-<h2>作者简介</h2>
-<p><strong>Richard Nicholson</strong>是Paremus 的CEO和创始人，这是一个2001年成立的软件公司，总部位于英国。</p>
-<p>在意识到高度可维护以及高度敏捷的系统在本质上必须是高度模块化的之后，Paremus在2004年开始研究下一代的软件系统。这种持续的努力体现在了Paremus Service Fabric产品之中，这是一个高度可适应的、基于OSGi的自装配运行时，可用于企业级和云环境。作为OSGi联盟的主席（2010-2012），Richard开始推进OSGi Cloud并鼓励OSGi联盟参与到敏捷软件社区中。</p>
-<p>Richard在很多的研究领域都保持了浓厚的兴趣，这支撑了Service Fabric的研发，他的研究领域包括复杂的适应性系统（Complex Adaptive System）以及敏捷（Agility）、模块化组装（Modular Assembly）、结构化多样性（Structural Diversity）和适应性（Adaption）之间的关系。</p>
-<p>成立Paremus之前，Richard在花旗集团/Salomon Smith Barney，领导着欧洲系统工程（European System Engineering）相关的工作。Richard获得了曼切斯特大学的物理学荣誉学位，并在格林尼治皇家天文台（ Royal Greenwich Observatory）获得天体学物理博士。</p>
-<p>Richard的博客：<a href="http://adaptevolve.paremus.com">http://adaptevolve.paremus.com</a>。</p>
-<p>Paremus的博客：<a href="http://blogs.paremus.com">http://blogs.paremus.com</a>。</p>
-<hr />
-<p>感谢<a href="http://www.infoq.com/cn/author/张卫滨">张卫滨</a>对本文的审校。</p>
-<p>给InfoQ中文站投稿或者参与内容翻译工作，请邮件至<a href="mailto:editors@cn.infoq.com">editors@cn.infoq.com</a>。也欢迎大家通过新浪微博（<a href="http://www.weibo.com/infoqchina">@InfoQ</a>）或者腾讯微博（<a href="http://t.qq.com/infoqchina">@InfoQ</a>）关注我们，并与我们的编辑和其他读者朋友交流。</p><br><br><br><br><br><br></body></html>
+<p>就是这样！</p>
+<p>一旦剩下的页面被定义完，我们就能够通过“完成”运行场景了。测试配置员必须要清楚下面的内容之一：jQuery、XPath或者CSS。我们使用它们“选择”需要测试的Web元素。jQuery是Jazz Automation最喜欢的选择器机制，同时对于大多数QA分析师而言他们要学会jQuery只需要几天的时间，特别是有那么多的在线教程并且可以使用现代Web浏览器的开发者工具。</p>
+<h2>普通配置</h2>
+<p>要讨论的最后一部分内容是必须的jazz.properties文件。该配置文件包含一些普通的配置项，例如项目名称（用于报告）、一个表明测试应该在远程运行还是在本地系统上运行的标记、动作和页面速度以及要执行的功能。其他的可选配置属性我们就不在此一一介绍了。</p>
+<pre>
+#project name
+projectName: Amazon
+
+# turn on remote support. if useRemote true, you must specify the following 
+remoteWebDriverUrl property.
+useRemote: false
+
+# remote web driver url - usually your sauceLabs url
+remoteWebDriverUrl: http://jazzautomation:****@ondemand.saucelabs.com:80/wd/hub
+
+# you can customize you folder name of pages. By default it is pages
+#pagesDirectoryName: pages
+
+# page pacing between two pages loading
+pagePace: 10
+#action pacing between two actions on the same page. The default value is &quot;1 second&quot;. 
+actionPace: 1
+
+# features: can be a list of features, separated by comma
+features:searchForHarryPotter</pre>
+<h2>报告</h2>
+<p>对于每一个测试，Jazz Automation都会产生一个描述测试运行详细信息的报告。如果测试执行成功了，那么会生成一个展示成功率为100%的简单报告。如果测试执行失败了，那么会对错误发生的地方创建一个屏幕截图并插入到报告中。除此之外，报告是根据测试运行期间产生的数据文件生成的。该数据文件可用于历史追踪、图表和趋势分析。</p>
+<p>让我们看看下面这个失败的测试报告：</p>
+<p>（单击放大图片）</p>
+<p><a href="http://infoqstatic.com/resource/articles/jazz-testing/zh/resources/1212004.png"> <img src="http://infoqstatic.com/resource/articles/jazz-testing/zh/resources/1212004.png" width="200" _href="img://1212004.png" _p="true" /></a></p>
+<h2>结论</h2>
+<p>到现在为止我们已经结束了使用Jazz Automation编写自动化测试的旅程。对于好奇的读者，还有大量的内容需要学习。例如，Jazz Automation还能够通过Sauce Labs这样的公司所提供的技术在远程使用，这样的话你的组织就不需要维护进行全范围测试所必须的每一种浏览器和操作系统的可能组合。你还能够深入探索Jazz Automation如何应用于没有使用jQuery的网站。提示：这需要使用动态插入。</p>
+<p>Jazz Automation还通过用户界面测试和提供即时反馈完成了持续集成的循环。这比以往任何时候都要更加重要，因为产业已经转移到富HTML5和JavaScript用户界面上了。组织需要立即知道应用程序自上而下都在按照期望运行。另外，使用Gherkin作为我们的领域特定语言还允许关键的利益相关方明确地表达出他们对系统应该如何工作、如何与技术资源有效沟通的理解，让开发团队能够解放出来专心构建产品。</p>
+<p>我们不能将Jazz Automation错误地理解为可以替代传统的单元测试和集成测试框架，例如JUnit和TestNG。单元测试和集成测试在成功的软件开发中依然非常重要，Jazz Automation只是更进了一步，用户能够使用它编写针对用户界面的自动化测试。另外，Jazz Automation是DOM级别的测试，所以你能够在一个Web页面中到处移动条目，这样并不会导致测试错误。</p>
+<p>自动化用户界面测试并不是每一个组织优先考虑的事情，但是如果首先考虑了它，那么前端测试和回归测试就不会让你再次慢下来。</p>
+<h2>关于作者</h2>
+<p><img src="http://infoqstatic.com/resource/articles/jazz-testing/zh/resources/1212005.jpg" style="float: left; margin-right: 10px" alt="" _href="img://null" _p="true" /><b>Dedrick Boyd</b> 是一位老道的IT专家，他在完整软件开发和产品生命周期等领域有丰富的经验。他有技术技能，同时拥有管理各种产业中的大型和小型开发团队的经验，包括零售业、制药业、媒体及娱乐、医疗保健和金融服务业。Dedrick现在就职于<a href="http://www.statementcorp.com/">Statement</a>，在那里他是一位技术创新者，同时也是一位关系经理。他拥有佛罗里达州立大学管理信息系统（Management Information Systems）的学士学位。Dedrick的业余爱好包括：环游世界、读书、烹饪、美式足球和与家人共度光阴。</p>
+<div style="clear:both"></div>
+<p><b>查看英文原文</b>：<a href="http://www.infoq.com/articles/jazz-testing">Writing Automated Tests with Jazz Automation</a></p>
+<p>&nbsp;</p><br><br><br><br><br><br></body></html>

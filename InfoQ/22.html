@@ -1,7 +1,18 @@
-<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>Xamarin Studio 4.2改进了账户管理、项目系统和调试器，并修复了多项Bug</h3><p><a href="http://docs.xamarin.com/releases/studio/xamarin.studio_4.2/xamarin.studio_4.2/">Xamarin Studio 4.2</a>已于近日发布，带来了从Xamarin Studio内直接登录iOS开发人员账户的能力，这使得IDE可以自动同步开发人员的签名身份和配置文件。除了多项改进和Bug修复外，它还在项目设置中增加了经过改进的PCL配置面板。最新版本允许开发人员使用资产目录，在Images.xcassets目录上点击右键并在弹出菜单中选择New Image Set选项即可。</p>
-<p>除了包含混合换行符的文件处理得到改进外，Xamarin Studio 4.2还支持动态格式化、缩进和源码分析。它还改进了内联错误气泡的外观，并修复了几个会在ASP.NET和XML文件编辑过程中出现的问题。此外，开发人员将能够撤销某些操作，如从磁盘重新加载修改过的文件以及从自动保存还原。</p>
-<p>除了修复向Subversion库添加Web引用时的错误外，最新版本还增加了用于标记分支和推送标签的命令，并修复了不正确的库检测问题。对于Windows上的Subversion，它还增加了经过改进的进度监控和通知，并且包含了一个支持从全局禁用版本控制的选项。它还对使用十六进制可视化工具可视化大数组进行了改进，提升了在Microsoft .NET <a href="http://msdn.microsoft.com/en-us/library/8bs2ecf4(v=vs.110).aspx">CLR</a>上调试时的稳定性，并支持在用户程序集中单步执行自动生成的枚举器。</p>
-<p>最近的更新修复了F#的语法高亮显示问题，并且提升了导入符号补全的速度和用户体验。另外，随着允许C#开发人员跨设备共享代码，它在iOS和Android上同时提供了对<a href="http://msdn.microsoft.com/en-us/library/vstudio/gg597391(v=vs.100).aspx">可移植类库</a>（PCL）项目的支持。</p>
-<p>Xamarin增强了代码补全机制，通过它，开发人员不仅可以查看需要的属于这个接口的方法，还可以查看不属于这个接口的可选方法。据Xamarin软件工程师迈克&middot;布伦斯坦说，这项技术会插入具有恰当的签名和相应的Export属性的方法。</p>
-<p>开发人员还可以将共用代码放在一个单独的项目中，然后在同一个解决方案的任意iOS、Android和Windows Phone项目中引用它。除了上述新功能外，Xamarin对Visual Studio扩展进行了很大改进，其中包括对Visual Studio 2013的支持。</p>
-<p><b>查看英文原文：</b><b><a href="http://www.infoq.com/news/2013/12/xamarin-studio-4-2">Xamarin Studio 4.2 Introduces Improved Account Management, Project System, Debugging and Bug Fixes</a></b></p><br><br><br><br><br><br></body></html>
+<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>RESTful的Web服务框架Jersey 2.5发布</h3><p>RESTful的Web服务框架<a href="https://jersey.java.net/download.html">Jersey</a>近期发布了2.5版，支持最新版的<a href="http://www.eclipse.org/jetty/">Jetty</a>Web服务器，升级了Apache Connector，并修正了多个缺陷。</p>
+<p>Jersey框架基于Java，包括如下<a href="https://jersey.java.net/release-notes/2.5.html">改变</a>：</p>
+<ul> 
+ <li>支持Jetty 9 Web服务器和servlet容器。这包括一个基于Jetty HTTP和Servlet容器的Jersey Server容器，以及一个使用Jetty Fluent Client API支持同步和异步客户端调用的Jersey Client连接器。</li> 
+ <li>现在的Apache Connector使用<a href="http://hc.apache.org/httpcomponents-client-4.3.x/index.html">Apache HttpClient 4.3</a>, 这本身就是一个大规模的重构，还包含了很多<a href="http://www.apache.org/dist/httpcomponents/httpclient/RELEASE_NOTES-4.3.x.txt">新的特性和改进</a>。</li> 
+ <li>修复了超过60个bug，包括无法正确读取包含多个值的HTTP头，和通过包扫描缺失组件来进行组件注册。</li> 
+</ul>
+<p>在6月份主版本<a href="http://www.infoq.com/news/2013/06/Jersey_2_0_released">2.0发布</a>之后，发生的变化包括：</p>
+<ul> 
+ <li><a href="http://en.wikipedia.org/wiki/OAuth">OAuth1</a>可作为消费者或服务提供者，而<a href="http://oauth.net/2/">OAuth2</a>只能作为消费者。</li> 
+ <li>对于每个请求，客户端都可以配置或重写连接器属性。</li> 
+ <li>在使用<a href="https://grizzly.java.net/">Grizzly</a>或Apache Connector时支持HTTPS。</li> 
+ <li>支持<a href="http://projects.spring.io/spring-framework/">Spring 3</a>，可以将Spring管理的bean注入到Jersey管理的资源类中，同时可以通过Spring管理JAX-RS资源类。</li> 
+ <li>包括2.5版在内，一共做出了30项改进并修复了超过160个bug。</li> 
+</ul>
+<p>同时<a href="https://jersey.java.net/documentation/latest/">文档</a>也得到了更新，包括从早期2.*迁移到2.5时会<a href="https://jersey.java.net/documentation/latest/migration.html">产生的问题</a>。</p>
+<p><a href="https://jax-rs-spec.java.net/nonav/2.0/apidocs/index.html">JAX-RS 2.0 API规范</a>（<a href="http://jcp.org/en/jsr/detail?id=339">JSR 339</a>）的实现参考了Jersey 2.5。Jersey 2.5还是<a href="https://glassfish.java.net/">GlassFish</a>应用服务器项目的成员。它取得了两家OSI批准的（开源）许可证书。</p>
+<p><strong>原文英文链接：</strong><a href="http://www.infoq.com/news/2013/12/Jersey-2-5-released">RESTful Web Services Framework Jersey 2.5 Released</a></p><br><br><br><br><br><br></body></html>

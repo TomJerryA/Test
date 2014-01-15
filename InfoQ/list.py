@@ -1,8 +1,8 @@
 <html>
  <head></head> 
- <body>
-  <div>
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/6.py">FutureOpsと不変インフラストラクチャ，ビルトイン障害回復</a>Vagrantを開発したMitchell Hashimoto氏が先月のVelocity Conf Londonで，“FutureOps” に対する自身のビジョンをテーマに，不変(Immutable)インフラストラクチャとビルトイン障害回復(Built-in Failure Recovery)の話題を交えながら講演を行った。
+ <body> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/6.py">FutureOpsと不変インフラストラクチャ，ビルトイン障害回復</a>Vagrantを開発したMitchell Hashimoto氏が先月のVelocity Conf Londonで，“FutureOps” に対する自身のビジョンをテーマに，不変(Immutable)インフラストラクチャとビルトイン障害回復(Built-in Failure Recovery)の話題を交えながら講演を行った。 
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/5.py">アジャイルのレトロスペクティブに目標と仮説を加える</a>アジャイルレトロスペクティブを正しく実施することによって，チームは自ら学び，向上することができる。さらに目的を設定し，仮説を使ってレトロスペクティブ活動が改善に結び付いているかを評価することにより，レトロスペクティブはより効果的なものになる。 
@@ -150,6 +150,6 @@
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/10.py">Netflix、ビッグデータがビジネス判断を動かす</a>NetflixのJeff Magnusson氏が、彼らのData Platform as a ServiceについてQCon SF 2013でプレゼンテーションをした。このプレゼンテーションをフォローアップして、技術スタックがどうなっていて、それがNetflixの重要なビジネス判断にどう役立っているのか説明する。 
-  </div>  
+  </div> 
  </body>
 </html>
