@@ -1,1 +1,1 @@
-Rust 0.9 Released With Revised Threading Model
+What's coming in the April 'Icehouse' release of OpenStack

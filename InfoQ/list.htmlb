@@ -1,7 +1,7 @@
 <html>
  <head></head> 
- <body>
-  <div>
+ <body> 
+  <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/25.htmlb">业务架构的主题和规则</a> 本文定义了业务架构的主题和规则。与其他方式不同，只有业务职能和业务信息才能成为架构中的实体，共同形成业务架构的主题。另一方面，业务架构的规则是对业务架构主要及次要任务的描述。 
   </div> 
   <div> 
@@ -150,6 +150,6 @@
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/28.htmlb">采访《Murach’s Android Programming》一书的作者Joel Murach</a> Murach Publishing依然在定期出版新的书籍，坚持为开发者们提供高质量的内容。由Joel Murach所编写的《Murach’s Android Programming》试图为Android开发进行一个全方面的知识介绍，书中包含了大量的截图及代码示例，以帮助开发者应对真实世界的各种场景。 
-  </div>  
+  </div> 
  </body>
 </html>

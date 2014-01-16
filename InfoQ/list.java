@@ -2,13 +2,16 @@
  <head></head> 
  <body>
   <div>
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/16.java">Rust 0.9 Released With Revised Threading Model</a>The Rust team has released the latest version of its next generation programming language. New in this release is a redesigned threading system and several refinements as the language moves towards its 1.0 release.
-  </div>
-  <div>
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/15.java">Upcoming Book by Gojko Adzic on Improving User Stories</a>Would better user stories improve software delivery? Gojko Adzic thinks applying small changes to the way teams manage their user stories can have a huge impact on the actual outcomes of their software delivery. He announced that he wants to write a book about improving user stories if at least 5000 people show that they are interested by pre-registering themselves in January.
-  </div>
-  <div>
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/14.java">Twitter Open-Sources its MapReduce Streaming Framework Summingbird</a>Twitter has open sourced their MapReduce streaming framework, called Summingbird. Available under the Apache 2 license, Summingbird is a large-scale data processing system enabling developers to uniformly execute code in either batch-mode (Hadoop/MapReduce-based) or stream-mode (Storm-based) or a combination thereof, called hybrid mode.
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/17.java">What's coming in the April 'Icehouse' release of OpenStack</a>Icehouse, the next release of the OpenStack open source cloud, will be coming in April 2014. Icehouse will bring automated installation (TripleO), bare metal provisioning (Ironic), a queuing and notification service (Marconi) and database as a service (Trove) as integrated services. Better support for Hadoop (Savanna) will be put into incubation.
+  </div> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/16.java">Rust 0.9 Released With Revised Threading Model</a>The Rust team has released the latest version of its next generation programming language. New in this release is a redesigned threading system and several refinements as the language moves towards its 1.0 release. 
+  </div> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/15.java">Upcoming Book by Gojko Adzic on Improving User Stories</a>Would better user stories improve software delivery? Gojko Adzic thinks applying small changes to the way teams manage their user stories can have a huge impact on the actual outcomes of their software delivery. He announced that he wants to write a book about improving user stories if at least 5000 people show that they are interested by pre-registering themselves in January. 
+  </div> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/14.java">Twitter Open-Sources its MapReduce Streaming Framework Summingbird</a>Twitter has open sourced their MapReduce streaming framework, called Summingbird. Available under the Apache 2 license, Summingbird is a large-scale data processing system enabling developers to uniformly execute code in either batch-mode (Hadoop/MapReduce-based) or stream-mode (Storm-based) or a combination thereof, called hybrid mode. 
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/13.java">Webix 1.4 Released with WebSocket, IndexedDB, Data and Grid Suggest</a>Webix has been updated with support for data-suggest which enables you to make use of images as options. It also adds grid-suggest to select data from a table including support for WebSocket and IndexedDB. 
@@ -147,9 +150,6 @@
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/18.java">Improving Product Development with Flow Thinking</a>A case study on creating buy-in and commitment for flow thinking using a mental model and metaphor was presented at the Lean Kanban Central Europe conference. InfoQ interviewed H&aring;kan Forss and Erik Sch&ouml;n about their journey from methods &amp; tools to principles &amp; mindset and how they use visual management to implement flow thinking and improve the product development flow at Ericsson. 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/17.java">Hadoop Jobs on GPU with ParallelX</a>The MapReduce paradigm is not always ideal when dealing with large computationally intensive algorithms. A small team of entrepreneurs is building a product called ParallelX to solve that bottleneck by harnessing the power of GPUs to give Hadoop jobs a significant boost. 
-  </div>    
+  </div>  
  </body>
 </html>
