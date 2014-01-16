@@ -1,6 +1,9 @@
 <html>
  <head></head> 
- <body> 
+ <body>
+  <div>
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/7.py">Webベースからネイティブアプリケーションに移行した後の、Facebookリリースプロセスについて</a>先月のVelocity Conf London（2013年11月13日から2013年11月15日まで開催）でFacebookのChaitanya Mishra氏が、FacebookのAndroidアプリをWebインタフェースから本格的なネイティブアプリにスケールさせるための取り組みについて講演した。この移行作業を成功させるために、各プロダクトチームがそれぞれのAndroidの担当機能を主導していた。中心となる統合チームは、回帰テストと、各機能からアプリ全体に至る最適化に重点的に取り組んだ。
+  </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/6.py">FutureOpsと不変インフラストラクチャ，ビルトイン障害回復</a>Vagrantを開発したMitchell Hashimoto氏が先月のVelocity Conf Londonで，“FutureOps” に対する自身のビジョンをテーマに，不変(Immutable)インフラストラクチャとビルトイン障害回復(Built-in Failure Recovery)の話題を交えながら講演を行った。 
   </div> 
@@ -147,9 +150,6 @@
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/11.py">QConSF2013ハイライト - パート１</a>Hyattの提供する魅惑的な施設で行われた３日間のカンファレンスには，どの日も講演や展示，アクティビティなどのスケジュールがぎっしり詰まっていて，どのトラックやイベントに参加するべきかの決断に迷うほどだった。 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/10.py">Netflix、ビッグデータがビジネス判断を動かす</a>NetflixのJeff Magnusson氏が、彼らのData Platform as a ServiceについてQCon SF 2013でプレゼンテーションをした。このプレゼンテーションをフォローアップして、技術スタックがどうなっていて、それがNetflixの重要なビジネス判断にどう役立っているのか説明する。 
-  </div> 
+  </div>  
  </body>
 </html>
