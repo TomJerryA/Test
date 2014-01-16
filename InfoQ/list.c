@@ -1,6 +1,9 @@
 <html>
  <head></head> 
- <body> 
+ <body>
+  <div>
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/8.c">PhoneGap 3.3: Suporte do BlackBerry aprimorado e API de carregamento de recursos no Android</a>O PhoneGap 3.3 oferece agora a habilidade para redirecionar recursivamente as requisi&ccedil;&otilde;es de carregamento de recursos Android. Tamb&eacute;m oferece melhorias no suporte ao BlackBerry 10 e depura&ccedil;&atilde;o no iOS.
+  </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/7.c">Presto: O Sistema para consultas SQL distribu&iacute;das do Facebook</a>O Facebook liberou o c&oacute;digo fonte do Presto, o sistema para consultas SQL distribu&iacute;das. O Presto usa uma arquitetura pipelined em vez do Map/Reduce encontrado em outros softwares para Big Data. Em produ&ccedil;&atilde;o desde o come&ccedil;o do ano, o Facebook j&aacute; o implantou em v&aacute;rias regi&otilde;es geogr&aacute;ficas e conseguiu escalar com sucesso um &uacute;nico cluster de 1.000 n&oacute;s. 
   </div> 
@@ -147,9 +150,6 @@
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/9.c">MVP = aprendizado inteligente</a>Steve Blank explica que o objetivo real de um MVP &eacute; dar in&iacute;cio a um processo de aprendizado, n&atilde;o criar a vers&atilde;o que seja menor e mais barata de um produto final. Conhe&ccedil;a mais sobre as ideias de blank e outras opini&otilde;es da comunidade. 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/8.c">Agile nas empresas: indo al&eacute;m do setor de desenvolvimento</a>As pr&aacute;ticas &aacute;geis est&atilde;o sendo utilizadas em aspectos dos neg&oacute;cios diferentes do desenvolvimento de software, de acordo com a Gartner. Conhe&ccedil;a tend&ecirc;ncias no uso do Agile em toda a empresa, com exemplos nas &aacute;reas de marketing, vendas e servi&ccedil;os. 
-  </div> 
+  </div>  
  </body>
 </html>

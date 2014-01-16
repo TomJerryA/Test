@@ -1,17 +1,20 @@
-<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>专业地生产软件</h3><p>“专业地生产软件”，这是<a href="http://agilesingapore.org/">敏捷新加坡大会2013</a>开幕辞的主题。此次大会是敏捷社区在东南亚的一个开创性事件。</p>
-<p><a href="http://mccarthyshow.com/">Jim McCarthy</a>和<a href="http://devjam.com/">David Hussman</a>做了主题演讲，<a href="https://www.facebook.com/kentlbeck">Kent Beck</a>的会议由于太受欢迎也移到了主题演讲礼堂。</p>
-<p>另外还有26位会议演讲者，其中包括<a href="http://gilb.com/">Tom Gilb</a>、<a href="http://www.artima.com/weblogs/index.jsp?blogger=kevlin">Kevlin Henney</a>和<a href="http://odd-e.com/">Bas Vodde</a>。</p>
-<p>在为期两天的活动中，有众多的讨论和交流机会，来自21个国家的400名与会者交换想法并分享经验。</p>
-<p>Jim McCarthy就文化设计与即将到来的辉煌时代做了一次热情洋溢的主题演讲，拉开了此次大会的序幕。他表达了一个强烈的信念，多元文化是团队交付伟大产品必不可少的。他将此次大会作为：</p>
-<blockquote> 
- <p>“东西方文化融合的证据，后国家软件文化之花开始在世界各地成功开放就是一个生动的例子。”</p> 
-</blockquote>
-<p>Jim描绘了一幅画面，大出观众所料，在他的描绘中，新加坡会成为软件复兴的发源地。</p>
-<p>在非常个人化的演讲“轻松上班”中，Kent Beck宣称，他绝不是Facebook最好的程序员，这让在场者非常吃惊，但他感到非常惬意并以自己的工作为豪。他论述了对软件生产的专业态度，并详尽地描述了主要想法和经验。他强烈认为，任何投入到创建自己完美形象的能量都是浪费。他理直气壮地说：</p>
-<blockquote> 
- <p>“这就是为什么我的工作重要。我的代码有效。我做出公开承诺。我很负责。”</p> 
-</blockquote>
-<p>在闭幕辞中，David Hussman号召观众接受Frank Zappa的挑战，“闭上嘴巴，玩吉他”。他的意思是说，现在是停止谈论流程执行率并开始关注产品交付的时候了。</p>
-<p>David谈了选择能够促进可度量成果如产品销售或者市场变化的工具。</p>
-<p>读者可以从InfoQ上获取<a href="http://www.infoq.com/agile-singapore-2013">会议视频</a>及其它相关内容。</p>
-<p><b>查看英文原文：</b><b><a href="http://www.infoq.com/news/2013/12/producing-software-professional">Producing Software, Professionally</a></b></p><br><br><br><br><br><br></body></html>
+<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>Twitter开源了其流处理框架Summingbird</h3><p>Twitter<a href="https://blog.twitter.com/2013/streaming-mapreduce-with-summingbird">开源</a>了其MapReduce流处理框架<a href="https://github.com/twitter/summingbird">Summingbird</a>。Summingbird是一个大规模数据处理系统，支持开发者以批处理模式（基于Hadoop/MapReduce）或流处理模式（基于<a href="http://storm-project.net/">Storm</a>）或混合模式（即组合前两种模式）以统一的方式执行代码。它基于Apache 2许可发布。</p>
+<p>现在的软件栈需要手工集成MapReduce (Pig/Scalding)和基于流（Storm）的代码，为了处理<a href="http://strata.oreilly.com/2013/09/how-twitter-monitors-millions-of-time-series.html">5亿</a>的Tweet并能持续成长，Twitter必须寻找一个替代品。关于创建Summingbird的主要动机，Twitter的工程师<a href="https://blog.twitter.com/2013/streaming-mapreduce-with-summingbird">提到</a>，在于他们意识到，由于以下原因，在Storm上运行一个完全实时的系统非常困难：</p>
+<ul> 
+ <li>要重新计算数月的历史日志，必须与Hadoop进行协作，或者是通过某种定制的日志加载机制形成通过Storm的流。</li> 
+ <li>Storm专注的是消息传递，随机写入数据库很难维护。</li> 
+</ul>
+<p>正是这一洞见推动了Summingbird这一灵活而通用的方案的出现，它用于解决工程师使用现有方法遇到的实际问题：</p>
+<ul> 
+ <li>两个不同系统中的两组聚合逻辑必须保持同步</li> 
+ <li>在每个系统和客户端之间，键和值必须一致地进行序列化</li> 
+ <li>客户端要负责从两个数据存储读取数据、执行最后的聚合并提供合并结果</li> 
+</ul>
+<p>Summingbird也是第一批可以公开获得的<a href="http://lambda-architecture.net/">Lambda架构</a>兼容系统<a href="http://gigaom.com/2013/09/03/twitter-open-sources-storm-hadoop-hybrid-called-summingbird/">中的一个</a>。类似的项目包括Yahoo的<a href="http://developer.yahoo.com/blogs/ydn/storm-yarn-released-open-source-143745133.html">Storm-YARN</a> 和一家西班牙创业公司即将发布的<a href="http://www.slideshare.net/Datadopter/lambdoop-a-framework-for-easy-development-of-big-data-applications">Lambdoop</a>。Lambdoop是一个Java框架，用于以与Lambda架构一致的方式开发大数据应用。Lambda架构的特色是有一个不可修改、只能追加数据的主数据库，并组合了批处理、服务和加速等不同的层。这些特色支持开发者构建健壮的、可以进行批处理和流处理的大规模数据处理系统，其使用案例涉及从物联网（智能城市、可穿戴设备和制造业）之上的社交媒体平台（比如Twitter、LinkedIn等）到金融行业（欺诈检测和推荐）等。</p>
+<p>Summingbird的主要设计者Oscar Boykin、Sam Ritchie（计算机科学界的传奇人物Dennis Ritchie的<a href="http://www.wired.com/wiredenterprise/2013/11/twitter-summingbird/">侄子</a>）和Ashutosh Singhal 进一步透露了该框架的路线图：</p>
+<ul> 
+ <li>支持Apache <a href="http://spark.incubator.apache.org/">Spark</a>和列式数据存储格式<a href="http://parquet.io/">Parquet</a></li> 
+ <li>在Summingbird的Producer原语之上的高层数学库和机器学习代码</li> 
+ <li>与 <a href="https://engineering.twitter.com/opensource/projects">相关开源项目</a>（比如Algebird和Storehaus）更深度的集成</li> 
+</ul>
+<p><strong>查看英文原文：</strong><a href="http://www.infoq.com/news/2014/01/twitter-summingbird">Twitter Open-Sources its MapReduce Streaming Framework Summingbird</a></p><br><br><br><br><br><br></body></html>

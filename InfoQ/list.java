@@ -1,6 +1,15 @@
 <html>
  <head></head> 
- <body> 
+ <body>
+  <div>
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/16.java">Rust 0.9 Released With Revised Threading Model</a>The Rust team has released the latest version of its next generation programming language. New in this release is a redesigned threading system and several refinements as the language moves towards its 1.0 release.
+  </div>
+  <div>
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/15.java">Upcoming Book by Gojko Adzic on Improving User Stories</a>Would better user stories improve software delivery? Gojko Adzic thinks applying small changes to the way teams manage their user stories can have a huge impact on the actual outcomes of their software delivery. He announced that he wants to write a book about improving user stories if at least 5000 people show that they are interested by pre-registering themselves in January.
+  </div>
+  <div>
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/14.java">Twitter Open-Sources its MapReduce Streaming Framework Summingbird</a>Twitter has open sourced their MapReduce streaming framework, called Summingbird. Available under the Apache 2 license, Summingbird is a large-scale data processing system enabling developers to uniformly execute code in either batch-mode (Hadoop/MapReduce-based) or stream-mode (Storm-based) or a combination thereof, called hybrid mode.
+  </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/13.java">Webix 1.4 Released with WebSocket, IndexedDB, Data and Grid Suggest</a>Webix has been updated with support for data-suggest which enables you to make use of images as options. It also adds grid-suggest to select data from a table including support for WebSocket and IndexedDB. 
   </div> 
@@ -141,15 +150,6 @@
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/17.java">Hadoop Jobs on GPU with ParallelX</a>The MapReduce paradigm is not always ideal when dealing with large computationally intensive algorithms. A small team of entrepreneurs is building a product called ParallelX to solve that bottleneck by harnessing the power of GPUs to give Hadoop jobs a significant boost. 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/16.java">How Can You Learn Early and Fast?</a>Agile suggest that teams should fail-fast to enable quick learning from mistakes. Learning from failure is one approach, you can also learn early and fast from successes, by doing experimentation, or by using a plan for knowledge acquisition. 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/15.java">DevExpress Universal 13.2 Introduces Token Box Control</a>DevExpress has included Token Box control in the latest release 13.2 which enables you to auto-complete values from a predefined list either by selection from the dropdown window list or manual input. 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/14.java">ASP.NET Identity Preview 2.0 Adds Account Confirmation, Password Reset and Security Token Provider</a>Microsoft has recently released ASP.NET Identity Framework with support for account confirmation, password reset, security token provider in addition to the ability to make use of IQueryable on UsersStore and RolesStore. 
-  </div> 
+  </div>    
  </body>
 </html>

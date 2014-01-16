@@ -1,6 +1,9 @@
 <html>
  <head></head> 
- <body> 
+ <body>
+  <div>
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/25.htmlb">业务架构的主题和规则</a> 本文定义了业务架构的主题和规则。与其他方式不同，只有业务职能和业务信息才能成为架构中的实体，共同形成业务架构的主题。另一方面，业务架构的规则是对业务架构主要及次要任务的描述。 
+  </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/24.htmlb">使用Jazz Automation编写自动化测试</a> Jazz Automation是一个测试框架，构建它的目的是为所有类型的Web系统或者静态网站自动化同时加速验收/功能测试。它还能够容易地实现自动化集成测试。以前的时候这种类型的测试需要人工完成，劳动强度大又不准确。借助于自动化测试，公司能够创造高质量的应用程序，创造的产品bug更少，同时又加快了投入市场的速度。Jazz Automation支持下面的Web浏览器：IE、Firefox、Safari和Chrome。 
   </div> 
@@ -147,9 +150,6 @@
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/28.htmlb">采访《Murach’s Android Programming》一书的作者Joel Murach</a> Murach Publishing依然在定期出版新的书籍，坚持为开发者们提供高质量的内容。由Joel Murach所编写的《Murach’s Android Programming》试图为Android开发进行一个全方面的知识介绍，书中包含了大量的截图及代码示例，以帮助开发者应对真实世界的各种场景。 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/27.htmlb">Java SE 8: 标准库增强</a> Lambda表达式是Java SE 8的核心功能，大部分的改进都围绕lambda表达式展开。（Jigsaw项目已经被推迟到Java SE 9。）关于lambda表达式的内容，已经在上一篇文章中进行了说明。这篇文章主要介绍Java SE 8中包含的其他Java标准库的增强。 
-  </div> 
+  </div>  
  </body>
 </html>

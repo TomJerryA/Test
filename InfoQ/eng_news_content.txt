@@ -1,11 +1,23 @@
-<p>Oracle has launched the second part of its Java EE 8 community survey with cloud, security, logging, deployment, testability, pruning, and profiles amongst the topics.</p>
-<p>&quot;During the last 5 weeks, we have been positively surprised by the community responses on the first part of the survey,&quot; writes David Delabassee. &quot;We have received a lot of valuable feedback! That means we have *a lot of data* to process, a really nice problem to face!&quot;</p>
-<p>One of the big topics for consideration is whether it is now appropriate to standardise support for PaaS, SaaS and multi-tenancy. This was work that was originally planned for Java EE 7 but later shelved, at least in part because it was felt too early to attempt standarisation. At the time Linda DeMichiel wrote</p>
-<blockquote> 
- <p>Despite our best intentions, our progress has been slow on the cloud side of our agenda. Partially this has been due to a lack of maturity in the space for provisioning, multi-tenancy, elasticity, and the deployment of applications in the cloud. And partially it is due to our conservative approach in trying to get things &quot;right&quot; in view of limited industry experience in the cloud area when we started this work. Because of this, we believe that providing solid support for standardized PaaS-based programming and multi-tenancy would delay the release of Java EE 7 until the spring of 2014 — that is, two years from now and over a year behind schedule. In our opinion, that is way too long.</p> 
-</blockquote>
-<p>Oracle is now interested in whether the wider Java community thinks it is worth trying again.</p>
-<p>Other ideas being contemplated include a standard API to enable developers to trace the effects of a single request through the system, to see what services it uses, what other requests it makes, etc. In addition, Oracle is considering adding support for an embedded web container and embedded Java EE container. Security proposals include standardisation for group to role mapping, EL-enabled authorization annotations, and standardization of simple security providers.</p>
-<p>Oracle is also pondering whether to have another go at standardising a deployment model. The original attempt at this, Java EE Application Deployment [JSR 88], theoretically allows any Java EE application to be deployed into any Java EE compatible environment using the same deployment tool, but it has been poorly supported by vendors and was considered for pruning in Java EE 6.</p>
-<p>In a similar vein to JSR 88, Java EE Management [JSR 77] provides APIs for management tools to query a Java EE application server to determine its current status, applications deployed, and so on. Server management tools built using these APIs work in a cross-vendor manner providing system administrators with a means to switch application servers without changing management tools and processes, or to manage a network of multiple Java EE servers consisting of multiple vendor implementations of the platform. Like JSR 88 this API has suffered from poor vendor support, was considered for pruning in EE 7 and is back on the list this time. Other pruning candidates include EJB 2.x remote and local client view (<em>EJBObject</em>, <em>EJBLocalObject</em>, <em>EJBHome</em>, and <em>EJBLocalHome</em> interfaces) and CORBA.</p>
-<p>There are 28 questions in the survey. As before, each question provides background on the related technology concept to help participants make an informed decision. You can find the survey here.</p>
+<p class="MsoNormal" style="margin-bottom: 0.0001pt;">Rust, the Mozilla-backed systems programming language, has released version 0.9, bringing with it a host of improvements as the language progresses towards the 1.0 milestone.&nbsp; Rust has been undergoing significant changes as it evolves into a language ready for long-term support and stability.&nbsp; Rust's creator Graydon Hoare has said the language targets <span class="InternetLink">“frustrated C++ developers”</span> as it focuses on its goal to be a modern replacement for C/C++.</p>
+<p class="MsoNormal" style="margin-bottom: 0.0001pt;">
+ <o:p></o:p></p>
+<p class="MsoNormal" style="margin-bottom: 0.0001pt;">&nbsp;</p>
+<p class="MsoNormal" style="margin-bottom: 0.0001pt;">Rust is an open source language with a binary installer available for Windows and a source package available for UNIX based systems (FreeBSD, Mac OS X, and Linux). 
+ <o:p></o:p></p>
+<p class="MsoNormal" style="margin-bottom: 0.0001pt;">&nbsp;</p>
+<p class="MsoNormal" style="margin-bottom: 0.0001pt;">Release 0.9 marks the inclusion of several features:
+ <o:p></o:p></p>
+<ul> 
+ <li>Rust now provides the choice for developers to choose whether to build dynamic or statically linked libraries.
+  <o:p></o:p></li> 
+ <li>Native libraries are now first-class citizens, allowing a Rust library to be built and distributed without requiring the accompaniment of native libraries.
+  <o:p></o:p></li> 
+ <li>The I/O infrastructure has been completely revised.&nbsp; Logistically, all I/O functionality is now located in the module <b>std::io</b>.&nbsp; The comm module (providing high level communication abstractions) has been rewritten.
+  <o:p></o:p></li> 
+ <li>Several of the I/O changes come from the creation of two new libraries, libgreen and libnative.&nbsp; The Rust standard library is no longer set to a particular scheduling method, so your program can run m:n (m application threads map onto n kernel threads) or 1:1&nbsp; (one application thread for each kernel thread).&nbsp; This allows developers to choose the threading model that will provide the best performance for their application.
+  <o:p></o:p></li> 
+ <li>Rust developers should note the deprecation of managed pointers (signified by the @ sigil) and transition code to using Rc (reference counted pointers) or Gc (garbage collected pointers).
+  <o:p></o:p></li> 
+</ul>
+<p class="MsoNormal" style="margin-bottom: 0.0001pt;">For complete details refer to the official Rust 0.9 release notes.&nbsp; Developers looking to learn more about this language have several different resources available in addition to the official Rust Tutorial:&nbsp; Rust is being taught at the University of Virginia in an undergraduate OS course and Steve Klabnik has recently prepared “A 30 minute introduction to Rust”.&nbsp;&nbsp;
+ <o:p></o:p></p>

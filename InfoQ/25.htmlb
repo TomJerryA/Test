@@ -1,283 +1,99 @@
-<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>利用Spec Flow编写自动化验收测试</h3><h2>对验收测试、Gherkin及Spec Flow的介绍</h2>
-<p>验收测试或功能测试是验证系统是否满足需求的一种测试。这些测试作为黑盒测试的一种，与其内部具体执行无关。验收测试只是用来验证系统是否符合某一需求。</p>
-<p>现在我们一起看下面这个关于网页登录功能的需求：</p>
-<pre>
-Feature: Login
-  In order to access my account
-  As a user of the website
-  I want to log into the website
-
-Scenario: Logging in with valid credentials
-  Given I am at the login page
-  When I fill in the following form
-  | field | value |
-  | Username | xtrumanx |
-  | Password | P@55w0Rd |
-  And I click the login button
-  Then I should be at the home page
-</pre>
-<p>其可读性非常强，是吧？以上的详细需求是通过Gherkin语言来描述的。Gherkin是一种领域特定语言，它允许我们在不解释具体执行细节的情况下，详细描述应用应该如何执行。以上详细需求的大部分内容是由自由文字组成；只有几个特定的Gherkin关键字：Feature、Scenario、Given、When、And和Then，其他的都是自由文字，并且主要记录了功能特性是如何被使用的。</p>
-<p>Gherkin是一种基于行的编程语言，场景中的每一行（Line）就是一个步骤（Step）。“Logging in with valid credentials”场景中的第一个步骤是“Given I am at the login page”。该步骤需要一个具体步骤定义，这样我们的测试执行者（test runner）才能知道如何去完成该步骤。Spec Flow中的步骤定义其实就是一个带有变量的方法,而该变量包含有该步骤的具体文本。所有步骤定义方法都需包含于一个含有Binding属性的类中。</p>
-<pre>
-[Binding]
-class LoginStepDefinitions
-{
-  [Given(&quot;I am at the login page&quot;)]
-  public void GivenIAmAtTheLoginPage()
-  {
-    // TODO
-  }
-}
-</pre>
-<p>上面的类和方法名都是随意的。真正重要的是应用到类和方法中的变量。如果没有它们，Spec Flow就无法确认步骤定义方法和具体步骤的绑定关系。</p>
+<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>业务架构的主题和规则</h3><p>业务架构已经成了个时髦的词儿。就像安全一样，所有人都听说过，也都有自己的看法，但只有极少一部分人知道它的真正含义是什么。</p>
+<p>本文在同时考虑主题和规则的情况下对业务架构的现象进行了探讨。不知道业务架构的主题，则很难判断业务架构角色的内涵和外延，比如规则。很多管理者和架构师会说：“这有什么问题？通过确定利益相关者，并收集他们的观点，基本上可以定义出业务架构。”很不幸，这种做法是极大的错误，它会引发很多自相矛盾的观点。</p>
+<p>通过利益相关者的观点定义业务架构的支持者潜意识里会将重点从“它是什么”变成“它能为我做什么”，并且会参照ISO/IEC/<i>IEEE</i> 42010标准<sup>1 </sup>处理观点和看法。然而，这个标准警告说观点不能定义而只能用来描述主题。我们在这里要把“描述”和“定义”区分开。可能收集了上千条描述也得不到主题的定义，因为所有描述或看法都是主观的，换句话说，每个人看到的都是他或她想看的。</p>
+<p>我注意到，在各种会议和网上对业务架构数不清的讨论中，大部分争论都是围绕着业务架构是做什么的，或者说应该做什么的，实际上这是另一码事。在我们定义对驾车的看法时，能给出车的定义吗？不能，因为驾车只与在车里的几个操作控制，以及它们对车怎么移动的影响相关。此外，还有从车上发现不了的驾驶规则和法规；只看车的外观和内饰看不出它的内部结构。如果在车上这样简单的例子都解决不了，那么对于业务架构而言，我们凭什么觉得利益相关者通过观察能比业务架构师知道得多？</p>
+<p>我在本文中介绍了一种方法，让我可以定义出和企业的业务领域无关的企业业务架构。结果我发现，业务架构比很多人想得都简单，同时跟企业中的其它业务有更复杂的关系。我将阐明这一结论的推理过程，同时列出一些成果。</p>
+<h2>业务架构定义</h2>
+<h3>企业的架构业务元素</h3>
+<p>业务架构可以从业务和形式化两个角度定义。第一种方式基于业务价值。货币价值是一种众所周知的业务价值。很多人都认为这个价值，包括货币商品的等价物，是业务唯一看重的价值。货币价值的抽象非常简单，并且建模、测量和管理都很方便；然而，在消费型社会中，钱不能吃，也不能穿，更不能带走。</p>
 <div id="lowerFullwidthVCR"></div>
-<p>现在就剩下步骤定义执行了。而这时候就该WatiN和Nunit上场了。</p>
-<p>WatiN是一个基于浏览器的自动化工具。我们将利用它来打开一个IE实例，浏览URL，填充表格，点击按钮或链接等。与此同时，我们将利用NUnit来断言我们的期望。尽管如此，WatiN和NUnit并非是必需的。也可以使用Selenium进行浏览器自动化；而事实上，任何单元测试框架都可用来断言，甚至可以使用Windows自带的应用自动化库，比如：<a href="http://white.codeplex.com/">White</a>，然后为相应的Windows Forms或WPF应用编写自动化验收测试。</p>
-<p>现在我们就来尝试为一个真实应用创建实际的验收测试。针对本文，我们将使用<a href="http://specflowdemoapp.apphb.com/">该实例程序</a>。读者可以从这里的<a href="https://bitbucket.org/xtrumanx/spec-flow-demo-app">repository</a>获取一份。该repository还包含完整的验收测试工程，但是我还是建议通过执行本文剩下的内容来创建自己的验收测试代码。</p>
-<h2>先决条件</h2>
-<p>Spec Flow为所有支持的第三方测试运行器授权以运行真正繁重的验收测试。正如前面所提的，我们将使用<a href="http://www.nunit.org/">NUnit</a>执行测试和<a href="http://watin.org/">WatiN</a>自动化浏览器。以下就是如何使用WatiN自动化浏览器为WatiN执行谷歌查询的例子(来自WaitN网站)。</p>
-<pre>
-[Test]
-public void SearchForWatiNOnGoogle()
-{
-  using (var browser = new IE(&quot;http://www.google.com&quot;))
-  {
-    browser.TextField(Find.ByName(&quot;q&quot;)).TypeText(&quot;WatiN&quot;);
-    browser.Button(Find.ByName(&quot;btnG&quot;)).Click();
-
-    Assert.IsTrue(browser.ContainsText(&quot;WatiN&quot;));
-  }
-}
-</pre>
-<p>上面的测试创建了一个新IE实例，然后将Google的URL传给构造器，然后由构造器让浏览器跳转到Google页面。随后寻找命名为“q”的文本框。该文本框就是你要输入具体查询内容的地方。找到该文本框后，输入“WatiN”。紧接着，查找命名为“btnG”的按钮，然后点击它。最后，由一个断言来确定页面上存在有“WatiN”（可以是页面上任何地方）。</p>
-<p>以上的代码为我们快速展示了通过WatiN自动化常规任务是多么的简单，这些任务可以是在浏览器上执行例如填写文本框、点击按钮等动作。</p>
-<p>接下来，就可以在Visual Studio中为你的验收测试创建新的类库工程。当你下载完NUnit和WatiN后，你将需要添加必需的DLL到你的验收测试工程中。从你的NUnit下载中添加一个nunit.framework.dll引用到你的验收测试工程。对于WatiN，你则需要添加两个DLL引用到你的验收测试工程：Interop.SHDocVw.dll和WatiN.Core.dll。</p>
-<p><img alt="" src="http://infoqstatic.com/resource/articles/Spec-Flow/zh/resources/1017001.jpg" _href="img://null" _p="true" /></p>
-<p>值得一提的是，你可以通过NuGet获取NUnit和WatiN这两个项目。这两个都很容易在NuGet中找到，并能自动添加到你的工程中。如果你已经在你的项目中使用NuGe了，大可以通过它下载这两个项目。</p>
-<p>从网站上获取一份<a href="http://www.specflow.org/">Spec Flow</a>，然后安装到你的系统中。跟NUnit和WatiN不同，你需要在系统中安装Spec Flow，而不是简单的拷贝Dll文件。Spec Flow自带有某些工具，每次往项目中添加一个特性文件，它都会创建相应的隐藏代码文件。另外，在你编辑特性文件时，它还带有一些语法高亮和其他调整。</p>
-<p>成功安装Spec Flow后，检查安装目录（默认为Program Files）。里面有一堆DLL文件，但是你只需要添加该引用到你的工程中：TechTalk.SpecFlow.dll。</p>
-<h2>建立验收测试工程</h2>
-<p>在我们进一步编写验收测试之前，我们需要建立我们的验收测试工程。我们将在工程中添加几个文件夹以便使项目更有条理。</p>
-<p>Features</p>
-<p>所有的说明都放在这个文件夹下。</p>
-<p>StepDefinitions</p>
-<p>所有情景步骤的步骤定义将放在这个文件夹下</p>
-<p>StepHelpers</p>
-<p><img alt="" src="http://infoqstatic.com/resource/articles/Spec-Flow/zh/resources/1017002.jpg" _href="img://null" _p="true" /></p>
-<h2>创建Spec Flow特性文件</h2>
-<p>在Features文件夹中添加一个新的名字为Login.feature的Spec Flow特性文件。该文件带有针对场景中新增特性的规格说明。可以将其删除，然后添加以下文本。</p>
-<pre>
-Feature: Login</pre>
-<p>Feature在Gherkin中是关键字。它需要在每个feature文件中出现一次，紧接着它是一个冒号和其特性名。然后你可以通过任意行的自由文字来描述该特性。为了保持简易性，Gherkin的创建者建议用户尽量将文档保持最短，并遵循以下格式：</p>
-<pre>
-In order to realize a named business value
-As an explicit system actor
-I want to gain some beneficial outcome which furthers the goal
-</pre>
-<p>个人看来，我更倾向于跳过上述描述，像登录这样能自我描述的特性，如果你尝试依据某一特定格式将其描述的话，反而让人困惑；有的时候很难区分出第一行中的“named business value”和第三行中你应描述的“beneficial outcome”之间的不同。需要记住的是该部分是自由文字，你可以任意描述。接下来就让我们先跳过这一段，开始编写情景。</p>
-<pre>
-Feature: Login
-Scenario: Logging in with valid credentials</pre>
-<p>跟Feature一样，Scenario也是Gherkin的一个关键字，其后面紧接着一个冒号和其命名。跟Feature不同的是，scenario不能在一行中就完成，它需要由各个步骤一起来完成scenario。我们可以想一想：我们需要做什么通过有效凭证来成功登录？</p>
-<ol> 
- <li>填写登录表单</li> 
- <li>点击登录按钮</li> 
-</ol>
-<p>但是且慢，在我们能够填写登录表单前，我们需要打开有着登录表单的页面。之后，我们需要检查我们是否成功登录。可以假设在登录后，我们将被重定向到主页，从而意味着我们已经成功登录。</p>
-<p>现在我们的scenario有了前提条件（比如：我们必须在登录页面）和后置条件（比如：我们在主页）。Gherkin中，前提条件需从关键字Given开始，而后置条件需要由关键字When开始。</p>
-<pre>
-Feature: Login
-
-Scenario: Logging in with valid credentials
-Given I am at the 'Login' page
-When I fill in the following form
-| field    | value    |
-| Username | testuser |
-| Password | testpass |
-And I click the 'Login' button
-Then I should be at the 'Home' page
-</pre>
-<p>是否注意到它的类表结构？Spec Flow会自动将第一行斜体化，该行在管道限制行中，并由管道开始。第一行为表头，紧接着各行中的每列将指代表头中定义的任意文本。比如，Password就是field在第二行的内容，而testuser则是value列在第一行的值。</p>
-<p>同时，也应注意到由And开始的步骤。And关键字可以使用于任一步骤之后，并将被自动认为与前一步骤属于同一类型。如果And步骤紧接着Given步骤， 那么该步骤也被认为是一个Given步骤。在上述例子中，该And步骤被认为是When步骤。When步骤不用做pre或post条件，但是scenario需要这一部分用于进一步执行。</p>
-<p>创建第一个步骤定义</p>
-<p>现在我们完成了对Login特性的定义，但是我们的test runner还不知道如何执行该特性情景中的每一个步骤。我们需要为Login特性情景中的4个步骤一一定义。为了完成这个，我们将在Step目录中创建一个类，并将其命名为LoginSteps。为了让Spec Flow知道该类含有步骤定义，我们给该类绑定下Binding属性。该Binding属性属于TechTalk.SpecFlow命名空间的一部分。</p>
-<pre>
-using TechTalk.SpecFlow;
-
-[Binding]
-class LoginSteps
-{
-}
-</pre>
-<p>接下来，我们需要给每个步骤创建一个方法。该方法将告诉Spec Flow如何执行每一步骤。现在我们就只为第一个步骤进行具体步骤定义：“Given I am at the ‘Login’page”。</p>
-<pre>
-[Given(&quot;I am at the 'Login' page&quot;)
-public void GivenIAmAtTheLoginPage()
-{
-  // TODO
-}
-</pre>
-<p>请注意到该方法带有一个属性。该属性将告诉Spec Flow此方法所指代的步骤，每个步骤都有相应的属性。任何一个feature文件中的任意一个以关键字“Given”开始的步骤，紧接着的文本是“I am at the ‘Login’page”的都将会与该方法配对。</p>
-<p>现在我们需要为该步骤定义编写具体执行。我们需要告诉WatiN启动浏览器，然后访问程序登录页面。但是在这之前我们需要创建一个浏览器实例。我们也要确保scenario中剩余步骤也将使用该浏览器实例。为了保证scenario中所有步骤使用的是同一个浏览器实例，我们需要为浏览器对象创建一个实例，并将其保存于ScenarioContext字典中。ScenarioContext字典可以用于保存Scenario执行过程中的数据。我们还要创建一个名为WebBrowser的helper类，该类将保存scenario执行时的浏览器实例。</p>
-<pre>
-using TechTalk.SpecFlow;
-using WatiN.Core;
-
-static class WebBrowser
-{
-  public static IE Current
-  {
-    get
-    {
-      if(!ScenarioContext.Current.ContainsKey(&quot;browser&quot;))
-        ScenarioContext.Current[&quot;browser&quot;] = new IE();
-
-      return ScenarioContext.Current[&quot;browser&quot;] as IE;
-    }
-  }
-}
-</pre>
-<p>以上的Helper类含有Current属性，它将获取现有浏览器用于目前正在执行的scenario。如果它没在ScenarioContext字典中找到浏览器实例，它将创建一个新浏览器实例，然后将其添加到字典中。这样存在于字典中的浏览器实例又回来了。</p>
-<p>最后，我们终于可以回去实现我们的步骤定义了。在示例应用中，登录页面存在于http://localhost:9876/authentication/login。我们将通过让当前Scenario浏览器实例定位到该URL以执行我们的步骤定义。我们可以通过浏览器实例回到主页，然后点击登录链接来执行我们的步骤定义，而这在现在看来是最简单的。然后，我们将重构我们的步骤定义，这样我们只要有一个步骤定义就能解决应用中所有页面跳转问题。</p>
-<pre>
-[Given(&quot;I am at the 'Login' page&quot;)
-public void GivenIAmAtTheLoginPage()
-{ 
-  // Make sure to add the namespace the WebBrowser class is inside 
-  WebBrowser.Current.GoTo(&quot;http://localhost:9876/authentication/login&quot;);
-} 
-</pre>
-<h2>结尾</h2>
-<p>现在我们已经为尝试执行验收测试做好准备了。虽然我们还没完成所有的步骤定义，但是我们想在进一步深入前，确保各方面都已经正确衔接上。在执行测试之前，我们要保证所有加到工程中的引用都已设置成了Copy Local。如果是通过NuGet添加的WatiN，Interop.SHDocVw DLL则默认将它的Embed Interop属性设置成True。这时，需要确保将Embed Interop属性设置成false，这样才能将它的Copy Local属性设置成True。</p>
-<p>同时，我们也需要在单线程的Apartment State中运行NUnit，不然就不能自动化IE浏览器。之所以选择IE，而非Firefox是因为Firefox持续更新它的主要版本，而这会不断破坏WatiN与Firefox之间的衔接。</p>
-<p>设置NUnit的Apartment State需要使用到配置文件。往工程中添加一个app.config文件，并添加以下配置。</p>
-<pre>
-&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot; ?&gt;
-&lt;configuration&gt;
-  &lt;configSections&gt;
-    &lt;sectionGroup name=&quot;NUnit&quot;&gt;
-      &lt;section name=&quot;TestRunner&quot; type=&quot;System.Configuration.NameValueSectionHandler&quot;/&gt;
-    &lt;/sectionGroup&gt;
-  &lt;/configSections&gt;
-  &lt;NUnit&gt;
-    &lt;TestRunner&gt;
-      &lt;!-- Valid values are STA,MTA. Others ignored. --&gt;
-      &lt;add key=&quot;ApartmentState&quot; value=&quot;STA&quot; /&gt;     
-    &lt;/TestRunner&gt;
-  &lt;/NUnit&gt;
-&lt;/configuration&gt;
-</pre>
-<h2>执行验收测试</h2>
-<p>Login.feature文件将有个名字为Login.feature.cs（或者.vb）的代码隐藏文件。该文件是含有TestFixture属性的类，这样NUnit才能知道需要测试哪个类。如果你的Visual Studio中已经安装了NUnit测试运行插件，比如：TestDriven.Net或ReSharper，那么你就可以使用Login.feature.cs文件来运行测试。如果你没有相应的测试插件，那么你可以打开NUnit自带的、位于应用目录下的测试运行器，然后将其指向由验收测试产生的配置文件中，这样它将定位Login.feature.cs中的测试设置。</p>
-<p>在执行测试前，保证应用的服务器处于运行状态。然后运行程序,一个新的IE实例将被打开，并跳转到登陆页面。如果做到了这些，那就说明各个部分已经被正确配置，我们就可以继续完成剩余的步骤定义。如果IE没有打开，或没有跳转到登陆页面，那就要进一步调试了。</p>
-<h2>完成剩余的步骤定义</h2>
-<p>编写剩余步骤定义将会非常简单。你只需对WatiN API有一定了解，这样就可以配置WatiN以填写表单或查找按钮和链接，然后对其点击。</p>
-<p>首先，我们尝试情景中的第二个步骤：“When I fill in the following Form”。需要在LoginSteps类中创建一个方法，并带有一个变量将其绑定到我们目前正在工作的步骤上。</p>
-<pre>
-[When(&quot;I fill in the following form&quot;)]
-public void WhenIFillInTheFollowingForm(TechTalk.SpecFlow.Table table)
-{
-  // TODO
-}
-</pre>
-<p>注意传到该步骤定义中的参数。该Table对象包含有我们在情景中所描述的值。而WatiN在其命名空间中也有一个Table类，为了避免冲突，我对该Table对象采用了完全限定名。该Table对象将由行组成。行中的每列可以通过索引或列名来获取。列名由情景中表的第一行来定义。</p>
-<pre>
-[When(&quot;I fill in the following form&quot;)]
-public void WhenIFillInTheFollowingForm(TechTalk.SpecFlow.Table table)
-{
-  foreach(var row in table.Rows)
-  {
-    var textField = WebBrowser.Current.TextField(Find.ByName(row[&quot;field&quot;]));
-
-    if(!textField.Exists)
-      Assert.Fail(&quot;Expected to find a text field with the name of '{0}'.&quot;, row[&quot;field&quot;]);
-    textField.TypeText(row[&quot;value&quot;]);
-}  
-}
-</pre>
-<p>是的，只需要5行，我们就完成了填写表单的步骤定义。我们首先循环表中的行，然后试图查找相应的带有命名属性的field文本，用来匹配当前行中field列值。如果没有匹配到相应的文本field，测试将会失败（但是会有相应信息被记录下来）。但是如果我们找到一个匹配的文本field，WatiN将会被指示输入在当前行所找到的列值。</p>
-<p>接下来剩余的步骤定义也基本类似。以下就是我们下个步骤的代码：“And I click the ‘Login’button”。</p>
-<pre>
-[When(&quot;I click the 'Login' button&quot;)]
-public void AndIClickTheLoginButton()
-{
-  var loginButton = WebBrowser.Current.Button(Find.ByValue(&quot;Login&quot;));
-
-  if(!loginButton.Exists)
-    Assert.Fail(&quot;Expected to find a button with the value of 'Login'.&quot;);
-
-  loginButton.Click();
-}
-</pre>
-<p>而最后一步，我们则需要弄清如何去验证我们是否在主页上。我们可以检测其文件标题来看它是否满足我们的需要；或者检测URL来查看其是否与期望的主页URL匹配。这里我们将通过URL来检测。但需要记住的是步骤定义的执行会完全依赖于具体应用：如果我们大量使用Ajax进行页面切换，URL可能不会被更新，从而可能无法验证我们是否在正确页面上。</p>
-<pre>
-[Then(&quot;I should be at the 'Home' page&quot;)]
-public void ThenIShouldBeAtTheHomePage()
-{
-  var expectedURL = &quot;http://localhost:9876/&quot;;
-  var actualURL = WebBrowser.Current.Url;
-  Assert.AreEqual(expectedURL, actualURL);
-}
-</pre>
-<p>现在重新执行验收测试，而这次它将执行所有步骤。如果成功了，那么恭喜你，你成功地通过Spec Flow编写了第一个验收测试。</p>
-<h2>重构测试代码</h2>
-<p>现在我们的步骤定义已经成功运行了，可是我们还是需要停下来回顾一下。我们已经有了针对登录按钮的步骤定义，有很大可能我们的应用中将有大量的按钮。我们是否为验收测试集中的每个按钮提供一个步骤定义呢？这些步骤定义中唯一一个需要修改的地方就是WatiN在某页面上寻找期望按钮所对应的具体文本，以下就是个例子：</p>
-<pre>
-[When(&quot;I click the 'Login' button&quot;)]
-public void AndIClickTheLoginButton()
-{
-  var loginButton = WebBrowser.Current.Button(Find.ByValue(&quot;Login&quot;));
-
-  if(!loginButton.Exists)
-    Assert.Fail(&quot;Expected to find a button with the value of 'Login'.&quot;);
-
-  loginButton.Click();
-}
-
-[When(&quot;I click the 'Register' button&quot;)]
-public void AndIClickTheRegisterButton()
-{
-  var registerButton = WebBrowser.Current.Button(Find.ByValue(&quot;Register&quot;));
-
-  if(!registerButton.Exists)
-    Assert.Fail(&quot;Expected to find a button with the value of 'Register'.&quot;);
-
-  registerButton.Click();
-}
-</pre>
-<p>幸运的是，Spec Flow为该问题提供了解决方案。你可以使用正则表达式，该表达式必须是传递给绑定属性的字符串，这样我们就将不同步骤绑定到同一个步骤定义。任何由该正则表达式捕获的文本都可以当作一个参数传递给步骤定义。具体例子如下：</p>
-<pre>
-[When(&quot;I click the '(.*)' button&quot;)]
-public void AndIClickAButton(string buttonText)
-{
-  var button = WebBrowser.Current.Button(Find.ByValue(buttonText));
-
-  if(!button.Exists)
-    Assert.Fail(&quot;Expected to find a button with the value of '{0}'.&quot;, buttonText);
-
-  button.Click();
-}
-</pre>
-<p>该步骤定义可以是以下任意一种：</p>
+<p>在成立一个新公司时，要写出企业的商业模式，就是公司的“业务面”。它通常是由企业的核心业务职能组成的，是企业在市场上区分于其它企业的关键。业务职能是企业跟消费型社会中的“供需”因素之间唯一的连接。</p>
+<p>仅用货币价值衡量这个连接有点儿鼠目寸光。货币价值会混淆需求满足机制，经过长期的运营，在需求发生变化时，公司可能会错过调整这种机制以跟进需求的关键点。如果客户满意度下降了，公司的营收可能暂时还不会受到影响，但等到营收开始下降时可能就太迟了，公司在客户那里的名声可能已经坏掉了。也就是说货币价值可以用来衡量业务成效，但不应该作为唯一的标准。</p>
+<p>与此同时，在消费型社会中，业务职能可以确定所有公司的业务价值。如果这个职能能够满足消费者的需求，它们就能帮公司赚钱。也就是说第二种方式用货币和职能来衡量业务架构。如果业务架构是基于业务职能的，那公司业务的精华和战略目标很可能能够适应市场的变化。</p>
+<p>在讨论业务架构时，我首先假定它是个架构。我选了ISO/IEC/<i>IEEE</i> 42010 <sup>1</sup> 中对架构的定义，并对它进行了扩展：一个系统/结构的组织体现在它基本能够自给的内聚元素中，它们彼此之间以及跟环境的关系中，以及能够指导其设计和进化的共享原则中。如你所见，这个定义并不局限于业务或技术。</p>
+<p>有了这个定义，我对企业中几个显著的业务元素进行了考察，其中包括会被其他作者归结到业务架构中的那些。我所分析的元素是企业战略、业务能力、财务（营收/利润）目标、业务职能、客户和供应商、人员和业务流程、治理结构、业务信息、组织结构，以及对经济活动负责的结构。</p>
+<p>在上面列举的这些元素中，只有业务职能和业务信息具备如下特质：</p>
 <ul> 
- <li>点击‘登陆’按钮</li> 
- <li>点击‘注册’按钮</li> 
- <li>点击‘任意文本’按钮</li> 
+ <li>根本性—— 一个企业没有它们就无法存在，并且它们是不可取代的</li> 
 </ul>
-<p>你可以使用该技巧来让所有步骤定义可重用。让所有的步骤定义都具有可重用性是个非常好的想法，我们应该避免编写只有某一特定情景才可以用的步骤定义。可重用性允许你写出的Scenario能立即使用，因为你已经拥有一个可以重复使用的步骤定义。但是也没必要在需要前就把步骤定义编写出来，在需要时编写就好了。大多数情况下，你的测试所需要做的基本上是同样的事情：跳转到一个页面，填写表单，点击之类的。只有在极少数情况下，你才需要为一个情景编写特殊步骤定义，比如验证jQuery UI日历是否在点击一个需要日期值的文本框时弹出，这样不寻常的例子时候才需要。</p>
-<h2>对于具体如何重构你的步骤定义，我将其作为练习留给你，确保每个都具有可重用性。之后，你就可以编写新的特性文件，而因为所需的步骤定义都已经准备好了，它们都可以立刻工作。当然，你将需要更多的步骤定义来自动化不同行为（比如：点击一个链接），你也需要进一步改善当前步骤定义，以便在不同情景中也能使用。你将注意到我们的表单填充步骤定义中处理的表单只带有文本框。如果你想勾选复选框，通过value或ID寻找按钮，或其它与表单相关操作，那你就需要在表单填充步骤定义中添加相应的逻辑。</h2>
-<h2>总结</h2>
-<p>总之，以上就是使用Spec Flow编写验收测试之旅。尽管如此，Spec Flow依然有更多特性需要你自己去发现。比如：Spec Flow还有个跟踪机制，因此你能跟踪某个指定特性在特定特性，情景或步骤前后是如何执行某些代码。对于以下情况，它就会起到非常大的作用，比如：如果你需要在完成含有登陆功能的场景后的登出；测试前准备数据库，或只是简单地在每个测试结束后关闭浏览器窗口。</p>
-<p>随着测试不断被创建，你会发现完成验收测试集所需的时间也会随之增加。但是你的测试执行得越快，你就能越快得到回馈，并找到问题所在。你需要尽可能快地执行你的测试。方法之一就是将你的测试并行化，而非按顺序执行，所有测试将一起执行，而且将更快结束。但是Spec Flow并没有提供并行处理功能，因此需要从别处想办法。如果你使用NUnit，你可以查看PNUnit看其是否满足你的并行需求。</p>
-<p>Gherkin，我们曾经是使用DSL来编写我们的详细需求，它被设计作为衔接技术人员与非技术利益相关者之间的桥梁，以便他们在某一特定特性应该如何运行上能够达成一致。有的团队甚至有非技术利益相关者参与到使用Given-When-Then语句来编写实际详细需求。可以想象到，培训大家如何做到这点并不太难，但是其结果却大大不同。</p>
-<p>也有一部分人更进一步地使用Spec Flow。他们在开始所有新特性开发时，首先就是编写详细需求，接着单元测试，最后才是真正的编码。然后他们通过常规的TDD red-green-refactor循环通过单元测试，最后通过验收测试。如果你已经在实践TDD，打算为项目编写验收测试，那你应该尝试下验收测试驱动开发。</p>
-<p>无论你是通过什么途径，你都需确保它对你、还有你的工程都要行之有效。如果你还处于建模状态，并不断修改你的应用，持续更新验收测试可能会造成一定时间拖延。什么时候应该着手编写验收测试是你的决定，只有你能保证它将发生。</p>
+<ul> 
+ <li>自给性—— 它们不是从其它东西中推导出来的，可以独立存在</li> 
+</ul>
+<ul> 
+ <li>内聚性——它们是一致并互相关联的</li> 
+</ul>
+<ul> 
+ <li>导向相似性——它们有相同的指导原则。</li> 
+</ul>
+<p>也就是说这两个元素有架构化的属性。至于其它企业元素的特性，我可以简单地介绍一下：</p>
+<ul> 
+ <li>企业战略——不能自给，其指导原则也可能跟其他企业元素的原则不同。企业战略跟企业的商业模式共同构成了业务架构的输入和目标。企业战略是由首席级管理人员制定并督导的。业务架构只是会促进战略的制定，并通过实践验证它的最终版本。</li> 
+</ul>
+<ul> 
+ <li>业务能力——是特定业务职能或某几个业务职能组合的具体实现。业务能力是实现业务架构的主要成果之一，而架构本身只是确定了业务能力的职能部分。</li> 
+</ul>
+<ul> 
+ <li>财务目标——构成了一个结构，而不是架构，因为它们不能自给，可能也不是内聚的。在本质上，企业的财务结构是由几个因素决定的，包括业务职能、运营及组织结构、实践方法及技术，以及市场的状态。</li> 
+</ul>
+<ul> 
+ <li>客户和供应商——业务架构确定的是企业内部的元素，而客户和供应商是外部元素；跟特定客户及供应商的关系是业务架构模型的输入和输出。架构模型中只包含客户和供应商的类型。</li> 
+</ul>
+<ul> 
+ <li>人员——不能自给，可能也不是内聚的，可以被取代及外部化（外包）。业务架构（模型）没有人员也可以存在，而业务架构的实现不行；所有架构的实现都是由人完成的。</li> 
+</ul>
+<ul> 
+ <li>业务流程——是业务职能的实现形式，更准确地说，是业务服务的实现形式。也就是说业务流程不是架构化的元素，而职能/服务可以是。</li> 
+</ul>
+<ul> 
+ <li>治理结构、组织结构，以及对经济活动负责的结构——是业务架构实现的主要输出；其中有一些也是业务架构的输入。如果它们偏离了业务架构的决策和方向，那企业必须调整/修改这些实现元素，以免在日常活动中遇到麻烦。</li> 
+</ul>
+<p>因此，尽管上面列出的这些元素对企业都很重要，但它们不属于架构。它们形成了业务架构存在和运转的环境。并不是所有一切对企业重要的东西都是业务架构（就像车里的东西不全是发动机）；业务架构是能够影响企业中一切东西的精华。</p>
+<h2>业务架构的主题</h2>
+<p>企业在开展业务时，会提出<b>为什么</b>、<b>是什么</b>、<b>何人</b>、<b>何地</b> 以及<b>何时</b>几个问题，业务架构的主题就是由这些问题的答案定义的。也就是说业务架构会详尽阐述企业的商业模式和企业战略规划，将它们转换到业务职能上去，而公司的其余部分则要解决这一职能如何或应该如何实现。</p>
+<p>企业业务架构是由业务职能和业务信息组成的架构，它跨越业务管理和企业的组织结构，转化企业商业模式和企业战略规划中确定的目标和宗旨，定义出企业业务职能和业务信息。业务架构的这个定义是建立在前面那个架构定义基础之上的。</p>
+<p>职能架构并不是新思想；尽管不是十分明确，建模语言ArchiMate 称之为“业务职能架构”。(BFA)。它的定义是“<i>BFA</i>描述了执行流程的情境，并且可以辅助完成企业最重要目标的建模和可视化” <sup>2</sup>。还有， “企业的业务模型...描述了业务流程、数据和信息、企业宗旨、成功的关键因素、信息区域，以及这些部分彼此之间的关系<i> </i><sup>2</sup>。”按这个逻辑，几乎企业中的一切都是“业务架构”。</p>
+<p>相反，我觉得业务架构只是定义（不是描述）了职能的情境，不涉及具体实现，而“企业最重要的目标”是出现在企业战略规划里的。此外，就像我们之前讨论过的，业务架构不描述 “业务流程、数据和信息、企业宗旨、成功的关键因素、组织结构”。所有这些都是架构实现的因素。企业宗旨和成功的关键因素不能出现在架构中，因为它们是架构应该遵守的外部标准。</p>
+<p>业务架构和它们的实现之间是M:M的关系。某个业务架构可能有几种可选的实现；反之亦然。实现不能用来定义架构。架构应该提供职能、信息和运营质量（比如可用性、扩展性、健壮性及安全性等等）的模型。因此，要在业务和技术两个领域中寻找解决方案的后者，会把业务架构当做需求源。</p>
+<p>业务架构会处理当前的和规划好的职能架构模型。已有的职能通常被解读为业务竞争力，而规划好的职能是通过业务能力描述的（即在特定业务环境下实现某种业务职能/特性的潜力）。业务竞争力可能包括激励价值和当前行为，而业务能力定义了在特定条件出现时企业能做什么。</p>
+<p>能力是业务职能和它可能（保留）的实现两者的组合，如图1所示。业务架构为每种能力定义了业务职能/特性的组合，而企业管理定义/预留了实现细节。无论如何，业务能力只是业务架构做什么以及业务架构规则定义的一部分。没有定义好/预留好实现的业务职能/特性列举是毫无价值的。比如你定义/规划了一次塞舌尔群岛的度假之旅，但如果所有的票都已经卖光了，这个计划就没用了。</p>
+<p><img width="600" alt="" src="http://infoqstatic.com/resource/articles/business-architecture/zh/resources/1212006.png" _href="img://null" _p="true" /></p>
+<p>图 1. 业务能力的组成部分</p>
+<p>业务架构协会(BAG)<sup>5</sup>提出了一个完全基于能力、价值流和组织的概念，前面描述的业务架构跟他们提出的概念不同。这个架构指出愿景和战略是架构的输入，而战术是实现方法；由管理和组织共享的业务能力是主要实现机制，它不一定能跟架构相匹配（很不幸）；价值流是实现的结果，也可能跟架构的方向不同；架构设计项目跟实现项目是分开的，并且政策-规则-法规-指标-措施是架构对其他和其自身治理的贡献，比如在架构之外的。业务架构师可能是作为规则的一部分参与所有这些活动，而不是作为架构的主题。那就是说BAG并不是新方式，只是对将架构模型-规划和实现混合到一起的已有实践的支持，比如意图和现实混合。众所周知，根据业务环境，价值流和能力有可能落实，也有可能不能落实，比如构建假体的架构可能不是使用资源的最佳方式。</p>
+<p>此外，我还发现BAG有几个原则是自相矛盾的。比如说，如果“业务架构的范围就是业务的范围”，那怎么能规定“业务架构是可重用的”呢，它根本不可能重用啊。或者，如果“业务架构不是规定性的”，企业中的所有人都可以做自己想做的，业务架构就成了多余的了。本文中呈现的业务架构范式是规定性的，它定义的业务职能和信息模型要求企业中的其他元素应该尽力实现。</p>
+<p>即便没有正式记录，甚至都没被察觉，但每个企业都有自己的业务架构。只有业务职能和业务信息模型共同构成了特定的业务架构。企业的其它业务元素只是促成了架构方案的出现。这些元素或者影响业务架构，或者被业务架构影响，但都不构成业务架构。</p>
+<h2>职能业务架构的影响</h2>
+<p>基于职能和信息的业务架构本质上是一个实现了业务职能并提供业务能力的服务架构。换句话说，这种业务架构会引导企业向面向服务的方向发展<sup>3</sup>，包括业务服务的结构。这样的架构能将战略业务目标/宗旨、回报、消费者需求和企业文化连接到一起<sup>4</sup>。它还需要特定的公司组织和运营结构。这种架构将企业变成最适合在高度动态的外部环境中生存的形态。</p>
+<p>通过对业务服务的重新组合，面向服务可以迅速适应变化。如果企业不想变得灵活，不在管理和组织结构上进行调整，那就不可能实现业务方案的灵活性<sup>6</sup> 。业务架构面向服务的特性在企业中表现为主要的巩固因素，能够跟社会结构、企业文化、内部业务单元跟市场上的外部活动协同工作相兼容。</p>
+<p>面向服务的业务架构适用于各种类型、各种规模的公司。面向服务基于业务创新、业务方案集成、业务灵活性和可扩充性，并融合了技术的可扩展性、安全性和可管理性，能够形成市场竞争优势。</p>
+<p>形成业务架构的企业服务是组织和运营的实体，通过手动或自动的方式实现了特定的业务职能。这些实体通常跨越公司的业务领域和IT领域<sup>4</sup>。信息技术作为业务职能的执行形式，在企业服务的优化中占有重要地位。粒度合适的服务组成了一个强大的工具，可以解决大部分的新业务任务和已有问题。</p>
+<p>企业服务所提供的抽象级别让最完备的战术和战略管理成为可能。还允许出现多个有能力和竞争力的业务架构实现。因此，通过重新安排相互协作的企业服务的结构可能能够提升投入/产出的效率和客户价值。</p>
+<h2>对业务架构规则的几点说明</h2>
+<p>业务架构的规则是业务需求和业务能力之间的桥梁，提供了一种将<b>是什么</b>转化成<b>怎么做</b>的方法。既然业务架构是定义业务组织、管理和运营结构的需求资源，那业务架构的规则就要求业务架构能用在两个基本的维度中。首先，它们为企业的当前状态定义了业务职能模型，并规划出达到战略状态的职能能力。其次，它们通过改变产品、服务、组织和运营结构辅助企业管理业务转型的发展。这两个都会对企业财务目标的达成做出贡献。业务架构中的主题和规则的关系如图2所示。</p>
+<p><img width="600" alt="" src="http://infoqstatic.com/resource/articles/business-architecture/zh/resources/1212007.png" _href="img://null" _p="true" /></p>
+<p>图 2. 业务架构的主题和 规则</p>
+<p>业务架构处理的并不仅仅是业务架构。通过业务架构的规则，它的影响能渗透到企业的很多元素中，但这些元素并不是架构所有或管控的。业务架构师将首席级高管的指令跟企业战略规划的方向及市场分析整合到一起，将指令变成业务职能组件——职能、特性、服务和产品。</p>
+<p>业务架构师对经营业绩的贡献很大，但他们不定义业绩或营收，或者其它财务指标，这是公司各管理层的工作。业务架构师针对某些业绩或营收设计解决方案，但我不会管这叫业绩或营收建模。经营业绩和营收可以当做对扩展性、灵活性和健壮性这些业务架构品质的引导驱动因素。</p>
+<p>业务架构师定义了业务单位应该承担的业务方案和/或任务，以便能跟上企业战略规划和公司的目标和宗旨。这些决策会影响或应该会影响业务运营结构、业务和技术管理结构、业务不熟、参评策略以及相关的技术交付，尽管哪个单位做什么是由相关的管理层定义的。</p>
+<p>业务架构规则需要做出某些决策，但目前这是管理层的特权，应该跟业务架构师分享或授权给他们。这就是为什么业务架构师应该有比较高的业务级别，比如经理级或更高级别，因为他们要对业务管理的高层和中层施加影响。</p>
+<p>业务架构师的工作主要着眼于中长期收益。短期方案，可以定性为“今天的收入不管明天的开支”或者“明天将是新的业务”，明显成本更高，风险更大，因为这样的业务很可能没有“明天”。尽管架构上出现错误的可能性不可否认，但在实现过程中更常见的是短期思维对架构方案的破坏。</p>
+<p>总之，业务架构的规则 是对业务架构师这一角色的主要和次要职责的描述。把业务架构的主题和规则分开，可以分清架构模型层面和它在整个企业内的实现<sup>4</sup>。这还有助于理清业务架构师和公司管理层两者各自的职责。</p>
+<h2>结论</h2>
+<p>本文讨论了业务架构主题和 规则 的定义，它的推理和选择。所用的关键方法是把架构的主题和 规则 分开，把架构和实现分开。业务架构师是那些开发架构主题模型，并在模型的实现中为公司其他部分提供辅助的人。</p>
+<p>跟其它定义业务架构的方式相反，本文指出只有业务职能和业务信息才能被当作架构实体，共同形成业务架构的主题。业务架构的规则描述了业务架构师这一角色的主要和次要任务。</p>
+<p>业务架构的这种定义把业务职能和实现它的业务服务– 获取业务能力的手段– 放到了第一线。基于业务服务的业务架构是实现企业商业模式和战略业务目标的最佳模型。它还能把战略业务目标/宗旨、营收、客户需求和企业文化整合起来。这个架构适合所有业务领域中任何规模的企业；它能够把一家公司变成面向服务的企业，最适合在高度动态的外部环境中经营业务。</p>
+<h2>资源</h2>
+<hr width="33%" size="1" align="left" />
+<p><sup>1</sup> 《<a href="http://www.iso-architecture.org/ieee-1471/">软件密集型系统架构描述的推荐规程</a>》.&nbsp; ISO/IEC/IEEE 42010:2011, 系统和软件工程 — 架构描述</p>
+<p><sup>2</sup> 《口袋书: 企业架构管理》. BiZZdesign 学院, ISBN: 979-90-809722-4-7. 2011</p>
+<p><sup>3</sup> Michael Poulin. 《<a href="http://www.mpoulin.com/ladder-to-soe/">成为服务型企业的阶梯</a>》. Trobador 出版社, ISBN 978-1848761-629, 2009.</p>
+<p><sup>4</sup> Michael Poulin.《<a href="http://www.mpoulin.com/architects-know-what-manager-dont/">架构师知道经理人不知道的那些事儿</a>》. BuTechCon, ISBN 978-0-9575199-0-9, 2013.</p>
+<p><sup>5</sup> 业务架构协会的网站在 <a href="http://www.businessarchitectureguild.org/">这里</a> ，但它的大部分内容只对会员开放。</p>
+<p><sup>6</sup> 评估方案灵活性的方法在<sup>4</sup>中有描述</p>
 <h2>关于作者</h2>
-<p><img src="http://infoqstatic.com/resource/articles/Spec-Flow/zh/resources/1017003.JPG" style="float: left; margin-right: 10px" alt="" _href="img://null" _p="true" /> <b>Mustafa Saeed Haji Ali</b> 现居于Hargeisa，Somaliland。作为一名软件开发工程师，他通常利用ASP.Net MVC来工作。Mustafa热衷于测试和使用JaveScript框架，比如:KnockoutJS,AngularJS和SignalR。在传播最佳实践上，Mustafa也有极大的热情。</p>
-<div style="clear:both">
- &nbsp;
-</div>
-<p><strong>参考英文原文:</strong> <a href="http://www.infoq.com/articles/Spec-Flow">Writing Automated Acceptance Tests with Spec Flow</a></p>
+<p><img alt="" style="float: left; margin-right: 10px" src="http://infoqstatic.com/resource/articles/business-architecture/zh/resources/1212008.jpg" _href="img://null" _p="true" /><strong>Michael Poulin</strong> 是BuTechCon的业务和技术架构主管，这是一家总部位于英国的公司。他在英国和美国积累了丰富的架构经验。主要工作是弥合业务架构和现代技术之间的差距。</p>
+<p>Michael提供专业的培训和知识交流，他还是BCS和IASA的成员。Michael在企业架构领域非常积极，对OASIS SOA标准做出了积极的贡献。Michael已经撰写了多种出版物，包括“成为服务型企业的阶梯”和“架构师知道经理人不知道的那些事”，他编写了多篇文章和博客，还在在会议上演讲。可以通过<a href="mailto:michael.poulin@mpoulin.com">michael.poulin@mpoulin.com</a>联系到他。</p>
+<div style="clear:both"></div>
+<p><strong>原文英文链接：</strong><a href="http://www.infoq.com/articles/business-architecture">The Subject and Discipline of Business Architecture</a></p>
 <hr />
-<p>感谢<a href="http://www.infoq.com/cn/author/陈菲">陈菲</a>对本文的审校。</p>
+<p>感谢<a href="http://www.infoq.com/cn/author/侯伯薇">侯伯薇</a>对本文的审校。</p>
 <p>给InfoQ中文站投稿或者参与内容翻译工作，请邮件至<a href="mailto:editors@cn.infoq.com">editors@cn.infoq.com</a>。也欢迎大家通过新浪微博（<a href="http://www.weibo.com/infoqchina">@InfoQ</a>）或者腾讯微博（<a href="http://t.qq.com/infoqchina">@InfoQ</a>）关注我们，并与我们的编辑和其他读者朋友交流。</p><br><br><br><br><br><br></body></html>

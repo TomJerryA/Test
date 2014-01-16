@@ -1,13 +1,54 @@
-<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>在GPU上运行Hadoop任务？ParallelX或许将带来更多帮助</h3><p>在面对大规模计算密集型算法时，<a href="http://en.wikipedia.org/wiki/MapReduce">MapReduce</a>范式的表现并不总是很理想。为了解决其瓶颈，一支小型创业团队构建了名为<a href="http://www.parallelx.com/">ParallelX</a>的产品——它将通过利用GPU的运算能力，为<a href="http://hadoop.apache.org/">Hadoop</a>任务带来显著的提升。</p>
-<p>ParallelX的联合创始人<a href="https://twitter.com/tonydiepenbrock">Tony Diepenbrock</a>表示，这是一个“GPU编译器，它能够把用户使用Java编写的代码转化为OpenCL，并在亚马逊AWS GPU云上运行”。它的最终产品是一项与亚马逊<a href="http://aws.amazon.com/elasticmapreduce/">Elastic MapReduce</a>类似的服务，只不过不同之处在于它将利用<a href="http://aws.amazon.com/ec2/instance-types">EC2 GPU实例类型</a>。</p>
-<p>毫无疑问，亚马逊并不是唯一一家提供GPU服务器的云服务提供商，其他诸如<a href="http://www.softlayer.com/dedicated-servers/high-performance-computing">IBM/Softlayer</a>或<a href="http://www.nimbix.net/nvidia/">Nimbix</a>等公司也提供使用NVidia GPU的服务器。然而，当被问起ParallelX是否将会支持亚马逊之外的其他不同云服务提供商时，Tony的答复是“暂时还没有，不过我们将拥有一套SDK，供使用内部Hadoop集群的客户使用。大部分GPU云服务提供商在HPC云中提供GPU，但我们希望能够以比较低廉的价格使用云服务中的GPU。毕竟，这正是Hadoop的设计初衷——便宜的商用硬件。”</p>
-<p>在更好地理解ParallelX编译器能够做哪些事情之前，我们需要了解现在有不同类型的GPU，它们配备了不同的并行计算平台，例如<a href="http://www.nvidia.com/object/cuda_home_new.html">CUDA</a>或<a href="http://en.wikipedia.org/wiki/OpenCL">OpenCL</a>。Tony提到，ParallelX所适用的工作场景是“编译器将把JVM字节码转换为OpenCL 1.2的代码，从而能够通过OpenCL编译器编译为Shader汇编，以便在GPU上运行。现在同样也有一些FPGA硬件能够运行OpenCL代码，但是要想获得对于广义并行硬件的支持，可能还需要等到未来的某一天。”尽管ParallelX并不支持Java源代码中的反射或原生调用，它的目标依旧是确保开发者只须要对其MapReduce任务的代码进行必要的调整——越少越好。</p>
-<p>随着ParallelX团队开始研究I/O-Bound任务的吞吐量增长，Tony发现他们的产品“也能够支持实时处理、以Pig和Hive代码表示的查询，以及针对I/O Bound任务的大数据集流。在我们测试中，使用我们的流水线框架，I/O吞吐几乎能够达到GPU计算吞吐能力的水平。”</p>
-<p>虽然ParallelX团队目前正在专注于针对<a href="http://docs.aws.amazon.com/ElasticMapReduce/latest/DeveloperGuide/emr-plan-hadoop-differences.htmlhttp:/docs.aws.amazon.com/ElasticMapReduce/latest/DeveloperGuide/emr-plan-hadoop-differences.html">亚马逊的Hadoop版本分支</a>的努力，但他们也在规划为其他流行的Hadoop版本分支（例如<a href="http://www.cloudera.com/content/cloudera/en/products-and-services/cdh.html">Cloudera's CDH</a>）进行开发， 而且毫无疑问，在ParallelX的环境中，利用这些商业分支对<a href="http://hive.apache.org/">Hive</a>和<a href="http://pig.apache.org/">Pig</a>进行的诸多改进，将是一件非常有益的事情。</p>
-<p>ParallelX拥有独一无二的演进故事，Tony在<a href="https://medium.com/game-changing-ideas/c3c516146599">一篇文章</a>中介绍了这个已经持续了2.5年的史诗般项目的历程：首先起于为某社团开发的一个社交网络，随后是用于Facebook的Widget插件，接下来则是一个识别剽窃代码的工具。这些项目拥有一些共性：图解分析与基于GPU的算法——几乎，ParallelX的理念便由此自然而然地浮现出来了。</p>
-<p>ParallelX适合许多种不同的工作负载，不过它主要聚焦在像机器学习这样的高性能计算和图形处理这样的繁重分析方面。ParallelX团队举了一个例子来说明其能力：它能够在一秒内，将一个大型社团联谊网络在单一GPU上进行集群——在过去，这需要并行利用六台计算机，耗时一小时才能完成。而且在实践中并无限制，任何针对MapReduce编写的程序都可以使用ParallelX编译为GPU可运行的代码。</p>
-<p>ParallelX团队正在规划在未来发布它的数据和白皮书，以展示这个“从Hadoop到GPU”的编译器在面对现实世界中的工作负载时的性能。对于这个话题，社区的反响中存在一些轻微的不同声音。<a href="https://news.ycombinator.com/item?id=6762653">一些人正在等着</a>阅读这份白皮书，而后再决定是否转型到ParallelX。当这一消息在<a href="https://news.ycombinator.com/">Hacker News</a>上发布后，我们可以在评论中找到类似的言论：“非凡的声明需要非凡的佐证。”</p>
-<p>现在，开发者已经能够使用<a href="https://code.google.com/p/aparapi/">Aparapi</a>，来体验一下在Hadoop上运用GPU能力的感觉。Aparapi是一套Java API，通过将Java字节码转化为OpenCL，支持开发者在GPU上运行特定的代码段，而且这些代码段能够嵌入到任何用Java编写的MapReduce任务中。</p>
-<p>在面向对复杂算法的需求越来越旺盛的研究人群，推广Hadoop的过程中，ParallelX可能会成为意义深远的一步。例如，通过使用由<a href="http://hama.apache.org/">Apache Hama</a>推广的<a href="http://zh.wikipedia.org/wiki/%E6%95%B4%E4%BD%93%E5%90%8C%E6%AD%A5%E5%B9%B6%E8%A1%8C%E8%AE%A1%E7%AE%97%E6%A8%A1%E5%9E%8B">整体同步并行计算</a>模型，图解分析算法能够获得非常好的性能表现，而如果ParallelX能够与诸如<a href="http://giraph.apache.org/">Apache Giraph</a>——它能够将图解分析算法作为MapReduce任务运行——这样的项目相结合，将为任何数据科学家的图解分析工具箱增添一件有价值的工具。</p>
-<p>读者现在可以使用电子邮件地址，<a href="http://www.parallelx.com/">在线注册ParallelX的Beta版本</a>。ParallelX拟将支持一套免费增值计划（freemium plan），允许访问强大的GPU，并使用有限的存储空间。</p>
-<p><strong>查看英文原文：</strong><a href="http://www.infoq.com/news/2013/12/hadoop-gpu-parallelx">Hadoop Jobs on GPU with ParallelX</a></p><br><br><br><br><br><br></body></html>
+<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>“移动时代的前端”——QCon北京2014专题出品人玉伯专访</h3><p>随着移动时代的到来，前端面临的挑战越来越大。从产品角度来看，前端朝着多终端的方向发展，需要考虑 PC、Pad、Phone、TV 等各种用户终端的交互实现。未来的产品形态，需要高性能跨终端的面向消费者的应用，也需要传统 PC 端面向企业的富应用。向上是移动开发，向下是企业应用，这两个方向都非常重要，对前端的挑战则各有不同。</p>
+<p>从技术角度来看，前端不再局限于浏览器端的 Web 技术。随着 Node.js 技术的兴起，前端开发开始渗透到服务器端，将服务器端的 View、Controller 等层接管过来，成为全栈（Full-stack） 开发。在全栈的模式下，前后端的分工协作更加合理高效。全栈之路究竟如何走，目前无论国内国外，都处于起步阶段，充满诱惑与陷阱。</p>
+<p><a href="http://www.qconbeijing.com/">本届QCon北京2014</a>，InfoQ特别邀请到<a href="http://www.qconbeijing.com/user/646">支付宝前端技术部负责人王保平（玉伯）</a>来打造“移动时代的前端”专题，关注跨终端、全栈开发以及前端工程化。</p>
+<p>玉伯是淘宝前端类库 KISSY 的创始人，也是前端模块加载器 Sea.js 的创始人。他在前端基础技术、网站性能优化、企业应用开发等方面非常活跃，并且还是一名非常热心的前端布道者。在 Velocity、QCon、D2、NodeParty 等会议上积极参与。玉伯在微信上开通 WTP 公众帐号（微信号 wtp-notes），畅谈技术、产品与自由梦。</p>
+<p>以下是采访内容。</p>
+<p><strong>InfoQ：</strong>大家都知道您是您作为支付宝前端开发团队负责人，淘宝前端类库 KISSY、前端模块化开发框架SeaJS、前端基础类库Arale的创始人，不过还是请您重新介绍一下自己，及这三个项目现在的情况吧。</p>
+<blockquote> 
+ <p><strong>玉伯：</strong>我的情况比较简单，03年毕业，在北京漂了5年，08年到杭州加入淘宝，12年转岗到支付宝，现在负责支付宝共享平台的前端技术团队。</p> 
+ <p>在淘宝期间，业务需求需要做一个富文本编辑器，于是有了KISSY Editor，后来做着做着就变成了一个前端基础类库KISSY，editor是其中一个组件。11年开始，KISSY的主要开发工作已移交给同事承玉。现在已经有一个专门的虚拟团队维护，负责人是拔赤。</p> 
+ <p>2010年期间，有关注Node.js和CommonJS社区，了解到当时的风云变幻。强烈觉得模块化开发理念不仅需要规范化、更需要扎扎实实的实现，当时有FlyScript、BravorJS、RequireJS等种种实现。个人不是很喜欢RequireJS的一些理念和实现，喜欢的FlyScript则自我阉割了，因此萌生了自己写一个的想法，这就是Sea.js。Sea.js已经发展到2.x版本，在国内使用比较广泛，阿里、腾讯、中航信等公司都有采用。Sea.js的核心理念是保持简单，只做该做的。目前Sea.js 3.0的规划已经有了雏形，会进一步简单，包括构建。</p> 
+ <p>2012年到支付宝后，支付宝已经有了一套前端基础类库Arale 1.1，因此我并不是Arale的创始人。Arale 1.1的思路与KISSY、YUI等类库差不多，都是从底层组件做起，很辛苦很累，但效果并不太好，在可维护性、易用性等方面，自己做的dom、event等组件，经常不如业界已经成熟的jQuery等类库好用。为了解决这些痛点，当时和同事商量后，就有了Arale 2的想法。Arale 2的核心是开放。开放的第一层是拿来主义，业界已经有的成熟方案，经过我们考察后，直接引入进来用。拿来主义直接让我们站在了巨人的肩膀上，并能以此做为基础，迅速构建适合支付宝的一套UI组件库。从狭义上讲，Arale是为支付宝量身定做的，并不适合直接拿去给其他公司用。从广义上讲，Arale是构建前端基础类库的一种开放式方案，这种方案可以被其他公司借鉴。目前已有不少团队基于Arale方案构建出了适合自己公司业务的特定类库。Arale目前的规划有两个方向：1）进一步拥抱社区，废弃CMD，拥抱CommonJS，Arale组件的模块将直接与一个Node模块无异。2）基础组件的Mobile First化，为移动基础类库的构建提供体系化方案和最佳实践。</p> 
+ <p>对前端开发来说，前端基础类库很重要，但从整个前端领域来看，类库依旧是比较小的一块。还有很多领域非常值得投入，下面有时间再说说。</p> 
+</blockquote>
+<p><strong>InfoQ：</strong>阿里内部团队众多，能否讲讲支付宝前端团队的开发流程和特别之处？</p>
+<blockquote> 
+ <p><strong>玉伯：</strong>从前端开发来看，阿里内部分三种类型：淘系、支付宝系、B2B系。B2B系没亲身体验过，略过不说。淘系和支系的区别比较明显，简单说下。</p> 
+ <p>淘系的核心业务是「导购」，业务的定位使得淘系大量前端业务以前台展现为主。这类业务，快是第一用户体验。快不仅是页面速度快，也包括研发交付速度要快。也会有功能交互很复杂的业务，但相对来说不是很多。</p> 
+ <p>支系的核心业务是「支付」，有段时间也有「导支」业务，但很快成为非主流。「支付」是功能型的，与用户资金相关，「稳定」、「安全」是第一用户体验。当然也求快，但在稳定、安全面前，快经常要让道。支系还有两个重点是金融与数据，与支付一样偏功能性。</p> 
+ <p>业务类型的不同，使得淘系、支系的技术体系、研发交付有比较大的差异性。淘宝求快，支付宝求稳。目前支付宝也在探索更适合互联网的快速轻量级研发模式，淘宝在稳定、安全上的要求也越来越高。像是两个极端，在互相借鉴互相靠拢，差异性应该会长期存在，但会逐步减少。</p> 
+</blockquote>
+<p><strong>InfoQ：</strong>目前您最关注的重点是什么？</p>
+<blockquote> 
+ <p><strong>玉伯：</strong>目前最关注的是团队管理。从带几个人，到突然带几十人，压力很大。除了自己的个人生活，最在乎的就是这帮兄弟姐妹的未来。目前团队缺口还很大，近期大量招聘中，职位不限于前端开发，也希望有 Node、Java、iOS、Android、交互、视觉等经验的人员加入。</p> 
+</blockquote>
+<p>你瞧，又广告了。最近晚上做梦都在关注招聘，有个同事说我近期三句不离招聘，欢迎投递简历。</p>
+<p><strong>InfoQ：</strong>您感觉在过去一年中，前端领域是否发生了令人值得注意的变化？</p>
+<blockquote> 
+ <p><strong>玉伯：</strong>变化太快了，好多变化。百度的berg总结过一篇2013前端技术盘点，说得很全面。对支付宝来说，最大的变化有：</p> 
+ <ul> 
+  <li> <p>全端化。前端不再是折腾各种浏览器了，而是需要面对PC、Pad、Phone甚至TV等各种端。支付宝的做法很干脆实在，直接让一批前端开发转岗到无线部门做iOS开发。前端部门自身也需要逐步具备跨终端开发的技能。这是移动互联网带给前端最大的冲击，却也是最好的礼物。</p> </li> 
+  <li> <p>全栈化。Node的兴起和成熟，让前端在解决研发效率等问题上有了新思路。阿里的整个技术体系是基于Java的，前后端的职责分工一直存在灰色地带，特别是在支付宝，厚重的开发环境已经对前端研发效率带来严重影响。在这种情况下，如果能基于Node实现前后端运行与研发过程中的清晰分离，将会带来研发效率上的大提升。全栈不是为了技术的全面，而是从职责分工上能让更合适的人干更合适的事。</p> </li> 
+  <li> <p>工程化。前端开发越来越复杂，除了运行时的类库框架，还有非常非常重要的一块是研发交付体系。这一块各个大公司的前端都在探索，各个公司都有大量实践，但感觉都还存在很多优化甚至突破的空间。支付宝的研发交付体系好像是阿里最复杂的，前端一方面「享受」这种复杂性带来的稳定性保障，同时又非常「痛恨」如此让人抓狂的各种平台、流程。前端的工程化开发是一个体系化的问题，相信2014年，支付宝前端在这一块会有飞跃式突破。</p> </li> 
+ </ul> 
+</blockquote>
+<p><strong>InfoQ：</strong>您是此次“移动时代的前端”专题联合出品人，能否谈谈你对此次专题的内容策划？</p>
+<blockquote> 
+ <p><strong>玉伯：</strong>内容策划上，就是上面说的全端化、全栈化、工程化。筛选的话题，会来自大公司，也会来自创业公司。全端化是移动互联网对企业的需求。全栈化、工程化都是对研发效率的关注，这一块的进展，能让互联网公司特别是大公司的传统研发模式发生变革，让分工更合理，研发效率更高。</p> 
+</blockquote>
+<p><strong>InfoQ：</strong>您对“全端开发”这个新概念怎么看？</p>
+<blockquote> 
+ <p><strong>玉伯：</strong>上面已经提到这些概念了。全端我的理解是跨终端，从浏览器兼容，走向各种终端的兼容。你想谈的应该不是这个，而是 FSD（Full-Stack Developer）。</p> 
+ <p>Full-stack 有些地方翻译成全端，我更喜欢翻译成全栈。知乎上有过讨论，感觉大家对全栈的理解有很多差异点。我的理解与大家的有些不一样。</p> 
+ <ul> 
+  <li> <p>全栈不是什么都懂，而是鼓励大家从单一（ | 型）人才变成一专多能（T 型）人才，进而变成多专多能（ π 型）人才。</p> </li> 
+  <li> <p>对于前端的全栈之路，在支付宝是鼓励大家通过Node掌握服务端上的UI Layer层开发，是让前后端的分工更合理，并非是让前端去研究后端的专业领域。表面上看是分久必合、合久必分，实际上是分工更合理，让前后端都能朝着更专业的深度发展。</p> </li> 
+  <li> <p>全栈开发应该根据不同场景去定义。支付宝的全栈，跟Facebook的，目前就不一样。中间没有谁好谁坏，都是从业务实际需求出发，以及团队目前的人员情况出发，自然而然地一种选择。</p> </li> 
+ </ul> 
+</blockquote>
+<p><strong>InfoQ：</strong>在前端开发以外，您是否还有关注的技术领域？为什么？</p>
+<blockquote> 
+ <p><strong>玉伯：</strong>技术领域这几年都放在前端了，对动漫制作、数据挖掘有浓厚兴趣，但尚未投入大量时间。技术领域之外，最关注团队管理，越来越发现很多事情靠一个人无法达成，个人英雄主义时代已经很遥远。在当下，要达成一些心中想做的事，要倚靠团队的力量。自己的定位依旧是技术专家，但同时希望自己能具备leadship，这样才能达成自己心中的梦想。</p> 
+</blockquote>
+<p>此专题详细信息，请见<a href="http://www.qconbeijing.com/node/453">专题页面</a>。关于此次QCon北京其他专题的详细信息，请移步至<a href="http://www.qconbeijing.com/">大会官网</a>。</p>
+<p>需要特别注明的是，每年QCon大会门票都会在开幕前售罄，及早预定可提前确保席位，并享受更低折扣。现在报名参加将可享受8折优惠。团体购票（5人及以上）将享有更多优惠。详请咨询qcon【at】cn.infoq.com，或直接致电010-64738142。报名请点击<a href="http://qconbeijing.mymova.com/">报名页面</a>。</p><br><br><br><br><br><br></body></html>

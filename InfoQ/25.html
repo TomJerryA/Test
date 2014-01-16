@@ -1,45 +1,16 @@
-<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>Spring 4 增强了对Java 8、Java EE 7、REST 和HTML5的支持</h3><p>几天之前Pivotal发布了<a href="https://spring.io/blog/2013/12/12/announcing-spring-framework-4-0-ga-release">Spring 4.0</a>，这是自2009年之后发布的首个主要版本。新版本支持Java 8，支持使用Lambda的回调表达式、支持JSR 310日期和时间API以及参数名发现。</p>
-<p>对Java EE 7 的支持包括：JMS 2.0、JTA 1.2、JPA 2.1、Bean验证1.1和JSR-236并发工具。</p>
-<p>Spring 4还改善了REST支持，提供了一个新的AsyncRestTemplate和HTML5/WebSocket与旧版本浏览器的集成。</p>
-<p>如果你想要查看Spring 4的功能及其新特性的完整列表，那么可以查看Pivotal应用程序结构的首席架构师Adrian Colyer的博客<a href="http://spring.io/blog/2013/12/12/announcing-spring-framework-4-0-ga-release">Spring框架发布4.0GA版</a>。</p>
-<p>Spring 4宣称该版本能够让Java和Groovy开发者很容易地交付和整合新应用程序架构、大数据、devops和云友好的部署。另外，它还包含一个新的名为<a href="http://projects.spring.io/spring-boot/">Spring Boot</a>的项目。Spring Boot是一个新Spring技术，该技术的目标是让Java开发也能够实现Ruby on Rails那样的生产效率。</p>
-<p>在Spring体系下有很多项目。最近的<a href="https://spring.io/platform">Spring IO</a>项目就是为了将核心的Spring API带入一个有凝聚力、版本化的基础平台上而创建的。通俗地说，这是一个新的包含参考文档、教程、团队博客和论坛的网站。对于Spring IO和Spring Boot能够给开发者带来哪些帮助，<a href="http://www.gopivotal.com/press-center/12122013-spring-4">Spring 4新闻稿</a>中包含有这样一段非常有趣的话：</p>
+<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>Webix 1.4发布，支持WebSocket、IndexedDB、数据和网格提示</h3><p><a href="http://docs.webix.com/desktop__whats_new_1_4.html">Webix 1.4</a>已于最近发布，新版本除了支持数据和网格提示之外还支持WebSocket和IndexedDB。数据提示功能让你能够使用图片或者复杂的HTML内容作为选择选项。</p>
+<p><img width="600" src="http://infoqstatic.com/resource/news/2014/01/webix-1-4/zh/resources/0116000.png" alt="" _href="img://null" _p="true" /></p>
+<p>另一方面，你可以借助于网格提示功能从支持编辑、排序和过滤功能的表格中选择数据。</p>
+<p><img width="600" src="http://infoqstatic.com/resource/news/2014/01/webix-1-4/zh/resources/0116001.png" alt="" _href="img://null" _p="true" /></p>
+<p>为了实现数据加载和保存的目的，更新后的Webix提供了 WebSocket和IndexedDB支持。当数据被某些用户修改或者当一些其他的服务器端操作发生的时候，服务器能够通过WebSocket协议与客户端代码进行通信。此外，IndexedDB功能可以让你的应用离线工作。</p>
+<p>最新版本还改善了窗口定位功能，例如支持全屏显示模式，支持zindexBase属性和onReady事件。它还增加了autoConfig选项，针对列表组件的键盘导航，改进了图标按钮的样式，以及一个能够自动追踪事件的数据处理器。</p>
+<p>InfoQ采访了xbsoftware公司的Veronica Lindorenko以期了解更多与最新版本相关的内容。</p>
+<p><b>InfoQ：新功能可以和</b><b>.NET</b><b>应用程序一起使用么？</b></p>
 <blockquote> 
- <p>Spring IO的主要目标是通过Spring Boot和Groovy这样的组件让Java成为开发者生产效率方面的领导者。“在Pivotal实验室里，开发者对幸福感和样板代码的偏执度已经形成了非常高的要求，因为他们过去完成了相当多的Ruby on Rails开发，”Pivotal实验室的首席运营官Edward Hieatt说。“在我们的实验室里，那些使用Spring框架4.0和Spring Boot的Ruby on Rails开发者对它印象深刻，因为它的生产效率很高同时能够在一个单一的编程模型上处理各种各样的场景”。</p> 
+ <p>所有的平台，包括.NET平台都可以使用所有的客户端功能。在v1版中，我们正在引入唯一的非客户端插件——支持WebSocket。该插件是基于<a href="http://weblogs.asp.net/cibrax/archive/2011/12/12/transform-your-iis-into-a-real-time-pub-sub-engine-with-faye-node.aspx">Faye</a>类库（使用了nodejs）开发的，虽然它并不直接兼容.NET，但是却可以使用<a href="http://weblogs.asp.net/cibrax/archive/2011/12/12/transform-your-iis-into-a-real-time-pub-sub-engine-with-faye-node.aspx">IIS</a>及Azure 云。</p> 
 </blockquote>
-<p>我想知道Spring 4是否是Spring 3的一个插入式替代品，为了找到答案我最近做了一个实验。在<a href="http://raibledesigns.com/rd/entry/a_webapp_makeover_with_spring">使用Spring 4和Spring Boot对Web应用进行大转变</a>一文中，我将一个使用Spring 3.2.5、Spring安全3.1.4和Jersey 1.18开发的应用程序升级到了Spring 4、Jersey 2和Java 8。此外，我还集成了Spring Boot并且将其转换成了JavaConfig以替代XML。整个开发体验是非常令人愉快的。我再次发现Spring拥有非常好的向后兼容性。而我发现的唯一问题是在缺少容器的环境中使用Jersey时遇到的。</p>
-<p>在公告发布之后，我有幸采访了<a href="http://uk.linkedin.com/in/adriancolyer">Adrian Colyer</a>。</p>
-<p><b>在你说</b><b>Spring 4.0</b><b>深度支持</b><b>Java 8</b><b>的时候，你的意思是什么？为什么使用</b><b>Spring</b><b>能够让</b><b>Java 8</b><b>更容易？</b></p>
+<p><b>InfoQ</b><b>：您能与我们分享更多与</b><b>IndexedDB</b><b>相关的信息么？</b></p>
 <blockquote> 
- <p>Java 8完美地契合了Spring的编程模型。我们相信，将Java 8提供的那些优雅的语言特性及其立即使用的类库提升与标准的Spring API结合起来将会极具吸引力。事实上，Spring框架4.0是业界第一个完全支持Java 8的应用程序框架。为了提供能够在现在的Java 8上开发Spring应用程序所需要的所有内容，我们甚至在3月份Java 8生产启动之前就已经开始做相关的准备工作。</p> 
+ <p>IndexDB是一个浏览器内的数据库（除了Safari之外的所有现代浏览器都支持）。从版本1.4开始，你就可以像使用服务器端数据库那样使用它进行数据的加载和保存了。通过一行代码就能实现服务器端数据库和浏览器数据库之间的切换。这种插件的主要目标是改善应用的离线支持。当页面离线的时候，应用可以使用IndexDB执行所有的数据操作，之后，当连接可用的时候数据可以和服务器端数据库进行同步。</p> 
 </blockquote>
-<p><b>你提到</b><b>Spring Boot</b><b>为</b><b>Java</b><b>提供了史无前例的生产效率。那你觉得</b><b>Grails</b><b>、</b><b>Spring Roo</b><b>、</b><b>Play</b><b>和</b><b>JRebel</b><b>怎么样？它们可以让你开发一整天而不用重启应用。</b><b>Spring Boot</b><b>在哪些方面要优于这些技术？</b></p>
-<blockquote> 
- <p>Boot提供了比“企业”Java更多的生产力，同时还覆盖了一套更广泛的应用程序，从Web到纯粹的数据应用程序（Spring XD）。而另一方面，Grails则非常关注Web应用程序在完整堆栈环境中的快速开发。Spring能处理的内容远不止Web应用程序，Boot代表了可用于Spring及其生态系统项目的一种约定优于配置的方法。当然，我们还没有为以前所有的Spring项目提供Boot支持，但是采用的步伐是非常令人吃惊的，同时距离100%的饱和度也已经不远了。</p> 
-</blockquote>
-<p><b>为什么</b><b>Pivotal</b><b>会有如此之多基于</b><b>JVM</b><b>的框架（</b><b>Grails</b><b>、</b><b>Spring Roo</b><b>以及现在的</b><b>Spring Boot</b><b>）用于新应用程序的创建？</b></p>
-<blockquote> 
- <p>事实上，Pivotal所有基于JVM的框架（Boot、Grails和Roo）都是基于Spring MVC的，但是它们的受众不同。Boot为Spring生态系统提供了一种固执的、约定优于配置风格的框架，它的适用范围比Web应用程序更广泛。而另一方面，Grails则更加关注领域特定的运行时，让用户能够使用Groovy语言和DSL快速开发Web应用程序。最后，Roo则是完全关注于代码生成。所有的这些框架都会将开发者带到Spring平台上，这是我们的主要目标。</p> 
-</blockquote>
-<p><b>你认为更多的选择会让开发者和决策者感到焦虑么？</b></p>
-<blockquote> 
- <p>这是一个棘手的或者说是比较主观的问题。对于决策者而言，更多的选择听起来好像代表着更好的风险管理，更容易招聘到开发人员。对于开发者而言，这很有可能会引发更多的焦虑，相对而言，他们只有确实找到一种比他们的背景和已有技能水平更好的风格，他们才会感到兴奋。</p> 
-</blockquote>
-<p><b>Spring-Loaded</b><b>看起来好像是一个免费版本的</b><b>JRebel</b><b>。根据其网站提供的信息，它是</b><b>Grails 2</b><b>中使用的重新装载系统。该项目与</b><b>Spring Boot</b><b>和它惊人的生产效率有关么？</b></p>
-<blockquote> 
- <p>不是的。在Spring框架4.0中Boot是通过@Conditional注解启用的。你对加载的感知是准确的，但是JRebel更加全面，它能够和多个IDE一起使用。</p> 
-</blockquote>
-<p><b>对于</b><b>Java EE</b><b>（或者其他实现）缺失的内容</b><b>Spring 4</b><b>的</b><b>WebSocket</b><b>支持提供了哪些内容？</b></p>
-<blockquote> 
- <p>这是关于后备选项（SockJS）和高层消息协议（STOMP）的。我们主要考虑将WebSocket作为一个传输层，真正有趣的部分出现在它上面。Spring的新消息模块表明了我们能够从哪里看到应用程序开发人员的共同点。它做的事情比Java EE 7中的JSR-356要多的多，要注意的是，我们也支持JSR-356，它是基础，但是我们更关注自己的WebSocket编程模型中的更高层次的交互模式。因为低于IE 10的浏览器并不支持WebSocket，所以实际上如果现在没有后备选项那么WebSocket是无法单独使用的。</p> 
-</blockquote>
-<p><b>Spring</b><b>的</b><b>JSP</b><b>标签除了支持</b><b>WebSockets</b><b>和</b><b>HTML5</b><b>属性之外，</b><b>Spring 4</b><b>还为</b><b>HTML5</b><b>提供了哪些其他的特性？</b></p>
-<blockquote> 
- <p>我们的焦点是让开发者能够使用面向HTML5的Web应用程序架构。从我们的角度，这不仅仅是通信风格和状态管理安排的问题，还包括特定的HTML5特性。也就是说，相对于客户端上流行的JavaScript框架而言，Spring也是一个好市民。我们不仅会做此时此刻的分享，我们还会致力于让Spring 4.x产品线持续地向下一代Web架构进化。</p> 
-</blockquote>
-<p><b>根据我的经验（来自于咨询和大会演讲），大多数开发者依然在通过</b><b>XML</b><b>使用</b><b>Spring</b><b>。你认为会有更多的开发者迁移到</b><b>JavaConfig</b><b>和</b><b>Spring 4 </b><b>上么？</b></p>
-<blockquote> 
- <p>这是他们的选择，他们可以决定什么时候对哪些内容进行迁移对自己是有意义的。他们可以使用注解、JavaConfig或者XML——这比Java EE提供了更多的选项。顺便说一下，我们喜欢JavaConfig，希望更多的组织能够采用它。</p> 
-</blockquote>
-<p>如果你正在使用Spring和Maven，那么可以通过一个<a href="http://spring.io/blog/2013/12/03/spring-framework-4-0-rc2-available">新的“材料清单”POM</a>进行升级。如果想要下载或者查看Gradle坐标，那么可以查看<a href="http://projects.spring.io/spring-framework/">Spring框架项目的网站</a>。</p>
-<p><b>查看英文原文</b>：<a href="http://www.infoq.com/news/2013/12/spring4">Spring 4 Enhances Support for Java 8, Java EE 7, REST and HTML5</a></p><br><br><br><br><br><br></body></html>
+<p><b>查看英文原文</b>：<a href="http://www.infoq.com/news/2014/01/webix-1-4">Webix 1.4 Released with WebSocket, IndexedDB, Data and Grid Suggest</a></p><br><br><br><br><br><br></body></html>
