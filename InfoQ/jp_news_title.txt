@@ -1,1 +1,1 @@
-ORMツール Hibernare 4.3がリリース，JPA 2.1仕様を実装
+Internet Explorer 11のASP.NETブラウザ検出エラーの修正

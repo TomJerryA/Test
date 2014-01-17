@@ -1,8 +1,8 @@
 <html>
  <head></head> 
- <body>
-  <div>
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/9.c">S&atilde;o necess&aacute;rias alternativas ao REST?</a>Ole Lensmar, o criador do SoapUI, recentemente questionou se REST est&aacute; perdendo a atratividade e se s&atilde;o necess&aacute;rias alternativas. S&atilde;o discutidos diversos pontos em rela&ccedil;&atilde;o a aplica&ccedil;&atilde;o de REST.
+ <body> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/9.c">S&atilde;o necess&aacute;rias alternativas ao REST?</a>Ole Lensmar, o criador do SoapUI, recentemente questionou se REST est&aacute; perdendo a atratividade e se s&atilde;o necess&aacute;rias alternativas. S&atilde;o discutidos diversos pontos em rela&ccedil;&atilde;o a aplica&ccedil;&atilde;o de REST. 
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/8.c">PhoneGap 3.3: Suporte do BlackBerry aprimorado e API de carregamento de recursos no Android</a>O PhoneGap 3.3 oferece agora a habilidade para redirecionar recursivamente as requisi&ccedil;&otilde;es de carregamento de recursos Android. Tamb&eacute;m oferece melhorias no suporte ao BlackBerry 10 e depura&ccedil;&atilde;o no iOS. 
@@ -150,6 +150,6 @@
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/10.c">A flexibilidade do Agile: ponto forte ou calcanhar de Aquiles?</a>Ser&aacute; que o princ&iacute;pio &quot;responder a mudan&ccedil;as mais do que seguir um plano&quot; &eacute; um ponto forte ou uma flexibilidade que n&atilde;o funciona na pr&aacute;tica? O que acontece com projetos &aacute;geis com dificuldades em gerenciar mudan&ccedil;as e clientes esperando flexibilidade demais? Ser&aacute; que o Agile n&atilde;o cumpre suas promessas, ou &eacute; a forma que as equipes e organiza&ccedil;&otilde;es t&ecirc;m adotado o Agile que causa os problemas? 
-  </div>  
+  </div> 
  </body>
 </html>

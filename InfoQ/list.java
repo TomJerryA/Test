@@ -2,7 +2,10 @@
  <head></head> 
  <body>
   <div>
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/17.java">What's coming in the April 'Icehouse' release of OpenStack</a>Icehouse, the next release of the OpenStack open source cloud, will be coming in April 2014. Icehouse will bring automated installation (TripleO), bare metal provisioning (Ironic), a queuing and notification service (Marconi) and database as a service (Trove) as integrated services. Better support for Hadoop (Savanna) will be put into incubation.
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/18.java">Apps Have to be iOS 7 Compatible by February 1st</a>Apple recently announced that iOS applications have to be iOS 7 compatible by February, 1st. To submit new applications or application updates to the iTunes Store, developers have to build their applications with XCode 5 and apps have to be optimized for iOS7. Compatibility with iOS 7 includes changing the UI according to the current Human Interface Guidelines and adapting API changes.
+  </div> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/17.java">What's coming in the April 'Icehouse' release of OpenStack</a>Icehouse, the next release of the OpenStack open source cloud, will be coming in April 2014. Icehouse will bring automated installation (TripleO), bare metal provisioning (Ironic), a queuing and notification service (Marconi) and database as a service (Trove) as integrated services. Better support for Hadoop (Savanna) will be put into incubation. 
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/16.java">Rust 0.9 Released With Revised Threading Model</a>The Rust team has released the latest version of its next generation programming language. New in this release is a redesigned threading system and several refinements as the language moves towards its 1.0 release. 
@@ -147,9 +150,6 @@
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/19.java">Spring 4 Enhances Support for Java 8, Java EE 7, REST and HTML5</a>Last Thursday, Pivotal released Spring 4.0, the first major release since 2009. The new release supports Java 8 with expression of callbacks using lambdas, JSR 310 Date and Time API, and parameter name discovery. 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/18.java">Improving Product Development with Flow Thinking</a>A case study on creating buy-in and commitment for flow thinking using a mental model and metaphor was presented at the Lean Kanban Central Europe conference. InfoQ interviewed H&aring;kan Forss and Erik Sch&ouml;n about their journey from methods &amp; tools to principles &amp; mindset and how they use visual management to implement flow thinking and improve the product development flow at Ericsson. 
   </div>  
  </body>
 </html>

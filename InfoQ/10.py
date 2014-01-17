@@ -1,24 +1,30 @@
-<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>Netflix、ビッグデータがビジネス判断を動かす</h3><p><a target="_blank" href="http://www.infoq.com/news/2013/12/netflix-bigdata-decisions"><em>原文(投稿日：2013/12/12)へのリンク</em></a></p>
+<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>Jez Humble氏とGene Kim氏による2013 DevOps Survey Of Practice</h3><p><a target="_blank" href="http://www.infoq.com/news/2014/01/2013-devops-survey"><em>原文(投稿日：2014/01/08)へのリンク</em></a></p>
 <div class="article_page_left news_container text_content_container"> 
  <div class="text_info"> 
-  <p>Netflixのデータプラットフォームアーキテクトのマネージャー、Jeff Magnusson氏が、彼らのData Platform as a ServiceについてQCon SF 2013で<a href="http://www.slideshare.net/JeffMagnusson/qcon-sf-netflix-hadoop-platform-as-a-service">プレゼンテーション</a>をした。このプレゼンテーションをフォローアップして、技術スタックがどうなっていて、それがNetflixの重要なビジネス判断にどう役立っているのか説明する。</p> 
-  <p>Netflixは世界中で3000万人以上のサブスクライバを抱えている。ユーザは<a href="http://netflix.com">NetflixのWebサイト</a>を訪問するうちに、様々なデータポイントを提供する。ビデオの再生、評価付け、検索といったイベントは記録されて分析される。時間、日付、地理的位置、デバイス、ページの閲覧やスクロールといった振る舞いも、イベントが発生したコンテキストをもたらし、ユーザを分類するのに使われる。彼らは、サイトとのエンゲージメントを高め、どのシリーズに<a href="http://www.nytimes.com/2013/02/25/business/media/for-house-of-cards-using-big-data-to-guarantee-its-popularity.html?_r=0">次に投資すべき</a>かといったビジネス判断をするために、これらのデータを利用している。</p> 
-  <p>この他、<a href="http://www.nielsen.com/">Nielsen</a>やソーシャルデータといったサードパーティからのメタデータも、プラットフォームに対するエンゲージメントや新たなサブスクライバをもたらすのに貢献している。</p> 
-  <p><a href="http://www.slideshare.net/adrianco/netflix-architecture-tutorial-at-gluecon">2009年以来</a>、Netflixはクラウドで運用されており、Hadoopプラットフォームを使っている。彼らが使っている重要なインフラストラクチャ、Big Dataブロックは以下のようになっている。</p> 
-  <ul> 
-   <li><b>Amazon S3:</b> <a href="http://aws.amazon.com/s3/">Amazon S3</a>は内部データパイプラインツールのUrsulaを使って、様々なデバイスからの何十億ものイベントを記録するのに使われる。S3はHadoopジョブを実行するElastic Map Reduce (EMR) クラスタの<a href="http://techblog.netflix.com/2013/01/hadoop-platform-as-service-in-cloud.html">真実を語る資料</a>として使われる。</li> 
-   <li><b>Hadoop:</b> Apache <a href="http://hadoop.apache.org/">Hadoop</a>は分散計算のベースラインライブラリとして使われる。HadoopはAWSのElastic Map Reduceクラスタにデプロイされ、各ノードが提供するストレージのHDFSを使う代わりに、S3バケットストレージを利用している。これは直感に反している。Hadoopが利用するデータの局所性原則に反して、S3からEMRノードへのデータ移動を引き起こすおそれがあるためだ。だが、その一方で、S3は単一の真実を語る資料となり、EMRクラスタはほぼリアルタイムにフィットするよう拡張、サイズ変更できることを意味する。</li> 
-   <li><b>Hive:</b> NetflixのHiveはアドホッククエリと軽量アグリゲーションに使われる。これに対して、PigはETLともっと複雑なデータフローに使われる。データ移動において、複雑なオペレーションを接続するのにも利用される。</li> 
-   <li><b>Genie:</b> <a href="http://techblog.netflix.com/2013/06/genie-is-out-of-bottle.html">Genie</a>はHadoop PaaS技術で、EMRにジョブを投入するのに使われる。GenieはRESTful APIを提供し、開発者は組み込み関数を扱ってHadoopクラスタを動かしたりメンテナンスする必要がなくなる。GenieはGitHub<a href="https://github.com/Netflix/genie">リポジトリ</a>からフォークできる。</li> 
-   <li><b>Franklin:</b> <a href="http://www.slideshare.net/JeffMagnusson/qcon-sf-netflix-hadoop-platform-as-a-service">Franklin</a>はメタデータAPIで、RDS、Redshift、Cassandra、Teradata、S3といったソースから情報を抽出するのに使われる。<a href="http://www.slideshare.net/adrianco/migrating-netflix-from-oracle-to-global-cassandra">2011年</a>にOracleデータセンタベースのソリューションからAWSクラウドへ移行して以来、Netflixでのオンラインデータ収集にはCassandraが使われている。Teradataは主にデータセンターで使われているが、Netflixが<a href="http://www.infoq.com/jp/news/2013/12/teradata-cloud-strategy#theCommentsSection">Teradata Cloud</a>に参加するというTeradataの発表で、これも変わるだろう。</li> 
-   <li><b>Forklift:</b> <a href="http://www.slideshare.net/JeffMagnusson/qcon-sf-netflix-hadoop-platform-as-a-service">Forklift</a>はデータストア間で分析データを移動するのに使われる。データのソースとターゲットには、Hive、RDBMS、S3、Rなどが使える。</li> 
-   <li><b>Sting:</b> <a href="http://www.slideshare.net/JeffMagnusson/qcon-sf-netflix-hadoop-platform-as-a-service">Sting</a>はGenieジョブの結果をアドホックに可視化するのに使われる。データセットをメモリに保持することで、スライシングやダイシングといったOLAPオペレーションを1秒以下の応答時間で提供する。</li> 
-   <li><b>Lipstick:</b> <a href="http://www.slideshare.net/Hadoop_Summit/magnusson-smith-june27140pmroom210av2?from_search=1">Lipstick</a>はユーザがPigジョブのデータフローと全体のジョブ進捗を可視化するのに使われる。これにより、詰まったジョブ、間違った出力データ、失敗したジョブがひと目でわかり、修正して正しく実行するのに役立つ。</li> 
-  </ul> 
-  <p>こうしたツールとともに、NetflixはCuratorなど数々のヘルパーツールを開発している。<a href="http://techblog.netflix.com/2011/11/introducing-curator-netflix-zookeeper.html">Curator</a>はApache Zookeeperを使いやすくするJavaライブラリ群だ。Curatorを使うと堅牢なクライアントを作るのが簡単になり、<a href="http://www.slideshare.net/randgalt/curator-intro?from_search=3">安全でないクライアント呼び出し</a>をしたり、リクエストを間違って成功だと思ってしまうといった落とし穴を避けることができる。</p> 
-  <p>上に説明したテクノロジースタックのうち、本当に重要なアプリケーションは、Netflixレコメンデーションだ。レコメンデーション結果はNetflixの全ビデオストリームの約75%を<a href="http://www.wired.com/underwire/2013/08/qq_netflix-algorithm/">動かしている</a>。レコメンデーションを動かすシステムのひとつに、<a href="http://www.slideshare.net/Hadoop_Summit/hadoop-and-cloud-at-netflix?from_search=3">マルコフ連鎖</a>を使って、映画を状態としてモデル化し、状態遷移の確率を計算するものがある。RDBMSでは週に一度、ストアドプロシージャとして、うまくスケールできない高価なコピーとして実行される。Hadoopを使うことで、これはデータをコピーする必要なしにスケールできるようになり、PigやJava Map Reduceジョブを使うことで、ストアドプロシージャよりもメンテナンスが簡単になる。</p> 
-  <p><a name="h.1fob9te"></a>マルコフ連鎖は遷移確率行列に従って状態群の離散時間確率過程を記述したものだ。映画をノードとしてモデル化し、ダブルパスのMap Reduceジョブを使うことで、Netflixはあるノードから別のノードへの遷移確率を計算できる。これがレコメンデーション値となる。将来の値は現在の値にのみ依存しており、Hadoopノードで状態を保持する必要がない。これはMap Reduceジョブにぴったりだ。</p> 
-  <p>Netflixがレコメンデーションエンジンで考慮しているパラメータはこれだけではない。コンテキストも考慮すべき興味深い面だ。ユーザは、見ているデバイスが何か、家にいるか、休暇中か、何時か、何曜日かによって、異なるコンテンツを鑑賞したいかもしれない。コンテキストと鑑賞の嗜好を相関付けるのには様々な課題があり、Netflixもまだ解決できてはいない。</p> 
-  <p>Netflixのビッグデータアーキテクチャは、別の業界や競合他社に簡単にコピーされるようなものではない。だが、構成要素のいくつかはオープンソースであり、彼らの<a href="https://github.com/netflix">GitHubアカウント</a>で利用可能になっている。ビッグデータアーキテクチャの開発をはじめたいと思っている組織にとって、これらは出発点となるだろう。そしてNetflixが示してきたように、ビッグデータ戦略は後で付け足すものではなく、事前に計画し、何年もかけて徹底的に実行する必要がある。</p> 
+  <p>DevOpムーブメントの著名人である<a href="http://continuousdelivery.com/">Jez Humble氏</a>と<a href="http://www.realgenekim.me/">Gene Kim氏</a>が<a href="http://puppetlabs.com/">Puppet Labs</a>と共同で<a href="http://www.surveygizmo.com/s3/1483785/DevOps-Survey-2013">2013 DevOps Survey Of Practice</a>を行っている。<a href="http://continuousdelivery.com/2013/12/the-science-behind-the-2013-puppet-labs-devops-survey-of-practice/">この調査の目的</a>はそのようなITへの取り組みがハイパフォーマンスな組織を生み出しているかを調べることだ。調査は1月15日に終わる。調査には<a href="http://www.surveygizmo.com/s3/1483785/DevOps-Survey-2013">誰でも参加できる</a>。</p> 
+  <p>両氏が<a href="http://continuousdelivery.com/2013/12/the-science-behind-the-2013-puppet-labs-devops-survey-of-practice/">最近の記事で説明している</a>通り、この調査では、いくつかの仮説を立て、テストをし、評価をしている。</p> 
+  <blockquote> 
+   <ul> 
+    <li>価値の流れ全体にわたり高い信頼を獲得している小さなチーム。開発チーム、品質保証チーム、運用チーム</li> 
+    <li>価値の流れ全体にわたり共有されている目的と痛み</li> 
+    <li>小さな開発バッチのサイズ</li> 
+    <li>継続的、自動統合、自動的テストの存在</li> 
+    <li>学習と実験、イノベーションの文化</li> 
+    <li>弾力的なシステムの開発</li> 
+   </ul> 
+  </blockquote> 
+  <p>また、ふたつの全体にわたる仮説も検証している。リードタイムと製品の品質、顧客満足と従業員の幸せの相関についてだ。また、昨年の調査で行った、DevOpの実践とITのパフォーマンスの相関の上に、ITのパフォーマンスがビジネスのパフォーマンスに与える影響(ROA、マーケットシェア)についても調べている。</p> 
+  <p>Gene氏はこの調査がなぜ妥当なのかInfoQに説明してくれた。</p> 
+  <blockquote>
+   私たちはこの15年にわたってMartin Fowler氏が継続的統合とデリバリについて語ってきた基礎的な理論や実践をテストしています。この理論や実践がパフォーマンスや生産性、ビジネス価値や開発者の幸せを改善する確かな根拠を見つけられればいいと思っています。
+  </blockquote> 
+  <p><a href="https://puppetlabs.com/2013-state-of-devops-infographic">2012 DevOps Survey Of Practice</a>では、4039人が参加した。そして、ハイパフォーマンスな組織には共通のパターンが<a href="http://www.slideshare.net/realgenekim/2013-velocity-devops-metrics-its-not-just-for-webops-any-more">あること</a>がわかった。パフォーマンスが低い組織と比べ、30倍も変更<a href="http://en.wikipedia.org/wiki/Lead_time">リードタイム</a>が短い。数週間や数ヶ月ではなく、数時間、数分しかかからない。また、変更による失敗(運用環境の動作停止やサービス障害)も50%も少なく、復旧時間も12倍も早い。</p> 
+  <p>The DevOps Surveys of Practiceはクロス母集団研究だ。前述した両氏の記事によれば、今回の研究は&quot;どのような要因(実践や文化など)が結果(ITパフォーマンス)と相関しているかを明らかにするための研究手法&quot;を使っており、この手法は例えば、医療調査で使われている。クロス母集団調査はITの世界で行われている仮説支持の手法よりも厳密である。</p> 
+  <p><img src="http://www.infoq.com/resource/news/2014/01/2013-devops-survey/ja/resources/CrossPopulationStudiesjpg.jpg" alt="" _href="img://CrossPopulationStudiesjpg.jpg" _p="true" /></p> 
+  <p>Gene氏は多くの開発者が調査に参加してくれることを望んでいる。</p> 
+  <blockquote>
+   すでに4000人以上の返答をもらっており、昨年より多いです。しかし、さらに多くの開発者に参加してもらいたいです。というのも、今年はDevOpのdevの部分を深く調べたいからです。昨年はOpの方を詳しく調べました。
+  </blockquote> 
+  <p><a href="http://www.surveygizmo.com/s3/1483785/DevOps-Survey-2013">調査は1月15日で終了</a>。結果は2014年中頃に発表予定。</p> 
  </div> 
 </div><br><br><br><br><br><br></body></html>
