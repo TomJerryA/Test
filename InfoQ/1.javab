@@ -1,295 +1,90 @@
-<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>Implementing High Performance Parsers in Java</h3><p>From time to time you may need to implement your own data or language parser in Java, for example if there is no standard Java or open source parser for that data format or language. Or, perhaps there are parsers, but they are too slow, consume too much memory, or just don’t have the features you need. Or there might be bugs in an open source parser, or the open source parser project was abandoned etc. The reason is not as important as the reality that you will be needing to implement your own parser.</p>
-<p>When you have to implement your own parser, you want it to perform well, be flexible, feature rich, easy to use, and last but not least, easy to implement; after all, your name is on that code. In this article I will explain one way of implementing high performance parsers in Java. This method is not exclusive but it is reasonably simple and achieves both high performance and a reasonably modular design. The design is inspired by the design of <a target="_blank" href="http://vtd-xml.sourceforge.net/">VTD-XML</a>, the fastest XML parser for Java I have seen, being even faster than the StAX and SAX Java standard XML parsers.</p>
-<h2>Two Basic Parser Types</h2>
-<p>There are several ways to categorize parsers. Here I will just make the distinction between two basic parser types:</p>
-<ul> 
- <li>Sequential access parsers</li> 
- <li>Random access parsers</li> 
-</ul>
-<p>By sequential access I mean that the parser parses the data, turning over the parsed data to the data processor as the data is parsed. The data processor only has access to the data currently being parsed; it can’t look back to earlier data, and can’t look ahead. Such parsers are also known as event based parsers, like the SAX and StAX parsers.</p>
-<p>A random access parser is a parser that enables the data processing code to move back and forth (access at random) over the data being parsed. Examples of such parsers are XML DOM parsers.</p>
-<p>This diagram attempts to illustrate the difference between sequential and random access parsers:</p>
+<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>Non-functional Requirements in Architectural Decision Making</h3><p><a href="http://www.computer.org/portal/web/computingnow/software"><img vspace="3" hspace="3" align="left" _p="true" _href="img://4IEEE-logo2.jpg" src="http://www.infoq.com/resource/articles/non-functional-requirements-in-architectural-decision-making/en/resources/4IEEE-logo2.jpg" alt="" /></a>This article first appeared in <strong><a target="_blank" href="http://www.computer.org/portal/web/computingnow/software"><i>IEEE Software</i></a><i> </i></strong><i>magazine and is brought to you by InfoQ &amp; IEEE Computer Society.</i>&nbsp;</p>
+<p>&nbsp;</p>
+<p>In software engineering, a tight relationship exists between nonfunctional requirements (NFRs) and software architectures (SAs). As early as 1994, Rick Kazman and Len Bass asserted that SA is intimately connected to NFR achievement.<sup>1</sup> This idea has pervaded software development over the years and explains why development projects invest a lot into fulfilling NFRs.<sup>2</sup></p>
+<p>This general statement becomes more concrete when we consider how the concept of SA has evolved from a simple structural representation to a decision-centric viewpoint.<sup>3</sup> In this perspective, NFRs serve as selection criteria for choosing among myriad designs and implementations.<sup>4</sup> For instance, we can justify choosing a layered architectural style in terms of maintainability or portability, or choosing a particular database technology in terms of efficiency. <br /> Software architects must continually deal with NFRs as part of their SA design responsibility. They must know a systemfs NFRs and how architectural decisions affect the NFRsf fulfillment. Here, we present an empirical study that uncovers relevant practices for software architects dealing with NFRs during decision making. This study is based on a two-part survey. First, we analyzed NFRs from an engineering perspective, specifically in relation to three requirements-engineering activities: elicitation, documentation, and validation. Then, we investigated how NFRs influence architectural decision making.</p>
+<h2>The Survey</h2>
+<p>We conducted semistructured interviews regarding a single software development project in which the respondents had participated as software architects. Compared to other qualitative research strategies such as structured questionnaires, semistructured interviews provide more flexibility and let us better investigate interesting issues that appear during conversations. Furthermore, considering a single project instead of a general perception of the architectsf rationale lets us better interpret and assess contextual information.<sup>5</sup></p>
+<h3>The Respondents and Their Organizations</h3>
+<p>The survey involved 13 respondents at 12 software-intensive organizations covering a variety of business areas and application domains (see Table 1). The organizations comprised three types of business:</p>
 <div id="lowerFullwidthVCR"></div>
-<p><img src="http://www.infoq.com/resource/articles/HIgh-Performance-Parsers-in-Java/en/resources/1IMG1.png" alt="" _href="img://1IMG1.png" _p="true" /></p>
-<p>Sequential access parsers let you access only the &quot;window&quot; or &quot;event&quot; that was just parsed, whereas random access parsers allow you to navigate the parsed data as you please.</p>
-<h2>Design Overview</h2>
-<p>The parser design I explain here is of the random access variety.</p>
-<p>Random access parser implementations are often slower than sequential access parsers, because they generally build up some kind of object tree from the parsed data through which the data processing code can access that data. Creating this object tree is actually both slow in CPU time and can consume quite a bit of memory.</p>
-<p>Instead of constructing an object tree from the parsed data, a more performant approach is to construct a buffer of indices into the original data buffer. The indices point to the start and end points of the elements found in the parsed data. Instead of accessing this data via an object tree, the data processing code accesses the parsed data directly in the buffer containing the original data. Here is an illustration of these two approaches:</p>
-<p><img width="599" alt="" src="http://www.infoq.com/resource/articles/HIgh-Performance-Parsers-in-Java/en/resources/IMG2.png" _href="img://IMG2.png" _p="true" /></p>
-<p>For lack of a better name I call this an &quot;Index Overlay Parser&quot;. The parser creates an index overlay on top of the original data. This is reminiscent of &nbsp;how a database indexes data stored on disk. It creates indices on top of the original, raw data to navigate and search through the data faster.</p>
-<p>As I mentioned earlier, this design is inspired by VTD-XML (VTD for Virtual Token Descriptor.) Thus, you might also call this a Virtual Token Descriptor Parser. I prefer Index Overlay, because that is what the Virtual Token Descriptors represent - an index into the original data.</p>
-<h3>Parser Design in General</h3>
-<p>A normal design for parsers is to separate the parsing into two steps. The first step breaks the data into cohesive tokens, where a token is one or more bytes or characters occurring in the parsed data. The second step interprets the tokens and constructs larger elements based on these tokens. These two steps are illustrated here:</p>
-<p><img src="http://www.infoq.com/resource/articles/HIgh-Performance-Parsers-in-Java/en/resources/IMG3.png" alt="" _href="img://IMG3.png" _p="true" /></p>
-<p>By elements I do not necessarily mean XML elements (though XML elements are also parser elements), but rather the larger &quot;data elements&quot; comprising the parsed data. In an XML document that would be XML elements, in a JSON document it would be JSON objects etc.</p>
-<p>As an example, the string <small><b>&lt;myelement&gt;</b></small> would be broken into the following tokens:</p>
 <ul> 
- <li><small><b>&lt;</b></small></li> 
- <li><small><b>myelement</b></small></li> 
- <li><small><b>&gt;</b></small></li> 
+ <li>Software consultancy companies that primarily perform software development tasks for different clients.</li> 
+ <li>IT departments that usually perform or outsource software development tasks to meet the organizationfs internal demands.</li> 
+ <li>Software houses that develop and commercialize specific proprietary solutions.</li> 
 </ul>
-<p>Once the data is broken into tokens it is easier for the parser to make sense of them and thus determine the larger elements that these tokens comprise. The parser would then know that an XML element starts with a '&lt;' token followed by a string token (the element name), then optionally a set of attributes, and finally a '&gt;' token.</p>
-<h3>Index Overlay Parser Design</h3>
-<p>This is the two-step approach we will use in our parser design. The input data is first broken into tokens by a tokenizer component. The parser then parses those tokens to determine the larger element boundaries in the input data.</p>
-<p>You can also add an optional third “element navigation step” to the parsing process. If the parser constructs an object tree from the parsed data, the object tree typically contains links to navigate the tree. When we construct an element index buffer instead of an object tree, we may need a separate component to help the data processing code navigate the element index buffer.</p>
-<p>Here is an overview of our parser design:</p>
-<p><img width="599" alt="" src="http://www.infoq.com/resource/articles/HIgh-Performance-Parsers-in-Java/en/resources/IMG4.png" _href="img://IMG4.png" _p="true" /></p>
-<p>First we read all the data into a data buffer. In order to enable random access to the original data via the index created during parsing, all of the original data has to be available in memory.</p>
-<p>Second the tokenizer breaks the data into tokens. The start index, end index and token type of the tokens are kept internally in a token buffer in the tokenizer. Using a token buffer makes it possible to look forwards and backwards, in such cases that your parser needs that.</p>
-<p>Third, the parser looks at the tokens obtained from the tokenizer, validates them against their context and determines what elements they represent. The parser then constructs the element index (the index overlay) based on the tokens received from the tokenizer. The parser obtains the tokens one by one from the tokenizer. Thus, the tokenizer does not actually need to break all the data into tokens immediately. It just needs to find one token at a time.</p>
-<p>The data processing code can navigate the element buffer, and use that to access the original data. Optionally, you may wrap the element buffer in an element navigator component, making navigating the element buffer easier.</p>
-<p>This design does not build up an object tree from the parsed data, but it does build up a navigable structure, the element buffer, consisting of indices (<small><b>int</b></small>&nbsp;arrays) into the data buffer containing the original data. Using these indices you can navigate the data in the original data buffer.</p>
-<p>The following sections will explain the various parts of the design in more detail.</p>
-<h2>The Data Buffer</h2>
-<p>The data buffer is a <small><b>byte</b></small> or <small><b>char</b></small> buffer containing the original data. The token buffer and element buffer contain indices into the data buffer.</p>
-<p>In order to allow random access to the parsed data, it is necessary to have some kind of in-memory representation of it all. Instead of an object tree we use the data buffer with the raw data itself.</p>
-<p>Having all data in memory can consume a big chunk of memory. If your data contains elements that are independent of each other, such as log records, pulling the whole log file into memory might be overkill. Instead you can pull in a chunk of the log file that contains at least one full log record. Since every log record can be fully parsed and processed independently of the other log records, you don't need the full log file in memory at the same time. I have described how to iterate a stream of data in chunks in my article&nbsp;<a target="_blank" href="http://tutorials.jenkov.com/java-howto/iterating-streams-using-buffers.html">Iterating Streams Using Buffers</a>.</p>
-<h2>The Tokenizer + Token Buffer</h2>
-<p>The tokenizer breaks the data buffer into tokens. The information about the tokens is stored in the token buffer, containing the following:</p>
+<p>The projects were diverse in terms of functionality and team size.</p>
+<p>Although all the respondents performed as architects in their respective projects, their organizations had no specified software architect role. Instead, the organizations chose architects for each project on the basis of technical knowledge or experience. In all but one case, the respondents also played other roles (project manager, consultant, or developer).</p>
+<p><b><small>(Click on the image to enlarge it)</small></b></p>
+<p><a _href="resource://table-large.jpg" href="/resource/articles/non-functional-requirements-in-architectural-decision-making/en/resources/table-large.jpg"><img alt="" src="http://www.infoq.com/resource/articles/non-functional-requirements-in-architectural-decision-making/en/resources/table-small.jpg" _href="img://table-small.jpg" _p="true" /></a></p>
+<h3>Execution</h3>
+<p>We created an interview guide and tested it with two researchers and two software architects to ensure its effectiveness. We then sent the guide to the respondents in advance, which let them become familiar with the topic and choose which project to discuss. We conducted the interviews face to face; each interview took about one hour. We recorded the interviews and prepared them for analysis by manually transcribing the audio records into text documents. Then, the respondents validated them. In a few cases, we explicitly requested clarification of certain aspects. We used <a href="http://www.qsrinternational.com/products_nvivo.aspx">NVivo software</a> to assess the collected data. The team met several times to generate categories by grouping sentences or phrases describing the same idea, action, or property. Finally, we analyzed the data according to the organizationsf and projectsf characteristics.</p>
+<h3>Limitations</h3>
+<p>We knew our sample wasnft random and therefore didnft necessarily represent the broader population of software development projects. So, we tried to mitigate possible bias by letting the organizations choose respondents and letting the respondents choose projects. We recognized that respondents might be inclined to select the more successful projects. To mitigate this, we explained that our study didnft aim to analyze best practices but to learn how things are done. We also stated that responses would be kept confidential. Most of the organizations were small or medium sized, and all were in Spain. These factors certainly might have affected the surveyfs results. Furthermore, most of the projects dealt with noncritical domains. However, because we sought to reveal industrial practices used in the analyzed projects rather than to formulate general theories, this isnft a fundamental weakness.</p>
+<h2>How Architects Deal with NFRs</h2>
+<p>We asked software architects for details about how they elicited and documented NFRs and how they later validated systems against them. This is important for understanding the context of architectsf decision making in the projects. Details on this part of the study appear elsewhere,<sup>6</sup> and the list of questions is <a href="http://www.essi.upc.edu/~gessi/survey.pdf">here</a>. Because we implemented semistructured interviews, the questions served as a guideline, but the interviews evolved depending on the conversations. Topics such as requirements elicitation, documentation, and validation naturally emerged during the interviews.</p>
+<h3>Who Elicits NFRs?</h3>
+<p>Requirements elicitation obtains systems requirements from stakeholders and other sources and refines them. Both researchers and practitioners consider it one of the most challenging parts of requirements engineering. Numerous techniques (surveys, creativity workshops, and so on) help express requirements precisely and unambiguously.</p>
+<p>These techniques assume that stakeholders on the customer side (end users, managers, and so on) contribute the most to elicitation. Some respondents acknowledged this assumption when referring to functional requirements. For example, respondent A said, “[The business analyst] writes a detailed document reflecting all the [functional] requirements specified by the customer.”</p>
+<p>However, this assumption didnft hold for NFRs: in 10 projects, the software architect was the main source of the NFRs. Some clients never mentioned NFRs. Respondent E said, g[The client] never mentioned [a requirement] that webpages could not take more than two seconds to load, but he complained about it afterward.h The other clients provided only broad indications, usually in the form of cost or efficiency constraints. Respondent L2 said, “The client mentioned a basic [NFR], and we added others based on our experience. ”</p>
+<p>This number exceeds the already high rate (60 percent) Uwe van Heesch and Paris Avgeriou reported of architects significantly involved in requirements elicitation.</p>
+<p>The organizations of respondents D, H, and I were the only ones with client-led NFR elicitation. Interestingly, they were also the only ones in which the respondents were working on outsourced projects (managed by an aerospace company, a software company, and a bank). This situation is due to the subordinated role of the respondentsf organizations in these projects. Even in these cases, however, the architects played an active role in defining the NFRs. Respondent D said,  “Our client was an aerospace system department. Therefore, all the NFRs were very well defined. We also added other NFRs based on our experience.”</p>
+<h3>How Are NFRs Elicited?</h3>
+<p>NFRs’ elusive nature can make them difficult to elicit up front. In accordance with this general belief, all respondents agreed that NFR elicitation is an iterative process that expands along the system life cycle. This could be because part of the systemfs expected behavior might not be uncovered until a certain milestone (typically, a prototype) has been achieved. Respondent J said, ”We determined first some relevant NFRs - for example, compatibility with other systems - and then developed a prototype and analyzed alternatives.” <br /> Furthermore, we can't consider NFRs complete after the first development. They’ll require corrective maintenance to fix some misbehavior that wasnft originally expected. Respondent K said, ”In relation to efficiency, we had to make changes because the necessary level of service was not specified at the beginning of the project.” Such activity is justified. Some NFRs, such as those related to security, canft be completely checked until the system is deployed in its expected environment and unexpected conditions arise.</p>
+<h3>How Well Are NFRs Documented?</h3>
+<p>Academics and standards organizations have proposed many notations and templates to write system requirement specifications to make documentation more efficient. However, nine of the 13 respondents acknowledged that they hadnft documented the NFRs. Respondent H said, ”[Functional requirements] came in UML, using conceptual models and use cases, but there was no mention of NFRs.” Some respondents said that documentation is only necessary if the client or the critical nature of the domain require it. The four respondents who explicitly documented their NFRs used different methods. Respondent Dfs organization uses a domain-specific language. ”Since we work in the field of aerospace, our NFRs had to be clearly stated and verifiable. We have special templates, and we use different techniques from other engineering disciplines, such as risk models, failure trees, etc.” Two respondents used natural language with a certain structure. Respondent B used Volere templates that provide a high degree of structure to the requirements; Respondent K used plaintext classified under the ISO/IEC 9126 quality model.</p>
+<p>Respondent J simply wrote a plaintext document. Respondents B and D were the only ones who maintained up-to-date requirement documentation; J and K documented only the initial NFRs. Respondent K said, &quot;At first, we wrote down some initial ideas for NFRs in natural language, c but afterward, we did not keep track of any of them or of any other NFRs arising during the design process.&quot; It seems natural to think a relationship exists between measurability and continual (or at least regular) documentation updates, but confirming this link will require further studies.</p>
+<p>So, we can see that NFRs are more tacit or even hidden than documented. When they are documented, their accuracy and timeliness are seriously compromised. This situation can be explained in terms of cost and benefit. Respondent C stated it plainly: “I rarely appropriately document my projects, basically because it costs money.” If practitioners donft perceive a clear benefit from shaping NFRs into fully engineered artifacts, NFRs will remain elusive.</p>
+<h3>How Are Systems Validated against NFRs?</h3>
+<p>Validating system behavior against elicited NFRs is difficult. Because every NFR differs, the appropriate methods differ. Nevertheless, 11 respondents claimed that all NFRs had been satisfied by the projectfs end, although there was always room for improvement. However, when we asked how they validated the NFRs, their answers were vague. Respondent D said, ”Compliance with some [not all] NFRs is only informally discussed with the client, since it is not easy to test.” So, the need exists to distinguish the perception of NFR compliance, which 11 respondents (85 percent) achieved, from real validation, which eight respondents (61 percent) achieved for only some types of NFRs. (This is in line with a previous study that reported 60 percent.<sup>8</sup>)</p>
+<p>Eight interviewees performed some validation, but against only one to three NFRs. They considered only a few types of NFRs:</p>
 <ul> 
- <li>Token position (start index)</li> 
- <li>Token length</li> 
- <li>Token type (optional)</li> 
+ <li>Performance efficiency. Respondent H said, ”We ran load and stress tests to evaluate performance.”</li> 
+ <li>Correctness. Respondent A said, “For each hour of coding, we spend one hour testing for bugs.”</li> 
+ <li>Usability. Respondent K said, ”We made a prototype just to ensure client satisfaction with the interface.”</li> 
+ <li>Reliability. Respondent J said, ”We have enforced some errors to see what happens and [to] control loss of data.”</li> 
 </ul>
-<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; This information is stored in arrays. Here is an example of how the code could look:</p>
-<pre>
-&nbsp;&nbsp; public class IndexBuffer {
-       public int[]&nbsp; position = null;
-       public int[]&nbsp; length&nbsp;&nbsp; = null;
-       public byte[] type&nbsp;&nbsp;&nbsp;&nbsp; = null; /* assuming a max of 256 types (1 byte / type) */
-   }</pre>
-<p>As the tokenizer finds tokens in the data buffer, it will insert the position (start index) in the&nbsp;<small><b>position</b></small>&nbsp;array, the token length in the&nbsp;length&nbsp;array, and the token type in the&nbsp;type&nbsp;array.</p>
-<p>If you don’t use the optional token type array you can still determine the token type as needed by looking at the data in the token. This is a trade-off for performance vs. memory consumption.</p>
-<h2>The Parser</h2>
-<p>The parser is similar in nature to the tokenizer, except it takes tokens as input and outputs the element indices. Just like with tokens, an element is marked by its position (start index), length, and optionally its element type. These numbers are stored in the same structure used to store tokens.</p>
-<p>Again, the<small><b>&nbsp;type</b></small>&nbsp;array is optional. If you can determine the element type easily based on the first bytes or characters of the element, you may not need to store the element types.</p>
-<p>The precise granularity of the elements marked in the element buffer depends on the data being parsed as well as the code that needs to process the data afterwards. For instance, if you implement an XML parser you might mark each start tag, attribute and end tag as separate &quot;parser elements&quot;.</p>
-<h2>The Element Buffer (The Index)</h2>
-<p>The parser produces an element buffer with indices into the original data. The indices mark the position (start index), length and type of the elements the parser has found in the data. You can use these indices to navigate the original data.</p>
-<p>Looking at the IndexBuffer code above, you can see that the element buffer uses nine bytes per element; four bytes for the position, four bytes for the token length, and one byte for the token type.</p>
-<p>You may be able to decrease the memory consumption of the&nbsp;<small><b>IndexBuffer</b></small>. For instance, if you know that the elements are never longer than 65,536 bytes, you may use an array of <small><b>short</b></small>&nbsp;instead of&nbsp;<small><b>int</b></small>&nbsp;to hold the token lengths. That will save you two bytes per element, bringing the memory consumption down to seven bytes per element.</p>
-<p>Additionally, if know that the files you will parse are never longer than 16,777,216 bytes in length, you only need three bytes for the position (start index). The fourth byte of each&nbsp;<small><b>int</b></small>&nbsp;in the position array could then hold the element type, eliminating the need for a&nbsp;<small><b>type</b></small>&nbsp;array. If you have less than 128 token types, you can use seven bits for the token types instead of eight. This enables you to spend 25 bits on the position, which increases the maximum position to 33,554,432. If you have less than 64 token types, you can assign another bit to the position etc.</p>
-<p>VTD-XML actually compacts all this information into a <small><b>long</b></small> to save space. You lose a bit of speed because of the extra bit manipulation needed to pack separate fields into a single&nbsp;<small><b>int</b></small> or&nbsp;<small><b>long</b></small>, but you save some memory. It's a trade off.</p>
-<h2>The Element Navigator</h2>
-<p>The element navigator helps the code that is processing the data navigate the element buffer. Remember, a semantic object or element (e.g. an XML element) might consist of multiple parser elements. To ease the navigation you can create an element navigator object that can navigate the parser elements on a semantic object level. For instance, an XML element navigator might navigate the element buffer by going from start tag to start tag.</p>
-<p>The use of an element navigator component is your choice. If you are implementing a parser for a single use in a single project, you might want to skip it. But if you’re implementing a parser with the intention of reusing it across projects, or publishing it as open source, you might want to add an element navigator component, depending on how complexity of navigating the parsed data.</p>
-<h2>Case Study: A JSON Parser</h2>
-<p>To make the index overlay parser design more tangible, I have implemented a small JSON parser in Java, based on the index overlay parser design. You can find the complete code on <a href="http://github.com/jjenkov/parsers-in-java" target="_blank">GitHub</a>.</p>
-<p>JSON is short for JavaScript Object Notation. JSON is a popular data format to exchange data between web servers and browsers via AJAX, because web browsers have built-in native support for parsing JSON into JavaScript objects. Going forward I will assume that you are familiar with JSON.</p>
-<p>Here is a simple JSON example:</p>
-<pre>
-  {&nbsp; &quot;key1&quot;&nbsp; :&nbsp; &quot;value1&quot;&nbsp; ,&nbsp; &quot;key2&quot;&nbsp; :&nbsp; &quot;value2&quot;&nbsp; ,&nbsp; [&nbsp; &quot;valueA&quot;&nbsp; ,&nbsp; &quot;valueB&quot;&nbsp; ,&nbsp; &quot;valueC&quot;&nbsp; ]&nbsp; }</pre>
-<p>The JSON tokenizer will break this JSON string into the following tokens:</p>
-<p><img width="599" alt="" src="http://www.infoq.com/resource/articles/HIgh-Performance-Parsers-in-Java/en/resources/Img5.png" _href="img://Img5.png" _p="true" /></p>
-<p>The underlines are there to emphasize the length of each token.</p>
-<p>The tokenizer also determines the basic types of each token. Here is the same JSON example with the token types added:</p>
-<p><img width="599" alt="" src="http://www.infoq.com/resource/articles/HIgh-Performance-Parsers-in-Java/en/resources/IMG6.png" _href="img://IMG6.png" _p="true" /></p>
-<p>Notice how the token types are not semantic. They only say what the basic token type is and not what they represent.</p>
-<p>The parser interprets the basic token types and replaces them with semantic types. Here is the same JSON example but with semantic types (the parser elements) instead:</p>
-<p><img width="599" alt="" src="http://www.infoq.com/resource/articles/HIgh-Performance-Parsers-in-Java/en/resources/IMG7.png" _href="img://IMG7.png" _p="true" /></p>
-<p>Once the parser is finished parsing the above JSON you will have an index (element buffer) consisting of the positions, lengths and element types of the elements marked above. You can then navigate the index to extract the data you need from the JSON.</p>
-<h3>JsonTokenizer.parseToken()</h3>
-<p>In order to give you an idea about how the tokenization and parsing is implemented, I will show you the central code parts of the&nbsp;<small><b>JsonTokenizer</b></small>&nbsp;and the&nbsp;<small><b>JsonParser</b></small>. Remember, the full code is available on <a href="http://github.com/jjenkov/parsers-in-java" target="_blank">Github</a>.</p>
-<p>Here is the&nbsp;<small><b>JsonTokenizer.parseToken()</b></small>&nbsp;method which parses the next token in the data buffer:</p>
-<pre>
-public void parseToken() {
-     skipWhiteSpace();
-     this.tokenLength = 0;
-	
-     this.tokenBuffer.position[this.tokenIndex] = this.dataPosition;
-     char nextChar = this.dataBuffer.data[this.dataPosition];
-	
-     switch(nextChar) {
-	&nbsp;case '{'&nbsp;&nbsp; :
-           this.tokenLength = 1;
-           this.tokenBuffer.type[this.tokenIndex] = TokenTypes.JSON_CURLY_BRACKET_LEFT;
-           break;
-	&nbsp;case '}'&nbsp;&nbsp; :&nbsp; 
-           this.tokenLength = 1;
-           this.tokenBuffer.type[this.tokenIndex] = TokenTypes.JSON_CURLY_BRACKET_RIGHT;
-           break;
-	&nbsp;case '['&nbsp;&nbsp; :
-           this.tokenLength = 1;
-           this.tokenBuffer.type[this.tokenIndex] = TokenTypes.JSON_SQUARE_BRACKET_LEFT ;
-           break;
-	&nbsp;case ']'&nbsp;&nbsp; :&nbsp;
-           this.tokenLength = 1;
-           this.tokenBuffer.type[this.tokenIndex] = TokenTypes.JSON_SQUARE_BRACKET_RIGHT;
-           break;
-	&nbsp;case ','&nbsp;&nbsp; :
-           this.tokenLength = 1;
-           this.tokenBuffer.type[this.tokenIndex] = TokenTypes.JSON_COMMA;
-           break;
-	&nbsp;case ':'   :&nbsp; 
-           this.tokenLength = 1;
-           this.tokenBuffer.type[this.tokenIndex] = TokenTypes.JSON_COLON;
-           break;
-	&nbsp;case '&quot;'&nbsp;&nbsp; :
-           parseStringToken();
-           this.tokenBuffer.type[this.tokenIndex] = TokenTypes.JSON_STRING_TOKEN;
-           break;
-	&nbsp;default&nbsp;&nbsp;&nbsp; :&nbsp;
-           parseStringToken();
-           this.tokenBuffer.type[this.tokenIndex] = TokenTypes.JSON_STRING_TOKEN;
-     }
-     this.tokenBuffer.length[this.tokenIndex] = this.tokenLength;
-  }</pre>
-<p>As you can see, the code is pretty simple. First the <small><b>skipWhiteSpace()</b></small>&nbsp;method is called which skips over any white space characters that might be in the data at the current location. Second, the token length is set to 0. Third, the position of the current token (the index into the data buffer) is stored in the&nbsp;<small><b>TokenBuffer</b></small>. Fourth the next character is examined, and depending on what character it is (what token it is), one of the statements in the <small><b>switch-case</b></small> construct is executed. Finally the token length for the current token is stored.</p>
-<p>This is really all it takes to tokenize a data buffer. Notice that once the beginning of a string token is found, the tokenizer calls the&nbsp;<small><b>parseStringToken()</b></small>&nbsp;method which is scans through the data until the end of a string token is found. This will execute faster than trying to handle all cases inside the&nbsp;<small><b>parseToken()</b></small>&nbsp;method, and is easier to implement.</p>
-<p>The rest of the methods in&nbsp;<small><b>JsonTokenizer</b></small>&nbsp;are just there to assist the&nbsp;<small><b>parseToken()</b></small>&nbsp;method, or to move the data position (index) to the next token (first position after the current token) etc.</p>
-<h3>JsonParser.parseObject()</h3>
-<p>The primary method of the&nbsp;<small><b>JsonParser</b></small>&nbsp;class is the<small><b> parseObject()</b></small> method which looks at the token types of the tokens obtained from the&nbsp;<small><b>JsonTokenizer</b></small>&nbsp;and tries to locate JSON objects in the input data based on that.</p>
-<p>Here is the&nbsp;<small><b>parseObject()</b></small>&nbsp;method:</p>
-<pre>
-private void parseObject(JsonTokenizer tokenizer) {
-     assertHasMoreTokens(tokenizer);
-     tokenizer.parseToken();
-     assertThisTokenType(tokenizer, TokenTypes.JSON_CURLY_BRACKET_LEFT);
-     setElementData&nbsp;&nbsp;&nbsp;&nbsp; (tokenizer, ElementTypes.JSON_OBJECT_START);
-     tokenizer.nextToken();
-     tokenizer.parseToken();
-     while( tokenizer.tokenType() != TokenTypes.JSON_CURLY_BRACKET_RIGHT) {&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
-         assertThisTokenType(tokenizer, TokenTypes.JSON_STRING_TOKEN);
-	&nbsp;setElementData(tokenizer, ElementTypes.JSON_PROPERTY_NAME);&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
-         tokenizer.nextToken();
-	&nbsp;tokenizer.parseToken();
-	&nbsp;assertThisTokenType(tokenizer, TokenTypes.JSON_COLON);
-	&nbsp;tokenizer.nextToken();
-	&nbsp;tokenizer.parseToken();
-	&nbsp;if(tokenizer.tokenType() == TokenTypes.JSON_STRING_TOKEN) {&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
-             setElementData(tokenizer, ElementTypes.JSON_PROPERTY_VALUE);
-	&nbsp;} else if(tokenizer.tokenType() == TokenTypes.JSON_SQUARE_BRACKET_LEFT) {
-	&nbsp;&nbsp;&nbsp;&nbsp; parseArray(tokenizer);
-	&nbsp;}
-         tokenizer.nextToken();
-	&nbsp;tokenizer.parseToken();
-	&nbsp;if(tokenizer.tokenType() == TokenTypes.JSON_COMMA) {
-	&nbsp;&nbsp;&nbsp;&nbsp; tokenizer.nextToken();&nbsp; //skip , tokens if found here.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
-             tokenizer.parseToken();
-	&nbsp;}
-      }
-      setElementData(tokenizer, ElementTypes.JSON_OBJECT_END);
-  }
-
-  private void setElementData(JsonTokenizer tokenizer, byte elementType) {
-     this.elementBuffer.position[this.elementIndex] = tokenizer.tokenPosition();&nbsp;&nbsp;&nbsp; &nbsp;
-     this.elementBuffer.length&nbsp; [this.elementIndex] = tokenizer.tokenLength();&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;
-     this.elementBuffer.type&nbsp;&nbsp;&nbsp; [this.elementIndex] = elementType;&nbsp;&nbsp;&nbsp;&nbsp; this.elementIndex++;
-  }</pre>
-<p>The&nbsp;<small><b>parseObject()</b></small>&nbsp;method expects to see a left curly bracket ( { ) followed by a string token, a colon and another string token or the beginning of an array ( [ ) or another JSON object. As the&nbsp;<small><b>JsonParser</b></small>&nbsp;gets these tokens from the&nbsp;<small><b>JsonTokenizer</b></small>, it stores start, length and the semantic meaning of these tokens in its own&nbsp;<small><b>elementBuffer</b></small>. The data processing code can then navigate this&nbsp;<small><b>elementBuffer</b></small>&nbsp;afterwards, to extract any needed data from the input data.</p>
-<p>Seeing the core parts of the&nbsp;<small><b>JsonTokenizer</b></small>&nbsp;and the&nbsp;<small><b>JsonParser</b></small>&nbsp;classes should provide some idea of how tokenization and parsing works. To fully understand how the code works you may need to look that the complete <small><b>JsonTokenizer</b></small>&nbsp;and&nbsp;<small><b>JsonParser</b></small>&nbsp;implementation. They are both less than 115 lines of code each, so they should be reasonably approachable.</p>
-<h2>Benchmarks</h2>
-<p>VTD-XML has already done extensive benchmarking of their XML parser against StAX, SAX and DOM parsers. VTD-XML wins over them all in raw performance.</p>
-<p>In order to establish some credibility for index overlay parser performance in general, I have benchmarked my JSON parser implementation against GSON – Google’s JSON parser. GSON creates an object tree from a JSON input (String or stream).</p>
-<p>Keep in mind that GSON is fairly mature production quality, tested, with good error reporting etc. My JSON parser is only at a proof-of-concept level. The benchmarking is only done to get an indication of the difference in performance. They are not final numbers. Remember to read the discussion of the benchmarks below too.</p>
-<p>Here are some details about how the benchmarks are structured:</p>
-<ul> 
- <li>In order to warm up the JIT, minimize one-off overheads etc. the JSON input parsing is performed 10,000,000 times.</li> 
- <li>The benchmarks are repeated separately for three different files to see how the parsers do on small, medium and larger files. The file sizes are 64 bytes, 406 bytes and 1012 bytes. That means first do 10,000,000 iterations on a small file, and measure that. Then on a medium file, and measure that. And then on a larger file and measure that.</li> 
- <li>The file is being loaded fully into memory before parsing and measurement begins. That is done to exclude file-load time from the parsing time.</li> 
- <li>Each measurement of 10,000,000 iterations runs in its own process. That means that each file is parsed in separate processes. Only one process runs at a time.</li> 
- <li>Each file is measured 3 times. That is, the process parsing the file 10,000,000 times is started and stopped 3 times. The processes run sequentially, not in parallel.</li> 
-</ul>
-<p>The benchmark table contains three columns:</p>
-<p>1. Simple iteration of the raw data buffer<br /> 2. JSON Parser<br /> 3. GSON</p>
-<p>The first column is the simple iteration of all of the data in the raw data buffer. This number is only there to signal the lower limit; the minimum time theoretically possible to process all the data. Of course no parser will reach this speed, but the number is interesting to see how far off a parser is from the raw iteration speed. The second column is my JSON parser. The third column is Google's GSON parser.</p>
-<p>Here are the times in milliseconds to perform the 10.000.000 parsings of the 3 files (64 bytes, 406 bytes, 1012 bytes):</p>
-<table cellspacing="0" cellpadding="0" border="0"> 
- <tbody> 
-  <tr> 
-   <td> <p><strong>File</strong></p> </td> 
-   <td> <p><strong>Run</strong>&nbsp;&nbsp;</p> </td> 
-   <td> <p><strong>Iteration</strong>&nbsp;&nbsp;</p> </td> 
-   <td> <p><strong>JSON Parser</strong>&nbsp;&nbsp;</p> </td> 
-   <td> <p><strong>GSON</strong></p> </td> 
-  </tr> 
-  <tr> 
-   <td> <p>Small</p> </td> 
-   <td> <p>1</p> </td> 
-   <td> <p>2341</p> </td> 
-   <td> <p>69708&nbsp;&nbsp;</p> </td> 
-   <td> <p align="right">91190</p> </td> 
-  </tr> 
-  <tr> 
-   <td> <p>Small</p> </td> 
-   <td> <p>2</p> </td> 
-   <td> <p>2342</p> </td> 
-   <td> <p>70705&nbsp;&nbsp;</p> </td> 
-   <td> <p>91308</p> </td> 
-  </tr> 
-  <tr> 
-   <td> <p>Small</p> </td> 
-   <td> <p>3</p> </td> 
-   <td> <p>2331</p> </td> 
-   <td> <p>68278&nbsp;&nbsp;</p> </td> 
-   <td> <p>92752</p> </td> 
-  </tr> 
-  <tr> 
-   <td> <p>Medium</p> </td> 
-   <td> <p>1</p> </td> 
-   <td> <p>13954</p> </td> 
-   <td> <p>122769&nbsp;&nbsp;</p> </td> 
-   <td> <p>314266</p> </td> 
-  </tr> 
-  <tr> 
-   <td> <p>Medium</p> </td> 
-   <td> <p>2</p> </td> 
-   <td> <p>13963</p> </td> 
-   <td> <p>131708&nbsp;&nbsp;</p> </td> 
-   <td> <p>316395</p> </td> 
-  </tr> 
-  <tr> 
-   <td> <p>Medium</p> </td> 
-   <td> <p>3</p> </td> 
-   <td> <p>13954</p> </td> 
-   <td> <p>132277&nbsp;&nbsp;</p> </td> 
-   <td> <p>323585</p> </td> 
-  </tr> 
-  <tr> 
-   <td> <p>Big</p> </td> 
-   <td> <p>1</p> </td> 
-   <td> <p>33494</p> </td> 
-   <td> <p>239614&nbsp;&nbsp;</p> </td> 
-   <td> <p>606194</p> </td> 
-  </tr> 
-  <tr> 
-   <td> <p>Big</p> </td> 
-   <td> <p>2</p> </td> 
-   <td> <p>33541</p> </td> 
-   <td> <p>231866&nbsp;&nbsp;</p> </td> 
-   <td> <p>612193</p> </td> 
-  </tr> 
-  <tr> 
-   <td> <p>Big</p> </td> 
-   <td> <p>3</p> </td> 
-   <td> <p>32462</p> </td> 
-   <td> <p>232951&nbsp;&nbsp;</p> </td> 
-   <td> <p>618212</p> </td> 
-  </tr> 
- </tbody> 
-</table>
-<p>As you can see, the index overlay implementation is significantly faster than GSON (an object tree JSON parser). Of course this was expected, but now you can get an idea of what the performance difference is.</p>
-<p>Note that all benchmark processes were very stable in their memory consumption during execution. GSON did not steadily increase its memory consumption despite the many object trees created. The memory consumption of the index overlay parser was also stable, and about 1mb lower than that of the GSON benchmarks. Some of that might be due to the larger code base in GSON loaded into the JVM.</p>
-<h2>Benchmark Discussion</h2>
-<p>Now it wouldn’t be fair to compare a parser that creates an object tree from data (GSON) to a parser that just marks the index of the elements found in the data without a discussion of what is being compared.</p>
-<p>Parsing a file inside a running application usually requires the following steps:</p>
-<p><img src="http://www.infoq.com/resource/articles/HIgh-Performance-Parsers-in-Java/en/resources/IMG8.png" alt="" _href="img://IMG8.png" _p="true" /></p>
-<p>First the data is loaded either from disk or from the network. Second, the data is parsed. Third, the data is processed.</p>
-<p>In order to measure just the raw parser speed I preloaded the files to be parsed into memory, and the benchmarked code will not process the data in any way. While this does benchmark just the raw parsing speeds, the performance difference does not translate one to one into increased performance in a running application. Here is why:</p>
-<p>A streaming parser is often able to start parsing the incoming data before all of the data is loaded into memory. My JSON parser cannot do that the way it is implemented now. That means, that even though it is faster in raw parsing benchmarks, in a real life running application where my parser would have to wait for the data to load, it may not be as fast in total. This is illustrated in the diagram below:</p>
-<p><img src="http://www.infoq.com/resource/articles/HIgh-Performance-Parsers-in-Java/en/resources/IMG9.png" alt="" _href="img://IMG9.png" _p="true" /></p>
-<p>You could probably modify my parser to be able to parser data as it is being loaded, in order to speed up the total parsing time. But that would probably decrease raw parser-performance a bit. The total speed might still be better, though.</p>
-<p>Similarly, my JSON parser does not do anything with the parsed data. If you need to extract a lot of that data into Strings, then GSON will have done some of the work for you already, since it creates an object tree from the parsed data. This is illustrated in the diagram below:</p>
-<p><img src="http://www.infoq.com/resource/articles/HIgh-Performance-Parsers-in-Java/en/resources/IMG10.png" alt="" _href="img://IMG10.png" _p="true" /></p>
-<p>When using GSON some of the data extraction needed during data processing might already have been done for you, meaning that the data processing step might be faster than if it also had to include data extraction (e.g. into String objects).</p>
-<p>So, to really measure the impact on your application, you have to measure the use of different parsers in your application. I am sure you will see a speedup from using an index overlay parser, but exactly how much it will be is hard to say.</p>
-<h2>Discussion of Index Overlay Parsers in General</h2>
-<p>One argument I have heard against index overlay parsers is that to be able to point into the original data rather than extract it into an object tree, it is necessary to keep all of the data in memory while parsing it. This is can produce a memory-hit when processing big files.</p>
-<p>In general the argument is that a streaming parser (like SAX or StAX) can parse huge files without ever having the whole file in memory. However this is only true if the data in the file can be parsed and processed in smaller chunks, where each chunk can be parsed and processed independently from other chunks. For instance, a big XML file contains a list of elements, each of which &nbsp;can be parsed and processed individually (like a list of log records). But, if your data can be parsed separately in independent chunks, you can implement an index overlay parser that is capable of that as well.</p>
-<p>If the file cannot be parsed in independent chunks you will anyways have to extract the necessary information into some structure which can be accessed by the code processing later chunks. But if you can do that with a streaming parser, you can also do it with an index overlay parser.</p>
-<p>Parsers that create object trees from input data often consume much larger amounts of memory with the object tree than the original data size. This is due to the memory overhead associated with an object instance, plus extra data needed to keep reference between objects.</p>
-<p>Additionally since all data needs to be in memory at one time, you need to allocate a data buffer ahead of parsing that is big enough to hold all the data. But what if you don't know how big the files are when you start parsing them?</p>
-<p>Imagine you have a web application (or web service, or other server application) where the users can upload files. You may not know how big the files are, so how can you allocate a suitable buffer for them before the parsing starts? Well, for security reasons you should always have a maximum allowed file size. Otherwise users may be able to crash your system by uploading very large files. Or they may even write a program that pretends to be a browser uploading a file, and have that program never stop sending data to your server. You can allocate a buffer fitting the maximum allowed file size. That way your buffer will not run out of space for valid files. If it does run out of space, your user has uploaded an excessively large file anyway.</p>
-<h2>About the Author</h2>
-<p><strong><img align="left" src="http://www.infoq.com/resource/articles/HIgh-Performance-Parsers-in-Java/en/resources/Jakob.jpg" alt="" _href="img://Jakob.jpg" _p="true" />Jakob Jenkov</strong> is an entrepreneur, writer and software developer currently located in Barcelona, Spain. Jakob learned Java in 1997, and has worked with Java professionally since 1999. He is currently focused on the concept of efficiency across a variety of domains (software, processes, businesses etc.). He holds a master of science in IT from the IT University in Copenhagen. You can read more about his work on his <a href="http://jenkov.com">website</a>.</p><br><br><br><br><br><br></body></html>
+<p>No one mentioned one highly relevant type of NFR: security. Respondent F represented an extreme case of nonvalidation: ”We wait for the client to complain. He will notice when something goes wrong.” Although this response is unsatisfactory, it shows again (as in the case of documentation) how budget and time considerations can interfere with ideal engineering practices.</p>
+<p>In contrast, respondent D used formal techniques based on statistical analysis and simulation to check the systemfs reliability. Of course, this validation approach was likely because the project involved an information system for aerospace, a critical domain. This observation aligns with a previous survey that suggested that the evaluation approach depends on the evaluation goals.<sup>9</sup></p>
+<p>One finding of our study that might align with previous results is the link between documentation and validation. As Andreas Borg and his colleagues said, ”When expressed in non-measurable terms testing is timeconsuming or even impossible.<sup>10</sup>”Only two respondents expressed the NFRs in a measurable form, which could be one reason for the overall low level of validation.</p>
+<h2>How NFR s Influence Architectural Decisions</h2>
+<p>Not surprisingly, the respondents all agreed that NFRs influence their decisions. The details of their answers revealed some nuances, though.</p>
+<h3>Types of Decisions</h3>
+<p>NFRs drove four types of decisions.</p>
+<h4>Architectural patterns.</h4>
+<p>Given the types of projects, a layered architecture was the natural option for most of the respondents, although some of them explicitly justified the decision. Respondent J said, ”We used a layered architecture to support later changes.”</p>
+<h4>Implementation strategies.</h4>
+<p>Several types of requirements might require strategies at a detailed architectural level. The situation could be a general design decision. Respondent L1 said, ”We opted for single sign-on to improve the integrability of different subsystems.” Or, it could be a detailed decision about some components. Respondent A said, ”The tables of a database were duplicated because the access time was too high.”</p>
+<h4>Transversal decisions.</h4>
+<p>Some NFRs carry the weight of affecting the whole architecture. Respondent L1 said, ”We prefer to use technologies we have already mastered.” One recurrent matter is the use of third-party components and especially open source software (OSS). Respondent D said, ”We wanted to have access to code for maintainability reasons; thus, we opted for OSS solutions.”</p>
+<h4>Technological platforms.</h4>
+<p>NFRs might be satisfied by technological choices in the database, the middleware, and so on. In this case, they can be system-wide. Respondent K said, ”We need high availability, and this requirement was ensured only by Oracle.” Or, NFRs can be more localized. Respondent H said, “One of the queries was implemented directly in JDBC [Joint Database Connectivity] instead of Hibernate due to efficiency reasons.”</p>
+<h3>Diverse Decision-Making Processes</h3>
+<p>One particular aspect of decision making that emerged from the survey was the intertwining of technological and other decisions. We found three types of responses. Four respondents said that nontechnological decisions come first. Respondent C said, ”The architect should manage which technologies are appropriate to cover the previously designed logical structure.” On the other hand, four said that fundamental technological decisions come first and subsequent decisions should adapt to it. Respondent H said, ”We had some limitations from the client-for example, architecture based on OSS and Java.” The remaining five argued that both types of decisions overlap and feed each other, which could be considered a local twin peaks model<sup>11</sup> at the SA design level.</p>
+<h3>Amount of Influence</h3>
+<p>We asked the respondents which NFRs they took into account when making architectural decisions. We consolidated their answers using the ISO/IEC 25000 quality standard as a unifying framework.</p>
+<h4>Explicitness.</h4>
+<p>Clearly, architects expect certain NFRs, even if they havenft explicitly identified them as a requirement. Respondent I said, ”I would never think of a system that it is not secure.” Often, these tacit NFRs percolate into architectsf minds owing to the current features of the technologies and platforms that they usually adopt. Respondent E said, ”We didn’t think about the security of the documents because it is done by the management system of SharePoint.”</p>
+<h4>Source.</h4>
+<p>Some requirements come directly from the development team or architect. Respondent B said, ”We were the ones that would maintain the system, so it was important for us to ensure its maintainability.” These NFRs are closer to the decision-making process than those from the client because the technical staff already thinks in terms of the solution, compared to the clientsf problem-oriented thinking.</p>
+<h4>Nontechnicality.</h4>
+<p>Nontechnical NFRs donft refer directly to the softwarefs intrinsic quality but to the context of the system under analysis, such as license issues or cost.<sup>12</sup> Architects consider these essential; approximately 40 percent of the NFRs that respondents considered in their projects were nontechnical. In some cases, they considered these their highest priority. Respondent J said, ”Money rules, and everything has to be adapted to it.”</p>
+<h4>Importance.</h4>
+<p>We asked the respondents which types of NFRs they considered most influential. Licensing issues, usability, reliability, performance efficiency, and maintainability were mentioned most, whereas only two respondents mentioned portability. We cross-checked this information with the decision examples the respondents gave during the interview; performance efficiency and maintainability NFRs drove most of the examples.</p>
+<h4>Terminology issues.</h4>
+<p>We experienced terminological difficulties when talking about NFRs with the respondents. Some of them required additional clarification (for example, about the meaning of gavailabilityh or gaccuracyh). Others used terms inappropriate in the given context (such as gergonomich to mean gusableh). Some even used terms with incorrect definitions (for example, “Maintainability is very important, because when something is working, we canft make changes”). Another recurrent problem was the indiscriminate use of “performance” and&nbsp; “efficiency,” which required further questions from our side. ISO/IEC 25000 defines gperformance efficiencyh as “performance relative to the amount of resources used under stated conditions.”<sup>13</sup> This definition could help resolve this confusion.</p>
+<p>To check whether the observations from this study hold, we’re conducting a new study with several big IT corporations. We expect to see improvements in the level of documentation and validation practices, and maybe differences in the importance of the different types of NFRs. We’d also like to explore how the explicit representation of the relationship between NFRs and architectural decision making (which trade-offs are considered, which options are discarded, and so on) influences the final choice of system architecture. For a look at other research related to ours, see the sidebar.</p>
+<h2>Acknowledgments</h2>
+<p>We thank the study participants for their time and valuable contributions. The Spanish project TIN2010-19130-C02-01 partly supported this research.</p>
+<h2>References</h2>
+<p><sup>1</sup>R. Kazman and L. Bass, Toward Deriving Software Architectures from Quality Attributes, tech. report CMU/SEI-94-TR-10, Software Eng. Inst., Carnegie Mellon Univ., 1994. <br /> <sup>2</sup>F. Buschmann, “Value-Focused System Quality,” IEEE Software, vol. 27, no. 6, 2010, pp.84.86. <br /> <sup>3</sup>P. Kruchten, R. Capilla, and J.C. Duenas, “The Decision Viewfs Role in Software Architecture Practice,” IEEE Software, vol. 26, no. 2, 2009, pp. 36.42. <br /> <sup>4</sup>L. Chung and J.C.S. do Prado Leite, ”On Non-functional Requirements in Software Engineering,” Conceptual Modeling: Foundations and Applications, A.T. Borgida et al., eds., Springer, 2009, pp. 363.379. <br /> <sup>5</sup>R. Conradi et al., ”Reflections on Conducting an International Survey on Software Engineering,” Proc. Intfl Symp. Empirical Software Eng., IEEE, 2005, pp. 214.223. <br /> <sup>6</sup>D. Ameller et al., gHow Do Software Architects Consider Non-functional Requirements: An Exploratory Study,h Proc. 20th IEEE Int‘l Requirements Eng. Conf., IEEE, 2012, pp.41.50. <br /> <sup>7</sup>U. van Heesch and P. Avgeriou, “Mature&nbsp; Architecting-a Survey about the Reasoning Process of Professional Architects,” Proc.9th Working IEEE/IFIP Conf. Software Architecture (WICSA 11), IEEE CS, 2011, pp.260.269. <br /> <sup>8</sup>R.B. Svensson, T. Gorschek, and B. Regnell, “Quality Requirements in Practice: An Interview Study in Requirements Engineering for Embedded Systems,” Requirements Engineering: Foundation for Software Quality, LNCS 5512, Springer, 2009, pp. 218.232. <br /> <sup>9</sup>M. Ali Babar, L. Bass, and I. Gorton, “Factors Influencing Industrial Practices of Software Architecture Evaluation: An Empirical Investigation” Software Architectures, Components, and Applications, LNCS 4880, Springer, 2007, pp. 90.107. <br /> <sup>10</sup>A. Borg et al., “The Bad Conscience of Requirements Engineering: An Investigation in Real-World Treatment of Non-functional Requirements,” Proc. 3rd Conf. Software Eng.Research and Practice in Sweden (SERP 03), CSREA Press, 2003, pp. 1.8. <br /> <sup>11</sup>B. Nuseibeh, “Weaving Together Requirements and Architectures”, vol. 34, no. 3, 2001, pp. 115.119. <br /> <sup>12</sup>J.P. Carvallo and X. Franch,&nbsp; “” Extending the ISO/IEC 9126-1 Quality Model with Non-technical Factors for COTS Components Selection,h Proc. Intfl Workshop Software Quality (WoSQ 06), ACM, 2006, pp. 9.14. <br /> <sup>13</sup>Software Engineering.Software Product Quality Requirements and Evaluation (SQuaRE).Guide to SQuaRE, ISO/IEC 25000, International Org. for Standardization, 2005.</p>
+<h2>Related Work in Non-functional Requirements</h2>
+<p>We tried to consolidate our findings with previous empirical studies of non-functional requirements (NFRs), but not many exist. Richard Svensson and his colleagues reported on 18 studies somewhat related to our proposal.<sup>1</sup> However, none of these studies addressed the relationship among NFRs and architectural decisions in research questions; this clearly differentiates our study. Although most of these studies focused on NFR aspects, others have explored software architecture (SA) issues in more depth; Uwe van Heesch and Paris Avgeriou specifically addressed relationships among NFRs and SAs.<sup>2</sup></p>
+<p>Some of our observations match previous findings - for example, software architects performed other duties. Other observations hadnft been previously reported. For example, the participants in our study perceived NFRs complied even though they performed only light validation. A few of our observations contradict previous studies.for example, the NFRsf measurability was poor, which contradicts some of the reported cases.<sup>3</sup> We also analyzed the influence of the different types of NFRs. We found some similarities to previous research.for example, Jose de la Vara and his colleagues also named efficiency and usability as the most important factors.<sup>4</sup> However, we had difficulty comparing the studiesf results with the necessary rigor. For one thing, the studies used different NFR classification schemas. In addition, the roles involved were often different, so the NFR types differed, too.<sup>1</sup></p>
+<h3>References</h3>
+<p><sup>1</sup>R.B. Svensson, M. Host, and B. Regnell, gManaging Quality Requirements: A Systematic Review,h Proc. 36th Euromicro Conf. Software Eng. and Advanced Applications (SEAA 10), IEEE CS, 2010, pp. 261.268.<br /> <sup>2</sup>U. van Heesch and P. Avgeriou, &quot;Mature Architecting.a Survey about the Reasoning Process of Professional Architects&quot;, Proc. 2011 9th Working IEEE/IFIP Conf. Software Architecture (WICSA 11), IEEE CS, 2011, pp.260.269.<br /> <sup>3</sup>A. Borg et al., “The Bad Conscience of Requirements Engineering: An Investigation in Real-World Treatment of Non-functional Requirements”, Proc. 3rd Conf. Software Eng. Research and Practice in Sweden (SERP 03), CSREA Press, 2003, pp. 1.8.<br /> <sup>4</sup> J.L. de la Vara et al., “An Empirical Study on the Importance of Quality Requirements in Industry,” Proc. 23rd Intfl Conf. Software Eng. and Knowledge Eng. (SEKE 11), Knowledge Systems Inst. Graduate School, 2011, pp. 438.443.</p>
+<h2>About the Authors</h2>
+<p><strong><img vspace="3" hspace="3" align="left" _p="true" _href="img://David.png" alt="" src="http://www.infoq.com/resource/articles/non-functional-requirements-in-architectural-decision-making/en/resources/David.png" />David Ameller</strong> is a PhD student at BarcelonaTech-Universitat Politecnica de Catalunya. Hefs also member of the Software Engineering for Information Systems research group. His research interests include software architecture and requirements engineering. Ameller received an MSc in computing from BarcelonaTech.Universitat Politecnica de Catalunya. Contact him at dameller@essi.upc.edu.</p>
+<p><strong><img vspace="3" hspace="3" align="left" _p="true" _href="img://Claudia.png" alt="" src="http://www.infoq.com/resource/articles/non-functional-requirements-in-architectural-decision-making/en/resources/Claudia.png" />Claudia Ayala</strong> is a researcher and lecturer at BarcelonaTech-Universitat Politecnica de Catalunya. She’s also a senior member of the Software Engineering for Information Systems research group. Her research interests include requirements engineering, software architecture, and open source software. Ayala received a PhD in informatics from BarcelonaTech.Universitat Politecnica de Catalunya. Contact her at cayala@essi.upc.edu.</p>
+<p><strong><img vspace="3" hspace="3" align="left" _p="true" _href="img://Joadi.png" alt="" src="http://www.infoq.com/resource/articles/non-functional-requirements-in-architectural-decision-making/en/resources/Joadi.png" />Jordi Cabot</strong> leads the AtlanMod INRIA research team at Ecole des Mines de Nantes. His research interests include model-driven engineering, software modernization, and formal verification. Cabot received a PhD in informatics from BarcelonaTech.Universitat Politecnica de Catalunya. He’s a member of IEEE and ACM. Contact him <a href="http://jordi.cabot@mines-nantes.fr">here</a>.</p>
+<p><strong><img vspace="3" hspace="3" align="left" _p="true" _href="img://Xavier.png" alt="" src="http://www.infoq.com/resource/articles/non-functional-requirements-in-architectural-decision-making/en/resources/Xavier.png" />Xavier Franch</strong> is an associate professor of informatics at BarcelonaTech. Universitat Politecnica de Catalunya. He’s also the scientific leader of the Software Engineering for Information Systems research group. His research interests include requirements engineering, software architecture, and open source software. Franch received a PhD in informatics from BarcelonaTech.Universitat Politecnica de Catalunya. Contact him at franch@essi.upc.edu.</p>
+<p><a href="http://www.computer.org/portal/web/computingnow/software"><img vspace="3" hspace="3" align="left" _p="true" _href="img://3IEEE-logo2.jpg" src="http://www.infoq.com/resource/articles/non-functional-requirements-in-architectural-decision-making/en/resources/3IEEE-logo2.jpg" alt="" /></a>This article first appeared in <a href="http://www.computer.org/portal/web/computingnow/software" target="_blank"><i>IEEE Software</i></a><strong><i> </i></strong><i>magazine. </i><i><a href="http://www.computer.org/portal/web/computingnow/software" target="_blank">IEEE Software</a>'s</i> <i>mission is to build the community of leading and future software practitioners. The magazine delivers reliable, useful, leading-edge software development information to keep engineers and managers abreast of rapid technology change. </i></p><br><br><br><br><br><br></body></html>

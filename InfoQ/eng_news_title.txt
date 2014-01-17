@@ -1,1 +1,1 @@
-Apps Have to be iOS 7 Compatible by February 1st
+Dart 1.1 Pushes Performance Even Further

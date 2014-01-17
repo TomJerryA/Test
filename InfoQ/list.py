@@ -1,17 +1,17 @@
 <html>
  <head></head> 
- <body>
-  <div>
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/11.py">アジャイルチームのペアコーチング</a>アジャイルコーチにはひとりだけでなく，ペアでコーチする方法もある。それぞれがコーチングの別々の面に注力するのである。コーチは皆それぞれ独自の経験とスキルを持っているので，お互いを補完することもできる。ふたりのコーチが協力して，アジャイルを採用する個人やチームに対して，その習得と改善を支援するのだ。
-  </div>
-  <div>
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/10.py">Jez Humble氏とGene Kim氏による2013 DevOps Survey Of Practice</a>DevOpムーブメントの著名人であるJez Humble氏とGene Kim氏がPuppet Labsと共同で2013 DevOps Survey Of Practiceを行っている。この調査の目的はそのようなITへの取り組みがハイパフォーマンスな組織を生み出しているかを調べることだ。調査は1月15日に終わる。調査には誰でも参加できる。
-  </div>
-  <div>
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/9.py">Internet Explorer 11のASP.NETブラウザ検出エラーの修正</a>Internet Explorer 11には .NET Framework 4.0ベースのウェブアプリが正常に動作しないという問題がある。原因はブラウザ検出の仕組みの不具合だ。.NET 4.5をインストールする、または、.browserファイルを追加して正しい定義を記述することで解決できる。
-  </div>
-  <div>
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/8.py">新しいDesired State Configurationリソースが登場</a>PowerShellチームは新しいDesired Configuration State (DSC)リソースをリリースした。これはコンピュータの構成を実現する構成ブロックだ。リソースキットが公開されたのはPowerShellコミュニティが、より多くのDSCリソースを作成するのを促すために公開された。
+ <body> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/11.py">アジャイルチームのペアコーチング</a>アジャイルコーチにはひとりだけでなく，ペアでコーチする方法もある。それぞれがコーチングの別々の面に注力するのである。コーチは皆それぞれ独自の経験とスキルを持っているので，お互いを補完することもできる。ふたりのコーチが協力して，アジャイルを採用する個人やチームに対して，その習得と改善を支援するのだ。 
+  </div> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/10.py">Jez Humble氏とGene Kim氏による2013 DevOps Survey Of Practice</a>DevOpムーブメントの著名人であるJez Humble氏とGene Kim氏がPuppet Labsと共同で2013 DevOps Survey Of Practiceを行っている。この調査の目的はそのようなITへの取り組みがハイパフォーマンスな組織を生み出しているかを調べることだ。調査は1月15日に終わる。調査には誰でも参加できる。 
+  </div> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/9.py">Internet Explorer 11のASP.NETブラウザ検出エラーの修正</a>Internet Explorer 11には .NET Framework 4.0ベースのウェブアプリが正常に動作しないという問題がある。原因はブラウザ検出の仕組みの不具合だ。.NET 4.5をインストールする、または、.browserファイルを追加して正しい定義を記述することで解決できる。 
+  </div> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/8.py">新しいDesired State Configurationリソースが登場</a>PowerShellチームは新しいDesired Configuration State (DSC)リソースをリリースした。これはコンピュータの構成を実現する構成ブロックだ。リソースキットが公開されたのはPowerShellコミュニティが、より多くのDSCリソースを作成するのを促すために公開された。 
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/7.py">Webベースからネイティブアプリケーションに移行した後の、Facebookリリースプロセスについて</a>先月のVelocity Conf London（2013年11月13日から2013年11月15日まで開催）でFacebookのChaitanya Mishra氏が、FacebookのAndroidアプリをWebインタフェースから本格的なネイティブアプリにスケールさせるための取り組みについて講演した。この移行作業を成功させるために、各プロダクトチームがそれぞれのAndroidの担当機能を主導していた。中心となる統合チームは、回帰テストと、各機能からアプリ全体に至る最適化に重点的に取り組んだ。 
@@ -150,6 +150,6 @@
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/14.py">バグ退治でテストを改善する</a>Testing Portugal 2013において、Klaus Olsen氏はバグ退治のテクニック、探索テストのスタイルについてプレゼンテーションした。 
-  </div>     
+  </div> 
  </body>
 </html>

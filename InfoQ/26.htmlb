@@ -1,130 +1,164 @@
-<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>Java 7 SDP：一次编写，到处运行，有时还运行得超炫！</h3><p>本文将简单介绍Java 7 SDK里引入的<a href="http://docs.oracle.com/javase/tutorial/sdp/sockets/">Java套接字直接协议</a>（Sockets Direct Protocol，SDP），这项新技术是个非常激动人心的突破。如果要对<a href="http://www.InfiniBandta.org/">InfiniBand</a>的<a href="http://en.wikipedia.org/wiki/Remote_Direct_Memory_Access">远程直接内存存取</a>（Remote Direct Memory Access，RDMA）进行native访问，SDP就能让超高性能计算（Ultra High Performance Computing，UHPC）社区在这种不常见的场景下使用Java通用的特性和优势。RDMA为低延迟应用提供了一种协议，可以直接访问其他计算机的内存，而不需要操作系统的参与。UHPC社区对低延迟和高吞吐量的要求最为严格，而且不容妥协，UHPC自然就需要使用最好的RDMA。随着Java 7引入SDP，UHPC社区就可以利用Java平台编写能直接利用InfiniBand RDMA功能的应用代码了。</p>
-<p><strong>在深入了解新的Java SDP之前，让我们简要回顾一下Java网络编程和套接字API的历史。</strong></p>
-<p>Sun Microsystems于1995年推出Java，并宣扬Java能“一次编写，到处运行”，这句口号现在已然广为人知。我们都知道这背后的思想其实很简单：用C++代码编写的应用要在所有环境下构建/部署是极其困难的，追求接近“到处运行”的可移植性就更难了，但现在你可以用一种叫Java的语言编写应用代码，应用可以在虚拟机（并不是底层的操作系统执行环境）上构建/部署。这极大地减少了Java应用程序员对可移植性的关注，而是把可移植性完全交给Java虚拟机（JVM）去处理。JVM承诺：如果你的Java代码可以在针对某个特定底层操作系统的JVM上构建/部署，只要其他操作系统有可用、兼容的JVM，平台就能确保完全相同的代码可以在上面运行。而不需要额外的编译和预处理器宏指令。（有人记得C++里的#ifdef么？JVM可以让应用程序员摆脱这种痛苦。）</p>
-<p>这种思想非常有用，得到了应用编程社区的广泛认可。正如我们所知，Java非常迅速地流行起来——以前所未有的速度被全面接受，计算机历史上的很多编程语言平台都没有这么迅速地普及过。</p>
-<p>Sun一开始提供的JVM只能运行在三个操作系统上：1、Solaris，2、Linux，3、Windows。微软在1993年发布的Windows就带有WinSOCK协议栈，所以Windows可以做TCP/IP网络编程，而且完全支持API。各种*nix系统从二十世纪七十年代起就一直在支持TCP/IP。微软引入WinSOCK对Java的成形来说绝对必要。没有WinSOCK，就不能发布支持java.net.*和java.io.*这些APIs的Windows VM。没有WinSOCK，Java构建的VM在垄断世界桌面的操作系统上就不具备完整的网络功能了。随着Windows完全支持TCP/IP，运行Java的桌面数量可能增加了上千倍。</p>
-<h2>事情发生了变化</h2>
-<p>当然，Java仍然是“一次编写，到处运行”。可移植性仍然是首要任务。但现在用Java 7和SDP，JVM能做更多的事情。可移植性不再是唯一的重点；对JVM来说，满足超高性能用例的需求也是很重要的任务。借助SDP，JVM不需要修改网络、套接字API，就可以直接利用InfiniBand天生的能力。InfiniBand要比以太网快很多。UHPC社区往往会选择InfiniBand作为物理网络层的提供者。</p>
-<div id="lowerFullwidthVCR"></div>
-<p>后面我们会介绍InfiniBand是什么，以及Java 7 VM怎么让应用利用InfiniBand原生的功能。</p>
-<p>有件有趣的事情要注意（特别是从历史的角度来看）：Java决定在两个操作系统上提供SDP支持，而微软Windows并不在其中。Java 7 SDP支持的两个操作系统是Solaris和Linux。Solaris从版本10开始就对SDP提供了规范的支持。只要你有物理InfiniBand网卡，Java 7 SDP就可以立即工作。Linux则通过Open Fabrics Enterprise Distribution（OFED）包支持SDP。要确认Linux版本有没有配置OFED设备驱动器，只需要在安装物理InfiniBand网卡适配器之后简单键入下面的命令：</p>
-<pre><b>egrep &quot;^[ \t]+ib&quot; /proc/net/dev</b></pre>
-<p>如果命令有输出，就表明你可以在这个操作系统上使用Java 7 SDP。</p>
-<p>所有的java.net.*和java.io.*应用代码仍然能在微软Windows上用Java 7 VM运行……但它用不了SDP，运行时的物理层提供者仍然是以太网。即使你在通过WinSOCK Direct子系统提供InfiniBand支持的Windows Server版本上运行，也用不了SDP。所有的内容仍然能在Windows上运行，但速度会比在非Windows（即*nix）上运行得慢。</p>
-<h2>事情确实发生了变化</h2>
-<p>现在让我们谈谈Java里面连接操作系统网络协议栈的API。首先，下表显示了网络层标准的<a href="http://www.iso.org/iso/iso_catalogue/catalogue_tc/catalogue_detail.htm?csnumber=20269">开放系统互连（OSI）模型</a>。</p>
+<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>Backbone与Angular的比较</h3><p>将不同的思想和工具进行对比，是一种更好地理解它们的方式。在本文中，我首先将列举在创建web应用程序时需要重复进行的各项任务，随后为你展现Backbone和Angular将如何帮助你完成这些工作。</p>
+<h2>我们所尝试解决的问题</h2>
+<p>作为web开发者来说，我们的大部分工作都可以归结于以下的某个类别中：</p>
+<ul> 
+ <li>实现业务逻辑</li> 
+ <li>构建DOM</li> 
+ <li>实现视图逻辑（声明式与命令式）</li> 
+ <li>在模型与视图间进行同步</li> 
+ <li>管理复杂的UI交互操作</li> 
+ <li>管理状态和路由（routing）</li> 
+ <li>创建与连接组件</li> 
+</ul>
+<p>如你所料，大多数客户端框架都以某种方式帮助你完成这些工作。</p>
+<h2>Backbone</h2>
+<p>首先让我们看看Backbone为解决这些问题提供了哪些功能： </p>
 <table cellspacing="0" cellpadding="0" border="1"> 
  <tbody> 
   <tr> 
-   <td width="31" valign="top"> <p><b>#</b></p> </td> 
-   <td width="108" valign="top"> <p><b>层</b></p> </td> 
-   <td width="102" valign="top"> <p><b>协议</b></p> </td> 
-   <td width="397" valign="top"> <p><b>Java SDK的核心APIs</b></p> </td> 
+   <td width="217" valign="top"> <p>业务逻辑</p> </td> 
+   <td width="221" valign="top"> <p>Backbone模型（Model） 和 集合（Collection）</p> 
+    <div id="lowerFullwidthVCR"></div> </td> 
   </tr> 
   <tr> 
-   <td width="31" valign="top"> <p>7.</p> </td> 
-   <td width="108" valign="top"> <p>应用层</p> </td> 
-   <td width="102" valign="top"> <p>HTTP、FTP、SSL等</p> </td> 
-   <td width="397" valign="top"> <p>java.net.HttpURLConnection、javax.servlet.HttpServlet</p> </td> 
+   <td width="217" valign="top"> <p>构建DOM</p> </td> 
+   <td width="221" valign="top"> <p>Handlebars</p> </td> 
   </tr> 
   <tr> 
-   <td width="31" valign="top"> <p>6.</p> </td> 
-   <td width="108" valign="top"> <p>表示层</p> </td> 
-   <td width="102" valign="top">&nbsp;</td> 
-   <td width="397" valign="top"> <p># 在Java里，OSI应用层和表示层没有真正区别</p> </td> 
+   <td width="217" valign="top"> <p>声明式视图逻辑</p> </td> 
+   <td width="221" valign="top"> <p>Backbone视图（View）</p> </td> 
   </tr> 
   <tr> 
-   <td width="31" valign="top"> <p>5.</p> </td> 
-   <td width="108" valign="top"> <p>会话层</p> </td> 
-   <td width="102" valign="top"> <p>NetBios、RCP</p> </td> 
-   <td width="397" valign="top"> <p># Java SDK核心对OSI会话层没有支持</p> </td> 
+   <td width="217" valign="top"> <p>命令式视图逻辑</p> </td> 
+   <td width="221" valign="top"> <p>Backbone视图</p> </td> 
   </tr> 
   <tr> 
-   <td width="31" valign="top"> <p>4.</p> </td> 
-   <td width="108" valign="top"> <p>传输层</p> </td> 
-   <td width="102" valign="top"> <p>TCP、UDP</p> </td> 
-   <td width="397" valign="top"> <p>java.net.Socket、java.net.ServerSocket、java.net.Datagram</p> </td> 
+   <td width="217" valign="top"> <p>视图与模型同步</p> </td> 
+   <td width="221" valign="top"> <p>StickIt</p> </td> 
   </tr> 
   <tr> 
-   <td width="31" valign="top"> <p>3.</p> </td> 
-   <td width="108" valign="top"> <p>网络层</p> </td> 
-   <td width="102" valign="top"> <p>IP</p> </td> 
-   <td width="397" valign="top"> <p>Java.net.InetAddress</p> </td> 
+   <td width="217" valign="top"> <p>管理UI交互</p> </td> 
+   <td width="221" valign="top"> <p>JS对象 或 Marionette Controllers</p> </td> 
   </tr> 
   <tr> 
-   <td width="31" valign="top"> <p>2.</p> </td> 
-   <td width="108" valign="top"> <p>数据链路层</p> </td> 
-   <td width="102" valign="top"> <p>PPP</p> </td> 
-   <td width="397" valign="top"> <p># Java SDK核心对OSI数据链路层没有支持</p> </td> 
+   <td width="217" valign="top"> <p>管理状态与路由</p> </td> 
+   <td width="221" valign="top"> <p>Backbone.Router</p> </td> 
   </tr> 
   <tr> 
-   <td width="31" valign="top"> <p>1.</p> </td> 
-   <td width="108" valign="top"> <p>物理层</p> </td> 
-   <td width="102" valign="top"> <p>以太网、InfiniBand</p> </td> 
-   <td width="397" valign="top"> <p># Java SDK核心对OSI物理层没有支持</p> <p>不过……</p> <p>现在有了<b>Java 7 SDP</b>（VM连接InfiniBand和java.net.*、java.io.*核心APIs的桥梁）</p> </td> 
+   <td width="217" valign="top"> <p>创建与连接组件</p> </td> 
+   <td width="221" valign="top"> <p>手工实现</p> </td> 
   </tr> 
  </tbody> 
 </table>
-<p>从OSI网络层的视角看，Java 7 SDP能让Java应用代码“更接近金属”（物理层）。Java SDP提供了一种直接（SDP里的D）的方式，借助VM就可以连接应用代码和native、物理的InfiniBand。Java 7对SDP的支持不需要应用修改使用java.net.*和java.io.* APIs的代码。此外，只要配置好JVM到InfiniBand操作系统设备和库（即InfiniBand的VERBs层API）的特定连接点，使用java.net.*和java.io.*的应用代码就能绕过传统的网络协议栈“直接”访问InfiniBand（也就是使用Java针对OSI第四层传输层的API，就可以绕过OSI第三层网络层和第二层数据链路层，直接访问OSI第一层物理层）。对性能的影响和收到的回报都非常显著。</p>
-<h2>借助Java 7和SDP，Java现在可以支持远程直接内存存取（RDMA）</h2>
-<p>RDMA是跨网络在两个JVM进程（在*nix用户地址空间中执行）之间移动应用缓冲区的一种方式。RDMA不同于传统的网络接口，因为它绕过了操作系统。这允许Java SDP通过RDMA提供：1、绝对最低的延迟，2、最高的吞吐量，3、最少的CPU占用率。</p>
-<p>借助Java到RDMA的连接点，SDP也能让Java具备非常有力的“零拷贝”能力。“零拷贝”操作指CPU不用将一个内存区域的数据拷贝到另一个内存区域。网络协议栈的零拷贝版本大大提升了特定应用程序的性能，也能更有效地利用系统资源。CPU可以继续处理其他任务，数据拷贝则由机器的另一部分并行处理，这样就提升了性能。此外，零拷贝操作减少了在用户空间和内核空间之间切换所消耗的时间。零拷贝也能更有效地利用系统资源，因为大量的拷贝操作是相对简单的任务，如果其他简单的系统组件就能做拷贝，那让复杂的CPU去执行就太浪费了。需要注意的是，我们讨论的零拷贝并不是指java.nio.channels.FileChannel的transferTo()实现的零拷贝。这里的零拷贝性能更高。借助Java 7 SDP，你可以直接使用原生的InfiniBand零拷贝协议实现。</p>
-<h2>在典型的Java部署情况下，SDP直观上是什么样的？</h2>
-<p>下图中，Node 1（java.net.Socket写入者）和Node 2（java.net.ServerSocket监听器）部署在配置支持了SDP的Java 7 VM上，两个JVMs可以跨InfiniBand网络互相交换应用数据缓冲区，而不需要任何OS系统调用或服务调用。令人难以置信的是，Java数据传输完全绕过了两个操作系统。</p>
-<p><img width="500" src="http://infoqstatic.com/resource/articles/Java-7-Sockets-Direct-Protocol/zh/resources/1015001.jpg" alt="" _href="img://null" _p="true" /></p>
-<ol> 
- <li>Java 7应用Node 1（JVM启动时使用SDP）使用java.net.Socket API把应用数据块跨网络写给java.net.ServerSocket监听器。</li> 
- <li>JVM启动时使用SDP，所以会完全绕过操作系统的TCP/IP栈——应用数据会直接写到InfiniBand的RDMA（要求网卡的物理提供者是InfiniBand）。</li> 
- <li>Java 7应用Node 2（JVM启动时也使用SDP）使用java.net.ServerSocket API监听应用数据块，应用数据块由java.net.Socket写入者经RDMA跨网络写入。（要求网卡的物理提供者是InfiniBand）</li> 
- <li>数据会直接写入Java 7 VM的应用缓冲区！不需要操作系统或服务调用——既不需要Node 1的操作系统，也不需要Node 2的操作系统。这就是Java 7 SDP的功能。</li> 
-</ol>
-<h2>同样的应用运行在支持SDP的Java 7上和运行在Java 6上，为什么会有性能差异？</h2>
-<p>下图深入、详细地解释了上图里的Node 2在两种场景下的情形：</p>
-<ol> 
- <li>使用配置了SDP的Java 7（下图左边）：Node 2要接收Node 1传输的数据，经过InfiniBand的VERBS/RDMA协议栈、到达Java应用需要几个步骤？只需要一个！（这对UHPC Java应用来说是个好消息；UHPC社区现在可以用Java 7完成他们需要的功能了）。</li> 
- <li>使用没有SDP的Java 6（下图右边）：Node 2要接收Node 1传输的数据，是怎样经过OSI网络层协议栈、到达Java应用的呢？又需要几步呢？需要五步。（这是我们熟悉的TCP/IP协议栈，而不是SDP。它适用于大多数情景，但不能解决UHPC社区的问题。UHPC社区使用Java 6可是枉然）。</li> 
-</ol>
-<p><img width="500" src="http://infoqstatic.com/resource/articles/Java-7-Sockets-Direct-Protocol/zh/resources/1015000.jpg" alt="" _href="img://null" _p="true" /></p>
-<p>&nbsp;</p>
-<h2>怎样管理、配置Java 7 VM，让它支持SDP？</h2>
-<p>下面的配置部分摘取自<a href="http://docs.oracle.com/javase/tutorial/sdp/sockets/index.html">Oracle介绍Java 7 SDP的教程</a>。</p>
-<p>SDP配置文件是个文本文件，JVM启动时会从本地文件系统读取该文件。SDP配置文件有两种不同类型的条目。不论哪种类型，每个条目都写成一行：</p>
-<ol> 
- <li>一种是SDP配置<b>注释</b>行</li> 
- <li>一种是SDP配置<b>规则</b>行</li> 
-</ol>
-<p>注释行以#字符开头，#字符后面的所有内容都会被忽略。</p>
-<p>至于<b>规则</b>行，有两种类型：</p>
-<ol> 
- <li>bind规则</li> 
- <li>connect规则</li> 
-</ol>
-<p>bind规则表示，只要TCP套接字绑定到与规则匹配的地址和端口，就会使用SDP协议进行传输。connect规则则表示，没有绑定的TCP套接字尝试连接匹配规则的地址和端口时，就会使用SDP协议进行传输。</p>
-<p>在SDP配置文件里指定规则后，JVM就能明确知道什么时候用InfiniBand的VERBS/RDMA协议栈去替换普通的TCP/IP协议栈。</p>
-<p>第一个关键字用来表明规则是<b>bind</b>还是<b>connect</b>。第二部分指定主机名或IP地址。当指定为IP地址时，你也可以指定表示IP地址范围的前缀。第三部分即最后一个部分是端口号或端口号范围。</p>
-<p>我们看看示例配置文件里的如下部分：</p>
-<p># 绑定到192.0.2.1时使用SDP</p>
-<p>bind 192.0.2.1 *</p>
-<p># 连接到192.0.2.*上的所有应用服务时都使用SDP</p>
-<p>connect 192.0.2.0/24 1024-*</p>
-<p>示例文件里的第一条规则指定，本地IP地址192.0.2.1上的所有端口（*）都会使用SDP。你应该为分配到InfiniBand适配器的每个本地地址都添加一条bind规则，其中InfiniBand适配器相当于支持InfiniBand的网卡。如果你有多个InfiniBand适配器，你应该为分配到这些适配器的每个地址都指定一条bind规则。</p>
-<p>示例文件里的第二条规则表明，只要连接到192.0.2.*，而且目标端口大于等于1024，就会使用SDP。IP地址里的前缀/24表示，32位IP地址的前24位都符合指定的地址。IP地址的每一部分都占8位，所以24位就表明IP地址应该符合192.0.2，而且最后一个字节可以是任意值。端口部分的-*表示“及以上”。端口范围（比如1024-2056）也是有效的，而且指定的范围是闭区间。</p>
-<h2>如何启动使用SDP的Java 7 VM？</h2>
-<pre>
-&amp;&gt; java \
--Dcom.sun.sdp.conf=sdp.conf \
--Djava.net.preferIPv4Stack=true \
-<i>Application.class</i></pre>
-<p>需要注意的是，启动时要指定网络格式为IPv4Stack。尽管Java 7和InfiniBand都支持IPv6网络格式，但Solaris和Linux都不支持两者之间的映射。所以启动支持SDP的Java 7 VM时，还是要使用基础、可靠的IPv4网络格式。</p>
-<h2>在支持SDP的Java 7 VM上运行应用，预计性能能提升多少？</h2>
-<p>这才是终极问题！使用Java 7 SDP到底能收获什么？本文显然给不出确定的答案。性能的提升取决于多方面的因素。在本文快结束的时候，让我们了解一下确定的内容：</p>
-<p>InfiniBand要比以太网快很多。<a href="http://www.hpcadvisorycouncil.com/pdf/IB_and_10GigE_in_HPC.pdf">高性能计算咨询委员会发布的研究</a>给出了具体的指标，这些指标表明InfiniBand在低延迟方面比10G以太网好6倍，在吞吐量性能上也是10G以太网的3.7倍。</p>
-<p>此外，Java 7 SDP使用RDMS和最好的零拷贝实现。数据传输完全绕过了操作系统的TCP/IP栈和上下文切换，数据传输如果经过TCP/IP栈，就需要在内核地址空间里的系统调用和用户地址空间里的应用代码缓冲区之间进行上下文切换。</p>
-<p>所有这些，Java SDK API都做到了百分百的透明。使用java.net.*和java.io.*的Java应用代码不需要修改任何内容。</p>
-<p>尽管事情已经发生了很大的变化，但Java的核心精神仍然没有变。最开始的时候，JVM负责将应用代码和可移植性隔离开来，一如往昔，JVM再次独自交付了重要功能：这次是SDP。事实上，Java原先的口号仍然适用，我们稍作修改就能体现现在令人激动的内容：<b>Java 7 SDP——一次编写，到处运行，有时还运行得超炫！</b></p>
-<h2>作者简介</h2>
-<p><img src="http://infoqstatic.com/resource/articles/Java-7-Sockets-Direct-Protocol/zh/resources/1015002.jpg" style="float: left; margin-right: 10px" alt="" _href="img://null" _p="true" /> Ben D. Cotton三世是摩根大通的IT顾问，主要工作是在UHPC Linux平台上用Java数据网格技术呈现、汇总实时的流动性风险数据。他还是JCP（Java Community Process）成员，目前主要参与两个JCP专家组，参与定义Java缓存API（JSR-107）和分布式数据网格（JSR-347）。Ben于1985年5月毕业于美国罗格斯大学，获得计算机科学学士学位。毕业后的前十一年，他在AT&amp;T贝尔实验室编写支持大量专有通信网络分析和配置协议的C++代码；接下来的十四年，他开始用Java代码编写支持低延迟和有事务处理的固定收入/衍生电子交易、清算、定价和风险系统。</p>
-<div style="clear: both">
+<p></p>
+<p>以下图片以更直观的方式表现了这些功能：</p>
+<p><img width="600" src="http://infoqstatic.com/resource/articles/backbone-vs-angular/zh/resources/1212010.png" alt="" _href="img://null" _p="true" /></p>
+<h3>我所指的Backbone……</h3>
+<p>将最原始的Backbone与Angular直接进行对比有些不太公平，因此在本文中所指的Backbone实际上是Backbone + Marionette + 插件的这套组合。</p>
+<h3>业务逻辑</h3>
+<p>Backbone应用程序中的很大一部分业务逻辑由模型（model）和集合（collection）负责实现，这些对象往往对应着服务端后台的资源，它们将包含视图显示所必须的内容。</p>
+<p>由于使用者必须扩展Backbone.Model和Backbone.Collection对象，因此造成了许多额外的复杂性。</p>
+<p>首先，Backbone使用POJO（简单JavaScript对象）和Backbone model对象两种方式表现领域对象。在显示模板（template）、或是与服务端交互时需要使用POJO，而在需要使用可观察（observable）属性时（例如需要建立数据绑定的时候），则需要使用Backbone模型。</p>
+<p>其次，Backbone推荐你使用不可变对象。由于Backbone不支持对函数进行观察，因此每次有某个属性发生改变时，与之相对应的推断（computed）属性必须被重置。这就为你的应用增加了许多额外的复杂性，也使得最终产生的代码难以理解和测试。除此之外，所有的依赖项必须以（&quot;change:sourceProperty, this.recalculateComputedProperty）的形式显式地进行指定。</p>
+<h3>构建DOM</h3>
+<p>Backbone使用模板引擎构建DOM。虽然从理论上说，你可以选择你所中意的引擎，但基本上在大型应用程序中都会在Mustache和Handlebars这两者之间进行选择。Backbone中的模板定义通常不包含逻辑，并且多数是基于字符串的，不过这两点也并非必需。</p>
+<h3>视图逻辑</h3>
+<p>将视图逻辑划分为命令式与声明式逻辑是一种由来已久的方式（可以追溯到原始的MVC模式）。事件处理配置和数据绑定属于声明式，而事件处理本身则是属于命令式。不过Backbone并没有为这两者划分出一条清晰的界限，它们都由Backbone.View对象处理。</p>
+<h3>在模型与视图间进行同步</h3>
+<p>由于Backbone在本质上追求最简化，因此它本身并没有为数据绑定提供支持。这一点对于小型项目来说或许不是一个问题，毕竟你可以选择让视图负责对模型和DOM进行同步。但当应用程序的功能开始不断增加时，这种方式就很容易渐渐失控。</p>
+<p>好在如今已经有各种各样的插件（例如Backbone.Sticklt）能够帮助Backbone解决这一问题了，因此你可以不用再理会琐碎的模型-视图同步操作，而是专注于复杂的交互工作。这些插件中的大多数都可以使用简单的JavaScript进行配置，因此使用者可以在它的基础之上创建一个抽象层，以满足你应用程序的需求。</p>
+<p>在Backbone中使用数据绑定的一个缺点就是它们依赖于可观察属性，而另一方面，模板引擎又是使用POJO实现的。由于同时存在着两种与DOM交互的方式，经常会造成代码的重复。</p>
+<h3>管理复杂的UI交互操作</h3>
+<p>所有的UI交互操作都可以划分为简单交互操作（使用<a href="http://martinfowler.com/eaaDev/MediatedSynchronization.html">观察者同步</a>（Observer Synchronization）方式进行管理）和复杂交互操作（必须使用<a href="http://martinfowler.com/eaaDev/FlowSynchronization.html">流同步</a>（Flow Synchronization）方式）两种类别。</p>
+<p>如前文所述，简单交互操作是通过使用数据绑定和事件处理函数的Backbone.View进行处理的。由于Backbone本身没有硬性规定处理复杂UI交互的解决方案，你可以随意选择最适合你的应用的方式。有些人选择使用Backbone.View作为解决方案，但我建议你不要这么做，因为这种方式会造成Backbone.View的职责过多。我会倾向于使用<a href="http://victorsavkin.com/post/49767352960/supervising-presenters">主动控制显示</a>（Supervising Presenter）模式管理复杂的交互操作。</p>
+<h3>管理状态和路由</h3>
+<p>Backbone包含了一个非常简单的路由器的实现，但它并不支持管理视图和应用状态的功能，必须要手动实现这些功能。因此在实际应用中经常会选择使用其它类库（例如router.js），而不是它自带的路由器。</p>
+<h3>创建与连接组件</h3>
+<p>在Backbone中，你可以自由选择最适合你的应用的方式创建并连接组件。这种方式的缺陷在于你必须编写大量的样板代码，而且为了保持代码的合理组织，必须始终遵循良好的代码规范。</p>
+<h2>Angular</h2>
+<p>现在让我们来比较一下，看看Angular是如何解决这些问题的。 </p>
+<table cellspacing="0" cellpadding="0" border="1"> 
+ <tbody> 
+  <tr> 
+   <td width="219" valign="top"> <p>业务逻辑</p> </td> 
+   <td width="219" valign="top"> <p>JS对象</p> </td> 
+  </tr> 
+  <tr> 
+   <td width="219" valign="top"> <p>构建DOM</p> </td> 
+   <td width="219" valign="top"> <p>指令（Directive）</p> </td> 
+  </tr> 
+  <tr> 
+   <td width="219" valign="top"> <p>声明式视图逻辑</p> </td> 
+   <td width="219" valign="top"> <p>指令</p> </td> 
+  </tr> 
+  <tr> 
+   <td width="219" valign="top"> <p>命令式视图逻辑</p> </td> 
+   <td width="219" valign="top"> <p>控制器（Controller）</p> </td> 
+  </tr> 
+  <tr> 
+   <td width="219" valign="top"> <p>视图与模型同步</p> </td> 
+   <td width="219" valign="top"> <p>内置的机制</p> </td> 
+  </tr> 
+  <tr> 
+   <td width="219" valign="top"> <p>管理UI交互</p> </td> 
+   <td width="219" valign="top"> <p>控制器</p> </td> 
+  </tr> 
+  <tr> 
+   <td width="219" valign="top"> <p>管理状态与路由</p> </td> 
+   <td width="219" valign="top"> <p>AngularUI Router</p> </td> 
+  </tr> 
+  <tr> 
+   <td width="219" valign="top"> <p>创建与连接组件</p> </td> 
+   <td width="219" valign="top"> <p>依赖注入</p> </td> 
+  </tr> 
+ </tbody> 
+</table>
+<p></p>
+<p>以下图片以更直观的方式表现了这些功能：</p>
+<p><img width="600" src="http://infoqstatic.com/resource/articles/backbone-vs-angular/zh/resources/1212014.png" alt="" _href="img://null" _p="true" /></p>
+<h2>业务逻辑</h2>
+<p>由于Angular没有使用可观察属性，因此在实现模型时没有这方面的限制。你不需要扩展某个类、或者遵循某个接口，而是可以自由地选择你喜欢的方式（包括使用现有的Backbone模型）。在实际开发中，多数开发者选择使用简单的JavaScript对象（POJO），这种方式有以下优点：</p>
+<ul> 
+ <li>所有的领域对象都不依赖于任何特定的框架，因而更容易在不同的应用中重用。</li> 
+ <li>POJO对象和与服务端交互的对象非常近似，因而简化了客户端与服务器的通信。</li> 
+ <li>POJO对象将用于视图表示，因此无需实现toJSON方法。</li> 
+ <li>推断属性可以用函数的形式表现</li> 
+</ul>
+<h3>模板与视图</h3>
+<p>Angular中的模板被编译之前只是一些DOM片断，而在编译过程中，Angular会将这棵DOM子树进行转换，并为其添加一些JavaScript。编译的结果会生成另一棵DOM子树，也就是视图。换句话说，视图并非由你自己所创建，而是由Angular对模板编译后所生成的。</p>
+<h3>构建DOM</h3>
+<p>Backbone将DOM的构建与视图逻辑进行了清晰地分离，前者使用模板引擎实现，而后者则使用数据绑定与命令式的DOM更新操作实现。与之相反，Angular并未将这两者进行区分，它使用相同的机制和指令（directive）构建DOM，并定义声明式的视图行为。</p>
+<h3>视图逻辑</h3>
+<p>Angular对声明式与命令式的视图逻辑进行了清晰的划分，前者由视图处理，而后者由控制器负责。</p>
+<p>这种划分看起来似乎有些刻意，但它确实是非常重要的。</p>
+<p>首先，这种方式清晰地指出了哪些部分需要进行单元测试。嵌入在模板中的声明式逻辑（例如ng-repeat）无需进行单元测试，反之，为控制器编写单元测试通常是个好主意。</p>
+<p>其次，所有的依赖都是单向的，即视图依赖于控制器，因此控制器并不了解视图或DOM的任何逻辑。这种方式促进了代码重用，也简化了单元测试。与之相反，Backbone.View经常需要对DOM节点进行操作，随后使用模板引擎对页面中的很大一部分进行重新渲染。</p>
+<h3>在模型与视图间进行同步</h3>
+<p>Angular包含了原生的数据绑定功能，与大厦多数其它客户端框架所不同的是，它并不依赖于可观察属性，而是使用了脏检查（dirty checking）方式。</p>
+<p><img width="350" src="http://infoqstatic.com/resource/articles/backbone-vs-angular/zh/resources/1212011.png" alt="" _href="img://null" _p="true" /></p>
+<p>Angular的脏检查方式有着以下一些优点：</p>
+<ul> 
+ <li>模型本身不会意识到它已经成为一个被观察的对象。</li> 
+ <li>无需在可观察属性之间指定任何依赖。</li> 
+ <li>函数同样表现可观察对象。</li> 
+</ul>
+<p>但这种方式也带来了以下一些负面影响：</p>
+<ul> 
+ <li>在与第三方组件或类库集成的时候，你必须保证Angular能够响应它们对你的模型的任何改变。</li> 
+ <li>在某些情况下会带来性能方面的影响。</li> 
+</ul>
+<h3>管理复杂的UI交互操作</h3>
+<p>如前文所述，控制器将负责实现UI元素的命令式逻辑。除此之外，还可以将控制器实现为一种<a href="http://victorsavkin.com/post/49767352960/supervising-presenters">主动控制显示</a>模式，以协调复杂的UI交互。</p>
+<p><img width="600" src="http://infoqstatic.com/resource/articles/backbone-vs-angular/zh/resources/1212012.png" alt="" _href="img://null" _p="true" /></p>
+<h3>管理状态和路由</h3>
+<p>与Backbone类似，Angular自带的路由器功能非常基础，并不适合于创建实际的应用。令人欣慰的是，AngularUI Router项目填补了这一空白。它能够管理应用状态、视图，并且支持嵌套视图。换句话说，它能够满足你对路由器的全部功能需求。当然，和Backbone的情况一样，你并非只有这一种选择，你也可以选择其它的路由功能类库（例如router.js）。</p>
+<h3>创建与连接组件</h3>
+<p>Angular包含了一个IoC容器，它与通常意义上的依赖注入方法非常相似，这就要求你必须编写模块化的代码。这种方式能够改善代码的可重用性和可测试性，也使你免于编写大量的样板代码。它的负面影响在于一方面增加了使用的复杂度，一方面削弱了对组件创建过程的可控程度。</p>
+<h2>总结</h2>
+<p>本文简单地介绍了Backbone和Angular如何处理我们在创建web应用时所遇到的各种问题。这两个框架在某些问题的处理上使用了截然不同的方案，Backbone在显示模板、创建数据绑定和连接组件方面给使用者更多的选择。与之相反，Angular为这些问题提供了规定的方案，不过在创建模型与控制器方面的限制就比较少一些。</p>
+<h2>关于作者</h2>
+<p><img src="http://infoqstatic.com/resource/articles/backbone-vs-angular/zh/resources/1212013.jpg" style="float: left; margin-right: 10px" alt="" _href="img://null" _p="true" /><b>Victor Savkin</b>是一位就职于Nulogy的软件工程师。他所感兴趣的技术包括函数式编程、web平台和领域驱动设计。他拥有使用JavaScript编写大型应用程序的经验。作为一名编程语言的狂热爱好者，他投入了大量的时间学习Smalltalk、JS、Dart、Scala、Haskell、Closure和loke等语言。他的博客<a href="victorsavkin.com">victorsavkin.com</a>中有大量关于使用Ruby和JS创建大型应用程序的文章，你也可以关注他的Twitter <a href="http://twitter.com/victorsavkin">@victorsavkin</a>。</p>
+<div style="clear:both">
  &nbsp;
 </div>
-<p><strong>查看英文原文：</strong><a href="http://www.infoq.com/articles/Java-7-Sockets-Direct-Protocol">Java 7 Sockets Direct Protocol – Write Once, Run Everywhere …. and Run (Some Places) Blazingly</a></p><br><br><br><br><br><br></body></html>
+<p><strong>查看英文原文：</strong><a href="http://www.infoq.com/articles/backbone-vs-angular">Contrasting Backbone and Angular</a></p><br><br><br><br><br><br></body></html>

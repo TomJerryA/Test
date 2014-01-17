@@ -1,6 +1,9 @@
 <html>
  <head></head> 
- <body> 
+ <body>
+  <div>
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/26.htmlb">Backbone与Angular的比较</a> Victor Savkin为读者分析了使用Backbone.js和Angular.js创建web应用的优缺点，并对这两种框架进行了深入比较。 
+  </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/25.htmlb">业务架构的主题和规则</a> 本文定义了业务架构的主题和规则。与其他方式不同，只有业务职能和业务信息才能成为架构中的实体，共同形成业务架构的主题。另一方面，业务架构的规则是对业务架构主要及次要任务的描述。 
   </div> 
@@ -147,9 +150,6 @@
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/29.htmlb">解析精益产品开发（三）——面向价值的可视化</a> 用户故事图谱和任务看板、版本和迭代燃尽图，可视化已经成为敏捷和精益产品开发必选实践。可视化真的重要吗？我们将从一个真实团队的实践开始，探讨可视化的作用，以及如何让可视化发挥效用。 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/28.htmlb">采访《Murach’s Android Programming》一书的作者Joel Murach</a> Murach Publishing依然在定期出版新的书籍，坚持为开发者们提供高质量的内容。由Joel Murach所编写的《Murach’s Android Programming》试图为Android开发进行一个全方面的知识介绍，书中包含了大量的截图及代码示例，以帮助开发者应对真实世界的各种场景。 
-  </div> 
+  </div>  
  </body>
 </html>

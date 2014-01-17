@@ -1,15 +1,12 @@
-<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>行为驱动开发：通过协作传递价值</h3><p>软件项目的目的是向利益干系人交付价值，而<a href="http://en.wikipedia.org/wiki/Behavior-driven_development">行为驱动开发</a>（BDD）正是为此而生。在<a href="http://technologyconversations.wordpress.com/2013/11/14/behavior-driven-development-bdd-value-through-collaboration-part-1-introduction/">阐述</a>对于BDD的看法时，<a href="http://technologyconversations.wordpress.com/about/">Viktor Farcic</a>表示：BDD能够确保在整个项目过程中，项目聚焦于为利益干系人提供的价值。</p>
-<p>作为一位从事从瀑布模型向敏捷过程转型方面工作的软件开发者，Viktor继续补充道：BDD的一条准则是必须用每个人都能理解的方式来撰写需求。作为对比，在传统的瀑布式项目中，许多情况下人们都不知道或是忘记了要向利益干系人交付价值。参与此类项目的大部分人关心的是“完成各自部分的工作”，然后将工作“抛给墙那边”负责下一阶段任务的人。</p>
-<p>在BDD中描述需求的关键是故事，Viktor将故事的形式概括为两部分组成元素：介绍描述（Narrative）以及随后出现的一个或多个情形（Scenario）。介绍描述是从提出新功能要求的某个人或某个角色的角度，对功能所做的一段简短的叙述。它恰到好处地为所有涉及到的人（业务分析师、开发者、测试者等待）提供了沟通的基础，并且是以对话而不是编写描述为中心。其目的在于回答这样三个问题：价值是什么？对谁来说它是有价值的？实际特性是什么？回答这些问题后，团队就可以开始与利益干系人协作，定义最佳解决方案。</p>
-<p>介绍描述将通过情形来进一步定义——这些情形提供了对完成的定义以及接收的标准，用来确认针对介绍描述进行的开发，其输出的成果能够满足预期。</p>
-<p>对Viktor来说，尽管介绍描述拥有某些传统需求的特性，但他相信依旧存在一些非常重要的不同。其中之一在于以下二者之间的区别：重视口语化和持续沟通，与使用可能非常不精确的语言。另外一点不同则是重视使用特性来描述功能，而不是使用大量如下形式的文字陈述：“该系统应该……”——后者往往会妨碍读者理解项目的整体视图和真正的目标。</p>
-<p>最后，Viktor介绍了让BDD向着自动化方向前进的内容——可以通过许多不同框架来执行BDD中的情形，例如<a href="http://jbehave.org/">JBehave</a>、<a href="http://cukes.info/">Cucumber</a>、<a href="http://specflow.org/">SpecFlow</a>和<a href="https://github.com/pivotal/jasmine">Jasmine</a>。他的建议是分三步走来实现BDD自动化：</p>
+<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>Rust 0.9发布，改进了线程模型</h3><p>随着<a href="http://www.rust-lang.org/">Rust</a>语言向1.0里程牌的迈进，这一Mozilla支持的系统编程语言发布了0.9版，带来了许多改进。在演变为一门准备长期支持的稳定语言的过程中，Rust已经发生了显著的变化。Rust创建人Graydon Hoare说，该语言的目标用户是“<a href="http://www.infoq.com/news/2012/08/Interview-Rust">沮丧的C++开发人员</a>”，因为它专注于成为C/C++的现代化替代品这一目标。</p>
+<p>Rust是一门开源语言，它提供了一个用于Windows的<a href="http://static.rust-lang.org/dist/rust-0.9-install.exe">二进制安装包</a>，以及一个<a href="http://static.rust-lang.org/dist/rust-0.9.tar.gz">源代码包</a>，用于基于Unix的系统（FreeBSD、Mac OS X和Linux）。</p>
+<p>0.9版本包含了几个特性：</p>
 <ul> 
- <li>创建标准化步骤的库，以帮助将情形从实际代码中分离，从而简化非开发人员编写故事的工作。</li> 
- <li>在更高的业务层面将这些步骤整合，以便分析师和其他类似角色更好地理解。</li> 
- <li>使用实例表（example table），以便同一个情形可以被执行若干次，并在每次执行中配备不同的参数集。</li> 
+ <li>Rust现在为开发人员提供了<a href="http://static.rust-lang.org/doc/master/rust.html#linkage">选择</a>，他们可以选择是构建动态链接库，还是静态链接库。</li> 
+ <li>本地库现在成了一等公民，Rust库的构建和分发可以不需要本地库的参与。</li> 
+ <li>I/O基础设施经过了彻底修改。从逻辑上讲，所有的I/O功能现在都位于<b>std::io</b>模块中。通信模块（提供高级的通信抽象）也已经重写。</li> 
+ <li>若干I/O变化是源于两个新库libgreen和libnative的创建。Rust标准库不再设置成一个特定的调度方法，所以程序可以以m:n（m个应用程序线程映射到n个内核线程）或者1:1（一个应用程序线程映射到一个内核线程）模式运行。这就允许开发人员为其应用程序选择能够提供最好性能的线程模型。</li> 
+ <li>Rust开发人员应该注意，不要使用“托管指针（managed pointers）”（由@符号表示）以及使用了Rc（引用计数指针）或者Gc（垃圾收集指针）的“转换代码（transition code）”。</li> 
 </ul>
-<p>Victor的建议是，从第一阶段入手，直到采取足够的措施以支持创建第一个情形后，再继续落实后面两阶段的内容。</p>
-<p><a href="http://dannorth.net/about/">Dan North</a>在2006年开发了BDD，并撰写了一份<a href="http://dannorth.net/introducing-bdd/">入门简介</a>，以及<a href="http://dannorth.net/whats-in-a-story/">在BDD中如何编写故事</a>。</p>
-<p><a href="http://en.wikipedia.org/wiki/Specification_by_example">实例化需求</a>（specification by example）是一种与BDD密切相关的需求定义方法。</p>
-<p>查看英文原文：<a href="http://www.infoq.com/news/2013/12/bdd-value-collaboration">Behaviour-Driven Development: Value through Collaboration</a></p><br><br><br><br><br><br></body></html>
+<p>读者可以查看Rust 0.9的官方<a href="https://github.com/mozilla/rust/wiki/Doc-detailed-release-notes#09-january-2014">发布说明</a>来了解完整的细节信息。除了官方提供的<a href="http://static.rust-lang.org/doc/0.9/tutorial.html">Rust教程</a>外，想要进一步学习这门语言的开发人员还有几个不同的资源：弗吉尼亚大学<a href="http://rust-class.org/pages/using-rust-for-an-undergraduate-os-course.html">本科操作系统课程</a>教授Rust；Steve Klabnik最近准备了“<a href="http://words.steveklabnik.com/a-30-minute-introduction-to-rust">30分钟的Rust介绍</a>”。</p>
+<p><b>查看英文原文：</b><b><a href="http://www.infoq.com/news/2014/01/rust09">Rust 0.9 Released With Revised Threading Model</a></b></p><br><br><br><br><br><br></body></html>
