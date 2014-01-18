@@ -1,7 +1,7 @@
 <html>
  <head></head> 
- <body>
-  <div>
+ <body> 
+  <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/1.javab">Non-functional Requirements in Architectural Decision Making</a> In this article, authors present an empirical study based on a survey about the software architecture practices for managing non-functional requirements (NFRs) and decision making in software development process. They also discuss about how these requirements are elicited, documented, and validated at different organizations. 
   </div> 
   <div> 
@@ -150,6 +150,6 @@
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/3.javab">The Best Process Is No Process</a> Bureaucracy often plagues large product development efforts. Just like technical debt slows down development, process debt slows down your business. Have you ever experienced 12,096,000% savings in time? Clarify strategy. Automate processes. Parallelize work. Collaborate intently. Did you know a hidden MS project default may be causing inflexibility? Eliminate process debt. Get to market faster 
-  </div>  
+  </div> 
  </body>
 </html>

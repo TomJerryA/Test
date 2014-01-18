@@ -2,10 +2,22 @@
  <head></head> 
  <body>
   <div>
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/20.java">Om: Enhancing Facebook's React with Immutability</a>Om is a new a ClojureScript interface for Facebook’s React HTML UI library. Om uses Clojure(Script)'s persistent data structures and requestAnimationFrame to further improve React's rendering. InfoQ talked to Om's creator, David Nolen, about Om and the benefits of functional concepts for application programming.
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/22.java">Typemock Isolator v7.4.3 Adds FastFix, Improved SmartRunner and Visual Studio 2013 Support</a>Typemock Isolator v7.4.3 for .NET has been released with support for FastFix, improved smartrunner in addition to Visual Studio 2013 and TFS 2012 integration.
   </div>
   <div>
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/19.java">Dart 1.1 Pushes Performance Even Further</a>The recently released Dart 1.1 comes with better performance for the dart2js compiler and improves support for the server-side development. The language itself is pretty much on hold.
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/21.java">Big Data Revolution and Genomics Analysis</a>Curoverse and Tute Genomics secured $1.5 million each in seed funding in the past month aiming to bring gene sequencing to the masses. Illumina, Seven Bridges Genomics, Complete Genomics and others are offering researchers and private parties the opportunity to map the full genome sequence for a four figure quote. Illumina recently announced HiSeq X Ten, promising the long-awaited $1,000 genome.
+  </div> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/21.java">Java 8 On Track for March Release</a>After a slight delay the long anticipated release of Java 8 is now on back on track and scheduled for release on March 18. 
+  </div> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/21.java">JArchitect v4.0 Released</a>Version 4.0 of JArchitect by CoderGears, a tool used to manage Java code bases and application development, is now available. JArchitect allows architects and developers to analyze a code base, automate code reviews, and facilitate refactoring and migration. 
+  </div> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/20.java">Om: Enhancing Facebook's React with Immutability</a>Om is a new a ClojureScript interface for Facebook’s React HTML UI library. Om uses Clojure(Script)'s persistent data structures and requestAnimationFrame to further improve React's rendering. InfoQ talked to Om's creator, David Nolen, about Om and the benefits of functional concepts for application programming. 
+  </div> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/19.java">Dart 1.1 Pushes Performance Even Further</a>The recently released Dart 1.1 comes with better performance for the dart2js compiler and improves support for the server-side development. The language itself is pretty much on hold. 
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/18.java">Apps Have to be iOS 7 Compatible by February 1st</a>Apple recently announced that iOS applications have to be iOS 7 compatible by February, 1st. To submit new applications or application updates to the iTunes Store, developers have to build their applications with XCode 5 and apps have to be optimized for iOS7. Compatibility with iOS 7 includes changing the UI according to the current Human Interface Guidelines and adapting API changes. 
@@ -138,18 +150,6 @@
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/25.java">Facebook’s Release Process Behind the Move from Web-based to Native App</a>Chaitanya Mishra, from Facebook, spoke at Velocity Conf London last month about the approach to scale Facebook’s Android app from a web view interface to a full-fledged native app. To achieve this transition each product team took ownership of their features on Android. A core integration team regression tests and focuses on global app optimization over individual features optimization. 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/24.java">RESTful Web Services Framework Jersey 2.5 Released</a>The RESTful Web Services Framework Jersey 2.5 was recently released, bringing support for the latest version of Jetty web server, an upgrade of the Apache Connector and numerous defects corrected. Features added in earlier releases, after the major 2.0 release in June, include support for OAuth and Spring 3. 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/23.java">Hadoop-as-a-Service Provider Qubole Now Runs on Google Compute Engine</a>Qubole, a managed Hadoop-as-a-Service offering is now available on Google Compute Engine (GCE). Qubole was so far only available on Amazon's AWS and this announcement follows only a few days after Google releasing GCE into general availability. 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/22.java">Producing Software, Professionally</a>&quot;Producing Software, Professionally&quot; was the theme of the inaugural Agile Singapore Conference 2013. The conference was a seminal event for the Agile community in Southeast Asia. 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/21.java">Ionic HTML5 Mobile Framework Alpha Preview</a>Ionic is a new user interface framework for building hybrid mobile applications with HTML5 that bills itself as the &quot;bond between native and HTML5&quot;. It provides many of the essential mobile user interface paradigms, such as simple items like lists, tab bars and toggle switches. It also provides more complex visual layout examples such as menus that slide out to reveal content underneath. 
   </div>   
  </body>
 </html>

@@ -1,7 +1,7 @@
 <html>
  <head></head> 
- <body>
-  <div>
+ <body> 
+  <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/26.htmlb">Backbone与Angular的比较</a> Victor Savkin为读者分析了使用Backbone.js和Angular.js创建web应用的优缺点，并对这两种框架进行了深入比较。 
   </div> 
   <div> 
@@ -150,6 +150,6 @@
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/29.htmlb">解析精益产品开发（三）——面向价值的可视化</a> 用户故事图谱和任务看板、版本和迭代燃尽图，可视化已经成为敏捷和精益产品开发必选实践。可视化真的重要吗？我们将从一个真实团队的实践开始，探讨可视化的作用，以及如何让可视化发挥效用。 
-  </div>  
+  </div> 
  </body>
 </html>
