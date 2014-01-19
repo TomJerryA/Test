@@ -1,6 +1,9 @@
 <html>
  <head></head> 
- <body> 
+ <body>
+  <div>
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/2.javab">Interview with Raffi Krikorian on Twitter's Infrastructure</a> Raffi Krikorian, Vice President of Platform Engineering at Twitter, gives an insight on how Twitter prepares for unexpected traffic peaks and how system architecture is designed to support failure. 
+  </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/1.javab">Non-functional Requirements in Architectural Decision Making</a> In this article, authors present an empirical study based on a survey about the software architecture practices for managing non-functional requirements (NFRs) and decision making in software development process. They also discuss about how these requirements are elicited, documented, and validated at different organizations. 
   </div> 
@@ -147,9 +150,6 @@
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/4.javab">What’s Next in Software Analytics</a> In this article, a panel of experts in software analytics discuss the important and overlooked aspects of the software analytics field. Topics covered include what software analytics mean to the developers, practitioners, and information analysts and the opportunities for “natural” software analytics based on statistical natural language processing (NLP). 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/3.javab">The Best Process Is No Process</a> Bureaucracy often plagues large product development efforts. Just like technical debt slows down development, process debt slows down your business. Have you ever experienced 12,096,000% savings in time? Clarify strategy. Automate processes. Parallelize work. Collaborate intently. Did you know a hidden MS project default may be causing inflexibility? Eliminate process debt. Get to market faster 
-  </div> 
+  </div>  
  </body>
 </html>

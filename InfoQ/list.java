@@ -1,11 +1,11 @@
 <html>
  <head></head> 
- <body>
-  <div>
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/22.java">Typemock Isolator v7.4.3 Adds FastFix, Improved SmartRunner and Visual Studio 2013 Support</a>Typemock Isolator v7.4.3 for .NET has been released with support for FastFix, improved smartrunner in addition to Visual Studio 2013 and TFS 2012 integration.
-  </div>
-  <div>
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/21.java">Big Data Revolution and Genomics Analysis</a>Curoverse and Tute Genomics secured $1.5 million each in seed funding in the past month aiming to bring gene sequencing to the masses. Illumina, Seven Bridges Genomics, Complete Genomics and others are offering researchers and private parties the opportunity to map the full genome sequence for a four figure quote. Illumina recently announced HiSeq X Ten, promising the long-awaited $1,000 genome.
+ <body> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/22.java">Typemock Isolator v7.4.3 Adds FastFix, Improved SmartRunner and Visual Studio 2013 Support</a>Typemock Isolator v7.4.3 for .NET has been released with support for FastFix, improved smartrunner in addition to Visual Studio 2013 and TFS 2012 integration. 
+  </div> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/21.java">Big Data Revolution and Genomics Analysis</a>Curoverse and Tute Genomics secured $1.5 million each in seed funding in the past month aiming to bring gene sequencing to the masses. Illumina, Seven Bridges Genomics, Complete Genomics and others are offering researchers and private parties the opportunity to map the full genome sequence for a four figure quote. Illumina recently announced HiSeq X Ten, promising the long-awaited $1,000 genome. 
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/21.java">Java 8 On Track for March Release</a>After a slight delay the long anticipated release of Java 8 is now on back on track and scheduled for release on March 18. 
@@ -150,6 +150,6 @@
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/25.java">Facebook’s Release Process Behind the Move from Web-based to Native App</a>Chaitanya Mishra, from Facebook, spoke at Velocity Conf London last month about the approach to scale Facebook’s Android app from a web view interface to a full-fledged native app. To achieve this transition each product team took ownership of their features on Android. A core integration team regression tests and focuses on global app optimization over individual features optimization. 
-  </div>   
+  </div> 
  </body>
 </html>
