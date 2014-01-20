@@ -1,45 +1,16 @@
-<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>虽然遭遇Oracle的挑战，Spring框架依旧蓬勃发展</h3><p>众所周知，<a href="http://spring.io">Spring框架</a>在几周前<a href="http://www.infoq.com/cn/news/2013/12/spring4-release?utm_source=infoq&amp;utm_medium=popular_links_homepage">发布了4.0版</a>，这也是从2009年以来Spring发布的首个主要升级版，该版本支持数量广泛的特性，如HTML5/WebSocket、REST、Java 8、微服务框架等。虽然遭遇了来自于Oracle的各种挑战，不过Spring这个坚实的开源Java开发平台依旧在蓬勃发展，不断形成着自己的生态圈。</p>
-<p>Spring 4.0对很多特性都进行了改进，这包括对Java 8标准版的支持（如Lambda）、一个安全的REST栈、HTML5/WebSocket集成、自定义注解及Java 7企业版支持（如JMS 2.0等）。时至今日，Spring 4.0的下载量已经有数百万之多，它提供的依赖注入等功能已经领先于Java企业版，并且不会受到流程缓慢的Java社区进程的阻碍。现在，从技术上来说，Spring已经完全可以替代掉由Oracle（之前的Sun）所制订的官方Java企业版标准。</p>
-<p>不过从另一方面来看，Oracle也在极力说服Spring开发者<a href="http://www.infoworld.com/d/application-development/oracle-spring-developers-convert-java-ee-195158">迁移到Java EE上</a>，并说其实Spring也没有什么特别的优势：</p>
-<blockquote>
-  Oracle建议开发者从流行的Spring框架迁移到Java EE上，不过Spring创始人却认为这些技术可以搭配使用，和谐共处，说Oracle的这一举动完全是从财务角度着眼的。 
- <br /> 
- <br /> 在过去的几个月中，Oracle一直在各种Web会议上动员广大开发者从Spring迁移到Java EE上。有报道采访了来自于Luminus Technologies的Paul Bakker与Bert Ertman，他们建议大家迁移到Java EE 6上，并认为现今的Spring已经与过去不同了，相比于Java EE来说已经没有任何优势可言。此外，Bert Ertman也曾在去年的上海JavaOne大会上接受了InfoQ的
- <a href="http://www.infoq.com/cn/articles/migrate-spring-legacy-to-javaee6">专访</a>，谈到了如何将Spring及遗留应用迁移到Java EE平台上。 
- <br /> 
- <br /> Luminis资深软件工程师Bakker说到“很多开发者几年前根据Spring框架创始人Rod Johnson编写的图书认为企业级Java开发有很多不足之处，不过时至今日，我们有Java EE 5与Java EE 6，我们有经过完全修订的编程模型，他们非常轻量级，并且基于POJO。现在是时候让开发者们知道Java EE表示的并不是Java Evil Edition了，我们完全可以使用它来构建非常棒的企业应用”。 
- <br /> 
- <br /> Spring中用来链接关联对象的依赖注入现在已经出现在了Java EE 5中。轻量级、面向方面编程也在Java中得以实现。不过Johnson在回复问题的一封邮件中消除了Java EE与Spring之间的冲突，他认为“这都是人们自己搞出来的问题，Spring与Java EE 6完全可以和谐共处”。 
- <br /> 
- <br /> Johnson说到“从本质上来说，Java EE 6想要干掉Spring的论调完全是由商业推动的，Spring减少了人们对于
- <a href="http://www.infoworld.com/d/cloud-computing/oracle-updates-weblogic-cloud-usage-180582">Oracle WebLogic</a>等传统应用服务器的需求，用户可以选择更加轻量级的基础设施。虽然Java EE 6对之前的版本做了一些改进，不过Spring依然提供了非常重要的附加值”。 
- <br /> 
- <br /> Spring的应用场景要比Java EE 6多不少，这样Spring用户就会有更多的选择权。他们可能并不想要使用Java EE应用服务器，即便使用Java EE亦是如此，他们可能不想使用Java EE 6，他们可能处于云环境下，这时Java EE并不适用，他们可能使用任意一台应用服务器，他们可能想要部署在各种设备上。这时，Spring的可移植性就是非常有价值的了。 
- <br /> 
- <br /> Spring的生态系统所解决的问题要比Java EE多很多，比如说集成、批处理和非关系型数据等。细粒度的安全也得到了很完善的支持，使用Spring的组件模型可以提供很多其他的好处。 
- <br /> 
- <br /> 在Java EE领域中，根据Oracle的Arun Gupta所述，“Oracle正在寻求通过Java EE 7来扩展EJB的事务能力以及事务语义，我们在Java EE 7中所做的就是抽象出语义，使之具有更加广泛的应用场景。比如说对于Managed Bean或是CDI Beans等。借助于CDI Beans，Managed Bean可以通过Java类来实现”。 
- <br /> 
- <br /> 根据Java EE 6指南所述，如果一个顶层类是根据任何Java EE技术规范定义的或是满足某些条件，比如说是非静态的内部类，那么这个类就是个Managed Bean。Java EE 7的主要特性就在于支持GlassFish Server 4应用服务器。 
-</blockquote>
-<p>不过，Pivotal的市场经理Pieter Humphrey却认为大家不必为此担心。他认为这个消息仅仅是一面之言而已，并相信Spring的流行还将持续下去。现今的Spring技术已经涵盖了移动应用开发、NoSQL、大数据以及云计算等领域。</p>
-<p>Spring 4.0中值得关注的一个特性就是Spring Boot，这是个类似于Ruby on Rails的快速应用开发框架。Spring Boot能够极大减少样板代码的数量，开发者可以根据最少量的样板或是配置相关的代码开始项目的开发。</p>
-<p>上个月，Spring网站有成千上万的访问者，达到了历史上的访问高峰。此外，通过Maven构建管理平台下载的Spring数量也在持续增长。</p>
-<p>有很多读者也对Spring的未来及与Java EE标准之间的关系发表了自己的评论，分别从项目所采用的技术标准、Spring的特性及Java EE标准的不断演化等方面谈起。</p>
-<p>Jim Smith说到：</p>
-<blockquote>
-  Spring Boot确实太酷了。我实在是搞不懂这个世界上怎么还有人使用臃肿的JEE服务器，只是为了部署一个Restfule Web服务。 
-</blockquote>
-<p>Anil chalil说到：</p>
-<blockquote>
- 我认为对于JEE来说，最好的东西就是CDI了，它直接能干掉EJB模型，Apache Deltaspike就是围绕着CDI生态圈的一个项目。
-</blockquote>
-<p>Frans Thamura说到：</p>
-<blockquote>
- Spring不仅是个技术了，而且是个生态圈，他们的模块使之能够形成一个生态圈，JavaEE能做到这一点么？我觉得够呛。不过对于移植来说，没错，你是可以做到的，但Spring并不是私有技术，这是个问题。这就好比是为什么要将程序从JavaEE迁移到Oracle ADF上一样。
-</blockquote>
-<p>Nicolas说到：</p>
-<blockquote>
- 没错，我知道Oracle的这个事情，当时很多人都在说JEE已经不再吸引人了。谁在乎呢？JEE的目标依旧是围绕着传统的应用服务器制订的，演进得非常缓慢，封闭，而且还抄袭其他的创新，至少要比别人晚5年时间。下一步应该是在云中兜售JEE了，作为获得厂商封闭策略的另一种途径。没错，我知道从理论上来说你可以不再依赖于某个JEE厂商，转而使用其他厂商的服务，如果他们二者真的是兼容的。
-</blockquote>
-<p>各位InfoQ读者，Spring现在基本已经成为了构建Java应用事实上的标准，而且也从最初的依赖注入和面向方面编程的框架发展成为现如今的一站式应用平台，Spring现已形成了自己的一个完善的生态圈，提供了对Web开发、移动开发、大数据、云计算、集成、批处理、NoSQL等等一系列的支持。相比于Spring，传统的JavaEE标准的关注度似乎没有以前那么高了，而且发展速度比较缓慢，这其中有很多的因素，毕竟标准的诞生还是需要经过方方面面的考量，一定的滞后性也是必然的。那么根据你的经验，采用Spring与采用标准的JavaEE各有什么样的利弊呢？从长远来看，哪一种策略才是最优的呢？欢迎写下你的看法与见解，我们一起讨论。</p><br><br><br><br><br><br></body></html>
+<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>Code Pilot开源，探讨GPGPU于iOS上的效能分析 - 移动开发技术周报</h3><p>本周移动开发技术周报的推荐资料包括：Code Pilot的开发故事，深入iOS7 App Switcher，raywenderlich的Objective-C编码风格，设计iOS 7的Status Bar。</p>
+<h3>工具：</h3>
+<ol> 
+ <li><a href="http://macoscope.com/blog/the-story-of-code-pilot">Code Pilot的开发故事</a>：Code Pilot是一个Xcode的扩充套件，可以让开发者更快的找到之前曾写过的代码，并拿出来重复使用。在之前，Code Pilot是一套价值14.95美元的产品。最近Code Pilot CEO Zbigniew Sobieck不仅宣布解决了Code Pilot在Xcode5上面的使用问题，也把Code Pilot的代码开源了，让更多的开发者可以改进这个套件并增强其功能。</li> 
+</ol>
+<h3>技巧：</h3>
+<ol> 
+ <li><a href="http://vpdn.github.io/articles/iOS7-card-view">深入iOS7 App Switcher</a>：iOS7提供了新的App切换方式，开发者可以把应用的显示方式设计为卡片模式，在切换应用的时候也可以让使用者快速的看到有用的资料。这篇文章探讨这种设计的好处并透过iOS内建的应用来分析。</li> 
+ <li><a href="https://github.com/raywenderlich/objective-c-style-guide">raywenderlich的Objective-C编码风格</a>：<a href="http://www.raywenderlich.com">raywenderlich</a>是一个在iOS开发界着名的教学网站及出版商，相信在许多人学习iOS的路上都有着raywenderlich的陪伴。随着New York Times、Google、GitHub都公布各自的Objective-C编码风格，raywenderlich也不落人后的推荐自己的Objective-C编码风格给广大的开发者。</li> 
+ <li><a href="http://iosdevelopertips.com/user-interface/managing-status-bar-ios-7.html">设计iOS 7的Status Bar</a>：随着iOS7设计风格的转变，以往的Status Bar方法也被改变了。我们所熟悉的UIStatusBarStyleBlackOpaque及UIStatusBarStyleBlackTranslucent已被除去，取代而之的为UIStatusBarStyleDefault及UIStatusBarStyleLightContent，可以供设计的需求所更改。</li> 
+</ol>
+<h3>杂货：</h3>
+<ol> 
+ <li><a href="http://www.ithome.com.tw/itadm/article.php?c=84839">中国发布COS操作系统对抗Android、iOS</a>：中国科学院软件研究所与上海联彤共同发表China Operating Systems(COS)，COS采用成熟且强化过的Linux核心，支援高效能的原生与HTML应用，将可应用在手机、平板电脑、家电、机上盒、个人电脑。</li> 
+ <li><a href="http://ciechanowski.me/blog/2014/01/05/exploring_gpgpu_on_ios/">探讨GPGPU于iOS上的效能分析</a>：CPU or GPU ? 这个问题自GPU运算能力增强之后，许多开发者变会犹豫该使用哪一个处理器来加快应用的处理能力。这一篇由Bartosz Ciechanowski这位资深的开发者所撰写，面向对CPU及GPU进行了详尽的评测。</li> 
+</ol><br><br><br><br><br><br></body></html>

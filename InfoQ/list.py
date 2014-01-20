@@ -1,20 +1,20 @@
 <html>
  <head></head> 
- <body>
-  <div>
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/16.py">アプリのiOS 7対応期限が2月1日に</a>Appleは先日，iOSのアプリケーションに関して，2月1日までにiOS 7に対応しなければならない，という告知を行った。iTunes Storeに新たなアプリケーションやアップデートを提出する場合には，開発にXCode 5を使用することとアプリケーションをiOS 7に最適化することが必須となる。iOS7に対応するには，現行のHuman Interface Guidelinesに従ったUIの変更と，API変更の適用などが必要だ。
-  </div>
-  <div>
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/15.py">Oracleがjava EE 8計画について，さらにフィードバックを募集</a>OracleはJava EE 8コミュニティサーベイの第２部をローンチした。クラウド，セキュリティ，ロギング，デプロイ，テスタビリティ，プルーニング，プロファイルといったトピックが対象だ。
-  </div>
-  <div>
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/14.py">OpenAccess ORM Q3 2013 SP1がVS 2013サポートを追加，従来型ウィザードとOracle 9i, MySQL 5のサポートは廃止に</a>先日TelerikがリリースしたOpenAccess ORM Q3 2013 AP1では，Visual Studio 2008を継続してサポートすると同時に，Visual Studio 2013のサポートが導入されている。しかし従来のウィザード，Oracle 9iとMySQL 5.0のサポートについては，OpenAccess ORMの次期リリースから廃止される予定だ。
-  </div>
-  <div>
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/13.py">Nevron Open Visionで実現するクロスプラットフォーム開発</a>Windows Forms、Windows Presentation Framework (WPF)、SilverlightをサポートしたNevron Open Vision(NOV)がリリースされた。このフレームワークを使えば、開発者は複数のOSやでバイス、環境でひとつのプレゼンテーションレイヤを使い回すことができる。今後のバージョンでMac OS、iOS、Android、WinRTをサポートする予定だ。
-  </div>
-  <div>
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/12.py">改善の習慣</a>アジャイルは1つの考え方であり、すべてを連続して改善していくものだとYves Hanoulle氏が語った。InfoQは、Yves 氏にインタビューし、人々が持つ習慣と改善の習慣を身に付けるために何ができるかを聞いた。
+ <body> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/16.py">アプリのiOS 7対応期限が2月1日に</a>Appleは先日，iOSのアプリケーションに関して，2月1日までにiOS 7に対応しなければならない，という告知を行った。iTunes Storeに新たなアプリケーションやアップデートを提出する場合には，開発にXCode 5を使用することとアプリケーションをiOS 7に最適化することが必須となる。iOS7に対応するには，現行のHuman Interface Guidelinesに従ったUIの変更と，API変更の適用などが必要だ。 
+  </div> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/15.py">Oracleがjava EE 8計画について，さらにフィードバックを募集</a>OracleはJava EE 8コミュニティサーベイの第２部をローンチした。クラウド，セキュリティ，ロギング，デプロイ，テスタビリティ，プルーニング，プロファイルといったトピックが対象だ。 
+  </div> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/14.py">OpenAccess ORM Q3 2013 SP1がVS 2013サポートを追加，従来型ウィザードとOracle 9i, MySQL 5のサポートは廃止に</a>先日TelerikがリリースしたOpenAccess ORM Q3 2013 AP1では，Visual Studio 2008を継続してサポートすると同時に，Visual Studio 2013のサポートが導入されている。しかし従来のウィザード，Oracle 9iとMySQL 5.0のサポートについては，OpenAccess ORMの次期リリースから廃止される予定だ。 
+  </div> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/13.py">Nevron Open Visionで実現するクロスプラットフォーム開発</a>Windows Forms、Windows Presentation Framework (WPF)、SilverlightをサポートしたNevron Open Vision(NOV)がリリースされた。このフレームワークを使えば、開発者は複数のOSやでバイス、環境でひとつのプレゼンテーションレイヤを使い回すことができる。今後のバージョンでMac OS、iOS、Android、WinRTをサポートする予定だ。 
+  </div> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/12.py">改善の習慣</a>アジャイルは1つの考え方であり、すべてを連続して改善していくものだとYves Hanoulle氏が語った。InfoQは、Yves 氏にインタビューし、人々が持つ習慣と改善の習慣を身に付けるために何ができるかを聞いた。 
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/11.py">アジャイルチームのペアコーチング</a>アジャイルコーチにはひとりだけでなく，ペアでコーチする方法もある。それぞれがコーチングの別々の面に注力するのである。コーチは皆それぞれ独自の経験とスキルを持っているので，お互いを補完することもできる。ふたりのコーチが協力して，アジャイルを採用する個人やチームに対して，その習得と改善を支援するのだ。 
@@ -150,6 +150,6 @@
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/19.py">Reactive Extensions for C++の紹介</a>Rx.cppとしても知られるReactive Extensions for C++が、WinRTでも（C++/CXを使って）、OS Xでも（clangを使って）利用できるようになった。まだ初期段階だが、最後のプレビュー以来、多くの仕事がなされている。 
-  </div>      
+  </div> 
  </body>
 </html>
