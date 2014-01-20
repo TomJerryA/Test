@@ -1,8 +1,32 @@
-<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>Apache Kafka —一个不同的消息系统</h3><p>Apache已经发布了<a href="https://archive.apache.org/dist/kafka/0.8.0/RELEASE_NOTES.html">Kafka 0.8，也是自从成为Apache软件基金会的顶级项目后</a><a href="http://kafka.apache.org/">Kafka</a>的第一个主版本。 Apache Kafka是发布—订阅消息传递，实现了分布式提交日志，适用于离线和在线消息消费。它最初由LinkedIn开发的消息系统，用于低延迟的收集和发送大量的事件和日志数据。最新版本包括群集内复制和多数据目录支持。目前请求处理也是异步的，使用请求处理线程的附属线程池来实现。日志文件可以按年龄进行覆盖，并且日志级别可通过JMX进行动态设置。性能测试工具已提供，帮助解决存在的性能问题，并寻找潜在的性能优化点。</p>
-<p>Kafka是一个分布式，分区化，可复制的提交日志服务。生产者将消息发布到Kafka主题，消费者订阅这些主题并消费这些消息。在Kafka集群上一个服务器称为一个Broker。对于每一个主题，Kafka群集保留一个用于缩放，并行化和容错性的分区。每个分区是一个有序，不可变的消息序列，并不断追加到提交日志文件。分区的消息每个也被赋值一个称为偏移顺序的序列化编号。</p>
-<p><img _p="true" _href="img://log_anatomy.png" alt="" src="http://www.infoq.com/resource/news/2013/12/apache-afka-messaging-system/en/resources/log_anatomy.png" /></p>
-<p>偏移是由消费者来控制。典型的消费者将处理列表中的下一条消息，它可以以任何顺序接收消息，因为Kafka集群为所有发布的消息保留一段可配置的时间。这让消费者很灵活，他们可以来去自由而不影响群集，并适合像Hadoop集群这样的脱机消费者。生产者能够选择那一个主题，主题的那一个分区，来发布该消息。消费者自己也可以分配一个消费者组名，每个消息将发送给每个订阅消费者组的消费者。如果所有的消费者有不同的消费组，那么消息将被广播到每一个消费者。</p>
-<p>Kafka可以像一个传统的消息Broker使用。它具有高吞吐量，内置分区，可复制和容错等特性，这使得它成为大型消息处理应用的理想解决方案。Kafka也可以用于高访问量的网站活动的跟踪机制。网站活动可以被发布，并且可以被实时处理，或加载到Hadoop或离线的数据仓库系统。Kafka也可以用来作为一种日志整合方案。代替工作于日志文件，日志可以作为消息流处理。</p>
-<p>Kafka目前用于LinkedIn，它每天处理超过100亿消息，持续负载平均每秒172,000消息。目前，无论从内部和外部的使用数据的应用程序大量使用多订阅者支持。每个消息发布出来后，基本上会有5.5个消息消费者使用，这导致的结果是每一天将有550亿的消息发送给实时消费者。367个主题涵盖用户活动的主题和运营数据，其中最大将每天增加的平均92GB批量压缩消息。信息保存时间为7天，这些平均约9.5 TB压缩消息跨越主题。除了在线消费者，还有众多的大型Hadoop集群，它们消费频繁，高吞吐量，并行矩阵，作为离线数据负载的一部分。</p>
-<p>作为入门，访问官方的<a href="http://kafka.apache.org/documentation.html">Apache Kafka文档页</a>，你可以学习更多和下载Kafka。也有一篇来自LinkedIn的论文，标题为《<a href="http://sites.computer.org/debull/A12june/pipeline.pdf">构建LinkedIn的实时活动数据管道</a>》 ,该论文讨论Kafka 建立原因和Kafka设计上的特性。</p>
-<p><b>查看英文原文：</b><a href="http://www.infoq.com/news/2013/12/apache-afka-messaging-system">Apache Kafka - A Different Kind of Messaging System</a></p><br><br><br><br><br><br></body></html>
+<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>Gojko Adzic将写一本改善用户故事的书</h3><p>更好的用户故事会提升软件交付么？ <a href="http://www.infoq.com/author/Gojko-Adzic">Gojko Adzic</a>认为，在团队管理用户故事的方式中应用一些小的变化能够对他们软件交付的实际产出产生巨大的影响。在博客文章“<a href="http://gojko.net/2014/01/01/make-me-write-a-book-and-get-it-for-free/">让我写一本免费书</a>”中他表示自己想写一本与改善用户故事相关的书。</p>
+<blockquote> 
+ <p>我想写写如何定义更好的用户故事；如何认出并解决常见的问题；如何分解它们，让它们有价值的同时变得更小；如何处理困难的事情，例如横切关注点、长期效应和“非功能性”需求；此外，最重要的是如何确信交付团队的成员和相关利益方之间讨论了正确的事情并达成了一致，进而获取敏捷和迭代交付的承诺。</p> 
+</blockquote>
+<p>Gojko是图书《<a href="http://www.infoq.com/articles/specification-by-example-book">Specification by Example</a>——<a href="http://www.infoq.com/articles/specification-by-example-book">团队如何交付正确的软件</a>》和《<a href="http://impactmapping.org/book">Impact Mapping</a>——改变思维》 的作者。他为新书初步拟定的标题是“50个改善用户故事的快速思路”。如果在1月份有不少于5000人通过预注册表示自己对该书感兴趣，那么Gojko就会考虑写这本书。</p>
+<blockquote> 
+ <p>我将会使用LeanPub衡量大家对本书的兴趣并随着我的进展发布草稿。所以如果你对此感兴趣，那么就到LeanPub上<a href="https://leanpub.com/50quickideas/packages/book/purchases/new">注册</a>并关注本书吧。我将会保持本书免费，一直到1月底或者直到有5000人注册为止。如果注册人数达到了这个数字，我新一年的决定将会是编写另一本优秀的书籍！</p> 
+</blockquote>
+<p>到现在为止（1月16号）有超过2300位读者已经订阅了该书。当本书发布的时候他们将会获得一个免费的电子书副本。</p>
+<p>之前InfoQ有采访过Gojko Adzic，那时讨论的主题是<a href="http://www.infoq.com/interviews/interview-gojko-adzic-qcon-2013">通过改变思维整合业务迭代交付</a>。在2013年的Agile Tour Toronto 大会上Gojko为大家做了<a href="http://www.infoq.com/presentations/keynote-agile-toronto-2013">实现影响而不是软件！</a>的呈现。InfoQ还发布了Chris Matts和Gojko Adzic共同写的文章<a href="http://www.infoq.com/articles/feature-injection-success">特性注入：成功三步曲</a>。</p>
+<p>对于这本即将到来的有关于改善用户故事的新书，有一些人在博客文章和推特上发表了自己的看法。下面是其中的一些：</p>
+<blockquote> 
+ <p><b>Kent McDonald: </b>我遇到的团队无疑都有一个问题，那就是难以合适地组织并描述自己要构建的正确事情是什么。我现在不确定的一件事情是特别关注于用户故事是不是答案，除非你打算解决“如果我们仅将自己的用户故事编写的更好，那么一切问题都会迎刃而解”。</p> 
+ <p>用户故事的问题当然是一个症状，但我不确定它是否是根本原因。我认为除了要清楚自己试图构建的事情，理解构建的原因，明白描述这些信息的有效方式之外，团队还需要做很多的事情。用户故事的一个问题就是人们会试图让它做很多超出其本身含义之外的事情。</p> 
+</blockquote>
+<blockquote>
+ <b>Jean-Michel Garnier:</b> 用户故事/门票“没有被很好地定义，没有被很好地拆分，分离后没有足够的价值”听起来很熟悉吗？
+</blockquote>
+<blockquote> 
+ <p><b>Rob Park:</b> 是的…故事故障、故事拆分、故事映射…驱动着几乎所有的事情，但是我遇到的大部分团队并不擅长这些，也没有相关实践处理它们，因为这块很难。</p> 
+</blockquote>
+<blockquote> 
+ <p><b>Andreas Ekstr&ouml;m:</b> @gojkoadzic新书的第一个短章节发布了。似乎很有前途。赶紧免费获取吧：https://leanpub.com/50quickideas@gojkoadzic。</p> 
+</blockquote>
+<blockquote> 
+ <p><b>Eddy Bruin:</b>我猜测第一个技巧将会是：用户故事并不是最终状态，而是你和你客户端之间谈话的开始。</p> 
+ <p>依我看，编写好的用户故事是一门艺术。我看到过团队几乎将用户故事拆分成单独的场景，还看到过团队将用户故事写得跟史诗一样大。这个范围可以非常宽。我认为你书中的技巧应该有助于大家对用户故事的大小做出界定。</p> 
+</blockquote>
+<blockquote> 
+ <p><b>Nicolas Deverge:</b>真棒！@gojkoadzic计划编写一些“用户故事生存指南”。请大家注册让这一切美梦成真！</p> 
+</blockquote>
+<p><b>查看英文原文</b>：<a href="http://www.infoq.com/news/2014/01/gojko-adzic-improve-user-stories">Upcoming Book by Gojko Adzic on Improving User Stories</a></p><br><br><br><br><br><br></body></html>

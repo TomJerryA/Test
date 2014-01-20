@@ -1,6 +1,9 @@
 <html>
  <head></head> 
- <body> 
+ <body>
+  <div>
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/27.htmlb">敏捷项目估算：什么是故事？什么是点数？</a> 有没有想过在敏捷项目中我们该如何以及为什么要进行估算？在David Morris为InfoQ写的第一篇文章中，他描绘了自己从90年代以来的经验和其它几位主要敏捷作者的论述，对敏捷估算这个话题进行了探讨：它是什么？我们通常怎么做？为什么要做？对#NoEstimates（不要估算）争论的简要评价，以及最后为初学者提出了一些建议。 
+  </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/26.htmlb">Backbone与Angular的比较</a> Victor Savkin为读者分析了使用Backbone.js和Angular.js创建web应用的优缺点，并对这两种框架进行了深入比较。 
   </div> 
@@ -147,9 +150,6 @@
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/30.htmlb">Tiago Garcez访谈：为什么实施敏捷？</a> InfoQ采访了Tiago Garcez，谈论了这样一些问题：为什么敏捷更适合应对企业面临的挑战，敏捷能够创造的价值，以及如何启动向敏捷的过渡。 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/29.htmlb">解析精益产品开发（三）——面向价值的可视化</a> 用户故事图谱和任务看板、版本和迭代燃尽图，可视化已经成为敏捷和精益产品开发必选实践。可视化真的重要吗？我们将从一个真实团队的实践开始，探讨可视化的作用，以及如何让可视化发挥效用。 
-  </div> 
+  </div>  
  </body>
 </html>

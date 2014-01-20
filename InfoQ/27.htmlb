@@ -1,100 +1,48 @@
-<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>Java SE 8: 标准库增强</h3><p>Lambda表达式是Java SE 8的核心功能，大部分的改进都围绕lambda表达式展开。（<a href="http://openjdk.java.net/projects/jigsaw/">Jigsaw项目</a>已经被推迟到Java SE 9。）关于lambda表达式的内容，已经在上一篇文章中进行了说明。这篇文章主要介绍Java SE 8中包含的其他Java标准库的增强。</p>
-<h2>并行排序</h2>
-<p>随着多核CPU的流行，Java平台的标准库实现也尽可能利用底层硬件平台的能力来提高性能。Java SE 7中引入了<a href="http://www.oracle.com/technetwork/articles/java/fork-join-422606.html">Fork/Join框架</a>作为一个轻量级的并行任务执行引擎。Java SE 8把Fork/Join框架用到了标准库的一些方法的实现中。比较典型的是<a href="http://download.java.net/jdk8/docs/api/java/util/Arrays.html">java.utils.Arrays类</a>中新增的parallelSort方法。与已有的sort方法不同的是，parallelSort方法使用Fork/Join框架来实现。在多核CPU平台上的性能更好。下面的代码对包含1亿个整数的数组分别使用parallelSort和sort进行排序。</p>
-<pre>
-Random random = new Random();
-int count = 100000000;
-int[] array = new int[count];
-Arrays.parallelSetAll(array, (index) -&gt; random.nextInt());
-int[] copy = new int[count];
-System.arraycopy(array, 0, copy, 0, array.length);
-Arrays.parallelSort(array);
-Arrays.sort(copy);
-</pre>
-<p>在本人的4核CPU的平台上，parallelSort和sort方法的耗时分别是7112毫秒和16777毫秒。所以parallelSort方法的性能要好不少。不过parallelSort方法只在数据量较大时有比较明显的性能提升。当数据量较小时，Fork/Join框架本身所带来的额外开销足以抵消它带来的性能提升。</p>
-<h2>集合批量数据操作</h2>
-<p>在Java应用的开发中，对集合的操作是比较常见的。不过在Java SE 8之前的Java标准库中，对集合所能进行的操作比较有限，基本上都围绕集合遍历来展开。相对于其他编程语言来说，Java标准库在这一块是比较弱的。Java SE 8中lambda表达式的引入以及标准库的增强改进了这种状况。具体来说体现在两个方面上的改进：第一个方面是对集合的操作方式上。得益于默认方法的引入，Java集合框架中的接口可以进行更新，添加了更多有用的操作方式，即通常所说的“filter/map/reduce”等操作。第二个方面是对集合的操作逻辑的表示方式上。新添加的操作方式使用了java.util.function包中的新的函数式接口，可以很方便地使用lambda表达式来表示对集合的处理逻辑。这两个方面结合起来，得到的是更加直观和简洁的代码。</p>
-<p>新的集合批量处理操作的核心是新增的<a href="http://download.java.net/jdk8/docs/api/java/util/stream/package-summary.html">java.util.stream</a>包，其中最重要的是<a href="http://download.java.net/jdk8/docs/api/java/util/stream/Stream.html">java.util.stream.Stream</a>接口。Stream接口的概念类似于Java I/O库中的流，表示的是一个支持顺序和并行操作的元素的序列。在该序列上可以进行不同的转换操作。序列中包含的元素也可以被消费以产生所需的结果。Stream接口所表示的只是操作层面上的抽象，与底层的数据存储并没有关系。通常的使用方式是从集合中创建出Stream接口的对象，再进行各种不同的转换操作，最后消费操作执行的结果。</p>
-<p>Stream接口中包含的操作分成两类：第一类是对序列中元素进行转换的中间操作，如filter和map等。这类中间操作是延迟进行的，可以级联起来。第二类是消费序列中元素的终止操作，如forEach和count等。当对一个Stream接口的对象执行了终止操作之后，该对象无法被再次处理。这点符合一般意义上对于“流”的理解。下面的代码给出了Stream接口中的filter、map和reduce操作的基本使用方式。Stream接口中的方法大量使用了函数式接口，可以用lambda表达式很方便地进行操作。</p>
-<div id="lowerFullwidthVCR"></div>
-<pre>
-IntStream.range(1,10).filter(i -&gt; i % 2 == 0).findFirst().ifPresent(System.out::println); 
-//保留偶数并输出第一个元素<p>&nbsp;
-IntStream.range(1,10).map(i -&gt; i * 2).forEach(System.out::println); 
-//所有元素乘以2并输出</p></pre>
-<p>int value = IntStream.range(1, 10).reduce(0, Integer::sum); //求和</p>
-<p>Stream接口的reduce操作还支持一种更加复杂的用法，如下面的代码所示：</p>
-<pre>
-List&lt;String&gt; fruits = Arrays.asList(new String[] {&quot;apple&quot;, &quot;orange&quot;, &quot;pear&quot;});
-int totalLength = fruits.stream().reduce(0, (sum, str) -&gt; sum + str.length(), Integer::sum); 
-//字符串长度的总和</pre>
-<p>这种方式的reduce方法需要3个参数，分别是初始值、累积函数和组合函数。初始值是reduce操作的起始值；累积函数把部分结果和新的元素累积成新的部分结果组合函数则把两个部分结果组合成新的部分结果，最后产生最终结果。这种形式的reduce操作通常可以简化成一个map操作和另外一个简单的reduce操作，如下面的代码所示。两种方式的效果是一样的，不过下面的方式更加容易理解一些。</p>
-<pre>
-int totalLength = fruits.stream().mapToInt(String::length).reduce(0, Integer::sum);</pre>
-<p>另外一种特殊的reduce操作是collect操作。它与reduce的不同之处在于，collect操作的过程中所进行的是对一个结果对象进行修改操作。这样可以避免不必要的对象创建，提高性能。下面代码中的结果是一个StringBuilder类的对象。</p>
-<pre>
-StringBuilder upperCase = fruits.stream().collect(StringBuilder::new, (builder, str) 
--&gt; builder.append(str.substring(0, 1).toUpperCase()), StringBuilder::append); 
-//字符串首字母大写并连接</pre>
-<p>Stream接口中的操作可以是顺序执行或并行执行的。这是在Stream接口的对象创建时所确定的。比如Collection接口提供了stream和parallelStream方法来创建两种不同执行方式的Stream接口的对象。这两种不同的方式是可以切换的，通过Stream接口的sequential和parallel方法就可以完成。</p>
-<h2>日期和时间</h2>
-<p>Java标准库中的日期和时间处理API一直为开发人员所诟病。大多数开发人员会选择<a href="http://joda-time.sourceforge.net/">Joda Time</a>这样的第三方库来进行替代。<a href="http://jcp.org/en/jsr/detail?id=310">JSR 310</a>作为Java SE 8的一部分，重新定义了新的日期和时间API，借鉴了已有第三方库中的最佳实践。I定义在<a href="http://download.java.net/jdk8/docs/api/java/time/package-summary.html">java.time</a>包中的新的日期和时间API基于标准的<a href="https://en.wikipedia.org/wiki/ISO_8601">ISO 8601</a>日历系统。</p>
-<p>在新的日期和时间API中，核心的类是<a href="http://download.java.net/jdk8/docs/api/java/time/LocalDateTime.html">LocalDateTime</a>、<a href="http://download.java.net/jdk8/docs/api/java/time/OffsetDateTime.html">OffsetDateTime</a>和<a href="http://download.java.net/jdk8/docs/api/java/time/ZonedDateTime.html">ZonedDateTime</a>。LocalDateTime类表示的是ISO 8601日历系统中不带时区的日期和时间信息。OffsetDateTime类在基本的日期和时间基础上增加了与UTC的偏移量。ZonedDateTime类则加上了时区的相关信息。下面的代码给出了日期和时间API的基本用法，包括对日期和时间的修改、输出和解析。</p>
-<pre>
-LocalDateTime.now().plusDays(3).minusHours(1).format(DateTimeFormatter
-.ISO_LOCAL_DATE_TIME); //输出日期和时间
-ZonedDateTime.now().withZoneSameInstant(ZoneId.of(&quot;GMT+08:00&quot;)).format
-(DateTimeFormatter.ISO_ZONED_DATE_TIME); //输出日期、时间和时区
-DateTimeFormatter.ofPattern(&quot;yyyy MM dd&quot;).parse(&quot;200101 25&quot;).
-query(TemporalQuery.localDate()); //日期的解析</pre>
-<p>除了上述3个类之外，还有几个值得一提的辅助类。</p>
-<ul> 
- <li><a href="http://download.java.net/jdk8/docs/api/java/time/Instant.html">Instant</a>：表示时间线上的一个点。当程序中需要记录时间戳时，应该使用该类。Instant类表示的时间类似“2013-07-22T23:18:35.743Z“。</li> 
- <li><a href="http://download.java.net/jdk8/docs/api/java/time/Duration.html">Duration</a>：表示精确的基于时间的间隔。比如Duration.of(30, ChronoUnit.SECONDS)可以获取30秒的间隔。需要注意的是，Duration类的对象只能从精确的时间间隔创建出来，如秒、小时和天等。在这里，一天表示精确的24小时。而月份和年是不能使用的，因为它们不能表示精确的间隔。</li> 
- <li><a href="http://download.java.net/jdk8/docs/api/java/time/Period.html">Period</a>：与Duration类相对应的Period类表示的是基于日期的间隔，只能使用年/月/日作为单位。Period类在计算时会考虑夏令时等因素，适合于计算展示给最终用户的内容。</li> 
- <li><a href="http://download.java.net/jdk8/docs/api/java/time/Clock.html">Clock</a>：表示包含时区信息的时钟，可以获取当前日期和时间。如LocalDateTime.now(Clock.system(ZoneId.of(&quot;GMT+08:00&quot;)))表示的是当前的北京时间。Clock类的一个重要作用是简化测试。在测试时可以指定不同时区的时钟来进行模拟。</li> 
-</ul>
-<h2>其他更新</h2>
-<p>除了上面提到的几个比较大的更新之前，还有一些小的改动。</p>
-<h3>Base64编码</h3>
-<p>Base64编码在Java应用开发中经常会用到，比如在HTTP基本认证中。在Java SE 8之前，需要使用第三方库来进行Base64编码与解码。Java SE 8增加了<a href="http://download.java.net/jdk8/docs/api/java/util/Base64.html">java.util.Base64</a>类进行编码和解码。下面的代码给出了简单的示例。</p>
-<pre>
-Base64.Encoder encoder = Base64.getEncoder();
-String encoded = encoder.encodeToString(&quot;username:password&quot;.getBytes());
-Base64.Decoder decoder = Base64.getDecoder();
-String decoded = new String(decoder.decode(encoded));
-</pre>
-<h3>并发处理</h3>
-<p>Java SE 8进一步增强了并发处理的相关API。在<a href="http://download.java.net/jdk8/docs/api/java/util/concurrent/atomic/package-summary.html">java.util.concurrent.atomic</a>中新增了<a href="http://download.java.net/jdk8/docs/api/java/util/concurrent/atomic/LongAccumulator.html">LongAccumulator</a>、<a href="http://download.java.net/jdk8/docs/api/java/util/concurrent/atomic/LongAdder.html">LongAdder</a>、<a href="http://download.java.net/jdk8/docs/api/java/util/concurrent/atomic/DoubleAccumulator.html">DoubleAccumulator</a>和<a href="http://download.java.net/jdk8/docs/api/java/util/concurrent/atomic/DoubleAdder.html">DoubleAdder</a>等几个类。这几个类用来在多线程的情况下更新某个Long或Double类型的变量。下面的代码给出了LongAccumulator类的使用示例。</p>
-<pre>
-public class ConcurrentSample {
-    public static void main(String[] args) throws Exception {
-        ConcurrentSample sample = new ConcurrentSample();
-        LongAccumulator accumulator = new LongAccumulator(Long::max, 
-Long.MIN_VALUE);
-        for (int i = 0; i &lt; 100; i++) {
-            sample.newThread(&quot;Test thread - &quot; + i, accumulator);
-        }
-        System.out.println(accumulator.longValue());
-    }
-	
-    private void newThread(final String name, final LongAccumulator accumulator)
- throws Exception {
-        Thread thread = new Thread(() -&gt; {
-            Random random = new Random();
-            int value = random.nextInt(5000);
-            System.out.println(String.format(&quot;%s -&gt; %s&quot;, Thread.currentThread
-().getName(), value));
-            accumulator.accumulate(value);
-        }, name);
-        thread.start();
-        thread.join();
-    }
-}
-
-</pre>
-<p>当LongAccumulator类的对象上的accumulate方法被调用时，参数中的值会通过Long类的max方法进行比较，所得到的结果作为LongAccumulator类的对象的当前值。经过多次累积操作之后，最终的结果是所有调用操作中提供的最大值。</p>
-<p><a href="http://download.java.net/jdk8/docs/api/java/util/concurrent/ConcurrentHashMap.html">ConcurrentHashMap</a>类得到了比较大的更新，添加了很多实用的方法，如compute方法用来进行值的计算，merge方法用来进行键值的合并，search方法用来进行查找等。这使得ConcurrentHashMap类可以很方便的创建缓存系统。</p>
+<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>敏捷项目估算：什么是故事？什么是点数？</h3><h2>引言</h2>
+<p>当你要雇一位漆工来装饰你的房子，或者一位修理工来修你的车时，你会要他们先给个估算，对吗？你需要知道大概会花多少钱，需要多长时间。这是常识。</p>
+<p>然而经验告诉我们什么？初始的估算和最终的账单有多大差距？很有可能漆工会发现有松动的石膏需要铲除，墙面需要修补和重新粉刷；修理工一定会发现要让你车子重新上路还有些其它的问题要解决。在1951年的《纽约客》杂志中有这样一幅漫画，Syd Hoff画了一个修理工对他的客户说：</p>
+<blockquote> 
+ <p>“当然，那不过只是个估算，实际的花费一定会更多”</p> 
+</blockquote>
+<p><img _p="true" _href="img://null" alt="" src="http://infoqstatic.com/resource/articles/agile-estimating-why-how/zh/resources/1212020.jpg" /></p>
+<p>如果漆工或修理工告诉我们的这些问题还不是非常紧迫，我们可以选择暂时不处理…… 然而，通常的情况是，我们会觉得不得不修复那些额外的问题。谁会想住在一个可能墙面受潮的房子里，或者开着一辆有可能方向盘失灵的车呢？</p>
+<p>那我们怎么解决这样的问题呢？常见的做法就是我们坚持要工人给一个全面的、确定最终价格的估算，也就是通常我们叫的“报价单”，这样工人就会花更多心思用更长的时间来进行更准确的估算。然而现实中，无论他们如何用心努力，终究还是无法预知到那些意想不到的问题。</p>
+<h2>在项目中，我们面临同样的问题</h2>
+<p>传统上，项目经理往往会致力于创建很详细的估算，这个估算从财务的角度要经得起推敲。当然这样的估算是基于能够预见的情况再加上针对“已知的未知因素”所设的应急预算…… 然而就像Donald Rumsfeld的名言所说“有一些我们未知的未知因素——有些事情我们根本不知道我们不知道”。就像上面那些商人，我们永远无法预知那些意想不到的情况。</p>
+<p>我们花越长的时间来创建详细的估算，麻烦却越多。我们可以把详细的估算看作是一个绑定报价，一个<a href="http://www.estherderby.com/2012/03/estimating-is-often-helpful-estimates-are-often-not.html">不同于真正交付价值的目标</a>，它使得我们的注意力都放到能在协议的日期和成本内交付一些东西——任何东西，无论它的价值高低。</p>
+<p>在每次实施后的回顾评审中，初始估算和实际之间的差距总是让我们备受打击，然后告诉我们自己下次再努力些。爱因斯坦曾经说过，所谓神经错乱就是“一遍又一遍地做同样的事情，却期望得到不同的结果”。因此事情不应该这样，一定有其它更好的方法。</p>
+<p>敏捷项目显然就不是这样？我们何不就从一个大概的需求范围开始，然后在做的过程中逐渐理清细节？嗯，对，但也不全对。在敏捷项目中我们不会去创建详细的估算来束缚自己，但是对将要进行的工作量的大小有一个认识还是很重要的，这就是为什么……</p>
+<h2>为什么我们需要估算</h2>
+<p>忘掉那些传统的估算，那些漂亮的精心制作的甘特图，那些图表迫使我们的注意力都放在要进行的任务上，而不是要交付的成果。在项目中有三种活动需要我们进行一些粗略的估算。</p>
+<ol> 
+ <li>当我们在考虑一个新提议项目的合理性时，我们需要提前知道大概的成本，这样才能决定是否值得投入。</li> 
+ <li>当我们正在将新的或改进的产品推向市场时，我们需要知道那些<a href="http://www.mountaingoatsoftware.com/blog/assigning-story-points-at-the-right-time-or-not-at-all">重要的特性大概什么时候可以发布</a>，这样我们才能安排相关的活动。</li> 
+ <li>当我们在为工作排优先级时，产品负责人需要知道每个故事（或待办清单项）的成本，而团队需要知道每个故事的价值。</li> 
+</ol>
+<p>有件事很有意思，<a href="http://msdn.microsoft.com/en-us/library/hh273052/">只要整个团队都一起参与进来共同协作</a>，估算本身也可以变成一种很有意义的活动。它有助于团队增进理解，并保证团队每个人都对要交付的需求范围和价值达成共识。</p>
+<p>然而对“估算”这个词的传统理解可能会让我们偏离这个方向。</p>
+<h2>使用“大小”而不是“估算”</h2>
+<p>为了避免让人误会我们讨论的是对成本和时间的估算，当我们评估一个故事的复杂程度时，有些人喜欢用“大小”而不是“估算”来描述。在90年代当我第一次使用Scrum和XP时——那时它们都还没有被称为敏捷实践——我们是使用T-shirt尺寸来评估故事的大小（S，M，L，和XL）。</p>
+<p>现在我们使用故事点数——<a href="http://agile.dzone.com/articles/story-point">一种评估故事之间相对大小的方法</a>——因此我们先找到可能最简单的故事，将它的点数设为1点，接下来用其他的故事与它进行比较，如果另一个故事比这个更复杂，那个故事可能就是3点。</p>
+<p>让评估变得更有趣的是，我们不采用简单连续的数列，比如1，2，3，4，5等——而是采用一种近似菲波拉契数列的形式，像1，2，3，5，8，13等（就如《达芬奇密码》里面看到的）。这样当数字越大相邻数之间的间隔也越大，使得我们更容易区分哪个故事更小哪个更大。</p>
+<p>尽管这不是一种精确的科学，但对上面提到的三种需要估算的情况这种方法已经足够好了。像John Maynard Keynes所说，“粗略的正确好过精确的错误”。这也意味着，我们仍然需要将故事点数转换成粗略的时间和成本估算。</p>
+<p>另一个主要用于敏捷项目的实践是建立“完成标准”，就是对<a href="http://www.dzone.com/articles/definitions-done-practice">一个故事要能够标注为完成并可发布所需要满足的所有条件</a>进行全面的理解，包括各种项目，比如用户文档、翻译、广告等等。</p>
+<p>假如我们有清晰的完成标准，就可以拿几个样例故事来计算所需要的工作量。基于这种计算我们就能为投资决策进行粗略的成本估算，为版本计划进行粗略的时间估算，让我们对故事有更充分的认识以便能协助产品负责人进行故事优先级的设置。</p>
+<p>然而有些人仍然认为即使以故事的方式进行估算也会让我们从真正的价值交付上分心。针对这一点，有一个围绕着#NoEstimates的讨论。</p>
+<h2>什么是#NoEstimates讨论</h2>
+<p>如果你在Twitter上关注了任何一位敏捷方面有影响力的人，你可能已经注意到他们有些人参与了#NoEstimates 标签的讨论。看起来这是要我们完全停止进行估算，其实它是要我们不再进行故事点数的评估，而是立即开始开发。</p>
+<p>这个讨论自从出现后已经有了一个迅速发展的势头，因为那些在大项目中工作的人他们感觉无论是<a href="http://softwaredevelopmenttoday.blogspot.co.nz/2012/01/story-points-considered-harmful-or-why.html">用故事点数进行评估还是仅仅统计故事的个数</a>，团队产量的跟踪结果基本是相同的。</p>
+<p>一定程度上这可能是因为那些有经验的交付团队每个迭代<a href="http://neilkillick.com/2013/01/31/noestimates-part-1-doing-scrum-without-estimates/">会将故事实时地（Just-in-time）以一致的标准拆分成更小的故事</a>——这样的拆分使得团队每个迭代能产出更多潜在可交付的增量——无论项目在迭代里是采用的非常小的故事，还是适度大一些的故事，最终每个迭代的产能报告看上去都差不多。</p>
+<p>#NoEstimates这种方式使得故事的优先级设置更简单了，使得交付团队能够更快地开始工作。然而可怜的产品负责人和项目投资方他们仍然需要知道项目大概要花费多少成本，需要多长时间。好消息是我们还可以基于故事个数的统计来进行粗略的估算，只要项目能够建立起<a href="http://www.stephenforte.net/Beyond+Agile+Estimation+Part+I+Measuring+Key+Data+Points.aspx">足够有效的度量指标</a>来让这样的估算可行。</p>
+<p>对于任何刚开始敏捷之旅的新团队来说，无论如何我都强烈建议你们采用故事点数进行估算，直到你具有了和那些团队一样的丰富经验和成熟度。</p>
+<h2>结论</h2>
+<p>作为总结，引用General Dwight D. Eisenhower的一句名言：“在准备开始一个项目时，我总是发现估算的数字是没有用的，但估算的过程却必不可少”。我们仍然需要进行估算，不管这样的活动叫什么名字，不管在这样的活动中我们如何进行计算。</p>
+<p>我要感谢Esther Derby（估算成为目标），Mike Cohn（为发布计划和优先级设置进行估算），Ahmed Sidky（全员估算），Martin Fowler（故事点数），Ian Mitchell（完成标准），Vasco Duarte（故事个数vs.故事点数），Stephen Forte（度量与估算），Neil Killick（有经验的团队定义更小的故事），和其他很多人，感谢他们在这个话题上给我的分享——以及我上面对他们各自论文的链接引用。</p>
+<h2>关于作者</h2>
+<p><img _p="true" _href="img://null" alt="" style="float: left; margin-right: 10px" src="http://infoqstatic.com/resource/articles/agile-estimating-why-how/zh/resources/1212021.JPG" /><b>David Morris </b>是一位独立业务敏捷性实践者、教练和讲师；通过他的公司Sophorum为新西兰各地的客户提供业务分析、团队领导，教练和培训服务。他有近30年的项目交付经验，在这30年中他以团队成员，团队领导，以及自己企业的负责人身份参与了各种类型的项目，比如战略、经营和技术类的项目，并在这些项目中运用了结构化的、迭代的和敏捷的方法。</p>
+<p>David 通过了CBAP、ICAgile Certified Practitioner、Certified ScrumMaster和 IT Certified Professional的认证。他主持研究小组、专业开发讲座和训练营；帮助Agile Auckland和IIBA NZ组织活动；在欧洲和澳大利亚的的各种大会和活动上进行演讲；并参与了多本书的创作（包括“Agile Extension to the BA Body of Knowledge”）；他也是一位活跃的博主，tweeter和维基百科编辑。</p>
+<p><strong>查看英文原文：</strong> <a href="http://www.infoq.com/articles/agile-estimating-why-how">Estimating on agile projects: what’s the story, what’s the point?</a></p>
+<p>译者信息：姚安峰，微博：霜木</p>
 <hr />
-<p>感谢<a href="http://www.infoq.com/cn/author/张凯峰">张凯峰</a>对本文的审校。</p>
+<p>感谢<a href="http://www.infoq.com/cn/author/侯伯薇">侯伯薇</a>对本文的审校。</p>
 <p>给InfoQ中文站投稿或者参与内容翻译工作，请邮件至<a href="mailto:editors@cn.infoq.com">editors@cn.infoq.com</a>。也欢迎大家通过新浪微博（<a href="http://www.weibo.com/infoqchina">@InfoQ</a>）或者腾讯微博（<a href="http://t.qq.com/infoqchina">@InfoQ</a>）关注我们，并与我们的编辑和其他读者朋友交流。</p><br><br><br><br><br><br></body></html>
