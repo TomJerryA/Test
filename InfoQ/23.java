@@ -1,19 +1,46 @@
-<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>Hadoop-as-a-Service Provider Qubole Now Runs on Google Compute Engine</h3><p>Qubole, a managed Hadoop-as-a-Service offering is <a href="http://googlecloudplatform.blogspot.com/2013/12/qubole-helps-you-run-hadoop-on-google-compute-engine.html">now available</a> on Google Compute Engine (GCE). Qubole was so far only <a href="http://www.qubole.com/company/partners/">available</a> on Amazon’s AWS and this announcement follows only a few days after Google <a href="http://www.infoq.com/news/2013/12/gcega">releasing GCE into general availability</a>.</p>
-<p>Community reactions were by and large positive and it seems people consider the <a href="http://nosql.mypopescu.com/post/69829120078/google-compute-engine-and-data">Big Data theme</a> as a <a href="http://gigaom.com/2013/12/13/maybe-big-data-is-the-killer-app-for-googles-cloud/">potential killer app</a> for GCE. Alex Popescu of DataStax puts it like this:</p>
-<blockquote>
- If you look at these, you’ll notice a theme: covering data from every angle; Cassandra/DSE from DataStax for OLTP, DataTorrent for stream processing, Qubole for Hadoop, MapR for their Hadoop-like solution. I can see this continuing for a while and making Google Compute Engine a strong competitor for Amazon Web Services.
+<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>Math.js: Versatile Math Library For JavaScript</h3><p>&nbsp;<a href="http://mathjs.org/">Math.js</a> is an open source Math library for JavaScript and Node.js for working with numbers, big numbers, complex numbers, units and matrices. It also features a flexible expression parser. InfoQ got in touch with the project founder, <a href="http://josdejong.com/">Jos De Jong</a>, to know more.</p>
+<p align="justify">Jos explains the motivation behind the project –</p>
+<blockquote> 
+ <p align="justify">For JavaScript there are nice libraries out there to work with matrices, complex numbers, statistics, etc. What is lacking though is an integrated solution to do advanced mathematics.&nbsp;Most of the existing libraries come with a&nbsp;<i>chained</i>&nbsp;API, which works very intuitive, but only accepts data types&nbsp;known by the library itself.&nbsp;Hence the integration issue: matrix libraries can't handle complex numbers, and vice versa. You can't combine them.&nbsp;The API of math.js is the same as that of JavaScript's Math object and built in operators: static functions accepting various types of input. Math.js extends this API with support for advanced data types, functions, and constants.</p> 
+ <p align="justify">I hope math.js will help making maths in application development trivial and more fun, and helps bridging the gap between the the world of developers and the academic world.</p> 
 </blockquote>
-<p>With Hadoop-as-a-Service (HaaS, also known as Hadoop in the cloud) come different options:</p>
-<ul> 
- <li>Rolling your own deployment, that is, installing Apache Hadoop or one of the distributions (Cloudera, Hortonworks, MapR) in an IaaS offering, such as GCE or EC2. This allows for fine-grained control over what is running but also comes with deployment and management complexity.</li> 
- <li>Pre-packaged services such as Amazon’s <a href="http://aws.amazon.com/elasticmapreduce/">EMR</a> or <a href="http://www.savvis.com/big-data#foundation-services">Savvis’ Big Data offering</a> that help with reduced deployment complexity and offer mid-level control over installed services.</li> 
- <li>Managed HaaS such as Qubole or <a href="http://mortardata.com/">Mortar</a>, promising <a href="https://vimeo.com/80872062">reduced deployment and management complexity</a>.</li> 
-</ul>
-<p>The <a href="https://vimeo.com/80872062">key differences</a> of HaaS versus on-premise deployments are around elasticity, spot pricing, separation between compute and storage (for example, eventually consistent object stores such as Amazon’s S3 or <a href="https://cloud.google.com/products/cloud-storage/">Google’s Cloud Storage</a>, and enhanced security standards. Managed HaaS offerings such as Qubole <a href="https://vimeo.com/80872062">are often used</a> in development cases, for evaluation and testing, short-running analysis jobs and to realise hybrid cloud setups. They do, however, also come with their own limitations:</p>
-<ul> 
- <li>Getting data into the cloud and getting it out again has its own price tag.</li> 
- <li>There may be privacy and data protection issues stemming from legal requirements that prevent or limit the use cases.</li> 
- <li>The TCO of a 24/7 operation has to be calculated through on a case-by-case basis.</li> 
- <li>There is a general mismatch between Hadoop, Hive, etc. on the one hand and the eventually consistent object stores on the other.</li> 
-</ul>
-<p>Ashish Thusoo and Joydeep Sen Sarma gathered experience running Hadoop and Hive during their tenure at Facebook, where they ran a data infrastructure team. Then, in June 2012, they launched <a href="http://www.qubole.com/">Qubole</a> that completed <a href="http://gigaom.com/2013/04/23/hadoop-startup-qubole-raises-7m-for-hive-as-a-service/">a $7 million Series A funding round</a> in April 2013. Joydeep gave a deep-dive on the challenges they faced implementing their HaaS offering and provided insights on the internals in his Hive London Meetup talk <a href="http://sdrv.ms/11XQ5K6">Cloud Friendly Hadoop &amp; Hive</a>. Further, Christian Prokopp (Data Scientist at Rangespan) recently <a href="http://www.bigdatarepublic.com/author.asp?section_id=2840&amp;doc_id=266304">wrote up</a> a detailed rundown and comparison of Qubole and EMR.</p><br><br><br><br><br><br></body></html>
+<p align="justify">Math.js can be used in three ways&nbsp;–</p>
+<ol> 
+ <li> 
+  <div>
+   Using static functions and constants (like JavaScript's Math object) 
+   <pre>
+math.add(2, 3); &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;// 5 
+math.sqrt(-4); &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; // 2i 
+math.pow([[-1, 2], [3, 1]], 2); &nbsp;// [[7, 0], [0, 7]]</pre> 
+  </div> </li> 
+ <li> 
+  <div align="justify">
+   Evaluate string expressions 
+   <pre>
+math.eval('1.2 * (2 +  4.5)'); //7.8
+math.eval('5.08 cm to inch'); //2 inch </pre> 
+  </div> </li> 
+ <li> 
+  <div align="justify">
+   Using chaining operations
+   <br /> 
+   <pre>
+math.select(3)
+    .add(4)
+    .multiply(2)
+    .done();      //14</pre> 
+  </div> </li> 
+</ol>
+<p align="justify">There are several examples on the <a href="http://mathjs.org/">math.js website</a> as well as in <a href="https://github.com/josdejong/mathjs/tree/master/examples/">the documentation</a>.&nbsp;</p>
+<p align="justify">Jos is hoping to reach the first stable version 1.0 within a couple of months.</p>
+<blockquote> 
+ <p align="justify">What's left before 1.0 is writing a reference documentation, reaching 100% code coverage with the unit tests and resolving some rough edges here and there.</p> 
+</blockquote>
+<p align="justify">1.0 will also see the API getting stabilized, after which&nbsp;the focus might shift to optimization. Jos identifies several possibilities such as using typed arrays, parallelization, asm.js for potential performance improvements.</p>
+<p align="justify">On why Jos chose JavaScript instead of something like Python which already has libraries such as NumPi/SciPi -</p>
+<blockquote> 
+ <p align="justify">Latest years we have seen an enormous push towards the cloud and web applications, and I'm fully into this myself too.&nbsp;Browsers and JavaScript engines are becoming faster and faster. Since a couple of years you can run JavaScript server side using&nbsp;<a href="http://nodejs.org/">node.js</a>. This opens up a lot of new possibilities, which has resulted in an&nbsp;<a href="http://resin.io/happy-18th-birthday-javascript/">explosion</a>&nbsp;of the JavaScript ecosystem and its popularity. It looks like JavaScript is becoming the most ubiquitous language&nbsp;<i>ever</i>. JavaScript is far from the perfect language, but I like JavaScript and its community a lot.</p> 
+</blockquote>
+<p align="justify">There are already several end-user projects using math.js. Jos’s own project, <a href="http://mathnotepad.com/">mathnotepad</a>&nbsp;is&nbsp;powered by math.js and in early stages of development. Math.js is also used by&nbsp;<a href="http://numerics.info/">numerics</a>, a popular calculator project.&nbsp;</p>
+<p align="justify">To get started with Math.js, head over to <a href="https://github.com/josdejong/mathjs/blob/master/docs/getting_started.md">the documentation</a>.&nbsp;</p><br><br><br><br><br><br></body></html>

@@ -1,6 +1,12 @@
 <html>
  <head></head> 
- <body> 
+ <body>
+  <div>
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/24.java">Google Improves Hadoop Performance with New Cloud Storage Connector</a>With a new connector, it is now possible for Hadoop to run directly against Google Cloud Storage instead of using the default, distributed file system. This results in lower storage costs, fewer data replication activities, and a simpler overall process.
+  </div>
+  <div>
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/23.java">Math.js: Versatile Math Library For JavaScript</a>Math.js is an open source Math library for JavaScript and Node.js for working with numbers, big numbers, complex numbers, units and matrices. It also features a flexible expression parser. InfoQ got in touch with the project founder, Jos De Jong, to know more.
+  </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/22.java">Typemock Isolator v7.4.3 Adds FastFix, Improved SmartRunner and Visual Studio 2013 Support</a>Typemock Isolator v7.4.3 for .NET has been released with support for FastFix, improved smartrunner in addition to Visual Studio 2013 and TFS 2012 integration. 
   </div> 
@@ -144,12 +150,6 @@
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/27.java">DevDocs, a One Stop Shop for Reference Documentation</a>DevDocs combines multiple reference documentation sets, commonly used by software developers, in a single web site. DevDocs takes advantage of this centralization to offer crosscutting features such as a searchable interface, keyboard shortcuts, common layouts or a common table of contents. DevDocs currently includes documentation for HTML, HTTP, Javascript and Ruby, among others. 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/26.java">Are REST Alternatives Needed?</a>Ole Lensmar, creator of SoapUI, has asked whether REST is really appropriate for architectures that require real-time, asynchronous interactions and binary protocols. In his article he discusses these areas and believes that alternative approaches are required. 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/25.java">Facebook’s Release Process Behind the Move from Web-based to Native App</a>Chaitanya Mishra, from Facebook, spoke at Velocity Conf London last month about the approach to scale Facebook’s Android app from a web view interface to a full-fledged native app. To achieve this transition each product team took ownership of their features on Android. A core integration team regression tests and focuses on global app optimization over individual features optimization. 
-  </div> 
+  </div>   
  </body>
 </html>

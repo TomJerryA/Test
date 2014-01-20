@@ -1,7 +1,7 @@
 <html>
  <head></head> 
- <body>
-  <div>
+ <body> 
+  <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/3.javab">Interview with Ole Jepsen on Leadership in Agile</a> Good leaders create an environment where self-organizing teams can thrive and create great products and services to delight their customers: that is what Ole Jepsen explains in this interview. At the XP Days Benelux conference he talked about truly leading people and the subtle but important differences between taking and giving control. 
   </div> 
   <div> 
@@ -150,6 +150,6 @@
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/5.javab">Estimating on agile projects: what’s the story, what’s the point?</a> Ever wondered about how and why we estimate on agile projects? In his first article on InfoQ, David Morris draws on his own experience with since the 90s, and that of several leading agile writers, to explore the topic of agile estimating: what it is, how we typically do it, why we should bother, a brief appraisal of the #NoEstimates debate, and closes with some advice for people new to it all. 
-  </div>  
+  </div> 
  </body>
 </html>

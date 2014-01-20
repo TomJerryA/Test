@@ -2,6 +2,9 @@
  <head></head> 
  <body>
   <div>
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/28.htmlb">从MVC在前端开发中的局限性谈起</a> 我们知道Controller的职责之一是负责响应用户在视图上的行为，而具体每个行为应如何进行响应，需要落实到Controller具体的方法上，这个方法我们可以称之为action。但问题来了，如何将用户在视图上的行为，与响应行为的方法action关联起来？甚至与Controller关联起来？URL便是方法之一，但是这样还是有局限性。本文就从这其中的局限性谈起。 
+  </div> 
+  <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/27.htmlb">敏捷项目估算：什么是故事？什么是点数？</a> 有没有想过在敏捷项目中我们该如何以及为什么要进行估算？在David Morris为InfoQ写的第一篇文章中，他描绘了自己从90年代以来的经验和其它几位主要敏捷作者的论述，对敏捷估算这个话题进行了探讨：它是什么？我们通常怎么做？为什么要做？对#NoEstimates（不要估算）争论的简要评价，以及最后为初学者提出了一些建议。 
   </div> 
   <div> 
@@ -147,9 +150,6 @@
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/31.htmlb">敏捷与结构性模块化（二）</a> 在上一篇文章中，介绍了结构性模块化与敏捷之间的关系，在这个系列的第二篇文章中，我们将会研讨OSGi™，在实现JavaTM的结构性模块化方面，OSGi扮演了核心的角色；OSGi与流行的敏捷方法论之间存在着自然的联系。 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/30.htmlb">Tiago Garcez访谈：为什么实施敏捷？</a> InfoQ采访了Tiago Garcez，谈论了这样一些问题：为什么敏捷更适合应对企业面临的挑战，敏捷能够创造的价值，以及如何启动向敏捷的过渡。 
   </div>  
  </body>
 </html>
