@@ -1,6 +1,21 @@
 <html>
  <head></head> 
- <body> 
+ <body>
+  <div>
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/16.py">アプリのiOS 7対応期限が2月1日に</a>Appleは先日，iOSのアプリケーションに関して，2月1日までにiOS 7に対応しなければならない，という告知を行った。iTunes Storeに新たなアプリケーションやアップデートを提出する場合には，開発にXCode 5を使用することとアプリケーションをiOS 7に最適化することが必須となる。iOS7に対応するには，現行のHuman Interface Guidelinesに従ったUIの変更と，API変更の適用などが必要だ。
+  </div>
+  <div>
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/15.py">Oracleがjava EE 8計画について，さらにフィードバックを募集</a>OracleはJava EE 8コミュニティサーベイの第２部をローンチした。クラウド，セキュリティ，ロギング，デプロイ，テスタビリティ，プルーニング，プロファイルといったトピックが対象だ。
+  </div>
+  <div>
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/14.py">OpenAccess ORM Q3 2013 SP1がVS 2013サポートを追加，従来型ウィザードとOracle 9i, MySQL 5のサポートは廃止に</a>先日TelerikがリリースしたOpenAccess ORM Q3 2013 AP1では，Visual Studio 2008を継続してサポートすると同時に，Visual Studio 2013のサポートが導入されている。しかし従来のウィザード，Oracle 9iとMySQL 5.0のサポートについては，OpenAccess ORMの次期リリースから廃止される予定だ。
+  </div>
+  <div>
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/13.py">Nevron Open Visionで実現するクロスプラットフォーム開発</a>Windows Forms、Windows Presentation Framework (WPF)、SilverlightをサポートしたNevron Open Vision(NOV)がリリースされた。このフレームワークを使えば、開発者は複数のOSやでバイス、環境でひとつのプレゼンテーションレイヤを使い回すことができる。今後のバージョンでMac OS、iOS、Android、WinRTをサポートする予定だ。
+  </div>
+  <div>
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/12.py">改善の習慣</a>アジャイルは1つの考え方であり、すべてを連続して改善していくものだとYves Hanoulle氏が語った。InfoQは、Yves 氏にインタビューし、人々が持つ習慣と改善の習慣を身に付けるために何ができるかを聞いた。
+  </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/11.py">アジャイルチームのペアコーチング</a>アジャイルコーチにはひとりだけでなく，ペアでコーチする方法もある。それぞれがコーチングの別々の面に注力するのである。コーチは皆それぞれ独自の経験とスキルを持っているので，お互いを補完することもできる。ふたりのコーチが協力して，アジャイルを採用する個人やチームに対して，その習得と改善を支援するのだ。 
   </div> 
@@ -135,21 +150,6 @@
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/19.py">Reactive Extensions for C++の紹介</a>Rx.cppとしても知られるReactive Extensions for C++が、WinRTでも（C++/CXを使って）、OS Xでも（clangを使って）利用できるようになった。まだ初期段階だが、最後のプレビュー以来、多くの仕事がなされている。 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/18.py">ビヘイビア駆動開発ツール、Jasmine 2.0がリリースされた</a>JavaScriptのビヘイビア駆動開発テスティングフレームワーク、Jasmineのバージョン2.0がリリースされた。今回のリリースには、Node.jsサポートの改善と品質向上への取り組み、いくつかの後方互換性を壊す変更が含まれている。 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/17.py">QCon New York 2014の参加登録が始まった</a>QCon New York 2014 (June 9-13)の参加登録が始まった。このイベントは今回で3回目を迎え、継続的デリバリー、データサイエンス、HTML5、アジャイル、アーキテクチャなどに関する専門家によるセッションとケーススタディが特徴だ。 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/16.py">JavascriptプラットフォームのFamo.usが初の公式アクセス版をローンチ</a>Famo.us Javascript platformを開発したチームが2013年12月5日，同プラットフォームの能力をクライアント側に展開するための準備段階として，アプリケーションレイヤのコードを初めてプレビューリリースする。 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/15.py">CMMIを使用した成果主導の改善プロセス</a>CMMIを基盤とするプロセス改善プログラムは多くの場合，特定の成熟度レベルの達成を目標に据える。組織としては，成熟度レベルとビジネス上の目標との関連性を見通し，改善によって期待できるビジネス上のメリットを知ることが重要になる。CMMI成熟度を基準としたものから成果主導アプローチに改善プログラムを変更することについて，Michelle Krupa氏にインタビューした。 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/14.py">バグ退治でテストを改善する</a>Testing Portugal 2013において、Klaus Olsen氏はバグ退治のテクニック、探索テストのスタイルについてプレゼンテーションした。 
-  </div> 
+  </div>      
  </body>
 </html>

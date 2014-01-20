@@ -1,29 +1,20 @@
-<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>JavascriptプラットフォームのFamo.usが初の公式アクセス版をローンチ</h3><p><a target="_blank" href="http://www.infoq.com/news/2013/12/famous_launches_first_access"><em>原文(投稿日：2013/12/04)へのリンク</em></a></p>
+<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>アプリのiOS 7対応期限が2月1日に</h3><p><a target="_blank" href="http://www.infoq.com/news/2014/01/ios7-compatible-apps-by-february"><em>原文(投稿日：2014/01/16)へのリンク</em></a></p>
 <div class="article_page_left news_container text_content_container"> 
  <div class="text_info"> 
-  <p><a href="http://Famo.us">Famo.us Javascript platform</a>を開発したチームは2013年12月5日，同プラットフォームの能力をクライアント側に展開するための準備段階として，アプリケーションレイヤのコードを初めてプレビューリリースする予定である。JavaScriptのみで記述されているFamo.usは，現在まだアルファ版プレビューにも関わらず，70,000人を越える開発者の注目を集めている。プラグインを必要とせず，ブラウザ上でネイティブアプリのパフォーマンスを実現できる点がその魅力だ。</p> 
-  <p>Famo.usは，ブラウザ本来のレンダリング機能との関連性を完全に断ち切っている。&quot;ユーザがおそらく見たいとも思わない，高度な数学や物理学を駆使して&quot;，ブラウザのレンダリングエンジンを完全に置き換えるように設計されているのだ。&quot;きっと目が回ってしまいますよ&quot; と語るのは，プロジェクトの創設者である<a href="https://twitter.com/stevenewcomb">Steve Newcomb</a>氏だ。ブラウザのレンダリングという壁を乗り越えるには，このような低レベルの工夫も必要なのだ。しかし開発者の98%が注目しているのはそこではないはずだ，とも氏は言う。&quot;この数年間は，jQueryを完全に置き換え可能なシンタックスシュガーの開発に費やしてきました。&quot; その結果として，Newcomb氏と同社は，現代的なブラウザのすべて -- Safari, Chrome, Firefox, IE10 -- で動作を保証するに至っている。</p> 
-  <p>Famo.usチームが求めたのは，まさにこの普遍的な対応性，すなわち，デザイナからベテランのJavascript技術者まで，すべてのエクスペリエンスのレベルを満たす，jQueryの完全なリプレースなのだ。500万件を数える資金援助によって支えられて，完全無償のオープンソースプロダクトであるFamo.usには，４つの異なる操作レベルがある。&quot;一番簡単なレベルがデザイナです&quot; とNewcomb氏は言う。 &quot;デザイナでは，まったくコードを書く必要がありません。ウィジェットやテンプレートすべてにスライダが埋め込まれていますから，ユーザはただ，それを操作すればよいのです。スライダを変化させることで得られるバリエーションは無限大です。&quot; そのデザイナレイヤの下にはすべてのシンタックスシュガーがあり，ＵＩを構成するウィジェットとテンプレート，およびそれらを格納して拡張を続けるライブラリと結び付いている -- 開発されるアプリケーションの大多数はこのレイヤで，テンプレートとウィジェットを組み合わせて構成されるものになる，とFamo.usチームは考えている。３つめはウィジェットとテンプレートの下にある，プラットフォーム開発者がオリジナルなユーザエクスペリエンスを追求する部分だ。例えばプロプライエタリなUIを，初期のFamo.usに投資していたSamsungあたりが追求するかも知れない，とNewcomb氏は述べている。最後にFamo.usの内部深くにある数学的，物理学的エンジンは，Newcomb氏によれば，真のギークのためのものだ。</p> 
-  <p>その構造の中には，Famo.usチームのある願望が潜んでいる -- 彼らはアプリケーション開発の新たなアプローチを提案している。jQueryベースのDOM解析処理から，コード開発者がアプリケーションの外観を操作して，彼らの提供する物理エンジンを活用するようなプラットフォームへの移行だ。HTML，webGL，キャンバスのレンダリングはFamo.usが行う。チームは12月5日を起点として，ウィジェットやテンプレート，アプリケーションのライブラリ拡張を週単位でロールアウトしていく計画だ。</p> 
-  <p>Famo.usは <a href="http://meteor.com">Meteor</a>, <a href="http://firebase.com">Firebase</a>, <a href="leapmotion.com">LeapMotion</a>, <a href="http://http://backbonejs.org/">backbone js ライブラリ</a> との公式なパートナシップを発表した。コードは現在プライベートアルファ版で，2014年2月下旬に公式ベータ版のリリースが予定されている。リリース後は，プラットフォーム全体が<a href="http://www.mozilla.org/MPL/2.0/">Mozilla Public License MPL v2</a>の下で公開される予定だ。すべてのコードには自由にアクセス可能になるが，企業によるプロプライエタリなウィジェットやテンプレートの開発も認められる。ローンチを指揮するのは，Famo.usの開発担当副社長であり，<a href="https://developers.facebook.com/">Facebook Developer Platform</a>の創設や<a href="https://www.facebook.com/f8">F8カンファレンス</a>のローンチも行っているDave Fetterman氏である。</p> 
-  <blockquote>
-    &quot;本当の意味で堅牢なJavascript開発プラットフォームというのは，長く存在しませんでした。単なるウィジェットやプラグイン，ソリューションの一部に過ぎないようなプラットフォームは必要ではありません。人々がキャリアを賭けるに値するようなプラットフォームが必要なのです。そのようなものを，これまで長く求めてきました。&quot; とNewcomb氏は語る。
-  </blockquote> 
-  <p>それに向けてFamo,usチームは，３つのウィジェットと１つのアプリケーションを12月5日にリリースする。リリースでは<a href="http://codepen.io/">Codepen</a>をパートナに活用して，新しいウィジェットそれぞれ用の対話型エクスペリエンスが用意される予定だ。</p> 
-  <h3><a href="http://bit.ly/1eJsK6a">Twitterアプリ</a></h3> 
-  <p class="codepen" data-default-tab="result" data-user="befamous" data-slug-hash="ac53af08967073df60ceaf28c0c76007" data-theme-id="2352" data-height="350">&nbsp;</p> 
-  <script async="" src="//www.codepen.io/assets/embed/ei.js"></script> 
+  <p>Appleは先日，iOSのアプリケーションに関して，2月1日までにiOS 7に対応しなければならない，という<a href="https://developer.apple.com/news/">告知を行った</a>。iTunes Storeに新たなアプリケーションやアップデートを提出する場合には，開発にXCode 5を使用することと，アプリケーションをiOS 7に最適化することが必須となる。iOS7に対応するには，現行の<a href="https://developer.apple.com/library/ios/documentation/UserExperience/Conceptual/MobileHIG/index.html#//apple_ref/doc/uid/TP40006556">iOS Human Interface Guidelines</a>と<a href="https://developer.apple.com/library/ios/documentation/UserExperience/Conceptual/TransitionGuide/index.html#//apple_ref/doc/uid/TP40013174">iOS 7 UI Transition Guide</a>に従ったUIの変更や，iOS APIの新バージョンを採用することなどが必要だ。</p> 
+  <h3>ユーザーインターフェイスの変更</h3> 
+  <p>iOSの7のユーザーインターフェイスでは，コンテンツを明確に表現することが重視されている。開発者はスキューモーフィズム(現実の物を模したユーザインターフェース)や影，枠線といったグラフィック要素の使用を避けて，画面全体をユーザへのデータ提示に使用しなければならない。また，ユーザインターフェース要素は中心的な存在であったり，表示されるコンテントからユーザの気をそらすものであったりしてはならない。コンテント表示の明確化を目指すのに加えて，新しいiOSインターフェースデザインのコントロールは画面上に占めるスペースも少なくなり，これまでより多くのコンテント表示が可能になっている。Appleは開発者に対して，プログラムでUI要素を配置するのではなく，可能な限り自動レイアウト機能を使用するようにアドバイスしている。</p> 
+  <p>UILabel, UITextField, UITextViewのテキスト処理が<a href="https://developer.apple.com/library/ios/documentation/StringsTextFonts/Conceptual/TextAndWebiPhoneOS/CustomTextProcessing/CustomTextProcessing.html">TextKit</a>をベースとしたものになった。これによってカーニングやハイフネーション，あるいはテキスト要素への画像埋め込みなどの機能が実現されている。また，ポイントやピクセルを使用したフォント指定に代えて，テキストのスタイルによる指定を行うことが可能になった。iOSのテキストスタイルはHTMLのものに近く，”headline” や “body” といった値を指定することができる。実際にレンダリングされるサイズは，ユーザの設定するズーム設定などに従ってiOSが計算する。</p> 
+  <p>さらにiOS7は，新しい設計要素やテクニックもUIデザイナに提供する。</p> 
+  <ul> 
+   <li>半透明: ビューの半透明化が可能になった。 不透明なビューとは違って，コンテントの下にあるものをユーザに意識させることができる。iOS User Interface Guidelinesによれば，これはスライドインメニューや設定パネルのように，一時的にオーバーレイするビューで特に有効な機能だ。</li> 
+   <li>奥行き: User Interface Guidelineではデザイナに対して，ユーザに提示するオブジェクト間の関連性を表現する手段として，奥行きと階層化の使用を推奨している。奥行きの印象を与えるため，iOSはユーザインターフェースに疑似3D効果を備える。デバイスを前後や左右に傾けることで，ユーザはコンテント上に浮かんでいるオブジェクトの下をのぞくことができる。</li> 
+  </ul> 
   <p>&nbsp;</p> 
-  <p>&nbsp;</p> 
-  <h3><a href="http://bit.ly/18ivwv8">jQuery風のライトボックス・ウィジェット</a></h3> 
-  <a href="http://bit.ly/18ivwv8"> <p class="codepen" data-default-tab="result" data-user="befamous" data-slug-hash="442915109539f48b92700c137c3fafe9" data-theme-id="2352" data-height="350">&nbsp;</p> <script async="" src="//www.codepen.io/assets/embed/ei.js"></script> <p>&nbsp;</p> <p>&nbsp;</p> </a> 
-  <h3><a href="http://bit.ly/IHupPC">ボタンウィジェット</a></h3> 
-  <p class="codepen" data-default-tab="result" data-user="befamous" data-slug-hash="c3147502f9f7f897a8197ed4b6dbcb5f" data-theme-id="2352" data-height="350">&nbsp;</p> 
-  <script async="" src="//www.codepen.io/assets/embed/ei.js"></script> 
-  <p>&nbsp;</p> 
-  <p>&nbsp;</p> 
-  <h3><a href="http://bit.ly/1bef9j9">1対多ウィジェット</a></h3> 
-  <p class="codepen" data-default-tab="result" data-user="befamous" data-slug-hash="373819beb72b28945fa06e4346e20b54" data-theme-id="2352" data-height="350">&nbsp;</p> 
-  <script async="" src="//www.codepen.io/assets/embed/ei.js"></script>
+  <h3>iOS APIの拡張</h3> 
+  <p>iOS 7では，アプリケーションの状態を最新にする手段として，新たに３つの<a href="https://developer.apple.com/library/ios/releasenotes/General/WhatsNewIniOS/Articles/iOS7.html#//apple_ref/doc/uid/TP40013162-SW10">マルチタスクモード</a>が提供されている。&quot;フェッチ&quot; モードでは，アプリは定期的にデータ更新をチェックすることができる。開発者がアプリケーションの最小更新間隔を定義すると，iOSがバックグラウンドでアプリをローンチしてデリゲートメソッドを呼び出してくれるので，その中で新しいデータを受信すればよい。ネットワーク状態が良好であるなどの状況をiOSが判断して，更新時間に到達する前にアプリを起動する場合もある。&quot;リモート通知&quot;モードでは，アプリケーションの更新にプッシュ通知が使用される。 iOS 7までは，ユーザが通知を受信してアプリケーションを起動し，アプリがコンテントを更新するまで待たなければならなかった。今後は通知を受信したアプリケーションがバックグラウンドで状態を更新して，それが完了した後にユーザへの通知を行うようになる。</p> 
+  <p><a href="https://developer.apple.com/library/ios/documentation/MapKit/Reference/MapKit_Framework_Reference/_index.html#//apple_ref/doc/uid/TP40008210">MapKit</a>は高度なオーバレイ処理を提供する。マップにオーバーレイを追加する場合にも，さまざまなレベルを定義できるようになった。また，MKOverlatViewが廃止されたので，新クラスMKOverlayRenderedに置き換える必要がある。MKDirectionsを使えば，マップアプリケーションにスイッチしなくても，アプリに経路情報を問い合わせることができる。さらにはMKMapSnapshotterを使って，マップリージョンのUIImageを座標や高度，ピッチといったパラメータに基づいて生成，表示することができる。</p> 
+  <p>アプリケーションはAirdropやピアツーピア接続を使って，相互に通信することが可能だ。どちらのAPIも近接デバイス検出をベースとしているので，インターネット接続は必要ない。アプリに特定のファイルタイプを登録しておいて，Airdrop経由でそれを受信することもできる。ファイルが新たに受信されるとiOSがアプリケーションをローンチして，デリゲートメソッドをコールしてくれる。ピアツーピア接続を使うことで，近接するデバイス間でサービスの公開と検出が可能になる。一度セッションが確立されれば，デバイス間でメッセージやデータを交換することができるようになる。</p> 
+  <p>デバイスがiOS 7をサポートしていなくてもアップデートを提供することは可能だ。その場合は，ユーザがApp Storeからアプリケーションの<a href="http://www.infoq.com/news/2013/09/previous-version-ios-apps">旧バージョンをダウンロード</a>することになる。</p> 
  </div> 
 </div><br><br><br><br><br><br></body></html>
