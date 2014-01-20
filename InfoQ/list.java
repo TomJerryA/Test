@@ -2,10 +2,16 @@
  <head></head> 
  <body>
   <div>
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/24.java">Google Improves Hadoop Performance with New Cloud Storage Connector</a>With a new connector, it is now possible for Hadoop to run directly against Google Cloud Storage instead of using the default, distributed file system. This results in lower storage costs, fewer data replication activities, and a simpler overall process.
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/26.java">Will 2014 Be the Year of Android-Enabled Cars?</a>Google has officially entered the in-car computer arena by announcing the Open Automotive Alliance (OAA) together with Nvidia and several automobile manufacturers, including Audi, GM, Honda, and Hyundai. The Alliance's mission, according to its official announcement, is bringing the Android platform to cars by the end of 2014.
   </div>
   <div>
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/23.java">Math.js: Versatile Math Library For JavaScript</a>Math.js is an open source Math library for JavaScript and Node.js for working with numbers, big numbers, complex numbers, units and matrices. It also features a flexible expression parser. InfoQ got in touch with the project founder, Jos De Jong, to know more.
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/25.java">Koa Web Framework 0.2.0 Release</a>The NodeJS based Koa web application framework has released version 0.2.0. Koa is the successor of the popular Express MVC platform, but relies heavily on newer ES6 constructs. This release is marked as an important one in that that it reaffirms the team’s design choices from the initial 0.1.0 release, solidifying Koa's API for future releases and production use.
+  </div> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/24.java">Google Improves Hadoop Performance with New Cloud Storage Connector</a>With a new connector, it is now possible for Hadoop to run directly against Google Cloud Storage instead of using the default, distributed file system. This results in lower storage costs, fewer data replication activities, and a simpler overall process. 
+  </div> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/23.java">Math.js: Versatile Math Library For JavaScript</a>Math.js is an open source Math library for JavaScript and Node.js for working with numbers, big numbers, complex numbers, units and matrices. It also features a flexible expression parser. InfoQ got in touch with the project founder, Jos De Jong, to know more. 
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/22.java">Typemock Isolator v7.4.3 Adds FastFix, Improved SmartRunner and Visual Studio 2013 Support</a>Typemock Isolator v7.4.3 for .NET has been released with support for FastFix, improved smartrunner in addition to Visual Studio 2013 and TFS 2012 integration. 
@@ -144,12 +150,6 @@
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/29.java">Ruby 2.1.0 Released, Delivering new GC</a>Ruby 2.1 has been released, with the biggest addition being a completely new garbage collector that promises much better performance. 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/28.java">Trifacta Seeks to Simplify Data Wrangling-as-a-Service</a>Trifacta, a data analysis services platform, recently received VC investment to advance on their efforts of making data wrangling easier for data analysts. The goal is to collect, cleanse and munge data in a fraction of the time and effort it currently takes. 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/27.java">DevDocs, a One Stop Shop for Reference Documentation</a>DevDocs combines multiple reference documentation sets, commonly used by software developers, in a single web site. DevDocs takes advantage of this centralization to offer crosscutting features such as a searchable interface, keyboard shortcuts, common layouts or a common table of contents. DevDocs currently includes documentation for HTML, HTTP, Javascript and Ruby, among others. 
   </div>   
  </body>
 </html>
