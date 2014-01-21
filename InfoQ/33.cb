@@ -1,0 +1,235 @@
+<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>Do Groovy ao Java 8</h3><p>Desenvolvedores Groovy ter&atilde;o mais facilidade para adotar os conceitos e novas constru&ccedil;&otilde;es da linguagem oferecida pelo Java 8. Muitas das melhorias oferecidas na pr&oacute;xima vers&atilde;o do Java s&atilde;o caracter&iacute;sticas que o Groovy oferece h&aacute; anos. Desde uma nova sintaxe at&eacute; estilos de programa&ccedil;&atilde;o funcional, lambdas, cole&ccedil;&atilde;o de streams, e refer&ecirc;ncias de m&eacute;todos como cidad&atilde;os de primeira classe. Os desenvolvedores Groovy ter&atilde;o uma vantagem ao escrever o c&oacute;digo Java no futuro. Este artigo focar&aacute; nas semelhan&ccedil;as entre o Groovy e o Java 8, e vai demonstrar o qu&atilde;o familiar os conceitos do Groovy se traduzem para Java 8.</p>
+<p>Come&ccedil;aremos discutindo estilos de programa&ccedil;&atilde;o, como atualmente utilizamos a programa&ccedil;&atilde;o funcional no Groovy, e de que forma as constru&ccedil;&otilde;es em Java 8 oferecem um estilo de programa&ccedil;&atilde;o melhor.</p>
+<p>Closures s&atilde;o, talvez, o melhor exemplo de programa&ccedil;&atilde;o funcional em Groovy. Por baixo dos panos, uma closure em Groovy &eacute; apenas a implementa&ccedil;&atilde;o de uma interface funcional. Uma interface funcional &eacute; qualquer interface que possua apenas um &uacute;nico m&eacute;todo para implementar. Por padr&atilde;o, as closures do Groovy s&atilde;o uma implementa&ccedil;&atilde;o da interface funcional <a href="http://download.java.net/jdk8/docs/api/java/util/concurrent/Callable.html">Callable</a>, implementando o m&eacute;todo &quot;call&quot;.</p>
+<pre>
+def closure = {
+  &quot;called&quot;
+}
+
+assert closure instanceof java.util.concurrent.Callable
+assert closure() == &quot;called&quot;
+</pre>
+<p>Podemos fazer o Groovy implementar outras interfaces funcionais por meio da convers&atilde;o de tipos closures.</p>
+<pre>
+public interface Function {
+  def apply();
+}
+
+def closure = {
+  &quot;applied&quot;
+} as Function
+
+assert closure instanceof Function
+assert closure.apply() == &quot;applied&quot;
+</pre>
+<p>Closures e programa&ccedil;&atilde;o funcional se traduzem bem em Java 8. Interfaces funcionais s&atilde;o muito importantes na pr&oacute;xima vers&atilde;o do Java, pois o Java 8 oferece implementa&ccedil;&atilde;o impl&iacute;cita de interfaces funcionais com a introdu&ccedil;&atilde;o das fun&ccedil;&otilde;es Lambda.</p>
+<p>As fun&ccedil;&otilde;es lambda podem ser pensadas, e utilizadas como as closures em Groovy. Implementar uma interface funcional em Java 8 oferece simplicidade semelhante a das closures em Groovy.</p>
+<pre>
+Callable callable = () -&gt; &quot;called&quot;;
+assert callable.call() == &quot;called&quot;;
+</pre>
+<p>&Eacute; importante notar tamb&eacute;m que as fun&ccedil;&otilde;es lambda de uma s&oacute; linha oferecem retorno impl&iacute;cito, assim como no Groovy.</p>
+<p>No futuro, o Groovy tamb&eacute;m oferecer&aacute; implementa&ccedil;&atilde;o impl&iacute;cita de Interfaces Funcionais para as closures, semelhante a oferecida pelo Java 8. Esta caracter&iacute;stica da as closures a capacidade de aproveitar as vari&aacute;veis de inst&acirc;ncia e m&eacute;todos sem derivar totalmente uma subclasse concreta.</p>
+<pre>
+abstract class WebFlowScope {
+      private static final Map scopeMap = [:]
+
+      abstract def getAttribute(def name);
+
+      public def put(key, val) {
+            scopeMap[key] = val
+            getAttribute(key)
+      }
+
+      protected Map getScope() {
+            scopeMap
+      }
+}
+
+WebFlowScope closure = { name -&gt;
+      &quot;edited_${scope[name]}&quot;
+}
+
+assert closure instanceof WebFlowScope
+assert closure.put(&quot;attribute&quot;, &quot;val&quot;) == &quot;edited_val&quot;
+</pre>
+<p>Em Java 8, as Interfaces Funcionais com m&eacute;todos default na interface oferecem uma boa aproxima&ccedil;&atilde;o deste conceito. M&eacute;todos default em interfaces s&atilde;o algo novo em Java. Eles foram concebidos para permitir melhorias nas APIs principais do Java sem violar os contratos de implementa&ccedil;&otilde;es feitas em vers&otilde;es anteriores da linguagem.</p>
+<p>As fun&ccedil;&otilde;es lambda tamb&eacute;m ter&atilde;o acesso a m&eacute;todos padr&atilde;o da interface em que s&atilde;o definidas. Isto significa que APIs robustas podem ser constru&iacute;das diretamente em uma interface, dando recursos aos programadores sem alterar a natureza do tipo ou do contrato no qual o tipo pode ser utilizado.</p>
+<pre>
+public interface WebFlowScope {
+       static final Map scopeMap = new HashMap();
+       Object getAttribute(Object key);
+
+      default public Object put(Object key, Object val) {
+            scopeMap.put(key, val);
+            return getAttribute(key);
+      }
+
+      default Map getScope() {
+            return scopeMap;
+      }
+}
+
+static final WebFlowScope scope = (Object key) -&gt; &quot;edited_&quot; + scope.getScope().get(key);
+assert scope.put(&quot;attribute&quot;, &quot;val&quot;) == &quot;val&quot;;
+</pre>
+<p>No Java 8, m&eacute;todos default de interface podem tamb&eacute;m ajudar-nos a implementar caracter&iacute;sticas do Groovy como memoization e trampoline. Memoization pode ser implementada simplesmente criando-se uma interface funcional com um m&eacute;todo de interface default para computar deterministicamente um resultado ou obter o resultado do cache.</p>
+<pre>
+public interface MemoizedFunction&lt;T, R&gt; {
+      static final Map cache = new HashMap();
+      R calc(T t);
+
+      public default R apply(T t) {
+            if (!cache.containsKey(t)) {
+                  cache.put(t, calc(t));
+            }
+
+            return (R)cache.get(t);
+      }
+}
+
+static final MemoizedFunction&lt;Integer, Integer&gt; fib = (Integer n) -&gt; {
+      if (n == 0 || n == 1) return n;
+
+      return fib.apply(n - 1)+fib.apply(n-2);
+};
+
+assert fib.apply(20) == 6765;
+</pre>
+<p>De maneira similar, podemos utilizar m&eacute;todos default de interface em Java 8 para desenvolver implementa&ccedil;&atilde;o Trampoline. Trampoline &eacute; uma estrat&eacute;gia de recurs&atilde;o que n&atilde;o sobrecarrega a pilha de chamadas do Java, e &eacute; um recurso muito &uacute;til do Groovy quando uma recurs&atilde;o profunda &eacute; necess&aacute;ria.</p>
+<pre>
+
+interface TrampolineFunction&lt;T, R&gt; {
+      R apply(T...obj);
+
+      public default Object trampoline(T...objs) {
+            Object result = apply(objs);
+            if (!(result instanceof TrampolineFunction)) {
+                  return result;
+            } else {
+                  return this;
+            }
+      }
+}
+
+// Encapsula a chamada do TrampolineFunction para evitar um StackOverflowError
+static TrampolineFunction&lt;Integer, Object&gt; fibTrampoline = (Integer...objs) -&gt; {
+      Integer n = objs[0];
+      Integer a = objs.length &gt;= 2 ? objs[1] : 0;
+      Integer b = objs.length &gt;= 3 ? objs[2] : 1;
+      if (n == 0) return a;
+      else return fibTrampoline.trampoline(n-1, b, a+b);
+};
+</pre>
+<p>Al&eacute;m dos recursos b&aacute;sicos das closures e dos recursos mais avan&ccedil;ados como <a href="http://en.wikipedia.org/wiki/Memoization">Memoization</a> e <a href="http://en.wikipedia.org/wiki/Trampoline_(computing)">Trampolining</a>, alguns dos recursos mais pr&aacute;ticos e &uacute;teis que o Groovy tem para oferecer est&atilde;o relacionados &agrave;s extens&otilde;es da linguagem para a API Collections. Em Groovy, podemos utilizar estas extens&otilde;es para escrever atalhos e realizar opera&ccedil;&otilde;es em listas usando o m&eacute;todo 'each'.</p>
+<pre>
+def list = [1, 2, 3, 4]
+list.each { item -&gt;
+      println item
+}
+</pre>
+<p>Java 8 introduz um conceito similar ao do Groovy no que diz respeito a iterar cole&ccedil;&otilde;es, disponibilizando o m&eacute;todo 'forEach', que substitui a maneira convencional de percorrer listas.</p>
+<pre>
+List&lt;Integer&gt; list = new ArrayList&lt;&gt;();
+list.add(1);
+list.add(2);
+list.add(3);
+list.add(4);
+list.forEach( (Integer item) -&gt; System.out.println(item); );
+</pre>
+<p>Al&eacute;m da itera&ccedil;&atilde;o simplificada, o Groovy d&aacute; aos desenvolvedores uma variedade de outros atalhos quando se trabalha com listas. O m&eacute;todo &quot;collect&quot;, por exemplo, &eacute; a abrevia&ccedil;&atilde;o para mapear elementos de uma lista para novos tipos ou valores, coletando os resultados em uma nova lista.</p>
+<pre>
+def list = [1, 2, 3, 4]
+def newList = list.collect { n -&gt; n * 5 }
+assert newList == [5, 10, 15, 20]
+</pre>
+<p>Na implementa&ccedil;&atilde;o do Groovy, o m&eacute;todo 'collect' recebe um mapeamento como argumento, enquanto o Java 8 oferece uma implementa&ccedil;&atilde;o um pouco mais verbosa. Usando a API Stream, os desenvolvedores podem realizar a mesma estrat&eacute;gia de mapeamento e coleta chamando o m&eacute;todo 'map' no componente 'stream' da lista, em seguida, chamar o m&eacute;todo 'collect' a partir do stream que &eacute; retornado na etapa de mapeamento. A API Stream d&aacute; aos desenvolvedores a capacidade de efetuar facilmente opera&ccedil;&otilde;es em cadeia em listas.</p>
+<pre>
+List&lt;Integer&gt; list = new ArrayList&lt;&gt;();
+list.add(1);
+list.add(2);
+list.add(3);
+list.add(4);
+List&lt;Integer&gt; newList = list.stream().map((Integer n) -&gt; n * 5).collect(Collectors.toList());
+assert newList.get(0) == 5 &amp;&amp; newList.get(1) == 10 &amp;&amp; newList.get(2) == 15 &amp;&amp; newList.get(3) == 20;
+</pre>
+<p>Groovy tamb&eacute;m oferece aos desenvolvedores atalhos para filtrar listas atrav&eacute;s do m&eacute;todo 'findAll'.</p>
+<pre>
+def emails = ['danielpwoods@gmail.com', 'nemnesic@gmail.com', <br />  'daniel.woods@objectpartners.com', 'nemnesic@nemnesic.com']
+def gmails = emails.findAll { it.endsWith('@gmail.com') }
+assert gmails = ['danielpwoods@gmail.com', 'nemnesic@gmail.com']
+</pre>
+<p>De maneira semelhante, em Java 8 os desenvolvedores podem filtrar uma lista utilizando a API Stream.</p>
+<pre>
+List&lt;String&gt; emails = new ArrayList&lt;&gt;();
+emails.add(&quot;danielpwoods@gmail.com&quot;);
+emails.add(&quot;nemnesic@gmail.com&quot;);
+emails.add(&quot;daniel.woods@objectpartners.com&quot;);
+emails.add(&quot;nemnesic@nemnesic.com&quot;);
+List&lt;String&gt; gmails = emails.stream().filter( (String email) -&gt; email.endsWith(&quot;@gmail.com&quot;) ).collect(Collectors.toList());
+assert gmails.get(0) == &quot;danielpwoods@gmail.com&quot; &amp;&amp; gmails.get(1) == &quot;nemnesic@gmail.com&quot;;
+</pre>
+<p>As extens&otilde;es da API Collections do Groovy tornam f&aacute;cil a ordena&ccedil;&atilde;o de listas fornecendo &agrave; API um m&eacute;todo 'sort'. O m&eacute;todo 'sort' tamb&eacute;m utilizar&aacute; uma closure que converte para um comparador durante a ordena&ccedil;&atilde;o da lista se uma l&oacute;gica de ordena&ccedil;&atilde;o especial for necess&aacute;ria. Adicionalmente, se uma simples revers&atilde;o da ordem da lista &eacute; necess&aacute;ria, o m&eacute;todo 'reverse' pode ser chamado e a ordem invertida.</p>
+<pre>
+def list = [2, 3, 4, 1]
+assert list.sort() == [1, 2, 3, 4]
+assert list.sort { a, b -&gt; a-b &lt;=&gt; b } == [1, 4, 3, 2]
+assert list.reverse() == [2, 3, 4, 1]
+</pre>
+<p>Trabalhando novamente com a API de Stream do Java 8, podemos ordenar a lista usando o m&eacute;todo 'sorted' e obter o resultado usando o m&eacute;todo 'toList' do Collectors. O m&eacute;todo 'sorted' pode receber opcionalmente uma fun&ccedil;&atilde;o de compara&ccedil;&atilde;o como argumento (tal como uma fun&ccedil;&atilde;o Lambda), ent&atilde;o uma l&oacute;gica de ordena&ccedil;&atilde;o especial e revers&atilde;o dos itens da lista s&atilde;o opera&ccedil;&otilde;es facilmente realizadas.</p>
+<pre>
+List&lt;Integer&gt; list = new ArrayList&lt;&gt;();
+list.add(2);
+list.add(3);
+list.add(4);
+list.add(1);
+
+list = list.stream().sorted().collect(Collectors.toList());
+assert list.get(0) == 1 &amp;&amp; list.get(3) == 4;
+list = list.stream().sorted((Integer a, Integer b) -&gt; Integer.valueOf(a- <br /> b).compareTo(b)).collect(Collectors.toList());
+assert list.get(0) == 1 &amp;&amp; list.get(1) == 4 &amp;&amp; list.get(2) == 3 &amp;&amp; list.get(3) == 2;
+list = list.stream().sorted((Integer a, Integer b) -&gt; b.compareTo(a)).collect(Collectors.toList());
+assert list.get(0) == 2 &amp;&amp; list.get(3) == 1;
+</pre>
+<p>Quando usando APIs fluentes, como stream de lista, isso pode rapidamente ser insustent&aacute;vel para tratar todos os processamentos dentro de uma fun&ccedil;&atilde;o closure ou Lambda. Isso faz sentido, em alguns casos, como delegar o processamento para um m&eacute;todo que &eacute; adaptado especialmente para essa unidade de trabalho.</p>
+<p>No Groovy, podemos efetuar isso passando a refer&ecirc;ncia de um m&eacute;todo dentro da fun&ccedil;&atilde;o. Uma vez que um m&eacute;todo &eacute; referenciado usando o operador '.&amp;', ele &eacute; convertido para uma fun&ccedil;&atilde;o closure e pode ser passado para outro m&eacute;todo como argumento. Intrinsecamente, isso proporciona flexibilidade na implementa&ccedil;&atilde;o, uma vez que o c&oacute;digo de processamento pode ser introduzido de fontes externas. Os desenvolvedores podem agora organizar logicamente o processamento dos m&eacute;todos obtendo uma arquitetura de aplica&ccedil;&atilde;o mais f&aacute;cil de ser mantida e sustent&aacute;vel.</p>
+<pre>
+def modifier(String item) {
+      &quot;edited_${item}&quot;
+}
+
+def list = ['item1', 'item2', 'item3']
+assert list.collect(this.&amp;modifier) == ['edited_item1', 'edited_item2', 'edited_item3']
+</pre>
+<p>Os desenvolvedores no Java 8 disp&otilde;em da mesma flexibilidade atrav&eacute;s do uso do operador '::' para obter uma refer&ecirc;ncia do m&eacute;todo.</p>
+<pre>
+List&lt;String&gt; strings = new ArrayList&lt;&gt;();
+strings.add(&quot;item1&quot;);
+strings.add(&quot;item2&quot;);
+strings.add(&quot;item3&quot;);
+
+strings = strings.stream().map(Helpers::modifier).collect(Collectors.toList());
+assert &quot;edited_item1&quot;.equals(strings.get(0));
+assert &quot;edited_item2&quot;.equals(strings.get(1));
+assert &quot;edited_item3&quot;.equals(strings.get(2));
+</pre>
+<p>Os m&eacute;todos de refer&ecirc;ncia podem ser passados como argumentos para qualquer m&eacute;todo que necessita de uma interface funcional. Por sua vez, os m&eacute;todos de refer&ecirc;ncia ter&atilde;o a forma de interfaces funcionais e podem ser tratadas como tal.</p>
+<pre>
+public interface MyFunctionalInterface {
+      boolean apply();
+}
+
+void caller(MyFunctionalInterface functionalInterface) {
+      assert functionalInterface.apply();
+}
+
+boolean myTrueMethod() {
+      return true;
+}
+
+caller(Streaming::myTrueMethod);
+</pre>
+<p>No Java 8, os desenvolvedores de bibliotecas podem fazer mudan&ccedil;as nos contratos das interfaces sem que os consumidores tenham que atualizar a forma de interagir com as bibliotecas.</p>
+<p>A tradu&ccedil;&atilde;o perfeita dos conceitos e estilos de programa&ccedil;&atilde;o do Groovy para o Java 8 &eacute; uma ponte importante entre duas linguagens. O Groovy foi adotado em grande escala no dom&iacute;nio da JVM por causa das flexibilidades de heran&ccedil;a e melhorias nas APIs existentes do Java. Com muitas dessas melhorias enraizando no Java 8, isso significa que a similaridade entre as duas linguagens est&atilde;o come&ccedil;ando a superar as diferen&ccedil;as, um fato que este artigo pretende delinear. Para finalizar, os desenvolvedores que possuem experi&ecirc;ncia em Groovy ter&atilde;o uma curva de aprendizado pequena para aprender e adaptar as novas APIs, funcionalidades e conceitos introduzidos no ecossistema Java.</p>
+<h2>Sobre o autor</h2>
+<p><img src="http://www.infoq.com/resource/articles/groovy-to-Java-8/pt/resources/headshot.jpg" vspace="3" hspace="3" align="left" alt="" _href="img://headshot.jpg" _p="true" /><strong>Daniel Woods</strong> &eacute; consultor s&ecirc;nior na Object Partners, Inc. Ele &eacute; especialista em Arquitetura de Aplica&ccedil;&otilde;es com Groovy e Grails, mantendo forte interesse em Java e outras linguagens baseadas na JVM. Daniel pode ser contatado atrav&eacute;s do email danielpwoods@gmail.com ou pelo Twitter @danveloper.</p><br><br><br><br><br><br></body></html>

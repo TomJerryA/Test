@@ -1,11 +1,11 @@
 <html>
  <head></head> 
- <body>
-  <div>
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/30.java">Azul Offering Commercialised Versions of OpenJDK 6 and 7 for Windows and Linux</a>Azul Systems has announced that Zulu, its freely-available version of OpenJDK, now supports both Java 6 and Java 7 on Linux and Windows-based deployments. It is supported via the Zulu Community Support forums. In addition the firm is introducing Zulu Enterprise, which is a commercially supported version of OpenJDK.
-  </div>
-  <div>
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/29.java">Modest Update to VS2013 Raises Expectations for Update 2</a>The first update to Visual Studio 2013 has been released. This workmanlike update provides IE9 support and stability fixes to the recently released VS2013 suite.
+ <body> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/30.java">Azul Offering Commercialised Versions of OpenJDK 6 and 7 for Windows and Linux</a>Azul Systems has announced that Zulu, its freely-available version of OpenJDK, now supports both Java 6 and Java 7 on Linux and Windows-based deployments. It is supported via the Zulu Community Support forums. In addition the firm is introducing Zulu Enterprise, which is a commercially supported version of OpenJDK. 
+  </div> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/29.java">Modest Update to VS2013 Raises Expectations for Update 2</a>The first update to Visual Studio 2013 has been released. This workmanlike update provides IE9 support and stability fixes to the recently released VS2013 suite. 
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/28.java">Big Data: Do Languages Really Matter?</a>Big Data is a field where even a single millisecond loss can be significant over billions of events. Yet, languages often regarded as slow like Python have gained a lot of popularity in the past year. Recent articles and discussions in the Big Data community have started reigniting the debate around the choice of a programming language for data science and Big Data. 
@@ -150,6 +150,6 @@
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/33.java">ORM Tool Hibernate 4.3 Released, Implementing JPA 2.1 Specification</a>The final version of the Object-Relational Mapping, ORM framework Hibernate 4.3 was recently released and is now a certified implementation of the JPA 2.1 specification, (JSR 338), released in May 2013. 
-  </div>   
+  </div> 
  </body>
 </html>

@@ -1,6 +1,9 @@
 <html>
  <head></head> 
- <body> 
+ <body>
+  <div>
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/10.c">Async/Await - Efeitos sobre desempenho e outras armadilhas</a>O Async/Await &eacute; considerado uma das mais poderosas capacidades introduzidas no C# 5. Mas ser&aacute; que existem armadilhas que devemos evitar? E quais s&atilde;o os custos associados com o uso dessas primitivas?
+  </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/9.c">S&atilde;o necess&aacute;rias alternativas ao REST?</a>Ole Lensmar, o criador do SoapUI, recentemente questionou se REST est&aacute; perdendo a atratividade e se s&atilde;o necess&aacute;rias alternativas. S&atilde;o discutidos diversos pontos em rela&ccedil;&atilde;o a aplica&ccedil;&atilde;o de REST. 
   </div> 
@@ -147,9 +150,6 @@
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/11.c">Agile nos Correios dos EUA: a experi&ecirc;ncia do MTEOR</a>Conhe&ccedil;a a experi&ecirc;ncia dos Correios dos Estados Unidos, que adotaram o Agile em um grande projeto, com resultados muito positivos at&eacute; agora. 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/10.c">A flexibilidade do Agile: ponto forte ou calcanhar de Aquiles?</a>Ser&aacute; que o princ&iacute;pio &quot;responder a mudan&ccedil;as mais do que seguir um plano&quot; &eacute; um ponto forte ou uma flexibilidade que n&atilde;o funciona na pr&aacute;tica? O que acontece com projetos &aacute;geis com dificuldades em gerenciar mudan&ccedil;as e clientes esperando flexibilidade demais? Ser&aacute; que o Agile n&atilde;o cumpre suas promessas, ou &eacute; a forma que as equipes e organiza&ccedil;&otilde;es t&ecirc;m adotado o Agile que causa os problemas? 
-  </div> 
+  </div>  
  </body>
 </html>

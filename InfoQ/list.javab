@@ -1,7 +1,7 @@
 <html>
  <head></head> 
- <body>
-  <div>
+ <body> 
+  <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/4.javab">Interfacing between Linear Waterfall and Agile Approaches</a> Michael discusses ways to integrate agile &amp; scrum approaches with linear management styles often required to achieve organizational control in large complex environments. He talks about how to achieve an Agile PMO and how it can be applied in environments which are not naturally perceived as being agile-friendly. 
   </div> 
   <div> 
@@ -150,6 +150,6 @@
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/6.javab">Is Your Application Ready?</a> We mostly ship software by date, squeezing all development and testing efforts toward that deadline. We prioritize what we think is important, and once our application passes a certain quality level, we’re ready to go live. But even when we do ship, can we tell the readiness status of our application? 
-  </div>  
+  </div> 
  </body>
 </html>

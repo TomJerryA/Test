@@ -1,6 +1,12 @@
 <html>
  <head></head> 
- <body> 
+ <body>
+  <div>
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/33.cb">Do Groovy ao Java 8</a> A nova sintaxe para estilos programa&ccedil;&atilde;o funcional, para lambdas, cole&ccedil;&otilde;es de streaming e refer&ecirc;ncias a m&eacute;todos de cidad&otilde;es de primeira classe. Os desenvolvedores Groovy ter&atilde;o uma vantagem quando come&ccedil;arem a escrever c&oacute;digo Java no futuro. Esse artigo foca nos pontos em comum entre o Groovy e o Java 8 e ir&aacute; demonstrar o qual familiar s&atilde;o os conceitos do Groovy traduzidos para o Java 8. 
+  </div>
+  <div>
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/32.cb">Java Garbage Collection Essencial</a> CMS, G1, Young Gen, New Gen, Old Gen, Eden, e as centenas de flags de inicializa&ccedil;&atilde;o da JVM, deixam tudo confuso quando tentamos otimizar o garbage collector para obter as taxas de transfer&ecirc;ncia e lat&ecirc;ncia requeridas para a aplica&ccedil;&atilde;o Java? Este artigo tentar&aacute; explicar as vantagens e as desvantagens na escolha e no ajuste dos algoritmos de coleta de lixo em uma particular carga de trabalho. 
+  </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/31.cb">Retrospectivas &Aacute;geis: Um ritual valioso mas mal-compreendido</a> Retrospectivas s&atilde;o um ritual valioso utilizado por equipes &aacute;geis, mas podem passar uma falsa sensa&ccedil;&atilde;o de melhora cont&iacute;nua, quando mal executadas. Conhe&ccedil;a armadilhas e dicas. 
   </div> 
