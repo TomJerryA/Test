@@ -1,11 +1,11 @@
 <html>
  <head></head> 
- <body>
-  <div>
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/28.java">Big Data: Do Languages Really Matter?</a>Big Data is a field where even a single millisecond loss can be significant over billions of events. Yet, languages often regarded as slow like Python have gained a lot of popularity in the past year. Recent articles and discussions in the Big Data community have started reigniting the debate around the choice of a programming language for data science and Big Data.
-  </div>
-  <div>
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/27.java">Scala Turns Ten Today</a>Ten years ago today, the first release of the Scala language was announced on the comp.lang.scala newsgroup. It's come a long way in ten years; what will the next ten years be like? InfoQ looks back.
+ <body> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/28.java">Big Data: Do Languages Really Matter?</a>Big Data is a field where even a single millisecond loss can be significant over billions of events. Yet, languages often regarded as slow like Python have gained a lot of popularity in the past year. Recent articles and discussions in the Big Data community have started reigniting the debate around the choice of a programming language for data science and Big Data. 
+  </div> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/27.java">Scala Turns Ten Today</a>Ten years ago today, the first release of the Scala language was announced on the comp.lang.scala newsgroup. It's come a long way in ten years; what will the next ten years be like? InfoQ looks back. 
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/26.java">Will 2014 Be the Year of Android-Enabled Cars?</a>Google has officially entered the in-car computer arena by announcing the Open Automotive Alliance (OAA) together with Nvidia and several automobile manufacturers, including Audi, GM, Honda, and Hyundai. The Alliance's mission, according to its official announcement, is bringing the Android platform to cars by the end of 2014. 
@@ -150,6 +150,6 @@
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/31.java">Forecasting at Twitter</a>Arun Kejariwal, from Twitter, talked at Velocity Conf London last month about forecasting algorithms used at Twitter to proactively predict system resource needs as well as business metrics such as number of users or tweets. Given the dynamic nature of their data stream, they found that a refined ARIMA model works well once its forecasting error is known and outliers removed. 
-  </div>   
+  </div> 
  </body>
 </html>

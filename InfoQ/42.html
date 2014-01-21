@@ -1,17 +1,14 @@
-<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>Twitter的预测方法</h3><p>上个月，来自Twitter的<a href="http://velocityconf.com/velocityeu2013/public/schedule/speaker/150556">Arun Kejariwal</a>在伦敦Velocity大会上做了一场演讲，展示了在主动预测系统资源需求以及业务指标（例如用户数或tweet条数等等）时，<a href="http://www.slideshare.net/arunkejariwal/gimme-more-supporting-user-growth-in-a-performant-and-efficient-fashion">Twitter所使用的预测算法</a>。考虑到其数据流的动态特性，他们发现当对数据进行清洗（例如移除异常值）后，经过改善的<a href="http://en.wikipedia.org/wiki/Autoregressive_integrated_moving_average">ARIMA模型</a>将会有良好表现。</p>
-<p>除了实际预测准确性外（随着时间的推移，通过对预测与实际结果进行对比，来实现后评估），Twitter使用的其他用于评估预测可用性的重要指标包括：模型在处理周期性（也即容纳每天的递归使用模式）和趋势（例如在重大体育活动过程中出现的井喷式使用）两方面的能力。如果离开适当的预测模型，潜在的周期性将变得更加难以处理：</p>
+<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>Dart 1.1进一步提升性能</h3><p>Dart 1.1已于近日发布，带来了性能更好的dart2js编译器，并改进了对服务器端开发的支持。语言本身几乎没有什么变化。</p>
+<p>在<a href="http://www.infoq.com/news/2013/11/dart-10">Dart 1.0</a>这一里程碑在去年11月份发布以后，Google现在发布了Dart 1.1，进一步提升了该语言的性能。在Richards基准测试中，由dart2js编译器生成的JavaScript代码现在比两个月前快了25%，但比著名的Google V8虚拟机要慢10%。</p>
+<p>在FluidMotion基准测试中，自去年11月份以来，dart2js的性能有超过两倍的提升，已经与V8处于同等水平。在Tracer基准测试中，dart2js的性能变化没有那么大，但比V8要高超过三分之一。在DeltaBlue基准测试中，dart2js、V8基本都没有变化。在所有的基准测试中，本地Dart虚拟机的性能要高于dart2js和V8。（读者可以在<a href="https://www.dartlang.org/performance/">Dart性能网页</a>上查看所有基准测试的历史结果。）</p>
+<p>Seth Ladd来自谷歌，是一名倡导Dart的开发人员，他注意到了<a href="http://news.dartlang.org/2014/01/dart-11-features-up-to-25-faster.html">Dart 1.1针对服务器的改进</a>：</p>
 <blockquote> 
- <p>随着用户基数以及用户使用热情的不断增长，面对潜在的趋势和上面提到的周期性，预测诸如tweet、喜爱、照片等业务指标已经不再是一项微不足道的任务。在这种情况下，使用线性回归进行预测是一种欠妥当的做法，因为线性回归并不捕捉时间序列中的周期性。为了消解这一限制，我们尝试着使用ARIMA模型，它明确地对趋势和给定时间序列中的周期性组成部分进行建模，并由此产出统计意义上可靠的预测。</p> 
+ <p>支持大文件、文件复制、进程信号处理器和终端信息。UDP支持是该版本的一个新特性，举例来说，它允许开发人员编写更高效的流媒体应用程序。</p> 
 </blockquote>
-<p>然而，对某个时间序列盲目地使用ARIMA模型，得到的预测并不一定具有统计意义上的可靠性。大部分情形下，这是因为不规则的数据会影响模型的建立以及其后的预测。如果某个异常的时间段没有展现出周期性，那么整体预测的周期性也就将几近消失。此外，如果某个给定时间段的边界数据点恰巧是<a href="http://en.wikipedia.org/wiki/Outliers">异常值</a>，那么整体预测也同样会就此产生偏差。因此，需要对最初的预测需求进行分析，并进行一些数据清洗工作，以使预测更加准确也更有用。Arun还提到，异常值将被报告给开发团队，以便研究这些异常值是否由代码变化所致。</p>
-<p><img width="600" _p="true" _href="img://null" src="http://infoqstatic.com/resource/news/2014/01/twitter-forecasting/zh/resources/0106000.png" alt="" /></p>
-<p><i>ARIMA</i><i>预测——在第一个时间段中有一个向下激凸（异常值）（图片由Arun Kejariwal提供） </i></p>
-<p><img width="600" _p="true" _href="img://null" src="http://infoqstatic.com/resource/news/2014/01/twitter-forecasting/zh/resources/0106001.png" alt="" /></p>
-<p><i>ARIMA</i><i>预测——第一个时间段内不含异常值（图片由Arun Kejariwal提供）</i></p>
-<p>Arun表示，除ARIMA外，Twitter根据需要预测的资源类型，还使用了其他模型（例如<a href="http://en.wikipedia.org/wiki/Holt-Winters">Holt-Winters</a>、<a href="http://en.wikipedia.org/wiki/Smoothing_spline">Spline</a>和<a href="http://en.wikipedia.org/wiki/Linear_regression">linear regression</a>）：</p>
+<p>除了在调试、代码自动补全和提示工具方面有所改进之外，Dart编辑器的性能也获得了提升。</p>
+<p>据Bob Nystrom说，虽然<a href="https://www.dartlang.org/docs/spec/latest/dart-language-specification.html">语言规范的更新版本</a>已经发布，但目前，语言本身处于暂停状态，等待<a href="http://www.ecma-international.org/">Ecma国际</a>成立一个委员会来从事相关工作。<a href="http://www.ecma-international.org/memento/TC52.htm">该委员会将</a>：</p>
 <blockquote> 
- <p>我们已经探索了许多预测模型。具体使用哪一个模型将依据具体情况而定，并与模型选择问题（这是研究中的一个活跃领域）直接相关。</p> 
- <p>在不存在周期性的时候，我们倾向于使用线性回归，因为与其他模型相比，它的计算成本相对较低。当面对非线性趋势的时候，我们可以使用二次模型或其他类似的东西。然而，当趋势和周期性现身的情况下，预测的选择也将变得复杂起来。</p> 
+ <p>标准化Dart这一现代化面向对象编程语言的语法和语义，还将标准化核心库和支持该语言的辅助技术。这项工作不应该使用专利，如果使用，也只能使用免版权费的专利。为了帮助实现这一目标，该技术委员会将使用试验性的TC52 RF专利政策，这项政策与已经开发并用于TC39的专利政策类似。</p> 
 </blockquote>
-<p>Arun还透露，Twitter的预测一般被限定在技术事件（例如内部系统容量升级）之前的几周内。不过有时候也会为了某些业务指标（例如用户数）安排更长时间跨度的预测。此外，他们还计划在不久的将来，将预测应用在弹性扩展上。</p>
-<p><strong>查看英文原文：</strong><a href="http://www.infoq.com/news/2013/12/twitter-forecasting">Forecasting at Twitter</a></p><br><br><br><br><br><br></body></html>
+<p><a href="http://news.dartlang.org/2013/12/ecma-forms-tc52-for-dart-standardization.html">Ecma TC52委员会首次公布是在去年12月份</a>，当时，Google已经发布了Dart稳定版，Dart语言及其实现均已经稳定。</p>
+<p><b>查看英文原文：</b><b><a href="http://www.infoq.com/news/2014/01/dart-1-1">Dart 1.1 Pushes Performance Even Further</a></b></p><br><br><br><br><br><br></body></html>
