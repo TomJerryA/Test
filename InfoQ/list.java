@@ -1,6 +1,9 @@
 <html>
  <head></head> 
- <body> 
+ <body>
+  <div>
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/31.java">VS Anywhere Updated with Web Workspace, Moderated Sessions, Cooperative Merge and Bug Fixes</a>The recently released updated VS Anywhere, a real time collaboration tool for Visual Studio includes web workspace, moderated sessions, cooperative merge in addition to several bug fixes.
+  </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/30.java">Azul Offering Commercialised Versions of OpenJDK 6 and 7 for Windows and Linux</a>Azul Systems has announced that Zulu, its freely-available version of OpenJDK, now supports both Java 6 and Java 7 on Linux and Windows-based deployments. It is supported via the Zulu Community Support forums. In addition the firm is introducing Zulu Enterprise, which is a commercially supported version of OpenJDK. 
   </div> 
@@ -147,9 +150,6 @@
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/34.java">FutureOps with Immutable Infrastructures and Built-in Failure Recovery</a>Mitchell Hashimoto, creator of Vagrant, gave a talk last month at Velocity Conf London about his vision for a “FutureOps” with immutable infrastructures and built-in failure recovery. 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/33.java">ORM Tool Hibernate 4.3 Released, Implementing JPA 2.1 Specification</a>The final version of the Object-Relational Mapping, ORM framework Hibernate 4.3 was recently released and is now a certified implementation of the JPA 2.1 specification, (JSR 338), released in May 2013. 
-  </div> 
+  </div>  
  </body>
 </html>

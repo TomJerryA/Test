@@ -1,8 +1,8 @@
 <html>
  <head></head> 
- <body>
-  <div>
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/10.c">Async/Await - Efeitos sobre desempenho e outras armadilhas</a>O Async/Await &eacute; considerado uma das mais poderosas capacidades introduzidas no C# 5. Mas ser&aacute; que existem armadilhas que devemos evitar? E quais s&atilde;o os custos associados com o uso dessas primitivas?
+ <body> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/10.c">Async/Await - Efeitos sobre desempenho e outras armadilhas</a>O Async/Await &eacute; considerado uma das mais poderosas capacidades introduzidas no C# 5. Mas ser&aacute; que existem armadilhas que devemos evitar? E quais s&atilde;o os custos associados com o uso dessas primitivas? 
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/9.c">S&atilde;o necess&aacute;rias alternativas ao REST?</a>Ole Lensmar, o criador do SoapUI, recentemente questionou se REST est&aacute; perdendo a atratividade e se s&atilde;o necess&aacute;rias alternativas. S&atilde;o discutidos diversos pontos em rela&ccedil;&atilde;o a aplica&ccedil;&atilde;o de REST. 
@@ -150,6 +150,6 @@
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/11.c">Agile nos Correios dos EUA: a experi&ecirc;ncia do MTEOR</a>Conhe&ccedil;a a experi&ecirc;ncia dos Correios dos Estados Unidos, que adotaram o Agile em um grande projeto, com resultados muito positivos at&eacute; agora. 
-  </div>  
+  </div> 
  </body>
 </html>
