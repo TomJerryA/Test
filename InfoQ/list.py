@@ -1,6 +1,9 @@
 <html>
  <head></head> 
- <body> 
+ <body>
+  <div>
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/17.py">Agile 2014カンファレンス講演提案が1月14日で終了</a>フロリダ州オーランドで開催されるAgile 2014の講演提案が1月14日をもって締め切られる。Agile Allianceでは講演希望者に対して，提案書を速やかに送付するよう呼びかけている。
+  </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/16.py">アプリのiOS 7対応期限が2月1日に</a>Appleは先日，iOSのアプリケーションに関して，2月1日までにiOS 7に対応しなければならない，という告知を行った。iTunes Storeに新たなアプリケーションやアップデートを提出する場合には，開発にXCode 5を使用することとアプリケーションをiOS 7に最適化することが必須となる。iOS7に対応するには，現行のHuman Interface Guidelinesに従ったUIの変更と，API変更の適用などが必要だ。 
   </div> 
@@ -147,9 +150,6 @@
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/20.py">PayPal社がバックエンドをJavaからJavaScriptへ移行</a>PayPal社はJSPとJavaで書かれたレガシーコードを捨て、ブラウザからWebアプリケーションのバックエンドサーバまで、幅広くJavaScriptを採用することに決めた。 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/19.py">Reactive Extensions for C++の紹介</a>Rx.cppとしても知られるReactive Extensions for C++が、WinRTでも（C++/CXを使って）、OS Xでも（clangを使って）利用できるようになった。まだ初期段階だが、最後のプレビュー以来、多くの仕事がなされている。 
-  </div> 
+  </div>  
  </body>
 </html>

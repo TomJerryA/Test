@@ -2,10 +2,16 @@
  <head></head> 
  <body>
   <div>
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/26.java">Will 2014 Be the Year of Android-Enabled Cars?</a>Google has officially entered the in-car computer arena by announcing the Open Automotive Alliance (OAA) together with Nvidia and several automobile manufacturers, including Audi, GM, Honda, and Hyundai. The Alliance's mission, according to its official announcement, is bringing the Android platform to cars by the end of 2014.
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/28.java">Big Data: Do Languages Really Matter?</a>Big Data is a field where even a single millisecond loss can be significant over billions of events. Yet, languages often regarded as slow like Python have gained a lot of popularity in the past year. Recent articles and discussions in the Big Data community have started reigniting the debate around the choice of a programming language for data science and Big Data.
   </div>
   <div>
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/25.java">Koa Web Framework 0.2.0 Release</a>The NodeJS based Koa web application framework has released version 0.2.0. Koa is the successor of the popular Express MVC platform, but relies heavily on newer ES6 constructs. This release is marked as an important one in that that it reaffirms the team’s design choices from the initial 0.1.0 release, solidifying Koa's API for future releases and production use.
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/27.java">Scala Turns Ten Today</a>Ten years ago today, the first release of the Scala language was announced on the comp.lang.scala newsgroup. It's come a long way in ten years; what will the next ten years be like? InfoQ looks back.
+  </div> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/26.java">Will 2014 Be the Year of Android-Enabled Cars?</a>Google has officially entered the in-car computer arena by announcing the Open Automotive Alliance (OAA) together with Nvidia and several automobile manufacturers, including Audi, GM, Honda, and Hyundai. The Alliance's mission, according to its official announcement, is bringing the Android platform to cars by the end of 2014. 
+  </div> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/25.java">Koa Web Framework 0.2.0 Release</a>The NodeJS based Koa web application framework has released version 0.2.0. Koa is the successor of the popular Express MVC platform, but relies heavily on newer ES6 constructs. This release is marked as an important one in that that it reaffirms the team’s design choices from the initial 0.1.0 release, solidifying Koa's API for future releases and production use. 
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/24.java">Google Improves Hadoop Performance with New Cloud Storage Connector</a>With a new connector, it is now possible for Hadoop to run directly against Google Cloud Storage instead of using the default, distributed file system. This results in lower storage costs, fewer data replication activities, and a simpler overall process. 
@@ -144,12 +150,6 @@
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/31.java">Forecasting at Twitter</a>Arun Kejariwal, from Twitter, talked at Velocity Conf London last month about forecasting algorithms used at Twitter to proactively predict system resource needs as well as business metrics such as number of users or tweets. Given the dynamic nature of their data stream, they found that a refined ARIMA model works well once its forecasting error is known and outliers removed. 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/30.java">Behaviour-Driven Development: Value through Collaboration</a>The goal of a software project is to deliver value to stakeholders and Behaviour-Driven Development, (BDD), is designed for that, Viktor Farcic, a software developer working on transitions from waterfall to agile processes, states in the first of four blog posts describing his view on BDD. 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/29.java">Ruby 2.1.0 Released, Delivering new GC</a>Ruby 2.1 has been released, with the biggest addition being a completely new garbage collector that promises much better performance. 
   </div>   
  </body>
 </html>
