@@ -1,6 +1,9 @@
 <html>
  <head></head> 
- <body> 
+ <body>
+  <div>
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/4.javab">Interfacing between Linear Waterfall and Agile Approaches</a> Michael discusses ways to integrate agile &amp; scrum approaches with linear management styles often required to achieve organizational control in large complex environments. He talks about how to achieve an Agile PMO and how it can be applied in environments which are not naturally perceived as being agile-friendly. 
+  </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/3.javab">Interview with Ole Jepsen on Leadership in Agile</a> Good leaders create an environment where self-organizing teams can thrive and create great products and services to delight their customers: that is what Ole Jepsen explains in this interview. At the XP Days Benelux conference he talked about truly leading people and the subtle but important differences between taking and giving control. 
   </div> 
@@ -147,9 +150,6 @@
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/6.javab">Is Your Application Ready?</a> We mostly ship software by date, squeezing all development and testing efforts toward that deadline. We prioritize what we think is important, and once our application passes a certain quality level, we’re ready to go live. But even when we do ship, can we tell the readiness status of our application? 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/5.javab">Estimating on agile projects: what’s the story, what’s the point?</a> Ever wondered about how and why we estimate on agile projects? In his first article on InfoQ, David Morris draws on his own experience with since the 90s, and that of several leading agile writers, to explore the topic of agile estimating: what it is, how we typically do it, why we should bother, a brief appraisal of the #NoEstimates debate, and closes with some advice for people new to it all. 
-  </div> 
+  </div>  
  </body>
 </html>

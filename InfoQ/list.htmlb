@@ -1,6 +1,9 @@
 <html>
  <head></head> 
- <body> 
+ <body>
+  <div>
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/29.htmlb">为首次部署MongoDB做好准备：容量计划和监控</a> 在本文中作者Mat Keep将从容量计划和监控两个方面讨论MongoDB数据库的最佳部署实践。他还会介绍硬件选择、监控的关键指标和添加分片的时机等主题。 
+  </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/28.htmlb">从MVC在前端开发中的局限性谈起</a> 我们知道Controller的职责之一是负责响应用户在视图上的行为，而具体每个行为应如何进行响应，需要落实到Controller具体的方法上，这个方法我们可以称之为action。但问题来了，如何将用户在视图上的行为，与响应行为的方法action关联起来？甚至与Controller关联起来？URL便是方法之一，但是这样还是有局限性。本文就从这其中的局限性谈起。 
   </div> 
@@ -147,9 +150,6 @@
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/32.htmlb">保护好你的秘密</a> Dennis Sosnoski 解释了理应安全的连接怎么会被降级，安全级别和它最容易被攻破的薄弱点处于同一水平。还有最强的加密形式在私钥暴露后面对数据捕获和破解是多么脆弱。本文将介绍一些办法，可以让数据交换更加安全，让别人难以窥伺或篡改。 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/31.htmlb">敏捷与结构性模块化（二）</a> 在上一篇文章中，介绍了结构性模块化与敏捷之间的关系，在这个系列的第二篇文章中，我们将会研讨OSGi™，在实现JavaTM的结构性模块化方面，OSGi扮演了核心的角色；OSGi与流行的敏捷方法论之间存在着自然的联系。 
-  </div> 
+  </div>  
  </body>
 </html>
