@@ -1,8 +1,8 @@
 <html>
  <head></head> 
- <body>
-  <div>
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/22.py">Facebook、MercurialをGitよりも速くする</a>FacebookがどのようにしてMercurialをGitよりも特定の操作で5倍速くしたのかを説明する記事をポストした。読むと、彼らが何を変えて、なぜセットアップをそうしたのかがわかるだろう。
+ <body> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/22.py">Facebook、MercurialをGitよりも速くする</a>FacebookがどのようにしてMercurialをGitよりも特定の操作で5倍速くしたのかを説明する記事をポストした。読むと、彼らが何を変えて、なぜセットアップをそうしたのかがわかるだろう。 
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/21.py">ログとトレースにLINQを使用する</a>Microsoft Open Technologiesは先頃，ログやトレースを使ったデバッグ作業と，リアルタイム監視および警告システムの開発を支援するオープンソースプロジェクトであるTxのリリースを発表した。 
@@ -150,6 +150,6 @@
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/25.py">Visual Studio 2013 に改善された新規プロジェクトテンプレートとソーシャルアカウント認証が追加</a>近年リリースされてた Visual Studio 2013 では、開発者向けにプロジェクトやアプリケーションの高速な構築が可能なプロジェクトテンプレートが公開 
-  </div>  
+  </div> 
  </body>
 </html>

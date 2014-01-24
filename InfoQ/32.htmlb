@@ -1,130 +1,256 @@
-<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>保护好你的秘密</h3><p>在自由黑客和政府特工的两面夹击下，想要安全地交换数据很难。大多数安全数据交换都以公钥加密为基础，而公钥加密依赖于信任，可那些窃取数据的人都是滥用信任方面的专家。理应安全的连接也会被降级，安全级别和它最容易被攻破的薄弱点处于同一水平，并且即便最强的加密形式在私钥暴露后面对数据捕获和破解也非常脆弱。</p>
-<p>但我们仍然有办法可以保护秘密，特别是在数据交换双方都可控的情况下。本文会介绍一些能够确保应用数据交换安全的办法，在眼下以及可预见的将来都能防止数据被泄露。还会给出应用安全技术的Java代码示例。此外你还将学会如何保护自己的在线访问。</p>
-<h2>信任管理机构</h2>
-<p>大多数数据交换都以公钥加密作为安全基础。公钥加密的基本原理是使用一对密钥，一把是需要绝对保密的私钥，一把是可以随意分发的公钥。这两把密钥要相互配合使用，任何持有公钥的人都可以对数据加密，而加密后的数据只能由持有私钥的你解密；并且你用私钥加密的数据只有持有公钥的人才能解密。</p>
-<p>用公钥加密的作用很明显，因为这样其他人可以向你发送私密消息。而用私钥加密的作用不是那么显而易见，但它在保证安全方面的作用同样重要，因为它可以对消息签名。你能为任何你想发送的数据计算出一个安全摘要（一般是一个很难做逆向计算的哈希码），然后用私钥对摘要加密，并同时发送数据和经过加密的摘要。任何持有你的公钥的人都可以解密你发送的摘要，并在他们收到数据上重新计算摘要。这样他们既能确保他们收到的就是你发送的数据（如果摘要值相互匹配），又能保证确实是你发送的数据（因为用你的公钥解密了经过加密的摘要）。</p>
-<p>公钥通常以证书的形式分发，也就是说它们会被封装在一个标明你是谁的信封内。这个信封由证书颁发机构签名，可以佐证你的身份。有些证书颁发机构是根机构，也就是说对他们自身的证书是可以直接信任的。其他机构用经由某些第三方机构签名的证书，形成了最终以某个根机构为基础的可信链条。</p>
-<p>只要证书颁发机构完全值得信赖，这就是优秀的身份验证系统，所谓值得信赖是指证书颁发机构既要诚实又要够资格。在过去20年里出过一些事故，有些人能拿到冠以其他组织名称的证书，这表明某些机构达不到应有的资质水准。甚至还有更糟的情况出现，证书颁发机构本身都会受到损害，机构的密钥被盗，窃贼可以自己创建可信的证书。</p>
-<div id="lowerFullwidthVCR"></div>
-<p>Mozilla 产品 (包括Firefox) 用 <a href="http://www.mozilla.org/projects/security/certs/included/index.html">166个受信根证书</a> 表示至少70个不同的机构。看起来好像被授于这么高的信任程度的机构太多了，但这仅仅是冰山一角。还有很多机构凭借经由这些根机构签名的证书取得了信任，并且这种转授的信任还能扩展到更多层级。受信的证书颁发机构的总数量绝对数以百计，而且很可能有上千个 (没人真的知道，但 <a href="https://www.eff.org/observatory">EFF SSL Observatory</a> 在2010年从公共网站上找出了650多个)。</p>
-<h2>安全和中间人</h2>
-<p>所以浏览器（或者程序代码，比如在Java 7的标准版中有81个受信根证书）中有这么<b>多</b>受信的证书颁发机构签发证书。这是什么情况？</p>
-<p>当用SSL协议（实际上是TLS，跟SSL原理相同的现代替代品）创建连接时，要依靠服务器提供的证书来保证初始数据交换的保密性。这个连接在到达服务器的路由中要经过一些中间介质，并且只要这些中间介质都是“诚实”可信的（即他们在往两边传输数据时都不会修改），那这个连接或多或少是安全的（我们后面再详细讨论或多或少）。</p>
-<p>但如果中间介质中有一个不诚实，你就很容易遭受到中间人攻击。对TLS来说，最简单的中间人攻击是使用伪造的服务器证书，攻击者用由自己的私钥生成的证书冒充服务器的证书。狡诈的中间介质把这个伪造的证书发送到你的客户端，客户端就会连接到中间介质，然后中间介质再单独建立一个到服务器的安全连接。它在连接的两端中间转发数据，给你造成直接连接到服务器的假象。这样中间介质既可以看到你们发送的所有数据，也能根据需要篡改任何数据。</p>
-<p>出现这种欺诈性中间介质的可能性有多大？很不幸，可能性非常大。路由器上经常会出现一些会被黑客（自由职业者或得到政府资助的人）攻陷的漏洞。信誉好的制造商在发现漏洞后会为路由器发布固件更新包，但我们大多数人不会更新家里或办公室里的路由器，所以<a href="http://www.wired.com/threatlevel/2013/09/nsa-router-hacking/">它们可能会因为已知的问题被攻破</a>。最近有报道暗示，路由器制造商在某些情况下甚至会故意在他们的路由器中<a href="http://www.nytimes.com/interactive/2013/09/05/us/documents-reveal-nsa-campaign-against-encryption.html?ref=us&amp;_r=0">制造后门</a> ，以方便政府部门访问(在<a href="http://www.cbsnews.com/8301-18560_162-57527441/huawei-probed-for-security-espionage-risk/">美国讽刺性地指责中国制造商华为的所作所为</a>中曾提到过)。</p>
-<p>对企业级路由中的这类问题我们实在是无能为力，但对于家用和小型商用产品，我们可以用开源固件代替由制造商提供的固件。像<a href="http://www.dd-wrt.com/site/index">DD-WRT</a>、<a href="http://www.polarcloud.com/tomato">Tomato</a>、<a href="https://openwrt.org/">OpenWrt</a> 之类的可选项能在大多数有线和wifi路由器上使用，它们既有经过强化的功能，又可以保证你运行的开源代码至少有很多人看过（不能保证没有漏洞，但至少没有那种可能是故意植入的明显漏洞）。</p>
-<p>在某些情况下(比如外交会议上的自由wifi访问)，有些组织会故意使用欺诈性路由器，以便可以观察通过理应安全的连接交换的数据。规模更大的也有，互联网服务提供商可能会<a href="https://www.eff.org/nsa-spying">让政府直接访问他们的路由器</a>。</p>
-<p>即便控制不了路由器，坏蛋们有时也能用DNS欺骗实施中间人攻击。他们会用一个错误的主机IP地址迷惑DNS服务器，这个地址通常指向由坏蛋控制的系统。当你的客户端想要连接到某台主机时，它会要求DNS服务器提供这台主机的IP地址，而DNS服务器就会从它的缓冲池中取出（错误的）地址给你。然后你就连到了错误的系统上，它或者直接假装成你想要连接的系统，或者自己再建立一条到初始目标系统的连接，充当欺诈性的中间介质。</p>
-<p>所以在你每次建立安全连接时，有些人可能已经潜入到了你和服务器之间的数据交换环节中。如果真能靠证书保证数据交换双方的身份，这不是什么大问题，可惜证书做不到啊。取得客户端信任的证书颁发机构有上百（或上千）个，其中一旦有一个发出了冒充你的目标主机的证书，那他们就全都会遭受到中间人攻击。只要想到证书颁发机构的发行被黑，或者在验证身份时犯了错误就觉得相当恐怖了，但还不止这样，你还要考虑到这些证书颁发机构中有很多或者在独裁政府的直接控制之下，或者会受到他们的恐吓。所以公共认证系统实际上已经出现了破损，尽管我们还有继续使用它的必要，但绝不能认为它是安全的。</p>
-<h2>更安全的认证</h2>
-<p>你可以采取一些措施以免受到假冒证书的侵害。浏览器一般会毫无疑问地接受由受信机构签发的任何证书，但有些浏览器插件会在网站使用的证书发生变化时发出警告。以Firefox为例， <a href="https://addons.mozilla.org/en-us/firefox/addon/certificate-patrol">Certificate Patrol插件</a> 就是干这个的(也有人提出了一个加强请求，要在Firefox核心代码中实现这个证书警告功能，但目前只能用插件)。用上这种浏览器插件后，当你回到之前访问过的安全网站，而它出示了一个不同的证书时，你最起码能察觉到可能出问题了，但你还要深入了解问题的细节，以决定是否相信新的证书，因为证书经常因为合法的原因而更换（包括变得太老了，因为证书也有有效期）。有些大型网站会有很多持有不同证书的服务器，访问这种网站时你也会受到警告。</p>
-<p>在程序代码里可做的事情更多。比如你用Java写代码时，可以覆盖默认的证书处理机制，用更安全的技术绕过证书处理机制。这在客户端代码中很容易实现，只要把所期望的服务器证书放在密钥库中，在建立连接时只能使用这个特定的证书就可以了。下面是这种办法的样例代码，用java.security 和 javax.net.ssl包中的几个类来实现这种处理：</p>
+<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>Android布局优化</h3><h2>categories: Android</h2>
+<p>在Android开发中，我们常用的布局方式主要有LinearLayout、RelativeLayout、FrameLayout等，通过这些布局我们可以实现各种各样的界面。与此同时，如何正确、高效的使用这些布局方式来组织UI控件，是我们构建优秀Android App的主要前提之一。本篇内容就主要围绕Android布局优化来讨论在日常开发中我们使用常用布局需要注意的一些方面，同时介绍一款SDK自带的UI性能检测工具HierarchyViewer。</p>
+<h2>布局原则</h2>
+<p>通过一些惯用、有效的布局原则，我们可以制作出加载效率高并且复用性高的UI。简单来说，在Android UI布局过程中，需要遵守的原则包括如下几点：</p>
+<ul> 
+ <li>尽量多使用RelativeLayout，不要使用绝对布局AbsoluteLayout；</li> 
+ <li>将可复用的组件抽取出来并通过&lt; include /&gt;标签使用；</li> 
+ <li>使用&lt; ViewStub /&gt;标签来加载一些不常用的布局；</li> 
+ <li>使用&lt; merge /&gt;标签减少布局的嵌套层次；</li> 
+</ul>
+<p>由于Android的碎片化程度很高，市面上存在的屏幕尺寸也是各式各样，使用RelativeLayout能使我们构建的布局适应性更强，构建出来的UI布局对多屏幕的适配效果越好，通过指定UI控件间的相对位置，使在不同屏幕上布局的表现能基本保持一致。当然，也不是所有情况下都得使用相对布局，根据具体情况来选择和其他布局方式的搭配来实现最优布局。</p>
+<h3>1、&lt; include /&gt;的使用</h3>
+<p>在实际开发中，我们经常会遇到一些共用的UI组件，比如带返回按钮的导航栏，如果为每一个xml文件都设置这部分布局，一是重复的工作量大，二是如果有变更，那么每一个xml文件都得修改。还好，Android为我们提供了&lt; include /&gt;标签，顾名思义，通过它，我们可以将这些共用的组件抽取出来单独放到一个xml文件中，然后使用&lt; include /&gt;标签导入共用布局，这样，前面提到的两个问题都解决了。例如上面提到的例子，新建一个xml布局文件作为顶部导航的共用布局。</p>
 <pre>
-public static void main(String[] args) throws IOException,  
-        GeneralSecurityException { 
-        // 打开密钥库
-        KeyStore keyStore = KeyStore.getInstance(&quot;JKS&quot;);
-        FileInputStream fis = new FileInputStream(Constants.TRUSTSTORE_NAME);
-        keyStore.load(fis, Constants.TRUSTSTORE_PASS.toCharArray()); 
-        // 创建只信任这个服务器证书的信任管理器
-        String alg = TrustManagerFactory.getDefaultAlgorithm();
-        TrustManagerFactory tmfact = TrustManagerFactory.getInstance(alg);
-        tmfact.init(keyStore);
-        X509TrustManager tm = (X509TrustManager)tmfact.getTrustManagers()[0]; 
-        // 创建连接 (并确保它是安全的)
-        URL url = new URL(args[0]);
-        HttpURLConnection conn = (HttpURLConnection)url.openConnection();
-        if (!(conn instanceof HttpsURLConnection)) {
-            System.err.println(&quot;Connection is not secured!&quot;);
-        } 
-        // 配置SSL连接，使用我们的信任管理器
-        SSLContext context = SSLContext.getInstance(&quot;TLS&quot;);
-        context.init(null, new TrustManager[] { tm }, null);
-        SSLSocketFactory sockfactory = context.getSocketFactory();
-        ((HttpsURLConnection)conn).setSSLSocketFactory(sockfactory); 
-        // 打开到服务器的连接
-        conn.connect();
-        conn.getInputStream();
-        System.out.println(&quot;Got connection to server!&quot;);
-    }</pre>
-<p>从注释中可以看到，这段代码读取包含证书的密钥库，创建一个只相信那个证书的TrustManager ，在建立SSL/TLS连接时迫使它使用这个TrustManager 。如果你试图连接到使用不同证书的服务器，认证会失败，连接被阻止。</p>
-<p>完整的代码放在 <a href="https://github.com/dsosnoski/keep-secrets">github 代码库</a>中的com.sosnoski.certs.UseCert类里。com.sosnoski.certs.GetCert类获取由服务器提供的证书并保存在UseCert使用的密钥库里，所以你可以轻松地尝试一下。不过你要注意，大型安全网站可能有几台持有不同证书的服务器，所以你保存的证书有时可能不能用。</p>
-<h2>成为证书颁发机构</h2>
-<p>有时你要处理很多证书，比如当你提供了一种或多种服务，要求每个得到授权的客户端都使用各自的证书时（客户端经过TLS认证）。在这种情况下，为服务器维护能及时更新的信任库可能会变成巨大的管理负担，特别是在客户端证书到期需要更换时。好在你不用做这么多工作也可以维护访问控制，你可以自行建立一个证书颁发机构，并且只信任那个机构发行的证书。</p>
-<p>有些商业或开源工具可以帮你创建这种定制的证书颁发机构。OpenSSL (http://www.openssl.org/) 是其中用得最多的工具之一（尽管要实现功能完整的证书颁发机构还有更好的选择——见下一节）。从名字就能看出来，OpenSSL是SSL/TLS协议的开源实现。它既能处理原有证书，也可以创建新证书，并且它可以运行在各种平台上，包括Linux、MacOS X和Windows。</p>
-<p>网上有几篇用OpenSSL搭建自有证书颁发机构的指南 (比如 <a href="https://help.ubuntu.com/community/OpenSSL#SSL_Certificates">这篇在Ubuntu上的</a>)，所以我们就不在这里介绍太多细节了。其基本过程相当容易，请看下面这些Linux/Unix 终端命令(有缩进的行，可能会因为页面宽度换行)：</p>
-<ol> 
- <li>创建OpenSSL 证书颁发机构的默认目录结构： <pre>
-mkdir demoCA    
-mkdir demoCA/private    
-mkdir demoCA/newcerts    
-echo '01' &gt; demoCA/serial    
-touch demoCA/index.txt</pre> </li> 
- <li>为证书颁发机构创建公私密钥对，并把私钥导出到刚创建的目录中： <pre>
-mkdir demoCA    
-mkdir demoCA/private    
-mkdir demoCA/newcerts    
-echo '01' &gt; demoCA/serial    
-touch demoCA/index.txt</pre> </li> 
- <li>为证书颁发机构创建一个为期10年的自签名证书，并将证书导出到刚创建的目录中： <pre>
-openssl genrsa -out ca-keypair.pem 2048
-openssl pkey -in ca-keypair.pem -out 
-  demoCA/private/cakey.pem</pre> </li> 
- <li>为用户创建公-私密钥对，并导出证书颁发机构发行证书的请求（在要持有证书的系统上运行）： <pre>
-openssl req -new -x509 -days 3650 -key ca-keypair.pem    
-  -sha256 -out demoCA/cacert.pem     
-[respond to prompts with certificate authority identity]</pre> </li> 
- <li>对证书签名 (在证书颁发机构所在系统上运行)： <pre>
-openssl ca -out user-cert.crt -policy policy_anything     
-  -md sha256 -infiles user-cert.req     
-[respond to prompts to sign and commit certificate]</pre> </li> 
-</ol>
-<p>上面使用了2048位 RSA 密钥，目前一般认为是安全的。3072位的密钥有更强的防护级别，而真正的偏执狂会用4096位的密钥。在建立安全连接时，比较长的密钥会增加一些系统开销，但除非是最繁忙的网站，否则一般不会有什么显著影响。要改变密钥长度，只要在两个“openssl genrsa ...”命令中换掉“2048”就可以了。</p>
-<p>你自然要严格控制对证书颁发机构的访问，尤其要保证用来签发证书的私钥绝对不能泄漏。你还要建立一套管理流程，所有申请证书的人的身份和授权都要进行验证。</p>
-<p>前面的Java代码很容易用到你的证书颁发机构中。只要用证书颁发机构的证书代替某个特定服务器的证书放到你的信任库中，那么任何经由那个机构签名的证书都会得到客户端的认可。根本不需要改代码。</p>
-<h2>机构给的，机构收回</h2>
-<p>要构建一个完备的证书颁发机构，实际上还有一项工作要做：在证书发出去之后，要能撤销。</p>
-<p>证书撤销是指之前发行的证书不再有效，或者是因为你终止了证书持有者对服务的访问，或者因为你给他们发了新证书替换原来的证书。如果某个证书的持有者怀疑他们的系统被非法访问并且他们的私钥可能已经泄漏了，就需要做这种替换。在理想情况下绝不会发生这种事情，但为了以防万一，你应该公布一份<a href="http://en.wikipedia.org/wiki/Certificate_revocation_list">CRL</a> 并进行检查。</p>
-<p>也可以不做直接CRL检查，采用比较新的替代方案， <a href="http://en.wikipedia.org/wiki/Online_Certificate_Status_Protocol">在线证书状态协议</a> (OCSP)。按照 OCSP，可以在代码中向与发行证书的颁发机构相关联的服务器发送一个请求，直接检查证书的当前状态。如果证书是用来建立安全连接的，OCSP检查可以和建立连接同步进行，这样可以降低系统开销。连接建立好以后发现证书不对也没关系，只要在使用安全连接交换数据之前得到检查结果就行。 还有一种叫做<a href="http://en.wikipedia.org/wiki/OCSP_Stapling">OCSP 吻合</a>的技术，服务器可以主动要求发行机构对它的证书进行检查，验证后能得到一个经过签名的时间戳，这样客户端就知道服务器的证书仍然是被证书颁发机构认可的。</p>
-<p>如果你准备构建一个带有撤销处理的证书颁发机构，那么最好是使用<a href="http://www.ejbca.org/">EJBCA</a>之类的工具。 EJBCA是基于EJB技术的开源企业级证书颁发机构。它提供了生成和管理证书的全部功能，包括对直接CRL和OCSP的支持。</p>
-<p>当前的大多数浏览器都默认实现了证书的OCSP 检查。在Java代码中，你可以使用系统属性<strong>com.sun.net.ssl.checkRevocation=true</strong> 启用证书检查， 启用OCSP 检查的属性是 <strong>ocsp.enable=true </strong><strong>和</strong><strong> com.sun.security.enableCRLDP=true</strong> (或者非Sun/Oracle JVM上与之等价的属性)。</p>
-<h2>协商的弱点</h2>
-<p>对于欺诈性路由器或其他中间介质来说，假证书是伪造理应安全连接最直接的方式，但不是唯一的方式。客户端和服务器在建立连接时需要进行协商，而另一类攻击就是以破坏协商过程为基础。这类攻击的目标是将最终连接的安全性减弱到可以被轻易攻破的水平。</p>
-<p>要了解这类攻击的工作原理，需要先掌握一点TLS的工作原理。TLS连接使用的会话跟你在浏览器中登入网站后得到的东西类似。只不过在TLS中，会话在客户端和服务端是各自独立维护的，但它在两端都表示允许双方安全通信的共享状态信息。其中包括一个用来加密双方传递信息的密钥，还有用来维持安全性的序列和其他控制信息（因为TLS不仅有保密能力，还会做消息完整性检查，以检测信息在传输过程中是否被修改过）。</p>
-<p>TLS会话从一个被称做“握手”的消息交换开始。客户端先向服务器发起一个请求，告诉服务器它所支持的最高TLS版本、可用的加密算法套件列表（用来标识连接的安全算法），以及其他辅助信息。服务器从客户端所支持的协议版本和加密算法套件中选出一个作为响应，同时把它的证书发过去。客户端验证服务器的证书，生成一个密值，并用服务器证书中的公钥加密后发送给服务器。双方用以这个密值为基础计算出的密钥对通过安全连接交换的数据进行加密和签名。</p>
-<p>欺诈性中间介质很可能会干扰握手的初始阶段，因为在交换第一个消息时是没有经过加密和签名的。特别是可以弱化客户端所期望的TLS版本和/或加密算法套件。比如中间介质可能会修改消息，只让客户端使用SSL 2.0。</p>
-<p>这个协议之所以有被降级的危险，是因为SSL协议的早期版本有一些众所周知的弱点。在确保连接使用了脆弱的协议后，欺诈性中间介质就可以利用一个或多个弱点来打破连接的安全性。</p>
-<p>TLS 1.1及更高版本对这类降级攻击做了防护，包括在握手末尾使用覆盖所有消息的签名。但这些防护有时会出现漏洞，不过至少在应用程序的数据交换中有更坚实的办法可以规避这种攻击。</p>
-<h2>协商强度</h2>
-<p>对付降级攻击最好办法很简单：只允许安全连接使用TLS协议的特定可信版本。可惜在使用浏览器时这个办法有点不切实际，因为你想用的“安全”网站可能没有及时升级它们所支持的协议。不过大多数浏览器至少还能让你把安全连接限制在比较新的协议版本上， 在狂野的web上也就只能这样了。</p>
-<p>但如果连接的两端都在你的控制之下，限制协议版本这个办法非常管用，对于企业数据交换来说这是最佳实践。你应该确保无论是客户端代码还是服务端代码，两边都要强制采用这种办法。</p>
-<p>在Java客户端代码中最简便的做法是用系统属性<strong>https.protocols=TLSv1.1</strong> (或 <strong>TLSv1.2</strong>)。这种办法的唯一限制是所有安全连接都只能使用同一种协议。如果你想控制每个连接所用的协议，可以调整由<strong>javax.net.ssl.SSLContext</strong> 返回的<strong>SSLSocketFactory</strong> 。请参照<a href="https://github.com/dsosnoski/keep-secrets">github代码库</a> 上的 <strong>com.sosnoski.tls.ForceTls</strong> 类实现。</p>
-<p>在服务端一般用应用服务器上的选项做这个控制。比如在使用带Java连接器的Tomcat时，可以用<strong>&lt;Connector&gt;</strong> 元素上的<strong>sslEnabledProtocols</strong> 限制协议套件，所以跟上面客户端的配置相匹配的应该是<strong>&lt;Connector …sslEnabledProtocols=&quot;TLSv1.1&quot; …/&gt;</strong>。而在用 APR 连接器时应该是 <strong>SSLProtocol</strong> 属性。</p>
-<h2>你说过或做过的任何事都能用来并且会被用来对付你</h2>
-<p>现在你已经见过一些让安全连接更难以被打破的技术了。但如果服务器的私钥受到损害，这些技术就全都失效了，因为任何可以访问私钥的人都可以在会话建立时解密消息查看会话密钥，然后用会话密钥解密会话中交换的所有数据。所以确保你的私钥绝对私密至关重要，千万不要把它们暴露在你自有的系统之外。</p>
-<p>但有时私钥确实会受损，或者因为系统被黑，或者因为有访问权限的内部人士，或者因为政府的命令。如果你知道密钥已经暴露了，可以生成新的公私密钥对和新的证书，把旧证书撤销掉，这样客户端就不会再接受它（这一步很重要，否则拿到旧私钥的人仍然可以用旧证书冒充你）。但这样只是照顾到了将来的数据交换，如果窃取了私钥的人监测并记录下了以前的会话，他们仍能用旧密钥解密并查看以前会话中交换的数据。</p>
-<p>有种安全连接的保护方法甚至连这种回溯性破解也可以防护。它被称为“完全正向保密（perfect forward secrecy）”，它为客户端和服务器端提供了一种为会话创建共享密钥的办法，而这个密钥不会暴露给任何监测数据交换的人（即便监测者能够得到服务器的私钥，只要它只是个监测者而不是中间人）。</p>
-<p>正向保密的标准实现是采用某种Diffie-Hellman 密钥交换。Diffie-Hellman 的基本思想是利用整数模素数群的乘法性质。计算某个数的幂在群中的值很容易，即便这个群和幂都很大也没关系。但用已知的数学知识做逆向计算非常困难，即给定一个数和一个值，很难根据这个群中的值算出这个数的幂是多少（这被称为离散对数问题）。Diffie-Hellman 密钥交换的双方都使用相同的群和原根，但所用的幂和生成的值不同，然后他们互相交换由各自的幂生成的值。最终双方都得到了一个结合了两个私密幂的共享值。任何监测数据交换的人要想得到私密幂，都要做逆向工作去解决计算困难的离散对数问题，并且只要值足够大，以现有的技术计算出结果所需要的时间让这种计算失去了实际意义。</p>
-<p>但对浏览器来说有个坏消息，很多web服务器都不支持安全连接的完全正向保密。部分原因是这样会增加一些开销（用基于椭圆曲线的Diffie-Hellman变体代替离散对数可以降低这种开销），但经常仅仅是因为用了过时的安全实现。Google在对正向保密的支持上非常积极主动，并且最近其他主流网站也开始支持它了。在Chrome浏览器中，你可以点击绿色锁图标查看某个安全站点是否使用了完全正向保密（可以在连接的详细信息中看看它是否给出了包含字母&quot;DHE&quot;的密钥交换，比如“ECDHE_RSA”）。</p>
-<p>在Java程序代码中要求使用正向保密相当容易。还是使用系统属性，<strong>https.cipherSuites=TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA</strong>。如果你想控制每条连接上的协议，可以采用跟控制协议版本号相同的办法，请参考<a href="https://github.com/dsosnoski/keep-secrets">github 代码库</a>中的<strong>com.sosnoski.tls.ForceSuite</strong> 类。</p>
-<p>那个密码套件的名称看起来相当神秘，但如果你把它拆开来看就很好懂了。 “TLS” 自然是指TLS协议。 “ECDHE” 是说使用带有短暂性密钥的椭圆曲线Diffie-Hellman密钥交换（也就是说要为每个会话创建新密钥并且事后也不会记下来）。“RSA”表明用RSA 非对称加密保护TLS握手的安全。 “AES_128_CBC” 是说在密码块链接模式中用带有128位密钥的AES 非对称加密保护真正的数据交换。最后的 “SHA” 表明用 SHA 安全哈希算法。</p>
-<p>这可能是在Oracle的Java 7上用TLS 1.1所能用到的最好密码套件。如果用TLS 1.2 ，你可以升级成<strong>TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256</strong>，使用更强(也更安全)的 SHA2 摘要算法。理想情况下，用GCM（伽罗瓦​​/计数器模式）之类的模式代替CBC更好，但Oracle的 Java 7 JSSE (Java 安全套接字扩展)实现还不支持。</p>
-<p>你可能还要考虑从 “<strong>ECDHE</strong>” 去掉“<strong>EC</strong>”。密码学大师布鲁斯&middot;施奈尔现在<a href="http://www.theguardian.com/world/2013/sep/05/nsa-how-to-remain-secure-surveillance">推荐优先选用离散对数而不是椭圆曲线加密</a> (在这篇文章中还有很多非常棒的建议，教你如何保证自己以及你的数据交换的安全)。椭圆曲线技术更快，但可能会有政府组织故意引入的弱点。但大多数商业安全网站目前似乎只支持Diffie-Hellman的椭圆曲线版本，所以这个例子里就用它了。</p>
-<p>在服务端一般用应用服务器上的配置选项控制密码套件。比如在使用带Java连接器的Tomcat时，可以用<strong>&lt;Connector&gt;</strong> 元素上的<strong>ciphers</strong> 属性限制密码套件，所以跟上面客户端的配置相匹配的应该是<strong>&lt;Connector … ciphers=&quot;TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA&quot; …/&gt;</strong>。而在用 APR 连接器时应该是<strong>SSLCipherSuite</strong>属性。</p>
-<p>关于Diffie-Hellman密钥交换还有一段有趣的历史， 它最初发表于1976 年(由Whitfield Diffie 和 Martin Hellman提出) ，但实际上几年之前英国 GCHQ（一个目前受到广泛关注的组织，因为他们对网上发生的，好吧，所有事情进行监测）就已经把它发明出来了。 GCHQ由于某些原因不想把他们的发明成果公诸于众，于是就变成Diffie 和 Hellman 独立发明并推出了这项技术。</p>
-<h2>时间与安全</h2>
-<p>安全总是相对的，并且随着密码学知识和计算机技术的不断进步，安全性会随着时间减弱。在30年前号称最先进的国家级安全性的东西现在可以轻松破解，并且我们有充分的理由相信这一原则在将来也同样适用。</p>
-<p>如果能够正确实现，本文所讨论的技术可以帮你防护目前已知的最重要的攻击，包括要在合理的时间内找出会话密钥的暴力攻击（即便这种攻击来自在专用硬件上花了大钱的组织）。这应该能防止任何人成功篡改你的数据交换，并且（抛开在算法中隐藏的后门不谈）应该能够确保你的数据至少在接下来的10到20年，甚至更长的时间内是保密的。但它很可能无法保证数据在100或200年后还是保密的，如果数据被保存下来，并且有人有充分的动机要用那时侯的工具获取数据的话。对于大多数业务或个人数据来说那不是个问题，因为相对长期保密性而言，我们更加关心近期的保密性，但在考虑数据安全时记得这一点是件好事。</p>
-<p>对于正在运行的程序，你需要每隔几年就审查一下安全协议和套件，并在恰当的时候按新标准升级程序的安全性。虽然那样仍然无法防止有人捕获并最终解密你的数据，但最起码在当前可以保护你的数据不被篡改，短期内也别人也无法查看你的数据。</p>
-<h2>收尾</h2>
-<p>如今数据通信安全受到的威胁很多，将来肯定还会变得更糟，尤其是考虑到政府层面的黑客行为后。一些发达国家已经有了大量的数据收集和网络破坏程序。随着网络军备竞赛不断热化，那些还没有这种程序的将来很可能也要构建了，所以即便相信你的政府不会觊觎你的数据，你也要考虑其他“不怀好意”的政府的行动。</p>
-<p>本文介绍的办法可以让别人更难查看或修改你的数据交换。这种强化的办法是安全的重要组成部分，但远不是唯一的部分。比如说你在数据交换时用了完全正向保密机制，但如果数据只是保存在安全性很差的数据库里，那正向完全保密对数据安全也起不到多大作用。真正的安全要求围绕系统和程序做多层次防护。还要求你具备防御性思维，在证明其安全性之前，进入系统的任何东西都是可疑的。所以对你所信任的人和物一定要谨慎，保护好你的秘密！</p>
-<h2>关于作者</h2>
-<p><img alt="" style="float: left; margin-right: 10px" src="http://infoqstatic.com/resource/articles/keeping-your-secrets/zh/resources/1021002.jpg" _href="img://null" _p="true" /> <strong>Dennis Sosnoski</strong> 是一名Java 和 Scala 开发人员，有多年的数据通信和企业系统开发经验，并积累了很强的安全背景。他在全球范围内为客户提供咨询和培训服务，特别是在web服务领域 (包括他的 <a href="http://www.sosnoski.com/security.html">Web 服务的安全性</a> 课程)，他即将通过他的新网站<a href="http://www.azdeo.com">Azdeo</a>推出保证个人数据交换安全的几个产品中的第一个。Dennis在Java社区中也很活跃，经常在各种用户组和会议上演讲，为在线技术出版方供稿，为一些开源项目做贡献（包括Apache CXF web服务框架，他目前正在整合WS-ReliableMessaging 和 WS-SecureConversation）。访问他的 <a href="http://www.sosnoski.com">咨询和培训服务网站</a> 可以了解他的背景和服务的详细信息。</p>
-<div style="clear: both">
- &nbsp;
-</div>
-<p><strong>原文英文链接：</strong><a href="http://www.infoq.com/articles/keeping-your-secrets">Keeping Your Secrets</a></p>
+xml common_navitationbar.xml
+
+&lt;RelativeLayout mlns:android=
+&quot;http://schemas.android.com/apk/res/android&quot;
+    xmlns:tools=&quot;http://schemas.android.com/tools&quot;
+    android:layout_width=&quot;match_parent&quot;
+    android:layout_height=&quot;wrap_content&quot;
+    android:background=&quot;@android:color/white&quot;
+    android:padding=&quot;10dip&quot; &gt;
+
+    &lt;Button
+        android:layout_width=&quot;wrap_content&quot;
+        android:layout_height=&quot;wrap_content&quot;
+        android:layout_alignParentLeft=&quot;true&quot;
+        android:text=&quot;Back&quot;
+        android:textColor=&quot;@android:color/black&quot; /&gt;
+    
+    &lt;TextView
+        android:layout_width=&quot;wrap_content&quot;
+        android:layout_height=&quot;wrap_content&quot;
+        android:layout_centerInParent=&quot;true&quot;
+        android:text=&quot;Title&quot;
+        android:textColor=&quot;@android:color/black&quot; /&gt;
+
+&lt;/RelativeLayout&gt;</pre>
+<p>然后我们在需要引入导航栏的布局xml中通过&lt; include /&gt;导入这个共用布局。</p>
+<div id="lowerFullwidthVCR"></div>
+<pre>
+xml main.xml
+&lt;RelativeLayout mlns:android=
+&quot;http://schemas.android.com/apk/res/android&quot;
+    xmlns:tools=&quot;http://schemas.android.com/tools&quot;
+    android:layout_width=&quot;match_parent&quot;
+    android:layout_height=&quot;match_parent&quot; &gt;
+    
+    &lt;include 
+        android:layout_alignParentTop=&quot;true&quot;
+        layout=&quot;@layout/common_navitationbar&quot; /&gt;
+    
+&lt;/RelativeLayout&gt;</pre>
+<p>通过这种方式，我们既能提高UI的制作和复用效率，也能保证制作的UI布局更加规整和易维护。布局完成后我们运行一下，可以看到如下布局效果，这就是我们刚才完成的带导航栏的界面。</p>
+<p><img width="300" src="http://infoqstatic.com/resource/articles/android-optimise-layout/zh/resources/0117021.png" alt="" _href="img://null" _p="true" /></p>
+<p>接着我们进入sdk目录下的tools文件夹下，找到HierarchyViewer并运行（此时保持你的模拟器或真机正在运行需要进行分析的App），双击我们正在显示的这个App所代表的进程。</p>
+<p><img width="600" src="http://infoqstatic.com/resource/articles/android-optimise-layout/zh/resources/0117023.png" alt="" _href="img://null" _p="true" /></p>
+<p>接下来便会进入hierarchyviewer的界面，我们可以在这里很清晰看到正在运行的UI的布局层次结构以及它们之间的关系。</p>
+<p><img width="600" src="http://infoqstatic.com/resource/articles/android-optimise-layout/zh/resources/0117024.png" alt="" _href="img://null" _p="true" /></p>
+<p>分析刚刚我们构建的导航栏布局，放大布局分析图可以看到，被include进来的common_navitationbar.xml根节点是一个RelativeLayout，而包含它的主界面main.xml根节点也是一个RelativeLayout，它前面还有一个FrameLayout等几个节点，FrameLayout就是Activity布局中默认的父布局节点，再往上是一个LinearLayout，这个LinearLayout就是包含Activity布局和状态栏的整个屏幕显示的布局父节点，这个LinearLayout还有一个子节点就是ViewStub，关于这个节点我们在后面会详细介绍。</p>
+<p><img width="600" src="http://infoqstatic.com/resource/articles/android-optimise-layout/zh/resources/0117022.png" alt="" _href="img://null" _p="true" /></p>
+<h3>2、&lt; merge /&gt;的使用</h3>
+<p>&lt; merge /&gt;标签的作用是合并UI布局，使用该标签能降低UI布局的嵌套层次。该标签的主要使用场景主要包括两个，第一是当xml文件的根布局是FrameLayout时，可以用merge作为根节点。理由是因为Activity的内容布局中，默认就用了一个FrameLayout作为xml布局根节点的父节点，这一点可以从上图中看到，main.xml的根节点是一个RelativeLayout，其父节点就是一个FrameLayout，如果我们在main.xml里面使用FrameLayout作为根节点的话，这时就可以使用merge来合并成一个FrameLayout，这样就降低了布局嵌套层次。</p>
+<p>我们修改一下main.xml的内容，将根节点修改为merge标签。</p>
+<pre>
+xml main.xml
+
+&lt;merge xmlns:android=
+    &quot;http://schemas.android.com/apk/res/android&quot;
+    xmlns:tools=&quot;http://schemas.android.com/tools&quot;
+    android:layout_width=&quot;match_parent&quot;
+    android:background=&quot;@android:color/darker_gray&quot;
+    android:layout_height=&quot;match_parent&quot; &gt;
+    
+    &lt;include layout=&quot;@layout/common_navitationbar&quot; /&gt;
+    
+&lt;/merge&gt;</pre>
+<p>重新运行并打开HierarchyViewer查看此时的布局层次结构，发现之前多出来的一个RelativeLayout就没有了，直接将common_navigationbar.xml里面的内容合并到了main.xml里面。</p>
+<p><img width="600" src="http://infoqstatic.com/resource/articles/android-optimise-layout/zh/resources/0117025.png" alt="" _href="img://null" _p="true" /></p>
+<p>使用&lt; merge /&gt;的第二种情况是当用include标签导入一个共用布局时，如果父布局和子布局根节点为同一类型，可以使用merge将子节点布局的内容合并包含到父布局中，这样就可以减少一级嵌套层次。首先我们看看不使用merge的情况。我们新建一个布局文件common<em>navi</em>right.xml用来构建一个在导航栏右边的按钮布局。</p>
+<pre>
+xml common_navi_right.xml
+
+&lt;RelativeLayout mlns:android=
+&quot;http://schemas.android.com/apk/res/android&quot;
+    xmlns:tools=&quot;http://schemas.android.com/tools&quot;
+    android:layout_width=&quot;wrap_content&quot;
+    android:layout_height=&quot;wrap_content&quot; &gt;
+
+    &lt;Button
+        android:layout_width=&quot;wrap_content&quot;
+        android:layout_height=&quot;wrap_content&quot;
+        android:layout_alignParentRight=&quot;true&quot;
+        android:text=&quot;Ok&quot;
+        android:textColor=&quot;@android:color/black&quot; /&gt;
+    
+&lt;/RelativeLayout&gt;</pre>
+<p>然后修改common_navitationbar.xml的内容，添加一个include，将右侧按钮的布局导入：</p>
+<pre>
+xml common_navitationbar.xml
+
+&lt;RelativeLayout mlns:android=
+&quot;http://schemas.android.com/apk/res/android&quot;
+    xmlns:tools=&quot;http://schemas.android.com/tools&quot;
+    android:layout_width=&quot;match_parent&quot;
+    android:layout_height=&quot;wrap_content&quot;
+    android:background=&quot;@android:color/white&quot;
+    android:padding=&quot;10dip&quot; &gt;
+
+    &lt;Button
+        android:layout_width=&quot;wrap_content&quot;
+        android:layout_height=&quot;wrap_content&quot;
+        android:layout_alignParentLeft=&quot;true&quot;
+        android:text=&quot;Back&quot;
+        android:textColor=&quot;@android:color/black&quot; /&gt;
+    
+    &lt;TextView
+        android:layout_width=&quot;wrap_content&quot;
+        android:layout_height=&quot;wrap_content&quot;
+        android:layout_centerInParent=&quot;true&quot;
+        android:text=&quot;Title&quot;
+        android:textColor=&quot;@android:color/black&quot; /&gt;
+        
+    &lt;include layout=&quot;@layout/common_navi_right&quot; /&gt;
+
+&lt;/RelativeLayout&gt;</pre>
+<p>运行后的效果如下图，在导航栏右侧添加了一个按钮“ok”</p>
+<p><img width="300" src="http://infoqstatic.com/resource/articles/android-optimise-layout/zh/resources/0117026.png" alt="" _href="img://null" _p="true" /></p>
+<p>然后再运行HierarchyViewer看看现在的布局结构，发现common<em>navi</em>right.xml作为一个布局子节点嵌套在了common_navitationbar.xml下面。</p>
+<p><img width="600" src="http://infoqstatic.com/resource/articles/android-optimise-layout/zh/resources/0117027.png" alt="" _href="img://null" _p="true" /></p>
+<p>这时我们再将common<em>navi</em>right.xml的根节点类型改为merge。</p>
+<pre>
+xml common_navi_right.xml
+
+&lt;merge xmlns:android=
+    &quot;http://schemas.android.com/apk/res/android&quot;
+    xmlns:tools=&quot;http://schemas.android.com/tools&quot;
+    android:layout_width=&quot;wrap_content&quot;
+    android:layout_height=&quot;wrap_content&quot; &gt;
+
+    &lt;Button
+        android:layout_width=&quot;wrap_content&quot;
+        android:layout_height=&quot;wrap_content&quot;
+        android:layout_alignParentRight=&quot;true&quot;
+        android:text=&quot;Ok&quot;
+        android:textColor=&quot;@android:color/black&quot; /&gt;
+    
+&lt;/merge&gt;</pre>
+<p>重新运行并打开HierarchyViewer查看布局结构，发现之前嵌套的一个RelativeLayout就没有了，这就是使用merge的效果，能降低布局的嵌套层次。</p>
+<p><img width="600" src="http://infoqstatic.com/resource/articles/android-optimise-layout/zh/resources/0117028.png" alt="" _href="img://null" _p="true" /></p>
+<h3>3、&lt; ViewStub /&gt;的使用</h3>
+<p>也许有不少同学对ViewStub还比较陌生，首先来看看ViewStub在官方文档里是怎么介绍的：</p>
+<blockquote> 
+ <p>A ViewStub is an invisible, zero-sized View that can be used to lazily inflate layout resources at runtime. When a ViewStub is made visible, or when inflate() is invoked, the layout resource is inflated. The ViewStub then replaces itself in its parent with the inflated View or Views. Therefore, the ViewStub exists in the view hierarchy until setVisibility(int) or inflate() is invoked. The inflated View is added to the ViewStub's parent with the ViewStub's layout parameters.</p> 
+</blockquote>
+<p>大致意思是：ViewStub是一个不可见的，能在运行期间延迟加载的大小为0的View，它直接继承于View。当对一个ViewStub调用inflate()方法或设置它可见时，系统会加载在ViewStub标签中引入的我们自己定义的View，然后填充在父布局当中。也就是说，在对ViewStub调用inflate()方法或设置visible之前，它是不占用布局空间和系统资源的。它的使用场景可以是在我们需要加载并显示一些不常用的View时，例如一些网络异常的提示信息等。</p>
+<p>我们新建一个xml文件用来显示一个提示信息：</p>
+<pre>
+xml common_msg.xml
+
+&lt;RelativeLayout mlns:android=
+&quot;http://schemas.android.com/apk/res/android&quot;
+    xmlns:tools=&quot;http://schemas.android.com/tools&quot;
+    android:layout_width=&quot;wrap_content&quot;
+    android:layout_height=&quot;wrap_content&quot; &gt;
+
+   &lt;TextView
+        android:layout_width=&quot;wrap_content&quot;
+        android:layout_height=&quot;wrap_content&quot;
+        android:layout_centerInParent=&quot;true&quot;
+        android:background=&quot;@android:color/white&quot;
+        android:padding=&quot;10dip&quot;
+        android:text=&quot;Message&quot;
+        android:textColor=&quot;@android:color/black&quot; /&gt;
+    
+&lt;/RelativeLayout&gt;</pre>
+<p>然后在main.xml里面加入ViewStub的标签引入上面的布局：</p>
+<pre>
+xml main.xml
+
+&lt;merge xmlns:android=&quot;http://schemas.android.com/apk/res/android&quot;
+    xmlns:tools=&quot;http://schemas.android.com/tools&quot;
+    android:layout_width=&quot;match_parent&quot;
+    android:background=&quot;@android:color/darker_gray&quot;
+    android:layout_height=&quot;match_parent&quot; &gt;
+    
+    &lt;include layout=&quot;@layout/common_navitationbar&quot; /&gt;
+    
+    &lt;ViewStub
+        android:id=&quot;@+id/msg_layout&quot;
+        android:layout_width=&quot;wrap_content&quot;
+        android:layout_height=&quot;wrap_content&quot;
+        android:layout_gravity=&quot;center&quot;
+        android:layout=&quot;@layout/common_msg&quot; /&gt;
+    
+&lt;/merge&gt;</pre>
+<p>修改MainActivity.java的代码，我们这里设置为点击右上角按钮的时候显示自定义的common_msg.xml的内容。</p>
+<pre>
+java MainActivity.java
+
+public class MainActivity extends Activity {
+
+	private View msgView;
+	private boolean flag = true;
+	
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+        
+        this.findViewById(R.id.rightButton).
+setOnClickListener(new OnClickListener() {
+			
+			@Override
+			public void onClick(View arg0) {
+				System.out.print(&quot;111&quot;);
+				if(flag){
+					showMsgView();
+				}else{
+					closeMsgView();
+				}
+				flag = !flag;
+			}
+		});
+    }
+    
+    private void showMsgView(){
+    	if(msgView != null){
+    		msgView.setVisibility(View.VISIBLE);
+    		return;
+    	}
+    	ViewStub stub = (ViewStub)findViewById(R.id.msg_layout);
+        msgView = stub.inflate();
+    }
+    
+    private void closeMsgView(){
+    	if(msgView != null){
+    		msgView.setVisibility(View.GONE);
+    	}
+    }
+}</pre>
+<p>代码中我们通过flag来切换显示和隐藏common_msg.xml的内容，然后我们运行一下并点击右上角按钮来切换，效果如下：</p>
+<p><img width="300" alt="" src="http://infoqstatic.com/resource/articles/android-optimise-layout/zh/resources/0117029.png" _href="img://null" _p="true" /></p>
+<h2>总结</h2>
+<p>好了，到目前为止，我们就介绍了Android中关于布局优化的一些内容以及工具HierarchyViewer的使用。将前文提及的布局原则再列一下，欢迎大家补充更多的关于Android布局优化的实用原则。</p>
+<ul> 
+ <li>尽量多使用RelativeLayout，不要使用绝对布局AbsoluteLayout；</li> 
+ <li>将可复用的组件抽取出来并通过&lt; include /&gt;标签使用；</li> 
+ <li>使用&lt; ViewStub /&gt;标签来加载一些不常用的布局；</li> 
+ <li>使用&lt; merge /&gt;标签减少布局的嵌套层次；</li> 
+</ul>
+<p>作者新浪微博：<a href="http://weibo.com/renrentang">唐韧_Ryan</a></p>
 <hr />
-<p>感谢<a href="http://www.infoq.com/cn/author/侯伯薇">侯伯薇</a>对本文的审校。</p>
+<p>感谢<a href="http://www.infoq.com/cn/author/李永伦">李永伦</a>对本文的审校。</p>
 <p>给InfoQ中文站投稿或者参与内容翻译工作，请邮件至<a href="mailto:editors@cn.infoq.com">editors@cn.infoq.com</a>。也欢迎大家通过新浪微博（<a href="http://www.weibo.com/infoqchina">@InfoQ</a>）或者腾讯微博（<a href="http://t.qq.com/infoqchina">@InfoQ</a>）关注我们，并与我们的编辑和其他读者朋友交流。</p><br><br><br><br><br><br></body></html>

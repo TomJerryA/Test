@@ -1,6 +1,9 @@
 <html>
  <head></head> 
- <body> 
+ <body>
+  <div>
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/32.htmlb">Android布局优化</a> 在Android开发中，我们常用的布局方式主要有LinearLayout、RelativeLayout、FrameLayout等，通过这些布局我们可以实现各种各样的界面。与此同时，如何正确、高效的使用这些布局方式来组织UI控件，是我们构建优秀Android App的主要前提之一。本篇内容就主要围绕Android布局优化来讨论在日常开发中我们使用常用布局需要注意的一些方面，同时介绍一款SDK自带的UI性能检测工具HierarchyViewer。 
+  </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/31.htmlb">作者访谈与书评：“Nagios企业监控实践（原书第2版）”</a> 最近，David Josephsen的一本关于构建监控平台最佳实践的新书出版了，该书侧重使用方面对Nagios的运作原理进行了介绍，并包含了实施Nagios项目的实用指南。David编写这本书虽然以帮助系统工程师和企业架构师为主，但书中包含的内容依然与大多数技术角色相关。 
   </div> 
@@ -147,9 +150,6 @@
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/35.htmlb">JSIL：将CIL编译为JavaScript时所遇的挑战</a> 本文介绍了JSIL，这是一个将.NET转换为JavaScript的编译器，同时详细地讲解了将CIL代码编译为跨浏览器的JavaScript时所遇到的各种困难。 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/34.htmlb">重构遗留程序的一次案例学习</a> 重构遗留代码的理想方式是建立一套单元测试，以避免出现回归缺陷，但做到这一点往往并不容易。本文描述了一种可以安全地重构遗留代码的方法。 
-  </div> 
+  </div>  
  </body>
 </html>
