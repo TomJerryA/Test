@@ -1,6 +1,9 @@
 <html>
  <head></head> 
- <body> 
+ <body>
+  <div>
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/38.java">Is Android Moving to a Closed Source Model?</a>In an interesting analysis appeared on Ars Technica, Ron Amadeo argues that Google is progressively shifting Android towards a closed source model. Google's strategy would aim at making Android suitable to be freely customised and used &quot;for little hobbies&quot;, while hampering the choices of &quot;anyone trying to use Android without Google’s blessing&quot;.
+  </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/37.java">A Change in Leadership for Node.js</a>Isaac Schlueter recently announced his departure from the Node.js open source project, handing the reigns of leadership over to TJ Fontaine. Isaac also announced plans for a startup focused on npm. TJ shares some of his plans for Node over the upcoming year. 
   </div> 
@@ -147,9 +150,6 @@
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/42.java">Agile 2014 Conference Submissions Closing on 14 January</a>Submissions for talks at the Agile 2014 conference to be held in Orlando, Florida in August 2014 close on the 14th of January. The Agile Alliance is calling for interested speakers to submit their proposals soon. 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/41.java">Fix ASP.NET Browser Detection Error in Internet Explorer 11</a>Internet Explorer 11 will not be able to properly run .NET Framework 4.0 based web applications due to an error in the browser detection mechanism, which can be either fixed by installing .NET 4.5 or by adding a .browser file with correct definitions. 
-  </div> 
+  </div>  
  </body>
 </html>

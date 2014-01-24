@@ -1,7 +1,7 @@
 <html>
  <head></head> 
- <body>
-  <div>
+ <body> 
+  <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/32.htmlb">Android布局优化</a> 在Android开发中，我们常用的布局方式主要有LinearLayout、RelativeLayout、FrameLayout等，通过这些布局我们可以实现各种各样的界面。与此同时，如何正确、高效的使用这些布局方式来组织UI控件，是我们构建优秀Android App的主要前提之一。本篇内容就主要围绕Android布局优化来讨论在日常开发中我们使用常用布局需要注意的一些方面，同时介绍一款SDK自带的UI性能检测工具HierarchyViewer。 
   </div> 
   <div> 
@@ -150,6 +150,6 @@
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/35.htmlb">JSIL：将CIL编译为JavaScript时所遇的挑战</a> 本文介绍了JSIL，这是一个将.NET转换为JavaScript的编译器，同时详细地讲解了将CIL代码编译为跨浏览器的JavaScript时所遇到的各种困难。 
-  </div>  
+  </div> 
  </body>
 </html>
