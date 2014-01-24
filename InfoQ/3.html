@@ -1,23 +1,20 @@
-<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>Frans Bouma认为代码先行的ORM是“愚蠢的”</h3><p>在使用ORM构建基于数据库的项目时，开发者可以选择是先设计数据库表，还是先设计类或抽象模型。为了展开讨论，我们先列出Frans Bouma的结论：代码先行的ORM是愚蠢的。</p>
+<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>微软分布式计算框架Naiad获热议</h3><p><a href="http://research.microsoft.com/en-us/projects/naiad/">Naiad</a>是一个研究并行数据流的计算框架，本着<a href="http://research.microsoft.com/en-us/projects/dryad/default.aspx">Dryad</a>和<a href="http://research.microsoft.com/en-us/projects/dryadlinq/default.aspx">DryadLINQ</a>的精神。Dryad项目主要研究用于为小集群或大型数据中心编写并行和分布式程序的编程模型。DryadLINQ则是用于开发大规模的、运行在大集群上的并行应用，他具有轻便、强大、优雅的编程环境。与Dryad和DryadLINQ有别，Naiad专注于增量计算。</p>
+<p>Naiad支持差别数据流（differential dataflow），基于差别进行操作，而不是基于记录。能在现有昂贵的系统上非常高效的执行。</p>
+<p>Naiad通过Apache协议开源，并已经托管在<a href="https://github.com/MicrosoftResearchSVC/Naiad">Github</a>上，但Naiad并不兼容Linux。在SOSP13上Naiad的<a href="http://sigops.org/sosp/sosp13/talks/murray_naiad_se09_02.pptx">PPT</a>介绍以及<a href="http://research.microsoft.com/pubs/201100/naiad_sosp2013.pdf">论文</a>地址。</p>
+<p>Naiad在微博上引起的热议。</p>
+<p><a href="http://weibo.com/jiangbinglover">@Binos_ICT</a>:</p>
 <blockquote> 
- <p>先写代码，比如实体类，与先设计表一样有问题，它们都需要反向工程来得到抽象实体定义，以创建“对方”的元素：对类进行反向工程得到抽象实体定义，然后创建表和映射，或对表进行反向工程得到类，然后创建映射，这两者是等价的。核心问题是，如果先设计类或表，就等于先得到了抽象实体定义的某个投影的最终结果：类不是从天上掉下来的，在决定了领域包含这样一个类型后，它就存在了。例如，一个“Customer”，包含给定的字段：Id、CompanyName、Address等。</p> 
+ <p>Microsoft的Naiad要吃掉所有的分布式计算框架(Hadoop/Storm/Spark)，支持Batch、Interactive、Loop，异步消息和同步Notification，开源，可惜还不兼容Linux。</p> 
 </blockquote>
-<p>他还说道，</p>
+<p>他还补充道：</p>
 <blockquote> 
- <p>我知道“代码先行”的整个思想来源于开发者希望编写代码，用代码来思考，然后将对象持久化到数据库中。但事实是，你持久化到数据库的并不是对象，而是它们的内容，是实体的实例。而一个实体类的实例（即一个对象）则很有可能比实体的实例包含更多的数据，所以看似存储“对象”，实则无法覆盖对象。拿序列化一个对象来打比方，我们序列化的并不是对象，而是其数据的子集，得到的结果与源并不一定匹配。在将数据反序列化为JavaScript对象的时候，我们还能将它视为原始的.NET对象吗？当然不能，它是对象内部的数据，可以存在于任何地方。</p> 
- <p>那么，当“对象”序列化成JSON时，数据被序列化，这没有异议。但当同样的对象序列化成表行时，对象作为一个整体被序列化，这不是更奇怪吗？如果你仍然坚信ORM就是持久化对象，那么另一个不使用ORM但使用相同数据库的应用程序，在将“对象”持久化为表行时会发生什么呢？这个应用程序（甚至可以用完全不同的语言编写）可以完全正常地读取和消费存储于表行中的实体实例，不需要知道你将其视为一个持久化的.NET对象。因为让人惊奇的是，表行中的内容并不是持久化的对象，而是持久化的实体实例，一个抽象实体定义的实例，不是类定义的实例。</p> 
+ <p>Naiad像一个实验室的产品。</p> 
 </blockquote>
-<p>Reddit用户remy_porter对<a href="http://www.reddit.com/r/programming/comments/1t0rh6/codefirst_or_mapping_is_actually_rather_silly/?already_submitted=true">这个问题有不同的看法</a>，</p>
+<p><a href="http://weibo.com/wugansha">@吴甘沙</a>不看好Naiad：</p>
 <blockquote> 
- <p>我认为真正糟糕的是EF中的模型先行（Model First）。我痛恨它强制你使用的GUI工具。</p> 
- <p>我最喜欢的方式是用代码先行来实现一种殊途同归的方案。我以最有意义的方式编写对象模型，再以最有意义的方式编写数据库模型，然后使用FluentAPI来让两者匹配。</p> 
- <p>不过我承认，我用这种方式只是漫无目的地抛出数据库对象图，因为我告诉过管理层这个应用应该使用NoSQL，但他们却充耳不闻（该数据模型是存储不同结构的文档，但却要求用SQL Server）。</p> 
+ <p>和当初表示比MapReduce牛很多的师叔Dryad可能是相似的命运。</p> 
 </blockquote>
-<p>Nishruu倾向于将其用于测试，</p>
+<p><a href="http://weibo.com/1239476281">@didi10000</a>：</p>
 <blockquote> 
- <p>没错，我通常使用Fluent API来映射已经设计好的数据库。</p> 
- <p>代码先行真正有用的场景，是用内存SQLite DB或某种LocalDB来快速进行集成或单元测试。然后可以为测试概括而快速地重新创建数据库结构。</p> 
- <p>NHibernate就很好，能和内存SQLite DB很好地工作。EF就不尽如人意了，使用LocalDB时只能通过MDF文件重新创建数据库架构（schema）。</p> 
-</blockquote>
-<p>InfoQ邀请您阅读<a href="http://weblogs.asp.net/fbouma/archive/2013/12/14/code-first-o-r-mapping-is-actually-rather-silly.aspx">Bouma的完整吐槽</a>，并发表您的观点。</p>
-<p><strong>原文英文链接：</strong><a href="http://www.infoq.com/news/2013/12/Code-First-Debate">Frans Bouma Argues Code First O/R Mapping is “Silly”</a></p><br><br><br><br><br><br></body></html>
+ <p>配合他们之前的differential dataflow看，觉得赞。</p> 
+</blockquote><br><br><br><br><br><br></body></html>
