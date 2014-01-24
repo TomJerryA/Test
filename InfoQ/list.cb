@@ -2,6 +2,9 @@
  <head></head> 
  <body> 
   <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/34.cb">Sua aplica&ccedil;&atilde;o est&aacute; pronta?</a> Entregamos software na maior parte das vezes dentro prazos, espremendo todo o esfor&ccedil;o de desenvolvimento e testes para cumprir esse prazo. Priorizamos o que pensamos ser importante e uma vez que a aplica&ccedil;&atilde;o alcance certo n&iacute;vel de qualidade estamos prontos para a produ&ccedil;&atilde;o (go live). Mas mesmo quando entregamos, podemos dizer o qu&atilde;o preparada est&aacute; nossa aplica&ccedil;&atilde;o? 
+  </div> 
+  <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/33.cb">Do Groovy ao Java 8</a> A nova sintaxe para estilos programa&ccedil;&atilde;o funcional, para lambdas, cole&ccedil;&otilde;es de streaming e refer&ecirc;ncias a m&eacute;todos de cidad&otilde;es de primeira classe. Os desenvolvedores Groovy ter&atilde;o uma vantagem quando come&ccedil;arem a escrever c&oacute;digo Java no futuro. Esse artigo foca nos pontos em comum entre o Groovy e o Java 8 e ir&aacute; demonstrar o qual familiar s&atilde;o os conceitos do Groovy traduzidos para o Java 8. 
   </div> 
   <div> 

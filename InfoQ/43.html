@@ -1,6 +1,19 @@
-<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>OpenAccess ORM Q3 2013 SP1增加VS 2013支持, 停用传统的向导、Oracle 9i和MySQL 5</h3><p>Telerik于最近发布了<a href="http://www.telerik.com/products/orm/whats-new.aspx">OpenAccess ORM Q3 2013 SP1</a>，支持VS 2013、传统的向导、Oracle 9i和MySQL 5.0。伴随着最近的更新，现在的设计时工具能够与VS 2013完全兼容，同时还能在新的IDE中打开示例项目。新版本还使用类似于长度、规模和“最大值”大小这样的类型指导方针提升了Fluent API Dictionary映射。</p>
-<p>Telerik还宣布从下一个版本开始将会停用OpenAccess传统的向导，但是不包括基于配置的映射和OQL引擎。此外，在即将到来的新版本中Oralce 9i的支持也将不再可用，因为该版本将会完全支持Oracle 12c。</p>
-<p>即将发布的OpenAccess ORM补丁包将不会支持MySQL 5.0，因为Oracle已经在2011年12月宣布停止对该版本提供支持，建议开发者使用MySQL 5.5或者5.6。</p>
-<p>借助于最近的版本，开发者将能够指定一个特定的隔离级别，例如读未提交、读提交和快照。除此之外，因为ORM工具并不会使用事务进行读操作，所以它能够通过BackendConfiguration.Runtime.ReadWithoutTransactions显式地指定。</p>
-<p>根据官方提供的资料，下一个版本将会停止对VS 2008的支持，因为Microsoft已经在2013年9月停止了对VS 2008的支持。OpenAccess ORM Q3 2013 SP1还包含一些与PostgreSQL、SQLite和LINQ相关的提升，这将在连接键选择器中支持非列（non-column）表达式。</p>
-<p><b>查看英文原文</b>：<a href="http://www.infoq.com/news/2014/01/openaccess-orm-q3-2013-sp1">OpenAccess ORM Q3 2013 SP1 Adds VS 2013 Support, Discontinued Classic Wizards, Oracle 9i and MySQL 5</a></p><br><br><br><br><br><br></body></html>
+<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>Scala十岁了</h3><p>十年之前的1月20日，Michel Schinz宣布了<a href="http://article.gmane.org/gmane.comp.lang.scala/17">Scala编程语言的第一个实现</a>。在宣布之时，Scala被描述为“一种平滑地集成了面向对象编程和函数式编程的语言”，而且“是为以简洁、优雅且类型安全的方式表达常见编程模式而设计的”。</p>
+<p>当时是这么说的：</p>
+<blockquote> 
+ <p>我们宣布，Scala编程语言的第一个实现已经可用。Scala平滑地集成了面向对象编程和函数式编程。它是为以简洁、优雅且类型安全的方式表达常见编程模式而设计的。Scala引入了一些创新性的语言构件。例如：</p> 
+ <ul> 
+  <li>抽象类型和mixin统一了来自对象和模块系统的理念。</li> 
+  <li>类层次结构之上的模式匹配统一了函数式和面向对象的数据存取。它极大地简化了XML 树的处理。</li> 
+  <li>灵活的语法和类型系统支持构造高层的库和新的领域特定语言。</li> 
+ </ul> 
+ <p>与此同时，Scala还兼容Java。无需胶水代码和额外声明，Java的类库和框架都可以使用。</p> 
+ <p>Scala当前的实现运行在JVM上。它需要JDK 1.4，可以在Windows、MacOS、Linux、Solaris及其他多数操作系统上运行。Scala的一个.net版本正在开发之中。</p> 
+</blockquote>
+<p>尽管.net版本已经不再维护，但当时之所以要开发这个版本，其目标是提供一种能够运行在这两种虚拟机之上的、可以在不同操作系统间移植的公共语言。然而，随着JVM的JIT的改进，以及对Java字节码的依赖不断的增加，到Scala 2.10发布时，.net版本就中断了。</p>
+<p>Scala将函数式编程带入了主流JVM语言中，而且直接刺激了Java 8即将带来的lambda表达式（往往被不正确地称为闭包）和接口默认方法等特性。Scala很早就通过函数和Traits提供了对这些特性的支持，它们为以更简洁、可测试性更好的方式编程提供了新方法。</p>
+<p>在Scala取得成功的同时，复杂性也随之而来，因为这些特性是把双刃剑，代码的可读性可谓冰火两重天。Scala允许将任何Unicode标识符用作方法名和函数（包括符号），标准Scala类库已经发展到包含=:=、:+和:\等函数。Scala的取舍是以潜在的可读性损失为代价，改进编写的灵活性。</p>
+<p>最后，Scala仍然把自己看作一门研究性语言，一直在尝试新特性并弃用较旧的功能（比如原始的Actors包，它为Scala带来了和Go语言的coroutine类似的声望）。在不同版本之间，生成的字节码也有所变化，这意味着为当前的Scala 版本编译的开源项目数量很有限，而且尽管2.10已经发布一年有余了，但是主要Scala版本之间的过度往往还是非常痛苦。</p>
+<p>将于今年发布的Java 8会把Scala的一个特性子集带向JVM，那么看一下Scala下一步会添加什么特性，将会非常有趣。二进制兼容会给语言带来稳定，但是看上去现在离二进制兼容之遥远，几乎和十年前一样，不过时间会证明一切。</p>
+<p>下一个十年，你认为Scala会走向何方呢？</p>
+<p><strong>查看英文原文：</strong><a href="http://www.infoq.com/news/2014/01/scala-ten-years-old">Scala Turns Ten Today</a></p><br><br><br><br><br><br></body></html>

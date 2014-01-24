@@ -2,6 +2,18 @@
  <head></head> 
  <body> 
   <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/13.c">Ritmo sustent&aacute;vel: Como obt&ecirc;-lo e melhor&aacute;-lo?</a>Como princ&iacute;pio do Manifesto &Aacute;gil, o ritmo sustent&aacute;vel &eacute; considerado por muitos como fundamental para uma ado&ccedil;&atilde;o &aacute;gil. Atingir, por&eacute;m, um ritmo sustent&aacute;vel pode ser dif&iacute;cil, pois pede-se que as equipes acelerem cada vez mais. Qual sua experi&ecirc;ncia na ado&ccedil;&atilde;o de ritmo sustent&aacute;vel com sua equipe? Como foi tentar melhorar a velocidade de entrega e estabelecer um ritmo sustent&aacute;vel em outro patamar? 
+  </div> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/12.c">Google Glass: Kit de desenvolvimento com Xamarin.Android</a>Recentemente foi liberado o kit de desenvolvimento do Glass que permite que os desenvolvedores construam aplica&ccedil;&otilde;es que trabalham com o Google Glass usando o C# e o Xamarin.Android. 
+  </div> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/12.c">Google Play Services 4.1 agora com suporte ao Drive</a>O Google atualizou o Play Services para adicionar suporte ao Drive, jogos multiplayer com base em turnos e mais redes de an&uacute;ncios. 
+  </div> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/11.c">QCon SP: Hadoop, BigData na NASA, League of Legends e 7 tutoriais confirmados</a>O QCon SP 2014 (9-11 abril no WTC), j&aacute; tem confirmados mais de 40 palestrantes e 35 palestras, al&eacute;m de quase todos os tutoriais definidos. Hoje &eacute; o &uacute;ltimo dia para aproveitar a faixa de pre&ccedil;os atual. 
+  </div> 
+  <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/10.c">Async/Await - Efeitos sobre desempenho e outras armadilhas</a>O Async/Await &eacute; considerado uma das mais poderosas capacidades introduzidas no C# 5. Mas ser&aacute; que existem armadilhas que devemos evitar? E quais s&atilde;o os custos associados com o uso dessas primitivas? 
   </div> 
   <div> 
@@ -138,18 +150,6 @@
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/15.c">Pol&ecirc;mica sobre escalabilidade do MongoDB: 100 GB s&atilde;o uma barreira?</a>Um controverso post da MongoDB (antiga 10Gen) reacendeu desconfian&ccedil;as da comunidade em rela&ccedil;&atilde;o a tecnologias NoSQL. No texto s&atilde;o apontadas considera&ccedil;&otilde;es relativas &agrave; escalabilidade do MongoDB, especialmente em bases de dados maiores que 100 GB. 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/14.c">Firefox OS: Hist&oacute;rico e contexto do lan&ccedil;amento</a>Robert Nyman, evangelista t&eacute;cnico da Mozilla, comenta sobre a hist&oacute;ria do Boot to Gecko e sua evolu&ccedil;&atilde;o at&eacute; o lan&ccedil;amento do Firefox OS; aborda a arquitetura, as Web APIs, simulador e como publicar aplica&ccedil;&otilde;es no Firefox OS. 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/13.c">OSGi: Foco no JavaScript e Nativo</a>O aumento da popularidade de aplica&ccedil;&otilde;es modulares, poliglotas, reiniciou a discuss&atilde;o na OSGi Alliance no sentido de oferecer uma linguagem padr&atilde;o e uma vers&atilde;o independente de ambiente de execu&ccedil;&atilde;o. 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/12.c">Agilidade solit&aacute;ria: tornando-se Agile antes da pr&oacute;pria equipe</a>&Eacute; comum que organiza&ccedil;&otilde;es realizem uma transforma&ccedil;&atilde;o &aacute;gil que atinge toda uma equipe ou departamento. Mas existem profissionais que come&ccedil;am a utilizar pr&aacute;ticas &aacute;geis individualmente, ou que trabalham de forma &aacute;gil em equipes de apenas uma pessoa. Como essas pessoas podem adotar pr&aacute;ticas &aacute;geis e quais os tipos de benef&iacute;cios que podem obter com isso? 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/11.c">Agile nos Correios dos EUA: a experi&ecirc;ncia do MTEOR</a>Conhe&ccedil;a a experi&ecirc;ncia dos Correios dos Estados Unidos, que adotaram o Agile em um grande projeto, com resultados muito positivos at&eacute; agora. 
   </div> 
  </body>
 </html>

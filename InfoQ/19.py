@@ -1,19 +1,12 @@
-<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>Reactive Extensions for C++の紹介</h3><p><a target="_blank" href="http://www.infoq.com/news/2013/12/rx-cpp"><em>原文(投稿日：2013/12/20)へのリンク</em></a></p>
+<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>Apache Kafka, 他とは異なるメッセージングシステム</h3><p><em><a target="_blank" href="http://www.infoq.com/news/2013/12/apache-afka-messaging-system">原文(投稿日：2013/12/16)へのリンク</a></em></p>
 <div class="article_page_left news_container text_content_container"> 
  <div class="text_info"> 
-  <p>Rx.cppとしても知られる<a href="http://msopentech.com/blog/2013/12/05/ms-open-tech-hub-releases-rx-2-2/">Reactive Extensions for C++</a>が、WinRTでも（C++/CXを使って）、OS Xでも（clangを使って）利用できるようになった。まだ初期段階だが、最後のプレビュー以来、多くの仕事がなされている。</p> 
-  <p>スケジューリングはReactive Extensionsの基盤だ。WindowsのHWNDメッセージループに特化したものも含めて、このリリースでは5つのスケジューラが利用できる。</p> 
-  <ul> 
-   <li>Immediate</li> 
-   <li>CurrentThread</li> 
-   <li>EventLoop</li> 
-   <li>NewThread</li> 
-   <li>Window</li> 
-  </ul> 
-  <p>OrderBy、ForEach、Using、Scan、Throttle、TakeUntil、Skip、SkipUntil、ToVector、ToList、Zip、Concat、CombineLatest、Merge、ToAsyn、Using、ConnectableObservable、Multicast、Publish、PublishLast、RefCount、ConnectForever、SubscribeOn、ObserveOnといった「STLアルゴリズムの非同期等価」なオペレータは、Rx開発者にとっておなじみだろう。</p> 
-  <p>BindCommand、DeferOperation、CoreDispatcherScheduler、FromEventPattern、FromAsyncPattern、ReactiveCommandはWinRTのC++/CXに特有なものだ。最後のReactiveCommandは<a href="http://www.reactiveui.net/">Paul Betts氏のReactiveUI</a>に由来する。</p> 
-  <p>以下に、RangeからObservableを生成する例を示す。</p> 
-  <pre><p>//Declare an observable</p><p>auto values1 = rxcpp::Range(1, 10);</p><p>rxcpp::from(values1)</p><p>.for_each(</p><p>[](int p) {</p><p>cout &lt;&lt; p &lt;&lt; endl;</p><p>});</p></pre> 
-  <p><a href="http://rxcpp.codeplex.com/">Rx.cppのソースコード</a>はCodePlexからApache License 2.0ライセンスで利用できる。</p> 
+  <p>Apacheは、 <a href="https://archive.apache.org/dist/kafka/0.8.0/RELEASE_NOTES.html">Kafka0.8</a> をリリー スした。これは <a href="http://kafka.apache.org">Kafka</a> が Apache ソフトウェア財団のトップレ ベルプロジェクトになって以降の最初のメジャーリリースである。Apache Kafka は publish-subscribe 型のメッセージングシステムであり、オフライン・オンライン両方のメッセージ取得に適している。これ は大容量のイベントとログデータを低遅延で収集および配信する目的で、当初は LinkedIn で開発された メッセージングシステムであった。最新リリースには クラスター内レプリケーション機能と、多重データ ディレクトをリサポートする機能が含まれている。リクエスト処理も非同期型に変更され、リクエスト処 理スレッドのセカンダリプールを用いて実装されている。ログファイルは世代によるローテション管理が 可能で、ログレベルもJMXを通じて動的に設定可能である。パフォーマンステスト用のツールも追加された。 これはパフォーマンス問題の解決や、潜在的なパフォーマンスの改善点を見つけるのを助けてくれるだろ う。</p> 
+  <p>Kafka は分割型で、かつレプリカ対応型のコミットログサービスである。プロデューサはメッセージを 「Kafka トピックス」に対してパブリッシュ（送信）し、そして「コンシューマ」はそれらのトピックス にサブスクライブすることによってそのメッセージを消費（受信）する。Kafka クラスタにおけるサーバ は、ブローカと呼ばれる。各トピックに対して、Kafka クラスターはスケーリング、並行処理、そして フォールトトレラントに対応してパーティションを維持管理する。各々のパーティションは順序性をもっ たメッセージの不変シーケンスである。すなわちパーティションとは連続的に追加されるコミットログの ことを指している。パーティション内のメッセージは、それぞれに対して「オフセット」と呼ばれるシー ケンシャルなID番号を与えられる。</p> 
+  <p><img src="http://www.infoq.com/resource/news/2014/01/apache-afka-messaging-system/ja/resources/log_anatomy.png" alt="" _href="img://log_anatomy.png" _p="true" /></p> 
+  <p>オフセットは、コンシューマによって制御される。典型的なコンシューマはリスト内の先頭のメッセージ を処理するが、Kafka クラスターは一定の期間は（この期間はユーザが設定可能）パブリッシュされたメッ セージ全てを保持しているので、どんな順序でメッセージを消費することも可能である。これにより、コ ンシューマはKafkaクラスタに大きなインパクトを与えることなく現れたり消えたりすることができ、 Hadoopクラスターのようなオフライン型のコンシューマも適用することができるので、コンシューマの構 造は非常に簡素なものになる。プロデューサは、どのトピックのどのパーティションにメッセージをパブ リッシュするかを選択することが可能である。コンシューマは自身をコンシューマグループ名に割り当て、 各々のメッセージは登録された各コンシューマグループ内の１つのコンシューマに配信される。もし全て のコンシューマが異なるコンシューマグループに属していると、メッセージは個々のコンシューマに向かっ てブロードキャストされる。</p> 
+  <p>Kafka は 古典的なメッセージブローカのように使うこともできる。Kafka は高いスループットを持ち、 パーティション機能、レプリケーション機能、フォールトレラント機能を内蔵しているので、大規模なメッ セージ処理が必要なアプリケーションに適したソリューションの１つとなる。Kafka は大容量のWebサイト のアクティビティ・トラッキングにも使える。すなわち、サイト・アクティビティをパブリッシュしてリ アルタイムに処理したり、または Hadoop やオフラインのデータウェアハウスシステムにロードすること ができる。Kafka はログ収集システムとしても使える。ログ・ファイルを扱う代わりに、ログをメッセー ジのストリームとして扱うことができる。</p> 
+  <p>Kafka は LinkeIn で使われており、平均すると172,000メッセージ／秒という連続的な負荷のもとで１日 あたり100億個書き込まれるメッセージを処理している。これは、Kafkaのデータを扱う内部および外部の アプリケーション双方からの多重サブスクライバー機能のヘビーな使用例である。ここでは発生したメッ セージ１つにつき、およそ5.5回のメッセージ消費が発生している。これは、リアルタイムコンシューマに 対して配信された 一日総計550億を超えるメッセージから得られた結果である。ユーザのアクティビティ に関するトピックとシステム運用上のトピック両方を合わせると367個のトピックがあり、最大で一日あた り平均92GB（バッチ処理で圧縮された容量）のデータ追加が発生していた。メッセージは７日間保存され、 全トピック全体での圧縮容量は平均約9.5TBである。ライブ（リアルタイムの）コンシューマに加えて、多 数の巨大な Hadoop クラスタ があり、オフラインのデータロード処理によって不定期で、高スループット、 かつ並列的に発生するバーストアクセスを行っている。</p> 
+  <p>Kafkaについてもっと学ぶには、手始めに 公式 の <a href="http://kafka.apache.org/documentation.html">Apache Kafka ドキュメント</a> ページに アクセスし、そしてKafka をダウンロードすること。LinkedInからの論文 「<a href="http://sites.computer.org/debull/A12june/pipeline.pdf">LinkedInにおけるリアルタイム データパイプラインの構築</a>」もある。この論文では、なぜ Kafka が作られたのか、またKafkaの設計 に影響を与えた要因について述べられている。</p> 
  </div> 
 </div><br><br><br><br><br><br></body></html>

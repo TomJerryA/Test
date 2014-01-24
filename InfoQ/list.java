@@ -1,8 +1,29 @@
 <html>
  <head></head> 
- <body>
-  <div>
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/31.java">VS Anywhere Updated with Web Workspace, Moderated Sessions, Cooperative Merge and Bug Fixes</a>The recently released updated VS Anywhere, a real time collaboration tool for Visual Studio includes web workspace, moderated sessions, cooperative merge in addition to several bug fixes.
+ <body> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/37.java">A Change in Leadership for Node.js</a>Isaac Schlueter recently announced his departure from the Node.js open source project, handing the reigns of leadership over to TJ Fontaine. Isaac also announced plans for a startup focused on npm. TJ shares some of his plans for Node over the upcoming year. 
+  </div> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/36.java">Thirty Years of the Apple Mac</a>Thirty years ago, Apple unveiled the Mac in a seminal advert entitled 1984. InfoQ looks at the history of the Mac and shows the connection between that point and the system you're reading this post on. 
+  </div> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/36.java">Documentation in Agile: How Much and When to Write It?</a>The Manifesto for Agile Software Development values &quot;working software over comprehensive documentation&quot;. This core value asks us to think about how much and which kinds of documents are needed and when they need to be written. 
+  </div> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/35.java">Martin Fowler Presented Workflows of Refactoring</a>Martin Fowler published an article on his website describing the different workflows that could be used when refactoring and explaining the reasons for combining them. 
+  </div> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/34.java">SOLID Design Principles for JavaScript</a>The SOLID principles is one example from object oriented programming that can help you write good stable JavaScript code, Derick Bailey, an author and developer focusing on JavaScript, states in a recent presentation. 
+  </div> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/33.java">What Is Going on with PaaS?</a>Despite huge investments and years in development, PaaS has not managed to attract many customers so far. This article digests what several analysts are saying regarding the current status of PaaS and its future. 
+  </div> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/32.java">Doc-To-Help 2013 v2 Adds Responsive Design and Content Widgets</a>Component One has released Doc-To-Help 2013 v2 with a responsive user interface which automatically displays content depending up on the device from which it is accessed. It also includes content widgets such as note, lightbox, gallery, carousel, topic contents, tabs and code highlighter. 
+  </div> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/31.java">VS Anywhere Updated with Web Workspace, Moderated Sessions, Cooperative Merge and Bug Fixes</a>The recently released updated VS Anywhere, a real time collaboration tool for Visual Studio includes web workspace, moderated sessions, cooperative merge in addition to several bug fixes. 
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/30.java">Azul Offering Commercialised Versions of OpenJDK 6 and 7 for Windows and Linux</a>Azul Systems has announced that Zulu, its freely-available version of OpenJDK, now supports both Java 6 and Java 7 on Linux and Windows-based deployments. It is supported via the Zulu Community Support forums. In addition the firm is introducing Zulu Enterprise, which is a commercially supported version of OpenJDK. 
@@ -130,26 +151,5 @@
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/41.java">Fix ASP.NET Browser Detection Error in Internet Explorer 11</a>Internet Explorer 11 will not be able to properly run .NET Framework 4.0 based web applications due to an error in the browser detection mechanism, which can be either fixed by installing .NET 4.5 or by adding a .browser file with correct definitions. 
   </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/40.java">QCon London 2014 Tutorials: Reactive Extensions, Mobile Dev, Agile, Continuous Delivery (March 3-7)</a>Language pioneers, project leads, and seasoned practitioners will provide two days of hands-on tutorials at the eighth annual QCon London (Mar 3-7, 2014). Three to six hours in length, QCon tutorials delve into new technologies, tools, or methodologies driving innovation in enterprise software development. Get in early for the three day conference; reserve your seat now to save &pound;236 by Jan 8th. 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/39.java">PowerShell Team Publishes New Set of Desired State Configuration Resources</a>The PowerShell team released a new set of Desired Configuration State (DSC) resources, packaged in five modules: xWebAdministration; xComputerManagement; xPSDesiredStateConfiguration; xNetworking and xHyperV. This release aims to encourage the PowerShell community to author more DSC resources. It also becomes possible with this release to create a web server from scratch using only DSC resources. 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/38.java">Strengthening HTTP</a>The recent Snowden revelations have impacted the IETF HTTP/2 Working Group and how the protocol should handle encryption, i.e., should it be mandated? Mark Nottingham, the Working Group chair, shares his thoughts on the discussions so far and gives a clue as to how he sees it being resolved given information so far. He concludes by asking anyone with an opinion to share it with the Working Group. 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/37.java">A Few Highlights from QConSF2013- Part 2 of 2</a>It's one thing having an in-house training program. But there is a certain deeper insight that can be gained from attending a Q-Con conference in person. Which may be one reason why attendance at the globe-hopping event continues to grow. 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/36.java">OpenAccess ORM Q3 2013 SP1 Adds VS 2013 Support, Discontinued Classic Wizards, Oracle 9i and MySQL 5</a>The recently released OpenAccess ORM Q3 2013 SP1 by Telerik has introduced support for Visual Studio 2013 in addition to extended support for Visual Studio 2008. Moreover, support for classic wizards, Oracle 9i and MySQL 5.0 will be discontinued beginning with the next release of OpenAccess ORM. 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/35.java">Adding Purpose and Hypotheses to Agile Retrospectives</a>Regularly doing agile retrospectives helps teams to learn and improve themselves. You can make retrospectives more effective by adding purposes and by validating if your retrospective actions are leading to improvement with the usage of hypotheses. 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/34.java">FutureOps with Immutable Infrastructures and Built-in Failure Recovery</a>Mitchell Hashimoto, creator of Vagrant, gave a talk last month at Velocity Conf London about his vision for a “FutureOps” with immutable infrastructures and built-in failure recovery. 
-  </div>  
  </body>
 </html>

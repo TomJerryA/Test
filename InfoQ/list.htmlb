@@ -2,6 +2,15 @@
  <head></head> 
  <body> 
   <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/31.htmlb">作者访谈与书评：“Nagios企业监控实践（原书第2版）”</a> 最近，David Josephsen的一本关于构建监控平台最佳实践的新书出版了，该书侧重使用方面对Nagios的运作原理进行了介绍，并包含了实施Nagios项目的实用指南。David编写这本书虽然以帮助系统工程师和企业架构师为主，但书中包含的内容依然与大多数技术角色相关。 
+  </div> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/30.htmlb">基于AWS的自动化部署实践</a> 随着DevOps观念的深入发展，自动化部署已经逐渐成为现代软件开发、部署及运营中的重要一环。本文以Amazon Web Service（AWS）为背景，详细介绍了为运行在AWS上面的在线服务进行自动化部署的一种实践，呈现出传统DevOps精神与AWS服务的高度结合。 
+  </div> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/30.htmlb">宁愿编写代码？还是把事情都写下来吧！</a> 出于多方面原因，大多数开发者都很讨厌编写代码之外的东西。敏捷宣言也不再强调文档的重要性，但是有的时候，项目中的些许文档可能会起到很大的作用。在这篇文章中，我们来探讨一下，为什么“协作胜过面面俱到的文档”并不意味着“不要”文档，以及何时应该停下手中的代码，把事情记下来。 
+  </div> 
+  <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/29.htmlb">为首次部署MongoDB做好准备：容量计划和监控</a> 在本文中作者Mat Keep将从容量计划和监控两个方面讨论MongoDB数据库的最佳部署实践。他还会介绍硬件选择、监控的关键指标和添加分片的时机等主题。 
   </div> 
   <div> 
@@ -141,15 +150,6 @@
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/34.htmlb">重构遗留程序的一次案例学习</a> 重构遗留代码的理想方式是建立一套单元测试，以避免出现回归缺陷，但做到这一点往往并不容易。本文描述了一种可以安全地重构遗留代码的方法。 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/34.htmlb">测试覆盖（率）到底有什么用？</a> 经常有人问我这样的问题：“我们在做单元测试，那测试覆盖率要到多少才行？”。而我的答案很简单，“作为指标的测试覆盖率都是没有用处的。” 测试覆盖应该是一种学习手段。学习为什么有些代码没有被覆盖到，以及为什么有些代码变了测试却没有失败。理解“为什么”背后的原因，程序员就可以做相应的改善和提高。本文会给大家介绍一些传统的测试覆盖方法和一种称为“代码变异测试”（Mutation Test）的方法。大家将会看到这些方法都可以产生什么样的学习点，以及代码变异测试相比传统方法更有价值的地方。 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/33.htmlb">规划和掌控复杂项目</a> 一般来说，规划和编制预算,都是在对开发成果的预测的基础上进行的。很多时候，开发团队对故事进行了估算，但整个项目的预算却又与该估算相互独立。特别是在复杂项目中，这往往会带来出乎意料的结果（不欢迎的）。来自超越预算理论的洞见能够帮助我们增加灵活度并专注于业务价值。 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/32.htmlb">保护好你的秘密</a> Dennis Sosnoski 解释了理应安全的连接怎么会被降级，安全级别和它最容易被攻破的薄弱点处于同一水平。还有最强的加密形式在私钥暴露后面对数据捕获和破解是多么脆弱。本文将介绍一些办法，可以让数据交换更加安全，让别人难以窥伺或篡改。 
   </div> 
  </body>
 </html>

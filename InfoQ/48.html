@@ -1,28 +1,71 @@
-<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>12款免费与开源的NoSQL数据库介绍</h3><p><a href="http://theprofessionalspoint.blogspot.in/p/technologies-delphi-2010-and-xe2.html">Naresh Kumar</a>是位软件工程师与热情的博主，对于编程与新事物拥有极大的兴趣，非常乐于与其他开发者和程序员分享技术上的研究成果。近日，Naresh<a href="http://theprofessionalspoint.blogspot.in/2014/01/12-best-free-and-open-source-nosql.html">撰文</a>谈到了12款知名的免费、开源NoSQL数据库，并对这些数据库的特点进行了分析。</p>
-<p>现在，NoSQL数据库变得越来越流行，我在这里总结出了一些非常棒的、免费且开源的NoSQL数据库。在这些数据库中，MongoDB独占鳌头，拥有相当大的使用量。这些免费且开源的NoSQL数据库具有很好的可伸缩性与灵活性，非常适合于大数据存储与处理。相较于传统的关系型数据库，这些NoSQL数据库在性能上具有很大的优势。然而，这些NoSQL数据库未必最适合你。大多数常见的应用仍然可以使用传统的关系型数据库进行开发。NoSQL数据库依然不太适合于那些任务关键型的事务要求。我对这些数据库进行了一些简单介绍，下面就来看看。</p>
-<p><b>1. MongoDB</b></p>
-<p>MongoDB是个面向文档的数据库，使用JSON风格的数据格式。它非常适合于网站的数据存储、内容管理与缓存应用，并且通过配置可以实现复制与高可用性功能。</p>
-<p>MongoDB具有很强的可伸缩性，性能表现优异。它使用C++编写，基于文档存储。此外，MongoDB还支持全文检索、跨WAN与LAN的高可用性、易于实现的复制、水平扩展、基于文档的丰富查询、在数据处理与聚合等方面具有很强的灵活性。</p>
-<p><b>2. Cassandra</b></p>
-<p>这是个Apache软件基金会的项目，Cassandra是个分布式数据库，支持分散的数据存储，可以实现容错以及无单点故障等。换句话说，“Cassandra非常适合于那些无法忍受数据丢失的应用”。</p>
-<p><b>3. CouchDB</b></p>
-<p>这也是Apache软件基金会的一个项目，CouchDB是另一个面向文档的数据库，以JSON格式存储数据。它兼容于ACID，像MongoDB一样，CouchDB也可以用于存储网站的数据与内容，以及提供缓存等。你可以通过JavaScript在CouchDB上运行MapReduce查询。此外，CouchDB还提供了一个非常方便的基于Web的管理控制台。它非常适合于Web应用。</p>
-<p><b>4. Hypertable</b></p>
-<p>Hypertable模仿的是Google的BigTable数据库系统。Hypertable的创建者将“成为高可用、PB规模的数据库开源标准”作为Hypertable的目标。换言之，Hypertable的设计目标是跨越多个廉价的服务器可靠地存储大量数据。</p>
-<p><b>5. Redis</b></p>
-<p>这是个开源、高级的键值存储。由于在键中使用了hash、set、string、sorted set及list，因此Redis也称作数据结构服务器。这个系统可以帮助你执行原子操作，比如说增加hash中的值、集合的交集运算、字符串拼接、差集与并集等。Redis通过内存中的数据集实现了高性能。此外，该数据库还兼容于大多数编程语言。</p>
-<p><b>6. Riak</b></p>
-<p>Riak是最为强大的分布式数据库之一，它提供了轻松且可预测的伸缩能力，向用户提供了快速测试、原型与应用部署能力，从而简化应用的开发过程。</p>
-<p><b>7. Neo4j</b></p>
-<p>Neo4j是一款NoSQL图型数据库，具有非常高的性能。它拥有一个健壮且成熟的系统的所有特性，向程序员提供了灵活且面向对象的网络结构，可以让开发者充分享受到拥有完整事务特性的数据库的所有好处。相较于RDBMS，Neo4j还对某些应用提供了不少性能改进。</p>
-<p><b>8. Hadoop HBase</b></p>
-<p>HBase是一款可伸缩、分布式的大数据存储。它可以用在数据的实时与随机访问的场景下。HBase拥有模块化与线性的可伸缩性，并且能够保证读写的严格一致性。HBase提供了一个Java API，可以实现轻松的客户端访问；提供了可配置且自动化的表分区功能；还有Bloom过滤器以及block缓存等特性。</p>
-<p><b>9. Couchbase</b></p>
-<p>虽然Couchbase是CouchDB的派生，不过它已经成为了一款功能完善的数据库产品。它向文档数据库转移的趋势会让MongoDB感到压力。每个节点上它都是多线程的，这是个非常主要的可伸缩性优势，特别是当托管在自定义或是Bare-Metal硬件上时更是如此。借助于一些非常棒的集成特性，诸如与Hadoop的集成，Couchbase对于数据存储来说是个非常不错的选择。</p>
-<p><b>10. MemcacheDB</b></p>
-<p>这是个分布式的键值存储系统，我们不应该将其与缓存解决方案搞混；相反，它是个持久化存储引擎，用于数据存储并以非常快速且可靠的方式检索数据。它遵循memcache协议。其存储后端用于Berkeley DB中，支持诸如复制与事务等特性。</p>
-<p><b>11. REVENDB</b></p>
-<p>RAVENDB是第二代开源数据库，它面向文档存储并且无模式，这样就可以轻松将对象存储到其中了。它提供了非常灵活且快速的查询，通过对复制、多租与分片提供开箱即用的支持使得我们可以非常轻松地实现伸缩功能。它对ACID事务提供了完整的支持，同时又能保证数据的安全性。除了高性能之外，它还通过bundle提供了轻松的可扩展性。</p>
-<p><b>12. Voldemort</b></p>
-<p>这是个自动复制的分布式存储系统。它提供了自动化的数据分区功能，透明的服务器失败处理、可插拔的序列化功能、独立的节点、数据版本化以及跨越各种数据中心的数据分发功能。</p>
-<p>各位InfoQ读者，不知在你的项目中曾经、现在或是未来使用了哪些NoSQL数据库。现今的NoSQL世界纷繁复杂，NoSQL数据库也多如牛毛，而且有一些数据库提供了相似的特性，本文所列出的只是其中比较有代表性的12款NoSQL产品。你是否使用过他们呢？是否使用了本文没有介绍的产品呢？他们有哪些特性打动了你，让你决定使用他们呢？非常欢迎将你的经历与看法与我们一起分享。</p><br><br><br><br><br><br></body></html>
+<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>专访iOS开发框架BeeFramework作者郭虹宇</h3><p><a href="https://github.com/gavinkwoe/BeeFramework">BeeFramework</a>是一个iOS应用开发框架，由国内开发者郭虹宇创立并且在Github上开源。经过一年多的发展，BeeFramework在Github上，框架类排名全站<a href="https://github.com/search?q=Framework&amp;ref=cmdform">第8名</a>，在Objective-C语言中排<a href="https://github.com/search?q=Framework&amp;ref=cmdform">第2名</a>。</p>
+<p>InfoQ采访了BeeFramework的作者郭虹宇（<a href="http://weibo.com/gavinkwoe">@老郭为人民服务</a>），他活跃于iOS开源社区。从2006年大学毕业，一直从事着跟手机相关的研发工作，包括UI框架、输入法、浏览器、播放器、社交软件、休闲游戏等。2012年从腾讯离职开始了创业之路，目前加入<a href="http://www.geek-zoo.com">GeekZooStudio</a>，负责公司的技术研发和管理工作。</p>
+<p><strong>InfoQ：请介绍一下BeeFramework这个项目的背景，当初为什么打算做这个项目？</strong></p>
+<blockquote> 
+ <p><strong>郭虹宇：</strong>BeeFramework的出现并非偶然，与我的工作经历有较大有关系。</p> 
+ <p>12年我在腾讯负责的其中一个项目是手机QQ空间iOS版，因为其代码曾经分别由几波团队交接过，较为混乱，以至于很难继续维护。同时需要应对新需求，又要维护老的代码，要求2周一个迭代输出版本。在这种情况下，老的代码结构之上基本无法完成产品的快速迭代，更别说并行的新项目的启动。当时，公司内部根本就没有一套可以复用的框架或类似的东西，包括许多重点项目在内，都是基于很多开源组件拼凑而成，于是有了开发一套简单通用MVC框架的想法。</p> 
+ <p>第一个版本，大概两周时间完成了框架中Controller的部分以及相关代码自动生成工具。这个版本首先在QQ空间和QQ游戏大厅两个项目中运用起来，得到不错的效果。我在离开腾讯之后，基于以往在腾讯做项目的经验，将这个框架全面应用在真正的创业项目中，并取名为Bee，寓意着 “敏捷、高效” 的意思。2012年底，我将该项目开源在Github社区中，最初是0.1版，迄今共发布了5个大版本，最新版本为0.5.0。</p> 
+</blockquote>
+<p><strong>InfoQ：BeeFramework在中国现在有哪些主要的客户在使用？ </strong></p>
+<blockquote> 
+ <p><strong>郭虹宇：</strong>目前开发者数量在1300人左右，其中以个人和创业公司使用居多，大公司占少数。</p> 
+ <p>据我所知，腾讯内部的一些产品有在使用，如 <a href="http://gt.qq.com/">GT随身调</a>和pengo微博。新浪团队应该也有在用，其他的还有：北京电视台、屈臣氏中国等。我们的自有产品 <a href="http://www.ecmobile.me">ecmobile.me</a> 也完全基于BeeFramework。</p> 
+</blockquote>
+<p><strong>InfoQ：业界内还有哪些与BeeFramework类似的框架？BeeFramework和他们相比有什么优缺点？</strong></p>
+<blockquote> 
+ <p><strong>郭虹宇：</strong>国内还没有，国外类似的有<a href="http://www.pixate.com">Pixate</a>、<a href="https://github.com/tombenner/nui">NUI</a>、<a href="https://github.com/cloudkite/Masonry">Masonry</a>等，相比之下这三者都在初级阶段。</p> 
+ <p>BeeFramework是全栈式（Full-Stack）半混合型（Semi-Hybrid）的适合于大规模（Large-Scale）的App开发框架，是一套App从无到有的整体解决方案，不仅提供了XML+CSS的开发方式，也提供了几乎满足你所有需求的组件，另外也提供了一系列的辅助工具。</p> 
+ <p>Pixate / NUI，可以当做原生控件对CSS的扩展支持来用，两者不能当做完整的APP解决方案。</p> 
+ <p>Masonry，是对AutoLayout的一种语法上的封装，允许原生界面支持相对比较复杂的响应式布局，像是一种过度的技术。</p> 
+ <p>对比使用方式上，其它框架更倾向于原生的开发方式，而BeeFramework倾向于前端开发的方式，允许开发者通过XML+CSS编写模版。</p> 
+ <p>对比实现方式上，其它框架更倾向于依赖平台相关API，而BeeFramework是独立于平台之上的，不会因为系统升级而出现兼容性问题。</p> 
+ <p>另外BeeFramework还有数十个组件可以提供给开发者使用，这个目前为止包括Github所有iOS开源项目在内都无法比拟。</p> 
+ <p>BeeFramework是真正属于框架类的产品，目前在Github中Framework类排名全站<a href="https://github.com/search?q=Framework&amp;ref=cmdform">第8名</a>，在Objective-C语言的Framework中<a href="https://github.com/search?q=Framework&amp;ref=cmdform">第2名</a>。</p> 
+</blockquote>
+<p><strong>InfoQ：BeeFramework为什么选择一个基于XML和CSS的布局方案？</strong></p>
+<blockquote> 
+ <p><strong>郭虹宇：</strong>随着iPhone/iPad/Android手机的普及，各大手机生产厂商包括苹果在内，已不安于现状只研发固定分辨率的手机产品。越来越多的事实证明，固执的巨人Apple也扩大产品线，不光在物理屏做了改变，技术上也逐步从静态布局到AutoLayout，一切都是在暗示着开发者，未来的手持产品将是多样化的，不再是iPhone4 Retina屏的单一产品做为行业标准的年代。</p> 
+ <p>记得iPhone5和iOS7出现的那一年，想必让全球iOS开发大吃一惊，界面比例和样式不再兼容，写死坐标必死无疑。如果App在开发时只考虑了一种分辨率，那接下来的UI适配工作将是天翻地覆的。此前如此，此后更是如此。</p> 
+ <p>12年的时候，我了解到Responsive Design这一概念，这时才真正的意识到历史是可以重复的，技术也可以是复用的，在Web前端领域已有更优秀的考虑更全面的响应式UI解决方案，被Business insider等多家评为未来的趋势。Google的Android系统是开放性的，在设计时就考虑到了这一问题，通过另类的XML方式提供给界面响应式的能力。</p> 
+ <p>BeeFramework说白了是iPhone4/4S时代出现的一个产物，那时Apple对于响应式布局并没有概念，随着各种UI问题的出现，必会有人给出答案。我们早先一步考虑到了这个问题，结合Web与Android的实现方式，BeeFramework独创了MobileXML+MobileCSS来解决UI响应式的问题，即Semi-Hybrid模式，我相信这将会是未来的一个趋势。</p> 
+</blockquote>
+<p><strong>InfoQ：未来BeeFramework打算往哪些方面发展？</strong></p>
+<blockquote> 
+ <p><strong>郭虹宇：</strong>2014年计划输出到1.0正式版本，重点解决几个问题。</p> 
+ <ol> 
+  <li>模块化：More easier, more lighter</li> 
+  <li>标准化：MobileCSS/XML standardization</li> 
+  <li>可视化：Visualization tools</li> 
+  <li>跨平台：Android support</li> 
+  <li>文档化：Tech documentation &amp; Video tutorial</li> 
+ </ol> 
+ <p>在以上这些完备的同时，我们将推出一系列的跨平台标准UI库和快速开发组件，免费开源的提供给开发者使用，可能会类似于国外的ThemeForest，这些都需要长时间的技术积累才能够实现。</p> 
+</blockquote>
+<p><strong>InfoQ：BeeFramework收到了多少来自开源社区的代码贡献？收到了多少来自开源社区的bug报告？ </strong></p>
+<blockquote> 
+ <p>郭虹宇：Issue: 70+, Pull Request: 70+</p> 
+</blockquote>
+<p><strong>InfoQ：你认为一个成功的开源项目需要具备哪些特点？</strong></p>
+<blockquote> 
+ <p>郭虹宇：</p> 
+ <ol> 
+  <li>从实际需求出发，解决行业范围内的一个问题</li> 
+  <li>稳定的核心团队，持续的时间投入</li> 
+  <li>定期的版本更新，及时的BUG FIX</li> 
+  <li>有个网站，形成固定的技术圈子（论坛或QQ群）</li> 
+ </ol> 
+</blockquote>
+<p><strong>InfoQ：你为什么选择将BeeFramework开源？</strong></p>
+<blockquote> 
+ <p><strong>郭虹宇：</strong>与Geek Zoo Studio的文化有极大的关系，崇尚使用开源、分享开源。</p> 
+</blockquote>
+<p><strong>InfoQ：你每天有多少精力花在BeeFramework的开发上？</strong></p>
+<blockquote> 
+ <p><strong>郭虹宇：</strong>几乎每天都在修改BeeFramework，最忙的时候每天差不多一半时间花在上面。</p> 
+</blockquote>
+<p><strong>InfoQ：你从BeeFramework得到的最大收获是什么？</strong></p>
+<blockquote> 
+ <p><strong>郭虹宇：</strong>开源使我们收获了未来，我想很多开源爱好者与我有共同的感受。通过开源与许许多多开发者或创业公司变成了朋友，Geek Zoo Studio也通过开源收获了更多的客户。以前，我们的产品来自于开源社区，现在，我们的产品将回馈于开源社区。</p> 
+ <p>我坚信，未来是通过现在付出的的努力而换来的回报。</p> 
+</blockquote>
+<p>&nbsp;</p><br><br><br><br><br><br></body></html>

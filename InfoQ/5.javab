@@ -1,44 +1,101 @@
-<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>Estimating on agile projects: what’s the story, what’s the point?</h3><h2>Introduction</h2>
-<p>Before you commission a painter to decorate your home or a mechanic to fix your car, you get an estimate from them, right? You need to know how much it’s likely to cost and how long it might take. It’s just common sense.</p>
-<p>What does experience tell us, however? How close are those original estimates to the final bill? It’s all too likely that the painter will find loose plaster that needs removing and the wall needs rendering and re-plastering. The mechanic is sure to find additional work required to get your car roadworthy again. In a 1951 cartoon for the New Yorker magazine, Syd Hoff drew a mechanic saying to his customer,</p>
-<blockquote>
- “Of course, that’s only an estimate; the actual cost will be more”.
-</blockquote>
-<p><img _p="true" _href="img://1fig1.jpg" alt="" src="http://www.infoq.com/resource/articles/agile-estimating-why-how/en/resources/1fig1.jpg" /></p>
-<p>If the painter or mechanic tells us in enough time, we can choose not to take on the extra work … and yet, all too often, we feel we have to fix these additional things. Who wants to live in a house with a potentially damp wall or drive in a car with potentially faulty steering?</p>
-<p>How do we overcome this? A common reaction is to insist on a full and final fixed-price estimate, or ‘quote’ as it’s commonly called; so they work harder and longer to get more accurate estimates. Yet however hard they work, they still cannot really predict the unexpected.</p>
-<h2>In the life of projects, this is just the same</h2>
-<p>Traditionally, project managers tend to focus on creating detailed estimates that can withstand scrutiny from the finance team. Of course, this is based on ‘known knowns’ with some contingency for the ‘known unknowns’ … and as Donald Rumsfeld is famously quoted “there are also unknown unknowns – there are things we do not know we don't know”. Like the tradespeople above, we can never really predict the unexpected.</p>
+<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>ActiveJPA – Active Record Pattern for JPA</h3><p>ActiveRecord is a Ruby on Rails’ ORM layer, roughly comparable to Hibernate in Java. ActiveRecord is based on conventions rather than configuration, so it is easier to work with than Hibernate. It really shines when it comes to simplifying the basic operations for creating, reading, updating, and deleting data.</p>
+<p>With ActiveRecord, your model class doubles as a Data Access Object (DAO) to perform the CRUD operations. After my early investigations I was so impressed with ActiveRecord that I started looking for solutions that simplify usage of ORMs based on the Java Persistence API (JPA).</p>
+<p>Most JPA applications have some kind of Data Access Layer (DAL) to interact with the database. Usually a DAL consists of Data Access Objects (DAO) or classes of the <a href="http://martinfowler.com/eaaCatalog/repository.html">Repository design pattern</a>.</p>
+<p>While a DAO is usually implemented in a one-to-one relationship with an entity object, repositories are implemented per <a href="http://martinfowler.com/bliki/DDD_Aggregate.html">aggregate root</a>. In either case these applications end up creating multiple classes to interact with the database. While the right kind of abstraction can limit the number of classes created, it still introduces an additional layer that you have to maintain and test in your application.</p>
+<p><a href="https://github.com/activejpa/activejpa">ActiveJPA</a> is a Java implementation of <a href="http://www.martinfowler.com/eaaCatalog/activeRecord.html">Martin Fowler’s Active Record pattern</a> over JPA. It wraps around JPA and provides useful abstractions to simplify data access. With ActiveJPA, models themselves act as a DAO and interact with the database without you having to write any additional code for the DAL.</p>
+<p>Since ActiveJPA uses the JPA spec, all ORM implementations (Hibernate, EclipseLink, OpenJPA, etc.) that implement JPA can be used with ActiveJPA.</p>
 <div id="lowerFullwidthVCR"></div>
-<p>The more we invest in creating elaborate estimates, however, the more problems we cause. Detailed estimates can be seen as a binding quote, a <a href="http://www.estherderby.com/2012/03/estimating-is-often-helpful-estimates-are-often-not.html">target that distracts from delivering value</a>, and focusing on delivering something—or even anything—to the agreed date and cost.</p>
-<p>We beat ourselves up in post-implementation reviews, and tell ourselves to just try harder; Einstein, however, defined insanity as “doing the same thing over and over and expecting different results”; so there must be a better way.</p>
-<p>Surely this isn’t true for agile projects? Don’t we just start with a high-level scope and work it out as we go along? Well, yes and no (or as they would say here in New Zealand, “yeah … nah”). While we don’t hamstring ourselves by creating detailed estimates, it is still vital that we get a feel for the size of the work we’re considering, and here’s why …</p>
-<h2>Why we need estimates</h2>
-<p>Forget about estimates being used to build beautifully crafted Gantt charts that force us to focus on tasks and not outcomes. There are three outcomes that need us to get a rough handle on how big something is.</p>
-<ol> 
- <li>When we’re considering the justification for a proposed project, we need to understand the likely costs in advance, so that we can decide whether it is worth the investment.</li> 
- <li>When we’re launching new or improved products to market, we need some idea of roughly <a href="http://www.mountaingoatsoftware.com/blog/assigning-story-points-at-the-right-time-or-not-at-all">when significant features might be ready for release</a>, so we can plan associated activities.</li> 
- <li>When we’re prioritising work, the product owner needs to understand the cost, and the team needs to understand the value, of each story (or backlog item).</li> 
-</ol>
-<p>It’s also interesting to note that estimating can be a really healthy activity, <a href="http://msdn.microsoft.com/en-us/library/hh273052/">so long as the whole team collaborates</a> on it together. It helps foster a buy-in from the whole team and ensure that everyone gets a common understanding of the scope and value to be delivered.</p>
-<p>However the label of ‘estimates’ can be distracting.</p>
-<h2>Use sizes rather than estimates</h2>
-<p>To avoid setting an expectation that we’re talking about cost and time, when we estimate the complexity of a story, some of us like to refer to this as ‘sizing’ rather than estimating. In the 90’s when I first used Scrum and XP—before they were even called agile practices—we sized stories using t-shirt sizes (S, M, L, and XL).</p>
-<p>Now, however, we use story points – <a href="http://agile.dzone.com/articles/story-point">a way of sizing stories relative to each other</a> – so we find what will be the simplest story, size that as 1-point story, then compare another story to that, if it’s more complex than maybe it’s a 3-point story.</p>
-<p>To make things more interesting, we don’t use a simple sequence like 1, 2, 3, 4, 5, etc. – instead we use a modified form of the Fibonacci sequence like 1, 2, 3, 5, 8, 13, etc. (as seen in ‘The Da Vinci Code’). This makes the jump between numbers larger the higher we go and drives us to choose which is smaller or larger.</p>
-<p>While this is not an exact science, it is more than good enough for the three outcomes mentioned above, and as John Maynard Keynes said, “it is better to be roughly right, than precisely wrong”. This means, though, we still need to translate story points to rough time and rough cost.</p>
-<p>Another practice central to agile projects is establishing the ‘definition of done’, that is to have a comprehensive understanding of <a href="http://www.dzone.com/articles/definitions-done-practice">everything required to say that a story is done and releasable</a>, including items like user documentation, translation, advertising, etc. etc.</p>
-<p>Provided we have a good definition of done, we can then take a couple of sample stories and calculate the effort required. From that we can get rough cost estimates for an investment decision, rough timing for release planning, and enough understanding to assist in story prioritisation.</p>
-<p>Some, however, still find estimating by story points a distraction, and one response has been the debate around #NoEstimates.</p>
-<h2>So what’s with the #NoEstimates debate</h2>
-<p>If you have been following any of the major influencers on Twitter, you might have noticed some getting involved in discussions with the hashtag of #NoEstimates. While this sounds like a call to cease estimating altogether, it is really a call to stop sizing stories and instead just start developing.</p>
-<p>This discussion arose, and has gained momentum, because the experience of those working on large projects has been that whether you <a href="http://softwaredevelopmenttoday.blogspot.co.nz/2012/01/story-points-considered-harmful-or-why.html">size by story points or just count the number of stories</a>, the tracking of throughput is about the same.</p>
-<p>While this might partly be down to the more experienced delivery teams decomposing stories to <a href="http://neilkillick.com/2013/01/31/noestimates-part-1-doing-scrum-without-estimates/">consistently smaller sizes on a just-in-time basis</a>—as this enables greater throughput of potentially shippable increments—the reporting looks similar even on projects still working with a range of very small to moderately large stories in each iteration.</p>
-<p>While this makes story prioritisation simpler and enables the delivery team to get on with it quicker; our poor product owners and sponsors still need to know roughly how much it will cost and how long it will take. The good news is that we can still do this based on counting the number of stories, once we <a href="http://www.stephenforte.net/Beyond+Agile+Estimation+Part+I+Measuring+Key+Data+Points.aspx">have sufficient metrics</a> to make this feasible.</p>
-<p>For any new team starting out on your agile journey, however, I would still strongly recommend you size with story points until you’ve reached the experience and maturity levels of these teams.</p>
-<h2>Conclusions</h2>
-<p>So to sum up, and to mangle a famous quote from General Dwight D. Eisenhower: &quot;In preparing for [projects] I have always found that [estimates] are useless, but [estimating] is indispensable&quot;; we still need to do it, whatever we call it and whatever we’re counting when we do it.</p>
-<p>I am indebted to Esther Derby (estimates become targets), Mike Cohn (estimates for release planning and prioritisation), Ahmed Sidky (whole-team estimation), Martin Fowler (story points), Ian Mitchell (definition of done), Vasco Duarte (story count vs story points), Stephen Forte (metrics vs estimates), Neil Killick (experienced teams define smaller stories), amongst many others, for sharing their thinking on this topic – and I have linked to their respective articles in context above.</p>
+<h2>Converting your existing JPA model to ActiveJPA</h2>
+<p>To convert your model to ActiveJPA, just extend your model implementation from org.activejpa.entity. Model:</p>
+<pre>
+@java.persistence.Entity    <br />
+public class YourModel extends org.activejpa.entity.Model {    <br />
+}</pre>
+<h3>Performing CRUD operations</h3>
+<p>Your models will inherit a bunch of CRUD functions from the ActiveJPA model class.</p>
+<pre>
+// Get order by id    <br />Order order = Order.findById(12345L);<br /><br />// Get all orders for a customer that are shipped   <br />List orders = Order.where(&quot;customerEmail&quot;, &quot;dummyemail@dummy.com&quot;, &quot;status&quot;, &quot;shipped&quot;);<br /><br />// Get the first order matching the filter   <br />Long count = Order.first(&quot;customerEmail&quot;, &quot;dummyemail@dummy.com&quot;, &quot;status&quot;, &quot;shipped&quot;);<br /><br />// Get the unique order matching the conditions   <br />Long count = Order.one(&quot;customerEmail&quot;, &quot;dummyemail@dummy.com&quot;, &quot;status&quot;, &quot;shipped&quot;);<br /><br />// Dump everything   <br />List orders = Order.all();<br /><br />// Check if order exists with the given identifier   <br />boolean exists = Order.exists(1234L);<br /><br />// Save order   <br />order.persist();<br /><br />// Delete order   <br />order.delete();<br /><br />// Refresh the order<br /><br />order.refresh();<br /><br />// Merge order with the one in persistence context<br /><br />order.merge();</pre>
+<h2>Filters &amp; Pagination</h2>
+<p>You don’t need to create JPQL or criteria queries to filter records. ActiveJPA exposes a sophisticated filter to perform conjunctions across different operations:</p>
+<pre>
+// Get all orders matching the given email and billing amount greater than 1000 &amp; paginate it    <br />Filter filter = new Filter();    <br />filter.setPageNo(1);    <br />filter.setPerPage(25);    <br />filter.addCondition(new Condition(&quot;customerEmail&quot;, Operator.eq, &quot;dummyemail@dummy.com&quot;);<br /><br />filter.addCondition(new Condition(&quot;billingAmount&quot;, Operator.gt, 1000.00);   <br />List orders = Order.where(filter);<br /><br />// Count of orders matching the filter   <br />Long count = Order.count(filter);<br /><br />// Delete all orders matching the filter   <br />Long count = Order.deleteAll(filter);</pre>
+<h3>Nested queries</h3>
+<p>ActiveJPA allows nesting of the filter parameters. This makes it easier for creating dynamic queries on the fly. For instance you can get all orders that have at least one order item created out of a product of category ‘book’.</p>
+<pre>
+// Get all orders containing at the least one book item  <br />Filter filter = new Filter();    <br />filter.setPageNo(1);    <br />filter.setPerPage(25);    <br />filter.addCondition(new Condition(&quot;orderItems.product.category&quot;, Operator.eq, &quot;books&quot;);    <br />List orders = Order.where(filter);</pre>
+<h2>Working with collections</h2>
+<p>All the CRUD operations discussed above can be performed at the collection level as well. The query scope is set to collection class in such cases:</p>
+<pre>
+// Find order item by id within an order    <br />order.collections(&quot;orderItems&quot;).findById(123L);<br /><br />// Get the first order item that is shipped:   <br />order.collections(“orderItems”).first(“status”, “shipped”);<br /><br />// Get all order items that are cancelled   <br />order.collections(“orderItems”).where(“status”, “cancelled”);<br /><br />// Get all the items in the collection   <br />order.collections(“orderItems”).all();<br /><br />// Add an item to the collection   <br />order.collections(“orderItems”).add(orderItem);<br /><br />// Add an item to the collection   <br />order.collections(“orderItems”).remove(orderItem);</pre>
+<p>Filters and pagination can be applied to a collection as well.</p>
+<pre>
+// Search order items by filter within an order and paginate it<br /><br />Filter filter = new Filter();   <br />filter.setPageNo(1);    <br />filter.setPerPage(25);<br /><br />filter.addCondition(new Condition(“status”, “shipped”);   <br />order.collections(&quot;orderItems&quot;).where(filter);<br /><br />// Get count of order items matching the filter in the order<br /><br />order.collections(“orderItems”).count(filter);</pre>
+<h2>Dynamic updates</h2>
+<p>ActiveJPA supports dynamically updating a model. This is quite useful in scenarios where, for example, a user updates a form from the browser. Instead of calling a setter method for each individual attribute, you can pass a map of attributes to update:</p>
+<pre>
+// Update attributes    <br />
+Map attributes = new HashMap();    <br />
+attributes.put(&quot;billingAmount&quot;, 1000.0);    <br />
+order.updateAttributes(attributes);</pre>
+<p>You can also update non-primitive/non-wrapper fields by passing maps to those objects. The example below shows updating a shipping address and billing amount of an order.</p>
+<pre>
+// Update billing amount and shipping address of an order<br />
+Map attributes = new HashMap();<br />
+Map address = new HashMap();<br />
+address.put(“city”, “Bangalore”);<br />
+address.put(“state”, “Karnataka”);<br />
+attributes.put(“shippingAddress”, address);<br />
+attributes.put(&quot;billingAmount&quot;, 1000.0);<br />
+order.updateAttributes(attributes);</pre>
+<p><b>Note</b>: Updating list/set/array fields are not supported yet. It will be supported in the future versions</p>
+<h2>Transaction Handling</h2>
+<p>By default ActiveJPA starts a transaction for all the update operations if one doesn’t already exist, but you can also wrap a unit of work under a transaction as follows:</p>
+<pre>
+JPAContext context = JPA.instance.getDefaultConfig().getContext();    <br />context.beginTxn();    <br />boolean failed = true;    <br />try {    <br /> // Your unit of work here    <br />failed = false;    <br />} finally {    <br /> // Commit or rollback the transaction    <br />context.closeTxn(failed);    <br />}</pre>
+<p>If an outer transaction exists already, ActiveJPA will use that but will not commit or rollback the transaction. It will be the responsibility of the application to close the transaction.</p>
+<h2>Testing your Models</h2>
+<p>ActiveJPA provides a base test class for TestNG that hooks ActiveJPA into test runtime. Just ensure your test classes extends <i>org.activejpa.entity.testng.BaseModelTest</i> class. Below is a sample code,</p>
+<pre>
+public class OrderTest extends BaseModelTest {<br />
+     @Test<br />
+     public void testCreateOrder() {<br />
+       Order order = new Order();<br />
+       order.setCustomerEmail(&quot;dummyemail@dummy.com&quot;);<br />
+       ...<br />
+       ...<br />
+       order.persist();<br />
+       Assert.assertEquals(Order.where(&quot;customerEmail&quot;, &quot;dummyemail@dummy.com&quot;).get(0), order);<br />
+    }<br />
+  }<br />
+}</pre>
+<h2>Getting Started</h2>
+<h3>Setting up Maven</h3>
+<p>ActiveJPA is available as a Maven artifact and should be fairly simple to integrate with your application. Just add the following maven dependency to your pom.xml file</p>
+<pre>
+&lt;dependencies&gt;    <br />&lt;dependency&gt;    <br />&lt;groupId&gt;org.activejpa&lt;/groupId&gt;    <br />&lt;artifactId&gt;activejpa-core&lt;/artifactId&gt;    <br />&lt;version&gt;0.1.5&lt;/version&gt;    <br />&lt;/dependency&gt;    <br />&lt;/dependencies&gt;
+<br />&lt;repositories&gt;   <br />&lt;repository&gt;    <br />&lt;id&gt;activejpa-repo&lt;/id&gt;    <br />&lt;url&gt;https://raw.github.com/ActiveJpa/activejpa/mvn-repo/releases&lt;/url&gt;    <br />&lt;snapshots&gt;    <br />&lt;enabled&gt;true&lt;/enabled&gt;    <br />&lt;updatePolicy&gt;always&lt;/updatePolicy&gt;    <br />&lt;/snapshots&gt;    <br />&lt;/repository&gt;    <br />&lt;/repositories&gt;</pre>
+<h3>Hooking into your application</h3>
+<p>ActiveJPA needs to be hooked into your application before the entity classes are loaded. If you are running a Tomcat server, the ideal place would be ServletContextListener. Below is code you could write in the context listener contextInitialized() method.</p>
+<pre>
+// Loads the Java agent dynamically    <br />ActiveJpaAgentLoader.instance().loadAgent();<br /><br />// Add the persistence unit defined by persistence.xml identified by the name 'order'. The persistence.xml should be available in the classpath   <br />JPA.addPersistenceUnit(&quot;order&quot;);<br /><br />// If you have entity manager factory already created, you can attach the same to ActiveJpa   <br />// JPA.addPersistenceUnit(&quot;order&quot;, entityManagerFactory);</pre>
+<h2>Integrating with Spring Framework</h2>
+<p>Integrating ActiveJPA with frameworks like Spring is fairly simple. Most applications use Spring to configure JPA and manage the transactions using annotations. ActiveJPA can be configured in two ways - you can either let it create the entity manager factory or pass an already existing one. In the case of Spring configured JPA, we can use the entity manager factory created by Spring. This ensures ActiveJPA uses the same connections and transactions created by Spring and provides a seamless integration.</p>
+<p>The code below demonstrates how to integrate ActiveJPA with a Spring application deployed on a servlet container. It uses a custom context loader listener to hook ActiveJPA into the application. Note that it is similar to the servlet example above, except that it uses the Spring Framework ContextLoaderListener:</p>
+<pre>
+public class CustomContextListener extends ContextLoaderListener {<br />
+  @Override<br />
+  public void contextInitialized(ServletContextEvent event) {<br /> 
+          try {<br />
+                    // This loads the javaagent dynamically<br />
+                    ActiveJpaAgentLoader.instance().loadAgent();<br />
+          } catch (Exception e) {<br />
+                    throw new RuntimeException(e);<br />
+          }<br />
+          super.contextInitialized(event);<br />
+          JPA.instance.addPersistenceUnit(&quot;default&quot;, getCurrentWebApplicationContext().getBean(EntityManagerFactory.class), true);<br />
+   }<br />
+}</pre>
+<h2>Sample Application</h2>
+<p>There are a lot more specific examples in the sample application from the <a href="https://github.com/ActiveJpa/activejpa">ActiveJPA Project Page</a> on GitHub, demonstrating <a href="https://github.com/ActiveJpa/activejpa/tree/master/activejpa-examples/activejpa-examples-spring">Spring-ActiveJPA</a> integration.</p>
 <h2>About the Author</h2>
-<p><strong><img align="left" _p="true" _href="img://DavidMorris photo.JPG" alt="" src="http://www.infoq.com/resource/articles/agile-estimating-why-how/en/resources/DavidMorris photo.JPG" />David Morris</strong> is an independent business agility practitioner, coach, and instructor; working through his company Sophorum, delivering business analysis, team leading, coaching, and training services to customers throughout New Zealand. With nearly 30 years’ experience in project delivery, he has worked in and led teams and run his own business across strategic, business, and technical projects following structured, iterative, and agile methodologies.</p>
-<p>David is a qualified CBAP, ICAgile Certified Practitioner, Certified ScrumMaster, and an IT Certified Professional. He runs study groups, professional development workshops, and bootcamps; helps organise events for Agile Auckland and IIBA NZ; has spoken at conferences and events in Europe and Australasia; contributed to several books (including the ‘Agile Extension to the BA Body of Knowledge’); and is an active blogger, tweeter, and Wikipedia editor.</p><br><br><br><br><br><br></body></html>
+<p><strong><img src="http://www.infoq.com/resource/articles/ActiveJPA/en/resources/1ganesh.jpg" vspace="3" hspace="3" align="left" alt="" _href="img://1ganesh.jpg" _p="true" />Ganesh Subramanian</strong> is an Architect with <a href="http://www.hightail.com/">Hightail</a> and he has over 10+ years experience in architecting highly scalable, low latency distributed applications spanning across multiple domains. Ganesh was instrumental in architecting <a href="http://www.flipkart.com/">Flipkart's</a> (India's largest e-commerce player) Supply chain management platform and he is an active contributor to the open source community (<a href="https://github.com/activejpa/activejpa">ActiveJPA</a>, <a href="http://minnal.github.io/minnal/">Minnal</a>, <a href="https://github.com/minnal/autopojo">AutoPojo</a>, etc.). He is the author of the <a href="http://ganeshsubramanian.com/blog">tech blog</a> and he loves watching movies (all genres) and spending time with his family during his free time.</p><br><br><br><br><br><br></body></html>

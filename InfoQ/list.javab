@@ -2,6 +2,12 @@
  <head></head> 
  <body> 
   <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/6.javab">The Neuroscience of Agile Leadership</a> Why does having the overview and influence make us feel rewarded? How do we adapt better to change? And how can we shift mindsets to become more Agile? Find out from breakthrough research in neuroscience why all the &quot;soft, people stuff&quot; around Agile works, how we can help people adapt better to change, and how we can influence real mindset shifts in an organization. 
+  </div> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/5.javab">ActiveJPA – Active Record Pattern for JPA</a> ActiveJPA is a Java implementation of Martin Fowler’s Active Record pattern that wraps around JPA and provides useful abstractions to simplify data access. With ActiveJPA, models themselves act as a DAO and interact with the database without requiring additional code for the DAL. In this article the primary committer discusses ActiveJPA and provides plenty of usage examples. 
+  </div> 
+  <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/4.javab">Interfacing between Linear Waterfall and Agile Approaches</a> Michael discusses ways to integrate agile &amp; scrum approaches with linear management styles often required to achieve organizational control in large complex environments. He talks about how to achieve an Agile PMO and how it can be applied in environments which are not naturally perceived as being agile-friendly. 
   </div> 
   <div> 
@@ -144,12 +150,6 @@
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/8.javab">Contrasting Backbone and Angular</a> Victor Savkin presents in detail the pros and cons of using Backbone.js and Angular.js to create web applications, comparing the two frameworks with each other. 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/7.javab">Sell Before You Build</a> “Before you write any code, make sure you have a failing test.” This was revolutionary when first pitched in the late 90’s. Many successful entrepreneurs have practiced a similar idea: “Before you build a product/service, make sure you have paying customers.” Naresh Jain explains his approach of finding effective MVPs to validate his Educational Product and why Agile Methods simply fail to do so. 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/6.javab">Is Your Application Ready?</a> We mostly ship software by date, squeezing all development and testing efforts toward that deadline. We prioritize what we think is important, and once our application passes a certain quality level, we’re ready to go live. But even when we do ship, can we tell the readiness status of our application? 
   </div> 
  </body>
 </html>

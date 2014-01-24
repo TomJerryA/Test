@@ -1,101 +1,47 @@
-<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>敏捷与结构性模块化（二）</h3><p>在<a href="http://www.infoq.com/cn/articles/agile-and-structural-modularity-part1">上一篇文章</a>中，介绍了结构性模块化与敏捷之间的关系，在这个系列的第二篇文章中，我们将会研讨OSGi™，在实现Java™的结构性模块化方面，OSGi扮演了核心的角色；OSGi与流行的敏捷方法论之间存在着自然的联系。</p>
-<h2>1 但我们已经实现了模块化！</h2>
-<p>绝大多数开发人员都同意程序应该模块化。尽管在面向对象的程序设计出现的早期，逻辑性模块化的要求就被迅速满足了（见<a href="http://en.wikipedia.org/wiki/Design_Patterns">http://en.wikipedia.org/wiki/Design_Patterns</a>）， 但是软件行业花费了很长的时间才理解结构性模块化的重要性。特别是，结构性模块化可以提高程序的可维护性和灵活性，控制和减少环境带来的复杂性。</p>
-<h3>只是JAR文件的组合</h3>
-<p>在《Java Application Architecture》（本书已经由机械工业出版社引进出版，中文书名为《<a href="http://book.jd.com/11324152.html">Java应用架构设计：模块化模式与OSGi</a>》——译者注）一书中，Kirk Knoernschild探索研究了结构性的模块化，并建立了一套关于结构化设计的最佳设计模式。Knoernschild认为，在模块化风潮中并不需要开发模块化的框架；对于Java，JAR文件结构就足够了。</p>
-<p><img width="200" style="float: left; margin-right: 10px" alt="" src="http://infoqstatic.com/resource/articles/agile-and-structural-modularity-part2/zh/resources/1030010.png" _href="img://null" _p="true" /></p>
-<p>事实上，在“敏捷”开发团队中根据代码库的增长将应用分解为较小的JAR文件的做法并不罕见。随着JAR文件大小的增加，他们会被分解为更小的JAR文件的集合。从代码角度，特别是如果遵循Knoernschild的结构化设计模式，我们会认为，从某个结构层看，程序是模块化的。</p>
-<div style="clear: both">
+<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>作者访谈与书评：“Nagios企业监控实践（原书第2版）”</h3><p>David Josephsen的新书<a href="http://www.informit.com/store/nagios-building-enterprise-grade-monitoring-infrastructures-9780133135732">《Nagios企业监控实践（原书第2版）》</a>最近出版了。这本书包含了构建监控平台的最佳实践、侧重使用方面对Nagios的运作原理进行了介绍，并包含了实施Nagios项目的实用指南。David编写这本书虽然以帮助系统工程师和企业架构师为主，但书中包含的内容依然与大多数技术角色相关。David以官方在线文档中的内容为基础提供了系统集成的细节信息，并结合自身使用Nagios的经验介绍了一些高级主题，带领读者对Nagios的软件生态系统进行系统化的思考。 最佳实践 David明确了在监控解决方案的建设过程中，对被监控的业务和技术的深刻理解非常重要。他声称这是一个“过程方法”，实施过程应当是经过深思熟虑，而非东拼西凑的。在他看来，拼凑的方法存在很多问题，通常不会探讨监控解决方案中深层次关键技术方面。这本书为大家提供了一些建议，主要聚焦于被关注系统的一些全局特征，包括：需求的处理、系统所处的网络位置、网络依赖、系统安全、报警的滥用以及端口与应用监视的对比分析。</p>
+<p>尽管本书前面预先介绍了实施中所需的大量架构和业务知识，但Nagios依旧避免对被监控的大量系统作出假设。其实，Nagios自身无任何监控功能，设计它的目的是对监控检测的调度，并根据检测结果进行相应的通知。Nagios将实际的监控功能委托给能够返回状态文本的插件，通过这种方式，它可以避免对一体化的Agent产生依赖，从而符合Unix的设计哲学。Doug Mcllroy将Unix的设计哲学总结如下：</p>
+<p>“编写专一并且专注的程序（只做一件事，并把它做好）。编写能够协作的程序（程序间能够相互调用）。编写能够对文本流进行处理的程序，因为这是一种通用的接口。”</p>
+<h4>运作原理</h4>
+<p>Nagios使用一套定义明确的范式，其中包含“主机”和“服务”两个主要的逻辑对象，这是对被监控系统及其组成部分抽象的结果。服务属于主机，并且能够包含主机间或是服务间的关系——这就是依赖的概念。Nagios将主机和服务检测的重任转交给状态评估的插件管理，基本上每种类型的检测都拥有自己的插件。David借此机会详细介绍了Windows和Unix系统的监控方式。在Windows环境中提供的脚本开发技术包括：Wscript、OLE、COM、WMI以及PowerShell。NSClient++通过NRPE协议为Nagios和Windows脚本开发技术之间提供了提供了接口层。David认为NRPE插件是Unix/Linux系统的远程执行的首选工具，通过它作为接口可以调用bash、Python、Ruby、PERL等语言编写的插件以及命令行系统工具。David通过检查Nagios为其他对象（如网络设备和环境传感器）扩展监控的能力，完善了Nagios使用插件监控的精髓。</p>
+<p>书中很清楚地表明Nagios实质上是一套调度和通知系统。Nagios通过先进的算法调度服务检测——如长检测（Long Check Execution）执行、故障状态重试、为避免避免远程系统产生较高负载的交错检测以及延迟检测等手段，从而管控Nagios服务器负载。Nagios依然会并发运行检测，然后使用信息收集进程（Reaper）从消息队列中获得结果。Nagios根据状态的变化以及状态的类型（确定（Hard）或待定（Soft））触发通知。通知事件可以转而配置为发送电子邮件、或调用类似Pager Duty这样的系统（译者注：Pager Duty是一款告警通知系统，支持告警聚合、自动升级等功能，提供多种通知方式。）。另外，当问题持续时间过长时，还可以通过升级规则（Escalation）进行进一步的告警。此外，正常（OK）状态会先过渡到待定（Soft）状态，从而减少重要性较低的瞬态问题的通知。</p>
+<p>Nagios通过提供灵活的I/O接口完善了其以高度集中为目的的算法核心，从而使自身成为一套更为强大的记录、监控解决方案架构的一部分。主要的I/O接口包括Web界面、报表、Nagios用于处理命令的外部命令文件、性能数据处理以及先进的低层事件代理集成功能。性能数据处理功能为使用轮循数据库工具（如RRDtool）、图形系统（如Graphite）的高级可视化提供了集成点（Integration Point）。事件代理提供了先进的集成功能，包括通过诸如MKLiveStatus这样的插件所进行的Nagios状态查询，可以实现战术视图（Tactical Display）的集成（如NagVis）。</p>
+<div id="lowerFullwidthVCR"></div>
+<p>Nagios XI是Nagios Core衍生出的商业版本，它在Nagios Core基础上增强了配置的易用性——这部分工作通常被认为是Nagios最困难的部分。此外，商业版本同时还提供了专业支持并将一系列功能集成在系统中，而对于开源版本来说，这些功能就需要用户自己动手去集成了。</p>
+<p><img width="600" _p="true" _href="img://1figure1.png" src="http://infoqstatic.com/resource/articles/building-nagios-monitoring-infrastructure-review/zh/resources/1figure1.png" alt="" /></p>
+<p>Nagios是一款开源软件，专门为集成而设计。David虽然不打算让本书成为一本介绍编程的深奥书籍，但为了更好的介绍“事件代理（Nagios Event Broker，简称NEB）接口”，为了让读者能够进一步了解构建扩展Nagios核心功能组件的过程，他在本书中恰到好处引入了一份C语言编写的程序。</p>
+<h4>Nagios系统</h4>
+<p>David使本书成为一本全面的、深入的介绍Nagios安装、配置、集成、操作的书籍。他编写的内容足以使本书作为参考文档，不仅如此，他带领读者一步步熟悉Nagios软件生态系统，这样，读者就会明白Nagios的目的以及针对特定用途所需要深入研究的技术。</p>
+<p>“Nagios守护进程是专为Linux系统设计和运行的，但它也能够在任何类UNIX的操作系统上运行。”</p>
+<p>Nagios的守护进程（或服务器）能够很容易地安装在大多数Linux发行版和Unix变种上。在不同系统上安装的过程中，最大的区别就是文件的位置，但大多数人会按照文件系统层次结构标准进行安装：</p>
+<ul> 
+ <li>配置文件——/etc/nagios</li> 
+ <li>HTML——/usr/share/nagios</li> 
+ <li>CGI目录——/usr/share/nagios或/usr/lib/nagios</li> 
+ <li>守护进程以及其他可执行文件——/usr/bin/nagios</li> 
+ <li>Lock文件以及FIFO文件——/var/lib/nagios或/var/log/nagios</li> 
+ <li>日志文件——/var/log/nagios</li> 
+ <li>插件——/usr/libexec/nagios或/usr/lib/nagios</li> 
+</ul>
+<p>由于Nagios是使用C语言编写的，因此只有很少的依赖关系。Nagios的依赖关系完全由所使用的功能和插件所决定。Web前端需要一个支持CGI的Web服务器（例如Apache）。而插件所需的依赖关系就更多了，因为它们才是真正去进行监控的程序——可能会依赖诸如：Ping、OpenSSL、Bind工具、Perl以及Python等等。</p>
+<p>Nagios能够通过Linux/Unix分发的特定软件包安装，也可以从源码包安装。两者都使用了标准机制。真正具有难度的是安装后的配置过程。David并不想对文件的设置进行漫长的介绍，虽然他确实在第4章中对配置的设置进行了说明：时间段（Timeperiods）、命令、联系人、联系人组、主机、服务、主机组、服务组、升级规则（Escalations）以及依赖关系（Dependencies）。</p>
+<p>在Nagios的架构中，插件需要同时安装在Nagios服务器以及远程系统中。Nagios通过NRPE协议与远程系统上的插件交互。因此，用户必须在在远程系统上安装NRPE，以便通过TCP/IP协议访问NRPE。在远程系统上的NRPE将以服务的形式运行，用户可以通过配置文件对访问服务器的地址以及执行的命令进行限制。</p>
+<p>David针对基于独立部署的Nagios守护进程，还专门增加了一整章内容来介绍Nagios的扩展。他从技术方面介绍了：分布式被动检测、二级Nagios守护进程、DNX、Op5 Merlin以及Mod Gearmen等内容。</p>
+<p>InfoQ就本书对<strong>David Josephsen</strong>进行了采访。</p>
+<p><strong>InfoQ：在Nagios的实施工作中，提高开发和运维人员之间协作的关键是什么？</strong></p>
+<blockquote> 
+ <p><strong>David</strong>：在过去的20年中，DevOps可能为我们的行业带来了剧变。同时，这是个不错的问题，因为在我来看，系统监控看来就像DevOps中退化回割裂（开发和运维）的那部分，我不认为这是件好事。在此情境下，Nagios的问题一直都出在配置方面。运维类型人员喜欢灵活、稳定的后端（是文件而非数据库），以及针对大量挂钩（Hook）的丰富、复杂的配置参数。开发类型人员则喜欢“能够工作”、清晰的接口以及合适的通用数据模型。Nagios的核心以及如同太阳系一般围绕着它的工具，都趋向于突出这些个性类型的正交性。在类似#monitoringsucks等运动中，记录了开发人员是如何打破了传统Nagios风格的工具的……我想说的是，实施中连接运维和开发的桥梁是围绕接口展开的。如果你在一家公司中负责运维，并且有一支积极向上的开发或DevOps队伍，你需要确保他们有一些看着很熟悉的接口（如JSON/SQL/Web服务等），这就（如果可能）使他们能够在贵公司的变更管理框架下进行变更。否则，他们会围绕着你开展工作。想做到这一点，可能最简单的方法就是为自己的组织购买XI，但是肯定有很多方法可以无需花费金钱，并使开发成为沟通中的一部分。NRDP和其用于被动检测结果的HTTPS/XML接口就是很好的接口示例，可能会吸引我们中间的开发类型的人员。首先是了解他们想要的（他们可能不知道他们想要什么，所以可能第一步是帮助他们了解他们自己想要什么），然后是与他们配合，创建他们所需要的简洁、（他们）无需配置的接口。千里之行，始于足下。</p> 
+</blockquote>
+<p><strong>InfoQ：有没有什么软件产品、服务或开源项目能够作为优秀的工单/帮助台系统，并能与Nagios集成？</strong></p>
+<blockquote> 
+ <p><strong>David</strong>：如果读者现在没有帮助台系统，那么Nagios集成将会是各位决策过程中的一个巨大的因素，因为Nagios自带的事件管理——由Nagios Enterprise出品的新一代工单系统将是一个显而易见的选择。XI和事件管理模块简直就是天生一对，所以读者不会有任何集成上的问题。个人而言，我曾经将Nagios与RT、Jira、VersionOne等工具集成，我可以明确的告诉各位，很少会在技术方面出现问题。但将Nagios通过REST API或类似的东西粘合到其它系统是相当繁琐的。如果你不想从头开始，那么也可以依赖于现成的插件。但一旦牵扯到干系人员之间的相互作用时，就不是小事了。如果读者想要与帮助台集成，就需要明确并消除那些误报和无谓的事件。在读者开始计划接口之前，应当花时间考虑下目前发送的Nagios告警内容，这些内容可能会成为帮助台工单不错的“原料”。理想情况下，在系统集成之前，读者应该有一份长度有限的列表——包含了所有可能的告警以及它们的意义/升级参数，从而自如地向帮助台传递信息（更加明确的提示：这份清单应该相当简洁）。</p> 
+</blockquote>
+<p><strong>InfoQ的：你是否曾经在测试驱动基础设施开发（Test Driven Infrastructure）的环境中使用Nagios？我的意思是，在被监控系统部署监控之前，这份检查列表就已经做完了——这样当所有的检查都正常时，你就可以认为系统实施完成了。如果你有此经历，能否介绍一下？如果没有，你如何看待这种方式呢？</strong></p>
+<blockquote> 
+ <p><strong>David</strong>：我个人从来没有以这种方式使用Nagios，虽然我认为这是一个好主意——在它们投入生产之前，测试预期系统达到了正确的和预期的状态，但或许有更好的工具来完成类似的事情。比如，现在有很神奇的持续集成系统可供使用，如Hudson和Travis，将这类测试交给它们，比硬塞给Nagios要更加容易。然而，对于这个问题，正式的正确答案可能是使用Chef或其他配置管理引擎。这些才真正是<a href="http://wiki.opscode.com/display/chef/Opscode+Cookbook+Test+Process">测试驱动基础设施开发</a>的捷径。在Chef的帮助下，用户可以在系统安装到硬盘之前，设计出验证和测试结果都正确的系统。虽然我认为Nagios也可以使用，但我还是要推荐一些别的东西——有两个原因，但读者的环境有所不同，它们也可能不适用，所以我应该告诉各位它们是什么。首先，Nagios实际上是个通知引擎，在这种情境下读者们需要阻止它来避免通知——要么将其配置为不发送通知，要么配置为通知后关闭通知。无论哪种方式，实际上都是在浪费时间，只是会引发我脑海中的强迫症异常（OCD Exception）。第二个读者的测试将会很难设计，或者测试过于简单。我想说的是，读者们可以为Web建立一个测试套件：包含check<em>http、check</em>ping等等。但这些测试太过具体，并且它们明确让各位知道：是的，Web服务器可以工作在这个新环境中，这是唯一一种接近测试驱动基础设施开发的定义。在我将一台服务器投入生产环境中之前，有很多我想了解的内容。理想情况下，我希望它以一个已验证状态工作在生产环境中，而这类工作是依靠Chef来完成的。</p> 
+</blockquote>
+<h2>关于本书作者</h2>
+<p><img _p="true" _href="img://null" src="http://infoqstatic.com/resource/articles/building-nagios-monitoring-infrastructure-review/zh/resources/1212041.jpg" style="float: left; margin-right: 10px" alt="" /><strong>David Josephsen</strong>是DBG公司的系统工程总监，负责维护一群分布在各地的服务器农场（Server Farm）。他有超过十年的运维经验，亲自在复杂、大规模网络环境下维护过UNIX系统、路由器、防火墙、负载均衡等设备。他是《通过Nagios构建监控平台》（原书由Addison Wesely出版）一书的作者，他还撰写了《使用Ganglia进行监控》（原书由O'Reilly Media出版）一书的三个章节。目前他正在负责编写《;login》杂志中的“iVoyer“专栏。</p>
+<div style="clear:both">
  &nbsp;
 </div>
-<h3>但这是否敏捷?</h3>
-<p>从创建应用的团队，以及负责随后维护人员的角度来看，应用是更敏捷的。团队了解依赖关系，以及变化的影响。然而，这种知识并没有关联到组件上。一旦团队成员离开了公司，程序和业务就有可能立刻受到影响。同样，对第三方（即使是同一个组织的不同团队）来说，该应用可能依然是单独的巨大代码库。</p>
-<p>如果程序中只有一层结构性的模块，它必然不是自描述的。由于缺乏描述模块之间内在关系的元数据，由此产生的业务系统本质上是脆弱的。</p>
-<h3>那么MAVEN呢？</h3>
-<p>Maven文档（项目对象模型，Project Object Model——POM）也能表达组件之间的依赖关系。这些依赖关系由组件的名称定义。</p>
-<p>鉴于此，基于Maven的模块化程序可以被任何第三方很容易地整合起来。然而，在<a href="http://www.infoq.com/cn/articles/agile-and-structural-modularity-part1">上一篇文章</a>我们已经提到，由名称定义依赖关系是有缺陷的。由于组件之间的依赖关系并不能明确表明需求（Requirement）和功能（Capability），第三方不能推断出依赖关系的存在原因和可替代的部分。</p>
-<p>程序可以被整合，但却不能变更。这种方式是否使得程序比之前的“JAR文件组合”更为“敏捷”还值得商榷。</p>
-<h3>对OSGi的需求</h3>
-<p>就如Knoernschild在《Java应用架构设计》中阐述的那样，一旦实现了结构性模块化，我们很容易就能将它迁移到OSGi 之中，也就是Java领域中的模块化标准。</p>
-<p>OSGi不仅帮助我们保证结构性的模块化，它同时提供了必须的元数据来保证我们建立的模块化结构也是敏捷的结构。</p>
-<p>OSGi通过需求和功能表达依赖关系。因此，第三方可以立刻知道哪些组件可能是可替换的。因为OSGi同样使用语义化的版本控制，所以第三方可以立即推测出，某个组件的变更是否有破坏系统的潜在危险。</p>
-<p>OSGi同样也具有展现结构化层次的能力。</p>
-<p>在模块化的一端，我们使用面向服务的架构（Service Oriented Architecture，SOA）；在另一端，我们使用Java包和类。然而，正如Knoernschild表述的那样，在这两端之间缺少了必要的层次。</p>
-<p><img width="500" alt="" src="http://infoqstatic.com/resource/articles/agile-and-structural-modularity-part2/zh/resources/1030011.png" _href="img://null" _p="true" /></p>
-<p>图1： 结构化层次：缺失了中间的部分（Kirk Knoernschild – 2012）</p>
-<p>中间缺少层次的问题，在OSGi中得到了直接的解决</p>
-<p><img width="500" alt="" src="http://infoqstatic.com/resource/articles/agile-and-structural-modularity-part2/zh/resources/1030012.png" _href="img://null" _p="true" /></p>
-<p>图2: 结构化层次： OSGi 服务和Bundle</p>
-<p>正如Knoernschild 所描述的，OSGi所提供的模块化层次解决了一些比较关键的问题：</p>
-<ul> 
- <li>代码的重用：通过使用OSGi Bundle，能够促进代码的重用。</li> 
- <li>进程内和进程间的重用：OSGi服务是轻量级服务，允许相互间动态寻找或绑定对方。OSGi服务可能发布在相同的JVM中，也可以通过实现了OSGi远程服务规范的工具发布在网络内的分布式JVM中。粗粒度的业务程序可能是由数个更小粒度的OSGi服务组成的。</li> 
- <li>部署单元：OSGi Bundle提供对自然单元进行部署、更新和补丁的基础功能。</li> 
- <li>组合单元：OSGi Bundle和服务在组合的等级结构中都是基本要素。</li> 
-</ul>
-<p>因此，OSGi Bundle和服务作为OSGi联盟开放规范的主要部分，为Java提供了之前缺失的、结构性模块化中的重要层次。原则上，OSGi技术使基于Java的业务系统实现“敏捷——从上至下贯穿各层”成为可能。</p>
-<p>我们现在可以看到，OSGi的结构（Bundle和服务）与流行的敏捷方法论很匹配，并且能够促进它们得以实现。</p>
-<h2>拥抱敏捷</h2>
-<p>敏捷运动主要关注于实现敏捷的产品开发和交付相关的流程（Process），当前已经存在一些精益与敏捷（Lean&amp;Agile）的方法，其中的每一种都是两种广为人知的方案的变种、混合或延伸。这两种方案就是Scrum和Kanban（<a href="http://en.wikipedia.org/wiki/lean_software_development">http://en.wikipedia.org/wiki/lean_software_development</a>）。</p>
-<p>为了每种方案更加有效，都需要在某种程度上具有结构性的模块化。</p>
-<h3>Scrum</h3>
-<p>客户一直在改变他们的想法。Scrum承认“需求改动（requirement churn’）”的存在，并且采用基于经验的（<a href="http://en.wikipedia.org/wiki/Empirical">empirical</a> ，http://en.wikipedia.org/wiki/empirical）方式完成软件的交付。Scrum承认问题不能完全被理解或被预先定义。Scrum着重于最大限度地提高团队能力，以更快完成交付并解决更多新的需求。</p>
-<p>Scrum是迭代式渐进的增长过程，以“Sprint”作为基本的开发单元。每个Sprint都是在“<u>固定时间（</u><u>time-boxed</u><u>）</u>”（http://en.wikipedia.org/wiki/Timeboxing）内的工作，即它有一个明确的期限。对于每个Sprint，它的期限是事先固定的，一般在一周到一个月之间。Sprint开始之前会有一个明确任务和目标的计划会议，Sprint之后会有一个回顾会议，这个会议上要评估进度并总结本Sprint的经验教训。</p>
-<p>每个Sprint的期间，团队将完成产品的一部分。纳入Sprint的特性来源于产品的backlog，这是一个按顺序排列的需求（http://en.wikipedia.org/wiki/Requirement）列表。</p>
-<p>Scrum鼓励创建自组织的团队，这通常需要团队所有成员的协同工作和口头交流实现。</p>
-<h3>Kanban</h3>
-<p>“Kanban”起源于日语，意思是“布告板”或“看板”。它的根源可以追溯到20世纪40年代后期的日本丰田汽车制造公司（见 <a href="http://en.wikipedia.org/wiki/Kanban">http://en.wikipedia.org/wiki/Kanban</a>）。Kanban鼓励团队对工作、工作流程、进程、风险等建立共同的理解，以此团队将取得在某个问题上的共识，然后在此基础上提出能够达成一致的改进方案。</p>
-<p>从结构性模块化的角度来看，Kanban的重点在于在制件（Work-In-Progress, WIP）、有限的发布和反馈，可能这是该方法中最为有意思的：</p>
-<ol> 
- <li>在制件（WIP）一定是处在一个多级工作流的某个步骤。当目前的WIP所规定的流程完全走完后，在下一阶段有处理能力的情况下，工作将被“拉”到下一阶段。</li> 
- <li>工作在每个工作流程的进度都是受监视的、可评估、可报告的。通过积极地管理流程（flow），我们可以对那些持续发生的、增量式的以及渐进的升级变更对系统所产生的积极或消极影响进行评估。</li> 
-</ol>
-<p>由此可见，Kanban鼓励持续的、增量式的以及渐进的系统变更。随着结构性模块化的程度得到提高，流动率也同时增加，而每个更小的模块将消耗更少的时间处于“在制品”状态。.</p>
-<h3>敏捷成熟度模型</h3>
-<p>随着结构性模块化程度的提高，Scrum和Kanban的目标将更容易实现。能力成熟度模型（Capability Maturity Model ，参见http://en.wikipedia.org/wiki/Capability_Maturity_Model），主要被公司或项目用于估测它们在软件开发过程获得的改进。同样的，模块化成熟度模型（Modularity Maturity Model）更倾向于描述组织或项目在模块化方面上的进展，这个概念是由Graham Charters博士在OSGi Community Event 2011 上(参加 http://slidesha.re/ZzyZ3H) 提出的。现在我们扩展一下这个理念，分析模块化成熟度模型对企业在敏捷方面的影响。</p>
-<p>模块化成熟度模型的阶段总共分为以下六个阶段：</p>
-<p><b>特定的（</b><b>Ad Hoc</b><b>）</b>——没有任何正式的模块化内容。依赖关系不明。Java程序没有或很少有什么结构可言。在这种环境下，敏捷管理流程将无法实现商业目标。</p>
-<p><b>模块（</b><b>Module</b><b>）</b>——不再直接使用类（或者包含类的JAR），而是使用有清晰的版本规范的模块，依赖关系可由模块的标识确定（包括版本名）。Maven、Ivy和RPM就是这类模块化解决方案的例子，在这里依赖通过版本化的标识符进行管理。企业一般都有存储这些模块的库。然而这些库的价值并没有完全体现出来，因为这些模块没有描述它们的功能和需求。</p>
-<p>许多企业内部的研发团队都在这一级别的成熟度。象Scrum这样的敏捷流程是可能的，而且也对企业提供了一些价值。然而，流程在有效性和扩展性方面的最终收益将会因为结构性模块化而受到限制。例如模块间的需求和功能通常通过口头进行交流。这些没有良好定义的结构化依赖同时会影响到持续集成 （Continuous Integration, CI）方面的能力。</p>
-<p><b>模块化（</b><b>Modularity</b><b>）</b>——模块的标识并不同于真正的模块化。我们已经知道模块的依赖关系可以通过契约关系（即功能和需求）而不是组件名来进行表述。在这一点上，基于功能和需求表述依赖关系的解决方案，成为动态软件组建机制的基础。这个层次的结构性模块化依赖同时会使用语义化的版本。</p>
-<p>通过采用如OSGi之类的模块化框架，Scrum过程中扩展性的问题也得到了解决。由于强制封装，并使用功能和要求来定义依赖关系，OSGi使得众多小团队可以进行独立且高效的开发，而且这些开发可以并行。Scrum管理工作的效率也能获得相应的提高。每个Sprint能够关注于一个或多个事先定义好结构实体，也就是OSGi Bundle的开发或重构工作。同时，语义化版本命名规则，使得不同的团队之间能高效地交流。因为OSGi Bundle 提供了有效的模块化和隔离机制，并行的研发团队可以在同一应用中的不同结构范围内安心地工作。</p>
-<p><b>服务（</b><b>Service</b><b>）</b>——对于用户而言，基于服务的协作方式隐藏了服务的构建细节。客户端与提供者的实现之间能够实现解耦。由此可知，服务提倡松散耦合。具有动态寻找和绑定功能的OSGi服务直接支持了松耦合、动态结构、应用的整合或装配等功能。更为重要的是，服务是实现运行时敏捷的基础，包括快速增强业务功能或自动适应环境的改变。</p>
-<p>结构性的模块化达到了这一层次，企业可以简单而自然地运用Kanban原理，并达到可以持续集成的目标。</p>
-<p><b>委托（</b><b>Devolution</b><b>）</b>——文件的所有权移交给模块化的资源库，资源库鼓励协作和统一管理。资产会根据它们所声明的功能自动选择。这样做的好处包括：</p>
-<ul> 
- <li>对已有的模块更加了解</li> 
- <li>减少重复工作并提高质量</li> 
- <li>协作和授权</li> 
- <li>质量和操作控制</li> 
-</ul>
-<p>因为软件具有一套完整的需求和功能说明，开发人员能通过语义化的版本与第三方交流模块的变更（破坏性的或非破坏性的）。委托机制允许开发团队按其需求快速找到第三方伙伴的软件。委托机制保证了灵活的软件创建方式，使分布的团队能够以更为有效的方式进行交流。软件可以是由同一组织的其他团队创建，也可以使用外部第三方的软件。委托机制阶段提高了代码重用度和效率，降低了外包、众包、内包在创建软件制件方面的风险。</p>
-<p><b>动态化（</b><b>Dynamism</b><b>）</b>——这个等级建立在模块化、服务和委托的基础之上，并且是敏捷的顶点。</p>
-<ul> 
- <li>可以根据模块化组件快速地装配出业务程序。</li> 
- <li>因为保证了高度的结构性模块化（通过OSGi Bundle的边界进行隔离），组件可能被众多小的开发团队——本地、近岸和离岸（on-shore,near-shore,off-shore）——高效率地创建并维护。</li> 
- <li>因为每个程序都是自描述的，即便最复杂的业务系统也可以很容易地被理解、维护和改进。</li> 
- <li>因为使用了语义化的版本，变更的影响可以在所有参与人员之间得到有效的交流，这包括管理和变更控制流程等。</li> 
- <li>软件的补丁可以热部署到产品中，而不需要重启业务系统。</li> 
- <li>可以快速地扩展和启用程序功能，同样不需要重启业务系统。</li> 
- <li>最后，因为动态装配进程知道运行时环境的功能，程序的结构和功能会根据环境自动调节，实现了在共有云或传统数据中心环境中的透明部署和优化。</li> 
-</ul>
-<p><img alt="" src="http://infoqstatic.com/resource/articles/agile-and-structural-modularity-part2/zh/resources/1030013.png" _href="img://null" _p="true" /></p>
-<p>图3 模块化成熟度模型</p>
-<p>组织的模块化演变（Modularisation Migration）策略，将由贯穿这些模块化等级的路径所决定。大多数组织已经从最初“特定的”阶段发展到“模块”阶段。同时，有些重视高度敏捷的组织希望跨入终点，即动态化。每个组织可能通过数种路径，配合必要的发展策略，从“模块”达到“动态化”。</p>
-<ul> 
- <li>为了尽快地实现收益，组织可能会通过将现有代码重构为OSGi Bundle，从而直接发展到“模块化”阶段。随后自然就能获得“委托”和“服务”的好处。对于未开发的应用显然也要采取这种策略。</li> 
- <li>对于遗留的程序，可选择先达到“服务”阶段。首先，把粗粒度的软件组件用OSGi服务来表达，随后，在每个服务的层面上推动代码级的模块化（即OSGi Bundle）。对于那些拥有许多遗留程序的大型企业，这是一条更加容易的路径。</li> 
- <li>最后，通过对现有的软件采用OSGi元数据，企业可以开始初步到达“委托”阶段。需求与功能的采用，加上语义化版本的使用，都能为第三方明确地描述现存的结构以及变更的影响范围。尽管结构性模块化并没有得到提高，但是“委托”阶段使得企业以后更便于到达“模块化”和“服务”的层级。</li> 
-</ul>
-<p>拥有不同的选择以及根据具体的场景实践这些选择，正是我们所期望达到的更加敏捷的环境。</p>
-<p><strong>原文英文地址：</strong><a href="https://adaptevolve.paremus.com/?p=1335">Agility and Structural Modularity – part II</a></p>
-<h2>作者简介</h2>
-<p><strong>Richard Nicholson</strong>是Paremus 的CEO和创始人，这是一个2001年成立的软件公司，总部位于英国。</p>
-<p>在意识到高度可维护以及高度敏捷的系统在本质上必须是高度模块化的之后，Paremus在2004年开始研究下一代的软件系统。这种持续的努力体现在了Paremus Service Fabric产品之中，这是一个高度可适应的、基于OSGi的自装配运行时，可用于企业级和云环境。作为OSGi联盟的主席（2010-2012），Richard开始推进OSGi Cloud并鼓励OSGi联盟参与到敏捷软件社区中。</p>
-<p>Richard在很多的研究领域都保持了浓厚的兴趣，这支撑了Service Fabric的研发，他的研究领域包括复杂的适应性系统（Complex Adaptive System）以及敏捷（Agility）、模块化组装（Modular Assembly）、结构化多样性（Structural Diversity）和适应性（Adaption）之间的关系。</p>
-<p>成立Paremus之前，Richard在花旗集团/Salomon Smith Barney，领导着欧洲系统工程（European System Engineering）相关的工作。Richard获得了曼切斯特大学的物理学荣誉学位，并在格林尼治皇家天文台（ Royal Greenwich Observatory）获得天体学物理博士。</p>
-<p>Richard的博客：<a href="http://adaptevolve.paremus.com">http://adaptevolve.paremus.com</a>。</p>
-<p>Paremus的博客：<a href="http://blogs.paremus.com">http://blogs.paremus.com</a>。</p>
-<hr />
-<p>感谢<a href="http://www.infoq.com/cn/author/张卫滨">张卫滨</a>对本文的审校。</p>
-<p>给InfoQ中文站投稿或者参与内容翻译工作，请邮件至<a href="mailto:editors@cn.infoq.com">editors@cn.infoq.com</a>。也欢迎大家通过新浪微博（<a href="http://www.weibo.com/infoqchina">@InfoQ</a>）或者腾讯微博（<a href="http://t.qq.com/infoqchina">@InfoQ</a>）关注我们，并与我们的编辑和其他读者朋友交流。</p><br><br><br><br><br><br></body></html>
+<p><strong>查看英文原文：</strong><a href="http://www.infoq.com/articles/building-nagios-monitoring-infrastructure-review">Book Review: &quot;Nagios: Building Enterprise-Grade Monitoring Infrastructures for Systems &amp; Networks&quot;</a></p><br><br><br><br><br><br></body></html>

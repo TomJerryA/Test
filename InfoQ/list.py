@@ -1,6 +1,21 @@
 <html>
  <head></head> 
- <body> 
+ <body>
+  <div>
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/22.py">Facebook、MercurialをGitよりも速くする</a>FacebookがどのようにしてMercurialをGitよりも特定の操作で5倍速くしたのかを説明する記事をポストした。読むと、彼らが何を変えて、なぜセットアップをそうしたのかがわかるだろう。
+  </div> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/21.py">ログとトレースにLINQを使用する</a>Microsoft Open Technologiesは先頃，ログやトレースを使ったデバッグ作業と，リアルタイム監視および警告システムの開発を支援するオープンソースプロジェクトであるTxのリリースを発表した。 
+  </div> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/20.py">QCon London 2014チュートリアル: リアクティブエクステンション, モバイルデバイス, アジャイル，継続的デリバリ (3月3日〜7日)</a>８年目を迎えるQCon London (2014年3月3日～7日)では，プログラム言語の先駆者やプロジェクトリーダ，経験豊富な実践者たちが，２日間に渡ってハンズオン・チュートリアルを提供してくれる。3～6時間のチュートリアルでは，エンタープライズソフトウェア開発のイノベーションをリードする新しいテクノロジやメソトロジについて詳しく説明する。3日間のカンファレンスを，1月8日まで236ユーロ割引の早期予約で手に入れてほしい。 
+  </div> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/19.py">Apache Kafka, 他とは異なるメッセージングシステム</a>Apacheは、Kafka0.8 をリリースした。これは Kafka が Apache ソフトウェア財団のトップレベルプロジェクトになって以降の最初のメジャーリリースである。Apache Kafka は Publish-Subscribe 型のメッセージングシステムであり、分散型のコミットログの形で実装されている。当初は、大容量のイベントとログデータを収集および配信するために LinkedIn で開発されたメッセージングシステムであった。 
+  </div> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/18.py">HTTPを強化する</a>最近のSnowden氏による暴露は、IETF HTTP/2 Working Groupに影響を及ぼしている。プロトコルは暗号化をどのように扱うのか、必須にすべきだろうか？ Working Group議長のMark Nottingham氏はこれまでの議論における考えを共有し、どのように解決されると見ているか手掛りを与えた。そして、意見を持っている人はWorking Groupと共有するよう求めている。 
+  </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/17.py">Agile 2014カンファレンス講演提案が1月14日で終了</a>フロリダ州オーランドで開催されるAgile 2014の講演提案が1月14日をもって締め切られる。Agile Allianceでは講演希望者に対して，提案書を速やかに送付するよう呼びかけている。 
   </div> 
@@ -135,21 +150,6 @@
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/25.py">Visual Studio 2013 に改善された新規プロジェクトテンプレートとソーシャルアカウント認証が追加</a>近年リリースされてた Visual Studio 2013 では、開発者向けにプロジェクトやアプリケーションの高速な構築が可能なプロジェクトテンプレートが公開 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/24.py">Twitter、CocoaSPDYをオープンソースに</a>TwitterがCocoaSPDYを開発し、それをオープンソース化した。CocoaSPDYはOSX (Cocoa)とiOS (Cocoa Touch)向けのSPDYフレームワークで、彼らが以前Nettyに寄贈した実装に基づいている。時を同じくして、彼らのiOSアプリケーションも素のHTTPの代わりにSPDYを使うようアップデートされた。Twitterはこれにより通信遅延を最大30%削減でき、「ユーザのネットワーク状況が悪いとき」ほど改善が顕著に見られると説明している。 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/23.py">アジャイルチームの構成を変える</a>「安定したチーム作りと機能不全なチームの対処」でレポートしたように、組織は安定したチームを構築、育成することを望んでいる。だが時として、チーム内あるいはチーム群の構成を変える必要がある。チーム構成を変更する必要があるとき、どのように実施すればよいのだろうか？ 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/22.py">QCon London '14: 基調講演はDamian Conway, Tim Lister, Gunter Dueckの各氏, 講演者は45%が確定 (3月3〜7日)</a>QCon London 2014 (2014年3月3～7日)講演者100人中の45人と，3人の基調講演者が決定した。８年目を迎えるこのカンファレンスでは，言語開発の先駆者やプロジェクトリーダに加えて，NetflixやNASA, Spotify, Financial Times(英国の経済紙)といった企業の実践者によるケーススタディ講演も行われる。12月15日までに予約すれば325ユーロの早期割引が受けられる。 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/21.py">即興的な劇場型ワークショップで言葉の壁を経験する</a>XP Daysに行われたAgile Cross BordersワークショップでHoang-Anh PHAN氏とAnais Victor氏は，多文化組織(multi cultural organization)における言葉の壁への対処方法を検討した。両氏はベトナムの企業であるOfficienceに所属する。フランスのユーザを対象としたアウトソーシングサービスを提供している同社では，コミュニケーションや共同作業には英語を使用している。 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/20.py">PayPal社がバックエンドをJavaからJavaScriptへ移行</a>PayPal社はJSPとJavaで書かれたレガシーコードを捨て、ブラウザからWebアプリケーションのバックエンドサーバまで、幅広くJavaScriptを採用することに決めた。 
-  </div> 
+  </div>  
  </body>
 </html>

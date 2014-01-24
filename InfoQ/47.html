@@ -1,9 +1,69 @@
-<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>运营将来时：不可变基础设施与内建故障恢复</h3><p>在上个月<a href="http://velocityconf.com/velocityeu2013">伦敦Velocity大会</a>的演讲中，<a href="http://www.vagrantup.com/">Vagrant</a>的缔造者Mitchell Hashimoto介绍了他对于“未来的运营”的愿景，在其中谈到了“<a href="http://www.infoq.com/news/2013/08/immutable-servers">不可变基础设施</a>”与内建的故障恢复。</p>
-<p>Mitchell的愿景涉及了可重复的环境（通过配置管理工具）、超快部署时间（通过预建的静态映像）和服务编制时间（通过分散式编制工具）。在这个情景中，配置全新的服务器与更换故障服务器并没有什么不同。</p>
-<p>这一愿景是构筑在不可变基础设施的理念之上的。在该理念中，机器在启动时得以配置，并将永远不会进行修改。后续出现的任何环境变更，都会通过部署新机器并取代过时的不可变机器（并出现一些警告，例如复杂的数据库服务器变更，或是诸如CSS修改等小型应用变更）来实现。这一理念曾被一些人<a href="http://www.slideshare.net/MaheshKumar135/uncertain-infrastructure-2">视为空想</a>，因为现今在任何系统中都存在大量的外部依赖。</p>
-<p>对Mitchell来说，这个问题由于目前诸如<a href="http://puppetlabs.com/">Puppet</a>或<u><a href="http://www.getchef.com/">Chef</a></u>等配置管理工具而愈加明显。由于包依赖、网络可用性或环境描述中的变更（Chef的<u><a href="http://docs.opscode.com/essentials_cookbooks.html">cookbooks</a></u>或Puppet的<u><a href="http://docs.puppetlabs.com/learning/manifests.html#manifests">manifests</a></u>），相同服务器的可重复部署难以得到保证。Mitchell认为，可预见性的关键是使用预建并且经过测试的机器映像（二进制）——类似于从源代码编译得来的软件二进制包。</p>
-<p>在Mitchell看来，机器映像之所以在过去有着不太好的名声，是因为它们难以维护。但是借助当前的配置管理工具，映像现在易于进化，并且以持续集成的方式构建。<a href="http://sysadvent.blogspot.pt/2013/12/day-14-what-is-packer.html">Packer</a>等新工具能够基于单一的模板和环境描述集合，为多<a href="http://en.wikipedia.org/wiki/Hypervisor">管理程序</a>（VirtualBox、VMWare等等）构建映像，从而进一步简化了任务。</p>
-<p>然而，在映像部署之后（而不是作为部署流程本身的一部分），依旧需要执行服务发现和编制任务（比如建立负载均衡）。<u><a href="http://sysadvent.blogspot.pt/2013/12/day-13-controlling-cluster-of-servers.html">Serf</a></u>是Mitchell开发的另一个用于该领域的工具。他表示，Serf的设计初衷是为了通过松耦合代理和基于流言机制的成员制（新的代理必须与已加入的现有代理联系，才能够加入系统），支持故障探测和恢复。类似地，某个代理探测到故障节点，并向其他代理“传播（gossip）”这一消息——由它们决定是否需要替换该节点。</p>
-<p>Mitchell宣称，这一切的主要价值在于机器映像生成过程中的编制速度，以及配置管理流程的简化（只需要配置Serf代理服务，然后Serf将在机器启动的时候自动启动）。</p>
-<p>在问答环节，Mitchell还表示，在他看来Docker（用于应用容器）、Packer（用于公共基础设施）和Serf（用于服务编制）的共存毫无问题。</p>
-<p><strong>查看英文原文：</strong><a href="http://www.infoq.com/news/2013/12/futureops">FutureOps with Immutable Infrastructures and Built-in Failure Recovery</a></p><br><br><br><br><br><br></body></html>
+<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>百度技术沙龙第46期回顾：读图时代的识图技术（含资料下载）</h3><p>2014年1月18日，由<a href="http://weibo.com/baidutech">@百度</a>主办、<a href="http://e.weibo.com/infoqchina">@InfoQ</a>负责策划组织和实施的第46期百度技术沙龙活动上，百度深度学习研究院（IDL）主任研发架构师/高级科学家黄畅博士、清华大学电子工程系副教授，智能技术与系统国家重点实验室副主任刘长松教授，各自分享了其在识图领域的经验和技术。他们的话题涉及“开启读图时代”和“读图技术和应用”这两个方面，本文将对讲师各自的分享做简单的回顾，同时提供相关资料的下载。</p>
+<h2>主题一：开启读图时代（<a href="http://pan.baidu.com/s/1hqxDXcS">下载讲稿</a>）</h2>
+<p>黄畅博士介绍了大量的Deep Learning的理念和应用，通过百度深度学习研究院的大量有趣的识图产品，揭晓了读图时代的到来。其演讲内容主要包括：识图技术的进展、识图技术在百度IDL、识图技术应用的未来。</p>
+<p><b>识图技术的进展</b></p>
+<ul> 
+ <li>Tasks</li> 
+ <li>Datasets</li> 
+ <li>Descriptors and Models</li> 
+ <li>Deep Learning</li> 
+</ul>
+<p><b>识图技术在百度</b><b>IDL</b></p>
+<ul> 
+ <li>识图</li> 
+ <li>图像分类标注</li> 
+ <li>商品搜索</li> 
+ <li>人脸图像识别</li> 
+ <li>OCR文字识别</li> 
+</ul>
+<p><b>识图技术应用的未来</b></p>
+<ul> 
+ <li>增强现实</li> 
+ <li>人机交互</li> 
+</ul>
+<p>黄畅博士从Deep Learning的理念开始讲起，逐步深入到了百度深度学习研究院的各种技术，包括：相同图像搜索、相似图像搜索（人脸、美女、一般图像）、图像知识图谱（花卉）。</p>
+<p><img width="600" alt="" src="http://infoqstatic.com/resource/news/2014/01/interpret-images-technology/zh/resources/0123002.png" _href="img://null" _p="true" /></p>
+<p>“相比2005年人们翘首以盼迎接新年的方式，在2013年，手机、pad成为人们记录生活的重要手段，这个时代已是读图时代。”黄畅博士总结道。</p>
+<h4>主题二：读图技术和应用（<a href="http://pan.baidu.com/s/1i3mgBXV">下载讲稿</a>）</h4>
+<p>刘长松教授介绍了了大量的文字识别、图像识别、人脸识别的技术和应用实例。根据不同的对象，及复杂的应用场景，深入浅出的介绍了图像识别的逻辑、模型和算法，并阐述了传统方法与深度学习的差异。</p>
+<p><b>主要挑战和难点问题</b></p>
+<ul> 
+ <li>尺度变化</li> 
+ <li>视角变化</li> 
+ <li>光照变化</li> 
+ <li>复杂背景干扰</li> 
+ <li>部分遮挡</li> 
+ <li>非刚体形变</li> 
+ <li>算法的运行速度(实时性系统的基本要求)</li> 
+</ul>
+<p><b>图像识别的几点思考</b></p>
+<ul> 
+ <li>图像获取的问题</li> 
+ <li>特征的选取对识别性能的作用</li> 
+ <li>位置对齐和归一化极其重要</li> 
+ <li>传统方法与深度学习的对比</li> 
+</ul>
+<p><img width="600" alt="" src="http://infoqstatic.com/resource/news/2014/01/interpret-images-technology/zh/resources/0123003.png" _href="img://null" _p="true" /></p>
+<p>“由于切分错误的存在，尽管单字识别可以达到94-99%的，地址识别达到89%，自由书写的普通手写字符串的识别率汉字仍低于50%，英文单词识别率10-20%。文字识别寻找一份最优切分路径的方法。”刘长松教授讲解到。</p>
+<p><b>人脸识别的难点</b></p>
+<ul> 
+ <li>人脸模式类内差异大。人脸的图像观测会受到光线、姿态、视角和聚集的变化而改变；同一人的人脸也会由于本人的时间、年龄、装饰、服饰和化装的不同，其人脸摄影图像而改变；</li> 
+ <li>人脸模式相对类间差异小。世界上数十亿人口，尽管人种、性别、年龄不同，但是人脸的结构基本相同，即人脸的类间差异很小。</li> 
+ <li>实际应用中的小样本问题。人脸图像的维数极高，即使提取Gabor等特征，维数还是有几千维实际应用中每个人的训练样本往往只有几个，甚至只有一个</li> 
+</ul>
+<blockquote> 
+ <p>刘教授认为，传统方法和深度学习在图像处理领域正好起到互补的效果。传统的图像识别方法已在多个非互联网领域起到效果。深度学习的理念比较前卫，很适合大数据时代的图像处理。</p> 
+</blockquote>
+<h2>OpenSpace（开放式讨论环节）</h2>
+<p>为了促进参会者与我们每期的嘉宾以及讲师近距离交流，深入探讨在演讲过程中的疑问，本次活动依然设置了Open Space（开放式讨论）环节。在Open Space的总结环节，几位话题小组长分别对讨论的内容进行了总结。</p>
+<blockquote> 
+ <p>黄畅：本来想听听大家谈一谈百度深度学习研究院的识图产品，但好像给大家解答了不少图像处理的问题。希望大家对我们的产品多提宝贵意见； 刘长松：大家主要针对读图技术向我问了一些技术问题，现在图像处理公司门槛还是挺高的，大家提的问题都很专业。</p> 
+</blockquote>
+<p>会后，一些参会者也通过新浪微博分享了他们的参会感受：</p>
+<blockquote> 
+ <p><a href="http://weibo.com/brotherbull"><b>阿牛哥在北京</b></a>: 刘长松教授 谈到了人脸识别可以识别笑脸，可以做光照可控正面照 如何做人脸的图像超分辨率呢？增强图像的细节和结构。运动的个人，还有双胞胎，带着面具的人如何辨识？</p> 
+ <p><a href="http://weibo.com/u/3281742030"><b>与时俱进的</b><b>dev</b></a>：比较详细介绍图像的处理技术。想了解未来的趋势，一个好的图像识别开发应该注意什么问题？</p> 
+ <p><a href="http://weibo.com/mllecture"><b>@</b><b>机器学习讲座</b></a>：文本经过长期的人脑抽象，已经成为一个结构化的数据，而图像则是由设备采集并未经过人脑处理的非结构化数据，黄博士认为未来这两块的处理技术会有较大的差别。这跟我先前的总体认识有差距，回去头再好好想想。</p> 
+</blockquote>
+<p>有关百度技术沙龙的更多信息，可以通过新浪微博关注<a href="http://weibo.com/baidutech">@百度技术沙龙</a>，或者关注InfoQ官方微信：infoqchina，InfoQ上也总结了过往42期所有百度技术沙龙的演讲视频和资料等，感兴趣的读者可以<a href="http://www.infoq.com/cn/zones/baidu-salon/">直接浏览内容</a>。</p>
+<p><strong>特别提示：</strong>第47期百度技术沙龙将在2月2日，在北京车库咖啡举行，欢迎关注<a href="http://weibo.com/infoqchina">@InfoQ</a>、<a href="http://weibo.com/baidutech">@百度技术沙龙</a>获取后续的活动信息。</p><br><br><br><br><br><br></body></html>
