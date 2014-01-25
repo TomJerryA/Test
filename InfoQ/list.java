@@ -2,10 +2,13 @@
  <head></head> 
  <body>
   <div>
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/40.java">jQuery 1.11 &amp; 2.1 Now on npm and Bower</a>The latest jQuery can be obtained from npm and Bower, has some performance improvements and bug fixes.
-  </div>
-  <div>
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/39.java">Coverity 7.0 with C#, Java, C, C++ Algorithms, SonarQube, Eclipse, VS and Clang Compiler Support</a>Coverity has released version 7 of its testing platform with improved C#, Java, C, C++ algorithms in addition to support for SonarQube, Eclipse and Visual Studio 2013. The release also includes support for clang compiler used in the development of Objective-C and C/C++.
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/41.java">Presto-as-a-Service: Interactive SQL Queries on AWS</a>Presto, a technology from Facebook enabling interactive SQL queries on petabytes of data, has now taken a first step into mainstream adoption. Big Data startup Qubole has launched its Presto-as-a-Service alpha with integration to Amazon Web Services.
+  </div> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/40.java">jQuery 1.11 &amp; 2.1 Now on npm and Bower</a>The latest jQuery can be obtained from npm and Bower, has some performance improvements and bug fixes. 
+  </div> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/39.java">Coverity 7.0 with C#, Java, C, C++ Algorithms, SonarQube, Eclipse, VS and Clang Compiler Support</a>Coverity has released version 7 of its testing platform with improved C#, Java, C, C++ algorithms in addition to support for SonarQube, Eclipse and Visual Studio 2013. The release also includes support for clang compiler used in the development of Objective-C and C/C++. 
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/38.java">Is Android Moving to a Closed Source Model?</a>In an interesting analysis appeared on Ars Technica, Ron Amadeo argues that Google is progressively shifting Android towards a closed source model. Google's strategy would aim at making Android suitable to be freely customised and used &quot;for little hobbies&quot;, while hampering the choices of &quot;anyone trying to use Android without Google’s blessing&quot;. 
@@ -147,9 +150,6 @@
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/45.java">Intel Pushes Mobile Cross Platform Development with its HTML5 XDK</a>In December 2013, Intel announced its plans to push its latest Intel XDK NEW to the mainstream by making it the official Intel XDK version and inviting all developers to migrate from the previous one by the end of February 2014. Let's look at what Intel XDK is and what is new in its latest release. 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/44.java">Appcelerator Announces Insights for Tracking Mobile Apps Lifecycle</a>Appcelerator, maker of the Titanium Mobile Development Environment, has recently announced Appcelerator Insights as part of its Appcelerator Analytics product.Insights promises to deliver real-time aggregated analytics aiming at measuring higher-level metrics like user acquisition and retention, engagement, and app performance. 
-  </div>   
+  </div>  
  </body>
 </html>

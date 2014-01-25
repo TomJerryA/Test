@@ -1,7 +1,7 @@
 <html>
  <head></head> 
- <body>
-  <div>
+ <body> 
+  <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/33.htmlb">超越数据挖掘</a> 作者在文中探讨了预测建模社区的关注点需要做出的改变，并比较了四种不同的数据挖掘类型：算法挖掘、景观挖掘、决策挖掘和讨论挖掘。 
   </div> 
   <div> 
@@ -150,6 +150,6 @@
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/36.htmlb">天生一对：云与DevOps</a> 云计算和DevOps间的关系到底是什么呢：难道DevOps真的只是“针对云的IT”？只能在云中执行DevOps？只能通过DevOps运行云？针对这三个问题，其答案都是否定的。云和DevOps是相互独立的，但是在通过IT交付商业价值上却是相辅相成的。 
-  </div>  
+  </div> 
  </body>
 </html>

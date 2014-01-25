@@ -1,1 +1,1 @@
-jQuery 1.11 & 2.1 Now on npm and Bower
+Presto-as-a-Service: Interactive SQL Queries on AWS
