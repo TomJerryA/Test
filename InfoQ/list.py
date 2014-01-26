@@ -1,6 +1,15 @@
 <html>
  <head></head> 
- <body> 
+ <body>
+  <div>
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/25.py">データサイエンティスト向け教育プログラム</a>2013年はデータサイエンティストやビッグデータ専門家向けの新しい教育プログラムが多く発表された。
+  </div>
+  <div>
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/24.py">Chefのレシピ作成エクスペリエンスを向上するChef Sugar</a>Chef SugarはDSLを使ってレシピの可読性を改善するChefのエクステンションだ。作者のSeth Vargo氏が実例を示しながら，Chef Sugarを開発した動機について説明している。InfoQは氏へのインタビューを通じて，Chefのプラグインアーキテクチャという面から，シンタックスシュガーのメリットに対する氏の見解を聞いた。
+  </div>
+  <div>
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/23.py">Add App Wizardなどの機能改良を加えたXAML Spy 2.0.5がリリース</a>XAML Spyがこの1月にリリースされた。Add App Wizard，XAML Spy ExplorerツールバーのShow All Appsボタンによるインストール済みアプリのナビゲートなどがサポートされている。複数のプロジェクトに対して，XAML Spyを一括で有効あるいは無効にすることも可能だ。
+  </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/22.py">Facebook、MercurialをGitよりも速くする</a>FacebookがどのようにしてMercurialをGitよりも特定の操作で5倍速くしたのかを説明する記事をポストした。読むと、彼らが何を変えて、なぜセットアップをそうしたのかがわかるだろう。 
   </div> 
@@ -141,15 +150,6 @@
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/28.py">Tererik, Entity Framwork 6のサポートなどの機能を備えたRadControls for WPF and Silverlight Q2 2013 SP1をリリース</a>TelerikがRadControls for WPF and Silverlight Q2 2013 SP1をリリースした。アプリケーション実行中のアイコンセット変更が可能になり，Entity Framework 6がサポートされた。その他にも，Telerik EventToCommandBehaviorの使用時にイベント引数をコマンドに渡すことが可能になるなど，いくつかの新機能と改善点がある。 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/27.py">Wix 3.8リリース，VotiveとWixネイティブライブラリとブートストラッパアプリケーション機能でVS2013をサポート</a>Wix3.8がリリースされた。VotiveとWiXのネイティブライブラリを通じてVisual Studio 2013をサポートする。WixStandardBootstrapperApplicationの拡張によるブートストラッパアプリケーション機能，インストール時にWindows 8.1を検出する機能なども備える。 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/26.py">Visual Commander Professional v1.3リリース，99のコマンドと50のエクステンション，C#対応の構文強調機能を導入</a>先日リリースされたVisual Commander Professional v1.3は99のコマンドと50のエクステンション，C#の構文強調機能などを備える他，マクロ言語を選択することによって新規作成されるコマンドやエクステンションのデフォルト言語の選択も可能になるなど，いくつかの点で改良されている。 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/25.py">Visual Studio 2013 に改善された新規プロジェクトテンプレートとソーシャルアカウント認証が追加</a>近年リリースされてた Visual Studio 2013 では、開発者向けにプロジェクトやアプリケーションの高速な構築が可能なプロジェクトテンプレートが公開 
-  </div> 
+  </div>    
  </body>
 </html>

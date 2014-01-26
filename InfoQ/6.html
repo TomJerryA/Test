@@ -1,9 +1,17 @@
-<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>Appcelerator公布用于追踪移动应用生命周期的Insights产品</h3><p>最近，Titanium移动开发环境的制造者Appcelerator公布了Appcelerator Insights，并将成为其<a name="OLE_LINK1">分析产品</a>Appcelerator Analytics的组成部分。</p>
-<p>Appcelerator承诺，Insights将能够针对更高层面指标（例如赢得并留住用户、用户参与度，以及应用性能等方面）进行实时聚合分析。如果Insights真能做到它所宣称的一切，那么它将成为可以与Google Mobile App Analytics和Flurry相媲美的竞争产品。</p>
-<p>在2009年起，Appcelerator就已经开始积极地涉足跨平台移动开发领域。使用Titanium移动开发环境，开发者可以从单一JavaScript代码库创建混合应用，并使其能够在多个移动平台上运行。除了Titanium这个开源且免费的产品外，Appcelerator还通过其付费产品Appcelerator Platform提供企业级的后端即服务（BaaS）和Analytics产品。</p>
-<p>Appcelerator宣称，针对多个平台时，它的产品将帮助开发者实现60%-90%的代码复用。虽然在使用Titanium进行跨平台开发时，开发者反馈的成功程度不尽相同，但是当开发速度和JavaScript技能集的可用性成为驱动开发决策的主要因素时，它依旧是一个良好的选择。</p>
-<p>在过去，Appcelerator Analytics的特性曾经遭遇了一些批评性言论，因为它们没有提供足够的细节以支持更细粒度的追踪。为此，一些开发者尝试着在其Titanium应用中整合Google Analytics或Flurry，而且在Github上也有一些能够简化这一步骤的开源框架。</p>
-<p>为了解决这一问题，在2013年5月Appcelerator Analytics中新增的实时特性的基础上，构建了新的Appcelerator Insights，提供专门针对移动应用并覆盖完整应用生命周期——从获取（安装应用并联网的设备数量）到参与（激活会话与会话时长），再到留存（每天和/或每周使用应用的唯一用户）——的指标。此外，Insights还将收集质量指标，例如崩溃数据和性能问题，以展示应用的稳定性。</p>
-<p>对应用生命周期的关注，将使它从标准的Web分析工具提供的指标和报告中脱颖而出，并开始与其他一些工具——例如Google Mobile App Analytics从2012年年中开始——所提供的分析相类似。为了与经过更长时间调优的类似解决方案相竞争，Appcelerator正力图增强它的分析产品，然而这些努力是否能够成功，还有待进一步观察。</p>
-<p>在初期，Appcelerator Insights将适用于iPad Air、iPad Retina和iPad Mini Retina；稍后，它也将支持Android设备。</p>
-<p><strong>查看英文原文：</strong><a href="http://www.infoq.com/news/2014/01/Appcelerator-Mobile-Apps?utm_campaign=infoq_content&amp;utm_source=infoq&amp;utm_medium=feed&amp;utm_term=global">Appcelerator Announces Insights for Tracking Mobile Apps Lifecycle</a></p><br><br><br><br><br><br></body></html>
+<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>大数据：编程语言真的重要吗？</h3><p>在大数据领域内，每一毫秒的性能损失都影响巨大。然而，像Python这样通常被认为性能不是太好的编程语言，在过去一年中却变得越来越流行了。大数据社区最近出现的一些文章和讨论，又一次点燃了用于数据科学以及大数据领域内的编程语言选择之争。</p>
+<p><a href="http://www.adroll.com/">AdRoll</a>的首席工程师Ville Tuulos认为编程语言本身的性能其实并不重要。Ville于2013年9月在旧金山将自己的调查发现发布到了一个<a href="http://tuulos.github.io/sf-python-meetup-sep-2013/#/">meetup</a>组中，向我们展示了AdRoll中使用的基于Python构建的后端架构，以及它们是如何在性能上超过那些业界中的巨头（例如Amazon的<a href="http://aws.amazon.com/redshift/">Redshift</a>）的。他们获得成功的关键是，整个系统是基于他们自己非常特殊的用例而构建的，因此可以针对那种用例进行优化。正如Ville所说：</p>
+<blockquote> 
+ <p>不管通用解决方案是采用何种编程语言实现的，你都可以使用一种高级编程语言来快速地实现出一个性能比通用方案更好的，应用于特定领域的解决方案。</p> 
+</blockquote>
+<p>但这并不意味着编程语言一点都不重要。最近有不少关于哪种语言最适合数据科学和大数据领域的争论，而这一殊荣最有力的竞争者就是Python和R语言。一些人甚至把它说成是<a href="http://inside-bigdata.com/2013/12/09/data-science-wars-python-vs-r/">数据科学领域内的一场战争</a>。在LinkedIn上面也有针对这一话题的<a href="http://www.linkedin.com/groups/R-vs-Python-35222.S.239919420">讨论</a>，看上去大家的普遍共识是，R语言是一种学术性语言，“对数据科学家而言，R语言的优势在于它所提供的大量的包以及其多样性”。</p>
+<p>但是对于海量数据处理这一块，总体说来Python受到更多程序员的青睐，正如来自<a href="http://www.dish.com/">Dish Network</a>的数据科学家Tom Rampley所说：</p>
+<blockquote> 
+ <p>我经常使用R语言的各种包中所提供的统计功能。我还使用它在小规模的数据集上面执行各种数据操作。但是对于文本解析、大数据集上的数据操作以及编写自己的算法这些任务来说，我更加喜欢使用Python并结合使用它的<a href="http://www.numpy.org/">Numpy</a>、<a href="http://scipy.org/">Scipy</a>和<a href="http://pandas.pydata.org/">Pandas</a>这些包。</p> 
+</blockquote>
+<p>在最近几个月里，Python似乎在各个方面都要更胜一筹，正如<a href="http://karissamck.com/blog/2013/10/30/big-data-is-big-because-it-doesnt-load-into-r/">Karissa McKelvey</a>在2013年10月所写的那样，“我的数据太大了，无法装载到R语言中”，还有<a href="http://readwrite.com/2013/11/25/python-displacing-r-as-the-programming-language-for-data-science#awesm=~otQwqutAwSAAwX">Matt Asay</a>也声称，“在数据科学的博士们中间，R语言仍然很受欢迎，但是随着数据逐渐成为主流，Python正在接替R语言的地位”。</p>
+<p>语言自身的性能常常是我们在开发复杂架构时决定到底使用哪种语言的一个关键因素，而且这一因素常常被过度夸大。实际上真正重要的是我们如何使用一种语言，正如Linus Torvalds所说，“低水平的程序员总在关心代码，而高水平的程序员则关注数据结构及其关系。”</p>
+<p>以<a href="http://www.cloudera.com/content/cloudera/en/home.html">Cloudera</a>公司最近的一个开源项目<a href="https://github.com/cloudera/impala">Impala</a>为例，它的目标是替代<a href="http://hive.apache.org/">Hive</a>，使查询速度提高一个数量级。他们选择使用了C++，而其他所有的<a href="http://hadoop.apache.org/">Hadoop</a>架构都是基于Java的，这种开发语言上的转变经常被冠以某些与性能相关的原因。但实际上这里的性能提升不是简单地来自从Java到C++的转换。Impala甚至没有使用<a href="http://en.wikipedia.org/wiki/MapReduce">MapReduce</a>，而是直接在内存中缓存数据，所以很显然，这里的性能改善主要源于它采用了带有不同数据结构和限制的一个完全不同的范型。这里由Java到C++的转换只是一种锦上添花的工作，并不会对性能的改善起到雪中送炭的作用。</p>
+<p><strong>查看英文原文：</strong><a href="http://www.infoq.com/news/2014/01/bigdata-languages">Big Data: Do Languages Really Matter?</a></p>
+<hr />
+<p>感谢<a href="http://www.infoq.com/cn/author/臧秀涛">臧秀涛</a>对本文的审校。</p>
+<p>给InfoQ中文站投稿或者参与内容翻译工作，请邮件至<a href="mailto:editors@cn.infoq.com">editors@cn.infoq.com</a>。也欢迎大家通过新浪微博（<a href="http://www.weibo.com/infoqchina">@InfoQ</a>）或者腾讯微博（<a href="http://t.qq.com/infoqchina">@InfoQ</a>）关注我们，并与我们的编辑和其他读者朋友交流。</p><br><br><br><br><br><br></body></html>

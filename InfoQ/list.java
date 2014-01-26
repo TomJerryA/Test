@@ -2,7 +2,10 @@
  <head></head> 
  <body>
   <div>
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/41.java">Presto-as-a-Service: Interactive SQL Queries on AWS</a>Presto, a technology from Facebook enabling interactive SQL queries on petabytes of data, has now taken a first step into mainstream adoption. Big Data startup Qubole has launched its Presto-as-a-Service alpha with integration to Amazon Web Services.
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/42.java">Functional Relational Mapping Library Slick 2.0 Released</a>Version 2.0 of Slick, a Functional-Relational Mapping, FRM, library for Scala, (corresponding to an Object-Relational Mapper, ORM, for object-oriented languages), was recently released with a code generator for reverse-engineering a database schema and new driver architecture to allow support for non-SQL databases.
+  </div> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/41.java">Presto-as-a-Service: Interactive SQL Queries on AWS</a>Presto, a technology from Facebook enabling interactive SQL queries on petabytes of data, has now taken a first step into mainstream adoption. Big Data startup Qubole has launched its Presto-as-a-Service alpha with integration to Amazon Web Services. 
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/40.java">jQuery 1.11 &amp; 2.1 Now on npm and Bower</a>The latest jQuery can be obtained from npm and Bower, has some performance improvements and bug fixes. 
@@ -147,9 +150,6 @@
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/46.java">Jez Humble and Gene Kim in Search of High Performing Practices with DevOps Survey</a>Jez Humble and Gene Kim, prominent figures of the DevOps movement, are working with Puppet Labs on the 2013 DevOps Survey Of Practice. The survey's goal is to better understand which IT practices drive an organization to high performance, building upon the 2012 DevOps Survey. The survey will close on the 15th of January and everyone is invited to participate. 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/45.java">Intel Pushes Mobile Cross Platform Development with its HTML5 XDK</a>In December 2013, Intel announced its plans to push its latest Intel XDK NEW to the mainstream by making it the official Intel XDK version and inviting all developers to migrate from the previous one by the end of February 2014. Let's look at what Intel XDK is and what is new in its latest release. 
   </div>  
  </body>
 </html>

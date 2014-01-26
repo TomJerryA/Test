@@ -1,8 +1,41 @@
-<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>CouchDB创始人加入Salesforce.com，从事非常“酷炫”的基础设施项目</h3><p>近日，<a href="http://www.pcworld.com/article/201046/article.html">NoSQL数据库CouchDB</a>的创始人宣布将加入Salesforce.com，从事一项与厂商云基础设施相关的非常“酷炫”的项目。</p>
-<p>Damien Katz在<a href="http://damienkatz.net/">博客</a>上宣布“从2014年1月开始将会在Salesforce.com继续自己的职业生涯，并且与Pat Helland紧密协作，从事一项将会巩固其基础设施的项目，同时还会改进性能、可靠性与可预测性，此外还将大幅降低生产成本”。这是个非常“酷炫”的项目，我现在还不知道能否披露项目的细节信息。不过如果能圆满完成的话，这个项目将会给我们带来非常积极的影响。</p>
-<p>与此同时，Salesforce.com的发言人却拒绝提供Katz所提及的项目的详细信息。</p>
-<p>虽然长久以来，Salesforce.com一直都在使用Oracle数据库，并作为其平台的底层设施，而且最近又与这个竞争对手签署了一项<a href="http://www.infoworld.com/d/the-industry-standard/oracle-salesforcecom-ink-nine-year-technology-partnership-221465">长期的合约</a>；不过，Salesforce.com也在开源方案上面加紧了脚步，比如说向HBase提供开发资源，收购Heroku，而后者则使用了PostgreSQL。</p>
-<p>有观察者认为，Salesforce.com并不需要Oracle。</p>
-<p>来自Monash Research的分析师Curt Monash在其邮件中提到“显然，Oracle并不适合于Salesforce.com的数据库架构，Salesforce.com很少用到Oracle的关系特性。与10几年前Salesforce.com首次采用Oracle相比，现在在安全与可靠性方面已经有了更多的选择”。</p>
-<p>Katz提到他将与Salesforce.com架构师Pat Helland合作，这一点提供了关于这个项目特性的一些线索。在去年10月份的Ricon West大会上，Helland谈到了Keystone，该设计将会统一并简化多种形式的存储，根据会议的内容，我们计划据此构建存储来实现快速的失败恢复能力。</p>
-<p>虽然消费级的固态硬盘技术费用只占企业级SSD市场的很小一部分，不过消费级的SSD所产生的无法恢复的错误率却很高。通过设计Keystone的架构来存储不变数据，同时使用软件提供的错误检测功能，我们可以非常自信地说，我们能够检测到错误，并且可以从其他地方获得所需的存储数据。</p><br><br><br><br><br><br></body></html>
+<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>SparkR发布 让R跑在Spark上</h3><p><a href="http://amplab-extras.github.io/SparkR-pkg/">SparkR</a>是AMPLab发布的一个R开发包，为Apache Spark提供了轻量的前端。SparkR提供了Spark中弹性分布式数据集（RDD）的API，用户可以在集群上通过R shell交互性的运行job。例如，我们可以在HDFS上读取或写入文件，也可以使用 lapply 来定义对应每一个RDD元素的运算。</p>
+<pre>
+sc &lt;- sparkR.init(&quot;local&quot;)
+  lines &lt;- textFile(sc, &quot;hdfs://data.txt&quot;)
+  wordsPerLine &lt;- lapply(lines, function(line) { length(unlist(strsplit(line, &quot; &quot;))) })
+</pre>
+<p>除了常见的RDD函数式算子reduce、reduceByKey、groupByKey和collect之外，SparkR也支持利用 lapplyWithPartition 对每个RDD的分区进行操作。</p>
+<p>SparkR也支持常见的闭包（closure）功能：用户定义的函数中所引用到的变量会自动被发送到集群中其他的机器上。参见一下例子中用户闭包中引用的 initialWeights 会被自动发送到集群其他机器上。</p>
+<pre>
+lines &lt;- textFile(sc, &quot;hdfs://data.txt&quot;)
+   initialWeights &lt;- runif(n=D, min = -1, max = 1)
+   createMatrix &lt;- function(line) {
+     as.numeric(unlist(strsplit(line, &quot; &quot;))) %*% t(initialWeights)
+   }
+   # initialWeights is automatically serialized
+   matrixRDD &lt;- lapply(lines, createMatrix)
+</pre>
+<p>用户还可以很容易的在已经安装了R开发包的集群上使用SparkR。includePackage 命令用于指示在每个集群上执行操作前读取开发包。以下是个例子：</p>
+<pre>
+generateSparse &lt;- function(x) {
+    # Use sparseMatrix function from the Matrix package
+    sparseMatrix(i=c(1, 2, 3), j=c(1, 2, 3), x=c(1, 2, 3))
+  }
+  includePackage(sc, Matrix)
+  sparseMat &lt;- lapplyPartition(rdd, generateSparse)
+</pre>
+<p>针对SparkR发布的消息，大数据创业公司DataBricks的创始人之一<a href="http://weibo.com/hashjoin">@hashjoin</a>（辛湜）在微博上评论到：</p>
+<blockquote> 
+ <p>R是数据分析最常用的工具之一，但是R能处理的数据不能大于一台机器的内存。过去有一些R和Hadoop结合的尝试一般都性能低下，用户体验差。今天AMPLab发布了R的Spark前端，利用R进行大数据交互分析，也可以在节点上利用R的数据分析库，是大数据的一个新利器。</p> 
+</blockquote>
+<p><a href="http://weibo.com/n/vinW">@vinW</a>：</p>
+<blockquote> 
+ <p>我一直就说R matlab 和Spark其实是一路的，内存流派的。Spark这个分布式的高端搞法必将重振内存计算这个领域。</p> 
+</blockquote>
+<p><a href="http://weibo.com/sunbjt">@刘思喆</a>：</p>
+<blockquote> 
+ <p>重磅消息，比预想的要早很多。</p> 
+</blockquote>
+<hr />
+<p>感谢<a href="http://www.infoq.com/cn/author/辛湜">辛湜</a>对本文的审校。</p>
+<p>给InfoQ中文站投稿或者参与内容翻译工作，请邮件至<a href="mailto:editors@cn.infoq.com">editors@cn.infoq.com</a>。也欢迎大家通过新浪微博（<a href="http://www.weibo.com/infoqchina">@InfoQ</a>）或者腾讯微博（<a href="http://t.qq.com/infoqchina">@InfoQ</a>）关注我们，并与我们的编辑和其他读者朋友交流。</p><br><br><br><br><br><br></body></html>

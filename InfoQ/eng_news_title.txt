@@ -1,1 +1,1 @@
-Presto-as-a-Service: Interactive SQL Queries on AWS
+Functional Relational Mapping Library Slick 2.0 Released

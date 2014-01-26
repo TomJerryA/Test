@@ -1,1 +1,1 @@
-Facebook、MercurialをGitよりも速くする
+データサイエンティスト向け教育プログラム
