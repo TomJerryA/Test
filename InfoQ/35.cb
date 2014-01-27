@@ -1,0 +1,194 @@
+<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>Adicionando flexibilidade à sua implementação REST com Yoga</h3><p>As APIs REST s&atilde;o extremamente atrativas pela eleg&acirc;ncia de seus designs e possuem o que Adam Bosworth do Google descreve como &quot;simples, menos rigorosas e extens&iacute;vel com pouca ordem&quot;, mas n&atilde;o foram projetadas para terem um desempenho consistente.</p>
+<p>Os frameworks REST existentes fazem um &oacute;timo trabalho convertendo o seu modelo de dom&iacute;nio para uma resposta JSON ou XML. Entretanto, eles operam sob o pressuposto de que cada recurso tem uma &uacute;nica visualiza&ccedil;&atilde;o de documento. Isto significa que toda requisi&ccedil;&atilde;o para um documento, acaba retornando o documento inteiro, mesmo quando apenas uma parte da informa&ccedil;&atilde;o &eacute; solicitada.</p>
+<p>O mais importante, &eacute; que a cada requisi&ccedil;&atilde;o GET, em uma API REST, retorna apenas um tipo de recurso. Portanto uma requisi&ccedil;&atilde;o na qual seja necess&aacute;rio agregar informa&ccedil;&otilde;es de v&aacute;rios tipos de recursos diferentes, ser&aacute; necess&aacute;rio realizar pelo menos uma requisi&ccedil;&atilde;o para cada recurso que esteja relacionado com a informa&ccedil;&atilde;o final. Pense em uma consulta com joins no mundo dos banco de dados relacionais. Sob um modelo puramente REST, cada linha retornada de uma jun&ccedil;&atilde;o necessita de sua pr&oacute;pria requisi&ccedil;&atilde;o GET. Este tipo de mecanismo de conversa&ccedil;&atilde;o rapidamente se torna um gargalo na aplica&ccedil;&atilde;o web.</p>
+<p><strong>Qual &eacute; a solu&ccedil;&atilde;o do Yoga?</strong></p>
+<p>O Yoga &eacute; uma caixa de ferramentas open source que se integra &agrave; sua aplica&ccedil;&atilde;o REST existente, permitindo a customiza&ccedil;&atilde;o das APIs que estejam publicadas. Ele trabalha adicionando <strong>seletores</strong> &agrave; sua requisi&ccedil;&atilde;o GET que espec&iacute;fica exatamente qual informa&ccedil;&atilde;o &eacute; esperada de uma requisi&ccedil;&atilde;o, como se fosse uma cl&aacute;usula de proje&ccedil;&atilde;o de coluna do mundo relacional. Ele tamb&eacute;m inclui a possibilidade de especificar express&otilde;es relacionais que podem agregar m&uacute;ltiplos documentos de diferentes tipos de recursos relacionados entre si em uma mesma resposta.</p>
+<p>Isto n&atilde;o se trata de um novo conceito. As API's propriet&aacute;rias, tais como as primeiras vers&otilde;es da <a href="https://developer.linkedin.com/documents/field-selectors">API do Linkedln</a> e a especifica&ccedil;&atilde;o da <a href="https://developers.google.com/gdata/%20">Google's GData</a> j&aacute; utilizavam. Mas ao contr&aacute;rio destas API's o Yoga permite que se introduza esta sintaxe na aplica&ccedil;&atilde;o Java REST.</p>
+<div id="lowerFullwidthVCR"></div>
+<p>O restante desta se&ccedil;&atilde;o ir&aacute; demonstrar um caso de uso no qual o Yoga ir&aacute; melhorar o desempenho de uma aplica&ccedil;&atilde;o, enquanto preserva a sintaxe de f&aacute;cil utiliza&ccedil;&atilde;o do REST.</p>
+<p><strong>Especificando Campos de Recursos</strong></p>
+<p>Aqui esta uma t&iacute;pica requisi&ccedil;&atilde;o REST, para recuperar uma inst&acirc;ncia de uma recurso. Ele ir&aacute; retornar todos os campos associados com o tipo de recurso User:</p>
+<pre>
+GET /user/1.json
+</pre>
+<p>E se, devido a preocupa&ccedil;&atilde;o quanto a seguran&ccedil;a e desempenho fosse necess&aacute;rio gerar uma requisi&ccedil;&atilde;o que retorna somente o nome e a localiza&ccedil;&atilde;o de uma informa&ccedil;&atilde;o para um determinado usu&aacute;rio? Para prop&oacute;sitos de desenvolvimento, ou disponibiliza&ccedil;&atilde;o &agrave; clientes de confian&ccedil;a, pode-se associar um seletor a requisi&ccedil;&atilde;o.</p>
+<pre>
+GET /user/1.json?selector=(id,name,city,state,country)
+</pre>
+<p>Para disponibilizar API's p&uacute;blicas, provavelmente n&atilde;o precisa dar ao seus usu&aacute;rios finais poderes ilimitados de utiliza&ccedil;&atilde;o de um seletor. Para evitar isso, ser&aacute; necess&aacute;rio simplesmente publicar um <strong>pseud&ocirc;nimo (alias)</strong> para o seletor definido.</p>
+<pre>
+GET /user/1.json?selector=$locationView
+</pre>
+<p><strong>Recuperando M&uacute;ltiplos Tipos de</strong> <strong>Recursos</strong></p>
+<p>Agora, considere a situa&ccedil;&atilde;o na qual &eacute; necess&aacute;rio navegar pelo gr&aacute;fico de objeto do modelo de dom&iacute;nio e retornar informa&ccedil;&otilde;es de m&uacute;ltiplas classes em uma &uacute;nica chamada a API:</p>
+<p class="image-wide"><img src="http://www.infoq.com/resource/articles/json-yoga/pt/resources/selector7-med.png" alt="" _href="img://selector7-med.png" _p="true" /></p>
+<p>O gr&aacute;fico anterior reflete o modelo de entidades de dados utilizados por um aparelho m&oacute;vel ou um cliente Javascript o qual agrega um n&uacute;mero de entidades em uma &uacute;nica tela de informa&ccedil;&atilde;o. Tal requisi&ccedil;&atilde;o enviada pelo cliente deve retornar dados sobre um usu&aacute;rio, seus amigos, quais artistas musicais seus amigos gostam, e &aacute;lbuns e can&ccedil;&otilde;es produzidas por determinado artista (este caminho no gr&aacute;fico &eacute; destacado pela cor marrom).</p>
+<p>Conceitos como Usu&aacute;rio, Artista e M&uacute;sica s&atilde;o recursos REST distintos, por isso usando a forma REST padr&atilde;o, s&atilde;o necess&aacute;rias m&uacute;ltiplas chamadas:</p>
+<pre>
+GET /user/1.json (Obter usu&aacute;rio)
+
+GET /user/2.json (Obter as entidades detalhadas dos amigos)
+GET /user/3.json
+...
+GET /artist/1.json (Obter os artistas favoritos)
+GET /artist/2.json
+...
+GET /album/1.json (Obter os &aacute;lbuns do artista)
+GET /album/2.json
+...
+GET /song/1.json (Obter as m&uacute;sicas do &aacute;lbum)
+GET /song/2.json
+...
+</pre>
+<p>Claramente, isto n&atilde;o escala conforme avan&ccedil;amos mais a fundo no gr&aacute;fico de objetos. A lat&ecirc;ncia na rede ir&aacute; rapidamente se tornar um gargalho de desempenho.</p>
+<p>Com seletores, podemos especificar todos os dados que precisamos, e recuper&aacute;-los em uma &uacute;nica chamada. Para desenvolvimento e clientes autorizados, podemos especificar o seletor explicitamente:</p>
+<pre>
+GET /user/1.json?selector=friends(favoriteArtists(albums(songs)))
+</pre>
+<p>Para a instala&ccedil;&atilde;o em produ&ccedil;&atilde;o das API's p&uacute;blicas, podemos publicar um <strong>Pseud&ocirc;nimo (Alias)</strong>:</p>
+<pre>
+GET /user/1.json?selector=$friendsFavoriteMusic
+</pre>
+<p><strong>Implementando o Yoga</strong></p>
+<p>Para adicionar o Yoga na aplica&ccedil;&atilde;o existente &eacute; necess&aacute;rio pouqu&iacute;ssimas configura&ccedil;&otilde;es. O Yoga integra facilmente com o Spring MVC REST, Jersey e o RESTEasy. No exemplo a seguir, iremos implementar o Yoga com uma aplica&ccedil;&atilde;o Spring MVC REST.</p>
+<p>Nossa aplica&ccedil;&atilde;o REST usa a <a href="http://static.springsource.org/spring/docs/3.0.x/javadoc-api/org/springframework/web/servlet/view/json/MappingJacksonJsonView.html">MappingJacksonJsonView</a> do Spring para serializar as respostas:</p>
+<pre>
+  &lt;property name=&quot;defaultViews&quot;&gt;
+       &lt;list&gt;
+           &lt;bean class=&quot;org.springframework.web.servlet.view.json.MappingJacksonJsonView&quot;/&gt;
+       &lt;/list&gt;
+   &lt;/property&gt;
+</pre>
+<p>Nosso UserController usa URIs parametriz&aacute;veis para processar as requisi&ccedil;&otilde;es GET do recurso User e a anota&ccedil;&atilde;o Spring <strong>@ResponseBody</strong> para renderizar a sa&iacute;da com o <strong>MappingJacksonJsonView</strong>:</p>
+<pre>
+  @RequestMapping(&quot;/user/{id}&quot;)
+  public @ResponseBody User get( @PathVariable long id ) {
+    return _userRepository.fetchUser( id );
+  }
+</pre>
+<p>Se precisamos de um controle maior sobre a forma como renderizamos os documentos de um User, podemos migrar de uma aplica&ccedil;&atilde;o REST para uma aplica&ccedil;&atilde;o Yoga. Primeiro, precisamos importar nossas depend&ecirc;ncias Maven:</p>
+<pre>
+  &lt;dependency&gt;
+      &lt;groupId&gt;org.skyscreamer&lt;/groupId&gt;
+      &lt;artifactId&gt;yoga-core&lt;/artifactId&gt;
+      &lt;version&gt;1.0.0&lt;/version&gt;
+  &lt;/dependency&gt;
+  &lt;dependency&gt;
+      &lt;groupId&gt;org.skyscreamer&lt;/groupId&gt;
+      &lt;artifactId&gt;yoga-springmvc&lt;/artifactId&gt;
+      &lt;version&gt;1.0.0&lt;/version&gt;
+  &lt;/dependency&gt;
+</pre>
+<p>Em seguida, substitu&iacute;mos o MappingJacksonJsonView do Spring pelo YogaSpringView, o qual sabe como analisar seletores:</p>
+<pre>
+&lt;property name=&quot;defaultViews&quot;&gt;
+  &lt;list&gt;
+    &lt;bean class=&quot;org.skyscreamer.yoga.springmvc.view.YogaSpringView&quot; p:yogaView-ref=&quot;jsonView&quot;/&gt;
+    &lt;!--&lt;beanclass=&quot;org.springframework.web.servlet.view.json.MappingJacksonJsonView&quot;/&gt;--&gt;
+  &lt;/list&gt;
+&lt;/property&gt;
+</pre>
+<p>A inje&ccedil;&atilde;o de depend&ecirc;ncia do jsonView diz para o SpringMVC que o Yoga processar&aacute; as requisi&ccedil;&otilde;es JSON e renderizar&aacute; as sa&iacute;das JSON. Definimos o jsonView no contexto da nossa aplica&ccedil;&atilde;o:</p>
+<pre>
+  &lt;bean name=&quot;jsonView&quot; class=&quot;org.skyscreamer.yoga.view.JsonSelectorView&quot; p:selectorParser-ref=&quot;selectorParser&quot; /&gt;
+  &lt;bean id=&quot;selectorParser&quot; class=&quot;org.skyscreamer.yoga.selector.parser.GDataSelectorParser&quot;/&gt;
+</pre>
+<p>Aqui, tamb&eacute;m informamos que a sintaxe especificada do GData usar&aacute; os seletores. O Yoga apresenta um SelectorParser alternativo, LinkedlnSelectorParser, o qual pode ser usado por desenvolvedores que prefiram o formato dos seletores das APIs do Linkedln.</p>
+<p>Por final, removemos a anota&ccedil;&atilde;o @ResponseBody no nosso UserController. A anota&ccedil;&atilde;o @ResponseBody &eacute; dependente do MappingJacksonJsonView, que foi substituido pelo YogaSpringView.</p>
+<pre>
+@RequestMapping(&quot;/user/{id}&quot;)
+public User get( @PathVariable long id ) {
+  return _userRepository.fetchUser( id );
+}
+</pre>
+<p>At&eacute; aqui, o desenvolvedor pode disponibilizar uma aplica&ccedil;&atilde;o web e associar um seletor apropriado para a requisi&ccedil;&atilde;o do recurso.</p>
+<pre>
+GET /user/1.json?selector=id,name
+</pre>
+<p>desta forma ser&aacute; renderizado a sa&iacute;da:</p>
+<pre>
+{
+     &quot;name&quot;: &quot;Carter Page&quot;,
+     &quot;id&quot;: 1
+}
+</pre>
+<p>O desenvolvedor pode adicionar os artistas favoritos ao seletor:</p>
+<pre>
+GET /user/1.json?selector=id,name,favoriteArtists(id,name)
+</pre>
+<p>e navegar para baixo no gr&aacute;fico de objetos para visualizar as inst&acirc;ncias do recurso Artista:</p>
+<pre>
+{
+     &quot;id&quot;: 1,
+     &quot;name&quot;: &quot;Carter Page&quot;,
+     &quot;favoriteArtists&quot;: [
+           {
+                 &quot;id&quot;: 1,
+                 &quot;name&quot;: &quot;Arcade Fire&quot;
+           },
+           {
+                 &quot;id&quot;: 3,
+                 &quot;name&quot;: &quot;Neutral Milk Hotel&quot;
+           }
+      ]
+}
+</pre>
+<p><strong>Campos Core</strong></p>
+<p>No exemplo anterior, vamos assumir que os campos id e name s&atilde;o obrigat&oacute;rios e devem ser retornados para todas as requisi&ccedil;&otilde;es do recurso User. Pois s&atilde;o baratos, pequenos, campos que integram e nomea-los explicitamente cada vez que criamos um seletor poderia come&ccedil;ar a ficar trabalhoso.</p>
+<p>O Yoga prov&ecirc; uma anota&ccedil;&atilde;o @Core que pode ser aplicada no seu modelo de dom&iacute;nio serializ&aacute;vel (ou DTO) para marcar campos que sempre ser&atilde;o retornados em uma requisi&ccedil;&atilde;o do Yoga. Aqui, estamos anotando o m&eacute;todo getter no nosso objeto de dom&iacute;nio User:</p>
+<pre>
+   @Core
+   public long getId() {
+     return _id;
+   }
+   @Core
+   public String getName() {
+     return _name;
+   }
+</pre>
+<p>Uma vez feito isso, j&aacute; n&atilde;o &eacute; mais necess&aacute;rio ter explicitamente os campos id e name no nosso seletor. A seguinte requisi&ccedil;&atilde;o:</p>
+<pre>
+GET /user/1.json?selector=favoriteArtists(id,name)
+</pre>
+<p>retornar&aacute; o id, name e qualquer outra coisa especificada no seletor:</p>
+<pre>
+{
+      &quot;id&quot;: 1,
+      &quot;name&quot;: &quot;Carter Page&quot;,
+      &quot;favoriteArtists&quot;: [
+            {
+                  &quot;id&quot;: 1, 
+                  &quot;name&quot;: &quot;Arcade Fire&quot; 
+            },
+            {
+                  &quot;id&quot;: 3,
+                  &quot;name&quot;: &quot;Neutral Milk Hotel&quot;
+            }
+      ]
+}
+</pre>
+<p><strong>Pseud&ocirc;nimos (Alias)</strong></p>
+<p>Refina iterativamente seus seletores criando assim um ciclo de desenvolvimento/debug &aacute;gil. Entretanto, quando se fala em disponibilizar sua API em produ&ccedil;&atilde;o, provavelmente n&atilde;o queremos que os usu&aacute;rios externos componham arbitrariamente os seletores para serem executados em seu ambiente. A navega&ccedil;&atilde;o irrestrita no seu gr&aacute;fico de objetos pode rapidamente se tornar problemas de seguran&ccedil;a e desempenho.</p>
+<p>O Yoga permite definir pseud&ocirc;nimos para os seletores que ser&atilde;o publicados, assim, somente os usu&aacute;rios autorizados poder&atilde;o utilizar os seletores previamente definidos por pseud&ocirc;nimos. Podemos dizer que estamos felizes com o seguintes seletores e queremos public&aacute;-los:</p>
+<pre>
+?selector=id,name,favoriteArtists(id,name)
+</pre>
+<p>Primeiramente, iremos desabilitar a utiliza&ccedil;&atilde;o de seletores expl&iacute;citos do nosso ambiente de produ&ccedil;&atilde;o, assim os usu&aacute;rios nesse ambiente n&atilde;o poder&atilde;o compor seletores utilizando a sintaxe do GData (ou Linkedln)</p>
+<pre>
+&lt;bean id=&quot;selectorParser&quot; class=&quot;org.skyscreamer.yoga.selector.parser.GDataSelectorParser p:disableExplicitSelectors=&quot;true&quot;/&gt;
+</pre>
+<p>Em seguida, definimos o pseud&ocirc;nimo. O Yoga prov&ecirc; diversos mecanismos para definir pseud&ocirc;nimos; neste caso, iremos defini-los em um arquivo de propriedades.</p>
+<pre>
+&lt;bean id=&quot;aliasSelectorResolver&quot; class=&quot;org.skyscreamer.yoga.selector.parser.DynamicPropertyResolver&quot; <span>p:propertyFile=</span>&quot;classpath:selectorAlias.properties&quot;/&gt;
+</pre>
+<p>No arquivo de propriedade, configuramos o pseud&ocirc;nimo e o nomeamos. Por convens&atilde;o, um pseud&ocirc;nimo no Yoga come&ccedil;a com $:</p>
+<pre>
+$userFavoriteArtists=id,name,favoriteArtists(id,name)
+</pre>
+<p>Agora, no ambiente de produ&ccedil;&atilde;o, os usu&aacute;rios podem utilizar o pseud&ocirc;nimo, cujo o comportamento esta definido na documenta&ccedil;&atilde;o da API:</p>
+<pre>
+GET /user/1.json?selector=$userFavoriteArtists
+</pre>
+<p><strong>Conclus&atilde;o</strong></p>
+<p>Para muitos desenvolvedores, o modelo REST &eacute; suficiente por prover acesso web &agrave; API da aplica&ccedil;&atilde;o de dom&iacute;nio. Por&eacute;m se deseja um controle mais granulado sobre a estrutura dos documentos retornados, o Yoga se integrar&aacute; como sua aplica&ccedil;&atilde;o REST existente, e permitir&aacute; &agrave; adi&ccedil;&atilde;o de seletores nas requisi&ccedil;&otilde;es web.</p>
+<p>A Skyscreamer Software liberou a vers&atilde;o <a href="http://yoga.skyscreamer.org/%20">1.0 do Yoga</a>. O Yoga integra diretamente com aplica&ccedil;&otilde;es Java que executem implementa&ccedil;&otilde;es do Spring MVC REST, Jersey ou RESTEasy. Pode se encontrar um v&iacute;deo demonstrativo do material apresentado neste artigo <a href="http://www.youtube.com/watch?v=EaaoWTMfThE">neste link</a>.</p><br><br><br><br><br><br></body></html>

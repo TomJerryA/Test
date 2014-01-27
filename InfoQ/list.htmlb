@@ -1,10 +1,10 @@
 <html>
  <head></head> 
- <body>
-  <div>
+ <body> 
+  <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/35.htmlb">Windows Server基础架构云参考架构：硬件之上的设计</a> 毫无疑问，移动互联网、社交网络、大数据和云计算已经成为IT发展的四个大的趋势。其中云计算又为前三个提供了一个理想的平台。今天不仅互联网公司，很多传统行业的大中型企业也在建设自己的私有云。本文旨在介绍一个基于Windows Server 2012和System Center 2012 SP1构建基础架构云其硬件部分的参考架构。 
-  </div>
-  <div>
+  </div> 
+  <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/34.htmlb">阅读者（二十七）：两家公司，两个故事</a> 我基本不读当季的热门书，原因是希望让时间来帮忙筛选掉一些书，最近连续读了《打造Facebook：亲历Facebook爆发的5年》和《淘宝技术这十年》这两本不那么技术的书，它们分别和两家大公司有关，讲述了两段不同的故事。 
   </div> 
   <div> 
@@ -150,6 +150,6 @@
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/38.htmlb">iOS开发工具——网络封包分析工具Charles</a> iOS开发工具系列文章第三篇，上一篇是 http://www.infoq.com/cn/articles/crashlytics-crash-statistics-tools 
-  </div>   
+  </div> 
  </body>
 </html>

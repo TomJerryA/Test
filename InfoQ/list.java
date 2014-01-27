@@ -1,6 +1,9 @@
 <html>
  <head></head> 
- <body> 
+ <body>
+  <div>
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/43.java">Producer/Consumer Processing with TPL Dataflow</a>Getting started with TPL Dataflow can be daunting. There is a lot of new terminology to learn and many of the advanced features obscure the simpler ones that you should be relying on. Dave Marini of Taskmatics cuts through the confusion by showing a complete producer/consumer dataflow from start to end.
+  </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/42.java">Functional Relational Mapping Library Slick 2.0 Released</a>Version 2.0 of Slick, a Functional-Relational Mapping, FRM, library for Scala, (corresponding to an Object-Relational Mapper, ORM, for object-oriented languages), was recently released with a code generator for reverse-engineering a database schema and new driver architecture to allow support for non-SQL databases. 
   </div> 
@@ -147,9 +150,6 @@
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/47.java">Facebook makes Mercurial faster than Git</a>Facebook has posted on how they've sped up Mercurial to be five times faster than Git in certain operations. Read on to find out what they have changed, and why it makes such a difference for their setup. 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/46.java">Jez Humble and Gene Kim in Search of High Performing Practices with DevOps Survey</a>Jez Humble and Gene Kim, prominent figures of the DevOps movement, are working with Puppet Labs on the 2013 DevOps Survey Of Practice. The survey's goal is to better understand which IT practices drive an organization to high performance, building upon the 2012 DevOps Survey. The survey will close on the 15th of January and everyone is invited to participate. 
-  </div> 
+  </div>  
  </body>
 </html>

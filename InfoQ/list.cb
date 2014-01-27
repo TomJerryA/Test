@@ -1,6 +1,9 @@
 <html>
  <head></head> 
- <body> 
+ <body>
+  <div>
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/35.cb">Adicionando flexibilidade &agrave; sua implementa&ccedil;&atilde;o REST com Yoga</a> Nos casos que se deseja obter um controle detalhado da estrutura de documentos que ser&atilde;o retornadas com base nas necessidades dos clientes, o Yoga &eacute; uma alternativa open source que integra com aplica&ccedil;&otilde;es REST j&aacute; existentes. O Yoga fornece aos clientes, a habilidade de usar seletores, que pode ser usado como os operadores proje&ccedil;&atilde;o, sele&ccedil;&atilde;o e join relacional. 
+  </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/34.cb">Sua aplica&ccedil;&atilde;o est&aacute; pronta?</a> Entregamos software na maior parte das vezes dentro prazos, espremendo todo o esfor&ccedil;o de desenvolvimento e testes para cumprir esse prazo. Priorizamos o que pensamos ser importante e uma vez que a aplica&ccedil;&atilde;o alcance certo n&iacute;vel de qualidade estamos prontos para a produ&ccedil;&atilde;o (go live). Mas mesmo quando entregamos, podemos dizer o qu&atilde;o preparada est&aacute; nossa aplica&ccedil;&atilde;o? 
   </div> 
