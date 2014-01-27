@@ -1,23 +1,21 @@
-<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>微软发布TX（LINQ To Logs And Traces）</h3><p>微软开源技术公司于近日<a href="http://blogs.msdn.com/b/interoperability/archive/2014/01/06/new-release-tx-linq-to-logs-and-traces.aspx">发布</a>了<a href="http://tx.codeplex.com/">Tx</a>，这是一个开源项目，可以使用日志/跟踪文件辅助调试，以及创建实时监控和告警系统。</p>
-<p>下面是几个引人关注的功能——</p>
-<ul> 
- <li>允许在原始事件源上使用<a href="http://msdn.microsoft.com/en-us/library/bb397926.aspx">LINQ</a></li> 
- <li>允许在真实事件源上使用“反应式扩展框架（<a href="http://msdn.microsoft.com/en-us/data/gg577609.aspx">Reactive Extensions</a>）”，而且支持事件序列的多路复用（单个包含不同类型事件的序列，其中事件的顺序为其发生顺序）。</li> 
- <li>可以提供跨多个事件源的单一查询，而且用于实时查询和过去历史查询的API相同。</li> 
- <li>可以在历史日志和跟踪文件的一次读中执行多个查询——例如：统计所有的“警告”数、匹配“开始”和“结束”事件，以及计算每个活动的平均时长。</li> 
-</ul>
-<p>开发人员可以将<a href="http://www.linqpad.net/">LINQPad</a>用于一次性分析，也可以用于构建监控用的.NET应用程序。在LINQPad中，Tx给人一种所有的事件都在数据库中的感觉。</p>
-<p>该版本提供了四个不同的NuGet包：</p>
-<ul> 
- <li><a href="http://www.nuget.org/packages/Tx.Core/">Tx.Core</a>——不针对特定跟踪格式的通用组件</li> 
- <li><a href="http://www.nuget.org/packages/Tx.Windows/">Tx.Windows</a>——支持Windows上的事件跟踪：事件日志、文件中的性能计数器和实时计数器API、W3C格式的IIS Text日志</li> 
- <li><a href="http://www.nuget.org/packages/Tx.SqlServer/">Tx.SqlServer</a>——SQL Server扩展事件</li> 
- <li><a href="http://www.nuget.org/packages/Tx.All/">Tx.All</a>——包含上述所有内容的套件</li> 
-</ul>
-<p>请注意，微软也给出了<a href="http://tx.codeplex.com/SourceControl/latest#Doc/WhenToUse.md">什么时候不要用Tx</a>的建议——</p>
-<ul> 
- <li>当不存在实时订阅而且数据已经存在于内存中或者<a href="http://tx.codeplex.com/SourceControl/latest#Source/Tx.Windows/IIS/W3CEnumerable.cs">单个容易解析的文件</a>中时，指南建议使用LINQ-To-Objects代替Tx。</li> 
- <li>当存在实时订阅，但每个订阅/文件只包含一种事件类型，只需要使用反应式扩展框架即可。</li> 
-</ul>
-<p>在微软内部，WCF和服务总线团队已经用了这个工具。现在，微软把它开源给所有的.NET开发人员，以便他们在自己的项目中使用它。读者可以看一下<a href="http://tx.codeplex.com/documentation">入门文档</a>。</p>
-<p><b>查看英文原文：</b><b><a href="http://www.infoq.com/news/2014/01/tx-release">LINQ To Logs And Traces</a></b></p><br><br><br><br><br><br></body></html>
+<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>QCon北京2014技术训练营之测试特辑：开源自动化测试、性能测试、iOS自动化测试…</h3><p>春节长假在即，距第六届QCon北京还有3个月的时间。演讲内容正在不断更新在大会官网：<a href="http://www.qconbeijing.com">http://www.qconbeijing.com</a>，InfoQ微博<a href="http://weibo.com/infoqchina">@InfoQ</a>也在不断播报大会亮点。需要注意的是现在大会7折购票期已经结束，现在大会已经进入8折购票期，而2月19日之后门票将开始全价销售。如欲报名报请速点击<a href="http://qconbeijing.mymova.com/">报名页面</a>。</p>
+<p>本届大会全新打造的技术训练营（原会前培训）已经上线，在训练营中，我们邀请QCon讲师为对某一个领域具体实战技能感兴趣，入门浅的朋友提供集中的培训和指导。在技术训练营中，学员可以：小课堂里面和专家面对面深入交流；和其他参会学员深入的社交机会；了解当前最新技术的发展趋势和实践；获得更深入的参会体验，和更丰富的技术收获。此次为大家介绍训练营的精彩内容。</p>
+<p>本次技术训练营，我们邀请到国内测试领域的一线专家，在开源自动化测试、性能测试、iOS自动化测试以及易用性测试不同领域分别开设了4门深入课程：</p>
+<p><strong><a href="http://www.qconbeijing.com/node/468">《基于开源工具的自动化测试实训营》</a></strong></p>
+<p>讲师: 吴穹 Agilean联合创始人</p>
+<p>吴穹是一位拥有14年实践工作经验并具备深厚理论基础的软件工程专家。近几年来，他为华为、平安、阿里金融、广东核电等公司辅导了许多大规模的敏捷转型工作，积累了丰富的敏捷实施、组织变革以及敏捷测试经验。除咨询外，他曾受邀为QCcon全球软件开发大会、中国软件测试大会、MPD Shenzhen 2011等会议，为平安、中国移动、阿尔卡特-朗讯、EMC、中兴、工行、索爱等公司进行培训，内容涉及分层测试自动化、自动化验收测试、敏捷需求分析、产品经理培训、用例技术、敏捷高层研讨、敏捷软件外包管理等等。</p>
+<p>在为期一天的培训中，吴穹会帮助学员培养Robot Framework+WebDriver自动化测试基本技能，了解如何编写可靠、可维护的界面自动化测试案例。这门课程的特点在于大量的动手练习，使学员完成课程后就，马上具备实操能力。</p>
+<p><strong><a href="http://www.qconbeijing.com/node/472">《锻造你的性能思路》</a></strong></p>
+<p>讲师：高楼 性能测试专家</p>
+<p>高楼曾领导并实施国家电网、GE、中国人寿、中国出口信用保险公司、PICC、中国建设银行、中国农业银行、北京银行、中国移动、北京移动、铁道部等客户的部分项目的性能测试及调优，并且还为多家国企、西南科技大学、方正集团、尚阳信德、中国船舶集团、中国机械化研究所等机构的测试中心提供咨询和培训服务。曾为中国农业银行、中国工商银行、华夏银行、合众人寿、北京银行、中国建设银行、中国移动、北京移动等企业做性能测试售前及咨询服务。曾与多家培训机构合作提供性能测试及性能分析的企业培训、公开课培训。曾主讲过多次技术沙龙。创建国内第一个非商业性能测试社区：www.7dtest.com，创建第一份非商业性能测试电子杂志《测试7刊》。</p>
+<p>在一天的课程里，高楼会解析性能测试理论知识，分析性能测试团队建设过程，理清整个性能测试执行流程及整个过程的执行控制。详细讲解工具关键功能的使用，描述性能测试执行过程中出现问题的控制方法，重点解析了性能分析的逻辑思路和问题处理方法，提高对整个系统的认知高度，并讲解性能测试报告的编写技巧。通过本课程的学习，学员可以掌握测试体系建设思路、性能测试团队建设思路、性能过程执行控制能力、性能分析逻辑思维能力、编写脚本的能力。</p>
+<p><strong><a href="http://www.qconbeijing.com/node/473">《iOS自动化测试其实很简单》</a></strong></p>
+<p>讲师：芈峮 测试技术专家</p>
+<p>芈峮先后在多家国内知名互联网企业从事软件测试工作10余年，工作涉及测试、开发，多年测试开发及测试团队管理经验，做过手工测试也做过很多自动化测试，编写过很多自动化测试工具。现在三大互联网公司之一担任测试技术专家，重点研究自动化测试相关技术。是国内软件研发社区一位活跃的分享者，在全球软件案例研究峰会、Scrum Gathering、敏捷中国等大会等进行演讲，并受邀担任中国过程改进大会、敏捷中国等大会的评委。</p>
+<p>芈峮会在一天的课程里通过2个APP的测试实践，让学员学习并且掌握iOS自动化测试技术和相关持续集成建设。熟练掌握Appium测试工具的高级用法，并且了解Appium的实现原理和iOS相关持续集成建设。本课程专注于iOS平台的自动化测试，由浅入深，最后完成2个iOS应用的自动化测试。在测试实践中，听众会接触到很多常见的iOS控件的定位和操作方法。Appium测试工具是一个协议的封装工具，在底层实现上使用了UI Automation。本课程还会根据实践场景，充分的介绍UI Automation的各种用法。自动化测试不能离开持续集成，本课程的最后阶段还会基于Appium的相关持续集成实践。</p>
+<p><strong><a href="http://www.qconbeijing.com/node/475">《易用性测试之殇——从测试者角度看易用性 》</a></strong></p>
+<p>讲师：柴阿峰 易用性测试专家，CSTQB专家委员会专家，中国软件测试经理联盟副主席</p>
+<p>“测试圈儿里那个说相声的”，西北人，热情，开朗，彪悍。从业十余年，为国企效力过，为世界500强辛苦过，为创业团队打拼过，除了在测试领域研究易用性测试，开源测试技术等，他还秘密的做着一些不为人知的创业产品，希望可以用互联网思维改变一些东西。坚定的测试价值捍卫者，同时也对敏捷转型持开放态度。CSTQB专家委员会专家，中国软件测试经理联盟副主席。胖子，现居天津，一个5岁女儿的父亲。</p>
+<p>这个半天的课程里，柴阿峰会为大家讲解软件面临的这样一个难题：他们原来越复杂，越来越难于掌控，而我们的用户则已经不只是专业的计算机系毕业生，老人，孩子都开始使用软件，各种奇葩用户对易用性的抱怨堆满了客服的邮箱：我们精心设计的功能中有80%他们从来不用，却对一个按钮的颜色大声抗议。为了解决这个问题，我们聘用了专业的UI/UE，但是结果却并未达到预期——做出好用的软件显然不只是画好图配好色那么简单。为什么会产生这些问题？易用性到底是什么？如何掌握这个“一半是技术一般是艺术”的易用性魔方？本课程将从一个专业测试者的角度，为您带来全新的解读。本课程适合测试人员，也适合产品经理与交互设计人员参与。</p>
+<p>报名方式、更详细信息、更多课程，请参见训练营页面：<a href="http://www.qconbeijing.com/tutorials">http://www.qconbeijing.com/tutorials</a>。更多精彩信息不断更新中，详请跳转至<a href="http://www.qconbeijing.com/">大会官网</a>查阅。</p>
+<p>每年QCon大会门票都会在开幕前售罄，及早预定可提前确保席位，并享受更低折扣。如有更多需要咨询，请联系qcon@cn.infoq.com，或直接致电010-64738142。报名请点击<a href="http://qconbeijing.mymova.com/">报名页面</a>。</p><br><br><br><br><br><br></body></html>

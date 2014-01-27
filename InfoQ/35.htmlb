@@ -1,47 +1,131 @@
-<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>JSIL：将CIL编译为JavaScript时所遇的挑战</h3><p><a href="http://jsil.org/">JSIL</a>是一个将.NET转换为JavaScript的编译器，它能够将<a href="http://en.wikipedia.org/wiki/Common_Intermediate_Language">通用中间语言</a>（CIL）转换为跨浏览器的JavaScript，并且能够运行在V8、SpiderMonkey、Chakra以及JavaScriptCore等主流JavaScript引擎上。JSIL能够将C#、VB.NET与F#语言转换为相应的JavaScript，生成可读性良好的代码，正如以下示例所示：</p>
-<pre>
- <table width="271" cellspacing="0" cellpadding="2" border="1">     
-  <tbody> 
-   <tr>
-    <td width="271" valign="top"><b>using</b> <font color="#808080">System;</font><br /><b>using</b> <font color="#808080">System.Collections.Generic</font>;<br /><br /><b>public</b> <b>static</b> <b>class</b> <b><font color="#004080">Program</font></b> {<br />&nbsp;&nbsp;&nbsp; <b>public</b> <b>static</b> <b>void</b> <b><font color="#800000">Main</font></b> (<b><font color="#004080">string</font></b>[] args) {<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <b><font color="#004080">var</font></b> array = <b>new</b>[] { <font color="#00ffff">1</font>, <font color="#00ffff">2</font>, <font color="#00ffff">4</font>, <font color="#00ffff">8</font>, <font color="#00ffff">16</font> };<br /><br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <b>foreach</b> (<b><font color="#004080">var</font></b> i <b>in</b> array)<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Console.WriteLine(i);<br /><br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <b><font color="#004080">var</font></b> list = <b><font color="#004080">new</font></b> List&lt;<b>int</b>&gt;(array);<br /><br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <b>foreach</b> (<b><font color="#004080">var</font></b> j <b>in</b> list)<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Console.WriteLine(j);<br />&nbsp;&nbsp;&nbsp; }<br />}</td>
-    <td width="367" valign="top">JSIL.MakeStaticClass(<font color="#ff0000">&quot;Program&quot;</font>, <b>true</b>, [], <b>function</b> ($) {<br />&nbsp; <br />&nbsp;&nbsp; $.Method({Static<b>:</b><b>true</b> , Public<b>:</b><b>true</b> }, <font color="#ff0000">&quot;Main&quot;</font>, <br />&nbsp;&nbsp;&nbsp;&nbsp; $sig.make(<font color="#00ffff">1747428</font>, <b>null</b>, [$jsilcore.TypeRef(<font color="#ff0000">&quot;System.Array&quot;</font>, [$.<font color="#00ffff">String</font>])], []), <br />&nbsp;&nbsp;&nbsp;&nbsp; <b>function</b> Program_Main (args) {<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <b>var</b> array <b>=</b> JSIL.<font color="#00ffff">Array</font>.New($asm01.System.Int32, [<font color="#00ffff">1</font>, <font color="#00ffff">2</font>, <font color="#00ffff">4</font>, <font color="#00ffff">8</font>, <font color="#00ffff">16</font>]);<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <b>var</b> array2 <b>=</b> array;<br />&nbsp; <br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <b>for</b> (<b>var</b> k <b>=</b> <font color="#00ffff">0</font>; k <b>&lt;</b> array2.length; <b>++</b>k) {<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; $asm01.System.Console.WriteLine(array2[k]);<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; }<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <b>var</b> list <b>=</b> (<b>new</b> JSIL.MethodSignature(<b>null</b>, [$asm01.TypeRef(<font color="#ff0000">&quot;System.Collections.Generic.IEnumerable`1&quot;</font>, <br />[$.Int32])],<br />])).Construct($asm01.System.Collections.Generic.List$b1.Of($asm01.System.Int32), array);<br />&nbsp; <br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <b>for</b> (<b>var</b> a$0 <b>=</b> list._items, i$0 <b>=</b> <font color="#00ffff">0</font>, l$0 <b>=</b> list._size; i$0 <b>&lt;</b> l$0; i$0<b>++</b>) {<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <b>var</b> j <b>=</b> a$0[i$0];<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; $asm01.System.Console.WriteLine(j);<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; }<br />&nbsp;&nbsp;&nbsp;&nbsp; }<br />&nbsp;&nbsp; );<br />&nbsp; <br />});</td> 
-   </tr> 
-  </tbody> 
- </table></pre>
-<p>目前已经有许多类型的.NET应用程序可以顺利编译为JavaScript了，包括XNA、MonoGame游戏、WebGL等等。我们与JSIL的作者K.Gadd进行了一次对话，以更多地了解将CIL代码移植为JavaScript过程中所遇到的各种困难。</p>
-<p><b>InfoQ</b><b>：将CIL</b><b>编译为JavaScript</b><b>有多难？你认为最困难的是哪一部分？</b></p>
-<blockquote> 
- <p>K. Gadd：很难从一般意义上来描述这种困难。项目的早期阶段还处于研究阶段，我基于一个开源的C#反编译器创建了一个简单的项目原型，而我编写的JavaScript代码生成器其实是这个项目中的C#代码生成器的一个修改版本。这是一种能够在某种程度上证明我准备验证的一些基本原理的简单方式，当时我的脑海中存在着各种各样的问题：“.NET语言和运行时中的哪一部分能够清晰地映射到浏览器中，运行性能如何，当前的反编译器技术的质量怎样，以及实现了这些目标的反编译器会多么复杂？”这一过程仅仅花费了我微不足道的一些精力，而早期阶段的成果让我看到了希望，它促使我决定把JSIL当作一个严肃的项目来对待。</p> 
- <p>自那时起，事情就开始变得复杂了。IL特性中的主要部分，例如算术运算、字段与属性的访问等等，很容易就能在一个基础水准上实现这些功能，因此编写出良好的代码并使一系列测试用例正常运行也不是什么很大的问题。而大部分工作业务都消耗在那些边边角角的地方，比如说ECMA CLI详细规格中没有显而易见的结论的部分、有许多晦涩的功能依赖于C#编译器、还有许多本身就非常难以实现的特性。如果我的目标是为从头开始进行开发创建一个编译器，就像Script#所做的事一样，那正确的做法是完全忽视这些特性，除非它们能证明自身的存在价值。但因为我的目标是移植现有的软件，我不得不倾尽全力以找出支持这些特性的方法。</p> 
- <p>在某些特殊情况下事情会变得极度困难。总的来说，由于我缺乏编译原理的知识，或者是整体上缺乏计算机科学的教育背景，这意味着为了解决难题，我必需学习很多新知识，并且动手进行各种实验。举个简单的例子，如何恰当地处理“ref”与“out”参数就是我正在攻克的难关，这是由于JavaScript并没有相应的特性，而要模拟这一特性需要对代码进行比较复杂的自动转换。刚开始时，处理这两个参数的转换代码有许多严重的缺陷，现在两年过去了，目前的实现方式已经变得十分复杂。这一课题目前基本算是“已解决”，因为我已经没有在这方面遇到什么新的问题了，不过在我期望这一功能功能作为我的基本代码库的一部分，在未来也能够正常运行。</p> 
- <p>整个过程中最主要的挑战实际上有些违反常识，因为试图从IL中创建良好的JavaScript代码所需的不仅仅是反编译IL代码，并且还要将C#编译器所做的一些优化工作剔除，并加入一些我设置的优化功能。要在缺少指导手册的情况下正确地处理这一工作，要求开发者必需掌握非常非常扎实的静态分析与其它相关课题的知识，缺乏这些知识会导致你在实现优化时在代码中留下各种严重的缺陷。JSIL中的静态分析与优化部分大概是我过去一年来所修复的大部分缺陷的直接原因了，面对这些挑战只能依赖我所掌握的那些不完整的知识见招拆招。那些对处理这方面问题有兴趣的人，首先得做好花费大量时间阅读相关材料的心理准备 :)。 从好的方面来说，优化后的结果还是让你的投入非常值得，很多情况下，优化后的结果是从比MS CLR慢50倍提速到比CLR只慢5倍。</p> 
-</blockquote>
+<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>Windows Server基础架构云参考架构：硬件之上的设计</h3><h2>综述</h2>
+<p>毫无疑问，移动互联网、社交网络、大数据和云计算已经成为IT发展的四个大的趋势。其中云计算又为前三个提供了一个理想的平台。今天不仅互联网公司，很多传统行业的大中型企业也在建设自己的私有云。本文旨在介绍一个基于Windows Server 2012和System Center 2012 SP1构建基础架构云其硬件部分的参考架构。</p>
+<h2>设计目标</h2>
+<ul> 
+ <li>从运维角度，整个架构应该易于扩展，从小到4个机柜至大到整个数据中心可以方便的进行扩展和容量规划。</li> 
+ <li>从用户的角度，整个架构应该可以兼容不同的应用类型，比如对计算敏感型，大内存型，和IO密集型等不同类型。</li> 
+ <li>从服务交付的角度，整个架构应该能够满足不同的服务等级需求，如需要高可用的和无需高可用的。</li> 
+ <li>从经济型角度，整个架构应该不依赖特定的硬件厂商或产品。</li> 
+</ul>
+<h2>Windows Server基础架构云的参考架构</h2>
+<p>Windows Server基础架构云的参考架构如下：</p>
+<p><img width="600" alt="" src="http://infoqstatic.com/resource/articles/windows-server-infrastructure-cloud-reference-architecture/zh/resources/0117000.png" _href="img://null" _p="true" /></p>
+<p>图1 Windows Server基础架构云的参考架构</p>
+<p>本文中我们将集中讨论上面参考架构中的硬件设计部分。</p>
+<p>为了实现前面拟定的设计目标，我们采用的模型首先要保证在计算和存储之间实现松耦合，只有这样才能保证我们更灵活地调度计算、存储、网络三种基础资源，组建足够体量的资源池按需承载不同类型的应用。基于相同的目的，我们采用了集中的存储而不是使用更低成本的直连存储。虽然直连存储的成本更低，但我们所采用的存储方案具有更高的可靠性，弹性和灵活性，这些都是企业非常关注的。另外，我们没有采用传统的光纤存储而代以新的完全基于网络的文件共享存储，这样的好处是相对于光纤存储,硬件采购成本较低，而且降低系统复杂度以及维护成本，但这样设计要求网络的部分必须具备足够的可靠性和高性能来满足IO密集型的需求。</p>
 <div id="lowerFullwidthVCR"></div>
-<p><b>InfoQ</b><b>：我已经看到一些完成后的范例了，一个XNA</b><b>游戏、一个Mono</b><b>程序、以及一个WebGL</b><b>示例。你能否将你目前已经成功编译的各种.NET</b><b>应用程序做一个完整的列举呢？</b></p>
-<blockquote> 
- <p>K.Gadd：实际上我并没有一个完整的列表。目前为止已经有很多XNA的游戏完成了移植，其中的大部分我都没有实际参与（仅仅修复了一些偶尔报告的缺陷）。有一两位开发者已经进行了一些Silverlight应用程序的自动移植的实验，并且一定程度上获得了成功。还有一些项目已经在使用JSIL作为他们的游戏开发或应用程序开发的基础框架了。我最关注的一个项目是由富特旺根（Furtwangen）应用科学大学的某个团队开发的<a href="http://fusee3d.org/about/">Fusee</a>。此外，在移植基于Mono和MonoGame的应用程序这一块更大的领域也获得了一些工作成果，完成这一点必需将整个Mono标准类库与一些更复杂的用户创建的类库进行完整的转换。有一些较小的测试用例集已经通过，例如WebGL的例子已经证明使用C#和JSIL从头开始建立完整的web应用是完全可能的，这和你使用Script#或Saltarelle的方式差不多。</p> 
- <p>实际的运用其实主要是一个完整度的问题，即使是在那些我所见过的成功转换的项目中，它们也倾向于使用各种其它类库与框架去实现一些缺失特性，事实上对于一个能够正常工作的移植应用来说，这些缺失特性中的大多数并不是必需的。比方说，虽然2D XNA游戏已经能够“运行”了，但它完全没有网络与多线程方面的支持，而这两者对于许多大型游戏来说是至关重要的特性。对于任何你打算移植的应用来说，其实都面临着相同的情况：你必须评估一下你的应用程序多大程度上依赖于.NET标准类库，并且打算花费多少精力去填补那些缺失特性的空白。</p> 
-</blockquote>
-<p><b>InfoQ</b><b>：现在还有缺失的特性吗，是否还有无法编译为JS</b><b>的CIL</b><b>代码呢？</b></p>
-<blockquote> 
- <p>K.Gadd：目前在JSIL问题跟踪列表中显示的那些失败的测试用例并不完全归咎于IL中尚未支持的那部分。显然在.NET运行时中的某些指令和特性我是不会去实现的，对于多线程和锁定这些特性，我没有实现它们的原因是JavaScript中根本不可能用到它们。而另一些特性没有实现的原因是我还没有看到任何一种编译器能够处理它们。JSIL的开发工作是完全由测试用例驱动的，如果某个特性或者指令没有对应的测试用例，我去实现它的机率也就不大了。很多情况下可以对某些缺失的或者无法实现的特性选择临时方案，它需要我们仔细地分析开发者的更高级别的目标是什么。比方说对锁定的使用基本都可以选择忽略，因为浏览器可以确保用户代码始终在一个单一的线程上同步执行。</p> 
- <p>之前，对unsafe code，例如指针、固定指针（pinning）等功能的支持是一个比较大的缺失。这些特性大量应用在游戏开发中，因此它的缺失对复杂的游戏开发是个很大的障碍，尤其是那些使用了MonoGame等类库的游戏开发更是如此。这一功能非常复杂，它基于.NET中各方面的功能，因此加入这一功能不是个简单的任务。而当JSIL变得更成熟、整个测试用例集也更完整之后，就可以着手尝试对这一功能的支持了。目前，JSIL对指针和unsafe code的支持已经非常充分，虽然它的性能不如原生环境来得好，但它已经能够允许许多这方面的代码在浏览器中运行了。我想对这一点对其它那些缺失特性来说也是一样（除去那些完全不可能实现的功能），我们要做的就是建立正确的测试用例，然后等待合适的时机，经过一段时间的努力后就可以以正确的方式加入这部分特性了。</p> 
-</blockquote>
-<p><b>InfoQ</b><b>：编译后的JS</b><b>代码如果运行在其它浏览器上会产生什么问题吗？</b></p>
-<blockquote> 
- <p>K.Gadd：噢，当然有问题了。当前四种主流的JS运行时（IE使用的Chakra、Safari使用的JSC、Firefox使用的SpiderMonkey和Chrome使用的V8），每一个都与众不同，都是难啃的骨头。我不得不花费大量时间去调试特定于引擎的各种问题，还要花费更多是时间去诊断特定于引擎的性能问题，并寻找临时方案。我需要花费大量时间去阅读这些引擎的源代码，并且与这些浏览器上的开发者们一起尝试并理解这些问题，然后记录下来。但这种工作方式产生了难以置信的效果，与一年前相比，现在的JSIL代码的运行速度已经提升了几十至几百倍。但这种工作的代价也很大，而且永远不会结束，因为浏览器的发展只会比你更快。有时一个新的浏览器版本反而会让你的速度减半，而你却不知原因所在，只能尽力去处理它，这种成本是你为web开发所必须承担的。</p> 
- <p>而在浏览器的功能限制与缺陷方面，情况倒是非常良好。Google和Mozilla做了很好的工作，它们所推出的浏览器始终能够很好地运行，尽管有时在性能上还存有疑问。过去两年间，尽管我不断地测试它们的各种最新版本，也一共只发现了5到6个JS引擎或浏览器方面的缺陷。如果你能为浏览器提供商提供一份测试用例，那它们就能够很好地处理这些问题。</p> 
- <p>当然，特性的支持是一个大问题。Internet Explorer在这方面始终处于落后，它的特性支持比Chrome或Firefox落后了好几年。从结果来说，一些简单的JSIL示例已经能够在一些相对较“现代”的版本上正常工作了，例如IE9或IE10。但是一个真正具有复杂度的游戏或者应用程序只有在IE能够赶上现代的技术发展水平之后才有可能运行。不过至少IE11，已经表现出微软打算赶上这一差距的决心了，因为听起来他们似乎打算推出一个实现了部分WebGL功能的版本。</p> 
- <p>支持一个你无法测试的浏览器是很难受的。从第一天开始，Safari就一直是块难啃的骨头，因为我自己并没有一台Mac机，也很少有JSIL和各种demo的访问者使用它。很不幸，这一事实意味着难以决定是否要继续关注Safari。另一方面，它的JS引擎质量很高，开发它的人也都是很聪明的人，因此问题主要都集中在Canvas这种HTML5的API上，或者是一些浏览器的缺陷。虽然我不想只局限在一种浏览器上，但我必需承认，如果缺少了对某个特定平台的web浏览器的支持，我也不会那么在意。;)</p> 
-</blockquote>
-<p><b>InfoQ</b><b>：JSIL</b><b>的发展路线图是什么？你还打算继续改进它吗？</b></p>
-<blockquote> 
- <p>K.Gadd：JSIL并没有一个固定的路线图，过去两年以来我的工作方式基本上没什么大的变化。我现在维护着一个测试用例集，还有一些新的测试用例正准备实现。我还打算移植一些新的应用程序，只是由于当前的类库和编译器的功能不足，有些应用目前还无法实现移植，有些功能还不完整。最后，我始终密切注视着JSIL在GitHub项目上的问题跟踪列表，使用者们在不断地请求缺失特性的实现、发现缺陷，或者仅仅是抱怨这个编译器有多糟糕。:) 我整理了这些使用者们的反馈意见，并将它与我自己的设想与兴趣做了些整理，尽量保证让这个项目专注于为真实的用户解决实际问题，而不会让它的发展过于局限在一个狭小的领域之内。</p> 
- <p>以这种方式维护项目的结果是，尽管我现在已经全情投入到移植XNA游戏这个最直接的目标中，JSIL依然在许多方面继续贡献着它的力量：F#和VB.NET代码已经能够顺利地编译了，此外你也可以调用例如System.Drawing这样的API（并且保证提供了足以满足需求的实现），而且实际上编译器并没有引入任何特定于游戏的逻辑。它的良好现状使我确信，即使在将来，只要人们想让他们编写的C#代码在浏览器中运行，JSIL都会是一个帮助他们达成目标的良好工具。</p> 
- <p>过去几年中，许多优秀的赞助商都为JSIL的发展起到了促进作用，他们提出的各种需要也对建立项目的路线图有所助益。例如Mozilla就对unsafe code近期的工作提供了帮助，并且也对MonoGame的移植工作取得进展助益良多。我希望在未来也能够继续这样的合作关系，它很好地促进了该项目的蓬勃发展。</p> 
- <p>该项目在未来的继续发展也面临着一些有趣的挑战：我的初始目标之一是尽量生成“高质量”的JavaScript代码，它应该和开发者理论上所编写的代码相一致，并且能够让其它开发者轻松地阅读。令人难过的是，这一点终究因为脱离现实情况而未能达到。如果要创建运行性能良好的代码，所生成的JS必需应用一些代码压缩工具，例如Google的Closure。如果到了某个阶段，这个工具真的打算与GWT或Emscripten等代替工具进行正面竞争，那或许需要对JSIL生成JavaScript的方式进行彻底地重新思考。</p> 
- <p>而实现我的另一个初始目标也仍然是一个挑战：在一开始，我就打算让工具能够允许使用者不必重写现有代码，或者是从头开始创建全新的应用程序，而是直接移植现有的工作。这意味着对现有代码只进行最小的改动（如果可能，最好是零改动），并且只在最低限度上添加一些特定于新平台的代码。要达到这一平衡真的很令人头疼。像结构体（struct）和指针这样的特性和JavaScript的基础模型完全不一致，因此想要保持现有代码完全不改动必须要做出一些妥协。尤其是一些依赖于特定平台细节的特性，例如Windows文件系统的工作方式、或者是Direct3D这种类库的某个特定功能，这种妥协就更为明显了。</p> 
-</blockquote>
-<h2>关于受访者</h2>
-<p><b>K.Gadd</b>来自于美国北加州，他是一位程序员中的多面手和万事通，目前已经从事软件与相关行业大约9年了。他的经历包括了游戏与传统软件产品开发，例如网站等，并且担任过各种不同的角色。而始终贯穿<strong>他的工作的动力，是他非常热爱与具有创造性的同事合作，并且非常热衷于做那些让他们感到快乐的事，例如创建更好的工具、与同事共同设计更酷的产品、或者就是让尽量多的人参与他们的工作。</strong></p>
-<p><strong>查看英文原文：</strong><a href="http://www.infoq.com/articles/jsil">JSIL: Challenges Met Compiling CIL into JavaScript</a></p><br><br><br><br><br><br></body></html>
+<p><img width="600" alt="" src="http://infoqstatic.com/resource/articles/windows-server-infrastructure-cloud-reference-architecture/zh/resources/0117001.png" _href="img://null" _p="true" /></p>
+<p>图2 Windows Server基础架构云的硬件架构模型</p>
+<h2>标准IaaS SKU</h2>
+<p>企业内部系统传统上主要通过冗余来实现高可用，例如对于一台服务器，所有的组件能冗余的都要冗余（比如内存、硬盘、网卡、电源），有的系统甚至实现了主板、CPU的冗余，但这样一来就意味着要投入昂贵的硬件。与此不同的是，市场上主流的公有云服务商为了给大部分客户提供低成本的服务，将高可用的责任很多时候交给用户来处理，比如要求用户的应用需要具备弹性能力（resilience），将相同角色的多个实例部署在不同的Fault Domain/Update Domain中来提高整个服务的高可用性。在本设计中我们借鉴了公有云的这一经验，不要求采用如此高度冗余的设备，相反我们的故障单元是机柜而不是里面某台服务器或存储，也就是说我们关注的是跨机柜的可靠性，包括了基础架构、平台、应用和数据。但同时考虑到对于私有云，更多的时候面临的是将企业现有的应用迁移到云上，这些应用很可能不能很好的处理stick session等问题，很难通过横向扩展多个无状态的实例来实现高可用，故而私有云IaaS在设计时还是应该考虑到为传统应用，甚至为传统上很难实现高可用的应用提供基础架构层级的高可用性服务。在这个设计中对于没有高可用性需求的用户，也可以在下面的设计中增加非群集的Hyper-V服务器和存储服务器来提供不同服务等级的服务。</p>
+<p><img width="600" alt="" src="http://infoqstatic.com/resource/articles/windows-server-infrastructure-cloud-reference-architecture/zh/resources/0117002.png" _href="img://null" _p="true" /></p>
+<p>图3 标准IaaS SKU的构成</p>
+<h2>计算节点的设计</h2>
+<p>对于计算节点我们设计了两组网络，所有的虚拟机发生的网络访问流量都走租户网络上的虚拟网络，而虚拟机发生的存储访问流量都重定向到物理机操作系统通过数据中心网络使用具备SMB Direct的SMB3协议直接同文件服务器群集通讯。</p>
+<p><img width="500" alt="" src="http://infoqstatic.com/resource/articles/windows-server-infrastructure-cloud-reference-architecture/zh/resources/0117003.png" _href="img://null" _p="true" /></p>
+<p>图4 计算节点的实现</p>
+<p>租户网络和数据中心网络在计算节点的用途小结如下：</p>
+<p>租户网络用于：</p>
+<ul> 
+ <li>租户到租户的通讯</li> 
+ <li>租户到外部的通讯</li> 
+</ul>
+<p>数据中心网络用于：</p>
+<ul> 
+ <li>到存储节点的通讯（也就是到文件服务器，使用RDMA网卡）</li> 
+ <li>虚拟机的实时迁移</li> 
+ <li>虚拟机存储的实时迁移</li> 
+ <li>群集心跳线</li> 
+</ul>
+<p>下面是一个标准的计算节点的硬件配置：</p>
+<p> </p>
+<table cellspacing="0" cellpadding="0" border="0"> 
+ <tbody> 
+  <tr> 
+   <td width="12%" valign="top"> <p><b>项目</b></p> </td> 
+   <td width="87%" valign="top"> <p><b>标准配置</b></p> </td> 
+  </tr> 
+  <tr> 
+   <td width="12%" valign="top"> <p>处理器</p> </td> 
+   <td width="87%" valign="top"> <p>Intel Sandy Bridge CPU, 2 Socket x 6 cores (ES2640, Core frequency 2.5 GHz) = 12 cores</p> </td> 
+  </tr> 
+  <tr> 
+   <td width="12%" valign="top"> <p>内存</p> </td> 
+   <td width="87%" valign="top"> <p>16 DIMM x 8 GB = 128 GB</p> </td> 
+  </tr> 
+  <tr> 
+   <td width="12%" valign="top"> <p>存储</p> </td> 
+   <td width="87%" valign="top"> <p>内置 200 GB SSD (eMLC)</p> </td> 
+  </tr> 
+  <tr> 
+   <td width="12%" valign="top"> <p>网络</p> </td> 
+   <td width="87%" valign="top"> <p>2 x 10 GbE onboard (虚拟机所用的网络)</p> <p>2 x 10 GbE mezzanine with RDMA (用于访问存储节点、管理和实时迁移)</p> </td> 
+  </tr> 
+ </tbody> 
+</table>
+<p></p>
+<p>表1 计算节点的标准配置</p>
+<h2>存储节点的设计</h2>
+<p>本设计中采用的存储架构是基于Windows Sever 2012的故障转移群集。以两节点来实现连续高可用（Continuous Availability）。为了提高性能，减少对于主机CPU的压力，采用了RDMA网卡，借助Windows Server 2012的SMB3文件服务器为计算节点提供Hyper-V虚拟机的存储。</p>
+<p><img width="500" alt="" src="http://infoqstatic.com/resource/articles/windows-server-infrastructure-cloud-reference-architecture/zh/resources/0117004.png" _href="img://null" _p="true" /></p>
+<p>图5 存储节点的实现</p>
+<p>存储节点通过SAS HBA卡连接了共享的SAS接口硬盘柜，每个节点到磁盘柜额带宽高达48Gb/s （2x4x6Gb/s）。</p>
+<p>这里的数据中心网络用于：</p>
+<ul> 
+ <li>到计算节点的通讯</li> 
+ <li>Storage Space重定向流量</li> 
+ <li>备份和复制流量</li> 
+</ul>
+<p>下面是一个标准的计算节点的硬件配置：</p>
+<p> </p>
+<table cellspacing="0" cellpadding="0" border="0"> 
+ <tbody> 
+  <tr> 
+   <td width="11%" valign="top"> <p><b>项目</b></p> </td> 
+   <td width="88%" valign="top"> <p><b>标准配置</b></p> </td> 
+  </tr> 
+  <tr> 
+   <td width="11%" valign="top"> <p>处理器</p> </td> 
+   <td width="88%" valign="top"> <p>Intel Sandy Bridge CPU, 2 Socket x 6 cores (Core frequency 2.5 GHz) = 12 cores</p> </td> 
+  </tr> 
+  <tr> 
+   <td width="11%" valign="top"> <p>内存</p> </td> 
+   <td width="88%" valign="top"> <p>16 x 8 GB = 128 GB</p> </td> 
+  </tr> 
+  <tr> 
+   <td width="11%" valign="top"> <p>存储</p> </td> 
+   <td width="88%" valign="top"> <p>2 x 10 GbE mezzanine with RDMA</p> </td> 
+  </tr> 
+  <tr> 
+   <td width="11%" valign="top"> <p>网络</p> </td> 
+   <td width="88%" valign="top"> <p>132 x 2.5” 10K SAS 900 GB Drives</p> <p>2 x JB9</p> </td> 
+  </tr> 
+ </tbody> 
+</table>
+<p></p>
+<p>表2 存储节点的标准配置</p>
+<p>下图展示了计算节点和存储节点的连接方式</p>
+<p><img width="600" alt="" src="http://infoqstatic.com/resource/articles/windows-server-infrastructure-cloud-reference-architecture/zh/resources/0117005.png" _href="img://null" _p="true" /></p>
+<p>图6 计算节点和存储节点的连接</p>
+<h2>网络的冗余设计</h2>
+<p>本设计中使用的网络三层都有冗余，他们分别是：</p>
+<ul> 
+ <li>每个数据中心2个汇聚层交换机</li> 
+ <li>每个机柜2个租户网络交换机</li> 
+ <li>每个机柜2个数据中心网络交换机</li> 
+</ul>
+<p>网络Trunk设置：</p>
+<ul> 
+ <li>4 x 10 GbE租户网络接口聚合</li> 
+ <li>4 x 10 GbE 数据中心网络接口聚合 -&gt; Aggregate</li> 
+ <li>16 x 10 GbE 聚合到核心交换</li> 
+</ul>
+<p>下面是示意图：</p>
+<p><img width="600" alt="" src="http://infoqstatic.com/resource/articles/windows-server-infrastructure-cloud-reference-architecture/zh/resources/0117006.png" _href="img://null" _p="true" /></p>
+<p>图7 网络的冗余设计</p>
+<h2>小结</h2>
+<p>企业在设计自己的基础架构云时可以考虑采用或者部分采用上面的设计，事实上微软自己的很多产品已经采用了上面的设计，比如微软SQL Server 2012的并行数据仓库（PDW）就采用了类似的架构。微软自己的模块化数据中心也是采用一样的架构。</p>
+<p>由于篇幅所限，我们讨论硬件之上的设计，正如我们一开始所说的，我们的目标之一就是用应用的弹性取代对于硬件冗余的需求，当我们把一个机柜最为一个故障单元的时候，如何跨机柜、甚至跨数据中心来调度、部署应用就显得非常重要。这个部分我们将在以后进行介绍。</p>
+<hr />
+<p>感谢<a href="http://www.infoq.com/cn/author/马国耀">马国耀</a>对本文的审校。</p>
+<p>给InfoQ中文站投稿或者参与内容翻译工作，请邮件至<a href="mailto:editors@cn.infoq.com">editors@cn.infoq.com</a>。也欢迎大家通过新浪微博（<a href="http://www.weibo.com/infoqchina">@InfoQ</a>）或者腾讯微博（<a href="http://t.qq.com/infoqchina">@InfoQ</a>）关注我们，并与我们的编辑和其他读者朋友交流。</p><br><br><br><br><br><br></body></html>

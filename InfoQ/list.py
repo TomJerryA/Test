@@ -1,14 +1,20 @@
 <html>
  <head></head> 
- <body>
-  <div>
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/25.py">データサイエンティスト向け教育プログラム</a>2013年はデータサイエンティストやビッグデータ専門家向けの新しい教育プログラムが多く発表された。
-  </div>
-  <div>
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/24.py">Chefのレシピ作成エクスペリエンスを向上するChef Sugar</a>Chef SugarはDSLを使ってレシピの可読性を改善するChefのエクステンションだ。作者のSeth Vargo氏が実例を示しながら，Chef Sugarを開発した動機について説明している。InfoQは氏へのインタビューを通じて，Chefのプラグインアーキテクチャという面から，シンタックスシュガーのメリットに対する氏の見解を聞いた。
-  </div>
-  <div>
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/23.py">Add App Wizardなどの機能改良を加えたXAML Spy 2.0.5がリリース</a>XAML Spyがこの1月にリリースされた。Add App Wizard，XAML Spy ExplorerツールバーのShow All Appsボタンによるインストール済みアプリのナビゲートなどがサポートされている。複数のプロジェクトに対して，XAML Spyを一括で有効あるいは無効にすることも可能だ。
+ <body> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/27.py">Google Play Services 4.1がドライブサポートを追加</a>GoogleはPlay Servicesをアップデートして，ドライブやターンベースのマルチプレイヤゲーム，新たな広告ネットワークのサポートを追加した。 
+  </div> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/26.py">Rackspaceがクラウド管理サービスレベルを拡張し、DevOpsサポートサービスを開始</a>クラウドプロバイダーであり、OpenStackの創業者であるRackspaceは最近、新しいDevOps自動化サービスを発表しました。彼らは管理を支える為のインフラストラクチャーとワークフロー自動化やモニタリングそしてログ集約、そしてインフラ用のソースコントロールを提供します。 
+  </div> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/25.py">データサイエンティスト向け教育プログラム</a>2013年はデータサイエンティストやビッグデータ専門家向けの新しい教育プログラムが多く発表された。 
+  </div> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/24.py">Chefのレシピ作成エクスペリエンスを向上するChef Sugar</a>Chef SugarはDSLを使ってレシピの可読性を改善するChefのエクステンションだ。作者のSeth Vargo氏が実例を示しながら，Chef Sugarを開発した動機について説明している。InfoQは氏へのインタビューを通じて，Chefのプラグインアーキテクチャという面から，シンタックスシュガーのメリットに対する氏の見解を聞いた。 
+  </div> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/23.py">Add App Wizardなどの機能改良を加えたXAML Spy 2.0.5がリリース</a>XAML Spyがこの1月にリリースされた。Add App Wizard，XAML Spy ExplorerツールバーのShow All Appsボタンによるインストール済みアプリのナビゲートなどがサポートされている。複数のプロジェクトに対して，XAML Spyを一括で有効あるいは無効にすることも可能だ。 
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/22.py">Facebook、MercurialをGitよりも速くする</a>FacebookがどのようにしてMercurialをGitよりも特定の操作で5倍速くしたのかを説明する記事をポストした。読むと、彼らが何を変えて、なぜセットアップをそうしたのかがわかるだろう。 
@@ -145,11 +151,5 @@
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/30.py">TypedMVVM - WinJS Windows StoreアプリをTypeScriptを使って開発</a>TypedMVVMはDavide Zordan氏の開発した，WinJS, TypeScript, MVVMを使用したWindows Storeアプリの開発を可能にするための，サンプルとライブラリのコレクションだ。 
   </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/29.py">モダナイゼーションは避けがたい道</a>ほとんどの大企業が，アーキテクチャやガバナンスを選択を伴わないシステム拡張を容認している。その結果として生み出されるのは，複雑性とリスク，変更コストの著しい増加と &quot;毛糸玉&quot; のようなシステムインターフェースだ。David Sprott氏は，システムのモダナイゼーションはビジネスマネジメントとITの間のコラボレーションであるべきだ，と説明する。 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/28.py">Tererik, Entity Framwork 6のサポートなどの機能を備えたRadControls for WPF and Silverlight Q2 2013 SP1をリリース</a>TelerikがRadControls for WPF and Silverlight Q2 2013 SP1をリリースした。アプリケーション実行中のアイコンセット変更が可能になり，Entity Framework 6がサポートされた。その他にも，Telerik EventToCommandBehaviorの使用時にイベント引数をコマンドに渡すことが可能になるなど，いくつかの新機能と改善点がある。 
-  </div>    
  </body>
 </html>

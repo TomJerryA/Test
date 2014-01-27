@@ -1,16 +1,18 @@
-<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>京东电商云提供7大能力</h3><p>1月9日，京东发布了京东电商云。京东电商云提供了哪些能力？京东集团技术副总裁兼首席科学家何刚将其总结为以下7点：</p>
-<ul> 
- <li>自有：（商户）自有交易平台、web+移动商城、自有用户体系、云端CRM</li> 
- <li>全流通：营销、交易、商品、供应链、订单、仓储、配送、客服、售后</li> 
- <li>多平台：多电商平台、多渠道统一运营、全网营销资源整合</li> 
- <li>技术：云计算、大数据、移动</li> 
- <li>开放：ISV生态、可定制化扩展</li> 
- <li>金融：消费者信用工具、商家供应链金融</li> 
- <li>经验：伙伴式咨询服务</li> 
-</ul>
-<p>那么，京东电商云与京东云的关系是什么？去年，何刚曾详细介绍了<a href="http://www.test.infoq.com/cn/news/2013/08/jcloud-steps">京东云战略</a>的具体内容：</p>
+<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>jQuery 1.11和2.1已经发布到npm和Bower</h3><p>最新版本的jQuery已经可以通过npm和Bower获取，这个版本提升了性能并修复了一些bug。</p>
+<p>jQuery是非常流行的JavaScript库，其开发团队再次同步发布了两个版本：1.11和2.1.0。源文件和压缩版文件均可以通过<a href="http://jquery.com/download/">下载页面</a>获得。你也可以通过<a href="https://npmjs.org/package/jquery/">npm</a>和<a href="http://bower.io/">Bower</a>获取。但暂时还不支持其他的包管理工具。</p>
+<p>最新版本的jQuery具有更好的性能、<a href="http://blog.jquery.com/2014/01/24/jquery-1-11-and-2-1-released/">更少的强制布局和更低的启动开销</a>：</p>
 <blockquote> 
- <p>京东目标是以“京东宙斯”、“京东云鼎”、“京东云擎”、“京东云汇”四大解决方案为核心的技术体系构建完整的电商云服务链条。</p> 
+ <p><b>更少的强制布局</b>：这个版本我们向以前存在的一些问题宣战。我们之前可能在无意中强制浏览器进行了比较耗时的布局。我们发现了一些这样的问题，特别是解决了当样式类名改变时，导致强制布局的问题。因此，对于某些页面，这个版本将会产生非常大的性能提升。</p> 
+ <p><b>细粒度的自定义构建</b>：我们的模块化系统现在通过<a href="http://en.wikipedia.org/wiki/Asynchronous_module_definition">AMD</a>进行定义。当文件大小是你需要考虑的因素时，现在可以更容易地构建一些小的JavaScript类库子集。如果你想了解详细的信息，请查阅<a href="https://github.com/jquery/jquery#readme">README</a>，虽然它是个很少有人看的文件。</p> 
+ <p><b>更少的启动开销</b>：新的模块化和避免强制布局，让我们能够重构特性检查的代码。现在它们只在第一次需要时才会被执行。如果你没有调用那些需要检查特性的API，则检查特性的代码永远不会执行。之前我们在页面加载时会检查所有特性，这通常会导致少许延迟，但毕竟是延迟了——特别是在移动平台。</p> 
 </blockquote>
-<p>在<a href="http://www.jcloud.com/">京东云官网</a>，京东电商云与“京东宙斯”、“京东云鼎”、“京东云擎”“京东云峰”、“京东服务商门户”、“京东设计师门户”、“京东云汇”并列为七大解决方案。</p>
-<p>京东电商云包括了E-Commerce和L-Commerce两个方案，前者为企业提供从营销到交易平台搭建、多渠道管理集成、订单处理、仓储配送、物流优化等完整的电子商务解决方案，后者为本地生活服务类企业提供移动互联网CRM云解决方案，打造商家自主品牌APP。</p><br><br><br><br><br><br></body></html>
+<p>压缩版文件不再包含<a href="https://docs.google.com/document/d/1U1RGAehQwRypUTovF1KRlpiOFze0b-_2gc6fAH0KY0k/edit">sourcemap comment</a>，以避免<a href="http://bugs.jquery.com/ticket/14415">给开发人员造成困惑</a>：</p>
+<blockquote> 
+ <p>这个版本的压缩版js文件没有包含sourcemap comment……我们仍然生成和发行sourcemap，但如果浏览器不支持手动关联map文件（目前浏览器都不支持），你需要将相应的sourcemap comment加到压缩版js文件的最后。如果你通过自定义构建生成了自己的jQuery文件，则压缩版的文件中会包括sourcemap，并且map也会被生成。你可以让它留在那并使用sourcemap，或者在外面编辑它并完全忽略map文件。</p> 
+</blockquote>
+<p><a href="http://blog.jquery.com/2014/01/16/jquery-1-11-0-rc1-and-2-1-0-rc1-released/">这些bug</a>已经被修复。</p>
+<p>jQuery 1.11支持老版本的浏览器(IE 6、7、8)，2.1.0则增加了对Node.js、Chrome和Firefox扩展程序以及其它非传统web环境的支持。</p>
+<p><strong>原文英文链接：</strong><a href="http://www.infoq.com/news/2014/01/jquery-1-11-2-1-0">jQuery 1.11 &amp; 2.1 Now on npm and Bower</a></p>
+<hr />
+<p>感谢<a href="http://www.infoq.com/cn/author/侯伯薇">侯伯薇</a>对本文的审校。</p>
+<p>给InfoQ中文站投稿或者参与内容翻译工作，请邮件至<a href="mailto:editors@cn.infoq.com">editors@cn.infoq.com</a>。也欢迎大家通过新浪微博（<a href="http://www.weibo.com/infoqchina">@InfoQ</a>）或者腾讯微博（<a href="http://t.qq.com/infoqchina">@InfoQ</a>）关注我们，并与我们的编辑和其他读者朋友交流。</p><br><br><br><br><br><br></body></html>

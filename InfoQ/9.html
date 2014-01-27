@@ -1,40 +1,21 @@
-<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>《Ceph浅析》系列文章发布</h3><p>IBM的章宇同学（<a href="http://weibo.com/yizhaolingyan">@一棹凌烟</a>）在C3沙龙分享过Ceph之后，最近来了劲头，一口气写了一系列《Ceph浅析》的博文，共8篇：</p>
+<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>函数关系映射库Slick 2.0发布</h3><p><a href="http://slick.typesafe.com/">Slick</a>是一款适用于<a href="http://en.wikipedia.org/wiki/Scala_(programming_language)">Scala</a>的<a href="https://typesafe.com/blog/slick-20-ga-functional-relational-mapping-made-easy">函数关系映射库</a>（FRM），它的最新版本附带了逆向工程数据库模式和支持non-SQL数据库新的驱动体系架构。在最新的2.0版本中包括如下更新： </p>
 <ul> 
- <li><a href="http://yizhaolingyan.net/?p=11">“Ceph浅析”系列之一——前言</a></li> 
- <li><a href="http://yizhaolingyan.net/?p=19">“Ceph浅析”系列之二——Ceph概况</a></li> 
- <li><a href="http://yizhaolingyan.net/?p=49">“Ceph浅析”系列之三——Ceph的设计思想</a></li> 
- <li><a href="http://yizhaolingyan.net/?p=55">“Ceph浅析”系列之四——Ceph的结构</a></li> 
- <li><a href="http://yizhaolingyan.net/?p=63">“Ceph浅析”系列之五——Ceph的工作原理及流程</a></li> 
- <li><a href="http://yizhaolingyan.net/?p=98">“Ceph浅析”系列之六——Ceph与OpenStack</a></li> 
- <li><a href="http://yizhaolingyan.net/?p=104">“Ceph浅析”系列之七——关于Ceph的若干想法</a></li> 
- <li><a href="http://yizhaolingyan.net/?p=108">“Ceph浅析”系列之八——小结</a></li> 
+ <li>逆向工程数据库模式代码生成器，可以用它生成所有必需的代码。 </li>
+ <li>支持non-SQL、non-JDBC数据库的新的驱动体系架构。 </li>
+ <li>消除了表定义中的平面元组限制，可以把任意类型作为查询的返回类型。 </li>
+ <li>除了Scala元组之外，还支持适用于任意大小记录的异构列表。 </li>
+ <li>以新的预编译查询模型代替以前的查询模版抽象。 </li>
+ <li>现在预编译查询除了查询之外还可以用于更新和删除操作。 </li>
+ <li>默认软插入，这就不必再针对插入做单独推测。但现在仍然支持以前的做法。 </li>
+ <li>在提升嵌入（Lifted Embedding）的标准API中有新的更详细的表定义语法，以此避免早期版本中的隐患。 </li>
+ <li>支持服务器端可选的转换策略。 </li>
+ <li>一种支持查询调度的实验性特性，它允许在多个数据库的表上做单一查询。 </li>
+ <li>一个新的Activator模板，目标是使Slick的入门更加简单。</li>
 </ul>
-<p>这一系列文章对于想要初步了解Ceph文件系统的同学而言是相当不错的入门资料。</p>
-<p>开篇，章宇介绍Ceph说：</p>
-<blockquote> 
- <p>Ceph无疑是目前人气最高的开源存储项目之一。</p> 
-</blockquote>
-<p>Ceph是一个发展了七年的分布式存储系统，特点是“统一的”和“分布式的”。</p>
-<blockquote> 
- <p>“统一的”意味着Ceph可以一套存储系统同时提供对象存储、块存储和文件系统存储三种功能，以便在满足不同应用需求的前提下简化部署和运维。而“分布式的”在Ceph系统中则意味着真正的无中心结构和没有理论上限的系统规模可扩展性。</p> 
-</blockquote>
-<p>前三篇主要是背景介绍，从第四篇开始，章宇开始介绍Ceph的结构。</p>
-<p>Ceph的核心是其最底层的基础存储系统RADOS，RADOS的上面提供了向本机上层提供API的基础库librados，面向Web调用提供的RADOS GW RESTful API，以及上层的块存储设备RBD和文件系统Ceph FS。文中介绍了为什么Ceph提供的东西要远远超出Amazon S3、Swift提供的东西：</p>
-<blockquote> 
- <p>Swift（以及S3）提供的API所操作的“对象”只有三个：用户账户、用户存储数据对象的容器、数据对象。并且，所有的操作均不涉及存储系统 的底层硬件或系统信息。……而librados API的设计思想则与此完全不同。一方面，librados中没有账户、容器这样的高层概念；另一方面，librados API向开发者开放了大量的RADOS状态信息与配置参数，允许开发者对RADOS系统以及其中存储的对象的状态进行观察，并强有力地对系统存储策略进行控制。换言之，通过调用librados API，应用不仅能够实现对数据对象的操作，还能够实现对RADOS系统的管理和配置。这对于S3和Swift的RESTful API设计是不可想像的，也是没有必要的。</p> 
- <p>librados事实上更适合对于系统有着深刻理解，同时对于功能定制扩展和性能深度优化有着强烈需求的高级用户。</p> 
-</blockquote>
-<p>在接下来的第五篇中，章宇先介绍了RADOS中最为核心的、基于计算的对象寻址机制，然后说明对象存取的工作流程，之后介绍RADOS集群维护的工作过程，最后结合Ceph的结构和原理对其技术优势加以回顾和剖析。</p>
-<p>第六篇介绍Ceph在OpenStack社区中引起的反响，可以用一句话总结：</p>
-<blockquote> 
- <p>整体而言，Ceph事实上是目前OpenStack生态系统中呼声最高的开源存储解决方案。这一点从笔者在OpenStack 2013 HongKong Summit上的亲身体验可以得到印证。目前，以HP、Dell、Intel等为代表的企业IT领导厂商，和以Mirantis、eNovance、UnitedStack为代表的若干OpenStack社区新兴厂商，都将Ceph作为重要的乃至于首选的开源存储解决方案。</p> 
-</blockquote>
-<p>第七篇是作者自己研究Ceph的经验分享：</p>
-<ol> 
- <li>开源的东西可以性能很好，当然坑也是很多，你能配好算你牛</li> 
- <li>太复杂的硬件可能不适合Ceph</li> 
- <li>在Ceph上，存储类型、存储策略都是可以非常灵活的配置的</li> 
- <li>RADOS很强大，拿来做计算任务也是可以的</li> 
- <li>Ceph还是不成熟，但当大家都忍不住开始用的时候，成熟起来就很快了</li> 
-</ol>
-<p>你是否研究过Ceph？你是否看好Ceph在2014年的发展？欢迎交流你的观点。</p><br><br><br><br><br><br></body></html>
+<p>除了以上这些更新，在新的版本里还有其他200多项更新。团队还更新了相应的<a href="http://slick.typesafe.com/doc/2.0.0/">文档</a>，包括新版的<a href="http://typesafe.com/activator/template/hello-slick">入门指南</a>。这个版本不能向下兼容，<a href="http://slick.typesafe.com/doc/2.0.0/migration.html">迁移指南</a>中描述了从1.0至今的变更。 </p>
+<p>Slick是一款用于函数式编程语言Scala（相当于用于面向对象编程的<a href="http://en.wikipedia.org/wiki/Object-relational_mapping">对象关系映射</a>（ORM），比如Hibernate）的关系型数据库访问类库。Slick用户<a href="https://groups.google.com/forum/#!forum/scalaquery">邮件列表</a>中有700多位成员。 </p>
+<p>Slick是一款基于BSD<a href="https://github.com/slick/slick/blob/master/LICENSE.txt">许可</a>的开源产品。它<a href="http://slick.typesafe.com/doc/2.0.0/introduction.html#supported-database-systems">支持的数据库</a>包括H2、MySQL和 PostgreSQL。通过一个<a href="http://slick.typesafe.com/doc/2.0.0/extensions.html">闭源扩展</a>也可以使它支持Oracle、IBM DB2和Microsoft SQL Server的驱动。 </p>
+<p><strong>查看英文原文：</strong><a href="http://www.infoq.com/news/2014/01/slick-2-0-released">Functional Relational Mapping Library Slick 2.0 Released</a></p>
+<hr />
+<p>感谢<a href="http://www.infoq.com/cn/author/侯伯薇">侯伯薇</a>对本文的审校。</p>
+<p>给InfoQ中文站投稿或者参与内容翻译工作，请邮件至<a href="mailto:editors@cn.infoq.com">editors@cn.infoq.com</a>。也欢迎大家通过新浪微博（<a href="http://www.weibo.com/infoqchina">@InfoQ</a>）或者腾讯微博（<a href="http://t.qq.com/infoqchina">@InfoQ</a>）关注我们，并与我们的编辑和其他读者朋友交流。</p><br><br><br><br><br><br></body></html>
