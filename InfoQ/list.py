@@ -1,6 +1,12 @@
 <html>
  <head></head> 
- <body> 
+ <body>
+  <div>
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/29.py">OpenStackの4月リリース ‘Icehouse’ 詳細</a>OpenStackオープンソースクラウドの次期リリースであるIcehouseは，2014年4月の公開が予定されている。自動インストール(TripleO)，ベアメタル・プロビジョニング(Ironic)，キューおよび通知サービス(Marconi)，データベース・アズ・ア・サービス(Trove)が統合サービスとして提供される。Hadoopサポートの改良版(Savanna)もインキュベーションに含まれる予定だ。
+  </div>
+  <div>
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/28.py">TwitterがMapReduceストリーミングフレームワークSummingbirdをオープンソースに</a>Twitterは，Summingbirdと呼ぶ自社のMapReduceストリーミングフレームワークをオープンソースにした。Apache 2ライセンスで公開されるSummingbirdは，コードをバッチモード(Hadoop/MapReduceをベースとする)でもストリームモード(Stormをベースとする)でも，あるいはハイブリッドモードと呼ばれる２つの組み合わせでも同じように実行することができる，大規模データ処理システムだ。
+  </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/27.py">Google Play Services 4.1がドライブサポートを追加</a>GoogleはPlay Servicesをアップデートして，ドライブやターンベースのマルチプレイヤゲーム，新たな広告ネットワークのサポートを追加した。 
   </div> 
@@ -144,12 +150,6 @@
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/32.py">カンバンで需要と能力のバランスをとる</a>カンバンを使うことで、組織は実施中の作業を把握し、需要と能力のバランスがとれるプルシステムを確立できる。まずは実際の能力がどの程度あるかを見極め、その能力の流れを可視化することだ。InfoQはFlorian Eisenberg氏にインタビューし、どのように需要と能力のバランスをとるかについて話を聞いた。 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/31.py">スプリント計画ゲーム &quot;Rocket to Mars&quot;</a>&quot;ほとんどのチームとそのプロダクトオーナは，より多くのストーリポイントを達成することがチームの唯一の責務だと信じています。しかしこれは，チームとプロダクトオーナの関係を完全に誤解したものだ，と私たちは考えます。&quot; こう語るのはDamien Thouvenin氏とPierrick Revol氏だ。氏らはストーリの創出や問題の調査，技術的負債の削減，およびそれらをトレーニングするための時間的投資を題材としたスプリント計画ゲームを実施した。 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/30.py">TypedMVVM - WinJS Windows StoreアプリをTypeScriptを使って開発</a>TypedMVVMはDavide Zordan氏の開発した，WinJS, TypeScript, MVVMを使用したWindows Storeアプリの開発を可能にするための，サンプルとライブラリのコレクションだ。 
-  </div> 
+  </div>   
  </body>
 </html>

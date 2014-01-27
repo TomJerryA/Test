@@ -1,24 +1,12 @@
-<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>モダナイゼーションは避けがたい道</h3><p><a target="_blank" href="http://www.infoq.com/news/2013/12/modernization-is-not-optional"><em>原文(投稿日：2013/12/10)へのリンク</em></a></p>
+<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>OpenStackの4月リリース ‘Icehouse’ 詳細</h3><p><a target="_blank" href="http://www.infoq.com/news/2014/01/openstack_icehouse"><em>原文(投稿日：2014/01/16)へのリンク</em></a></p>
 <div class="article_page_left news_container text_content_container"> 
  <div class="text_info"> 
-  <p>世界<a href="http://www.accuity.com/useful-links/bank-rankings/">10大銀行</a>のひとつであるRoyal Bank of Scotlandが先日，18ヶ月に及ぶ <a href="http://www.ft.com/cms/s/0/05cf8cce-5c43-11e3-931e-00144feabdc0.html#axzz2n1p4L5xx">３度目のITシステム障害</a> に見舞われた。同行CEOは &quot;RBSが数十年間に渡って，システムに適切な投資を行っていなかった&quot; ことを認めている。 この事件を契機としてコンサルティング会社<a href="http://everware-cbdi.com/">Everware-CBDI</a>の創業者でCEOであるDavid Sprott氏は，銀行業界に特有と思われる <a href="http://davidsprottsblog.blogspot.com.au/2013/12/systems-failure-at-rbs-again.html">システムのモダナイゼーション(modernization, 近代化) の無視</a> についての記事を執筆した。</p> 
-  <p>根本的な問題として氏が記しているのは，銀行の数の多さとその規模の大きさだ:</p> 
-  <blockquote>
-   “ ... そのためシステムは，アーキテクチャやガバナンスを改良することなく，生きながらえることができたのです。[レガシ]システムは，粘着テープやシーリングワックス(訳注: 封書などを閉じるための蝋)などと同じで，新たな要求に合わせて少しずつ修正されてきました。新しいシステムにはインターフェースや (重複やハードコードされたビジネスルールのような) 依存性を持った実装が次々と作り込まれて，今では毛糸玉のようになっています。&quot;
-  </blockquote> 
-  <p>その結果として，システムに関するノウハウや資料，あるいはコードの不足のために，実装全体を完全に理解できないままにプロセスやソフトウェア，実行環境の変更が実施される時，複雑性とリスクの増大という問題が顕在化する。</p> 
-  <p>氏は，“モダナイゼーション” というものが単なる新プラットフォームへのアプリケーション移行であると誤解されていて，それよりも重要なアーキテクチャ上あるいは組織上の問題が理解されていないのではないか，という懸念を抱いている。そうではない，モダナイゼーションとはもっと広範なものだ，と氏は主張する:</p> 
-  <blockquote> 
-   <ol> 
-    <li>ビジネスとIT管理者の双方がモダナイゼーションの問題と影響を本当に理解するための共通語 (Lingua Franca) の確立。</li> 
-    <li>a)&nbsp;低リスクな変換を促進し，b)&nbsp;継続的に進化する本来のアジャイルアーキテクチャを漸進的に開発するための，ビジネスシステムアーキテクチャの定義。</li> 
-    <li>アーキテクチャの要請に従いながら，企業におけるビジネスシステムのポートフォリオを段階的に合理化するためのロードマップ。</li> 
-    <li>ビジネスシステムを所有するIT組織とビジネスとの統合の実現。</li> 
-    <li>プロセスと情報，およびルールの整合性と一貫性，所有権を確保するための，ビジネスシステムに関するナレッジマネジメントの実践。</li> 
-    <li>継続的なアジャイルのモダナイゼーションと，ビジネスおよびIT両面での絶え間ない進化プロセスの実現。</li> 
-    <li>システムライフサイクルのすべてのステージにおけるアーキテクチャの整合性を確保するための，コーディネーションとガバナンス，リスクマネジメントの確立。</li> 
-   </ol> 
-  </blockquote> 
-  <p>氏は上記のリストについて，この問題がIT部門に限られたものではなく，マネジメント全般の問題であって，ビジネスマネジメントとITが効率的に共同作業を行うことで初めて対応可能なものだ，と指摘している。さらに氏はこれらの問題について，大規模な組織では普遍的に見られるものであることを指摘するとともに，読者に対して &quot;モダナイゼーションは避けられない道&quot; というメッセージを送ることで記事を結んでいる。</p> 
+  <p>OpenStackオープンソースクラウドの次期リリースであるIcehouseは，2014年4月の公開が予定されている。自動インストール(<a href="https://wiki.openstack.org/wiki/TripleO">TripleO</a>)，ベアメタル・プロビジョニング(<a href="https://wiki.openstack.org/wiki/Ironic">Ironic</a>)，キューおよび通知サービス(<a href="https://wiki.openstack.org/wiki/Marconi">Marconi</a>)，データベース・アズ・ア・サービス(<a href="https://wiki.openstack.org/wiki/Trove">Trove</a>)が統合サービスとして提供される。Hadoopサポートの改良版(<a href="https://wiki.openstack.org/wiki/Savanna">Savanna</a>)もインキュベーションに含まれる予定だ。</p> 
+  <p>Icehouseのロードマップは，<a href="http://www.openstack.org/summit/openstack-summit-hong-kong-2013/">OpenStackサミット</a>をメインとして11月5日から8日まで香港で開催された，<a href="http://wiki.openstack.org/wiki/Summit/Icehouse">デザインサミット</a>の中で決定された。1月中旬には<a href="http://status.openstack.org/release/">リリース対象機能や開発状況</a>と合わせて，<a href="https://wiki.openstack.org/wiki/Summit/Icehouse/Etherpads">デザインサミットでの議論の記録</a>が<a href="http://www.openstack.org/software/roadmap/">ロードマップのページ</a>で公開されている。</p> 
+  <p>2012年10月に<a href="http://www.openstack.org/software/folsom/">Folsom</a>がリリースされて以来，OpenStackコアコンポーネントのラインナップに変化はないが，改良と整理は続けられている。IcehouseではNova (計算サービス)のネットワーク機能が非推奨となり，Neutron(ネットワーキングサービス)が選択されることになるはずだ。</p> 
+  <p>サービスのライフサイクルは2013年4月の<a href="http://www.openstack.org/software/grizzly">Grizzly</a>のリリースで変更されて，インテグレーションステージ(インキュベーションとコアの間)が導入された。これによってコアのサービスを今以上に拡張しなくても，サービスを追加することが可能になった。基本的なインフラストラクチャ・アズ・ア・サービスの構築を目標とするユーザにとって，これは重要な点だ。2013年10月の<a href="http://www.openstack.org/software/havana/">Havana</a>が，このメリットを活用した最初のリリースとなった。このリリースでは，オーケストレーション(<a href="https://wiki.openstack.org/wiki/Heat">Heat</a>)と計測機能と(<a href="https://wiki.openstack.org/wiki/Ceilometer">Ceilometer</a>)の２つが，統合サービスとして提供されている。</p> 
+  <p>改訂された ‘<a href="http://www.slideshare.net/randybias/state-of-the-stack-v2">State of the Stack</a>’ プレゼンテーションにはRandy Bias氏(OpenStackベンダであるCloudscalingの創設者)が，OpenStackはもっとも早く成長したオープンスタックコミュニティであり，現在では12,000人以上の個人が参画している，と記している。Havanaのリリース時点で910のコントリビュータが登録されていて，開発者コミュニティ全体では現在1,000を越えている。香港で開催されたOpenStackサミットでは，エキゾチックな場所にも関わらず，前回のポーランドでのサミットよりも1,000人以上多くの参加者を集めた。</p> 
+  <p>OpenStack構成員の中には，しかしながら反対意見もいくつかある。例えばRackspaceとCloudscallingのエンジニアだったAndrew Shafer氏は，‘OpenStackには人々がソフトウェアソリューションを故意でなく誤使用した，悪いプロジェクトの成果が残ることになる’ と<a href="http://stochasticresonance.wordpress.com/2013/11/04/openstack-a-plea/">断言している</a>。氏が特に問題視しているのは，コントリビュータ個々の威信によってOpenStackが複数のプロジェクトに分裂してしまう可能性だ。特に脆弱だと指摘されるのは，計測プロジェクトのCeilometerである。‘監視・計測をクラウドにボルトで据え付けるという発想そのものが，信頼性やスケーラビリティを後付けしようとするのと同じくらいナンセンスです。’</p> 
+  <p>GartnerのアナリストであるAlessandro Perilli氏もまた，‘Why vendors can’t sell OpenStack to enterprises’ という<a href="http://blogs.gartner.com/alessandro-perilli/why-vendors-cant-sell-openstack-to-enterprises/">記事を書く</a>中で，OpenStackが行うことと行わないことの明解さの欠如，OpenStack関連ビジネスの透明性の欠如，ビジョンと長期的な差別化の欠如，実用性に関する考慮の欠如を指摘している。OpenStackの将来性や実現性に対してさらなる疑問を投げかけるのは，BrocadeのアーキテクトであるGeoff Arnold氏の‘<a href="http://www.speakingofclouds.com/?p=353">Whither OpenStack?</a>’だ。この記事はOpenStack支持者の間に多くの<a href="http://www.infoworld.com/t/openstack/red-hat-rackspace-defend-openstack-against-analysts-barbs-231438">反響を引き起こした</a>。Red HatのBrian Che氏は &quot;オープンソースプロジェクトは製品と同じではない&quot;と述べている。またRackspaceのScott Sanchez氏は，&quot;革新的な企業&quot;がOpenStackを採用するだろう，と言う。&quot;そのような企業は‘エンタープライズ用の機能’をインフラストラクチャ層に要求するよりも，自らアプリケーション層に構築する方が手っ取り早いことを知っているからです。&quot;</p> 
  </div> 
 </div><br><br><br><br><br><br></body></html>

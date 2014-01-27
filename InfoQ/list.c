@@ -1,11 +1,11 @@
 <html>
  <head></head> 
- <body>
-  <div>
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/16.c">Desenvolvedores presos ao .NET 4.0</a>Sempre que uma nova vers&atilde;o do CLR &eacute; liberada, como no .NET 2.0 e 4.0, os desenvolvedores s&atilde;o relutantes a migrarem para novas vers&otilde;es. As atualiza&ccedil;&otilde;es no CLR trazem mudan&ccedil;as no comportamento em tempo de execu&ccedil;&atilde;o que podem quebrar o c&oacute;digo existente. Exemplos incluem a desastrosa propriedade DateTime.Kind ou cria&ccedil;&atilde;o de exceptions n&atilde;o capturadas em threads no background que terminem o processo.
-  </div>
-  <div>
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/15.c">Design Thinking e Cultura de Colabora&ccedil;&atilde;o</a>Design thinking trata-se da cria&ccedil;&atilde;o de uma vis&atilde;o de futuro, n&atilde;o somente gerenciar o presente. Bill Burnett da Univercidade de Stanford recentemente falou sobre Design thinking e quais quest&otilde;es devemos fazer para mudar do Design para o Design thinking.
+ <body> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/16.c">Desenvolvedores presos ao .NET 4.0</a>Sempre que uma nova vers&atilde;o do CLR &eacute; liberada, como no .NET 2.0 e 4.0, os desenvolvedores s&atilde;o relutantes a migrarem para novas vers&otilde;es. As atualiza&ccedil;&otilde;es no CLR trazem mudan&ccedil;as no comportamento em tempo de execu&ccedil;&atilde;o que podem quebrar o c&oacute;digo existente. Exemplos incluem a desastrosa propriedade DateTime.Kind ou cria&ccedil;&atilde;o de exceptions n&atilde;o capturadas em threads no background que terminem o processo. 
+  </div> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/15.c">Design Thinking e Cultura de Colabora&ccedil;&atilde;o</a>Design thinking trata-se da cria&ccedil;&atilde;o de uma vis&atilde;o de futuro, n&atilde;o somente gerenciar o presente. Bill Burnett da Univercidade de Stanford recentemente falou sobre Design thinking e quais quest&otilde;es devemos fazer para mudar do Design para o Design thinking. 
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/14.c">Funda&ccedil;&atilde;o Eclipse lan&ccedil;a Subsidi&aacute;ria Europ&eacute;ia</a>Na EclipseCon 2013 da Europa, a Funda&ccedil;&atilde;o Eclipse lan&ccedil;ou a Funda&ccedil;&atilde;o Eclipse GmbH Europ&eacute;ia, uma funda&ccedil;&atilde;o subsidi&aacute;ria localizada in Zwingenberg (Hessen), Alemanha. A funda&ccedil;&atilde;o foi criada para promover o apoio para a comunidade open source do Eclipse na Europa. 
@@ -150,6 +150,6 @@
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/18.c">Tudo sobre o Java 8</a>A TechEmpower, uma empresa de desenvolvimento de aplica&ccedil;&otilde;es customizadas com sede em El Segundo, Calif&oacute;rnia, postou recentemente um post chamado &quot;Tudo sobre o Java 8&quot;. No post h&aacute; um resumo completo das mudan&ccedil;as que o desenvolvedor encontrar&aacute; no Java 8. Aqui est&aacute; uma vis&atilde;o geral do post. 
-  </div>   
+  </div> 
  </body>
 </html>
