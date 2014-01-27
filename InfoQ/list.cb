@@ -1,7 +1,7 @@
 <html>
  <head></head> 
- <body>
-  <div>
+ <body> 
+  <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/35.cb">Adicionando flexibilidade &agrave; sua implementa&ccedil;&atilde;o REST com Yoga</a> Nos casos que se deseja obter um controle detalhado da estrutura de documentos que ser&atilde;o retornadas com base nas necessidades dos clientes, o Yoga &eacute; uma alternativa open source que integra com aplica&ccedil;&otilde;es REST j&aacute; existentes. O Yoga fornece aos clientes, a habilidade de usar seletores, que pode ser usado como os operadores proje&ccedil;&atilde;o, sele&ccedil;&atilde;o e join relacional. 
   </div> 
   <div> 

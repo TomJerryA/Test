@@ -2,7 +2,13 @@
  <head></head> 
  <body>
   <div>
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/14.c">Funda&ccedil;&atilde;o Eclipse lan&ccedil;a Subsidi&aacute;ria Europ&eacute;ia</a>Na EclipseCon 2013 da Europa, a Funda&ccedil;&atilde;o Eclipse lan&ccedil;ou a Funda&ccedil;&atilde;o Eclipse GmbH Europ&eacute;ia, uma funda&ccedil;&atilde;o subsidi&aacute;ria localizada in Zwingenberg (Hessen), Alemanha. A funda&ccedil;&atilde;o foi criada para promover o apoio para a comunidade open source do Eclipse na Europa.
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/16.c">Desenvolvedores presos ao .NET 4.0</a>Sempre que uma nova vers&atilde;o do CLR &eacute; liberada, como no .NET 2.0 e 4.0, os desenvolvedores s&atilde;o relutantes a migrarem para novas vers&otilde;es. As atualiza&ccedil;&otilde;es no CLR trazem mudan&ccedil;as no comportamento em tempo de execu&ccedil;&atilde;o que podem quebrar o c&oacute;digo existente. Exemplos incluem a desastrosa propriedade DateTime.Kind ou cria&ccedil;&atilde;o de exceptions n&atilde;o capturadas em threads no background que terminem o processo.
+  </div>
+  <div>
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/15.c">Design Thinking e Cultura de Colabora&ccedil;&atilde;o</a>Design thinking trata-se da cria&ccedil;&atilde;o de uma vis&atilde;o de futuro, n&atilde;o somente gerenciar o presente. Bill Burnett da Univercidade de Stanford recentemente falou sobre Design thinking e quais quest&otilde;es devemos fazer para mudar do Design para o Design thinking.
+  </div> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/14.c">Funda&ccedil;&atilde;o Eclipse lan&ccedil;a Subsidi&aacute;ria Europ&eacute;ia</a>Na EclipseCon 2013 da Europa, a Funda&ccedil;&atilde;o Eclipse lan&ccedil;ou a Funda&ccedil;&atilde;o Eclipse GmbH Europ&eacute;ia, uma funda&ccedil;&atilde;o subsidi&aacute;ria localizada in Zwingenberg (Hessen), Alemanha. A funda&ccedil;&atilde;o foi criada para promover o apoio para a comunidade open source do Eclipse na Europa. 
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/13.c">Ritmo sustent&aacute;vel: Como obt&ecirc;-lo e melhor&aacute;-lo?</a>Como princ&iacute;pio do Manifesto &Aacute;gil, o ritmo sustent&aacute;vel &eacute; considerado por muitos como fundamental para uma ado&ccedil;&atilde;o &aacute;gil. Atingir, por&eacute;m, um ritmo sustent&aacute;vel pode ser dif&iacute;cil, pois pede-se que as equipes acelerem cada vez mais. Qual sua experi&ecirc;ncia na ado&ccedil;&atilde;o de ritmo sustent&aacute;vel com sua equipe? Como foi tentar melhorar a velocidade de entrega e estabelecer um ritmo sustent&aacute;vel em outro patamar? 
@@ -144,12 +150,6 @@
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/18.c">Tudo sobre o Java 8</a>A TechEmpower, uma empresa de desenvolvimento de aplica&ccedil;&otilde;es customizadas com sede em El Segundo, Calif&oacute;rnia, postou recentemente um post chamado &quot;Tudo sobre o Java 8&quot;. No post h&aacute; um resumo completo das mudan&ccedil;as que o desenvolvedor encontrar&aacute; no Java 8. Aqui est&aacute; uma vis&atilde;o geral do post. 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/17.c">Appmaker: ferramenta para desenvolvimento de aplica&ccedil;&otilde;es m&oacute;veis usando HTML5</a>A Funda&ccedil;&atilde;o Mozilla lan&ccedil;ou recentemente a vers&atilde;o pr&eacute; alpha do Appmaker, uma aplica&ccedil;&atilde;o web que permite desenvolver e publicar facilmente aplica&ccedil;&otilde;es m&oacute;veis utilizando HTML5. 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/16.c">Apache Solr 4.5: suporte a dados distribu&iacute;dos customiz&aacute;vel e Faceted Multithread</a>Solr &eacute; uma plataforma de busca NoSQL fornecida em c&oacute;digo livre que &eacute; parte do projeto Lucene. No inicio de outubro a vers&atilde;o 4.5 foi lan&ccedil;ada e traz entre novos recursos, suporte a dados distribu&iacute;dos (sharding) customiz&aacute;vel inclusive por campo, faceted em multithread e a classe CloudSolrServer agora &eacute; capaz de endere&ccedil;ar diretamente o n&oacute; l&iacute;der no cen&aacute;rio distribu&iacute;do. Saiba mais sobre esta nova vers&atilde;o 
-  </div>  
+  </div>   
  </body>
 </html>

@@ -1,1 +1,1 @@
-Functional Relational Mapping Library Slick 2.0 Released
+Visual F# Tools 3.1.1 Adds Visual Studio Express 2013 Desktop and Web Versions

@@ -1,17 +1,4 @@
-<p>The latest version of Slick, a Functional-Relational Mapping, FRM, library for Scala, comes with reverse-engineering of database schemas and new driver architecture to allow support for non-SQL databases. Changes in the recently released version 2.0 include:</p>
-<ul> 
- <li>A code generator that reverse-engineers a database schema, generating all code required.</li> 
- <li>New driver architecture to enable support for non-SQL, non-JDBC databases.</li> 
- <li>Removal of the flat tuples restriction in table definitions, allowing usage of any type valid as a Query return type.</li> 
- <li>Support of heterogeneous lists for records of arbitrary size in addition to Scala tuples.</li> 
- <li>A new model for pre-compiled queries has replaced the old QueryTemplate abstraction.</li> 
- <li>Besides querying, pre-compiled queries can now also be used for update and delete operations.</li> 
- <li>Soft inserts as the default, removing the need for separate projections for inserts. The old behaviour is still supported.</li> 
- <li>New and more verbose syntax table definitions in the Lifted Embedding standard API to avoid pitfalls in earlier versions.</li> 
- <li>Support for server-side Option conversions.</li> 
- <li>An experimental feature which allows for Query scheduling, allowing usage of tables from multiple databases in a single query.</li> 
- <li>A new Activator template aiming at simplifying getting started with Slick.</li> 
-</ul>
-<p>In addition to these updates, more than 200 changes are included in the new release. The team have also updated the documentation, including a new getting started guide. This release is not backward compatible, a guide for migration describes the changes from 1.0.</p>
-<p>Slick is a relational database access library for the functional language Scala; corresponding to an Object-Relational Mapper, ORM, for object-oriented languages, e.g. Hibernate.<br /> A mailing list for Slick users is available with more than 700 members.</p>
-<p>Slick is an open source product with a BSD-style license. Supported database systems include H2, MySQL and PostgreSQL. Drivers for Oracle, IBM DB2, and Microsoft SQL Server are available through a closed-source extension.</p>
+<p>Visual F# Tools 3.1.1 has been released with support for both desktop and web versions of Visual Studio Express 2013 Express. It also provides support for installation in a system which doesn't have Visual Studio. In such a case, the compiler, runtime and F# interactive will be automatically deployed without IDE tooling. <br /> <br /> According to Microsoft F# product team, the above feature has been implemented to enable you to use F# 3.1 in build server and virtual machine scenarios. Moreover, developers can also make use of the latest release while editing clients such as Emacs and Xamarin Studio.</p>
+<p>The installation of F# tools 3.1 can be automated using the following command direcly from a PowerShell session<br /> <br /> <code> $webclient = New-Object Net.WebClient<br /> $url = 'http://download.microsoft.com/download/3/0/A/30A5D6DD-5B5C-4E06-B331-A88AA0B53150/FSharp_Bundle.exe'<br /> $webclient.DownloadFile($url, &quot;$pwd\FSharp_Bundle.exe&quot;)<br /> .\FSharp_Bundle.exe /install /quiet </code></p>
+<p>Microsoft is slated to include F# tools along with the upcoming releases of Visual Studio. In order to install Visual F# Tools 3.1.1, you require either Windows 7 or 8 in addition to Visual Studio 2013 Ultimate, Premium, Professional, Desktop and Web Express. If you install the tools without Visual Studio then you need to install additional frameworks such as MSBuild 12.0, .NET Framework 4.5.1 and the Windows 7 and 8.1 SDKs.</p>
+<p>After the completion of installation, you can locate the required DLL and EXE files of the tools package from Program Files (x86)\Microsoft SDKs\F#\3.1\Framework\v4.0 folder.<br /> <br /> The official download page doesn't mention any reference to Visual Studio 2012 as one of the requirement for the installation of F# tools 3.1. It remains to be see as to whether the tools provide support for Visual Studio 2012.</p>
