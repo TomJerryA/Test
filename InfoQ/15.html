@@ -1,9 +1,9 @@
-<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>了解并避免常见的Windows Phone应用认证错误</h3><p><a href="http://www.windowsphone.com/en-in">Windows Phone</a>软件商店认证与策略团队公布了一份常见错误列表，列出了开发者在开发阶段经常犯下的错误。此外它们还给出了若干建议，帮助开发者避免这些将影响应用发布进度的错误。首先是与应用截图有关的要求：截图中不能包含任何模拟器外框、帧速计数器或调试信息。无论它们处于变化还是透明的状态，都不能出现。开发者应该使用内建的模拟器截屏工具——Windows Phone 8 SDK中提供了支持WVGA、XVGA和720P三种分辨率的模拟器。</p>
-<p>此外，要捕捉WVGA分辨率的<a href="http://msdn.microsoft.com/en-us/library/windowsphone/develop/hh184844(v=vs.105).aspx">截屏</a>，应该使用开发中心提供的相关特性，它将把XVGA截屏自动伸缩到WVGA分辨率的特性。而如果开发者希望提供本地化应用，那么应该为每一种支持的语言分别提供一幅截屏。</p>
-<p>如果开发者提交的应用要求<a href="http://msdn.microsoft.com/en-us/library/windowsphone/develop/hh184840(v=vs.105).aspx">登录</a>凭据，那么在开发中心进行提交时，应该在认证注记中包含对虚拟账号的详细说明，以便相关团队能够完整地测试应用。如果开发者没能提供该信息，那么应用将被拒绝，开发者也将被要求重新提交应用——这最终也会导致应用发布的推迟。</p>
-<p>开发者应该使用诸如<a href="https://www.bugsense.com/">BugSense</a>和<a href="http://blogs.msdn.com/b/andypennell/archive/2010/11/01/error-reporting-on-windows-phone-7.aspx">Little Watson</a>等工具，用来收集未处理的异常遥测数据，以防止应用在测试阶段出现意外<a href="http://msdn.microsoft.com/en-us/library/windowsphone/develop/hh184840(v=vs.105).aspx">终止</a>。</p>
-<p>Visual Studio、App Studio和<a href="http://cordova.apache.org/">Apache Cordova</a>都提供了图标和瓷贴图片，供开发者在应用中使用。不过，微软建议开发者用自己的图片来替换它们，因为默认图片只适用于特定的尺寸。</p>
-<p>微软认为，只有当应用处于其主页的时候，后退按钮才会关闭应用。而当它不在自己的主页时，则应该返回前一页面。此外，后退按钮应该能够关闭对话框和软键盘。</p>
-<p>微软还建议开发者使用内建的模拟器，针对每种支持的语言提供本地化应用描述。此外，开发者还需要确保应用在浅色和深色主题下都能够正确地现实。开发者可以使用Visual Studio，从而能够在开发时轻松地切换浅色和深色主题。</p>
-<p>Windows Phone软件商店认证和政策团队的<a href="http://blogs.windows.com/windows_phone/b/wpdev/archive/2014/01/10/top-windows-phone-app-certification-failures-and-how-to-avoid-them.aspx">Mike Francis</a>，提供了测试当前应用主题所需的代码，以及提升Windows应用质量的一些小窍门。</p>
-<p><strong>查看英文原文：</strong><a href="http://www.infoq.com/news/2014/01/win-phone-certification-errors">Know about Common Windows Phone App Certification Errors and the Steps to Avoid Them</a></p><br><br><br><br><br><br></body></html>
+<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>Node.js的领导权发生变化</h3><p>在Node.js博客最近的一篇博文中，Isaac Schlueter宣布，他正在将该项目的领导权移交给贡献者和Joyent的雇员TJ Fontaine。Joyent是Node.js项目背后的管理企业。在2012年6月Node.js的创建者Ryan Dahl 让位之后，Isaac一直是该项目的领导者。在随后的一篇博文中，TJ Fontaine详细列举了Node.js在接下来的一年中的一些目标。</p>
+<p>“Node.js的下一阶段（<a href="http://blog.nodejs.org/2014/01/15/the-next-phase-of-node-js/">The Next Phase of Node.js</a>）”这篇博文，论述了TJ在过去的一年中对该项目的重大贡献，也谈到了Isaac的未来计划。据Isaac介绍，TJ实际上已经领导Node有段时间了，现在只是将这一转变正式化。TJ在<a href="http://venturebeat.com/2014/01/15/the-king-is-dead-long-live-the-king-meet-nodes-newest-leader/">接受VentureBeat采访</a>时谈到，“这一宣布差不多就是现状。Node已经在我领导下运作了一段时间。现在只是将其公开而已。”</p>
+<p>尽管Isaac这位前Joyent雇员仍然是项目提交者，不过他正在创建一家名为npm的新的创业公司，该公司将主要关注<a href="https://npmjs.org/">npm</a>这款流行的Node.js包管理器。尽管Isaac以他的方式确保围绕npm展开业务的社区不会改变npm目前的工作方式，但是这家公司的具体细节尚不明确。</p>
+<blockquote> 
+ <p>“我正在启动一家名为npm的公司，以交付与npm相关的新的产品和服务。关于公司如何运作，以及我们将提供什么，我们将尽快分享更多细节。就目前而言，只要说‘目前免费的将继续免费，目前不太可靠的会更可靠一些’就够了。寻求新的收入是我们长期可持续地提供npm注册服务的保证，而且这必须小心翼翼地进行，以免损害我们共同构建起来的这一切。”</p> 
+</blockquote>
+<p>在<a href="http://blog.nodejs.org/2014/01/16/nodejs-road-ahead/">随后的一篇博文</a>中，TJ详述了Node.js在2014年的计划，其中包括即将发布的0.12版本。除此之外，他还探讨了与v8预期新版本的集成（v8是来自Google的开源JavaScript引擎，也是Node的基础），以及对更多工具的需求。</p>
+<p>然而，关于该项目未来的很多讨论都关注于如何更好地支持来自社区的反馈和参与。在<a href="http://venturebeat.com/2014/01/15/the-king-is-dead-long-live-the-king-meet-nodes-newest-leader/">VentureBeat的访谈</a>中也反复提到了这一点，Node.js正在组织一份行为准则，“即Fontaine所谓的将价值观——如包容性，这是Node项目不可或缺的——以及团队如何完成工作编写成规则”。</p>
+<p><strong>查看英文原文：</strong><a href="http://www.infoq.com/news/2014/01/node-leadership-change">A Change in Leadership for Node.js</a></p><br><br><br><br><br><br></body></html>

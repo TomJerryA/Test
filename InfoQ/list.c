@@ -2,7 +2,10 @@
  <head></head> 
  <body>
   <div>
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/17.c">Salesforce lan&ccedil;a primeira API com Salesforce1</a>No evento Dreamforce que ocorreu recentemente em S&atilde;o Francisco, a Salesforce lan&ccedil;ou sua plataforma Salesforce1. As entregas iniciais focam no dispositivo m&oacute;vel e tem como objetivo melhorar a interface do usu&aacute;rio &quot;Touch&quot; por ter um conjunto mais rico de interfaces de programa&ccedil;&atilde;o de aplicativos.
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/18.c">Ser&aacute; que o Agile gera projetos suicidas?</a>Em um post recente no blog do Gartner, Thomas Murphy levantou se existe uma tend&ecirc;ncia dos projetos &aacute;geis tornarem-se cont&iacute;nuos ciclos suicidas.
+  </div> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/17.c">Salesforce lan&ccedil;a primeira API com Salesforce1</a>No evento Dreamforce que ocorreu recentemente em S&atilde;o Francisco, a Salesforce lan&ccedil;ou sua plataforma Salesforce1. As entregas iniciais focam no dispositivo m&oacute;vel e tem como objetivo melhorar a interface do usu&aacute;rio &quot;Touch&quot; por ter um conjunto mais rico de interfaces de programa&ccedil;&atilde;o de aplicativos. 
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/16.c">Desenvolvedores presos ao .NET 4.0</a>Sempre que uma nova vers&atilde;o do CLR &eacute; liberada, como no .NET 2.0 e 4.0, os desenvolvedores s&atilde;o relutantes a migrarem para novas vers&otilde;es. As atualiza&ccedil;&otilde;es no CLR trazem mudan&ccedil;as no comportamento em tempo de execu&ccedil;&atilde;o que podem quebrar o c&oacute;digo existente. Exemplos incluem a desastrosa propriedade DateTime.Kind ou cria&ccedil;&atilde;o de exceptions n&atilde;o capturadas em threads no background que terminem o processo. 
@@ -147,9 +150,6 @@
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/20.c">Google Espresso: Automatizando os testes de UI do Android nas nuvens</a>O Google abriu o c&oacute;digo fonte do Espresso, um framework de testes automatizado para Android que permite executar testes em m&aacute;quinas x86 na nuvem, em um ambiente multi-thread, resolvendo os problemas de concorr&ecirc;ncia associados aos testes de UI. 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/19.c">NetBeans 7.4 agora com suporte ao JDK 8 e Aplica&ccedil;&otilde;es Web Mobile</a>Depois de apresentado no JavaOne, a Oracle lan&ccedil;ou oficialmente o NetBeans 7.4. A nova vers&atilde;o permite que os desenvolvedores trabalhem com as vers&otilde;es pr&eacute;vias do JDK 8, adicionou suporte para a integra&ccedil;&atilde;o do HTML5 com aplica&ccedil;&otilde;es Java EE e fornece ferramentas para o desenvolvimento de aplica&ccedil;&otilde;es m&oacute;veis com o Apache Cordova. 
   </div>  
  </body>
 </html>

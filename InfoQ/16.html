@@ -1,7 +1,14 @@
-<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>Rackspace扩展托管云服务水平，助力DevOps推广</h3><p>目前，云计算平台提供商和<a href="http://www.openstack.org/">OpenStack</a>的创建者<a href="http://www.rackspace.com/">Rackspace</a>正在推广新的<a href="http://www.rackspace.com/devops/">DevOps自动化服务</a>。他们对基础设施和工作流自动化、监控和日志聚合以及基础设施代码的源代码控制等诸如此类的事情提供托管支持。</p>
-<p>Rackspace已经认识到，<a href="http://www.rackspace.com/blog/newsarticles/rackspace-announces-new-devops-automation-service-to-increase-speed-and-agility-for-software-developers-and-it/">DevOps工程师短缺是一大行业难题</a>。基于内部使用的技术和流程，他们精心创建了新的服务，以便帮助客户加速开发和IT建设。</p>
-<p>当客户登录到他们的DevOps自动化服务，Rackspace会与客户一起了解客户现有的基础设施。之后，Rackspace会接管编写<a href="http://getchef.com/">Chef</a>“食谱（cookbooks）”的工作，并帮助客户设置和操作通常需要的工具，从而在客户组织中逐渐形成DevOps文化。</p>
-<p>通过管理客户的Chef食谱和环境，Rackspace能够确保所有的环境保持同步，所有的代码处于版本控制管理之下。那样，Rackspace可以帮助客户完全自动化开发、过渡和生产环境。</p>
-<p>此外，Rackspace使用<a href="http://jenkins-ci.org/">Jenkins</a>和<a href="http://rundeck.org/">Rundeck</a>为自动化连续部署工作流提供帮助，使用<a href="https://github.com/etsy/statsd/">StatsD</a>、<a href="http://graphite.readthedocs.org/en/latest/">Graphite</a>和<a href="http://newrelic.com/">New Relic</a>监控性能指标，还使用<a href="http://logstash.net/">logstash</a>聚合日志，以便客户可以更深入地了解他们的应用程序基础设施。</p>
-<p>目前，DevOps自动化服务只提供给一定数量的具有Chef使用经验的美国客户，Rackspace计划在2014年初把它提供给每一位客户。</p>
-<p><b>查看英文原文：</b><b><a href="http://www.infoq.com/news/2014/01/rackspace-devops-service">Rackspace Aiding the Introduction of DevOps by Extending Their Managed Cloud Service Levels</a></b></p><br><br><br><br><br><br></body></html>
+<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>使用TPL Dataflow处理生产者/消费者问题</h3><p>在最简单的情况下，生产者/消费者场景很容易处理。生产者向一个线程安全的队列中推送消息，消费者从该队列中取消息。每一端可以有一个专用线程，这就行了。至少在并发症状出现之前是行得通的。</p>
+<p>并发症状是多方面的。你可能需要向多个消费者分发或广播消息，而不是只有一个消费者。因为性能原因，在执行某些操作之前，可能需要批量提交一些请求。也可能有多个步骤，而如果每个步骤用一个专用线程的话，负载会很繁重。或者是随着消息在线程间跳转，上下文切换会影响延迟。</p>
+<p><a href="http://msdn.microsoft.com/en-us/library/hh228603(v=vs.110).aspx">TPL Dataflow</a> 就是为解决这些问题而设计的。不同于使用线程，构成数据流的轻量级块（Block）按需使用和分享线程池中的线程。但是和任何新框架一样，我们有很多东西要学习，而且很多比较高级的选项可能会掩盖基础知识。</p>
+<p><img src="http://infoqstatic.com/resource/news/2014/01/Dataflow-PC/zh/resources/0128000.png" width="350" alt="" _href="img://null" _p="true" /></p>
+<p>为简化入门，Taskmatics的Dave Marini撰写了一篇文章——“使用流：利用TPL Dataflow结构简化生产者/消费者问题的处理（<a href="http://taskmatics.com/blog/simplifying-producer-consumer-processing-with-tpl-dataflow-structures/">Going with the Flow: Simplifying Producer/Consumer Processing with TPL Dataflow Structures</a>）”。Dave使用一个订单交付工作流（如上图所示），介绍了大多数场景需要的基本块：</p>
+<ul> 
+ <li>BufferBlock</li> 
+ <li>BroadcastBlock</li> 
+ <li>BatchBlock</li> 
+ <li>TransformManyBlock</li> 
+ <li>ActionBlock</li> 
+</ul>
+<p>这篇文章还介绍了一些容易被忽略的陷阱，比如刷新批处理和完成工作流等。</p>
+<p><strong>查看英文原文：</strong><a href="http://www.infoq.com/news/2014/01/Dataflow-PC">Producer/Consumer Processing with TPL Dataflow</a></p><br><br><br><br><br><br></body></html>
