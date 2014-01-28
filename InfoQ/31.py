@@ -1,15 +1,51 @@
-<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>スプリント計画ゲーム "Rocket to Mars"</h3><p><a target="_blank" href="http://www.infoq.com/news/2013/12/rocket-to-mars-sprint-planning"><em>原文(投稿日：2013/12/11)へのリンク</em></a></p>
+<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>Math.js: 多機能JavaScript Mathライブラリ</h3><p><a target="_blank" href="http://www.infoq.com/news/2014/01/mathjs"><em>原文(投稿日：2014/01/20)へのリンク</em></a></p>
 <div class="article_page_left news_container text_content_container"> 
  <div class="text_info"> 
-  <p>&quot;ほとんどのチームとそのプロダクトオーナは，より多くのストーリポイントを達成することがチームの唯一の責務だと信じています。しかしこれは，チームとプロダクトオーナの関係を完全に誤解したものだ，と私たちは考えます。&quot; こう語るのはDamien Thouvenin氏とPierrick Revol氏だ。両氏は <a href="http://www.xpday.net/">XP Days Benelux 2013 カンファレンス</a> の中で，チームとプロダクトオーナを対象としたスプリント計画ゲームを実施した。ストーリの創出，問題の調査，技術的負債の削減，あるいはそれらをトレーニングするために，スプリントの時間を投資することの可否を判断するものだ。</p> 
-  <p>&quot;Rocket to Mars (v2)&quot; は，スクラムのプロダクトオーナとマネージャ，およびその作業チームを対象に，アジャイルとリーン計画の実践について学習することを目的とした，共同作業方式のロールプレイングゲームである。火星に行くというミッションの下，ロケットを開発するための戦略の選択と採用を行う，このボードゲームに参加するチームは，ゲームを通じてさまざまな決定を行う – 詳細な分析を実施するか／コーディングに着手するか，専門的スキルを開発するか／ジェネラリストのスキルを選択するか，リファクタを行うか／ユーザストーを終了させてストーリポイントのバーンダウンを進めるか，といったことを判断するのだ。ゲームでは，８回のイテレーションでもっとも多くのポイントを獲得することを目標とする。ポイントはユーザストーリを完了することで得られるが，技術的負債を蓄積した場合は減点の対象となる。このゲームは <a href="http://www.agileplayground.org/gameorama/mission-to-mars-(en).aspx">Mission to Mars</a> ゲームを改良したものだ。</p> 
-  <p>開始時のチームメンバはひとつのアクティビティを行うスキルしか持っていないが，トレーニングによって新たなスキルを獲得できる。チームのメンバがスキルを持つと，それまでとは違ったアクティビティを実行できるようになる。チームはより多くの分野に能力を持つようになり，イテレーションで多くの作業ができるようになる。</p> 
-  <p>このゲームはPhilippe Kruchten教授の行った講演に影響を受けている。InfoQの記事 &quot;<a href="http://www.infoq.com/news/2010/05/what-color-backlog">what color is your backlog</a>&quot; でも取り上げた氏の講演は，進行中の作業の状況を決定付ける重要な意思決定を，早期に行うことの必要性について解説したものだ。この講演で述べられているのは，チームがすべてのスプリントにおいて，新たな機能の提供やバグ解決，あるいはトレーニング時間の投資の可否を判断しなければならないということだ。ゲームを主催した両氏はこれらの判断を，影響が短期的か長期的か (あるいは影響が可視か不可視か)，生産性を促進するものか妨害的リスクか，という視点から，４象限に分類する方法を紹介している:</p> 
-  <p><img src="http://www.infoq.com/resource/news/2014/01/rocket-to-mars-sprint-planning/ja/resources/Rocket-toMars-4-quadrants.jpg" alt="" _href="img://Rocket-toMars-4-quadrants.jpg" _p="true" />両氏は参加したチームに，ゲームのプレイから何を学んだかを尋ねた。あるチームは病気の影響によって自分たちのベロシティが低下したことを説明した。彼らはその問題に対して，対処策があるようには思っていなかったようだ。別のチームは，早い時期にトレーニングに投資したことが，次のスプリントの速度向上に有効であった点を説明した。その他には，ゲームを行うことで &quot;トレーニングや分析に投資することの本当の価値が分かった&quot;，&quot;実際のスプリントにおける問題が確認できた&quot;，&quot;スプリント計画におけるスプリントバックログとプロダクトバックログの違いが明確になった&quot;，&quot;ゲームは興味深く，たくさんのことを学んだ&quot; などといったフィードバックが寄せられた。</p> 
-  <p>報告の席でDamienは，この計画ゲームにおいて，機能や技術的負債やトレーニングを扱う戦略がどのようなものであったかを説明した:</p> 
+  <p>&nbsp;<a href="http://mathjs.org/">Math.js</a>はJavaScriptおよびNode.js向けのオープンソースMathライブラリで、数値、ビッグナンバー、複素数、単位、行列を扱うことができる。これは柔軟な式パーサも備えている。さらに詳しく知るため、InfoQはプロジェクトの創始者である<a href="http://josdejong.com/">Jos De Jong</a>氏にコンタクトした。</p> 
+  <p align="justify">Jos氏はプロジェクトの背景について、次のように説明する。</p> 
   <blockquote> 
-   <p>ゲームから皆が学んだことは，スプリント計画ではスプリントバックログにスタックできるユーザストーリの数だけを問題にしていてはならない，という点です。チームやPOの意識は，長期的な持続可能性の実現に向けられなければなりません。&quot;スプリント間&quot; という作業時間は存在しないので，これらのアクティビティはスプリントの中で実行する必要があります。技術的負債が暴発して行く手をふさぐ前に削減する，将来的なストーリやエピックに投資する，バックログに対処する，次のスプリントに向けての技術的選択肢を模索する，技術的ないしビジネス上のテーマに向けてトレーニングを実施する，といった作業が必要です。</p> 
+   <p align="justify">JavaScriptには、行列、複素数、統計などに使える優れたライブラリがすでにあります。でも、そこには先進的な数学処理をするための統合ソリューションが欠けていました。既存のライブラリの多くは<i>chained</i> APIを備えています。これは非常にわかりやすいのですが、ライブラリ自身が知っているデータ型しか受け付けません。そのため、統合が問題になります。行列のライブラリは複素数を扱えないといった具合に、組み合わせることができないのです。Math.jsのAPIは、JavaScriptのMathオブジェクトのAPIと組み込みオペレータ、各種入力を受け付けるスタティック関数、と同じです。Math.jsでは、先進的なデータ型、関数、定数をサポートするようAPIを拡張しています。</p> 
+   <p align="justify">Math.jsがアプリケーション開発における数学を、もっと簡単に、もっと楽しいものにすること、そして、開発者の世界とアカデミックな世界とのギャップを橋渡しをするのに役立つことを期待しています。</p> 
   </blockquote> 
-  <p>ゲームのプレイから得た結論は，氏の言うように &quot;ストーリポイントの設定，次の課題への投資，負債の解消，トレーニングの実施といったことに対して，チームがどれ程の投資を行うのが望ましいのか，チームとプロダクトオーナは議論する必要がある&quot; ということだ。</p> 
+  <p align="justify">Math.jsには3種類の使い方がある。</p> 
+  <ol> 
+   <li> 
+    <div>
+     スタティック関数と定数を使う（JavaScriptのMathオブジェクトのように） 
+     <pre>
+math.add(2, 3); &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;// 5 
+math.sqrt(-4); &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; // 2i 
+math.pow([[-1, 2], [3, 1]], 2); &nbsp;// [[7, 0], [0, 7]]</pre> 
+    </div> </li> 
+   <li> 
+    <div align="justify">
+     文字列式を評価する 
+     <pre>
+math.eval('1.2 * (2 +  4.5)'); //7.8
+math.eval('5.08 cm to inch'); //2 inch </pre> 
+    </div> </li> 
+   <li> 
+    <div align="justify">
+     chainingオペレーションを使う
+     <br /> 
+     <pre>
+math.select(3)
+    .add(4)
+    .multiply(2)
+    .done();      //14</pre> 
+    </div> </li> 
+  </ol> 
+  <p align="justify"><a href="http://mathjs.org/">Math.jsのWebサイト</a>や<a href="https://github.com/josdejong/mathjs/tree/master/examples/">そのドキュメント</a>にサンプルが載っている。</p> 
+  <p align="justify">Jos氏はこの2か月以内に、最初の安定バージョンである1.0をリリースするつもりだ。</p> 
+  <blockquote> 
+   <p align="justify">残っているのは、リファレンスドキュメントを書くこと、ユニットテストによるコードカバレッジを100%にすること、あちこちにある荒削りなところを解消することです。</p> 
+  </blockquote> 
+  <p align="justify">1.0ではAPIが安定化され、その後は最適化にフォーカスが移ることになる。Jos氏は性能改善のために、型付き配列、並行処理、asm.jsなどを使う可能性を検討している。</p> 
+  <p align="justify">なぜJos氏は、すでにNumPi/SciPiといったライブラリのあるPythonなどではなく、JavaScriptを選んだのだろうか。</p> 
+  <blockquote> 
+   <p align="justify">ここ最近、私たちはクラウドとWebアプリケーションへ大きく動いているのを目の当たりにしています。私もすっかり夢中になっています。ブラウザとJavaScriptエンジンはどんどん高速になり、この数年で、<a href="http://nodejs.org/">node.js</a>を使ってJavaScriptをサーバサイドで動かせるようになりました。これは多くの新たな可能性を広げ、その結果、JavaScriptエコシステムとその人気は<a href="http://resin.io/happy-18th-birthday-javascript/">爆発的に拡大</a>しました。JavaScriptは<i>これまでで</i>最もユビキタスな言語になっているように見えます。JavaScriptは完璧な言語から程遠いものですが、私はJavaScriptとそのコミュニティが大好きです。</p> 
+  </blockquote> 
+  <p align="justify">すでにmath.jsを使ったエンドユーザのプロジェクトがいくつもある。Jos氏のプロジェクト、<a href="http://mathnotepad.com/">mathnotepad</a>もmath.jsを使っていて、開発の初期段階にある。Math.jsは人気のある計算機プロジェクト、<a href="http://numerics.info/">numerics</a>でも使われている。</p> 
+  <p align="justify">Math.jsを始めるには、まずは<a href="https://github.com/josdejong/mathjs/blob/master/docs/getting_started.md">ドキュメント</a>を読んでみよう。&nbsp;</p> 
  </div> 
 </div><br><br><br><br><br><br></body></html>

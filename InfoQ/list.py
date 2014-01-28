@@ -2,10 +2,16 @@
  <head></head> 
  <body>
   <div>
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/29.py">OpenStackの4月リリース ‘Icehouse’ 詳細</a>OpenStackオープンソースクラウドの次期リリースであるIcehouseは，2014年4月の公開が予定されている。自動インストール(TripleO)，ベアメタル・プロビジョニング(Ironic)，キューおよび通知サービス(Marconi)，データベース・アズ・ア・サービス(Trove)が統合サービスとして提供される。Hadoopサポートの改良版(Savanna)もインキュベーションに含まれる予定だ。
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/31.py">Math.js: 多機能JavaScript Mathライブラリ</a>Math.jsはJavaScriptおよびNode.js向けのオープンソースMathライブラリで、数値、ビッグナンバー、複素数、単位、行列を扱うことができる。これは柔軟な式パーサも備えている。さらに詳しく知るため、InfoQはプロジェクトの創始者であるJos De Jong氏にコンタクトした。
   </div>
   <div>
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/28.py">TwitterがMapReduceストリーミングフレームワークSummingbirdをオープンソースに</a>Twitterは，Summingbirdと呼ぶ自社のMapReduceストリーミングフレームワークをオープンソースにした。Apache 2ライセンスで公開されるSummingbirdは，コードをバッチモード(Hadoop/MapReduceをベースとする)でもストリームモード(Stormをベースとする)でも，あるいはハイブリッドモードと呼ばれる２つの組み合わせでも同じように実行することができる，大規模データ処理システムだ。
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/30.py">さらにパフォーマンスを向上したDart 1.1</a>先日リリースされたDart 1.1は，dart2jsコンパイラのパフォーマンスが向上し，サーバ側の開発サポートが改善されている。言語自体はほとんどそのままだ。
+  </div> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/29.py">OpenStackの4月リリース ‘Icehouse’ 詳細</a>OpenStackオープンソースクラウドの次期リリースであるIcehouseは，2014年4月の公開が予定されている。自動インストール(TripleO)，ベアメタル・プロビジョニング(Ironic)，キューおよび通知サービス(Marconi)，データベース・アズ・ア・サービス(Trove)が統合サービスとして提供される。Hadoopサポートの改良版(Savanna)もインキュベーションに含まれる予定だ。 
+  </div> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/28.py">TwitterがMapReduceストリーミングフレームワークSummingbirdをオープンソースに</a>Twitterは，Summingbirdと呼ぶ自社のMapReduceストリーミングフレームワークをオープンソースにした。Apache 2ライセンスで公開されるSummingbirdは，コードをバッチモード(Hadoop/MapReduceをベースとする)でもストリームモード(Stormをベースとする)でも，あるいはハイブリッドモードと呼ばれる２つの組み合わせでも同じように実行することができる，大規模データ処理システムだ。 
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/27.py">Google Play Services 4.1がドライブサポートを追加</a>GoogleはPlay Servicesをアップデートして，ドライブやターンベースのマルチプレイヤゲーム，新たな広告ネットワークのサポートを追加した。 
@@ -144,12 +150,6 @@
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/34.py">Neo4j 2.0, 新しいブラウザとスキーマを装備</a>Neo Technologyは，Neo4j 2.0の一般提供を開始すると発表した。新しいグラフブラウザ，ノードラベル，オプショナルスキーマ，改良型Cypherを備える。 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/33.py">Xen Project，Mirage 0S 1.0をリリース</a>Mirage OSは &quot;クラウドオペレーティングシステム&quot; である。セキュリティ上の脆弱性回避と，単一目的の仮想アプライアンスの開発容易化による普及を目標とする。アプリケーションは関数型プログラム言語OCamlで開発され，Xen ハイパーバイザ上で直接動作するスタンドアロンの &quot;ユニカーネル&quot; にコンパイルされる。 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/32.py">カンバンで需要と能力のバランスをとる</a>カンバンを使うことで、組織は実施中の作業を把握し、需要と能力のバランスがとれるプルシステムを確立できる。まずは実際の能力がどの程度あるかを見極め、その能力の流れを可視化することだ。InfoQはFlorian Eisenberg氏にインタビューし、どのように需要と能力のバランスをとるかについて話を聞いた。 
   </div>   
  </body>
 </html>
