@@ -1,6 +1,12 @@
 <html>
  <head></head> 
- <body> 
+ <body>
+  <div>
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/37.htmlb">开发经理的职能</a> 开发经理要承担很多责任，但重要的是发布产品。担任这个职位需要很多技能，本文讨论了要成为一名能干的开发经理需要掌握哪些技能，哪些技能又能忽略。 
+  </div>
+  <div>
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/36.htmlb">对培育市场创新来说，安全管理API技术至关重要</a> Web服务以实时创新的方式，带来了杰出的市场投放速度。但同时它需要在如何保护和管理API方面采用全新的标准，并具备在B2B企业网关层面进行组织机构间通讯的特质。 
+  </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/35.htmlb">Windows Server基础架构云参考架构：硬件之上的设计</a> 毫无疑问，移动互联网、社交网络、大数据和云计算已经成为IT发展的四个大的趋势。其中云计算又为前三个提供了一个理想的平台。今天不仅互联网公司，很多传统行业的大中型企业也在建设自己的私有云。本文旨在介绍一个基于Windows Server 2012和System Center 2012 SP1构建基础架构云其硬件部分的参考架构。 
   </div> 
@@ -144,12 +150,6 @@
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/40.htmlb">云端监控和移动测试释疑——对话Just.me工程副总裁Kevin Nilson</a> 云端监控和服务器管理区别甚远。在2013上海JavaOne大会上，just.me工程部副总裁Kevin Nilson讲述了云端部署的必要措施，其中涵盖一些AWS平台管理操作时的注意事项。 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/39.htmlb">恒拓开源陈操谈去IOE方案的普及对独立开发商的机遇与挑战</a> 在2013年阿里云开发者大会上，恒拓开源技术副总监陈操跟InfoQ中文站编辑谈到了去IOE的普及状况，成本评估，推广心得，以及对独立开发商的机遇与挑战等话题。 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/38.htmlb">iOS开发工具——网络封包分析工具Charles</a> iOS开发工具系列文章第三篇，上一篇是 http://www.infoq.com/cn/articles/crashlytics-crash-statistics-tools 
-  </div> 
+  </div>   
  </body>
 </html>

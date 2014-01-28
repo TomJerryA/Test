@@ -1,11 +1,11 @@
 <html>
  <head></head> 
- <body>
-  <div>
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/31.py">Math.js: 多機能JavaScript Mathライブラリ</a>Math.jsはJavaScriptおよびNode.js向けのオープンソースMathライブラリで、数値、ビッグナンバー、複素数、単位、行列を扱うことができる。これは柔軟な式パーサも備えている。さらに詳しく知るため、InfoQはプロジェクトの創始者であるJos De Jong氏にコンタクトした。
-  </div>
-  <div>
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/30.py">さらにパフォーマンスを向上したDart 1.1</a>先日リリースされたDart 1.1は，dart2jsコンパイラのパフォーマンスが向上し，サーバ側の開発サポートが改善されている。言語自体はほとんどそのままだ。
+ <body> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/31.py">Math.js: 多機能JavaScript Mathライブラリ</a>Math.jsはJavaScriptおよびNode.js向けのオープンソースMathライブラリで、数値、ビッグナンバー、複素数、単位、行列を扱うことができる。これは柔軟な式パーサも備えている。さらに詳しく知るため、InfoQはプロジェクトの創始者であるJos De Jong氏にコンタクトした。 
+  </div> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/30.py">さらにパフォーマンスを向上したDart 1.1</a>先日リリースされたDart 1.1は，dart2jsコンパイラのパフォーマンスが向上し，サーバ側の開発サポートが改善されている。言語自体はほとんどそのままだ。 
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/29.py">OpenStackの4月リリース ‘Icehouse’ 詳細</a>OpenStackオープンソースクラウドの次期リリースであるIcehouseは，2014年4月の公開が予定されている。自動インストール(TripleO)，ベアメタル・プロビジョニング(Ironic)，キューおよび通知サービス(Marconi)，データベース・アズ・ア・サービス(Trove)が統合サービスとして提供される。Hadoopサポートの改良版(Savanna)もインキュベーションに含まれる予定だ。 
@@ -150,6 +150,6 @@
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/34.py">Neo4j 2.0, 新しいブラウザとスキーマを装備</a>Neo Technologyは，Neo4j 2.0の一般提供を開始すると発表した。新しいグラフブラウザ，ノードラベル，オプショナルスキーマ，改良型Cypherを備える。 
-  </div>   
+  </div> 
  </body>
 </html>
