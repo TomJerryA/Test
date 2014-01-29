@@ -1,6 +1,9 @@
 <html>
  <head></head> 
- <body> 
+ <body>
+  <div>
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/45.java">Encrypting Files on Android with Facebook Conceal</a>Facebook has open sourced Conceal, a set of Java APIs for file encryption and authentication on Android. Conceal uses a subset of OpenSSL’s algorithms and predefined options in order to keep the library smaller, currently being 85KB.
+  </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/44.java">Visual F# Tools 3.1.1 Adds Visual Studio Express 2013 Desktop and Web Versions</a>Visual F# Tools 3.1.1 has been released with support for both desktop and web versions of Visual Studio 2013 Express edition in addition to the ability to install it directly from PowerShell prompt. 
   </div> 
@@ -147,9 +150,6 @@
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/49.java">LINQ To Logs And Traces</a>Microsoft Open Technologies recently announced the release of Tx, an open source project that can help debugging using Logs/Traces, and building of real-time monitoring and alerting systems. 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/48.java">Pair Coaching with Agile Teams</a>Agile coaches can coach in pairs instead of coaching individually. Each coach will focus on different aspects of coaching. As every coach has specific experience and skills they can complement each other. Two coaches can collaboratively help individuals or teams to learn and improve when adopting agile. 
-  </div> 
+  </div>  
  </body>
 </html>
