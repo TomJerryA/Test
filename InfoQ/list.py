@@ -1,6 +1,9 @@
 <html>
  <head></head> 
- <body> 
+ <body>
+  <div>
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/32.py">Hadoop-as-a-Service提供のQuboleがGoogle Compute Engine上で稼働可能に</a>マネージドHadoop-as-a-Serviceを提供するQuboleがGoogle Compute Engine (GCE)上で利用可能となった。QuboleはこれまでAmazon社のAWS上のみで利用可能だったが、この発表はGoogle Compute Engineの一般提供が開始されたほんの数日後に行われた。
+  </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/31.py">Math.js: 多機能JavaScript Mathライブラリ</a>Math.jsはJavaScriptおよびNode.js向けのオープンソースMathライブラリで、数値、ビッグナンバー、複素数、単位、行列を扱うことができる。これは柔軟な式パーサも備えている。さらに詳しく知るため、InfoQはプロジェクトの創始者であるJos De Jong氏にコンタクトした。 
   </div> 
@@ -147,9 +150,6 @@
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/34.py">タッチ対応の円形メニューを作成可能なRadRadiaMenu</a>Telerik RadControls for Windows 8 XAML Q3 2013に含まれるRadRadioMenuを使えば，デスクトップとタッチプラットフォームの両方で円形メニューを開発できる。コントロールはスタンドアロンとコンテキスト，いずれのメニューにも対応する。 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/34.py">Neo4j 2.0, 新しいブラウザとスキーマを装備</a>Neo Technologyは，Neo4j 2.0の一般提供を開始すると発表した。新しいグラフブラウザ，ノードラベル，オプショナルスキーマ，改良型Cypherを備える。 
-  </div> 
+  </div>  
  </body>
 </html>
