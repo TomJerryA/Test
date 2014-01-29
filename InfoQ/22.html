@@ -1,18 +1,33 @@
-<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>RESTful的Web服务框架Jersey 2.5发布</h3><p>RESTful的Web服务框架<a href="https://jersey.java.net/download.html">Jersey</a>近期发布了2.5版，支持最新版的<a href="http://www.eclipse.org/jetty/">Jetty</a>Web服务器，升级了Apache Connector，并修正了多个缺陷。</p>
-<p>Jersey框架基于Java，包括如下<a href="https://jersey.java.net/release-notes/2.5.html">改变</a>：</p>
-<ul> 
- <li>支持Jetty 9 Web服务器和servlet容器。这包括一个基于Jetty HTTP和Servlet容器的Jersey Server容器，以及一个使用Jetty Fluent Client API支持同步和异步客户端调用的Jersey Client连接器。</li> 
- <li>现在的Apache Connector使用<a href="http://hc.apache.org/httpcomponents-client-4.3.x/index.html">Apache HttpClient 4.3</a>, 这本身就是一个大规模的重构，还包含了很多<a href="http://www.apache.org/dist/httpcomponents/httpclient/RELEASE_NOTES-4.3.x.txt">新的特性和改进</a>。</li> 
- <li>修复了超过60个bug，包括无法正确读取包含多个值的HTTP头，和通过包扫描缺失组件来进行组件注册。</li> 
-</ul>
-<p>在6月份主版本<a href="http://www.infoq.com/news/2013/06/Jersey_2_0_released">2.0发布</a>之后，发生的变化包括：</p>
-<ul> 
- <li><a href="http://en.wikipedia.org/wiki/OAuth">OAuth1</a>可作为消费者或服务提供者，而<a href="http://oauth.net/2/">OAuth2</a>只能作为消费者。</li> 
- <li>对于每个请求，客户端都可以配置或重写连接器属性。</li> 
- <li>在使用<a href="https://grizzly.java.net/">Grizzly</a>或Apache Connector时支持HTTPS。</li> 
- <li>支持<a href="http://projects.spring.io/spring-framework/">Spring 3</a>，可以将Spring管理的bean注入到Jersey管理的资源类中，同时可以通过Spring管理JAX-RS资源类。</li> 
- <li>包括2.5版在内，一共做出了30项改进并修复了超过160个bug。</li> 
-</ul>
-<p>同时<a href="https://jersey.java.net/documentation/latest/">文档</a>也得到了更新，包括从早期2.*迁移到2.5时会<a href="https://jersey.java.net/documentation/latest/migration.html">产生的问题</a>。</p>
-<p><a href="https://jax-rs-spec.java.net/nonav/2.0/apidocs/index.html">JAX-RS 2.0 API规范</a>（<a href="http://jcp.org/en/jsr/detail?id=339">JSR 339</a>）的实现参考了Jersey 2.5。Jersey 2.5还是<a href="https://glassfish.java.net/">GlassFish</a>应用服务器项目的成员。它取得了两家OSI批准的（开源）许可证书。</p>
-<p><strong>原文英文链接：</strong><a href="http://www.infoq.com/news/2013/12/Jersey-2-5-released">RESTful Web Services Framework Jersey 2.5 Released</a></p><br><br><br><br><br><br></body></html>
+<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>在Android上使用Facebook Concel对文件加密</h3><p>Facebook将它的<a href="http://facebook.github.io/conceal/">Conceal</a>转为开源项目。Conceal是一套用于Android上的文件加密和鉴权的Java API，它使用<a href="http://www.openssl.org/">OpenSSL</a>算法的子集以及一些预先定义的选项，以便让库保持在较小的体积——目前仅有85KB大小。</p>
+<p>对于比较古老的Android设备——从Froyo到Jelly Bean——据Facebook表示，该库在这些设备上的性能要优于Android提供的原生支持。</p>
+<p><img src="http://infoqstatic.com/resource/news/2014/01/encrypt-android-conceal/zh/resources/0129000.png" width="600" _href="img://null" _p="true" alt="" /></p>
+<p>上图中的基准测试，展示了在Galaxy Y终端上，对原生Android算法（ES-CTR-HMAC-SHA1）、Bouncycastle（(AES-GCM）和Concea进行对比的结果l。</p>
+<p>Google在KitKat中引入了对OpenSSL的支持，但是其中使用的默认密码流则“表现差强人意”——<a href="http://facebook.github.io/conceal/faq/">在Facebook看来</a>，“当使用我们的密码流（参阅<a href="https://github.com/facebook/conceal/blob/master/java/com/facebook/crypto/streams/BetterCipherInputStream.java">BetterCipherInputStream.java</a>文件）来替换它时，将使得默认实现能够与Conceal相媲美。”</p>
+<p>以下代码片段展现了如何使用Conceal对文件进行加密：</p>
+<pre>
+//使用秘钥链和原生库的默认实现，来创建一个新的加密对象
+Crypto crypto = new Crypto(
+  new SharedPrefsBackedKeyChain(context),
+  new SystemNativeCryptoLibrary());
+
+//检查加密功能是否可用
+//如果Android没有正确载入库，则此步骤可能失败
+if (!crypto.isAvailable()) {
+  return;
+}
+
+OutputStream fileStream = new BufferedOutputStream(
+  new FileOutputStream(file));
+
+//创建输出流，当数据写入流的时候进行加密，并将加密后的数据输出到文件
+OutputStream outputStream = crypto.getCipherOutputStream(
+  fileStream,
+  entity);
+
+//将纯文本写入其中
+outputStream.write(plainText);
+outputStream.close();
+</pre>
+<p>Conceal可以用来加密大型文件，Facebook用它来加密手机/平板电脑SD卡中的数据和图片。</p>
+<p>在<a href="https://github.com/facebook/conceal/tree/master/native/third-party/patches/">Conceal的GitHub页面</a>上，还提供了基于OpenSSL构建相似库的<a href="https://github.com/facebook/conceal/tree/master/native/third-party/patches/">指南</a>。</p>
+<p><strong>查看英文原文：</strong><a href="http://www.infoq.com/news/2014/01/encrypt-android-conceal">Encrypting Files on Android with Facebook Conceal</a></p><br><br><br><br><br><br></body></html>

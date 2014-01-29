@@ -1,4 +1,18 @@
-<p>Visual F# Tools 3.1.1 has been released with support for both desktop and web versions of Visual Studio Express 2013 Express. It also provides support for installation in a system which doesn't have Visual Studio. In such a case, the compiler, runtime and F# interactive will be automatically deployed without IDE tooling. <br /> <br /> According to Microsoft F# product team, the above feature has been implemented to enable you to use F# 3.1 in build server and virtual machine scenarios. Moreover, developers can also make use of the latest release while editing clients such as Emacs and Xamarin Studio.</p>
-<p>The installation of F# tools 3.1 can be automated using the following command direcly from a PowerShell session<br /> <br /> <code> $webclient = New-Object Net.WebClient<br /> $url = 'http://download.microsoft.com/download/3/0/A/30A5D6DD-5B5C-4E06-B331-A88AA0B53150/FSharp_Bundle.exe'<br /> $webclient.DownloadFile($url, &quot;$pwd\FSharp_Bundle.exe&quot;)<br /> .\FSharp_Bundle.exe /install /quiet </code></p>
-<p>Microsoft is slated to include F# tools along with the upcoming releases of Visual Studio. In order to install Visual F# Tools 3.1.1, you require either Windows 7 or 8 in addition to Visual Studio 2013 Ultimate, Premium, Professional, Desktop and Web Express. If you install the tools without Visual Studio then you need to install additional frameworks such as MSBuild 12.0, .NET Framework 4.5.1 and the Windows 7 and 8.1 SDKs.</p>
-<p>After the completion of installation, you can locate the required DLL and EXE files of the tools package from Program Files (x86)\Microsoft SDKs\F#\3.1\Framework\v4.0 folder.<br /> <br /> The official download page doesn't mention any reference to Visual Studio 2012 as one of the requirement for the installation of F# tools 3.1. It remains to be see as to whether the tools provide support for Visual Studio 2012.</p>
+<p>Developer can now deploy Chrome apps on Android and iOS with Apache Cordova 3.3.0.</p>
+<p>Six weeks after Adobe made available PhoneGap 3.3, Cordova 3.3.0 was made available on PhoneGap Build. Beside supporting Android KitKat, Cordova 3.3.0 adds support for remote webview debugging from Chrome on Android, &nbsp;and remote debugging with Safari&nbsp;on iOS. The release notes contain details for each operating system supported: iOS, Android, Windows. Cordova 2.5.0 and 2.7.0 will be deprecated in the near future, Blackberry, WebOS, or Symbian developer being invited to use version 2.9.0.</p>
+<p>Back in September, Google announced the possibility to create Chrome applications that can be deployed to the desktop (samples of such apps can be found here). These apps can run on Windows, Mac or Linux either in online or offline mode. Recently, Google has expanded Chrome apps’ reach to mobile platforms, Android and iOS, via Cordova 3.3.0.</p>
+<p>To create their Chrome app for mobile, developers need to use a tool-chain based on Node.js, JDK 7, Android SDK 4.4.2, and Apache Ant for Android, or Xcode 5, ios-deploy, ios-sim for iOS, and use Cordova to wrap the application in a native shell, then publish it on Google Play or Apple App Store.</p>
+<p>The following Chrome APIs have been made available for mobile apps:</p>
+<blockquote> 
+ <ul> 
+  <li>identity - sign-in users using OAuth2 without prompting for passwords</li> 
+  <li>payments (currently Android only) - sell virtual goods within your mobile app</li> 
+  <li>pushMessaging - push messages to your app from your server</li> 
+  <li>sockets - send and receive data over the network using TCP and UDP</li> 
+  <li>notifications (currently Android only) - send rich notifications from your mobile app</li> 
+  <li>storage - store and retrieve key-value data locally</li> 
+  <li>syncFileSystem - store and retrieve files backed by Google Drive</li> 
+  <li>alarms - run tasks periodically</li> 
+ </ul> 
+</blockquote>
+<p>Beside those, developers can make use of a large number of Cordova APIs&nbsp;providing wide access to native functionality.</p>

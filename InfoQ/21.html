@@ -1,7 +1,14 @@
-<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>Stimulsoft Reports.Fx 2013.3新增 Email、AutoPageScale支持以及图表组件Funnel Weighted Slices</h3><p>Stimulsoft发布Reprots.Fx 2013.3，有<a href="http://www.stimulsoft.com/en/products/reports-fx-flex">Adobe Flex</a>、<a href="http://www.stimulsoft.com/en/products/reports-fx-php">PHP</a>和<a href="http://www.stimulsoft.com/en/products/reports-fx-java">Java</a>三种版本，支持通过e-mail发送报告。发送时，需要填写e-mail地址、主题和正文三个选项。该版本还新增了一个图表组件——Funnel Weighted Slices，它将数据显示在高度不同的块中，用户可以用它来分析销售水平。</p>
-<p><img _p="true" _href="img://null" src="http://infoqstatic.com/resource/news/2014/01/stimulsoft-reports-fx-2013-3/zh/resources/0115000.png" alt="" /></p>
-<p>最新版本还包含AutoPageScale选项，它提供了打印时在整个页面区域自动缩放报告页的能力。该功能在查看器中默认是启用的，不管纸张尺寸大小，它都可以确保报告打印在整个页面上。不过，如果打印项目时不需要遵循纸张尺寸大小，用户可以禁用这个选项。</p>
-<p>Reports.Fx 2013.3包含一个新的Band Filter选项。在将报告导出成CSV格式的过程中，开发人员可以对报告应用相关的过滤器。</p>
-<p><img _p="true" _href="img://null" src="http://infoqstatic.com/resource/news/2014/01/stimulsoft-reports-fx-2013-3/zh/resources/0115001.png" alt="" /></p>
-<p>Data only选项表示只有像表格和层次“区段（band）”这样的数据区段才会被导出。而Data and Headers/Footers选项不仅允许开发人员导出数据区段，还能导出标题和注脚，All Bands选项则提供一种导出所有报告区段的能力。</p>
-<p><b>查看英文原文：</b><b><a href="http://www.infoq.com/news/2014/01/stimulsoft-reports-fx-2013-3">Stimulsoft Reports.Fx 2013.3 Adds Email, AutoPageScale Support Along with Funnel Weighted Slices</a></b></p><br><br><br><br><br><br></body></html>
+<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>F#Tools 3.1.1增加对用于桌面和网络开发的Visual Studio 2013速成版的支持</h3><p>已经发布的<a href="http://www.microsoft.com/en-us/download/details.aspx?id=41654">Visual F# Tools 3.1.1</a>版本，将同时支持用于桌面和网络开发的Visual Studio 2013 速成版。用户还可以将它安装在没有Visual Studio的系统中。在后一种情况下，编译器、运行时以及F# Interactive将自动部署，而不会涉及到IDE工具。</p>
+<p>微软的F#产品团队表示，现在已经实现了以上特性，以支持开发者在构建服务器和虚拟机的情境中使用F# 3.1。此外，开发者还能够在诸如Emacs和Xamarin Studio等编辑客户端中，使用F#的最新版本。</p>
+<p>开发者可以直接在PowerShell会话中，使用如下命令，来自动完成F# Tools 3.1.1的安装：</p>
+<pre>
+$webclient = New-Object Net.WebClient
+$url = 'http://download.microsoft.com/download/3/0/A/30A5D6DD-5B5C-
+4E06-B331-A88AA0B53150/FSharp_Bundle.exe'
+$webclient.DownloadFile($url, &quot;$pwd\FSharp_Bundle.exe&quot;)
+.\FSharp_Bundle.exe /install /quiet
+</pre>
+<p>微软预计将在即将发布的Visual Studio中提供F#工具。要安装Visual F# Tools3.1.1，开发者需要Windows 7或8之一，以及Visual Studio 2013旗舰版、高级版、专业版、用于桌面和网络开发的速成版。如果想要在没有Visual Studio的环境中安装该工具，开发者则需要安装额外的框架，例如MSBuild 12.0、.NET Framework 4.5.1和Windows 7/8.1 SDK。</p>
+<p>安装完成后，开发者可以在Program Files(x86)\ Microsoft SDKs\F#\3.1\Framework\v4.0文件夹中找到所需的工具包中的DLL和EXE文件。</p>
+<p>官方下载页面中，并未将Visual Studio 2012列为F# Tools 3.1.1的安装要求。它是否能够支持Visual Studio 2012还有待进一步了解。</p>
+<p><strong>查看英文原文：</strong><a href="http://www.infoq.com/news/2014/01/visual-fsharp-tools-3-1-1">Visual F# Tools 3.1.1 Adds Visual Studio Express 2013 Desktop and Web Versions</a></p><br><br><br><br><br><br></body></html>

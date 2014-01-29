@@ -1,6 +1,9 @@
 <html>
  <head></head> 
- <body> 
+ <body>
+  <div>
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/7.javab">Kanban’s service orientation agenda</a> This second article in the series on the Kanban “nine values, three agendas” model explores the service orientation agenda. Building on the sustainability agenda, this agenda adds the values of customer focus, flow, and leadership. Individually, each of these brings some challenge; collectively, they can represent to a significant sense of direction, a much more outward-looking approach to change. 
+  </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/6.javab">The Neuroscience of Agile Leadership</a> Why does having the overview and influence make us feel rewarded? How do we adapt better to change? And how can we shift mindsets to become more Agile? Find out from breakthrough research in neuroscience why all the &quot;soft, people stuff&quot; around Agile works, how we can help people adapt better to change, and how we can influence real mindset shifts in an organization. 
   </div> 
@@ -147,9 +150,6 @@
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/9.javab">Agility, Big Data, and Analytics</a> How do you bringing agility into big data analytics? Learn what makes analytics uniquely different than application development, and how to adapt agile principles and practices to the nuances of analytics. Examine how the disciplines of data science and software development complement one another, and how these intersect in an agile project environment. 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/8.javab">Contrasting Backbone and Angular</a> Victor Savkin presents in detail the pros and cons of using Backbone.js and Angular.js to create web applications, comparing the two frameworks with each other. 
-  </div> 
+  </div>  
  </body>
 </html>
