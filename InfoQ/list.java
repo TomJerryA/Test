@@ -1,6 +1,9 @@
 <html>
  <head></head> 
- <body> 
+ <body>
+  <div>
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/47.java">Pieter Gheysens on Visual Studio Release Management</a>Visual Studio Release Management enables you to create workflows using Visual Studio and Team Foundation Server. In an exclusive interview with InfoQ, Pieter Gheysens shares more information about VSRM.
+  </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/46.java">Deploying Chrome Apps on Android&amp;iOS with Cordova 3.3.0</a>Developer can now deploy Chrome apps on Android and iOS with Apache Cordova 3.3.0. 
   </div> 
@@ -147,9 +150,6 @@
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/1.java">Carrier IQ's Magnolia Mansourkia Mobley Sets the Record Straight About Mobile Analytic Products</a>In 2011 Trevor Eckhart found logs on his device that he believed were associated with Carrier iQ data. Our response at the time, which has since been confirmed by a detailed FTC investigation, is that the data collection logs were associated with and used by the manufacturer of the device, not Carrier iQ. They were not Carrier iQ logs. 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/0.java">XAML Spy 2.0.5 Adds Add App Wizard and Feature Improvements</a>XAML Spy has released updates for the month of January with support for Add App Wizard with the ability to navigate installed apps by selecting the Show All Apps button in the XAML Spy Explorer toolbar. The latest release also enables you to activate and disable XAML Spy for multiple projects at a time. 
-  </div> 
+  </div>  
  </body>
 </html>
