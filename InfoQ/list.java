@@ -1,8 +1,8 @@
 <html>
  <head></head> 
- <body>
-  <div>
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/46.java">Deploying Chrome Apps on Android&amp;iOS with Cordova 3.3.0</a>Developer can now deploy Chrome apps on Android and iOS with Apache Cordova 3.3.0.
+ <body> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/46.java">Deploying Chrome Apps on Android&amp;iOS with Cordova 3.3.0</a>Developer can now deploy Chrome apps on Android and iOS with Apache Cordova 3.3.0. 
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/45.java">Encrypting Files on Android with Facebook Conceal</a>Facebook has open sourced Conceal, a set of Java APIs for file encryption and authentication on Android. Conceal uses a subset of OpenSSL’s algorithms and predefined options in order to keep the library smaller, currently being 85KB. 
@@ -150,6 +150,6 @@
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/0.java">XAML Spy 2.0.5 Adds Add App Wizard and Feature Improvements</a>XAML Spy has released updates for the month of January with support for Add App Wizard with the ability to navigate installed apps by selecting the Show All Apps button in the XAML Spy Explorer toolbar. The latest release also enables you to activate and disable XAML Spy for multiple projects at a time. 
-  </div>  
+  </div> 
  </body>
 </html>
