@@ -1,6 +1,9 @@
 <html>
  <head></head> 
- <body> 
+ <body>
+  <div>
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/8.javab">Building Applications With Hadoop</a> When building applications using Hadoop, it is common to have input data from various sources coming in various formats. In his presentation, “New Tools for Building Applications on Apache Hadoop”, Eli Collins overviews how to build better products with Hadoop and various tools that can help, such as Apache Avro, Apache Crunch, Cloudera ML and the Cloudera Development Kit. 
+  </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/7.javab">Kanban’s service orientation agenda</a> This second article in the series on the Kanban “nine values, three agendas” model explores the service orientation agenda. Building on the sustainability agenda, this agenda adds the values of customer focus, flow, and leadership. Individually, each of these brings some challenge; collectively, they can represent to a significant sense of direction, a much more outward-looking approach to change. 
   </div> 
@@ -147,9 +150,6 @@
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/10.javab">Building a RESTful Web Service with Spring Boot to Access Data in an Aerospike Cluster</a> Spring Boot allows you to build Spring based applications with little effort on your part. Aerospike is a distributed and replicated in-memory database that is ACID compliant. This article will take you through creating a simple RESTful web service with Spring Boot and Aerospike. 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/9.javab">Agility, Big Data, and Analytics</a> How do you bringing agility into big data analytics? Learn what makes analytics uniquely different than application development, and how to adapt agile principles and practices to the nuances of analytics. Examine how the disciplines of data science and software development complement one another, and how these intersect in an agile project environment. 
-  </div> 
+  </div>  
  </body>
 </html>

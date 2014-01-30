@@ -2,7 +2,10 @@
  <head></head> 
  <body>
   <div>
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/48.java">Greg Young on Using Complex Event Processing</a>Complex Event Processing, CEP, can be very useful for problems that have to do with time e.g. querying over historical data when you want to correlate things that have happened at different times, Greg Young explained in a recent presentation.
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/49.java">Google Sells Motorola to Lenovo</a>Google has sold Motorola Mobility to Lenovo for $2.91B, and keeps most of the patents in their portfolio while Lenovo gets 2,000 patents. Google may lose money on this deal but the Android ecosystem benefits.
+  </div> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/48.java">Greg Young on Using Complex Event Processing</a>Complex Event Processing, CEP, can be very useful for problems that have to do with time e.g. querying over historical data when you want to correlate things that have happened at different times, Greg Young explained in a recent presentation. 
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/47.java">Pieter Gheysens on Visual Studio Release Management</a>Visual Studio Release Management enables you to create workflows using Visual Studio and Team Foundation Server. In an exclusive interview with InfoQ, Pieter Gheysens shares more information about VSRM. 
@@ -147,9 +150,6 @@
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/3.java">Google Play Services 4.1 Adds Drive Support</a>Google has updated Play Services to include support for Drive, turn-based multiplayer games and more ad networks. 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/2.java">Rackspace Aiding the Introduction of DevOps by Extending Their Managed Cloud Service Levels</a>Rackspace, cloud computing platform provider and founder of OpenStack, is currently introducing its new DevOps Automation Service. They offer managed support for things like infrastructure and workflow automation, monitoring and log aggregation, and source control for infrastructure code. 
   </div>  
  </body>
 </html>
