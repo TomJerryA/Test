@@ -1,8 +1,8 @@
 <html>
  <head></head> 
- <body>
-  <div>
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/19.c">Cocos2D V3 com editor para cria&ccedil;&atilde;o de jogos, recursos de f&iacute;sica e portabilidade de iOS para Android</a>Foi liberada a vers&atilde;o Release Candidate do Cocos2D V3, que agora inclui tamb&eacute;m o editor para jogos SpriteBuilder, integra&ccedil;&atilde;o com o Chipmunk2D e suporte &agrave; portabilidade de iOS para Android.
+ <body> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/19.c">Cocos2D V3 com editor para cria&ccedil;&atilde;o de jogos, recursos de f&iacute;sica e portabilidade de iOS para Android</a>Foi liberada a vers&atilde;o Release Candidate do Cocos2D V3, que agora inclui tamb&eacute;m o editor para jogos SpriteBuilder, integra&ccedil;&atilde;o com o Chipmunk2D e suporte &agrave; portabilidade de iOS para Android. 
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/18.c">Ser&aacute; que o Agile gera projetos suicidas?</a>Em um post recente no blog do Gartner, Thomas Murphy levantou se existe uma tend&ecirc;ncia dos projetos &aacute;geis tornarem-se cont&iacute;nuos ciclos suicidas. 
@@ -150,6 +150,6 @@
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/21.c">Crescente da Programa&ccedil;&atilde;o Reativa</a>A Programa&ccedil;&atilde;o Reativa baseia-se em fluxo de dados e propaga&ccedil;&atilde;o de mudan&ccedil;as, com o modelo de execu&ccedil;&atilde;o de uma linguagem de programa&ccedil;&atilde;o propagando automaticamente as mudan&ccedil;as atrav&eacute;s do fluxo de dados. Com a popularidade de arquiteturas orientada a eventos, escal&aacute;veis e interativas, tanto do lado do cliente quanto do servidor, o conceito de &quot;reatividade&quot; est&aacute; ganhando cada vez mais aten&ccedil;&atilde;o. 
-  </div>  
+  </div> 
  </body>
 </html>

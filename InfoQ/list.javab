@@ -1,7 +1,7 @@
 <html>
  <head></head> 
- <body>
-  <div>
+ <body> 
+  <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/8.javab">Building Applications With Hadoop</a> When building applications using Hadoop, it is common to have input data from various sources coming in various formats. In his presentation, “New Tools for Building Applications on Apache Hadoop”, Eli Collins overviews how to build better products with Hadoop and various tools that can help, such as Apache Avro, Apache Crunch, Cloudera ML and the Cloudera Development Kit. 
   </div> 
   <div> 
@@ -150,6 +150,6 @@
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/10.javab">Building a RESTful Web Service with Spring Boot to Access Data in an Aerospike Cluster</a> Spring Boot allows you to build Spring based applications with little effort on your part. Aerospike is a distributed and replicated in-memory database that is ACID compliant. This article will take you through creating a simple RESTful web service with Spring Boot and Aerospike. 
-  </div>  
+  </div> 
  </body>
 </html>
