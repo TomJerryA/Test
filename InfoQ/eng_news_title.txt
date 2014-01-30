@@ -1,1 +1,1 @@
-Management Buy-in and Support in Agile Adoption
+Android++ with Zero Hardware Restrictions, MSBuild, LLVM, GCC, Integrated GDB Debugging
