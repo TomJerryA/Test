@@ -1,6 +1,9 @@
 <html>
  <head></head> 
- <body> 
+ <body>
+  <div>
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/38.htmlb">Scrum Master：职位还是角色？</a> Scrum交付团队需要专职Scrum Master。但在团队成长起来以后，是否仍然需要这样一个专职Scrum Master呢？本文提出了另一个方案。 
+  </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/37.htmlb">开发经理的职能</a> 开发经理要承担很多责任，但重要的是发布产品。担任这个职位需要很多技能，本文讨论了要成为一名能干的开发经理需要掌握哪些技能，哪些技能又能忽略。 
   </div> 
@@ -147,9 +150,6 @@
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/41.htmlb">书评：Vagrant up and running</a> Mitchell Hashimoto的新书 &quot;Vagrant up and running&quot; 涵盖了Vagrant从基础用法到功能扩展的方方面面。 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/40.htmlb">云端监控和移动测试释疑——对话Just.me工程副总裁Kevin Nilson</a> 云端监控和服务器管理区别甚远。在2013上海JavaOne大会上，just.me工程部副总裁Kevin Nilson讲述了云端部署的必要措施，其中涵盖一些AWS平台管理操作时的注意事项。 
-  </div> 
+  </div>  
  </body>
 </html>
