@@ -1,7 +1,7 @@
 <html>
  <head></head> 
- <body>
-  <div>
+ <body> 
+  <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/38.htmlb">Scrum Master：职位还是角色？</a> Scrum交付团队需要专职Scrum Master。但在团队成长起来以后，是否仍然需要这样一个专职Scrum Master呢？本文提出了另一个方案。 
   </div> 
   <div> 
@@ -150,6 +150,6 @@
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/41.htmlb">书评：Vagrant up and running</a> Mitchell Hashimoto的新书 &quot;Vagrant up and running&quot; 涵盖了Vagrant从基础用法到功能扩展的方方面面。 
-  </div>  
+  </div> 
  </body>
 </html>

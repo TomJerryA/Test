@@ -1,1 +1,1 @@
-Deploying Chrome Apps on Android&iOS with Cordova 3.3.0
+Greg Young on Using Complex Event Processing

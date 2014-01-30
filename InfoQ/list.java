@@ -1,6 +1,9 @@
 <html>
  <head></head> 
- <body> 
+ <body>
+  <div>
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/48.java">Greg Young on Using Complex Event Processing</a>Complex Event Processing, CEP, can be very useful for problems that have to do with time e.g. querying over historical data when you want to correlate things that have happened at different times, Greg Young explained in a recent presentation.
+  </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/47.java">Pieter Gheysens on Visual Studio Release Management</a>Visual Studio Release Management enables you to create workflows using Visual Studio and Team Foundation Server. In an exclusive interview with InfoQ, Pieter Gheysens shares more information about VSRM. 
   </div> 
@@ -147,9 +150,6 @@
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/2.java">Rackspace Aiding the Introduction of DevOps by Extending Their Managed Cloud Service Levels</a>Rackspace, cloud computing platform provider and founder of OpenStack, is currently introducing its new DevOps Automation Service. They offer managed support for things like infrastructure and workflow automation, monitoring and log aggregation, and source control for infrastructure code. 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/1.java">Carrier IQ's Magnolia Mansourkia Mobley Sets the Record Straight About Mobile Analytic Products</a>In 2011 Trevor Eckhart found logs on his device that he believed were associated with Carrier iQ data. Our response at the time, which has since been confirmed by a detailed FTC investigation, is that the data collection logs were associated with and used by the manufacturer of the device, not Carrier iQ. They were not Carrier iQ logs. 
-  </div> 
+  </div>  
  </body>
 </html>

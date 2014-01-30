@@ -1,18 +1,5 @@
-<p>Developer can now deploy Chrome apps on Android and iOS with Apache Cordova 3.3.0.</p>
-<p>Six weeks after Adobe made available PhoneGap 3.3, Cordova 3.3.0 was made available on PhoneGap Build. Beside supporting Android KitKat, Cordova 3.3.0 adds support for remote webview debugging from Chrome on Android, &nbsp;and remote debugging with Safari&nbsp;on iOS. The release notes contain details for each operating system supported: iOS, Android, Windows. Cordova 2.5.0 and 2.7.0 will be deprecated in the near future, Blackberry, WebOS, or Symbian developer being invited to use version 2.9.0.</p>
-<p>Back in September, Google announced the possibility to create Chrome applications that can be deployed to the desktop (samples of such apps can be found here). These apps can run on Windows, Mac or Linux either in online or offline mode. Recently, Google has expanded Chrome apps’ reach to mobile platforms, Android and iOS, via Cordova 3.3.0.</p>
-<p>To create their Chrome app for mobile, developers need to use a tool-chain based on Node.js, JDK 7, Android SDK 4.4.2, and Apache Ant for Android, or Xcode 5, ios-deploy, ios-sim for iOS, and use Cordova to wrap the application in a native shell, then publish it on Google Play or Apple App Store.</p>
-<p>The following Chrome APIs have been made available for mobile apps:</p>
-<blockquote> 
- <ul> 
-  <li>identity - sign-in users using OAuth2 without prompting for passwords</li> 
-  <li>payments (currently Android only) - sell virtual goods within your mobile app</li> 
-  <li>pushMessaging - push messages to your app from your server</li> 
-  <li>sockets - send and receive data over the network using TCP and UDP</li> 
-  <li>notifications (currently Android only) - send rich notifications from your mobile app</li> 
-  <li>storage - store and retrieve key-value data locally</li> 
-  <li>syncFileSystem - store and retrieve files backed by Google Drive</li> 
-  <li>alarms - run tasks periodically</li> 
- </ul> 
-</blockquote>
-<p>Beside those, developers can make use of a large number of Cordova APIs&nbsp;providing wide access to native functionality.</p>
+<p>For problems that have to do with time like querying over historical data&nbsp;Complex Event Processing, CEP, can be very useful, Greg Young suggests in a recent presentation.<br /> Greg describes event processing as a method of analysing streams of data about things that has happened and deriving a conclusion from them. One example is temporal correlation queries used when you want to correlate things that have happened at different times, e.g. finding users that said the word “presents” within one minute of saying the word “birthday” in a twitter stream or finding patients in a clinical trial that has reacted in certain ways at different times during the trial period.</p>
+<p>For creating queries Greg uses a query language implemented in JavaScript that works on top of event streams. Writing queries in JavaScript means a web browser can be used for writing, and also for debugging.<br /> This query language is included in Event Store, a type of NoSQL database built according to the concepts of an Event Source. In event sourcing, instead of representing state directly, state is represented as a series of facts, something that has happened at a specific point in time. Storing data this way means that no information is lost since every change of state is stored, not just the current state.</p>
+<p>Storing facts or events creates a kind of time machine making it possible to go back in time and look at how things were historically, e.g. creating a new report today and run it as if time is one month back.<br /> Another use case is looking at predictions and estimating the predictivity capability; running a predictive model as if it is one month earlier, predicting outcome for today and comparing the result with the real outcome.</p>
+<p>Event Store is an open source product, licensed under a 3-clause BSD license, first released in September 2012.</p>
+<p>Greg Young, lead architect for the Event Store, is an independent consultant famous for having coined the term CQRS.</p>
