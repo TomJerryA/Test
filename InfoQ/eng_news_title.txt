@@ -1,1 +1,1 @@
-L20n: JavaScript Localization Framework From Mozilla
+Spark, Storm And Real Time Analytics

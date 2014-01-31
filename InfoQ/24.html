@@ -1,20 +1,26 @@
-<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>Twitter开源了其流处理框架Summingbird</h3><p>Twitter<a href="https://blog.twitter.com/2013/streaming-mapreduce-with-summingbird">开源</a>了其MapReduce流处理框架<a href="https://github.com/twitter/summingbird">Summingbird</a>。Summingbird是一个大规模数据处理系统，支持开发者以批处理模式（基于Hadoop/MapReduce）或流处理模式（基于<a href="http://storm-project.net/">Storm</a>）或混合模式（即组合前两种模式）以统一的方式执行代码。它基于Apache 2许可发布。</p>
-<p>现在的软件栈需要手工集成MapReduce (Pig/Scalding)和基于流（Storm）的代码，为了处理<a href="http://strata.oreilly.com/2013/09/how-twitter-monitors-millions-of-time-series.html">5亿</a>的Tweet并能持续成长，Twitter必须寻找一个替代品。关于创建Summingbird的主要动机，Twitter的工程师<a href="https://blog.twitter.com/2013/streaming-mapreduce-with-summingbird">提到</a>，在于他们意识到，由于以下原因，在Storm上运行一个完全实时的系统非常困难：</p>
-<ul> 
- <li>要重新计算数月的历史日志，必须与Hadoop进行协作，或者是通过某种定制的日志加载机制形成通过Storm的流。</li> 
- <li>Storm专注的是消息传递，随机写入数据库很难维护。</li> 
-</ul>
-<p>正是这一洞见推动了Summingbird这一灵活而通用的方案的出现，它用于解决工程师使用现有方法遇到的实际问题：</p>
-<ul> 
- <li>两个不同系统中的两组聚合逻辑必须保持同步</li> 
- <li>在每个系统和客户端之间，键和值必须一致地进行序列化</li> 
- <li>客户端要负责从两个数据存储读取数据、执行最后的聚合并提供合并结果</li> 
-</ul>
-<p>Summingbird也是第一批可以公开获得的<a href="http://lambda-architecture.net/">Lambda架构</a>兼容系统<a href="http://gigaom.com/2013/09/03/twitter-open-sources-storm-hadoop-hybrid-called-summingbird/">中的一个</a>。类似的项目包括Yahoo的<a href="http://developer.yahoo.com/blogs/ydn/storm-yarn-released-open-source-143745133.html">Storm-YARN</a> 和一家西班牙创业公司即将发布的<a href="http://www.slideshare.net/Datadopter/lambdoop-a-framework-for-easy-development-of-big-data-applications">Lambdoop</a>。Lambdoop是一个Java框架，用于以与Lambda架构一致的方式开发大数据应用。Lambda架构的特色是有一个不可修改、只能追加数据的主数据库，并组合了批处理、服务和加速等不同的层。这些特色支持开发者构建健壮的、可以进行批处理和流处理的大规模数据处理系统，其使用案例涉及从物联网（智能城市、可穿戴设备和制造业）之上的社交媒体平台（比如Twitter、LinkedIn等）到金融行业（欺诈检测和推荐）等。</p>
-<p>Summingbird的主要设计者Oscar Boykin、Sam Ritchie（计算机科学界的传奇人物Dennis Ritchie的<a href="http://www.wired.com/wiredenterprise/2013/11/twitter-summingbird/">侄子</a>）和Ashutosh Singhal 进一步透露了该框架的路线图：</p>
-<ul> 
- <li>支持Apache <a href="http://spark.incubator.apache.org/">Spark</a>和列式数据存储格式<a href="http://parquet.io/">Parquet</a></li> 
- <li>在Summingbird的Producer原语之上的高层数学库和机器学习代码</li> 
- <li>与 <a href="https://engineering.twitter.com/opensource/projects">相关开源项目</a>（比如Algebird和Storehaus）更深度的集成</li> 
-</ul>
-<p><strong>查看英文原文：</strong><a href="http://www.infoq.com/news/2014/01/twitter-summingbird">Twitter Open-Sources its MapReduce Streaming Framework Summingbird</a></p><br><br><br><br><br><br></body></html>
+<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>不要让其他人的技术债务影响到你</h3><p><a href="http://www.blogger.com/profile/17371102366836131341">Jim Bird</a>是一位经验丰富的软件开发经理、项目经理与CTO，专注于软件开发与维护、软件质量与安全等领域中疑难问题的解决。在过去的15年间，Jim曾管理过团队建设并主导过高性能的财务系统的建设。他的主要兴趣在于如何提升小团队的效率以构建真正的软件：高质量、安全、可靠、高性能及适应性强。近日，Jim撰写了一篇<a href="http://swreflections.blogspot.ca/search?updated-max=2013-11-08T08:17:00-08:00&amp;max-results=7">博文</a>，谈到了与技术债务相关的主题，特别是如何不要让其他人的技术债务影响到自己，希望文中的观点能给各位读者带来一些启示。</p>
+<p>目前有不少人已经写过关于技术债务的文章：<a href="http://c2.com/cgi/wiki?TechnicalDebt">何为技术债务</a>、<a href="http://martinfowler.com/bliki/TechnicalDebt.html">技术债务的不同类型</a>、在设计、编码与修改代码时<a href="http://blogs.ripple-rock.com/SteveGarnett/2013/03/05/TechnicalDebtStrategiesTacticsForAvoidingRemovingIt.aspx">如何避免引入技术债务</a>、组织要为技术债务付出多少代价、以及为何、如何、何时来偿还这些技术债务等等。</p>
+<p>不过所有这一切都忽略掉了系统中这样一些技术债务与风险，即这些债务与开发者的设计、编码实践以及单元测试等并没有什么关系。这些文章没有澄清的一点就是系统中那些并非由你编写的代码所带来的技术债务，要远远超过你所编写的代码所带来的债务。</p>
+<p>就像西班牙、希腊和葡萄牙等国家的金融负债会拖累全球经济一样，其他人所编写的软件中的债务问题也会拖累你，即便你在自己的代码中对债务的管理保持着非常负责的态度也是如此。</p>
+<p>来自Oracle、IBM、微软的软件以及开发者从网上下载的开源软件中的问题将成为你自己的问题。如果使用其他人所开发的软件（我们都会这么做），那么你就需要为这些人的错误、疏忽或是在稳定性以及安全性等方面的决策失误问题埋单。你自己会受到他们在开发、测试与安全等问题上的牵制，也会受到这些开发者所使用的第三方软件和开源软件的影响。</p>
+<p>他们的Bug会成为你的Bug，他们的安全漏洞会成为你的安全漏洞，他们的错误决定会成为你的错误决定。</p>
+<p>你所使用的其他软件的代码量（以及由此产生的技术债务）可能会非常大，甚至超过你自己所编写的代码量。根据Sonatype的一项调查显示，80%的Java应用都是由开源组件与框架装配起来的，一个大型系统甚至会使用30多个不同的库或组件。</p>
+<p><b>你承担了多少其他人的技术债务？</b></p>
+<p>这种技术债务要比你自己代码中的债务更加难以理解和管理。由于你可能没有理解这些代码、看不到代码有多么糟糕，或是可以看到但你却没有看，因此这些代码是你所无法控制的，特别是那些由多个系统共享的一般性平台技术，人人都在使用这些技术，不过却没有人对他们负责。你可能压根儿就不知道这些代码的存在，这些代码可能是由其他人下载的，成为了系统的一部分，不过却没有人知道这回事。</p>
+<p>要想了解这种债务问题的严重性，你需要审查代码中使用了哪些第三方和开源包与依赖。大公司可能会使用Black Duck、Palamida或OpenLogic来扫描和构建开源库与组件的目录清单，检查相关许可，并及时追踪这些软件所报告出来的各种问题。</p>
+<p>小公司可能就是手工做这件事了，也许会使用WhiteSource（一款SaaS扫描平台，对于初创公司和小公司免费），它提供了一个名为JNinka的免费源代码扫描器，可以探查许可等信息。</p>
+<p><b>减少技术债务</b></p>
+<p>一旦清楚了其他人的软件会对你造成何种影响，你就需要评估由此所带来的风险和问题了，并且需要紧密追踪这些软件的补丁、升级信息及Bug报告等，这看起来确实不太容易。</p>
+<p>OWASP曾提到过：</p>
+<blockquote>
+  从理论上来说，搞清楚你当前是否在使用任何易受攻击的组件或库应该是很容易的事情。不过遗憾的是，攻击报告有时并不会以标准、清晰的方式明确指出组件的哪个版本会受到攻击。此外，并非所有的库都使用了版本化的系统。更糟的是，并不是所有的攻击信息都会被写到易于搜索的地方。
+</blockquote>
+<p><b>补丁与升级</b></p>
+<p>知道问题的严重性是一方面，修复问题则是另一方面。</p>
+<p>对最新的发布打补丁并非易事。最好能在外围打补丁，因为补丁并非总是适合于你使用软件的方式：Apache、Tomcat、Web Service库、客户端组件等。我们要更加谨慎地管理后端代码。如果每当出现一个Linux或是Oracle RDBMS补丁时你就需要立刻打上，那就说明你的架构可能有些问题。</p>
+<p>升级更是一个大问题了，升级到最新的OS、RDBMS、VM等都涉及到很高的代价与风险。你需要承担起这个工作，因为供应商会要求你这么做，你能获得他们支持的唯一方式就是升级到最新的版本上。</p>
+<p>虽然可以通过升级的方式获得在可伸缩性、管理性及新特性等方面的一些优势，不过升级项目还需要更加关注一些潜在的问题：功能回归、兼容性问题、操作流程的变化、对其他系统的依赖变化等等。升级之后，大多数软件会变得更大而不是更好，也许会加入很多新特性，不过你可能压根就用不上这些特性，这也意味着需要花更多的时间进行安装、配置和测试。你需要搞清楚所有变化的地方，重新进行测试和调优。</p>
+<p><b>这只是冰山一角</b></p>
+<p>就像造成泰坦尼克号沉没的冰山一样，很多技术风险都处于隐藏状态，当发现时已经为时太晚。你得清楚风险的大小，采取负责的态度来管理这些风险。</p>
+<p>拥有资源并能对厂商施加影响的大公司会更加主动。比如说，Veracode就为那些想要对第三方代码进行扫描来查找风险和Bug的企业提供了第三方的扫描服务。</p>
+<p>我们所要做的就是检查我们所使用的软件，知道其作者是谁，紧跟缺陷与Bug报告，清楚地知道使用其他人的软件有什么风险。我们无法准确预测风险，也没法评估风险的代价，但这并不是说我们就可以忽略掉他们了；相反，我们还是要对其持有谨慎的态度。</p><br><br><br><br><br><br></body></html>

@@ -1,26 +1,6 @@
-<p>L20n is an open source, JavaScript localization framework from Mozilla. It is designed to be very expressive along with several features such as adapting to Screen sizes, good separation of concerns, graceful handling of pluralization, support for default when there are multiple variants, and more.&nbsp;</p>
-<p>Staś Małolepszy explains the motivation behind the project -</p>
-<blockquote> 
- <p>Localizing Mozilla projects has taught us that as many as 90-95% of messages found in the UI are simple key-value pairs that won't require any advanced knowledge of L20n's features.</p> 
-</blockquote>
-<blockquote> 
- <p>So why develop L20n at all? Because it's the remaining 5% that make or break the UI of your app. They're too important to ignore and they are responsible for the experience of your user.</p> 
-</blockquote>
-<p>As such, the project tries to keep simple scenarios simple, but also supports complex localizations when needed.</p>
-<p>Below are some interesting features of L20n -</p>
-<ul> 
- <li>Expressiveness - L20n has support for interpolations (to build more complex entities), pluralizations, handling of grammatical cases, having multiple variants of the same entity, and so on, which combine to create a very expressive format.</li> 
- <li>Responsiveness to screen sizes - you can name various screen sizes and then have different variants of the entities targeted for these specific screen sizes</li> 
- <li>Good separation of concerns - localization related complexities can be isolated in the language under consideration without affecting other languages used in the app or even the app source code.</li> 
- <li>Non-blocking, secure API in addition to the ability to bind HTML elements to make them localizable</li> 
-</ul>
-<p>A simple but powerful concept that L20n introduces is the concept of Defaults - this allows you to define multiple variants for an entity but also define a default value in case any specific variant is not asked for. This enables translators to progressively tweak their content and even add more variants, while ensuring that existing code using these entities are not affected (by just choosing a default). This is what also allows different localizations to have different degrees of complexity without having to complicate all other localizations.</p>
-<p>Here are a few resources to learn more about the project -</p>
-<ul> 
- <li>The project ReadMe</li> 
- <li>A demo project that shows how an HTML file can be localized using L20n</li> 
- <li>Step-by-step tutorial introducing various concepts</li> 
- <li>Documentation</li> 
- <li>A Set of FAQs and Answers</li> 
-</ul>
-<p align="left">L20n has been in development since 2012 and the release candidate for 1.0 has been out since November 2013.</p>
+<p>Big Data Analytics have been advancing in the past years as the amount of information has exploded. Hadoop is definitely the platform of choice for Big Data analysis and computation. While data Volume, Variety and Velocity increases, Hadoop as a batch processing framework cannot cope with the requirement for real time analytics.</p>
+<p>Databricks, the company behind Apache Spark recently raised $14 million from Andreessen Horowitz to accelerate development of Spark and Shark. Spark is an engine for large-scale data processing written in Scala, while Shark is a Hive compatible variation of Spark.</p>
+<p>Like Spark, Storm also aims to come around Hadoop’s batch nature by providing event processing and distributed computation capabilities. By designing a topology of transformations in a Directed Acyclic Graph, the architect can perform arbitrarily complex computations, one transformation at a time.</p>
+<p>Nathan Marz experienced it first hand and came up with the lambda architecture paradigm to solve this fundamental architectural problem. Lambda architecture consists of a serving layer that gets updated infrequently from the batch layer and a speed layer that computes real time analytics to compensate for the slow batch layer. Essentially, Hadoop is computing analytics in batches and in between batch runs, the speed layer is incrementally updating metrics by examining events in a streaming fashion.</p>
+<p>Both Spark and Storm can operate in a Hadoop cluster and access Hadoop storage. Storm-YARN is Yahoo’s open source implementation of Storm and Hadoop convergence. Spark is providing native integration for Hadoop. Integration with Hadoop is achieved through YARN (NextGen MapReduce). Integrating real time analytics with Hadoop based systems allows for better utilization of cluster resources through computational elasticity and being in the same cluster means that network transfers can be minimal.</p>
+<p>In terms of commercial support, Cloudera has already announced support for Spark and included it in CDH (Cloudera’s Distribution Including Apache Hadoop). Hortonworks is planning to include Apache Storm in HDP (Hortonworks Data Platform) in the first half of 2014.</p>
