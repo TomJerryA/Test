@@ -1,1 +1,1 @@
-Android++ with Zero Hardware Restrictions, MSBuild, LLVM, GCC, Integrated GDB Debugging
+Mozilla Foundation Announces Firefox OS Contribution Program

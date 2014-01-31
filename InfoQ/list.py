@@ -1,8 +1,11 @@
 <html>
  <head></head> 
- <body>
-  <div>
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/33.py">Koa 0.2.0リリース</a>Node.jsベースのWebアプリケーションフレームワーク、Koa version 0.2.0がリリースされた。Koaは人気のあるMVCプラットフォーム、Expressの後継だが、新しいES6で導入された機能を多用している。これは最初の0.1.0リリースからの設計選択を再確認し、今後のリリースとプロダクション利用のためにKoaのAPIを固める上で重要なリリースだ。
+ <body> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/34.py">JavaScriptのためのSOLID設計原則</a>SOLID原則は安定したJavaScriptコードを書くのに役立つオブジェクト指向プログラミングの一例だ。 JavaScriptを中心に本も書いている開発者のDerick Bailey氏が最近のプレゼンテーションでこのように語った。 
+  </div> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/33.py">Koa 0.2.0リリース</a>Node.jsベースのWebアプリケーションフレームワーク、Koa version 0.2.0がリリースされた。Koaは人気のあるMVCプラットフォーム、Expressの後継だが、新しいES6で導入された機能を多用している。これは最初の0.1.0リリースからの設計選択を再確認し、今後のリリースとプロダクション利用のためにKoaのAPIを固める上で重要なリリースだ。 
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/32.py">Hadoop-as-a-Service提供のQuboleがGoogle Compute Engine上で稼働可能に</a>マネージドHadoop-as-a-Serviceを提供するQuboleがGoogle Compute Engine (GCE)上で利用可能となった。QuboleはこれまでAmazon社のAWS上のみで利用可能だったが、この発表はGoogle Compute Engineの一般提供が開始されたほんの数日後に行われた。 
@@ -148,8 +151,5 @@
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/35.py">APIオーケストレーション層</a>従来のリソース指向のAPIモデルはAPI利用者の最も重要なことを満たせていないかもしれない。Netflixの Daniel Jacobson氏は、良いAPI設計とはAPI利用者のことを知って、彼らのためにAPIを最適化することだと語っている。 
   </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/34.py">Webix 1.3リリース - 新しいスキンとHTML5ビデオを追加，チャートウィジェットをアップデート</a>Webix 1.3がリリースされた。８つの新スキンとHTML5ベースのビデオ要素が追加され，チャートウィジェットは対数スケールが使用できるようにアップデートされている。 
-  </div>  
  </body>
 </html>

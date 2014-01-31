@@ -1,6 +1,12 @@
 <html>
  <head></head> 
- <body> 
+ <body>
+  <div>
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/3.java">Mozilla Foundation Announces Firefox OS Contribution Program</a>In an effort to accelerate the development of Firefox OS, Mozilla announced a Contribution Program which will aim at providing dedicated developers with access to resources and reference hardware. Foxconn will manufacture the initial reference hardware, a tablet. The program will be open to developers, localizers, testers, and bug fixers.
+  </div>
+  <div>
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/2.java">Gulp Aiming to Dethrone Grunt</a>Fractal, a company who has been actively involved in the development of several popular Node.js modules has just released gulp, a new building system which is trying to replace Grunt as the most popular JavaScript task-runner.
+  </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/1.java">Android++ with Zero Hardware Restrictions, MSBuild, LLVM, GCC, Integrated GDB Debugging</a>The recently released Android++ in closed beta enables you to build Android apps using Visual Studio with support for zero hardware restrictions, MSBuild, LLVM, GCC in addition to integrated GDB debugging. 
   </div> 
@@ -144,12 +150,6 @@
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/7.java">AppFuse 3.0 - Java 7, Spring 4, PrimeFaces, Mockito, Bootstrap 3, Wicket</a>AppFuse 3.0 has been released. AppFuse uses the Maven Archetype plugin to generate a starter Java project, which allows you to quickly get started with a full-stack Java EE application. Version 3.0 is using Mojarra and PrimeFaces for its JSF framework and library, Mockito for its test mocking framework, Bootstrap 3 for its front-end framework, and added Apache Wicket as a Web Framework option. 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/6.java">Chef Sugar Aims to Enhance Chef's Recipes Authoring Experience</a>Chef Sugar is an extension to Chef that offers DSL methods to make more readable recipes. Seth Vargo, Chef Sugar's author, recently wrote about his motivations for creating Chef Sugar, highlighting them with examples. InfoQ interviewed Seth to know more about his views on syntactic sugar and the benefits of a plug-in architecture in the context of Chef. 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/5.java">Windows Phone App Certification Errors and the Steps to Avoid Them</a>In order to release Windows Phone apps faster you need to build them by incorporating the tips suggested by Windows Phone Store certification and policy team. These tips are mostly scenarios which cause the app approval to fail. 
-  </div> 
+  </div>   
  </body>
 </html>

@@ -1,6 +1,9 @@
 <html>
  <head></head> 
- <body> 
+ <body>
+  <div>
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/9.javab">How to use Workshops to Boost Creativity, Team Commitment and Motivation</a> Creativity is a powerful motivator for individuals and teams and it can be taught, trained, and enhanced. These are techniques for enhancing creativity to be used your team’s workshops, and they include brainstorming, playing with puns, role plays and opposites games. These activities get people moving and on their toes, making workshops far more effective than traditional meetings. 
+  </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/8.javab">Building Applications With Hadoop</a> When building applications using Hadoop, it is common to have input data from various sources coming in various formats. In his presentation, “New Tools for Building Applications on Apache Hadoop”, Eli Collins overviews how to build better products with Hadoop and various tools that can help, such as Apache Avro, Apache Crunch, Cloudera ML and the Cloudera Development Kit. 
   </div> 
@@ -147,9 +150,6 @@
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/11.javab">Author Q&amp;A and Book Excerpt: Directing the Agile Organisation</a> Evan Leybourn has written a book titled Governing the Agile Organisation in which he presents ideas about using agile approaches to management and a number of case studies on how the techniques have been applied in a number of disparate organisations. 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/10.javab">Building a RESTful Web Service with Spring Boot to Access Data in an Aerospike Cluster</a> Spring Boot allows you to build Spring based applications with little effort on your part. Aerospike is a distributed and replicated in-memory database that is ACID compliant. This article will take you through creating a simple RESTful web service with Spring Boot and Aerospike. 
-  </div> 
+  </div>  
  </body>
 </html>

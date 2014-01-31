@@ -1,1 +1,1 @@
-Koa 0.2.0リリース
+JavaScriptのためのSOLID設計原則
