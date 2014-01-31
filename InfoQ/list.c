@@ -1,6 +1,9 @@
 <html>
  <head></head> 
- <body> 
+ <body>
+  <div>
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/20.c">Software entregue vs necessidade dos usu&aacute;rios</a>Pela segunda vez em dois anos, a Avon volta atr&aacute;s e cancela um projeto milion&aacute;rio que prometia entregar facilidades e avan&ccedil;os para suas opera&ccedil;&otilde;es.
+  </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/19.c">Cocos2D V3 com editor para cria&ccedil;&atilde;o de jogos, recursos de f&iacute;sica e portabilidade de iOS para Android</a>Foi liberada a vers&atilde;o Release Candidate do Cocos2D V3, que agora inclui tamb&eacute;m o editor para jogos SpriteBuilder, integra&ccedil;&atilde;o com o Chipmunk2D e suporte &agrave; portabilidade de iOS para Android. 
   </div> 
@@ -147,9 +150,6 @@
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/22.c">Confer&ecirc;ncia Web W3C Brasil: um evento voltado para os padr&otilde;es da Web</a>Nos dias 18 e 19 de novembro, em S&atilde;o Paulo, ocorrer&aacute; a 5&ordf; edi&ccedil;&atilde;o da Confer&ecirc;ncia Web W3C Brasil, que traz diversos especialistas web brasileiros. Ser&atilde;o abordados os principais padr&otilde;es da Open Web Platform, como HTML5, Web Components, API Web Speech, Web Sockets, al&eacute;m de um curso de Git, mesas de debates e tutoriais. 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/21.c">Crescente da Programa&ccedil;&atilde;o Reativa</a>A Programa&ccedil;&atilde;o Reativa baseia-se em fluxo de dados e propaga&ccedil;&atilde;o de mudan&ccedil;as, com o modelo de execu&ccedil;&atilde;o de uma linguagem de programa&ccedil;&atilde;o propagando automaticamente as mudan&ccedil;as atrav&eacute;s do fluxo de dados. Com a popularidade de arquiteturas orientada a eventos, escal&aacute;veis e interativas, tanto do lado do cliente quanto do servidor, o conceito de &quot;reatividade&quot; est&aacute; ganhando cada vez mais aten&ccedil;&atilde;o. 
-  </div> 
+  </div>  
  </body>
 </html>

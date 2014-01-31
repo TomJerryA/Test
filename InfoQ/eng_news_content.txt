@@ -1,21 +1,26 @@
-<p>In an effort to accelerate the development of Firefox OS, Mozilla announced a Contribution Program which will aim at providing dedicated developers with access to resources and reference hardware.</p>
-<p>Foxconn will manufacture the initial reference hardware, a tablet.</p>
-<p>According to the early January announcement by Asa Dotzler, director of Firefox OS Participation at Mozilla, the program will be open to developers, localizers, testers, and bug fixers. All contributors will also have access to Firefox OS nightly builds and receive guidance as to which areas need more contributions. Dotzler also stated in a comment to the announcement that more details about the program will be made available in the coming days as they are progressively sorted out.</p>
-<p>One key aspect of the program is the development of reference hardware, initially manufactured by Foxconn. Indeed, as Dotzler remarked in the announcement:</p>
+<p>L20n is an open source, JavaScript localization framework from Mozilla. It is designed to be very expressive along with several features such as adapting to Screen sizes, good separation of concerns, graceful handling of pluralization, support for default when there are multiple variants, and more.&nbsp;</p>
+<p>Staś Małolepszy explains the motivation behind the project -</p>
 <blockquote> 
- <p>“We have to make the hardware available before the software is final to make it possible for contributors around the world to help us complete the build of Firefox OS for tablets”.</p> 
+ <p>Localizing Mozilla projects has taught us that as many as 90-95% of messages found in the UI are simple key-value pairs that won't require any advanced knowledge of L20n's features.</p> 
 </blockquote>
-<p>In another post on his personal blog, Dotzler goes on to detail the specs of the Foxconn reference tablet for Firefox OS. The tablet should have an ARM Cortex A7 based quad-core at 1.0GHz, with 2GB DDR3 memory and a 16GB flash drive, a 10.1” multi-touch display, dual cameras, Wi-Fi support, and microSD, Micro-USB, headphone ports. A photo of the device running a Firefox OS nightly build is also available in Asa's post.</p>
-<p>According to Kevin C. Tofel writing for GigaOm, the device may seem a bit underpowered but it still represents a solid reference design for the platform. Brad Linder on liliputing compares such specs to those of a low-end Android tablet.</p>
-<p>Firefox OS was first announced on July 25, 2011 by Dr. Andreas Gal, director of research at Mozilla Corporation. According to the initial announcement, the project pursues &quot;the goal of building a complete, standalone operating system for the open web&quot; and requires work to develop:</p>
+<blockquote> 
+ <p>So why develop L20n at all? Because it's the remaining 5% that make or break the UI of your app. They're too important to ignore and they are responsible for the experience of your user.</p> 
+</blockquote>
+<p>As such, the project tries to keep simple scenarios simple, but also supports complex localizations when needed.</p>
+<p>Below are some interesting features of L20n -</p>
 <ul> 
- <li>new web APIs for exposing device and OS capabilities like telephony, camera, and Bluetooth to apps;</li> 
- <li>a privilege model ensuring that those native capabilities are exposed in a safe way;</li> 
- <li>a boot subsystem allowing for booting on Android-compatible devices;</li> 
- <li>user apps.</li> 
+ <li>Expressiveness - L20n has support for interpolations (to build more complex entities), pluralizations, handling of grammatical cases, having multiple variants of the same entity, and so on, which combine to create a very expressive format.</li> 
+ <li>Responsiveness to screen sizes - you can name various screen sizes and then have different variants of the entities targeted for these specific screen sizes</li> 
+ <li>Good separation of concerns - localization related complexities can be isolated in the language under consideration without affecting other languages used in the app or even the app source code.</li> 
+ <li>Non-blocking, secure API in addition to the ability to bind HTML elements to make them localizable</li> 
 </ul>
-<p>In an interview to Know Your Mobile, Brendan Eich, Mozilla’s co-founder and inventor of JavaScript, declared that Firefox OS is a</p>
-<blockquote>
- “completely open stack that is 100 per cent free. We have a publicly visible repository and all the development happens in the open. We use completely open standards and there’s no propriety software or technology involved”, 
-</blockquote>
-<p>thus aiming at “removing the need for separate proprietary platforms”.</p>
+<p>A simple but powerful concept that L20n introduces is the concept of Defaults - this allows you to define multiple variants for an entity but also define a default value in case any specific variant is not asked for. This enables translators to progressively tweak their content and even add more variants, while ensuring that existing code using these entities are not affected (by just choosing a default). This is what also allows different localizations to have different degrees of complexity without having to complicate all other localizations.</p>
+<p>Here are a few resources to learn more about the project -</p>
+<ul> 
+ <li>The project ReadMe</li> 
+ <li>A demo project that shows how an HTML file can be localized using L20n</li> 
+ <li>Step-by-step tutorial introducing various concepts</li> 
+ <li>Documentation</li> 
+ <li>A Set of FAQs and Answers</li> 
+</ul>
+<p align="left">L20n has been in development since 2012 and the release candidate for 1.0 has been out since November 2013.</p>
