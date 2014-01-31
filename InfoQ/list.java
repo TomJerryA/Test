@@ -1,8 +1,8 @@
 <html>
  <head></head> 
- <body>
-  <div>
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/1.java">Android++ with Zero Hardware Restrictions, MSBuild, LLVM, GCC, Integrated GDB Debugging</a>The recently released Android++ in closed beta enables you to build Android apps using Visual Studio with support for zero hardware restrictions, MSBuild, LLVM, GCC in addition to integrated GDB debugging.
+ <body> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/1.java">Android++ with Zero Hardware Restrictions, MSBuild, LLVM, GCC, Integrated GDB Debugging</a>The recently released Android++ in closed beta enables you to build Android apps using Visual Studio with support for zero hardware restrictions, MSBuild, LLVM, GCC in addition to integrated GDB debugging. 
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/0.java">Management Buy-in and Support in Agile Adoption</a>Adopting agile is an organization change which involves management. It is said that management buy-in is crucial for agile to succeed and that a lack of management support can be a barrier in agile transformations. There are different ways for management to support agile in enterprises. 
@@ -150,6 +150,6 @@
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/5.java">Windows Phone App Certification Errors and the Steps to Avoid Them</a>In order to release Windows Phone apps faster you need to build them by incorporating the tips suggested by Windows Phone Store certification and policy team. These tips are mostly scenarios which cause the app approval to fail. 
-  </div>  
+  </div> 
  </body>
 </html>

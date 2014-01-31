@@ -1,34 +1,47 @@
-<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>Xen Project，Mirage 0S 1.0をリリース</h3><p><a target="_blank" href="http://www.infoq.com/news/2013/12/mirageos"><em>原文(投稿日：2013/12/23)へのリンク</em></a></p>
+<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>Koa 0.2.0リリース</h3><p><a target="_blank" href="http://www.infoq.com/news/2014/01/koa-0.2.0-release"><em>原文(投稿日：2014/01/20)へのリンク</em></a></p>
 <div class="article_page_left news_container text_content_container"> 
  <div class="text_info"> 
-  <p><a href="http://blog.xen.org/index.php/2013/12/09/announcing-the-1-0-release-of-mirage-os/">Mirage OS</a>は &quot;クラウドオペレーティングシステム&quot; である。セキュリティ上の脆弱性回避と，単一目的の仮想アプライアンスの開発容易化による普及を目標とする。アプリケーションは関数型プログラム言語<a href="https://en.wikipedia.org/wiki/Ocaml">OCaml</a>で開発され，<a href="https://en.wikipedia.org/wiki/Xen">Xen</a> ハイパーバイザ上で直接動作するスタンドアロンの &quot;ユニカーネル&quot; にコンパイルされる。従来型のオペレーティングシステムを排除し，その構造を代替する言語ライブラリに置き換えることによって，従来よりコンパクトで高速に動作し，攻撃対象領域の少ないアプリケーションを実現する。開発したアプリケーションは，AmazonのEC2やRackspace Cloudのような，Xenベースのパブリッククラウドに直接デプロイすることも可能だ。</p> 
-  <p>Mirage OSのアプローチはWebサーバやDNSサーバ，SDN (Software Defined Networking) などのインフラストラクチャソフトウェア開発者たちにアピールするかも知れない。コントリビュータであるケンブリッジ大学の <a href="http://anil.recoil.org/#!">Anil Madhavapeddy</a>氏は，次のようにコメントしている:</p> 
-  <blockquote>
-   Mirageは，OCamlに見られるような現代的モジュラプログラミング技術を用いて，特殊なインフラストラクチャアプリケーションを迅速に構築するという，私たちの夢を表現したものです。これまでに高レベル言語 (大部分はJavaとScala) で記述されたデータセンタツールは数多くありました。その底辺の部分に至るまで関数プログラミング技術を適用したならば，どのようなメリット(とデメリット！) があるのかを追求したいと思ったのです。
+  <p>Node.jsベースのWebアプリケーションフレームワーク、<a href="http://koajs.com/">Koa</a> <a href="https://medium.com/code-adventures/a3a046a04836">version 0.2.0がリリースされた</a>。Koaは人気のあるMVCプラットフォーム、<a href="http://expressjs.com/">Express</a>の後継だが、新しいES6で導入された機能を多用している。プロジェクトリードの<a href="https://twitter.com/tjholowaychuk">TJ Holowaychuck</a>氏はKoaについて「私がConnect/Expressから学んだことを取り込んで、今度こそ「正しい」ことをするチャンス」だと語っている。</p> 
+  <p>このリリースは &quot;short but sweet&quot; と呼ばれており、最初の0.1.0リリースからの設計選択を再確認し、今後のリリースとプロダクション利用のためにKoaのAPIを固める上で重要なリリースだ。</p> 
+  <h2>0.2.0での変更</h2> 
+  <p>このリリースで最大のアップデートは、実際のところ<a href="https://github.com/koajs/compose">koa-compose</a>モジュールに対するものだ。ミドルウェアがリクエストを操作する前後で、その内容を標準出力（stdout）にログ出力することにより、開発者はミドルウェアを流れるリクエストをデバッグすることができる。</p> 
+  <p>より小さな変更点としては、ソケットをNodeレベルで処理したあとNodeサーバがクラッシュしないようソケットエラーをルーティングすること、<a href="http://expressjs.com/">Express</a>とKoaで共通の機能を両方のフレームワークが使えるようリファクタリングしてモジュール化したことが含まれる。ひとつの例は “accepts” モジュールだ。これは<a href="https://developer.mozilla.org/en-US/docs/HTTP/Content_negotiation">コンテンツネゴシエーション</a>をするもので、Accept HTTPヘッダの値に基づき、サーバがリクエストに対して異なるタイプのコンテンツで応答できるようにする。</p> 
+  <h2>ジェネレータによる構築</h2> 
+  <p>Koaは自身を「次世代Webフレームワーク」と呼んでおり、<a href="https://github.com/visionmedia/co">co</a>ライブラリを利用している。このライブラリは<a href="http://wiki.ecmascript.org/doku.php?id=harmony:specification_drafts">ECMAScript 6</a>言語仕様（&quot;Harmony&quot;として知られている）にあるジェネレータを使って、Nodeのノンブロッキング同期処理を生成する。HTTPリクエストで必要になる同様の「スタック処理」をするのに、これまでのNodeフレームワークはコールバックとPromiseを頼りにしていた。</p> 
+  <p>ジェネレータは実際にはHarmonyイテレータを生成する「ファクトリ」だが、Koaはそれらを使って関数を同期オペレーションに変換する。Koa appはリクエストを複数のミドルウェアレイヤを通して渡すことができる。呼び出されるミドルウェア関数は、呼び出し元の処理を継続させるために、結果をyieldしなくてはならない。</p> 
+  <pre>
+var koa = require('koa');
+var app = koa();
+
+app.use(route.get('/', google));
+
+function *people() {
+ &nbsp;&nbsp;// “get” は非同期HTTP呼び出し
+ &nbsp;&nbsp;var result = yield get('http://www.google.com');
+ &nbsp;&nbsp;// この行は上のyieldが戻るまで実行されない
+ &nbsp;&nbsp;this.body = result;
+
+}</pre> 
+  <h2>No Middleware</h2> 
+  <p>Koaにはミドルウェアが含まれていない。これによってフットプリントを小さく維持できる。Holowaychuk氏はこう説明する。「もともとは、たくさんのミドルウェアを<a href="https://github.com/senchalabs/Connect">Connect</a>にバンドルしていました。エンドユーザのためだけでなく、自分たちのためでもありました。Nodeとそのエコシステム全体は急速に変化していたので、その方がメンテナンスしやすかったのです。それからはや数年、多くの人がミドルウェアをバンドルしたのは間違いだったと合意しています。」Holowaychuk氏はさらに続けて、このことが、Koaにはミドルウェアをバンドルしないが、便利にバンドルできる別のモジュールを提供することにつながったと言った。</p> 
+  <p><a href="https://github.com/koajs/common">koa-common</a>モジュールは、Webアプリケーションに必要なミドルウェアの多くをバンドルしている。開発者は自分のKoaアプリケーションに、<a href="https://npmjs.org/">NPM</a>経由でこのミドルウェアすべてを追加することができる。</p> 
+  <pre>
+$ npm install koa-common</pre> 
+  <h2>KoaとExpressの将来</h2> 
+  <p>Holowaychuk氏によると、Koaは時折ある奇妙なフィーチャーリクエストがなければ完成状態にあると考えている。</p> 
+  <p>“deif”というユーザは、Koaがリリースされたことで、Expressの将来について<a href="https://news.ycombinator.com/item?id=6933833">懸念を抱いている</a>。</p> 
+  <blockquote> 
+   <p>これについて、いくつか質問があります。</p> 
+   <ol> 
+    <li>FAQにはExpressのステータスについて政治的回答がなされていますが、私はもう、Expressはアクティブにメンテナンスされないと思っています。合っていますか？</li> 
+    <li>Koaにフォーカスするなら、どうしてNodeフレームワークでビッグネームになっているExpressから名前を変えるのですか？</li> 
+    <li>新しい開発者がExpressとKoaを見たとき、どちらにフォーカスしているかすぐにわかりますか？</li> 
+   </ol> 
+   <p>要するに、なぜExpress 3.0 (あるいは4.0)と呼ばなかったのか不思議に思っているのです。</p> 
   </blockquote> 
-  <p>システムは現在Xenハイパーバイザを対象としているが，Unixユーザ空間用のバイナリのビルドも可能だ。さらにプロジェクトには，FreeBSDカーネルモジュール用の試験的実装，NS3ネットワークシミュレータ，JavaScriptなどもある。Anil Madhavapeddy氏はさらに言う:</p> 
-  <blockquote>
-   VMWareやKVM, Hyper-Vといった他のハイパーバイザへの移植は，単純に適当なブートローダと仮想デバイスドライバを記述するだけの問題です。これはシステムプログラミングに足を踏み入れようという人にはうってつけのプロジェクトですので，私たちもメールリスト(mirageos-devel@lists.xenproject.org)を通じて，積極的に指導したいと思っています。
-  </blockquote> 
-  <p>Mirage OSが大きな可能性も持つ応用分野は，コンパクトでセキュアな &quot;ドメイン０&quot;，すなわちハイパーバイザの管理に使用される特別なドメインの提供だ。Anil Madhavapeddy氏は，これがMirage開発の背景となった大きな理由のひとつだとしている:</p> 
-  <blockquote>
-   XenServerディストリビューションではここ数年間，単一のモノシリックな &quot;ドメイン０&quot; の必要性を着実に排除しています。Mirageが提供するのは，そのパズルの最後のピース – これまでの管理ツールスタックを，標準的な分散システムプロトコルで相互に通信してコンセンサスを達成する，専門化したマイクロカーネルの集まりに転換するためのプログラミング環境なのです。これに伴って，セキュアなクラウドを構築する上で達成すべき水準は確実に高くなるでしょう。クラスタ内の仮想マシンに配置されたすてべのユーザデータのキーが，管理ツールスタックに保持されることになるからです。
-  </blockquote> 
-  <p>OCamlを選択した理由の質問に対して，同じくケンブリッジ大学のコントリビュータであるRichard Mortier氏は言う:</p> 
-  <blockquote>
-   理由はいくつかあります – 関数型言語としての実績，活発なコミュニティ，ランタイムへの移植が非常に効率的かつ比較的簡単，Xen管理スタックにOCamlで記述された部分がかなりある，強力なモジュールシステムによって効果的なモジュール化システムが実現可能，といったところでしょうか。
-  </blockquote> 
-  <p>TEE (Trusted Execution Environment) との関連性の有無についての質問には，Citrix XenServerシステムアーキテクトの<a href="http://dave.recoil.org/#!">David Scott</a>氏が次のような説明をしている:</p> 
-  <blockquote>
-   私にとってTE(Trusted Execution)には，(1) 意図したバイナリが実行中であることをどうやって確認するのか (2) 意図した動作をコードが行っていることをどうやって確認するのか，という２つの重要な側面があります。Measured Bootのようなテクニックは前者，つまり適切なバイナリの実行をチェックすることに注目しています。これに対してMirageは後者を，次のような方法で支援します。 
-   <list> 
-    <ul> 
-     <li>必要なライブラリのみをリンクすることで，攻撃対象領域を最小化する。</li> 
-     <li>コンフィギュレーションをどこか外部の(おそらくは変更可能な)ファイルシステムに置くのではなく，アプリケーションにリンクさせる。</li> 
-     <li>メモリ破壊やバッファオーバーフロー攻撃といった類いの影響を受けないコード量を最大化する。</li> 
-    </ul> 
-   </list> 
-  </blockquote> 
-  <p>Mirage OSチームでは，組み込みアプリケーションや &quot;モノのインターネット(Internet of Things)&quot; といったユースケースも対象に含めている。Anil Madhavapeddy氏は，&quot;OCamlコンパイラ自体は，非常に小さなターゲット (<a href="http://www.algo-prog.info/ocaml_for_pic/web/">PIC18マイクロコントローラ</a>のような) にも容易に対応できる&quot;ものの，&quot;ビルドシステム関連で多くの作業が必要になる&quot; ことを指摘する。開発チームは先日の休暇を利用して，自分たちのWebページをMirage OSベースのサーバに移行した。その中には，バックエンドとしてRaspberry Piを使用したものもある。</p> 
+  <p>Holowaychuk氏は名前の変更についてこう説明した。</p> 
+  <blockquote> 
+   <p>ExpressからKoaへの移行は簡単ではありません。同じように見えるかもしれませんが、根本的にかなり違っています。そのため、私はそれをExpress 4.0と呼ぶのではなく、新しい名前を与えた方がよいと思いました。… 引き続きExpressをメンテナンスしている人たちもいますし、もし興味があるならチームに参加することも可能です。</p> 
+  </blockquote>
  </div> 
 </div><br><br><br><br><br><br></body></html>

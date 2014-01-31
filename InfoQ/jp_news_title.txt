@@ -1,1 +1,1 @@
-OpenStackの4月リリース ‘Icehouse’ 詳細
+Koa 0.2.0リリース

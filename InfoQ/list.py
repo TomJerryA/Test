@@ -1,6 +1,9 @@
 <html>
  <head></head> 
- <body> 
+ <body>
+  <div>
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/33.py">Koa 0.2.0リリース</a>Node.jsベースのWebアプリケーションフレームワーク、Koa version 0.2.0がリリースされた。Koaは人気のあるMVCプラットフォーム、Expressの後継だが、新しいES6で導入された機能を多用している。これは最初の0.1.0リリースからの設計選択を再確認し、今後のリリースとプロダクション利用のためにKoaのAPIを固める上で重要なリリースだ。
+  </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/32.py">Hadoop-as-a-Service提供のQuboleがGoogle Compute Engine上で稼働可能に</a>マネージドHadoop-as-a-Serviceを提供するQuboleがGoogle Compute Engine (GCE)上で利用可能となった。QuboleはこれまでAmazon社のAWS上のみで利用可能だったが、この発表はGoogle Compute Engineの一般提供が開始されたほんの数日後に行われた。 
   </div> 
@@ -147,9 +150,6 @@
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/34.py">Webix 1.3リリース - 新しいスキンとHTML5ビデオを追加，チャートウィジェットをアップデート</a>Webix 1.3がリリースされた。８つの新スキンとHTML5ベースのビデオ要素が追加され，チャートウィジェットは対数スケールが使用できるようにアップデートされている。 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/34.py">タッチ対応の円形メニューを作成可能なRadRadiaMenu</a>Telerik RadControls for Windows 8 XAML Q3 2013に含まれるRadRadioMenuを使えば，デスクトップとタッチプラットフォームの両方で円形メニューを開発できる。コントロールはスタンドアロンとコンテキスト，いずれのメニューにも対応する。 
-  </div> 
+  </div>  
  </body>
 </html>
