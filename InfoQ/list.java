@@ -2,10 +2,16 @@
  <head></head> 
  <body>
   <div>
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/6.java">Spark, Storm And Real Time Analytics</a>Hadoop is definitely the platform of choice for Big Data analysis and computation. While data Volume, Variety and Velocity increases, Hadoop as a batch processing framework cannot cope with the requirement for real time analytics. Spark, Storm and the Lambda Architecture can help bridge the gap between batch and event based processing.
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/8.java">DynamicData and EntityDataSource Updated with Entity Framework 6 Support</a>Microsoft recently added Entity Framework 6 support for DynamicData and EntityDataSource controls with in addition to refreshed the templates. It also has few known issues as the support is limited to C# and Web Application projects.
   </div>
   <div>
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/5.java">IDC Study: How Many Software Developers Are Out There?</a>IDC has published the “2014 Worldwide Software Developer and ICT-Skilled Worker Estimates” document, a study estimating the number of professional software developers, hobbyist developers and Information and Communications Technology (ICT)-skilled workers in the world at the start of 2014. The 90 countries covered in the study represent 97% of the world’s GDP.
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/7.java">BDD and JavaScript Using CucumberJS</a>Adding CucumberJS to the TDD workflow for JavaScript-based projects embraces the ideas of Behaviour Driven Development, BDD, and allows a developer to follow the TDD principles while developing from the outside in; running automated tests that fail until code that supports a feature is implemented, Todd Anderson reveals in a recent blog post.
+  </div> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/6.java">Spark, Storm And Real Time Analytics</a>Hadoop is definitely the platform of choice for Big Data analysis and computation. While data Volume, Variety and Velocity increases, Hadoop as a batch processing framework cannot cope with the requirement for real time analytics. Spark, Storm and the Lambda Architecture can help bridge the gap between batch and event based processing. 
+  </div> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/5.java">IDC Study: How Many Software Developers Are Out There?</a>IDC has published the “2014 Worldwide Software Developer and ICT-Skilled Worker Estimates” document, a study estimating the number of professional software developers, hobbyist developers and Information and Communications Technology (ICT)-skilled workers in the world at the start of 2014. The 90 countries covered in the study represent 97% of the world’s GDP. 
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/4.java">L20n: JavaScript Localization Framework From Mozilla</a>L20n is an open source, JavaScript localization framework from Mozilla. It is designed to be very expressive along with several features such as adapting to Screen sizes, good separation of concerns, graceful handling of pluralization, support for default when there are multiple variants, and more. 
@@ -144,12 +150,6 @@
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/12.java">Oracle Seeks Further Feedback on Java EE 8 Plans</a>Oracle has launched the second part of its Java EE 8 community survey with cloud, security, logging, deployment, testability, pruning, and profiles amongst the topics. 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/11.java">New Education Opportunities for Data Scientists</a>2013 has been rich in announcements for new programs, degrees and grants for aspiring data scientists and Big Data practitioners. 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/10.java">Combining an Agile and Lean Approach</a>Several approaches exist to improve software development, among them are agile and lean. Managers have to decide which approaches to deploy in their organization. Approaches can also be combined depending on the problems that need to be solved. InfoQ interviewed R&eacute;gis Medina about combining agile and lean, focusing on people and learning. 
   </div>   
  </body>
 </html>

@@ -1,8 +1,8 @@
 <html>
  <head></head> 
- <body>
-  <div>
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/21.c">Lan&ccedil;ada vers&atilde;o 2.0 do Slick, biblioteca de mapeamento funcional-relacional para Scala</a>Foi lan&ccedil;ada recentemente a vers&atilde;o 2.0 do Slick, biblioteca em Scala para mapeamento funcional-relacional - Functional-Relacional Mapping, FRM, (correspondente ao mapeamento objeto-relacional nas linguagens orientadas &agrave; objetos). A nova vers&atilde;o do Slick traz um gerador de c&oacute;digo para engenharia reversa de schemas e uma nova arquitetura para o driver que suporta bancos de dados n&atilde;o SQL.
+ <body> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/21.c">Lan&ccedil;ada vers&atilde;o 2.0 do Slick, biblioteca de mapeamento funcional-relacional para Scala</a>Foi lan&ccedil;ada recentemente a vers&atilde;o 2.0 do Slick, biblioteca em Scala para mapeamento funcional-relacional - Functional-Relacional Mapping, FRM, (correspondente ao mapeamento objeto-relacional nas linguagens orientadas &agrave; objetos). A nova vers&atilde;o do Slick traz um gerador de c&oacute;digo para engenharia reversa de schemas e uma nova arquitetura para o driver que suporta bancos de dados n&atilde;o SQL. 
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/20.c">Software entregue vs necessidade dos usu&aacute;rios</a>Pela segunda vez em dois anos, a Avon volta atr&aacute;s e cancela um projeto milion&aacute;rio que prometia entregar facilidades e avan&ccedil;os para suas opera&ccedil;&otilde;es. 
@@ -150,6 +150,6 @@
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/23.c">Migrando do Desenvolvimento Guiado por Dados para o Desenvolvimento Guiado por Dom&iacute;nio</a>Com uma grande experi&ecirc;ncia em data-driven development, Julie Lerman compartilha experi&ecirc;ncias da migra&ccedil;&atilde;o para o Domain-Driven Design em tr&ecirc;s artigos, com exemplos em C# usando o Entity Framework. 
-  </div>  
+  </div> 
  </body>
 </html>
