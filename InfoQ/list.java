@@ -2,7 +2,13 @@
  <head></head> 
  <body>
   <div>
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/10.java">Open Source Active Directory Libraries for iOS and Android</a>Microsoft is offering previews of libraries for accessing Azure Active Directory for iOS and Android. These libraries are being released on github under the Apache 2 license.
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/12.java">How to Self-Assemble and Sustain a Self-Organising Team</a>A report on recent commentary by Mike Cohn, Thomas Cagley and others on the topic of team self-assembly and sustaining successful self-organising teams.
+  </div>
+  <div>
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/11.java">LightTable IDE Goes Open Source, Adds Plugin Support</a>Chris Granger has open sourced the LightTable IDE with the 0.6 release. Third party plugin support was the highlight feature of the release. InfoQ talked to LightTable creator Chris Granger.
+  </div> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/10.java">Open Source Active Directory Libraries for iOS and Android</a>Microsoft is offering previews of libraries for accessing Azure Active Directory for iOS and Android. These libraries are being released on github under the Apache 2 license. 
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/9.java">What to Expect From HTTP/2</a>In a recent blog posting Mark Nottingham, chair of the HTTP/2 Working Group, gives his opinion on 9 things to expect in the next version of the Web standard which is rapidly nearing completion and implementations are starting to appear. 
@@ -144,12 +150,6 @@
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/16.java">Rust 0.9 Released With Revised Threading Model</a>The Rust team has released the latest version of its next generation programming language. New in this release is a redesigned threading system and several refinements as the language moves towards its 1.0 release. 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/15.java">Upcoming Book by Gojko Adzic on Improving User Stories</a>Would better user stories improve software delivery? Gojko Adzic thinks applying small changes to the way teams manage their user stories can have a huge impact on the actual outcomes of their software delivery. He announced that he wants to write a book about improving user stories if at least 5000 people show that they are interested by pre-registering themselves in January. 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/14.java">Twitter Open-Sources its MapReduce Streaming Framework Summingbird</a>Twitter has open sourced their MapReduce streaming framework, called Summingbird. Available under the Apache 2 license, Summingbird is a large-scale data processing system enabling developers to uniformly execute code in either batch-mode (Hadoop/MapReduce-based) or stream-mode (Storm-based) or a combination thereof, called hybrid mode. 
-  </div>  
+  </div>   
  </body>
 </html>

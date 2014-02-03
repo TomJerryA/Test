@@ -1,6 +1,9 @@
 <html>
  <head></head> 
- <body> 
+ <body>
+  <div>
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/10.javab">Interview with Jan de Baere about the Rise and Fall of an Agile Company</a> What happens when a director of a consulting company decides to drastically change the culture? At the Agile Tour Brussels conference Jan de Baere presented the why and how of a company that adopted agile, the journey that they went through, and how it came to a sudden end. InfoQ interviewed him about the agile change approach, culture and trust, and the lessons learned from an agile journey. 
+  </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/9.javab">How to use Workshops to Boost Creativity, Team Commitment and Motivation</a> Creativity is a powerful motivator for individuals and teams and it can be taught, trained, and enhanced. These are techniques for enhancing creativity to be used your team’s workshops, and they include brainstorming, playing with puns, role plays and opposites games. These activities get people moving and on their toes, making workshops far more effective than traditional meetings. 
   </div> 
@@ -147,9 +150,6 @@
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/12.javab">BYOC and the Rise of Hybrid Cloud</a> Chris Smith offers insights on how to leverage the increasing employee adoption of cloud services (Bring Your Own Cloud) to perform their work. Understanding the risks and benefits becomes essential. 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/11.javab">Author Q&amp;A and Book Excerpt: Directing the Agile Organisation</a> Evan Leybourn has written a book titled Governing the Agile Organisation in which he presents ideas about using agile approaches to management and a number of case studies on how the techniques have been applied in a number of disparate organisations. 
-  </div> 
+  </div>  
  </body>
 </html>

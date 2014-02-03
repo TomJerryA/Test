@@ -1,11 +1,11 @@
 <html>
  <head></head> 
- <body>
-  <div>
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/39.py">EメールとAutoPageScaleのサポート，ファネル加重スライスを加えたStimulsoft Reports.Fx 2013.3</a>StimulsoftがAdobe Flex, PHP, Java用のReports.Fx 2013.3をリリースした。指定されたアドレス，主題，テキストのEメールによるレポート配信をサポートしたのに加えて，グラフ形式としてのファネル加重スライスが新しい。AutoPageScale，CSV形式のレポートに適切なフィルタを設定可能なBand Filterオプションも追加されている。
-  </div>
-  <div>
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/38.py">Windows Phoneアプリの認証エラーとその回避手段</a>Windows Phoneアプリをより迅速にリリースするには，Windows Phone Store認証およびポリシチームの提供するヒントを取り入れて開発を行う必要がある。これらのヒントの大部分は，アプリが認証獲得に失敗する場合のシナリオなのだ。
+ <body> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/39.py">EメールとAutoPageScaleのサポート，ファネル加重スライスを加えたStimulsoft Reports.Fx 2013.3</a>StimulsoftがAdobe Flex, PHP, Java用のReports.Fx 2013.3をリリースした。指定されたアドレス，主題，テキストのEメールによるレポート配信をサポートしたのに加えて，グラフ形式としてのファネル加重スライスが新しい。AutoPageScale，CSV形式のレポートに適切なフィルタを設定可能なBand Filterオプションも追加されている。 
+  </div> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/38.py">Windows Phoneアプリの認証エラーとその回避手段</a>Windows Phoneアプリをより迅速にリリースするには，Windows Phone Store認証およびポリシチームの提供するヒントを取り入れて開発を行う必要がある。これらのヒントの大部分は，アプリが認証獲得に失敗する場合のシナリオなのだ。 
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/37.py">Apple Macの30年</a>30年前にAppleは，1984という題の斬新な広告でMacを発表した。InfoQではMacの歴史を振り返るとともに，そのポイントと読者がこの記事を読んでいるシステムとの関係を明らかにする。 
@@ -150,6 +150,6 @@
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/41.py">PowerShellのDesired State Configuration，プッシュモードとプルモードをサポート</a>Windows PowerShell Blogに現在，PowerShellのDSC(Desired State Configuration)に関する記事が掲載されている。DSCはWindowsでコンピュータの構成管理を行うための，Microsoftからの提案だ。最新の記事のひとつではプッシュとプルという，DSCで選択可能な２つのコンフィギュレーションモードについて説明されていて，いずれのアプローチにもそれぞれの長所と短所がある。 
-  </div>   
+  </div> 
  </body>
 </html>

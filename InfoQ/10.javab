@@ -1,349 +1,85 @@
-<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>Building a RESTful Web Service with Spring Boot to Access Data in an Aerospike Cluster</h3><p>Spring Boot is a powerful jump start into Spring. It allows you to build Spring based applications with little effort on your part.<br /> <br /> Aerospike is a distributed and replicated in-memory database optimized to use both DRAM and native flash/SSDs.<br /> <br /> Aerospike also has high reliability and is ACID compliant. Developers can quickly scale their database cluster from two nodes to twenty nodes without bringing down the database service.</p>
-<h2>What you will build</h2>
-<p>This article will take you through creating a simple RESTful web service with Spring Boot.<br /> <br /> You will build a service that accepts an <a href="http://localhost:8080/as/test/flights/getAll/1234">HTTP GET</a> request.&nbsp;It responds with the following JSON:</p>
-<pre>
-{&quot;expiration&quot;:121023390,&quot;bins&quot;:{&quot;DISTANCE&quot;:2446,&quot;DEST_CITY_NAME&quot;:&quot;New York&quot;,&quot;DEST&quot;:&quot;JFK&quot;,&quot;YEAR&quot;:2012,&quot;ORI_AIRPORT_ID&quot;:&quot;14679&quot;,&quot;DEP_TIME&quot;:&quot;802&quot;,&quot;DAY_OF_MONTH&quot;:12,&quot;DEST_STATE_ABR&quot;:&quot;NY&quot;,&quot;ORIGIN&quot;:&quot;SAN&quot;,&quot;FL_NUM&quot;:160,&quot;CARRIER&quot;:&quot;AA&quot;,&quot;ORI_STATE_ABR&quot;:&quot;CA&quot;,&quot;FL_DATE&quot;:&quot;2012/01/12&quot;,&quot;AIR_TIME&quot;:291,&quot;ORI_CITY_NAME&quot;:&quot;San Diego&quot;,&quot;ELAPSED_TIME&quot;:321,&quot;ARR_TIME&quot;:&quot;1623&quot;,&quot;AIRLINE_ID&quot;:19805},&quot;generation&quot;:1}</pre>
-<p>The data you will use is commercial flight details (included in the sample code (SP: Add the link to zip file), is a data file flights_from.csv. It contains approximately one million flight records.</p>
-<p>There are also many features added to your application out-of-the-box for managing the service in a production (or other) environment. This functionally comes from Spring, (see the Spring guide: <a href="http://spring.io/guides/gs/rest-service">Building a RESTful web service</a>.)</p>
-<h2>What you will need</h2>
-<ul> 
- <li>A favorite text editor or IDE</li> 
- <li><a href="http://www.oracle.com/technetwork/java/javase/downloads/index.html">JDK 7</a> or later</li> 
- <li><a href="http://maven.apache.org/download.cgi">Maven 3.0+</a></li> 
- <li><a href="http://www.aerospike.com/aerospike-3-client-sdk/">Aerospike Java SDK 3.0+</a></li> 
-</ul>
-<h2>Set up the project</h2>
-<p>You can use any build system you like when building applications with Spring, but the <a href="https://maven.apache.org/">Maven</a> code is included here. If you are unfamiliar with Maven refer to the Spring guide: <a href="http://spring.io/guides/gs/maven">Building Java Projects with Maven</a>.</p>
-<p>You will also need to build and install the Aerospike Java client into your local Maven repository. Download the source distribution, unzip/untar it and run the following Maven commands:</p>
-<div id="lowerFullwidthVCR"></div>
-<pre>
- <ul>   
-  <li>mvn install:install-file -Dfile=client/depends/gnu-crypto.jar -DgroupId=org.gnu -DartifactId=gnu-crypto -Dversion=2.0.1 -Dpackaging=jar</li>
-  <li>mvn clean</li>
-  <li>mvn package</li>         
- </ul></pre>
-<h3>Create the directory structure</h3>
-<p>In the project of your choosing, create the following subdirectory structure:</p>
-<p>-&gt;src<br /> &nbsp; &nbsp;-&gt;main<br /> &nbsp; &nbsp; &nbsp;-&gt;java<br /> &nbsp; &nbsp; &nbsp; &nbsp;-&gt;com<br /> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;-&gt;aerospike<br /> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; -&gt;client<br /> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;-&gt;rest</p>
-<h3>Create a Maven pom</h3>
-<p>Create a maven pom.xml file in the root directory of your project with the following code:</p>
-<pre>
-&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
-&lt;project xmlns=&quot;http://maven.apache.org/POM/4.0.0&quot; 
-xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot;
-    xsi:schemaLocation=&quot;http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd&quot;&gt;
-      &lt;modelVersion&gt;4.0.0&lt;/modelVersion&gt;
-      &lt;groupId&gt;com.aerospike&lt;/groupId&gt;
-      &lt;artifactId&gt;aerospike-restful-example&lt;/artifactId&gt;
-      &lt;version&gt;1.0.0&lt;/version&gt;
-    &lt;parent&gt;
-        &lt;groupId&gt;org.springframework.boot&lt;/groupId&gt;
-        &lt;artifactId&gt;spring-boot-starter-parent&lt;/artifactId&gt;
-        &lt;version&gt;0.5.0.M4&lt;/version&gt;
-    &lt;/parent&gt;
-      &lt;dependencies&gt;
-        &lt;dependency&gt;
-            &lt;groupId&gt;org.springframework.boot&lt;/groupId&gt;
-            &lt;artifactId&gt;spring-boot-starter-web&lt;/artifactId&gt;
-        &lt;/dependency&gt;
-        &lt;dependency&gt;
-            &lt;groupId&gt;org.springframework.boot&lt;/groupId&gt;
-            &lt;artifactId&gt;spring-boot-starter-actuator&lt;/artifactId&gt;
-        &lt;/dependency&gt;
-            &lt;!-- Aerospike client. --&gt;
-        &lt;dependency&gt;
-              &lt;groupId&gt;com.aerospike&lt;/groupId&gt;
-              &lt;artifactId&gt;aerospike-client&lt;/artifactId&gt;
-              &lt;version&gt;3.0.9&lt;/version&gt;
-        &lt;/dependency&gt;
-        &lt;!-- Apache command line parser. --&gt;
-        &lt;dependency&gt;
-              &lt;groupId&gt;commons-cli&lt;/groupId&gt;
-              &lt;artifactId&gt;commons-cli&lt;/artifactId&gt;
-              &lt;version&gt;1.2&lt;/version&gt;
-        &lt;/dependency&gt;
-  &lt;/dependencies&gt;
-
-  &lt;properties&gt;
-      &lt;start-class&gt;com.aerospike.client.rest.AerospikeRESTfulService&lt;/start-class&gt;
-  &lt;/properties&gt;
-
-  &lt;build&gt;
-      &lt;plugins&gt;
-          &lt;plugin&gt; 
-              &lt;artifactId&gt;maven-compiler-plugin&lt;/artifactId&gt; 
-              &lt;version&gt;2.3.2&lt;/version&gt; 
-          &lt;/plugin&gt;
-          &lt;plugin&gt;
-              &lt;groupId&gt;org.springframework.boot&lt;/groupId&gt;
-              &lt;artifactId&gt;spring-boot-maven-plugin&lt;/artifactId&gt;
-          &lt;/plugin&gt;
-      &lt;/plugins&gt;
-  &lt;/build&gt;
-  &lt;repositories&gt;
-      &lt;repository&gt;
-          &lt;id&gt;spring-snapshots&lt;/id&gt;
-          &lt;name&gt;Spring Snapshots&lt;/name&gt;
-          &lt;url&gt;http://repo.spring.io/libs-snapshot&lt;/url&gt;
-          &lt;snapshots&gt;
-              &lt;enabled&gt;true&lt;/enabled&gt;
-          &lt;/snapshots&gt;
-      &lt;/repository&gt;
-  &lt;/repositories&gt;
-  &lt;pluginRepositories&gt; 
-      &lt;pluginRepository&gt;
-          &lt;id&gt;spring-snapshots&lt;/id&gt;
-          &lt;name&gt;Spring Snapshots&lt;/name&gt;
-          &lt;url&gt;http://repo.spring.io/libs-snapshot&lt;/url&gt;
-          &lt;snapshots&gt;
-              &lt;enabled&gt;true&lt;/enabled&gt;
-          &lt;/snapshots&gt;
-       &lt;/pluginRepository&gt;
-  &lt;/pluginRepositories&gt;
-
-&lt;/project&gt;</pre>
-<p>It looks scary, but it really isn’t.</p>
-<h3>Create a JSON translator class</h3>
-<p>The Aerospike API will return a Record object and it will contain the generation, expiry and bin values of the record. But you want to have these values returned in JSON format. The easiest way to achieve this is to use a translator class.</p>
-<p>Create a translator class with the following code. It is a generic class that will translate an Aerospike Record object to a JSONObject.</p>
-<pre><font color="#408080">src/main/java/com/aerospike/client/rest/JSONRecord.java</font>
-package com.aerospike.client.rest;
-import java.util.Map;
-import org.json.simple.JSONArray;
-import org.json.simple.JSONObject;
-import com.aerospike.client.Record;
-/**
-* JSONRecord is used to convert an Aerospike Record
-* returned from the cluster to JSON format
-*
-*/
-@SuppressWarnings(&quot;serial&quot;)
-public class JSONRecord extends JSONObject {
-      @SuppressWarnings(&quot;unchecked&quot;)
-      public JSONRecord(Record record){
-            put(&quot;generation&quot;, record.generation);
-            put(&quot;expiration&quot;, record.expiration);
-            put(&quot;bins&quot;, new JSONObject(record.bins));
-            if (record.duplicates != null){
-                  JSONArray duplicates = new JSONArray();
-                  for (Map&lt;String, Object&gt; duplicate : record.duplicates){
-                        duplicates.add(new JSONObject(duplicate));
-                  }
-                  put(&quot;duplicates&quot;, duplicates);
-             }
-       }
-}</pre>
-<p>This class is not complicated and is very generic. You may wish to specialize your JSON translation for specific records.</p>
-<h3>Create a resource controller</h3>
-<p>In Spring, REST endpoints are Spring MVC controllers. The following code handles a GET request for /as/{namespace}/{set}/getAll/1234 and returns the Flight record whose key is 1234, where {namespace} is the path variable for the Aerospike namespace and {set} is the path variable for the Aerospike set.</p>
-<pre><font color="#408080">src/main/java/com/aerospike/client/rest/RESTController.java</font>
-package com.aerospike.client.rest;
-import java.io.BufferedReader;
-import java.io.InputStreamReader;
-
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.multipart.MultipartFile;
-import com.aerospike.client.AerospikeClient;
-import com.aerospike.client.Bin;
-import com.aerospike.client.Key;
-import com.aerospike.client.Record;
-import com.aerospike.client.policy.Policy;
-import com.aerospike.client.policy.WritePolicy;
-
-@Controller
-public class RESTController {
-      @Autowired
-      AerospikeClient client;
-    @RequestMapping(value=&quot;/as/{namespace}/{set}/getAll/{key}&quot;, method=RequestMethod.GET)
-    public @ResponseBody JSONRecord getAll(@PathVariable(&quot;namespace&quot;) String namespace, 
-            @PathVariable(&quot;set&quot;) String set,
-            @PathVariable(&quot;key&quot;) String keyvalue) throws Exception {
-    Policy policy = new Policy();
-    Key key = new Key(namespace, set, keyvalue);
-     Record result = client.get(policy, key);
-     return new JSONRecord(result);
-  }
-}</pre>
-<p>The difference between a human-facing controller and a REST endpoint controller is the response body will contain data, in your case a JSON object that represents the record read from Aerospike.</p>
-<p>The @ResponseBody annotation tells Spring MVC to write the returned object into the response body.</p>
-<h3>Create an executable main class</h3>
-<p>Implement the main method to create a Spring MVC controller. The easiest way to do this is to use the SpringApplication helper class.</p>
-<pre><font color="#408080">src/main/java/com/aerospike/client/rest/AerospikeRESTfulService.java</font>
-package com.aerospike.client.rest;
-import java.util.Properties;
-import javax.servlet.MultipartConfigElement;
-import org.apache.commons.cli.CommandLine;
-import org.apache.commons.cli.CommandLineParser;
-import org.apache.commons.cli.Options;
-import org.apache.commons.cli.ParseException;
-import org.apache.commons.cli.PosixParser;
-import org.springframework.boot.SpringApplication;
-import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
-import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.ComponentScan;
-import org.springframework.context.annotation.Configuration;
-
-import com.aerospike.client.AerospikeClient;
-import com.aerospike.client.AerospikeException;
-@Configuration
-@EnableAutoConfiguration
-@ComponentScan
-public class AerospikeRESTfulService {
-      @Bean
-      public AerospikeClient asClient() throws AerospikeException {
-            Properties as = System.getProperties();
-            return new AerospikeClient(as.getProperty(&quot;seedHost&quot;), 
-                  Integer.parseInt(as.getProperty(&quot;port&quot;)));
-      }
-      @Bean
-      public MultipartConfigElement multipartConfigElement() {
-            return new MultipartConfigElement(&quot;&quot;);
-      }
-      public static void main(String[] args) throws ParseException {
-             Options options = new Options();
-             options.addOption(&quot;h&quot;, &quot;host&quot;, true, 
-                   &quot;Server hostname (default: localhost)&quot;);
-             options.addOption(&quot;p&quot;, &quot;port&quot;, true, &quot;Server port (default: 3000)&quot;);
-             // parse the command line args
-             CommandLineParser parser = new PosixParser();
-             CommandLine cl = parser.parse(options, args, false);
-             // set properties
-             Properties as = System.getProperties();
-             String host = cl.getOptionValue(&quot;h&quot;, &quot;localhost&quot;);
-             as.put(&quot;seedHost&quot;, host);
-             String portString = cl.getOptionValue(&quot;p&quot;, &quot;3000&quot;);
-             as.put(&quot;port&quot;, portString);
-             // start app
-             SpringApplication.run(AerospikeRESTfulService.class, args);
-      }
-}</pre>
-<p>The <a href="http://docs.spring.io/spring/docs/3.2.x/javadoc-api/org/springframework/context/annotation/EnableAutoConfiguration.html">@EnableAutoConfiguration</a> annotation has been added: it provides a load of defaults (like the embedded servlet container) depending on the contents of your classpath, and other things.</p>
-<p>It is also annotated with <a href="http://docs.spring.io/spring/docs/3.2.x/javadoc-api/org/springframework/context/annotation/ComponentScan.html">@ComponentScan</a>, which tells Spring to scan the hello package for those controllers (along with any other annotated component classes).</p>
-<p>Finally this class is annotated with <a href="http://docs.spring.io/spring/docs/3.2.x/javadoc-api/org/springframework/context/annotation/Configuration.html">@Configuration</a>. This allows you to configure an instance of the <a href="http://www.aerospike.com/java_api/">AerospikeClient</a> as a Spring bean.</p>
-<p>There is also a MultipartConfigElement bean defined. This allows you to process POST operations with this service.</p>
-<p>Most of the body of the main method simply reads command line arguments and sets system properties to specify the seed host and port of the Aerospike cluster.</p>
-<p>Too easy!</p>
-<h2>Uploading data</h2>
-<p>You may want to upload data to this service. To do this you need to add an additional method to the RESTController class to process the uploaded file. In this example, it will be a CSV file containing flight records.</p>
-<pre><font color="#408080">src/main/java/com/aerospike/client/rest/RESTController.java</font>
-@Controller
-public class RESTController {
-   . . . (code omitted) . . .
-   /*
-    * CSV flights file upload
-    */
-   @RequestMapping(value=&quot;/uploadFlights&quot;, method=RequestMethod.GET)
-   public @ResponseBody String provideUploadInfo() {
-       return &quot;You can upload a file by posting to this same URL.&quot;;
-   }
-   @RequestMapping(value=&quot;/uploadFlights&quot;, method=RequestMethod.POST)
-   public @ResponseBody String handleFileUpload(@RequestParam(&quot;name&quot;) String name, 
-          @RequestParam(&quot;file&quot;) MultipartFile file){
-     if (!file.isEmpty()) {
-           try {
-                 WritePolicy wp = new WritePolicy();
-                 String line = &quot;&quot;;
-                 BufferedReader br = new BufferedReader(new InputStreamReader(file.getInputStream()));
-                 while ((line = br.readLine()) != null) {
-                       // use comma as separator
-                       String[] flight = line.split(&quot;,&quot;);
-
-                       /*
-                        * write the record to Aerospike
-                        * NOTE: Bin names must not exceed 14 characters
-                        */
-                            client.put(wp,
-                                  new Key(&quot;test&quot;, &quot;flights&quot;,flight[0].trim() ),
-                                  new Bin(&quot;YEAR&quot;, Integer.parseInt(flight[1].trim())),
-                                  new Bin(&quot;DAY_OF_MONTH&quot;, Integer.parseInt(flight[2].trim())),
-                                  new Bin(&quot;FL_DATE&quot;, flight[3].trim()),
-                                  new Bin(&quot;AIRLINE_ID&quot;, Integer.parseInt(flight[4].trim())),
-                                  new Bin(&quot;CARRIER&quot;, flight[5].trim()),
-                                  new Bin(&quot;FL_NUM&quot;, Integer.parseInt(flight[6].trim())),
-                                  new Bin(&quot;ORI_AIRPORT_ID&quot;, Integer.parseInt(flight[7].trim())),
-                                  new Bin(&quot;ORIGIN&quot;, flight[8].trim()),
-                                  new Bin(&quot;ORI_CITY_NAME&quot;, flight[9].trim()),
-                                  new Bin(&quot;ORI_STATE_ABR&quot;, flight[10].trim()),
-                                  new Bin(&quot;DEST&quot;, flight[11].trim()),
-                                  new Bin(&quot;DEST_CITY_NAME&quot;, flight[12].trim()),
-                                  new Bin(&quot;DEST_STATE_ABR&quot;, flight[13].trim()),
-                                  new Bin(&quot;DEP_TIME&quot;, Integer.parseInt(flight[14].trim())),
-                                  new Bin(&quot;ARR_TIME&quot;, Integer.parseInt(flight[15].trim())),
-                                  new Bin(&quot;ELAPSED_TIME&quot;, Integer.parseInt(flight[16].trim())),
-                                  new Bin(&quot;AIR_TIME&quot;, Integer.parseInt(flight[17].trim())),
-                                  new Bin(&quot;DISTANCE&quot;, Integer.parseInt(flight[18].trim()))
-                            );
-                            System.out.println(&quot;Flight [ID= &quot; + flight[0] 
-                                                    + &quot; , year=&quot; + flight[1] 
-                                                    + &quot; , DAY_OF_MONTH=&quot; + flight[2] 
-                                                    + &quot; , FL_DATE=&quot; + flight[3] 
-                                                    + &quot; , AIRLINE_ID=&quot; + flight[4] 
-                                                    + &quot; , CARRIER=&quot; + flight[5] 
-                                                    + &quot; , FL_NUM=&quot; + flight[6] 
-                                                    + &quot; , ORIGIN_AIRPORT_ID=&quot; + flight[7] 
-                                                    + &quot;]&quot;);
-                        }
-                        br.close();
-                        return &quot;You successfully uploaded &quot; + name;
-                  } catch (Exception e) {
-                        return &quot;You failed to upload &quot; + name + &quot; =&gt; &quot; + e.getMessage();
-                  }
-            } else {
-                  return &quot;You failed to upload &quot; + name + &quot; because the file was empty.&quot;;
-              }
-       }
-}</pre>
-<p>A new method handleFileUpload() responds to a POST and reads the upload stream one line at a time. Each line is parsed and a Key object and several Bin objects are built to form the Aerospike record. Finally the Aerospike put() method is called to store the record in the Aerospike cluster.</p>
-<p>Another new method provideUploadInfo() responds to a GET and returns a message indicating uploads are possible.</p>
-<h3>Uploading client application</h3>
-<p>Uploading can be done any way you desire. But you can use the following standalone java class to upload data to this service.</p>
-<pre><font color="#408080">src/test/java/com.aerospike.client.rest/FlightsUploader.java</font>
-package com.aerospike.client.rest;
-import org.junit.Before;
-import org.junit.Test;
-import org.springframework.core.io.FileSystemResource;
-import org.springframework.util.LinkedMultiValueMap;
-import org.springframework.util.MultiValueMap;
-import org.springframework.web.client.RestTemplate;
-
-public class FilghtsUploader {
-      private static final String TEST_FILE = &quot;flights_from.csv&quot;;
-      @Before
-      public void setUp() throws Exception {
-      }
-
-      @Test
-      public void upload() {
-        RestTemplate template = new RestTemplate();
-        MultiValueMap&lt;String, Object&gt; parts = new LinkedMultiValueMap&lt;String, Object&gt;();
-        parts.add(&quot;name&quot;, TEST_FILE);
-        parts.add(&quot;file&quot;, new FileSystemResource(TEST_FILE));
-        String response = template.postForObject(&quot;<a href="http://localhost:8080/uploadFlights">http://localhost:8080/uploadFlights</a>&quot;,
-                                                  parts, String.class);
-        System.out.println(response);
-      }
-}</pre>
-<h3>Flights Data</h3>
-<p>This is real data from 2012. It contains approximately 1 million records, so remember that it will take a few minutes to upload.</p>
-<h2>Building and running the Service</h2>
-<p>The Maven pom.xml will package the service into a single jar. Use the command:</p>
-<p><strong>mvn clean package</strong></p>
-<p>This will generate a stand-alone web service application packaged into a runnable jar file in the target subdirectory. This jar file includes an instance of Tomcat, so you can simply run the jar without installing it in an Application Server.</p>
-<p><strong>java -jar aerospike-restful-example-1.0.0.jar</strong></p>
-<p><img src="http://www.infoq.com/resource/articles/rest-webservice-spring-boot-aerospike/en/resources/Picture1.png" alt="" _href="img://Picture1.png" _p="true" /></p>
-<h2>Summary</h2>
-<p>Congratulations! You have just developed a simple RESTful service using Spring and connecting it to an Aerospike cluster.</p>
-<h2>Complete Example Code</h2>
-<p><a href="https://docs.google.com/a/aerospike.com/file/d/0B8luCpttpeaAVkpHZ1NWYy1TbnM/edit?usp=sharing">Example code</a></p>
-<h2>Design Considerations</h2>
-<p>Access control is currently handled by the application versus the database. Since the authentication process slows down database speeds, virtually all NoSQL databases do not support this function. Most of our customers have prioritized increased speed over an integrated authentication feature.</p>
-<p>Another commonly requested feature is a join of two different sets of data. This is challenge faced by all distributed databases because the data for the join is distributed. In this case, the developer has to implement a join in the application.</p>
-<h2>About the Author</h2>
-<p><strong><img vspace="3" align="left" hspace="3" src="http://www.infoq.com/resource/articles/rest-webservice-spring-boot-aerospike/en/resources/Peter Milne photo.jpg" alt="" _href="img://Peter Milne photo.jpg" _p="true" />Peter Milne</strong> is a seasoned IT professional with extensive experience across the full software development and product life cycles. He has technical skills and management experience with small and large development teams. Peter was most recently a senior solutions architect at Aerospike. Prior to that, he was a senior analyst and programmer at MLC, and was CTO at iTerative Consulting building a Forte/UDS to Java conversion tool with 99.999% accuracy. Peter holds an MSc in distributed computing from the University of Technology, Sydney, as well as several helicopter safety licenses and certificates.</p>
-<p>&nbsp;</p><br><br><br><br><br><br></body></html>
+<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>Interview with Jan de Baere about the Rise and Fall of an Agile Company</h3><p>What happens when a director of a consulting company decides to drastically change the culture?&nbsp;At the <a href="http://atbru.be/">Agile Tour Brussels conference</a> Jan de Baere presented the why and how of a company that adopted agile, the journey that they went through, and how it came to a sudden end.&nbsp;</p>
+<p>InfoQ covers the <a href="http://www.infoq.com/agiletour">Agile Tour with news and interviews</a>.&nbsp;This is an interview with Jan about an agile change approach, culture and trust, and the lessons learned from an agile journey.</p>
+<p><b>InfoQ: Welcome Jan de Baere and thank you for doing this interview with InfoQ. </b></p>
+<blockquote> 
+ <p><b>Jan: </b>Thank you, it’s my pleasure.</p> 
+</blockquote>
+<p><b>InfoQ: At the Agile Tour Brussels you talked about the rise and fall of an Agile company. Can you tell us something about this company, what kind of business and how big is it?</b></p>
+<blockquote> 
+ <p><b>Jan:</b> It’s an IT consultancy company. When the changes started to take place it was about 70 people at the time. They provided consultancy services in project management, system engineers, programmers, and other IT profiles to work at the client side.</p> 
+</blockquote>
+<p><b>InfoQ: As you mentioned in your presentation, it started with the director of the company deciding to change the culture. What made the director take this decision?</b></p>
+<blockquote> 
+ <p><b>Jan: </b>Well, actually, three different signals came to him. The first one was that when the company took off in 2000, it started very fast. Then after a couple of years it slowed down. The growth rate was slowing down and he had no idea why.</p> 
+ <p>Second signal was that an external person who was giving training to the sales people at the company visited the director and he said “I’m sorry, but with the information I’ve got in my training, I think we should have a talk, because something is wrong with this company and it will wall soon”. He noticed something very peculiar about the company and wanted to inform the director about that. But the director actually kicked him out because he didn’t like that kind of messages.</p> 
+ <p>And the third and most significant probably, the fact that there were social elections coming on and the director thought there was no need for union in his company because nobody had problems. A group of people then started a union and he thought those guys were in it for the money; when you are elected you cannot get fired and if you get fired you get a lot of money. He started his own group of people and said they are the real representatives of the consultants. And there were social elections, and he thought the real union guys would never have a vote, but he was clearly mistaken because the guys from the union had a huge victory. At that moment he realized his vision of the world was not the correct one, all the things he thought to be correct didn’t seem to be coming true. He decided change was needed.</p> 
+</blockquote>
+<p><b>InfoQ: Adding up the three signals made him aware there was a real need for change?</b></p>
+<blockquote> 
+ <p><b>Jan: </b>Yes. At that moment in time he didn’t know where to go, he just knew he had a big issue, so he called the trainer that said this was going to happen, a little bit shy of course because he knew he kicked out the guy. He said “I’m sorry, I kicked you out, I was wrong and you were right; could you please come back and explain what you meant when you said my company was going to hit the wall?” That’s how the change process started.</p> 
+</blockquote>
+<p><b>InfoQ: What did he get out of that conversation with the trainer, which insights?</b></p>
+<blockquote> 
+ <p><b>Jan: </b>The trainer said it was all about organizational structure. He explained: you started a company on your own, with 5 people and then you grew very fast until about 70. The way you did it is: you are the father of the company, in the organizational structure according to Mintzberg that’s a simple structure. You try to control everything because you are the big boss and everybody listens to you and respects you. Everybody always says yes to you, nobody will say no to you. That’s ok, as long as you have less than 70 people, that’s about the number where this organizational type starts to break down. You now have two possibilities. One is to keep on growing and start to structure your organization, and put process and procedures and KPIs in place. If you go that path, then you become a bureaucracy: you organize and have a standard ways of doing stuff. The way to manage that is command-and-control.</p> 
+ <p>That’s not something the director liked, so he asked if there are any other possibilities. The trainer explained that the other possibility is to go for a company that is project oriented, that puts people in the center. Such a company is result driven; it is all about flexibility and adding value. This is where you recognize, of course, what Agile is all about: collaborative, people-centric, and result-driven. The management style that goes with it is supportive, collaborative. And that’s something that the director appreciated very much, he said “well, that’s the kind of company I want to have, the company I always wanted to have, only I didn’t know how to create a company like that.” That was the start into Agile. Of course it wasn’t called Agile, in Mintzberg’s words it’s called an adhocracy, but the values underlying it are the same as the Agile values.</p> 
+</blockquote>
+<p><b>InfoQ: I recognize that. So, basically, he decided he wants to change from being the father of the company using a command-and-control style to an Agile style of managing the company. Why Agile, what did he expect to get out of Agile?</b></p>
+<blockquote> 
+ <p><b>Jan: </b>Each sales process and each project is always different, you need flexibility. You need to add value rather than standardization. There were basically the two choices he was given: go for standardization or go for flexibility. And he said “flexibility is what I want”. Also, on a personal level, having people collaborating together, engineers with soft skills, that’s what he wanted to do, that’s what he wanted to realize. Only he never knew how to do that.</p> 
+</blockquote>
+<p><b>InfoQ: I can imagine that this was quite a change in the company. How did they approach the change to Agile and why did they choose this way to approach it?</b></p>
+<blockquote> 
+ <p><b>Jan: </b>The approach was not a planned approach but an emergent one; there was no road map or something like that. We had four building blocks that we used.</p> 
+ <p>The first building block was events: big town hall kinds of meetings where everybody would come together and something would be announced or we would have some training together. All the people get together, to give messages to the company and let the people from the company think together. Usually this was done when something important had happened and a global communication needed to do be given. For example the first event was to announce the start of adhocracy. This event took place in Casablanca – Morocco - and took two days. This way people knew the change was serious.</p> 
+ <p>Second building block was a lot of training. Training for the internal people (it was a consultancy company, so the sales guys, the administration) and also the guys from consultancy that were interested could follow those trainings. Training was for example on organizational structure from Mintzberg to let people know where they would be going to. We talked a lot about leadership and management, and attitudes like how to give feedback, receiving feedback, being active, passive, what’s the difference between a leader and a leader of leaders, that kind of stuff. Also on motivation, inspiration, Mayo, Herzberg, Schein. We also had a lot of training around communication, and about creativity, drawing techniques like Disney, Leonardo, Moshe, on how to draw a problem.</p> 
+</blockquote>
+<p><b>InfoQ: These kinds of training are more about the background, ideas, theories and concepts than about giving direction. It’s about giving the people and the company information that they can use to find their direction, right?</b></p>
+<blockquote> 
+ <p><b>Jan: </b>Absolutely. For example trainings on Scrum are mostly about process, roles etc. and a little bit on values. Here it’s completely the other way around, we started with the values, because that is the only thing we had. What is the right attitude to work in an Agile company, which kind of leadership you should have. From there we developed tools and processes that fitted our needs. It’s completely the other way around compared to how most companies would introduce Agile today.</p> 
+ <p>The third building block was workshops. We were split up in a couple of groups and each group would come together once a month to do group coaching. It was a cross-functional team, everybody could just state an issue they wanted to discuss or a question they wanted to discuss. With the help of the change agent we would have a discussion about that and solve the problem. Sometimes we ran into some issues and we could discuss them during the monthly group coaching. For me that was the heartbeat of the change as we learnt to apply the techniques from the training.</p> 
+ <p>The fourth and last building block was individual coaching. Group coaching is great for some stuff, but sometimes you need individual support and then you could go to a professional coach who would guide you through the problem. That was also something that we wanted to offer the whole company. We had 2 professional coaches and at the highest point in our cultural change we had about 40 internal coaches. The coaches coached each other and the more experienced coaches would get coached by professionals.</p> 
+</blockquote>
+<p><b>InfoQ: How did you see this approach working in the organization, how could you sense that the company was actually becoming more Agile?</b></p>
+<blockquote> 
+ <p><b>Jan: </b>There were a couple of signs. For example, when somebody new would come into the company he would say “hey, guys, you work in a strange way, whenever I go into a meeting with you, the first thing you do is to draw the problem”. I would say “yes, that’s normal; we are convinced that if you cannot draw the problem you don’t understand the problem well enough”. When the problem was drawn there would be a lot of silence. Most meetings would seem very slow for an outsider because there were not a lot of things that were said, especially in the beginning since people were thinking. That’s different from most meetings where people are anxious to tell what comes up in their head. We would be silent, thinking which would be the correct techniques, which are the correct questions I could ask. In the end the result was impressively fast. The level of energy is beyond anything I have seen anywhere else, when you came into the company you could just feel the level of energy was incredible.</p> 
+ <p>Another sign was that when I was at conferences talking with somebody who would ask “which company are you from?” and I would say what my company was, he would say “hey, that’s strange; I can recognize all the guys at your company”. “Normally consultants are all the same, but the guys from your company, they just stand out in one way or another, I can’t tell how or why, but you can just tell they come from your company”. So the change was seen from guys that were new in the company, but was even seen from guys that were outside the company. It was clear that something was different.</p> 
+</blockquote>
+<p><b>InfoQ: Can you tell how the adoption of Agile in the company worked out? What were the highlights and lowlights?</b></p>
+<blockquote> 
+ <p><b>Jan: </b>What I started is what we call corporate governance: all the team leads came together once a month and discussed what’s going to be done the next month in the company. It was actually a cross-functional team. First of all we discussed the company objectives and whether we would reach them, yes or no. Then we would go over each individual team and discuss how they contribute to the whole company. For example, we had a situation where we had not enough projects and too many consultants. I remember the guy from recruitment said “Recruitment has four people, but I can do with one person for the moment; so three people can support the guys from sales, because clearly they are having a hard time”. “I will not get my personal targets for my service, but at least we’ll have better performance at company level.” That’s something that guy told without being pushed by or by being said by the director. That was a clear sign that said “ok, this is what collaboration is all about.”</p> 
+</blockquote>
+<p><b>InfoQ: They were working more or less like a multidisciplinary team handling the problems?</b></p>
+<blockquote> 
+ <p><b>Jan: </b>Yes. That was just an example of how things went inside of the company. On the other hand, the mother company, because we were part of a larger group, didn’t like our way of working very much. They had the feeling there wasn’t a lot of control, there were just results. At that moment the market was going very bad, so the mother company demanded action.</p> 
+</blockquote>
+<p><b>InfoQ: The mother company was demanding a reorganization of your company?</b></p>
+<blockquote> 
+ <p><b>Jan</b>: Not as much a reorganization. Remember it is a consultancy organization so we had to lower the number of people on the bench a lot and fast. The director did not do this and got fired.</p> 
+</blockquote>
+<p><b>InfoQ: Guess that was a surprise for the company and the director?</b></p>
+<blockquote> 
+ <p><b>Jan: </b>Well, we saw it coming, because the pressure was gradually building up. And we knew this would end the story of adhocracy and Agile, we would go back to command-and-control style again.</p> 
+ <p>The consequence was that the people that were already engaged in the company and were very much into the new culture all left. That’s a real danger for companies, when you go that path and then you return: the people that are most into the new culture will leave. And that’s also what happened here.</p> 
+</blockquote>
+<p><b>InfoQ: What this shows is that it has taken long to build this new culture in the company and it takes so little to break it down?</b></p>
+<blockquote> 
+ <p><b>Jan: </b>Absolutely. I was told that cultural change was very difficult and would take extremely long time, and it turns out it’s not the case. Two changes, one building up the new company culture which took years and then it actually only took one day to change back to the command-and-control style again. I was puzzled and I thought about it. What I came up with is that building up is all about trust. If you want to build up trust, you don’t do that in a couple of days, it takes weeks, months, years. To break trust is something that can be done very easily, that’s what has happened with our company. To break trust, you can do it in five minutes.</p> 
+</blockquote>
+<p><b>InfoQ: Building and breaking trust is an important thing that you learnt from this. Are there other learnings that you took out of this?</b></p>
+<blockquote> 
+ <p><b>Jan: </b>What I learnt also is that not only companies changed but also people. The mother company was able to break down the culture, but all the people that were very active during that period, I still know them and they are still combining the engineering side with the soft/human side. Some started studying psychology, some started their own businesses. The individual people, they changed, not the company</p> 
+</blockquote>
+<p><b>InfoQ: If a company wants to change their culture, what is the advice you can give them? </b></p>
+<blockquote> 
+ <p><b>Jan: </b>Make sure you know what you want, which culture is of value for you. Changing the culture is a long and bumpy road so make sure you know why you want to change and above all make sure you have professional help to do it. I don’t think we could have managed it without the help of professional change agents.</p> 
+</blockquote>
+<p><b>InfoQ: I heard you say that a professional change agent supported the people in the company and enabled them to take things up themselves, as a process of internal coaching and mentoring?</b></p>
+<blockquote> 
+ <p><b>Jan: </b>Absolutely. What he did is support the fundamentals. He never assisted in taking decisions. He was taking care of the process, how to build up something, how to come to a decision. He never got into the internals, into the content side of the company. And that’s something I appreciated very much.</p> 
+</blockquote>
+<p><b>InfoQ: Thank you very much for this interview, Jan!</b></p>
+<blockquote> 
+ <p><b>Jan: </b>My pleasure.</p> 
+</blockquote>
+<h2>About the Interviewee</h2>
+<p><img src="http://www.infoq.com/resource/articles/rise-and-fall-agile-company/en/resources/JandeBaere.png" vspace="3" hspace="3" align="left" alt="" _href="img://JandeBaere.png" _p="true" />Within Cegeka <strong>Jan de Baere</strong> is a member of the agile transition department which helps companies making the transition towards agile. Currently he is helping ING to set up Agile Release Trains. In the agile community he is active as Chair of Agile Consortium Belgium.</p><br><br><br><br><br><br></body></html>
