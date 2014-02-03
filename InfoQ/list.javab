@@ -1,7 +1,7 @@
 <html>
  <head></head> 
- <body>
-  <div>
+ <body> 
+  <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/10.javab">Interview with Jan de Baere about the Rise and Fall of an Agile Company</a> What happens when a director of a consulting company decides to drastically change the culture? At the Agile Tour Brussels conference Jan de Baere presented the why and how of a company that adopted agile, the journey that they went through, and how it came to a sudden end. InfoQ interviewed him about the agile change approach, culture and trust, and the lessons learned from an agile journey. 
   </div> 
   <div> 
@@ -150,6 +150,6 @@
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/12.javab">BYOC and the Rise of Hybrid Cloud</a> Chris Smith offers insights on how to leverage the increasing employee adoption of cloud services (Bring Your Own Cloud) to perform their work. Understanding the risks and benefits becomes essential. 
-  </div>  
+  </div> 
  </body>
 </html>

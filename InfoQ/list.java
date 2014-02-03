@@ -2,10 +2,13 @@
  <head></head> 
  <body>
   <div>
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/12.java">How to Self-Assemble and Sustain a Self-Organising Team</a>A report on recent commentary by Mike Cohn, Thomas Cagley and others on the topic of team self-assembly and sustaining successful self-organising teams.
-  </div>
-  <div>
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/11.java">LightTable IDE Goes Open Source, Adds Plugin Support</a>Chris Granger has open sourced the LightTable IDE with the 0.6 release. Third party plugin support was the highlight feature of the release. InfoQ talked to LightTable creator Chris Granger.
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/13.java">Unsafe at any Speed; Oracle Surveys community about promoting sun.misc.Unsafe</a>Oracle software engineer Paul Sandoz is asking the public to weigh in on the controversial library sun.misc.Unsafe by responding to a Survey Monkey survey. The debate centers around whether Unsafe, under scrutiny due to its divergence from the Java credo of safe memory management, should be mainstreamed.
+  </div> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/12.java">How to Self-Assemble and Sustain a Self-Organising Team</a>A report on recent commentary by Mike Cohn, Thomas Cagley and others on the topic of team self-assembly and sustaining successful self-organising teams. 
+  </div> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/11.java">LightTable IDE Goes Open Source, Adds Plugin Support</a>Chris Granger has open sourced the LightTable IDE with the 0.6 release. Third party plugin support was the highlight feature of the release. InfoQ talked to LightTable creator Chris Granger. 
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/10.java">Open Source Active Directory Libraries for iOS and Android</a>Microsoft is offering previews of libraries for accessing Azure Active Directory for iOS and Android. These libraries are being released on github under the Apache 2 license. 
@@ -147,9 +150,6 @@
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/17.java">What's coming in the April 'Icehouse' release of OpenStack</a>Icehouse, the next release of the OpenStack open source cloud, will be coming in April 2014. Icehouse will bring automated installation (TripleO), bare metal provisioning (Ironic), a queuing and notification service (Marconi) and database as a service (Trove) as integrated services. Better support for Hadoop (Savanna) will be put into incubation. 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/16.java">Rust 0.9 Released With Revised Threading Model</a>The Rust team has released the latest version of its next generation programming language. New in this release is a redesigned threading system and several refinements as the language moves towards its 1.0 release. 
-  </div>   
+  </div>  
  </body>
 </html>
