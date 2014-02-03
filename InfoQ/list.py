@@ -2,13 +2,19 @@
  <head></head> 
  <body>
   <div>
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/37.py">Apple Macの30年</a>30年前にAppleは，1984という題の斬新な広告でMacを発表した。InfoQではMacの歴史を振り返るとともに，そのポイントと読者がこの記事を読んでいるシステムとの関係を明らかにする。
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/39.py">EメールとAutoPageScaleのサポート，ファネル加重スライスを加えたStimulsoft Reports.Fx 2013.3</a>StimulsoftがAdobe Flex, PHP, Java用のReports.Fx 2013.3をリリースした。指定されたアドレス，主題，テキストのEメールによるレポート配信をサポートしたのに加えて，グラフ形式としてのファネル加重スライスが新しい。AutoPageScale，CSV形式のレポートに適切なフィルタを設定可能なBand Filterオプションも追加されている。
   </div>
   <div>
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/36.py">アジャイルにおけるドキュメント：いつどれくらい書くべきか</a>アジャイルソフトウェア開発マニフェストは「包括的なドキュメントよりも動くソフトウェア」に価値を置いている。そうだとすると、どんな種類のドキュメントが、いつどれだけ必要なのだろうか？
-  </div>
-  <div>
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/35.py">PaaSに何が起きているのか？</a>巨額の投資や長期の開発にもかかわらず，PaaSはいまだ多くのユーザを引き付けることに成功していない。この記事ではPaaSの現状とその将来について，何人かのアナリストによる意見を要約して紹介する。
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/38.py">Windows Phoneアプリの認証エラーとその回避手段</a>Windows Phoneアプリをより迅速にリリースするには，Windows Phone Store認証およびポリシチームの提供するヒントを取り入れて開発を行う必要がある。これらのヒントの大部分は，アプリが認証獲得に失敗する場合のシナリオなのだ。
+  </div> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/37.py">Apple Macの30年</a>30年前にAppleは，1984という題の斬新な広告でMacを発表した。InfoQではMacの歴史を振り返るとともに，そのポイントと読者がこの記事を読んでいるシステムとの関係を明らかにする。 
+  </div> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/36.py">アジャイルにおけるドキュメント：いつどれくらい書くべきか</a>アジャイルソフトウェア開発マニフェストは「包括的なドキュメントよりも動くソフトウェア」に価値を置いている。そうだとすると、どんな種類のドキュメントが、いつどれだけ必要なのだろうか？ 
+  </div> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/35.py">PaaSに何が起きているのか？</a>巨額の投資や長期の開発にもかかわらず，PaaSはいまだ多くのユーザを引き付けることに成功していない。この記事ではPaaSの現状とその将来について，何人かのアナリストによる意見を要約して紹介する。 
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/35.py">アジャイルとリーンを組み合わせる</a>アジャイルとリーンはソフトウエア開発を改善する方法だ。マネージャはどちらが自分たちの組織に適しているか判断しなければならない。しかし、解決しなければならない問題によっては複数の方法を組み合わせることもできる。 
@@ -144,12 +150,6 @@
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/41.py">PowerShellのDesired State Configuration，プッシュモードとプルモードをサポート</a>Windows PowerShell Blogに現在，PowerShellのDSC(Desired State Configuration)に関する記事が掲載されている。DSCはWindowsでコンピュータの構成管理を行うための，Microsoftからの提案だ。最新の記事のひとつではプッシュとプルという，DSCで選択可能な２つのコンフィギュレーションモードについて説明されていて，いずれのアプローチにもそれぞれの長所と短所がある。 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/40.py">Twitterでの予測</a>Velocity Conf LondonでTwitterのArun Kejariwal氏がTwitterで使われている予測アルゴリズムについて話した。予測アルゴリズムはシステムリソースの予測とユーザ数やツイート数などビジネス上の指標の予測に使われている。Twitterのデータストリームのダイナミックさを考慮した場合、磨き直したARIMAモデルは一度予測エラーを検出して、異常値を排除できれば有効に働くということがわかった。 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/39.py">RESTの代替は必要か</a>SoapUIの開発者であるOle Lensmar氏が最近、RESTが本当にリアルタイムの非同期のバイナリプロトコルが必要なアーキテクチャにも適しているかどうか疑問を投げかけている。 
-  </div>    
+  </div>   
  </body>
 </html>

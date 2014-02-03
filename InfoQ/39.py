@@ -1,30 +1,8 @@
-<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>RESTの代替は必要か</h3><p><a target="_blank" href="http://www.infoq.com/news/2013/12/rest-alternatives"><em>原文(投稿日：2013/12/29)へのリンク</em></a></p>
+<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>EメールとAutoPageScaleのサポート，ファネル加重スライスを加えたStimulsoft Reports.Fx 2013.3</h3><p><a target="_blank" href="http://www.infoq.com/news/2014/01/stimulsoft-reports-fx-2013-3"><em>原文(投稿日：2014/01/13)へのリンク</em></a></p>
 <div class="article_page_left news_container text_content_container"> 
  <div class="text_info"> 
-  <p>SoapUIの開発者であるOle Lensmar氏が最近、<a href="http://blog.programmableweb.com/2013/12/19/is-rest-losing-its-flair-rest-api-alternatives-2/">RESTは&quot;利点を失いつつあるのではないか&quot;</a>、RESTの代替が必要なのではないか、という問いを投げかけている。</p> 
-  <blockquote>
-   公開APIを構築するための有力な方式としてのRESTはほかのAPI技術を見劣りさせています。企業向けのシステムでは、ほかの方法(主にSOAP)も未だに使われていますが、RESTのアーリーアダプターはほかのAPI方式に対しては断固受け入れないスタンスを取り、RESTを採用してフォーマットにはJSONを使います。
-  </blockquote> 
-  <p>氏はSOAPやXML-RPCのようなほかの方式ではなくて、RESTが成功した理由を説明している。しかし、氏はRESTが利用しにくい領域も多くあり、そのような領域ではほかの方法が必要だと考えている。</p> 
-  <ul> 
-   <li>非同期API: &quot;従来のリクエスト/レスポンスではなく、データを非同期で押し出さなければならない場合、RESTfulな設計はうまく適用できません。さらに、基盤技術(WebSockets, MQTT, AMQP, Stomp, pubsubhubbub/WebHooksなど)はHTTPとはまったく異なるので、RESTの原則とは普通、相容れません。&quot;</li> 
-   <li>オーケストレーションAPI: &quot;従来のREST APIが提供するリソースの粒度には利点はない。要求されたリソースをモバイルのダッシュボードや複雑なシングルページウェブアプリケーションから取得するには多くのAPIリクエストが必要。この場合、クライアントのロジック、帯域、サーバ処理にオーバヘッドが発生します。&quot;</li> 
-   <li>SDK vs API: &quot;ほとんどのAPIの利用者はハイレベルな言語から利用します。したがって、各言語向けのクライアントライブラリを含む多くのAPIプロバイダが生まれます(Google、Facebookなど)。言語自体がRPC指向なので、SDKが提供するコードレベルのAPIも同様RPC指向になってしまいます。すると、おそらくは、最適化されたバイナリプロトコルを利用して、あるいは、RPCライクにHTTPリソースを使うことで(例えばJSON-RPC)、バックエンドのAPIも同様の動作をするように作ってしまいます。&quot;</li> 
-   <li>バイナリプロトコル: &quot;[...] 例えばIoTデバイスやSDKからのリクエストに対応するために最適化されたメッセージ転送を行うため、バイナリプロトコルはより注目を集め、利用されるようになっています。&quot; Apache Thrift, Google Protocol Buffers, Apache Avroなどのプロトコルだ。&quot;上述した非同期APIのいくつかはバイナリフォーマットを利用しています。デバイスやサービスによって背負わされた帯域や処理の制限に対応するためです。&quot;</li> 
-  </ul> 
-  <p>氏はリアルタイムの要件のため、プロトコルとしてThriftを利用しているEvernoteを例示する。氏は、Daniel Jacobson氏の<a href="http://blog.programmableweb.com/2013/10/03/is-evernotes-restless-api-approach-a-model-for-other-api-designs/">EvernoteのRESTlessな設計</a>についての記事に言及している。</p> 
-  <blockquote>
-   [...] REST APIは不特定多数の開発者を相手にする場合は優れた方法だと思います。しかし、利用者が特定のユーザや市場、産業や技術だけに限定されている場合、もっと具体的な解決策を選択するのは合理的なやり方です。性能や使いやすさ、セキュリティの面で競合より優位に立てるかもしれません。
-  </blockquote> 
-  <p>氏は、とりわけAPIの設計では、ひとつの側面がすべてに適用できることはないということを認める。&quot;私たちのような情熱的な技術者にとって幸運なのは、新しいことを学び、それをすべての利害関係者にとって最適なかたちで利用することで、私たちの世界はよりしっかりする(すくなくとも私の世界は)ということです。私はこのような多様性のある環境を否定しません。大歓迎です。&quot;</p> 
-  <p>コメント欄では氏に賛成するコメントもある一方、賛成しないコメントも多い。例えば、John Sheehan氏は、</p> 
-  <blockquote>
-   私はEvernoteはRESTを捨てたとは思いません。最初から使っていなかったのではないでしょうか。使っていなかったのにもしっかりとした理由があると思います。Webhooksはとても‘REST’っぽい(最低でも一般的な理解では)です。非同期についての解説であなたが挙げた一覧はほとんどの一般的な実装には適用できません。
-  </blockquote> 
-  <p>Darrel Miller氏はRESTと&quot;ポピュラーなREST&quot;の違いを示そうとしている。</p> 
-  <blockquote>
-   私がDaniel Jacobson氏のオーケストレーションレイヤから言えることは、長い間、私がRESTfulな(そしてハイパーメディア駆動)APIを構築する上で利用してきた方法にとても近い、ということです。人々が“ポピュラーなREST”の誇大広告はFieldingのRESTの特性を何も変えていないことに気付き始めているからです。
-  </blockquote> 
-  <p>多くのコメントがOle氏が真のRESTfulな原則とRESTfulと言われているが実際はそうでない実装を区別していない、と指摘している。あなたはどう思うか。すべての領域でRESTは利用できるのだろうか。あなたのおすすめを教えてください。</p> 
+  <p>Stimulsoftが<a href="http://www.stimulsoft.com/en/products/reports-fx-flex">Adobe Flex</a>, <a href="http://www.stimulsoft.com/en/products/reports-fx-php">PHP</a>, <a href="http://www.stimulsoft.com/en/products/reports-fx-java">Java</a>用にReports.Fx 2013.3をリリースした。指定されたアドレス，主題，テキストのEメールによるレポート配信をサポートする。また今回のリリースには，ファネル加重スライス(Funnnel Weighted Slices)グラフコンポーネントも新たに含まれている。データを高さの異なるブロックで表示することで，売上レベルの解析が可能になる。<br /> <br /> <img src="http://www.infoq.com/resource/news/2014/02/stimulsoft-reports-fx-2013-3/ja/resources/Figure_1_Stimulsoft.png" alt="" _href="img://Figure_1_Stimulsoft.png" _p="true" /></p> 
+  <p>最新リリースにはAutoPageScaleも含まれていて，印刷ページの全領域がレポートページとなるように，自動的にスケーリングを行うことができる。この機能はビューアではデフォルトで有効になっていて，ページサイズに関わらず，レポートがページ全体に印刷される。ただし項目の印刷で用紙サイズに従う必要がない場合には，このオプションを無効にすることも可能だ。<br /> <br /> Reports.Fx 2013.3には，新たにBands Filterオプションが含まれている。CSVエクスポート時に開発者が，適切なフィルタをレポートに適用することができる。<br /> <br /> <img src="http://www.infoq.com/resource/news/2014/02/stimulsoft-reports-fx-2013-3/ja/resources/Figure_2_Stimulsoft.png" alt="" _href="img://Figure_2_Stimulsoft.png" _p="true" /></p> 
+  <p>&quot;Data Only&quot;は，テーブルや階層バントといったデータバンドのみをエクスポートするという意味のオプションだ。また&quot;Data and Headers/Footers&quot;オプションではデータバンドに加えてヘッダとフッタを，&quot;All Bands&quot;オプションではすべてのレポートバンドをエクスポートすることができる。</p> 
  </div> 
 </div><br><br><br><br><br><br></body></html>

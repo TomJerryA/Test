@@ -1,43 +1,13 @@
-<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>Glass Developer KitでXamarin Androidを使ったGoogle Glassアプリ開発が可能に</h3><p><a target="_blank" href="http://www.infoq.com/news/2013/12/glass-developer-kit"><em>原文(投稿日：2013/12/17)へのリンク</em></a></p>
+<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>Windows Phoneアプリの認証エラーとその回避手段</h3><p><a target="_blank" href="http://www.infoq.com/news/2014/01/win-phone-certification-errors"><em>原文(投稿日：2014/01/11)へのリンク</em></a></p>
 <div class="article_page_left news_container text_content_container"> 
  <div class="text_info"> 
-  <p><a href="https://components.xamarin.com/view/googleglass">Glass Developer Kit</a>(GDK)が先日のGoogle開発者イベントでリリースされた。C#とXamarin.Androidを使用して，Google Glass上で動作するネイティブアプリケーションを開発することができる。公式発表によると，APIの大部分は現在すでにAndroidアプリで使用できるものであるため，キット内のツールや機能を探し出すことは容易だという。</p> 
-  <p>Glass Developer Kitは，GoogleのGlass Explorer Programに参加する開発者に対して，無償で提供される。Android SDKの<a href="http://developers.google.com/glass/develop/gdk/index">アドオン</a>であるこのキットは，クロスプラットフォームなGlassware APIへのアクセスと合わせて，Google Glassで動作するアプリをC#で記述するためのサンプルデモを提供する。</p> 
-  <p>InfoQでは，Xamarinのソフトウェア開発者でASPInsiderの<a href="https://twitter.com/chrisntr">Chris Hardy</a>氏から，Xamarin.AndroidとGoogle Glass Developer Kitに関する詳細を聞くことにした。<br /> <br /> <strong>InfoQ: Xamarin.Androidとは何ですか？</strong></p> 
-  <blockquote>
-   Xamarin.Androidは，C#言語とCLR(Common Language Runtime)/.NETフレームワークのパワーを使った，ネイティブなAndroidアプリケーションのプログラムを可能にする開発ツールです。
-  </blockquote> 
-  <p><strong>InfoQ: Google Glassはどのような役割のものなのでしょう？</strong></p> 
-  <blockquote>
-   Google Glassの目的は，利用者に対して，ポケットからモバイルデバイスを取り出す手間を強いることなく，有益な情報を提供することにあります。この情報は，視野の右上の小さなスクリーンに表示されます。カメラと骨伝導スピーカも内蔵しています。
-  </blockquote> 
-  <p><strong>InfoQ: Xamarin.Androidベースのアプリケーションを開発するには，どのようなツールが必要なのでしょう？</strong></p> 
-  <blockquote>
-   <a href="http://xamarin.com/android">Xamarin</a>の公式サイトに，必要なツールの概要が紹介されています。ですがXamarin.Androidの他に，MacではXamarin Studio，WindowsではXamarin StudioかVisual Studio 2010, 2012, 2013のいずれかがあれば作業が可能です。ほとんどの人たちはVisual StudioでXamarin.Androidアプリケーションを開発しています。Visual Studio IDEに慣れている人は多いですから。
-  </blockquote> 
-  <p><strong>InfoQ: 私がGDKでアプリを開発したとしましょう。Google Glassでどのような情報を見ることができますか？</strong></p> 
-  <blockquote>
-   スクリーンに表示される情報はすべて見ることができます。スクリーンのすべてにアクセスできますから，何か特別なものを描くことも，WebViewでWebサイトを表示することも， ビデオの再生や付属するカメラの画像を表示する(アプリケーション内でQRコードのスキャンを行う場合は便利でしょう)ことも可能です。一般的には，利用者が見ているものを明確にするために，大きめのテキストで簡潔な情報を表示することになるでしょう。このGoogle Glassディスプレイの表示は，”25インチの高解像度ディスプレイを8フィート離れて見た場合と同等の高精細画面” だと言われています。
-  </blockquote> 
-  <p><strong>InfoQ: Glass Developer Kitには，Google Glassを所持しないユーザ用のエミュレータは付属しているのでしょうか？</strong></p> 
-  <blockquote>
-   今のところGoogleは，Google Glassを持たない開発者用のエミュレータを提供していません。私たちとしては，次のリンク: http://www.google.com/glass/start/how-to-get-one/?source=xamarinを通じてサインアップすることをお勧めします。サインアップ後１週間以内(この期間はGoogle次第ですが)に，Google Glass Explorersに参加するための招待状が届くように手配します。
-  </blockquote> 
-  <p><strong>InfoQ: Xamarin.Androidで開発したGoogle Glassアプリケーションのサンプルプログラムは入手可能なのでしょうか？</strong></p> 
-  <blockquote>
-   Xamarin.Androidを使った
-   <a href="https://www.dropbox.com/s/f1z1r5lzohgsly2/GoogleGlassSampleStopwatch.zip">ストップウォッチ</a>のサンプルプログラムがあります。
-  </blockquote> 
-  <p><strong>InfoQ: どのようなタイプのアプリケーションが開発できますか？</strong></p> 
-  <blockquote>
-   あらゆる種類のアプリケーションが開発可能です。特別なタイプのAPIによって制約されたり，Xamarinプラットフォームのために制限を受けたりすることはありません。アプリケーションの例をいくつか挙げてみましょう:
-   <br /> 
-   <br /> 
-   <a href="http://xamarin.com/apps#rdio">Rdio</a>: - このアプリはiOSとWinodws PhoneでもC#で開発されています。
-   <br /> 
-   <a href="http://xamarin.com/apps#direct-energy">Direct Energy</a>: このアプリはiOS用にもC#で開発されています。
-   <br /> 
-   <a href="https://play.google.com/store/apps/details?id=com.fds.infiniteflight&amp;hl=en">Infinite Flight</a>: このアプリはiOSとWinodws PhoneでもC#で開発されています。
-  </blockquote>
+  <p><a href="http://www.windowsphone.com/en-in">Windows Phone</a> Storeの認証およびポリシチームは，開発フェーズ中に開発者が犯すことの多い規約不履行に関するリストを公開した。アプリケーションのリリース遅延の原因やコスト要因ともなる，そのようなエラーを回避するためのステップも合わせて提供している。まず第一の要件は，アプリケーションのスクリーンショットに関するものだ。スクリーンショットにはエミュレータのクロムやフレームレートカウンタ，あるいは修正前後を問わずデバッグ情報を含んではならない。またWindows 8 SDKには，WVGA，XVGA，720pの解像度を持つエミュレータが添付されている。スクリーンショットの取得には，このエミュレータに組み込まれたスクリーンショットツールを使用する必要がある。</p> 
+  <p>さらにWVGA解像度の<a href="http://msdn.microsoft.com/en-us/library/windowsphone/develop/hh184844(v=vs.105).aspx">スクリーンショット</a>は，XVGAスクリーンショットを自動的にWVGAの解像度にスケールダウンしてくれる，Dev Centerの機能を使用して取得することが必要だ。さらにローカライズしたアプリを提供する場合は，サポートする言語それぞれのスクリーンショットを含めなければならない。</p> 
+  <p><a href="http://msdn.microsoft.com/en-us/library/windowsphone/develop/hh184840(v=vs.105).aspx">ログイン</a>認証の必要なアプリを提出する場合には，Dev Centerに提出資料する認定資料にダミーアカウントに関する詳細を添付して，評価チームがアプリケーションの完全なテストを行えるようにする必要がある。この情報を提供しないアプリケーション申請は拒否され，再申請を求められることになるため，結果的にアプリのリリースが遅れることになる。</p> 
+  <p>開発者としては，<a href="https://www.bugsense.com/">BugSense</a>や<a href="http://blogs.msdn.com/b/andypennell/archive/2010/11/01/error-reporting-on-windows-phone-7.aspx">Little Watson</a>など，処理されない例外の遠隔データを収集可能なツールを活用して，テストフェーズ中にアプリが予期せず<a href="http://msdn.microsoft.com/en-us/library/windowsphone/develop/hh184840(v=vs.105).aspx">終了</a>することを回避する措置を取ることも必要だ。</p> 
+  <p>Visual StudioやApp Studio，<a href="http://cordova.apache.org/">Apache Cordova</a>には，アプリケーションで利用可能なアイコンとタイル画像が提供されている。しかしデフォルトイメージは必要なサイズのみをピンポイントで用意しているので，Microsoftでは，自分で用意したイメージで置き換えることを推奨している。</p> 
+  <p>Microsoftによれば，「戻る」ボタンがアプリをクローズするのはメインページのみでなければならない。それ以外では，前のページに移動するのみにする必要がある。開いているダイアログとソフトキーボードをクローズすることも必要だ。</p> 
+  <p>Microsoftは開発者に，サポート対象の言語それぞれに対して，組み込みのエミュレータを使用して，ローカライズされたアプリの説明を添付することを推奨している。さらに「明るい」テーマと「暗い」テーマの両方でプロパティを表示可能なように，アプリを開発する必要がある。Visual Studioを使用していれば，開発ステージからこれらのテーマを簡単に切り替えることが可能だ。</p> 
+  <p>Windows Phone Store認証およびポリシチームの<a href="http://blogs.windows.com/windows_phone/b/wpdev/archive/2014/01/10/top-windows-phone-app-certification-failures-and-how-to-avoid-them.aspx">Mike Francis</a>氏は，現在のアプリのテーマをテストするために必要なコードを，windowsアプリ品質向上のヒントと合わせて提供している。</p> 
  </div> 
 </div><br><br><br><br><br><br></body></html>

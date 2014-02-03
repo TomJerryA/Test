@@ -1,6 +1,9 @@
 <html>
  <head></head> 
- <body> 
+ <body>
+  <div>
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/10.java">Open Source Active Directory Libraries for iOS and Android</a>Microsoft is offering previews of libraries for accessing Azure Active Directory for iOS and Android. These libraries are being released on github under the Apache 2 license.
+  </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/9.java">What to Expect From HTTP/2</a>In a recent blog posting Mark Nottingham, chair of the HTTP/2 Working Group, gives his opinion on 9 things to expect in the next version of the Web standard which is rapidly nearing completion and implementations are starting to appear. 
   </div> 
@@ -147,9 +150,6 @@
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/14.java">Twitter Open-Sources its MapReduce Streaming Framework Summingbird</a>Twitter has open sourced their MapReduce streaming framework, called Summingbird. Available under the Apache 2 license, Summingbird is a large-scale data processing system enabling developers to uniformly execute code in either batch-mode (Hadoop/MapReduce-based) or stream-mode (Storm-based) or a combination thereof, called hybrid mode. 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/13.java">Webix 1.4 Released with WebSocket, IndexedDB, Data and Grid Suggest</a>Webix has been updated with support for data-suggest which enables you to make use of images as options. It also adds grid-suggest to select data from a table including support for WebSocket and IndexedDB. 
-  </div> 
+  </div>  
  </body>
 </html>
