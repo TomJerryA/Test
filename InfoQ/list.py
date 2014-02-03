@@ -1,6 +1,18 @@
 <html>
  <head></head> 
- <body> 
+ <body>
+  <div>
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/37.py">Apple Macの30年</a>30年前にAppleは，1984という題の斬新な広告でMacを発表した。InfoQではMacの歴史を振り返るとともに，そのポイントと読者がこの記事を読んでいるシステムとの関係を明らかにする。
+  </div>
+  <div>
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/36.py">アジャイルにおけるドキュメント：いつどれくらい書くべきか</a>アジャイルソフトウェア開発マニフェストは「包括的なドキュメントよりも動くソフトウェア」に価値を置いている。そうだとすると、どんな種類のドキュメントが、いつどれだけ必要なのだろうか？
+  </div>
+  <div>
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/35.py">PaaSに何が起きているのか？</a>巨額の投資や長期の開発にもかかわらず，PaaSはいまだ多くのユーザを引き付けることに成功していない。この記事ではPaaSの現状とその将来について，何人かのアナリストによる意見を要約して紹介する。
+  </div> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/35.py">アジャイルとリーンを組み合わせる</a>アジャイルとリーンはソフトウエア開発を改善する方法だ。マネージャはどちらが自分たちの組織に適しているか判断しなければならない。しかし、解決しなければならない問題によっては複数の方法を組み合わせることもできる。 
+  </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/34.py">JavaScriptのためのSOLID設計原則</a>SOLID原則は安定したJavaScriptコードを書くのに役立つオブジェクト指向プログラミングの一例だ。 JavaScriptを中心に本も書いている開発者のDerick Bailey氏が最近のプレゼンテーションでこのように語った。 
   </div> 
@@ -138,18 +150,6 @@
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/39.py">RESTの代替は必要か</a>SoapUIの開発者であるOle Lensmar氏が最近、RESTが本当にリアルタイムの非同期のバイナリプロトコルが必要なアーキテクチャにも適しているかどうか疑問を投げかけている。 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/38.py">Glass Developer KitでXamarin Androidを使ったGoogle Glassアプリ開発が可能に</a>先日リリースされたGlass Developer Kitを使うことによって，Google Glassで動作するプログラムをC#とXamarin.Androidで開発することが可能になる。このキットにはクロスプラットフォームAPIと，サンプルとしてデモアプリが含まれている。 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/37.py">HadoopジョブをGPU上で実行するParallelX</a>MapReduceパラダイムは，大規模な計算集約的アルゴリズムを扱う場合には，必ずしも理想的ではない。ある企業家の小さなチームが，これを解決するためにParallelXという製品を開発している。GPUのパワーを活用してHadoopジョブを強力に加速することで，ボトルネックを解消しようというものだ。 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/36.py">ASP.NET Identity Preview 2.0でAccount Confirmation,Password Reset,Security Token Providerの機能をサポート</a>ASP.NET Identity Framework 直近のリリースで、UsersStore と RolesStore で IQueryable が利用可能になったことに加え、Account Confirmation, Password Reset, Security Token Provider の機能をサポートした。 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/35.py">APIオーケストレーション層</a>従来のリソース指向のAPIモデルはAPI利用者の最も重要なことを満たせていないかもしれない。Netflixの Daniel Jacobson氏は、良いAPI設計とはAPI利用者のことを知って、彼らのためにAPIを最適化することだと語っている。 
-  </div> 
+  </div>    
  </body>
 </html>

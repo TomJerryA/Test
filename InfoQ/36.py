@@ -1,9 +1,65 @@
-<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>ASP.NET Identity Preview 2.0でAccount Confirmation,Password Reset,Security Token Providerの機能をサポート</h3><p><a target="_blank" href="http://www.infoq.com/news/2013/12/asp-net-identity-preview-2"><em>原文(投稿日：2013/12/24)へのリンク</em></a></p>
+<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>アジャイルにおけるドキュメント：いつどれくらい書くべきか</h3><p><a target="_blank" href="http://www.infoq.com/news/2014/01/documentation-agile-how-much"><em>原文(投稿日：2014/01/23)へのリンク</em></a></p>
 <div class="article_page_left news_container text_content_container"> 
  <div class="text_info"> 
-  <p><a href="http://blogs.msdn.com/b/webdev/archive/2013/12/20/announcing-preview-of-microsoft-aspnet-identity-2-0-0-alpha1.aspx">Microsoft</a> は <a href="https://aspnetidentity.codeplex.com/">ASP.NET Identity Preview</a> をリリースし、バグフィックスに加えて Account Confirmation, Password Reset, Security Token Provider, UsersStore と RolesStore での IQueryable をサポートした。<br /> <br /> Account Confirmation 機能では、ユーザ情報をサイトに登録した後、SMTP や <a href="http://sendgrid.com/windowsazure.html">SendGrid</a> を利用してユーザにメールを送付し、リンクをクリックすることでアカウントをアクティブ化する機能を実現できる。また、Password Reset 機能を利用することで、パスワードを忘れた際に自身のパスワードを初期化するのが簡単になった。</p> 
-  <p>Security Token Provider 機能を利用することで、パスワード変更時やFacebook, Google, Microsoft Account 等のソーシャルメディアのハンドルを削除した場合にトークンを再生成する方法を提供する。</p> 
-  <p>開発コミュニティのフィードバックにより、Microsoft はユーザやロールのテーブルに対し、Primary Key(PK)を指定することが可能な拡張ポイントを提供した。更に、以前のバージョンではできなかった UserManager を介したユーザの削除が可能になる。最新のリリースでは、UserManagerFactory と DbContextFactory でもサポートする。</p> 
-  <p>上記の機能に加え、Microsoft は IdentityUser クラスに Email と IsConfirmed 二つのプロパティを追加した。同プロパティを利用して、ASP.NET Identity 2.0 で生成したスキーマの変更結果を取得することができる。</p> 
+  <p>アジャイルソフトウェア開発マニフェストは「包括的なドキュメントよりも動くソフトウェア」に価値を置いている。そうだとすると、どんな種類のドキュメントが、いつどれだけ必要なのだろうか？</p> 
+  <p>Jonathan Berger氏はブログ記事、<a href="http://pivotallabs.com/minimum-viable-deliverable/">Minimum Viable Deliverable</a>において、設計判断を伝えることについて書いている。ドキュメントの利用について彼は次のように考えている。</p> 
+  <blockquote> 
+   <p>アジャイルマニフェストは「包括的なドキュメントよりも動くソフトウェア」を推奨していますが、なぜ設計者はユーザが見ることのない中間生成物に時間をかけているのでしょうか？ アジャイルはムダを最小限にしようとしているので、論理的に突き詰めれば、<em>あらゆるドキュメントはムダ</em>になります。このことは、ドキュメントを完全になくせる（あるいは、なくすべきである）ことを意味するのではありません。（ある程度の規模の）チームが機能するには、ドキュメントは必要です。しかしながら、ドキュメントを最小限にすることは良いことであり、設計者はできるだけ最小の作業で設計判断を伝えるべきだということを示唆しています。</p> 
+  </blockquote> 
+  <p>どうすればドキュメントを最小限にできるのか、Jonathan氏は以下のように提案している。</p> 
+  <blockquote> 
+   <p>1) チーム内に「中間生成物は少なければ少ないほど良い」という考えを広める</p> 
+   <p>2) <em>今必要な最小限の成果物は何だろうか？</em>と常に問いかける</p> 
+  </blockquote> 
+  <p>Ashish Sharma氏はアジャイルの<a href="http://www.scrumalliance.org/community/articles/2013/december/essential-valuable-timely-documentation">必要不可欠な、価値のある、タイムリーなドキュメント</a>におけるドキュメントと議論のバランスについてこう書いている。</p> 
+  <blockquote> 
+   <p>アジャイルの目標は、ドキュメントと議論の適切なバランスを見つけることであるべきです。アジャイルであろうがなかろうが、ドキュメントはあらゆるシステムにおいて重要なところですが、包括的なドキュメントはプロジェクトの成功を保証するものではありません。実際のところ、失敗する可能性は高くなります。</p> 
+  </blockquote> 
+  <p>そして、どれくらいドキュメントを書くべきか、いつ書くべきかを決めるのに使える3つの基準について述べている。</p> 
+  <blockquote> 
+   <p><i>必要不可欠な:</i> 必要十分なだけの詳細を含むようにドキュメントを書く。</p> 
+   <p><i>価値のある:</i> 欲しいときではなく、実際に必要なときだけドキュメントを書く。</p> 
+   <p><i>タイムリーな:</i> ドキュメントは必要なときに、ちょうど間に合わなくてはならない。</p> 
+  </blockquote> 
+  <p><a href="http://www.infoq.com/author/Michael-Nygard">Michael Nygard</a>氏はドキュメントに対するプロセスの観点について説明している。彼は<a href="http://thinkrelevance.com/blog/2013/10/07/begin-with-the-end-in-mind">目標を想像することから始める</a>よう提案する。</p> 
+  <blockquote> 
+   <p>顧客不在のプロセスをよく見かけます。これはまったくのムダです。文字通り、だれもそのアウトプットを使っていないのに、作った人はそれを実感していないのです。</p> 
+  </blockquote> 
+  <p>Michael氏が言うように、プロセスはインプットとアウトプット含めて、顧客視点で記述されるべきだろう。彼はそのために使える質問について説明している。</p> 
+  <blockquote> 
+   <ol> 
+    <li>顧客はだれですか？</li> 
+    <li>顧客は何を必要としていますか？</li> 
+    <li>あなたは顧客にそれをどうやって届けますか？</li> 
+    <li>あなたは顧客がその準備ができたときをどうやって知るのですか？</li> 
+    <li>あなたはそれをどうやって作るのですか？</li> 
+    <li>あなたがそれを作るのに必要なインプットは何ですか？</li> 
+   </ol> 
+  </blockquote> 
+  <p>Tom de Lancey氏は2013年前半にLinkedInで、<a href="https://www.linkedin.com/groups/Emergent-Documentation-One-way-that-43421.S.218531537">Emergent Documentation: One way that agile is very different from waterfall</a>というディスカッションを始めた。</p> 
+  <blockquote> 
+   <p>多くの人は、これまで使われてきた馴染みのあるドキュメントを捨て去るのを、非常に不安に思っています。システム要求、システム設計、ビジョンとスコープ、ユースケース、スキーマ、ワークフロー図、ラショナル統一プロセスの中間生成物などなど。すべてのドキュメントを5センテンスのストーリーに要約することに、多くの人は折り合いをつけることができません。</p> 
+  </blockquote> 
+  <p>彼は「創発的ドキュメンテーション（Emergent Documentation）」と呼ぶドキュメントのアプローチについて説明した。</p> 
+  <blockquote> 
+   <p>(…) どうすべきかまだわかっていないものをドキュメント化するのにムダな時間と労力を費やしたくありません。やろうと思っていることではなく、実際にやったことだけをドキュメントにするのです。</p> 
+  </blockquote> 
+  <p>Tom氏はこの「創発的ドキュメンテーション」のメリットの1つをこう説明している。</p> 
+  <blockquote> 
+   <p>ドキュメントは別のアクティビティではなく開発プロセスの一部になります。ドキュメントは実際に役に立つため、チーム全員がドキュメントの保守に関心を持つようになります。各ストーリーは個別のタスクを持ち、WIKI（各ストーリーに結びついたSharePointのサイト）で更新されます。</p> 
+  </blockquote> 
+  <p>Mario Moreira氏は<a href="http://cmforagile.blogspot.nl/2013/06/right-sizing-documentation-in-agile.html">アジャイルの世界における適正な規模のドキュメント</a>に関する記事を書いている。ソフトウェアプロジェクトが抱えていた、あるいは抱えている大量のドキュメントに対して、その適正な規模を次のように説明している。</p> 
+  <blockquote> 
+   <p>適正な規模とは、ドキュメントを書いて保守するのにかかる労力に書かれたドキュメントの価値を加味したものが、その情報がすぐに使えないとき（すなわち、情報を再構築するのにかかる労力とその情報がなかったときに現在の判断へのインパクト）よりも投資利益（ROI）が大きいことを意味しています。。</p> 
+  </blockquote> 
+  <p>この記事は適正な規模のドキュメントに関する指針となる。彼の提案をいくつか挙げておこう。</p> 
+  <blockquote> 
+   <ul> 
+    <li>ドキュメントは共同作業にすべきです。完全に一人が書いたものを他人にシェアするべきではありません。そうするのではなく、ドラフトのうちに頻繁にシェアしてインプットを得るべきです。</li> 
+    <li>ちょうど必要十分なだけのドキュメントにフォーカスしましょう。やる前から詳細に入り込むのは避けましょう。たいていの場合、これは多くの想定とムダな時間を意味します。ちょうど必要十分なだけとは、現在わかっていることをドキュメントにすることを意味します。</li> 
+    <li>ドキュメントはさまざまな形をとります。Wordだけでなく、Wikiやアジャイル計画ツール、コード中のコメントなど、いろいろなところにあります。</li> 
+   </ul> 
+  </blockquote> 
+  <p>どのようにアジャイルでドキュメントを書いているだろうか？ どれくらい？いつ？</p> 
  </div> 
 </div><br><br><br><br><br><br></body></html>

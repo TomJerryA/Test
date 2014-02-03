@@ -1,11 +1,14 @@
 <html>
  <head></head> 
- <body>
-  <div>
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/8.java">DynamicData and EntityDataSource Updated with Entity Framework 6 Support</a>Microsoft recently added Entity Framework 6 support for DynamicData and EntityDataSource controls with in addition to refreshed the templates. It also has few known issues as the support is limited to C# and Web Application projects.
-  </div>
-  <div>
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/7.java">BDD and JavaScript Using CucumberJS</a>Adding CucumberJS to the TDD workflow for JavaScript-based projects embraces the ideas of Behaviour Driven Development, BDD, and allows a developer to follow the TDD principles while developing from the outside in; running automated tests that fail until code that supports a feature is implemented, Todd Anderson reveals in a recent blog post.
+ <body> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/9.java">What to Expect From HTTP/2</a>In a recent blog posting Mark Nottingham, chair of the HTTP/2 Working Group, gives his opinion on 9 things to expect in the next version of the Web standard which is rapidly nearing completion and implementations are starting to appear. 
+  </div> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/8.java">DynamicData and EntityDataSource Updated with Entity Framework 6 Support</a>Microsoft recently added Entity Framework 6 support for DynamicData and EntityDataSource controls with in addition to refreshed the templates. It also has few known issues as the support is limited to C# and Web Application projects. 
+  </div> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/7.java">BDD and JavaScript Using CucumberJS</a>Adding CucumberJS to the TDD workflow for JavaScript-based projects embraces the ideas of Behaviour Driven Development, BDD, and allows a developer to follow the TDD principles while developing from the outside in; running automated tests that fail until code that supports a feature is implemented, Todd Anderson reveals in a recent blog post. 
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/6.java">Spark, Storm And Real Time Analytics</a>Hadoop is definitely the platform of choice for Big Data analysis and computation. While data Volume, Variety and Velocity increases, Hadoop as a batch processing framework cannot cope with the requirement for real time analytics. Spark, Storm and the Lambda Architecture can help bridge the gap between batch and event based processing. 
@@ -148,8 +151,5 @@
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/13.java">Webix 1.4 Released with WebSocket, IndexedDB, Data and Grid Suggest</a>Webix has been updated with support for data-suggest which enables you to make use of images as options. It also adds grid-suggest to select data from a table including support for WebSocket and IndexedDB. 
   </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/12.java">Oracle Seeks Further Feedback on Java EE 8 Plans</a>Oracle has launched the second part of its Java EE 8 community survey with cloud, security, logging, deployment, testability, pruning, and profiles amongst the topics. 
-  </div>   
  </body>
 </html>
