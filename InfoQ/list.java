@@ -2,7 +2,16 @@
  <head></head> 
  <body>
   <div>
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/13.java">Unsafe at any Speed; Oracle Surveys community about promoting sun.misc.Unsafe</a>Oracle software engineer Paul Sandoz is asking the public to weigh in on the controversial library sun.misc.Unsafe by responding to a Survey Monkey survey. The debate centers around whether Unsafe, under scrutiny due to its divergence from the Java credo of safe memory management, should be mainstreamed.
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/16.java">DevOps adoption cultural challenges</a>Oliver White, Head of Rebel Labs, recently discussed the difficulties of DevOps adoption at IT organizations, even when there is a growing body of evidence that highlights the benefits of DevOps. InfoQ took the opportunity to interview Oliver and review some of the reports that study this topic.
+  </div>
+  <div>
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/15.java">QCon London in 4 weeks; Top Tracks, Sessions, and Speakers (Mar 4-8, 2014)</a>The eighth annual QCon London (March 3-7) will feature in-depth presentations and case studies from NASA, Netflix, Twitter, The Financial Times, Etsy, and others. Hear industry practitioners on topics like Architecture, DevOps, Performance &amp; Scalability, Agile, Java, and more. The conference schedule is now final and live. Register by Feb 5th and save &pound;149.
+  </div>
+  <div>
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/14.java">More on Indexes in In-Memory OLTP</a>Indexes in SQL Server’s In-Memory OLTP don’t work exactly like normal indexes. This isn’t necessarily a bad thing, but the differences need to be kept in mind to avoid performance problems.
+  </div> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/13.java">Unsafe at any Speed; Oracle Surveys community about promoting sun.misc.Unsafe</a>Oracle software engineer Paul Sandoz is asking the public to weigh in on the controversial library sun.misc.Unsafe by responding to a Survey Monkey survey. The debate centers around whether Unsafe, under scrutiny due to its divergence from the Java credo of safe memory management, should be mainstreamed. 
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/12.java">How to Self-Assemble and Sustain a Self-Organising Team</a>A report on recent commentary by Mike Cohn, Thomas Cagley and others on the topic of team self-assembly and sustaining successful self-organising teams. 
@@ -141,15 +150,6 @@
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/20.java">Om: Enhancing Facebook's React with Immutability</a>Om is a new a ClojureScript interface for Facebook’s React HTML UI library. Om uses Clojure(Script)'s persistent data structures and requestAnimationFrame to further improve React's rendering. InfoQ talked to Om's creator, David Nolen, about Om and the benefits of functional concepts for application programming. 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/19.java">Dart 1.1 Pushes Performance Even Further</a>The recently released Dart 1.1 comes with better performance for the dart2js compiler and improves support for the server-side development. The language itself is pretty much on hold. 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/18.java">Apps Have to be iOS 7 Compatible by February 1st</a>Apple recently announced that iOS applications have to be iOS 7 compatible by February, 1st. To submit new applications or application updates to the iTunes Store, developers have to build their applications with XCode 5 and apps have to be optimized for iOS7. Compatibility with iOS 7 includes changing the UI according to the current Human Interface Guidelines and adapting API changes. 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/17.java">What's coming in the April 'Icehouse' release of OpenStack</a>Icehouse, the next release of the OpenStack open source cloud, will be coming in April 2014. Icehouse will bring automated installation (TripleO), bare metal provisioning (Ironic), a queuing and notification service (Marconi) and database as a service (Trove) as integrated services. Better support for Hadoop (Savanna) will be put into incubation. 
-  </div>  
+  </div>    
  </body>
 </html>

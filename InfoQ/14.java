@@ -1,19 +1,23 @@
-<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>Twitter Open-Sources its MapReduce Streaming Framework Summingbird</h3><p>Twitter has <a href="https://blog.twitter.com/2013/streaming-mapreduce-with-summingbird">open sourced</a> their MapReduce streaming framework, called <a href="https://github.com/twitter/summingbird">Summingbird</a>. Available under the Apache 2 license, Summingbird is a large-scale data processing system enabling developers to uniformly execute code in either batch-mode (Hadoop/MapReduce-based) or stream-mode (<a href="http://storm-project.net/">Storm</a>-based) or a combination thereof, called hybrid mode.</p>
-<p>In order for Twitter to be able to keep up processing <a href="http://strata.oreilly.com/2013/09/how-twitter-monitors-millions-of-time-series.html">500 millions tweets</a> and growing, they had to find a replacement for their existing stack that required manually integrating MapReduce (Pig/Scalding) and streaming-based (Storm) code. The main motivation to create Summingbird, <a href="https://blog.twitter.com/2013/streaming-mapreduce-with-summingbird">mentioned</a> by the Twitter engineers, came from the realization that running a fully real-time system on Storm was difficult due to:</p>
-<ul> 
- <li>Re-computation over months of historical logs must be coordinated with Hadoop or streamed through Storm with a custom log-loading mechanism.</li> 
- <li>Storm is focused on message passing and random-write databases are harder to maintain.</li> 
-</ul>
-<p>This insight led to Summingbird, a flexible and general solution addressing the engineers’ practical issues with the existing approach:</p>
-<ul> 
- <li>Two sets of aggregation logic have to be kept in sync in two different systems</li> 
- <li>Keys and values must be serialized consistently between each system and the client</li> 
- <li>The client is responsible for reading from both datastores, performing a final aggregation and serving the combined results</li> 
-</ul>
-<p>Summingbird is also <a href="http://gigaom.com/2013/09/03/twitter-open-sources-storm-hadoop-hybrid-called-summingbird/">one of the first</a> openly available <a href="http://lambda-architecture.net/">Lambda Architecture</a> compliant systems. Similar projects include Yahoo’s <a href="http://developer.yahoo.com/blogs/ydn/storm-yarn-released-open-source-143745133.html">Storm-YARN</a> and a Spanish start-up’s upcoming <a href="http://www.slideshare.net/Datadopter/lambdoop-a-framework-for-easy-development-of-big-data-applications">Lambdoop</a>, a Java framework for developing Big Data applications in a Lambda Architecture conformant way. The characteristics of the Lambda Architecture - immutable master dataset and the combination of batch, serving, and speed layer - enables people to build robust large-scale data processing systems that can deal with both batch and stream processing and has use cases from social media platforms (such as Twitter, LinkedIn, etc.) over the Internet of Things (smart city, wearables, manufacturing, etc.) to the financial sector (fraud detection, recommendations).</p>
-<p>The main authors of Summingbird - Oscar Boykin, Sam Ritchie (<a href="http://www.wired.com/wiredenterprise/2013/11/twitter-summingbird/">nephew of</a> computer science legend Dennis Ritchie) and Ashutosh Singhal - have further revealed the roadmap for Summingbird:</p>
-<ul> 
- <li>support for Apache <a href="http://spark.incubator.apache.org/">Spark</a> and the columnar data storage format <a href="http://parquet.io/">Parquet</a></li> 
- <li>libraries of higher-level mathematics and machine learning code on top of Summingbird’s Producer primitives, and</li> 
- <li>deeper integration with <a href="https://engineering.twitter.com/opensource/projects">related open source</a> projects such as Algebird or Storehaus.</li> 
-</ul><br><br><br><br><br><br></body></html>
+<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>More on Indexes in In-Memory OLTP</h3><p>Indexes in SQL Server’s In-Memory OLTP don’t work exactly like normal indexes. This isn’t necessarily a bad thing, but the differences need to be kept in mind to avoid performance problems.</p>
+<p>Memory-optimized non-clustered indexes differ from disc-based non-clustered indexes in that they are always covering. You don’t need to specify which columns you want to include, “all columns are virtually included” in addition to the actual index columns.</p>
+<p>An interesting limitation of non-clustered indexes is that they can only be scanned in one direction. For example, if your index is &quot;OrderDate ASC” then you cannot use the index to retrieve rows based on the order date in descending order.</p>
+<p>Another new type of index is the memory-optimized hash. This type of index is designed for “point-lookup operations” and full scans. It cannot be used for ordered scans or inequality seek operations. Microsoft has these <a href="http://blogs.technet.com/b/dataplatforminsider/archive/2013/11/12/sql-server-2014-in-memory-oltp-nonclustered-indexes-for-memory-optimized-tables.aspx">guidelines for choosing between non-clustered and hash indexes</a>,</p>
+<blockquote> 
+ <ul> 
+  <li>If you need to perform only point lookups, meaning you need to retrieve only the rows corresponding to a single index key value, use a hash index.</li> 
+  <li>If you need to retrieve ranges of rows, or need to retrieve the rows in a particular sort-order, use a nonclustered index.</li> 
+  <li>If you need to do both, particularly if point lookups are frequent, you can consider creating two indexes: it is possible to create both a hash and a nonclustered index with the same index key.</li> 
+ </ul> 
+</blockquote>
+<p>Hash indexes also require the use of a <a href="http://msdn.microsoft.com/en-us/library/dn494956(v=sql.120).aspx">bucket count</a>. The bucket count should be set between N and 2N where N is the expected number of rows. Operationally a range of 0.2N and 5N is considered to be “usable”. Internally bucket counts are always rounded up to the next power of 2.</p>
+<p>High than necessary bucket counts are wasteful for memory, which is a sensitive issue when talking about memory optimized tables that must fit entirely in RAM. A bucket count that is too low causes other problems,</p>
+<blockquote> 
+ <p>If the bucket count is significantly (ten times) lower than the number of unique index keys, there will be many buckets that have multiple index keys. This degrades performance of most DML operations, particularly point lookups (lookups of individual index keys). For example, you may see poor performance of SELECT queries and UPDATE and DELETE operations with equality predicates matching the index key columns in the WHERE clause.</p> 
+</blockquote>
+<p>Another problem that can occur with hash indexes is duplicate values. If multiple rows have the same value for the index column(s) then naturally there is going to be a hash collision for those rows. If this happens a lot, say more than ten times per distinct value, then performance can suffer.</p>
+<p>For hash indexes the recommendation from the <a href="http://blogs.technet.com/b/dataplatforminsider/archive/2014/01/30/in-memory-oltp-index-troubleshooting-part-ii.aspx">SQL Server team</a> is to convert the hash index into a non-clustered index.</p>
+<blockquote> 
+ <p>In most cases you will want to use a NONCLUSTERED index instead, as NONCLUSTERED indexes generally perform better in case of duplicates. If you go for this option, consider uniquifying the index key, as indicated below.</p> 
+ <p>For NONCLUSTERED indexes with a lot of duplicates, consider adding additional columns to the index key. For example, you can add the primary key columns to the index key to make it unique, in other words to uniquify the index.</p> 
+</blockquote>
+<p>If the values actually are distinct and you want to continue using a hash index, then you can “over-size the index” by using a bucket count that is “20 – 100 times the number of unique index key values” to reduce the chance of hash collisions.</p><br><br><br><br><br><br></body></html>
