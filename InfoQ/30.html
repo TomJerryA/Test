@@ -1,12 +1,9 @@
-<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>Rust 0.9发布，改进了线程模型</h3><p>随着<a href="http://www.rust-lang.org/">Rust</a>语言向1.0里程牌的迈进，这一Mozilla支持的系统编程语言发布了0.9版，带来了许多改进。在演变为一门准备长期支持的稳定语言的过程中，Rust已经发生了显著的变化。Rust创建人Graydon Hoare说，该语言的目标用户是“<a href="http://www.infoq.com/news/2012/08/Interview-Rust">沮丧的C++开发人员</a>”，因为它专注于成为C/C++的现代化替代品这一目标。</p>
-<p>Rust是一门开源语言，它提供了一个用于Windows的<a href="http://static.rust-lang.org/dist/rust-0.9-install.exe">二进制安装包</a>，以及一个<a href="http://static.rust-lang.org/dist/rust-0.9.tar.gz">源代码包</a>，用于基于Unix的系统（FreeBSD、Mac OS X和Linux）。</p>
-<p>0.9版本包含了几个特性：</p>
-<ul> 
- <li>Rust现在为开发人员提供了<a href="http://static.rust-lang.org/doc/master/rust.html#linkage">选择</a>，他们可以选择是构建动态链接库，还是静态链接库。</li> 
- <li>本地库现在成了一等公民，Rust库的构建和分发可以不需要本地库的参与。</li> 
- <li>I/O基础设施经过了彻底修改。从逻辑上讲，所有的I/O功能现在都位于<b>std::io</b>模块中。通信模块（提供高级的通信抽象）也已经重写。</li> 
- <li>若干I/O变化是源于两个新库libgreen和libnative的创建。Rust标准库不再设置成一个特定的调度方法，所以程序可以以m:n（m个应用程序线程映射到n个内核线程）或者1:1（一个应用程序线程映射到一个内核线程）模式运行。这就允许开发人员为其应用程序选择能够提供最好性能的线程模型。</li> 
- <li>Rust开发人员应该注意，不要使用“托管指针（managed pointers）”（由@符号表示）以及使用了Rc（引用计数指针）或者Gc（垃圾收集指针）的“转换代码（transition code）”。</li> 
-</ul>
-<p>读者可以查看Rust 0.9的官方<a href="https://github.com/mozilla/rust/wiki/Doc-detailed-release-notes#09-january-2014">发布说明</a>来了解完整的细节信息。除了官方提供的<a href="http://static.rust-lang.org/doc/0.9/tutorial.html">Rust教程</a>外，想要进一步学习这门语言的开发人员还有几个不同的资源：弗吉尼亚大学<a href="http://rust-class.org/pages/using-rust-for-an-undergraduate-os-course.html">本科操作系统课程</a>教授Rust；Steve Klabnik最近准备了“<a href="http://words.steveklabnik.com/a-30-minute-introduction-to-rust">30分钟的Rust介绍</a>”。</p>
-<p><b>查看英文原文：</b><b><a href="http://www.infoq.com/news/2014/01/rust09">Rust 0.9 Released With Revised Threading Model</a></b></p><br><br><br><br><br><br></body></html>
+<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>Apple Mac 30年</h3><p>三十年前，Apple Computer发布了由银翼杀手导演Ridley Scott执导的1984年经典<a href="http://en.wikipedia.org/wiki/1984_(advertisement)">single run</a>广告。该广告介绍了Macintosh操作系统和在此过程中基于此操作系统启动的GUI。GUI想法先是在Xerox Parc上运行，随后Apple开发了它，自此有了点击功能的鼠标操作，在那时称作WIMP（图形界面电脑所采用的界面典范）。1984年年底Apple就<a href="http://www.youtube.com/watch?v=MQtWDYHd3FY">展示</a>了Mac。</p>
+<p>尽管其他的GUI操作系统会仿效 (Amiga和Windows 1.0也在随后一年1985年发布) 原来Macintosh这一启动过程，其功能例如声音合成器和anti-aliased文本，在那时，它的竞争者从CGA转变为XGA。Mac也看到第一版Microsoft文档开启了一个侧重软件产业线的新商机（一些年前，VisiCalc为Apple II创造了第一版电子表格软件）。</p>
+<p>1985年9月, Steve Jobs离开Apple Computer，创建了NextStep，并开发了NextStep操作系统，它使当时不为人知的面向对象的Objective-C语言流行起来。 NeXT cube和 工作站的特点光磁驱动器，内置传真，display postscript任意分辨率，这些能够显示24位色显示器，同时，IBM PC复制版从XGA转到VGA。尽管Next在硬件或软件上都不是一次商业上的成功，但Next工作站，它却改变了Tim Berners Lee研发的万维网络的世界。</p>
+<p>在1997年，Steve Jobs被迫离开苹果的十多年后，他作为一个顾问回到Apple，随后他出任临时CEO。（直到2000年，“临时”的头衔都没有去掉过。） 1997年随着Jony Ive开始名声鹊起，在公司成功的贡献上，或许他的贡献比起Jobs更重要得多。1998年新发布的半透明塑料色iMac即是对早期Mac款型的致敬，但也是基于过去款式上的设计。在顶部它有一个独特平衡式的提手设计和内置立体声扬声器。它也成为第一款不带软驱并广泛投放的台式PC，可以说开创了为计算机外设的USB普及。每台iMac会有内置CD驱动，基本有两条线；一条是电源线，另一条是USB键盘线。iMac也有一个调制解调器和内置以太网网络，其i moniker代表着“Internet”。</p>
+<p>尽管iMac配有OS 8，但直到来年OSX才发布。直到经典OS9的最后一次迭代，新款iMac继续双启动，也就是经典的MacOSX和OSX 。到了世纪之交， NextStep自动成为苹果电脑的标准操作系统。</p>
+<p>可以说，从Apple首先做为电脑公司起家，它有两个主要方向的变化；第一，在2001年，它发布了iPod。虽然最初认为它特别相对于当时的移动播放器（“<a href="http://en.wikiquote.org/wiki/IPod">无线。很少存储空间。不实用</a>”是一种这样的观点），在硬件和软件上细节关注则在消费产品里开创了另一次革命。从第一款颜色，触摸感应显示屏延续下来的潮流，使得Apple随后从苹果电脑更名为苹果公司，这只是因为它扩大了消费电子设备的市场。尽管第一版iPod中没有内置iOS，但在后续迭代移动端OSX，iPod也看到了iOS的兴起。iOS的术语是随后创建的。</p>
+<p>第二次是在<a href="http://www.youtube.com/watch?v=t4OEsI0Sc_s">2007年揭开iPhone的面纱</a>。基于OSX作业系统的iPod和手机功能相结合，苹果公司首先把互联网带到了许多美国人的口袋里，来年带到了全球各地。市场上，客户购买开锁设备，并在其他网络利用它们，并有了排他性协议，使得运营商提供不封顶的，永远在线的数据计划才有了可能性。尽管在此之前，人们从手机上就已经可以浏览互联网，但数据常常特别昂贵并没有被广泛使用。黑莓靠其永远在线的数据包机制原先垄断了企业市场，诺基亚曾是移动手机市场里的王者。而iPhone最终会超越它们两者成为移动手机的两家领先厂商之一。手机浏览器Safari引擎（原KHTML叉）现在运行在所有流行的移动设备如同Chrome桌面浏览器一样。</p>
+<p>随着苹果应用程序商店为苹果和商业以及开发爱好者提供的收入，并在随后2010年发布的iPad，现在苹果公司大部分的收入主要来自消费者的手持设备，而不是传统的电脑。Mac可能是现代计算机历史上无足轻重的事，但是，你正在阅读这篇文章所使用的设备的开创时代可要追溯到1984年的那一经典时刻。</p>
+<p><b>查看英文原文：</b><a href="http://www.infoq.com/news/2014/01/apple-mac-30">Thirty Years of the Apple Mac</a></p><br><br><br><br><br><br></body></html>

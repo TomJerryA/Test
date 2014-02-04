@@ -1,8 +1,8 @@
 <html>
  <head></head> 
- <body>
-  <div>
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/21.java">DataFu Enters Incubation Status at Apache</a>LinkedIn’s DataFu project, a collection of libraries for Hadoop, has now officially entered the incubation status at the Apache Software Foundation (ASF) since the first week of January.
+ <body> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/21.java">DataFu Enters Incubation Status at Apache</a>LinkedIn’s DataFu project, a collection of libraries for Hadoop, has now officially entered the incubation status at the Apache Software Foundation (ASF) since the first week of January. 
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/20.java">Google Acquires Nest: Big Data Comes to Energy</a>Google has acquired Nest, maker of smart thermostat and smoke detectors, for $3.2 billion in cash, making it another major data source that will help Google understand how people live. 
@@ -150,6 +150,6 @@
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/23.java">Math.js: Versatile Math Library For JavaScript</a>Math.js is an open source Math library for JavaScript and Node.js for working with numbers, big numbers, complex numbers, units and matrices. It also features a flexible expression parser. InfoQ got in touch with the project founder, Jos De Jong, to know more. 
-  </div>  
+  </div> 
  </body>
 </html>
