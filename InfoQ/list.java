@@ -2,13 +2,16 @@
  <head></head> 
  <body>
   <div>
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/16.java">DevOps adoption cultural challenges</a>Oliver White, Head of Rebel Labs, recently discussed the difficulties of DevOps adoption at IT organizations, even when there is a growing body of evidence that highlights the benefits of DevOps. InfoQ took the opportunity to interview Oliver and review some of the reports that study this topic.
-  </div>
-  <div>
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/15.java">QCon London in 4 weeks; Top Tracks, Sessions, and Speakers (Mar 4-8, 2014)</a>The eighth annual QCon London (March 3-7) will feature in-depth presentations and case studies from NASA, Netflix, Twitter, The Financial Times, Etsy, and others. Hear industry practitioners on topics like Architecture, DevOps, Performance &amp; Scalability, Agile, Java, and more. The conference schedule is now final and live. Register by Feb 5th and save &pound;149.
-  </div>
-  <div>
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/14.java">More on Indexes in In-Memory OLTP</a>Indexes in SQL Server’s In-Memory OLTP don’t work exactly like normal indexes. This isn’t necessarily a bad thing, but the differences need to be kept in mind to avoid performance problems.
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/17.java">New InfoQ Feature: Follow Your Favorite Topics with RSS</a>For 2014 we have made topic pages available through RSS, so you can be using your RSS reader to follow your favorite topics.
+  </div> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/16.java">DevOps adoption cultural challenges</a>Oliver White, Head of Rebel Labs, recently discussed the difficulties of DevOps adoption at IT organizations, even when there is a growing body of evidence that highlights the benefits of DevOps. InfoQ took the opportunity to interview Oliver and review some of the reports that study this topic. 
+  </div> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/15.java">QCon London in 4 weeks; Top Tracks, Sessions, and Speakers (Mar 4-8, 2014)</a>The eighth annual QCon London (March 3-7) will feature in-depth presentations and case studies from NASA, Netflix, Twitter, The Financial Times, Etsy, and others. Hear industry practitioners on topics like Architecture, DevOps, Performance &amp; Scalability, Agile, Java, and more. The conference schedule is now final and live. Register by Feb 5th and save &pound;149. 
+  </div> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/14.java">More on Indexes in In-Memory OLTP</a>Indexes in SQL Server’s In-Memory OLTP don’t work exactly like normal indexes. This isn’t necessarily a bad thing, but the differences need to be kept in mind to avoid performance problems. 
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/13.java">Unsafe at any Speed; Oracle Surveys community about promoting sun.misc.Unsafe</a>Oracle software engineer Paul Sandoz is asking the public to weigh in on the controversial library sun.misc.Unsafe by responding to a Survey Monkey survey. The debate centers around whether Unsafe, under scrutiny due to its divergence from the Java credo of safe memory management, should be mainstreamed. 
@@ -147,9 +150,6 @@
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/21.java">JArchitect v4.0 Released</a>Version 4.0 of JArchitect by CoderGears, a tool used to manage Java code bases and application development, is now available. JArchitect allows architects and developers to analyze a code base, automate code reviews, and facilitate refactoring and migration. 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/20.java">Om: Enhancing Facebook's React with Immutability</a>Om is a new a ClojureScript interface for Facebook’s React HTML UI library. Om uses Clojure(Script)'s persistent data structures and requestAnimationFrame to further improve React's rendering. InfoQ talked to Om's creator, David Nolen, about Om and the benefits of functional concepts for application programming. 
-  </div>    
+  </div>  
  </body>
 </html>
