@@ -1,8 +1,8 @@
 <html>
  <head></head> 
- <body>
-  <div>
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/22.c">Adicionando prop&oacute;sito e hip&oacute;teses &agrave;s retrospectivas &aacute;geis</a>Fazer retrospectivas com frequ&ecirc;ncia contribui para que as equipes aprendam a se aperfei&ccedil;oar. Voc&ecirc; pode tornar as retrospectivas mais efetivas adicionando prop&oacute;sito e validando se as a&ccedil;&otilde;es definidas nelas est&atilde;o realmente gerando melhorias com o uso de hip&oacute;teses.
+ <body> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/22.c">Adicionando prop&oacute;sito e hip&oacute;teses &agrave;s retrospectivas &aacute;geis</a>Fazer retrospectivas com frequ&ecirc;ncia contribui para que as equipes aprendam a se aperfei&ccedil;oar. Voc&ecirc; pode tornar as retrospectivas mais efetivas adicionando prop&oacute;sito e validando se as a&ccedil;&otilde;es definidas nelas est&atilde;o realmente gerando melhorias com o uso de hip&oacute;teses. 
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/21.c">Lan&ccedil;ada vers&atilde;o 2.0 do Slick, biblioteca de mapeamento funcional-relacional para Scala</a>Foi lan&ccedil;ada recentemente a vers&atilde;o 2.0 do Slick, biblioteca em Scala para mapeamento funcional-relacional - Functional-Relacional Mapping, FRM, (correspondente ao mapeamento objeto-relacional nas linguagens orientadas &agrave; objetos). A nova vers&atilde;o do Slick traz um gerador de c&oacute;digo para engenharia reversa de schemas e uma nova arquitetura para o driver que suporta bancos de dados n&atilde;o SQL. 
@@ -150,6 +150,6 @@
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/24.c">XML vs JSON: A diferen&ccedil;a de desempenho era apenas um boato?</a>Muitas das suposi&ccedil;&otilde;es sobre o qu&atilde;o lento, dispendioso e &quot;gordo&quot; o XML &eacute; se comparado &agrave; leveza do JSON, n&atilde;o foram sustentadas pelo teste feito por David Lee, engenheiro l&iacute;der na Marklogic, ap&oacute;s a execu&ccedil;&atilde;o de um experimento &quot;crowd sourcing&quot; com 33 documentos diferentes e aproximadamente 1200 testes, em uma grande quantidade de navegadores e sistemas operacionais. 
-  </div>  
+  </div> 
  </body>
 </html>

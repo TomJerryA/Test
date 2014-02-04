@@ -2,13 +2,16 @@
  <head></head> 
  <body>
   <div>
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/20.java">Google Acquires Nest: Big Data Comes to Energy</a>Google has acquired Nest, maker of smart thermostat and smoke detectors, for $3.2 billion in cash, making it another major data source that will help Google understand how people live.
-  </div>
-  <div>
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/19.java">JSON-LD Reaches W3C Recommendation Status</a>The W3C RDF Working Group has moved the JSON-LD and JSON-LD 1.0 Processing Algorithms and API standards forward to recommended status. JSON-LD is a standard to add &quot;linked data&quot; semantics to JSON.
-  </div>
-  <div>
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/18.java">Eclipse Foundation Celebrates 10th Anniversary</a>Yesterday the Eclipse foundation celebrated its tenth anniversary. The original press release in February 2004 declared the not-for-profit organisation was created from its prior stewardship role to bring together independent parties from developers, consumers and add-in providers to form a board responsible for the long-term direction of Eclipse. Read on for more.
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/21.java">DataFu Enters Incubation Status at Apache</a>LinkedIn’s DataFu project, a collection of libraries for Hadoop, has now officially entered the incubation status at the Apache Software Foundation (ASF) since the first week of January.
+  </div> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/20.java">Google Acquires Nest: Big Data Comes to Energy</a>Google has acquired Nest, maker of smart thermostat and smoke detectors, for $3.2 billion in cash, making it another major data source that will help Google understand how people live. 
+  </div> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/19.java">JSON-LD Reaches W3C Recommendation Status</a>The W3C RDF Working Group has moved the JSON-LD and JSON-LD 1.0 Processing Algorithms and API standards forward to recommended status. JSON-LD is a standard to add &quot;linked data&quot; semantics to JSON. 
+  </div> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/18.java">Eclipse Foundation Celebrates 10th Anniversary</a>Yesterday the Eclipse foundation celebrated its tenth anniversary. The original press release in February 2004 declared the not-for-profit organisation was created from its prior stewardship role to bring together independent parties from developers, consumers and add-in providers to form a board responsible for the long-term direction of Eclipse. Read on for more. 
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/17.java">New InfoQ Feature: Follow Your Favorite Topics with RSS</a>For 2014 we have made topic pages available through RSS, so you can be using your RSS reader to follow your favorite topics. 
@@ -147,9 +150,6 @@
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/23.java">Math.js: Versatile Math Library For JavaScript</a>Math.js is an open source Math library for JavaScript and Node.js for working with numbers, big numbers, complex numbers, units and matrices. It also features a flexible expression parser. InfoQ got in touch with the project founder, Jos De Jong, to know more. 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/22.java">Typemock Isolator v7.4.3 Adds FastFix, Improved SmartRunner and Visual Studio 2013 Support</a>Typemock Isolator v7.4.3 for .NET has been released with support for FastFix, improved smartrunner in addition to Visual Studio 2013 and TFS 2012 integration. 
-  </div>    
+  </div>  
  </body>
 </html>
