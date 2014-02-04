@@ -2,7 +2,16 @@
  <head></head> 
  <body>
   <div>
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/17.java">New InfoQ Feature: Follow Your Favorite Topics with RSS</a>For 2014 we have made topic pages available through RSS, so you can be using your RSS reader to follow your favorite topics.
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/20.java">Google Acquires Nest: Big Data Comes to Energy</a>Google has acquired Nest, maker of smart thermostat and smoke detectors, for $3.2 billion in cash, making it another major data source that will help Google understand how people live.
+  </div>
+  <div>
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/19.java">JSON-LD Reaches W3C Recommendation Status</a>The W3C RDF Working Group has moved the JSON-LD and JSON-LD 1.0 Processing Algorithms and API standards forward to recommended status. JSON-LD is a standard to add &quot;linked data&quot; semantics to JSON.
+  </div>
+  <div>
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/18.java">Eclipse Foundation Celebrates 10th Anniversary</a>Yesterday the Eclipse foundation celebrated its tenth anniversary. The original press release in February 2004 declared the not-for-profit organisation was created from its prior stewardship role to bring together independent parties from developers, consumers and add-in providers to form a board responsible for the long-term direction of Eclipse. Read on for more.
+  </div> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/17.java">New InfoQ Feature: Follow Your Favorite Topics with RSS</a>For 2014 we have made topic pages available through RSS, so you can be using your RSS reader to follow your favorite topics. 
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/16.java">DevOps adoption cultural challenges</a>Oliver White, Head of Rebel Labs, recently discussed the difficulties of DevOps adoption at IT organizations, even when there is a growing body of evidence that highlights the benefits of DevOps. InfoQ took the opportunity to interview Oliver and review some of the reports that study this topic. 
@@ -141,15 +150,6 @@
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/22.java">Typemock Isolator v7.4.3 Adds FastFix, Improved SmartRunner and Visual Studio 2013 Support</a>Typemock Isolator v7.4.3 for .NET has been released with support for FastFix, improved smartrunner in addition to Visual Studio 2013 and TFS 2012 integration. 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/21.java">Big Data Revolution and Genomics Analysis</a>Curoverse and Tute Genomics secured $1.5 million each in seed funding in the past month aiming to bring gene sequencing to the masses. Illumina, Seven Bridges Genomics, Complete Genomics and others are offering researchers and private parties the opportunity to map the full genome sequence for a four figure quote. Illumina recently announced HiSeq X Ten, promising the long-awaited $1,000 genome. 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/21.java">Java 8 On Track for March Release</a>After a slight delay the long anticipated release of Java 8 is now on back on track and scheduled for release on March 18. 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/21.java">JArchitect v4.0 Released</a>Version 4.0 of JArchitect by CoderGears, a tool used to manage Java code bases and application development, is now available. JArchitect allows architects and developers to analyze a code base, automate code reviews, and facilitate refactoring and migration. 
-  </div>  
+  </div>    
  </body>
 </html>

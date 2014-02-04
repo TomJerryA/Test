@@ -1,23 +1,12 @@
-<p>Indexes in SQL Server’s In-Memory OLTP don’t work exactly like normal indexes. This isn’t necessarily a bad thing, but the differences need to be kept in mind to avoid performance problems.</p>
-<p>Memory-optimized non-clustered indexes differ from disc-based non-clustered indexes in that they are always covering. You don’t need to specify which columns you want to include, “all columns are virtually included” in addition to the actual index columns.</p>
-<p>An interesting limitation of non-clustered indexes is that they can only be scanned in one direction. For example, if your index is &quot;OrderDate ASC” then you cannot use the index to retrieve rows based on the order date in descending order.</p>
-<p>Another new type of index is the memory-optimized hash. This type of index is designed for “point-lookup operations” and full scans. It cannot be used for ordered scans or inequality seek operations. Microsoft has these guidelines for choosing between non-clustered and hash indexes,</p>
-<blockquote> 
- <ul> 
-  <li>If you need to perform only point lookups, meaning you need to retrieve only the rows corresponding to a single index key value, use a hash index.</li> 
-  <li>If you need to retrieve ranges of rows, or need to retrieve the rows in a particular sort-order, use a nonclustered index.</li> 
-  <li>If you need to do both, particularly if point lookups are frequent, you can consider creating two indexes: it is possible to create both a hash and a nonclustered index with the same index key.</li> 
- </ul> 
+<p>Google has acquired Nest&nbsp;for $3.2 billion in cash. Nest produces smart thermostat and smoke detectors, and with this acquisition Google turns Nest's devices into another major data source that will help Google understand how people live.</p>
+<p>Tony Fadell (CEO of Nest) stated it in the official announcement:</p>
+<blockquote>
+ We’re thrilled to join Google. With their support, Nest will be even better placed to build simple, thoughtful devices that make life easier at home, and that have a positive impact on the world.
+ <br type="_moz" /> 
 </blockquote>
-<p>Hash indexes also require the use of a bucket count. The bucket count should be set between N and 2N where N is the expected number of rows. Operationally a range of 0.2N and 5N is considered to be “usable”. Internally bucket counts are always rounded up to the next power of 2.</p>
-<p>High than necessary bucket counts are wasteful for memory, which is a sensitive issue when talking about memory optimized tables that must fit entirely in RAM. A bucket count that is too low causes other problems,</p>
-<blockquote> 
- <p>If the bucket count is significantly (ten times) lower than the number of unique index keys, there will be many buckets that have multiple index keys. This degrades performance of most DML operations, particularly point lookups (lookups of individual index keys). For example, you may see poor performance of SELECT queries and UPDATE and DELETE operations with equality predicates matching the index key columns in the WHERE clause.</p> 
+<p>There are speculations about what Google will do with the data Nest collects from its sensors: from combining it with its social data (Google+) to re-selling it to interested parties such as energy providers or insurances. Forbes reports that Google has already gathered experience in this very domain: on the one hand with EnergySense, its own smart thermostat project, and on the other hand back in 2009 when Google launched a web-based energy management tool called PowerMeter, which was shut down in 2011.</p>
+<p>Beyond what Google is planning with Nest and its data, others have as well spotted an opportunity around the Nest acquisition, for example Spark Integration Technologies, an M2M and devices integrator, who provided a do-it-yourself version of the&nbsp;Nest Learning Thermostat as open source only days after the acquisition announcement. And while the Nest acquisition is certainly the one with the highest price tag it is by far not the only one in the realm of Internet of Things investments: only six month earlier,&nbsp;ARM&nbsp;acquired Sensinode and with it Zach Shelby, one of the main drivers of standardising IoT protocols such as 6LoWPAN.</p>
+<p>Google is unlikely to stop its shopping tour anytime soon, though, or as&nbsp;David Schubmehl (research director with IDC) puts it:</p>
+<blockquote>
+ In a broader pattern, if Google is focusing on artificial intelligence (AI) and machine learning, how is this kind of semantic understanding going to help us make decisions faster and do our jobs. We're still a ways away from (real AI). It's more about putting 10 to 15 connections together to help me handle a thinking process and make decisions faster.
 </blockquote>
-<p>Another problem that can occur with hash indexes is duplicate values. If multiple rows have the same value for the index column(s) then naturally there is going to be a hash collision for those rows. If this happens a lot, say more than ten times per distinct value, then performance can suffer.</p>
-<p>For hash indexes the recommendation from the SQL Server team is to convert the hash index into a non-clustered index.</p>
-<blockquote> 
- <p>In most cases you will want to use a NONCLUSTERED index instead, as NONCLUSTERED indexes generally perform better in case of duplicates. If you go for this option, consider uniquifying the index key, as indicated below.</p> 
- <p>For NONCLUSTERED indexes with a lot of duplicates, consider adding additional columns to the index key. For example, you can add the primary key columns to the index key to make it unique, in other words to uniquify the index.</p> 
-</blockquote>
-<p>If the values actually are distinct and you want to continue using a hash index, then you can “over-size the index” by using a bucket count that is “20 – 100 times the number of unique index key values” to reduce the chance of hash collisions.</p>

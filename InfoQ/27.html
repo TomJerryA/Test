@@ -1,17 +1,30 @@
-<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>Tom Baeyens的最新BPM公司Effektif推出基于云的工具</h3><p><a href="http://www.effektif.com/">Effektif</a>（读作“effective”）于1月14日推出了第一版基于云的BPM产品。InfoQ<a href="http://www.infoq.com/news/2013/03/baeyens-activiti">去年报道过</a>，Tom Baeyens是JBoss <a href="http://www.jboss.org/jbpm/">jBPM</a>（被Red Hat收购）和<a href="http://activiti.org/">Activiti</a>（归Alfresco所有）的最初创始人，Effektif就是由他创立并负责。公司与<a href="http://www.signavio.com/">Signavio</a>建立了合作关系，为了加速产品开发，后者投资了120万欧元，并且还将使用现有渠道销售Effektif的产品。</p>
-<p>尽管Baeyens和Signavio都有BPM背景，但目前看来，Effektif侧重点有所不同，与BPM工具相比，它更多的是一个任务管理系统。这不是说，不会有更多的传统BPM功能随着时间推移加入其中，只是按照目前情况来看，该产品更多地将目标放在使企业用户能够创建和管理任务。因此，的团队非常重视用户界面，旨在使它尽可能地简单易用。</p>
-<p>Effektif由三个概念层组成。第一层是基于浏览器的向导，旨在为企业用户提供一种简单的机制，使他们可以定义任务并为这些任务及切换创建表单。这部分产品已经完成，如今可以免费获取。它还包含允许Effektif嵌入到第三方应用程序的API——也是免费的。该API支持创建新任务和子任务、添加文档等。</p>
-<p><img width="600" _p="true" _href="img://null" alt="" src="http://infoqstatic.com/resource/news/2014/01/Effektif-10/zh/resources/0116002.jpg" /></p>
-<p>第二层增加了一组适配器以便与其它基于云打包的应用程序进行集成。Google Drive、Salesforce和Box的适配器开发工作正在进行之中，Baeyens说，它们预计在“未来数周内”完成。</p>
-<p>第三层，也就是最后一层——“活动执行者（activity workers）”——允许开发人员编写要包含在工作流中的定制软件。据Baeyens说，这预计还需要一到两个月的时间。已发布的产品确实提供了一个脚本引擎和一个面向JavaScript的具有代码补全功能的在线IDE。脚本运行在一个Node.js实例上。面向Java和其它语言的框架将会随着时间的推移逐步加入。</p>
-<p>这三个层次大致可以映射到该产品的三个版本。协作空间，其中包括文档共享和一个共享的任务列表，已经可以使用，而且是免费的。“团队工作流”版本会增加对“流程流（process flows）”和云连接器的支持。该版本将免费提供给前五位用户。最后，按照计划，企业版将增加更多高级的集成和分析功能。</p>
-<p>在核心架构方面，该引擎使用Java开发，并使用了业务流程建模和标记（BPMN）2.0标准。团队本来打算使用Restlet框架构建REST层，但现在已经切换到他们自己的框架，并使用Jasckson处理JSON。正如前面提到的，产品将使用Node.js作为JavaScript执行上下文。</p>
-<p>Effektif正在进入一个竞争激烈的市场，据Forester说，其价值约为50亿美元。许多主要的竞争者都已经提供了云产品，包括Appian、Fujitsu、Kofax和Pegasystems。<a href="http://www.appian.com/bpm-software/cloud-bpm.jsp">Appian云</a>基于Java，据<a href="http://www.gartner.com/technology/reprints.do?id=1-1NKA38B&amp;ct=131202&amp;st=sb">Gartner</a>报道，现在已经有“数百个组织和公共领域机构的超过4万5千名用户在使用”。Fujitsu的<a href="https://www.runmyprocess.com/en/">RunMyProcess</a>在44个国家有超过350家公司和2万3千名用户在使用。Koffax的基于微软技术的<a href="http://www.kofax.com/smart-process-application-platform/">TotalAgility</a>在2012年作为BPM PaaS推出，已经有50家公司注册（超过一半在美国）。最后，<a href="http://www.pega.com/">Pegasystems</a>的云产品已经有来自70家公司的3万名命名用户。另外，还有若干规模更小的更加面向任务的利基竞争者，包括<a href="https://zapier.com/">Zapier</a>和<a href="https://ifttt.com/">IFTTT</a>，而Effektif显然是从这些企业得到了一些启示。在这种情况下，我问Baeyens，他觉得Effektif有哪些优势。“我们致力于使它更简单，”他说：</p>
-<p>我们有背景：当前正在运行的流程引擎，很大一部分是由我构建的。而Signavio有基于BPM建模构建了大受欢迎的Saas业务的成功记录。</p>
-<blockquote> 
- <p>现在是重新定义工作流的绝佳时机。近年来，云已经催生了大量的创新型创业公司。IFTTT和Zapier是两个非常棒的例子。同样的功能过去常常需要一条企业数据总线和几名开发人员。现在，无论何时在微博中被提及，一名非技术人员就能够转发他们的消息。所有这一切大约只需要几分钟。</p> 
- <p>我们为工作流带来了类似的改革。我们使它更简单，并提供良好的用户体验，那样，更多的人就可以真正地在日常生活中使用它。</p> 
- <p>所以说，我们有背景，我们从云服务的繁荣得到了重要启示，我们会努力实现一个本地云服务。</p> 
-</blockquote>
-<p>Effektif使用了一个专有的非开源的许可证。读者可以在Effektif的网站上注册试用。该公司还将在2月3日和6日之间举办两场<a href="http://www.effektif.com/news/effektif-launch-webinars/">网络研讨会</a>，届时，读者可以了解更多相关信息。</p>
-<p><b>查看英文原文：</b><b><a href="http://www.infoq.com/news/2014/01/Effektif-10">Effektif, Tom Baeyens' Latest BPM Venture, Launches Cloud-Based Tool</a></b></p><br><br><br><br><br><br></body></html>
+<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>15个热门的编程趋势及15个逐步走向衰落的编程方向（下）</h3><p><a href="http://www.linkedin.com/pub/dir/Peter/Wayner">Peter Wayner</a>是InfoWorld的一名特约编辑，也是一个多产的作家。除了InfoWorld之外，他还经常为纽约时报和连线杂志撰写文章。近日，Peter撰写了一篇<a href="http://www.javaworld.com/article/2084582/scripting-jvm-languages/15-hot-programming-trends-and-15-going-cold.html">文章</a>，谈到了未来15个热门的编程趋势以及15个逐步走向衰落的技术方向，该文发表之后在技术社区中引起了较大的反响，也希望文中的观点能给各位读者带来一些启示。</p>
+<p>程序员们普遍对时尚界嗤之以鼻，因为这个圈子中的趋势就像风一样变幻不定。裙子忽长忽短、颜色变来变去、领结时大时小。不过在技术界，精确、科学与数学却统治着一切。然而，这并不是说编程没有趋势可言。差别在于编程的趋势是由更高的效率、更好的可定制性以及更棒的易用性来驱动的。新的技术会让旧有的技术黯然失色。下面我们就来介绍一下未来15个热门的编程趋势以及15个逐步走向衰落的编程方向。并非人人都会同意文中的观点，不过编程令人着迷之处恰恰就是快速的变化、激烈的争论以及即时的反馈。感兴趣的读者还可以参见本篇文章的<a href="http://www.infoq.com/cn/news/2014/02/15-hot-programming-trends">第一部分</a>。</p>
+<p><b>热门：移动Web应用</b></p>
+<p><b>冷门：原生移动应用</b></p>
+<p>假如你有一个关于移动方面的好点子。你可以为iOS、Android、Windows 8，也许还有BlackBerry OS各编写一个应用。每个应用都需要单独一个团队，使用不同的编程语言完成。开发完成后，你还需要将应用提交到应用商店进行审查，最后才能被用户下载使用。此外，你还可以构建一个HTML应用，将其放到网站上，应用可以运行在所有的平台之上。如果需要做些修改，那么你无需回到应用商店，祈求能够快些通过审查。现在的HTML运行速度已经越来越快了，它完全可以与原生应用展开竞争，即便是那些复杂、交互非常多的应用也没什么问题。</p>
+<p><b>热门：Android</b></p>
+<p><b>冷门：iOS</b></p>
+<p>几年前，Apple的App Store还是一家独大，不过时间改变了一切。虽然iPhone与iPad还是拥有非常多的粉丝，他们喜欢其精致、丰富的UI，但Android的销量却在节节攀高。有报告显示70%以上的智能手机销量来自于Android。</p>
+<p>原因很简单，那就是价格。虽然iOS设备保持了一个比较高的价格，不过Android世界中有太多的竞争者，他们所生产的平板价格甚至只有iPad价格的1/5，省钱总是硬道理嘛。除了价格之外，开源也是一个不容小觑的因素。任何人都可以在市场中参与竞争，实际情况也是这样的。有大的Android平板，也有小的手机；有Android相机，甚至还有Android冰箱。</p>
+<p><b>热门：GPU</b></p>
+<p><b>冷门：CPU</b></p>
+<p>在软件还很简单，指令可以在一行中清楚显示的时候，CPU是计算机之王，因为它做了所有繁重的工作。现在，视频游戏中有大量并行运行的图形计算，一块显卡的价格动辄就5、600美金，一些执着的玩家甚至会使用多块显卡。这甚至比很多一般的PC还要贵，除了游戏玩家外，计算机科学家们也将很多并行应用转到GPU上运行，速度比之前快了百倍以上。</p>
+<p><b>热门：GitHub</b></p>
+<p><b>冷门：简历</b></p>
+<p>没错，你可以通过看书等方式来学习，不过，阅读实际的代码却更加直观和有意义。程序员是否写了足够好的注释？是否花时间将大的类拆分成若干各司其责的小类？架构是否还有扩展的空间？这些问题都可以通过查看代码得到答案。</p>
+<p>这也是为何现在在找工作时有过开源项目开发经历会变得更加吃香的原因所在。从私有项目中分享代码是比较困难的，不过开源项目可以走进每个人的生活。</p>
+<p><b>热门：租赁</b></p>
+<p><b>冷门：购买</b></p>
+<p>以前，公司会建立自己的数据中心、雇佣专门的人来维护他们所购买的计算机。时至今日，很多公司开始租赁计算机、数据中心、雇员，甚至按照小时数来租赁软件。这是个非常好的做法，也会为公司节省很多成本；同时，还会保证计算能力。</p>
+<p><b>热门：Web界面</b></p>
+<p><b>冷门：IDEs</b></p>
+<p>很久之前，人们使用命令行编译器。后来，有人将其集成到了编辑器和其他工具当中，创造出了IDE。现在，IDE有被基于浏览器的工具所替代的趋势。在基于浏览器的工具中，你可以编写代码、创建系统。如果不喜欢WordPress的工作方式，那么你可以通过它自带的编辑器修改代码并立即生效。你可以通过微软的Azure编写JavaScript胶水代码。这些系统基本上都没有提供很好的调试环境，而且在编辑生产代码时也存在着一定的风险，不过这个想法却是非常棒的。</p>
+<p><b>热门：Node.js</b></p>
+<p><b>冷门：JavaEE、Ruby on Rails及PHP</b></p>
+<p>服务器的世界总是依赖于各种线程模型，不过这种方式会导致程序员所编写的各种低效、不负责任的代码影响到操作系统的效率。无论程序员编写的代码有多么差劲，操作系统总是会在各个线程间切换，从而平衡整体性能。</p>
+<p>Node.js带来了JavaScript回调这种编程模型，代码运行速度也绝对够快。这种一开始只是用于弹出警告框的玩具语言的变化超出了很多人的想象。突然之间，创建新线程的开销变得很显著了，这时Node.js来了。如果程序员代码写的不好就会出现问题，不过让程序员清楚了解资源限制有助于他们编写出更快的代码。</p>
+<p>Node.js的世界也因让浏览器与服务器之间保持和谐共处而获益匪浅。同样的代码既可以运行在浏览器端，也可以运行在服务器端，开发者可以在两端快速移动，也可以更好地完成功能。因此，Node.js已经成为互联网界最炙手可热的技术之一。</p>
+<p><b>热门：Hackerspaces</b></p>
+<p><b>冷门：大学</b></p>
+<p>一个是4年250,000美金，一个是每月50美金，如果提前支付还有折扣。Hackerspaces正在不断驱动着创新，同时又没有大学那么多的开销。他们在创造着社交网络，影响着创业公司，没有官僚、没有政治。其课程不需要持续整个学期，这种特性非常适合于快速变化的技术世界。</p><br><br><br><br><br><br></body></html>
