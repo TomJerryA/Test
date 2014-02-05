@@ -1,16 +1,22 @@
-<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>Code Pilot开源，探讨GPGPU于iOS上的效能分析 - 移动开发技术周报</h3><p>本周移动开发技术周报的推荐资料包括：Code Pilot的开发故事，深入iOS7 App Switcher，raywenderlich的Objective-C编码风格，设计iOS 7的Status Bar。</p>
-<h3>工具：</h3>
-<ol> 
- <li><a href="http://macoscope.com/blog/the-story-of-code-pilot">Code Pilot的开发故事</a>：Code Pilot是一个Xcode的扩充套件，可以让开发者更快的找到之前曾写过的代码，并拿出来重复使用。在之前，Code Pilot是一套价值14.95美元的产品。最近Code Pilot CEO Zbigniew Sobieck不仅宣布解决了Code Pilot在Xcode5上面的使用问题，也把Code Pilot的代码开源了，让更多的开发者可以改进这个套件并增强其功能。</li> 
-</ol>
-<h3>技巧：</h3>
-<ol> 
- <li><a href="http://vpdn.github.io/articles/iOS7-card-view">深入iOS7 App Switcher</a>：iOS7提供了新的App切换方式，开发者可以把应用的显示方式设计为卡片模式，在切换应用的时候也可以让使用者快速的看到有用的资料。这篇文章探讨这种设计的好处并透过iOS内建的应用来分析。</li> 
- <li><a href="https://github.com/raywenderlich/objective-c-style-guide">raywenderlich的Objective-C编码风格</a>：<a href="http://www.raywenderlich.com">raywenderlich</a>是一个在iOS开发界着名的教学网站及出版商，相信在许多人学习iOS的路上都有着raywenderlich的陪伴。随着New York Times、Google、GitHub都公布各自的Objective-C编码风格，raywenderlich也不落人后的推荐自己的Objective-C编码风格给广大的开发者。</li> 
- <li><a href="http://iosdevelopertips.com/user-interface/managing-status-bar-ios-7.html">设计iOS 7的Status Bar</a>：随着iOS7设计风格的转变，以往的Status Bar方法也被改变了。我们所熟悉的UIStatusBarStyleBlackOpaque及UIStatusBarStyleBlackTranslucent已被除去，取代而之的为UIStatusBarStyleDefault及UIStatusBarStyleLightContent，可以供设计的需求所更改。</li> 
-</ol>
-<h3>杂货：</h3>
-<ol> 
- <li><a href="http://www.ithome.com.tw/itadm/article.php?c=84839">中国发布COS操作系统对抗Android、iOS</a>：中国科学院软件研究所与上海联彤共同发表China Operating Systems(COS)，COS采用成熟且强化过的Linux核心，支援高效能的原生与HTML应用，将可应用在手机、平板电脑、家电、机上盒、个人电脑。</li> 
- <li><a href="http://ciechanowski.me/blog/2014/01/05/exploring_gpgpu_on_ios/">探讨GPGPU于iOS上的效能分析</a>：CPU or GPU ? 这个问题自GPU运算能力增强之后，许多开发者变会犹豫该使用哪一个处理器来加快应用的处理能力。这一篇由Bartosz Ciechanowski这位资深的开发者所撰写，面向对CPU及GPU进行了详尽的评测。</li> 
-</ol><br><br><br><br><br><br></body></html>
+<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>Mozilla基金会宣布Firefox OS贡献计划</h3><p>为加快Firefox OS的开发，<a href="https://hacks.mozilla.org/2014/01/mozilla-launches-contribution-program-to-help-deliver-firefox-os-to-tablets/">Mozilla宣布了一项贡献计划</a>，目的是为专门的开发人员提供相关资源和参考硬件。</p>
+<p>富士康将生产初始参考硬件，一台平板电脑。</p>
+<p>根据Mozilla Firefox OS Participation总监Asa Dotzler在1月初的声明，这项计划将向开发者、本地化人员、测试人员和bug修复人员开放。所有贡献者将能够获得Firefox OS的每日构建，并得到指导，哪些领域还需要更多贡献。Dotzler同时在该声明的评论中表示该计划的更多细节正在整理中，很快就会公布。</p>
+<p>这项计划的一个关键是参考硬件的开发，由富士康完成初始生产。就像Dotzler在声明中提到的：</p>
+<blockquote>
+  “我们必须在软件完成之前确保硬件到位，这样才能保证全球的贡献者能够帮助我们完成适用于平板电脑的Firefox OS”。
+</blockquote>
+<p>在他的另一篇<a href="http://asadotzler.com/2014/01/16/firefox-os-tablet-program-first-device-specs/">博客</a>中，Dotzler公开了富士康为Firefox OS生产的参考平板电脑的参数。该平板电脑拥有ARM Cortex A7 四核1.0GHz处理器、2G DDR3内存、16GB闪存、10.1”多点触控显示屏、双摄像头、支持Wi-Fi、microSD、Micro-USB和耳机口。他在博客中还展示了一张运行Firefox OS每日构建版本的设备照片。</p>
+<p>根据<a href="http://gigaom.com/2014/01/17/firefox-may-beat-google-to-a-web-based-slate-hello-firefox-os-tablet/">Kevin C. Tofel为GigaOm撰写的文章</a>，这台设备看起来似乎有点动力不足，但它仍然代表了这个平台坚实的参考设计。Brad Linder发表于liliputing的<a href="http://liliputing.com/2014/01/meet-first-firefox-os-tablet-prototype.html">文章</a>对该设备与低端Android平板电脑的规格参数进行了比较。</p>
+<p>Mozilla公司研究总监Andreas Gal博士于<a href="http://groups.google.com/group/mozilla.dev.platform/browse_thread/thread/7668a9d46a43e482?pli=1">2011年7月25日首次宣布了Firefox OS</a>。根据这次的声明，Firefox OS的追求目标是“为开放的web构建一个完整、独立的操作系统”，需要开发的工作包括：</p>
+<ul> 
+ <li>新的web API，为应用程序提供设备和操作系统功能，例如电话、摄像头、蓝牙等。</li> 
+ <li>安全模型，确保那些原生功能以安全的方式提供。</li> 
+ <li>一个引导子系统，能够在Android兼容设备上启动。</li> 
+ <li>为用户开发的应用软件。</li> 
+</ul>
+<p>在Know Your Mobile的一次<a href="http://www.knowyourmobile.com/products/16409/mozillas-boot-2-gecko-and-why-it-could-change-world">采访</a>中，Mozilla的联合创始人、<a href="http://inventors.about.com/od/jstartinventions/a/JavaScript.htm">JavaScript的发明者</a>Brendan Eich是这样描述Firefox OS的：</p>
+<blockquote>
+  “完全开放并100%免费的协议栈。我们的资源库完全公开，所有开发过程完全开放。我们使用完全开放的标准，并且不使用任何专有软件和技术。”
+</blockquote>
+<p>因此Firefox OS的目标是“不再需要任何独立专有平台”。</p>
+<p><b>查看英文原文：</b><a href="http://www.infoq.com/news/2014/01/firefox-os-contribution-program">Mozilla Foundation Announces Firefox OS Contribution Program</a></p><br><br><br><br><br><br></body></html>

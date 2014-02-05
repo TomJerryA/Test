@@ -1,7 +1,7 @@
 <html>
  <head></head> 
- <body>
-  <div>
+ <body> 
+  <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/11.javab">Virtual Roundtable: The Future of PaaS in Cloud Computing</a> There has been a raging debate about PaaS and whether it is still a valuable part of a cloud portfolio, so InfoQ reached out to four leaders in the cloud domain (cloud advocate Krish Subramanian, cloud developer Dan Turkenkopf, cloud executive JP Morgenthal, and cloud expert James Urquhart) for their opinions on the future of PaaS. 
   </div> 
   <div> 
@@ -150,6 +150,6 @@
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/13.javab">The Subject and Discipline of Business Architecture</a> This article defines the subject and discipline of Business Architecture. In contrast with other approaches, only business functionality and business information may be considered architectural entities that together form the subject of Business Architecture.The discipline of Business Architecture on the other hand is a description of the primary and secondary tasks of a Business Architect. 
-  </div>  
+  </div> 
  </body>
 </html>
