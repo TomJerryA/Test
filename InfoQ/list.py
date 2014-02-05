@@ -1,6 +1,15 @@
 <html>
  <head></head> 
- <body> 
+ <body>
+  <div>
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/42.py">Typemock Isolator v7.4.3リリース，FastFixの追加とSmartRunnerの改良，Visual Studio 2013をサポート</a>.NET用のユニットテストツールTypemock Isolatorのv7.4.3がリリースされた。FastFixのサポート，SmartRunnerの改良に加えて，Visual Studio 2013とTFS 2012との統合が提供されている。
+  </div>
+  <div>
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/41.py">スレッドモデルを変更したRust 0.9がリリース</a>Rustチームが次世代プログラム言語Rustの最新バージョンをリリースした。今回のリリースで新しいのは，スレッディングシステムが再設計されたことと，1.0リリースに向けて言語としての改良がいくつか加えられたことだ。
+  </div>
+  <div>
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/40.py">Webix 1.4がリリース，WebSocket, IndexedDB, Data/Grid Suggestをサポート</a>Webixがアップデートされて，イメージを選択オプションとして使用可能なData Suggestがサポートされた。テーブルからデータを選択するGrid Suggest，WebSocket，IndexedDBなども追加されている。
+  </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/39.py">EメールとAutoPageScaleのサポート，ファネル加重スライスを加えたStimulsoft Reports.Fx 2013.3</a>StimulsoftがAdobe Flex, PHP, Java用のReports.Fx 2013.3をリリースした。指定されたアドレス，主題，テキストのEメールによるレポート配信をサポートしたのに加えて，グラフ形式としてのファネル加重スライスが新しい。AutoPageScale，CSV形式のレポートに適切なフィルタを設定可能なBand Filterオプションも追加されている。 
   </div> 
@@ -141,15 +150,6 @@
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/44.py">Producing Software, Professionally</a>初の開催となるAgile Singapore Conference 2013のテーマは「Producing Software, Professionally」だった。このカンファレンスは東南アジアのアジャイルコミュニティにとって重要なイベントだ。 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/43.py">エンタープライズ開発者のためのツール表集</a>VisionMobileは，500以上のツールを掲載したインタラクティブマップを製作した。インテグレーションや開発，テスト，デプロイメント，評価，マーケティングと収益化など，エンタープライズソフトウェア開発のあらゆる面をカバーする。マップには各ツールのメリットを簡単に述べた説明文の他に，開発者が業務に適したツールを選ぶ上でのクイックガイドとなる見解が掲載されている。 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/42.py">オープンソースのSQL-in-Hadoopソリューション:我々はいまどこに？</a>Facebookが最近Prestoをオープンソース化してリリースしたことで、既に飽和状態だったSQL-in-Hadoopマーケットがさらに錯綜している。多数のオープンソースツールが開発者の関心を集めようとしのぎを削っているのだ。Hortonworks社によるHive関連のStinger initiative, Apache Drill, Apache Tajo, Cloudera社の Impala, Salesforce社の Phoenix (for HBase),そして今回のFacebook社のPrestoがこれに挙げられる。 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/41.py">PowerShellのDesired State Configuration，プッシュモードとプルモードをサポート</a>Windows PowerShell Blogに現在，PowerShellのDSC(Desired State Configuration)に関する記事が掲載されている。DSCはWindowsでコンピュータの構成管理を行うための，Microsoftからの提案だ。最新の記事のひとつではプッシュとプルという，DSCで選択可能な２つのコンフィギュレーションモードについて説明されていて，いずれのアプローチにもそれぞれの長所と短所がある。 
-  </div> 
+  </div>    
  </body>
 </html>

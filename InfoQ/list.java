@@ -1,8 +1,8 @@
 <html>
  <head></head> 
- <body>
-  <div>
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/22.java">Google Cast SDK Adds MPEG-DASH, Adaptive and HTTP Live Streaming Support</a>Google has released Cast SDK with which developers will be able to integrate Chromecast into both new and existing mobile apps and websites with support for adaptive streaming, MPEG-DASH, HTTP Live Streaming (HLS) and SmoothStreaming.
+ <body> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/22.java">Google Cast SDK Adds MPEG-DASH, Adaptive and HTTP Live Streaming Support</a>Google has released Cast SDK with which developers will be able to integrate Chromecast into both new and existing mobile apps and websites with support for adaptive streaming, MPEG-DASH, HTTP Live Streaming (HLS) and SmoothStreaming. 
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/21.java">DataFu Enters Incubation Status at Apache</a>LinkedIn’s DataFu project, a collection of libraries for Hadoop, has now officially entered the incubation status at the Apache Software Foundation (ASF) since the first week of January. 
@@ -150,6 +150,6 @@
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/24.java">Google Improves Hadoop Performance with New Cloud Storage Connector</a>With a new connector, it is now possible for Hadoop to run directly against Google Cloud Storage instead of using the default, distributed file system. This results in lower storage costs, fewer data replication activities, and a simpler overall process. 
-  </div>  
+  </div> 
  </body>
 </html>
