@@ -1,14 +1,14 @@
 <html>
  <head></head> 
- <body>
-  <div>
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/42.py">Typemock Isolator v7.4.3リリース，FastFixの追加とSmartRunnerの改良，Visual Studio 2013をサポート</a>.NET用のユニットテストツールTypemock Isolatorのv7.4.3がリリースされた。FastFixのサポート，SmartRunnerの改良に加えて，Visual Studio 2013とTFS 2012との統合が提供されている。
-  </div>
-  <div>
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/41.py">スレッドモデルを変更したRust 0.9がリリース</a>Rustチームが次世代プログラム言語Rustの最新バージョンをリリースした。今回のリリースで新しいのは，スレッディングシステムが再設計されたことと，1.0リリースに向けて言語としての改良がいくつか加えられたことだ。
-  </div>
-  <div>
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/40.py">Webix 1.4がリリース，WebSocket, IndexedDB, Data/Grid Suggestをサポート</a>Webixがアップデートされて，イメージを選択オプションとして使用可能なData Suggestがサポートされた。テーブルからデータを選択するGrid Suggest，WebSocket，IndexedDBなども追加されている。
+ <body> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/42.py">Typemock Isolator v7.4.3リリース，FastFixの追加とSmartRunnerの改良，Visual Studio 2013をサポート</a>.NET用のユニットテストツールTypemock Isolatorのv7.4.3がリリースされた。FastFixのサポート，SmartRunnerの改良に加えて，Visual Studio 2013とTFS 2012との統合が提供されている。 
+  </div> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/41.py">スレッドモデルを変更したRust 0.9がリリース</a>Rustチームが次世代プログラム言語Rustの最新バージョンをリリースした。今回のリリースで新しいのは，スレッディングシステムが再設計されたことと，1.0リリースに向けて言語としての改良がいくつか加えられたことだ。 
+  </div> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/40.py">Webix 1.4がリリース，WebSocket, IndexedDB, Data/Grid Suggestをサポート</a>Webixがアップデートされて，イメージを選択オプションとして使用可能なData Suggestがサポートされた。テーブルからデータを選択するGrid Suggest，WebSocket，IndexedDBなども追加されている。 
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/39.py">EメールとAutoPageScaleのサポート，ファネル加重スライスを加えたStimulsoft Reports.Fx 2013.3</a>StimulsoftがAdobe Flex, PHP, Java用のReports.Fx 2013.3をリリースした。指定されたアドレス，主題，テキストのEメールによるレポート配信をサポートしたのに加えて，グラフ形式としてのファネル加重スライスが新しい。AutoPageScale，CSV形式のレポートに適切なフィルタを設定可能なBand Filterオプションも追加されている。 
@@ -150,6 +150,6 @@
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/44.py">Producing Software, Professionally</a>初の開催となるAgile Singapore Conference 2013のテーマは「Producing Software, Professionally」だった。このカンファレンスは東南アジアのアジャイルコミュニティにとって重要なイベントだ。 
-  </div>    
+  </div> 
  </body>
 </html>

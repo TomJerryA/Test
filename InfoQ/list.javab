@@ -1,6 +1,9 @@
 <html>
  <head></head> 
- <body> 
+ <body>
+  <div>
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/11.javab">Virtual Roundtable: The Future of PaaS in Cloud Computing</a> There has been a raging debate about PaaS and whether it is still a valuable part of a cloud portfolio, so InfoQ reached out to four leaders in the cloud domain (cloud advocate Krish Subramanian, cloud developer Dan Turkenkopf, cloud executive JP Morgenthal, and cloud expert James Urquhart) for their opinions on the future of PaaS. 
+  </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/10.javab">Interview with Jan de Baere about the Rise and Fall of an Agile Company</a> What happens when a director of a consulting company decides to drastically change the culture? At the Agile Tour Brussels conference Jan de Baere presented the why and how of a company that adopted agile, the journey that they went through, and how it came to a sudden end. InfoQ interviewed him about the agile change approach, culture and trust, and the lessons learned from an agile journey. 
   </div> 
@@ -147,9 +150,6 @@
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/13.javab">The Subject and Discipline of Business Architecture</a> This article defines the subject and discipline of Business Architecture. In contrast with other approaches, only business functionality and business information may be considered architectural entities that together form the subject of Business Architecture.The discipline of Business Architecture on the other hand is a description of the primary and secondary tasks of a Business Architect. 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/12.javab">BYOC and the Rise of Hybrid Cloud</a> Chris Smith offers insights on how to leverage the increasing employee adoption of cloud services (Bring Your Own Cloud) to perform their work. Understanding the risks and benefits becomes essential. 
-  </div> 
+  </div>  
  </body>
 </html>

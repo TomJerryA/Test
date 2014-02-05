@@ -1,6 +1,9 @@
 <html>
  <head></head> 
- <body> 
+ <body>
+  <div>
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/36.cb">Arquitetura Corporativa como Estrat&eacute;gia</a> Arquitetos Corporativos atuam com as partes interessadas para construir a vis&atilde;o global de uma empresa e fazem a liga&ccedil;&atilde;o entre a miss&atilde;o empresarial, a estrat&eacute;gia e seus processos, alinhados com a estrat&eacute;gia de TI. Este artigo aborda o crescimento do papel da Arquitetura Corporativa nas empresas ajudando no mapeamento das necessidades atuais e futuras para serem atendidas de forma eficiente e &aacute;gil. 
+  </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/35.cb">Adicionando flexibilidade &agrave; sua implementa&ccedil;&atilde;o REST com Yoga</a> Nos casos que se deseja obter um controle detalhado da estrutura de documentos que ser&atilde;o retornadas com base nas necessidades dos clientes, o Yoga &eacute; uma alternativa open source que integra com aplica&ccedil;&otilde;es REST j&aacute; existentes. O Yoga fornece aos clientes, a habilidade de usar seletores, que pode ser usado como os operadores proje&ccedil;&atilde;o, sele&ccedil;&atilde;o e join relacional. 
   </div> 

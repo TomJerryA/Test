@@ -1,6 +1,9 @@
 <html>
  <head></head> 
- <body> 
+ <body>
+  <div>
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/23.java">HybridCluster announce free non-commercial licenses</a>HybridCluster have announced a free for non-commercial use license for their cloud hosting platform. The platform supports Linux, Apache, MySQL and PHP (LAMP) applications, and provides high availability and auto scaling with a combination of ‘AwesomeProxy’ a proprietary multi-protocol proxy server, lightweight containers and a ZFS based storage fabric.
+  </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/22.java">Google Cast SDK Adds MPEG-DASH, Adaptive and HTTP Live Streaming Support</a>Google has released Cast SDK with which developers will be able to integrate Chromecast into both new and existing mobile apps and websites with support for adaptive streaming, MPEG-DASH, HTTP Live Streaming (HLS) and SmoothStreaming. 
   </div> 
@@ -147,9 +150,6 @@
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/25.java">Koa Web Framework 0.2.0 Release</a>The NodeJS based Koa web application framework has released version 0.2.0. Koa is the successor of the popular Express MVC platform, but relies heavily on newer ES6 constructs. This release is marked as an important one in that that it reaffirms the team’s design choices from the initial 0.1.0 release, solidifying Koa's API for future releases and production use. 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/24.java">Google Improves Hadoop Performance with New Cloud Storage Connector</a>With a new connector, it is now possible for Hadoop to run directly against Google Cloud Storage instead of using the default, distributed file system. This results in lower storage costs, fewer data replication activities, and a simpler overall process. 
-  </div> 
+  </div>  
  </body>
 </html>

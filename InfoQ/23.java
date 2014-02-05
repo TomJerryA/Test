@@ -1,46 +1,7 @@
-<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>Math.js: Versatile Math Library For JavaScript</h3><p>&nbsp;<a href="http://mathjs.org/">Math.js</a> is an open source Math library for JavaScript and Node.js for working with numbers, big numbers, complex numbers, units and matrices. It also features a flexible expression parser. InfoQ got in touch with the project founder, <a href="http://josdejong.com/">Jos De Jong</a>, to know more.</p>
-<p align="justify">Jos explains the motivation behind the project –</p>
-<blockquote> 
- <p align="justify">For JavaScript there are nice libraries out there to work with matrices, complex numbers, statistics, etc. What is lacking though is an integrated solution to do advanced mathematics.&nbsp;Most of the existing libraries come with a&nbsp;<i>chained</i>&nbsp;API, which works very intuitive, but only accepts data types&nbsp;known by the library itself.&nbsp;Hence the integration issue: matrix libraries can't handle complex numbers, and vice versa. You can't combine them.&nbsp;The API of math.js is the same as that of JavaScript's Math object and built in operators: static functions accepting various types of input. Math.js extends this API with support for advanced data types, functions, and constants.</p> 
- <p align="justify">I hope math.js will help making maths in application development trivial and more fun, and helps bridging the gap between the the world of developers and the academic world.</p> 
+<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>HybridCluster announce free non-commercial licenses</h3><p><a href="http://www.hybridcluster.com">HybridCluster</a> have <a href="http://www.hybridcluster.com/blog/containers-distributed-storage-future-now-free-hybridcluster-non-commercial-licenses/">announced</a> a free for non-commercial use license for their cloud hosting platform. The platform supports Linux, Apache, MySQL and PHP (<a href="http://en.wikipedia.org/wiki/LAMP_(software_bundle)">LAMP</a>) applications, and provides high availability and auto scaling with a combination of ‘AwesomeProxy’ a proprietary multi-protocol proxy server, lightweight containers and a <a href="http://en.wikipedia.org/wiki/ZFS">ZFS</a> based storage fabric.</p>
+<p>HybridCluster doesn’t actually support the Linux in LAMP, running instead on <a href="http://en.wikipedia.org/wiki/Freebsd">FreeBSD</a> so that it can use <a href="http://en.wikipedia.org/wiki/OpenZFS">OpenZFS</a> (which only recently made a stable port to Linux). The use of the ZFS file system and volume manager underlies most of the scalability and resilience on offer. This is achieved by making a set of independently capable distributed replicas for each application. HybridCluster’s <a href="http://docs.hybridcluster.com/release-2.0/03-features/features.html#awesomeproxy">proprietary components</a> consist of the AwesomeProxy front end, SiteJuggler to handle distribution, replication and migration, and Yakd for system configuration. Founder Luke Marsden made this comment on the differences between <a href="http://en.wikipedia.org/wiki/HAProxy">HAproxy</a> and Awesomeproxy:</p>
+<blockquote>
+ The key difference between this and HAProxy is that AwesomeProxy is integrated with SiteJuggler, which with no single point of failure and using smart distributed algorithms and distributed storage, automatically provides failover with commodity hardware across data centers. In terms of AwesomeProxy itself, it also understands the binary MySQL protocol, FTP, IMAP, POP, SMTP, SSH and a bunch of other interesting protocols. Finally, AwesomeProxy is a key component in our live migration system, where it pauses new requests while in-flight ones complete, and queue them up while the underlying filesystem is unmounted, the last few 100kb of changes replicated over the network, mounted, set up, at which point the thrower unleashes the requests which built up before the live migration - in order to live migrate containers in seconds across continents without the user noticing.
 </blockquote>
-<p align="justify">Math.js can be used in three ways&nbsp;–</p>
-<ol> 
- <li> 
-  <div>
-   Using static functions and constants (like JavaScript's Math object) 
-   <pre>
-math.add(2, 3); &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;// 5 
-math.sqrt(-4); &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; // 2i 
-math.pow([[-1, 2], [3, 1]], 2); &nbsp;// [[7, 0], [0, 7]]</pre> 
-  </div> </li> 
- <li> 
-  <div align="justify">
-   Evaluate string expressions 
-   <pre>
-math.eval('1.2 * (2 +  4.5)'); //7.8
-math.eval('5.08 cm to inch'); //2 inch </pre> 
-  </div> </li> 
- <li> 
-  <div align="justify">
-   Using chaining operations
-   <br /> 
-   <pre>
-math.select(3)
-    .add(4)
-    .multiply(2)
-    .done();      //14</pre> 
-  </div> </li> 
-</ol>
-<p align="justify">There are several examples on the <a href="http://mathjs.org/">math.js website</a> as well as in <a href="https://github.com/josdejong/mathjs/tree/master/examples/">the documentation</a>.&nbsp;</p>
-<p align="justify">Jos is hoping to reach the first stable version 1.0 within a couple of months.</p>
-<blockquote> 
- <p align="justify">What's left before 1.0 is writing a reference documentation, reaching 100% code coverage with the unit tests and resolving some rough edges here and there.</p> 
-</blockquote>
-<p align="justify">1.0 will also see the API getting stabilized, after which&nbsp;the focus might shift to optimization. Jos identifies several possibilities such as using typed arrays, parallelization, asm.js for potential performance improvements.</p>
-<p align="justify">On why Jos chose JavaScript instead of something like Python which already has libraries such as NumPi/SciPi -</p>
-<blockquote> 
- <p align="justify">Latest years we have seen an enormous push towards the cloud and web applications, and I'm fully into this myself too.&nbsp;Browsers and JavaScript engines are becoming faster and faster. Since a couple of years you can run JavaScript server side using&nbsp;<a href="http://nodejs.org/">node.js</a>. This opens up a lot of new possibilities, which has resulted in an&nbsp;<a href="http://resin.io/happy-18th-birthday-javascript/">explosion</a>&nbsp;of the JavaScript ecosystem and its popularity. It looks like JavaScript is becoming the most ubiquitous language&nbsp;<i>ever</i>. JavaScript is far from the perfect language, but I like JavaScript and its community a lot.</p> 
-</blockquote>
-<p align="justify">There are already several end-user projects using math.js. Jos’s own project, <a href="http://mathnotepad.com/">mathnotepad</a>&nbsp;is&nbsp;powered by math.js and in early stages of development. Math.js is also used by&nbsp;<a href="http://numerics.info/">numerics</a>, a popular calculator project.&nbsp;</p>
-<p align="justify">To get started with Math.js, head over to <a href="https://github.com/josdejong/mathjs/blob/master/docs/getting_started.md">the documentation</a>.&nbsp;</p><br><br><br><br><br><br></body></html>
+<p>FlexContainers are offered in two types based on <a href="http://en.wikipedia.org/wiki/Chroot">chroot</a> and <a href="http://en.wikipedia.org/wiki/FreeBSD_Jail">jail</a>, with each type supporting different template options and underlying capabilities. Chroot containers are used for CGI/FastCGI websites such as PHP, Python or Perl. MySQL databases and email accounts get their own ZFS filesystem - so can be independently migrated and scaled - and multi-tenancy is handled natively inside the respective services. Jail containers can have a wider variety of internals (much like <a href="http://en.wikipedia.org/wiki/Docker_(software)">Docker</a> containers). Containers can be created from templates to speed deployment and conserve storage space by using <a href="http://en.wikipedia.org/wiki/Copy_on_write">copy on write</a> techniques.</p>
+<p>The company has been targeting web hosting providers who might wish to offer more scalable and reliable versions of traditional web application platforms. Commercial pricing is &pound;1/month with a minimum of 100 FlexContainers. The terms for the free offering are fairly broad ‘Non-commercial licenses may be used for any purpose where its usage is not intended for financial gain’, and seem designed to appeal to hobbyists and other open source projects.</p><br><br><br><br><br><br></body></html>
