@@ -1,1 +1,1 @@
-DataFu Enters Incubation Status at Apache
+Google Cast SDK Adds MPEG-DASH, Adaptive and HTTP Live Streaming Support
