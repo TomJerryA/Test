@@ -1,11 +1,11 @@
 <html>
  <head></head> 
- <body>
-  <div>
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/29.java">Build Web, Hybrid or Native Web Apps with Telerik Platform</a>Telerik Platform provides a mechanism to build web, hybrid and native based iOS, Android and Windows Phone apps either using web based dashboard, desktop or Visual Studio.
-  </div>
-  <div>
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/28.java">Resources to Start Developing for Firefox OS</a>Firefox OS pursues “the goal of building a complete, standalone operating system for the open web” and lets users install and run applications created using HTML, CSS, and JavaScript. It is based on Linux and Mozilla's Gecko and is a completely open stack that is 100 per cent free from proprietary technology. It allows developers to contribute to its code base or develop mobile apps.
+ <body> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/29.java">Build Web, Hybrid or Native Web Apps with Telerik Platform</a>Telerik Platform provides a mechanism to build web, hybrid and native based iOS, Android and Windows Phone apps either using web based dashboard, desktop or Visual Studio. 
+  </div> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/28.java">Resources to Start Developing for Firefox OS</a>Firefox OS pursues “the goal of building a complete, standalone operating system for the open web” and lets users install and run applications created using HTML, CSS, and JavaScript. It is based on Linux and Mozilla's Gecko and is a completely open stack that is 100 per cent free from proprietary technology. It allows developers to contribute to its code base or develop mobile apps. 
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/27.java">Plugins Provide New Customizations to VS2013</a>New extensions AutoHistory and File Nesting bring some interesting usability enhancements to Visual Studio 2013. Read on for how they provide new ways to customize your editing experience. 
@@ -150,6 +150,6 @@
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/31.java">VS Anywhere Updated with Web Workspace, Moderated Sessions, Cooperative Merge and Bug Fixes</a>The recently released updated VS Anywhere, a real time collaboration tool for Visual Studio includes web workspace, moderated sessions, cooperative merge in addition to several bug fixes. 
-  </div>   
+  </div> 
  </body>
 </html>
