@@ -1,6 +1,12 @@
 <html>
  <head></head> 
- <body> 
+ <body>
+  <div>
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/27.java">Plugins Provide New Customizations to VS2013</a>New extensions AutoHistory and File Nesting bring some interesting usability enhancements to Visual Studio 2013. Read on for how they provide new ways to customize your editing experience.
+  </div>
+  <div>
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/26.java">Balancing Experiments and Deliveries in Product Development</a>Experimentation using for instance lean startup can help you learn about your customers and find out which features and product would be valuable. The value however comes from building products and actually delivering them to customers. You need to find ways to balance between experimentation and delivery.
+  </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/25.java">The Colossal Problem with Bletchley Park and TMNOC</a>Today is the 70th anniversary of Colossus, the first electronic computer ever created. Its purpose was to crack the Lorenz encrypted messages, and started operations on 5th February 1944. However, all is not well at Bletchley Park as the National Museum of Computing is being increasingly marginalised in a bitter dispute. 
   </div> 
@@ -144,12 +150,6 @@
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/29.java">Modest Update to VS2013 Raises Expectations for Update 2</a>The first update to Visual Studio 2013 has been released. This workmanlike update provides IE9 support and stability fixes to the recently released VS2013 suite. 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/28.java">Big Data: Do Languages Really Matter?</a>Big Data is a field where even a single millisecond loss can be significant over billions of events. Yet, languages often regarded as slow like Python have gained a lot of popularity in the past year. Recent articles and discussions in the Big Data community have started reigniting the debate around the choice of a programming language for data science and Big Data. 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/27.java">Scala Turns Ten Today</a>Ten years ago today, the first release of the Scala language was announced on the comp.lang.scala newsgroup. It's come a long way in ten years; what will the next ten years be like? InfoQ looks back. 
-  </div> 
+  </div>   
  </body>
 </html>
