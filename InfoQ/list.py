@@ -1,6 +1,9 @@
 <html>
  <head></head> 
- <body> 
+ <body>
+  <div>
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/43.py">Androidはクローズドソースモデルを目指しているのか？</a>Ars Technicaの興味深い分析の中でRon Amadeo氏が，GoogleはAndroidを徐々にクローズソースモデルへとシフトしている，という主張をしている。Googleの戦略は，Androidを &quot;小さなホビーにも&quot; 使えるほど自由にカスタマイズ可能にする一方で，&quot;Googleの祝福を受けずにAndroidを使おうとする&quot; 試みを阻止しているというのだ。
+  </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/42.py">Typemock Isolator v7.4.3リリース，FastFixの追加とSmartRunnerの改良，Visual Studio 2013をサポート</a>.NET用のユニットテストツールTypemock Isolatorのv7.4.3がリリースされた。FastFixのサポート，SmartRunnerの改良に加えて，Visual Studio 2013とTFS 2012との統合が提供されている。 
   </div> 
@@ -147,9 +150,6 @@
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/45.py">DevDocs、リファレンスドキュメントのワンストップショップ</a>DevDocsはソフトウェア開発者が共通に使えるよう、複数のリファレンスドキュメントを1つにまとめたWebサイトだ。1つにまとめた利点を活かして、検索インターフェイス、キーボードショートカット、共通のレイアウトや目次など、全API横断して使える機能を提供している。DevDocsには現在、HTML、HTTP、JavaScript、Rubyなどのドキュメントが含まれている。 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/44.py">Producing Software, Professionally</a>初の開催となるAgile Singapore Conference 2013のテーマは「Producing Software, Professionally」だった。このカンファレンスは東南アジアのアジャイルコミュニティにとって重要なイベントだ。 
-  </div> 
+  </div>  
  </body>
 </html>

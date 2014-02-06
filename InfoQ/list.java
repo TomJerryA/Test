@@ -1,8 +1,8 @@
 <html>
  <head></head> 
- <body>
-  <div>
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/25.java">The Colossal Problem with Bletchley Park and TMNOC</a>Today is the 70th anniversary of Colossus, the first electronic computer ever created. Its purpose was to crack the Lorenz encrypted messages, and started operations on 5th February 1944. However, all is not well at Bletchley Park as the National Museum of Computing is being increasingly marginalised in a bitter dispute.
+ <body> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/25.java">The Colossal Problem with Bletchley Park and TMNOC</a>Today is the 70th anniversary of Colossus, the first electronic computer ever created. Its purpose was to crack the Lorenz encrypted messages, and started operations on 5th February 1944. However, all is not well at Bletchley Park as the National Museum of Computing is being increasingly marginalised in a bitter dispute. 
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/24.java">QCon New York 2014 (Jun 11-13): Track Topics Announced; Featuring OSGi DevCon 2014</a>The 15 track topics have been finalized for the third annual QCon New York (Jun 9-13) including: Creating Culture, Continuous Delivery, Data Science, Architecture Case Studies, JavaScript, Mobile, and more. New this year: OSGi DevCon 2014 will be co-located with QCon New York, taking place at the New York Marriott Brooklyn Bridge. Register before Feb 15th and save $600 for both events. 
@@ -150,6 +150,6 @@
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/27.java">Scala Turns Ten Today</a>Ten years ago today, the first release of the Scala language was announced on the comp.lang.scala newsgroup. It's come a long way in ten years; what will the next ten years be like? InfoQ looks back. 
-  </div>  
+  </div> 
  </body>
 </html>
