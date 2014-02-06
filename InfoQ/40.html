@@ -1,52 +1,30 @@
-<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>QCon上海2013精彩选辑：优秀讲师奉献精彩分享，晚场演讲携手跨界演讲</h3><p>在QCon组委会奋力策划邀约QCon北京2014议题的同时，InfoQ的编辑们没有忘记去年11月的QCon上海2013。在上海我们通过观众的调查反馈，选出了每个专题的优秀演讲，在此给大家隆重奉上：</p>
-<p><a href="http://www.infoq.com/cn/presentations/culture-and-performance-wandoujia-how-to-improve-team-performance-by-culture">豌豆荚 周爱民：《文化与效能：豌豆荚如何通过文化建设来提升团队效能》</a></p>
-<blockquote> 
- <p>周爱民(Aimingoo) 有17年的软件开发、项目管理、团队建设的经验。曾任多家软件公司高级程序设计师、项目经理、部门经理、区域总经理等职，前支付宝（中国）公司业务架构师，前盛大网络平台架构师，现任豌豆荚架构师。尽管周爱民先生常常被WEB前端的猎头重点关注，但其实他不仅是JavaScript或Delphi方面的技术高手，也在软件工程、体系架构和语言基础等多个方面都有丰富的研究与实践。他在豌豆荚的工作经历，让他对“文化与效能”这个话题有了更深的体会。这次他将谈谈豌豆荚作为一个创业团队，在从几人、几十人到两百人的团队规模的快速推进中，如何在建设文化的同时，解决个体特性与团队特性之间的矛盾，并且做到在二者共洽以提升团队效能的。</p> 
+<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>软件开发中变更的真正代价</h3><p><a href="http://www.blogger.com/profile/17371102366836131341">Jim Bird</a>是一位经验丰富的软件开发经理、项目经理与CTO，专注于软件开发与维护、软件质量与安全等领域中疑难问题的解决。在过去的15年间，Jim曾管理过团队建设并主导过高性能的财务系统的建设。他的主要兴趣在于如何提升小团队的效率以构建真正的软件：高质量、安全、可靠、高性能及适应性强。近日，Jim撰写了一篇<a href="http://swreflections.blogspot.ca/search?updated-max=2013-11-08T08:17:00-08:00&amp;max-results=7">博文</a>，谈到了软件开发中变更所带来的影响以及真正的代价，同时还谈到了如何降低变更的代价。</p>
+<p>当软件已经设计、编码、测试与实现完毕后，如果要对其进行修改或是修复，那么代价是怎样的呢？关于这个问题存在两种截然相反的观点。一种观点认为越晚修改成本就越高，修改的代价会达到指数级；另一种观点则认为应该尽可能晚地做修改，因为修改软件的代价本质上是水平变化的。那么究竟哪种观点才是正确的呢？我们该如何做呢？</p>
+<p><b>指数级的变更代价</b></p>
+<p>回到上个世纪80年代初，Barry Boehm发布了一些统计数字（<a href="http://www.amazon.com/dp/0138221227/?tag=stackoverfl08-20">Software Engineering Economics, 1981</a>），表明修改或修复软件的代价会随着时间的流逝呈现出指数级的变化，可以在<a href="http://www.clarkeching.com/2013/06/original-cost-of-change-curve.html">这里</a>查看变化曲线。</p>
+<p>Boehm的这个结论是根据70年代在TRW与IBM采用瀑布模型的项目数据而得出的，他发现当从需求分析转到架构、设计、编码、测试与部署阶段时，修改软件的成本会逐步增加。当尚处在需求定义阶段时，如果发现了需求上的错误而进行修改时，其代价几乎可以忽略不计。不过，如果等到完成了设计、编码和测试并将软件交付给客户后，那修改的代价可以达到之前的100倍以上。</p>
+<p>这里要补充几点。首先，大型项目的代价曲线会更高一些（在小型项目中，代价曲线差不多是1：4而不是1：100）。修改成本能达到100倍的项目并不常见，Boehm称之为<a href="http://swreflections.blogspot.com/2013/04/architecture-breaking-bugs-when.html">架构崩溃</a>，这指的是项目基础的架构就是完全错误的（可伸缩性、性能以及可靠性等），而且是在客户已经开始使用系统并遇到严重的操作问题时才发现的。这些分析基于的是30年前的少量数据采样，那时编写代码的成本非常高，也很消耗时间，同时缺乏高效的工具。</p>
+<p>从那之后还有不少人做了<a href="http://programmers.stackexchange.com/questions/133824/is-it-significantly-costlier-to-fix-a-bug-at-the-end-of-the-project">相关的研究</a>，结果也都与Boehm的发现很类似，至少基本的观点是一致的，那就是发现问题的时间越晚，修复问题的代价就越高。这些研究成果被很多书籍所引用，比如说Steve McConnell的<a href="http://cc2e.com/">代码大全</a>等，用于证明<a href="http://www.stevemcconnell.com/articles/art04.htm">尽早执行审查和测试的重要性</a>：</p>
+<blockquote>
+ 总而言之，原则就是发现错误的时间越早，修改的成本就越低。Bug在软件生态链中存活的时间越长，它对整个软件造成破坏性就越大。由于需求是最先确定的，因此需求上的缺陷就可能驻留系统更长的时间，修改的代价也更高。
 </blockquote>
-<p><a href="http://http://www.infoq.com/cn/presentations/decryption-of-large-electricity-system-architecture">韩军，一号店CTO:《超大型电商系统架构解密》</a></p>
-<blockquote> 
- <p>韩军曾作为51job.com的网站主要负责人，开创中国招聘网站系统先河，创立国内招聘网站业务规范标准，其诸多先进理念，被行业沿用至今。从零开始打造1号店网站系统、供应链系统，后台系统，并使1号店系统成为核心竞争力，形成强大的行业壁垒。韩军把网站，后台系统，供应链管理系统与业务流程，业务发展方向有机的结合并能够事先预期业务的发展，提前布局，使得1号店的技术能够一直以来引领业务的发展。本次演讲，韩军将通过分解1号店平台的四个建设层次：基础平台层、应用层、开放平台、监控治理平台，向大家逐步揭开超大型电商系统架构的秘密，带您领略诸多独家干货：服务共享和治理、Hedwig异步消息中间件、电商敏捷实践、SBY开放平台、1号店云平台等等内容。除了介绍现有系统，还会展望下一阶段超大型电商平台的规划，面临的挑战以及应对策略。</p> 
-</blockquote>
-<p><a href="http://www.infoq.com/cn/presentations/public-cloud-users-how-to-deal-with-cloud-computing-security-risks">时创互动 王凯：《公有云用户如何应对云计算安全风险》</a></p>
-<blockquote> 
- <p>在演讲中，时创互动创始人王凯做为安全从业人员，从用户角度看云计算安全，并谈安全问题。王凯是时创互动的创始人，曾就职于联想、金山、华为的研究部门，主要研究方向是系统安全、云计算安全、移动安全。曾带领团队研发第一款国内安全PC，金山手机安全卫士，VES云主机加密系统等创新性产品。现在王凯正在与小伙伴们在移动互联网领域中探索创业之路，他们的产品美食社交产品——食遇构筑在云平台之上。身兼云计算安全的从业者和云计算服务的使用者双重身份，使得他对云计算特别是公有云有自己深刻的体会。二来之前也是负责设计云计算安全解决方案的工作有一点浅薄体会。 他在演讲中提到了的内容有：从云计算业务模型谈云计算安全风险； 公有云用户面临的安全挑战有哪些； 谁应该负责云计算安全； 自力更生——食遇都使用了哪些防御技术； 总结公有云用户如何规避与防御安全攻击。</p> 
-</blockquote>
-<p>其他专题的优秀讲师，他们分别是：</p>
+<p><b>水平的变更代价</b></p>
+<p>规则随着开发逐步转向迭代式和增量式而发生了变化。</p>
+<p>Boehm认为如果我们能够提前考虑清楚风险并以增量的方式设计和构建软件（使用他称之为的<a href="http://en.wikipedia.org/wiki/Spiral_model">螺旋模型</a>而不是顺序化的瀑布式模型），那么我们就能尽早发现错误了。</p>
+<p>更加现代化、轻量级的敏捷开发方式背后也是同样的想法。在<a href="http://www.amazon.com/Extreme-Programming-Explained-Embrace-Change/dp/0201616416/ref=sr_1_12?s=books&amp;ie=UTF8&amp;qid=1378841586&amp;sr=1-12">Extreme Programming Explained（第1版）</a>中，Kent Beck认为最小化修改的代价是极限编程的一个目标，水平化的修改代价曲线是“XP的技术前提”：</p>
 <ul> 
- <li>《京东文件系统与统一数据中心存储》 京东 刘海锋</li> 
- <li>《Why to implement an effective and efficient TIDAS (Test In Device</li> 
- <li>《Automation System)?》 诺基亚 Francesco</li> 
- <li>《技术出身转管理的一些感悟，兼谈团队文化建设》 上海江游 时继江</li> 
- <li>《推荐系统实战经验与效果提升之道》 盛大 陈运文</li> 
- <li>《反机器人行为系统漫谈》 新浪 陈洋</li> 
- <li>《文化与效能：豌豆荚如何通过文化建设来提升团队效能》 豌豆荚 周爱民</li> 
- <li>《Cortex: 基于 CommonJS 的 Web 开发环境介绍》 大众点评 张颖</li> 
- <li>《不可思议的Moco》 ThoughtWorks 郑晔</li> 
- <li>《京东大数据R语言应用》 京东 刘思喆</li> 
- <li>《如何利用看板讓 Scrum 更完美 - 趨勢科技看板經驗分享》 台湾TrendMicro 柯仁傑</li> 
- <li>《1号店自动化运维构建》 一号店 李志刚</li> 
- <li>《豌豆荚：成长的烦恼》 豌豆荚 范怀宇</li> 
- <li>《微博LAMP性能优化之路》 新浪 惠新宸</li> 
- <li>《基于单元化（cell）架构的高性能服务实践》 新浪 梁宇鹏</li> 
+ <li>在某些情况下，随着时间的流逝而导致的指数级的修改代价可以水平化。如果我们能将代价曲线水平化，那么关于开发软件的最佳方式的旧假设就站不住脚了。</li> 
+ <li>你可以在过程的后期做出重大的决策，推迟决策的代价，从而尽可能确保决策的正确性。你只需要实现需要实现的东西，你可以引入能够简化现有代码并使得后续编码变得更简单的设计元素。</li> 
 </ul>
-<p>这些演讲的ppt下载，以及视频发布排期，请见<a href="%E8%A7%86%E9%A2%91%E5%8F%91%E5%B8%83%E6%8E%92%E6%9C%9F%E5%92%8CPPT%E4%B8%8B%E8%BD%BD">此页面</a>。已发布的内容，都可以在InfoQ网站<a href="http://www.infoq.com/cn/qcon/presentations/">QCon演讲页面</a>找到。</p>
-<p>其实在技术演讲之外，QCon上海还有非常特别的内容：</p>
-<p><a href="http://www.infoq.com/cn/presentations/seven-foot-ghost-night-falk">鬼脚七夜话</a></p>
-<blockquote> 
- <p>鬼脚七、池建强、吴翰清、蔡学镛、Roy厉这几位已经/即将步入中年的老技术人，将会从“软件开发者的中年规划”的话题展开，谈谈如何不掉队，聊聊如何成为专家，如何不为找工作发愁，如何让老板觉得招聘到你就好像捡到宝了一样。</p> 
-</blockquote>
-<p>以及三场别开生面的跨界演讲：</p>
-<p><a href="http://www.infoq.com/cn/presentations/straddling-speech-kickboxer-and-his-self-media">跨界演讲：鬼脚七和他的自媒体</a></p>
-<blockquote> 
- <p>从技术转换到自媒体人，自媒体的发展、价值、粉丝经济学等。</p> 
-</blockquote>
-<p><a href="http://www.infoq.com/cn/presentations/cross-speech-hackers-self-cultivation">Roy厉谈黑客的自我修养。</a></p>
-<blockquote> 
- <p>Roy厉，黑客，开发者，创业者，微信公共帐号“人生如戏”主创，加拿大桥牌青年队会员。人生如戏，全靠演技。游戏人生，行走江湖。在这次短短的分享中，厉哥讲述了他的成长经历，并给予大家无限的鼓励。</p> 
-</blockquote>
-<p><a href="http://www.infoq.com/cn/presentations/straddling-speech-why-i-gave-up-treatment">跨界演讲：为什么我放弃了治疗</a></p>
-<blockquote> 
- <p>蔡学镛老师为何过做这么多跨界的活动？为何远离家乡从台湾到大陆发展？他是如何规划自己的学习与职业生涯的？</p> 
-</blockquote>
-<p>而这一切都是去年11月份的事儿了。2014年4月25-27，QCon北京即将开幕。再次回到主场的QCon将会迎来哪些重磅嘉宾，带来怎样深度分享，组织何种别样活动？敬请经常查阅<a href="http://www.qconbeijing.com">QCon北京官网</a>，并关注InfoQ微博：<a href="http://weibo.com/infoqchina">@InfoQ</a>、以及InfoQ微信公众号【infoqchina】。</p>
-<p>需要特别注明的是，每年QCon大会门票都会在开幕前售罄，及早预定可提前确保席位，并享受更低折扣。现在报名参加将可享受8折优惠。团体购票（5人及以上）将享有更多优惠。详请咨询qcon【at】cn.infoq.com，或直接致电010-64738142。报名请点击<a href="http://qconbeijing.mymova.com/">报名页面</a>。</p><br><br><br><br><br><br></body></html>
+<p>重要的是你要知道Beck并没有说XP会将代价曲线水平化，他的意思是如果团队向着这个方向努力，那么是可以将修改代价曲线变成水平的。</p>
+<p><b>反馈的重要性</b></p>
+<p>Scott Amber认为在敏捷开发中代价曲线是<a href="http://www.agilemodeling.com/essays/costOfChange.htm">可以水平化</a>的，不过这并非因为简单设计，而是因为对于迭代式、增量开发很重要的<a href="http://www.ambysoft.com/essays/whyAgileWorksFeedback.html">反馈循环</a>。敏捷方法优化了团队中的反馈，开发者与客户坐在一起进行持续的面对面沟通。诸如测试先行的开发、结对编程与持续集成等技术实践使得这些反馈变得更加紧密。</p>
+<p>不过，真正重要的是从使用系统的用户当中获得反馈信息，只有这样你才能确定自己是否是正确的，是否遗漏了某些东西。设计、构建以及从真正的用户获得反馈的时间越久，将软件交付给用户所需的时间和工作量就会越多，变更的成本也会越高。</p>
+<p><b>变更的真正代价</b></p>
+<p>变更的代价真的是指数级么，还是水平化的。答案其实是介于二者之间的一个状态。</p>
+<p>时至今日，软件变更的代价肯定不如30年前那么高了。我们现在可以做得更好，使用更好的工具、更好的开发方式。降低变更成本的关键因素有下面几点：</p>
+<ul> 
+ <li>尽快将软件交付给客户使用。我不相信有哪个组织每天会对软件做10次、50次，甚至是100次变更，不过你肯定也不想等待几个月，甚至是几年才收到用户的反馈吧。少量交付，频繁交付。</li> 
+ <li>我们知道即便事先做了周密的规划和设计也无法确保一切都是正确无误的。请在理解需求和设计上花上足够的时间，这样可以确保我们是基本正确的，能够在后面帮助我们节省大量的时间。</li> 
+ <li>无论是采用迭代、增量的开发模式还是顺序开发模式，不管是通过测试先行的开发与结对，还是需求讲座和代码审查，只要有可能就提早找出错误，这样会降低后期的修改成本。</li> 
+</ul><br><br><br><br><br><br></body></html>

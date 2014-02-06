@@ -2,10 +2,16 @@
  <head></head> 
  <body>
   <div>
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/27.java">Plugins Provide New Customizations to VS2013</a>New extensions AutoHistory and File Nesting bring some interesting usability enhancements to Visual Studio 2013. Read on for how they provide new ways to customize your editing experience.
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/29.java">Build Web, Hybrid or Native Web Apps with Telerik Platform</a>Telerik Platform provides a mechanism to build web, hybrid and native based iOS, Android and Windows Phone apps either using web based dashboard, desktop or Visual Studio.
   </div>
   <div>
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/26.java">Balancing Experiments and Deliveries in Product Development</a>Experimentation using for instance lean startup can help you learn about your customers and find out which features and product would be valuable. The value however comes from building products and actually delivering them to customers. You need to find ways to balance between experimentation and delivery.
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/28.java">Resources to Start Developing for Firefox OS</a>Firefox OS pursues “the goal of building a complete, standalone operating system for the open web” and lets users install and run applications created using HTML, CSS, and JavaScript. It is based on Linux and Mozilla's Gecko and is a completely open stack that is 100 per cent free from proprietary technology. It allows developers to contribute to its code base or develop mobile apps.
+  </div> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/27.java">Plugins Provide New Customizations to VS2013</a>New extensions AutoHistory and File Nesting bring some interesting usability enhancements to Visual Studio 2013. Read on for how they provide new ways to customize your editing experience. 
+  </div> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/26.java">Balancing Experiments and Deliveries in Product Development</a>Experimentation using for instance lean startup can help you learn about your customers and find out which features and product would be valuable. The value however comes from building products and actually delivering them to customers. You need to find ways to balance between experimentation and delivery. 
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/25.java">The Colossal Problem with Bletchley Park and TMNOC</a>Today is the 70th anniversary of Colossus, the first electronic computer ever created. Its purpose was to crack the Lorenz encrypted messages, and started operations on 5th February 1944. However, all is not well at Bletchley Park as the National Museum of Computing is being increasingly marginalised in a bitter dispute. 
@@ -144,12 +150,6 @@
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/31.java">VS Anywhere Updated with Web Workspace, Moderated Sessions, Cooperative Merge and Bug Fixes</a>The recently released updated VS Anywhere, a real time collaboration tool for Visual Studio includes web workspace, moderated sessions, cooperative merge in addition to several bug fixes. 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/30.java">Azul Offering Commercialised Versions of OpenJDK 6 and 7 for Windows and Linux</a>Azul Systems has announced that Zulu, its freely-available version of OpenJDK, now supports both Java 6 and Java 7 on Linux and Windows-based deployments. It is supported via the Zulu Community Support forums. In addition the firm is introducing Zulu Enterprise, which is a commercially supported version of OpenJDK. 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/29.java">Modest Update to VS2013 Raises Expectations for Update 2</a>The first update to Visual Studio 2013 has been released. This workmanlike update provides IE9 support and stability fixes to the recently released VS2013 suite. 
   </div>   
  </body>
 </html>

@@ -1,1 +1,1 @@
-Plugins Provide New Customizations to VS2013
+Resources to Start Developing for Firefox OS

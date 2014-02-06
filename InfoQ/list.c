@@ -2,7 +2,10 @@
  <head></head> 
  <body>
   <div>
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/23.c">XDK: A Intel alavancando o desenvolvimento multi plataforma com HTML5</a>Em dezembro de 2013, a Intel anunciou seus planos de lan&ccedil;ar o Intel XDK NEW para o mercado atrav&eacute;s da vers&atilde;o oficial do Intel XDK e convidando todos os desenvolvedores para migrarem da vers&atilde;o anterior at&eacute; o fim de Fevereiro de 2014. Vamos ver o que &eacute; o Intel XDK e as novidades da &uacute;ltima vers&atilde;o.
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/24.c">Cordova 3.3.0: Publicando Aplica&ccedil;&otilde;es Chrome no Android e iOS</a>Desenvolvedores podem agora publicar aplica&ccedil;&otilde;es Chrome no Android e iOS com o Apache Cordova 3.3.0.
+  </div> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/23.c">XDK: A Intel alavancando o desenvolvimento multi plataforma com HTML5</a>Em dezembro de 2013, a Intel anunciou seus planos de lan&ccedil;ar o Intel XDK NEW para o mercado atrav&eacute;s da vers&atilde;o oficial do Intel XDK e convidando todos os desenvolvedores para migrarem da vers&atilde;o anterior at&eacute; o fim de Fevereiro de 2014. Vamos ver o que &eacute; o Intel XDK e as novidades da &uacute;ltima vers&atilde;o. 
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/22.c">Adicionando prop&oacute;sito e hip&oacute;teses &agrave;s retrospectivas &aacute;geis</a>Fazer retrospectivas com frequ&ecirc;ncia contribui para que as equipes aprendam a se aperfei&ccedil;oar. Voc&ecirc; pode tornar as retrospectivas mais efetivas adicionando prop&oacute;sito e validando se as a&ccedil;&otilde;es definidas nelas est&atilde;o realmente gerando melhorias com o uso de hip&oacute;teses. 
@@ -147,9 +150,6 @@
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/26.c">Google Play 4.0: Compra Instant&acirc;nea, propaganda e diversas melhorias</a>O Play Services n&atilde;o suportar&aacute; mais os dispositivos com vers&otilde;es anteriores ao Gingerbread, o Mobile Ads SDK foi inclu&iacute;do no Play 4.0 e o Compra Instant&acirc;nea com o Google Wallet oferece aos comerciantes um novo sistema de pagamento integrado. 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/25.c">Ado&ccedil;&atilde;o &Aacute;gil: a import&acirc;ncia das pr&aacute;ticas t&eacute;cnicas, pensamento sist&ecirc;mico e cultura</a>Simplicidade, feedback, comunica&ccedil;&atilde;o, respeito e coragem. Estes valores do eXtreme Programming (XP) continuam a inspirar a equipe da confer&ecirc;ncia XP Days Benelux 2013. O InfoQ.com entrevistou dois anfitri&otilde;es da confer&ecirc;ncia, Merlijn van Minderhout e Pascal Van Cauwenberghe, sobre as novidades. 
   </div>  
  </body>
 </html>
