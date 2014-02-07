@@ -2,7 +2,16 @@
  <head></head> 
  <body>
   <div>
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/31.java">First CTP Released for Visual Studio 2013 Update 2</a>A CTP has been released for the second upcoming update to Visual Studio 2013. This CTP brings updates to several areas and provides several new and expanded features unlike Update 1.
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/34.java">Getting the Avengers with Marvel Comics API</a>Recently, Marvel has made available a public API and a RESTful service which provides access to their comics metadata.
+  </div>
+  <div>
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/33.java">Interactive SQL in Apache Hadoop with Impala and Hive</a>In the race for interactive SQL in Big Data environments, there are two open source based front-runners, Impala and Hive with the Stinger project. Cloudera recently announced that Impala is up to 69 times faster than Hive 0.12 and can outperform DBMS. Other than raw speed, we take a look at other considerations in choosing a SQL engine for Hadoop and also Tez, an application framework for YARN.
+  </div>
+  <div>
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/32.java">Weathr, a Comprehensive Demonstration of C++ 14, DirectX, and XAML</a>Weathr is a fully functional 3D weather app that demonstrates the use of modern C++ (both ISO and C++/CX), DirectX, and XAML. It also shows the use of PPL and lambda expressions for asynchronous communication with REST-based servers.
+  </div> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/31.java">First CTP Released for Visual Studio 2013 Update 2</a>A CTP has been released for the second upcoming update to Visual Studio 2013. This CTP brings updates to several areas and provides several new and expanded features unlike Update 1. 
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/30.java">Microsoft OpenTech Brings SQLite to Windows Phone and Windows Store</a>Microsoft is now offering an official version of SQLite for Windows Phone, Windows Store, and .NET 4.5. The library is available as a Portable Class Library, so developers can use as a basis for their own portable libraries. 
@@ -141,15 +150,6 @@
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/36.java">Documentation in Agile: How Much and When to Write It?</a>The Manifesto for Agile Software Development values &quot;working software over comprehensive documentation&quot;. This core value asks us to think about how much and which kinds of documents are needed and when they need to be written. 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/35.java">Martin Fowler Presented Workflows of Refactoring</a>Martin Fowler published an article on his website describing the different workflows that could be used when refactoring and explaining the reasons for combining them. 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/34.java">SOLID Design Principles for JavaScript</a>The SOLID principles is one example from object oriented programming that can help you write good stable JavaScript code, Derick Bailey, an author and developer focusing on JavaScript, states in a recent presentation. 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/33.java">What Is Going on with PaaS?</a>Despite huge investments and years in development, PaaS has not managed to attract many customers so far. This article digests what several analysts are saying regarding the current status of PaaS and its future. 
-  </div>  
+  </div>    
  </body>
 </html>

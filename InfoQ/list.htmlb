@@ -1,6 +1,9 @@
 <html>
  <head></head> 
- <body> 
+ <body>
+  <div>
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/39.htmlb">你的应用就绪了吗？</a> 我们通常会按时间交付软件，在截止时间之前努力完成所有开发和测试工作。我们会优先完成那些自己觉得重要的部分，当应用达到确定的质量标准后，就准备上线了。但交付软件时，我们能辨别应用的就绪状态吗？ 
+  </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/38.htmlb">Scrum Master：职位还是角色？</a> Scrum交付团队需要专职Scrum Master。但在团队成长起来以后，是否仍然需要这样一个专职Scrum Master呢？本文提出了另一个方案。 
   </div> 
@@ -147,9 +150,6 @@
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/42.htmlb">博文共赏：在Node.js中使用声明式缓存</a> 写了多年的 Java 程序，即使在转投 Node 之后，仍然对 Spring 框架的 IoC 、Declarative XXX 记忆犹新，于是在 Node 项目中要用到缓存时，自然地想起了 Declarative caching，就有了山寨一把的想法。 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/41.htmlb">书评：Vagrant up and running</a> Mitchell Hashimoto的新书 &quot;Vagrant up and running&quot; 涵盖了Vagrant从基础用法到功能扩展的方方面面。 
-  </div> 
+  </div>  
  </body>
 </html>

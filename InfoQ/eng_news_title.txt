@@ -1,1 +1,1 @@
-First CTP Released for Visual Studio 2013 Update 2
+Interactive SQL in Apache Hadoop with Impala and Hive
