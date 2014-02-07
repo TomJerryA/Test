@@ -2,13 +2,16 @@
  <head></head> 
  <body>
   <div>
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/34.java">Getting the Avengers with Marvel Comics API</a>Recently, Marvel has made available a public API and a RESTful service which provides access to their comics metadata.
-  </div>
-  <div>
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/33.java">Interactive SQL in Apache Hadoop with Impala and Hive</a>In the race for interactive SQL in Big Data environments, there are two open source based front-runners, Impala and Hive with the Stinger project. Cloudera recently announced that Impala is up to 69 times faster than Hive 0.12 and can outperform DBMS. Other than raw speed, we take a look at other considerations in choosing a SQL engine for Hadoop and also Tez, an application framework for YARN.
-  </div>
-  <div>
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/32.java">Weathr, a Comprehensive Demonstration of C++ 14, DirectX, and XAML</a>Weathr is a fully functional 3D weather app that demonstrates the use of modern C++ (both ISO and C++/CX), DirectX, and XAML. It also shows the use of PPL and lambda expressions for asynchronous communication with REST-based servers.
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/35.java">iOS Auto Layout with Masonry</a>Open Source project Masonry aims to make Auto Layout code more concise and readable. Masonry, “a light-weight layout framework which wraps Auto Layout with a nicer syntax”, enables a XIB- and Storyboard-free experience.
+  </div> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/34.java">Getting the Avengers with Marvel Comics API</a>Recently, Marvel has made available a public API and a RESTful service which provides access to their comics metadata. 
+  </div> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/33.java">Interactive SQL in Apache Hadoop with Impala and Hive</a>In the race for interactive SQL in Big Data environments, there are two open source based front-runners, Impala and Hive with the Stinger project. Cloudera recently announced that Impala is up to 69 times faster than Hive 0.12 and can outperform DBMS. Other than raw speed, we take a look at other considerations in choosing a SQL engine for Hadoop and also Tez, an application framework for YARN. 
+  </div> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/32.java">Weathr, a Comprehensive Demonstration of C++ 14, DirectX, and XAML</a>Weathr is a fully functional 3D weather app that demonstrates the use of modern C++ (both ISO and C++/CX), DirectX, and XAML. It also shows the use of PPL and lambda expressions for asynchronous communication with REST-based servers. 
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/31.java">First CTP Released for Visual Studio 2013 Update 2</a>A CTP has been released for the second upcoming update to Visual Studio 2013. This CTP brings updates to several areas and provides several new and expanded features unlike Update 1. 
@@ -147,9 +150,6 @@
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/36.java">Thirty Years of the Apple Mac</a>Thirty years ago, Apple unveiled the Mac in a seminal advert entitled 1984. InfoQ looks at the history of the Mac and shows the connection between that point and the system you're reading this post on. 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/36.java">Documentation in Agile: How Much and When to Write It?</a>The Manifesto for Agile Software Development values &quot;working software over comprehensive documentation&quot;. This core value asks us to think about how much and which kinds of documents are needed and when they need to be written. 
-  </div>    
+  </div>  
  </body>
 </html>
