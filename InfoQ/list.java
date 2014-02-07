@@ -2,7 +2,10 @@
  <head></head> 
  <body>
   <div>
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/30.java">Microsoft OpenTech Brings SQLite to Windows Phone and Windows Store</a>Microsoft is now offering an official version of SQLite for Windows Phone, Windows Store, and .NET 4.5. The library is available as a Portable Class Library, so developers can use as a basis for their own portable libraries.
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/31.java">First CTP Released for Visual Studio 2013 Update 2</a>A CTP has been released for the second upcoming update to Visual Studio 2013. This CTP brings updates to several areas and provides several new and expanded features unlike Update 1.
+  </div> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/30.java">Microsoft OpenTech Brings SQLite to Windows Phone and Windows Store</a>Microsoft is now offering an official version of SQLite for Windows Phone, Windows Store, and .NET 4.5. The library is available as a Portable Class Library, so developers can use as a basis for their own portable libraries. 
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/29.java">Build Web, Hybrid or Native Web Apps with Telerik Platform</a>Telerik Platform provides a mechanism to build web, hybrid and native based iOS, Android and Windows Phone apps either using web based dashboard, desktop or Visual Studio. 
@@ -147,9 +150,6 @@
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/33.java">What Is Going on with PaaS?</a>Despite huge investments and years in development, PaaS has not managed to attract many customers so far. This article digests what several analysts are saying regarding the current status of PaaS and its future. 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/32.java">Doc-To-Help 2013 v2 Adds Responsive Design and Content Widgets</a>Component One has released Doc-To-Help 2013 v2 with a responsive user interface which automatically displays content depending up on the device from which it is accessed. It also includes content widgets such as note, lightbox, gallery, carousel, topic contents, tabs and code highlighter. 
   </div>  
  </body>
 </html>

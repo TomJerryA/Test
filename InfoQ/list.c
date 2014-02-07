@@ -1,6 +1,9 @@
 <html>
  <head></head> 
- <body> 
+ <body>
+  <div>
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/25.c">Quais s&atilde;o as diferen&ccedil;as entre um bom e um excelente ScrumMaster?</a>O papel de um ScrumMaster no framework Scrum &eacute; prescrito de tal forma que ele seja o “dono do processo”, ou seja, &eacute; respons&aacute;vel por garantir que o Scrum seja entendido e aplicado. No entanto, ser&aacute; que um excelente ScrumMaster n&atilde;o poder&aacute; agregar algo mais para as empresas, ao inv&eacute;s de puramente manter todos alinhados ao framework Scrum?
+  </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/24.c">Cordova 3.3.0: Publicando Aplica&ccedil;&otilde;es Chrome no Android e iOS</a>Desenvolvedores podem agora publicar aplica&ccedil;&otilde;es Chrome no Android e iOS com o Apache Cordova 3.3.0. 
   </div> 
@@ -147,9 +150,6 @@
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/27.c">Uma introdu&ccedil;&atilde;o a redes neurais utilizando C#</a>Em sua apresenta&ccedil;&atilde;o no evento Build 2013, Introdu&ccedil;&atilde;o a Redes Neurais Utilizando C#, o Dr. James McCaffrey apresentou os conceitos de redes neurais dando aos espectadores uma base s&oacute;lida para um estudo mais aprofundado sobre o tema. 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/26.c">Google Play 4.0: Compra Instant&acirc;nea, propaganda e diversas melhorias</a>O Play Services n&atilde;o suportar&aacute; mais os dispositivos com vers&otilde;es anteriores ao Gingerbread, o Mobile Ads SDK foi inclu&iacute;do no Play 4.0 e o Compra Instant&acirc;nea com o Google Wallet oferece aos comerciantes um novo sistema de pagamento integrado. 
-  </div> 
+  </div>  
  </body>
 </html>

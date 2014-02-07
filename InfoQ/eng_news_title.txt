@@ -1,1 +1,1 @@
-Microsoft OpenTech Brings SQLite to Windows Phone and Windows Store
+First CTP Released for Visual Studio 2013 Update 2

@@ -1,6 +1,9 @@
 <html>
  <head></head> 
- <body> 
+ <body>
+  <div>
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/13.javab">The Secrets of Database Change Deployment Automation</a> Yaniv Yehuda looks at the challenges involved in automating database deployments and offer suggestions based on Agile and DevOps concepts. 
+  </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/12.javab">Leveraging the Practice of &quot;Being Agile&quot; to Design an Agile Management Curriculum</a> This article by a group of UC Berkeley Extension Agile Management Program participants describes one approach to communicating and enhancing the exceptional value possible when the practice and personal experience of Agile values and principles is used as a foundational Agile Management curriculum element, enabling effective adaptation and application of Agile practices in many contexts. 
   </div> 
@@ -147,9 +150,6 @@
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/15.javab">To Execution profile or to Memory Profile? That is the question.</a> There are times when memory profiling will provide a clearer picture than execution profiling to find execution hot spots. In this article Kirk Pepperdine talks through some indicators for determining when to use which kind of profiler. 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/14.javab">Building Innovative Organizations with Lean Thinking</a> For a modern IT company, innovation is equally critical to the company, its clients and its staff. Jeff discussed the important ingredients needed to create a culture of innovation in an organization. Drawing on his experiences at Thoughtworks Chengdu he examines the importance of leadership, lean thinking, problem solving mindset and people factors in fostering innovation. 
-  </div> 
+  </div>  
  </body>
 </html>
