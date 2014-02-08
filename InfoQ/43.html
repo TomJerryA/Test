@@ -1,19 +1,69 @@
-<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>Scala十岁了</h3><p>十年之前的1月20日，Michel Schinz宣布了<a href="http://article.gmane.org/gmane.comp.lang.scala/17">Scala编程语言的第一个实现</a>。在宣布之时，Scala被描述为“一种平滑地集成了面向对象编程和函数式编程的语言”，而且“是为以简洁、优雅且类型安全的方式表达常见编程模式而设计的”。</p>
-<p>当时是这么说的：</p>
+<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>JSON-LD进入W3C推荐状态</h3><p>W3C RDF工作组已将JSON-LD和JSON-LD 1.0处理算法与API标准推进到推荐状态。JSON-LD是一个标准，旨在向JSON中加入“链接数据（linked data）”语义。JSON-LD文档看上去是像下面这样：</p>
+<pre>
+{
+  &quot;@context&quot;: &quot;http://json-ld.org/contexts/person.jsonld&quot;,
+  &quot;name&quot;: &quot;Manu Sporny&quot;,
+  &quot;homepage&quot;: &quot;http://manu.sporny.org/&quot;,
+  &quot;image&quot;: &quot;http://manu.sporny.org/images/manu.png&quot;
+}
+</pre>
+<p>如果还不熟悉W3C的标准化流程，可以先了解一下：一个规范可以处于三个成熟层次之中。推荐（Recommendation）状态是特定规范的最后一步。W3C的建议是，推荐状态可以“广泛实现”，也就是说，相应规范已经为广泛的公开使用做好准备，而且足够稳定。</p>
+<p>人们投入了很多工作才使JSON-LD进入这一状态：在4年多的时间里，有着100次电话会议，281份议题纪要，2 000次代码提交，以及2 500封电子邮件。</p>
+<h2>进一步了解JSON-LD</h2>
+<p>下面是一个直接选自<a href="http://www.w3.org/TR/2014/REC-json-ld-20140116/">规范</a>的例子：</p>
+<pre>
+{
+  &quot;name&quot;: &quot;Manu Sporny&quot;,
+  &quot;homepage&quot;: &quot;http://manu.sporny.org/&quot;,
+  &quot;image&quot;: &quot;http://manu.sporny.org/images/manu.png&quot;
+}
+</pre>
+<p>这个JSON文档表示一个人。人们很容易推断这里的语义：“name”是人的名字，“homepage”是其主页，“image”是其某种照片。然而机器不理解“name”和“image”这样的术语。</p>
+<p>为解决该问题，我们可以使用链接数据。下面使用JSON-LD表示上面的例子：</p>
+<pre>
+{
+  &quot;http://schema.org/name&quot;: &quot;Manu Sporny&quot;,
+  &quot;http://schema.org/url&quot;: { &quot;@id&quot;: &quot;http://manu.sporny.org/&quot; },
+  &quot;http://schema.org/image&quot;: { &quot;@id&quot;: &quot;http://manu.sporny.org/images/manu.png&quot; }
+}
+</pre>
+<p>通过链接到schema.org上的定义，我们可以教给机器如何理解“name”、“url”和“image”的语义。不过有点复杂了。通过JSON-LD所谓的“上下文（context）”，我们可以兼顾第一个例子的简洁性和第二个例子的语义理解。基于第一个例子，我们引入一个context：</p>
+<pre>
+{
+  &quot;@context&quot;: &quot;http://json-ld.org/contexts/person.jsonld&quot;,
+  &quot;name&quot;: &quot;Manu Sporny&quot;,
+  &quot;homepage&quot;: &quot;http://manu.sporny.org/&quot;,
+  &quot;image&quot;: &quot;http://manu.sporny.org/images/manu.png&quot;
+}
+</pre>
+<p>我们现在链接到了json-ld.org上的一个context。context文档看上去像下面这样：</p>
+<pre>
+{
+  &quot;@context&quot;:
+  {
+    &quot;name&quot;: &quot;http://schema.org/name&quot;, 
+    &quot;image&quot;: {
+      &quot;@id&quot;: &quot;http://schema.org/image&quot;
+      &quot;@type&quot;: &quot;@id&quot;
+    },
+    &quot;homepage&quot;: {
+      &quot;@id&quot;: &quot;http://schema.org/url&quot;,
+      &quot;@type&quot;: &quot;@id&quot;
+    }
+  }
+}
+</pre>
+<p>这种方法的另一个优点是，多个文档可以使用同一个context。</p>
+<h2>为什么没有选择RDF</h2>
+<p>JSON-LD呈现出语义Web技术的风格，但是两者并不完全一样。它们有着类似的目标：围绕某类知识提供共享的上下文。例如，每个网站不应该围绕“name”重复发明概念。假设我们想研究几个不同的服务，以比较人们识别自身的方式。为了得到人们的名字，我们不得不针对每种API重新编写不同的代码，以确定如何取得其名字。</p>
+<p>利用语义Web技术，每个服务都会暴露出“这是一个人（<a href="http://schema.org/Person">Person</a>）”这一语义，我们只需要编写一次代码，理解人是什么。而且可以跨多种服务复用代码。</p>
+<p>尽管JSON-LD和更为传统的语义Web技术（如RDF）有着同样的最终目标，但是二者没有使用同样的构建块，JSON-LD W3C社区组的主席Manu Sporny就两者之间的关系<a href="http://manu.sporny.org/category/json-ld/">写了一篇博客</a>：</p>
 <blockquote> 
- <p>我们宣布，Scala编程语言的第一个实现已经可用。Scala平滑地集成了面向对象编程和函数式编程。它是为以简洁、优雅且类型安全的方式表达常见编程模式而设计的。Scala引入了一些创新性的语言构件。例如：</p> 
- <ul> 
-  <li>抽象类型和mixin统一了来自对象和模块系统的理念。</li> 
-  <li>类层次结构之上的模式匹配统一了函数式和面向对象的数据存取。它极大地简化了XML 树的处理。</li> 
-  <li>灵活的语法和类型系统支持构造高层的库和新的领域特定语言。</li> 
- </ul> 
- <p>与此同时，Scala还兼容Java。无需胶水代码和额外声明，Java的类库和框架都可以使用。</p> 
- <p>Scala当前的实现运行在JVM上。它需要JDK 1.4，可以在Windows、MacOS、Linux、Solaris及其他多数操作系统上运行。Scala的一个.net版本正在开发之中。</p> 
+ <p>这就是我实现JSON-LD时没有选择大部分语义Web技术栈（TURTLE/SPARQL/Quad Stores），而选择从头做起的原因。这一策略并不适合所有人，但却是唯一适合我们的，而且是我们所能想到的唯一能让更传统的语义Web技术从骄傲自满中醒悟过来的方式。</p> 
 </blockquote>
-<p>尽管.net版本已经不再维护，但当时之所以要开发这个版本，其目标是提供一种能够运行在这两种虚拟机之上的、可以在不同操作系统间移植的公共语言。然而，随着JVM的JIT的改进，以及对Java字节码的依赖不断的增加，到Scala 2.10发布时，.net版本就中断了。</p>
-<p>Scala将函数式编程带入了主流JVM语言中，而且直接刺激了Java 8即将带来的lambda表达式（往往被不正确地称为闭包）和接口默认方法等特性。Scala很早就通过函数和Traits提供了对这些特性的支持，它们为以更简洁、可测试性更好的方式编程提供了新方法。</p>
-<p>在Scala取得成功的同时，复杂性也随之而来，因为这些特性是把双刃剑，代码的可读性可谓冰火两重天。Scala允许将任何Unicode标识符用作方法名和函数（包括符号），标准Scala类库已经发展到包含=:=、:+和:\等函数。Scala的取舍是以潜在的可读性损失为代价，改进编写的灵活性。</p>
-<p>最后，Scala仍然把自己看作一门研究性语言，一直在尝试新特性并弃用较旧的功能（比如原始的Actors包，它为Scala带来了和Go语言的coroutine类似的声望）。在不同版本之间，生成的字节码也有所变化，这意味着为当前的Scala 版本编译的开源项目数量很有限，而且尽管2.10已经发布一年有余了，但是主要Scala版本之间的过度往往还是非常痛苦。</p>
-<p>将于今年发布的Java 8会把Scala的一个特性子集带向JVM，那么看一下Scala下一步会添加什么特性，将会非常有趣。二进制兼容会给语言带来稳定，但是看上去现在离二进制兼容之遥远，几乎和十年前一样，不过时间会证明一切。</p>
-<p>下一个十年，你认为Scala会走向何方呢？</p>
-<p><strong>查看英文原文：</strong><a href="http://www.infoq.com/news/2014/01/scala-ten-years-old">Scala Turns Ten Today</a></p><br><br><br><br><br><br></body></html>
+<p>Manu还就规范简洁、清晰的文风做了详细说明：</p>
+<blockquote> 
+ <p>我们尽最大努力剔除JSON-LD规范中复杂的技术行话。而且我特别注意在JSON-LD 1.0规范中完全不提RDF，因为读者不需要为了理解JSON-LD文档转而去读RDF相关资料。在这一点上我们推回了很多次，我后面还会讲，但是问题在于我们想以相对于典型的Internet和Web规范更具谈话风格的方式传达信息，因为在规范中太早进入学究式风格会定下错误的基调。</p> 
+</blockquote>
+<p>这两点都表明， JSON-LD尝试将语义Web技术相关的探讨向如下方向推进：简单、不复杂以及面向一般开发人员。</p>
+<p><strong>查看英文原文：</strong><a href="http://www.infoq.com/news/2014/02/JSON-LD-W3C-recommendation">JSON-LD Reaches W3C Recommendation Status</a></p><br><br><br><br><br><br></body></html>
