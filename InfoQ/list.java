@@ -1,8 +1,8 @@
 <html>
  <head></head> 
- <body>
-  <div>
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/35.java">iOS Auto Layout with Masonry</a>Open Source project Masonry aims to make Auto Layout code more concise and readable. Masonry, “a light-weight layout framework which wraps Auto Layout with a nicer syntax”, enables a XIB- and Storyboard-free experience.
+ <body> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/35.java">iOS Auto Layout with Masonry</a>Open Source project Masonry aims to make Auto Layout code more concise and readable. Masonry, “a light-weight layout framework which wraps Auto Layout with a nicer syntax”, enables a XIB- and Storyboard-free experience. 
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/34.java">Getting the Avengers with Marvel Comics API</a>Recently, Marvel has made available a public API and a RESTful service which provides access to their comics metadata. 
@@ -150,6 +150,6 @@
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/36.java">Thirty Years of the Apple Mac</a>Thirty years ago, Apple unveiled the Mac in a seminal advert entitled 1984. InfoQ looks at the history of the Mac and shows the connection between that point and the system you're reading this post on. 
-  </div>  
+  </div> 
  </body>
 </html>
