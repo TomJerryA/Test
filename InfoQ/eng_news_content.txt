@@ -1,17 +1,27 @@
-<p>Open Source project Masonry aims to make Auto Layout code more concise and readable.</p>
-<p>Masonry, “a light-weight layout framework which wraps Auto Layout with a nicer syntax”, enables a XIB- and Storyboard-free experience. Its creator, Jonas Budelmann, argues that while Auto Layout is powerful it quickly becomes verbose and unreadable.</p>
-<p>Masonry is a domain specific language (DSL) offering all the capabilities provided by Auto Layout with convenience methods for making and updating constraints, accessing attributes, setting priorities and debug support.</p>
-<p>Sample code on GitHub is designed to show typical usage and Masonry’s succinct syntax:</p>
-<pre><p>UIEdgeInsets padding = UIEdgeInsetsMake(10, 10, 10, 10);</p><p>[view1 mas_makeConstraints:^(MASConstraintMaker *make) {<br />&nbsp;&nbsp; make.edges.equalTo(superview).with.insets(padding);<br />}];</p>
-</pre>
-<p>Central to Auto Layout is the constraint: a mathematical representation of a relationship between UI elements. Constraints comprise size, relative positions managed by priorities and thresholds. They are additive making it possible for constraints to conflict and insufficient constraints lead to ambiguity. Both scenarios can throw exceptions.</p>
-<p>Programmatic creation of constraints without using Masonry is possible by creating an NSLayoutConstraint with references to views and specifying attributes and relationships. Apple also provides the Visual Format Language; another DSL for describing relationships in text.</p>
-<p>Auto Layout is neither mandatory nor exclusive with “springs and struts” still a valid approach. “Springs and struts”, or autoresizing masks, determines how a view responds when its parent view changes bounds.</p>
-<p>Apple provides compelling reasons to adopt Auto Layout:</p>
-<ul> 
- <li>“Springs and struts” requires code to support multiple orientations, different screen sizes and dynamic content.</li> 
- <li>Dynamic Type in iOS 7 allows users to specify a prefered text size in apps.</li> 
- <li>Supporting both iOS 6 and iOS 7 and their different element metrics.</li> 
-</ul>
-<p>Auto Layout is not without fundamental issues. Apple provides guidance on how to use Auto Layout with the commonly used UIScrollView. Matt Neuburg provides a convincing argument on why “Auto Layout does not play at all well with view transforms” suggesting greater use of layer transforms to compensate.</p>
-<p>Any kind of Auto Layout code means you will not gain from the Interface Builder&nbsp; enhancements made available in Xcode 5. Specifically the ability to visually resolve Auto Layout issues and the preview mode in the assistant editor that lets you view the runtime layout in different orientations, different iOS versions and different device sizes.</p>
+<p>Jeremy Ashkenas has released version 1.7 of CoffeeScript, and with it introduced some highly anticipated changes to the popular JavaScript transpiler.</p>
+<p>Version 1.7 includes one of the most popular requests for the language; support for chaining without parenthesis. Prior to the 1.7 releases, if a developer wanted to chain functions, they had to use parenthesis, which are not required for functions in CoffeeScript.</p>
+<pre><p>// prior to 1.7 - parenthesis required to chain<br />$('#element').addClass('active').css({ left: 5 });</p>
+<p>// as of 1.7 - no parenthesis<br />$ '#element'<br />.addClass 'active'<br />.css { left: 5 }</p></pre>
+<p>This release also introduces proper support for multiline strings. In previous versions of CoffeeScript, herestrings (or string literals) while intended to preserve new lines and whitespace, would ignore the `\` operator which is meant to designate that two strings should be preserved on the same line. As of 1.7, this is fixed, allowing the developer to cleanly format multiline strings in CoffeeScript.</p>
+<pre><p>console.log '''The quick brown fox jumped over the \<br />lazy dog'''</p>
+<p>// prior to 1.7 outputs<br />The quick brown fox jumped \nover the lazy dog</p>
+<p>// as of 1.7 now outputs<br />The quick brown fox jumped over the lazy dog</p></pre>
+<p>Expansion has also been added to array destructuring, which had previously been the longest open issue on the CoffeScript repo.</p>
+<pre><p># get the last item in the animals array<br />animals = [ 'cat', 'dog', 'hippopotamus' ]</p>
+<p># prior to 1.7<br />hippo = animals[animal.length - 1]</p>
+<p># as of 1.7<br />[..., hippo] = animals</p>
+<p># ...both of which transpile to...<br />hippo = animals[animals.length - 1];</p></pre>
+<p>New convenient mathematical operators are present as well in the addition. There is the new power operator, floor division, and a modulo operator (returns the remainder of a division operation).</p>
+<pre><p># power<br />2 ** 2<br /># transpiles to...<br />Math.pow(2, 2);</p>
+<p># floor division<br />2 // 3<br />#transpiles to...<br />Math.floor(2 / 3)</p>
+<p># modulo<br />2 %% 3<br />#transpiles to...<br />var __modulo = function(a, b) { return (a % b + +b) % b; };<br />__modulo(2, 1);</p></pre>
+<p>Other enhancements include bringing CoffeeScript in line with Node.js so that its require statement doesn't automatically run every file in a directory, but behaves like Node and only runs the index.coffee file.</p>
+<p>The majority of the work on the 1.7 release (and in fact most of CoffeeScript for the past few years) is done by members of the community. &quot;There are over 100 developers who have contributed to and had patches merged into CoffeeScript&quot; said Jeremy. &quot;Whatever adoption CoffeeScript has enjoyed has happened because the idea appeals to JavaScript programmers.&quot; In regards to work on the 1.7 release, Jeremy sent special thanks to Michael Srb for his contributions.</p>
+<p>CoffeeScript has indeed enjoyed immense popularity, peaking at one point as the 10<sup>th</sup> most popular project on GitHub. It's also seen support in frameworks such as Ruby on Rails (since version 3.1), and is supported in Microsoft's Visual Studio via the Web Essentials plugin. Additionally JavaScript creator Brenden Eich has expressed how CoffeeScript influenced his thoughts on the future of JavaScript.</p>
+<p>GitHub user stefanpenner noted that in CoffeeScript “…ES6 import export would be killer…”</p>
+<p>Jeremy does address ES6 features in CoffeeScript saying,</p>
+<blockquote> 
+ <p>CoffeeScript is mostly finished — has been quite stable for a couple of years now — but will continue to grow in small ways in the future. Some examples are: support for new JavaScript features as they land, further improved source map support, more polish for the literate programming style and more streamlining for the internals of the compiler.</p> 
+</blockquote>
+<p>At one point there, was a Kickstarter project to re-write the CoffeeScript compiler. The project has since been successfully funded and is dubbed CoffeeScriptRedux. Jeremy sees the creation of new compilers as a benefit for CoffeeScript saying, &quot; The more compilers that successfully target a given language — the healthier that language is. It's to CoffeeScript's benefit to have multiple independent compilers.&quot;</p>
+<p>The 1.7 release is available immediately via GitHub, or the official CoffeeScript site.</p>
