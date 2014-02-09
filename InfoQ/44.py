@@ -1,20 +1,36 @@
-<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>Producing Software, Professionally</h3><p><a target="_blank" href="http://www.infoq.com/news/2013/12/producing-software-professional"><em>原文(投稿日：2013/12/28)へのリンク</em></a></p>
+<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>Gojko Adzic氏のユーザストーリー改善についての新著</h3><p><a target="_blank" href="http://www.infoq.com/news/2014/01/gojko-adzic-improve-user-stories"><em>原文(投稿日：2014/01/16)へのリンク</em></a></p>
 <div class="article_page_left news_container text_content_container"> 
  <div class="text_info"> 
-  <p>初の開催となる<a href="http://agilesingapore.org">Agile Singapore Conference 2013</a>のテーマは「Producing Software, Professionally」だった。このカンファレンスは東南アジアのアジャイルコミュニティにとって重要なイベントだ。<br /> <br /> <a href="http://mccarthyshow.com">Jim McCarthy</a>氏と<a href="http://devjam.com">David Hussman</a>氏がキーノートを行い、<a href="https://www.facebook.com/kentlbeck">Kent Beck</a>氏のセッションは非常に人気を集めたためにキーノート会場で行われた。</p> 
-  <p>この他、<a href="http://gilb.com">Tom Gilb</a>氏、<a href="http://www.artima.com/weblogs/index.jsp?blogger=kevlin">Kevlin Henney</a>氏、<a href="http://odd-e.com">Bas Vodde</a>氏らによる26のセッションが行われた。</p> 
-  <p>2日間のイベントには、アイデアを交換し経験を共有しようと21カ国から400名の参加者が集まり、議論と人脈作りの良い機会となった。</p> 
-  <p>Jim McCarthy氏によるカルチャーデザインとこれからの壮大さの時代に関する情熱的なキーノートで、カンファレンスは幕を開けた。彼は素晴らしいプロダクトを届けるには、複数のカルチャーを持つチームが重要であると主張した。彼はカンファレンスをこう考えている。</p> 
-  <blockquote>
-   「世界中の至るところで成功を収めた、国を超えたソフトウェアカルチャーの最初の開花の生きた実例としての東西の出会い」
-  </blockquote> 
-  <p>Jim氏はシンガポールがソフトウェアルネサンスの生誕の地になるというビジョンを披露し、聴衆を沸かせた。</p> 
-  <p>Kent Beck氏は「Ease at Work」というセッションで、非常に個人的な話として、自分はFacebookでは決して最高のプログラマではない、と話して聴衆を驚かせた。だが、彼はありのままの自分に満足しており、自分の仕事を誇りに思っている。Kent氏はソフトウェアを生み出すことに対するプロフェッショナルな姿勢を明らかにし、そのために重要な考え方や体験について指摘した。そして、自分の偽りのイメージを作り出すのにエネルギーを費やすのは無駄である、と強く主張した。彼は大胆にこう述べた。</p> 
+  <p>優れたユーザストーリーはソフトウエアの提供を改善するだろうか。<a href="http://www.infoq.com/author/Gojko-Adzic">Gojko Adzic氏</a>はチームのユーザストーリーの管理の仕方を小さく変化させることで最終的な成果に大きく影響を与えることができると言う。氏は<a href="http://gojko.net/2014/01/01/make-me-write-a-book-and-get-it-for-free/">make me write a book and get it for free</a>というブログ記事でユーザストーリーを改善するための本を書きたいと表明している。</p> 
   <blockquote> 
-   <p>「だから私の仕事は重要なのです。私のコードは動きます。私は公約します。私は責任を持ちます。」</p> 
+   <p>優れたストーリーを定義し、共通の課題を修正し、課題を価値ある小さな形に分割して、横断的関心事、長期課題、“非機能”要求のような難しい問題に対処して、さらにチームのメンバと利害関係者の間で正しく議論をすることでアジャイルの効果と反復的な価値提供のメリットを確実に手に入れる方法について書きたいと思っています。</p> 
   </blockquote> 
-  <p>David Hussman氏はクロージングキーノートで、聴衆にFrank Zappaの「Shut Up and Play Yer Guitar」へのチャレンジを求めた。彼が言いたいのは、プロセス順守について話すのをやめて、プロダクトのデリバリーにフォーカスしようということだ。</p> 
-  <p>David氏はプロダクトの売上や市場の変化といった測定可能な成果を促すようなツールを選択することについて話した。</p> 
-  <p>InfoQのサイトでは、<a href="http://www.infoq.com/agile-singapore-2013">セッションのビデオなど</a>を公開する予定だ。</p> 
+  <p>Gojko氏は<a href="http://www.infoq.com/articles/specification-by-example-book">Specification by Example</a>と<a href="http://impactmapping.org/book">Impact Mapping</a>の著者だ。新しい本の名前は&quot;50 Quick Ideas to Improve your User Stories&quot;。1月中に関心がある人が5000人集まったら執筆するという。</p> 
+  <blockquote> 
+   <p>LeanPubでどのくらい関心を持たれているかを計測して、執筆中のドラフトも公開するつもりです。もし、関心を持ったなら、LeanPubで<a href="https://leanpub.com/50quickideas/packages/book/purchases/new">サインアップしてください</a>。1月の終わりまで、または5000人がサインアップしてくれるまでは無料です。この人数に達したら、良書を作ることが私の新年の決意になるでしょう。</p> 
+  </blockquote> 
+  <p>現時点では(1月16日)では2300人以上の読者が購読をしている。彼らは出版されたときに無料の電子書籍も手に入れられる。</p> 
+  <p>InfoQは以前、<a href="http://www.infoq.com/interviews/interview-gojko-adzic-qcon-2013">Gojko Adzic氏にインタビューしてインパクトマッピングを使ったビジネスの反復的提供</a>について話を聞いた。Agile Tour Toronto 2013では、氏は<a href="http://www.infoq.com/presentations/keynote-agile-toronto-2013">Make Impacts, Not Software!</a>と題したプレゼンをしている。InfoQは氏とChris Matts氏の記事<a href="http://www.infoq.com/articles/feature-injection-success">Feature Injection: three steps to success</a>を公開している。</p> 
+  <p>このブログ記事に何人かが反応して、ツイートしたりコメントしたりしている。</p> 
+  <blockquote> 
+   <p><strong>Kent McDonald: </strong>私のチームはビルドするべきことを組織化し記述することに困難を抱えています。特別ユーザストーリーに着目することがいいのかどうかわかりません。“ユーザストーリーをうまく書くだけですべてが解決する”という考えにあなたが取り組むつもりなら別ですが。</p> 
+   <p>ユーザストーリーの問題は徴候であり、根本的な原因かどうかはわかりません。チームは自身がどんな理由で何を作ろうとしているのかを明確に把握しておく必要があります。また、情報を効率的に記述する方法を心得ておくべきでしょう。ユーザストーリーの問題のひとつは、現実よりも大きなストーリーを作ってしまいがちだということです。</p> 
+  </blockquote> 
+  <blockquote>
+   <strong>Jean-Michel Garnier:</strong> &quot;しっかり定義されていない、うまく分割されていない、分離すると価値がなくなってしまう&quot;ユーザストーリーやチケットはよくあることですね。
+  </blockquote> 
+  <blockquote>
+   <strong>Rob Park:</strong> ストーリーを砕いたり、分割したり、マッピングしたりするといろいろうまくいきます。でも、私が知っているチームはこれが得意ではありません。対処が難しいからです。
+  </blockquote> 
+  <blockquote>
+   <strong>Andreas Ekstr&ouml;m:</strong> @gojkoadzicの新しい本の最初の短い章が公開されているけど、面白そう。見てみれば(しかも無料)。: https://leanpub.com/50quickideas
+  </blockquote> 
+  <blockquote> 
+   <p><strong>Eddy Bruin:</strong> ユーザストーリーは終わりの状態をしめしているのではなくて、クライアントとの対話を始める出発点なんだと思う。</p> 
+   <p>優れたユーザストーリーを作る技術があって、ユーザストーリーを単一のシナリオまで分割するチームや巨大なユーザストーリーを作るチームがほとんどです。本当にいろいろなユーザストーリーを見てきました。あなたの新著はどの程度の大きさのユーザストーリーがいいのか考えるのに参考になりそうです。</p> 
+  </blockquote> 
+  <blockquote>
+   <strong>Nicolas Deverge:</strong> やった。@gojkoadzicが&quot;ユーザストーリーサバイバルガイド&quot;みたいな本を書くって。実現するためにみんなでサインアップしよう。
+  </blockquote>
  </div> 
 </div><br><br><br><br><br><br></body></html>

@@ -1,1 +1,1 @@
-Androidはクローズドソースモデルを目指しているのか？
+AzulがWindowsおよびLinux向けのOpen JDK 6とJDK 7の商用バージョンを発表

@@ -1,6 +1,15 @@
 <html>
  <head></head> 
- <body> 
+ <body>
+  <div>
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/46.py">VS Anywhereの機能アップデート。ウェブワークスペース、モデレートセッション、共同マージ、バグ修正</a>VS Anywhereが最新リリースでアップデートした。Visual Studioのリアルタイムなコラボレーションツールであるウェブワークスペース、モデレートセッション、共同マージ機能が含まれ、バグ修正も行われた。
+  </div>
+  <div>
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/45.py">AzulがWindowsおよびLinux向けのOpen JDK 6とJDK 7の商用バージョンを発表</a>Azul Systemsは，フリーで使用できる同社版OpenJDKのZuluが，LinuxとWindowsベースの製品系列で，Java 6とJava 7の両方をサポートすると発表した。サポートはZulu Community Supportフォーラムを通じて行われる。同社はまた，OpenJDKの商用サポート版であるZulu Enterpriseも提供している。
+  </div>
+  <div>
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/44.py">Gojko Adzic氏のユーザストーリー改善についての新著</a>優れたユーザストーリーはソフトウエアの提供を改善するだろうか。Gojko Adzic氏はチームのユーザストーリーの管理の仕方を小さく変化させることで最終的な成果に大きく影響を与えることができると言う。1月中に関心がある人が5000人集まったら執筆するという。
+  </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/43.py">Androidはクローズドソースモデルを目指しているのか？</a>Ars Technicaの興味深い分析の中でRon Amadeo氏が，GoogleはAndroidを徐々にクローズソースモデルへとシフトしている，という主張をしている。Googleの戦略は，Androidを &quot;小さなホビーにも&quot; 使えるほど自由にカスタマイズ可能にする一方で，&quot;Googleの祝福を受けずにAndroidを使おうとする&quot; 試みを阻止しているというのだ。 
   </div> 
@@ -141,15 +150,6 @@
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/48.py">DevExpress ASP.NETグリッドコントロールがバッチ編集機能を導入</a>DevExpress ASP.NETの最新リリースである13.2エディションに含まれるGridコントロール(ASPxGridView)では，ASP.NETおよびMVC開発者がクライアント上でグリッドデータをバッチ修正して，単一のリクエストとしてサーバに送信することが可能だ。その他にも，セルのカラー表示や通知ダイアログなどの機能が追加されている。 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/47.py">EC2でMesosによるクラスタの自動デプロイを実現するElastic Mesos</a>EC2上でApache Mesosの自動デプロイが可能になった。Apache Mesosはクラスタのリソース全体を，複数のデータ処理フレームワークで共有するオープンソースツールである。使用されているのは，ビッグデータの新興企業Mesosphereが提供するElastic Mesosという，新しいWebサービスだ。 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/46.py">振る舞い駆動開発(BDD) - コラボレーションによる価値創造</a>ソフトウェアプロジェクトの目的はステークホルダに価値を提供することだ，BDD(Behavior-Driven Development，振る舞い駆動開発)は，そのためにデザインされた – ウォーターフォールからアジャイルプロセスへの移行に取り組むソフトウェア開発者のViktor Farcic氏は，自身のBDDに対する見方を述べた４つのブログ記事の冒頭でこう説明している。 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/45.py">DevDocs、リファレンスドキュメントのワンストップショップ</a>DevDocsはソフトウェア開発者が共通に使えるよう、複数のリファレンスドキュメントを1つにまとめたWebサイトだ。1つにまとめた利点を活かして、検索インターフェイス、キーボードショートカット、共通のレイアウトや目次など、全API横断して使える機能を提供している。DevDocsには現在、HTML、HTTP、JavaScript、Rubyなどのドキュメントが含まれている。 
-  </div> 
+  </div>    
  </body>
 </html>

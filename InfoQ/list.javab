@@ -1,7 +1,7 @@
 <html>
  <head></head> 
- <body>
-  <div>
+ <body> 
+  <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/14.javab">How LinkedIn Uses Apache Samza</a> Apache Samza is a stream processor LinkedIn recently open-sourced. In his presentation, Samza: Real-time Stream Processing at LinkedIn, Chris Riccomini discusses Samza's feature set, how Samza integrates with YARN and Kafka, how it's used at LinkedIn, and what's next on the roadmap. 
   </div> 
   <div> 
@@ -150,6 +150,6 @@
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/15.javab">Applying Lean Thinking to Software Development</a> Lean’s major concept is about reducing waste, meaning anything in your production cycle that is not adding value to the customer is considered waste and should therefore be removed from the process. Steven Peeters explains how you can apply Lean principles in an IT environment. 
-  </div>  
+  </div> 
  </body>
 </html>
