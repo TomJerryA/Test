@@ -1,71 +1,17 @@
-<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>专访iOS开发框架BeeFramework作者郭虹宇</h3><p><a href="https://github.com/gavinkwoe/BeeFramework">BeeFramework</a>是一个iOS应用开发框架，由国内开发者郭虹宇创立并且在Github上开源。经过一年多的发展，BeeFramework在Github上，框架类排名全站<a href="https://github.com/search?q=Framework&amp;ref=cmdform">第8名</a>，在Objective-C语言中排<a href="https://github.com/search?q=Framework&amp;ref=cmdform">第2名</a>。</p>
-<p>InfoQ采访了BeeFramework的作者郭虹宇（<a href="http://weibo.com/gavinkwoe">@老郭为人民服务</a>），他活跃于iOS开源社区。从2006年大学毕业，一直从事着跟手机相关的研发工作，包括UI框架、输入法、浏览器、播放器、社交软件、休闲游戏等。2012年从腾讯离职开始了创业之路，目前加入<a href="http://www.geek-zoo.com">GeekZooStudio</a>，负责公司的技术研发和管理工作。</p>
-<p><strong>InfoQ：请介绍一下BeeFramework这个项目的背景，当初为什么打算做这个项目？</strong></p>
-<blockquote> 
- <p><strong>郭虹宇：</strong>BeeFramework的出现并非偶然，与我的工作经历有较大有关系。</p> 
- <p>12年我在腾讯负责的其中一个项目是手机QQ空间iOS版，因为其代码曾经分别由几波团队交接过，较为混乱，以至于很难继续维护。同时需要应对新需求，又要维护老的代码，要求2周一个迭代输出版本。在这种情况下，老的代码结构之上基本无法完成产品的快速迭代，更别说并行的新项目的启动。当时，公司内部根本就没有一套可以复用的框架或类似的东西，包括许多重点项目在内，都是基于很多开源组件拼凑而成，于是有了开发一套简单通用MVC框架的想法。</p> 
- <p>第一个版本，大概两周时间完成了框架中Controller的部分以及相关代码自动生成工具。这个版本首先在QQ空间和QQ游戏大厅两个项目中运用起来，得到不错的效果。我在离开腾讯之后，基于以往在腾讯做项目的经验，将这个框架全面应用在真正的创业项目中，并取名为Bee，寓意着 “敏捷、高效” 的意思。2012年底，我将该项目开源在Github社区中，最初是0.1版，迄今共发布了5个大版本，最新版本为0.5.0。</p> 
-</blockquote>
-<p><strong>InfoQ：BeeFramework在中国现在有哪些主要的客户在使用？ </strong></p>
-<blockquote> 
- <p><strong>郭虹宇：</strong>目前开发者数量在1300人左右，其中以个人和创业公司使用居多，大公司占少数。</p> 
- <p>据我所知，腾讯内部的一些产品有在使用，如 <a href="http://gt.qq.com/">GT随身调</a>和pengo微博。新浪团队应该也有在用，其他的还有：北京电视台、屈臣氏中国等。我们的自有产品 <a href="http://www.ecmobile.me">ecmobile.me</a> 也完全基于BeeFramework。</p> 
-</blockquote>
-<p><strong>InfoQ：业界内还有哪些与BeeFramework类似的框架？BeeFramework和他们相比有什么优缺点？</strong></p>
-<blockquote> 
- <p><strong>郭虹宇：</strong>国内还没有，国外类似的有<a href="http://www.pixate.com">Pixate</a>、<a href="https://github.com/tombenner/nui">NUI</a>、<a href="https://github.com/cloudkite/Masonry">Masonry</a>等，相比之下这三者都在初级阶段。</p> 
- <p>BeeFramework是全栈式（Full-Stack）半混合型（Semi-Hybrid）的适合于大规模（Large-Scale）的App开发框架，是一套App从无到有的整体解决方案，不仅提供了XML+CSS的开发方式，也提供了几乎满足你所有需求的组件，另外也提供了一系列的辅助工具。</p> 
- <p>Pixate / NUI，可以当做原生控件对CSS的扩展支持来用，两者不能当做完整的APP解决方案。</p> 
- <p>Masonry，是对AutoLayout的一种语法上的封装，允许原生界面支持相对比较复杂的响应式布局，像是一种过度的技术。</p> 
- <p>对比使用方式上，其它框架更倾向于原生的开发方式，而BeeFramework倾向于前端开发的方式，允许开发者通过XML+CSS编写模版。</p> 
- <p>对比实现方式上，其它框架更倾向于依赖平台相关API，而BeeFramework是独立于平台之上的，不会因为系统升级而出现兼容性问题。</p> 
- <p>另外BeeFramework还有数十个组件可以提供给开发者使用，这个目前为止包括Github所有iOS开源项目在内都无法比拟。</p> 
- <p>BeeFramework是真正属于框架类的产品，目前在Github中Framework类排名全站<a href="https://github.com/search?q=Framework&amp;ref=cmdform">第8名</a>，在Objective-C语言的Framework中<a href="https://github.com/search?q=Framework&amp;ref=cmdform">第2名</a>。</p> 
-</blockquote>
-<p><strong>InfoQ：BeeFramework为什么选择一个基于XML和CSS的布局方案？</strong></p>
-<blockquote> 
- <p><strong>郭虹宇：</strong>随着iPhone/iPad/Android手机的普及，各大手机生产厂商包括苹果在内，已不安于现状只研发固定分辨率的手机产品。越来越多的事实证明，固执的巨人Apple也扩大产品线，不光在物理屏做了改变，技术上也逐步从静态布局到AutoLayout，一切都是在暗示着开发者，未来的手持产品将是多样化的，不再是iPhone4 Retina屏的单一产品做为行业标准的年代。</p> 
- <p>记得iPhone5和iOS7出现的那一年，想必让全球iOS开发大吃一惊，界面比例和样式不再兼容，写死坐标必死无疑。如果App在开发时只考虑了一种分辨率，那接下来的UI适配工作将是天翻地覆的。此前如此，此后更是如此。</p> 
- <p>12年的时候，我了解到Responsive Design这一概念，这时才真正的意识到历史是可以重复的，技术也可以是复用的，在Web前端领域已有更优秀的考虑更全面的响应式UI解决方案，被Business insider等多家评为未来的趋势。Google的Android系统是开放性的，在设计时就考虑到了这一问题，通过另类的XML方式提供给界面响应式的能力。</p> 
- <p>BeeFramework说白了是iPhone4/4S时代出现的一个产物，那时Apple对于响应式布局并没有概念，随着各种UI问题的出现，必会有人给出答案。我们早先一步考虑到了这个问题，结合Web与Android的实现方式，BeeFramework独创了MobileXML+MobileCSS来解决UI响应式的问题，即Semi-Hybrid模式，我相信这将会是未来的一个趋势。</p> 
-</blockquote>
-<p><strong>InfoQ：未来BeeFramework打算往哪些方面发展？</strong></p>
-<blockquote> 
- <p><strong>郭虹宇：</strong>2014年计划输出到1.0正式版本，重点解决几个问题。</p> 
- <ol> 
-  <li>模块化：More easier, more lighter</li> 
-  <li>标准化：MobileCSS/XML standardization</li> 
-  <li>可视化：Visualization tools</li> 
-  <li>跨平台：Android support</li> 
-  <li>文档化：Tech documentation &amp; Video tutorial</li> 
- </ol> 
- <p>在以上这些完备的同时，我们将推出一系列的跨平台标准UI库和快速开发组件，免费开源的提供给开发者使用，可能会类似于国外的ThemeForest，这些都需要长时间的技术积累才能够实现。</p> 
-</blockquote>
-<p><strong>InfoQ：BeeFramework收到了多少来自开源社区的代码贡献？收到了多少来自开源社区的bug报告？ </strong></p>
-<blockquote> 
- <p>郭虹宇：Issue: 70+, Pull Request: 70+</p> 
-</blockquote>
-<p><strong>InfoQ：你认为一个成功的开源项目需要具备哪些特点？</strong></p>
-<blockquote> 
- <p>郭虹宇：</p> 
- <ol> 
-  <li>从实际需求出发，解决行业范围内的一个问题</li> 
-  <li>稳定的核心团队，持续的时间投入</li> 
-  <li>定期的版本更新，及时的BUG FIX</li> 
-  <li>有个网站，形成固定的技术圈子（论坛或QQ群）</li> 
- </ol> 
-</blockquote>
-<p><strong>InfoQ：你为什么选择将BeeFramework开源？</strong></p>
-<blockquote> 
- <p><strong>郭虹宇：</strong>与Geek Zoo Studio的文化有极大的关系，崇尚使用开源、分享开源。</p> 
-</blockquote>
-<p><strong>InfoQ：你每天有多少精力花在BeeFramework的开发上？</strong></p>
-<blockquote> 
- <p><strong>郭虹宇：</strong>几乎每天都在修改BeeFramework，最忙的时候每天差不多一半时间花在上面。</p> 
-</blockquote>
-<p><strong>InfoQ：你从BeeFramework得到的最大收获是什么？</strong></p>
-<blockquote> 
- <p><strong>郭虹宇：</strong>开源使我们收获了未来，我想很多开源爱好者与我有共同的感受。通过开源与许许多多开发者或创业公司变成了朋友，Geek Zoo Studio也通过开源收获了更多的客户。以前，我们的产品来自于开源社区，现在，我们的产品将回馈于开源社区。</p> 
- <p>我坚信，未来是通过现在付出的的努力而换来的回报。</p> 
-</blockquote>
-<p>&nbsp;</p><br><br><br><br><br><br></body></html>
+<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>InfoQ的新功能：通过RSS关注你感兴趣的话题</h3><p>2014年我们增加了一个新功能：<b>RSS订阅话题</b>。现在你可以使用RSS阅读器来关注你感兴趣的话题，从此再也不用担心漏掉精彩内容了。</p>
+<p align="center"><img align="middle" _p="true" _href="img://rss.jpg" alt="" src="http://www.infoq.com/resource/news/2014/02/infoq-topics-rss/en/resources/rss.jpg" /></p>
+<p>这是一些可订阅的话题例子：</p>
+<ul> 
+ <li>移动<img border="0/" _p="true" _href="img://rss-ico.jpg" alt="" src="http://www.infoq.com/resource/news/2014/02/infoq-topics-rss/en/resources/rss-ico.jpg" /></li> 
+ <li>应用性能管理<img border="0/" _p="true" _href="img://rss-ico.jpg" alt="" src="http://www.infoq.com/resource/news/2014/02/infoq-topics-rss/en/resources/rss-ico.jpg" /></li> 
+ <li>API<img border="0/" _p="true" _href="img://rss-ico.jpg" alt="" src="http://www.infoq.com/resource/news/2014/02/infoq-topics-rss/en/resources/rss-ico.jpg" /></li> 
+ <li>NoSQL<img border="0/" _p="true" _href="img://rss-ico.jpg" alt="" src="http://www.infoq.com/resource/news/2014/02/infoq-topics-rss/en/resources/rss-ico.jpg" /></li> 
+ <li>云计算<img border="0/" _p="true" _href="img://rss-ico.jpg" alt="" src="http://www.infoq.com/resource/news/2014/02/infoq-topics-rss/en/resources/rss-ico.jpg" /></li> 
+ <li>REST<img border="0/" _p="true" _href="img://rss-ico.jpg" alt="" src="http://www.infoq.com/resource/news/2014/02/infoq-topics-rss/en/resources/rss-ico.jpg" /></li> 
+</ul>
+<p>定期访问InfoQ的读者可能已经注意到，编辑们每天发布的所有内容都被精心地打上了话题标签，这些话题是从<b>近3500个分类</b>中选择出来的。</p>
+<p>自2006年以来，我们的编辑团队就精心地维护着这个分类系统，现在它已经是我们平台的宝贵资产。多年来，读者们一直能够通过话题页面快速访问自己感兴趣的内容。</p>
+<p align="center"><img align="middle" _p="true" _href="img://tags.jpg" alt="" src="http://www.infoq.com/resource/news/2014/02/infoq-topics-rss/en/resources/tags.jpg" /></p>
+<p>例如访问<a href="http://www.infoq.com/html-5">http://www.infoq.com/html-5</a>将能够阅读所有“HTML5”标签的内容。你甚至能够按类型进行过滤，例如只看“<a href="http://www.infoq.com/html-5">新闻</a>”、“<a href="http://www.infoq.com/html-5/interviews">访谈</a>”等等。</p>
+<p>希望你能喜欢这个新功能，我们也期待你对InfoQ.com的功能提升提出<a href="feedback@infoq.com">宝贵意见</a>。</p>
+<p><b>查看英文原文：</b><a href="http://www.infoq.com/news/2014/02/infoq-topics-rss">New InfoQ Feature: Follow Your Favorite Topics with RSS</a></p><br><br><br><br><br><br></body></html>
