@@ -1,8 +1,8 @@
 <html>
  <head></head> 
- <body>
-  <div>
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/36.java">CoffeeScript 1.7</a>Jeremy Ashkenas has released version 1.7 of CoffeeScript, and with it introduced some highly anticipated changes to the popular JavaScript transpiler. Version 1.7 includes one of the most popular requests for the language; support for chaining without parenthesis.
+ <body> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/36.java">CoffeeScript 1.7</a>Jeremy Ashkenas has released version 1.7 of CoffeeScript, and with it introduced some highly anticipated changes to the popular JavaScript transpiler. Version 1.7 includes one of the most popular requests for the language; support for chaining without parenthesis. 
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/35.java">iOS Auto Layout with Masonry</a>Open Source project Masonry aims to make Auto Layout code more concise and readable. Masonry, “a light-weight layout framework which wraps Auto Layout with a nicer syntax”, enables a XIB- and Storyboard-free experience. 
@@ -150,6 +150,6 @@
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/37.java">A Change in Leadership for Node.js</a>Isaac Schlueter recently announced his departure from the Node.js open source project, handing the reigns of leadership over to TJ Fontaine. Isaac also announced plans for a startup focused on npm. TJ shares some of his plans for Node over the upcoming year. 
-  </div>  
+  </div> 
  </body>
 </html>
