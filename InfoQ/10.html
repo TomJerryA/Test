@@ -1,18 +1,49 @@
-<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>jQuery 1.11和2.1已经发布到npm和Bower</h3><p>最新版本的jQuery已经可以通过npm和Bower获取，这个版本提升了性能并修复了一些bug。</p>
-<p>jQuery是非常流行的JavaScript库，其开发团队再次同步发布了两个版本：1.11和2.1.0。源文件和压缩版文件均可以通过<a href="http://jquery.com/download/">下载页面</a>获得。你也可以通过<a href="https://npmjs.org/package/jquery/">npm</a>和<a href="http://bower.io/">Bower</a>获取。但暂时还不支持其他的包管理工具。</p>
-<p>最新版本的jQuery具有更好的性能、<a href="http://blog.jquery.com/2014/01/24/jquery-1-11-and-2-1-released/">更少的强制布局和更低的启动开销</a>：</p>
-<blockquote> 
- <p><b>更少的强制布局</b>：这个版本我们向以前存在的一些问题宣战。我们之前可能在无意中强制浏览器进行了比较耗时的布局。我们发现了一些这样的问题，特别是解决了当样式类名改变时，导致强制布局的问题。因此，对于某些页面，这个版本将会产生非常大的性能提升。</p> 
- <p><b>细粒度的自定义构建</b>：我们的模块化系统现在通过<a href="http://en.wikipedia.org/wiki/Asynchronous_module_definition">AMD</a>进行定义。当文件大小是你需要考虑的因素时，现在可以更容易地构建一些小的JavaScript类库子集。如果你想了解详细的信息，请查阅<a href="https://github.com/jquery/jquery#readme">README</a>，虽然它是个很少有人看的文件。</p> 
- <p><b>更少的启动开销</b>：新的模块化和避免强制布局，让我们能够重构特性检查的代码。现在它们只在第一次需要时才会被执行。如果你没有调用那些需要检查特性的API，则检查特性的代码永远不会执行。之前我们在页面加载时会检查所有特性，这通常会导致少许延迟，但毕竟是延迟了——特别是在移动平台。</p> 
+<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>使用Telerik平台构建Web、混合与原生应用</h3><p>最近推出的<a href="http://www.telerik.com/platform">Telerik平台</a>允许开发人员通过直观的拖拽操作创建交互式UI原型，帮助设计师、开发者和分析师实时协作，并且能够将设计规范直接生成应用代码。</p>
+<p>Telerik平台包括UI工具集和强大的云服务，可用于创建、管理、测试和发布web、混和型以及原生应用。开发人员可以通过浏览器、桌面软件或Visual Studio构建应用。它利用自定义逻辑管理后端数据，包括专门的用户管理、身份认证和消息推送。同时还提供跨平台的测试工具帮助及早发现问题。</p>
+<p><a href="https://platform.telerik.com/">Telerik平台</a>支持开发iOS和Android应用，无需部署，可以便捷地发布到公共或企业的应用商店。它具有内置的机制，能收集使用数据和统计数据并提供web报表和告警。平台支持iOS、Android、Windows Phone、Windows和黑莓平台，兼容.Net、JavaScript/HTML5、Java JSP和PHP技术。</p>
+<p>在InfoQ的一次专访中，Telerik的产品市场经理<a href="http://www.linkedin.com/pub/gabe-sumner/8/596/b3b">Gabe Sumner</a>分享了最新的Web、混和型和原生应用开发平台的更多信息。</p>
+<p><b>InfoQ：Web、混合型和原生平台间的关键区别是什么？</b></p>
+<blockquote>
+  Telerik平台是端到端、模块化的解决方案，支持web、混合型和原生移动应用开发。它为任何一种开发方法提供了完整的UI框架，其云服务支持项目的整个生命周期。对于web应用，平台提供以HTML5为基础的“响应式”UI。对于混和型应用，平台提供了以HTML5为基础的移动UI和Telerik AppBuilder。对于原生应用，平台为iOS、Android、Windows Phone和Windows 8提供真正原生的UI（基于每个平台的机器语言）。不论选择哪种一种方法，平台都提供Telerik后端服务、移动测试和分析服务。
 </blockquote>
-<p>压缩版文件不再包含<a href="https://docs.google.com/document/d/1U1RGAehQwRypUTovF1KRlpiOFze0b-_2gc6fAH0KY0k/edit">sourcemap comment</a>，以避免<a href="http://bugs.jquery.com/ticket/14415">给开发人员造成困惑</a>：</p>
-<blockquote> 
- <p>这个版本的压缩版js文件没有包含sourcemap comment……我们仍然生成和发行sourcemap，但如果浏览器不支持手动关联map文件（目前浏览器都不支持），你需要将相应的sourcemap comment加到压缩版js文件的最后。如果你通过自定义构建生成了自己的jQuery文件，则压缩版的文件中会包括sourcemap，并且map也会被生成。你可以让它留在那并使用sourcemap，或者在外面编辑它并完全忽略map文件。</p> 
+<p><b>InfoQ：创建Telerik平台的真正目的是什么？</b></p>
+<blockquote>
+  我们希望开发人员能够为所有设备提供卓越的体验。移动设备的快速普及、加上用户能够轻易地用一个应用替换另一个应用，如何确保开发出来的产品在任何平台上都有引人入胜的体验成为一个非常重要的问题。然而，这给开发人员带来了非常大的复杂度。不仅如此，复杂度跨越了开发过程的各个阶段（设计、开发、连接、测试、部署、管理和度量）。多年来，Telerik一直在开发产品组合迎接这种挑战。Telerik平台代表了我们的集成解决方案，用于帮助开发人员创建和交付跨平台的引人入胜的应用体验。
 </blockquote>
-<p><a href="http://blog.jquery.com/2014/01/16/jquery-1-11-0-rc1-and-2-1-0-rc1-released/">这些bug</a>已经被修复。</p>
-<p>jQuery 1.11支持老版本的浏览器(IE 6、7、8)，2.1.0则增加了对Node.js、Chrome和Firefox扩展程序以及其它非传统web环境的支持。</p>
-<p><strong>原文英文链接：</strong><a href="http://www.infoq.com/news/2014/01/jquery-1-11-2-1-0">jQuery 1.11 &amp; 2.1 Now on npm and Bower</a></p>
-<hr />
-<p>感谢<a href="http://www.infoq.com/cn/author/侯伯薇">侯伯薇</a>对本文的审校。</p>
-<p>给InfoQ中文站投稿或者参与内容翻译工作，请邮件至<a href="mailto:editors@cn.infoq.com">editors@cn.infoq.com</a>。也欢迎大家通过新浪微博（<a href="http://www.weibo.com/infoqchina">@InfoQ</a>）或者腾讯微博（<a href="http://t.qq.com/infoqchina">@InfoQ</a>）关注我们，并与我们的编辑和其他读者朋友交流。</p><br><br><br><br><br><br></body></html>
+<p><b>InfoQ：Telerik平台能给开发人员带来什么好处？</b></p>
+<blockquote>
+  要创建移动应用，开发人员必须在三种开发方法中选择一种：web、混和型以及原生。每一种都有其优缺点，因此正确的方法取决于项目本身。使用Telerik平台，开发人员可以让项目需求决定开发方法，而不是被迫接受某种方法的限制。Telerik平台允许开发人员采用最适合项目的方法（web、混和型和原生）交付移动应用。此外，因为Telerik平台是模块化的，开发人员很容易在我们的平台中集成他们现有的工具和服务，需要多少就集成多少。
+</blockquote>
+<p><b>InfoQ：使用Telerik平台创建应用有多简单？</b></p>
+<blockquote>
+  Telerik平台是面向开发者的，并假定其具有一定的编程经验。也就是说，我们提供了各类模板、示例程序、文档和教程来帮助开发人员立即上手。我们也提供了可视化的设计工具和UI框架，帮助开发人员以更加直观的方式构建他们的程序。但是，我们的平台是面向开发人员的，并且要求具有一定编程经验。
+</blockquote>
+<p><b>InfoQ：使用Telerik平台，是否能够创建Windows应用？</b></p>
+<blockquote>
+  可以，Telerik为Windows 8、WinForm和WPF维护了一套UI框架。我们许多的云服务（后端服务、分析工具等等）也能够集成到Windows应用中。尽管Telerik平台（已经发行第一个版本）主要面向移动开发，但开发人员将发现Telerik产品组合中包含了适用于任何平台的工具和服务。
+</blockquote>
+<p><b>InfoQ：Telerik平台是否提供Windows Phone 8的模拟器？</b></p>
+<blockquote>
+  如果开发原生的Windows Phone 8应用，开发人员会经常使用Visual Studio，它提供了自己的Windows Phone模拟器。对这些开发人员，我们提供Windows Phone平台的Telerik UI帮助他们提高效率。如果开发混和型的应用，Telerik AppBuilder目前只提供iOS和Android的模拟器，Windows Phone模拟器将在今年第1或第2季度提供。
+</blockquote>
+<p><b>InfoQ：与Icenium相比，Telerik平台有哪些区别？</b></p>
+<blockquote>
+  Telerik Icenium（现在是Telerik AppBuilder）只是Telerik平台的一个组件。AppBuilder主要用于混和型应用的开发，而Telerik平台还包含后端服务、移动测试、分析以及为其他开发方法（web和原生）提供的UI框架。总的来说，Telerik平台着眼于从设计到部署的整个项目过程。而每个单独的Telerik产品，例如AppBuilder，则着眼于整体中的一部分。
+</blockquote>
+<p><b>InfoQ：在Visual Studio 2013中如何使用Telerik平台？</b></p>
+<blockquote>
+ 许多Telerik UI框架（Telerik平台的一部分）可以直接在Visual Studio中使用，支持Visual Studio可视化的设计模式。此外，Telerik AppBuilder提供了Visual Studio插件，可以在VS环境中使用AppBuilder的各种服务（模拟器、构建服务、部署等等）。然而，其它工具，例如Telerik UI for iOS，并不支持Visual Studio。我们努力了解每一种开发方法的独有需求。例如，开发原生iOS应用，一般使用xCode，而不是Visual Studio。我们的平台支持“任何开发方法”，因此我们要拥抱每个开发人员的偏好。
+</blockquote>
+<p><b>InfoQ：使用Telerik平台开发应用，有没有可能不写一行代码？</b></p>
+<blockquote>
+  也许吧，但这不是我们的目标。今年晚些时候，我们将发布一些原型工具供设计人员和其他干系人使用。但即使如此，我们的目标也不是提供“零代码”的应用开发解决方案。事实上，我们非常确信，那些“千篇一律（cookie-cutter）”的解决方案，并不会带来引人入胜的体验。只有理解代码才可能开发出卓越的应用体验。
+</blockquote>
+<p><b>InfoQ：在测试新平台时，InfoQ发现模拟器在IE和FireFox下无法正常工作，这是因为什么原因？ </b></p>
+<blockquote>
+  我想你应该指的是Telerik AppBuilder，它是Telerik平台的一个组件（AppBuilder用于开发混合型应用）。AppBuilder的基于浏览器的模拟器目前只支持Chrome和Safari。然而，取决于你采用哪种方法，开发人员有多种途径来运行和测试他们的应用。例如，AppBuilder支持直接在设备上运行应用。对于原生应用的开发，我们支持每种生态系统提供的开发环境和模拟器。
+</blockquote>
+<p><b>InfoQ：你怎么看移动应用的未来？</b></p>
+<blockquote>
+  未来几年中，我们将看到，用户有非常非常多的选择。即使在企业中，传统的IT部门可以决定采用哪种技术，但越来越多的用户会使用个人服务和设备处理日常工作。差的体验会导致用户选择别的解决方案，UI很快会成为一个战略问题。今天，我们已经看到“银弹”移动应用开发解决方案的失败。不论对开发人员还是用户，那些“千篇一律”的解决方案无法成就卓越的体验。在接下来的几年中，这些解决方案将被抛弃，取而代之的是拥抱开发选择的适应性平台。
+</blockquote>
+<p><b>查看英文原文：</b><a href="http://www.infoq.com/news/2014/02/telerik-platform">Build Web, Hybrid or Native Web Apps with Telerik Platform</a></p><br><br><br><br><br><br></body></html>

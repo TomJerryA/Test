@@ -1,20 +1,43 @@
-<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>微软分布式计算框架Naiad获热议</h3><p><a href="http://research.microsoft.com/en-us/projects/naiad/">Naiad</a>是一个研究并行数据流的计算框架，本着<a href="http://research.microsoft.com/en-us/projects/dryad/default.aspx">Dryad</a>和<a href="http://research.microsoft.com/en-us/projects/dryadlinq/default.aspx">DryadLINQ</a>的精神。Dryad项目主要研究用于为小集群或大型数据中心编写并行和分布式程序的编程模型。DryadLINQ则是用于开发大规模的、运行在大集群上的并行应用，他具有轻便、强大、优雅的编程环境。与Dryad和DryadLINQ有别，Naiad专注于增量计算。</p>
-<p>Naiad支持差别数据流（differential dataflow），基于差别进行操作，而不是基于记录。能在现有昂贵的系统上非常高效的执行。</p>
-<p>Naiad通过Apache协议开源，并已经托管在<a href="https://github.com/MicrosoftResearchSVC/Naiad">Github</a>上，但Naiad并不兼容Linux。在SOSP13上Naiad的<a href="http://sigops.org/sosp/sosp13/talks/murray_naiad_se09_02.pptx">PPT</a>介绍以及<a href="http://research.microsoft.com/pubs/201100/naiad_sosp2013.pdf">论文</a>地址。</p>
-<p>Naiad在微博上引起的热议。</p>
-<p><a href="http://weibo.com/jiangbinglover">@Binos_ICT</a>:</p>
+<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>不懂公关的运维不是好PM：从自动化运维到私有云平台</h3><p>在360内部，有基础运维团队、网络运维团队、应用运维团队这三个团队为整个公司的研发、产品、运营来提供服务。基础运维和网络运维团队负责IDC及网络建设、硬件管理等，而应用运维团队则负责应用运维和数据库层，几个团队相互协作。在2013年秋季的香港OpenStack峰会上，360的系统工程师张玉放介绍了他们<a href="http://www.infoq.com/cn/news/2013/11/openstack-in-360">使用OpenStack搭建私有云的经验</a>；但是，仅仅有OpenStack是不足以支持上层复杂的业务场景。</p>
+<p><a href="http://www.qconbeijing.com/node/471">孔德亮</a>（<a href="http://weibo.com/randykong">@Randy素年锦时</a>）是360 WEB平台部高级技术经理，是360 WEB平台的第一位应用运维工程师，也是今年<a href="http://www.qconbeijing.com/node/454">QCon北京自动化运维专场</a>的讲师。2013年10月，他写了一篇《<a href="http://www.csdn.net/article/2013-10-30/2817343">运维人员需要有产品观</a>》，介绍他们将运维这个服务产品化的思路和经验。运维产品化的成果是一个叫做HULK的平台，这个平台最初只是想解决自动化运维的问题，现在却演变成了承载公司90%业务线的整体私有云解决方案。</p>
+<p>HULK为360运维团队的工作带来了哪些不同？又如何对360的研发、产品、运营产生价值？在下面的采访中，孔德亮会介绍这个平台的开发历史、底层的技术组成、以及为团队带来了哪些价值。</p>
+<p><strong>InfoQ：HULK是什么时候开始做的？产品的完成度如何了？</strong></p>
 <blockquote> 
- <p>Microsoft的Naiad要吃掉所有的分布式计算框架(Hadoop/Storm/Spark)，支持Batch、Interactive、Loop，异步消息和同步Notification，开源，可惜还不兼容Linux。</p> 
+ <p>孔德亮：2013年初开始几个人利用业务时间尝试，初期主要解决运维自动化问题，下半年以业务为核心，完善中间的关联关系，为开发、运维、DBA等提供整体的解决方案，同时注重交互体验，目前正在逐步整合公司各开发团队的技术产出，沉淀成通用基础服务供平台用户使用。自动化运维只是HULK其中的一部分。</p> 
 </blockquote>
-<p>他还补充道：</p>
+<p><strong>InfoQ：360的私有云底层用OpenStack搭建，你们团队负责对上提供主机类、Web类、DB类服务。对下你们主要用到了OpenStack的哪些组件？</strong></p>
 <blockquote> 
- <p>Naiad像一个实验室的产品。</p> 
+ <p>孔德亮：主要用到Nova、Horizon、Glance、Keystone。</p> 
+ <p>Nova及API：拿Nova做虚拟化的承载，虚拟机用Xen，用OpenStack的对应的Nova的API取出数据，做HULK系统的资源统计和分析。</p> 
+ <p>Horizon：就是做虚拟机创建查看功能，后期也准备用API与HULK联动。如果这部分做好，可能依赖Horizon的地方会少一些。</p> 
+ <p>Glance和Keystone是对应用层和数据库层不可见的，所以我们基本没有什么交互。</p> 
 </blockquote>
-<p><a href="http://weibo.com/wugansha">@吴甘沙</a>不看好Naiad：</p>
+<p><strong>InfoQ：HULK平台从2013年初开始研发，从最初解决自动化运维为目的，发展到现在的私有云整体解决方案。如果2013年初的时候，OpenStack的Trove（DB）和Heat（运维）等项目已经成熟，你们是否仍然会选择自己研发这套HULK？</strong></p>
 <blockquote> 
- <p>和当初表示比MapReduce牛很多的师叔Dryad可能是相似的命运。</p> 
+ <p>孔德亮：从Heat和Trove的目标来看，的确是一套比较好的应用运维解决方案。但在做云平台最早选型的时候，需要考虑是通用性多一点还是更适合现有公司的业务架构和逻辑。奇虎内部核心文化中有一个概念叫小步快跑，如果冒然就考虑上述不成熟且大而全的东西，一方面是技术风险比较大，另一方面是需要公司整个的上层技术体系有一定的变化，从面向用户的角度，我们也不希望这么做；另一方面国内较大的互联网公司都是自己开发做自己的应用运维和数据库管理系统，并且都做得风生水起，可圈可点，我们有大环境做保证，所以最终选择了自己实现这部分的逻辑，快速试错。</p> 
 </blockquote>
-<p><a href="http://weibo.com/1239476281">@didi10000</a>：</p>
+<p><strong>InfoQ：你们的DB服务是跑在物理机还是虚拟机上？如果是物理机，那么物理机和虚拟机的混合环境你们是通过什么方法统一管理的呢？</strong></p>
 <blockquote> 
- <p>配合他们之前的differential dataflow看，觉得赞。</p> 
-</blockquote><br><br><br><br><br><br></body></html>
+ <p>孔德亮：我们对服务器引入了标签的概念，每一台服务器自己都被贴了一堆的标签，标签标注是虚拟机而不是物理机，跑着DB的3306和3307端口，提供着那些服务，配置信息。机器本身会向HULK定期同步自己的标签，基于自身的标签以及我们定义的什么标签该干什么事做一些自动化的操作。</p> 
+ <p>同时在HULK上面，我们封装了SaltStack作为命令执行系统的底层，基于HULK的关联关系，统一下发各种命令，执行各类操作。</p> 
+</blockquote>
+<p><strong>InfoQ：HULK提供了代码提交、自动测试、自动部署的服务。对开发团队而言，在HULK上进行这些操作，和没有HULK的时候相比，操作流程上有什么区别？</strong></p>
+<blockquote> 
+ <p>孔德亮：传统的操作流程是开发团队写代码提交svn或git，然后采用ssh或者rsync等方式串行的同步到部署的服务器上，有很多问题，比如服务器多了代码上线慢，一个疏忽可能发错代码，另外开发、测试环境与线上环境不一致，无法快速扩容，无法跟踪历史快速回退等等问题。</p> 
+ <p>HULK整合了奇虎部分优秀团队的经验，提供了基于这部分的解决方案，比如树形分布式的结构保障跨机房间代码只传输一份，并行发送保障千台的效率在分钟级完成，提供严格一致的线上线下测试环境，回归机，灰度上线，发布历史记录，最终一致性检查及一键回退等等，另外的亮点是我们有一个web化的界面，用户只需要点击几下，即可实现从版本控制工具下拉代码，上传中心分发，提交测试，灰度发布等等工作实现了代码发布、测试，部署的所见即所得。</p> 
+</blockquote>
+<p><strong>InfoQ：在HULK上部署监控、日志收集模块，和没有HULK的时候做监控和日志收集，又有什么区别？</strong></p>
+<blockquote> 
+ <p>孔德亮：HULK给监控带来的好处主要是它整合了各类关系，比如系统监控以前你看到的是某个机器磁盘满了，现在你看到的是某个业务下作为引擎服务的某个机器磁盘满了，这样的好处就在于你可以获得更多的信息，将监控分级，对于不重要的业务或者服务，可以根据冗余信息推迟处理或者不处理。</p> 
+ <p>日志收集这里我们采用的是puppet+scribe的组合，将一个机房的日志发送到机房中转机然后传给hadoop等作为存储和计算。puppet保障了scribe的配置的强一致性以及确保服务的可用性，scribe作为客户端的日志发送代理，没有HULK的时候，开发团队的日志收集千奇百怪；通过上述成熟的解决方案，规约了用户日志的存储路径，统一的使用方式，也极大的稳定了日志统计的服务。</p> 
+</blockquote>
+<p><strong>InfoQ：你把运维做成了产品经理，把人工服务做成了自助平台。坦白讲，你觉得这跟360重视产品经理的公司氛围有关吗？你如何评价在360内部，研发、运维、产品、运营之间的关系？</strong></p>
+<blockquote> 
+ <p>孔德亮：我承认公司的文化、氛围对我有很大的影响，老周也把我和很多产品经理放在一起学习、讨论。我开始想不明白，觉得自己是做技术的，学这些没啥用，现在认为不一定做面向最终用户的产品才是“产品经理”，前台、行政也可以是产品经理，把自己的工作看作产品，给用户创造价值。</p> 
+ <p>这话听上去有点虚，结合HULK功能举个例子：我提倡从技术支持升级为技术运营，是想让团队把HULK当作一个真正的产品，拓展思路，去创新，激发大家的潜能给与用户超出预期的体验。不仅仅是响应别人提出的技术需求。比如一个初创项目，从申请资源、软件部署、配置管理、DB实例、负载均衡这是必须有的过程，我们追求极致就把这个过程变成了30秒，可能有很多不成熟，但是抓到了核心点“唯快不破”。</p> 
+ <p>HULK也是当做产品在运营，走访用户收集反馈，有专业的前端开发，UI交互设计。我们也有上线的发布会，同时定制了海报，笔记本等小礼品，培养了内部的粉丝一起打造这个平台。我们的宣传语是：“HULK云平台——让产品试错的更快更廉价”。</p> 
+ <p>在360内部，为了一个产品的成功，研发、运维、产品、运营都是为这个产品服务的，做好了大伙分蛋糕，做不好都倒霉，目标一致。</p> 
+</blockquote>
+<hr />
+<p>感谢<a href="http://www.infoq.com/cn/author/孔德亮">孔德亮</a>对本文的审校。</p>
+<p>给InfoQ中文站投稿或者参与内容翻译工作，请邮件至<a href="mailto:editors@cn.infoq.com">editors@cn.infoq.com</a>。也欢迎大家通过新浪微博（<a href="http://www.weibo.com/infoqchina">@InfoQ</a>）或者腾讯微博（<a href="http://t.qq.com/infoqchina">@InfoQ</a>）关注我们，并与我们的编辑和其他读者朋友交流。</p><br><br><br><br><br><br></body></html>

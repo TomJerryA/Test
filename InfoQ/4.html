@@ -1,41 +1,22 @@
-<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>SparkR发布 让R跑在Spark上</h3><p><a href="http://amplab-extras.github.io/SparkR-pkg/">SparkR</a>是AMPLab发布的一个R开发包，为Apache Spark提供了轻量的前端。SparkR提供了Spark中弹性分布式数据集（RDD）的API，用户可以在集群上通过R shell交互性的运行job。例如，我们可以在HDFS上读取或写入文件，也可以使用 lapply 来定义对应每一个RDD元素的运算。</p>
-<pre>
-sc &lt;- sparkR.init(&quot;local&quot;)
-  lines &lt;- textFile(sc, &quot;hdfs://data.txt&quot;)
-  wordsPerLine &lt;- lapply(lines, function(line) { length(unlist(strsplit(line, &quot; &quot;))) })
-</pre>
-<p>除了常见的RDD函数式算子reduce、reduceByKey、groupByKey和collect之外，SparkR也支持利用 lapplyWithPartition 对每个RDD的分区进行操作。</p>
-<p>SparkR也支持常见的闭包（closure）功能：用户定义的函数中所引用到的变量会自动被发送到集群中其他的机器上。参见一下例子中用户闭包中引用的 initialWeights 会被自动发送到集群其他机器上。</p>
-<pre>
-lines &lt;- textFile(sc, &quot;hdfs://data.txt&quot;)
-   initialWeights &lt;- runif(n=D, min = -1, max = 1)
-   createMatrix &lt;- function(line) {
-     as.numeric(unlist(strsplit(line, &quot; &quot;))) %*% t(initialWeights)
-   }
-   # initialWeights is automatically serialized
-   matrixRDD &lt;- lapply(lines, createMatrix)
-</pre>
-<p>用户还可以很容易的在已经安装了R开发包的集群上使用SparkR。includePackage 命令用于指示在每个集群上执行操作前读取开发包。以下是个例子：</p>
-<pre>
-generateSparse &lt;- function(x) {
-    # Use sparseMatrix function from the Matrix package
-    sparseMatrix(i=c(1, 2, 3), j=c(1, 2, 3), x=c(1, 2, 3))
-  }
-  includePackage(sc, Matrix)
-  sparseMat &lt;- lapplyPartition(rdd, generateSparse)
-</pre>
-<p>针对SparkR发布的消息，大数据创业公司DataBricks的创始人之一<a href="http://weibo.com/hashjoin">@hashjoin</a>（辛湜）在微博上评论到：</p>
+<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>斯坦福大学发布免费在线文本分析工具</h3><p>斯坦福计算机科学家开发了<a href="http://www.etcml.com/">etcML</a>（Easy Text Classification with Machine Learning）网站，该网站通过机器学习引擎进行文本分析，目前该网站向所有人免费开放。</p>
+<p>维基百科对<a href="http://en.wikipedia.org/wiki/Machine_learning">机器学习</a>的解释是：他是人工智能的分支之一，是一套能够从数据中学习的系统。</p>
+<p>斯坦福大学官网对此进行了<a href="http://engineering.stanford.edu/research-profile/stanford-scientists-put-free-text-analysis-tool-web">说明</a>：etcML网站基于成熟的文本分析引擎，估计总体的情感倾向（是消极还是积极）。etcML项目负责人Richard Socher表示：</p>
 <blockquote> 
- <p>R是数据分析最常用的工具之一，但是R能处理的数据不能大于一台机器的内存。过去有一些R和Hadoop结合的尝试一般都性能低下，用户体验差。今天AMPLab发布了R的Spark前端，利用R进行大数据交互分析，也可以在节点上利用R的数据分析库，是大数据的一个新利器。</p> 
+ <p>“我们想开发一套供普通人和研究人员使用的标准的机器学习技术，所有使用者都不需要编程能力。”</p> 
 </blockquote>
-<p><a href="http://weibo.com/n/vinW">@vinW</a>：</p>
+<p>斯坦福大学候选博士研究生Rebecca Weiss表示：</p>
 <blockquote> 
- <p>我一直就说R matlab 和Spark其实是一路的，内存流派的。Spark这个分布式的高端搞法必将重振内存计算这个领域。</p> 
+ <p>etcML提供了一种简单的方式，对单词和短语所体现的观点进行分类。</p> 
+ <p>我可以训练分类器，也可以对任何一段文本打上标签，实现这一切并不需要写一行代码。我还可以和记者或研究人员分享我的分类器。</p> 
 </blockquote>
-<p><a href="http://weibo.com/sunbjt">@刘思喆</a>：</p>
+<p>斯坦福大学计算机语言学研究者Rob Voigt通过etcML对Kickstarter（一个创意方案众筹平台）上的项目进行评估。他发现，多使用“我们”、“我们的”这些复数代词能够提高项目宣讲成功的概率。Voigt表示：</p>
 <blockquote> 
- <p>重磅消息，比预想的要早很多。</p> 
+ <p>“我们并没有声称我们的分析是决定性的，etcML分类范式提供了有价值的成功线索。”</p> 
 </blockquote>
-<hr />
-<p>感谢<a href="http://www.infoq.com/cn/author/辛湜">辛湜</a>对本文的审校。</p>
-<p>给InfoQ中文站投稿或者参与内容翻译工作，请邮件至<a href="mailto:editors@cn.infoq.com">editors@cn.infoq.com</a>。也欢迎大家通过新浪微博（<a href="http://www.weibo.com/infoqchina">@InfoQ</a>）或者腾讯微博（<a href="http://t.qq.com/infoqchina">@InfoQ</a>）关注我们，并与我们的编辑和其他读者朋友交流。</p><br><br><br><br><br><br></body></html>
+<p>斯坦福大学计算机科学博士生Chinmay Kulkarni使用etcML对2000名学生的简答题测验进行打分。此前，简答题打分是通过学生之间的互相打分完成的，平局每道题有4个学生进行打分。通过etcML打分后，平局每道题只需要3个或更少的学生打分。Kulkarni表示：</p>
+<blockquote> 
+ <p>“我们获得了同样的精确度，同时减少了学生的负担。”</p> 
+</blockquote>
+<p>Kulkarni发布了这一项目的<a href="http://hci.stanford.edu/publications/paper.php?id=279">论文</a>。</p>
+<p>Socher认为etcML能吸引许多人尝试有趣的语义分析项目并提供反馈，从而提升etcML背后的计算引擎。</p>
+<p>值得一提的是，<a href="http://en.wikipedia.org/wiki/Andrew_Ng">Andrew Ng（吴恩达）</a>是etcML项目的顾问，他是斯坦福人工智能实验室的主管，也是在线公开课程平台Coursera的创始人之一。</p><br><br><br><br><br><br></body></html>

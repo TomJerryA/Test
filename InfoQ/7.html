@@ -1,36 +1,25 @@
-<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>Math.js：多用途的JavaScript数学库</h3><p><a href="http://mathjs.org/">Math.js</a>是一款开源的JavaScript和Node.js数学库，用于处理数字、大数、复数、单位和矩阵。它还有一个灵活的表达式解析器。为了解更多信息，InfoQ联系了该项目的创始人Jos De Jong。</p>
-<p>Jos 解释了项目背后的动机——</p>
+<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>内存OLTP的索引</h3><p>SQL Server内存OLTP的索引与普通索引不一样。这不一定是坏事，只是你要小心它们的差异，避免造成性能问题。</p>
+<p>内存优化的非聚簇索引与基于磁盘的非聚簇索引的不同之处在于，他们一直在涵盖。你不需要指定要包含哪些列，除了真正的索引列，“其它列也都将虚拟地涵盖在内”。</p>
+<p>非聚簇索引的一个有趣的限制是它只能单向扫描。比如索引是“OrderDate ASC”时，你不能用这个索引以订单日期降序来检索记录。</p>
+<p>另一种类型的索引是内存优化的哈希索引。这种索引是为“点式查找操作（point-lookup operations）”和全扫描设计的。它不能用于排序的扫描和不等式查找操作。微软提供了一些<a href="http://blogs.technet.com/b/dataplatforminsider/archive/2013/11/12/sql-server-2014-in-memory-oltp-nonclustered-indexes-for-memory-optimized-tables.aspx">在非聚簇索引和哈希索引之间进行选择的指导原则</a>：</p>
+<ul> 
+ <li>如果你只需要执行点式查找，也就是说你只需要获取单独索引键值的记录，则应使用哈希索引。</li> 
+ <li>如果你需要获取一定范围内的记录，或者需要按特定顺序排序的记录，则应使用非聚簇索引。</li> 
+ <li>如果你两个都需要，特别是点式查找比较频繁时，可以考虑建立两个索引。你可以在同一索引键上同时创建哈希索引和非聚簇索引。</li> 
+</ul>
+<p>哈希索引还需要使用桶计数。桶计数的值应该在N到2N之间，其中N是预期的记录数。在操作层面上，0.2N到5N之间都是“可用”的。桶计数在内部始终会被向上取整到2的下一次方。</p>
+<p>桶计数过高会浪费内存。对于要完全适合RAM的内存优化表而言，这是个敏感问题。而桶计数过低则可能会导致其他问题出现：</p>
 <blockquote> 
- <p>对于JavaScript，我们有很好的库来处理矩阵、复数和统计等计算。欠缺的是用于高级数学计算的集成解决方案。大多数现有的库支持链式API，它们使用起来很直观，但只接受库本身已知的数据类型。因此，<a>整合时存在的问题</a> 是：矩阵库不能处理复数，反之亦然，你无法将它们合并起来。math.js的API和JavaScript的Math对象和内置操作符的API是相同的，都是支持各种输入类型的静态函数。 Math.js对该API进行了扩展，为高级数据类型、函数和常数提供了支持。</p> 
- <p>我希望math.js能使应用程序开发中的数学处理变得简单，并且更为有趣，希望还能帮助弥合开发者的世界与学术世界直接的鸿沟。</p> 
+ <p>如果桶计数显著（十倍）低于唯一索引键的数量，很多桶将有多个索引键。这将导致大多数DML操作性能下降，特别是点式查找操作（查找单独的索引键）。比如说，即便索引键字段在WHERE子句中，并且使用等号进行SELECT、UPDATE和DELETE操作，性能也会非常差。</p> 
 </blockquote>
-<p>Math.js 有三种使用方式——</p>
-<ol> 
- <li>用静态函数和常数（就像JavaScript的Math对象） <pre>
-math.add(2, 3)math.add(2, 3);  // 5 
-math.sqrt(-4);                      // 2i 
-math.pow([[-1, 2], [3, 1]], 2);     // [[7, 0], [0, 7]]
-</pre> </li> 
- <li>对字符串表达式进行求值运算 <pre>
-math.eval('1.2 * (2 + 4.5)'); //7.8
-math.eval('5.08 cm to inch'); //2 inch </pre> </li> 
- <li>使用链式操作 <pre>
-math.select(3)
-    .add(4)
-    .multiply(2)
-    .done();      //14
-</pre> </li> 
-</ol>
-<p><a href="http://mathjs.org/">math.js 网站有几个示例，文档</a>中也有。</p>
-<p>Jos希望在几个月内发布第一个稳定版本1.0。</p>
+<p>哈希索引可能还会遇到重复值的问题。如果多条记录的索引字段的值相同，那么这些记录会产生哈希冲突。如果这种情况很多，例如每个不同的值重复超过10次，那么性能就会受到影响。</p>
+<p>对于哈希索引，<a href="http://blogs.technet.com/b/dataplatforminsider/archive/2014/01/30/in-memory-oltp-index-troubleshooting-part-ii.aspx">SQL Server团队</a>建议将其转换成非聚簇索引。</p>
 <blockquote> 
- <p>版本1.0还剩下的工作是写一个参考文档，代码的单元测试覆盖率达到100％，解决 一些不完善的地方。</p> 
+ <p>绝大多数情况下应该使用非聚簇索引，因为如果出现重复，非聚簇索引的性能通常更好。如果采用这个选项，你可以考虑唯一化索引键。如下所述：</p> 
+ <p>对于有大量重复的非聚簇索引，应考虑增加索引列。比如将主键字段加到索引键中，确保索引唯一，也就是说，唯一化索引。</p> 
 </blockquote>
-<p>到版本1.0发布时，API也将稳定下来，之后我们的焦点可能会转移到优化上。Jos提出了可能会带来潜在性能改进的几个方向，如使用类型化数组、并行化和<a>asm.js</a>。</p>
-<p><a>Jos</a>为什么选择了JavaScript，而没有选择像已有诸如NumPi/SCIPI等库的Python这样的语言，原因是——</p>
-<blockquote> 
- <p>最近几年，我们已看到了云计算和Web应用程序的发展浪潮，而且我自己也完全融入其中了。浏览器和JavaScript引擎也正在变得越来越快。几年前，我们就可以使用<a href="http://nodejs.org/">node.js</a>运行JavaScript服务器端。这开拓了许多新的可能性，并导致了JavaScript的生态系统及其受欢迎程度的<a href="http://resin.io/happy-18th-birthday-javascript/">爆炸性增长</a>。看起来JavaScript正在成为应用最普遍的语言。尽管JavaScript远不完美，但我非常喜欢JavaScript及其社区。</p> 
-</blockquote>
-<p>目前已经有几个使用math.js的最终用户应用。Jos自己的项目<a href="http://mathnotepad.com/">mathnotepad</a>也是基于math.js的，目前还处于早期开发阶段。<a href="http://numerics.info/">numerics</a>这款流行的计算器项目也用到了Math.js。</p>
-<p>如果想使用Math.js，可以查看<a href="https://github.com/josdejong/mathjs/blob/master/docs/getting_started.md">文档</a>。</p>
-<p><strong>查看英文原文：</strong><a href="http://www.infoq.com/news/2014/01/mathjs">Math.js: Versatile Math Library For JavaScript</a></p><br><br><br><br><br><br></body></html>
+<p>如果值确实不同，并且你仍想使用哈希索引，那么你可以使用“超大索引”,也就是将桶计数值设置为“唯一索引值数量的20到100倍之间”，从而减少哈希冲突的可能。</p>
+<p><strong>原文英文链接：</strong><a href="http://www.infoq.com/news/2014/02/In-Memory-OLTP-Indexes">More on Indexes in In-Memory OLTP</a></p>
+<hr />
+<p>感谢<a href="http://www.infoq.com/cn/author/吴海星">吴海星</a>对本文的审校。</p>
+<p>给InfoQ中文站投稿或者参与内容翻译工作，请邮件至<a href="mailto:editors@cn.infoq.com">editors@cn.infoq.com</a>。也欢迎大家通过新浪微博（<a href="http://www.weibo.com/infoqchina">@InfoQ</a>）或者腾讯微博（<a href="http://t.qq.com/infoqchina">@InfoQ</a>）关注我们，并与我们的编辑和其他读者朋友交流。</p><br><br><br><br><br><br></body></html>

@@ -1,21 +1,16 @@
-<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>函数关系映射库Slick 2.0发布</h3><p><a href="http://slick.typesafe.com/">Slick</a>是一款适用于<a href="http://en.wikipedia.org/wiki/Scala_(programming_language)">Scala</a>的<a href="https://typesafe.com/blog/slick-20-ga-functional-relational-mapping-made-easy">函数关系映射库</a>（FRM），它的最新版本附带了逆向工程数据库模式和支持non-SQL数据库新的驱动体系架构。在最新的2.0版本中包括如下更新： </p>
-<ul> 
- <li>逆向工程数据库模式代码生成器，可以用它生成所有必需的代码。 </li>
- <li>支持non-SQL、non-JDBC数据库的新的驱动体系架构。 </li>
- <li>消除了表定义中的平面元组限制，可以把任意类型作为查询的返回类型。 </li>
- <li>除了Scala元组之外，还支持适用于任意大小记录的异构列表。 </li>
- <li>以新的预编译查询模型代替以前的查询模版抽象。 </li>
- <li>现在预编译查询除了查询之外还可以用于更新和删除操作。 </li>
- <li>默认软插入，这就不必再针对插入做单独推测。但现在仍然支持以前的做法。 </li>
- <li>在提升嵌入（Lifted Embedding）的标准API中有新的更详细的表定义语法，以此避免早期版本中的隐患。 </li>
- <li>支持服务器端可选的转换策略。 </li>
- <li>一种支持查询调度的实验性特性，它允许在多个数据库的表上做单一查询。 </li>
- <li>一个新的Activator模板，目标是使Slick的入门更加简单。</li>
-</ul>
-<p>除了以上这些更新，在新的版本里还有其他200多项更新。团队还更新了相应的<a href="http://slick.typesafe.com/doc/2.0.0/">文档</a>，包括新版的<a href="http://typesafe.com/activator/template/hello-slick">入门指南</a>。这个版本不能向下兼容，<a href="http://slick.typesafe.com/doc/2.0.0/migration.html">迁移指南</a>中描述了从1.0至今的变更。 </p>
-<p>Slick是一款用于函数式编程语言Scala（相当于用于面向对象编程的<a href="http://en.wikipedia.org/wiki/Object-relational_mapping">对象关系映射</a>（ORM），比如Hibernate）的关系型数据库访问类库。Slick用户<a href="https://groups.google.com/forum/#!forum/scalaquery">邮件列表</a>中有700多位成员。 </p>
-<p>Slick是一款基于BSD<a href="https://github.com/slick/slick/blob/master/LICENSE.txt">许可</a>的开源产品。它<a href="http://slick.typesafe.com/doc/2.0.0/introduction.html#supported-database-systems">支持的数据库</a>包括H2、MySQL和 PostgreSQL。通过一个<a href="http://slick.typesafe.com/doc/2.0.0/extensions.html">闭源扩展</a>也可以使它支持Oracle、IBM DB2和Microsoft SQL Server的驱动。 </p>
-<p><strong>查看英文原文：</strong><a href="http://www.infoq.com/news/2014/01/slick-2-0-released">Functional Relational Mapping Library Slick 2.0 Released</a></p>
-<hr />
-<p>感谢<a href="http://www.infoq.com/cn/author/侯伯薇">侯伯薇</a>对本文的审校。</p>
-<p>给InfoQ中文站投稿或者参与内容翻译工作，请邮件至<a href="mailto:editors@cn.infoq.com">editors@cn.infoq.com</a>。也欢迎大家通过新浪微博（<a href="http://www.weibo.com/infoqchina">@InfoQ</a>）或者腾讯微博（<a href="http://t.qq.com/infoqchina">@InfoQ</a>）关注我们，并与我们的编辑和其他读者朋友交流。</p><br><br><br><br><br><br></body></html>
+<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>全速前进：Oracle计划于3月份发布Java 8，即便有Bug亦如此</h3><p>Oracle计划于3月18日正式发布JDK 8，即便存在一些小Bug也会如期发布。在发送给Java邮件列表的一封邮件中，Oracle JDK 8发布经理Mathias Axelsson重点强调了此次升级的意图，即在3月份将会正式发布JDK 8。在此次发布中，只有一些严重的Bug才会考虑在最初的JDK 8发布中得到修复；其他一些小Bug将会推迟到后续发布中解决，这样做的目的是为了确保能在3月18日如期发布JDK 8。</p>
+<p>Axelsson说JDK 8的开发者们最近一直在努力修复Bug，“目前只有为数不多的问题需要解决并集成，总的来看，项目进展还是非常不错的”。</p>
+<p>此前Java就有发布时存在Bug的经历。2011年发布的Java SE 7存在着<a href="http://www.infoworld.com/t/java-programming/apache-and-oracle-warn-serious-java-7-compiler-bugs-168516">编译器问题</a>，Java客户端的安全也接二连三地出现<a href="http://www.infoworld.com/t/security/javas-insecurity-has-doomed-it-the-desktop-228922">问题</a>，不过Oracle<a href="http://www.infoworld.com/t/java-programming/oracle-were-getting-java-security-under-control-227404">承认</a>了这些问题并加以解决，之后发布了Java SE的<a href="http://www.infoworld.com/d/security/oracle-set-issue-147-security-patches-including-36-java-233995">36个修复</a>。</p>
+<blockquote>
+  Java 7发布时所引入的hotspot-compiler优化会错误地编译某些循环，这个Bug已经影响到了很多项目，包括Apache Lucene Core、Apache Solr等。最坏的情况下，这个Bug会导致JVM崩溃；在其他一些情况下，Bug会导致一些计算出现错误，这又会造成应用出现难以察觉的各种问题。
+ <br /> 
+ <br /> Oracle也发现了这个Bug，发现的时间是在Java 7发布的前5天；当时Oracle在Sun Developer Network上发布了警告。公司也承诺会在接下来的服务发布中修复这些问题。 
+ <br /> 
+ <br /> Apache简要说明了运行Java 7的用户可能会遇到的问题细节信息。使用默认配置的Solr用户“在开始索引文档时会遇到Java崩溃的问题”，Lucene中的其他循环也可能会出现编译错误的问题。 
+ <br /> 
+ <br /> 值得注意的是，Java 6用户如果使用了默认情况下没有开启的选项也会遇到相应的问题，包括-XX:+OptimizeStringConcat和-XX:+AggressiveOpts。 
+ <br /> 
+ <br /> 此前Java还出现过客户端安全问题。Oracle官方也曾说过Java的安全问题长久以来都被忽视了，这导致软件很容易遇到各种安全攻击。不过Oracle现在非常重视这个问题，并且及时发布了新的版本，更加安全的Java版本，修复了安全问题。Oracle云应用与Java EE副总裁Cameron Purdy说大多数安全问题都可以追溯到10年前，只不过Java被纳入Oracle麾下并没有多长时间，不过未来Oracle将会非常重视Java的安全问题。 
+</blockquote>
+<p>Forrester Research的分析师John Rymer说“Oracle能够及时沟通JDK 8的状态是一件非常好的事情，毕竟谁都不希望延期再延期了”。</p>
+<p>根据之前的规划，JDK 8将会包含Project Lambda、提升多核编程能力等特性，不过Project Jigsaw（模块化Java）等特性将会继续推迟到后续的Java SE 9中再发布。</p><br><br><br><br><br><br></body></html>

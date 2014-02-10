@@ -1,1 +1,1 @@
-CoffeeScript 1.7
+Google's Java Coding Standards

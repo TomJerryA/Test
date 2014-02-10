@@ -1,14 +1,26 @@
-<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>面向JavaScript的SOLID设计原则</h3><p><a href="http://lostechies.com/derickbailey/">Derick Bailey</a>是一位专注于JavaScript的作者和开发者，他最近在<a href="http://codemash.org/">CodeMash</a>上发表的<a href="http://www.youtube.com/watch?v=TAVn7s-kO9o">演讲</a>中指出：很多开发者都使用过面向对象语言，也有很多开发者使用过JavaScript，但很少有人把面向对象原则和JavaScript放在一起使用过。在面向对象编程中，我们会把这些基础和原则看做工作的根基，但是从基于类的静态语言转向基于松散的类型而非类的语言时，往往发现同样的原则很难应用。</p>
-<p>Derick宣称，为帮助开发者编写良好且稳定的JavaScript代码，有很多很好的原则、实践和模式可供使用，一个例子就是<a href="http://en.wikipedia.org/wiki/Robert_c_martin">Robert C. Martin</a>于本世纪初总结出的<a href="http://en.wikipedia.org/wiki/SOLID">SOLID原则</a>。</p>
-<p>Derick把SOLID原则描述为可以很好地配合的五个独立模式，他还使用代码示例依次介绍了所有这些模式，同时看了一些JavaScript特有的风格，这些风格使得在JavaScript中应用SOLID原则与在像Java和C#这样的语言中应用有点不同。</p>
-<p>Derick对这五种原则的定义是：</p>
+<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>Masonry与iOS自动布局</h3><p>开源项目Masonry旨在让自动布局（Auto Layout）的代码更简洁、可读性更强。</p>
+<p><a href="https://github.com/cloudkite/Masonry">Masonry</a>，“一个轻量级的布局框架，采用更优雅的语法封装自动布局”，不需要使用XIB和Storyboard。它的创造者Jonas Budelmann<a href="https://github.com/cloudkite/Masonry#whats-wrong-with-nslayoutconstraints">论证</a>了尽管自动布局很强大，但它很快就变得冗长而不可读。</p>
+<p>Masonry是一种领域特定语言（DSL），为自动布局的所有功能提供便捷的方法，包括建立和修改约束、存取属性、设置优先级以及调试支持。</p>
+<p>GitHub上的示例代码展示了Masonry的<a href="https://github.com/cloudkite/Masonry#prepare-to-meet-your-maker">典型用法及其简洁的语法</a>。</p>
+<pre>
+UIEdgeInsets padding = UIEdgeInsetsMake(10, 10, 10, 10);
+
+[view1 mas_makeConstraints:^(MASConstraintMaker *make) {
+   make.edges.equalTo(superview).with.insets(padding);
+}];
+</pre>
+<p>自动布局最重要的是<a href="https://developer.apple.com/library/ios/documentation/UserExperience/Conceptual/AutolayoutPG/AutoLayoutConcepts/AutoLayoutConcepts.html#//apple_ref/doc/uid/TP40010853-CH14-SW2">约束</a>：UI元素间关系的数学表达式。约束包括尺寸、由优先级和阈值管理的相对位置。它们是<a href="https://developer.apple.com/library/ios/documentation/UserExperience/Conceptual/AutolayoutPG/AutoLayoutConcepts/AutoLayoutConcepts.html#//apple_ref/doc/uid/TP40010853-CH14-SW2">添加剂</a>，可能导致约束<a href="https://developer.apple.com/library/ios/documentation/userexperience/conceptual/AutolayoutPG/ResolvingIssues/ResolvingIssues.html#//apple_ref/doc/uid/TP40010853-CH17-SW5">冲突</a>、约束不足造成<a href="https://developer.apple.com/library/ios/documentation/userexperience/conceptual/AutolayoutPG/ResolvingIssues/ResolvingIssues.html#//apple_ref/doc/uid/TP40010853-CH17-SW7">布局无法确定</a>。这两种情况都会产生异常。</p>
+<p>通过编程的方式，不使用Masonry，也可以创建约束：创建<a href="https://developer.apple.com/library/ios/documentation/AppKit/Reference/NSLayoutConstraint_Class/NSLayoutConstraint/NSLayoutConstraint.html">NSLayoutConstraint</a>,关联到视图并指定属性和关系。Apple也提供了<a href="https://developer.apple.com/library/ios/documentation/UserExperience/Conceptual/AutolayoutPG/VisualFormatLanguage/VisualFormatLanguage.html#//apple_ref/doc/uid/TP40010853-CH3-SW1">Visual Format Language</a>，它是另一种以文本方式描述关系的领域特定语言。</p>
+<p>自动布局既不是强制的，也不是独有的方法。“springs and struts”仍然是一种有效的方法。“springs and struts”也就是<a href="https://developer.apple.com/library/ios/documentation/UIKit/Reference/UIView_Class/UIView/UIView.html#//apple_ref/doc/uid/TP40006816-CH3-SW6">autoresizing masks</a>，决定了一个视图的父视图大小变化时，其自身如何变化。</p>
+<p>Apple提供了<a href="https://developer.apple.com/library/ios/documentation/UserExperience/Conceptual/TransitionGuide/index.html#//apple_ref/doc/uid/TP40013174">采用自动布局的令人信服的原因</a>：</p>
 <ul> 
- <li><b>单一职责原则。</b>当需要做出修改时，原因只能有一个。这有助于帮助开发者理解所构建事物的上下文和职责，并理解何时需要修改。</li> 
- <li><b>开放</b><b>-</b><b>封闭原则。</b>行为的改变应该可以在不改变现有代码的条件下进行，例如，使用扩展点和创建可以插入的代码。</li> 
- <li><b>里氏替换原则。</b>派生的对象或类型必需能够替换其基类。在Derick看来，这是开放-封闭原则的一个更为专注的版本。</li> 
- <li><b>接口隔离原则。</b>不应该强迫客户依赖没有使用的接口。有个问题是，JS中没有显式的接口，不过我们有些方法绕过。</li> 
- <li><b>依赖倒转原则。</b>考虑两个概念，抽象（Abstraction）和所有权（Ownership）。前者指的是我们应该依赖抽象，而不是依赖具体实现；后者指的是低层实现应该依赖高层概念（译者注：关于Ownership，Derick在演讲中提到了“细节依赖策略，而策略不依赖细节”）。</li> 
+ <li>“Springs and struts”模式需要编写代码来处理各种屏幕方向、尺寸和动态内容。</li> 
+ <li>iOS 7中的动态类型允许用户在应用中设置文字大小偏好。</li> 
+ <li>支持iOS 6和iOS 7以及它们不同的元素度量。</li> 
 </ul>
-<p>在演讲最后，Derick指出：如果系统中有规模庞大、整整一片的代码块，SOLID可以帮你把它们拆成单个的部分。尽管不会降低复杂性，但是会帮你创建抽象，并将细节组织为我们可以理解的更大的概念。</p>
-<p>译者注：演讲相关的Slides和JavaScript代码<a href="https://github.com/derickbailey/solid-javascript">下载</a>。</p>
-<p><strong>查看英文原文：</strong><a href="http://www.infoq.com/news/2014/01/solid-principles-javascript">SOLID Design Principles for JavaScript</a></p><br><br><br><br><br><br></body></html>
+<p>自动布局并非完美无缺。Apple提供了一篇<a href="https://developer.apple.com/library/ios/technotes/tn2154/_index.html#//apple_ref/doc/uid/DTS40013309">指南</a>，以常用的UIScrollView为例说明如何使用自动布局。Matt Newburg在一篇回复中给出了充足的理由说明为什么<a href="http://stackoverflow.com/questions/12943107/how-do-i-adjust-the-anchor-point-of-a-calayer-when-auto-layout-is-being-used/14105757#14105757">“自动布局在视图转换时并不完美”</a>。为了弥补这种不足，他建议更多地使用层转换。</p>
+<p>任何类型的自动布局代码意味着你将无法获得Xcode5提供的Interface Builder增强功能的支持。特别是可视化地解决自动布局问题的功能，在assistant editor的预览模式中查看各种屏幕方向、尺寸和iOS系统版本下的运行时布局的功能。</p>
+<p><strong>原文英文链接：</strong><a href="http://www.infoq.com/news/2014/02/ios-auto-layout">iOS Auto Layout with Masonry</a></p>
+<hr />
+<p>感谢<a href="http://www.infoq.com/cn/author/姚琪琳">姚琪琳</a>对本文的审校。</p>
+<p>给InfoQ中文站投稿或者参与内容翻译工作，请邮件至<a href="mailto:editors@cn.infoq.com">editors@cn.infoq.com</a>。也欢迎大家通过新浪微博（<a href="http://www.weibo.com/infoqchina">@InfoQ</a>）或者腾讯微博（<a href="http://t.qq.com/infoqchina">@InfoQ</a>）关注我们，并与我们的编辑和其他读者朋友交流。</p><br><br><br><br><br><br></body></html>

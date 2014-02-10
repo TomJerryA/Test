@@ -1,17 +1,8 @@
-<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>大数据：编程语言真的重要吗？</h3><p>在大数据领域内，每一毫秒的性能损失都影响巨大。然而，像Python这样通常被认为性能不是太好的编程语言，在过去一年中却变得越来越流行了。大数据社区最近出现的一些文章和讨论，又一次点燃了用于数据科学以及大数据领域内的编程语言选择之争。</p>
-<p><a href="http://www.adroll.com/">AdRoll</a>的首席工程师Ville Tuulos认为编程语言本身的性能其实并不重要。Ville于2013年9月在旧金山将自己的调查发现发布到了一个<a href="http://tuulos.github.io/sf-python-meetup-sep-2013/#/">meetup</a>组中，向我们展示了AdRoll中使用的基于Python构建的后端架构，以及它们是如何在性能上超过那些业界中的巨头（例如Amazon的<a href="http://aws.amazon.com/redshift/">Redshift</a>）的。他们获得成功的关键是，整个系统是基于他们自己非常特殊的用例而构建的，因此可以针对那种用例进行优化。正如Ville所说：</p>
-<blockquote> 
- <p>不管通用解决方案是采用何种编程语言实现的，你都可以使用一种高级编程语言来快速地实现出一个性能比通用方案更好的，应用于特定领域的解决方案。</p> 
-</blockquote>
-<p>但这并不意味着编程语言一点都不重要。最近有不少关于哪种语言最适合数据科学和大数据领域的争论，而这一殊荣最有力的竞争者就是Python和R语言。一些人甚至把它说成是<a href="http://inside-bigdata.com/2013/12/09/data-science-wars-python-vs-r/">数据科学领域内的一场战争</a>。在LinkedIn上面也有针对这一话题的<a href="http://www.linkedin.com/groups/R-vs-Python-35222.S.239919420">讨论</a>，看上去大家的普遍共识是，R语言是一种学术性语言，“对数据科学家而言，R语言的优势在于它所提供的大量的包以及其多样性”。</p>
-<p>但是对于海量数据处理这一块，总体说来Python受到更多程序员的青睐，正如来自<a href="http://www.dish.com/">Dish Network</a>的数据科学家Tom Rampley所说：</p>
-<blockquote> 
- <p>我经常使用R语言的各种包中所提供的统计功能。我还使用它在小规模的数据集上面执行各种数据操作。但是对于文本解析、大数据集上的数据操作以及编写自己的算法这些任务来说，我更加喜欢使用Python并结合使用它的<a href="http://www.numpy.org/">Numpy</a>、<a href="http://scipy.org/">Scipy</a>和<a href="http://pandas.pydata.org/">Pandas</a>这些包。</p> 
-</blockquote>
-<p>在最近几个月里，Python似乎在各个方面都要更胜一筹，正如<a href="http://karissamck.com/blog/2013/10/30/big-data-is-big-because-it-doesnt-load-into-r/">Karissa McKelvey</a>在2013年10月所写的那样，“我的数据太大了，无法装载到R语言中”，还有<a href="http://readwrite.com/2013/11/25/python-displacing-r-as-the-programming-language-for-data-science#awesm=~otQwqutAwSAAwX">Matt Asay</a>也声称，“在数据科学的博士们中间，R语言仍然很受欢迎，但是随着数据逐渐成为主流，Python正在接替R语言的地位”。</p>
-<p>语言自身的性能常常是我们在开发复杂架构时决定到底使用哪种语言的一个关键因素，而且这一因素常常被过度夸大。实际上真正重要的是我们如何使用一种语言，正如Linus Torvalds所说，“低水平的程序员总在关心代码，而高水平的程序员则关注数据结构及其关系。”</p>
-<p>以<a href="http://www.cloudera.com/content/cloudera/en/home.html">Cloudera</a>公司最近的一个开源项目<a href="https://github.com/cloudera/impala">Impala</a>为例，它的目标是替代<a href="http://hive.apache.org/">Hive</a>，使查询速度提高一个数量级。他们选择使用了C++，而其他所有的<a href="http://hadoop.apache.org/">Hadoop</a>架构都是基于Java的，这种开发语言上的转变经常被冠以某些与性能相关的原因。但实际上这里的性能提升不是简单地来自从Java到C++的转换。Impala甚至没有使用<a href="http://en.wikipedia.org/wiki/MapReduce">MapReduce</a>，而是直接在内存中缓存数据，所以很显然，这里的性能改善主要源于它采用了带有不同数据结构和限制的一个完全不同的范型。这里由Java到C++的转换只是一种锦上添花的工作，并不会对性能的改善起到雪中送炭的作用。</p>
-<p><strong>查看英文原文：</strong><a href="http://www.infoq.com/news/2014/01/bigdata-languages">Big Data: Do Languages Really Matter?</a></p>
+<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>微软OpenTech为Windows Phone和Windows Store提供SQLite</h3><p>现在，微软为Windows Phone、Windows Store和.Net 4.5提供了SQLite正式版本。该库以可移植类库的方式提供，因此开发人员可将其作为自己的可移植类库的基础。</p>
+<p>在内部，MS OpenTech库对SQLite的原生实现进行了封装，支持ARM7、x86和x64平台（对于.Net 4.5,<a href="https://sqlitepcl.codeplex.com/documentation">目前仅支持32位模式</a>）。</p>
+<p>该库以<a href="https://www.nuget.org/packages/SQLitePCL/3.8.2">NuGet package</a>的方式提供，<a href="https://sqlitepcl.codeplex.com/documentation">源代码</a>以Apache 2许可方式发布在CodePlex上。SQLite本身发布在公共域下，没有许可限制。</p>
+<p><a href="http://msopentech.com/about/">微软Open Technologies</a>是微软为维护其开源项目而设立的下属子公司。除了SQLite，他们有各种各样与MongoDB、Redis、Apache Cordova、CouchDB等关联的项目。绝大多数用于处理运行于Windows Azure的第三方技术，或者在非Windows平台支持微软技术，例如Eclipse。</p>
+<p><strong>原文英文链接：</strong><a href="http://www.infoq.com/news/2014/02/MS-SQLite">Microsoft OpenTech Brings SQLite to Windows Phone and Windows Store</a></p>
 <hr />
-<p>感谢<a href="http://www.infoq.com/cn/author/臧秀涛">臧秀涛</a>对本文的审校。</p>
+<p>感谢<a href="http://www.infoq.com/cn/author/侯伯薇">侯伯薇</a>对本文的审校。</p>
 <p>给InfoQ中文站投稿或者参与内容翻译工作，请邮件至<a href="mailto:editors@cn.infoq.com">editors@cn.infoq.com</a>。也欢迎大家通过新浪微博（<a href="http://www.weibo.com/infoqchina">@InfoQ</a>）或者腾讯微博（<a href="http://t.qq.com/infoqchina">@InfoQ</a>）关注我们，并与我们的编辑和其他读者朋友交流。</p><br><br><br><br><br><br></body></html>

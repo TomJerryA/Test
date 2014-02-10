@@ -1,6 +1,18 @@
 <html>
  <head></head> 
- <body> 
+ <body>
+  <div>
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/41.java">Salesforce.com Woos Windows Developers with New Toolkits for .NET</a>Salesforce.com is attempting to make it easier for .NET developers to consume its web services thanks to a new pair of open-source Toolkits. These Toolkits target the Force.com REST API and Chatter API and are the brainchild of Salesforce Platform Advocate Wade Wegner who talked to InfoQ about the goals and logistics of building these components.
+  </div>
+  <div>
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/40.java">Parse Announces Bolts, a Collection of Low-level Libraries for iOS and Android</a>Parse, acquired by Facebook a few months ago, has recently open-sourced a collection of low-level libraries for Android and iOS collectively called Bolts. According to Parse announcement, Bolts is the outcome of the joint Parse/Facebook effort to consolidate small, low-level utility classes that both companies had already developed on their own.
+  </div>
+  <div>
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/39.java">Google's Java Coding Standards</a>Google has recently released their complete definition of coding standards for Java source code. These are hard-and-fast rules that are clearly enforceable, and are followed universally within Google. It covers not only formatting, but other types of conventions and coding standards.
+  </div>
+  <div>
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/38.java">CoffeeScript 1.7 Released: Adds Chaining Without Parenthesis, Multiline Strings and More</a>Jeremy Ashkenas has released version 1.7 of CoffeeScript, and with it introduced some highly anticipated changes to the popular JavaScript transpiler. Version 1.7 includes one of the most popular requests for the language; support for chaining without parenthesis.
+  </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/37.java">DevOps Cafe Podcast on the QCon London 2014 DevOps track.</a>Last DevOps Cafe Podcast (Episode 47) previewed the QCon London 2014 DevOps track. Manuel Pais and Shane Hastie, the track hosts, explained the rationale behind the track's session selection, the speakers introduced their talks and there was still time to discuss other topics, such as the importance of the scientific method and how agile's definition of &quot;done&quot; must be adapted in a DevOps world. 
   </div> 
@@ -138,18 +150,6 @@
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/42.java">Functional Relational Mapping Library Slick 2.0 Released</a>Version 2.0 of Slick, a Functional-Relational Mapping, FRM, library for Scala, (corresponding to an Object-Relational Mapper, ORM, for object-oriented languages), was recently released with a code generator for reverse-engineering a database schema and new driver architecture to allow support for non-SQL databases. 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/41.java">Presto-as-a-Service: Interactive SQL Queries on AWS</a>Presto, a technology from Facebook enabling interactive SQL queries on petabytes of data, has now taken a first step into mainstream adoption. Big Data startup Qubole has launched its Presto-as-a-Service alpha with integration to Amazon Web Services. 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/40.java">jQuery 1.11 &amp; 2.1 Now on npm and Bower</a>The latest jQuery can be obtained from npm and Bower, has some performance improvements and bug fixes. 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/39.java">Coverity 7.0 with C#, Java, C, C++ Algorithms, SonarQube, Eclipse, VS and Clang Compiler Support</a>Coverity has released version 7 of its testing platform with improved C#, Java, C, C++ algorithms in addition to support for SonarQube, Eclipse and Visual Studio 2013. The release also includes support for clang compiler used in the development of Objective-C and C/C++. 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/38.java">Is Android Moving to a Closed Source Model?</a>In an interesting analysis appeared on Ars Technica, Ron Amadeo argues that Google is progressively shifting Android towards a closed source model. Google's strategy would aim at making Android suitable to be freely customised and used &quot;for little hobbies&quot;, while hampering the choices of &quot;anyone trying to use Android without Google’s blessing&quot;. 
-  </div> 
+  </div>     
  </body>
 </html>
