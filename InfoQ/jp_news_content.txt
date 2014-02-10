@@ -1,28 +1,8 @@
 <div class="text_info"> 
- <p><a href="http://www.azulsystems.com">Azul Systems</a>は，フリーで使用できる同社版OpenJDKの<a href="http://www.azulsystems.com/products/zulu">Zulu</a>が，LinuxとWindowsベースの製品系列で，Java 6とJava 7の両方をサポートすると発表した。サポートは<a href="http://www.azulsystems.com/forums">Zulu Community Supportフォーラム</a>を通じて行われる。同社はまた，OpenJDKの商用サポート版であるZulu Enterpriseも提供している。</p> 
- <p>ZuluはさまざまなLinuxとWindowsのバージョン – Red Hat Enterprise Linux, SUSE Linux Enterprise Server, Ubuntu DesktopとServer, CentOS – 上で動作する。コミュニティのフィードバックに対応して，将来的にはさらに多くのディストリビューションに対応する計画だ。Azulでは以前にもWindows Azure用のZuluを発表しているが，今回発表されたのは，オンプレミス版のWindowsシステムに関するサポート追加である。サポート対象のオペレーティングシステムとプラットフォームは，全部で次のようなリストになる。</p> 
- <ul> 
-  <li>Red Hat Enterprise Linux 5.2以降と6.0以降</li> 
-  <li>SUSE Linux Enterprise Server 11 sp1, sp2とspa</li> 
-  <li>CentOS 5.2以降と6.0以降</li> 
-  <li>Ubuntu 10.04 LTSと12.04 LTS</li> 
-  <li>Windows Server: 2008, 2008 R2, 2012および2012 R2</li> 
-  <li>Windows Desktop: 7, 8, および8.1</li> 
-  <li>ハイパーバイザ: VMware, Hyper-V, KVM</li> 
-  <li>クラウド: Amazon AWS, Windows Azure, Rackspace</li> 
-  <li>JDKバージョン: Java SE 6, 7.</li> 
- </ul> 
- <p>OpenJDK 8についても &quot;GAが出ればすぐにでも&quot; サポートする予定であると，AzulでマーケティングVPを務めるHoward Green氏は我々に語った。ただし過去のバージョン(Java 5など)については，Java 6以前のOpenJDKが存在しないため，サポートする予定はない。</p> 
- <p>ZuluはAzulの製品であるZingから分離したもので，すべてOpenJDKコードをベースにしている。Azul systemsのCTOであるGil Tene氏は，次のように述べている。</p> 
- <blockquote> 
-  <p>私たちはユーザの問題やバグフィックスに積極的に取り組んでいますが，その成果はすべて上位に送って，OpenJDKに取り込まれています。私たちはOpenJDKを分離してコードを変更するために努力するつもりはないからです。</p> 
- </blockquote> 
- <p>コミュニティサポートのビルドの他にAzulでは，フルサポートの付いたOpenJDKの商用版であるZul Enterpriseを提供している。主要なJavaバージョンについては，そのGA(General Availability)以降10年サポートされる(Java 6を例にすれば，Zulu Enterpriseのサポート契約は2024年まで有効である)。</p> 
- <p>提供されるサポートは，3段階のサブスクリプション(Gold, Platinum, Elite)を基本とする。Eliteオプションには &quot;Application Guard&quot; が含まれる。これはオペレーティングシステムやJVMの正確なバージョン番号，設定情報などを参照して，それをAzulのQuality Assuranceプロセスに取り入れるためのものだ。これによって企業ユーザは，運用時に正確なOSとJVMの組み合わせに対して，Zulu JDK/JVMをテストすることが可能になる。</p> 
- <p>Zulu Enterpriseのユーザには，専属のTAM(Technical Account Manager)も提供される。このオプションはユーザに，専任の技術サポートエンジニアを提供して，企業内におけるZuluの利用知識の継承や，さまざまな事例での実践的管理の支援を行う，というものだ。</p> 
- <p>Zingと同様，OpenJDKの商用サポートも，Azulのユーザからかなり前から要望されていた，とTene氏は我々に語った。フリー版のJavaがまったくサポートされないということを，Oracleがいよいよ明らかにしている点を考慮すれば，有償Javaサポートの市場は拡大することになるだろう，と氏は考えている。</p> 
- <blockquote> 
-  <p>Javaは製品なのです。Oracleが提供しているフリーダウンロード版には，まったくサポートがありません。商用サポートが必要ならば，購入すればよいのです。Java 6やJava 5といったように，バージョンの全期間を対象とした商用サポートの他に，現行出荷バージョンの商用サポートもあります。これは有償でなければサポートされません。ですから，３日前に公開された最新のupdate 51を無償でダウンロードすることも可能ですし，それもよいでしょう。しかしあくまでも，それは彼らの善意なのです - 問題が起きたとき，彼らの支援は期待しない方がよいでしょう。</p> 
- </blockquote> 
- <p>Azulは，よくあるように，価格の情報に関する質問には明確に答えなかった。価格モデルはマシン単位のサブスクリプションに基づくものだ。&quot;Zingはすでに，市場で最低価格の商用サポート付きJVMです。&quot; Howard Green氏は我々に語った。&quot;Zuluも大体同じ程度ですが，Zingよりも低価格です。&quot;</p> 
+ <p>Facebookが開発した<a href="http://prestodb.io/">Presto</a>は大規模なデータにインタラクティブにSQLを実行できるが、始めてメインストリームの利用例が生まれた。ビックデータ関連のスタートアップである<a href="http://www.qubole.com/">Qubole</a><a href="http://aws.amazon.com/">Amazon Web Services</a>と統合した<a href="http://info.qubole.com/presto-alpha-program">Presto-as-a-Serviceのアルファ版</a>を発表した。</p> 
+ <p>この新しいサービスはQuboleの成長著しいプラットフォームである<a href="http://www.qubole.com/features/">Qubole Data Service</a>(QDS)にフィットする。QDSはすでにHadoop、Hive、Pigと統合されている。Prestoの性質はこの種のマネージドサービスに適している。Hive、HBase、リレーショナルデータベースと統合されているからだ。Quboleの共同創業者である<a href="https://twitter.com/ashishthusoo">Ashish Thusoo氏</a>と<a href="https://twitter.com/jsensarma">Joydeep Sen Sarma氏</a>にとってこれは自然な方向だ。S3に保存されたHiveのテーブルのデータに対して問い合わせをするというのがこのサービスの使い方のひとつのようだ。QDSのユーザは数分でこれらのテーブルに問い合わせを実行できる。Quboleのサービスは現在、AWSを中心に構成されている。理由は、Ashish氏によれば、“需要を認めた”からだと言う。Quboleは高価なデータウエアハウスを置き換えるものと位置づけられている。Quboleのエンジニアリング担当のバイスプレジデントであるShrikanth Shankar氏が言うように“Prestoは高価な商用技術に依存せざるを得なかったユーザに圧倒的な価値を提供します。”</p> 
+ <p>Prestoはビッグデータの世界では比較的新しい技術だ。Facebookでプロジェクトが始まったのが2012年。実際に利用され始めたのが<a href="http://gigaom.com/2013/06/06/facebook-unveils-presto-engine-for-querying-250-pb-data-warehouse/">in 2013年の前半</a>。そして<a href="https://www.facebook.com/notes/facebook-engineering/presto-interacting-with-petabytes-of-data-at-facebook/10151786197628920">2013年11月にオープンソースになった</a>。Prestoの実行モデルはHiveとは根本から違う。MapReduceは使ってない。<a href="http://www.cloudera.com/">Cloudera</a>の<a href="http://www.cloudera.com/content/cloudera/en/products-and-services/cdh/impala.html">Impala</a>や<a href="http://www.berkeley.edu/">UC Berkeley</a>の<a href="https://github.com/amplab/shark">Shark</a>に似たSQLエンジンだ。すべての処理がメモリ内で行われ、Ashish氏曰く、“インスタンスのメモリが多ければ多いほど、威力を発揮する”。したがって、Hiveよりも遥かに遅延が少なくてすむ。とはいえ、Hive 12と比べた場合はどうかはまだわからない。<a href="http://hortonworks.com/labs/stinger/">the Stinger project</a>で高速化がはかられているからだ。Ashish氏が説明するように、</p> 
+ <p>Hiveはまだ高速になっている。我々はいくつかのテストを行っている。近いうちに結果を公表するつもりだ。</p> 
+ <p>スケーラビリティを考慮した場合、Facebookの300ペタバイトのデータをあつかっているのは十分な実績だろう。<a href="https://www.airbnb.com/">AirBnb</a>や<a href="https://www.dropbox.com/">Dropbox</a>などほかの企業も使い始めている。“私たちのほとんどの利用シーンにおいて、Hiveよりも遥かに高速です。”、とChristopher Gutierrez氏は言う。氏はDropboxでオンラインアナリティクスのマネージャを努めている。</p> 
+ <p>Quboleの新しいサービスの副作用のひとつはPrestoのコミュニティの成長がより強力になるということだ。Siva Narayanan氏のようなQuboleの開発者もPrestoの世界のよき住人を育て新しい機能やバグ修正に貢献してくれるようになってくれることを期待している<a href="https://groups.google.com/forum/#!topic/presto-users/N9DbKmBSER0">と書いている</a>。既に<a href="https://github.com/facebook/presto">Github上では2,000のスターが付き、350のフォークがあり</a>、<a href="https://github.com/cloudera/impala">Impala</a>のような同種のプロジェクトよりも人気になっている。</p> 
 </div>

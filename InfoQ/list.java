@@ -2,6 +2,9 @@
  <head></head> 
  <body> 
   <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/37.java">DevOps Cafe Podcast on the QCon London 2014 DevOps track.</a>Last DevOps Cafe Podcast (Episode 47) previewed the QCon London 2014 DevOps track. Manuel Pais and Shane Hastie, the track hosts, explained the rationale behind the track's session selection, the speakers introduced their talks and there was still time to discuss other topics, such as the importance of the scientific method and how agile's definition of &quot;done&quot; must be adapted in a DevOps world. 
+  </div> 
+  <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/36.java">CoffeeScript 1.7</a>Jeremy Ashkenas has released version 1.7 of CoffeeScript, and with it introduced some highly anticipated changes to the popular JavaScript transpiler. Version 1.7 includes one of the most popular requests for the language; support for chaining without parenthesis. 
   </div> 
   <div> 
@@ -147,9 +150,6 @@
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/38.java">Is Android Moving to a Closed Source Model?</a>In an interesting analysis appeared on Ars Technica, Ron Amadeo argues that Google is progressively shifting Android towards a closed source model. Google's strategy would aim at making Android suitable to be freely customised and used &quot;for little hobbies&quot;, while hampering the choices of &quot;anyone trying to use Android without Google’s blessing&quot;. 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/37.java">A Change in Leadership for Node.js</a>Isaac Schlueter recently announced his departure from the Node.js open source project, handing the reigns of leadership over to TJ Fontaine. Isaac also announced plans for a startup focused on npm. TJ shares some of his plans for Node over the upcoming year. 
   </div> 
  </body>
 </html>

@@ -2,13 +2,31 @@
  <head></head> 
  <body>
   <div>
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/46.py">VS Anywhereの機能アップデート。ウェブワークスペース、モデレートセッション、共同マージ、バグ修正</a>VS Anywhereが最新リリースでアップデートした。Visual Studioのリアルタイムなコラボレーションツールであるウェブワークスペース、モデレートセッション、共同マージ機能が含まれ、バグ修正も行われた。
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/1.py">GoogleがMotorolaをLenovoに売却</a>GoogleはMotorola Mobilityを29.1億ドルでLenovoに売却する。Lenovoが2,000件の特許を獲得する一方で，同社ポートフォリオの特許の大部分はGoogleが保持する。Googleにとってこの取引は損失かも知れないが，Androidエコシステムにはメリットがある。
   </div>
   <div>
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/45.py">AzulがWindowsおよびLinux向けのOpen JDK 6とJDK 7の商用バージョンを発表</a>Azul Systemsは，フリーで使用できる同社版OpenJDKのZuluが，LinuxとWindowsベースの製品系列で，Java 6とJava 7の両方をサポートすると発表した。サポートはZulu Community Supportフォーラムを通じて行われる。同社はまた，OpenJDKの商用サポート版であるZulu Enterpriseも提供している。
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/0.py">Presto-as-a-Service:AWSでのインタラクティブなSQL実行</a>Facebookが開発したPrestoは大規模なデータにインタラクティブにSQLを実行できるが、始めてメインストリームの利用例が生まれた。ビックデータ関連のスタートアップであるQuboleAmazon Web Servicesと統合したPresto-as-a-Serviceのアルファ版を発表した。
   </div>
   <div>
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/44.py">Gojko Adzic氏のユーザストーリー改善についての新著</a>優れたユーザストーリーはソフトウエアの提供を改善するだろうか。Gojko Adzic氏はチームのユーザストーリーの管理の仕方を小さく変化させることで最終的な成果に大きく影響を与えることができると言う。1月中に関心がある人が5000人集まったら執筆するという。
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/49.py">レスポンシブルデザインとコンテントウィジェットを加えたDoc-To-Help 2013 v2</a>Component OneがDoc-To-Help 2013 v2をリリースした。アクセスしたデバイスに対応するコンテントを自動的に表示可能なレスポンシブルUIを備える。Note, Lightbox, Gallery, Carousel, Topic Contents, Tab, Code Highlighterといったコンテントウィジェットも含まれている。
+  </div> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/49.py">10歳になったScala</a>10年前の今日，Scala言語の最初のリリースがcomp.lang.scalaニュースグループで発表された。10年という長い月日を経たこの言語の，次の10年はどのようなものだろうか？ InfoQが振り返る。 
+  </div> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/48.py">2014年は Android自動車の年になるか</a>GoogleはNvidiaほかAudi、GM、Honda、Hyundaiなどの自動車製造業社とともにOpen Automotive Alliance (OAA)を発表して正式に自動車内コンピュータの分野に参入した。このアライアンスの目的は2014年末にAndroidプラットフォームを自動車へ持ち込むことだ。 
+  </div> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/47.py">Googleが新開発のCloud Storage ConnectorでHadoopパフォーマンスを改善</a>新たに開発されたコネクタを使えば，従来の分散ファイルシステムに代えて，Google Cloud Storage上でHadoopを直接実行することが可能になる。これによってストレージコスト低減とデータプリケーション動作の削減，プロセス全体の簡略化が実現できる。 
+  </div> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/46.py">VS Anywhereの機能アップデート。ウェブワークスペース、モデレートセッション、共同マージ、バグ修正</a>VS Anywhereが最新リリースでアップデートした。Visual Studioのリアルタイムなコラボレーションツールであるウェブワークスペース、モデレートセッション、共同マージ機能が含まれ、バグ修正も行われた。 
+  </div> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/45.py">AzulがWindowsおよびLinux向けのOpen JDK 6とJDK 7の商用バージョンを発表</a>Azul Systemsは，フリーで使用できる同社版OpenJDKのZuluが，LinuxとWindowsベースの製品系列で，Java 6とJava 7の両方をサポートすると発表した。サポートはZulu Community Supportフォーラムを通じて行われる。同社はまた，OpenJDKの商用サポート版であるZulu Enterpriseも提供している。 
+  </div> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/44.py">Gojko Adzic氏のユーザストーリー改善についての新著</a>優れたユーザストーリーはソフトウエアの提供を改善するだろうか。Gojko Adzic氏はチームのユーザストーリーの管理の仕方を小さく変化させることで最終的な成果に大きく影響を与えることができると言う。1月中に関心がある人が5000人集まったら執筆するという。 
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/43.py">Androidはクローズドソースモデルを目指しているのか？</a>Ars Technicaの興味深い分析の中でRon Amadeo氏が，GoogleはAndroidを徐々にクローズソースモデルへとシフトしている，という主張をしている。Googleの戦略は，Androidを &quot;小さなホビーにも&quot; 使えるほど自由にカスタマイズ可能にする一方で，&quot;Googleの祝福を受けずにAndroidを使おうとする&quot; 試みを阻止しているというのだ。 
@@ -132,24 +150,6 @@
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/4.py">ORMツール Hibernare 4.3がリリース，JPA 2.1仕様を実装</a>Javaベースのオブジェクト-リレーショナルマッピング(ORM)フレームワークであるHibernate ORM 4.3の最終版が先日リリースされた。2013年5月にリリースされたJPA 2.1仕様 - JSR 338の実装として認定されている。 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/3.py">Ruby 2.1.0リリース，新しいGCを提供</a>Ruby 2.1がリリースされた。最大の改善点は，完全に刷新されたガベージコレクタによるパフォーマンスの大幅な向上だ。 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/2.py">データラングリング・アズ・ア・サービスの簡易化を目指すTrifacta</a>データ解析サービスプラットフォームのTrifactaは先頃，データアナリストのデータラングリング(Data Wrangring)作業支援という同社の活動を推進するため，VCによる出資を受け入れた。目標はデータ収集とクレンジング，マージといった作業を，現在よりはるかに少ない時間と労力で可能にすることだ。 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/1.py">DevExpress Universal 13.2がToken Boxコントロールを新たに追加</a>DevExpressの最新リリースである13.2には，Token Boxコントロールが含まれている。ドロップダウンウィンドウからの値の選択と直接入力のいずれでも，事前に定義したリストを使用した設定値のオートコンプリートが可能だ。 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/0.py">モバイルアプリケーション向けA/Bテストを提供するSplitforce</a>企業のIT戦略でモバイルアプリケーションがますます重要になるにつれて、アプリケーションをテストし分析することがより重要になってきた。ユニットテストを使ったテストなどコードの機能的なテストはすべてのソフトウエアプロジェクトで実施されているだろうが、ユーザの振る舞いを分析しコンバージョン率を最大化するのはモバイル分野ではまだ未開拓だ。 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/49.py">Essential Studio Enterprise 2013 Volume 4リリース，LightSwitchとローカライズ，新機能を提供</a>SyncfusionがEssential Studio Enterprise Edition 2013 Volume 4リリースした。リッチテキストエディタやマップ，ツリーマップ，レンジナビゲータ，バーコード，日時選択コントロール，ローテータなど新しいJavaScriptコントロール，OLAP for LightSwitchクライアント拡張が含まれている。WinRT, WPF, Silverlight, Windows Phoneをサポートする3Dチャート，Winodws Phone用のフォーマット操作ライブラリも合わせて提供される。 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/48.py">DevExpress ASP.NETグリッドコントロールがバッチ編集機能を導入</a>DevExpress ASP.NETの最新リリースである13.2エディションに含まれるGridコントロール(ASPxGridView)では，ASP.NETおよびMVC開発者がクライアント上でグリッドデータをバッチ修正して，単一のリクエストとしてサーバに送信することが可能だ。その他にも，セルのカラー表示や通知ダイアログなどの機能が追加されている。 
   </div>    
  </body>
 </html>

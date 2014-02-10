@@ -1,31 +1,15 @@
-<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>DevExpress ASP.NETグリッドコントロールがバッチ編集機能を導入</h3><p><a target="_blank" href="http://www.infoq.com/news/2013/12/devpress-grid-batch-edit"><em>原文(投稿日：2013/12/18)へのリンク</em></a></p>
+<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>2014年は Android自動車の年になるか</h3><p><a target="_blank" href="http://www.infoq.com/news/2014/01/android-enabled-cars"><em>原文(投稿日：2014/01/20)へのリンク</em></a></p>
 <div class="article_page_left news_container text_content_container"> 
  <div class="text_info"> 
-  <p>DevExpress ASP.NETの最新リリースである13.2エディションに含まれているGridコントロール(<a href="http://demos.devexpress.com/ASPxGridViewDemos/Default.aspx">ASPxGridView</a>)では，ASP.NETおよびMVC開発者がクライアント上でグリッドデータをバッチ修正して，単一のリクエストとしてサーバに送信することが可能だ。エンドユーザは，マウスを使わずにキーボードだけでレコードを編集することができる。</p> 
-  <p>ASPxGridViewコントロールがアップデートされて，レコードの変更をサーバに送信する前に，エンドユーザがプレビューできるようになった。さらに，編集されたセルの表示色を選択することも可能だ。</p> 
-  <p>GridViewコントロールから<a href="http://demos.devexpress.com/ASPxGridViewDemos/GridEditing/BatchEditing.aspx">バッチ編集</a>ステージで実行されるアクションに関して，ユーザが有用な通知を受けることも可能になった。例えばセルの値を選択した後でカラムをソートしようとすると，次のようなメッセージが表示される。</p> 
-  <p><img src="http://www.infoq.com/resource/news/2014/01/devpress-grid-batch-edit/ja/resources/Figure_1_GridView.png" alt="" _href="img://Figure_1_GridView.png" _p="true" /></p> 
-  <p>バッチ編集機能を有効にするためには，ModeプロパティをBatchに設定する必要がある。それにより，インラインエディタでデータの編集が可能になる。編集されたセルは緑色で表示される。バッチ編集を有効にすると， “Save changes” リンクがクリックされるまで，すべての編集はクライアント側で保持される。“Cancel changes” リンクを選択することで，すべての変更をキャンセルすることも可能だ。</p> 
-  <p>InfoQではDevExpressのソフトウェア開発者であるMehul Harry氏に，ASPxGridViewコントロールに関する詳細な情報を聞いた。</p> 
-  <p><strong>InfoQ: GridViewのバッチ編集によるメリットを教えてください。</strong></p> 
-  <blockquote>
-    GridViewのBatchEditには次のような利点があります。 
-   <ul> 
-    <li>BatchEditでは，DevExpress ASPxGridViewのレコードをキーボード操作のみで編集することができます。マウスに手を伸ばす必要がありませんので，これは時間の節約になります。</li> 
-    <li>編集や挿入が完了すれば，すべての編集を一度に確認することができます。</li> 
-    <li>変更内容のキャンセルや保存がひとつの操作で可能です。</li> 
-   </ul> 
-  </blockquote> 
-  <p><strong>InfoQ: バッチ編集機能はタッチ操作に対応していますか？</strong></p> 
-  <blockquote>
-   はい，DevExpress ASP.NETコントロールは
-   <a href="https://www.devexpress.com/products/net/controls/touch.xml">タッチ</a>をサポートします。実際に私たちは，タッチデバイスとデスクトップブラウザのどちらにもマッチする
-   <a href="https://community.devexpress.com/blogs/aspnet/archive/2013/11/13/asp-net-moderno-theme-what-39-s-new-in-13-2.aspx">テーマ</a>を用意しています。
-  </blockquote> 
-  <p><strong>InfoQ: バッチ編集が有効なシナリオをいくつか紹介して頂けますか？</strong></p> 
-  <blockquote>
-   バッチ編集は，複数の編集データを持っていて，それらの編集がすべて完了するまでデータベースへのアップロードやコミットを行いたくない，そういった要求を持つユーザに最適です。
-   <br type="_moz" /> 
-  </blockquote>
+  <p>GoogleはNvidiaほかAudi、GM、Honda、Hyundaiなどの自動車製造業社とともに<a href="http://www.openautoalliance.net/#about">Open Automotive Alliance</a> (OAA)を発表して正式に自動車内コンピュータの分野に参入した。このアライアンスの目的は2014年末にAndroidプラットフォームを自動車へ持ち込むことだ。</p> 
+  <p>最終的な目的を達するためこのアライアンスはふたつの戦略を採用している。ひとつは“自動車とAndroidデバイスのより良い統合を奨めること”、もうひとつは“自動車自体をAndroidデバイスにするための新しい機能をAndroidプラットフォームに追加すること”だ。</p> 
+  <p>このふたつが具体的にどのようなことなのかは発表されていない。しかし、<a href="http://www.theverge.com/2014/1/6/5280874/googles-open-automotive-alliance-the-battle-for-the-dashboard-is-now">The Vergeによれば</a>このふたつの戦略は“ダッシュボードや音声制御を使ってアプリをコントロールする標準的な枠組み”と“携帯から自動車のディスプレイへ投影するある種のスクリーン”を示唆している。</p> 
+  <p>OAAのメンバであるAudiは、<a href="http://ces.cnet.com/1606-35289_1-50161512.html">CES 2014でAndroidのデモを行っている</a>。このタブレットはWi-Fi経由で自動車と接続し、社内エンターテーメントやナビゲーションシステムを操作できる。運転手が操作をしなくてもいいのだ。<a href="http://ces.cnet.com/8301-35289_1-57616809/audi-shows-integrated-android-tablet-to-ces-2014-crowd/">CNETによれば</a>、このタブレットは“AudiがOpen Auto Allianceに参加することでどのようにAndroidとの統合を押し進めるについてのヒントを提供する”。Audiはこのタブレットの提供開始時期や価格については明らかにしなかった。</p> 
+  <p>このアライアンスの目的のひとつは車上でモバイル端末に“安全”で“シームレス”にアクセスし、“運転を妨げることなく探している物事を見つける支援をする”ことだ。</p> 
+  <p>OAAは<a href="http://www.openhandsetalliance.com/">Open Handset Alliance</a> (OHA)を思い起こさせる。このアライアンスはGoogleがモバイル端末市場でAndroidの優位を確立するのを支援した。OAAのサイトで見られるキーコンセプトのうちふたつ、つまり、オープンネスとカスタマイゼーションは<a href="http://www.openhandsetalliance.com/press_110507.html">オリジナルの2007年のOHAのアナウンスメント</a>にも含まれている。</p> 
+  <p>さらに、<a href="http://en.wikipedia.org/wiki/Open_Handset_Alliance">設立当初の34団体のメンバが現時点で84になった</a>OHAと同様、Open Automotive Allianceもテクノロジーや自動車産業のプレイヤーに門戸を開いている。</p> 
+  <p>開発者にとってはふたつの利点がある、とアライアンスは主張する。OAAは単一のプラットフォームをさまざまな自動車メーカーに提供する。つまり、複数のプラットフォームに対応するための労力を削減できる。そして、すでに多くの開発者がAndroidに親しんでいる。</p> 
+  <p>自動車市場に参入しようとしているモバイルOSメーカーはGoogleだけではない。Appleは2012年に<a href="http://en.wikipedia.org/wiki/Siri#Vehicle_integration">Eyes Free Siri</a>に特化したパートナーシップを発表している。6ヶ月前のWWDC 2013では、<a href="http://en.wikipedia.org/wiki/IOS_in_the_Car">自動車用のiOS</a>について戦略を発表している。</p> 
+  <p>また、MicrosoftのWindowsは<a href="http://en.wikipedia.org/wiki/Ford_Sync">Ford SYNC Applink</a>で利用されている。</p> 
  </div> 
 </div><br><br><br><br><br><br></body></html>
