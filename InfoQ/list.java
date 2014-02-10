@@ -2,16 +2,19 @@
  <head></head> 
  <body>
   <div>
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/41.java">Salesforce.com Woos Windows Developers with New Toolkits for .NET</a>Salesforce.com is attempting to make it easier for .NET developers to consume its web services thanks to a new pair of open-source Toolkits. These Toolkits target the Force.com REST API and Chatter API and are the brainchild of Salesforce Platform Advocate Wade Wegner who talked to InfoQ about the goals and logistics of building these components.
-  </div>
-  <div>
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/40.java">Parse Announces Bolts, a Collection of Low-level Libraries for iOS and Android</a>Parse, acquired by Facebook a few months ago, has recently open-sourced a collection of low-level libraries for Android and iOS collectively called Bolts. According to Parse announcement, Bolts is the outcome of the joint Parse/Facebook effort to consolidate small, low-level utility classes that both companies had already developed on their own.
-  </div>
-  <div>
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/39.java">Google's Java Coding Standards</a>Google has recently released their complete definition of coding standards for Java source code. These are hard-and-fast rules that are clearly enforceable, and are followed universally within Google. It covers not only formatting, but other types of conventions and coding standards.
-  </div>
-  <div>
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/38.java">CoffeeScript 1.7 Released: Adds Chaining Without Parenthesis, Multiline Strings and More</a>Jeremy Ashkenas has released version 1.7 of CoffeeScript, and with it introduced some highly anticipated changes to the popular JavaScript transpiler. Version 1.7 includes one of the most popular requests for the language; support for chaining without parenthesis.
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/42.java">Improved Object Inspection with Visual Studio 2013 Update 2</a>Visual Studio 2013 Update 2 includes an enhanced object inspection which enable developers to inspect values of objects and instances quickly and in an effective way.
+  </div> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/41.java">Salesforce.com Woos Windows Developers with New Toolkits for .NET</a>Salesforce.com is attempting to make it easier for .NET developers to consume its web services thanks to a new pair of open-source Toolkits. These Toolkits target the Force.com REST API and Chatter API and are the brainchild of Salesforce Platform Advocate Wade Wegner who talked to InfoQ about the goals and logistics of building these components. 
+  </div> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/40.java">Parse Announces Bolts, a Collection of Low-level Libraries for iOS and Android</a>Parse, acquired by Facebook a few months ago, has recently open-sourced a collection of low-level libraries for Android and iOS collectively called Bolts. According to Parse announcement, Bolts is the outcome of the joint Parse/Facebook effort to consolidate small, low-level utility classes that both companies had already developed on their own. 
+  </div> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/39.java">Google's Java Coding Standards</a>Google has recently released their complete definition of coding standards for Java source code. These are hard-and-fast rules that are clearly enforceable, and are followed universally within Google. It covers not only formatting, but other types of conventions and coding standards. 
+  </div> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/38.java">CoffeeScript 1.7 Released: Adds Chaining Without Parenthesis, Multiline Strings and More</a>Jeremy Ashkenas has released version 1.7 of CoffeeScript, and with it introduced some highly anticipated changes to the popular JavaScript transpiler. Version 1.7 includes one of the most popular requests for the language; support for chaining without parenthesis. 
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/37.java">DevOps Cafe Podcast on the QCon London 2014 DevOps track.</a>Last DevOps Cafe Podcast (Episode 47) previewed the QCon London 2014 DevOps track. Manuel Pais and Shane Hastie, the track hosts, explained the rationale behind the track's session selection, the speakers introduced their talks and there was still time to discuss other topics, such as the importance of the scientific method and how agile's definition of &quot;done&quot; must be adapted in a DevOps world. 
@@ -147,9 +150,6 @@
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/43.java">Producer/Consumer Processing with TPL Dataflow</a>Getting started with TPL Dataflow can be daunting. There is a lot of new terminology to learn and many of the advanced features obscure the simpler ones that you should be relying on. Dave Marini of Taskmatics cuts through the confusion by showing a complete producer/consumer dataflow from start to end. 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/42.java">Functional Relational Mapping Library Slick 2.0 Released</a>Version 2.0 of Slick, a Functional-Relational Mapping, FRM, library for Scala, (corresponding to an Object-Relational Mapper, ORM, for object-oriented languages), was recently released with a code generator for reverse-engineering a database schema and new driver architecture to allow support for non-SQL databases. 
-  </div>     
+  </div>  
  </body>
 </html>
