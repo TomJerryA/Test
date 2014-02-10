@@ -1,33 +1,111 @@
-<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>书评：Vagrant up and running</h3><p>Mitchell Hashimoto的新书 &quot;<a href="http://shop.oreilly.com/product/0636920026358.do?sortby=publicationDate">Vagrant up and running</a>&quot; 涵盖了Vagrant从基础用法到功能扩展的方方面面。</p>
-<p>第一章中，Mitchell描述了&quot;Vagrant之道&quot;——一些高效使用Vagrant的提议。</p>
-<p>他描述了开发者和运维工程师应如何从版本控制工具中签出项目，并通过执行&quot;vagrant up&quot;实现系统全面运作。</p>
-<p>Vagrant还提供了简单回退功能&quot;vagrant destroy&quot;。这一功能保证环境的改变可恢复，一行&quot;vagrant up&quot;就能让你回到初始状态。</p>
-<p>阐述过基本流程，Mitchell又将Vagrant与其他可选方案（如普通的桌面虚拟化技术、LXC等基于容器的方法以及直接部署在云端等）做了对比。</p>
-<p>尽管可行，但比起Vagrant，这些方案在简单性和环境处理的统一性上都有所欠缺。自1.1版起，借助全新的插件系统，Vagrant甚至能够支持这些方案中的大多数。</p>
+<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>借助JArchitect探究Cassandra CLI内部机制</h3><p>关系型数据库管理系统（RDBMS）是存储和使用数据最常用的系统，但对于超大量数据，这些数据库的扩展性不是很好。</p>
+<p>近年来，由于对关系型数据库替代产品的需求日益增长，<a href="http://en.wikipedia.org/wiki/NoSQL">NoSQL</a>的概念已经受到广泛的欢迎。NoSQL背后的最大动机是可扩展性。NoSQL数据库解决方案提供了一种存储和使用超大量数据的方法，而且开销更小，工作量更少，性能更好，停机时间更短。</p>
+<p><a href="http://cassandra.apache.org/">Apache Cassandra</a>是一个基于列的NoSQL数据库。它是Facebook为推动其收件箱搜索功能而开发的，后来成为Apache的开源项目。<a href="http://nosql.mypopescu.com/post/407159447/cassandra-twitter-an-interview-with-ryan-king#_blank">Twitter</a>、<a href="http://nosql.mypopescu.com/post/441535855/digg-going-the-cassandra-way#_blank">Digg</a>、Reddit及其他许多组织都已经开始使用它。</p>
+<p>Cassandra本身提供了一个非常基础的交互式命令行接口（CLI）。开发人员可以使用CLI连接到集群中的远程节点，创建或更新模式以及设置和检索记录。</p>
+<p>对于Cassandra管理员而言，CLI是一个有用的工具。即使只提供了基础的命令，它也是一个很好的例子，从中可以知道如何实现Cassandra客户端。要开发自定义的Cassandra客户端甚至是扩展CLI工具，必须得了解CLI的内部工作原理。</p>
+<p>本文将使用<a href="http://www.jarchitect.com/">JArchitect</a>工具和CQLinq语言分析CLI的代码库，以探究CLI的架构模型。JArchitect工具用来分析代码结构，并指定设计原则，以获得更好的代码质量。借助JArchitect，软件质量可以用代码度量进行测量，用“图（graph）”和“树图（treemap）”进行可视化，并用标准和自定义的规则来执行。</p>
 <div id="lowerFullwidthVCR"></div>
-<p>Mitchell以安装指令为第一章作结。安装Vagrant 1.1时，你要确保移除之前尚未用RubyGems安装过Vagrant的任何版本，因为之前的安装可能带来安装程序的冲突。</p>
-<p>第二章中，Mitchell带你上手第一台Vagrant机。他教你如何通过执行&quot;vagrant init&quot;创建新项目；以及连接到Vagrant机的最简单方法，&quot;vagrant ssh&quot;。</p>
-<p>他简单介绍了Vagrantfile——一种在每个项目中都要创建的、用于配置Vagrant使用意愿的简单文本文件。</p>
-<p>Vagrant机用所谓的&quot;Box&quot; ，类似虚拟机的基础映像。他介绍了box是什么以及项目间所能共享的大量磁盘映像，这使得你不必多次下载。</p>
-<p>展示过Vagrant机如何启动，他又介绍了机器使用的基本方式，像ssh，基础网络以及共享文件夹。书中后半部分会就这些方面详细展开。</p>
-<p>第三章是Vagrant虚拟机的设置技巧。为了更简单地销毁和新建虚拟机，你得有安装必备软件和完成系统配置的全自动化方案。</p>
-<p>他演示了一种上手自动化配置的基础手段，演示中包括一些简单示例，示例用到了shell脚本，Chef 以及Puppet。</p>
-<p>配置器使用是一个重要话题，而这一章只是抛砖引玉。Chef 以及Puppet被相关书籍宣称能够完全解决配置管理方面的问题。</p>
-<p>第四章中，Mitchell介绍了Vagrant 所支持的各类可行网络模式。他深入探讨了端口转发，单机网络和桥接模式。</p>
-<p>Mitchell对每种方案的优缺点进行比对，从而方便读者选择最适合的网络模式。这一章为第五章和多机集群奠定了基础。</p>
-<p>Vagrant能用一行命令启动多台配置了相同Vagrantfile的机器。Mitchell讨论了如何控制多台机器：通过命名并将该名称后接在任何Vagrant指令末，可以命令Vagrant将该指令单独应用于某台机器。机器名缺省情况下，Vagrant指令将被用于集群内所有机器。</p>
-<p>展示过多机集群的基本操控后，Mitchell向读者介绍了一些网络配置项。本章章末有一个MySQL使用的现实用例。</p>
-<p>第六章更深入探索了Boxes的细节。Mitchell讨论了boxes背后的原理：boxes让你在配置时有一个更高的起点，而非每次都用&quot;vagrant up&quot;完成整个操作系统安装。</p>
-<p>解释boxes原理之后，Mitchell向读者介绍了Box数据格式并向你展示了如何创建和打包 Boxes。最后介绍了如何为Boxes创建一个默认的Vagrantfile。</p>
-<p>第七章是本书最有深度的话题：Vagrant的插件扩展。</p>
-<p>Vagrant提供的插件系统能让你扩展功能、添加自定义指令或新配置项、设置自定义配置器，甚至变更现存Vagrant行为。Mitchell为每种情况配以相关示例用以展示着手开发Vagrant扩展的各类可能。这一章还涉及开发环境配置以及错误处理和验证。</p>
-<p>Hashimoto的&quot;Vagrant up and running&quot; 带你上手Vagrant。书中介绍了掌握虚拟机必知的重要概念，还有如何自己动手扩展Vagrant的演示。</p>
+<p>下面是分析得出的依赖关系图：</p>
+<p><img width="600" _p="true" _href="img://null" alt="" src="http://infoqstatic.com/resource/articles/cassandra-cli-internals/zh/resources/0108010.png" /></p>
+<p>Cassandra使用了若干大家熟知的jar包，如antlr、log4j、slf4j、commons-lang，也使用了若干大家不怎么知道的jar包，比如下面这些：</p>
+<ul> 
+ <li><a href="http://thrift.apache.org/">Libthrift</a>：它是一个跨多种编程语言和用例的API，其目标是尽可能高效和无缝地实现跨语言通信和数据序列化的可靠性和高性能。</li> 
+ <li><a href="https://code.google.com/p/snakeyaml/">Snakeyaml</a>：YAML是一个为人工可读性和与脚本语言交互而设计的数据序列化格式。Cassandra的配置文件用了这一格式。</li> 
+ <li><a href="http://jackson.codehaus.org/">Jackson</a>：一个高性能JSON processor。</li> 
+ <li><a href="https://code.google.com/p/snappy/">Snappy</a>：它是一个用C++编写的快速压缩/解压缩程序，最初由Google开发，snappy-java是其Java版本。</li> 
+ <li><a href="https://github.com/stephenc/high-scale-lib">High-scale-lib</a>：它是一个并发和高扩展性实用程序的集合，其目的是为了直接取代包java.util.*或者java.util.concurrent.*中的集合类，而当许多CPU并发使用集合时性能更好。</li> 
+</ul>
+<p>下图的矩阵图是对这些JAR文件之间依赖权重的更为详细的说明。</p>
+<p><img _p="true" _href="img://null" alt="" src="http://infoqstatic.com/resource/articles/cassandra-cli-internals/zh/resources/0108011.png" /></p>
+<h2><b>Cassandra</b><b>命令行接口</b></h2>
+<p>包org.apache.cassandra.cli实现了命令行接口逻辑，入口是CliMain类。</p>
+<p>使用下面的CQLinq查询查找main方法调用的方法：</p>
+<pre>
+from m in Methods where m.IsUsedBy 
+(&quot;org.apache.cassandra.cli.CliMain.main(String[])&quot;) 
+select new { m, m.NbBCInstructions } </pre>
+<p><img _p="true" _href="img://null" alt="" src="http://infoqstatic.com/resource/articles/cassandra-cli-internals/zh/resources/0108012.png" /></p>
+<p>Main方法用了<a href="http://jline.sourceforge.net/">JLine</a>，这是一个处理控制台输入的Java库。通过它，开发人员不需要太费力就可以写出很棒的CLI应用程序。它对命令历史、Tab键自动补全、行编辑、自定义键绑定以及字符屏蔽提供了开箱即用的支持。</p>
+<p>以下是main方法用到的两个有趣的方法：</p>
+<ul> 
+ <li>connect：该方法用于连接Cassandra数据库服务器。</li> 
+ <li>processStatetementInteractive：该方法用于执行来自用户的命令。</li> 
+</ul>
+<p><img width="600" _p="true" _href="img://null" alt="" src="http://infoqstatic.com/resource/articles/cassandra-cli-internals/zh/resources/0108013.png" /></p>
+<h2><b>CLI</b><b>与Cassandra服务器之间的通信</b></h2>
+<p>在与Cassandra服务器进行交互之前，客户端必须使用connect方法连接到服务器。</p>
+<p>下面的查询查找connect方法直接或间接使用的所有方法：</p>
+<pre>
+from m in Methods
+let depth0 = m.DepthOfIsUsedBy(&quot;org.apache.cassandra.cli.CliMain.connect
+(String,int)&quot;)
+where depth0 &gt;= 0 orderby depth0
+select new { m, depth0 }</pre>
+<p><img _p="true" _href="img://null" alt="" src="http://infoqstatic.com/resource/articles/cassandra-cli-internals/zh/resources/0108014.png" /></p>
+<p>CLI使用Thrift库与服务器进行通信，Thrift允许开发人员用一个简单的定义文件定义数据类型和服务接口。将这个文件作为输入，编译器会生成代码，开发人员可以用这些代码轻松地构建RPC客户端和服务器，从而实现跨编程语言的无缝通信。无需编写大量的样板代码来序列化和传输对象以及调用远程代码，开发人员就可以马上开始处理业务。</p>
+<p>下面是Thrift服务器实现的一个简单例子：</p>
+<p>Thrift服务器实现了org.apache.thrift.server.TServer接口，其构造函数接收一个processor和一个服务器传输规范类的实例作为参数。Processor需要一个handler来处理传入的请求。</p>
+<p>让我们在Cassandra服务器中找出所有的这些组成部分。为了做到这一点，我们可以从找出所有继承了TServer类的类开始。</p>
+<pre>
+public class Server {
+       public static class SomethingHandler implements Something.Iface {
+              public SomethingHandler() {}
+              public int ping() {
+                    return 1;
+                     }
+       }
+public static void main(String [] args) {
+       SomethingHandler handler = new SomethingHandler();
+       Something.Processor processor = new Something.Processor(handler);
+       TServerTransport serverTransport = new TServerSocket(9090);
+       TServer server = new TSimpleServer(processor, serverTransport);
+       //下面的语句适用于多线程服务器
+       // server = new TThreadPoolServer(processor, serverTransport)
+       server.serve();
+}
+}</pre>
+<p>Thrift服务器实现了org.apache.thrift.server.TServer接口，其构造函数接收一个processor和一个服务器传输规范类的实例作为参数。Processor需要一个handler来处理传入的请求。</p>
+<p>让我们在Cassandra服务器中找出所有的这些组成部分。为了做到这一点，我们可以从找出所有继承了TServer类的类开始。</p>
+<pre>
+from t in Types
+let depth0 = t.DepthOfDeriveFrom(&quot;org.apache.thrift.server.TServer&quot;)
+where depth0 &gt;= 0 orderby depth0
+select new { t, depth0 }</pre>
+<p><img _p="true" _href="img://null" alt="" src="http://infoqstatic.com/resource/articles/cassandra-cli-internals/zh/resources/0108015.png" /></p>
+<p>Cassandra定义了如下类：</p>
+<p>CustomTThreadPoolServer：它是Apache Thrift类TThreadPoolServer的一个稍作修改的版本。TThreadPoolServer类会使用一个线程池为传入的请求提供服务。</p>
+<p>CustomerTHsHaServer：该服务器的目的是避免IO粘在一个CPU上。为了获得更大的吞吐量，它将IO任务分配给多个线程。Selector线程的数目可以与可用的CPU数目相同。</p>
+<p>CustomTNonBlockingServer：它使用一个非阻塞的套接字传输方式。</p>
+<p>以下是ThriftServer启动时所做的工作：</p>
+<p><img width="600" _p="true" _href="img://null" alt="" src="http://infoqstatic.com/resource/articles/cassandra-cli-internals/zh/resources/0108016.png" /></p>
+<p>该过程会使用工厂类创建一个TServer，并创建一个CassandraServer handler来处理传入的请求，后者实现了<a name="OLE_LINK2"></a><a name="OLE_LINK1">Cassandra.Iface</a>接口，其中包含了Cassandra支持的所有命令。下图展示了该接口的部分方法：</p>
+<p><img _p="true" _href="img://null" alt="" src="http://infoqstatic.com/resource/articles/cassandra-cli-internals/zh/resources/0108017.png" /></p>
+<p>正如前面的Thrift服务器示例所示，需要用processor处理传入的请求；所有这些processor都继承了ProcessFunction类。</p>
+<p>下面是部分Cassandra processor：</p>
+<p><img _p="true" _href="img://null" alt="" src="http://infoqstatic.com/resource/articles/cassandra-cli-internals/zh/resources/0108018.png" /></p>
+<p>在找出Cassandra Thrift服务器的组成部分之后，让我们回到客户端，找出main方法调用connect方法时发生了什么。</p>
+<p><img width="600" _p="true" _href="img://null" alt="" src="http://infoqstatic.com/resource/articles/cassandra-cli-internals/zh/resources/0108019.png" /></p>
+<p><b>org.apache.thrift.TServiceClient</b>用于客户端和服务器之间的通信，它调用sendBase方法向Thrift服务器发送消息。</p>
+<p>在服务器上，login processor接收这一请求，并调用login方法。</p>
+<p><img width="600" _p="true" _href="img://null" alt="" src="http://infoqstatic.com/resource/articles/cassandra-cli-internals/zh/resources/0108020.png" /></p>
+<p>下面的依赖关系图展示了login方法调用的部分方法。</p>
+<p><img width="600" _p="true" _href="img://null" alt="" src="http://infoqstatic.com/resource/articles/cassandra-cli-internals/zh/resources/0108021.png" /></p>
+<p>下面会通过添加一个新方法MyMethod进入到扩展CLI的步骤。</p>
+<p>在查明CLI的内部工作原理之后，我们可以很容易地给它添加新方法，下面是所需的主要步骤：</p>
+<p>I- 扩展服务器：</p>
+<ul> 
+ <li>向<b>Cassandra.Iface</b>接口中添加方法</li> 
+ <li>向<b>CassandraServer</b>类中添加该方法的实现</li> 
+ <li>新建一个继承<b>ProcessFunction&lt;T&gt;</b>的类<b>Cassandra.Processor.MyMethod&lt;I&gt;。</b></li> 
+ <li>在<b>Cassandra.Processor&lt;I&gt;.getProcessMap</b>方法返回的Map中添加上一步中新建的processor的一个实例。</li> 
+</ul>
+<p>II- 扩展客户端：</p>
+<ul> 
+ <li>新增一个开关项，并在<b>CliOptions.processArgs</b>方法中对其进行处理。</li> 
+ <li>向<b>Cassandra.Client</b>类中添加一个方法，并使用<b>TServiceClient.sendBase</b>方法向服务器发送请求。</li> 
+</ul>
+<h2>结论</h2>
+<p>学习如何实现<a name="OLE_LINK8"></a><a name="OLE_LINK7">Cassandra客户端</a>，命令行接口是一个很好的例子，而且从现实项目中学习要好过只是在网上搜索例子。因此，要开发Cassandra客户端的话，就要毫不犹豫地仔细阅读它的源代码，并享受其中的乐趣。</p>
 <h2>关于作者</h2>
-<p><img alt="" style="float: left; margin-right: 10px" src="http://infoqstatic.com/resource/articles/review-vagrant-up-and-running/zh/resources/0926004.jpg" _href="img://null" _p="true" /> <b>Mitchell Hashimoto</b>是一个热情洋溢的工程师，专业讲师，企业家。Mitchell为开源软件创建、编码了近十年。Mitchell在很多会议上都发表过相关工作的讲演，诸如VelocityConf, OSCON, FOSDEM等等。Mitchell是HashiCorp的创始人，这是一家以创建世界最佳DevOps工具（包括Vagrant在内）为目标的企业。创建HashiCorp之前，Mitchell当过五年的web开发者和四年的运维工程师。</p>
-<div style="clear:both">
- &nbsp;
-</div>
-<p><strong>英文链接：</strong><a href="http://www.infoq.com/articles/review-vagrant-up-and-running">Book Review: Vagrant up and running</a></p>
-<hr />
-<p>感谢<a href="http://www.infoq.com/cn/author/水羽哲">水羽哲</a>对本文的审校。</p>
-<p>给InfoQ中文站投稿或者参与内容翻译工作，请邮件至<a href="mailto:editors@cn.infoq.com">editors@cn.infoq.com</a>。也欢迎大家通过新浪微博（<a href="http://www.weibo.com/infoqchina">@InfoQ</a>）或者腾讯微博（<a href="http://t.qq.com/infoqchina">@InfoQ</a>）关注我们，并与我们的编辑和其他读者朋友交流。</p><br><br><br><br><br><br></body></html>
+<p><b>Dane Dennis</b>是JArchitect产品经理。他为<a href="http://www.codergears.com/">CoderGears</a>工作，这是一家为开发人员和架构师开发工具的公司。</p>
+<p><b>查看英文原文：</b><b><a href="http://www.infoq.com/articles/cassandra-cli-internals">Cassandra CLI Internals Using JArchitect</a></b></p><br><br><br><br><br><br></body></html>

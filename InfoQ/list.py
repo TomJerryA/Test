@@ -1,14 +1,14 @@
 <html>
  <head></head> 
- <body>
-  <div>
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/1.py">GoogleがMotorolaをLenovoに売却</a>GoogleはMotorola Mobilityを29.1億ドルでLenovoに売却する。Lenovoが2,000件の特許を獲得する一方で，同社ポートフォリオの特許の大部分はGoogleが保持する。Googleにとってこの取引は損失かも知れないが，Androidエコシステムにはメリットがある。
-  </div>
-  <div>
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/0.py">Presto-as-a-Service:AWSでのインタラクティブなSQL実行</a>Facebookが開発したPrestoは大規模なデータにインタラクティブにSQLを実行できるが、始めてメインストリームの利用例が生まれた。ビックデータ関連のスタートアップであるQuboleAmazon Web Servicesと統合したPresto-as-a-Serviceのアルファ版を発表した。
-  </div>
-  <div>
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/49.py">レスポンシブルデザインとコンテントウィジェットを加えたDoc-To-Help 2013 v2</a>Component OneがDoc-To-Help 2013 v2をリリースした。アクセスしたデバイスに対応するコンテントを自動的に表示可能なレスポンシブルUIを備える。Note, Lightbox, Gallery, Carousel, Topic Contents, Tab, Code Highlighterといったコンテントウィジェットも含まれている。
+ <body> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/1.py">GoogleがMotorolaをLenovoに売却</a>GoogleはMotorola Mobilityを29.1億ドルでLenovoに売却する。Lenovoが2,000件の特許を獲得する一方で，同社ポートフォリオの特許の大部分はGoogleが保持する。Googleにとってこの取引は損失かも知れないが，Androidエコシステムにはメリットがある。 
+  </div> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/0.py">Presto-as-a-Service:AWSでのインタラクティブなSQL実行</a>Facebookが開発したPrestoは大規模なデータにインタラクティブにSQLを実行できるが、始めてメインストリームの利用例が生まれた。ビックデータ関連のスタートアップであるQuboleAmazon Web Servicesと統合したPresto-as-a-Serviceのアルファ版を発表した。 
+  </div> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/49.py">レスポンシブルデザインとコンテントウィジェットを加えたDoc-To-Help 2013 v2</a>Component OneがDoc-To-Help 2013 v2をリリースした。アクセスしたデバイスに対応するコンテントを自動的に表示可能なレスポンシブルUIを備える。Note, Lightbox, Gallery, Carousel, Topic Contents, Tab, Code Highlighterといったコンテントウィジェットも含まれている。 
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/49.py">10歳になったScala</a>10年前の今日，Scala言語の最初のリリースがcomp.lang.scalaニュースグループで発表された。10年という長い月日を経たこの言語の，次の10年はどのようなものだろうか？ InfoQが振り返る。 
@@ -150,6 +150,6 @@
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/4.py">ORMツール Hibernare 4.3がリリース，JPA 2.1仕様を実装</a>Javaベースのオブジェクト-リレーショナルマッピング(ORM)フレームワークであるHibernate ORM 4.3の最終版が先日リリースされた。2013年5月にリリースされたJPA 2.1仕様 - JSR 338の実装として認定されている。 
-  </div>    
+  </div> 
  </body>
 </html>

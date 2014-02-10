@@ -1,6 +1,9 @@
 <html>
  <head></head> 
- <body> 
+ <body>
+  <div>
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/26.c">Firefox OS ampliando o ecossistema</a>Mozilla anuncia que o ecossistema do Firefox OS est&aacute; crescendo tanto com novos dispositivos como com novas plataformas.
+  </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/25.c">Quais s&atilde;o as diferen&ccedil;as entre um bom e um excelente ScrumMaster?</a>O papel de um ScrumMaster no framework Scrum &eacute; prescrito de tal forma que ele seja o “dono do processo”, ou seja, &eacute; respons&aacute;vel por garantir que o Scrum seja entendido e aplicado. No entanto, ser&aacute; que um excelente ScrumMaster n&atilde;o poder&aacute; agregar algo mais para as empresas, ao inv&eacute;s de puramente manter todos alinhados ao framework Scrum? 
   </div> 
@@ -147,9 +150,6 @@
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/28.c">Google abre c&oacute;digo-fonte do Gumbo, uma biblioteca para parsing de HTML5</a>O Google abriu o c&oacute;digo-fonte do Gumbo, uma biblioteca para parsing de HTML escrita em C. O Gumbo segue o algoritmo de parsing de HTML5, passando em todos os testes da biblioteca html5lib-0.95, al&eacute;m de ter sido testado em 2,5 bilh&otilde;es de p&aacute;ginas indexadas pelo Google. 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/27.c">Uma introdu&ccedil;&atilde;o a redes neurais utilizando C#</a>Em sua apresenta&ccedil;&atilde;o no evento Build 2013, Introdu&ccedil;&atilde;o a Redes Neurais Utilizando C#, o Dr. James McCaffrey apresentou os conceitos de redes neurais dando aos espectadores uma base s&oacute;lida para um estudo mais aprofundado sobre o tema. 
-  </div> 
+  </div>  
  </body>
 </html>
