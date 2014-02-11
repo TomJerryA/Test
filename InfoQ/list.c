@@ -1,8 +1,8 @@
 <html>
  <head></head> 
- <body>
-  <div>
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/27.c">Princ&iacute;pios SOLID de design para JavaScript</a>Os princ&iacute;pios SOLID s&atilde;o exemplos de programa&ccedil;&atilde;o orientada &agrave; objetos que podem ajudar a escrever c&oacute;digo JavaScript bom e est&aacute;vel, declarou Derick Balley, autor e desenvolvedor focado em JavaScript em uma apresenta&ccedil;&atilde;o recente.
+ <body> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/27.c">Princ&iacute;pios SOLID de design para JavaScript</a>Os princ&iacute;pios SOLID s&atilde;o exemplos de programa&ccedil;&atilde;o orientada &agrave; objetos que podem ajudar a escrever c&oacute;digo JavaScript bom e est&aacute;vel, declarou Derick Balley, autor e desenvolvedor focado em JavaScript em uma apresenta&ccedil;&atilde;o recente. 
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/26.c">Firefox OS ampliando o ecossistema</a>Mozilla anuncia que o ecossistema do Firefox OS est&aacute; crescendo tanto com novos dispositivos como com novas plataformas. 
@@ -150,6 +150,6 @@
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/29.c">Android 4.4 KitKat: Diversas novidades para os desenvolvedores</a>O Google lan&ccedil;ou o Android 4.4 (KitKat) com: menor uso de mem&oacute;ria, modo de imers&atilde;o, estilos transl&uacute;cidos, impress&atilde;o da tela, diversos frameworks (impress&atilde;o, armazenamento, transi&ccedil;&otilde;es), e o Chromium WebView. 
-  </div>  
+  </div> 
  </body>
 </html>

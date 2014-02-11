@@ -2,7 +2,10 @@
  <head></head> 
  <body>
   <div>
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/42.java">Improved Object Inspection with Visual Studio 2013 Update 2</a>Visual Studio 2013 Update 2 includes an enhanced object inspection which enable developers to inspect values of objects and instances quickly and in an effective way.
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/43.java">DevOps Cafe Podcast on the QCon London 2014 DevOps Track</a>Last DevOps Cafe Podcast (Episode 47) previewed the QCon London 2014 DevOps track. Manuel Pais and Shane Hastie, the track hosts, explained the rationale behind the track's session selection, the speakers introduced their talks and there was still time to discuss other topics, such as the importance of the scientific method and how agile's definition of &quot;done&quot; must be adapted in a DevOps world.
+  </div> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/42.java">Improved Object Inspection with Visual Studio 2013 Update 2</a>Visual Studio 2013 Update 2 includes an enhanced object inspection which enable developers to inspect values of objects and instances quickly and in an effective way. 
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/41.java">Salesforce.com Woos Windows Developers with New Toolkits for .NET</a>Salesforce.com is attempting to make it easier for .NET developers to consume its web services thanks to a new pair of open-source Toolkits. These Toolkits target the Force.com REST API and Chatter API and are the brainchild of Salesforce Platform Advocate Wade Wegner who talked to InfoQ about the goals and logistics of building these components. 
@@ -147,9 +150,6 @@
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/44.java">Visual F# Tools 3.1.1 Adds Visual Studio Express 2013 Desktop and Web Versions</a>Visual F# Tools 3.1.1 has been released with support for both desktop and web versions of Visual Studio 2013 Express edition in addition to the ability to install it directly from PowerShell prompt. 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/43.java">Producer/Consumer Processing with TPL Dataflow</a>Getting started with TPL Dataflow can be daunting. There is a lot of new terminology to learn and many of the advanced features obscure the simpler ones that you should be relying on. Dave Marini of Taskmatics cuts through the confusion by showing a complete producer/consumer dataflow from start to end. 
   </div>  
  </body>
 </html>
