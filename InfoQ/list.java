@@ -1,8 +1,8 @@
 <html>
  <head></head> 
- <body>
-  <div>
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/43.java">DevOps Cafe Podcast on the QCon London 2014 DevOps Track</a>Last DevOps Cafe Podcast (Episode 47) previewed the QCon London 2014 DevOps track. Manuel Pais and Shane Hastie, the track hosts, explained the rationale behind the track's session selection, the speakers introduced their talks and there was still time to discuss other topics, such as the importance of the scientific method and how agile's definition of &quot;done&quot; must be adapted in a DevOps world.
+ <body> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/43.java">DevOps Cafe Podcast on the QCon London 2014 DevOps Track</a>Last DevOps Cafe Podcast (Episode 47) previewed the QCon London 2014 DevOps track. Manuel Pais and Shane Hastie, the track hosts, explained the rationale behind the track's session selection, the speakers introduced their talks and there was still time to discuss other topics, such as the importance of the scientific method and how agile's definition of &quot;done&quot; must be adapted in a DevOps world. 
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/42.java">Improved Object Inspection with Visual Studio 2013 Update 2</a>Visual Studio 2013 Update 2 includes an enhanced object inspection which enable developers to inspect values of objects and instances quickly and in an effective way. 
@@ -150,6 +150,6 @@
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/44.java">Visual F# Tools 3.1.1 Adds Visual Studio Express 2013 Desktop and Web Versions</a>Visual F# Tools 3.1.1 has been released with support for both desktop and web versions of Visual Studio 2013 Express edition in addition to the ability to install it directly from PowerShell prompt. 
-  </div>  
+  </div> 
  </body>
 </html>

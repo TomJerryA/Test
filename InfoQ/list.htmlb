@@ -1,6 +1,9 @@
 <html>
  <head></head> 
- <body> 
+ <body>
+  <div>
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/42.htmlb">ReactiveCocoa - iOS开发的新框架</a> ReactiveCocoa（其简称为RAC）是由Github 开源的一个应用于iOS和OS X开发的新框架。RAC具有函数式编程和响应式编程的特性。它主要吸取了.Net的 Reactive Extensions的设计和实现，本文详细介绍了这个框架。 
+  </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/41.htmlb">借助JArchitect探究Cassandra CLI内部机制</a> 文中，作者通过使用JArchitect工具和CQLinq语言分析Cassandra CLI的源代码来探究CLI的架构模型。 
   </div> 
@@ -147,9 +150,6 @@
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/45.htmlb">云服务代理商：您所需要了解的</a> Winston Bumpus作为DMTF的董事会主席，为我们介绍了云服务代理商，在如何从多个供应商那选择和使用最合适云服务上提供指导的代理商。 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/44.htmlb">Jepsen：测试PostgreSQL、Redis、MongoDB以及Riak的分区容忍性</a> 在本文中，我们将探索分布式数据库在设计上的一些考虑，以及它们是如何对网络分区的情况作出响应。 
-  </div> 
+  </div>  
  </body>
 </html>
