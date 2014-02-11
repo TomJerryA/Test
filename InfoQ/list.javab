@@ -1,6 +1,9 @@
 <html>
  <head></head> 
- <body> 
+ <body>
+  <div>
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/16.javab">Big Data Analytics for Security</a> In this article, authors discuss the role of big data and Hadoop in security analytics space and how to use MapReduce to efficiently process data for security analysis for use cases like Security Information and Event Management (SIEM) and Fraud Detection. 
+  </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/15.javab">3 years of Kanban at Sandvik IT: The Story of an Improvement Journey</a> This is the story of an enterprise-wide Kanban implementation. It explains why Sandvik IT chose the Kanban method; how it was deployed using a kick-start concept; how it was followed-up using a depth-of-kanban assessment; and the effects so far. The article includes links to concrete and step-by-step information on how to run these kick-starts and assessments 
   </div> 
@@ -147,9 +150,6 @@
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/17.javab">Writing Automated Tests with Jazz Automation</a> Jazz Automation is a testing framework built to automate and speed up acceptance/functional testing for all types of web based systems or static websites and in any industry. It also lends itself to easily implement automated integration testing. Historically this type of testing has been all manual, labor intensive, and inaccurate. 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/16.javab">Beyond Data Mining</a> In this article, author talks about the need for a change in the predictive modeling community’s focus and compares the four types of data mining: algorithm mining, landscape mining, decision mining, and discussion mining. 
-  </div> 
+  </div>  
  </body>
 </html>
