@@ -1,7 +1,7 @@
 <html>
  <head></head> 
- <body>
-  <div>
+ <body> 
+  <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/16.javab">Big Data Analytics for Security</a> In this article, authors discuss the role of big data and Hadoop in security analytics space and how to use MapReduce to efficiently process data for security analysis for use cases like Security Information and Event Management (SIEM) and Fraud Detection. 
   </div> 
   <div> 
@@ -150,6 +150,6 @@
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/17.javab">Writing Automated Tests with Jazz Automation</a> Jazz Automation is a testing framework built to automate and speed up acceptance/functional testing for all types of web based systems or static websites and in any industry. It also lends itself to easily implement automated integration testing. Historically this type of testing has been all manual, labor intensive, and inaccurate. 
-  </div>  
+  </div> 
  </body>
 </html>

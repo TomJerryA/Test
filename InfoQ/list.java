@@ -1,6 +1,9 @@
 <html>
  <head></head> 
- <body> 
+ <body>
+  <div>
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/44.java">Running Spark on R with SparkR</a>UC Berkeley’s AMPLab announced a developer preview of their new project SparkR to use Apache Spark natively from R.
+  </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/43.java">DevOps Cafe Podcast on the QCon London 2014 DevOps Track</a>Last DevOps Cafe Podcast (Episode 47) previewed the QCon London 2014 DevOps track. Manuel Pais and Shane Hastie, the track hosts, explained the rationale behind the track's session selection, the speakers introduced their talks and there was still time to discuss other topics, such as the importance of the scientific method and how agile's definition of &quot;done&quot; must be adapted in a DevOps world. 
   </div> 
@@ -147,9 +150,6 @@
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/45.java">Encrypting Files on Android with Facebook Conceal</a>Facebook has open sourced Conceal, a set of Java APIs for file encryption and authentication on Android. Conceal uses a subset of OpenSSL’s algorithms and predefined options in order to keep the library smaller, currently being 85KB. 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/44.java">Visual F# Tools 3.1.1 Adds Visual Studio Express 2013 Desktop and Web Versions</a>Visual F# Tools 3.1.1 has been released with support for both desktop and web versions of Visual Studio 2013 Express edition in addition to the ability to install it directly from PowerShell prompt. 
-  </div> 
+  </div>  
  </body>
 </html>

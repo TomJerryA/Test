@@ -1,13 +1,65 @@
-<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>Facebook让Mercurial比Git更快</h3><p>本周早些时候，Facebook在他们的项目博客上发布了文章《<a href="https://code.facebook.com/posts/218678814984400/scaling-mercurial-at-facebook/">Facebook可伸缩Mercurial</a>》，介绍如何修改Mercurial来扩展版本库。 </p>
-<p>Facebook在单个版本库中存储了所有代码，两年前存放在subversion上。这样就不用为每个项目区分版本库（共享二进制版本库），整个代码库存储在单个大型源代码版本库上。 </p>
-<p>对于Facebook不幸的是，git和mercurial的设计都不支持存储所有工程的单个大版本库。由于分布式版本控制系统的目的是存储完整历史，因此，如果公司项目都存储在一个版本库内，那么包含历史的版本库可能大的离谱。相比之下，像CVS和Subversion等集中版本控制系统都能够处理多个项目，使其共享一个版本库，这是因为客户端可以只签出最新版本或者或版本库的子集。 </p>
-<p>尽管Facebook团队研究修改Git来满足需求，但结论是Mercurial有更多方便的编程API，这些API可用于挂钩，以支持他们的需求。（Git有定义良好的对象结构，工具可解析，而Mercurial具有代码库可用的低层API）。他们已经把许多优化反馈给了上游的Mercurial项目，包括<a href="http://selenic.com/repo/hg/rev/0b03454abae7">新的图形算法</a>和用<a href="http://selenic.com/repo/hg/rev/ddc0323db78b">C重写的代码</a>。 </p>
-<p>两项具体修改使Facebook能用Mercurial来处理他们的版本库大小：修改文件的状态更新来检查指定文件的变化，而不是内容的变化（钩入文件变更的操作系统列表），修改签出的文件，以获得一个无需完整历史状态的轻量级副本。 </p>
-<p>一般情况下，分布式版本控制系统将依据数据的内容而不是时间戳进行哈希。因此，想要判断版本库是否有变化，往往需要扫描每一个文件的计算哈希值来判断文件内容是否有差异。通过限制文件集来检查操作系统报告的上次扫描发生变化的文件，速度与时间戳变化的文件大小成正比，而不是检查当前工作区中的所有文件。Git试图通过运行LSTAT确定具体的文件信息以减少消耗，但仍需扫描资源库所有文件，以确定它们是否发生变化。通过让操作系统提供上述信息，版本库可以优化为只扫描OS报告中发生变化的文件。 </p>
-<p>Facebook试图解决的另一问题是，最小化下载或克隆操作所需的数据量。将所有项目存储在同一个版本库，版本库的大小是与最后产生伸缩性问题的整个历史数据成正比。因为库中没有进行有效分区，解决方案只能是下载最新版本的文件，其中含有提交日志。 </p>
-<p>这让开发者能够快速获取当前文件集（与subversion和CVS处理方式大致相同），通过提交日志的迭代遍历，实现这点。然而，如果需要版本库的旧版本（或文件旧版本），本地副本就不含有这样的信息。（Git提供了“浅克隆”的限制选项，这可以从库中得到单一版本，但没有提交历史。） </p>
-<p>通过扩展Mercurial API，遗失对象的提交可能“出错”，请求时从远程服务器下载内容，而直到需要时才下载它们。当然，这意味着，如果中心服务器出现故障或不可用，那么开发者将不能签出老版本的代码；由于提交日志可用，所以新提交的内容可以创建并推送到服务器。（相比之下，Git影子克隆具有相同的功能，但有差别的提交，这意味着它们只能用于只读目的。） </p>
-<p>这些改进，再加上memcached层，加快了Facebook对Mercurial的使用，拉/克隆操作和工作目录状态都跑赢了Git 5倍。在<a href="https://bitbucket.org/facebook/remotefilelog">remotefilelog</a> 和<a href="https://bitbucket.org/facebook/hgwatchman">hgwatchman</a>的Facebook Mercurial库，两者都是可访问的。尽管构建和方式并不适合每个Mercurial用户，但是在日益占主导地位的Git开源世界里，它推动了DVCS（分布式版本控制系统的英文简称）的发展。 </p>
+<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>敏捷转型中管理层的认同和支持</h3><p>敏捷转型是一种涉及管理层的组织级变革。我们常说管理层的认同对于敏捷是否能取得成功很关键，缺少管理层的支持，敏捷转型就可能会遇到巨大障碍。公司中管理层支持敏捷有很多不同的方法。</p>
+<p>Arijit Sarbagna在《规范的Scrum（<a href="http://www.scrumalliance.org/community/articles/2014/january/prescriptive-scrum">prescriptive Scrum</a>）》一文中讨论了在敏捷转型过程中管理层的认同和支持的重要性：</p>
+<blockquote> 
+ <p>假设我们正在以敏捷方式开发项目，最初采纳敏捷不是自上而下的，而是徒劳的“自下而上”。在这种情况下中，很可能我们就会错失了“管理层认同”这个关键因素。缺乏管理层的支持，打造自组织团队的良好意图很可能会走进死胡同。作为ScrumMaster或者敏捷教练，我们需要花费大部分的精力来说服管理层（或者客户），而不是实际上的指导团队。</p> 
+</blockquote>
+<p>根据Arijit的观点，对经理而言支持自组织团队非常困难：</p>
+<blockquote> 
+ <p>（……）管理团队遭遇决策的困境，在团队成为“自组织团队”过程中应该留有多少回旋余地。这很搞笑方，我们不得不跟管理层解释敏捷是如何工作的，为了使敏捷有效，管理层应该相信敏捷。有时我们必须要提醒管理层，如果我们不信赖员工，即使瀑布式开发也不会成功。信任是成功的支柱，围绕着信任我们补充了工程实践。</p> 
+</blockquote>
+<p>Arijit建议经理不应该强制实施Scrum：</p>
+<blockquote> 
+ <p>但是，如果我们正在处于规范化Scrum困境的话，比如很可能管理层会指导团队，敏捷应该怎么做（或不应该怎么做）——这些人可能从未实施过敏捷而只有理论知识——那么这只会让事情变得更糟，或者变成“失败的故事” 。</p> 
+</blockquote>
+<p>相反，Arijit建议“宣扬和鼓励理解敏捷的人，从而拥抱实践”。</p>
+<p>Zvonimir Križ写过一篇文章《亲爱的经理，我们已经敏捷了（<a href="http://zvonekriz.com/2013/10/16/dear-management-were-already-agile/">dear management, we’re already agile</a>）》，文中质疑缺少管理层的支持是否是采纳敏捷的真正障碍。这个问题可以理解为，当关注于实践而不是敏捷原则的时候，实施敏捷的唯一方法就是自上而下：</p>
+<blockquote> 
+ <p>从诸如Scrum之类的实践直接开始敏捷可能使人们相信，敏捷“旅程”需要深层的组织变革。当然组织变革需要管理层的支持。另一个更有趣的原因是瀑布式开发本身。为了更加精确，瀑布式开发需要大量的前期规划（upfront planning）。这也是我们大脑中的一种思维惯性，为了成功，所有事情——包括敏捷转型——都应该详细规划。此外，管理层需要如此大量的前期规划和重大决策。</p> 
+</blockquote>
+<p>Arijit建议敏捷转型还可以采用自下而上的方法：</p>
+<blockquote> 
+ <p>有时候人们忘记了自下而上的敏捷转型是合理的。</p> 
+ <p>每个人应该都知道采用敏捷原则不需要依赖管理层。（……）你可以现在就开始。不需要任何理由！</p> 
+</blockquote>
+<p>我们曾采访过<a href="http://www.infoq.com/author/Jeff-Sutherland">Jeff Sutherland</a>，他在《敏捷做了对的事，但方向却错误（<a href="http://labs.openviewpartners.com/agile-done-right-agile-gone-wrong/">agile done right and agile gone wrong</a>）》一文中提到了领导力和团队。Jeff在<a href="https://plus.google.com/+JeffSutherland/posts/JLsrKtKJwo3">Google Plus</a>上分享了这次采访，他提到管理层可以采取如下做法来支持敏捷：</p>
+<blockquote> 
+ <p>这和管理层的认同无关。而是与敏捷管理层如何敏捷、领导以及展示变化相关。在某些大型公司内，会有由高级管理层组成的Scrum团队。他们不会赋予团队执行Scrum的权利，而是自己也在执行Scrum，并且希望团队和他们一样执行Scrum。</p> 
+</blockquote>
+<p>在敏捷转型过程中，中层管理者该如何支持呢？Em Campbell-Pretty写了一篇文章描述这个问题《对敏捷教练与中层管理者沟通的建议（<a href="http://www.prettyagile.com/2013/10/advice-for-agile-coaches-on-dealing.html">advice for agile coaches on &quot;dealing with&quot; middle management</a>）》。文中说明了为什么管理层的认同如此重要：</p>
+<blockquote> 
+ <p>和开发团队一起工作时，中层管理的认同非常关键。对于敏捷转型工作，中层管理者可以是良好的动力也可以是克星。如果团队认识到管理层不支持敏捷，那么在试验和冒失败风险的时候他们还会觉得安全吗？我曾见过有些组织尝试敏捷转型，而管理层仍然是传统思维。对于团队而言，这将是毁灭性的问题，如果团队相信敏捷的价值观如透明性，那么他们就会因为暴露事实而受到管理层的谴责。</p> 
+</blockquote>
+<p>针对如何解决来自中层管理者的阻力，Em Campbell-Pretty给出了如下建议：</p>
+<blockquote> 
+ <p>有些管理者慢慢发现敏捷对他们有威胁。实施敏捷很可能意味着改变，没有人喜欢改变。在这种情况下，或许可以考虑一下Dennis Stevens和Mike Cottmeyer的建议（Agile 2013大会上的“不要谈论敏捷”），而不是迫使顽固的经理实施敏捷。相反，我们应该关注于业务目标，以及如何帮助管理层达到他们的目标或减轻他们的痛苦。</p> 
+</blockquote>
+<p>通常组织里的中层管理者也同样处于困境。根据Em的文章，敏捷教练应该负起责任，寻找方法和中层管理者一起工作并支持他们的工作：</p>
+<blockquote> 
+ <p>中层管理者其实并不容易，实质上他们就像“三明治里的肉”，处于组织的高级管理者和普通业务人员之间。中层管理者的责任大于权利的情况司空见惯。这可能非常令人沮丧，并且让我怀疑命令与控制管理风格的盛行，是否是大型的官僚组织里中层管理者丧失权利的直接后果。中层管理者的注意力从组织繁文缛节的沮丧转移到改善员工的生活上，对于管理者和团队都是一种回报。不要忘记，中层管理者和其他人一样，倾向于能为我带来什么好处（WIFM——what’s in to for me）。中层管理者必须明白敏捷会如何帮助他们获得成功。</p> 
+</blockquote>
+<p>Mike McLaughlin写了一篇题为《耐心的敏捷教练（<a href="http://blogs.versionone.com/agile_management/2013/08/16/the-agile-coach-on-patience/">the agile coach on patience</a>）》的文章，文中他谈论了敏捷转型对于中层管理者的影响：</p>
+<blockquote> 
+ <p>许多中层管理者在放手控制权上似乎都有一段困难时期。他们觉得还是需要插手。微观管理了许多年，可能有数十年，要想打破这些实践很困难。即使在团队授权的重要性方面中层管理接受过很多培训，但是在脑海里，他们仍然不确信团队是否可以完成工作，因此还是继续执行微观管理。</p> 
+</blockquote>
+<p>对中层管理者和团队而言，采取自组织也很困难：</p>
+<blockquote> 
+ <p>（中层管理者）有效地阻止了团队发展成自管理、自组织的团队。结果就是，团队继续按照中层管理者的指导行事，或者得到授权才会做事。我把这个现象叫做中层管理者陷阱（Middle Manager Trap）。中层管理者继续制定决策，并一直质疑为什么敏捷团队不能自己负责任。这是一个恶性循环。</p> 
+</blockquote>
+<p>Mike建议中层管理者可以展现对团队的信赖，并留给团队转变为自组织团队的时间，从而支持敏捷转型。</p>
+<blockquote> 
+ <p>能够实现180度大转变（leap of faith）、信任、委派、耐心，实际上是一种对于他人的投资。对于一个新成立的敏捷团队来说，可能要花一段时间才能获得良好的投资回报（ROI——Return On Invest）。过了这段时间后，团队或个人可能还是比较纠结。偶尔的小错误是可以接受的。因为我们需要长远地考虑。</p> 
+</blockquote>
+<p>Brian Erwin给领导敏捷转型的高管们写了一封公开信《致引领敏捷转型的管理层的公开信（<a href="http://blog.projectconnections.com/project_practitioners/2013/11/an-open-letter-to-executives-leading-agile-transformations.html">an open letter to executives leading agile transformations</a>）》。他建议管理层应该相信员工都很诚实，且能够努力工作，他还建议管理层可以通过环境来支持敏捷转型，从而帮助员工完成工作：</p>
+<blockquote> 
+ <p>管理层需要打造一种组织环境，在这个环境下对于员工来说采纳敏捷的阻力最小，而不仅仅是采用和强制实施一些如Scrum、极限编程或看板等敏捷方法。</p> 
+</blockquote>
+<p>Brian的公开信里还包含了一套帮助高管打造环境的行动计划。其中一些建议如下：</p>
+<blockquote> 
+ <p><b>在组织里开始展现你所期望的行为。</b>造势最有效的方法之一就是先改变你自己和你的行为。实际上你不能强迫别人改变，但你可以鼓舞他们改变。（……）</p> 
+ <p><b>不要在团队级别强制实施一种方法。</b>不要强迫团队实施Scrum或其他方法框架，要把敏捷落地（……），通过移除组织障碍来提供和展现你个人的支持与承诺，还有你的立场。（……）</p> 
+ <p><b>投桃报李。</b>（……）如果你打造了一个环境，鼓舞员工奉献一切，视公司如家，并且通过投资员工展现出他们的价值的话，那么你的组织会有更大的可能性长期赢得市场。</p> 
+</blockquote>
+<p><strong>原文英文链接：</strong><a href="http://www.infoq.com/news/2014/01/management-support-agile">Management Buy-in and Support in Agile Adoption</a></p>
 <hr />
 <p>感谢<a href="http://www.infoq.com/cn/author/侯伯薇">侯伯薇</a>对本文的审校。</p>
 <p>给InfoQ中文站投稿或者参与内容翻译工作，请邮件至<a href="mailto:editors@cn.infoq.com">editors@cn.infoq.com</a>。也欢迎大家通过新浪微博（<a href="http://www.weibo.com/infoqchina">@InfoQ</a>）或者腾讯微博（<a href="http://t.qq.com/infoqchina">@InfoQ</a>）关注我们，并与我们的编辑和其他读者朋友交流。</p><br><br><br><br><br><br></body></html>

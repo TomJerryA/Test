@@ -1,9 +1,23 @@
-<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>VS Anywhere更新了Web Workspace、Moderated Sessions、Cooperative Merge，并修复了缺陷</h3><p><a href="https://vsanywhere.com/download.aspx">VS Anywhere</a>，是一项Visual Studio实时协作的扩展，已更新的<a href="http://support.vsanywhere.com/web-workspace-beta/">web workspace</a>使开发人员可以共享Visual Studio项目，他们只需要通过聊天或电子邮件发送文件的链接就可以了。最终用户能够在浏览器中实时查看你的Visual Studio文件。</p>
-<p>你可以用以下方式开启这个特性：右击项目，选择使用Web Workspace共享项目。官方声称,即将推出的完整版本能让用户在实时环境中在浏览器里直接构建代码。</p>
-<p>VS Anywhere还包括<a href="http://support.vsanywhere.com/moderated-sessions/">moderated sessions</a>，它能帮助远程会话参与者跟你一起参加在线培训或在线研讨会，还可以发起主持人模式。而且，你可以在会议期间切换到主持人模式。它还包括协作合并，这让开发人员可以在实时协作会议上检查合并以及管理有冲突的文件，此外还增强了用户界面。</p>
-<p><img src="http://infoqstatic.com/resource/news/2014/01/vs-anywhere/zh/resources/0127000.png" width="600" _href="img://null" _p="true" alt="" /></p>
-<p>最新的版本还修复了团队资源管理器的缺陷，即用Visual Studio 2010工作时（包括社交编码）使用Github API的问题。此外，它还修复了向服务器窗口重新开放连接时已选择的服务器名称会被擦除的缺陷，以及在Quick Action工具中创建变更集时功能无法正常运行的缺陷。在上一个版本中，Visual Studio的选项卡上不显示图标，这个问题在新版本中也解决了。</p>
-<p><strong>查看英文原文：</strong><a href="http://www.infoq.com/news/2014/01/vs-anywhere">VS Anywhere Updated with Web Workspace, Moderated Sessions, Cooperative Merge and Bug Fixes</a></p>
-<hr />
-<p>感谢<a href="http://www.infoq.com/cn/author/侯伯薇">侯伯薇</a>对本文的审校。</p>
-<p>给InfoQ中文站投稿或者参与内容翻译工作，请邮件至<a href="mailto:editors@cn.infoq.com">editors@cn.infoq.com</a>。也欢迎大家通过新浪微博（<a href="http://www.weibo.com/infoqchina">@InfoQ</a>）或者腾讯微博（<a href="http://t.qq.com/infoqchina">@InfoQ</a>）关注我们，并与我们的编辑和其他读者朋友交流。</p><br><br><br><br><br><br></body></html>
+<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>Entity Framework 6添加了对DynamicData和EntityDataSource控件的支持</h3><p>在Entity Framework 6中，微软除了用Microsoft.AspNet.EntityDataSource更新了模板之外，还添加了对<a href="http://www.nuget.org/packages/Microsoft.AspNet.DynamicData.EFProvider">DynamicData</a>和<a href="http://www.nuget.org/packages/Microsoft.AspNet.EntityDataSource">EntityDataSource</a>控件的支持。DynamicData包可用于使用Entity Framework 6创建的<a href="http://msdn.microsoft.com/en-us/data/jj193542.aspx">代码先行</a>或<a href="http://msdn.microsoft.com/en-us/data/jj205424.aspx">模型先行</a>的项目，同时这些项目还必须安装了必要的包、实体和字段模板。</p>
+<p>要使用DynamicData控件，需要创建一个新的ASP.NET Dynamic Data实体Web应用程序，添加Microsoft.AspNet.DynamicData.EFProvider的NuGet包，这会添加对DynamicData EFProvider二进制文件的引用，并安装所需的模板。</p>
+<p>接着，使用EF代码先行或设计器创建模型，然后在<a href="http://msdn.microsoft.com/en-us/library/1xaas8a2(v=vs.71).aspx">Global.asax.cs</a>文件中添加如下代码，注册Entity Framework模型。</p>
+<pre>
+DefaultModel.RegisterContext(   
+new Microsoft.AspNet.DynamicData.ModelProviders.EFDataModelProvider(()
+ =&gt; newNorthwindEntities1()), 
+    newContextConfiguration { ScaffoldAllTables = true });
+</pre>
+<p>另一方面，Microsoft.AspNet.EntityDataSource包会安装运行时二进制文件和Entity Framework 6的<a href="http://www.nuget.org/">NuGet</a>包。还需要在web.config文件中添加如下所示的标签前缀：</p>
+<pre>
+&lt;pages&gt; 
+&lt;controls&gt; 
+&lt;addtagPrefix=&quot;ef&quot;assembly=&quot;Microsoft.AspNet.EntityDataSource&quot; 
+namespace=&quot;Microsoft.AspNet.EntityDataSource&quot; /&gt; 
+&lt;/controls&gt; 
+&lt;/pages&gt; </pre>
+<p>最后，创建一个新的Web表单页，用下面的代码将EntityDataSource控件绑定到GridView或FormView上：</p>
+<pre>
+&lt;ef:EntityDataSourceID=&quot;GridDataSource&quot;runat=&quot;server&quot;EnableDelete=&quot;true&quot;/&gt;
+</pre>
+<p>安装的模板将取代Microsoft.AspNet.EntityDataSource包中默认的EntityDataSource控件。它还解决了一些与多对多字段模板相关的问题。不过，Microsoft.AspNet.DynamicData.EFProvider中的模板面向的是C#和Web Application项目，不能用于WebSites项目。</p>
+<p><strong>原文英文链接：</strong><a href="http://www.infoq.com/news/2014/02/dynamicdata-ef6">DynamicData and EntityDataSource Updated with Entity Framework 6 Support</a></p><br><br><br><br><br><br></body></html>
