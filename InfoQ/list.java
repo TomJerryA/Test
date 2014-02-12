@@ -2,7 +2,10 @@
  <head></head> 
  <body>
   <div>
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/44.java">Running Spark on R with SparkR</a>UC Berkeley’s AMPLab announced a developer preview of their new project SparkR to use Apache Spark natively from R.
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/45.java">Design Patterns for Cloud-Hosted Applications</a>The patterns &amp; practices group at Microsoft have released a guide with solutions and patterns suitable when implementing cloud-hosted applications. The guide contains ten guidance topics together with 24 design patterns targeting eight categories of problems covering common areas in cloud application development. Also included are ten sample applications to demonstrate the usage these patterns.
+  </div> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/44.java">Running Spark on R with SparkR</a>UC Berkeley’s AMPLab announced a developer preview of their new project SparkR to use Apache Spark natively from R. 
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/43.java">DevOps Cafe Podcast on the QCon London 2014 DevOps Track</a>Last DevOps Cafe Podcast (Episode 47) previewed the QCon London 2014 DevOps track. Manuel Pais and Shane Hastie, the track hosts, explained the rationale behind the track's session selection, the speakers introduced their talks and there was still time to discuss other topics, such as the importance of the scientific method and how agile's definition of &quot;done&quot; must be adapted in a DevOps world. 
@@ -147,9 +150,6 @@
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/46.java">Deploying Chrome Apps on Android&amp;iOS with Cordova 3.3.0</a>Developer can now deploy Chrome apps on Android and iOS with Apache Cordova 3.3.0. 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/45.java">Encrypting Files on Android with Facebook Conceal</a>Facebook has open sourced Conceal, a set of Java APIs for file encryption and authentication on Android. Conceal uses a subset of OpenSSL’s algorithms and predefined options in order to keep the library smaller, currently being 85KB. 
   </div>  
  </body>
 </html>

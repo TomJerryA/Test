@@ -1,1 +1,1 @@
-Running Spark on R with SparkR
+Design Patterns for Cloud-Hosted Applications
