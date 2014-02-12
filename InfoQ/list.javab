@@ -1,7 +1,7 @@
 <html>
  <head></head> 
- <body>
-  <div>
+ <body> 
+  <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/17.javab">Answering Common Cloud Security Questions from CIOs</a> With the news stories of possible data breaches at enterprises like Target, and the current trend of companies migrating to cloud environments for the flexibility, scalability, agility, and cost-effectiveness they offer, CIOs have been asking hard questions about cloud security. 
   </div> 
   <div> 
@@ -150,6 +150,6 @@
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/18.javab">Exposing CQRS Through a RESTful API</a> Command Query Responsibility Segregation (CQRS) is an architectural pattern that segregates reads and writes of a system into two separate models. We propose and demonstrate an approach for building a RESTful API on top of CQRS systems. This approach joins HTTP semantics and resource-based style of REST APIs with distributed computing concerns such as eventual consistency and concurrency. 
-  </div>  
+  </div> 
  </body>
 </html>
