@@ -2,28 +2,31 @@
  <head></head> 
  <body>
   <div>
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/9.py">InfoQの新機能 - RSSで好みのトピックをフォロー</a>2014年，InfoQはRSS公開用のトピックページを用意した。RSSリーダを使って，好みのトピックをフォローできる。
-  </div>
-  <div>
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/8.py">LightTable IDEがオープンソース化</a>Chris Granger氏がLightTable IDEのバージョン0.6リリースに伴い、オープンソースにした。このリリースではサードパーティのプラグインがサポートされた。InfoQはChris Granger氏にインタビューをした。
-  </div>
-  <div>
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/7.py">HTTP/2はどうなるか</a>HTTP/2 Working Groupの議長であるMark Nottingham氏はブログに次のバージョンのプロトコルに対する9つの予想について自身の意見を書いている。HTTP/2は完成に近づいており、実装も始まっている。
-  </div>
-  <div>
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/6.py">Android++リリース - ゼロ・ハードウェア・リストリクション，MSBuild, LLVM, GCC, GDB統合デバッグ</a>先日リリースされたAndroid++のクローズドベータでは，Androidアプリの開発をVisual Studioを使って，ゼロ・ハードウェア・リストリクション, MSBuild, LLVM, GCC，さらにはGDB統合デバッグといったサポートの下で行うことができる。
-  </div>
-  <div>
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/5.py">アジャイル採用における “マネジメント・バイ・イン” とサポート</a>アジャイルの採用は，マネジメントを含む組織改革だ。その成功にはマネジメント・バイ・インが不可欠であると言われている。マネジメントによるサポートの欠如は，アジャイル移行の障害にもなりかねない，というのだ。しかしマネジメントがアジャイルをサポートする方法は，企業によってさまざまだ。
-  </div>
-  <div>
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/4.py">Coverity 7.0がリリース</a>Coverityがバージョン7.0をリリースした。 C#, Java, C, C++ のアルゴリズムが改善され、SonarQube、Eclipse、Visual Studio 2013との統合がサポートされている。また、Objective-CとC/C++の開発で使われているClangコンパイラもサポートする。
-  </div>
-  <div>
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/3.py">ビッグデータ: 言語は本当に重要か?</a>ビッグデータの分野では、数十億ものイベントの中で、たった1ミリセコンドの損失が重大な影響を与える。それにもかかわらず、Pythonのような遅いと考えられている言語が、この1年で非常に人気が出ている。ビッグデータコミュニティの最近の記事や議論では、データサイエンスとビッグデータのプログラミング言語の選択について、論争を始めている。
-  </div>
-  <div>
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/2.py">Facebook製UIライブラリ『React』の不変性をパワーアップさせる『Om』について</a>Omは、Facebook製HTML UIライブラリ『React』向けの新しいClojureScriptインタフェースである。OmはClojure（Script）の永続データ構造と、Reactの描画機能を改善するためにrequestAnimationFrameを使用している。InfoQはアプリケーション開発において、Omおよび関数型プログラミングがもたらす恩恵について、Omの開発者であるDavid Nolen氏と対談した。
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/10.py">Firefox OS向け開発を始めるための資料</a>Mozillaが開発するFirefox OSは“オープンなウェブのための完璧でスタンドアロンなオペレーティングシステムを構築するという目的”を追求しており、HTML、CSS、JavaScriptを使ってアプリケーションをインストールして実行できるようにしようとしている。LinuxとMozillaのGeckoをベースにしており、100％完全にオープンなスタックで作られている。
+  </div> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/9.py">InfoQの新機能 - RSSで好みのトピックをフォロー</a>2014年，InfoQはRSS公開用のトピックページを用意した。RSSリーダを使って，好みのトピックをフォローできる。 
+  </div> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/8.py">LightTable IDEがオープンソース化</a>Chris Granger氏がLightTable IDEのバージョン0.6リリースに伴い、オープンソースにした。このリリースではサードパーティのプラグインがサポートされた。InfoQはChris Granger氏にインタビューをした。 
+  </div> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/7.py">HTTP/2はどうなるか</a>HTTP/2 Working Groupの議長であるMark Nottingham氏はブログに次のバージョンのプロトコルに対する9つの予想について自身の意見を書いている。HTTP/2は完成に近づいており、実装も始まっている。 
+  </div> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/6.py">Android++リリース - ゼロ・ハードウェア・リストリクション，MSBuild, LLVM, GCC, GDB統合デバッグ</a>先日リリースされたAndroid++のクローズドベータでは，Androidアプリの開発をVisual Studioを使って，ゼロ・ハードウェア・リストリクション, MSBuild, LLVM, GCC，さらにはGDB統合デバッグといったサポートの下で行うことができる。 
+  </div> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/5.py">アジャイル採用における “マネジメント・バイ・イン” とサポート</a>アジャイルの採用は，マネジメントを含む組織改革だ。その成功にはマネジメント・バイ・インが不可欠であると言われている。マネジメントによるサポートの欠如は，アジャイル移行の障害にもなりかねない，というのだ。しかしマネジメントがアジャイルをサポートする方法は，企業によってさまざまだ。 
+  </div> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/4.py">Coverity 7.0がリリース</a>Coverityがバージョン7.0をリリースした。 C#, Java, C, C++ のアルゴリズムが改善され、SonarQube、Eclipse、Visual Studio 2013との統合がサポートされている。また、Objective-CとC/C++の開発で使われているClangコンパイラもサポートする。 
+  </div> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/3.py">ビッグデータ: 言語は本当に重要か?</a>ビッグデータの分野では、数十億ものイベントの中で、たった1ミリセコンドの損失が重大な影響を与える。それにもかかわらず、Pythonのような遅いと考えられている言語が、この1年で非常に人気が出ている。ビッグデータコミュニティの最近の記事や議論では、データサイエンスとビッグデータのプログラミング言語の選択について、論争を始めている。 
+  </div> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/2.py">Facebook製UIライブラリ『React』の不変性をパワーアップさせる『Om』について</a>Omは、Facebook製HTML UIライブラリ『React』向けの新しいClojureScriptインタフェースである。OmはClojure（Script）の永続データ構造と、Reactの描画機能を改善するためにrequestAnimationFrameを使用している。InfoQはアプリケーション開発において、Omおよび関数型プログラミングがもたらす恩恵について、Omの開発者であるDavid Nolen氏と対談した。 
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/1.py">GoogleがMotorolaをLenovoに売却</a>GoogleはMotorola Mobilityを29.1億ドルでLenovoに売却する。Lenovoが2,000件の特許を獲得する一方で，同社ポートフォリオの特許の大部分はGoogleが保持する。Googleにとってこの取引は損失かも知れないが，Androidエコシステムにはメリットがある。 
@@ -147,9 +150,6 @@
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/13.py">Nevron Open Visionで実現するクロスプラットフォーム開発</a>Windows Forms、Windows Presentation Framework (WPF)、SilverlightをサポートしたNevron Open Vision(NOV)がリリースされた。このフレームワークを使えば、開発者は複数のOSやでバイス、環境でひとつのプレゼンテーションレイヤを使い回すことができる。今後のバージョンでMac OS、iOS、Android、WinRTをサポートする予定だ。 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/12.py">改善の習慣</a>アジャイルは1つの考え方であり、すべてを連続して改善していくものだとYves Hanoulle氏が語った。InfoQは、Yves 氏にインタビューし、人々が持つ習慣と改善の習慣を身に付けるために何ができるかを聞いた。 
-  </div>         
+  </div>  
  </body>
 </html>
