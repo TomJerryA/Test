@@ -1,14 +1,6 @@
-<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>使用TPL Dataflow处理生产者/消费者问题</h3><p>在最简单的情况下，生产者/消费者场景很容易处理。生产者向一个线程安全的队列中推送消息，消费者从该队列中取消息。每一端可以有一个专用线程，这就行了。至少在并发症状出现之前是行得通的。</p>
-<p>并发症状是多方面的。你可能需要向多个消费者分发或广播消息，而不是只有一个消费者。因为性能原因，在执行某些操作之前，可能需要批量提交一些请求。也可能有多个步骤，而如果每个步骤用一个专用线程的话，负载会很繁重。或者是随着消息在线程间跳转，上下文切换会影响延迟。</p>
-<p><a href="http://msdn.microsoft.com/en-us/library/hh228603(v=vs.110).aspx">TPL Dataflow</a> 就是为解决这些问题而设计的。不同于使用线程，构成数据流的轻量级块（Block）按需使用和分享线程池中的线程。但是和任何新框架一样，我们有很多东西要学习，而且很多比较高级的选项可能会掩盖基础知识。</p>
-<p><img src="http://infoqstatic.com/resource/news/2014/01/Dataflow-PC/zh/resources/0128000.png" width="350" alt="" _href="img://null" _p="true" /></p>
-<p>为简化入门，Taskmatics的Dave Marini撰写了一篇文章——“使用流：利用TPL Dataflow结构简化生产者/消费者问题的处理（<a href="http://taskmatics.com/blog/simplifying-producer-consumer-processing-with-tpl-dataflow-structures/">Going with the Flow: Simplifying Producer/Consumer Processing with TPL Dataflow Structures</a>）”。Dave使用一个订单交付工作流（如上图所示），介绍了大多数场景需要的基本块：</p>
-<ul> 
- <li>BufferBlock</li> 
- <li>BroadcastBlock</li> 
- <li>BatchBlock</li> 
- <li>TransformManyBlock</li> 
- <li>ActionBlock</li> 
-</ul>
-<p>这篇文章还介绍了一些容易被忽略的陷阱，比如刷新批处理和完成工作流等。</p>
-<p><strong>查看英文原文：</strong><a href="http://www.infoq.com/news/2014/01/Dataflow-PC">Producer/Consumer Processing with TPL Dataflow</a></p><br><br><br><br><br><br></body></html>
+<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>Google将摩托罗拉出售给联想</h3><p>Google以29.1亿美元的价格将摩托罗拉移动公司出售给了联想，前者将保留其投资组合中的大部分专利，而后者获得了2000项专利。在这笔交易中，Google可能会赔钱，但Android生态系统会获益。</p>
+<p><a href="http://www.infoq.com/news/2011/08/Whats-Next-for-Android">早在2011年，Google就以125亿美元的价格收购了摩托罗拉移动公司</a>，并表示，他们之所以对这次收购非常感兴趣，是为了获得17000项专利以及随之而来的7500项专利授权。那时，<a href="http://gigaom.com/2011/08/15/will-hardware-makers-trust-google-after-motorola-buy/">有些人认为这一举措会威胁Android生态系统</a>，因为这使得Google既是Android制造商，也是硬件制造商。据CEO Larry Page说，Google做过声明，他们将对所有合作伙伴一视同仁，<a href="http://googleblog.blogspot.ro/2011/08/supercharging-android-google-to-acquire.html">摩托罗拉将仅仅是另一个Android许可持有者</a>。</p>
+<p>两年半以后，Android生态系统蓬勃发展。根据IDC的研究，<a href="http://www.idc.com/getdoc.jsp?containerId=prUS24442013">2013年第三季度，智能手机全球出货量的81%都装有Google的操作系统</a>。看样子，Google对所有的硬件制造商都是同等对待的，而现在，他们有了更多这样做的理由，因为<a href="http://googleblog.blogspot.com/2014/01/lenovo-to-acquire-motorola-mobility.html">他们在今年1月29日宣布以29.1亿美元的价格将摩托罗拉移动公司出售给联想</a>。Google将保留大部分专利，而联想只获得了其中的2000项。另外，<a href="http://www.theverge.com/2014/1/29/5359068/google-keeping-motorola-advanced-technology-group-project-ara-phone">这笔交易不包含先进技术和项目组及其专利</a>，它们将被整合到Android团队。</p>
+<p>有些分析师指出，考虑到Google已经以23.5亿美元的价格卖掉了机顶盒业务，他们遭受了“<a href="http://arstechnica.com/gadgets/2014/01/reports-google-will-sell-motorola-mobility-to-lenovo-for-3-billion/">大约70亿美元的损失</a>”。其他人持不同意见，认为<a href="http://mobile.nytimes.com/blogs/dealbook/2014/01/29/did-google-really-lose-on-its-original-motorola-deal/">Google做了一笔很棒的买卖</a>：最初估计的损失约为32亿美元，而早在2012年，<a href="http://www.sec.gov/Archives/edgar/data/1288776/000119312512440217/d400524d10q.htm">Google对专利的估价为55亿美元</a>，因此，理论上讲，他们没有赔钱。但是，只有这些专利的价值与Google的最初估价相等，这一结论才成立。不过，目前为止，专利诉讼过程并没有为摩托罗拉带来多少现金。当前，为了在每台售出的Xbox和Windows 7 PC上使用摩托罗拉标准相关的Wi-Fi和视频编码专利，<a href="http://www.theverge.com/2013/4/26/4271432/does-anyone-know-why-google-bought-motorola">微软每年只需支付“170万美元的专利使用费”</a>。但Page还是承诺，将继续使用这些专利来“保护整个Android生态系统。”他们会有多成功，还有待于观察。</p>
+<p>Android生态系统很可能从这笔交易中获益。2013年第三季度，<a href="http://www.idc.com/getdoc.jsp?containerId=prUS24442013">三星占所有Android智能手机出货量的39.9%</a>，这笔交易强化了联想在与三星竞争中的地位。由一家制造商主导市场不是个好主意，因为这可能会使创新的步伐慢下来，而价格涨上去。目前，联想是PC市场的领导者，<a href="http://www.forbes.com/sites/maggiemcgrath/2014/01/23/lenovo-buying-ibm-server-business-for-2-3-billion/">它最近以23亿美元的价格收购了IBM的服务器业务</a>。</p>
+<p><b>查看英文原文：</b><b><a href="http://www.infoq.com/news/2014/01/google-motorola-lenovo">Google Sells Motorola to Lenovo</a></b></p><br><br><br><br><br><br></body></html>

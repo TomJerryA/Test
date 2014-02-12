@@ -1,17 +1,16 @@
-<p>The patterns &amp; practices group at Microsoft recently released a guide with suggested solutions and patterns suitable when implementing cloud-hosted applications. The guide discusses the problems different patterns address together with benefits and possible downsides. The ambition from the group has been to provide guidance for distributed systems irrespective of cloud platform even though the examples given are targeting Windows Azure.</p>
-<p>Using feedback from the developer community, the group has identified eight categories of problems they believe cover the most common areas in cloud application development:</p>
-<ul> 
- <li>Availability</li> 
- <li>Data Management</li> 
- <li>Design and Implementation</li> 
- <li>Messaging</li> 
- <li>Management and Monitoring</li> 
- <li>Performance and Scalability</li> 
- <li>Resiliency</li> 
- <li>Security</li> 
-</ul>
-<p>For each of these categories, the group have created guidance and documented common patterns to help developers in solving problems they regularly encounter.</p>
-<p>The guide contains ten primer and guidance topics providing basic knowledge and good practice techniques, each covering one aspect of application development and targeting one of the categories. Topics covered include Asynchronous Messaging, Caching and Data Consistency.</p>
-<p>Also included are 24 design patterns that the group have found useful in cloud-hosted applications, each pattern belonging to one or more of the categories described. Examples of patterns included are Compensating Transaction, Command and Query Responsibility Segregation (CQRS) and Pipes and Filters. Each pattern is described in a common format with the context and problem where the pattern applies, the solution given by the pattern together with issues and considerations for applying the pattern. An example for the Azure is also provided for each pattern.</p>
-<p>To demonstrate the usage of the design patterns described the group has created ten sample applications with all source code available for download. The samples include one application concerning competing consumers retrieving messages from a service bus and one using filters simulating a pipeline.<br /> The P &amp; P group emphasizes that the examples are simplified and not designed for production usage.</p>
-<p>Windows Azure is the cloud platform provided by Microsoft.</p>
+<p>QUIC (Quick UDP Internet Connections, pronounced 'quick') is a multiplexing transport protocol running over UDP with the main goal to have&nbsp;0-RTT connectivity overhead. Robbie Shade, a Google developer, has introduced QUIC in a recent video, having the following main features:</p>
+<p style="margin-left: 40px;">It has all the benefits of SPDY (multiplexing, priorities, etc.)</p>
+<p style="margin-left: 40px;">0-RTT connections</p>
+<p style="margin-left: 40px;">Packet pacing that reduces packet loss</p>
+<p style="margin-left: 40px;">Forward error correction that reduces retransmission latency</p>
+<p style="margin-left: 40px;">Adaptive congestion control (friendly to TCP), reducing reconnections for mobile clients</p>
+<p style="margin-left: 40px;">Encryption equivalent to TLS</p>
+<p style="margin-left: 40px;">Chrome can talk QUIC to Google today</p>
+<p>QUIC deals with transmission reliability, missing or out of order packets, something which UDP does not do by default. Multiplexing in QUIC means that the protocol uses multiple channels to deliver data, so if a packet is lost in one stream of data, the others are not blocked waiting on&nbsp;the missing one as it happens with SPDY, which does multiplexing but over a single channel. This approach in QUIC solves the head-of-line blocking issue that may happen during TCP transmissions, said Shade.</p>
+<p>A major benefit of using QUIC is the fact that it does not require a handshake step when making the first contact between a client and a server, somewhat similar to TCP Fast Open, which has been discussed since 2011 but has not seen broad adoption yet. According to Shade, the TCP handshake can take up to 300ms over a transatlantic connection if TLS is involved, while QUIC can cut that latency down to 100ms.</p>
+<p>Another advantage of QUIC is that communication channels are not defined by IP+Port but by an ID, which makes it possible to continue a connection while switching networks, such as leaving a WiFi zone and entering&nbsp;a mobile one.</p>
+<p>All QUIC connections are encrypted using a specific mechanism detailed in the QUIC Crypto document.</p>
+<p>When asked why not use an improved version of TCP +TLS, Shade said that while TCP and TLS are being improved, the protocol iteration and its deployment&nbsp;are very slow, and QUIC is deployed at the client level not the kernel one, being subject to much faster iterations, “weeks rather than years.”</p>
+<p>According to Shade, SPDY could run on top of QUIC in the future, making it even better than what it is today. Some of the lessons learned and tested by Google in practice with QUIC could be incorporated into TCP in the future.</p>
+<p>Currently there is a client and a server available in Chromium, and QUIC&nbsp;is used by google.com, GMail, YouTube, and other Google services.</p>
+<p>Resources: QUIC video, QUIC video slides, QUIC&nbsp;– document detailing the protocol, QUIC Wire Layout Specification&nbsp;– specs of the wire frames, QUIC Crypto, SPDY Indicator extension.</p>

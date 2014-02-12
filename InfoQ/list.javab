@@ -1,6 +1,9 @@
 <html>
  <head></head> 
- <body> 
+ <body>
+  <div>
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/17.javab">Answering Common Cloud Security Questions from CIOs</a> With the news stories of possible data breaches at enterprises like Target, and the current trend of companies migrating to cloud environments for the flexibility, scalability, agility, and cost-effectiveness they offer, CIOs have been asking hard questions about cloud security. 
+  </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/16.javab">Big Data Analytics for Security</a> In this article, authors discuss the role of big data and Hadoop in security analytics space and how to use MapReduce to efficiently process data for security analysis for use cases like Security Information and Event Management (SIEM) and Fraud Detection. 
   </div> 
@@ -147,9 +150,6 @@
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/18.javab">Exposing CQRS Through a RESTful API</a> Command Query Responsibility Segregation (CQRS) is an architectural pattern that segregates reads and writes of a system into two separate models. We propose and demonstrate an approach for building a RESTful API on top of CQRS systems. This approach joins HTTP semantics and resource-based style of REST APIs with distributed computing concerns such as eventual consistency and concurrency. 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/17.javab">Writing Automated Tests with Jazz Automation</a> Jazz Automation is a testing framework built to automate and speed up acceptance/functional testing for all types of web based systems or static websites and in any industry. It also lends itself to easily implement automated integration testing. Historically this type of testing has been all manual, labor intensive, and inaccurate. 
-  </div> 
+  </div>  
  </body>
 </html>

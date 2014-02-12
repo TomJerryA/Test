@@ -1,9 +1,19 @@
-<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>Node.js的领导权发生变化</h3><p>在Node.js博客最近的一篇博文中，Isaac Schlueter宣布，他正在将该项目的领导权移交给贡献者和Joyent的雇员TJ Fontaine。Joyent是Node.js项目背后的管理企业。在2012年6月Node.js的创建者Ryan Dahl 让位之后，Isaac一直是该项目的领导者。在随后的一篇博文中，TJ Fontaine详细列举了Node.js在接下来的一年中的一些目标。</p>
-<p>“Node.js的下一阶段（<a href="http://blog.nodejs.org/2014/01/15/the-next-phase-of-node-js/">The Next Phase of Node.js</a>）”这篇博文，论述了TJ在过去的一年中对该项目的重大贡献，也谈到了Isaac的未来计划。据Isaac介绍，TJ实际上已经领导Node有段时间了，现在只是将这一转变正式化。TJ在<a href="http://venturebeat.com/2014/01/15/the-king-is-dead-long-live-the-king-meet-nodes-newest-leader/">接受VentureBeat采访</a>时谈到，“这一宣布差不多就是现状。Node已经在我领导下运作了一段时间。现在只是将其公开而已。”</p>
-<p>尽管Isaac这位前Joyent雇员仍然是项目提交者，不过他正在创建一家名为npm的新的创业公司，该公司将主要关注<a href="https://npmjs.org/">npm</a>这款流行的Node.js包管理器。尽管Isaac以他的方式确保围绕npm展开业务的社区不会改变npm目前的工作方式，但是这家公司的具体细节尚不明确。</p>
-<blockquote> 
- <p>“我正在启动一家名为npm的公司，以交付与npm相关的新的产品和服务。关于公司如何运作，以及我们将提供什么，我们将尽快分享更多细节。就目前而言，只要说‘目前免费的将继续免费，目前不太可靠的会更可靠一些’就够了。寻求新的收入是我们长期可持续地提供npm注册服务的保证，而且这必须小心翼翼地进行，以免损害我们共同构建起来的这一切。”</p> 
-</blockquote>
-<p>在<a href="http://blog.nodejs.org/2014/01/16/nodejs-road-ahead/">随后的一篇博文</a>中，TJ详述了Node.js在2014年的计划，其中包括即将发布的0.12版本。除此之外，他还探讨了与v8预期新版本的集成（v8是来自Google的开源JavaScript引擎，也是Node的基础），以及对更多工具的需求。</p>
-<p>然而，关于该项目未来的很多讨论都关注于如何更好地支持来自社区的反馈和参与。在<a href="http://venturebeat.com/2014/01/15/the-king-is-dead-long-live-the-king-meet-nodes-newest-leader/">VentureBeat的访谈</a>中也反复提到了这一点，Node.js正在组织一份行为准则，“即Fontaine所谓的将价值观——如包容性，这是Node项目不可或缺的——以及团队如何完成工作编写成规则”。</p>
-<p><strong>查看英文原文：</strong><a href="http://www.infoq.com/news/2014/01/node-leadership-change">A Change in Leadership for Node.js</a></p><br><br><br><br><br><br></body></html>
+<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>Google的Java编码规范</h3><p>Google最近发布了一份完整的<a href="http://google-styleguide.googlecode.com/svn/trunk/javaguide.html">Java编码规范</a>。规范的内容包括一些切实可行的硬性规定。Google内部均遵守此规范。该规范不仅涵盖了代码格式，还包括其他类型的约定和编码标准。</p>
+<p>该规范主要分为6大部分：源文件基本规范、源文件结构、代码格式、命名、编程实践和Javadoc。<i>源文件基本规范</i>说明文件名、文件编码、空格和特殊字符等规范要求。<i>源文件结构</i>说明许可信息、package和import声明、类成员顺序等规范要求。<i>代码格式</i>用于说明源代码中大括号、缩进、换行、空格、括号、枚举、数组、switch语句、注解、注释和修饰符等格式要求。<i>命名</i>说明了标识符（包、类、方法、常量、属性、局部变量和类变量）的命名规范和驼峰大小写定义。<i>编程实践</i>说明@Override、异常、静态成员和终结器的用法。Javadoc说明哪些地方需要Javadoc，以及它的格式要求。</p>
+<p>以下是从规范中摘录的一些内容：</p>
+<ul> 
+ <li>import中不能有通配符。</li> 
+ <li>重载方法应该放在一起连续出现。</li> 
+ <li>即使代码块中没有内容，或者只有一行代码，也必须使用大括号。</li> 
+ <li>2空格缩进。</li> 
+ <li>列宽是80或100个字符。</li> 
+ <li>不能使用类似C语言的数组变量声明。</li> 
+ <li>switch语句中，必须包含default语句。</li> 
+ <li>修饰符的顺序应按照Java语言规范推荐的顺序。</li> 
+ <li>常量命名应使用CONSTANT_CASE格式（译注：所有字母大写，单词使用下划线分隔）。注意，所有常量都必须是static final成员，但并不是所有的static final成员都是常量。</li> 
+</ul>
+<p>更多内容请阅读<a href="http://google-styleguide.googlecode.com/svn/trunk/javaguide.html">Google Java Style</a>。Oracle也提供了<a href="http://www.oracle.com/technetwork/java/javase/documentation/codeconvtoc-136057.html">官方的Java语言编码规范</a>。Google还提供了其它语言的代码风格指南，包括C++、Objective-C、Python、Shell、HTML/CSS、JavaScript和Lisp等等。</p>
+<p><strong>原文英文链接：</strong><a href="http://www.infoq.com/news/2014/02/google-java-coding-standards">Google's Java Coding Standards</a></p>
+<hr />
+<p>感谢<a href="http://www.infoq.com/cn/author/姚琪琳">姚琪琳</a>对本文的审校。</p>
+<p>给InfoQ中文站投稿或者参与内容翻译工作，请邮件至<a href="mailto:editors@cn.infoq.com">editors@cn.infoq.com</a>。也欢迎大家通过新浪微博（<a href="http://www.weibo.com/infoqchina">@InfoQ</a>）或者腾讯微博（<a href="http://t.qq.com/infoqchina">@InfoQ</a>）关注我们，并与我们的编辑和其他读者朋友交流。</p><br><br><br><br><br><br></body></html>

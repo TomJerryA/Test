@@ -1,12 +1,19 @@
-<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>Intel 发布新版移动跨平台开发工具HTML 5 XDK</h3><p>2013年12月，Intel宣布计划将其最新的XDK NEW变为正式的Intel XDK，以推动其成为主流HTML 5工具，并邀请所有的开发者在2014年2月月底之前从旧版本迁移到该版本。下面让我们看一下Intel XDK是什么以及在最新的版本中有什么新功能。</p>
-<p>Intel声称，Intel XDK的目标是帮助HTML5“实现其真正地跨平台、响应式、能在任何语言和环境下运行的承诺，而且它是基于标准的”（请查看其官方声明）。XDK包括一个HTML5开发环境和一组支持创建混合iOS和Android应用的云服务，而且这些应用能够直接提交到不同的App商店。</p>
-<p>最初的Intel XDK基于<a href="http://docs.appmobi.com/">appMobi</a>，其主要目标是支持对于现今部署移动应用非常关键的各种特性和服务：跨平台消息推送、应用推广、内置支付、实时更新、集成分析、游戏API服务和后端即服务。</p>
-<p>Intel XDK NEW发布于2013年10月，其中提供了几个基于桌面的开发工具，旨在减少开发时间，这是显著的进步。</p>
-<p>特别要指出的是，Intel XDK NEW提供了一个UI设计器，名为“App Designer”，支持多个框架（包括jQuery Mobile、Twitter Bootstrap和App Framework）；一个名为“Brackets”的代码编辑器，能本地管理所有由App Designer生成的文件；一个基于Ripple的设备模拟器，除了appMobi自己的设备API外，还支持Cordova 2.9，允许创建、测试、模拟、调试和构建基于Cordova的应用。</p>
-<p>此外，Intel XDK NEW并不依赖Java或任何特定的浏览器特性，且能在OS X、Windows和Ubuntu Linux上运行。</p>
-<p>Intel XDK最新版本主要关注的是改进对Android 4.X的开发支持，其中通过两种手段实现：增加将代码下载到Android设备并通过使用Intel的XDK调试器测试/调试应用的功能；并增加能在运行期间跟踪应用瓶颈的功能，以改善对用户的响应。</p>
-<p>用户可以通过访问Intel开发者专区获得<a href="http://software.intel.com/en-us/html5/home">Intel XDK</a>。</p>
-<p><strong>查看英文原文：</strong><a href="http://www.infoq.com/news/2014/01/Intel-HTML5-XDK">Intel Pushes Mobile Cross Platform Development with its HTML5 XDK</a></p>
-<hr />
-<p>感谢<a href="http://www.infoq.com/cn/author/臧秀涛">臧秀涛</a>对本文的审校。</p>
-<p>给InfoQ中文站投稿或者参与内容翻译工作，请邮件至<a href="mailto:editors@cn.infoq.com">editors@cn.infoq.com</a>。也欢迎大家通过新浪微博（<a href="http://www.weibo.com/infoqchina">@InfoQ</a>）或者腾讯微博（<a href="http://t.qq.com/infoqchina">@InfoQ</a>）关注我们，并与我们的编辑和其他读者朋友交流。</p><br><br><br><br><br><br></body></html>
+<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>MapReduce框架Yarn、Web增量更新算法、面向查询服务——架构周报</h3><p>本期的架构周报主要关注MapReduce框架Yarn、HBase写数据过程分析、用增量更新算法为web应用节省流量以及.NET应用架构设计中如何进行面向查询服务的参数化查询设计等。</p>
+<h2><strong>技术选型</strong></h2>
+<p><strong>MapReduce框架Yarn分析</strong></p>
+<p>博文“<a href="http://blog.sina.com.cn/s/blog_829a682d0101lc9d.html">Yarn详解</a>”总结了MapReduce框架Yarn的产生背景，与之前框架的优势对比，以及运行机制。</p>
+<p>Yarn是一个分布式的资源管理系统，用以提高分布式的集群环境下的资源利用率，这些资源包括内存、IO、网络、磁盘等。其产生的原因是为了解决原MapReduce框架的不足。最初MapReduce的committer们还可以周期性的在已有的代码上进行修改，可是随着代码的增加以及原MapReduce框架设计的不足，在原MapReduce框架上进行修改变得越来越困难，所以MapReduce的committer们决定从架构上重新设计MapReduce,使下一代的MapReduce(MRv2/Yarn)框架具有更好的扩展性、可用性、可靠性、向后兼容性和更高的资源利用率以及能支持除了MapReduce计算框架外的更多的计算框架。Yarn/MRv2最基本的想法是将原JobTracker主要的资源管理和job调度/监视功能分开作为两个单独的守护进程。有一个全局的ResourceManager(RM)和每个Application有一个ApplicationMaster(AM)，Application相当于map-reduce job或者DAG jobs。ResourceManager和NodeManager(NM)组成了基本的数据计算框架。ResourceManager协调集群的资源利用，任何client或者运行着的applicatitonMaster想要运行job或者task都得向RM申请一定的资源。ApplicatonMaster是一个框架特殊的库，对于MapReduce框架而言有它自己的AM实现，用户也可以实现自己的AM，在运行的时候，AM会与NM一起来启动和监视tasks。</p>
+<p>有关Yarn框架的实现原理，读者可以查看较早之前的一篇文章“<a href="http://www.ibm.com/developerworks/cn/opensource/os-cn-hadoop-yarn/">Hadoop新MapReduce框架Yarn</a>”。</p>
+<p><strong>用增量更新算法为web应用节省流量</strong></p>
+<p>该<a href="http://www.ibm.com/developerworks/cn/web/1401_luyf_reducejs/">文章</a>主要讲解如何利用 HTML5 的localstorage和增量更新算法实现JavaScript的本地化，并在版本更新的时候基本做到修改多少内容就下载多少内容，为网站和用户节省90%以上的JavaScript流量，尤其适合快速迭代开发的手机网站使用。</p>
+<p>传统的 JavaScript 资源存放方式一般就是通过 CDN 方式存放，缓存方面通过增加 maxage、Last-Modified,etag 等方式依靠 HTTP Cache 相关协议进行缓存。这种方式的问题主要是缓存命中率不是很高，另外在快速迭代的产品中，由于代码经常需要修改，虽然很多时候只是修改很小的一部分内容，但是还是需要用户全量下载整个 JavaScript 文件，造成流量上的耗费。除了传统方式的存放和加载 JavaScript,HTML5 给我们提供了另一种 JavaScript 资源缓存的方式，即 HTML5 的离线存储或 application cache.通过给 manifest 头文件定义资源的本地存放方式，我们可以完全实现静态数据本地存储，减少了大量网络请求，减少网络流量。但是这种方式同时也有他致命的缺点：appcache 机制定义了在更新离线存储版本的时候，用户的首次进入页面并不会启用最新的资源文件，而是由一个后台程序先把资源下载到本地，用户需要刷新或者再次进入页面时才会启用新的资源文件，当然这个问题可以通过监听离线缓存的更新完成时间，在更新完成的时候程序去刷新页面以启用新的静态资源，但是这个方式带来了一个致命的不佳的用户体验，就是用户进来后会看到浏览器自己刷新了一下页面，对一些网站来说这显然不能接受。对于引入了离线存储的页面，是没有办法去掉离线存储的，这给一些首页是动态页面的网站造成了极大的困扰。一些灰度发布的策略无法很好的实施。</p>
+<h2><strong>架构技巧</strong></h2>
+<p><strong>面向查询服务的参数化查询设计</strong></p>
+<p>该<a href="http://www.cnblogs.com/wangiqngpei557/p/3538940.html">博文</a>以.NET应用架构设计为前提，通过运用”关注点分离“通用设计思想来对查询服务在服务端的强耦合进行分解，将强耦合从服务端迁移出来通过策略性的配置将关注点放入各自的客户端，从而有效的解决服务不再臃肿的问题。</p>
+<p>按照作者的案例，有一个SOA商品（Item）查询接口，这个接口很通用，主要用来支撑日常很多其他系统的大量关于Item的查询，尤其是在高峰期间该服务的压力是很大的；我们站在SOA的角度看这个接口，这个通用的接口解决了众多的查询业务，确实不错，但是我们切换一下角度，站在每一个调用接口的访问端看似乎并不是很满意或者说牺牲了部分性能上的代价，因为我们无法干净利落的只获取当前这个业务点需要的数据项，这个Item服务接口所返回的数据项必须同时满足所有调用它的业务点，哪怕这次调用我只需要用到Item的三分之一的数据字段都不行，每次都会把不需要的字段都查询出来，不管是返回的性能、查询的性能，其实都是可以通过调整设计来避免的。</p>
+<p>以往我们的思路都是集中在服务端，常规做法都是提供了一个能够容纳。所有查询客户端需求的数据实体，客户端可选择的余地很有限，无法只获取自己所需要的几个数据项，甚至各个业务点在不同的情况下都有可能需要两到三个数据返回实体；总而言之，面向数据查询的服务接口如果要向着SOA方向发展那就必须包含SOA设计上的相关原则，如这里的面向查询为主的服务设计其实就是缺少SOA原则中的”服务应具有策略性“一原则。</p>
+<p>为什么以往一直没有暴露出这个问题呢，是因为以往都是在本地直接调用“查询引擎”，如：SQLSERVER，在“查询引擎”的最后一层就是应用程序，而应用程序中可以编写很多彼此类似的查询方法，每个方法可能只有一两个字段的差异性，或者通过“企业应用架构模式—查询对象模式<strong>”</strong>来将不同的方法合在一起通过一个可以调整查询字段的对象来配置本次需要的查询字段；由于现在我们已将查询服务化，就不太可能再去为了所有客户端在去适应性的去扩充类似没有太大价值的接口，但是客户端又需要将自己所需要的查询字段让服务知道，所以这里的解决方案可以称为面向SOA的“企业应用架构模式—查询对象模式”。</p>
+<p><strong>HBase写数据过程分析</strong></p>
+<p>除了使用HBase，深入了解和分析HBase的实现原理也是非常有效的，既可以加深对HBase的理解和运用，又可以借鉴其出色的设计方法。该<a href="http://wangneng-168.iteye.com/blog/1982592">博文</a>以HBase0.94.12为基础，从Client和Server端两个角度分析了写数据过程。</p>
+<p>比如，对于写操作，HBase内部就是多线程，线程数量与批量提交的数据涉及的region个数相同，通常情况下不需要再自己写多线程代码，自己写的多线程代码主要是解决数据到HTable的put这个过程中的性能问题，数据进入put的缓存，当达到writeBufferSize设定的大小后才会真正发起写操作（如果不是自己控制flush），这个过程的线程数与这批数据涉及的region个数相同，会并行写入所有相关region，一般不会出现性能问题，当涉及的region个数过多时会导致创建过多的线程，消耗大量的内存，甚至会出现线程把内存耗尽而导致OutOfMemory的情况，比较理想的写入场景是调大writeBufferSize，并且一次写入适量的不同regionserver的region，这样可以充分把写压力分摊到多个服务器。</p>
+<p>欢迎读者朋友推荐或者投稿架构相关的文章，联系邮箱为<a href="mailto:editors@cn.ibm.com">editors@cn.infoq.com</a>，标题请注明“架构专栏”。</p><br><br><br><br><br><br></body></html>

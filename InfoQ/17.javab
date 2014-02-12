@@ -1,186 +1,67 @@
-<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>Writing Automated Tests with Jazz Automation</h3><h2>Introduction to Jazz Automation</h2>
-<p>Jazz Automation is a testing framework built to automate and speed up acceptance/functional testing for all types of web based systems or static websites<ins datetime="2013-10-03T18:14" cite="mailto:Douglas%20Bullard"> </ins>and in any industry. It also lends itself to easily implement automated integration testing. Historically this type of testing has been all manual, labor intensive, and inaccurate. With automated testing, companies are producing higher quality applications, producing fewer production bugs, and increasing their speed to market. Jazz Automation supports the following web browsers: IE, Firefox, Safari, Chrome.<br /> <br /> Jazz Automation differs from other automated testing frameworks by allowing test writers to describe how software features work in plain and understandable English.<br /> <br /> Most automated testing frameworks, such as Selenium and Cucumber, require programming in languages like Java and Ruby before tests are executed. Jazz Automation provides an abstraction layer, removing programming requirements from test writers and configurators.</p>
-<h2>Writing Your First Test Script</h2>
-<p>Let’s take a look at a specification for testing an eCommerce website.</p>
-<pre>
-Feature: Go to the Amazon web site, search for Harry Porter in the book section. Find
- Harry Potter and the Chamber of Secrets (book2) and then add it to the cart.
-   
-   Background: Establish the test settings for the test
-     Given the following settings:
-       | url             | http://www.amazon.com | 
-       | platform        | Vista                 |
-       | browser         | firefox               |
-       | browser version | 23                    |
-   Scenario: Verify that we have an empty cart on the amazon home page
-     Given I am ON the &quot;HomePage&quot;
-     Then I should EXPECT
-       | cartCount       | 0                     |
-   Scenario: Search for Harry Porter from the books category
-     Given I am ON &quot;HomePage&quot;
-     And I click &quot;allButton&quot;
-     And I select
-       | selectCategory  | Books                  |
-     And I enter
-       | searchField     | Harry Potter           | 
-     And I click &quot;go&quot;
-     And I wait 5 seconds
-     Then I should be ON the &quot;SearchResultsPage&quot;
-   Scenario: From the Search Results Page, verify the first result Special
-             Edition Harry Potter Paperback Box Set 
-     Given I am ON &quot;SearchResultsPage&quot;
-     Then I should EXPECT
-       | firstResult           | Special Edition Harry Potter Paperback Box Set |
-       | chamberOfSecretsBook2 | visible
-       |
-   Scenario: Click on the Chamber Of Secrets Book2 to reveal the details
-        Given I am ON &quot;SearchResultsPage&quot; 
-        And I CLICK &quot;chamberOfSecretsBook2&quot;
-        Then I should be ON the &quot;BookDetailPage&quot;
-   Scenario: Verify the details
-        Given I am ON the &quot;BookDetailPage&quot; 
-        Then I should EXPECT
-        | kindlePrice          | $7.99                    |
-        | hardcoverPrice       | $13.94                   |
-        | paperbackPrice       | $8.56                    |
-    Scenario: Add the book to my cart
-      Given I am ON the &quot;BookDetailPage&quot;
-      And I click &quot;hardcover&quot;
-      And I click &quot;addToCart&quot;
-      Then I should be ON the &quot;PreCheckoutPage&quot; 
-    Scenario: On the pre-checkout page, verify the details
-      Given I am ON the &quot;PreCheckoutPage&quot;
-      Then I should EXPECT
-        | orderSubtotal            | 13.94       |
-        | cartCount                | 1           |
-    Scenario: proceed to checkout
-      Given I am ON the &quot;PreCheckoutPage&quot;
-         And I click &quot;proceedToCheckout&quot;
-         Then I should be ON the &quot;SignInPage&quot; 
-         The test script should be extremely easy to read and understand, right? </pre>
-<p>The test case language shown above is Gherkin. Gherkin is a domain specific language (DSL) that allows us to describe how an application should work in plain, understandable English. When developing test scripts, the scripter should not need to understand or describe the implementation. Most of the above specification is free-text; however Gherkin has a few key words: <b>Feature</b>, <b>Scenario</b>, <b>Given</b>, <b>When</b>, <b>And</b>, and <b>Then</b>. Jazz Automation has extended this list of key words to include: <b>Expect</b>, <b>On</b>, <b>Click</b>, <b>Hover</b>, <b>Wait</b>, <b>Refresh</b>, <b>Enter</b>, <b>Select</b>, <b>Forward</b>, <b>Backward</b>, <b>Visible</b>, and <b>Invisible</b>.</p>
-<p>There’s more to Gherkin than will be discussed here; however what’s important to know is that it uses a line-based format must remain intact<ins datetime="2013-10-03T18:20" cite="mailto:Douglas%20Bullard">,</ins> so that Jazz Automation will know how to execute the steps for each feature.</p>
-<p>With Jazz Automation, there is no need to write any code, be that Java, Ruby, etc. to execute the above test. With Jazz Automation, each website page must be defined as a Page. Both JSON and XML are supported for Page configuration. Each page contain<ins datetime="2013-10-03T18:22" cite="mailto:Douglas%20Bullard">s</ins> high level attributes that allow Jazz Automation to verify that a page has been loaded properly. Also, each page should have one or more elements defined. Take a closer look at the above specification and you will notice that several words are surrounded by double quotes. The objects within the double quotes are significant to Jazz Automation. These represent Page objects or elements on a page. These elements are defined in a one or more page files for each project.</p>
-<p>Let’s take a look at the test folder structure.</p>
-<div id="lowerFullwidthVCR"></div>
-<p><img src="http://www.infoq.com/resource/articles/jazz-testing/en/resources/Fig1.png" alt="" _href="img://Fig1.png" _p="true" /></p>
-<p>First we notice the /features directory. This where all test specifications should reside. The file is of type .feature. Jazz Automation can execute one or more features at a time. The features and order in which they are executed is defined in the <b>jazz.properties</b> file. Next, we notice there are several ‘page files’ located in the /pages directory. This is where a Test Configurator will define each page and page elements that will be accessed during a test. The test specifications can only refer to pages defined here and to page elements defined within a page file. We will cover custom locations for page files later. Lastly, we notice the mandatory <b>jazz<ins datetime="2013-10-03T21:43" cite="mailto:Dedrick%20Boyd">.</ins></b><b>properties</b> file. Let’s skip over it for now.</p>
-<h2>On to Page Configuration</h2>
-<p>Test Configurators are the key to properly configuring a Jazz Automation test. Jazz Automation supports both JSON and XML for page configuration.</p>
-<p>Test configurators need to have experience with some web technologies such as jQuery. Test configurators need to create a page for each website page to be accessed.</p>
-<p>A page has a few required attributes. Each page must have a pageName and at least one domElement. The pageName is heavily used in features and it should be meaningful so that testers know exactly website page it refers to. DomElements are the web page elements used to validate the software. Typically<ins datetime="2013-10-03T18:25" cite="mailto:Douglas%20Bullard">,</ins> they refer to label values, drop-down values, images, buttons, data displayed (pricing, etc.). The name of these elements should be meaningful so that the test writers understand each component’s purpose.</p>
-<p>Let’s take a look at a JSON page configuration.</p>
-<pre>
-{
-    &quot;pageName&quot;:&quot;HomePage&quot;,
-    &quot;title&quot;: &quot;Amazon.com: Online Shopping for Electronics, Apparel, Computers, Books, DVDs &amp; more&quot;,
-    &quot;urlExtension&quot;: &quot;www.amazon.com&quot;,
-      &quot;keyDomElementName&quot;: &quot;searchField&quot;,
-    &quot;domElements&quot; :
-    {
-        &quot;cartCount&quot; :
-        {
-            &quot;jquery&quot;: &quot;$('#nav-cart-count')&quot;
-        },
-        &quot;allButton&quot; :
-        {
-            &quot;jquery&quot;: &quot;$('#nav-search-in')&quot;
-        },
-        &quot;selectCategory&quot; :
-        {
-            &quot;jquery&quot;: &quot;$('#searchDropdownBox')&quot;
-        },
-        &quot;searchField&quot; :
-        {
-            &quot;jquery&quot;: &quot;$('#twotabsearchtextbox')&quot;
-        },
-        &quot;go&quot; :
-        {
-            &quot;jquery&quot;: &quot;$('.nav-submit-input')&quot;
-        }
-    }
-}</pre>
-<p>Let’s define the key components of a page configuration file. </p>
-<table cellspacing="0" cellpadding="0" border="1"> 
- <tbody> 
-  <tr> 
-   <td width="183" valign="top"> <p>Component</p> </td> 
-   <td width="95" valign="top"> <p>Required</p> </td> 
-   <td width="90" valign="top"> <p>Blank Allowed</p> </td> 
-   <td width="94" valign="top"> <p>Omission Allowed</p> </td> 
-   <td width="129" valign="top"> <p>Notes</p> </td> 
-  </tr> 
-  <tr> 
-   <td width="183" valign="top"> <p>pageName</p> </td> 
-   <td width="95" valign="top"> <p>Yes</p> </td> 
-   <td width="90" valign="top"> <p>No</p> </td> 
-   <td width="94" valign="top"> <p>No</p> </td> 
-   <td width="129" valign="top"> <p>By convention, the value should match the file name.</p> </td> 
-  </tr> 
-  <tr> 
-   <td width="183" valign="top"> <p>Title</p> </td> 
-   <td width="95" valign="top"> <p>No</p> </td> 
-   <td width="90" valign="top"> <p>Yes</p> </td> 
-   <td width="94" valign="top"> <p>Yes</p> </td> 
-   <td width="129" valign="top">&nbsp;</td> 
-  </tr> 
-  <tr> 
-   <td width="183" valign="top"> <p>urlExtension</p> </td> 
-   <td width="95" valign="top"> <p>No</p> </td> 
-   <td width="90" valign="top"> <p>Yes</p> </td> 
-   <td width="94" valign="top"> <p>No</p> </td> 
-   <td width="129" valign="top">&nbsp;</td> 
-  </tr> 
-  <tr> 
-   <td width="183" valign="top"> <p>keyDomElementName</p> </td> 
-   <td width="95" valign="top"> <p>No</p> </td> 
-   <td width="90" valign="top"> <p>Yes</p> </td> 
-   <td width="94" valign="top"> <p>Yes</p> </td> 
-   <td width="129" valign="top"> <p>Recommended to ensure the page has loaded fully, prior to moving forward with the scenario</p> </td> 
-  </tr> 
-  <tr> 
-   <td width="183" valign="top"> <p>domElements</p> </td> 
-   <td width="95" valign="top"> <p>Yes</p> </td> 
-   <td width="90" valign="top"> <p>No</p> </td> 
-   <td width="94" valign="top"> <p>No</p> </td> 
-   <td width="129" valign="top">&nbsp;</td> 
-  </tr> 
- </tbody> 
-</table>
-<p></p>
-<p>That’s it!<ins datetime="2013-10-03T18:25" cite="mailto:Douglas%20Bullard"> </ins></p>
-<p>Once the remaining pages are defined, we can run the scenario through completion. Test configurators are required to know one of the following: jQuery, XPath, or CSS. We use these to ‘select’ the web elements needed for testing. JQuery is the preferred selector mechanism for Jazz Automation, and most QA analysts can pick up jQuery in a few days, especially with all the online tutorials and modern-day web browser developer tools available.</p>
-<h2>General Configuration</h2>
-<p>The final item for discussion is the required jazz.properties file. This configuration file contains a few general configuration items such as the project name (used in reporting), a flag indicating if the tests should be run remotely or on the local system, action and page pace, and the features to be executed. There are additional optional configuration properties that have been omitted.</p>
-<pre>
-#project name
-projectName: Amazon
-
-# turn on remote support. if useRemote true, you must specify the following remoteWebDriverUrl property.
-useRemote: false
-
-# remote web driver url - usually your sauceLabs url
-remoteWebDriverUrl: http://jazzautomation:****@ondemand.saucelabs.com:80/wd/hub
-
-# you can customize you folder name of pages. By default it is pages
-#pagesDirectoryName: pages
-
-# page pacing between two pages loading
-pagePace: 10
-#action pacing between two actions on the same page. The default value is &quot;1 second&quot;. 
-actionPace: 1
-
-# features: can be a list of features, separated by comma
-features:searchForHarryPotter</pre>
-<h2>Reporting</h2>
-<p>For each test, Jazz Automation produces a report that details the test run. If the tests are successful, a simple report is generated with a success rate of 100%. Upon any failure, a screen shot will be taken where the error occurred and inserted into the report. Additionally, the report is generated from a data file produced during the test run. This data file can be used for historical tracking, charting, and trending.</p>
-<p>Let’s take a look at a failed test report:</p>
-<p>(Click on the image to enlarge it)</p>
-<p><a href="/resource/articles/jazz-testing/en/resources/Fig2.png" _href="resource://Fig2.png"><img src="http://www.infoq.com/resource/articles/jazz-testing/en/resources/Fig2small.png" alt="" _href="img://Fig2small.png" _p="true" /></a></p>
-<h2>Conclusion</h2>
-<p>This concludes our tour of writing automated tests using Jazz Automation. For the curious, there’s plenty more to learn. For example, Jazz Automation can also be used remotely with technology offered by companies such as Sauce Labs so that your organization does not have to maintain every possible browser and operating system combination required for full scale testing. One can also dig into how Jazz Automation works with websites that do not use jQuery. Hint: it’s dynamically inserted.</p>
-<p>Jazz Automation completes the continuous integration loop by also testing the user interface and providing immediate feedback. This is more critical than ever as the industry moves to feature rich HTML5 and JavaScript user interfaces. Organizations need to know immediately that the application is working as expected from top to bottom. Further, the use of Gherkin as our DSL will allow key stakeholders to articulate their understanding of how the application should work and communicated effectively with technical resources, while leaving the development team free to build the product.</p>
-<p>Jazz Automation should not be confused as a replacement for conventional unit and integration testing frameworks such as JUnit or TestNG. Unit and integration testing is still critical to successful software implementation; Jazz Automation takes it a step further and now allows automated tests to be written against the user interface. Additionally, Jazz Automation tests at the DOM level, so you can be sure that moving items around within a web page will not result in test errors.</p>
-<p>Automated user interface testing is not a priority for every organization, but where it is, never let front-end or regression testing slow you down again.</p>
+<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>Answering Common Cloud Security Questions from CIOs</h3><p>With the news stories of possible data breaches at enterprises like Target, and the current trend of companies migrating to cloud environments for the flexibility, scalability, agility, and cost-effectiveness they offer, CIOs have been asking hard questions about cloud security.</p>
+<p>As CIO, protecting your data (and your users) is one of your key responsibilities. Whether you already have some cloud projects running or are starting your first cloud project, these questions and answers may provide you with solutions and introduce some new techniques.</p>
+<p><strong>InfoQ: Is the cloud safe?</strong></p>
+<blockquote> 
+ <p><strong>Gilad</strong>: The cloud, by definition, is not more or less safe than your own data center. As an interesting note, the recent media storm around the NSA, which started as a “cloud computing security” story, has morphed into a more general discussion. It turns out the NSA is able to eavesdrop on physical servers in physical data centers and has actually done so at many of the world’s most secure organizations.</p> 
+ <p>Today, cloud computing has been discovered as safe and effective for a wide range of projects and data types, ranging across most vertical industries and market niches. Regulated, sensitive areas such as finance, health, legal, retail or government - are all in various stages of going to the cloud..</p> 
+ <p>However, just like certain security precautions are taken in the physical world, cloud security also entails taking the appropriate precautions.</p> 
+</blockquote>
+<p><strong>InfoQ: How does migrating to the cloud change my risks?</strong></p>
+<blockquote> 
+ <p><strong>Gilad</strong>: Migrating applications and data to the cloud obviously shifts some responsibilities from your own data center to the cloud provider. It is an act of outsourcing. As such, it always involves a shift of control. Taking back control involves procedures and technology.</p> 
+ <p>Cloud computing may be seen – in some aspects – as revolutionary; yet in other aspects it is evolutionary. Any study of controlling risks should start out by understanding this point. Many of the things we have learned in data centers evolve naturally to the cloud. The need for proper procedures is unchanged. Many of the technologies are also evolving naturally.</p> 
+ <p>You should therefore start by mapping out your current procedures and current security-related technologies, and see how they evolve to the cloud. In many cases you’ll see a correspondence.</p> 
+ <p>You’ll find however, that some areas really are a revolution. Clouds do not have walls, so physical security does not map well from the data center to the cloud. Clouds involve employees of the cloud service provider, so you need to find ways to control people who do not work for you. These are significant changes, and they require new technology and new procedures.</p> 
+</blockquote>
+<p><strong>InfoQ: What are the most important aspects of a cloud security policy?</strong></p>
+<blockquote> 
+ <p><strong>Gilad</strong>: Continuing the themes of evolution and revolution, some aspects of cloud security will seem familiar. Firewalls, antivirus, and authentication – are evolving to the world of cloud computing. You will find that your cloud provider often offers you solutions in these areas; and traditional vendors are evolving their solutions as well.</p> 
+ <p>Some aspects may change your current thinking. Since clouds do not have walls, and cloud employees could see your data - you must create metaphoric walls around your data. In cloud scenarios, data encryption is the recognized best practice for these new needs.</p> 
+ <p>Incidentally, data encryption also helps with a traditional data center need – most data breaches happen from the inside, so the threat is not just from cloud employees. However, there is no question that the threat from cloud insiders has shined a new spotlight on the need for data encryption.</p> 
+</blockquote>
+<p><strong>InfoQ: What is the best practice for encrypting cloud data?</strong></p>
+<blockquote> 
+ <p><strong>Gilad</strong>: You should encrypt data at rest and in motion. Encrypting “in motion” is already well known to you – the standards of HTTPS/SSL and IPSEC apply equally well in the data center and in the cloud.</p> 
+ <p>Encrypting “at rest” means that the data must be encrypted when it resides on a disk, in a database, on a file system, in storage, and of course if it is backed up. In the real world, people have not always done this in data centers – often relying on physical security as a replacement. In the cloud, physical security is no alternative – you must encrypt sensitive data.</p> 
+ <p>This actually means data must be encrypted constantly as it is being written, and decrypted only when it is going to be used (i.e. just before a specific calculation, and only in memory). Standards such as Advanced Encryption Standard (AES) are commonly used for data encryption at rest.</p> 
+</blockquote>
+<p><strong>InfoQ: Does cloud encryption singlehandedly protect data?</strong></p>
+<blockquote> 
+ <p><strong>Gilad</strong>: If data is properly encrypted it is, in a sense, locked and cannot be used if it falls into the wrong hands. Unless, of course, those hands have a key.</p> 
+ <p>Proper management of encryption keys is as important as the encryption itself. In fact, if you keep your encryption keys to yourself – you keep ownership of your data. This is an interesting and fundamental point – in the cloud you are outsourcing your infrastructure, but you can maintain ownership by keeping the encryption keys.</p> 
+ <p>If encryption keys are stored alongside the data, any breach that discloses the data will also disclose the key to access it. If encryption keys are stored with cloud providers, they own your data.</p> 
+ <p>Think of your data like a safe deposit box – would you leave your key with the banker? What if he gets robbed? What if his employees are paid to make copies of your key?</p> 
+ <p>A best practice is <a href="http://www.porticor.com/technology/">split key encryption</a>. With this method, your data is encrypted (e.g. with AES), and then the encryption key is split into parts. One part is managed with a cloud security provider and one part stays only with you. This way, only you control access to your data.</p> 
+ <p>Even if your encrypted data is compromised, the perpetrators will not be able to decrypt it and it will be useless to them.</p> 
+</blockquote>
+<p><strong>InfoQ: How can encryption keys be protected while they are in use?</strong></p>
+<blockquote> 
+ <p><strong>Gilad</strong>: Keys in use in the cloud do not have to be vulnerable. They can be protected using <a href="http://www.porticor.com/homomorphic-encryption/">homomorphic key management</a>. This cryptographic technique gives the application access to the data store without ever exposing the master keys to the encryption - in an unencrypted state. It also ensures that if such (encrypted) keys are stolen, they can still never be used to access your data store</p> 
+</blockquote>
+<p><strong>InfoQ: Is cloud data encryption in compliance with regulations?</strong></p>
+<blockquote> 
+ <p><strong>Gilad</strong>: Regulations like Payment Card Industry Data Security Standard (PCI DSS), the Health Insurance Portability and Accountability Act (HIPAA), and many others (GLBA, FINRA, PIPEDA, et al) require or encourage cloud data to be properly encrypted and encryption keys to be properly managed. Some of these regulations even provide for a sort of “safe harbor” – that is, if your data is breached, but you can prove that you took the necessary steps to encrypt it and maintain control of the encryption keys, you may save the financial burden, the bureaucratic reporting requirements, and the damage to reputation involved with such an event.</p> 
+</blockquote>
+<p><strong>InfoQ: Is cloud security cost-prohibitive and will it harm system performance?</strong></p>
+<blockquote> 
+ <p><strong>Gilad</strong>: The cloud is often chosen for its lower operational overhead, and sometimes for actual dollar savings, compared with traditional data centers. Securing a cloud project does not need to negate the cloud’s ease of use nor make the project prohibitively expensive.</p> 
+ <p>There are security solutions that require no hardware and, therefore, no large cap-ex investment. Pay-as-you-go business models make it easy to scale security up (or down) with the size of your project, as you add (or remove) virtual machines and data.</p> 
+ <p>Performance can also be good. Modern cloud security virtual appliances and virtual agents - are optimized for cloud throughput and latency. You’ll be able to dial up performance as your cloud project scales up. To take a concrete example – data encryption – good solutions will include a capability to stream data as it is being encrypted (or decrypted), and do so inside your cloud account. Such approaches mean that virtual CPUs available in your cloud will be able to handle your performance needs with low latency.</p> 
+</blockquote>
+<p><strong>InfoQ: Is there a way to protect cloud backups and disaster recovery?</strong></p>
+<blockquote> 
+ <p><strong>Gilad</strong>: Data must be secured throughout its lifecycle. Properly encrypting data while it is in use, but then offering hackers unencrypted replicas as backups defeats the purpose of encrypting in the first place. You must encrypt and own the encryption keys for every point of the lifecycle of your information. Fortunately solutions that are built for the cloud do exist, and they should cover backups as well as primary copies.</p> 
+</blockquote>
+<p><strong>InfoQ: What it more secure: a public cloud or a private cloud?</strong></p>
+<blockquote> 
+ <p><strong>Gilad</strong>: Public and private clouds each have pros and cons in terms of ownership, control, cost, convenience and multi-tenancy. We have found that private clouds often require security controls similar to public ones. Use cases may involve users external to your company; or large “virtual” deployments with multiple internal projects, each with a need for strong security segregation. Your data can be properly encrypted, your keys can be properly managed, and you can be safe in all the major cloud scenarios: private, public, or hybrid.</p> 
+</blockquote>
+<p><strong>InfoQ: If my data is in the cloud, my security is in the cloud, and my backup is in the cloud, what do I control?</strong></p>
+<blockquote> 
+ <p><strong>Gilad</strong>: If you use encryption properly and maintain control of the encryption keys, you have replaced your physical walls with mathematical walls. You will own your data. Even though you do not control the physical resources, you maintain control of what they contain. This is one reason why encryption in the cloud is the best practice.</p> 
+ <p>By properly using multiple regions or even multiple cloud providers, you can also ensure that you always have availability and access to your project and your data.</p> 
+ <p>By combining such techniques, you do take back control. As CIO and owner of your data, you must always control your data – from beginning to end. Your control does not need to be sacrificed when you migrate to the cloud, though it may need to be managed differently.</p> 
+</blockquote>
 <h2>About the Author</h2>
-<p><strong><img vspace="3" align="left" hspace="3" src="http://www.infoq.com/resource/articles/jazz-testing/en/resources/1Dedrick-Boyd.jpg" alt="" _href="img://1Dedrick-Boyd.jpg" _p="true" />Dedrick Boyd</strong> is a seasoned IT professional with extensive experience across the full software development and product life cycles. He has technical skills and management experience with small and large development teams in a variety of industries including retail, pharmaceutical, media and entertainment, healthcare, and financial services. Dedrick is currently employed at <a href="http://www.statementcorp.com/">Statement</a>, where he is a technology innovator as well as a relationship manager. He holds a bachelors in Management Information Systems from Florida State University. Dedrick’s hobbies include world travel, reading, cooking, american football, and spending time with his family.</p><br><br><br><br><br><br></body></html>
+<p><strong><img src="http://www.infoq.com/resource/articles/cloud-security-questions/en/resources/gilad-pn.jpg" vspace="3" hspace="3" align="left" alt="" _href="img://gilad-pn.jpg" _p="true" />Gilad Parann-Nissany</strong> is the founder and CEO of <a href="http://www.porticor.com/">Porticor Cloud Security</a>. He is a pioneer in the field of cloud computing who has built SaaS clouds, contributed to SAP products and created a cloud operating system. He has written extensively on the importance of cloud encryption and encryption key management for PCI and HIPAA compliance. Gilad can be found on his&nbsp;<a href="http://www.porticor.com/articles/general/">blog</a>, <a href="https://twitter.com/giladpn">Twitter</a>, <a href="http://il.linkedin.com/in/giladparann">LinkedIn</a>, and <a href="https://plus.google.com/109000829856881765332/posts">Google+</a> discussing cloud security.</p>
+<p>&nbsp;</p><br><br><br><br><br><br></body></html>

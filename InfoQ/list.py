@@ -1,8 +1,8 @@
 <html>
  <head></head> 
- <body>
-  <div>
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/10.py">Firefox OS向け開発を始めるための資料</a>Mozillaが開発するFirefox OSは“オープンなウェブのための完璧でスタンドアロンなオペレーティングシステムを構築するという目的”を追求しており、HTML、CSS、JavaScriptを使ってアプリケーションをインストールして実行できるようにしようとしている。LinuxとMozillaのGeckoをベースにしており、100％完全にオープンなスタックで作られている。
+ <body> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/10.py">Firefox OS向け開発を始めるための資料</a>Mozillaが開発するFirefox OSは“オープンなウェブのための完璧でスタンドアロンなオペレーティングシステムを構築するという目的”を追求しており、HTML、CSS、JavaScriptを使ってアプリケーションをインストールして実行できるようにしようとしている。LinuxとMozillaのGeckoをベースにしており、100％完全にオープンなスタックで作られている。 
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/9.py">InfoQの新機能 - RSSで好みのトピックをフォロー</a>2014年，InfoQはRSS公開用のトピックページを用意した。RSSリーダを使って，好みのトピックをフォローできる。 
@@ -150,6 +150,6 @@
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/13.py">Nevron Open Visionで実現するクロスプラットフォーム開発</a>Windows Forms、Windows Presentation Framework (WPF)、SilverlightをサポートしたNevron Open Vision(NOV)がリリースされた。このフレームワークを使えば、開発者は複数のOSやでバイス、環境でひとつのプレゼンテーションレイヤを使い回すことができる。今後のバージョンでMac OS、iOS、Android、WinRTをサポートする予定だ。 
-  </div>  
+  </div> 
  </body>
 </html>
