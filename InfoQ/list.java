@@ -1,8 +1,8 @@
 <html>
  <head></head> 
- <body>
-  <div>
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/45.java">Design Patterns for Cloud-Hosted Applications</a>The patterns &amp; practices group at Microsoft have released a guide with solutions and patterns suitable when implementing cloud-hosted applications. The guide contains ten guidance topics together with 24 design patterns targeting eight categories of problems covering common areas in cloud application development. Also included are ten sample applications to demonstrate the usage these patterns.
+ <body> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/45.java">Design Patterns for Cloud-Hosted Applications</a>The patterns &amp; practices group at Microsoft have released a guide with solutions and patterns suitable when implementing cloud-hosted applications. The guide contains ten guidance topics together with 24 design patterns targeting eight categories of problems covering common areas in cloud application development. Also included are ten sample applications to demonstrate the usage these patterns. 
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/44.java">Running Spark on R with SparkR</a>UC Berkeley’s AMPLab announced a developer preview of their new project SparkR to use Apache Spark natively from R. 
@@ -150,6 +150,6 @@
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/46.java">Deploying Chrome Apps on Android&amp;iOS with Cordova 3.3.0</a>Developer can now deploy Chrome apps on Android and iOS with Apache Cordova 3.3.0. 
-  </div>  
+  </div> 
  </body>
 </html>
