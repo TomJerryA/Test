@@ -1,7 +1,7 @@
 <html>
  <head></head> 
- <body>
-  <div>
+ <body> 
+  <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/43.htmlb">Docker：利用Linux容器实现可移植的应用部署</a> Docker是一种在Linux容器里运行应用的开源工具，一种轻量级的虚拟机。除了运行应用，Docker还提供了一些工具，借助Docker Index或自己托管的Docker注册表对进行了集装箱化处理的应用进行分发，从而简化复杂应用的部署过程。 
   </div> 
   <div> 
@@ -150,6 +150,6 @@
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/46.htmlb">探讨NuoDB数据库的架构—2</a> 在本文的第2部分，作者为我们展示了事务系统的实现原理、管理层的作用、所有组件的协同工作方式，以及NuoDB今后的规划。 
-  </div>  
+  </div> 
  </body>
 </html>
