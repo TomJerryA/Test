@@ -1,33 +1,22 @@
-<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>在Android上使用Facebook Concel对文件加密</h3><p>Facebook将它的<a href="http://facebook.github.io/conceal/">Conceal</a>转为开源项目。Conceal是一套用于Android上的文件加密和鉴权的Java API，它使用<a href="http://www.openssl.org/">OpenSSL</a>算法的子集以及一些预先定义的选项，以便让库保持在较小的体积——目前仅有85KB大小。</p>
-<p>对于比较古老的Android设备——从Froyo到Jelly Bean——据Facebook表示，该库在这些设备上的性能要优于Android提供的原生支持。</p>
-<p><img src="http://infoqstatic.com/resource/news/2014/01/encrypt-android-conceal/zh/resources/0129000.png" width="600" _href="img://null" _p="true" alt="" /></p>
-<p>上图中的基准测试，展示了在Galaxy Y终端上，对原生Android算法（ES-CTR-HMAC-SHA1）、Bouncycastle（(AES-GCM）和Concea进行对比的结果l。</p>
-<p>Google在KitKat中引入了对OpenSSL的支持，但是其中使用的默认密码流则“表现差强人意”——<a href="http://facebook.github.io/conceal/faq/">在Facebook看来</a>，“当使用我们的密码流（参阅<a href="https://github.com/facebook/conceal/blob/master/java/com/facebook/crypto/streams/BetterCipherInputStream.java">BetterCipherInputStream.java</a>文件）来替换它时，将使得默认实现能够与Conceal相媲美。”</p>
-<p>以下代码片段展现了如何使用Conceal对文件进行加密：</p>
-<pre>
-//使用秘钥链和原生库的默认实现，来创建一个新的加密对象
-Crypto crypto = new Crypto(
-  new SharedPrefsBackedKeyChain(context),
-  new SystemNativeCryptoLibrary());
-
-//检查加密功能是否可用
-//如果Android没有正确载入库，则此步骤可能失败
-if (!crypto.isAvailable()) {
-  return;
-}
-
-OutputStream fileStream = new BufferedOutputStream(
-  new FileOutputStream(file));
-
-//创建输出流，当数据写入流的时候进行加密，并将加密后的数据输出到文件
-OutputStream outputStream = crypto.getCipherOutputStream(
-  fileStream,
-  entity);
-
-//将纯文本写入其中
-outputStream.write(plainText);
-outputStream.close();
-</pre>
-<p>Conceal可以用来加密大型文件，Facebook用它来加密手机/平板电脑SD卡中的数据和图片。</p>
-<p>在<a href="https://github.com/facebook/conceal/tree/master/native/third-party/patches/">Conceal的GitHub页面</a>上，还提供了基于OpenSSL构建相似库的<a href="https://github.com/facebook/conceal/tree/master/native/third-party/patches/">指南</a>。</p>
-<p><strong>查看英文原文：</strong><a href="http://www.infoq.com/news/2014/01/encrypt-android-conceal">Encrypting Files on Android with Facebook Conceal</a></p><br><br><br><br><br><br></body></html>
+<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>云托管应用软件的设计模式</h3><p>微软的<a href="http://pnp.azurewebsites.net/en-us/">模式与实施方案团队</a>最近发布了一个<a href="http://msdn.microsoft.com/en-us/library/dn568099.aspx">指南</a>，为云托管应用软件开发提供推荐的解决方案和模式。该指南讨论了每种模式适用于解决哪些问题、它的优点和可能导致的负面影响。尽管其例子主要面向<a href="http://www.windowsazure.com/">Windows Azure</a>，但该团队希望指南能够不限定于某种云平台，而是适用于各种分布式系统。 </p>
+<p>该团队通过搜集和分析开发者社区的反馈，将云应用软件开发过程中最常见的问题分为8大类： </p>
+<ul> 
+ <li><a href="http://msdn.microsoft.com/en-us/library/dn600219.aspx">可用性</a> </li>
+ <li><a href="http://msdn.microsoft.com/en-us/library/dn600216.aspx">数据管理</a> </li>
+ <li><a href="http://msdn.microsoft.com/en-us/library/dn600217.aspx">设计与实现</a> </li>
+ <li><a href="http://msdn.microsoft.com/en-us/library/dn600220.aspx">消息</a> </li>
+ <li><a href="http://msdn.microsoft.com/en-us/library/dn600218.aspx">管理与监控</a> </li>
+ <li><a href="http://msdn.microsoft.com/en-us/library/dn600224.aspx">性能与可扩展性</a> </li>
+ <li><a href="http://msdn.microsoft.com/en-us/library/dn600215.aspx">快速恢复能力</a> </li>
+ <li><a href="http://msdn.microsoft.com/en-us/library/dn600221.aspx">安全</a></li>
+</ul>
+<p>该团队对每一类问题都提供了指导并说明了常见的模式，以帮助开发人员解决那些经常遇到的问题。 </p>
+<p>该指南包括十个基础性指导专题，提供相关的基础知识和良好的实战技术。每个专题都涉及应用开发的某一个方面，并针对某一类问题。专题涉及异步消息、缓存和数据一致性等等。 </p>
+<p>指南中还包含了24种对于云托管应用软件非常有用的设计模式，每种模式都针对前面提到的一类或者几类问题。这些设计模式包括补偿事务（Compensating Transaction）、命令查询职责分离（CQRS）、管道过滤器（Pipes and Filters）等模式。所有模式都采用统一的格式进行描述，包括该模式适用的上下文环境和针对的问题、解决方案以及采用该模式需要注意的事项和可能导致的问题。每种模式都提供了一个基于Azure的例子。 </p>
+<p>为了演示这些设计模式的使用方法，该团队还创建了十个示例应用，所有源代码可在这里<a href="http://www.microsoft.com/en-us/download/details.aspx?id=41673">下载</a>。其中一个示例应用演示了有竞争关系的消费者如何从服务总线读取消息，另一个应用则演示使用过滤器来模拟管道。 </p>
+<p>该团队强调这些例子都非常简单，并不是为生产用途设计的。 </p>
+<p>Windows Azure是微软公司的云平台。 </p>
+<p><strong>原文英文链接：</strong><a href="http://www.infoq.com/news/2014/02/cloud-design-patterns">Design Patterns for Cloud-Hosted Applications</a></p>
+<hr />
+<p>感谢<a href="http://www.infoq.com/cn/author/梅雪松">梅雪松</a>对本文的审校。</p>
+<p>给InfoQ中文站投稿或者参与内容翻译工作，请邮件至<a href="mailto:editors@cn.infoq.com">editors@cn.infoq.com</a>。也欢迎大家通过新浪微博（<a href="http://www.weibo.com/infoqchina">@InfoQ</a>）或者腾讯微博（<a href="http://t.qq.com/infoqchina">@InfoQ</a>）关注我们，并与我们的编辑和其他读者朋友交流。</p><br><br><br><br><br><br></body></html>

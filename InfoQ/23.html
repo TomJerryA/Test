@@ -1,17 +1,18 @@
-<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>使用Cordova 3.3.0在Android或iOS上部署Chrome应用</h3><p>开发者现在可以使用Apache Cordova 3.3.0在Android和iOS上部署Chrome应用了。</p>
-<p>在<a href="http://www.infoq.com/news/2013/12/PhoneGap-3.3">Adobe发布PhoneGap 3.3</a>六周之后，Cordova 3.3.0现身于<a href="https://build.phonegap.com/">PhoneGap Build云服务</a>中。除了支持Android KitKat外，Cordova 3.3.0还支持在Android环境中<a href="https://developers.google.com/chrome-developer-tools/docs/remote-debugging">使用Chrome远程调试Webview</a>，以及在iOS环境中<a href="http://moduscreate.com/enable-remote-web-inspector-in-ios-6/">使用Safari进行远程调试</a>。发行注记给出了针对它支持的每个操作系统（ <a href="https://github.com/apache/cordova-ios/blob/master/RELEASENOTES.md">iOS</a>、<a href="https://github.com/apache/cordova-android/blob/master/RELEASENOTES.md">Android</a>、<a href="http://cordova.apache.org/announcements/2013/12/16/cordova-330.html#whats_new_in_windows_phone_7__8">Windows</a>）的细节。Cordova 2.5.0和2.7.0将在近期被废止，而对黑莓、WebOS或塞班开发者来说，则建议使用2.9.0版本。</p>
-<p>回到9月，Google提出了创建<a href="http://chrome.blogspot.ro/2013/09/a-new-breed-of-chrome-apps.html">能够部署在桌面</a>（想要查看此类应用的示例，可以点击此<a href="https://chrome.google.com/webstore/category/collection/for_your_desktop">链接</a>）的Chrome应用的可能性。这些应用可以运行在Windows、Mac和Linux上，并且能够以在线和离线的方式运行。最近，Google通过Cordova 3.3.0<a href="http://blog.chromium.org/2014/01/run-chrome-apps-on-mobile-using-apache.html">将Chrome应用扩展到了移动平台</a>上，这一方式支持的平台包括Android和iOS。</p>
-<p>要想创建这类用于移动设备的Chrome应用，开发者需要使用的工具链分别是：基于Node.js、JDK 7、Android SDK 4.4.2和Apache Ant（用于Android环境），或是Xcode 5、ios-deploy、iso-sim（用于iOS环境），并使用Cordova将应用封装在本地框架中，最后通过Google Play或苹果软件商店发布应用。</p>
-<p>以下Chrome API可用于开发移动应用：</p>
+<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>Parse发布Bolts，一个面向iOS和Android的底层库集合</h3><p><a href="https://developers.facebook.com/blog/post/2013/04/25/welcoming-parse-to-facebook/">数月前，Parse被Facebook收购</a>。最近，它开源了一个面向iOS和Android的底层库集合，统称为Bolts。根据Parse的公告，Bolts是Parse和Facebook共同努力将两家公司各自独立开发的小型底层工具类合并的结果。</p>
+<p>Tasks是<a href="https://github.com/BoltsFramework">GitHub上第一个可用的</a>Bolts组件，旨在按照<a href="http://www.promisejs.org/intro/">JavaScript Promises模型</a>处理异步操作。</p>
+<p>Promises试图解决<a href="http://www.promisejs.org/intro/">使用回调函数处理异步操作时通常会出现的若干问题</a>，尤其是这样一个事实：由于回调函数内部异步操作的嵌套，试图组合多个串行或并行异步操作会很快变得难以处理。</p>
+<p>为了这个目标，一个Promise代表一项可能已经完成或者可能尚未完成的任务的结果，而它最终可能会变成一个错误。这样，任何异步操作都可以立即在执行结果中返回一个Promise；该Promise可以随时访问，如果异步操作尚未完成，可能阻塞调用者。</p>
+<p>不过，一个Promise通常关联两个回调函数，用于在异步任务已经完成或者失败时调用。Promises的特别之处在于回调函数本身封装在Promise之中，所以它们只在将来的某个时间点执行，或者根本不执行，这依赖于原Promise的状况。</p>
+<p><img src="http://infoqstatic.com/resource/news/2014/02/parse-announces-bolts/zh/resources/0213000.png" width="600" _href="img://null" _p="true" alt="" /></p>
+<p>多亏这一机制，处理异步操作的序列变得简单易懂，因为Promises可以链到一起来代表异步操作和其回调函数，如上图所示（源自：<a href="http://www.slideshare.net/drprolix/promises-16473115">Promises，Luke Smith</a>。）</p>
+<p>Promises的另一项优点在于错误通过Promises链传播的方式：由于Promise知道它是否已经达成，它可以将错误状态沿着Promises链传播，直至找到一个错误处理器，因此，开发人员无需为链上的每个异步操作提供错误处理器。</p>
+<p>Promises实现的组件可以用在<a href="http://www.infoq.com/articles/surviving-asynchronous-programming-in-javascript">JavaScript</a>、<a href="http://www.infoq.com/presentations/Asynchronous-Scala-Java">Scala</a>、<a href="http://dev.clojure.org/display/design/Promises">Clojure</a>和许多其它语言中。</p>
+<p>Parse声称，与<a href="https://github.com/BoltsFramework/Bolts-Android">Android AsyncTask</a>和<a href="https://github.com/BoltsFramework/Bolts-iOS">iOS NSOperation</a>相比，Tasks有若干优势，其中包括：</p>
 <ul> 
- <li><a href="http://developer.chrome.com/apps/identity.html">identity</a>——让用户使用OAuth2登入，而不会提示要求密码；</li> 
- <li><a href="http://developer.chrome.com/apps/google_wallet.html">payments</a>（目前仅支持Android）——在应用中销售虚拟商品；</li> 
- <li><a href="http://developer.chrome.com/apps/pushMessaging.html">pushMessaging</a>——从服务器端向应用推送消息；</li> 
- <li><a href="http://developer.chrome.com/apps/socket.html">sockets</a>——使用TCP和UDP协议，在网上发送和接收数据；</li> 
- <li><a href="http://developer.chrome.com/apps/notifications.html">notifications</a> （目前仅支持Android）——从移动应用发送丰富的通知；</li> 
- <li><a href="https://developer.chrome.com/apps/storage.html">storage</a>——本地存储和检索键-值数据；</li> 
- <li><a href="https://developer.chrome.com/apps/syncFileSystem.html">syncFileSystem</a>——存储和检索使用Google Drive备份的数据；</li> 
- <li><a href="http://developer.chrome.com/apps/alarms.html">alarms</a>——周期性地运行任务。</li> 
+ <li>连续执行数个任务不会像只使用回调函数时那样创建嵌套的“金字塔（pyramid）”代码。</li> 
+ <li>Tasks是完全可组合的，允许开发人员执行分支、并行和复杂的错误处理。</li> 
+ <li>开发人员可以按照执行顺序安排基于任务的代码，而不必将逻辑分解到分散的回调函数中。</li> 
 </ul>
-<p>除了上述内容，开发者还可以使用<a href="http://plugins.cordova.io/#/_browse/all">大量的Cordova API</a>，以多种形式对本地功能进行访问。</p>
-<p><strong>查看英文原文：</strong><a href="http://www.infoq.com/news/2014/01/chrome-apps-android-ios-cordova">Deploying Chrome Apps on Android&amp;iOS with Cordova 3.3.0</a></p><br><br><br><br><br><br></body></html>
+<p>Bolts组件与Parse或者Facebook服务完全无关，不需要使用Parse或者Facebook的开发人员账户。</p>
+<p>尽管已经发布了更多的Bolts组件，但Parse尚未发布与之相关的任何细节。</p>
+<p><b>查看英文原文：</b><b><a href="http://www.infoq.com/news/2014/02/parse-announces-bolts">Parse Announces Bolts, a Collection of Low-level Libraries for iOS and Android</a></b></p><br><br><br><br><br><br></body></html>
