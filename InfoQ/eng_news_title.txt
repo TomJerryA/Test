@@ -1,1 +1,1 @@
-ActiveReports 8 Adds Maps, HTML5 Viewer, Advanced Barcodes and Windows Azure Support
+Applying Use Cases in Agile: Use Case 2.0, Slicing and Laminating

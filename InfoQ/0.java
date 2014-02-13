@@ -1,61 +1,84 @@
-<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>Management Buy-in and Support in Agile Adoption</h3><p>Adopting agile is an organization change which involves management. It is said that management buy-in is crucial for agile to succeed and that a lack of management support can be a barrier in agile transformations. There are&nbsp;different ways for management&nbsp;to support agile in enterprises.</p>
-<p>In the blog post <a href="http://www.scrumalliance.org/community/articles/2014/january/prescriptive-scrum">prescriptive Scrum</a> Arijit Sarbagna talks about the importance of management buy-in and support in agile adoption:</p>
+<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>Applying Use Cases in Agile: Use Case 2.0, Slicing and Laminating</h3><p>To incrementally develop and deliver products using agile software development, requirements are gathered and organized into a product backlog. A requirement technique that is used in agile software development is use cases. Some techniques to apply use cases for managing product requirements in agile are use case 2.0, slicing and laminating.</p>
+<p>Shobha Rangasamy Somasundaram and Amol Sharma wrote a blog post about <a href="http://www.infosysblogs.com/infosys-labs/2013/10/can_formal_requirement_methods.html">can formal requirement methods work for agile</a> in which they compare the usage of requirements between waterfall and agile software development:</p>
 <blockquote> 
- <p>Let's assume we are working on an Agile project, where our Agile rollout has not been top-down but rather a futile attempt at &quot;bottom-up.&quot; In such cases, it's likely that we are missing out on that crucial element called &quot;management buy-in.&quot; Lacking this support, we are probably stepping into a state where most of our good intentions of creating a self-organized team will hit a dead-end. And as a ScrumMaster or a coach, we will be spending most of our efforts convincing management (or our client, for the matter), rather than actually guiding our teams.</p> 
+ <p>In traditional software development or waterfall process, the following methods are used during the requirements phase - brain storming, questionnaire, modeling, prototyping, observation, focus group, survey, reverse engineering, interview, document analysis, workshop for joint application development (JAD) - collaboration &amp; domain model creation. In waterfall, requirements are sourced from the client, the BA and the product owner, wherein, they interact and prepare the final requirements document. Once the requirements are finalized, they are conveyed to the development team.</p> 
 </blockquote>
-<p>According to Arijit supporting self-organizing teams can be difficult for managers to do:</p>
 <blockquote> 
- <p>(…) management teams suffer from the dilemma of deciding how much leeway their teams should have in becoming &quot;self-organized.&quot; This is the fun part, where we have to deal with management to explain how Agile works, and that in order to make it work, they should trust Agile. At times we do have to remind them that even Waterfall will not succeed, if we never trust our people. Trust is the pillar to success, and then we add our engineering practices around it.</p> 
+ <p>(…) requirements in agile are no longer committed to the beginning of the project or limited to a few individuals, but are a perpetual driver for the entire software development lifecycle. Agile does not prescribe any one way to document the requirements, the focus is instead on &quot;just enough&quot; documentation. Details are discovered and unfold slowly only when they are required. The monolithic dedicated &quot;requirements stage&quot; is broken and dispersed, that it now becomes omnipresent, with the same traditional analysis methods, performed throughout the lifecycle.</p> 
 </blockquote>
-<p>He suggests that managers should not enforce Scrum:</p>
+<p>In their blog post Shobha and Amol provide a detailed description on how to combine roadmaps, use cases and user stories to manage the product requirements.</p>
+<p>Andy Hayward explored different requirement techniques in a series of blog post. In <a href="http://whyarerequirementssohard.wordpress.com/2013/10/16/when-to-use-user-stories-use-cases-and-ieee-830-part-2-use-cases/">when to use user stories, use cases and IEEE 830 – Part 2: Use cases</a> he mentions several use case formats:</p>
 <blockquote> 
- <p>But if we are suffering from Prescriptive Scrum, most likely we are being instructed by management as to how Agile should be done (or how it should not be done) -- this by a group of people who probably have <i>not </i>done Agile but have only been through theory and, to make things worse, some &quot;failure stories.&quot;</p> 
+ <p>Use cases can be written in a highly formal format to describe the process extremely precisely, or in a simple paragraph format, what Alistair Cockburn described as a “Use Case Brief”, which is slightly more detailed than a User Story, and there are many variations in between. This gives the analyst a broad range of options to fit her use cases to the project need. Unfortunately, most organizations enforce a standard template for use cases which limits this flexibility.</p> 
 </blockquote>
-<p>Instead Arijit suggests to “preach and <i>encourage</i> others to understand Agile and, accordingly, embrace the practice”.</p>
-<p>Zvonimir Križ wrote a blog post <a href="http://zvonekriz.com/2013/10/16/dear-management-were-already-agile/">dear management, we’re already agile</a> in which he questions if a lack of management support is really a barrier for agile adoption. The real problem might be the perception that, when focusing on the practices instead of principles,&nbsp;a&nbsp;top-down approach is the only way&nbsp;to implement agile:</p>
+<p>Breaking down use cases into smaller parts can be difficult as Andy explains:</p>
 <blockquote> 
- <p>Starting directly from practices like Scrum could make you believe that you need deep organizational changes to start your agile journey. And organizational change needs, you guess – management support. What’s even more interesting that another reason is waterfall itself. To be more precise waterfall’s big upfront planning rule. It’s a kind of thinking legacy built into our brains that everything, including agile adoption, should be planned in details to succeed. And such big upfront planning and big decisions need, again – management.</p> 
+ <p>The problem with use cases is that they usually encapsulate a lot of requirements into one large chunk of information. This makes it hard for development teams to estimate the use case’s complexity and plan their work, and hard for the business to provide a meaningful estimation of value or priority. It’s possible to break each use case down into a list of ‘scenarios’ that describe each possible path through the steps, but if you’re doing that much additional work you might as well write “The system shall” in front of each scenario.</p> 
 </blockquote>
-<p>He suggests that you can also apply a bottom-up approach to adopt agile:</p>
+<p>The webpage <a href="http://www.ivarjacobson.com/Software_Use_Case_Essentials/">use case 2.0 essentials practice</a> provides an overview (based on the <a href="http://www.ivarjacobson.com/Use_Case2.0_ebook/">Use-Case 2.0 ebook</a>) of how to capture requirements with use case slicing:</p>
 <blockquote> 
- <p>People sometimes forget that bottom-up approach to agile adoption is all legal.</p> 
- <p>Everyone should be aware that adopting some agile principles DOES NOT depend about management. (…) You can start tomorrow. No excuses!</p> 
+ <ul> 
+  <li>Describe exactly what a software system must do</li> 
+  <li>Group parts of the requirements together for broad-brush scope management</li> 
+  <li>Slice the requirements to create well-formed product backlog items and drive iterative development</li> 
+  <li>Change the priority of what the customer wants at any time</li> 
+  <li>Produce a simple visual model, and meaningful requirements, that are understandable to developers and customers alike</li> 
+  <li>Realize the benefits of iterative and backlog-driven management practices such as Scrum, and the IJI Iterative Essentials</li> 
+  <li>Capture their requirements just-in-time, and in just enough detail, to support their business goals.</li> 
+ </ul> 
 </blockquote>
-<p><a href="http://www.infoq.com/author/Jeff-Sutherland">Jeff Sutherland</a> did an interview&nbsp;about <a href="http://labs.openviewpartners.com/agile-done-right-agile-gone-wrong/">agile done right and agile gone wrong</a> where he talks about leadership and teams.&nbsp;<a href="https://plus.google.com/+JeffSutherland/posts/JLsrKtKJwo3">Jeff shared this interview on his Google Plus page</a>&nbsp;where he mentioned that management can support agile by&nbsp;doing it themselves:</p>
+<p>You can do use case slicing in agile to incrementally develop and deliver products:</p>
 <blockquote> 
- <p>It is not about management buy-in. It is about Agile management being Agile and leading and demonstrating the change. In some fairly large companies we have senior management functioning as a Scrum team. They don't give permission to do Scrum, they do Scrum themselves and expect the teams to do as they do.﻿</p> 
+ <p>The Use-Case 2.0 Essentials practice starts by finding actors and use cases, and selecting and prioritizing the parts (slices) of the use cases to be developed. It continues by detailing the use-cases slices and more importantly their tests, and then implementing software to meet the tests. It concludes by executing the tests, tracking progress in terms of verified, working software and feeding back the results in order to handle change and better support the team.</p> 
 </blockquote>
-<p>What about middle management support in agile adoption? Em Campbell-Pretty wrote about <a href="http://www.prettyagile.com/2013/10/advice-for-agile-coaches-on-dealing.html">advice for agile coaches on &quot;dealing with&quot; middle management</a>. She explains why management buy-in is so important:</p>
+<p>Building a product starts with a skinny system as <a href="http://www.infoq.com/author/Ivar-Jacobson">Ivar Jacobson</a> described in his blog post <a href="http://blog.ivarjacobson.com/architecture/">architecture</a>:</p>
 <blockquote> 
- <p>When working with development teams, the buy in of middle management is critical. Middle Management can be either a force for good or kryptonite to an agile transformation effort. If teams perceive that management does not support agile, how will they ever feel safe to experiment and risk failure? I have seen agile adoption attempted in organisations where management still holds a traditional mindset. It can be devastating for teams that have invested in agile values like transparency, to be reprimanded by management for exposing the truth.</p> 
+ <p>[A skinny system] has all significant paths through the use cases (or scenarios); it has all significant subsystems, components, classes, nodes. Usually this skinny system only includes 5-15% of the final code, but enough to demonstrate that the significant elements work. And most important, we know that this skinny system can grow to become the complete system.</p> 
 </blockquote>
-<p>She gives a suggestion on how to deal with resistance from middle managers:</p>
+<p>In the blog post <a href="http://blog.xebia.com/2012/07/12/improving-user-stories-with-usecases/">improving user stories with use cases</a> Richard Schaaf described how use case 2.0 can help to manage the product requirements with use cases. According to Richard, the problems that organizations have with user stories have to do with process that is used to define them:</p>
 <blockquote> 
- <p>Some managers are going to find Agile threatening. Implementing agile most likely means change and no one likes having change done to them.&nbsp; In this scenario, rather than “pitching” Agile to resistant managers, perhaps consider the advice Dennis Stevens and Mike Cottmeyer, gave at Agile 2013 and don’t talk about Agile. Instead, focus on the objectives of the business and how you can help management achieve their goals or alleviate their pain.</p> 
+ <p>The issue here is (..) that it is really hard to write User Stories in such a way that they really help and are useful in the long term. What we need is not a replacement for User Stories, but a better way to come up with them.</p> 
 </blockquote>
-<p>Often middle managers are in a difficult position in organizations. According to Em agile coaches should take that&nbsp;into account and&nbsp;look for&nbsp;ways to work with them and support them:</p>
 <blockquote> 
- <p>The life of a middle manager isn't easy, they are essentially the “meat in the sandwich” between the organisation's Senior Executives and operational staff. It is not unusual for middle management to have more responsibility than authority.&nbsp; This can be immensely frustrating and it makes me wonder if the prevalence of command and control style management is a direct consequence of how dis-empowered middle managers feel in large, bureaucratic organisations. Shifting the focus of middle management away from frustration with organisational red tape to improving the lives of the folk who work for them can be rewarding for both the manager and the teams. Don't forget, middle managers are just as prone to the WIFM (what's in to for me) factor as anyone else.&nbsp; They have to understand how agile will make them successful.</p> 
+ <p>Quite often, the Product Backlog degenerates over time and this leads to real problems for the teams. If you want to have a really successful Agile organisation, you really need to focus on the process of User Story generation.</p> 
 </blockquote>
-<p>Mike McLaughlin wrote a blog post about&nbsp;<a href="http://blogs.versionone.com/agile_management/2013/08/16/the-agile-coach-on-patience/">the agile coach on patience</a>, where he talks about&nbsp;the impact of agile adoption&nbsp;for&nbsp;middle managers:</p>
+<p>He suggests using use case slices to define your user stories:&nbsp;</p>
 <blockquote> 
- <p>Many middle managers seem to have a difficult time letting go of the controls. They still feel the need to intervene. They’ve been micromanaging for years, possibly decades, so breaking these practices is tough. Even if they’ve been trained on the importance of giving more authority to their team, in the back of their mind, they’re not sure the team can handle it, so they find themselves continuing to micromanage.</p> 
+ <p>A use-case slice is a collection of front-to-back flows through a use case, including the associated test cases that is of clear value to the customer. A front-to-back flow is called a use-case story.</p> 
 </blockquote>
-<p>It can be difficult for middle managers and teams to adopt self-organization:</p>
+<p>Richard explains how you can break down a use case into use case stories, and use them to define use case slices which can be the user stories that we need for our product backlog:</p>
 <blockquote> 
- <p>[Middle managers are] effectively preventing their teams from developing into a self-managing, self-organizing team. As a result, the teams continue to look to them for direction, or for the authority to do something they could on their own. I call this the Middle Manager Trap. They carry on making the decisions, all the while questioning why their Agile teams aren’t as responsible as themselves. A vicious cycle.</p> 
+ <p>If you did your use-case modelling right, each of these use-case stories has a certain value. A use-case slice is then simply a selection (one of more) of these use-case stories, plus a number of test cases that should be met.</p> 
+ <p>A use-case slice defined in this way meets all the criteria for being a User Story. After all, we know who it is for (the initiating actor), what is requested (the use-case stories and test cases) and the value (derived from the way the use case was constructed). Thus a use-case slice <strong>is</strong> a User Story and can be used as an item on the Product Backlog.</p> 
 </blockquote>
-<p>Mike suggests that middle managers can support agile adoption by showing that they trust teams and have to give self-organization time to develop:</p>
+<p>Some of the advantages of using use case slices according to Richard are:</p>
 <blockquote> 
- <p>Being able to take that leap of faith, to trust, to delegate, to be patient, is really an investment you make in other people. It will probably take a while to get a good ROI on your new Agile team. The team or certain individuals may struggle out of the gate. Occasional hiccups are OK. We need to think long term here.</p> 
+ <p>By putting the use cases in a central position, the focus is always on the entire system.</p> 
+ <p>The level of detail is a discussion item early on, so we end up with just enough detail, just in time.</p> 
+ <p>The definition of a use-case slice ensures that each User Story is a front-to-back Story that actually focuses on value.</p> 
 </blockquote>
-<p>Brian Erwin wrote <a href="http://blog.projectconnections.com/project_practitioners/2013/11/an-open-letter-to-executives-leading-agile-transformations.html">an open letter to executives leading agile transformations</a>. He&nbsp;proposes to&nbsp;management&nbsp;that they should trust that their employees are good, honest, and hard-working people, and suggests that management supports agile adoption with an environment that helps their employees to do their work:</p>
+<p><a href="http://www.infoq.com/author/Alistair-Cockburn">Alistair Cockburn</a>&nbsp;wrote&nbsp;<a href="http://alistair.cockburn.us/Laminating+not+slicing">laminating not slicing</a>&nbsp;where he describes a metaphor which he calls “laminating”:</p>
 <blockquote> 
- <p>Rather than simply introducing and mandating agile methods such as Scrum, eXtreme Programming (XP), or Kanban, create an organizational environment where agility is the path of least resistance for your employees and colleagues to get their work done.</p> 
+ <p>However, the language is backwards, we are not starting with an elephant, and deconstructing it into slices. We are starting from nothing and constructing the elephant. Having a pile of elephant slices does not produce an elephant. What we want to discuss is the sequence of laminations that produce the best-semblance of an elephant in the least time.</p> 
 </blockquote>
-<p>His open letter contains a plan of action that helps executives to create an environment. Some of his suggestions to management are:</p>
+<p>Laminating starts with a <a href="http://alistair.cockburn.us/Walking+skeleton">walking skeleton</a>:</p>
 <blockquote> 
- <p><strong>Start demonstrating the behavior you desire in your organization. </strong>One of the most powerful ways to build momentum is to first change yourself and your behavior. You really can’t force change within others, but you can inspire it. (…)</p> 
- <p><strong>Don’t mandate a methodology at the team level. </strong>Rather than requiring teams to do Scrum, or any other methodology framework, put the ingredients in place for agility (…), provide and demonstrate your personal support and commitment to the removal of organizational obstacles and dysfunction, and stand out of the way. (…)</p> 
- <p><strong>Invest in your workforce and your teams and they will invest in you.</strong> (…) If you create an environment that inspires workers to give their all, run a company that gives to the community, and demonstrates that it values its workforce by investing in them, you and your organization will have a much greater chance of competing in the marketplace for a long time to come.</p> 
-</blockquote><br><br><br><br><br><br></body></html>
+ <p>A walking skeleton is a tiny implementation of the system that performs a small end-to-end function. It need not use the final architecture, but it should link together the main architectural components. The architecture and the functionality can then evolve in parallel.</p> 
+</blockquote>
+<p>How can a walking skeleton of a software product or system look? Alistair provides some examples:</p>
+<blockquote> 
+ <p>What constitutes a walking skeleton varies with the system being designed. For a client-server system, it would be a single screen-to-database-and-back capability. For a multi-tier or multi-platform system, it is a working connection between the tiers or platforms. For a compiler, it consists of compilation of the simplest element of the language, possibly just a single token. For a business process, it is walking through a single and simple business transaction (as Jeff Patton describes in the technique Essential Interaction Design, later in this chapter).</p> 
+</blockquote>
+<p>From the walking skeleton you start to laminate outwards as Alistair described in <a href="http://alistair.cockburn.us/The+A-B+work+split%2c+feature+thinning+and+fractal+walking+skeletons">the A-B work split, feature thinning and fractal walking skeletons</a>:</p>
+<blockquote> 
+ <p>I put part of the feature F on the steeply rising part of the curve, and said, “Just do enough of the feature to be sure you can do the rest of the feature without trouble (that’s the A part). Now defer the rest of the feature F (the B part) to the tail of the curve. You know you can grab for B at any time.</p> 
+</blockquote>
+<p>Alistair provides several strategies on how you can do the A-B work split to determine and prioritize thin features that you can use to develop your product incrementally:</p>
+<blockquote> 
+ <ul> 
+  <li><a href="http://alistair.cockburn.us/The+A-B+work+split">The A-B work split</a> says to implement just enough of a feature to be sure you can grab the rest of it at any time.</li> 
+  <li>Jeff Patton’s <a href="http://alistair.cockburn.us/Feature+thinning">Feature thinning</a>&nbsp;does something different — he implements enough of the feature to argue that it really works, just isn’t very glossly (like having ordinary brakes on a car, but not anti-lock brakes).</li> 
+  <li>The <a href="http://alistair.cockburn.us/Walking+Skeleton">Walking Skeleton</a>&nbsp;strategy says to get the barely minimal (sub-minimal?) functionality running to establish connections between the parts. Jeff recently expanded that to having a mini – walking skeleton for each story (<a href="http://agileproductdesign.com/blog/the_new_backlog.html).">http://agileproductdesign.com/blog/the_new_backlog.html).</a> Gery Derbier wrote me with the phrase recursive or fractal walking skeletons to describe this, a nice phrase. He says they use them on his project and they like them a lot. I would think so —- It’s vaguely related to the A-B work split and hence has risk reduction characteristics. I’m not sure if Jeff has feature thinning in mind with his mini (fractal) walking skeletons, but I think they’re possibly slightly different from each other.</li> 
+ </ul> 
+</blockquote>
+<p>How do you manage your product requirements with use cases: Use Case 2.0, slicing, laminating, or in another way?</p><br><br><br><br><br><br></body></html>

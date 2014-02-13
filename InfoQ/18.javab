@@ -1,172 +1,87 @@
-<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>Exposing CQRS Through a RESTful API</h3><p><a href="http://martinfowler.com/bliki/CQRS.html">Command Query Responsibility Segregation</a> (CQRS) is an architectural pattern proposed by Greg Young that segregates reads (queries) and writes (commands) of a system into two separate subsystems. Commands are usually asynchronous and stored in a transactional storage while reads are eventually consistent and retrieved from de-normalised views.</p>
-<p>This article proposes and demonstrates an approach for building a RESTful API on top of CQRS systems. The approach joins HTTP semantics and resource-based style of REST APIs with distributed computing concerns such as eventual consistency and concurrency.</p>
-<p>Also available is a&nbsp;<a href="https://github.com/aliostad/m-r">prototype API</a> which has been built on top of Greg Young's <b>m-r</b> CQRS prototype - also known as <b>SimplestPossibleThing</b>. m-r is arguably the de-facto CQRS prototype that has inspired many teams to adopt and build CQRS systems. Despite its simplicity this m-r prototype is able to demonstrate real world opportunities and challenges of RESTful CQRS.</p>
-<p>In the next section we review the m-r domain and then explore features of the API design. At the end, we discuss the choices made as well as the concepts and theoretical side of RESTful m-r.</p>
-<h2>The m-r Domain</h2>
-<p>m-r models a simplistic domain of inventory management. You can create new inventory items (think of it as a product type), rename or de-activate (<i>logical delete</i>) them. De-activated items cannot be viewed anymore but lists of all active items can be retrieved and we can drill down into the details of each item. You can also check-in or check-out stock against these inventory items specifying the number of stock added or removed. In other words, we build up stock and then start using it.</p>
-<p>Viewing the list of items or details of an item is achieved through queries which are synchronous. Any changes to the state of items are achieved using commands which in the real world are asynchronous but the implementation here ends up being synchronous due to using an in-process Event Bus and handlers.</p>
+<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>Solving the Gordian Knot of Chronic Overcommittment in Development Organizations</h3><blockquote>
+ The difference between successful people and very successful people is that very successful people say “no” to almost everything . Warren Buffet
+</blockquote>
+<p>Why do we as humans and organizations have such a strong tendency to promise more than we can deliver? One simple explanation is that we want to please those around us. We want to say yes when someone asks for our help. Saying no could mean that people see us as being rude or less capable. While being of service to others is a positive thing, when taken to excess it can be devastating - leading to stress, poor productivity and congestion (both physical as well as work-wise).</p>
+<p>Another less flattering and perhaps more dangerous reason for overcommitment is external pressure to promise what we know that we can’t deliver.&nbsp; The forces behind these external pressures can include the following:</p>
+<ul> 
+ <li>Implicit and/or explicit threats to our job security if we don’t accept work that is being pushed upon us.</li> 
+ <li>A view that the role of the IT-organization is to support the business and cannot stand in the way of business development.</li> 
+ <li>An erroneous understanding of how work works, based on efficiency being a virtue in itself, without understanding the damages of high levels of work in process.</li> 
+ <li>A high pressure on sales organizations that overpromise on behalf of the delivery organization in order to close more deals. This behavior is often reinforced through dysfunctional incentive systems.</li> 
+</ul>
+<p>This behavior is often displayed in a fractal way throughout the organization; people overcommitting on a personal level, project managers committing their teams to fantasy project plans, sales selling features that the organization lacks the capacity to implement, and top management making promises that won’t be delivered. This cultural aspect becomes self-reinforcing; when everyone else promises to deliver whatever is being asked for it’s easier for individuals to become part of this ever-growing mass than to be the troublemaker saying no. After all, when the problem becomes impossible to ignore, it might have already landed on someone else’s table.</p>
+<p>When the organization fails to analyze its mistakes, or make a too shallow analysis, it’s easy to come to the conclusion that the plan was flawless and the problem lies entirely with the delivery. And this is where most organizations focus their efforts to come to terms with the problem; how to deliver according to corrupt plans.</p>
+<h2>Organizational Behaviors Driving Overcommitment</h2>
+<p>The main behaviors for chronic overcommitment in organizations are:</p>
+<ol> 
+ <li>Delivery capacity is unknown or hard to measure so it is easy to accept more and more work. It is common at several levels in the organization. Investment and schedule decisions are taken without knowing what delivery capacity exists. Projects are started and shoehorned into the unknowingly overloaded organization.</li> 
+ <li>Projects and work is not prioritized. “<i>We already have 234 projects ongoing and suddenly Marketing/Finance comes with a high priority project that is a <strong>must</strong>. We do not know how it stacks up against the 234 other projects since most of them are high priority projects and a majority are <strong>must</strong></i>”.</li> 
+ <li>Lack of a single point of entry for projects. Projects are started on many different levels and places in the organization.</li> 
+ <li>Political; there is no structured &amp; holistic approach to stop projects from starting or killing projects for the benefit of more important projects. This causes zombie projects running long past their expiration date.</li> 
+</ol>
+<p>All of these causes enforce each other to create a vicious cycle that companies have a hard time recovering from. To examine this vicious cycle more closely, let’s take a look at a hypothetical case study.</p>
 <div id="lowerFullwidthVCR"></div>
-<p><img _p="true" _href="img://m-r use case.png" alt="m-r Use-Case Diagram" src="http://www.infoq.com/resource/articles/rest-api-on-cqrs/en/resources/m-r use case.png" /></p>
-<p>m-r implements CQRS: commands and queries are stored separately and are each handled by completely different parts of the system.</p>
-<p>On top of CQRS, m-r uses <a href="http://martinfowler.com/eaaDev/EventSourcing.html">Event Sourcing</a> as its persistence mechanism. In this approach, changes to domain models are captured as a series of events and these events are stored in the order they have been invoked. In order to build the current state of a model, all events need to run in the order they have arrived, in other words, the state of entities are never persisted. For example, if we create an inventory item and rename it twice, we will have one <small><b>InventoryItemCreated</b></small> and two <small><b>InventoryItemRenamed</b></small> events and they will be stored in the Event Store.</p>
-<p>Events are sequential and every event has a version number which can be used for concurrency checks. For example, if an inventory item is renamed against version 2 but another rename had happened against the same item and current version is 3, this will result in a concurrency exception.</p>
-<p>Commands normally have a one-to-one relationship with the Domain Events and after <i>applying</i> the command, the domain model raises an Event to be stored. Domain Event is the cornerstone of Event Sourcing and unlike cross-bounded context events, they are granular and contain the least amount of information required. As such, they are not a great integration tool between different bounded contexts. In addition to an in-process Event Bus, m-r uses an In-Memory Event Store. This store is basically a hashmap using the id of the model as the key and keeps track of the events against the model.</p>
-<p>For more information on CQRS and Event Sourcing, you can read Greg Young's <a href="http://cqrs.files.wordpress.com/2010/11/cqrs_documents.pdf">mini-book</a>.</p>
-<h2>Building a REST API On Top</h2>
-<p>If you prefer to get a feel for the implementation first, feel free to look at the working prototype that is <a href="http://m-r.azurewebsites.net">currently (but temporarily) available here</a>. You are encouraged to view and examine the HTTP traffic in this simple example using fiddler or browser development tools. Source code for the API and a basic Angular application is available on <a href="https://github.com/aliostad/m-r">GitHub</a>. But we emphasise, the implementation and technologies used here are not the key. The focus should be on the approach and HTTP presentation.</p>
-<h3>Shaping the public domain</h3>
-<p>The most important responsibility of the API Layer is to model the underlying domain as resources and expose it with HTTP semantics. During this process, the API Layer creates a <b>Public Domain</b> which is composed of resources (and their Unique Locator -&gt; URL) and input/output messages. The simpler the underlying domain, the more similarity the public domain has to the underlying domain.</p>
+<h2>CASE STUDY – Claes Claesson at MegaRetailer AB</h2>
+<p>Claes Claesson is an IT manager at MegaRetailer AB, a company that sells thousands of different products both in its own retail shops as well as through third party retailers and through their own popular Internet shop where some of the product families are available.</p>
+<p>Claes attended a management meeting where the Marketing Director presented a two-pronged approach to increase sales and revenue for MegaRetailer AB. The first required change is to provide real-time inventory data for their own retail shops so that sales people can direct customers to another location if their shop does not have the item the customer wants. The real-time inventory data must be made available both in the retail shops and the Internet shop (showing closest retail shop carrying the item).&nbsp; It needs to be implemented in time for the Christmas shopping season. The business case for this change is good, there is no denying that.&nbsp; A 12% increase in sales is projected for the Christmas period on top of the existing sales figures providing a substantial revenue increase and lowering the inventory costs.</p>
+<p>The second required change is to provide the Internet sales channel on mobile and tablet formats and enhance it with state of the art visual product recognition. The customer can take a picture of an item (s)he wants and the app will identify the product and recommend MegaRetails own brands or similar products. &nbsp;The app will also identify the closest location to purchase the item or to buy it from the net channel.</p>
+<p>The overall plan is to implement these changes over the coming 12-24 months in multiple projects. Sourcing and Logistics have already started to look at scanning systems to provide product-matching data when new products are brought into the MegaRetail line.</p>
+<p>There is no debate that the end result of these changes will be good for MegaRetail, but Claes already has hundreds of projects in various states of progress and the question remains whether there are enough people to staff these additional projects? There was no understanding or acceptance in the meeting that the IT department teams are already busy. In addition, the Marketing Director somewhat heavy handedly reminded Claes that business drives the company forward and IT is to be a supporting function and not a roadblock.&nbsp; Here Claes’s boss, the CIO, stepped in and said, “That’s right, IT supports the business and Claes here is our go-to guy for solving difficult problems and delivering the most challenging projects. But in all fairness Claes and his people should be given some time to analyze how we can deliver these work packages in the best way.”</p>
+<p>At this time the Supply Manager could not refrain from sniping, “Well, maybe Claes could take a look at another challenge, our Delivery Control System, since it is already over 8 months delayed.” Luckily the meeting ended before that discussion escalated any further.</p>
+<p>The decision was made, Claes and his organization are to analyze the marketing requirements and come up with a development and implementation plan. His boss told him, “Claes I know that we are stretched thin but these two items are crucial and have the backing of the CEO and the board, look at hiring consultants if you need but no hiring of employees beyond the current plan. &nbsp;We do not want to add to our cost mass. I have all faith in you and your people.”</p>
+<h2>Understanding the Dynamics at Play in the Case Study</h2>
+<p>In this section we will work to understand the dynamics at play for Claes and his team.&nbsp; We will map out the situation described in the case study using Causal Loop Diagrams. If you are not familiar with Causal Loop Diagrams you can read through the following short How-To section.</p>
 <p>(Click on the image to enlarge it)</p>
-<p><a href="/resource/articles/rest-api-on-cqrs/en/resources/fig2large.jpg" _href="resource://fig2large.jpg"><img _p="true" _href="img://1fig2small.jpg" alt="" src="http://www.infoq.com/resource/articles/rest-api-on-cqrs/en/resources/1fig2small.jpg" /></a></p>
-<p>In our case, we have a public domain which is similar to the underlying domain but even in this simple domain we are unable to expose the underlying domain directly: either the internals of the domain leaks out or the internals do not have properties needed at the API Layer. For example, all internal commands have an <i>integer</i> <small><b>Version</b></small> property used for concurrency while in the public domain, this property is <i>string</i>. As we will see later this property will be used for ETag which according to HTTP specification must be opaque.</p>
-<p>So in brief, we have created public domain classes which represent internal domain classes with some difference. Something that is commonly referred to as a View Model. This term is undesirable since it expresses server chauvinism towards the public domain as if it is a dummy model, so we prefer the term &quot;output model&quot;. This applies to input and output messages (commands and output models).</p>
-<h3>Resources</h3>
-<p>It feels natural that we should have an <small><b>InventoryItem</b></small> resource so we expose the domain's single root entity as a single resource - conveniently at <small><b>/api/InventoryItem</b></small>. Each inventory item will be sitting at <small><b>/api/InventoryItem/{id}</b></small> - m-r uses GUIDs for Id.</p>
-<p>This single resource root can fully represent our domain. One alternative is to have <small><b>/api/InventoryItem/{id}/Stock</b></small> resource for adding/removing stock (check-in and remove items). ). This <i>per-se</i> does not have any advantage but is just a nicer presentation of the resource. The original approach is simpler and that is what has been used here.</p>
+<p><a _href="resource://fig1.jpg" href="/resource/articles/chronic-overcommitment/en/resources/fig1.jpg"><img src="http://www.infoq.com/resource/articles/chronic-overcommitment/en/resources/1fig1small.jpg" alt="" _href="img://1fig1small.jpg" _p="true" /></a></p>
+<p><strong>Figure 1 - How to read Causal Loop Diagrams</strong></p>
+<p>Claes is on the path of starting new projects to deliver what the Marketing Director requested. One of the reasons why it is so hard to say no is that the perceived benefits are seen as great and no one at the table understands the consequences of starting one or more new projects. Even if Claes or anyone else on the team has an instinctive feeling that we are already overloaded it is very hard to debate or discuss it without facts and numbers for consequences. &nbsp;The harder it is to understand the consequences the harder it is to say no to new work and we cannot get a good understanding of the coming consequences without understanding our current capacity.</p>
 <p>(Click on the image to enlarge it)</p>
-<p><a href="/resource/articles/rest-api-on-cqrs/en/resources/fig3large.jpg" _href="resource://fig3large.jpg"><img _p="true" _href="img://fig3small.jpg" alt="" src="http://www.infoq.com/resource/articles/rest-api-on-cqrs/en/resources/fig3small.jpg" /></a></p>
-<h3>Queries</h3>
-<p>We have two queries:&nbsp;<small><b>GetInventoryItems</b></small> and <small><b>GetInventoryItemDetails</b></small>. They are exposed with GET methods at <small><b>/api/InventoryItem</b></small> and <small><b>/api/InventoryItem/{id}</b></small>.</p>
-<p><small><b>GetInventoryItems</b></small>&nbsp;retrieves a list of only <small><b>Name</b></small>s and <small><b>Id</b></small>s of the items - as JSON or XML depending on the <small><b>ACCEPT</b></small> header (this feature comes out of the box in ASP.NET Web API). All GET requests present an opportunity for caching if the resource is suitable for caching. <small><b>GetInventoryItems</b></small> returns <small><b>InventoryItemListDataCollection</b></small> as the output message. Generating an ETag based on the hash of the content is possible but we can concatenate <small><b>Id</b></small>s and <small><b>Name</b></small>s in the list and send the hash as an ETag to the client (e.g. browser here). The client can cache the resource and make conditional requests using <small><b>If-Non-Match</b></small> against the ETag. Resources here are set up to be served with <small><b>max-age</b></small> of zero so that the client should always make a conditional GET but we could have equally chosen any arbitrary expiry.</p>
-<pre>
-GET /api/InventoryItem HTTP/1.1 
-Accept:application/json, text/plain, */* 
-Accept-Encoding:gzip,deflate,sdch 
-If-None-Match:&quot;LdHipfxR7BsfBI3hwqt2BLsno8ic98KmrIA1y67Nnw4=&quot;</pre>
-<p>Results in</p>
-<pre>
-HTTP/1.1 304 Not Modified 
-ETag: &quot;LdHipfxR7BsfBI3hwqt2BLsno8ic98KmrIA1y67Nnw4=&quot;</pre>
-<p><small><b>GetInventoryItemDetails</b></small> returns details of a single item. This includes its <small><b>Id</b></small>, <small><b>Name</b></small> and <small><b>CurrentCount</b></small> - the latter is the number of items in stock. The internal domain includes <small><b>Version</b></small> in its read model but having a numeric version as ETag can cause security issues as the client can guess the next value. As such, we have encrypted the Version value using AES and presented as ETag for <small><b>InventoryItemDetails</b></small>.</p>
-<p>Implementing ETag in each action can be overbearing for the API Layer so we have defined <small><b>IConcurrencyAware</b></small> interface:</p>
-<pre>
-public interface IConcurrencyAware 
-{ 
-&nbsp;&nbsp;&nbsp;&nbsp;string ConcurrencyVersion { get; set; } 
-}</pre>
-<p>Any output model supporting ETag implements this interface and the API Layer can read the value and set the ETag if output model supports it. On the other hand, the API Layer responds to conditional GET requests by comparing the ETag generated with the one(s) sent by the client in the <small><b>If-None-Match</b></small> header. All this has been comfortably implemented in a single global filter: <small><b>ConcurrencyAwareFilter</b></small>.</p>
-<p>It is important to remember that adding, removing or renaming an item should result in cache invalidation of the list. This can be seen here (all conditional GET logic is done at the browser level and no custom code is required):</p>
-<pre>
-GET /api/InventoryItem HTTP/1.1 
-If-None-Match:&quot;CWtdfNImBWZDyaPj4UjiQr/OrCDIpmjVhwp8Zjy+Ok0=&quot;</pre>
-<p>results in a full response with 200 status and a new ETag:</p>
-<pre>
-HTTP/1.1 200 OK 
-Cache-Control:max-age=0, private 
-Content-Length:68 
-ETag:&quot;0O/961NRFDiIwvl66T1057MG4jjLaxDBZaZHD9EGeks=&quot; 
-Content-Type:application/json; charset=utf-8; domain-model=InventoryItemListDataCollection; version=1.0.0.0; format=application%2fjson; schema=application%2fjson; is-text=true 
-...</pre>
-<p>Notice that the <small><b>Content-Type</b></small> header contains extra parameters. This is an implementation of <a href="http://byterot.blogspot.co.uk/2012/12/5-levels-of-media-type-rest-csds.html">&quot;Five Levels of Media Type&quot;</a> or <b>5LMT</b> where instead of cramming all information into a single token, we use different parameters to convey different levels of data that can be useful to clients with different level of <i>intelligence</i>. This topic is expanded upon further down.</p>
-<h3>Commands</h3>
-<p>Queries naturally map to GET while commands need to be mapped to POST, PUT, DELETE and PATCH. Mapping HTTP verbs to CRUD operations is a popular notion, but in the real world a clean one-to-one mapping between verbs and database operations occurs much less often. In fact, REST API is not a thin shell on top of a persistence store, quite the contrary, it is the door to the richness of the business domain, its operations and workflows. As such it must be able to express such axes of intent without resorting to custom verbs.</p>
-<p>One common approach is using RPC-style resources for example <small><b>/api/InventoryItem/{id}/rename</b></small>. While this seemingly removes the need for arbitrary verbs, it is against REST's resource-oriented presentation. We need to be reminded that a resource is a <i>noun</i> and HTTP verb is the <i>verb/action</i> and <i>self-descriptive messages</i> (one of the tenets of REST) are the vehicle to convey other axes of information and intent. In fact the command in the payload of the HTTP message should be enough to express any arbitrary action. However, relying on the body of the message has problems of its own since the body is usually delivered as a stream and buffering the body in its entirety before identifying action is not always possible nor wise. Here we present an approach based on <i>level 4</i> (domain model) of 5LMT where the command type is presented as a parameter of the <small><b>Content-Type</b></small> header:</p>
-<pre>
-PUT /api/InventoryItem/4454c398-2fbb-4215-b986-fb7b54b62ac5 HTTP/1.1  
-Accept:application/json, text/plain, */* 
-Accept-Encoding:gzip,deflate,sdch 
-Content-Type:application/json;domain-model=RenameInventoryItemCommand</pre>
-<p>This is required to channel the request to the appropriate handler on the server. Is this not leaking too much information over to the clients? Not at all. Schema (and name) of the input and output messages are part of the <b>Public Domain</b> and clients must have full access to and they are expected to take dependency upon the schemas.</p>
-<p>Our client-side implementation uses a minimal code to achieve this. An <small><b>Angularjs</b></small> <i>decorator</i> wraps the <small><b>$http</b></small> service and reads the prototype of the payload and adds the extra parameter to the <small><b>Content-Type</b></small> header. As long as we keep the name of the Javascript <i>constructor function</i> the same, there should be no problem.</p>
-<p>So now that we have solved the problem of identifying the action being invoked, we need to semantically map our commands to HTTP verbs. When mapping a command to a verb, it is key to choose the correct verb not just semantically but also in terms of <b>Idempotency</b> (safety of the verb is not a concern here since none of the command verbs are safe). PUT, PATCH and DELETE are idempotent while POST is not (calling idempotent verbs multiple times produces the result of calling them once).</p>
-<h4>CreateInventoryItemCommand</h4>
-<p><small><b>CreateInventoryItemCommand</b></small> naturally fits the POST method even with the CRUD paradigm (only important headers shown):</p>
-<pre>
-POST /api/InventoryItem HTTP/1.1 
-Content-Type:application/json;domain-model=CreateInventoryItemCommand  
-
-{&quot;name&quot;: &quot;CQRS Book&quot;}</pre>
-<p>and the response is:</p>
-<pre>
-HTTP/1.1 202 Accepted 
-Location: http://localhost/SimpleCQRS.Api/api/InventoryItem/109712b9-c3d5-4948-9947-b07382f9c8d9</pre>
-<p>We return the URL of the item that <i>is going to be created</i> (remember it is all async) in the location header.</p>
-<h4>DeactivateInventoryItemCommand</h4>
-<p>As we said, de-activating items is basically a logical delete. Also the act of deleting is idempotent and deleting an item multiple times creates the same effect. As such we will use DELETE option against an item to de-activate it (this command needs an empty payload):</p>
-<pre>
-DELETE /api/InventoryItem/f2b75f21-001a-4eed-b8f3-35bf5e4e9b0d HTTP/1.1 
-Content-Type:application/json;domain-model=DeactivateInventoryItemCommand  
-
-{}</pre>
-<p>and the response is:</p>
-<pre>
-HTTP/1.1 202 Accepted</pre>
-<p>We can send the id in the payload but we are already providing this in the URL. <small><b>DeactivateInventoryItemCommand</b></small> constructor function's only responsibility is to allow for successful setting of the <small><b>domain-model</b></small> parameter.</p>
-<h4>RenameInventoryItemCommand</h4>
-<p><small><b>RenameInventoryItemCommand</b></small> is slightly more interesting than the others. First of all, renaming an inventory item is nothing but updating it. So it is only fair to use the PUT verb. On the other hand, what if you rename the item while another colleague also renames it to another value? This is basically the concurrency problem. HTTP provides means of safeguarding against concurrent updating of the resources using <small><b>If-Unmodified-Since</b></small> and <small><b>If-Match</b></small>. Here we use ETag so we will be using <small><b>If-Match</b></small>:</p>
-<pre>
-PUT /api/InventoryItem/f2b75f21-001a-4eed-b8f3-35bf5e4e9b0d HTTP/1.1 
-Content-Type:application/json;domain-model=RenameInventoryItemCommand 
-If-Match:&quot;DL1IsUoH709K+N5TXFzlQeQI5arO8r/U0SzXcRhuXLc=&quot;  
-
-{&quot;newName&quot;: &quot;CQRS Book 1&quot;}</pre>
-<p>The value of the ETag is picked up in the <small><b>Angularjs</b></small> controller and added to the model and later is used for the conditional PUT. As you can see <b>the value of the ETag is nothing but the version number of the domain model</b> but we have opacified it according to <a href="http://www.w3.org/Protocols/rfc2616/rfc2616-sec3.html#sec3.11">HTTP specification</a> - by encrypting it. This value gets picked up on the server, decrypted and reverted back to a version number. If the version does not match, the domain will raise a <small><b>ConcurrencyException</b></small> where it is picked up at the API Layer by the <small><b>ConcurrencyExceptionFilterAttribute</b></small> and expressed in HTTP semantics:</p>
-<pre>
-HTTP/1.1 412 Precondition Failed</pre>
-<p>This is the perfect example of how HTTP's concurrency can work with CQRS concurrency checks.</p>
-<h4>CheckInItemsToInventoryCommand and RemoveItemsFromInventoryCommand</h4>
-<p>These two commands are even more interesting. We add or remove a number of items to or from the stock. In one sense, we are updating an inventory item's count so it is tempting to implement this as a PUT (or even better as PATCH). However, neither of these commands are idempotent (for example running CheckInItemsToInventoryCommand twice will add items twice) so the most suitable verb is actually POST.</p>
-<p>The client sends the payload's domain model name in a parameter in <small><b>Content-Type</b></small> header as we have seen before.</p>
-<pre>
-POST /api/InventoryItem/f2b75f21-001a-4eed-b8f3-35bf5e4e9b0d HTTP/1.1 
-Content-Type:application/json;domain-model=CheckInItemsToInventoryCommand  
-
-{&quot;count&quot;: &quot;230&quot;}</pre>
-<p>and the response is the usual one:</p>
-<pre>
-HTTP/1.1 202 Accepted</pre>
-<h3>Other HTTP aspects</h3>
-<p>There are other aspects of HTTP that are useful to implement. HEAD is an important verb which results in the same response as the GET without any payload. We have implemented HEAD on all GET resources. For example:</p>
-<pre>
-HEAD /api/InventoryItem HTTP/1.1 
-Accept:application/json, text/plain, */* 
-Accept-Encoding:gzip,deflate,sdch</pre>
-<p>Returns</p>
-<pre>
-HTTP/1.1 200 OK 
-ETag: &quot;LdHipfxR7BsfBI3hwqt2BLsno8ic98KmrIA1y67Nnw4=&quot;</pre>
-<p>Implementation here directs the HEAD requests to the GET handler and then the framework at the end takes care of removing the content. Since the pipeline is fully triggered, we get the ETag nicely on the response.</p>
-<p>Another important verb to implement is OPTIONS. This verb has a lot of potential to serve API documentation but here we simply return the verb supported at the resource:</p>
-<pre>
-OPTIONS /api/InventoryItem/f2b75f21-001a-4eed-b8f3-35bf5e4e9b0d HTTP/1.1</pre>
-<p>Returns</p>
-<pre>
-HTTP/1.1 200 OK 
-Allow: GET,POST,OPTIONS,HEAD,DELETE,PUT 
-Content-Length: 46 
-Content-Type: application/json; charset=utf-8; domain-model=String%5b%5d; version=4.0.0.0; format=application%2fjson; schema=application%2fjson; is-text=true  
-
-[&quot;GET&quot;,&quot;POST&quot;,&quot;OPTIONS&quot;,&quot;HEAD&quot;,&quot;DELETE&quot;,&quot;PUT&quot;]</pre>
-<p>Please note the <small><b>Allow</b></small> header in the response that is mandatory in response to OPTIONS request. HTTP Specification does not specify a canonical payload response to OPTIONS and here we send the allowed verbs as a string array (note the <small><b>String[]</b></small> appearing in domain-model as <i>UrlEncoded</i>). This verb potentially can send the API documentation in one of many emerging schemas and languages.</p>
-<p>Calling a method outside this range results in a <i>method not found</i> or 405 status that comes out of the box in ASP.NET Web API:</p>
-<pre>
-PUT /api/InventoryItem HTTP/1.1  
-
-{}</pre>
-<p>Returns</p>
-<pre>
-HTTP/1.1 405 Method Not Allowed 
-Allow: POST,GET,HEAD,OPTIONS  
-
-{&quot;message&quot;:&quot;Http Method not supported&quot;}</pre>
-<h2>Discussion</h2>
-<p>This section &nbsp;expand upon the theoretical concepts and some of the difficult and potentially controversional decisions that were made.</p>
-<h3>Concurrency check is optional</h3>
-<p>In the original m-r implementation, all commands (except for <small><b>CreateInventoryItemCommand</b></small> which implicitly has the version of 0) have an integer <small><b>CurrentVersion</b></small> property. In this implementation they have been changed to optional (nullable in C#).</p>
-<p>On one hand, the <i>server</i> is responsible for ensuring integrity of its state. As such it cannot and should not depend on the version number provided by the clients. Concurrency check is provided as a feature to the client rather than server's mechanism to ensure integrity of the domain. If the client is concerned about the concurrency, it can optionally send the version number - which has been provided to them as an opaque ETag - encrypted version number. Bear in mind concurrency checking is a different concern from server events' version numbers - that remains internal to the server.</p>
-<p>On the other hand, concurrency checks do not make sense for some operations. For example if two clients add 20 items (using <small><b>CheckInItemsToInventoryCommand</b></small>) against the stock at the same time when both having version n of the item, one of these commands fail while there is no need to: 40 items are being added. This issue is magnified in a highly volume scenarios. Imagine customers rushing to buy a copy of the latest Harry Potter book on Amazon - they will experience concurrency errors most of the time.</p>
-<p>It is not accidental that in HTTP concurrency is considered for PUT (and PATCH) calls and is all but optional. While this concurrency check can be done asynchronously, all effort must be made to make it synchronous so that when we return status 202 (accepted), we have already confirmed there is no concurrency conflict.</p>
-<h3>Five Levels of Media Type (5LMT) vs. minting new media types</h3>
-<p>One of the approaches commonly seen in the community is to create new media types - usually referred to as minting new media types. For example using:</p>
-<pre>
-Content-Type:application/vnd.InventoryItemListDataCollection.1.0.0.0+json;</pre>
-<p>This uses a non-canonical representation of the subtype of the media type which has become a common practice (a convention really) to split the subtype into custom/formal elements using &quot;+&quot; sign in the middle. There are registered media types such as <small><b>application/rss+xml</b></small> and <small><b>application/atom+xml</b></small> that use this convention. These two examples are sitting at the level 3 (or schema) of the media type levels while <small><b>application/xml</b></small> is at level 2 (format). In a sense, <small><b>application/atom+xml</b></small> is just <small><b>application/xml</b></small> as for the format while it sticks to ATOM schema.</p>
-<p>While this convention can be formalised in the future ratifications of HTTP Specification, it does not solve the problem of ever expanding set of media types. First of all, using unregistered media types is discouraged by <a href="http://www.w3.org/Protocols/rfc2616/rfc2616-sec3.html#sec3.7">HTTP specification</a>, and so is the use of the above <small><b>Content-Type</b></small> value. In fact, if we were to register a media type for every combination of five different levels in all APIs present, IANA would probably need to employ an army of registrants to deal with the massive demand. On the other hand, many client systems use a dictionary-based media type handling that would be unable to deal with minted media types.</p>
-<p>So using 5LMT allows for the existing clients to carry on working as before while more advanced clients can take advantage of extra levels provided as separate entities.</p>
-<h3>Protecting internal domain using a Public Domain is essential</h3>
-<p>It is very important to abstract internals of the server from the clients. As described earlier, smaller domains will have a public domain similar to the internal domain but even in the case of m-r we could not directly expose the internal domain and had to create separate models to present <b>what the client is supposed to see and interact with</b>.</p>
-<p>This public domain needs to be <i>documented</i> and presented to the clients. This is one space to watch as we are witnessing emergence of different approaches and practices (starting from WADL to Swagger, RAML, RestDown, etc).</p>
-<h2>Conclusion</h2>
-<p>Exposing a CQRS service through a REST API is not only possible but the richness of HTTP semantics allows for a fluent and efficient API to be built on top. This process involves building a public domain composed of commands, queries (input/output messages) and resources that are concurrency and caching aware. Also we need to map internal domain(s queries and commands to HTTP verbs and use status codes to convey state transitions and exceptions. Use of 5LMT helps with building resources that are fully RESTful and not RPC-styled. All of this has been demonstrated in a minimal but working prototype implemented in ASP.NET Web API and AngularJS.</p>
-<h2>About the Author</h2>
-<p><strong><img align="left" src="http://www.infoq.com/resource/articles/rest-api-on-cqrs/en/resources/Ali.jpg" alt="" _href="img://Ali.jpg" _p="true" />Ali Kheyrollahi </strong>is a Solutions Architect, author, blogger, open source author and contributor currently working for a large eCommerce in London. He is passionate about HTTP, Web APIs, REST, DDD and conceptual modelling while staying pragmatic in solving real business problems. He has +12 years experience in the industry working for a number of blue chip companies. He has a keen interest in computer vision and machine learning and has published a few papers in the field. In his previous life, he was a medical doctor and worked for 5 years as a GP. He <a href="http://byterot.blogspot.com">blogs here</a> and is an avid twitter using handle @aliostad.</p><br><br><br><br><br><br></body></html>
+<p><a href="/resource/articles/chronic-overcommitment/en/resources/fig2.jpg" _href="resource://fig2.jpg"><img src="http://www.infoq.com/resource/articles/chronic-overcommitment/en/resources/1fig2small.jpg" alt="" _href="img://1fig2small.jpg" _p="true" /></a></p>
+<p><strong>Figure 2 - Acceptance of new work</strong></p>
+<p>When you continue to add projects in an uncontrolled manner long enough, the IT organization will be overcommitted, it may take some time but in the end, it will happen.</p>
+<p>When existing projects get delayed, trust between IT and the business deteriorates and business stakeholders will start to take any opportunity to get their needs on the agenda. This will show up in the form of requirements being forced into projects that have already gotten clearance to start, skunkworks projects done by departments without any IT participation causing additional work for the IT department in the form of integration, maintenance and security issues. All of this can be summarized as pressure to accept more work. Eventually this will become a reinforcing loop that keeps heaping pressure on the team to accept additional work.</p>
+<p>(Click on the image to enlarge it)</p>
+<p><a href="/resource/articles/chronic-overcommitment/en/resources/fig3.jpg" _href="resource://fig3.jpg"><img src="http://www.infoq.com/resource/articles/chronic-overcommitment/en/resources/fig3small.jpg" alt="" _href="img://fig3small.jpg" _p="true" /></a></p>
+<p><strong>Figure 3 - Increasing pressure to accept more work keeps the organization in a perpetual state of Overcommitment</strong></p>
+<p>One of the actions Claes and his boss can do is to kill projects that are less important to create space for projects that are more important. This would lessen the strain on the IT organization and provide a more even flow of deliveries from the projects and allow Claes to come out on top of the situation.</p>
+<p>(Click on the image to enlarge it)</p>
+<p><a href="/resource/articles/chronic-overcommitment/en/resources/fig4.jpg" _href="resource://fig4.jpg"><img src="http://www.infoq.com/resource/articles/chronic-overcommitment/en/resources/fig4small.jpg" alt="" _href="img://fig4small.jpg" _p="true" /></a></p>
+<p><strong>Figure 4 - Killing projects to lessen overcommitment problems</strong></p>
+<p>Unfortunately other dynamics come into play when Claes wants to kill some of the existing projects.&nbsp; When the organization is overcommitted it usually has hundreds of projects with a multitude of stakeholders making it very difficult to kill a project. Project champions and stakeholders will want to keep their projects running in order to get the anticipated benefits, so they will point to other projects and say “find another project to kill, my project is important”.&nbsp; Basically Claes is trying to sell the message “Your baby is ugly and needs to be closed so someone else’s baby can be started”. &nbsp;He will not find many sympathetic listeners.&nbsp; This gives us the “Do not kill my project” reinforcing loop; the more overcommitted our organization is the harder it is to pinpoint the right projects to kill in order to bring us back to a stable execution mode.</p>
+<p>(Click on the image to enlarge it)</p>
+<p><a href="/resource/articles/chronic-overcommitment/en/resources/fig5.jpg" _href="resource://fig5.jpg"><img src="http://www.infoq.com/resource/articles/chronic-overcommitment/en/resources/fig5small.jpg" alt="" _href="img://fig5small.jpg" _p="true" /></a></p>
+<p><strong>Figure 5 - &quot;Do not kill my project&quot; reinforcing loop</strong></p>
+<p>Unfortunately, killing a running project will tear further on the trust between IT and Business and increase the pressure on IT to accept new work. So once we are in this “Catch 22” of over commitment, it is hard for an organization to get out of the hole they are in.</p>
+<p>In summary, the IT organization can be viewed as a bathtub. When the “bathtub” overflows it creates extra costs and problems and delays delivery of existing projects. The basic rule is never add more work than flows out of the organization once you have reached your capacity limit.</p>
+<p><img src="http://www.infoq.com/resource/articles/chronic-overcommitment/en/resources/1fig6.jpg" alt="" _href="img://1fig6.jpg" _p="true" /></p>
+<p><strong>Figure 6 - IT department as a bathtub</strong></p>
+<h2>Resolving the Gordian Knot between Business and IT</h2>
+<p>A Gordian Knot represents a difficult, intractable and often insolvable problem, which is exactly what it feels like in an organization with chronic overcommitment.&nbsp; But there is hope. &nbsp;Let's see what Claes and his boss could do to improve things.</p>
+<p>Claes could try to solve his resource issues by using external suppliers and doing various workarounds to provide functionality faster, but none of these methods address the main reasons for overcommitment.&nbsp; While workarounds may help, they will only serve to keep the organization in the Catch 22 situation they find themselves in. Even more worrisome is that over the long run, performance will deteriorate since the IT department’s capacity gets worse and worse over time.</p>
+<p>Instead, Claes should apply the following four steps:</p>
+<ol> 
+ <li><strong>Learn to deliver on a small scale </strong></li> 
+</ol>
+<p style="margin-left: 40px;">Isolate some value stream or function where it's possible for a team to deliver value without dependencies on other parts of the organization. Have the team deliver with quality, accept no shortcuts or deliveries where the quality is unknown. Feed the learnings on how to organize around a value stream back to the organization and then slowly begin to scale up being careful to avoid unnecessary dependencies between the value streams.&nbsp; Use Agile and Lean practices and principles to improve your delivery capacity.</p>
+<ol> 
+ <li value="2"><strong>Have a clear strategy and live by it </strong></li> 
+</ol>
+<p style="margin-left: 40px;">You cannot kill project #265 without a clear strategy. By articulating the business vision and priorities in a concrete manner, with clear real examples, people can make the right decisions. Remember that everyone is prone to overcommitment and the job of management is to make sure that the delivery engine is not overloaded. Create hard rules of limits for the system and enforce escalation procedures like requiring CEO level acceptance to exceed the limits for work in progress. Companies like Volvo and Harley Davidson have learned this lesson and created a strategy to deal with it. At Volvo the strategy was codified in the quote “666 is the highway to hell” meaning that they should never do three major projects in parallel (major projects are called category 6 projects at Volvo). &nbsp;Similarly, Harley Davidson made huge progress by understanding that they could not do more than one big project per year.</p>
+<ol> 
+ <li value="3"><strong>Change your habits around problems</strong></li> 
+</ol>
+<p style="margin-left: 40px;">Normally when a problem occurs, management rushes in to help solve that problem but often making things worse by enforcing more control, status reporting, and other work that is disconnected from reality.</p>
+<p style="margin-left: 40px;">By doing what should be the work of the front line people, managers lose their strongest card since their focus shrinks. Once you have ensured that your people have the needed expertise and any other resources necessary to solve the problem, make sure you have a structure to share information about the issue.</p>
+<p style="margin-left: 40px;">&nbsp;Finally, think about how the problem might have side effects on the organization, both today and in the future, and try to answer the following questions. &nbsp;How could this problem have been detected earlier? Is there anything in the current system and strategy that creates this problem? How do we share new knowledge gained from this problem?&nbsp; Innovation requires space, how can you create this space for your teams so that this problem does not impact you again?</p>
+<ol> 
+ <li value="4"><strong>Create common knowledge</strong></li> 
+</ol>
+<p style="margin-left: 40px;">If you are responsible for the delivery engine in your organization, you will need to create a common understanding between all parties so that everyone understands the strategies and rules of the game. It is important to create this common ground so that everyone understands that the decisions and behavior is optimal for the organization and not done for local silo optimization.</p>
+<h2>In Conclusion</h2>
+<p>We have hopefully shown that the problem of chronic overcommitment is the result of many patterns and people interacting with each other and that any solution to this problem must be applied across several different layers. As a rule of thumb though, until you have a clear understanding of your organization's capacity, don't start any new work until you've closed something old. Our business is not to start as much as possible; it's to finish as much as possible.</p>
+<blockquote>
+ I'm as proud of what we don't do as I am of what we do. – Steve Jobs
+</blockquote>
+<h2>About the Authors</h2>
+<p><strong><img align="left" src="http://www.infoq.com/resource/articles/chronic-overcommitment/en/resources/rolf.jpg" alt="" _href="img://rolf.jpg" _p="true" />Rolf H&auml;s&auml;nen</strong> is the founder of Value At Work and a systems thinker whom is passionate about improvement and innovation. Combining principles and methods of Systems Thinking, Lean Product Development, Design Thinking and the Agile world, Rolf helps people solve complex business problems and improve their organizations. Currently Rolf is working with challenges involved with large-scale product development and how to capture and share knowledge across organizational boundaries and unlock the full potential of team learning.</p>
+<p>&nbsp;<strong><img align="left" src="http://www.infoq.com/resource/articles/chronic-overcommitment/en/resources/morgan.jpg" alt="" _href="img://morgan.jpg" _p="true" />Morgan Ahlstr&ouml;m</strong> combines a broad experience from several different roles in IT organizations in many different industries such as banking, media/television, automotive, telecom, travel, fashion and facilities management. This has given him a great ability to help his clients find new solutions to their challenges. For more than ten years, he has continuously nurtured a strong interest in Agile software development and change management in organizations and uses these skills to help his clients develop more effective and efficient organizations. Today, Morgan is mainly working as a lean/agile coach, helping individuals, teams and organizations implement Agile processes.</p><br><br><br><br><br><br></body></html>

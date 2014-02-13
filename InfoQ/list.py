@@ -1,8 +1,8 @@
 <html>
  <head></head> 
- <body>
-  <div>
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/11.py">jQuery 1.11 &amp; 2.1がnpmとBowerで公開</a>最新のjQueryがnpmとBowerから入手可能だ。パフォーマンスが改善され，いくつかのバグが修正されている。
+ <body> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/11.py">jQuery 1.11 &amp; 2.1がnpmとBowerで公開</a>最新のjQueryがnpmとBowerから入手可能だ。パフォーマンスが改善され，いくつかのバグが修正されている。 
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/10.py">Firefox OS向け開発を始めるための資料</a>Mozillaが開発するFirefox OSは“オープンなウェブのための完璧でスタンドアロンなオペレーティングシステムを構築するという目的”を追求しており、HTML、CSS、JavaScriptを使ってアプリケーションをインストールして実行できるようにしようとしている。LinuxとMozillaのGeckoをベースにしており、100％完全にオープンなスタックで作られている。 
@@ -150,6 +150,6 @@
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/14.py">OpenAccess ORM Q3 2013 SP1がVS 2013サポートを追加，従来型ウィザードとOracle 9i, MySQL 5のサポートは廃止に</a>先日TelerikがリリースしたOpenAccess ORM Q3 2013 AP1では，Visual Studio 2008を継続してサポートすると同時に，Visual Studio 2013のサポートが導入されている。しかし従来のウィザード，Oracle 9iとMySQL 5.0のサポートについては，OpenAccess ORMの次期リリースから廃止される予定だ。 
-  </div>  
+  </div> 
  </body>
 </html>

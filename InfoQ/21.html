@@ -1,14 +1,20 @@
-<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>F#Tools 3.1.1增加对用于桌面和网络开发的Visual Studio 2013速成版的支持</h3><p>已经发布的<a href="http://www.microsoft.com/en-us/download/details.aspx?id=41654">Visual F# Tools 3.1.1</a>版本，将同时支持用于桌面和网络开发的Visual Studio 2013 速成版。用户还可以将它安装在没有Visual Studio的系统中。在后一种情况下，编译器、运行时以及F# Interactive将自动部署，而不会涉及到IDE工具。</p>
-<p>微软的F#产品团队表示，现在已经实现了以上特性，以支持开发者在构建服务器和虚拟机的情境中使用F# 3.1。此外，开发者还能够在诸如Emacs和Xamarin Studio等编辑客户端中，使用F#的最新版本。</p>
-<p>开发者可以直接在PowerShell会话中，使用如下命令，来自动完成F# Tools 3.1.1的安装：</p>
-<pre>
-$webclient = New-Object Net.WebClient
-$url = 'http://download.microsoft.com/download/3/0/A/30A5D6DD-5B5C-
-4E06-B331-A88AA0B53150/FSharp_Bundle.exe'
-$webclient.DownloadFile($url, &quot;$pwd\FSharp_Bundle.exe&quot;)
-.\FSharp_Bundle.exe /install /quiet
-</pre>
-<p>微软预计将在即将发布的Visual Studio中提供F#工具。要安装Visual F# Tools3.1.1，开发者需要Windows 7或8之一，以及Visual Studio 2013旗舰版、高级版、专业版、用于桌面和网络开发的速成版。如果想要在没有Visual Studio的环境中安装该工具，开发者则需要安装额外的框架，例如MSBuild 12.0、.NET Framework 4.5.1和Windows 7/8.1 SDK。</p>
-<p>安装完成后，开发者可以在Program Files(x86)\ Microsoft SDKs\F#\3.1\Framework\v4.0文件夹中找到所需的工具包中的DLL和EXE文件。</p>
-<p>官方下载页面中，并未将Visual Studio 2012列为F# Tools 3.1.1的安装要求。它是否能够支持Visual Studio 2012还有待进一步了解。</p>
-<p><strong>查看英文原文：</strong><a href="http://www.infoq.com/news/2014/01/visual-fsharp-tools-3-1-1">Visual F# Tools 3.1.1 Adds Visual Studio Express 2013 Desktop and Web Versions</a></p><br><br><br><br><br><br></body></html>
+<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>Facebook 开源移动应用交互设计工具 Origami</h3><p>2013年12月，Facebook 开源了基于 Quartz Composer 的插件<a href="https://github.com/facebook/origami">Origami</a>，设计师可以通过 Origami 能够快速构建移动应用交互原型，随后交付给工程师实现，值得注意的是 Origami 无需编程背景，新发布的 Paper 从项目设计之初所有的原型设计都是采用 Origami 来实现。</p>
+<h2>Origami 背景</h2>
+<p>现在 App 的原型设计越来越复杂，以前使用 Photoshop 制作静态图的方式<a href="https://medium.com/the-year-of-the-looking-glass/f1173d0bd181">不能满足</a>各种交互效果的展示，Paper 的首席设计师 Mike Matas 在加入 Facebook 之初就推荐大家使用 Quartz Composer 来快速构建应用原型，而 Facebook 的设计团队也很快接收并喜欢上了这个工具，在随后的应用，例如<a href="https://medium.com/the-year-of-the-looking-glass/af182add5a2f">Home</a>当中也开始使用 Quartz 构建原型，但是他们随后面临一个问题：</p>
+<blockquote> 
+ <p>对于产品设计师来说，Quartz Composer 的学习曲线太高……</p> 
+</blockquote>
+<p>在参与 Paper 项目之后，Facebook 的产品设计师 Brandon Walkin 和 <a href="https://github.com/drewhamlin">Drew Hamlin</a> 主导了 Origami 的开发，随着 Paper 产品的改进，Origami 所包含的功能也不断在扩充。</p>
+<h2>Origami 特性与安装</h2>
+<p>Origami 目前已经包含了诸如 Switch、Scroll、Bouncy Animation、Classic Animation 等大量控件，并扩展了 Quartz Composer 对于视网膜屏支持、修复了些稳定性 bug 等。通过如下步骤安装 Origami：</p>
+<ol> 
+ <li><a href="http://developer.apple.com/register/">注册成为苹果开发者</a></li> 
+ <li><a href="http://origami.facebook.com/quartzcomposer/">下载Quartz Composer</a></li> 
+ <li><a href="http://facebook.github.io/origami/download/">安装Origami</a></li> 
+</ol>
+<h2>Origami对于产品设计流程的影响</h2>
+<p>Drew Hamlin 在一次<a href="http://live.fastcompany.com/Event/Livechat_With_Facebooks_Creators_Of_Origami_A_Free_Tool_To_Mock_UX">采访</a>中对引入 Origami 之后整个设计流程带来的变化时谈到：</p>
+<blockquote> 
+ <p>产品设计中最重要的环节是对于想法和细节的把握，之前只能使用白板或手绘想法，现在 Origami 能够帮助快速实现并验证这些想法。当团队感觉良好以后，我们会传播给公司中更多的人，进而改进产品。……在使用 Origami 之前，我们需要做大量的静态图来展示想要实现的效果，现在我们可以拿一个和最终产品一样使用方式的原型来做展示。</p> 
+</blockquote>
+<p>Origami 的开发团队鼓励开发者发挥想象力来创建更多的交互案例，团队也考虑将 Origami 所设计的原型跑在平板或者移动设备上，目前在<a href="https://www.facebook.com/groups/origami.community/">其 Facebook 社区</a>中已经有大量的第三封案例可以提供下载学习，也许 Origami 会带来应用设计的革新，引发“交互设计开源”的潮流，让我们拭目以待。</p><br><br><br><br><br><br></body></html>

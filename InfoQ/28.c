@@ -1,13 +1,22 @@
-<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>Google abre código-fonte do Gumbo, uma biblioteca para parsing de HTML5</h3><p>O Google abriu o c&oacute;digo-fonte do <a href="https://github.com/google/gumbo-parser">Gumbo</a>, uma biblioteca para parsing de HTML escrita em C. O Gumbo segue o <a href="http://www.whatwg.org/specs/web-apps/current-work/multipage/parsing.html#parsing">algoritmo de parsing de HTML5</a>, passando em todos os testes da biblioteca <a href="https://github.com/html5lib/html5lib-tests">html5lib-0.95</a>, al&eacute;m de ter sido testado em 2,5 bilh&otilde;es de p&aacute;ginas indexadas pelo Google.</p>
-<p>De acordo com a p&aacute;gina de descri&ccedil;&atilde;o do projeto, o prop&oacute;sito em lan&ccedil;ar o Gumbo &eacute; dar aos desenvolvedores uma biblioteca para parse HTML que n&atilde;o possui depend&ecirc;ncias externas e pode ser chamado a partir da maioria das linguagens. A biblioteca poderia ser inclu&iacute;da em validadores de p&aacute;ginas web, analisadores est&aacute;ticos, linguagens de template, ferramentas de refatora&ccedil;&atilde;o, etc.</p>
-<p>O Google considera o Gumbo como &quot;robusto e flex&iacute;vel a uma entrada mal escrita&quot;, por&eacute;m n&atilde;o recomenda que se possua ponteiros para algumas de suas estruturas internas de dados, pois &eacute; prov&aacute;vel que a API mude no futuro. Apesar da API ser considerada como est&aacute;vel, a equipe est&aacute; esperando por coment&aacute;rios dos usu&aacute;rios antes de lan&ccedil;ar a vers&atilde;o 1.0, o que deve ocorrer no futuro pr&oacute;ximo.</p>
-<p>Algumas das funcionalidades que ser&atilde;o adicionadas no futuro s&atilde;o:</p>
-<blockquote> 
- <ul class="c7 lst-kix_61p7wmqv86ly-0 start"> 
-  <li>Suporte para mudan&ccedil;as recentes na especifica&ccedil;&atilde;o do HTML5 para suportar a tag template;</li> 
-  <li>Suporte a parse de fragmentos;</li> 
-  <li>Relat&oacute;rios de erro com diversos recursos;</li> 
-  <li>Acoplamento em outras linguagens.</li> 
- </ul> 
-</blockquote>
-<p>Antes da padroniza&ccedil;&atilde;o do algoritmo de parse do HTML 5, cada navegador escolhia como iria interpretar as p&aacute;ginas de entrada e como iria apresent&aacute;-las ao usu&aacute;rio. Apesar do HTML 4 possuir especifica&ccedil;&otilde;es a respeito de remarca&ccedil;&otilde;es v&aacute;lidas, n&atilde;o existia nenhuma diretiva a respeito de como o navegador deveria se comportar quando a entrada n&atilde;o era v&aacute;lida, somado ao fato de <a href="http://dev.opera.com/articles/view/mama-markup-validation-report/">95% das p&aacute;ginas web do mundo</a> n&atilde;o passarem no <a href="http://validator.w3.org/">validador de refer&ecirc;ncia do W3C</a>. Validar p&aacute;ginas HTML com uma ferramenta como o Gumbo garante que p&aacute;ginas ser&atilde;o apropriadamente convertidas e exibidas em todos os grandes navegadores.</p><br><br><br><br><br><br></body></html>
+<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>LINQ para logs e rastreamentos</h3><p>A Microsoft Open Technologies, bra&ccedil;o da empresa que trabalha com tecnologias abertas, <a href="http://blogs.msdn.com/b/interoperability/archive/2014/01/06/new-release-tx-linq-to-logs-and-traces.aspx">anunciou recentemente</a> o lan&ccedil;amento do Tx, um projeto de c&oacute;digo aberto que pode ajudar a depura&ccedil;&atilde;o utilizando Logs e Traces, e construir sistemas para monitoramento de eventos e alerta em tempo real.</p>
+<p>Algumas funcionalidades interessantes:</p>
+<ul> 
+ <li>Permite o uso de <a href="http://msdn.microsoft.com/en-us/library/bb397926.aspx">LINQ</a> em fontes de eventos do Windows;</li> 
+ <li>Habilita o uso de <a href="http://msdn.microsoft.com/en-us/data/gg577609.aspx">Reactive Extensions</a> em fontes de eventos reais com suporte para sequ&ecirc;ncia de eventos multiplexados (uma &uacute;nica sequ&ecirc;ncia contendo eventos de diferentes tipos em ordem de ocorr&ecirc;ncia);</li> 
+ <li>&Eacute; poss&iacute;vel fornecer consultas &uacute;nicas atrav&eacute;s de diferentes fontes, com a mesma API tanto para eventos em tempo real quanto para eventos hist&oacute;ricos;</li> 
+ <li>Em logs hist&oacute;ricos, m&uacute;ltiplas consultas podem ser executadas em uma leitura - por exemplo, contar todos os eventos de &quot;Warning&quot;, comparar eventos &quot;Begin&quot; e &quot;End&quot; e calcular a dura&ccedil;&atilde;o m&eacute;dia de cada atividade.</li> 
+</ul>
+<p>Tamb&eacute;m &eacute; poss&iacute;vel usar o <a href="http://www.linqpad.net/">LINQPad</a> para analisar ou construir aplica&ccedil;&otilde;es .NET de monitoramento. No LINQPad, a experi&ecirc;ncia do Tx &eacute; como se todos os eventos estivessem em um banco de dados.</p>
+<p>O lan&ccedil;amento fornece quatro pacotes diferentes para o NuGet:</p>
+<ul> 
+ <li><a href="http://www.nuget.org/packages/Tx.Core/">Tx.Core</a> - componentes comuns sem um formato de rastreamento especifico;</li> 
+ <li><a href="http://www.nuget.org/packages/Tx.Windows/">Tx.Windows</a> - Suporte para o rastreamento de eventos (Event Tracing) no Windows, Event logs, e contradores de performance de arquivos e uma API de contador em tempo real, logs texto do IIS no formato W3C;</li> 
+ <li><a href="http://www.nuget.org/packages/Tx.SqlServer/">Tx.SqlServer</a> - Eventos estendidos do SQL Server;</li> 
+ <li><a href="http://www.nuget.org/packages/Tx.All/">Tx.All</a> - Um pacote de conveni&ecirc;ncia, com todos os listados acima.</li> 
+</ul>
+<p>Note que a Microsoft tamb&eacute;m aconselha <a href="http://tx.codeplex.com/SourceControl/latest#Doc/WhenToUse.md">quando n&atilde;o usar o Tx</a>:</p>
+<ul> 
+ <li>Quando n&atilde;o h&aacute; nenhum tipo de fornecimento de dados em tempo real envolvido e os dados j&aacute; est&atilde;o em mem&oacute;ria ou em um &uacute;nico arquivo de f&aacute;cil leitura, o guia &eacute; usar Linq-To-Objects ao inv&eacute;s do Tx;</li> 
+ <li>Quando existe alimenta&ccedil;&atilde;o de dados em tempo real, mas cada fonte ou arquivo cont&eacute;m apenas um tipo de evento, use apenas as Reactive Extensions.</li> 
+</ul>
+<p>A ferramenta tem sido utilizada internamente na Microsoft, nas equipes do WCF e Service Bus e agora est&aacute; dispon&iacute;vel para todos os desenvolvedores .NET usarem em seus projetos. Para mais informa&ccedil;&otilde;es confira a <a href="http://tx.codeplex.com/documentation">documenta&ccedil;&atilde;o</a>.</p><br><br><br><br><br><br></body></html>

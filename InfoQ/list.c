@@ -1,6 +1,12 @@
 <html>
  <head></head> 
- <body> 
+ <body>
+  <div>
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/29.c">Java EE 8: Oracle busca mais feedback</a>A Oracle lan&ccedil;ou a segunda parte de sua pesquisa do Java EE 8 na comunidade com nuvem, seguran&ccedil;a, rastreio, publica&ccedil;&atilde;o, testes, perfis e cortes entre os t&oacute;picos.
+  </div>
+  <div>
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/28.c">LINQ para logs e rastreamentos</a>A Microsoft Open Technologies, bra&ccedil;o da empresa que trabalha com tecnologias abertas, anunciou recentemente o lan&ccedil;amento do Tx, um projeto de c&oacute;digo aberto que pode ajudar a depura&ccedil;&atilde;o utilizando Logs e Traces, e construir sistemas para monitoramento de eventos e alertas em tempo real.
+  </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/27.c">Princ&iacute;pios SOLID de design para JavaScript</a>Os princ&iacute;pios SOLID s&atilde;o exemplos de programa&ccedil;&atilde;o orientada &agrave; objetos que podem ajudar a escrever c&oacute;digo JavaScript bom e est&aacute;vel, declarou Derick Balley, autor e desenvolvedor focado em JavaScript em uma apresenta&ccedil;&atilde;o recente. 
   </div> 
@@ -144,12 +150,6 @@
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/31.c">Twitter abre o c&oacute;digo do Summingbird</a>O Twitter abriu o c&oacute;digo do Summingbird, uma biblioteca para constru&ccedil;&atilde;o de solu&ccedil;&otilde;es MapReduce que permite a execu&ccedil;&atilde;o em batch, real-time ou h&iacute;brido. 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/30.c">O presente e o futuro do desempenho dos aplicativos web moveis</a>Em um artigo s&oacute;lido, bem fundamentado, Drew Crawford exp&otilde;e todas as raz&otilde;es pelas quais ele acredita que os aplicativos web mobile s&atilde;o lentas hoje e porque ele n&atilde;o espera por uma melhoria relevante no futuro pr&oacute;ximo. 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/29.c">Android 4.4 KitKat: Diversas novidades para os desenvolvedores</a>O Google lan&ccedil;ou o Android 4.4 (KitKat) com: menor uso de mem&oacute;ria, modo de imers&atilde;o, estilos transl&uacute;cidos, impress&atilde;o da tela, diversos frameworks (impress&atilde;o, armazenamento, transi&ccedil;&otilde;es), e o Chromium WebView. 
-  </div> 
+  </div>   
  </body>
 </html>

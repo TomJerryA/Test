@@ -1,6 +1,9 @@
 <html>
  <head></head> 
- <body> 
+ <body>
+  <div>
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/18.javab">Solving the Gordian Knot of Chronic Overcommittment in Development Organizations</a> Why do we promise more than we can deliver? Why do we say yes when we are already too busy? Chronic Overcommitment is a pervasive problem in the IT industry. In this article we take a look at the behaviors that drive over commitment and the dynamics at play in your organization the make it a difficult problem to solve. Finally, we offer some advice to those who suffer from this affliction. 
+  </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/17.javab">Answering Common Cloud Security Questions from CIOs</a> With the news stories of possible data breaches at enterprises like Target, and the current trend of companies migrating to cloud environments for the flexibility, scalability, agility, and cost-effectiveness they offer, CIOs have been asking hard questions about cloud security. 
   </div> 
@@ -147,9 +150,6 @@
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/19.javab">Key Takeaway Points and Lessons Learned from QCon San Francisco 2013</a> This article summarizes the key takeaways and highlights from QCon San Francisco 2013 as blogged and tweeted by attendees. Over the course of the next 4 months, InfoQ will be publishing most of the conference sessions online, including 19 video interviews that were recorded by the InfoQ editorial team. The publishing schedule can be found on the QCon San Francisco web site. 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/18.javab">Exposing CQRS Through a RESTful API</a> Command Query Responsibility Segregation (CQRS) is an architectural pattern that segregates reads and writes of a system into two separate models. We propose and demonstrate an approach for building a RESTful API on top of CQRS systems. This approach joins HTTP semantics and resource-based style of REST APIs with distributed computing concerns such as eventual consistency and concurrency. 
-  </div> 
+  </div>  
  </body>
 </html>
