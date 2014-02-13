@@ -1,1 +1,1 @@
-Android++リリース - ゼロ・ハードウェア・リストリクション，MSBuild, LLVM, GCC, GDB統合デバッグ
+jQuery 1.11 & 2.1がnpmとBowerで公開

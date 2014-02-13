@@ -1,8 +1,8 @@
 <html>
  <head></head> 
- <body>
-  <div>
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/49.java">ActiveReports 8 Adds Maps, HTML5 Viewer, Advanced Barcodes and Windows Azure Support</a>ComponentOne has released ActiveReports 8 with support for maps, RSS14Stacked, RSSLimited and MicroPDF417 barcodes, Windows Azure under both partial and full trust environments in addition to a HTML5 viewer which enables you to build applications optimized for various mobile devices.
+ <body> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/49.java">ActiveReports 8 Adds Maps, HTML5 Viewer, Advanced Barcodes and Windows Azure Support</a>ComponentOne has released ActiveReports 8 with support for maps, RSS14Stacked, RSSLimited and MicroPDF417 barcodes, Windows Azure under both partial and full trust environments in addition to a HTML5 viewer which enables you to build applications optimized for various mobile devices. 
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/48.java">Google Wants to Speed Up the Internet with QUIC</a>QUIC (Quick UDP Internet Connections, pronounced 'quick') is a multiplexing transport protocol running over UDP with the main goal to have 0-RTT connectivity overhead. 
@@ -150,6 +150,6 @@
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/0.java">Management Buy-in and Support in Agile Adoption</a>Adopting agile is an organization change which involves management. It is said that management buy-in is crucial for agile to succeed and that a lack of management support can be a barrier in agile transformations. There are different ways for management to support agile in enterprises. 
-  </div>  
+  </div> 
  </body>
 </html>
