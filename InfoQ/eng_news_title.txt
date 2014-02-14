@@ -1,1 +1,1 @@
-Google Cloud SQL now Generally Available
+SharpDevelop 5 Introduces Class Browser, Search Grouping, Insert with Cursor and ILSpy Support

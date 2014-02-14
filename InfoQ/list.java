@@ -2,7 +2,19 @@
  <head></head> 
  <body>
   <div>
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/3.java">Google Cloud SQL now Generally Available</a>Google have announced general availability of their Cloud SQL service. At launch the service comes with automatic encryption of customer data, a 99.95% uptime SLA and support for databases up to 500GB in size.
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/7.java">SharpDevelop 5 Introduces Class Browser, Search Grouping, Insert with Cursor and ILSpy Support</a>SharpDevelop 5 has been released with new features such as class browser, search grouping including integration support for ILSpy. It also includes features such as insert with cursor, context actions, code inspections, enhanced scrollbar, background syntax check, link mode, suppressing issues, automatic variable naming in addition to XML based tooltips for documentation.
+  </div>
+  <div>
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/6.java">Elasticsearch 1.0.0 released</a>Elasticsearch released version 1.0.0 of its self-titled, open-source analytics tool. Elasticsearch is a distributed search engine which allows for real-time data analysis in big-data environments. The new version comes with various functional enhancements and changes to the API to make Elasticsearch more intuitive and powerful to use.
+  </div>
+  <div>
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/5.java">Oracle Releases 144 Security Fixes, 36 for Java SE</a>Oracle released their latest Critical Patch Update (CPU), containing 144 new security fixes across all product families, including 36 for Java SE.
+  </div>
+  <div>
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/4.java">Google's BigQuery Gaining Momentum</a>BigQuery, a SaaS query offering by Google, seems to gain more and more momentum. It allows to query large-scale columnar data structures using a SQL-like query language, in the cloud and provides integration with other Google services such as Google Analytics and Google Apps Script.
+  </div> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/3.java">Google Cloud SQL now Generally Available</a>Google have announced general availability of their Cloud SQL service. At launch the service comes with automatic encryption of customer data, a 99.95% uptime SLA and support for databases up to 500GB in size. 
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/2.java">Interview with VersionOne CEO Robert Holler on the Winter Product Release</a>InfoQ spoke to VersionOne CEO Robert Holler about the features of the Winter 2014 release and their strategic investment themes. 
@@ -138,18 +150,6 @@
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/8.java">DynamicData and EntityDataSource Updated with Entity Framework 6 Support</a>Microsoft recently added Entity Framework 6 support for DynamicData and EntityDataSource controls with in addition to refreshed the templates. It also has few known issues as the support is limited to C# and Web Application projects. 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/7.java">BDD and JavaScript Using CucumberJS</a>Adding CucumberJS to the TDD workflow for JavaScript-based projects embraces the ideas of Behaviour Driven Development, BDD, and allows a developer to follow the TDD principles while developing from the outside in; running automated tests that fail until code that supports a feature is implemented, Todd Anderson reveals in a recent blog post. 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/6.java">Spark, Storm And Real Time Analytics</a>Hadoop is definitely the platform of choice for Big Data analysis and computation. While data Volume, Variety and Velocity increases, Hadoop as a batch processing framework cannot cope with the requirement for real time analytics. Spark, Storm and the Lambda Architecture can help bridge the gap between batch and event based processing. 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/5.java">IDC Study: How Many Software Developers Are Out There?</a>IDC has published the “2014 Worldwide Software Developer and ICT-Skilled Worker Estimates” document, a study estimating the number of professional software developers, hobbyist developers and Information and Communications Technology (ICT)-skilled workers in the world at the start of 2014. The 90 countries covered in the study represent 97% of the world’s GDP. 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/4.java">L20n: JavaScript Localization Framework From Mozilla</a>L20n is an open source, JavaScript localization framework from Mozilla. It is designed to be very expressive along with several features such as adapting to Screen sizes, good separation of concerns, graceful handling of pluralization, support for default when there are multiple variants, and more. 
-  </div>  
+  </div>     
  </body>
 </html>

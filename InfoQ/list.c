@@ -2,7 +2,10 @@
  <head></head> 
  <body>
   <div>
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/30.c">Documenta&ccedil;&atilde;o na agilidade: quanto e quando escrev&ecirc;-la?</a>Os valores do manifesto para o desenvolvimento &aacute;gil de software &quot;software em funcionamento ao inv&eacute;s de documenta&ccedil;&atilde;o abrangente&quot;. Esse valor prim&aacute;rio da agilidade nos questiona sobre &quot;quanto&quot; e &quot;quais&quot; tipos de documentos s&atilde;o necess&aacute;rios e &quot;quando&quot; eles devem ser escritos.
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/31.c">Active Directory: Bibliotecas Open Source para o iOS e Android</a>A Microsoft est&aacute; oferecendo pr&eacute;vias de bibliotecas para acessar o Active Directory para o iOS e Android. Estas bibliotecas est&atilde;o sendo liberadas no GitHub sob a licen&ccedil;a da Apache 2.
+  </div> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/30.c">Documenta&ccedil;&atilde;o na agilidade: quanto e quando escrev&ecirc;-la?</a>Os valores do manifesto para o desenvolvimento &aacute;gil de software &quot;software em funcionamento ao inv&eacute;s de documenta&ccedil;&atilde;o abrangente&quot;. Esse valor prim&aacute;rio da agilidade nos questiona sobre &quot;quanto&quot; e &quot;quais&quot; tipos de documentos s&atilde;o necess&aacute;rios e &quot;quando&quot; eles devem ser escritos. 
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/29.c">Java EE 8: Oracle busca mais feedback</a>A Oracle lan&ccedil;ou a segunda parte de sua pesquisa do Java EE 8 na comunidade com nuvem, seguran&ccedil;a, rastreio, publica&ccedil;&atilde;o, testes, perfis e cortes entre os t&oacute;picos. 
@@ -147,9 +150,6 @@
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/33.c">Processamento em lote no Java EE 7 e melhorias no Spring Batch</a>Dentre as novas especifica&ccedil;&otilde;es introduzidas no Java EE 7 est&aacute; a JSR-352, que define um modelo de programa&ccedil;&atilde;o para processamento em lote dentro da plataforma Java EE. Essa nova especifica&ccedil;&atilde;o baseia-se fortemente no projeto Spring Batch da VMware. 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/32.c">iOS vs Android: Resultados e opini&otilde;es sobre o desenvolvimento nas duas plataformas</a>Cameron Henneke, fundador e desenvolvedor do GQueues, um gerenciador de tarefas online, adaptou a vers&atilde;o em HTML5 de seu aplicativo m&oacute;vel para iOS e Android. Durante o projeto, Henneke registrou todo o esfor&ccedil;o de desenvolvimento envolvido em ambas as plataformas e comparou os resultados em seu blog. Veja um resumo dos resultados obtidos e trechos de uma entrevista conduzida pelo InfoQ. 
   </div>  
  </body>
 </html>

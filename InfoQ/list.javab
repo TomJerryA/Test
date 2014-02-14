@@ -1,6 +1,9 @@
 <html>
  <head></head> 
- <body> 
+ <body>
+  <div>
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/19.javab">No More Technical Debt - Invest in Quality</a> Handling Technical Debt in a software system is a complex challenge. Code can always be improved – but customers only care about features. This article discusses the new metaphor “Quality Investments”. It helps to better communicate the quality of the system and guide improvements by focusing on their pay off and return of investment. 
+  </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/18.javab">Solving the Gordian Knot of Chronic Overcommittment in Development Organizations</a> Why do we promise more than we can deliver? Why do we say yes when we are already too busy? Chronic Overcommitment is a pervasive problem in the IT industry. In this article we take a look at the behaviors that drive over commitment and the dynamics at play in your organization the make it a difficult problem to solve. Finally, we offer some advice to those who suffer from this affliction. 
   </div> 
@@ -147,9 +150,6 @@
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/20.javab">Inter-thread communications in Java at the speed of light</a> Developing a light-weight, lockless, inter-thread communication framework in Java without using any locks, synchronizers, semaphores, waits, notifies; and no queues, messages, events or any other concurrency specific words or tools. Just get POJOs communicating behind plain old Java interfaces. 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/19.javab">Key Takeaway Points and Lessons Learned from QCon San Francisco 2013</a> This article summarizes the key takeaways and highlights from QCon San Francisco 2013 as blogged and tweeted by attendees. Over the course of the next 4 months, InfoQ will be publishing most of the conference sessions online, including 19 video interviews that were recorded by the InfoQ editorial team. The publishing schedule can be found on the QCon San Francisco web site. 
-  </div> 
+  </div>  
  </body>
 </html>

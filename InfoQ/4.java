@@ -1,26 +1,11 @@
-<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>L20n: JavaScript Localization Framework From Mozilla</h3><p><a href="http://l20n.org/">L20n</a> is an open source, JavaScript localization framework from Mozilla. It is designed to be very expressive along with several features such as adapting to Screen sizes, good separation of concerns, graceful handling of pluralization, support for default when there are multiple variants, and more.&nbsp;</p>
-<p><a href="https://twitter.com/stas">Staś Małolepszy</a> <a href="http://informationisart.com/19/">explains</a> the motivation behind the project -</p>
-<blockquote> 
- <p>Localizing Mozilla projects has taught us that as many as 90-95% of messages found in the UI are simple key-value pairs that won't require any advanced knowledge of L20n's features.</p> 
+<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>Google's BigQuery Gaining Momentum</h3><p>Google's BigQuery, a <a href="https://developers.google.com/bigquery/what-is-bigquery">SaaS query offering by Google</a>, seems to gain more and more momentum. It allows to query <a href="https://cloud.google.com/developers/articles/bigquery-in-practice">large-scale columnar data structures</a>&nbsp;in the cloud. Developers can load data into BigQuery via upload to <a href="https://developers.google.com/storage/">Google Cloud Storage</a> (the equivalent of Amazon's S3) or <a href="https://developers.google.com/bigquery/streaming-data-into-bigquery">stream data into the platform</a>, and then perform OLAP-style queries using a SQL-like query language.</p>
+<p>Practitioners now increasingly share their hands-on experience with BigQuery. For example,&nbsp;Graham Polley of Shine Technologies&nbsp;<a href="http://blog.shinetech.com/2014/01/18/reeling-in-big-data-using-googles-bigquery/">reported</a>:</p>
+<blockquote>
+ We decided to run our own tests, laying down the gauntlet to BQ and using a data set with 1.5 billion rows. Things were about to get very interesting – could Google’s sales pitch of &quot;being able to interactively analyse massive data sets with billions of rows&quot; really do what it said it could? It could and we were impressed. In fact, very impressed. Even when not using cached results (cached results can be toggled on and off) we experienced consistent results in the 20-25 second range for grinding through our massive data set of 1.5 billion rows using relatively complex queries to aggregate the data.
 </blockquote>
-<blockquote> 
- <p>So why develop L20n at all? Because it's the remaining 5% that make or break the UI of your app. They're too important to ignore and they are responsible for the experience of your user.</p> 
+<p>BigQuery can be used stand-alone, but also provides integration with other services, such as <a href="https://developers.google.com/apps-script/articles/bigquery_tutorial">Google Apps Script</a> or Google Analytics. Concerning the latter, Jonathan Weber (Data Evangelist at LunaMetrics) wrote an <a href="http://www.lunametrics.com/blog/2014/01/27/google-analytics-bigquery-whys-hows/">informative piece</a>&nbsp;where he states:</p>
+<blockquote>
+  First, BigQuery export is available only for Google Analytics Premium customers. You can have the BigQuery export turned on through your Premium account manager. Note that there are costs for both data storage and processing in BigQuery, but GA Premium users get a $500/month credit to use toward those charges. In many cases, that $500 will take you a long way. For reference, I took a look at one of our Premium customers using BigQuery. Their site has about 6M visits and 50M pageviews per month. Data has been exporting since September, and this month their storage charges will be about $12.86.
+ <br /> 
 </blockquote>
-<p>As such, the project tries to keep simple scenarios simple, but also supports complex localizations when needed.</p>
-<p>Below are some interesting features of L20n -</p>
-<ul> 
- <li>Expressiveness - L20n has support for <a href="http://l20n.org/learn/working-with-text-multiline-interpolation/">interpolations</a> (to build more complex entities), <a href="http://l20n.org/learn/plural-forms-introduction-to-macros/">pluralizations</a>, <a href="http://l20n.org/learn/using-variants-to-define-grammatical-cases/">handling of grammatical cases</a>, having <a href="http://l20n.org/learn/translations-with-multiple-variants/">multiple variants</a> of the same entity, and so on, which combine to create a very expressive format.</li> 
- <li><a href="http://l20n.github.io/tinker/">Responsiveness to screen sizes</a> - you can name various screen sizes and then have different variants of the entities targeted for these specific screen sizes</li> 
- <li>Good separation of concerns - localization related <a href="http://informationisart.com/21/">complexities can be isolated</a> in the language under consideration without affecting other languages used in the app or even the app source code.</li> 
- <li><a href="https://github.com/l20n/l20n.js/blob/master/docs/api.md">Non-blocking, secure API</a> in addition to the ability to <a href="https://github.com/l20n/l20n.js/blob/master/docs/html.md">bind HTML elements</a> to make them localizable</li> 
-</ul>
-<p>A simple but powerful concept that L20n introduces is the concept of <a href="http://l20n.org/learn/defining-the-default-variant/">Defaults</a> - this allows you to define multiple variants for an entity but also define a default value in case any specific variant is not asked for. This enables translators to progressively tweak their content and even add more variants, while ensuring that existing code using these entities are not affected (by just choosing a default). This is what also allows different localizations to have different degrees of complexity without having to complicate all other localizations.</p>
-<p>Here are a few resources to learn more about the project -</p>
-<ul> 
- <li>The project <a href="https://github.com/l20n/l20n.js/blob/master/README.md">ReadMe</a></li> 
- <li><a href="https://github.com/l20n/demo">A demo project</a> that shows how an HTML file can be localized using L20n</li> 
- <li><a href="http://l20n.org/learn/">Step-by-step tutorial</a> introducing various concepts</li> 
- <li><a href="https://github.com/l20n/l20n.js/tree/master/docs">Documentation</a></li> 
- <li>A Set of <a href="http://informationisart.com/19/">FAQs and Answers</a></li> 
-</ul>
-<p align="left">L20n has been in development since 2012 and the release candidate for 1.0 has been out since November 2013.</p><br><br><br><br><br><br></body></html>
+<p>While BigQuery is only available as a cloud-based solution, the underlying technology that powers BigQuery (<a href="http://research.google.com/pubs/pub36632.html">Dremel</a>) is the core of many <a href="http://www.infoq.com/news/2013/12/open-source-sql-hadoop-solutions">Open Source SQL-in-Hadoop solutions</a> such as Apache Drill or Impala.</p><br><br><br><br><br><br></body></html>
