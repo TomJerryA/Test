@@ -1,6 +1,12 @@
 <html>
  <head></head> 
- <body> 
+ <body>
+  <div>
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/13.py">Cordova 3.3.0を使ってChromeアプリをAndroidとiOSにデプロイする</a>開発者はApache Cordova 3.3.0を使って、ChromeアプリをAndroidとiOSにデプロイできるようになった。
+  </div>
+  <div>
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/12.py">Node.jsのリーダー変更</a>Isaac Schlueter氏がNode.jsのプロジェクトリーダーの座を、コントリビュータでJoyent従業員でもあるTJ Fontaine氏に引き継ぐことを発表した。彼はまた、npmにフォーカスしたスタートアップの計画も発表した。TJ氏は今後のNodeに関する彼の計画を語っている。
+  </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/11.py">jQuery 1.11 &amp; 2.1がnpmとBowerで公開</a>最新のjQueryがnpmとBowerから入手可能だ。パフォーマンスが改善され，いくつかのバグが修正されている。 
   </div> 
@@ -144,12 +150,6 @@
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/16.py">アプリのiOS 7対応期限が2月1日に</a>Appleは先日，iOSのアプリケーションに関して，2月1日までにiOS 7に対応しなければならない，という告知を行った。iTunes Storeに新たなアプリケーションやアップデートを提出する場合には，開発にXCode 5を使用することとアプリケーションをiOS 7に最適化することが必須となる。iOS7に対応するには，現行のHuman Interface Guidelinesに従ったUIの変更と，API変更の適用などが必要だ。 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/15.py">Oracleがjava EE 8計画について，さらにフィードバックを募集</a>OracleはJava EE 8コミュニティサーベイの第２部をローンチした。クラウド，セキュリティ，ロギング，デプロイ，テスタビリティ，プルーニング，プロファイルといったトピックが対象だ。 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/14.py">OpenAccess ORM Q3 2013 SP1がVS 2013サポートを追加，従来型ウィザードとOracle 9i, MySQL 5のサポートは廃止に</a>先日TelerikがリリースしたOpenAccess ORM Q3 2013 AP1では，Visual Studio 2008を継続してサポートすると同時に，Visual Studio 2013のサポートが導入されている。しかし従来のウィザード，Oracle 9iとMySQL 5.0のサポートについては，OpenAccess ORMの次期リリースから廃止される予定だ。 
-  </div> 
+  </div>   
  </body>
 </html>

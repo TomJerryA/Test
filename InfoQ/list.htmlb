@@ -1,6 +1,9 @@
 <html>
  <head></head> 
- <body> 
+ <body>
+  <div>
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/44.htmlb">豆瓣 CODE 两年历程回顾：git 不是万能的，没有 review 是万万不能的</a> 2014 年 2 月 14 日是豆瓣 CODE 项目成立两周年，同日豆瓣 CODE 团队宣布将整个框架开源。本次开源包含 CODE 框架以及 Mikoto、Linguist、P、CodeLive 等周边项目，感兴趣的工程师可以在这个基础上继续开发。下面，豆瓣 CODE 的工程师们将在 InfoQ 上分享一些 CODE 背后的故事。 
+  </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/43.htmlb">Docker：利用Linux容器实现可移植的应用部署</a> Docker是一种在Linux容器里运行应用的开源工具，一种轻量级的虚拟机。除了运行应用，Docker还提供了一些工具，借助Docker Index或自己托管的Docker注册表对进行了集装箱化处理的应用进行分发，从而简化复杂应用的部署过程。 
   </div> 
@@ -147,9 +150,6 @@
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/47.htmlb">Promise/A的误区以及实践</a> 本文从什么是Promise、Promise/A模式与同步模式有什么联系、以及Promise细节等方面入手细致讲解Promise现有的误区与背后的技术分析。 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/46.htmlb">探讨NuoDB数据库的架构—2</a> 在本文的第2部分，作者为我们展示了事务系统的实现原理、管理层的作用、所有组件的协同工作方式，以及NuoDB今后的规划。 
-  </div> 
+  </div>  
  </body>
 </html>

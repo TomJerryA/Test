@@ -2,7 +2,10 @@
  <head></head> 
  <body>
   <div>
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/1.java">Pebble opens up the first appstore for wearable devices</a>Pebble, maker of the successful Pebble and Pebble Steel smartwatches, opened up its appstore earlier this month. Pebble appstore aims at offering both customers and developers a centralised app distribution channel, thus becoming &quot;the first place where Pebble users look for Pebble apps.&quot;
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/2.java">Interview with VersionOne CEO Robert Holler on the Winter Product Release</a>InfoQ spoke to VersionOne CEO Robert Holler about the features of the Winter 2014 release and their strategic investment themes.
+  </div> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/1.java">Pebble opens up the first appstore for wearable devices</a>Pebble, maker of the successful Pebble and Pebble Steel smartwatches, opened up its appstore earlier this month. Pebble appstore aims at offering both customers and developers a centralised app distribution channel, thus becoming &quot;the first place where Pebble users look for Pebble apps.&quot; 
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/0.java">Applying Use Cases in Agile: Use Case 2.0, Slicing and Laminating</a>To incrementally develop and deliver products using agile software development, requirements are gathered and organized into a product backlog. A requirement technique that is used in agile software development is use cases. Some techniques to apply use cases for managing product requirements in agile are use case 2.0, slicing and laminating. 
@@ -147,9 +150,6 @@
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/3.java">Mozilla Foundation Announces Firefox OS Contribution Program</a>In an effort to accelerate the development of Firefox OS, Mozilla announced a Contribution Program which will aim at providing dedicated developers with access to resources and reference hardware. Foxconn will manufacture the initial reference hardware, a tablet. The program will be open to developers, localizers, testers, and bug fixers. 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/2.java">Gulp Aiming to Dethrone Grunt</a>Fractal, a company who has been actively involved in the development of several popular Node.js modules has just released gulp, a new building system which is trying to replace Grunt as the most popular JavaScript task-runner. 
   </div>  
  </body>
 </html>

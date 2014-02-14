@@ -1,1 +1,1 @@
-jQuery 1.11 & 2.1がnpmとBowerで公開
+Node.jsのリーダー変更
