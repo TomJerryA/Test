@@ -1,28 +1,62 @@
-<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>O presente e o futuro do desempenho dos aplicativos web moveis</h3><p>Em um artigo s&oacute;lido, bem fundamentado, Drew Crawford exp&otilde;e todas as <a href="http://sealedabstract.com/rants/why-mobile-web-apps-are-slow/">raz&otilde;es pelas quais ele acredita que os</a> <a href="http://sealedabstract.com/rants/why-mobile-web-apps-are-slow/">aplicativos web mobile</a><a href="http://sealedabstract.com/rants/why-mobile-web-apps-are-slow/"> s&atilde;o lentas</a> hoje e porque ele n&atilde;o espera por uma melhoria relevante no futuro pr&oacute;ximo. O artigo &eacute; o seguimento de um <a href="http://sealedabstract.com/rants/mobile-web-apps-are-slow/">artigo anterior</a> no qual ele aponta que o desempenho do JavaScript em dispositivos m&oacute;veis &eacute; uma ordem de grandeza mais lento do que em computadores desktop. Este artigo foi duramente criticado, ent&atilde;o Drew escreveu esse artigo muito mais elaborado. As raz&otilde;es para o baixo desempenho e a falta de melhorias dividem-se em tr&ecirc;s categorias:</p>
-<ol class="c5 lst-kix_vneru1wjog08-0 start" start="1"> 
- <li>Velocidade dos procesadores ARM dos dispositivos m&oacute;veis versus dos processadores x86 dos computadores desktop;</li> 
- <li>Tend&ecirc;ncias de desempenho dos interpretadores de JavaScript;</li> 
- <li>Consumo de mem&oacute;ria particularmente relacionada ao garbage collection.</li> 
-</ol>
-<p>Os dois gargalos que Drew descreve s&atilde;o CPU e mem&oacute;ria. A limita&ccedil;&atilde;o pela CPU tem dois aspectos: o poder da sua CPU e a efici&ecirc;ncia de execu&ccedil;&atilde;o. Drew aponta que a gera&ccedil;&atilde;o atual de processadores x86 s&atilde;o 10 vezes mais r&aacute;pidos do que a atual gera&ccedil;&atilde;o de processadores ARM que s&atilde;o usados nos dispositivos m&oacute;veis de hoje como o iPhone e dispositivos de alta qualidade com Android.</p>
-<p>Eu n&atilde;o sou um engenheiro de hardware, mas certa vez trabalhei para uma grande companhia de semicondutores e as pessoas me dizem que o desempenho atual &eacute; principalmente uma fun&ccedil;&atilde;o do seu processo (por exemplo, a coisa que eles medem em &quot;nan&ocirc;metros&quot;). O desempenho impressionante do iPhone 5 deve-se, de maneira significativa, ao encolhimento do processo de 45nm para 32nm - uma redu&ccedil;&atilde;o de cerca de um ter&ccedil;o. Mas para repetir o feito, a Apple teria de reduzir para um processo de 22nm.</p>
-<p>O conhecimento e investimento na redu&ccedil;&atilde;o do tamanho de transistores est&aacute; principalmente na m&atilde;o da Intel. Drew afirma que n&atilde;o &eacute; prov&aacute;vel que o ARM surpreender&aacute; num futuro previs&iacute;vel. Na verdade, &eacute; muito mais prov&aacute;vel que a Intel venha a produzir um processador x86 para competir em estrat&eacute;gia de consumo de energia, com o ARM do que fazer com que o ARM elimine esta lacuna de desempenho.</p>
-<p>O segundo aspecto do desempenho &eacute; a efici&ecirc;ncia. Qu&atilde;o eficientemente os ciclos da CPU s&atilde;o usados, isto &eacute;, qu&atilde;o eficiente podem ser as instru&ccedil;&otilde;es de m&aacute;quina geradas a partir de c&oacute;digo JavaScript?</p>
-<p>&Eacute; aqui que muitos engenheiros da computa&ccedil;&atilde;o competentes trope&ccedil;am. Sua forma de pensar funciona da seguinte maneira: JavaScript tem se tornado mais r&aacute;pido! Ele continuar&aacute; ficando mais r&aacute;pido!</p>
-<p>A primeira parte &eacute; verdade. JavaScript tornou-se muito mais r&aacute;pido. Mas estamos agora no Pico JavaScript. N&atilde;o fica muito mais r&aacute;pido daqui pra frente.</p>
-<p>Este &eacute; o Chrome v8 no meu Mac (o mais antigo que ainda funciona, Dez 2010). E este &eacute; o v26:</p>
-<p><img src="http://www.infoq.com/resource/news/2013/11/desempenho-aplicativos-moveis/pt/resources/performance-chromes.png" alt="" _href="img://performance-chromes.png" _p="true" /></p>
-<p>N&atilde;o percebe a diferen&ccedil;a? &Eacute; porque n&atilde;o h&aacute;. <strong>Nada terrivelmente importante aconteceu ao JavaScript ultimamente, no que diz respeito &agrave; limita&ccedil;&atilde;o pela CPU.</strong></p>
-<p>Se a rede parece mais r&aacute;pida do que em 2010, &eacute; provavelmente porque o computador mais r&aacute;pido, mas n&atilde;o tem nada a ver com melhorias do Chrome.</p>
-<p>O motivo pelo qual o desempenho do JavaScript n&atilde;o tem mudado significativamente &eacute; claro, segundo Drew:</p>
-<p>A quest&atilde;o &eacute;, usar uma abordagem JIT com JavaScript foi uma ideia de 60 anos de idade com 60 anos de pesquisa e literalmente milhares de implementa&ccedil;&otilde;es para cada linguagem de programa&ccedil;&atilde;o conceb&iacute;vel demonstrando que era uma boa ideia. Mas agora que terminamos, ficamos sem ideias de 60 anos de idade. &Eacute; isso, pessoal. Talvez possamos criar outra boa ideia nos pr&oacute;ximos 60 anos.</p>
-<p>A segunda limita&ccedil;&atilde;o da Internet m&oacute;vel &eacute; a <i>mem&oacute;ria</i>. Mais uma vez h&aacute; dois aspectos ligados ao uso da mem&oacute;ria: a <i>quantidade</i> dispon&iacute;vel e a <i>efici&ecirc;ncia</i> do uso.</p>
-<p>Enquanto dispositivos m&oacute;veis modernos tem uma quantidade razo&aacute;vel de mem&oacute;ria (normalmente 512MB ou 1GB de mem&oacute;ria), o sistema operacional n&atilde;o permite o aplicativo usar essa quantidade toda. Muita mem&oacute;ria &eacute; usada pelo sistema operacional em si, assim como por outros aplicativos trabalhando (multi-tarefa)</p>
-<p>[...] essencialmente no iPhone 4S, &eacute; necess&aacute;rio se preocupar quando a aplica&ccedil;&atilde;o usar em torno de 40MB, por que se atingir 213MB a aplica&ccedil;&atilde;o &eacute; encerrada. No iPad 3, preste aten&ccedil;&atilde;o quando chegar a 400MB porque a aplica&ccedil;&atilde;o &eacute; encerrada se atingir 550MB.</p>
-<p>Drew nota que com a resolu&ccedil;&atilde;o do iPhone 4S, uma &uacute;nica foto tirada com a c&acirc;mera consome at&eacute; 30MB de dados bitmap. Isso significa que h&aacute; espa&ccedil;o dispon&iacute;vel para 7 fotos na RAM antes que o sistema operacional desligue o aplicativo porque ficou sem mem&oacute;ria. Portanto, especialmente se um aplicativo lida com imagens e v&iacute;deo, ele deve ser extremamente cuidadoso com que mant&eacute;m na mem&oacute;ria e por quanto tempo, uma vez que a mem&oacute;ria &eacute; <i>extremamente limitada</i>.</p>
-<p>O segundo aspecto da mem&oacute;ria &eacute; efici&ecirc;ncia. O JavaScript &eacute; uma linguagem com garbage collector. O desenvolvedor n&atilde;o tem de fazer o gerenciamento manual da mem&oacute;ria, o que &eacute; desenhado para tornar a vida mais f&aacute;cil para o desenvolvedor. Contudo, a garbage collection tem seu pre&ccedil;o. Um pre&ccedil;o que aumenta exponencialmente em ambientes restritos pela mem&oacute;ria.</p>
-<p><img src="http://www.infoq.com/resource/news/2013/11/desempenho-aplicativos-moveis/pt/resources/chart.png" alt="" _href="img://chart.png" _p="true" /></p>
-<p>O que esse gr&aacute;fico diz &eacute;: &quot;Enquanto tiver cerca de 6 vezes a quantidade de mem&oacute;ria que realmente precisa, estar&aacute; bem. Mas ter&aacute; problemas se tiver menos do que 4x a mem&oacute;ria necess&aacute;ria&quot;.</p>
-<p>A verdade &eacute; que no ambiente limitado pela mem&oacute;ria, o desempenho do garbage collection decai exponencialmente. Se escrever Python ou Ruby ou JS que roda em computadores desktop, &eacute; poss&iacute;vel que toda sua experi&ecirc;ncia esteja no lado direito do gr&aacute;fico, e pode passar toda sua vida sem experimentar um garbage collector lento. Gaste algum tempo do lado esquerdo do gr&aacute;fico e veja com o que o resto de n&oacute;s lida.</p>
-<p>Esse comportamento poderia ser a raz&atilde;o pela qual a Apple nunca tenha dado suporte ao garbage collector do Objective-C no iOS e o esteja substituindo pelo ARC (no iOS e no Mac), que n&atilde;o &eacute; um garbage collector.</p>
-<p>Apesar de Drew levantar pontos interessantes em seu artigo, como apontado por Brendan Eich em um tweet, nem todos os aplicativos s&atilde;o limitados por CPU ou mem&oacute;ria. Apenas uma certa categoria de aplicativos esbarra nesses problemas, por exemplo: jogos e aplicativos de fotos e v&iacute;deos. De qualquer maneira, o artigo de Drew (com 10.000 palavras) vale ser lido por qualquer um interessado em desempenho na Internet m&oacute;vel.</p><br><br><br><br><br><br></body></html>
+<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>Documentação na agilidade: quanto e quando escrevê-la?</h3><p>Os valores do manifesto para o desenvolvimento &aacute;gil de software &quot;software em funcionamento mais de documenta&ccedil;&atilde;o abrangente&quot;. Esse valor prim&aacute;rio da agilidade nos questiona sobre &quot;quanto&quot; e &quot;quais&quot; tipos de documentos s&atilde;o necess&aacute;rios e &quot;quando&quot; eles devem ser escritos.</p>
+<p>No post <a href="http://pivotallabs.com/minimum-viable-deliverable/">Entregando o M&iacute;nimo Poss&iacute;vel (Minimum Viable Deliverable)</a>, Jonathan Berger escreve sobre a comunica&ccedil;&atilde;o de suas decis&otilde;es de design e compartilha sua vis&atilde;o sobre o uso da documenta&ccedil;&atilde;o:</p>
+<blockquote> 
+ <p>O manifesto &aacute;gil prioriza &quot;software em funcionamento ao inv&eacute;s de documenta&ccedil;&atilde;o abrangente&quot;, ent&atilde;o porqu&ecirc; os designers investem tempo em artefatos que o usu&aacute;rio nunca vai ver? A agilidade busca minimizar o desperd&iacute;cio, ent&atilde;o levando isso ao &quot;p&eacute; da letra&quot;, <i>toda documenta&ccedil;&atilde;o &eacute; um desperd&iacute;cio</i>. Isso n&atilde;o significa que a documenta&ccedil;&atilde;o pode (ou deve) ser abolida inteiramente, &eacute; necess&aacute;ria para que as equipes funcionem (particularmente em escala). Por outro lado sugere que minimizar a documenta&ccedil;&atilde;o &eacute; uma boa coisa, e que os designers busquem comunicar suas decis&otilde;es com o m&iacute;nimo de trabalho poss&iacute;vel.</p> 
+</blockquote>
+<p>Jonathan Berger sugere como podemos minimizar a documenta&ccedil;&atilde;o:</p>
+<blockquote> 
+ <ol start="1"> 
+  <li>Socializar a ideia que &quot;menos artefatos pode ser melhor&quot; dentro da sua equipe.</li> 
+  <li>Sempre fazer a pergunta: <i>qual &eacute; m&iacute;nimo de produto que precisamos agora?</i></li> 
+ </ol> 
+</blockquote>
+<p>Ashish Sharma escreveu sobre o equil&iacute;brio entre a documenta&ccedil;&atilde;o e discuss&atilde;o na agilidade no artigo intitulado <a href="http://www.google.com/url?q=http%3A%2F%2Fwww.scrumalliance.org%2Fcommunity%2Farticles%2F2013%2Fdecember%2Fessential-valuable-timely-documentation&amp;sa=D&amp;sntz=1&amp;usg=AFQjCNHdbyQ0KQDHT9L7qM9ObTnDL0vuWQ">documenta&ccedil;&atilde;o essencial, valiosa e oportuna</a>:</p>
+<blockquote> 
+ <p>O objetivo da agilidade deve ser buscar o equil&iacute;brio certo entre documenta&ccedil;&atilde;o e discuss&atilde;o. A documenta&ccedil;&atilde;o &eacute; uma parte importante de todo sistema, &aacute;gil ou n&atilde;o, mas por outro lado, uma documenta&ccedil;&atilde;o abrangente n&atilde;o garante o sucesso do projeto. Na verdade, aumenta suas chances de fracasso.</p> 
+</blockquote>
+<p>Ashish Sharma mencionou tr&ecirc;s crit&eacute;rios que podem ser usados para decidir quanto de documenta&ccedil;&atilde;o deve ser escrita e quando deve ser escrita:</p>
+<blockquote> 
+ <p><i>Essencial:</i> Documentar com detalhes suficientes.</p> 
+ <p><i>Valiosa:</i> Documentar somente quando for necess&aacute;rio, n&atilde;o quando quiser.</p> 
+ <p><i>Oportuna:</i> Documenta&ccedil;&atilde;o feita em tempo de desenvolvimento, quando necess&aacute;rio.</p> 
+</blockquote>
+<p><a href="http://www.infoq.com/author/Michael-Nygard">Michael Nygard</a> descreveu uma vis&atilde;o de processo para a documenta&ccedil;&atilde;o sugerindo <a href="http://thinkrelevance.com/blog/2013/10/07/begin-with-the-end-in-mind">come&ccedil;ar com o fim em mente</a>:</p>
+<blockquote> 
+ <p>Costumo encontrar processos que n&atilde;o eram utilizados. Pura perda de tempo! Literalmente ningu&eacute;m usava a documenta&ccedil;&atilde;o, mas o respons&aacute;vel n&atilde;o percebia isso.</p> 
+</blockquote>
+<p>Processos, incluindo suas entradas e sa&iacute;das, poderiam ser descritos da perspectiva do utilizador. Michael Nygard sugere uma s&eacute;rie de quest&otilde;es para auxiliar nesse momento:</p>
+<blockquote> 
+ <ol start="1"> 
+  <li>Quem vai utilizar o documento?</li> 
+  <li>O que precisa ser documentado?</li> 
+  <li>Como a documenta&ccedil;&atilde;o ser&aacute; entregue?</li> 
+  <li>Como saber se a documenta&ccedil;&atilde;o pode ser entregue?</li> 
+  <li>Como a documenta&ccedil;&atilde;o ser&aacute; produzida?</li> 
+  <li>Quais s&atilde;o as entradas necess&aacute;rias para produzir a documenta&ccedil;&atilde;o?</li> 
+ </ol> 
+</blockquote>
+<p>Tom de Lancey iniciou um debate em 2013 no LinkedIn sobre documenta&ccedil;&atilde;o emergente: <a href="https://www.linkedin.com/groups/Emergent-Documentation-One-way-that-43421.S.218531537">um caminho no qual a agilidade difere bastante do m&eacute;todo cascata</a>:</p>
+<blockquote> 
+ <p>Muitas pessoas est&atilde;o muito desconfort&aacute;veis em deixar a conhecida forma de documentar que costumava ser: requisitos do sistema, design do sistema, vis&atilde;o e escopo, casos de uso, esquemas, diagramas de fluxo de trabalho, artefatos do RUP, entre outros. Muitos n&atilde;o conseguem conceber toda essa documenta&ccedil;&atilde;o em cinco frases de uma hist&oacute;ria.</p> 
+</blockquote>
+<p>Tom de Lancey descreveu uma abordagem de documenta&ccedil;&atilde;o chamada &quot;documenta&ccedil;&atilde;o emergente&quot;:</p>
+<blockquote> 
+ <p>(...) n&atilde;o queremos perder tempo e esfor&ccedil;o em documentar alguma coisa que ainda n&atilde;o descobrimos como fazer. Documentamos na medida que descobrimos. Somente documentamos o que realmente FIZEMOS, em contraste com o que imagin&aacute;vamos que far&iacute;amos.</p> 
+</blockquote>
+<p>Um dos benef&iacute;cios dessa abordagem de documenta&ccedil;&atilde;o emergente descrito por Tom de Lancey &eacute;:</p>
+<blockquote> 
+ <p>Documenta&ccedil;&atilde;o se torna parte do processo de desenvolvimento, n&atilde;o uma atividade separada. Desde que a documenta&ccedil;&atilde;o seja realmente &uacute;til, todo a equipe tem interesse em mant&ecirc;-la. Cada hist&oacute;ria tem uma tarefa separada para atualiza&ccedil;&atilde;o da WIKI (um site do SharePoint que se conecta a cada hist&oacute;ria).</p> 
+</blockquote>
+<p>Mario Moreira escreveu um artigo sobre <a href="http://cmforagile.blogspot.nl/2013/06/right-sizing-documentation-in-agile.html">ajustar o tamanho da documenta&ccedil;&atilde;o no mundo da agilidade</a>. Ajustar o tamanho &eacute; descrito por Mario Moreira como resposta &agrave;s grandes quantidades de documenta&ccedil;&atilde;o que o projeto de software deve ter:</p>
+<blockquote> 
+ <p>Ajustar o tamanho significa que o n&iacute;vel de esfor&ccedil;o aplicado para escrever e manter a documenta&ccedil;&atilde;o somados ao valor da documenta&ccedil;&atilde;o escrita deveria ter um retorno sobre o investimento (ROI) muito maior, do que n&atilde;o ter essa informa&ccedil;&atilde;o rapidamente dispon&iacute;vel (tal como, o esfor&ccedil;o que seria necess&aacute;rio p&aacute;ra reconstruir a informa&ccedil;&atilde;o e o impacto de n&atilde;o ter essas informa&ccedil;&otilde;es para decis&otilde;es atuais).</p> 
+</blockquote>
+<p>O artigo de Mario Moreira colabora guiando ao ajuste do tamanho da documenta&ccedil;&atilde;o. Algumas das sugest&otilde;es s&atilde;o:</p>
+<blockquote> 
+ <ul> 
+  <li>Documenta&ccedil;&atilde;o deve ter uma natureza colaborativa. Portanto n&atilde;o deve ser escrita por uma &uacute;nica pessoa at&eacute; estar perfeita, e somente ent&atilde;o ser compartilhada com os outros. Ao contr&aacute;rio, deve ser compartilhada muitas vezes durante projeto para ganhar conte&uacute;do;</li> 
+  <li>Focar somente na documenta&ccedil;&atilde;o boa o suficiente e evitar detalhamentos do &quot;todo&quot; feitos no in&iacute;cio de projeto, que na sua maioria significam adivinha&ccedil;&otilde;es e perda de tempo;</li> 
+  <li>Documenta&ccedil;&atilde;o pode ter v&aacute;rias formas. N&atilde;o &eacute; somente um documento word, documenta&ccedil;&atilde;o pode estar no Wiki, em ferramenta de planejamento agil, como coment&aacute;rios no c&oacute;digo, e muito mais.</li> 
+ </ul> 
+</blockquote>
+<p>Como voc&ecirc; faz sua documenta&ccedil;&atilde;o em agilidade? Quanto e quando?</p><br><br><br><br><br><br></body></html>

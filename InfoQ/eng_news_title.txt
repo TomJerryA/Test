@@ -1,1 +1,1 @@
-Pebble opens up the first appstore for wearable devices
+Google Cloud SQL now Generally Available

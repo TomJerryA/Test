@@ -1,7 +1,7 @@
 <html>
  <head></head> 
- <body>
-  <div>
+ <body> 
+  <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/44.htmlb">豆瓣 CODE 两年历程回顾：git 不是万能的，没有 review 是万万不能的</a> 2014 年 2 月 14 日是豆瓣 CODE 项目成立两周年，同日豆瓣 CODE 团队宣布将整个框架开源。本次开源包含 CODE 框架以及 Mikoto、Linguist、P、CodeLive 等周边项目，感兴趣的工程师可以在这个基础上继续开发。下面，豆瓣 CODE 的工程师们将在 InfoQ 上分享一些 CODE 背后的故事。 
   </div> 
   <div> 
@@ -150,6 +150,6 @@
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/47.htmlb">Promise/A的误区以及实践</a> 本文从什么是Promise、Promise/A模式与同步模式有什么联系、以及Promise细节等方面入手细致讲解Promise现有的误区与背后的技术分析。 
-  </div>  
+  </div> 
  </body>
 </html>

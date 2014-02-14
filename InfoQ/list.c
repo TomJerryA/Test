@@ -1,6 +1,9 @@
 <html>
  <head></head> 
- <body> 
+ <body>
+  <div>
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/30.c">Documenta&ccedil;&atilde;o na agilidade: quanto e quando escrev&ecirc;-la?</a>Os valores do manifesto para o desenvolvimento &aacute;gil de software &quot;software em funcionamento ao inv&eacute;s de documenta&ccedil;&atilde;o abrangente&quot;. Esse valor prim&aacute;rio da agilidade nos questiona sobre &quot;quanto&quot; e &quot;quais&quot; tipos de documentos s&atilde;o necess&aacute;rios e &quot;quando&quot; eles devem ser escritos.
+  </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/29.c">Java EE 8: Oracle busca mais feedback</a>A Oracle lan&ccedil;ou a segunda parte de sua pesquisa do Java EE 8 na comunidade com nuvem, seguran&ccedil;a, rastreio, publica&ccedil;&atilde;o, testes, perfis e cortes entre os t&oacute;picos. 
   </div> 
@@ -147,9 +150,6 @@
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/32.c">iOS vs Android: Resultados e opini&otilde;es sobre o desenvolvimento nas duas plataformas</a>Cameron Henneke, fundador e desenvolvedor do GQueues, um gerenciador de tarefas online, adaptou a vers&atilde;o em HTML5 de seu aplicativo m&oacute;vel para iOS e Android. Durante o projeto, Henneke registrou todo o esfor&ccedil;o de desenvolvimento envolvido em ambas as plataformas e comparou os resultados em seu blog. Veja um resumo dos resultados obtidos e trechos de uma entrevista conduzida pelo InfoQ. 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/31.c">Twitter abre o c&oacute;digo do Summingbird</a>O Twitter abriu o c&oacute;digo do Summingbird, uma biblioteca para constru&ccedil;&atilde;o de solu&ccedil;&otilde;es MapReduce que permite a execu&ccedil;&atilde;o em batch, real-time ou h&iacute;brido. 
-  </div> 
+  </div>  
  </body>
 </html>

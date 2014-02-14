@@ -2,7 +2,10 @@
  <head></head> 
  <body>
   <div>
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/2.java">Interview with VersionOne CEO Robert Holler on the Winter Product Release</a>InfoQ spoke to VersionOne CEO Robert Holler about the features of the Winter 2014 release and their strategic investment themes.
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/3.java">Google Cloud SQL now Generally Available</a>Google have announced general availability of their Cloud SQL service. At launch the service comes with automatic encryption of customer data, a 99.95% uptime SLA and support for databases up to 500GB in size.
+  </div> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/2.java">Interview with VersionOne CEO Robert Holler on the Winter Product Release</a>InfoQ spoke to VersionOne CEO Robert Holler about the features of the Winter 2014 release and their strategic investment themes. 
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/1.java">Pebble opens up the first appstore for wearable devices</a>Pebble, maker of the successful Pebble and Pebble Steel smartwatches, opened up its appstore earlier this month. Pebble appstore aims at offering both customers and developers a centralised app distribution channel, thus becoming &quot;the first place where Pebble users look for Pebble apps.&quot; 
@@ -147,9 +150,6 @@
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/4.java">L20n: JavaScript Localization Framework From Mozilla</a>L20n is an open source, JavaScript localization framework from Mozilla. It is designed to be very expressive along with several features such as adapting to Screen sizes, good separation of concerns, graceful handling of pluralization, support for default when there are multiple variants, and more. 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/3.java">Mozilla Foundation Announces Firefox OS Contribution Program</a>In an effort to accelerate the development of Firefox OS, Mozilla announced a Contribution Program which will aim at providing dedicated developers with access to resources and reference hardware. Foxconn will manufacture the initial reference hardware, a tablet. The program will be open to developers, localizers, testers, and bug fixers. 
   </div>  
  </body>
 </html>
