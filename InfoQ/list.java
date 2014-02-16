@@ -1,17 +1,20 @@
 <html>
  <head></head> 
- <body>
-  <div>
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/7.java">SharpDevelop 5 Introduces Class Browser, Search Grouping, Insert with Cursor and ILSpy Support</a>SharpDevelop 5 has been released with new features such as class browser, search grouping including integration support for ILSpy. It also includes features such as insert with cursor, context actions, code inspections, enhanced scrollbar, background syntax check, link mode, suppressing issues, automatic variable naming in addition to XML based tooltips for documentation.
-  </div>
-  <div>
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/6.java">Elasticsearch 1.0.0 released</a>Elasticsearch released version 1.0.0 of its self-titled, open-source analytics tool. Elasticsearch is a distributed search engine which allows for real-time data analysis in big-data environments. The new version comes with various functional enhancements and changes to the API to make Elasticsearch more intuitive and powerful to use.
-  </div>
-  <div>
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/5.java">Oracle Releases 144 Security Fixes, 36 for Java SE</a>Oracle released their latest Critical Patch Update (CPU), containing 144 new security fixes across all product families, including 36 for Java SE.
-  </div>
-  <div>
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/4.java">Google's BigQuery Gaining Momentum</a>BigQuery, a SaaS query offering by Google, seems to gain more and more momentum. It allows to query large-scale columnar data structures using a SQL-like query language, in the cloud and provides integration with other Google services such as Google Analytics and Google Apps Script.
+ <body> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/8.java">Challenges Performing Background Compilation in V8</a>This article includes details on the recently background compilation introduced in V8, Chrome’s JavaScript engine. 
+  </div> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/7.java">SharpDevelop 5 Introduces Class Browser, Search Grouping, Insert with Cursor and ILSpy Support</a>SharpDevelop 5 has been released with new features such as class browser, search grouping including integration support for ILSpy. It also includes features such as insert with cursor, context actions, code inspections, enhanced scrollbar, background syntax check, link mode, suppressing issues, automatic variable naming in addition to XML based tooltips for documentation. 
+  </div> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/6.java">Elasticsearch 1.0.0 released</a>Elasticsearch released version 1.0.0 of its self-titled, open-source analytics tool. Elasticsearch is a distributed search engine which allows for real-time data analysis in big-data environments. The new version comes with various functional enhancements and changes to the API to make Elasticsearch more intuitive and powerful to use. 
+  </div> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/5.java">Oracle Releases 144 Security Fixes, 36 for Java SE</a>Oracle released their latest Critical Patch Update (CPU), containing 144 new security fixes across all product families, including 36 for Java SE. 
+  </div> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/4.java">Google's BigQuery Gaining Momentum</a>BigQuery, a SaaS query offering by Google, seems to gain more and more momentum. It allows to query large-scale columnar data structures using a SQL-like query language, in the cloud and provides integration with other Google services such as Google Analytics and Google Apps Script. 
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/3.java">Google Cloud SQL now Generally Available</a>Google have announced general availability of their Cloud SQL service. At launch the service comes with automatic encryption of customer data, a 99.95% uptime SLA and support for databases up to 500GB in size. 
@@ -148,8 +151,5 @@
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/9.java">What to Expect From HTTP/2</a>In a recent blog posting Mark Nottingham, chair of the HTTP/2 Working Group, gives his opinion on 9 things to expect in the next version of the Web standard which is rapidly nearing completion and implementations are starting to appear. 
   </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/8.java">DynamicData and EntityDataSource Updated with Entity Framework 6 Support</a>Microsoft recently added Entity Framework 6 support for DynamicData and EntityDataSource controls with in addition to refreshed the templates. It also has few known issues as the support is limited to C# and Web Application projects. 
-  </div>     
  </body>
 </html>

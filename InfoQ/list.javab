@@ -1,7 +1,10 @@
 <html>
  <head></head> 
- <body>
-  <div>
+ <body> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/20.javab">Modern Enterprise Performance Analysis Antipatterns</a> In this article we present some of the most common performance analysis antipatterns in the enterprise platform, expressed in terms of their basic causes along with remediation strategies. 
+  </div> 
+  <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/19.javab">No More Technical Debt - Invest in Quality</a> Handling Technical Debt in a software system is a complex challenge. Code can always be improved – but customers only care about features. This article discusses the new metaphor “Quality Investments”. It helps to better communicate the quality of the system and guide improvements by focusing on their pay off and return of investment. 
   </div> 
   <div> 
@@ -148,8 +151,5 @@
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/21.javab">DevOps @ large investment bank</a> This article is part of the “DevOps War Stories” series. In each issue we hear what DevOps brings to a different organisation, we learn what worked and what didn’t, and chart the challenges faced during adoption. This time a very personal story on introducing a DevOps mindset at a large bank. In particular how the automation of configuration and release management processes enabled collaboration. 
   </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/20.javab">Inter-thread communications in Java at the speed of light</a> Developing a light-weight, lockless, inter-thread communication framework in Java without using any locks, synchronizers, semaphores, waits, notifies; and no queues, messages, events or any other concurrency specific words or tools. Just get POJOs communicating behind plain old Java interfaces. 
-  </div>  
  </body>
 </html>

@@ -1,366 +1,252 @@
-<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>Inter-thread communications in Java at the speed of light</h3><p>The story begins with a simple idea: create a developer friendly, simple and lightweight inter-thread communication framework without using any locks, synchronizers, semaphores, waits, notifies; and no queues, messages, events or any other concurrency specific words or tools.</p>
-<p>Just get POJOs communicating behind plain old Java interfaces.</p>
-<p>It could be something similar to <a href="http://doc.akka.io/docs/akka/snapshot/scala/typed-actors.html">Akka typed actors</a>, but that might be overkill as the new framework has to be ultra-lightweight, and optimized for inter-thread communication on a single multi-core computer.</p>
-<p>The Akka framework is great for inter-process communications when actors cross process boundaries between different JVM instances on the same machine or on machines distributed across a network.</p>
-<p>However it may be excessive to use Akka typed actors for smaller projects, where you need only inter-thread communication but you still want to stick with the typed actor approach.</p>
-<p>I created one solution in a couple of days by using dynamic proxies, blocking queues and a cached thread pool.</p>
+<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>Modern Enterprise Performance Analysis Antipatterns</h3><h2>Defining Performance Analysis</h2>
+<p>There are many definitions of “performance analysis”, but in my opinion one of the most useful is:</p>
+<blockquote> 
+ <p>A measurement-driven approach to understanding how an application behaves under load.</p> 
+</blockquote>
+<p>The merit of this definition is that it calls attention to measurement as being key to the entire process, and by simple extension, also draws attention to statistics and data analysis as activities likely to be important to the performance engineer.</p>
+<p>Going further, it helps to position performance analysis as a fundamentally empirical activity, that resembles an experimental science with inputs and outputs.</p>
+<p>These outputs can then be framed as questions with quantitative answers - such as:</p>
+<blockquote>
+ At 10x customers, will the system have enough memory to cope?
+</blockquote>
+<blockquote>
+ What is average response time customers see from the application?
+</blockquote>
+<blockquote>
+ What does the rest of that distribution look like?
+</blockquote>
+<blockquote>
+ How does that compare to our competitors?
+</blockquote>
+<p>In this formulation, performance as expressed by these best practices is more science than art; an activity which is fundamentally quantitative and which has a direct relationship to business activities.</p>
 <div id="lowerFullwidthVCR"></div>
-<p>Figure 1 shows the high-level architecture of the created framework:</p>
-<p><img _p="true" _href="img://Fig1.png" alt="" src="http://www.infoq.com/resource/articles/High-Performance-Java-Inter-Thread-Communications/en/resources/Fig1.png" /><br /> <br /> <small><b>Figure 1: High-Level Architecture of Framework</b></small></p>
-<p>SPSC queue is a Single Producer/Single Consumer queue. MPSC queue is Multi Producer/Single Consumer.</p>
-<p>The Dispatcher Thread receives messages from Actor Threads and sends them into appropriate SPSC queue.</p>
-<p>Actor threads, using data from a received message, invoke a corresponding method of the actor instances. By using proxies of other actors, actor Instances send messages to the MPSC queue and then the messages go to the target Actor Thread.</p>
-<p>For a simple test I created a ping-pong example:</p>
-<pre>
-public interface PlayerA (
-  void pong(long ball); //send and forget method call 
-}
-public interface PlayerB {   
-  void ping(PlayerA playerA, long ball); //send and forget method call    
-}    
- public class PlayerAImpl implements PlayerA {    
-  @Override    
-  @ublic void pong(long ball) {    
-  }    
-}
-public class PlayerBImpl implements PlayerB {   
-  @Override    
-  public void ping(PlayerA playerA, long ball) {    
-    playerA.pong(ball);    
-  }    
-}
-public class PingPongExample {   
-  public void testPingPong() {
-// this manager hides the complexity of inter-thread communications   
-    // and it takes control over actor proxies, actor implementations and threads    
-    ActorManager manager = new ActorManager();
-// registers actor implementations inside the manager   
-    manager.registerImpl(PlayerAImpl.class);    
-    manager.registerImpl(PlayerBImpl.class);
-//Create actor proxies. Proxies convert method calls into internal messages    
-   //which would be sent between threads to a specific actor instance.    
-   PlayerA playerA = manager.createActor(PlayerA.class);    
-   PlayerB playerB = manager.createActor(PlayerB.class);    
-    for(int i = 0; i &lt; 1000000; i++) {    
-       playerB.ping(playerA, i);     
-   }    
-}</pre>
-<p>The speed they play was around 500,000 ping/pongs a second; so far so good. However, when compared with the execution speed using just a single thread, it suddenly looks not so good. The code running in <a href="https://github.com/asyncj/core/blob/master/api/src/main/java/com/asyncj/core/api/article/singlethread/SingleThread.java">a single thread</a>&nbsp;can perform more than 2 billion (2,681,850,373) operations per second!</p>
-<p>The difference is more than 5,000 times. This disappointed me. It produces single threaded code that is more effective than multi-thread code in many cases.</p>
-<p>I started looking for reasons for the slowness of my ping-pong players. After some investigation and testing I found that the blocking queues that I used to pass messages between actors were affecting performance.</p>
-<p><img _p="true" _href="img://Fig2.png" alt="" src="http://www.infoq.com/resource/articles/High-Performance-Java-Inter-Thread-Communications/en/resources/Fig2.png" /></p>
-<p><b><small>Figure 2: SPSC queue with single producer and single consumer</small></b></p>
-<p>So I launched a quest for one of the fastest queue implementations in Java as a replacement. I found a <a href="http://psy-lob-saw.blogspot.com/">great blog</a> by Nitsan Wakart. He has several posts describing some implementations of Single Producer/Single Consumer (SPSC) Lock-Free Queues. The posts were inspired by Martin Thompson’s presentation of <a href="http://www.infoq.com/presentations/Lock-Free-Algorithms">Lock-Free Algorithms for Ultimate Performance</a>.</p>
-<p>Lock-Free queues provide better performance in comparison to queues based on lock primitives. In the case of lock based queues when one thread gets a lock, other threads will be blocked until the lock is free. In the case of lock free algorithms a producer thread can produce messages without blocking by other producer threads, and consumers will not be blocked by other consumers while reading from the queue.</p>
-<p>The performance results of SPSC queues described in Martin Thompson’s presentation and in Nitsan’s blog were incredible - <a href="https://github.com/nitsanw/examples/blob/master/src/java/uk/co/real_logic/queues/QueuePerfTest.java">more than 100M ops/sec</a>. It’s more than 10 times faster the JDK’s Concurrent Queue implementations (which performance on Intel Core i7 with 4 cores has been around 8M ops/sec).</p>
-<p>With great anticipation I replaced the linked blocking queues connected to each actor with lock-free SPSC queue implementations. Sadly, the performance tests didn’t produce a significant improvement in throughput. It did not take long to realize that the bottleneck was not a SPSC queue but a Multi Producer/ Single Consumer (MPSC) one.</p>
-<p>Using SPSC queues in a role of MPSC queue is not a straightforward task; multiple producers can overwrite each other’s values by doing a put operation. SPSC queues just do not have code controlling put operations by multiple producers. Therefore even the fastest SPSC queues would not fix my problem.</p>
-<p>For the Multiple Producers/Single Consumer I decided to leverage <a href="http://lmax-exchange.github.io/disruptor/">LMAX Disruptor</a> – a High Performance Inter-thread Messaging Library based on a ring buffer.</p>
-<p><img _p="true" _href="img://Fig3.png" alt="" src="http://www.infoq.com/resource/articles/High-Performance-Java-Inter-Thread-Communications/en/resources/Fig3.png" /></p>
-<p><b><small>Figure 3: LMAX Disruptor with single producer and single consumer</small></b></p>
-<p>By using Disruptor it’s easy to achieve very low-latency, high-throughput inter-thread message communication. It also provides use cases for different combination of producers and consumers. Several threads can read from the ring buffer without blocking each other:</p>
-<p><img _p="true" _href="img://Fig4.png" alt="" src="http://www.infoq.com/resource/articles/High-Performance-Java-Inter-Thread-Communications/en/resources/Fig4.png" /></p>
-<p><b><small>Figure 4: LMAX Disruptor with single producer and two consumers&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</small></b></p>
-<p>A scenario when multiple producers write into the ring buffer with multiple consumers getting messages from it.</p>
-<p><img _p="true" _href="img://Fig5.png" alt="" src="http://www.infoq.com/resource/articles/High-Performance-Java-Inter-Thread-Communications/en/resources/Fig5.png" /></p>
-<p><b><small>Figure 5: LMAX Disruptor with two producers and two consumers&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</small></b></p>
-<p>After a quick search for performance tests I found <a href="https://github.com/asyncj/disruptor/blob/master/src/perftest/java/com/lmax/disruptor/sequenced/ThreeToOneSequencedThroughputTest.java">a throughput test for three publishers and one consumer</a>. That was just what the doctor ordered and it produced the following results: </p>
-<table cellspacing="0" cellpadding="0" border="1"> 
- <tbody> 
-  <tr> 
-   <td width="159" valign="top">&nbsp;</td> 
-   <td width="160" valign="top"> <p>LinkedBlockingQueue</p> </td> 
-   <td width="160" valign="top"> <p>Disruptor</p> </td> 
-  </tr> 
-  <tr> 
-   <td width="159" valign="top"> <p>Run 0</p> </td> 
-   <td width="160" valign="top"> <p>4,550,625 ops/sec</p> </td> 
-   <td width="160" valign="top"> <p>11,487,650 ops/sec</p> </td> 
-  </tr> 
-  <tr> 
-   <td width="159" valign="top"> <p>Run 1</p> </td> 
-   <td width="160" valign="top"> <p>4,651,162 ops/sec</p> </td> 
-   <td width="160" valign="top"> <p>11,049,723 ops/sec</p> </td> 
-  </tr> 
-  <tr> 
-   <td width="159" valign="top"> <p>Run 2</p> </td> 
-   <td width="160" valign="top"> <p>4,404,316 ops/sec</p> </td> 
-   <td width="160" valign="top"> <p>11,142,061 ops/sec</p> </td> 
-  </tr> 
- </tbody> 
-</table>
-<p></p>
-<p>The Disruptor was more than twice as fast as the LinkedBlockingQueue for the 3 Producers/1 Consumer case. However this was still a long way from my expectations of producing a 10 times improvement in performance results.</p>
-<p>I was frustrated by this order of things and my mind was searching for a solution. As fate had it, I had recently modified my commute to use a subway instead of the old carpool. Suddenly a reverie came over me and my mind started mapping stations to producers and consumers. At one station we have both producers (in the form of a wagon with people exitng from it) and consumers (the same wagon with people who enter it.)</p>
-<p>I created a Railway class and used AtomicLong to track the train as it passed from station to station. For a simple scenario I started with a single-train railway.</p>
-<pre>
-public class RailWay {  
- private final Train train = new Train();  
- // the stationNo tracks the train and defines which station has the received train
- private final AtomicInteger stationIndex = new AtomicInteger();
-// Multiple threads access this method and wait for the train on the specific station. 
-public Train waitTrainOnStation(final int stationNo) {
-  
-   while (stationIndex.get() % stationCount != stationNo) {
-    Thread.yield(); // this is necessary to keep a high throughput of message passing.   
-                   //But it eats CPU cycles while waiting for a train  
-   }  
-   // the busy loop returns only when the station number will match  
-   //&nbsp;stationIndex.get() % stationCount condition
-
-   return train;
- }
-// this method moves this train to the next station by incrementing the train station index…
-  public void sendTrain() {
-    stationIndex.getAndIncrement();
-   }
-  }</pre>
-<p>For testing purposes I used the same conditions used in Disruptor performance tests and tests for SPSC queues - tests transfer long values between threads. I created the following Train class, which contains a long array:</p>
-<pre>
-public class Train {   
-  //   
-  public static int CAPACITY = 2*1024;
-  private final long[] goodsArray; // array to transfer freight goods
-
-  private int index;
-
-  public Train() {   
-      goodsArray = new long[CAPACITY];     
- }
-
- public int goodsCount() { // returns the count of goods    
-  return index;    
- }    
- public void addGoods(long i) { // adds item to the train    
-  goodsArray[index++] = i;    
- }    
- public long getGoods(int i) { //removes the item from the train    
-  index--;    
-  return goodsArray[i];    
- }    
-}</pre>
-<p>Then I wrote <a href="https://github.com/asyncj/core/blob/master/api/src/main/java/com/asyncj/core/api/article/onetrain/RailWayTest.java">a simple test</a>: two threads transfer longs between each other by a train.</p>
-<p><img _p="true" _href="img://Fig6.png" alt="" src="http://www.infoq.com/resource/articles/High-Performance-Java-Inter-Thread-Communications/en/resources/Fig6.png" /></p>
-<p><b><small>Figure 6: Railway with single producer and single consumer uses single train&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</small></b></p>
-<pre>
-public void testRailWay() {   
-  final Railway railway = new Railway();    
-  final long n = 20000000000l;    
-  //starting a consumer thread    
-  new Thread() {    
-   long lastValue = 0;
-   @Override   
-   public void run() {    
-    while (lastValue &lt; n) {    
-      Train train = railway.waitTrainOnStation(1); //waits for the train at the station #1    
-      int count = train.goodsCount();    
-      for (int i = 0; i &lt; count; i++) {    
-        lastValue = train.getGoods(i); // unload goods    
-      }    
-      railway.sendTrain(); //sends the current train to the first station.    
-     }    
-   }    
- }.start();
-
- final long start = System.nanoTime();
-long i = 0;   
-while (i &lt; n) {    
- Train train = railway.waitTrainOnStation(0); // waits for the train on the station #0    
- int capacity = train.getCapacity();    
- for (int j = 0; j &lt; capacity; j++) {    
-   train.addGoods((int)i++); // adds goods to the train    
- }    
- railway.sendTrain();
- if (i % 100000000 == 0) { //measures the performance per each 100M items   
-    final long duration = System.nanoTime() - start;|    
-    final long ops = (i * 1000L * 1000L * 1000L) / duration;    
-    System.out.format(&quot;ops/sec = %,d\n&quot;, ops);    
-    System.out.format(&quot;trains/sec = %,d\n&quot;, ops / Train.CAPACITY);    
-    System.out.format(&quot;latency nanos = %.3f%n\n&quot;, 
-                       duration / (float)(i) * (float) Train.CAPACITY);    
-  }    
- }    
-}</pre>
-<p>By running the test with different train capacity, the results surprised me: </p>
-<table cellspacing="0" cellpadding="0" border="1"> 
- <tbody> 
-  <tr> 
-   <td width="213" valign="top"> <p>Capacity</p> </td> 
-   <td width="213" valign="top"> <p>Throughput: ops/sec</p> </td> 
-   <td width="213" valign="top"> <p>Latency: ns</p> </td> 
-  </tr> 
-  <tr> 
-   <td width="213" valign="top"> <p>1</p> </td> 
-   <td width="213" valign="top"> <p>5,190,883</p> </td> 
-   <td width="213" valign="top"> <p><b>192.6</b></p> </td> 
-  </tr> 
-  <tr> 
-   <td width="213" valign="top"> <p>2</p> </td> 
-   <td width="213" valign="top"> <p>10,282,820</p> </td> 
-   <td width="213" valign="top"> <p>194.5</p> </td> 
-  </tr> 
-  <tr> 
-   <td width="213" valign="top"> <p>32</p> </td> 
-   <td width="213" valign="top"> <p>104,878,614</p> </td> 
-   <td width="213" valign="top"> <p>305.1</p> </td> 
-  </tr> 
-  <tr> 
-   <td width="213" valign="top"> <p>256</p> </td> 
-   <td width="213" valign="top"> <p>344,614,640</p> </td> 
-   <td width="213" valign="top"> <p>742. 9</p> </td> 
-  </tr> 
-  <tr> 
-   <td width="213" valign="top"> <p>2048</p> </td> 
-   <td width="213" valign="top"> <p>608,112,493</p> </td> 
-   <td width="213" valign="top"> <p>3,367.8</p> </td> 
-  </tr> 
-  <tr> 
-   <td width="213" valign="top"> <p>32768</p> </td> 
-   <td width="213" valign="top"> <p><b>767,028,751</b></p> </td> 
-   <td width="213" valign="top"> <p>42,720.7</p> </td> 
-  </tr> 
- </tbody> 
-</table>
-<p></p>
-<p>The throughput of transferring messages between two threads reached 767,028,751 ops/sec with train capacity in 32,768 longs. It’s several times faster than SPSC queues in Nitsan’s blog.</p>
-<p>Continuing the railway train of thought, I considered what would happen if we would have two trains? I felt it should improve throughput and reduce latency at the same time. <a href="https://github.com/asyncj/core/blob/master/api/src/main/java/com/asyncj/core/api/article/twotrains/RailwayTest.java">Every station will have its own train</a>. While one train will be loading goods at the first station, the second train will unload goods at the second station and vice versa.</p>
-<p><img _p="true" _href="img://Fig7.png" alt="" src="http://www.infoq.com/resource/articles/High-Performance-Java-Inter-Thread-Communications/en/resources/Fig7.png" /></p>
-<p><b><small>Figure 7: Railway with single producer and single consumer uses two trains</small></b></p>
-<p>Here are the results for the throughput: </p>
-<table cellspacing="0" cellpadding="0" border="1"> 
- <tbody> 
-  <tr> 
-   <td width="213" valign="top"> <p>Capacity</p> </td> 
-   <td width="213" valign="top"> <p>Throughput: ops/sec</p> </td> 
-   <td width="213" valign="top"> <p>Latency: ns</p> </td> 
-  </tr> 
-  <tr> 
-   <td width="213" valign="top"> <p>1</p> </td> 
-   <td width="213" valign="top"> <p>7,492,684</p> </td> 
-   <td width="213" valign="top"> <p><b>133.5</b></p> </td> 
-  </tr> 
-  <tr> 
-   <td width="213" valign="top"> <p>2</p> </td> 
-   <td width="213" valign="top"> <p>14,754,786</p> </td> 
-   <td width="213" valign="top"> <p>135.5</p> </td> 
-  </tr> 
-  <tr> 
-   <td width="213" valign="top"> <p>32</p> </td> 
-   <td width="213" valign="top"> <p>174,227,656</p> </td> 
-   <td width="213" valign="top"> <p>183.7</p> </td> 
-  </tr> 
-  <tr> 
-   <td width="213" valign="top"> <p>256</p> </td> 
-   <td width="213" valign="top"> <p>613,555,475</p> </td> 
-   <td width="213" valign="top"> <p>417.2</p> </td> 
-  </tr> 
-  <tr> 
-   <td width="213" valign="top"> <p>2048</p> </td> 
-   <td width="213" valign="top"> <p><b>940,144,900</b></p> </td> 
-   <td width="213" valign="top"> <p>2,178.4</p> </td> 
-  </tr> 
-  <tr> 
-   <td width="213" valign="top"> <p>32768</p> </td> 
-   <td width="213" valign="top"> <p>797,806,764</p> </td> 
-   <td width="213" valign="top"> <p>41,072.6</p> </td> 
-  </tr> 
- </tbody> 
-</table>
-<p></p>
-<p>The results were amazing; it was more than 1.4 times faster than the test results for a single train. For the train capacity of one the latency was reduced from 192.6 nanoseconds to 133.5 nanoseconds; clearly a promising sign.</p>
-<p>Therefore my experiments were not over. The latency of transferring messages between threads for the train capacity of 2048 was - 2,178.4 nanoseconds, which was too much. I was considering how to reduce that and created a case with <a href="https://github.com/asyncj/core/tree/master/api/src/main/java/com/asyncj/core/api/article/lotoftrains">many trains</a>:</p>
-<p><img _p="true" _href="img://Fig8.png" alt="" src="http://www.infoq.com/resource/articles/High-Performance-Java-Inter-Thread-Communications/en/resources/Fig8.png" /></p>
-<p><b><small>Figure 8: Railway with single producer and single consumer uses many trains&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</small></b></p>
-<p>I also reduced the train capacity to one long value and started playing with the train count. Below are test results: </p>
-<table cellspacing="0" cellpadding="0" border="1"> 
- <tbody> 
-  <tr> 
-   <td width="213" valign="top"> <p>Train Count</p> </td> 
-   <td width="213" valign="top"> <p>Throughput: ops/sec</p> </td> 
-   <td width="213" valign="top"> <p>Latency: ns</p> </td> 
-  </tr> 
-  <tr> 
-   <td width="213" valign="top"> <p>2</p> </td> 
-   <td width="213" valign="top"> <p>10,917,951</p> </td> 
-   <td width="213" valign="top"> <p>91.6</p> </td> 
-  </tr> 
-  <tr> 
-   <td width="213" valign="top"> <p>32</p> </td> 
-   <td width="213" valign="top"> <p>31,233,310</p> </td> 
-   <td width="213" valign="top"> <p>32.0</p> </td> 
-  </tr> 
-  <tr> 
-   <td width="213" valign="top"> <p>256</p> </td> 
-   <td width="213" valign="top"> <p>42,791,962</p> </td> 
-   <td width="213" valign="top"> <p>23.4</p> </td> 
-  </tr> 
-  <tr> 
-   <td width="213" valign="top"> <p>1024</p> </td> 
-   <td width="213" valign="top"> <p>53,220,057</p> </td> 
-   <td width="213" valign="top"> <p>18.8</p> </td> 
-  </tr> 
-  <tr> 
-   <td width="213" valign="top"> <p>32768</p> </td> 
-   <td width="213" valign="top"> <p>71,812,166</p> </td> 
-   <td width="213" valign="top"> <p><b>13.9</b></p> </td> 
-  </tr> 
- </tbody> 
-</table>
-<p></p>
-<p>With 32,768 trains the latency of sending a long value between threads was reduced to 13.9 nanoseconds. Playing with the train count and train capacity the throughput and latency can be tuned up to optimal balance when the latency is not so high and the throughput is not so low.</p>
-<p>These numbers are great for single producer and single consumer (SPSC); but how could we make that work for several producers and consumers? The answer was simple- add more stations!</p>
-<p><img _p="true" _href="img://Fig9.png" alt="" src="http://www.infoq.com/resource/articles/High-Performance-Java-Inter-Thread-Communications/en/resources/Fig9.png" /></p>
-<p><b><small>Figure 9: Railway with single producer and two consumers</small></b></p>
-<p>Every thread waits for the next train, then loads/unloads items, and sends the train to the next station. The producer thread puts items to the train while consumers get items from it. Trains constantly move by the circle from one station to another.</p>
-<p>In order to test the Single Producer/Multiple Consumer (SPMC) case I created the <a href="https://github.com/asyncj/core/blob/master/api/src/main/java/com/asyncj/core/api/article/eightstations/RailwayTest.java">Railway test with 8 stations</a>. One station belongs to a single producer while other 7 stations belong to consumers. The results are:</p>
-<p>For the train count = 256 and train capacity = 32:</p>
-<pre>
-ops/sec = <b>116,604,397</b>    
-latency nanos = 274.4</pre>
-<p>For the train count = 32 and train capacity = 256:</p>
-<pre>
-ops/sec = <b>432,055,469</b>    
-latency nanos = 592.5</pre>
-<p>As you can see even with eight working threads the test shows pretty good results - 432,055,469 ops/sec with 32 trains and a capacity of 256 longs. During the test all CPU cores were loaded to 100%.</p>
-<p><img _p="true" _href="img://Fig10.png" alt="" src="http://www.infoq.com/resource/articles/High-Performance-Java-Inter-Thread-Communications/en/resources/Fig10.png" /></p>
-<p><b><small>Figure 10: CPU utilization during the Railway test with 8 stations&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</small></b></p>
-<p>While playing with the Railway algorithm I almost forgot about my goal; to improve the performance of the Multiple Producers/Single Consumer case.</p>
-<p><img _p="true" _href="img://Fig11.png" alt="" src="http://www.infoq.com/resource/articles/High-Performance-Java-Inter-Thread-Communications/en/resources/Fig11.png" /></p>
-<p><b><small>Figure 11: Railway with three producers and single consumer&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</small></b></p>
-<p>I created a new test with <a href="https://github.com/asyncj/disruptor/blob/master/src/perftest/java/com/lmax/disruptor/sequenced/ThreeToOneSequencedThroughputTest.java">3 producers and 1 consumer</a>. Each train traces the circle from station to station while each producer loads only 1/3 the capacity of each train. By every train the consumer gets all three items received from three producers. The performance test shows the following average results:</p>
-<pre>
-ops/sec = 162,597,109 
-trains/sec = 54,199,036    
-latency ns = 18.5</pre>
-<p>That’s pretty good. Producers and the consumer work at a speed of more than 160M ops/sec.</p>
-<p>To fill the difference the following results show Disruptor test for the same case - <a href="https://github.com/asyncj/disruptor/blob/master/src/perftest/java/com/lmax/disruptor/sequenced/ThreeToOneSequencedThroughputTest.java">3 producers and 1 consumer</a>:</p>
-<pre>
-Run 0, Disruptor=11,467,889 ops/sec   
-Run 1, Disruptor=11,280,315 ops/sec    
-Run 2, Disruptor=11,286,681 ops/sec    
-Run 3, Disruptor=11,254,924 ops/sec</pre>
-<p>Below the results of running another <a href="https://github.com/asyncj/disruptor/blob/master/src/perftest/java/com/lmax/disruptor/sequenced/ThreeToOneSequencedBatchThroughputTest.java">Disruptor 3P:1C test with message batching</a> (10 messages per a batch):</p>
-<pre>
-Run 0, Disruptor=116,009,280 ops/sec    
-Run 1, Disruptor=128,205,128 ops/sec    
-Run 2, Disruptor=101,317,122 ops/sec    
-Run 3, Disruptor=98,716,683 ops/sec;    </pre>
-<p>And finally there are the results from the Disruptor tests but with the LinkedBlockingQueue implementation of the 3P:1C scenario:</p>
-<pre>
-Run 0, BlockingQueue=4,546,281 ops/sec   
-Run 1, BlockingQueue=4,508,769 ops/sec    
-Run 2, BlockingQueue=4,101,386 ops/sec    
-Run 3, BlockingQueue=4,124,561 ops/sec</pre>
-<p>As you can see the Railway approach provides average throughput 162,597,109 ops/sec, whereas the best result using the Disruptor for the same case was only 128,205,128 ops/sec. In the case of LinkedBlockingQueue the best result was just 4,546,281 ops/sec.</p>
-<p>The Railway algorithm introduces an easy way for event batching that increases throughput significantly. It can be easily configurable to achieve desired results for throughput/latency by playing with train capacity or train count.</p>
-<p>Also the Railway could be used for really complex cases by mixing producers and consumers when the same thread could be used to consume messages, process them and to return the results back to the ring:</p>
-<p><img _p="true" _href="img://Fig12.png" alt="" src="http://www.infoq.com/resource/articles/High-Performance-Java-Inter-Thread-Communications/en/resources/Fig12.png" /></p>
-<p><b><small>Figure 12: Railway with mix of producers and consumers&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</small></b></p>
-<p>And finally, I will provide optimized for <a href="https://github.com/asyncj/core/blob/master/api/src/main/java/com/asyncj/core/api/article/ultrahighthroughput/UltraHighThroughputRawRailwayTest.java">ultra high throughput</a> Single Producer/Single Consumer test:</p>
-<p><img _p="true" _href="img://Fig13.png" alt="" src="http://www.infoq.com/resource/articles/High-Performance-Java-Inter-Thread-Communications/en/resources/Fig13.png" /></p>
-<p><b><small>Figure 13: Railway with single producer and single consumer</small></b></p>
-<p>It had the following average results: the throughput more than one and a half billion (1,569,884,271) operations per second and the latency equals 1.3 microseconds. As you can see the results for the test are on the same order of magnitude with the results for the single threaded test described at the beginning of the article which was 2,681,850,373 operations per second.</p>
-<p>Here I'll leave you to draw your own conclusions.</p>
-<p>In a future article I hope to demonstrate how to back the Railway algorithm with Queue and BlockingQueue interfaces for different combinations of producers and consumers. Stay tuned.</p>
+<p>However, despite these attributes, performance has often languished in a state where even well-known best practices lag behind the reality of practitioners.</p>
+<p>There are a number of different models that might explain this, but one interesting possibility is provided by Carey Flichel in the superb piece &quot;Why Developers Keep Making Bad Technology Choices&quot;</p>
+<p>In the post, Carey specifically calls out five main reasons that cause developers to make bad choices:</p>
+<ul> 
+ <li>Boredom</li> 
+ <li>Resume (or “CV” if you're British) Padding</li> 
+ <li>Peer Pressure</li> 
+ <li>Lack of Understanding of Existing System</li> 
+ <li>Misunderstood / Non-Existent Problem</li> 
+</ul>
+<p>In this article, we present some of the most common performance analysis antipatterns in the enterprise platform, and try to express them in terms of their basic causes as enumerated by Carey. The specific examples that led to the distillates below are drawn from the Java ecosystem, but similar remarks apply to many other types of enterprise system.</p>
+<p>Each basic cause corresponds to some common cognitive bias. For example, <i>Boredom</i> and <i>Resume Padding</i> both stem from a desire to escape the existing tech that a developer uses in his or her day job, and their aspirational desire for a better tomorrow.</p>
+<p>The antipatterns are presented below, in a style and format that should be reminiscent of the Gang of Four, as well, of course, as the antipattern format pioneered by Brown et al.</p>
+<h2>AntiPattern Catalogue</h2>
+<h3><i>Distracted By Shiny</i></h3>
+<p><strong>Description</strong></p>
+<p>Newest or coolest tech is often first tuning target</p>
+<p><strong>Example Comment</strong></p>
+<blockquote> 
+ <p>It's teething trouble - we need to get to the bottom of it</p> 
+</blockquote>
+<p><strong>Reality</strong></p>
+<ul> 
+ <li>This is just a shot in the dark</li> 
+ <li>Developer does not really understand the new tech</li> 
+</ul>
+<p><strong>Root causes</strong></p>
+<ul> 
+ <li>Boredom</li> 
+ <li>Resume Padding</li> 
+</ul>
+<p><strong>Discussion</strong></p>
+<p>This antipattern is most often seen with younger teams. Eager to prove themselves, or to avoid becoming tied to what they see as 'legacy' systems, they are often advocates for newer, &quot;hotter&quot; technologies - which may, coincidentally, be exactly the sort of technologies which would confer a salary uptick in any new role.</p>
+<p>Therefore, the logical subconscious conclusion to any performance issue is to first take a look at the new tech - after all, it's not properly understood, so a fresh pair of eyes would be helpful, right?</p>
+<p><strong>Resolutions</strong></p>
+<ul> 
+ <li>Measure to determine real location of bottleneck</li> 
+ <li>Ensure adequate logging around new component&nbsp;</li> 
+</ul>
+<p style="margin-left: 80px;"><img width="400" _p="true" _href="img://divider3.jpg" alt="" src="http://www.infoq.com/resource/articles/Performance-Analysis-Antipatterns/en/resources/divider3.jpg" /></p>
+<h3><i>Distracted By Simple</i></h3>
+<p><strong>Description</strong></p>
+<p>The simplest parts of the system are targeted first</p>
+<p><strong>Example Comment</strong></p>
+<blockquote> 
+ <p>Let's get into this by starting with the parts we understand</p> 
+</blockquote>
+<p><strong>Reality</strong></p>
+<ul> 
+ <li>Dev understands how to tune (only?) that part of the system</li> 
+</ul>
+<p><strong>Root causes</strong></p>
+<ul> 
+ <li>Lack of Understanding of Existing System</li> 
+</ul>
+<p><strong>Discussion</strong></p>
+<p>The dual of &quot;Distracted by Shiny&quot;, this antipattern is often seen in an older, more established team, which may be more used to a maintenance/keep-the-lights-on role. If their application has recently been merged or paired with newer technology, the team may feel intimidated or not want to engage with the new systems.</p>
+<p>Under these circumstances, developers may feel more comfortable by only profiling those parts of the system that are familiar, hoping that they will be able to achieve the desired goals without going outside of their comfort zone.</p>
+<p>Of particular note is that both of these first two antipatterns are driven by a reaction to the unknown; in &quot;Distracted by Shiny&quot; this manifests as a desire by the developer (or team) to learn more and gain advantage - essentially an offensive play. By contrast, &quot;Distracted by Simple&quot; is a defensive reaction - to play to the familiar rather than engage with a potentially threatening new technology.</p>
+<p><strong>Resolutions</strong></p>
+<ul> 
+ <li>Measure to determine real location of bottleneck</li> 
+ <li>Ask for help from domain experts if problem is in an unfamiliar component</li> 
+</ul>
+<p>&nbsp;</p>
+<p style="margin-left: 80px;"><img width="400" _p="true" _href="img://1divider3.jpg" alt="" src="http://www.infoq.com/resource/articles/Performance-Analysis-Antipatterns/en/resources/1divider3.jpg" /></p>
+<h3><i>UAT is My Desktop</i></h3>
+<p><strong>Description</strong></p>
+<p>UAT environment differs significantly from PROD</p>
+<p><strong>Example Comment</strong></p>
+<blockquote> 
+ <p>A full-size UAT environment would be too expensive</p> 
+</blockquote>
+<p><strong>Reality</strong></p>
+<ul> 
+ <li>Outages caused by differences in environments are almost always more expensive than a few more boxes</li> 
+</ul>
+<p><strong>Root causes</strong></p>
+<ul> 
+ <li>Misunderstood / Non-Existent Problem</li> 
+</ul>
+<p><strong>Discussion</strong></p>
+<p><i>UAT is my Desktop</i> stems from a different kind of cognitive bias than we have previously seen. This bias insists that doing some sort of UAT must be better than doing none at all. Unfortunately, this hopefulness fundamentally misunderstands the complex nature of enterprise environments. For any kind of meaningful extrapolation to be possible, the UAT environment must be production like.</p>
+<p>In modern adaptive environments, the runtime subsystems will make best use of the available resources. If these differ radically from the target deployment, they will make different decisions under the differing circumstances - rendering our hopeful extrapolation useless at best.</p>
+<p><strong>Resolutions</strong></p>
+<ul> 
+ <li>Track the cost of outages and opportunity cost related to lost customers</li> 
+ <li>Invest in a UAT environment that is identical to PROD</li> 
+ <li>In most cases, the cost of the first, far outweighs the second</li> 
+</ul>
+<p style="margin-left: 80px;"><img width="400" _p="true" _href="img://2divider3.jpg" alt="" src="http://www.infoq.com/resource/articles/Performance-Analysis-Antipatterns/en/resources/2divider3.jpg" /></p>
+<h3><i>PROD-like Data is Hard</i></h3>
+<p><strong>Description</strong></p>
+<p>Data in UAT looks nothing like PROD</p>
+<p><strong>Example Comment</strong></p>
+<blockquote> 
+ <p>It's too hard to keep PROD and UAT in synch</p> 
+</blockquote>
+<p><strong>Reality</strong></p>
+<ul> 
+ <li>Data in UAT must be PROD-like for accurate results</li> 
+</ul>
+<p><strong>Root causes</strong></p>
+<ul> 
+ <li>Lack of Understanding of Existing System</li> 
+</ul>
+<p><strong>Discussion</strong></p>
+<p>This antipattern also falls into the trap of &quot;something must be better than nothing&quot;. The idea is that testing against even out-of-date and unrepresentative data is better than not testing.</p>
+<p>As before, this is an extremely dangerous line of reasoning. Whilst testing against <i>something</i> (even if it is nothing like PROD data) at scale can reveal flaws and omissions in the system testing, it provides a false sense of security.</p>
+<p>When the system goes live, and the usage patterns fail to conform to the expected norms that have been anchored by UAT data, the development and ops teams may well find that they have become complacent due to the warm glow that UAT has provided, and are unprepared for the sheer terror that can quickly follow an at-scale production release.</p>
+<p><strong>Resolutions</strong></p>
+<ul> 
+ <li>Consult data domain experts and invest in a process to migrate PROD data back into UAT</li> 
+ <li>Over-prepare for at-scale go-lives.</li> 
+ <li>Wherever possible, have dedicated &quot;worse-case&quot; teams or tools (e.g. <a href="http://www.codinghorror.com/blog/2011/04/working-with-the-chaos-monkey.html" target="_blank">Chaos Monkey</a>)</li> 
+</ul>
+<p style="margin-left: 80px;"><img width="400" _p="true" _href="img://3divider3.jpg" alt="" src="http://www.infoq.com/resource/articles/Performance-Analysis-Antipatterns/en/resources/3divider3.jpg" /></p>
+<h3><i>Performance Tips (aka Tuning By Folklore)</i></h3>
+<p><strong>Description</strong></p>
+<p>Code and parameter changes are being applied blind</p>
+<p><strong>Example Comment</strong></p>
+<blockquote> 
+ <p>I found these great tips on Stack Overflow. This changes everything.</p> 
+</blockquote>
+<p><strong>Reality</strong></p>
+<ul> 
+ <li>Developer does not understand the context or basis of performance tip and true impact is unknown</li> 
+</ul>
+<p><strong>Root causes</strong></p>
+<ul> 
+ <li>Lack of Understanding of Existing System</li> 
+ <li>Peer Pressure</li> 
+</ul>
+<p><strong>Discussion</strong></p>
+<p>A performance tip is a workaround for a known problem - essentially a solution looking for a problem. They have a shelf life and usually date badly - someone will come up with a solution that will render the tip useless (at best) in a later release of the software or platform.</p>
+<p>One source of performance advice that is usually particularly bad would be admin manuals. They contain general advice devoid of context - this advice and &quot;recommended configurations&quot; is often insisted on by lawyers, as an additional line of defense if the vendor is sued.</p>
+<p>Java performance happens in a specific context, with a large number of contributing factors. If we strip away that context, what is left is almost impossible to reason about, due to the complexity of the execution environment.</p>
+<p><strong>Resolutions</strong></p>
+<ul> 
+ <li>Only apply well-tested and well-understood techniques, which directly affect the most important aspects of a system.</li> 
+</ul>
+<p style="margin-left: 80px;"><img width="400" _p="true" _href="img://4divider3.jpg" alt="" src="http://www.infoq.com/resource/articles/Performance-Analysis-Antipatterns/en/resources/4divider3.jpg" /></p>
+<h3><i>Blame Donkey</i></h3>
+<p><strong>Description</strong></p>
+<p>Certain components are always identified as the issue</p>
+<p><strong>Example Comment</strong></p>
+<blockquote> 
+ <p>It's always JMS / Hibernate / A_N_OTHER_LIB</p> 
+</blockquote>
+<p><strong>Reality</strong></p>
+<ul> 
+ <li>Insufficient analysis has been done to reach this conclusion</li> 
+</ul>
+<p><strong>Root causes</strong></p>
+<ul> 
+ <li>Peer Pressure</li> 
+ <li>Misunderstood / Non-Existent Problem</li> 
+</ul>
+<p><strong>Discussion</strong></p>
+<p>This antipattern is often displayed by management or the business, as in many cases they do not have a full understanding of the technical stack and so are proceeding by pattern matching or have unacknowledged cognitive biases. However technologists are also far from immune to this antipattern.</p>
+<p><strong>Resolutions</strong></p>
+<ul> 
+ <li>Resist pressure to rush to conclusions</li> 
+ <li>Perform analysis as normal</li> 
+ <li>Communicate the results of analysis to all stakeholders (in order to try to encourage a more accurate picture of the causes of problems).</li> 
+</ul>
+<p style="margin-left: 80px;"><img width="400" _p="true" _href="img://5divider3.jpg" alt="" src="http://www.infoq.com/resource/articles/Performance-Analysis-Antipatterns/en/resources/5divider3.jpg" /></p>
+<h3><i>Fiddle With Switches</i></h3>
+<p><strong>Description</strong></p>
+<p>Team becomes obsessed with JVM switches</p>
+<p><strong>Example Comment</strong></p>
+<blockquote> 
+ <p>If I just change these settings, we’ll get better performance</p> 
+</blockquote>
+<p><strong>Reality</strong></p>
+<ul> 
+ <li>Team does not understand impact of changes</li> 
+</ul>
+<p><strong>Root causes</strong></p>
+<ul> 
+ <li>Lack of Understanding of Existing System</li> 
+ <li>Misunderstood / Non-Existent Problem</li> 
+</ul>
+<p><strong>Discussion</strong></p>
+<p>The JVM has literally hundreds of switches - this provides a highly configurable runtime, but gives rise to a great temptation to make use of all of this configurability. This is usually a mistake - the defaults and self-management capabilities are usually sufficient. Some of the switches also combine with each other in unexpected ways - which makes blind changes even more dangerous.</p>
+<p><strong>Resolutions</strong></p>
+<p>Before putting any change to switches live:</p>
+<ul> 
+ <li>Measure in PROD</li> 
+ <li>Change 1 switch at a time in UAT</li> 
+ <li>Test change in UAT</li> 
+ <li>Retest in UAT</li> 
+ <li>Have someone recheck your reasoning</li> 
+</ul>
+<p style="margin-left: 80px;"><img width="400" _p="true" _href="img://6divider3.jpg" alt="" src="http://www.infoq.com/resource/articles/Performance-Analysis-Antipatterns/en/resources/6divider3.jpg" /></p>
+<h3><i>Microbenchmarking</i></h3>
+<p><strong>Description</strong></p>
+<p>Tuning effort is focused on some very low-level aspect of the system</p>
+<p><strong>Example Comment</strong></p>
+<blockquote> 
+ <p>If we can just speed up method dispatch time...</p> 
+</blockquote>
+<p><strong>Reality</strong></p>
+<p>Overall system-level impact of micro-changes is utterly unknown</p>
+<p><strong>Root causes</strong></p>
+<ul> 
+ <li>Lack of Understanding of Existing System</li> 
+ <li>Misunderstood / Non-Existent Problem</li> 
+ <li>Resume Padding</li> 
+ <li>Peer Pressure</li> 
+</ul>
+<p><strong>Discussion</strong></p>
+<p>Performance tuning is a statistical activity, which relies on a highly specific context for execution. This implies that larger systems are usually easier to benchmark than smaller ones - because with larger systems, the law of large numbers works in the engineers favor, helping to correct for effects in the platform that distort individual events.</p>
+<p>By contrast, the more we try to focus on a single aspect of the system, the harder we have to work to unweave the separate subsystems (e.g. threading, GC, scheduling, JIT compilation, etc.) of the complex environment that make up the platform (at least in the Java / C# case). This is extremely hard to do, and the handling of the statistics is sensitive, and is not often a skillset that software engineers have acquired along the way. This makes it very easy to produce numbers that do not accurately represent the behavior of the system aspect that the engineer believed they were benchmarking.</p>
+<p>This has an unfortunate tendency to combine with the human bias to see patterns, even when none exist. Together, these effects lead us to the spectacle of a performance engineer who has been deeply seduced by bad statistics or a poor control - an engineer arguing passionately for a performance benchmark or effect that their peers are simply not able to replicate.</p>
+<p><strong>Resolutions</strong></p>
+<ul> 
+ <li>Do not microbenchmark unless you know you have a known use case for it; and do so publicly, and in the company of your peers.</li> 
+ <li>Be prepared to be wrong a lot, and have your thinking challenged repeatedly.</li> 
+</ul>
+<p style="margin-left: 80px;"><img width="400" _p="true" _href="img://7divider3.jpg" alt="" src="http://www.infoq.com/resource/articles/Performance-Analysis-Antipatterns/en/resources/7divider3.jpg" /></p>
+<h2>Conclusion</h2>
+<p>Why has performance tuning acquired these antipatterns? What is it about the tuning process that encourages cognitive biases which lead to such incorrect conclusions?</p>
+<p>Key to these questions is understanding that software engineering is fundamentally different from other engineering disciplines. In a wide range of mechanical engineering systems, the physical properties of small components are well understood, and the composition effects lead to only small amounts of (often well-studied) emergent behavior.</p>
+<p>Software is different. The systems we build are far more elaborate than those typically found elsewhere in human endeavor. This is both because we work with very simple basic parts, and also because we have built tools which enable us to work with very large numbers of basic parts. Unfortunately, (or fascinatingly, depending on your point of view) as software has grown more complex, we have discovered that it has a highly emergent nature. This means that unexpected phenomena have manifested as our complexity has increased - and as we have discussed in this article, not all of them are positive.</p>
+<h2>Acknowledgements</h2>
+<p>Special thanks to Martijn Verburg, Kirk Pepperdine, Trisha Gee and James Gough (and others) for elucidating (and in several cases, naming) these antipatterns for me.</p>
 <h2>About the Author</h2>
-<p><strong><img vspace="3" align="left" hspace="3" _p="true" _href="img://AliakseiPapou.jpg" alt="" src="http://www.infoq.com/resource/articles/High-Performance-Java-Inter-Thread-Communications/en/resources/AliakseiPapou.jpg" />Aliaksei Papou</strong> is the Lead Software Engineer and Architect at <a href="http://www.specific-group.at/?language=en">Specific Group</a>, a software development company located in Vienna, Austria. Aliaksei has more than 10 years experience in the development of small and large scale enterprise applications. He has a strong belief: writing concurrent code shouldn't be so hard.</p><br><br><br><br><br><br></body></html>
+<p><strong><img align="left" _p="true" _href="img://Ben-Evans.jpg" alt="" src="http://www.infoq.com/resource/articles/Performance-Analysis-Antipatterns/en/resources/Ben-Evans.jpg" />Ben Evans</strong> is the CEO of jClarity, a Java/JVM performance analysis startup. In his spare time he is one of the leaders of the London Java Community and holds a seat on the Java Community Process Executive Committee. His previous projects include performance testing the Google IPO, financial trading systems, writing award-winning websites for some of the biggest films of the 90s, and others.</p>
+<p>&nbsp;</p><br><br><br><br><br><br></body></html>

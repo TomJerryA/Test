@@ -1,7 +1,7 @@
 <html>
  <head></head> 
- <body>
-  <div>
+ <body> 
+  <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/45.htmlb">分布式系统的事务处理</a> 本文来自阿里巴巴北京研发中心、商家业务部任资深专家陈皓自己的博客（http://coolshell.cn/articles/10910.html），在本人许可下，由InfoQ中文站进行转载，在这里给大家分享。本文讨论了在数据冗余情况下考虑数据的一致性和性能的问题。 
   </div> 
   <div> 
@@ -150,6 +150,6 @@
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/48.htmlb">聊聊并发（八）——Fork/Join框架介绍</a> Fork/Join框架是Java7提供的一个用于并行执行任务的框架， 是一个把大任务分割成若干个小任务，最终汇总每个小任务结果后得到大任务结果的框架。 
-  </div>  
+  </div> 
  </body>
 </html>

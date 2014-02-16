@@ -1,8 +1,14 @@
 <html>
  <head></head> 
- <body>
-  <div>
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/31.c">Active Directory: Bibliotecas Open Source para o iOS e Android</a>A Microsoft est&aacute; oferecendo pr&eacute;vias de bibliotecas para acessar o Active Directory para o iOS e Android. Estas bibliotecas est&atilde;o sendo liberadas no GitHub sob a licen&ccedil;a da Apache 2.
+ <body> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/33.c">Design Patterns para aplica&ccedil;&otilde;es hospedadas na nuvem</a>O grupo de padr&otilde;es e pr&aacute;ticas da Microsoft liberou um guia com solu&ccedil;&otilde;es e padr&otilde;es adequados ao implementar aplicativos hospedados na nuvem. O guia cont&eacute;m dez t&oacute;picos de orienta&ccedil;&atilde;o junto com 24 design patterns visando oito categorias de problemas, cobrindo &aacute;reas comuns no desenvolvimento de aplica&ccedil;&otilde;es na nuvem. 
+  </div> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/32.c">Masonry: Auto Layout no iOS</a>Masonry &eacute; um projeto open source que deixa o c&oacute;digo do Auto Layout mais leg&iacute;vel e conciso. O Masonry, &quot;um framework de layout leve que encapsula o Auto Layout com uma sintaxe mais agrad&aacute;vel&quot;, permitindo uma nova experi&ecirc;ncia no XIB ou Storyboard-free. 
+  </div> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/31.c">Active Directory: Bibliotecas Open Source para o iOS e Android</a>A Microsoft est&aacute; oferecendo pr&eacute;vias de bibliotecas para acessar o Active Directory para o iOS e Android. Estas bibliotecas est&atilde;o sendo liberadas no GitHub sob a licen&ccedil;a da Apache 2. 
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/30.c">Documenta&ccedil;&atilde;o na agilidade: quanto e quando escrev&ecirc;-la?</a>Os valores do manifesto para o desenvolvimento &aacute;gil de software &quot;software em funcionamento ao inv&eacute;s de documenta&ccedil;&atilde;o abrangente&quot;. Esse valor prim&aacute;rio da agilidade nos questiona sobre &quot;quanto&quot; e &quot;quais&quot; tipos de documentos s&atilde;o necess&aacute;rios e &quot;quando&quot; eles devem ser escritos. 
@@ -145,11 +151,5 @@
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/35.c">OpenKit: quadro de l&iacute;deres sociais entre diversas plataformas</a>Quando o OpenFeint foi descontinuado no final de 2012, muitos desenvolvedores de jogos iOS e Android ficaram sem funcionalidades sociais ou conex&otilde;es com redes sociais em seus softwares. Os jogos populares como Ninja Fruit, Fieldrunners ou Pocket God foram afetados. Agora, os cofundadores do OpenFeint liberaram o OpenKit, uma API substituta para servi&ccedil;os sociais entre v&aacute;rias plataformas. 
   </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/34.c">QCon SP 2014: Keynote da NASA, 20 palestrantes confirmados e descontos prorrogados</a>O QCon S&atilde;o Paulo 2014 acontece nos dias 9, 10 e 11 de abril em novo local, com seis tracks simult&acirc;neas. Conhe&ccedil;a as novidades em palestras e palestrantes e aproveite os descontos para inscri&ccedil;&otilde;es antecipadas, prorrogados at&eacute; o dia 27 de novembro. 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/33.c">Processamento em lote no Java EE 7 e melhorias no Spring Batch</a>Dentre as novas especifica&ccedil;&otilde;es introduzidas no Java EE 7 est&aacute; a JSR-352, que define um modelo de programa&ccedil;&atilde;o para processamento em lote dentro da plataforma Java EE. Essa nova especifica&ccedil;&atilde;o baseia-se fortemente no projeto Spring Batch da VMware. 
-  </div>  
  </body>
 </html>
