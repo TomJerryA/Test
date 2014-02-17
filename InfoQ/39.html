@@ -1,22 +1,13 @@
-<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>LiveRebel 3.0发布</h3><p>近日，来自爱沙尼亚的创业公司<a href="http://zeroturnaround.com/">ZeroTurnaround</a>发布了<a href="http://zeroturnaround.com/software/liverebel/">LiveRebel</a> 3.0。该版本增加了很多非常酷的工具，非常值得大家试一试。我们也有幸采访到了ZeroTurnaround CEO Jevgeni Kabanov以了解关于新版本LiveRebel的更多信息。Jevgeni最初在2007年担任Webmedia的研发总监时开发出了JRebel的原型，主要目的是减少软件开发时间，从那时起公司就开始不断壮大。JRebel曾在2011年赢得了JAX最具创新技术大奖。除此之外，Jevgeni还是两个开源项目Aranea与Squill的联合创建者。</p>
-<p><b>对于这次发布，你认为最让你感到兴奋的地方是什么，相比于LiveRebel 2.0，新版本最大的变化又是什么？</b></p>
-<p>Jevgeni：坦白地说，很多地方都让我兴奋异常。此次发布是我们一年以来不断搜集客户反馈，团队努力工作9个多月的成果。我们对产品做出了较大的调整，不过很多地方并不是一眼就能看出来的。</p>
-<p>我们所做的最大变化就是同时发布多个应用的能力。构建一个发布工具实际上并不是那么容易的事情，其困难之处来自于两个方面。</p>
-<p>首先是环境太多，每个人的环境都是不同的，因此要保持高度的逻辑性。产品必须要适应于每一个人，与此同时，又要保持一个良好、可预测的流程。其次就是集成。无论何时，如果有任何地方出现崩溃或是错误的情况，你都需要有一个后备计划。因此，我认为这两个领域是我们超越竞争对手的地方，也使得我们能够保持领先的地位。</p>
-<p><b>在进行这些改变时所遇到的最大挑战是什么？</b></p>
-<p>Jevgeni：最大的挑战来自于构建能够覆盖我们所需的所有用例的测试工具，这需要非常广泛的覆盖面，涵盖各种各样的环境，以及可能会遇到的各种不同的失败情况。</p>
-<p>我们花了大量的时间来构建测试，同时还构建了测试基础设施以提供相应的支持。总的来说，我们大量使用了自动化测试。我知道LiveRebel现在运行了多达45,000个测试，这需要大量的时间。我们只想确保下载并安装了产品的客户能够立刻获得卓越的体验。</p>
-<p><b>这次的数据库有什么变化？</b></p>
-<p>Jevgeni：客户曾向我们反馈说之前的版本存在着一些限制。比如说，不允许部署多个同名的应用或是部署具有不同数据库模式的多个应用。这些限制基本上都是架构上的问题。我们花了一些时间解决掉这些问题，从而满足了客户的各种需求。最终，我们的产品能够适应于各种复杂多变的环境。</p>
-<p><b>能否谈谈最佳实践的使用场景呢？</b></p>
-<p>Jevgeni：我们有17台服务器在运行着我们的服务，同时还有42个应用和12个不同的环境。我们可以轻松切换到LiveRebel 3.0，这要归功于多应用支持。之前，一次只能部署一个应用，现在则可以部署所有应用，所有版本。我们的基础设施团队告诉我他们非常高兴能够得到这么多的信息，他们还对发布流程感到兴奋异常。借助于LiveRebel，你只需按下一个按钮，许多事情就会自动完成了。如果某个地方出错了，那么不会出现一个应用更新而另一个应用没有更新的情况，互相依赖的应用可以做到同进退。</p>
-<p>我们还有Java、PHP和Python应用，因此也测试了JRebel的多平台能力，结果相当不错。对于LiveRebel来说最大的一个目标就是让用户只需点击一个按钮就能完成所有的事情。借助于LiveRebel处理故障、失败的卓越方式，它的一个关键特性就是支持不停机情况下的更新，这不会对最终用户造成任何影响。我们已经实现了只需点击一个按钮就能完成更新的功能。这种流程是很多互联网巨头所采用的方式，如Flickr、Amazon等，他们都使用了持续部署，也在这方面投入了大量的人力和物力。借助于LiveRebel，用户只需要做很少的事情就能达成所愿。</p>
-<p>看看我们的竞争对手们，这是我们最大的不同。我们所提供的特性并不是最丰富的，不过这些特性却是非常棒的。他们非常易于使用，这也是我们做事的方式。</p>
-<p><b>你是否觉得这是你们在市场上脱颖而出的重要法宝？</b></p>
-<p>Jevgeni：看看我们与竞争对手的差别，我们可以做到零停机，不会让应用停止。另外，无论发生什么事情，用户是不会遇到失败的情况的。如果在发布过程中出现了问题，那么用户是感觉不到的。最后就是我们所提供的大量自动化发布工具，用户可以免费下载并测试，无需任何专业的服务就能上手。</p>
-<p><b>你之前曾说过不会创建持续集成工具，不过现在你的产品却在向这个方向靠拢，你觉得未来会怎样？</b></p>
-<p>Jevgeni：我认为持续集成应该是个用于构建和测试的脚本平台。我们所聚焦的是最后一公里——你已经编写好了所有的脚本、运行了所有的测试，不过最后一公里却不是那么轻松的事情，存在着很多问题。对于持续集成来说，现在有不少人已经将其扩展到了部署，我认为这么做没问题，不过要是想避免失败和停机，除了现有的工具外，人们还是需要LiveRebel这样的工具的。</p>
-<p><b>LiveRebel 4.0未来的路线图是怎样的？</b></p>
-<p>Jevgeni：我们还没有想那么多，因为我们会一直倾听客户的反馈并理解他们的需求。事实上，有一些东西是我们无法忽视的，比如说云、集成管理、持续集成、DevOps等。我们会保持市场敏感度，让我们做得更好。</p>
-<p><b>对于Java 8，你最期待的是什么？</b></p>
-<p>Jevgeni：我非常期待Lambdas。我认为语言正走向正确的轨道。其实，我对Java 7已经很满意了，语言的发展是个增量的改进。一些人认为这是场革命，不过我并不这么认为。未来更多的要看工具而不是语言本身，这才是未来的发展方向。</p><br><br><br><br><br><br></body></html>
+<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>Oracle发布144个安全补丁，其中36个涉及Java SE</h3><p><a href="http://www.oracle.com/technetwork/topics/security/alerts-086861.html">Oracle</a>发布了最新的重要补丁更新(Critical Patch Update，CPU)，包括涉及所有产品线的<a href="http://www.oracle.com/technetwork/topics/security/cpujan2014-1972949.html">144个安全</a>补丁，其中36个涉及Java SE。Oracle声称这些漏洞中有34个可能在未进行身份验证的情况下被远程利用，因此他们建议尽早部署这些重要补丁更新，重要补丁包中涉及的产品包括Peoplesoft、Fusion Middleware和他们的旗舰关系数据库。</p>
+<p>Oracle声称针对这些漏洞的成功攻击可能导致未经授权的更新、插入、删除某些Java SE可访问的数据以及读取其子集。攻击也可能引起Java SE发生部分拒绝服务（DOS）。</p>
+<p>用户可以在<a href="http://www.oracle.com/technetwork/topics/security/cpujan2014verbose-1972951.html#JAVA">Oracle Java SE风险矩阵</a>上查看带有标识及对应描述的常见漏洞及披露（CVE）。</p>
+<p>Oracle在2005年1月引入了CPU程序，它是安全漏洞的补丁集合。<a href="http://www.oracle.com/technetwork/topics/security/cpuoct2013-1899837.html">2013年10月</a>，单独针对Java SE的安全修补程序开始按普通CPU计划发布。<a href="http://www.oracle.com/technetwork/topics/security/alerts-086861.html#CriticalPatchUpdates">接下来的四个发布日期</a>分别是2014年4月15日、2014年7月15日、2014年10月14日和2015年1月20日。</p>
+<p>补丁列表中同时包含累积和非累积的CPU。（累积CPU包括所有补丁。）<a href="http://www.oracle.com/technetwork/topics/security/cpujan2014-1972949.html">可用补丁表</a>提供了更多关于累积和非累积补丁的信息以及安装指南。　　</p>
+<p>标准支持服务和延伸支持服务是<a href="http://www.oracle.com/us/support/lifetime-support/index.html?ssSourceSiteId=otnen">Oracle终身支持政策</a>的其中两个支持服务。通过CPU程序发布的补丁包含它们所涵盖的产品。在<a href="http://www.oracle.com/technetwork/topics/security/cpujan2014-1972949.html">CPU公告</a>中，Oracle提醒：</p>
+<blockquote> 
+ <p>对于标准支持服务和延伸支持服务范围之外的产品发布，并没有针对CPU涉及的漏洞进行测试。同时，比受影响版本更早的那些版本，很可能也受这些漏洞的威胁。因此，Oracle建议客户升级到受支持的版本。</p> 
+</blockquote>
+<p><strong>查看英文原文：</strong><a href="http://www.infoq.com/news/2014/02/144-Oracle-Security-Fixes">Oracle Releases 144 Security Fixes, 36 for Java SE</a></p>
+<hr />
+<p>感谢<a href="http://www.infoq.com/cn/author/梅雪松">梅雪松</a>对本文的审校。</p>
+<p>给InfoQ中文站投稿或者参与内容翻译工作，请邮件至<a href="mailto:editors@cn.infoq.com">editors@cn.infoq.com</a>。也欢迎大家通过新浪微博（<a href="http://www.weibo.com/infoqchina">@InfoQ</a>）或者腾讯微博（<a href="http://t.qq.com/infoqchina">@InfoQ</a>）关注我们，并与我们的编辑和其他读者朋友交流。</p><br><br><br><br><br><br></body></html>

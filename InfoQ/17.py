@@ -1,12 +1,38 @@
-<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>Agile 2014カンファレンス講演提案が1月14日で終了</h3><p><a target="_blank" href="http://www.infoq.com/news/2014/01/agile2014-submissions-closing"><em>原文(投稿日：2014/01/06)へのリンク</em></a></p>
+<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>Android上のファイルを暗号化するFacebook Conceal</h3><p><a target="_blank" href="http://www.infoq.com/news/2014/01/encrypt-android-conceal"><em>原文(投稿日：2014/01/29)へのリンク</em></a></p>
 <div class="article_page_left news_container text_content_container"> 
  <div class="text_info"> 
-  <p>7月28日から8月1日にフロリダ州オーランドで開催される<a href="http://agile2014.agilealliance.org/">Agile 2014</a>のセッション提案が1月14日をもって締め切られた。<a href="http://www.agilealliance.org/">Agile Alliance</a>ではかねてから講演希望者に対して，できる限り早く<a href="https://submissions.agilealliance.org/sessions">提案を送付</a>するように呼びかけていた。</p> 
-  <p>講演予定者には，カンファレンスの<a href="https://submissions.agilealliance.org">送信システム</a>を通じた計画書の提出が求められる。</p> 
-  <p>2013年の提案数は1,000件を越えていたが，今年は200程度の講演枠に対して1,100から1,200の提案があるものと主催者側では予想していた。</p> 
-  <p>カンファレンス議長のMitch Lacey氏は次のように語っている。</p> 
-  <blockquote>
-   事前に予想したとおり，Agile2014では200程度の講演枠に対して，関心を持った返答を世界中から頂きました。世界中のアジャイリストに知識を発表できるという素晴らしい機会ですから，競争も非常に激しいものになっています。提出期限にはまだ時間がありますので，発表すべきトピックをお持ちならば，ぜひ参加してください。
-  </blockquote>
+  <p>Facebookは，Android用のファイル暗号化および認証Java APIのセットである<a href="http://facebook.github.io/conceal/">Conceal</a>をオープンソースとして公開した。ライブラリを小さく保つためにConcealでは，<a href="http://www.openssl.org/">OpenSSL</a>のアルゴリズムと定義済みオプションのサブセットを使用する。現時点でのサイズは85KBだ。</p> 
+  <p>ライブラリがターゲットするのは，FroyoからJelly Beanまでの古いAndroidデバイスである。これらの上ではAndroidのネイティブサポートよりはるかにパフォーマンスがよい，とFacebookは述べている。</p> 
+  <p><a href="/resource/news/2014/02/encrypt-android-conceal/ja/resources/conceal-speed.png" target="_blank"><img src="http://www.infoq.com/resource/news/2014/02/encrypt-android-conceal/ja/resources/conceal-speed.png" alt="" _href="img://conceal-speed.png" _p="true" /></a></p> 
+  <p>上記のベンチマークはGalaxy Y上で，ネイティブのAndroidのアルゴリズム(ES-CTR-HMAC-SHA1)とBouncycastle(AES-GCM)，Conceal(AES-GCM)とを比較したものだ。</p> 
+  <p>GoogleはKitKatでOpenSSLのサポートを導入しているが，<a href="http://facebook.github.io/conceal/faq/">Facebookによると</a>}，デフォルトの暗号ストリームの “パフォーマンスはあまりよくない” という。“私たちの暗号ストリーム (<a href="https://github.com/facebook/conceal/blob/master/java/com/facebook/crypto/streams/BetterCipherInputStream.java">BetterCipherInputStream</a>参照)に置き換えれば，Concealと比較できるレベルになります。”</p> 
+  <p>以下のコードは，Concealを使ってファイルを暗号化する方法を示したものだ。</p> 
+  <pre>
+// Creates a new Crypto object with default implementations of 
+// a key chain as well as native library.
+Crypto crypto = new Crypto(
+  new SharedPrefsBackedKeyChain(context),
+  new SystemNativeCryptoLibrary());
+
+// Check for whether the crypto functionality is available
+// This might fail if Android does not load libraries correctly.
+if (!crypto.isAvailable()) {
+  return;
+}
+
+OutputStream fileStream = new BufferedOutputStream(
+  new FileOutputStream(file));
+
+// Creates an output stream which encrypts the data as
+// it is written to it and writes it out to the file.
+OutputStream outputStream = crypto.getCipherOutputStream(
+  fileStream,
+  entity);
+
+// Write plaintext to it.
+outputStream.write(plainText);
+outputStream.close();</pre> 
+  <p>Concealは大規模な暗号化ファイルに使用することができる。Facebookではこれを，スマートフォン/タブレットのSDカード内のデータやイメージの暗号化に利用している。</p> 
+  <p><a href="https://github.com/facebook/conceal">ConcealのGitHubのページ</a>には，OpenSSLをベースとした小型ライブラリ作成の<a href="https://github.com/facebook/conceal/tree/master/native/third-party/patches/">手順</a>が公開されている。</p> 
  </div> 
 </div><br><br><br><br><br><br></body></html>

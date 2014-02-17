@@ -1,1 +1,1 @@
-Node.jsのリーダー変更
+Greg Young氏，CEP(複合イベント処理)を語る

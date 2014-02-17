@@ -1,6 +1,9 @@
 <html>
  <head></head> 
- <body> 
+ <body>
+  <div>
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/46.htmlb">DevOps ≠ Chef/Puppet</a> 如何才能实现DevOps呢？很多人会不假思索地告诉你，使用Chef/Puppet，你就能实现DevOps。于是，DevOps变成了一个简单的问题，选择Chef还是Puppet。这并不奇怪，在开源软件盛行的今天，各种软件声称自己是DevOps工具，而人们通常不会去思考一项新技术或者新思路背后的缘由，人们需要的是“银弹”。 如同Agile，把DevOps等同于工具层面的Chef/Puppet，是错误的，会严重束缚人们的思维。在国内Cloud Native应用开发时代即将开启的今天，充分认识DevOps是很有必要的。 
+  </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/45.htmlb">分布式系统的事务处理</a> 本文来自阿里巴巴北京研发中心、商家业务部任资深专家陈皓自己的博客（http://coolshell.cn/articles/10910.html），在本人许可下，由InfoQ中文站进行转载，在这里给大家分享。本文讨论了在数据冗余情况下考虑数据的一致性和性能的问题。 
   </div> 
@@ -147,9 +150,6 @@
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/49.htmlb">实现软件生命周期整合（第2部分）</a> 在本文中，我们将关注软件交付专业人员在实现端到端的软件交付流程时应采取的一些实用步骤。 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/48.htmlb">聊聊并发（八）——Fork/Join框架介绍</a> Fork/Join框架是Java7提供的一个用于并行执行任务的框架， 是一个把大任务分割成若干个小任务，最终汇总每个小任务结果后得到大任务结果的框架。 
-  </div> 
+  </div>  
  </body>
 </html>

@@ -1,30 +1,127 @@
-<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>探讨NuoDB数据库的架构—2</h3><p>在本文的第1部分，我们介绍了NuoDB，并对它的几个主要特性进行了讲解：三层架构、对等的节点以及原子这个基本的数据单元。此外还讲述了版本控制、用以处理数据更新冲突的并发系统以及如何实现一致性。</p>
-<h2>运行中的事务</h2>
-<p>你现在已经熟悉了整体模型、内部的结构以及版本控制，接下来让我们看几个简单的例子，以帮助你更好地理解它们在实际中是怎样运用的。为了简单起见，假设有一个简单的数据库，包含两个事务引擎（TE）和一个存储管理器（SM），从这个简单配置着手研究，应该能够很简单地推导出更复杂的配置。</p>
-<p>首先考虑一下原子是怎样被导入到这两个TE缓存中的。假设有一个原子存在归档中，但并不存在任何缓存中，当某个客户端连接到第一个TE并且启动一个需要这个原子的事务时，TE就会在它的目录（Catalog）结构中进行查找，当它发现缓存中没有该数据时，就会到SM中去获取对象。这时，目录结构就会反映出原子已经处于第一个TE的缓存中了，并且该TE将被认为是相关数据的Chairman（主持人）。</p>
-<p>此时如果在第二个TE上启动一个事务，并且该事务需要同一个原子中的数据时，目录将会告诉事务可以在SM与第一个事务这两处找到该原子。虽然第二个TE可以自由地选择从哪里获取这个原子，但在实际过程中它总是会从第一个TE请求该原子，因为从内存中的拷贝获取原子速度更快。此时目录会相应地进行更新，显示原子已经存在于两个缓存中了。</p>
-<p>接下来，让我们看看当原子中的数据产生变化时会发生些什么。举个例子，假设原子中的数据里的某一行被更新，为了接受这个更新，运行该事务的TE需要发送两条消息：一是对所有包含该数据拷贝的对等进程（在本例中就是指另一个TE以及SM）发送一条等待更新的消息，二是对Chairman发送一条申请批准该更新的权限的消息。如果该更新发生于第一个TE，那么第二条消息的发送会被短路（跳过），因为该TE本身就是Chairman。两条消息都是异步执行的，这确保了事务能够继续执行。如果没有发生任何冲突情况，Chairman最终会接受该更新，并发出响应。</p>
-<p>如果两个事务同时尝试更新同一份数据，就会发生冲突。哪个事务能够首先将请求传递给Chairman就能够“获胜”，另一个事务最终会收到一条更新被拒绝的响应。此时这个失败的事务必须被回滚，随后再次尝试。</p>
+<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>DevOps ≠ Chef/Puppet</h3><p>DevOps是一个热词，但是毫无疑问，也是未来的趋势（注1）。高效率的IT组织常常贴着DevOps的标签，是人们讨论的焦点和学习的对象。2009年时，人人都在讨论如何像Flickr一样一天内完成十几次的部署（注2）。今天，人人都谈论如何像Netflix/Pinterest一样基于云基础设施构建大规模、高可用、可伸缩的服务（注3）。</p>
+<p>如何才能实现DevOps呢？很多人会不假思索地告诉你，使用Chef/Puppet，你就能实现DevOps。于是，DevOps变成了一个简单的问题，选择Chef还是Puppet。这并不奇怪，在开源软件盛行的今天，各种软件声称自己是DevOps工具，而人们通常不会去思考一项新技术或者新思路背后的缘由，人们需要的是“银弹”。</p>
+<p>如同Agile，把DevOps等同于工具层面的Chef/Puppet，是错误的，会严重束缚人们的思维。在国内Cloud Native应用开发时代即将开启的今天，充分认识DevOps是很有必要的（注4）。</p>
+<h2>（一）DevOps不仅仅是工具</h2>
+<p>DevOps是Agile的延伸，Ailge依靠Dev &amp; Biz部门紧密协作，通过增量交付的方式来解决需求多变的难题。DevOps则进一步延伸到IT运维，通过Dev &amp; Ops的紧密协作提高软件交付的质量和频率。人的重要性大于流程，流程的重要性大于工具。这个结论适应于Agile, 也同样适用于DevOps。工具带来的影响是短期的和片面的，流程和人所产生的影响是长期的和全面的。</p>
+<p><img src="http://infoqstatic.com/resource/articles/devops-is-not-equal-chef-puppet/zh/resources/0127040.png" _href="img://null" _p="true" alt="" /></p>
+<p>事实上，大部分人都知道这个道理，只是在潜意识中仍然把DevOps当成Chef/Puppet等工具。建设DevOps的正确步骤应该是充分理解DevOps的原则，认真分析自身需求和条件，选择正确的方法和流程，最后才是选择或构建适当的工具。Learn By Example仍然是学习和建设DevOps的重要途径。在今后的各种会议上，分享DevOps经验会越来越多。我们应该不仅仅关注讲演中提到的工具，更要多关注流程、组织结构和文化方面的分享。</p>
 <div id="lowerFullwidthVCR"></div>
-<p>之前我曾经提过，NuoDB对提交协议的支持很灵活，现在就会讲到它的应用了。为了将某个客户端的提交执行成功的信息发送回去，TE必须始终确保ACID中的原子性、一致性和隔离性，但在持久性方面则拥有一定的灵活性。</p>
-<p>在上面的示例中，更新消息将会异步地发送给所有拥有该对象拷贝的对等进程，包括SM在内。当消息在可靠的频道中传递时，除非我们等待确认消息的到来，否则是没有办法知道该SM的生存时间是否足够使该数据保持持久性的。作为数据库配置的一部分，你可以选择某个TE在报告提交成功前是否需要等待确认消息。由于你可以选择性地在运行时打开日志功能，实际上你所需要从SM返回的内容也就有了多个版本。</p>
-<p>因此提交即可以表示消息已发送至所有的对等进程，也可以表示SM对本次改变的响应已进行日志记录或者已经被写入持久化的归档中，提交还可以表示至少有某些最小数量的SM发送了响应。这种方式给了你充分的灵活性，你可以决定在发生提交失败时你的持久化保证有多可靠，也可以决定你的分布式数据库运行有多快。</p>
-<h2>管理层</h2>
-<p>我之前曾提到过，NuoDB有一个管理层，正是它支持了按需伸缩功能以及那些我们已见识过的迁移模型。每个主机系统都运行着一个本地的管理代理，代理构成了一个与数据库无关的对等网络。我们将这个互联主机的集合称为一个领域（Domain）。</p>
-<p>领域包含一个单一的本地管理视图，这使得监控、管理及自动化等数据库活动变得简单。每个代理都负责它的本地主机，有些代理还会以中介（Broker）的角色运行，中介将整个领域展示为一个全局视图。所有中介都具有相同的知识与能力，因此如果你有多个中介在运行，你就可以访问管理与自动化接口。通过中介，你可以启动、停止或迁移数据库，改变你的配置，监控以及捕获TE和SM的日志记录，并运行一切按预计运行。</p>
-<p>由于数据库就是一个运行中的进程集合而已，要在一台单独的主机上运行多个数据库也很方便。换句话说，管理层能够支持多租户（multi-tenant）系统的部署，每个租户运行着自己的数据库，它们在进行级别上进行了隔离，由自己的安全通道进行保护，并将数据存于自己的归档内。那么我们在一个单一的系统里可以创建多少个数据库呢？关于这一点在我们的博客中的“<a href="http://www.nuodb.com/techblog/2013/04/09/extreme-density-on-hps-project-moonshot/">支持密集部署</a>”文章中谈论了更多内容。</p>
-<p>SQL客户端在连接到数据库时，正是利用中介而得以找到TE的。这就使中介的功能像一个简单的负载均衡器一样，它了解领域中发生的一切，并能够智能地决定让客户端连接到哪里。</p>
-<h2>总结NuoDB的功能</h2>
-<p>了解了这些特性之后，让我们再回头看看我说所的云伸缩，我认为有一些用例是尤其适合NuoDB进行处理的。首先，它不仅支持自动化、按需水平伸缩，并且在拥有这些能力的同时还提供了高可用性（HA）。这种高可用性并非来自预先搭建的额外的故障转移功能，而是因为NuoDB能够监控系统错误，并且非常迅速地将新资源上线所带来的。这种反应迅速的高可用性意味着你不需要为了避免错误而带来多余的开销，并且在面临错误情况时依然能够保持良好的可用性。</p>
-<p>其次，NuoDB能够为跨越数据中心、并且分布在不同区域的数据库提供一个单一的逻辑数据库视图。这一点显然有助于高可用性，不仅如此，如果你的应用程序的用户来自不同地方，而且你希望让他们尽量连接到最接近他们的应用与数据，这一特性也非常关键。NuoDB支持按地理位置分布，因为连接系统的客户端会乐于使用本地化的数据，因此尽管已经有了简单负载均衡、按需缓存以及区域间的异步分发功能，单一数据库这一特性仍然能够将大多数协调信息保持在一个本地区域内。</p>
-<p>再次，因为MVVC为NuoDB提供了一个高效的快照隔离模型，它能够很好地支持对同一份数据的操作性与分析性的访问。换句话说，对频繁更新的数据进行运行时间较长的只读查询也不会产生冲突。这一特性有助于简化部署操作，否则部署时将不得不运行多个数据库，并且要不断地试图同步数据集。</p>
-<p>最后，NuoDB是全自动的。无论是按需水平伸缩，还是多租户的运行效率，我们都将数据库当做服务看待，它需要由简单的SLA（服务级别协议）和策略进行驱动。这正是NuoDB的开发方向。</p>
-<h2>NuoDB的下一步是什么？</h2>
-<p>我在本文中想表达的是，NuoDB展现了一种全新的架构，在设计的最初就支持水平伸缩、敏捷式部署与自动化。可以很方便地加入新的主机并扩展系统能力，并且在出现大量的数据加载或者系统错误时能够自动地扩展，还能够跨多个数据中心扩展数据库。回到这篇文章开始的地方，我认为这些能力足以保证NuoDB是一个优秀的云伸缩数据库。</p>
-<p>我们当前的工作是使自动化功能进一步简化。你可以通过简单的SLA详细地定义你对某个数据库的需求。无论你是否正打算在笔记本上进行开发，管理你公司的内部数据库或是在互联网上启用一个服务，这一特性让NuoDB使用起来就像一个服务一样简单。</p>
-<p>我们正在扩展按地理位置分布的数据库的功能，它在你遇到错误时提供了更多灵活性，并且进一步保证了数据可用性。我们也在继续加强服务端编程模型，存储层并行的能力，并且改善了SQL与管理客户端的API。我希望你能够去尝试一下，然后告诉我你的想法。</p>
+<p>DevOps不仅仅是工具，即便是工具，其也是建设DevOps所需工具链中的可选工具。</p>
+<h2>（二）Chef/Puppet只是DevOps工具链中的可选工具</h2>
+<p>DevOps目的是打造标准化的、可重复的、完全自动化的Delivery Pipeline, 其范围涵盖需求，设计，开发，构建，部署，测试和发布。除了需求、设计和开发外，其他的四个步骤都是可以自动化的。自动化是提高可测试性，一致性，稳定性和交付频率的核心。</p>
+<p>下图来自IBM <a href="http://www.slideshare.net/CloudOps/agile-itil-cloud-mit-devops-in-die-zukunft">Agile, ITITL, Cloud How DevOps brings it all together</a> 。该图非常清晰地解释DevOps如何实现交付的自动化（注5）。</p>
+<p><img src="http://infoqstatic.com/resource/articles/devops-is-not-equal-chef-puppet/zh/resources/0127041.png" width="600" _href="img://null" _p="true" alt="" /></p>
+<p>图中DevOps流程所需要用到的工具和环境有：</p>
+<ol> 
+ <li>源代码版本控制工具： 比如SVN， Git等。</li> 
+ <li>持续集成工具：比如Jenkins, Bambo等。</li> 
+ <li>Artifact存储仓库：持续集成构建后的artifact都统一放在一个仓库中，比如Nexus/Artifactory, 当然也可以是FTP, S3等。</li> 
+ <li>配置和部署工具：Chef/Puppet/CFEngine, Fabric/ControlTier，也包括新兴的Docker等。</li> 
+ <li>Cloud Provision工具：在云环境下，由于任何IT Infra资源都以编程接口提供，意味着Full-Stack Automation (from “bare-metal to running business services”)成为了可能。Cloud provision工具可以自己通过API构建(如Netflix Asgard)，也可以直接使用IaaS服务商提供的扩展服务如AWS CloudFormation &amp; Opsworks，也可以使用第三方工具如Ringscale/Scalr等。相当一部分Cloud Provision本身也集成了Chef/Puppet来实现后续的部署和配置。</li> 
+ <li>测试工具：除了传统的测试工具外，还需要模拟Infra灾难、验证系统健壮性的工具，如Netflix的Chao Monkey。</li> 
+ <li>发布工具：一般情况下，人们需要拥有DTAP四个环境，即开发环境、测试环境、Staging环境和生产环境。每种环境的作用，部署方式和代码版本等是不一样。比如开发环境是持续部署的，测试环境是定期如每天晚上自动部署，Staging和生产环境是手动触发的。</li> 
+ <li>云基础设施：包括AWS/Azure等公有云，Cloudstack/Openstack等私有云。</li> 
+</ol>
+<p>因此，我们看到，Chef/Puppet只是实现DevOps工具链的可选工具，可以用来实现配置和部署自动化。但是仅靠Chef/Puppet本身无法实现Full-Stack部署自动化。</p>
+<h2>（三）仅靠Chef/Puppet本身无法实现Full-Stack部署自动化</h2>
+<p>如果要实现Full-stack Automation，那么就必须实现环境创建自动化，软件安装和配置自动化，应用部署和配置自动化，监控和告警自动化，故障检测和恢复自动化，扩展自动化，如下图所示（注6）。</p>
+<p><img src="http://infoqstatic.com/resource/articles/devops-is-not-equal-chef-puppet/zh/resources/0127042.png" width="600" _href="img://null" _p="true" alt="" /></p>
+<ol> 
+ <li>环境创建：创建VMs、网络、存储、负载均衡，协调不同角色VMs的创建过程和配置。</li> 
+ <li>软件安装和配置：操作系统配置，比如创建用户、组，设置ulimit参数等；基础软件安装和配置，比如mysql/nginx。这些软件的特点是变动不频繁。对于Chef/Puppet来说，这个步骤的自动化是其最擅长的。它们都提供大量现成的Recipes，并抽象各种异构系统之间的差异。</li> 
+ <li>应用部署和配置：部署应用代码，比如war包、db脚本、php/rails代码等。这部分的变动是频繁的。对于Chef/Puppet来说，其是可以做这个工作的，但是很多人认为用Fabric/Glu等更为合适。另外，对于复杂的系统来说，如果保证升级期间系统的可用性，系统的各个应用组件需尽量是无状态和松耦合的。如果系统的组件之间是有依赖的，那么升级期间必须动态地协调(Orchestration)、控制好相关组件的行为。</li> 
+ <li>监控和告警：包括OS级别和应用级别的可用性和性能监控。如果发现异常，需要能够自动发出告警信息。</li> 
+ <li>健康检测和恢复：为了应付云基础设施故障，系统需要Design By Failure. 在异常发生时，系统可以发现并进行自动处理。</li> 
+ <li>自动伸缩：一般情况下，业务存在高峰期和低估期。为了节省成本，系统应该是可以自动伸缩的。</li> 
+</ol>
+<p>对于上述的每一个步骤，看似都存在现成的工具可以用来实现自动化。但是，实现Full-Stack部署自动化从来就不是一件容易的事情，绝非简单通过选择、拼凑相关工具即可实现。Autodesk中国研发中心最近在InfoQ上分享了他们<a href="http://www.infoq.com/cn/articles/automated-deployment-practice-based-on-aws">基于AWS的自动化部署实践</a>。文章详细阐述了业务目标，设计目标和限制，和最终的实现方案，是一个非常好的案例。在这里，我们再来分析一下两种差异较大的实现方式。</p>
+<h3>(1) 基于PaaS的实现方式 (以Cloud Foundry为例)。 
+ <table border="1" cellspacing="0" cellpadding="0"> 
+  <tbody> 
+   <tr> 
+   </tr> 
+  </tbody> 
+ </table> </h3>
+<p> </p>
+<table border="1" cellspacing="0" cellpadding="0"> 
+ <tbody> 
+  <tr> 
+   <td valign="top" width="132"> <p>环境创建</p> </td> 
+   <td valign="top" width="492"> <p>用户不需要创建物理资源环境，Cloud Foundry会自动创建并分配资源给各个租户，用户无法控制底层OS等</p> </td> 
+  </tr> 
+  <tr> 
+   <td valign="top" width="132"> <p>软件安装和配置</p> </td> 
+   <td valign="top" width="492"> <p>用户不需要软件安装。Cloud Foundry已经安装好相关软件，只是支持的类型和版本有限</p> </td> 
+  </tr> 
+  <tr> 
+   <td valign="top" width="132"> <p>应用部署和配置</p> </td> 
+   <td valign="top" width="492"> <p>Cloud Foundry提供接口，用户调用接口进行应用部署和配置。应用类型必须是Cloud Foundry支持的，只能进行有限的配置，比如Tomcat的配置参数等</p> </td> 
+  </tr> 
+  <tr> 
+   <td valign="top" width="132"> <p>监控和告警</p> </td> 
+   <td valign="top" width="492"> <p>Cloud Foundry提供监控服务，但是Metric类型有限，无法支持自定义Metric</p> </td> 
+  </tr> 
+  <tr> 
+   <td valign="top" width="132"> <p>健康检测和恢复</p> </td> 
+   <td valign="top" width="492"> <p>Cloud Foundry提供Container级别的健康检测和恢复</p> </td> 
+  </tr> 
+  <tr> 
+   <td valign="top" width="132"> <p>自动伸缩</p> </td> 
+   <td valign="top" width="492"> <p>基于Cloud Foundry 提供的monitoring 接口和应用控制接口，可以实现instance级别的自动伸缩</p> </td> 
+  </tr> 
+ </tbody> 
+</table>
+<p></p>
+<p>貌似这种方式是最完美的方案，Cloud Foundry基本替你实现了上述的所有自动化步骤，应用开发人员只需专注于应用逻辑本身的开发。然而，Cloud Foundry也限制了用户的选择权和控制权，特别是大型的、复杂的、分布式系统，开发人员需要的是Full-Stack可控制性。</p>
+<h3>(2) Netflix的实现方式。 
+ <table border="1" cellspacing="0" cellpadding="0"> 
+  <tbody> 
+   <tr> 
+   </tr> 
+  </tbody> 
+ </table> </h3>
+<p> </p>
+<table border="1" cellspacing="0" cellpadding="0"> 
+ <tbody> 
+  <tr> 
+   <td valign="top" width="132"> <p>环境创建</p> </td> 
+   <td valign="top" width="492"> <p>通过自己研发的<a href="http://techblog.netflix.com/2012/06/asgard-web-based-cloud-management-and.html">Asgard</a>管理和部署工具实现</p> </td> 
+  </tr> 
+  <tr> 
+   <td valign="top" width="132"> <p>软件安装和配置</p> </td> 
+   <td valign="top" width="492"> <p>基础软件和配置都打包成AMI，基于Netflix自己的打包工具<a href="http://techblog.netflix.com/2013/03/ami-creation-with-aminator.html">Aminator</a></p> </td> 
+  </tr> 
+  <tr> 
+   <td valign="top" width="132"> <p>应用部署和配置</p> </td> 
+   <td valign="top" width="492"> <p>同上，应用代码和配置也打包进AMI（注7）</p> </td> 
+  </tr> 
+  <tr> 
+   <td valign="top" width="132"> <p>监控和告警</p> </td> 
+   <td valign="top" width="492"> <p>Leverage AWS Cloudwatch, 同时也将通过自己开发的<a href="http://techblog.netflix.com/2012/02/announcing-servo.html">Servo</a></p> <p>Lib将custom metric 发送至Cloudwatch.</p> </td> 
+  </tr> 
+  <tr> 
+   <td valign="top" width="132"> <p>健康检测和恢复</p> </td> 
+   <td valign="top" width="492"> <p>Leverage Atoscaling group，健壮性测试有Netflix自己开发的<a href="http://techblog.netflix.com/2012/07/chaos-monkey-released-into-wild.html">Chaos Monkey</a>工具</p> </td> 
+  </tr> 
+  <tr> 
+   <td valign="top" width="132"> <p>自动伸缩</p> </td> 
+   <td valign="top" width="492"> <p>Leverage AWS AutoScaling Group</p> </td> 
+  </tr> 
+ </tbody> 
+</table>
+<p></p>
+<p>Netflix除了Leverage AWS的CloudWatch/Auto Scaling Group/ELB等服务外，自己也开发了一序列工具完成了Full-Stack部署自动化。这些工具通过<a href="http://techblog.netflix.com/2012/06/asgard-web-based-cloud-management-and.html">Asgard</a>这个可视化云管理和部署控制台集成起来。另外，Deployable image 这种部署模式虽可简化部署并确保一致性，但是一部分复杂性转移到了应用层面（注7）。系统的各个组件是无状态和松耦合，同时还需要<a href="http://techblog.netflix.com/2012/09/eureka.html">Eureka</a>这种服务来实现中间层的负载和failover。</p>
+<p>在上述两个案例中，我们都看不到Chef/Puppet的影子。即便是Cloud Foundry自身的部署工具Bosh，但也不是基于Chef/Puppet。 所以，尽管Chef/Puppet非常流行，并且有很多成功案例，但是我们决不能把DevOps = Chef/Puppet。它们只是建设DevOps所需工具链中的可选工具，仅此而已。</p>
+<h2>参考文档</h2>
+<p>注1: <a href="http://dev2ops.org/2010/02/what-is-devops/">What’s DevOps?</a></p>
+<p>注2: <a href="http://velocityconf.com/velocity2009/public/schedule/detail/7641">10+ Deploys Per Day: Dev and Ops Cooperation at Flickr</a></p>
+<p>注3: <a href="http://perfcap.blogspot.it/2012/03/ops-devops-and-noops-at-netflix.html">Ops, DevOps and PaaS (NoOps) at Netflix</a></p>
+<p>注4: <a href="http://www.csdn.net/article/2013-08-27/2816726">对国内云计算三个现象的思考</a></p>
+<p>注5:<a href="http://www.slideshare.net/CloudOps/agile-itil-cloud-mit-devops-in-die-zukunft"> Agile, ITITL, Cloud How DevOps brings it all together</a></p>
+<p>注6: <a href="http://www.slideshare.net/uri1803/openstack-israel-summit-2013-its-the-app-stupid?ref=http://cloudifysource.tumblr.com/post/51957539224/its-the-app-stupid-uri-cohens-presentation-from">“It’s the App, Stupid!” on Orchestration, DevOps Automation and What’s in Between</a></p>
+<p>注7: <a href="http://techblog.netflix.com/2011/08/building-with-legos.html">Netflix deployable image</a></p>
 <h2>关于作者</h2>
-<p><img _p="true" _href="img://null" alt="" style="float: left; margin-right: 10px" src="http://infoqstatic.com/resource/articles/nuodb-architecture-2/zh/resources/1029000.jpg" /><b>Seth Proctor</b>是NuoDB公司的CTO，在可伸缩系统的研究、设计和实现上有超过十五年的经验。这些经验来自于网络、语言、操作系统、安全、数据库和分布式环境等领域，然后凝结成了<a href="http://go.nuodb.com/download-new-sql-database-infoq.html">NuoDB产品</a>。在NuoDB之前，Seth就职于Nokia，负责内部私有云的架构。再往前，Seth在Sun公司的研究实验室工作，和产品组、大学进行合作。</p>
-<p>Seth拥有八项跨多个技术领域的先进专利。还有五项专利正在等待批准，这五项专利都是NuoDB去中心化数据库部署中提升数据库效率和最终用户灵活度相关的。你可以从<a href="http://www.nuodb.com/">www.nuodb.com</a>联系到他。</p>
-<div style="clear:both"></div>
-<p><strong>查看英文原文：</strong><a href="http://www.infoq.com/articles/nuodb-architecture-2">Exploring the Architecture of the NuoDB Database, Part 2</a></p><br><br><br><br><br><br></body></html>
+<p>阮志敏，AWS认证架构师，目前在三星中国研究院从事PaaS相关工作。</p>
+<hr />
+<p>感谢<a href="http://www.infoq.com/cn/author/丁雪丰">丁雪丰</a>对本文的审校。</p>
+<p>给InfoQ中文站投稿或者参与内容翻译工作，请邮件至<a href="mailto:editors@cn.infoq.com">editors@cn.infoq.com</a>。也欢迎大家通过新浪微博（<a href="http://www.weibo.com/infoqchina">@InfoQ</a>）或者腾讯微博（<a href="http://t.qq.com/infoqchina">@InfoQ</a>）关注我们，并与我们的编辑和其他读者朋友交流。</p><br><br><br><br><br><br></body></html>

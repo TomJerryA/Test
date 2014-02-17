@@ -2,6 +2,24 @@
  <head></head> 
  <body> 
   <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/17.py">Android上のファイルを暗号化するFacebook Conceal</a>Facebookは，Android用のファイル暗号化および認証Java APIのセットであるConcealをオープンソースとして公開した。ライブラリを小さく保つためにConcealでは，OpenSSLのアルゴリズムと定義済みオプションのサブセットを使用する。現時点でのサイズは85KBだ。 
+  </div> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/16.py">Greg Young氏，CEP(複合イベント処理)を語る</a>Complex Event Processing(CEP/複合イベント処理)は，異なる時点で発生した事象を関連付けるために過去データ全体にクエリを行うような，時間軸上で実行する必要のある問題に対して非常に有効だ - 先日のプレゼンテーションで，Greg Young氏はこのように説明した。 
+  </div> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/16.py">Google、QUICでインターネットをスピードアップ</a>QUIC (Quick UDP Internet Connections、「クイック」と発音) はUDP上で動く多重化トランスポートプロトコルであり、主に0-RTT 接続オーバーヘッドを目標としている。 
+  </div> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/16.py">Eclipse財団10周年</a>Eclipse財団が10周年を迎えた。2004年2月のプレスリリースによれば、開発者、利用者、アドインプロバイダを集めて、Eclipseの長期的な方向性に責任を持つ委員会を作ろうという世話役としての役割がこの非営利組織を生み出した。 
+  </div> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/15.py">DevOps採用の文化的問題</a>RebelLabsを率いるOliver White氏が先日の記事で，DevOpsのメリットを明確に示す調査結果があるにも関わらず，IT組織のDevOps採用が困難であることを詳説している。InfoQは氏にインタビューするとともに，この問題に関する調査報告を再検討した。 
+  </div> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/14.py">Visual Studioリリース管理についてPieter Gheysens氏に聞く</a>Visual Studioリリース管理はVisual StudioとTeam Foundation Serverを利用して、ワークフローの作成を可能とする。InfoQ編集部は、VSRMについて Pieter Gheysens氏にインタビューを行い、VSRMの情報を入手した。 
+  </div> 
+  <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/13.py">Cordova 3.3.0を使ってChromeアプリをAndroidとiOSにデプロイする</a>開発者はApache Cordova 3.3.0を使って、ChromeアプリをAndroidとiOSにデプロイできるようになった。 
   </div> 
   <div> 
@@ -132,24 +150,6 @@
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/22.py">Facebook、MercurialをGitよりも速くする</a>FacebookがどのようにしてMercurialをGitよりも特定の操作で5倍速くしたのかを説明する記事をポストした。読むと、彼らが何を変えて、なぜセットアップをそうしたのかがわかるだろう。 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/21.py">ログとトレースにLINQを使用する</a>Microsoft Open Technologiesは先頃，ログやトレースを使ったデバッグ作業と，リアルタイム監視および警告システムの開発を支援するオープンソースプロジェクトであるTxのリリースを発表した。 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/20.py">QCon London 2014チュートリアル: リアクティブエクステンション, モバイルデバイス, アジャイル，継続的デリバリ (3月3日〜7日)</a>８年目を迎えるQCon London (2014年3月3日～7日)では，プログラム言語の先駆者やプロジェクトリーダ，経験豊富な実践者たちが，２日間に渡ってハンズオン・チュートリアルを提供してくれる。3～6時間のチュートリアルでは，エンタープライズソフトウェア開発のイノベーションをリードする新しいテクノロジやメソトロジについて詳しく説明する。3日間のカンファレンスを，1月8日まで236ユーロ割引の早期予約で手に入れてほしい。 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/19.py">Apache Kafka, 他とは異なるメッセージングシステム</a>Apacheは、Kafka0.8 をリリースした。これは Kafka が Apache ソフトウェア財団のトップレベルプロジェクトになって以降の最初のメジャーリリースである。Apache Kafka は Publish-Subscribe 型のメッセージングシステムであり、分散型のコミットログの形で実装されている。当初は、大容量のイベントとログデータを収集および配信するために LinkedIn で開発されたメッセージングシステムであった。 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/18.py">HTTPを強化する</a>最近のSnowden氏による暴露は、IETF HTTP/2 Working Groupに影響を及ぼしている。プロトコルは暗号化をどのように扱うのか、必須にすべきだろうか？ Working Group議長のMark Nottingham氏はこれまでの議論における考えを共有し、どのように解決されると見ているか手掛りを与えた。そして、意見を持っている人はWorking Groupと共有するよう求めている。 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/17.py">Agile 2014カンファレンス講演提案が1月14日で終了</a>フロリダ州オーランドで開催されるAgile 2014の講演提案が1月14日をもって締め切られる。Agile Allianceでは講演希望者に対して，提案書を速やかに送付するよう呼びかけている。 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/16.py">アプリのiOS 7対応期限が2月1日に</a>Appleは先日，iOSのアプリケーションに関して，2月1日までにiOS 7に対応しなければならない，という告知を行った。iTunes Storeに新たなアプリケーションやアップデートを提出する場合には，開発にXCode 5を使用することとアプリケーションをiOS 7に最適化することが必須となる。iOS7に対応するには，現行のHuman Interface Guidelinesに従ったUIの変更と，API変更の適用などが必要だ。 
   </div> 
  </body>
 </html>

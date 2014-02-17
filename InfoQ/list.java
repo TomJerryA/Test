@@ -2,6 +2,12 @@
  <head></head> 
  <body> 
   <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/10.java">Twenty Five Years of GPS</a>The GPS constellation in use today was launched twenty five years ago, and is still going strong. Today, GPS receivers can be found in most smart phones as well as commercial airliners and supertankers. InfoQ looks back at how the GPS came to be, and how locations are being used today with HTML5 and geo location services. 
+  </div> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/9.java">Java 8 News: Release Candidates Available, New Atomic Numbers and Stripped Implementations Dropped</a>The first release candidates of Java 8 started showing up in early February. The first, b128, on February 4, and a second announced on the OpenJDK mailing list a week later. 
+  </div> 
+  <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/8.java">Challenges Performing Background Compilation in V8</a>This article includes details on the recently background compilation introduced in V8, Chrome’s JavaScript engine. 
   </div> 
   <div> 
@@ -144,12 +150,6 @@
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/11.java">LightTable IDE Goes Open Source, Adds Plugin Support</a>Chris Granger has open sourced the LightTable IDE with the 0.6 release. Third party plugin support was the highlight feature of the release. InfoQ talked to LightTable creator Chris Granger. 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/10.java">Open Source Active Directory Libraries for iOS and Android</a>Microsoft is offering previews of libraries for accessing Azure Active Directory for iOS and Android. These libraries are being released on github under the Apache 2 license. 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/9.java">What to Expect From HTTP/2</a>In a recent blog posting Mark Nottingham, chair of the HTTP/2 Working Group, gives his opinion on 9 things to expect in the next version of the Web standard which is rapidly nearing completion and implementations are starting to appear. 
   </div> 
  </body>
 </html>
