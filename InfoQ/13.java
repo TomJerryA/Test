@@ -1,42 +1,23 @@
-<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>Unsafe at any Speed; Oracle Surveys community about promoting sun.misc.Unsafe</h3><p>Oracle software engineer Paul Sandoz posted a message on the <a href="http://mail.openjdk.java.net/pipermail/core-libs-dev/2014-January/024650.html">OpenJDK mail list </a>and sent <a href="https://twitter.com/PaulSandoz/status/426732263888662528"> a tweet</a> last week asking the public to weigh in on the library <a href="http://www.docjar.com/docs/api/sun/misc/Unsafe.html">sun.misc.Unsafe</a> by responding to a Survey Monkey <a href="https://www.surveymonkey.com/s/sun-misc-Unsafe">survey</a>.</p>
-<p>The debate centers around whether pieces of Unsafe should be mainstreamed. The controversial class is under scrutiny due to its divergence from the Java credo of safe memory management.</p>
-<p>sun.misc.Unsafe has over 100 methods, in categories such as synchronization, direct memory access, object and member manipulation, and other categories antithetical to the Java credo of safe memory management. Some of these methods such as&nbsp;volatile reads and writes, ordered writes and compare-and-swap operations are heavily used by the java.util.concurrent libraries.</p>
-<p>According to the Java doc, Unsafe contains &quot;A collection of methods for performing low-level, unsafe operations. Although the class and all methods are public, use of this class is limited because only trusted code can obtain instances of it.&quot;</p>
-<p>For a &quot;quick overview of&nbsp;sun.misc.Unsafe&nbsp;<em>public</em>&nbsp;API and few interesting cases of its usage.&quot; refer to Mykhailo Kozik's <a href="http://mishadoff.github.io/blog/java-magic-part-4-sun-dot-misc-dot-unsafe/">blog on the topic.</a></p>
-<p>The survey questions are:</p>
-<ol> 
- <li>Have you ever used the Java class &quot;sun.misc.Unsafe&quot;?</li> 
- <li>What project(s) did you use Unsafe for?</li> 
- <li>What methods on Unsafe did you use?</li> 
- <li>What reasons did you use Unsafe for? Responses include: 
-  <ul> 
-   <li>Atomic access to fields and array elements (such as compare-and-swap)</li> 
-   <li>Off-heap memory operations (such as to emulate structures or packed objects)</li> 
-   <li>Deserialization hacks</li> 
-   <li>Fencing (to constrain re-ordering of memory operations)</li> 
-   <li>Access to private fields of another class</li> 
-   <li>Array access without bounds checks</li> 
-   <li>Other (please specify)</li> 
-  </ul> </li> 
- <li>What features (if any) are missing from Unsafe?</li> 
- <li>Do you have an optional dependency on Unsafe to ensure code is portable across multiple Java platforms?</li> 
- <li>If there was a &quot;safe unsafe&quot; standard (cross-platform) alternative for your use-cases (perhaps a new API, perhaps language changes, or both) would you be prepared to replace Unsafe with that alternative? If so under what conditions?</li> 
-</ol>
-<p>In addition to soliciting community response to determine usage metrics, Sandoz says Oracle is also planning to &quot;trawl stuff on repos.&quot;</p>
-<p>The low-latency world seems particularly passionate about the topic. Peter Lawrey is Principal Consultant at <a href="http://www.linkedin.com/company/higher-frequency-trading-ltd">Higher Frequency Trading Ltd.</a> and lead developer of the low-latency <a href="https://github.com/OpenHFT">OpenHFT libraries</a>. He told InfoQ:</p>
-<blockquote>
- While Unsafe should be hidden from most developers and most of the code, it provided some particularly useful low level, thread safe access to memory which is more efficient than JNI calls. i.e. there really is no other way to do what Unsafe does efficiently. &nbsp;What we need is a replacement which is standard across JVMs and can be extended for newer technologies such as Hardware Transaction Memory e.g. Intel TSX.
+<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>Testing End-to-End with Nightwatch</h3><p><a href="http://nighwatchjs.org/">Nightwatch</a> is a recently released acceptance framework based on Node.js that uses <a href="http://docs.seleniumhq.org/docs/03_webdriver.jsp">Selenium WebDriver API</a> to automate web applications testing. The tool promises a simple syntax which enables the writing of end-to-end tests using JavaScript and CSS selector that runs against a Selenium server.</p>
+<p>In opposition to BDD and unit testing that runs in isolation and uses mocks / stubs, an end-to-end test tries to emulate, as closely as possible, the perception a user has to a real system. In the case of a web application this implies firing up a browser, loading pages, running JavaScript, interacting with the DOM and so forth. Nightwatch tries to accomplish this goal <a href="http://nightwatchjs.org/guide#usage">using syntax sugar</a>:</p>
+<pre><p>this.demoTestGoogle = function (browser) {<br />&nbsp;&nbsp;&nbsp;browser<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;.url(“http://www.google.com”)<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;.waitForElementVisible('body', 1000)<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;.setValue('input[type=text]', 'nightwatch')<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;.waitForElementVisible('button[name=btnG]', 1000)<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;.click('button[name=btnG]')<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;.pause(1000)<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;.assert.containsText('#main', 'The Night Watch')<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;.end();<br />};</p></pre>
+<p>Besides simplifying the process of writing automated tests, Nightwatch can also <a href="http://nightwatchjs.org/guide#runner-options">be integrated in the Continuous Integration pipeline</a> for a complete diagnosis of the system in development.</p>
+<p>The current list of features can be found on Nightwatch website:</p>
+<ul> 
+ <li>Simple but powerful syntax which enables you to write tests very quickly, using only JavaScript and CSS selectors. No need to initialize other objects and classes, you only need to write the test specs.</li> 
+ <li>Built-in command-line test runner which enables you to run the tests either altogether, by group or single.</li> 
+ <li>Manages the Selenium server automatically; can be disabled if Selenium runs on another machine.</li> 
+ <li>Continuous Integration support: JUnit XML reporting is built-in so you can integrate your tests in your build process with systems such as <a href="http://hudson-ci.org/">Hudson</a> or <a href="http://www.jetbrains.com/teamcity/">Teamcity</a>.</li> 
+ <li>Use CSS selectors or Xpath to locate and verify elements on the page or execute commands.</li> 
+ <li>Easy to extend if you need to implement your own commands specific to your application.</li> 
+</ul>
+<p>In the JavaScript world, currently Selenium is one of most popular tool for acceptance testing alongside with <a href="http://phantomjs.org/">PhantomJS</a>, each one with its own approach: Selenium uses its WebDriver API and PhantomJS a faceless WebKit browser. Both are very mature tools with a strong support from the community. The biggest differences between these tools and Nightwatch are mainly the simplicity in the syntax and the Continuous Integration support. Selenium and PhantomJS have a more verbose syntax, which leads to bigger coding, and do not support out-of-the-box Continuous Integration from the command line (JUnit XML or other standard output) which Nightwatch do.</p>
+<p>Nevertheless, Nightwatch is still evolving to become a more mature tool. Sebastien Vincent, author of <a href="https://github.com/admc/wd">WD.js</a> another Node.js based acceptance testing framework, <a href="https://groups.google.com/forum/#!msg/appium-discuss/m8ypnn6lhLc/jDcugkzA3B8J">has made some critiques on </a>Google Groups regarding the implementation chosen to handle callbacks:</p>
+<blockquote> 
+ <p>The queue based chain is a bad pattern when async call are involved, as soon as you try to do something complex, or compose a bit, you end up having to manually halt the queue and insert tasks manually (but maybe Nightwatch will prove me wrong).</p> 
 </blockquote>
-<p>Ben Cotton, an active member of the <a href="https://groups.google.com/forum/#!forum/mechanical-sympathy">Mechanical Sympathy low-latency</a>&nbsp;community forum, told InfoQ:</p>
-<blockquote>
- FUD (and, frankly, outright technical bigotry) results when the only route to the most complete memory allocation management capabilities is exposed through a package named 'Unsafe'. As proposed by the new 
- <a href="http://openjdk.java.net/jeps/0">JEPs</a> for 
- <a href="https://groups.google.com/forum/#!forum/jep-off-heap">Off-Heap</a> and 
- <a href="https://groups.google.com/forum/#!forum/jvm-ffi">FFI</a> (Foreign Functional Interface), let's get rid of this awful name and instead promote the competent (and thus safer) usage of this package as a means to solve important Java performance problems;
+<p>Vincent also pointed out the weakness in underline communication protocol used between Nightwatch and the Selenium Server:</p>
+<blockquote> 
+ <p>Nightwatch is far for mature, just have a look at the HTTP protocol, no retry, no timeout setting, content/length+content-type in GET and DELETE. It is going to break pretty quickly in non-straightforward cases like sauce-connect or queuing.</p> 
 </blockquote>
-<p>Christoph Engelbert solution architect at <a href="http://www.hazelcast.com/">Hazelcast</a>, the popular open source in-memory data grid vendor told InfoQ:</p>
-<blockquote>
-  A public API with the feature set of sun.misc.Unsafe will be for Java 9 what Lambdas is for Java 8 - not as commonly used but just as important. Apache DirectMemory and Lightning as well as Hazelcast heavily using sun.misc.Unsafe for speeding up serialization, memory access and lowering pressure on the Garbage Collector (with off heap data structures). It is a must have feature!&quot; 
-</blockquote>
-<p>&nbsp;</p>
-<p>According to Sandoz the survey will close on Feb 7, 2014.</p><br><br><br><br><br><br></body></html>
+<p>Even with those critiques, the tool has been featured <a href="https://github.com/trending?since=monthly">on current month’s GitHub most treading repositories</a>, and <a href="https://twitter.com/nightwatchjs">the Twitter account</a> is being used to get some feedback from the community and to get in touch with the developer.</p><br><br><br><br><br><br></body></html>

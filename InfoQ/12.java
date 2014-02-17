@@ -1,26 +1,48 @@
-<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>How to Self-Assemble and Sustain a Self-Organising Team</h3><p>The <a href="https://www.scrum.org/Portals/0/Documents/Scrum%20Guides/2013/Scrum-Guide.pdf">Scrum Guide</a> defines the Scrum Team as “self organizing and cross functional.” How does one successfully create an effective self-organising team? The Scrum Guide states that “self organising teams choose how best to accomplish their work, rather than being directed by others outside the team.” A number of commentators have recently shared experiences and ideas which discuss how the core principles of self-organisation can be used to facilitate self-assembly of the team itself. These experiences also demonstrate that facilitation is a key factor to successful self-assembly and the sustained effectiveness of a self-organising team.</p>
-<p><a href="http://www.mountaingoatsoftware.com/company/about-mike-cohn">Mike Cohn</a>, an early contributor to the formalisation of Scrum and one of the founding members of the Scrum Alliance, recently <a href="http://www.mountaingoatsoftware.com/blog/placing-rules-on-self-organizing-teams">reported</a> on the need for balance between facilitation and top-down guidance during the formation and life of a self-organising team. He writes about his experience of seeing facilitation turn into governance, reporting that it is easy to create mandates about working practices, meetings, and other well intended factors, however “one rule too many will push a team over the precipice” and away from self-organization. Mike warns:</p>
+<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>Simplified CSS Preprocessing with restyle.js</h3><p>Andrea Giammarchi's <a href="https://github.com/WebReflection/restyle">restyle.js</a> is a new, JavaScript-based, CSS preprocessor that can run on either the server (via Node.js) or in the browser. It touts itself as &quot;a simplified CSS approach&quot;, generating all prefixed variations of CSS rules and properties and, if applicable, inserting them into the DOM.</p>
+<p>There's no shortage of CSS preprocessors around, but Andrea claims there are <a href="http://webreflection.blogspot.co.uk/2014/02/restylejs-simplified-css-approach.html">none as lightweight</a> that work in both the server and the client:</p>
 <blockquote> 
- <p>For each rule, consider whether that rule alone is worth the risk. If it's not, don't put the rule in place. Also, any time you consider adding a rule to a team, see if there's another rule (or constraint on how they work) that you can remove.</p> 
+ <p>Before you think about &quot;yet another CSS preprocessor&quot;, I'd like to inform you that I've asked around to few common, well known, CSS or general web developers and it looks like this little script was still missing ... once you'll realize what is this about, you'll probably wonder yourself &quot;how come nobody has done this already?&quot; My idea is that somebody probably did but I am not sure in 0.8KB minzipped and compatible with both server and client down to IE6 ... so here I am talking about restyle.</p> 
 </blockquote>
-<p>In a recent <a href="http://www.lomos.si/2013/12/is-team-self-assembling-possible/">article</a> about self-assembling teams, ScrumMaster <a href="http://www.scrumalliance.org/community/profile/rpre9eren">Rok Prešeren</a> shared project experiences which illustrate that team formation is a critical factor for the sustained success of a self-organising team. He writes that the next traditional management paradigm to be transformed by Agile forces will be that of the team-formation process. He also points out that top-down team building is usually more focussed on the availability of individuals rather than competence blending.</p>
-<blockquote> 
- <p>...management should start facilitating self-assembling of a team, because on average this will yield better project results. Anyway, who knows better about perfect team composition that those who actually work on a project?</p> 
-</blockquote>
-<p>Prešeren cites the <a href="http://www.scrumalliance.org/community/articles/2013/2013-april/how-to-form-teams-in-large-scale-scrum-a-story-of">experience</a> of Craig Larman and Ahmad Fahmy within Bank of America's Merrill Lynch (BAML) Global Securities Operations Technology, successfully facilitating 35 individuals from 5 functionally specialised groups, to reassemble themselves into 4 cross functional teams within a 3 hour session. Larman and Fahmy used logistical constraints and three cycles of facilitated self-organisation to force individuals to form teams outside of their comfort zones. The constraints placed by Craig and Ahmad were that the teams had to be well-balanced, co-located, cross-functional and cross-component. Prešeren points out that facilitation is required to guide formation and avoid nested command and control structures:</p>
-<blockquote> 
- <p>Only after the facilitators pushed the people out of comfort zone by asking them to assess team compositions against constraints, things start to change. In the second cycle the teams start to self-form, but here the natural team leaders started to use the top-down approach in team forming. Again facilitators intervention was required to prevent internal top-down forming.</p> 
-</blockquote>
-<p><a href="http://tcagley.wordpress.com/about/">Thomas Cagley</a>, author of <a href="http://www.amazon.com/Mastering-Software-Project-Management-Techniques/dp/1604270349">Mastering Software Project Management: Best Practices, Tools and Techniques</a>, <a href="http://tcagley.wordpress.com/2013/07/25/why-agile-implementations-fail-team-problems-daily-process-thoughts-july-25-2013/">wrote</a> a piece last year on team problems which can arise in Agile scenarios when there is top down interference with the stability of a team’s composition. He points out that Agile is built on the basic assumption that “teams will be stable and that membership and focus will not be changed during a sprint or iteration.” He writes about the importance of relationships between team members and points out that every time a team is altered, the chemistry of the team changes. He states:</p>
-<blockquote> 
- <p>Violating the basic assumptions about the composition and tenure of team members will disrupt the trust and effectiveness of the team. It will yield a group of vaguely related individuals, rather than an Agile team.</p> 
-</blockquote>
-<p><a href="http://www.scrumalliance.org/community/profile/nmittal3">Nitin Mital</a> of Infosys also recently <a href="http://www.scrumalliance.org/community/articles/2013/january/self-organizing-teams-what-and-how">discussed</a> the success factors required for the creation of a self-organising team. He writes that the creation and successful continuity of a self-organising team comes from a three step-process of training team competencies, coaching the team to enjoy working effectively together and continued mentoring and learning. He writes:</p>
-<blockquote> 
- <p>...a self-organizing team doesn't need &quot;command and control,&quot; but it does need coaching and mentoring.</p> 
-</blockquote>
-<p>In the same spirit, Cagley and Cohn’s articles also discuss the need for coaches to facilitate and guide the feedback loop which helps teams self-evaluate and embrace Agile. Thomas shares an anecdote about a team which had wandered away from Agile practices and started allocating work. He points out that with the introduction of coaching and new feedback mechanisms the team was able to get on track again.</p>
-<p>Mital reminds us that:</p>
-<blockquote> 
- <p>...building a self-organising team is an ongoing process and we're never done. Whenever a team's composition changes, we need to repeat the whole process.</p> 
-</blockquote><br><br><br><br><br><br></body></html>
+<p>The library exposes a solitary method, restyle() , which accepts two arguments. The first is expected to be a JavaScript object, with a grammar familiar to both CSS and DOM style editing. For example,</p>
+<pre>
+ restyle({
+    'body &gt; div.my-div': {
+        backgroundColor: 'goldenrod',
+        backgroundImage: 'url(mybg.png)'
+    }
+}); </pre>
+<p>This will produce the following CSS:</p>
+<pre>
+ body &gt; div.my-div {
+    background-color: goldenrod;
+    background-url: url(mybg.png);
+} </pre>
+<p>We could also specify the JavaScript object in a different manner to achieve the same output:</p>
+<pre>
+ restyle({
+    'body &gt; div.my-div': {
+        background: {
+            color: 'goldenrod',
+            image: 'url(mybg.png)'
+        }
+    }
+}); </pre>
+<p>Of course, this is nothing special and the reduction in markup so far, if any, is tiny. But restyle.js shines brighter when you're trying something that would be a little more tedious with standard CSS, like vendor prefixes. The second argument allows you to specify the vendor prefixes that will be generated in the output, for example:</p>
+<pre>
+ restyle({
+    '.my-div': {
+        transition: 'background-color 500ms ease';
+        backgroundColor: '#00f';
+    }
+}, ['moz', 'webkit']); </pre>
+<p>This results in the following generated CSS:</p>
+<pre>
+ .my-div {
+    -webkit-transition: background-color 500ms ease;
+    -moz-transition: background-color 500ms ease;
+    transition: background-color 500ms ease;
+    background-color: #00f;
+} </pre>
+<p>This comes especially in handy when writing animation rules; a few lines of code can be transformed into many lines of vendor prefixed at-rules and CSS properties with so little effort. On the server, omitting the second argument will result in no prefixes, while restyle.js run in the browser would generate all common vendor prefixes regardless of which browser is executing the code.</p>
+<p>The restyle() function also returns a different result depending on the environment. In a Node.js script, it returns a string containing the resulting CSS. In the browser, however, the CSS is automatically inserted into the DOM to take immediate effect, and the return value is a handy little object containing the properties node (the resulting style element), css (a string containing the generated CSS), and a single method, remove() , which can be called to immediately remove the inserted styles from the DOM.</p>
+<p>A basic example page <a href="http://webreflection.github.io/restyle/">is available</a> that lets you play around with restyle.js by writing your own code and generating the result. As <a href="http://webreflection.blogspot.co.uk/2014/02/restylejs-simplified-css-approach.html#comments">some comments</a> on Andrea's blog pointed out, restyle.js is based on the same idea as a similar library, the larger and more full-featured <a href="https://github.com/krasimir/absurd">AbsurdJS</a>. At barely one tenth of the size, though, restyle is certainly lightweight and interesting enough to be worth a look. Take a look at <a href="https://github.com/WebReflection/restyle/blob/master/README.md">the readme</a> to get started using it.</p><br><br><br><br><br><br></body></html>

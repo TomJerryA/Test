@@ -1,7 +1,7 @@
 <html>
  <head></head> 
- <body>
-  <div>
+ <body> 
+  <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/21.javab">Book Review: Test-Driven Infrastructure with Chef - Second Edition</a> The second edition of Stephen Nelson-Smith's book &quot;Test-Driven Infrastructure with Chef&quot; covers the principles behind &quot;Infrastructure as Code&quot;, provides an introduction to Ruby, Chef, and important Tools. The main part consists of detailed examples on how to use the tools required to write fully tested infrastructure code. 
   </div> 
   <div> 
@@ -150,6 +150,6 @@
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/22.javab">Agile Walls</a> The concept of walls as information radiators and communication tools is central to the agile mind-set. Using the right wallware and the information they provide can make or break an agile team. 
-  </div>  
+  </div> 
  </body>
 </html>
