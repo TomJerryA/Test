@@ -1,8 +1,8 @@
 <html>
  <head></head> 
- <body>
-  <div>
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/15.java">OpenAccess ORM Renamed As Telerik Data Access with Improved UI and Colored Visual Designer</a>Telerik recently renamed OpenAccess ORM as Telerik Data Access with Improved User Interface and colored visual designer in addition to Telerik.DataAccess.Core NuGet, Telerik.DataAccess.Fluent and Telerik.DataAccess.Fluent.Sample NuGet packages.
+ <body> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/15.java">OpenAccess ORM Renamed As Telerik Data Access with Improved UI and Colored Visual Designer</a>Telerik recently renamed OpenAccess ORM as Telerik Data Access with Improved User Interface and colored visual designer in addition to Telerik.DataAccess.Core NuGet, Telerik.DataAccess.Fluent and Telerik.DataAccess.Fluent.Sample NuGet packages. 
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/14.java">Hazelcast Introduces MapReduce API</a>Hazelcast, an open source in-memory data grid solution introduces a MapReduce API for its offering. 
@@ -150,6 +150,6 @@
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/16.java">DevOps adoption cultural challenges</a>Oliver White, Head of Rebel Labs, recently discussed the difficulties of DevOps adoption at IT organizations, even when there is a growing body of evidence that highlights the benefits of DevOps. InfoQ took the opportunity to interview Oliver and review some of the reports that study this topic. 
-  </div>  
+  </div> 
  </body>
 </html>

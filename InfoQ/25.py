@@ -1,11 +1,22 @@
-<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>データサイエンティスト向け教育プログラム</h3><p><a target="_blank" href="http://www.infoq.com/news/2014/01/data-scientist-education"><em>原文(投稿日：2014/01/14)へのリンク</em></a></p>
+<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>Parse、iOSとAndroid用の低レベルライブラリ集、Boltsを発表</h3><p><a target="_blank" href="http://www.infoq.com/news/2014/02/parse-announces-bolts"><em>原文(投稿日：2014/02/10)へのリンク</em></a></p>
 <div class="article_page_left news_container text_content_container"> 
  <div class="text_info"> 
-  <p>2013年はデータサイエンティストやビッグデータ専門家向けの新しい教育プログラムが多く発表された。</p> 
-  <p>昨年11月、<a href="http://www.whitehouse.gov/administration/eop/ostp">ホワイトハウスの科学技術政策局(OSTP)</a>は5年間で<a href="http://www.moore.org/newsroom/press-releases/2013/11/12/%20bold_new_partnership_launches_to_harness_potential_of_data_scientists_and_big_data">3780万ドル</a>を拠出し、未来の科学者のためにデータサイエンスとビッグデータの普及を支援し、この分野の主導的な大学である<a href="http://www.nyu.edu/">ニューヨーク大学</a>、<a href="http://www.washington.edu/">ワシントン大学</a>、<a href="http://www.berkeley.edu/">カリフォルニア大学バークレー校</a>との強力関係を作ると発表した。資金はムーア財団とスローン財団が拠出する。スローン財団のデジタルITプログラムのディレクターであるJoshua Greenberg氏は声明の中で、このパートナーシップについて、“大学の文化を変え、データサイエンスの文化を作る”試みだと説明している。</p> 
-  <p>この計画に参加する大学は既にデータサイエンスの教育プログラムを立ち上げている。バークレー校は<a href="http://datascience.berkeley.edu/">オンラインのデータサイエンスの修士課程</a>を発表している。ニューヨーク大学は<a href="http://cds.nyu.edu/">Center for Data Science</a>の一環として新しい<a href="http://cds.nyu.edu/academics/ms-in-data-science/">データサイエンスの修士課程</a>を発表した。<a href="http://spark.incubator.apache.org/">Spark</a>のようなビックデータ関連のプロジェクトとともに、この分野の人材不足を背景に、これらの教程の卒業生に多くの期待が集まっている。</p> 
-  <p>また、2013年を特徴づけるのはMOOCの普及だった。ここにもデータサイエンティスト向けの教材がある。データサイエンティストに興味があるならMOOCプラットフォームである<a href="http://www.coursera.org/">Coursera</a>でワシントン大学の<a href="http://homes.cs.washington.edu/~billhowe/">リサーチディレクターであるBill Howe氏</a>の<a href="https://www.coursera.org/course/datasci">コース</a>を見るとよいだろう。リレーショナルデータベース、NoSQL、機械学習、MapReduce、Hadoop、データビジュアライゼーションといったデータサイエンティストが知っておくべき領域を扱っているコースだ。通常、MOOCはコースを修了するのは受講者のうち10％に満たないが、このコースは15％を超えており、<a href="https://class.coursera.org/datasci-001/forum">コースのフォーラム</a>でも評判が良い。現在のデータサイエンティストの需要に適したコースなのだろう。</p> 
-  <p>そのほかのオンライン大学もこの動きに呼応している。例えば、<a href="http://www.udacity.com/">Udacity</a>はビックデータのスタートアップである<a href="http://www.cloudera.com/">Cloudera</a>と提携してビッグデータを中心とした<a href="http://blog.udacity.com/2013/11/sebastian-thrun-launching-our-data.html">オンラインデータサイエンストレーニング</a>を提供している。はじめのトラックはHadoopとMapReduceのイントロダクションだ。講師はClouderaのインストラクタでHDFSの使い方やHadoop MapReduceのジョブの書き方などを教える。ClouderaはすでにHadoop関連の実績を多く積んでおり、Hadoopのディストリビューションやオープンソースプロジェクトである<a href="https://github.com/cloudera/impala">Impala</a>も一定の評価を得ている。期待できるコースと言えるだろう。興味があれば無料でサインアップできる。2014年1月にはスタートする予定だ。</p> 
-  <p>これらの新しい機会がありながら、データサイエンス周辺にはさまざまな噂、憶測が飛び交っている。ニューヨーク市で活動している有名なデータサイエンティストであり、<a href="http://hackny.org/">HackNY</a>の主催者のひとりである<a href="http://www.hilarymason.com/about/">Hilary Mason氏</a>は“Data science is a growing area”とツイートしている。Strata 2013ではニューヨーク大学のデータサイエンスプログラムのディレクターであるYann LeCun氏が<a href="http://strataconf.com/stratany2013/public/schedule/detail/30657">セッション</a>を開催し、最新のデータサイエンスの動向や機会、そしてそのような機会がどのようにして<a href="http://hbr.org/2012/10/data-scientist-the-sexiest-job-of-the-21st-century/">21世紀で最も魅力的な仕事</a>を作るのか説明している。</p> 
+  <p>Parse（<a href="https://developers.facebook.com/blog/post/2013/04/25/welcoming-parse-to-facebook/">数ヶ月前にFacebookが買収</a>）がAndroidとiOS用の低レベルライブラリをまとめて、Boltsと名づけてオープンソース化した。Parseの発表によると、BoltsはParse/Facebookの共同成果であり、両社が独自に開発してきた小さな低レベルのユーティリティクラスを固めたものだ。</p> 
+  <p><a href="https://github.com/BoltsFramework">GitHubで公開された</a>最初のBoltsコンポーネントはTasksで、<a href="http://www.promisejs.org/intro/">JavaScript Promiseモデル</a>にしたがった非同期操作を目的としている。</p> 
+  <p>Promiseは<a href="http://www.promisejs.org/intro/">コールバックを使って非同期操作を処理するときによく見られる数々の問題</a>、特に複数のシリアルあるいはパラレルな非同期操作をやろうとすると、コールバック内で非同期操作をネストするせいですぐに面倒なことになるという問題を解決しようとしている。</p> 
+  <p>この目的のために、Promiseは完了するかもしないかもしれない、最終的にエラーになるおそれもあるタスクの結果を表現するもので、非同期操作はその実行結果として即座にPromiseを返すことができる。Promiseはいつでもアクセスすることができ、非同期操作がまだ完了していなければブロックすることができる。</p> 
+  <p>通常、Promiseには2つのコールバック、非同期タスクが完了したときに呼ばれるコールバックと失敗したときに呼ばれるコールバックを関連付ける。Promiseの独特なところは、コールバック自体がPromiseにカプセル化されていることだ。もとのPromiseで起こることに依存して、コールバックは将来のある時点で実行されるか、あるいはまったく実行されないことになる。</p> 
+  <p><img src="http://www.infoq.com/resource/news/2014/02/parse-announces-bolts/en/resources/promise-chaining.png" alt="" _href="img://promise-chaining.png" _p="true" /></p> 
+  <p>上の図にあるように（出典: <a href="http://www.slideshare.net/drprolix/promises-16473115">Promises, Luke Smith</a>）、この仕組みのおかげで、Promiseをつなげて非同期操作とそのコールバックを表現することができるので、一連の非同期操作は扱いやすくなる。</p> 
+  <p>Promiseのもう1つの利点は、Promiseのチェーンをエラーが伝搬するところにある。Promiseはそれが満たされたか否かを知っており、エラーハンドラが見つかるまでエラー状態はPromiseのチェーンを伝播することになる。そのため、チェーンに含まれる非同期操作ごとにエラーハンドラを用意する必要はない。</p> 
+  <p>Promisesの実装は<a href="http://www.infoq.com/articles/surviving-asynchronous-programming-in-javascript">JavaScript</a>、<a href="http://www.infoq.com/presentations/Asynchronous-Scala-Java">Scala</a>、<a href="http://dev.clojure.org/display/design/Promises">Clojure</a>など、多数の言語で利用できる。</p> 
+  <p>Parseによると、Tasksには<a href="https://github.com/BoltsFramework/Bolts-Android">AndroidのAsyncTask</a>や<a href="https://github.com/BoltsFramework/Bolts-iOS">iOSのNSOperation</a>よりも、さまざまなメリットがあるという。</p> 
+  <ul> 
+   <li>複数のタスクを連続実行をしても、コールバックのみを使った場合に起こるネストされた「ピラミッド」コードにはならない。</li> 
+   <li>Tasksは完全に構成可能であり、分岐、平行処理、複雑なエラーハンドリングが実行できる。</li> 
+   <li>タスクベースのコードを実行される順番に並べることができ、ロジックをコールバック関数に散らばらせる必要がない。</li> 
+  </ul> 
+  <p>BoltsコンポーネントはParseやFacebookのサービスとはまったく関係がなく、利用するのにParseやFacebookの開発者アカウントは必要ない。</p> 
+  <p>さらなるBoltsコンポーネントが発表されているが、Parseはまだ詳細をリリースしていない。</p> 
  </div> 
 </div><br><br><br><br><br><br></body></html>

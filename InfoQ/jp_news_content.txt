@@ -1,29 +1,19 @@
 <div class="text_info"> 
- <p>Jeremy Ashkenas氏は<a href="https://gist.github.com/aseemk/8637896">CoffeeScriptバージョン1.7</a>をリリースした。長らく期待されていた新しい機能がいくつか追加された。</p> 
- <p>このバージョンでは最も多かった要望である丸括弧なしのチェーニングがサポートされた。以前までのバージョンでは、開発者が関数をチェーンさせたいときは、丸括弧を使わなければならなかった。</p> 
- <pre><p>// prior to 1.7 - parenthesis required to chain<br />$('#element').addClass('active').css({ left: 5 });</p>
-<p>// as of 1.7 - no parenthesis<br />$ '#element'<br />.addClass 'active'<br />.css { left: 5 }</p></pre> 
- <p>また複数行の文字列もサポートした。以前のバージョンでは、新しい行や空白を表す文字列リテラルは、ふたつの文字列が同じ1行に含まれることを示す`\`演算子を無視していた。バージョン1.7では、修正され、開発者は複数行の文字列をきれいに記述できるようになった。</p> 
- <pre><p>console.log '''The quick brown fox jumped over the \<br />lazy dog'''</p>
-<p>// prior to 1.7 outputs<br />The quick brown fox jumped \nover the lazy dog</p>
-<p>// as of 1.7 now outputs<br />The quick brown fox jumped over the lazy dog</p></pre> 
- <p>配列の分割代入にも拡張が追加された。これはCoffeScriptで<a href="https://github.com/jashkenas/coffee-script/pull/3268">長らく問題になっていた</a>ものだ。</p> 
- <pre><p># get the last item in the animals array<br />animals = [ 'cat', 'dog', 'hippopotamus' ]</p>
-<p># prior to 1.7<br />hippo = animals[animal.length - 1]</p>
-<p># as of 1.7<br />[..., hippo] = animals</p>
-<p># ...both of which transpile to...<br />hippo = animals[animals.length - 1];</p></pre> 
- <p>新しい演算子も追加された。power演算子、floor division、剰余演算(割り算の余りを返す)。</p> 
- <pre><p># power<br />2 ** 2<br /># transpiles to...<br />Math.pow(2, 2);</p>
-<p># floor division<br />2 // 3<br />#transpiles to...<br />Math.floor(2 / 3)</p>
-<p># modulo<br />2 %% 3<br />#transpiles to...<br />var __modulo = function(a, b) { return (a % b + +b) % b; };<br />__modulo(2, 1);</p></pre> 
- <p>Node.jsでも適切に使えるようになったので、ディレクトリ内の文が自動的に実行されるのではなく、Nodeのように動作し、index.coffeeファイルだけが動作するようになっている。</p> 
- <p>1.7の開発の大多数(そしてCoffeeScriptの過去数年の開発)はコミュニティによってなされてきた。&quot;100人以上の開発者が開発を行い、パッチをマージしています。&quot;とJeremy氏は言う。&quot;CoffeeScriptはさまざまな使われ方をしています。JavaScriptプログラマにとって魅力的だからです。&quot;1.7のリリースについては、Jeremy氏は<a href="https://github.com/xixixao">Michael Srb氏</a>の貢献に対して<a href="https://twitter.com/jashkenas/status/428243869487362048">特別な謝意</a>を示している。</p> 
- <p>CoffeeScriptは確かに人気があり、GitHub上でも<a href="http://en.wikipedia.org/wiki/CoffeeScript">10番目に人気のあるプロジェクト</a>だ。Ruby on Rails(バージョン3.1以上)のようなフレームワークでもサポートされている。MicrosoftのVisual Studioでも<a href="http://vswebessentials.com/">Web Essentialsプラグイン</a>経由で利用できる。JavaScriptの開発者である<a href="http://en.wikipedia.org/wiki/Brendan_Eich">Brenden Eich氏</a>も自身の<a href="https://brendaneich.com/tag/javascript-ecmascript-harmony-coffeescript/">未来のJavaScriptに対する考え方</a>がCoffeeScriptに影響を受けていることを表明している。</p> 
- <p>GitHubのユーザである<a href="https://gist.github.com/stefanpenner">stefanpenner</a>はCoffeeScriptでは、“…ECMAScript6のimport、exportが重要になるだろう…”と書いている。</p> 
- <p>Jeremy氏はES6について次のように言う。</p> 
- <blockquote> 
-  <p>CoffeeScriptはほとんど完成しています。ここ数年とても安定しています。しかし、未来に向かって成長していく必要があります。例えば、新しいJavaScriptの機能をサポート、ソースマップのサポートや、プログラミングスタイルの改善などです。</p> 
- </blockquote> 
- <p>CoffeeScriptコンパイラを書き直す<a href="https://www.kickstarter.com/projects/michaelficarra/make-a-better-coffeescript-compiler">Kickstarterプロジェクト</a>が立ち上がっている。資金調達は成功し、<a href="http://github.com/michaelficarra/CoffeeScriptRedux">CoffeeScriptRedux</a>という名前のプロジェクトになったようだ。 Jeremy氏は新しいコンパイラを作ることの利点について、&quot;ある言語の優れたコンパイラが多ければ多いほど、その言語は健全です。別のコンパイラがあることはCoffeeScriptにとっても良いことなのです。&quot;</p> 
- <p>1.7は<a href="https://github.com/jashkenas/coffee-script">GitHub</a>または<a href="http://coffeescript.org/">CoffeeScriptの公式サイト</a>から入手できる。</p> 
+ <p>オープンソースプロジェクトMasonry目標は，Auto Layoutのコードをもっと簡潔で読みやすくすることだ。</p> 
+ <p><a href="https://github.com/cloudkite/Masonry">Masonry</a>は，XIBやStoryboardを必要としないエクスペリエンスを実現するために “Auto Layoutを適切なシンタックスでラップする，ライトウェイトなレイアウトフレームワーク” である。開発者のJonas Budelmann氏の<a href="https://github.com/cloudkite/Masonry#whats-wrong-with-nslayoutconstraints">主張</a>によれば，AutoLayoutは強力である反面，そのコードは冗長で可読性の低いものになる傾向がある。</p> 
+ <p>Masonryはドメイン固有言語(DSL, Domain Specific Language)である。制約の定義と更新，属性参照，プライオリティ設定，デバッグサポートといったAuto Layoutの持つすべての機能を，使いやすいメソッドとして提供する。</p> 
+ <p>GitHubで公開されているサンプルコードは<a href="https://github.com/cloudkite/Masonry#prepare-to-meet-your-maker">一般的な使用方法と同時に，Masonryのコードの簡潔さ</a>を示すようにデザインされている。</p> 
+ <pre><p>UIEdgeInsets padding = UIEdgeInsetsMake(10, 10, 10, 10);</p><p>[view1 mas_makeConstraints:^(MASConstraintMaker *make) {<br />&nbsp;&nbsp; make.edges.equalTo(superview).with.insets(padding);<br />}];</p>
+</pre> 
+ <p>Auto Layoutの中核にあるのは<a href="https://developer.apple.com/library/ios/documentation/UserExperience/Conceptual/AutolayoutPG/AutoLayoutConcepts/AutoLayoutConcepts.html#//apple_ref/doc/uid/TP40010853-CH14-SW2">制約(constraint)</a>である。これはUI要素間の関係を数学的に表現したもので，優先度(priority)としきい値(threshold)で管理されたサイズと相対的位置で構成されている。制約は付加的に設定されることで<a href="https://developer.apple.com/library/ios/documentation/userexperience/conceptual/AutolayoutPG/ResolvingIssues/ResolvingIssues.html#//apple_ref/doc/uid/TP40010853-CH17-SW5">干渉</a>が発生することや，制約が不十分なために<a href="https://developer.apple.com/library/ios/documentation/userexperience/conceptual/AutolayoutPG/ResolvingIssues/ResolvingIssues.html#//apple_ref/doc/uid/TP40010853-CH17-SW7">曖昧さ</a>を生じることがあるが，いずれの場合も例外をスローさせることが可能だ。</p> 
+ <p>ビューの参照を持つ<a href="https://developer.apple.com/library/ios/documentation/AppKit/Reference/NSLayoutConstraint_Class/NSLayoutConstraint/NSLayoutConstraint.html">NSLayoutConstraint</a>を生成して属性や関連性を設定すれば，Masonryを使用せずにプログラム的に制約を生成することもできる。Appleも<a href="https://developer.apple.com/library/ios/documentation/UserExperience/Conceptual/AutolayoutPG/VisualFormatLanguage/VisualFormatLanguage.html#//apple_ref/doc/uid/TP40010853-CH3-SW1">Visual Format Language</a>という，関連性をテキストとして定義するDSLを提供している。</p> 
+ <p>Auto Layoutは義務的や排他的なものではなく，“Springs and Struts”方式のアプローチは現在でも有効だ。“Springs and Struts”，すなわち<a href="https://developer.apple.com/library/ios/documentation/UIKit/Reference/UIView_Class/UIView/UIView.html#//apple_ref/doc/uid/TP40006816-CH3-SW6">自動サイズ変更マスク</a>とは，親ビューの境界が変更されたときの応答方法を定義するものだ。</p> 
+ <p>Appleは<a href="https://developer.apple.com/library/ios/documentation/UserExperience/Conceptual/TransitionGuide/index.html#//apple_ref/doc/uid/TP40013174">Auto Layoutの採用に関して，説得力のある理由</a>を用意している。</p> 
+ <ul> 
+  <li>“Springs and Struts”では画面の方向やスクリーンサイズの違い，動的コンテントのサポートなどのために<a href="https://developer.apple.com/library/ios/documentation/WindowsViews/Conceptual/ViewPG_iPhoneOS/CreatingViews/CreatingViews.html#//apple_ref/doc/uid/TP40009503-CH5-SW35">コード</a>が必要。</li> 
+  <li>iOS 7の<a href="https://developer.apple.com/library/ios/documentation/userexperience/conceptual/transitionguide/AppearanceCustomization.html">Dynamic Type</a>により，ユーザがアプリのテキストサイズを好みに合わせて指定可能。</li> 
+  <li>iOS 6とiOS 7の両方をサポートし，各要素のメトリック上の違いを吸収。</li> 
+ </ul> 
+ <p>Auto Layoutにも基本的な問題がないとは言えない。Appleでは，一般的に使用されるUIScrollViewとAuto Layoutを併用するための<a href="https://developer.apple.com/library/ios/technotes/tn2154/_index.html#//apple_ref/doc/uid/DTS40013309">ガイダンス</a>を公開している。Matt Neuburg氏は“<a href="http://stackoverflow.com/questions/12943107/how-do-i-adjust-the-anchor-point-of-a-calayer-when-auto-layout-is-being-used/14105757#14105757">Auto Layoutがビュートランスフォームではうまく動作しない</a>”理由に関して，説得力のある論証を行うとともに，その代用としてレイヤトランスフォームを多用するように推奨している。</p> 
+ <p>Auto Layoutで作成するコードでは，<a href="https://developer.apple.com/library/ios/documentation/DeveloperTools/Conceptual/WhatsNewXcode/Articles/xcode_5_0.html#//apple_ref/doc/uid/TP40012953-SW25">Xcode 5で可能になったInterface Builderの拡張のメリットを享受することはできない</a>。具体的には<a href="https://developer.apple.com/library/ios/documentation/UserExperience/Conceptual/AutolayoutPG/ResolvingIssues/ResolvingIssues.html#//apple_ref/doc/uid/TP40010853-CH17-SW1">Auto Layoutの問題を視覚的に解決する機能</a>や，異なる方向，iOSバージョン，デバイスサイズの違いを確認するための<a href="https://developer.apple.com/library/ios/documentation/userexperience/conceptual/transitionguide/SupportingEarlieriOS.html">アシスタントエディタのプレビューモード</a>などだ。</p> 
 </div>

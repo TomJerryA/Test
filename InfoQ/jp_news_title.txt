@@ -1,1 +1,1 @@
-CoffeeScript 1.7
+Masonryを使用したiOS Auto Layout
