@@ -1,7 +1,29 @@
 <div class="text_info"> 
- <p>過去の記録データ全体にクエリを行うような，時間軸に対して実行しなければならない問題には，<a href="http://en.wikipedia.org/wiki/Complex_event_processing">Complex Event Processing</a>(CEP/複合イベント処理)が非常に有効だ – <a href="http://goodenoughsoftware.net/about/">Greg Young</a>氏は先日のプレゼンテーションで，このように提言した。<br /> 氏はイベント処理を，発生したある事象に関連するデータの経緯を解析し，そこから結論を導き出す方法だ，と説明している。ひとつの例は，異なった時間に発生した事象を関連付けしたい場合に用いられる，時間的相関の問合せだ。Twitterストリーム上で ，&quot;誕生日&quot; という単語を使ってから１分以内に &quot;プレゼント&quot; を使ったユーザを見つけ出す，あるいは臨床試験において，試験期間中の異なる時間にある特定の反応を示した患者を検索する，といった例が考えられる。</p> 
- <p>問合せの作成に氏が使用しているのは，イベントストリーム上で動作するクエリ言語で，JavaScriptで実装されている。JavaScriptでクエリを記述するため，Webブラウザを使用した記述やデバッグも可能だ。<br /> このクエリ言語は，<a href="http://geteventstore.com/docs/what-is-an-event-store.html">イベントソース(Event Source)</a> の概念に従って開発された<a href="http://en.wikipedia.org/wiki/NoSQL">NoSQL</a>である<a href="http://geteventstore.com/">Event Store</a> に含まれている。イベントソーシングでは，状態を直接的に表現する代わりに，ある特定の時間に発生した事実(fact)の連続として表現する。この方法でデータを保存することにより，現在の状態だけでなく，状態の変化がすべて保存されるため，情報が失われることがなくなる。</p> 
- <p>事実ないしイベントを保存することは，タイムマシンを作るようなもので，ある時間に立ち戻って過去の状態を見ることが可能になる。例えば，今日作成したレポート処理を実行して，１ヶ月前のレポートを発行することができるのだ。<br /> もうひとつのユースケースは，未来の方向に注目して，予測能力を評価するというものだ。1ヶ月前の時点で予測モデルを実行して今日の結果を予測し，実際の結果との比較を行うことでこれが可能になる。</p> 
- <p>Event Storeはオープンソースプロダクトで，修正版BSDライセンスで公開されている。最初のリリースは2012年9月だ。</p> 
- <p>Event Storeのリードアーキテクトを務めるGreg Young氏は，<a href="http://martinfowler.com/bliki/CQRS.html">CQRS</a> (Command Query Responsibility Segregation / コマンドクエリ責務分離) という造語で有名な独立系コンサルタントである。</p> 
+ <p>Jeremy Ashkenas氏は<a href="https://gist.github.com/aseemk/8637896">CoffeeScriptバージョン1.7</a>をリリースした。長らく期待されていた新しい機能がいくつか追加された。</p> 
+ <p>このバージョンでは最も多かった要望である丸括弧なしのチェーニングがサポートされた。以前までのバージョンでは、開発者が関数をチェーンさせたいときは、丸括弧を使わなければならなかった。</p> 
+ <pre><p>// prior to 1.7 - parenthesis required to chain<br />$('#element').addClass('active').css({ left: 5 });</p>
+<p>// as of 1.7 - no parenthesis<br />$ '#element'<br />.addClass 'active'<br />.css { left: 5 }</p></pre> 
+ <p>また複数行の文字列もサポートした。以前のバージョンでは、新しい行や空白を表す文字列リテラルは、ふたつの文字列が同じ1行に含まれることを示す`\`演算子を無視していた。バージョン1.7では、修正され、開発者は複数行の文字列をきれいに記述できるようになった。</p> 
+ <pre><p>console.log '''The quick brown fox jumped over the \<br />lazy dog'''</p>
+<p>// prior to 1.7 outputs<br />The quick brown fox jumped \nover the lazy dog</p>
+<p>// as of 1.7 now outputs<br />The quick brown fox jumped over the lazy dog</p></pre> 
+ <p>配列の分割代入にも拡張が追加された。これはCoffeScriptで<a href="https://github.com/jashkenas/coffee-script/pull/3268">長らく問題になっていた</a>ものだ。</p> 
+ <pre><p># get the last item in the animals array<br />animals = [ 'cat', 'dog', 'hippopotamus' ]</p>
+<p># prior to 1.7<br />hippo = animals[animal.length - 1]</p>
+<p># as of 1.7<br />[..., hippo] = animals</p>
+<p># ...both of which transpile to...<br />hippo = animals[animals.length - 1];</p></pre> 
+ <p>新しい演算子も追加された。power演算子、floor division、剰余演算(割り算の余りを返す)。</p> 
+ <pre><p># power<br />2 ** 2<br /># transpiles to...<br />Math.pow(2, 2);</p>
+<p># floor division<br />2 // 3<br />#transpiles to...<br />Math.floor(2 / 3)</p>
+<p># modulo<br />2 %% 3<br />#transpiles to...<br />var __modulo = function(a, b) { return (a % b + +b) % b; };<br />__modulo(2, 1);</p></pre> 
+ <p>Node.jsでも適切に使えるようになったので、ディレクトリ内の文が自動的に実行されるのではなく、Nodeのように動作し、index.coffeeファイルだけが動作するようになっている。</p> 
+ <p>1.7の開発の大多数(そしてCoffeeScriptの過去数年の開発)はコミュニティによってなされてきた。&quot;100人以上の開発者が開発を行い、パッチをマージしています。&quot;とJeremy氏は言う。&quot;CoffeeScriptはさまざまな使われ方をしています。JavaScriptプログラマにとって魅力的だからです。&quot;1.7のリリースについては、Jeremy氏は<a href="https://github.com/xixixao">Michael Srb氏</a>の貢献に対して<a href="https://twitter.com/jashkenas/status/428243869487362048">特別な謝意</a>を示している。</p> 
+ <p>CoffeeScriptは確かに人気があり、GitHub上でも<a href="http://en.wikipedia.org/wiki/CoffeeScript">10番目に人気のあるプロジェクト</a>だ。Ruby on Rails(バージョン3.1以上)のようなフレームワークでもサポートされている。MicrosoftのVisual Studioでも<a href="http://vswebessentials.com/">Web Essentialsプラグイン</a>経由で利用できる。JavaScriptの開発者である<a href="http://en.wikipedia.org/wiki/Brendan_Eich">Brenden Eich氏</a>も自身の<a href="https://brendaneich.com/tag/javascript-ecmascript-harmony-coffeescript/">未来のJavaScriptに対する考え方</a>がCoffeeScriptに影響を受けていることを表明している。</p> 
+ <p>GitHubのユーザである<a href="https://gist.github.com/stefanpenner">stefanpenner</a>はCoffeeScriptでは、“…ECMAScript6のimport、exportが重要になるだろう…”と書いている。</p> 
+ <p>Jeremy氏はES6について次のように言う。</p> 
+ <blockquote> 
+  <p>CoffeeScriptはほとんど完成しています。ここ数年とても安定しています。しかし、未来に向かって成長していく必要があります。例えば、新しいJavaScriptの機能をサポート、ソースマップのサポートや、プログラミングスタイルの改善などです。</p> 
+ </blockquote> 
+ <p>CoffeeScriptコンパイラを書き直す<a href="https://www.kickstarter.com/projects/michaelficarra/make-a-better-coffeescript-compiler">Kickstarterプロジェクト</a>が立ち上がっている。資金調達は成功し、<a href="http://github.com/michaelficarra/CoffeeScriptRedux">CoffeeScriptRedux</a>という名前のプロジェクトになったようだ。 Jeremy氏は新しいコンパイラを作ることの利点について、&quot;ある言語の優れたコンパイラが多ければ多いほど、その言語は健全です。別のコンパイラがあることはCoffeeScriptにとっても良いことなのです。&quot;</p> 
+ <p>1.7は<a href="https://github.com/jashkenas/coffee-script">GitHub</a>または<a href="http://coffeescript.org/">CoffeeScriptの公式サイト</a>から入手できる。</p> 
 </div>

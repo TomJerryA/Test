@@ -1,557 +1,68 @@
-<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>Promise/A的误区以及实践</h3><h2>什么是Promise</h2>
-<p>Promise是一种让异步代码书写起来更优雅的模式，能够让异步操作代码像同步代码那样书写并且阅读，比如下面这个异步请求的例子：</p>
-<pre>
-$.get(&quot;/js/script,js&quot;, function () {
-    // callback to do
-})</pre>
-<p>就可以改写为Promise模式：</p>
-<pre>
-var promise = $.get(&quot;/js/script&quot;);</pre>
-<p>返回值promise即代表操作的最终结果。返回值promise也可以作为“第一类对象”（<a href="http://en.wikipedia.org/wiki/First-class_citizen">First-class object</a>）被当做参数传递。这个模式最大的优势就是避免了传统异步操作代码中，回调函数嵌套回调函数的糟糕情况。</p>
-<p>如果你之前对Promise模式有所了解的话（可以参考InfoQ之前的这篇<a href="http://www.infoq.com/cn/news/2011/09/js-promise">文章</a>），谈到Promise，最先想到的一定是它的<code>then</code>函数，的确它非常重要，在Promise模式的定义中(<a href="http://wiki.commonjs.org/wiki/Promises/A">CommonJS Promises/A</a>)中，<code>then</code>函数是这么被定义的：</p>
-<blockquote> 
- <p>（原文）A promise is defined as an object that has a function as the value for the property then: <code>then(fulfilledHandler, errorHandler, progressHandler)</code></p> 
- <p>（译）一个promise被定义为一个拥有then属性的对象，并且此then属性的值为一个函数: <code>then(fulfilledHandler, errorHandler, progressHandler)</code></p> 
-</blockquote>
-<p>也就是说每一个promise结果一定会自带一个then函数，通过这个<code>then</code>函数，我们可以添加promise转变到不同状态(定义中promise只有三种状态，unfulfilled, fulfilled, failed.这里说的状态转变即从unfulfilled至fulfilled，或者从unfulfilled至failed)时的回调，还可以监听progress事件，拿上面的代码为例：</p>
-<pre>
-var fulfilledHandler = function () {}
-var errorHandler = function () {}
-var progressHandler = function () {}
-
-$.get(&quot;/js/script&quot;).then(fulfilledHandler, errorHandler, progressHandler)</pre>
-<p>这有一些类似于</p>
-<pre>
-$.ajax({
-    error: errorHandler,
-    success: fulfilledHandler,
-    progress: progressHandler
-})</pre>
-<p>这个时候你会感到疑惑了，上面两种方式看上去不是几乎一模一样吗？——但promise的重点并非在上述各种回调函数的聚合，<strong>而是在于提供了一种同步函数与异步函数联系和通信的方式</strong>。之所以感到相似这也是大部分人对Promise的理解存在的误区，只停留在<code>then</code>的聚合(aggregating)功能。甚至在一些著名的类库中也犯了同样的错误(下面即以jQuery举例)。下面通过列举两个常见的误区，来让人们对Promise有一个完整的认识。</p>
-<h2>Promise/A模式与同步模式有什么联系？</h2>
-<p>抛开Promise，让我们看看同步操作函数最重要的两个特征</p>
+<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>跟Alexander Smirnov聊图形可视化</h3><p>老话说， “一图抵千言”，在处理复杂的业务数据时，这句话更是至理名言。为了帮助用户理解他们看到的东西，开发人员经常要求助于柱状图和饼图。但那只适用于离散数据；要表示数据之间的联系时，需要用其它工具。为了深入探讨这一主题，我们访问了Alexander Smirnov， <a href="http://graphx.codeplex.com/">GraphX</a>的创作者，让他来向我们解释<b>图形可视化</b>是什么，以及如何使用它。</p>
+<p><b>Alexander Smirnov: </b>我们先来定义一下图形是什么。图形是一组对象（节点）的表示，其中有些对象通过某种联系连接在一起。所以图形可视化的主要任务是以对用户友好的、可理解的方式显示这样的数据。比如说，如果你有一个树状数学图，你应该想用树节点布局显示它。或者说，如果你要显示大量有很多联系的无结构数据（比如Twitter 或 Facebook的用户连接），你可能会希望使用一些特殊的布局，一种能帮你取得最大可读性的任何数据展示方法。</p>
+<p>(点击图片可以放大)</p>
+<p><a href="http://www.infoq.com/cn/articles/"> <img width="600" _p="true" _href="img://null" src="http://infoqstatic.com/resource/articles/GraphX-Intro/zh/resources/0109001.jpg" alt="" /></a></p>
+<p>所以在这一点上，为了完美地实现图形可视化，我们必须解决三个问题：创建节点布局，消除节点重叠，提供有效的边路由算法。</p>
+<p>首先，我们要为图形创建节点布局。这个布局定义了图形中所有节点会如何显示的主要模式和逻辑。GraphX提供了很多预定义的布局算法，可以直接使用，比如说， Tree或Circular算法会用树形或环形显示节点。</p>
+<p>(点击图片可以放大)</p>
+<p><a href="http://www.infoq.com/cn/articles/"> <img width="600" _p="true" _href="img://null" src="http://infoqstatic.com/resource/articles/GraphX-Intro/zh/resources/0109002.jpg" alt="" /></a></p>
+<p>第二个任务是消除节点重叠。在这项任务中，我们力求更精确地计算出布局中每个节点位置，确保它们彼此之间没有任何重叠，所有节点都清晰可见。</p>
+<p>第三个，也是最后一个任务，是在我们的布局中显示节点间的联系。最简单的实现方法是把所有联结的节点用直线连起来，但对于很多复杂的布局而言，这可能不具有可行性。所以我们必须执行一个被称之为“边路由”的任务，为所有连接计算优化路径。GraphX提供了一些预定义的边路由算法，可以绕过域上的节点或执行边捆绑技术。</p>
+<p>(点击图片可以放大)</p>
+<p><a href="http://www.infoq.com/cn/articles/"> <img width="600" _p="true" _href="img://null" src="http://infoqstatic.com/resource/articles/GraphX-Intro/zh/resources/0109003.jpg" alt="" /></a></p>
+<p><b>InfoQ:</b> 在计算机科学中，我们倾向于命名和研究众所周知的排序算法。有众所周知的图形布局和边路由算法吗？</p>
+<p><b>Alexander Smirnov: </b>我认为最有名的图形布局算法是Fruchterman-Reingold (FR) 力导向 (或基于能量的)布局算法。力导向算法的主要目的是把图形节点放在二维或三维空间中，基于它们的相对位置在这些节点中间进行力的分配，这样所有的边都或多或少地变成了等长的，并且尽可能地减少边的交叉。通常来说，大量的力导向图形布局看起来就像飞溅的颜料:)</p>
+<p>在FR算法中，力向量之和决定了节点应该向哪个方向移动。步宽是一个决定节点单步应该移动多远的常量。当系统的能量达到最小时，节点停止移动，系统达到了它的平衡状态。这种算法的缺点是如果我们定义的步宽是常量，则根本无法保证系统会达到平衡状态。T.M.J. Fruchterman和E.M. Reingold引入了一个&quot;全局温度&quot;，控制节点移动的步宽和算法的终止。步宽跟温度成正比，所以如果温度高，节点移动的就快（即每一步的距离都比较远）。所有节点的温度都是一样的，并且每次遍历都会降温。一旦节点停止移动，系统就会终止。</p>
+<p><img _p="true" _href="img://null" src="http://infoqstatic.com/resource/articles/GraphX-Intro/zh/resources/0109004.jpg" alt="" /></p>
+<p><b>InfoQ:</b> 您能解释下边捆绑是什么吗?</p>
+<p><b>Alexander:</b> 边捆绑是一项边路由改善技术，把向同一个方向前进的边捆绑在一起。它通过减少大图形上不可避免的视觉杂波改善图形的可视化，这样可以发现高层的边模式，只要看一下就能得到图形的总体概况。</p>
+<p>边捆绑算法实现了力导向技术，吸引中间边路由指向彼此。因此这一结果被称为边管道，看图时很容易注意到。GraphX还实现了边弯曲技术，通过让中间边路由点之间的边连接更平滑而使边更好看。</p>
+<p><b>没有边捆绑</b></p>
+<p>(点击图片可以放大)</p>
+<p><a href="http://www.infoq.com/cn/articles/"> <img width="600" _p="true" _href="img://null" src="http://infoqstatic.com/resource/articles/GraphX-Intro/zh/resources/0109005.jpg" alt="" /></a></p>
+<p><b>有边捆绑</b></p>
+<p>(点击图片可以放大)</p>
+<p><a href="http://www.infoq.com/cn/articles/"> <img width="600" _p="true" _href="img://null" src="http://infoqstatic.com/resource/articles/GraphX-Intro/zh/resources/0109006.jpg" alt="" /></a></p>
+<p><b>InfoQ:</b> GraphX 是基于比较老的Graph#库的。您也参与了那个项目吗?</p>
+<p><b>Alexander:</b> 不，我没参与过。但在自己的工作中，我逐渐熟悉了Graph#的代码，现在我尽我所能回答用户在CodePlex 的Graph#版块上提出的问题。</p>
+<p><b>InfoQ:</b> Graph#中的什么问题促使你编写了GraphX?</p>
+<p><b>Alexander:</b> 首先是因为它过时了。并且通常你并不知道它是什么意思: 没有产品支持，没有错误修订，没有改进，等等。但在我试着完成一个类似的任务时，遇到的主要问题是性能问题和库的可扩展性。</p>
+<p>那时候我要处理将近2000个节点的可视化，这些节点间有很多联系，而原来的Graph# 花了很长时间也没能计算和显示出那些数据。所以我重写了代码，让它变得更快，比如把边终点计算从模板调用挪到类的代码中，并且简化了高亮逻辑，排除了很多事件调用和交互。</p>
+<p>至于扩展问题... 这可能是我的个人观点，但Graph#看起来扩展能力有限。在CodePlex上有那么多讨论，看起来很明显，但实际上需要修改Graph#，还要了解它的代码。在创建GraphX的过程中，我一直在思考这个问题，我做了一个灵活的架构，这类问题大部分都已经解决了，不需要挖掘类库的内部代码。</p>
+<p>不管怎么说，Graph#是一个杰出的作品，特别是在图形算法实现方面。</p>
+<p><b>InfoQ:</b> 哇，2000个节点看起来相当多。您认为上限是多少，在屏幕乱到用户无法理解之前可以渲染多少个节点？</p>
+<p><b>Alexander:</b> 这个问题在很大程度上取决于最终用户想要用图形解决什么问题。比如说，当你想显示Twitter用户间的总体连接方式时，一般需要显示海量的节点和联系。将LinLog布局算法和边捆绑技术结合起来，你可以极大避免屏幕混乱，并且能得到图形概览，可以看到不同的用户组跟其余连接是分离开的。从另一方面来看，如果你用树形布局显示相同的Twitter连接，你会得到一个非常巨大的结构化图形，因为图形节点非常小，所以图形概览让人根本无法看懂。</p>
+<p>你必须决定自己想达成什么目标，以及什么布局或边路由算法更适合你的任务。GraphX为最终用户提供很多预定义的算法，以及轻松实现定制算法的能力，并且可以把它们用在GraphX引擎内。</p>
+<p>所以你看，GraphX有一些可帮助处理屏幕混乱的工具，可以说能渲染的准确节点数量取决于要解决问题所选择的方式。</p>
+<p><b>InfoQ:</b> 您在GraphX中用Graph# 的代码了吗，还是只用了其中的概念？</p>
+<p><b>Alexander:</b> 好吧，我想我可以回答是的和是的。大部分算法代码都是来自于Graph#的，原封不动，只是改了一些外部接口。我不想在那些已经实现了的东西上浪费时间，而是把主要精力集中在新的代码架构概念上。我从Graph#上借鉴了一些在我看来合理的概念。我竭尽所能把计算过程和渲染分开，以便可以单独改进每一部分的逻辑，但有些逻辑和可视化仍然结合的非常紧密。</p>
+<p><b>InfoQ:</b> 你对重用其它项目的代码和将其它项目作为编译库引入有什么看法？在您看来在做这两个选择时有什么特定的原因吗？</p>
+<p><b>Alexander:</b> 这个问题没有标准答案。那取决于你要从类库中得到什么。在GraphX中使用外部库时，两种方式都有。比如说，华丽的YAXLib库提供了我需要的所有串行化功能，而且它没有任何额外的组件，所以我原封不动地把它引入到了我的项目中。另一方面，我决定只在我的项目中引入ZoomControl和Zoombox的代码，以便可以在不同的情境中修改它们的行为，比如不同的缩放模式或鼠标动作。</p>
+<p>所以总体而言，我建议你在类库满足如下条件时引用它们：</p>
 <ul> 
- <li>能够返回值</li> 
- <li>能够抛出异常</li> 
+ <li>它们完全满足你对功能和性能的需要</li> 
+ <li>它们内部没有垃圾或过剩的代码/组件</li> 
+ <li>你不太会被类库的升级困扰</li> 
+ <li>你不介意在你的程序文件夹中多一个DLL文件</li> 
 </ul>
-<p>这其实和高等数学中的<a href="http://zh.wikipedia.org/wiki/%E5%A4%8D%E5%90%88%E5%87%BD%E6%95%B0">复合函数</a>(function composition)很像：你可以将一个函数的返回值作为参数传递给另一个函数，并且将另一个函数的返回值作为参数再传递给下一个函数……像一条“链”一样无限的这么做下去。更重要的是，如果当中的某一环节出现了异常，这个异常能够被抛出，传递出去直到被<code>catch</code>捕获。</p>
-<p>而在传统的异步操作中不再会有返回值，也不再会抛出异常——或者你可以抛出，但是没有人可以及时捕获。这样的结果导致必须在异步操作的回调中再嵌套一系列的回调，以防止意外情况的发生。</p>
-<p>而Promise模式恰好就是为这两个缺憾准备的，它能够实现函数的复合与异常的抛出（冒泡直到被捕获）。符合Promise模式的函数必须返回一个promise，无论它是fulfilled状态也好，还是failed(rejected)状态也好，我们都可以把它当做同步操作函数中的一个返回值：</p>
-<pre>
-$.get(&quot;/user/784533&quot;) // promise return
-.then(function parseHandler(info) {
-    var userInfo = parseData(JSON.parse(info));
-    return resolve(userInfo); // promise return
-})
-.then(getCreditInfo) // promise return
-.then(function successHandler(result) {
-    console.log(&quot;User credit info: &quot;, result);
-}, function errorHandler(error) {
-    console.error(&quot;Error:&quot;, error);
-})</pre>
-<p>``` 上面的例子中，<code>$.get</code>与<code>getCreditInfo</code>都为异步操作，但在Promise模式下，（形式上）转化为了链式的顺序操作</p>
-<p><code>$.get</code>返回的promise由<code>parseHandler</code>进行解析，返回值“传入”<code>getCreditInfo</code>中，而<code>getCreditInfo</code>的返回值同时“传入”<code>successHandler</code>中。</p>
-<p>之所以要在传入二字上注上引号，因为并非真正把promise当做值传递进入函数中，但我们完全可以把它理解为传入，并且改写为同步函数的形式，这样以来函数复合便一目了然：</p>
-<pre>
-try {
-    var info = $.get(&quot;/user/784533&quot;); //Blocking
-    var userInfo = parseData(JSON.parse(info));
-    
-    var resolveResult = parseData(userInfo);
-    var creditInfo = getCreditInfo(resolveResult); //Blocking
-
-    console.log(&quot;User credit info: &quot;, result);
-} cacth(e) {
-    console.error(&quot;Error:&quot;, error);
-}</pre>
-<p>但是在jQuery1.8.0版本之前，比如jQuery1.5.0（jQuery在1.5.0版本中引入Promise，在1.8.0开始得到修正），存在无法捕获异常的问题：</p>
-<pre>
-var step1 = function() {
-    console.log(&quot;------step1------&quot;);
-    var d = $.Deferred();
-    d.resolve('Some data');
-    return d.promise();
-},
-
-step2 = function(str) {
-    console.log(&quot;------step2------&quot;);
-    console.log(&quot;step2 recevied: &quot;, str);
-
-    var d = $.Deferred();
-    // 故意在fulfilled hanlder中抛出异常
-    d.reject(new Error(&quot;This is failing!!!&quot;));
-    return d.promise();
-},
-
-step3 = function(str) {
-    console.log(&quot;------step3------&quot;);
-    console.log(&quot;step3 recevied: &quot;, str);
-
-    var d = $.Deferred();
-    d.resolve(str + ' to display');
-    return d.promise();
-},
-
-completeIt = function(str) {
-    console.log(&quot;------complete------&quot;);
-    console.log(&quot;[complete]------&gt;&quot;, str);
-},
-
-handleErr = function(err) {
-    console.log(&quot;------error------&quot;);
-    console.log(&quot;[error]------&gt;&quot;, err);
-};   
-
-step1().
-then(step2).
-then(step3).
-then(completeIt, handleErr);</pre>
-<p>上述代码在<a href="http://ajax.googleapis.com/ajax/libs/jquery/1.5.0/jquery.min.js">jQuery-1.5.0</a>中运行的结果：</p>
-<pre>
-------step1------
-------step2------
-step2 recevied:  Some data
-------step3------
-step3 recevied:  Some data
-------complete------
-[complete]------&gt; Some data</pre>
-<p>在step2中，在解析step1中传递的值后故意抛出了一个异常，但是我们在最后定义的<code>errorHandler</code>却没有捕获到这个错误。</p>
-<p>忽略捕获异常的错误，上面的结果还反映出另一个问题，最后一步<code>completeHandler</code>中处理的值应该是由step3中决定的，也就是step3中的</p>
-<pre>
-d.resolve(str + ' to display');</pre>
-<p>最后应打印出的结果为</p>
-<pre>
-some data to display</pre>
-<p>而在<a href="http://ajax.googleapis.com/ajax/libs/jquery/1.5.0/jquery.min.js">jQuery-1.9.0</a>中异常是可以捕获的，运行结果为：</p>
-<pre>
-------step1------
-------step2------
-step2 recevied:  Some data
-------error------
-[error]------&gt; Error {}  </pre>
-<p>但是打印出的结果仍然有问题</p>
-<p>注意到step3没有执行，因为step3中只定义了fulfilled的回调，异常只有在最后<code>errorhandler</code>才被捕获。</p>
-<p>其实我们可以试试，在step3中添加处理异常的回调函数：</p>
-<pre>
-step1().
-then(step2).
-then(step3, function (str) {
-    console.log(&quot;------[error] step3------&quot;);
-    console.log(&quot;step3 revecied: &quot;, str);
-
-    var d = $.Deferred();
-    d.resolve(str + ' to display');
-    return d.promise();    
-}).
-then(completeIt, handleErr);</pre>
-<p>运行结果如下:</p>
-<pre>
-------step1------
-------step2------
-step2 recevied:  Some data
-------[error] step3------ 
-step3 revecied:  Error {} 
-------complete------ 
-[complete]------&gt; Error: This is failing!!! to display </pre>
-<p>虽然错误在step3被捕获了，但是由于我们将错误信息传递了下去，最后一步打印出的仍然是error消息</p>
-<h2>细节：返回Promise</h2>
-<p>让我们继续看看Promise/A定义的第二段：</p>
-<blockquote> 
- <p>（原文）This function should return a new promise that is fulfilled when the given fulfilledHandler or errorHandler callback is finished. This allows promise operations to be chained together. The value returned from the callback handler is the fulfillment value for the returned promise. If the callback throws an error, the returned promise will be moved to failed state.</p> 
- <p>（译文）这样的函数应该返回一个新的promise，该promise是被指定回调函数(成功执行或者捕获异常)解析之后的结果。如此一来promise之间的操作便能链式的串联起来。回调函数返回的值是解析返回的promise的结果。如果回调函数抛出了异常，返回的promise便会转化为异常状态</p> 
-</blockquote>
-<p>这段定义告诉我们两点：</p>
-<ol> 
- <li>无论返回值是fulfilled也好，还是被rejected也好，必须返回一个新的promise；</li> 
- <li><code>then</code>关键字并非只是各个回调的填充器，在输入的同时它同时也输出新的promise，以便形成链式;</li> 
-</ol>
-<p>同样以jQuery的代码为例：</p>
-<pre>
-var step1 = function() {
-    console.log(&quot;------step1------&quot;);
-    var d = $.Deferred();
-    d.resolve('Some data');
-    return d.promise();
-};
-
-var step2 = function (result) {
-    console.log(&quot;------step2------&quot;);
-    console.log(&quot;step2 recevied: &quot; + result);
-    var d = $.Deferred();
-    d.resolve(&quot;step2 resolve: &quot; + result);
-    return d.promise();
-}
-
-var step3 = function (result) {
-    console.log(&quot;------step3------&quot;);
-    console.log(&quot;step3 recevied: &quot; + result);
-    var d = $.Deferred();
-    d.reject(new Error(&quot;This is failing!!!&quot;));
-    return d.promise();
-}
-
-var promise = step1();
-
-var promise1 = promise.then(step2);
-var promise2 = promise.then(step3);</pre>
-<p>var promise1 = promise.then(step2); var promise2 = promise.then(step3); ``` step1返回的promise是fulfilled状态，但不同的是step2 fulfilled之后，返回一个仍然可被解析的promise(1)，而step3则抛出一个异常(promise2)。</p>
-<p>按照定义所说，promise1与promise2是相互不同的promise，无论是被正确解析还是抛出异常，返回的都应该是一个独立的promise。</p>
-<p>为了验证产生的是否为独立的promise，只需看他们的执行结果如何，接着给promise1和promise2定义fulfilled和failed回调函数：</p>
-<pre>
-promise1.then(function (result) {
-    console.log(&quot;Success promise1: &quot;, result);
-}, function () {
-    console.log(&quot;Failed promise1: &quot;, result);
-})
-
-promise2.then(function (result) {
-    console.log(&quot;Success promise2: &quot;, result);
-}, function (result) {
-    console.log(&quot;Failed promise2: &quot;, result);
-}) </pre>
-<p>让我们看看在jQuery-1.5.0中执行的结果：</p>
-<pre>
-Success promise1:  Some data
-Success promise2:  Some data </pre>
-<p>虽然是一个被抛出的异常，但仍然可以被正确解析，并且解析使用的参数是上一个promise的返回值</p>
-<p>在jQuery-1.9.0中：</p>
-<pre>
-Success promise1:  step2 resolve: Some
-Failed promise2:  Error {}</pre>
-<p>能被正常解析。</p>
-<h2>实践</h2>
-<p>完整认识了promise之后，我们可以用简单的代码实现一个Promise模式。</p>
-<p>参照jQuery的<code>Deferred</code>，我们可以了解Promise的大致结构：</p>
-<pre>
-var Promise = function () {}
-
-Promise.prototype.when = function () {
-    // to do
-}
-
-Promise.prototype.resolve = function () {
-    // to do
-}
-
-Promise.prototype.rejected = function () {
-    // to do
-}</pre>
-<p>Promise.prototype.rejected = function () { // to do } ``` 并且我们用最简单一个异步操作<code>setTimeout</code>来验证我们的Promise是否奏效：</p>
-<pre>
-var delay = function (throwError) {
-    var promise = new Promise();
-
-    if (throwError) {
-        promise.reject(new Error(&quot;ERROR&quot;));
-        return promise;
-    }
-
-    setTimeout(function () {
-        promise.resolve(&quot;some data&quot;);
-    }, 1000);
-
-    return promise;
-}
-
-delay().then(function (result) {
-    console.log(result);
-}).then(function () {
-    console.log(&quot;This is the second successHandler&quot;);    
-}).then(function () {
-    console.log(&quot;This is the third successHandler&quot;);
-})</pre>
-<p>首先我们要为每一个Promise准备一个<strong>队列</strong>来存储自己的回调函数</p>
-<pre>
-function Promise() {
-    this.callbacks = [];
-}</pre>
-<p>我们可以暂且把<code>then()</code>理解为往队列中填入回调的函数，并且为了能以链式的形式添加处理函数，最后必须返回当前promise：</p>
-<pre>
-Promise.prototype.then = function (successHandler, failedHandler) {
-    this.callbacks.push({
-        resolve: successHandler,
-        reject: failedHandler
-    });
-
-    return this;
-}</pre>
-<p>} ``` 其实resolve和reject虽然名称不同，但是都是执行各自对应的回调函数，于是可以抽象出一个公共的<code>complete</code>方法：</p>
-<pre>
-Promise.prototype = {
-    resolve: function (result) {
-        this.complete(&quot;resolve&quot;, result);
-    },
-
-    reject: function (result) {
-        this.complete(&quot;reject&quot;, result);
-    },
-
-    complete: function (type, result) {
-        // to do
-    }
-}</pre>
-<p>complete的工作非常显而易见，根据type不同执行回调函数出队，以result为参数，执行相应type的的函数：</p>
-<pre>
-complete: function (type, result) {
-    this.callbacks.shift()[type](result);
-}</pre>
-<p>但是这样只能执行队首回调函数，在链式的情况下，可能在<code>callbacks</code>中添加了多个回调函数，为了实现链式的执行，需要把<code>callbacks</code>中的回调全部出队，<code>complete</code>可以改进为：</p>
-<pre>
-complete: function (type, result) {
-    while(this.callbacks.length) {
-        this.callbacks.shift()[type](result);
-    }
-}</pre>
-<p>完整版如下：</p>
-<pre>
-function Promise() {
-    this.callbacks = [];
-}
-
-Promise.prototype = {
-    resolve: function (result) {
-        this.complete(&quot;resolve&quot;, result);
-    },
-
-    reject: function (result) {
-        this.complete(&quot;reject&quot;, result);
-    },
-
-    complete: function (type, result) {
-        while(this.callbacks[0]) {
-            this.callbacks.shift()[type](result);
-        }
-    },
-
-    then: function (successHandler, failedHandler) {
-        this.callbacks.push({
-            resolve: successHandler,
-            reject: failedHandler
-        });
-
-        return this;
-    }
-}</pre>
-<p>第一个版本即完成，可以看到测试上面开始例子的结果，能够顺利打印出信息。</p>
-<p>接下来我们来完成处理异常部分</p>
-<p>首先我们写一个能够故意抛出异常的测试用例</p>
-<pre>
-delay(true).then(function (result) {
-    console.log(result);
-}, function firstErrorHandler(error) {
-    console.error(&quot;First failedHandler catch: &quot;, error);
-
-    var promise = new Promise();
-    promise.resolve(&quot;some data&quot;);
-    return promise;
-
-}).then(function secondSucHandler(result) {
-    console.log(&quot;Second successHandler recevied: &quot;, result);
-}, function (error) {
-    console.error(&quot;Second failedHandler catch: &quot;, error);
-})</pre>
-<p>我们在delay中抛出异常，希望在<code>firstErrorHandler</code>捕获异常后，返回一个能fulfilled的promise，并且用<code>secondSucHandler</code>顺利解析、</p>
-<p>如果直接用上面版本执行，会发现没有任何结果，为什么？</p>
-<p><strong>因为在执行<code>delay()</code>时，第一个<code>reject</code>也同时被执行，但此时<code>then</code>函数还没执行，也就是处理reject的handler还没有被定义。</strong>当然也就不会有任何结果了。反过来也能想通，也就能说通resolve能被执行。</p>
-<p>那么我们只要在reject函数中加上一定的延时即可：</p>
-<pre>
-...
-reject: function (result) {
-    var _this = this;
-    setTimeout(function () {
-        _this.complete(&quot;reject&quot;, result);    
-    });
-},
-...</pre>
-<p>执行测试代码结果如下：</p>
-<pre>
-First failedHandler catch:  Error
-Second failedHandler catch:  Error</pre>
-<p>虽然错误被捕获了，但错误被一直传递一下去了，这也就是我们之前说的jQuery无法返回新的promise，接下来要解决这个问题。</p>
-<p>我们来写一个更复杂的测试用例，来验证下面的解决方案：</p>
-<pre>
-delay()
-// ------Level 1------
-.then(function FirstSucHandler(result) {
-    console.log(&quot;First successHandler recevied: &quot;, result);
-
-    var p = new Promise();
-    p.reject(new Error(&quot;This is a test&quot;));
-    return p;                    
-
-}, function FirstErrorHandler(error) {
-    console.error(&quot;Second failedHandler catch: &quot;, error);
-})
-// ------Level 2------
-.then(function SecondSucHandler(result) {
-    console.log(&quot;Second successHandler recevied: &quot;, result);            
-})
-// ------Level 3------
-.then(function ThirdSucHandler(result) {
-    console.log(&quot;Third successHandler recevied: &quot;, result);
-}, function ThirdErrorHandler(error) {
-    console.error(&quot;Third failedHandler catch: &quot;, error);
-})
-// ------Level 4------
-.then(function FourSucHandler(result) {
-    console.log(&quot;Fourth successHandler recevied: &quot;, result);
-})</pre>
-<p>正确的执行顺序应该是<code>FirstSucHandler</code>fulfilled之后抛出异常，略过<code>SecondSucHandler</code>，异常被<code>ThirdErrorHandler</code>捕获，并且返回一个新的promise，由<code>FourSucHandler</code>解析。</p>
-<p>接下来还要修复并且考虑这些问题 1. 当异常被捕获之后将阻止异常往下传递 2. 定义中描述在fulfilled之后必须返回一个新的promise，但如果没有返回新的promise，或者是返回其他的值，应该作何处理？</p>
-<p>对于第二点，我们暂且处理规则是：</p>
-<ol> 
- <li>如果没有返回值，那么下一个回调函数将继续解析上一promise</li> 
- <li>如果返回值存在，但返回值不为promise，默认调用resolve handler，并且返回值作为回调函数的参数传入</li> 
-</ol>
-<p>大致流程图如下所示</p>
-<pre>
-                                push
-                                 |
-                    [successHandler, errorHandler]
-                    ...
-            -------&gt;[successHandler, errorHandler]
-            |                    | 
-            |                  shift
-            |                    |
-            |                 execute 
-            |        succussHandler or errorHandler
-            |                    |
-            |                    |
-            |          ----------------------
-            |          |                    |
-            |         return               return
-            ----Auto--promise         nothing or not promise
-            |                               |
-            &lt;--------------- Manual --------|</pre>
-<p>``` 从上图中可以看出，promise模式是一个周而复始执行resolve或者reject过程，每一轮必须执行二者之一，必然导致一组回调函数出队。如果抛出异常，但这组回调函数中没有异常处理函数<code>errorHandler</code>，那么这组回调函数便作废，直到找到下一个能捕获异常的回调函数。直到队列中回调函数全部出队。看来我们有必要写一个“直到找到我们需要的函数”的函数：</p>
-<pre>
-getCallbackByType: function (type) {
-    if (callbacks.length) {
-
-        var callback = callbacks.shift()[type];
-
-        while (!callback) {
-            callback = callbacks.shift()[type];
-        }                    
-
-    }
-
-    return callback;
-}</pre>
-<p>从上图中可以看出所有的promise可以共用一个<code>callbacks</code>队列，并且考虑到需要判断返回值是否为promise类型，我们最好还需要一个标志位，做如下修改：</p>
-<pre>
-var callbacks = [];
-
-function Promise() {
-    this.isPromise = true;
-}
-...</pre>
-<p>根据以上描述，这类似于一个递归的过程</p>
-<pre>
-promise --&gt; resolve/reject ---&gt; promise ---&gt; resolve/reject</pre>
-<p>注意在上面Level 1的<code>FirstSucHandler</code>中，新返回的promise执行了reject，这会自动使队列一组回调函数出队并执行。但面对一些没有返回值的情况应该怎么办，那么就应该遵循我上面说的标准，要么执行上一个promise，要么默认执行下一个resolve：</p>
-<pre>
-...
-executeInLoop: function (promise,result) {
-    // 1.如果回调队列还没有被清空  
-    // 2.或者没有返回值，
-    // 3.或者有返回值但不是promise
-    if ((promise &amp;&amp; !promise.isPromise || !promise) &amp;&amp; callbacks.length) {
-        // 默认执行resolve
-        var callback = this.getCallbackByType(&quot;resolve&quot;);
-
-        if (callback) {
-            var promise = callback(promise? promise: result);
-            this.executeInLoop(promise, promise? promise: result);
-        }
-    }
-},
-...
-</pre>
-<p>最后Complete函数也要做相应修改：</p>
-<pre>
-...
-complete: function (type, result) {
-
-    var callback = this.getCallbackByType(type);
-
-    if (callback) {
-        var promise = callback(result);    
-        this.executeInLoop(promise, promise? promise: result);
-    }
-},
-...
-</pre>
-<p>最后贴上完整版代码：</p>
-<pre>
-var callbacks = [];
-
-function Promise() {
-    this.isPromise = true;
-}
-Promise.prototype = {
-resolve: function (result) {
-this.complete(&quot;resolve&quot;, result);
-},
-reject: function (result) {
-var _this = this;
-setTimeout(function () {
-_this.complete(&quot;reject&quot;, result);
-});
-},
-executeInLoop: function (promise,result) {
-// 如果队列里还有函数 并且（ 要么 没有返回一个值 或者 （有返回值但不是promise类型））
-if ((promise &amp;&amp; !promise.isPromise || !promise) &amp;&amp; callbacks.length) {
-var callback = this.getCallbackByType(&quot;resolve&quot;);
-if (callback) {
-var promise = callback(promise? promise: result);
-this.executeInLoop(promise, promise? promise: result);
-}
-}
-},
-getCallbackByType: function (type) {
-if (callbacks.length) {
-var callback = callbacks.shift()[type];
-while (!callback) {
-callback = callbacks.shift()[type];
-}
-}
-return callback;
-},
-complete: function (type, result) {
-var callback = this.getCallbackByType(type);
-if (callback) {
-var promise = callback(result);
-/*
-1. 有返回值，promise类型
-2. 有返回值，其他类型
-3. 无返回值
-*/
-this.executeInLoop(promise, promise? promise: result);
-}
-},
-then: function (successHandler, failedHandler) {
-callbacks.push({
-resolve: successHandler,
-reject: failedHandler
-});
-return this;
-}
-}</pre>
-<p>并附上执行结果：</p>
-<pre>
-First successHandler recevied:  some data 
-Third failedHandler catch:  Error {} 
-Fourth successHandler recevied:  Error {} </pre>
-<h2>参考文献</h2>
-<ul> 
- <li><a href="http://modernjavascript.blogspot.com/2013/08/promisesa-understanding-by-doing.html">Promises/A+ - understanding the spec through implementation</a></li> 
- <li><a href="http://modernjavascript.blogspot.hk/2013/09/promise-patterns.html">Promise patterns</a></li> 
- <li><a href="https://gist.github.com/domenic/3889970">You're Missing the Point of Promises</a></li> 
- <li><a href="http://msdn.microsoft.com/en-us/magazine/gg723713.aspx">Creating Responsive Applications Using jQuery Deferred and Promises</a></li> 
- <li><a href="http://blogs.msdn.com/b/ie/archive/2011/09/11/asynchronous-programming-in-javascript-with-promises.aspx">Asynchronous Programming in JavaScript with “Promises”</a></li> 
- <li><a href="http://blog.mediumequalsmessage.com/promise-deferred-objects-in-javascript-pt1-theory-and-semantics">Promise &amp; Deferred objects in JavaScript Pt.1: Theory and Semantics.</a></li> 
- <li><a href="https://gist.github.com/unscriptable/814052">tiny Promise.js</a></li> 
-</ul>
-<h2>作者简介</h2>
-<p>李光毅，新晋前端工程师，现就职于爱奇艺，热于前端技术分享。联系邮箱：juststayinvegas@gmail.com</p><br><br><br><br><br><br></body></html>
+<p>否则就把它们的代码集成到你的项目中，并按你想要的方式进行定制。这两种情况无论哪一个，性能一般都不成问题，除非引用太多而延长了程序启动的时间，并且占用了更多内存。</p>
+<p><b>InfoQ:</b> 你有没有遇到过那种情况，你想合并另一个项目中的代码，但因为那些代码用了不同的许可而无法进行？</p>
+<p><b>Alexander:</b> 谢天谢地，我还没遇到过那样的状况。我相信如果要分享项目代码，应该允许人们自由地使用和修改它。作为交换，那些使用它的人应该把它的许可声明和版权包含在它们的项目中。</p>
+<p><b>InfoQ:</b> 您有把GraphX放到Windows 8 商店或 Windows Phone 8中的计划吗？</p>
+<p><b>Alexander:</b> 那还不在我的任务列表中，但很有可能。我在寻找把GraphX 扩展到不同平台上的机会，但这是时间和认识上的问题。比如说，经过对Silverlight的研究，我最终认为那将耗费我大量的时间和精力，因为几乎所有的渲染和模板代码都要重构。尽管如此，在Silverlight和 GraphX v2上的工作已经开始了，虽然缓慢但那是真的。</p>
+<p>至于Windows 8和WP8，我可以说我很有兴趣去了解这些平台，因为我还没在上面做过任何东西。它们很有创新性，并且用了跟WPF相似的技术，所以它一定很有趣，并且跟其它可用方案比应该更简单。</p>
+<p><b>InfoQ:</b> 如果想在网站上做出类似的可视化效果，你应该做什么呢？</p>
+<p><b>Alexander:</b> 哦，那取决于我应该以什么为基础。如果我用已有的GraphX代码，那么自然应该用Silverlight做可视化，因为它的渲染用的是简化过的WPF技术。大部分逻辑应该原封不动，但我必须从头开始做些新的控件，并且在整个项目框架中引入异步处理逻辑。</p>
+<p>老实说我不了解其它任何用来实现图形可视化的web技术。我觉得Flash或其它相似的技术可以用来完成这项任务，但GraphX代码估计够呛，所以还有很多工作要做。</p>
+<p><b>InfoQ:</b>您正在为GraphX寻找志愿者吗?</p>
+<p><b>Alexander:</b> 当然，GraphX很乐意看到有人加入。特别是愿意参与GraphX到各种平台上的移植工作的，和实现新的图形布局和边路由算法的志愿者。如果你有这方面的技能，并且愿意参与GraphX的改进工作，请<a href="http://www.panthernet.ru">联系我</a> 。</p>
+<p><b>InfoQ:</b> 那是GraphX的新首页吗？或者你不想再用CodePlex了吗？</p>
+<p><b>Alexander:</b> 这是个新网站，我会把GraphX的首页放在上面，还有我其它在“Panthernet Dev Works”公司下的项目。Codeplex仍然是主代码库和发布通知网站，但文档、下载和讨论会挪到这个新网站和论坛上。</p>
+<p>目前我有意做自己的公司，主要从事开源和商业项目的开发。论坛上会有更多相关信息，所以感兴趣的人可以上去看看。</p>
+<p><b>InfoQ:</b> 那么您目前有多少个不同的图形界面和边路由算法？</p>
+<p><b>Alexander:</b> GraphX目前有11个布局，2个叠加移除和3个边路由预定义算法。而且就像我之前说过的，你可以在GraphX中创建和使用自己创建的算法，我们提供了接口。</p>
+<p>算法是这个类库中最重要也是最复杂的部分。随时欢迎有用户在这方面做出贡献！</p>
+<h2>关于受访者</h2>
+<p><img _p="true" _href="img://null" src="http://infoqstatic.com/resource/articles/GraphX-Intro/zh/resources/0109007.jpg" style="float: left; margin-right: 10px" alt="" /><strong>Alexander Smirnov</strong>, .NET首席开发人员，目前就职于俄罗斯的&quot;I.T. co.&quot;，主要工作领域是数据可视化和文本分析。他还参与了几个使用C#开发移动端平台程序的项目。</p>
+<div style="clear:both"></div>
+<p>原文英文链接：<a href="http://www.infoq.com/articles/GraphX-Intro">Introduction to Graph Visualization with Alexander Smirnov</a></p><br><br><br><br><br><br></body></html>

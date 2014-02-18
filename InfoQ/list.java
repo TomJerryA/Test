@@ -1,14 +1,14 @@
 <html>
  <head></head> 
- <body>
-  <div>
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/13.java">Testing End-to-End with Nightwatch</a>Nightwatch is a recently released acceptance framework based on Node.js that uses Selenium WebDriver API to automate web applications testing. The tool promises a simple syntax which enables the writing of end-to-end tests using JavaScript and CSS selector that runs against a Selenium server.
-  </div>
-  <div>
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/12.java">Simplified CSS Preprocessing with restyle.js</a>Andrea Giammarchi's restyle.js is a new, JavaScript-based, CSS preprocessor that can run on either the server (via Node.js) or in the browser. It touts itself as &quot;a simplified CSS approach&quot;, generating all prefixed variations of CSS rules and properties and, if applicable, inserting them into the DOM.
-  </div>
-  <div>
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/11.java">Mac OS X and BTRFS support in Docker</a>As part of the 0.8 release the Docker.io team have announced support for installation on Mac OS X and the use of the BTRFS as an alternative to AUFS.
+ <body> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/13.java">Testing End-to-End with Nightwatch</a>Nightwatch is a recently released acceptance framework based on Node.js that uses Selenium WebDriver API to automate web applications testing. The tool promises a simple syntax which enables the writing of end-to-end tests using JavaScript and CSS selector that runs against a Selenium server. 
+  </div> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/12.java">Simplified CSS Preprocessing with restyle.js</a>Andrea Giammarchi's restyle.js is a new, JavaScript-based, CSS preprocessor that can run on either the server (via Node.js) or in the browser. It touts itself as &quot;a simplified CSS approach&quot;, generating all prefixed variations of CSS rules and properties and, if applicable, inserting them into the DOM. 
+  </div> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/11.java">Mac OS X and BTRFS support in Docker</a>As part of the 0.8 release the Docker.io team have announced support for installation on Mac OS X and the use of the BTRFS as an alternative to AUFS. 
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/10.java">Twenty Five Years of GPS</a>The GPS constellation in use today was launched twenty five years ago, and is still going strong. Today, GPS receivers can be found in most smart phones as well as commercial airliners and supertankers. InfoQ looks back at how the GPS came to be, and how locations are being used today with HTML5 and geo location services. 
@@ -150,6 +150,6 @@
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/14.java">More on Indexes in In-Memory OLTP</a>Indexes in SQL Server’s In-Memory OLTP don’t work exactly like normal indexes. This isn’t necessarily a bad thing, but the differences need to be kept in mind to avoid performance problems. 
-  </div>    
+  </div> 
  </body>
 </html>

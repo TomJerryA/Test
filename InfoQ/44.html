@@ -1,9 +1,37 @@
-<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>Visual Studio 2013 Update 2发布第一个CTP版本</h3><p>VS2013和TFS2013的第二次更新已经<a href="http://go.microsoft.com/fwlink/?LinkId=390521">发布</a>了预览版本，并承诺在产品的数个领域增加几个显著的功能。需要注意的是，这是个社区技术预览版（CTP），与之前交付的一些CTP版本不同，它不能用于生产环境。此次的CTP只能用于那些不关注数据丢失和文件损坏的测试环境或者虚拟机中。</p>
-<p>在TFS中使用标签（tag）的开发者将发现，升级后标签功能的可用性得到了显著提升。特别是，我们现在可以查询标签，可以对工作项添加标签，还可以设置谁有权限创建新标签。这样标签就不仅仅是一个可视的指示器，新增的权限功能将管理它们的使用，同时降低标签拼写错误的可能性。</p>
-<p>性能分析方面也有两项更新。首先是新的CPU使用情况监视工具，能够查看哪些函数（托管的、原生的和JavaScript）正在使用CPU。之前引入的诊断中心现在支持多个工具并行，在一个时间轴上同时显示CPU使用情况、能源消耗和UI响应（取决于选中项）。第二项更新是新的JSON可视化工具，用于Visual Studio调试器，能够用于调试器支持的所有语言。</p>
-<p>根据微软的Brian Harry介绍，Update 2的<a href="http://blogs.msdn.com/b/bharry/archive/2014/02/05/vs-tfs-2013-2-update-2-ctp-released.aspx">后续CTP</a>将增加支持Git的相关功能，包括支持注释、还原提交和从远程仓库推/拉的能力。</p>
-<p>本次发布的CTP有两种已知的缺陷，因此在探索本次更新的功能时应该小心。此外，将此CTP应用到VS2013和TFS2013时，微软的安装说明是不一样的。对于TFS2013用户，强烈建议在安装之前对数据库做完整备份，因为一旦安装失败，将无法对数据库进行还原。详细的信息请<a href="http://support.microsoft.com/kb/2927432">查阅</a>CTP的知识库文档。</p>
-<p><strong>原文英文链接：</strong><a href="http://www.infoq.com/news/2014/02/VS2013_Update2CTP">First CTP Released for Visual Studio 2013 Update 2</a></p>
-<hr />
-<p>感谢<a href="http://www.infoq.com/cn/author/侯伯薇">侯伯薇</a>对本文的审校。</p>
-<p>给InfoQ中文站投稿或者参与内容翻译工作，请邮件至<a href="mailto:editors@cn.infoq.com">editors@cn.infoq.com</a>。也欢迎大家通过新浪微博（<a href="http://www.weibo.com/infoqchina">@InfoQ</a>）或者腾讯微博（<a href="http://t.qq.com/infoqchina">@InfoQ</a>）关注我们，并与我们的编辑和其他读者朋友交流。</p><br><br><br><br><br><br></body></html>
+<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>可伸缩Web架构、OpenStack存储剖析、语义网工具演化——架构周报</h3><p>本期的架构周报主要关注可伸缩Web架构技巧、Google备份经验、OpenStack存储剖析以及语义网工具演化等。</p>
+<h2><strong>技术选型</strong></h2>
+<p><strong>OpenStack存储</strong></p>
+<p>Openstack通过 3 年多的发展，变得越来越庞大。这也是为了满足更多不同的需求，体现出开源项目灵活快速的特性。文章<a href="http://www.ibm.com/developerworks/cn/cloud/library/1402_chenhy_openstackstorage/index.html" target="_blank">OpenStack存储剖析</a>详细地总结了Openstack所涉及的各个组件的功能、配置和应用场景。</p>
+<p>OpenStack 其实有三个与存储相关的组件，这三个组件被人熟知的程度和组件本身出现时间的早晚是相符的，按熟悉程度排列如下：</p>
+<ul> 
+ <li>Swift—提供对象存储（Object Storage），在概念上类似于 Amazon S3 服务，不过 swift 具有很强的扩展性、冗余和持久性，也兼容 S3 API。对象存储支持多种应用，比如复制和存档数据、图像或视频服务，存储次级静态数据，开发数据存储整合的新应用，存储容量难以估计的数据，为 Web 应用创建基于云的弹性存储。</li> 
+ <li>Glance—提供虚机镜像（Image）存储和管理，它能够以三种形式加以配置：利用 OpenStack 对象存储机制来存储镜像；利用 Amazon 的简单存储解决方案（简称 S3）直接存储信息；或者将 S3 存储与对象存储结合起来，作为 S3 访问的连接器。OpenStack 镜像服务支持多种虚拟机镜像格式，包括 VMware（VMDK）、Amazon 镜像（AKI、ARI、AMI）以及 VirtualBox 所支持的各种磁盘格式。镜像元数据的容器格式包括 Amazon 的 AKI、ARI 以及 AMI 信息，标准 OVF 格式以及二进制大型数据。</li> 
+ <li>Cinder--提供块存储（Block Storage），类似于 Amazon 的 EBS 块存储服务，OpenStack 中的实例是不能持久化的，需要挂载 volume，在 volume 中实现持久化。Cinder 就是提供对 volume 实际需要的存储块单元的实现管理功能。</li> 
+ <li>Amazon 一直是 OpenStack 设计之初的假想对手和挑战对象，所以基本上关键的功能模块都有对应项目。除了上面提到的三个组件，对于 AWS 中的重要的 EC2 服务，OpenStack 中是 Nova 来对应，并且保持和 EC2 API 的兼容性，有不同的方法可以实现。</li> 
+</ul>
+<p>每个组件的具体介绍，可以查看<a href="http://www.ibm.com/developerworks/cn/cloud/library/1402_chenhy_openstackstorage/index.html" target="_blank">OpenStack存储剖析</a>。</p>
+<p><strong>语义网工具</strong></p>
+<p>文章<a href="http://baojie.org/blog/2014/02/12/semantic-tool-evolution/" target="_blank">语义网的工具演化</a>系统、详细地分析了语义网所涉及的各个阶段中相关工具的发展，正如文中所说：语义网这个领域不缺理论，就缺系统和工具。作者认为，现有工具分为三类</p>
+<ul> 
+ <li>学校搞出来的代表是Protege，做NSF项目还行，对开发人员不友好。</li> 
+ <li>小公司面向政府和行业用户搞出来，代表是TopBraid Composer &amp; Pellet，也对开发人员不友好。</li> 
+ <li>大公司总结搞出来内部用的，代表是Trinity &amp; Graphd，一般人看都看不到。</li> 
+</ul>
+<p>作者认为，工具系统的竞争，是一个复杂的系统工程，绝不是一个标准化组织能组织和规划的。而工具的产生和演进，又是和用户与工程师的需求，理解能力和使用习惯密切相关的。基于w3c规范的工具系统，往往有太浓厚的学术性，不太贴合普通Web工程师的需求。</p>
+<blockquote> 
+ <p>工具的改进，有对人不友好的问题，有对机器不友好的问题。我觉得这几年的当务之急是对人不友好的问题。云啊，可伸缩性啊，这些问题可以放一放，先把结构化数据生成的代价降下来再说。自然语言理解，数据库，用户交互这些都有用。个人认为核心问题还是用户交互，NLP是起一个辅助的作用。工具的进化，说到底也一个社区的进化。是一群人建立了工具。所以从现有工具演化语义网的工具，也就是促进现有的程序员社区演化，用他们熟悉的语言，提供思路给他们解决他们头痛已久的问题。JSON, JS, Python, Lucene等等，这些社区是希望所在。</p> 
+</blockquote>
+<h2><strong>架构技巧</strong></h2>
+<p><strong>可伸缩Web架构</strong></p>
+<p>Decide公司CTO <em>Kate Matsudaira</em>在文章<a href="http://aosabook.org/en/distsys.html" target="_blank">可伸缩Web架构与分布式系统</a>总结了自己的架构经验和设计准则，他提出，构建和运行一个可伸缩的网站或应用来说究竟意味着什么？从一个基本的层面来看，就是将用户和远程资源通过互联网连接起来——将其变得可伸缩的部分，是指这些资源或者访问这些资源是分布式的、贯穿于多个服务器。像很多生活中的事情一样，在构建一个web服务时花费时间提前做好计划将会帮助服务能够长久运行；理解一些大型网站背后的考量和权衡会在创建小型网站时帮助做出更明智的决定。下面是一些会影响到设计大型可伸缩性Web系统的关键准则：</p>
+<ul> 
+ <li>可用性——一个网站的正常运行时间，对于很多公司的信誉和功能来说都是至关重要的。对于一些大型在线零售网站，甚至是几分钟的不可用都会导致数以千万计美元的收入损失，所以将他们的系统设计成不间断可用和能够弹性恢复既是一项基础业务也是一个技术需求。分布式系统的高可用性需要仔细考虑关键组件冗余，快速恢复部分有问题的系统，并且当出现问题时能够做到优雅降级。</li> 
+ <li>性能——性能已成为大多数网站一个很重要的考量指标。一个网站的速度会影响到使用和用户满意度，同样也会影响到搜索引擎排名，将直接关系到网站收入和用户保持力（黏性）。因此，关键之处就在于创建一个为快速响应、低延迟的系统。</li> 
+ <li>可靠性——一个系统需要做到可靠，这样才能使得对于（固定）数据的请求始终会返回同样的数据。如果数据发生变化或者更新，那相同的请求应该返回新的数据。用户需要知道，一旦一些数据被写入、存储到系统中，那么系统就会持久化（这些数据）并且能够让人信赖随时能够检索。</li> 
+ <li>可伸缩性——对于任何大型分布式系统，系统规模只是可伸缩性需要考虑的一个方面。同样重要的是，增加容量能够处理更大量的负载所需的工作，通常在系统可伸缩性方面被提及到。可伸缩性会涉及到系统的很多不同的因素：系统额外还能够处理多少流量，是否能够轻易增加存储容量，还能多处理多少事务。</li> 
+</ul>
+<p>除此之外，还要考虑可管理性、成本等问题，具体的架构准则请查看Kate的文章。</p>
+<p><strong>Google数据备份策略</strong></p>
+<p>Google数据保密和数据安全负责人Raymond Blum在一次演讲中分享了Google数据备份的经验，Todd Hoff在文章<a href="http://highscalability.com/blog/2014/2/3/how-google-backs-up-the-internet-along-with-exabytes-of-othe.html" target="_blank">Google如何备份数据</a>中详细总结了演讲的核心要点，有数十条之多，某些观点比较新颖，值得架构师和运维团队借鉴。InfoQ中文站近期将推出详细的新闻报道，读者可以查看Todd的原文或者随后的中文报道。</p>
+<p>对架构领域感兴趣的读者可以关注即将于2014年4月25~27日在北京国际会议中心召开的QCon北京2014大会，专题包括<a href="http://www.qconbeijing.com/node/452">知名网站案例分析</a>、<a href="http://www.qconbeijing.com/node/450">扩展性、可用性与高性能</a>、<a href="http://www.qconbeijing.com/node/437">云计算服务探秘</a>、<a href="http://www.qconbeijing.com/node/441">大数据处理与大数据应用</a>等，许多讲座都与架构相关。读者可点击大会<a href="http://www.qconbeijing.com" target="_blank">主页</a>查看详情。</p>
+<p>欢迎读者朋友推荐或者投稿架构相关的文章，联系邮箱为<a href="mailto:editors@cn.infoq.com">editors@cn.infoq.com</a>，标题请注明“架构专栏”。</p><br><br><br><br><br><br></body></html>

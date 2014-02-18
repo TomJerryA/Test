@@ -1,1 +1,1 @@
-Greg Young氏，CEP(複合イベント処理)を語る
+CoffeeScript 1.7

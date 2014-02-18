@@ -1,6 +1,24 @@
 <html>
  <head></head> 
- <body> 
+ <body>
+  <div>
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/23.py">CoffeeScript 1.7</a>Jeremy Ashkenas氏はCoffeeScriptバージョン1.7をリリースした。長らく期待されていた新しい機能がいくつか追加された。丸括弧なしの関数チェーニングだ。
+  </div>
+  <div>
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/22.py">実験と価値提供のバランスをとる</a>リーンスタートアップの実験は顧客について学び、どのような機能に価値があるのかを判別する手助けをしてくれる。しかし、価値は製品を作り、実際に顧客に届けることで生まれるものだ。実験とデリバリのバランスを上手くとる必要がある。
+  </div> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/21.py">Google Cast SDK、MPEG-DASHやHTTP Live Streamingなどのサポートを追加</a>GoogleがCast SDKをリリースした。開発者はアダプティブストリーミング、MPEG-DASH、HLS (HTTP Live Streaming)、SmoothStreamingを使って新規および既存のモバイルアプリやWebサイトにChromecastを統合することができる。 
+  </div> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/20.py">DataFuがApacheのインキュベーションプロジェクトに</a>LinkedInによるHadoop用ライブラリのコレクションであるDataFuプロジェクトが１月第１週，正式にApache Software Foundation(ASF)のインキュベーションプロジェクトになった。 
+  </div> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/19.py">QCon London : 人気のトラック、セッション、スピーカー</a>8回目を迎える年次のQCon London(3月3日から7日)では、NASA、 Netflix、Twitter、The Financial Times、Etsyなどの深いプレゼンや事例を取り上げる予定だ。トピックはアーキテクチャ、DevOp、パフォーマンスとスケーラビリティ、アジャイル、Javaなどだ。カンファレンススケジュールも決定した、2月5日までに参加登録すれば149ポンド安い。 
+  </div> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/18.py">自己組織型チームを構築し維持するには</a>Mike Cohn氏，Thomas Cagley氏らによる，チームの自己組織化および自己組織型チームの継続的成功についての最近の解説記事をレポートする。 
+  </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/17.py">Android上のファイルを暗号化するFacebook Conceal</a>Facebookは，Android用のファイル暗号化および認証Java APIのセットであるConcealをオープンソースとして公開した。ライブラリを小さく保つためにConcealでは，OpenSSLのアルゴリズムと定義済みオプションのサブセットを使用する。現時点でのサイズは85KBだ。 
   </div> 
@@ -132,24 +150,6 @@
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/28.py">TwitterがMapReduceストリーミングフレームワークSummingbirdをオープンソースに</a>Twitterは，Summingbirdと呼ぶ自社のMapReduceストリーミングフレームワークをオープンソースにした。Apache 2ライセンスで公開されるSummingbirdは，コードをバッチモード(Hadoop/MapReduceをベースとする)でもストリームモード(Stormをベースとする)でも，あるいはハイブリッドモードと呼ばれる２つの組み合わせでも同じように実行することができる，大規模データ処理システムだ。 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/27.py">Google Play Services 4.1がドライブサポートを追加</a>GoogleはPlay Servicesをアップデートして，ドライブやターンベースのマルチプレイヤゲーム，新たな広告ネットワークのサポートを追加した。 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/26.py">Rackspaceがクラウド管理サービスレベルを拡張し、DevOpsサポートサービスを開始</a>クラウドプロバイダーであり、OpenStackの創業者であるRackspaceは最近、新しいDevOps自動化サービスを発表しました。彼らは管理を支える為のインフラストラクチャーとワークフロー自動化やモニタリングそしてログ集約、そしてインフラ用のソースコントロールを提供します。 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/25.py">データサイエンティスト向け教育プログラム</a>2013年はデータサイエンティストやビッグデータ専門家向けの新しい教育プログラムが多く発表された。 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/24.py">Chefのレシピ作成エクスペリエンスを向上するChef Sugar</a>Chef SugarはDSLを使ってレシピの可読性を改善するChefのエクステンションだ。作者のSeth Vargo氏が実例を示しながら，Chef Sugarを開発した動機について説明している。InfoQは氏へのインタビューを通じて，Chefのプラグインアーキテクチャという面から，シンタックスシュガーのメリットに対する氏の見解を聞いた。 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/23.py">Add App Wizardなどの機能改良を加えたXAML Spy 2.0.5がリリース</a>XAML Spyがこの1月にリリースされた。Add App Wizard，XAML Spy ExplorerツールバーのShow All Appsボタンによるインストール済みアプリのナビゲートなどがサポートされている。複数のプロジェクトに対して，XAML Spyを一括で有効あるいは無効にすることも可能だ。 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/22.py">Facebook、MercurialをGitよりも速くする</a>FacebookがどのようにしてMercurialをGitよりも特定の操作で5倍速くしたのかを説明する記事をポストした。読むと、彼らが何を変えて、なぜセットアップをそうしたのかがわかるだろう。 
-  </div> 
+  </div>   
  </body>
 </html>

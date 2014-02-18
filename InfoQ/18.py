@@ -1,44 +1,31 @@
-<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>HTTPを強化する</h3><p><a target="_blank" href="http://www.infoq.com/news/2014/01/strengthen-http"><em>原文(投稿日：2014/01/05)へのリンク</em></a></p>
+<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>自己組織型チームを構築し維持するには</h3><p><a target="_blank" href="http://www.infoq.com/news/2014/02/self-assemble-and-self-organise"><em>原文(投稿日：2014/02/03)へのリンク</em></a></p>
 <div class="article_page_left news_container text_content_container"> 
  <div class="text_info"> 
-  <p>以前、<a href="http://www.infoq.com/jp/news/2012/06/spdy-websockets">HTTPbis Working Group</a>で行われている<a href="http://www.infoq.com/jp/news/2012/12/http20-first-draft">HTTP 2.0</a>の策定作業についてレポートしたが、最近、Working Group議長のMark Nottingham氏がそのプロトコルのセキュリティ要件に関するグループの取り組みについて、<a href="http://www.mnot.net/blog/2014/01/04/strengthening_http_a_personal_view">個人的見解</a>を投稿した。</p> 
-  <blockquote>
-   最近、インターネットプロトコル界隈で一番ホットな話題のひとつは、
-   <a href="http://www.theguardian.com/world/edward-snowden">Edward Snowden</a>氏によって世界に知れ渡ったpervasive monitoring攻撃に対して、Webのプロトコル、
-   <a href="http://http2.github.io/">HTTP/2</a>の最新バージョンが暗号化使用について
-   <em>何か</em>を要求したり、推奨したり、言及するかどうかです。
+  <p><a href="https://www.scrum.org/Portals/0/Documents/Scrum%20Guides/2013/Scrum-Guide.pdf">Scrum Guide</a>はスクラムチームを，“自己組織型でクロスファンクショナル”として定義している。では実際に，自己組織的なチームを作り上げるには，どうすればよいのだろうか？ Scrum Guideには “自己組織型のチームは，部外者から指示されるのではなく，仕事を完成するために最適な方法を自ら選択する” ，とある。最近では数多くの解説者が自らの経験やアイデアを公開して，チーム自身の手による組織構築を促進する上で，自己組織化の基本原則がいかに有効かを論じている。彼らの経験は，自己組織化を達成してその効果を持続する上で，指導が重要な要素であることの証明でもある。</p> 
+  <p>スクラム黎明期に貢献し，Scrum Allianceの創設メンバでもある<a href="http://www.mountaingoatsoftware.com/company/about-mike-cohn">Mike Cohn</a>氏が先頃，自己組織型チームの形成と持続の過程において，支援とトップダウン的指導とのバランスが必要であると<a href="http://www.mountaingoatsoftware.com/blog/placing-rules-on-self-organizing-teams">レポート</a>した。氏はその中に，支援が転じて統治的行動となった自身の経験を記している。作業方法やミーティングなど，意図の明確な行為に関するルールを作るのは簡単だ。しかしながら，“たったひとつの不用意なルールがチームを窮地に追い込んで”，自己組織化から引き離してしまうこともある。氏は次のように警告する。</p> 
+  <blockquote> 
+   <p>それぞれのルールについて，単独でリスクに見合う価値があるものか検討してください。価値のないルールを適用していはいけません。同じように，チームのルールを増やそうと考える場合は，他のルール(あるいは作業方法に対する制約)で削除可能なものはないか，必ず確認してください。</p> 
   </blockquote> 
-  <p>Mark氏はこれまでの簡単な経緯について、特に、SPDYとセキュリティに関して次のように述べた。</p> 
-  <blockquote>
-   Mike (Belshe)氏とRoberto (Peon)氏がSPDYを我々のところへ持ってきたとき（「Snowden氏」がその名を知られるずっと前のこと）、すでにSPDYの実装は暗号化に
-   <a href="http://en.wikipedia.org/wiki/Transport_Layer_Security">TLS</a>を使うことを必須としていました。これは実用的な理由（中間にいるものがそれを知っていないと、HTTPの新バージョンを導入するのは本当に難しい）と高尚な理由のためでした。
+  <p>先日の<a href="http://www.lomos.si/2013/12/is-team-self-assembling-possible/">記事</a>で自己組織型チームについて書いたスクラムマスタの<a href="http://www.scrumalliance.org/community/profile/rpre9eren">Rok Prešeren</a>氏は，自身のプロジェクトでの経験を元に，自己組織型チームが継続的成功を収めるためには，チームのフォーメーションが重要なファクタであることを示した。その中で氏は，アジャイル勢力によって次の主流となるパラダイムは，チームフォーメーションのプロセスに関するものになるだろう，と書いている。また，トップダウンのチーム構築では一般に，能力の組み合わせよりも個々の能力が重視されるという点も指摘する。</p> 
+  <blockquote> 
+   <p>... 管理者はまず，チームの自己組織化を支援することから始めなければなりません。多くの場合，それがプロジェクトの成果を向上する手段だからです。何と言っても，実際にプロジェクトに携わっている人たち以上に，理想のチーム構成について分かっている人はいないのですから。</p> 
   </blockquote> 
-  <p>セキュリティを必要としない場合のユースケースのため、また、それを必須とすることには異論があるため ...</p> 
-  <blockquote>
-   [...] 
-   <a href="http://http2.github.io/http2-spec/">仕様</a>も
-   <a href="http://datatracker.ietf.org/wg/httpbis/charter/">我々の憲章</a>も、暗号化および非暗号化コネクション上でHTTP/2を使えるという暗黙の了解という問題について何も言及しておらず、実装が何をサポートすべきかを決めていました。
+  <p>氏はCraig Larman，Ahmad Fahmy両氏の，BAML(Bank of America Merrill Lynch)のGlobal Securities Operations Technology部門での<a href="http://www.scrumalliance.org/community/articles/2013/2013-april/how-to-form-teams-in-large-scale-scrum-a-story-of">経験</a>を紹介している。両氏はそこで，5つの機能特化グループから招集した35人を，わずか3時間のセッションで4つのクロスファンクショナルなチームに再編する作業を促進することに成功した。彼らは業務面での制約と自己組織化の３つのサイクルを使用して，各人がコンフォートゾーン(現在の居場所)の外に出て，チームを形成するように強制した。制約は，チームはバランスよく，場所を共有し，クロスファンクショナルかつクロスコンポーネントでなければならない，というものだ。ここでPrešeren氏は，フォーメーションを指導すると同時に，命令や指揮構造の重複を回避するための支援が必要だ，と指摘する。</p> 
+  <blockquote> 
+   <p>指導者は各メンバに対して，チーム構成を制約に照らし合わせて評価するように告げて，人々をコンフォートゾーンから追い出します。そうすることで初めて変化が始まるのです。第２のサイクルに入ると，チームの自己形成が始まります。しかしここで，自然発生的にリーダが現れて，チーム構成にトップダウンのアプローチを取り始めたのです。内部的なトップダウン形成を回避するため，指導者が再度介入しなければなりませんでした。</p> 
   </blockquote> 
-  <p>Snowden氏の登場と<a href="http://www.theguardian.com/world/2013/jul/31/nsa-top-secret-program-online-data">XKeyscore</a>の暴露により、IETFでは大きな方針転換があった。BerlinのWorking Groupミーティングでは<a href="http://www.ietf.org/proceedings/87/slides/slides-87-httpbis-3.pdf">臨時セッション</a>が開かれ、「もっと暗号化を使うことでHTTPのセキュリティを改善する」という強いコンセンサスが生まれた。IETFではその後もさらに議論が重ねられた。</p> 
-  <blockquote>
-   TLSをもっと使うこと（それにより、pervasive monitoringなどの攻撃に対して防御すること）が共通のゴールだということは非常にはっきりしていましたが、そのための手段はいろいろとあって、このゴールをどのように実現するのが最善か、何が適切なトレードオフなのかについて、多くの議論と反対が繰り返されました。
+  <p><a href="http://www.amazon.com/Mastering-Software-Project-Management-Techniques/dp/1604270349">Mastering Software Project Management: Best Practices, Tools and Techniques</a>の著者である<a href="http://tcagley.wordpress.com/about/">Thomas Cagley</a>氏は昨年，チーム構成の安定化によるトップダウン的干渉が存在する場合に，アジャイルシナリオに起こり得るチームの問題について記事を<a href="http://tcagley.wordpress.com/2013/07/25/why-agile-implementations-fail-team-problems-daily-process-thoughts-july-25-2013/">書いた</a>。その中で氏は，アジャイルは“チームが安定していて，スプリントあるいはイテレーション中はメンバシップや注目点は変化しない”という基本的前提の上に構築されている，と指摘する。その上で氏は，チームメンバ間の関係の重要性を説くと同時に，チームが変更されればチーム内の人間関係も変わることを指摘して，次のように述べている。</p> 
+  <blockquote> 
+   <p>チームメンバの構成や所属期間に関する基本前提が覆されると，チームの信頼性や有効性が崩壊することになります。そこから得られるのはアジャイルチームではなく，ただ漠然とした個人の集まりでしかありません。</p> 
   </blockquote> 
-  <p>Mark氏は、ChromeとFirefoxの開発者からは、TLSによって保護される場合に限りHTTP/2をサポートするという強力な支持があることを語った。彼の考えが前進するための最善の方法であることを説明するため、他のブラウザ開発者やセキュリティ専門家とも話した。</p> 
-  <blockquote>
-   [...] 通常のWebブラウジングのケースにおいて、ブラウザとの幅広い相互運用を求めるなら、HTTP/2サーバはTLSを使用する必要があります。— Mike氏とRoberto氏がSPDYでやったのと同じようにです。でも重要なことは、必ずしもプロトコル仕様自体がTLSの使用を要求する必要はないということです。
+  <p>Infosysの<a href="http://www.scrumalliance.org/community/profile/nmittal3">Nitin Mital</a>氏も先日，自己組織型チームを作り上げる上で必要なファクタについて<a href="http://www.scrumalliance.org/community/articles/2013/january/self-organizing-teams-what-and-how">論じている</a>。氏は，自己組織型チームの成立と継続は，チームのコンピテンシ訓練，作業を効果的に楽しむためのチーム指導，メンタリングとラーニングの継続，という３段階のプロセスからなる，と書いている。氏の言によれば，</p> 
+  <blockquote> 
+   <p>...自己組織型チームには“指揮統制”は必要ありませんが，コーチとメンタは必要です。</p> 
   </blockquote> 
-  <p>Mark氏は自分の提案の背景、もっとセキュリティを必要としているグループもあれば、HTTP/2の使用すべてに暗号化を必須とするのはIETFにふさわしくないと考えている人たちもいることについて話を続ける。こうした状況では、IETFが決定に至るのは難しい。特に、こうした問題には、Mark氏の言葉で言うところの「政治」がつきものだ。</p> 
-  <blockquote>
-   政治的な判断というのは、政府を攻撃者と疑っているからではなく、HTTPがプロキシベンダー、ネットワークオペレータ、企業のファイアウォールなど、たくさんの既存のステークホルダで使われているプロトコルだからです。HTTP/2で暗号化を必須とするということは、これらのステークホルダの権利が奪われるということです。
-  </blockquote> 
-  <p>しかしながら、IETFとWorking GroupがHTTP/2プロトコルに柔軟性と明確さがあることを保証することで、さまざまな選択肢のメリット、デメリットについて必要な議論を促すことができると考えている。</p> 
-  <blockquote>
-   たとえば、現在のHTTPの設計では、暗号化を使うかどうかの判断は、完全にサーバ任せです。ユーザがやれるのは、URLが“HTTP”か“HTTPS”かを見て（あるいは鍵のアイコンを見て）、続行するかどうかを決めることだけです。もっと調和のとれたWebとは、クライアントもこの決定に入力を与えられることでしょう、サーバが暗号化をサポートするよう人参をぶらさげて — FirefoxとChromeがやっているように、暗号化されたときだけHTTP/2をサポートするなど。
-  </blockquote> 
-  <p>この場合、判断は標準ではなく、むしろブラウザベンダーによってなされることになる。次は何か？ 別のHTTPbis Working Groupミーティングが<a href="https://github.com/http2/wg_materials/blob/master/interim-14-01/arrangements.md">Zurich</a>で開かれ、Mark氏は<a href="https://github.com/http2/http2-spec/issues/314">重要な問題</a>を解決する提案を求めている。</p> 
-  <blockquote>
-   多くのブラウザ実装者は、「オープン」なインターネット上のトラフィックのため、HTTP/2 over TLSだけを実装すると意思表明しています。彼らはhttps:// URIのためだけにHTTP/2を実装することによって、それを実現することができます。新しいプロトコルを使いたいサイトは、http:// URIをリダイレクトする、できればそのアップグレードにHSTSを使う必要があります。これもまた、必ずしも要求として（つまり、MUSTやMUST NOTを使って）仕様化する必要はありません。こうしたブラウザで新しいプロトコルを使いたいサイトは、先ほどのパターンを実装することになるでしょう。ただし、相互運用を促進するため、ガイドラインや骨組みとなる要件が必要になるかもしれません。このissueは具体的な提案を集めるためです。
-  </blockquote> 
-  <p>つまり、HTTP/2標準がTLSを必須としなくても、ブラウザ実装がTLSを必須とするかもしれないということだ。だがMark氏が指摘するように、後からHTTP/2でTLSを必須にするブラウザ実装は、企業のプロキシがトラフィックなどを調べられるようにという圧力を感じるかもしれない。もしそうなったときには、標準の相互運用性を保った協調のとれたやり方で扱われることが重要だ。最後にMark氏は、決定はまだなされておらず、別の結果になる時間が残されていることを覚えておくよう述べている。そして、Working Groupは常にこの議論に関する<a href="http://lists.w3.org/Archives/Public/ietf-http-wg/">他人からの意見を聞くこと</a>に関心を持っている。最終的にIETF Working Groupでなされる決定は、今後多くの人に影響を与えることになるだろう。</p> 
+  <p>Cagley氏とCohn氏の記事も同じように，フィードバックループの支援と指導を行うことで，チームの自己評価とアジャイル採用を促進するという，コーチの重要性について論じている。Cagley氏は，アジャイルプラクティスを離れて放浪した挙げ句，作業の割り当て行為を始めたチームに関する逸話を公開している。コーチングと新たなフィードバックメカニズムの導入によって，そのチームをトラックに戻すことができた，と氏は説明している。</p> 
+  <p>最後にMital氏は次の点を指摘する。</p> 
+  <blockquote> 
+   <p>... 自己組織化チームの構築は継続的なプロセスであって，決して終わることはありません。チームの構成が変われば，すべてのプロセスをやり直す必要があるのです。</p> 
+  </blockquote>
  </div> 
 </div><br><br><br><br><br><br></body></html>

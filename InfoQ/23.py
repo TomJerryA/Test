@@ -1,22 +1,32 @@
-<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>Add App Wizardなどの機能改良を加えたXAML Spy 2.0.5がリリース</h3><p><a target="_blank" href="http://www.infoq.com/news/2014/01/xaml-spy-january-update"><em>原文(投稿日：2014/01/09)へのリンク</em></a></p>
+<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>CoffeeScript 1.7</h3><p><a target="_blank" href="http://www.infoq.com/news/2014/02/coffescript-17"><em>原文(投稿日：2014/02/08)へのリンク</em></a></p>
 <div class="article_page_left news_container text_content_container"> 
  <div class="text_info"> 
-  <p><a href="http://xamlspy.com/download">XAML Spy 2.0.5</a> がリリースされた。SliverlightやWindows Phone, Windows Store, WPFなど任意のXAMLアプリを，ソース添付の有無どちらでも簡単に追加可能なAdd App Wizardが付属する。ソースコードの入手ができないXAMLアプリをスパイする機能もサポートされている。</p> 
-  <p>今回のアップデートでは，インストール済みのアプリをナビゲートする<em>XAML Spy Exploer</em>ツールバーの<em>Show All Apps</em>ボタンの利用や，ブラウザ外で動作するSilverlightアプリやWindows Storeアプリの調査が，<a href="http://msdn.microsoft.com/en-us/library/dd831853.aspx">Visual Studio 2013</a>から可能になった。</p> 
-  <p>ソリューションエクスプローラの右クリックからオープンできる<em>Manage XML Spy for Solution</em>ダイアログを使えば，複数のプロジェクトに対して，XAML Spyの有効・無効を一度に切り替えることも可能だ。開発者には，XAML Spyの有効になっているプロジェクトの名前を知ることもできる。<br /> <br /> InfoQではFirst Floor SoftwareのKoen Zwikstra氏から，最新リリースに関する詳しい話を聞いた。</p> 
-  <p><strong>InfoQ: XAML Spyの本当の目的と，そのメリットについて説明してください。</strong></p> 
-  <blockquote>
-   最終的な目的は時間の節約です。XAML Spyは開発者に，実行中のXAMLアプリの &quot;中身&quot; を覗いて見るという，ユニークな能力を提供するものです。彼らのXAMLアプリが実際にどのように動いているのを理解して，考えられる問題を迅速に特定するために役立ちます。問題解決の時間を短縮するツールを提供することで，開発者の生産性が向上するのは間違いありません。
+  <p>Jeremy Ashkenas氏は<a href="https://gist.github.com/aseemk/8637896">CoffeeScriptバージョン1.7</a>をリリースした。長らく期待されていた新しい機能がいくつか追加された。</p> 
+  <p>このバージョンでは最も多かった要望である丸括弧なしのチェーニングがサポートされた。以前までのバージョンでは、開発者が関数をチェーンさせたいときは、丸括弧を使わなければならなかった。</p> 
+  <pre><p>// prior to 1.7 - parenthesis required to chain<br />$('#element').addClass('active').css({ left: 5 });</p>
+<p>// as of 1.7 - no parenthesis<br />$ '#element'<br />.addClass 'active'<br />.css { left: 5 }</p></pre> 
+  <p>また複数行の文字列もサポートした。以前のバージョンでは、新しい行や空白を表す文字列リテラルは、ふたつの文字列が同じ1行に含まれることを示す`\`演算子を無視していた。バージョン1.7では、修正され、開発者は複数行の文字列をきれいに記述できるようになった。</p> 
+  <pre><p>console.log '''The quick brown fox jumped over the \<br />lazy dog'''</p>
+<p>// prior to 1.7 outputs<br />The quick brown fox jumped \nover the lazy dog</p>
+<p>// as of 1.7 now outputs<br />The quick brown fox jumped over the lazy dog</p></pre> 
+  <p>配列の分割代入にも拡張が追加された。これはCoffeScriptで<a href="https://github.com/jashkenas/coffee-script/pull/3268">長らく問題になっていた</a>ものだ。</p> 
+  <pre><p># get the last item in the animals array<br />animals = [ 'cat', 'dog', 'hippopotamus' ]</p>
+<p># prior to 1.7<br />hippo = animals[animal.length - 1]</p>
+<p># as of 1.7<br />[..., hippo] = animals</p>
+<p># ...both of which transpile to...<br />hippo = animals[animals.length - 1];</p></pre> 
+  <p>新しい演算子も追加された。power演算子、floor division、剰余演算(割り算の余りを返す)。</p> 
+  <pre><p># power<br />2 ** 2<br /># transpiles to...<br />Math.pow(2, 2);</p>
+<p># floor division<br />2 // 3<br />#transpiles to...<br />Math.floor(2 / 3)</p>
+<p># modulo<br />2 %% 3<br />#transpiles to...<br />var __modulo = function(a, b) { return (a % b + +b) % b; };<br />__modulo(2, 1);</p></pre> 
+  <p>Node.jsでも適切に使えるようになったので、ディレクトリ内の文が自動的に実行されるのではなく、Nodeのように動作し、index.coffeeファイルだけが動作するようになっている。</p> 
+  <p>1.7の開発の大多数(そしてCoffeeScriptの過去数年の開発)はコミュニティによってなされてきた。&quot;100人以上の開発者が開発を行い、パッチをマージしています。&quot;とJeremy氏は言う。&quot;CoffeeScriptはさまざまな使われ方をしています。JavaScriptプログラマにとって魅力的だからです。&quot;1.7のリリースについては、Jeremy氏は<a href="https://github.com/xixixao">Michael Srb氏</a>の貢献に対して<a href="https://twitter.com/jashkenas/status/428243869487362048">特別な謝意</a>を示している。</p> 
+  <p>CoffeeScriptは確かに人気があり、GitHub上でも<a href="http://en.wikipedia.org/wiki/CoffeeScript">10番目に人気のあるプロジェクト</a>だ。Ruby on Rails(バージョン3.1以上)のようなフレームワークでもサポートされている。MicrosoftのVisual Studioでも<a href="http://vswebessentials.com/">Web Essentialsプラグイン</a>経由で利用できる。JavaScriptの開発者である<a href="http://en.wikipedia.org/wiki/Brendan_Eich">Brenden Eich氏</a>も自身の<a href="https://brendaneich.com/tag/javascript-ecmascript-harmony-coffeescript/">未来のJavaScriptに対する考え方</a>がCoffeeScriptに影響を受けていることを表明している。</p> 
+  <p>GitHubのユーザである<a href="https://gist.github.com/stefanpenner">stefanpenner</a>はCoffeeScriptでは、“…ECMAScript6のimport、exportが重要になるだろう…”と書いている。</p> 
+  <p>Jeremy氏はES6について次のように言う。</p> 
+  <blockquote> 
+   <p>CoffeeScriptはほとんど完成しています。ここ数年とても安定しています。しかし、未来に向かって成長していく必要があります。例えば、新しいJavaScriptの機能をサポート、ソースマップのサポートや、プログラミングスタイルの改善などです。</p> 
   </blockquote> 
-  <p><strong>InfoQ: XAML Spyを使用するシナリオをいくつか挙げて頂けますか？</strong></p> 
-  <blockquote>
-   シナリオ1 - ビジュアル要素のレンダリングの様子や理由の理解。 表示要素のすべてのプロパティにアクセスできますから，ユーザインターフェースのビジュアルツリーをリアルタイムで見ることが可能です。
-   <br /> 
-   <br /> シナリオ2 - アプリのストレージに対する，完全なファイルシステムアクセス。ほとんどのXAMLアプリは，ローカルディスク上に分離ストレージを確保します。このストレージのフォルダやファイルにアクセスするのは非常に難しいのですが，XAML Spyならば，分離したストレージのファイルにも超簡単にアクセスできます。
-   <br /> 
-   <br /> シナリオ3 - メモリやレンダリングに関する問題の特定に役立つパフォーマンスモニタ。
-   <br /> 
-   <br /> シナリオ4 - アクセシビリティアプリ (スクリーンリーダなどの自動化ツール) を使用した場合のXAMLアプリの様子を学ぶのに役立つ自動ビジュアルツリー。
-  </blockquote>
+  <p>CoffeeScriptコンパイラを書き直す<a href="https://www.kickstarter.com/projects/michaelficarra/make-a-better-coffeescript-compiler">Kickstarterプロジェクト</a>が立ち上がっている。資金調達は成功し、<a href="http://github.com/michaelficarra/CoffeeScriptRedux">CoffeeScriptRedux</a>という名前のプロジェクトになったようだ。 Jeremy氏は新しいコンパイラを作ることの利点について、&quot;ある言語の優れたコンパイラが多ければ多いほど、その言語は健全です。別のコンパイラがあることはCoffeeScriptにとっても良いことなのです。&quot;</p> 
+  <p>1.7は<a href="https://github.com/jashkenas/coffee-script">GitHub</a>または<a href="http://coffeescript.org/">CoffeeScriptの公式サイト</a>から入手できる。</p> 
  </div> 
 </div><br><br><br><br><br><br></body></html>
