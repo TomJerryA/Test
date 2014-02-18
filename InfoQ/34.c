@@ -1,54 +1,47 @@
-<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>QCon SP 2014: Keynote da NASA, 20 palestrantes confirmados e descontos prorrogados</h3><p>O <a href="http://qconsp.com">QCon S&atilde;o Paulo 2014</a> acontece nos dias 9, 10 e 11 de abril e trar&aacute; muitas novidades importantes. Com novo local e seis tracks simult&acirc;neas, o maior evento independente para arquitetos e l&iacute;deres t&eacute;cnicos ser&aacute; realizado no <a href="http://qconsp.com/venue-hotel">WTC Events Center</a>, em S&atilde;o Paulo/SP.</p>
-<p>Os descontos para inscri&ccedil;&otilde;es antecipadas foram prorrogados at&eacute; o dia 27 de novembro (esta quarta-feira). <a href="http://qconsp.com/registration">Fa&ccedil;a sua inscri&ccedil;&atilde;o e reserve sua vaga!</a></p>
-<h2>Temas, Palestras e Palestrantes</h2>
-<p>A quatro meses do evento, j&aacute; temos definidas todas as tracks, um keynote e 20 palestrantes confirmados. Conhe&ccedil;a as tracks:</p>
-<ul class="c9 lst-kix_pu7fgusb6lni-0 start"> 
- <li><strong>De Projetos a Produtos: DevOps, Continuous Delivery e al&eacute;m</strong> - Automa&ccedil;&otilde;es, t&eacute;cnicas e integra&ccedil;&otilde;es para gerar produtos na velocidade da internet</li> 
- <li><strong>Front-end universe: JS, HTML5 e novas fronteiras da UX</strong> - Tirando proveito das principais plataformas da web moderna, rumo ao 'user delight'</li> 
- <li><strong>Din&acirc;micas e Funcionais: Linguagens e T&eacute;cnicas para o Dev Poliglota</strong> - Unindo as for&ccedil;as de linguagens funcionais, din&acirc;micas e h&iacute;bridas</li> 
- <li><strong>Arquiteturas que Voc&ecirc; Sempre Quis Conhecer</strong> - Li&ccedil;&otilde;es reais em aplica&ccedil;&otilde;es inovadoras de alto volume e complexidade</li> 
- <li><strong>Big Data, Data Science e o Poder dos Dados</strong> - Como processar e alavancar grandes volumes de dados em ambientes distribu&iacute;dos e complexos</li> 
- <li><strong>Fronteiras do Desenvolvimento</strong> - Novas t&eacute;cnicas e plataformas, e inova&ccedil;&otilde;es com linguagens e ferramentas tradicionais</li> 
- <li><strong>Mobile: Port&aacute;teis e Furiosos</strong> - Domando desafios do desenvolvimento m&oacute;vel, do nativo ao h&iacute;brido &agrave; mobile web.</li> 
- <li><strong>Desempenho e Escalabilidade na Pr&aacute;tica</strong> - Criando arquiteturas para exceder limites</li> 
- <li><strong>Criando Culturas e Equipes que Funcionam</strong> - Colabora&ccedil;&atilde;o, princ&iacute;pios e aprendizado para o m&aacute;ximo desempenho em times de software</li> 
- <li><strong>Java na Crista da Onda</strong> - Inova&ccedil;&otilde;es em plataformas, frameworks, APIs e linguagens</li> 
+<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>QCon São Paulo: 100% de tutoriais definidos, 43 palestras e 58 palestrantes</h3><p>As prepara&ccedil;&otilde;es do quinto <strong>QCon S&atilde;o Paulo</strong> est&atilde;o entrando na reta final. J&aacute; estamos com toda a programa&ccedil;&atilde;o de tutoriais definida: Clojure, NoSQL, Lambdas em Java, Desenvolvimento para Twitter, Continuous Delivery, REST - e um <strong>tutorial de dia inteiro</strong> sobre Big Data por um engenheiro da NASA. H&aacute; palestras para todos os gostos em doze tracks, com mais de 60 palestrantes. Veja a <a href="http://qconsp.com/schedule">programa&ccedil;&atilde;o completa</a>.</p>
+<p>Ainda n&atilde;o se inscreveu? <a href="http://qconsp.com/registration">Garanta sua vaga!</a> Ainda d&aacute; tempo para aproveitar a faixa de pre&ccedil;os.</p>
+<p>Confira a seguir as principais novidades nas palestras do QCon SP:</p>
+<p><a href="http://qconsp.com/track/criando-culturas-e-equipes-que-funcionam">Cultura e Equipes</a></p>
+<ul class="c0 lst-kix_10mb033x7712-0 start"> 
+ <li><strong>Retrospectivas divertidas</strong>, por Paulo Caroli, Autor de livros e Agile Coach na ThoughtWorks</li> 
+ <li><strong>Cultura Enxuta: Criando equipes e culturas que funcionam na gest&atilde;o de produtos Lean</strong>, por Fernando de la Riva, Empreendedor serial e s&oacute;cio-fundador da Concrete Solutions</li> 
 </ul>
-<p>Tr&ecirc;s <strong>palestrantes internacionais</strong> j&aacute;<strong> </strong>fecharam sua presen&ccedil;a:</p>
-<ul class="c9 lst-kix_agbvnoycwjly-0 start"> 
- <li><a href="http://www.linkedin.com/in/rwitoff">Rob Witoff</a>, Pioneiro em Data Science na NASA</li> 
- <li><a href="http://it.linkedin.com/pub/mario-fusco/3/721/346">Mario Fusco</a>, Senior Software Engineer da Red Hat e criador do Hammurabi e Lambdaj</li> 
- <li><a href="http://ca.linkedin.com/in/floydm">Floyd Marinescu</a>, CEO e idealizador dos sites InfoQ e eventos QCon</li> 
+<p><a href="http://qconsp.com/track/de-projetos-produtos-devops-continuous-delivery-e-al%C3%A9m">DevOps e Continuous Delivery</a></p>
+<ul class="c0 lst-kix_9xy7835ygsrs-0 start"> 
+ <li><strong>Integra&ccedil;&atilde;o Discreta: como melhorar a Integra&ccedil;&atilde;o Cont&iacute;nua e ainda ganhar em colabora&ccedil;&atilde;o</strong>, por George Guimar&atilde;es, Co-fundador da Plataformatec</li> 
+ <li><strong>O que past&eacute;is, pontes e kombis tem em comum? Continuous Delivery por quem faz no dia a dia</strong>, por Carlos Villela (Market Technical Principal) e Marco Valtas (Lead Architect) na ThoughtWorks</li> 
+ <li><strong>Continuous Mobile: Entrega e Integra&ccedil;&atilde;o Cont&iacute;nuas em iOS e Android</strong>, por Victor Nascimento e Thiago Lioy, Consultores especialistas da Concrete Solutions</li> 
+ <li><strong>Tutorial: Iniciando com Continuous Delivery</strong>, por Fabricio Leotti e Rodrigo Russo, especialistas em Continuous Delivery no Walmart.com</li> 
 </ul>
-<p>E a <strong>elite do desenvolvimento</strong> de software no Brasil estar&aacute; bem representada no evento:</p>
-<ul class="c9 lst-kix_7xepaptbdxmc-0 start"> 
- <li><a href="http://nandovieira.com/">Nando Vieira</a> - Guru de Ruby/JS e fundador da Hellobits</li> 
- <li><a href="http://br.linkedin.com/in/akitaonrails">Fabio Akita</a> - Co-fundador da Codeminer 42</li> 
- <li><a href="http://www.tridedalo.com.br/fabiane/">Fabiane Nardon</a> - Chief Scientist na TailTarget e Java Champion</li> 
- <li><a href="https://twitter.com/gniemeyer">Gustavo Niemeyer</a> - L&iacute;der T&eacute;cnico da Canonical e criador do juju e go-qml</li> 
- <li><a href="http://www.linkedin.com/in/andrefatala">Andr&eacute; Fatala</a> e <a href="https://twitter.com/rpedigoni">Renato Pedigoni</a> - Gerentes de P&amp;D, Magazine Luiza</li> 
- <li><a href="http://br.linkedin.com/in/michaelnascimento">Michael Nascimento</a> - Systems Architect na TecSinapse &amp; Java Champion</li> 
- <li><a href="http://blog.gilliard.eti.br/">Gilliard Cordeiro</a> - Coordenador de P&amp;D, TJ-MS e Autor</li> 
- <li><a href="http://br.linkedin.com/in/camposr75">Rodrigo Campos</a> - Diretor de Opera&ccedil;&otilde;es de TI no Walmart.com</li> 
- <li><a href="https://twitter.com/lcparzianello">Luiz Parzianello</a> - Gerente de Desenvolvimento na RBS</li> 
- <li><a href="http://br.linkedin.com/in/vechiato/pt">Marcus Vechiato</a> - Gerente de Opera&ccedil;&otilde;es de TI da Locaweb</li> 
- <li><a href="http://br.linkedin.com/in/paulovittor23">Paulo Vitor</a> e <a href="http://br.linkedin.com/pub/alexsandro-terto/20/574/47b">Alexsandro Terto</a> - Arquitetos de Solu&ccedil;&otilde;es na Abril Digital</li> 
- <li><a href="http://bernarddeluna.com/">Bernard de Luna</a> - Head de Produtos no site Videolog.tv</li> 
- <li><a href="http://sergiolopes.org/">Sergio Lopes</a> - L&iacute;der T&eacute;cnico na Caelum</li> 
- <li><a href="http://andregarzia.com/pages/pt/">Andr&eacute; Garzia</a> - Desenvolvedor web/mobile e volunt&aacute;rio da Mozilla Brasil</li> 
- <li><a href="https://twitter.com/heynemann">Bernardo Heynemann</a> - Desenvolvedor de Webapps de larga escala na Globo.com</li> 
+<p><a href="http://qconsp.com/track/java-na-crista-da-onda">Java</a></p>
+<ul class="c0 lst-kix_10mb033x7712-0"> 
+ <li><strong>Lidando com Java Obsoleto: Do Struts 1.0 ao CDI</strong>, por David Camargo, CTO da ELO7</li> 
 </ul>
-<p>As 17 palestras confirmadas (ser&atilde;o mais de 50) j&aacute; cobrem t&oacute;picos que v&atilde;o de DevOps a Mobile, passando por JavaScript, HTML5, Ruby, Big Data, Cases de Arquitetura, Desempenho e Escalabilidade, Cloud Computing, Cultura e Equipes, e mais.</p>
-<h2>Tutoriais</h2>
-<p>O QCon SP 2014 abre mais uma vez com o Dia de Tutoriais, que foi sucesso de p&uacute;blico e cr&iacute;tica na edi&ccedil;&atilde;o anterior (315 participantes e mais de 92% de aprova&ccedil;&atilde;o). Dos 8 tutoriais previstos j&aacute; temos dois confirmados:</p>
-<ul class="c9 lst-kix_kl4c8kxh7jzc-0 start"> 
- <li><strong>Lambdas in Java,</strong> com Mario Fusco (Red Hat Italy)</li> 
- <li><strong>RESTful Web APIs</strong>, com Eder Ignatowicz (Dextra)</li> 
+<p><a href="http://qconsp.com/track/front-end-universe-js-html5-e-novas-fronteiras-da-ux">Front-end</a></p>
+<ul class="c0 lst-kix_10mb033x7712-0"> 
+ <li><strong>Interface &eacute; c&oacute;digo: aprimorando a experi&ecirc;ncia do usu&aacute;rio no front e no back-end</strong>, por Talita Pagani, Consultora de Interface Design e UX</li> 
 </ul>
-<p>Os Tutoriais acontecer&atilde;o no mesmo centro de eventos que a Confer&ecirc;ncia, facilitando o acesso e o planejamento dos participantes.</p>
-<h2>Mais novidades</h2>
-<p>Atendendo a <strong>feedback</strong> dos participantes da &uacute;ltima edi&ccedil;&atilde;o, foi escolhido um novo local com infraestrutura maior e mais sofisticada, cercado por dezenas de op&ccedil;&otilde;es de restaurantes e hot&eacute;is.</p>
-<p>No novo espa&ccedil;o, ser&atilde;o 6 salas para palestras, com capacidade total de <strong>mais de 1.200 lugares</strong>, mais conforto, espa&ccedil;o reservado para maleiro e credenciamento distribu&iacute;do.</p>
-<p>O networking dos participantes tamb&eacute;m ser&aacute; estendido, com a inclus&atilde;o de intervalos entre todas as palestras e servi&ccedil;o de buffet aprimorado. Tamb&eacute;m est&atilde;o programados mais eventos sociais para participantes e palestrantes.</p>
-<h2>Inscri&ccedil;&otilde;es e mais detalhes</h2>
-<p>O <a href="http://qconsp.com">site do evento</a> ser&aacute; constantemente atualizado para incluir descri&ccedil;&otilde;es completas de palestras, biografias dos palestrantes e outros detalhes. Fa&ccedil;a a sua <a href="http://qconsp.com/registration">inscri&ccedil;</a><a href="http://qconsp.com/registration">&atilde;o</a> antecipada!</p><br><br><br><br><br><br></body></html>
+<p><a href="http://qconsp.com/track/arquiteturas-que-voc%C3%AA-sempre-quis-conhecer">Arquiteturas</a></p>
+<ul class="c0 lst-kix_10mb033x7712-0"> 
+ <li><strong>Samba Tech Analytics: Arquiteturas e tecnologias por tr&aacute;s da an&aacute;lise de v&iacute;deos online em larga escala,</strong> por L&iacute;dio Ramalho, CTO da Samba Tech</li> 
+ <li><strong>Arquiteturas na nuvem com os custos sob controle: processando bilh&otilde;es de p&aacute;ginas na AWS sem estourar o cart&atilde;o</strong> por Fernando Babadopulos, Co-fundador e CTO da TailTarget</li> 
+</ul>
+<p><a href="http://qconsp.com/track/big-data-data-science-e-o-poder-dos-dados">Big Data e Data Science</a></p>
+<ul class="c0 lst-kix_10mb033x7712-0"> 
+ <li><strong>Machine Learning no mundo real com Vowpal Wabbit</strong>, por Juliano Viana, CTO na Zunnit</li> 
+ <li><strong>Tutorial: Big Data in practice,</strong> por Rob Witoff, Data Scientist na NASA</li> 
+</ul>
+<p><a href="http://qconsp.com/track/mobile-port%C3%A1teis-e-furiosos">Mobile</a></p>
+<ul class="c0 lst-kix_10mb033x7712-0"> 
+ <li><strong>10 dicas de desempenho para apps mobile h&iacute;bridas,</strong> por Loiane Groner, Autora e Gerente de Desenvolvimento do Citibank</li> 
+ <li><strong>Usando e Abusando da Geolocaliza&ccedil;&atilde;o no Android</strong>, por Ricardo Ogliari, Desenvolvedor Android e Instrutor da Globalcode</li> 
+ <li><strong>Android em Tablets: Mercado, UX e Otimiza&ccedil;&atilde;o de Apps</strong>, por Neto Marin, Developer Advocate do Google</li> 
+</ul>
+<p><a href="http://qconsp.com/track/desempenho-e-escalabilidade-na-pr%C3%A1tica">Escalabilidade e Desempenho</a></p>
+<ul class="c0 lst-kix_arg9m3j7ppby-0 start"> 
+ <li><strong>Plataforma de v&iacute;deos do UOL: Desenvolvimento de Cache+Proxy de alta performance para grandes volumes de audi&ecirc;ncia</strong>, por George Junior, Systems Specialist no Universo Online</li> 
+ <li><strong>Hist&oacute;rias de guerra: escalando um sistema de email para milh&otilde;es de contas, por</strong> Francisco Freire e Gleicon Moraes, da Locaweb</li> 
+ <li><strong>Apac</strong><strong>he Camel e Enterprise Integration Patterns na vida real</strong>, por Rodrigo Domingues, Arquiteto da CI&amp;T</li> 
+</ul>
+<p>A lista de <strong>patrocinadores</strong> est&aacute; crescendo. Agradecemos &agrave; <a href="https://www.buscapecompany.com/pt/">Buscap&eacute; Company</a>, patrocinadora Diamond, <a href="http://www.caelum.com.br">Caelum</a>, patrocinadora Gold; e aos patrocinadores Silver: <a href="http://www.ciandt.com/">CI&amp;T</a>, <a href="http://www.casadocodigo.com.br/">Casa do C&oacute;digo</a> e <a href="http://www.dextraining.com.br/">Dextraining</a>. Confira mais apoiadores e parceiros na nossa <a href="http://qconsp.com/sponsors">p&aacute;gina de sponsors</a>.</p>
+<p>Os descontos - de mais de 30% - ainda est&atilde;o valendo. Veja os <a href="http://qconsp.com/speakers">palestrantes confirmados</a> e acompanhe as novidades do evento pelo <a href="http://twitter.com/qconsp">Twitter</a> e <a href="http://lanyrd.com/2014/qconsp/">Lanyrd</a>.</p><br><br><br><br><br><br></body></html>

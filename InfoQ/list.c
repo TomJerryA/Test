@@ -1,6 +1,9 @@
 <html>
  <head></head> 
- <body> 
+ <body>
+  <div>
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/34.c">QCon S&atilde;o Paulo: 100% de tutoriais definidos, 43 palestras e 58 palestrantes</a>As prepara&ccedil;&otilde;es do quinto QCon S&atilde;o Paulo est&atilde;o entrando na reta final. J&aacute; estamos com toda a programa&ccedil;&atilde;o de tutoriais definida: Clojure, NoSQL, Lambdas em Java, Desenvolvimento para Twitter, Continuous Delivery, REST – e um tutorial de dia inteiro sobre Big Data por um engenheiro da NASA. H&aacute; palestras para todos os gostos em doze tracks, com mais de 60 palestrantes.
+  </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/33.c">Design Patterns para aplica&ccedil;&otilde;es hospedadas na nuvem</a>O grupo de padr&otilde;es e pr&aacute;ticas da Microsoft liberou um guia com solu&ccedil;&otilde;es e padr&otilde;es adequados ao implementar aplicativos hospedados na nuvem. O guia cont&eacute;m dez t&oacute;picos de orienta&ccedil;&atilde;o junto com 24 design patterns visando oito categorias de problemas, cobrindo &aacute;reas comuns no desenvolvimento de aplica&ccedil;&otilde;es na nuvem. 
   </div> 
@@ -147,9 +150,6 @@
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/36.c">JavaScript: Visualize o fluxo de c&oacute;digo com o TraceGL</a>A Rik Arends lan&ccedil;ou o TraceGL, uma nova ferramenta para depurar aplica&ccedil;&otilde;es JavaScript usando depura&ccedil;&atilde;o por trilhas. A fim de tornar mais f&aacute;cil depurar navegadores complexos e aplica&ccedil;&otilde;es baseadas em Node.js, a ferramenta captura, visualiza e permite que o usu&aacute;rio navegue na trilha de execu&ccedil;&atilde;o, enquanto a aplica&ccedil;&atilde;o est&aacute; sendo executada. 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/35.c">OpenKit: quadro de l&iacute;deres sociais entre diversas plataformas</a>Quando o OpenFeint foi descontinuado no final de 2012, muitos desenvolvedores de jogos iOS e Android ficaram sem funcionalidades sociais ou conex&otilde;es com redes sociais em seus softwares. Os jogos populares como Ninja Fruit, Fieldrunners ou Pocket God foram afetados. Agora, os cofundadores do OpenFeint liberaram o OpenKit, uma API substituta para servi&ccedil;os sociais entre v&aacute;rias plataformas. 
-  </div> 
+  </div>  
  </body>
 </html>
