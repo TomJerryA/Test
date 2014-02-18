@@ -1,11 +1,11 @@
 <html>
  <head></head> 
- <body>
-  <div>
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/23.py">CoffeeScript 1.7</a>Jeremy Ashkenas氏はCoffeeScriptバージョン1.7をリリースした。長らく期待されていた新しい機能がいくつか追加された。丸括弧なしの関数チェーニングだ。
-  </div>
-  <div>
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/22.py">実験と価値提供のバランスをとる</a>リーンスタートアップの実験は顧客について学び、どのような機能に価値があるのかを判別する手助けをしてくれる。しかし、価値は製品を作り、実際に顧客に届けることで生まれるものだ。実験とデリバリのバランスを上手くとる必要がある。
+ <body> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/23.py">CoffeeScript 1.7</a>Jeremy Ashkenas氏はCoffeeScriptバージョン1.7をリリースした。長らく期待されていた新しい機能がいくつか追加された。丸括弧なしの関数チェーニングだ。 
+  </div> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/22.py">実験と価値提供のバランスをとる</a>リーンスタートアップの実験は顧客について学び、どのような機能に価値があるのかを判別する手助けをしてくれる。しかし、価値は製品を作り、実際に顧客に届けることで生まれるものだ。実験とデリバリのバランスを上手くとる必要がある。 
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/21.py">Google Cast SDK、MPEG-DASHやHTTP Live Streamingなどのサポートを追加</a>GoogleがCast SDKをリリースした。開発者はアダプティブストリーミング、MPEG-DASH、HLS (HTTP Live Streaming)、SmoothStreamingを使って新規および既存のモバイルアプリやWebサイトにChromecastを統合することができる。 
@@ -150,6 +150,6 @@
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/28.py">TwitterがMapReduceストリーミングフレームワークSummingbirdをオープンソースに</a>Twitterは，Summingbirdと呼ぶ自社のMapReduceストリーミングフレームワークをオープンソースにした。Apache 2ライセンスで公開されるSummingbirdは，コードをバッチモード(Hadoop/MapReduceをベースとする)でもストリームモード(Stormをベースとする)でも，あるいはハイブリッドモードと呼ばれる２つの組み合わせでも同じように実行することができる，大規模データ処理システムだ。 
-  </div>   
+  </div> 
  </body>
 </html>

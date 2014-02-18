@@ -1,6 +1,9 @@
 <html>
  <head></head> 
- <body> 
+ <body>
+  <div>
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/14.java">Hazelcast Introduces MapReduce API</a>Hazelcast, an open source in-memory data grid solution introduces a MapReduce API for its offering.
+  </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/13.java">Testing End-to-End with Nightwatch</a>Nightwatch is a recently released acceptance framework based on Node.js that uses Selenium WebDriver API to automate web applications testing. The tool promises a simple syntax which enables the writing of end-to-end tests using JavaScript and CSS selector that runs against a Selenium server. 
   </div> 
@@ -147,9 +150,6 @@
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/15.java">QCon London in 4 weeks; Top Tracks, Sessions, and Speakers (Mar 4-8, 2014)</a>The eighth annual QCon London (March 3-7) will feature in-depth presentations and case studies from NASA, Netflix, Twitter, The Financial Times, Etsy, and others. Hear industry practitioners on topics like Architecture, DevOps, Performance &amp; Scalability, Agile, Java, and more. The conference schedule is now final and live. Register by Feb 5th and save &pound;149. 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/14.java">More on Indexes in In-Memory OLTP</a>Indexes in SQL Server’s In-Memory OLTP don’t work exactly like normal indexes. This isn’t necessarily a bad thing, but the differences need to be kept in mind to avoid performance problems. 
-  </div> 
+  </div>  
  </body>
 </html>
