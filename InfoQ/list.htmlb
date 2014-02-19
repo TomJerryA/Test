@@ -2,6 +2,9 @@
  <head></head> 
  <body> 
   <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/48.htmlb">虚拟座谈会：性能调优面面观</a> 在应用交付领域，看上去性能调优仍然没有成为主流。InfoQ采访了性能监控领域的5位大师，探讨了其原因，以及我们该做些什么。讨论非常激烈。虚拟座谈会的5位成员是Ben Evans、Charlie Hunt、Kirk Pepperdine、Martin Thompson和Monica Beckwith。 
+  </div> 
+  <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/47.htmlb">跟Alexander Smirnov聊图形可视化</a> To help the user understand what they are seeing, developers often turn to bar and pie charts. But that only works for discrete data; when at the links between data other tools come into play. We asked Alexander Smirnov, creator of GraphX, to explain what graph visualization is and how it can be used. 
   </div> 
   <div> 
@@ -147,9 +150,6 @@
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/1.htmlb">虚拟专家座谈会：迈向云开发</a> InfoQ就云开发的现状、推荐工具、反面模式和如何入门的问题与三位意见领袖进行了交流。我们的专家组成员是Adron Hall、Magnus M&aring;rtensson和Andy Piper。 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/0.htmlb">前端工程精粹（三）：本地调试与数据模拟</a> 自Web项目诞生以来，程序员们渐渐把整个项目的开发拆分为了前端与后端两个部分。随着项目复杂度的不断增加，同时为了快速迭代出更多Web项目，IT界就把两个部分的工作分成了两个工种来完成--前端开发工程师以及后端XX语言开发工程师(我们在此简称为FE与RD)。 
   </div> 
  </body>
 </html>

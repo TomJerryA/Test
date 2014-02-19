@@ -1,5 +1,31 @@
-<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>VS 2013的适度更新提高了对Update 2的期望</h3><p>Microsoft于最近发布了一个VS 2013的“小更新”，正如该更新的名字所描述的那样它并没有包含太多特性，其主要内容是bug修复并提供了IE9的支持，后者对于那些不能将开发机升级到IE10的开发者而言是非常重要的。</p>
-<p>尽管缺少重要的特性，但是几乎所有使用VS 2013的开发人员（从需要IE9支持的人开始）都会想安装这个更新。所有的开发人员都将受益于该更新所提供的大量bug修复，其中特别需要注意的内容包括Nuget 2.7.2、SignalR 2.0.1以及对MVC 5.1的编辑支持。某些用户使用C++时会发生随机崩溃的问题也已经被修复。</p>
-<p>除了该更新之外，来自于Microsoft的Brian Harry还透露VS 2013的第二个更新将很快以CTP的形式对外发布，该更新<a href="http://blogs.msdn.com/b/bharry/archive/2014/01/20/vs-2013-1-update-1-is-available.aspx">承诺</a>会包含更多的特性。其中特别提到了对Git和敏捷项目管理的改进。在Update 1中Git工具对SSH的支持仅适用于VS 2013，而在Update 2中VS 2013和Team Foundation Server都将获得该能力。</p>
-<p>那些想要直接将该补丁应用于自己系统的用户可以获取<a href="http://www.microsoft.com/en-us/download/details.aspx?id=41650">安装包</a>。如果你想使用离线安装或者想在更新多台机器的时候节省带宽，那么可以下载官方<a href="http://go.microsoft.com/fwlink/?LinkId=386593">提供的ISO</a>，该ISO的大小为245MB（报告称安装占用的总空间为340MB）。该更新所包含的所有变化的完整详细信息可以从<a href="http://support.microsoft.com/kb/2911573">发布说明</a>中获取到。所有版本的VS 2013都可以使用该更新，包括Express版和付费版。最后，对于那些使用<a href="http://www.microsoft.com/en-us/download/details.aspx?id=41649">Remote Tools for VS 2013</a>的用户而言也有一个相应的更新。</p>
-<p><b>查看英文原文</b>：<a href="http://www.infoq.com/news/2014/01/VS2013_Update1_Released">Modest Update to VS2013 Raises Expectations for Update 2</a></p><br><br><br><br><br><br></body></html>
+<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>Java 8新闻：发布候选版面世、新的原子数、放弃简易实现（Stripped Implementations）</h3><p>Java 8的第一个发布候选版（RC）已于2月初面世。<a href="http://mail.openjdk.java.net/pipermail/jdk8-dev/2014-February/003990.html">第一个发布候选版</a>b128是2月4日发布的，第二个版本则于一周后在OpenJDK邮件列表中<a href="http://mail.openjdk.java.net/pipermail/jdk8-dev/2014-February/004005.html">宣告问世</a>。</p>
+<p>Java 8 RC2修复了新的Comparator API中的一个严重缺陷——新的<i>thenComparing()</i>方法有一个不必要的类型约束。<a href="https://bugs.openjdk.java.net/browse/JDK-8033590">bug报告</a>指出：</p>
+<p>在java.util.Comparator中，下面的方法要求类型U扩展java.lang.Comparable。</p>
+<pre>
+&lt;U extends Comparable&lt;? super U&gt;&gt; Comparator&lt;T&gt; thenComparing( 
+Function&lt;? super T, ? extends U&gt; keyExtractor, 
+Comparator&lt;? super U&gt; keyComparator);</pre>
+<p>但是这一约束是不必要的，因为keyComparator用于比较的是提取出的key对象。</p>
+<p>Java 8 RC2还修复了在Mac OS X上的一个<a href="https://bugs.openjdk.java.net/browse/JDK-8033642">读权限问题</a>。发布候选版可以从<a href="https://jdk8.java.net/download.html">https://jdk8.java.net/download.html</a>下载。</p>
+<p>根据<a href="https://bugs.openjdk.java.net/browse/JDK/fixforversion/11815">JDK 8的bug跟踪系统</a>上的信息，Java 8将于3月17日圣帕特里克节这天发布。截至本文写作时，还有3个问题尚未解决，都与文档有关。</p>
+<p>在其他与Java 8有关的新闻中，Drew Stephens最近发布的数据表明，Java 8的原子数实现快了很多。此外，出于法律方面的原因，Mark Reinhold提议放弃简易实现（Stripped Implementations）。</p>
+<h2>新的原子数实现</h2>
+<p>除了Lambdas（<a href="https://jcp.org/en/jsr/detail?id=335">335</a>）和新的日期与时间API（<a href="http://jcp.org/en/jsr/detail?id=310">JSR 310</a>），Java 8还包含了对特定的多线程应用类非常重要的原子数实现。Palamino Labs的负责人<a href="http://www.linkedin.com/in/drewgstephens">Drew Stephens</a>最近<a href="http://blog.palominolabs.com/?p=255">撰文谈到了LongAdder和DoubleAdder的引入</a>。</p>
+<blockquote> 
+ <p>尽管<a href="http://download.java.net/jdk8/docs/api/java/util/concurrent/atomic/LongAdder.html">LongAdder</a> 和 <a href="http://download.java.net/jdk8/docs/api/java/util/concurrent/atomic/DoubleAdder.html">DoubleAdder</a>的引入不是那么光彩夺目，但是对于特定的多线程应用类而言，非常重要。这两个原子数实现在多线程竞态条件下提供了比<a href="http://download.java.net/jdk8/docs/api/java/util/concurrent/atomic/AtomicInteger.html">AtomicInteger</a>和<a href="http://download.java.net/jdk8/docs/api/java/util/concurrent/atomic/AtomicLong.html">AtomicLong</a>更好的性能。</p> 
+ <p>一些简单的基准测试就能说明其性能差别，下面的基准测试，我们使用了一个<a href="http://aws.amazon.com/ec2/instance-types/instance-details/">m3.2xlarge EC2实例</a>，它可以访问一个Intel Xeon E5-2670处理器的全部8个核心。</p> 
+ <p><img src="http://infoqstatic.com/resource/news/2014/02/java8-release-candidates/zh/resources/0218000.jpg" width="550" alt="" _href="img://null" _p="true" /></p> 
+ <p>在单线程条件下，新的LongAdder会慢1/3，但是当多个线程竞争着增加字段时，LongAdder就体现出了其价值。请注意，每个线程唯一要做的是尝试增加计数器——这是一个最极端的综合基准测试。这里的竞争比你现实中可能看到的大部分应用更为强烈，但有时你<i>确实</i>需要这类共享计数器，而LongAdder能提供很大的帮助。</p> 
+</blockquote>
+<p>Drew继续演示了AtomicLong，它在单线程条件下快一点。然而，在使用两个线程时，它要慢4倍；当线程数与核数相同时，它几乎慢5倍。他还指出，“当线程数超过CPU的物理核数时，LongAdder的性能就保持恒定了”。</p>
+<h2>放弃简易实现</h2>
+<p>简易实现是Java 8的一个计划特性，支持将Java SE的定制实现与要基于它运行的应用打包到一起。不依赖应用所使用代码的元素可以移除。对于想把Java嵌入到设备中的应用，这类实现可能是有用的（比如家用设备）。</p>
+<p><a href="http://www.infoq.com/news/2014/02/www.linkedin.com/in/markreinhold">Mark Reinhold</a>最近<a href="http://mail.openjdk.java.net/pipermail/java-se-8-spec-observers/2014-February/000064.html">提议</a>从Java SE 8中去掉简易实现。他援引了法律问题作为理由。</p>
+<blockquote> 
+ <p>为保持兼容性并防止分裂，<a href="http://cr.openjdk.java.net/~mr/se/8/java-se-8-fr-spec-01/#s9">Java SE 8的简易实现特性</a>需要对TCK许可做一些重大的修改。</p> 
+ <p>我已经和Oracle的法务部门就这些修订共同工作过一段时间。我们有一个初始草案，但是现在遗憾的是，我认为专家组成员、JCP执行委员会成员和其他各方已经没有足够的时间审阅和评注这些修改了。</p> 
+ <p>因此我建议从Java SE 8中去掉简易实现特性。这只需要修改规范和TCK规则，不需要修改参考实现或实际的TCK测试。</p> 
+</blockquote>
+<p>Reinhold还写道，他认为简易实现对于Java平台的未来很是重要，该特性可能会在Java SE 9之前的版本中加入。</p>
+<p>Java 8的发布已经近在咫尺。更易用的日期、闭包、更好的并发和一个新的JavaScript引擎，离我们只有一个月之遥了！你会升级吗？如果不升级，是有技术方面的原因阻止你升级吗？</p>
+<p><strong>查看英文原文：</strong><a href="http://www.infoq.com/news/2014/02/java8-release-candidates">Java 8 News: Release Candidates Available, New Atomic Numbers and Stripped Implementations Dropped</a></p><br><br><br><br><br><br></body></html>

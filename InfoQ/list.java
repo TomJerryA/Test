@@ -1,6 +1,9 @@
 <html>
  <head></head> 
- <body> 
+ <body>
+  <div>
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/16.java">Interview with VersionOne CEO Robert Holler on the State of Agile Survey Results</a>InfoQ spoke to VersionOne CEO Robert Holler about the 8th State of Agile survey results which were recently released.
+  </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/15.java">OpenAccess ORM Renamed As Telerik Data Access with Improved UI and Colored Visual Designer</a>Telerik recently renamed OpenAccess ORM as Telerik Data Access with Improved User Interface and colored visual designer in addition to Telerik.DataAccess.Core NuGet, Telerik.DataAccess.Fluent and Telerik.DataAccess.Fluent.Sample NuGet packages. 
   </div> 
@@ -147,9 +150,6 @@
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/17.java">New InfoQ Feature: Follow Your Favorite Topics with RSS</a>For 2014 we have made topic pages available through RSS, so you can be using your RSS reader to follow your favorite topics. 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/16.java">DevOps adoption cultural challenges</a>Oliver White, Head of Rebel Labs, recently discussed the difficulties of DevOps adoption at IT organizations, even when there is a growing body of evidence that highlights the benefits of DevOps. InfoQ took the opportunity to interview Oliver and review some of the reports that study this topic. 
-  </div> 
+  </div>  
  </body>
 </html>

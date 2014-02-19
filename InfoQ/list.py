@@ -1,11 +1,11 @@
 <html>
  <head></head> 
- <body>
-  <div>
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/25.py">Parse、iOSとAndroid用の低レベルライブラリ集、Boltsを発表</a>Parse（数ヶ月前にFacebookが買収）がAndroidとiOS用の低レベルライブラリをまとめて、Boltsと名づけてオープンソース化した。Parseの発表によると、BoltsはParse/Facebookの共同成果であり、両社が独自に開発してきた小さな低レベルのユーティリティクラスを固めたものだ。
-  </div>
-  <div>
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/24.py">Masonryを使用したiOS Auto Layout</a>オープンソースプロジェクトMasonry目標は，Auto Layoutのコードをもっと簡潔で読みやすくすることだ。”Auto Layoutを適切なシンタックスでラップする軽量レイアウトフレームワーク”であるMasonryは，XIB-およびStoryboardの不要なエクスペリエンスを提供する。
+ <body> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/25.py">Parse、iOSとAndroid用の低レベルライブラリ集、Boltsを発表</a>Parse（数ヶ月前にFacebookが買収）がAndroidとiOS用の低レベルライブラリをまとめて、Boltsと名づけてオープンソース化した。Parseの発表によると、BoltsはParse/Facebookの共同成果であり、両社が独自に開発してきた小さな低レベルのユーティリティクラスを固めたものだ。 
+  </div> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/24.py">Masonryを使用したiOS Auto Layout</a>オープンソースプロジェクトMasonry目標は，Auto Layoutのコードをもっと簡潔で読みやすくすることだ。”Auto Layoutを適切なシンタックスでラップする軽量レイアウトフレームワーク”であるMasonryは，XIB-およびStoryboardの不要なエクスペリエンスを提供する。 
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/23.py">CoffeeScript 1.7</a>Jeremy Ashkenas氏はCoffeeScriptバージョン1.7をリリースした。長らく期待されていた新しい機能がいくつか追加された。丸括弧なしの関数チェーニングだ。 
@@ -150,6 +150,6 @@
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/30.py">さらにパフォーマンスを向上したDart 1.1</a>先日リリースされたDart 1.1は，dart2jsコンパイラのパフォーマンスが向上し，サーバ側の開発サポートが改善されている。言語自体はほとんどそのままだ。 
-  </div>   
+  </div> 
  </body>
 </html>

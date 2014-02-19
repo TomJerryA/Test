@@ -1,31 +1,15 @@
-<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>IDC研究报告：究竟有多少软件开发人员？</h3><p><a href="http://www.idc.com/">IDC</a>发布了“<a href="http://www.idc.com/getdoc.jsp?containerId=244709">2014年全球软件开发者和ICT技术工人评估</a>”报告，该报告评估了2014年初全球的专业软件开发人员、开发爱好者和信息与通信技术（ICT）技术工人的数量。报告涵盖了占全球GDP 97%的90个国家。</p>
-<p>根据IDC研究总监、该报告的作者<a href="http://www.idc.com/getdoc.jsp?containerId=PRF003108">Al Hilwa</a>所述，“当我们进入2014年时，全球有2900万ICT技术工人，其中包括1100万专业开发人员。”除了这些，全球大约还有750万开发爱好者。详细的数据见下表：</p>
-<p><a href="/resource/news/2014/01/IDC-software-developers/en/resources/IDC 2014 ITC estimates.png" target="_blank"><img title="image" style="border-left-width: 0px; border-right-width: 0px; background-image: none; border-bottom-width: 0px; padding-top: 0px; padding-left: 0px; display: inline; padding-right: 0px; border-top-width: 0px" border="0" alt="image" src="http://www.infoq.com/resource/news/2014/01/IDC-software-developers/en/resources/IDC 2014 ITC estimates.png" _href="img://IDC 2014 ITC estimates.png" _p="true" /></a></p>
-<p>各主要经济区域的专业开发人员数量如下图所示：</p>
-<p><a href="/resource/news/2014/01/IDC-software-developers/en/resources/IDC-pro-devs-region.png" target="_blank"><img title="image" style="border-left-width: 0px; border-right-width: 0px; background-image: none; border-bottom-width: 0px; padding-top: 0px; padding-left: 0px; display: inline; padding-right: 0px; border-top-width: 0px" border="0" alt="image" src="http://www.infoq.com/resource/news/2014/01/IDC-software-developers/en/resources/IDC-pro-devs-region.png" _href="img://IDC-pro-devs-region.png" _p="true" /></a></p>
-<p>如果按国家来划分，美国的软件开发人员（专业+爱好者）最多，占19.2%，接下来分别是中国占10.1%、印度占9.8%。报告还包括所有被调查国家的详细统计数据。</p>
-<p>根据IDC报告，定义如下：</p>
-<blockquote>
- 专业软件开发人员是那些从事有报酬的工作，并且其主要活动是开发软件，或者直接管理软件开发相关工作的人员。
+<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>Weathr：综合演示C++ 14、DirectX和XAML</h3><p>大多数技术演示都是相当轻量级的，只是用很小的应用演示一些关键概念。Weathr却并非如此，它是一个全功能的3D气象图，同时提供了在线服务集成和语义缩放（semantic zoom）。</p>
+<p><a href="http://weathr.codeplex.com/">Weathr</a> 的核心是使用现代编码约定的ISO C++。这意味着不使用new和delete关键字。相反，几乎所有东西都是通过组合使用shared、unique和weak智能指针来处理的。</p>
+<p>用户界面基于DirectX和XAML构建，其中前者用于3D组件。后者需要使用C++/CX，这是微软专门为基于WinRT的应用创建的语言扩展。</p>
+<p>演示的另一项技术是PPL（<a href="http://msdn.microsoft.com/en-us/library/dd492427.aspx#task_class">Parallel Patterns Library</a>）。该库支持使用通过lambda表达式链接在一起的异步方法。PPL主要用于通过<a href="http://msdn.microsoft.com/en-us/library/jj969455.aspx">C++ REST SDK</a>和Bing Maps及World Weather Online交互。异步条件下的内存管理有点棘手，所以Thomas Petchel写道：</p>
+<blockquote> 
+ <p>当有一组链接到一起的异步任务，而且一个任务负责创建一个对象或资源，而随后的另一个任务使用该资源时，我发现的另一个模式就出现了。尽管通常可以简单地在一个任务中创建该资源，然后将其传递给随后的任务，但是这并不是总能行得通的。这是生命周期与间接性的问题——不管对象是C++还是C++/CX类型的，因为我们异步工作，负责准备背景工作的调用函数很快就会退出，因此任何分配在该函数的栈上的对象都会走出其作用域。为使对象在活动的任务间共享，必须获取所有lambda表达式或仿函数（functor）中引用这些对象的智能指针（通常是C++和C++/CX对象的shared_ptr）。通过使用shared_ptr，我们创建了一个间接层，支持对象在一个任务中分配（例如，写入一个任务中），然后在随后的任务中使用（例如读取）。</p> 
 </blockquote>
-<p>根据美国劳工统计局的分类，专业开发人员包括：</p>
-<ul> 
- <li>开发、创建和修改通用计算机应用软件或专用工具程序。</li> 
- <li>分析用户需求、开发软件解决方案。</li> 
- <li>以优化操作或运行效率为目的，为客户设计和定制软件。</li> 
- <li>分析和设计应用软件的数据库，独立工作或者作为团队的一部分协调数据库开发工作。</li> 
- <li>管理计算机编程人员。</li> 
-</ul>
-<p>软件开发爱好者是软件相关人员一个新的分类，IDC的研究报告对这一群体进行了跟踪。根据该报告：</p>
-<blockquote>
- 软件开发爱好者涵盖了参与和有限度参与软件开发的人员，即使他们有正式的职业，但参与的程度不足以被认为是主要职业。学生是开发爱好者的一个大群体。开发爱好者也可能是未就业者或者在国家的劳动力之外。
+<p>确保async回调在正确的线程上运行是另一个问题。对于验证线程，Thomas有如下提示：</p>
+<blockquote> 
+ <p>在调试构建版本中，在启动时记录ASTA线程的线程ID。在每个任务延续（task continuation）中，确认我们是在主线程（ASTA）还是后台线程上运行。</p> 
+ <p>在任务延续中，显式地指定是要在当前上下文（例如，建立任务链的上下文，它可能是ASTA线程或MTA线程）上运行，还是要在后台（MTA）上下文上运行。</p> 
 </blockquote>
-<p>ICT技术工人包括专业开发人员、少数爱好者以及ICT运行和管理技术工人。研究报告对ICT运行和管理技术工人的定义如下：</p>
-<blockquote>
- 简单地说，只要是在传统ICT职业分类和更新后的STEM分类中，从事ICT相关工作，但又不是前面所说的专业开发人员的，都属于ICT运行和管理技术工人。主要职业包括：系统、数据库和网络管理员。
-</blockquote>
-<p>专业开发人员、开发爱好者和ICT工人之间的关系如下图所示：</p>
-<p><a href="/resource/news/2014/01/IDC-software-developers/en/resources/IDC-overlap.png" target="_blank"><img title="IDC-overlap" style="border-left-width: 0px; border-right-width: 0px; background-image: none; border-bottom-width: 0px; padding-top: 0px; padding-left: 0px; display: inline; padding-right: 0px; border-top-width: 0px" border="0" alt="IDC-overlap" src="http://www.infoq.com/resource/news/2014/01/IDC-software-developers/en/resources/IDC-overlap.png" _href="img://IDC-overlap.png" _p="true" /></a></p>
-<p>在评估全球ICT技术工人数量时， IDC使用了54个国家提供的劳动力统计数据（欧洲统计局、国际劳工组织、国家统计部门如美国劳工部、劳动力统计局等）。对于其他国家，IDC使用“经合组织的中等和高等教育招生情况以及<a href="http://en.wikipedia.org/wiki/STEM_fields">STEM</a>相关领域高等教育毕业情况”的分析。对于那些没有直接统计数据的少数国家，IDC使用“劳动力人口规模、GDP、教育水平、人类发展指数、IDC软件跟踪(Software Tracker)提供的IDC软件消费数据集等各类宏观数据。”</p>
-<p>回答标题所提出的问题，当前约有11,005,000专业开发人员，比2011年多了554,483人（5.3%）。另外还有约750万爱好者，IDC之前并未统计这一群体。</p>
-<p><b>查看英文原文：</b><a href="http://www.infoq.com/news/2014/01/IDC-software-developers">IDC Study: How Many Software Developers Are Out There?</a></p><br><br><br><br><br><br></body></html>
+<p>该示例应用中也探索了其他技巧与技术，包括HTTP请求节流、语义缩放、<a href="http://msdn.microsoft.com/en-us/library/windows/apps/windows.ui.input.gesturerecognizer.aspx">手势识别</a>和Windows 8动态磁贴。</p>
+<p><a href="http://weathr.codeplex.com/">Weathr</a>基于Apache 2许可发布，可以在CodePlex上获取。</p>
+<p><strong>查看英文原文：</strong><a href="http://www.infoq.com/news/2014/02/Weathr">Weathr, a Comprehensive Demonstration of C++ 14, DirectX, and XAML</a></p><br><br><br><br><br><br></body></html>

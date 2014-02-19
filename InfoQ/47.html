@@ -1,6 +1,52 @@
-<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>Google Cast SDK支持MPEG-DASH、Adaptive和HTTP Live Streaming</h3><p><a href="https://developers.google.com/cast/">Google Cast SDK</a>已经发布，它支持自适应流（adaptive streaming），包括<a href="http://en.wikipedia.org/wiki/Dynamic_Adaptive_Streaming_over_HTTP">MPEG-DASH</a>、<a href="http://tools.ietf.org/html/draft-pantos-http-live-streaming-12">HTTP Live Streaming</a>(HLS)和<a href="http://msdn.microsoft.com/en-us/library/ff469518.aspx">Smooth Streaming</a>。它包含了数个安全提升并更新了Cast_Icons和GoogleCastIcons。</p>
-<p>通过此SDK，开发者能够将Chromecast集成到新的或者现有的移动应用和网站中。最新版本的SDK可用于Android、web和iOS平台，集成了Google Cast Android API和Google Play服务并且包含最新的API。</p>
-<p>Google Cast帮助用户从小型设备如手机、平板或者笔记本，控制大型设备如电视上显示的内容。要使用SDK，你需要将其加入现有的移动应用或者网页中，然后通过<a href="https://cast.google.com/publish">Google Cast开发控制台</a>将其发布。</p>
-<p>你可以在Chromecast上通过默认媒体播放器显示内容，也可以通过CSS定制自己的品牌和风格。你甚至可以采用标准的web技术来处理所有可用的流媒体协议，定制自己的接收器应用软件（receiver application）。</p>
-<p>Google为Android、iOS和Chrome平台提供了<a href="https://github.com/googlecast/">示例应用</a>，包括一个基于Android的转换类库。根据来自官方的消息，所有Chromecast设备都已经支持<a href="https://developers.google.com/cast/docs/downloads">Google Cast SDK</a>。此外，支持最新SDK的Chrome和iOS的扩展程序将在今天发布。但是基于Android的API将在数天之内与Google Play服务4.2升级版本一起发布。</p>
-<p><b>查看英文原文：</b><a href="http://www.infoq.com/news/2014/02/google-cast-sdk">Google Cast SDK Adds MPEG-DASH, Adaptive and HTTP Live Streaming Support</a></p><br><br><br><br><br><br></body></html>
+<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>在V8引擎中实现后台编译所需应对的挑战</h3><p>&nbsp;</p>
+<p>对于最近Chrome V8 JavaScript引擎中引入的后台编译，这篇文章探讨了其中的一些细节。</p>
+<p>在Google浏览器Chrome的最新版本（Beta v.33）中， JavaScript V8引擎方面具有一项重要的变化：引入了使用后台线程进行优化编译处理的能力，从而让主线程能够继续对用户保持响应并获得性能提升。据从事此工作的Google工程师Yang Guo透露，<a href="http://blog.chromium.org/2014/02/compiling-in-background-for-smoother.html">V8将完成两种类型的编译</a>：</p>
+<blockquote> 
+ <p>为了减少在编译方面消耗的整体时间，V8将JavaScript函数的编译推迟，直到它们首次执行前才会进行此工作。这一编译阶段非常迅速，但是并不以优化代码为重点，而是聚焦于快速完成编译。在V8中，频繁运行的代码片段将得到第二次编译——由<a href="http://blog.chromium.org/2010/12/new-crankshaft-for-v8.html">专用的优化编译器</a>（Crankshaft）完成。在第二遍编译中，使用了许多高级优化技术，这意味着第二遍编译将比第一遍消耗更多的时间，但是其产出的代码运行起来更快。</p> 
+</blockquote>
+<p>Guo介绍的，在使用Nexus5运行<a href="https://developers.google.com/octane/">Octane 2.0</a>基准测试套件中的<a href="https://developers.google.com/octane/benchmark#mandreel">Mandreel</a>测试时，我们可以看到，通过由独立线程负责优化编译，应用不仅仅更加具有响应性，而且运行速度提高了27%。</p>
+<p>InfoQ对Chrome V.33进行了一些测试，记录了分别使用（--js-flags=&quot;--concurrent-recompilation&quot;）或禁止（--js-flags=&quot;--no-concurrent-recompilation&quot;）并行重编译时的运行结果。对于Octane 2.0基准测试，我们观测到了以下性能提升（对连续5次测试的结果进行平均，且每次运行时都重新启动了浏览器）： </p>
+<table cellspacing="0" cellpadding="0" border="1"> 
+ <tbody> 
+  <tr> 
+   <td valign="top" width="188"> <p><b>测试</b></p> </td> 
+   <td valign="top" width="128"> <p><b>提升</b></p> </td> 
+  </tr> 
+  <tr> 
+   <td valign="top" width="188"> <p>Octane 2.0 (全部17项测试)</p> </td> 
+   <td valign="top" width="128"> <p>7.12%</p> </td> 
+  </tr> 
+  <tr> 
+   <td valign="top" width="188"> <p>Mandreel</p> </td> 
+   <td valign="top" width="128"> <p>18%</p> </td> 
+  </tr> 
+  <tr> 
+   <td valign="top" width="188"> <p>Box2DWeb</p> </td> 
+   <td valign="top" width="128"> <p>32%</p> </td> 
+  </tr> 
+  <tr> 
+   <td valign="top" width="188"> <p>zlib</p> </td> 
+   <td valign="top" width="128"> <p>11%</p> </td> 
+  </tr> 
+ </tbody> 
+</table>
+<p></p>
+<p>以确保我们知道他并不是为Google说好话（当时他尚未加入此团队），我们询问Guo，为何在<a href="http://www.infoq.com/news/2010/12/Google-Chrome-OS/">2010年12月发布Crankshaft</a>时没有引入优化编译。Guo表示，最新版本中增加的这些改进，都是源自实际的需求：</p>
+<blockquote> 
+ <p>在设计Crankshaft的时候，延迟并不是很大的问题。考虑到当时JavaScript代码的大小，编译时间尚未成为显著的问题，因此低延迟既不算是问题，也不是CrankShaft的设计目标。在我看来，在那个时候引入并发，将令刚刚起步的优化编译器的设计，变得毫无必要的复杂；这将引入不成熟的优化，却不能带来任何即刻的好处。</p> 
+ <p>显然，在最近几年中这一情况发生了变化。如果查看<a href="https://code.google.com/p/octane-benchmark/source/browse/#svn%2Ftrunk">最新版本的Octane基准测试套件</a>，我们将发现到某些代码的大小已经超过了1MB。这反映出，现实世界里的一些应用正在推动JavaScript引擎逼近其极限。Mandreel基准测试包含了4.8MB的压缩后的代码。为了让这一概念更直观，我们可以<a href="http://computerhistory.org/atchm/adobe-photoshop-source-code/">以PhotoShop 1.0版本为例</a>，其源代码在解压缩后也只有4.4MB而已。“搅动”这个量级的代码将需要很多时间，特别是在执行例如动画渲染等工作（期望能够在一张眼间完成）时，这将成为显著的问题。</p> 
+</blockquote>
+<p>Guo没有试图面面俱到地介绍后台编译，而是告诉我们，在V8中实现这一特性的过程中，他们所面对的一些挑战：</p>
+<blockquote> 
+ <p>- 每位计算机科学家都会告诉我们，搞定多线程并不是件容易的事情；难以保证测试的良好覆盖；并发固有的不确定性行为，使Bug的重现变得困难，甚至可以说几乎不可能。拥有一套良好的测试用例，使用由断言包含的常量、模糊测试，并且最后很重要的是使用Canary测试覆盖。这些将帮助我们树立起对结果正确与否的信心。顺便说一下，在这里我要向<u> </u><a href="https://code.google.com/p/data-race-test/wiki/ThreadSanitizer">ThreadSanitizer</a>团队致敬。</p> 
+ <p>-当编译阻塞执行的时候，我们能够确信在编译前后，JavaScript堆及以及其中全部对象的状态将保持一致。然而，面对并行编译，该假设不再成立。这将带来如下影响：</p> 
+ <blockquote> 
+  <p>-V8拥有一套负责重新部署的GC，这意味着任何时候一旦GC发挥作用，对象们将被迁移。因此指向这些对象的引用必须得到更新。在执行编译任务的同时，很有可能发生这种情况。而如果编译任务所持有的对象，其引用未能得到更新，那么编译过程最终将内存访问失效的问题。</p> 
+  <p>-在进行并行编译时，执行仍将继续进行。这意味着虚拟机的状态、对象的内容以及布局将能够恣意改变。基于编译任务开始时的情况所做出的假设条件，或许在编译结束时将不再成立。甚至也许编译结束时产出的代码将不再有效。运行这些代码会引发Bug和崩溃。这一现象必须得到妥善处理。</p> 
+  <p>-实际上，允许后台线程在任何时候访问堆，会很容易引发竞争条件。我们通过提前为编译工作收集所有必要的信息来避免这一情况。</p> 
+ </blockquote> 
+ <p>-要想找到合适的时机启动后台线程中的编译任务，是一件非常棘手的事情：没有什么方法，能够准确预测是否值得在优化某个代码片段上投入时间，以及是否应该更早完成优化以从中受益。制定启发式解决方案来应对这个问题，则更加困难——必须进行许多精细的调整，而这项工作仍处于进行之中。</p> 
+ <p>-随着源代码片段即将经历的相互关联的状态——例如延迟解析，使用快速编译器进行第一遍编译，接下来由优化编译器进行优化，随后或许会进行“去优化”（deoptimized，如果在编译启动时所做的假设已经不在成立）等等——它的生命周期变得非常复杂。而由于并行编译的出现，这个生命周期中还增加了一些新的状态。对所有状态保持跟踪，确保在状态之间高效转移而不出Bug，是件很复杂的工作。未经预料的极端情况可能会引发问题。</p> 
+</blockquote>
+<p>Guo表示，“V8正处于积极发展的阶段，并且正在稳步改进”。例如，大家可以在由<a href="https://www.dartlang.org/performance/">Dart维护的实时性能图表格</a>中看到，V8的表现在2月11日运行的DeltaBlue基准测试出现了30%的飞跃——这一结果来自编译器本身的优化，而不是后台编译。</p>
+<p><strong>查看英文原文：</strong><a href="http://www.infoq.com/news/2014/02/chrome-v8-background-compilation">Challenges Performing Background Compilation in V8</a></p><br><br><br><br><br><br></body></html>

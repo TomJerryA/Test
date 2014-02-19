@@ -1,119 +1,113 @@
-<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>聊聊并发（八）——Fork/Join框架介绍</h3><h2>1. 什么是Fork/Join框架</h2>
-<p>Fork/Join框架是Java7提供了的一个用于并行执行任务的框架， 是一个把大任务分割成若干个小任务，最终汇总每个小任务结果后得到大任务结果的框架。</p>
-<p>我们再通过Fork和Join这两个单词来理解下Fork/Join框架，Fork就是把一个大任务切分为若干子任务并行的执行，Join就是合并这些子任务的执行结果，最后得到这个大任务的结果。比如计算1+2+。。＋10000，可以分割成10个子任务，每个子任务分别对1000个数进行求和，最终汇总这10个子任务的结果。Fork/Join的运行流程图如下：</p>
-<p><img src="http://infoqstatic.com/resource/articles/fork-join-introduction/zh/resources/21.png" alt="" _href="img://21.png" _p="true" /></p>
-<h2>2. 工作窃取算法</h2>
-<p>工作窃取（work-stealing）算法是指某个线程从其他队列里窃取任务来执行。工作窃取的运行流程图如下：</p>
-<p><img src="http://infoqstatic.com/resource/articles/fork-join-introduction/zh/resources/image3.png" alt="" _href="img://image3.png" _p="true" /></p>
-<p>那么为什么需要使用工作窃取算法呢？假如我们需要做一个比较大的任务，我们可以把这个任务分割为若干互不依赖的子任务，为了减少线程间的竞争，于是把这些子任务分别放到不同的队列里，并为每个队列创建一个单独的线程来执行队列里的任务，线程和队列一一对应，比如A线程负责处理A队列里的任务。但是有的线程会先把自己队列里的任务干完，而其他线程对应的队列里还有任务等待处理。干完活的线程与其等着，不如去帮其他线程干活，于是它就去其他线程的队列里窃取一个任务来执行。而在这时它们会访问同一个队列，所以为了减少窃取任务线程和被窃取任务线程之间的竞争，通常会使用双端队列，被窃取任务线程永远从双端队列的头部拿任务执行，而窃取任务的线程永远从双端队列的尾部拿任务执行。</p>
-<div id="lowerFullwidthVCR"></div>
-<p>工作窃取算法的优点是充分利用线程进行并行计算，并减少了线程间的竞争，其缺点是在某些情况下还是存在竞争，比如双端队列里只有一个任务时。并且消耗了更多的系统资源，比如创建多个线程和多个双端队列。</p>
-<h2>3. Fork/Join框架的介绍</h2>
-<p>我们已经很清楚Fork/Join框架的需求了，那么我们可以思考一下，如果让我们来设计一个Fork/Join框架，该如何设计？这个思考有助于你理解Fork/Join框架的设计。</p>
-<p>第一步分割任务。首先我们需要有一个fork类来把大任务分割成子任务，有可能子任务还是很大，所以还需要不停的分割，直到分割出的子任务足够小。</p>
-<p>第二步执行任务并合并结果。分割的子任务分别放在双端队列里，然后几个启动线程分别从双端队列里获取任务执行。子任务执行完的结果都统一放在一个队列里，启动一个线程从队列里拿数据，然后合并这些数据。</p>
-<p>Fork/Join使用两个类来完成以上两件事情：</p>
+<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>虚拟座谈会：性能调优面面观</h3><p>看上去性能调优在应用交付领域仍然没有成为主流。InfoQ采访了性能监控领域的5位大师，探讨了其原因，以及我们应该做些什么。讨论非常激烈。</p>
+<p>本次虚拟座谈会邀请到了如下几位成员：</p>
 <ul> 
- <li>ForkJoinTask：我们要使用ForkJoin框架，必须首先创建一个ForkJoin任务。它提供在任务中执行fork()和join()操作的机制，通常情况下我们不需要直接继承ForkJoinTask类，而只需要继承它的子类，Fork/Join框架提供了以下两个子类： 
-  <ul> 
-   <li>RecursiveAction：用于没有返回结果的任务。</li> 
-   <li>RecursiveTask ：用于有返回结果的任务。</li> 
-  </ul> </li> 
- <li>ForkJoinPool ：ForkJoinTask需要通过ForkJoinPool来执行，任务分割出的子任务会添加到当前工作线程所维护的双端队列中，进入队列的头部。当一个工作线程的队列里暂时没有任务时，它会随机从其他工作线程的队列的尾部获取一个任务。</li> 
+ <li><b>Ben Evans</b>是jClarity的CEO。jClarity是一家创业公司，主要交付辅助开发和运维团队改进性能的工具。Evans是Oracle的Java Champion荣誉得主，还是一位畅销书作家。</li> 
+ <li><b>Charlie Hunt</b>是Salesforce.com的性能工程架构师（Architect of Performance Engineering），也是畅销书“<i>Java Performance</i>”的第一作者。</li> 
+ <li><b>Kirk Pepperdine</b>是世界著名的性能调优顾问、培训师，Oracle的Java Champion荣誉得主，<a href="http://book.douban.com/subject/5263681/">《程序员应该知道的97件事》</a>一书的贡献作者之一。</li> 
+ <li><b>Martin Thompson</b>是高性能和低延迟方面的专家，在大规模事务和大数据系统方面有20多年的工作经验。</li> 
+ <li><b>Monica Beckwith</b>在Oracle负责领导G1垃圾收集器的性能相关工作。</li> 
 </ul>
-<h2>4. 使用Fork/Join框架</h2>
-<p>让我们通过一个简单的需求来使用下Fork／Join框架，需求是：计算1+2+3+4的结果。</p>
-<p>使用Fork／Join框架首先要考虑到的是如何分割任务，如果我们希望每个子任务最多执行两个数的相加，那么我们设置分割的阈值是2，由于是4个数字相加，所以Fork／Join框架会把这个任务fork成两个子任务，子任务一负责计算1+2，子任务二负责计算3+4，然后再join两个子任务的结果。</p>
-<p>因为是有结果的任务，所以必须继承RecursiveTask，实现代码如下：</p>
-<p><img src="http://infoqstatic.com/resource/articles/fork-join-introduction/zh/resources/31.png" alt="" _href="img://31.png" _p="true" /></p>
-<p><img src="http://infoqstatic.com/resource/articles/fork-join-introduction/zh/resources/eeeee.png" alt="" _href="img://eeeee.png" _p="true" /></p>
-<p>通过这个例子让我们再来进一步了解ForkJoinTask，ForkJoinTask与一般的任务的主要区别在于它需要实现compute方法，在这个方法里，首先需要判断任务是否足够小，如果足够小就直接执行任务。如果不足够小，就必须分割成两个子任务，每个子任务在调用fork方法时，又会进入compute方法，看看当前子任务是否需要继续分割成孙任务，如果不需要继续分割，则执行当前子任务并返回结果。使用join方法会等待子任务执行完并得到其结果。</p>
-<h2>5. Fork/Join框架的异常处理</h2>
-<p>ForkJoinTask在执行的时候可能会抛出异常，但是我们没办法在主线程里直接捕获异常，所以ForkJoinTask提供了isCompletedAbnormally()方法来检查任务是否已经抛出异常或已经被取消了，并且可以通过ForkJoinTask的getException方法获取异常。使用如下代码：</p>
-<pre>
-if(task.isCompletedAbnormally())
-{
-    System.out.println(task.getException());
-}
-</pre>
-<p>getException方法返回Throwable对象，如果任务被取消了则返回CancellationException。如果任务没有完成或者没有抛出异常则返回null。</p>
-<h2>6. Fork/Join框架的实现原理</h2>
-<p>ForkJoinPool由ForkJoinTask数组和ForkJoinWorkerThread数组组成，ForkJoinTask数组负责存放程序提交给ForkJoinPool的任务，而ForkJoinWorkerThread数组负责执行这些任务。</p>
-<p>ForkJoinTask的fork方法实现原理。当我们调用ForkJoinTask的fork方法时，程序会调用ForkJoinWorkerThread的pushTask方法异步的执行这个任务，然后立即返回结果。代码如下：</p>
-<pre>
-public final ForkJoinTask
- <v>
-   fork() {         ((ForkJoinWorkerThread) Thread.currentThread())             .pushTask(this);         return this; } 
- </v></pre>
-<p>pushTask方法把当前任务存放在ForkJoinTask 数组queue里。然后再调用ForkJoinPool的signalWork()方法唤醒或创建一个工作线程来执行任务。代码如下：</p>
-<pre>
-final void pushTask(ForkJoinTask
- <!--?--> t) {
-        ForkJoinTask
- <!--?-->[] q; int s, m;
-        if ((q = queue) != null) {    // ignore if queue removed
-            long u = (((s = queueTop) &amp; (m = q.length - 1)) &lt;&lt; ASHIFT) + ABASE;
-            UNSAFE.putOrderedObject(q, u, t);
-            queueTop = s + 1;         // or use putOrderedInt
-            if ((s -= queueBase) &lt;= 2)
-                pool.signalWork();
-	else if (s == m)
-                growQueue();
-        }
-    }
-</pre>
-<p>ForkJoinTask的join方法实现原理。Join方法的主要作用是阻塞当前线程并等待获取结果。让我们一起看看ForkJoinTask的join方法的实现，代码如下：</p>
-<pre>
-public final V join() {
-        if (doJoin() != NORMAL)
-            return reportResult();
-        else
-            return getRawResult();
-}
-private V reportResult() {
-        int s; Throwable ex;
-        if ((s = status) == CANCELLED)
-            throw new CancellationException();
-if (s == EXCEPTIONAL &amp;&amp; (ex = getThrowableException()) != null)
-            UNSAFE.throwException(ex);
-        return getRawResult();
-}
-</pre>
-<p>首先，它调用了doJoin()方法，通过doJoin()方法得到当前任务的状态来判断返回什么结果，任务状态有四种：已完成（NORMAL），被取消（CANCELLED），信号（SIGNAL）和出现异常（EXCEPTIONAL）。</p>
-<ul> 
- <li>如果任务状态是已完成，则直接返回任务结果。</li> 
- <li>如果任务状态是被取消，则直接抛出CancellationException。</li> 
- <li>如果任务状态是抛出异常，则直接抛出对应的异常。</li> 
-</ul>
-<p>让我们再来分析下doJoin()方法的实现代码：</p>
-<pre>
-private int doJoin() {
-        Thread t; ForkJoinWorkerThread w; int s; boolean completed;
-        if ((t = Thread.currentThread()) instanceof ForkJoinWorkerThread) {
-            if ((s = status) &lt; 0)
- return s;
-            if ((w = (ForkJoinWorkerThread)t).unpushTask(this)) {
-                try {
-                    completed = exec();
-                } catch (Throwable rex) {
-                    return setExceptionalCompletion(rex);
-                }
-                if (completed)
-                    return setCompletion(NORMAL);
-            }
-            return w.joinTask(this);
-        }
-        else
-            return externalAwaitDone();
-    }
-</pre>
-<p>在doJoin()方法里，首先通过查看任务的状态，看任务是否已经执行完了，如果执行完了，则直接返回任务状态，如果没有执行完，则从任务数组里取出任务并执行。如果任务顺利执行完成了，则设置任务状态为NORMAL，如果出现异常，则纪录异常，并将任务状态设置为EXCEPTIONAL。</p>
-<h2>7. 参考资料</h2>
-<ul> 
- <li>JDK1.7源码</li> 
- <li>http://ifeve.com/fork-join-5/</li> 
-</ul>
-<h2>8. 作者介绍</h2>
-<p><b>方腾飞</b>，花名清英，并发编程网站站长。目前在阿里巴巴微贷事业部工作。并发编程网：<a href="http://ifeve.com">http://ifeve.com</a>，个人微博：<a href="http://weibo.com/kirals">http://weibo.com/kirals</a>，欢迎通过我的微博进行技术交流。</p>
-<p>感谢<a href="http://www.infoq.com/cn/bycategory.action?authorName=张龙">张龙</a>对本文的审校。</p>
-<p>给InfoQ中文站投稿或者参与内容翻译工作，请邮件至<a href="mailto:editors@cn.infoq.com">editors@cn.infoq.com</a>。也欢迎大家通过新浪微博（<a href="http://www.weibo.com/infoqchina">@InfoQ</a>）或者腾讯微博（<a href="http://t.qq.com/infoqchina">@InfoQ</a>）关注我们，并与我们的编辑和其他读者朋友交流。</p><br><br><br><br><br><br></body></html>
+<p><b>InfoQ</b><b>：多数组织往往忽视性能调优与测试。至于如何克服这些困难，或许你们可以分享一下自己的经验。要使性能调优成为主流，公司可以应用哪些实践、工具和资源呢？</b></p>
+<blockquote> 
+ <p><b>Martin</b><b>：</b>“往往忽视”这种说法太保守了！看上去大部分团队就是把产品赶出来，根本不考虑质量或诸如性能、可用性和安全等任何非功能性需求。</p> 
+</blockquote>
+<p><b>InfoQ</b><b>：的确。最有说服力的是，我们最近面试过一些候选人，他们应聘的都是相当高级的Java职位，这些有经验的开发者之中，从来没用过分析器（profiler）、对性能调优和垃圾收集一无所知的，多得让我难以置信。这种情况是由调优内在的困难导致的吗？还是说性能只是被当做事后才考虑的东西了？公司应该如何纠正这种问题？</b></p>
+<blockquote> 
+ <p><b>Martin</b><b>：</b>回忆我的咨询工作，人们对性能测试和调优的了解之少，是真正让我惊讶的。即便性能是他们领域的一大<b>关键</b>需求，结果也是如此。</p> 
+</blockquote>
+<blockquote> 
+ <p><b>Ben</b><b>：</b>你提到的问题，有些是有联系的，而且与我们如何培养性能工程师有关。最近经常看到这种说法：“培训是教人高效可靠地执行某项具体任务，另一方面，教育是开启人的心智并充实其思想。”我认为相当中肯。</p> 
+ <p>在处理性能问题时，培训和教育两个方面都是必要的。我们需要让学生对实验数据、统计值和可重复运行等几点在性能分析和调优中的重要性有个印象，这主要是培训方面的问题。然而，我们也需要让他们理解，如何把自己在整个应用栈上的经验应用于解决性能问题，而这更多是教育方面的问题。</p> 
+ <p>不仅如此，我们还需要引导他们避免以“要诀与技巧（tips and tricks）”的方式来处理性能问题。这种方式教起来容易，因为它本质上一种培训技术，而非教育。</p> 
+ <p>最后，在应对教育或培训时，学生们必须定期使用新的材料与技巧，否则他们就会再次止步不前。如果性能课程不能作为持续12个月的核心课程的一部分，那基本没什么用。</p> 
+</blockquote>
+<blockquote> 
+ <p><b>Kirk</b><b>：</b>不久之前我看了Eric Smart关于性能的一次演讲。他指出了他们所遇到的所有典型错误。首先，主要关注点是特性、特性以及更多的特性。他们本以为，大家都很聪明，当需要性能时，就能把性能搞出来。麻烦的是，当最后需要解决性能问题时，情况变成了这样：每天都是几乎要实现了，再有一点点时间就行，再有一天就行，再有一周就行，再有一个月、两个月、三个月，然后是四个月……。那时他们就停了下来，然后思考“这是怎么回事”。他们意识到，因为没有将性能作为日常工作的一部分，他们忽略了在小范围内无法发现的问题。正是要处理的这些问题，几乎搞砸了整个项目，甚至进而把公司给搞垮了。</p> 
+ <p>好在最后结果还不错，因为他们能把缓缓走向失败的项目转危为安。但是顿悟之后，他们才意识到传统的开发环节已经无法很好地满足需求。</p> 
+</blockquote>
+<blockquote> 
+ <p><b>Monica</b><b>：</b>还有一方面，在有些公司中，所谓“性能工程师”，几乎就是负责收集一些数据（原始数据、日志或分析文件）比较一下，但却因为缺乏知识或缺乏组织承诺（Organization Level Commitment），不能对数据进行分析和深层挖掘，进而无法发现隐蔽的性能问题。另一方面在于性能工程师，因为他可能工作在不同的组中，所以对产品没有直接的贡献。而且性能工程师所提议的重大变更，对组织投入资源而言可能太过昂贵。我认为这种情况下的问题可以归咎于对全面的性能规划（Performance Planning）缺乏理解或缺乏清晰的定义。</p> 
+ <p>前面已经说过，在我的职业生涯中，我已经注意到了组织承诺，但我认为很多公司必须解决不同组的隔离问题，而且一些“性能工程师”也必须加强自己的知识储备。即便如此，我还是和很多对性能很有经验的开发者一起工作过。对一个公司而言，有这样的开发者就像中了头彩。</p> 
+ <p>性能调优是一门艺术。有些从业者可能就是比其他人更有天赋，但是无论谁肩负起这个角色，都必须实践和完善这门艺术。性能工程师责无旁贷，要将知识传授给其他人。通过开发的论坛和会议，通过向团队咨询，这是很容易实现的。</p> 
+</blockquote>
+<blockquote> 
+ <p><b>Kirk</b><b>：</b>我认为这完全取决于你对“调优”的理解。尝试找出性能为何未达预期，是个诊断问题。在将状况诊断清楚之后，知道该做什么，又会分为两类：</p> 
+ <ul> 
+  <li>我们之前曾经见过该问题，解决方案也很好理解</li> 
+  <li>我们需要想出新方法，以便进一步挖掘硬件的潜力</li> 
+ </ul> 
+ <p>所以解决方案不仅依赖诊断能力，还依赖做什么才能改进性能。但根据我的经验，大部分性能问题，只要能检测到，解决是非常容易的，所以我认为最大的困难还是在诊断上。</p> 
+ <p>“有多少人被教过如何使用分析器？”在Devoxx London会议上，我第一次听到Martin提这个问题。我的第一个念头是，这真是个简单却又明智的问题。我从来没想过要问这个问题，因为我知道答案。但这个问题仍然需要明确地提出来。在诊断中，分析器是一个重要的工具，但我还没听说哪所学校或哪个机构涉及到了这一主题。有些有志探索调优这一主题应如何教学的教授曾联系过我，但是没有下文了。</p> 
+ <p>回到调优很难这一看法，我认为原因之一在于调优是一种诊断活动，本质上不同于开发。就其性质而言，调优需要调查，需要获得测量数据。不仅是测量，还要是正确的测量，问题又暴露出来了。这正是问题所在：如果大家都知道测量就是在IDE中运行分析器，那正确的测量又该如何得到呢？没有正确的测量，又得依靠直觉或猜想了。依靠直觉的问题是，我们不太可能想清楚软件最终满足硬件和真实用户的需求时，其间的所有交互。意识到这一点，我和Jack Shirazi在很多年前就杜撰了“测量，别猜”（Measure, Don't Guess™）这一说法。这也是我在课程中讲述性能诊断模型（Performance Diagnostic Model™，简称PDM）的因由。经由PDM，我们帮助开发者重新组织了他们已经掌握的知识，使他们能够借此缓解诊断性能问题时遇到的困难。</p> 
+ <p>尽管PDM有所帮助，但是它只是轻微地改进了我们的示例练习的成功率。这是因为，诊断尚需要另外一种技能，那就是思维跳出细节、理解整体目标的能力。诊断和其他任何故障定位形式类似，需要深挖细节，有时这会使改变重点以获得更广泛地理解有些困难。我也不知道如何克服。不过这个问题确实会影响人们跟踪诊断过程的能力。</p> 
+</blockquote>
+<blockquote> 
+ <p><b>Martin</b><b>：</b>我们观察到，大部分人不进行测量，或者不使用分析器。不过我还发现一个更有意思的现象。有的团队，既进行了分析，也收集了系统指标，但是当面对收集到的数据时，好像这一切都没什么意义。我经常走到客户中间，他们告诉我遇到了性能问题。我就会问，你们是否以不同方式对应用进行了分析？他们往往都购买了分析器许可，打开了GC日志，sar（<a href="http://en.wikipedia.org/wiki/Sar_%28Unix%29">System Activity Report</a>）也用上了，等等。当他们给我看数据时，我非常吃惊。答案就在眼前，但是看上去他们却发现不了。我花了一段时间才意识到，不是说他们不够聪明，他们只是不知道如何诠释这些数据，因为他们还没有磨练出这种技巧。就和我们使用调试器一样，如果工作中天天用，它就变成第二天性了。如若不然，它几乎总是我们的障碍。</p> 
+</blockquote>
+<blockquote> 
+ <p><b>Charlie</b><b>：</b>Monica所言极是，公司不同，谈话的对象不同，看上去“性能工程师”的定义也会有所不同。在有些公司，性能工程师负责性能测试，负责针对开发中的产品运行性能负载并报告负载执行结果这样的质量工作；说明性能是改进了，衰退了，还是并不确定。而在其他公司，性能工程师的工作就更进一步，他们要分析并找到性能改进或衰退的源头。还有一类性能工程师，不仅要分析，还要寻找优化的机会。我们看到了一系列角色、职责和所需的技能。我猜测参加这次座谈会的每一位都属于最后一类。我认为每个应用开发者都应该对其所开发应用的性能很感兴趣，而不只是把“性能（或质量）”看做别人的活。我曾听到一位开发工程师这么说：“测试我的代码不是我的活，要不还要质量和性能工程团队干嘛。”恕我直言，这种工程师应该立马开除！</p> 
+</blockquote>
+<blockquote> 
+ <p><b>Martin</b><b>：</b>将性能工程师从“普通工程师”中划分出来，实际上是一种大大的反模式。我完全认同的是，功能性需求和非功能性需求的质量是所有工程师/程序员的责任。但是看看这个例子。在一次面试中，我曾问到：HashMap和TreeMap有什么区别？如果他告诉我，HashMap的时间复杂度是O(n)，而TreeMap的时间复杂度是O(log n)，我会很满意。如果他能解释一下它们的实现，我会非常高兴。但他的回答是，“程序员再也不需要知道这类知识了”，让我很不舒服。的确，团队里有专家是好事，但是这些专家需要指导团队的其他人员，从而提高整个团队的水准。</p> 
+</blockquote>
+<blockquote> 
+ <p><b>Charlie</b><b>：</b>我认为困难不仅在于调优，还在于分析和找出优化的机会。离开性能工程“科学”的一面，接触其“艺术”的一面，事情又困难了。我会以类似方式描述统计学这一学科。统计学和统计方法有“科学”的一面，而应用恰当的统计方法也有“艺术”的一面。科学的一面，像统计学、各种不同类型的计算公式等，你可以讲授给大家；但是艺术的一面，比如在既定情境下使用恰当的统计方法，讲授起来就完全不同了。类似，我们可以把性能工程科学的一面讲授给大家，但艺术的一面也是完全不同的。我认为真正受困于性能工程的人其实是受困于其艺术的一面，遗憾的是，这正是不容易讲授或学习的。</p> 
+</blockquote>
+<blockquote> 
+ <p><b>Kirk</b><b>：</b>我可能不太同意你的定义。提到<i>艺术</i>，我想到的是无法测量或不能很容易地量化的东西。而性能是可以测量、可以量化的。在我的世界中，如果你说“艺术”，我会理解为“我只是猜测”。有些人可能比其他人更擅长猜测，但根据我的经验，这并不是因为他们能够凭空发现答案；相反，他们的心智模型相当发达，可以将可用的数据放入大脑，然后得出一个质量较高的答案。在我的课程中，我看到过这种情况。我提了一个带有少量数据的问题，开发者们苦思冥想。然而在给他们提供了一个可以利用的心智模型之后，突然之间，问题的答案就从少量的这些数据中蹦了出来。线索就在身边，我们需要的只是认出它们。我认为这不是艺术，因为这里是要理解测量值表示什么。以创新的方法从我们目前不得不使用的硬件中挖掘出更多东西，那才是“艺术”。</p> 
+</blockquote>
+<blockquote> 
+ <p><b>Charlie</b><b>：</b>我所谓的艺术并不是指“猜测”。在性能工程的艺术中，一种形式是模式匹配。你用你在课程中所做的事情来描述的东西，正是试图提供性能工程科学的一面，同时把艺术的一面传授给同学们。知道测量或监控什么，知道某个指标的阈值，是进行进一步调研的依据。知道使用什么工具，并且能利用相关知识定位到问题根源，就是我所指的艺术。也就是知道如何将正确的性能工程方法学应用于恰当的情况。如果它是科学，它就应该可以用数学的方式建立模型。你用以描述它的“心智模型”，就是我所谓的“艺术”。知道猜测或推测什么，缩小要猜测的东西的可能范围，或是以充分了解、受过培训的方式猜测，再或是知道需要哪些额外的数据来帮助做出明智的决定，这种种方面，都在我所谓的“性能工程之艺术”的范畴中。</p> 
+</blockquote>
+<blockquote> 
+ <p><b>Kirk</b><b>：</b>是的，我发现还有一个坏习惯，人们经常从数据中推导出一些并非必然的结论。他们只是假设或推测，或是像我的书里说的那样，就是猜！我可以举个例子。在堆图中，在一次垃圾收集之后，向上的曲线意味着内存泄露，是这样吗？我说这是一个基于推测的过度化结论。我可以把能证明你的错误的GC日志发给你。我是如何知道其中的区别的呢？这不是艺术，我只是问了一下其背后的目的。这一切都有算法可循吧？我想是的。</p> 
+</blockquote>
+<blockquote> 
+ <p><b>Charlie</b><b>：</b>或许我们应该考虑一个问题：为什么在给软件工程的学生开数学和计算理论课程之前，大部分学校都会先教学生一门编程语言？对比一下，其他工程学科，比如机械工程或工业工程，则会先教给学生数学和本学科的理论。</p> 
+</blockquote>
+<blockquote> 
+ <p><b>Kirk</b><b>：</b>我并不想贬低统计学的重要性，但在计算机系统中发生的事情用排队论来描述往往会更好。据我所知，对排队论有较多理解的软件开发者非常少。我不是说大家需要深入理解排队论，但是有一些理解，并知道如何应用，是非常必要的。</p> 
+</blockquote>
+<blockquote> 
+ <p><b>Charlie</b><b>：</b>我一直认为排队论是统计学的一部分，我第一次接触排队论就是在统计学的课程中。不要忘了，我们要用排队论建模的很多东西都是基于概率密度函数的，也就是泊松分布、指数分布及其他分布。</p> 
+</blockquote>
+<p><b>InfoQ</b><b>：要使性能分析进入主流，组织应该投资于哪些工具和技术？</b></p>
+<blockquote> 
+ <p><b>Monica</b><b>：</b>首先，就像我上面提到的，是性能规划。其次是构建性能基础设施。性能测试应该是产品生命周期的一部分。因此投资于健壮的性能基础设施是必不可少的。很多组织因为未能未雨绸缪而陷入困境，而且在意识到问题之前，他们需要投入更多资源，亡羊补牢。不管是对组织还是对其雇员，这种行为都是不健康的，没有生产效率，资源也不能高效使用。</p> 
+</blockquote>
+<blockquote> 
+ <p><b>Charlie</b><b>：</b>我最近思考了很多。你们当中可能有人听过我从吞吐量、延迟和内存大小等方面探讨性能的讲座。在谈到满足应用的性能目标时，我会向产品团队和需求方的管理人员提出8个问题：</p> 
+ <ul> 
+  <li>预期的吞吐量是多少？</li> 
+  <li>可以忍受的最低吞吐量是多少？对吞吐量降到最低值的频率和持续时间有何要求？</li> 
+  <li>吞吐量指标是什么，如何测量？</li> 
+  <li>预期延迟是多少？对超出该延迟的频率和持续时间有何要求？</li> 
+  <li>延迟的最低限制是多少？</li> 
+  <li>延迟指标是什么，如何测量？</li> 
+  <li>最多可以使用多少内存？</li> 
+  <li>如何测量内存使用？</li> 
+ </ul> 
+ <p>我注意到，有些公司或组织未能抓住恰当的指标。我举一个最近遇到的例子，顺便说一下，这个例子不是<a href="http://Salesforce.com">Salesforce</a>的。假设我们的目标是降低内存占用。但性能标准不仅要求减少内存占用，还要求不能增加CPU的占用, 不能降低吞吐量，也不能改变响应时间。如果是这种情况，上面说这么多其实就是想降低内存占用，同时不愿意在吞吐量和延迟方面做出任何牺牲。祝你好运！强调改进这些属性中的一种，在这个例子中就是保持吞吐量和延迟不变的情况下减小内存占用，这需要在开发方面付出巨大的努力。很难在不牺牲这些性能属性中的其他一个或多个的条件下改进某一个。理解这种关系的人数量之少，让我非常震惊。</p> 
+ <p>还有一个类似的问题，应用要如何测试？如何获取预计的生产使用情况？我想你必须理解应用在最坏情况下的性能行为，并能描述其特征，尤其是构建的是供别人构建应用的底层平台时。此外，你还需要获得应用在预计的生产使用情况下的性能。你还需要关闭被开发做负载的东西与应用在生产环境中如何执行之间的回路。换句话说，在用那3个性能属性预测生产性能时，负载的效果如何？我难得看到有人关闭了这一回路来测量其负载的有效性。</p> 
+</blockquote>
+<blockquote> 
+ <p><b>Kirk</b><b>：</b>列的这些问题很不错。我想补充一下，我们所在的行业患有“CPU羡慕症”，但很多时候CPU并非问题所在。因此，理解我们所用硬件的基本限制，并将其与我们实际需要的资源关联起来，是个很大的问题，但是掌握的人很少。</p> 
+ <p>我想我们会看到越来越多的远非CPU相关的问题。如果未曾体验或注意到过，我们可以想一下比如内存总线容量问题，或者更一般地说，是把数据从内存取到CPU高速缓存的速度。内存是新的磁盘。每个CPU插槽对应大量的硬件线程，有一个很大的挑战，那就是是否有足够的内存总线容量和CPU高速缓存。两年以前，我已经注意到，在一个多核系统中，在CPU 使用接近峰值之前，内存总线容量已经饱和了。今天有多少人知道如何测量内存总线的容量，甚至想到过测量内存总线的容量这个问题？</p> 
+ <p>我可以告诉你答案，因为我一直在问这个问题：没有人！！然而几年来我一直碰到被内存总线容量限制了性能的应用。</p> 
+</blockquote>
+<blockquote> 
+ <p><b>Martin</b><b>：</b>尽管我在很大程度上同意Charlie和他的性能权衡3条腿理论，但是我发现，在某些情况下这种理论是有害的。在考虑运行时和GC时，的确，它很适合。但是当考虑数据结构时，较小的内存占用往往意味着较低的延迟和较高的吞吐量。为提供一些背景，我研究了抓取整个北美金融市场订阅源的系统，对于每秒消息量超过1100万条的周期，该系统也可以支撑。考虑到现代x86服务器的架构，只有L1 cache <a href="http://en.wikipedia.org/wiki/Translation_lookaside_buffer">TLB</a>支持大页面（2MB）。L2 cache TLB只支持4KB的页面。Intel即将发布的Haswell芯片将在L2 cache上支持2MB页面。（译者注：这里的L1 cache和L2 cache和我们平时说的不同，具体请参见<a href="http://en.wikipedia.org/wiki/Translation_lookaside_buffer">http://en.wikipedia.org/wiki/Translation_lookaside_buffer</a>的“Multiple TLBs”部分。本文其他地方涉及CPU的cache时，统一翻译为“高速缓存”。）如果其余的代码很高效，这可能会成为主要的问题。因为存在预取，所以在扫描GC卡表时，我们没有看到该问题；但是对其他数据结构而言，这就是主要问题了。我想说的是，主流问题有好的一般性规则，但是在更高的层面，其他东西可能会更为重要。</p> 
+ <p>我们到了这样的地步，产业在一个方向上已经走得太远。有一段时间，我们一直被推着增加开发者的生产效率以及交付的可预测性，但这是有代价的。我们现在在生产如此低效的软件，以至于我都无法想象其他任何产业如何能忍受这种低效。通过采用更为清晰的设计，同时进行一些由分析驱动的调优，我们的软件的吞吐量或延迟可以改进10-100倍。某些情况下我甚至看到过1000倍的改进。数据中心的费用变得越来越显著，而且2-4%的二氧化碳排放与计算机有关。我们还必须考虑移动设备的激增，在这样的设备上，高效的软件可以直接与省电映射起来，我们可以用更少的服务器提供主要基于服务器进行计算的移动服务。</p> 
+</blockquote>
+<h2><b>虚拟座谈会成员介绍</b></h2>
+<p><img src="http://infoqstatic.com/resource/articles/Virtual_Panel_Performance_Tuning_Face_off/zh/resources/0110000.jpg" style="float: left; margin-right: 10px" alt="" _href="img://null" _p="true" /><b>Ben Evans</b>是jClarity的CEO，这是一家创业公司，主要交付可以帮助开发和运维团队的性能工具。他是LJC(London JUG)的组织者之一，也是JCP执行委员会的成员之一，帮助定义Java生态系统的相关标准。他还是Java Champion和JavaOneRockstar荣誉得主。他是“<i>The Well-Grounded Java Developer</i>”（译者注：中译版为《Java程序员修炼之道》，已由人民邮电出版社出版）一书的合著者之一。他经常就Java平台、性能、并发和相关主题发表演讲。</p>
+<div style="clear:both"></div>
+<p><img src="http://infoqstatic.com/resource/articles/Virtual_Panel_Performance_Tuning_Face_off/zh/resources/0110001.jpg" style="float: left; margin-right: 10px" alt="" _href="img://null" _p="true" /><b>Charlie Hunt</b>是Salesforce.com的性能工程架构师，也是最近出版的“<i>Java Performance</i>”一书的第一作者。在加入Salesforce.com之前，他曾在Oracle和Sun担任过Java HotSpot VM的性能架构师。他经常在世界各地的很多世界级技术会议（包括JavaOne大会）上就Java性能这一主题进行演讲。</p>
+<div style="clear:both"></div>
+<p><img src="http://infoqstatic.com/resource/articles/Virtual_Panel_Performance_Tuning_Face_off/zh/resources/0110002.jpg" style="float: left; margin-right: 10px" alt="" _href="img://null" _p="true" /><b>Kirk Pepperdine</b>是一位专注于Java 性能调优的独立咨询师。此外，他还与人共同开办了一个性能调优讨论班，这个讨论班在世界范围内都广受欢迎。该讨论班向大家呈现了一种性能调优方法，而且该方法是已经被应用于改进团队定位Java性能问题的效率的。他于2006年荣获Java Champion称号，Kirk为很多出版物写过性能相关的内容。他也在包括Devoxx和JavaONE在内的很多会议上进行过性能相关的讲座。他辅助创建了<a href="http://www.javaperformancetuning.com/">Java Performance Tuning</a>网站，这是一个著名的性能调优信息资源网站。Kirk还是<a href="http://book.douban.com/subject/5263681/">《程序员应该知道的97件事》</a>一书的贡献作者之一。</p>
+<div style="clear:both"></div>
+<p><img src="http://infoqstatic.com/resource/articles/Virtual_Panel_Performance_Tuning_Face_off/zh/resources/0110003.JPG" style="float: left; margin-right: 10px" alt="" _href="img://null" _p="true" /><b>Martin Thompson</b>是高性能和低延迟方面的专家，在大规模事务和大数据系统方面有20多年的工作经验。他信仰Mechanical Sympathy，他创建的这个理论的意义是，将对硬件的理解应用于创建软件，是交付优雅的高性能解决方案的基础。Disruptor框架就是该理论的一个例子。Martin是LMAX的联合创始人和CTO。他的博客在<a href="http://mechanical-sympathy.blogspot.com/">这</a>，可以在这里找到他所做的性能和并发相关的培训课程，还有一些可以改进系统性能的代码。</p>
+<div style="clear:both"></div>
+<p><img src="http://infoqstatic.com/resource/articles/Virtual_Panel_Performance_Tuning_Face_off/zh/resources/0110004.jpg" style="float: left; margin-right: 10px" alt="" _href="img://null" _p="true" /><b>Monica Beckwith</b>在Oracle负责G1垃圾收集器的性能相关工作。她已经在性能和架构领域耕耘了10多年。在进入Oracle和Sun之前，Monica领导了飞索半导体公司的性能相关工作。怀抱着寻找机会优化Oracle的HotSpot VM这一恒久的目标，Monica参与了很多基于Java的工业标准基准测试的制定。</p>
+<div style="clear:both"></div>
+<p><b>查看英文原文：</b><a href="http://www.infoq.com/articles/Virtual_Panel_Performance_Tuning_Face_off"><b>Virtual Panel: Performance Tuning Face-Off</b></a></p><br><br><br><br><br><br></body></html>

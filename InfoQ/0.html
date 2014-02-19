@@ -1,15 +1,18 @@
-<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>使用CucumberJS，让JavaScript与行为驱动开发结合</h3><p><a href="http://custardbelly.com/blog/blog-pages/about.html">Todd Anderson</a>最近发表了一篇博客文章，介绍了新兴工具<a href="https://github.com/cucumber/cucumber-js">CucumberJS</a>：面对基于JavaScript的项目，向其<a href="http://en.wikipedia.org/wiki/Test-driven_development">TDD</a>（测试驱动开发）工作流中添加CucumberJS，有助于让项目与<a href="http://en.wikipedia.org/wiki/Behavior-driven_development">行为驱动开发</a>的理念相结合。从而使得开发者在自外而内进行开发的同时，遵循TDD准则；并且还将运行自动化的测试，以确保在实现了支持某个特性的代码后，测试才会得出通过的结果。</p>
-<p>Todd从事应用开发工作，并与人合著了三本书（<a href="http://www.amazon.com/Todd-Anderson/e/B0037FMULM/ref=ntt_athr_dp_pel_2">点击查看</a>）。他将CucumberJS描述成一种介于BDD工具<a href="http://cukes.info/">Cucumber</a>与JavaScript之间的接口，它能够运行在<a href="http://nodejs.org/">NodeJS</a>上和现代网络浏览器中。CucumberJS支持使用<a href="http://docs.behat.org/guides/1.gherkin.html">Gherkin</a>来撰写特性说明的定义，而并使用命令行工具来运行这些说明。该命令行工具将针对组成说明的各个步骤或场景，报告其结果是通过还是失败。他还提到，尽管Cucumber目前仅仅是测试框架，但开发者可以根据需要来引入断言库，令这些步骤通过或是失败。</p>
-<p>Todd以一个<a href="http://custardbelly.com/blog/blog-pages/category/grocery-ls.html">杂货清单应用</a>中的某特性为例，展示了如何使用Cucumber来适应BDD：</p>
-<blockquote>
- <p>特性：购物者能够将某项物品添加到其杂货清单 </p>
- <p>场景：物品添加到杂货清单</p> 
- <p>假定（Given）现在我的杂货清单是空的</p> 
- <p>当（When）我向其中添加一项物品时</p> 
- <p>则（Then）该杂货清单将包含单一的一项物品</p> 
-</blockquote>
-<p>该特性定义了一项业务价值，而该场景则定义了提供该价值的步骤。每个场景都包含一系列的步骤，它们由一些关键词来定义：假定、当……时、则（<em>Given</em>, <em>When</em>, <em>Then</em>）；而CucumberJS将阅读特性说明，而后执行这些步骤。</p>
-<p>针对结合Node.JS来使用CucumberJS的话题，Todd给出了一些示例，在示例中测试经过了从失败到通过的过程，与此同时它们也实现并运行了杂货清单应用。</p>
-<p>在总结中，Todd深信：当进行重构和Bug修复时，使用测试套件管理并测试代码，将会获得回报；同时他表示将继续发表一系列新的文章，以展示如何结合浏览器来使用CucumberJS进行测试。</p>
-<p>行为驱动开发的概念，最初由 <a href="http://dannorth.net/about/">Dan North</a>在2006年提出。Cucumber则是一个用于行为驱动开发的开源工具，目前支持包括JavaScript在内的九种编程语言。</p>
-<p><strong>查看英文原文：</strong><a href="http://www.infoq.com/news/2014/01/bdd-cucumberjs">BDD and JavaScript Using CucumberJS</a></p><br><br><br><br><br><br></body></html>
+<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>Elasticsearch 1.0.0发布</h3><p>Elasticsearch<a href="http://www.elasticsearch.org/blog/1-0-0-released/">发布了</a>以其自身命名的开源分析工具的1.0.0版本。Elasticsearch是一款分布式搜索引擎，支持在大数据环境中进行实时数据分析。它基于<a href="http://lucene.apache.org/">Apache Lucene</a>文本搜索引擎，内部功能通过ReST API暴露给外部。除了通过HTTP直接访问Elasticsearch，还可以通过支持Java、JavaScript、Python及更多语言的客户端库来访问。它也支持集成<a href="http://hadoop.apache.org/">Apache Hadoop</a>环境。Elasticsearch在有些处理海量数据的公司中已经有所应用，如GitHub、Foursquare和SoundCloud等。</p>
+<p>Elasticsearch的基本特性主要围绕可伸缩性、高可用性和实时分析。进入搜索引擎的数据会立即建立索引，在集群中复制，并为分析做好准备。</p>
+<ul> 
+ <li><b>可伸缩性：</b>Elasticsearch是为在集群环境中工作而设计的。一个节点一启动，就会自动寻找网络中的其他节点并连接过去。索引以分片方式组织，分布在集群中。因此搜索索引是分布式操作，会在所有集群节点上并行运行。如果需要更好的性能，只需要将额外的节点加入集群，分片会自动识别。</li> 
+ <li><b>可用性：</b>数据库分片不仅用于水平伸缩，也有可用性考虑。对于每个分片，都有一个保存在不同的集群节点上的复制分片，所以如果一个节点当掉，并不会丢失数据。Elasticsearch会探测到故障节点，将其集群中移除。在故障节点移除之后，考虑到伸缩性和弹性，分片会重组，以便优化。 <p>为支持整个集群重启，Elasticsearch所需要的所有元数据能够持久化到各种存储类型上。数据可以借助所谓的网关来存储，网关目前支持本地存储和共享的文件系统。</p> </li> 
+ <li><b>实时：</b>Elasticsearch是无模式的，而且支持索引任意的JSON文档。它会分析文档的结构，甚至还能自动探测某些数据类型，如时间戳。默认情况下，文档中的所有字段都会被索引，而且是可以搜索的。除了简单的全文搜索之外，分面（facets，提供聚合的分析函数，如日期范围、距离、柱状图等）和度量指标（metrics，如求和、平均和统计等）可以直接应用于索引。</li> 
+</ul>
+<h2>Elasticsearch 1.0.0的新特性</h2>
+<p>1.0.0版本对API进行了很多修改，并带来了很多功能增强，使Elasticsearch用起来更为直观和高效了。功能增强包括备份和恢复索引、分析数据并使Elasticsearch更有弹性的新方法：</p>
+<ul> 
+ <li><b>快照</b><b>/</b><b>恢复：</b>新版本提供了一个简单的API，用来生成整个集群的快照，以创建备份。Elasticsearch集群的状态——包括元数据和索引——可以保存在快照仓库中。仓库通常放在共享的文件系统中，而且可以保存任意数量的快照。如果发生了内置的容错和弹性机制无法处理的问题，集群可以根据仓库中的任何快照重建。</li> 
+ <li><b>聚集（</b>Aggregation<b>）：</b>相对于之前版本中已有的分面，聚集为分析现有数据提供了更强大的功能。分面仅为分析功能提供了少量结果（比如，特定距离内的商店数），聚集则会保存某次查询实际找到的文档，并支持将生成的文档集作为新查询的输入（比如，特定距离内所有商店的季度平均销售额）。</li> 
+ <li><b>断路开关（</b><b>Circuit Breaker</b><b>）：</b>系统将添加断路开关，以阻止操作或运行时错误对搜索索引造成严重的不利影响。Elasticsearch 1.0.0添加的第一重保护是监控空余内存，并评估搜索或分析操作所需要的内存量。如果某个操作需要的内存超出了可用内存，就阻塞该操作，这样就不会导致OutOfMemory异常了。未来的版本中将实现更多断路开关。</li> 
+</ul>
+<p>Elasticsearch使用修改主版本号的方式来整理现有的API，它也接受不向后兼容的修改。在升级到1.0.0版本之前，用户应该备份所有数据，并阅读所有<a href="http://www.elasticsearch.org/guide/en/elasticsearch/reference/1.x/breaking-changes.html">破坏性修改</a>的列表。</p>
+<p>Elasticsearch还提供了用于处理数据获取和分析的额外工具。连同<a href="http://www.elasticsearch.org/overview/logstash">Logstash</a>和<a href="http://www.elasticsearch.org/overview/kibana">Kibana</a>，Elasticsearch还创建了<a href="http://www.infoq.com/news/2014/02/elasticsearch_1.0.0_released">ELK-stack</a>来分析日志文件和其他与时间相关的信息源，并以不同的方式对这些数据进行分析和可视化。</p>
+<p>也可以通过Elasticsearch的<a href="http://www.elasticsearch.com/">商业分支</a>购买专业支持。</p>
+<p><strong>查看英文原文：</strong><a href="http://infoqhelp.sinaapp.com/beannewstodone">Elasticsearch 1.0.0 released</a></p><br><br><br><br><br><br></body></html>
