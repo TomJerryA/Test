@@ -2,6 +2,9 @@
  <head></head> 
  <body> 
   <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/35.c">Combinando abordagens Agile e Lean</a>Combinando abordagens Agile e Lean − Existem diversas abordagens para melhorar o desenvolvimento de software, entre elas o Agile e o Lean. Os gerentes devem decidir qual delas implantar em suas organiza&ccedil;&otilde;es. As abordagens podem ser combinadas dependendo dos problemas que precisam ser resolvidos. O InfoQ entrevistou R&eacute;gis Medina sobre combinar Agile e Lean, com foco em pessoas e aprendizado. 
+  </div> 
+  <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/34.c">QCon S&atilde;o Paulo: 100% de tutoriais definidos, 43 palestras e 58 palestrantes</a>As prepara&ccedil;&otilde;es do quinto QCon S&atilde;o Paulo est&atilde;o entrando na reta final. J&aacute; estamos com toda a programa&ccedil;&atilde;o de tutoriais definida: Clojure, NoSQL, Lambdas em Java, Desenvolvimento para Twitter, Continuous Delivery, REST – e um tutorial de dia inteiro sobre Big Data por um engenheiro da NASA. H&aacute; palestras para todos os gostos em doze tracks, com mais de 60 palestrantes. 
   </div> 
   <div> 
@@ -147,9 +150,6 @@
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/37.c">AWS anuncia tr&ecirc;s novos tipos de inst&acirc;ncias</a>A Amazon Web Services acaba de anunciar tr&ecirc;s novos tipos de inst&acirc;ncia do seu servi&ccedil;o Elastic Compute Cloud (EC2). S&atilde;o as inst&acirc;ncias do tipo I2 que usam discos de estado s&oacute;lido (SSD) para melhor performance de I/O, C3 para processamentos mais intensos e G2 que oferecem processamento baseado em GPUs Nvidia para processamento gr&aacute;fico. 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/36.c">JavaScript: Visualize o fluxo de c&oacute;digo com o TraceGL</a>A Rik Arends lan&ccedil;ou o TraceGL, uma nova ferramenta para depurar aplica&ccedil;&otilde;es JavaScript usando depura&ccedil;&atilde;o por trilhas. A fim de tornar mais f&aacute;cil depurar navegadores complexos e aplica&ccedil;&otilde;es baseadas em Node.js, a ferramenta captura, visualiza e permite que o usu&aacute;rio navegue na trilha de execu&ccedil;&atilde;o, enquanto a aplica&ccedil;&atilde;o est&aacute; sendo executada. 
   </div> 
  </body>
 </html>

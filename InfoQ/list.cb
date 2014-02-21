@@ -2,6 +2,9 @@
  <head></head> 
  <body> 
   <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/37.cb">Acceptance Test-Driven Development (ATDD), passo a passo</a> O Acceptance Test-Driven Development (ATDD), ou “Desenvolvimento Orientado a Testes de Aceita&ccedil;&atilde;o”, &eacute; uma pr&aacute;tica de obten&ccedil;&atilde;o de requisitos de forma colaborativa aplicada por equipes &aacute;geis, onde exemplos concretos e testes automatizados s&atilde;o utilizados para especificar os requisitos, tornando-os mais claros, com o objetivo de criar especifica&ccedil;&otilde;es execut&aacute;veis. Conhe&ccedil;a um passo a passo dessa t&eacute;cnica. 
+  </div> 
+  <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/36.cb">Arquitetura Corporativa como Estrat&eacute;gia</a> Arquitetos Corporativos atuam com as partes interessadas para construir a vis&atilde;o global de uma empresa e fazem a liga&ccedil;&atilde;o entre a miss&atilde;o empresarial, a estrat&eacute;gia e seus processos, alinhados com a estrat&eacute;gia de TI. Este artigo aborda o crescimento do papel da Arquitetura Corporativa nas empresas ajudando no mapeamento das necessidades atuais e futuras para serem atendidas de forma eficiente e &aacute;gil. 
   </div> 
   <div> 

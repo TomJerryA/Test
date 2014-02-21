@@ -1,23 +1,35 @@
-<p>Nightwatch is a recently released acceptance framework based on Node.js that uses Selenium WebDriver API to automate web applications testing. The tool promises a simple syntax which enables the writing of end-to-end tests using JavaScript and CSS selector that runs against a Selenium server.</p>
-<p>In opposition to BDD and unit testing that runs in isolation and uses mocks / stubs, an end-to-end test tries to emulate, as closely as possible, the perception a user has to a real system. In the case of a web application this implies firing up a browser, loading pages, running JavaScript, interacting with the DOM and so forth. Nightwatch tries to accomplish this goal using syntax sugar:</p>
-<pre><p>this.demoTestGoogle = function (browser) {<br />&nbsp;&nbsp;&nbsp;browser<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;.url(“http://www.google.com”)<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;.waitForElementVisible('body', 1000)<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;.setValue('input[type=text]', 'nightwatch')<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;.waitForElementVisible('button[name=btnG]', 1000)<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;.click('button[name=btnG]')<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;.pause(1000)<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;.assert.containsText('#main', 'The Night Watch')<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;.end();<br />};</p></pre>
-<p>Besides simplifying the process of writing automated tests, Nightwatch can also be integrated in the Continuous Integration pipeline for a complete diagnosis of the system in development.</p>
-<p>The current list of features can be found on Nightwatch website:</p>
-<ul> 
- <li>Simple but powerful syntax which enables you to write tests very quickly, using only JavaScript and CSS selectors. No need to initialize other objects and classes, you only need to write the test specs.</li> 
- <li>Built-in command-line test runner which enables you to run the tests either altogether, by group or single.</li> 
- <li>Manages the Selenium server automatically; can be disabled if Selenium runs on another machine.</li> 
- <li>Continuous Integration support: JUnit XML reporting is built-in so you can integrate your tests in your build process with systems such as Hudson or Teamcity.</li> 
- <li>Use CSS selectors or Xpath to locate and verify elements on the page or execute commands.</li> 
- <li>Easy to extend if you need to implement your own commands specific to your application.</li> 
-</ul>
-<p>In the JavaScript world, currently Selenium is one of most popular tool for acceptance testing alongside with PhantomJS, each one with its own approach: Selenium uses its WebDriver API and PhantomJS a faceless WebKit browser. Both are very mature tools with a strong support from the community. The biggest differences between these tools and Nightwatch are mainly the simplicity in the syntax and the Continuous Integration support. Selenium and PhantomJS have a more verbose syntax, which leads to bigger coding, and do not support out-of-the-box Continuous Integration from the command line (JUnit XML or other standard output) which Nightwatch do.</p>
-<p>Nevertheless, Nightwatch is still evolving to become a more mature tool. Sebastien Vincent, author of WD.js another Node.js based acceptance testing framework, has made some critiques on Google Groups regarding the implementation chosen to handle callbacks:</p>
+<p>When adopting agile teams can use (external) coaches and mentors. But teams can also develop themselves by having team members mentoring and coaching each other. Team members can learn skills and abilities from other team members in multidisciplinary teams, enabling the team to grow as a whole and become self-organized.</p>
+<p>Scott W. Ambler explains in myths and misunderstandings about agile teams how agile supports that team members learn from each other.</p>
 <blockquote> 
- <p>The queue based chain is a bad pattern when async call are involved, as soon as you try to do something complex, or compose a bit, you end up having to manually halt the queue and insert tasks manually (but maybe Nightwatch will prove me wrong).</p> 
+ <p>Agile promotes iterative, collaborative, and experimental strategies. This promotes learning within the team, it doesn’t reduce it. Agile, and lean strategies in particular, expect the team to learn as you go. They’ll learn more about the domain, about the technologies they’re working with, about how to work effectively, and about each other. When people work together collaboratively, not alone at their own desks, they start to pick up skills from one another naturally.</p> 
 </blockquote>
-<p>Vincent also pointed out the weakness in underline communication protocol used between Nightwatch and the Selenium Server:</p>
+<p>As a way to learn new skills and abilities, team members can coach each other as described in the article everybody needs to be a coach in agile on scrumexpert.com:</p>
 <blockquote> 
- <p>Nightwatch is far for mature, just have a look at the HTTP protocol, no retry, no timeout setting, content/length+content-type in GET and DELETE. It is going to break pretty quickly in non-straightforward cases like sauce-connect or queuing.</p> 
+ <p>When you observe a well-knit team in action, you’ll see a basic hygienic act of peer-coaching that is going on all the time. Team members sit down in pairs to transfer knowledge. When this happens, there is always one learner and one teacher. Their roles tend to switch back and forth over time with, perhaps, A coaching B about TCP/IP and then B coaching A about implementation of queues. When it works well, the participants are barely even aware of it. They may not even identify it as coaching; to them, it may just seem like work.</p> 
 </blockquote>
-<p>Even with those critiques, the tool has been featured on current month’s GitHub most treading repositories, and the Twitter account is being used to get some feedback from the community and to get in touch with the developer.</p>
+<p>Mike McLaughlin talks about his experiences with mentoring in the agile coach on mentoring. He gives an example how colleagues can be mentors for each other:</p>
+<blockquote> 
+ <p>First off, you can have more than one mentor. And maybe you don’t even tag them with that moniker. That’s a lot of responsibility. Stop by their desk and ask them if they have a couple minutes for a quick chat on something perplexing or that you’d like to know more about. If they’re a good mentor, they’ll guide you, rather than answering all your questions directly.</p> 
+</blockquote>
+<p>Team members mentoring each other can be a win-win solution for learning as Mike describes:</p>
+<blockquote> 
+ <p>Your relationship with a mentor should be a two-way street. The mentor needs to get something out of it as well. It’s not all about you all the time. Be sincerely interested in them. It’ll show and grow your bond with that person. At the end of the day, we’re all constantly learning from each other.</p> 
+</blockquote>
+<p>Agile teams are often multidisciplinary. Tirrell Payton provides ideas for team members to learn new skills from each other in his blog post how can an agile team be truly cross functional when team member have different skills sets?</p>
+<blockquote> 
+ <p>Cross functionality doesn’t happen over night, and with a team that is just starting, you get very little cross functionality to start. This happens over time, with pairing, cross training, lunch and learn sessions, and other modes of sharing information about “how things work”.</p> 
+ <p>Look for easy ways to make your teams cross functional first, then move up in difficulty. Allow time for the team to learn from each other and round out their skills. Allow for promiscuous pairing, and the cross functionality will come as a result of people’s natural curiosity.</p> 
+</blockquote>
+<p>Skip Angel mentioned attributes of team members to become self-organized in the blog post self-organization: the secret sauce which includes ideas that support team members to learn from each other:</p>
+<blockquote> 
+ <ul> 
+  <li>Accept change – Team is always looking for ways to improve how they work, we should be willing to open minded and accept change as it happens.</li> 
+  <li>Try new things – Team makes commitments as a group, we may have to step out of our comfort zone and learn something new in order to help the team commitment. This requires taking risks, experimenting and helping the team with work outside your job description.</li> 
+  <li>Take action, instead of waiting to be told what to do – We can not wait for someone to tell us what to do, if we see something that needs to be done, we share that with the team or do it if necessary.</li> 
+  <li>Help others to succeed – If you see that someone needs help or more experience in a certain skill, offer your assistance if you can. In the end, this helps the team succeed.</li> 
+  <li>Consensus decision making – The team will have to make many decision, they will need to agree as a team on how they will make decisions.</li> 
+  <li>Peer coaching and feedback – The team should be looking for ways to become cross-functional and amplify learning. One way of doing this is through peer coaching and giving feedback to one another.</li> 
+  <li>Group problem solving – The team is responsible for solving problems together quickly.</li> 
+  <li>Conflict management – Learning how to resolve conflicts, teams will have to agree together on how they will resolve conflicts amongst the team.</li> 
+ </ul> 
+</blockquote>

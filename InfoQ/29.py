@@ -1,12 +1,20 @@
-<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>OpenStackの4月リリース ‘Icehouse’ 詳細</h3><p><a target="_blank" href="http://www.infoq.com/news/2014/01/openstack_icehouse"><em>原文(投稿日：2014/01/16)へのリンク</em></a></p>
+<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>GoogleのJavaコーディング規約</h3><p><a target="_blank" href="http://www.infoq.com/news/2014/02/google-java-coding-standards"><em>原文(投稿日：2014/02/10)へのリンク</em></a></p>
 <div class="article_page_left news_container text_content_container"> 
  <div class="text_info"> 
-  <p>OpenStackオープンソースクラウドの次期リリースであるIcehouseは，2014年4月の公開が予定されている。自動インストール(<a href="https://wiki.openstack.org/wiki/TripleO">TripleO</a>)，ベアメタル・プロビジョニング(<a href="https://wiki.openstack.org/wiki/Ironic">Ironic</a>)，キューおよび通知サービス(<a href="https://wiki.openstack.org/wiki/Marconi">Marconi</a>)，データベース・アズ・ア・サービス(<a href="https://wiki.openstack.org/wiki/Trove">Trove</a>)が統合サービスとして提供される。Hadoopサポートの改良版(<a href="https://wiki.openstack.org/wiki/Savanna">Savanna</a>)もインキュベーションに含まれる予定だ。</p> 
-  <p>Icehouseのロードマップは，<a href="http://www.openstack.org/summit/openstack-summit-hong-kong-2013/">OpenStackサミット</a>をメインとして11月5日から8日まで香港で開催された，<a href="http://wiki.openstack.org/wiki/Summit/Icehouse">デザインサミット</a>の中で決定された。1月中旬には<a href="http://status.openstack.org/release/">リリース対象機能や開発状況</a>と合わせて，<a href="https://wiki.openstack.org/wiki/Summit/Icehouse/Etherpads">デザインサミットでの議論の記録</a>が<a href="http://www.openstack.org/software/roadmap/">ロードマップのページ</a>で公開されている。</p> 
-  <p>2012年10月に<a href="http://www.openstack.org/software/folsom/">Folsom</a>がリリースされて以来，OpenStackコアコンポーネントのラインナップに変化はないが，改良と整理は続けられている。IcehouseではNova (計算サービス)のネットワーク機能が非推奨となり，Neutron(ネットワーキングサービス)が選択されることになるはずだ。</p> 
-  <p>サービスのライフサイクルは2013年4月の<a href="http://www.openstack.org/software/grizzly">Grizzly</a>のリリースで変更されて，インテグレーションステージ(インキュベーションとコアの間)が導入された。これによってコアのサービスを今以上に拡張しなくても，サービスを追加することが可能になった。基本的なインフラストラクチャ・アズ・ア・サービスの構築を目標とするユーザにとって，これは重要な点だ。2013年10月の<a href="http://www.openstack.org/software/havana/">Havana</a>が，このメリットを活用した最初のリリースとなった。このリリースでは，オーケストレーション(<a href="https://wiki.openstack.org/wiki/Heat">Heat</a>)と計測機能と(<a href="https://wiki.openstack.org/wiki/Ceilometer">Ceilometer</a>)の２つが，統合サービスとして提供されている。</p> 
-  <p>改訂された ‘<a href="http://www.slideshare.net/randybias/state-of-the-stack-v2">State of the Stack</a>’ プレゼンテーションにはRandy Bias氏(OpenStackベンダであるCloudscalingの創設者)が，OpenStackはもっとも早く成長したオープンスタックコミュニティであり，現在では12,000人以上の個人が参画している，と記している。Havanaのリリース時点で910のコントリビュータが登録されていて，開発者コミュニティ全体では現在1,000を越えている。香港で開催されたOpenStackサミットでは，エキゾチックな場所にも関わらず，前回のポーランドでのサミットよりも1,000人以上多くの参加者を集めた。</p> 
-  <p>OpenStack構成員の中には，しかしながら反対意見もいくつかある。例えばRackspaceとCloudscallingのエンジニアだったAndrew Shafer氏は，‘OpenStackには人々がソフトウェアソリューションを故意でなく誤使用した，悪いプロジェクトの成果が残ることになる’ と<a href="http://stochasticresonance.wordpress.com/2013/11/04/openstack-a-plea/">断言している</a>。氏が特に問題視しているのは，コントリビュータ個々の威信によってOpenStackが複数のプロジェクトに分裂してしまう可能性だ。特に脆弱だと指摘されるのは，計測プロジェクトのCeilometerである。‘監視・計測をクラウドにボルトで据え付けるという発想そのものが，信頼性やスケーラビリティを後付けしようとするのと同じくらいナンセンスです。’</p> 
-  <p>GartnerのアナリストであるAlessandro Perilli氏もまた，‘Why vendors can’t sell OpenStack to enterprises’ という<a href="http://blogs.gartner.com/alessandro-perilli/why-vendors-cant-sell-openstack-to-enterprises/">記事を書く</a>中で，OpenStackが行うことと行わないことの明解さの欠如，OpenStack関連ビジネスの透明性の欠如，ビジョンと長期的な差別化の欠如，実用性に関する考慮の欠如を指摘している。OpenStackの将来性や実現性に対してさらなる疑問を投げかけるのは，BrocadeのアーキテクトであるGeoff Arnold氏の‘<a href="http://www.speakingofclouds.com/?p=353">Whither OpenStack?</a>’だ。この記事はOpenStack支持者の間に多くの<a href="http://www.infoworld.com/t/openstack/red-hat-rackspace-defend-openstack-against-analysts-barbs-231438">反響を引き起こした</a>。Red HatのBrian Che氏は &quot;オープンソースプロジェクトは製品と同じではない&quot;と述べている。またRackspaceのScott Sanchez氏は，&quot;革新的な企業&quot;がOpenStackを採用するだろう，と言う。&quot;そのような企業は‘エンタープライズ用の機能’をインフラストラクチャ層に要求するよりも，自らアプリケーション層に構築する方が手っ取り早いことを知っているからです。&quot;</p> 
+  <p>Googleは、最近、<a href="http://google-styleguide.googlecode.com/svn/trunk/javaguide.html">Javaコーディング規約</a>の完全な定義を公開した。 この規約は強制力を持つ厳格なルールであり、Google全体で従うべきものだ。単なるフォーマットだけでなく、他の約束事やコーディング規約についても書かれている。</p> 
+  <p>このドキュメントは、6つの主要な部分からなる。ソースファイル基礎、ソースファイル構成、フォーマット、ネーミング、プログラミングプラクティス、そして、Javadocだ。<i>ソースファイル基礎</i>は、ファイル名、ファイルエンコーディング、空白文字、特殊文字について、また、<i>ソースファイル構成</i>は、ライセンス情報、パッケージやインポート文、そして、クラスメソッドの順序付けについて書かれている。<i>フォーマット</i>は、大括弧やインデント、行の折り返し、空白、丸括弧、enum、配列、switch文、アノテーション、コメント、モディファイヤについて説明する。<i>ネーミング</i>は、パッケージ、クラス、メソッド、コンスタント、フィールド、ローカル変数、型変数などの識別子について説明し、キャメルケースを定義している。<i>プログラミングプラクティス</i>は、@Override、例外、スタティックメンバ、ファイナライザに関する章であり、<i>Javadoc</i>は、Javadocの書式設定方法やどのような場面で必要かについて書かれている。</p> 
+  <p>ガイドに含まれているいくつかの項目をここで紹介する。</p> 
+  <ul> 
+   <li>ワイルドカードを使ったインポートは使わない。</li> 
+   <li>オーバーロードは連続して現れる。</li> 
+   <li>ボディが空や1行であっても、大括弧を使う。</li> 
+   <li>インデントはスペース2つにする。</li> 
+   <li>カラム制限は80か100文字。</li> 
+   <li>C形式の配列宣言は使わない。</li> 
+   <li>スイッチ文ではデフォルト文が必要。</li> 
+   <li>Java言語仕様で推奨された順番で識別子が現れる。</li> 
+   <li>コンスタントはCONSTANT_CASEを使う。コンスタントはすべてスタティックファイナルフィールドだが、すべてのスタティックファイナルフィールドがコンスタントの訳ではない。</li> 
+  </ul> 
+  <p>さらに詳細を知りたい場合は、<a href="http://google-styleguide.googlecode.com/svn/trunk/javaguide.html">Google Javaスタイル</a>を読もう。Oracleの公式な<a href="http://www.oracle.com/technetwork/java/javase/documentation/codeconvtoc-136057.html">Javaプログラミング言語のコード規約</a>がある。Googleには、C++やObjective-C、Python、Shell、HTML/CSS、JavaScript、Lispのような他の言語の<a href="https://code.google.com/p/google-styleguide/">スタイルガイド</a>もある。</p> 
  </div> 
 </div><br><br><br><br><br><br></body></html>

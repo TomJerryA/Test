@@ -1,8 +1,23 @@
 <html>
  <head></head> 
- <body>
-  <div>
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/16.java">Interview with VersionOne CEO Robert Holler on the State of Agile Survey Results</a>InfoQ spoke to VersionOne CEO Robert Holler about the 8th State of Agile survey results which were recently released.
+ <body> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/19.java">QCon London in 2 weeks – Seven Key Reasons to Attend</a>Going into its 8th year, QCon London is UK’s premier event designed exclusively for senior enterprise software development professionals: technical team leads, architects, software engineers, and project managers. If you've thought of attending, there is still a chance to go to one of the best conferences for our craft. QCon is now less than 2 weeks away! Why register? Seven Key Reasons to Attend. 
+  </div> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/18.java">How Team Members Learn From Each Other in Agile Teams</a>When adopting agile teams can use (external) coaches and mentors. But teams can also develop themselves by having team members mentoring and coaching each other. Team members can learn skills and abilities from other team members in multidisciplinary teams, enabling the team to grow as a whole and become self-organized. 
+  </div> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/18.java">Typemock Isolator++ Updated with 64 bit Support</a>Typemock has released Isolator++ with support for 64 bit C/C++ code including legacy code that was not originally written for testing. 
+  </div> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/18.java">Project Helios: An ASP.NET OWIN-based Web Host Running on IIS</a>Microsoft has released a project called Helios, a lightweight OWIN-based web host running on top of IIS. 
+  </div> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/17.java">Prismatic Adds Data Type Coercion to Schema 0.2</a>Prismatic have added data coercion in the 0.2 release of their Clojure data description library, Schema. The addition of coercion means that the library doesn’t just reject data that has the wrong types, but it can be configured to modify instances to fit the schema. InfoQ talked to Prismatic's Jason Wolfe about Schema. 
+  </div> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/16.java">Interview with VersionOne CEO Robert Holler on the State of Agile Survey Results</a>InfoQ spoke to VersionOne CEO Robert Holler about the 8th State of Agile survey results which were recently released. 
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/15.java">OpenAccess ORM Renamed As Telerik Data Access with Improved UI and Colored Visual Designer</a>Telerik recently renamed OpenAccess ORM as Telerik Data Access with Improved User Interface and colored visual designer in addition to Telerik.DataAccess.Core NuGet, Telerik.DataAccess.Fluent and Telerik.DataAccess.Fluent.Sample NuGet packages. 
@@ -136,20 +151,5 @@
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/22.java">Google Cast SDK Adds MPEG-DASH, Adaptive and HTTP Live Streaming Support</a>Google has released Cast SDK with which developers will be able to integrate Chromecast into both new and existing mobile apps and websites with support for adaptive streaming, MPEG-DASH, HTTP Live Streaming (HLS) and SmoothStreaming. 
   </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/21.java">DataFu Enters Incubation Status at Apache</a>LinkedIn’s DataFu project, a collection of libraries for Hadoop, has now officially entered the incubation status at the Apache Software Foundation (ASF) since the first week of January. 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/20.java">Google Acquires Nest: Big Data Comes to Energy</a>Google has acquired Nest, maker of smart thermostat and smoke detectors, for $3.2 billion in cash, making it another major data source that will help Google understand how people live. 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/19.java">JSON-LD Reaches W3C Recommendation Status</a>The W3C RDF Working Group has moved the JSON-LD and JSON-LD 1.0 Processing Algorithms and API standards forward to recommended status. JSON-LD is a standard to add &quot;linked data&quot; semantics to JSON. 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/18.java">Eclipse Foundation Celebrates 10th Anniversary</a>Yesterday the Eclipse foundation celebrated its tenth anniversary. The original press release in February 2004 declared the not-for-profit organisation was created from its prior stewardship role to bring together independent parties from developers, consumers and add-in providers to form a board responsible for the long-term direction of Eclipse. Read on for more. 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/17.java">New InfoQ Feature: Follow Your Favorite Topics with RSS</a>For 2014 we have made topic pages available through RSS, so you can be using your RSS reader to follow your favorite topics. 
-  </div>  
  </body>
 </html>

@@ -1,25 +1,7 @@
-<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>内存OLTP的索引</h3><p>SQL Server内存OLTP的索引与普通索引不一样。这不一定是坏事，只是你要小心它们的差异，避免造成性能问题。</p>
-<p>内存优化的非聚簇索引与基于磁盘的非聚簇索引的不同之处在于，他们一直在涵盖。你不需要指定要包含哪些列，除了真正的索引列，“其它列也都将虚拟地涵盖在内”。</p>
-<p>非聚簇索引的一个有趣的限制是它只能单向扫描。比如索引是“OrderDate ASC”时，你不能用这个索引以订单日期降序来检索记录。</p>
-<p>另一种类型的索引是内存优化的哈希索引。这种索引是为“点式查找操作（point-lookup operations）”和全扫描设计的。它不能用于排序的扫描和不等式查找操作。微软提供了一些<a href="http://blogs.technet.com/b/dataplatforminsider/archive/2013/11/12/sql-server-2014-in-memory-oltp-nonclustered-indexes-for-memory-optimized-tables.aspx">在非聚簇索引和哈希索引之间进行选择的指导原则</a>：</p>
-<ul> 
- <li>如果你只需要执行点式查找，也就是说你只需要获取单独索引键值的记录，则应使用哈希索引。</li> 
- <li>如果你需要获取一定范围内的记录，或者需要按特定顺序排序的记录，则应使用非聚簇索引。</li> 
- <li>如果你两个都需要，特别是点式查找比较频繁时，可以考虑建立两个索引。你可以在同一索引键上同时创建哈希索引和非聚簇索引。</li> 
-</ul>
-<p>哈希索引还需要使用桶计数。桶计数的值应该在N到2N之间，其中N是预期的记录数。在操作层面上，0.2N到5N之间都是“可用”的。桶计数在内部始终会被向上取整到2的下一次方。</p>
-<p>桶计数过高会浪费内存。对于要完全适合RAM的内存优化表而言，这是个敏感问题。而桶计数过低则可能会导致其他问题出现：</p>
-<blockquote> 
- <p>如果桶计数显著（十倍）低于唯一索引键的数量，很多桶将有多个索引键。这将导致大多数DML操作性能下降，特别是点式查找操作（查找单独的索引键）。比如说，即便索引键字段在WHERE子句中，并且使用等号进行SELECT、UPDATE和DELETE操作，性能也会非常差。</p> 
-</blockquote>
-<p>哈希索引可能还会遇到重复值的问题。如果多条记录的索引字段的值相同，那么这些记录会产生哈希冲突。如果这种情况很多，例如每个不同的值重复超过10次，那么性能就会受到影响。</p>
-<p>对于哈希索引，<a href="http://blogs.technet.com/b/dataplatforminsider/archive/2014/01/30/in-memory-oltp-index-troubleshooting-part-ii.aspx">SQL Server团队</a>建议将其转换成非聚簇索引。</p>
-<blockquote> 
- <p>绝大多数情况下应该使用非聚簇索引，因为如果出现重复，非聚簇索引的性能通常更好。如果采用这个选项，你可以考虑唯一化索引键。如下所述：</p> 
- <p>对于有大量重复的非聚簇索引，应考虑增加索引列。比如将主键字段加到索引键中，确保索引唯一，也就是说，唯一化索引。</p> 
-</blockquote>
-<p>如果值确实不同，并且你仍想使用哈希索引，那么你可以使用“超大索引”,也就是将桶计数值设置为“唯一索引值数量的20到100倍之间”，从而减少哈希冲突的可能。</p>
-<p><strong>原文英文链接：</strong><a href="http://www.infoq.com/news/2014/02/In-Memory-OLTP-Indexes">More on Indexes in In-Memory OLTP</a></p>
-<hr />
-<p>感谢<a href="http://www.infoq.com/cn/author/吴海星">吴海星</a>对本文的审校。</p>
-<p>给InfoQ中文站投稿或者参与内容翻译工作，请邮件至<a href="mailto:editors@cn.infoq.com">editors@cn.infoq.com</a>。也欢迎大家通过新浪微博（<a href="http://www.weibo.com/infoqchina">@InfoQ</a>）或者腾讯微博（<a href="http://t.qq.com/infoqchina">@InfoQ</a>）关注我们，并与我们的编辑和其他读者朋友交流。</p><br><br><br><br><br><br></body></html>
+<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>Docker提供对Mac OS X和BTRFS的支持</h3><p>作为<a href="http://blog.docker.io/2014/02/docker-0-8-quality-new-builder-features-btrfs-storage-osx-support/">0.8版本</a>的一部分，Docker.io团队宣布Docker已经支持<a href="http://docs.docker.io/en/latest/installation/mac/">在Mac OS X上安装</a>，还支持使用<a href="http://en.wikipedia.org/wiki/Btrfs">BTRFS</a>替代<a href="http://en.wikipedia.org/wiki/Aufs">AUFS</a>。</p>
+<p>对Mac的支持是通过两个组件实现的，一个是<a href="http://get.docker.io/builds/Darwin/x86_64/docker-latest">原生的Docker OS X客户端</a>，一个是轻量级的<a href="https://github.com/steeve/boot2docker">Boot2Docker</a>虚拟机（VM），该虚拟机必须在<a href="http://en.wikipedia.org/wiki/Virtualbox">VirtualBox</a>中运行（因为OS X没有提供Docker所需的Linux容器这种底层支持）。在该版本发布之前，Mac用户必须在Linux虚拟机中运行Docker客户端和后台程序。</p>
+<p>Docker团队曾经表明，他们希望把Linux容器（<a href="http://en.wikipedia.org/wiki/Lxc">LXC</a>）以及其他依赖移植到OS X上，但是到目前为止他们的后台程序还是必须在虚拟机中运行。Boot2Docker提供了一个最小化的Linux环境，以及一组可以配合VirtualBox使用的命令行脚本。Boot2Docker提供了生命周期管理，还可以处理SSH和虚拟机中运行的Docker后台程序之间的端口映射。它使用了DOCKER_HOST环境变量，这样客户端就能通过TCP 连接到Docker后台程序，而不是通过默认的原生Unix套接字。遗憾的是Boot2Docker还没有集成Docker自己的端口映射机制，所以就目前而言，要从宿主Mac机器连接到在容器中运行的服务，<a href="https://github.com/dotcloud/docker/issues/4007">在VirtualBox和Docker中映射端口</a>还是必要的。</p>
+<p>BTRFS驱动被描述为实验特性，而且需要先创建好一个BTRFS分区。对于Docker的工作而言，底层的写时复制（<a href="http://en.wikipedia.org/wiki/Copy_on_write">copy on write</a>）文件系统是必不可少的，映像以及从映像派生出的容器，都是由多个层次组成，其中每个层次映射到一个文件系统分支。<a href="http://en.wikipedia.org/wiki/Zfs">ZFS</a>驱动相关的工作也在进行之中。</p>
+<p>Docker.io团队还宣布，他们从现在开始会采取每个月发布一个新版本的策略，每个月的第一周发布。发布日期不会与任何具体特性关联起来，也就是说，在此日期之前加入的特性会包含进来，后加入的特性则进入下一个发布窗口。此后Docker.io团队获得了由前VMware副总裁、<a href="http://www.greylock.com/teams/50-Jerry-Chen">Greylock Partners的Jerry Chen</a> 主导的 <a href="http://blog.docker.io/2014/01/docker-closes-15-m-series-b-funding/">$1500万美元的融资</a>。这笔钱将用于为Docker的产品化做好准备、构建出社区平台并寻找商业化之路。Docker团队还承诺，他们的<a href="https://github.com/dotcloud/docker">github主分支</a>将保持稳定，如果想获得最新版本，可以直接从主分支获取代码并构建。在最近这轮融资之前，<a href="http://www.infoq.com/news/2013/10/dotcloud-renamed-docker">dotCloud将公司的名字改成了Docker Inc</a>。</p>
+<p>关于Docker以及它如何使用的更多背景信息，可以参看Zef Hemel的“<a href="http://www.infoq.com/cn/articles/docker-containers">Docker：利用Linux容器实现可移植的应用部署</a>”一文。</p>
+<p><strong>查看英文原文：</strong><a href="http://www.infoq.com/news/2014/02/docker_0_8">Mac OS X and BTRFS support in Docker</a></p><br><br><br><br><br><br></body></html>

@@ -1,23 +1,14 @@
-<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>Entity Framework 6添加了对DynamicData和EntityDataSource控件的支持</h3><p>在Entity Framework 6中，微软除了用Microsoft.AspNet.EntityDataSource更新了模板之外，还添加了对<a href="http://www.nuget.org/packages/Microsoft.AspNet.DynamicData.EFProvider">DynamicData</a>和<a href="http://www.nuget.org/packages/Microsoft.AspNet.EntityDataSource">EntityDataSource</a>控件的支持。DynamicData包可用于使用Entity Framework 6创建的<a href="http://msdn.microsoft.com/en-us/data/jj193542.aspx">代码先行</a>或<a href="http://msdn.microsoft.com/en-us/data/jj205424.aspx">模型先行</a>的项目，同时这些项目还必须安装了必要的包、实体和字段模板。</p>
-<p>要使用DynamicData控件，需要创建一个新的ASP.NET Dynamic Data实体Web应用程序，添加Microsoft.AspNet.DynamicData.EFProvider的NuGet包，这会添加对DynamicData EFProvider二进制文件的引用，并安装所需的模板。</p>
-<p>接着，使用EF代码先行或设计器创建模型，然后在<a href="http://msdn.microsoft.com/en-us/library/1xaas8a2(v=vs.71).aspx">Global.asax.cs</a>文件中添加如下代码，注册Entity Framework模型。</p>
-<pre>
-DefaultModel.RegisterContext(   
-new Microsoft.AspNet.DynamicData.ModelProviders.EFDataModelProvider(()
- =&gt; newNorthwindEntities1()), 
-    newContextConfiguration { ScaffoldAllTables = true });
-</pre>
-<p>另一方面，Microsoft.AspNet.EntityDataSource包会安装运行时二进制文件和Entity Framework 6的<a href="http://www.nuget.org/">NuGet</a>包。还需要在web.config文件中添加如下所示的标签前缀：</p>
-<pre>
-&lt;pages&gt; 
-&lt;controls&gt; 
-&lt;addtagPrefix=&quot;ef&quot;assembly=&quot;Microsoft.AspNet.EntityDataSource&quot; 
-namespace=&quot;Microsoft.AspNet.EntityDataSource&quot; /&gt; 
-&lt;/controls&gt; 
-&lt;/pages&gt; </pre>
-<p>最后，创建一个新的Web表单页，用下面的代码将EntityDataSource控件绑定到GridView或FormView上：</p>
-<pre>
-&lt;ef:EntityDataSourceID=&quot;GridDataSource&quot;runat=&quot;server&quot;EnableDelete=&quot;true&quot;/&gt;
-</pre>
-<p>安装的模板将取代Microsoft.AspNet.EntityDataSource包中默认的EntityDataSource控件。它还解决了一些与多对多字段模板相关的问题。不过，Microsoft.AspNet.DynamicData.EFProvider中的模板面向的是C#和Web Application项目，不能用于WebSites项目。</p>
-<p><strong>原文英文链接：</strong><a href="http://www.infoq.com/news/2014/02/dynamicdata-ef6">DynamicData and EntityDataSource Updated with Entity Framework 6 Support</a></p><br><br><br><br><br><br></body></html>
+<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>InfoQ读者年度调查：2014你想看什么？</h3><p></p>
+<p>2014年，InfoQ中文站想给大家带来更好的内容——更好的<a href="http://www.infoq.com/cn/articles/">文章</a>、更好的<a href="http://www.infoq.com/cn/architect/">杂志</a>、更好的<a href="http://www.qconbeijing.com/">会议</a>、更好的<a href="http://www.infoq.com/cn/qclub">沙龙活动</a>。年初，我们在语言&amp;开发、架构&amp;设计、过程&amp;实践、运维&amp;基础架构等几个大领域之上，还专门为大家规划好了今年几个重点的内容方向，分别是云计算基础架构、大数据技术、App开发技术、Java、测试等。我们的InfoQ网站为移动设备做了界面适配，我们的《架构师》电子月刊已经摩拳擦掌上了Kindle版本，我们的QCon大会和ArchSummit大会无论在讲师挑选、话题沟通、活动策划、会场体验方面都做了大量优化，而且没有去到大会现场的同学们也可以很快在InfoQ网站上看到效果清晰的录制版本。我们的<a href="http://www.infoq.com/cn/contribute">全职编辑团队和社区编辑团队</a>也在以惊人的速度增长，加入了很多很棒的小伙伴们。</p>
+<p>我们信心满满，志在必得，打定了主意要做很多牛逼的内容出来给大家享用。</p>
+<p>但还有一个很大的问题：我们不知道自己准备的这些OpenStack蛋炒Hadoop、Java清蒸Objective-C、DevOps大乱炖等菜品，合不合你的胃口。</p>
+<p>你想看什么？请在《<a href="http://www.diaochapai.com/survey869696">2013~2014年度InfoQ读者调查</a>》上告诉我们吧！我们将为你私人定制一顿可口大餐~</p>
+<p>截止到目前为止，调查中的一些有趣发现：</p>
+<ul> 
+ <li> 参与调查的Web前端开发比App开发多一倍还多</li> 
+ <li> 在常用编程语言方面，玩Java的同学还是很多，玩C和Objective-C的很少。问卷中的编程语言列表其实是从<a href="http://www.tiobe.com/index.php/content/paperinfo/tpci/index.html">Tiobe的编程语言排行榜</a>拉出来的，按照这个比例，似乎我们对用C和Objective-C的同学们关照的还远远不够</li> 
+ <li> 调研IaaS的同学们最关注的地方在于有没有提供丰富的运维工具和管理工具，其次是价格是否公开透明</li> 
+ <li> 在架构的可靠性之下，大家最关心架构的可维护性</li> 
+ <li> 几位表示想要大数据方面内容的同学有不少在做移动app，甚至在做嵌入式开发。他们想了解的也许并不是该怎么给Hadoop做优化的问题？</li> 
+</ul>
+<p>填写问卷用时预计在十分钟以内，提交后即可看到上述的调查结果。完成调研分享到微博 <a href="http://weibo.com/infoqchina">@InfoQ</a>，或分享到微信朋友圈后截图 @infoqchina 的朋友，有机会通过抽奖获得池建强的新书《<a href="http://item.jd.com/11398297.html">MacTalk&middot;人生元编程</a>》或道哥的《<a href="http://item.jd.com/10969997.html">白帽子讲Web安全</a>》，获奖信息每周公布一次。</p><br><br><br><br><br><br></body></html>

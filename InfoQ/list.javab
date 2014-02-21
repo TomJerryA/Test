@@ -2,6 +2,12 @@
  <head></head> 
  <body> 
   <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/24.javab">The Kanban Survivability Agenda</a> This third and last article in the series on the Kanban “nine values, three agendas” model explores the survivability agenda. The values associated with this agenda are understanding, agreement, and respect; these say much about the philosophy that underlies Kanban, the humane, start with what you do now approach to change. 
+  </div> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/23.javab">Reliable Auto-Scaling using Feedback Control</a> Philipp K. Janert explains how to reliably auto-scale systems using a reactive approach based on feedback control which provides a more accurate solution than deterministic or rule-based ones. 
+  </div> 
+  <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/22.javab">Author Q&amp;A – The Lean Mindset by Tom and Mary Poppendieck</a> The Lean Mindset is a collection of research results and case studies from companies applying lean in product development and delivery. A lean mindset according to Mary and Tom Poppendieck is about “developing the expertise to ask the right questions, solve the right problems, and do the right thing in the situation at hand”. 
   </div> 
   <div> 
@@ -144,12 +150,6 @@
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/25.javab">Introduction to Graph Visualization with Alexander Smirnov</a> We asked Alexander Smirnov, creator of GraphX, to explain what graph visualization is and how it can be used to help users understand complex data. 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/24.javab">Spreading CMMI Practices among Agile Teams in Big Organizations</a> Agile and CMMI complement each other well. Big organizations with self-organized teams can achieve technical maturity levels, by using a common metalanguage and a good-practices catalog. 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/23.javab">Meet Elaine: A Persona- Driven Approach to Exploring Architecturally Significant Requirements</a> This article shares a simple technique used to address problems such as a system’s intended functionality but also qualities such as performance, reliability, portability, and availability. 
   </div> 
  </body>
 </html>

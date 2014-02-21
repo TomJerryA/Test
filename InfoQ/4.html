@@ -1,22 +1,35 @@
-<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>斯坦福大学发布免费在线文本分析工具</h3><p>斯坦福计算机科学家开发了<a href="http://www.etcml.com/">etcML</a>（Easy Text Classification with Machine Learning）网站，该网站通过机器学习引擎进行文本分析，目前该网站向所有人免费开放。</p>
-<p>维基百科对<a href="http://en.wikipedia.org/wiki/Machine_learning">机器学习</a>的解释是：他是人工智能的分支之一，是一套能够从数据中学习的系统。</p>
-<p>斯坦福大学官网对此进行了<a href="http://engineering.stanford.edu/research-profile/stanford-scientists-put-free-text-analysis-tool-web">说明</a>：etcML网站基于成熟的文本分析引擎，估计总体的情感倾向（是消极还是积极）。etcML项目负责人Richard Socher表示：</p>
+<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>使用Nightwatch进行端到端测试</h3><p><a href="http://nighwatchjs.org/">Nightwatch</a>是一套新近问世的基于Node.js的验收测试框架，使用<a href="http://docs.seleniumhq.org/docs/03_webdriver.jsp">Selenium WebDriver API</a>以将Web应用测试自动化。它提供了简单的语法，支持使用JavaScript和CSS选择器，来编写运行在Selenium服务器上的端到端测试。</p>
+<p>不同于行为驱动测试（BDD）和单元测试独立运行并使用模拟/存根，端到端测试将试着尽可能从用户的视角，对真实系统的访问行为进行仿真。对Web应用来说，这意味着需要打开浏览器、加载页面、运行JavaScript，以及进行与DOM交互等操作。Nightwatch尝试着使用语法糖（<a href="http://nightwatchjs.org/guide#usage">syntax sugar</a>）来实现这一目标：</p>
+<pre>
+this.demoTestGoogle = function (browser) {
+   browser
+     .url(“http://www.google.com”)
+     .waitForElementVisible('body', 1000)
+     .setValue('input[type=text]', 'nightwatch')
+     .waitForElementVisible('button[name=btnG]', 1000)
+     .click('button[name=btnG]')
+     .pause(1000)
+     .assert.containsText('#main', 'The Night Watch')
+     .end();
+};</pre>
+<p>除简化了编写自动化测试的过程外，Nightwatch还能够<a href="http://nightwatchjs.org/guide#runner-options">与持续集成的流水作业结合</a>，从而对开发中的系统进行完整的诊断：</p>
+<p>我们可以从Nightwatch网站找到当前提供特性的列表：</p>
+<ul> 
+ <li>简单但强大的语法。只需要使用JavaScript和CSS选择器，开发者就能够非常迅捷地撰写测试。开发者也不必初始化其他对象和类，只需要编写测试规范即可。</li> 
+ <li>内建命令行测试运行器，允许开发者同时运行全部测试——分组或单个运行。</li> 
+ <li>自动管理Selenium服务器；如果Selenium运行在另一台机器上，那么也可以禁用此特性。</li> 
+ <li>支持持续集成：内建JUnit XML报表，因此开发者可以在构建过程中，将自己的测试与系统（例如<a href="http://hudson-ci.org/">Hudson</a> 或<a href="http://www.jetbrains.com/teamcity/">Teamcity</a>等）集成。</li> 
+ <li>使用CSS选择器或Xpath，定位并验证页面中的元素或是执行命令。</li> 
+ <li>易于扩展，便于开发者根据需要，实现与自己应用相关的命令。</li> 
+</ul>
+<p>目前，Selenium是JavaScript的世界里验收测试方面最流行的工具之一，类似的还有<a href="http://phantomjs.org/">PhantomJS</a>。二者都有其独到的方法：Selenium使用其WebDriver API，而PhantomJS使用无界面的WebKit浏览器。它们都是非常成熟的工具，都具有强大的社区支持。它们与Nightwatch之间最大的不同，主要是在于语法的简易度以及对持续集成的支持。与Nightwatch相比，Selenium和PhantomJS都拥有更加冗长的语法，这会让编码变得更庞大，而且不支持从命令行中进行开箱即用的持续集成（JUnit XML或其他标准输出）。</p>
+<p>尽管如此，Nightwatch还处于不断演进的道路上，以成为更加成熟工具的。在Google Groups中，<a href="https://github.com/admc/wd">WD.js</a>（另一个基于Node.js的验收测试框架）的作者Sebastian Vincent针对处理回调所选择的实现<a href="https://groups.google.com/forum/#!msg/appium-discuss/m8ypnn6lhLc/jDcugkzA3B8J">给出了一些批评意见</a>：</p>
 <blockquote> 
- <p>“我们想开发一套供普通人和研究人员使用的标准的机器学习技术，所有使用者都不需要编程能力。”</p> 
+ <p>当涉及异步调用时，基于链式的队列是个糟糕的模式。如果开发者想要做一些复杂的事情，或是组合一些东西，最终将不得不手动停止队列以插入任务（但也许Nightwatch会证明我的看法是错的）。</p> 
 </blockquote>
-<p>斯坦福大学候选博士研究生Rebecca Weiss表示：</p>
+<p>Vincent还针对Nightwatch和Selenium服务器之间使用的底层通信协议，指出了其中存在的不足之处：</p>
 <blockquote> 
- <p>etcML提供了一种简单的方式，对单词和短语所体现的观点进行分类。</p> 
- <p>我可以训练分类器，也可以对任何一段文本打上标签，实现这一切并不需要写一行代码。我还可以和记者或研究人员分享我的分类器。</p> 
+ <p>Nightwatch离成熟还远，看看HTTP协议，GET和DETLETE中没有重试、没有超时设置，也没有内容/长度+内容类型。在非直接情况下（例如Sauce-connect或排队），它很快就会出现问题。</p> 
 </blockquote>
-<p>斯坦福大学计算机语言学研究者Rob Voigt通过etcML对Kickstarter（一个创意方案众筹平台）上的项目进行评估。他发现，多使用“我们”、“我们的”这些复数代词能够提高项目宣讲成功的概率。Voigt表示：</p>
-<blockquote> 
- <p>“我们并没有声称我们的分析是决定性的，etcML分类范式提供了有价值的成功线索。”</p> 
-</blockquote>
-<p>斯坦福大学计算机科学博士生Chinmay Kulkarni使用etcML对2000名学生的简答题测验进行打分。此前，简答题打分是通过学生之间的互相打分完成的，平局每道题有4个学生进行打分。通过etcML打分后，平局每道题只需要3个或更少的学生打分。Kulkarni表示：</p>
-<blockquote> 
- <p>“我们获得了同样的精确度，同时减少了学生的负担。”</p> 
-</blockquote>
-<p>Kulkarni发布了这一项目的<a href="http://hci.stanford.edu/publications/paper.php?id=279">论文</a>。</p>
-<p>Socher认为etcML能吸引许多人尝试有趣的语义分析项目并提供反馈，从而提升etcML背后的计算引擎。</p>
-<p>值得一提的是，<a href="http://en.wikipedia.org/wiki/Andrew_Ng">Andrew Ng（吴恩达）</a>是etcML项目的顾问，他是斯坦福人工智能实验室的主管，也是在线公开课程平台Coursera的创始人之一。</p><br><br><br><br><br><br></body></html>
+<p>然而，哪怕有这些批评的声音，Nightwatch还是入选了<a href="https://github.com/trending?since=monthly">GitHub本月最热门代码仓库</a>。另外该团队运营着一个<a href="https://twitter.com/nightwatchjs">Twitter账号</a>，听取来自社区的反馈并与开发者互动。</p>
+<p><strong>查看英文原文：</strong><a href="http://www.infoq.com/news/2014/02/nightwatch">Testing End-to-End with Nightwatch</a></p><br><br><br><br><br><br></body></html>

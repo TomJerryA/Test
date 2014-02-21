@@ -1,16 +1,28 @@
-<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>全速前进：Oracle计划于3月份发布Java 8，即便有Bug亦如此</h3><p>Oracle计划于3月18日正式发布JDK 8，即便存在一些小Bug也会如期发布。在发送给Java邮件列表的一封邮件中，Oracle JDK 8发布经理Mathias Axelsson重点强调了此次升级的意图，即在3月份将会正式发布JDK 8。在此次发布中，只有一些严重的Bug才会考虑在最初的JDK 8发布中得到修复；其他一些小Bug将会推迟到后续发布中解决，这样做的目的是为了确保能在3月18日如期发布JDK 8。</p>
-<p>Axelsson说JDK 8的开发者们最近一直在努力修复Bug，“目前只有为数不多的问题需要解决并集成，总的来看，项目进展还是非常不错的”。</p>
-<p>此前Java就有发布时存在Bug的经历。2011年发布的Java SE 7存在着<a href="http://www.infoworld.com/t/java-programming/apache-and-oracle-warn-serious-java-7-compiler-bugs-168516">编译器问题</a>，Java客户端的安全也接二连三地出现<a href="http://www.infoworld.com/t/security/javas-insecurity-has-doomed-it-the-desktop-228922">问题</a>，不过Oracle<a href="http://www.infoworld.com/t/java-programming/oracle-were-getting-java-security-under-control-227404">承认</a>了这些问题并加以解决，之后发布了Java SE的<a href="http://www.infoworld.com/d/security/oracle-set-issue-147-security-patches-including-36-java-233995">36个修复</a>。</p>
-<blockquote>
-  Java 7发布时所引入的hotspot-compiler优化会错误地编译某些循环，这个Bug已经影响到了很多项目，包括Apache Lucene Core、Apache Solr等。最坏的情况下，这个Bug会导致JVM崩溃；在其他一些情况下，Bug会导致一些计算出现错误，这又会造成应用出现难以察觉的各种问题。
- <br /> 
- <br /> Oracle也发现了这个Bug，发现的时间是在Java 7发布的前5天；当时Oracle在Sun Developer Network上发布了警告。公司也承诺会在接下来的服务发布中修复这些问题。 
- <br /> 
- <br /> Apache简要说明了运行Java 7的用户可能会遇到的问题细节信息。使用默认配置的Solr用户“在开始索引文档时会遇到Java崩溃的问题”，Lucene中的其他循环也可能会出现编译错误的问题。 
- <br /> 
- <br /> 值得注意的是，Java 6用户如果使用了默认情况下没有开启的选项也会遇到相应的问题，包括-XX:+OptimizeStringConcat和-XX:+AggressiveOpts。 
- <br /> 
- <br /> 此前Java还出现过客户端安全问题。Oracle官方也曾说过Java的安全问题长久以来都被忽视了，这导致软件很容易遇到各种安全攻击。不过Oracle现在非常重视这个问题，并且及时发布了新的版本，更加安全的Java版本，修复了安全问题。Oracle云应用与Java EE副总裁Cameron Purdy说大多数安全问题都可以追溯到10年前，只不过Java被纳入Oracle麾下并没有多长时间，不过未来Oracle将会非常重视Java的安全问题。 
+<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>L20n: 来自 Mozilla 的 JavaScript 本地化框架</h3><p><a href="http://l20n.org/">L20n</a>是一款开源的JavaScript本地化框架，由Mozilloa贡献。L20n设计得极富表达能力，拥有很多特性，比如屏幕尺寸适配，良好的关注点分离，对复用的优雅处理，当有多个变量时支持默认等等。</p>
+<p><a href="https://twitter.com/stas">Staś Małolepszy</a>对项目背后的动机做了如下<a href="http://informationisart.com/19/">解释</a> ——</p>
+<blockquote> 
+ <p>对Mozilla项目本地化的过程中，我们发现UI中90-95%的信息是简单的键值对，并不需要L20n的高级功能。</p> 
+ <p>那为什么还要开发L20n呢？原因就是剩余5%的信息，它们是应用UI成败的关键。这些剩余的信息非常重要，我们无法视而不见，而且它们是用户体验的关键。</p> 
 </blockquote>
-<p>Forrester Research的分析师John Rymer说“Oracle能够及时沟通JDK 8的状态是一件非常好的事情，毕竟谁都不希望延期再延期了”。</p>
-<p>根据之前的规划，JDK 8将会包含Project Lambda、提升多核编程能力等特性，不过Project Jigsaw（模块化Java）等特性将会继续推迟到后续的Java SE 9中再发布。</p><br><br><br><br><br><br></body></html>
+<p>基于以上原因，项目尽可能保持简单应用场景的简洁，同时也支持复杂的本地化应用场景。</p>
+<p>以下是L20n的一些优秀特性 -</p>
+<ul> 
+ <li>丰富的表达能力 —— L20n支持<a href="http://l20n.org/learn/working-with-text-multiline-interpolation/">插值</a>（创建更复杂的实体），<a href="http://l20n.org/learn/plural-forms-introduction-to-macros/">复用</a>，<a href="http://l20n.org/learn/using-variants-to-define-grammatical-cases/">语法差异的处理</a>，相同实体有<a href="http://l20n.org/learn/translations-with-multiple-variants/">多个变量</a>，等等，组合之后创建更加丰富的格式。</li> 
+ <li>适应屏幕尺寸 —— 你可以定义多个屏幕尺寸，实体有不同的变量来适应特定的屏幕尺寸</li> 
+ <li>关注点分离 - 可以<a href="http://informationisart.com/21/">将本地化相关的问题在语言中隔离</a>，而不会影响应用使用的其他语言，甚至是应用的源码。</li> 
+ <li>提供API，除了具有绑定HTML元素，使HTML元素能够本地化的能力外，API也是非阻塞和安全的。</li> 
+</ul>
+<p>L20n引入了<a href="http://l20n.org/learn/defining-the-default-variant/">默认值</a>概念，它虽然简单但是十分强大 —— 它允许你给一个实体定义多个变量，也可以在没有要求任何特定变量时定义一个默认值。默认值的引入使翻译者能够渐进地调整他们的内容，甚至增加更多变量，同时保证使用对应实体的既有代码不会受到影响（只是使用默认值即可）。这也是允许不同的本地化具有不同级别的复杂度，并且不会导致其他的本地化变复杂的关键所在。</p>
+<p>以下是项目相关的学习资源 ——</p>
+<ul> 
+ <li>项目的<a href="https://github.com/l20n/l20n.js/blob/master/README.md">ReadMe</a></li> 
+ <li>介绍使用L20n如何本地化HTML文件的<a href="https://github.com/l20n/demo">演示项目</a></li> 
+ <li><a href="http://l20n.org/learn/">step-by-step教程</a>，介绍相关概念</li> 
+ <li>项目的<a href="https://github.com/l20n/l20n.js/tree/master/docs">文档</a></li> 
+ <li><a href="http://informationisart.com/19/">常见问题和解答</a></li> 
+</ul>
+<p>L20n在2012年就已经开始开发了，到2013年11月发布了1.0的发布候选版。</p>
+<p>查看英文原文：<a href="http://www.infoq.com/news/2014/01/l20n">JavaScript Localization Framework From Mozilla</a></p>
+<hr />
+<p>感谢<a href="http://www.infoq.com/cn/author/吴海星">吴海星</a>对本文的审校。</p>
+<p>给InfoQ中文站投稿或者参与内容翻译工作，请邮件至<a href="mailto:editors@cn.infoq.com">editors@cn.infoq.com</a>。也欢迎大家通过新浪微博（<a href="http://www.weibo.com/infoqchina">@InfoQ</a>）或者腾讯微博（<a href="http://t.qq.com/infoqchina">@InfoQ</a>）关注我们，并与我们的编辑和其他读者朋友交流。</p><br><br><br><br><br><br></body></html>

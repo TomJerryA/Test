@@ -1,173 +1,71 @@
-<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>前端工程精粹（三）：本地调试与数据模拟</h3><p>自Web项目诞生以来，程序员们渐渐把整个项目的开发拆分为了前端与后端两个部分。随着项目复杂度的不断增加，同时为了快速迭代出更多Web项目，IT界就把两个部分的工作分成了两个工种来完成--前端开发工程师以及后端XX语言开发工程师(我们在此简称为FE与RD)。所以，在一个Web项目开发过程中，就出现了前后端定义数据接口、参数等等工作，同时产生了一个巨大的耦合问题--前端工程师完全需要依赖后端工程师的数据接口以及后端联调环境。当一个FE快速完成了页面的搭建，需要后端数据来完成页面交互等工作时，他唯一能做的就是等待RD完成他的工作，有时甚至还需要RD来搭建一个联调环境等等。</p>
-<p>也许更多时候情况比我上述所说的更复杂，需要项目管理者协调好项目进度、前后端协同开发等等问题。当然更多时候FE希望自己能解决这些问题，靠别人不如靠自己，对吧？这时候为了不依赖后端工程师，可以自己搞定后端环境及数据，都需要准备什么呢？下面我来举例:</p>
-<ul> 
- <li>完整的server支持，可以真实运行模板、后端程序等，同时最好满足可以跨平台运行、支持常用后端语言(java、php)等</li> 
- <li>模拟url请求，能够有控制url请求的能力，不是单纯的直接访问返回内容的server，通过控制url来解决ajax请求模拟返回的功能</li> 
- <li>数据模拟，有本地数据mock的能力，分离模板与对后端数据的依赖，使得fe能独立于rd进行项目开发</li> 
-</ul>
-<p>如果可以达到以上要求，你便能拥有一套完整的本地开发环境，拥有独立开发前端项目的环境以及解决与后端开发的耦合问题。使用过FIS2.0的用户也许会发现，FIS2.0可以完整解决以上的问题，在任何地方、任何环境都可以独立开发，接下来我为大家介绍下FIS本地开发环境是如何做到这些要求的。</p>
-<h2>一个轻巧独立的服务器</h2>
-<p>我们需要一个什么样的Server？</p>
-<ul> 
- <li>可以监听请求，负责对页面请求进行响应</li> 
- <li>后端语言的解析能力，比如可运行java、php等，不是简单的静态Web服务器</li> 
- <li>易搭建，没有繁琐的安装过程，尽可能的不依赖其他复杂环境</li> 
- <li>性能与可伸缩性，可快速的响应请求，同时稳定响应一定级别的并发数</li> 
- <li>平台需求，可跨平台运行，解决使用不同平台开发的用户需求</li> 
- <li>可靠性，可稳定长期运行，有服务器异常处理机制等</li> 
-</ul>
-<p>以上这些就是我们总结出一个合理可靠轻巧的服务器需要达到的要求，它是本地开发环境的基石。面对需求，我们需要的就是解决这些需求，当然从最开始用很挫的方式一步一步尝试，到最后发现需要怎么实现这个server，经历的痛苦也是不言而喻的。最后我们发现需要实现以下内容以及找到了一些匹配的“轮子”来做这些事：</p>
-<ul> 
- <li>为了可跨平台部署及易搭建，我们选择了用JAVA开发。</li> 
- <li>为了满足性能需求，我们需要多个CGI进程来处理并发请求，同时需要一个队列来保证接受请求不会丢失</li> 
- <li>为了可以运行PHP程序，我们选择使用PHP-CGI进行解析以及通过Fastcgi协议与其通信</li> 
- <li>为了可扩展不同的Web服务，我们需要一个可灵活扩展的Servlet容器，可处理不同的Web应用</li> 
- <li>为了保证服务器的稳定性，我们需要一个服务器守护进程，保证服务器是正常运行的</li> 
-</ul>
-<p>我们需要一个强大的HTTP SERVER来监听请求、分析HTTP协议、创建socket通讯，同时还得需要一个Servlet容器来扩展不同的Servlet服务，进行不同Web应用的解析，因此我们选择了JETTY来作为SERVER的Web服务器。JETTY可做作为Web服务器嵌入到JAVA程序中，而且是轻量级、性能极高的，同时提供灵活可扩展的Servlet容器，满足开发针对各类Web应用的业务Servlet。</p>
-<div id="lowerFullwidthVCR"></div>
-<p>选择了JETTY，就意味着sever天生就可以运行JSP/Servlet，剩下我们需要解决的就是如何运行PHP了。为了跨平台且满足高效的性能，我们选择了使用FASTCGI开发扩展与PHP-CGI进行通信，server将CGI环境变量和标准输入发送到FastCGI子进程php-cgi，子进程完成处理后将标准输出和错误信息从同一连接返回Server。我们为了可以解决并发请求必须启动多个PHP-CGI进程，保持可以多线程处理请求。同时需要一个进程管理器对PHP-CGI进行管理，比如当PHP-CGI处理了几千个请求有内存溢出现象时，需要KILL掉重新启动新的PHP-CGI进程，以及当PHP-CGI进程出现异常情况挂掉后，会及时发现且启动新的进程保持可用的进程数。</p>
-<p>当然你会发现做这些事是十分困难的，需要将HTTP SERVER与PHP-CGI建立链接、通过FASTCGI协议封装请求与PHP-CGI进行通信等等。我们最开始也尝试过且成功的运行了服务器，只是发现并不是那么完美，特别是在进程管理方面。最后我们发现了一个牛逼且轻巧的东西——php-java-bridge，利用其对PHP-CGI封装的FastCGIServlet,与JETTY进行完美对接，可在多平台且高性能的运行PHP。其实php-java-bridge的作用不止于此，它最厉害的地方是可以在PHP中运行JAVA程序，这就是另外一个扩展点了。</p>
-<p>有了以上这些开源的东西，我们要做的就是把这个服务器如何搭建起来，建立对应的Web应用。JETTY作为内嵌Web服务器，需要一个基础的Web.xml初始化参数，同时建立WebAppContext来负责处理Web应用请求。在Jetty中，有几个比较重要的模块：</p>
-<ul> 
- <li>Connector负责解析服务器请求并产生应答，不同的Connector用于处理不同协议的请求。</li> 
- <li>Handler用于处理经过Connector解析的请求并产生应答内容，同样可以通过配置不同的Handler来负责处理不同的请求。</li> 
- <li>TheadPool：管理和调度多个线程，用于服务于多个连接请求。</li> 
- <li>Server代表一个Jetty服务器对象，主要作用是协同Connector、Handler和TheadPool的工作。</li> 
-</ul>
-<p>JETTY启动需要做的事，启动ThreadPool线程池，启动设置到 Server 的 Handler，通常这个 Handler 会有很多子 Handler，这些 Handler 将组成一个 Handler 链。最后会启动 Connector，打开端口，接受客户端请求。在启动handler时，会启动Handler链上的子Handler，比如我们针对运行一个Web应用程序创建一个WebAppContext，同时在WebAppContext初始化时设置处理请求时对应的Servlet，这样配置的请求都会传送到这个WebAppContext进行处理。</p>
-<p>下面一段伪代码说明如何启动Jetty及配置可处理PHP程序的Web应用程序：</p>
+<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>执行分析还是内存分析？</h3><p>最近，我有一组开发者要对性能工作室中的一个问题百出的应用程序执行故障排除工作。在解决了两个容易的问题之后，他们遇到了一个CPU运行过热的问题。这组开发者的反应和我见到的大多数面对CPU过热问题的团队的处理方式完全一样；他们启动了一个执行分析器，希望借助它找到问题所在。这个特殊例子中的问题是有关于应用程序是如何烧穿内存的。这种情况下，虽然一个执行分析器能够找到这些问题，但是内存分析器将会绘制出一副更加清晰的图像。我的开发组不知道为什么遗漏了一个能够告诉他们应该使用内存分析器的关键指标。下面就让我们通过本文中的一组相似练习看看什么时候以及为什么使用内存分析器更好。</p>
+<p>分析器的工作方式有三种：一是对栈顶进行取样，二是使用探针（probes）检测代码，三是联合这两种方式。这些技术在查找经常发生的、或者占用很长时间的计算型问题时是非常好用的。正如我的小组所经历的，执行分析器所收集到的信息通常与内存效率低下的根源有很好的相关性。但是它指向了执行问题，有时候这样会造成混乱。</p>
+<p>我们在清单1中发现了定义方法API findByName(String,String)的代码。这段代码的问题在很大程度上并不在于API本身，而是在于该方法对String参数的处理方式上。该代码将两个字符串连接起来形成一个用于在Map中查找数据的键。这种对字符串的滥用是代码中的异味，它表明这里缺少了一层抽象。正如我们将看到的，这个缺少的抽象不仅是性能问题的根源，同时添加这层抽象还会提升代码的可读性。对于清单1中的这种情况，缺失的抽象是一个CompositeKey&lt;String,String&gt;（一个包装了两个字符串，同时实现了equals(Object)和hashCode()这两个方法的类）。</p>
 <pre>
-//context
-HandlerCollection hc = new HandlerCollection();
-WebAppContext context = new WebAppContext(root, &quot;/&quot;);
+public class CustomerList {
 
-//set default descriptor
-String descriptor = Thread.currentThread().getClass().getResource(&quot;/jetty/Web.xml&quot;).toString();
-context.setDefaultsDescriptor(descriptor);
+  private final Map customers = new ConcurrentHashMap();
 
-//Servlet
-Iterator&lt;Entry&lt;String, String&gt;&gt; iter = map.entrySet().iterator();
-while(iter.hasNext()){
-	Entry&lt;String, String&gt; entry = iter.next();
-	String key = entry.getKey().toLowerCase();
-	String value = entry.getValue();
-	System.setProperty(&quot;php.java.bridge.&quot; + key, value);
-}
-context.addServlet(FastCGIServlet.class, &quot;*.php&quot;);
-context.addEventListener(new ContextLoaderListener());
+  public Customer addCustomer(String firstName, String lastName) {
+    Customer person = new Customer(firstName, lastName);
+    customers.put(firstName + lastName, person);
+    return person;
+  }
 
-hc.addHandler(context);
-Server server = new Server(port);
-server.setHandler(hc);
-try {
-	server.start();
-} catch(Exception e){
-	System.out.print(&quot;fail&quot;);
-}</pre>
-<p>启动Server时，添加一个WebAppContext处理请求php的文件，同时使用php-java-bridge中的FastCGIServlet来解析php程序，这样一个PHP服务器就打造出来了。同理，可以利用这样的原理处理其他支持CGI的后端语言程序。</p>
-<p><img width="600" _p="true" _href="img://null" alt="" src="http://infoqstatic.com/resource/articles/front-end-engineering-pristine-part3/zh/resources/1123000.jpg" /></p>
-<p>从启动Server的代码中，大家可以发现我们会设置一个路由页面路径或者一个工程目录，这相当于Tomcat、Apache设置Web工程目录，是服务器访问文件的根目录。还有一个需要注意的问题是从Server访问的文件都是可以正常上线的代码，而非还需要被“处理”的源码。</p>
-<p>源码!=上线代码，这个关系开发者应该都是了解。随着很多自动化工具的诞生，我们开发的代码都是会经过工具处理后才会发布到线上机器，这个过程就是所谓的编译过程。在本地开发时，我们依然需要将源码编译发布到一个本地临时预览环境中，通过Server去访问Web工程。这样的目的就是让Sever是个完全独立的东西，只是接受HTTP请求、分析URL、解析代码就够了，至于代码编译发布的工作就不需要交给Server去做了。而且，也没必要同时再Server中实现一遍编译工作，Server和编译上线是没有关系的，它的责任就是负责本地服务器的作用。</p>
-<h2>一个可模拟的环境</h2>
-<p>有了本地运行服务器作为基石，接下来我们就可以打造属于FE自己的开发环境。也许你会发现通过Server你可以正常访问到你工程中的页面，但是与后端对接的数据接口怎么办？异步请求怎么处理？突然发现还有很多请求问题没有得到完美的解决。在联调环境中，也许RD会为项目配置好服务转发规则，不论是使用的是Aapache、Tomcat,还是lighttpd。当然作为本地Server，你依然可以解决这个问题。</p>
-<ol> 
- <li>制定一套转发配置的规则</li> 
- <li>打造一个Rewrite模块，可以与Server配合使用</li> 
-</ol>
-<p>当然你会想到既然我们使用了Jetty，就可以使用其rewrite配置，但这并不能达到我们的要求而且过于复杂。比如我们要运行PHP项目时，我们可能需要在FastCGIServlet处理URL转发的问题，相当麻烦，而且使Server不够独立、过于复杂。所以我们是这样做的：</p>
-<ol> 
- <li>一个conf文件配置URL转发规则</li> 
- <li>一个PHP文件充当一个Route模块</li> 
-</ol>
-<p>所以我们的Server就需要有两种状态，一种是不转发状态，一种是全部URL转发到Router文件中。因此我们的Server需要这样改造：</p>
+  public Customer findCustomer(String firstName, String lastName) {
+    return (Customer) customers.get(firstName + lastName);
+  }</pre>
+<p>清单 1. CustomerList源码</p>
+<p>这个例子所使用的API样式还有另外一个负面影响，那就是CPU必须要写入内存的数据量限制了扩展性。除了创建数据的额外工作之外，CPU写入内存的数据量还产生了一个强制CPU慢下来的反作用力。尽管该场景是为了重现这个问题而人为创造的，但是在使用流行日志框架的应用程序中这是一个非常常见的问题。也就是说，不要被愚弄了，只有字符串连接的情况也会产生错误。任何频繁操作内存的应用程序都有可能会对内存造成压力，无论底层的数据结构是什么。</p>
+<p>决定应用程序是否正在狂吃内存的最简单的方法是：检查垃圾收集日志。垃圾收集日志会报告每次收集前后的堆占用情况。从当前收集之前的占用中减去前一次收集之后的占用就是两次垃圾收集期间的内存分配量。如果我们多次记录该数据，那么我们就能获得一副很清晰的应用程序内存需求的图像。此外，获取需要的GC日志不仅非常容易，同时还能够知道一些对应用程序性能没有影响的边界。我使用标记-Xloggc:gc.log和-XX:+PrintGCDetails创建了带有足够详细信息的GC日志。然后我将该GC日志文件载入Censum（jClarity的GC日志分析工具）进行分析。</p>
+<p>(单击放大图片)</p>
+<p><a href="http://infoqstatic.com/resource/articles/Memory-Profiling-vs-Execution-Profiling/zh/resources/1230001.png"><img width="600" _p="true" _href="img://null" alt="" src="http://infoqstatic.com/resource/articles/Memory-Profiling-vs-Execution-Profiling/zh/resources/1230001.png" /></a></p>
+<p>表格1.垃圾收集活动摘要</p>
+<p>Censum提供了完整的统计数据（如表格1），这其中我们感兴趣的是“Collection Type Breakdown”（底部显示的内容）。“% Paused”一列（表格1中的第六列）告诉我们GC暂停的总时间占0.86%。一般情况下，我们希望GC的暂停时间要低于5%，这一点它满足了。该数字显示垃圾收集器能够毫不费力地回收内存。但是无论怎样你都需要牢记：在涉及性能的时候，单一指标很少会告诉你整个故事。对于本文中的这种情况，我们需要查看分配率，这可以从图表1中找到。</p>
+<p>(单击放大图片)</p>
+<p><a href="http://infoqstatic.com/resource/articles/Memory-Profiling-vs-Execution-Profiling/zh/resources/1230002.jpg"><img width="600" _p="true" _href="img://null" alt="" src="http://infoqstatic.com/resource/articles/Memory-Profiling-vs-Execution-Profiling/zh/resources/1230002.jpg" /></a></p>
+<p>图表 1. 分配率</p>
+<p>通过该图表我们能够发现：分配率最初大约是2.75gigs每秒。运行该基准所使用的笔记本电脑在理想的条件下能够维持大约4gigs每秒的分配率。因此这个2.75gigs每秒的值代表了整个内存带宽的很大一部分。事实上，这台机器并不能维持2.75gigs每秒的分配率，从图中我们可以看出：随着时间的发展该值会下降。尽管你的产品服务器可能会有更大容量的内存，但是根据我的经验：无论是什么样的机器，只要它试图维持高于500兆字节每秒的对象创建率，那么它在分配内存时都将花费相当长的时间。同时这样做的扩展能力也非常有限。既然在我的应用程序中内存效率是主要瓶颈，那么采取措施让内存可以更高效的运行将会给我们带来巨大的收益。</p>
+<h2>执行分析</h2>
+<p>很明显，如果我们想提升内存效率那么我们应该使用一个内存分析器。但是在面对CPU过热这个问题时，我们组决定使用执行分析；那么就让我们先从这里开始，看看它会发展成什么样。我使用了运行在VisualVM中的NetBeans分析器（使用默认配置）产生了图表2的数据。</p>
+<p>(单击放大图片)</p>
+<p><a href="http://infoqstatic.com/resource/articles/Memory-Profiling-vs-Execution-Profiling/zh/resources/1230003.jpg"><img width="600" _p="true" _href="img://null" alt="" src="http://infoqstatic.com/resource/articles/Memory-Profiling-vs-Execution-Profiling/zh/resources/1230003.jpg" /></a></p>
+<p>图表 2. 执行分析</p>
+<p>通过该图表我们能够看出，在Worker.run()方法之外大部分时间都花在了CustomerList.findCustomer(String,String)方法上。你可以想象一下，如果源码更加复杂一点，那么将很难理解为什么代码会存在问题，也很难知道应该怎样做才能提升性能。让我们将该图片和内存分析中的图片做一下对比。</p>
+<h2>内存分析</h2>
+<p>理想情况下，我喜欢让内存分析器告诉我有多少内存被消耗了，有多少对象被创建了。同时我还希望看到随意的执行路径——也就是负责业务处理的源码到内存之间的路径。我能够通过再次在VisualVM中运行NetBeans分析器获取到这些统计数据。但是这需要对分析器做一些配置，让它能够收集分配栈踪迹。这些配置可以参看图1。</p>
+<p>(单击放大图片)</p>
+<p><a href="http://infoqstatic.com/resource/articles/Memory-Profiling-vs-Execution-Profiling/zh/resources/1230004.jpg"><img width="600" _p="true" _href="img://null" alt="" src="http://infoqstatic.com/resource/articles/Memory-Profiling-vs-Execution-Profiling/zh/resources/1230004.jpg" /></a></p>
+<p>图 1. 配置 NetBeans 内存分析器</p>
+<p>注意，分析器并不会针对每一次分配都收集数据而是每10次分配收集一次数据。按照这种方式收集的样本应该和每一次分配都收集的方式产生相同的结果，但是前者的开销更小。分析结果如图表3。</p>
+<p>(单击放大图片)</p>
+<p><a href="http://infoqstatic.com/resource/articles/Memory-Profiling-vs-Execution-Profiling/zh/resources/1230005.png"><img width="600" _p="true" _href="img://null" alt="" src="http://infoqstatic.com/resource/articles/Memory-Profiling-vs-Execution-Profiling/zh/resources/1230005.png" /></a></p>
+<p>图表 3 内存分析</p>
+<p>该图表显示char[]是最流行的对象。有了这个信息之后，下一步应该是生成一个快照，然后看看针对char[]的分配栈跟踪。该快照如图表4。</p>
+<p>(单击放大图片)</p>
+<p><a href="http://infoqstatic.com/resource/articles/Memory-Profiling-vs-Execution-Profiling/zh/resources/1230006.png"><img width="600" _p="true" _href="img://null" alt="" src="http://infoqstatic.com/resource/articles/Memory-Profiling-vs-Execution-Profiling/zh/resources/1230006.png" /></a></p>
+<p>图表 4 char[] 分配栈跟踪.</p>
+<p>该图表显示了3个主要的char[]创建源，相关条目已经被展开以便于你能够看到详细内容。所有这三种情况的根都可以追溯到firstName + lastName操作。为了处理这一问题我们想了很多替代方案。但是我们所提出的解决方案都无法和编译器产生的代码一样高效。非常清楚的是，为了让应用程序能够运行的更快我们必须要移除这个连接操作。解决该问题的最终方案是引入一个使用firstName和lastName作为参数的Pair类。我们将该类称为CompositeKey，正如它所引入的缺失的抽象。改善后的代码参见列表2。</p>
 <pre>
-//context
-HandlerCollection hc = new HandlerCollection();
-WebAppContext context;
-if(rewrite){
-	context = new FISWebAppContext(root, &quot;/&quot; + script);
-} else {
-	context = new WebAppContext(root, &quot;/&quot;);
-}
+public class CustomerList {
 
-//set default descriptor
-String descriptor = Thread.currentThread().getClass().getResource
-(&quot;/jetty/Web.xml&quot;).toString();
-context.setDefaultsDescriptor(descriptor);
+ private final Map customers = new ConcurrentHashMap();
 
-//Servlet
-if(hasCGI){
-	Iterator&lt;Entry&lt;String, String&gt;&gt; iter = map.entrySet().iterator();
-	while(iter.hasNext()){
-		Entry&lt;String, String&gt; entry = iter.next();
-		String key = entry.getKey().toLowerCase();
-		String value = entry.getValue();
-		System.setProperty(&quot;php.java.bridge.&quot; + key, value);
-	}
-	context.addServlet(FastCGIServlet.class, &quot;*.php&quot;);
-	context.addEventListener(new ContextLoaderListener());
-}
-hc.addHandler(context);
-Server server = new Server(port);
-server.setHandler(hc);
-try {
-	server.start();
-} catch(Exception e){
-	System.out.print(&quot;fail&quot;);
+ public Customer addCustomer(String firstName, String lastName) {
+   Customer person = new Customer(firstName, lastName);
+   customers.put(new CompositeKey(firstName, lastName), person);
+   return person;
+  }
+
+ public Customer findCustomer(String firstName, String lastName) {
+   return (Customer) customers.get(new CompositeKey(firstName, lastName));
+ }
 }</pre>
-<p>同时我们需要构造FISWebAppContext继承WebAppContext类重写doScope方法</p>
-<pre>
-class FISWebAppContext extends WebAppContext {
-		
-	private String filename = &quot;/index.php&quot;;
-	
-	public FISWebAppContext(String root, String input) {
-		super(root, &quot;/&quot;);
-		filename = input;
-	}
-
-	@Override
-	public void doScope(String target, Request baseRequest,
-			HttpServletRequest request, HttpServletResponse response)
-			throws IOException, ServletException {
-		super.doScope(filename, baseRequest, request, response);
-	}
-}</pre>
-<p>当我们启动Server时，如果添加了rewrite参数，便将所有的请求转发到路由页面中，默认是index.php，路由页面将根据转发配置规则进行URL处理。我们可将各类URL都由路由页面转发不同的文件中进行处理，比如一个异步请求需要返回JSON数据，一个模拟线上URL显示模板页面等等。</p>
-<p><img width="600" _p="true" _href="img://null" alt="" src="http://infoqstatic.com/resource/articles/front-end-engineering-pristine-part3/zh/resources/1123001.jpg" /></p>
-<p>在rewrite模式下，我们会将所有的请求都转发到index.php中，比如下面的情况:</p>
-<p><img width="600" _p="true" _href="img://null" alt="" src="http://infoqstatic.com/resource/articles/front-end-engineering-pristine-part3/zh/resources/1123002.jpg" /></p>
-<p>当我们把路由页面写成一个固定内容时，任何请求都是返回index.php里的内容，所以我们需要根据不同的URI来做不同的处理，比如：</p>
-<p><img width="600" _p="true" _href="img://null" alt="" src="http://infoqstatic.com/resource/articles/front-end-engineering-pristine-part3/zh/resources/1123003.jpg" /></p>
-<p>这时我们对URI为&quot;/a.js&quot;的请求做了特殊处理，返回一个JS内容。其实路由页面的作用就是要针对URI做不同的处理，就像lighttpd一样需要一个配置文件，将线上URI转发对应上服务器的各个文件，因此我们也需要类似一个Rewrite库以及配置文件：</p>
-<p><img width="600" _p="true" _href="img://null" alt="" src="http://infoqstatic.com/resource/articles/front-end-engineering-pristine-part3/zh/resources/1123004.jpg" /></p>
-<p>我们根据server.conf的配置来控制URI找到对应的文件，当然这是最基本的要求。同时我们也可以模拟一些Ajax请求,来满足异步数据的获取：</p>
-<p><img width="600" _p="true" _href="img://null" alt="" src="http://infoqstatic.com/resource/articles/front-end-engineering-pristine-part3/zh/resources/1123005.jpg" /></p>
-<p>你会发现现在解决了很多问题，静态资源可以访问了、异步数据也可以获取了，当然根据不同类型的项目，我们还需要模板。为了达到需求，我们为Rewrite模块添加一类转发类型</p>
-<p><img width="600" _p="true" _href="img://null" alt="" src="http://infoqstatic.com/resource/articles/front-end-engineering-pristine-part3/zh/resources/1123006.jpg" /></p>
-<p>Rewrite模块提供灵活的添加转发规则的机制，可让我们在不重启Server的情况下动态对转发配置进行修改。根据项目情况可以具体打造路由页面、Rewrite模块以及Server.conf,来合理的模拟开发环境。</p>
-<p>大家可能会发现一个问题，我们的路由页面和转发配置放在哪？其实我们的源码会经过编译后发布到本地预览环境中，在没有rewrite状态时，Server会根据URL请求直接读取到预览环境中的文件。当启动rewrite模式时，Server会将请求都转发到路由页面，同时路由页面还需要找到转发配置文件进行分析，找到被转发的文件进行渲染。当你发现配置文件、路由页面和你的项目文件都有路径关系时，那就代表其实这三样都应该发布在预览环境中的，同时转发配置文件应该跟随源码进行维护。</p>
-<h2>我们需要的数据</h2>
-<p>通过以上努力，我们已经可以正常在本地运行页面了，当然我们还缺数据。通常页面所需要的数据基本分为两种，一种是页面渲染时由后端传入的数据，一种是通过Ajax请求获取的数据。通过请求获取的数据，我们可以通过控制URL的方式来获取，那由后端传入的数据我们该怎么做呢？</p>
-<p>通过以上的路由页面的处理流程可以发现，处理模板有个独立的过程：</p>
-<p><img width="600" _p="true" _href="img://null" alt="" src="http://infoqstatic.com/resource/articles/front-end-engineering-pristine-part3/zh/resources/1123007.jpg" /></p>
-<p>在开发的过程中，我们可以建立模板与测试数据的对应关系，将测试数据与源码工程一起维护。当源码工程进行编译发布到预览环境中,浏览预览环境中的模板时，可以获取测试数据进行渲染,同时也可对测试数据进行在线编辑。</p>
-<p><img width="600" _p="true" _href="img://null" alt="" src="http://infoqstatic.com/resource/articles/front-end-engineering-pristine-part3/zh/resources/1123008.jpg" /></p>
-<p>对于测试数据的管理，一方面我们可以根据与后端的数据接口创建测试数据，一方面我们可以通过某种方式获取线上或沙盒环境的真实数据进行调试。</p>
-<p><img width="600" _p="true" _href="img://null" alt="" src="http://infoqstatic.com/resource/articles/front-end-engineering-pristine-part3/zh/resources/1123009.jpg" /></p>
-<h4>FIS的本地开发环境</h4>
-<p>从上文的介绍中，我们了解到建立一个本地开发环境都需要哪些必须的条件。下面我简单的为大家介绍下FIS的本地开发环境是怎么样的。</p>
-<ul> 
- <li>独立、跨平台、高性能的Server</li> 
- <li>路由页面</li> 
- <li>Rewrite模块</li> 
- <li>测试数据模块</li> 
-</ul>
-<p>以上四样法宝构成了一个本地开发环境，开发者将开发代码经过FIS编译后发布到本地的临时预览目录，通过Server可预览页面，具体的大家可以动手尝试下[Fis官网](http://fis.baidu.com)提供的Demo。</p>
-<p>纵观以上流程，你会发现fis-plus提供的整个本地调试预览都是依赖本文最开始提出的三个要求来进行打造的，你可以根据项目以及环境的实际情况打造属于你们团队自己的调试平台。一个好的易用的本地调试辅助开发工具，可以有效的提高开发联调效率同时减少一些繁琐重复甚至是烦人的环节。程序员们当然希望拥有更多的时间去面对写码，而不是浪费太多时间以及精力在搭环境、催单子、找接口人等环节。FIS本地辅助开发工具就是秉着此原则和要求不断挖掘以及通用化FE的本地开发需求，希望可以给大家带来更多的帮助和想法。</p>
-<h2>作者简介</h2>
-<p><strong>袁方</strong>，百度Web前端研发部前端集成解决方案（FIS）小组核心成员，负责FIS本地开发环境的设计与开发、参与实现PC端解决方案等项目，全面负责FIS与百度各产品线前端团队合作落地。</p>
-<hr />
-<p>感谢<a href="http://www.infoq.com/cn/author/崔康">崔康</a>对本文的审校。</p>
-<p>给InfoQ中文站投稿或者参与内容翻译工作，请邮件至<a href="mailto:editors@cn.infoq.com">editors@cn.infoq.com</a>。也欢迎大家通过新浪微博（<a href="http://www.weibo.com/infoqchina">@InfoQ</a>）或者腾讯微博（<a href="http://t.qq.com/infoqchina">@InfoQ</a>）关注我们，并与我们的编辑和其他读者朋友交流。</p><br><br><br><br><br><br></body></html>
+<p>列表 2.使用CompositeKey抽象改善后的实现</p>
+<p>CompositeKey实现了hashCode()和equals()两个方法，因而也消除了将两个字符串连接到一起的需要。第一个基准的完成花费了~63秒，改善后的版本消耗了~21秒，速度提升了3倍。虽然我们需要运行多次垃圾收集器才能够获得精确的信息，但是我们可以这样说：代码改善之后应用程序总共消耗了不到3gigs的数据，而第一种实现的消耗则超过了141GB。</p>
+<h2>填充一个水塔的两种方式</h2>
+<p>我的一个同事曾经说过：你一次能够填充一个水塔一茶匙。这个例子证明你当然可以这样做。但是，这并不是填充水塔的唯一方式，你还可以通过一个大型水管快速地充满它。对于本文中的这种情况，通过一个执行分析器是不可能领悟问题的。虽然垃圾收集器会查看分配和恢复情况，同时内存分析器也确实会查看剪切字节数的分配。但是在一个这种大型分配占主导地位的应用程序中，开发团队已经耗尽了他们将通过使用执行分析器获得的大部分收益，然而他们依然需要从应用程序中攫取更多信息。</p>
+<p>这个时候，他们打开了内存分析器，它暴露出一个又一个的分配热点，通过这些热点我们能够提取大量可以显著提升性能的信息。通过该示例我们团队学到的知识是，内存分析不仅能够为我们提供正确的视图，还能够提供唯一深入问题的视图。这并不是说执行分析并没有什么成效。我的意思是，有些时候执行分析并不能告诉你应用程序将所有时间都花到哪儿了，在这种情况下从另一个不同的视角分析该问题将会获得意想不到的收获。</p>
+<h2>关于作者</h2>
+<p><img _p="true" _href="img://null" style="float: left; margin-right: 10px" alt="" src="http://infoqstatic.com/resource/articles/Memory-Profiling-vs-Execution-Profiling/zh/resources/1230007.jpg" /><b>Kirk Pepperdine</b>在高性能和分布式计算领域工作了将近20年。从1998年开始Kirk就一直在从事各种与项目生命周期每个阶段的性能调优相关的工作。2005年他帮助创建了最初的Java性能调优网站，该网站已经帮助了全世界大量的开发人员。作为作者、演讲师、咨询顾问，Kirk对Java社区做出的贡献在2006年获得了认可，他当选了该年度的Java Champion。他是第一位在JavaONE大会上呈现技术实验的非Sun雇员，同时也为信息产业中的其他人打开了参与该活动的机会。由于他在垃圾收集方面的演讲，在2011年和2012年他被任命为JavaONE Rockstar。如果你想和他联系，那么可以给他发email（<a href="mailto:kirk@kodewerk.com">kirk@kodewerk.com</a>）或者在Twitter上@ kcpeppe。</p>
+<p><strong>查看英文原文：</strong><a href="http://www.infoq.com/articles/Memory-Profiling-vs-Execution-Profiling">To Execution profile or to Memory Profile? That is the question</a></p><br><br><br><br><br><br></body></html>

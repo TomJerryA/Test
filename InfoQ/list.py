@@ -1,6 +1,27 @@
 <html>
  <head></head> 
- <body> 
+ <body>
+  <div>
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/30.py">Pebbleがウェアラブルコンピューティング史上初のアプリストアを開設</a>Pebbleは 人気のPebbleとPebble Steelスマートウォッチを提供している。同社は今月始め、アプリストアを開設した。このアプリストアは顧客と開発者にアプリの配布チャンネルを提供し、&quot;ユーザがPebbleアプリを探す第一の場所&quot;を作ることが目的だ。
+  </div>
+  <div>
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/29.py">GoogleのJavaコーディング規約</a>Googleは、最近、Javaコーディング規約の完全な定義を公開した。 この規約は強制力を持つ厳格なルールであり、Google全体で従うべきものだ。単なるフォーマットだけでなく、他の約束事やコーディング規約についても書かれている。
+  </div> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/29.py">QCon New York 2014のトラック発表</a>6月9日から13日に開催されるQCon New Yorkのトラックが決定した。 Creating Culture, Continuous Delivery, Data Science, Architecture Case Studies, JavaScript, Mobileなどだ。今年はOSGi DevCon 2014も同じ場所で開催される。会場はNew York Marriott Brooklyn Bridgeだ。 
+  </div> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/28.py">ビッグデータ革命と遺伝子情報解析</a>Curoverse 社とTute Genomics社は、一般大衆に向けた遺伝子解析の提供を目指し、先月担保付き債権1,500万ドルの出資を受けた。Illumina社、Seven Bridges Genomics社、Complete Genomics社等は、研究者や民間組織に対して4桁ドル台の価格で全ゲノム配列解析サービスを提供している。Illumina社 は先ごろ、かねてから待望の1,000ドルのゲノム解析サービス HiSeq X Ten を発表した。 
+  </div> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/27.py">WildFly 8についてJason Greene氏へのインタビュー</a>Red HatのJBoss部門はWildFly 8を発表した。WildFly 8は以前はJBoss Application Serverという名で知られていた製品だ。InfoQはWildFlyのリードを努めた、Red HatのJBoss部門のJBoss EAP Platform ArchitectであるJason Greene氏にこの新しい製品について話を聞いた。 
+  </div> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/26.py">SparkRを使ってRでSparkを動かす</a>2014年1月にUCバークレーのAMPLabがApache SparkをRから使うための仕組みであるSparkRプロジェクトの開発者プレビューを発表した。 
+  </div> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/26.py">Salesforce.comが新しい.NET向けのツールキットをリリース</a>Salesforce.comは.NET開発者がオープンソースのツールキットを使って簡単にウェブサービスを利用できるようにしようとしている。これらのツールキットはForce.comのREST APIとChatter APIをターゲットにしており、Salesforce Platform AdvocateのWade Wegner氏が手がけている。氏がInfoQにこれらのコンポーネントの目的に話してくれた。 
+  </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/25.py">Parse、iOSとAndroid用の低レベルライブラリ集、Boltsを発表</a>Parse（数ヶ月前にFacebookが買収）がAndroidとiOS用の低レベルライブラリをまとめて、Boltsと名づけてオープンソース化した。Parseの発表によると、BoltsはParse/Facebookの共同成果であり、両社が独自に開発してきた小さな低レベルのユーティリティクラスを固めたものだ。 
   </div> 
@@ -129,27 +150,6 @@
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/36.py">アジャイルにおけるドキュメント：いつどれくらい書くべきか</a>アジャイルソフトウェア開発マニフェストは「包括的なドキュメントよりも動くソフトウェア」に価値を置いている。そうだとすると、どんな種類のドキュメントが、いつどれだけ必要なのだろうか？ 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/35.py">PaaSに何が起きているのか？</a>巨額の投資や長期の開発にもかかわらず，PaaSはいまだ多くのユーザを引き付けることに成功していない。この記事ではPaaSの現状とその将来について，何人かのアナリストによる意見を要約して紹介する。 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/35.py">アジャイルとリーンを組み合わせる</a>アジャイルとリーンはソフトウエア開発を改善する方法だ。マネージャはどちらが自分たちの組織に適しているか判断しなければならない。しかし、解決しなければならない問題によっては複数の方法を組み合わせることもできる。 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/34.py">JavaScriptのためのSOLID設計原則</a>SOLID原則は安定したJavaScriptコードを書くのに役立つオブジェクト指向プログラミングの一例だ。 JavaScriptを中心に本も書いている開発者のDerick Bailey氏が最近のプレゼンテーションでこのように語った。 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/33.py">Koa 0.2.0リリース</a>Node.jsベースのWebアプリケーションフレームワーク、Koa version 0.2.0がリリースされた。Koaは人気のあるMVCプラットフォーム、Expressの後継だが、新しいES6で導入された機能を多用している。これは最初の0.1.0リリースからの設計選択を再確認し、今後のリリースとプロダクション利用のためにKoaのAPIを固める上で重要なリリースだ。 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/32.py">Hadoop-as-a-Service提供のQuboleがGoogle Compute Engine上で稼働可能に</a>マネージドHadoop-as-a-Serviceを提供するQuboleがGoogle Compute Engine (GCE)上で利用可能となった。QuboleはこれまでAmazon社のAWS上のみで利用可能だったが、この発表はGoogle Compute Engineの一般提供が開始されたほんの数日後に行われた。 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/31.py">Math.js: 多機能JavaScript Mathライブラリ</a>Math.jsはJavaScriptおよびNode.js向けのオープンソースMathライブラリで、数値、ビッグナンバー、複素数、単位、行列を扱うことができる。これは柔軟な式パーサも備えている。さらに詳しく知るため、InfoQはプロジェクトの創始者であるJos De Jong氏にコンタクトした。 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/30.py">さらにパフォーマンスを向上したDart 1.1</a>先日リリースされたDart 1.1は，dart2jsコンパイラのパフォーマンスが向上し，サーバ側の開発サポートが改善されている。言語自体はほとんどそのままだ。 
-  </div> 
+  </div>   
  </body>
 </html>
