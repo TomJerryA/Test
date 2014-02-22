@@ -1,6 +1,12 @@
 <html>
  <head></head> 
- <body> 
+ <body>
+  <div>
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/20.java">Appurify and Xamarin Launch Continuous Integration for Mobile Apps on Variety of Devices</a>Two recently launched services, Appurify Mobile Platform and Xamarin Test Cloud, promise to help developers and enterprises automate testing and performance optimization of their mobile apps by allowing them to run apps on real iOS and Android devices and supporting automated testing and continuous integration.
+  </div>
+  <div>
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/19.java">Apple Buys TestFlight, Android Support Discontinued</a>Apple confirmed that it acquired Burstly, the owner TestFlight. TestFlight is a beta-testing platform for mobile applications which offers easy-to-use services to help in the process of distributing and testing apps for iOS and Android. Whereas TestFlight will continue to support iOS applications, testing of Android apps will be discontinued by March 21st.
+  </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/19.java">QCon London in 2 weeks – Seven Key Reasons to Attend</a>Going into its 8th year, QCon London is UK’s premier event designed exclusively for senior enterprise software development professionals: technical team leads, architects, software engineers, and project managers. If you've thought of attending, there is still a chance to go to one of the best conferences for our craft. QCon is now less than 2 weeks away! Why register? Seven Key Reasons to Attend. 
   </div> 
@@ -144,12 +150,6 @@
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/24.java">QCon New York 2014 (Jun 11-13): Track Topics Announced; Featuring OSGi DevCon 2014</a>The 15 track topics have been finalized for the third annual QCon New York (Jun 9-13) including: Creating Culture, Continuous Delivery, Data Science, Architecture Case Studies, JavaScript, Mobile, and more. New this year: OSGi DevCon 2014 will be co-located with QCon New York, taking place at the New York Marriott Brooklyn Bridge. Register before Feb 15th and save $600 for both events. 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/23.java">HybridCluster announce free non-commercial licenses</a>HybridCluster have announced a free for non-commercial use license for their cloud hosting platform. The platform supports Linux, Apache, MySQL and PHP (LAMP) applications, and provides high availability and auto scaling with a combination of ‘AwesomeProxy’ a proprietary multi-protocol proxy server, lightweight containers and a ZFS based storage fabric. 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/22.java">Google Cast SDK Adds MPEG-DASH, Adaptive and HTTP Live Streaming Support</a>Google has released Cast SDK with which developers will be able to integrate Chromecast into both new and existing mobile apps and websites with support for adaptive streaming, MPEG-DASH, HTTP Live Streaming (HLS) and SmoothStreaming. 
-  </div> 
+  </div>   
  </body>
 </html>

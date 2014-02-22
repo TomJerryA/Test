@@ -1,19 +1,10 @@
-<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>MapReduce框架Yarn、Web增量更新算法、面向查询服务——架构周报</h3><p>本期的架构周报主要关注MapReduce框架Yarn、HBase写数据过程分析、用增量更新算法为web应用节省流量以及.NET应用架构设计中如何进行面向查询服务的参数化查询设计等。</p>
-<h2><strong>技术选型</strong></h2>
-<p><strong>MapReduce框架Yarn分析</strong></p>
-<p>博文“<a href="http://blog.sina.com.cn/s/blog_829a682d0101lc9d.html">Yarn详解</a>”总结了MapReduce框架Yarn的产生背景，与之前框架的优势对比，以及运行机制。</p>
-<p>Yarn是一个分布式的资源管理系统，用以提高分布式的集群环境下的资源利用率，这些资源包括内存、IO、网络、磁盘等。其产生的原因是为了解决原MapReduce框架的不足。最初MapReduce的committer们还可以周期性的在已有的代码上进行修改，可是随着代码的增加以及原MapReduce框架设计的不足，在原MapReduce框架上进行修改变得越来越困难，所以MapReduce的committer们决定从架构上重新设计MapReduce,使下一代的MapReduce(MRv2/Yarn)框架具有更好的扩展性、可用性、可靠性、向后兼容性和更高的资源利用率以及能支持除了MapReduce计算框架外的更多的计算框架。Yarn/MRv2最基本的想法是将原JobTracker主要的资源管理和job调度/监视功能分开作为两个单独的守护进程。有一个全局的ResourceManager(RM)和每个Application有一个ApplicationMaster(AM)，Application相当于map-reduce job或者DAG jobs。ResourceManager和NodeManager(NM)组成了基本的数据计算框架。ResourceManager协调集群的资源利用，任何client或者运行着的applicatitonMaster想要运行job或者task都得向RM申请一定的资源。ApplicatonMaster是一个框架特殊的库，对于MapReduce框架而言有它自己的AM实现，用户也可以实现自己的AM，在运行的时候，AM会与NM一起来启动和监视tasks。</p>
-<p>有关Yarn框架的实现原理，读者可以查看较早之前的一篇文章“<a href="http://www.ibm.com/developerworks/cn/opensource/os-cn-hadoop-yarn/">Hadoop新MapReduce框架Yarn</a>”。</p>
-<p><strong>用增量更新算法为web应用节省流量</strong></p>
-<p>该<a href="http://www.ibm.com/developerworks/cn/web/1401_luyf_reducejs/">文章</a>主要讲解如何利用 HTML5 的localstorage和增量更新算法实现JavaScript的本地化，并在版本更新的时候基本做到修改多少内容就下载多少内容，为网站和用户节省90%以上的JavaScript流量，尤其适合快速迭代开发的手机网站使用。</p>
-<p>传统的 JavaScript 资源存放方式一般就是通过 CDN 方式存放，缓存方面通过增加 maxage、Last-Modified,etag 等方式依靠 HTTP Cache 相关协议进行缓存。这种方式的问题主要是缓存命中率不是很高，另外在快速迭代的产品中，由于代码经常需要修改，虽然很多时候只是修改很小的一部分内容，但是还是需要用户全量下载整个 JavaScript 文件，造成流量上的耗费。除了传统方式的存放和加载 JavaScript,HTML5 给我们提供了另一种 JavaScript 资源缓存的方式，即 HTML5 的离线存储或 application cache.通过给 manifest 头文件定义资源的本地存放方式，我们可以完全实现静态数据本地存储，减少了大量网络请求，减少网络流量。但是这种方式同时也有他致命的缺点：appcache 机制定义了在更新离线存储版本的时候，用户的首次进入页面并不会启用最新的资源文件，而是由一个后台程序先把资源下载到本地，用户需要刷新或者再次进入页面时才会启用新的资源文件，当然这个问题可以通过监听离线缓存的更新完成时间，在更新完成的时候程序去刷新页面以启用新的静态资源，但是这个方式带来了一个致命的不佳的用户体验，就是用户进来后会看到浏览器自己刷新了一下页面，对一些网站来说这显然不能接受。对于引入了离线存储的页面，是没有办法去掉离线存储的，这给一些首页是动态页面的网站造成了极大的困扰。一些灰度发布的策略无法很好的实施。</p>
-<h2><strong>架构技巧</strong></h2>
-<p><strong>面向查询服务的参数化查询设计</strong></p>
-<p>该<a href="http://www.cnblogs.com/wangiqngpei557/p/3538940.html">博文</a>以.NET应用架构设计为前提，通过运用”关注点分离“通用设计思想来对查询服务在服务端的强耦合进行分解，将强耦合从服务端迁移出来通过策略性的配置将关注点放入各自的客户端，从而有效的解决服务不再臃肿的问题。</p>
-<p>按照作者的案例，有一个SOA商品（Item）查询接口，这个接口很通用，主要用来支撑日常很多其他系统的大量关于Item的查询，尤其是在高峰期间该服务的压力是很大的；我们站在SOA的角度看这个接口，这个通用的接口解决了众多的查询业务，确实不错，但是我们切换一下角度，站在每一个调用接口的访问端看似乎并不是很满意或者说牺牲了部分性能上的代价，因为我们无法干净利落的只获取当前这个业务点需要的数据项，这个Item服务接口所返回的数据项必须同时满足所有调用它的业务点，哪怕这次调用我只需要用到Item的三分之一的数据字段都不行，每次都会把不需要的字段都查询出来，不管是返回的性能、查询的性能，其实都是可以通过调整设计来避免的。</p>
-<p>以往我们的思路都是集中在服务端，常规做法都是提供了一个能够容纳。所有查询客户端需求的数据实体，客户端可选择的余地很有限，无法只获取自己所需要的几个数据项，甚至各个业务点在不同的情况下都有可能需要两到三个数据返回实体；总而言之，面向数据查询的服务接口如果要向着SOA方向发展那就必须包含SOA设计上的相关原则，如这里的面向查询为主的服务设计其实就是缺少SOA原则中的”服务应具有策略性“一原则。</p>
-<p>为什么以往一直没有暴露出这个问题呢，是因为以往都是在本地直接调用“查询引擎”，如：SQLSERVER，在“查询引擎”的最后一层就是应用程序，而应用程序中可以编写很多彼此类似的查询方法，每个方法可能只有一两个字段的差异性，或者通过“企业应用架构模式—查询对象模式<strong>”</strong>来将不同的方法合在一起通过一个可以调整查询字段的对象来配置本次需要的查询字段；由于现在我们已将查询服务化，就不太可能再去为了所有客户端在去适应性的去扩充类似没有太大价值的接口，但是客户端又需要将自己所需要的查询字段让服务知道，所以这里的解决方案可以称为面向SOA的“企业应用架构模式—查询对象模式”。</p>
-<p><strong>HBase写数据过程分析</strong></p>
-<p>除了使用HBase，深入了解和分析HBase的实现原理也是非常有效的，既可以加深对HBase的理解和运用，又可以借鉴其出色的设计方法。该<a href="http://wangneng-168.iteye.com/blog/1982592">博文</a>以HBase0.94.12为基础，从Client和Server端两个角度分析了写数据过程。</p>
-<p>比如，对于写操作，HBase内部就是多线程，线程数量与批量提交的数据涉及的region个数相同，通常情况下不需要再自己写多线程代码，自己写的多线程代码主要是解决数据到HTable的put这个过程中的性能问题，数据进入put的缓存，当达到writeBufferSize设定的大小后才会真正发起写操作（如果不是自己控制flush），这个过程的线程数与这批数据涉及的region个数相同，会并行写入所有相关region，一般不会出现性能问题，当涉及的region个数过多时会导致创建过多的线程，消耗大量的内存，甚至会出现线程把内存耗尽而导致OutOfMemory的情况，比较理想的写入场景是调大writeBufferSize，并且一次写入适量的不同regionserver的region，这样可以充分把写压力分摊到多个服务器。</p>
-<p>欢迎读者朋友推荐或者投稿架构相关的文章，联系邮箱为<a href="mailto:editors@cn.ibm.com">editors@cn.infoq.com</a>，标题请注明“架构专栏”。</p><br><br><br><br><br><br></body></html>
+<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>插件赋予VS2013新的自定义配置能力</h3><p>开发者们一直以来都是使用Visual Studio的解决方案管理器 中的嵌套功能管理项目的子文件夹，使得文件组织清晰、便于访问。鉴于现在的项目巨大的文件数目，如果能将这种嵌入能力应用于项目的其他子项上，同时又不需要物理上做重新调整，这对项目文件的组织有很大帮助。Mads Kristensen发布了一款Visual Studio的新插件File Nesting，就是为了实现此目的。</p>
+<p>该插件提供了若干选项：根据用户的请求嵌入文件，嵌入选中文件，或针对整个项目开启自动嵌入功能。File Nesting目前支持Visual Studio 2013，根据Kristensen的计划，还会支持VS2012。在Visual Studio插件商店里提供插件的<a href="http://visualstudiogallery.msdn.microsoft.com/3ebde8fb-26d8-4374-a0eb-1e4e2665070c">下载</a>，而插件项目的<a href="https://github.com/madskristensen/FileNesting">源码</a>托管在GitHub上。</p>
+<h2>基于自动快照的保存</h2>
+<p>最近发布的插件<a href="http://visualstudiogallery.msdn.microsoft.com/dfcb2438-180c-4f8a-983b-62d89e141fe3">AutoHistory</a>为使用Visual Studio 2013的用户提供了一种新方式，用于维护他们的源码。如果你使用像TFS或Git这样的源码控制软件，你肯定能轻松回退项目的变更。但是如果你在一段时间内还没有提交，抑或是如果你提交的并非你真正想要的，你应该作何处理呢？</p>
+<p>AutoHistory解决这些问题的方式是将你所做的项目变更周期性地自动保存到文件中。你可以按时间查看文件以前的内容，确定与当前文件内容的差异。插件目前保存最多3天的内容变更，但是也提供存储用户指定的快照，以及存储正常的保存操作后的内容。插件每隔5分钟进行一次自动快照。</p>
+<p>如果你对AutoHistory感兴趣，Channel 9上有对该插件的<a href="http://channel9.msdn.com/Shows/Visual-Studio-Toolbox/Auto-History-Extension">介绍</a>。AutoHistory正处在预览阶段，所以非常欢迎用户的积极反馈。</p>
+<p><strong>查看英文原文：</strong><a href="http://www.infoq.com/news/2014/02/VS2013_plugins">Plugins Provide New Customizations to VS2013</a></p>
+<hr />
+<p>感谢<a href="http://www.infoq.com/cn/author/邵思华">邵思华</a>对本文的审校。</p>
+<p>给InfoQ中文站投稿或者参与内容翻译工作，请邮件至<a href="mailto:editors@cn.infoq.com">editors@cn.infoq.com</a>。也欢迎大家通过新浪微博（<a href="http://www.weibo.com/infoqchina">@InfoQ</a>）或者腾讯微博（<a href="http://t.qq.com/infoqchina">@InfoQ</a>）关注我们，并与我们的编辑和其他读者朋友交流。</p><br><br><br><br><br><br></body></html>

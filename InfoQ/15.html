@@ -1,19 +1,64 @@
-<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>Google的Java编码规范</h3><p>Google最近发布了一份完整的<a href="http://google-styleguide.googlecode.com/svn/trunk/javaguide.html">Java编码规范</a>。规范的内容包括一些切实可行的硬性规定。Google内部均遵守此规范。该规范不仅涵盖了代码格式，还包括其他类型的约定和编码标准。</p>
-<p>该规范主要分为6大部分：源文件基本规范、源文件结构、代码格式、命名、编程实践和Javadoc。<i>源文件基本规范</i>说明文件名、文件编码、空格和特殊字符等规范要求。<i>源文件结构</i>说明许可信息、package和import声明、类成员顺序等规范要求。<i>代码格式</i>用于说明源代码中大括号、缩进、换行、空格、括号、枚举、数组、switch语句、注解、注释和修饰符等格式要求。<i>命名</i>说明了标识符（包、类、方法、常量、属性、局部变量和类变量）的命名规范和驼峰大小写定义。<i>编程实践</i>说明@Override、异常、静态成员和终结器的用法。Javadoc说明哪些地方需要Javadoc，以及它的格式要求。</p>
-<p>以下是从规范中摘录的一些内容：</p>
+<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>QCon全球软件开发大会（北京站）将于4月25日开幕</h3><p>InfoQ举办的年度技术交流盛宴——QCon全球软件开发大会（北京站）2014将于4月25日至27日在北京国际会议中心召开。</p>
+<p>3天大会，将包括5场海外主题演讲、3场跨界分享，16大热门技术专题，75场深度技术分享，以及丰富多样的晚场活动，共同期待海内外千名技术骨干前来品鉴，深入交流。详细日程，请见大会官网：<a href="http://www.qconbeijing.com/">http://www.qconbeijing.com/</a>。</p>
+<p><strong>现场看点：</strong></p>
+<p><strong>五场主题演讲：</strong></p>
 <ul> 
- <li>import中不能有通配符。</li> 
- <li>重载方法应该放在一起连续出现。</li> 
- <li>即使代码块中没有内容，或者只有一行代码，也必须使用大括号。</li> 
- <li>2空格缩进。</li> 
- <li>列宽是80或100个字符。</li> 
- <li>不能使用类似C语言的数组变量声明。</li> 
- <li>switch语句中，必须包含default语句。</li> 
- <li>修饰符的顺序应按照Java语言规范推荐的顺序。</li> 
- <li>常量命名应使用CONSTANT_CASE格式（译注：所有字母大写，单词使用下划线分隔）。注意，所有常量都必须是static final成员，但并不是所有的static final成员都是常量。</li> 
+ <li>Eugene Ciurana，雅虎资深首席工程师，Summly CTO。演讲话题：《Summly：一个获奖App的低预算高可用云计算之旅》</li> 
+ <li>Andrew Betts，英国金融时报实验室负责人。演讲话题：《跨越不可能：让WebApp如Native般顺滑》</li> 
+ <li>Randy Shoup，KIXEYE CTO、前GAE总监、eBay首席工程师。演讲话题：《文化的重要性：如何打造并保持高效率工程师组织》、《KIXEYE的扩展性：关于我在Google和eBay学到的一切》</li> 
+ <li>Marco Cecconi，Stack OverFlow核心开发组工程师。演讲话题：《Stack Overflow架构分析》、《本地化Stack Overflow》</li> 
+ <li>Jeremy Freeman，神经大数据科学家，霍华德&middot;休斯医学研究所研究员：演讲话题：《大规模脑计算——操控脑，绘制脑地图》</li> 
 </ul>
-<p>更多内容请阅读<a href="http://google-styleguide.googlecode.com/svn/trunk/javaguide.html">Google Java Style</a>。Oracle也提供了<a href="http://www.oracle.com/technetwork/java/javase/documentation/codeconvtoc-136057.html">官方的Java语言编码规范</a>。Google还提供了其它语言的代码风格指南，包括C++、Objective-C、Python、Shell、HTML/CSS、JavaScript和Lisp等等。</p>
-<p><strong>原文英文链接：</strong><a href="http://www.infoq.com/news/2014/02/google-java-coding-standards">Google's Java Coding Standards</a></p>
-<hr />
-<p>感谢<a href="http://www.infoq.com/cn/author/姚琪琳">姚琪琳</a>对本文的审校。</p>
-<p>给InfoQ中文站投稿或者参与内容翻译工作，请邮件至<a href="mailto:editors@cn.infoq.com">editors@cn.infoq.com</a>。也欢迎大家通过新浪微博（<a href="http://www.weibo.com/infoqchina">@InfoQ</a>）或者腾讯微博（<a href="http://t.qq.com/infoqchina">@InfoQ</a>）关注我们，并与我们的编辑和其他读者朋友交流。</p><br><br><br><br><br><br></body></html>
+<p><strong>十六大深度专题：</strong></p>
+<ul> 
+ <li>系统安全设计面面观 出品人：<a href="http://www.qconbeijing.com/user/636">安全宝联合副总裁 吴翰清</a>、<a href="http://www.qconbeijing.com/user/650">加拿大桥牌青年队会员 Roy厉</a> 分享安全经验，探讨未来趋势</li> 
+ <li>移动时代的前端 出品人：<a href="http://www.qconbeijing.com/user/646">支付宝前端技术部负责人 王保平</a>、<a href="http://www.qconbeijing.com/user/643">天猫前端团队负责人 鄢学鹍</a> 风起云涌的移动浪潮里，前端该如何发展？</li> 
+ <li>持续集成与持续交付 出品人：<a href="http://www.qconbeijing.com/user/647">持续集成&amp;持续交付专家 乔梁</a> 更快、更可靠、更低成本的自动化交付</li> 
+ <li>知名网站案例分析 出品人：<a href="http://www.qconbeijing.com/user/642">瑞友科技IT应用研究院副院长 池建强</a> 每个网站都自己的故事...</li> 
+ <li>构建高效能团队 出品人：<a href="http://www.qconbeijing.com/user/658">《走出软件作坊》作者吕建伟（阿朱）</a>高价值产出，团队管理是第一生产力</li> 
+ <li>扩展性、可用性与高性能 出品人：<a href="http://www.qconbeijing.com/user/641">新浪微博技术总监 杨卫华</a> 复杂系统的架构设计、代码与运维体系</li> 
+ <li>来自一线的敏捷实战 出品人：<a href="http://www.qconbeijing.com/user/640">Odd-e唤醒者 滕振宇</a> 从敏捷同行者的成功和失败中汲取灵感和经验</li> 
+ <li>自动化运维 出品人：<a href="http://www.qconbeijing.com/user/644">乐蜂网运维总监 周秋野</a> 每一个运维工程师都必须掌握的看家本领</li> 
+ <li>云计算服务探秘 出品人：<a href="http://www.qconbeijing.com/user/667">UnitedStack的创始人、CEO 程辉</a> 云上的日子已经多年，您是否了解其中奥秘</li> 
+ <li>推荐系统工程实践 出品人：<a href="http://www.qconbeijing.com/user/645">ReSysChina发起人 谷文栋</a> 推荐系统的架构、算法和策略，各大公司的工程技术和实战经验</li> 
+ <li>大数据处理与大数据应用 出品人：<a href="http://www.qconbeijing.com/user/661">英特尔中国研究院首席工程师 吴甘沙</a> 数据驱动生活，算法统治世界</li> 
+ <li>精益和看板 出品人：<a href="http://www.qconbeijing.com/user/665">OutSofting联合创始人 李东</a>一线企业中人、过程和技术的精益集成实践</li> 
+ <li>移动应用案例分析 出品人：<a href="http://www.qconbeijing.com/user/659">网易技术总监 蒋炜航</a> 移动大潮下设计、技术和商业的完美融合</li> 
+ <li>团队文化专题 出品人：<a href="http://www.qconbeijing.com/user/660">豆瓣工程副总裁 段念</a> 文化究竟是什么？如何被创建、传承与发扬</li> 
+ <li>互联网金融 出品人：<a href="http://www.qconbeijing.com/user/657">积木盒子技术副总裁 程显峰</a> 展望未来，互联网将如何改变中国的金融？</li> 
+ <li>尖端之上的Java <a href="http://www.qconbeijing.com/user/662">阿里巴巴资深架构师 朱鸿</a> 企业级开发核心生产力最新信息与框架分享</li> 
+</ul>
+<p><strong>技术训练营</strong></p>
+<p>本届大会全新打造的技术训练营（原会前培训）也已经全面上线，在训练营中，我们邀请QCon讲师为对某一个领域具体实战技能感兴趣，入门浅的朋友提供集中的培训和指导。这些培训包括：</p>
+<ul> 
+ <li>《敏捷与模块化－OSGi理论与实践》</li> 
+ <li>《iOS入门与进阶》</li> 
+ <li>《JavaEE，企业应用互联网化的架构选择探讨》</li> 
+ <li>《实践中的看板（认证课程）》</li> 
+ <li>《基于开源工具的自动化测试实训营》</li> 
+ <li>《锻造你的性能思路》</li> 
+ <li>《iOS自动化测试其实很简单》</li> 
+ <li>《易用性测试之殇——从测试者角度看易用性》</li> 
+ <li>《精益创业入门》</li> 
+</ul>
+<p>课程详情及报名方式，请查阅<a href="http://www.qconbeijing.com/tutorials">技术训练营页面</a>。</p>
+<p><strong>丰富晚场活动</strong></p>
+<p>每届大会都会有丰富的的晚场活动。往届会议里我们有QCon前夜Drinkup，啤酒开怀无限畅饮；各技术社区共同举办的“社区之夜”，畅谈社区运营，技术交流；各路业界名流，一起座谈畅聊技术人生……</p>
+<p>QCon期间的晚场活动均会面向社会免费开放。本届大会的精彩活动，请关注我们的<a href="http://www.qconbeijing.com/">大会官网</a>。</p>
+<p><strong>门票信息、议题提交、媒体支持、会务联络</strong></p>
+<p>每年QCon大会门票都会在开幕前售罄，及早预定可提前确保席位，并享受更低折扣。如有更多需要咨询，请联系qcon@cn.infoq.com，或直接致电010-64738142。报名请点击<a href="http://qconbeijing.mymova.com/">报名页面</a>。</p>
+<p>QCon现在面向公众征集演讲话题，详情请查阅议题提交指南：<a href="http://www.infoq.com/cn/news/2013/12/qconbeijing2014-callforpapers">《QCon北京2014现在开始征集演讲主题》</a>。</p>
+<p>若您对大会赞助、展示、媒体合作感兴趣，请按如下分类邮箱联系，我们将尽快予以回复：</p>
+<ul> 
+ <li>会务咨询：qcon@cn.infoq.com</li> 
+ <li>赞助咨询：sponsor@cn.infoq.com</li> 
+ <li>媒体合作：media@cn.infoq.com</li> 
+</ul>
+<p><strong>关于主办方：</strong></p>
+<p>今天的InfoQ已经是一家国际性的公司，在加拿大、美国、中国和罗马尼亚均设有办公室。目前，我们运作两大品牌产品：InfoQ网站，以及QCon大会。InfoQ目前设有英文站、中文站、日文站和巴西葡文站。目前，每月有来自全球的100多万用户访问了我们的网站，阅读由来自世界各地的上百位社区编辑撰写的内容。我们的社区编辑均是来自一线的技术实践者，他们热衷于分享自己了解到的新鲜技术，并热衷于邀请更多专业人士分享他们的经验。</p>
+<ul> 
+ <li>InfoQ中文站网址：http://www.infoq.com/cn</li> 
+ <li>QCon北京官网：http://www.qconbeijing.com</li> 
+ <li>InfoQ微博账号：http://e.weibo.com/infoqchina</li> 
+ <li>InfoQ微信公众号：【infoqchina】</li> 
+</ul><br><br><br><br><br><br></body></html>

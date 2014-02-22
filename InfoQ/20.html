@@ -1,70 +1,25 @@
-<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>反思：别被敏捷忽悠</h3><p>张鼎(dylan)目前担任腾讯无线研发部副总监，加入腾讯前在北电公司工作，曾参与制定通讯测试国际规范，十多年测试行业经验。他最近<a href="http://djt.qq.com/article/view/1020" target="_blank">撰文</a>以“别被敏捷忽悠——关于敏捷研发的跨界反思”为题谈到了对于敏捷研发的一些看法，结合自己的经验对“敏捷研发理论是否被神化了”这个问题进行了深入的分析。</p>
-<p>dylan认为随着IT热潮从传统软件业转移到移动互联网领域，质量标准正在被弱化。&nbsp;</p>
-<blockquote> 
- <p>传统大型软件公司，开发节奏慢周期长，QA和测试环节受重视程度高，测试结论有权威性，越在后期发现的Bug让开发人员如临大敌。转型来到移动互联网部门，咱开始学习敏捷研发理论了，接受起来蛮顺利，随着参与项目的增多，越来越感受到自己的职业价值观不断受到挤压，各种混乱事件让测试人员及团队挺纠结。</p> 
-</blockquote>
-<p>质量标准很难成为严格遵守的权威，表现在以下几个方面：</p>
+<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>Firefox OS开发资源助您起航</h3><p>Firefox OS，是由Mozilla开发，以“<a href="http://groups.google.com/group/mozilla.dev.platform/browse_thread/thread/7668a9d46a43e482?pli=1">面向开放网络构建完整、独立的操作系统</a>”为目标，用户可以安装运行HTML、CSS和JavaScript开发的应用程序。这个系统基于Linux和Mozilla的Gecko开发，并且是<a href="http://www.knowyourmobile.com/products/16409/mozillas-boot-2-gecko-and-why-it-could-change-world">完全开放，100%不涉及</a>任何专利技术。</p>
+<h2><b>为</b><b>Firefox OS</b><b>做贡献</b></h2>
+<p>Firefox OS是完全开源的系统，可以从<a href="https://www.cms.infoq.com/mag4media/scripts/FCKeditor/editor/git%20clone%20git:/github.com/mozilla-b2g/B2G.git">GitHub中克隆</a>。在Mozilla 开发者的门户网站中，有完整详尽的说明，<a href="https://developer.mozilla.org/en-US/Firefox_OS/Building_and_installing_Firefox_OS?redirectlocale=en-US&amp;redirectslug=Firefox_OS/Building_and_installing_Firefox_OS">阐述如何编译并将其安装</a>在模拟器或<a href="https://developer.mozilla.org/en-US/Firefox_OS/Installing_on_a_mobile_device">移动设备</a>上，比如<a href="https://developer.mozilla.org/en-US/docs/Mozilla/Firefox_OS/Dual_boot_of_B2G_and_Android_on_SGS2">配置双启动系统的Android设备</a>。</p>
+<p>Firefox OS核心技术主要有<a href="https://developer.mozilla.org/en-US/Firefox_OS/Platform/Architecture">三个层面</a>：</p>
 <ul> 
- <li>开发自测不足——新功能都开发不过来，自测随便意思一下就好了。</li> 
- <li>迭代发现的一堆Bug不改——产品还是过渡期，说不定集成测试前BUG就消失了。</li> 
- <li>Bug不需要改——我刚和产品沟通过了，需求变更一下就好了。</li> 
- <li>Bug无效——我代码就是这么实现的嘛，这么处理也没什么不好。</li> 
- <li>Bug挂起太多——你看看市场竞争这么激烈，每个Bug都深入判断我们哪有时间。</li> 
- <li>发布产品已知Bug不少—— 迭代发布产品有些遗留Bug很正常，慢慢优化嘛。</li> 
+ <li><a href="https://developer.mozilla.org/en-US/docs/Mozilla/Firefox_OS/Gaia">Gaia</a>，这是Firefox OS的用户界面。除了其他项目外，Gaia还包括锁/主屏幕、电话拨号器和联系人应用程序，外加经典的手机应用程序：邮件、日历、计算器和应用市场。Gaia完全是用HTML、CSS和JavaScript编写的。</li> 
+ <li><a href="https://developer.mozilla.org/en-US/docs/Gecko">Gecko</a>，这是操作系统应用程序的运行时，实现了HTML、CSS和JavaScript的开放标准。Gecko包括网络堆栈、图形堆栈、布局引擎和JavaScript虚拟机。</li> 
+ <li><a href="https://developer.mozilla.org/en-US/docs/Mozilla/Firefox_OS/Gonk">Gonk</a>，由Linux内核和用户空间硬件抽象层（HAL）构成，是操作系统的底层。Gecko就运行在这层。Gonk将接口暴露给Gecko，实现诸如对完整电话栈或显示帧缓冲区的直接访问，这些在其他操作系统中通常是访问不到的。</li> 
 </ul>
-<p>据dylan所说，其领导的团队采用了旁敲侧击的方法提升研发质量，比如帮忙开发便利的自测工具、合作分析代码覆盖率、冒充用户上论坛投诉、拿竞争对手的结果来刺激团队等等，但始终是治标不治本。</p>
-<blockquote> 
- <p>回头再看看，所有掩盖在敏捷研发过程中的漏洞，日积月累，最终还是会由整个业务团队来承担苦果。所以时常在想，敏捷研发理论是否被神化了，是否常被错误理解而让不职业的现象层出不穷？敏捷不是新的研发理论，只是项目管理的一种形式。</p> 
-</blockquote>
-<p>&nbsp;他认为，瀑布研发和敏捷研发没有本质不同，理由如下：</p>
+<p>为Gonk和Gecko做贡献需要用到C++的知识，而Gaia需要的是JavaScript或者HTML/CSS。</p>
+<p><a href="https://bugzilla.mozilla.org/query.cgi">Bugzilla</a>是促进Firefox OS发展的基础资源，它是Mozilla的缺陷数据库。除了从Bugzilla中选择和修复bug外，Mozilla通过建立<a href="http://www.joshmatthews.net/bugsahoy/">指导性的错误</a>，努力帮助新人了解这个平台和整个流程。指导性的错误应该包含足够的信息来上手，还设定了辅导者沿着流程提供指导。如果没有合适的指导性错误，旧的“<a href="https://bugzil.la/sw:%5bgood%20first%20bug%5d">良好的首例错误</a>”列表也能提供可用的起点。</p>
+<p>一旦修复了bug，开发者需要<a href="https://developer.mozilla.org/en-US/docs/Developer_Guide/How_to_Submit_a_Patch">提交他/她的补丁供审核</a>，最终由具有权限的人员将其迁入。</p>
+<h2><b>为Firefox OS</b><b>开发应用程序</b></h2>
+<p>如果不想跟操作系统的底层部分打交道，那么你可以开发运行在Firefox OS上的应用程序。Firefox OS应用开发的基本工具是最新版<a href="http://www.mozilla.org/en-US/firefox/new/">Firefox浏览器</a>、<a href="https://getfirebug.com/">Firebug</a>和<a href="http://people.mozilla.com/~myk/r2d2b2g/">Firefox OS模拟器插件</a>。</p>
+<p>了解更多有用的资源：</p>
 <ul> 
- <li>是迭代发布的周期不同？某些互联网产品的版本发布周期一点都不短。入口级的移动APP动辄上百人的团队，规模比多数PC软件团队还大。</li> 
- <li>是有云和没云的不同？很多行业的后台（云架构）比一般互联网公司复杂多了。</li> 
- <li>是收费和免费导致的不同？传统行业也有很多免费软件。互联网的有些免费软件比传统软件质量要求更高。</li> 
- <li>是对产品迭代发布的质量要求不同？</li> 
- <li>是对文档的要求不同？</li> 
+ <li><a href="https://hacks.mozilla.org/2013/01/introducing-the-firefox-os-boilerplate-app/">Boilerplate app</a>：展示应用程序架构和<a href="https://wiki.mozilla.org/WebAPI">WebAPI</a>用法的基础模板；</li> 
+ <li><a href="https://developer.mozilla.org/en/docs/IndexedDB">IndexedDB</a>：客户端存储大量结构化数据的API，相反，<a href="https://developer.mozilla.org/en-US/docs/Web/Guide/API/DOM/Storage?redirectlocale=en-US&amp;redirectslug=Web/Guide/DOM/Storage">DOM存储</a>适用于存放较少量的数据；</li> 
+ <li><a href="https://developer.mozilla.org/en-US/Apps/Developing/Manifest?redirectlocale=en-US&amp;redirectslug=Web/Apps/Manifest#appcache_path">App Manifest</a>：清单是分辨网站的开放网络应用程序的关键。它是JSON文件，其中包含应用程序的名称和描述，此外，还可以包含应用程序的起源、图标等；</li> 
+ <li><a href="https://developer.mozilla.org/en-US/Firefox_OS/Using_the_App_Manager">App Manager</a>：这是个工具集，用于管理本地应用程序、设备和开发工具箱（监视器、调试器等等）；</li> 
+ <li><a href="https://hacks.mozilla.org/2013/08/introducing-brick-minimal-markup-web-components-for-faster-app-development/">Brick Web components</a>：通过组件支持HTML5重用的规范；</li> 
+ <li><a href="http://www.mozilla.org/en-US/styleguide/products/firefox-os/">Firefox OS style guide</a>：人机交互指南，它描述了所有元素的外观和UI行为。</li> 
 </ul>
-<p>结论就是，没有一个要素能真正把互联网和其他软件领域区别开来，所以dylan认为：</p>
-<blockquote> 
- <p>瀑布研发和敏捷研发没有本质不同，，更别说谁好谁坏了，只是因为行业竞争的不同，看起来交付节奏不一样而已。节奏和软件研发的传统精髓没有关系。</p> 
-</blockquote>
-<p>除此之外，dylan还批判了常见的几个敏捷误区。刚毕业的学生进入公司要怎么培养？dylan建议2-3年的职场新人不要学习任何敏捷流程的理论：</p>
-<ul> 
- <li>测试岗位的就好好的把一个功能设计出N种场景，使用各种工具反复测试找敏锐感。</li> 
- <li>开发岗位的不是要尽快实现一堆功能，而是先充分理解架构，然后对提交的每一行代码负责。</li> 
- <li>产品岗位的多体验产品多接触用户，头几年最好脱离QQ的关系链，锻炼发布独立产品的能力。</li> 
-</ul>
-<p>总之，dylan认为，入行新人要学四个字——职业操守，刻在心里，打好基本功，未来不管在什么项目都会受用。</p>
-<p>另一个误区，dylan认为是“沟通比文档更重要”：</p>
-<blockquote> 
- <p>这句话看起来有道理，如果你是几个人的小团队，如果人员稳定，功能模块比较聚焦，生命周期也不太长，也没客户找你要什么手册，确实不需要写什么文档。</p> 
-</blockquote>
-<p>但是如果你是以下情况的团队，dylan认为文档可能真的比沟通更重要：</p>
-<ul> 
- <li>团队人数数十人甚至上百。</li> 
- <li>项目生命力长，每个版本都有新功能，模块越来越多，越来越复杂。</li> 
- <li>异地团队，合作研发。</li> 
- <li>有外包，合作方团队协同工作。</li> 
- <li>团队职业化水平高低不齐。</li> 
- <li>团队不太稳定，或业务归属部门不太稳定。</li> 
-</ul>
-<p>dylan特意列举了几种缺乏文档的糟糕情况：</p>
-<ul> 
- <li>某产品经理忘了半年前的某个功能的具体逻辑，寻求测试同学的帮助。</li> 
- <li>某开发参加高职级晋升，手上没有一个像样的软件架构图，拿着测试同事梳理的逻辑架构图去评审。</li> 
- <li>一个严重Bug的坑在N个项目组被踩了N次，修复每个Bug后的注释只有几个字。</li> 
- <li>跨地域的团队，或者前后台的团队之间，发生Bug时互相争执半天，讨论谁该负责修复Bug，彼此不熟悉对方的内部逻辑。</li> 
- <li>至于没有参考文档导致测试投入浪费的事就太常见了</li> 
- <li>公司业务调整，跨部门和跨地域的业务交接不太愉快，交接效率低。</li> 
-</ul>
-<p>第三，dylan认为不要“边重构，边生活”：</p>
-<blockquote> 
- <p>以前公司的开发，30-40%的时间花在概念设计和架构设计，30%在细节设计，10%在编码, 20-30%在代码自测。编码本身只占很少一点时间。技术总监这样教育新人：你不是coder，你是designer！coder是比较低级的工作，软件设计才是高端活。</p> 
- <p>任何时候的思考，对于架构的投入怎么充分都不为过。微信发布那么多版本，这两年重构可能几乎没有。这需要有人尽早思考清楚未来做朋友圈，做开放接口，做插件化等等，开发知道了未来要演进的形态，在一开始就有所规划，预留接口。否则，今天决定要做SNS，重构一次，明天要做插件化，再重构一次，后天作开放平台和公共帐号，再重构……对公司来说就是个噩梦了。</p> 
-</blockquote>
-<p>最后，dylan强调，不要存在“迭代版本的BUG多一点是正常的”的误区：</p>
-<blockquote> 
- <p>每个交付到测试团队的产品，必须是可测的，自测过的。不可测的版本就不叫交付。对于可测内容追求在一段时间周期内，尽可能高质量的发布，是修炼职业操守的目标，更是精品团队的目标。每一个挂起的有效Bug都需要确认：为什么改不了？什么时候改？对发布影响如何？</p> 
- <p>如果因市场形势必须要尽快发布，至少遵守一个底线：严重Bug必须整改而且优先整改。所谓严重就是可能让用户抛弃你的问题：速度慢，卖点明显不如对手，卖点无法正常使用，不稳定，可能给用户带来额外损失（手机系统，安全，账号，费用等等）。这样的发布还不如不发。</p> 
-</blockquote>
-<p>随着敏捷开发在IT行业的深入推广，敏捷的优点不再被业界无限放大，而更多的社区声音开始讨论敏捷的正反两方面，dylan的观点可以给读者朋友一些不同的启示和借鉴。</p><br><br><br><br><br><br></body></html>
+<p>Mozilla的代表Shafiul Azam也在<a href="http://shafiul.github.io/slides/kickstart_fxos.html">演讲中描述了开发Firefox OS应用程序的基本步骤</a>。</p>
+<p><strong>查看英文原文：</strong><a href="http://www.infoq.com/news/2014/02/firefox-os-dev-resources">Resources to Start Developing for Firefox OS</a></p><br><br><br><br><br><br></body></html>

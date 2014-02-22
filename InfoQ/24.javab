@@ -1,0 +1,138 @@
+<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>From Imperative Programming to Fork/Join to Parallel Streams in Java 8</h3><p>Java 8 brings many features that let you write code in a more concise way. For example, instead of writing code as follows:</p>
+<pre><font color="#0000ff">Collections.sort(transactions, new Comparator&lt;Transaction&gt;(){</font>
+<font color="#0000ff">  public int compare(Transaction t1, Transaction t2){</font>
+<font color="#0000ff">    return t1.getValue().compareTo(t2.getValue());</font>
+<font color="#0000ff">  }</font>
+<font color="#0000ff">});</font></pre>
+<p>you can now write the following more compact code that does the same thing but reads a lot closer to the problem statement:</p>
+<pre><font color="#0000ff">transactions.sort(comparing(Transaction::getValue));</font></pre>
+<p>The major features introduced by Java 8 are lambda expressions, method references and the new Streams API. It is considered the largest language change since the advent of Java 20 years ago. To find detailed practical examples of how you can benefit from these features refer to the book <a href="http://www.manning.com/urma/">Java 8 in Action: Lambdas, Streams and Functional-style programming</a> written by the authors of this article and Alan Mycroft.</p>
+<p>These features enable programmers to write more concise code, and additionally they let programmers benefit from multi-core architecture. In fact, writing programs that execute gracefully in parallel is currently the preserve of Java specialists. However, thanks to its new Streams API, Java 8 changes the game and lets everyone more easily write code that leverages multi-core architecture.</p>
+<p>In this article we will compare different methods to compute the variance of a large data set using</p>
+<ol> 
+ <li>An imperative style</li> 
+ <li>The fork/join framework</li> 
+ <li>The Streams API</li> 
+</ol>
+<p>The variance is used in statistics to measure how far a set of numbers is spread out. It can be calculated by averaging the squared difference from the mean of the set of numbers. For example, given the numbers 40, 30, 50 and 80 representing the ages of a population, we can calculate the variance by:</p>
+<ol> 
+ <li>calculating the mean: (40 + 30 + 50 + 80) / 4 = 50</li> 
+ <li>taking the square difference from the mean of the set of numbers: (40-50)<sup>2 </sup>+ (30-50)<sup>2</sup> + (50-50)<sup>2</sup> + (80-50)<sup>2</sup> = 1400</li> 
+ <li>finally averaging it: 1400/4 = 350</li> 
+</ol>
+<h2>Imperative style</h2>
+<p>A typical imperative implementation of the variance formula is as follows:</p>
+<pre><font color="#0000ff"> public static double varianceImperative(double[] population){</font>
+   <font color="#0000ff">double average = 0.0;</font>
+   <font color="#0000ff">for(double p: population){</font>
+      <font color="#0000ff">average += p;</font>
+   <font color="#0000ff">}</font>
+<font color="#0000ff">   average /= population.length;</font>
+
+<font color="#0000ff">   double variance = 0.0;</font>
+   <font color="#0000ff">for(double p: population){</font>
+     <font color="#0000ff">variance += (p - average) * (p - average);</font>
+   <font color="#0000ff">}</font>
+   <font color="#0000ff">return variance/population.length;</font>
+<font color="#0000ff">}</font></pre>
+<p>Why is it imperative? Our implementation describes the computation in terms of <i>a sequence of statements that change state</i>. Here, we are explicitly iterating through each element of the population array and updating two local variables (average and variance) at every iteration. This kind of code is excellent for a hardware architecture that only has one CPU. Indeed, it maps very straightforwardly to the instruction set of a CPU.</p>
+<h2>Fork/Join framework</h2>
+<p>However, how would you write this implementation to execute on multiple-core architectures? Should you use threads? Should they synchronise at some point? The fork/join framework introduced in Java 7 alleviated some of these difficulties, so let’s try to develop a parallel version of this algorithm using it.</p>
+<pre><font color="#0000ff"> public class ForkJoinCalculator extends RecursiveTask&lt;Double&gt; {</font>
+
+<font color="#0000ff">   public static final long THRESHOLD = 1_000_000;</font>
+
+<font color="#0000ff">   private final SequentialCalculator sequentialCalculator;</font>
+<font color="#0000ff">   private final double[] numbers;</font>
+   <font color="#0000ff">private final int start;</font>
+   <font color="#0000ff">private final int end;</font>
+
+<font color="#0000ff">   public ForkJoinCalculator(double[] numbers, SequentialCalculator sequentialCalculator) {</font>
+     <font color="#0000ff">this(numbers, 0, numbers.length, sequentialCalculator);</font>
+   <font color="#0000ff">}</font>
+
+<font color="#0000ff">   private ForkJoinCalculator(double[] numbers, int start, int end, SequentialCalculator sequentialCalculator) {</font>
+     <font color="#0000ff">this.numbers = numbers;</font>
+     <font color="#0000ff">this.start = start;</font>
+     <font color="#0000ff">this.end = end;</font>
+     <font color="#0000ff">this.sequentialCalculator = sequentialCalculator;</font>
+   <font color="#0000ff">}</font>
+
+<font color="#0000ff">   @Override</font>
+   <font color="#0000ff">protected Double compute() {</font>
+     <font color="#0000ff">int length = end - start;</font>
+     <font color="#0000ff">if (length &lt;= THRESHOLD) {</font>
+         <font color="#0000ff">return sequentialCalculator.computeSequentially(numbers, start, end);</font>
+     <font color="#0000ff">}</font>
+     <font color="#0000ff">ForkJoinCalculator leftTask = new ForkJoinCalculator(numbers, start, start + length/2, sequentialCalculator);</font>
+     <font color="#0000ff">leftTask.fork();</font>
+     <font color="#0000ff">ForkJoinCalculator rightTask = new ForkJoinCalculator(numbers, start + length/2, end, sequentialCalculator);</font>
+     <font color="#0000ff">Double rightResult = rightTask.compute();</font>
+     <font color="#0000ff">Double leftResult = leftTask.join();</font>
+     <font color="#0000ff">return leftResult + rightResult;</font>
+<font color="#0000ff">  }</font>
+<font color="#0000ff">}</font></pre>
+<p>Here we develop a <i>RecursiveTask</i> splitting an array of doubles until the length of a subarray doesn’t go below a given threshold. At this point the subarray is processed sequentially applying on it the operation defined by the following interface.</p>
+<pre><font color="#0000ff">public interface SequentialCalculator {</font>
+<font color="#0000ff">  double computeSequentially(double[] numbers, int start, int end);</font>
+<font color="#0000ff">}</font></pre>
+<p>With this infrastructure it is possible to recalculate the variance in parallel as follows.</p>
+<pre><font color="#0000ff"> public static double varianceForkJoin(double[] population){</font>
+<font color="#0000ff">   final ForkJoinPool forkJoinPool = new ForkJoinPool();</font>
+   <font color="#0000ff">double total = forkJoinPool.invoke(new ForkJoinCalculator(population, new SequentialCalculator() {</font>
+<font color="#0000ff">     @Override</font>
+     <font color="#0000ff">public double computeSequentially(double[] numbers, int start, int end) {</font>
+       <font color="#0000ff">double total = 0;</font>
+       <font color="#0000ff">for (int i = start; i &lt; end; i++) {</font>
+         <font color="#0000ff">total += numbers[i];</font>
+       <font color="#0000ff">}</font>
+       <font color="#0000ff">return total;</font>
+     <font color="#0000ff">}</font>
+  <font color="#0000ff">}));</font>
+  <font color="#0000ff">final double average = total / population.length;</font>
+  <font color="#0000ff">double variance = forkJoinPool.invoke(new ForkJoinCalculator(population, new SequentialCalculator() {</font>
+    <font color="#0000ff">@Override</font>
+    <font color="#0000ff">public double computeSequentially(double[] numbers, int start, int end) {</font>
+      <font color="#0000ff">double variance = 0;</font>
+      <font color="#0000ff">for (int i = start; i &lt; end; i++) {</font>
+        <font color="#0000ff">variance += (numbers[i] - average) * (numbers[i] - average);</font>
+      <font color="#0000ff">}</font>
+      <font color="#0000ff">return variance;</font>
+    <font color="#0000ff">}</font>
+ <font color="#0000ff">}));</font>
+ <font color="#0000ff">return variance / population.length;</font>
+<font color="#0000ff">}</font></pre>
+<p>The bottom line is that, even with the help of the fork/join framework, the parallel version is significantly harder to write, and eventually debug, than its sequential counterpart.</p>
+<h2>Parallel Streams</h2>
+<p>Java 8 lets you achieve this in a different way. Instead of writing <i>how</i> a computation should be implemented, you describe <i>what</i> it does in broad brush strokes using the Streams API. As a result, the library can figure out how to implement the computation for you and make use of various optimisations. This style is called <i>declarative programming</i>. In Java 8 specifically, a parallel stream is designed to leverage a multi-core architecture. Let’s see how you can use them to run our first attempt of calculating the variance in a faster way.</p>
+<p>We assume that you have some familiarity with streams in this section. However as a refresher, a Stream&lt;T&gt; is a sequence of elements T that support aggregate operations. You can use these operations to create a pipeline which represents a computation just like a pipeline of UNIX commands. A parallel stream is simply a stream that will execute the pipeline in parallel and can be obtained by calling the method parallel() on a normal stream. To brush up on what a stream is, refer to <a href="http://download.java.net/jdk8/docs/api/java/util/stream/Stream.html">the Javadoc documentation</a>.</p>
+<p>The good news is that a few numeric operations such as max, min and average are built-in in the Java 8 API. They can be accessed through primitive specialisations of a Stream: IntStream (primitive int-valued elements), LongStream (primitive long-valued elements) and DoubleStream (primitive double-valued elements). For example, you can simply create a range of numbers with IntStream.rangeClosed(), calculate the maximum or minimum element in a stream using the method max() and min().</p>
+<p>Coming back to our initial problem, we would like to use these operations to calculate the variance of a large population. The first step is to create a stream from the population array. We can achieve this using the Arrays.stream() static method:</p>
+<pre><font color="#0000ff">DoubleStream populationStream = Arrays.stream(population).parallel();</font></pre>
+<p>A DoubleStream supports the method average() which we can use:</p>
+<pre><font color="#0000ff">double average = populationStream.average().orElse(0.0);</font></pre>
+<p>The next step is to calculate the variance which makes use of the average. Each element of the population needs first to have the average subtracted from it and the result squared. This can be viewed as a map operation which transforms each element into another one using a lambda expression (double p) -&gt; (p - average) * (p - average). Once this is done we can calculate the sum of all resulting elements by calling the method sum().</p>
+<p>But not so fast! Streams can only be consumed once. If we re-use populationStream we will get the surprising error:</p>
+<pre><font color="#ff0000">java.lang.IllegalStateException: stream has already been operated upon or closed</font></pre>
+<p>So we need to get a second stream to calculate the variance as show below:</p>
+<pre><font color="#0000ff"> public static double varianceStreams(double[] population){</font>
+<font color="#0000ff">   double average = Arrays.stream(population).parallel().average().orElse(0.0);</font>
+<font color="#0000ff">   double variance = Arrays.stream(population).parallel()</font>
+<font color="#0000ff">                              .map(p -&gt; (p - average) * (p - average))</font>
+<font color="#0000ff">                              .sum() / population.length;</font>
+<font color="#0000ff">   return variance;</font>
+<font color="#0000ff">}</font></pre>
+<p>By making use of built-in operations in the Streams API we’ve rewritten our initial imperative style code in a declarative and concise way which reads almost like the mathematical definition of the variance. Let’s now explore the performance of the three versions of our implementation.</p>
+<h2>Benchmark</h2>
+<p>We wrote the three versions of our variance algorithm in very different styles. The streams version is the most concise and is written declaratively, which allows the library to decide on an adequate implementation and leverage the multi-core infrastructure. However, you may wonder how they perform? To find out let’s create a benchmark to see how the different versions compare. We calculate the variance of a population of 30 million random numbers between 1 and 140. We used <a href="http://openjdk.java.net/projects/code-tools/jmh/">jmh</a> to investigate the performance of each version. Jmh is a Java harness supported by OpenJDK. You can run the benchmark yourself by cloning the project from <a href="https://github.com/java8/Variance">GitHub</a>.</p>
+<p>The benchmark was run on a Macbook Pro 2.3 GHz quad-core Intel Core i7, with 16 GB 1600 MHz DDR3. In addition, we used the following version of JDK8:</p>
+<pre>
+java version &quot;1.8.0-ea&quot;
+Java(TM) SE Runtime Environment (build 1.8.0-ea-b121)
+Java HotSpot(TM) 64-Bit Server VM (build 25.0-b63, mixed mode)</pre>
+<p>The results are illustrated in the histogram below. The imperative version took 60ms, the fork/join version 22ms and the streams version 46ms.</p>
+<p><img _p="true" _href="img://3Fig1.png" alt="" src="http://www.infoq.com/resource/articles/forkjoin-to-parallel-streams/en/resources/3Fig1.png" /></p>
+<p>These numbers should be treated with caution. It’s likely that you will get very different performance if you run the test on a 32-bit JVM for example. However, it is interesting to notice that adopting a different programming style using the Streams API in Java 8 opens the door for optimisations behind the scenes that are not possible in a strictly imperative style and in a much more straightforward way than is possible with fork/join.</p>
+<h2>About the Authors</h2>
+<p><strong><img vspace="3" hspace="3" align="left" _p="true" _href="img://Raoul-Gabriel-Urma.png" alt="" src="http://www.infoq.com/resource/articles/forkjoin-to-parallel-streams/en/resources/Raoul-Gabriel-Urma.png" />Raoul-Gabriel Urma</strong> started his PhD in Computer Science at the University of Cambridge at the age of 20. His research centers on programming languages and software engineering. He holds a MEng in Computer Science from Imperial College London and graduated with first class honors, having won several prizes for technical innovation. He has worked for large companies such as Google, eBay, Oracle, and Goldman Sachs, as well as for several startup projects. In addition, he is a frequent speaker at Java developer conferences and is also an instructor for Java courses. Twitter: <a href="http://www.twitter.com/raoulUK">@raoulUK</a> and <a href="http://www.urma.com">Website</a>.</p>
+<p><strong><img vspace="3" hspace="3" align="left" _p="true" _href="img://Mario-Fusco.png" alt="" src="http://www.infoq.com/resource/articles/forkjoin-to-parallel-streams/en/resources/Mario-Fusco.png" />Mario Fusco</strong> is a senior software engineer at Red Hat working at the development of the core of Drools, the JBoss rules engine. He has extensive experience as a Java developer, having been involved in (and often leading) many enterprise level projects in industries ranging from media companies to the financial sector. Among his interests are functional programming and domain specific languages. By leveraging these two passions, he created the open source library lambdaj with the purposes of providing an internal Java DSL for manipulating collections and for allowing a bit of functional programming in Java. Twitter: <a href="http://www.twitter.com/mariofusco">@mariofusco</a>.</p><br><br><br><br><br><br></body></html>

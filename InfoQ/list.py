@@ -1,11 +1,11 @@
 <html>
  <head></head> 
- <body>
-  <div>
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/30.py">Pebbleがウェアラブルコンピューティング史上初のアプリストアを開設</a>Pebbleは 人気のPebbleとPebble Steelスマートウォッチを提供している。同社は今月始め、アプリストアを開設した。このアプリストアは顧客と開発者にアプリの配布チャンネルを提供し、&quot;ユーザがPebbleアプリを探す第一の場所&quot;を作ることが目的だ。
-  </div>
-  <div>
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/29.py">GoogleのJavaコーディング規約</a>Googleは、最近、Javaコーディング規約の完全な定義を公開した。 この規約は強制力を持つ厳格なルールであり、Google全体で従うべきものだ。単なるフォーマットだけでなく、他の約束事やコーディング規約についても書かれている。
+ <body> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/30.py">Pebbleがウェアラブルコンピューティング史上初のアプリストアを開設</a>Pebbleは 人気のPebbleとPebble Steelスマートウォッチを提供している。同社は今月始め、アプリストアを開設した。このアプリストアは顧客と開発者にアプリの配布チャンネルを提供し、&quot;ユーザがPebbleアプリを探す第一の場所&quot;を作ることが目的だ。 
+  </div> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/29.py">GoogleのJavaコーディング規約</a>Googleは、最近、Javaコーディング規約の完全な定義を公開した。 この規約は強制力を持つ厳格なルールであり、Google全体で従うべきものだ。単なるフォーマットだけでなく、他の約束事やコーディング規約についても書かれている。 
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/29.py">QCon New York 2014のトラック発表</a>6月9日から13日に開催されるQCon New Yorkのトラックが決定した。 Creating Culture, Continuous Delivery, Data Science, Architecture Case Studies, JavaScript, Mobileなどだ。今年はOSGi DevCon 2014も同じ場所で開催される。会場はNew York Marriott Brooklyn Bridgeだ。 
@@ -150,6 +150,6 @@
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/36.py">アジャイルにおけるドキュメント：いつどれくらい書くべきか</a>アジャイルソフトウェア開発マニフェストは「包括的なドキュメントよりも動くソフトウェア」に価値を置いている。そうだとすると、どんな種類のドキュメントが、いつどれだけ必要なのだろうか？ 
-  </div>   
+  </div> 
  </body>
 </html>

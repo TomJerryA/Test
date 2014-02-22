@@ -1,7 +1,16 @@
 <html>
  <head></head> 
- <body>
-  <div>
+ <body> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/3.htmlb">Java里快如闪电的线程间通讯</a> 完全不用锁、同步器、信号量、等待和通知，在Java里开发一个轻量、无锁的线程间通讯框架；并且也没有队列、消息、事件或任何其他并发专用的术语或工具。只用普通的老式Java接口实现POJO的通讯。 
+  </div> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/2.htmlb">关于DevOps你必须知道的11件事</a> 尽管很多人视DevOps为ITIL和ITSM的颠覆，而我则有着不同的看法，在支撑IT运维的业务流程方面，ITIL和ITSM流程无疑还是最好的。实际上，他们描述了需要被IT运维支持的功能集合，这些功能集合足以支撑DevOps式的工作流。本文从DevOps的定义入手，介绍DevOps的理念、基本原则以及一些模式。 
+  </div> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/2.htmlb">Node 出现 uncaughtException 之后的优雅退出方案</a> Node 的异步特性是它最大的魅力，但是在带来便利的同时也带来了不少麻烦和坑，错误捕获就是一个。由于 Node 的异步特性，导致我们无法使用 try/catch 来捕获回调函数中的异常，本文将讨论一种Node 出现 uncaughtException 之后的优雅退出方案。 
+  </div> 
+  <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/1.htmlb">使用Spring Boot构建RESTful Web服务以访问存储于Aerospike集群中的数据</a> Spring Boot能够帮助你很容易地构建基于Spring的应用。Aerospike是分布式和可复制的内存数据库，它遵循ACID。本文将会引领你使用Spring Boot和Aerospike创建一个简单的RESTful Web服务。 
   </div> 
   <div> 
@@ -142,14 +151,5 @@
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/6.htmlb">软件正在吞噬组织机构中的“烟囱”</a> Luke Kanies是Puppet Labs的首席执行官，他探讨了软件正在如何接管那些过去一直由硬件实现的功能；以及在人们如何共事方面，这一变迁引发了怎样的剧变。 
   </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/5.htmlb">DDD &amp; DDDLib在恒拓开源的发展历程与推广经验</a> 本文主要介绍为什么我们在恒拓开源内部推广DDD，我们如何通过开发DDDLib和Koala等工具来完善这一过程，推广过程中遇到了哪些问题，以及我们如何解决这些问题。 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/4.htmlb">JavaOne 2013综述：Java 8是革命性的，Java回来了</a> JavaOne 2013已于近日在旧金山举行，时间从9月22日到9月26日。如果读者错过了，本文为你带来了会议要闻的综合报道。 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/4.htmlb">Codenvy架构：第一部分</a> Tyler Jewell是Codenvy的CEO，他在这篇分为两部分的文章中介绍了Codenvy（一个云IDE）的架构，包括平台、插件架构、工作空间、集群管理、多租户实现、IDE协作、发布模型和用于开发的SCRUM流程。 
-  </div>  
  </body>
 </html>

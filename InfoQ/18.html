@@ -1,8 +1,12 @@
-<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>Android++：零硬件限制，支持MSBuild、LLVM和GCC,并集成了GDB 调试</h3><p><a href="http://android-plus-plus.com/">Android++</a><a>这款</a>用于Visual Studio的原生开发和调试扩展已于近期发布，它没有硬件限制，除了集成了GDB调试，还支持<a href="http://msdn.microsoft.com/en-us/library/wea2sca5(v=vs.90).aspx">MSBuild</a>、<a href="http://llvm.org/">LLVM</a>和<a href="http://gcc.gnu.org/">GCC</a> 。在零硬件限制的助力下，我们能在大多数设备上进行调试，无需考虑硬件限制、厂商约束和许可检查。另外，最新版本还包括一些定制的构建脚本，以支持C/C++、Java和资源生成。它支持在部署的每个阶段进行依赖跟踪和最小的重构。</p>
-<p>Android++提供了可定制的编译器选项，支持用户选择LLVM/<a href="http://clang.llvm.org/">Clang</a>或GCC编译源代码。它也支持<a href="http://gcc.gnu.org/onlinedocs/gcc/Precompiled-Headers.html">预编译头文件</a>（PCH）、并行编译，以及在Visual Studio中基于设备或模拟器进行源代码级调试。除了附加到现有的运行进程，该扩展也支持开发者自动部署及运行应用。</p>
-<p>Android++能够帮助开发者使用Visual Studio来构建Android应用，而且它面向的是基于<a href="http://developer.android.com/tools/sdk/ndk/index.html">NDK</a>的C/C++应用，它支持自定义部署、资源管理，以及集成的Java源代码编译。</p>
-<p>要使用Android++<a href="http://android-plus-plus.com/download/">扩展</a>，需要Microsoft Visual Studio 2010、2012或2013版本。但是该扩展不支持Visual Studio Express版。截至本文写作之时，Android++已向有Android经验的开发者开放了内测。尽管该扩展的开发者并没有明示其正式版本的具体发布时间，但是该扩展很可能在接下来几个星期内以交错的方式提供。</p>
-<p><strong>查看英文原文:</strong><a href="http://www.infoq.com/news/2014/01/android-plus-plus">Android++ with Zero Hardware Restrictions, MSBuild, LLVM, GCC, Integrated GDB Debugging</a></p>
+<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>Greg Young：复杂事件处理的应用</h3><p>在一场报告中，Greg Young指出，复杂事件处理（Complex Event Processing, CEP）非常善于解决与时间相关的问题，比如，用户可能会通过查询历史数据来找出发生在不同时间点上却又互相关联的信息。</p>
+<p>Greg认为，事件处理是一种信息处理方式，它通过对已发生事情所产生的数据进行分析，并从中得到有价值的内容。一个比较经典的例子就是在查找发生于不同时间点上的相关信息时所使用的“时间相关的查询”，譬如，在twitter的数据流中，找出那些在说出“生日”一词之后，立刻说出“礼物”的所有用户；再譬如，在同一次临床试验中，找出在不同的时间点上产生类似反应的所有病人。</p>
+<p>为了创建这种查询，Greg使用了一种基于JavaScript的查询语言，这种语言可以对事件流进行查询。使用JavaScript来编写查询语句，这就意味着可以使用Web浏览器来编写和调试这些查询语句。</p>
+<p>事件存储（Event Store）中就包含了这样一种查询语言。事件存储是基于事件溯源（Event Source）所开发的一种NoSQL数据库。在事件溯源中，对象的状态并非是被直接保存的，而是由一系列发生在某个时间点上的事件所表述的。通过这种方式来保存对象的状态，这就意味着与状态变更相关的所有信息都将被保存下来，而不仅仅是保存当前的状态。</p>
+<p>如同乘坐时光机器一样，对事实数据或者说事件的保存，使我们能够很方便地回溯到事情发生的那一刻，并了解到整个事情的发生过程。例如，创建并生成一张本应在一个月前产生的报表。</p>
+<p>事件溯源的另一种应用场景就是对未来的预测和对预测结果准确度的评估；比如基于一个月前的情形来执行一套预测模型，得出目前的预测结果，然后与目前的实际情况进行比较。</p>
+<p>事件存储是一套基于三条款BSD许可协议（3-clause BSD license）的开源产品，第一个版本发布于2012年9月。</p>
+<p>Greg Young是事件存储这套产品的首席架构师，同时也是一位独立顾问，他因提出CQRS这一概念而闻名于世。</p>
+<p><strong>原文英文链接:</strong><a href="http://www.infoq.com/news/2014/01/complex-event-processing/">Greg Young on Using Complex Event Processing</a></p>
 <hr />
-<p>感谢<a href="http://www.infoq.com/cn/author/臧秀涛">臧秀涛</a>对本文的审校。</p>
+<p>感谢<a href="http://www.infoq.com/cn/author/邵思华">邵思华</a>对本文的审校。</p>
 <p>给InfoQ中文站投稿或者参与内容翻译工作，请邮件至<a href="mailto:editors@cn.infoq.com">editors@cn.infoq.com</a>。也欢迎大家通过新浪微博（<a href="http://www.weibo.com/infoqchina">@InfoQ</a>）或者腾讯微博（<a href="http://t.qq.com/infoqchina">@InfoQ</a>）关注我们，并与我们的编辑和其他读者朋友交流。</p><br><br><br><br><br><br></body></html>

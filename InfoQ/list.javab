@@ -2,6 +2,9 @@
  <head></head> 
  <body> 
   <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/24.javab">From Imperative Programming to Fork/Join to Parallel Streams in Java 8</a> The authors compare different methods to compute the variance of a large data set using an imperative style, The fork/join framework and the new Streams API in Java 8 
+  </div> 
+  <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/24.javab">The Kanban Survivability Agenda</a> This third and last article in the series on the Kanban “nine values, three agendas” model explores the survivability agenda. The values associated with this agenda are understanding, agreement, and respect; these say much about the philosophy that underlies Kanban, the humane, start with what you do now approach to change. 
   </div> 
   <div> 
@@ -147,9 +150,6 @@
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/26.javab">Don’t jump the SQL ship just yet</a> Some users are interacting with databases through complex SQL queries, both in terms of performance as well as expressivity. If SQL and JPA are diverging, where will our data interaction patterns go? 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/25.javab">Introduction to Graph Visualization with Alexander Smirnov</a> We asked Alexander Smirnov, creator of GraphX, to explain what graph visualization is and how it can be used to help users understand complex data. 
   </div> 
  </body>
 </html>
