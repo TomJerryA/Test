@@ -1,6 +1,12 @@
 <html>
  <head></head> 
- <body> 
+ <body>
+  <div>
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/32.py">Bletchley ParkとTMNOCとの大きな問題</a>今日2月5日は，最初の電子計算機であるColossusの開発から70周年にあたる日だ。ColossusはLorenzの暗号メッセージ解読を目的として，1944年2月5日に運用が開始された。しかしながら，Bletchley Parkですべてがうまく行っている訳ではない。National Museum of Computingは激しい論争の中で，存在の意義を失いつつあるのだ。
+  </div>
+  <div>
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/31.py">HybridClusterが非営利ライセンスの無償化を発表</a>HybridClusterは，同社のクラウドホスティングプラットフォームの非営利利用ライセンスを無償にすると発表した。同プラットフォームはLAMP(Linux, Apache, MySQL, PHP)アプリケーションをサポートし，同社独自のマルチプロトコルプロキシサーバである‘AwesimoeProxy’，軽量コンテナ，ZFSベースのストレージファブリックを組み合わせることで，高可用性と自動スケールを提供する。
+  </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/30.py">Pebbleがウェアラブルコンピューティング史上初のアプリストアを開設</a>Pebbleは 人気のPebbleとPebble Steelスマートウォッチを提供している。同社は今月始め、アプリストアを開設した。このアプリストアは顧客と開発者にアプリの配布チャンネルを提供し、&quot;ユーザがPebbleアプリを探す第一の場所&quot;を作ることが目的だ。 
   </div> 
@@ -144,12 +150,6 @@
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/38.py">Windows Phoneアプリの認証エラーとその回避手段</a>Windows Phoneアプリをより迅速にリリースするには，Windows Phone Store認証およびポリシチームの提供するヒントを取り入れて開発を行う必要がある。これらのヒントの大部分は，アプリが認証獲得に失敗する場合のシナリオなのだ。 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/37.py">Apple Macの30年</a>30年前にAppleは，1984という題の斬新な広告でMacを発表した。InfoQではMacの歴史を振り返るとともに，そのポイントと読者がこの記事を読んでいるシステムとの関係を明らかにする。 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/36.py">アジャイルにおけるドキュメント：いつどれくらい書くべきか</a>アジャイルソフトウェア開発マニフェストは「包括的なドキュメントよりも動くソフトウェア」に価値を置いている。そうだとすると、どんな種類のドキュメントが、いつどれだけ必要なのだろうか？ 
-  </div> 
+  </div>   
  </body>
 </html>

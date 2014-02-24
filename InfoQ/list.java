@@ -1,6 +1,9 @@
 <html>
  <head></head> 
- <body> 
+ <body>
+  <div>
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/22.java">Xamarin Sifts through Enterprise SAP Data</a>Xamarin and SAP Americas announced at MWC 2014 today a partnership aiming to provide .NET mobile developers the necessary tools to access and integrate enterprise SAP data into their applications.
+  </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/21.java">CQRS Framework Axon 2.1 with Increased Event Handler Support and Performance Improvements</a>Version 2.1 of CQRS framework Axon supports annotations and ordering of event handlers, a new conflict resolution together with performance improvements. The recently released version also adds compatibility with OSGi. 
   </div> 
@@ -147,9 +150,6 @@
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/27.java">Plugins Provide New Customizations to VS2013</a>New extensions AutoHistory and File Nesting bring some interesting usability enhancements to Visual Studio 2013. Read on for how they provide new ways to customize your editing experience. 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/26.java">Balancing Experiments and Deliveries in Product Development</a>Experimentation using for instance lean startup can help you learn about your customers and find out which features and product would be valuable. The value however comes from building products and actually delivering them to customers. You need to find ways to balance between experimentation and delivery. 
-  </div> 
+  </div>  
  </body>
 </html>

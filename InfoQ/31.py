@@ -1,51 +1,12 @@
-<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>Math.js: 多機能JavaScript Mathライブラリ</h3><p><a target="_blank" href="http://www.infoq.com/news/2014/01/mathjs"><em>原文(投稿日：2014/01/20)へのリンク</em></a></p>
+<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>HybridClusterが非営利ライセンスの無償化を発表</h3><p><a target="_blank" href="http://www.infoq.com/news/2014/02/hybridcluster_free"><em>原文(投稿日：2014/02/05)へのリンク</em></a></p>
 <div class="article_page_left news_container text_content_container"> 
  <div class="text_info"> 
-  <p>&nbsp;<a href="http://mathjs.org/">Math.js</a>はJavaScriptおよびNode.js向けのオープンソースMathライブラリで、数値、ビッグナンバー、複素数、単位、行列を扱うことができる。これは柔軟な式パーサも備えている。さらに詳しく知るため、InfoQはプロジェクトの創始者である<a href="http://josdejong.com/">Jos De Jong</a>氏にコンタクトした。</p> 
-  <p align="justify">Jos氏はプロジェクトの背景について、次のように説明する。</p> 
-  <blockquote> 
-   <p align="justify">JavaScriptには、行列、複素数、統計などに使える優れたライブラリがすでにあります。でも、そこには先進的な数学処理をするための統合ソリューションが欠けていました。既存のライブラリの多くは<i>chained</i> APIを備えています。これは非常にわかりやすいのですが、ライブラリ自身が知っているデータ型しか受け付けません。そのため、統合が問題になります。行列のライブラリは複素数を扱えないといった具合に、組み合わせることができないのです。Math.jsのAPIは、JavaScriptのMathオブジェクトのAPIと組み込みオペレータ、各種入力を受け付けるスタティック関数、と同じです。Math.jsでは、先進的なデータ型、関数、定数をサポートするようAPIを拡張しています。</p> 
-   <p align="justify">Math.jsがアプリケーション開発における数学を、もっと簡単に、もっと楽しいものにすること、そして、開発者の世界とアカデミックな世界とのギャップを橋渡しをするのに役立つことを期待しています。</p> 
+  <p><a href="http://www.hybridcluster.com">HybridCluster</a>は，同社のクラウドホスティングプラットフォームの非営利利用ライセンスを無償にすると<a href="http://www.hybridcluster.com/blog/containers-distributed-storage-future-now-free-hybridcluster-non-commercial-licenses/">発表した</a>。同プラットフォームは<a href="http://en.wikipedia.org/wiki/LAMP_(software_bundle)">LAMP</a>(Linux, Apache, MySQL, PHP)アプリケーションをサポートし，同社独自のマルチプロトコルプロキシサーバである‘AwesimoeProxy’，軽量コンテナ，<a href="http://en.wikipedia.org/wiki/ZFS">ZFS</a>ベースのストレージファブリックを組み合わせることで，高可用性と自動スケールを提供する。</p> 
+  <p>HybridClusterは実を言うと，LAMP中のLinuxはサポートしていない。代わりとして，<a href="http://en.wikipedia.org/wiki/OpenZFS">OpenZFS</a>(Linuxの安定サポートが公開されたのはつい最近だ)で使用可能な<a href="http://en.wikipedia.org/wiki/Freebsd">FreeBSD</a>を実行する。スケーラビリティと回復能力の大部分を支えているのが，ZFSファイルシステムとボリュームマネージャの採用であり，それを実現したのは，アプリケーション毎に用意された，独立運用の可能な分散型レプリカのセットだ。HybridClusterの<a href="http://docs.hybridcluster.com/release-2.0/03-features/features.html#awesomeproxy">独自コンポーネント</a>は，フロントエンドのAwesomeProxy，分散処理とレプリケーション，マイグレーションを行うSiteJuggler，システム設定を担うYakdで構成される。創設者のLuke Marsden氏は<a href="http://en.wikipedia.org/wiki/HAProxy">HAproxy</a>とAwesomeProxyの違いについて，次のようにコメントしている。</p> 
+  <blockquote>
+   HAProxyとの大きな違いは，AwesomeProxyがSiteJugglerと統合されていることです。単一障害点を持たず，高度な分散アルゴリズムと分散ストレージを使用するSiteJugglerとの統合により，データセンタ内の汎用ハードウェアを使用したフェールオーバが自動的に実現されています。AwesomeProxy自体について言えば，MySQLのバイナリプロトコルやFTP, IMAP, POP. SMTP, SSH他，有用なプロトコルを数多く理解することができます。そして最後に，AwesomeProxyは当社のライブマイグレーションシステムのキーコンポーネントなのです。実行中の処理が完了するまで，新たなリクエストはProxy上で保留されます。その後，下位のファイルシステムがアンマウントされ，変更情報の残り数百キロバイトがネットワークを通じてレプリケートされた後に，マウントとセットアップが実行されます。その時点で，ライブマイグレーション以前に構築されていたリクエストが解放されます - このようにして，大陸を越えた規模のライブマイグレーションが数秒間で，ユーザに気付かれることなく実施されるのです。
   </blockquote> 
-  <p align="justify">Math.jsには3種類の使い方がある。</p> 
-  <ol> 
-   <li> 
-    <div>
-     スタティック関数と定数を使う（JavaScriptのMathオブジェクトのように） 
-     <pre>
-math.add(2, 3); &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;// 5 
-math.sqrt(-4); &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; // 2i 
-math.pow([[-1, 2], [3, 1]], 2); &nbsp;// [[7, 0], [0, 7]]</pre> 
-    </div> </li> 
-   <li> 
-    <div align="justify">
-     文字列式を評価する 
-     <pre>
-math.eval('1.2 * (2 +  4.5)'); //7.8
-math.eval('5.08 cm to inch'); //2 inch </pre> 
-    </div> </li> 
-   <li> 
-    <div align="justify">
-     chainingオペレーションを使う
-     <br /> 
-     <pre>
-math.select(3)
-    .add(4)
-    .multiply(2)
-    .done();      //14</pre> 
-    </div> </li> 
-  </ol> 
-  <p align="justify"><a href="http://mathjs.org/">Math.jsのWebサイト</a>や<a href="https://github.com/josdejong/mathjs/tree/master/examples/">そのドキュメント</a>にサンプルが載っている。</p> 
-  <p align="justify">Jos氏はこの2か月以内に、最初の安定バージョンである1.0をリリースするつもりだ。</p> 
-  <blockquote> 
-   <p align="justify">残っているのは、リファレンスドキュメントを書くこと、ユニットテストによるコードカバレッジを100%にすること、あちこちにある荒削りなところを解消することです。</p> 
-  </blockquote> 
-  <p align="justify">1.0ではAPIが安定化され、その後は最適化にフォーカスが移ることになる。Jos氏は性能改善のために、型付き配列、並行処理、asm.jsなどを使う可能性を検討している。</p> 
-  <p align="justify">なぜJos氏は、すでにNumPi/SciPiといったライブラリのあるPythonなどではなく、JavaScriptを選んだのだろうか。</p> 
-  <blockquote> 
-   <p align="justify">ここ最近、私たちはクラウドとWebアプリケーションへ大きく動いているのを目の当たりにしています。私もすっかり夢中になっています。ブラウザとJavaScriptエンジンはどんどん高速になり、この数年で、<a href="http://nodejs.org/">node.js</a>を使ってJavaScriptをサーバサイドで動かせるようになりました。これは多くの新たな可能性を広げ、その結果、JavaScriptエコシステムとその人気は<a href="http://resin.io/happy-18th-birthday-javascript/">爆発的に拡大</a>しました。JavaScriptは<i>これまでで</i>最もユビキタスな言語になっているように見えます。JavaScriptは完璧な言語から程遠いものですが、私はJavaScriptとそのコミュニティが大好きです。</p> 
-  </blockquote> 
-  <p align="justify">すでにmath.jsを使ったエンドユーザのプロジェクトがいくつもある。Jos氏のプロジェクト、<a href="http://mathnotepad.com/">mathnotepad</a>もmath.jsを使っていて、開発の初期段階にある。Math.jsは人気のある計算機プロジェクト、<a href="http://numerics.info/">numerics</a>でも使われている。</p> 
-  <p align="justify">Math.jsを始めるには、まずは<a href="https://github.com/josdejong/mathjs/blob/master/docs/getting_started.md">ドキュメント</a>を読んでみよう。&nbsp;</p> 
+  <p>FlexContainersは<a href="http://en.wikipedia.org/wiki/Chroot">Chroot</a>と<a href="http://en.wikipedia.org/wiki/FreeBSD_Jail">FreeBSD jail</a>をベースとした2タイプが提供される。それぞれサポートするテンプレートオプションや下位機能に違いがある。chroot版はPHPやPython，あるいはPerlといったCGI/FastCGI Webサイトで使用するためのものだ。MySQLデータベースとEメールアカウントには独自のZFSファイルシステムが割り当てられるので，独立したマイグレーションやスケールが可能だ。さらにマルチテナンシがそれぞれのサービス内でネイティブに処理される。Jailコンテナは内部的にはさまざまな形式が可能だ(<a href="http://en.wikipedia.org/wiki/Docker_(software)">Docker</a>コンテナによく似ている)。コンテナはテンプレートから生成することでデプロイを高速化することも，<a href="http://en.wikipedia.org/wiki/Copy_on_write">コピー・オン・ライト</a>技術を使用してストレージスペースを節約することもできる。</p> 
+  <p>同社がターゲットとするのは，従来のWebアプリケーションプラットフォームを，よりスケーラブルで信頼性の高いものにしたいと考えているWebホストプロバイダだ。営利使用での価格は，最小の100FlexContainer構成で1ポンド/月である。無料使用の条件はかなり広く，‘非営利ライセンスは，営利目的を意図しない任意の目的に使用される場合に適用可能です’となっている。ホビーストやその他のオープンプロジェクトにアピールすることが目的と思われる。</p> 
  </div> 
 </div><br><br><br><br><br><br></body></html>
