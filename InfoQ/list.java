@@ -1,11 +1,17 @@
 <html>
  <head></head> 
- <body>
-  <div>
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/20.java">Appurify and Xamarin Launch Continuous Integration for Mobile Apps on Variety of Devices</a>Two recently launched services, Appurify Mobile Platform and Xamarin Test Cloud, promise to help developers and enterprises automate testing and performance optimization of their mobile apps by allowing them to run apps on real iOS and Android devices and supporting automated testing and continuous integration.
-  </div>
-  <div>
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/19.java">Apple Buys TestFlight, Android Support Discontinued</a>Apple confirmed that it acquired Burstly, the owner TestFlight. TestFlight is a beta-testing platform for mobile applications which offers easy-to-use services to help in the process of distributing and testing apps for iOS and Android. Whereas TestFlight will continue to support iOS applications, testing of Android apps will be discontinued by March 21st.
+ <body> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/21.java">CQRS Framework Axon 2.1 with Increased Event Handler Support and Performance Improvements</a>Version 2.1 of CQRS framework Axon supports annotations and ordering of event handlers, a new conflict resolution together with performance improvements. The recently released version also adds compatibility with OSGi. 
+  </div> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/21.java">Cordova 3.4 Embraces Firefox OS</a>Taking a detour from their original pure-HTML5 approach to mobile development, Mozilla has been working on adding support for Firefox OS to Cordova, which has happened with the latest Cordova 3.4.0. 
+  </div> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/20.java">Appurify and Xamarin Launch Continuous Integration for Mobile Apps on Variety of Devices</a>Two recently launched services, Appurify Mobile Platform and Xamarin Test Cloud, promise to help developers and enterprises automate testing and performance optimization of their mobile apps by allowing them to run apps on real iOS and Android devices and supporting automated testing and continuous integration. 
+  </div> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/19.java">Apple Buys TestFlight, Android Support Discontinued</a>Apple confirmed that it acquired Burstly, the owner TestFlight. TestFlight is a beta-testing platform for mobile applications which offers easy-to-use services to help in the process of distributing and testing apps for iOS and Android. Whereas TestFlight will continue to support iOS applications, testing of Android apps will be discontinued by March 21st. 
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/19.java">QCon London in 2 weeks – Seven Key Reasons to Attend</a>Going into its 8th year, QCon London is UK’s premier event designed exclusively for senior enterprise software development professionals: technical team leads, architects, software engineers, and project managers. If you've thought of attending, there is still a chance to go to one of the best conferences for our craft. QCon is now less than 2 weeks away! Why register? Seven Key Reasons to Attend. 
@@ -145,11 +151,5 @@
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/26.java">Balancing Experiments and Deliveries in Product Development</a>Experimentation using for instance lean startup can help you learn about your customers and find out which features and product would be valuable. The value however comes from building products and actually delivering them to customers. You need to find ways to balance between experimentation and delivery. 
   </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/25.java">The Colossal Problem with Bletchley Park and TMNOC</a>Today is the 70th anniversary of Colossus, the first electronic computer ever created. Its purpose was to crack the Lorenz encrypted messages, and started operations on 5th February 1944. However, all is not well at Bletchley Park as the National Museum of Computing is being increasingly marginalised in a bitter dispute. 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/24.java">QCon New York 2014 (Jun 11-13): Track Topics Announced; Featuring OSGi DevCon 2014</a>The 15 track topics have been finalized for the third annual QCon New York (Jun 9-13) including: Creating Culture, Continuous Delivery, Data Science, Architecture Case Studies, JavaScript, Mobile, and more. New this year: OSGi DevCon 2014 will be co-located with QCon New York, taking place at the New York Marriott Brooklyn Bridge. Register before Feb 15th and save $600 for both events. 
-  </div>   
  </body>
 </html>

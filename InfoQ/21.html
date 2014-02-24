@@ -1,20 +1,11 @@
-<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>Facebook 开源移动应用交互设计工具 Origami</h3><p>2013年12月，Facebook 开源了基于 Quartz Composer 的插件<a href="https://github.com/facebook/origami">Origami</a>，设计师可以通过 Origami 能够快速构建移动应用交互原型，随后交付给工程师实现，值得注意的是 Origami 无需编程背景，新发布的 Paper 从项目设计之初所有的原型设计都是采用 Origami 来实现。</p>
-<h2>Origami 背景</h2>
-<p>现在 App 的原型设计越来越复杂，以前使用 Photoshop 制作静态图的方式<a href="https://medium.com/the-year-of-the-looking-glass/f1173d0bd181">不能满足</a>各种交互效果的展示，Paper 的首席设计师 Mike Matas 在加入 Facebook 之初就推荐大家使用 Quartz Composer 来快速构建应用原型，而 Facebook 的设计团队也很快接收并喜欢上了这个工具，在随后的应用，例如<a href="https://medium.com/the-year-of-the-looking-glass/af182add5a2f">Home</a>当中也开始使用 Quartz 构建原型，但是他们随后面临一个问题：</p>
-<blockquote> 
- <p>对于产品设计师来说，Quartz Composer 的学习曲线太高……</p> 
-</blockquote>
-<p>在参与 Paper 项目之后，Facebook 的产品设计师 Brandon Walkin 和 <a href="https://github.com/drewhamlin">Drew Hamlin</a> 主导了 Origami 的开发，随着 Paper 产品的改进，Origami 所包含的功能也不断在扩充。</p>
-<h2>Origami 特性与安装</h2>
-<p>Origami 目前已经包含了诸如 Switch、Scroll、Bouncy Animation、Classic Animation 等大量控件，并扩展了 Quartz Composer 对于视网膜屏支持、修复了些稳定性 bug 等。通过如下步骤安装 Origami：</p>
-<ol> 
- <li><a href="http://developer.apple.com/register/">注册成为苹果开发者</a></li> 
- <li><a href="http://origami.facebook.com/quartzcomposer/">下载Quartz Composer</a></li> 
- <li><a href="http://facebook.github.io/origami/download/">安装Origami</a></li> 
-</ol>
-<h2>Origami对于产品设计流程的影响</h2>
-<p>Drew Hamlin 在一次<a href="http://live.fastcompany.com/Event/Livechat_With_Facebooks_Creators_Of_Origami_A_Free_Tool_To_Mock_UX">采访</a>中对引入 Origami 之后整个设计流程带来的变化时谈到：</p>
-<blockquote> 
- <p>产品设计中最重要的环节是对于想法和细节的把握，之前只能使用白板或手绘想法，现在 Origami 能够帮助快速实现并验证这些想法。当团队感觉良好以后，我们会传播给公司中更多的人，进而改进产品。……在使用 Origami 之前，我们需要做大量的静态图来展示想要实现的效果，现在我们可以拿一个和最终产品一样使用方式的原型来做展示。</p> 
-</blockquote>
-<p>Origami 的开发团队鼓励开发者发挥想象力来创建更多的交互案例，团队也考虑将 Origami 所设计的原型跑在平板或者移动设备上，目前在<a href="https://www.facebook.com/groups/origami.community/">其 Facebook 社区</a>中已经有大量的第三封案例可以提供下载学习，也许 Origami 会带来应用设计的革新，引发“交互设计开源”的潮流，让我们拭目以待。</p><br><br><br><br><br><br></body></html>
+<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>PowerShell团队发布新的预期状态配置资源</h3><p>PowerShell团队<a href="http://blogs.msdn.com/b/powershell/archive/2013/12/26/holiday-gift-desired-state-configuration-dsc-resource-kit-wave-1.aspx">发布了新的预期状态配置(DSC)的资源</a>,，能让对计算机的配置模块化。该资源工具的发布旨在鼓励PowerShell社区编写更多的DSC资源。</p>
+<p><a href="http://gallery.technet.microsoft.com/site/search?f%5B0%5D.Type=Tag&amp;f%5B0%5D.Value=DSC%20Resource%20Kit%20Wave-1&amp;f%5B0%5D.Text=DSC%20Resource%20Kit%20Wave-1">DSC Resource Kit Wave 1</a>,正如其命名，包含了总共八个新的资源，它们打包为五个模块：<a href="http://gallery.technet.microsoft.com/xWebAdministration-Module-3c8bb6be">xWebAdministration</a>; <a href="http://gallery.technet.microsoft.com/xComputerManagement-Module-3ad911cc">xComputerManagement</a>;<a href="http://gallery.technet.microsoft.com/xPSDesiredStateConfiguratio-417dc71d">xPSDesiredStateConfiguration</a>; <a href="http://gallery.technet.microsoft.com/xNetworking-Module-818b3583">xNetworking</a> 和 <a href="http://gallery.technet.microsoft.com/xHyperV-Module-PowerShell-a646ad1a">xHyperV</a>。当这些资源和<a href="http://technet.microsoft.com/en-us/library/dn249921.aspx">内置的</a>一起整合后，就能可以使用DSC从头开始配置一个web服务器。</p>
+<p>xWebAdministration模块包含xWebsite资源，它允许对网站进行设置。xComputerManagement模块通过xComputer资源，提供对计算机名称重命名和更改其工作组或域的功能。包含在xPSDesiredStateConfiguration模块中的xDscWebService，能设置一个<a href="http://www.infoq.com/news/2013/12/powershell-dsc-push-and-pull">DSC服务，也被称为拉服务器</a>。xNetworking模块提供两种资源，分别是xIPAddress和xDnsServerAddress。它们允许对某个IP地址、DNS服务器或计算机进行配置。最后，xHyperV模块提供配置虚拟机、<a href="http://msdn.microsoft.com/en-us/library/windows/desktop/dd323654(v=vs.85).aspx">虚拟硬盘文件（VHD）</a>，和在<a href="http://technet.microsoft.com/library/cc816638(WS.10).aspx">Hyper-V</a>上的<a href="http://technet.microsoft.com/en-us/library/hh831823.aspx">虚拟转换</a>、Windows的虚拟化服务器计算环境的功能。通过xVMHyperV，xVhd和xVMSwitch资源，这些功能各自通过xVMHyperV、xVhd 和 xVMSwitch 资源进行配置。</p>
+<p>DSC资源工具包以独立服务的形式发布，不能从微软获得任何的技术支持或服务。为了强调这个情况，所有的模块和资源都冠以“x”开头，以代表是试验性质。团队表明将接受意见反馈并可能根据“急需优先修复”的原则去修复这些bug，这意味着DSR资源工具包可能发布包含某些修复的版本。</p>
+<p>所有在DSC资源工具包中的资源都可以复制和修改，但可能只能在Windows平台上使用。当修改某个资源的时候，建议是资源、模块和其他相关的构件都应该重新命名。</p>
+<p>&quot;MSFT&quot;应该用你所在的机构的名字命名并且移除“x”。比如，MSFT_xWebsite应该命名为Contoso_Website。</p>
+<p>DSC资源工具包只在Windows Server 2012上通过认证，但能运行在任何能安装PowerShell 4.0的操作系统上。</p>
+<p><strong>查看英文原文：</strong><a href="http://www.infoq.com/news/2014/01/powershell-dsc-resources-toolkit">PowerShell Team Publishes New Set of Desired State Configuration Resources</a></p>
+<hr />
+<p>感谢<a href="http://www.infoq.com/cn/author/邵思华">邵思华</a>对本文的审校。</p>
+<p>给InfoQ中文站投稿或者参与内容翻译工作，请邮件至<a href="mailto:editors@cn.infoq.com">editors@cn.infoq.com</a>。也欢迎大家通过新浪微博（<a href="http://www.weibo.com/infoqchina">@InfoQ</a>）或者腾讯微博（<a href="http://t.qq.com/infoqchina">@InfoQ</a>）关注我们，并与我们的编辑和其他读者朋友交流。</p><br><br><br><br><br><br></body></html>

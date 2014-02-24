@@ -2,6 +2,9 @@
  <head></head> 
  <body> 
   <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/25.javab">Embedded Analytics and Statistics for Big Data</a> This article provides an overview of tools and libraries available for embedded data analytics and statistics, both stand-alone software packages and programming languages with statistical capabilities. The authors also discuss how to combine and integrate these embedded analytics technologies to handle big data. 
+  </div> 
+  <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/24.javab">From Imperative Programming to Fork/Join to Parallel Streams in Java 8</a> The authors compare different methods to compute the variance of a large data set using an imperative style, The fork/join framework and the new Streams API in Java 8 
   </div> 
   <div> 
@@ -147,9 +150,6 @@
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/27.javab">Cassandra CLI Internals Using JArchitect</a> In this article, author explores Cassandra CLI architecture model using JArchitect tool and CQLinq language to analyze its code base. 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/26.javab">Don’t jump the SQL ship just yet</a> Some users are interacting with databases through complex SQL queries, both in terms of performance as well as expressivity. If SQL and JPA are diverging, where will our data interaction patterns go? 
   </div> 
  </body>
 </html>

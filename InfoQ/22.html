@@ -1,22 +1,30 @@
-<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>云托管应用软件的设计模式</h3><p>微软的<a href="http://pnp.azurewebsites.net/en-us/">模式与实施方案团队</a>最近发布了一个<a href="http://msdn.microsoft.com/en-us/library/dn568099.aspx">指南</a>，为云托管应用软件开发提供推荐的解决方案和模式。该指南讨论了每种模式适用于解决哪些问题、它的优点和可能导致的负面影响。尽管其例子主要面向<a href="http://www.windowsazure.com/">Windows Azure</a>，但该团队希望指南能够不限定于某种云平台，而是适用于各种分布式系统。 </p>
-<p>该团队通过搜集和分析开发者社区的反馈，将云应用软件开发过程中最常见的问题分为8大类： </p>
-<ul> 
- <li><a href="http://msdn.microsoft.com/en-us/library/dn600219.aspx">可用性</a> </li>
- <li><a href="http://msdn.microsoft.com/en-us/library/dn600216.aspx">数据管理</a> </li>
- <li><a href="http://msdn.microsoft.com/en-us/library/dn600217.aspx">设计与实现</a> </li>
- <li><a href="http://msdn.microsoft.com/en-us/library/dn600220.aspx">消息</a> </li>
- <li><a href="http://msdn.microsoft.com/en-us/library/dn600218.aspx">管理与监控</a> </li>
- <li><a href="http://msdn.microsoft.com/en-us/library/dn600224.aspx">性能与可扩展性</a> </li>
- <li><a href="http://msdn.microsoft.com/en-us/library/dn600215.aspx">快速恢复能力</a> </li>
- <li><a href="http://msdn.microsoft.com/en-us/library/dn600221.aspx">安全</a></li>
-</ul>
-<p>该团队对每一类问题都提供了指导并说明了常见的模式，以帮助开发人员解决那些经常遇到的问题。 </p>
-<p>该指南包括十个基础性指导专题，提供相关的基础知识和良好的实战技术。每个专题都涉及应用开发的某一个方面，并针对某一类问题。专题涉及异步消息、缓存和数据一致性等等。 </p>
-<p>指南中还包含了24种对于云托管应用软件非常有用的设计模式，每种模式都针对前面提到的一类或者几类问题。这些设计模式包括补偿事务（Compensating Transaction）、命令查询职责分离（CQRS）、管道过滤器（Pipes and Filters）等模式。所有模式都采用统一的格式进行描述，包括该模式适用的上下文环境和针对的问题、解决方案以及采用该模式需要注意的事项和可能导致的问题。每种模式都提供了一个基于Azure的例子。 </p>
-<p>为了演示这些设计模式的使用方法，该团队还创建了十个示例应用，所有源代码可在这里<a href="http://www.microsoft.com/en-us/download/details.aspx?id=41673">下载</a>。其中一个示例应用演示了有竞争关系的消费者如何从服务总线读取消息，另一个应用则演示使用过滤器来模拟管道。 </p>
-<p>该团队强调这些例子都非常简单，并不是为生产用途设计的。 </p>
-<p>Windows Azure是微软公司的云平台。 </p>
-<p><strong>原文英文链接：</strong><a href="http://www.infoq.com/news/2014/02/cloud-design-patterns">Design Patterns for Cloud-Hosted Applications</a></p>
+<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>Coverity 7.0:支持C#、Java、C、C++ 算法、SonarQube、Eclipse、VS和Clang编译器</h3><p><a href="http://www.coverity.com/why-coverity/#Developers">Coverity</a>已经发行了开发测试平台7.0，它带有21个新增或增强的C#分析算法，这些算法除了可以修复资源泄露、并发问题和null引用之外，还可以提高C#代码库中的缺陷检测的准确性。</p>
+<p>这个最新的发行版本新涵盖了<a href="https://www.owasp.org/index.php/Main_Page">开放性Web应用安全项目</a>（OWASP），并增强了Java应用中的安全漏洞跟踪功能，这些增强的功能中包含有17个用于Java和C++代码库的分析算法，你可以凭借它们来找出与崩溃、计算不准确或无法预料的行为相关联的问题。</p>
+<p>Coverity 7可以和<a href="http://www.sonarqube.org/">SonarQube</a>集成，这样开发者就能在除了连接和策略管理器中的新安全性审计和兼容性视图之外的单个工作流中查看和管理Java应用中的广泛的缺陷。</p>
+<p>最新的发行版本除了支持对运行于Android和WindRiver平台的设备上的进行单元测试分析，还可以与<a href="http://www.eclipse.org/">Eclipse</a>和Visual Studio集成。而且，它也支持Clang编译器，该编译器广泛用于<a href="http://en.wikipedia.org/wiki/Objective-C">Objective-C</a>和C/C++应用的开发工作中。</p>
+<p>InfoQ和Coverity的产品营销高级总监Kristin Brennan进行了一次对话，从而更多地了解了该最新发行版本的情况。</p>
+<p><b>InfoQ</b><b>：</b><b>Coverity</b><b>是怎样区别于</b><b>Visual Studio 2013</b><b>所提供的测试工具的？</b><b></b></p>
+<blockquote> 
+ <p>因为二者专注于不同的事物，所以Coverity平台是对Visual Studio 2013所提供的测试工具（以前称为<a href="http://msdn.microsoft.com/en-us/library/bb429476(v=vs.80).aspx">FxCop</a>）的补充。回到.Net框架的早期阶段，一系列编写好的指南帮助开发者在某个特定库的所有提供物范围中获得一致的、标准化的格式，比如，怎样命名一个特定类的所有成员；怎样命名命名空间；不同的类之间的关系应该看起来是怎样的。Visual Studio工具找出违反了这些规则的地方并提交给你，请你关注。随着Visual Studio工具的演进，它也开始通过分析字节码来寻找代码中所存在的其它问题。然而，通过字节码分析所发现的问题往往只是可能存在的缺陷冰山的露出水面的一角。</p> 
+ <p>相较而言，Coverity平台对一部分较小的特性集做了更进一步的分析。Visual Studio工具对字节码进行分析，它的设计目的是保证代码一致性，而Coverity的解决方案则对源码进行分析，它是设计是用于查找严重的、高危害性的bugs——比如null引用、资源泄露和线程问题。</p> 
+</blockquote>
+<p><b>InfoQ</b><b>：你能否和我们一起分享一下Coverity</b><b>的宗旨？</b></p>
+<blockquote> 
+ <p>Coverity的使命就是帮助创建软件开发组织更好更快地创建和交付软件。Coverity开发和测试平台提供了静态分析解决方案，开发者借助它可以快速而高效地测试自己的代码，并在编写代码的同时就解决严重的质量和安全性问题。开发组织能向顾客更快地交付高质量的、安全的软件产品，而这又反过来使得其软件开发更具有竞争优势。</p> 
+</blockquote>
+<p><b>InfoQ</b><b>： Coverity</b><b>为开发者带来了哪些好处？</b></p>
+<blockquote> 
+ <p>开发者能使用Coverity平台测试自己的代码，并在编码的过程中就解决高危害性的质量和安全问题，从而能更快地创建更好的软件产品。</p> 
+</blockquote>
+<p><b>InfoQ</b><b>：Coverity</b><b>可以测试哪些种类的apps</b><b>？</b></p>
+<blockquote> 
+ <p>使用Coverity平台可以测试基于C/C++、Java、C#的任何类型的应用。</p> 
+</blockquote>
+<p><b>InfoQ</b><b>：Coverity</b><b>是否支持iOS</b><b>、Android</b><b>和Windows Phone 8</b><b>？</b></p>
+<blockquote> 
+ <p>Coverity平台支持iOS的C/C++代码，同时也支持Android和Windows移动设备。</p> 
+</blockquote>
+<p><strong>查看英文原文：</strong><a href="http://www.infoq.com/news/2014/01/coverity-7">Coverity 7.0 with C#, Java, C, C++ Algorithms, SonarQube, Eclipse, VS and Clang Compiler Support</a></p>
 <hr />
-<p>感谢<a href="http://www.infoq.com/cn/author/梅雪松">梅雪松</a>对本文的审校。</p>
+<p>感谢<a href="http://www.infoq.com/cn/author/邵思华">邵思华</a>对本文的审校。</p>
 <p>给InfoQ中文站投稿或者参与内容翻译工作，请邮件至<a href="mailto:editors@cn.infoq.com">editors@cn.infoq.com</a>。也欢迎大家通过新浪微博（<a href="http://www.weibo.com/infoqchina">@InfoQ</a>）或者腾讯微博（<a href="http://t.qq.com/infoqchina">@InfoQ</a>）关注我们，并与我们的编辑和其他读者朋友交流。</p><br><br><br><br><br><br></body></html>

@@ -1,1 +1,1 @@
-Appurify and Xamarin Launch Continuous Integration for Mobile Apps on Variety of Devices
+CQRS Framework Axon 2.1 with Increased Event Handler Support and Performance Improvements
