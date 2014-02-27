@@ -1,6 +1,15 @@
 <html>
  <head></head> 
- <body> 
+ <body>
+  <div>
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/28.javab">Custom Assertions in Java Tests</a> Using so-called &quot;matcher libraries&quot; to implement custom assertions to make tests more readable and maintainable. 
+  </div>
+  <div>
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/27.javab">Interview and Book Review of The Technical and Social History of Software Engineering</a> Capers Jones wrote the book The Technical and Social History of Software Engineering in which he provides an overview of the evolution of information technology and software development. InfoQ interviewed Capers about advancements and events in software engineering and the effects that they have had on our society. 
+  </div>
+  <div>
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/26.javab">Quality Code - Book Review and Interview</a> Quality Code book, authored by Stephen Vance, covers the different aspects of software development lifecycle with focus on delivering quality product. In the book, Stephen discusses the practices for supporting software craftsmanship testing. InfoQ spoke with the author about the book and the best practices for testing application code. 
+  </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/25.javab">Embedded Analytics and Statistics for Big Data</a> This article provides an overview of tools and libraries available for embedded data analytics and statistics, both stand-alone software packages and programming languages with statistical capabilities. The authors also discuss how to combine and integrate these embedded analytics technologies to handle big data. 
   </div> 
@@ -141,15 +150,6 @@
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/30.javab">PyParallel: A Fast Parallel Version of Python</a> By combining asynchronous I/O with a shared-nothing architecture, PyParallel research project is able to execute code in a parallel context faster than it can using CPython’s normal interpreter. 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/29.javab">Architecture and Agility: Married, Divorced, or Just Good Friends?</a> This article describes the relationship between architecture and process of software development and how architecture can respond to functional requirements and developer habitability. 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/28.javab">The Gentle Art of Running a Lean Startup</a> Yiannis relates the practices and approach of running a Lean Startup organisation with the skills and disciplines needed in the martial arts through his practice of Brazilian Jiu-Jitsu 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/27.javab">Cassandra CLI Internals Using JArchitect</a> In this article, author explores Cassandra CLI architecture model using JArchitect tool and CQLinq language to analyze its code base. 
-  </div> 
+  </div>    
  </body>
 </html>

@@ -1,26 +1,9 @@
-<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>Yelp开发团队发布内部网站设计指南</h3><p>近日，Yelp开发团队<a href="http://engineeringblog.yelp.com/2014/02/yelps-got-style-and-the-guide-to-back-it-up.html">在博客发布消息</a>：Yelp公开了<a href="http://www.yelp.com/styleguide">内部网站设计指南</a>。这份文档此前是Yelp内部使用文档，为设计师、产品经理、工程师提供了Yelp UI模式的通用信息，目的是保证Yelp网站的视觉设计一致性、降低技术模块化难度、可复用标记和样式文件。</p>
-<p>Yelp开发团队表示，开发一个新功能时有三条原则：</p>
-<ol> 
- <li>采用预发布模式；</li> 
- <li>真的采用预发布模式；</li> 
- <li>如果预发布模式不能解决设计问题，有两个选择： 
-  <ul> 
-   <li>修改已有模式来解决问题，并修改设计指南，让Yelp所有设计都改变；</li> 
-   <li>建立一个新模式，并融入Yelp的UI设计中，以备将来使用；</li> 
-  </ul> </li> 
-</ol>
-<p>接着文中解释为什么要这么做以及他们怎么做。关于为什么：Yelp发展近10年，前端代码已经超出控制，分散且没有缺乏更高效率。Yelp开发团队的做法是：从Photoshop实体模型来编码，从设计和构建中剥离出组件。用Sass混入，Yelp团队通过网格系统重构了已有布局。</p>
-<p>Yelp团队建议不要重复造轮子，对于设计师来说，不用去想如何呼出一个信息页面：<a href="http://www.yelp.com/styleguide#containers">“island”模式</a>可以解决，对于同一功能，前端工程师也不用去想如何从头构建，只需简单使用文档标识。</p>
-<p>文章最后提供了一些设计参考资料：</p>
-<ul> 
- <li><a href="http://www.stubbornella.org/content/2013/06/05/creating-living-style-guides-to-improve-performance/">创建动态设计指南以提升性能</a> (Nicole Sullivan)</li> 
- <li><a href="https://speakerdeck.com/thoughtmerchant/unifying-agile-and-ux-with-live-style-guides">用动态设计指南统一敏捷和UX</a> (Grant Hutchins, Andrew Cramer, Steve Berry)</li> 
- <li><a href="http://24ways.org/2006/compose-to-a-vertical-rhythm/">构建垂直的韵律</a> (Richard Rutter)</li> 
- <li><a href="http://24ways.org/2011/front-end-style-guides/">前端设计指南</a> (Anna Debenham)</li> 
- <li><a href="http://bradfrostweb.com/blog/post/atomic-web-design/">原子设计</a> (Brad Frost)</li> 
- <li><a href="https://github.com/styleguide/css">Github设计指南</a></li> 
- <li><a href="http://ux.mailchimp.com/patterns">Mailchimp的模式库</a></li> 
- <li><a href="http://sfdc-styleguide.herokuapp.com/">Salesforce1设计指南</a></li> 
- <li><a href="http://www.starbucks.com/static/reference/styleguide/">Starbucks设计指南</a></li> 
-</ul>
-<p><strong>原文英文链接：</strong><a href="http://engineeringblog.yelp.com/2014/02/yelps-got-style-and-the-guide-to-back-it-up.html">Yelp’s got style (and the guide to back it up)</a></p><br><br><br><br><br><br></body></html>
+<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>Xamarin支持处理SAP企业级数据</h3><p><a href="http://xamarin.com/">Xamarin</a>和<a href="http://www.sap.com/index.html">SAP Americas</a>在2月24日的<a href="http://www.mobileworldcongress.com/">MWC 2014</a>上宣布开展合作，致力于为.NET移动开发者提供必要的工具，使他们能够访问企业级SAP数据，以及将这些数据集成到他们的应用中。</p>
+<p>据Xamarin的联合创始人和CEO Nat Friedman介绍，两家公司合作的主要产品是<a href="https://components.xamarin.com/view/sap-mobile-platform">Xamarin + SAP Mobile Platform SDK</a>，其中包含“一个库，用C#编写的示例iOS和Android原生应用，以及上手文档”。在InfoQ的采访中，Friedman谈到，该SDK并不支持访问SAP的任何<a href="http://dcx.sybase.com/index.html#smpsdk0300/en/com.sybase.infocenter.dc01993.0300/doc/html/vhu1361213927050.html">移动平台服务</a>，但是支持通过HTTP(S)上的OData访问SAP数据，填充包含在原生移动应用中的C#对象。</p>
+<p>当被问及他们的解决方案相对于SAP的Cordova/PhoneGap插件有何不同，或有何优点时，Friedman说到：</p>
+<blockquote> 
+ <p>不同于Cordova/PhoneGap，我们为开发者提供了高生产率的环境，支持通过Xamarin Studio和我们的Visual Studio集成来设计、构建、调试以及部署原生移动应用。通过提高向应用中添加企业级组件的方便性，比如用几行代码加入AES加密和认证，Xamarin组件商店进一步提高了生产率。新的SDK向重要的C#特性——如强类型领域模型类，以及通过async/await实现的响应性更好的应用等——添加了无缝连接SAP的能力。种种功能组合在一起，带来了很高的开发者生产率，最终会带来更好的应用。</p> 
+</blockquote>
+<p>作为协议的一部分，Xamarin扩展了其<a href="http://xamarin.com/test-cloud">Test Cloud</a>，将独特的内置SAP移动平台数据验证能力包含了进来，以确保移动应用可以正确地捕获SAP系统，并与其同步数据。他们也将Xamarin + SAP认证咨询程序开放给了“Xamarin的150家全球咨询伙伴以及SAP的成千上万家全球咨询伙伴”，以便为咨询公司提供必要的资源。</p>
+<p>Xamarin还将在<a href="http://www.infoq.com/news/2013/11/visual-studio-ios-android">Xamarin大学</a>提供一门课程，用于培训开发者处理SAP企业级数据。</p>
+<p><strong>查看英文原文：</strong><a href="http://www.infoq.com/news/2014/02/xamarin-sap">Xamarin Sifts through Enterprise SAP Data</a></p><br><br><br><br><br><br></body></html>

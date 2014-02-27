@@ -1,98 +1,94 @@
-<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>JavaOne 2013综述：Java 8是革命性的，Java回来了</h3><p>JavaOne 2013已于近日在旧金山举行。9月22日，来自Oracle员工<a href="http://www.linkedin.com/pub/peter-utzschneider/11/983/276">Peter Utzschneider</a>、<a href="http://www.linkedin.com/in/nandiniramani">Nandini Ramani</a>和<a href="http://www.linkedin.com/pub/cameron-purdy/0/10/23a">Cameron Purdy</a>的<a href="http://medianetwork.oracle.com/video/player/2685497644001">战略主题演讲</a>拉开了此次庆典的序幕，活动持续到9月26日。</p>
-<p>这是第十八次JavaOne大会，Java社区并没有显出放缓的迹象。Utzschneider告诉观众，Java仍然是世界第一的开发平台，并且Java用户组的数量以每年10%的速度增长。</p>
-<h2><b>Java</b><b>的未来</b></h2>
-<p>Ramani探讨了Java的现状以及Java如何有若干不同的SDK，这里仅举几例，如Java SE 7、CDC 1.1（基于SE 1.4.2）、CLDC（基于SE 1.3）和Java ME。过去，这些实现能很好地服务于特定的垂直市场，但多年来，每种实现都各自演变而变得越来越孤立。在Java 8中，Compact Profile将取代CDC。</p>
-<p>Java ME和Java SE之间的API会很类似，Java语言会支持两者的所有特性。Java 8会带来统一的平台：代码可移植、通用的API和工具——从SE嵌入式开发到服务器端Java EE开发。Java开发人员的类型将来会只有一种。</p>
-<p><img width="600" alt="" src="http://infoqstatic.com/resource/articles/javaone2013-roundup/zh/resources/1112048.jpg" _href="img://null" _p="true" /></p>
-<p>Java平台战略的其它要素还包括：同步发布（Java 8预览版现在已经可以下载）以及与合作伙伴（ARM、Freescale和Qualcomm）一起使Java成为芯片上的一等公民。为了能够简单地移植和扩展Java Embedded，Oracle在8月份启动了Java平台集成器项目。</p>
-<div id="lowerFullwidthVCR"></div>
-<p>Java EE 7在刚刚过去的夏天发布，上两届JavaOne大会都针对它进行了讨论，可见这是一个重要的里程碑。Purdy提到，Java EE 7重点关注三个方面：开发人员的生产力、满足企业需求和HTML5。</p>
-<p><img width="600" alt="" src="http://infoqstatic.com/resource/articles/javaone2013-roundup/zh/resources/1112049.jpg" _href="img://null" _p="true" /></p>
-<p>两年前，在Java EE 7宣布的时候，主题是云。现在，Java EE 7有许多用于云部署的简单易用的特性，包括安全增强、默认资源、数据库结构生成、RESTful服务客户端API以及用于多租户应用程序的JSF皮肤。最后，Cameron宣布<a href="http://avatar.java.net/">Avatar项目</a>从现在起开源。Avatar跟Node.js类似，但运行在JVM上。</p>
-<h2><b>Java 8</b><b>是革命性的，Java回来了</b></h2>
-<p>Java 8是此次大会一个很重要的演讲主题，这点从<a href="http://www.linkedin.com/in/markreinhold">Mark Reinhold</a>的<a href="http://medianetwork.oracle.com/video/player/2685720528001">技术主题演讲</a>中可见一斑。Java 8包含了许多新特性，包括新的Date和Time API（<a href="http://jcp.org/en/jsr/detail?id=310">JSR 310</a>）、Nashorn JavaScript引擎、类型注解（<a href="http://jcp.org/en/jsr/detail?id=308">JSR 308</a>）、Compact Profile和Lambda项目（<a href="http://jcp.org/en/jsr/detail?id=335">JSR 335</a>）。</p>
+<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>在实践中实施看板</h3><p>在芝加哥精益看板大会上与看板先驱David J.Anderson交谈的过程中，我们问他，是否有任何可以深入浅出地描绘看板的快速入门指南。David建议我们与来自IT-Agile的Arne Roock博士进行交流。在本次会议上，他是“扩展看板（Scaling Kanban）”议题的演讲者和主持人。他在德国从事敏捷顾问和培训师的工作，著有30页的看板手册“停止启动，开始整理（Stop Starting，Start Finishing）”。</p>
+<p><b>InfoQ</b><b>：根据目前的著作，看板似乎有一些哲学意味。团队如何开始评估它是否是正确的工具，以及需要具备什么条件才能开始实施？</b></p>
 <blockquote> 
- <p>Lambda是编程模型最大的单一升级，比以往任何升级都要大，甚至比泛型还大。我们精心协调，同时对虚拟机、语言和库进行了改良，自从有Java以来，这是第一次。但结果感觉仍然像Java。——Mark Reinhold</p> 
+ <p><strong>Dr.Roock：</strong>最重要的是，要在究竟是否想要改革的问题上达成一致。如果不想改革，那么看板就不适用，因为看板首先是一种改革方法。人们经常把它与项目管理方法或者开发方法混为一谈，但它不是；它是一种改革方法。改革的先决条件只有一个，那就是要有领导力权威John Kotter在他的同名著作中所描述的“紧迫感”。</p> 
+ <p>第二件事是，如果大家一致认为要改革，主要有两种策略。第一个是进行革命性改革。那意味着对组织进行颠覆性的巨大改革，这会导致很大的痛苦，但我们希望在改革之后比之前好得多。那不是看板的做法。看板是一种渐进式改革方法。</p> 
 </blockquote>
-<p>Oracle Java语言架构师<a href="http://www.linkedin.com/in/briangoetz">Brian Goetz</a>继续展示Lambda表达式如何去掉大量只用于表达简单思想的样板文件。在Lambda表达式出现之前，开发人员经常使用蹩脚的“牛肉面包比（beef to bun ratio）”来表达思想，通常是用内部类。Goetz展示了下面的例子：</p>
-<pre>
-Collection&lt;Person&gt; people = …;
-
-    Iterator&lt;Person&gt; ip = people.iterator();
-    while (ip.hasNext()) {
-        Person p = ip.next();
-        if (p.getAge() &gt; 18) {
-            ip.remove();
-        }
-    }</pre>
-<p>为了抽象上述思想，开发人员可以用Predicate重写上述测试代码，写法如下：</p>
-<pre>
-Collections.removeAll(people,
-                          new Predicate&lt;Person&gt;() {
-                              public boolean test(Person p) {
-                                  return p.getAge() &gt; 18;
-                              }
-                          });
-</pre>
-<p>使用Lambda表达式，写法要简单许多：</p>
-<pre>
-Collections.removeAll(people, p -&gt; p.getAge() &gt; 18);</pre>
-<p>Lambda表达式不仅仅是一种更好的语法，它还使用invokedynamic生成一种更简洁高效的字节码。作为Java语言及其API已经变得更好的证明，Goetz谈论了新的流API以及如何用它在集合上进行批量操作。例如：</p>
-<pre>
-int highestWeight = people.stream()
-    	                      .filter(p -&gt; p.getGender() == MALE)
-    	                      .mapToInt(p -&gt; p.getWeight())
-    	                      .max();
-</pre>
-<p>这提供了语法、性能和抽象，而开发人员还获得了并行。Java 7新增了用于任务分解的Fork/Join框架，但其API使它很难使用。在Java 8中，开发人员只需修改一行代码，将stream（）改成parallelStream（）即可：</p>
-<pre>
-int highestWeight = people.parallelStream()
-    	                      .filter(p -&gt; p.getGender() == MALE)
-    	                      .mapToInt(p -&gt; p.getWeight())
-    	                      .max();
-</pre>
-<p>要了解更多关于Lambda项目的信息，查看<a href="http://openjdk.java.net/projects/lambda/">这里</a>或者<a href="https://jdk8.java.net/">下载Java 8</a>。</p>
-<h2><b>NetBeans 7.4</b></h2>
-<p>NetBeans工程总监<a href="http://www.linkedin.com/pub/john-ceccarelli/1/704/95b">John Ceccarelli</a>用象棋游戏演示了HTML5应用程序（用Knockout.js编写）的编辑。他示范了如何在NetBeans中调整属性（与在Firebug或者Chrome开发人员工具中的操作类似）并使调整结果即时反映在浏览器中，而且无需重新加载。这看起来非常像IntelliJ IDEA的LiveEdit插件。</p>
-<p>去年，NetBeans引入了Easel项目，其目的是在NetBeans中增加高级HTML5支持。Ceccarelli提到，社区对此的反应是“嘿，那太棒了，不过我们希望在EE项目里完成这一工作。”好消息是，就在JavaOne大会前夕，NetBeans 7.4 RC1发布了，支持HTML5、Java EE、Java Web和Maven Web项目。</p>
-<p>除了HTML和CSS的实时编辑功能外，NetBeans 7.4还支持Angular、jQuery和Knockout.js等JavaScript框架。这意味着代码编辑器可以识别JavaScript中所有的DOM id以及Model名称。NetBeans 7.4全是关于移动Web应用程序和移动混合应用程序的开发（通过支持Cordova 3.0）。有趣的是，如何在桌面浏览器之外的移动设备上使用实时编辑功能。最新的候选版本可以从<a href="https://netbeans.org/">netbeans.org</a>上下载。</p>
-<p>上文提到的演示程序，其象棋服务器用Java EE 7编写，并部署在GlassFish 4服务器上。该应用程序有五个不同的模块：象棋端点、玩家注册、象棋引擎、象棋游戏管理器和持久性管理器。</p>
-<p><img width="600" alt="" src="http://infoqstatic.com/resource/articles/javaone2013-roundup/zh/resources/1112050.jpg" _href="img://null" _p="true" /></p>
-<p>象棋服务器使用了许多Java EE新技术，包括：WebSockets、Batch、EJB、JPA和JAX-RS 2.0。客户端与服务器的所有通信都是通过JSON完成。GlassFish团队的一名成员<a href="http://www.linkedin.com/pub/santiago-pericas-geertsen/0/685/905">Santiago Pericas-Geertsen</a>展示了一些代码，用于说明在Java EE 7中建立WebSocket端点非常容易：</p>
-<pre>
-@ServerEndpoint(value = &quot;/chessserver&quot;,
-                    encoders = MessageEncoder.class,
-                    decoders = MessageDecoder.class);
-    public class ChessServerEndpoint {
-
-        @Inject private GameCatalog catalog;
-
-        @OnMessage
-        public Message onMessage(String message, Session session) {
-            return message.processMe(this);
-        }
-        ...
-    }
-</pre>
-<p>跟该端点交互的客户端API与此非常类似，而且看上去很容易实现。</p>
-<p>Oracle技术主题演讲中展示的最后一项技术创新是<a href="https://wiki.openjdk.java.net/display/OpenJFX/DukePad">DukePad</a>。这是一款可以在家DIY的平板电脑，基于Raspberry Pi和JavaSE 8 Embedded。他们发现CPU性能欠佳：Raspberry Pi CPU的速度几乎和Pentium Ⅱ一样，比Samsung Galaxy S4慢14倍，比Intel Core i7处理器慢94到100倍。不过，它的GPU非常好，比Pentium Ⅱ在1996年的速度快400倍。</p>
-<p><a href="http://openjdk.java.net/projects/openjfx/">OpenJFX</a>开源了大部分组件，包括iOS和Android原型。演讲者提到，OpenJFX论坛很健康，他们已经从用户那里收到了大量的Bug报告。他们也收到了相当数量的社区贡献。JavaFX包含在JavaSE 8中。</p>
-<p>对于Java 9及其未来，Oracle有若干方案，主要包括Java On GPUs、Reification（处理泛型的类型擦除问题）、JNI 2.0、Memory-Efficient数据结构以及用Jigsaw构建模块化平台。</p>
-<h2><b>Java</b><b>社区</b></h2>
-<p>Oracle产品管理高级主管<a href="http://ca.linkedin.com/pub/donald-smith/6/945/6a0">Donald Smith</a>拉开了<a href="http://medianetwork.oracle.com/video/player/2698223954001">Java社区主题演讲</a>的序幕。他带来了许多不同的人，在台上谈论Java技术令终端用户欢欣鼓舞的案例。</p>
-<p><a href="http://www.linkedin.com/in/toriwieldt">Tori Wieldt</a>谈了“<a href="https://www.java.net/challenge">Raspberry Pi</a>挑战”活动，25名开发人员参与其中，完成了六个项目。“心脏眼镜（Heart of Glass）”（用谷歌眼镜实时监控心率）和MTAAS（怪兽卡车服务）是此次活动中出现的两个成功的项目。Donald Smith还宣布，Oracle已经与Raspberry Pi基金会签订了一项OEM协议。后者将开始在他们的一部分镜像中包含Java SE，因此Java会以开箱即用的方式包含其中。</p>
-<p>在社区主题演讲中，还有其它值得注意的公告，包括<a href="https://squareup.com/">Square</a>成为OpenJDK的一员以及<a href="http://www.devoxx.com/display/4KIDS/Home">Devoxx4Kids</a>正在寻找JUG负责人和家长，以便在他们所在的城市主办讲习班。当然，Aditya Gupta如何成为Minecraft编程高手的演示，也是亮点之一。同时，这也是主题演讲中的第一个Eclipse演示程序。他让猪飞起来，并使爆炸创造更多的爆炸。他是从他的爸爸<a href="http://www.linkedin.com/in/arunpgupta">Arun Gupta</a>那里和<a href="http://www.minecraftforge.net/">Minecraft Forge</a>上学到了其中大部分知识。</p>
-<p>Alison Derbenwick Miller提到了<a href="https://academy.oracle.com/">Oracle学院</a>。后者为从幼儿园到12年级的学生以及大学生提供课程。该学院去年培训了250万名学生，并提供了学生讲习班、教师发展和认证折扣。</p>
-<p>在社区主题演讲的教育部分之后，进行了许多机器人演示。James Gosling甚至还作为嘉宾谈了他目前的工作。</p>
-<h2><b>Java</b><b>回来了的证据</b></h2>
-<p>为什么说Java回来了？战略和技术主题演讲都帮助解释了这个问题。Java 8希望再次使Java编程变得有趣（通过减少样板代码），而Java EE 7中大量的API将会使构建现代应用程序变得简单。在最近的一些文章中，还有进一步的证据：</p>
-<ul> 
- <li>Wired的“<a href="http://www.wired.com/wiredenterprise/2013/09/the-second-coming-of-java/">Java迎来第二个春天：遗物归来，统治Web</a>”</li> 
- <li>Dr. Dobb的“<a href="http://www.drdobbs.com/jvm/if-java-is-dying-it-sure-looks-awfully-h/240162390">Java频临死亡？它看起来确实非常健康</a>”</li> 
-</ul>
-<p>如果读者没有机会参加今年的JavaOne大会，可以在日历上记下明年的会议日期。如果不是为了技术内容，那么可以来参与交流。Oracle答谢晚会上有免费的食物、啤酒以及Mroon 5和Black Keys的音乐表演。之后还有派对，展厅里到处都是人。</p>
-<p>最重要的是，开发人员社区的热情似乎一如既往的强烈。</p>
-<h2><b>关于作者</b></h2>
-<p><img alt="" style="float: left; margin-right: 10px" src="http://infoqstatic.com/resource/articles/javaone2013-roundup/zh/resources/1112051.jpg" _href="img://null" _p="true" /><b>Matt Raible</b>成年以后大部分时间都在构<a name="_GoBack"></a>建Web应用程序。他甚至在Netscape 1.0发布之前就开始摆弄Web。在超过15年的时间里，Matt帮助企业采用开源技术（Spring、Hiberate、Apache、Struts、Grails、Bootstrap和jQuery），并有效地使用这些技术。Matt著有<i>Spring Live</i>和<i>Pro JSP</i>。他还是AppFuse的创建者，这是一个可以使开发人员快速上手Java框架的项目。同时，他还是Apache Roller和Apache Struts项目的提交者。他了解并喜爱：HTML5、CSS、JavaScript、CoffeeScript、jQuery、AngularJS、Java、Spring、Scala、Play!Framework、Groovy、Grails、Tomcat、Jetty以及PhoneGap。</p>
-<div style="clear: both"></div>
-<p><strong>查看英文原文：</strong><a href="http://www.infoq.com/articles/javaone2013-roundup#theCommentsSection">JavaOne 2013 Roundup: Java 8 is Revolutionary, Java is back</a></p><br><br><br><br><br><br></body></html>
+<p><b>InfoQ</b><b>：假设我们一致认为已经做好了改革的准备。我们想做正确的事，如果真需要一场革命性的改革，我们也已经做好了准备，但如果可以通过渐进式改革实现显著改善的话，我们更喜欢这样做。我们希望在改善交付、提高可预见性和透明度方面看到成果。</b></p>
+<blockquote> 
+ <p><strong>Dr.Roock：</strong>以我的经验来看，在开始引入看板之前，需要在主要目标上达成一致。那意味着需要得到管理层的支持。</p> 
+ <p>也可以尝试采用一种基层“隐形”的方式，只在一个团队中实施，而不让管理层知道。这样做可以获得的成功比较有限，很快就会达到上限。如果想在企业范围内获得真正的成功，就需要管理层的支持了。与管理层进行交流，了解他们试图实现什么，痛点是什么，以及他们想要达到的目标，这一点很重要。</p> 
+ <p>在你的例子里，目标是“获得可预见性和改善交付。”那么，首先要做的是可视化端到端的流程。知识工作有一个大问题，就是看不到也摸不着。如果到一家工厂，可以看到大量的原材料和未完工的产品堆在车间的地板上。但到任何一间办公室看看，看起来都一样；有桌子，有键盘、电话、电脑和许多纸，就是那样。我们看不到自己的工作，那也就意味着很难进行改善。</p> 
+ <p>因此，开始看板首先要做的是工作可视化。有多少工作已经开始，它们都处于什么阶段？有多少开发工作，有多少分析、测试工作等等。</p> 
+ <p>上述过程要非常深入。在许多情况下，人们并不会注意到正在进行中的工作有如此之多，（这意味着工作已经开始，但没有结束。）</p> 
+ <p>下一步要创建意见反馈循环。定期观察流程和工作，在想做的事情上达成一致，以便改善流程。</p> 
+ <p>现在，透明度有了。看到事情堆积在测试栏里，就说明开发速度比测试和部署的速度要快。因此，大家聚到一起，开一个改善研讨会，看看做什么可以理顺流程。</p> 
+ <p>做什么能够消除这一瓶颈呢？首先想到的事情可能是雇佣额外的测试人员。但那通常不是正确的解决方案。也许可以提高进入测试阶段的工作的质量，或者自动化一些事情，或者抽调开发人员做测试，因为开发人员经常能够做这项工作。</p> 
+ <p>因此，透明度是第一位的。意见反馈循环非常重要。大部分看板团队在看板图前召开每日站立会议，他们可以从看板图上看到他们的工作。他们还召开改善研讨会，或者通常称为“回顾”或“改善（Kaizen）会议”。</p> 
+ <p>接下来将是定义某种指标，用于确定前进方向是否正确。</p> 
+ <p>如果目标是提高可预见性以及更快更频繁的交付，那么测量周期时间也许是个好主意。周期时间是从任务开始到结束的时间。之后，观察一下，如果抽调开发团队的一员来做测试会发生什么。或者改变工作划分会发生什么。或者商定一项策略，使正在进行的开发工作不超过两项，测试工作不超过三项。</p> 
+ <p>我们可能还会有其它若干想要尝试的事情。因此，既然有了意见反馈循环和指标，就可以观察一下，如果这是件好事就应该加强，或者如果它不能正常工作，就需要对其进行遏制。</p> 
+</blockquote>
+<div id="lowerFullwidthVCR"></div>
+<p><b>InfoQ</b><b>：您谈到了看板图，这似乎是核心。我想了解一下看板图的粒度应该多大。是包含从头至尾的整个过程呢，还是仅仅包含开发步骤？</b></p>
+<blockquote> 
+ <p><strong>Dr.Roock：</strong>从价值流的可控部分开始。如果发起人是开发总监，那么起点应该是开发。看板图将会从某种任务分解分析开始，之后是开发、测试，再之后是与上游流程如产品管理和下游流程如部署的一些接口。</p> 
+ <p>当然，长远看来，我们希望扩展这一界限。我们不想要局部最优，我们想要跨越部门界限的协作。如果上下游的合作伙伴不同意协作，那么把所有这些都列在看板图上也会因为无法控制而没有意义。这一点很重要。</p> 
+ <p>从可控部分开始。不要试图传福音，那不会起作用。起作用的是，如果获得了较好的结果并使之透明化，那么人们就会好奇，而好奇是一个非常强大的工具。人们连续不断地会过来问，“如此频繁的交付，你们是如何做到的？”或者“为什么你们几乎没有Bug呢？”然后，我们通常可以看到，看板已经传遍所有团队了。</p> 
+ <p>我们听过Jimdo的一次演讲，有一家德国公司，其在线营销团队有看板，其新闻团队、视频团队和合作伙伴团队都分别有看板。当然，每个团队的看板图各有不同，但都遵循相同的原则。那意味着一小步一小步地持续改善。</p> 
+</blockquote>
+<p><b>InfoQ</b><b>：如何在分散的地区之间扩展看板图？</b></p>
+<blockquote> 
+ <p><strong>Dr.Roock：</strong>那是一个棘手的问题，但非常有意义，因为当今的许多团队都是分散的。市场上有许多好的看板工具，但是电子工具都各有其优缺点。我会尽可能地设法保持其物理存在。即使有两个地点，也可以使用物理看板图。当然，那样就不得不在团队中同步信息，可以使用摄像头、即时消息和伙伴系统。在伙伴系统中，每个地区都在其它地区有一个联系人。</p> 
+</blockquote>
+<p><b>InfoQ</b><b>：您所说的联系人是什么意思？</b></p>
+<blockquote> 
+ <p><strong>Dr.Roock：</strong>在伙伴系统中，每个团队都在其它地点有一个永久联系人。每次改变看板图的时候，比如说将一个标签从开发移到测试，就要通知联系人更新他那边的看板图。现在，可以使用电话或视频会议或即时消息，这听上去是个很大的开销，也确实是。但是，这种交流是必要的。另一方面，可以看到，联系人之间现在开始交流了，并且内容不局限于标签移动，而是跟这样一些事情有关，如“我下周会外出度假，因此请提醒团队其他成员做这做那。”或者“我看到你正忙于这部分代码。我知道它有一些棘手的部分，所以让我给你一些提示。”这样，人们现在可以跨越团队界限进行交流，那真的很有价值。</p> 
+</blockquote>
+<p><b>InfoQ</b><b>：如果有超过两个团队，他们所在的地区时差非常大，如纽约和新加坡的时差可达12小时，那该怎么办？</b></p>
+<blockquote> 
+ <p><strong>Dr.Roock：</strong>在两个地区可以奏效，但三个不行；我从来没有见过在三个地区还奏效的情况。另一个问题是时差，这会使看板的实施非常困难。</p> 
+ <p>我想指出的是，看板就像一位刻薄的继母；她总是告诉你什么做错了，却不帮你改善。如果在这种情况下应用看板，就会发现，团队分散各处非常痛苦，在这些团队间进行信息同步非常费力。但那就是现实，不管是否有看板。因此，看板只是使这些问题透明化而已。对于地点多于两处的情况，无疑需要一款电子工具。此外还需要大量的带宽用于交流。我已经多次见到这种情况。鉴于人们只通过工具交流，你做到了！人们需要保持交流。当然，面对面的交流好过视频会议，而视频会议要好于电话，电话则好于电子邮件。因此，要确保人们尽可能经常地交流。那意味着要把人一次又一次地送到另一个地方，即使是在新加坡。因此，团队需要有非常好的视频会议设备和好的看板工具。对于组织改革（那是看板设计的初衷）而言，很重要的一点是建立信任。当人们彼此了解时，更容易建立信任。当人们可以看到彼此，互相面对面的交谈，一起喝啤酒，了解一点他们私下的生活，他们是否有孩子，或者他们喜欢哪类电影，那会建立信任，那真的真的很重要。</p> 
+ <p>站立会议是创建此类讨论会的一种方式，那样人们可以定期聚到一起并互相交谈。当然，如果存在时差，那会是个问题，但在任何情况下，这个问题都得解决，这就与看板无关了。</p> 
+</blockquote>
+<p><b>InfoQ</b><b>：对于跨地区进行站立会议，有标准的解决方案吗？</b></p>
+<blockquote> 
+ <p><strong>Dr.Roock：</strong>即使存在时差，通常也会有1个或2个小时的时间重叠。</p> 
+</blockquote>
+<p><b>InfoQ</b><b>：嗯，不过新加坡的时差是12小时，因此，即使他们工作到很晚，也很难每天都做到这一点。</b></p>
+<blockquote> 
+ <p><strong>Dr.Roock：</strong>是这样的，即使能做到，但由于所处时点不同，精力水平也就不同。这是个棘手的问题。但即使有人得在晚上工作，也需要定期地交流。可以使用轮循机制，使一个人与另外一个团队交谈。</p> 
+ <p>另外，我们要打破界限。我们经常会看到，一个团队在美国，一个在新加坡，在美国的团队说“唉，来自新加坡的家伙妨碍了构建”，反过来也一样。通常，这是一个玩笑的开头，但背后也是有原因的。派代表到其它地点呆几个月，然后使其它地点的代表到这边来，这可能是一个有效的联系手段。</p> 
+</blockquote>
+<p><b>InfoQ</b><b>：那么现在，假设我们获得了管理层的支持，而为了降低风险，从小处着手是不是更好呢？</b></p>
+<blockquote> 
+ <p><strong>Dr.Roock：</strong>是的，那是看板的基本思想。从现有条件开始，然后逐步发展。如果要对工作进行可视化，那么可视化现有工作；不要试图可视化目标状态。</p> 
+ <p>我们听了Daniel Vacanti的介绍，他是西门子医疗部门看板实施的负责人。他们的做法不同；他们上线了一块遍及整个企业的巨大看板。</p> 
+ <p>但通常，我们从小处着手，然后它会像病毒一样传播，或者一个团队接一个团队地传播。</p> 
+ <p>看板有一个非常重要的原则是这样说的，尊重当前角色、流程和职责。那很重要，它直接关系到我正在谈的渐进式方法。</p> 
+ <p>因此，如果组织内部部门间不协作，或者有确定的管理结构或角色，那么所有这些都需要保留。尊重现状。如果已经有测试经理、架构师、业务经理等角色，则需要保持不变。经验表明，人们并不喜欢我们改变他们的职责、头衔和角色。他们有很多自尊源于其专业角色。如果我在过去的二十年里都从事业务分析师的工作，而现在我们在制定一套新的流程，其中没有了业务分析师的位置，那么我不得不将新头衔打印到新名片上，对此我会很生气。这就是看板起初不这么做的原因。但是，当我们继续我们的旅程，信任开始建立，就可以开始引入那种改革了。</p> 
+</blockquote>
+<p><b>InfoQ</b><b>：关于看板图上的列，它们的粒度应该多大？</b></p>
+<blockquote> 
+ <p><strong>Dr.Roock：</strong>看板图上的列应该能够反映团队目前的工作方式。通常，通过听人谈话就很容易发现。他们会说“开发完成了吗；开始测试了吗？”那表明，看板图上应该有一列针对开发和一列针对测试，总之，反映人们的工作方式。我们要有工作流的真实情况。</p> 
+ <p>另一方面，如果粒度太小，就会有太多列，太多泳道，那么看板图就不再清晰了。看板有一条称为“三乘三（three-by-three）”的规则；如果站在看板图前三米的位置，那么需要在三秒钟内就可以知道正在进行的任务。不用阅读每一张卡片，就可以看到事情在哪里扎堆，哪些人没有事做。但是，如果看板图上列太多或者泳道太多，那么团队会开始迷失。（编者注：“列”是指看板图的垂直列；“泳道”是指水平行。）</p> 
+</blockquote>
+<p><b>InfoQ</b><b>：关于“在制品”（WIP）；在Scrum过程中，我们有一定数量的故事，我们忙于这些故事，如果不能完成，就把它们带到下一个冲刺，但是，要密切关注还剩多少时间，那样可以根据自己的速度决定停下多少故事。因此，WIP实际上已经是一个Scrum概念。</b></p>
+<blockquote> 
+ <p><strong>Dr.Roock：</strong>是的，它是。Scrum是通过冲刺概念限制WIP。这与看板的做法不同，即便如此，两者的主旨是一致的。在看板中，每一栏或每个泳道或者每个人有WIP限制。关键是要平衡需求与能力。我们不希望接受的工作比我们能够完成的工作更多。</p> 
+</blockquote>
+<p><b>InfoQ</b><b>：假设一个项目中有10名开发人员。我的能力是1，其他人也是如此。那么，我们的WIP限制为10。某个人卡在某件事上后可能会开始另外一件事。如果生产环境有问题，那么我就可能不得不承接另外一件事。</b></p>
+<blockquote> 
+ <p><strong>Dr.Roock：</strong>你在问两件不同的事。让我解释一下。在看板领域，生产环境问题称为“快速问题”。如果不马上处理这些问题，那么就会付出很高的代价。在这样一种情况下，快速问题会需要打破WIP限制，而且会应用一定的策略。例如，面对问题，大家集体应对，并立即作为一个团队处理它们。之后，必须反省，为什们会有如此多的快速问题。可以做些什么来减少那种问题呢？这才是看板方法。</p> 
+ <p>你提到的另一件事是一项工作阻塞了，但那不是快速问题。我会等待另一个团队，因为我需要从他们那里获得信息或什么东西。我可以开始另外一项工作，并打破WIP限制，或者我可以使用已获得的“冗余能力”来改善系统。这就是看板背后的理念。WIP限制是创造冗余的有效方式。冗余能力让人可以做个深呼吸，看一看正在发生什么事，并评估一下，可以做些什么来利用冗余和去除病根。</p> 
+ <p>例如，如果反复遇到同样的阻碍，那么也许需要在那边安排一个人，或者那边的人到这边工作一段时间以便进行知识的转移。看板并不会说明如何处理这些阻碍；它只是说“使用WIP限制创造冗余，不要把人用到100%。”传统的项目管理就是那样做的。总是试图把人完全利用起来，因此浪费了本可以用于流程改善的冗余能力。</p> 
+</blockquote>
+<p><b>InfoQ</b><b>：假如我是组织的一名项目经理，<a name="OLE_LINK2"></a><a name="OLE_LINK1">我对看板稍微有些了解</a>，并且决定要试一试。而组织并不会投入数千美元来对我进行培训。最低限度，我需要具备什么条件才能开始看板？</b></p>
+<blockquote> 
+ <p><strong>Dr.Roock：</strong>我见过使用看板非常成功的企业，他们没有接受任何外部辅导或培训，而只是读了一本书，或者一篇博客，以及订阅了一个邮件列表。那是些小公司，但我认为，如果至少有一个真正有经验的人，那会增加成功的机会。如果这些人来自公司内部，那最好，但如果公司没有这样的人，那么那就是要请顾问的原因了。</p> 
+ <p>通常，我们会以管理研讨会为起点，探讨这样一些问题，诸如究竟为什么要实施看板？是否一致同意采取增量改革？目标是什么？之后，对团队进行培训，从而使每个人都讲同一种语言。什么是列，什么是泳道，如何处理快速问题标签等等。在此之后，我会定期帮助团队仔细反省系统并对其进行改善。现在，那不再是一周五天的全职工作。在开始的时候，它差不多是以两三天为单位的一系列工作，但之后会逐步减少，因为我们正设法积累内部辅导经验。所以，辅导的量不是很大，但会增加成功的机会。</p> 
+</blockquote>
+<p><b>InfoQ</b><b>：教练应该有多少时间在组织中度过？</b></p>
+<blockquote> 
+ <p><strong>Dr.Roock：</strong>这个问题通常很难回答，那取决于教练与多少个团队一起工作。如果教练同时与三个或者四个团队一起工作，那么那会是全职工作。但是，如果只有一个团队，最好的策略是每次辅导的量小一些而辅导频率大一些。例如，每周一天比每六个月五天更好。</p> 
+</blockquote>
+<p><b>InfoQ</b><b>：最后，您还有其它建议吗？</b></p>
+<blockquote> 
+ <p><strong>Dr.Roock：</strong>我认为有件事很重要。我们使用看板努力实现的目标是了解我们的工作方式，并了解我们的工作。那是看板的一项基本价值。如果一名顾问来到公司，并说必须要做这个和这个，那么他很可能错了。一名好的改革管理人员会为看板实施过程提供便利，使公司里的每个人，尤其是领导者，了解他们的工作方式，因为除此之外非常难以改善。因此，不要只按照教科书应用看板，要设法弄清楚为什么要有WIP限制，为什么想要有透明度等等所有这些事。如果做了这些事，那么就会有一个不错的成功机会。</p> 
+</blockquote>
+<h2>关于受访者</h2>
+<p><img src="http://infoqstatic.com/resource/articles/Implementing_Kanban/zh/resources/20140104.jpg" style="float: left; margin-right: 10px" alt="" _href="img://null" _p="true" /><b>Arne Roock</b><b>博士</b>是一名精益看板培训师兼教练，他为德国的IT-Agile公司工作。他致力于帮助企业使用看板建立看板文化。他写了数篇关于精益/看板的论文，并将<i>Kanban-Successful Evolutionary Change for Your Technology Business</i>一书译成德文。他是德国第一个Limited WIP Society社区的创始人，同时也是“中欧精益看板”大会的董事会成员和组织者。2012年，他获得了精益系统学会授予的Brickell Key大奖。读者可以通过<a href="https://twitter.com/arneroock">Twitter</a>、<a href="http://www.software-kanban.de/">博客</a>或者<a href="http://arne.roock@it-agile.de/">电子邮件</a>与Dr. Roock取得联系。</p>
+<div style="clear:both">
+ &nbsp;
+</div>
+<p><strong>查看英文原文：</strong><a href="http://www.infoq.com/articles/Implementing_Kanban">Implementing Kanban in Practice</a></p><br><br><br><br><br><br></body></html>

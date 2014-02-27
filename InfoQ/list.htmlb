@@ -1,6 +1,18 @@
 <html>
  <head></head> 
- <body> 
+ <body>
+  <div>
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/6.htmlb">达成销售，然后构建</a> “在编写任何代码之前，确保先有一个失败测试。”在90年代晚期出现时，这曾是个革命性的概念。而现如今，许多成功的企业家实践了另一个相似的理念：“在构建产品/服务以前，首先确保拥有付费的客户。”Naresh Jain介绍了寻找有效的MVP以验证其教育产品的方法，以及为何敏捷方法未能奏效。 
+  </div>
+  <div>
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/5.htmlb">可视化Java垃圾回收</a> 垃圾回收，就像双陆棋一样，只需几分钟来学习，但要用一生来精通。本文是对资深培训师兼顾问Ben Evans最近在InfoQ的演讲“可视化垃圾回收”的总结。在演讲中，他从基础谈起讨论了垃圾回收。 
+  </div>
+  <div>
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/4.htmlb">在实践中实施看板</a> 在精益看板大会上，InfoQ问Arne Roock博士，团队如何评估看板是不是正确的工具以及如何开始实施。他给出了若干规定性建议。 
+  </div>
+  <div>
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/3.htmlb">专访Yammer公司Brian Murray：精益创业和最简化可实行产品的使用</a> Brian Murray详细地说明了Yammer是如何使用最简化可实行产品来检验他们在业务上的用户假设，以及为什么他们要在自己的产品架构的上投入如此多的精力。 
+  </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/3.htmlb">Java里快如闪电的线程间通讯</a> 完全不用锁、同步器、信号量、等待和通知，在Java里开发一个轻量、无锁的线程间通讯框架；并且也没有队列、消息、事件或任何其他并发专用的术语或工具。只用普通的老式Java接口实现POJO的通讯。 
   </div> 
@@ -138,18 +150,6 @@
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/10.htmlb">Android事件传递机制</a> Android基本事件构成了丰富的操作和体验方式。所有的触屏操作都基于Android的基本事件，本文结合Android系统源码剖析了Android事件的传递机制，比较深入的分析了事件处理方法，并结合实际例子分析了事件传递流程。 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/9.htmlb">与Costin Leau谈论Elasticsearch，大数据及Hadoop</a> Elasticsearch是一个开源的分布式实时搜索与分析引擎，支持云服务。作为Elasticsearch-hadoop的第一个里程碑，它的1.3.M1版本在十月上旬发布了。InfoQ与Costin Leau进行了一次对话，谈论了Elasticsearch的搜索与分析引擎，以及它是如何与Hadoop或其它的大数据技术相结合的。 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/8.htmlb">API业务模型：如果通过API获取回报</a> 我们如何靠API来赚钱？在2013年API战略大会上，Programmable Web创始人John Musser在主题演讲中，点评了世界领先的技术企业们运用过的不同API业务模型。John将各式各样的模型整理成四大核心类别——“免费”、“开发者付费”、“开发者得偿”和“非直接收入”，并展示了API的实现如何与不同的业务战略相匹配。除此之外，他还给出了第五类模型：内部使用，并给出了忠告：“内部使用或许是API最重要的应用场景”。 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/7.htmlb">用Spring实现非端到端验收测试</a> 验收测试让交付团队超越了基本的持续集成，即验证应用程序是否为用户提供了有价值的功能。不过对于刚开始尝试部署流水线的团队来说，想要自动化验收测试，需要跨过三大门槛。 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/6.htmlb">软件正在吞噬组织机构中的“烟囱”</a> Luke Kanies是Puppet Labs的首席执行官，他探讨了软件正在如何接管那些过去一直由硬件实现的功能；以及在人们如何共事方面，这一变迁引发了怎样的剧变。 
-  </div> 
+  </div>     
  </body>
 </html>

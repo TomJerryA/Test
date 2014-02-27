@@ -1,161 +1,202 @@
-<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>The Gentle Art of Running a Lean Startup</h3><p>We often struggle to create valuable software because we simply cannot do the <a href="http://www.targetprocess.com/rightthing.html">right things, correctly and quickly</a>.</p>
-<p>The recently developed <a href="http://www.theleanstartup.com/">Lean Startup</a> methodology, combined with <a href="http://en.wikipedia.org/wiki/Agile_software_development">agile software development practices</a> upon which it is heavily based, answers our problems.</p>
-<p>However, most startups apply the principles in a fragmented way and do not get the expected benefits (<a href="http://online.wsj.com/article/SB10000872396390443720204578004980476429190.html">three out of four startups fail)</a>.</p>
-<p>To more easily understand the core concepts and value of Lean Startup, we present the martial art of <a href="http://en.wikipedia.org/wiki/Brazilian_jiu-jitsu">Brazilian Jiu-Jitsu</a> (BJJ) as a metaphor that can teach how to run a startup the lean way.</p>
-<p>If you feel you’ve already mastered lean startups, use this article to introduce yourself to the martial art about which President Theodore Roosevelt <a href="http://www.artofjiujitsu.com/blog/the-art-of-jiu-jitsu-is-worth-more-in-every-way-than-all-of-our-athletics-combined--president-theodore-roosevelt">said</a>, &quot;The art of Jiu-Jitsu is worth more in every way than all of our athletics combined.&quot;</p>
-<h2>BJJ, Lean Startup and Their Core Similarity</h2>
-<table style="background-color: #cccccc" cellspacing="0" cellpadding="2" width="100%" border="0"> 
- <tbody> 
-  <tr> 
-   <td valign="top" width="400"><font style="background-color: #cccccc">BJJ is a martial art and a self-defense system, based on judo, that focuses on ground-grappling. It utilizes controlling positions, joint locks, and chokes, and is considered the most effective martial art since its creators, </font><a href="http://en.wikipedia.org/wiki/Gracie_family"><font style="background-color: #cccccc">the Gracie Family</font></a><font style="background-color: #cccccc">, dominated the </font><a href="http://en.wikipedia.org/wiki/UFC_1"><font style="background-color: #cccccc">first mixed-martial-art fights</font></a><font style="background-color: #cccccc">. “Jiu-Jitsu is the triumph of human intelligence over brute strength,” said Helio Gracie who, together with his brother Carlos Gracie, founded BJJ. </font><a href="http://www.youtube.com/watch?v=ZjCRIWaoU98"><font style="background-color: #cccccc">Here</font></a><font style="background-color: #cccccc">, you can watch six-time world champion Robson Moura rolling during training or some </font><a href="http://www.youtube.com/watch?v=WQylr1iKII4"><font style="background-color: #cccccc">highlights</font></a><font style="background-color: #cccccc"> from the black belts at the 2013 world BJJ championship.</font></td> 
-  </tr> 
- </tbody> 
-</table>
-<p><a href="http://en.wikipedia.org/wiki/Lean_Startup">Lean Startup</a>, following principles from lean manufacturing and agile development, is a way to develop products, iteratively and incrementally, in an environment full of risk. It was proposed in 2011 by <a href="http://en.wikipedia.org/wiki/Eric_Ries">Eric Ries</a> and is based on <a href="http://steveblank.com/category/customer-development/">customer development</a>, business-hypothesis-driven experimentation, and continuous validated learning.</p>
+<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>Custom Assertions in Java Tests</h3><p>Writing assertions for tests seems simple: all we need do is compare results with expectations. This is usually done using the assertion methods – e.g. assertTrue() or assertEquals() – provided by testing frameworks. However, in the case of more complicated test scenarios, it can be rather awkward to verify the outcome of a test using such basic assertions.</p>
+<p>The main issue is that by using them we obscure our tests with low-level details. This is undesirable. In my view we should rather strive for our tests to speak in the language of business.</p>
+<p>In this article I will show how we could use so-called &quot;matcher libraries&quot; and implement our own custom assertions to make our tests more readable and maintainable.</p>
+<p>For the purposes of demonstration we will consider the following task: let us imagine that we need to develop a class for the reporting module of our application that, when given two dates (&quot;begin&quot; and &quot;end&quot;), provides all one-hour intervals between those dates. The intervals are then used to fetch the required data from the database and present it to the end user in the form of beautiful charts.</p>
+<h2>Standard Approach</h2>
+<p>Let us begin with a &quot;standard&quot; way of writing assertions. We're using <a href="http://junit.org">JUnit</a> for this example, though we could equally use, say, <a href="http://testng.org/">TestNG</a>. We will use assertion methods like assertTrue(), assertNotNull() or assertSame().</p>
+<p>Below, one of several tests belonging to the HourRangeTest class is presented. It is quite simple. First it asks the getRanges() method to return all one-hour ranges between two dates on the same day. Then it verifies whether the returned ranges are exactly as they should be.</p>
 <div id="lowerFullwidthVCR"></div>
-<p>Both systems trace their roots to Japanese culture: the lean startup to the Toyota production system and BJJ to <a href="http://en.wikipedia.org/wiki/Jujutsu">jiu-jitsu</a>, the art of samurais. Both apply the core concept of “minimum effort for maximum efficiency” and implement the “conservation of energy” principle, which is the primary deciding factor for every fight in any aspect of life.</p>
-<p> </p>
-<table cellspacing="0" cellpadding="0" border="0"> 
- <tbody> 
-  <tr> 
-   <td valign="top" width="289"> <p><small>“Most startups fail, not because they fail to build the product they want to build, but they fail to find a market for their product before running out of resources.”</small></p> <p><small>&nbsp;<a href="http://www.amazon.com/Running-Lean-Iterate-Works-OReilly/dp/1449305172">Running Lean</a><b>, Ash Maurya</b></small></p> </td> 
-   <td style="background-color: #cccccc" valign="top" width="353"> <p><small>“Jiu-Jitsu, like nature, is all about the conservation of energy. In jiu-jitsu, ‘efficiency’ means using only as little strength and power as is required to accomplish your objectives. It means economy of motion – eliminating wasted movements and effort.”&nbsp; </small></p> <p><small>&nbsp;<a href="http://jiujitsubrotherhood.com/2012/11/the-essence-of-jiu-jitsu/">The Essence of Jiu-Jitsu</a>&nbsp;&nbsp; <b>Nicolas Gregoriades, </b>BJJ black belt</small></p> </td> 
-  </tr> 
- </tbody> 
-</table>
-<p></p>
-<h2>The Metaphor</h2>
-<table cellspacing="0" cellpadding="0" border="0"> 
- <tbody> 
-  <tr> 
-   <td style="background-color: #c0c0c0" valign="top" width="143"> <p><small>Startup</small></p> </td> 
-   <td style="background-color: #c0c0c0" valign="top" width="160"> <p><small>BJJ</small></p> </td> 
-   <td style="background-color: #c0c0c0" valign="top" width="340"> <p><small>Explanation</small></p> </td> 
-  </tr> 
-  <tr> 
-   <td valign="top" width="143"> <p><small>Customer</small></p> </td> 
-   <td valign="top" width="160"> <p><small>Opponent</small></p> </td> 
-   <td valign="top" width="340"> <p><small>Winning a customer or an opponent is your ultimate goal. You fight to impose your will on him, but he/she usually resists, escaping. You must respect him because he is your best teacher.</small></p> </td> 
-  </tr> 
-  <tr> 
-   <td style="background-color: #ccccff" valign="top" width="143"> <p><small>Startup team</small></p> </td> 
-   <td style="background-color: #ccccff" valign="top" width="160"> <p><small>BJJ martial artist</small></p> </td> 
-   <td style="background-color: #ccccff" valign="top" width="340">&nbsp;</td> 
-  </tr> 
-  <tr> 
-   <td style="background-color: #ccccff" valign="top" width="143"> <p><small><font color="#808000">Product team</font></small></p> </td> 
-   <td style="background-color: #ccccff" valign="top" width="160"> <p><small><font color="#808000">Mind</font></small></p> </td> 
-   <td style="background-color: #ccccff" valign="top" width="340"> <p><small>Being aware of customer's (opponent's) reactions, decides the next move</small></p> </td> 
-  </tr> 
-  <tr> 
-   <td style="background-color: #ccccff" valign="top" width="143"> <p><small><font color="#808000">Development team</font></small></p> </td> 
-   <td style="background-color: #ccccff" valign="top" width="160"> <p><small><font color="#808000">Body</font></small></p> </td> 
-   <td style="background-color: #ccccff" valign="top" width="340"> <p><small>Executes the moves&nbsp; (builds the code)</small></p> </td> 
-  </tr> 
- </tbody> 
-</table>
-<p>Based on the above metaphor and inspired by BJJ concepts, we will describe how to run a lean startup (everything related to BJJ has a gray background).</p>
-<h2>Stay Connected</h2>
-<p> </p>
-<table cellspacing="0" cellpadding="0" border="0"> 
- <tbody> 
-  <tr> 
-   <td valign="top" width="311"> <p><small>“Build in response to a signal from the customer, and otherwise rest or improve.”</small></p> <p><small><b>Ash Maurya, </b>author of Running Lean</small></p> </td> 
-   <td style="background-color: #cccccc" valign="top" width="330"> <p><small>“I do not fight my opponent. He tries to take positions and I see his actions to make reactions.”</small></p> <p><small><b><a href="http://www.kidpeligro.com/">Kid Peligro</a>, </b>BJJ black belt</small></p> </td> 
-  </tr> 
- </tbody> 
-</table>
-<p></p>
-<table style="background-color: #cccccc" cellspacing="0" cellpadding="2" width="100%" border="0"> 
- <tbody> 
-  <tr> 
-   <td valign="top" width="400"><font style="background-color: #cccccc">The <a href="http://warriorscove.com/rickson-gracie-jiu-jitsu/">best ground fighter of all time</a> and champion of Gracie family <a href="http://en.wikipedia.org/wiki/Rickson_Gracie">Rickson Gracie</a> always emphasizes the importance of connecting with your opponent to be able to feel his slightest movements and understand immediately his intentions.</font></td> 
-  </tr> 
- </tbody> 
-</table>
-<p>A lean startup should connect with its initial users (earlyvangelists or early adopters) to track how they use the product/service it offers. Every new feature should be discovered and designed based on customer reaction. <b>Otherwise, it’s like trying to fight an invisible opponent</b>. We already have at our disposal the necessary techniques (<a href="http://steveblank.com/category/customer-development/">customer development</a>, <a href="http://leananalyticsbook.com/">lean analytics</a>) and the corresponding customer-behavior and usage-analytics tools (Google Analytics, KissMetrics, MixPanel, Crazy Egg, Flurry), which help us to monitor and analyze everything about our users. Assuming we have this information, what is our strategy and how we decide our next move?</p>
-<h2>Control, Dominate, Submit</h2>
-<table style="background-color: #cccccc" cellspacing="0" cellpadding="2" width="100%" border="0"> 
- <tbody> 
-  <tr> 
-   <td valign="top" width="400"><font style="background-color: #cccccc"><a href="http://jiujitsubrotherhood.com/how-jiu-jitsu-works/">What differentiates Brazilian Jiu-Jitsu from most martial arts is the employment of positional strategy</a>, which, independently of the opponent, is divided in three main phases: control, dominate, and submit. Before all, you must control your opponent. Next, try to penetrate his basic line of defense (the guard) to take a dominant position (side control, mount him, or get his back). From there, you can attempt to make him submit. Every stage has its own philosophy and approach and you must follow this exact path, with no exceptions, otherwise you risk defeat. </font></td> 
-  </tr> 
- </tbody> 
-</table>
-<h2>Control</h2>
-<p> </p>
-<table cellspacing="0" cellpadding="0" border="0"> 
- <tbody> 
-  <tr> 
-   <td valign="top" width="339"> <p><small>“A lot of my time was spent on the phone with users or exchanging emails to collect feedback on our product and community...”</small></p> <p><small><b>David Spinks, </b>entrepreneur/community builder<b> </b></small></p> </td> 
-   <td style="background-color: #cccccc" valign="top" width="300"> <p><small>&quot;You let go of that grip and your mother falls off of a cliff...and dies!!!&quot;&nbsp; </small></p> <p><small><b>Kurt Osiander, </b>BJJ black belt</small></p> </td> 
-  </tr> 
- </tbody> 
-</table>
-<p></p>
-<table style="background-color: #cccccc" cellspacing="0" cellpadding="2" width="100%" border="0"> 
- <tbody> 
-  <tr> 
-   <td valign="top" width="400"><font style="background-color: #cccccc">In BJJ, you cannot apply a technique properly unless you have already established control over some points of your opponent's body. This is also extremely important in judo (the parent art of BJJ). Called grip fighting, this can decide the outcome of the fight.</font></td> 
-  </tr> 
- </tbody> 
-</table>
-<p>Similarly, a lean startup must find ways to “control” its early adopters by establishing a special relationship with them with different methods and communication channels such as marketing, online feedback, rewards, etc. It must interact with them often, engaging them to reveal their reactions and accept their valuable input about the experiments it runs. Several tools can help, like Survey.io, Mailchimp, Uservoice etc. <b>These early adopters are a startup's most valuable asset. It must strongly grip them, making it extremely difficult for them to disconnect</b>.</p>
-<h2>Dominate</h2>
-<p> </p>
-<table cellspacing="0" cellpadding="0" border="0"> 
- <tbody> 
-  <tr> 
-   <td valign="top" width="317"> <p><small>“When you are BPMF (before product/market fit), focus obsessively on getting to product/market fit… Do whatever is required to get to product/market fit.</small></p> <p><small><b>Marc Andreessen, </b>Netscape founder</small></p> </td> 
-   <td style="background-color: #cccccc" valign="top" width="324"> <p><small>“Jiu-Jitsu first seeks to establish a position, and then to finish the fight... Your main concern is to transition to a dominant position as efficiently as possible.”</small></p> <p><small><b>Nicolas Gregoriades, </b>BJJ black belt</small></p> </td> 
-  </tr> 
- </tbody> 
-</table>
-<p></p>
-<table style="background-color: #cccccc" cellspacing="0" cellpadding="2" width="100%" border="0"> 
- <tbody> 
-  <tr> 
-   <td valign="top" width="400"><font style="background-color: #cccccc">In BJJ, the way you fight before taking a dominant position is much different than after taking it. You must continuously try techniques to get by your opponent's basic line of defense (the guard). While you are experimenting with ways to penetrate, you have to be agile, with your eyes open to your opponent's weak points and openings. Your opponent is a moving target, always reacting. Every second, there is a new image of the game that you have to visualize and adapt to accordingly.</font></td> 
-  </tr> 
- </tbody> 
-</table>
-<p><b>A startup’s dominant position simply translates to achieving product/market fit. </b></p>
-<p>It must continuously execute small experiments<b> </b>(testing and pivoting) to discover those product features providing real value. <a href="http://www.wired.com/wiredenterprise/2012/05/test-everything/">Split testing</a> and <a href="http://www.pretotyping.org/">pretotyping</a> help in this approach. During this effort, progress must not be measured by the total number of features pushed but by how much we improve our position (how much closer we have come to p/m fit). We measure this with specific customer-activation and retention metrics (<a href="http://practicetrumpstheory.com/2009/11/how-i-am-measuring-productmarket-fit/">how-i-am-measuring-productmarket-fit/</a>). <b>Functionality without our awareness and value for the customers is wasted movement, uselessly spending our energy</b>.</p>
-<p>If, however, we realize that no matter our amount of effort, our approach does not overcome customers’ resistance to use our service regularly, then we must change direction with a pivot.</p>
-<p> </p>
-<table cellspacing="0" cellpadding="0" border="0"> 
- <tbody> 
-  <tr> 
-   <td valign="top" width="395"> <p><small>“Pivot is helping you like the GPS of your car does. The vision is your destination, which must remain the same. But, when you run into an obstacle you do not just drive your car on to the obstacle over and over again hoping you will be fine. With the help of your GPS, you find a way around.”&nbsp;&nbsp; </small></p> <p><small><b>Eric Ries, </b>creator of Lean Startup</small></p> </td> 
-   <td style="background-color: #cccccc" valign="top" width="242"> <p><small>“When you can’t move your opponent, move yourself.”&nbsp; </small></p> <p><small><b>Jiu-Jitsu principle</b></small></p> </td> 
-  </tr> 
- </tbody> 
-</table>
-<p></p>
-<p>Only when a substantial percentage of our user base says that they would be disappointed if we discontinued the service (<a href="http://www.startup-marketing.com/the-startup-pyramid/">Sean Ellis test</a>) can we say that we are in a dominant position (p/m fit). At this point, we change tactics from experimentation to establishment and growth. Our main concern now is retaining our position by improving the quality of our services and in parallel try to finish the game by achieving growth.</p>
-<h2>Submit</h2>
-<p> </p>
-<table cellspacing="0" cellpadding="0" border="0"> 
- <tbody> 
-  <tr> 
-   <td valign="top" width="419"> <p><small>“The most successful technology companies first get their product/market fit right before stepping on the accelerator.... Once you do find your value proposition, driving growth is a heck of a lot easier… and more profitable.”</small></p> <p><small><b>Andy Rachleff, </b>co-founder<b> </b><a href="http://www.benchmark.com/#_blank">Benchmark Capital</a></small></p> <p><small>“Startups have no use for a growth team pre-P/M Fit. Until then, focusing on growth is like putting $1 in a high-yield compound interest account… it's just a waste of time.”&nbsp;&nbsp; <b>Andy Johns, </b>&quot;<a href="http://quibb.com/links/andy-johns-the-case-for-user-growth-teams#_blank">The Case for User Growth Teams</a>&quot;</small></p> </td> 
-   <td style="background-color: #cccccc" valign="top" width="222"> <p><small>“It’s a numbers game, really.</small></p> <p><small>You have a far higher chance of finishing the fight successfully from a dominant position than you do of catching an opponent with a lucky punch or kick.“&nbsp; </small></p> <p><small><b>Nicolas Gregoriades&nbsp; </b>BJJ black belt</small></p> </td> 
-  </tr> 
- </tbody> 
-</table>
-<p></p>
-<table style="background-color: #cccccc" cellspacing="0" cellpadding="2" width="100%" border="0"> 
- <tbody> 
-  <tr> 
-   <td valign="top" width="400"><font style="background-color: #cccccc">In following BJJ’s principle of positional strategy, you should not try to make your opponent submit from an inferior position because you will just consume your energy and bring yourself closer to defeat. But when you are in a dominant position and see a chance for submission, exploit it immediately, explosively and with full strength, to finish the fight.</font></td> 
-  </tr> 
- </tbody> 
-</table>
-<p>Sustainable growth on a massive scale is the final destination of a startup. To achieve this, a new role of <b>growth hacker </b>has emerged. A growth hacker’s mission, according to Patrick Vlaskovits, author of the NYT bestseller <a href="http://www.amazon.com/The-Lean-Entrepreneur-Visionaries-Products/dp/111829534X">The Lean Entrepreneur</a>, is “<a href="http://vlaskovits.com/2012/07/youre-a-growth-rookie-not-a-growth-hacker/">to deliver huge and exponential growth in users/leads/sales</a>”. Richie Hecker, founder of Bootstrapper, <a href="http://techzulu.com/5-reasons-growth-hacking-is-the-most-important-function-of-a-startup/">says</a> growth hacker “...is the most important role because this person, by enabling new ways to create a scalable customer acquisition process, graduates a company from startup to viable long-term business.”</p>
-<p>A startup should not try to grow its user base before product/market fit, because that will only consume resources without much benefit. In parallel with growth efforts, although a startup will probably make adjustments to the value proposition, it must be careful not to lose its dominant position of product/market fit.</p>
-<h2>Conclusion</h2>
-<p>The startup game is a positional game with disciplined strategy (control-dominate-submit) that above all requires conservation of energy and agility. Agility is the ability of the team to change directions without<font color="#ff0000"> </font><font color="#000000">losing balance, strength, and speed<u>.</u> It is a primary success factor.</font></p>
-<p>In an another article, we will show how team agility can be developed, measured and maintained through proper training and an agile coach.</p>
-<p>Adopt a survival mindset, try to avoid mistakes, and sooner or later your users will give you the opportunity to win them as lifelong customers. As Helio Gracie, one of the founders of BJJ, said,<b> “I never defeated my opponents, they defeated themselves.”</b></p>
+<pre>
+private final static SimpleDateFormat SDF
+        = new SimpleDateFormat(&quot;yyyy-MM-dd HH:mm&quot;);
+@Test
+public void shouldReturnHourlyRanges() throws ParseException {
+       // given
+       Date dateFrom = SDF.parse(&quot;2012-07-23 12:00&quot;);
+       Date dateTo = SDF.parse(&quot;2012-07-23 15:00&quot;);
+       // when
+       final List&lt;Range&gt; ranges = HourlyRange.getRanges(dateFrom, dateTo);
+       // then
+       assertEquals(3, ranges.size());
+       assertEquals(SDF.parse(&quot;2012-07-23 12:00&quot;).getTime(), ranges.get(0).getStart());
+       assertEquals(SDF.parse(&quot;2012-07-23 13:00&quot;).getTime(), ranges.get(0).getEnd());
+       assertEquals(SDF.parse(&quot;2012-07-23 13:00&quot;).getTime(), ranges.get(1).getStart());
+       assertEquals(SDF.parse(&quot;2012-07-23 14:00&quot;).getTime(), ranges.get(1).getEnd());
+       assertEquals(SDF.parse(&quot;2012-07-23 14:00&quot;).getTime(), ranges.get(2).getStart());
+       assertEquals(SDF.parse(&quot;2012-07-23 15:00&quot;).getTime(), ranges.get(2).getEnd());
+}</pre>
+<p>This is definitely a valid test; however, it has a serious drawback. There are a lot of repeated fragments in the //then part. Obviously they were created using copy &amp; paste, which – so experience has taught me – inevitably leads to errors. Moreover, if we were to write more tests like this (and we surely should write more tests to verify the HourlyRange class!), the same asserting statements would be repeated over and over again in each of them.</p>
+<p>The readability of the current test is weakened by the excessive number of assertions, but also by the complicated nature of each assertion. There is a lot of low-level noise, which does not help to grasp the core scenario of the tests. As we all know, code is read much more often than it is written (I think this also holds for test code), so readability is something we should definitely seek to improve.</p>
+<p>Before we rewrite the test, I also want to highlight another weakness, this time related to the error message we get when something goes wrong. For example, if one of the ranges returned by the getRanges() method were to have a different time than expected, all we would learn would be the following:</p>
+<pre>
+org.junit.ComparisonFailure:
+Expected :1343044800000
+Actual :1343041200000</pre>
+<p>This message is not very clear and could definitely be improved.</p>
+<h2>Private Methods</h2>
+<p>So what, exactly, could we do about this? Well, the most obvious thing would be to extract the assertion into a private method:</p>
+<pre>
+private void assertThatRangeExists(List&lt;Range&gt; ranges, int rangeNb,
+                                   String start, String stop) throws ParseException {
+        assertEquals(ranges.get(rangeNb).getStart(), SDF.parse(start).getTime());
+        assertEquals(ranges.get(rangeNb).getEnd(), SDF.parse(stop).getTime());
+}
+@Test
+public void shouldReturnHourlyRanges() throws ParseException {
+       // given
+       Date dateFrom = SDF.parse(&quot;2012-07-23 12:00&quot;);
+       Date dateTo = SDF.parse(&quot;2012-07-23 15:00&quot;);
+       // when
+       final List&lt;Range&gt; ranges = HourlyRange.getRanges(dateFrom, dateTo);
+       // then
+       assertEquals(ranges.size(), 3);
+       assertThatRangeExists(ranges, 0, &quot;2012-07-23 12:00&quot;, &quot;2012-07-23 13:00&quot;);
+       assertThatRangeExists(ranges, 1, &quot;2012-07-23 13:00&quot;, &quot;2012-07-23 14:00&quot;);
+       assertThatRangeExists(ranges, 2, &quot;2012-07-23 14:00&quot;, &quot;2012-07-23 15:00&quot;);
+}</pre>
+<p>Is it better now? I would say so. The amount of repetitive code has been reduced and the readability has been improved. This is definitely good.</p>
+<p>Another advantage of this approach is that we are now in a much better position to improve the error message that gets printed in the event of failed verification. The asserting code is extracted to one method, so we could enhance our assertions with more readable error messages with ease.</p>
+<p>The reuse of such assertion methods could be facilitated by putting them into some base class, which our test classes would need to extend.</p>
+<p>Still, I think we might do even better than this: using private methods has some drawbacks, which become more evident as the test code grows and these private methods then come to be used within many test methods:</p>
+<ol> 
+ <li>it is hard to come up with names of assertion methods that clearly state what they verify,</li> 
+ <li>as the requirements grow, such methods tend to receive additional parameters required for more sophisticated checks (already the assertThatRangeExists() takes 4 parameters, which is too much!),</li> 
+ <li>sometimes it happens that in order to be reused across many tests, some complicating logic gets introduced into such methods (usually in the form of boolean flags which make them verify - or ignore - some special cases).</li> 
+</ol>
+<p>All of this means that in the long run we will encounter some issues with the readability and maintainability of tests written with the help of private assertion methods. Let us look for another solution which would be free of these drawbacks.</p>
+<h2>Matcher Libraries</h2>
+<p>Before we move on, let us learn about some new tools. As mentioned before, the assertions provided by JUnit or TestNG are not flexible enough. In the Java world there are at least two open-source libraries which fulfil our requirements: <a href="http://joel-costigliola.github.io/assertj/">AssertJ</a> (a fork of the FEST Fluent Assertions project) and <a href="http://hamcrest.org/">Hamcrest</a>. I prefer the first one, but it is a matter of taste. Both look very powerful, and both allow one to achieve similar effects. The main reason I prefer AssertJ over Hamcrest is that AssertJ's API - based on fluent interfaces - is perfectly supported by IDEs.</p>
+<p>Integration of AssertJ with JUnit or TestNG is straightforward. All you have to do is add the required imports, stop using the default assertions provided by your testing framework, and start using those provided by AssertJ.</p>
+<p>AssertJ provides many useful assertions out-of-the-box. They all share the same &quot;pattern&quot;: they begin with the assertThat() method, which is a static method of the Assertions class. This method takes the tested object as an argument, and &quot;sets the stage&quot; for further verification. Afterwards come the real assertion methods, each of them verifying various properties of the tested object. Let us take a look at a few examples:</p>
+<pre>
+assertThat(myDouble).isLessThanOrEqualTo(2.0d);
+
+assertThat(myListOfStrings).contains(&quot;a&quot;);
+
+assertThat(&quot;some text&quot;)
+       .isNotEmpty()
+       .startsWith(&quot;some&quot;)
+       .hasLength(9);</pre>
+<p>As can be seen here, AssertJ provides a much richer set of assertions than JUnit or TestNG. What is more, you can chain them together – as the last assertThat(&quot;some text&quot;) example shows. One very convenient thing is that your IDE will figure out the possible methods based on the type of object being tested, and will tip you off, suggesting only those which fit. So, for example, in the case of a double variable, after you have typed assertThat(myDouble). and have pressed CTRL + SPACE (or whatever shortcut your IDE provides), you will be presented with a list of methods like isEqualTo(expectedDouble), isNegative() or isGreaterThan(otherDouble) - all making sense for double value verification. Which is actually pretty cool.</p>
+<h3><img _p="true" _href="img://4Fig1.png" alt="" src="http://www.infoq.com/resource/articles/custom-assertions/en/resources/4Fig1.png" /></h3>
+<h2>Custom Assertions</h2>
+<p>Having a more powerful set of assertions provided by AssertJ or Hamcrest is nice, but this is not really what we wanted in the case of our HourRange class. Another feature of matcher libraries is that they allow you to write your own assertions. These custom assertions will behave exactly as the default assertions of AssertJ do – i.e. you will be able to chain them together. And this is exactly what we will do next to improve our test.</p>
+<p>We will see a sample implementation of a custom assertion in a minute, but for now let's take a look at the final effect we are going to achieve. This time we will use the assertThat() method of (our own) RangeAssert class.</p>
+<pre>
+@Test
+public void shouldReturnHourlyRanges() throws ParseException {
+       // given
+       Date dateFrom = SDF.parse(&quot;2012-07-23 12:00&quot;);
+       Date dateTo = SDF.parse(&quot;2012-07-23 15:00&quot;);
+       // when
+       List&lt;Range&gt; ranges = HourlyRange.getRanges(dateFrom, dateTo);
+       // then
+       RangeAssert.assertThat(ranges)
+            .hasSize(3)
+            .isSortedAscending()
+            .hasRange(&quot;2012-07-23 12:00&quot;, &quot;2012-07-23 13:00&quot;)
+            .hasRange(&quot;2012-07-23 13:00&quot;, &quot;2012-07-23 14:00&quot;)
+            .hasRange(&quot;2012-07-23 14:00&quot;, &quot;2012-07-23 15:00&quot;);
+}</pre>
+<p>Some of the advantages of custom assertions can be seen even in such a tiny example as the one above. The first thing to notice about this test is that the //then part has definitely become smaller. It is also quite readable now.</p>
+<p>Other advantages will manifest themselves when applied to a larger codebase. Were we to continue using our custom assertion, we would notice that:</p>
+<ol> 
+ <li>It is very easy to reuse them. We are not forced to use all assertions, but we can select only those which are important for a specific test case.</li> 
+ <li>The <a href="http://en.wikipedia.org/wiki/Domain-specific_language">DSL</a> belongs to us, which means that for specific test scenarios we could change it according to our liking (e.g. pass Date objects instead of Strings) with ease. What is more important is that such a change would not affect any other tests.</li> 
+ <li>High readability - there is no problem with finding the right name for a verification method, because the assertion consists of many small assertions, each of them focused on just one very small aspect of the verification.</li> 
+</ol>
+<p>Compared to private assertion methods, the only disadvantage of the custom assertion is that you have to put more work in to create them. Let us have a look at the code of our custom assertion to judge whether it really is such a difficult task.</p>
+<p>To create a custom assertion we should extend the AbstractAssert class of AssertJ or one of its many subclasses. As shown below, our RangeAssert extends the ListAssert class of AssertJ. This makes sense, because we want our custom assertion to verify the content of a list of ranges (List&lt;Range&gt;).</p>
+<p>Each custom assertion written with AssertJ contains code which is responsible for the creation of an assertion object and the injection of the tested object, so further methods can operate on it. As the listing shows, both the constructor and the static assertThat() method take List&lt;Range&gt; as a parameter.</p>
+<pre>
+public class RangeAssert extends ListAssert&lt;Range&gt; {
+
+  protected RangeAssert(List&lt;Range&gt; ranges) {
+    super(ranges);
+  }
+
+  public static RangeAssert assertThat(List&lt;Range&gt; ranges) {
+    return new RangeAssert(ranges);
+  }</pre>
+<p>Now let us see the rest of the RangeAssert class. The hasRange() and isSortedAscending() methods (shown in the next listing) are typical examples of custom assertion methods. They share the following properties:</p>
+<ol> 
+ <li>Both start with a call to the isNotNull() which verifies whether the tested object is not null. This guarantees that the verification won't fail with the NullPointerException message (this step is not necessary but recommended).</li> 
+ <li>They return &quot;this&quot; (which is an object of the custom assertion class – the RangeAssert class, in our case). This allows for methods to be chained together.</li> 
+ <li>The verification is performed using assertions provided by the AssertJ Assertions class (part of the AssertJ framework).</li> 
+ <li>Both methods use an &quot;actual&quot; object (provided by the ListAssert superclass), which keeps a list of Ranges (List&lt;Range&gt;) being verified.</li> 
+</ol>
+<pre>
+     private final static SimpleDateFormat SDF
+             = new SimpleDateFormat(&quot;yyyy-MM-dd HH:mm&quot;);
+
+     public RangeAssert isSortedAscending() {
+            isNotNull();
+            long start = 0;
+            for (int i = 0; i &lt; actual.size(); i++) {
+                     Assertions.assertThat(start)
+                            .isLessThan(actual.get(i).getStart());
+                     start = actual.get(i).getStart();
+            }
+            return this;
+     }
+
+     public RangeAssert hasRange(String from, String to) throws ParseException {
+            isNotNull();
+
+            Long dateFrom = SDF.parse(from).getTime();
+            Long dateTo = SDF.parse(to).getTime();
+
+            boolean found = false;
+            for (Range range : actual) {
+                   if (range.getStart() == dateFrom &amp;&amp; range.getEnd() == dateTo) {
+                           found = true;
+                   }
+            }
+            Assertions
+                   .assertThat(found)
+                   .isTrue();
+            return this;
+
+     }
+}</pre>
+<p>And what about the error message? AssertJ allows us to add it quite easily. In simple cases, like a comparison of values, it is often sufficient to use the as() method, like this:</p>
+<pre>
+     Assertions
+            .assertThat(actual.size())
+            .as(&quot;number of ranges&quot;)
+            .isEqualTo(expectedSize);</pre>
+<p>As you can see, as() is just another method provided by the AssertJ framework. Now, when the test fails, it prints the following message so that we know immediately what is wrong:</p>
+<pre>
+    org.junit.ComparisonFailure: [number of ranges]
+    Expected :4
+    Actual :3</pre>
+<p>Sometimes we need more than just the name of the tested object to understand what has happened. Let us take the hasRange() method. It would be really nice if we could print all the ranges in the event of failure. This can be done using the overridingErrorMessage() method, like this:</p>
+<pre>
+public RangeAssert hasRange(String from, String to) throws ParseException {
+       ...
+       String errMsg = String.format(&quot;ranges\n%s\ndo not contain %s-%s&quot;,
+                                    actual ,from, to);
+
+       ...
+       Assertions.assertThat(found)
+              .overridingErrorMessage(errMsg)
+              .isTrue();
+       ...
+}</pre>
+<p>Now in the event of failure we would get a very detailed error message. Its content would depend on the toString() method of the Range class. For example, it could look like this:</p>
+<pre>
+HourlyRange{Mon Jul 23 12:00:00 CEST 2012 to Mon Jul 23 13:00:00 CEST 2012},
+HourlyRange{Mon Jul 23 13:00:00 CEST 2012 to Mon Jul 23 14:00:00 CEST 2012},
+HourlyRange{Mon Jul 23 14:00:00 CEST 2012 to Mon Jul 23 15:00:00 CEST 2012}]
+do not contain 2012-07-23 16:00-2012-07-23 14:00</pre>
+<h2>Conclusions</h2>
+<p>In this article we have discussed a number of ways of writing assertions. We started with the &quot;traditional&quot; way, based on the assertions provided by testing frameworks. This is good enough in many cases, but as we saw, it sometimes lacks the flexibility needed to express the intent of the test. Next we improved things a little by introducing private assertion methods, but this also proved not to be an ideal solution. In our final attempt we introduced custom assertions written with AssertJ, and achieved much more readable and maintainable test code.</p>
+<p>If I were to offer you some advice regarding assertions, I would suggest the following: you will greatly improve your test code if you stop using assertions provided by testing frameworks (e.g. JUnit or TestNG) and switch to those provided by matcher libraries (e.g. AssertJ or Hamcrest). This will allow you to use a vast range of very readable assertions and eliminate the need to use complicated statements (e.g. looping over collections) in the //then parts of your tests.</p>
+<p>Even if the cost of writing custom assertions is very small, there is no need to introduce them just because you can. Use them when the readability and/or maintainability of your test code are endangered. From my experience, I would encourage you to introduce custom assertions in the following cases:</p>
+<ul> 
+ <li>when you find it hard to express the intent of the test with the assertions provided by matcher libraries,</li> 
+ <li>in place of creating private assertion methods.</li> 
+</ul>
+<p>My experience tells me that with unit tests, you will rarely need custom assertions. However, I'm pretty sure you will find them irreplaceable in the case of integration and end-to-end (functional) tests. They allow our tests to speak in the language of the domain (rather than that of the implementation), and they also encapsulate the technical details, making our tests much simpler to update.</p>
 <h2>About the Author</h2>
-<p><strong><img src="http://www.infoq.com/resource/articles/gentle-art-lean-startup/en/resources/YiannisMavraganis.jpg" vspace="3" hspace="3" align="left" alt="" _href="img://YiannisMavraganis.jpg" _p="true" />Yiannis Mavraganis</strong> has over 15 years of experience as software engineer, enterprise architect and SCRUM master, delivering mission critical enterprise applications. Currently, he is leading, as co-founder, a tech startup. He strongly believes that effective communication, by building trust, is the key to form hyper productive teams. Passionate with agile and lean methodologies (certified Scrum Master, APMG Agile PM practitioner, <a href="http://youtu.be/3hFjR5M_APY">public speaker</a> and curator of the <a href="http://www.meetup.com/Agile-Greece/">Greek Agile community</a>) he is also acting as independent agile coach and instructor, helping teams to improve their agility index. Yiannis is 2 times Brazilian Jiu-Jitsu <a href="http://ibjjf.org/championship/european-open-jiu-jitsu-championship/">European champion</a> (1st place/2010, 2nd place/2012). More info about Yiannis can be found <a href="http://about.me/ymavraganis">here</a>.</p><br><br><br><br><br><br></body></html>
+<p><strong><img vspace="3" hspace="3" align="left" _p="true" _href="img://1tomek_kaczanowski_250.png" alt="" src="http://www.infoq.com/resource/articles/custom-assertions/en/resources/1tomek_kaczanowski_250.png" />Tomek Kaczanowski</strong> works as Java developer for CodeWise (Krakow, Poland). He is focused on code quality, testing and automation. Test infected TDD enthusiast, open-source proponent, agile worshipper. Strong inclination towards sharing his knowledge. <a href="http://practicalunittesting.com">Book author</a>, <a href="http://kaczanowscy.pl/tomek">blogger</a> and conference speaker. Twitter: @tkaczanowski</p><br><br><br><br><br><br></body></html>

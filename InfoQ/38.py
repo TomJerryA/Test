@@ -1,13 +1,16 @@
-<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>Windows Phoneアプリの認証エラーとその回避手段</h3><p><a target="_blank" href="http://www.infoq.com/news/2014/01/win-phone-certification-errors"><em>原文(投稿日：2014/01/11)へのリンク</em></a></p>
+<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>GoogleのBigQueryが勢いづく</h3><p><a target="_blank" href="http://www.infoq.com/news/2014/02/bigquery-gaining-momentum"><em>原文(投稿日：2014/02/14)へのリンク</em></a></p>
 <div class="article_page_left news_container text_content_container"> 
  <div class="text_info"> 
-  <p><a href="http://www.windowsphone.com/en-in">Windows Phone</a> Storeの認証およびポリシチームは，開発フェーズ中に開発者が犯すことの多い規約不履行に関するリストを公開した。アプリケーションのリリース遅延の原因やコスト要因ともなる，そのようなエラーを回避するためのステップも合わせて提供している。まず第一の要件は，アプリケーションのスクリーンショットに関するものだ。スクリーンショットにはエミュレータのクロムやフレームレートカウンタ，あるいは修正前後を問わずデバッグ情報を含んではならない。またWindows 8 SDKには，WVGA，XVGA，720pの解像度を持つエミュレータが添付されている。スクリーンショットの取得には，このエミュレータに組み込まれたスクリーンショットツールを使用する必要がある。</p> 
-  <p>さらにWVGA解像度の<a href="http://msdn.microsoft.com/en-us/library/windowsphone/develop/hh184844(v=vs.105).aspx">スクリーンショット</a>は，XVGAスクリーンショットを自動的にWVGAの解像度にスケールダウンしてくれる，Dev Centerの機能を使用して取得することが必要だ。さらにローカライズしたアプリを提供する場合は，サポートする言語それぞれのスクリーンショットを含めなければならない。</p> 
-  <p><a href="http://msdn.microsoft.com/en-us/library/windowsphone/develop/hh184840(v=vs.105).aspx">ログイン</a>認証の必要なアプリを提出する場合には，Dev Centerに提出資料する認定資料にダミーアカウントに関する詳細を添付して，評価チームがアプリケーションの完全なテストを行えるようにする必要がある。この情報を提供しないアプリケーション申請は拒否され，再申請を求められることになるため，結果的にアプリのリリースが遅れることになる。</p> 
-  <p>開発者としては，<a href="https://www.bugsense.com/">BugSense</a>や<a href="http://blogs.msdn.com/b/andypennell/archive/2010/11/01/error-reporting-on-windows-phone-7.aspx">Little Watson</a>など，処理されない例外の遠隔データを収集可能なツールを活用して，テストフェーズ中にアプリが予期せず<a href="http://msdn.microsoft.com/en-us/library/windowsphone/develop/hh184840(v=vs.105).aspx">終了</a>することを回避する措置を取ることも必要だ。</p> 
-  <p>Visual StudioやApp Studio，<a href="http://cordova.apache.org/">Apache Cordova</a>には，アプリケーションで利用可能なアイコンとタイル画像が提供されている。しかしデフォルトイメージは必要なサイズのみをピンポイントで用意しているので，Microsoftでは，自分で用意したイメージで置き換えることを推奨している。</p> 
-  <p>Microsoftによれば，「戻る」ボタンがアプリをクローズするのはメインページのみでなければならない。それ以外では，前のページに移動するのみにする必要がある。開いているダイアログとソフトキーボードをクローズすることも必要だ。</p> 
-  <p>Microsoftは開発者に，サポート対象の言語それぞれに対して，組み込みのエミュレータを使用して，ローカライズされたアプリの説明を添付することを推奨している。さらに「明るい」テーマと「暗い」テーマの両方でプロパティを表示可能なように，アプリを開発する必要がある。Visual Studioを使用していれば，開発ステージからこれらのテーマを簡単に切り替えることが可能だ。</p> 
-  <p>Windows Phone Store認証およびポリシチームの<a href="http://blogs.windows.com/windows_phone/b/wpdev/archive/2014/01/10/top-windows-phone-app-certification-failures-and-how-to-avoid-them.aspx">Mike Francis</a>氏は，現在のアプリのテーマをテストするために必要なコードを，windowsアプリ品質向上のヒントと合わせて提供している。</p> 
+  <p><a href="https://developers.google.com/bigquery/what-is-bigquery">Googleが提供するSaaS型のデータストア</a>であるBigQueryが勢いづいているようだ。BigQueryを使うとクラウド上の<a href="https://cloud.google.com/developers/articles/bigquery-in-practice">大規模な列指向のデータ構造</a>に問い合わせが実行できる。開発者はデータを<a href="https://developers.google.com/storage/">Google Cloud Storage</a>(Amazon S3のようなもの)経由でBigQueryへロードするか、<a href="https://developers.google.com/bigquery/streaming-data-into-bigquery">ストリームとしてデータを投入</a>し、SQLライクな言語を使ってOLAPスタイルの問い合わせを実現できる。</p> 
+  <p>実際に利用した人がBigQueryの利用経験を共有し始めている。例えば、Shine TechnologiesのGraham Polley氏に<a href="http://blog.shinetech.com/2014/01/18/reeling-in-big-data-using-googles-bigquery/">よれば</a>、</p> 
+  <blockquote>
+   テストでBigQueryを使ってみることにしました。データは15億行もあります。とても面白そうなテストになると思いました。果たしてGoogleの&quot;数十億行の大規模データをインタラクティブに分析できる&quot;というセールストークは本当なのか。結果は驚くべきことに本当でした。本当に驚きました。キャッシュを使っていなくても(キャッシュはドグルで有効無効を切り替えられます)、15億行のデータに対する比較的複雑な集計問い合わせが20秒から25秒で返ってきました。
+  </blockquote> 
+  <p>BigQueryはスタンドアロンでも使えるが、<a href="https://developers.google.com/apps-script/articles/bigquery_tutorial">Google Apps Script</a>やGoogle Analyticsと連携させることもできる。Analyticsとの連携については、Jonathan Weber氏(LunaMetricsのデータエバンジェリスト)が<a href="http://www.lunametrics.com/blog/2014/01/27/google-analytics-bigquery-whys-hows/">有益な情報</a>を提供している。</p> 
+  <blockquote>
+   まず、BigQueryのエクスポートはGoogle Analyticsのプレミアムカスタマーだけが使えいます。プレミアムアカウントの管理者にお願いして、BigQueryのエクスポート機能を有効にしてもらう必要があります。また、BigQueryのストレージとプロセッシングにはコストがかかることも知っておかなければなりません。しかし、Google Analyticsのプレミアムユーザの場合は月額500ドルのクレジットを使って支払いができます。多くの場合、500ドルもあれば十分です。BigQueryを利用している私たちの顧客の場合、サイトには月間で600万の訪問があり、5000万のページビューがあります。データは9月からエクスポートしていますが、今月の請求は12.86ドルでした。
+   <br /> 
+  </blockquote> 
+  <p>BigQueryはクラウドベースのソリューションとして利用できるが、BigQueryの基盤となっている技術(<a href="http://research.google.com/pubs/pub36632.html">Dremel</a>)は多くのApache DrillやImpalaのような<a href="http://www.infoq.com/news/2013/12/open-source-sql-hadoop-solutions">オープンソースのSQL-in-Hadoopソリューション</a>で使われている。</p> 
  </div> 
 </div><br><br><br><br><br><br></body></html>

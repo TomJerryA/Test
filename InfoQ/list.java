@@ -2,7 +2,37 @@
  <head></head> 
  <body>
   <div>
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/22.java">Xamarin Sifts through Enterprise SAP Data</a>Xamarin and SAP Americas announced at MWC 2014 today a partnership aiming to provide .NET mobile developers the necessary tools to access and integrate enterprise SAP data into their applications.
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/32.java">Having Actions Done from Retrospectives</a>Agile retrospectives help teams to find and do actions to improve continuously. There are different ways to do follow up on the actions and to evaluate if actions are leading to better team performance and more value delivered to customers.
+  </div>
+  <div>
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/31.java">Scaling The Happiness Index</a>A report on how happiness index could be scaled out from team level to organization level. Frank Schlesinger, Corinna Baldauf and Stowe Boyd shared their experiences of scaling the happiness index and tools for implementation.
+  </div>
+  <div>
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/30.java">Q&amp;A with VersionOne CEO Robert Holler – Agile Live Webinars</a>InfoQ spoke to VersionOne CEO Robert Holler about their Agile Live Webinar series
+  </div>
+  <div>
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/29.java">Going Offline with LocalForage</a>The Mozilla Foundation has released localForage, a new JavaScript library that promises to simplify the process of storing offline data in web applications. What makes this library unique is the fact that it tries to combine the best of both worlds: the features of some more recent technologies (asynchronism and blob support) with a simple API.
+  </div>
+  <div>
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/28.java">Mono JIT, GC Get Better</a>Mono 3.2.7 is out, with a lot of new features such as an improved JIT, new interpreter for LINQ, use of native instructions for 64 bits, and more.
+  </div>
+  <div>
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/27.java">Anypoint for APIs: An Interview with Uri Sarid</a>MuleSoft recently released a significant upgrade to their Anypoint platform for APIs which brings together API design, collaboration and API management features. InfoQ interviewed MuleSoft CTO, Uri Sarid to find out more about the platform.
+  </div>
+  <div>
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/26.java">New Gem Creates Test Boilerplate for Chef Cookbooks</a>Meez is a new gem that will help get started with test-driven infrastructure for Chef cookbooks. It creates all the boilerplate necessary to assess a cookbook’s quality using tools such as Test Kitchen, Foodcritic, ChefSpec and others, allowing the user to focus on writing actual tests and infrastructure code.
+  </div>
+  <div>
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/25.java">Nokia X Marks Another Android Fork</a>This article overviews the latest most important Android forking attempts which offer developers new opportunities but also some challenges.
+  </div>
+  <div>
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/24.java">IDE Integrated Search Engines</a>New tools are bringing the web directly into a programmer's IDE. As search engines continue to compete for customers, new programming-specific search functionality has been produced for Visual Studio users.
+  </div>
+  <div>
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/23.java">Agile 2014 Keynote Speakers Announced</a>The Agile Alliance has announced keynote speakers who will present at the Agile 2014 conference in Orlando, FL, USA. They are Aneesh Chopra, former and first U.S. Chief Technology Officer, Diana Larsen, author, consultant and an authority on agile adoption, and Bjarte Bogsnes a leader in the Beyond Budgeting community
+  </div> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/22.java">Xamarin Sifts through Enterprise SAP Data</a>Xamarin and SAP Americas announced at MWC 2014 today a partnership aiming to provide .NET mobile developers the necessary tools to access and integrate enterprise SAP data into their applications. 
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/21.java">CQRS Framework Axon 2.1 with Increased Event Handler Support and Performance Improvements</a>Version 2.1 of CQRS framework Axon supports annotations and ordering of event handlers, a new conflict resolution together with performance improvements. The recently released version also adds compatibility with OSGi. 
@@ -120,36 +150,6 @@
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/37.java">DevOps Cafe Podcast on the QCon London 2014 DevOps track.</a>Last DevOps Cafe Podcast (Episode 47) previewed the QCon London 2014 DevOps track. Manuel Pais and Shane Hastie, the track hosts, explained the rationale behind the track's session selection, the speakers introduced their talks and there was still time to discuss other topics, such as the importance of the scientific method and how agile's definition of &quot;done&quot; must be adapted in a DevOps world. 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/36.java">CoffeeScript 1.7</a>Jeremy Ashkenas has released version 1.7 of CoffeeScript, and with it introduced some highly anticipated changes to the popular JavaScript transpiler. Version 1.7 includes one of the most popular requests for the language; support for chaining without parenthesis. 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/35.java">iOS Auto Layout with Masonry</a>Open Source project Masonry aims to make Auto Layout code more concise and readable. Masonry, “a light-weight layout framework which wraps Auto Layout with a nicer syntax”, enables a XIB- and Storyboard-free experience. 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/34.java">Getting the Avengers with Marvel Comics API</a>Recently, Marvel has made available a public API and a RESTful service which provides access to their comics metadata. 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/33.java">Interactive SQL in Apache Hadoop with Impala and Hive</a>In the race for interactive SQL in Big Data environments, there are two open source based front-runners, Impala and Hive with the Stinger project. Cloudera recently announced that Impala is up to 69 times faster than Hive 0.12 and can outperform DBMS. Other than raw speed, we take a look at other considerations in choosing a SQL engine for Hadoop and also Tez, an application framework for YARN. 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/32.java">Weathr, a Comprehensive Demonstration of C++ 14, DirectX, and XAML</a>Weathr is a fully functional 3D weather app that demonstrates the use of modern C++ (both ISO and C++/CX), DirectX, and XAML. It also shows the use of PPL and lambda expressions for asynchronous communication with REST-based servers. 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/31.java">First CTP Released for Visual Studio 2013 Update 2</a>A CTP has been released for the second upcoming update to Visual Studio 2013. This CTP brings updates to several areas and provides several new and expanded features unlike Update 1. 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/30.java">Microsoft OpenTech Brings SQLite to Windows Phone and Windows Store</a>Microsoft is now offering an official version of SQLite for Windows Phone, Windows Store, and .NET 4.5. The library is available as a Portable Class Library, so developers can use as a basis for their own portable libraries. 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/29.java">Build Web, Hybrid or Native Web Apps with Telerik Platform</a>Telerik Platform provides a mechanism to build web, hybrid and native based iOS, Android and Windows Phone apps either using web based dashboard, desktop or Visual Studio. 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/28.java">Resources to Start Developing for Firefox OS</a>Firefox OS pursues “the goal of building a complete, standalone operating system for the open web” and lets users install and run applications created using HTML, CSS, and JavaScript. It is based on Linux and Mozilla's Gecko and is a completely open stack that is 100 per cent free from proprietary technology. It allows developers to contribute to its code base or develop mobile apps. 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/27.java">Plugins Provide New Customizations to VS2013</a>New extensions AutoHistory and File Nesting bring some interesting usability enhancements to Visual Studio 2013. Read on for how they provide new ways to customize your editing experience. 
-  </div>  
+  </div>           
  </body>
 </html>

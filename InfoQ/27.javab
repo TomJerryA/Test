@@ -1,98 +1,58 @@
-<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>Cassandra CLI Internals Using JArchitect</h3><p>Relational Database Management Systems (RDBMS) are the most commonly used systems to store and use data, but for extremely large amounts of data, these databases don’t scale up well.</p>
-<p>The concept of <a href="http://en.wikipedia.org/wiki/NoSQL">NoSQL</a> has been gaining lot of popularity in the recent years due to the growing demand for relational database alternatives. The biggest motivation behind NoSQL is scalability. NoSQL database solutions offer a way to store and use extremely large amounts of data, but with less overhead, less work, better performance, and less downtime.</p>
-<p><a href="http://cassandra.apache.org/">Apache Cassandra</a> is a Column based NoSQL database. It was developed at Facebook to power their Inbox Search feature, and it became an Apache open source project. <a href="http://nosql.mypopescu.com/post/407159447/cassandra-twitter-an-interview-with-ryan-king#_blank">Twitter</a>, <a href="http://nosql.mypopescu.com/post/441535855/digg-going-the-cassandra-way#_blank">Digg</a>, Reddit and quite a few other organizations started using it.</p>
-<p>Cassandra ships with a very basic interactive command line interface (CLI). Using the CLI you can connect to remote nodes in the cluster to create or update your schema and set and retrieve records.</p>
-<p>The CLI is a useful tool for Cassandra administrators, and even if it provides only basic commands, it’s a good example to know how to implement a Cassandra client. We have to understand how the CLI works internally to develop our custom Cassandra clients or even extend the CLI tool.</p>
-<p>In this article, we will explore Cassandra CLI architecture model using the <a href="http://www.jarchitect.com">JArchitect</a> tool and the CQLinq language to analyze its code base. JArchitect tool is used to analyze code structure and specify design rules to achieve better code quality. With JArchitect, software quality can be measured using code metrics, visualized using graphs and treemaps, and enforced using standard and custom rules.</p>
+<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>Interview and Book Review of The Technical and Social History of Software Engineering</h3><p>Capers Jones wrote the book The Technical and Social History of Software Engineering in which he provides an overview of the evolution of information technology and software development.</p>
+<p>The book starts by describing the human drive towards faster computation, followed by 9 chapters that cover developments in software engineering from 1930 until 2010.</p>
+<p>Major software failures that have happened in these years are explored in a separate chapter.&nbsp;The final chapter of the book describes ongoing developments and provides a projection of the future until 2019.</p>
+<p>InfoQ interviewed Capers about advancements and events in software engineering and the effects that they have had on our society.&nbsp;</p>
+<p><b>InfoQ: What made you decide to write this book?</b>&nbsp;</p>
+<blockquote> 
+ <p><b>Capers:</b> In 2006 after we had lived in Rhode Island for six years I wrote The History and Future of Narragansett Bay, which covered local history from before the last ice age through modern times. It was fun to write. Since I have worked in software since 1965 I thought it would also be fun to write a history of our industry, and it was enjoyable. Out of my 16 books 14 are technical books on software management topics and two are histories, Narragansett Bay and The Technical and Social History of Software Engineering. I may write another history book on “lost technologies” such as Incan stone work and the antikythera mechanism.</p> 
+</blockquote>
 <div id="lowerFullwidthVCR"></div>
-<p>Here’s the dependency graph after analysis:</p>
-<p><img src="http://www.infoq.com/resource/articles/cassandra-cli-internals/en/resources/1Fig1.png" alt="" _href="img://1Fig1.png" _p="true" /></p>
-<p>Cassandra uses some known jars like antlr, log4j, slf4j, commons-lang, and also some less known jars like the following:</p>
-<ul> 
- <li><a href="http://thrift.apache.org/">Libthrift</a>: it’s an API spanning a variety of programming languages and use cases. The goal is to make reliable, performant communication and data serialization across languages as efficient and seamless as possible.</li> 
- <li><a href="https://code.google.com/p/snakeyaml/">Snakeyaml</a> : YAML is a data serialization format designed for human readability and interaction with scripting languages. Cassandra us this format for its configuration files.</li> 
- <li><a href="http://jackson.codehaus.org/">Jackson</a>: A High-performance JSON processor.</li> 
- <li><a href="https://code.google.com/p/snappy/">Snappy</a>: The snappy-java is a Java port of the snappy, a fast compresser/decompresser written in C++, originally developed by Google.</li> 
- <li><a href="https://github.com/stephenc/high-scale-lib">High-scale-lib</a>: A collection of Concurrent and Highly Scalable Utilities. These are intended as direct replacements for the java.util.* or java.util.concurrent.* collections but with better performance when many CPUs are using the collection concurrently.</li> 
-</ul>
-<p>The Matrix view below gives us more details about the dependency weight between these JAR files.</p>
-<p><img src="http://www.infoq.com/resource/articles/cassandra-cli-internals/en/resources/Fig2.png" alt="" _href="img://Fig2.png" _p="true" /></p>
-<h2>Cassandra Command Line Interface</h2>
-<p>The command line interface logic is implemented in org.apache.cassandra.cli package, and the entry point is the CliMain class.</p>
-<p>Let’s search for the methods invoked from the main method by using the following CQLinq query:&nbsp;</p>
-<pre><font color="#0000ff">from</font> m <font color="#0000ff">in</font> Methods <font color="#0000ff">where</font> m.IsUsedBy (<font color="#800000">&quot;org.apache.cassandra.cli.CliMain.main(String[])&quot;</font>) <br /><font color="#0000ff">select new</font> { m, m.NbBCInstructions }<span style="font-family: Arial, Verdana, sans-serif; font-size: 12px;">&nbsp;</span></pre>
-<p><img src="http://www.infoq.com/resource/articles/cassandra-cli-internals/en/resources/Fig3.png" alt="" _href="img://Fig3.png" _p="true" /></p>
-<p>The main method uses <a href="http://jline.sourceforge.net/">JLine</a> which is a Java library for handling console input. It can be used to write nice CLI applications without much effort. It has out of the box support for Command History, Tab completion, Line editing, Custom Key Bindings, and Character masking.</p>
-<p>And two interesting methods are used from the main method are:</p>
-<ul> 
- <li>connect: The connect method is used to connect to the Cassandra database server.</li> 
- <li>processStatetementInteractive: This method is used to execute commands from the user.</li> 
-</ul>
-<p><img src="http://www.infoq.com/resource/articles/cassandra-cli-internals/en/resources/Fig4.png" alt="" _href="img://Fig4.png" _p="true" />&nbsp;</p>
-<p>&nbsp;</p>
-<h2>Communication between CLI and Cassandra Server</h2>
-<p>Before interacting with Cassandra server the client must connect to it using the connect method.</p>
-<p>Let’s search for all methods used directly or indirectly by the connect method:</p>
-<pre><font color="#0000ff">from</font> m <font color="#0000ff">in</font> Methods<br /><font color="#0000ff">let</font> depth0 = m.DepthOfIsUsedBy(<font color="#800000">&quot;org.apache.cassandra.cli.CliMain.connect(String,int)&quot;</font>)<br /><font color="#0000ff">where</font> depth0 &gt;= <font color="#ffff00">0</font> <font color="#0000ff">orderby</font> depth0<br /><font color="#0000ff">select new</font> { m, depth0 }</pre>
-<p><img src="http://www.infoq.com/resource/articles/cassandra-cli-internals/en/resources/Fig5.png" alt="" _href="img://Fig5.png" _p="true" /></p>
-<p>The CLI communicates with the server using Thrift library which allows you to define the data types and service interfaces in a simple definition file. Taking that file as input, the compiler generates code to be used to easily build RPC clients and servers that communicate seamlessly across programming languages. Instead of writing a lot of boilerplate code to serialize and transport your objects and invoke remote methods, you can get right down to business.</p>
-<p>Here’s a simple example of an implementation of a Thrift server:</p>
-<pre>
-public class Server {<br />
-       public static class SomethingHandler implements Something.Iface {<br />
-              public SomethingHandler() {}<br />
-              public int ping() {<br />
-                     return 1;<br />
-                     }<br />
-       }<br />
-public static void main(String [] args) {<br />
-       SomethingHandler handler = new SomethingHandler();<br />
-       Something.Processor processor = new Something.Processor(handler);<br />
-       TServerTransport serverTransport = new TServerSocket(9090);<br />
-       TServer server = new TSimpleServer(processor, serverTransport);<br />
-       //Or Use this for a multithreaded server<br />
-       // server = new TThreadPoolServer(processor, serverTransport)<br />
-       server.serve();<br />
-}<br />
-}</pre>
-<p>The Thrift server implements org.apache.thrift.server.TServer interface and the constructor of its implementation takes as parameters a processor and a server transport specification. The processor needs a handler to treat the incoming requests.</p>
-<p>Let’s discover all these elements in the Cassandra server. For that we can begin by searching all classes that inherit from TServer class.</p>
-<pre><font color="#0000ff">from</font> t <font color="#0000ff">in</font> Types<br /><font color="#0000ff">let</font> depth0 = t.DepthOfDeriveFrom(<font color="#800000">&quot;org.apache.thrift.server.TServer&quot;</font>)<br /><font color="#0000ff">where</font> depth0 &gt;= <font color="#ffff00">0</font> <font color="#0000ff">orderby</font> depth0<br /><font color="#0000ff">select new</font> { t, depth0 }</pre>
-<p><img src="http://www.infoq.com/resource/articles/cassandra-cli-internals/en/resources/Fig6.png" alt="" _href="img://Fig6.png" _p="true" /></p>
-<p>Cassandra defines:</p>
-<p>CustomTThreadPoolServer: It’s a slightly modified version of the Apache Thrift TThreadPoolServer which would use a thread pool to serve incoming requests.</p>
-<p>CustomTHsHaServer: The goal of this server is to avoid sticking to one CPU for IO's. For better throughput it is spread across multiple threads. Number of selector threads can be the number of CPUs available.</p>
-<p>CustomTNonBlockingServer: which uses a nonblocking socket transport.</p>
-<p>And here’s what happens when the ThriftServer is started:</p>
-<p><img src="http://www.infoq.com/resource/articles/cassandra-cli-internals/en/resources/Fig7.png" alt="" _href="img://Fig7.png" _p="true" /></p>
-<p>A factory is used to create a TServer and the CassandraSever handler is created to treat incoming requests, it implements Cassandra.Iface which contains all commands supported by Cassandra. Below diagram shows some of these methods:</p>
-<p>&nbsp;</p>
-<p><img src="http://www.infoq.com/resource/articles/cassandra-cli-internals/en/resources/Fig8.png" alt="" _href="img://Fig8.png" _p="true" /></p>
-<p>As shown in the previous Thrift server example, we need the processors to process incoming requests; all these processors inherit from ProcessFunction.</p>
-<p>Here are some Cassandra processors:</p>
-<p><img src="http://www.infoq.com/resource/articles/cassandra-cli-internals/en/resources/Fig9.png" alt="" _href="img://Fig9.png" _p="true" /></p>
-<p>After discovering the Cassandra thrift server parts, let’s come back to the client and discover what happen when the connect method is invoked from the main method.</p>
-<p><img title="clip_image014" style="border-left-width: 0px; border-right-width: 0px; border-bottom-width: 0px; display: inline; border-top-width: 0px" border="0" alt="clip_image014" src="http://www.infoq.com/resource/articles/cassandra-cli-internals/en/resources/Fig10.png" _href="img://Fig10.png" _p="true" /></p>
-<p>The <strong>org.apache.thrift.TServiceClien</strong><strong>t</strong> is used to communicate between the client and the server, and the method sendBase is invoked to send a message to the thrift server.</p>
-<p>On the server, the login processor receives this request and invokes the login method.</p>
-<p><img src="http://www.infoq.com/resource/articles/cassandra-cli-internals/en/resources/Fig11.png" alt="" _href="img://Fig11.png" _p="true" /></p>
-<p>And here’s the dependency graph showing some methods invoked from the login method.</p>
-<p><img src="http://www.infoq.com/resource/articles/cassandra-cli-internals/en/resources/Fig12.png" alt="" _href="img://Fig12.png" _p="true" /></p>
-<p>Steps to extend the CLI by adding a new method MyMethod.</p>
-<p>After discovering how the CLI works internally, we can easily add a new method to it, and here are the major steps needed to do it:</p>
-<p>I – extending the server:</p>
-<ul> 
- <li>Add the method to <strong>Cassandra.Iface</strong></li> 
- <li>Add the method implementation to the <strong>CassandraServer</strong> class</li> 
- <li>Add a new class <strong>Cassandra.Processor.MyMethod&lt;l&gt;</strong> inheriting from <strong>ProcessFunction&lt;T&gt;</strong>.</li> 
- <li>Add an instance of the new processor in the Map returned by the <strong>Cassandra.Processor&lt;l&gt;.getProcessMap</strong> method.</li> 
-</ul>
-<p>II- Extending the client:</p>
-<ul> 
- <li>Add a new switch and process it from <strong>CliOptions.processArgs</strong> method.</li> 
- <li>Add a method to the <strong>Cassandra.Client</strong> class and invoke the server by using the <strong>TServiceClient.sendBase</strong> method.</li> 
-</ul>
-<h2>Conclusion</h2>
-<p>The command line interface is a good example to learn how to implement a Cassandra client, and learn from real projects is preferable than just search for samples in the web.&nbsp;So to develop a Cassandra client don’t hesitate to go inside its source code and enjoy.</p>
-<h2>About the Author</h2>
-<p><strong>Dane Dennis</strong> is the JArchitect Product Manager. He works at <a href="http://www.codergears.com">CoderGears</a>, a company developing tools for developers and architects.</p><br><br><br><br><br><br></body></html>
+<p><b>InfoQ: Why did you focus on the &quot;technical&quot; and the &quot;social&quot; aspects, why these?</b></p>
+<blockquote> 
+ <p><b>Capers:</b> The main incentive for my book was Paul Starr’s 1982 book entitled The Social Transformation of American Medicine. His book won a Pulitzer Prize in 1982. Until I read it I did not know that medicine was even more chaotic and unprofessional than software. Medical schools used to have two-year curricula and did not require college or even high school graduation. Students never entered hospitals. There were no licenses or board certification and no way to distinguish malpractice. Harmful substances such as arsenic and opium could be prescribed. We have similar problems in software. Software has had a rich social history and has been a pioneer in gender equality compared to older forms of engineering. Many important social organizations have been created such as the ACM, IEEE software and computing groups; SHARE, GUIDE, and COMMON, social networks such as Facebook and Twitter, and many more.</p> 
+</blockquote>
+<p><b>InfoQ: Going back in time, when was the first software program written and what did it look like?</b></p>
+<blockquote> 
+ <p><b>Capers:</b> This is not easy because sequential instructions have been used in mechanical devices such as the Jacquard loom for hundreds of years. Analog sequences have been in use for thousands of year. Probably Ada Lovelace, for whom the Ada language is named, wrote the first sequence of instructions that might resemble modern programs. It was written for the analytical engine of Charles Babbage circa 1842. Ada was the daughter of the poet Lord Byron. When I entered programming myself we still used punched cards or paper tape and wrote either in machine language or basic assembly language.</p> 
+</blockquote>
+<p><b>InfoQ: Where does the term &quot;software engineering&quot; come from? Why &quot;engineering&quot;?</b></p>
+<blockquote> 
+ <p><b>Capers:</b> The term software engineering was used at the well-known NATO software engineering conference in 1968, partly to be provocative and partly to add status to software. In 1958 a mathematician and statistician from Bell Labs named John Wilder Tukey used the word “software” in a paper. This was in the context of being a separate entity from “hardware.” This is the first known use of the word “software” in a computer context.</p> 
+ <p>Also interesting is the word “computer.” This was a common term in the 1940’s but it was a job description for a mathematician who performed various kinds of calculations. Many of these human computers were women because in those days women were paid less. When the ENIAC computer was being finished in 1945 six women “computers” were hired to program it, and the term “computer” morphed from a job description for a human to the device that did the calculations.</p> 
+</blockquote>
+<p><b>InfoQ: Software engineering education has changed during the years, and is still changing. What is the current state, and what can we expect in the (near) future to happen?</b></p>
+<blockquote> 
+ <p><b>Capers:</b> When I entered college in 1956 there were no computers on campus; no computer science program; and no software engineering program. All of these evolved over the next decade and beyond. To learn programming I had to attend courses at IBM because none were offered at universities. Future education will probably be in the form of virtual reality campuses where avatars of students and professors meet and have access to every known publication and all leading tool suites.</p> 
+</blockquote>
+<p><b>InfoQ: Many people have lost their jobs when computer came in to automate the work. But IT also created new jobs. During the years, did we lose more jobs due to computers, or did the number of jobs actually increase?</b></p>
+<blockquote> 
+ <p><b>Capers:</b> The net loss of clerical jobs was smaller than anticipated because many clerks who handled paper documents became data entry personnel. Software has created more jobs than have been eliminated, including entirely new kinds of jobs such as agile coaches, data base experts, and software quality assurance specialists. Today we have about 128 occupation groups involved with software in large companies.</p> 
+</blockquote>
+<p><b>InfoQ: What is the biggest software system that has ever been built? </b></p>
+<blockquote> 
+ <p><b>Capers:</b> This question as stated is not answerable because countries such as Russia and China are not going to tell us about their largest systems. Several defense applications have topped 300,000 function points and several commercial ERP packages are in the 250,000 function point size range. My taxonomy runs like this: &lt; 10 function points are very small; 10 to 100 are small; 100 to 1000 are medium; 1000 to 10,000 are large; 10,000 to 100,000 are very large; over 100,000 function points are extremely large.</p> 
+</blockquote>
+<p><b>InfoQ: What made it possible to develop and maintain such a large system and complex system?</b></p>
+<blockquote> 
+ <p><b>Capers:</b> Quality control and change control are weak links. Architecture and design are weak links. Gathering and analyzing requirements for massive applications is also a weak link. The industries that solved these problems first were those that build and operate complex physical devices such as computers, airplanes, and telephone switching systems. They all have top-notch quality control and top-notch change control. Banks, insurance, and companies that deal with information rather than physical devices have lagged in quality and change control.</p> 
+</blockquote>
+<p><b>InfoQ: There have been several major quality problems with software systems. Can you name some? What have we learned from examining those issues?</b></p>
+<blockquote> 
+ <p><b>Capers:</b> Quality problems are endemic. The most basic problem is depending too much on testing and not using effective methods of defect prevention and pre-test defect removal such as static analysis and formal inspections prior to testing. Also a common failing is not measuring quality. I use defect removal efficiency (DRE) or the percentage of bugs found before release. The current U.S. average is &lt; 90% but best in class results are above 99%. You can’t get much above 90% DRE from testing alone. To hit 99% inspections and static analysis are needed before testing starts.</p> 
+</blockquote>
+<p><b>InfoQ: Your book mentions many software and computer companies. Can you name some that stood out, that were in some way different from the others? Did they survive being different?</b></p>
+<blockquote> 
+ <p><b>Capers:</b> The software industry has created new wealth far beyond anything the pioneers envisioned. Companies that combine wealth and technical innovations include Apple, Google, IBM, Microsoft, Oracle, and SAP although there are many others. We are far from being finished with either innovation or wealth creation as an industry.</p> 
+</blockquote>
+<p><b>InfoQ: Looking back, can you name some of the significant breakthroughs or innovations in software development? What have they brought us?</b></p>
+<blockquote> 
+ <p><b>Capers:</b> This is why I wrote a book that covers these breakthroughs in hundreds of pages. In a nutshell structured design and development, higher level languages, better methods such as agile, RUP, and TSP, and better quality control via pre-test inspections and static analysis. However manual programming is intrinsically expensive and error prone, so construction from standard parts to achieve higher levels of software reuse will become even more important.</p> 
+</blockquote>
+<p><b>InfoQ: Which technical or social topics do you expect to dominate software engineering in the coming 5-10 years? Why these?</b></p>
+<blockquote> 
+ <p><b>Capers:</b> The book itself has a chapter that runs from 2010 to 2019 with my predictions for future changes. Among these will be ever-increasing numbers of cyber attacks by both hostile governments and also by organized crime. On the good side will be new and interesting kinds of social networks; better training methods; big data; and increasingly powerful kinds of predictive analytics.</p> 
+</blockquote>
+<p>You can download an excerpt from the book <a href="/resource/articles/technical-social-history-software/en/resources/The-Technical-and-Social-History-of-Software-Engineering_excerpt.pdf" _href="resource://The-Technical-and-Social-History-of-Software-Engineering_excerpt.pdf">here</a>.</p>
+<p>This interview is based on the book, 'The Technical and Social History of Software Engineering' authored by Capers Jones, published by Pearson/Addison-Wesley Professional, Dec. 2013, ISBN 9780321903426, Copyright &copy; 2014 Pearson Education, Inc. For more info, please visit the <a href="http://www.informit.com/store/technical-and-social-history-of-software-engineering-9780321903426">publisher website</a>.</p>
+<h2>About the Book Author</h2>
+<p><strong><img src="http://www.infoq.com/resource/articles/technical-social-history-software/en/resources/Capers-Jones.png" vspace="3" hspace="3" align="left" alt="" _href="img://Capers-Jones.png" _p="true" />Capers Jones</strong> is currently vice president and chief technology officer of <a href="http://www.namcook.com/">Namcook Analytics LLC</a>. His background includes 12 years as a manager and research software engineer at IBM; four years as assistant director of programming at ITT; and 15 years as chairman of Software Productivity Research (SPR). He co-founded Namcook Analytics LLC in 2011 with his partner Ted Maroney. Capers has 16 published books and over 100 journal articles primarily covering software risk analysis, software quality control, software measurement, and software estimation. He has designed eight proprietary software estimation tools and four commercial software estimation tools.</p><br><br><br><br><br><br></body></html>

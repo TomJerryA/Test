@@ -1,48 +1,22 @@
-<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>Build Web, Hybrid or Native Web Apps with Telerik Platform</h3><p>The recently launched <a href="http://www.telerik.com/platform">Telerik Platform</a> enable developers to create interactive UI prototypes with an intuitive drag and drop interface and also facilitates real time collaboration between designers, developers and analysts in addition to a ability to export design specifications directly into app code.</p>
-<p>Telerik Platform includes set of UI tools with powerful cloud services that enables developers to build, manage, test and deploy web, hybrid or native apps. As a developer, you will be able to build apps using either browser, desktop or Visual Studio. It make use of custom logic to manage backend data and includes dedicated user management, authentication and push notifications in addition to cross platform testing tools which discovers problems before they affect users.</p>
-<p><a href="https://platform.telerik.com">Telerik Platform</a> facilitates public and enterprise app store publishing and enable developers to deploy iOS and Android apps without the need for provisioning. It has built-in mechanism to collect usage and demographic data in addition to web based reports with alerts. The platform works with iOS, Android, Windows Phone, Windows and Blackberry platforms and is compatible with .NET, JavaScript/HTML5, Java JSP and PHP technologies.</p>
-<p>In an exclusive interview with InfoQ, <a href="http://www.linkedin.com/pub/gabe-sumner/8/596/b3b">Gabe Sumner</a>, Product Marketing Manager, Telerik shared more information about the recently released platform for web, hybrid and native environments.</p>
-<p><strong>InfoQ: What is the key difference between Web, Hybrid and Native platforms?</strong></p>
-<blockquote>
- The Telerik Platform is an end-to-end, yet modular, solution that supports web, hybrid and native mobile app development. It does this by providing UI frameworks for any approach, alongside cloud services that support the entire lifecycle of the project. For web apps, the platform provides HTML5-based “Responsive” UI. For hybrid apps, the platform provides HTML5-based mobile UI alongside Telerik AppBuilder. For Native Apps, the platform provides real native UI (based on the machine language of the respective platforms) for iOS, Android, Windows Phone and Windows 8. Regardless of which approach developers choose, the platform provides Telerik Backend Services, Mobile Testing and Analytics. 
-</blockquote>
-<p><strong>InfoQ: Can you share with us the real purpose behind the creation of Telerik Platform?</strong></p>
-<blockquote>
- We want to empower developers to deliver great experiences to any device. The proliferation of mobile devices, coupled with the ease with which users can replace one app with another, makes it imperative that developers deliver engaging experiences that work everywhere. However, this creates a lot of complexity for developers. Furthermore, this complexity is spread across every stage of the development process (design, build, connect, test, deploy, manage and measure). For the past few years, Telerik has been building-out our product portfolio to confront this challenge. The launch of Telerik Platform represents our integrated solution for helping developers create and deliver engaging cross-platform application experiences. 
-</blockquote>
-<p><strong>InfoQ: What benefit does Telerik Platform provide to developers?</strong></p>
-<blockquote>
-  When creating a mobile app, developers are forced to choose one of three development approaches: web, hybrid and native. Each of these approaches has pros and cons, so the right approach depends on the project. Using the Telerik Platform, developers can let project requirements guide their approach, rather than being forced to accept the limitations imposed by their approach selection. The Telerik Platform enables developers to deliver mobile applications using the development approach (web, hybrid or native) that best fits their project. Furthermore, because the Telerik Platform is modular, developers can easily integrate our platform with their existing tools and infrastructure, using as much of it as they desire. 
-</blockquote>
-<p><strong>InfoQ: How easy it is to create an App with Telerik Platform?</strong></p>
-<blockquote>
-  The Telerik Platform is geared towards developers and assumes some level of programming proficiency. That said, we do include a variety of templates, sample projects, documentation and tutorials to help developers hit the ground running. We also include visual design tools to help developers construct their apps in a more visual way using our UI frameworks. However, our platform is unapologetically geared to developers and assumes coding experience. 
-</blockquote>
-<p><strong>InfoQ: Is it possible to build a Windows App with Telerik Platform?</strong></p>
-<blockquote>
-  Yes, Telerik maintains UI frameworks for Windows 8, WinForms and WPF. Many of our cloud services (Backend Services, Analytics, etc.) can be integrated with a Windows Application. Although the Telerik Platform (with its v1 release) is primarily focused on mobile development, developers will find tools and services for ANY platform within the Telerik portfolio of products. 
-</blockquote>
-<p><strong>InfoQ: Does Telerik Platform provide an emulator for Windows Phone 8?</strong></p>
-<blockquote>
-  Developers who are doing native Windows Phone 8 development are often using Visual Studio, which includes its own Windows Phone emulator. For these developers, we accelerate their efforts through our Telerik UI for Windows Phone framework. For developers doing Hybrid Development, Telerik AppBuilder currently only includes simulators for iOS and Android, but Windows Phone will be added in Q1/Q2 of this year. 
-</blockquote>
-<p><strong>InfoQ: How different is Telerik Platform when compared to Icenium?</strong></p>
-<blockquote>
-  Telerik Icenium (now Telerik AppBuilder) is just one component of the Telerik Platform. Whereas AppBuilder is focused only on Hybrid Application Development, the Telerik Platform also addresses Backend Services, Mobile Testing, Analytics and provides UI frameworks for other development approaches (web and native). In a nutshell, the Telerik Platform addresses the entire scope of a project, from design to deployment, while individual Telerik products - like AppBuilder - each address a piece of that overall puzzle. 
-</blockquote>
-<p><strong>InfoQ: How does Telerik Platform work from within Visual Studio 2013?</strong></p>
-<blockquote>
-  Many of the Telerik UI frameworks (which are a part of the Telerik Platform) can be directly used inside Visual Studio, and include support for Visual Studio’s visual design mode. In addition, Telerik AppBuilder provides a Visual Studio plug-in that enables many AppBuilder services (simulators, build server, deployment, etc.) to be utilized from that environment. However, other tools like Telerik UI for iOS, do not include Visual Studio support. We work very hard to understand the unique requirements of each approach. Developers who need to do native iOS development, for example, are likely using xCode, not Visual Studio. Our platform supports “any approach,” so we want to embrace the preferences of each developer. 
-</blockquote>
-<p><strong>InfoQ: Is it possible to build apps without a single line of code using Telerik Platform?</strong></p>
-<blockquote>
- Perhaps, but it’s not really the use case we’re targeting. Later this year we’ll unveil prototyping tools for designers and other stakeholders, but even then our goal isn’t to become a “no code” application build solution. In fact, we believe fairly strongly that these “cookie-cutter” solutions won’t result in engaging application experiences. Great application experiences will be created by people who understand the code. 
-</blockquote>
-<p><strong>InfoQ: While testing the new platform, InfoQ found that the emulator didn’t work with IE and FireFox. Can you disclose the real reason behind this?</strong></p>
-<blockquote>
-  It sounds like you’re referring to Telerik AppBuilder which is just one component of the Telerik Platform. (AppBuilder is used for Hybrid development). The AppBuilder browser-based simulator currently only supports Chrome and Safari. However, depending on the approach, there are multiple other ways for developers to run and test their apps. For example, AppBuilder also enables developers to run their apps on their physical device. And for developers doing native development, our tools support the development environments and emulators provided by those ecosystems. 
-</blockquote>
-<p><strong>InfoQ: How do you see the future of mobile apps?</strong></p>
-<blockquote>
-  In the coming years, we'll see broad recognition that users have choices...lots of choices. Even inside enterprises, where historically IT departments can dictate what technology is used, users are increasingly empowered to use their personal services and devices to conduct their day-to-day work. Bad experiences will drive users to other solutions, and UI is quickly becoming a strategic problem. Today we’re already witnessing the failed promise of “silver-bullet” mobile app development solutions. These apps created by these “cookie-cutter” solutions do not result in great experiences - for developers or users. Over the next few years, these solutions will be abandoned in favor of adaptive platforms that embrace development choice. 
-</blockquote><br><br><br><br><br><br></body></html>
+<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>Going Offline with LocalForage</h3><p>The Mozilla Foundation has released <a href="https://github.com/mozilla/localForage">localForage</a>, a new JavaScript library that promises to simplify the process of storing offline data in web applications.</p>
+<p>Although it's not a recent browser technology, offline support has always been too fragmented because of the <a href="http://www.html5rocks.com/en/tutorials/offline/whats-offline/#toc-html5-offline-storage">many choices available</a>. What makes this library unique is the fact that it tries to combine the best of both worlds: the features of some more recent technologies (asynchronism and blob support) with a simple API. This offers a powerful offline capability to web applications, making them closer to their mobile native counterparts and more intuitive for developers to work.</p>
+<p>One of the first choices available was <a href="http://www.w3schools.com/html/html5_webstorage.asp">localStorage</a> which provided a simple data access for offline storage. However <a href="http://calendar.perfplanet.com/2011/localstorage-read-performance/">benchmark tests</a> have shown it to be slow, it's synchronous and it cannot handle binary blobs (for example, no mp3 files caching is possible). Since then, two other popular choices have emerged - <a href="https://developer.mozilla.org/en-US/docs/IndexedDB">IndexedDB</a> and <a href="http://html5doctor.com/introducing-web-sql-databases/">Web SQL</a> - which are asynchronous, fast, and support large data sets. The drawback of these two technologies is the fact their APIs aren't very simple to use and neither are <a href="http://csimms.botonomy.com/2011/05/html5-storage-wars-localstorage-vs-indexeddb-vs-web-sql.html">supported in all major browsers</a>.</p>
+<p>The recently release of localForage tries to overcome these problems by unifying technologies – asynchronism and blob support from IndexedDB and Web SQL with the very simple localStorage syntax:</p>
+<pre><p>var settings = {color: 'black', font: 'Helvetica'};   <br />localForage.setItem('settings', settings, function(result) {   <br />&nbsp;&nbsp;console.log(result);   <br />});</p></pre>
+<p>The inclusion of IndexedDB and Web SQL support allows one to store more data for the web applications than localStorage alone would allow. The non-blocking nature of their APIs makes the web applications faster by not hanging the main thread on get/set calls. Additionally, localForage supports callbacks and <a href="http://www.promisejs.org/">ES6 Promises</a> leaving the choice of the best implementation to the developer.</p>
+<p>The library automatically loads and manages the drivers for IndexedDB, Web SQL and localStorage so one don’t need to handle this manually (the best driver is chosen independently the browser where the application is running). When neither IndexedDB nor Web SQL are available, localForage falls back to localStorage so at least basic data can be stored offline (though with no blob support and much slower).</p>
+<p>All modern browsers are supported by localForage. Asynchronous storage is available in all browsers, with their version that supports localStorage in parentheses:</p>
+<ul> 
+ <li>Android Browser 2.1</li> 
+ <li>BlackBerry 7</li> 
+ <li>Chrome 23 (Chrome 4.0 with localStorage)</li> 
+ <li>Chrome for Android 32</li> 
+ <li>Firefox 10 (Firefox 3.5 with localStorage)</li> 
+ <li>Firefox for Android 25</li> 
+ <li>IE 10 (IE 8 with localStorage)</li> 
+ <li>IE Mobile 10</li> 
+ <li>Opera 15 (Opera 10.5 with localStorage)</li> 
+ <li>Opera Mobile 11</li> 
+ <li>PhoneGap/Apache Cordova 1.2.0</li> 
+ <li>Safari 3.1</li> 
+</ul><br><br><br><br><br><br></body></html>

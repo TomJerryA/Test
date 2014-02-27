@@ -1,48 +1,24 @@
-<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>支付处理解决方案中的ISO 20222消息标准</h3><p>国际标准的使用使得各行各业的运作变得更加有效和高效，<a href="http://www.iso20022.org/" target="_blank">ISO 20022</a>是国际标准化组织 (ISO) 提议用于开发所有金融消息的平台。但是，提议对入站和出站消息使用 ISO 20022 标准面临的一个挑战是，现有数据模型或已存在的消息格式很难遵守 ISO 消息所应用的标准和结构。IBM架构师Edel Meehan和Oleg Tyschenko在一篇<a href="http://www.ibm.com/developerworks/data/library/techarticle/dm-1307isopayment/index.html" target="_blank">文章</a>中概述了 ISO 20022 消息格式，以及如何使用数据映射技术和工具在解决方案中实现它们。</p>
-<p>文章指出，ISO 20022 被视为一个通用的金融行业消息框架，它是 ISO 提议用于开发所有金融消息的平台。ISO 20022 标准包含多个部分，由负责银行、证券和其他金融服务领域的标准化的 ISO 技术委员会 (ISO/TC 68) 开发和维护。ISO 20022 没有描述消息本身，它描述了一个使用以下工具开发标准化消息的通用平台：</p>
+<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>自动化测试——回顾与展望</h3><p>2013年已经过去，在这篇文章里，我希望和大家一起来整理一下2013年自动化测试领域一些比较值得关注的变化，也展望一下2014年可能发生的变化，希望读者可以从中可以发现一些线索，进而做相关延伸阅读。</p>
+<p>在过去的2013年里面，自动化测试领域发生了几大变化：</p>
 <ul> 
- <li>一种建模方法（基于 UML），用于采用某种与语法无关的方式跨金融业务领域捕获业务交易和关联的消息流。</li> 
- <li>一个业务术语中央字典，常用在金融机构之间的通信中。</li> 
- <li>一组 XML 设计规则，用于将使用 UML 描述的消息转换为 XML 模式。应注意到，XML 不是规定的消息语法，但它常常是首选语法。</li> 
+ <li>自动化测试的重要性不断提升 <p>随着敏捷的热度不断提升，持续集成、持续交付作为敏捷的核心实践之一，越来越受到重视。然而大家很快发现，自动化测试是持续集成、持续交付的灵魂，没有有效的自动化测试保证，持续集成和持续交付就仅仅是一个无用的躯壳了。</p> </li> 
+ <li>分层测试观念受到进一步重视 <p>自动化测试是一个老大难问题了，这里面一个非常重要的思路就是分层自动化测试（或测试金字塔），有兴趣可以参见Martin Fowler的这个博客：<a href="http://martinfowler.com/bliki/TestPyramid.html">http://martinfowler.com/bliki/TestPyramid.html</a>。</p> <p><img src="http://infoqstatic.com/resource/news/2014/02/autotest-2013/zh/resources/0224000.png" width="550" alt="" _href="img://null" _p="true" /></p> <p>在2013年里，我们高兴地看到从分层自动化测试方面，出现了一部力作——@公公直直-黄利 翻译的《Google如何测试软件》，这本书对分层自动化测试给出了非常具体的解析，个人认为此书是2013年度最值得阅读的自动化测试书籍，强烈推荐。我自己也建立了一个“分层自动化测试”QQ群：20442181，也成为了一个有800成员的大群了，欢迎大家加入分享讨论。</p> </li> 
+ <li>商用工具昨日黄花，开源工具如日中天 <p>自动化测试工具方面几年前一直是商用工具的天下，这几年以Selenium为首的一系列开源工具不断攻城掠地，不但国内的互联网公司，国内的大型行业客户（如金融行业，交通行业）也纷纷拥抱开源自动化测试工具。Selenium的WebDriver测试接口协议也成为了W3C规范草案（<a href="http://www.w3.org/TR/webdriver/">http://www.w3.org/TR/webdriver/</a>），被各大浏览器厂商认可，这说明了Selenium的江湖地位已经牢不可破了。坦率地来讲，在Web界面自动化测试领域，已经没有任何理由采用商用工具了。从下面两张趋势图可以看出，在世界范围内，QTP2009年就已经开始走下坡路；而在国内，Selenium的绝地反击是在2012、2013年开始的。如果大家对这方面的内容感兴趣，可以考虑参加QCon 2014北京大会的技术训练营：<a href="http://www.qconbeijing.com/node/468">http://www.qconbeijing.com/node/468</a>。</p> <p><img src="http://infoqstatic.com/resource/news/2014/02/autotest-2013/zh/resources/0224001.png" width="550" alt="" _href="img://null" _p="true" /></p> <p><img src="http://infoqstatic.com/resource/news/2014/02/autotest-2013/zh/resources/0224002.png" width="550" alt="" _href="img://null" _p="true" /></p> </li> 
 </ul>
-<p>ISO 20022 实现了跨目前使用大量不同标准和信息格式的领域和地区的端到端处理。金融机构会与其他金融机构和客户交换大量信息。这种交换仅在消息的发送方和接收方对如何解释信息达成共识时才有效。为不同的消息标准建立映射的能力是整个行业的互操作性的一个重要方面。它允许具有不同自动化水平和上市时间需求或容量的各个对等方无缝地执行业务流程。</p>
-<blockquote> 
- <p>上面描述的模型使得金融服务行业能够在一个集中的数据字典中掌握其业务的基本知识，衍生出他们使用的金融消息。建模方法将业务规则与交换的物理消息的格式相分离。该模型在不断演变，以满足不断变化的业务需求；而消息格式也在不断演变，以利用最新的技术创新。这使行业能够利用当前的技术，以 ISO 20022 标准的内在灵活性迅速适应未来的变化。</p> 
-</blockquote>
-<p>采用 ISO 20022 对 SEPA（单一欧元支付区） 有许多富有吸引力的优势：</p>
+<p>接下来说说我对2014年的展望吧：</p>
 <ul> 
- <li>它支持改进的直通处理 (STP)，这意味着能够自动处理订单，无需人为干预。</li> 
- <li>因为整个交易链都使用统一的支付格式，所以处理时间会更短，发生错误的可能性更低。</li> 
- <li>ISO 20022 也是一种特别透明的格式，而且是人类可读的，更容易对错误或不一致性进行跟踪和解决。</li> 
- <li>几乎所有大型银行都接受该标准。因此，支付格式数量可显著减少，这将减少这些格式的维护成本。</li> 
- <li>它改进了金融机构之间交换的数据的质量，在数据字典中引入了结构和一致性。</li> 
+ <li>移动测试成为热点 <p>随着移动互联网的爆发，移动测试自动化很快地被提到议事日程上面来了。这方面今年会有几本国内作者原创的图书出版：@厚脸皮-芈峮的《iOS测试实践》，@Monkey陳曄曄-陈晔的《大话测试——移动互联网Andoird、iOS应用测试》。</p> </li> 
+ <li>从工具方面，很高兴地看到这方面的开源工具风起云涌，如Robotium、Frank等等，但是，从目前趋势来看，我个人非常看好Appium：一种支持WebDriver W3C协议，同时支持Android，iOS 的开源测试工具（参见Appium支持测试原生、混合及Web Android应用：<a href="http://www.infoq.com/cn/news/2013/05/appium-android">http://www.infoq.com/cn/news/2013/05/appium-android</a>）。</li> 
+ <li>REST接口测试成为Web自动化测试的补充： <p>随着前端MVC框架的大范围应用，REST接口应用范围也越来越广，基于REST接口的自动化测试成为一种投入产出比很理想的测试方式，相对于Web界面自动化，REST接口相对而言更加稳定，测试案例也更容易维护。REST接口测试可以成为Web自动化测试的有益补充：REST接口测试可以关注于服务器逻辑验证，而Web自动化测试可以关注于页面展示逻辑及界面前端与服务器集成验证。REST接口测试框架有许多种不同的实现方式，我个人会推荐使用开源工具Robot Framework加上Requests库来进行REST接口测试。（感兴趣的读者可以参见下面的文章，其中有对Robot Framework的介绍： 功能测试工具研讨会：<a href="http://www.infoq.com/cn/news/2009/09/functional-test-tools/">http://www.infoq.com/cn/news/2009/09/functional-test-tools/</a>，Robot Framework作者建议如何选择自动化测试框架 ，<a href="http://www.infoq.com/cn/news/2012/06/robot-author-suggest-autotest">http://www.infoq.com/cn/news/2012/06/robot-author-suggest-autotest</a> ）</p> </li> 
+ <li>用例辅助生成技术初露端倪： <p>用例录制回放技术一直是许多测试人员（领导）心中的一个梦想，但是，我要残酷地告诉大家，这是一个白日梦，所有宣称能够通过录制回访技术来全自动获取可维护测试脚本的个人和厂商无疑都是骗子。测试脚本也是程序，也需要经过仔细设计，应用若干设计模式，才能达到简洁、易读、易维护的目标。（有兴趣的读者可以参考：Martin Fowler对将page对象用于Web测试的基本经验法则 <a href="http://www.infoq.com/cn/articles/martin-fowler-basic-rule-of-thumbon-for-Web-testing">http://www.infoq.com/cn/articles/martin-fowler-basic-rule-of-thumbon-for-Web-testing</a>，以及GUI功能测试自动化模式：<a href="http://www.infoq.com/cn/articles/gui-automation-patterns">http://www.infoq.com/cn/articles/gui-automation-patterns</a>）。</p> <p>但是，我们不能否认，确实可以利用录制技术，在特定工具的帮助下，自动捕获一些信息，再自动应用一些设计模式来辅助案例的编写工作，尤其在接口测试方面，可行性非常大，这一块会是本人今年的一个研究重点。对这方面有兴趣的读者，可以参见这两个工具vcr（<a href="https://github.com/vcr/vcr">https://github.com/vcr/vcr</a>）和BetaMax（<a href="http://freeside.co/betamax/">http://freeside.co/betamax/</a>）。</p> </li> 
+ <li>Mock系统技术逐步普及： <p>在自动化测试过程中，构建稳定的测试环境至关重要，其中一个重要手段就是将外部系统或不稳定的系统Mock起来。这方面去年@dreamhead-郑晔已经开源了一个支持HTTP协议的Moco框架（感兴趣的读者可以参见：郑晔谈Moco框架的开发：写一个好的内部DSL，写一个表达性好的程序，<a href="http://www.infoq.com/cn/news/2013/07/zhengye-on-moco">http://www.infoq.com/cn/news/2013/07/zhengye-on-moco</a>），@横刀天笑-余昭辉也分享过他们在去哪儿网的实践 （参见：为功能测试构建通用mock server系统，<a href="http://www.infoq.com/cn/articles/auto-test-mock-server">http://www.infoq.com/cn/articles/auto-test-mock-server</a>）。</p> <p>诚然由于环境的复杂性，上述工具未必可以完全解决大家在各自测试中的各种系统隔离需求，但是我相信他们解决这些问题的思路，应对会让大家深受启发。</p> </li> 
+ <li>测试DSL， 实例化需求走向前台： <p>《实例化需求》一书是2012年Jolt图书大奖的获得者，当年就引进中国。实例化需求的思想其实和验收测试驱动（Acceptance Test Driven Development）类似，限于篇幅这里就不详细展开解释了。但是两者都需要测试案例具备很高的抽象层次，可以被业务人员和开发人员很容易地读懂，这就需要实现测试DSL（Domain Specific Language），也就是说需要在一个特定领域之内，将特定测试能力封装成一门易于业务、测试、开发理解沟通的专用测试语言，然后用这门DSL来编写实际测试案例。Robot Framework作为一个关键词驱动框架，可以很好地支持测试DSL的定义。下面就是我们团队在一个客户出实现的测试DSL，供大家参考：</p> <p><img src="http://infoqstatic.com/resource/news/2014/02/autotest-2013/zh/resources/0224003.jpg" width="550" alt="" _href="img://null" _p="true" /></p> </li> 
 </ul>
-<p>文章详细介绍了ISO支付消息，在 ISO 上下文中，该标准描述了赖以表达信息的协议，而语法是用于表达信息的格式或语言。消息定义提供了对可在各方之间交换的信息和数据格式（字段长度、代码和字符集）的明确分类，在逻辑上，这些格式可被视为对消息中交换的数据、其结构和其含义的描述。这些逻辑定义可映射到 ISO 20022 中定义的业务定义。尽管 ISO 没有规定消息的语法，但 XML 是消息规范中使用最广泛的语法，而且 XML 消息模式源自 ISO UML 消息模型。</p>
-<p>ISO 20022 消息可用于完整的端到端支付链：客户到银行（支付）、银行到银行（支付清算与结算），以及报告（现金管理）。这些金融消息定义分为多个业务区域（这些是行业中公认的功能领域），由业务区域代码（4 个字符）来标识。这些代码包括：</p>
-<ul> 
- <li>acmt – 帐户管理</li> 
- <li>admi – 行政管理</li> 
- <li>caaa – 承兑人到受让人卡交易</li> 
- <li>camt – 现金管理</li> 
- <li>catm – 终端管理</li> 
- <li>……</li> 
-</ul>
-<p>在ISO数据映射方面，尽管 ISO 消息可用于金融机构内外的消息发送者和接收者之间的消息交换，但有时可能需要将它从 ISO 映射到其他消息格式，或者进行内部数据存储。映射不同的消息标准的能力是整个行业的互操作性的一个重要方面。它支持具有不同自动化水平和上市时间需求或容量的各个对等方无缝地执行业务流程。</p>
-<p>数据映射工作流中的总体步骤包括：</p>
-<ul> 
- <li>定义两个来源（ISO 消息与交易系统数据模型）之间的数据仲裁</li> 
- <li>运行数据分析，以识别可能的关系和数据类型</li> 
- <li>跟进分析，以识别间接关系并调整数据属性，从而形成完整的数据流</li> 
- <li>定义数据源与目标之间的系统接口</li> 
-</ul>
-<p>数据映射流程的第一步是数据仲裁阶段，在该阶段中，将客户的交易系统中的内部数据源映射到 ISO 消息。当数据映射是使用仲裁数据模型的间接映射时，该流程也被称为数据仲裁。在该阶段中，您需要识别主要数据源。输入数据被称作数据源，它们通常来自客户的主要交易系统。此时的目的是将数据映射到合适的 ISO XML 消息结构。</p>
-<p>在数据关系方面，此任务的目的是识别仲裁数据模型与 ISO 消息之间的关系。一种关系级别表示数据源或仲裁数据模型的高级视图，为进行数据映射奠定了基础。您可以使用 InfoSphere Data Architect 创建高级视图。结构变体是数据实体在类型或结构上的变化。不同的类型通常具有一些相同的属性，也有一些不同的属性。</p>
-<p>在此阶段中，需要执行以下步骤：</p>
-<ul> 
- <li>识别数据类型，包括转换</li> 
- <li>识别结构中的变化</li> 
- <li>识别跨结构变体的共性</li> 
- <li>基于结构变化来识别元模型</li> 
-</ul>
-<p>如果来源和目标数据类型不匹配，则需要实现转换逻辑。这还应当包含基于 ISO 消息模式的验证规则。这方面的示例可能包括不同的字符串长度、预定义的字符串值，等等。</p>
-<p>文章还列举了有关ISO 20222消息标准的具体案例，感兴趣的读者朋友可以深入研究。</p><br><br><br><br><br><br></body></html>
+<p>我本人认为，作为一名测试人员，不应该区分手工测试人员和自动化测试人员，自动化测试技术是每个测试人员都必须掌握的技能，希望在2014年所有InfoQ的测试行业读者都能在自动化测试技术方面更上一层楼。</p>
+<h2>吴穹</h2>
+<p>资深敏捷专家，Agilean联合创始人</p>
+<p><a href="mailto:wuqiong@agilean.cn">wuqiong@agilean.cn</a></p>
+<p>公共微信号: Agile-Testing-China</p>
+<hr />
+<p>感谢<a href="http://www.infoq.com/cn/author/侯伯薇">侯伯薇</a>对本文的审校。</p>
+<p>给InfoQ中文站投稿或者参与内容翻译工作，请邮件至<a href="mailto:editors@cn.infoq.com">editors@cn.infoq.com</a>。也欢迎大家通过新浪微博（<a href="http://www.weibo.com/infoqchina">@InfoQ</a>）或者腾讯微博（<a href="http://t.qq.com/infoqchina">@InfoQ</a>）关注我们，并与我们的编辑和其他读者朋友交流。</p><br><br><br><br><br><br></body></html>

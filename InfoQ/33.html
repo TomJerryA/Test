@@ -1,41 +1,20 @@
-<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>iOS 7人机界面准则</h3><p>Apple官方推出的“<a href="https://developer.apple.com/library/ios/documentation/UserExperience/Conceptual/MobileHIG/index.htmlhttps://developer.apple.com/library/ios/documentation/UserExperience/Conceptual/MobileHIG/index.html" target="_blank">iOS人机界面准则</a>”一直被iOS开发者奉为绝对的设计参考宝典，特别是iOS7系统推出以来，Apple公司对该准则进一步做了更新。最近，国内知乎社区的郎启旭推出了“iOS人机界面准则”完整的<a href="http://zhuanlan.zhihu.com/langqixu/19675089" target="_blank">中文版</a>，使iOS国内开发者可以快速上手。</p>
-<p>iOS人机界面准则主要分为UI设计基础、设计策略、iOS技术、UI元素、图标和图像设计等几个大类，其中每个大类有细分为许多小节，对iOS界面设计原则描述的非常详尽。</p>
-<p>准则一开始就谈到了iOS7的设计主旨：</p>
-<ul> 
- <li>依从（Deference）。用户界面（UI）应当有助于用户理解内容并与之互动，而非对抗。</li> 
- <li>清晰（Clarity）。文字在每种字号下都易于阅读，图标表意准确清晰，装饰也恰到其度，并以对功能的无比关注驱动设计。</li> 
- <li>纵深（Depth）。视觉上的分层界面和逼真的动作使其更赋活力，提升了用户的愉悦和理解。</li> 
-</ul>
-<p>对于“依从”这个主旨，准则举了几个实际设计的例子来阐述其表现方式，包括：</p>
-<ul> 
- <li><strong>充分利用整块屏幕</strong>。重新考量对插图和视觉框架的使用，可以考虑让内容扩展到屏幕边缘。“天气”就是一个很好的范例：漂亮的全屏界面非常直观地呈现出某个地点当前天气的关键信息，而且还有<br /> 多余空间可以显示每个小时的天气数据。</li> 
- <li><strong>重新考量模拟现实的视觉表现</strong>。浮雕、渐变和阴影效果有时会让界面元素变得沉重，进而喧宾夺主。相反，要突出内容并让界面扮演一个辅助性的角色。</li> 
- <li><strong>通过半透明的界面元素来暗示背后的内容</strong>。半透明效果（如“控制中心”）可以提供情境，帮助用户看到更多可用的内容，并给人一种短暂停留的暗示。在 iOS 7 中，半透明元素只模糊渲染在其正背后的内容，给人一种透过宣纸的感觉，但屏幕上的其他部分并不会模糊。</li> 
- <li><strong>大量使用留白</strong>。留白会让重要内容和功能更为突出、更易于理解。同时，留白还可以传达一种安静平和的感觉，这会让 app 看上去更加专注和高效。</li> 
- <li><strong>用色彩简化界面</strong>。使用一种主题色——例如「便签」中的黄色——来突出重点，并巧妙地暗示其交互性。同时，这会给 app 带来一致性的视觉主题。内置的 app 使用了一系列纯净的系统颜色，而每一种颜色在深色浅色两种背景中看起来都很好。</li> 
- <li><strong>拥抱无边框按钮</strong>。在 iOS 7中，所有的条栏按钮都没有边框。无边框按钮会在按钮的内容区域内使用情境、颜色和一个动作导向的标题来暗示其交互性。如果合适，还可以通过显示纤细的边框或者浅色背景来让按钮更加突出。</li> 
- <li>……</li> 
-</ul>
-<p>在“启动和停止”一节中，准则特别强调：一般来说，在接触新 app 的一两分钟内人们就会决定是否继续使用。如果你把握住这转瞬即逝的机会迅速呈现有用的内容，就可以激发新用户的兴趣，并给所有用户带来出色的体验。不要在人们安装好你的 app 后告诉他们需要重启设备。重启会耽误时间，还会让你的 app 看起来不太可靠且难以上手。</p>
-<p><strong>避免要求用户提供设置信息</strong>，代之以：</p>
-<ul> 
- <li>关注 80% 用户的需求。这样，大部分用户不需要进行任何设置，因为你的 app 已经按他们期望的方式设置好了。如果有一些功能只有极少数用户可能需要或者大部分用户只会用一次，请抛弃这样的功能。</li> 
- <li>尽可能通过其他方式获取信息。如果你可以使用任何内置程序或设备中用户所提供的信息，那就从系统中获取这些信息，而不要让用户再输一次。</li> 
- <li>如果你确实需要提供设置信息，请让人们在你的 app 中输入。然后，尽快存储这些信息（例如，在你 app 的设置中）。这样一来，在有可能体验到你 app 的乐趣前人们不会被迫切换到 iOS 的「设置」中了。如果人们将来需要修改这些信息，可以在任何时间前往 app 的设置页面进行修改。</li> 
-</ul>
-<p>准则在“设计策略”部分指出，一致性可以让用户将 app 中的某部分界面的经验和技巧复用到其他地方，或者从一个 app 复用到另一个 app。一致性的 app 不是对其他 app 的简单复制，也不是风格上的一成不变，相反，它关注用户所习惯的方式和标准，并提供一个具有内在一致性的体验。</p>
-<p>要判断一个 iOS app 是否符合一致性原则，可以通过以下几个问题来考量：</p>
-<ul> 
- <li>App 是否和 iOS 标准保持一致？它是否正确地使用了系统控件、视图和图标？是否以用户所期望的方式利用了设备的特性？</li> 
- <li>App 自身是否具有内部一致性？文本内容是否使用了统一的用辞和风格？同样的图标是不是通常意味着相同的意思？当用户在不同的位置执行同一个操作时是否符合其预期？自定义的界面元素外观和其行为是否保持一致？</li> 
- <li>App 是否在合理范围内与之前的版本保持一致？术语和含义是不是仍然相同？基本概念和主要功能是否基本不变？</li> 
-</ul>
-<p>准则强调：在整个开发过程中，始终要用你的app 定义陈述去判断功能点、控件和用词是否妥当。例如：</p>
-<ul> 
- <li>当你考虑增加一个新功能时，问问自己，这对你 app 的主要目的和目标用户是不是不可或缺？如果不是，把它放在一边，它可能是构建另一个 app 的基础。例如，你已经确定你的用户喜欢探索烹饪，那么强调打包好的蛋糕和加工好的熟食可能不会被用户喜欢。</li> 
- <li>当你考虑 UI 的外观和行为时，问问自己，你的目标用户是喜欢简洁流畅的设计，还是一个更明显的主题风格？以用户对你 app 的期望为指引，例如使用 app 去完成一项重要任务，快速找到一个答案，探究内容详情，或者为了娱乐。尽管你的购物清单 app 需要易于理解而且立即可以上手，但你的用户可能会更喜欢一个展示着大量美味食材图片的界面主题。</li> 
- <li>当你在考量术语时，努力去迎合你的受众的专业认知。例如，即便你的受众不太可能由专业厨师组成，但你也应该明白，用户会希望看到配方和技术方面的专业术语。</li> 
- <li>尽可能避免增加用户的认知负担。用户熟悉标准 UI 元素的外观和行为，所以不需要停下来去思考如何使用它们。但当他们面对那些和标准 UI 外观和行为完全不一样的元素时，先前的经验毫无用处。除非你独特的元素可以让任务执行更容易，否则用户可能不会喜欢被迫去学习新的流程，而这些流程又不会在其他 app 中用到。</li> 
- <li>重新设计标准控件前要三思。如果你正在计划重新设计一个标准控件，要确保你的新设计提供了和标准控件一样多的信息。例如，如果你设计的开关控件不能表现出两个相反的状态，用户可能不会意识到这是一个两态控件。</li> 
-</ul>
-<p>有关iOS 7人机界面准则的详细内容可以查看Apple<a href="https://developer.apple.com/library/ios/documentation/UserExperience/Conceptual/MobileHIG/index.htmlhttps://developer.apple.com/library/ios/documentation/UserExperience/Conceptual/MobileHIG/index.html" target="_blank">官方文档</a>，也可以查看郎启旭翻译的<a href="http://zhuanlan.zhihu.com/langqixu/19675089" target="_blank">中文版</a>。</p><br><br><br><br><br><br></body></html>
+<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>Prismatic向Schema 0.2中添加了数据类型强制转换</h3><p><a href="http://getprismatic.com/">Prismatic</a>向其<a href="http://clojure.org/">Clojure</a>数据描述库即<a href="https://github.com/prismatic/schema">Schema</a>的<a href="http://blog.getprismatic.com/blog/2014/1/4/schema-020-back-with-clojurescript-data-coercion">0.2版本</a>中添加了<a href="http://en.wikipedia.org/wiki/Type_conversion">数据类型强制转换</a>。强制转换的添加意味着该库不会只是简单地拒绝类型错误的数据，而是可以将它配置为修改实例以符合模式。</p>
+<p>在Clojure中，习惯用<a href="http://clojure.org/data_structures#Data%20Structures-Keywords">关键词</a>作为Map的键，也就是说，当收到<a href="http://www.json.org/">JSON</a>对象时，通常有若干样板代码来执行转换。以前，这种转换需要在试图验证请求之前执行。现在，如果模式使用关键字定义键，<a href="https://github.com/prismatic/schema">Schema</a>会为开发人员处理上述过程。当然，开发人员可以编写他们自己的满足特定需求的强制转换器。伴随这项新功能，Prismatic声称这项变化使数据验证的时间减少到五分之一。</p>
+<p>Schema是<a href="http://blog.getprismatic.com/blog/2013/9/4/schema-for-clojurescript-data-shape-declaration-and-validation">去年九月份发布</a>的，其目标是“获得Clojure类型系统的诸多好处，而麻烦更少。” Clojure的<a href="https://github.com/clojure/core.typed">core.typed</a>库也是该语言的一个类型系统，Schema发布的时候，似乎与它形成了竞争。那时，core.typed的作者<a href="https://twitter.com/ambrosebs">Ambrose Bonnaire-Sergeant</a><a href="https://news.ycombinator.com/item?id=6339607">反驳</a>了这个观点，指出它们实际上是互补的，并在之后<a href="http://www.infoq.com/cn/news/2013/10/core-typed">接受InfoQ关于core.typed</a>的采访时重申了这一点。</p>
+<p><a href="http://getprismatic.com/profile/w01fe">Jason Wolfe</a>是该库的主要作者。InfoQ获得了就Schema的未来与他进行交谈的机会。</p>
+<p><b>InfoQ</b>：当Schema最初发布的时候，有人认为core.typed和Schema的组合将非常强大。从那以后，您想过发展这一想法吗？</p>
+<blockquote> 
+ <p>几年前，从我看到我的第一个Qi项目开始，我就一直因为Clojure的进阶类型而兴奋，而且我认为，Ambrose在促成这点方面做得非常棒。我们已经谈过，有若干方式可以使Schema与core.typed完美地结合，其中最有趣的可能是将Schema作为core.type-checked代码与未经检查的代码之间的桥梁。</p> 
+ <p>那就是说，我很遗憾，我们还没有时间对core.typed做更深入地探究，所以，我现在没有更多的内容可谈了。</p> 
+</blockquote>
+<p><b>InfoQ</b>：通过扩展实现测试数据生成听上去充满挑战，您会集成<a href="https://github.com/reiddraper/simple-check">simple-check</a>，利用<a href="https://github.com/clojure/test.generative">test.generative</a>，还是说Schema需要一种不同的方式？</p>
+<blockquote> 
+ <p>我们还在考虑该问题。关于simple-check，我读过许多非常棒的东西，我认为这应该可行，但我们还在设法理解其实现，并弄清楚如何将额外的限制加入生成过程。此外，还可能是一个简单的生成器，用于伪随机地充实部分基准，这是我们最终在测试中经常用的东西。</p> 
+</blockquote>
+<p><b>InfoQ</b>：关于从Schema定义中提取值，您有什么进一步的想法吗？</p>
+<blockquote> 
+ <p>强制转换和转换极其强大，我想我们还在寻找所有因为它们而变得可行的应用。我的同事Dave Golland将在Clojure West大会上就新库“fnhouse”发表演说，该库将graph和schema结合在一起，简化了Web API构建。“coax”也会随之发布，该库会自动生成Objective C和ClojureScript模型类，以及从fnhouse API生成客户端API库。</p> 
+ <p>之后，我们还有许多疯狂的想法，但我们还没有准备好谈论它们。</p> 
+</blockquote>
+<p><a href="https://github.com/prismatic/plumbing">Graph</a>是个Prismatics Clojure库，<a href="http://blog.getprismatic.com/blog/2013/2/1/graph-abstractions-for-structured-computation">在2013年发布</a>，用于以声明式样式表达结构化计算。</p>
+<p><b>查看英文原文：</b><b><a href="http://www.infoq.com/news/2014/02/prismatic-schema-coercion">Prismatic Adds Data Type Coercion to Schema 0.2</a></b></p><br><br><br><br><br><br></body></html>

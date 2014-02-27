@@ -1,13 +1,15 @@
-<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>Oracle发布144个安全补丁，其中36个涉及Java SE</h3><p><a href="http://www.oracle.com/technetwork/topics/security/alerts-086861.html">Oracle</a>发布了最新的重要补丁更新(Critical Patch Update，CPU)，包括涉及所有产品线的<a href="http://www.oracle.com/technetwork/topics/security/cpujan2014-1972949.html">144个安全</a>补丁，其中36个涉及Java SE。Oracle声称这些漏洞中有34个可能在未进行身份验证的情况下被远程利用，因此他们建议尽早部署这些重要补丁更新，重要补丁包中涉及的产品包括Peoplesoft、Fusion Middleware和他们的旗舰关系数据库。</p>
-<p>Oracle声称针对这些漏洞的成功攻击可能导致未经授权的更新、插入、删除某些Java SE可访问的数据以及读取其子集。攻击也可能引起Java SE发生部分拒绝服务（DOS）。</p>
-<p>用户可以在<a href="http://www.oracle.com/technetwork/topics/security/cpujan2014verbose-1972951.html#JAVA">Oracle Java SE风险矩阵</a>上查看带有标识及对应描述的常见漏洞及披露（CVE）。</p>
-<p>Oracle在2005年1月引入了CPU程序，它是安全漏洞的补丁集合。<a href="http://www.oracle.com/technetwork/topics/security/cpuoct2013-1899837.html">2013年10月</a>，单独针对Java SE的安全修补程序开始按普通CPU计划发布。<a href="http://www.oracle.com/technetwork/topics/security/alerts-086861.html#CriticalPatchUpdates">接下来的四个发布日期</a>分别是2014年4月15日、2014年7月15日、2014年10月14日和2015年1月20日。</p>
-<p>补丁列表中同时包含累积和非累积的CPU。（累积CPU包括所有补丁。）<a href="http://www.oracle.com/technetwork/topics/security/cpujan2014-1972949.html">可用补丁表</a>提供了更多关于累积和非累积补丁的信息以及安装指南。　　</p>
-<p>标准支持服务和延伸支持服务是<a href="http://www.oracle.com/us/support/lifetime-support/index.html?ssSourceSiteId=otnen">Oracle终身支持政策</a>的其中两个支持服务。通过CPU程序发布的补丁包含它们所涵盖的产品。在<a href="http://www.oracle.com/technetwork/topics/security/cpujan2014-1972949.html">CPU公告</a>中，Oracle提醒：</p>
-<blockquote> 
- <p>对于标准支持服务和延伸支持服务范围之外的产品发布，并没有针对CPU涉及的漏洞进行测试。同时，比受影响版本更早的那些版本，很可能也受这些漏洞的威胁。因此，Oracle建议客户升级到受支持的版本。</p> 
-</blockquote>
-<p><strong>查看英文原文：</strong><a href="http://www.infoq.com/news/2014/02/144-Oracle-Security-Fixes">Oracle Releases 144 Security Fixes, 36 for Java SE</a></p>
-<hr />
-<p>感谢<a href="http://www.infoq.com/cn/author/梅雪松">梅雪松</a>对本文的审校。</p>
-<p>给InfoQ中文站投稿或者参与内容翻译工作，请邮件至<a href="mailto:editors@cn.infoq.com">editors@cn.infoq.com</a>。也欢迎大家通过新浪微博（<a href="http://www.weibo.com/infoqchina">@InfoQ</a>）或者腾讯微博（<a href="http://t.qq.com/infoqchina">@InfoQ</a>）关注我们，并与我们的编辑和其他读者朋友交流。</p><br><br><br><br><br><br></body></html>
+<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>微软开放了.NET 4.5.1的源代码</h3><p><a href="http://referencesource.microsoft.com/">.NET Reference Source</a>发布了<a href="http://referencesource-beta.microsoft.com/">beta</a>版，可以在线浏览.NET Framework 4.5.1的源代码，并且可以通过配置，<a href="http://referencesource-beta.microsoft.com/setup.html">在Visual Studio 2013中调试.NET Framework</a>。</p>
+<p>.NET Framework团队的项目经理Alok Shriram在<a href="http://blogs.msdn.com/b/dotnet/archive/2014/02/24/a-new-look-for-net-reference-source.aspx">.NET Framework的博客</a>中撰文介绍了最新的.NET Reference Source。它不仅可以用来浏览最新的.NET代码，而且通过强大的<a href="http://msdn.com/roslyn">Roslyn</a>，改善了“Go to Defination”和“Finding Reference”的在线体验。此外，开发者还可以下载整个源代码包，在Visual Studio中打开并浏览。使用Schabse Laks编写的<a href="http://visualstudiogallery.msdn.microsoft.com/f89b27c5-7d7b-4059-adde-7ccc709fa86e">插件</a>，可以在VS中直接导航到该网站。</p>
+<p>通过简单的配置，开发者可以在Visual Studio中单步调试.NET Framework 4.5.1及其后续补丁和更新。这无疑是广大开发者<a href="http://visualstudio.uservoice.com/forums/121579-visual-studio/suggestions/4083118-allow-developers-to-step-through-net-framework-so">翘首以盼的功能</a>。启动Visual Studio 2013，打开Tools -&gt; Options -&gt; Debugging -&gt; General菜单，进行如下配置：</p>
+<ul> 
+ <li>禁用Just My Code</li> 
+ <li>禁用Step over properties and operators</li> 
+ <li>禁用Require source files to exactly match the original version</li> 
+ <li>选中Enable .NET Framework source stepping</li> 
+ <li>选中Enable source server support</li> 
+</ul>
+<p>这样，开发者在调试代码时，就可以通过F11直接进入.NET代码。</p>
+<p>这并不是微软第一次开放.NET Framework的源代码。早在2007年，他们就第一次<a href="http://weblogs.asp.net/scottgu/archive/2007/10/03/releasing-the-source-code-for-the-net-framework-libraries.aspx">公布了.NET 3.5的源代码</a>并支持Visual Studio调试。并且对于后续的4.0和4.5，也都提供了相应的源代码包。但当框架升级时，这些旧的包就变得毫无价值了。从4.5.1开始，.NET Framework团队彻底改变了符号索引和发布的过程，使其与构建过程同步，这样在新版本发布时，相应的PDB文件也会从Reference Source网站进行更新。</p>
+<p>目前的beta站点只是临时的，届时将会取代现在的<a href="http://referencesource.microsoft.com/">旧站点</a>。后续微软也会将还未公布源代码的程序集逐步添加进来。</p>
+<p>新的.NET Reference Source许可协议回归到了<a href="http://referencesource-beta.microsoft.com/license.html">MS-RSL</a>，这也使得像Mono这样的团队可以放心大胆地使用。</p>
+<p>正如<a href="http://www.hanselman.com/">Scott Hanselman</a><a href="http://www.hanselman.com/blog/AnnouncingTheNewRoslynpoweredNETFrameworkReferenceSource.aspx">所说</a>：微软可能并不是开源的，但却绝对是源代码开放的。</p><br><br><br><br><br><br></body></html>

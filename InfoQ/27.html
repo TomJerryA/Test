@@ -1,62 +1,13 @@
-<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>与WildFly项目经理Jason Greene谈WildFly 8</h3><p>Red Hat JBoss部门今天宣布WildFly 8 正式发布，其前身是JBoss Application Server，我们对此进行了<a href="http://www.infoq.com/cn/news/2014/02/wildfly8-launch">报道</a>。Jason Greene是Red Hat JBoss部门的WildFly项目经理和JBoss EAP平台架构师。InfoQ采访了Jason Greene，以了解这个新产品的更多信息。由于WildFly包含了一个全新的Web服务器（Undertow），这是个很重要的产品，我们的采访从这开始，为什么会有这样一个决定？</p>
-<blockquote> 
- <p>嗯，正如你所知，最近几年，Web应用取得了显著的发展，对Web服务器的需求远超以往。由于计算设备的增长，Web应用现在面对巨大数量的客户端，对富界面的需求已经导致更频繁的、更多面向数据的流量。使用WebSocket一类的技术进行全双工通讯已经成为普通应用。面对这些挑战，我们觉得最好的解决方案是重新设计一个高性能的服务器。</p> 
- <p>此外为了满足现代应用的需求，我们也希望解决一些通常使用替代原生Web服务器解决的基础服务问题。举例来说，通过Undertow，WildFly现在不需要Apache或者Nginx就能够扮演高效的非阻塞反射代理角色。</p> 
- <p>另一个因素是在云环境中减少端口数量的需求。在云环境中，一个系统可能运行了几百个甚至几千个WildFly实例。基于HTTP使用HTTP Upgrade可以升级成多种协议，Undertow提供了复用这些协议的能力。</p> 
- <p>最后，这也给了我们一个机会来构建一个超越Servlet规范、对开发人员非常友好的系统。最终产出的系统非常小，而且只有很少的依赖、很少的内存占用并且是可嵌入的。其易于使用的API同时支持非阻塞式和更传统的面向阻塞流的Web开发。</p> 
-</blockquote>
-<p><b>InfoQ</b>：你能谈谈WildFly 8中审计日志的详细信息吗？</p>
-<blockquote> 
- <p>WildFly的审计日志功能之前是在EAP 6.2中增加的，后来我们把它引入到了上游产品中。如果启用RBAC，只有审计员或超级管理员角色能够修改审计日志配置。任何针对管理模型的操作都会被记录在日志中。由于像CLI的tab-completion（译注：按tab键自动完成填充）功能会导致大量的读操作，因此你可以配置只记录那些模型状态发生变化的操作。同时，在MBeanServer内部或者在核心控制器中，当我们的JMX门面调用核心管理模型时，我们记录所有的JMX访问。</p> 
- <p>我们支持日志写到本地文件或者写到系统日志服务。系统日志服务可以是本地的，也可以是远程的，我们支持通过UDP和TCP协议发送日志。同时还支持TLS（对rsyslog测试），包括可选的客户端授权认证。作为对我们社区和客户需求的回应，现在Syslog记录只以JSON格式输出，这样就可以更容易地增加日志字段。但是，按照它现在的写入方式，将来也可能增加其它输出格式。</p> 
- <p>日志记录的信息包括：<br /> -该操作是否修改了管理模型<br /> -该操作是否在服务完全启动后立即执行。<br /> -认证的用户名<br /> -操作的来源接口，也就是说它是来自Web接口、JMX接口还是原生接口<br /> -调用者的地址<br /> -操作是否成功<br /> -操作本身<br /> -域模式下的UUID，用于跟踪其从域控制器到主机控制器然后到管理服务器的操作。</p> 
- <p>示例记录</p> 
- <pre>
-- - - - - - - - - - ----
-
-  2014-01-23 10:30:16 - {
-   &quot;type&quot; : &quot;core”,                      
-   &quot;r/o&quot; : false,
-   &quot;booting&quot; : false,
-   &quot;version&quot; : &quot;8.0.0.Final-SNAPSHOT&quot;,
-   &quot;user&quot; : &quot;$local&quot;,
-   &quot;domainUUID&quot; : null,
-   &quot;access&quot; : &quot;NATIVE&quot;,
-   &quot;remote-address&quot; : &quot;127.0.0.1/127.0.0.1&quot;,
-   &quot;success&quot; : true,
-   &quot;ops&quot; : [{
-       &quot;address&quot; : [{
-           &quot;system-property&quot; : &quot;xxx&quot;
-       }],
-       &quot;operation&quot; : &quot;remove&quot;,
-       &quot;operation-headers&quot; : {
-           &quot;caller-type&quot; : &quot;user&quot;,
-           &quot;access-mechanism&quot; : &quot;NATIVE&quot;
-       }
-   }]
-}</pre> 
-</blockquote>
-<p><b>InfoQ</b>：你能介绍一下补丁系统吗？它是否能向一个正在运行的系统打补丁？</p>
-<blockquote> 
- <p>补丁功能是我们最早为JBoss EAP用户开发的，但我们开源模型的一个关键元素是，我们为企业产品开发的所有主要功能，都要移植到上游产品中。因此JBoss EAP 6.2和WildFly 8都有这个功能。该功能包括一组新的管理操作和CLI中一个名为“patch”的新命令。你可以使用此命令将JBoss产品补丁更新到一个单独的本地或远程服务器实例中。你可以对运行中的系统执行该命令，但它只是补丁阶段，必须重新启动才能让补丁生效。如果发现有问题，你可以回滚补丁。只要你愿意，系统能够保存所有的补丁历史记录，因此你可以回到任意时间点。如果你对其内部感到好奇，补丁基础服务建立在WildFly加载的模块类之上，本质上是通过增加额外的模块文件夹，扩展或替换那些初始安装时包含的模块。</p> 
- <p>我们计划在将来的版本中，继续开发此功能，包括提供界面，以向导方式更新这些补丁。</p> 
-</blockquote>
-<p><b>InfoQ</b>：哪些LDAP目录可以用于保存RBAC凭据？活动目录可以吗？</p>
-<blockquote> 
- <p>可以。我们对LDAP的支持非常灵活，你可以调整过滤器来匹配目录提供者的Schema。因此理论上它支持包括活动目录在内的任意LDAP服务器。举例来说，对于活动目录，你可以设置用户名过滤器指向sAMAccountName。</p> 
-</blockquote>
-<p><b>InfoQ</b>：除了品牌的变化，使用WildFly与JBoss EAP有什么不同？EAP是否更加保守一些？</p>
-<blockquote> 
- <p>WildFly倾向于以小步快跑的方式交付最新的技术。我们的目标是每年至少发布一个大版本，在大版本之间频繁地发布里程碑版本。WildFly采用社区支持模型，开发者和用户在论坛中互相帮助，分享代码。但是他们关注的、感兴趣的，通常都是当前的产品和技术。</p> 
- <p>另一方面，EAP更加保守，它关注的是长期运行的分支，会维护7-10年并保持补丁更新。这些分支上的功能更新是渐近式的，且更易于使用。（我们从上游树反向移植功能到老版本，重点是保持兼容性。）EAP还有许多其它好处，除了订购中包含的分发外，还包括供应商认证和一致性、庞大的知识库和有保障的服务水平协议。</p> 
-</blockquote>
-<p><b>InfoQ</b>：我们多久能看到满足Java EE 7规范的JBoss EAP？</p>
-<blockquote> 
- <p>我现在还不能确定具体的日期，但我确定下一个将要发布的大版本EAP 7准备提供Java EE 7的支持。因为最终的EAP是继承自WildFly，因此它会兼容WildFly 8（以及WildFly的后续版本）。</p> 
-</blockquote>
-<p><b>InfoQ</b>：对于Oracle决定停止GlassFish的商业支持，你认为会对JBoss EAP更广泛的应用产生多大影响？</p>
-<blockquote> 
- <p>我不想推测最终会发生什么，但我们已经注意到从GlassFish转到WildFly和EAP的兴趣在增加。尽管选择什么样的应用服务器需要考虑很多因素，但我们觉得致力于开源和社区是一个重要的因素。而这些一直是Red Hat基因的组成部分，我们写的每一行代码都是100%开源的。</p> 
-</blockquote>
-<p>更多信息请访问<a href="http://wildfly.org/">WildFly网站</a>。</p>
-<p><strong>原文英文链接：</strong><a href="http://www.infoq.com/news/2014/02/wildfly8-interview">Interview with WildFly Lead Jason Greene on WildFly 8</a></p><br><br><br><br><br><br></body></html>
+<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>Appurify和Xamarin推出设备多样化的移动应用持续集成</h3><p><a href="http://appurify.com/blog/announcing-amp">Appurify Mobile Platform</a>和<a href="http://xamarin.com/test-cloud">Xamarin Test Cloud</a>是最近发布的两个服务，它们承诺帮助开发者和企业在真实的iOS和Android设备上对其移动应用进行自动测试和性能优化，并支持自动化测试和持续集成。</p>
+<p>移动应用测试给开发者带来了特殊的挑战。<a href="http://en.wikipedia.org/wiki/Mobile_application_testing">根据维基百科</a>，关键因素包括：</p>
+<ul> 
+ <li>设备的多样性，包括内存、屏幕分辨率和方向、网络连接选项等在内的设备参数存在差异。</li> 
+ <li>移动平台的多样性，例如iOS、Android和Windows Phone，每种平台的用户群都有多个不同的操作系统版本。</li> 
+ <li>移动运营商的网络协议多样性，例如GSM、CDMA和FOMA，以及影响操作的各种条件，例如信号强度和可用带宽。</li> 
+</ul>
+<p>Jim Cowart<a href="http://www.developereconomics.com/testing-mobile-applications/">为Developer Economics写的一篇文章</a>同时还指出了开发者需要应对的另外两个挑战：功能不完备的工具以及对工具所知甚少。</p>
+<p>Appurify Mobile Platform和Xamarin Test Cloud都在发布说明中强调了针对各种设备进行功能测试和性能测试的重要性，并声明提供了上百种设备供选择。开发者可以编写自己的脚本进行UI测试，并通过命令行或者API将它们集成到现有的开发过程中。也可以在Team Foundation Server、Jenkins和TeamCity等持续集成平台中直接运行测试。Appurify还声明他们能够针对各种载体和信号强度测试应用软件。</p>
+<p>Appurify<a href="http://gigaom.com/2013/10/17/mobile-app-development-is-fundamentally-broken-says-appurify/2/">通过对iOS应用商店中前200个应用的1星评价</a>评估功能测试和性能测试的重要性。得出的结论是52%的1星评价与系统崩溃、网络性能或者UI延迟有关。</p>
+<p>另一方面，<a href="http://pages.appurify.com/2014report-Request.html">Appurify委托的另一项研究</a>，在2013年12月对400名美国开发者进行了调查。78%的被访者表示他们在真实设备上进行手工测试，其中高达41%依赖用户发现缺陷，总共只有10%的开发者表示使用自动化测试。</p>
+<p>其它一些公司也提供移动设备测试服务，例如Perfecto Mobile和Keynote DeviceAnywhere。特别是，Perfecto Mobile还允许“<a href="http://www.perfectomobile.com/Products/MobileCloud_Interactive">不论你在哪，都可以远程在真实的智能手机和平板电脑上进行人工测试</a>”。<a href="http://recode.net/2014/02/04/google-backed-appurify-aims-to-automate-mobile-app-makers-device-testing/">Appurify的CEO Jay Srinivasan表示</a>，其服务与对手的关键区别是，它能提供更深层次的自动化和细粒度，使客户不仅能够测试各种不同的设备，还能测试各种网络条件和内存容量。Srinivasan说，自然状态下发现的一半错误，不是因为没有在这种设备上测试过，而是没有在正确的条件下进行测试。</p>
+<p><strong>原文英文链接：</strong><a href="http://www.infoq.com/news/2014/02/continuos-integration-mobiletest">Appurify and Xamarin Launch Continuous Integration for Mobile Apps on Variety of Devices</a></p><br><br><br><br><br><br></body></html>

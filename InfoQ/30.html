@@ -1,62 +1,22 @@
-<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>Red Hat JBoss团队发布WildFly 8，全面支持Java EE 7并包含全新的嵌入式Web服务器</h3><p>Red Hat的JBoss部门今天<a href="http://wildfly.org/news/2014/02/11/WildFly8-Final-Released/">宣布</a><a href="http://wildfly.org/">WildFly 8</a>正式发布。其前身是JBoss Application Server。本次发布的版本完全支持Java EE 7规范，支持Web和Full profile。WildFly同时包含全新的Web服务器Undertow、新的安全特性和补丁系统。补丁系统用于对正在运行的系统进行升级。</p>
-<p>Undertow是一个Servlet 3.1容器，也是HTTP管理接口的服务器。新产品支持<a href="http://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html#sec14.42">HTTP Upgrade</a>，它是HTTP/1.1 RFC的一部分，允许HTTP连接升级成另一种协议。最常用的是初始化Web socket连接，该连接允许浏览器和其它客户端启动一个全双工连接。</p>
-<p>由于HTTP Upgrade允许你通过一个HTTP端口复用多种协议，因此不再需要多端口，防火墙配置也更加容易。WildFly本身只使用两个端口：JNDI和EJB调用基于Undertow子系统端口8080，管理则基于Web管理端口9090。</p>
-<p>作为一个示例，连接建立起来后，初始EJB请求看起来的样子是这样的：</p>
-<pre>
-GET / HTTP/1.1
-Host: example.com
-Upgrade: jboss-remoting
-Connection: Upgrade
-Sec-JbossRemoting-Key: dGhlIHNhbXBsZSBub25jZQ==
-</pre>
-<p>Undertow回应客户端，表示允许升级并且已经完成升级：</p>
-<pre>
-HTTP/1.1 101 Switching Protocols
-Upgrade: jboss-remoting
-Connection: Upgrade
-Sec-JbossRemoting-Accept: s3pPLMBiTxaQ9kYGzzhZRbK+xOo=
-</pre>
-<p>之后，socket传递到WildFly EJB层，它看起来就像是普通的EJB连接。</p>
-<p>在处理这个初始HTTP请求时，会有比较小的性能消耗，但是一旦它完成，性能将完全相同。同时，由于所需的端口数量减少了，因此整体效果预期将是正面的。Jason Greene是Red Hat JBoss部门的WildFly经理和JBoss EAP平台架构师。他告诉InfoQ：</p>
-<blockquote> 
- <p>因为要处理HTTP请求，因此在建立过程中会有一些额外开销。但是Undertow的效率确保这个开销非常低。在升级请求完成后，socket的行为与非HTTP时一样，因此从那之后，性能也完全相同。由于影响如此之低，我们将其作为默认设置。WildFly 8现在只有2个HTTP端口，一个用于管理，另一个用于应用。所有其它协议都共用这两个端口。</p> 
-</blockquote>
-<p>Undertow也适用于嵌入模式。你可以使用builder API创建服务并注册HTTP处理程序，该处理程序以非阻塞方式处理请求。以下是<a href="http://undertow.io">undertow.io</a>网站上的例子：</p>
-<pre>
-public class HelloWorldServer { 
- 
-    public static void main(final String[] args) { 
-        Undertow server = Undertow.builder() 
-                .addListener(8080, &quot;localhost&quot;) 
-                .setHandler(new HttpHandler() { 
-                    @Override 
-                    public void handleRequest(final 
-HttpServerExchange exchange) throws Exception { 
-                        exchange.getResponseHeaders().put
-(Headers.CONTENT_TYPE, &quot;text/plain&quot;); 
-                        exchange.getResponseSender().send(&quot;Hello World&quot;); 
-                    } 
-                }).build(); 
-        server.start(); 
-    } 
-} 
-</pre>
-<p>Undertow也允许你嵌入基于Servlet API的代码，<a href="https://github.com/undertow-io/undertow/blob/master/examples/src/main/java/io/undertow/examples/servlet/ServletServer.java">GitHub</a>上有相关的例子。</p>
-<p>对于新的web服务器，WildFly 8也有不错的安全提升。此外还包括审计日志和以角色为基础的安全模型。</p>
-<p>审计系统将确保管理模型的所有操作都记录到日志中，日志可以写到本地文件或者服务器。</p>
-<p>WildFly同时提供两个访问控制器，“简单”的那个与AS 7中的相同，要么太多、要么几乎没有。而基于角色的访问控制模型（RBAC）则允许不同的管理员拥有不同的权限（例如一个监视角色和一个修改角色）。</p>
-<p>WildFly内置了7个RBAC角色：</p>
-<ol> 
- <li><strong>监视者</strong>：拥有最少的权限。能够读取配置和当前运行状态，不能读取敏感资源和数据，不能查看审计日志和相关资源。</li> 
- <li><strong>操作员</strong>：除拥有监视者的所有权限外，能够修改运行时状态，重新加载或者关闭服务器，暂停/恢复JMS目标。操作员无法修改持久化配置。</li> 
- <li><strong>维护员</strong>：除拥有操作员的所有权限外，能够修改持久化配置，可以部署应用，增加JMS目标等等。维护员能够编辑几乎所有服务器和部署相关的配置。但是，维护员不能读取和修改敏感信息（例如密码），不能读取或修改审计信息。</li> 
- <li><strong>部署员</strong>：很像维护员，但仅限于部署相关的修改。部署员不能修改通用服务配置。</li> 
- <li><strong>管理员</strong>：能够查看和修改敏感信息例如密码，安全域设置。但是对审计日志不能进行任何操作。</li> 
- <li><strong>审计员</strong>：拥有监视者所有权限。绝大部分都是只读的，但是能够查看和修改审计日志系统相关的配置。</li> 
- <li><strong>超级用户</strong>：等同于AS 7的管理员，拥有所有权限。</li> 
-</ol>
-<p>RBAC数据可以存储在几乎所有LDAP服务器上，也包括活动目录。</p>
-<p>WildFly还包括一个新的补丁系统，该系统最早是为JBoss EAP开发，允许你远程或者本地部署JBoss产品补丁。对正在运行的系统打补丁，需要重新启动以使其生效。</p>
-<p>最后，虽然WildFly主要用于支持Java EE，但它也可用于其它语言和环境。例如<a href="http://torquebox.org">TorqueBox</a>项目允许Ruby on Rails运行在WildFly服务器上。</p>
-<p>你可以从<a href="http://wildfly.org/">WildFly网站</a>和<a href="http://wildfly.org/news/2013/11/21/WildFly-8-Webinar/">webinar视频</a>获取更多信息。InfoQ也就<a href="http://www.infoq.com/news/2014/02/wildfly8-interview">更广泛的话题采访</a>了Jason Greene，其中包括Undertow的背景、新的审计日志系统和Oracle<a href="http://www.infoq.com/news/2013/11/glassfish-commercial-dead/">停止GlassFish商业支持</a>的影响等等。</p>
-<p><strong>原文英文链接：</strong><a href="http://www.infoq.com/news/2014/02/wildfly8-launch">Red Hat's JBoss Team Launch WildFly 8 with full Java EE 7 Support and a New Embeddable Web Server</a></p><br><br><br><br><br><br></body></html>
+<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>Google期望使用QUIC给互联网加速</h3><p>QUIC（Quick UDP Internet Connections，发音'quick'）是一种基于UDP的多路传输协议，它的主要目标是实现零往返时间的连接开销。Google的开发人员Robbie Shade在最近的一个<a href="http://www.youtube.com/watch?v=hQZ-0mXFmk8">视频</a>中对QUIC做了介绍，主要有以下特性：</p>
+<ul> 
+ <li>拥有SPDY的所有优点（多路传输，支持优先级，等等）</li> 
+ <li>零往返时间连接</li> 
+ <li>数据包同步，有效降低数据丢包率</li> 
+ <li>转发问题连接，有效减少重发延迟</li> 
+ <li>自适应拥塞控制（对TCP友好），有效减少移动客户端重新连接的次数</li> 
+ <li>与TLS等效的加密措施</li> 
+ <li>Chrome支持与Google的QUIC通信</li> 
+</ul>
+<p>QUIC能够处理传输可靠性、丢包或无序数据包等一系列UDP默认未处理的问题。QUIC的多路传输指协议使用多个通道传输数据，所以当其中一个数据流丢包时，其他的通道并不会因此阻塞等待丢失的数据包，而这会发生在SPDY上，因为SPDY虽然是多路传输但是只有一个通道。Shade说，QUIC的方法解决了TCP传输的线端阻塞问题。</p>
+<p>使用QUIC的一个主要优势是在客户端和服务器首次连接时不需要握手步骤，某种程度上与<a href="http://en.wikipedia.org/wiki/TCP_Fast_Open">TCP快速开启（TCP Fast Open）</a>类似。TCP快速开启在2011年面世，但是目前尚没有大范围使用。根据Shade的说法，采用TLS时，在一次跨大西洋的连接中TCP握手要耗时300ms，而QUIC可以将延迟降为100ms。</p>
+<p>QUIC的另一个优势是通信通道的定义基于ID而不是IP+端口，这使得切换网络后继续转发连接成为可能，例如从WiFi网络进入移动网络。</p>
+<p>所有QUIC连接都使用特殊的机制进行加密，详见<a href="https://docs.google.com/document/d/1g5nIXAIkN_Y-7XJW5K45IblHd_L2f5LTaDUDwvZ5L6g">QUIC加密文档</a>。</p>
+<p>当被问到为什么不使用TCP+TLS，Shade解释说，虽然TCP和TLS持续升级，但协议的迭代及部署非常慢，而QUIC是部署在客户端级别，而不是在内核级别，这样就能以更快的速度进行迭代，迭代周期由以年计算加速为以周计算。</p>
+<p>根据Shade的介绍，将来SPDY能够运行在QUIC之上，使其比现在更好。将来Google实际使用QUIC的经验和教训可以合并到TCP中。</p>
+<p>目前用户可以从Chromium项目中获取QUIC的客户端和服务器，google.com、GMail、YouTube以及其他Google服务都在使用QUIC。</p>
+<p>资源：<a href="http://www.youtube.com/watch?v=hQZ-0mXFmk8">QUIC相关视频</a>，<a href="https://docs.google.com/presentation/d/13LSNCCvBijabnn1S4-Bb6wRlm79gN6hnPFHByEXXptk">QUIC相关幻灯片</a>，<a href="https://docs.google.com/document/d/1RNHkx_VvKWyWg6Lr8SZ-saqsQx7rFV-ev2jRFUoVD34/preview?sle=true">QUIC</a>——协议的详细文档，<a href="https://docs.google.com/document/d/1WJvyZflAO2pq77yOLbp9NsGjC1CHetAXV8I0fQe-B_U">QUIC导线排列标准</a>——线框标准，<a href="https://docs.google.com/document/d/1g5nIXAIkN_Y-7XJW5K45IblHd_L2f5LTaDUDwvZ5L6g">QUIC加密</a>，<a href="https://chrome.google.com/webstore/detail/spdy-indicator/mpbpobfflnpcgagjijhmgnchggcjblin/related?hl=en">SPDY指示器扩展</a>。</p>
+<p><strong>查看英文原文：</strong><a href="http://www.infoq.com/news/2014/02/quic">Google Wants to Speed Up the Internet with QUIC</a></p>
+<hr />
+<p>感谢<a href="http://www.infoq.com/cn/author/吴海星">吴海星</a>对本文的审校。</p>
+<p>给InfoQ中文站投稿或者参与内容翻译工作，请邮件至<a href="mailto:editors@cn.infoq.com">editors@cn.infoq.com</a>。也欢迎大家通过新浪微博（<a href="http://www.weibo.com/infoqchina">@InfoQ</a>）或者腾讯微博（<a href="http://t.qq.com/infoqchina">@InfoQ</a>）关注我们，并与我们的编辑和其他读者朋友交流。</p><br><br><br><br><br><br></body></html>
