@@ -1,13 +1,13 @@
 <html>
  <head></head> 
- <body>
-  <div>
+ <body> 
+  <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/28.javab">Custom Assertions in Java Tests</a> Using so-called &quot;matcher libraries&quot; to implement custom assertions to make tests more readable and maintainable. 
-  </div>
-  <div>
+  </div> 
+  <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/27.javab">Interview and Book Review of The Technical and Social History of Software Engineering</a> Capers Jones wrote the book The Technical and Social History of Software Engineering in which he provides an overview of the evolution of information technology and software development. InfoQ interviewed Capers about advancements and events in software engineering and the effects that they have had on our society. 
-  </div>
-  <div>
+  </div> 
+  <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/26.javab">Quality Code - Book Review and Interview</a> Quality Code book, authored by Stephen Vance, covers the different aspects of software development lifecycle with focus on delivering quality product. In the book, Stephen discusses the practices for supporting software craftsmanship testing. InfoQ spoke with the author about the book and the best practices for testing application code. 
   </div> 
   <div> 
@@ -150,6 +150,6 @@
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/30.javab">PyParallel: A Fast Parallel Version of Python</a> By combining asynchronous I/O with a shared-nothing architecture, PyParallel research project is able to execute code in a parallel context faster than it can using CPython’s normal interpreter. 
-  </div>    
+  </div> 
  </body>
 </html>

@@ -1,12 +1,52 @@
-<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>Google Cloud SQL已经正式发布</h3><p>Google已经宣布其<a href="https://cloud.google.com/products/cloud-sql/">Cloud SQL</a>服务<a href="http://googlecloudplatform.blogspot.co.uk/2014/02/google-cloud-sql-now-generally-available.html">正式发布</a>。伴随该服务发布的还有自动加密客户数据、99.95%正常使用时间服务等级协议（<a href="https://developers.google.com/cloud-sql/sla">SLA</a>）和数据库最大支持500GB。</p>
-<p>Cloud SQL是以实例为基础的服务，类似于Amazon的关系数据库服务（<a href="http://aws.amazon.com/rds/">RDS</a>）。最小的D0实例有0.125GB内存，<a href="https://developers.google.com/cloud-sql/pricing">价格</a>为$0.025/小时，与RDS的MySQL入门价格匹配。最大的D32实例有16GB内存，价格为$3.08/小时。与Compute Engine价格模型一样，实例费用不包括存储和网络费用。存储价格为$0.24/G/月，是<a href="http://www.infoq.com/news/2013/12/gcega">Compute Engine</a>价格的6倍，并且没有提供相同的大小/性能权衡功能，这将导致更小单元的存储产生I/O饥饿现象。Google提供了一个以D0实例为基础，包括0.5GB存储和每天200K I/O的服务包，其价格是$0.36/天。Google表示：</p>
+<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>百度技术沙龙第47期回顾：互联网后台服务高效开发实践（含资料下载）</h3><p>2014年2月22日，在由<a href="http://weibo.com/baidutech">@百度</a>主办、<a href="http://e.weibo.com/infoqchina">@InfoQ</a>负责策划组织和实施的第47期百度技术沙龙活动上，百度网页搜索部资深研发工程师蒋锦鹏、58同城技术中心架构部系统架构师姜中明，各自分享了其在互联网后台设计及高效开发方面的实战经验。他们的话题涉及“sofa技术研发”和“58同城统一监管平台的分析设计”这两个方面，本文将对讲师各自的分享做简单的回顾，同时提供相关资料的下载。</p>
+<h2>主题一：sofa-像搭积木一样构建系统（<a href="http://t.cn/8FRpXgE">下载讲稿</a>）</h2>
+<p>蒋锦鹏介绍了大量的百度网页搜索sofa框架的理念和应用，其演讲内容主要包括：hello world in sofa、sofa的机制原理、sofa的应用举例、搭建一个迷你搜索引擎、sofa的现状及未来工作。</p>
+<h3><b>一句话介绍</b><b> </b></h3>
+<p>sofa提供一套面向接口、面向组件开发的规范、运行时库、工具和平台支持。</p>
+<h3><b>sofa</b><b>解决什么问题</b><b> </b></h3>
+<p>统一接口定义方式</p>
+<p>纯面向接口的开发方式</p>
+<p>细粒度组件化支持</p>
+<p>本地、远程架构透明扩展</p>
+<p>跨编程语言开发</p>
+<p><img src="http://infoqstatic.com/resource/news/2014/02/baidu-salon47-summary/zh/resources/0227004.png" width="600" _href="img://null" _p="true" alt="" /></p>
+<p>“sofa虽然基本机制成型，但在稳定性、易用性、安全、多语言等方面还需要进一步完善。预计开源时间可能会在今年的下半年。”蒋锦鹏总结道。</p>
+<h2>主题二：58统一监管平台系统分析与设计（<a href="http://t.cn/8FRbwad">下载讲稿</a>）</h2>
+<p>姜中明从平台介绍、Agent服务分析、Agent服务设计、高效开发这四个维度介绍了58同城统一监管平台系统。姜中明从互联网架构师的视角，深入浅出的介绍了统一监管平台系统的整体架构和高效开发的方法，并阐述了普通开发者对平台分析的差异化。</p>
+<h3><b>整体架构</b></h3>
+<p><img src="http://infoqstatic.com/resource/news/2014/02/baidu-salon47-summary/zh/resources/0227005.png" width="600" _href="img://null" _p="true" alt="" /></p>
+<p><b>Agent</b><b>服务分析</b></p>
+<p>• <b>需求</b><b> </b></p>
+<p>– 接收平台指令，根据指令调用对应功能，完成相关任务</p>
+<p>– 通过Agent收集服务器数据和相关状态</p>
+<p>– 不间断服务，自动恢复</p>
+<p>• <b>特点</b><b> </b></p>
+<p>– 扩展性强</p>
+<p>– 灵活性高</p>
+<p>– 稳定性高</p>
+<p><b>通信选型</b></p>
+<p>• <b>平台的应用场景</b><b> </b></p>
+<p>– 多个子系统，互相交互</p>
+<p>– 多种状态互相影响</p>
+<p>– 交互过程有顺序，有冲突</p>
+<p>• <b>结论：分布式协调框架</b><b>Zookeeper</b></p>
+<p>– 状态维护，消息一致性保障</p>
+<p>– 免费的事件通知</p>
+<p>– 免费的网络通信</p>
+<p>“由该系统将公司资源进行整合，统一集中管理，配置，监控。可实现将公司技术资源统一化，规范化，自动化。以达到减小成本，提高效率，增强安全性，为公司节约成本、提高执行力。”姜中明讲解到。</p>
+<h2>OpenSpace（开放式讨论环节）</h2>
+<p>为了促进参会者与我们每期的嘉宾以及讲师近距离交流，深入探讨在演讲过程中的疑问，本次活动依然设置了Open Space（开放式讨论）环节。在Open Space的总结环节，几位话题小组长分别对讨论的内容进行了总结。</p>
+<p><b>蒋锦鹏</b>：活动组织的很好，大家对自己公司的平台理解都很深，我从中也学到了不少新的知识；</p>
+<p><b>姜中明</b>：本以为平台架构的话题层面有些脱离开发人群，但从openspace环节与参会者的互动交流情况看，效果还是很不错的。大家聊的很深入，提的问题都很专业。</p>
+<p>会上，一些参会者也通过新浪微博分享了他们的参会感受：</p>
 <blockquote> 
- <p>对于轻量级应用的开发人员，我们提供灵活的“per-use”定价方案。你只为存取数据的时间付费。以每月约$1的价格就可以开始使用云托管的MySQL数据库了。</p> 
+ <p><a href="http://weibo.com/bjgjy">@_郭嘉懿_</a><em>：从大连跑来了。</em><em> </em><em>嗯。</em><em> </em><em>值得！</em><em> </em><em>希望二线城市也有这样的分享！</em></p> 
 </blockquote>
-<p><a href="https://developers.google.com/cloud-sql/faq#encryption">自动加密功能</a>使用AES-128对称密钥，所有数据库表和临时文件都进行了加密，也就是说，Google存储系统的所有静态数据都是安全的。Google也加密了所有Cloud SQL内部网络的流量，同时允许外部连接使用SSL以提供数据传输的安全性。密钥管理是完全透明和自动化的，这在安全性和法规遵从方面是把双刃剑。我们可以确认静态数据是被加密了，但无法保护它避免来自服务提供商（Google）的未经授权的访问，以及任何能够强制服务提供商的国家机构的访问。该系统也无助于防止来自应用层的攻击，密码表可能在底层存储加密，但对于那些能够破解软件的人来说，它们仍然是明文。</p>
 <blockquote> 
- <p>“有很多方法可以用来加密，有些方法的效率比其它方法更高，”451研究所的企业安全实践研究总监Wendy Nather说，“加密静态数据听起来不错，但如果它从来没有真正的静态过呢，安全性如何？总会有用户或者应用打开这个安全口，攻击者将以授权的路径从同一扇门进入。”</p> 
+ <p><a href="http://weibo.com/n/%E8%81%82%E9%9D%96%E5%AE%87_dev?from=feed&amp;loc=at">@聂靖宇_dev</a>: ofa和现在再用的架构还是有一些相似的，这个讲义有必要拿回去在内部分享下。</p> 
 </blockquote>
-<p>Google提供<a href="https://developers.google.com/cloud-sql/faq#replication">复制功能</a>来确保数据的可用性，并且没有额外费用。该功能提供了同步和异步选项，用于失败时在写入性能与数据完整性之间进行权衡。当启用了复制功能后，数据会被复制到一个地理区域（美国或欧洲）内的多个位置。这比<a href="http://aws.amazon.com/rds/multi-az/">Amazon RDS多可用区域部署</a>更划算，因为它会增加一倍的每小时实例费用。</p>
-<p>在Cloud SQL正式发布以前，其数据库最大支持100GB。现在对所有用户增加到了250GB，银支持合约（silver support contract）客户增加到500GB。只有已经使用的存储才会被列入账单，因此没有必要预分配存储空间。</p>
-<p><strong>原文英文链接：</strong><a href="http://www.infoq.com/news/2014/02/GoogleCloudSQLGA">Google Cloud SQL now Generally Available</a></p><br><br><br><br><br><br></body></html>
+<blockquote> 
+ <p><a href="http://weibo.com/u/1904899075">@曹坤波-乐视</a>：<em>58</em><em>这哥们对架构讲解还比较到位</em></p> 
+</blockquote>
+<p>有关百度技术沙龙的更多信息，可以通过新浪微博关注<a href="http://weibo.com/baidutech">@百度技术沙龙</a>，或者关注InfoQ官方微信：infoqchina，InfoQ上也总结了过往47期所有百度技术沙龙的演讲视频和资料等，感兴趣的读者可以<a href="http://www.infoq.com/cn/zones/baidu-salon/">直接浏览内容</a>。</p>
+<p><strong>特别提示：</strong>第48期百度技术沙龙将在3月15日，在北京车库咖啡举行，主题为《大规模机器学习》，欢迎关注<a href="http://weibo.com/infoqchina">@InfoQ</a>、<a href="http://weibo.com/baidutech">@百度技术沙龙</a>获取后续的活动信息。</p><br><br><br><br><br><br></body></html>

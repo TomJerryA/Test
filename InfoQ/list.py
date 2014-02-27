@@ -1,26 +1,26 @@
 <html>
  <head></head> 
- <body>
-  <div>
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/39.py">SharpDevelop 5リリース</a>SharpDevelop 5がリリースされた。クラスブラウザ、サーチグルーピングが搭載されており、パーシャル型のGo To定義が改善されている。また、ILSpyも統合されている。また、カーソルを使ったインサート、コンテキストアクション、コードインスペクション、スクロールバー、バックグラウンド構文チェック、リンクモード、変数の自動命名、XMLベースのツールチップなどの機能を搭載している。
-  </div>
-  <div>
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/38.py">GoogleのBigQueryが勢いづく</a>Googleが提供するSaaS型のデータストアであるBigQueryが勢いづいているようだ。BigQueryを使うとクラウド上の大規模な列指向のデータ構造にSQLライクな言語で問い合わせが実行できる。 Google AnalyticsやGoogle Apps Scriptとの連携も可能だ。
-  </div>
-  <div>
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/37.py">VersionOne社CEORobert Holler氏へのインタビュー</a>VersionOne社CEOのRobert Holler氏に2014年冬のリリースと投資テーマについて話を聞いた。
-  </div>
-  <div>
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/36.py">GPSの25年</a>現在運用中のGPS衛星は25年前のローンチ以来，今もなお強化が続けられている。今日ではGPS受信機が航空機や大型タンカーだけでなく，ほとんどのスマートフォンに搭載されるまでになった。InfoQではGPSのこれまでを振り返るとともに，今日のHTML5や地理情報サービスでどのように位置情報が使われているのかを検証することにした。
-  </div>
-  <div>
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/35.py">Elasticsearch 1.0.0リリース</a>オープンソースアナリティクスツールであるElasticsearchのバージョン1.0.0がリリースされた。Elasticsearchはビッグデータ環境でのリアルタイム分析を実現する分散検索エンジンだ。新しいバージョンはさまざまな機能強化がされており、より直感的に使えるようになっている。
-  </div>
-  <div>
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/34.py">アジャイルでユースケースを利用する - ユースケース2.0，スライシング，ラミネーティング</a>アジャイルソフトウェア開発を使って製品をインクリメンタルに開発し提供する場合，要件項目はプロダクトバックログに収集，整理される。ここで使用される要件定義テクニックはユースケースだ。アジャイルの製品要件管理でユースケースを利用するテクニックには，ユースケース2.0やスライシング，ラミネーティングなどがある。
-  </div>
-  <div>
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/33.py">クラウドホスト型アプリケーションのためのデザインパターン</a>Microsoftのpatterns &amp; practicesグループがクラウドホスト型アプリケーションの実装に適したソリューションとパターンを提案したガイドをリリースした。ガイドには、クラウドアプリケーション開発で良く遭遇する領域をカバーする8の問題カテゴリとともに、10のガイダンストピックと24のデザインパターンを含んでいる。また、これらのパターンの使い方を実演する10のサンプルアプリケーションも含まれている。
+ <body> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/39.py">SharpDevelop 5リリース</a>SharpDevelop 5がリリースされた。クラスブラウザ、サーチグルーピングが搭載されており、パーシャル型のGo To定義が改善されている。また、ILSpyも統合されている。また、カーソルを使ったインサート、コンテキストアクション、コードインスペクション、スクロールバー、バックグラウンド構文チェック、リンクモード、変数の自動命名、XMLベースのツールチップなどの機能を搭載している。 
+  </div> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/38.py">GoogleのBigQueryが勢いづく</a>Googleが提供するSaaS型のデータストアであるBigQueryが勢いづいているようだ。BigQueryを使うとクラウド上の大規模な列指向のデータ構造にSQLライクな言語で問い合わせが実行できる。 Google AnalyticsやGoogle Apps Scriptとの連携も可能だ。 
+  </div> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/37.py">VersionOne社CEORobert Holler氏へのインタビュー</a>VersionOne社CEOのRobert Holler氏に2014年冬のリリースと投資テーマについて話を聞いた。 
+  </div> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/36.py">GPSの25年</a>現在運用中のGPS衛星は25年前のローンチ以来，今もなお強化が続けられている。今日ではGPS受信機が航空機や大型タンカーだけでなく，ほとんどのスマートフォンに搭載されるまでになった。InfoQではGPSのこれまでを振り返るとともに，今日のHTML5や地理情報サービスでどのように位置情報が使われているのかを検証することにした。 
+  </div> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/35.py">Elasticsearch 1.0.0リリース</a>オープンソースアナリティクスツールであるElasticsearchのバージョン1.0.0がリリースされた。Elasticsearchはビッグデータ環境でのリアルタイム分析を実現する分散検索エンジンだ。新しいバージョンはさまざまな機能強化がされており、より直感的に使えるようになっている。 
+  </div> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/34.py">アジャイルでユースケースを利用する - ユースケース2.0，スライシング，ラミネーティング</a>アジャイルソフトウェア開発を使って製品をインクリメンタルに開発し提供する場合，要件項目はプロダクトバックログに収集，整理される。ここで使用される要件定義テクニックはユースケースだ。アジャイルの製品要件管理でユースケースを利用するテクニックには，ユースケース2.0やスライシング，ラミネーティングなどがある。 
+  </div> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/33.py">クラウドホスト型アプリケーションのためのデザインパターン</a>Microsoftのpatterns &amp; practicesグループがクラウドホスト型アプリケーションの実装に適したソリューションとパターンを提案したガイドをリリースした。ガイドには、クラウドアプリケーション開発で良く遭遇する領域をカバーする8の問題カテゴリとともに、10のガイダンストピックと24のデザインパターンを含んでいる。また、これらのパターンの使い方を実演する10のサンプルアプリケーションも含まれている。 
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/32.py">Bletchley ParkとTMNOCとの大きな問題</a>今日2月5日は，最初の電子計算機であるColossusの開発から70周年にあたる日だ。ColossusはLorenzの暗号メッセージ解読を目的として，1944年2月5日に運用が開始された。しかしながら，Bletchley Parkですべてがうまく行っている訳ではない。National Museum of Computingは激しい論争の中で，存在の意義を失いつつあるのだ。 
@@ -150,6 +150,6 @@
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/45.py">AzulがWindowsおよびLinux向けのOpen JDK 6とJDK 7の商用バージョンを発表</a>Azul Systemsは，フリーで使用できる同社版OpenJDKのZuluが，LinuxとWindowsベースの製品系列で，Java 6とJava 7の両方をサポートすると発表した。サポートはZulu Community Supportフォーラムを通じて行われる。同社はまた，OpenJDKの商用サポート版であるZulu Enterpriseも提供している。 
-  </div>        
+  </div> 
  </body>
 </html>

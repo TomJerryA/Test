@@ -1,11 +1,11 @@
 <html>
  <head></head> 
- <body>
-  <div>
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/37.c">Quinto Lingu&Aacute;gil acontece em mar&ccedil;o</a>A quinta edi&ccedil;&atilde;o do evento “Lingu&Aacute;gil” ser&aacute; realizada entre os dias 13 e 15 de mar&ccedil;o, na Universidade Salvador - UNIFACS. O evento tem como principal objetivo promover a divulga&ccedil;&atilde;o, o debate e a troca de experi&ecirc;ncias entre especialistas nacionais e a comunidade baiana de profissionais e estudantes.
-  </div>
-  <div>
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/36.c">Padr&otilde;es de C&oacute;digo Java do Google</a>Recentemente, o Google liberou a defini&ccedil;&atilde;o completa de padr&otilde;es de c&oacute;digo para c&oacute;digo-fonte Java. S&atilde;o regras definitivas sobre c&oacute;digo Java que devem ser seguidas universalmente dentro do Google. Esta lista contempla formata&ccedil;&atilde;o de c&oacute;digo assim como outros tipos de conven&ccedil;&otilde;es e padr&otilde;es de c&oacute;digo.
+ <body> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/37.c">Quinto Lingu&Aacute;gil acontece em mar&ccedil;o</a>A quinta edi&ccedil;&atilde;o do evento “Lingu&Aacute;gil” ser&aacute; realizada entre os dias 13 e 15 de mar&ccedil;o, na Universidade Salvador - UNIFACS. O evento tem como principal objetivo promover a divulga&ccedil;&atilde;o, o debate e a troca de experi&ecirc;ncias entre especialistas nacionais e a comunidade baiana de profissionais e estudantes. 
+  </div> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/36.c">Padr&otilde;es de C&oacute;digo Java do Google</a>Recentemente, o Google liberou a defini&ccedil;&atilde;o completa de padr&otilde;es de c&oacute;digo para c&oacute;digo-fonte Java. S&atilde;o regras definitivas sobre c&oacute;digo Java que devem ser seguidas universalmente dentro do Google. Esta lista contempla formata&ccedil;&atilde;o de c&oacute;digo assim como outros tipos de conven&ccedil;&otilde;es e padr&otilde;es de c&oacute;digo. 
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/35.c">Combinando abordagens Agile e Lean</a>Combinando abordagens Agile e Lean − Existem diversas abordagens para melhorar o desenvolvimento de software, entre elas o Agile e o Lean. Os gerentes devem decidir qual delas implantar em suas organiza&ccedil;&otilde;es. As abordagens podem ser combinadas dependendo dos problemas que precisam ser resolvidos. O InfoQ entrevistou R&eacute;gis Medina sobre combinar Agile e Lean, com foco em pessoas e aprendizado. 
@@ -150,6 +150,6 @@
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/39.c">Anunciado o lan&ccedil;amento do Visual Studio 2013</a>A Microsoft fez diversos comunicados importantes para desenvolvedores: entre eles, a disponibiliza&ccedil;&atilde;o para download do Visual Studio 2013. 
-  </div>   
+  </div> 
  </body>
 </html>

@@ -1,35 +1,35 @@
 <html>
  <head></head> 
- <body>
-  <div>
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/32.java">Having Actions Done from Retrospectives</a>Agile retrospectives help teams to find and do actions to improve continuously. There are different ways to do follow up on the actions and to evaluate if actions are leading to better team performance and more value delivered to customers.
-  </div>
-  <div>
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/31.java">Scaling The Happiness Index</a>A report on how happiness index could be scaled out from team level to organization level. Frank Schlesinger, Corinna Baldauf and Stowe Boyd shared their experiences of scaling the happiness index and tools for implementation.
-  </div>
-  <div>
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/30.java">Q&amp;A with VersionOne CEO Robert Holler – Agile Live Webinars</a>InfoQ spoke to VersionOne CEO Robert Holler about their Agile Live Webinar series
-  </div>
-  <div>
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/29.java">Going Offline with LocalForage</a>The Mozilla Foundation has released localForage, a new JavaScript library that promises to simplify the process of storing offline data in web applications. What makes this library unique is the fact that it tries to combine the best of both worlds: the features of some more recent technologies (asynchronism and blob support) with a simple API.
-  </div>
-  <div>
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/28.java">Mono JIT, GC Get Better</a>Mono 3.2.7 is out, with a lot of new features such as an improved JIT, new interpreter for LINQ, use of native instructions for 64 bits, and more.
-  </div>
-  <div>
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/27.java">Anypoint for APIs: An Interview with Uri Sarid</a>MuleSoft recently released a significant upgrade to their Anypoint platform for APIs which brings together API design, collaboration and API management features. InfoQ interviewed MuleSoft CTO, Uri Sarid to find out more about the platform.
-  </div>
-  <div>
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/26.java">New Gem Creates Test Boilerplate for Chef Cookbooks</a>Meez is a new gem that will help get started with test-driven infrastructure for Chef cookbooks. It creates all the boilerplate necessary to assess a cookbook’s quality using tools such as Test Kitchen, Foodcritic, ChefSpec and others, allowing the user to focus on writing actual tests and infrastructure code.
-  </div>
-  <div>
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/25.java">Nokia X Marks Another Android Fork</a>This article overviews the latest most important Android forking attempts which offer developers new opportunities but also some challenges.
-  </div>
-  <div>
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/24.java">IDE Integrated Search Engines</a>New tools are bringing the web directly into a programmer's IDE. As search engines continue to compete for customers, new programming-specific search functionality has been produced for Visual Studio users.
-  </div>
-  <div>
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/23.java">Agile 2014 Keynote Speakers Announced</a>The Agile Alliance has announced keynote speakers who will present at the Agile 2014 conference in Orlando, FL, USA. They are Aneesh Chopra, former and first U.S. Chief Technology Officer, Diana Larsen, author, consultant and an authority on agile adoption, and Bjarte Bogsnes a leader in the Beyond Budgeting community
+ <body> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/32.java">Having Actions Done from Retrospectives</a>Agile retrospectives help teams to find and do actions to improve continuously. There are different ways to do follow up on the actions and to evaluate if actions are leading to better team performance and more value delivered to customers. 
+  </div> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/31.java">Scaling The Happiness Index</a>A report on how happiness index could be scaled out from team level to organization level. Frank Schlesinger, Corinna Baldauf and Stowe Boyd shared their experiences of scaling the happiness index and tools for implementation. 
+  </div> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/30.java">Q&amp;A with VersionOne CEO Robert Holler – Agile Live Webinars</a>InfoQ spoke to VersionOne CEO Robert Holler about their Agile Live Webinar series 
+  </div> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/29.java">Going Offline with LocalForage</a>The Mozilla Foundation has released localForage, a new JavaScript library that promises to simplify the process of storing offline data in web applications. What makes this library unique is the fact that it tries to combine the best of both worlds: the features of some more recent technologies (asynchronism and blob support) with a simple API. 
+  </div> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/28.java">Mono JIT, GC Get Better</a>Mono 3.2.7 is out, with a lot of new features such as an improved JIT, new interpreter for LINQ, use of native instructions for 64 bits, and more. 
+  </div> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/27.java">Anypoint for APIs: An Interview with Uri Sarid</a>MuleSoft recently released a significant upgrade to their Anypoint platform for APIs which brings together API design, collaboration and API management features. InfoQ interviewed MuleSoft CTO, Uri Sarid to find out more about the platform. 
+  </div> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/26.java">New Gem Creates Test Boilerplate for Chef Cookbooks</a>Meez is a new gem that will help get started with test-driven infrastructure for Chef cookbooks. It creates all the boilerplate necessary to assess a cookbook’s quality using tools such as Test Kitchen, Foodcritic, ChefSpec and others, allowing the user to focus on writing actual tests and infrastructure code. 
+  </div> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/25.java">Nokia X Marks Another Android Fork</a>This article overviews the latest most important Android forking attempts which offer developers new opportunities but also some challenges. 
+  </div> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/24.java">IDE Integrated Search Engines</a>New tools are bringing the web directly into a programmer's IDE. As search engines continue to compete for customers, new programming-specific search functionality has been produced for Visual Studio users. 
+  </div> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/23.java">Agile 2014 Keynote Speakers Announced</a>The Agile Alliance has announced keynote speakers who will present at the Agile 2014 conference in Orlando, FL, USA. They are Aneesh Chopra, former and first U.S. Chief Technology Officer, Diana Larsen, author, consultant and an authority on agile adoption, and Bjarte Bogsnes a leader in the Beyond Budgeting community 
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/22.java">Xamarin Sifts through Enterprise SAP Data</a>Xamarin and SAP Americas announced at MWC 2014 today a partnership aiming to provide .NET mobile developers the necessary tools to access and integrate enterprise SAP data into their applications. 
@@ -150,6 +150,6 @@
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/37.java">DevOps Cafe Podcast on the QCon London 2014 DevOps track.</a>Last DevOps Cafe Podcast (Episode 47) previewed the QCon London 2014 DevOps track. Manuel Pais and Shane Hastie, the track hosts, explained the rationale behind the track's session selection, the speakers introduced their talks and there was still time to discuss other topics, such as the importance of the scientific method and how agile's definition of &quot;done&quot; must be adapted in a DevOps world. 
-  </div>           
+  </div> 
  </body>
 </html>

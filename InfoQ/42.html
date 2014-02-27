@@ -1,18 +1,31 @@
-<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>Pebble开放了第一个面向可穿戴设备的应用商店</h3><p>Pebble是<a href="http://techland.time.com/2012/05/10/pebble-smartwatch-pre-orders-sold-out/">成功的</a>Pebble和Pebble Steel智能手表的制造商，它在本月初开放了其应用商店。Pebble应用商店旨在为客户和开发人员提供一个集中的应用程序分发渠道，从而成为“Pebble用户查找Pebble应用程序的首选地。”</p>
-<p>Pebble自豪地宣布，其应用商店是“可穿戴计算历史上”允许用户直接浏览和下载第三方应用程序的第一次尝试。对于开发人员，Pebble应用商店有望“<a href="https://developer.getpebble.com/blog/2013/12/18/All-Aboard-the-Pebble-app-store/">成为向用户推广和分发Pebble应用程序的最佳方式</a>。”</p>
-<p>在Pebble应用商店推出之前，用户不得不依赖于Pebble推荐的或者像<a href="http://www.mypebblefaces.com/">My Pebble Faces</a>这样的网站上的应用程序。Pebble表示，第三方服务和商店将仍然是应用程序发现和安装的正当途径。</p>
-<p>Pebble智能手表原本就是为了和智能手机搭配使用，而不是替代它。<a href="https://developer.getpebble.com/2/guides/app-phone-communication.html">Pebble列出</a>了手表应用程序其中一些最常见的应用场景：</p>
+<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>Apache Hadoop 2.3.0发布</h3><p>分布式计算开源框架Hadoop近日发布了今年的第一个版本Hadoop-2.3.0，新版本不仅增强了核心平台的大量功能，同时还修复了大量bug。</p>
+<p>新版本对HDFS做了两个非常重要的增强：</p>
 <ul> 
- <li>手表应用程序是手机应用程序的一个迷你型仪表盘；</li> 
- <li>手机应用程序从网上获取数据，并展示在手表应用程序上；</li> 
- <li>手表应用程序作为手机应用程序的遥控器，利用Pebble的按钮触发手机上的动作。</li> 
+ <li><a href="https://issues.apache.org/jira/browse/HDFS-2832">支持异构的存储层次</a></li> 
+ <li>通过数据节点为存储在HDFS中的数据提供了<a href="https://issues.apache.org/jira/browse/HDFS-4949">内存缓存</a>功能</li> 
 </ul>
-<p>在新的Pebble应用商店里，应用程序分为六类：日常、工具&amp;实用程序、通知、遥控器、健身和游戏。应用商店还包含“表盘（watchfaces）”和设计用来与Pebble协同工作的iOS和Android伙伴应用程序。</p>
-<p>Pebble为开发人员提供了一个基于C的用于开发手表应用程序的SDK，以及名为PebbleKit的<a href="https://developer.getpebble.com/2/ios-reference/index.html">Objective-C</a>和<a href="https://developer.getpebble.com/2/android-reference/index.html">Java</a>框架，用于将原生iOS/Android应用程序与Pebble手表集成。此外，Pebble还提供了<a href="https://developer.getpebble.com/2/guides/javascript-guide.html">PebbleKit JavaScript框架</a>，开发人员可以用它将他们的手表应用程序与iOS或Android设备集成，而且不需要本地编程。iOS开发协议禁止在iOS应用程序内下载任何可执行的代码，尽管如此，所有的JavaScript手表应用程序都打包在<a href="https://itunes.apple.com/app/pebble-smartwatch/id592012721">iOS Pebble应用程序</a>里。这意味着，新的JavaScript手表应用程序无法立即获得，因为它们的发布只能通过新版本的iOS Pebble应用程序。</p>
-<p>任何人都可以向Pebble应用商店提交应用，而且是免费的，唯一要做的是遵守Pebble<a href="https://dev-portal.getpebble.com/terms_of_use">使用条例</a>和<a href="https://dev-portal.getpebble.com/developer/agreement">开发协议</a>。</p>
-<p>Pebble声称，<a href="http://developer.getpebble.com/2/distribute/publish-to-pebble-appstore.html">他们不会逐个对应用程序进行审查或审批</a>，但对于不符合条款和条件的应用程序，他们会保留将其删除的权力。Pebble应用商店暂不支持付费应用程序，开发人员需要的任何赢利选项均依赖于发布iOS或者Android伙伴应用程序。</p>
-<p>Pebble应用商店<a href="https://developer.getpebble.com/blog/2014/02/03/Pebble-appstore-is-live/">集成在面向iOS的Pebble主应用程序里</a>。Android上的Pebble应用商店<a href="https://developer.getpebble.com/blog/2014/02/03/Android-appstore-beta/">目前处于测试阶段</a>，应该很快就会开放。</p>
-<p>Pebble<a href="https://www.kickstarter.com/projects/597507018/pebble-e-paper-watch-for-iphone-and-android/">在Kickstarter上的集资活动</a>取得了巨大的成功，募集了超过1000万美元的资金，尽管他们<a href="http://en.wikipedia.org/wiki/Pebble_(watch)">原本只想募集10万美元</a>。<a href="http://techland.time.com/2012/04/18/how-pebble-became-a-smartwatch-phenomenon-overnight/">据Time报道</a>，Pebble的成功源于低廉的价格、支持iPhone和恰当的时机等因素的结合。</p>
-<p>起初，Pebble应用商店主要包含大约1000个应用程序和表盘，但<a href="http://www.theverge.com/2014/2/3/5373910/pebble-app-store-now-available-ios">Chris Welch在The Verge上</a>指出，“便利性比任何数字都重要；通过推出应用商店，Pebble为客户提供了一个查找和试用新软件的首选目的地。”</p>
-<p>根据<a href="http://www.wired.com/gadgetlab/2014/02/best-new-apps-pebble/">Christina Bonnington为The Verge写的报道</a>，期待已久的Pebble应用商店提供了“一个蓬勃发展的第三方开发商生态系统及其背后的一个统一市场”，将使人们“看到智能手表究竟可以做什么”。</p>
-<p><b>查看英文原文：</b><b><a href="http://www.infoq.com/news/2014/02/pebble-open-appstore">Pebble opens up the first appstore for wearable devices</a></b></p><br><br><br><br><br><br></body></html>
+<p>借助于HDFS对异构存储层次的支持，我们将能够在同一个Hadoop集群上使用不同的存储类型。此外我们还可以使用不同的存储媒介——例如商业磁盘、企业级磁盘、SSD或者内存等——更好地权衡成本和收益。如果你想更详细地了解与该增强相关的信息，那么可以访问<a href="http://hortonworks.com/blog/heterogeneous-storages-hdfs/">这里</a>。</p>
+<p>类似地，在新版本中我们还能使用Hadoop集群中的可用内存集中地缓存并管理数据节点内存中的数据集。MapReduce、Hive、Pig等类似的应用程序将能够申请内存进行缓存，然后直接从数据节点的地址空间中读取内容，通过完全避免磁盘操作极大地提高扫描效率。Hive现在正在为ORC文件实现一个非常有效的<a href="https://issues.apache.org/jira/browse/HIVE-6347">零复制</a>读取路径，该功能就使用了这项新技术。</p>
+<p>在<a href="http://hortonworks.com/hadoop/yarn">YARN</a>方面，令我们非常兴奋的事情是资源管理器自动故障转移功能已经进入尾声，虽然在2.3.0这个版本中该功能还没有被发布，但是极有可能会包含在Hadoop-2.4中。此外，2.3.0版本还对YARN做了一些关键的运维方面的增强，例如更好的日志、错误处理和诊断等。</p>
+<p>MapReduce的一个关键增强是<a href="https://issues.apache.org/jira/browse/MAPREDUCE-4421">MAPREDUCE-4421</a>。借助于该功能我们已经不再需要在每一台机器上安装MapReduce二进制程序，仅仅需要通过YARN分布式缓存将一个MapReduce包复制到HDFS中就可以了。</p>
+<p>当然，新版本还包含大量的bug修复以及其他方面的增强。例如：</p>
+<ul> 
+ <li>YarnClientImpl类中的异步轮询操作引入了超时</li> 
+ <li>修复了RMFatalEventDispatcher没有记录事件原因的问题</li> 
+ <li>HA配置不会影响节点管理器的RPC地址</li> 
+ <li>RM Web UI和REST API统一使用YarnApplicationState</li> 
+ <li>在RpcResponseHeader中包含RPC错误信息，而不是将其分开发送</li> 
+ <li>向jetty/httpserver中添加了请求日志</li> 
+ <li>修复了将dfs.checksum.type定义为NULL之后写文件和hflush会抛出java.lang.ArrayIndexOutOfBoundsException的问题</li> 
+</ul>
+<p>如果想要了解更多的信息，请点击<a href="http://hadoop.apache.org/docs/r2.3.0/hadoop-project-dist/hadoop-common/releasenotes.html">这里</a>。不得不说的是，整个社区在Hadoop-2.3.0版本的发布过程中再次发挥了非常重要的作用，他们提交了很多非常重要的内容。</p>
+<p>最后，让我们展望一下2.4版本中将会包含的一些非常令人兴奋的功能：</p>
+<ul> 
+ <li>HDFS将会支持ACL</li> 
+ <li>关键的运营能力，例如HDFS支持滚动更新，使用ProtoBufs序列化/反序列化FSImage</li> 
+ <li>YARN资源管理器自动故障转移功能</li> 
+ <li>YARN通用应用程序时间轴和历史服务，使得在YARN中开发和管理新框架及服务变得非常容易</li> 
+</ul>
+<hr />
+<p>感谢<a href="http://www.infoq.com/cn/author/吴甘沙">吴甘沙</a>对本文的审校。</p>
+<p>给InfoQ中文站投稿或者参与内容翻译工作，请邮件至<a href="mailto:editors@cn.infoq.com">editors@cn.infoq.com</a>。也欢迎大家通过新浪微博（<a href="http://www.weibo.com/infoqchina">@InfoQ</a>）或者腾讯微博（<a href="http://t.qq.com/infoqchina">@InfoQ</a>）关注我们，并与我们的编辑和其他读者朋友交流。</p><br><br><br><br><br><br></body></html>

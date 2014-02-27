@@ -1,16 +1,16 @@
 <html>
  <head></head> 
- <body>
-  <div>
+ <body> 
+  <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/6.htmlb">达成销售，然后构建</a> “在编写任何代码之前，确保先有一个失败测试。”在90年代晚期出现时，这曾是个革命性的概念。而现如今，许多成功的企业家实践了另一个相似的理念：“在构建产品/服务以前，首先确保拥有付费的客户。”Naresh Jain介绍了寻找有效的MVP以验证其教育产品的方法，以及为何敏捷方法未能奏效。 
-  </div>
-  <div>
+  </div> 
+  <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/5.htmlb">可视化Java垃圾回收</a> 垃圾回收，就像双陆棋一样，只需几分钟来学习，但要用一生来精通。本文是对资深培训师兼顾问Ben Evans最近在InfoQ的演讲“可视化垃圾回收”的总结。在演讲中，他从基础谈起讨论了垃圾回收。 
-  </div>
-  <div>
+  </div> 
+  <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/4.htmlb">在实践中实施看板</a> 在精益看板大会上，InfoQ问Arne Roock博士，团队如何评估看板是不是正确的工具以及如何开始实施。他给出了若干规定性建议。 
-  </div>
-  <div>
+  </div> 
+  <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/3.htmlb">专访Yammer公司Brian Murray：精益创业和最简化可实行产品的使用</a> Brian Murray详细地说明了Yammer是如何使用最简化可实行产品来检验他们在业务上的用户假设，以及为什么他们要在自己的产品架构的上投入如此多的精力。 
   </div> 
   <div> 
@@ -150,6 +150,6 @@
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/10.htmlb">Android事件传递机制</a> Android基本事件构成了丰富的操作和体验方式。所有的触屏操作都基于Android的基本事件，本文结合Android系统源码剖析了Android事件的传递机制，比较深入的分析了事件处理方法，并结合实际例子分析了事件传递流程。 
-  </div>     
+  </div> 
  </body>
 </html>
