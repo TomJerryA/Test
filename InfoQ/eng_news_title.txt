@@ -1,1 +1,1 @@
-Having Actions Done from Retrospectives
+Akka Actors vs. Java EJBs from a High-Level Concurrency Perspective
