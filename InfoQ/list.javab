@@ -1,6 +1,9 @@
 <html>
  <head></head> 
- <body> 
+ <body>
+  <div>
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/29.javab">Kanban at Scale – A Siemens Success Story</a> This article shows an internally driven and remarkably smooth Kanban implementation approach which very quickly rewarded Siemens Health Services (HS) with real and sustainable improvements in predictability, efficiency and quality. It demonstrates the benefits of “flow” and its advantages in terms of actionable metrics and forecasting capabilities based on real data captured from recent releases. 
+  </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/28.javab">Custom Assertions in Java Tests</a> Using so-called &quot;matcher libraries&quot; to implement custom assertions to make tests more readable and maintainable. 
   </div> 
@@ -147,9 +150,6 @@
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/31.javab">Book Review and Author Q&amp;A - Explore It! by Elisabeth Hendrickson</a> Elisabeth Hendrickson has released a book on the practices, techniques and mindset of exploratory testing. Sharon Robson reviewed the book and raised some questions with the author. 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/30.javab">PyParallel: A Fast Parallel Version of Python</a> By combining asynchronous I/O with a shared-nothing architecture, PyParallel research project is able to execute code in a parallel context faster than it can using CPython’s normal interpreter. 
-  </div> 
+  </div>  
  </body>
 </html>

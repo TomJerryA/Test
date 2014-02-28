@@ -1,8 +1,8 @@
 <html>
  <head></head> 
- <body>
-  <div>
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/33.java">Akka Actors vs. Java EJBs from a High-Level Concurrency Perspective</a>There are both commonalities and some differences when comparing architectural principles and coding styles in Akka Actors and Java EE 7 Enterprise JavaBeans, specifically stateless session beans and JMS message-driven beans, Dr Gerald Loeffler concludes in a recent introductory talk when explaining and comparing the three approaches from a high-level concurrency view.
+ <body> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/33.java">Akka Actors vs. Java EJBs from a High-Level Concurrency Perspective</a>There are both commonalities and some differences when comparing architectural principles and coding styles in Akka Actors and Java EE 7 Enterprise JavaBeans, specifically stateless session beans and JMS message-driven beans, Dr Gerald Loeffler concludes in a recent introductory talk when explaining and comparing the three approaches from a high-level concurrency view. 
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/32.java">Having Actions Done from Retrospectives</a>Agile retrospectives help teams to find and do actions to improve continuously. There are different ways to do follow up on the actions and to evaluate if actions are leading to better team performance and more value delivered to customers. 
@@ -150,6 +150,6 @@
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/38.java">CoffeeScript 1.7 Released: Adds Chaining Without Parenthesis, Multiline Strings and More</a>Jeremy Ashkenas has released version 1.7 of CoffeeScript, and with it introduced some highly anticipated changes to the popular JavaScript transpiler. Version 1.7 includes one of the most popular requests for the language; support for chaining without parenthesis. 
-  </div>  
+  </div> 
  </body>
 </html>
