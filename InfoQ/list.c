@@ -1,6 +1,9 @@
 <html>
  <head></head> 
- <body> 
+ <body>
+  <div>
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/38.c">WildFly 8: suporte total ao Java EE 7 e novo Web Server embarcado</a>A divis&atilde;o JBoss da Red Hat anunciou a disponibilidade do WildFly 8, antes conhecido como JBoss Application Server. Esta vers&atilde;o suporta totalmente o Java EE 7.
+  </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/37.c">Quinto Lingu&Aacute;gil acontece em mar&ccedil;o</a>A quinta edi&ccedil;&atilde;o do evento “Lingu&Aacute;gil” ser&aacute; realizada entre os dias 13 e 15 de mar&ccedil;o, na Universidade Salvador - UNIFACS. O evento tem como principal objetivo promover a divulga&ccedil;&atilde;o, o debate e a troca de experi&ecirc;ncias entre especialistas nacionais e a comunidade baiana de profissionais e estudantes. 
   </div> 
@@ -147,9 +150,6 @@
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/40.c">ASP.NET MVC 5: Melhorias de autentica&ccedil;&atilde;o com filtros</a>O ASP.NET MVC 5, fornecido com o Visual Studio 2013 Developer Preview, permite que os desenvolvedores apliquem filtros de autentica&ccedil;&atilde;o capazes de autenticar usu&aacute;rios utilizando diversos controles de terceiros ou um controle de autentica&ccedil;&atilde;o customizado. Eric Vogel demonstrou recentemente seu uso com um exemplo pr&aacute;tico. 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/39.c">Anunciado o lan&ccedil;amento do Visual Studio 2013</a>A Microsoft fez diversos comunicados importantes para desenvolvedores: entre eles, a disponibiliza&ccedil;&atilde;o para download do Visual Studio 2013. 
-  </div> 
+  </div>  
  </body>
 </html>

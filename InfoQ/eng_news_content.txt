@@ -1,18 +1,51 @@
-<p>When comparing architectural principles and coding styles in Akka Actors and Java EE 7 Enterprise JavaBeans, specifically stateless session beans and JMS message-driven beans, there are commonalities, e.g. all three types are capable of both vertical and horizontal scaling, and some differences, e.g. in exception and transaction handling, Dr Gerald Loeffler concludes in a recent introductory talk when explaining and comparing the three approaches from a high-level concurrency view.</p>
-<p>For his talk Gerald, a Senior Integration Architect, defines high-level concurrency as a programming paradigm where the concurrency is handled at the level of components and is abstracted away as much as possible, above handling individual threads or individual tasks and submitting those to thread pools.</p>
-<p>He structures his talk&nbsp;around the idea of the Active Objects design pattern, loosely related to the classic design pattern but with the same kind of ideas. The examples are in Scala but he believes the talk is equally relevant for Java.</p>
-<p>A simple mental model from an Active Objects perspective is for Gerald that:</p>
-<ul> 
- <li><strong>Akka Actors</strong> receive messages as arbitrary objects, enqueued in a mailbox. They are explicitly managed and addressed individually via a common interface.</li> 
- <li><strong>Stateless Session Beans</strong> expose asynchronous methods executed in an application server with lifecycle controlled by the container.</li> 
- <li><strong>JMS Message-Driven Beans</strong> receive and process messages of predefined types from a JMS queue/topic. They are container-managed in the same way as session beans.</li> 
-</ul>
-<p>A common behaviour is that all three types execute asynchronously on threads, typically from a pool, with serialized access to the same instance.</p>
-<p>Gerald uses three patterns for his comparison with code examples for all three types:</p>
-<ul> 
- <li><strong>Local One-Way Asynchronous Request </strong>where an asynchronous request is sent from a requestor to a responder, who will not respond.</li> 
- <li><strong>Request Asynchronous Out-of-Context Request</strong> where a requestor sends a message to a responder who sends back a return message, and when received the requestor has to re-establish the context.</li> 
- <li><strong>Request Asynchronous In-Context Request</strong> where the context in some way has been preserved by the requestor when the return message is received.</li> 
-</ul>
-<p>Finally, Gerald concludes with a short summary of commonalities, e.g. all three approaches uses thread pools and are capable of both vertical and horizontal scaling, and some important differences, e.g. in exception handling, supervisor strategies and transaction handling.</p>
-<p>Akka is an open source toolkit and runtime for building concurrent and event-driven applications on the JVM. <br />  Enterprise Java Beans, EJB, is part of the larger Java EE specification, currently Java EE 7.</p>
+<p>Last December at the 2013 Lean Startup Conference, Eric Ries, author of The Lean Startup and founder of the Lean Startup movement, recently show-cased his successes with representatives from General Electric on what he describes as the “largest implementation of Lean Startup we have on the planet.” The Lean Startup methodology has rapidly matured beyond its original target of new startups and recent commentary from Ries and others has investigated its suitability in the enterprise. In contrast, Nick Metha, CEO with Big Data startup GainSight, has been one of several recent voices questioning whether Lean Startup is always best for all startups.</p>
+<p>Ries revealed that General Electric are about to release their first MVP of 100 products developed using the Lean Startup methodology. General Electric’s sponsor for the introduction of Lean Startup, Steve Liguori explained the driver for adopting lean practices within such a large corporation:</p>
+<blockquote>
+  For as innovative as we want to be, as lean as we want to be, as entrepreneurial as we want to be, there are just certain things that come with scale, that if you don’t pay attention to them and rethink and redo them, they get in the way of what you love to do. That’s what brought us to the idea of Lean Startup. 
+</blockquote>
+<p>Ries recently participated in a live Q&amp;A, together with Brant Cooper and Patrick Vlaskovits, authors of Lean Entrepreneur, on the topic of “Bringing Lean to Established Companies.” The message of the Q&amp;A was that the Lean Startup methodology is increasingly being used in the enterprise, often adopted by already Agile teams to increase their responsiveness and to formalise learning. They talk about scenarios where Lean Startup methods have worked in a corporate environment and indicate that the real corporate challenge is the creation of autonomous small teams, with the startup-like freedoms, able to go through a build-measure-learn cycle.</p>
+<p>In a contrasting vein, Metha writes that by following tight build-measure-learn cycles, startups which have an established product-market fit may be forfeiting economies of scale which can help them maximise their initial penetration and impact into the market. He writes that the lean approach is “great for startups that haven’t achieved product-market fit or for startups that are targeting markets that they believe to be small.” He writes that there are a lot companies which are in a position to benefit from scaling up, but are not doing so:</p>
+<blockquote>
+  I meet a number of growing companies these days that feel like they’re too lean. These are companies with awesome products, large markets and access to capital. It feels like some of them opt out of bulking up for the wrong reasons
+ <br type="_moz" /> 
+</blockquote>
+<p>Metha gives five areas where startups may benefit from fattening up beyond their minimal viable product, which may be summarised as:</p>
+<ol> 
+ <li>“Feeding your marketing” - Investment in marketing.</li> 
+ <li>“Feeding your sales” - Investment in sales.</li> 
+ <li>“Starving your competition” - Scaling market-share to rapidly distance yourself from new competitors.</li> 
+ <li>“Feeding your recruitment” - Visible investments attract talent.</li> 
+ <li>“Feeding your team and yourself“ - Investment in salaries supports staff-retention.</li> 
+</ol>
+<p>Lyle McKeany, a former major label recording artist currently working on an early-stage startup, recently shared his experience of attending a Lean Startup Machine (LSM) event in San Francisco. McKeany observes that many of the start-ups he encountered had not started out using lean ideation principles where one should “identify a problem, test your riskiest assumption with a certain success criterion, talk to potential customers before coming up with a solution.” He points out that that all the startups he encountered had started out with some initial product and then entered into the learning cycle. He noted the following when attending a talk given by LSM founder Trevor Owens :</p>
+<blockquote>
+  All of the examples he (Trevor) provided have one thing in common: not one of them started by using the Lean Startup ideation principles Trevor teaches at LSM. All of them built a potential “solution” right off the bat and some of them raised lots of VC money before they ever made the decision to pivot. Moreover, they all followed the traditional Lean Startup mantra of build-measure-learn, that is build
+ <em>first</em> then measure and learn. 
+</blockquote>
+<p> Andreas Klinger, startup commentator and mentor, recently wrote an article entitled “Why Lean Startup sucks for startups.” Andreas argues the case that lean methods are better suited to the already fat enterprise than a startup which is contending to grow beyond its initial roots. He writes that the time spent continuously validating success is time which startups could better utilise for developing their product fit. The alternative proposed by Klinger is that we validate as little as possible and against a finite set of failure criteria. His argument is that it is less costly for a startup to validate against NOT satisfying some exhaustive subset of failure criteria than over-measure all aspects of what might be interpreted as success. Klinger points out that one can collect excessive information which is hard to fairly base decisions on, stating:</p>
+<blockquote>
+  In reality your own subjective bias combined with very noisy information will make it impossible to get to the information quality you hope for. 
+</blockquote>
+<p>In her predictions for 2014 on Pollenizer.com, Bronwen Clune, Guardian journalist and director of The Blogging Co, recently anticipated a rise in utilisation of Lean Startup methods within the enterprise. Clune writes that large corporations are starting to recognise that the combination of Agile and lean-startup methods can contribute to making their organisations more responsive and less inclined to the slow-cycles which they have typically been used to. She writes:</p>
+<blockquote>
+  Lean thinking is infiltrating corporate worlds much like agile did years before that. Driving the corporate lust for lean is the need for innovation, as a result of legacy companies being left behind or disrupted by smaller, agile ones. 
+</blockquote>
+<p>Clune also reports that Microsoft is now actively trying to “install some of the smaller company culture into its head quarters,” and that they have partnered with Lean Startup Machine to increase the breadth of startups exposed to Lean-methods.</p>
+<p>One of the other points raised by Metha is the danger that startups with an established product may underinvest in marketing and not maximise their initial penetration and impact on the market. He writes:</p>
+<blockquote>
+  .. marketing money, when spent well, can produce a huge return on your investment. PR can make you more attractive to investors and employees. Well-executed branding and events can help differentiate you from your competition 
+</blockquote>
+<p>Clune addresses such concerns about marketing, predicting increased prominence of “growth hacking” in 2014. As Clune explains, “growth hacking” is the term given to a new form of learning-driven marketing which “is creative marketing that utilises analytical thinking, and social metrics to sell products and gain exposure.” Clune describes it as a “category of marketing activities that have a direct attributable impact on growth.” She elaborates on how marketing can become an incremental part of the product development cycle:</p>
+<blockquote>
+  It doesn’t treat marketing as a separate entity to the product being created but makes it part of the process from day one. It’s an integral part of the product. 
+</blockquote>
+<p>Klinger's article, when questioning whether the Lean practices are suited to all startups, discusses his view that they work best within the already fat enterprise. Klinger writes that it is wrong, and “cargo cult,” to apply the same methodology to both small and large organisations. He states that lean methods work best within the enterprise and in education where one can afford the cost of being more analytical. Klinger also writes that “Lean Startup can help enterprise remove mid-level management decisions,” making projects more streamlined and learning focussed:</p>
+<blockquote>
+  The moment someone outside of a project needs to touch or decide upon a project either quality or speed goes down. Lean Startup provides a framework where (in a utopian) company, opinions and politics can be reduced through data aggregation and validation to the point that they are no longer relevant. 
+</blockquote>
+<p>Ries, Cooper and Vlaskovits have a slightly different message. In their Q&amp;A they discuss having seen Lean Methods work in many startups and point out that the emergence of Lean Startup Methods in the enterprise is down to the same “early adopters” who have seen the success of Lean Startup and already happen to be in the enterprise. It is the success of the iterative and learning based Lean Startup methodology outside of the enterprise which has led to its rise within.</p>
+<p>Klinger’s article suggests that we can adapt the cost and form of our build-measure-learn cycle to fit our current state. Metha reminds us to consider where it’s worth scaling faster to benefit from economies of scale. As Clune’s predictions summarise, we will continue to find examples of where Lean Startup does and doesn’t work:</p>
+<blockquote>
+  As more and varied industries and companies try out lean startup practices, there are going to be increasing instances where it doesn’t work, be that because of culture, product or, well, there is no bottom-line benefit after its been tried and tested. … It might not work for everyone, and that’s ok. 
+</blockquote>
+<p>&nbsp;</p>

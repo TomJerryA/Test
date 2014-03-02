@@ -1,1 +1,1 @@
-Akka Actors vs. Java EJBs from a High-Level Concurrency Perspective
+Finding the Best-fit for Lean Startup Methodology

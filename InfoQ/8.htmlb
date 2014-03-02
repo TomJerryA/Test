@@ -1,18 +1,207 @@
-<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>API业务模型：如果通过API获取回报</h3><p>John Musser深谙API之道，作为Programmable Web的创始人，他见证了数以千计的API和众多业务模型。最近，John在2013 API战略大会上的<a href="http://www.infoq.com/presentations/API-Business-Models">主题演讲</a>中分享了他得经验。</p>
-<p>John最常遇到的问题是“你如何用它赚钱？”其实，这个问题的答案，取决于有关“为什么”的反问——“为什么你想要拥有一套API？”人们有许多想要拥有API的理由，而这引出了John在演讲中披露的第一条API秘诀，“API战略并不是API业务模型”。API战略在于“为何”我们想要一套API；而业务模型则是在于我们“如何”用API来赚钱。</p>
-<p>回首2005年，API方兴未艾，彼时恰逢Google Maps问世，API业务模型有四种核心类型：“免费”、“开发者付费”、“开发者得偿”和“非直接收入”。在今天，时间走到了2013年，API业务模型中仍旧存在四种核心类型；但每一种中，都已经拓展出许多种提供API并获得套现的方式。所以，John的第二条秘诀是：“大部分API都拥有不止一种类型的ROI。”</p>
-<p>接下来，在主题演讲中，John深入分析了每一种核心业务模型，首先他从“免费”开始。与流行的观点相反，“免费”并不是主要的API业务模型。在分析中，John以Facebook为例子，同时他还以所有政府和公众领域API为补充——但这些免费API在全部API业务模型的世界中仅仅占据了“很小的一部分”。</p>
-<p><img width="600" src="http://infoqstatic.com/resource/articles/api-business-models/zh/resources/1112060.jpg" alt="" _href="img://null" _p="true" /></p>
-<p>John描绘的第二个分类是“开发者付费”。在这种模型下，开发者使用API提供的服务并支付费用。这一分类包含了许多子类别，例如“按需付费”——开发者仅需为他们实际使用的服务或资源付费。John在这里以Amazon Web Services（AWS）为例，在AWS价目表中这样写道：“用户只需要为了使用的部分付费。没有最低消费限制。”第二个子类别是“阶梯”模型，诸如Mailchimp等许多公司提供这样的模型。当用户使用的服务总量较高时，将享受到较低的单价。“免费增值（Freemium）”是一个著名的模型，使用这一模型的API免费提供其基本特性，但如果用户希望叠加一些服务（例如额外的API、更高的SLA、服务专员等），就需要支付相应的费用。John指出，Compete和Google Maps正是免费增值模型的典型例子。而“按单元定价”则是另一个子类别，Sprint便提供这样的业务模型。在这里，API按不同特性收取不同的费用。最后一类“开发者付费”的例子是“事务费”，类似于API的付费用户，他们按处理事务的百分比付费。John列出了PayPal、Stripe和Chargify，作为这一模型的例子。</p>
+<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>深度剖析京东云引擎核心技术</h3><p>京东PaaS平台的主要服务对象是两类人群，一类是个人开发者，二类是京东的ISV。在数据开放平台日益成熟的背景下，他们都希望以最低的成本，方便地部署自己的应用，提高生产力。而京东PaaS平台正是以满足开发者和ISV的这一需求而开发的。</p>
+<p>京东PaaS平台的核心是JAE（Jingdong App Engine），它以Cloud Foundry为内核，之所以选择Cloud Foundry，是因为Cloud Foundry是最早开源，在社区里最成熟、最活跃的基础PaaS平台。为了给开发者提供更加便捷的服务，JAE将基础服务云化，接入各种应用组件服务，诸如高可用MySQL服务、Redis缓存集群服务、以及消息队列等；此外，它结合应用开发工具，为开发者提供了类github的代码托管服务，云测试和Java工程云端编译，以及资源统计信息，让开发者可以更专注于自己的代码业务。再者，JAE对托管在平台上的应用进行健康监控，支持查看应用日志，提供其它安全服务。让开发者只需关心自己应用代码，而其它一切事情，都由JAE为其提供，极大地提高了开发者的效率，降低了开发成本。下图描述了JAE与PaaS平台用户及其他相关服务之间的关系。</p>
+<p><img src="http://infoqstatic.com/resource/articles/jingdong-cloud-engine-core-technology/zh/resources/0224040.png" width="600" _href="img://null" _p="true" alt="" /></p>
+<p>JAE还根据京东PaaS平台的需求，做了许多有针对性的功能扩展。本文主要就JAE的核心技术点展开讨论，JAE的其它基础服务将参见其<a href="http://appengine.jd.com">官方网站</a>：</p>
+<h2>智能路由（Load Balance）</h2>
+<p>我们知道，Cloud Foundry支持设置应用的实例个数。但是，当并发量增大时，请求（Request）是否能够均匀地分配给后端的实例？针对多实例的应用，Cloud Foundry采用随机策略地响应客户端的请求，并不能公平有效地利用实例资源，在并发量峰值时候，存在发生雪崩的可能性。为解决这一潜在问题，JAE借鉴了nginx的路由策略，采用权重（weight）算法，负载越小的实例越有机会响应请求。那么，我们需要进一步解决的问题是：如何计算实例的负载，以及如何在接收请求之后对其进行分流？</p>
+<p>下图是JAE的模块关系图：</p>
 <div id="lowerFullwidthVCR"></div>
-<p><img width="500" src="http://infoqstatic.com/resource/articles/api-business-models/zh/resources/1112061.jpg" alt="" _href="img://null" _p="true" /></p>
-<p>与“开发者付费”相对的模型是“开发者得偿”。这是John介绍的第三大类别，它同样包含许多子类别，例如，亚马逊合作营销计划（Amazon Affiliate Program）提供的“签约收入分成”模型，在这一模型下，开发者将从客户推荐（指推荐其他开发者签约成为亚马逊提供的API的客户）中获得报酬。另一个子类别是“消费分成”，开发者将从推荐的购买中获得提成。在这里John给出的例子是mysimon.com和howstuffworks.com，他们都使用比价网站shopping.com的API，来支持产品对比并从引导的点击中获得收益。John指出，签约收入分成并不是一个“微不足道的业务”。Expedia从使用其API的联盟网络——价值高达20亿美元/年——中派生出的收益，占它总收益的90%。最后则是“经常性收入分成”模型，rdio.com等公司采用这一模型，已签约客户介绍新客户进行订阅购买后，将能够在该新增客户的订阅期限内一直获得收益分成。</p>
-<p>John的第三条API业务模型是“令业务模型与API融为一体。”这是John希望听众能够带走并思考的最重要的秘诀。例如，亚马逊合作营销项目就是其零售业务模型的自然延伸。</p>
-<p><img width="600" src="http://infoqstatic.com/resource/articles/api-business-models/zh/resources/1112062.jpg" alt="" _href="img://null" _p="true" /></p>
-<p>作为第四种业务模型，John探讨了“非直接收入”这一类型。在他看来，该类型包含了一些最有趣的API变现方法。John介绍的第一个子类别是“内容获取”。eBay和Twitter等公司需要快速获得内容以实现增长，因此他们使用API来促进内容获取。eBay的API允许超级用户在eBay市场中创建大量列表。Twitter几乎只通过API和第三方应用派生和分发内容。“内容传播”是另一个子类别，纽约时报就采用了这个方式——纽约时报拥有许多内容，并通过API来聚合内容并提供给合作方。</p>
-<p>SaaS追加销售是另一种“非直接收入”类别中的业务模型。Salesforce.com提供访问其平台的API，但仅限购买企业授权的公司使用。Salesforce.com认识到了API集成的重要性，并藉此来吸引客户升级到更贵的订购。John将API刻画为“任何SaaS的粘合剂。”API集成为SaaS应用增加了价值，并提供了粘性因素——能够显著减少客户流失。John的第四条API业务模型秘诀是“API业务模型并不是万金油。”</p>
-<p>John介绍的最后一种业务模型是“内部使用”模型——企业使用API来支撑其自身业务。NPR开发了一套API，用于向网站、iPad和移动应用进行内容交付。Evernote（大陆地区提供的中文版服务名为：印象笔记）的API流量中，99%以上来自iPad应用、移动应用和合作应用。而Netflix将它的API用来支持向超过800种不同类型的设备提供内容交付。因此，John的第五条，也是最后一条API秘诀是“内部使用或许是API最主要的用例。”</p>
-<h4>关于作者</h4>
-<p><img src="http://infoqstatic.com/resource/articles/api-business-models/zh/resources/1112063.jpg" style="float: left; margin-right: 10px" alt="" _href="img://null" _p="true" /><strong>Saul Caganoff</strong>是<a href="http://www.sixtree.com.au/">Sixtree</a>（一家澳大利亚系统集成方面的顾问公司）的CTO。作为架构师和工程师，他在澳大利亚、美国和亚洲的重大集成和软件开发项目中积累了广泛的经验。Saul的专业领域涉及各个级别——包括企业级、解决方案和应用——的分布式系统架构、复合应用、云计算和云API。</p>
-<div style="clear:both"></div>
-<p><b>查看英文原文：</b><a href="http://www.infoq.com/articles/api-business-models">API Business Models: 20 Models in 20 Minutes</a></p><br><br><br><br><br><br></body></html>
+<p><img src="http://infoqstatic.com/resource/articles/jingdong-cloud-engine-core-technology/zh/resources/0224041.png" width="600" _href="img://null" _p="true" alt="" /></p>
+<p>所有请求首先到达router模块，router保存所有实例的路由信息（即实例的ip和port），并由它决定由哪个实例来响应请求。每个实例的ip和port信息都是dea模块经过nats消息总线转发给router的，其实现原理是：dea将自身服务器上的所有实例信息发给nats，router订阅了这则消息，收到之后保存在路由表中，通过过期失效机制来定期获得最新的实例信息。</p>
+<p>为使router获得各实例的负载信息。我们对dea模块进行改造，在其每次向nats发送消息的时候，将实例在这一时刻的负载信息也“捎带”上。dea模块收集dea服务器本身以及所有实例的CPU使用率、内存使用率、I/O等原始信息，一并发送给router。router决定如何从这些原始数据中计算出负载值。</p>
+<p>至于采用何种算法来计算负载，这是router自身的职责范围，我们采用了类似下面的算法：</p>
+<p><code>实例真实负载 = ( vm负载 * 30% + 实例负载 * 70% ) * 100% vm负载 = CPU 已使用% * 30% + Mem 已使用% * 30% 实例负载 = CPU 已使用% * 30% + Mem 已使用% * 30% </code></p>
+<p>在上述算法中，我们在计算实例的负载值时考虑了dea的因素，其原因在于dea实际就是服务器（虚拟机），而实例运行在dea上的各个进程之上。如果某个dea的负载很高，而其上的某个实例的负载却很低，此时router不一定会将请求交给这个实例。所有算法都要考虑dea的感受。</p>
+<p>每个应用实例的负载值计算出来之后，如何决定哪个实例可以优先响应客户端请求，JAE提供了以下几个均衡策略：</p>
+<pre>
+def load_balance(droplets,lb_policy)
+    case lb_policy
+    when &quot;random&quot;
+      random_policy(droplets)
+    when &quot;weight&quot;
+      weight_policy(droplets)
+    when &quot;round_robin&quot;
+      round_robin_policy(droplets)
+    when &quot;fair&quot;
+      fair_policy(droplets)
+    else
+      random_policy(droplets)
+    end
+    
+  end
+</pre>
+<p>从下面这段代码可以看出，Router使用了weight策略。</p>
+<pre>
+# Pick a droplet based on original backend addr or pick a droplet randomly
+if sticky
+_, host, port = Router.decrypt_session_cookie(sticky)
+droplet = check_original_droplet(droplets, host, port)
+end
+# pick a droplet use load balance policy
+lb_policy = Router.lb_policy
+      
+droplet ||= droplets[rand(droplets.size)][:load_val]?
+load_balance(droplets,lb_policy):droplets[rand(droplets.size)]
+</pre>
+<p>有状态的（stateful）请求不经过智能路由的处理。比如，当存在session时，第一次请求之后，服务器将响应该请求的实例信息回写至客户端的cookie中，当router收到该客户端的下一次请求时，会将其转发给同一实例。</p>
+<p>也许有人会问，这样做是否会影响请求的响应时间？答案是肯定的，但是影响很小，因为该算法是纯数值计算，效率非常高。目前的算法只考虑了几个常用的因素，还存在优化的空间，比如增加负载的因素，如I/O，实例带宽使用情况等。</p>
+<h2>弹性伸缩（Auto-scaling）</h2>
+<p>接续上一话题，当并发量持续增大，通过智能路由可以均衡所有实例的负载，但如何应对实例的负载持续升高，面临应用随时不可用的情况？只有增加实例！虽然，我们可以通过JAE控制界面轻松地为一个应用增加或减少实例数（只要在资源满足的情况下）。但这种纯手动的方法显然不可取，JAE将此过程自动化，所采用的就是弹性伸缩机制。</p>
+<p>惯用的方法就是定义伸缩规则，下面这是JAE管理页面的规则设置：</p>
+<p><img src="http://infoqstatic.com/resource/articles/jingdong-cloud-engine-core-technology/zh/resources/0224042.png" width="600" _href="img://null" _p="true" alt="" /></p>
+<p>规则是用户层面的全局定义，每个用户可以创建多个规则，具体的应用绑定规则之后才能生效。</p>
+<p>规则的正确执行依赖于“过去几分钟内，应用的平均请求次数”这一指标。我们通过实时统计来获取这一指标，其实现流程图如下图所示：</p>
+<p><img src="http://infoqstatic.com/resource/articles/jingdong-cloud-engine-core-technology/zh/resources/0224043.png" width="600" _href="img://null" _p="true" alt="" /></p>
+<p>所有router服务器都安装了agent，flume集群实时收集router的nginx访问日志，保存在redis中并定期进行清理，同时将分析结果保存在同一redis集群中，规则引擎从redis中取得数据，与此应用的规则对比，判断是否触发规则，之后调用cloudcontroller restful api 来扩展或缩减实例数。</p>
+<p>将原始日志以及分析结果传送给云日志和云监控模块，为应用提供相应的功能。 如dashboard管理页面上的应用日志查看，检索；应用PV、UV监控趋势图等。</p>
+<h2>智能启动（Auto-loading）</h2>
+<p>如果有80%的应用不活跃，却一直占用着资源，就会造成极大浪费。智能启动的含义是当某个应用在一段时间内未收到请求，则将应用暂时休眠，等下一次请求到达时，立即启动此应用。长时间没有请求的应用，再次访问的时候，会有秒级的加载延迟。</p>
+<p><img src="http://infoqstatic.com/resource/articles/jingdong-cloud-engine-core-technology/zh/resources/0224044.png" width="600" _href="img://null" _p="true" alt="" /></p>
+<p>如图所示，智能启动也用到了访问日志的计算结果，计算的是每个应用在统计周期内的访问次数，同样保存在Redis集群中。智能启动模块从CCDB中过滤取得待处理的应用列表，依次获取Redis关于周期内应用的总访问次数，如发现为零则先调用cc restful api 停止应用，再将CCDB中的此应用标识为sleep状态，同时通知Router更新路由表信息，这样路由表中既有所有正在运行的应用实例信息，又有sleep状态的应用信息。当Router接收到下一个访问的时候，首先从路由表是查找对应的实例信息，发现此应用处于sleep状态，就会激活此应用，并且立刻返回给客户端一个正在加载页面。这样再刷新页面，就可以正常访问应用了。下表从nats message来说明模块间的交互： </p>
+<table cellspacing="0" cellpadding="0" border="1"> 
+ <tbody> 
+  <tr> 
+   <td valign="top" width="130"> <p><b>nats message</b></p> </td> 
+   <td valign="top" width="113"> <p><b>publisher</b></p> </td> 
+   <td valign="top" width="104"> <p><b>subscriber</b></p> </td> 
+   <td valign="top" width="221"> <p><b>description</b></p> </td> 
+  </tr> 
+  <tr> 
+   <td valign="top" width="130"> <p><b>router.sleep</b></p> </td> 
+   <td valign="top" width="113"> <p>Auto-loading</p> </td> 
+   <td valign="top" width="104"> <p>Router</p> </td> 
+   <td valign="top" width="221"> <p>智能启动模块将处于休眠状态的应用信息发给Router，Router更新自己的路由表</p> </td> 
+  </tr> 
+  <tr> 
+   <td valign="top" width="130"> <p><b>autoload.start</b></p> </td> 
+   <td valign="top" width="113"> <p>Router</p> </td> 
+   <td valign="top" width="104"> <p>Auto-loading</p> </td> 
+   <td valign="top" width="221"> <p>Router接收到处于休眠状态应用的访问，返回加载页面的同时要求激活此应用。智能启动模块收到请求后，调用cc restful api启动此应用</p> </td> 
+  </tr> 
+  <tr> 
+   <td valign="top" width="130"> <p><b>autoload.update</b></p> </td> 
+   <td valign="top" width="113"> <p>Cloud Controller</p> </td> 
+   <td valign="top" width="104"> <p>Auto-loading</p> </td> 
+   <td valign="top" width="221"> <p>应用启动成功，CC将此应用的实例信息，ip、端口等信息发给智能启动模块</p> </td> 
+  </tr> 
+  <tr> 
+   <td valign="top" width="130"> <p><b>router.unsleep</b></p> </td> 
+   <td valign="top" width="113"> <p>Auto-loading</p> </td> 
+   <td valign="top" width="104"> <p>Router</p> </td> 
+   <td valign="top" width="221"> <p>智能启动模块将启动正常的应用实例信息发给Router，Router更新路由表</p> </td> 
+  </tr> 
+ </tbody> 
+</table>
+<p></p>
+<h2>资源隔离与访问控制</h2>
+<p>资源隔离是Cloud Foundry的精髓，应用在JAE上除了各种功能方便开发外，最重要的还是“安全感”了，资源隔离即应用之间的资源相互隔离不干扰，访问控制是指在JAE内部，应用之间不能通过任何方式相互访问，不能操作其它应用的代码，但可以通过HTTP方式访问其它应用。JAE在整个过程也做了一些尝试，这里分享一下。</p>
+<p>Cloud Foundry用warden来实现资源隔离与访问控制的，但是JAE的第一个版资源隔离策略使用了vcap dev，当时没有warden。在当时的背景下，Cloud Foundry官网还未迁移至v2版、业内的成功应用也比较少， JAE采取稳中求进的方案，即在vcap dev的基础上，借鉴了warden思路，以此来实现资源隔离和访问控制。下面，我们将详细介绍JAE的第一版资源隔离实现方法，该方法部署起来所需的资源比较灵活，既支持单机部署也支持多机部署，对个人开发者有很好的借鉴参考。</p>
+<p><img src="http://infoqstatic.com/resource/articles/jingdong-cloud-engine-core-technology/zh/resources/0224046.jpg" width="600" _href="img://null" _p="true" alt="" /></p>
+<p>如上图所示，JAE第一版资源隔离与访问控制的实现方式是 vcap safemode +cgroup+quota+ACL。首先，vcap safemode提供了访问控制的功能，安全模式为dea服务器创建了n个用户，默认是32个用户，vap-user-11至vap-user-32，属于vcap-dea用户组，启动一个应用实例就为其分配一个用户，并将代码目录的拥有者设置为此用户，实例停止则回收用户。这样可以简单地保证应用间的访问控制，不同应用（不同用户）相互不可访问。</p>
+<p>vcap safemode只是设置了应用目录的权限，限制了目录间的访问，但是仍然可以看到或操作大部分系统命令，系统文件，如ls, mkdir, /usr/bin，/etc/init.d/，这是很危险的。JAE通过linux的ACL（access control list）将大部分的系统命令都禁掉了，这有点杀敌一千自损八百的味道，很多应用是需要调用系统命令的。ACL的具体做法是限制了用户组vcap-dea对绝大多数系统命令的查看、操作权限：</p>
+<pre>
+sudo setfacl -m group:vcap-dea:--- /usr/bin/vim
+sudo setfacl -m group:vcap-dea:--- /usr/bin/edit
+sudo setfacl -m group:vcap-dea:--- /usr/bin/vi
+sudo setfacl -m group:vcap-dea:--- /bin/cat
+…..
+</pre>
+<p>JAE用safemode+ACL实现了某种意义上的访问控制。为什么说是某种意义上的？它虽然提供了一些功能，但是没有Namespace的概念，在特定的Namespace中，PID、IPC、Network都是全局性的，每个Namesapce里面的资源对其他Namesapce都是透明的，而safemode+ACL则是一种共享的方案。Namespace问题也是后来JAE升级的主要原因。</p>
+<p>其次说到资源隔离，一个应用用到的系统资源大概有内存、CPU、磁盘和带宽等。JAE借鉴warden的方案，使用linux内核自带的cgroup 和quota来解决内存、CPU、磁盘的隔离问题。</p>
+<p>下面，借此机会介绍warden的实现细节。</p>
+<h2>warden实现原理</h2>
+<p>cgroup（Control Group）是Linux内核的功能，简单的说，它是对进程进行分组，然后以组为单位进行资源调试与分配，其结构是树形结构，每个root管理着自己下面的所有分支，而且分支共享着root的资源。由各个子系统控制与监控这些组群。cgroup的子系统有: CPU、CPUset、CPUacct、memory、devices、blkio、net-cls、freezer，不同的linux内核版本，提供的子功能有所差异。</p>
+<p>cgroup的系统目录位于 /sys/fs/cgroup，JAE宿主机是ubuntu12.04 LTS，默认的有以下几个子系统：CPU、CPUacct、devices、freezer、memory</p>
+<p>当dea启动的时候，会重新初始化cgroup，重新mount子系统。</p>
+<pre>
+cgroup_path=/tmp/container/cgroup
+
+mkdir -p $cgroup_path
+
+if grep &quot;${cgroup_path} &quot; /proc/mounts | cut -d' ' -f3 | grep -q cgroup
+then
+find $cgroup_path -mindepth 1 -type d | sort | tac | xargs rmdir
+umount $cgroup_path
+fi
+
+# Mount tmpfs
+if ! grep &quot;${cgroup_path} &quot; /proc/mounts | cut -d' ' -f3 | grep -q tmpfs
+then
+mount -t tmpfs none $cgroup_path
+fi
+
+# Mount cgroup subsystems individually
+for subsystem in CPU CPUacct devices memory
+do
+mkdir -p $cgroup_path/$subsystem
+
+if ! grep -q &quot;${cgroup_path}/$subsystem &quot; /proc/mounts
+then
+mount -t cgroup -o $subsystem none $cgroup_path/$subsystem
+fi
+done
+</pre>
+<p>将cgroup系统安装在/tmp/container/cgroup下，mount了4个子系统。当部署一个应用时，/tmp/container/cgroup/memory目录生成此应用的进程节点，命名为#{instance_name}-#{instance_index}-#{instance_id}，即“应用名-应用实例号-实例id”，将应用的内存配额写入memory.limit_in_bytes以及memory.memsw.limit_in_bytes。限制了可使用的最大内存以及swap值。</p>
+<pre>
+2.times do
+    [&quot;memory.limit_in_bytes&quot;, &quot;memory.memsw.limit_in_bytes&quot;].each do |path|
+         File.open(File.join(cgroup_path(:memory),instance_name, path), 'w') do |f|
+            f.write(instance[:mem_quota])
+         end
+     end
+end
+
+[cgroup_path(:CPU), cgroup_path(:CPUacct),cgroup_path(:memory)].each do |path|
+      File.open(File.join(path,instance_name, &quot;tasks&quot;), 'w') do |f|
+         f.write(instance[:pid])
+      end
+      File.open(File.join(path,instance_name, &quot;notify_on_release&quot;), 'w') do |f|
+          f.write(&quot;1&quot;)
+      end
+end
+</pre>
+<p>接着将实例的进程ID写入各个子系统的tasks文件中，注意到每个子模块的notify_on_release都设置为1，这是告诉cgroup，如果应用消耗的资源超过限制，就kill掉进程。Warden中写了个OomNotifier服务来监控内存的消耗情况，然后做具体操作。个人觉得太复杂，可能OomNotifier有更“温柔”的处理方法或有更多逻辑处理。但是目前来看，OomNotifier 只是做了kill操作。</p>
+<p>JAE为什么对内存设置了配额，而对CPU子系统没有设置呢？因为在JAE环境中，应用主要以内存消耗为主，而且CPU如果要设置配额，只能设置占用时间的比例，在逻辑上就无法更直观地为某个应用分配CPU资源，所以就采用了“平均分配”的原则。如果一台虚拟机上只有一个应用实例，那么此应用实例可以“独享”所以CPU资源，如果有两个应用实例，各自最多只能用50%，以此类推。 CPU的使用率是过去一段时间内，应用实例占用的CPU时间/总时间。</p>
+<p>接下来说到磁盘配额，JAE使用了linux内核的Quota。Quota可以对某一分区下指定用户或用户组进行磁盘限额。限额不是针对用户主目录，而是针对这个分区下的用户或用户组。Quota通过限制用户的blocks或者inodes超到限额的作用。</p>
+<p>Quota的初始化同样发生在启动dea时，在此之前，要先安装quota，并指定要进行quota管理的分区，这里用$1传参。</p>
+<pre>
+if  quotaon -p $1 &gt; /dev/null
+then
+  mount -o remount,usrjquota=aquota.user,grpjquota=aquota.group,jqfmt=vfsv0 $1
+  quotacheck -ugmb -F vfsv0 $1
+  quotaon $1
+fi
+</pre>
+<p>当部署一个应用实例时，quota设置磁盘配额。上面vcap safemode提到，每个实例都分配一个用户，而quota就是对此用户的配额管理。Quota管理blocks和inodes有hard和soft两个临界点，超过soft值，可允许继续使用，若超过hard值，就不再允许写入操作了。</p>
+<pre>
+uid = instance[:secure_user]
+
+limits = {}
+limits[:block_soft] = DEFAULT_APP_DISK * 1024#repquota[uid][:quota][:block][:soft]
+limits[:block_hard] = (DEFAULT_APP_DISK + 512) * 1024#repquota[uid][:quota][:block][:hard]
+limits[:inode_soft] = DEFAULT_APP_DISK * 1024/256 #repquota[uid][:quota][:inode][:soft]
+limits[:inode_hard] = (DEFAULT_APP_DISK + 512) * 1024/256 #repquota
+[uid][:quota][:inode][:hard]
+</pre>
+<p>Block和inode都给了512M的缓冲值。因为实例停止或删除后，用户会回收，所以此用户的quota需要重置。Repquota -auvs 查看磁盘使用情况：</p>
+<p><img src="http://infoqstatic.com/resource/articles/jingdong-cloud-engine-core-technology/zh/resources/0224047.jpg" width="600" _href="img://null" _p="true" alt="" /></p>
+<p>通过使用cgroup、quota、ACL，JAE间接地实现了warden的部分功能，上面提到的Namespace问题，由于ACL的限制，应用无法使用系统命令，但是从应用的角度，实例应该跑在一个运行环境完备的操作系统(container)上，可以做任何事情，而不是有各种限制。</p>
+<p>JAE第一版于2013 年6月上线，维持了两个月之后，我们越来越意识到Namespace的重要性。此后，我们又花了一个月的时间，在Cloud Foundry v2的基础上，将JAE第一版的功能全部迁移过来，用warden来实现访问控制与资源隔离，JAE第二版于2013年9月中旬上线。</p>
+<p><img src="http://infoqstatic.com/resource/articles/jingdong-cloud-engine-core-technology/zh/resources/0224048.jpg" width="600" _href="img://null" _p="true" alt="" /></p>
+<p>在升级的过程中，我们发现了Cloud Foundry v1与v2的诸多不兼容问题。譬如，v2引入了organization、spaces、domain的概念；router用go重写，去掉了nginx，导致flume收集nginx日志方案重新设计；v2的cloudcontroller restful api的变化，dashboard几乎是重写的；运行在warden内部的应用，没有权限直接读取日志文件；在v1上运行的应用，大部分不能运行在v2上，为此我们做了个转化部署的自动化工具，将v1上的应用迁移至v2上。 添加了php和python的buildpack，并做了定制。</p>
+<p>在JAE的部署方面，由于底层的openstack环境做了较多改进，接口也发生了一些变化，Bosh原生的openstack CPI可能满足不了要求，我们决定放弃Bosh，采用更简单的capistrano来做集群部署，JAE集群数目则通过手动去扩展。</p>
+<h2>总结</h2>
+<p>虽然京东云擎正处于发展的初级阶段，但是我们坚信未来有充分的发展空间，我们计划后续要做的工作有：</p>
+<ol> 
+ <li>用户自定义域名的绑定；</li> 
+ <li>智能路由和智能启动，将负载计算多元化，更能体现后端实例的真实负载；</li> 
+ <li>持久化的分布式文件系统，保证应用实例保持在本地的数据不会丢失；</li> 
+ <li>智能启动或重启停止应用时使用snapshot，保证现场环境的完整性；</li> 
+ <li>nats cluster，避免nats单点；</li> 
+</ol>
+<p>本文旨在讲述京东云引擎对Cloud Foundry的重要扩展，升级改造过程以及定制的功能，介绍了基于Cloud Foundry的若干核心技术。不足或错误之处，还望读者批评指正。</p>
+<h2>作者简介</h2>
+<p>曾正阳，京东云平台架构师，云引擎（JAE）技术负责人，负责应用引擎的开发以及云存储、云数据库、云测试等模块的整合，目前专注于Hadoop和Spark的大数据研究。@K_James</p>
+<hr />
+<p>感谢<a href="http://www.infoq.com/cn/author/马国耀">马国耀</a>对本文的审校。</p>
+<p>给InfoQ中文站投稿或者参与内容翻译工作，请邮件至<a href="mailto:editors@cn.infoq.com">editors@cn.infoq.com</a>。也欢迎大家通过新浪微博（<a href="http://www.weibo.com/infoqchina">@InfoQ</a>）或者腾讯微博（<a href="http://t.qq.com/infoqchina">@InfoQ</a>）关注我们，并与我们的编辑和其他读者朋友交流。</p><br><br><br><br><br><br></body></html>
