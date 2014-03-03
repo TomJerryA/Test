@@ -1,62 +1,56 @@
-<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>与Costin Leau谈论Elasticsearch，大数据及Hadoop</h3><p><a href="http://www.elasticsearch.org/">Elasticsearch</a>是一个开源的分布式实时搜索与分析引擎，支持云服务。它是基于<a href="http://lucene.apache.org/core/">Apache Lucene</a>搜索引擎的类库创建的，提供了全文搜索能力、多语言支持、专门的查询语言、支持地理位置服务、基于上下文的搜索建议、自动完成以及搜索片段（snippet）的能力。</p>
-<p>Elasticsearch支持RESTful的API，可以使用JSON通过HTTP调用它的各种功能，包括搜索、分析与监控。此外，它还为Java、PHP、Perl、Python以及Ruby等<a href="http://www.elasticsearch.org/guide/">各种语言</a>提供了原生的客户端类库。Elasticsearch可以在Apache 2许可下进行使用。作为<a href="http://elasticsearch.org/hadoop">Elasticsearch-hadoop</a>的第一个里程碑，它的1.3.M1版本在十月上旬<a href="http://www.elasticsearch.org/blog/elasticsearch-and-hadoop/">发布</a>了。</p>
-<p>InfoQ与Elasticsearch团队的Costin Leau进行了一次对话，谈论了Elasticsearch的搜索与分析引擎，以及它是如何与Hadoop或其它的大数据技术相结合的。</p>
-<p><b>InfoQ</b><b>：你好Costin</b><b>，你能为我们描述一下Elasticsearch</b><b>是什么，以及它是如何实现大数据方面的需求的吗？</b></p>
-<blockquote> 
- <p>Elasticsearch是一个高伸缩、高可用、基于Apache Lucene的开源搜索与分析引擎。通过它你可以很方便地对数据进行深入挖掘，可以随时放大与缩小搜索与分析的区间，并且这一切都是实时的。为了提供了一个优秀的用户体验，我们对Elasticsearch投入了很大的精力。Elasticsearch本身的各种选项已有了良好的默认值，使用户能够更方便地上手。但我们也为用户提供了全方面的选项，在必要的情况下，可以对该引擎的几乎每个方面进行定制。</p> 
- <p>举例来说，当你使用它搜索数据的时候，可以使用传统的查询（‘查找满足条件Y的所有项X’）进行过滤（在Elasticsearch术语中称为“视图”），高亮显示搜索片段，为每条结果提供相应的上下文。也可以使用地理位置（‘查找在Z里之内的所有项’），或是为用户提供搜索关键字建议，并且提供了强大的聚合（即Elasticsearch中的“分面”（facet））能力，例如时间分布图或者统计图。</p> 
- <p>Elasticsearch既可以搜索、也可以保存数据。它提供了一种半结构化、不依赖schema并且基于JSON的模型，你可以直接传入原始的JSON文档，Elasticsearch会自动地检测出你的数据类型，并对文档进行索引。你也可以对schema映射进行定制，以实现你的目的，例如对单独的字段或文档进行boost映射，或者是定制全文搜索的分析方式等等。</p> 
- <p>你既可以在自己的膝上电脑中启用一个小型实例，也可以在云端启用几十乃至几百个实例，只需要一些极小的改变而已。Elasticsearch会自动进行横向扩展，它能够随着你的应用一起成长。</p> 
- <p>Elasticsearch运行在JVM之上，它使用JSON格式，通过RESTful HTTP接口的方式访问，因此任何一种客户端或语言都能够与其交互。目前已经有了<a href="http://www.elasticsearch.org/guide/clients/">大量的客户端和框架的整合方案</a>，包括对多种编程语言的支持，通过这些原生的API与专门的DSL将不一致的地方最小化，并实现性能最大化。</p> 
- <p>Elasticsearch非常适合于大数据的场合，它的高伸缩性与分布式架构的本质使得对大量信息的搜索与存储都可以在近乎实时的情况下完成。通过Elasticsearch-Hadoop这个项目，我们使Hadoop使用者（这里也包括<a href="http://hive.apache.org/">Hive</a>、<a href="http://pig.apache.org/">Pig</a>和<a href="http://www.cascading.org/">Cascading</a>）能够用一个成熟的搜索引擎来增强他们的工作流。我们还为他们提供了一种丰富的语言，能够让他们更好地表达意图，因而更准确地获得想要的结果，并且速度也大大提高了。</p> 
-</blockquote>
+<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>PyParallel：Python的一个快速并行版本</h3><p>PyParallel是Trent Nelson发起的一个研究项目，其目标是以提供高性能异步支持的方式将Windows<a href="http://msdn.microsoft.com/en-us/library/windows/desktop/aa365198(v=vs.85).aspx"> I/O完成端口（IOCP）</a>的强大功能移到Python中。</p>
+<p>Python的异步支持多少有点问题。它是围绕Unix/Linux的异步、非阻塞I/O理念设计的。线程会持续轮询进入的数据，然后相应进行分发。尽管Linux针对该模式进行了调优，但在Windows机器上，这种处理方式是性能的灾难。将数据从轮询线程复制到真正处理任务的线程，非常昂贵。</p>
+<p>PyParallel带来的就是使用了原生IOCP的真正的异步。在IOCP模型下，每个核有一个线程。每个线程负责处理完成I/O请求（比如，从网卡复制数据）和执行请求关联的应用层回调。</p>
+<p>只有这一点尚不足以横向扩展Python；还需要解决GIL（Global Interpreter Lock，全局解释器锁）带来的问题。否则我们仍然被限制于每次执行一个线程。使用细粒度的锁替换GIL，结果会更糟糕；像PyPy中的软件事务内存往往最终会导致1个线程继续推进，N-1个线程持续重试的问题。所以我们需要别的解决方案。</p>
+<p>对PyParallel团队来说，这个解决方案就是不允许自由创建线程。换言之，应用不能随意创建新线程。相反，并行操作被绑定到异步回调机制和并行上下文（parallel context）的概念。</p>
+<p>在深入并行上下文之前，我们先反过来看一下。当并行上下文不运行的时候，主线程会运行；反之亦然。主线程就是你进行正常的Python开发所考虑的东西。主线程持有GIL，对全局命名空间具有完全的访问权限。</p>
 <div id="lowerFullwidthVCR"></div>
-<p><b>InfoQ</b><b>：Elasticsearch</b><b>是用于实时全文搜索的。你能否告诉我们实时的全文搜索与传统的数据搜索有什么不同吗？</b></p>
-<blockquote> 
- <p>按照通俗的说法，传统的搜索其实就是全文搜索的一个子集。</p> 
- <p>大多数数据存储系统都是基于元数据，或是原始数据的某些部分实现搜索功能的。出于效率方面的原因，那些我们认为相关的数据子集（例如对象的id、name等等）会被索引，而其余部分则被忽略。与原始数据大小相比，所生成的索引数据量比较小，但它没有完全覆盖到所有的数据集。全文搜索解决这个问题的方式是对整个数据资料进行索引和搜索，代价就是对存储空间的需求增加。</p> 
- <p>传统的搜索通常是与结构化数据相关的，因为对用户来说结构化数据更容易理解哪些数据是相关的，而哪些是不相关的。但当前的业务中，大多数数据都是非结构化的。你会将所有数据一次性保存起来，在需要的时候再去获取它的各种不同格式与结构的值，在这种情况下就必需用到全文搜索的方式，因为你已经无法忽略任何数据了。</p> 
- <p>Elasticsearch同时支持结构化数据搜索与全文搜索，它提供了大量的查询选项，包括关键字、布尔查询、过滤器以及模糊查询等方式，所有这些都选项都可以通过一个丰富的查询语言来完成。</p> 
- <p>请注意，Elasticsearch与简单的全文搜索相比，还提供了以下一些额外的特性：</p> 
- <ul> 
-  <li>地理位置查询：根据数据的地理位置查找结果。</li> 
-  <li>聚合/分面：在查询的时候进行数据聚合，例如查找在某一天之内，访问过你的网站中某篇特定文章，或者是某些标签的用户来自哪些国家。由于聚合是实时计算的，因此当查询变化时，聚合也会相应的变化。换句话说，就是你总能获取数据集的即时反馈。</li> 
- </ul> 
-</blockquote>
-<p><b>InfoQ</b><b>：在使用Elasticsearch</b><b>时，有哪些设计上的考虑呢？</b></p>
-<blockquote> 
- <p>数据是王道，因此要专注于对它的处理。为了让Elasticsearch能够按照你设想的方式处理数据，它必须理解你的“需求”。虽然它能够尽最大努力去猜测你要的数据，但你的领域知识对于进行正确的配置以支持你的需求来说才是最有价值的部分。这些都可以归结为数据的粒度或者是组织方式。让我们拿日志这个常见的需求来举个例子：与其把所有的日志记录都放在一个巨大的索引里，更好的方法是将日志记录按照时间进行分解，因此每月、每周或者每天的数据都可以对应一条索引。这种分解方式能够在你处理数据巨量增长、以及删除或者归档旧数据时带来许多便利。</p> 
-</blockquote>
-<p><b>InfoQ</b><b>：能否请你谈谈Elasticsearch</b><b>引擎所支持的设计与架构模式呢？</b></p>
-<blockquote> 
- <p>一个索引包括了多个分片，每个分片本身就是一个迷你的搜索引擎。一个索引本质上就是对应着一系列分片的虚拟命名空间。多分片的方式能够简化横向扩展任务，只需添加新的节点即可。而创建分发分片对每个主分片的数据进行复制能够实现高可用性，并增加读取时的吞吐能力。</p> 
- <p>查询某个索引是一种分布式操作，这意味着Elasticsearch不得不对索引中的每个分片的数据复制进行查询，并将结果整理到一个单一的结果集中。而对多个索引进行查询只是将相同的步骤进一步扩大了而已。在设计你的数据存储架构时，这种方式能够带来极大的灵活性。</p> 
- <p>而如果用户了解他的应用程序特定的一些领域知识，那就可以对查询进行优化，使查询只触及相关的分片。在同样的硬件条件下，这种方式可以支持更大的负载。</p> 
-</blockquote>
-<p><b>InfoQ</b><b>：Elasticsearch</b><b>是怎样支持数据的可伸缩性的呢？ </b></p>
-<blockquote> 
- <p>为了支持高可用性与高伸缩性，Elasticsearch本身就是分布式设计的。从顶层的角度来说，Elasticsearch在索引（或者集合）中保存文档（或者数据记录），每个集合又分解为多个小块，称为分片。索引越大，所需要分配的分片越多（不必担心会创建过多的分片，它的开销很小）。取决于Elasticsearch的设置和规模，分片会在集群中均匀地平均分布，有两个原因：</p> 
- <p>出于冗余方面的原因：默认情况下，Elasticsearch为每个分片都准备了一份拷贝，一旦某个节点停机了，备份的分片就能接替它的位置。</p> 
- <p>出于性能方面的原因：每个查询都发生在某个索引上，并且会在多个分片中并行运行，这种工作流方式是改善性能的关系所在。如果感觉运行速度缓慢，只需简单地在集群中加入新的机器，Elasticsearch就会自动地将分片与查询进行分布到新添加的机器上。</p> 
- <p>这种方式让使用Elasticsearch的组织可以自由选择进行纵向扩展（如果节点运行缓慢就升级硬件）或者横向扩展（如果集群整体速度慢就加入更多的节点）。</p> 
-</blockquote>
-<p><b>InfoQ</b><b>：在使用这种解决方案时有什么限制，或者是要特别留意的地方吗？ </b></p>
-<blockquote> 
- <p>我认为最大的挑战是用户从SQL的世界来到了这个基于上下文的搜索世界时所面对的新理念，对于获取独立的数据项（传统的数据获取）来说，方法基本还是一样的，只要指定id然后取回数据就可以了。但对于数据探索来说，所使用的各种构造就有所不同了，例如采用不同类型的分析方式，或是使用哪种类型的搜索或匹配算法（如模糊查询等等）。</p> 
-</blockquote>
-<p><b>InfoQ</b><b>：你能否说说联合使用Elasticsearch</b><b>与Hadoop</b><b>技术具有什么优势吗？</b></p>
-<blockquote> 
- <p>Hadoop在设计上就是一个分布式的，面向批处理的平台，用以处理大数据集。虽然它是一个非常强大的工具，但它的批处理的本质意味着在处理结果时需要花费一定时间。此外，用户必需重新为各种操作编写代码。Hive或者Pig这样的类库能起到一定作用，但不能完全解决问题，想象一下在Map/Reduce中重新实现地理位置查询的难度吧。</p> 
- <p>而使用Elasticsearch，你就可以将搜索工作交给搜索引擎去完成，而专注于其它方面的工作，例如数据转换。Elasticsearch-Hadoop项目为Hadoop提供了直接的整合功能，因此用户使用起来没有任何障碍，我们为vanilla Map/Reduce提供了专门的InputFormat与OutputFormat，为Cascading的数据读写提供了Taps，并为Pig和Hive提供了Storages。这样你就可以以HDFS一样方式的访问Elasticsearch的数据了。</p> 
- <p>通常来说，与Hadoop进行整合的数据存储系统都可能会成为系统的瓶颈，这是由于每个job在集群中的各种任务会造成大量的请求。而Map/Reduce模型的分布式特性用于Elasticsearch上会配合得非常良好，因为我们能够将某个特定查询所生产的Map/Reduce任务数量与Elasticsearch的分片数量相关联。这样每次有查询运行时，系统就会动态地按照Hadoop的划分生成一个数值，该数值与Elasticsearch的可用分片数量成正比，这样各个job就能够并行地运行了。你可以按照Elasticsearch的数量对Hadoop集群进行扩展，或者是反过来也可以。</p> 
- <p>此外，这种整合将分片的信息暴露给Hadoop，以此可以实现协同定位。Job的任务会在每个Elasticsearch分片所在的同一台机器上运行，通过实现数据本地化消除了网络的开销，并改善了性能。出于这个原因，我们建议你在相同的机器上运行Elasticsearch和Hadoop集群，尤其是他们能够互相平衡资源的使用情况（I/O与CPU）。</p> 
- <p>最后但也是很重要的一点是，Elasticsearch能够提供近乎实时的响应速度（毫秒等级），这极大的改善了Hadoop job的执行速度以及执行的各种开销，在类似于<a href="http://aws.amazon.com/elasticmapreduce/">Amazon EMR</a>这种“租用的资源”上运行时的改善尤其明显。</p> 
-</blockquote>
-<p><b>InfoQ</b><b>：Spring</b><b>框架与Elasticsearch</b><b>是否能够进行整合呢？ </b></p>
-<blockquote> 
- <p>当然能了，请去查看一下Github上的<a href="http://www.github.com/SpringSource/spring-data-elasticsearch">Spring Data Elasticsearch</a>项目。该项目是由我们的社区成员组织Biomed Central启动的，而我们也乐于和他们共同参与开发的过程，使用并改善这一项目。该项目提供了一个大家所熟悉的Spring模板，作为一个高级别的抽象层。<a href="https://github.com/spring-projects/spring-data-elasticsearch#elasticsearchrepository">Repository</a>的实现是基于Elasticsearch的功能，另外还通过XML、JavaConfig和CDI提供了各种配置能力。我们目前正致力于将各种整合项目聚合在一起，其中最受关注的就是David Piloto开发的<a href="https://github.com/dadoonet/spring-elasticsearch">spring-elasticsearch</a>项目了。</p> 
-</blockquote>
-<h2>关于受访人</h2>
-<p><img _p="true" _href="img://null" alt="" style="float: left; margin-right: 10px" src="http://infoqstatic.com/resource/articles/costin-elasticsearch-bigdata/zh/resources/1118004.jpg" /><b>Costin Leau</b>是ElasticSearch的一位工程师，目前在从事NoSQL与大数据技术的研究。作为一名开源方面的老手，Costin带领了多个Spring项目的开发，并编写了一份OSGi规格说明书。</p>
+<p>相反，并行上下文对全局命名空间只能进行只读访问。这意味着，开发者需要注意某个事物是主线程对象还是并行上下文对象。处理过套间线程模型（apartment threading models）的COM程序员对其中的痛苦是再清楚不过了。</p>
+<p>对于非I/O任务，主线程使用async.submit_work函数对任务进行排队，然后使用async.run 函数切换到并行上下文。这会挂起主线程，并激活并行解释器。多个并行上下文可以同时运行，由Windows操作系统处理线程池的管理。</p>
+<h2>与GIL并行</h2>
+<p>有一点非常重要，需要注意一下，这里并没有创建多个进程。尽管多进程技术在Python开发中很常用，但PyParallel将所有东西都放在了一个进程中，以减少跨进程通信的代价。这通常是不允许的，因为CPython解释器不是线程安全的，这包括：</p>
+<ul> 
+ <li>全局静态数据会频繁用到</li> 
+ <li>引用计数不是原子的</li> 
+ <li>对象没有用锁保护</li> 
+ <li>垃圾收集不是线程安全的</li> 
+ <li>拘留字符串（Interned string）的创建不是线程安全的</li> 
+ <li>bucket内存分配器不是线程安全的</li> 
+ <li>arena内存分配器不是线程安全的</li> 
+</ul>
+<p>Greg Stein曾尝试通过向Python 1.4中加入细粒度的锁来解决该问题，但是在单线程代码中，他的项目导致速度下降40%，所以被拒绝了。因此Trent Nelson决定采用不同的方案。在主线程中，GIL和原来一样运作。但是当在并行上下文中运行的时候，会使用线程安全的替换方案代替核心函数来运行。</p>
+<p>Trent的方案的代价是0.01%，比Greg的方案好得多。至于PyPy的软件事务内存，对单线程模型而言，其代价大概是200～500%。</p>
+<p>该设计的一个有趣的地方是，在并行上下文中运行的代码，当要从全局命名空间中的对象中读取数据时，不需要获得锁。不过它只有读的能力。</p>
+<h2>PyParallel没有垃圾收集器</h2>
+<p>为了避免处理内存分配、存取和垃圾收集相关的锁，PyParallel使用了一种无共享模式。每个并行上下文都有自己的堆，没有垃圾收集器。就是这样，没有与并行上下文关联的垃圾收集器。因此实际上是这样：</p>
+<ul> 
+ <li>内存分配使用一个简单的块分配器完成。每次内存分配只是调整一下指针。</li> 
+ <li>根据需要分配4K或2MB大小的新页面，这由并行上下文的大页面设置控制。</li> 
+ <li>不使用引用计数。</li> 
+ <li>当并行上下文结束时，与它关联的所有页面同时释放。</li> 
+</ul>
+<p>这种设计避免了线程安全的垃圾收集器或线程安全的引用计数的代价。另外，它支持前面提到的块分配器，这可能是最快的内存分配方式了。</p>
+<p>PyParallel团队认为这种设计可以成功，因为并行上下文意在支持生命周期较短、范围较为有限的应用。一个很好的例子是并行排序算法或Web页面请求处理程序。</p>
+<p>为使这种设计正常工作，在并行上下文中创建的对象不能逃逸到主线程中。这是通过只读访问全局命名空间这一限制来保证的。</p>
+<h2>引用计数与主线程对象</h2>
+<p>这时我们有两类对象：主线程对象和并行上下文对象。主线程对象会使用引用计数进行管理，因为它们在某一时刻需要回收。但并行上下文对象没有使用引用计数。但如果两类对象有相互作用，那该如何处理呢？</p>
+<p>因为并行上下文对象不能修改主线程对象，所以它就不能改变主线程对象的引用计数。但是又因为，当并行上下文运行时，主线程的垃圾收集器无法运行，所以这就不是问题了。当主线程的垃圾收集启动时，所有的并行上下文对象都已经销毁，所以没有从它们指回到主线程对象的东西。</p>
+<p>这一切的最终结果是，在并行上下文中执行的代码通常比在主线程中执行的代码快。</p>
+<h2>并行上下文与异步I/O</h2>
+<p>当考虑异步I/O调用时，上面讨论的内存模型就有问题了。这些调用会使并行上下文存活的时间比系统设计的存活时间长得多。像Web页面请求处理程序这样的情况，调用的数目是没有限制的。</p>
+<p>为处理这一问题，Trent加入了快照（snapshot）的概念。当一个异步回调开始时，就为并行上下文的内存保存一个快照。在回调的最后，所有改变都会被恢复，新分配的内存也会释放。这比较适合无状态应用，比如Web页面请求处理程序，但是对需要保持数据的应用就不合适了。</p>
+<p>快照最多可以嵌套64层深，但是Trent没有详细描述其处理细节。</p>
+<h2>平衡同步与异步I/O</h2>
+<p>异步I/O不是免费的午餐。如果想获得最大的吞吐量，同时保持最低的延迟，同步I/O实际上更快。但只有并发请求数比可用的核数少时，这才成立。</p>
+<p>因为开发者不一定会随时了解负载情况，所以指望他决策可能是不合理的。因此PyParallel提供了一个套接字（socket）库，可以在运行时根据活动的客户端数做出决策。只要活动客户端的数目比核数少，就执行同步代码。如果客户端数超过了核数，该库会自动切换到异步模式。不管哪种方式，这里的修改对应用都是透明的。</p>
+<h2>异步HTTP服务器</h2>
+<p>作为概念验证的一部分，PyParallel还提供了一个异步HTTP服务器，它基于stdlib 中的<a name="OLE_LINK1"></a><a name="OLE_LINK2">SimpleHttpServer</a>。它的一个主要特性是支持Win32函数<a href="http://winapi.freetechsecrets.com/sock2/SOCK2TransmitFile.htm">TransmitFile</a>，允许数据直接从文件缓存发送到套接字。</p>
+<h2>未来计划</h2>
+<p>未来，Trent希望继续改进内存模型，准备通过引入一组新的互锁（interlocked）数据类型和使用上下文管理器控制内存分配协议来实现。</p>
+<p>与<a href="http://numba.pydata.org/">Numba</a>的集成也正在进行之中。想法是异步启动Numba，当Numba完成时，将CPython交换出去，换为本机生成的代码。</p>
+<p>另一个计划中的变化是支持可插拔的PxSocket_IOLoop端点。这就允许不同的协议以流水线方式链到一起。在可能的情况下，他想使用管道代替套接字，因为这可以减少在多个步骤之间所要复制的必要数据的量。</p>
+<p>更多信息，可以查看Trent Nelson的演讲：<a href="https://vimeo.com/79539317">PyParallel - How We Removed the GIL and Exploited All Cores (Without Needing to Remove the GIL at all)</a>。</p>
+<h2>关于作者</h2>
+<p><img _p="true" _href="img://null" src="http://infoqstatic.com/resource/articles/PyParallel/zh/resources/0120000.jpg" style="float: left; margin-right: 10px" alt="" /><b>Jonathan Allen</b>从2006年开始就为InfoQ编写新闻报道了， 目前他是.NET板块的主编。如果你有兴趣为InfoQ编写新闻和技术文章，<a href="mailto:请通过jonathan@infoq.com">请通过jonathan@infoq.com</a>联系他。</p>
 <div style="clear:both"></div>
-<p><strong>查看英文原文：</strong><a href="http://www.infoq.com/articles/costin-elasticsearch-bigdata">Costin Leau on Elasticsearch, BigData and Hadoop</a></p><br><br><br><br><br><br></body></html>
+<p><strong>查看英文原文：</strong><a href="http://www.infoq.com/articles/PyParallel">PyParallel: A Fast Parallel Version of Python</a></p><br><br><br><br><br><br></body></html>

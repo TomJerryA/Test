@@ -1,61 +1,16 @@
-<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>CoffeeScript 1.7发布:增加了无括号链式调用、多行字符串等特性</h3><p>Jeremy Ashkenas刚发布了<a href="https://gist.github.com/aseemk/8637896">CoffeeScript的1.7版</a>，并对流行的JavaScript转换做了一些备受期待的修改。</p>
-<p>版本1.7中包含了一个非常受欢迎的语言特性请求，支持无括号链式调用。在1.7版之前，如果有开发者想要链接函数，则必须使用括号，而在CoffeeScript中，函数是没必要使用括号的。</p>
-<pre>
-// 1.7之前 - 链式调用需要括号
-$('#element').addClass('active').css({ left: 5 });
-
-// 1.7 - 没有括号了
-$ '#element'
-.addClass 'active'
-.css { left: 5 }</pre>
-<p>这一版还实现了对多行字符串的正确支持。在之前版本的CoffeeScript中，字符串（或字符串字面量）留下了新行和空格，而忽略了`\`操作符，这个符号的意思是要让两个字符串留在同一行上。在1.7版中，这个问题也被解决了，开发人员在CoffeeScript中可以清楚地格式化多行字符串了。</p>
-<pre>
-console.log '''The quick brown fox jumped over the \
-lazy dog'''
-
-// 1.7版之前的输出
- The quick brown fox jumped \nover the lazy dog
-
-// 1.7版现在的输出
-The quick brown fox jumped over the lazy dog</pre>
-<p>对数组解构的扩张也给加上了，这个之前曾经是CoffeScript项目中<a href="https://github.com/jashkenas/coffee-script/pull/3268">开放时间最长的问题</a> 。</p>
-<pre>
-# 取得animals数组中的最后一项
-animals = [ 'cat', 'dog', 'hippopotamus' ]
-
-# 1.7版之前
-hippo = animals[animal.length - 1]
-
-# 1.7版现在的样子
-[..., hippo] = animals
-
-# ...两个都会被转换成...
-hippo = animals[animals.length - 1];</pre>
-<p>还有更方便的数学操作符。包括新的平方操作符、向下取整除，以及一个模除操作符 (返回除法操作的余数)。</p>
-<pre>
-# 平方
-2 ** 2
-# 转换成...
-Math.pow(2, 2);
-
-# 向下取整除
-2 // 3
-#转换成...
-Math.floor(2 / 3)
-
-# 模除
-2 %% 3
-#转换成...
-var __modulo = function(a, b) { return (a % b + +b) % b; };
-__modulo(2, 1);</pre>
-<p>其它改进包括让CoffeeScript跟Node.js 保持一致，这样它的require语句不会自动运行一个目录中的每个文件，而是表现的像Node一样，只运行index.coffee文件。</p>
-<p>1.7版本发布的大部分工作 (实际上过去几年大部分的CoffeeScript)都是由社区成员完成的。&quot; CoffeeScript 中合并了超过一百多个开发人员的贡献和补丁&quot;，Jeremy说。&quot; CoffeeScript之所以乐于采用，是因为那些想法能够吸引JavaScript程序员。&quot;考虑到<a href="https://github.com/xixixao">Michael Srb</a> 对1.7版本所作的贡献， Jeremy对他致以了 <a href="https://twitter.com/jashkenas/status/428243869487362048">特别的感谢</a> 。</p>
-<p>CoffeeScript确实享有巨大的声望，达到了 <a href="http://en.wikipedia.org/wiki/CoffeeScript">GitHub上最受欢迎的十大项目之一</a>的高度。在Ruby on Rails (自3.1版开始)之类的框架中也出现到了对它的支持，微软的Visual Studio也通过<a href="http://vswebessentials.com/">Web Essentials插件</a>对它提供了支持。此外，JavaScript的创建者<a href="http://en.wikipedia.org/wiki/Brendan_Eich">Brenden Eich</a>也曾表示过，CoffeeScript 在他思考<a href="https://brendaneich.com/tag/javascript-ecmascript-harmony-coffeescript/">JavaScript的未来</a>时产生了怎样的影响。</p>
-<p>GitHub用户<a href="https://gist.github.com/stefanpenner">stefanpenner</a> 评论说在CoffeeScript中 “…ES6 import export将会成为关键…”</p>
-<p>Jeremy确实在CoffeeScript的评述中提到了ES6的特性，</p>
+<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>对Nagios适用性的争论</h3><p>在最近一次的<a href="http://www.youtube.com/watch?v=Q9BagdHGopg">伦敦DevOps集会</a>上，<a href="http://twitter.com/supersheep">Andy Sykes</a>引发了一场是否应该使用更好的解决方案来替代<a href="http://www.nagios.org/">Nagios</a>的<a href="http://www.reddit.com/r/sysadmin/comments/1y28wy/stop_using_nagios_so_it_can_die_peacefully/">争论</a>（Nagios是提供监控和告警服务的知名应用）。</p>
+<p>Andy承认，Nagios拥有简单的插件模型，并且从概念上说具有简单性和可靠性。但是其缺点更为显著。他认为，Nagios难以扩展，因为它不支持任何类型的集群。而且配置起来也比较麻烦，会涉及到大量服务器与客户端之间的复制。此外，另一个痛点则是缺乏一套简化系统整合与自定义仪表盘创建过程的API。在这个弹性和云的时代里，需要将新客户端告知主机，也将被视作一项重大缺陷。</p>
+<p>针对Nagios的不足之处，Andy给出了一些应对建议。他推荐采用<a href="http://sensuapp.org/">Sensu</a> 应对监控问题，使用<a href="http://graphite.readthedocs.org/en/latest/">Graphite</a>满足图形绘制需求，以及将<a href="http://flapjack.io/">Flapjack</a> 用于告警服务。不过对于探测异常和用户界面方面，Andy认为目前还没有什么合适的产品。</p>
+<p>对此，<a href="https://laur.ie/blog/">Laurie Denness</a>则持有不同意见，并<a href="https://laur.ie/blog/2014/02/why-ill-be-letting-nagios-live-on-a-bit-longer-thank-you-very-much/">阐述</a>了为何Etsy将继续使用Nagios。针对Andy提出的每条观点，Laurie都进行了辩驳。</p>
+<p>Laurie表示，对Etsy来说，“我们的主数据中心有1万项检查。一般而言每隔2到3分钟，就进行一组30秒的检查”。对此，必须进行一些优化调整。团队启用了Nagios的<a href="http://nagios.sourceforge.net/docs/3_0/largeinstalltweaks.html">use_large_installation_tweaks</a>标志以降低延迟，并且在惠普和戴尔服务器上禁用了扩展设置——因为Nagios似乎与这些设备使用的电源管理算法并不十分兼容。当Etsy开始使用两个数据中心时，他们选择在每个数据中心里安置一个Nagios实例，并使用<a href="https://github.com/lozzd/Nagdash">Nagdash</a>将状态和报告聚合在一起。</p>
+<p>在配置方面，Laurie宣称：</p>
 <blockquote> 
- <p>CoffeeScript几乎要完成了— 过去两年到现在都十分稳定— 但将来还会继续有小幅度增长。比如说：有新的JavaScript特性出现时提供支持，进一步改进源码映射的支持， 为文学编程风格进一步打磨，让编译器内部更加精简。</p> 
+ <p>如果你花费时间来挑选Nagios配置文件，那么或许你无论如何都会喜欢它，并且正在大规模重写旧有的配置；要么或许走在了错误的路上。将之自动化是很容易的事情。</p> 
 </blockquote>
-<p>曾经有个 <a href="https://www.kickstarter.com/projects/michaelficarra/make-a-better-coffeescript-compiler">Kickstarter项目</a>，它要重写CoffeeScript编译器。这个项目成功地募集到了资金，被称为<a href="http://github.com/michaelficarra/CoffeeScriptRedux">CoffeeScriptRedux</a>。Jeremy认为有人为CoffeeScript创建新的编译器是好事， &quot; 面向一种语言的编译器越多—那种语言越健康。CoffeeScript也是，它能从多个独立的编译器中受益。&quot;</p>
-<p>你马上就可以在<a href="https://github.com/jashkenas/coffee-script">GitHub</a>，或<a href="http://coffeescript.org/">CoffeeScript官方网站</a>上得到CoffeeScript的1.7版。</p>
-<p><strong>原文英文链接：</strong><a href="http://www.infoq.com/news/2014/02/coffescript-17">CoffeeScript 1.7 Released: Adds Chaining Without Parenthesis, Multiline Strings and More</a></p><br><br><br><br><br><br></body></html>
+<p>Etsy同时也在使用<a href="https://github.com/xb95/nagios-api">nagios-api</a>——这个第三方项目面向Nagios，提供了类REST的JSON接口以将其自动化。</p>
+<p>针对Andy眼中Nagios目前的不足之处，Laurie给出了更为广泛的阐述。他认为，Unix哲学适用于使用Nagios的工作：“以许多小型部件和应用为基础，它们都负责应对特定的小规模问题，而用户使用管线将它们关联为一体。”事实上，Nagios拥有强大的生态系统，在Laurie看来这是一项强有力的优势。</p>
+<p>在谈到Laurie的见解时，<a href="http://lethargy.org/~jesus/">Theo Schlossnagle</a>延续了“Nagios尚有不足”的思路：</p>
+<blockquote> 
+ <p>对运营方面来说，我们需要的是读取系统遥测信息，并针对其行为提供深入的洞见。这是一个宽泛的任务，必须对收集到的数据进行分析。然而，Nagios以及其他类似设计的五花八门的产品，都不支持这种做法。</p> 
+</blockquote>
+<p><strong>查看英文原文：</strong><a href="http://www.infoq.com/news/2014/02/nagios-discussion">Discussion on Nagios Fitness for Purpose</a></p><br><br><br><br><br><br></body></html>

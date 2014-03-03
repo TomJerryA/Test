@@ -2,7 +2,13 @@
  <head></head> 
  <body>
   <div>
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/38.java">Amazon Chooses HAL Media Type for AppStream API</a>Amazon has released a new API, the AppStream API, which allows you to programmatically manage apps hosted on the Amazon AppStream platform. For this API, they chose to build it with the HAL media type. HAL is a minimalist hypermedia enabled media type for building machine-to-machine APIs. Amazon is one of the largest organizations to choose hypermedia as a technique for a public-facing product.
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/40.java">Apple Rolls Out CarPlay</a>At the Geneva International Motor Show, Apple announced to roll out CarPlay partnering with premium car manufactures. CarPlay fully integrates iOS devices with existing infotainment capabilities of cars. Currently, Apple restricts CarPlay to a few applications like Maps, Phone or Messages. At the moment, there is no public API announced to write CarPlay enabled applications.
+  </div> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/39.java">IBM Launches Contest for Cognitive Mobile Apps using Watson</a>At the Mobile World Congress, IBM has announced a developer contest for developers to create mobile consumer and business apps powered by IBM Watson cognitive computing platform. The winners of the IBM Watson Mobile Developer Challenge will receive design consulting and support from IBM to gain access to the market. 
+  </div> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/38.java">Amazon Chooses HAL Media Type for AppStream API</a>Amazon has released a new API, the AppStream API, which allows you to programmatically manage apps hosted on the Amazon AppStream platform. For this API, they chose to build it with the HAL media type. HAL is a minimalist hypermedia enabled media type for building machine-to-machine APIs. Amazon is one of the largest organizations to choose hypermedia as a technique for a public-facing product. 
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/37.java">Finding the Best-fit for Lean Startup Methodology</a>Raf Gemmail surveys recent commentary and presentations on the successes and failures of lean-startup methodology within both startups and big enterprise. 
@@ -144,12 +150,6 @@
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/45.java">Design Patterns for Cloud-Hosted Applications</a>The patterns &amp; practices group at Microsoft have released a guide with solutions and patterns suitable when implementing cloud-hosted applications. The guide contains ten guidance topics together with 24 design patterns targeting eight categories of problems covering common areas in cloud application development. Also included are ten sample applications to demonstrate the usage these patterns. 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/44.java">Running Spark on R with SparkR</a>UC Berkeley’s AMPLab announced a developer preview of their new project SparkR to use Apache Spark natively from R. 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/43.java">DevOps Cafe Podcast on the QCon London 2014 DevOps Track</a>Last DevOps Cafe Podcast (Episode 47) previewed the QCon London 2014 DevOps track. Manuel Pais and Shane Hastie, the track hosts, explained the rationale behind the track's session selection, the speakers introduced their talks and there was still time to discuss other topics, such as the importance of the scientific method and how agile's definition of &quot;done&quot; must be adapted in a DevOps world. 
   </div>  
  </body>
 </html>
