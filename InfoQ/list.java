@@ -1,17 +1,17 @@
 <html>
  <head></head> 
- <body>
-  <div>
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/37.java">Finding the Best-fit for Lean Startup Methodology</a>Raf Gemmail surveys recent commentary and presentations on the successes and failures of lean-startup methodology within both startups and big enterprise.
-  </div>
-  <div>
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/36.java">Discussion on Nagios Fitness for Purpose</a>At a recent London DevOps meetup, Andy Sykes launched a debate on whether Nagios, a well-known application that offers monitoring and alerting services, should be replaced with a better solution. Laurie Denness, from Etsy, argued in a reply that Nagios and its ecosystem still are a great solution in the monitoring and alerting arena.
-  </div>
-  <div>
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/35.java">Lessons Learned from Apple's GoToFail Bug</a>The recent security weakness found in both iOS and OS X hints at flaws in coding style guidelines, unit testing, system testing, code review policies, error management strategies, and tools deployment. An overview.
-  </div>
-  <div>
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/34.java">Spark Officially Graduates From Apache Incubator</a>Recently, Spark graduated from the Apache incubator. Spark claims up to 100x speed improvements over Apache Hadoop over in-memory datasets and gracefully falling back to 10x speed improvement for on-disk performance. Based on Scala, it can run SQL queries and be used directly in R. It provides Machine Learning, Graph database capabilities and other further discussed in the article.
+ <body> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/37.java">Finding the Best-fit for Lean Startup Methodology</a>Raf Gemmail surveys recent commentary and presentations on the successes and failures of lean-startup methodology within both startups and big enterprise. 
+  </div> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/36.java">Discussion on Nagios Fitness for Purpose</a>At a recent London DevOps meetup, Andy Sykes launched a debate on whether Nagios, a well-known application that offers monitoring and alerting services, should be replaced with a better solution. Laurie Denness, from Etsy, argued in a reply that Nagios and its ecosystem still are a great solution in the monitoring and alerting arena. 
+  </div> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/35.java">Lessons Learned from Apple's GoToFail Bug</a>The recent security weakness found in both iOS and OS X hints at flaws in coding style guidelines, unit testing, system testing, code review policies, error management strategies, and tools deployment. An overview. 
+  </div> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/34.java">Spark Officially Graduates From Apache Incubator</a>Recently, Spark graduated from the Apache incubator. Spark claims up to 100x speed improvements over Apache Hadoop over in-memory datasets and gracefully falling back to 10x speed improvement for on-disk performance. Based on Scala, it can run SQL queries and be used directly in R. It provides Machine Learning, Graph database capabilities and other further discussed in the article. 
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/33.java">Akka Actors vs. Java EJBs from a High-Level Concurrency Perspective</a>There are both commonalities and some differences when comparing architectural principles and coding styles in Akka Actors and Java EE 7 Enterprise JavaBeans, specifically stateless session beans and JMS message-driven beans, Dr Gerald Loeffler concludes in a recent introductory talk when explaining and comparing the three approaches from a high-level concurrency view. 
@@ -150,6 +150,6 @@
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/42.java">Improved Object Inspection with Visual Studio 2013 Update 2</a>Visual Studio 2013 Update 2 includes an enhanced object inspection which enable developers to inspect values of objects and instances quickly and in an effective way. 
-  </div>     
+  </div> 
  </body>
 </html>

@@ -1,10 +1,10 @@
 <html>
  <head></head> 
- <body>
-  <div>
+ <body> 
+  <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/8.htmlb">深度剖析京东云引擎核心技术</a> 京东云引擎构建于Cloud Foundry之上，为更好地服务于个人开发者与京东ISV，开发团队对Cloud Foundry做了许多重要扩展，如智能路由、弹性伸缩、智能启动与资源隔离及访问控制。本文为您一一剖析它们的实现原理。 
-  </div>
-  <div>
+  </div> 
+  <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/7.htmlb">仆人领导</a> 本文中，我们将讨论仆人领袖，或者是潜在的Scrum Master、敏捷项目经理、潜在的客户经理，及你所需要填充的任意角色上，可能需要的素质、偏好和非技术技能。 
   </div> 
   <div> 
@@ -150,6 +150,6 @@
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/12.htmlb">必胜宅急送Web app设计背后的思考</a> O2O模式是餐饮业在移动消费趋势下主动拥抱互联网的方向，迎合餐饮消费者从以往经验判断为主转变为依靠移动设备、lbs、社交网络进行立体决策的过程。继App客户端之后，手机web app也逐渐成为O2O中联系消费者和餐饮业的纽带，通过Html5的技术支持，web app设计可以直接适配不同平台的手机屏幕并实现类似App客户端的体验，在O2O双向流程的闭环中加深消费者对品牌的认同和感情认知。 日前必胜宅急送推出的手机订餐web正是其O2O模式的策略补充和深化。FaceUI提供的web app设计包含了对产品背后动机的挖掘和把握，随着项目团队对动机的理解和可用性测试的加深，设计思路也随之发生着变化。 
-  </div>   
+  </div> 
  </body>
 </html>

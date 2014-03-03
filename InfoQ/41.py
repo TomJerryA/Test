@@ -1,28 +1,27 @@
-<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>スレッドモデルを変更したRust 0.9がリリース</h3><p><a target="_blank" href="http://www.infoq.com/news/2014/01/rust09"><em>原文(投稿日：2014/01/16)へのリンク</em></a></p>
+<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>Project Helios: IIS上のASP.NET OWINベースのWebホスト ランタイム</h3><p><a target="_blank" href="http://www.infoq.com/news/2014/02/helios"><em>原文(投稿日：2014/02/19)へのリンク</em></a></p>
 <div class="article_page_left news_container text_content_container"> 
  <div class="text_info"> 
-  <p class="MsoNormal" style="margin-bottom:0.0001pt">Mozillaが支援するシステムプログラム言語<a href="http://www.rust-lang.org/">Rust</a>のバージョン0.9がリリースされた。1.0マイルストーンに向けて，言語として多数の改良が加えられている。Rustはこれまで，長期にわたるサポートと安定性を備えた言語へと進化すべく，多数の変更を受け続けてきた。開発者であるGraydon Hoare氏は，Rustのターゲットは<a href="http://www.infoq.com/news/2012/08/Interview-Rust"><span class="InternetLink">&quot;C++に不満を持つ開発者&quot;</span></a>であり，現代的なプログラム言語でC/C++を置き換えることが目標だ，と語っている。</p> 
-  <p class="MsoNormal" style="margin-bottom:0.0001pt">
-   <o:p></o:p></p> 
-  <p class="MsoNormal" style="margin-bottom:0.0001pt">&nbsp;</p> 
-  <p class="MsoNormal" style="margin-bottom:0.0001pt">Rustはオープンソースのプログラム言語で，Windows用には<a href="http://static.rust-lang.org/dist/rust-0.9-install.exe">バイナリインストーラ</a>が，UNIXベースのシステム(FreeBSD, Mac OS X, Linux)用には<a href="http://static.rust-lang.org/dist/rust-0.9.tar.gz">ソースパッケージ</a>が公開されている。
-   <o:p></o:p></p> 
-  <p class="MsoNormal" style="margin-bottom:0.0001pt">&nbsp;</p> 
-  <p class="MsoNormal" style="margin-bottom:0.0001pt">Release 0.9には注目すべき機能がいくつかある。
-   <o:p></o:p></p> 
-  <ul> 
-   <li>動的リンクライブラリと静的リンクライブラリのどちらをビルドするか，開発者が<a href="http://static.rust-lang.org/doc/master/rust.html#linkage">選択</a>できるようになった。
-    <o:p></o:p></li> 
-   <li>ネイティブライブラリのサポートが拡張された。Rustライブラリのビルドと配布が，ネイティブライブラリを添付することなくできるようになった。
-    <o:p></o:p></li> 
-   <li>I/Oインフラストラクチャが完全に改訂された。論理的には，すべてのI/O機能が<b>std:io</b>モジュールに配置されている。commモジュール(高レベルの通信を抽象化する)も書き直された。
-    <o:p></o:p></li> 
-   <li>libgreenとlibnativeという２つのライブラリが新たに作成されたことで，I/Oがいくつか変更されている。Rust標準ライブラリが特定のスケジュール方法にセットされることがなくなった。プログラムをm:n (m個のアプリケーションスレッドをn個のカーネルスレッドにマップする)あるいは1:1(各カーネルスレッドに対してひとつのアプリケーションスレッド)で実行することができる。これによって開発者は，アプリケーションに最高のパフォーマンスを提供するスレッディングモデルを選択可能になった。
-    <o:p></o:p></li> 
-   <li>マネージドポインタ(@マークで示される)が非推奨となった。Rust開発者はRc (参照カウント付きポインタ)，またはGc(ガベージコレクション対象ポインタ)を使用するコードへの移行を検討する必要がある。
-    <o:p></o:p></li> 
+  <p>Microsoftは、IISの上で実行される軽量の<a href="http://owin.org/spec/owin-1.0.0.html">OWIN</a>をベースにしたWebホストであるHeliosと呼ばれるプロジェクトをリリースした。</p> 
+  <p>Heliosは、<a href="http://www.asp.net/aspnet/overview/owin-and-katana/an-overview-of-project-katana">昨年の夏にMicrosoftによって発表された</a>別のプロジェクト<a href="http://katanaproject.codeplex.com/">Katana</a>のステップに続いている。これは、インストールして、使用して、分離して管理できるよりも、いくつかの独立した小さなコンポーネントを提供することで、.NET Web開発者がASP.NET/IISモノリスを避けて、OWIN仕様を実装したWebホストで実行することができる。</p> 
+  <p>ASP.NETの問題のひとつは、.NET Frameworkに含まれているため、数年かかるメジャーバージョンアップのリリースサイクルに紐付いており、特定のテストとバグフィックスのプロセスに影響を受けることである。より機敏に、反応よくWebツールを開発するために、ASP.NETチームはSystem.Web.dllに依存しない、はるかに早い開発サイクルで、迅速に修正を適用できる、いくつかのより小さなコンポーネント (ASP.NET MVC、 ASP.NET Web API) を開発した。それだけでなく開発者はカスタムOWIN上または、OWINのリファレンス実装であるKatana上にホストされたWebアプリケーションをデプロイすることができる。</p> 
+  <p>Heliosは、Microsoftの本格的なWebサーバーではなく、IIS上で動作するWebランタイムである。<a href="http://weblog.west-wind.com/posts/2013/Nov/23/Checking-out-the-Helios-IIS-Owin-Web-Server-Host">Rick Strahl氏は以下のように説明する</a>:</p> 
+  <blockquote> 
+   <p>Heliosは、OWINベースのインターフェイスとコンテキスト セマンティクスをベースに提供するために、System.Webを使わず、直接IISのネイティブ・インターフェイスをフックしています。これは、既存のASP.NET実行環境とは完全に切り離されており、モジュールのパイプラインとデフォルトのASP.NETランタイム プロセスをバイパスして実行されます。… Heliosは、非常に軽量で、生のIIS上で起動するWebホストのショートサーキットされたバージョンです。IISとASP.NETは密接に紐付いていますが、IISコアはかなり軽量で、完全にネイティブコードで実行されることを覚えておいてください。ASP.NETモジュールやハンドラーがインストールされている場合、ASP.NETは相互作用のみがキックされ、それらはネイティブコードとネイティブモジュールのみの場合と比べて遅くなります。</p> 
+  </blockquote> 
+  <p>Heliosの背景は、IISが提供している成熟していて、豊富な環境を、従来のASP.NETなしで提供しようというアイディアである。 これらのゴールは、「Webサーバーの高密度化」「Webホストの模倣よりも自己ホストの模倣」「Webアプリケーションのデプロイ摩擦の減少」を提供することであると、ASP.NETのセキュリティエンジニアである<a href="http://social.msdn.microsoft.com/profile/levibroderick/">Levi Broderick氏は言う</a>。しかし「それらは既存のアプリケーションの100%互換を提供しようとしていません。具体的にはHeliosプロジェクトは、.aspxや.ashxエンドポイントなどのASP.NETイズムはサポートしていません」</p> 
+  <p>開発については、Heliosは次の基本要件がある: Windows 8かWindows Server 2012、.NET Framework 4.5.1、Visual Studio 2012か2013。Broderick氏は、Windows 7で開発している開発者のために「この要件は将来のプレリリースで」緩和する可能性があると述べた。Heliosアプリケーションは、Windows Azureまたは、Windows Server 2012、.NET Framework 4.5.1と完全信頼を持つ任意のホスティング環境にデプロイすることができる。</p> 
+  <p>パフォーマンスの面で言うと、ASP.NETの“Hello World”アプリケーションと比較して、Heliosは2～3倍以上のスループットを実現しているが、実際のアプリケーションはこれよりもはるかに複雑であるため、2つのWebソリューションの比較のベースとして採用することはできないとBroderick氏は言う。しかしメモリ消費量の面では、<a href="http://blogs.msdn.com/b/webdev/archive/2014/02/18/supplemental-to-asp-net-project-helios.aspx#_On_performance_and">Heliosは、System.Webよりもよい</a>:</p> 
+  <blockquote> 
+   <p>絶対数では、Heliosアーキテクチャは、私たちのサンプルアプリケーションにおいて、標準のASP.NETパイプラインと比較しておよそ1 GB少なく、50,000の同時リクエストを達成しました。サンプルアプリケーションは、最小のベースラインで設計されており、重要なアプリケーションにも同様の絶対値を期待することができます。</p> 
+  </blockquote> 
+  <p>注意: Broderick氏の<a href="http://blogs.msdn.com/b/webdev/rsscomments.aspx?WeblogPostID=10500903">コメント</a>の通り、MicrosoftはまだHeliosにコミットしていない:</p> 
+  <ul>
+   <!--EndFragment-->
   </ul> 
-  <p class="MsoNormal" style="margin-bottom:0.0001pt">詳細については，Rust 0.9の公式な<a href="https://github.com/mozilla/rust/wiki/Doc-detailed-release-notes#09-january-2014">リリースノート</a>を参照してほしい。 この言語についてもっと詳しく学びたい開発者には，オフィシャルな<a href="http://static.rust-lang.org/doc/0.9/tutorial.html">Rust Tutorial</a>以外にもさまざまなリソースがある&nbsp;–&nbsp;バージニア大学の<a href="http://rust-class.org/pages/using-rust-for-an-undergraduate-os-course.html">学部向けOSコース</a>ではRustが教えられている。また，Steve Klabnik氏は “<a href="http://words.steveklabnik.com/a-30-minute-introduction-to-rust">A 30 minute introduction to Rust</a>” というドキュメントを準備中だ。
-   <o:p></o:p></p> 
+  <ul> 
+   <p>
+    <!--EndFragment-->私たちはこの作業をやめて、リリースされない可能性があります。例えば、人々が実際にそれを望んでいなかったとき、チームが解散してしまったとき、よりよい何かが現れたとき、その他私たちが想像つかない多くの理由があり得ます。チームは、これがAzure専用になることには興味がありません。</p> 
+  </ul> 
+  <p>開発者は<a href="https://www.nuget.org/packages/Microsoft.Owin.Host.IIS/">Microsoft.Owin.Host.IIS NuGetパッケージ</a>をインストールした後で、Visual Studioから直接HeliosベースのASP.NETアプリケーションを開発することができる。</p> 
  </div> 
 </div><br><br><br><br><br><br></body></html>

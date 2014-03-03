@@ -1,8 +1,24 @@
 <div class="text_info"> 
- <p><a href="http://community.sharpdevelop.net/forums/t/20270.aspx">SharpDevelop 5 Beta 1</a>がリリースされた。<a href="http://community.sharpdevelop.net/blogs/andreasweizel/archive/2014/01/11/what-s-new-in-class-browser.aspx">クラスブラウザ</a>、<a href="http://community.sharpdevelop.net/blogs/siegfried_pammer/archive/2013/08/18/new-in-sharpdevelop-5-group-search-results-by-project-or-project-and-file.aspx">サーチグルーピング</a>が搭載されており、パーシャル型の<a href="http://community.sharpdevelop.net/blogs/siegfried_pammer/archive/2013/08/18/new-in-sharpdevelop-5-go-to-definition-on-partial-types-improved.aspx">Go To定義</a>が改善されている。また、<a href="http://community.sharpdevelop.net/blogs/siegfried_pammer/archive/2014/01/25/ilspy-debugger-integration-in-sharpdevelop-5.aspx">ILSpy</a>も統合されている。この最新のリリースのクラスブラウザはすべてのプロジェクト、名前空間、型、型メンバの階層構造を見ることができる。型メンバをダブルクリックすればコードエディタが表示され、右クリックではナビゲーションやリファクタリングコマンドを実行できるコンテキストメニューが表示される。</p> 
- <p>もとは2000年に<a href="http://www.icsharpcode.net/OpenSource/SD/Changes.aspx">開発された</a>SharpDevelopだが、今や、外部のどんな.NETアセンブリでも読み込むことができる。ILSpyと同じようにファイルシステムからでもGACからでも読み込める。開発者はダブルクリックした型の逆コンパイルしたコンテンツを見ることができる。</p> 
- <p>SharpDevelop 5以前では、ウィンドウやコントロールの型の名前をCtrl+クリックすることでクラスのXAMLを表示することができた。しかし、最新のリリースでは、移動したいファイルの名前がポップアップで表示される。また、プロジェクトを検索する機能やプロジェクトとファイルをまとめて検索する機能も提供する。また、AddIn Managerのインターフェイスも提供する。これは、IDEの機能をアドインで拡張するのに使える。アドインはNuGetや*.sdaddinパッケージファイルで追加できる。</p> 
- <p>最新のリリースには現在デバッグしているプロセスを表すノードが含まれている。読み込んだモジュールとILSpyのようにメソッドを開いたり、逆コンパイルできる。ソースコードなしでメソッドにステップインできるのだ。開発者はブレイクポイントを設定し、ステップスルーしたり、式を評価したりできる。</p> 
- <p>&quot;私たちは今SharpDevelop 5を開発しています。多くの生産性の改善を行っています。ひとつ興味深いのはSD5はライセンスを変えたことです。SDのコードを別のアプリケーションで利用できるのです。&quot;とSharpDevelopプロジェクトのChristoph Wille氏は言う。</p> 
- <p><a href="http://community.sharpdevelop.net/blogs/">SharpDevelop 5</a>にはカーソルを使ったインサート、コンテキストアクション、コードインスペクション、スクロールバー、バックグラウンド構文チェック、リンクモード、変数の自動命名、XMLベースのツールチップなどの機能を搭載している。さらに、開発者はCtrl+F7で式をウォッチできる。</p> 
+ <p>Microsoftは、IISの上で実行される軽量の<a href="http://owin.org/spec/owin-1.0.0.html">OWIN</a>をベースにしたWebホストであるHeliosと呼ばれるプロジェクトをリリースした。</p> 
+ <p>Heliosは、<a href="http://www.asp.net/aspnet/overview/owin-and-katana/an-overview-of-project-katana">昨年の夏にMicrosoftによって発表された</a>別のプロジェクト<a href="http://katanaproject.codeplex.com/">Katana</a>のステップに続いている。これは、インストールして、使用して、分離して管理できるよりも、いくつかの独立した小さなコンポーネントを提供することで、.NET Web開発者がASP.NET/IISモノリスを避けて、OWIN仕様を実装したWebホストで実行することができる。</p> 
+ <p>ASP.NETの問題のひとつは、.NET Frameworkに含まれているため、数年かかるメジャーバージョンアップのリリースサイクルに紐付いており、特定のテストとバグフィックスのプロセスに影響を受けることである。より機敏に、反応よくWebツールを開発するために、ASP.NETチームはSystem.Web.dllに依存しない、はるかに早い開発サイクルで、迅速に修正を適用できる、いくつかのより小さなコンポーネント (ASP.NET MVC、 ASP.NET Web API) を開発した。それだけでなく開発者はカスタムOWIN上または、OWINのリファレンス実装であるKatana上にホストされたWebアプリケーションをデプロイすることができる。</p> 
+ <p>Heliosは、Microsoftの本格的なWebサーバーではなく、IIS上で動作するWebランタイムである。<a href="http://weblog.west-wind.com/posts/2013/Nov/23/Checking-out-the-Helios-IIS-Owin-Web-Server-Host">Rick Strahl氏は以下のように説明する</a>:</p> 
+ <blockquote> 
+  <p>Heliosは、OWINベースのインターフェイスとコンテキスト セマンティクスをベースに提供するために、System.Webを使わず、直接IISのネイティブ・インターフェイスをフックしています。これは、既存のASP.NET実行環境とは完全に切り離されており、モジュールのパイプラインとデフォルトのASP.NETランタイム プロセスをバイパスして実行されます。… Heliosは、非常に軽量で、生のIIS上で起動するWebホストのショートサーキットされたバージョンです。IISとASP.NETは密接に紐付いていますが、IISコアはかなり軽量で、完全にネイティブコードで実行されることを覚えておいてください。ASP.NETモジュールやハンドラーがインストールされている場合、ASP.NETは相互作用のみがキックされ、それらはネイティブコードとネイティブモジュールのみの場合と比べて遅くなります。</p> 
+ </blockquote> 
+ <p>Heliosの背景は、IISが提供している成熟していて、豊富な環境を、従来のASP.NETなしで提供しようというアイディアである。 これらのゴールは、「Webサーバーの高密度化」「Webホストの模倣よりも自己ホストの模倣」「Webアプリケーションのデプロイ摩擦の減少」を提供することであると、ASP.NETのセキュリティエンジニアである<a href="http://social.msdn.microsoft.com/profile/levibroderick/">Levi Broderick氏は言う</a>。しかし「それらは既存のアプリケーションの100%互換を提供しようとしていません。具体的にはHeliosプロジェクトは、.aspxや.ashxエンドポイントなどのASP.NETイズムはサポートしていません」</p> 
+ <p>開発については、Heliosは次の基本要件がある: Windows 8かWindows Server 2012、.NET Framework 4.5.1、Visual Studio 2012か2013。Broderick氏は、Windows 7で開発している開発者のために「この要件は将来のプレリリースで」緩和する可能性があると述べた。Heliosアプリケーションは、Windows Azureまたは、Windows Server 2012、.NET Framework 4.5.1と完全信頼を持つ任意のホスティング環境にデプロイすることができる。</p> 
+ <p>パフォーマンスの面で言うと、ASP.NETの“Hello World”アプリケーションと比較して、Heliosは2～3倍以上のスループットを実現しているが、実際のアプリケーションはこれよりもはるかに複雑であるため、2つのWebソリューションの比較のベースとして採用することはできないとBroderick氏は言う。しかしメモリ消費量の面では、<a href="http://blogs.msdn.com/b/webdev/archive/2014/02/18/supplemental-to-asp-net-project-helios.aspx#_On_performance_and">Heliosは、System.Webよりもよい</a>:</p> 
+ <blockquote> 
+  <p>絶対数では、Heliosアーキテクチャは、私たちのサンプルアプリケーションにおいて、標準のASP.NETパイプラインと比較しておよそ1 GB少なく、50,000の同時リクエストを達成しました。サンプルアプリケーションは、最小のベースラインで設計されており、重要なアプリケーションにも同様の絶対値を期待することができます。</p> 
+ </blockquote> 
+ <p>注意: Broderick氏の<a href="http://blogs.msdn.com/b/webdev/rsscomments.aspx?WeblogPostID=10500903">コメント</a>の通り、MicrosoftはまだHeliosにコミットしていない:</p> 
+ <ul>
+  <!--EndFragment-->
+ </ul> 
+ <ul> 
+  <p>
+   <!--EndFragment-->私たちはこの作業をやめて、リリースされない可能性があります。例えば、人々が実際にそれを望んでいなかったとき、チームが解散してしまったとき、よりよい何かが現れたとき、その他私たちが想像つかない多くの理由があり得ます。チームは、これがAzure専用になることには興味がありません。</p> 
+ </ul> 
+ <p>開発者は<a href="https://www.nuget.org/packages/Microsoft.Owin.Host.IIS/">Microsoft.Owin.Host.IIS NuGetパッケージ</a>をインストールした後で、Visual Studioから直接HeliosベースのASP.NETアプリケーションを開発することができる。</p> 
 </div>
