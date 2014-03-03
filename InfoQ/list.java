@@ -1,6 +1,9 @@
 <html>
  <head></head> 
- <body> 
+ <body>
+  <div>
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/38.java">Amazon Chooses HAL Media Type for AppStream API</a>Amazon has released a new API, the AppStream API, which allows you to programmatically manage apps hosted on the Amazon AppStream platform. For this API, they chose to build it with the HAL media type. HAL is a minimalist hypermedia enabled media type for building machine-to-machine APIs. Amazon is one of the largest organizations to choose hypermedia as a technique for a public-facing product.
+  </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/37.java">Finding the Best-fit for Lean Startup Methodology</a>Raf Gemmail surveys recent commentary and presentations on the successes and failures of lean-startup methodology within both startups and big enterprise. 
   </div> 
@@ -147,9 +150,6 @@
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/43.java">DevOps Cafe Podcast on the QCon London 2014 DevOps Track</a>Last DevOps Cafe Podcast (Episode 47) previewed the QCon London 2014 DevOps track. Manuel Pais and Shane Hastie, the track hosts, explained the rationale behind the track's session selection, the speakers introduced their talks and there was still time to discuss other topics, such as the importance of the scientific method and how agile's definition of &quot;done&quot; must be adapted in a DevOps world. 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/42.java">Improved Object Inspection with Visual Studio 2013 Update 2</a>Visual Studio 2013 Update 2 includes an enhanced object inspection which enable developers to inspect values of objects and instances quickly and in an effective way. 
-  </div> 
+  </div>  
  </body>
 </html>

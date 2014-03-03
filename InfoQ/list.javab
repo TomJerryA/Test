@@ -1,6 +1,9 @@
 <html>
  <head></head> 
- <body> 
+ <body>
+  <div>
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/30.javab">Interview with Andy Piper on the Eclipse Paho project and the Internet of Things</a> MQTT provides the communications link for low-power systems. InfoQ caught up with Andy Piper, lead of the Eclipse Paho project, to find out more about the history of MQTT and why it is being used by internet scale companies such as Facebook. 
+  </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/29.javab">Kanban at Scale – A Siemens Success Story</a> This article shows an internally driven and remarkably smooth Kanban implementation approach which very quickly rewarded Siemens Health Services (HS) with real and sustainable improvements in predictability, efficiency and quality. It demonstrates the benefits of “flow” and its advantages in terms of actionable metrics and forecasting capabilities based on real data captured from recent releases. 
   </div> 
@@ -147,9 +150,6 @@
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/32.javab">Visualizing Java Garbage Collection</a> Garbage Collection, like Backgammon takes minutes to learn and a lifetime to master. In this article Master trainer/consultant Ben Evans summarizes his recent InfoQ presentation &quot;Visualizing Garbage Collection&quot; where he discusses Garbage Collection from the ground up. 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/31.javab">Book Review and Author Q&amp;A - Explore It! by Elisabeth Hendrickson</a> Elisabeth Hendrickson has released a book on the practices, techniques and mindset of exploratory testing. Sharon Robson reviewed the book and raised some questions with the author. 
-  </div> 
+  </div>  
  </body>
 </html>

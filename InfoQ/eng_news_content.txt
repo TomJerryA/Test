@@ -1,51 +1,27 @@
-<p>Last December at the 2013 Lean Startup Conference, Eric Ries, author of The Lean Startup and founder of the Lean Startup movement, recently show-cased his successes with representatives from General Electric on what he describes as the “largest implementation of Lean Startup we have on the planet.” The Lean Startup methodology has rapidly matured beyond its original target of new startups and recent commentary from Ries and others has investigated its suitability in the enterprise. In contrast, Nick Metha, CEO with Big Data startup GainSight, has been one of several recent voices questioning whether Lean Startup is always best for all startups.</p>
-<p>Ries revealed that General Electric are about to release their first MVP of 100 products developed using the Lean Startup methodology. General Electric’s sponsor for the introduction of Lean Startup, Steve Liguori explained the driver for adopting lean practices within such a large corporation:</p>
-<blockquote>
-  For as innovative as we want to be, as lean as we want to be, as entrepreneurial as we want to be, there are just certain things that come with scale, that if you don’t pay attention to them and rethink and redo them, they get in the way of what you love to do. That’s what brought us to the idea of Lean Startup. 
+<p>Amazon has released a new API, the AppStream API, which allows you to programmatically manage applications hosted on the Amazon AppStream platform. For this API, they chose to build it with the HAL media type. HAL is a minimalistic hypermedia enabled media type for building machine-to-machine APIs. Amazon is one of the largest organizations to choose hypermedia as a technique for a public-facing product.</p>
+<p>While hypermedia APIs are a hot topic in the API space, advocates are often asked about its real-world applicability. While there has been an explosion of research and debate on the technique, hypermedia APIs make up a small fraction of the current API ecosystem. Amazon's CEO, Jeff Bezos, famously required his teams to build products in an SOA style, leading to a large number of internal and external APIs. This vote of confidence in hypermedia via HAL from one of tech's biggest companies should hearten hypermedia enthusiasts.</p>
+<p>One question that the hypermedia community is currently grappling with is documentation. The traditional answer to documenting hypermedia services consists of providing a media type definition and nothing more. This approach is significantly different than other architectural styles, and so the community has been working on other strategies to assist bridging this gap.</p>
+<p>The AppStream API team chose to document the API in four major sections: header values, error codes, top-level resources, and link relations. This is very different from more traditional RESTful services, which focus on combinations of HTTP status codes, URLs, and parameters. This approach is very close to the traditional hypermedia approach. On the HAL-discuss mailing list, a place for HAL users to talk about the specification and its uses, Andr&eacute;s Freyr&iacute;a Cede&ntilde;o said this:</p>
+<blockquote> 
+ <p>My gut reaction to the docs were along the lines of &quot;this would be sufficient documentation if hypermedia APIs were the norm&quot;. Given the current state of art though, I don't think there are enough ancillary resources for developers to work with.</p> 
 </blockquote>
-<p>Ries recently participated in a live Q&amp;A, together with Brant Cooper and Patrick Vlaskovits, authors of Lean Entrepreneur, on the topic of “Bringing Lean to Established Companies.” The message of the Q&amp;A was that the Lean Startup methodology is increasingly being used in the enterprise, often adopted by already Agile teams to increase their responsiveness and to formalise learning. They talk about scenarios where Lean Startup methods have worked in a corporate environment and indicate that the real corporate challenge is the creation of autonomous small teams, with the startup-like freedoms, able to go through a build-measure-learn cycle.</p>
-<p>In a contrasting vein, Metha writes that by following tight build-measure-learn cycles, startups which have an established product-market fit may be forfeiting economies of scale which can help them maximise their initial penetration and impact into the market. He writes that the lean approach is “great for startups that haven’t achieved product-market fit or for startups that are targeting markets that they believe to be small.” He writes that there are a lot companies which are in a position to benefit from scaling up, but are not doing so:</p>
-<blockquote>
-  I meet a number of growing companies these days that feel like they’re too lean. These are companies with awesome products, large markets and access to capital. It feels like some of them opt out of bulking up for the wrong reasons
- <br type="_moz" /> 
-</blockquote>
-<p>Metha gives five areas where startups may benefit from fattening up beyond their minimal viable product, which may be summarised as:</p>
-<ol> 
- <li>“Feeding your marketing” - Investment in marketing.</li> 
- <li>“Feeding your sales” - Investment in sales.</li> 
- <li>“Starving your competition” - Scaling market-share to rapidly distance yourself from new competitors.</li> 
- <li>“Feeding your recruitment” - Visible investments attract talent.</li> 
- <li>“Feeding your team and yourself“ - Investment in salaries supports staff-retention.</li> 
-</ol>
-<p>Lyle McKeany, a former major label recording artist currently working on an early-stage startup, recently shared his experience of attending a Lean Startup Machine (LSM) event in San Francisco. McKeany observes that many of the start-ups he encountered had not started out using lean ideation principles where one should “identify a problem, test your riskiest assumption with a certain success criterion, talk to potential customers before coming up with a solution.” He points out that that all the startups he encountered had started out with some initial product and then entered into the learning cycle. He noted the following when attending a talk given by LSM founder Trevor Owens :</p>
-<blockquote>
-  All of the examples he (Trevor) provided have one thing in common: not one of them started by using the Lean Startup ideation principles Trevor teaches at LSM. All of them built a potential “solution” right off the bat and some of them raised lots of VC money before they ever made the decision to pivot. Moreover, they all followed the traditional Lean Startup mantra of build-measure-learn, that is build
- <em>first</em> then measure and learn. 
-</blockquote>
-<p> Andreas Klinger, startup commentator and mentor, recently wrote an article entitled “Why Lean Startup sucks for startups.” Andreas argues the case that lean methods are better suited to the already fat enterprise than a startup which is contending to grow beyond its initial roots. He writes that the time spent continuously validating success is time which startups could better utilise for developing their product fit. The alternative proposed by Klinger is that we validate as little as possible and against a finite set of failure criteria. His argument is that it is less costly for a startup to validate against NOT satisfying some exhaustive subset of failure criteria than over-measure all aspects of what might be interpreted as success. Klinger points out that one can collect excessive information which is hard to fairly base decisions on, stating:</p>
-<blockquote>
-  In reality your own subjective bias combined with very noisy information will make it impossible to get to the information quality you hope for. 
-</blockquote>
-<p>In her predictions for 2014 on Pollenizer.com, Bronwen Clune, Guardian journalist and director of The Blogging Co, recently anticipated a rise in utilisation of Lean Startup methods within the enterprise. Clune writes that large corporations are starting to recognise that the combination of Agile and lean-startup methods can contribute to making their organisations more responsive and less inclined to the slow-cycles which they have typically been used to. She writes:</p>
-<blockquote>
-  Lean thinking is infiltrating corporate worlds much like agile did years before that. Driving the corporate lust for lean is the need for innovation, as a result of legacy companies being left behind or disrupted by smaller, agile ones. 
-</blockquote>
-<p>Clune also reports that Microsoft is now actively trying to “install some of the smaller company culture into its head quarters,” and that they have partnered with Lean Startup Machine to increase the breadth of startups exposed to Lean-methods.</p>
-<p>One of the other points raised by Metha is the danger that startups with an established product may underinvest in marketing and not maximise their initial penetration and impact on the market. He writes:</p>
-<blockquote>
-  .. marketing money, when spent well, can produce a huge return on your investment. PR can make you more attractive to investors and employees. Well-executed branding and events can help differentiate you from your competition 
-</blockquote>
-<p>Clune addresses such concerns about marketing, predicting increased prominence of “growth hacking” in 2014. As Clune explains, “growth hacking” is the term given to a new form of learning-driven marketing which “is creative marketing that utilises analytical thinking, and social metrics to sell products and gain exposure.” Clune describes it as a “category of marketing activities that have a direct attributable impact on growth.” She elaborates on how marketing can become an incremental part of the product development cycle:</p>
-<blockquote>
-  It doesn’t treat marketing as a separate entity to the product being created but makes it part of the process from day one. It’s an integral part of the product. 
-</blockquote>
-<p>Klinger's article, when questioning whether the Lean practices are suited to all startups, discusses his view that they work best within the already fat enterprise. Klinger writes that it is wrong, and “cargo cult,” to apply the same methodology to both small and large organisations. He states that lean methods work best within the enterprise and in education where one can afford the cost of being more analytical. Klinger also writes that “Lean Startup can help enterprise remove mid-level management decisions,” making projects more streamlined and learning focussed:</p>
-<blockquote>
-  The moment someone outside of a project needs to touch or decide upon a project either quality or speed goes down. Lean Startup provides a framework where (in a utopian) company, opinions and politics can be reduced through data aggregation and validation to the point that they are no longer relevant. 
-</blockquote>
-<p>Ries, Cooper and Vlaskovits have a slightly different message. In their Q&amp;A they discuss having seen Lean Methods work in many startups and point out that the emergence of Lean Startup Methods in the enterprise is down to the same “early adopters” who have seen the success of Lean Startup and already happen to be in the enterprise. It is the success of the iterative and learning based Lean Startup methodology outside of the enterprise which has led to its rise within.</p>
-<p>Klinger’s article suggests that we can adapt the cost and form of our build-measure-learn cycle to fit our current state. Metha reminds us to consider where it’s worth scaling faster to benefit from economies of scale. As Clune’s predictions summarise, we will continue to find examples of where Lean Startup does and doesn’t work:</p>
-<blockquote>
-  As more and varied industries and companies try out lean startup practices, there are going to be increasing instances where it doesn’t work, be that because of culture, product or, well, there is no bottom-line benefit after its been tried and tested. … It might not work for everyone, and that’s ok. 
-</blockquote>
-<p>&nbsp;</p>
+<p>We'll see how this trend continues as hypermedia becomes a more established API pattern.</p>
+<p>HAL is a media type currently undergoing standardization by the IETF. Originally authored by Mike Kelly, HAL is focused on providing a simple, easy to understand set of conventions to XML and JSON for resources to link to one another.</p>
+<p>Here's a sample HAL response, from the draft:</p>
+<pre>
+{
+     &quot;_links&quot;: {
+       &quot;self&quot;: { &quot;href&quot;: &quot;/orders/523&quot; },
+       &quot;warehouse&quot;: { &quot;href&quot;: &quot;/warehouse/56&quot; },
+       &quot;invoice&quot;: { &quot;href&quot;: &quot;/invoices/873&quot; }
+     },
+     &quot;currency&quot;: &quot;USD&quot;,
+     &quot;status&quot;: &quot;shipped&quot;,
+     &quot;total&quot;: 10.20
+   }
+</pre>
+<p>HAL defines two reserved top-level properties, </p>
+<pre>_links</pre>
+<pre>_embedded</pre>
+<pre>_links</pre>
+<p></p>

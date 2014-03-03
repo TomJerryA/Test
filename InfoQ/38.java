@@ -1,27 +1,27 @@
-<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>CoffeeScript 1.7 Released: Adds Chaining Without Parenthesis, Multiline Strings and More</h3><p>Jeremy Ashkenas has released <a href="https://gist.github.com/aseemk/8637896">version 1.7 of CoffeeScript</a>, and with it introduced some highly anticipated changes to the popular JavaScript transpiler.</p>
-<p>Version 1.7 includes one of the most popular requests for the language; support for chaining without parenthesis. Prior to the 1.7 releases, if a developer wanted to chain functions, they had to use parenthesis, which are not required for functions in CoffeeScript.</p>
-<pre><p>// prior to 1.7 - parenthesis required to chain<br />$('#element').addClass('active').css({ left: 5 });</p>
-<p>// as of 1.7 - no parenthesis<br />$ '#element'<br />.addClass 'active'<br />.css { left: 5 }</p></pre>
-<p>This release also introduces proper support for multiline strings. In previous versions of CoffeeScript, herestrings (or string literals) while intended to preserve new lines and whitespace, would ignore the `\` operator which is meant to designate that two strings should be preserved on the same line. As of 1.7, this is fixed, allowing the developer to cleanly format multiline strings in CoffeeScript.</p>
-<pre><p>console.log '''The quick brown fox jumped over the \<br />lazy dog'''</p>
-<p>// prior to 1.7 outputs<br />The quick brown fox jumped \nover the lazy dog</p>
-<p>// as of 1.7 now outputs<br />The quick brown fox jumped over the lazy dog</p></pre>
-<p>Expansion has also been added to array destructuring, which had previously been the <a href="https://github.com/jashkenas/coffee-script/pull/3268">longest open issue</a> on the CoffeScript repo.</p>
-<pre><p># get the last item in the animals array<br />animals = [ 'cat', 'dog', 'hippopotamus' ]</p>
-<p># prior to 1.7<br />hippo = animals[animal.length - 1]</p>
-<p># as of 1.7<br />[..., hippo] = animals</p>
-<p># ...both of which transpile to...<br />hippo = animals[animals.length - 1];</p></pre>
-<p>New convenient mathematical operators are present as well in the addition. There is the new power operator, floor division, and a modulo operator (returns the remainder of a division operation).</p>
-<pre><p># power<br />2 ** 2<br /># transpiles to...<br />Math.pow(2, 2);</p>
-<p># floor division<br />2 // 3<br />#transpiles to...<br />Math.floor(2 / 3)</p>
-<p># modulo<br />2 %% 3<br />#transpiles to...<br />var __modulo = function(a, b) { return (a % b + +b) % b; };<br />__modulo(2, 1);</p></pre>
-<p>Other enhancements include bringing CoffeeScript in line with Node.js so that its require statement doesn't automatically run every file in a directory, but behaves like Node and only runs the index.coffee file.</p>
-<p>The majority of the work on the 1.7 release (and in fact most of CoffeeScript for the past few years) is done by members of the community. &quot;There are over 100 developers who have contributed to and had patches merged into CoffeeScript&quot; said Jeremy. &quot;Whatever adoption CoffeeScript has enjoyed has happened because the idea appeals to JavaScript programmers.&quot; In regards to work on the 1.7 release, Jeremy sent <a href="https://twitter.com/jashkenas/status/428243869487362048">special thanks</a> to <a href="https://github.com/xixixao">Michael Srb</a> for his contributions.</p>
-<p>CoffeeScript has indeed enjoyed immense popularity, peaking at one point as the <a href="http://en.wikipedia.org/wiki/CoffeeScript">10<sup>th</sup> most popular project on GitHub</a>. It's also seen support in frameworks such as Ruby on Rails (since version 3.1), and is supported in Microsoft's Visual Studio via the <a href="http://vswebessentials.com/">Web Essentials plugin</a>. Additionally JavaScript creator <a href="http://en.wikipedia.org/wiki/Brendan_Eich">Brenden Eich</a> has expressed how CoffeeScript influenced his thoughts on <a href="https://brendaneich.com/tag/javascript-ecmascript-harmony-coffeescript/">the future of JavaScript</a>.</p>
-<p>GitHub user <a href="https://gist.github.com/stefanpenner">stefanpenner</a> noted that in CoffeeScript “…ES6 import export would be killer…”</p>
-<p>Jeremy does address ES6 features in CoffeeScript saying,</p>
+<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>Amazon Chooses HAL Media Type for AppStream API</h3><p>Amazon has released a new API, the <a href="http://docs.aws.amazon.com/appstream/latest/developerguide/rest-api.html#rest-api-hal">AppStream API</a>, which allows you to programmatically manage applications hosted on the Amazon AppStream platform. For this API, they chose to build it with <a href="http://tools.ietf.org/html/draft-kelly-json-hal-06">the HAL media type</a>. HAL is a minimalistic hypermedia enabled media type for building machine-to-machine APIs. Amazon is one of the largest organizations to choose hypermedia as a technique for a public-facing product.</p>
+<p>While hypermedia APIs are a hot topic in the API space, advocates are often asked about its real-world applicability. While there has been an explosion of research and debate on the technique, hypermedia APIs make up a small fraction of the current API ecosystem. Amazon's CEO, Jeff Bezos, famously required his teams to build products in an SOA style, leading to a large number of internal and external APIs. This vote of confidence in hypermedia via HAL from one of tech's biggest companies should hearten hypermedia enthusiasts.</p>
+<p>One question that the hypermedia community is currently grappling with is documentation. The traditional answer to documenting hypermedia services consists of providing a media type definition and nothing more. This approach is significantly different than other architectural styles, and so the community has been working on other strategies to assist bridging this gap.</p>
+<p>The AppStream API team chose to document the API in four major sections: header values, error codes, top-level resources, and link relations. This is very different from more traditional RESTful services, which focus on combinations of HTTP status codes, URLs, and parameters. This approach is very close to the traditional hypermedia approach. <a href="https://groups.google.com/forum/#!msg/hal-discuss/3IyTn17m7Ps/AeBpQXadn8gJ">On the HAL-discuss mailing list</a>, a place for HAL users to talk about the specification and its uses, Andr&eacute;s Freyr&iacute;a Cede&ntilde;o said this:</p>
 <blockquote> 
- <p>CoffeeScript is mostly finished — has been quite stable for a couple of years now — but will continue to grow in small ways in the future. Some examples are: support for new JavaScript features as they land, further improved source map support, more polish for the literate programming style and more streamlining for the internals of the compiler.</p> 
+ <p>My gut reaction to the docs were along the lines of &quot;this would be sufficient documentation if hypermedia APIs were the norm&quot;. Given the current state of art though, I don't think there are enough ancillary resources for developers to work with.</p> 
 </blockquote>
-<p>At one point there, was a <a href="https://www.kickstarter.com/projects/michaelficarra/make-a-better-coffeescript-compiler">Kickstarter project</a> to re-write the CoffeeScript compiler. The project has since been successfully funded and is dubbed <a href="http://github.com/michaelficarra/CoffeeScriptRedux">CoffeeScriptRedux</a>. Jeremy sees the creation of new compilers as a benefit for CoffeeScript saying, &quot; The more compilers that successfully target a given language — the healthier that language is. It's to CoffeeScript's benefit to have multiple independent compilers.&quot;</p>
-<p>The 1.7 release is available immediately via <a href="https://github.com/jashkenas/coffee-script">GitHub</a>, or the <a href="http://coffeescript.org/">official CoffeeScript site</a>.</p><br><br><br><br><br><br></body></html>
+<p>We'll see how this trend continues as hypermedia becomes a more established API pattern.</p>
+<p>HAL is a media type currently undergoing standardization by the IETF. Originally authored by Mike Kelly, HAL is focused on providing a simple, easy to understand set of conventions to XML and JSON for resources to link to one another.</p>
+<p>Here's a sample HAL response, from the draft:</p>
+<pre>
+{
+     &quot;_links&quot;: {
+       &quot;self&quot;: { &quot;href&quot;: &quot;/orders/523&quot; },
+       &quot;warehouse&quot;: { &quot;href&quot;: &quot;/warehouse/56&quot; },
+       &quot;invoice&quot;: { &quot;href&quot;: &quot;/invoices/873&quot; }
+     },
+     &quot;currency&quot;: &quot;USD&quot;,
+     &quot;status&quot;: &quot;shipped&quot;,
+     &quot;total&quot;: 10.20
+   }
+</pre>
+<p>HAL defines two reserved top-level properties, </p>
+<pre>_links</pre>
+<pre>_embedded</pre>
+<pre>_links</pre>
+<p></p><br><br><br><br><br><br></body></html>

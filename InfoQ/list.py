@@ -1,11 +1,11 @@
 <html>
  <head></head> 
- <body>
-  <div>
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/41.py">Project Helios: IIS上のASP.NET OWINベースのWebホスト ランタイム</a>Microsoftは、Heliosと呼ばれるIIS上で実行される軽量なOWINベースのWebホストをリリースした。
-  </div>
-  <div>
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/40.py">V8でバックグラウンドコンパイルの挑戦</a>この記事には、ChromeのJavaScriptエンジンV8に最近追加されたバックグラウンドコンパイルの詳細が含まれている。
+ <body> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/41.py">Project Helios: IIS上のASP.NET OWINベースのWebホスト ランタイム</a>Microsoftは、Heliosと呼ばれるIIS上で実行される軽量なOWINベースのWebホストをリリースした。 
+  </div> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/40.py">V8でバックグラウンドコンパイルの挑戦</a>この記事には、ChromeのJavaScriptエンジンV8に最近追加されたバックグラウンドコンパイルの詳細が含まれている。 
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/39.py">SharpDevelop 5リリース</a>SharpDevelop 5がリリースされた。クラスブラウザ、サーチグルーピングが搭載されており、パーシャル型のGo To定義が改善されている。また、ILSpyも統合されている。また、カーソルを使ったインサート、コンテキストアクション、コードインスペクション、スクロールバー、バックグラウンド構文チェック、リンクモード、変数の自動命名、XMLベースのツールチップなどの機能を搭載している。 
@@ -150,6 +150,6 @@
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/47.py">Googleが新開発のCloud Storage ConnectorでHadoopパフォーマンスを改善</a>新たに開発されたコネクタを使えば，従来の分散ファイルシステムに代えて，Google Cloud Storage上でHadoopを直接実行することが可能になる。これによってストレージコスト低減とデータプリケーション動作の削減，プロセス全体の簡略化が実現できる。 
-  </div>   
+  </div> 
  </body>
 </html>

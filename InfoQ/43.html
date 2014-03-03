@@ -1,12 +1,34 @@
-<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>Presto即服务：AWS上的交互式SQL查询</h3><p>作为<a href="https://www.facebook.com">Facebook</a>公司的一项可用作在PB级规模的数据上执行交互式SQL查询的技术，<a href="http://prestodb.io/">Presto</a>现在已经迈出了步入主流应用的第一步。大数据创业公司<a href="http://www.qubole.com/">Qubole</a>日前发布了与<a href="http://aws.amazon.com/redshift/">Amazon Web Services</a>集成的<a href="http://info.qubole.com/presto-alpha-program">Presto即服务alpha版本</a>。</p>
-<p>这套新系统与目前已经集成的Hadoop、Hive以及Pig，都属于Qubole公司不断发展壮大的平台<a href="http://www.qubole.com/features/">Qubole Data Service</a>（QDS）中的一部分。由于Presto原生集成了Hive、Hbase和关系型数据库，因此它的这种特性使得它非常适合这类管理服务。作为Qubole公司的联合创始人，<a href="https://twitter.com/ashishthusoo">Ashish Thusoo</a>和<a href="https://twitter.com/jsensarma">Joydeep Sen Sarma</a>曾创建了Hive，并且把HBase带到了Facebook，因此对于他们来说，这一步看起来顺理成章。这项服务的一个主要用例就是通过查询Hive表以取得存储在S3上的数据，这样一来QDS的用户就可以很方便地基于这些表执行查询操作了。Qubole目前的服务都是以AWS为中心构建的，原因正如Ashish所说，“这是由我们目前的需求决定的”。Qubole将自己定位为昂贵的数据仓库系统的替代品，就像Qubole的工程副总裁Shrikanth Shankar所说，“对于那些之前依赖昂贵的商业技术进行快速分析工作的用户来说，Presto将为他们带来巨大的价值。”</p>
-<p>在大数据领域内，Presto实际上是一项相对较新的技术。Facebook的这个项目开始于2012年秋，并在<a href="http://gigaom.com/2013/06/06/facebook-unveils-presto-engine-for-querying-250-pb-data-warehouse/">2013年上半年</a>正式上线，最终在<a href="https://www.facebook.com/notes/facebook-engineering/presto-interacting-with-petabytes-of-data-at-facebook/10151786197628920">2013年11月完全开源</a>。Presto背后所使用的执行模式与Hive有根本的不同，它没有使用MapReduce，这一点与其他SQL查询引擎（例如<a href="http://www.cloudera.com/content/cloudera/en/home.html">Cloudera</a>的<a href="http://www.cloudera.com/content/cloudera/en/products-and-services/cdh/impala.html">Impala</a>和<a href="http://www.berkeley.edu/">UC Berkeley</a>的<a href="https://github.com/amplab/shark">Shark</a>）很像。其中的关键是所有的处理都在内存中完成，正如Ashish所说，“Presto更适合运行在配有更大内存的实例上。”这也是为什么Presto能够获得比Hive低几个数量级延迟的主要原因之一。但是由于<a href="http://hortonworks.com/labs/stinger/">Stinger项目</a>给Hive 12带来的性能改善，因此Presto与Hive 12间孰优孰劣目前尚且不明，正如Ashish所描述的一样：</p>
+<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>姜小凡：物理世界的数据越来越有价值</h3><p>进入二月下旬，北京迎来一轮漫长的雾霾天气，京东上许多空气净化器脱销，淘宝上3M口罩涨价不少，微博、微信上也流传着各种应对PM2.5的偏方。在未来的日子，我们不得不继续PM2.5问题。2013年，姜小凡和他的团队开发了一款成本200多元的PM2.5检测设备——PAM（便携式个人空气质量监测仪）。PAM最大的特点是成本低。同时，PAM考虑了地理信息、气候因素，并且通过机器学习的方式处理这些数据，建立模型，模型进一步修正数据，保证数据精确性。</p>
+<p>在<a href="http://www.qconbeijing.com/">QCon北京2014</a>大会上，姜小凡将就《PM2.5的大数据分析》为题分享，详解如何将廉价的传感器与云端数据结合实现PM2.5分析的。日前，InfoQ对姜小凡进行了专访，以下为采访内容：</p>
+<p><strong>InfoQ</strong>：姜小凡你好，向InfoQ的读者和QCon的参会者介绍下自己吧。</p>
 <blockquote> 
- <p>Hive肯定也会变得更快。我们已经进行了一些初步的测试，很快就会在博客中公布测试的结果。</p> 
+ <p><strong>姜小凡</strong>：我是Intel物联技术研究院的首席构架师，也是Intel研究院的主任研究员。最早我在伯克利读本科和博士，期间开始接触物联网这个方向，做了一些无线传感器网络和楼宇能源监测及管理的项目。在博士期间我也做了一些能源控制的startup，并也在美国的Google做了一些MIMO通信的研究。毕业之后我加入了微软亚洲研究院，那时候我主要研究移动互联网、室内定位等。2012年底我再次加入了Intel，为什么说我再次加入呢，是因为我本科毕业的时候，在加州那边的英特尔也工作过一段时间。自2012年底到现在，我们对很多领域的技术进行了探讨，并对其中一些进行了深入研究。其中一个项目是利用物联网和大数据手段做空气质量检测，如PM2.5和雾霾。</p> 
 </blockquote>
-<p>就其可扩展性方面来说，应用在Facebook的300PB规模的数据仓库系统中的这一事实充分证明了它的可靠性。另外其他一些公司，例如<a href="https://www.airbnb.com/">AirBnb</a>和<a href="https://www.dropbox.com/">Dropbox</a>，也都开始采用Presto，“在我们的绝大多数用例中，它都比Hive要快一个数量级”，Dropbox的线上分析经理Christopher Gutierrez如是说。</p>
-<p>伴随着Qubole这个新服务的发布，Presto社区将会进一步发展壮大，就连Siva Narayanan这样的Qubole开发者都在<a href="https://groups.google.com/forum/#!topic/presto-users/N9DbKmBSER0">Presto群组</a>中表示他们“打算做Presto王国中的好市民，并且期待着为Presto项目的主干贡献补丁和功能”。凭借着<a href="https://github.com/facebook/presto">GitHub上超过2000颗星和350次的分支</a>，Presto项目已经变得比其他类似的并且更早的开源项目（例如<a href="https://github.com/cloudera/impala">Impala</a>）更为流行。</p>
-<p><strong>查看英文原文：</strong><a href="http://www.infoq.com/news/2014/01/presto-aws-qubole">Presto即服务：AWS上的交互式SQL查询</a></p>
-<hr />
-<p>感谢<a href="http://www.infoq.com/cn/author/梅雪松">梅雪松</a>对本文的审校。</p>
-<p>给InfoQ中文站投稿或者参与内容翻译工作，请邮件至<a href="mailto:editors@cn.infoq.com">editors@cn.infoq.com</a>。也欢迎大家通过新浪微博（<a href="http://www.weibo.com/infoqchina">@InfoQ</a>）或者腾讯微博（<a href="http://t.qq.com/infoqchina">@InfoQ</a>）关注我们，并与我们的编辑和其他读者朋友交流。</p><br><br><br><br><br><br></body></html>
+<p><strong>InfoQ</strong>：目前你关注的重点是什么？</p>
+<blockquote> 
+ <p><strong>姜小凡</strong>：把物联网技术真正应用到生活中，把技术真正推向市场并解决一些问题，是我们研究院所有人共同的目标，也是我们关注的重点。对于我个人来说，刚刚说的PM2.5和雾霾问题是我目前一个很重要的关注点。现在有各种手段做PM2.5监测，但是这些方式要么非常昂贵，要么很不精确。而我们利用比较廉价的传感器网络能实时的把颗粒物的数据传到云端，同时收集了不同维度的其他数据，包括气象数据，人的位置数据等，将这些数据融合在一起。最后用机器学习的方式处理这些数据，找到他们之间的关系，学习出不同维度数据互相的影响。通过这种方式，在云端做了空气模型，再通过这个模型增加数据的精确性。我认为这是一个非常经典的物联网和大数据的结合的项目，也希望能够向QCon的听众介绍这个项目。</p> 
+ <p>当然我们不仅仅有空气质量方向的研究，我们也做一些可以快速应用的项目，我可以列举几个。如手机验真。现在国内的手机是有很多是仿品，怎么用数据和众包的方式自动检测到手机的真伪？这就涉及到手机硬软件的“指纹”收集，我们在云端建立了一个比较大的数据库，能收集到很多款Android手机的指纹。不同的操作系统，不同的软件版本会生成不同的指纹，通过指纹的方式非常简单的告诉消费者，你买的手机是正品还是仿品。</p> 
+ <p>在室内定位方面，我们和海龙大厦合作，通过无线信号指纹的手段定位。这样，我们知道某个消费者时时的精确位置。基于位置信息，可以给消费者提供一些帮助，比如说室内导航，广告的推送。</p> 
+ <p>此外还有一些其他的项目，包括我们在公交车做了人流的监测和预测，希望解决交通拥堵的问题。基本上我们现在都是比较实际的问题，希望用大数据、云计算的手段去解决这些问题，而不是花更多的钱去买一个更精确的传感器。我认为这是一个正确的方向。</p> 
+</blockquote>
+<p><strong>InfoQ</strong>：海龙大厦室内定位是通过WiFi信号实现的吗？</p>
+<blockquote> 
+ <p><strong>姜小凡</strong>：是通过WiFi，这个技术在学术界已经有不少论文，但我们还没有看到很多真正的商业应用。我们这里要做的，不是去发论文讨论如何实现，或是如何添加一个什么创意来改进，而是真正将WiFi室内定位推进到应用的层面，我们知道任何一个实验室技术和真正实用化相比还有很大差距的，面对的问题也有很大区别。实验室关注的是可行性，可以对很多条件进行限定；但实际上很多条件是不可预知的，实际应用有太多的细节和技术难关需要解决。</p> 
+</blockquote>
+<p><strong>InfoQ</strong>：在过去一年当中，你观察到数据行业有哪些变化？</p>
+<blockquote> 
+ <p><strong>姜小凡</strong>：开始的时候，大家都觉得大数据要像亚马逊、沃尔玛、Google这些公司那样收集了很多信息，然后通过模型或分析找到可利用的信息。很多人把大数据和Hadoop之类的技术划上等号，拿数据量来标榜大数据。而我的看法却不同，我认为大家越来越关注小数据的集合，为什么呢？之前一般直接从互联网提取数据，但是近一两年，看到的是很多物理世界的数据，比如手机里的加速度传感器的数据，GPS数据，PM2.5数据。这些和物理世界相关的数据越来越多，而且越来越有价值。我认为我们会渐渐把大数据的概念扩展，把空间信息、地理位置信息等meta data都加入进去。而我们更关注的不是数据本身，而是数据之间的关系和它们的相互作用。建立数据之间的关系是有难度的，处理起来也更加复杂。如在实时系统中，留给数据分析和反馈至前端的时间也许只有10毫秒，如何利用流处理和系统优化来达到，这是我们需要深入研究的。</p> 
+</blockquote>
+<p><strong>InfoQ</strong>：你怎么理解大数据处理与大数据应用？</p>
+<blockquote> 
+ <p><strong>姜小凡</strong>：大数据处理方面，大家都认为大数据应该在云端做，但我觉得数据的处理应该是分布式的，我指的不仅是数据中心分散计算能力，而是数据应该在最利于处理的地方处理。比如，如果需要把所有数据以原始的状态发送到云端处理，对网络的压力是非常大的。所以我认为大数据处理，可以在例如手表之类的地方处理再发送到云端，比如视频数据会在摄像头内做一些特征提取，然后再把特征发送到云端。</p> 
+ <p>大数据应用有一些经典的例子，比如通过数据分析知道用户在某一时间点喜欢购买的商品，超市可以通过预测来提前订货。在移动应用方面，刚才提到了在海龙大厦的室内定位就是其中之一。</p> 
+</blockquote>
+<p><strong>InfoQ</strong>：您曾经说过，希望把PAM传感器的价格降到两三百元人民币，这个目标还需要多久才能实现？</p>
+<blockquote> 
+ <p><strong>姜小凡</strong>：这个目标在有一定生产量的前提下已经实现了。具体生产量是多少，我们还在进行核算，不过这个量应该不是很大。</p> 
+</blockquote>
+<p><strong>InfoQ</strong>：通过大量廉价的传感器搜集数据是未来实现大数据应用的有效手段吗？这其中的难点在哪儿？</p>
+<blockquote> 
+ <p><strong>姜小凡</strong>：这里的挑战包括数据的可用性，精确性，以及把数据提取到云端的过程耗费的系统资源。以WiFi定位为例，原理上大家都理解，通过收集某一点的3个AP的信号强度，用三角定位实现。但在真实环境，无线信号波动非常大，遮挡物会改变信号强度，信号可能被反射和散射 ，造成信号强度衰减或者增递。物理世界的传感器数据，并没有互联网数据那么干净，需要大量的处理把传感器数据变成可用的数据。</p> 
+</blockquote><br><br><br><br><br><br></body></html>
