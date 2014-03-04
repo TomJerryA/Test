@@ -1,6 +1,9 @@
 <html>
  <head></head> 
- <body> 
+ <body>
+  <div>
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/10.htmlb">HBase优化案例分析：Facebook Messages系统问题与解决方案</a> 该论文首先讲了Facebook的分析方法包括tracing/analysis/simulation，FM系统的架构和文件与数据构成等，接下来开始分析FM系统在性能方面的一些问题，并提出了解决方案。 
+  </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/9.htmlb">PyParallel：Python的一个快速并行版本</a> By combining asynchronous I/O with a shared-nothing architecture, PyParallel research project is able to execute code in a parallel context faster than it can using CPython’s normal interpreter. And it does this without removing the GIL. The secret, no reference counting or garbage collection of any kind. 
   </div> 
@@ -147,9 +150,6 @@
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/14.htmlb">云PCI合规性：检查表</a> 为了免受那些危险的偷窃商业数据和客户身份信息的黑客攻击，支付卡行业数据安全标准（PCI DSS）提出来种种最佳做法。按这12步就可以设置好一个可用于安全支付环境的框架。 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/13.htmlb">关于Cassandra的错误观点</a> 在本文中，作者Jonathan Ellis将会解答在使用Apache Cassandra这个NoSQL数据库时的各种疑惑，包括架构、部署与配置、性能、查询语言（CQL）以及数据库成熟度等等。 
-  </div> 
+  </div>  
  </body>
 </html>
