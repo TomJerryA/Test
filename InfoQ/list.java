@@ -2,7 +2,16 @@
  <head></head> 
  <body>
   <div>
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/41.java">Mike Cohn Suggests Unfinished Work in Sprint Review</a>Mike Cohn explains why sometimes it is worth to present unfinished product backlog items during the sprint review meeting.
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/44.java">Orion 5 Supports More Languages and Can Deploy to Cloud</a>Enhancements in Orion 5 include: syntax highlighting for several languages, content assist for several Node.js libraries and databases, better syntax validation, cloud deployment and others.
+  </div>
+  <div>
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/43.java">The Retr-O-Mat Retrospective Activity Generator: Now Available in Print</a>Random retrospective activity generator &quot;Retr-O-Mat&quot; now available as printed edition, contains 50 activities from various sources.
+  </div>
+  <div>
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/42.java">TypeScript Becomes Full Member of Visual Studio</a>TypeScript becomes a mainline language with the release of VS2013 Update 2 CTP. As TypeScript nears official 1.0 status, several key changes have been made to the language.
+  </div> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/41.java">Mike Cohn Suggests Unfinished Work in Sprint Review</a>Mike Cohn explains why sometimes it is worth to present unfinished product backlog items during the sprint review meeting. 
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/40.java">Apple Rolls Out CarPlay</a>At the Geneva International Motor Show, Apple announced to roll out CarPlay partnering with premium car manufactures. CarPlay fully integrates iOS devices with existing infotainment capabilities of cars. Currently, Apple restricts CarPlay to a few applications like Maps, Phone or Messages. At the moment, there is no public API announced to write CarPlay enabled applications. 
@@ -141,15 +150,6 @@
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/49.java">ActiveReports 8 Adds Maps, HTML5 Viewer, Advanced Barcodes and Windows Azure Support</a>ComponentOne has released ActiveReports 8 with support for maps, RSS14Stacked, RSSLimited and MicroPDF417 barcodes, Windows Azure under both partial and full trust environments in addition to a HTML5 viewer which enables you to build applications optimized for various mobile devices. 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/48.java">Google Wants to Speed Up the Internet with QUIC</a>QUIC (Quick UDP Internet Connections, pronounced 'quick') is a multiplexing transport protocol running over UDP with the main goal to have 0-RTT connectivity overhead. 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/47.java">Interview with WildFly Lead Jason Greene on WildFly 8</a>Red Hat's JBoss division has today announced the availability of WildFly 8, the product formerly know as JBoss Application Server. InfoQ spoke to Jason Greene, WildFly Lead / JBoss EAP Platform Architect at Red Hat's JBoss division to find out more about the new product. 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/46.java">Red Hat's JBoss Team Launch WildFly 8 with full Java EE 7 Support and a New Embeddable Web Server</a>Red Hat's JBoss division has today announced the availability of WildFly 8, the product formerly know as JBoss Application Server. This release fully supports the Java EE 7 specification. WildFly also gains a completely new web server called Undertow, new security features, and a patching system for updates to the running system. 
-  </div>  
+  </div>    
  </body>
 </html>

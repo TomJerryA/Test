@@ -1,8 +1,38 @@
-<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>全球定位系统的二十五年</h3><p>上周五，全球定位系统（GPS）在太空中庆祝了二十五岁生日。第一颗<a href="http://en.wikipedia.org/wiki/GPS_Block_II">Block II</a>卫星于1989年2月14日发射并投入服务，开启了人类历史上导航领域其中一次最重要的变革。</p>
-<p>GPS卫星项目始于1972年，最初是作为一个针对美国军队的需求提供导航服务的研究项目发起，尽管如此，<a href="http://en.wikipedia.org/wiki/GPS_Block_I">Block I</a>的前十颗试验卫星直到1978年才开始发射，并于1985年全部发射完成。在宣布这一过程成功之后，商用Block II卫星在1989年和1990年发射，并分别在1990年至1997年之间和1997年至2004年之间追加发射了<a href="http://en.wikipedia.org/wiki/GPS_Block_IIA">IIA</a>和<a href="http://en.wikipedia.org/wiki/GPS_Block_IIR">IIR</a>卫星。</p>
-<p>至1993年12月，在轨道上运行的GPS卫星已经达到24颗，提供一种标准定位服务（非军事用途），并在两年后提供一种精确定位服务（军事用途）。起初，民用定位服务精度接近几百米之内，不过，在21世纪初，能够提供更高民用精度的额外频率启用，为更精确的交通工具导航装置提供服务。</p>
-<p>GPS导航有一组同步的原子钟，并使用接收到的信号之间的差异来计算范围，从而完成工作。在地球表面定位一个点需要三个信号，不过，准确定位一个位置需要四个或更多的信号。鉴于每颗卫星都不会停留在完全相同的轨道上，一组增量位置会被计算出来，并作为对轨道年鉴的修正发布，后者会以电子的方式传送到接收器，从而提高定位精度以及改进初始定位时间。最有趣的可能是GPS时钟为广义相对论提供了实时测试；如果不是内置的修正考虑了相对论效应，GPS定位<a href="http://www.astronomy.ohio-state.edu/~pogge/Ast162/Unit5/gps.html">每天会偏离超过10公里</a>。</p>
-<p>起初，交通工具导航装置体积很大，安装在像飞机和集装箱船这样的大型资产上，但随着Ariel Technology对其进行了改进，它们可以安装到小一些的交通工具上，如汽车，并最终安装到更小的手持设备上。目前，飞行路线通常在GPS的协助下绘制和导航，结合机场的辅助GPS甚至可以协助飞机完成自主降落。</p>
-<p>地理定位已经成为越来越重要的在线服务，随着各种<a href="http://www.geoiptool.com/">geo-ip</a>工具出现在网上，它甚至被用于进行粗过滤（比如确定是否让<a href="http://bbc.co.uk/iplayer/">BBC的内容</a>流出英国）。甚至<a href="http://diveintohtml5.info/geolocation.html">在HTML5中也有API</a>，假如用户浏览器是在一台可定位的设备上，它就能够访问其位置；但随着广泛使用的一系列WiFi接入点广播位置信息，即使没有GPS装置，通常也可能准确定位到几百米范围内的某个人。向navigator.geolocation.getCurrentPosition()方法传递一个回调函数将返回一个位置坐标，其中包含了浏览器的经度和纬度，以及一个精度估计。</p>
-<p>目前，大部分移动智能手机都带有GPS接收器，只需几秒钟，就可以在几十米范围内准确定位用户位置。再加上车载电子罗盘，用户不仅可以确定距离特定地点有多远，还能够确定朝哪个方向前进能到那里。只要有视野，你在这个星球上的位置就可以快速轻松地识别。</p>
-<p><b>查看英文原文：</b><a href="http://www.infoq.com/news/2014/02/gps-25"><b>Twenty Five Years of GPS</b></a></p><br><br><br><br><br><br></body></html>
+<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>推广幸福指数</h3><p><a href="http://www.scout24.com/Unternehmen.aspx">Immobilien Scout GmbH</a>的高级Scrum大师Frank Schlesinger，在他栖身的组织机构中实践了幸福指数，并且在最近的博客文章<a href="http://7oas7er.wordpress.com/2014/01/16/scaling-the-happiness-index/">推广幸福指数</a>中分享了他的经验。</p>
+<p>在文章中，他提到了如何将幸福指数从团队层面推广到组织机构层面。</p>
+<blockquote> 
+ <p>幸福指数最初用于团队层面，随着时间的推移将团队情绪可视化，并帮助团队和管理层提升他们的幸福感。我们希望将其扩展到我们所有的IT产品开发团队。</p> 
+</blockquote>
+<p>Schlesinger探讨了他们如何实现幸福指数，以及如何将其推广到所有的团队中。他所使用的幸福指数与Jeff Sutherland所提到的相同，而这一概念最早在<a href="http://blog.crisp.se/2010/05/08/henrikkniberg/1273272420000">Crisp</a>中由<a href="http://www.crisp.se/konsulter/henrik-kniberg">Henrik Kniberg</a>引入。</p>
+<p>原版的幸福指数提出了以下问题：</p>
+<ul> 
+ <li>你的名字是？</li> 
+ <li>你有多快乐？（从1-非常不快乐，到5-非常快乐）</li> 
+ <li>当前什么使你感觉最好？</li> 
+ <li>当前什么使你感觉最糟糕？</li> 
+ <li>什么能够增进你的幸福感？</li> 
+</ul>
+<p>Schlesinger在公司层面推进了幸福指数测试。为此，他对原版幸福指数的形式做了一些调整：他让测试匿名进行，并修改了部分问题。</p>
+<p>另一件我们希望与原版的幸福指数不同之处，是一般性的幸福度问题“你有多快乐？”对我们而言，该问题过于通用，因为我们希望了解那些我们或许能够影响的事情。我们从中衍生编制了两个独特的问题：</p>
+<ol> 
+ <li>在自己的团队中，你的快乐程度如何？</li> 
+ <li>就公司而言，你觉得有多快乐？</li> 
+</ol>
+<p>Schlesinger在Google Drive上发布了他的调查，并且每两周从各个团队获得输入。使用收集到的数据，他制作了一幅图表来展现幸福指数方面的提升。第一个问题对于团队主管或敏捷大师的工作质量给出了直接反馈。第二个问题则意在获取对组织机构文化的反馈。</p>
+<p>Schlesinger以季度为单位进行此项调研，并将结果在幸福评审会上与管理层和所有雇员分享。他分享了自己的想法——关于在组织机构内部打造一支专注于敏捷文化的团队方面，他是如何取得成功的。</p>
+<blockquote> 
+ <p>我们总是能够感觉到自己工作在开放、友爱以及协作的公司文化中，这让我们感到快乐。因此对我们来说，也就毫不奇怪这种共有的直觉会体现在数据中……对此我们认为，这体现了我们已经在IT产品开发方面建立起的敏捷工作文化，而且每支团队都专注其中。首先你认同自己的团队，其次你也认同公司。</p> 
+</blockquote>
+<p>Schlesinger用这种方法来扩展IT和销售人员的幸福度，并发现这是一种与高级管理层就团队幸福度（有助于提升公司幸福度）进行沟通的良好途径。他为每个部门分别创建了幸福度的领域。</p>
+<blockquote> 
+ <p>几个月后，销售部门的同事们也在我们的推动下，接纳了幸福指数的实践。这让我们能够找出哪些幸福来源是可以在IT和销售人员之间分享的；以及在相差如此之大的部门之间，需求与观念在哪些方面有所差异。</p> 
+</blockquote>
+<p><a href="http://www.experian.com/marketing-services/marketing-services.html">Experian Marketing Services UK</a>的技术产品管理负责人Corinna Baldauf，将员工幸福指数列为敏捷转型过程中的指标之一。她在博客文章<a href="http://finding-marbles.com/2014/02/11/metrics-i-can-believe-in/">我所信任的指标</a>中提到了使用happinessmetric.com来评估员工的幸福度。</p>
+<blockquote> 
+ <p>员工幸福度，对许多事情来说这似乎都是个先行指标，例如员工加班（啧啧！）和收入。我们可以使用像<a href="https://www.happinessmetric.com/">Happiness Metric</a>这样的工具来进行评估。</p> 
+</blockquote>
+<p><a href="http://gigaom.com/">GigaOM</a>的主管研究员Stowe Boyd在<a href="http://research.gigaom.com/2013/05/tinypulse-is-a-small-and-simple-anonymous-feedback-tool/">博客</a>中提到了TINYPulse——一个匿名反馈工具，由TINYhr公司开发。这套工具整理匿名调查的结果，并展示人们在工作中有多快乐。TINYPulse还要求用户给出一些对他人的赞誉：谁最近帮助了他们或是让他们打起精神。此类反馈可以是匿名或具名的。</p>
+<blockquote> 
+ <p>有了这些惊艳的轻量级工具，我们没有道理不通过评估来了解公司的氛围如何并分享评估结果。</p> 
+</blockquote>
+<p><strong>查看英文原文：</strong><a href="http://www.infoq.com/news/2014/02/scaling-happiness-index">Scaling The Happiness Index</a></p><br><br><br><br><br><br></body></html>
