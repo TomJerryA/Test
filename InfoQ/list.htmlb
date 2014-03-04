@@ -1,6 +1,9 @@
 <html>
  <head></head> 
- <body> 
+ <body>
+  <div>
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/11.htmlb">10大准则令完美的开发/测试实验室成为可能</a> 对企业来说，开发和测试驱动业务的软件所需的时间，往往就像是个无底洞。现在，凭借能够将私有和公有云规范化的新技术，“终极软件开发实验室”不止成为可能而且还具有成本效益。为了实现超敏捷软件开发，这里给出了若干关键准则，用来构建企业DevOps梦寐以求的下一代开发/测试实验室。 
+  </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/10.htmlb">HBase优化案例分析：Facebook Messages系统问题与解决方案</a> 该论文首先讲了Facebook的分析方法包括tracing/analysis/simulation，FM系统的架构和文件与数据构成等，接下来开始分析FM系统在性能方面的一些问题，并提出了解决方案。 
   </div> 
@@ -147,9 +150,6 @@
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/15.htmlb">今日Java——Cay Horstmann访谈</a> 近日InfoQ荣幸邀约Cay Horstmann，就Java最新形势和Cay的新书Java核心技术：卷一&amp;卷二（第九版）进行探讨。 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/14.htmlb">云PCI合规性：检查表</a> 为了免受那些危险的偷窃商业数据和客户身份信息的黑客攻击，支付卡行业数据安全标准（PCI DSS）提出来种种最佳做法。按这12步就可以设置好一个可用于安全支付环境的框架。 
-  </div> 
+  </div>  
  </body>
 </html>
