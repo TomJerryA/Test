@@ -1,7 +1,7 @@
 <html>
  <head></head> 
- <body>
-  <div>
+ <body> 
+  <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/11.htmlb">10大准则令完美的开发/测试实验室成为可能</a> 对企业来说，开发和测试驱动业务的软件所需的时间，往往就像是个无底洞。现在，凭借能够将私有和公有云规范化的新技术，“终极软件开发实验室”不止成为可能而且还具有成本效益。为了实现超敏捷软件开发，这里给出了若干关键准则，用来构建企业DevOps梦寐以求的下一代开发/测试实验室。 
   </div> 
   <div> 
@@ -150,6 +150,6 @@
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/15.htmlb">今日Java——Cay Horstmann访谈</a> 近日InfoQ荣幸邀约Cay Horstmann，就Java最新形势和Cay的新书Java核心技术：卷一&amp;卷二（第九版）进行探讨。 
-  </div>  
+  </div> 
  </body>
 </html>

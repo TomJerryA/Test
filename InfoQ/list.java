@@ -1,6 +1,9 @@
 <html>
  <head></head> 
- <body> 
+ <body>
+  <div>
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/45.java">Big Data Hadoop Solutions, State of Affairs in Q1/2014</a>According to a new Forrest report, Hadoop’s momentum is unstoppable. Its usage in the enterprise is continuously growing due to its ability to offer companies new ways to store, process, analyze, and share big data. The report takes a look at Hadoop vendors and ranks them.
+  </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/44.java">Orion 5 Supports More Languages and Can Deploy to Cloud</a>Enhancements in Orion 5 include: syntax highlighting for several languages, content assist for several Node.js libraries and databases, better syntax validation, cloud deployment and others. 
   </div> 
@@ -147,9 +150,6 @@
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/0.java">Applying Use Cases in Agile: Use Case 2.0, Slicing and Laminating</a>To incrementally develop and deliver products using agile software development, requirements are gathered and organized into a product backlog. A requirement technique that is used in agile software development is use cases. Some techniques to apply use cases for managing product requirements in agile are use case 2.0, slicing and laminating. 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/49.java">ActiveReports 8 Adds Maps, HTML5 Viewer, Advanced Barcodes and Windows Azure Support</a>ComponentOne has released ActiveReports 8 with support for maps, RSS14Stacked, RSSLimited and MicroPDF417 barcodes, Windows Azure under both partial and full trust environments in addition to a HTML5 viewer which enables you to build applications optimized for various mobile devices. 
-  </div> 
+  </div>  
  </body>
 </html>
