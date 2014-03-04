@@ -1,11 +1,18 @@
-<p>At the Geneva International Motor Show, Apple announced to roll out CarPlay partnering with premium car manufactures. CarPlay fully integrates iOS devices with existing infotainment capabilities of cars. Currently, Apple restricts CarPlay to a few applications like Maps, Phone or Messages. At the moment, there is no public API announced to write CarPlay enabled applications.</p>
-<p>Apple already mentioned the tighter integration of iOS devices in cars as part of its World Wide Developer Conference in June 2013. Back then, CarPlay was called &quot;iOS in the Car&quot;. Currently integration of iOS devices usually bases on Bluetooth profiles to stream audio signals to the car's multimedia system or to use an iPhone for hands-free phone calls. With CarPlay, the iOS operating system actually becomes a part of the vehicle's internal systems, so it is possible to display iOS user interfaces on the vehicle's infotainment screen or to use Siri with built-in hands-free functionality. Connection between the car and the phone is established via lightning cable.</p>
-<p>In its effort to make using an iPhone more secure while driving a car, Apple lets some of the iPhone applications directly interact with the car's user interface, so people can stay focused on driving even while using certain iOS functionalities. The user interface is not limited to built-in touch-screens but also includes hardware controls like dials and buttons that are usually used to control the car's infotainment system.</p>
+<p>Mike Cohn, one of the founders of the Scrum Alliance, challenged the agile community about the contents of a sprint review, suggesting that sometimes it is worth to present unfinished product backlog items.</p>
+<p>By definition, the Sprint Review Meeting is the first part of the last day of a sprint, on which the team shows to the customers the product of the last iteration (sprint). For this meeting, the rules are:</p>
 <ul> 
- <li><i>Apple Maps:</i> Maps brings Apple's turn-by-turn navigation including traffic conditions to the car's dashboard. There will even be advanced features like predicting where a user will go to based on current contact and calendar information.</li> 
- <li><i>Phone:</i> Hands-free, voice-controlled phone functionality will be directly delivered by iOS as Siri can be activated by the vehicles voice-control-system.</li> 
- <li><i>Messages:</i> Siri will automatically read messages and can also be used to reply to them.</li> 
- <li><i>Audio:</i> CarPlay lets the car entertainment system access the iPhones music library. Besides, it is possible to use third party audio apps like Spotify.</li> 
+ <li>Review the work that was completed and the planned work that was not completed.</li> 
+ <li>Present the completed work to the stakeholders (a.k.a. &quot;the demo&quot;).</li> 
+ <li>Incomplete work cannot be demonstrated.</li> 
+ <li>Four-hour time limit.</li> 
 </ul>
-<p>Brands like Ferrari, Jaguar and Mercedes-Benz will introduce CarPlay during 2014 in some of their models. Additional manufacturers like BMW, Ford, Toyota and others have also committed on integrating CarPlay in upcoming models.</p>
-<p>According to Apple, CarPlay is part of an iOS 7 update and can be used with all model 5 iPhones. Currently, there is no information whether also other iOS devices like iPads or iPods will be supported. Although there are already third party applications that interface with CarPlay like Spotify or iHeartRadio, it is unclear whether there will be an API that lets developers write in-car applications.</p>
+<p>Cohn starts his post by reinforcing the main rule above - during the demonstration, the team is allowed to show the completed work items of the iteration. By doing this, you assure that the customers will only see the amount of work that is really finished, the one that is compliant with the team's done list.</p>
+<p>Then, he talks about the risks of giving a team the permission to present unfinished backlog items:</p>
+<ul> 
+ <li>False progress of the work really completed.</li> 
+ <li>Customer expectations rises to a higher level, assuming as done (or nearly done) all of the items discussed during the meeting.</li> 
+</ul>
+<p>But, based on the fact that the main objective of this kind of meeting is to obtain feed-back from the stakeholders, he states that sometimes it is worth to show some unfinished work: &quot;For example, you may have everyone you need to comment on whether the visual design of this next item meets everyone's expectations. So go ahead, show that feature and get feedback on it. &quot;</p>
+<p>Cohn's post has had a lot of different answers and feedback. For example, Илья wrote that Cohn is &quot;opening a dangerous box by telling people they're able to show the unDone work...Yes it's hard and you need a certain courage to show what is DONE only&quot;.</p>
+<p>On the other hand, Adam Myhr states that showing unfinished work during Sprint Review Meeting &quot;seems to me that breaking this rule is done to accomplish something other than the intent of the Sprint Review. In my mind that is an opportunity for proper use of Scrum framework&quot;.</p>
+<p>There are several discussions on the unfinished work topic. In a thread at Programmers Stack Exchange, GuyR refers to a much less-common approach: &quot;At the sprint review, the Product Owner, in consultation with the sprint team and stakeholders makes the decision on done-ness&quot;. In this case, the items are presented whether they are finished or not.</p>

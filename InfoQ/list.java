@@ -1,6 +1,9 @@
 <html>
  <head></head> 
- <body> 
+ <body>
+  <div>
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/41.java">Mike Cohn Suggests Unfinished Work in Sprint Review</a>Mike Cohn explains why sometimes it is worth to present unfinished product backlog items during the sprint review meeting.
+  </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/40.java">Apple Rolls Out CarPlay</a>At the Geneva International Motor Show, Apple announced to roll out CarPlay partnering with premium car manufactures. CarPlay fully integrates iOS devices with existing infotainment capabilities of cars. Currently, Apple restricts CarPlay to a few applications like Maps, Phone or Messages. At the moment, there is no public API announced to write CarPlay enabled applications. 
   </div> 
@@ -147,9 +150,6 @@
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/46.java">Red Hat's JBoss Team Launch WildFly 8 with full Java EE 7 Support and a New Embeddable Web Server</a>Red Hat's JBoss division has today announced the availability of WildFly 8, the product formerly know as JBoss Application Server. This release fully supports the Java EE 7 specification. WildFly also gains a completely new web server called Undertow, new security features, and a patching system for updates to the running system. 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/45.java">Design Patterns for Cloud-Hosted Applications</a>The patterns &amp; practices group at Microsoft have released a guide with solutions and patterns suitable when implementing cloud-hosted applications. The guide contains ten guidance topics together with 24 design patterns targeting eight categories of problems covering common areas in cloud application development. Also included are ten sample applications to demonstrate the usage these patterns. 
-  </div> 
+  </div>  
  </body>
 </html>
