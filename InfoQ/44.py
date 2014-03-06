@@ -1,36 +1,11 @@
-<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>Gojko Adzic氏のユーザストーリー改善についての新著</h3><p><a target="_blank" href="http://www.infoq.com/news/2014/01/gojko-adzic-improve-user-stories"><em>原文(投稿日：2014/01/16)へのリンク</em></a></p>
+<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>Docker、Mac OS XとBTRFSをサポート</h3><p><a target="_blank" href="http://www.infoq.com/news/2014/02/docker_0_8"><em>原文(投稿日：2014/02/17)へのリンク</em></a></p>
 <div class="article_page_left news_container text_content_container"> 
  <div class="text_info"> 
-  <p>優れたユーザストーリーはソフトウエアの提供を改善するだろうか。<a href="http://www.infoq.com/author/Gojko-Adzic">Gojko Adzic氏</a>はチームのユーザストーリーの管理の仕方を小さく変化させることで最終的な成果に大きく影響を与えることができると言う。氏は<a href="http://gojko.net/2014/01/01/make-me-write-a-book-and-get-it-for-free/">make me write a book and get it for free</a>というブログ記事でユーザストーリーを改善するための本を書きたいと表明している。</p> 
-  <blockquote> 
-   <p>優れたストーリーを定義し、共通の課題を修正し、課題を価値ある小さな形に分割して、横断的関心事、長期課題、“非機能”要求のような難しい問題に対処して、さらにチームのメンバと利害関係者の間で正しく議論をすることでアジャイルの効果と反復的な価値提供のメリットを確実に手に入れる方法について書きたいと思っています。</p> 
-  </blockquote> 
-  <p>Gojko氏は<a href="http://www.infoq.com/articles/specification-by-example-book">Specification by Example</a>と<a href="http://impactmapping.org/book">Impact Mapping</a>の著者だ。新しい本の名前は&quot;50 Quick Ideas to Improve your User Stories&quot;。1月中に関心がある人が5000人集まったら執筆するという。</p> 
-  <blockquote> 
-   <p>LeanPubでどのくらい関心を持たれているかを計測して、執筆中のドラフトも公開するつもりです。もし、関心を持ったなら、LeanPubで<a href="https://leanpub.com/50quickideas/packages/book/purchases/new">サインアップしてください</a>。1月の終わりまで、または5000人がサインアップしてくれるまでは無料です。この人数に達したら、良書を作ることが私の新年の決意になるでしょう。</p> 
-  </blockquote> 
-  <p>現時点では(1月16日)では2300人以上の読者が購読をしている。彼らは出版されたときに無料の電子書籍も手に入れられる。</p> 
-  <p>InfoQは以前、<a href="http://www.infoq.com/interviews/interview-gojko-adzic-qcon-2013">Gojko Adzic氏にインタビューしてインパクトマッピングを使ったビジネスの反復的提供</a>について話を聞いた。Agile Tour Toronto 2013では、氏は<a href="http://www.infoq.com/presentations/keynote-agile-toronto-2013">Make Impacts, Not Software!</a>と題したプレゼンをしている。InfoQは氏とChris Matts氏の記事<a href="http://www.infoq.com/articles/feature-injection-success">Feature Injection: three steps to success</a>を公開している。</p> 
-  <p>このブログ記事に何人かが反応して、ツイートしたりコメントしたりしている。</p> 
-  <blockquote> 
-   <p><strong>Kent McDonald: </strong>私のチームはビルドするべきことを組織化し記述することに困難を抱えています。特別ユーザストーリーに着目することがいいのかどうかわかりません。“ユーザストーリーをうまく書くだけですべてが解決する”という考えにあなたが取り組むつもりなら別ですが。</p> 
-   <p>ユーザストーリーの問題は徴候であり、根本的な原因かどうかはわかりません。チームは自身がどんな理由で何を作ろうとしているのかを明確に把握しておく必要があります。また、情報を効率的に記述する方法を心得ておくべきでしょう。ユーザストーリーの問題のひとつは、現実よりも大きなストーリーを作ってしまいがちだということです。</p> 
-  </blockquote> 
-  <blockquote>
-   <strong>Jean-Michel Garnier:</strong> &quot;しっかり定義されていない、うまく分割されていない、分離すると価値がなくなってしまう&quot;ユーザストーリーやチケットはよくあることですね。
-  </blockquote> 
-  <blockquote>
-   <strong>Rob Park:</strong> ストーリーを砕いたり、分割したり、マッピングしたりするといろいろうまくいきます。でも、私が知っているチームはこれが得意ではありません。対処が難しいからです。
-  </blockquote> 
-  <blockquote>
-   <strong>Andreas Ekstr&ouml;m:</strong> @gojkoadzicの新しい本の最初の短い章が公開されているけど、面白そう。見てみれば(しかも無料)。: https://leanpub.com/50quickideas
-  </blockquote> 
-  <blockquote> 
-   <p><strong>Eddy Bruin:</strong> ユーザストーリーは終わりの状態をしめしているのではなくて、クライアントとの対話を始める出発点なんだと思う。</p> 
-   <p>優れたユーザストーリーを作る技術があって、ユーザストーリーを単一のシナリオまで分割するチームや巨大なユーザストーリーを作るチームがほとんどです。本当にいろいろなユーザストーリーを見てきました。あなたの新著はどの程度の大きさのユーザストーリーがいいのか考えるのに参考になりそうです。</p> 
-  </blockquote> 
-  <blockquote>
-   <strong>Nicolas Deverge:</strong> やった。@gojkoadzicが&quot;ユーザストーリーサバイバルガイド&quot;みたいな本を書くって。実現するためにみんなでサインアップしよう。
-  </blockquote>
+  <p><a href="http://blog.docker.io/2014/02/docker-0-8-quality-new-builder-features-btrfs-storage-osx-support/">Docker 0.8のリリース</a>の一部として、Docker.ioチームは<a href="http://docs.docker.io/en/latest/installation/mac/">Mac OS Xへのインストールサポート</a>と<a href="http://en.wikipedia.org/wiki/Aufs">AUFS</a>の代替として<a href="http://en.wikipedia.org/wiki/Btrfs">BTRFS</a>が使えるようになったことを発表した。</p> 
+  <p>Macサポートは、<a href="http://get.docker.io/builds/Darwin/x86_64/docker-latest">ネイティブのDocker OS Xクライアント</a>と<a href="http://en.wikipedia.org/wiki/Virtualbox">VirtualBox</a>で動かすのに必要な軽量な<a href="https://github.com/steeve/boot2docker">Boot2Docker</a>仮想マシン (VM) から構成される（OS XはDockerに必要なLinuxコンテナをサポートしていないため）。このリリース以前は、MacユーザはLinux仮想マシン上でDockerクライアントとデーモンの両方を動かす必要があった。</p> 
+  <p>DockerチームはLinuxコンテナ (<a href="http://en.wikipedia.org/wiki/Lxc">LXC</a>) 関連をOS Xに移植することを望んでいたが、今のところ、デーモンはVMで起動する必要がある。Boot2Dockerは最小限のLinux環境とVirtualBoxで動くコマンドラインスクリプト一式を提供する。Boot2Dockerはライフサイクル管理とともに、VMで動作するSSHとDockerデーモンのポートマッピングの面倒を見る。DOCKER_HOST環境変数を使うことで、クライアントはデフォルトのネイティブUnixソケットではなく、TCPでDockerデーモンに接続することができる。残念ながら、Boot2DockerはまだDocker自身のポートマッピングメカニズムと統合されておらず、ホストであるMacからコンテナ内で動いているサービスに接続するためには、<a href="https://github.com/dotcloud/docker/issues/4007">VirtualBoxとDocker両方のポートをマップする</a>必要がある。</p> 
+  <p>BTRFSドライバはまだ実験的なものとされており、既存のBTRFSパーティションを用意する必要がある。Dockerの動作には、基本となる<a href="http://en.wikipedia.org/wiki/Copy_on_write">コピーオンライト</a>ファイルシステムの利用が不可欠だ。イメージとイメージから生成したコンテナはファイルシステムブランチにマッピングされたレイヤにより構成される。<a href="http://en.wikipedia.org/wiki/Zfs">ZFS</a>ドライバの作業も進行中だ。</p> 
+  <p>また、Docker.ioチームは特定の機能とは関係なしに、月1回リリースすると発表した。これは元VMware VPでGreylock Partnersの<a href="http://www.greylock.com/teams/50-Jerry-Chen">Jerry Chen</a>氏による<a href="http://blog.docker.io/2014/01/docker-closes-15-m-series-b-funding/">$15mの投資ラウンド</a>に沿ったもので、Dockerを製品レベルにし、コミュニティプラットフォームを築き、商用化に向けた道筋をつけていく予定だ。Dockerチームは<a href="https://github.com/dotcloud/docker">githubのmasterブランチ</a>を安定させ、これを最新版を求めている人へのリファレンスポイントにすると約束している。なお、最新の投資ラウンドに先立ち、<a href="http://www.infoq.com/news/2013/10/dotcloud-renamed-docker">dotCloudは社名をDocker Incに変更した</a>。</p> 
+  <p>Dockerの背景と使われ方について、詳しくはZef Hemel氏の「<a href="http://www.infoq.com/jp/articles/docker-containers/">Docker: Linuxコンテナを使ってアプリケーションの配置を支援する</a>」を参照。</p> 
  </div> 
 </div><br><br><br><br><br><br></body></html>

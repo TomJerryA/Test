@@ -1,6 +1,15 @@
 <html>
  <head></head> 
- <body> 
+ <body>
+  <div>
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/44.py">Docker、Mac OS XとBTRFSをサポート</a>Docker 0.8のリリースの一部として、Docker.ioチームはMac OS XへのインストールサポートとAUFSの代替としてBTRFSが使えるようになったことを発表した。
+  </div>
+  <div>
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/43.py">Telerik Platformを使ったWeb, ハイブリッド, ネイティブアプリの開発</a>Telerik PlatformはWeb, ハイブリッド, さらにはiOS, Android, Windows Phoneのネイティブアプリを, Webベースのダッシュボード，デスクトップ，あるいはVisual Studioを使って開発する仕組みを提供する。
+  </div> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/42.py">NightwatchでEnd-to-Endテストを行う</a>Nightwatchは、Node.js上で動く受け入れテスト用のフレームワークである。このツールは、Webアプリケーションのテストを自動化するために、Selenium WebDriver APIを使用している。また、Selenium Serverと相性が悪いJavaScriptやCSSセレクタを使ってEnd-to-Endテストを書くことができるよう、シンプルなシンタックスを用意している。 
+  </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/41.py">Project Helios: IIS上のASP.NET OWINベースのWebホスト ランタイム</a>Microsoftは、Heliosと呼ばれるIIS上で実行される軽量なOWINベースのWebホストをリリースした。 
   </div> 
@@ -141,15 +150,6 @@
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/49.py">レスポンシブルデザインとコンテントウィジェットを加えたDoc-To-Help 2013 v2</a>Component OneがDoc-To-Help 2013 v2をリリースした。アクセスしたデバイスに対応するコンテントを自動的に表示可能なレスポンシブルUIを備える。Note, Lightbox, Gallery, Carousel, Topic Contents, Tab, Code Highlighterといったコンテントウィジェットも含まれている。 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/49.py">10歳になったScala</a>10年前の今日，Scala言語の最初のリリースがcomp.lang.scalaニュースグループで発表された。10年という長い月日を経たこの言語の，次の10年はどのようなものだろうか？ InfoQが振り返る。 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/48.py">2014年は Android自動車の年になるか</a>GoogleはNvidiaほかAudi、GM、Honda、Hyundaiなどの自動車製造業社とともにOpen Automotive Alliance (OAA)を発表して正式に自動車内コンピュータの分野に参入した。このアライアンスの目的は2014年末にAndroidプラットフォームを自動車へ持ち込むことだ。 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/47.py">Googleが新開発のCloud Storage ConnectorでHadoopパフォーマンスを改善</a>新たに開発されたコネクタを使えば，従来の分散ファイルシステムに代えて，Google Cloud Storage上でHadoopを直接実行することが可能になる。これによってストレージコスト低減とデータプリケーション動作の削減，プロセス全体の簡略化が実現できる。 
-  </div> 
+  </div>   
  </body>
 </html>

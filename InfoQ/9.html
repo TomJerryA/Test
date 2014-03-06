@@ -1,28 +1,42 @@
-<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>L20n: 来自 Mozilla 的 JavaScript 本地化框架</h3><p><a href="http://l20n.org/">L20n</a>是一款开源的JavaScript本地化框架，由Mozilloa贡献。L20n设计得极富表达能力，拥有很多特性，比如屏幕尺寸适配，良好的关注点分离，对复用的优雅处理，当有多个变量时支持默认等等。</p>
-<p><a href="https://twitter.com/stas">Staś Małolepszy</a>对项目背后的动机做了如下<a href="http://informationisart.com/19/">解释</a> ——</p>
+<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>《OpenStack部署实践》作者访谈：nova-network对中小企业基本够用了</h3><p>OpenStack中国技术群管理员之一成都-子凡近日完成了《<a href="http://product.china-pub.com/3769507#ml">OpenStack部署实践</a>》一书的撰写，目前已在预售。本书侧重于介绍OpenStack的不同安装模式，以及作者在各种部署实验中积累的经验。本书大部分内容基于当前较稳定的OpenStack Grizzly版本撰写。</p>
+<p>InfoQ中文站对子凡进行了采访，了解有关OpenStack学习方面的更多资源与建议。</p>
+<h3>作者介绍</h3>
+<p>张子凡，1989年毕业于吉林大学计算机系，从modem、3+网络以及Basic、DBase、Foxbase开始一直混迹IT行业。1999年加入朗讯科技公司。至2011年，一直在外企工作。虽然期间也从事了销售与渠道管理工作，但由于对技术的热爱以及前期在网络方面的知识储备，从未中断过对技术的学习。2012年，开始从事OpenStack云计算系统的技术、实验以及7&times;24运行的生产类系统的部署研究，完成了大量的实验工作。</p>
+<p><strong>InfoQ：本书主要面向运维人员吗？要理解本书内容，你建议他们先做好哪些功课？</strong></p>
 <blockquote> 
- <p>对Mozilla项目本地化的过程中，我们发现UI中90-95%的信息是简单的键值对，并不需要L20n的高级功能。</p> 
- <p>那为什么还要开发L20n呢？原因就是剩余5%的信息，它们是应用UI成败的关键。这些剩余的信息非常重要，我们无法视而不见，而且它们是用户体验的关键。</p> 
+ <p>子凡：本书并不针对运维人员，主要针对的是OpenStack的初学者以及企业的IT人员，虽然对OpenStack初学者有很大帮助，但对企业的IT人员在有限的时间内更多了解OpenStack有较好的作用，因为开源、开放与免费的特点，使得企业若使用OpenStack可以节省大量资金。因此本书重点讲述了大、中、小三类企业如何应用OpenStack，以及合适的部署模式。</p> 
 </blockquote>
-<p>基于以上原因，项目尽可能保持简单应用场景的简洁，同时也支持复杂的本地化应用场景。</p>
-<p>以下是L20n的一些优秀特性 -</p>
-<ul> 
- <li>丰富的表达能力 —— L20n支持<a href="http://l20n.org/learn/working-with-text-multiline-interpolation/">插值</a>（创建更复杂的实体），<a href="http://l20n.org/learn/plural-forms-introduction-to-macros/">复用</a>，<a href="http://l20n.org/learn/using-variants-to-define-grammatical-cases/">语法差异的处理</a>，相同实体有<a href="http://l20n.org/learn/translations-with-multiple-variants/">多个变量</a>，等等，组合之后创建更加丰富的格式。</li> 
- <li>适应屏幕尺寸 —— 你可以定义多个屏幕尺寸，实体有不同的变量来适应特定的屏幕尺寸</li> 
- <li>关注点分离 - 可以<a href="http://informationisart.com/21/">将本地化相关的问题在语言中隔离</a>，而不会影响应用使用的其他语言，甚至是应用的源码。</li> 
- <li>提供API，除了具有绑定HTML元素，使HTML元素能够本地化的能力外，API也是非阻塞和安全的。</li> 
-</ul>
-<p>L20n引入了<a href="http://l20n.org/learn/defining-the-default-variant/">默认值</a>概念，它虽然简单但是十分强大 —— 它允许你给一个实体定义多个变量，也可以在没有要求任何特定变量时定义一个默认值。默认值的引入使翻译者能够渐进地调整他们的内容，甚至增加更多变量，同时保证使用对应实体的既有代码不会受到影响（只是使用默认值即可）。这也是允许不同的本地化具有不同级别的复杂度，并且不会导致其他的本地化变复杂的关键所在。</p>
-<p>以下是项目相关的学习资源 ——</p>
-<ul> 
- <li>项目的<a href="https://github.com/l20n/l20n.js/blob/master/README.md">ReadMe</a></li> 
- <li>介绍使用L20n如何本地化HTML文件的<a href="https://github.com/l20n/demo">演示项目</a></li> 
- <li><a href="http://l20n.org/learn/">step-by-step教程</a>，介绍相关概念</li> 
- <li>项目的<a href="https://github.com/l20n/l20n.js/tree/master/docs">文档</a></li> 
- <li><a href="http://informationisart.com/19/">常见问题和解答</a></li> 
-</ul>
-<p>L20n在2012年就已经开始开发了，到2013年11月发布了1.0的发布候选版。</p>
-<p>查看英文原文：<a href="http://www.infoq.com/news/2014/01/l20n">JavaScript Localization Framework From Mozilla</a></p>
-<hr />
-<p>感谢<a href="http://www.infoq.com/cn/author/吴海星">吴海星</a>对本文的审校。</p>
-<p>给InfoQ中文站投稿或者参与内容翻译工作，请邮件至<a href="mailto:editors@cn.infoq.com">editors@cn.infoq.com</a>。也欢迎大家通过新浪微博（<a href="http://www.weibo.com/infoqchina">@InfoQ</a>）或者腾讯微博（<a href="http://t.qq.com/infoqchina">@InfoQ</a>）关注我们，并与我们的编辑和其他读者朋友交流。</p><br><br><br><br><br><br></body></html>
+<p><strong>InfoQ：你建议刚开始接触OpenStack的技术人员按照什么顺序学习比较好？比如先读哪本书，后读哪本书，先研究哪个模块的代码等等。</strong></p>
+<blockquote> 
+ <p>子凡：我个人认为最好的学习就是带着任务去折腾，不会的在过程中去补充。渡过了安装阶段的痛苦后（《OpenStack部署实践》会让你的痛苦少一些），就会喜欢OpenStack，因为它的开放与灵活使得你可以用很多Linux世界的好软件一起打造一个极佳的云系统，是一个我们可以DIY的云系统，远超你只能使用而无法组装的其它虚拟化或云方面的商业软件。再进一步结合云存储、大数据分析处理系统，可以组装一个强大的云系统。</p> 
+ <p>但同样，OpenStack的每个组件就代表着一个纵向深度的技术领域，比如RabbitMQ，需要精心设计才能满足生产级别的性能与可靠性要求，这方面要花很多时间。</p> 
+</blockquote>
+<p><strong>InfoQ：感觉Ceph现在基本上是OpenStack的标准配置了，但是这个尚未成熟的分布式存储系统毕竟有不少坑。你对于中小企业引入Ceph有怎样的建议？</strong></p>
+<blockquote> 
+ <p>子凡：很多人都有一个类似的认识，同时也只是看到了Ceph的一个方面。更需要体验的是，就算是昂贵的商业软件bug也是一堆，稳定也只是相对，这种相对稳定实际上是由一批高收入的专业技术人员来支撑的。</p> 
+ <p>走过OpenStack安装阶段的人都碰到了许多困难，许多困难有时会阻挡我们一天甚至更多时间，许多坑不一定来源于OpenStack或Ceph本身而是我们自己的知识面，原因是云计算与云存储涉及的东西太多了，比如，搞网络的不太了解Linux，搞Linux软件的又不太了解网络，弄数据库的人又并不一定了解RabbitMQ，这种情况比比皆是。</p> 
+ <p>同时，软件本身来源于人们思想，由人所写，当然有bug了，是非常非常正常的。但这也恰好体现了开源软件的优势，即只要我们了解了、摸透了开源软件的特点，就完全有办法用周围的软件来补充或回避某些已发现的问题。比如OpenStack本身并不提供全冗余的解决方案，但我们用周边的办法一样可以建造7x24运行的、冗余可靠的云系统。而商业软件虽然稳定性相对高一些，但我们也只能站在一个使用者的角度来做事情，碰到难题通常也只能打电话求助于厂商。</p> 
+ <p>言语可以被转义多次，Ceph是个“未成熟的分布式存储系统”也只是我们听到一个方面，并不完整，是因为人们对Ceph的架构不是非常了解所致，只是将它与一般意义上的分布式文件系统同等看待才有可能产生上述的看法。Ceph的核心Rados在我看来已经足够稳定,可以达到生产级别应用；Ceph对外提供的“块”服务，即RBD服务已经可以达到生产级别的应用，欧洲粒子实验室用的就是块的功能；Ceph对外提供的“对象”服务，即RADOSGW也同样达到了生产级别的应用，目前最大的部署案例是Dreamhost，其对象服务存储的规模达到了3PB，块服务存储规模达到了5PB，在我们国家，据部分信息揭示，也有一个6400个节点的Ceph存储系统。</p> 
+ <p>Ceph的不稳定部分主要是指它的文件服务部分，即CephFS，目前软件处于Beta版本，可以使用，但不建议生产环境使用，成熟度还没有达到生产级别。但目前Ceph的代码更新很快，相信越来越接近生产级应用。同时这个问题我们当然可用NFS/FTP/SAMA结合RBD等办法提供一下文件服务，暂时回避一下，如果确定要使用Ceph的话。</p> 
+ <p>据说，Ceph社区也准备效仿OpenStack的做法，成立Ceph基金会，以更好地促进Ceph的发展，若能当真如此，将是一个极好的消息。</p> 
+ <p>对于中小企业来说，不需要使用Ceph。Ceph是面向大型存储应用的，需要专业的技术服务团队作技术支撑，中小企业没有这么多数据而要存储也没有足够的钱请专业技术服务团队运维。</p> 
+ <p>中小企业可以使用一些相对易于建设与维护的系统，如文件服务可以使用NFS，块服务可以使用ISCSI的系统，用于存储虚拟机镜像或作为虚拟机的附加卷来配合OpenStack使用。《OpenStack部署实践》第九章中提到的Nexenta，即可以用于文件服务也可以用于块服务，只是它在18T存储以上需要付费。</p> 
+ <p>中等规模或偏上的企业也不太需要Ceph,完全可以用标准的分布式文件系统来解决问题，比如使用MFS或GlusterFS来解决大规模文件存储。就算是需要对象存储服务，也只需要将OpenStack的组件Swift建好就可以。</p> 
+ <p>而Ceph是一套适于大规模的、宏大的分布式存储解决方案，同时提供文件、块与对象服务的系统，适于大PB级别的应用，用以解决企业采用中央存储中心但还要满足各种应用类型的复杂情况。</p> 
+ <p>也正是如此，虽然《OpenStack部署实践》第九章中为示例而介绍了Ceph一个最小环境如何与OpenStack融合，提供附加盘的作法，但这只是为了说明问题，让企业IT人员对块服务有一个了解（同时也讲述了Nexenta提供块服务的方法）。</p> 
+ <p>原则上，所有类型的企业都可以使用Ceph，没有上述这么清晰界线。只是使用Ceph系统要么企业内有技术狂人或团队，要么做好付费请专业技术团队作技术服务的心里准备。否则，仍建议使用易于管理与使用的小型集中式存储系统或标准的文件系统来实施，比如MFS在我们国内天津的一个案例是1PB，这通常足够解决很多中等规模的企业存储需要求了。</p> 
+</blockquote>
+<p><strong>InfoQ：从运维的角度，你觉得Ceilometer、Heat组件跟之前的运维工具相比有什么不同？对Icehouse哪个方面的变化最期待？ </strong></p>
+<blockquote> 
+ <p>子凡：OpenStack走到今天，OpenStack基金会成功地让OpenStack得到很良好的发展，具备丰富新功能的版本不断地被推出，同时OpenStack的火热又不断地吸引着全球更多优秀的自由开发者加入并提供更多功能，有些令人目不暇接。但对我们国内很多打算应用OpenStack建设虚拟化环境或私有云的企业来说，他们可能需要的只是部分的功能组件，需要的是由部分功能组件搭建起来的强大而稳定的云系统，而选择哪些组件搭建系统则与经验有关。比如，很多搞OpenStack的人员当前也经常在nova-network与neutron间徘徊与苦恼。</p> 
+ <p>同样，是否使用Ceilometer与heat组件也是仁者见仁，智者见智，不一而说。I版仍会有新功能推出以及对已有部分的完善，我没有特别关注一些新功能。</p> 
+ <p>另一方面，OpenStack的架构设计是以公有云应用为基础的，企业直接拿来使用也面临确实面临着如何调整的问题。</p> 
+ <p>在《OpenStack部署实践》一书中，实际上我用了2个章节讲述nova-network以及nova-network如何调整适于中小企业应用，在绝大多数情况下，nova-network完全可以满足中型企业应用要求。</p> 
+ <p>开源、开放、免费对很多企业来说相当具备吸引力，但企业IT人员同样也为难于驾御OpenStack而忧心。好在目前国内已经有相当数量的人员从事OpenStack应用研究工作，原则上企业只要愿意付费是可以找到合适的技术团队来建设OpenStack私有云系统的，基本上不再需要为此费心了。有可能某些企业觉得我私下使用某些成熟的软件那不是更好吗？但又谁说你今天不付费而明天不会接到律师函呢？</p> 
+ <p>OpenStack在中国的应用推广是基于很多人分享了他们获得的知识而来的，在这里要感谢王达夫博士、陈沙克、北京YZ、程辉、杜玉杰、梁博、上海蔡云飞等等还有我不熟悉的更多人对技术的热爱。同时，我们国家有钱的互联网公司也很多，存储着庞大数据的系统也很多，更希望他们能像Google、Facebok、Rackspace等等公司一样，能开源一些他们的技术系统，能让中国的各大企业能从中受益，也能让各种技术从各个孤岛中走出来，开放、分享与交流才能真正推动技术发展。</p> 
+ <p>让更多的企业从OpenStack中受益，并回避目前国外软件的安全后门（OpenStack的代码是开源的，可审查的），这就是我写这本书的心愿与动力，这么好的东西为什么不用呢？</p> 
+</blockquote>
+<p><strong>InfoQ：最后，如果让你从本书中仅选三章呈现给读者，你推荐哪三章？</strong></p>
+<blockquote> 
+ <p>子凡：我推荐第4章OpenStack中小企业应用部署，第8章OpenStack卷服务——cinder，以及第9章OpenStack中央存储及虚拟机动态迁移。</p> 
+</blockquote><br><br><br><br><br><br></body></html>

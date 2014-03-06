@@ -1,18 +1,21 @@
-<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>Hazelcast引入MapReduce API</h3><p>本文是对Hazelcast公司高级软件工程师<a href="http://de.linkedin.com/in/noctarius">Christoph Engelbert</a>的采访。</p>
-<p><b>InfoQ</b>：您能向我们简单地介绍一下Hazelcast是什么以及您公司的商业模式吗？</p>
-<p><b>Christoph</b>：Hazelcast是一个遵循Apache License 2许可的开源内存数据网格解决方案。它以一种分布式方式实现了许多典型的Java API，如Map、List、Set、Queue、Lock、ExecutorService等，还针对分区的集群环境增加了功能，如分布式查询（Predicate）或者在特定节点上运行Runnable/Callable。</p>
-<p>此外，Hazelcast公司负责该开源项目的开发、分发和支持。我们会提供商业支持、培训以及为用户在关键任务环境里所需要的一切提供帮助。而且，我们会提供商业扩展，包括集群监控和管理解决方案、更高的性能可预测性、集群安全和其它语言的本地API客户端，如C++和C#。虽然Hazelcast完全是用Java编写的，但我们通过兼容Memcached的API以及RESTful接口提供多语言支持。</p>
-<p><b>InfoQ</b>：Hazelcast可以用在哪些应用、领域或者开源项目中，以及开发人员通常如何使用它？</p>
-<p><b>Christoph</b>：Hazelcast当前在金融领域发展迅猛，用于低延迟交易应用、风险、金融交易和其它类似的应用。大型电信公司、网络设备制造商和云提供商也在用它。我们还看到，它开始应用在诸如互联网和移动支付、游戏和赌博、旅行和餐饮以及电子商务等领域。<a href="http://www.linkedin.com/groups/Im-searching-your-usecases-Hazelcast-2991377.S.278475085">大部分应用场景</a>是缓存或者应用扩展。此外，许多公司和项目都基于Hazelcast构建了自己的解决方案，如<a href="https://github.com/orientechnologies/orientdb">OrientDB</a>、<a href="http://vertx.io/">Vert.X</a>、<a href="http://www.mulesoft.com/">MuleSoft</a>、<a href="http://wso2.com/">WSO2</a>或者<a href="http://shiro.apache.org/">Apache Shiro</a>。</p>
-<p><b>InfoQ</b>：最近，你们发布了<a href="http://github.com/noctarius/castmapr">MapReduce API</a>，据我了解，您是主要开发人员。您做这个的动机是什么？</p>
-<p><b>Christoph</b>：开始的时候，我将CastMapR当成一个研究项目。我想研究下新的Hazelcast 3 API，而且由于那会我正致力于另一个针对MapReduce的API（由于我正在使用JBoss集群），在我看来，它是个不错的选择。然后，当我在2013年底加入Hazelcast的时候，我们开始讨论使它成为Hazelcast主要发行版的一部分。</p>
-<p><b>InfoQ</b>：这样说，是您将CastMapR纳入了Hazelcast？</p>
-<p><b>Christoph</b>：差不多，是的。最初的想法只是将基本代码移到核心发行版，但随着时间推移，我们觉得想要在反应式编程方面更进一步，因此我重写了大部分内部构件。此外，关于公开的API，我们讨论了很多。CastMapR主要是受Infinispan的API启发，因为我恰恰喜欢它。我们商定，新的MapReduce API采用一种更像Hadoop的API（与最初的<a href="http://research.google.com/archive/mapreduce.html">Google论文</a>的描述更为相近），但我坚持使用DSL方式的作业定义。最终，旧实现中只有很少的部分得到重用。新实现在设计上完全并行。Mapping和Reducing阶段完全并行，而且整个系统以流的方式工作（基于分块处理）。因此，旧实现目前已经停用，所有的精力都投入到Hazelcast内部的MapReduce API。</p>
-<p><b>InfoQ</b>：喔，那很棒。现在，Hazelcast MapReduce API的典型（预期）应用场景是什么？话说它与<a href="http://docs.mongodb.org/manual/core/map-reduce/">MongoDB的MapReduce API</a>或者Hadoop相比如何？</p>
-<p><b>Christoph</b>：用户想要使用Hazelcast MapReduce API的典型场景是分布式计算，在这种情况下，<a href="http://www.hazelcast.org/docs/latest/manual/html-single/#MapEntryProcessor">EntryProcessor</a>并不合适。不管他是想要进行数据转换，还是想要使用多数据源。它也非常适合运行时间长的操作，由于当前所有的系统都直接工作在分区的线程上，所以用户不必为数据更新做显式锁定。在接下来的某个版本中，我会增加连续的map和reduce支持，那样用户就可以运行完全流分析。在这一点上，Twitter永远是最好的例子，它实时处理微博收集信息，如转发、收藏和其它许多统计信息。它也可以用于风险管理和分析。</p>
-<p>它与Hadoop的最大不同是在内存中和实时处理。Hadoop有不同的阶段，每个阶段都是一个接一个的执行，而在Hazelcast中，由于内部采用并行设计，mapping和reducing在所有节点上都是并行运行，所以用户可以获得全部性能。阶段本身与Hadoop中的非常类似，也有mapping（和combining）、shuffling（划分到节点）和reducing阶段，但是不像在Hadoop里那样分的那么清楚。</p>
-<p>与MongoDB比较有些困难，因为我从没用过他们的MapReduce API，但它似乎缺少Combiner，这对于大型数据集非常有用，不过，我说过我并不了解他们的实现方式。</p>
-<p><b>InfoQ</b>：棒极了，最后一个问题：关于Hazelcast MapReduce API，您还有什么想与我们的读者分享吗？</p>
-<p><b>Christoph</b>：是的，我有一个个人请求：我希望大家能够试用该API，并向我们提供尽可能多的反馈。该API十分稳定，我对它非常满意。另外，我想了解真实世界的用户体验，以便找到更多需要调整的地方，因为我相信我们可以改善它。</p>
-<p>非常感谢您抽出时间来接受我们的采访，Christoph！</p>
-<p><b>查看英文原文：</b><b><a href="http://www.infoq.com/news/2014/02/hazelcast-mapreduce-api">Hazelcast Introduces MapReduce API</a></b></p><br><br><br><br><br><br></body></html>
+<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>LightTable IDE宣布开源并增加插件支持</h3><p>Chris Granger宣布对<a href="http://www.lighttable.com/">LightTable IDE </a>0.6版本<a href="http://www.chris-granger.com/2014/01/07/light-table-is-open-source/">开源</a>。该次发布的最大亮点在于第三方插件的支持。</p>
+<p>社区开始对其他语言插件的支持贡献力量，包括<a href="https://github.com/jetaggart/light-haskell">Haskell</a>、 <a href="https://github.com/darthdeus/LightTable-Ruby">Ruby</a>、<a href="https://github.com/enricosada/LightTable-FSharp">F#</a>、 <a href="https://github.com/rschroll/litex">LaTex</a>和<a href="https://github.com/MarcoPolo/lt-markdown">Markdown</a>，以及一些关注核心编辑体验的特性（包括<a href="https://github.com/Gozala/lt.plugins.bracketglow">Bracket Glow</a>、<a href="https://github.com/cndreisbach/lighttable-base16-themes">base16 theme</a>、<a href="https://github.com/Gozala/lt.plugins.match-highlighter">match highlighter</a>等）。所有的这些都以LightTable内置插件的方式提供。</p>
+<p>Chris提到，最初其<a href="http://www.chris-granger.com/2012/02/26/connecting-to-your-creation">灵感来源于Bret Victor</a>在《<a href="http://vimeo.com/36579366">发明的原则</a>》的演讲中提到的内容，其中 Bret描述的原则是：“创造者需要和他们的发明保持直接的关联”。Chris着手去编写一个IDE其目的是让开发人员在编写代码的时候能够得到即时的响应。在接下来的<a href="https://www.kickstarter.com/projects/ibdknox/light-table">Kickstarter竞选中</a> （译者注：Kickstarter是一个创意融资平台）取得了成功，这表明这样的工具引起了人们广泛的兴趣。在竞选期间<a href="http://www.chris-granger.com/2012/05/17/light-table-is-in-yc">该项目被接纳</a>为<a href="http://ycombinator.com/">YComb</a>2012夏季的一个部分，以确保其创作。</p>
+<p>InfoQ就LightTable的今后发展采访了Chris。</p>
+<p><strong>InfoQ:</strong> 你是否担心过大量插件的产生或许会使得LightTable本身的可用性降低，或逐渐陷入困境？</p>
+<blockquote> 
+ <p>Chris:总的来说，我认为开源生态系统的自身调节是相当不错的--有成千上万专为emacs/ vim/sublime/textMate工作的插件，它们看上去都很好。我们的方法有一点不同，在于你甚至有更多的自由去改变其一切（你可以抛弃掉我们所做的一切，并取代它），但我认为社区在推荐使用和忽略不应该用的方面是做的很好的。</p> 
+ <p>我们希望做的更好的一点是，无需使用大量的插件也能够搭建一个良好的运行环境。例如Emacs和Vim，由于没有好的能针对x((译者注：指各类xWindow)用户体验的插件机制，那是相当可怕。LT的插件系统允许插件依赖于其他插件，这意味着如果你愿意，我们可以组织创建 “分布式”的插件系统。它们最终依赖于很多其他的插件，并提供了配置，使所有的插件都能协调工作。</p> 
+ <p>这也恰好是在BOT架构令人眼前一亮的地方。终端用户很容易删除冲突的行为，并能不修改任何代码随机地协作运行。因此，对你的问题的简单回答是“不”，但我们也提前计划，以消除针对任意策略的插件的某些缺点。</p> 
+</blockquote>
+<p>BOT是代表Behaviour-Object-Tag，这词出现在Chris在<a href="http://www.chris-granger.com/2013/01/24/the-ide-as-data">LightTable架构</a>一文中。</p>
+<p><b>InfoQ:</b>在Kickstarter最初的计划中，对于项目开源的计划描述为“在某些程度上，在开源和商业如何结合的问题中，这是一个实验—对于我们所有人来说都是宝贵的一课”。这两者目前是如何结合的？我们是否将看到收费的插件或者收费许可的某些高级的核心功能？</p>
+<blockquote> 
+ <p>这一直是我们在试图解答的问题。虽然我们有许多可选的策略，能够将LT自身进行商业动作，但我们已经发现了别的更自然的方式去发展它。我们已决定建立服务去掌管它，而不是直接将Light Table商业化。我们将使用它们作为公司发展的催化剂。</p> 
+ <p>我们还没准备好去讨论这些服务是什么，但我会说，它将能让我们对编程方式的了解发生戏剧性的改变。一种较好的方式是将LightTable设想为一个平台，它能让我们一开始就能在上面完成任务；让人们能够解决问题并创建所需。</p> 
+ <p>我们最近的发布是朝该方向的第一步，但相信我，你现在看到的和将来相比，只是一个微不足道的光点而已。</p> 
+</blockquote>
+<p><strong>查看英文原文：</strong><a href="http://www.infoq.com/news/2014/02/lighttable-open-source">LightTable IDE Goes Open Source, Adds Plugin Support</a></p>
+<hr />
+<p>感谢<a href="http://www.infoq.com/cn/author/邵思华">邵思华</a>对本文的审校。</p>
+<p>给InfoQ中文站投稿或者参与内容翻译工作，请邮件至<a href="mailto:editors@cn.infoq.com">editors@cn.infoq.com</a>。也欢迎大家通过新浪微博（<a href="http://www.weibo.com/infoqchina">@InfoQ</a>）或者腾讯微博（<a href="http://t.qq.com/infoqchina">@InfoQ</a>）关注我们，并与我们的编辑和其他读者朋友交流。</p><br><br><br><br><br><br></body></html>

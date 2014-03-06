@@ -1,8 +1,14 @@
 <html>
  <head></head> 
- <body>
-  <div>
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/45.java">Big Data Hadoop Solutions, State of Affairs in Q1/2014</a>According to a new Forrest report, Hadoop’s momentum is unstoppable. Its usage in the enterprise is continuously growing due to its ability to offer companies new ways to store, process, analyze, and share big data. The report takes a look at Hadoop vendors and ranks them.
+ <body> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/47.java">Cassandra Gains Momentum On Enterprise Adoption Around 2.1 Release</a>Cassandra is rapidly heading towards 2.1 release, with 2.1.0-beta1 already available for evaluation. We take a look at major features introduced in the latest major release and what's coming up. Supported by DataStax, Cassandra is expanding its reach towards the enterprise world. DataStax recently announced a partner network program, Patrick McFadin called out on MongoDB's scaling issues and other 
+  </div> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/46.java">Puppet Enterprise 3.2 Brings Fully Supported Modules</a>Puppet Labs has just released Puppet Enterprise 3.2, the commercially supported Puppet release. This release includes improvements such as fully supported modules, automation of tasks by non-root users and a tech preview of Razor, an application that discovers and provisions new servers. 
+  </div> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/45.java">Big Data Hadoop Solutions, State of Affairs in Q1/2014</a>According to a new Forrest report, Hadoop’s momentum is unstoppable. Its usage in the enterprise is continuously growing due to its ability to offer companies new ways to store, process, analyze, and share big data. The report takes a look at Hadoop vendors and ranks them. 
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/44.java">Orion 5 Supports More Languages and Can Deploy to Cloud</a>Enhancements in Orion 5 include: syntax highlighting for several languages, content assist for several Node.js libraries and databases, better syntax validation, cloud deployment and others. 
@@ -145,11 +151,5 @@
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/2.java">Interview with VersionOne CEO Robert Holler on the Winter Product Release</a>InfoQ spoke to VersionOne CEO Robert Holler about the features of the Winter 2014 release and their strategic investment themes. 
   </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/1.java">Pebble opens up the first appstore for wearable devices</a>Pebble, maker of the successful Pebble and Pebble Steel smartwatches, opened up its appstore earlier this month. Pebble appstore aims at offering both customers and developers a centralised app distribution channel, thus becoming &quot;the first place where Pebble users look for Pebble apps.&quot; 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/0.java">Applying Use Cases in Agile: Use Case 2.0, Slicing and Laminating</a>To incrementally develop and deliver products using agile software development, requirements are gathered and organized into a product backlog. A requirement technique that is used in agile software development is use cases. Some techniques to apply use cases for managing product requirements in agile are use case 2.0, slicing and laminating. 
-  </div>  
  </body>
 </html>

@@ -2,6 +2,12 @@
  <head></head> 
  <body> 
   <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/39.c">SQL interativo no Apache Hadoop com Impala e Hive</a>Na corrida para o SQL interativo em ambientes de Big Data, existem dois projetos de c&oacute;digo fonte aberto como principais candidatos, Impala e Hive com o Stinger. A Cloudera anunciou recentemente que o Impala &eacute; at&eacute; 69 vezes mais r&aacute;pido do que o Hive 0.12 e pode superar DBMS. 
+  </div> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/39.c">Equilibrando experimentos e entregas no desenvolvimento de produtos</a>Experimentos fazendo uso, por exemplo, de lean startup podem auxiliar as empresas a aprender sobre seus clientes permitindo descobrir quais caracter&iacute;sticas e produtos realmente s&atilde;o valiosos. O valor no entanto vem da constru&ccedil;&atilde;o de produtos e realmente entreg&aacute;-los aos clientes. &Eacute; preciso encontrar formas para se equilibrar entre experimentos e entrega. 
+  </div> 
+  <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/38.c">WildFly 8: suporte total ao Java EE 7 e novo Web Server embarcado</a>A divis&atilde;o JBoss da Red Hat anunciou a disponibilidade do WildFly 8, antes conhecido como JBoss Application Server. Esta vers&atilde;o suporta totalmente o Java EE 7. 
   </div> 
   <div> 
@@ -144,12 +150,6 @@
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/42.c">Android: Novo servi&ccedil;o de tradu&ccedil;&atilde;o de aplica&ccedil;&otilde;es</a>O Google lan&ccedil;ou oficialmente um servi&ccedil;o de tradu&ccedil;&atilde;o para aplica&ccedil;&otilde;es Android que permitem que os desenvolvedores disponibilizem os aplicativos em diversos idiomas, com base nas boas pr&aacute;ticas do documento que identifica os principais pontos chaves de localiza&ccedil;&atilde;o. 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/41.c">REST e a Internet das Coisas</a>A Internet das Coisas j&aacute; est&aacute; a&iacute; e o IETF iniciou uma s&eacute;rie de esfor&ccedil;os de padroniza&ccedil;&atilde;o nesta &aacute;rea. Entre eles destaca-se o grupo de trabalho Constrained RESTful Environments (CoRE), o qual busca prover abordagens REST para dispositivos com recursos restritos. H&aacute; tamb&eacute;m um projeto Java para apoiar este trabalho. 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/40.c">ASP.NET MVC 5: Melhorias de autentica&ccedil;&atilde;o com filtros</a>O ASP.NET MVC 5, fornecido com o Visual Studio 2013 Developer Preview, permite que os desenvolvedores apliquem filtros de autentica&ccedil;&atilde;o capazes de autenticar usu&aacute;rios utilizando diversos controles de terceiros ou um controle de autentica&ccedil;&atilde;o customizado. Eric Vogel demonstrou recentemente seu uso com um exemplo pr&aacute;tico. 
   </div> 
  </body>
 </html>

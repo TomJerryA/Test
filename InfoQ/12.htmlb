@@ -1,54 +1,195 @@
-<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>必胜宅急送Web app设计背后的思考</h3><p>O2O模式是餐饮业在移动消费趋势下主动拥抱互联网的方向，迎合餐饮消费者从以往经验判断为主转变为依靠移动设备、lbs、社交网络进行立体决策的过程。继App客户端之后，手机web app也逐渐成为O2O中联系消费者和餐饮业的纽带，通过Html5的技术支持，web app设计可以直接适配不同平台的手机屏幕并实现类似App客户端的体验，在O2O双向流程的闭环中加深消费者对品牌的认同和感情认知。</p>
-<p>日前必胜宅急送推出的<a href="http://m.4008123123.com/PHHSMWOS/index.htm">手机订餐web</a>正是其O2O模式的策略补充和深化。FaceUI提供的web app设计包含了对产品背后动机的挖掘和把握，随着项目团队对动机的理解和可用性测试的加深，设计思路也随之发生着变化。</p>
-<h2><b>产品的客户方动机</b></h2>
-<p>即为什么要进行这个web app设计，客户方（甲方）对此产品的定位和要求。不同定位的产品在功能或设计方向上会存在较大的差异。最常见的就是跟风型产品，如早期的各式IM、再到繁多的微博，还有如今火热的即时通讯工具，尤其移动平台的低成本高效率导致扎堆产品应接不暇。这样的产品更多是抱着分一杯羹或他有我也要有的心态定位，更注重被模仿对象的还原度，而不是个性特色。</p>
-<p>必胜宅急送的web app则是定位于O2O方向的探索。相较于传统app客户端，手机web app可以较为轻松地实现跨平台的轻量级应用，脱离于app商店的web降低了初级用户或中老年群体的使用门槛。对客户方来说，依靠url作为入口，web app可以便利地利用公众平台、朋友圈等社交传播网络进行推广。所以虽然手机web app仍然存在一定缺陷，在扩展消费者接触面、提高品牌自身竞争力等方面也极有潜力，这也是产品的功能目标和期望。</p>
-<p><img width="600" _p="true" _href="img://null" src="http://infoqstatic.com/resource/articles/thoughts-behind-the-design-of-the-web-app-bishengzhai/zh/resources/1221003.jpg" alt="" /></p>
-<p>图片1</p>
+<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>Durandal快速入门</h3><p><a href="http://durandaljs.com/">Durandal</a>是一个轻量级的JavaScript框架，其目标是单页面应用（SPAs）的开发变得简单而优雅。它支持MVC、MVP和MVVM等模式，因此不论你采用哪种类型的前端架构，Durandal都能胜任。</p>
+<p>Durandal以<a href="http://requirejs.org/">RequireJS</a>为基础，加上一个轻量级的惯例层，带来了令人惊叹的生产效率，并且帮助你维持稳健的编码实践。配上开箱即用的富界面组件、模态对话框、事件/消息、组件、过渡效果、导航等等，使你可以轻松开发出任何你能想象的应用。</p>
+<p>尽管Durandal才发布大约一年时间，但其社区正以飞快的速度成长。</p>
+<p>因此，我们推出了一个<a href="http://www.kickstarter.com/projects/eisenbergeffect/durandal-2014">Kickstarter</a>来帮助我们在2014年完成一些神奇的事情，希望你能关注。但现在，我将向你展示如何开发一个简单的Durandal程序。</p>
+<p>要开始使用Durandal，可以有多种方式，这取决于你的平台。因为Durandal是一个纯JavaScript库，独立于任何服务端平台，我们尝试用多种方式来打包，以满足各类Web开发人员。在本教程中，我们将直接使用HTML Starter Kit。你可以在<a href="http://durandaljs.com/pages/downloads/">官方网站</a>上直接<a href="http://durandaljs.com/version/latest/HTML%20StarterKit.zip">下载</a>。</p>
+<p>下载完HTML Starter Kit后，解压缩，你就可以直接在Firefox各版本中打开<i>index.html</i>页面，运行其示例程序了。或者你也可以将其部署到Web服务器中，浏览其index页面。</p>
 <div id="lowerFullwidthVCR"></div>
-<h2><b>产品的设计动机</b></h2>
-<p>除了实现产品功能概念外（有效性），另外的动机就是减少消费者从登录网站到预览下单的时间（效率）和让消费者接受并喜欢使用宅急送（满意度）。有效性、效率和满意度是评判产品可用性的标准，在以用户为中心的产品设计中作为衡量产品质量的指标。产品设计师基于对市场、用户、产品的理解和积累建立符合可用性诉求的价值倾向，并贯穿在产品之中。</p>
-<p>固然好的设计师擅长如何让产品、功能与用户需求有机结合，但在有些问题上，难以避免与其他项目成员、与客户之间的分歧，这时候采用可用性测试对用户动机研究就成为判断的依据。</p>
-<h2><b>产品的用户动机</b></h2>
-<p>想要立即得到设计师、客户都满意又符合可用性要求的完美方案是不可能的，所以结合项目进度要求，设计团队引入了低保真原型的可用性测试进行循序渐进的设计迭代，力图通过探明用户的动机解决设计上的关键问题。</p>
-<p>对于可用性测试的一个误解是，可用性测试需要花太多时间和金钱。误解的前提是一个成熟完整的测试可能需要若干天数进行准备和测试，再经过一定时间才能整理数据并得出分析结论，由此带来的时间成本和招募成本不利于项目进行。</p>
-<p><img width="600" _p="true" _href="img://null" src="http://infoqstatic.com/resource/articles/thoughts-behind-the-design-of-the-web-app-bishengzhai/zh/resources/1221004.jpg" alt="" /></p>
-<p>图片2 低保真测试原型</p>
-<p>宅急送web app设计团队在线框原型阶段利用AXURE制作手机上可以运行的低保真原型，穿插在设计中间进行快速的可用性测试。测试后的结果会及时反应在设计迭代上，成为下一轮可用性测试的材料或补充，几个额外的问题不会影响测试单元的时长。被测用户也就近从项目外的同事或朋友中筛选，测试任务结束后被测用户的满意度评价作为每轮的组成部分加以收集，最终形成有指导价值的数据样本库。</p>
-<p>即使快速的迭代的低保真测试，招募的用户标准也非常重要，确保测试结果对产品的有效性。团队从宅急送品牌的产品特征、用户个性特征、生活方式和价值观、对技术产品态度几个方面考量，制定招募标准：年龄18-35，近半年网络订餐超过3次、智能手机使用时间超过半年、手机浏览器或app每周使用10小时以上等。</p>
-<p>与招募同时进行的是测试脚本的设计，为被测用户赋予场景化的环境并梳理任务顺序以符合真实习惯。一种任务类型是观察，让用户熟悉界面并对界面进行反馈。另一种任务是操作，设置产品的典型任务如点三份芝香满溢比萨由用户完成。</p>
-<p>因为线框原型在功能、视觉方面的局限性，用户的困惑点相比于上线后的测试可能更多，所以执行过程中的发声思考是非常有效的工具。比如首页某一版方案测试时，可以听到如下用户声音：</p>
-<p><img _p="true" _href="img://null" src="http://infoqstatic.com/resource/articles/thoughts-behind-the-design-of-the-web-app-bishengzhai/zh/resources/1221005.jpg" alt="" /></p>
-<p>图片3 首页线框原型</p>
-<p>“要不是看必胜宅急送的logo，我还以为是个图片类网页”</p>
-<p>“我不清楚这个优惠活动图片跟优惠列表具体有什么分别”</p>
-<p>“点击‘预览菜单’后以为会进入菜单，没想到还要再选一次菜品种类”</p>
-<p>“我会首先看优惠列表中有没有自己喜欢的东西，如果有就直接订购”</p>
-<p>其中部分困惑（1和2）是线框原型带来的测试“噪音”，难以对当前版本提供实际的启发和引导，但3和4则反应了首页在布局和任务流程上存在的问题。被测用户进行发声思考使得行为背后的内容，如理解、计划等转化成明确、能被观察或分析到的数据，沉默的内部心理行为可以帮助测试者从用户角度发现问题本质。</p>
-<p>综合其他用户和后续迭代反馈，最终的首页方案如下：</p>
-<p><img width="600" _p="true" _href="img://null" src="http://infoqstatic.com/resource/articles/thoughts-behind-the-design-of-the-web-app-bishengzhai/zh/resources/1221006.png" alt="" /></p>
-<p>图片4 首页效果图</p>
-<p>设计师对原首页方案上的方向是：简洁明了，突出订餐点单的核心功能，并在首页呈现用户所需要使用的功能入口。但在测试中发现，用户进入首页后受三种不同方向的动机驱动：</p>
-<p>（1）已有明确的订餐目的和菜品，首页需要解决的是快速完成下单流程；</p>
-<p>（2）浏览型用户会期望还原线下餐厅一样随心所欲翻看菜单的体验，再确定菜品和下单与否；</p>
-<p>（3）而对于利益型用户，优惠活动和优惠力度最容易勾起他们的购买欲望。</p>
-<p>所以最终方案在保持订餐的核心功能外，对于不同的入口动机，利用web不局限一屏浏览的特点将菜品类目和优惠列表同时铺展，形成一个信息丰富的展示空间。</p>
-<p>从测试中获得的另一项有价值的发现帮助解决了项目团队内部的分歧。点餐界面存在设计师出于不同考虑的方案：方案1（左边）从用户认知出发，点击“订购”后展现当前菜品数量并要求用户进行确认动作；方案2（右边）站在效率的思路，简化点餐的操作步骤，点击即增加一份菜品，并利用角标的方式帮助用户了解当前数量。</p>
-<p><img width="600" _p="true" _href="img://null" src="http://infoqstatic.com/resource/articles/thoughts-behind-the-design-of-the-web-app-bishengzhai/zh/resources/1221007.jpg" alt="" /></p>
-<p>图片5 订餐页面线框原型</p>
-<p>统计测试数据后，看起来更复杂的方案1的相关任务完成率较高，对比采用方案2的任务完成率较低，被测用户的发声思考也验证了这个结果：被测用户在使用方案1时更明确衔接动作，而对方案2会产生疑惑。</p>
-<p>方案1中下单的操作比方案2多了至少2步，但整体流程上清晰明确，就像线下点餐那样，对每个菜品的数量予以确认，用户自由度较小，很难从当前菜品选择中跳出去。购物车的存在允许用户前往结算界面并支付，弥补了解总体订单情况的便利性。</p>
-<p>方案2最大的优势是在单品数量较少（一份披萨的量较大）的情况下有较高的操作效率，在熟悉操作的情况下即使多份也不逊于方案1。但是随意点击就增加菜品带来的自由度让用户感觉会偏离任务，可以通过购物车减少菜品数量对用户来说也是个隐藏操作，所以用户很容易在方案2中产生困惑。</p>
-<p>最终上线的点单界面如下：</p>
-<p><img width="600" _p="true" _href="img://null" src="http://infoqstatic.com/resource/articles/thoughts-behind-the-design-of-the-web-app-bishengzhai/zh/resources/1221008.png" alt="" /></p>
-<p>图片6 订餐页面效果图</p>
-<p>终版利用上方的悬浮通知优化了方案1不方便查看订单总量的缺点。用户的动机是获得需要的菜品，所以不经确认的下单动作会让用户失去安全感。对于符合用户思维模式的流程，即使步骤略多，在执行时因为习惯或直觉的引导也不会带来太多注意力的分散或负担。用户未必能感受到方案2带来的效率提高，但一旦出现不完善就会招致不满。</p>
-<p>同样在用户不需要为单一目标集中注意力的时候，特意突出的元素也是画蛇添足。这是被否决的一个结算界面原型：</p>
-<p><img _p="true" _href="img://null" src="http://infoqstatic.com/resource/articles/thoughts-behind-the-design-of-the-web-app-bishengzhai/zh/resources/1221009.jpg" alt="" /></p>
-<p>图片7 结算页面线框原型</p>
-<p>App客户端的样式不适合web app，网站上悬浮按钮的设计让用户感受不快，过大的面积也影响清单的查看。用户并不是任何时候都准备下单，只有在核对完自己的菜品和数量，形成支付期望后，“确认下单”才会成为他们准备点击的对象。</p>
-<h2><b>结语</b></h2>
-<p>对动机的挖掘并不是非黑即白的单选项。在低保真原型测试的支持下，通过动机把握，确定产品哪些元素是有益的，哪些元素是无益的，最终形成效果显著的产品方案，获得品质和效率上的双赢。</p>
+<p><img src="http://infoqstatic.com/resource/articles/durandal-javascript-framework/zh/resources/0213002.png" width="600" _href="img://null" _p="true" alt="" /></p>
+<p>Starter Kit演示了一个基本的导航架构，包括导航、页面历史、数据绑定、模态对话框等等。当然，我们不只是看看而已，我们要从头开始写一个小程序。首先打开app文件夹，删除里面的所有内容，然后删除<i>index.html</i>。这样我们就有了一个空项目，并且预配置了所有必须的scripts和css。</p>
+<p><i>*</i><i>注：</i><i>IE, Chrome</i><i>和</i><i>Safari</i><i>可能无法从文件系统中直接打开这类文件。如果你仍希望使用这些浏览器，可以将其部署到你喜欢的</i>Web<i>服务器中。</i></p>
+<p><b>Index.html</b><br /> 我们开始编写<i>index.html</i>文件，内容如下：</p>
+<pre>
+&lt;!DOCTYPE html&gt; 
+&lt;html&gt; 
+  &lt;head&gt; 
+    &lt;link rel=&quot;stylesheet&quot; href=&quot;lib/bootstrap/css/bootstrap.css&quot; /&gt; 
+    &lt;link rel=&quot;stylesheet&quot; href=&quot;lib/font-awesome/css/font-awesome.css&quot; /&gt; 
+    &lt;link rel=&quot;stylesheet&quot; href=&quot;lib/durandal/css/durandal.css&quot; /&gt; 
+    &lt;link rel=&quot;stylesheet&quot; href=&quot;css/starterkit.css&quot; /&gt; 
+  &lt;/head&gt; 
+  &lt;body&gt; 
+    &lt;div id=&quot;applicationHost&quot;&gt;&lt;/div&gt; 
+    &lt;script src=&quot;lib/require/require.js&quot; data-main=&quot;app/main&quot;&gt;&lt;/script&gt; 
+  &lt;/body&gt; 
+&lt;/html&gt;</pre>
+<p>我们看到，文件中只有一些css样式文件，一个id为applicationHost的简单的div， ，一个script标签。我们加上了<a href="http://getbootstrap.com/">Bootstrap</a>和<a href="http://fontawesome.io/">FontAwesome</a>，使界面看起来美观一些，但它们并不是Durandal所必须的。我们要关注的关键代码是script标签。</p>
+<p>Durandal采用RequireJS作为其核心构件之一，鼓励模块化的编程方式。在Durandal应用中，所有的JS代码都写在模块中。上文<i>index.html</i>中的script标签就是用于加载RequireJS来完成框架的模块策略。当模块加载器完成初始化后，它通过<i>data-main</i>属性的值来启动应用。就像C语言中的<i>main</i>函数一样，<i>data-main</i>属性指向的是主模块，是整个应用的入口。让我们进行下一步，创建这个模块。首先创建一个名为<i>main.js</i>的文件，把它放到<i>app</i>文件夹下。其代码如下：</p>
+<pre>
+main.js 
+requirejs.config({ 
+  paths: { 
+    'text': '../lib/require/text', 
+    'durandal':'../lib/durandal/js', 
+    'plugins' : '../lib/durandal/js/plugins', 
+    'transitions' : '../lib/durandal/js/transitions', 
+    'knockout': '../lib/knockout/knockout-2.3.0', 
+    'jquery': '../lib/jquery/jquery-1.9.1' 
+    }  
+}); 
+define(function (require) { 
+   var system = require('durandal/system'), 
+       app = require('durandal/app'); 
+   system.debug(true); 
+   app.title = 'Durandal Starter Kit'; 
+   app.configurePlugins({ 
+     router:true, 
+     dialog: true 
+   }); 
+   app.start().then(function() { 
+     app.setRoot('shell'); 
+   }); 
+});</pre>
+<p>这是一个非常标准的Durandal应用的样板配置。我们详细地看一下代码。</p>
+<p>文件的最上面是<i>requirejs.config</i>代码。这部分代码用于配置模块系统，使其能够找到核心库。配置的都是一些相对路径，因此当我们引用“jQuery”时，模块系统就知道到哪里去加载它。我们可以看到，路径的配置包括requirejs的text插件（用于加载视图）、Durandal的核心模块、Knockout和jQuery。<a href="http://durandaljs.com/">Durandal</a>采用<a href="http://requirejs.org/">RequireJS</a>来构建模块，<a href="http://knockoutjs.com/">Knockout</a>用于数据绑定，而<a href="http://jquery.com/">jQuery</a>用于浏览器层的抽象。</p>
+<p>完成RequireJS的配置后，定义应用的主模块。Durandal应用的所有代码都写在模块中，并且按照以下格式：</p>
+<pre>
+define(function (require) { 
+  var someModule = require('some/module'); 
+  ...other modules required here... 
+  return someValue; 
+});</pre>
+<p>我们用<i>define</i>函数来创建一个模块。它的参数是另一个函数，这个函数是模块的工厂。也就是说，这个函数的返回值将是模块的一个实例。当函数返回一个对象时，你可以创建单例对象模块。或者返回一个函数，你可以创建一个类构造器模块。另外，你也可以声明该模块依赖于其他模块，此时你需要使用<i>require</i>函数来引入其他模块。</p>
+<p>在上面的主模块代码中，你可以看到我们引入或者说<i>require</i>了两个Durandal模块：<i>system</i>和<i>app</i>。然后通过<i>system</i>模块开启框架的调试功能，通过<i>app</i>模块设置应用的标题，加载两个可选的插件。最后，我们调用<i>start</i>方法启动应用。该方法是一个异步的动作，当它结束时，调用一个特殊的方法：<i>setRoot</i>。</p>
+<p>当<i>setRoot</i>方法被调用时，才会真正去展示页面。你可以将<i>root</i>视为应用的主窗口、主布局或者应用的shell。该方法的参数指向一个包含shell的行为的模块。现在唯一的问题是，嗯，它还不存在。好吧，我们开始创建它。</p>
+<h2>Shell</h2>
+<p>Durandal的大部组件都同时包含行为（behavior）和展现（presentation）。你的应用的shell毫无疑问也遵循这个规则。我们将通过两个文件来展示这两个不同的概念：一个是用于行为的JavaScript文件，另一个是用于展现的HTML文件。在<i>app</i>文件夹下创建：<i>shell.js</i>和<i>shell.html</i><i>。</i>两个文件的代码如下所示，我们来看看它们是如何工作的。</p>
+<pre>
+shell.js 
+define(function (require) { 
+  var app = require('durandal/app'), 
+      ko = require('knockout'); 
+  return { 
+     name: ko.observable(), 
+     sayHello: function() { 
+       app.showMessage('Hello ' + this.name() + '! Nice to meet you.',
+ 'Greetings'); 
+     } 
+   }; 
+}); 
+shell.html 
+&lt;section&gt; 
+  &lt;h2&gt;Hello! What is your name?&lt;/h2&gt; 
+  &lt;form class=&quot;form-inline&quot;&gt; 
+    &lt;fieldset&gt; 
+       &lt;label&gt;Name&lt;/label&gt; 
+       &lt;input type=&quot;text&quot; data-bind=&quot;value: name, valueUpdate:
+ 'afterkeydown'&quot;/&gt; 
+       &lt;button type=&quot;submit&quot; class=&quot;btn&quot; data-bind=&quot;click: sayHello, enable: 
+name&quot;&gt;Click Me&lt;/button&gt; 
+    &lt;/fieldset&gt; 
+  &lt;/form&gt; 
+&lt;/section&gt;</pre>
+<p>首先看看<i>shell.js</i>，正如我们之前讲到的，它定义了一个模块。同时它还依赖两个别的模块：<i>app</i>和<i>knockout</i>。从代码可以看出，模块返回了一个对象。这个对象有一个<i>name</i>属性和一个<i>sayHello</i>方法。属性<i>name</i>看起来有点特别，它是我们使用<a href="http://knockoutjs.com/">Knockout</a>创建的一个可被观察的(<i>observable</i>)属性。可被观察的（<i>observable</i>）属性支持数据到html的双向绑定，变更通知和一些其它特性。注意看<i>sayHello</i>中调用了<i>app</i>模块的方法来显示一个包含<i>name</i>属性值的消息对话框。</p>
+<p>要完全理解这些代码，你应该将它与HTML代码放到一起来看。注意观察HTML中的<i>data-bind</i>属性。该属性将HTML与模块中的属性和方法联系起来。例如input标签通过<i>data-bind</i>属性将它的值与<i>name</i>属性连接起来的。它同时还指定，当key down事件发生时，属性<i>name</i>的值将被更新（如果不指定事件，则默认光标离开时会进行更新）。同样地，按钮的<i>click</i>事件绑定了<i>sayHello</i>方法，而且仅当<i>name</i>属性的值为真时，按钮才是有效状态。看起来是不是很酷？现在就把应用运行起来，你可以用Firefox打开<i>index.html</i>，或者如果你使用其他浏览器的话，可以部署到Web服务器下然后浏览<i>index.html</i>。当页面打开时，会经历以下这些步骤：</p>
+<ol> 
+ <li>加载RequireJS。</li> 
+ <li>RequireJS将加载<i>main.js</i>，然后配置框架。</li> 
+ <li><i>main.js</i>调用<i>setRoot</i>展示整个应用。</li> 
+ <li>加载<i>shell.js</i>和<i>shell.html</i>，绑定数据，然后注入到页面的<i>applicationHost</i> div中。</li> 
+</ol>
+<p>当页面加载完成后，在输入框中试着输入一些内容，观察按钮的有效性是如何变化的，然后点击按钮看看发生了什么。</p>
+<h2>导航</h2>
+<p>上面的例子看起来不错，但大多数应用都不只有一页。所以，我们开始下一步，将它扩展成具有页面导航的应用。首先，把<i>shell.js</i>改名为<i>home.js</i>，<i>shell.html</i>改名为<i>home.html</i>。然后创建两个新文件<i>shell.js</i>和<i>home.js</i>用于导航。以下是两个新文件的代码：</p>
+<pre>
+shell.js 
+define(function (require) { 
+  var router = require('plugins/router'); 
+   
+  return { 
+     router: router, 
+     activate: function () { 
+       router.map([ 
+         { route: '', title:'Home', moduleId: 'home', nav: true } 
+       ]).buildNavigationModel(); 
+       return router.activate(); 
+     } 
+   }; 
+}); 
+shell.html 
+&lt;div&gt; 
+ &lt;div class=&quot;navbar navbar-fixed-top&quot;&gt; 
+  &lt;div class=&quot;navbar-inner&quot;&gt; 
+   &lt;ul class=&quot;nav&quot; data-bind=&quot;foreach: router.navigationModel&quot;&gt; 
+    &lt;li data-bind=&quot;css: { active: isActive }&quot;&gt; 
+     &lt;a data-bind=&quot;attr: { href: hash }, html: title&quot;&gt;&lt;/a&gt; 
+    &lt;/li&gt; 
+   &lt;/ul&gt; 
+   &lt;div class=&quot;loader pull-right&quot; data-bind=&quot;css: { active: 
+router.isNavigating }&quot;&gt; 
+     &lt;i class=&quot;icon-spinner icon-2x icon-spin&quot;&gt;&lt;/i&gt; 
+   &lt;/div&gt; 
+  &lt;/div&gt; 
+ &lt;/div&gt; 
+ &lt;div class=&quot;container-fluid page-host&quot; data-bind=&quot;router: { 
+transition:'entrance' }&quot;&gt;&lt;/div&gt; 
+&lt;/div&gt;</pre>
+<p>可以看到，<i>shell.js</i>仍然是模块的标准定义方式。首先require了一个router插件，利用它创建对象。我们配置了一个route指向<i>home</i>模块。router配置中指定了每个route匹配的模式、显示的标题、对应加载的moduleId，以及<i>route</i>匹配时，是否应该将此route显示到导航栏中（<i>nav:true</i>）。配置完成后，调用<i>buildNavigationModel</i>。该方法利用route信息，构建一个特殊的集合，这个集合通过数据绑定，可以用来显示页面顶部的导航栏。最后，我们激活这个router。所有这些都发生在<i>activate</i>方法中。每次Durandal向屏幕展现一个组件时，它都会查找可选的<i>activate</i>回调方法。如果找到，就会在数据绑定前调用此方法。因此这种方式允许你执行自定义的激活代码，例如上面的例子在<i>activate</i>方法中配置应用程序的router。</p>
+<p>如果把模块和视图的代码放到一起，这次你应该很容易理解它们是如何工作的了。首先绑定<i>navigationModel</i>属性，生成一个导航栏navbar。每一个可导航的route被转换成一个li标签，其中包含一个链接。链接的标题对应<i>title</i>，地址对应<i>hash</i>。同时，在navbar中还包含了一个spinner动画图标，并将其与<i>router.isNavigating</i>属性进行绑定。当应用从一个页面导航到另一页面时，我们就能看到一个spinner动画图标。</p>
+<p>在html文件的最下方有一个特殊的<i>router</i>绑定，也就是连接模块中的router。它扮演占位符的角色，用于显示当前页面。属性<i>transition</i>表示当页面发生变化时，Durandal要使用“entrance”过渡动画。</p>
+<p>现在将它运行起来。它看起来跟之前差不多，除了在顶端多了个导航栏。因为现在仍然只有一个页面，因此没有什么令人印象深刻的东西。我们开始创建第二个页面，以便能够在页面间前进或后退。</p>
+<h2>第二页：雷尼尔峰</h2>
+<p>我们创建的第二个页面将调用Flickr，获取一组雷尼尔峰的照片并进行展示。首先修改shell的router配置，增加另一个route，这样它就有了两个route：</p>
+<pre>
+{ route:'', title:'Home', moduleId:'home', nav:true }, 
+{ route:'rainier', title:'Mount Rainier', moduleId:'rainier', nav:true }</pre>
+<p>第一个是我们之前的home route，第二个是新的route用于即将创建的新页面。这时候，希望你已经知道应该怎么做了。我们为新页面创建一个模块（module）和一个视图（view）。</p>
+<pre>
+rainier.js 
+define(function (require) { 
+  var http = require('plugins/http'), 
+      ko = require('knockout'); 
+  var url = 'http://api.flickr.com/services/feeds/photos_public.gne'; 
+  var qs = {  
+    tags: 'mount ranier',  
+    tagmode: 'any',  
+    format: 'json'  
+  }; 
+  return { 
+     images: ko.observableArray([]), 
+     activate: function () { 
+       var that = this; 
+       if (this.images().length &gt; 0) { 
+           return; 
+       } 
+      
+       return http.jsonp(url, qs, 'jsoncallback').then(function(response) { 
+          that.images(response.items); 
+       }); 
+     } 
+   }; 
+}); 
+rainier.html 
+&lt;section&gt; 
+  &lt;h2&gt;Mount Rainier&lt;/h2&gt; 
+  &lt;div class=&quot;row-fluid&quot;&gt; 
+    &lt;ul class=&quot;thumbnails&quot; data-bind=&quot;foreach: images&quot;&gt; 
+      &lt;li&gt; 
+         &lt;img style=&quot;width: 260px; height: 180px;&quot; data-bind=&quot;attr:
+ { src: media.m }&quot;/&gt; 
+      &lt;/li&gt; 
+    &lt;/ul&gt; 
+  &lt;/div&gt; 
+&lt;/section&gt;</pre>
+<p>我想你已经能够看出来它是怎么工作的了。新模块在activate回调方法中使用http插件调用Flickr的api去获取图片。然后将数据保存到<i>images</i>属性中。<i>Images</i>是一个可被观察的（observable）数组，页面绑定这个数组并展示图片。</p>
+<p>将应用运行起来，可以看到在导航栏中出现了两项，你能在两者间进行前进和后退操作。你也可以使用浏览器的返回按钮。Durandal能做的事情远不止这些。也许你该下载Starter Kit并仔细研究，就会发现一些更有趣的东西。又或者你应该将官方的示例程序下载下来，看看各种功能是如何工作的，例如发布/订阅消息、自定义模态对话框、组件、高级的视图组合等等。如果你想看一些更酷的东西，可以看看<a href="http://www.kickstarter.com/projects/eisenbergeffect/durandal-2014/posts/695777">Kickstarter资助的系列培训</a>中我们将构建的应用。</p>
+<p><a href="http://durandaljs.com/">Durandal</a>通过模块化的方法，使得构建富客户端，动态的JavaScript应用更加简单。因此理所当然地，我们的社区发展得非常快。我们的计划才刚刚开始，希望你也能加入我们的奇妙旅程。请浏览一下我们的<a href="http://www.kickstarter.com/projects/eisenbergeffect/durandal-2014/posts/695777">Kickstarter</a>。2014年我们已经有了一些很酷的目标，同时，也有一些非常棒的奖励给你。Web正在发生改变，光明的未来指日可待，希望我们在那里相逢。</p>
+<h2>关于作者</h2>
+<p><img style="float: left; margin-right: 10px" src="http://infoqstatic.com/resource/articles/durandal-javascript-framework/zh/resources/0213003.jpg" _href="img://null" _p="true" alt="" /><b>Rob Eisenberg</b>是一个JavaScript专家和.NET架构师，工作在佛罗里达州的塔拉哈西，同时他还是Blue Spire 咨询公司的总裁。Rob在9岁时开始计算机编程，那时他彻底地爱上了家里的新Commodore 64。他痴迷于编程，从Commodore Basic语言到Q Basic和QuickBasic开始，很快转到C, C++, C#和JavaScript。Rob定期在<a href="http://devlicio.us/">devlicio.us</a>上发表技术文章，并经常在区域性的专业活动中和相关公司做演讲和报告，主要涉及Web和.NET技术，敏捷软件开发实践和UI工程。他是Sam出版的《Teach Yourself WPF in 24 Hours》一书的联合作者，也是Durandal和Caliburn.Micro框架的架构师和首席开发人员。</p>
+<p><b>原文英文链接：</b><a href="http://www.infoq.com/articles/durandal-javascript-framework">Durandal: Quick Start</a></p>
+<div style="clear:both">
+ &nbsp;
+</div>
 <hr />
-<p>感谢<a href="http://www.infoq.com/cn/author/李永伦">李永伦</a>对本文的审校。</p>
+<p>感谢<a href="http://www.infoq.com/cn/author/马国耀">马国耀</a>对本文的审校。</p>
 <p>给InfoQ中文站投稿或者参与内容翻译工作，请邮件至<a href="mailto:editors@cn.infoq.com">editors@cn.infoq.com</a>。也欢迎大家通过新浪微博（<a href="http://www.weibo.com/infoqchina">@InfoQ</a>）或者腾讯微博（<a href="http://t.qq.com/infoqchina">@InfoQ</a>）关注我们，并与我们的编辑和其他读者朋友交流。</p><br><br><br><br><br><br></body></html>

@@ -1,7 +1,22 @@
-<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>Docker提供对Mac OS X和BTRFS的支持</h3><p>作为<a href="http://blog.docker.io/2014/02/docker-0-8-quality-new-builder-features-btrfs-storage-osx-support/">0.8版本</a>的一部分，Docker.io团队宣布Docker已经支持<a href="http://docs.docker.io/en/latest/installation/mac/">在Mac OS X上安装</a>，还支持使用<a href="http://en.wikipedia.org/wiki/Btrfs">BTRFS</a>替代<a href="http://en.wikipedia.org/wiki/Aufs">AUFS</a>。</p>
-<p>对Mac的支持是通过两个组件实现的，一个是<a href="http://get.docker.io/builds/Darwin/x86_64/docker-latest">原生的Docker OS X客户端</a>，一个是轻量级的<a href="https://github.com/steeve/boot2docker">Boot2Docker</a>虚拟机（VM），该虚拟机必须在<a href="http://en.wikipedia.org/wiki/Virtualbox">VirtualBox</a>中运行（因为OS X没有提供Docker所需的Linux容器这种底层支持）。在该版本发布之前，Mac用户必须在Linux虚拟机中运行Docker客户端和后台程序。</p>
-<p>Docker团队曾经表明，他们希望把Linux容器（<a href="http://en.wikipedia.org/wiki/Lxc">LXC</a>）以及其他依赖移植到OS X上，但是到目前为止他们的后台程序还是必须在虚拟机中运行。Boot2Docker提供了一个最小化的Linux环境，以及一组可以配合VirtualBox使用的命令行脚本。Boot2Docker提供了生命周期管理，还可以处理SSH和虚拟机中运行的Docker后台程序之间的端口映射。它使用了DOCKER_HOST环境变量，这样客户端就能通过TCP 连接到Docker后台程序，而不是通过默认的原生Unix套接字。遗憾的是Boot2Docker还没有集成Docker自己的端口映射机制，所以就目前而言，要从宿主Mac机器连接到在容器中运行的服务，<a href="https://github.com/dotcloud/docker/issues/4007">在VirtualBox和Docker中映射端口</a>还是必要的。</p>
-<p>BTRFS驱动被描述为实验特性，而且需要先创建好一个BTRFS分区。对于Docker的工作而言，底层的写时复制（<a href="http://en.wikipedia.org/wiki/Copy_on_write">copy on write</a>）文件系统是必不可少的，映像以及从映像派生出的容器，都是由多个层次组成，其中每个层次映射到一个文件系统分支。<a href="http://en.wikipedia.org/wiki/Zfs">ZFS</a>驱动相关的工作也在进行之中。</p>
-<p>Docker.io团队还宣布，他们从现在开始会采取每个月发布一个新版本的策略，每个月的第一周发布。发布日期不会与任何具体特性关联起来，也就是说，在此日期之前加入的特性会包含进来，后加入的特性则进入下一个发布窗口。此后Docker.io团队获得了由前VMware副总裁、<a href="http://www.greylock.com/teams/50-Jerry-Chen">Greylock Partners的Jerry Chen</a> 主导的 <a href="http://blog.docker.io/2014/01/docker-closes-15-m-series-b-funding/">$1500万美元的融资</a>。这笔钱将用于为Docker的产品化做好准备、构建出社区平台并寻找商业化之路。Docker团队还承诺，他们的<a href="https://github.com/dotcloud/docker">github主分支</a>将保持稳定，如果想获得最新版本，可以直接从主分支获取代码并构建。在最近这轮融资之前，<a href="http://www.infoq.com/news/2013/10/dotcloud-renamed-docker">dotCloud将公司的名字改成了Docker Inc</a>。</p>
-<p>关于Docker以及它如何使用的更多背景信息，可以参看Zef Hemel的“<a href="http://www.infoq.com/cn/articles/docker-containers">Docker：利用Linux容器实现可移植的应用部署</a>”一文。</p>
-<p><strong>查看英文原文：</strong><a href="http://www.infoq.com/news/2014/02/docker_0_8">Mac OS X and BTRFS support in Docker</a></p><br><br><br><br><br><br></body></html>
+<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>从高层次并发角度比较AkkaActor和JavaEJB</h3><p>从架构原理和编码风格方面比较<a href="http://akka.io/">Akka</a> Actor和<a href="http://docs.oracle.com/javaee/7/tutorial/doc/overview008.htm/">Java EE 7 EJB</a>，尤其是无状态会话Bean和JMS消息驱动Bean，既有共同点，如三种类型都支持垂直和水平扩展。又有不同点，例如对异常和事务的处理方面。这是Gerald Loeffler博士在最近的一次<a href="https://skillsmatter.com/skillscasts/4987-high-level-concurrency-akka-actors-and-java-ee-7-ejbs#video">介绍性讲座</a>中，从高层次并发角度解释和比较这三种方式后作出的总结。</p>
+<p>Gerald是一名高级集成架构师，在此次讲座中，他将高层次并发定义为一种编程范式，在组件级别处理并发，并且要尽可能地向上抽象，使其与处理单个线程或任务以及向线程池提交等具体操作解除耦合。</p>
+<p>他围绕着<a href="http://en.wikipedia.org/wiki/Active_object">Active Object设计模式</a>思想展开演讲，该模式与传统设计模式相对独立，但是思想是相同的。演讲中的案例使用Scala语言，但是他认为所讲内容Java也适用。</p>
+<p>对于Gerald来说，从Active Object角度，有一个简单的心智模型：</p>
+<ul> 
+ <li><strong>Akka Actor</strong>接收任意对象形式的消息，并以队列形式存储在邮箱中。通过统一的接口分别管理和定位这些消息。</li> 
+ <li><strong>无状态会话Bean</strong>暴露在应用服务器中执行的异步方法，由容器控制其生命周期。</li> 
+ <li><strong>JMS消息驱动Bean</strong>从JMS队列/主题中接收和处理预定义类型的消息。和会话Bean类似，该类型的Bean也由容器管理。</li> 
+</ul>
+<p>这三种类型的相同点是由线程异步执行，线程一般从线程池中获取，对同一个实例顺序访问。</p>
+<p>Gerald使用以下三种模式对这三种类型进行了比较，并配有相应的代码案例：</p>
+<ul> 
+ <li><strong>本地单向异步请求</strong>，请求者向响应者发送异步请求，而响应者不会响应请求。</li> 
+ <li><strong>请求异步上下文外请求</strong>，请求者向响应者发送消息，响应者响应请求并返回消息，请求者接收到消息后需要重建上下文。</li> 
+ <li><strong>请求异步上下文内请求</strong>，当接收返回消息时，请求者通过某种方式已经保存了上下文。</li> 
+</ul>
+<p>最后，Gerald简短地总结了这三种类型的相同点，如三种类型都使用线程池，支持垂直和水平扩展，以及不同点，如异常处理，监督策略和事务处理。</p>
+<p><a href="http://akka.io/">Akka</a>是一款开源工具包和运行环境，用于在JVM中构建并发和事件驱动型应用。 <a href="http://en.wikipedia.org/wiki/Enterprise_JavaBeans">企业Java Bean</a>，即EJB，是Java EE标准的一部分，目前版本是<a href="http://www.oracle.com/technetwork/java/javaee/overview/index.html">Java EE 7</a>。</p>
+<p><strong>查看英文原文：</strong><a href="http://www.infoq.com/news/2014/02/akka-ejbs-concurrency">Akka Actors vs. Java EJBs from a High-Level Concurrency Perspective</a><a href="http://www.infoq.com/news/2014/03/orion-5"></a></p>
+<hr />
+<p>感谢<a href="http://www.infoq.com/cn/author/邵思华">邵思华</a>对本文的审校。</p>
+<p>给InfoQ中文站投稿或者参与内容翻译工作，请邮件至<a href="mailto:editors@cn.infoq.com">editors@cn.infoq.com</a>。也欢迎大家通过新浪微博（<a href="http://www.weibo.com/infoqchina">@InfoQ</a>）或者腾讯微博（<a href="http://t.qq.com/infoqchina">@InfoQ</a>）关注我们，并与我们的编辑和其他读者朋友交流。</p><br><br><br><br><br><br></body></html>

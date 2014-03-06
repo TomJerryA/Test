@@ -1,35 +1,53 @@
-<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>Androidはクローズドソースモデルを目指しているのか？</h3><p><a target="_blank" href="http://www.infoq.com/news/2014/01/android-closed-source-model"><em>原文(投稿日：2014/01/24)へのリンク</em></a></p>
+<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>Telerik Platformを使ったWeb, ハイブリッド, ネイティブアプリの開発</h3><p><a target="_blank" href="http://www.infoq.com/news/2014/02/telerik-platform"><em>原文(投稿日：2014/02/06)へのリンク</em></a></p>
 <div class="article_page_left news_container text_content_container"> 
  <div class="text_info"> 
-  <p><a href="http://arstechnica.com/gadgets/2013/10/googles-iron-grip-on-android-controlling-open-source-by-any-means-necessary/">Ars Technicaの興味深い分析</a>の中でRon Amadeo氏が，GoogleはAndroidを徐々にクローズソースモデルへとシフトしている，という主張をしている。Googleの戦略は，Androidを &quot;小さなホビーにも&quot; 使えるほど自由にカスタマイズ可能にする一方で，&quot;Googleの祝福を受けずにAndroidを使おうとする&quot; 試みを阻止しているというのだ。</p> 
-  <p>Androidに関するGoogleの戦略は，初期の頃とは違ってきている，とAmadeo氏は言う。当初Googleが，完全にオープンなモバイルプラットフォームの提供を目指していたことは間違いない。実用的であるために必要なアプリとサービスをすべて備え，モバイル市場において完成した選択肢となることが目標だったのだ。当時のアプローチは，AOSP(Android Open Source Platform)に可能な限り多くのメーカを参加させる，というものだった。</p> 
-  <p>第２段階としてAmadeo氏が続けるのは，Androidが支配的になった後の状況だ。この段階でGoogleは，検索や音楽，カレンダといった，AOSPのパーツの一部の開発に積極的ではなくなった。Ars Technicaの中では，オープンソースとしては開発停止状態となったこれらのアプリを，Googleが再びブランド化して拡張し，Play Storeでクローズドソースのアプリとして提供するようになった経緯が詳細に説明されている。&quot;オープンソースアプリを殺すことはできません。しかし，以降の開発をすべてクローズドソースモデルに移行することで，それをアバンダンウェア(破棄されたソフトウェア)化することは可能なのです。&quot; とAmadeo氏は言う。Ars Technicaの公開後に，<a href="http://www.unwiredview.com/2013/11/21/android-4-4-kitkat-ships-without-browser-app-oems-have-to-license-chrome-or-build-their-own/">Android 4.4からChromeが削除された</a>ことも注目に値する。</p> 
-  <p>GoogleのAndroid戦略が目標とするもうひとつの柱は，OHA(Open Handset Alliance)によるメーカのロックインだ。OHAのメンバは &quot;その契約上，<a href="http://source.android.com/compatibility/overview.html">Googleの承認しないデバイス</a>の開発が禁止されている&quot; のである。これはすなわち，Androidの非互換フォークに基づいて携帯電話を開発しようとするOEMは，OHAの参加資格，つまり開発した製品上でGoogle Appsを利用する手段を失う，ということを意味する。Googleはこの契約義務を，Acerが<a href="http://en.wikipedia.org/wiki/Aliyun_OS">Aliyun OS</a>という，クラウドベースの中国製Androidフォークをベースとする携帯電話を出荷しようとした時に適用している。さらに有名なのは，Amadeo氏の言葉を借りるならば，Androidファミリに留まりたいと思う &quot;大手OEMには，Kindle FireをAmazon向けに生産することが許されていない&quot; ことだ。</p> 
-  <p>戦略の第３の柱としてArs Technicaの記事が挙げているのは，Google mapsやプッシュ通知，位置情報，アプリ内課金，ゲームなどのプロプライエタリAPIによるサードパーティアプリのロックインだ。これらのAPIはAOSPに含まれないため，Googleの承認を受けないデバイスでは使用できない。Amadeo氏によれば，こういうことだ。</p> 
-  <blockquote> 
-   <p>Google Play Serviceに関するGoogleの戦略は，Googleが承認したデバイス上での開発を可能な限り容易にすることで – 同時に，承認されないデバイスでの開発をできる限り難しくすることで – ‘Android App エコシステム’を‘Google Play エコシステム’に置き換える，というものです。</p> 
+  <p>先日ローンチされた<a href="http://www.telerik.com/platform">Telerik Platform</a>は，インタラクティブなUIのプロトタイプを直感的なドラッグ&amp;ドロップインターフェースで開発可能なことに加えて，デザイナと開発者，アナリストの間のリアルタイムコラボレーションを促進する。さらに，アプリのコード内に設計仕様を直接エクスポートする機能も備えている。</p> 
+  <p>Telerik PlatformはUIツールと，パワフルなクラウドサービスを備えている。Webアプリやネイティブアプリ，ハイブリッドアプリのビルドと管理，テスト，デプロイが可能だ。開発者はブラウザ，デスクトップ，Visual Studioのいずれでもアプリケーション開発を行うことができる。カスタムロジックを使用したバックエンドデータ管理や，専用のユーザ管理，認証，プッシュ通知などの機能に加えて，ユーザへの影響を未然に防ぐクラスプラットフォームのテストツールも備えている。</p> 
+  <p><a href="https://platform.telerik.com">Telerik Platform</a>を使用すれば，一般用および企業用のアプリストアへの公開も簡単に実現できる。iOSおよびAndroidアプリを，プロビジョニングの必要なく提供可能だ。使用状況や統計データを集計して，Webベースのレポートを警告付きで発行するメカニズムも組み込みで備えている。プラットフォームはiOS, Android, Windows Phone, Windows, Blackberryプラットフォームで動作し，.NET, JavaScript/HTML5, Java JSP, PHPなどの技術に適合する。</p> 
+  <p>Telerikのプロダクトマーケティングマネージャである<a href="http://www.linkedin.com/pub/gabe-sumner/8/596/b3b">Gabe Sumner</a>氏がInfoQとの独占インタビューに応じて，Web, ネイティブ，およびハイブリッド環境用に先日リリースされたこのプラットフォームに関する詳しい情報を提供してくれた。</p> 
+  <p><strong>InfoQ: Web，ハイブリッド，ネイティブプラットフォームの間のおもな相違点は何でしょうか？</strong></p> 
+  <blockquote>
+   Telerik PlatformはWebとハイブリッド，そしてネイティブアプリ開発をサポートする，エンドツーエンドかつモジュール型のソリューションです。各アプローチ用のUIフレームワークに加えて，プロジェクトのライフサイクル全般をサポートするクラウドサービスを備えることで，これを実現しています。Webアプリ用にはHTML5ベースの“レスポンシブ”UIを，ハイブリッドアプリにはHTML5ベースのモバイルUIとTelerik AppBuilderを，そしてネイティブアプリにはiOS, Android, Windows Phone, Windows 8用に本物のネイティブUI(各プラットフォームのマシン言語ベース)を用意しています。どのアプローチを選択した場合でも，Telerik Backend Service, Mobile Testing, Analyticsが利用可能です。
   </blockquote> 
-  <p>記事に対するコメントのいくつかには，次のような点が指摘されている。</p> 
-  <ul> 
-   <li>Googleの戦略 &quot;は，Androidのデフラグです [...] Googleがこれを行うのは，それが必要だからなのです。&quot; (<a href="http://arstechnica.com/gadgets/2013/10/googles-iron-grip-on-android-controlling-open-source-by-any-means-necessary/?comments=1&amp;post=25517069">idealego</a>)</li> 
-   <li>&quot;個々のユーザの観点で言えば，GoogleはAndroidデバイスに価値をもたらして，便利にしてくれているのです... &quot; (<a href="http://arstechnica.com/gadgets/2013/10/googles-iron-grip-on-android-controlling-open-source-by-any-means-necessary/?comments=1&amp;post=25516865">batmanuel</a>), &quot;Googleがそれらを厳しく管理するのは，まったく正当なことです。&quot; (<a href="http://arstechnica.com/gadgets/2013/10/googles-iron-grip-on-android-controlling-open-source-by-any-means-necessary/?comments=1&amp;post=25517107">karlsvec</a>)</li> 
-   <li>&quot;これら付属ソフトがすべてクローズドソースになったとしても，基本であるAndroidがオープンソースであることに変わりありません。&quot; (<a href="http://arstechnica.com/gadgets/2013/10/googles-iron-grip-on-android-controlling-open-source-by-any-means-necessary/?comments=1&amp;post=25517153">walkop</a>)</li> 
-  </ul> 
-  <p>その一方で，次のような点を強調するコメントもある。</p> 
-  <ul> 
-   <li>&quot;‘オープンソースAndroid’ というGoogleの PR自体がそもそも嘘です。&quot; (db<a href="http://arstechnica.com/gadgets/2013/10/googles-iron-grip-on-android-controlling-open-source-by-any-means-necessary/?comments=1&amp;post=25517261">right</a>)</li> 
-   <li>この戦略，特にOHA協定は，モバイル新興企業によるイノベーションを阻害しかねません。(<a href="http://arstechnica.com/gadgets/2013/10/googles-iron-grip-on-android-controlling-open-source-by-any-means-necessary/?comments=1&amp;post=25517125">ChrisSD</a>)</li> 
-  </ul> 
-  <p>これを書いている時点で寄せられた<a href="http://arstechnica.com/gadgets/2013/10/googles-iron-grip-on-android-controlling-open-source-by-any-means-necessary/?comments=1&amp;post=25516889#comment-25516889">コメントの大部分</a>が，Googleの戦略をMicrosoftの &quot;3E(Embrace, Extend, Extinguish/吸収，拡大，根絶)&quot; 戦略に擬えている。(<a href="http://arstechnica.com/gadgets/2013/10/googles-iron-grip-on-android-controlling-open-source-by-any-means-necessary/?comments=1&amp;post=25516889#comment-25516889">Paul Rodgers</a>)</p> 
-  <p>議論はArs Technicaの外にも拡がっている。<a href="http://www.androidauthority.com/google-control-friday-debate-286504/">Android Authorityがホストするディベート</a>の中ではRobert Triggs氏が，Googleには &quot;プロプライエタリな製品やサービスが必要なのです。ソフトウェアをすべて，オープンソースコミュニティに解放することは不可能ですから。&quot; と述べている。またAdam Koueider氏は，GoogleのAndroidに対するコントロール範囲が拡大することは，最終的にユーザにもメリットがあると見ている。&quot;ひとつのパイを14の方向に，まったく別々に引っ張られなくですむ&quot; からだ。<a href="http://www.androidauthority.com/google-control-friday-debate-286504/#ViewPollResults">Android Authority Webサイトで実施された調査</a>によると，Googleによるコントロールの拡大はユーザにとってよいことだ，という意見が回答者の72%，結果的に悪くなる，という意見が13%だった。</p> 
-  <p>Stijn Schuermans氏は<a href="http://www.visionmobile.com/blog/2013/11/the-naked-android/?1">'The Naked Android'</a>という記事の中で，プロプライエタリAPIに関するGoogleの戦略を整理している。</p> 
-  <blockquote> 
-   <p>Amazonや数え切れないほどのアジアの携帯電話メーカが，このオペレーティングシステムをフォークしています。さらに悪いことに，Google Playを独自のアプリストアで置き換えて既存のAndroidアプリを活用したり，Googleのサービス(Map)をサードパーティの代替サービス(NokiaのHERE)で代用したりすることが，いとも簡単にできてしまうのです。Androidのブランド自体，SamsungのGalaxyの影に隠れてしまって，もはや中核と呼べるものではありません。</p> 
+  <p><strong>InfoQ: Telerik Platformを開発した実際の目的は，どのようなところにあるのでしょうか？</strong></p> 
+  <blockquote>
+   開発者がデバイスを問わず，素晴らしいエクスペリエンスを提供することを可能にしたいのです。モバイルデバイスの種類は急激に増えています。それがユーザがアプリを他のものと置き換えることの容易さに加えて，すべてのデバイスで動作する魅力的なエクスペリエンスの提供を不可欠なものにしています。しかし開発者にとっては，これは非常に煩雑な作業になります。しかもそれが開発プロセスのすべてのステージ(設計，構築，接続，テスト，配信，管理，測定)に及んでいるのです。過去数年間，Telerikはこの課題に対処すべく，自社の製品ポートフォリオを構築してきました。Telerik Platformのローンチは，魅力的なクロスプラットフォームアプリケーション・エクスペリエンスの開発，提供において開発者を支援する，当社の統合ソリューションを反映したものなのです。
   </blockquote> 
-  <p>Googleが選択した対応策としてSchuermans氏が指摘しているのは，Androidを基本部分だけ残して分解し，手放せるようなものにした上で，プロプライエタリなGoogle Play ServiceやGoogle Appsと組み合わせる，というものだ。</p> 
-  <p>この問題にはもうひとつ，OEMメーカに関する側面がある。彼らとGoogleとの関係，Androidへのコントロールを増大させるGoogleに対して彼らがどのような対応をするか，という点だ。</p> 
-  <p>特許侵害訴訟に関する調査の一環として，The VergeのNilay Patel氏が，<a href="http://www.theverge.com/2011/05/12/google-android-skyhook-lawsuit-motorola-samsung/#2">OEMメーカに対するGoogleの慣習を報告</a>している。そこではGoogleが &quot;互換性を[OEMメーカに]やりたいことに従わせるためのクラブとして使用して&quot; いたと同時に，OEMメーカもそれを認識していた形跡がある，と指摘されている。さらにGoogleは，&quot;Andy Rubin氏自身がOEMからの要求を承認あるいは拒否するという方法で，Androidデバイスの開発において重要な役割を果たしていた&quot; とも述べられている。</p> 
-  <p>Samsungがモバイルハンドセットの63%を販売し，最も成功したハンドセット10機種中5機種が同社のモデルである(<a href="http://www.localytics.com/blog/2013/fonblets-and-phablets-samsung-has-share-of-android-mobile-devices/">Localyticsデータ</a>)という現状においては，自身のソフトウェアをコントロールできていない点がSamsungにとって打破すべき限界となっていることや，Androidを乗り越えるために自社のTizen OSへの関与をますます深めていることは理解できる話だ，と<a href="http://www.firstpost.com/tech/why-samsung-is-planning-to-ditch-android-for-its-new-tizen-os-1225473.html">AP通信は伝えている</a>。</p> 
-  <p>Parmy Olson氏も<a href="http://www.forbes.com/sites/parmyolson/2013/10/28/samsung-kicks-off-its-first-developers-conference-as-it-seeks-an-edge-in-software/">Forbesに向けた記事において</a>，Samsungが最近になって拡大する自社のプラットフォームに対する開発者コミュニティの関与を深めようと努力している点と，GoogleのAndroidに対するコントロールが拡大したことの関連性を立証している。その上で氏は，&quot;ユニークなソフトウェアサービスを通じて，いかにユーザのロイヤリティをつなぎ止めるかという点に，Androidの将来的な成長がかかっている&quot; と述べている。</p> 
+  <p><strong>InfoQ: 開発者にとって，どのようなメリットがあるのでしょう？</strong></p> 
+  <blockquote>
+   モバイルアプリを開発する開発者は，３つの開発アプローチの中から１つを選択するように強いられます – Webとハイブリッド，そしてネイティブです。いずれのアプローチにも長所と短所がありますから，どれが最適かはプロジェクトによって違います。Telerik Platformを使用すれば開発者は，アプローチの選択による制限の受け入れを強いられることなく，プロジェクトの必要に従ったアプローチを選択することができます。Telerik Platformは，プロジェクトに適した開発アプローチ(Web, ハイブリッド, ネイティブ)でモバイルアプリを提供可能にするのです。さらにTelerik Platformはモジュール構造を採用していますので，プラットフォームの必要な部分だけを使用して，既存のツールやインフラストラクチャに組み入れることができます。
+  </blockquote> 
+  <p><strong>InfoQ: Telerik Platformを使ったアプリケーションの開発は，どの程度簡単なのでしょうか？</strong></p> 
+  <blockquote>
+   Telerik Platformは開発者に合わせて，いくつかのプログラミング技術のレベルを想定しています。どういうことかと言うと，さまざまなテンプレートやサンプルプロジェクト，資料やチュートリアルを用意して，開発者の新たな開発環境への取り組みを支援しているのです。さらにビジュアル設計ツールも提供していますので，UIフレームワークを使用したアプリを，より視覚的な方法で開発することができます。とは言っても，当社のプラットフォームは開発者のためのものですから，コーディング経験が前提であることは理解して頂きたいと思います。
+  </blockquote> 
+  <p><strong>InfoQ: Telerik PlatformでWindowsアプリを開発することはできますか？</strong></p> 
+  <blockquote>
+   はい，UIフレームワークはWindows 8, WinForm, WPFに対応しています。Windowsアプリケーションに統合可能なクラウドサービス(バックエンドサービスやアナリティクスなど)はたくさんあります。Telerik Platformは(v1リリースでは)おもにモバイル開発を対象としていますが，Telerikの製品ポートフォリオを見れば，どのプラットフォームにも対応可能なツールやサービスが見つかるはずです。
+  </blockquote> 
+  <p><strong>InfoQ: Windows Phone 8のエミュレータは提供されているのでしょうか？</strong></p> 
+  <blockquote>
+   Windows 8のネイティブ開発を行っている開発者はVisual Studioを使用していることが多いのですが，それには独自のWindows Phoneエミュレータが付属しています。そのような開発者に対して私たちは，Windows PhoneフレームワークとしてTelerik UIを使用することを通じて，迅速な開発作業を提供します。ハイブリッド開発を行う開発者向けには，現在のTelerk AppBuilderにはiOSとAndroid用のシミュレータしかありません。ですが今年の第1ないし第2四半期には，Windows Phone用を加える予定でいます。
+  </blockquote> 
+  <p><strong>InfoQ: Iceniumと比較した場合，どのような違いがありますか？</strong></p> 
+  <blockquote>
+   Telerik Icenium(現在はTelerik AppBuilder)は，Telerik Platformのコンポーネントのひとつです。AppBuilderがハイブリッドアプリケーション開発のみに焦点を当てているのに対して，Telerik Platoformはバックエンド・サービスやモバイルテスト，アナリティクスに対応し，他の開発手法(Webとネイティブ)のUIフレームワークを提供します。 簡単に言うと，Telerik Platformが設計から提供まで，プロジェクト全体に対応しているのに対して，AppBuilderのような個々の製品は，それぞれがパズル全体のひとつのピースに相当する，ということなのです。
+  </blockquote> 
+  <p><strong>InfoQ: Visual Studio 2013からはどのように利用できるのでしょうか？</strong></p> 
+  <blockquote>
+   Telerik UIフレームワーク(Telerik Platformの一部)のほとんどの機能がVisual Studio内で利用できますし，Visual Studioのビジュアルデザインモードをサポートしています。またTelerik AppBuilderにはVisual Studioプラグインが用意されていて，多数のサービス(シミュレータ，ビルドサーバ，デプロイメントなど)がVisual Studioの作業環境から利用可能です。ただしその他のツール，例えばTelerik UI for iOSなどには，Visual Studioのサポートはありません。私たちは，各アプローチ独自の要件を理解するように努めているのです。例えばiOS用のネイティブ開発を行う開発者に必要なのはVisual Studioではなく，xCodeを使うことでしょう。当社のプラットフォームは”すべてのアプローチ”をサポートしますので，開発者それぞれの要望を取り入れたいと思っています。
+  </blockquote> 
+  <p><strong>InfoQ: Telerik Platformを使用すれば，コードをまったく書かなくてもアプリケーションの開発が可能なのですか？</strong></p> 
+  <blockquote>
+   そういったことも可能ですが，私たちが本当に目指しているユースケースではありません。今年の後半には，デザイナやその他のステークホルダ向けのプロトタイピングツールの公開を予定しています。ですが私たちの目標は，“ノーコード”アプリケーションソリューションとなることではないのです。実際に私たちは，そういった“クッキーの抜き型”のようなソリューションからは，魅力的なアプリケーションエクスペリエンスは生まれない，と強く信じています。すばらしいアプリケーションエクスペリエンスは，コードを理解する人々が作り出すものなのです。
+  </blockquote> 
+  <p><strong>InfoQ: InfoQで新しいプラットフォームをテストしたのですが，エミュレータはIEとFireFoxでは動作しませんでした。</strong><strong>この理由について，何かご存じなことはありますか？</strong></p> 
+  <blockquote>
+   おそらくそれは，Telerk PlatformのコンポーネントのひとつであるTelerek AppBuilderを試されたのだろうと思います(AppBuilderはハイブリッド開発用のツール)。AppBuilderのブラウザベースのシミュレータが現在サポートしているのはChromeとSafariです。ですが，アプローチによっては，アプリケーションを実行してテストする方法が他にも複数あります。例えばAppBuilderでは，アプリケーションを物理的なデバイス上で実行することも可能です。それからネイティブ開発を行う開発者には，それぞれのエコシステムが提供する開発環境やエミュレータをサポートしています。
+  </blockquote> 
+  <p><strong>InfoQ: モバイルアプリは今後，どのようになると思いますか？</strong></p> 
+  <blockquote>
+   今後数年間については，一般的な認識としてユーザには選択肢 ... たくさんの選択肢が存在するだろう，と考えています。これまで，テクノロジの選択はIT部門の指示で決められるのが普通だった企業の中でさえ，日々の作業に個人的なサービスやデバイスを使用する権限がユーザに与えられてきています。粗末なエクスペリエンスではユーザは他のソリューションに移ってしまいます。UIが戦略的な課題になるのも時間の問題です。今日の私たちはすでに，“銀の弾丸”的なモバイルアプリ開発ソリューションが絵空事であることを理解しています。いわゆる“クッキーの抜き型”ソリューションで生み出されたアプリでは，はすぐれたエクスペリエンスを得ることはできないのです – 開発者にも，ユーザにとっても，です。これから数年でこういったソリューションは放棄されて，開発上の選択肢を備えたアダプティブプラットフォームが支持されるようになるでしょう。
+  </blockquote>
  </div> 
 </div><br><br><br><br><br><br></body></html>

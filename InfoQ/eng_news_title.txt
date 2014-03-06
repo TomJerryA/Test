@@ -1,1 +1,1 @@
-Big Data Hadoop Solutions, State of Affairs in Q1/2014
+Cassandra Gains Momentum On Enterprise Adoption Around 2.1 Release
