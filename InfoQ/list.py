@@ -1,11 +1,14 @@
 <html>
  <head></head> 
- <body>
-  <div>
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/44.py">Docker、Mac OS XとBTRFSをサポート</a>Docker 0.8のリリースの一部として、Docker.ioチームはMac OS XへのインストールサポートとAUFSの代替としてBTRFSが使えるようになったことを発表した。
-  </div>
-  <div>
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/43.py">Telerik Platformを使ったWeb, ハイブリッド, ネイティブアプリの開発</a>Telerik PlatformはWeb, ハイブリッド, さらにはiOS, Android, Windows Phoneのネイティブアプリを, Webベースのダッシュボード，デスクトップ，あるいはVisual Studioを使って開発する仕組みを提供する。
+ <body> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/45.py">Red HatのJBossチームがWild Fly 8をローンチ - Java EE 7をフルサポート，組み込み可能な新Webサーバを装備</a>Red HatのJBoss部門は本日，WildFly 8の提供開始を発表した。これまではJBoss Application Server(JAS)という名称だったプロダクトだ。このリリースではJava EE7を完全にサポートするとともに，まったく新しいWebサーバであるUndertow，新たなセキュリティ機能，実行中のシステムを更新可能なパッチシステムを備えている。 
+  </div> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/44.py">Docker、Mac OS XとBTRFSをサポート</a>Docker 0.8のリリースの一部として、Docker.ioチームはMac OS XへのインストールサポートとAUFSの代替としてBTRFSが使えるようになったことを発表した。 
+  </div> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/43.py">Telerik Platformを使ったWeb, ハイブリッド, ネイティブアプリの開発</a>Telerik PlatformはWeb, ハイブリッド, さらにはiOS, Android, Windows Phoneのネイティブアプリを, Webベースのダッシュボード，デスクトップ，あるいはVisual Studioを使って開発する仕組みを提供する。 
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/42.py">NightwatchでEnd-to-Endテストを行う</a>Nightwatchは、Node.js上で動く受け入れテスト用のフレームワークである。このツールは、Webアプリケーションのテストを自動化するために、Selenium WebDriver APIを使用している。また、Selenium Serverと相性が悪いJavaScriptやCSSセレクタを使ってEnd-to-Endテストを書くことができるよう、シンプルなシンタックスを用意している。 
@@ -148,8 +151,5 @@
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/0.py">Presto-as-a-Service:AWSでのインタラクティブなSQL実行</a>Facebookが開発したPrestoは大規模なデータにインタラクティブにSQLを実行できるが、始めてメインストリームの利用例が生まれた。ビックデータ関連のスタートアップであるQuboleAmazon Web Servicesと統合したPresto-as-a-Serviceのアルファ版を発表した。 
   </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/49.py">レスポンシブルデザインとコンテントウィジェットを加えたDoc-To-Help 2013 v2</a>Component OneがDoc-To-Help 2013 v2をリリースした。アクセスしたデバイスに対応するコンテントを自動的に表示可能なレスポンシブルUIを備える。Note, Lightbox, Gallery, Carousel, Topic Contents, Tab, Code Highlighterといったコンテントウィジェットも含まれている。 
-  </div>   
  </body>
 </html>

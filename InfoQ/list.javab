@@ -2,6 +2,9 @@
  <head></head> 
  <body> 
   <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/31.javab">Coaching the CxO</a> Agile coaches are not unfamiliar in working with management roles such as project managers and team managers to facilitate changes on team level. But now they need to facilitate change on management level, which completely changes the scope of the agile coach. This article helps agile coaches to understand the context of their target audience and formulate a coaching message matching that context. 
+  </div> 
+  <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/30.javab">Interview with Andy Piper on the Eclipse Paho project and the Internet of Things</a> MQTT provides the communications link for low-power systems. InfoQ caught up with Andy Piper, lead of the Eclipse Paho project, to find out more about the history of MQTT and why it is being used by internet scale companies such as Facebook. 
   </div> 
   <div> 
@@ -147,9 +150,6 @@
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/33.javab">Building a Real-time, Personalized Recommendation System with Kiji</a> Jon Natkins explains in this article how to create a personalized recommendation system fed with large amounts of real-time data using Kiji, which leverages HBase, Avro, Map-Reduce and Scalding. 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/32.javab">Visualizing Java Garbage Collection</a> Garbage Collection, like Backgammon takes minutes to learn and a lifetime to master. In this article Master trainer/consultant Ben Evans summarizes his recent InfoQ presentation &quot;Visualizing Garbage Collection&quot; where he discusses Garbage Collection from the ground up. 
   </div> 
  </body>
 </html>

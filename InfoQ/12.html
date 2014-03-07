@@ -1,31 +1,19 @@
-<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>Cisco发布InterCloud，OpenStack发行版一览 - OpenStack社区周报</h3><p>声明：本周报由华为OpenStack团队出品，由孔令贤整理，授权InfoQ中文站转载。欢迎转发，但请保留原作者信息！</p>
-<p>原文地址：<a href="http://lingxiankong.github.io/blog/2014/02/15/openstack-report-0203-0215/">http://lingxiankong.github.io/blog/2014/02/15/openstack-report-0203-0215/</a></p>
-<p>新浪微博：<a href="http://weibo.com/lingxiankong">@孔令贤HW</a></p>
-<p>博客地址：<a href="http://lingxiankong.github.io/">http://lingxiankong.github.io/</a></p>
-<h3>编者按</h3>
-<p>由于过年的原因，跟踪不是很及时，各个模块的内容明显偏少，后续会补充到下期周报，请朋友们谅解。</p>
-<h2>业界动态</h2>
-<p><a href="http://www.cisco.com/c/en/us/products/switches/intercloud/index.html">Cisco发布InterCloud</a>，为企业提供私有云与公有云之间的迁移，同时支持不同类型的云，可以是基于OpenStack，也可以是AWS，甚至可以是 Microsoft Azure。InterCloud与Red Hat的CloudForm集成。在1月底米兰的展示会上，除了InterCloud，Cisco还发布了其他几个产品/服务：</p>
-<ol> 
- <li><a href="http://www.cisco.com/web/solutions/openstack/docs/cisco_data_center_services_ds.pdf">Cisco Services For OpenStack</a>：帮助客户了解并部署OpenStack，包括：strategy and assessment; validation; design and deployment; software and application platform integration; and optimization</li> 
- <li><a href="http://blogs.cisco.com/datacenter/introducing-cisco-intelligent-automation-for-cloud-4-0/">Cisco Intelligent Automation for Cloud (IAC) 4.0</a>：a comprehensive cloud management solution for enterprises and cloud service providers to deploy private, public, or hybrid clouds</li> 
- <li>Cisco Validated Design (CVD) for Cisco/Red Hat integrated Cloud Management and Provisioning</li> 
-</ol>
-<p>模块化数据中心行家IO公司推出一个名为<a href="http://www.io.com/products-services/enterprise-cloud/">IO.Cloud</a>的新服务，正式进入云计算供应商业务。IO.Cloud用到开放计算（Open Compute）服务器设计，运行的云计算操作系统是OpenStack。IO为IO.Cloud定下的基调是企业云产品。如果IO意欲与较大的云服务提供商争夺企业云的工作量。</p>
-<p>RedHat上周动作不大，仅仅是发布了基于GlusterFS的Red Hat Storage Server支持增强的数据保护和卷快照，同时支持检查点（checkpoints）和虚拟机恢复</p>
-<p>开源云服务 <a href="http://www.theregister.co.uk/2014/01/22/docker_series_b_funding/">Docker 拿到了 1500 万美元B 轮融资</a>，Docker将利用新融资推进Docker环境的通用性，开发与其开源技术配对的商业服务，并组建团队支持不断扩大的社区。Docker目前是世界上发展最快的开源项目之一，该社区帮助Docker获得了红帽公司的认可，后者正将Docker产品整合到它的PaaS（平台即服务）环境OpenShift。Docker还被谷歌计算引擎（Google Compute Engine）采用。eBay、Yandex和众多其它的公司都在生产环境中使用Docker。</p>
-<p><a href="http://venturebeat.com/2014/02/07/ibm-looks-to-end-the-openstack-wars-with-jumpgate-a-bridge-to-public-clouds/">IBM开发出一款工具</a>，以解决云管理生态系统当中的碎片化问题，并希望其方案能够吸引更多供应商在无需运行OpenStack的前提下支持基于OpenStack的应用程序。IBM于2013年六月收购SoftLayer之时，随即发现了OpenStack在发展中面临的最大问题：SoftLayer并没有使用OpenStack技术，而且现有云控制层的开发工作早已进行了数年之久。JumpGate通过为现代OpenStack模块提供API兼容性的方式解决问题，同时将命令转化为可插入库、从而将其转译为能够被其它非OpenStack或者碎片化OpenStack云所能接受的API语义。</p>
-<p>2月10号，HP推出其基于OpenStack的混合云解决方案HP Cloud OS，为企业用户提供安装升级、增强的服务生命周期管理以及混合云场景下的业务迁移。</p>
-<p>Oracle自去年12月份加入OpenStack企业支持后，一直没有动静。但就在2月6号，Oracle与Pluribus Networks宣布合作，为现有的 Oracle Solaris 和Pluribus Networks’Netvisor以插件形式接入OpenStack</p>
-<p>你知道的OpenStack发行版都有哪些？这篇文章告诉你：<a href="http://yourstory.com/2014/02/6-openstack-distributions-help-enterprises-jumpstart-private-cloud-deployment/">6 OpenStack Distributions that Help Enterprises JumpStart Private Cloud Deployment</a>。</p>
-<h2>社区跟踪</h2>
-<h3>Common</h3>
-<p>havana版本2013.2.2于2.13号发布，<a href="https://wiki.openstack.org/wiki/ReleaseNotes/2013.2.2">release notes在此</a>。下一版本2013.2.3预计于4月3号发布</p>
-<p>社区对于项目的孵化和集成规定了一系列要求，<a href="http://lists.openstack.org/pipermail/openstack-dev/2014-February/026450.html">2月6号几个PTL讨论</a>，准备着手对现有的项目进行重新审视以使其达到要求。</p>
-<p>2月4号，victor.stinner@enovance.com 提出了一个建议，<a href="http://lists.openstack.org/pipermail/openstack-dev/2014-February/026237.html">replace eventlet with asyncio</a>，引起了大家的关注和讨论。</p>
-<p>如何使用各个组件的client？社区有人提出，使用client编写代码访问OpenStack时比较困难，且没有指导文档。不过有人给出了<a href="http://python-api-guide.cfapps.io/content/neutron.html">非官方的指导可以暂作参考</a>（<a href="https://github.com/rajdeepd/openstack-samples">source</a>）。</p>
-<p>我们知道OpenStack每个工程中的每个文件都有License声明，但这些声明是不是必要的呢？OpenStack其实参照了Apache社区：License headers allow someone examining the file to know the terms for the work, even when it is distributed without the rest of the distribution. Without a licensing notice, it must be assumed that the author has reserved all rights, including the right to copy, modify, and redistribute.&quot;</p>
-<p>新手的福音，Sandy Walsh（Rackspace）提出为不熟悉OpenStack社区参与方式的人，提供一种游戏化（<a href="http://gamify.com/">gamification</a>）的方式来引导，最终使其更顺利的参与社区：<a href="https://badges.fedoraproject.org/">https://badges.fedoraproject.org/</a></p>
-<h3>Heat</h3>
-<p>增加一个DB的migration用来修复现存的HOT模板，原因是从Havana到Icehouse的一些修改可能导致之前的模板不可用，比如HOT模板之前对于parameter的类型定义可以为“String”，但是在I版的一些修改引入后，heat对于HOT模板的parameter的类型定义支持“string”，而不是“String”，类似这样的问题，社区讨论的结论是用数据库的迁移来解决。并且这将是heat的第一个db的migration。另外指出HOT目前还处于大量开发的阶段，随时会变化，如果对稳定性要求高的应用建议使用cfn模板，参考<a href="https://wiki.openstack.org/wiki/ReleaseNotes/Havana#Initial_support_for_native_template_language_.28HOT.29">release notes</a>。</p>
-<p>I版的一个bp（heat_keystoneclient只支持keystone v3版本）合入导致Rackspace的认证被破坏，因为Rackspace目前只支持keystone的v2版本认证，这个问题对于只支持keystone v2的第三方插件都有影响。对于问题的修复方案目前仍在讨论。</p><br><br><br><br><br><br></body></html>
+<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>Swift 1.13.0发布</h3><p>Swift是OpenStack在对象存储方面的核心项目，它在概念上类似于 Amazon S3 服务，不过Swift具有很强的扩展性、冗余和持久性，也兼容 S3 API。该项目在近几年发展迅速，版本发布也比较快，继1月28日发布1.12.0之后该团队又于最近发布了1.13.0。</p>
+<p>新版本的Swift不仅实现了一个蓝图同时还包含大量的bug修复，主要特性如下：</p>
+<ul> 
+ <li>帐户级别的ACL以及ACL格式V2。帐户将使用一个新的特权头表示ACL或者其他任何形式的帐户级别的访问控制。该特权头的值是一个由身份验证系统解释的JSON字典字符串。TempAuth上给出了一个参考实现，完整的文档可以查看<a href="http://swift.openstack.org/overview_auth.html">这里</a></li> 
+ <li>新增一个WSGI环境标志以解决swob始终使用绝对位置的问题。借助于该特性插件能够在一个响应中使用规范之外的Location头</li> 
+ <li>容器同步代理现在能够支持简单的负载均衡</li> 
+ <li>为可恢复对象GETs增加了降低超时的配置选项</li> 
+ <li>针对帐户总写入速率增加新的限制（ratelimit）方法</li> 
+ <li>cname_lookup 插件允许多个storage_domain值</li> 
+ <li>将所有DLO 功能转移至单一插件（中间件）。Swift Proxy会自动地将DLO插件置入请求链中的适当位置，处理方式和gatekeeper插件一样。所以在升级到1.13.0之后，即使未将DLO写入请求链，DLO依然能够在集群内正常运转。</li> 
+ <li>移除了python-swiftclient依赖</li> 
+ <li>新增辅助组以便于在特权提升期间处理用户</li> 
+ <li>在记录请求头时，现在能够明确地指定应该记录哪些头</li> 
+ <li>向帐户和容器服务器中添加了log_requests配置参数以便于匹配对象服务器中的参数。部署人员能够通过该参数为这些进程关闭日志消息</li> 
+ <li>确保为DLO/SLO请求设置了swift.source</li> 
+ <li>修复了覆写动态清单中的段内容会导致请求链出错的问题</li> 
+ <li>在容器配额插件中适当地处理COPY动词</li> 
+ <li>改进了Web列表和索引中的StaticWeb 404错误信息</li> 
+</ul><br><br><br><br><br><br></body></html>

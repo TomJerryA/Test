@@ -1,31 +1,55 @@
-<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>AzulがWindowsおよびLinux向けのOpen JDK 6とJDK 7の商用バージョンを発表</h3><p><a target="_blank" href="http://www.infoq.com/news/2014/01/expanding-zulu"><em>原文(投稿日：2014/01/21)へのリンク</em></a></p>
+<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>Red HatのJBossチームがWild Fly 8をローンチ - Java EE 7をフルサポート，組み込み可能な新Webサーバを装備</h3><p><a target="_blank" href="http://www.infoq.com/news/2014/02/wildfly8-launch"><em>原文(投稿日：2014/02/12)へのリンク</em></a></p>
 <div class="article_page_left news_container text_content_container"> 
  <div class="text_info"> 
-  <p><a href="http://www.azulsystems.com">Azul Systems</a>は，フリーで使用できる同社版OpenJDKの<a href="http://www.azulsystems.com/products/zulu">Zulu</a>が，LinuxとWindowsベースの製品系列で，Java 6とJava 7の両方をサポートすると発表した。サポートは<a href="http://www.azulsystems.com/forums">Zulu Community Supportフォーラム</a>を通じて行われる。同社はまた，OpenJDKの商用サポート版であるZulu Enterpriseも提供している。</p> 
-  <p>ZuluはさまざまなLinuxとWindowsのバージョン – Red Hat Enterprise Linux, SUSE Linux Enterprise Server, Ubuntu DesktopとServer, CentOS – 上で動作する。コミュニティのフィードバックに対応して，将来的にはさらに多くのディストリビューションに対応する計画だ。Azulでは以前にもWindows Azure用のZuluを発表しているが，今回発表されたのは，オンプレミス版のWindowsシステムに関するサポート追加である。サポート対象のオペレーティングシステムとプラットフォームは，全部で次のようなリストになる。</p> 
-  <ul> 
-   <li>Red Hat Enterprise Linux 5.2以降と6.0以降</li> 
-   <li>SUSE Linux Enterprise Server 11 sp1, sp2とspa</li> 
-   <li>CentOS 5.2以降と6.0以降</li> 
-   <li>Ubuntu 10.04 LTSと12.04 LTS</li> 
-   <li>Windows Server: 2008, 2008 R2, 2012および2012 R2</li> 
-   <li>Windows Desktop: 7, 8, および8.1</li> 
-   <li>ハイパーバイザ: VMware, Hyper-V, KVM</li> 
-   <li>クラウド: Amazon AWS, Windows Azure, Rackspace</li> 
-   <li>JDKバージョン: Java SE 6, 7.</li> 
-  </ul> 
-  <p>OpenJDK 8についても &quot;GAが出ればすぐにでも&quot; サポートする予定であると，AzulでマーケティングVPを務めるHoward Green氏は我々に語った。ただし過去のバージョン(Java 5など)については，Java 6以前のOpenJDKが存在しないため，サポートする予定はない。</p> 
-  <p>ZuluはAzulの製品であるZingから分離したもので，すべてOpenJDKコードをベースにしている。Azul systemsのCTOであるGil Tene氏は，次のように述べている。</p> 
+  <p>Red HatのJBoss部門は本日，<a href="http://wildfly.org">WildFly 8</a>の提供開始を<a href="http://wildfly.org/news/2014/02/11/WildFly8-Final-Released/">発表した</a>。これまではJBoss Application Server(JAS)という名称だったプロダクトだ。今回のリリースではJava EE7認定を取得し，Web ProfileとFull Profileの両方をサポートする。さらに，まったく新しいWebサーバであるUndertow，新たなセキュリティ機能，実行中のシステムを更新可能なパッチシステムを備えている。</p> 
+  <p>UndertowはServlet 3.1コンテナであり，HTTP管理インターフェースのサーバでもある。新しいコンテナはHTTP/1.1 RFCの一部である<a href="http://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html#sec14.42">HTTP Upgrade</a>をサポートしており，HTTP接続を他のプロトコルにアップグレードすることができる。そのもっとも一般的な用途は，Webソケット接続における，ブラウザなどクライアントによる全二重接続の確立だ。</p> 
+  <p>HTTP Upgradeでは単一のHTTPポート上に複数のプロトコルを多重化することができるため，複数のポートを使用する必要がなくなり，ファイアウォールの設定が簡略化できる。WildFlyそれ自体，わずか２つのポートしか使用しない。JNDIとEJBコールはUndertowサブシステムの8080ポート上に，管理プロトコルはWeb管理ポート(9090)上に，それぞれ多重化されている。</p> 
+  <p>一例として，接続確立後の最初のEJB要求は，通信の上では次のようなものになる。</p> 
+  <pre>
+GET / HTTP/1.1<br />Host: example.com<br />Upgrade: jboss-remoting<br />Connection: Upgrade<br />Sec-JbossRemoting-Key: dGhlIHNhbXBsZSBub25jZQ==</pre> 
+  <p>これに対してUndertowは，アップグレード可能であることをクライアントに応答する。</p> 
+  <pre>
+HTTP/1.1 101 Switching Protocols<br />Upgrade: jboss-remoting<br />Connection: Upgrade<br />Sec-JbossRemoting-Accept: s3pPLMBiTxaQ9kYGzzhZRbK+xOo=</pre> 
+  <p>その後はWildFly EJBレイヤにソケットが渡されて，通常のEJB接続として動作する。</p> 
+  <p>最初のHTTP要求にわずかなオーバーヘッドがあるものの，接続してしまえばパフォーマンスは完全に同等のはずだ。必要なポート数が確実に少なくなる分，全体として見ればメリットがあることを期待できる。Red Hat JBoss部門でJBoss EAPプラットフォームアーキテクトを務めるWildFlyリーダのJason Greene氏は，InfoQに次のように語っている。</p> 
   <blockquote> 
-   <p>私たちはユーザの問題やバグフィックスに積極的に取り組んでいますが，その成果はすべて上位に送って，OpenJDKに取り込まれています。私たちはOpenJDKを分離してコードを変更するために努力するつもりはないからです。</p> 
+   <p>HTTP要求を処理する必要があるので，接続確立時にさらにオーバヘッドがいくらか発生しますが，Undertowの効率性によって非常に低く抑えられています。アップグレード要求後は，HTTPを使用しない場合と完全に同じ動作をしますので，その意味から見たパフォーマンスについてはまったく同じです。インパクトが極めて小さいので，私たちはこれをデフォルト設定にしました。 初期設定のWildFly 8はわずか２つのHTTPポートしか使用しません。ひとつは管理用，もうひとつはアプリケーション用です。その他のプロトコルはすべて，これらのポートを再利用しています。</p> 
   </blockquote> 
-  <p>コミュニティサポートのビルドの他にAzulでは，フルサポートの付いたOpenJDKの商用版であるZul Enterpriseを提供している。主要なJavaバージョンについては，そのGA(General Availability)以降10年サポートされる(Java 6を例にすれば，Zulu Enterpriseのサポート契約は2024年まで有効である)。</p> 
-  <p>提供されるサポートは，3段階のサブスクリプション(Gold, Platinum, Elite)を基本とする。Eliteオプションには &quot;Application Guard&quot; が含まれる。これはオペレーティングシステムやJVMの正確なバージョン番号，設定情報などを参照して，それをAzulのQuality Assuranceプロセスに取り入れるためのものだ。これによって企業ユーザは，運用時に正確なOSとJVMの組み合わせに対して，Zulu JDK/JVMをテストすることが可能になる。</p> 
-  <p>Zulu Enterpriseのユーザには，専属のTAM(Technical Account Manager)も提供される。このオプションはユーザに，専任の技術サポートエンジニアを提供して，企業内におけるZuluの利用知識の継承や，さまざまな事例での実践的管理の支援を行う，というものだ。</p> 
-  <p>Zingと同様，OpenJDKの商用サポートも，Azulのユーザからかなり前から要望されていた，とTene氏は我々に語った。フリー版のJavaがまったくサポートされないということを，Oracleがいよいよ明らかにしている点を考慮すれば，有償Javaサポートの市場は拡大することになるだろう，と氏は考えている。</p> 
-  <blockquote> 
-   <p>Javaは製品なのです。Oracleが提供しているフリーダウンロード版には，まったくサポートがありません。商用サポートが必要ならば，購入すればよいのです。Java 6やJava 5といったように，バージョンの全期間を対象とした商用サポートの他に，現行出荷バージョンの商用サポートもあります。これは有償でなければサポートされません。ですから，３日前に公開された最新のupdate 51を無償でダウンロードすることも可能ですし，それもよいでしょう。しかしあくまでも，それは彼らの善意なのです - 問題が起きたとき，彼らの支援は期待しない方がよいでしょう。</p> 
-  </blockquote> 
-  <p>Azulは，よくあるように，価格の情報に関する質問には明確に答えなかった。価格モデルはマシン単位のサブスクリプションに基づくものだ。&quot;Zingはすでに，市場で最低価格の商用サポート付きJVMです。&quot; Howard Green氏は我々に語った。&quot;Zuluも大体同じ程度ですが，Zingよりも低価格です。&quot;</p> 
+  <p>Undertowは組み込みモードでも使用可能なように設計されている。構築したサーバにHTTPハンドラを登録して，要求を非ブロック方式で処理するためのチェーン構成APIが用意されているのだ。<a href="http://undertow.io">undertow.io</a>Webサイトでの使用例を挙げる。</p> 
+  <pre>
+public class HelloWorldServer {
+
+    public static void main(final String[] args) {
+        Undertow server = Undertow.builder()
+                .addListener(8080, &quot;localhost&quot;)
+                .setHandler(new HttpHandler() {
+                    @Override
+                    public void handleRequest(final HttpServerExchange exchange) throws Exception {
+                        exchange.getResponseHeaders().put(Headers.CONTENT_TYPE, &quot;text/plain&quot;);
+                        exchange.getResponseSender().send(&quot;Hello World&quot;);
+                    }
+                }).build();
+        server.start();
+    }
+}
+</pre> 
+  <p>Undertowでは，Servlet APIに基づいてコードを組み込むこともできる。これについては，いくつかの例が<a href="https://github.com/undertow-io/undertow/blob/master/examples/src/main/java/io/undertow/examples/servlet/ServletServer.java">GitHub</a>にある。</p> 
+  <p>新しいWebサーバだけでなく，WildFly 8は監査ログやロールベースのセキュリティモデルの導入によって，セキュリティ面でも著しく向上している。</p> 
+  <p>監査システムは，管理モデルに対するどのような操作であっても，ローカルファイルまたはサーバ上のログに確実に記録されるように設計されている。</p> 
+  <p>WildFlyは２タイプのアクセス管理プロバイダを添付して提供される。&quot;シンプル&quot;タイプはAS 7と同等で完全にオール・オア・ナッシング形式のものだが，RBAC(Role Based Access Control)タイプは管理者それぞれに権限を設定可能だ(監視用ロール，更新ロール，といったように)。</p> 
+  <p>WildFlyには７つのロールがあらかじめ定義されている。</p> 
+  <ol> 
+   <li><strong>モニタ</strong>: 最小限の権限を持つ。 コンフィギュレーションと現在のランタイム情報を参照できるが，機密性の高いリソースとデータ，監査ログおよび関連リソースにはアクセスできない。</li> 
+   <li><strong>オペレータ</strong>: 監視ロールのすべての権限に加えて，実行状態の変更 – サーバのリロードあるいはシャットダウン，JMSデスティネーションの一時停止と再開が可能。ただし永続的なコンフィギュレーションを変更することはできない。</li> 
+   <li><strong>メンテナ</strong>: オペレーターロールのすべての権限。 永続的なコンフィギュレーションの変更，すなわちアプリケーションのデプロイや，JMSデスティネーションの追加といった操作が可能。このロールでは，サーバとデプロイメントに関する，ほとんどすべてのコンフィギュレーションを変更することができる。ただし機密性の高い情報(パスワードなど)の参照や変更，監査情報の参照や変更を行うことはできない。</li> 
+   <li><strong>デプロイヤ</strong>:&nbsp;メンテナとほとんど同じだが，対象がデプロイに関する修正に制限されている。その他の一般的な設定を変更することはできない。</li> 
+   <li><strong>管理者</strong>:&nbsp;パスワードやセキュリティ関連の設定といった，機密性の高い情報の参照と変更が可能。ただし監査ログに関する操作はできない。</li> 
+   <li><strong>監査人</strong>:&nbsp;モニタロールのすべての権限を持つ。基本的には読み取りのみのロールだが，監査ログシステムに関する設定は修正も可能。</li> 
+   <li><strong>スーパーユーザ</strong>:&nbsp;AS 7のアドミニストレータと同じく，すべての権限を所有する。</li> 
+  </ol> 
+  <p>RBACデータはActive Directoryを含む，ほとんどすべてのLDAPサーバに保存することができる。</p> 
+  <p>WildFlyには新しいパッチシステムも含まれている。これは当初，JBoss EAPのために開発されたもので，JBossの用意したパッチをリモートあるいはローカルで適用することができる。実行中のシステムに対するパッチ適用も可能だが，それを有効にするには再起動が必要になる。</p> 
+  <p>最後に，WildFlyはおもにJava EEのサポートにフォーカスしているが，その他の言語や環境用にも使用することができる。例えば<a href="http://torquebox.org">TorqueBox</a>プロジェクトでは，サーバ上でRuby on Railsを稼働させることが可能だ。</p> 
+  <p>詳細は<a href="http://wildfly.org">WildFlyのwebサイト</a>あるいは<a href="http://wildfly.org/news/2013/11/21/WildFly-8-Webinar/">webiner記録</a>で見ることができる。InfoQではJason Greene氏に<a href="http://www.infoq.com/jp/news/2014/02/wildfly8-interview">さらに広範な話題でのインタビュー</a>も行っている。そこではさまざまな話題と合わせて，新しい監査ログシステムであるUndertowの背景や，GlassFishの<a href="http://www.infoq.com/jp/news/2013/11/glassfish-commercial-dead/">商用サポートを廃止する</a>という，Oracleの決定が持つ影響についても取り上げている。</p> 
  </div> 
 </div><br><br><br><br><br><br></body></html>

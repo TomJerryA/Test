@@ -1,6 +1,18 @@
 <html>
  <head></head> 
- <body> 
+ <body>
+  <div>
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/1.java">QCon New York 2014 Update: Netflix, LinkedIn, Google, Foursquare Case Studies Confirmed (Jun 11-13)</a>The third annual QCon New York (Jun 11-13, 2014) will feature in-depth case studies from LinkedIn, Netflix, Foursquare, Google, Mount Sinai, Gilt and others. Hear how these companies are dealing with some of the greatest challenges in the arenas of Big Data, DevOps, Cloud Computing, Architecture, and Software Delivery. Register before Mar 15th and save $500.
+  </div>
+  <div>
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/0.java">What Is (Not) DevOps, and How Do We Get There?</a>In this article we discuss some of the misunderstandings surrounding DevOps and provide an introduction to a process that can bring the cultural shift that DevOps is all about.
+  </div>
+  <div>
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/49.java">Building a Better WCF Client</a>The WCF client that Visual Studio generates by default is a problem. Besides not being a direct match with the server-side interface code, which causes a lot of code and data sharing problems, the generated code still has a glaring bug after all these years. Michael Taylor discusses these issue and his attempts to address them in a series titled “A Smarter WCF Service Client”.
+  </div>
+  <div>
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/48.java">Using Scrum of Scrums with Agile Teams to Coordinate and Collaborate</a>Scrum of scrums can be used to scale the daily stand-up meeting when multiple teams are involved. Its purpose is to support agile teams in collaborating and coordinating their work with other teams. Several authors have shared views on scrum of scrums, with experiences of using them.
+  </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/47.java">Cassandra Gains Momentum On Enterprise Adoption Around 2.1 Release</a>Cassandra is rapidly heading towards 2.1 release, with 2.1.0-beta1 already available for evaluation. We take a look at major features introduced in the latest major release and what's coming up. Supported by DataStax, Cassandra is expanding its reach towards the enterprise world. DataStax recently announced a partner network program, Patrick McFadin called out on MongoDB's scaling issues and other 
   </div> 
@@ -138,18 +150,6 @@
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/6.java">Elasticsearch 1.0.0 released</a>Elasticsearch released version 1.0.0 of its self-titled, open-source analytics tool. Elasticsearch is a distributed search engine which allows for real-time data analysis in big-data environments. The new version comes with various functional enhancements and changes to the API to make Elasticsearch more intuitive and powerful to use. 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/5.java">Oracle Releases 144 Security Fixes, 36 for Java SE</a>Oracle released their latest Critical Patch Update (CPU), containing 144 new security fixes across all product families, including 36 for Java SE. 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/4.java">Google's BigQuery Gaining Momentum</a>BigQuery, a SaaS query offering by Google, seems to gain more and more momentum. It allows to query large-scale columnar data structures using a SQL-like query language, in the cloud and provides integration with other Google services such as Google Analytics and Google Apps Script. 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/3.java">Google Cloud SQL now Generally Available</a>Google have announced general availability of their Cloud SQL service. At launch the service comes with automatic encryption of customer data, a 99.95% uptime SLA and support for databases up to 500GB in size. 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/2.java">Interview with VersionOne CEO Robert Holler on the Winter Product Release</a>InfoQ spoke to VersionOne CEO Robert Holler about the features of the Winter 2014 release and their strategic investment themes. 
-  </div> 
+  </div>     
  </body>
 </html>

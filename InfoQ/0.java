@@ -1,84 +1,38 @@
-<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>Applying Use Cases in Agile: Use Case 2.0, Slicing and Laminating</h3><p>To incrementally develop and deliver products using agile software development, requirements are gathered and organized into a product backlog. A requirement technique that is used in agile software development is use cases. Some techniques to apply use cases for managing product requirements in agile are use case 2.0, slicing and laminating.</p>
-<p>Shobha Rangasamy Somasundaram and Amol Sharma wrote a blog post about <a href="http://www.infosysblogs.com/infosys-labs/2013/10/can_formal_requirement_methods.html">can formal requirement methods work for agile</a> in which they compare the usage of requirements between waterfall and agile software development:</p>
+<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>What Is (Not) DevOps, and How Do We Get There?</h3><p>In this article we discuss some of the&nbsp;misunderstandings surrounding DevOps and provide an introduction to a process that can bring the cultural shift that DevOps is all about.</p>
+<p>In a post entitled&nbsp;“<a href="http://www.virtualizationpractice.com/devops-engineer-25120/">No, You Are Not a DevOps Engineer</a>”,&nbsp;Mike Kavis,&nbsp; VP/Principal Architect for Cloud Technology Partners, has addressed some of the misconceptions surrounding DevOps. For example, he mentions how some teams are misusing the term DevOps:</p>
 <blockquote> 
- <p>In traditional software development or waterfall process, the following methods are used during the requirements phase - brain storming, questionnaire, modeling, prototyping, observation, focus group, survey, reverse engineering, interview, document analysis, workshop for joint application development (JAD) - collaboration &amp; domain model creation. In waterfall, requirements are sourced from the client, the BA and the product owner, wherein, they interact and prepare the final requirements document. Once the requirements are finalized, they are conveyed to the development team.</p> 
+ <p>Enterprises are struggling with DevOps. They all want DevOps even though many do not know what it is. In many cases, I see infrastructure teams who are calling themselves DevOps leading a grassroots initiative. When I ask them where the development team is, they often say either “we did not invite them,” or even worse, “we don’t talk to them.”</p> 
 </blockquote>
+<p>Some engineers advertise themselves as DevOps, but they are not, according to Kavis, because&nbsp;“DevOps is not a person, a role, or a title. You are not a DevOps engineer, even though you may call yourself one.” If DevOps is not a role, a qualification, a title, then what is it? Kavis’ definition is:</p>
 <blockquote> 
- <p>(…) requirements in agile are no longer committed to the beginning of the project or limited to a few individuals, but are a perpetual driver for the entire software development lifecycle. Agile does not prescribe any one way to document the requirements, the focus is instead on &quot;just enough&quot; documentation. Details are discovered and unfold slowly only when they are required. The monolithic dedicated &quot;requirements stage&quot; is broken and dispersed, that it now becomes omnipresent, with the same traditional analysis methods, performed throughout the lifecycle.</p> 
+ <p>DevOps is a culture shift or a movement that encourages great communication and collaboration (aka teamwork) to foster building better-quality software more quickly with more reliability.</p> 
 </blockquote>
-<p>In their blog post Shobha and Amol provide a detailed description on how to combine roadmaps, use cases and user stories to manage the product requirements.</p>
-<p>Andy Hayward explored different requirement techniques in a series of blog post. In <a href="http://whyarerequirementssohard.wordpress.com/2013/10/16/when-to-use-user-stories-use-cases-and-ieee-830-part-2-use-cases/">when to use user stories, use cases and IEEE 830 – Part 2: Use cases</a> he mentions several use case formats:</p>
+<p>He then details:</p>
 <blockquote> 
- <p>Use cases can be written in a highly formal format to describe the process extremely precisely, or in a simple paragraph format, what Alistair Cockburn described as a “Use Case Brief”, which is slightly more detailed than a User Story, and there are many variations in between. This gives the analyst a broad range of options to fit her use cases to the project need. Unfortunately, most organizations enforce a standard template for use cases which limits this flexibility.</p> 
+ <p>DevOps is the progression of the software development lifecycle (SDLC) from Waterfall to Agile to Lean. DevOps goes beyond Agile and focuses on removing waste from the SDLC. Often, the waste or bottlenecks are found in the forms of inconsistent environments, manual build and deployment processes, poor quality and testing practices, lack of communication and understanding between IT silos, frequent outages and failing SLAs, and whole suite of issues that require precious IT resources to spend significant time and money keeping the systems running. …</p> 
+ <p>Another reoccurring pattern I see is that a “DevOps” team’s first step is often to figure out if they are going to use Chef or Puppet (or Salt or Ansible or whatever else is hot). They have not even defined the problems that they are setting out to solve, but they have the tools in hand to solve them. Often these teams wind up building thousands of lines of the scripts, which raises the question, “are we in the business of writing Chef scripts or in the business of getting to market faster with better quality and more reliability?” Too often, these teams code themselves into a corner with mountains of proprietary scripts that actually add more waste to the system, instead of removing waste from the system, which is what the driving forces behind the DevOps movement are all about.</p> 
 </blockquote>
-<p>Breaking down use cases into smaller parts can be difficult as Andy explains:</p>
-<blockquote> 
- <p>The problem with use cases is that they usually encapsulate a lot of requirements into one large chunk of information. This makes it hard for development teams to estimate the use case’s complexity and plan their work, and hard for the business to provide a meaningful estimation of value or priority. It’s possible to break each use case down into a list of ‘scenarios’ that describe each possible path through the steps, but if you’re doing that much additional work you might as well write “The system shall” in front of each scenario.</p> 
-</blockquote>
-<p>The webpage <a href="http://www.ivarjacobson.com/Software_Use_Case_Essentials/">use case 2.0 essentials practice</a> provides an overview (based on the <a href="http://www.ivarjacobson.com/Use_Case2.0_ebook/">Use-Case 2.0 ebook</a>) of how to capture requirements with use case slicing:</p>
-<blockquote> 
- <ul> 
-  <li>Describe exactly what a software system must do</li> 
-  <li>Group parts of the requirements together for broad-brush scope management</li> 
-  <li>Slice the requirements to create well-formed product backlog items and drive iterative development</li> 
-  <li>Change the priority of what the customer wants at any time</li> 
-  <li>Produce a simple visual model, and meaningful requirements, that are understandable to developers and customers alike</li> 
-  <li>Realize the benefits of iterative and backlog-driven management practices such as Scrum, and the IJI Iterative Essentials</li> 
-  <li>Capture their requirements just-in-time, and in just enough detail, to support their business goals.</li> 
- </ul> 
-</blockquote>
-<p>You can do use case slicing in agile to incrementally develop and deliver products:</p>
-<blockquote> 
- <p>The Use-Case 2.0 Essentials practice starts by finding actors and use cases, and selecting and prioritizing the parts (slices) of the use cases to be developed. It continues by detailing the use-cases slices and more importantly their tests, and then implementing software to meet the tests. It concludes by executing the tests, tracking progress in terms of verified, working software and feeding back the results in order to handle change and better support the team.</p> 
-</blockquote>
-<p>Building a product starts with a skinny system as <a href="http://www.infoq.com/author/Ivar-Jacobson">Ivar Jacobson</a> described in his blog post <a href="http://blog.ivarjacobson.com/architecture/">architecture</a>:</p>
-<blockquote> 
- <p>[A skinny system] has all significant paths through the use cases (or scenarios); it has all significant subsystems, components, classes, nodes. Usually this skinny system only includes 5-15% of the final code, but enough to demonstrate that the significant elements work. And most important, we know that this skinny system can grow to become the complete system.</p> 
-</blockquote>
-<p>In the blog post <a href="http://blog.xebia.com/2012/07/12/improving-user-stories-with-usecases/">improving user stories with use cases</a> Richard Schaaf described how use case 2.0 can help to manage the product requirements with use cases. According to Richard, the problems that organizations have with user stories have to do with process that is used to define them:</p>
-<blockquote> 
- <p>The issue here is (..) that it is really hard to write User Stories in such a way that they really help and are useful in the long term. What we need is not a replacement for User Stories, but a better way to come up with them.</p> 
-</blockquote>
-<blockquote> 
- <p>Quite often, the Product Backlog degenerates over time and this leads to real problems for the teams. If you want to have a really successful Agile organisation, you really need to focus on the process of User Story generation.</p> 
-</blockquote>
-<p>He suggests using use case slices to define your user stories:&nbsp;</p>
-<blockquote> 
- <p>A use-case slice is a collection of front-to-back flows through a use case, including the associated test cases that is of clear value to the customer. A front-to-back flow is called a use-case story.</p> 
-</blockquote>
-<p>Richard explains how you can break down a use case into use case stories, and use them to define use case slices which can be the user stories that we need for our product backlog:</p>
-<blockquote> 
- <p>If you did your use-case modelling right, each of these use-case stories has a certain value. A use-case slice is then simply a selection (one of more) of these use-case stories, plus a number of test cases that should be met.</p> 
- <p>A use-case slice defined in this way meets all the criteria for being a User Story. After all, we know who it is for (the initiating actor), what is requested (the use-case stories and test cases) and the value (derived from the way the use case was constructed). Thus a use-case slice <strong>is</strong> a User Story and can be used as an item on the Product Backlog.</p> 
-</blockquote>
-<p>Some of the advantages of using use case slices according to Richard are:</p>
-<blockquote> 
- <p>By putting the use cases in a central position, the focus is always on the entire system.</p> 
- <p>The level of detail is a discussion item early on, so we end up with just enough detail, just in time.</p> 
- <p>The definition of a use-case slice ensures that each User Story is a front-to-back Story that actually focuses on value.</p> 
-</blockquote>
-<p><a href="http://www.infoq.com/author/Alistair-Cockburn">Alistair Cockburn</a>&nbsp;wrote&nbsp;<a href="http://alistair.cockburn.us/Laminating+not+slicing">laminating not slicing</a>&nbsp;where he describes a metaphor which he calls “laminating”:</p>
-<blockquote> 
- <p>However, the language is backwards, we are not starting with an elephant, and deconstructing it into slices. We are starting from nothing and constructing the elephant. Having a pile of elephant slices does not produce an elephant. What we want to discuss is the sequence of laminations that produce the best-semblance of an elephant in the least time.</p> 
-</blockquote>
-<p>Laminating starts with a <a href="http://alistair.cockburn.us/Walking+skeleton">walking skeleton</a>:</p>
-<blockquote> 
- <p>A walking skeleton is a tiny implementation of the system that performs a small end-to-end function. It need not use the final architecture, but it should link together the main architectural components. The architecture and the functionality can then evolve in parallel.</p> 
-</blockquote>
-<p>How can a walking skeleton of a software product or system look? Alistair provides some examples:</p>
-<blockquote> 
- <p>What constitutes a walking skeleton varies with the system being designed. For a client-server system, it would be a single screen-to-database-and-back capability. For a multi-tier or multi-platform system, it is a working connection between the tiers or platforms. For a compiler, it consists of compilation of the simplest element of the language, possibly just a single token. For a business process, it is walking through a single and simple business transaction (as Jeff Patton describes in the technique Essential Interaction Design, later in this chapter).</p> 
-</blockquote>
-<p>From the walking skeleton you start to laminate outwards as Alistair described in <a href="http://alistair.cockburn.us/The+A-B+work+split%2c+feature+thinning+and+fractal+walking+skeletons">the A-B work split, feature thinning and fractal walking skeletons</a>:</p>
-<blockquote> 
- <p>I put part of the feature F on the steeply rising part of the curve, and said, “Just do enough of the feature to be sure you can do the rest of the feature without trouble (that’s the A part). Now defer the rest of the feature F (the B part) to the tail of the curve. You know you can grab for B at any time.</p> 
-</blockquote>
-<p>Alistair provides several strategies on how you can do the A-B work split to determine and prioritize thin features that you can use to develop your product incrementally:</p>
-<blockquote> 
- <ul> 
-  <li><a href="http://alistair.cockburn.us/The+A-B+work+split">The A-B work split</a> says to implement just enough of a feature to be sure you can grab the rest of it at any time.</li> 
-  <li>Jeff Patton’s <a href="http://alistair.cockburn.us/Feature+thinning">Feature thinning</a>&nbsp;does something different — he implements enough of the feature to argue that it really works, just isn’t very glossly (like having ordinary brakes on a car, but not anti-lock brakes).</li> 
-  <li>The <a href="http://alistair.cockburn.us/Walking+Skeleton">Walking Skeleton</a>&nbsp;strategy says to get the barely minimal (sub-minimal?) functionality running to establish connections between the parts. Jeff recently expanded that to having a mini – walking skeleton for each story (<a href="http://agileproductdesign.com/blog/the_new_backlog.html).">http://agileproductdesign.com/blog/the_new_backlog.html).</a> Gery Derbier wrote me with the phrase recursive or fractal walking skeletons to describe this, a nice phrase. He says they use them on his project and they like them a lot. I would think so —- It’s vaguely related to the A-B work split and hence has risk reduction characteristics. I’m not sure if Jeff has feature thinning in mind with his mini (fractal) walking skeletons, but I think they’re possibly slightly different from each other.</li> 
- </ul> 
-</blockquote>
-<p>How do you manage your product requirements with use cases: Use Case 2.0, slicing, laminating, or in another way?</p><br><br><br><br><br><br></body></html>
+<p>If DevOps is a cultural change meant to bring better communication and collaboration between various teams involved in creating a product, the next question that comes to mind is how do we get there, how do we bring this change into our company?</p>
+<p>Damon Edwards, co-founder of <a href="http://dtosolutions.com/">DTO Solutions</a>, keynoted on “<a href="http://dev2ops.org/2013/12/how-to-initiate-a-devops-transformation-video/">How to initiate a DevOps Transformation</a>” during DevOps Days Mountain View 2013, presenting a three-steps process he is recommending to introduce the DevOps culture into an organization:</p>
+<p><strong>1. Build the “Why?”</strong></p>
+<p>According to Edwards, it is important to start by having a clear understanding of <em>why</em> the members of an organization are there, what they are trying to accomplish, what is their purpose. To find out that reason, one could simply socialize with people in the organization and ask them <em>why</em> they are there. The main purpose of the organization is the only reason for implementing a DevOps culture, and there is no other.</p>
+<p>Edwards considers that <em>DevOps</em> is just a means to reach an end, and not an end in itself: “DevOps is not your <em>why</em>, not your co-workers’ <em>why</em>, certainly not your business’ <em>why.” </em>He even suggests forgetting the <em>DevOps</em> term, noting the he’s using <em>service delivery</em> instead because “we are in the business of making a service.”</p>
+<p><strong>2. Building Organizational Alignment</strong></p>
+<p>The next step in Edwards’ process is to align the entire organization so everyone would work “towards a common goal under a shared set of assumptions and rules.” An organization is correctly aligned when giving the same goal to multiple people, they choose the same way to achieve the respective purpose; they have the same answers for the same problem. That would be the “ultimate dream of the organizational alignment.”</p>
+<p>To achieve this alignment, one needs to develop a <em>DevOps Vision</em> within the organization. That is not obtained by teaching a process, because people will simply try to mechanically follow some steps. What is needed is to teach a way of thinking. According to Edwards, this can be achieved by following the next steps:</p>
+<ol> 
+ <li><strong>Teach the basic concepts</strong>, such as “single piece flow, working in batches, limit work in progress, pull vs. push, continuous delivery”, the tools that can be used, etc., concepts that make up a common vocabulary to be shared by the organization.</li> 
+ <li><strong>Getting everyone on the same page</strong> through<br /> a. Value Stream Mapping – a Lean concept detailing the flow of information and artifacts going on inside an organization, leading to value creation.<br /> b. Timeline Analysis – attempts to discover where time is spent, where are the bottlenecks.<br /> c. Waste Analysis – determining all sorts of waste that&nbsp;are produced by an organization in order to eliminate them as much as possible</li> 
+ <li><strong>Developing metrics chains</strong>, which are meant to measure the activity across the value delivery chain and how one’s activity impacts others’.</li> 
+ <li><strong>Identify projects/experiments against baseline</strong>. Identify which projects or activities deviate from the baseline and take corrective measures.</li> 
+ <li><strong>Repeat steps 2-4. </strong>This constitutes a Continuous Improvement process.</li> 
+</ol>
+<p>In order to implement these ideas, Edwards proposes a 3-days program:</p>
+<ul> 
+ <li><strong>Day 1 – </strong>Teach the principles, present a case study, patterns and anti-patterns</li> 
+ <li><strong>Day 2 – </strong>Analyze the current status of the organization providing problem identification techniques and improvement metrics</li> 
+ <li><strong>Day 3 – </strong>Discussing solutions and tool-chain automation principles, building a roadmap</li> 
+</ul>
+<p><strong>3. Continuous Improvement Loops</strong></p>
+<p>These loops are meant to continually improve the process by Making Plans, Implementing Plans, Measuring Outcomes, and Deciding on How to Continue.</p>
+<p>Edwards has recently presented these principles during his QCon London 2014 session called <a href="http://qconlondon.com/london-2014/presentation/Dev%20%22Programming%22%20Ops%20For%20DevOps%20Success">&quot;Dev ‘Programming’ Ops For DevOps Success&quot;</a>, session that will be later made available on InfoQ.</p><br><br><br><br><br><br></body></html>

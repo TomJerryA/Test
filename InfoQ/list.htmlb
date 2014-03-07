@@ -2,6 +2,9 @@
  <head></head> 
  <body> 
   <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/13.htmlb">与Ole Jepsen谈敏捷中的领导力</a> 优秀的领导者创造环境让自我管理（self-organizing）团队茁壮成长，从而创造伟大的产品和服务去满足客户的需求。这是Ole Jepsen在本次采访中表达的观点。在XP Days Benelux会议上，他谈到什么是真正的领导力，以及控制和放权之间微妙但重要的差异。 
+  </div> 
+  <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/12.htmlb">Durandal快速入门</a> Durandal是一个轻量级的JavaScript框架，其目标是使单页面应用（SPAs）的开发变得简单而优雅。它支持MVC、MVP和MVVM等模式，因此不论你采用哪种类型的前端架构，Durandal都能胜任。 
   </div> 
   <div> 
@@ -147,9 +150,6 @@
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/17.htmlb">使用AeroGear框架进行Java EE 移动应用开发</a> AeroGear是JBoss所推出的一个移动开发框架，它支持在iOS和Android设备上开发web、混合与原生移动应用的开发，还包括了相应的服务端资源，并且加入了对RESTEasy等现有项目的扩展。Jay Balunas与Marius Bogoevici在JavaOne 2012大会上的演讲中介绍了AeroGear框架。InfoQ与他们两位和Anil Saldhana进行了一次对话，谈论了关于移动开发的一些话题。 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/16.htmlb">书评：DevOps for Developers</a> 尽管其标题，“DevOps for Developers”是一本面向所有对DevOps感兴趣的入门级书籍，却聚焦三个观点：度量观、流程观和技术观。 
   </div> 
  </body>
 </html>
