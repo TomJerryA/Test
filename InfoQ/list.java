@@ -2,16 +2,19 @@
  <head></head> 
  <body>
   <div>
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/1.java">QCon New York 2014 Update: Netflix, LinkedIn, Google, Foursquare Case Studies Confirmed (Jun 11-13)</a>The third annual QCon New York (Jun 11-13, 2014) will feature in-depth case studies from LinkedIn, Netflix, Foursquare, Google, Mount Sinai, Gilt and others. Hear how these companies are dealing with some of the greatest challenges in the arenas of Big Data, DevOps, Cloud Computing, Architecture, and Software Delivery. Register before Mar 15th and save $500.
-  </div>
-  <div>
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/0.java">What Is (Not) DevOps, and How Do We Get There?</a>In this article we discuss some of the misunderstandings surrounding DevOps and provide an introduction to a process that can bring the cultural shift that DevOps is all about.
-  </div>
-  <div>
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/49.java">Building a Better WCF Client</a>The WCF client that Visual Studio generates by default is a problem. Besides not being a direct match with the server-side interface code, which causes a lot of code and data sharing problems, the generated code still has a glaring bug after all these years. Michael Taylor discusses these issue and his attempts to address them in a series titled “A Smarter WCF Service Client”.
-  </div>
-  <div>
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/48.java">Using Scrum of Scrums with Agile Teams to Coordinate and Collaborate</a>Scrum of scrums can be used to scale the daily stand-up meeting when multiple teams are involved. Its purpose is to support agile teams in collaborating and coordinating their work with other teams. Several authors have shared views on scrum of scrums, with experiences of using them.
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/2.java">Jolt Awards 2014: Mobile and Coding Tools</a>Dr. Dobbs has awarded the Jolt Award for Mobile and Coding Tools for 2014.
+  </div> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/1.java">QCon New York 2014 Update: Netflix, LinkedIn, Google, Foursquare Case Studies Confirmed (Jun 11-13)</a>The third annual QCon New York (Jun 11-13, 2014) will feature in-depth case studies from LinkedIn, Netflix, Foursquare, Google, Mount Sinai, Gilt and others. Hear how these companies are dealing with some of the greatest challenges in the arenas of Big Data, DevOps, Cloud Computing, Architecture, and Software Delivery. Register before Mar 15th and save $500. 
+  </div> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/0.java">What Is (Not) DevOps, and How Do We Get There?</a>In this article we discuss some of the misunderstandings surrounding DevOps and provide an introduction to a process that can bring the cultural shift that DevOps is all about. 
+  </div> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/49.java">Building a Better WCF Client</a>The WCF client that Visual Studio generates by default is a problem. Besides not being a direct match with the server-side interface code, which causes a lot of code and data sharing problems, the generated code still has a glaring bug after all these years. Michael Taylor discusses these issue and his attempts to address them in a series titled “A Smarter WCF Service Client”. 
+  </div> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/48.java">Using Scrum of Scrums with Agile Teams to Coordinate and Collaborate</a>Scrum of scrums can be used to scale the daily stand-up meeting when multiple teams are involved. Its purpose is to support agile teams in collaborating and coordinating their work with other teams. Several authors have shared views on scrum of scrums, with experiences of using them. 
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/47.java">Cassandra Gains Momentum On Enterprise Adoption Around 2.1 Release</a>Cassandra is rapidly heading towards 2.1 release, with 2.1.0-beta1 already available for evaluation. We take a look at major features introduced in the latest major release and what's coming up. Supported by DataStax, Cassandra is expanding its reach towards the enterprise world. DataStax recently announced a partner network program, Patrick McFadin called out on MongoDB's scaling issues and other 
@@ -147,9 +150,6 @@
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/7.java">SharpDevelop 5 Introduces Class Browser, Search Grouping, Insert with Cursor and ILSpy Support</a>SharpDevelop 5 has been released with new features such as class browser, search grouping including integration support for ILSpy. It also includes features such as insert with cursor, context actions, code inspections, enhanced scrollbar, background syntax check, link mode, suppressing issues, automatic variable naming in addition to XML based tooltips for documentation. 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/6.java">Elasticsearch 1.0.0 released</a>Elasticsearch released version 1.0.0 of its self-titled, open-source analytics tool. Elasticsearch is a distributed search engine which allows for real-time data analysis in big-data environments. The new version comes with various functional enhancements and changes to the API to make Elasticsearch more intuitive and powerful to use. 
-  </div>     
+  </div>  
  </body>
 </html>

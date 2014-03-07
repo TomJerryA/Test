@@ -1,8 +1,8 @@
 <html>
  <head></head> 
- <body>
-  <div>
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/40.c">Facebook faz Mercurial ser mais r&aacute;pido que o Git</a>No in&iacute;cio deste ano, o Facebook publicou em seu blog de engenharia um texto intitulado Escalando o Mercurial no Facebook, explicando com eles est&atilde;o escalando o Mercurial como seu reposit&oacute;rio.
+ <body> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/40.c">Facebook faz Mercurial ser mais r&aacute;pido que o Git</a>No in&iacute;cio deste ano, o Facebook publicou em seu blog de engenharia um texto intitulado Escalando o Mercurial no Facebook, explicando com eles est&atilde;o escalando o Mercurial como seu reposit&oacute;rio. 
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/39.c">SQL interativo no Apache Hadoop com Impala e Hive</a>Na corrida para o SQL interativo em ambientes de Big Data, existem dois projetos de c&oacute;digo fonte aberto como principais candidatos, Impala e Hive com o Stinger. A Cloudera anunciou recentemente que o Impala &eacute; at&eacute; 69 vezes mais r&aacute;pido do que o Hive 0.12 e pode superar DBMS. 
@@ -150,6 +150,6 @@
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/43.c">Microsoft une for&ccedil;as com RedGate e Clickberry para oferecer ferramentas Node.Js no Visual Studio</a>NTVS, uma abrevia&ccedil;&atilde;o em ingl&ecirc;s de Ferramentas Node.js para Visual Studio, oferece a desenvolvedores Node.js uma IDE completa e cheia de recursos que inclui o Intellisense, gerenciamento de pacotes, debug e controle de perfis. NTVS &eacute; uma uni&atilde;o de for&ccedil;as coordenado pelo time de desenvolvimento de ferramentas Python da Microsoft com a RedGate, Clickberry entre outros. 
-  </div>  
+  </div> 
  </body>
 </html>
