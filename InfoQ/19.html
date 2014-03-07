@@ -1,20 +1,26 @@
-<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>Typemock Isolator++更新，提供64位支持</h3><p>Typemock发布了<a href="http://www.typemock.com/isolatorpp-product-page">Isolator++</a>更新，支持测试为Windows平台编写的64位C/C++代码，还支持测试最初编写时没有考虑测试的遗留代码。它支持使用宏来修改所测方法的行为。Isolator++是面向C/C++的的模拟框架（Mocking Framework），支持开发者对方法调用和依赖参数施加断言，它还引入了一种机制，支持模拟函数以及模拟通过引用来返回值。</p>
-<p>它集成了<a href="http://smartbear.com/products/qa-tools/application-performance-profiling/">AQTime</a>、<a href="http://www.softwareverify.com/">SoftwareVerify</a>和<a href="http://www.bullseye.com/">BullsEye</a>等工具，兼容诸如 <a href="http://sourceforge.net/apps/mediawiki/cppunit/index.php?title=Main_Page">CppUnit</a>、<a href="http://unittest-cpp.sourceforge.net/">UnitTest++</a>和GoogleTest Boost等测试运行器框架。</p>
-<p>为了解这次更新带来的更多益处，InfoQ采访了TypeMock的产品经理Gil Zilberfeld。</p>
-<p><b>支持</b><b>64</b><b>位，这一特性为开发者带来了什么益处？有实际意义吗？</b></p>
+<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>Retr-O-Mat回顾活动生成器：现在有了印刷版</h3><p><img style="float: left; margin-right: 10px" src="http://infoqstatic.com/resource/news/2014/03/retromat-print/zh/resources/0307000.JPG" _href="img://null" _p="true" alt="" />很多敏捷过程的迭代都包括回顾会议。其目的是寻求改善，但要找到改善的具体措施需要创造力。因此敏捷教练和团队想出了各种活动来推动这个过程，回顾会议通常分为5个阶段：准备阶段、数据收集、洞察问题、确定方案和结束。 <br /> <br /> InfoQ的迷你书《<a href="http://www.infoq.com/minibooks/agile-retrospectives-value">Getting Value out of Agile Retrospectives - A Toolbox of Retrospective Exercises</a>》和<a href="http://retrospectivewiki.org/index.php?title=Main_Page">Retrospective Wiki</a>为回顾会议各个阶段的活动提供了灵感。<br /> <br />但了解所有这些活动，并将它们合并到回顾会议中，具有相当的工作量。为了保持创造力，避免流于形式，Corinna Baldauf构建了<a href="http://www.plans-for-retrospectives.com/">Retr-O-Mat</a>：它是一个在线工具，从活动池中随机选择5个活动，将它们合并起来用于回顾，每个活动对应于回顾的一个阶段。</p>
+<div style="clear:both"></div>
+<p>最近，Corinna决定发行这个工具的<a href="http://www.plans-for-retrospectives.com/print/index.html">印刷版本</a>。它提供了更便捷的方式来访问各种活动，而且不需要连接互联网。这些活动印刷在卡片上，每个阶段一叠。卡片与封面和封底一起采用活页装订。这样就可以任意组合这些活动。</p>
+<p>尽管随机性也许可以激发创造力，但随机的活动可能并不适合团队的情况。引导者（facilitator）应该始终确保活动是符合目标的，否则可以选择其它的活动。InfoQ采访了Corinna，了解Retr-O-Mat的在线版本、离线版本以及未来的计划。</p>
+<p><b>InfoQ：Corinna，你创建Retr-O-Mat的动机是什么？</b></p>
 <blockquote> 
- <p>有些开发者只使用64位环境。如果没有64位支持，开发者就要在32位环境中测试。而这样的测试不能提供系统的“真正”行为，所以是否能反映真实条件，并不能让人十分信服。现在Isolator支持64位了，测试可以运行在与产品相同的环境中。这样的结果是可信的，不用再猜测测试能否反映或者只能部分反映真实环境。在知道一切都能在原生64位环境下正常工作的条件下，开发者现在就可以重构代码，并将其置于测试之下了。</p> 
+ <p>我当年阅读“敏捷回顾”，了解到它的各个阶段时，我就在想，如果有什么东西像老虎机一样，能够为每个阶段建议进行某个活动，那该多方便啊。但不存在这样的工具。之后我继续推进回顾会议。我喜欢将回顾会议中的活动多样化，这样团队就可以从不同的角度来观察。但要完成所有这些不同的计划是非常耗时间的。另外，我经常读到很多好的想法，但之后又忘记了。Retr-O-Mat可以解决所有这些问题：收集好的想法，当需要时就可以展示出来。对我和所有人来说都是这样。</p> 
 </blockquote>
-<p><b>Typemock Isolator++</b><b>有什么特性？</b></p>
+<p><b>InfoQ：你使用了其他“敏捷思想”的活动，他们对你的Retr-O-Mat有什么反应？</b></p>
 <blockquote> 
- <p>Typemock Isolator++是一个完整的模拟框架，面向Windows上的C和C++。它支持Visual Studio 2005，同时支持32位和64位环境。它可以模拟各种函数调用，包括实例函数或静态函数、全局函数、私有和公有函数，以及虚函数和非虚函数。它可以伪造（fake）一个对象或类型上的所有方法，也可以只伪造某些方法，而将其他方法交给真正的实现。它可以对方法调用施加断言，可以计算这些函数的被调用次数。还可以模拟通过引用返回的参数。这一切都不需要修改所测代码，也不需要为测试进行专门的准备。</p> 
+ <p>到目前为止，我接触的每个人都持支持态度。我感谢每一个分享活动想法和直接对Retr-O-Mat提出建议的人。我要特别感谢Esther Derby、Diana Larson和Judith Andresen，很多活动都来源于他们。</p> 
 </blockquote>
-<p><b>Typemock Isolator++</b><b>是否改进了开发者的生产效率？</b></p>
+<p><b>InfoQ：对我来说电子化的工具似乎更有用，是什么让你想去做一个印刷版本？</b></p>
 <blockquote> 
- <p>因为Isolator++支持为“不可测代码”编写测试，所有我们现在能够调试单元测试，这比调试整个应用要快。我们可以测试不好测的场景（例如，需要修改计算机时钟的场景，现在可以在代码中完成）。我们能够知道代码修改何时破坏了功能。我们在一个本来会使工作变慢的环境中得到了全面的生产效率提升。</p> 
+ <p>对我来说也是这样。当我刚开始有这个印刷版本的想法时，我也放弃了这个想法。我的意思是，如果已经有数字版本，它包含了更多的活动，而且你还可以在任意时间添加活动，活动描述也更加详细，谁还会去购买印刷版本呢？</p> 
+ <p>之所以会推出印刷版，其原因正如我更喜欢一块真实的任务板，而不是数字任务板一样：它就在那里。你能触摸到它。它邀请你拿起它，与它一起玩。当我意识到我会购买印刷版时，我就去把它制作了出来。我也很喜欢它产生的过程。</p> 
 </blockquote>
-<p><b>Typemock Isolator++</b><b>支持</b><b>C#</b><b>和</b><b>VB.NET</b><b>吗？</b></p>
+<p><b>InfoQ：对于回顾会议，团队最大的错误是什么，Retr-O-Mat如何提供帮助？</b></p>
 <blockquote> 
- <p>不支持。Isolator++仅支持C和C++。对于托管的.NET语言，我们有面向.NET的Isolator，它并不是单纯的“模拟一切”的框架，同时还集SmartRunner、覆盖可视化、测试代码完成和测试规则集于一身。</p> 
+ <p>我书中提到的一些回顾会议，并不算是我曾经见过的最糟糕的回顾会议。“引导者”只是在小组那走过场，每个人都可以表达他们的不满。这时候，能够引导真正讨论的活动计划将很有帮助。更重要的问题是你不能忘了要去跟踪团队曾经商量好要做出的改变。</p> 
 </blockquote>
-<p><strong>查看英文原文：</strong><a href="http://www.infoq.com/news/2014/02/typemock-isolator-plus-plus">Typemock Isolator++ Updated with 64 bit Support</a></p><br><br><br><br><br><br></body></html>
+<p><b>InfoQ：是的，Ben最近也在一篇新闻稿</b><a href="http://www.infoq.com/news/2014/02/retrospective-actions-done"><b>following up retrospectives</b></a><b>中提到了。对于别的创新，例如Plan-O-Mat，你有什么计划吗？</b></p>
+<blockquote> 
+ <p>确实有人曾在Twitter上向我建议Plan-O-Mat。我喜欢这个主意，但我不知道哪儿能获得与回顾一样多的话题。这也是为什么我一直没有接近它的原因。当然我不会介意任何人<a href="https://github.com/findingmarbles/Retromat">在github上fork Retr-O-Mat</a>和创建Plan-O-Mat！我个人还会继续为Retr-O-Mat增加活动、功能、图片和更多语言版本，同时我还会管理好我最近的项目<a href="http://wall-skills.com/">Wall-Skills.com</a>和<a href="http://mail-skills.com/">Mail-Skills.com</a>。这些都让我够忙的:)</p> 
+</blockquote>
+<p><strong>原文英文链接：</strong><a href="http://www.infoq.com/news/2014/03/retromat-print">The Retr-O-Mat Retrospective Activity Generator: Now Available in Print</a></p><br><br><br><br><br><br></body></html>

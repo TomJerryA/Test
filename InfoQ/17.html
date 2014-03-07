@@ -1,10 +1,8 @@
-<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>插件赋予VS2013新的自定义配置能力</h3><p>开发者们一直以来都是使用Visual Studio的解决方案管理器 中的嵌套功能管理项目的子文件夹，使得文件组织清晰、便于访问。鉴于现在的项目巨大的文件数目，如果能将这种嵌入能力应用于项目的其他子项上，同时又不需要物理上做重新调整，这对项目文件的组织有很大帮助。Mads Kristensen发布了一款Visual Studio的新插件File Nesting，就是为了实现此目的。</p>
-<p>该插件提供了若干选项：根据用户的请求嵌入文件，嵌入选中文件，或针对整个项目开启自动嵌入功能。File Nesting目前支持Visual Studio 2013，根据Kristensen的计划，还会支持VS2012。在Visual Studio插件商店里提供插件的<a href="http://visualstudiogallery.msdn.microsoft.com/3ebde8fb-26d8-4374-a0eb-1e4e2665070c">下载</a>，而插件项目的<a href="https://github.com/madskristensen/FileNesting">源码</a>托管在GitHub上。</p>
-<h2>基于自动快照的保存</h2>
-<p>最近发布的插件<a href="http://visualstudiogallery.msdn.microsoft.com/dfcb2438-180c-4f8a-983b-62d89e141fe3">AutoHistory</a>为使用Visual Studio 2013的用户提供了一种新方式，用于维护他们的源码。如果你使用像TFS或Git这样的源码控制软件，你肯定能轻松回退项目的变更。但是如果你在一段时间内还没有提交，抑或是如果你提交的并非你真正想要的，你应该作何处理呢？</p>
-<p>AutoHistory解决这些问题的方式是将你所做的项目变更周期性地自动保存到文件中。你可以按时间查看文件以前的内容，确定与当前文件内容的差异。插件目前保存最多3天的内容变更，但是也提供存储用户指定的快照，以及存储正常的保存操作后的内容。插件每隔5分钟进行一次自动快照。</p>
-<p>如果你对AutoHistory感兴趣，Channel 9上有对该插件的<a href="http://channel9.msdn.com/Shows/Visual-Studio-Toolbox/Auto-History-Extension">介绍</a>。AutoHistory正处在预览阶段，所以非常欢迎用户的积极反馈。</p>
-<p><strong>查看英文原文：</strong><a href="http://www.infoq.com/news/2014/02/VS2013_plugins">Plugins Provide New Customizations to VS2013</a></p>
+<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>TypeScript成为VisualStudio的正式成员</h3><p>Microsoft的开源编程语言TypeScript设计的初衷是为了使大型JavaScript应用开发更容易，同时提供现代工具的支持。相比TypeScript先前的0.95版本，即将发布的1.0版本的最新<a href="http://blogs.msdn.com/b/typescript/archive/2014/02/25/announcing-typescript-1-0rc.aspx">发布候选版本</a>有不少变化，其中最重要的要属处理泛化的新方式。TypeScript的开发团队改变了关键字“any”的行为，这样做是为了简化创建接口和子类时的类型检查。</p>
+<p>此外，对泛型的处理也产生了一些变化，这两种改变结合在一起后，会有利于处理某些场景，如“承诺参数是全类型泛化的类型”。另外还有重要的一点是，与TypeScript一起发布的库lib.d.ts也做了更新，提供对触摸和WebGL的支持。</p>
+<p>虽然对此发布版本的反馈总体上比较好，但是它毕竟是发布候选版本，所以不建议将其安装在关键的生产系统中，除非你愿意承担部分风险。据一些早期的使用者反映，还有若干稳定性问题需要处理。</p>
+<p>除了通过Update 2获取TypeScript 1.0RC外，也可以通过下载方式获取并作为<a href="http://www.typescriptlang.org/#Download">独立工具</a>使用。项目的源码放在<a href="http://typescript.codeplex.com/sourcecontrol/latest#README.txt">Codeplex</a>上。除了可以在Visual Studio中使用TypeScript外，在其他流行的文本编辑器中，如<a href="https://github.com/palantir/eclipse-typescript">Eclipse</a>和<a href="https://github.com/Railk/T3S">Sublime</a>也支持该语言。</p>
+<p><strong>查看英文原文：</strong><a href="http://www.infoq.com/news/2014/03/typescript_VS">TypeScript Becomes Full Member of Visual Studio</a></p>
 <hr />
 <p>感谢<a href="http://www.infoq.com/cn/author/邵思华">邵思华</a>对本文的审校。</p>
 <p>给InfoQ中文站投稿或者参与内容翻译工作，请邮件至<a href="mailto:editors@cn.infoq.com">editors@cn.infoq.com</a>。也欢迎大家通过新浪微博（<a href="http://www.weibo.com/infoqchina">@InfoQ</a>）或者腾讯微博（<a href="http://t.qq.com/infoqchina">@InfoQ</a>）关注我们，并与我们的编辑和其他读者朋友交流。</p><br><br><br><br><br><br></body></html>

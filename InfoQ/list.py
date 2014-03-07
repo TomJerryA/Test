@@ -1,8 +1,8 @@
 <html>
  <head></head> 
- <body>
-  <div>
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/46.py">DevOps CafeポッドキャストがQCon London 2014 DevOpsトラックを紹介</a>前回のDevOps Cafe Podcats(エピソード47)は，QCon London 2014 DevOpsトラックのプレビューだった。トラックのホストであるManuel Pais, Shane Hasite両氏による各セッションの選択理由の説明に続いて，それぞれの講演者が自身の講演について紹介した。その後は科学的手法の重要性について，あるいはアジャイルの&quot;Done&quot;の定義をDevOpsにどのように適応すべきかなど，さまざまな話題が議論された。
+ <body> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/46.py">DevOps CafeポッドキャストがQCon London 2014 DevOpsトラックを紹介</a>前回のDevOps Cafe Podcats(エピソード47)は，QCon London 2014 DevOpsトラックのプレビューだった。トラックのホストであるManuel Pais, Shane Hasite両氏による各セッションの選択理由の説明に続いて，それぞれの講演者が自身の講演について紹介した。その後は科学的手法の重要性について，あるいはアジャイルの&quot;Done&quot;の定義をDevOpsにどのように適応すべきかなど，さまざまな話題が議論された。 
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/45.py">Red HatのJBossチームがWild Fly 8をローンチ - Java EE 7をフルサポート，組み込み可能な新Webサーバを装備</a>Red HatのJBoss部門は本日，WildFly 8の提供開始を発表した。これまではJBoss Application Server(JAS)という名称だったプロダクトだ。このリリースではJava EE7を完全にサポートするとともに，まったく新しいWebサーバであるUndertow，新たなセキュリティ機能，実行中のシステムを更新可能なパッチシステムを備えている。 
@@ -150,6 +150,6 @@
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/1.py">GoogleがMotorolaをLenovoに売却</a>GoogleはMotorola Mobilityを29.1億ドルでLenovoに売却する。Lenovoが2,000件の特許を獲得する一方で，同社ポートフォリオの特許の大部分はGoogleが保持する。Googleにとってこの取引は損失かも知れないが，Androidエコシステムにはメリットがある。 
-  </div>  
+  </div> 
  </body>
 </html>

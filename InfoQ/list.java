@@ -2,7 +2,13 @@
  <head></head> 
  <body>
   <div>
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/2.java">Jolt Awards 2014: Mobile and Coding Tools</a>Dr. Dobbs has awarded the Jolt Award for Mobile and Coding Tools for 2014.
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/4.java">ThoughtWorks Open Sources Go, a CD Tool</a>ThoughtWorks has recently open sourced their Continuous Delivery (CD) tool, called Go, having its origins in CruiseControl and providing a pipeline process that covers the entire code development process: continuous integration, testing and deploying.
+  </div>
+  <div>
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/3.java">RyuJIT's Improved Compiler Boosts .NET</a>The next generation .NET compiler from Microsoft, codename RyuJIT, has just had a second preview version release. While still very much a beta, the initial results are impressive when compared to both the first preview and the current 64-bit JIT compiler used by NET today.
+  </div> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/2.java">Jolt Awards 2014: Mobile and Coding Tools</a>Dr. Dobbs has awarded the Jolt Award for Mobile and Coding Tools for 2014. 
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/1.java">QCon New York 2014 Update: Netflix, LinkedIn, Google, Foursquare Case Studies Confirmed (Jun 11-13)</a>The third annual QCon New York (Jun 11-13, 2014) will feature in-depth case studies from LinkedIn, Netflix, Foursquare, Google, Mount Sinai, Gilt and others. Hear how these companies are dealing with some of the greatest challenges in the arenas of Big Data, DevOps, Cloud Computing, Architecture, and Software Delivery. Register before Mar 15th and save $500. 
@@ -144,12 +150,6 @@
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/9.java">Java 8 News: Release Candidates Available, New Atomic Numbers and Stripped Implementations Dropped</a>The first release candidates of Java 8 started showing up in early February. The first, b128, on February 4, and a second announced on the OpenJDK mailing list a week later. 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/8.java">Challenges Performing Background Compilation in V8</a>This article includes details on the recently background compilation introduced in V8, Chrome’s JavaScript engine. 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/7.java">SharpDevelop 5 Introduces Class Browser, Search Grouping, Insert with Cursor and ILSpy Support</a>SharpDevelop 5 has been released with new features such as class browser, search grouping including integration support for ILSpy. It also includes features such as insert with cursor, context actions, code inspections, enhanced scrollbar, background syntax check, link mode, suppressing issues, automatic variable naming in addition to XML based tooltips for documentation. 
-  </div>  
+  </div>   
  </body>
 </html>
