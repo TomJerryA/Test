@@ -1,7 +1,7 @@
 <html>
  <head></head> 
- <body>
-  <div>
+ <body> 
+  <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/31.javab">Author Q&amp;A on Programming for Kids</a> The book Programming for Kids contains many examples that kids in the age from 9-14 can use to learn the basics of programming, using the programming language Ruby. It also shows them how they can use the command line on a Mac computer. Parents can sit beside their kids and follow along. InfoQ did an interview with the author Peter Armstrong about how kids learn computer programming. 
   </div> 
   <div> 
@@ -150,6 +150,6 @@
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/34.javab">Oleg Shilo on CS-Script and Notepad++</a> When you just want to try out some code, Visual Studio can feel like overkill. So some developers turn to lightweight editors such as Notepad++ for their scripting needs. Oleg Shilo talks about his project to add better CS-Script plugin for Notepad++. 
-  </div>  
+  </div> 
  </body>
 </html>

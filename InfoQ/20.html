@@ -1,25 +1,36 @@
-<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>Firefox OS开发资源助您起航</h3><p>Firefox OS，是由Mozilla开发，以“<a href="http://groups.google.com/group/mozilla.dev.platform/browse_thread/thread/7668a9d46a43e482?pli=1">面向开放网络构建完整、独立的操作系统</a>”为目标，用户可以安装运行HTML、CSS和JavaScript开发的应用程序。这个系统基于Linux和Mozilla的Gecko开发，并且是<a href="http://www.knowyourmobile.com/products/16409/mozillas-boot-2-gecko-and-why-it-could-change-world">完全开放，100%不涉及</a>任何专利技术。</p>
-<h2><b>为</b><b>Firefox OS</b><b>做贡献</b></h2>
-<p>Firefox OS是完全开源的系统，可以从<a href="https://www.cms.infoq.com/mag4media/scripts/FCKeditor/editor/git%20clone%20git:/github.com/mozilla-b2g/B2G.git">GitHub中克隆</a>。在Mozilla 开发者的门户网站中，有完整详尽的说明，<a href="https://developer.mozilla.org/en-US/Firefox_OS/Building_and_installing_Firefox_OS?redirectlocale=en-US&amp;redirectslug=Firefox_OS/Building_and_installing_Firefox_OS">阐述如何编译并将其安装</a>在模拟器或<a href="https://developer.mozilla.org/en-US/Firefox_OS/Installing_on_a_mobile_device">移动设备</a>上，比如<a href="https://developer.mozilla.org/en-US/docs/Mozilla/Firefox_OS/Dual_boot_of_B2G_and_Android_on_SGS2">配置双启动系统的Android设备</a>。</p>
-<p>Firefox OS核心技术主要有<a href="https://developer.mozilla.org/en-US/Firefox_OS/Platform/Architecture">三个层面</a>：</p>
+<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>WhatsApp架构、Java EE 7特性、HackerEarth经验——架构周报</h3><p>本期的架构周报主要关注WhatsApp架构分享、Java EE 7的新特性、HackerEarth利用Apache和Django建站的优化经验、MySQL还是NoSQL的选择。</p>
+<p><strong>WhatsApp架构分享</strong></p>
+<p>Facebook以190亿美元收购WhatsApp，其每月4.5亿活跃用户奠定了其价值，Tod Hoff撰文<a href="http://highscalability.com/blog/2014/2/26/the-whatsapp-architecture-facebook-bought-for-19-billion.html">分析</a>了支撑每日数百亿消息的高可靠架构。其中的细节包括：</p>
 <ul> 
- <li><a href="https://developer.mozilla.org/en-US/docs/Mozilla/Firefox_OS/Gaia">Gaia</a>，这是Firefox OS的用户界面。除了其他项目外，Gaia还包括锁/主屏幕、电话拨号器和联系人应用程序，外加经典的手机应用程序：邮件、日历、计算器和应用市场。Gaia完全是用HTML、CSS和JavaScript编写的。</li> 
- <li><a href="https://developer.mozilla.org/en-US/docs/Gecko">Gecko</a>，这是操作系统应用程序的运行时，实现了HTML、CSS和JavaScript的开放标准。Gecko包括网络堆栈、图形堆栈、布局引擎和JavaScript虚拟机。</li> 
- <li><a href="https://developer.mozilla.org/en-US/docs/Mozilla/Firefox_OS/Gonk">Gonk</a>，由Linux内核和用户空间硬件抽象层（HAL）构成，是操作系统的底层。Gecko就运行在这层。Gonk将接口暴露给Gecko，实现诸如对完整电话栈或显示帧缓冲区的直接访问，这些在其他操作系统中通常是访问不到的。</li> 
+ <li>WhatsApp做后端消息路由的服务器系统使用Erlang实现，如此庞大数量的活跃用户只使用非常少的服务器来管理，团队一致认为这很大程度上归功于Erlang。</li> 
+ <li>WhatsApp使用了什么样的协议？WhatsApp服务器池使用了SSL Socket，在客户端重新连接对消息进行获取之前，所有消息都会在服务器上排队。消息的成功获取会发回给WhatsApp服务器，它将会被重新转发给原始发送者，一旦客户端成功接收这条消息，它就会在服务器存储中擦除。</li> 
+ <li>系统的健康状况主要看队列的长度，每个节点上消息队列的长度都会被一直监控，超过预先设置的临界值则会发出提醒，多个警报发生则标志着系统进入了下一个瓶颈。</li> 
+ <li>有些代码基本上每天都在变化，通常情况下是一天几次。当然，峰值期间必须避开的。Erlang非常适用于将修改或者是新功能添加到产品，热加载意味着无需重新启动就可以实现修改，错误可以很快的得到解决，同样通过热加载，系统变得更加松耦合，这可以让更新快速的发布。</li> 
+ <li>记录整个系统状态，包括OS状态、硬件状态、BEAM状态。这是为了便于从其他系统获取状态信息，如虚拟内存。跟踪记录CPU利用率、系统整体利用率、用户时间、系统时间、中断时间、上下文切换、系统调用、系统陷入、数据包发送和接收、所有进程队列中总消息数、繁忙的端口事件、通信速率、字节输入/输出、调度状态，垃圾回收状态等。</li> 
 </ul>
-<p>为Gonk和Gecko做贡献需要用到C++的知识，而Gaia需要的是JavaScript或者HTML/CSS。</p>
-<p><a href="https://bugzilla.mozilla.org/query.cgi">Bugzilla</a>是促进Firefox OS发展的基础资源，它是Mozilla的缺陷数据库。除了从Bugzilla中选择和修复bug外，Mozilla通过建立<a href="http://www.joshmatthews.net/bugsahoy/">指导性的错误</a>，努力帮助新人了解这个平台和整个流程。指导性的错误应该包含足够的信息来上手，还设定了辅导者沿着流程提供指导。如果没有合适的指导性错误，旧的“<a href="https://bugzil.la/sw:%5bgood%20first%20bug%5d">良好的首例错误</a>”列表也能提供可用的起点。</p>
-<p>一旦修复了bug，开发者需要<a href="https://developer.mozilla.org/en-US/docs/Developer_Guide/How_to_Submit_a_Patch">提交他/她的补丁供审核</a>，最终由具有权限的人员将其迁入。</p>
-<h2><b>为Firefox OS</b><b>开发应用程序</b></h2>
-<p>如果不想跟操作系统的底层部分打交道，那么你可以开发运行在Firefox OS上的应用程序。Firefox OS应用开发的基本工具是最新版<a href="http://www.mozilla.org/en-US/firefox/new/">Firefox浏览器</a>、<a href="https://getfirebug.com/">Firebug</a>和<a href="http://people.mozilla.com/~myk/r2d2b2g/">Firefox OS模拟器插件</a>。</p>
-<p>了解更多有用的资源：</p>
+<p>更多架构详情，可以查看Tod Hoff的<a href="http://highscalability.com/blog/2014/2/26/the-whatsapp-architecture-facebook-bought-for-19-billion.html">技术文章</a>。</p>
+<p><strong>Java EE 7特性</strong></p>
+<p>Java EE 7的新特性主要集中在提高开发人员的生产力、加强对 HTML5 动态可伸缩应用程序的支持和进一步满足苛刻的企业需求这三个方面。Java EE 7 使得开发人员可以写更少的样板代码，通过丰富的组件来提供一个完整、全面、集成的堆栈来支持和构建最新的 Web 应用程序和框架，同时提供更具扩展性、丰富性和简易的功能。</p>
+<p>“<a href="http://www.ibm.com/developerworks/cn/java/j-lo-javaee7/index.html">Java EE 7 三大新特性的介绍</a>”介绍了组件 WebSocket 1.0、JSON Processing 1.0、JAX-RS 2.0、JSF 2.2 和 JMS 2.0等。主要的特性可以概括为：</p>
 <ul> 
- <li><a href="https://hacks.mozilla.org/2013/01/introducing-the-firefox-os-boilerplate-app/">Boilerplate app</a>：展示应用程序架构和<a href="https://wiki.mozilla.org/WebAPI">WebAPI</a>用法的基础模板；</li> 
- <li><a href="https://developer.mozilla.org/en/docs/IndexedDB">IndexedDB</a>：客户端存储大量结构化数据的API，相反，<a href="https://developer.mozilla.org/en-US/docs/Web/Guide/API/DOM/Storage?redirectlocale=en-US&amp;redirectslug=Web/Guide/DOM/Storage">DOM存储</a>适用于存放较少量的数据；</li> 
- <li><a href="https://developer.mozilla.org/en-US/Apps/Developing/Manifest?redirectlocale=en-US&amp;redirectslug=Web/Apps/Manifest#appcache_path">App Manifest</a>：清单是分辨网站的开放网络应用程序的关键。它是JSON文件，其中包含应用程序的名称和描述，此外，还可以包含应用程序的起源、图标等；</li> 
- <li><a href="https://developer.mozilla.org/en-US/Firefox_OS/Using_the_App_Manager">App Manager</a>：这是个工具集，用于管理本地应用程序、设备和开发工具箱（监视器、调试器等等）；</li> 
- <li><a href="https://hacks.mozilla.org/2013/08/introducing-brick-minimal-markup-web-components-for-faster-app-development/">Brick Web components</a>：通过组件支持HTML5重用的规范；</li> 
- <li><a href="http://www.mozilla.org/en-US/styleguide/products/firefox-os/">Firefox OS style guide</a>：人机交互指南，它描述了所有元素的外观和UI行为。</li> 
+ <li>提高开发人员的生产力——通过一个紧密集成的平台简化了应用架构，减少样板代码和加强对注释的使用来提高效率，另外借助标准 RESTful Web 服务对客户端的支持提高了应用程序的可移植性。</li> 
+ <li>加强对 HTML 5 动态可伸缩应用程序的支持——基于其可扩展的基础架构，Java EE 7 推动了对 HTML 5 应用的构建和支持。在新的平台中，借助具有行业标准的 JSON 简化了数据分析和交换，并通过低延迟和双向通信的 WebSockets 减少了响应时间。以及利用改进的 JAX-RS 2.0 更好地支持异步的、可扩展的、高性能的 RESTful 服务，从而更好地支持多用户的并发操作。</li> 
+ <li>满足苛刻的企业需求——细化批处理作业，形成可管理的区块，以实现不间断的 OLTP 性能；简化多线程并发任务的定义，以提高可扩展性；以及提供具有选择性和灵活性的事务应用程序等。</li> 
 </ul>
-<p>Mozilla的代表Shafiul Azam也在<a href="http://shafiul.github.io/slides/kickstart_fxos.html">演讲中描述了开发Firefox OS应用程序的基本步骤</a>。</p>
-<p><strong>查看英文原文：</strong><a href="http://www.infoq.com/news/2014/02/firefox-os-dev-resources">Resources to Start Developing for Firefox OS</a></p><br><br><br><br><br><br></body></html>
+<p><strong>HackerEarth利用Apache和Django建站的优化经验</strong></p>
+<p>HackerEarth是一个对编程技能进行实践和测试的服务网站，highscalability上<a href="http://highscalability.com/blog/2014/2/10/13-simple-tricks-for-scaling-python-and-django-with-apache-f.html">刊载</a>了有关HackerEarth利用Apache和Django建站的优化经验，其中包括：</p>
+<ul> 
+ <li>删除不必要的Apache模块。节省内存并提高性能。通过只包括你所需要的模块你可以将需要加载的模块数削减为一半。</li> 
+ <li>使用Apache MPM (Multi-Processing Module 多路处理模块) worker。对于高流量服务器一般是一个更好的选择，因为它与prefork MPM相比会占用更少的内存。</li> 
+ <li>关掉KeepAlive。实验显示，对于CloudFont中供应的静态文件来说这样做是更加有效的，进程/线程可以自由地瞬间处理新的请求，而不必等待一个请求到达旧的连接上去。</li> 
+ <li>检查配置。启用mod_status.so和mod_info.so模块来看Apache是怎样运行的。这些信息帮助他们显著地减少了我们要运行的服务器数量，并且使应用程序更稳定，抵御流量的突增。</li> 
+ <li>不要为运行了100台服务器而引以为豪。而应该写出更好的代码并调整系统。在大量的请求中投放许多服务器并不是什么值得骄傲的事，这意味着要确保，例如，一个请求不能查询数据库20以上。</li> 
+</ul>
+<p><strong>MySQL还是NoSQL的选择</strong></p>
+<p>开源数据领域被分成了两派，NoSQL和MySQL。John Engates<a href="http://thenextweb.com/dd/2014/03/04/open-source-data-grows-choosing-mysql-nosql/#!yrKvt">撰文</a>分析了NoSQL和MySQL的选择问题。他认为：</p>
+<blockquote> 
+ <p>如果规模和性能比24小时的数据一致性更重要，那NoSQL是一个理想的选择。NoSQL依赖于BASE模型——基本可用、软状态、最终一致性。但如果要保证到“始终一致”，尤其是对于机密信息和财务信息，那么MySQL很可能是最优的选择。MySQL依赖于ACID模型——原子性、一致性、独立性和耐久性。</p> 
+ <p>作为开源数据库，无论是关系型数据库还是非关系型数据库都在不断成熟，我们可以期待还会有一大批基于ACID和BASE模型的新应用产生。暂且把它称为混合方案。有时这些应用程序的设计需要认真地权衡利弊，有时还能意外的得到发展，做出一系列调整以适应不断变化的数据需求。</p> 
+</blockquote>
+<p>对架构领域感兴趣的读者可以关注即将于2014年4月25~27日在北京国际会议中心召开的<strong>QCon北京2014大会</strong>，专题包括<a href="http://www.qconbeijing.com/node/452">知名网站案例分析</a>、<a href="http://www.qconbeijing.com/node/450">扩展性、可用性与高性能</a>、<a href="http://www.qconbeijing.com/node/437">云计算服务探秘</a>、<a href="http://www.qconbeijing.com/node/441">大数据处理与大数据应用</a>等，许多讲座都与架构相关。读者可点击大会<a href="http://www.qconbeijing.com/">主页</a>查看详情。</p>
+<p>欢迎读者朋友推荐或者投稿架构相关的文章，联系邮箱为<a href="mailto:editors@cn.infoq.com">editors@cn.infoq.com</a>，标题请注明“架构专栏”。</p><br><br><br><br><br><br></body></html>

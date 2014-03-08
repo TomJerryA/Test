@@ -1,10 +1,10 @@
 <html>
  <head></head> 
- <body>
-  <div>
+ <body> 
+  <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/14.htmlb">采访Jan de Baere：一家敏捷公司的兴衰</a> 是什么让一家咨询公司的经理决定彻底改变文化？在敏捷之旅布鲁塞尔会议上，Jan de Baere解释了原因，并说明这家公司是如何采用敏捷，他们经历了怎样的历程，最后又为何突然终止。InfoQ采访了他，谈论敏捷的方法、文化和信任，以及从一次敏捷旅程中学到的东西。 
-  </div>
-  <div>
+  </div> 
+  <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/13.htmlb">Node.js软肋之CPU密集型任务</a> Node.js的EventLoop只考虑了I/O操作，但对于需要占用大量CPU资源的计算，显得有点儿先天不足。本文分析了Node.js不擅于处理CPU密集型任务的原因，并给出了加强Node.js处理CPU密集型任务能力的几种办法。https://gist.github.com/wuhaixing/cce3abd50585d931c3f7 
   </div> 
   <div> 
@@ -150,6 +150,6 @@
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/19.htmlb">ATDD实战</a> 本文以一个具体的例子阐述了如何基于已有的代码库启用验收测试驱动开发。这是应对技术债解决方案的一部分。 
-  </div>   
+  </div> 
  </body>
 </html>
