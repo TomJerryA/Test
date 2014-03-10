@@ -1,15 +1,16 @@
 <div class="text_info"> 
- <p class="MsoNormal">&nbsp;</p> 
- <p class="MsoNormal">Google検索の使いやすさとStackOverflowのようなコードアドバイスコミュニティのメッセージボードの人気は，Web検索を使用したコーディングに対するニーズの所在を明確に示している。Scott Hanselman氏は，コピーによって生じるプログラミングアイデアの相似性に<a href="http://www.hanselman.com/blog/AmIReallyADeveloperOrJustAGoodGoogler.aspx">関して</a>記事を書いている。これらの動向に注目したMicrosoft Researchは，IDEから直接コードを検索可能にするVisual Studio 2013用のプラグインを作り出すことで，新たな進化の一歩を踏み出した。
-  <o:p></o:p></p> 
- <p class="MsoNormal"><a href="http://visualstudiogallery.msdn.microsoft.com/a1166718-a2d9-4a48-a5fd-504ff4ad1b65">Bing Code Search for C#</a>はVisual StudioとBing，そしてMicrosoft Researchの各チームのコラボレーションによって開発されたプラグインだ。VS2013のエディタに統合され，IntelliSenseのドロップダウンメニューに新設された &quot;How do I...&quot; オプションを選択して起動する。それによって拡張ウィンドウが開き，Bingで分析する検索語の入力が可能になる。クエリを入力すれば，BingがMSDN, StackOverflow, Dotnetperls, CSharp411から関連性の高い回答が検索される。検索結果全体には簡単なインデックスが付加され，各サンプルの出自が明確に示されている。
-  <o:p></o:p></p> 
- <p class="MsoNormal">Microsoftの広報担当者によると，これらのコンテンツをVisual Studioユーザに提供することについては，各Webサイトの合意を得ているということだ。StackOverflowからの検索結果にはさらに，コードスニペットのオリジナル提供者へのリンクも含まれている。情報を提供するプロバイダの追加も可能だが，今のところその予定はない。
-  <o:p></o:p></p> 
- <p class="MsoNormal">プラグインには意味的文脈や作業中のプロジェクトの種類など，有効と思われる回答を取得するためのさまざまな”マジック”が使われている。MicrosoftのプログラムマネージャであるAla Shiban氏はこのプラグインについて，Roslynコンパイラプロジェクトの利用法のひとつだと<a href="http://blogs.msdn.com/b/visualstudio/archive/2014/02/17/introducing-bing-code-search-for-c.aspx">述べている</a>。
-  <o:p></o:p></p> 
- <p class="MsoNormal">興味深いのは，クエリを受信するために入力されたコードのセキュリティや保護がどうなるのかという点だ。プロプライエタリなソフトウェアプロジェクトに従事する開発者の場合，コードを社外に送信することが企業ポリシに反する可能性がある。この記事を執筆している時点では，プライバシ保護に関しては何も発表されていない。</p> 
- <p class="MsoNormal">Visual Studio 2013ユーザ用にプラグインを<a href="http://visualstudiogallery.msdn.microsoft.com/a1166718-a2d9-4a48-a5fd-504ff4ad1b65">公開</a>したMicrosoft Researchではさらに，インストール前のプラグイン試用に興味を持つ人のための<a href="http://codesnippet.research.microsoft.com/">オンラインデモ</a>も提供している。プログラミング特有のカスタマイズが可能な検索エンジンはMicorosftのBingだけではない。The Hacker Newsの先日の<a href="http://thehackernews.com/2014/02/programming-tutorials-with-DuckDuckGo_21.html">レポートによると</a>，DuckDuckGo検索エンジンもプログラマ指向の検索ツールを<a href="https://duckduckgo.com/goodies#Programming">公開している</a>(ただしIDEプラグインは用意されていない)。
-  <o:p></o:p></p> 
- <p>&nbsp;</p> 
+ <p><a href="http://news.mono-project.com/2014/02/25/mono-3-2-7-is-out/">Mono 3.2.7が公開された</a>。改良されたJIT，LINQ用の新しいインタプリタ，64bitネイティブ命令の使用など，数多くの新機能を備える。</p> 
+ <p>５ヶ月に及ぶ開発の成果を蓄積した大規模な機能リリースだ。最大の改良点は内部的なパフォーマンス改善と最適化，互換性の向上だろう。注目すべきものをいくつか挙げると -</p> 
+ <ul> 
+  <li>ARMのHardFP ABI(Application Binary Interface)が初めてサポートされた。より新しいバージョンのLinux上でmonoが利用可能になるとともに，それらのターゲットに，よりよいコードを生成する。詳細を理解するには，<a href="http://www.gurucoding.com/en/rpi_cross_compiler/diff_hardfp_softfp.php">HardFPとSoftFPの違い</a>について読んでみてほしい。</li> 
+  <li>ABCREM(<a href="https://github.com/mono/mono/blob/master/mono/mini/abcremoval.c">Array Bound Checks Removal</a>)最適化の<a href="https://github.com/mono/mono/commit/6c0fa0d567f69e58bba4603f5b14435a7d827ab4">64bitシステムでの動作が向上した</a>。</li> 
+  <li>２つの新しい最適化 - <a href="http://en.wikipedia.org/wiki/Loop-invariant_code_motion">Loop Invariant Code Motion</a>(ループ内不変式の移動)パスと<a href="http://llvm.org/docs/AliasAnalysis.html">Alias Analysis</a>(エイリアス解析)。いくつかの機能において，最大20%のパフォーマンス向上を実現している。</li> 
+  <li>64bit CAS命令が32bitシステム上でサポートされた。これにより，マルチコアでのPLINGワークロードが大きく向上している。</li> 
+  <li>最新バージョンのLLVMを採用したことにより，高速なTLS(Thread Local Storage)アクセスコードが生成可能になった。</li> 
+  <li>GCのマイクロ最適化 - 内部データ構造の最適化，および組み込み関数(intrinsics)利用によるコアループの速度向上。</li> 
+  <li><a href="http://www.mono-project.com/AOT">FullAOT</a>ランタイムから利用可能なLINQおよび動的ステートメント用のインタプリタ。</li> 
+  <li><a href="https://github.com/mono/mono/commit/3b664f331fe8a1920e88437d91b715775dc789f6">Task Awaiters</a>によるカスタムタスクスケジューラのサポート向上。</li> 
+  <li>C#コンパイラの到達可能性およびフロー解析の大幅な向上と，それによるコード警告の改善。</li> 
+ </ul> 
+ <p>リリースにはいくつかのバグ修正も含まれている。改良点の全リストは<a href="http://www.mono-project.com/Release_Notes_Mono_3.2#New_in_Mono_3.2.7">リリースノート</a>で見ることができる。</p> 
 </div>

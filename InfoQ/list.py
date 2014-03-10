@@ -2,19 +2,22 @@
  <head></head> 
  <body>
   <div>
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/1.py">IDE組み込み検索エンジン</a>新たなツールがプログラマのIDEの中に直接Webを実現する。検索エンジンがユーザ獲得にしのぎを削る中，新たなプログラミング指向の検索機能がVisual Studioユーザ向けに誕生した。
-  </div>
-  <div>
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/0.py">OpenAccess ORMがTelerik Data Accessに名称変更，改良UIとカラーのビジュアルデザイナを追加</a>Telerikは先日，OpenAccess ORMをTelerik Data Accessと名称変更するとともに，ユーザインターフェースの改良やカラーのビジュアルデザイナ，Telerik.DataAccess.Core, Telerik.DataAccess.Fluent, Telerik.DataAccess.Fluent.SampleといったNuGetパッケージを追加した。
-  </div>
-  <div>
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/49.py">HazelcastがMapReduce APIをサポート</a>オープンソースのインメモリデータグリッドソリューションHazelcastがMapReduceAPIを新たに導入した。
-  </div>
-  <div>
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/48.py">restyle.jsを使ったCSS処理</a>Andrea Giammarchi氏が開発しているrestyle.jsはJavaScriptベースのCSSプリプロセッサであり、サーバ(Node.js)でもブラウザでも動作する。 &quot;シンプルなCSSアプローチ&quot;と自称するこのツールはCSSのルールとプロパティのプレフィックス付きのバリエーションを生成し、DOMに挿入できる。
-  </div>
-  <div>
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/47.py">マップ，HTML5ビューア，高度なバーコードとWindows AzureをサポートするActiveReports 8</a>ComponentOneがActiveReports 8をリリースした。マップ，RSS14Stacked, RSSLimited, MicroPDF417などのバーコード，さらには部分信頼あるいは完全信頼の両環境下でWindows Azureをサポートする。さまざまなモバイルデバイス用に最適化したアプリケーションを開発するためのHTML5ビューアも同梱されている。
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/2.py">Mono，JITとGCを改良</a>Mono 3.2.7が公開された。改良されたJIT，LINQ用の新しいインタプリタ，64bitネイティブ命令の使用など，数多くの新機能を備える。
+  </div> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/1.py">IDE組み込み検索エンジン</a>新たなツールがプログラマのIDEの中に直接Webを実現する。検索エンジンがユーザ獲得にしのぎを削る中，新たなプログラミング指向の検索機能がVisual Studioユーザ向けに誕生した。 
+  </div> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/0.py">OpenAccess ORMがTelerik Data Accessに名称変更，改良UIとカラーのビジュアルデザイナを追加</a>Telerikは先日，OpenAccess ORMをTelerik Data Accessと名称変更するとともに，ユーザインターフェースの改良やカラーのビジュアルデザイナ，Telerik.DataAccess.Core, Telerik.DataAccess.Fluent, Telerik.DataAccess.Fluent.SampleといったNuGetパッケージを追加した。 
+  </div> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/49.py">HazelcastがMapReduce APIをサポート</a>オープンソースのインメモリデータグリッドソリューションHazelcastがMapReduceAPIを新たに導入した。 
+  </div> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/48.py">restyle.jsを使ったCSS処理</a>Andrea Giammarchi氏が開発しているrestyle.jsはJavaScriptベースのCSSプリプロセッサであり、サーバ(Node.js)でもブラウザでも動作する。 &quot;シンプルなCSSアプローチ&quot;と自称するこのツールはCSSのルールとプロパティのプレフィックス付きのバリエーションを生成し、DOMに挿入できる。 
+  </div> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/47.py">マップ，HTML5ビューア，高度なバーコードとWindows AzureをサポートするActiveReports 8</a>ComponentOneがActiveReports 8をリリースした。マップ，RSS14Stacked, RSSLimited, MicroPDF417などのバーコード，さらには部分信頼あるいは完全信頼の両環境下でWindows Azureをサポートする。さまざまなモバイルデバイス用に最適化したアプリケーションを開発するためのHTML5ビューアも同梱されている。 
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/46.py">DevOps CafeポッドキャストがQCon London 2014 DevOpsトラックを紹介</a>前回のDevOps Cafe Podcats(エピソード47)は，QCon London 2014 DevOpsトラックのプレビューだった。トラックのホストであるManuel Pais, Shane Hasite両氏による各セッションの選択理由の説明に続いて，それぞれの講演者が自身の講演について紹介した。その後は科学的手法の重要性について，あるいはアジャイルの&quot;Done&quot;の定義をDevOpsにどのように適応すべきかなど，さまざまな話題が議論された。 
@@ -147,9 +150,6 @@
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/7.py">HTTP/2はどうなるか</a>HTTP/2 Working Groupの議長であるMark Nottingham氏はブログに次のバージョンのプロトコルに対する9つの予想について自身の意見を書いている。HTTP/2は完成に近づいており、実装も始まっている。 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/6.py">Android++リリース - ゼロ・ハードウェア・リストリクション，MSBuild, LLVM, GCC, GDB統合デバッグ</a>先日リリースされたAndroid++のクローズドベータでは，Androidアプリの開発をVisual Studioを使って，ゼロ・ハードウェア・リストリクション, MSBuild, LLVM, GCC，さらにはGDB統合デバッグといったサポートの下で行うことができる。 
-  </div>      
+  </div>  
  </body>
 </html>
