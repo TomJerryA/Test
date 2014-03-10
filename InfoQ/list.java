@@ -1,11 +1,11 @@
 <html>
  <head></head> 
- <body>
-  <div>
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/6.java">Elm 0.11 Improves JavaScript Interop</a>Elm’s recent 0.11 release aims to simplify using the FRP language in combination with Javascript.
-  </div>
-  <div>
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/5.java">Cloud Foundry Foundation</a>Pivotal have announced ‘moves to establish [an] open governance model for Cloud Foundry’ by creating a Cloud Foundry Foundation. EMC, HP, IBM, Rackspace, SAP and VMware have expressed a desire to join the foundation as platinum sponsors. ActiveState and CenturyLink will join as gold level sponsors.
+ <body> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/6.java">Elm 0.11 Improves JavaScript Interop</a>Elm’s recent 0.11 release aims to simplify using the FRP language in combination with Javascript. 
+  </div> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/5.java">Cloud Foundry Foundation</a>Pivotal have announced ‘moves to establish [an] open governance model for Cloud Foundry’ by creating a Cloud Foundry Foundation. EMC, HP, IBM, Rackspace, SAP and VMware have expressed a desire to join the foundation as platinum sponsors. ActiveState and CenturyLink will join as gold level sponsors. 
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/4.java">ThoughtWorks Open Sources Go, a CD Tool</a>ThoughtWorks has recently open sourced their Continuous Delivery (CD) tool, called Go, having its origins in CruiseControl and providing a pipeline process that covers the entire code development process: continuous integration, testing and deploying. 
@@ -150,6 +150,6 @@
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/11.java">Mac OS X and BTRFS support in Docker</a>As part of the 0.8 release the Docker.io team have announced support for installation on Mac OS X and the use of the BTRFS as an alternative to AUFS. 
-  </div>   
+  </div> 
  </body>
 </html>
