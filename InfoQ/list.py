@@ -1,8 +1,8 @@
 <html>
  <head></head> 
- <body>
-  <div>
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/2.py">Mono，JITとGCを改良</a>Mono 3.2.7が公開された。改良されたJIT，LINQ用の新しいインタプリタ，64bitネイティブ命令の使用など，数多くの新機能を備える。
+ <body> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/2.py">Mono，JITとGCを改良</a>Mono 3.2.7が公開された。改良されたJIT，LINQ用の新しいインタプリタ，64bitネイティブ命令の使用など，数多くの新機能を備える。 
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/1.py">IDE組み込み検索エンジン</a>新たなツールがプログラマのIDEの中に直接Webを実現する。検索エンジンがユーザ獲得にしのぎを削る中，新たなプログラミング指向の検索機能がVisual Studioユーザ向けに誕生した。 
@@ -150,6 +150,6 @@
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/7.py">HTTP/2はどうなるか</a>HTTP/2 Working Groupの議長であるMark Nottingham氏はブログに次のバージョンのプロトコルに対する9つの予想について自身の意見を書いている。HTTP/2は完成に近づいており、実装も始まっている。 
-  </div>  
+  </div> 
  </body>
 </html>

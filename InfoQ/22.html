@@ -1,30 +1,30 @@
-<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>Coverity 7.0:支持C#、Java、C、C++ 算法、SonarQube、Eclipse、VS和Clang编译器</h3><p><a href="http://www.coverity.com/why-coverity/#Developers">Coverity</a>已经发行了开发测试平台7.0，它带有21个新增或增强的C#分析算法，这些算法除了可以修复资源泄露、并发问题和null引用之外，还可以提高C#代码库中的缺陷检测的准确性。</p>
-<p>这个最新的发行版本新涵盖了<a href="https://www.owasp.org/index.php/Main_Page">开放性Web应用安全项目</a>（OWASP），并增强了Java应用中的安全漏洞跟踪功能，这些增强的功能中包含有17个用于Java和C++代码库的分析算法，你可以凭借它们来找出与崩溃、计算不准确或无法预料的行为相关联的问题。</p>
-<p>Coverity 7可以和<a href="http://www.sonarqube.org/">SonarQube</a>集成，这样开发者就能在除了连接和策略管理器中的新安全性审计和兼容性视图之外的单个工作流中查看和管理Java应用中的广泛的缺陷。</p>
-<p>最新的发行版本除了支持对运行于Android和WindRiver平台的设备上的进行单元测试分析，还可以与<a href="http://www.eclipse.org/">Eclipse</a>和Visual Studio集成。而且，它也支持Clang编译器，该编译器广泛用于<a href="http://en.wikipedia.org/wiki/Objective-C">Objective-C</a>和C/C++应用的开发工作中。</p>
-<p>InfoQ和Coverity的产品营销高级总监Kristin Brennan进行了一次对话，从而更多地了解了该最新发行版本的情况。</p>
-<p><b>InfoQ</b><b>：</b><b>Coverity</b><b>是怎样区别于</b><b>Visual Studio 2013</b><b>所提供的测试工具的？</b><b></b></p>
+<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>ThoughtWorks开源持续交付工具Go</h3><p>近日，ThoughtWorks开源了名为<a href="http://www.go.cd/">Go</a>的持续交付（CD）工具。它的前身是<a href="http://cruisecontrol.sourceforge.net/">CruiseControl</a>，提供了一个覆盖整个代码开发过程——持续集成、测试和部署——的管道式过程。</p>
+<p>尽管<a href="https://github.com/GoCD/GoCD">Go的GitHub账户</a>还在等待接收源代码，但开发人员已经可以获取可用于Windows、Mac OS X、Linux、Solaris或者是作为一个Java JAR包提供的<a href="http://www.go.cd/download/">二进制安装文件</a>，既有服务器端，也有代理。</p>
+<p>为了了解更多有关Go的计划，InfoQ采访了ThoughtWorks Studios开源项目经理Ken Mugrage。</p>
+<p><b>InfoQ</b><b>：是什么使Go富有吸引力？</b></p>
 <blockquote> 
- <p>因为二者专注于不同的事物，所以Coverity平台是对Visual Studio 2013所提供的测试工具（以前称为<a href="http://msdn.microsoft.com/en-us/library/bb429476(v=vs.80).aspx">FxCop</a>）的补充。回到.Net框架的早期阶段，一系列编写好的指南帮助开发者在某个特定库的所有提供物范围中获得一致的、标准化的格式，比如，怎样命名一个特定类的所有成员；怎样命名命名空间；不同的类之间的关系应该看起来是怎样的。Visual Studio工具找出违反了这些规则的地方并提交给你，请你关注。随着Visual Studio工具的演进，它也开始通过分析字节码来寻找代码中所存在的其它问题。然而，通过字节码分析所发现的问题往往只是可能存在的缺陷冰山的露出水面的一角。</p> 
- <p>相较而言，Coverity平台对一部分较小的特性集做了更进一步的分析。Visual Studio工具对字节码进行分析，它的设计目的是保证代码一致性，而Coverity的解决方案则对源码进行分析，它是设计是用于查找严重的、高危害性的bugs——比如null引用、资源泄露和线程问题。</p> 
+ <p>从管道概念发展而来的为构建/测试/部署过程建模的能力。既然Go的构建目的是成为一款持续交付工具，所以这是该产品的核心概念。以管道作为最重要的概念，并管理依赖关系，只要“操作正确”，即使是最复杂的工作流程也不难建模。许多其它产品也试图设计上同样的功能，但通常虚有其表，或者是插件使它看起来像管道。</p> 
 </blockquote>
-<p><b>InfoQ</b><b>：你能否和我们一起分享一下Coverity</b><b>的宗旨？</b></p>
+<p><b>InfoQ</b><b>：跟我们聊一些Go的历史吧。</b></p>
 <blockquote> 
- <p>Coverity的使命就是帮助创建软件开发组织更好更快地创建和交付软件。Coverity开发和测试平台提供了静态分析解决方案，开发者借助它可以快速而高效地测试自己的代码，并在编写代码的同时就解决严重的质量和安全性问题。开发组织能向顾客更快地交付高质量的、安全的软件产品，而这又反过来使得其软件开发更具有竞争优势。</p> 
+ <p>2007年，Go最早是作为一款名为“Cruise”的商业产品创建。创建它的团队很快就意识到，以前的持续集成解决方案的架构，无法支持我们实现网格和构建、测试、部署流程所要采用的方式。这使我们决定创建一个全新的商业产品。后续版本见证了产品在这两个特性上的发展，并具备了支持大型构建场和多个大型团队的能力。我们的2.0产品更名为Go，包含了在整个网格上运行大型验收测试套件的功能，并能够反馈目前哪些测试中断了以哪次检入中断了它们。在当时的商业CI工具中，这是我们独有的功能。</p> 
 </blockquote>
-<p><b>InfoQ</b><b>： Coverity</b><b>为开发者带来了哪些好处？</b></p>
+<p><b>InfoQ</b><b>：为什么开源Go？</b></p>
 <blockquote> 
- <p>开发者能使用Coverity平台测试自己的代码，并在编码的过程中就解决高危害性的质量和安全问题，从而能更快地创建更好的软件产品。</p> 
+ <p>简单地说，我们已经得出结论，这样做是正确的。作为一家企业，ThoughtWorks致力于推广可靠的技术实践。事实上，我们的三大指导原则（我们称之为支柱）中有这样一条，“推动IT改革，追求软件卓越”。我们将开源Go产品看作是推广可靠的持续交付实践的一个重要方式。</p> 
+ <p>另外，越来越多的业内人士希望，作为平台或基础设施一部分的任意软件都是开源的。其中有各种原因：期望更高的安全性&amp;健壮性、能够捐助、丰富的社区，坦白地讲，还有使用成本。鉴于Go是数据中心的重要组成部分，许多人将它看作基础设施。我们的客户使用Go协调他们所有应用程序的整个构建和部署周期。</p> 
 </blockquote>
-<p><b>InfoQ</b><b>：Coverity</b><b>可以测试哪些种类的apps</b><b>？</b></p>
+<p><b>InfoQ</b><b>：为了实现完全自动化的部署管道，Go需要集成其它什么工具吗？</b></p>
 <blockquote> 
- <p>使用Coverity平台可以测试基于C/C++、Java、C#的任何类型的应用。</p> 
+ <p>这个问题确实有点难以回答。Go本身不需要任何东西，因此，这样一个清单将由用户的构建/测试/部署周期决定。</p> 
+ <p>Go协调众多的移动部件，包括推动软件由代码编写进入用户可以访问的生产环境。Go监控版本控制系统或者包存储库的变化。当检测到变化，它就会运行构建/测试/部署周期所需的其它工具，其中包括构建管理器，如Apache Ant、Apache Maven、Microsoft MSBuild；自动化测试工具，如Selenium、Twist、Cucumber；基础设施管理工具，如Chef、Puppet等，还有许多。Go可以运行任何可以从命令行运行的东西。</p> 
 </blockquote>
-<p><b>InfoQ</b><b>：Coverity</b><b>是否支持iOS</b><b>、Android</b><b>和Windows Phone 8</b><b>？</b></p>
+<p><b>InfoQ</b><b>：你们会继续开发Go的商业版本吗？你们还会继续提供支持吗？</b></p>
 <blockquote> 
- <p>Coverity平台支持iOS的C/C++代码，同时也支持Android和Windows移动设备。</p> 
+ <p>我们会为Go提供商业插件和专业支持。插件将由需求决定，但它们会是诸如这样的东西，比如，对于非常大型的部署，能够连接到外部数据库（内部用的最多的是嵌入式数据库）来提升性能。</p> 
+ <p>我有幸已经跟我们现有的大部分客户介绍了新模型，而且我想告诉你，无一例外，他们都很满意。</p> 
 </blockquote>
-<p><strong>查看英文原文：</strong><a href="http://www.infoq.com/news/2014/01/coverity-7">Coverity 7.0 with C#, Java, C, C++ Algorithms, SonarQube, Eclipse, VS and Clang Compiler Support</a></p>
-<hr />
-<p>感谢<a href="http://www.infoq.com/cn/author/邵思华">邵思华</a>对本文的审校。</p>
-<p>给InfoQ中文站投稿或者参与内容翻译工作，请邮件至<a href="mailto:editors@cn.infoq.com">editors@cn.infoq.com</a>。也欢迎大家通过新浪微博（<a href="http://www.weibo.com/infoqchina">@InfoQ</a>）或者腾讯微博（<a href="http://t.qq.com/infoqchina">@InfoQ</a>）关注我们，并与我们的编辑和其他读者朋友交流。</p><br><br><br><br><br><br></body></html>
+<p>Go是一款既可以在本地又可以在云上安装的CD工具，而ThoughtWorks还提供了另外一种名为<a href="https://snap-ci.com/">Snap</a>的持续交付解决方案，这是一款托管的CD工具。Go可以扩展到数百台机器上的自动化CD过程；而Snap则是一款精简的工具，面向部署“需求更简单的应用程序”，Badrinath Janakiraman这样说道。他是Snap的产品负责人，他还说“这不是说一个更简单的应用程序，而只是说一个更简单的测试/部署模型。”</p>
+<p>Janakiraman说，与Go相比，Snap的优势在于“Snap使‘无服务器的’组织（从源代码到应用程序的所有一切都托管在SaaS &amp; PaaS服务上）能够以最小的工作量开始CD过程。一旦团队已经习惯设计按需发布的应用程序，随着部署需求越来越复杂，他们可能会选择弃用Snap。”</p>
+<p>Snap可以用于Java、Ruby、Python、JavaScript &amp; Node.js项目的持续集成，支持多种数据库——Sqlite3、PostgreSQL、MySQL、Redis、CouchDB、MongoDB——通过Capybara、Selenium、PhantomJS进行测试，并部署到Heroku或者AWS上。其它构建/测试/部署配置可根据要求支持。</p>
+<p><b>查看英文原文：</b><b><a href="http://www.infoq.com/news/2014/03/thoughtworks-go-snap">ThoughtWorks Open Sources Go, a CD Tool</a></b></p><br><br><br><br><br><br></body></html>

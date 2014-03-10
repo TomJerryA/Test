@@ -1,46 +1,10 @@
-<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>互联网技术架构的启示</h3><p>最近，“金融电子化”的微信(fcmag1993)中发表了中国建设银行信息技术管理部副总经理王申科撰写的一篇精彩文章“互联网技术架构给我们的启示”，他从商业银行IT从业人员的角度，总结和分析了阿里、谷歌等互联网企业的技术路线、架构和管理，从基本计算机理论与模型、互联网应用的技术基础、商业银行应用系统的技术基础、对银行业的启示等几个方面做了深入的讨论。</p>
-<p>在“基本计算机理论与模型”一节中，王申科提到了分布式系统、CAP理论（一致性、可用性、分区容忍性）、ACID模型（原子性、一致性、隔离性、持久性）和SOA面向服务架构等，其中分析了有别于ACID的BASE模型：</p>
+<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>Puppet Enterprise 3.2发布</h3><p><a href="http://puppetlabs.com/">Puppet Labs</a>刚刚发布了<a href="http://puppetlabs.com/blog/puppet-enterprise-3.2-extending-automation">Puppet Enterprise 3.2</a>——商业支持的Puppet版本。该版本包含的改进包括：完全支持模块、自动化非Root用户的任务以及<a href="http://docs.puppetlabs.com/pe/3.2/razor_intro.html">Razor</a>（一个发现并配置新服务器的应用程序）的<a href="http://puppetlabs.com/services/tech-preview">技术预览版</a>。</p>
+<p>从这一个版本开始，Puppet Labs将会完全支持<a href="http://forge.puppetlabs.com/supported">12个模块</a>。Puppet Labs在Puppet Enterprise中捆绑了7个模块，都是对构建基础设施非常关键的模块。这些模块配置<a href="http://forge.puppetlabs.com/puppetlabs/apt">APT包管理应用程序</a>、<a href="http://forge.puppetlabs.com/puppetlabs/firewall">防火墙</a>、<a href="http://forge.puppetlabs.com/puppetlabs/java_ks">密钥存储</a>、<a href="http://forge.puppetlabs.com/puppetlabs/reboot">Windows机器重启</a>以及其他资源所必须的<a href="http://forge.puppetlabs.com/puppetlabs/concat">基础构建块</a>。剩下的5个模块可以从<a href="http://forge.puppetlabs.com/">Puppet Forge</a>上<a href="http://forge.puppetlabs.com/supported">下载</a>。这些模块让我们能够安装并配置<a href="http://forge.puppetlabs.com/puppetlabs/apache">Apache</a>、<a href="http://forge.puppetlabs.com/puppetlabs/mysql">MySQL</a>、<a href="http://forge.puppetlabs.com/puppetlabs/postgresql">PostgreSQL</a>、<a href="http://forge.puppetlabs.com/puppetlabs/ntp">ntp</a>和<a href="http://forge.puppetlabs.com/puppetlabs/registry">Windows registry</a>。</p>
+<p>3.2版本还包含一个技术预览版的<a href="https://github.com/puppetlabs/razor-server">Razor</a>，既然是预览版那么就不应该在产品环境中使用。Razor是一个工具，它能够自动地发现并配置裸机，正如之前InfoQ所<a href="http://www.infoq.com/news/2012/06/razor">报道</a>的。3.2中的技术预览版重写了之前的那个初始版本，Razor<a href="https://github.com/puppetlabs/razor">最初的GitHub仓库</a>这样写道：</p>
 <blockquote> 
- <p>BASE则是另外一个理念和思路，Basically Available为基本可用，Soft-state为软状态/柔性事务，EventualConsistency 为最终一致性。BASE模型完全不同于ACID模型。牺牲高一致性，获得可用性。对一个“基本可用”系统来说，需要把系统中的所有功能点进行优先级的划分，对于系统内部的状态，采用一种柔性的策略，假如系统内分布了3个功能模块，允许它们在某一时刻3个模块的状态可以不一致。然后通过业务和技术的手段，例如采用异步机制或者批处理方式，来保证系统通过柔性状态一致来获得可用性。当前互联网应用在业务允许范围里普遍参考BASE 模型来进行系统设计。</p> 
+ <p>在过去的一年中，我们还学习了很多与社区需要相关的内容，也在学习Razor应该如何发展，它有哪些阻碍了自己发展的限制。这些知识让我们得出了一个结论：Razor社区和它将来的发展最好通过重写当前的代码库支撑。</p> 
 </blockquote>
-<p>对于分布式系统，他以Google为例：</p>
-<blockquote> 
- <p>Google在构建搜索系统时，第一次将分布式系统和互联网结合起来，用分布式系统来解决互联网问题。Google的分布式系统设计有几个重要的特征：视失败为常态；重视横向伸缩性；预测性能，追求低延迟，廉价的硬件和软件，推崇重用，灵活设计，加入足够的监测点和调试功能来帮助日后的调试，优先虚拟计算。 Google的这些设计思想，成为互联网应用开发事实上的标准和规范。</p> 
-</blockquote>
-<p>对于“互联网应用的技术基础”，王申科总结了几个方面：</p>
-<ul> 
- <li>基于x86服务器集群和开源软件搭建技术设施，分布式架构+开源软件是其基本特征。</li> 
- <li>积极进取的创新精神。以阿里巴巴为例，短短几年先后自主开发了许多技术产品。</li> 
- <li>基于场景的需求分析和应用开发。</li> 
- <li>平台化建设理念，提高开发效率和系统质量。</li> 
- <li>自动化部署和运维体系。</li> 
- <li>成本控制意识和自主掌控能力。</li> 
-</ul>
-<p>其中的”基于场景的需求分析和应用开发”,他分析了阿里巴巴的开发原则：</p>
-<blockquote> 
- <p>SOA服务化，所有系统采取服务化模式，系统之间进行必要的分拆和隔离，通过服务调用和消息通知的方式进行协同；BASE和ACID相结合，能够采取BASE模式的业务一定是异步方式，而核心的账务信息一定是采取实时方式，保证ACID；无单点设计、可监控、可测试、可回滚、可禁用、短事务与柔性事务、异步设计、无状态、使用成熟技术、业务分等级、业务可降级、多数据中心部署。</p> 
-</blockquote>
-<p>对于“自动化部署和运维体系”，王申科总结了阿里巴巴的经验：</p>
-<blockquote> 
- <p>开发了一套资产信息采集程序和采集流程，将服务器、网络设备、存贮等资产信息，采集到数据库中。应用系统不再关心具体的资源信息，无论资产还是资源都是处于动态的变化中。通过资产信息和资源的变更流程，资产信息，硬件信息和应用信息的任何变更，必须通过系统进行变更记录，详细记录每个设备的生命周期里的各种变化。变更流程和工作流系统对接，通过工作流系统进行分级审批之后，才能进行相应的变更。以自动化采集为核心的资产管理体系，主动监控确保资源池一致性，保证资产信息的准确性。对资源进行回收和重新分配的时候，先要确保资源的状态。对于资源的数据，必须采取主动监控的做法，确保数据的可靠性，其具体做法是每天对设备的信息进行重新抓取，并与数据库里的状态进行匹配，发现不一致的数据，报警并锁定资源，不允许对资源进行任何操作。通过这种自动化的方式，杜绝人为错误，确保资产数据和资源池信息的数据一致性，是资源池可信的重要保证。</p> 
-</blockquote>
-<p>在“商业银行应用系统的技术基础”方面，他分析了以下方面：</p>
-<ul> 
- <li>通用信息技术和商业化软件是基础，集中式系统部署。</li> 
- <li>面临完全依赖供应商的被动局面。</li> 
- <li>交易系统突出资金安全和核算的准确性，数据一致性要求高，客户体验差。</li> 
-</ul>
-<p>其中对于第2点，王申科认为：</p>
-<blockquote> 
- <p>商业银行在信息技术支持和保障能力、技术进步和创新能力、技术采购议价能力、设备升级周期和扩容、成本控制等方面，很大程度上依赖信息技术供应商。从历史看，商业银行应用系统大多采用三层架构：服务层、应用层和数据层，最近几年逐步加入ESB层。每层采用双机或集群技术支撑业务应用。早期以纵向（scale-up）升级扩容为主，现在逐步采用横向（scale-out）扩容方式或虚拟化方式。这种历史发展过程中形成的架构和技术路线，很难适应发展迅速的互联网时代应用需求。</p> 
-</blockquote>
-<p>在“对银行业的启示方面”，王申科总结了以下几个方面：</p>
-<ul> 
- <li>用互联网的思维，认真思考和规划商业银行的信息化建设工作。</li> 
- <li>引入分布式架构和开源软件，构建集中式和分布式共存的架构体系。</li> 
- <li>突出核心能力，理性看待“去IOE”。</li> 
- <li>从设备供应商向服务供应商转型。</li> 
- <li>积极主动与互联网公司开展合作。</li> 
-</ul>
-<p>他认为：从应对市场的整体效果看，互联网分布式架构明显优于商业银行传统集中式架构，核心差别在于两类不同的应用架构理念，以及两类不同的技术团队管理、支持方式。因此，从应用入手，着手调整商业银行传统的技术架构和供应商管理方式，制定商业银行的技术架构设计规范和部署策略，实现架构的科学管理。仅从技术角度看，“去IOE”的实质是分布式架构和集中式架构、开源软件和商用软件的选择问题，各自的利弊见仁见智。商业银行IT从业人员的核心竞争力主要体现在对银行业务理解，以及对信息技术的熟练应用和应用架构设计能力，用信息化支持、推动和引领业务创新。</p>
-<p>对互联网架构领域感兴趣的读者可以关注即将于2014年4月25~27日在北京国际会议中心召开的QCon北京2014大会，专题包括<a href="http://www.qconbeijing.com/node/452">知名网站案例分析</a>、<a href="http://www.qconbeijing.com/node/450">扩展性、可用性与高性能</a>、<a href="http://www.qconbeijing.com/node/437">云计算服务探秘</a>、<a href="http://www.qconbeijing.com/node/441">大数据处理与大数据应用</a>等，许多讲座都与架构相关。读者可点击大会<a href="http://www.qconbeijing.com/">主页</a>查看详情。</p><br><br><br><br><br><br></body></html>
+<p>非Root用户（例如数据库管理员和开发人员）现在能够自动化任务。如果非Root用户能够手工执行安装或者配置任务，那么他就能够通过Puppet自动化这些任务。这种能力在外包基础设施的场景中依然是有帮助的。它给了内部团队在良好定义的边界里面使用Puppet的自主权。</p>
+<p>新版本对Puppet的代理技术也做了一些增强。通过利用yum和apt这样的包管理系统简化了代理的安装。支持平台的范围现在也包含了Solaris 11。将来的版本将会支持其他的平台。</p>
+<p>Puppet Labs使用<a href="http://puppet-lint.com/">puppet-lint</a>、<a href="http://rspec-puppet.com/">rspec-puppet</a>和<a href="https://github.com/puppetlabs/beaker">Beaker</a><a href="http://forge.puppetlabs.com/supported#testing-section">测试</a>支持的模块。Beaker是由Puppet Labs构建的一个新的验收测试框架。Puppet Labs正在研究支持社区模块的可能性。尽管测试流程一定会使用上面提到的工具，但是整个审查过程还没有定义。</p>
+<p><b>查看英文原文</b>：<a href="http://www.infoq.com/news/2014/03/puppet-enterprise-3-2">Puppet Enterprise 3.2 Brings Fully Supported Modules</a></p><br><br><br><br><br><br></body></html>

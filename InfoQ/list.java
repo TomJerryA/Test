@@ -1,6 +1,12 @@
 <html>
  <head></head> 
- <body> 
+ <body>
+  <div>
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/6.java">Elm 0.11 Improves JavaScript Interop</a>Elm’s recent 0.11 release aims to simplify using the FRP language in combination with Javascript.
+  </div>
+  <div>
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/5.java">Cloud Foundry Foundation</a>Pivotal have announced ‘moves to establish [an] open governance model for Cloud Foundry’ by creating a Cloud Foundry Foundation. EMC, HP, IBM, Rackspace, SAP and VMware have expressed a desire to join the foundation as platinum sponsors. ActiveState and CenturyLink will join as gold level sponsors.
+  </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/4.java">ThoughtWorks Open Sources Go, a CD Tool</a>ThoughtWorks has recently open sourced their Continuous Delivery (CD) tool, called Go, having its origins in CruiseControl and providing a pipeline process that covers the entire code development process: continuous integration, testing and deploying. 
   </div> 
@@ -144,12 +150,6 @@
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/11.java">Mac OS X and BTRFS support in Docker</a>As part of the 0.8 release the Docker.io team have announced support for installation on Mac OS X and the use of the BTRFS as an alternative to AUFS. 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/10.java">Twenty Five Years of GPS</a>The GPS constellation in use today was launched twenty five years ago, and is still going strong. Today, GPS receivers can be found in most smart phones as well as commercial airliners and supertankers. InfoQ looks back at how the GPS came to be, and how locations are being used today with HTML5 and geo location services. 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/9.java">Java 8 News: Release Candidates Available, New Atomic Numbers and Stripped Implementations Dropped</a>The first release candidates of Java 8 started showing up in early February. The first, b128, on February 4, and a second announced on the OpenJDK mailing list a week later. 
-  </div> 
+  </div>   
  </body>
 </html>
