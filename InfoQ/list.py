@@ -1,6 +1,21 @@
 <html>
  <head></head> 
- <body> 
+ <body>
+  <div>
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/1.py">IDE組み込み検索エンジン</a>新たなツールがプログラマのIDEの中に直接Webを実現する。検索エンジンがユーザ獲得にしのぎを削る中，新たなプログラミング指向の検索機能がVisual Studioユーザ向けに誕生した。
+  </div>
+  <div>
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/0.py">OpenAccess ORMがTelerik Data Accessに名称変更，改良UIとカラーのビジュアルデザイナを追加</a>Telerikは先日，OpenAccess ORMをTelerik Data Accessと名称変更するとともに，ユーザインターフェースの改良やカラーのビジュアルデザイナ，Telerik.DataAccess.Core, Telerik.DataAccess.Fluent, Telerik.DataAccess.Fluent.SampleといったNuGetパッケージを追加した。
+  </div>
+  <div>
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/49.py">HazelcastがMapReduce APIをサポート</a>オープンソースのインメモリデータグリッドソリューションHazelcastがMapReduceAPIを新たに導入した。
+  </div>
+  <div>
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/48.py">restyle.jsを使ったCSS処理</a>Andrea Giammarchi氏が開発しているrestyle.jsはJavaScriptベースのCSSプリプロセッサであり、サーバ(Node.js)でもブラウザでも動作する。 &quot;シンプルなCSSアプローチ&quot;と自称するこのツールはCSSのルールとプロパティのプレフィックス付きのバリエーションを生成し、DOMに挿入できる。
+  </div>
+  <div>
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/47.py">マップ，HTML5ビューア，高度なバーコードとWindows AzureをサポートするActiveReports 8</a>ComponentOneがActiveReports 8をリリースした。マップ，RSS14Stacked, RSSLimited, MicroPDF417などのバーコード，さらには部分信頼あるいは完全信頼の両環境下でWindows Azureをサポートする。さまざまなモバイルデバイス用に最適化したアプリケーションを開発するためのHTML5ビューアも同梱されている。
+  </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/46.py">DevOps CafeポッドキャストがQCon London 2014 DevOpsトラックを紹介</a>前回のDevOps Cafe Podcats(エピソード47)は，QCon London 2014 DevOpsトラックのプレビューだった。トラックのホストであるManuel Pais, Shane Hasite両氏による各セッションの選択理由の説明に続いて，それぞれの講演者が自身の講演について紹介した。その後は科学的手法の重要性について，あるいはアジャイルの&quot;Done&quot;の定義をDevOpsにどのように適応すべきかなど，さまざまな話題が議論された。 
   </div> 
@@ -135,21 +150,6 @@
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/6.py">Android++リリース - ゼロ・ハードウェア・リストリクション，MSBuild, LLVM, GCC, GDB統合デバッグ</a>先日リリースされたAndroid++のクローズドベータでは，Androidアプリの開発をVisual Studioを使って，ゼロ・ハードウェア・リストリクション, MSBuild, LLVM, GCC，さらにはGDB統合デバッグといったサポートの下で行うことができる。 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/5.py">アジャイル採用における “マネジメント・バイ・イン” とサポート</a>アジャイルの採用は，マネジメントを含む組織改革だ。その成功にはマネジメント・バイ・インが不可欠であると言われている。マネジメントによるサポートの欠如は，アジャイル移行の障害にもなりかねない，というのだ。しかしマネジメントがアジャイルをサポートする方法は，企業によってさまざまだ。 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/4.py">Coverity 7.0がリリース</a>Coverityがバージョン7.0をリリースした。 C#, Java, C, C++ のアルゴリズムが改善され、SonarQube、Eclipse、Visual Studio 2013との統合がサポートされている。また、Objective-CとC/C++の開発で使われているClangコンパイラもサポートする。 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/3.py">ビッグデータ: 言語は本当に重要か?</a>ビッグデータの分野では、数十億ものイベントの中で、たった1ミリセコンドの損失が重大な影響を与える。それにもかかわらず、Pythonのような遅いと考えられている言語が、この1年で非常に人気が出ている。ビッグデータコミュニティの最近の記事や議論では、データサイエンスとビッグデータのプログラミング言語の選択について、論争を始めている。 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/2.py">Facebook製UIライブラリ『React』の不変性をパワーアップさせる『Om』について</a>Omは、Facebook製HTML UIライブラリ『React』向けの新しいClojureScriptインタフェースである。OmはClojure（Script）の永続データ構造と、Reactの描画機能を改善するためにrequestAnimationFrameを使用している。InfoQはアプリケーション開発において、Omおよび関数型プログラミングがもたらす恩恵について、Omの開発者であるDavid Nolen氏と対談した。 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/1.py">GoogleがMotorolaをLenovoに売却</a>GoogleはMotorola Mobilityを29.1億ドルでLenovoに売却する。Lenovoが2,000件の特許を獲得する一方で，同社ポートフォリオの特許の大部分はGoogleが保持する。Googleにとってこの取引は損失かも知れないが，Androidエコシステムにはメリットがある。 
-  </div> 
+  </div>      
  </body>
 </html>

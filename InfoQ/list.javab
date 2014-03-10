@@ -2,6 +2,9 @@
  <head></head> 
  <body> 
   <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/32.javab">Sustainable Architectural Design Decisions</a> Software architects must create designs that can endure throughout software evolution. In this article, based on a research study the authors discuss the criteria that can help architects assess architectural design decisions’ sustainability. They describe the challenges to achieving sustainable decisions, criteria for such decisions, solutions they tried, and lessons learned. 
+  </div> 
+  <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/31.javab">Author Q&amp;A on Programming for Kids</a> The book Programming for Kids contains many examples that kids in the age from 9-14 can use to learn the basics of programming, using the programming language Ruby. It also shows them how they can use the command line on a Mac computer. Parents can sit beside their kids and follow along. InfoQ did an interview with the author Peter Armstrong about how kids learn computer programming. 
   </div> 
   <div> 
@@ -147,9 +150,6 @@
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/35.javab">Retrospectives Applied as “PROspectives&quot;</a> We can view situations in our work as opportunities from which to learn how to better handle similar situations in future, by looking back and asking “How will I deal with future situations like this to improve my results?” PROspectives help us to reflect more often, independently of acute, unexpected problems and without time pressure, to uncover ideas for future improvements. 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/34.javab">Oleg Shilo on CS-Script and Notepad++</a> When you just want to try out some code, Visual Studio can feel like overkill. So some developers turn to lightweight editors such as Notepad++ for their scripting needs. Oleg Shilo talks about his project to add better CS-Script plugin for Notepad++. 
   </div> 
  </body>
 </html>

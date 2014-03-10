@@ -1,15 +1,53 @@
-<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>2014年は Android自動車の年になるか</h3><p><a target="_blank" href="http://www.infoq.com/news/2014/01/android-enabled-cars"><em>原文(投稿日：2014/01/20)へのリンク</em></a></p>
+<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>restyle.jsを使ったCSS処理</h3><p><a target="_blank" href="http://www.infoq.com/news/2014/02/restylejs"><em>原文(投稿日：2014/02/17)へのリンク</em></a></p>
 <div class="article_page_left news_container text_content_container"> 
  <div class="text_info"> 
-  <p>GoogleはNvidiaほかAudi、GM、Honda、Hyundaiなどの自動車製造業社とともに<a href="http://www.openautoalliance.net/#about">Open Automotive Alliance</a> (OAA)を発表して正式に自動車内コンピュータの分野に参入した。このアライアンスの目的は2014年末にAndroidプラットフォームを自動車へ持ち込むことだ。</p> 
-  <p>最終的な目的を達するためこのアライアンスはふたつの戦略を採用している。ひとつは“自動車とAndroidデバイスのより良い統合を奨めること”、もうひとつは“自動車自体をAndroidデバイスにするための新しい機能をAndroidプラットフォームに追加すること”だ。</p> 
-  <p>このふたつが具体的にどのようなことなのかは発表されていない。しかし、<a href="http://www.theverge.com/2014/1/6/5280874/googles-open-automotive-alliance-the-battle-for-the-dashboard-is-now">The Vergeによれば</a>このふたつの戦略は“ダッシュボードや音声制御を使ってアプリをコントロールする標準的な枠組み”と“携帯から自動車のディスプレイへ投影するある種のスクリーン”を示唆している。</p> 
-  <p>OAAのメンバであるAudiは、<a href="http://ces.cnet.com/1606-35289_1-50161512.html">CES 2014でAndroidのデモを行っている</a>。このタブレットはWi-Fi経由で自動車と接続し、社内エンターテーメントやナビゲーションシステムを操作できる。運転手が操作をしなくてもいいのだ。<a href="http://ces.cnet.com/8301-35289_1-57616809/audi-shows-integrated-android-tablet-to-ces-2014-crowd/">CNETによれば</a>、このタブレットは“AudiがOpen Auto Allianceに参加することでどのようにAndroidとの統合を押し進めるについてのヒントを提供する”。Audiはこのタブレットの提供開始時期や価格については明らかにしなかった。</p> 
-  <p>このアライアンスの目的のひとつは車上でモバイル端末に“安全”で“シームレス”にアクセスし、“運転を妨げることなく探している物事を見つける支援をする”ことだ。</p> 
-  <p>OAAは<a href="http://www.openhandsetalliance.com/">Open Handset Alliance</a> (OHA)を思い起こさせる。このアライアンスはGoogleがモバイル端末市場でAndroidの優位を確立するのを支援した。OAAのサイトで見られるキーコンセプトのうちふたつ、つまり、オープンネスとカスタマイゼーションは<a href="http://www.openhandsetalliance.com/press_110507.html">オリジナルの2007年のOHAのアナウンスメント</a>にも含まれている。</p> 
-  <p>さらに、<a href="http://en.wikipedia.org/wiki/Open_Handset_Alliance">設立当初の34団体のメンバが現時点で84になった</a>OHAと同様、Open Automotive Allianceもテクノロジーや自動車産業のプレイヤーに門戸を開いている。</p> 
-  <p>開発者にとってはふたつの利点がある、とアライアンスは主張する。OAAは単一のプラットフォームをさまざまな自動車メーカーに提供する。つまり、複数のプラットフォームに対応するための労力を削減できる。そして、すでに多くの開発者がAndroidに親しんでいる。</p> 
-  <p>自動車市場に参入しようとしているモバイルOSメーカーはGoogleだけではない。Appleは2012年に<a href="http://en.wikipedia.org/wiki/Siri#Vehicle_integration">Eyes Free Siri</a>に特化したパートナーシップを発表している。6ヶ月前のWWDC 2013では、<a href="http://en.wikipedia.org/wiki/IOS_in_the_Car">自動車用のiOS</a>について戦略を発表している。</p> 
-  <p>また、MicrosoftのWindowsは<a href="http://en.wikipedia.org/wiki/Ford_Sync">Ford SYNC Applink</a>で利用されている。</p> 
+  <p>Andrea Giammarchi氏が開発している<a href="https://github.com/WebReflection/restyle">restyle.js</a>はJavaScriptベースのCSSプリプロセッサであり、サーバ(Node.js)でもブラウザでも動作する。 &quot;シンプルなCSSアプローチ&quot;と自称するこのツールはCSSのルールとプロパティのプレフィックス付きのバリエーションを生成し、DOMに挿入できる。</p> 
+  <p>既存のCSSには機能的な不足はないものの、Andrea氏はサーバとクライアントの両方で動作する<a href="http://webreflection.blogspot.co.uk/2014/02/restylejs-simplified-css-approach.html">軽量なもの</a>がない、という。</p> 
+  <blockquote> 
+   <p>&quot;yet another CSS preprocessor&quot;を探しているなら、次のことを教えます。私が何人かの著名なCSS開発者やウェブ開発者に話を聞いたところ、そのようなスクリプトは存在しなかったです。&quot;なんで誰も作っていないんだろう&quot;、と思うでしょう。私の考えでは、誰かがすでに作っているものの、圧縮して0.8KBでサーバとIE6まで含んだクライアントと互換性のあるものがないんです。つまりrestyleのことです。</p> 
+  </blockquote> 
+  <p>このライブラリは、restyle()というメソッドを公開し、ふたつの引数をとる。ひとつはJavaScriptのオブジェクトでCSSやDOMスタイルの編集に似た文法を持つ。</p> 
+  <pre>
+ restyle({
+    'body &gt; div.my-div': {
+        backgroundColor: 'goldenrod',
+        backgroundImage: 'url(mybg.png)'
+    }
+}); </pre> 
+  <p>これによって、次のCSSが出来上がる。</p> 
+  <pre>
+ body &gt; div.my-div {
+    background-color: goldenrod;
+    background-url: url(mybg.png);
+} </pre> 
+  <p>異なる方法でJavaScriptオブジェクトを定義し、出力結果を得ることもできる。</p> 
+  <pre>
+ restyle({
+    'body &gt; div.my-div': {
+        background: {
+            color: 'goldenrod',
+            image: 'url(mybg.png)'
+        }
+    }
+}); </pre> 
+  <p>もちろん、特別なことはしていない。マークアップの記述の減量もわずかだ。しかし、restyle.jsは標準的なCSSでは冗漫になってしまうときにはrestyle.jsは効果的だ。例えば、ベンダプレフィックスを使うとき、ふたつ目の引数を使ってベンダプレフィックスを定義すればいい。例えば、</p> 
+  <pre>
+ restyle({
+    '.my-div': {
+        transition: 'background-color 500ms ease';
+        backgroundColor: '#00f';
+    }
+}, ['moz', 'webkit']); </pre> 
+  <p>出力結果は以下の通り。</p> 
+  <pre>
+ .my-div {
+    -webkit-transition: background-color 500ms ease;
+    -moz-transition: background-color 500ms ease;
+    transition: background-color 500ms ease;
+    background-color: #00f;
+} </pre> 
+  <p>これは、アニメーションのロールを記述とき、とても使いやすい。2、3のコードがベンダプレフィックスがついたCSSの属性に変換される。サーバでは、第2引数を省略すればプレフィックスなしになる。ブラウザで動作しているrestyle.jsでは、ブラウザの種類に関わらず、すべてのベンダプレフィックスを生成する。</p> 
+  <p>restyle()関数は環境によって異なる結果を返す。Node.jsでは、結果のCSSを含む文字列を返す。ブラウザでは、CSSは自動的にDOMに挿入され即座に反映される。返却値は属性ノード(スタイルエレメント)、css(CSSを含む文字列)、remove()メソッドを含むオブジェクトを返す。removeメソッドは挿入したスタイルをDOMから削除する。</p> 
+  <p>サンプルページは<a href="http://webreflection.github.io/restyle/">ここで確認できる</a>。実際にrestyle.jsを使って動作を確認できる。Andrea氏の記事への<a href="http://webreflection.blogspot.co.uk/2014/02/restylejs-simplified-css-approach.html#comments">コメント</a>が指摘するように、restyle.jsは<a href="https://github.com/krasimir/absurd">AbsurdJS</a>と同じアイディアでできている。大きさは10分の1だが、Arestyleは軽量で触ってみる価値はある。<a href="https://github.com/WebReflection/restyle/blob/master/README.md">readme</a>を読んでみるのもいいだろう。</p> 
  </div> 
 </div><br><br><br><br><br><br></body></html>
