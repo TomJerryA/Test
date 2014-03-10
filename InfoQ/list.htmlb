@@ -1,7 +1,7 @@
 <html>
  <head></head> 
- <body>
-  <div>
+ <body> 
+  <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/16.htmlb">程序员的工具</a> 作为一名程序员，我会用到许多工具。道理很简单，因为它们可以提高我的工作效率。但这里有个前提条件，那就是这些工具可以很好地支持我在工作和编码中的实践。如果某些工具违背了这些实践以及它们背后的价值观，我就不会使用或者有限地使用那些有用的功能。在本文中，我会分享一些工具以及背后的思考，希望对广大程序员朋友有所启示和帮助。 
   </div> 
   <div> 
@@ -150,6 +150,6 @@
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/21.htmlb">实现Java中的高性能解析器</a> 在某些情况下，你需要实现自己的解析器，有可能是因为没有标准的做法可以满足你的需求。本文将带你一步一步创建高性能的解析器。 
-  </div>  
+  </div> 
  </body>
 </html>
