@@ -2,7 +2,13 @@
  <head></head> 
  <body>
   <div>
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/9.java">Java EE 8 Survey Last Call</a>Oracle announces the third final survey on Java EE 8, the next version of Java Enterprise Edition, and the Glassfish reference implementation.
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/11.java">Improving Process with Two Definitions of Done</a>Separate ideal and current versions of Definition of Done can be used in agile teams. The purpose is to expand Definition of Done to grow in maturity and quality. This can be implemented on physical boards as well as on other electronic Agile Tools like Jira.
+  </div>
+  <div>
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/10.java">Domino: Datascience-as-a-Service</a>Domino, a Platform-as-a-Service for data science, enables people to do analytical work using languages such as Python or R in the cloud (EC2).
+  </div> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/9.java">Java EE 8 Survey Last Call</a>Oracle announces the third final survey on Java EE 8, the next version of Java Enterprise Edition, and the Glassfish reference implementation. 
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/8.java">Attitudes for Sustainable Lean Startup Teams</a>Ramli John gave an ignite talk about the minimum viable attitudes for lean startup teams at the 2013 lean startup conference. According to Ramli there are three attitudes that help teams to run lean sustainable over time: humbleness, hunger and happiness. 
@@ -144,12 +150,6 @@
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/16.java">Interview with VersionOne CEO Robert Holler on the State of Agile Survey Results</a>InfoQ spoke to VersionOne CEO Robert Holler about the 8th State of Agile survey results which were recently released. 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/15.java">OpenAccess ORM Renamed As Telerik Data Access with Improved UI and Colored Visual Designer</a>Telerik recently renamed OpenAccess ORM as Telerik Data Access with Improved User Interface and colored visual designer in addition to Telerik.DataAccess.Core NuGet, Telerik.DataAccess.Fluent and Telerik.DataAccess.Fluent.Sample NuGet packages. 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/14.java">Hazelcast Introduces MapReduce API</a>Hazelcast, an open source in-memory data grid solution introduces a MapReduce API for its offering. 
-  </div>  
+  </div>   
  </body>
 </html>

@@ -1,7 +1,7 @@
 <html>
  <head></head> 
- <body>
-  <div>
+ <body> 
+  <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/32.javab">3 years of Kanban at Sandvik IT: Sustaining Kanban in the Enterprise</a> This second article in the “3 years of Kanban at Sandvik IT” series focuses on the lessons that the System Development Office learned when sustaining the Kanban method during this 4 years journey. Presented are four qualities that Sandvik IT identified as key when setting-up relevant, and long-term, kanban systems in the enterprise: Stickiness, Clarity, Curiosity and Influence. 
   </div> 
   <div> 
@@ -150,6 +150,6 @@
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/36.javab">Monty Taylor and Jim Blair on CI and Test Automation at OpenStack</a> Monty Taylor and James Blair talk about the build and test challenges they face at OpenStack, and how they managed to tackle them. Managing hundreds of VMs on public clouds, integrating up to 400 commits a day and running thousands of test jobs on them are some of the challenges described. 
-  </div>  
+  </div> 
  </body>
 </html>
