@@ -1,11 +1,11 @@
 <html>
  <head></head> 
- <body>
-  <div>
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/11.java">Improving Process with Two Definitions of Done</a>Separate ideal and current versions of Definition of Done can be used in agile teams. The purpose is to expand Definition of Done to grow in maturity and quality. This can be implemented on physical boards as well as on other electronic Agile Tools like Jira.
-  </div>
-  <div>
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/10.java">Domino: Datascience-as-a-Service</a>Domino, a Platform-as-a-Service for data science, enables people to do analytical work using languages such as Python or R in the cloud (EC2).
+ <body> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/11.java">Improving Process with Two Definitions of Done</a>Separate ideal and current versions of Definition of Done can be used in agile teams. The purpose is to expand Definition of Done to grow in maturity and quality. This can be implemented on physical boards as well as on other electronic Agile Tools like Jira. 
+  </div> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/10.java">Domino: Datascience-as-a-Service</a>Domino, a Platform-as-a-Service for data science, enables people to do analytical work using languages such as Python or R in the cloud (EC2). 
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/9.java">Java EE 8 Survey Last Call</a>Oracle announces the third final survey on Java EE 8, the next version of Java Enterprise Edition, and the Glassfish reference implementation. 
@@ -150,6 +150,6 @@
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/16.java">Interview with VersionOne CEO Robert Holler on the State of Agile Survey Results</a>InfoQ spoke to VersionOne CEO Robert Holler about the 8th State of Agile survey results which were recently released. 
-  </div>   
+  </div> 
  </body>
 </html>

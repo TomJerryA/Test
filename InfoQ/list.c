@@ -1,6 +1,9 @@
 <html>
  <head></head> 
- <body> 
+ <body>
+  <div>
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/41.c">Submiss&otilde;es para Short Talks &amp; 7 motivos para participar do QCon SP</a>Falta apenas um m&ecirc;s para o QCon S&atilde;o Paulo (9-11 de abril), e o conte&uacute;do do evento est&aacute; quase 100% definido, com 48 de 50 palestras confirmadas e as sess&otilde;es da Solutions Tracks com presen&ccedil;a garantida de grandes empresas nacionais e internacionais.
+  </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/40.c">Facebook faz Mercurial ser mais r&aacute;pido que o Git</a>No in&iacute;cio deste ano, o Facebook publicou em seu blog de engenharia um texto intitulado Escalando o Mercurial no Facebook, explicando com eles est&atilde;o escalando o Mercurial como seu reposit&oacute;rio. 
   </div> 
@@ -147,9 +150,6 @@
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/44.c">Reduza o desperd&iacute;cio atrav&eacute;s da mudan&ccedil;a do m&eacute;todo cascata para m&eacute;todo &aacute;gil</a>O desenvolvimento de software enxuto diz: toda iniciativa que n&atilde;o est&aacute; criando valor para o cliente &eacute; considerado desperd&iacute;cio. Como a transi&ccedil;&atilde;o do m&eacute;todo cascata para um m&eacute;todo &aacute;gil pode ajudar as empresas a reduzir o desperd&iacute;cio? 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/43.c">Microsoft une for&ccedil;as com RedGate e Clickberry para oferecer ferramentas Node.Js no Visual Studio</a>NTVS, uma abrevia&ccedil;&atilde;o em ingl&ecirc;s de Ferramentas Node.js para Visual Studio, oferece a desenvolvedores Node.js uma IDE completa e cheia de recursos que inclui o Intellisense, gerenciamento de pacotes, debug e controle de perfis. NTVS &eacute; uma uni&atilde;o de for&ccedil;as coordenado pelo time de desenvolvimento de ferramentas Python da Microsoft com a RedGate, Clickberry entre outros. 
-  </div> 
+  </div>  
  </body>
 </html>
