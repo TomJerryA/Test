@@ -1,69 +1,152 @@
-<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>使用AeroGear框架进行Java EE 移动应用开发</h3><p><a href="http://aerogear.org/">AeroGear</a>是JBoss所推出的一个移动开发框架，它为一些开发类库提供了移动设备的连接能力。它支持在iOS和Android设备上开发web、混合与原生移动应用的开发，还包括了相应的服务端资源，并且加入了对<a href="http://www.jboss.org/resteasy">RESTEasy</a>等现有项目的扩展。</p>
-<p>在AeroGear项目下还有若干个子项目，包括Android Library、AeroGear Connectivity、AeroGear Controller、JavaScript Library、AeroGear Persistence、Security、AeroGear Server Integration以及iOS Library等等。</p>
-<p>AeroGear Security模块提供了基于时间的一次性密码（OTP）功能，支持服务端与客户端的开发，其它的安全provider还包括PicketLink和PicketBox等类库。</p>
-<p>来自JBoss的Jay Balunas与Marius Bogoevici在JavaOne 2012大会上的演讲中介绍了使用AeroGear与PicketLink框架实现Java EE移动应用的安全性的话题。InfoQ与Jay、Marius和Anil Saldhana进行了一次对话，谈论了使用AeroGear框架进行移动开发，以及如何保证移动应用安全性的话题。</p>
-<p><b>InfoQ</b><b>：在移动设备上开发安全的应用，和传统的客户端/</b><b>服务器以及web</b><b>应用程序相比有什么不同呢？</b></p>
-<blockquote> 
- <p><b>JBoss</b><b>团队：</b>移动设备带来了新的使用方式，例如离线操作，以及对流量更严格的控制要求，因为包含大量请求的chatty式应用会很快耗光你的电池。此外，HTML5的出现重新振兴了富客户端应用，而浏览器而成为了运行时平台。关于认证的方式，使用社交网站的帐号作为身份提供者已经成为了一种常见的需求。随着移动设备的不断涌现，员工们也希望能够使用他们的移动设备完成工作，因此各组织也积极地寻求将它们的服务端应用程序扩展到移动设备上的方法。</p> 
- <p>另外，移动设备遗失的可能性更大，因此设备上的数据必需被保护起来。移动设备可以在各种Wifi范围和通信服务提供者的范围中使用，因此必须对传输中的数据进行保护以避免被窃取。一台移动设备上可以安装多个应用，每个应用的私有数据应该保证不会泄漏到另外的应用中。通常来说移动操作系统会保证这一点，但还是要对这一点提高警惕。</p> 
- <p>如果在移动设备上要实现访问机密或专利数据的功能，移动web应用就必须使用现有的企业证书进行身份认证。AeroGear和PicketLink允许这些企业移动应用使用现有的移动应用认证标准。因此，大量的数据转移至客户端，更多地应用逻辑在客户端运行，以及我们所提到过的各种挑战，使得将应用程序的整个安全方案全部放在服务端这种老式的模型已经不再可行了。当然，服务端依然是安全的最后屏障，但现代化的移动应用安全方案需要在客户端与服务端之间存在一种更智能的协作模型。</p> 
-</blockquote>
-<div id="lowerFullwidthVCR"></div>
-<p><b>InfoQ</b><b>：创建AeroGear</b><b>框架的主要目标和宗旨是什么？</b></p>
-<blockquote> 
- <p><b>JB</b><b>：</b>AeroGear是作为一个开源项目创建的，它关注的是简化跨多个主流移动客户端进行移动应用开发的难度，并且将Java EE服务端的功能扩展到这些新的客户端中，供开发者使用。</p> 
- <p>以下是该项目的一些宗旨：</p> 
- <p>移动web，混合应用（专注于Apache Cordova）和原生应用（专注于iOS和Android）都是有效的客户端开发平台。</p> 
- <p>在多个客户端中使用一套通用的动词和概念，而针对特定的平台对开发体验进行优化调整。</p> 
- <p>将Java EE中最好的功能扩展到当前和今后的客户端中。</p> 
- <p>关注于企业应用，因此安全性、基于服务端的持久化和编程效率是关键所在。</p> 
-</blockquote>
-<p><b>InfoQ</b><b>：在今年的JavaOne</b><b>大会上，你们谈到了使用AeroGear</b><b>和PicketLink</b><b>框架为基于Java</b><b>的移动应用提供端到端的安全性。你们能否深入地讲一讲这个话题，并谈一谈这两个框架是如何互相合作，以实现安全的移动应用的吗？</b></p>
-<blockquote> 
- <p><b>JB</b><b>：</b>PicketLink提供的解决方案是针对一个通用目的的服务端企业级Java安全框架，而AeroGear建立在它之上，一方面它提供的服务端组件对PicketLink的功能进行了调整，以适用于移动开发的需要。另一方面又提供了客户端组件，基于它创建的富web、混合应用和原生Android/iOS应用将与服务端进行交互。</p> 
- <p>此外，如同之前提到的那样，对于企业移动应用中每天的活动来说，安全与身份管理是关键所在。AeroGear将配合PicketLink，为移动应用提供各种不同的认证方式，从传统的LDAP方式到当今的基于OAuth的安全选项。</p> 
-</blockquote>
-<p><b>InfoQ</b><b>：是否有工具支持使用AeroGear</b><b>框架开发移动web</b><b>与混合应用呢？</b></p>
-<blockquote> 
- <p><b>JB</b><b>：</b>AeroGear在推出时就有一系列工具和框架作支持，简化了移动开发者面临的各种任务。</p> 
- <p>关于IDE方面，JBoss Developer Studio（JBDS）提供了对使用AeroGear开发移动应用的支持，我们正致力于将更多的高级混合应用开发与JavaScript开发的功能整合到JBDS中。同一时间Arquillian项目也取得了进展，它提供了各种“容器内”和“设备上”的测试方式。我们也正在争取先将HTML5和REST功能以插件形式提供给Forge，之后才会尝试创建一个混合式应用的快速开发工具。</p> 
- <p>关于第3方工具与框架方面，AeroGear开发混合应用时会专门于Apache Cordova。在JavaScript方面，我们在内部已经使用了jQuery，但也在考虑将Backbone.js、Angular.js和其它类库整合进来。</p> 
-</blockquote>
-<p><b>InfoQ</b><b>：在对移动应用进行单元测试，以及在模拟器上进行测试方面有没有提供某种形式的支持呢？</b></p>
-<blockquote> 
- <p><strong>JB：</strong>Arquillian以及它的扩展Drone和Warp为运行服务端测试与客户端测试提供了一套精密的系统。它不仅支持基于web的应用（包括HTML5应用），也能够通过Arquillian Android支持原生移动应用的测试。</p> 
-</blockquote>
-<p><b>InfoQ</b><b>：PicketLink</b><b>支持怎样的安全框架与类库？</b></p>
-<blockquote> 
- <p><b>JB</b><b>：</b>PicketLink本身就是一个安全框架，因此它自带的方案就能够实现各种安全标准了。它支持各种认证机制，包括传统的用户/凭据模型，以及各种高级认证机制，包括Kerberos、SAML、OTP、DIGEST等。它还支持各种访问控制机制，包括细粒度的权限模型、XACML、基于规则的Drools认证等等。PicketLink支持兼容LDAP的目录服务器和数据库的身份信息存储。对资源进行OAuth2授权也是受支持的。另外，它还能够与Apache DeltaSpike进行整合，这样就能够与其它安全性类库（例如Apache Shiro）进行互操作了。</p> 
-</blockquote>
-<p><b>InfoQ</b><b>：在使用PicketLink</b><b>时，安全功能——尤其是认证与授权是如何在移动设备中工作的呢？</b></p>
-<blockquote> 
- <p><b>JB</b><b>：</b>我们谈论的内容不仅限于PicketLink，也应该包括AeroGear。原因在于：PicketLink在设计上是在服务端进行操作的。那么，只要使用一个解耦的认证/授权模型，它就能够整合多种身份管理源与认证过程，并可设定不同的授权策略，以允许开发者对应用逻辑的各种访问点，例如RESTful的终结点或业务方法调用进行保护。除此之外，AeroGear在服务端为保护它的controller中的URL也提供了机制。但移动应用也可以利用客户端的安全性（即使最终的安全性主宰者还是在服务端）。PicketLink还提供了编写认证与复杂的授权/权限模型，在移动设备上使用它可以将服务端的通信降至最少，因为权限信息可以缓存在客户端，因此某些授权操作就可以在这里实现。这种方式能够为移动应用带来实实在在的好处。AeroGear通过这种客户端类库的方式为系统增添了价值。</p> 
- <p>另一方面，也可以在服务端进行安全性检查，以保持移动应用的轻量级。PicketLink为复杂的授权工作流提供了对OAuth2的支持。</p> 
-</blockquote>
-<p><b>InfoQ</b><b>：这两个项目未来的路线图是怎样的呢？</b></p>
-<blockquote> 
- <p><b>JB</b><b>：</b>对于AeroGear，我们的首个发布会专注于安全持久化的基础，以及查询和分页。将PicketLink的身份管理和控制功能整合到我们的客户端API中，可以使完全地开发传统的企业应用变得简单，而且是在你所选择的移动客户端（web、混合应用或原生应用）实现的。我们计划在2013年早期发布最终的1.0.0版本。</p> 
- <p>基于这个框架所能开发出来的应用是非常令人激动的，我们现在正在讨论一些新功能，比如跨客户端的数据同步、统一的原生push（在非原生环境下能够自动降级，并加入了IDM的整合）、消息传递（CDI、JMS等等）、离线的安全持久化、客户端对象验证，以及更多的功能。</p> 
- <p>关于PicketLink项目，路线图可以在<a href="https://docs.jboss.org/author/display/PLINK/PicketLink3.0-Roadmap">这个链接</a>中找到。</p> 
- <p>他们的目标也是在2013年早期发布最终的PicketLink v3版本。</p> 
-</blockquote>
-<h2>关于受访者</h2>
-<table cellspacing="0" cellpadding="0" border="1"> 
+<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>运营精益创业组织的柔术</h3><p>我们经常要为创建有价值的软件而挣扎，只是因为我们不能<a href="http://www.targetprocess.com/rightthing.html">快速准确地做出正确的事情</a>。</p>
+<p>最近发展起来的 <a href="http://www.theleanstartup.com/">精益创业</a>方法学，跟它在很大程度上所依赖的<a href="http://en.wikipedia.org/wiki/Agile_software_development">敏捷软件开发实践</a>一起，回答了我们的问题。</p>
+<p>然而大多数创业组织在应用这些原则时都是零敲碎打的方式，并没有得到预期的收益(<a href="http://online.wsj.com/article/SB10000872396390443720204578004980476429190.html">有四分之三的创业都失败了)</a>。</p>
+<p>为了让精益创业的核心概念和价值更容易理解，我们用<a href="http://en.wikipedia.org/wiki/Brazilian_jiu-jitsu">巴西柔术</a> (BJJ)打个比方，学习如何以精益方式经营创业组织。</p>
+<p>如果你觉得自己已经掌握了精益创业的理念，可以通过这篇文章了解下西奥多&middot;罗斯福总统<a href="http://www.artofjiujitsu.com/blog/the-art-of-jiu-jitsu-is-worth-more-in-every-way-than-all-of-our-athletics-combined--president-theodore-roosevelt">所说</a>的这门武术， &quot;柔术的艺术全面超越了我们所有的竞技项目&quot;。</p>
+<h2>BJJ，精益创业和两者核心的相似性</h2>
+<table cellspacing="0" cellpadding="0" border="0"> 
  <tbody> 
   <tr> 
-   <td width="85" valign="top"> <p><img src="http://infoqstatic.com/resource/articles/javaee-mobile-application-development-aerogear/zh/resources/1118030.jpg" _p="true" _href="img://null" alt="" style="float: left" /></p> </td> 
-   <td width="344" valign="top"> <p><b>Marius Bogoevici</b>是Red Hat的一名高级软件工程师，他也是JBoss Developer Framework参考应用TicketMonster的架构师。</p> </td> 
-  </tr> 
-  <tr> 
-   <td width="85" valign="top"> <p><img src="http://infoqstatic.com/resource/articles/javaee-mobile-application-development-aerogear/zh/resources/1118031.jpg" _p="true" _href="img://null" alt="" style="float: left" /></p> </td> 
-   <td width="344" valign="top"> <p><b>Anil Saldhana</b>是JBoss的首席安全架构师，他也是JBoss社区中PicketLink项目的创始人。</p> </td> 
-  </tr> 
-  <tr> 
-   <td width="85" valign="top"> <p><img src="http://infoqstatic.com/resource/articles/javaee-mobile-application-development-aerogear/zh/resources/1118032.jpg" _p="true" _href="img://null" alt="" style="float: left" /></p> </td> 
-   <td width="344" valign="top"> <p><b>Jay Balunas</b>是一Red Hat的一名移动平台架构师，也是AeroGear项目的创始人。</p> </td> 
+   <td valign="top" width="533"> <p>BJJ是一种基于柔道的武术和自卫系统， 侧重于地面擒拿。它使用位置控制、关节锁和绞技，被认为是最有效的武术，因为它的创建者，<a href="http://en.wikipedia.org/wiki/Gracie_family">格雷西家族</a>，称霸了<a href="http://en.wikipedia.org/wiki/UFC_1">第一届综合格斗赛</a>。 艾里奥&middot;格雷西说：“柔术是人类智慧与蛮力对抗的胜利,”，他和他的哥哥卡洛斯&middot;格雷西一起 创建了BJJ。你可以在<a href="http://www.youtube.com/watch?v=ZjCRIWaoU98">这里</a>观看6次世界冠军获得者罗布森&middot;莫拉在训练期间的滚动，或者2013年世界BJJ冠军赛上的一些黑带<a href="http://www.youtube.com/watch?v=WQylr1iKII4">集锦</a>。</p> 
+    <div id="lowerFullwidthVCR"></div> </td> 
   </tr> 
  </tbody> 
 </table>
-<p><strong>查看英文原文：</strong><a href="http://www.infoq.com/articles/javaee-mobile-application-development-aerogear">Java EE Mobile Application Development using the AeroGear Framework</a></p><br><br><br><br><br><br></body></html>
+<p><a href="http://en.wikipedia.org/wiki/Lean_Startup">精益创业</a>，遵循精益制造和敏捷开发的原则，是一种在充满风险的环境中，迭代地、增量地开发产品的方法。在2011年由<a href="http://en.wikipedia.org/wiki/Eric_Ries">埃里克&middot;里斯</a>提出，以<a href="http://steveblank.com/category/customer-development/">客户开发</a>、业务假想驱动试验和持续验证学习为基础。</p>
+<p>两种系统都植根于日本文化：精益创业源自丰田生产系统，而巴西柔术源于<a href="http://en.wikipedia.org/wiki/Jujutsu">柔道</a>，忍者的艺术。两者的核心概念都是“用最小的努力获得最大的效益”，并实现“节省精力”的原则，这是生活中所有战斗的首要决定性因素。 </p>
+<table cellspacing="0" cellpadding="0" border="0"> 
+ <tbody> 
+  <tr> 
+   <td valign="top" width="385"> <p>“大多数创业组织之所以失败，并不是因为他们没能构建出他们想要构建的产品，而是因为他们没能在资源耗尽之前找到跟产品相配的市场。”</p> <p><a href="http://www.amazon.com/Running-Lean-Iterate-Works-OReilly/dp/1449305172">精益创业实战</a><b>, Ash Maurya</b></p> </td> 
+   <td valign="top" width="471"> <p>“柔道取法自然，其精髓就是节省精力。在柔道中， ‘效率’的意思是用尽可能少的力量和体能达成你的目标。它意味着动作的经济性–消除对动作和体力的浪费。”&nbsp;</p> <p><a href="http://jiujitsubrotherhood.com/2012/11/the-essence-of-jiu-jitsu/">柔道的精髓</a> <b>Nicolas Gregoriades, </b>BJJ黑带</p> </td> 
+  </tr> 
+ </tbody> 
+</table>
+<p></p>
+<h2>比喻</h2>
+<table cellspacing="0" cellpadding="0" border="0"> 
+ <tbody> 
+  <tr> 
+   <td valign="top" width="191"> <p>创业</p> </td> 
+   <td valign="top" width="213"> <p>巴西柔术</p> </td> 
+   <td valign="top" width="453"> <p>解读</p> </td> 
+  </tr> 
+  <tr> 
+   <td valign="top" width="191"> <p>客户</p> </td> 
+   <td valign="top" width="213"> <p>对手</p> </td> 
+   <td valign="top" width="453"> <p>战胜客户或对手是你的终极目标。战斗是为了将你的意志强加给他，但他/她一般会反抗、逃避。你必须尊敬他，因为他是你最好的老师。</p> </td> 
+  </tr> 
+  <tr> 
+   <td valign="top" width="191"> <p>创业团队</p> </td> 
+   <td valign="top" width="213"> <p>BJJ武术家</p> </td> 
+   <td valign="top" width="453">&nbsp;</td> 
+  </tr> 
+  <tr> 
+   <td valign="top" width="191"> <p>产品团队</p> </td> 
+   <td valign="top" width="213"> <p>思想</p> </td> 
+   <td valign="top" width="453"> <p>认识到客户(对手)的反应，决定下一个动作</p> </td> 
+  </tr> 
+  <tr> 
+   <td valign="top" width="191"> <p>开发团队</p> </td> 
+   <td valign="top" width="213"> <p>身体</p> </td> 
+   <td valign="top" width="453"> <p>做出动作 (构建代码)</p> </td> 
+  </tr> 
+ </tbody> 
+</table>
+<p>基于上面的比喻，并在受到BJJ概念的启发后，我们接下来要讲一下如何经营精益创业组织 (跟BJJ有关的所有事情都是灰色背景)。</p>
+<h2>保持接触</h2>
+<table cellspacing="0" cellpadding="0" border="0"> 
+ <tbody> 
+  <tr> 
+   <td valign="top" width="415"> <p>“构建要响应来自客户的信号，否则或者休息，或者改进。”</p> <p><b>Ash Maurya, </b>精益创业实战的作者</p> </td> 
+   <td valign="top" width="440"> <p>“我不跟我的对手战斗。他试图占据位置，我观察他的动作并作出响应。”</p> <p><a href="http://www.kidpeligro.com/">Kid Peligro</a><b>, </b>BJJ黑带</p> </td> 
+  </tr> 
+ </tbody> 
+</table>
+<table cellspacing="0" cellpadding="0" border="0"> 
+ <tbody> 
+  <tr> 
+   <td valign="top" width="533"> <p><a href="http://warriorscove.com/rickson-gracie-jiu-jitsu/">有史以来最好的地面战斗</a>和格雷西家族的冠军<a href="http://en.wikipedia.org/wiki/Rickson_Gracie">里克森&middot;格雷西</a> 一直在强调跟对手接触的重要性，能够感受他最轻微的动作，并马上明白他的意图。</p> </td> 
+  </tr> 
+ </tbody> 
+</table>
+<p>精益创业组织要跟初始用户（早期布道者或早期采用者）保持紧密的接触，以便追踪他们如何使用自己提供的产品/服务。每个新特性都应该基于客户的反应去发现和设计。<b>否则就像是试图跟看不见的对手战斗。</b>我们已经掌握了必要的技术 (<a href="http://steveblank.com/category/customer-development/">客户开发</a>、<a href="http://leananalyticsbook.com/">精益分析</a>) 及相应的客户行为和使用情况分析工具 (Google Analytics、KissMetrics、MixPanel、Crazy Egg、Flurry)，可以帮我们监测和分析与用户有关的一切信息。假定我们已经拿到了这些信息，那么我们的策略是什么，我们该如何决定下一步的行动呢？</p>
+<h2>控制、压制、降服</h2>
+<table cellspacing="0" cellpadding="0" border="0"> 
+ <tbody> 
+  <tr> 
+   <td valign="top" width="533"> <p><a href="http://jiujitsubrotherhood.com/how-jiu-jitsu-works/">巴西柔术跟大多数武术的区别是它采用了位置策略</a>，跟对手无关，被分为三个主要阶段：控制、压制和降服。你必须首先控制对手。接下来尝试突破他的基本防线（守卫）以取得压制性位置（侧面控制、骑着他、或到他背后）。然后你可以从那里尝试着迫使他降服。每个阶段都有它自己的理念和方法，你必须准确地遵循这一路径，没有例外，否则你就可能会被打败。</p> </td> 
+  </tr> 
+ </tbody> 
+</table>
+<h2>控制</h2>
+<table cellspacing="0" cellpadding="0" border="0"> 
+ <tbody> 
+  <tr> 
+   <td valign="top" width="452"> <p>“我用了很多时间跟用户通电话，或者通过邮件往来收集我们产品和社区的反馈..”</p> <p><b>David Spinks, </b>企业家/社区建设者</p> </td> 
+   <td valign="top" width="400"> <p>&quot;你放弃抓握你母亲就会掉下悬崖...会死的!!!&quot;&nbsp;</p> <p><b>Kurt Osiander, </b>BJJ黑带</p> </td> 
+  </tr> 
+ </tbody> 
+</table>
+<table cellspacing="0" cellpadding="0" border="0"> 
+ <tbody> 
+  <tr> 
+   <td valign="top" width="533"> <p>在BJJ中，除非你已经控制住了对手身体上的某些点位，否则无法正确使用某项技术。这在柔道（BJJ之父）中也极其重要。它被称为抓握战斗，这能决定战斗的结果。</p> </td> 
+  </tr> 
+ </tbody> 
+</table>
+<p>精益创业与之类似，也是必须用不同的方法和沟通渠道，比如营销、在线反馈、奖励等等，跟早期采用者建立特殊的关系，从而找到“控制”他们的办法。必须经常跟他们交互，让他们参与进来，揭示他们的响应，并接受他们关于它所运行的试验的宝贵输入。有几个工具可以帮助我们，比如Survey.io、Mailchimp、Uservoice等。<b>这些早期采用者是创业</b><b>组织最宝贵的资产。它必须用力抓住他们，让他们极其难以挣脱。</b></p>
+<h2>压制</h2>
+<table cellspacing="0" cellpadding="0" border="0"> 
+ <tbody> 
+  <tr> 
+   <td valign="top" width="423"> <p>“当你处于BPMF (产品/市场相匹配之前)阶段时，要痴迷于让产品跟市场匹配。做任何让产品跟市场相匹配所需要做的事情。</p> <p><b>Marc Andreessen, </b>Netscape 奠基人</p> </td> 
+   <td valign="top" width="432"> <p>“柔术首先寻求的是确立位置，然后才是结束战斗... 你要解决的主要问题是尽可能有效地转移到压制性位置上去。”</p> <p><b>Nicolas Gregoriades, </b>BJJ黑带</p> </td> 
+  </tr> 
+ </tbody> 
+</table>
+<table cellspacing="0" cellpadding="0" border="0"> 
+ <tbody> 
+  <tr> 
+   <td valign="top" width="533"> <p>在BJJ中，取得压制性位置之前和之后的战斗方法有很大差别。你必须不断地尝试各种技术去突破对手的基本防线（守卫）。在做穿透试验时，你必须敏捷，睁大眼睛盯着对手的薄弱点和缺口。你的对手是个移动的目标，一直在作出响应。比赛每一秒都会形成新的画面，你必须见到，并作出相应地调整。</p> </td> 
+  </tr> 
+ </tbody> 
+</table>
+<p><b>创业组织的压制性位置可以简单地翻译成达成了产品/</b><b>市场的匹配。 </b></p>
+<p>它必须不断地进行小型的试验（测试和回转），找出那些真正提供价值的产品特性。<a href="http://www.wired.com/wiredenterprise/2012/05/test-everything/">对比测试</a> 和<a href="http://www.pretotyping.org/">原型</a>在这种方式中会有帮助。在作出这种努力的过程中，决不能用推出特性的数量来评测进展情况， 而要用我们的位置得到了多少改善(向着产品/市场相匹配靠近了多少)。我们用具体的客户激活及保留指标来评测这个 (<a href="http://practicetrumpstheory.com/2009/11/how-i-am-measuring-productmarket-fit/">我如何测量产品/市场的匹配</a>)。<b>我们意识不到和对客户没有价值的功能是动作上的浪费，白白消耗我们的精力。</b></p>
+<p>然而，如果意识到不管如何努力，我们的方式都无法战胜客户对定期使用我们服务的抵制，那我们就必须改变方向。 </p>
+<table cellspacing="0" cellpadding="0" border="0"> 
+ <tbody> 
+  <tr> 
+   <td valign="top" width="527"> <p>“回转对你的帮助就像车上的GPS一样。愿景是你的目的地，必须保持不变。但当你遇到障碍时，你不能开着车一次次地往障碍上冲，希望一切都会变好。有了GPS的帮助，你就能找到一条绕开它的路。”&nbsp;&nbsp;</p> <p><b>Eric Ries, </b>精益创业的创建者</p> </td> 
+   <td valign="top" width="323"> <p>“当你无法移动对手时，移动你自己。”&nbsp;</p> <p><b>柔术的</b><b>宗旨</b></p> </td> 
+  </tr> 
+ </tbody> 
+</table>
+<p></p>
+<p>只有当大部分用户说，如果我们停止服务，他们会感动失望时(<a href="http://www.startup-marketing.com/the-startup-pyramid/">肖恩 埃利斯测试</a>) ，我们才能说我们处于压制性位置（产品/市场匹配）。到这时，我们的战术要从试验转向巩固和发展。现在我们要面临的主要问题是改进服务的品质以稳固我们的位置，同时寻求增长以求尽力结束比赛。</p>
+<h2>降服</h2>
+<table cellspacing="0" cellpadding="0" border="0"> 
+ <tbody> 
+  <tr> 
+   <td valign="top" width="559"> <p>“最成功的技术公司在踩油门高速前进之前都要先让产品/市场相匹配.... 一旦你找准自己的价值定位，再推动增长就容易多啦… 并且更加有利可图。”</p> <p><b>Andy Rachleff, </b><a href="http://www.benchmark.com/#_blank">Benchmark Capital</a>合伙人</p> <p>“在产品/市场相匹配之前，创业公司用不到推动增长的团队。在那之前，把力量集中到增长上就像在一个高回报的复利账户里放1美元…纯粹是浪费时间。”&nbsp;&nbsp; <b>Andy Johns, </b>&quot;<a href="http://quibb.com/links/andy-johns-the-case-for-user-growth-teams#_blank">给用户增长团队的案例</a>&quot;</p> </td> 
+   <td valign="top" width="296"> <p>“这是一个数字竞赛，真的！</p> <p>在压制性位置上，你结束战斗的机会要比你靠运气一拳或一脚击败对手来的高得多的多。“&nbsp;</p> <p><b>Nicolas Gregoriades&nbsp; </b>BJJ黑带</p> </td> 
+  </tr> 
+ </tbody> 
+</table>
+<table cellspacing="0" cellpadding="0" border="0"> 
+ <tbody> 
+  <tr> 
+   <td valign="top" width="533"> <p>按照BJJ位置策略的原则，你不应该在处于劣势位置时试图降服对手，那只会消耗你的精力，并让你自己更接近失败。但当你处于压制性位置，见到降服对手的机会时，要马上抓住它，全力以赴地爆发，结束战斗。</p> </td> 
+  </tr> 
+ </tbody> 
+</table>
+<p>大规模的可持续增长是创业组织的最终目标。为达成这一目标，出现了一个新的职位，<b>增长黑客</b>。增长黑客的使命，按照纽约时报畅销书籍 <a href="http://www.amazon.com/The-Lean-Entrepreneur-Visionaries-Products/dp/111829534X">精益企业家</a>的作者Patrick Vlaskovits的说法, 是 “<a href="http://vlaskovits.com/2012/07/youre-a-growth-rookie-not-a-growth-hacker/">实现用户/商机/销售上巨大的、爆炸性的增长</a>”。 Bootstrapper 的合伙人Richie Hecker<a href="http://techzulu.com/5-reasons-growth-hacking-is-the-most-important-function-of-a-startup/">说</a> 增长黑客 “...是最重要的职位，因为这个人，用新的方法创建一个可扩展的客户获取过程，保证一个创业型的组织蜕变成一家基业长青的公司。”</p>
+<p>在产品/市场相匹配之前，一个创业组织不应该扩容它的用户群，因为那样只会浪费资源，得不到多少收益。在做增长工作的同时，尽管创业组织很可能要调整价值定位，但必须小心，不能丢掉产品/市场相匹配的压制性位置。</p>
+<h2>结论</h2>
+<p>创业竞赛是一场与位置密切相关的竞赛，有严谨的策略（控制-压制-降服），最重要的是要节约精力和保持敏捷。敏捷是团队在不失去平衡、力量和速度的情况下改变方向的能力。是首要成功因素。</p>
+<p>在另一篇文章中，我们会讲解如何通过正确的训练，在敏捷教练的指导下发展团队的敏捷性，进行测量并维持它。</p>
+<p>采用一种可以存活下去的思维方式，尽量避免犯错，用户迟早会给你赢得他们的机会，终生成为你的客户。就像BJJ的创建者之一，艾里奥&middot;格雷西所说的，<b> “</b><b>我从未击败过我的对手，他们是被自己击败的。”</b></p>
+<h2>关于作者</h2>
+<p><img style="float: left; margin-right: 10px" src="http://infoqstatic.com/resource/articles/gentle-art-lean-startup/zh/resources/0218001.jpg" alt="" _href="img://null" _p="true" /><strong>Yiannis Mavraganis</strong>有超过15年的软件工程师、企业架构师和SCRUM大师的经验，并一直在交付关键性的企业应用程序。目前他是一家创业公司的负责人和合伙人。他深信，通过建立互信，形成有效的沟通是打造超高效团队的关键。他对敏捷和精益方法充满激情（通过了Scrum大师认证，APMG PM敏捷实践者，希腊敏捷社区的公众演讲者和策展人）。他还是一位独立的敏捷教练和指导者，帮助团队提升敏捷指数。Yiannis是两次巴西柔术<a href="http://ibjjf.org/championship/european-open-jiu-jitsu-championship/">欧洲冠军</a> (第一次是在2010年，第二次是2012年)。 要了解Yiannis的更多相关信息，请点击<a href="http://about.me/ymavraganis">这里</a>。</p>
+<p><strong>原文英文链接：</strong><a href="http://www.infoq.com/articles/gentle-art-lean-startup">The Gentle Art of Running a Lean Startup</a></p><br><br><br><br><br><br></body></html>

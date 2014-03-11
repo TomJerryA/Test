@@ -1,8 +1,8 @@
 <html>
  <head></head> 
- <body>
-  <div>
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/7.java">Layer 7 Survey - Strong Growth Predicted for Hypermedia APIs</a>Layer 7 recently released the results of a survey focussed on API design and deployment. The survey showed that API designers are divided on security versus usability as their top priority, there is an even split between XML and JSON representations and strong growth is predicted for Hypermedia style APIs. In summary the survey showed there is no one-size-fits-all way to manage APIs.
+ <body> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/7.java">Layer 7 Survey - Strong Growth Predicted for Hypermedia APIs</a>Layer 7 recently released the results of a survey focussed on API design and deployment. The survey showed that API designers are divided on security versus usability as their top priority, there is an even split between XML and JSON representations and strong growth is predicted for Hypermedia style APIs. In summary the survey showed there is no one-size-fits-all way to manage APIs. 
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/6.java">Elm 0.11 Improves JavaScript Interop</a>Elm’s recent 0.11 release aims to simplify using the FRP language in combination with Javascript. 
@@ -150,6 +150,6 @@
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/12.java">Simplified CSS Preprocessing with restyle.js</a>Andrea Giammarchi's restyle.js is a new, JavaScript-based, CSS preprocessor that can run on either the server (via Node.js) or in the browser. It touts itself as &quot;a simplified CSS approach&quot;, generating all prefixed variations of CSS rules and properties and, if applicable, inserting them into the DOM. 
-  </div>  
+  </div> 
  </body>
 </html>
