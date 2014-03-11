@@ -1,22 +1,30 @@
-<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>Google期望使用QUIC给互联网加速</h3><p>QUIC（Quick UDP Internet Connections，发音'quick'）是一种基于UDP的多路传输协议，它的主要目标是实现零往返时间的连接开销。Google的开发人员Robbie Shade在最近的一个<a href="http://www.youtube.com/watch?v=hQZ-0mXFmk8">视频</a>中对QUIC做了介绍，主要有以下特性：</p>
-<ul> 
- <li>拥有SPDY的所有优点（多路传输，支持优先级，等等）</li> 
- <li>零往返时间连接</li> 
- <li>数据包同步，有效降低数据丢包率</li> 
- <li>转发问题连接，有效减少重发延迟</li> 
- <li>自适应拥塞控制（对TCP友好），有效减少移动客户端重新连接的次数</li> 
- <li>与TLS等效的加密措施</li> 
- <li>Chrome支持与Google的QUIC通信</li> 
-</ul>
-<p>QUIC能够处理传输可靠性、丢包或无序数据包等一系列UDP默认未处理的问题。QUIC的多路传输指协议使用多个通道传输数据，所以当其中一个数据流丢包时，其他的通道并不会因此阻塞等待丢失的数据包，而这会发生在SPDY上，因为SPDY虽然是多路传输但是只有一个通道。Shade说，QUIC的方法解决了TCP传输的线端阻塞问题。</p>
-<p>使用QUIC的一个主要优势是在客户端和服务器首次连接时不需要握手步骤，某种程度上与<a href="http://en.wikipedia.org/wiki/TCP_Fast_Open">TCP快速开启（TCP Fast Open）</a>类似。TCP快速开启在2011年面世，但是目前尚没有大范围使用。根据Shade的说法，采用TLS时，在一次跨大西洋的连接中TCP握手要耗时300ms，而QUIC可以将延迟降为100ms。</p>
-<p>QUIC的另一个优势是通信通道的定义基于ID而不是IP+端口，这使得切换网络后继续转发连接成为可能，例如从WiFi网络进入移动网络。</p>
-<p>所有QUIC连接都使用特殊的机制进行加密，详见<a href="https://docs.google.com/document/d/1g5nIXAIkN_Y-7XJW5K45IblHd_L2f5LTaDUDwvZ5L6g">QUIC加密文档</a>。</p>
-<p>当被问到为什么不使用TCP+TLS，Shade解释说，虽然TCP和TLS持续升级，但协议的迭代及部署非常慢，而QUIC是部署在客户端级别，而不是在内核级别，这样就能以更快的速度进行迭代，迭代周期由以年计算加速为以周计算。</p>
-<p>根据Shade的介绍，将来SPDY能够运行在QUIC之上，使其比现在更好。将来Google实际使用QUIC的经验和教训可以合并到TCP中。</p>
-<p>目前用户可以从Chromium项目中获取QUIC的客户端和服务器，google.com、GMail、YouTube以及其他Google服务都在使用QUIC。</p>
-<p>资源：<a href="http://www.youtube.com/watch?v=hQZ-0mXFmk8">QUIC相关视频</a>，<a href="https://docs.google.com/presentation/d/13LSNCCvBijabnn1S4-Bb6wRlm79gN6hnPFHByEXXptk">QUIC相关幻灯片</a>，<a href="https://docs.google.com/document/d/1RNHkx_VvKWyWg6Lr8SZ-saqsQx7rFV-ev2jRFUoVD34/preview?sle=true">QUIC</a>——协议的详细文档，<a href="https://docs.google.com/document/d/1WJvyZflAO2pq77yOLbp9NsGjC1CHetAXV8I0fQe-B_U">QUIC导线排列标准</a>——线框标准，<a href="https://docs.google.com/document/d/1g5nIXAIkN_Y-7XJW5K45IblHd_L2f5LTaDUDwvZ5L6g">QUIC加密</a>，<a href="https://chrome.google.com/webstore/detail/spdy-indicator/mpbpobfflnpcgagjijhmgnchggcjblin/related?hl=en">SPDY指示器扩展</a>。</p>
-<p><strong>查看英文原文：</strong><a href="http://www.infoq.com/news/2014/02/quic">Google Wants to Speed Up the Internet with QUIC</a></p>
-<hr />
-<p>感谢<a href="http://www.infoq.com/cn/author/吴海星">吴海星</a>对本文的审校。</p>
-<p>给InfoQ中文站投稿或者参与内容翻译工作，请邮件至<a href="mailto:editors@cn.infoq.com">editors@cn.infoq.com</a>。也欢迎大家通过新浪微博（<a href="http://www.weibo.com/infoqchina">@InfoQ</a>）或者腾讯微博（<a href="http://t.qq.com/infoqchina">@InfoQ</a>）关注我们，并与我们的编辑和其他读者朋友交流。</p><br><br><br><br><br><br></body></html>
+<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>Elm 0.11改进与JavaScript的互操作</h3><p><a href="http://elm-lang.org/">Elm</a>最近的<a href="http://elm-lang.org/blog/announce/0.11.elm">0.11版本</a>致力于简化<a href="http://en.wikipedia.org/wiki/Functional_reactive_programming">FRP</a>语言和Javascript的组合使用。为实现该目标，Elm主要添加了两个功能：</p>
+<ol> 
+ <li>能够创建组件（<a href="http://elm-lang.org/learn/Components.elm">Component</a>），组件是编译后的Elm代码，可以嵌入在div内。嵌入之后可以作为页面正常的一部分。</li> 
+ <li>端口（<a href="http://elm-lang.org/learn/Ports.elm">Port</a>）用于JavaScript和Elm之间的通信。消息会通过定义好的传入端口（in-port）传到Elm组件中，而应答通过订阅了传出端口（out-port）的回调函数来处理。</li> 
+</ol>
+<p>这两个元素结合在一起，为使用Elm的<a href="http://www.haskell.org/haskellwiki/Haskell">Haskell</a>风格语法和<a href="http://elm-lang.org/Libraries.elm">库</a>创建可嵌入的UI组件和处理单元提供了支持。</p>
+<p>2013年11月，第一届<a href="http://elm-lang.org/blog/announce/Workshop-2013.elm">Elm研讨会</a>在布达佩斯举行。Elm的作者<a href="https://twitter.com/czaplic">Evan Czaplicki</a>在会上谈到了<a href="https://www.youtube.com/watch?v=Bv8elmoComE">Elm的未来</a>。他指出，按照优先顺序，Elm有四件需要处理的开发任务：</p>
+<ol> 
+ <li>以库的方式分享。</li> 
+ <li>HTML和JavaScript的集成。</li> 
+ <li>使其他人可以方便地向Elm做出贡献。</li> 
+ <li>尾递归优化。</li> 
+</ol>
+<p>应社区要求，他还演示了Elm的一个<a href="https://github.com/evancz/elm-repl">REPL</a>（即Read-Eval-Print Loop）原型。</p>
+<p>Elm的<a href="http://elm-lang.org/">主页</a>有很多Elm应用<a href="http://elm-lang.org/Examples.elm">示例</a>，我们可以与其互动。有一个很基础的马里奥（<a href="http://elm-lang.org/edit/examples/Intermediate/Mario.elm">Mario</a>）游戏，基本上是在<a href="https://thestrangeloop.com/">Strange Loop</a> 2013会议上，<a href="http://www.infoq.com/presentations/elm-reactive-programming">在现场观众面前</a>实现的，突出显示了Elm的图形功能。如果想看一个更实用的例子，可以看一下<a href="https://github.com/evancz/TodoFRP">Todo应用</a>（<a href="http://elm-lang.org/misc/Todo.html">demo</a>），它相当于Web框架的“Hello World”。如果想深入地了解一下Elm 的理论基础，可以查看Evan的<a href="http://people.seas.harvard.edu/~chong/pubs/pldi13-elm.pdf">论文</a>，<a href="https://github.com/evancz/elm-at-pldi-2013">发表</a>在2013年的“编程语言设计与实现会议”（<a href="http://www.sigplan.org/conferences/pldi/main">Programming Language Design and Implementation</a> Conference 2013）上。</p>
+<p>InfoQ就Evan在这些优先任务上的开发进度采访了他。</p>
+<p><b>InfoQ</b><b>：</b>在研讨会上，听上去您可能会集成<a href="https://www.npmjs.org/">Node Package Modules</a>，以提供Elm的库解决方案，但是就能够将Elm模块与其余部分分离这点，您有所保留。您是不是设法解决了这个问题，还是说您决定采用不同方案了？</p>
+<blockquote> 
+ <p><b>Evan</b><b>：</b>我决定采用一种不同的方案，而且我很开心自己这么做了。<a href="http://library.elm-lang.org/">Elm Public Library</a>是最近发布的，它使得以库的方式分享程序非常容易。它也是通过GitHub提供的，不过对Elm用户而言，从头构建也是很愉快的体验。它使我可以自由地提供<a href="http://library.elm-lang.org/catalog/evancz-Elm/0.11/">易于搜索的文档</a>（<a href="https://github.com/evancz/elm-get/tree/master/website/src">用Elm编写的</a>）。<a href="http://elm-lang.org/blog/announce/PackageManager.elm">宣告</a>中更深入地谈到了技术决策和路线图，但重点是，我们现在可以分享库了！</p> 
+</blockquote>
+<p><b>InfoQ</b><b>：</b>2012年，您希望Elm<a href="https://www.youtube.com/watch?v=vF03oQu7rkw">得到业界更多支持</a>。您在<a href="http://prezi.com/">Prezi</a>工作的<a href="http://engineering.prezi.com/blog/2013/05/21/elm-at-prezi/">这种身份</a>为您带来了所追求的东西吗？</p>
+<blockquote> 
+ <p><b>Evan</b><b>：</b>毫无疑问！在Prezi的工作对加速Elm的开发意义重大，但更重要的是，它使得我可以真正地专注于为业界用户准备好Elm的生态系统。这是我很久以来的目标，但是现在我有了一个友好且技术熟练的支撑团队，可以帮助我使目标成为现实。所以当我优先考虑某些特性或调整某个API时，总是有工程师乐于探讨并改进这些东西。我直接受到了Prezi的语言互操作基础设施的启发，从而有了Elm的端口（<a href="http://elm-lang.org/blog/announce/0.11.elm">port</a> ），进而使得Elm/JS可以简单无缝地进行互操作了。</p> 
+</blockquote>
+<p><b>InfoQ</b><b>：</b>Elm现在的路线图是什么样的？</p>
+<blockquote> 
+ <p><b>Evan</b><b>：</b>0.11版本中的端口和即将到来的彻底修订的Graphics.Input，让我感觉Elm已经非常接近产品状态了。今年夏天，我们会将精力集中于进一步发掘运行时的性能，支持尾递归优化，以及改进调试与IDE支持。致力于优化和工具，表明我们总体上在向支持产品用户转变，而不是继续把精力投在语言本身上。</p> 
+ <p>与此同时，Prezi内部已经在使用Elm。这种情况让我非常开心。到目前为止，我主要观察到的是，组件模型在实践中表现非常好。有些组件用Elm编写很不错，而且现在我们可以很方便地将其集成到更大的JS或TypeScript项目中。实际上我们在Prezi打算找一位开发者，让他编写更多Elm代码，我认为这将是一个可以证明Elm 已经为业界使用做好准备的一个考验。</p> 
+</blockquote>
+<p><strong>查看英文原文：</strong><a href="http://www.infoq.com/news/2014/03/elm_011">Elm 0.11 Improves JavaScript Interop</a></p><br><br><br><br><br><br></body></html>

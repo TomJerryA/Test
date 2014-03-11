@@ -1,40 +1,55 @@
-<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>AOL架构原则、优秀API设计、Yeoman工具——架构周报</h3><p>本期的架构周报主要关注AOL（美国在线）的高可用性架构、技术专家Joshua Bloch对优秀API的设计观点、新的Web应用开发工具集Yeoman和OpenStack网络项目Neutron的介绍。</p>
-<h2>技术选型</h2>
-<p><strong>Yeoman工具集</strong></p>
-<p>随着 Web 2.0 和 HTML 5 的流行，现在的 Web 应用所能提供的功能和交互能力比之前传统的 Web 应用要强大很多。应用的很多实现逻辑被转移到了浏览器端来实现。浏览器不再只提供单一的数据接收和展现功能，而是提供更多的用户交互能力。浏览器端所包含的 HTML、CSS 和 JavaScript 代码也变得更加复杂。对于日益复杂的前端代码，需要有更好的流程和工具来管理开发的各个方面，包括初始的代码结构、开发流程和自动化测试等。Yeoman 是一个新兴的工具。它结合了 Yo、Grunt 和 Bower 等工具，组成了一个完整的工具集合，提供各种 Web 应用开发中所需的实用功能。Yeoman 的最大优势在于它整合了各种流行的实用工具，提供了一站式的解决方案，使得 Web 应用开发中的很多方面变得简单。Yeoman 使得开发人员可以专注于应用本身的实现，而不用在搭建应用的基础结构、进行任务构建和其他辅助任务上花费过多的时间和精力。Yeoman 同时也把一些好的最佳实践自动地引入到项目的开发中。比如当需要在应用中使用第三方的 JavaScript 库时，一般的做法是直接到库的网站上进行下载。而 Yeoman 中基于 Bower 进行依赖管理的做法则是更好的实践方式。</p>
-<p>成富的文章“<a href="http://www.ibm.com/developerworks/cn/web/1402_chengfu_yeoman/" target="_blank">Yeoman：Web 应用开发流程与工具</a>”详细介绍了Yeoman的组成部分和使用技巧。</p>
-<p><strong>OpenStack网络项目Neutron</strong></p>
-<p>OpenStack 是一个开源的 IaaS（基础设施及服务）云计算平台，让任何人都可以自行建立和提供云端运算服务，具体可以从 devstack 脚本开始熟悉它。OpenStack 由一系列相互关联的项目提供云基础设施解决方案的各个组件，核心项目（9 个）：计算 (Compute) - Nova，网络和地址管理 - Neutron，对象存储 (Object) - Swift，块存储 (Block) - Cinder，身份 (Identity) - keystone，镜像 (Image) - Glance，UI 界面 (Dashboard) - Horizon，测量 (Metering) - Ceilometer，编配 (Orchestration) – Heat。</p>
-<p>OpenStack 网络服务，现已由之前的 Quantum 改名为 Neutron。Neutron 是 OpenStack 核心项目之一，提供云计算环境下的虚拟网络功能。OpenStack Havana 版本的 Release Note 描述了 Neutron 新增加的功能：</p>
-<ol> 
- <li>Multi-Vendor-Support：同时支持多种物理网络类型，支持 Linux Bridge、Hyper-V 和 OVS bridge 计算节点共存；</li> 
- <li>Neutron-Fwaas：支持防火墙服务；</li> 
- <li>VPNaas：支持节点间 VPN 服务；</li> 
- <li>More-Vendors：更多的网络设备支持和开源 SDN 实现完善和提高，新增加了 ML2 (The Modular Layer2) 插件。</li> 
-</ol>
-<p>陈海洋的文章“<a href="http://www.ibm.com/developerworks/cn/cloud/library/1402_chenhy_openstacknetwork/index.html" target="_blank">OpenStack 网络：Neutron 初探</a>”对Neutron做了一个系统的介绍，感兴趣的读者可以查看其文章。</p>
-<h2>架构技巧</h2>
-<p><strong>AOL的高可用性架构</strong></p>
-<p>作为著名的新闻网站，AOL日访问人次达800万，每秒请求达20万，在这样的访问压力下，其可用性依然达到了99.999%。最近，AOL的架构师Dave Hagler在HighScalability上分享了<a href="http://highscalability.com/blog/2014/2/17/how-the-aolcom-architecture-evolved-to-99999-availability-8.html" target="_blank">AOL的架构设计经验</a>。其中，几个架构原则包括：</p>
+<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>敏捷团队运用“Scrum of Scrums”进行协调与合作</h3><p>当项目或产品开发过程中涉及到多支团队的时候，可以使用Scrum of Scrums来扩展每日立会——其用途在于，帮助敏捷团队面向其他团队协调与合作其工作。针对Scrum of Scrums，许多作者分享了各自的看法以及使用的经验。</p>
+<p>Charles Bradley撰写了一篇关于<a href="https://www.scrum.org/Blog/ArtMID/1765/ArticleID/12/Resurrecting-the-Much-Maligned-Scrum-of-Scrums">拯救备受争议的Scrum of Scrums</a>的博客文章，在其中描绘了对于同一个产品开发中共事的多支团队，Scrum of Scrums如何帮助他们（重新）规划并协调开发工作：</p>
 <blockquote> 
- <p>最重要的就是冗余一切，在系统中某个部分发生故障，或者需要离线维护时，有个备份无疑省时省力，而5个9的可用率要求每年不超过5分钟宕机时间。</p> 
- <p>第二个原则就是AOL.com不能依赖任何共享基础设施去交付页面，即使某个系统或内容发生故障，AOL.com仍然需要维持着高可用。历史上，AOL大部分的网络内容都共享一个被称为Big Bowl的基础设施，这样会存在一个非常致命的问题——不同内容之间的相互影响。为了解决这个问题，AOL专门设计了不同内容之间的隔离，任何依赖AOL.com的内容都会被一个保护服务转移至一组更少的主机上，保护服务负责将调用聚集到下游系统。因此，不再是从上万个节点上接收请求，下游系统可能只会从20个不同的服务器上获取请求，响应同样会被缓存来减少负载。同时，运维团队还会对AOL.com备份外部数据库。这样一来，在整个系统中只有网络和协议服务被共享。</p> 
- <p>另一条原则是缓存可以被用于优化性能，但是系统不能依赖于缓存来实现可扩展性。网站的基础设施应该被设计成即使没有缓存，也可以正常服务于终端用户。</p> 
+ <p>我相信并且亲身体验过专注于开发团队的方法：在团队层面，遵从Scrum背后的原则，遵从每日Scrum实践的原则，最终以更快的速度向客户交付了更多的价值。在我的经验中，针对开发团队并由其进行实践的高效的Scrum of Scrums，将极大的提升开发团队的自组织技能，更快速地消除阻碍，产出更高质量的产品，并在更短的时间内交付更高的价值。</p> 
 </blockquote>
-<p><strong>优秀API设计</strong></p>
-<p>谷歌架构师Joshua Bloch最近分享了一份幻灯片，系统的讨论了<a href="http://vidcat.org/papers/how-to-design-a-good-api-and-why-it-matters.html" target="_blank">优秀API的设计原则</a>。他指出：每个API接口应该只专注一件事，并做好：如果它很难命名，那么这或许是个不好的征兆，好的名称可以驱动开发、并且只需拆分与合并模块即可。设计原则包括：</p>
-<ul> 
- <li>API应尽可能地简洁：满足需求、对有疑问的地方可以暂时不使用（函数、类、方法、参数等，你可以不添加，但千万不要删除）、概念性的东西比体积重要）；</li> 
- <li>实现不要影响API：关注实现细节（不要迷惑用户、不要随便改变实现方式）、意识到具体的实现细节（不要有越权的方法行为，例如不所有的调优参数都是可疑的）；</li> 
- <li>不要让实现细节“泄露”到API（例如on-disk和on-the-wire格式等异常情况）；</li> 
- <li>最小化可访问：设计人员应尽量把类及成员设为私有，公共类不应该有公共字段（包括异常实例），最大限度地提高信息隐藏，允许模块可以被使用、理解、构建、测试和独立调试；</li> 
- <li>命名问题：应该见名知意，避免含糊的缩写、对同一样东西的命名应该有个一致性的前缀（遍及整个平台API）、讲究对称、代码应该易读。</li> 
-</ul>
-<h2>架构师书单</h2>
-<p>从本期开始，架构周报将推出“架构师书单”栏目，目的是向架构领域的读者推荐一些涉及技术选型、架构技巧、理论研究、案例分析、架构师软技能等方面的书籍。本期推荐的书都是大数据领域相关的，分别是“<a href="http://book.douban.com/subject/25753307/" target="_blank">大数据：技术与应用实践指南</a>”和“<a href="http://book.douban.com/subject/22846521/" target="_blank">大数据挑战与NoSQL数据库技术</a>”，适合架构师做技术选型。</p>
-<p>“<strong>大数据：技术与应用实践指南</strong>”，系统性地分析了大数据的发展背景、基本概念，从业务的角度分析了大数据应用的主要业务价值和业务需求，在此基础上介绍大数据的技术架构和关键技术，结合应用实践，详细阐述了传统信息系统与大数据平台的整合策略，大数据应用实践的流程和方法，并介绍了主要的大数据应用产品和解决方案。</p>
-<p>“<strong>大数据挑战与NoSQL数据库技术</strong>”分为三部分。理论篇重点介绍大数据时代下数据处理的基本理论及相关处理技术，并引入NoSQL数据库；系统篇主要介绍了各种类型NoSQL数据库的基本知识；应用篇对国内外几家知名公司在利用NoSQL数据库处理海量数据方面的实践做了阐述。</p>
-<p>这两本书可以帮助读者在涉及到大数据、NoSQL数据库等领域时，进行各个相关技术、产品做技术对比和分析，从而对最终技术的采纳提供决策支持。</p>
-<h2>QCon北京2014大会</h2>
-<p>对架构领域感兴趣的读者可以关注即将于2014年4月25~27日在北京国际会议中心召开的<strong>QCon北京2014大会</strong>，专题包括<a href="http://www.qconbeijing.com/node/452">知名网站案例分析</a>、<a href="http://www.qconbeijing.com/node/450">扩展性、可用性与高性能</a>、<a href="http://www.qconbeijing.com/node/437">云计算服务探秘</a>、<a href="http://www.qconbeijing.com/node/441">大数据处理与大数据应用</a>等，许多讲座都与架构相关。读者可点击大会<a href="http://www.qconbeijing.com/" target="_blank">主页</a>查看详情。</p>
-<p>欢迎读者朋友推荐或者投稿架构相关的文章，联系邮箱为<a href="mailto:editors@cn.infoq.com">editors@cn.infoq.com</a>，标题请注明“架构专栏”。&nbsp;</p><br><br><br><br><br><br></body></html>
+<p>对于Scrum of Scrums，Charles在他的博客文章中收集了来自Ken Schwaber、Mike Cohn、Craig Larman、Bas Vodde以及Jesse Houwing等人的观点。他的结论是，Scrum of Scrums应该专注于帮助开发团队的成员们按照自组织的方式协调与合作，而不应该成为Scrum Master们的状态会议。</p>
+<blockquote> 
+ <p>在我辅导Scrum团队的时候，特意强调了在扩展Scrum时要遵从其基本原则。我鼓励Scrum Master们（如果他们参加Scrum of Scrums的话）站在开发团队成员的“圈子之外”，并避免与开发团队成员进行目光接触——因为后者正在进行协作。我相信基于原则的扩展，因此针对各支开发团队的每日Scrum，我在面向Scrum Master们进行培训时也贯彻了相同的技术。我希望开发团队成员能够得到授权，在其协调与合作的努力中真正进行自组织。是的，当然我也会指导Scrum Master成为“仆人式领袖”，以便根据需要发挥作用——但我还鼓励他们，当开发团队自身能够拥有高效的Scrum of Scrum时，尽快退居幕后。</p> 
+</blockquote>
+<p>在另一篇题为<a href="http://www.batimes.com/robert-galen/effective-scrum-product-organizational-patterns-part-2.html">有效的Scrum产品组织机构模式（第二部分）</a>的博客文章中，Robert Galen为大型产品开发机构提供了一套解决方案，用来将团队的Scrum of Scrums与团队栖身的产品开发机构关联在一起。在他看来，可以从三个层面建立起这样的关联：</p>
+<ol> 
+ <li>在最低层：每支团队都拥有一位产品所有者；他们结合各自团队的能力，使用产品待办事项列表来推动其工作。</li> 
+ <li>在Scrum of Scrums的层面：产品所有者们需要进行合作。这种情况下，往往存在一个“产品所有者领袖”的角色，由产品所有者之一担任。此时，他负责管理横跨各个待办事项列表的聚合视图。</li> 
+ <li>而在Scrum of Scrums of Scrums层面，一般会有一位“首席”或“超级”产品所有者，负责将更高层级的业务路线图和交付承诺，与执行它们的团队联系在一起。他们往往跟踪并维护了解到的承诺与Scrum交付团队的实际速度之间的平衡。</li> 
+</ol>
+<p>从多个层面建立起Scrum团队和产品所有者之间的关联，将有助于在大型企业中采用敏捷：</p>
+<blockquote> 
+ <p>这一模式的精髓是组织机构的转型。高效的产品组织机构将自身的构造，与其技术团队现在如何交付产品重新关联。同时，他们将学习如何构成、解构和重构待办事项列表，从而通过其Scrum团队推动工作。</p> 
+</blockquote>
+<p>Giuseppe De Simone撰写了一篇关于<a href="http://evolutionaryagility.blogspot.nl/2013/10/the-myth-of-scrum-of-scrums.html">“Scrum of Scrums”迷思</a>的文章，在其中提到了一个关于扩展敏捷的神话：</p>
+<blockquote> 
+ <p>当需要把Scrum推广到更多的团队时，你可以使用Scrum of Scrums来处理团队之间的依赖与协调。</p> 
+</blockquote>
+<p>对于Scrum团队如何减少团队之间对协调的需求，他列出了一些可以做的事情：</p>
+<blockquote> 
+ <p>实际上，在Scrum中对依赖的处理，是通过切实消除或至少最小化依赖的方式来实现的。这项任务可以在许多维度来完成，而下面是你不应该错过的五项关键点：</p> 
+ <ol> 
+  <li>首先，开发团队必须具备跨功能的特点，这意味着在一个可能发布的产品增量中，对于改造产品待办事项列表中的条目，团队拥有所需的全部能力。可以引入集体代码所有制作为补充：让每个人都能够接触到任何一行代码，以便在Sprint结束时交付产品增量；否则你将会让许多外部依赖束缚住你的团队。</li> 
+  <li>待办事项列表中的条目应该采用端到端用户故事的形式，从前端到后端将系统切分为各个层面，以生成可能发布的功能片：基于组件的开发产品，而不是糟糕的依赖。</li> 
+  <li>用户故事应该遵循“INVEST”模式（Independent、Negotiable、Valuable、Estimable、Small、Testable：独立、可协商、有价值、可估算、小尺寸、可测试），其中，I代表着独立，它将有助于简化针对用户故事开展工作。</li> 
+  <li>在扩展后的Scrum方法中，产品所有者团队开发唯一的产品待办事项列表，为所有开发团队提供输入，并确保各支开发团队尽可能独立，从而能够快速前进并减少相互之间需要协调的部分。</li> 
+  <li>各支Scrum团队在一起制定计划，从而尽早探明剩余的依赖。</li> 
+ </ol> 
+</blockquote>
+<p>通过让Scrum团队执行上述事项，进行Scrum of Scrums的需求及其目的发生了变化：</p>
+<blockquote> 
+ <p>这并不是让Scrum Master们汇报某些类型状态的会议，而是为遇到问题的人提供了一个抛出问题、获得来自其他团队的快速帮助的可能。</p> 
+ <p>Scrum of Scrums并不意味着无数次的协调结构，相反它更多的是一种紧急程序——当某支团队已经或将要把某些事情放到其他团队身上的时候启用。</p> 
+</blockquote>
+<p>在博客文章<a href="http://morgsterious.wordpress.com/2014/01/20/scrum-of-scrums-a-communication-thermometer/">Scrum of Scrums——沟通情况的测温表</a>中，Morgan Ahlstr&ouml;m分享了使用Scrum of Scrums的经验。他所描述的项目涉及了来自三个国家的七支团队，该项目定期举行Scrum of Scrums：</p>
+<blockquote> 
+ <p>所有的Scrum Masters和项目经理每周举行三次电话会议，Scrum Master们依次进行状态报告（！）并对自己遇到的麻烦发出抱怨。一些Scrum Master找上了我，咨询是否应该减少会议频率，因为“没有说什么新东西。每次会议上都会抛出相同的问题。”</p> 
+</blockquote>
+<p>看起来，这些团队没能够在每次会议间隔的时间段中解决这些问题。Morgan建议Scrum Master们开始记录下问题，并着手研究它们，而不是在Scrum of Scrums上进行抱怨。他还为Scrum Master们安排了当面会晤的机会，以便使大家更好地了解彼此：</p>
+<blockquote> 
+ <p>我设法筹措足够的资金，使所有Scrum Master汇聚一堂，进行回顾会议及其他研讨会。让大家彼此认识，为我们带来了美好的一天，然而这还不够。在这一天结束的时候，我问房间里的每个人，是否把其他人的联系方式存入了手机通信录中的快速联系人，然而可怕的回答是没有任何人把别人的手机号码存入自己的电话中。解决这个问题很容易，然而问题在于，让大家都使用电话号码。</p> 
+ <p>在这天之后，我开始要求每个Scrum Master都以每天一次的频率，给其他所有人打电话。无论他们是否有问题需要讨论，都应该进行一次至少社交性质的通话，以了解其他人在做什么。这一举措并未立即生效；大部分人都想着他们回去以后不会这么干，然而我在一对一环节继续向他们提出了这一要求。</p> 
+</blockquote>
+<p>Morgan注意到，自从Scrum Master们在相互之间建立起关系之后，更多的问题正在得到逐步解决：</p>
+<blockquote> 
+ <p>（……自此之后）Scrum of Scrums上出现的问题越来越少。相反人们开始进行社交性讨论，并谈论已解决的问题。（……）项目中依旧有大量的问题存在，但是现在他们开始在Scrum of Scrums之外解决这些问题。这些团队（或至少其Scrum Master们）已经对其他人有所关心。甚至有一支团队派遣了团队中的部分开发者，到另一支团队身处的国家中，帮助他们解决问题——甚至后者还没有鼓起勇气寻求外部帮助。</p> 
+ <p>在一个多月的时间里，我们的会议就从不能够帮忙协调或解决任何问题，转变为没有问题需要协调和解决。这让我注意到每日立会和Scrum of Scrums本身或许并不是真正的解决方案，相反它们揭示了我们与其他团队（在会议以外）交流的好坏。</p> 
+</blockquote>
+<p>那么各位读者，你是否也采用了Scrum of Scrums？它如何帮助你的团队实现协调与合作？</p>
+<p><strong>查看英文原文：</strong><a href="http://www.infoq.com/news/2014/03/scrum-of-scrums">Using Scrum of Scrums with Agile Teams to Coordinate and Collaborate</a></p><br><br><br><br><br><br></body></html>

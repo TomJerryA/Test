@@ -1,40 +1,39 @@
-<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>Meteor为增强扩展性弃用轮询和差异机制</h3><p>一直活跃在Meteor社区的Tom Coleman最近发表了一篇文章：<a href="https://www.discovermeteor.com/blog/scaling-meteor-the-challenges-of-realtime-apps/">扩展Meteor：实时程序的挑战</a>，介绍了Meteor为增强扩展性而在实时处理机制上作出的调整。</p>
-<h2>Oplog tailing</h2>
-<p>自2012年Meteor问世以来，人们就在询问它的扩展性如何。虽然Meteor的实时处理特性很吸引人，但人们也很关心它的处理能力，关心它能否驾驭得了更多资源。Tom Coleman在他的这篇文章中介绍了传统的、单页的和实时的三种不同的web程序模型，并指出三种模型实现扩展性时所面临的问题也是不同的；阐述了轮询和差异机制的处理特点及不足；接着又讲解了Meteor采用的新机制：<strong>Oplog tailing</strong>，以及这种机制的源起和优势；最后又给出了一些增强程序扩展性的策略性建议。同时他也提醒说：“... Meteor的扩展性领域仍处于快速变化的状态下，所以在这个主题上很难做到盖棺定论 ”。</p>
+<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>什么是（不是）DevOps，我们如何实现DevOps？</h3><p>在本文中我们将会讨论一些人们对DevOps的误解，同时会介绍一个能够带来DevOps文化转变的流程。</p>
+<p>在一篇题为“<a href="http://www.virtualizationpractice.com/devops-engineer-25120/">不，你并不是一个DevOps工程师</a>”的博文中，Cloud Technology Partners公司的副总裁兼首席架构师Mike Kavis谈论了一些与DevOps相关的错误想法。例如，他提到一些团队是如何误用术语DevOps的：</p>
 <blockquote> 
- <p>最后，在一个实时的单页程序中(比如Meteor程序)，客户端不仅能请求更多数据，服务器还可以把数据推送给客户端 (比如当数据库中的数据发生变化时)。 <br /> 这引发了一些有趣的问题：服务器怎么知道数据什么时候发生了变化？还有，服务器怎么知道该把那些变化发送给哪个用户？这些问题是掌握实时程序性能特点的关键。</p> 
+ <p>企业正在为DevOps苦恼。他们都想得到DevOps，即使很多企业并不知道它到底是什么。在很多情况下，我会看到那些自称DevOps的基础设施团队在领导一个基层倡议。当我问他们开发团队在哪里的时候，他们通常会说“我们并没有邀请他们”，甚至更糟“我们并没有同他们交流”。</p> 
 </blockquote>
-<p>Meteor最开始用轮询及差异的机制监测数据库的变化，虽然这一机制很快就会被Oplog tailing取代，但我们还是很有必要了解它。</p>
-<p>Meteor会为每个订阅了结果集的用户建立一个<code>LiveResultsSet</code>（LRS），并由它负责轮询数据库。得到数据库的查询结果后，并不会把全部内容都送回客户端，而是要通过比较找出新结果和之前结果的差异。但这种比较通常是非常昂贵的计算，所以经常是CPU先成为Meteor程序的性能瓶颈。导致同时有很多差异计算发生的原因主要有两个：</p>
+<p>一些工程师将自己宣传为DevOps，但是他们并不是，因为根据Kavis所说“DevOps并不是一个人，一个角色或者一个头衔。即使你可以声称自己是一个DevOps工程师，但是这仅是你自己的看法，实际上你并不是。”如果DevOps不是一个角色，一个资格，一个头衔 ，那么它到底是什么呢？Kavis的定义是：</p>
 <blockquote> 
- <ol> 
-  <li>有很多不同的LRS。尽管Meteor会尽最大努力在用户间共享LRS，但有时做不到这一点。</li> 
-  <li>数据库的写入操作很多，这反过来又会导致更多的轮询。</li> 
- </ol> 
+ <p>DevOps是一种文化转变，或者说是一个鼓励更好地交流和协作（即团队合作）以便于更快地构建可靠性更高、质量更好的软件的运动。</p> 
 </blockquote>
-<p>Meteor 0.7.0中使用了新的<strong>Oplog tailing</strong>机制监测数据库，这一机制是基于MongoDB的Oplog实现的，Oplog是Mongo用来同步副本集的。但它只能告诉Meteor集合层面的变化，所以Meteor还要做大量工作来确定查询层面的变化，并确定这些变化是否应该发给订阅了查询的客户端。</p>
-<p>尽管Oplog tailing技术比粗陋的轮询和差异算法效率高得多，但要实现实时仍然会有很高的CPU负载。</p>
+<p>然后他详细描述说：</p>
 <blockquote> 
- <p>所以尽管Oplog tailing真的带来了改善，但我们依然要铭记，它跟你对你的发布/预订策略的正确思考是分不开的。此外，即便你启用了Oplog tailing，现在也只有<a href="https://github.com/meteor/meteor/wiki/Oplog-Observe-Driver">一部分查询</a>适用此项技术。</p> 
+ <p>DevOps是软件开发生命周期（SDLC）从瀑布式到敏捷再到精益的发展。DevOps超越了敏捷，它的关注点是从SDLC中移除浪费。通常情况下，发现浪费或者瓶颈的形式包括：不一致的环境，人工的构建和部署流程，差的质量和测试实践，IT部门之间缺少沟通和理解，频繁的中断和失败的协定以及那些需要珍贵的资源、花费重要的时间和金钱才能保持系统运行的全套问题。</p> 
+ <p>我看到的另一个重复模式是：一个“DevOps”团队的第一步通常是决定他们是否应该使用Chef或者Puppet（或者是Salt、Ansible等其他任何热门的东西）。他们甚至还没有定义自己打算解决的问题，即使他们手头的工具可以解决它们。这些团队通常会紧张地构建数千行脚本，但是这就产生了一个问题：“我们的职责是编写Chef脚本还是通过质量更好、更稳定的产品更快地进入市场？”。在大多数情况下，这些团队会将自己逼入绝境，大量的专有脚本实际上是增加了系统的浪费，而隐藏在DevOps运动之后的驱动力是从系统中移除浪费，这些团队并没有做到这一点。</p> 
 </blockquote>
-<h2>数据推送方式</h2>
-<p>除了介绍监测数据变化的机制，Tom Coleman还讲解了Meteor如何确定该将数据变化发送给哪些用户。</p>
-<blockquote> 
- <p>这意味着要为每个已连接客户端维持一个“内存数据库”（在Meteor中，即Minimongo中的内容）。Meteor中包含这个的数据结构是<a href="https://www.eventedmind.com/tracks/feed-archive/meteor-livedatasession">Merge Box</a>。 <br /> 这样的直接影响是每个已连接客户端都要在服务器上占用一部分内存。并且你向客户端发布的数据越多，服务器上追踪它们所用的内存越多。</p> 
-</blockquote>
-<p>文章还给出了几个增强程序扩展能力的策略：</p>
-<blockquote> 
- <ul> 
-  <li>尽量将用户独有的预订数量降到最低，让Meteor可以最大限度地跨用户汇集工作。</li> 
-  <li>使用更简单的查询，因为这通常意味着Meteor在决定变化是否会影响到它时所做的工作更少。</li> 
-  <li>限制数据库的写操作（特别是那些被重度观察的集合），这样Meteor做有限的工作就可以保证这些观察可以及时更新。</li> 
- </ul> 
-</blockquote>
-<p>文章最后还给出了几个监测工具，比如监测每个集合上打开LRS状态的 <a href="https://github.com/percolatestudio/meteor-server-info">Server Info</a>，收集打开的观察器相关数据的Facts包，性能监测服务<a href="http://meteorapm.com/">MeteorAPM</a>，测试程序扩展能力的<a href="https://github.com/alanning/meteor-load-test">Load Test</a>。</p>
-<p>在最终的结论部分，Tom Coleman说：</p>
-<blockquote> 
- <p>就像我们看到的，实时程序之所以比传统的web程序对服务器有更高要求，是有些根本原因的。希望本文能帮你理解各种起作用的因素，让你在扩展Meteor程序时更容易一点儿。</p> 
-</blockquote>
-<hr />
-<p>感谢<a href="http://www.infoq.com/cn/author/水羽哲">水羽哲</a>对本文的审校。</p>
-<p>给InfoQ中文站投稿或者参与内容翻译工作，请邮件至<a href="mailto:editors@cn.infoq.com">editors@cn.infoq.com</a>。也欢迎大家通过新浪微博（<a href="http://www.weibo.com/infoqchina">@InfoQ</a>）或者腾讯微博（<a href="http://t.qq.com/infoqchina">@InfoQ</a>）关注我们，并与我们的编辑和其他读者朋友交流。</p><br><br><br><br><br><br></body></html>
+<p>如果说DevOps是一种打算让开发某个产品的多个团队之间能够更好的交流和协作的文化变革，那么下一个问题就是我们该如何实现DevOps，我们如何将这种文化引入到自己的公司中？</p>
+<p><a href="http://dtosolutions.com/">DTO Solutions</a>的共同创建者Damon Edwards在2013年的DevOps Days Mountain View上做了题为“<a href="http://dev2ops.org/2013/12/how-to-initiate-a-devops-transformation-video/">如何发起一个DevOps变革</a>”的主题演讲，他推荐通过一个三步走的过程将DevOps文化引入到某个组织中：</p>
+<h2><b>1.</b><b>弄清楚“为什么？”</b></h2>
+<p>根据Edwards所说，首先非常清楚组织成员为什么会聚到一起，知道他们试图实现什么，清楚他们的目的是什么是非常重要的。为了找到这些问题的答案我们应该直接与组织中的这些人交流，询问他们为什么会出现在这里。组织的主要目标是我们实现DevOps文化的唯一原因，除此之外没有其他原因。</p>
+<p>Edwards认为<i>DevOps</i>仅仅是达到目标的一种手段，但是它自己本身并没有结束：“DevOps并不是你的<i>为什么</i>，不是你合作伙伴的<i>为什么</i>，当然也不是你业务的<i>为什么</i>”。他甚至建议忘记<i>DevOps</i>团队，而是使用<i>服务交付</i>作为替代，因为“我们的职责是创造服务”。</p>
+<h2><b>2. </b><b>实现组织合作</b></h2>
+<p>按照Edwards介绍的过程，接下来需要做的是使整个组织合作，让所有人基于一组共享的条件和规则向一个共同的目标努力。当你能够把同一个目标指定给多个人的时候，一个组织就实现了正确的合作，他们会选择同样的方式去实现各自的目标；他们对于同一个问题有同样的答案。这可能是“组织合作的终极梦想”。</p>
+<p>为了完成这种合作，组织内部必须要有人描绘一个<i>DevOps</i><i>愿景</i>。这并不能通过教学过程实现，因为人们只会尝试着机械性地遵循这些步骤。我们需要的是教会大家一种思维方式。根据Edwards所说，这可以通过遵循下面的几个步骤实现：</p>
+<ol> 
+ <li><b>教导基本的概念</b>，例如“单件流、批量工作、限制在制品的数量、拉式vs推式、持续交付”以及可以使用的工具等组织将会共享的一些通用词汇的概念。</li> 
+ <li><b>让所有人目标一致</b>，通过： <br /> a. 价值流程图——一个精益概念，它详细描述了一个组织内部发生的信息流和制品流，引导价值创造。 <br /> b. 时间线分析——试图发现时间花费在哪里，瓶颈在哪里。 <br /> c. 浪费分析——确定一个组织所产生的各种各样的浪费以便于尽可能地消除浪费。</li> 
+ <li><b>发展度量链</b><b>，</b>它的意思是对价值交付链中的各个活动进行度量，发现各个活动相互之间的影响。</li> 
+ <li><b>针对基线识别项目</b><b>/ </b><b>实验。</b>识别哪些项目或者活动偏离了基线，并且采取纠正措施。</li> 
+ <li><b>重复第</b><b>2</b><b>至</b><b>4</b><b>步。</b>这一步构成了持续改进流程。</li> 
+</ol>
+<p>为了实现这些想法，Edwards建议了一个3天的计划：</p>
+<ul> 
+ <li><b>第</b><b>1</b><b>天——</b><b> </b>教导原则，提出一个方案进行研究，模式和反模式</li> 
+ <li><b>第</b><b>2</b><b>天——</b>分析组织当前的状态，提供问题识别技术和改进指标</li> 
+ <li><b>第</b><b>3</b><b>天——</b>讨论解决方案和工具链自动化原则，构建一个路线图</li> 
+</ul>
+<h2><b>3.</b><b>持续改进循环</b></h2>
+<p>这些循环的目的是通过制定计划、实现计划、测量输出和决定如何持续地改进流程。</p>
+<p>在最近举行的QCon London 2014上Edwards做了题为“<a href="http://qconlondon.com/london-2014/presentation/Dev%20%22Programming%22%20Ops%20For%20DevOps%20Success">Dev ‘Programming’ Ops For DevOps Success</a>”的分享，其中就讲到了这些原则，稍后这个分享将会发布到InfoQ上。</p>
+<p><b>查看英文原文</b>：<a href="http://www.infoq.com/news/2014/03/devops">What Is (Not) DevOps, and How Do We Get There?</a></p><br><br><br><br><br><br></body></html>

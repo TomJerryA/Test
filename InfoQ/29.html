@@ -1,9 +1,35 @@
-<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>Xamarin支持处理SAP企业级数据</h3><p><a href="http://xamarin.com/">Xamarin</a>和<a href="http://www.sap.com/index.html">SAP Americas</a>在2月24日的<a href="http://www.mobileworldcongress.com/">MWC 2014</a>上宣布开展合作，致力于为.NET移动开发者提供必要的工具，使他们能够访问企业级SAP数据，以及将这些数据集成到他们的应用中。</p>
-<p>据Xamarin的联合创始人和CEO Nat Friedman介绍，两家公司合作的主要产品是<a href="https://components.xamarin.com/view/sap-mobile-platform">Xamarin + SAP Mobile Platform SDK</a>，其中包含“一个库，用C#编写的示例iOS和Android原生应用，以及上手文档”。在InfoQ的采访中，Friedman谈到，该SDK并不支持访问SAP的任何<a href="http://dcx.sybase.com/index.html#smpsdk0300/en/com.sybase.infocenter.dc01993.0300/doc/html/vhu1361213927050.html">移动平台服务</a>，但是支持通过HTTP(S)上的OData访问SAP数据，填充包含在原生移动应用中的C#对象。</p>
-<p>当被问及他们的解决方案相对于SAP的Cordova/PhoneGap插件有何不同，或有何优点时，Friedman说到：</p>
+<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>API发展预测</h3><p>去年是API快速发展的一年，无论从应用、技术、投资等角度来看都有了很大进步，在ProgrammableWeb目录中的API数量首次超过了一万个，3scale网络公司的CEO Steven Willmott<a href="http://java.dzone.com/articles/api-predictions-2014">分析</a>了API在2014年的发展趋势。</p>
+<p>从API数量方面讲，Steven认为将会大幅增加：</p>
 <blockquote> 
- <p>不同于Cordova/PhoneGap，我们为开发者提供了高生产率的环境，支持通过Xamarin Studio和我们的Visual Studio集成来设计、构建、调试以及部署原生移动应用。通过提高向应用中添加企业级组件的方便性，比如用几行代码加入AES加密和认证，Xamarin组件商店进一步提高了生产率。新的SDK向重要的C#特性——如强类型领域模型类，以及通过async/await实现的响应性更好的应用等——添加了无缝连接SAP的能力。种种功能组合在一起，带来了很高的开发者生产率，最终会带来更好的应用。</p> 
+ <p>2014年会有很多新的API出现，列于众所周知的目录中的公共API数量刚刚达到10,000，并且有更多私有和半私有的API，其数量多于公共API。这些私有API包括各种各样不断增加的种类，包括移动后端、SAAS集成API、甚至有重量级的B2B集成在家用电子硬件设备，比如修改飞利浦灯泡色调的API。</p> 
+ <p>在2014我们预计这些趋势将继续，公共和私有API的数量将爬升到100,000和200,000之间——其数量已经接近这下界了。如果正常估计的话，私有API与公共API的数量比将达到9：1左右。</p> 
 </blockquote>
-<p>作为协议的一部分，Xamarin扩展了其<a href="http://xamarin.com/test-cloud">Test Cloud</a>，将独特的内置SAP移动平台数据验证能力包含了进来，以确保移动应用可以正确地捕获SAP系统，并与其同步数据。他们也将Xamarin + SAP认证咨询程序开放给了“Xamarin的150家全球咨询伙伴以及SAP的成千上万家全球咨询伙伴”，以便为咨询公司提供必要的资源。</p>
-<p>Xamarin还将在<a href="http://www.infoq.com/news/2013/11/visual-studio-ios-android">Xamarin大学</a>提供一门课程，用于培训开发者处理SAP企业级数据。</p>
-<p><strong>查看英文原文：</strong><a href="http://www.infoq.com/news/2014/02/xamarin-sap">Xamarin Sifts through Enterprise SAP Data</a></p><br><br><br><br><br><br></body></html>
+<p>不仅是数量增加，API也会扩展到主流应用。Steven的第二个预测与公司推出的API类型的扩大和增长有关——现在这些包括运动服装公司、零售商、高科技设备制造商、建筑公司、慈善机构和我们能想到的几乎每个经济领域。Steven认为这一趋势将继续并深化。</p>
+<p>API的版权将成为一个关键争论点，Steven指出，重新开庭的Oracle 与Google Java的版权一案，代表着在API规范上进行版权执法的争论已经回来了，并且这个案子可能有广泛的影响。</p>
+<blockquote> 
+ <p>如果推翻了——意味着特定的接口模式可能保护其版权并且阻止再利用。虽然在某些情况下可能需要进行保护，但一般的API版权却很可能对创新起到很深的恐吓作用——这将有效的限制了通用和关键的接口模式，并禁止其他人使用。类似API Commons的活动可能有助于建立起一个可以重复利用的模式体系——但是像这样的努力仍然处于起步阶段——版权辩论将成为2014年的一个重要特征。</p> 
+</blockquote>
+<p>除此之外，服务描述技术会显得格外突出：对于REST API的新兴的重要挑战之一是API的提供商很少发布可定位的机器可解析的API元数据。虽然有些新兴的格式如WADL和Swagger可以使用，以及一些新的格式如Blueprint和RAML的出现，但它们只是很好的部分解决方案，不能被广泛采用。</p>
+<p>Steven认为，更多API聚合器将出现：</p>
+<blockquote> 
+ <p>随着API数量的增加，一些中间层计划如Segment.IO、Zypr 和其他一些正不断涌现。这种类型的聚合器产生了一个单点集成多个后端的API。在某些情况下，对于它们整合的API来说，聚合可能会处于一个危险的位置。但在另一些情况下它们将被张开双臂欢迎——为开发者降低复杂性并且削减了直接支持成本。由于API的数量增加，聚合出现的领域也只会增加。</p> 
+</blockquote>
+<p>API开发者工具将成为一个巨大的增长领域，Steven认为，很多API的供应商工具源于一些公司如Mashery公司、Apigee公司和其他一些公司都致力于帮助API的所有者来提供这些API给其他人。这是一门必要的技术，并且现在也已经被广泛采用。然而，到现在为止很少有工具是为了使用端的API而开发的——即为了便于开发人员调试、监控和跟踪他们应用程序中API的使用情况的工具。</p>
+<blockquote> 
+ <p>2013年已经看到了一些新公司涌现出来满足这种需要，这些公司包括Runscope和API Science，有可能更多公司会涉及此方面，包括3scale的一个新产品。对于使用API的开发者来说创新是至关重要的，因为对于开发者来说，甚至使用有据可查的API（有完善文档的API）来实现自己的目标是个很大的障碍且有很多的挫折。</p> 
+</blockquote>
+<p>Steven指出，单页应用程序将成为API新兴的强大驱动：</p>
+<blockquote> 
+ <p>由于HTML5正在显著增长，用于HTML页面应用的单页面应用程序架构（SPA）成为了可能。这些应用程序有效地使用HTML、CSS3和JavaScript联手创造了一种应用程序，它能够只在网页浏览器中打开一个单独的HTML页面，并且随后可通过调用API到后端服务器来执行所有应用的功能，而不必转到一个新的Web页面上去。特别是，采用的Javascript框架如Angular.js等正在推进其发展、工具也正在改进并且新的框架如Famo.us已经给JS的发展中增加了网页的吸引力。</p> 
+ <p>因此，我们预计在2014年SPA架构将开始成为新业务/功能型应用程序的常态，并且将慢慢变成拥有E-commerce/Retail风格外观的应用程序。</p> 
+</blockquote>
+<p>更多超媒体API将被采纳，Steven认为：通过在API调用中返回响应中的编码许可操作，超媒体风格的API提供了一个增加API灵活性的方法，该功能允许API的潜在功能来动态的改变他们做出的API调用，从而与变化的情况相适应。</p>
+<blockquote> 
+ <p>在使用超媒体风格API和静态的固定URL的API之间仍然有着显著的权衡，然而有一些新兴的、较大规模的部署，包括新的公共媒体平台API（Public Media Platform APIs）以及亚马逊最近发布的应用程序流API（Appstream API）。</p> 
+</blockquote>
+<p>Steven认为，公众数据API将迎来突破性的一年：</p>
+<blockquote> 
+ <p>在试图预测哪些种类的API将增长最快时，我们一直久违的一类是公众API。全球城市，例如纽约、芝加哥、旧金山、阿姆斯特丹、赫尔辛基已经发布了越来越多的数据集，并且现在的API随着时间的推移——为公众提供了基础设施数据，他们可以反过来制作自己的应用程序、可视化效果和两者的混合。我们认为由于政府提供所有公民需要的网页和移动应用程序太过昂贵——公众数据提供了创新的渠道和公众自我帮助的机会，因此这一趋势将加速的更为迅速。另一个加速的原因是通过一些措施使增长变得更快，如open311、CitySDK 和CityProtocol对整个城市中的一些接口进行了标准化，这使得其使用更加简单并且同时扩大了使用这些数据的应用程序的市场。</p> 
+</blockquote>
+<p>此外，openAuth、JSON和其他Web的原生技术将持续增长，Steven指出：2013年许多新的API首先支持JSON，并且最重要的是不总是添加XML。这种趋势，随着其它原生Web标准的采用可能在2014年变得更加强大，因为手机（移动端）和HTML5 + Javascript对API的规划将有越来越多的影响。即使API的服务主要是B2B集成用例（这曾经是SOAP / XML的领地），移动用例被认为是未来的附加并且是影响技术的选择。</p>
+<p>MuleSoft公司工程副总裁James Donelan最近<a href="http://gigaom.com/2013/11/24/arm-yourself-the-api-wars-are-coming/">预言</a>：一场API战争即将来临。云端提供商和新一波配备有API的开发人员将导致大规模的技术颠覆。而API就是这场变革所使用的弹药。James认为，随着API使用的激增，一种构建应用程序的全新的商业模式正在脱颖而出。在这种商业模式下，公司和开发人员通过公共或私人API选择微功能部件，这些微功能部件可以相对轻松地被整合或丢弃。</p><br><br><br><br><br><br></body></html>

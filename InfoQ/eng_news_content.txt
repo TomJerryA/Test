@@ -1,15 +1,23 @@
-<p>Pivotal have announced ‘moves to establish [an] open governance model for Cloud Foundry’ by creating a Cloud Foundry Foundation. EMC, HP, IBM, Rackspace, SAP and VMware have expressed a desire to join the foundation as platinum sponsors. ActiveState and CenturyLink will join as gold level sponsors. A blog post from Pivotal CEO Paul Maritz also references involvement from Canonical, Intel and Piston on the existing community advisory board.</p>
-<p>The establishment of a foundation will help Pivotal put distance between itself as a commercial entity and Cloud Foundry as an open source project. It’s a repeat of what Rackspace did with OpenStack. It took almost a year from the announcement of the OpenStack Foundation to its establishment, so Pivotal are on a more aggressive timeline with their promise to have the Cloud Foundry Foundation up and running by this summer.</p>
-<p>Whilst the use of platinum and gold levels suggests that the Cloud Foundry Foundation might operate in a similar manner to the OpenStack Foundation, Pivotal developer advocate Andy Piper said:</p>
+<p>Oracle has announced the third and final round in a series of community surveys inviting the Java EE community to weigh-in on the shape of Java EE 8, the next version of Java Enterprise Edition, and the Glassfish reference implementation.</p>
+<p>The prior two surveys were announced in Dec 2013 and Jan 2014.</p>
+<p>According to Oracle Java EE/GlassFish evangelist Reza Rahman's Aquarium blog,</p>
 <blockquote>
- We are creating a Foundation that suits the unique needs of the Cloud Foundry ecosystem, and look forward to saying more about this as we finalize the plans with the other Platinum sponsors.
+ &quot;While part one and two focused on specific features, this last part is all about assigning priorities to the most important features.&quot;
 </blockquote>
+<p>The survey introduction adds</p>
 <blockquote>
- The other platinum companies approached us and wanted to make a very large bet/investment on Cloud Foundry, and could only do this if they had some seat at the table to ensure a level playing field. The formation of this open governance model will allow the other platinum vendors to make big bets on Cloud Foundry responsibly to their shareholders, etc.
+  &quot;We can't do everything on this list in one release, and there will certainly be things not on this list that we'll need to do. But we want your help telling us how you would spend limited resources on the items on this list.&quot; 
 </blockquote>
-<p>The Platinum sponsors are each committed to $500k a year for three years on Cloud Foundry marketing. Pivotal have also said that there are no plans to expand the Platinum tier beyond the original seven members from the announcement, which includes three from the EMC federation of companies (EMC, VMware and Pivotal). GE, which made a $100m investment in Pivotal at its launch, is notably absent from the top tier, though as an end user rather than a vendor they may have less interest in promoting Cloud Foundry. Andy Piper explained:</p>
-<blockquote>
- GE remains an investor and important partner. At the time of this announcement, they had not yet committed to joining the Foundation though we are excited about the idea of their participation in the future.
-</blockquote>
-<p>It’s not yet clear how some of the smaller companies that are presently part of the community advisory board such as CloudCredo and Stark &amp; Wayne will get involved in the foundation. Individual contributors such as Dr. Nic Williams and Colin Humphreys are very visible and influential in the Cloud Foundry community, but their companies don’t have large marketing budgets.</p>
-<p>In addition to stepping forward as a top tier sponsor for the Cloud Foundry Foundation IBM has announced a $1Bn investment in PaaS with its Cloud Foundry based BlueMix platform. BlueMix runs on IBM’s SoftLayer cloud, and includes integration to a number of IBM middleware products and application platforms.</p>
+<p>&nbsp;</p>
+<p>In Oracle's analysis of the earlier survey results some of the features enjoying the strongest showing were:</p>
+<ul> 
+ <li>79% felt it was important to include the JSR for Java API for JSON Binding</li> 
+ <li>Over 77% called for a standardized Java API for server-side events</li> 
+ <li>79% asked for security interceptors in Java EE 8</li> 
+ <li>Over 77% preferred RESTful Deployment, Management, and Monitoring APIs, over JMX or others.</li> 
+ <li>74% asked for pruned down EJB 2.x remote and local interfaces.</li> 
+</ul>
+<p>A suprising 40% said it was not time to converge on a NoSQL standard.</p>
+<p>The new survey simply asks the respondents to assign 100 points across 13 categories, such as JCACHE, &quot;Java API for JSON Binding&quot;, and &quot;Improvements in Logging&quot;</p>
+<p>The latest survey will be closing on Monday, March 24, 2014 at 12 AM Pacific Time.</p>
+<p>&nbsp;</p>

@@ -2,7 +2,10 @@
  <head></head> 
  <body>
   <div>
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/8.java">Attitudes for Sustainable Lean Startup Teams</a>Ramli John gave an ignite talk about the minimum viable attitudes for lean startup teams at the 2013 lean startup conference. According to Ramli there are three attitudes that help teams to run lean sustainable over time: humbleness, hunger and happiness.
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/9.java">Java EE 8 Survey Last Call</a>Oracle announces the third final survey on Java EE 8, the next version of Java Enterprise Edition, and the Glassfish reference implementation.
+  </div> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/8.java">Attitudes for Sustainable Lean Startup Teams</a>Ramli John gave an ignite talk about the minimum viable attitudes for lean startup teams at the 2013 lean startup conference. According to Ramli there are three attitudes that help teams to run lean sustainable over time: humbleness, hunger and happiness. 
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/7.java">Layer 7 Survey - Strong Growth Predicted for Hypermedia APIs</a>Layer 7 recently released the results of a survey focussed on API design and deployment. The survey showed that API designers are divided on security versus usability as their top priority, there is an even split between XML and JSON representations and strong growth is predicted for Hypermedia style APIs. In summary the survey showed there is no one-size-fits-all way to manage APIs. 
@@ -147,9 +150,6 @@
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/14.java">Hazelcast Introduces MapReduce API</a>Hazelcast, an open source in-memory data grid solution introduces a MapReduce API for its offering. 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/13.java">Testing End-to-End with Nightwatch</a>Nightwatch is a recently released acceptance framework based on Node.js that uses Selenium WebDriver API to automate web applications testing. The tool promises a simple syntax which enables the writing of end-to-end tests using JavaScript and CSS selector that runs against a Selenium server. 
   </div>  
  </body>
 </html>

@@ -1,6 +1,9 @@
 <html>
  <head></head> 
- <body> 
+ <body>
+  <div>
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/32.javab">3 years of Kanban at Sandvik IT: Sustaining Kanban in the Enterprise</a> This second article in the “3 years of Kanban at Sandvik IT” series focuses on the lessons that the System Development Office learned when sustaining the Kanban method during this 4 years journey. Presented are four qualities that Sandvik IT identified as key when setting-up relevant, and long-term, kanban systems in the enterprise: Stickiness, Clarity, Curiosity and Influence. 
+  </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/32.javab">Sustainable Architectural Design Decisions</a> Software architects must create designs that can endure throughout software evolution. In this article, based on a research study the authors discuss the criteria that can help architects assess architectural design decisions’ sustainability. They describe the challenges to achieving sustainable decisions, criteria for such decisions, solutions they tried, and lessons learned. 
   </div> 
@@ -147,9 +150,6 @@
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/36.javab">Monty Taylor and Jim Blair on CI and Test Automation at OpenStack</a> Monty Taylor and James Blair talk about the build and test challenges they face at OpenStack, and how they managed to tackle them. Managing hundreds of VMs on public clouds, integrating up to 400 commits a day and running thousands of test jobs on them are some of the challenges described. 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/35.javab">Retrospectives Applied as “PROspectives&quot;</a> We can view situations in our work as opportunities from which to learn how to better handle similar situations in future, by looking back and asking “How will I deal with future situations like this to improve my results?” PROspectives help us to reflect more often, independently of acute, unexpected problems and without time pressure, to uncover ideas for future improvements. 
-  </div> 
+  </div>  
  </body>
 </html>

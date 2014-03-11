@@ -1,32 +1,23 @@
-<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>Java 8 News: Release Candidates Available, New Atomic Numbers and Stripped Implementations Dropped</h3><p>The first release candidates of Java 8 started showing up in early February. The <a href="http://mail.openjdk.java.net/pipermail/jdk8-dev/2014-February/003990.html">first</a>, b128, on February 4, and a second <a href="http://mail.openjdk.java.net/pipermail/jdk8-dev/2014-February/004005.html">announced</a> on the OpenJDK mailing list a week later.</p>
-<p>Java 8 RC2 fixes a serious flaw in its new Comparator API, where its new <em>thenComparing()</em> had an unnecessary type restriction. From the <a href="https://bugs.openjdk.java.net/browse/JDK-8033590">bug report</a>:</p>
+<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>Java EE 8 Survey Last Call</h3><p>Oracle has announced the <a href="http://glassfish.org/survey">third and final round</a> in a series of community surveys inviting the Java EE community to weigh-in on the shape of Java EE 8, the next version of Java Enterprise Edition, and the Glassfish reference implementation.</p>
+<p>The prior two surveys were announced in <a href="http://www.infoq.com/news/2013/12/Oracle-Soliciting-JavaEE8-Commun">Dec 2013</a> and <a href="http://www.infoq.com/news/2014/01/ee8-survey-pt2">Jan 2014</a>.</p>
+<p>According to Oracle Java EE/GlassFish evangelist Reza Rahman's <a href="https://blogs.oracle.com/theaquarium/entry/java_ee_8_survey_last">Aquarium blog</a>,</p>
 <blockquote>
-  The following method of java.util.Comparator requires that type U extend java.lang.Comparable. 
- <pre>
-&lt;U extends Comparable&lt;? super U&gt;&gt; Comparator&lt;T&gt; thenComparing( 
-  Function&lt;? super T, ? extends U&gt; keyExtractor, 
-  Comparator&lt;? super U&gt; keyComparator);
-</pre> But this restriction is unnecessary because keyComparator is used to compare extracted key objects. 
+ &quot;While part one and two focused on specific features, this last part is all about assigning priorities to the most important features.&quot;
 </blockquote>
-<p>Java 8 RC2 also fixes a <a href="https://bugs.openjdk.java.net/browse/JDK-8033642">read permission issue</a> on Mac OS X. Java 8 Release Candidates can be downloaded from <a href="https://jdk8.java.net/download.html">https://jdk8.java.net/download.html</a>.</p>
-<p>According to the <a href="https://bugs.openjdk.java.net/browse/JDK/fixforversion/11815">bug tracker for JDK 8</a>, the release will coincide with St. Patrick's Day on March 17th. At the time of this writing, there are three unresolved issues, all related to documentation.</p>
-<p>In other Java 8-related news, Drew Stephens recently published numbers showing that Java 8's atomic number implementations are quite a bit faster. Also, Mark Reinhold proposed that Stripped Implementations be dropped from Java 8, citing legal issues as the reason.</p>
-<h2>New Atomic Number Implementations</h2>
-<p>In addition to Java 8's Lambdas (<a href="https://jcp.org/en/jsr/detail?id=335">335</a>) and new Date and Time API (<a href="http://jcp.org/en/jsr/detail?id=310">JSR 310</a>), it contains atomic number implementations that are very important to certain classes of multithreaded applications. <a href="http://www.linkedin.com/in/drewgstephens">Drew Stephens</a>, Principle at Palamino Labs, recently <a href="http://blog.palominolabs.com/?p=255">wrote about the addition of LongAdder and DoubleAdder</a>.</p>
-<blockquote> 
- <p>Less flashy, but very important to certain classes of multithreaded applications, are the addition of <a href="http://download.java.net/jdk8/docs/api/java/util/concurrent/atomic/LongAdder.html">LongAdder</a> and <a href="http://download.java.net/jdk8/docs/api/java/util/concurrent/atomic/DoubleAdder.html">DoubleAdder</a>, atomic Number implementations that provide superior performance to <a href="http://download.java.net/jdk8/docs/api/java/util/concurrent/atomic/AtomicInteger.html">AtomicInteger</a> and <a href="http://download.java.net/jdk8/docs/api/java/util/concurrent/atomic/AtomicLong.html">AtomicLong</a> when under contention from multiple threads.</p> 
- <p>Some simple benchmarking illustrates the performance difference between the two–for the following benchmarks we used an <a href="http://aws.amazon.com/ec2/instance-types/instance-details/">m3.2xlarge EC2 instance</a>, which provides access to all 8 cores of an Intel Xeon E5-2670.</p> 
- <p><img src="http://www.infoq.com/resource/news/2014/02/java8-release-candidates/en/resources/1graph.jpg" alt="Operations per Millisecond: AtomicLong and LongAdder" align="middle" _href="img://1graph.jpg" _p="true" /></p> 
- <p>With a single thread, the new LongAdder is one third slower, but when threads are in contention to increment the field, LongAdder shows its value. Note that the only thing each thread is doing is attempting to increment the counter–this is a synthetic benchmark of the most extreme kind. The contention here is higher than you're likely to see in most real-world apps, but sometimes you <em>do</em> need this sort of shared counter, and LongAdder will be a big help.</p> 
+<p>The survey introduction adds</p>
+<blockquote>
+  &quot;We can't do everything on this list in one release, and there will certainly be things not on this list that we'll need to do. But we want your help telling us how you would spend limited resources on the items on this list.&quot; 
 </blockquote>
-<p>Drew goes on to show that AtomicLong is a bit quicker with single threads. However, it's four times slower with two threads and almost five times when the number of threads matches the number of cores. He also notes that &quot;LongAdder's performance is constant until the number of threads exceeds the CPU's number of physical cores&quot;.</p>
-<h2>Stripped Implementations Dropped</h2>
-<p>Stripped implementations is a proposed feature for Java 8 that allows customized implementations of Java SE to be packaged with applications that run on it. Elements that don't depend on on the code that application uses can be removed. This type of implementation is likely useful for those wanting to embed Java in devices (e.g. household appliances).</p>
-<p><a href="www.linkedin.com/in/markreinhold">Mark Reinhold</a> recently <a href="http://mail.openjdk.java.net/pipermail/java-se-8-spec-observers/2014-February/000064.html">proposed</a> that Stripped Implementations be dropped from Java SE 8. He cited legal issues as the cause.</p>
-<blockquote> 
- <p>In order to preserve compatibility and guard against fragmentation, the <a href="http://cr.openjdk.java.net/~mr/se/8/java-se-8-fr-spec-01/#s9"> Stripped Implementations feature of Java SE 8</a> requires some nontrivial changes to the TCK license.</p> 
- <p>I've been working with Oracle's legal department on these revisions for some time now. We have an initial draft but at this point, unfortunately, I don't think there is sufficient time for members of this Expert Group, members of the JCP Executive Committee, and other interested parties to review and comment on these changes.</p> 
- <p>I therefore propose to drop the Stripped Implementations feature from Java SE 8. This will only require changes to the Specification and to the TCK rules -- no change to the RI, or to actual TCK tests, is needed.</p> 
-</blockquote>
-<p>Reinhold also wrote that he believes Stripped Implementation is important to the future of the Java platform and it might be added in a release prior to Java SE 9.</p>
-<p>Java 8's release is right around the corner. Easier dates, closures, better concurrency and a new JavaScript engine are just a month away! Will you be upgrading? If not, is there something technical that's stopping you?</p><br><br><br><br><br><br></body></html>
+<p>&nbsp;</p>
+<p>In <a href="https://java.net/downloads/javaee-spec/JavaEE8_Community_Survey_Results.pdf">Oracle's analysis</a> of the earlier survey results some of the features enjoying the strongest showing were:</p>
+<ul> 
+ <li>79% felt it was important to include the JSR for Java API for JSON Binding</li> 
+ <li>Over 77% called for a standardized Java API for server-side events</li> 
+ <li>79% asked for security interceptors in Java EE 8</li> 
+ <li>Over 77% preferred RESTful Deployment, Management, and Monitoring APIs, over JMX or others.</li> 
+ <li>74% asked for pruned down EJB 2.x remote and local interfaces.</li> 
+</ul>
+<p>A suprising 40% said it was not time to converge on a NoSQL standard.</p>
+<p>The new survey simply asks the respondents to assign 100 points across 13 categories, such as JCACHE, &quot;Java API for JSON Binding&quot;, and &quot;Improvements in Logging&quot;</p>
+<p>The latest survey will be closing on Monday, March 24, 2014 at 12 AM Pacific Time.</p>
+<p>&nbsp;</p><br><br><br><br><br><br></body></html>
