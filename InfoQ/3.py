@@ -1,21 +1,35 @@
-<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>ビッグデータ: 言語は本当に重要か?</h3><p><a target="_blank" href="http://www.infoq.com/news/2014/01/bigdata-languages"><em>原文(投稿日：2014/01/20)へのリンク</em></a></p>
+<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>PrismaticがSchema 0.2にデータ型強制変換を追加</h3><p><a target="_blank" href="http://www.infoq.com/news/2014/02/prismatic-schema-coercion"><em>原文(投稿日：2014/02/19)へのリンク</em></a></p>
 <div class="article_page_left news_container text_content_container"> 
  <div class="text_info"> 
-  <p>ビッグデータの分野では、数十億ものイベントの中で、たった1ミリセコンドの損失が重大な影響を与える。それにもかかわらず、Pythonのような遅いと考えられている言語が、この1年で非常に人気が出ている。ビッグデータコミュニティの最近の記事や議論では、データサイエンスとビッグデータのプログラミング言語の選択について、論争を始めている。</p> 
-  <p><a href="http://www.adroll.com/">AdRoll</a>の主席エンジニアであるVille Tuulos氏によると、言語のパフォーマンスそのものは問題ではない。Ville氏の調査結果は、2013年9月にサンフランシスコで開催された<a href="http://tuulos.github.io/sf-python-meetup-sep-2013/#/">ミートアップ</a>で発表され、Pythonで構築されたAdRollのバックエンドスタックと、<a href="http://aws.amazon.com/redshift/">AmazonのRedshift</a>のような巨大なシステムよりも優れたパフォーマンスをどのように発揮できるかを示した。ここで重要なのは、AdRollは、自分たち特有のユースケースに基づき、システムを構築していることだ。そのため、その1つのユースケースのために最適化できる。Ville氏は次のように述べた。</p> 
+  <p><a href="http://getprismatic.com/">Prismatic</a>では，同社の<a href="http://clojure.org/">Clojure</a>データ記述ライブラリである<a href="https://github.com/prismatic/schema">Schema</a>の<a href="http://blog.getprismatic.com/blog/2014/1/4/schema-020-back-with-clojurescript-data-coercion">0.2リリース</a>に，<a href="http://en.wikipedia.org/wiki/Type_conversion">データの強制型変換(coercion)</a>を追加した。これにより，不正な型のデータを単にリジェクトするのではなく，スキーマに適合させてインスタンスを変換するような設定が可能になる。</p> 
+  <p>ClojureではMapのキーとして<a href="http://clojure.org/data_structures#Data%20Structures-Keywords">キーワード</a>が慣用的に使用される。そのため<a href="http://www.json.org/">JSON</a>オブジェクトの受信時には，変換を実施するために頻繁に使用されるボイラプレートコードが存在する。従来このような変換は，リクエストを検証する前に実行する必要があった。今回の変更により，キーをキーワードとして定義しておけば，<a href="https://github.com/prismatic/schema">Schema</a>がその処理を実行してくれるようになる。自分自身のニーズに合わせて，独自の変換処理を定義することももちろん可能だ。この追加機能などによってPrismaticでは，データ検証の所要時間が5分の1に短縮されたと説明している。</p> 
+  <p><a href="http://blog.getprismatic.com/blog/2013/9/4/schema-for-clojurescript-data-shape-declaration-and-validation">9月の初回リリース時</a>にSchemaが目標として挙げたのは，&quot;より少ない手間で，Clojureの型システムのメリットをより多く享受する&quot;ことだった。リリースの時点では，同じくClojureに型システムを導入するライブラリである<a href="https://github.com/clojure/core.typed">core.typed</a>と競合する可能性が指摘されていた。この見方に対しては，core.typedの作者である<a href="https://twitter.com/ambrosebs">Ambrose Bonnaire-Sergeant</a>氏が反論した。両ライブラリは互いに補完し合うものだという氏の主張は，後に<a href="http://www.infoq.com/news/2013/10/core-typed">core.typedに関してInfoQがインタビュー</a>した時にも改めて述べられている。</p> 
+  <div>
+   InfoQではライブラリの開発リーダである
+   <a href="http://getprismatic.com/profile/w01fe">Jason Wolfe</a>氏と，Schemaの今後について話す機会を得ることができた。
+  </div> 
+  <div>
+   &nbsp;
+  </div> 
+  <p><b>InfoQ:</b> Shemaが最初にリリースされたとき，core.typedと組み合わせることで非常に強力なものになる可能性が示唆されました。それ以降，このアイデアに進展はあったのでしょうか？</p> 
   <blockquote>
-   どの言語を使うかに関わらず、ハイレベルな言語を使い、一般的なソリューションよりも優れている、ドメイン特化言語のソリューションを実装できます。
+   数年前にQiプログラムを初めて見て以来，Clojureの漸進的型付け(gradual types)には強い興味を持っていました。それを実現したという意味で，Ambroseは素晴らしい仕事をしたと思います。Schemaとcore.typedを組み合わせる方法はいくつかありますが，もっとも興味深いのは多分，core.typedでチェックしたコードとそうでないコードとのブリッジとして，Schemaを使う方法だろうと思います。 
+   <div>
+    &nbsp;
+   </div> 
+   <div>
+    そうなのですが，残念なことにまだcore.typedを十分に調査する時間が取れていないので，今の時点でご報告できることはほとんどありません。
+   </div> 
   </blockquote> 
-  <p>これは、言語がまったく関係ないという意味ではない。データサイエンスやビッグデータにはどの言語が最適かについて、最近、数多くの議論が行われている。何度も議論されているのは、PythonやRだ。<a href="http://inside-bigdata.com/2013/12/09/data-science-wars-python-vs-r/">データサイエンス戦争</a>について話す人もいる。LinkedInのトピックでは、<a href="http://www.linkedin.com/groups/R-vs-Python-35222.S.239919420">興味深い議論</a>が始められ、全般的な意見では、Rは学問的な言語であり、データサイエンティストにとっては、大量のパッケージとその多様性によって、Rがより優れたものになっている。</p> 
-  <p>しかし、すべてを考慮すると、Pythonのほうがプログラマたちの心に訴えかけるものがあり、大量のデータを扱う場合について、<a href="http://www.dish.com/">Dish Network</a>のデータサイエンティスト、Tom Rampley氏は以下のように述べている。</p> 
+  <p><strong>InfoQ:</strong> テストデータ生成への展開は意欲的なテーマだと思うのですが，<a href="https://github.com/reiddraper/simple-check">simple-check</a>を取り込んだり，<a href="https://github.com/clojure/test.generative">test.generative</a>を利用したりするのでしょうか。あるいは別のアプローチを考えていますか？</p> 
   <blockquote>
-   私は、様々なパッケージの統計的機能を利用するため、広範囲に渡ってRを利用します。また、小さなデータセットの操作にもRを使います。しかし、テキストのパースや大規模データセットの操作、自分のアルゴリズムをコーディングする場合は、
-   <a href="http://www.numpy.org/">Numpy</a>、
-   <a href="http://scipy.org/">Scipy</a>、
-   <a href="http://pandas.pydata.org/">Pandas</a>のパッケージと組み合わせて、Pythonを使うほうがずっと良いと思います。
+   選択肢を探している段階です。simple-checkについては素晴らしい評価をたくさん目にしていますから，何とか取り入れたいと思うのですが，今はまだ実装内容を理解して，その生成プロセスに追加の制約を組み込み方法を見つけようとしているところです。個別のデータを疑似ランダムに具体化するような，もっとシンプルなジェネレータも存在するでしょう。テストでは結構，そういったものを多く使用しています。
   </blockquote> 
-  <p>ここ数か月は、Pythonが勝者になっているようだ。<a href="http://karissamck.com/blog/2013/10/30/big-data-is-big-because-it-doesnt-load-into-r/">Karissa McKelvey</a>氏は、2013年10月に「私のデータは大きく、Rではロードできない」というブログを書いているし、<a href="http://readwrite.com/2013/11/25/python-displacing-r-as-the-programming-language-for-data-science">Matt Asay</a>氏は、「Rはデータサイエンスの博士号を持つ人たちには人気があるが、データが主流になるにつれて、Pythonが優位になっている」と述べた。</p> 
-  <p>複雑なアーキテクチャの中でどの言語を使うか決める時、その言語のパフォーマンスは重要な要素になる。そして、このことは、誇張されがちだ。本当に大切なのは、その言語をどう使うかであり、Linus Torvalds氏は次のように述べている。「悪いプログラマはコードに悩む。良いプログラマはデータ構造とその関係性に悩む。」</p> 
-  <p><a href="http://www.cloudera.com/">Cloudera</a>の最近のオープンソースプロジェクトである<a href="https://github.com/cloudera/impala">Impala</a>を例に見てみよう。Impalaは、クエリを劇的に速く実行するために、<a href="http://hive.apache.org/">Hive</a>から置き換えるように提案されている。残りの<a href="http://hadoop.apache.org/">Hadoop</a>スタックはJavaで書かれているが、ImpalaはC++で書くことを選んだ。この変更の理由は、しばしばパフォーマンスのためだと言われている。しかし、パフォーマンスの向上は、単にJavaからC++への切り替えのためだけではない。Impalaは、<a href="http://en.wikipedia.org/wiki/MapReduce">MapReduce</a>を使わずに、データをメモリにキャッシュする。異なるデータ構造と制限を持った、完全に別のパラダイムを使うため、初めからパフォーマンスが良いのは明らかなのだ。JavaからC++に切り替えられたのは、さらに先を行くために素晴らしいことではあるが、パフォーマンス向上の大きな要因ではないだろう。</p> 
+  <p><strong>InfoQ:</strong> Schemaの定義からもっと価値を引き出すために，どのような考えをお持ちですか？</p> 
+  <blockquote> 
+   <p>強制型変換と変換は非常に強力ですから，今はまだその可能性をすべて引きだそうとしている段階です。同僚のDave GollandがClojure Westで&quot;fnhouse&quot;という，グラフとスキーマを結合してWeb APIを容易に構築可能にする新ライブラリについて話をする予定です。今回のリリースに続いて，fnhouseのAPIからObjective Cと ClojureScriptのモデルクラス，クライアントAPIライブラリを自動生成する&quot;coax&quot;をリリースする予定です。</p> 
+   <p>その後もクレイジーなアイデアがたくさんありますが，まだお話できる段階ではありません。</p> 
+  </blockquote> 
+  <p><a href="https://github.com/prismatic/plumbing">Graph</a>は<a href="http://blog.getprismatic.com/blog/2013/2/1/graph-abstractions-for-structured-computation">2013年にリリースされた</a>PrismaticsのClosureライブラリで，構造化された計算を宣言型のスタイルで表現するものだ。</p> 
  </div> 
 </div><br><br><br><br><br><br></body></html>

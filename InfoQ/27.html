@@ -1,13 +1,41 @@
-<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>Appurify和Xamarin推出设备多样化的移动应用持续集成</h3><p><a href="http://appurify.com/blog/announcing-amp">Appurify Mobile Platform</a>和<a href="http://xamarin.com/test-cloud">Xamarin Test Cloud</a>是最近发布的两个服务，它们承诺帮助开发者和企业在真实的iOS和Android设备上对其移动应用进行自动测试和性能优化，并支持自动化测试和持续集成。</p>
-<p>移动应用测试给开发者带来了特殊的挑战。<a href="http://en.wikipedia.org/wiki/Mobile_application_testing">根据维基百科</a>，关键因素包括：</p>
+<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>InfoQ互联网极限性能黑客马拉松：La/nmp架构秒杀活动开始报名</h3><p><a href="https://github.com/InfoQ/server-hackathon">InfoQ互联网极限性能黑客马拉松</a>是面向Server团队的线上PK活动，参赛团队的目标是在限定资源、限定技术下设计出能最大化利用底层资源所有性能的架构。InfoQ希望通过本活动为互联网公司提供成熟、可落地的架构方案。</p>
+<h2>本次活动主题：<a href="https://github.com/InfoQ/server-hackathon/blob/master/first-phase.md">La/nmp架构秒杀</a></h2>
+<h3>业务场景</h3>
+<p>电商促销，促销商品设置100个库存，预计在促销开始的第一秒内有100万人参与抢购。</p>
+<h3>资源限制</h3>
+<p>每队提供5台机器，默认配置为：4core 4Gmem 10G CentOS 6.4 x86_64</p>
+<h3>技术限制</h3>
+<ol> 
+ <li>业务层逻辑使用PHP开发，版本不限；后端语言的选择无限制</li> 
+ <li>操作系统使用Linux，版本不限</li> 
+ <li>其他依赖系统全部采用开源方案</li> 
+</ol>
+<h3>测试方案</h3>
+<p>参赛者完成代码与文档的提交后，将自己所分配机器的公网IP报告给评委。评委会导流量至该IP进行压测，在监控工具Zabbix中检查服务器的QPS与其他指标，主要考察点包括：</p>
+<ol> 
+ <li>对瞬时并发的处理能力</li> 
+ <li>对超卖的处理方式</li> 
+ <li>页面加载的处理方式</li> 
+</ol>
+<h2>参赛方式</h2>
+<h3>1、报名</h3>
+<p>在2014年3月21日之前发邮件给 editors@cn.infoq.com ，邮件标题为：报名参加InfoQ互联网极限性能黑客马拉松：La/nmp架构秒杀</p>
+<p>邮件正文包含：</p>
 <ul> 
- <li>设备的多样性，包括内存、屏幕分辨率和方向、网络连接选项等在内的设备参数存在差异。</li> 
- <li>移动平台的多样性，例如iOS、Android和Windows Phone，每种平台的用户群都有多个不同的操作系统版本。</li> 
- <li>移动运营商的网络协议多样性，例如GSM、CDMA和FOMA，以及影响操作的各种条件，例如信号强度和可用带宽。</li> 
+ <li>姓名、电话、邮箱（最好是Gmail）、QQ</li> 
+ <li>200字左右的个人介绍，可包含您所擅长或感兴趣的技术领域</li> 
+ <li>个人GitHub主页</li> 
+ <li>为防止打酱油，请列出你当前管理的（或曾经管理过的）一台la/nmp服务器的配置、平均qps、最大能承载的qps</li> 
 </ul>
-<p>Jim Cowart<a href="http://www.developereconomics.com/testing-mobile-applications/">为Developer Economics写的一篇文章</a>同时还指出了开发者需要应对的另外两个挑战：功能不完备的工具以及对工具所知甚少。</p>
-<p>Appurify Mobile Platform和Xamarin Test Cloud都在发布说明中强调了针对各种设备进行功能测试和性能测试的重要性，并声明提供了上百种设备供选择。开发者可以编写自己的脚本进行UI测试，并通过命令行或者API将它们集成到现有的开发过程中。也可以在Team Foundation Server、Jenkins和TeamCity等持续集成平台中直接运行测试。Appurify还声明他们能够针对各种载体和信号强度测试应用软件。</p>
-<p>Appurify<a href="http://gigaom.com/2013/10/17/mobile-app-development-is-fundamentally-broken-says-appurify/2/">通过对iOS应用商店中前200个应用的1星评价</a>评估功能测试和性能测试的重要性。得出的结论是52%的1星评价与系统崩溃、网络性能或者UI延迟有关。</p>
-<p>另一方面，<a href="http://pages.appurify.com/2014report-Request.html">Appurify委托的另一项研究</a>，在2013年12月对400名美国开发者进行了调查。78%的被访者表示他们在真实设备上进行手工测试，其中高达41%依赖用户发现缺陷，总共只有10%的开发者表示使用自动化测试。</p>
-<p>其它一些公司也提供移动设备测试服务，例如Perfecto Mobile和Keynote DeviceAnywhere。特别是，Perfecto Mobile还允许“<a href="http://www.perfectomobile.com/Products/MobileCloud_Interactive">不论你在哪，都可以远程在真实的智能手机和平板电脑上进行人工测试</a>”。<a href="http://recode.net/2014/02/04/google-backed-appurify-aims-to-automate-mobile-app-makers-device-testing/">Appurify的CEO Jay Srinivasan表示</a>，其服务与对手的关键区别是，它能提供更深层次的自动化和细粒度，使客户不仅能够测试各种不同的设备，还能测试各种网络条件和内存容量。Srinivasan说，自然状态下发现的一半错误，不是因为没有在这种设备上测试过，而是没有在正确的条件下进行测试。</p>
-<p><strong>原文英文链接：</strong><a href="http://www.infoq.com/news/2014/02/continuos-integration-mobiletest">Appurify and Xamarin Launch Continuous Integration for Mobile Apps on Variety of Devices</a></p><br><br><br><br><br><br></body></html>
+<p>一人参赛，提供个人信息；多人组团参赛，提供每个人的信息。我们将在3月22日向所有按规定方式报名的团队发放服务器实例并发布公告。</p>
+<h3>2、部署调试、提交方案与代码</h3>
+<p>在2014年3月30日之前，在分配的服务器资源上完成部署、调试，并提供如下信息：</p>
+<ol> 
+ <li>代码：将干净的代码上传至Github</li> 
+ <li>架构文档：上传至新浪微盘，包含技术选型思路、优化方案、运维方案</li> 
+</ol>
+<h3>3、公布评审结果</h3>
+<p>评审结果在2014年4月6日之前公布。</p>
+<h2>奖品</h2>
+<p>按规定完成部署调试、方案提交的团队均可获得《Puppet实战》或《MacTalk&middot;人生元编程》一本，如有其他想看的书也可告知，我们尽量去搞。</p>
+<p>测试跑分最高的团队可获赠特别奖品——Cherry键盘一枚。</p><br><br><br><br><br><br></body></html>

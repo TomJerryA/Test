@@ -1,6 +1,9 @@
 <html>
  <head></head> 
- <body> 
+ <body>
+  <div>
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/3.py">PrismaticがSchema 0.2にデータ型強制変換を追加</a>Prismaticでは，同社のClojureデータ記述ライブラリであるSchemaの0.2リリースに，データの強制型変換(coercion)を追加した。これにより，不正な型のデータを単にリジェクトするのではなく，スキーマに適合させてインスタンスを変換するような設定が可能になる。InfoQではSchemaについて，PrismaticのJason Wolfe氏に話を聞いた。
+  </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/2.py">Mono，JITとGCを改良</a>Mono 3.2.7が公開された。改良されたJIT，LINQ用の新しいインタプリタ，64bitネイティブ命令の使用など，数多くの新機能を備える。 
   </div> 
@@ -147,9 +150,6 @@
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/8.py">LightTable IDEがオープンソース化</a>Chris Granger氏がLightTable IDEのバージョン0.6リリースに伴い、オープンソースにした。このリリースではサードパーティのプラグインがサポートされた。InfoQはChris Granger氏にインタビューをした。 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/7.py">HTTP/2はどうなるか</a>HTTP/2 Working Groupの議長であるMark Nottingham氏はブログに次のバージョンのプロトコルに対する9つの予想について自身の意見を書いている。HTTP/2は完成に近づいており、実装も始まっている。 
-  </div> 
+  </div>  
  </body>
 </html>
