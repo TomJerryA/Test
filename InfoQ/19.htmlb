@@ -1,222 +1,45 @@
-<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>ATDD实战</h3><h2>验收测试驱动开发入门</h2>
-<p><img src="http://infoqstatic.com/resource/articles/atdd-from-the-trenches/zh/resources/1123020.jpg" alt="" _href="img://null" _p="true" /></p>
-<p>你是否遇到过这样的场景：</p>
-<p><img src="http://infoqstatic.com/resource/articles/atdd-from-the-trenches/zh/resources/1123021.jpg" alt="" _href="img://null" _p="true" /></p>
-<p>那么本文就是为您而作——以一个具体的例子阐述了如何基于已有的代码库启用验收测试驱动开发（acceptance-test driven development）。这是<a href="http://blog.crisp.se/2013/07/12/henrikkniberg/the-solution-to-technical-debt">应对技术债解决方案</a>的一部分。</p>
-<p>这是带有一定缺陷的现实世界的样例，并不像教科书中的样例那样完美。所以完全是来自于实战。我只会使用Java与Junit，而没有使用其他的第三方测试框架（这些框架基本上已经被过度使用了）。</p>
-<p><b>免责声明：</b>我并不是说这就是正确地方式，关于ATDD有很多其他的“偏好（flavors）” 。同时，本文中也没有太多新鲜的或革新性的内容，它只是一些确定的实践以及通过辛苦得来的经验。</p>
+<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>微博春晚背后的技术故事</h3><h2>前言</h2>
+<p>一年一度的春晚再次落下帷幕，而微博也顺利地陪伴大家度过除夕之夜。</p>
+<p>谈及马年春晚，人们首先想到的不是春晚上精彩的节目，而是微博上的吐槽，边看春晚，边刷微博，边吐槽，已经成了国人的习惯。看春晚不再是为了看节目，而是为了能够在微博上吐槽，知道大家在吐槽什么，更有人戏称不是春晚成就了微博，而是微博拯救了春晚。</p>
+<p>马年春晚又格外引人注目，不仅仅是因为冯小刚亲自坐镇，担当总导演，更值得一提的是本届春晚首次将社交平台作为其与观众互动的主要途径，而新浪微博更是成为官方二维码独家合作方。在节目播出时，用户通用手机客户端，扫描屏幕右下角的官方二维码，即可参与春晚的话题讨论。不仅如此，参与讨论的观众，还可以免费获得微博红包，抽大奖的机会。如此一来，大大的提升了微博的活跃度瞬间提升，同时在线人数翻了几倍，给微博系统带来前所未有的访问压力。</p>
+<p>根据以往统计的数据，春晚期间微博的访问量将激增到日常水平的数倍之多，而瞬时发表量更是飙升数十倍，如此场景丝毫不亚于淘宝双11和12306抢票时的”盛况”。</p>
+<p>而最后的统计数据结果表明，马年春晚直播期间，微博的访问量和发表量都再创新高，而我们系统也自始至终平稳运行，经受住了此次高峰的考验。这成功的背后，是我们的工程师将近一个月的努力。其间面临了哪些问题，又是如何解决的呢？下面，我们一一为大家揭秘。</p>
+<h2>挑战1：如何应对数倍于日常访问量的压力？</h2>
+<p>每年春运抢票时，12306都会崩溃；淘宝双11时，也会有短暂的购买失败的情况。究其原因还是，有限的服务器资源难以承受上千万人同时在线访问。同样，春晚的时候，微博的访问量也会激增，同时在线人数到达日常的数倍之多。面对突然增长的访问压力，大部分互联网公司都会临时扩容来加以应对，同样我们也需要进行扩容。那么如何进行扩容？哪些部分需要扩容？具体扩容多少？这都是厄需解决的问题。</p>
 <div id="lowerFullwidthVCR"></div>
-<h2>我想做什么</h2>
-<p>几天前，我开始为<a href="http://webwhiteboard.com">webwhiteboard.com</a>（我的小项目）添加密码保护的特性。很久以来，人们就希望有一种密码保护在线白板的方式，现在该实现这个功能了。</p>
-<p>听起来这是一个很简单的特性，但是需要做很多的设计决策。到目前为止，webwhiteboard.com是基于匿名使用的，没有任何的账户、登录或密码这样的东西。什么人能够保护白板呢？谁能访问它呢？如果我忘记密码该怎么办？我们如何在足够安全的同时保证尽可能简单？</p>
-<p>webwhiteboard的代码库有着很棒的单元测试和集成测试的覆盖率。但是它并没有验收测试，也就是站在用户的角度进行端对端流程的测试。</p>
-<h2>设计要素</h2>
-<p>webwhiteboard的主要设计目标是很简单的：尽可能简化登录、账户以及其他繁琐事情的需求。所以我为密码特性建立了两个设计限制：</p>
-<ul> 
- <li>对白板设置密码需要用户认证，但是访问密码保护的白板并不需要。也就是说，用户访问保护的白板需要输入密码，而不需要“登录”。</li> 
- <li>登录会使用第三方的OpenId/Oauth服务提供商，最初会使用Google。按照这种方式，用户就不需要再创建账号了。</li> 
-</ul>
-<h2>实现方式</h2>
-<p>这里有很多尚未确定的事情：我并不确定它会如何工作，更不确定如何去实现它。因此，以下就是我的实现方式（基本的ATDD）：</p>
-<ul> 
- <li><b>步骤1：</b>在较高的层面编写预计的流程。</li> 
- <li><b>步骤2：</b>将其转化为可执行的验收测试。</li> 
- <li><b>步骤3：</b>执行验收测试，但是会失败。</li> 
- <li><b>步骤4：</b>使得验收测试成功执行。</li> 
- <li><b>步骤5：</b>清理代码。</li> 
-</ul>
-<p>这是一个迭代式的过程，所以每一步中我都可能会返回上一步进行调整（这是我经常做的事情）。</p>
-<h2>步骤1：编写预计的流程</h2>
-<p>假设这个特性已经完成了。在我睡觉的时候有个天使来了并实现了这个特性。这听起来美妙得难以令人置信！那我该如何对其进行检验呢？要进行手工测试的话，我首先要做什么呢？应该是：</p>
-<ol> 
- <li>我创建一个新的白板。</li> 
- <li>我对其设置一个密码。</li> 
- <li>Joe试图打开我的白板，被要求输入密码。</li> 
- <li>Joe输入错误的密码，被拒绝访问。</li> 
- <li>Joe再次尝试输入正确的密码，可以进行访问。（当然，“Joe”就是我自己，只不过使用另外一个浏览器……）。</li> 
-</ol>
-<p>当我编写完这个小的测试脚本后，我意识到要考虑很多可选的流程。但这就是主要的场景。如果我能够让它运行起来，就已经取得了很大的进展。</p>
-<h2>步骤2：将其转化为可执行的验收测试</h2>
-<p>这是一个需要技巧的步骤。我并没有其他端到端的验收测试，所以我该如何开始呢？这个特性会与第三方的认证系统（我最初的选择是使用Janrain）以及数据库交互，并且这里还有Web相关的内容，包括弹出对话框、令牌（token）以及重定向等等。</p>
-<p>现在该退后一步。在解决“我该如何编写这个验收测试”之前，我首先要解决一个更为基本的问题，那就是“基于这个代码库，我到底该怎样编写验收测试呢？”</p>
-<p>为了推进这个问题，我试图识别可以进行测试的“尽可能简单的特性”，这就是今天已经可用的一些特性。</p>
-<h4>步骤2.1 编写尽可能简单的可执行验收测试</h4>
-<p>以下就是我能够想到的测试步骤：</p>
-<ol> 
- <li>试图打开一个不存在的白板</li> 
- <li>检查确认无法得到白板</li> 
-</ol>
-<p>我该如何实现这个测试呢？使用什么框架？什么工具？它是否应该涉及到GUI，或者忽略它？是否涉及到客户端代码还是直接与服务器进行交流？</p>
-<p>有很多的问题。技巧在于：不要回答这些问题！只要假设这些问题已经以某种方式很漂亮地解决了，并将测试编写为伪代码的形式。如下。</p>
-<table width="500" cellspacing="0" cellpadding="2" border="1"> 
- <tbody> 
-  <tr> 
-   <td width="500" valign="top" bgcolor="#ffffbb"><br /> <font color="#800000"><b>public</b> <b>class</b></font> AcceptanceTest { <br /> @Test <br /> <font color="#800000"><b>public</b> <b>void</b></font> openWhiteboardThatDoesntExist() { <br /> <font color="#008080">//1. 试图打开一个不存在的白板</font> <br /> <font color="#008080">//2. 检查确认无法得到白板</font> <br /> } <br /> }</td> 
-  </tr> 
- </tbody> 
-</table>
-<p>我运行它，并且成功了！太棒了！但是稍等一下，这是错误的！在TDD三角（“红-绿-重构”）中的第一步是<i>红色</i>。所以，我需要让这个测试失败，以证明这是一个需要实现的特性。</p>
-<p><img src="http://infoqstatic.com/resource/articles/atdd-from-the-trenches/zh/resources/1123022.jpg" alt="" _href="img://null" _p="true" /></p>
-<p>我会编写一些真正的测试代码。不过，这些伪代码能够保证我的方向是正确的。</p>
-<h3>步骤2.2 将尽可能简单的验收测试变为红色</h3>
-<p>为了将其变成真正的测试，我构建了一个名为AcceptanceTestClient的类，我假装它已经魔法般地解决了所有的问题并且为我提供了漂亮的、高级的API来运行验收测试。它的使用很简单，如下：</p>
-<p><font color="#0000ff">client</font>.openWhiteboard(<font color="#0000ff">&quot;xyz&quot;</font>); <br /> <i>assertFalse</i>(<font color="#0000ff">client</font>.hasWhiteboard());</p>
-<p>当我编写这些代码的时候，创建了一个API来适应这个测试用例的需求。它应该与伪代码的行数差不多。</p>
-<p>接下来，我使用Eclispe的快捷键自动生成空白版本的AcceptanceTestClient以及我所需要的方法：</p>
-<table width="500" cellspacing="0" cellpadding="2" border="1"> 
- <tbody> 
-  <tr> 
-   <td width="500" valign="top" bgcolor="#ccffff"><br /> <font color="#800000"><b>public</b> <b>class</b></font> AcceptanceTestClient { <br /> <font color="#800000"><b>public</b> <b>void</b></font> openWhiteboard(String string) { <br /> <font color="#008080">// <b><font color="#0080ff">TODO</font></b> Auto-generated method stub</font> <br /> } <br /> <br /> <font color="#800000"><b>public</b> <b>boolean</b></font> hasWhiteboard() { <br /> <font color="#008080">// <b><font color="#0080ff">TODO</font></b> Auto-generated method stub</font> <br /> <font color="#800000"><b>return</b> <b>false</b></font>; <br /> } <br /> }</td> 
-  </tr> 
- </tbody> 
-</table>
-<p>以下是完整的测试类：</p>
-<table width="500" cellspacing="0" cellpadding="2" border="1"> 
- <tbody> 
-  <tr> 
-   <td width="500" valign="top" bgcolor="#ffffbb"><br /> <font color="#800000"><b>public</b> <b>class</b></font> AcceptanceTest { <br /> AcceptanceTestClient <font color="#0000ff">client</font>; <br /> <br /> <font color="#808080">@Test</font> <br /> <font color="#800000"><b>public</b> <b>void</b></font> openWhiteboardThatDoesntExist() { <br /> <font color="#008080">//1. 试图打开一个不存在的白板</font> <br /> <font color="#0000ff">client</font>.openWhiteboard(<font color="#0000ff">&quot;xyz&quot;</font>); <br /> <br /> <font color="#008080">//2. 检查确认我无法得到白板</font> <br /> <i>assertFalse</i>(<font color="#0000ff">client</font>.hasWhiteboard()); <br /> } <br /> }</td> 
-  </tr> 
- </tbody> 
-</table>
-<p>运行测试，但是它会失败（因为客户端为null）。很好！</p>
-<p>我都做了些什么呢？其实没有太多。但这是一个起点。验收测试的帮助类AcceptanceTestClient已经有了雏形。</p>
-<h3>步骤2.3 将尽可能简单的验收测试变为绿色</h3>
-<p>下一步就是将这个验收测试变为绿色。</p>
-<p><img src="http://infoqstatic.com/resource/articles/atdd-from-the-trenches/zh/resources/1123023.jpg" alt="" _href="img://null" _p="true" /></p>
-<p>我现在所要解决的是一个更为简单的问题。我不需要关心认证以及多用户等等的问题。稍后我可以为这些问题添加测试。</p>
-<p>对于AcceptanceTestClient，实现很标准——模拟数据库（我已经有这样的代码了）并运行一个内存版本的完整的webwhiteboard系统。</p>
-<p>以下为生产环境的设置：</p>
-<p><a href="http://infoqstatic.com/resource/articles/atdd-from-the-trenches/zh/resources/1123024.jpg"> <img width="600" src="http://infoqstatic.com/resource/articles/atdd-from-the-trenches/zh/resources/1123024.jpg" alt="" _href="img://null" _p="true" /></a></p>
-<p>（点击图片放大）</p>
-<p>技术细节：Web Whiteboard使用了GWT（Google Web Toolkit）。任何事情都是使用Java编写的，但是GWT会自动将客户端代码转换为JavaScript，并插入RPC（Remote Procedure Calls）的逻辑，从而封装异步客户端-服务器通信的繁琐细节。</p>
-<p>在验收测试的环境中，我对系统进行了“短路（short circuit）”，移除掉了所有的框架、第三方服务以及网络通信。</p>
-<p><a href="http://infoqstatic.com/resource/articles/atdd-from-the-trenches/zh/resources/1123025.jpg"> <img width="600" src="http://infoqstatic.com/resource/articles/atdd-from-the-trenches/zh/resources/1123025.jpg" alt="" _href="img://null" _p="true" /></a></p>
-<p>（点击图片放大）</p>
-<p>我创建了AcceptanceTest客户端，它会与web whiteboard服务进行交互，就像真实的客户端一样。区别都是在幕后的：</p>
-<ul> 
- <li>真正的客户端与web whiteboard服务接口进行交互，它会运行在GWT环境之中，这个环境会将请求转换为RPC调用并转发到服务器端。</li> 
- <li>验收测试客户端也会与web whiteboard服务接口进行交互，但是它会直接连接到本地实现中，运行测试时，没有必要进行RPC调用，因此也没有必要使用GWT。</li> 
-</ul>
-<p>同时，验收测试配置将mongo数据库（基于云的NoSQL数据库）替换为虚拟的内存数据库。</p>
-<p>这种虚拟的原因在于简化环境、让测试运行得更快并且确保独立于框架和网络因素来测试业务逻辑。</p>
-<p>看起来这似乎是一个很复杂的环境搭建过程，但实际上只是包含3行代码的初始化方法。</p>
-<table width="500" cellspacing="0" cellpadding="2" border="1"> 
- <tbody> 
-  <tr> 
-   <td width="500" valign="top" bgcolor="#ffffbb"><br /> <font color="#800000"><b>public</b> <b>class</b></font> AcceptanceTest { <br /> AcceptanceTestClient <font color="#0000ff">client</font>; <br /> <br /> <font color="#808080">@Before</font> <br /> <font color="#800000"><b>public</b> <b>void</b></font> initClient() { <br /> WhiteboardStorage fakeStorage = <b><font color="#800000">new</font></b> FakeWhiteboardStorage(); <br /> WhiteboardService service = <b><font color="#800000">new</font></b> WhiteboardServiceImpl(fakeStorage); <br /> <font color="#0000ff">client </font>= <b><font color="#800000">new</font></b> AcceptanceTestClient(service); <br /> } <br /> <br /> <font color="#808080">@Test</font> <br /> <font color="#800000"><b>public</b> <b>void</b></font> openWhiteboardThatDoesntExist() { <br /> <font color="#0000ff">client</font>.openWhiteboard(<font color="#0000ff">&quot;xyz&quot;</font>); <br /> <i>assertFalse</i>(<font color="#0000ff">client</font>.hasWhiteboard()); <br /> } <br /> }</td> 
-  </tr> 
- </tbody> 
-</table>
-<p>WhiteboardServiceImpl是web whiteboard系统中已有的服务端实现。</p>
-<p>注意AcceptanceTestClient的构造函数中接受一个WhiteboardService实例（这种模式称之为”依赖注入“）。这种方式给我们带来了一种便利：它不关心配置。相同的AcceptanceTestClient可以用于真实环境的测试，只需将真实配置的WhiteboardService实例传递给它即可。</p>
-<table width="500" cellspacing="0" cellpadding="2" border="1"> 
- <tbody> 
-  <tr> 
-   <td width="500" valign="top" bgcolor="#ccffff"><br /> <font color="#800000"><b>public</b> <b>class</b></font> AcceptanceTestClient { <br /> <font color="#800000"><b>private</b> <b>final</b></font> WhiteboardService <font color="#0000ff">service</font>; <br /> <b><font color="#800000">private</font></b> WhiteboardEnvelope <font color="#0000ff">envelope</font>; <br /> <br /> <b><font color="#800000">public</font></b> AcceptanceTestClient(WhiteboardService service) { <br /> <b>this</b>.<font color="#0000ff">service</font> = service; <br /> } <br /> <br /> <font color="#800000"><b>public</b> <b>void</b></font> openWhiteboard(String whiteboardId) { <br /> <b><font color="#800000">boolean</font></b> createIfMissing = <b>false</b>; <br /> <b><font color="#800000">this</font></b>.<font color="#0000ff">envelope</font> = <font color="#0000ff">service</font>.getWhiteboard(whiteboardId, createIfMissing); <br /> } <br /> <br /> <font color="#800000"><b>public</b> <b>boolean</b></font> hasWhiteboard() { <br /> <b><font color="#800000">return</font></b> <font color="#0000ff">envelope</font> != <b><font color="#800000">null</font></b>; <br /> } <br /> }</td> 
-  </tr> 
- </tbody> 
-</table>
-<p>总而言之，AcceptanceTestClient模拟了真实的web whiteboard客户端所做的事情，同时又为验收测试提供了较高层次的API。</p>
-<p>你可能想知道，“既然我们已经有了WhiteboardService可以进行直接交互，为什么还要AcceptanceTestClient呢？”。这里有两个原因：</p>
-<ol> 
- <li>WhiteboardService API是更为低层次的，而AcceptanceTestClient就是验收测试所需要的，并且能够使它尽可能地易读。</li> 
- <li>AcceptanceTestClient隐藏了测试代码不需要的内容，如WhiteboardEnvelope的概念、createIfMissing布尔值以及其他低层次的细节。在现实中，会涉及到更多的服务，如UserService和WhiteboardSyncService。</li> 
-</ol>
-<p>我不会向你过多地阐述AcceptanceTestClient的细节，因为本文不会探究web whiteboard的内部实现。简单来说，AcceptanceTestClient将与白板服务接口交互的低层次细节匹配到验收测试的需要上。这很容易实现，因为真正的客户端代码可以作为如何与服务进行交互的教程。</p>
-<p>到此为止，我们尽可能简单的验收测试可以通过了！</p>
-<table width="500" cellspacing="0" cellpadding="2" border="1"> 
- <tbody> 
-  <tr> 
-   <td width="500" valign="top" bgcolor="#ffffbb"><br /> <font color="#808080">@Test</font> <br /> <font color="#800000"><b>public</b> <b>void</b></font> openWhiteboardThatDoesntExist() { <br /> <font color="#0000ff">myClient</font>.openWhiteboard(<font color="#0000ff">&quot;xyz&quot;</font>); <br /> <i>assertFalse</i>(<font color="#0000ff">myClient</font>.hasWhiteboard()); <br /> }</td> 
-  </tr> 
- </tbody> 
-</table>
-<p>下一步要进行一些清理。</p>
-<p><img src="http://infoqstatic.com/resource/articles/atdd-from-the-trenches/zh/resources/1123026.jpg" alt="" _href="img://null" _p="true" /></p>
-<p>实际上，我并没有为此编写任何的生产环境代码（因为这些特性已经存在并且可用），这是测试框架的代码。我需要花几分钟的时间对其进行清理、移除重复内容、让方法名更为整洁等。</p>
-<p>最后，我又添加了一个测试，只是为了完整性，而且它确实很简单。</p>
-<table width="500" cellspacing="0" cellpadding="2" border="1"> 
- <tbody> 
-  <tr> 
-   <td width="500" valign="top" bgcolor="#ffffbb"><br /> <font color="#808080">@Test</font> <br /> <font color="#800000"><b>public</b> <b>void</b></font> createNewWhiteboard() { <br /> <font color="#0000ff">client</font>.createNewWhiteboard(); <br /> <i>assertTrue</i>(<font color="#0000ff">client</font>.hasWhiteboard()); <br /> }</td> 
-  </tr> 
- </tbody> 
-</table>
-<p>非常好，我们有了一个测试框架！我们甚至没有使用任何第三方的库，只是Java和Junit。</p>
-<h3>步骤2.4 为密码保护特性编写验收测试代码</h3>
-<p>现在，该对我的密码保护特性添加测试了。</p>
-<p>首先，我将最初的“规范（spec）”复制为伪代码：</p>
-<table width="500" cellspacing="0" cellpadding="2" border="1"> 
- <tbody> 
-  <tr> 
-   <td width="500" valign="top" bgcolor="#ffffbb"><br /> <font color="#808080">@Test</font> <br /> <font color="#800000"><b>public</b> <b>void</b></font> passwordProtect() { <br /> <font color="#008080">//1. 我创建一个新的白板。</font> <br /> <font color="#008080">//2. 我对其设置一个密码。</font> <br /> <font color="#008080">//3. Joe试图打开我的白板，被要求输入密码。</font> <br /> <font color="#008080">//4. Joe输入错误的密码，被拒绝访问。</font> <br /> <font color="#008080">//5. Joe再次尝试输入正确的密码，可以进行访问。</font> <br /> }</td> 
-  </tr> 
- </tbody> 
-</table>
-<p>现在，我再次编写测试代码，假设AcceptanceTestClient已经具备了所有需要的东西，并且完全按照我要求的方式，我发现这种技术是相当有用的。</p>
-<table width="500" cellspacing="0" cellpadding="2" border="1"> 
- <tbody> 
-  <tr> 
-   <td width="500" valign="top" bgcolor="#ffffbb"><br /> <font color="#808080">@Test</font> <br /> <font color="#800000"><b>public</b> <b>void</b></font> passwordProtect() { <br /> <font color="#008080">//1. 我创建一个新的白板。</font> <br /> <font color="#0000ff">myClient</font>.createNewWhiteboard(); <br /> String whiteboardId = <font color="#0000ff">myClient</font>.getCurrentWhiteboardId(); <br /> <br /> <font color="#008080">//2. 我对其设置一个密码。</font> <br /> <font color="#0000ff">myClient</font>.protectWhiteboard(<font color="#0000ff">&quot;bigsecret&quot;</font>); <br /> <br /> <font color="#008080">//3. Joe试图打开我的白板，被要求输入密码。</font> <br /> <b><font color="#800000">try</font></b> { <br /> <font color="#0000ff">joesClient</font>.openWhiteboard(whiteboardId); <br /> <i>fail</i>(<font color="#0000ff">&quot;Expected WhiteboardProtectedException&quot;</font>); <br /> } <b><font color="#800000">catch</font></b> (WhiteboardProtectedException err) { <br /> <font color="#008080">//Good</font> <br /> } <br /> <i>assertFalse</i>(<font color="#0000ff">joesClient</font>.hasWhiteboard()); <br /> <br /> <font color="#008080">//4. Joe输入错误的密码，被拒绝访问。</font> <br /> <b><font color="#800000">try</font></b> { <br /> <font color="#0000ff">joesClient</font>.openProtectedWhiteboard(whiteboardId, <font color="#0000ff">&quot;wildguess&quot;</font>); <br /> <i>fail</i>(<font color="#0000ff">&quot;Expected WhiteboardProtectedException&quot;</font>); <br /> } <strong><font color="#800000">catch</font></strong> (WhiteboardProtectedException err) { <br /> <font color="#008080">//Good</font> <br /> } <br /> <i>assertFalse</i>(<font color="#0000ff">joesClient</font>.hasWhiteboard()); <br /> <br /> <font color="#008080">//5. Joe再次尝试输入正确的密码，可以进行访问。</font> <br /> <font color="#0000ff">joesClient</font>.openProtectedWhiteboard(whiteboardId, <font color="#0000ff">&quot;bigsecret&quot;</font>); <br /> <i>assertTrue</i>(<font color="#0000ff">joesClient</font>.hasWhiteboard()); <br /> }</td> 
-  </tr> 
- </tbody> 
-</table>
-<p>这个测试代码只需要几分钟就能编写完成，因为我可以在进一步编写代码的时候再将这些逻辑组织起来。这些方法在AcceptanceTestClient中几乎都（还）不存在。</p>
-<p>当我编写这些代码的时候，我需要做出一些设计决策。不要费力去想，做第一时间进入你脑海的事情。完美是足够好的敌人，现在，我已经足够好了，也就是一个可运行的失败的测试用例。稍后，当运行测试变成绿色时，我再进行重构并进一步思考设计。</p>
-<p>现在就进行重构是一件很有诱惑力的事情，尤其是重构这些丑陋的try/catch语句。但是TDD规约中有一点就是在进行重构<i>之前</i>要首先将其变成绿色，因为测试会保护你的重构。所以我决定先暂时等待一下再进行清理。</p>
-<h2>步骤3 执行验收测试，但是会失败</h2>
-<p>按照测试三角，下一步要运行测试，但是会失败。</p>
-<p><img src="http://infoqstatic.com/resource/articles/atdd-from-the-trenches/zh/resources/1123027.jpg" alt="" _href="img://null" _p="true" /></p>
-<p>同样，我使用Eclipse快捷键来创建缺失方法的空白版本。很好！运行测试，看，出现了红色！</p>
-<h2>步骤4：将验收测试变为绿色</h2>
-<p>现在，我需要编写一些生产级别的代码。我为系统添加一些新的概念，有一些所添加的代码并不是试验性的，因此需要进行单元测试。我使用了TDD的方式，它与ATDD类似，但是范围更小一些。</p>
-<p>以下展现了ATDD和TDD如何组合在一起。可以将ATDD视为外部的循环：</p>
-<p><img src="http://infoqstatic.com/resource/articles/atdd-from-the-trenches/zh/resources/1123028.jpg" alt="" _href="img://null" _p="true" /></p>
-<p>对于每个验收测试循环（在特性级别）的回路中，我们都会有很多单元测试的回路（在类和方法级别）。</p>
-<p><img src="http://infoqstatic.com/resource/articles/atdd-from-the-trenches/zh/resources/1123029.jpg" alt="" _href="img://null" _p="true" /></p>
-<p>所以，尽管我在较高的层次上关注于将<i>验收测试</i>变为绿色（这可能会耗费几个小时的时间），但是在较低的层次上我可能会关注于将下一个<i>单元测试</i>变为红色（这可能只会耗费几分钟的时间）。</p>
-<p>这并不是非常严格的TDD（Leather &amp; Whip TDD）。 这更像是“至少要保证单元测试与生产级别的代码是同时提交的”。这种提交每小时会发生多次，大致就可以将其称之为TDD了。</p>
-<h2>步骤5：清理代码</h2>
-<p>像通常那样，在验收测试变成绿色之后，就要进行清理工作了。不要试图越过这个步骤！就像在饭后清洗餐具一样——需要马上去做。</p>
-<p><img src="http://infoqstatic.com/resource/articles/atdd-from-the-trenches/zh/resources/1123030.jpg" alt="" _href="img://null" _p="true" /></p>
-<p>我不仅清理了生产环境中的代码，还清理了测试代码。例如，我将凌乱的try-catch部分抽取到一个帮助方法之中，从而最终实现了漂亮且整洁的测试方法：</p>
-<table width="500" cellspacing="0" cellpadding="2" border="1"> 
- <tbody> 
-  <tr> 
-   <td width="500" valign="top" bgcolor="#ffffbb"><br /> <font color="#808080">@Test</font> <br /> <font color="#800000"><b>public</b> <b>void</b></font> passwordProtect() { <br /> <font color="#0000ff">myClient</font>.createNewWhiteboard(); <br /> String whiteboardId = <font color="#0000ff">myClient</font>.getCurrentWhiteboardId(); <br /> <br /> myClient.protectWhiteboard(<font color="#0000ff">&quot;bigsecret&quot;</font>); <br /> <br /> assertCantOpenWhiteboard(<font color="#0000ff">joesClient</font>, whiteboardId); <br /> <br /> assertCantOpenWhiteboard(<font color="#0000ff">joesClient</font>, whiteboardId, <font color="#0000ff">&quot;wildguess&quot;</font>); <br /> <br /> <font color="#0000ff">joesClient</font>.openProtectedWhiteboard(whiteboardId, <font color="#0000ff">&quot;bigsecret&quot;</font>); <br /> <i>assertTrue</i>(<font color="#0000ff">joesClient</font>.hasWhiteboard()); <br /> }</td> 
-  </tr> 
- </tbody> 
-</table>
-<p>我的目标是让验收测试尽可能简短、整洁并且易于使用，以至于注释都是多余的。最初的伪代码或注释会作为模板——“我希望代码就是如此得简洁！”。移除注释会给我一种成就感，它的一个积极作用就是让方法更加简短了。</p>
-<h2>下一步做什么？</h2>
-<p>重复地进行净化。在第一个测试用例通过之后，我就要开始思考缺失了什么。例如，密码保护应该还需要用户认证。所以，我为此添加一个测试、使其变红色、再变成绿色然后进行清理。诸如此类。</p>
-<p>以下就是我（到目前为止）为该特性所添加的完整的测试：</p>
-<ul> 
- <li>passwordProtectionRequiresAuthentication()</li> 
- <li>protectWhiteboard</li> 
- <li>passwordOwnerDoesntHaveToKnowThePassword</li> 
- <li>changePassword</li> 
- <li>removePassword</li> 
- <li>whiteboardPasswordCanOnlyBeChangedByThePersonWhoSetIt</li> 
-</ul>
-<p>当发现缺陷或添加新特性时，我稍后肯定会添加新的测试。</p>
-<p>我总共用了大约两天的时间进行高效地编码。在这个过程中，有很大一部分是回过头去重新编码和设计，并不像本文所展示那样线性进行。</p>
-<h2>那手工测试呢？</h2>
-<p>在自动化测试变成绿色后，我也会进行很多的手工测试。但鉴于自动化测试已经覆盖了基本的功能和很多边界场景，因此手工测试可以更多地关注主观性和探查性的内容。高水平的用户体验是什么样的？流程合理吗？它易于理解吗？我需要在什么地方添加帮助文本？按照美学，设计是否可接受？我不想去争取什么设计大奖，但我也不想让它很丑陋。</p>
-<p>强大的验收测试能够让我们不必再进行单调且重复性的手工测试（也被称为“搞怪测试monkey testing”），进而节省出时间来进行更有意思和更有价值的手工测试。</p>
-<p>理想情况下，我应该在开始阶段就构建验收测试，所以一定程度上来讲这种方式是在偿还技术债。</p>
-<h2>关键点</h2>
-<p>就这样，我希望这个样例对你有用！它阐述了一种典型的场景——“我要实现新的特性，最好要编写验收测试，但是到目前为止还没有这样的测试，我不知道该使用什么框架，甚至不知道该如何开始”。</p>
-<p>我非常喜欢这种模式，借助这种方式我多次走出了困境。总结如下：</p>
-<ol> 
- <li>在便利的帮助类（在我的场景中也就是AcceptanceTestClient）背后假设封装了复杂的框架。</li> 
- <li>为已经可以运行的特性编写非常简单的验收测试（如只是打开应用）。使用它来驱动你的AcceptanceTestClient实现以及相关的测试配置（如假的数据库连接和其他外部服务）。</li> 
- <li>为新的特性编写验收测试。运行它，但是会失败。</li> 
- <li>使其变成绿色。在编码的过程中，对所有非试验性的内容编写单元测试。</li> 
- <li>重构。可能会额外编写更多的单元测试或移除多余的测试。保持代码的整洁！</li> 
-</ol>
-<p>完成这些后，你就已经越过了最困难的门槛，已经开始了ATDD！</p>
+<p>需要提到一点的是，微博目前线上部署了几千台服务器，来保障日常的正常访问。假如面对原来数倍的访问压力时，如果简单粗暴通过线性扩容来应对的话，需要部署原来数倍的服务器，也就是需要上万台服务器。无论从硬件成本还是从管理成本上，这都是不可接受的。那么，又该如何做呢？</p>
+<h3>在线压测，找极限，最小化扩容前端机</h3>
+<p>众所周知，为了尽可能的保障线上运行的服务器的稳定，资源都是有一定冗余度的，一般安全值在30%以上。在面临5倍的访问量时，出于成本的考虑，单纯的扩容难以令人接受。这个时候，就要充分利用每台服务器，在不影响业务性能的前提下，使每台服务器的利用率发挥到极限，可以极大的降低资源扩容的数量。如何评估服务器的承受极限是其中的关键，为此我们在业务低峰时期，对线上的服务器进行了实际的压测。具体方法如下：</p>
+<p>假如线上一个服务池里有300台 tomcat服务器在提供API服务，正常情况下，每台服务器的负载都小于1（为了简化模型，我们这里只提到了系统load这个指标，实际情况要比这个复杂的多，还要考虑CPU 利用率、带宽、io延迟等）。通过运维系统，我们以10%、20%、30%、40%、50%等比例逐步将该服务池里的300台 tomcat 机器503，通过观察一台 tomcat 服务器的负载以及 API 服务的接口性能，当服务器的负载达到极限或者 API 服务的接口性能达到阈值时，假设此时服务池里正常状态的 tomcat 服务器的数量是100台，那么我们就可以推断出该服务池，极限情况下可以承受3倍与日常的访问压力。同理，为了承担5倍的访问量，只需再扩容一倍机器即可。</p>
+<h2>挑战2：如何应对瞬时可达几万/s 的发表量？</h2>
+<p>互联网应用有个显著特点，就是读多写少。针对读多有很多成熟的解决方案，比如可以通过cache 来缓存热数据来降低数据库的压力等方式来解决。而对于写多的情况，由于数据库本身写入性能瓶颈，相对较难解决。</p>
+<p>微博系统在处理发表微博时，采用了异步消息队列。具体来讲，就是用户发表微博时，不是直接去更新数据库和缓存，而是先写入到 mcq消息队列中。再通过队列机处理程序读取消息队列中的消息，再写入到数据库和缓存中。那么，如何保证消息队列的读写性能，以及如何保证队列机处理程序的性能，是系统的关键所在。</p>
+<h3>按消息大小设置双重队列，保证写入速度。</h3>
+<p>众所知之，微博最大长度不超过140个字，而大部分用户实际发表的微博长度都比较小。为了提高写入消息队列的速度，我们针对不同长度的微博消息，写入不同大小的消息队列。比如以512字节为分界线，大于512字节的写入长队列，小于512字节的写入短队列，其中短队列的单机写入性能要远远高于长队列。实际在线结果表明，短队列的QPS 在万/s 级别，长队列的QPS 在千/s 级别，而99%的微博消息长度均小于512字节。这种优化，大大提高了微博消息的写入和读取性能。</p>
+<h3>堵塞队列，压队列机极限处理能力。</h3>
+<p>为了验证队列机处理程序的极限处理能力，我们在业务低峰时期，对线上队列机进行了实际的压测，具体方法如下：</p>
+<p>通过开关控制，使队列机处理程序停止读取消息，从而堵塞消息队列，使堆积的消息分别达到10万，20万，30万，60万，100万，然后再打开开关，使队列机重新开始处理消息，整个过程类似于大坝蓄水，然后开闸泄洪，可想而知，瞬间涌来的消息对队列机将产生极大的压力。通过分析日志，来查找队列机处理程序最慢的地方，也就是瓶颈所在。</p>
+<p>通过两次实际的压测模拟，出乎意料的是，我们发现系统在极限压力下，首先达到瓶颈的并非是数据库写入，而是缓存更新。因此，为了提高极限压力下，队列机处理程序的吞吐量，我们对一部分缓存更新进行了优化。</p>
+<h2>挑战3：如何保证系统的可靠性？</h2>
+<p>无论是发微博，还是刷 feed，在微博系统内的处理过程都十分复杂，依赖着各种内部资源和外部服务，保证系统的可靠性显得尤为困难。</p>
+<p>为此，我们内部开发了代号为试金石——TouchStone的压测系统，对系统的可靠性进行全面检测。</p>
+<p>首先，我们对微博的各个接口进行了服务依赖和资源依赖的梳理，并针对每个服务和资源定义了相应的 SLA 和降级开关。然后，模拟资源或者服务出现异常，再来查看其对接口性能的影响。以 redis资源为例， 假设系统定义了redis的 SLA是300ms，相应的端口是6379，通过 TouchStone，使该端口不可用，从而模拟 redis 资源出现异常，然后验证依赖该资源的接口的性能，确保 SLA 。同时，通过降级开关，对该资源进行降级，验证降级开关的有效。</p>
+<p>基于以上方法，对系统进行了全面的检测，并对各个服务和资源的 SLA 和降级开关进行梳理，总结成业务降级手册，保证在出现问题时，运维人员无需开发的介入，也能第一时间根据降级手册进行降级，确保问题能够尽快解决。</p>
+<h2>挑战4：如何保证核心系统的稳定性？</h2>
+<p>任何一个系统，都包含核心系统和非核心系统。在出现异常的情况下，弃车保帅，只保障核心系统的稳定性也是可以接受的。</p>
+<p>为此，我们降核心接口和非核心接口拆分，部分部署到不同的应用池子当中，确保非核心业务不会影响核心业务。比如发微博和刷 feed 属于核心业务，而评论，赞属于非核心业务，所以两者应当部署到不同的应用池中。在评论或者赞出现异常时，发微博和刷 feed 就不会受到影响，从而保障系统核心业务的稳定性。</p>
+<p>同样，对于一个业务，也要区分核心逻辑和非核心逻辑。以发微博为例，更新缓存和写数据库属于核心逻辑，而给其它业务部门推送数据则属于非核心逻辑。因此，可以将推送数据进行异步化处理，交给单独的线程池处理，在出现异常时，不会对更新缓存和写数据库造成影响。</p>
+<h2>挑战5：如何做到异地容灾？</h2>
+<p>近些年来，异地容灾成为全球性互联网企业面临的难题之一。无论是在国内，以微信为例，还是在国外，以 twitter 为例，都曾经出现过全球性宕机的事故。由此可见，异地容灾仍旧是一个挑战。</p>
+<p>微博早在2010年就开始了多机房的部署，如今已经具备三大机房（分别针对联通、电信和海外用户）。</p>
+<p>由于人为或者天气等不可抗拒因素，网络故障近年来时有发生。微博的三个机房，各自独立承担了一部分用户的访问。在一个机房出现故障或者压力过大的时候，通过DNS切换等手段，将流量迁移到另外两个机房，从而确保该访问该机房的用户不受影响。一个现实的情况例子，在马年春晚直播期间，由于观看人群的地域分布的特点，出现了联通机房的访问量突增，同时在线人数的增长超过了电信机房和广州机房，我们通过切换一部分联通机房的流量到电信机房，使得联通机房的负载降到了安全值的范围。</p>
+<h2>挑战6：如何实时监控系统状态？</h2>
+<p>我们都知道，地震的发生都是有前兆的，比如一些动物的异常反应。同样，系统中的任何问题出现之前，也是有线索可寻的。这就需要对系统的关键指标做实时的监控，当指标出现异常时，能够第一时间发出报警信息。</p>
+<p>为此，我们基于实时流处理系统 Storm 开发了一套监控系统——dashboard。有别于以往的监控系统，它能实时处理系统产生的海量日志，绘制出更加直观的曲线，方便运维进行管理。通过 dashborad，我们能够了解系统的实时状态，主要包括feed的访问量、微博的发表量、队列机的处理性能，消息队列的堆积量等指标。当某个监控指标出现异常时，能够第一时间在 dashboard 中反映出来，从而第一时间采取措施，解决问题，避免问题扩大化。</p>
+<h2>后记</h2>
+<p>春晚已经过去一个月了，渐渐成为回忆。但春晚背后，我们的工程师所付出的巨大的努力所产生的价值，却是一笔宝贵的财富，希望这篇文章能给大家带来启发甚至帮助，也在此向为微博春晚默默贡献的工程师们致敬！</p>
 <h2>关于作者</h2>
-<p><img src="http://infoqstatic.com/resource/articles/atdd-from-the-trenches/zh/resources/1123031.jpg" style="float: left; margin-right: 10px" alt="" _href="img://null" _p="true" />Henrik Kniberg是斯德哥尔摩<a href="http://www.crisp.se/">Crisp</a>的敏捷/精益教练，主要的工作内容是<a href="http://www.spotify.com/">Spotify</a>。他很乐意帮助公司在软件开发的技术和人力方面取得成功，就像他的图书“<a href="http://www.crisp.se/ScrumAndXpFromTheTrenches.html">Scrum and XP from the Trenches</a>”（本书中文版书名为《硝烟中的Scrum与XP》）、“<a href="http://www.infoq.com/minibooks/kanban-scrum-minibook">Kanban and Scrum, making the most of both</a>”以及“<a href="http://pragprog.com/book/hklean/lean-from-the-trenches">Lean from the Trenches</a>”（本书中文版书名为《精益开发实战：用看板管理大型项目》）所描写的那样。</p>
-<div style="clear:both"></div>
-<p><strong>原文英文链接：</strong><a href="http://www.infoq.com/articles/atdd-from-the-trenches">ATDD From the Trenches</a></p><br><br><br><br><br><br></body></html>
+<p>胡忠想（微博昵称：<a href="http://weibo.com/134262443">@古月中心相心</a>），目前任职于新浪微博的平台研发部门，主要负责微博 Feed 服务相关工作，曾先后参与微博 Feed 存储、微博计数器、微博阅读数等重大业务产品的开发。2012年3月份毕业于北京航空航天大学计算系，同年4月份，加入新浪微博并工作至今。业余爱好户 外，曾徒步过贡嘎、雨崩，攀登过四姑娘三峰。</p>
+<hr />
+<p>感谢<a href="http://www.infoq.com/cn/author/张凯峰">张凯峰</a>对本文的审校。</p>
+<p>给InfoQ中文站投稿或者参与内容翻译工作，请邮件至<a href="mailto:editors@cn.infoq.com">editors@cn.infoq.com</a>。也欢迎大家通过新浪微博（<a href="http://www.weibo.com/infoqchina">@InfoQ</a>）或者腾讯微博（<a href="http://t.qq.com/infoqchina">@InfoQ</a>）关注我们，并与我们的编辑和其他读者朋友交流。</p><br><br><br><br><br><br></body></html>

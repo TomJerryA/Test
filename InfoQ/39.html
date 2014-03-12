@@ -1,15 +1,27 @@
-<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>微软开放了.NET 4.5.1的源代码</h3><p><a href="http://referencesource.microsoft.com/">.NET Reference Source</a>发布了<a href="http://referencesource-beta.microsoft.com/">beta</a>版，可以在线浏览.NET Framework 4.5.1的源代码，并且可以通过配置，<a href="http://referencesource-beta.microsoft.com/setup.html">在Visual Studio 2013中调试.NET Framework</a>。</p>
-<p>.NET Framework团队的项目经理Alok Shriram在<a href="http://blogs.msdn.com/b/dotnet/archive/2014/02/24/a-new-look-for-net-reference-source.aspx">.NET Framework的博客</a>中撰文介绍了最新的.NET Reference Source。它不仅可以用来浏览最新的.NET代码，而且通过强大的<a href="http://msdn.com/roslyn">Roslyn</a>，改善了“Go to Defination”和“Finding Reference”的在线体验。此外，开发者还可以下载整个源代码包，在Visual Studio中打开并浏览。使用Schabse Laks编写的<a href="http://visualstudiogallery.msdn.microsoft.com/f89b27c5-7d7b-4059-adde-7ccc709fa86e">插件</a>，可以在VS中直接导航到该网站。</p>
-<p>通过简单的配置，开发者可以在Visual Studio中单步调试.NET Framework 4.5.1及其后续补丁和更新。这无疑是广大开发者<a href="http://visualstudio.uservoice.com/forums/121579-visual-studio/suggestions/4083118-allow-developers-to-step-through-net-framework-so">翘首以盼的功能</a>。启动Visual Studio 2013，打开Tools -&gt; Options -&gt; Debugging -&gt; General菜单，进行如下配置：</p>
-<ul> 
- <li>禁用Just My Code</li> 
- <li>禁用Step over properties and operators</li> 
- <li>禁用Require source files to exactly match the original version</li> 
- <li>选中Enable .NET Framework source stepping</li> 
- <li>选中Enable source server support</li> 
-</ul>
-<p>这样，开发者在调试代码时，就可以通过F11直接进入.NET代码。</p>
-<p>这并不是微软第一次开放.NET Framework的源代码。早在2007年，他们就第一次<a href="http://weblogs.asp.net/scottgu/archive/2007/10/03/releasing-the-source-code-for-the-net-framework-libraries.aspx">公布了.NET 3.5的源代码</a>并支持Visual Studio调试。并且对于后续的4.0和4.5，也都提供了相应的源代码包。但当框架升级时，这些旧的包就变得毫无价值了。从4.5.1开始，.NET Framework团队彻底改变了符号索引和发布的过程，使其与构建过程同步，这样在新版本发布时，相应的PDB文件也会从Reference Source网站进行更新。</p>
-<p>目前的beta站点只是临时的，届时将会取代现在的<a href="http://referencesource.microsoft.com/">旧站点</a>。后续微软也会将还未公布源代码的程序集逐步添加进来。</p>
-<p>新的.NET Reference Source许可协议回归到了<a href="http://referencesource-beta.microsoft.com/license.html">MS-RSL</a>，这也使得像Mono这样的团队可以放心大胆地使用。</p>
-<p>正如<a href="http://www.hanselman.com/">Scott Hanselman</a><a href="http://www.hanselman.com/blog/AnnouncingTheNewRoslynpoweredNETFrameworkReferenceSource.aspx">所说</a>：微软可能并不是开源的，但却绝对是源代码开放的。</p><br><br><br><br><br><br></body></html>
+<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>可持续精益创业团队的态度</h3><p>在2013年精益创业大会上，Ramli John就<a href="http://ramlijohn.com/minimum-viable-attitudes-for-a-lean-startup-team/">精益创业团队的“最小可行态度（minimum viable attitudes）”</a>做了一次激动人心的演讲。据Ramli说，有三种态度能够帮助团队随着时间推移可持续地执行精益：谦虚、渴望和快乐。</p>
+<p>InfoQ就精益创业的态度、快乐的重要性以及如何应对精益创业中的失败采访了Ramli。</p>
+<p><b>InfoQ</b><b>：在精益创业演讲中，您提到了精益创业团队成员应该具备的最小可行态度。为什么您认为那些态度在精益创业中（也许在生活中）如此重要？</b></p>
+<blockquote> 
+ <p><b>Ramli</b><b>：</b>精益创业过程并不简单。我认为，在高层次（最有价值专家、实验和术语）上，你可以说它迷人。但在做了一次又一次的实验而几乎没有获得成功后，有正确的态度可以帮助团队站起来再试一次。而没有正确的态度，大部分人都会在几次失败的实验后放弃。</p> 
+</blockquote>
+<p><b>InfoQ</b><b>：那三个最小可行态度是谦虚、渴望和快乐。为什么您会选这三个？</b></p>
+<blockquote> 
+ <p><b>Ramli</b><b>：</b>这是一家公司的CEO曾经跟我分享的他在员工身上寻找的三种东西。我从他那儿借过来了：）。但接下来，我意识到，这三种态度不仅适用于招聘新员工，而且能够很好地保持一个非常高效的、假说驱动的团队。</p> 
+</blockquote>
+<p><b>InfoQ</b><b>： 您提到，精益创业团队必须坚定、有热情，并为他们所做的事负责。他们如何同时做到谦虚？</b></p>
+<blockquote> 
+ <p><b>Ramli</b><b>：</b>谦虚说的是在你错了的时候承认错误，是承认你并不是什么都知道，以及需要从比你聪明的人那里获得帮助。谦虚不是说你从不自夸。我认为这是关键。让比你聪明的人围绕你，你肯定就谦虚了：）。优秀的企业家让比他们更优秀、更聪明、更有干劲的人围绕他们。</p> 
+</blockquote>
+<p><b>InfoQ</b><b>：您提到，团队成员应该渴望并有强烈地愿望走出去，与客户交谈，弄清楚他们真正需要什么。有人做到这一点吗，您能举几个例子并说明下这如何帮助了他们吗？</b></p>
+<blockquote> 
+ <p><b>Ramli</b><b>：</b>我启动了一个新项目“极限精益电视（<a href="http://www.extremleantv.com/">Extreme Lean TV</a>）”,其中展示了心怀渴望的企业家实例。一个例子是Clay Hebert，<a href="http://www.extremelean.tv/save-100k-by-talking-to-customers/">通过与客户交谈，他在开发中节省了10万美元</a>。另一个是Johathan Goldberg，他在14天的时间里就<a href="http://www.extremelean.tv/from-idea-to-money-in-14-days/">将构思变成产品并交付给了付费客户</a>。</p> 
+</blockquote>
+<p><b>InfoQ</b><b>：作为一名精益创业者，需要能够应对失败，比如，产品构思被证明是错误的。在这种情况下，快乐如何提供帮助？</b></p>
+<blockquote> 
+ <p><b>Ramli</b><b>：</b>快乐不是说要假笑，而是说要有一种乐观的态度。不过，你是对的。当产品失败，很难保持乐观。我认为，那时就需要有一个强大的支持网，可以是家庭，可以是亲密的朋友，也可以是团队。我想，团队应该是这个支持网的重要组成部分。如果他们不快乐，你就不快乐。你每天都看到他们。让乐观的人包围你。</p> 
+</blockquote>
+<p><b>InfoQ</b><b>：您在演讲中提到，精益创业可以由一个人或2个人或一个团队推动。您能说一些由团队推动的好处吗？</b></p>
+<blockquote> 
+ <p><b>Ramli</b><b>：</b>在我看来，执行精益创业过程的团队至少有两个人是比较理想的。自己干的问题是可能会自以为是。这就是为什么需要找到在技能和思维方式方面与你互补的人。我以前在博客里写过，<a href="http://ramlijohn.com/why-startup-teams-need-to-fight/">团队需要有健康的争论</a>或者冒群体思维的风险。</p> 
+</blockquote>
+<p><b>查看英文原文：</b><b><a href="http://www.infoq.com/news/2014/03/attitudes-lean-startup">Attitudes for Sustainable Lean Startup Teams</a></b></p><br><br><br><br><br><br></body></html>

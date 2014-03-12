@@ -2,6 +2,9 @@
  <head></head> 
  <body> 
   <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/38.cb">Scrum Master: Posi&ccedil;&atilde;o ou Papel?</a> Uma id&eacute;ia comum e compartilhada por muitos &eacute; a de que equipes Scrum precisam de um Scrum Master(SM) dedicado. Para equipes novas, isso at&eacute; faz algum sentido. Mas &agrave; medida que as equipes amadurecem, elas ainda precisam de um SM dedicado? Pode um SM ter v&aacute;rias equipes? Pode a equipe assumir este papel por meio de um de seus integrantes? 
+  </div> 
+  <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/37.cb">Acceptance Test-Driven Development (ATDD), passo a passo</a> O Acceptance Test-Driven Development (ATDD), ou “Desenvolvimento Orientado a Testes de Aceita&ccedil;&atilde;o”, &eacute; uma pr&aacute;tica de obten&ccedil;&atilde;o de requisitos de forma colaborativa aplicada por equipes &aacute;geis, onde exemplos concretos e testes automatizados s&atilde;o utilizados para especificar os requisitos, tornando-os mais claros, com o objetivo de criar especifica&ccedil;&otilde;es execut&aacute;veis. Conhe&ccedil;a um passo a passo dessa t&eacute;cnica. 
   </div> 
   <div> 

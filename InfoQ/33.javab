@@ -1,37 +1,340 @@
-<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>Building a Real-time, Personalized Recommendation System with Kiji</h3><p>Today, recommendations are everywhere online. Major e-commerce websites like Amazon provide product recommendations in many different forms across their web properties. Financial planning sites like Mint.com provide recommendations for things like credit cards that a user might want to sign up for or banks that can offer better interest rates. Google augments search results based on its knowledge of the users’ past searches to find the most relevant results.</p>
-<p>These brands use recommendations to provide contextual, relevant user experience in order to increase conversion rates and user satisfaction. Traditionally, these sorts of recommendations have been computed by batch processes that generate new recommendations on a nightly, weekly or even monthly basis.</p>
-<p>However, for certain types of recommendations, it’s necessary to react in a much shorter timeframe than batch processing allows, such as offering a consumer a geo-location-based recommendation. Consider a movie recommendation system -- If a user historically watches action movies, but is currently searching for a comedy, batch recommendations will likely result in recommendations for more action movies instead of the most relevant comedy. In this article, you will learn how to use the Kiji framework, an open source framework for building Big Data Applications, to build a system that provides real-time recommendations.</p>
-<h2>Kiji, Entity-Centric Data, and the 360&ordm; View</h2>
-<p>To build a real-time recommendation system, we first need a system that can be used to store a <a href="http://www.kiji.org/enabling-360-view-with-entity-centric-storage">360&ordm; view</a><a href="http://www.kiji.org/enabling-360-view-with-entity-centric-storage"> of our customers</a>. Moreover, we need to be able to retrieve data about a particular customer quickly in order to produce recommendations as they interact with our website or mobile app. Kiji is an open-source, modular framework for building real-time applications that collect, store and analyze this sort of data.</p>
-<p>More generally, the data necessary for a 360&ordm; view can be termed entity-centric data. An entity could be any number of things such as a customer, user, account, or something more abstract like a point-of-sale system or a mobile device.</p>
-<p>The goal of an <a href="http://docs.kiji.org/userguides/schema/1.3.2/data-model/">entity-centric storage system</a> is to be able to store everything about a particular entity in a single row. This is challenging with traditional, relational databases because the information may be both stateful data (like name, email address, etc.) and event streams (like clicks). A traditional system requires storing this data in multiple tables, which get joined together at processing time, which makes it harder to do real-time processing. To deal with this challenge, Kiji leverages <a href="http://hbase.apache.org">Apache HBase</a>, which stores data in four dimensions -- row, column family, column qualifier, and timestamp. By leveraging the timestamp dimension, and the ability of HBase to store multiple versions of a cell, Kiji is able to store event-stream data alongside the more stateful, slowly-changing data.</p>
+<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>Lambda Architecture: Design Simpler, Resilient, Maintainable and Scalable Big Data Solutions</h3><p>A data system is designed to store data. It is also designed to derive information from stored data. The desired information may be the data itself, or it can be computed from stored data. Data systems are very important and often outlive applications that are built around them. The same Oracle or SQL Server data store that powered rich client applications in the ’90s, stores data for today’s state-of-the-art <a href="http://en.wikipedia.org/wiki/Single-page_application">single page applications</a>. Data systems do not change as often as the surrounding application stack. It is therefore important to design data systems for the long term.</p>
+<p>Recently, there has been a virtual explosion in the amount of data being produced, stored, and analyzed. As a consequence, data systems are subject to much more stress and are becoming more complex.</p>
+<p>Lambda Architecture proposes a simpler, elegant paradigm that is designed to tame complexity while being able to store and effectively process large amounts of data. The Lambda Architecture was originally presented by Nathan Marz, who is well known in the big data community for his work on the <a href="http://storm-project.net/">Storm project</a>.</p>
+<p>In this article, we will present the motivation behind the Lambda Architecture, review its structure, and end with a working sample. For further details on the Lambda Architecture, readers are advised to refer to Nathan Marz’s upcoming book <a href="http://manning.com/marz/"><i>Big Data</i></a>.</p>
+<h2>What ails current data systems?</h2>
+<p>For decades, data stores have been more or less synonymous with relational database systems (RDBMS). In recent years, there has been an increased adoption of NoSQL databases, primarily because of their advantage in scaling.</p>
+<p>Relational and NoSQL databases have their advantages and indeed power most business applications today. That said, we contend that there are certain fundamental flaws with the current implementation of data systems. Some of these flaws include the following:</p>
 <div id="lowerFullwidthVCR"></div>
-<p><img src="http://www.infoq.com/resource/articles/kiji/en/resources/1Fig1.png" alt="" _href="img://1Fig1.png" _p="true" /></p>
-<p>HBase is a key-value store built on top of HDFS and used by <a href="http://hadoop.apache.org">Apache Hadoop</a>, which provides the scalability that is necessary for a Big Data solution. A large challenge with developing applications on HBase is that it requires that all the data going in and out of the system be byte arrays. To deal with this, the final core component of Kiji is <a href="http://avro.apache.org">Apache Avro</a>, which is used by Kiji to store easily-processed data types like standard strings and integers, as well as more complex user-defined data types. Kiji handles any necessary serialization and deserialization for the application when reading or writing data.</p>
-<h2>Developing Models for Use in Real Time</h2>
-<p>Kiji provides two APIs for developing models, in Java or Scala, both of which have a batch and a real-time component. The purpose of this split is to break down a model into distinct phases of model execution. The batch phase is a training phase, which is typically a learning process, in which the model is trained over a dataset for the entire population. The output of this phase might be things like parameters for a linear classifier or locations of clusters for a clustering algorithm or a similarity matrix for relating items to one another in a collaborative filtering system. The real-time phase is known as the scoring phase, and takes the trained model and combines it with an entity’s data to produce derived information. Critically, this derived data is considered first-class, in that it can be stored back in the entity’s row for use in serving recommendations or for use as input in later computations.</p>
-<p>The Java APIs are called KijiMR, and the Scala APIs form the core of a tool called KijiExpress. KijiExpress leverages the Scalding library to provide APIs for building complex MapReduce workflows, while avoiding a significant amount of boilerplate code typically associated with Java, as well as the job scheduling and coordination that is necessary for stringing together MapReduce jobs.</p>
-<h2>Individuals Versus Populations</h2>
-<p>The reason for the differentiation between batch training and real-time scoring is that Kiji makes the observation that population trends change slowly, while individual trends change quickly.</p>
-<p>Consider a dataset for a user population that contains ten million purchases. One more purchase is not likely to dramatically affect trends for the population and their likes or dislikes. However, if a particular user has only ever made ten purchases, the eleventh purchase will have a huge affect on what a system can determine that the user is interested in. Given this assertion, an application will only need to retrain its model once enough data has been gathered to affect the population trends. However, we can improve recommendation relevancy for an individual user by reacting to their behavior in real time.</p>
-<h2>Scoring Against a Model in Real Time</h2>
-<p>In order to score in real time, the KijiScoring module provides a lazy computation system that allows an application to generate refreshed recommendations only for users that are actively interacting with the application. Through lazy computation, Kiji applications can avoid generating recommendations for users that don’t frequently or may never return for a second visit. This also has the added benefit that Kiji can take into account contextual information like the location of their mobile device at the time of the recommendation.</p>
-<p>The primary component in KijiScoring is called a Freshener. Fresheners are really a combination of a couple of other Kiji components: ScoringFunctions and FreshnessPolicies. As mentioned earlier, a model will consist of both a training and a scoring phase. The ScoringFunction is the piece of code that describes how a trained model and a single entity’s data are combined to produce a score or recommendations. A FreshnessPolicy defines when data becomes stale or out-of-date. For example, a common FreshnessPolicy will say that data is out-of-date when it is older than an hour or so. A more complex policy might mark data as out-of-date once an entity has experienced some number of events, like clicks or product views. Finally, the ScoringFunction and FreshnessPolicy are attached to a particular column in a Kiji table which will trigger a refresh of the data, if necessary.</p>
-<p><img src="http://www.infoq.com/resource/articles/kiji/en/resources/Fig2.png" alt="" _href="img://Fig2.png" _p="true" /></p>
-<p>Applications that do real-time scoring will include a tier of servers called KijiScoring servers, which fill the role of an execution layer for refreshing stale data. When a user interacts with the application, the request will be passed to the KijiScoring server tier, which communicates directly with the HBase cluster. The KijiScoring server will request the data, and once retrieved, determine whether or not the data is up-to-date, according to the FreshnessPolicy. If the data is up-to-date, it can just be returned to the client. However, if the data comes back stale, the KijiScoring server will run the specified ScoringFunction for the user that made the request. The important piece to understand is that the data or recommendations that are being refreshed are only being refreshed for the user that is making the request, rather than a batch operation, which would refresh the data for all users. This is how Kiji avoids doing more work than is necessary. Once the data is refreshed, it’s returned to the user, and written back to HBase for use later on.</p>
-<p>A typical Kiji application will include some number of KijiScoring servers, which are stateless Java processes that can be scaled out, and that are able to run a ScoringFunction using a single entity’s data as input. A Kiji application will funnel client requests through the KijiScoring server, which determines whether or not data is fresh. If necessary, it will run a ScoringFunction to refresh any recommendations before they are passed back to the client, and write the recomputed data back to HBase for later use.</p>
-<h2>Deploying Models to a Production System</h2>
-<p>A major goal in a real-time recommendation system is to be able to iterate on the underlying predictive models easily, and avoid application downtime to push new or improved models into production. To do that, Kiji provides the Kiji Model Repository, which combines metadata about how the models execute with the code that is used to train and score the models. The KijiScoring server needs to know what column accesses should trigger freshening, the FreshnessPolicy to be applied, and the ScoringFunction that will be executed against user data, as well as the locations of any trained models or external data necessary for scoring against the model. This metadata is stored in a Kiji system table, which is just another HBase table at the lowest level. Additionally, the Model Repository stores code artifacts for registered models in a managed Maven repository. The KijiScoring server periodically polls the Model Repository for newly-registered or -unregistered models, and loads or unloads code as necessary.</p>
-<h2>Putting It All Together</h2>
-<p>A very common way to provide recommendations is through the use of collaborative filtering. Collaborative filtering algorithms typically involve building a large similarity matrix to store information relating to a product to other products in the product catalog. Each row in the matrix represents a product p<sub>i</sub>, and each column represents another product p<sub>j</sub>. The value at (p<sub>i</sub>, p<sub>j</sub>) is the similarity between the two products.</p>
-<p><img src="http://www.infoq.com/resource/articles/kiji/en/resources/Fig3.png" alt="" _href="img://Fig3.png" _p="true" /></p>
-<p>In Kiji, the similarity matrix is computed via a batch training process, and then can be stored in a file or a Kiji table. Each row of the similarity matrix would be stored in a single row in the product table in Kiji in its own column. In practice, this column has the potential to be very large, since it would be a list of all the products in the catalog and similarities. Typically, the batch job will also do the work of picking only the most similar items to put into the table.</p>
-<p><img src="http://www.infoq.com/resource/articles/kiji/en/resources/Fig4.png" alt="" _href="img://Fig4.png" _p="true" /></p>
-<p>This similarity matrix is accessed at scoring time through the KeyValueStore API, which gives processes access to external data. For matrices that are too large to store in memory, storing the matrix in a distributed table enables the application to only request the data that is necessary for the computation, and dramatically reduce the memory requirements.</p>
-<p>Since we’ve done a lot of the heavy lifting ahead of the scoring phase, scoring becomes a fairly simple operation. If we wanted to display recommendations based on an item that was viewed, a non-personalized scoring function would just look up the related products from the product table and display those.</p>
-<p>It’s a relatively simple task to take this process a little further and personalize the results. In a personalized system, the scoring function would take a user’s recent ratings and use the KeyValueStore API to find products similar to the products that the user had rated. By combining the ratings and the product similarities stored in the products table, the application can predict the ratings that the user would give related items and offer recommendations of the products with the highest predicted ratings. By limiting both the number of ratings used and the number of similar products per rated product, the system can easily handle this operation as the user is interacting with the application.</p>
-<p><img src="http://www.infoq.com/resource/articles/kiji/en/resources/Fig5.png" alt="" _href="img://Fig5.png" _p="true" /></p>
-<h2>Conclusion</h2>
-<p>In this article, we’ve seen, at a high level, how Kiji can be used to develop a recommendation system that refreshes recommendations in real time. By leveraging HBase to do low latency processing, using Avro to store complex data types, and processing data using MapReduce and Scalding, applications can provide relevant recommendations to users in a real-time context. For those who are interested in seeing an example of this system, there is code for a very similar application located on the <a href="http://github.com/wibidata/kiji-shopping">WibiData Github</a>.</p>
-<h2>About the Author</h2>
-<p><strong><img src="http://www.infoq.com/resource/articles/kiji/en/resources/Jon-Natkins.jpg" vspace="3" hspace="3" align="left" alt="" _href="img://Jon-Natkins.jpg" _p="true" />Jon Natkins</strong> (@nattyice) is a field engineer at WibiData where he is focused on helping users build Big Data Applications on Kiji and WibiEnterprise. Prior to WibiData, Jon worked in software engineer roles for Cloudera and Vertica Systems.</p><br><br><br><br><br><br></body></html>
+<p><strong>Current </strong><strong>systems are not resilient</strong><strong>: </strong>Current database systems (relational and NoSQL) are not designed to be resilient. Most current data systems support create, read, update, and delete (CRUD) operations. Of these, update and delete have immense potential to cause data corruption.<b> </b>With current data systems, it is too easy to delete an entire table of data when we intended to simply delete a single row. It is also easy for a software bug or hardware failure to corrupt data.</p>
+<p><b>Conflation of queries and data</b><b>: </b>With current database systems, query processing is closely tied to data storage. While data storage best practices call for normalization of data, querying often benefits from de-normalization. This leads to an uneasy trade-off that must be made in every system—should one optimize for query performance or data storage?</p>
+<p><b>Consequences of scaling—the CAP theorem</b><b>: </b>The <a href="http://en.wikipedia.org/wiki/CAP_theorem">CAP theorem</a> states that it is impossible for a distributed computer system to simultaneously provide all three of the following guarantees:</p>
+<ul> 
+ <li>Consistency - all nodes see the same data at the same time.</li> 
+ <li>Availability - a guarantee that every request receives a response about whether it was successful or not.</li> 
+ <li>Partition tolerance - the system continues to operate despite arbitrary message loss or partial system failure.</li> 
+</ul>
+<p>Another way of looking at the CAP theorem is to simply assume that partition tolerance is required (given the need to store large amounts of data) and non-negotiable for most modern data systems. Once we fix partition tolerance, we can have only one of the other two aspects: availability or consistency.</p>
+<p>Relational databases favor consistency over availability, while NoSQL databases often favor availability over consistency, with some offering a tunable system that can fine-tune behavior based on application needs. This is a difficult trade-off and one that poses practical difficulties that affect the entire system. If we favor availability, we risk having different nodes with different data. If we favor consistency there could be serious performance penalties, especially in cases where nodes are connected over high-latency connections.</p>
+<h2>Lambda Architecture</h2>
+<p>Lambda Architecture is designed to perform better in all of the problem areas that we have outlined. The Lambda Architecture specifies a data store that is immutable. An immutable data store essentially eliminates the update and delete aspects of CRUD, allowing only the creation and reading of data records.</p>
+<p>At first glance, this seems like a major hurdle. How can we have a functional data store without the ability to update and delete data? On deeper analysis it will be clear that the changes are not as problematic. An immutable model will simply track and record each fact in sequence. This allows the same information to be gathered from an immutable data store as from a mutable data store, simply by aggregating facts stored over a period of time.</p>
+<p>Consider the following example, implemented with a mutable data store and an immutable data store. Both are shown without normalization for easier review.</p>
+<h3>Mutable data store—initial scenario</h3>
+<table cellspacing="0" cellpadding="0" border="1"> 
+ <tbody> 
+  <tr> 
+   <td width="161" valign="top"><b><small><b>Customer ID</b></small></b></td> 
+   <td width="161" valign="top"><b><small><b>Customer Name</b></small></b></td> 
+   <td width="161" valign="top"><b><small><b>Preferred Shipper ID</b></small></b></td> 
+   <td width="141" valign="top"><b><small><b>Shipper Name</b></small></b></td> 
+  </tr> 
+  <tr> 
+   <td width="161" valign="top"><b><small>1</small></b></td> 
+   <td width="161" valign="top"><b><small>Alfred</small></b></td> 
+   <td width="161" valign="top"><b><small>1001</small></b></td> 
+   <td width="141" valign="top"><b><small>UPS</small></b></td> 
+  </tr> 
+  <tr> 
+   <td width="161" valign="top"><b><small>2</small></b></td> 
+   <td width="161" valign="top"><b><small>Annie</small></b></td> 
+   <td width="161" valign="top"><b><small>1008</small></b></td> 
+   <td width="141" valign="top"><b><small>Federal Express</small></b></td> 
+  </tr> 
+ </tbody> 
+</table>
+<h3>Mutable data store—after update</h3>
+<p>Customer 2 now prefers DHL. </p>
+<table cellspacing="0" cellpadding="0" border="1"> 
+ <tbody> 
+  <tr> 
+   <td width="161" valign="top"><b><small><b>Customer ID</b></small></b></td> 
+   <td width="161" valign="top"><b><small><b>Customer Name</b></small></b></td> 
+   <td width="161" valign="top"><b><small><b>Preferred Shipper ID</b></small></b></td> 
+   <td width="141" valign="top"><b><small><b>Shipper Name</b></small></b></td> 
+  </tr> 
+  <tr> 
+   <td width="161" valign="top"><b><small>1</small></b></td> 
+   <td width="161" valign="top"><b><small>Alfred</small></b></td> 
+   <td width="161" valign="top"><b><small>1001</small></b></td> 
+   <td width="141" valign="top"><b><small>UPS</small></b></td> 
+  </tr> 
+  <tr> 
+   <td width="161" valign="top"><b><small>2</small></b></td> 
+   <td width="161" valign="top"><b><small>Annie</small></b></td> 
+   <td width="161" valign="top"><b><small><b>1005</b></small></b></td> 
+   <td width="141" valign="top"><b><small><b>DHL</b></small></b></td> 
+  </tr> 
+ </tbody> 
+</table>
+<p></p>
+<h3>Immutable data store—initial scenario</h3>
+<p>Notice that each fact is recorded with a time stamp. Each fact as recorded remains true for all time. </p>
+<table cellspacing="0" cellpadding="0" border="1"> 
+ <tbody> 
+  <tr> 
+   <td width="135" valign="top"><b><small><b>Customer ID</b></small></b></td> 
+   <td width="129" valign="top"><b><small><b>Customer Name</b></small></b></td> 
+   <td width="139" valign="top"><b><small><b>Preferred Shipper ID</b></small></b></td> 
+   <td width="117" valign="top"><b><small><b>Shipper Name</b></small></b></td> 
+   <td width="103" valign="top"><b><small><b>Time Stamp</b></small></b></td> 
+  </tr> 
+  <tr> 
+   <td width="135" valign="top"><b><small>1</small></b></td> 
+   <td width="129" valign="top"><b><small>Alfred</small></b></td> 
+   <td width="139" valign="top"><b><small>1001</small></b></td> 
+   <td width="117" valign="top"><b><small>UPS</small></b></td> 
+   <td width="103" valign="top"><b><small>1391123230</small></b></td> 
+  </tr> 
+  <tr> 
+   <td width="135" valign="top"><b><small>2</small></b></td> 
+   <td width="129" valign="top"><b><small>Annie</small></b></td> 
+   <td width="139" valign="top"><b><small>1008</small></b></td> 
+   <td width="117" valign="top"><b><small>Federal Express</small></b></td> 
+   <td width="103" valign="top"><b><small>1391423650</small></b></td> 
+  </tr> 
+ </tbody> 
+</table>
+<p></p>
+<h3>Immutable data store—after update</h3>
+<p>Customer 2 now prefers DHL. An additional record is appended to reflect this new fact. The new record contains an updated time stamp. </p>
+<table cellspacing="0" cellpadding="0" border="1"> 
+ <tbody> 
+  <tr> 
+   <td width="135" valign="top"><b><small><b>Customer ID</b></small></b></td> 
+   <td width="129" valign="top"><b><small><b>Customer Name</b></small></b></td> 
+   <td width="139" valign="top"><b><small><b>Preferred Shipper ID</b></small></b></td> 
+   <td width="117" valign="top"><b><small><b>Shipper Name</b></small></b></td> 
+   <td width="103" valign="top"><b><small><b>Time Stamp</b></small></b></td> 
+  </tr> 
+  <tr> 
+   <td width="135" valign="top"><b><small>1</small></b></td> 
+   <td width="129" valign="top"><b><small>Alfred</small></b></td> 
+   <td width="139" valign="top"><b><small>1001</small></b></td> 
+   <td width="117" valign="top"><b><small>UPS</small></b></td> 
+   <td width="103" valign="top"><b><small>1391123230</small></b></td> 
+  </tr> 
+  <tr> 
+   <td width="135" valign="top"><b><small>2</small></b></td> 
+   <td width="129" valign="top"><b><small>Annie</small></b></td> 
+   <td width="139" valign="top"><b><small>1008</small></b></td> 
+   <td width="117" valign="top"><b><small>Federal Express</small></b></td> 
+   <td width="103" valign="top"><b><small>1391423650</small></b></td> 
+  </tr> 
+  <tr> 
+   <td width="135" valign="top"><b><small><b>2</b></small></b></td> 
+   <td width="129" valign="top"><b><small><b>Annie</b></small></b></td> 
+   <td width="139" valign="top"><b><small><b>1005</b></small></b></td> 
+   <td width="117" valign="top"><b><small><b>DHL</b></small></b></td> 
+   <td width="103" valign="top"><b><small><b>1391423769</b></small></b></td> 
+  </tr> 
+ </tbody> 
+</table>
+<p></p>
+<p>Notice that existing data has not changed in any manner. Now consider the following query:</p>
+<p>Which shipper should we use for an order placed by Customer ID 2?</p>
+<p>With a mutable data store, we can directly look up this information and provide a response.</p>
+<p>The immutable data store cannot directly look up this information since there are multiple facts related to this request. The system does have all the facts required to provide this information though. All it needs to do at a very basic level is examine records stored for this Customer ID and obtain the shipper stored in the record with the most recent time stamp.</p>
+<h3>Queries as a function of all data</h3>
+<p>An immutable data store that records facts as shown in the example can provide the same query responses as a mutable data store. It is just the processing details that differ. In general, a query result can be seen as some function of all data stored in the system.</p>
+<p><b>Query results =&gt; function (all data stored)</b></p>
+<h3>Immutable data store—implementation</h3>
+<p>In practice, such a storage and processing system maps quite well to the Hadoop Distributed File System (HDFS) for storage and to MapReduce for processing. With HDFS, it is possible to store an arbitrary amount of data in a scalable fashion. With MapReduce, we can process this data. MapReduce can implement any arbitrary function that takes the stored data as input and operate on the data in a scalable manner.</p>
+<h3>Need for speed—pre-computed views</h3>
+<p>The downside of an immutable data store is that batch processing is not real-time. While we expect that there will be improvements in the speed of batch processing systems, it is also true that data will continue to skyrocket in volume. It is safe to assume that batch processes are not real-time, at least for now. Applications need to be able to access data quickly. They cannot wait for a batch process to complete. Consequently, we need a layer that contains pre-computed values produced by the batch process.</p>
+<h2>Architecture Model</h2>
+<h4>Pre-computed batch layer views—implementation</h4>
+<p>The data store serving pre-computed views needs to be easily writable from a batch process. It does not, however, need to support random writes. It just needs to support random reads. This makes such a data store dramatically easier to implement than a full-fledged relational data store. <a href="https://github.com/nathanmarz/elephantdb">ElephantDB</a> is an example.</p>
+<h3>What about the time between batches?</h3>
+<p>With pre-computed batch views, we should be able to service most application needs. However, the batch process producing these views does take some time to run. During this period of time, additional data may be coming in. This data is not included in the process we have described so far. To account for this data, we need a parallel layer that can process additional data as it comes in. The Lambda Architecture provides for this aspect, and terms it the “real-time” layer.</p>
+<h3>Real-time layer</h3>
+<p>The real-time layer is designed to calculate query results on top of an incoming stream of data. Results, once computed, should be stored in such a manner that they can be queried by applications. Just as with the batch layer, the real-time layer also stores results as they are computed into a view.</p>
+<p>The real-time layer itself can certainly be implemented to the specific needs of a project. The <a href="http://storm-project.net/">Storm project</a>, originally created by Nathan Marz, is also an excellent solution for this need.</p>
+<h3>Pre-computed real-time views</h3>
+<p>The data store that implements the real-time view needs to support random writes. Consequently, such data stores need to be significantly more complicated (since they need to support random writes) than the view layer for the batch process. NoSQL data stores such as <a href="http://cassandra.apache.org/">Apache Cassandra</a> and <a href="http://redis.io/">Redis</a> are well suited for serving in this capacity.</p>
+<h3>Final results</h3>
+<p>The application will query both the real-time and batch views, and aggregate results.</p>
+<p>Figure 1 below shows the Lambda architecture model.</p>
+<p><img _p="true" _href="img://4Fig1.png" alt="" src="http://www.infoq.com/resource/articles/lambda-architecture-scalable-big-data-solutions/en/resources/4Fig1.png" /></p>
+<p>The overall structure of the Lambda Architecture</p>
+<h2>Evaluation of the Lambda Architecture</h2>
+<p>Let us now evaluate how the Lambda Architecture performs in the three main problem areas we discussed earlier.</p>
+<h3>Resilience</h3>
+<p>The batch layer fares well in this aspect. If implemented correctly, it is difficult for human errors or hardware faults to corrupt data stored in the system since the system does not allow update or delete operations in existing data.</p>
+<p>The real-time layer, though, is susceptible to errors. There is potential for data corruption and loss in this area since the data stores being used are mutable.</p>
+<p>The benefit is that even if the real-time layer fails, no data will be lost. As long as incoming writes are being propagated to the batch storage layer, the results will eventually catch up when the next batch job runs. So, while results may be out of date if the real-time layer fails, the data of records in the batch layer will not be corrupted. Results will eventually get back in sync when the real-time layer is back online.</p>
+<h3>Conflation of queries and data</h3>
+<p>Under the Lambda Architecture, we can store data in a completely normalized manner in the batch data store. We can also de-normalize as needed for the real-time and batch views. Data that services application queries is not related to the long-term storage structure in the batch layer. This allows us to fine-tune each layer as needed.</p>
+<h3>Consequences of scaling—the CAP theorem</h3>
+<p>Under the Lambda Architecture, results from the batch layer are always eventually consistent. As soon as a fresh batch update is completed, results from the batch layer are consistent. We must choose whether the real-time layer will be consistent or available. As stated previously, this is where most of the system complexity is isolated, and it is best to choose a system that is well suited for your specific needs.</p>
+<h2>Other aspects to consider</h2>
+<p>These topics are not related to the core architecture, but are important to consider.</p>
+<h3>Batch layer—well suited for analytics</h3>
+<p>It is worth noting that the immutable data store is very valuable for analytics. Such a data store can be seen as a complete record of everything that happens in a system. When data is stored in a mutable data store, potentially valuable information that can be used for analytics is lost each time a record is updated or deleted.</p>
+<h3>Complexity of algorithms</h3>
+<p>We should note that with some use cases, the complexity of algorithms that deal with the real-time layer is likely to be significantly higher than those in the batch layer. Readers can review web material on <a href="http://c2.com/cgi/wiki?IncrementalAlgorithms">incremental</a> and <a href="http://en.wikipedia.org/wiki/Approximate_counting_algorithm">approximate</a> algorithms for a better understanding of the issues involved.</p>
+<h3>Schemas</h3>
+<p>Schemas are valuable. Much like compile-time checking in statically typed languages, they are used to ensure that data being stored is valid for the context.</p>
+<p>The implementation of schemas in real-world systems has left much to be desired. Schemas are often hard to change—think of the work involved in making schema changes to a relational model that has already been deployed. Schemas are often quite restrictive. For instance, there is no easy way to specify nested objects, nested collections, and such, though doing so will make our data model much simpler to understand and use. Schema systems also often involve substantial configuration.</p>
+<p>These and other issues have caused many to start moving away from schemas to a schema-less core model. The Lambda Architecture strongly advocates against this. It recommends storing data in the batch layer using a schema that can adapt to changes over the life of the data system.</p>
+<p>Schema libraries such as <a href="http://avro.apache.org/">Apache Avro</a>, <a href="http://thrift.apache.org/">Apache Thrift</a>, or <a href="https://developers.google.com/protocol-buffers/">Google’s Protocol Buffers</a> can be used for this purpose. These libraries offer a schema system that is simple to use and maintain. These can be used from most commonly used programming languages such as Java, C# and Python.</p>
+<h2>Sample application</h2>
+<p>I have prepared a sample application that illustrates key aspects of the Lambda Architecture. The following sections explain the structure of the sample application:</p>
+<h3>Use case</h3>
+<ul> 
+ <li>The application receives streaming data from a single pressure sensor named “SensorZ”.</li> 
+ <li>A set of values is already available in the batch layer (stored in a single file).</li> 
+ <li>The client application has to display the top ten pressure values recorded across the dataset (the batch layer and the real-time layer) at any time.</li> 
+</ul>
+<p>The sample is implemented in Java with the exception of a <a href="https://pig.apache.org/">Pig Latin</a> script used for running MapReduce on the batch layer.</p>
+<h3>System requirements</h3>
+<p>The sample application has the following dependencies:</p>
+<ul> 
+ <li>Oracle JDK 1.7 (64-bit version)</li> 
+ <li>NetBeans 7.4</li> 
+ <li>Apache Maven—the version included with NetBeans 7.4</li> 
+ <li>Storm 0.9</li> 
+ <li>Apache Zookeeper (required by Storm)</li> 
+ <li>Apache Pig 0.12</li> 
+ <li>Redis 2.8.4</li> 
+ <li>Apache Avro</li> 
+</ul>
+<p>Figure 2 below illustrates the sample application data flow diagram.</p>
+<p><img _p="true" _href="img://1Fig2.png" alt="" src="http://www.infoq.com/resource/articles/lambda-architecture-scalable-big-data-solutions/en/resources/1Fig2.png" /></p>
+<pre>
+Sample application data flow</pre>
+<h3>Sample source code</h3>
+<p>The complete sample code is available <a href="https://bitbucket.org/syncfusion/lambda-architecture-pressure-tracker">here</a>.</p>
+<h3>Application description and walk-through</h3>
+<p>There are four applications in the code sample:</p>
+<ul> 
+ <li>Data generator— located in generatedata folder.</li> 
+ <li>MapReduce script and batch layer file—the batch folder.</li> 
+ <li>Real-time processing system implemented using Storm—the realtime folder.</li> 
+ <li>Client application—the query folder.</li> 
+</ul>
+<h4>Batch layer data generator</h4>
+<p>The application named generatedata generates random pressure readings and stores them in a regular file. This data forms the batch layer in the application architecture. Data is serialized using the Apache Avro schema system. A pre-generated file named pressure-data.avro is stored under the batch folder.</p>
+<h4>Calculation of top ten values from batch data</h4>
+<p>We take the Avro-formatted data that is stored in the file created by the data generator and compute the top ten pressure values using a Pig Latin script (calculate-max.pig). This script can be run in local mode or on a Hadoop cluster. The script will write the top ten values to a plain CSV file. In our sample, this CSV file acts as the precomputed batch view.</p>
+<p>Process batch layer using MapReduce</p>
+<pre>
+          values = load 'pressure-data.avro' using AvroStorage('{
+          &quot;namespace&quot;:&quot;com.syncfusion.stats&quot;,
+          &quot;type&quot;: &quot;record&quot;,
+          &quot;name&quot;:&quot;PressureReading&quot;,
+          &quot;fields&quot;:[
+          {&quot;name&quot;: &quot;name&quot;, &quot;type&quot;:&quot;string&quot;},
+          {&quot;name&quot;: &quot;value&quot;, &quot;type&quot;:&quot;double&quot;},
+          {&quot;name&quot;: &quot;date&quot;, &quot;type&quot;:&quot;long&quot;}
+          ]
+          }');
+          sortedValues = ORDER values by value DESC;
+          top10Values = LIMIT sortedValues 10; 
+          STORE top10Values INTO 'output' USING PigStorage(',');&nbsp;</pre>
+<h4>Real-time layer</h4>
+<p>The sample includes code for deploying a Storm cluster that generates and processes pressure readings in real-time. The Storm cluster will monitor readings in real-time, and maintain the top ten values for the real-time data. These values are periodically stored in Redis, which acts as the storage system for the real-time view.</p>
+<p>The Storm code has three essential components:</p>
+<ul> 
+ <li><a href="https://github.com/nathanmarz/storm/wiki/Concepts">spouts</a>,</li> 
+ <li>tuples, and</li> 
+ <li><a href="https://github.com/nathanmarz/storm/wiki/Concepts">bolts</a></li> 
+</ul>
+<p>The spout component is responsible for servicing a stream of data and providing a stream of tuples for further processing. In real-world scenarios, a spout may read data from a queue or similar system. In our application, we simply simulate random data as shown in the following sample code:</p>
+<p>Spout producing random pressure readings</p>
+<pre>
+public void nextTuple() {
+          Utils.sleep(100);
+          _collector.emit(new Values(Configuration.SENSOR_NAME, Common.getrandomDouble(), new Date().getTime()));
+}</pre>
+<p>In a Storm system, tuples produced by spouts can be processed downstream by bolts. Bolts can then choose to emit further streams of tuples which can then be processed, and so on.</p>
+<p>In our case, we have a single bolt downstream (MaxTrackerBolt). For each incoming tuple, the execute method is called on the bolt that is configured to receive the tuple. This bolt stores incoming data into a sorted set. The sorted set is implemented using a queue that stores ten values at a time and removes the lowest value with each add operation.</p>
+<p>Process data and maintain top ten values</p>
+<pre>
+public void execute(Tuple tuple) {
+…
+	  String sensor = tuple.getString(0);
+          double value = tuple.getDouble(1);
+          long time = tuple.getLong(2);
+          PressureReading pressureReading = new PressureReading(sensor, value, time);
+          this.addValue(pressureReading);</pre>
+<p>Please note that we use a Storm grouping named “Fields Grouping” that ensures all values with the same sensor name are routed to the same bolt. In our sample data, we produce only one sensor name. This system should be quite simple to extend to multiple named sensors. Also, note that in order to keep things simple, we do not use multiple layers of bolts. To scale well, it is important to consider using an intermediate layer that can aggregate tuples in parallel with a final consolidation layer aggregating all data from a sensor.</p>
+<p>Storm supports the notion of a “tick” tuple. The system can be configured to send a tick tuple every <i>x</i> seconds. When a tick tuple is received, we react to it in the bolt’s execute code by storing, in Redis, sorted data values that have been gathered so far.</p>
+<p>When we move data to Redis, we use the lpush method and store values under a predefined key. We then remove values that are left over from the last push using ltrim method, which retains data from the specified index range and removes everything else. At the end of this operation, only the top ten values last updated by the real-time layer are stored in Redis.</p>
+<p>Update real-time view</p>
+<pre>
+public void execute(Tuple tuple) {
+        if (isTickTuple(tuple)) {
+            // write to redis when we receive a tick
+            PressureReading[] pressureReadingMaxValues = new PressureReading[queue.size()];
+            queue.toArray(pressureReadingMaxValues);
+  
+            Jedis jedis = new Jedis(Configuration.REDIS_SERVER);
+            if (pressureReadingMaxValues != null &amp;&amp; pressureReadingMaxValues.length &gt; 0) {
+                Arrays.sort(pressureReadingMaxValues);
+               for (PressureReading v : pressureReadingMaxValues) {
+                   try {
+ 
+                       jedis.lpush(Configuration.REDIS_CACHE_KEY, PressureReadingHelpers.serializeToString(v));
+                   } catch (IOException ex) {
+                       Logger.getLogger(MaxTrackerBolt.class.getName()).log(Level.SEVERE, null, ex);
+                   }
+               }
+        
+
+               jedis.ltrim(Configuration.REDIS_CACHE_KEY, 0, pressureReadingMaxValues.length - 1);
+          }
+      }</pre>
+<h4>Query</h4>
+<p>The query application reads data from the text file where the batch layer stored its results, and also reads data from Redis. It combines and then sorts the data. From the sorted data obtained by combining the real-time and batch views, it outputs the top ten values from the combined array.</p>
+<p><i>Gather results from the real-time view stored in Redis</i></p>
+<pre>
+          // get near real-time data from redis
+          // the running storm topology updates these results in redis
+          Jedis jedis = new Jedis( Configuration.REDIS_SERVER);
+  
+
+          List&lt;String&gt; stored = jedis.lrange(Configuration.REDIS_CACHE_KEY, 0, Configuration.MAXVALUES - 1);
+          for (String s : stored) {
+              PressureReading pressureReading = PressureReadingHelpers.deserializeFromString(s);
+              values.add(pressureReading);
+          }</pre>
+<p><i>Gather results from the batch layer view stored in a text file</i></p>
+<pre>
+          // get serialized data output from the batch process
+          List&lt;String&gt; lines = Files.readAllLines(Paths.get(BATCH_RESULTS_FILENAME),
+                          Charset.defaultCharset());
+          for (String line : lines) {
+              PressureReading pressureReading = PressureReadingHelpers.fromCSV(line);
+              values.add(pressureReading);
+          }
+      }</pre>
+<p><i>Sort combined results </i></p>
+<pre>
+private static void sortResults(ArrayList&lt;PressureReading&gt; values) {
+        Collections.sort(values, new Comparator&lt;PressureReading&gt;() {
+            @Override
+            public int compare(PressureReading reading1, PressureReading reading2) {
+                return reading2.getValue().compareTo(reading1.getValue());
+            }
+       });
+   }
+        </pre>
+<p><i>Display top ten results </i></p>
+<pre>
+List&lt;PressureReading&gt; finalValues = values.subList(0, Configuration.MAXVALUES - 1);
+          SimpleDateFormat ft = new SimpleDateFormat(&quot;E yyyy.MM.dd 'at' hh:mm:ss a zzz&quot;);
+
+          for (PressureReading reading : finalValues) {
+               String text = String.format(&quot;Sensor - %s, Pressure - %f%n, Date - %s&quot;, 
+                       reading.getName(), 
+            
+                       reading.getValue(), 
+                       ft.format(reading.getDate()));
+
+              System.out.println(text);
+          }</pre>
+<h2>Summary</h2>
+<p>We hope that you now have a good understanding of the Lambda Architecture. As with any system, it is important to understand the model and then tweak it for your specific needs. We strongly believe that data systems structured in accordance with the Lambda Architecture will better stand the test of time. We hope that your data systems benefit from the consideration of such an architecture.</p>
+<h2>About the author</h2>
+<p><strong><img vspace="3" hspace="3" align="left" _p="true" _href="img://daniel-jebraj.jpg" alt="" src="http://www.infoq.com/resource/articles/lambda-architecture-scalable-big-data-solutions/en/resources/daniel-jebraj.jpg" />Daniel Jebaraj</strong> is the vice president of development at Syncfusion, Inc. Syncfusion is a leading provider of enterprise software frameworks and solutions. Syncfusion’s big data solutions team helps customers deliver end-to-end, cost effective big data solutions that are designed and built for the long term. For more details, visit this <a href="http://www.syncfusion.com">site</a>.</p><br><br><br><br><br><br></body></html>

@@ -1,36 +1,11 @@
-<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>专访Richard Nicholson：Paremus Service Fabric与OSGi</h3><p>在参加IOUC(全球甲骨文用户组领袖峰会) 2014之际，InfoQ中文站在中国OSGi联盟主席刘剑锋（Jeff Liu）的引领下，对OSGi联盟董事会董事（前董事会主席）兼Paremus公司CEO Richard Nicholson进行了专访, 就Paremus公司的旗舰产品Service Fabric以及OSGi等话题做了深入的交流。</p>
-<p><strong>InfoQ: 众所周之，Paremus Service Fabric很好地结合了OSGi和云，您能简单地介绍一下Paremus Service Fabric以及背后的设计思想吗？</strong></p>
-<blockquote> 
- <p><strong>Richard:</strong> Paremus Service Fabric是一个动态的、模块化的分布式运行时环境，由一个或多个fibre构成，每个fibre驻留了一个OSGi框架负责运行计算资源。而每个fibre或者运行在物理实体机上或者运行在虚拟机中。</p> 
- <p>其背后的设计思想是遵循了最新的<a href="http://blog.osgi.org/2012/06/core-release-5-and-enterprise-release-5.html">OSGi仓库（Repository）和解析器(Resolver)规范</a>。Paremus Service Fabric通过节点的本地仓库以及远程共享的仓库来发现需要部署的资源。</p> 
-</blockquote>
-<p><strong>InfoQ: 据我所知，Paremus Service Fabric的前身应该追溯到很多年前的一个Apache开源项目Newton，是这样吗？</strong></p>
-<blockquote> 
- <p><strong>Richard:</strong> 是的，我们开发了Newton，随后将之开源。Newton使用了当时分布式网络技术JINI，但是，随着OSGi的成熟和不断发展，模块化和强大的服务模型促进了软件的敏捷性，使用OSGi替代JINI意味着Newton最终被Service Fabric所取代。Service Fabric不仅仅单纯地模块化Java应用程序，对于本地的资源，例如C/C++等本地应用，Service Fabric也使用了Packager的理念来包装这些本地应用使其同样具有模块化的生命周期。这个理念非常的强大。Tim Ward在<a href="http://china.osgiusers.org/wiki/uploads/Main/TimWardJavaOne.pdf">2013 JavaOne上有一个十分精彩的slide</a> ，其中详细地提到了Packager的理念与功能。</p> 
-</blockquote>
-<p><strong>InfoQ: 那么这么好的理念，为什么不放入到OSGi核心规范或者企业级规范中呢？</strong></p>
-<blockquote> 
- <p><strong>Richard:</strong> OSGi R5确实没有放入，但是今后也许将考虑放入进去，毕竟，Packager的理念是一个私有化的概念，目前只有Paremus公司拥有这项技术。</p> 
-</blockquote>
-<p><strong>InfoQ: Paremus Service Fabric是一个非常优秀的产品，但是，在中国包括业界，似乎知道它的人并不是很多，Paremus公司考虑过将其进行开源或者部分开源以便获取到更多人的关注？</strong></p>
-<blockquote> 
- <p><strong>Richard:</strong> 许多客户之所以选择Paremus的产品是因为他们想要一个高可靠性的模块化运行平台，而且该平台会紧密跟随OSGi联盟的公开行业标准。如果开源的话，Paremus将没有能力对必要的产品开发进行投资。我们对所有客户开放源代码，我们有一个很简单的机制使客户可以将他们对Service Fabric的补充反馈给所有使用Service Fabric的客户。实际上我们也有开源产品，如Bndtools等。其次，Paremus Service Fabric的价格相比较其他公司的产品，比如Redhat的JBOSS等都是非常有竞争力的，事实上，我们最近刚和Redhat在一个项目上竞争，我们在产品功能和总价格上比他们的所谓开源产品还有竞争力。因此，目前，我们还没有打算开源。</p> 
-</blockquote>
-<blockquote> 
- <p><strong>Jeff Liu:</strong> 我本人也是开源的严重支持者。但开源项目不是任何领域都适合。底层的库一类的开源项目是应该的，甚至是必须的，但我们几乎没有见过好的开源报税软件，或财务开源软件。</p> 
-</blockquote>
-<p><strong>InfoQ: 您能谈谈目前OSGi的发展吗？在中国，经常听到开发人员说OSGi好看，但是不好用，想听听您的意见？</strong></p>
-<blockquote> 
- <p><strong>Richard:</strong> OSGi仍然在不断地进化和发展中，比如，Tim Ward正在写关于异步远程服务的规范和实现，这是一个非常有吸引力的技术，有很强的市场价值，比方说，在金融领域。另一个事实是<a href="http://www.infoq.com/cn/articles/Peter-Kriens-Returns-To-OSGi-Alliance">OSGi之父Peter Kriens重回OSGi联盟</a>。关于OSGi的平民化问题，这是一个普遍提到的问题，不仅仅在中国，在欧洲也一样。但是，OSGi联盟正在做这方面的努力，由Peter Kriens主导，目前，他正在写一系列OSGi Tutorials，包括OSGi联盟也在考虑推出开发者认证。我们已经看到了，在OSGi Tooling领域，Neil Bartlett等人已经推出了很棒的Bndtools来更加方便地构筑OSGi应用程序，Bndtools是一个非常好的工具。我们也经常看到用户正在使用其他一些OSGi的技术，例如，白板模式，Blueprint以及DS。</p> 
-</blockquote>
-<p><strong>InfoQ: 关于Blueprint和DS，有人认为这是重复的技术，想听听您的看法？</strong></p>
-<blockquote> 
- <p><strong>Richard:</strong> Blueprint是基于Spring，而DS更加干净，不依赖于Spring等特定技术。如果你的应用本身就使用Spring，那么推荐使用Blueprint，因为它和Spring结合的更加好。</p> 
-</blockquote>
-<p><strong>InfoQ: 一个老的话题，很久以前听说Jigsaw将取代OSGi，想听听您的看法？</strong></p>
-<blockquote> 
- <p><strong>Richard:</strong> Jigsaw已被Oracle至少推迟到Java 9才发布， 而OSGi将依然向前发展，它是业界模块化的实际标准，我对OSGi充满了信心。</p> 
-</blockquote>
-<hr />
-<p>感谢<a href="http://www.infoq.com/cn/author/张卫滨">张卫滨</a>对本文的审校。</p>
-<p>给InfoQ中文站投稿或者参与内容翻译工作，请邮件至<a href="mailto:editors@cn.infoq.com">editors@cn.infoq.com</a>。也欢迎大家通过新浪微博（<a href="http://www.weibo.com/infoqchina">@InfoQ</a>）或者腾讯微博（<a href="http://t.qq.com/infoqchina">@InfoQ</a>）关注我们，并与我们的编辑和其他读者朋友交流。</p><br><br><br><br><br><br></body></html>
+<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>Typesafe发布关于Java 8的社区调查报告</h3><p><a href="http://www.infoq.com/cn/news/2014/02/oracle-ship-java-8-in-march">Oracle宣布会在本月18日发布Java 8</a>，尽管这个版本的研发和发布过程充满曲折，但这是一个被社区和开发人员寄予厚望的版本，该版本会发布一些新的特性，如Lambda表达式、Date和Time API以及在并发和反射方面的诸多增强。<a href="http://www.typesafe.com/blog/java-8-survey-results">TypeSafe对2800名开发人员进行了调查</a>，以了解开发人员的升级计划以及最关注的新特性。</p>
+<p>TypeSafe的调查显示65%的Java开发人员计划在24个月内就升级到Java 8，而83%的被调查者表示Lambda表达式和虚拟扩展方法（virtual extension methods）是最令人兴奋的新特性，可见开发人员对Java 8的新特性是非常期待的。调查显示，Oracle的JDK和JVM依然占据着市场的主导地位。</p>
+<p>在本次的调查样本中，有84%的参与者日常有一半以上的时间都用在编码上，因此能够代表一线的开发人员。这些人里面目前有73%的人在使用Java 7，22%的人在使用Java 6，在使用Java 6的开发人员中有44%的人会选择越过Java 7版本，直接升级到Java 8。</p>
+<p>在有关新特性的调查中，Lambda表达式毫无疑问是最受关注的。具体的分布情况如下图所示：</p>
+<p><strong><img src="http://infoqstatic.com/resource/news/2014/03/java-8-typesafe-survey/zh/resources/0311000.png" width="600" _href="img://null" _p="true" alt="" /></strong></p>
+<p>Lambda是推动<a href="http://www.reactivemanifesto.org/">反应性应用（Reactive application）</a>的关键所在，并且有了新的集合库，Scala开发人员对此应该是非常熟悉的。这些功能的实现对于使用Akka和Play框架的开发人员也是很有帮助的。有些人认为Lambda会对Scala的采用情况产生消极的影响，但另一部分人则认为随着Java社区对这些新特性的日渐接受，反而会推进JVM上语言设计的创新，有利于Scala的推广，两者的比例分别是21%和48%。</p>
+<p>在JVM和JDK的使用方面，Oracle依然占据着霸主的地位，而Dalvik随着Android的发展以及Google对Java的支持，其占有的市场份额也在不断增长。在应用服务器方面，开源的Tomcat和Jetty占据着领先的位置，远远超过商用的WebLogic和WebSphere，具体份额如下所示：</p>
+<p><strong><img src="http://infoqstatic.com/resource/news/2014/03/java-8-typesafe-survey/zh/resources/0311001.png" width="600" _href="img://null" _p="true" alt="" /></strong></p>
+<p>另外还一个很有意思的问题，那就是<a href="http://www.infoq.com/cn/news/2013/04/Java_8_Delayed">Oracle是因为安全问题才使得Java 8延期了如此长的时间</a>。对于Oracle所做的努力，社区是否买账呢？调查结果显示，59%的人认为Oracle在加强安全方面做的还是很正确的。</p>
+<p>面对即将发布的Java 8，您有什么期待和观点呢？欢迎与我们一起分享。</p>
+<p>&nbsp;</p><br><br><br><br><br><br></body></html>

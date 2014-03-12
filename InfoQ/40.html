@@ -1,32 +1,46 @@
-<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>用户心理与游戏运营</h3><p>互联网游戏的运营涉及到许多因素，其中不可忽视的元素之一是用户心理，腾讯的竞技产品经理YiXian最近<a href="http://djt.qq.com/article/view/1069" target="_blank">撰文</a>分析了用户心理与游戏运营和推广的关系，尝试着从用户体验和心理的角度，去分析一些网游运营案例，了解表象背后的策略原理。</p>
-<p>YiXian把用户心理的影响因素分为若干方面，包括权威、社会认同、占便宜和稀缺性、低质低价、高门槛、认知习惯、害怕失去、对比、心理惯势、情绪共鸣。</p>
-<p>在“权威”因素方面，YiXian举了一些常见的互联网例子：</p>
+<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>前车之鉴：苹果的GoToFail Bug</h3><p>新近发现的iOS和OS X<a href="http://support.apple.com/kb/HT6147">安全缺陷</a>揭示出编码规范、单元测试、系统测试、代码复查方案、错误管理策略和工具部署方面的缺陷冰山。<b></b></p>
+<p><a href="http://www.zdnet.com/apple-and-the-ssltls-bug-open-questions-7000026628/">ZDNet的Larry Seltzer</a> 称这一缺陷“震撼且尴尬”，苹果同时为iOS 6发布补丁更是从侧面证实了其严重性。“苹果并不愿意iOS用户继续使用iOS 6系统，但尽管如此，他们还是修复了缺陷。这足以说明其严重程度。”Larry说。</p>
+<p>到这篇文章完成时，苹果已经为iOS和OS X发布了软件更新，用以修复该问题：一个能让攻击者拦截、获取并修改加密数据的通信漏洞。但从这个故事中，我们还是能够学到某些东西。</p>
+<p><a href="https://www.imperialviolet.org/2014/02/22/applebug.html">谷歌的Adam Langley</a>解释说，这一缺陷位于苹果开源发布的SSL/TLS协议实现——<a href="https://developer.apple.com/library/mac/documentation/security/Reference/secureTransportRef/Reference/reference.html">SecureTransport框架</a>中，缺陷的引发原因在于部分代码<a href="http://en.wikipedia.org/wiki/Unreachable_code">不可达</a>。试看<a href="http://opensource.apple.com/source/Security/Security-55471/libsecurity_ssl/lib/sslKeyExchange.c">如下代码</a>:</p>
+<pre>static OSStatus
+SSLVerifySignedServerKeyExchange(SSLContext *ctx, bool isRsa, SSLBuffer signedParams,
+                                 uint8_t *signature, UInt16 signatureLen)
+{
+	OSStatus        err;
+	...
+
+	if ((err = SSLHashSHA1.update(&amp;hashCtx, &amp;serverRandom)) != 0)
+		goto fail;
+	if ((err = SSLHashSHA1.update(&amp;hashCtx, &amp;signedParams)) != 0)
+		goto fail;
+		goto fail;
+	if ((err = SSLHashSHA1.final(&amp;hashCtx, &amp;hashOut)) != 0)
+		goto fail;
+	...
+
+fail:
+	SSLFreeBuffer(&amp;signedHashes);
+	SSLFreeBuffer(&amp;hashCtx);
+	return err;
+}</pre>
+<p>注意其中有两个连续的goto fail语句。由于if语句没有加大括号，因此执行时，第二处goto fail会让程序直接跳转到fail标签，从而避开if语句之后的验证。这会导致在跳转的那一刻err变量不含任何错误信息，方法也无法返回任何。Adam Langley继续解释道：</p>
 <blockquote> 
- <p>我们经常可以看到网站声称“中国最大”和“中国第一”等，如优酷-中国第一视频网站，腾讯网-中国浏览量最大的中文门户网站，诸如此类的例子很多。那么，为什么这种简单方法却成为了网站运屡试不爽的的运营策略？这是因为权威对我们的暗示作用，从小的教育教导我们要听爸爸妈妈、老师的话，养成遵崇权威的习惯，另一方面也是因为跟着权威的意见，可以减少自己的思考和努力，更快达成自己的目标，但也丧失了对权威的质疑。</p> 
+ <p>签名验证将检查ServerKeyExchange消息中的签名。DHE和ECDHE密文族将这一技术用于连接过程中的临时密钥交换。服务器发起请求：“这里是临时密钥和签名，你可以通过我的证书证实我是发起者。”如果这时临时密钥和证书链之间的关联被破坏，所有的验证都会失效。这种情况下虽然仍然可以向客户端发送正确的证书链，但握手过程可能用错误的私钥签名，甚至没有签名！我们无法证实服务器端是否持有与证书中公钥配对的私钥。</p> 
 </blockquote>
-<p>运用到游戏运营上，YiXian指出，炫舞和飞车在最初的口号，用上了最浪漫和最时尚这样的定语，御龙和仙灵宣称的腾讯第一，都是附上各种权威的头衔，通过心理暗示的作用让玩家对游戏产生认可。而权威的另一个体现是意见领袖和专业报告。</p>
+<p>诚如Larry Seltzer所言，因为苹果没有给出更多细节，我们无从知道这一bug是如何被发现的，但这件事让他开始好奇苹果的代码复查实践。他还指出，虽然这个错误一眼就能够发现，但当你面对足有1970行长度的整个文件时，将其识别出来就会很难。</p>
+<p>Twitter上#gotofail主题的很多评论者公然视“使用goto”为罪魁祸首，最著名的当属<a href="http://www.cs.utexas.edu/users/EWD/ewd02xx/EWD215.PDF">Dijkstra论文</a>中对goto“有害”的定性。这点是无可争议的，荷兰代尔夫特理工大学的软件工程教授 <a href="http://avandeursen.com/2014/02/22/gotofail-security/">Arie van Deursen</a>试着通过<a href="http://stackoverflow.com/questions/2789987/any-good-idioms-for-error-handling-in-straight-c-programs">返回错误代码这种惯用法</a>实现一种类似C中的异常机制来解释goto的用法，这样一来，那种惯用法就成了罪魁祸首。</p>
+<p>Van Deursen写道，实际上，返回错误代码惯用法普遍存在于含bug的文件中，并且本身存在一定的问题。<a href="http://www.st.ewi.tudelft.nl/~arie/papers/exceptions/icse2006.pdf">2005年van Deursen与Magiel Bruntink，Tom Tourwe合著论文</a>的主要成果之一就是，通过审查某相当规模的代码库发现“每千行代码中因为return-error-code惯用法而导致的缺陷密度达2.1”。 这么高的缺陷密度的罪魁祸首是未检查调用、未正确传播的返回值以及未正确处理的错误条件导致的，落实了“这一惯用法相当容易出错”的罪名。</p>
+<p>苹果前职员<a href="http://www.kevinmarks.com/">Kevin Marks</a>在van Deursen的跟帖后留言指出，可以使用预处理宏使返回错误代码的方式更安全。这方面的例子包括<a href="http://www.kevinmarks.com/personality.html">BailOSErr</a>以及致力于<a href="http://www.hpl.hp.com/techreports/Compaq-DEC/SRC-RR-40.pdf">实现C的异常机制</a>方面的工作就是这样用的例子。</p>
+<p>说起错误代码的管理，Chris Leishman在评论van Deursen观点时称，错误指示变量被初始化为success，这才是两行goto真正引发漏洞的主要原因。如果错误指示变量的初始化改为OSStatus err = OSUnknownError，系统执行会更安全。</p>
+<p>另一方面，<a href="https://plausible.coop/">Plausible Labs</a>的软件工程师<a href="http://landonf.bikemonkey.org/">Landon Fuller</a><a href="https://github.com/landonf/Testability-CVE-2014-1266">提供了bug所影响那部分代码的可测性分析</a>并证实<a href="https://tools.ietf.org/html/rfc5246#section-7.4.3">SSLVerifySignedServerKeyExchange</a>能够进行隔离性单元测试。<a href="http://agilesolutionspace.blogspot.com.es/">C. Keith Ray</a>强调了TDD的一个观点：“如果你要编写一条if语句，那你必须事先准备一个调用这条语句的测试。你需要在条件为真和为假的情况下分别测试”。</p>
+<p>Arie van Deursen指出这一事件还有更多值得争议的地方。</p>
+<p>他最先注意到含bug的文件“明显不是自动规范化的，其中有大量格式不一的空格、制表符和代码注释”，而“正确的缩进能立刻显示正在发生的可疑事”，并让bug查找更容易。除此之外，他进一步建议“将编码格式作为一项安全特性”，而“将空格作为一项安全关注点”。</p>
+<p>Langley在其博客中写道，他认为代码复查是防止这类问题发生的有效手段。但Arie van Deursen指出，<a href="http://alex.nederlof.com/blog/2013/05/24/the-truth-about-code-reviews/">先前微软有一项代码复查研究</a>曾证实以下观点：</p>
 <blockquote> 
- <p>比如网易游戏的明星代言人都是选用当前最红的明星，通过他们的权威影响玩家，塑造游戏的品质感。比如巨人联合易观发布《中国互联网“屌丝”用户游戏行为调研报告》，也引起了广泛的重视、关注和争议。</p> 
+ <p>复查并不是像很多项目成员所想的那样，通常情况下都能找出缺陷；而找出深层、微妙或是“宏”层次的问题就更罕见了。也许依靠这种程度的代码复查来保证质量境况堪忧。</p> 
 </blockquote>
-<p>在“社会认同”方面，YiXian指出，《征途》单纯地重复投放十几个月宣布最高在线人数的广告，取得极好的效果，这正是用了社会认同原理对玩家进行暗示，让玩家产生这样想法：这么多人玩这个游戏，可玩性肯定很高。又如，众多网络游戏中的微博转发或者如飞车中的幸运招募，除了提高了产品的曝光度外，更重要的是这些来自朋友的认同，更真实可信，也更容易在朋友圈中引起效仿。</p>
-<blockquote> 
- <p>从小社会认同到大社会认同是引爆流行的一个转折点，正如Facebook的初期扎实的在高校做好运营工作，形成良好的社区氛围，取得用户的认可，才能在后续的推广中无往不利。而区域推广中心在校园及工厂用户的推广中，每次线下活动影响到的人数虽然比较有限，但是通过精彩的活动获得这一小波玩家的认可，即能通过他们影响周边更大的一批玩家。</p> 
-</blockquote>
-<p>“高门槛”是另一个重要的影响因素，YiXian认为，一个人经历各种辛苦获得某样东西，相比轻松得到某样东西，感受是不一样的，经过努力获得的，一定会更加珍惜。只有能够接受挑战和敢于付出的用户，才能获得真正的果实。</p>
-<blockquote> 
- <p>对于一些网游道具，设置门槛让玩家难以得到，反而是一种获得人气，获得活跃度的策略。正如炫舞的春节宠物宝蛇睿睿，需玩家连续在线七天方再购买道具方可合成，提高了玩家获得的难度，但设置这样的门槛也更凸显了该宠物的珍贵，也更激起了部分玩家想获得的欲望。</p> 
-</blockquote>
-<p>除此之外，“认知习惯”的作用也不可小觑，YiXian举了商场促销的例子：</p>
-<blockquote> 
- <p>当我们做商场的促销方式调研的时候，大部分的顾客都会选择直接打折，但是实际上当商场做200元换500元的促销活动，吸引到的顾客绝对比直接4折会更多。这是因为在顾客的认知的，只要商场做买换活动，肯定是大活动。又如每年的光棍节，顾客都会等着淘宝做大型促销。因此我们需要找到符合这个市场大多数玩家习惯性的和认知度非常高的运营活动，这样当我们的产品运营时玩家的学习成本和接受成本才会更低，代入感也会更强烈。比如参考外部竞品广泛使用的运营活动，降低玩家的学习成本；在节日进行活动，也是考虑到传统零售业的促销活动，符合玩家的认知。礼包的配置可以参考手机的套餐设置，让玩家能够把自己在现实生活中对套餐的选择，顺利地运用在网游中；又比如工资和节日双倍工资，也是在玩家的固有认知中产生的创新。</p> 
-</blockquote>
-<p>在“心理惯势”方面，YiXian指出，传统的心理惯势对用户行为的影响很重要，比如用户需要八卦、灌水就会去方面天涯，而需要获取新闻资讯又会去新浪，这是因为论坛对用户而言在传统的心理惯势是用于交流。</p>
-<blockquote> 
- <p>不同的产品中，细微的差别也会给用户带来不一样的体验，玩家在玩英雄联盟和300英雄的体验是有很大不同的，玩家在选择这两款游戏产品的诉求也是很不一样的。而影响玩家游戏诉求，除了游戏设置本身，也跟运营存在很大关系。如炫舞的品牌调性是健康的、浪漫的，它吸引到玩家就不会抱着一夜情的心态进入游戏，又如自由足球在宣传前也需确定在后续的宣传中是走竞技还是休闲，因为不同的路线也将影响到后续的宣传会带来不同诉求的玩家，同时也会影响玩家在玩游戏前是抱着怎样的心态诉求。</p> 
-</blockquote>
-<p>在“围观心态”方面，YiXian指出，人们热衷于看到冲突,喜欢偏袒一方,乐于被点燃激情,而这正是吸引人们眼球的绝佳办法。</p>
-<blockquote> 
- <p>因此中国互联网界经常爆发各种各样的口水和冲突，从而迅速地引起人们的围观，比如京东刘强东在对竞争对手发动价格战的时候，总会先在微博发言，表示要比竞争对手便宜。而冯小刚、史玉柱、李毅、潘石屹等众多名人为“屌丝”一词开始在微博上起了争端，而随后《屌丝OL》官网的一封致歉信表明，这场高潮迭起的隔空拍砖，正是巨人新游《仙侠世界OL》又一笔营销炒作。而前段时间闹得沸沸扬扬的《人魔网》，也是通过把自己做为《人人网》的对立面，从而迅速引起关注。这些炒作，之所以能有效地引起网民围观，正是因为人们生活平淡，没有风波时，很多人就觉得如同饭菜不放盐没有滋味，而矛盾和冲突正是平淡生活的佐料。</p> 
-</blockquote>
-<p>YiXian还讨论了其他影响用户心理和行为的因素，感兴趣的读者可以查看其<a href="http://djt.qq.com/article/view/1069" target="_blank">文章</a>。</p>
-<p>对互联网运营感兴趣的读者可以关注即将于2014年4月25~27日在北京国际会议中心召开的<a href="http://www.qconbeijing.com/" target="_blank">QCon北京2014大会</a>，专题包括<a href="http://www.qconbeijing.com/node/452">知名网站案例分析</a>、<a href="http://www.qconbeijing.com/node/438">推荐系统工程实践</a>、<a href="http://www.qconbeijing.com/node/442">移动应用案例分析</a>、<a href="http://www.qconbeijing.com/node/444">互联网金融</a>等，读者可点击大会<a href="http://www.qconbeijing.com/" target="_blank">主页</a>查看详情。</p><br><br><br><br><br><br></body></html>
+<p>最后一点，这种情况下工具也没起到作用，如Langley所说，Clang的-Wall参数不会发现两行goto和其后的死代码。据<a href="http://avandeursen.com/2014/02/22/gotofail-security/">Simon Nicolussi</a>所言，Clang提供了能发现该问题的-Weverything标识，但GCC默认去除了这一标识。这点也为<a href="https://twitter.com/_peterdn/status/437224206330523648">Peter Nelson</a>——另一位特定-Wunreachable-code参数存在指出者所证实。Van Deursen指出主要问题在于死代码的删除从根本上讲是一个不可判定问题，这需要完备性和误报间的权衡，也正是因为这一原因，缺省情况下才不含不可达检验。</p>
+<p><strong>查看英文原文：</strong><a href="http://www.infoq.com/news/2014/02/apple_gotofail_lessons">Lessons Learned from Apple's GoToFail Bug</a></p>
+<hr />
+<p>感谢<a href="http://www.infoq.com/cn/author/邵思华">邵思华</a>对本文的审校。</p>
+<p>给InfoQ中文站投稿或者参与内容翻译工作，请邮件至<a href="mailto:editors@cn.infoq.com">editors@cn.infoq.com</a>。也欢迎大家通过新浪微博（<a href="http://www.weibo.com/infoqchina">@InfoQ</a>）或者腾讯微博（<a href="http://t.qq.com/infoqchina">@InfoQ</a>）关注我们，并与我们的编辑和其他读者朋友交流。</p><br><br><br><br><br><br></body></html>
