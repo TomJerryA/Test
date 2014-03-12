@@ -1,8 +1,8 @@
 <html>
  <head></head> 
- <body>
-  <div>
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/41.c">Submiss&otilde;es para Short Talks &amp; 7 motivos para participar do QCon SP</a>Falta apenas um m&ecirc;s para o QCon S&atilde;o Paulo (9-11 de abril), e o conte&uacute;do do evento est&aacute; quase 100% definido, com 48 de 50 palestras confirmadas e as sess&otilde;es da Solutions Tracks com presen&ccedil;a garantida de grandes empresas nacionais e internacionais.
+ <body> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/41.c">Submiss&otilde;es para Short Talks &amp; 7 motivos para participar do QCon SP</a>Falta apenas um m&ecirc;s para o QCon S&atilde;o Paulo (9-11 de abril), e o conte&uacute;do do evento est&aacute; quase 100% definido, com 48 de 50 palestras confirmadas e as sess&otilde;es da Solutions Tracks com presen&ccedil;a garantida de grandes empresas nacionais e internacionais. 
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/40.c">Facebook faz Mercurial ser mais r&aacute;pido que o Git</a>No in&iacute;cio deste ano, o Facebook publicou em seu blog de engenharia um texto intitulado Escalando o Mercurial no Facebook, explicando com eles est&atilde;o escalando o Mercurial como seu reposit&oacute;rio. 
@@ -150,6 +150,6 @@
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/44.c">Reduza o desperd&iacute;cio atrav&eacute;s da mudan&ccedil;a do m&eacute;todo cascata para m&eacute;todo &aacute;gil</a>O desenvolvimento de software enxuto diz: toda iniciativa que n&atilde;o est&aacute; criando valor para o cliente &eacute; considerado desperd&iacute;cio. Como a transi&ccedil;&atilde;o do m&eacute;todo cascata para um m&eacute;todo &aacute;gil pode ajudar as empresas a reduzir o desperd&iacute;cio? 
-  </div>  
+  </div> 
  </body>
 </html>

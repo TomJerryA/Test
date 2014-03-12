@@ -1,25 +1,20 @@
-<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>LightTable IDEがオープンソース化</h3><p><a target="_blank" href="http://www.infoq.com/news/2014/02/lighttable-open-source"><em>原文(投稿日：2014/02/03)へのリンク</em></a></p>
-<div class="article_page_left news_container text_content_container"> 
- <div class="text_info"> 
-  <p>Chris Granger氏が<a href="http://www.lighttable.com">LightTable IDE</a>のバージョン0.6リリースに伴い、<a href="http://www.chris-granger.com/2014/01/07/light-table-is-open-source/">オープンソース</a>にした。このリリースではサードパーティのプラグインがサポートされた。</p> 
-  <p>コミュニティは追加の言語プラグインへの貢献を始めている。<a href="https://github.com/jetaggart/light-haskell">Haskell</a>, <a href="https://github.com/darthdeus/LightTable-Ruby">Ruby</a>、<a href="https://github.com/enricosada/LightTable-FSharp ">F#</a>、<a href="https://github.com/rschroll/litex">LaTex</a>、<a href="https://github.com/MarcoPolo/lt-markdown">Markdown</a>などの言語のサポートであり、また、編集のエクスペリエンスに注力している人もいる(<a href="https://github.com/Gozala/lt.plugins.bracketglow">Bracket Glow</a>、<a href="https://github.com/cndreisbach/lighttable-base16-themes">base16 theme</a>、<a href="https://github.com/Gozala/lt.plugins.match-highlighter">match highlighter</a>など)。これらはすべてLightTableに組み込まれているプラグインマネージャで利用できる。</p> 
-  <p>もともと、<a href="http://worrydream.com">Bret Victor氏</a>の<a href="http://vimeo.com/36579366">Inventing on Principle</a>と題した講演に<a href="http://www.chris-granger.com/2012/02/26/connecting-to-your-creation">啓発</a>された。Bret氏は自身の原則を“クリエータは自身の作るものにすぐに接続できなければならない”と説明している。Chris氏は開発者がコードに対してすぐにフィードバックできるIDEを作り始めた。<a href="https://www.kickstarter.com/projects/ibdknox/light-table">Kickstarterのキャンペーン</a>で成功し、多くの開発者がそのようなツールの開発に興味を示した。キャンペーン中、このプロジェクトは<a href="http://ycombinator.com">YCombinator</a>の2012年の夏のバッチのひとつとして<a href="http://www.chris-granger.com/2012/05/17/light-table-is-in-yc">受理</a>された。</p> 
-  <p>InfoQはChris氏にLightTableの未来について話を聞いた。</p> 
-  <p><strong>InfoQ:</strong>プラグインが大量に現れることでLightTable自体が薄まったり、身動きがとれなくなることは心配していませんか。</p> 
-  <blockquote>
-    Chris: 一般的言えば、エコシステムというものは自分自身を制御するのは得意だと思います。emacs/vim/sublime/textmateにはたくさんのプラグインがあり、すべてうまく動いているようです。私たちが違うのは、さらに自由な変化をもたらすことができるということです(私たちが作ったものに対してどんな批判をして置き換えてもいいのです)。しかし、コミュニティは良い働きをしてくれると思います。 
-   <p>より改善したいことのひとつは、使える環境にするためにたくさんのプラグインを管理しなければならないということです。例えば、EmacsやVimはあるエクスペリエンスを提供するプラグインのパックという仕組みはありません。LTのプラグインシステムを使えば、あるプラグインがほかのプラグインに依存するようにできます。つまり、キュレートした&quot;ディストリビューション&quot;を作成することができます。ほかのたくさんのプラグインに依存するプラグインがいくつかのコンフィギュレーションを提供することで、すべてがきちんと動作するようになっています。</p> 
-   <p>またこのような仕組みによって、BOTアーキテクチャに光が当たります。エンドユーザは競合する動きを排除し、コードに手を入れなくてもプラグインが正常に動作させることができます。したがって、あなたの質問に対して短く答えれば、心配ありません、ということです。しかし、このプラグインを中心にした仕組みの欠点については引き続き改善をしています。</p> 
-  </blockquote> 
-  <p>BOTとは、Behaviour-Object-Tagの略で、この言葉は、Chris氏が<a href="http://www.chris-granger.com/2013/01/24/the-ide-as-data">LightTableのアーキテクチャを説明するときに使った</a>。</p> 
-  <p><b>InfoQ:</b>当初のKickstarterの計画では、プロジェクトのオープンソース化について、“ある種の水準では、これはオープンソースとビジネスをどのように混ぜ合わせるかについての実験です。私たち全員にとって教育的な経験になるでしょう。”としています。いまのところ、どのように混ぜ合わせていますか。有料のプラグインや有料ライセンスによって解除できる先進的な機能なども今後現れるでしょうか。</p> 
-  <blockquote>
-   しばらくの間、試行錯誤を続けています。LTをビジネス化する戦略はたくさんありますが、自然に適用できる方法を見つけました。Light Tableを直接、マネタイズするのではなく、マネタイズを促進するサービスを作ることにしました。これを会社の燃料にするつもりです。
-  </blockquote>
-  <blockquote> 
-   <p>どのようなサービス化はまだ正確には言えません。でも、私たちのプログラミングに対する考え方を劇的に変えるでしょう。Light Tableは私たちのプラットフォームであり、私たちの当初のミッションを実現するものだと考えるのがいいと思います。ミッションとは、人々が問題を解決し世界を作るする手助けをするということです。</p> 
-   <p>私たちの最新のリリースはこの方向への第1歩です。しかし、近い未来にやってくることに比べれば小さな1歩なのです。</p> 
-  </blockquote> 
-  <p>&nbsp;</p> 
- </div> 
-</div><br><br><br><br><br><br></body></html>
+<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>InfoQ主催のカンファレンス QCon Tokyo 開催決定！【早期割引：30日まで！】</h3><p>&nbsp;<span lang="EN-US">InfoQ Japan</span>チーフエディターの羽生田（豆蔵）です。</p>
+<p class="MsoPlainText">今年も<span lang="EN-US">4/30(</span>水<span lang="EN-US">)</span>に<span lang="EN-US">QConTokyo2014</span>を開催します。<span lang="EN-US">
+  <o:p></o:p></span></p>
+<p class="MsoPlainText">今年は広くてアクセスのよい会場でゆったりと<span lang="EN-US">1</span>日技術について語り合える場をご提供したいと考えております。</p>
+<p class="MsoPlainText"><span lang="EN-US">公式サイト：<a href="http://www.qcontokyo.com/" target="_blank">http://www.qcontokyo.com/<br /> </a>
+  <o:p></o:p></span></p>
+<p class="MsoPlainText">『社会を変えていく<span lang="EN-US">IT</span>』をテーマに、社会的にインパクトのある<span lang="EN-US">IT</span>技術の最先端の代表として世界と日本から<span lang="EN-US">1</span>名ずつ基調講演をお願いしました。</p>
+<p class="MsoPlainText"><span lang="EN-US">Google App</span>エンジンのディレクターおよび<span lang="EN-US">eBay</span>チーフエンジニアを務めた<span lang="EN-US">Randy Shoup</span>さんと<span lang="EN-US">NII</span>国立情報学研究所において人工頭脳プロジェクト『ロボットは東大に入れるか』のリーダーを務める新井紀子教授です。</p>
+<p class="MsoPlainText">また各セッションは、「組込み<span lang="EN-US">/</span>ものづくり、クラウド<span lang="EN-US">/DevOps</span>、ビッグデータ<span lang="EN-US">/</span>分散技術、モバイル<span lang="EN-US">/HTML5</span>、アジャイル<span lang="EN-US">/</span>モデリング」をテーマに興味深い講演を多数用意しています（現在、さらにパワーアップを図るべく依頼続行中です）。<span lang="EN-US">
+  <o:p></o:p></span></p>
+<p class="MsoPlainText"><span lang="EN-US">&nbsp;</span>かとじゅんさんの「<span lang="EN-US">Scala</span>で<span lang="EN-US">DDD</span>」やサイバーエージェントさんには「<span lang="EN-US">OOCSS</span>のはなし」を初めとして、リアルタイムビッグデータの新技術を事例を踏まえて紹介したり、エンタープライズ・クラウド・デザインパターンとして設計ノウハウの共有を推進していきます。また、イグノーベル賞受賞者のはこだて未来大学&nbsp;塚田浩二 準教授にえっ！と驚く斬新なアイデアの新世代<span lang="EN-US">UI</span>の新潮流、さらに『<a href="http://www.amazon.co.jp/dp/4797358181" target="_blank">システム設計の謎を解く</a>』<span lang="EN-US"><span lang="EN-US"><span lang="EN-US">の著者</span></span></span>の高安厚思さんのアーキテクチャ特論も注目です。</p>
+<p class="MsoPlainText"><span lang="EN-US">StackOverflow</span>のアーキテクチャ解説、いまフィジカル・コンピューティングの世界で注目される<span lang="EN-US">Microframework</span>の可能性、アジャイルに関しては『<a href="http://www.amazon.co.jp/dp/427406932X" target="_blank">リーン開発の現場―カンバンによる大規模プロジェクトの運営</a>』<span lang="EN-US"><span lang="EN-US"><span lang="EN-US">に</span></span></span>関して、そのエッセンスにぜひ触れてみてください。</p>
+<p class="MsoPlainText"><span lang="EN-US">&nbsp;</span><span lang="EN-US">3/30</span>まで早期割引ですので、お早めにお申し込みください。</p>
+<p class="MsoPlainText">&nbsp;</p>
+<p>～～～～～～～～～～～～～～～～～～～～～～～～～～～～～</p>
+<p>　通常16,200円　⇒ 10,800円　【66%OFF】　　　● 3/30(金)まで ●</p>
+<p>　&gt;&gt; <a href="http://www.qcontokyo.com/registration.html" target="_blank">http://www.qcontokyo.com/registration.html</a></p>
+<p>～～～～～～～～～～～～～～～～～～～～～～～～～～～～～</p>
+<p class="MsoPlainText"><span lang="EN-US">
+  <o:p></o:p></span></p><br><br><br><br><br><br></body></html>

@@ -1,1 +1,1 @@
-Improving Process with Two Definitions of Done
+Akka Toolkit 2.3 with Java 8 and Persistence Support

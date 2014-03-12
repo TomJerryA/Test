@@ -1,48 +1,13 @@
-<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>Simplified CSS Preprocessing with restyle.js</h3><p>Andrea Giammarchi's <a href="https://github.com/WebReflection/restyle">restyle.js</a> is a new, JavaScript-based, CSS preprocessor that can run on either the server (via Node.js) or in the browser. It touts itself as &quot;a simplified CSS approach&quot;, generating all prefixed variations of CSS rules and properties and, if applicable, inserting them into the DOM.</p>
-<p>There's no shortage of CSS preprocessors around, but Andrea claims there are <a href="http://webreflection.blogspot.co.uk/2014/02/restylejs-simplified-css-approach.html">none as lightweight</a> that work in both the server and the client:</p>
-<blockquote> 
- <p>Before you think about &quot;yet another CSS preprocessor&quot;, I'd like to inform you that I've asked around to few common, well known, CSS or general web developers and it looks like this little script was still missing ... once you'll realize what is this about, you'll probably wonder yourself &quot;how come nobody has done this already?&quot; My idea is that somebody probably did but I am not sure in 0.8KB minzipped and compatible with both server and client down to IE6 ... so here I am talking about restyle.</p> 
-</blockquote>
-<p>The library exposes a solitary method, restyle() , which accepts two arguments. The first is expected to be a JavaScript object, with a grammar familiar to both CSS and DOM style editing. For example,</p>
-<pre>
- restyle({
-    'body &gt; div.my-div': {
-        backgroundColor: 'goldenrod',
-        backgroundImage: 'url(mybg.png)'
-    }
-}); </pre>
-<p>This will produce the following CSS:</p>
-<pre>
- body &gt; div.my-div {
-    background-color: goldenrod;
-    background-url: url(mybg.png);
-} </pre>
-<p>We could also specify the JavaScript object in a different manner to achieve the same output:</p>
-<pre>
- restyle({
-    'body &gt; div.my-div': {
-        background: {
-            color: 'goldenrod',
-            image: 'url(mybg.png)'
-        }
-    }
-}); </pre>
-<p>Of course, this is nothing special and the reduction in markup so far, if any, is tiny. But restyle.js shines brighter when you're trying something that would be a little more tedious with standard CSS, like vendor prefixes. The second argument allows you to specify the vendor prefixes that will be generated in the output, for example:</p>
-<pre>
- restyle({
-    '.my-div': {
-        transition: 'background-color 500ms ease';
-        backgroundColor: '#00f';
-    }
-}, ['moz', 'webkit']); </pre>
-<p>This results in the following generated CSS:</p>
-<pre>
- .my-div {
-    -webkit-transition: background-color 500ms ease;
-    -moz-transition: background-color 500ms ease;
-    transition: background-color 500ms ease;
-    background-color: #00f;
-} </pre>
-<p>This comes especially in handy when writing animation rules; a few lines of code can be transformed into many lines of vendor prefixed at-rules and CSS properties with so little effort. On the server, omitting the second argument will result in no prefixes, while restyle.js run in the browser would generate all common vendor prefixes regardless of which browser is executing the code.</p>
-<p>The restyle() function also returns a different result depending on the environment. In a Node.js script, it returns a string containing the resulting CSS. In the browser, however, the CSS is automatically inserted into the DOM to take immediate effect, and the return value is a handy little object containing the properties node (the resulting style element), css (a string containing the generated CSS), and a single method, remove() , which can be called to immediately remove the inserted styles from the DOM.</p>
-<p>A basic example page <a href="http://webreflection.github.io/restyle/">is available</a> that lets you play around with restyle.js by writing your own code and generating the result. As <a href="http://webreflection.blogspot.co.uk/2014/02/restylejs-simplified-css-approach.html#comments">some comments</a> on Andrea's blog pointed out, restyle.js is based on the same idea as a similar library, the larger and more full-featured <a href="https://github.com/krasimir/absurd">AbsurdJS</a>. At barely one tenth of the size, though, restyle is certainly lightweight and interesting enough to be worth a look. Take a look at <a href="https://github.com/WebReflection/restyle/blob/master/README.md">the readme</a> to get started using it.</p><br><br><br><br><br><br></body></html>
+<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>Akka Toolkit 2.3 with Java 8 and Persistence Support</h3><p>The latest version of the <a href="http://akka.io/">Akka</a> toolkit comes with persistence enabling stateful actors to persist their internal state. The recently released <a href="http://akka.io/news/2014/03/05/akka-2.3.0-released.html">version 2.3.0</a> is also prepared for support of Java 8 lambda expressions.</p>
+<p>In <a href="http://doc.akka.io/docs/akka/2.3.0/scala/persistence.html">Akka persistence</a>, instead of current state, each change to an actor’s state are persisted. Changes are appended to a journal and an actors’ internal state can be rebuilt by replaying the stored changes. Support for event sourcing and at-least-once message deliveries is also provided.<br /> Using Java 8 and lambda expressions, both <a href="http://doc.akka.io/docs/akka/2.3.0/java/lambda-actors.html">Actors</a> and <a href="http://doc.akka.io/docs/akka/2.3.0/java/lambda-fsm.html">Finite State Machines</a> (<a href="http://en.wikipedia.org/wiki/Finite-state_machine">FSM</a>) may now be implemented using lambda syntax thus removing the need for declaring anonymous inner classes.<br /> Both the persistence module and the lambda support are marked as <em>experimental</em> with an ambition to improve the API based on feedback from users.</p>
+<p><a href="http://akka.io/news/2014/03/05/akka-2.3.0-released.html">Other improvements</a> include:</p>
+<ul> 
+ <li>A cluster can from being partially unreachable now come back to working as normally again with the failure condition cleared when the affected nodes becomes responsive.</li> 
+ <li>Cluster sharding can be used to distribute stateful actors over several nodes when the actors consume more resources than one machine can supply.</li> 
+ <li>Removal of the experimental label from Akka IO package, but with the Pipeline infrastructure discontinued.</li> 
+ <li>The <a href="http://en.wikipedia.org/wiki/OSGi">OSGi</a> support has been reworked to make akka-actor an OSGi bundle.</li> 
+</ul>
+<p>The <a href="http://akka.io/docs/">documentation</a> together with a <a href="http://doc.akka.io/docs/akka/2.3.0/intro/getting-started.html">getting started</a> guide has been updated to reflect the changes in the framework. Akka is also part of a larger sample of a <a href="http://typesafe.com/platform/getstarted">reactive platform</a>.<br /> The new release contains some structural modifications requiring <a href="http://doc.akka.io/docs/akka/snapshot/project/migration-guide-2.2.x-2.3.x.html">code changes</a> when upgrading from 2.2.*. Upgrading from earlier version may require some extra steps.</p>
+<p>The Akka toolkit is an implementation of the <a href="http://en.wikipedia.org/wiki/Actor_model">Actor Model</a>, available with both a Java and a Scala API. This 2.3 release is the first step in a larger <a href="https://docs.google.com/document/d/18W9-fKs55wiFNjXL9q50PYOnR7-nnsImzJqHOPPbM4E/pub">milestone</a> planned for second half of 2014.<br /> Akka is an open source product, licensed under the Apache 2 License.</p>
+<p><a href="http://vaughnvernon.co/"> Vaughn Vernon</a>, author of <a href="http://www.informit.com/store/implementing-domain-driven-design-9780321834577">Implementing Domain-Driven Design</a>, <a href="http://www.infoq.com/news/2013/11/vernon-reactive-ddd">talked</a> last year about actor model in reactive domain-driven design and in an earlier <a href="http://www.infoq.com/news/2013/06/actor-model-ddd">talk</a> about the foundation for actor model together with DDD.</p>
+<p>A <a href="https://groups.google.com/forum/#!forum/akka-user">forum</a> for Akka users is available with more than 3000 members.</p><br><br><br><br><br><br></body></html>

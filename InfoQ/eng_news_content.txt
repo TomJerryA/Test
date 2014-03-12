@@ -1,34 +1,13 @@
-<p>Christian Vos, founder of Rood Mitek and Microsoft .NET consultant at Rabobank International, proposed separate ideal and current versions of Definition of Done for agile teams in his recent blog, in order to expand Definition of Done to grow in maturity and quality. Vos cites competence and maturity of the team as reasons why a team would use two versions.</p>
-<p>Vos defined ideal and current Definition of Done as:</p>
-<blockquote> 
- <p>The ideal Definition of Done defines all steps necessary to deliver a finished increment from development till deployment in production. No further work is needed. The current Definition of Done defines the steps the team is currently capable of doing in one sprint.</p> 
-</blockquote>
-<p>Vos suggested making both versions of Definition of Done visible on the wall to increase transparency. Team and product owner can constantly work towards bridging the gap between both versions of Definition of Done.</p>
-<blockquote> 
- <p>Putting two versions on the wall will create transparency for the product owner. It represents the current capability of the team and shows what could be improved. The team can try to regularly expand the current Definition of Done with steps from the ideal Definition of Done. Expanding the Definition of Done will actually mean growing in quality and maturity.</p> 
-</blockquote>
-<p>Vos stated because of less maturity and competence of agile teams, Definition of Done doesn’t include all the steps necessary to deliver production ready code. Typically when finishing a sprint, different items are still left undone. The problem with this undone work is that it piles up every sprint and many teams solve this undone work by introducing extra sprint dedicated for release preparation.</p>
-<blockquote> 
- <p>Many teams solve this by introducing so-called &quot;hardening sprints&quot; or &quot;release sprints.&quot; These sprints are used to, for example, create the deployment packages, solve some last bugs, do some final testing, and so on - everything to make the software ready for production. When the team defines a complete Definition of Done and applies it, all the undone work is done within the sprints and no release sprints are necessary.</p> 
-</blockquote>
-<p>A good Definition of Done helps with following points mentioned by Vos:</p>
+<p>The latest version of the Akka toolkit comes with persistence enabling stateful actors to persist their internal state. The recently released version 2.3.0 is also prepared for support of Java 8 lambda expressions.</p>
+<p>In Akka persistence, instead of current state, each change to an actor’s state are persisted. Changes are appended to a journal and an actors’ internal state can be rebuilt by replaying the stored changes. Support for event sourcing and at-least-once message deliveries is also provided.<br /> Using Java 8 and lambda expressions, both Actors and Finite State Machines (FSM) may now be implemented using lambda syntax thus removing the need for declaring anonymous inner classes.<br /> Both the persistence module and the lambda support are marked as <em>experimental</em> with an ambition to improve the API based on feedback from users.</p>
+<p>Other improvements include:</p>
 <ul> 
- <li>Getting feedback and improving your product and process</li> 
- <li>Better release planning</li> 
- <li>Giving burn-down charts sense</li> 
- <li>Minimizing the delay of risk</li> 
- <li>Improving team quality and agility</li> 
- <li>Creating transparency for stakeholders</li> 
+ <li>A cluster can from being partially unreachable now come back to working as normally again with the failure condition cleared when the affected nodes becomes responsive.</li> 
+ <li>Cluster sharding can be used to distribute stateful actors over several nodes when the actors consume more resources than one machine can supply.</li> 
+ <li>Removal of the experimental label from Akka IO package, but with the Pipeline infrastructure discontinued.</li> 
+ <li>The OSGi support has been reworked to make akka-actor an OSGi bundle.</li> 
 </ul>
-<p>David Lowe, agile coach at Net-A-Porter, supports the idea of having two versions of Definition of Done.</p>
-<blockquote> 
- <p>I think it's a clever idea: at least it accepts what the team knows it SHOULD be doing. Of course, how you move towards that ideal is another matter.</p> 
-</blockquote>
-<p>On similar lines Wouter Tengeler, owner of The Motion Studio Multimedia Productions suggests creation of separate user stories.</p>
-<blockquote> 
- <p>I would recommend adding stories that will complement the difference between the current DoD and the target DoD to make the (technical) debts visible. I would opt to add a story to write a user manual just to be transparent about the task so everyone knows that it is something that still needs to be done. When the team matures you will add the writing of the manuals to the DoD.</p> 
-</blockquote>
-<p>Dave Meyer, product marketing specialist at Atlassian explained how to use Jira, for managing Definition of Done over the period of time, in his recent blog.</p>
-<blockquote> 
- <p>A Definition of Done is a live document that should be reviewed regularly. As your dev team strives to improve, you can make your practices more stringent over time. Rather than deleting or modifying options, simply disable them. Disabling an option will keep the option in JIRA but prevents it from appearing on issues. This allows you to keep a record of your DoD over time.</p> 
-</blockquote>
+<p>The documentation together with a getting started guide has been updated to reflect the changes in the framework. Akka is also part of a larger sample of a reactive platform.<br /> The new release contains some structural modifications requiring code changes when upgrading from 2.2.*. Upgrading from earlier version may require some extra steps.</p>
+<p>The Akka toolkit is an implementation of the Actor Model, available with both a Java and a Scala API. This 2.3 release is the first step in a larger milestone planned for second half of 2014.<br /> Akka is an open source product, licensed under the Apache 2 License.</p>
+<p> Vaughn Vernon, author of Implementing Domain-Driven Design, talked last year about actor model in reactive domain-driven design and in an earlier talk about the foundation for actor model together with DDD.</p>
+<p>A forum for Akka users is available with more than 3000 members.</p>

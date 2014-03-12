@@ -1,34 +1,24 @@
-<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>Coverity 7.0がリリース</h3><p><a target="_blank" href="http://www.infoq.com/news/2014/01/coverity-7"><em>原文(投稿日：2014/01/24)へのリンク</em></a></p>
+<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>Typemock Isolator++がアップデート，64bitをサポート</h3><p><a target="_blank" href="http://www.infoq.com/news/2014/02/typemock-isolator-plus-plus"><em>原文(投稿日：2014/02/19)へのリンク</em></a></p>
 <div class="article_page_left news_container text_content_container"> 
  <div class="text_info"> 
-  <p><a href="http://www.coverity.com/why-coverity/#Developers">Coverity</a>がバージョン7.0をリリースした。21の新しく強力なC#に対する分析アルゴリズムが追加されており、C#のコードの欠陥検出の精度が向上している。さらに、リソースのリークや並列処理の問題、null参照なども修正されている。</p> 
-  <p>この新しいリリースには<a href="https://www.owasp.org/index.php/Main_Page">Open Web Application Security Project</a> (OWASP)に対する新しいカバレッジが含まれている。また、Javaアプリケーションの脆弱性に対する追跡機能も強化されており、JavaとC/C++のコードに対する17の強化された分析が含まれている。これらの分析はクラッシュや不正確な処理、予測できない振る舞いを検出することができる。</p> 
-  <p>Coverity 7は<a href="http://www.sonarqube.org/">SonarQube</a>統合を提供する。これは、開発者が単一のワークフローだけで Javaアプリケーションの幅広い欠点を確認し管理できる。さらに、新しいセキュリティ監査とコンプライアンスビューも提供される。</p> 
-  <p>今回のリリースは<a href="http://www.eclipse.org/">Eclipse</a>とVisual Studioと統合されており、さらにAndroidとWindRiverで動作するデバイスの単体テスト分析も提供する。また、<a href="http://en.wikipedia.org/wiki/Objective-C">Objective-C</a>とC/C++の開発で広く使われているClangコンパイラもサポートする。</p> 
-  <p>InfoQはCoverityのプロダクトマーケティング部門のシニアディレクターであるKristin Brennan氏に今回のリリースについて話を聞いた。</p> 
-  <p><strong>InfoQ: CoverityとVisual Studio 2013で利用できるテストツールとはどのような違いがあるのでしょうか。</strong></p> 
+  <p>Typemockが<a href="http://www.typemock.com/isolatorpp-product-page">Isolator++</a>をリリースした。Windowsプラットフォーム用に記述された64bit C/C++コードのサポートに加えて，もともとテストを考慮していなかったようなレガシコードにも対応する。マクロを利用してテスト対象のメソッドの動作を変更することも可能だ。</p> 
+  <p>C/C++用モックフレームワークのIsolator++は，メソッド呼び出しやパラメータのアサート，関数のモック生成，参照によって返される値のシミュレートなどの機能も提供する。<a href="http://smartbear.com/products/qa-tools/application-performance-profiling/">AQTime</a>, <a href="http://www.softwareverify.com/">Software Verify</a>, <a href="http://www.bullseye.com/">BullsEye</a>などのツールと統合可能であると同時に，<a href="http://sourceforge.net/apps/mediawiki/cppunit/index.php?title=Main_Page">CppUnit</a>, <a href="http://unittest-cpp.sourceforge.net/">UnitTest++</a>, Google Test Boostといったテスト実行フレームワークとの互換性も備えている。</p> 
+  <p>最新リリースのメリットについて詳しく知るため，InfoQは，TypemockのプロダクトマネージャであるGil Zilberfeld氏に話を聞いた。<br /> <br /> <strong>64bitのサポートは，開発者にとってどのようなメリットがありますか？ 本当に意義はあるのでしょうか？</strong></p> 
   <blockquote>
-   CoverityはVisual Studio 2013(以前は
-   <a href="http://msdn.microsoft.com/en-us/library/bb429476(v=vs.80).aspx">FxCop</a>という名で知られた)のテストツールを補完します。というのは両者は異なるものを扱うからです。.NET frameworkの黎明期に一貫した標準的な書式のためのガイドラインが作られました。クラスのメンバの名前の付け方、名前空間はどうするべきか、クラスの間の関係はどうするかというようなことです。Visual Studioのツールはこれらのルールが違反されていないかに注目します。そして、Visual Studioのツールは進化していますので、バイトコードレベルでの問題も分析して検出するようになっています。しかし、バイトコードを分析して見つかる問題は全体の問題のごく一部です。
-  </blockquote>
-  <blockquote> 
-   <p>Coverityはより狭い範囲でより深い分析を行います。Visual Studioのツールがバイトコードを分析してコードの一貫性を保持するために設計されているなら、Coverityはソースコードを分析し、致命的でインパクトが大きいバグを検出します。null参照や、リソースの問題、スレッドの問題です。</p> 
+   開発者の中には，64bit環境に限定して開発を行っている人もいます。64bitをサポートしなければ，彼らは32bit環境でテストを行わなければなりません。しかし32bit環境でのテストではシステムの&quot;真&quot;の動作とは違いますから，テスト結果が実際の条件を反映しているかどうか，信頼性に欠ける部分があります。Isolatorが64bitをサポートすることで，製品環境と同じ条件でテストを実行できるようになるのです。信頼性が向上すれば，テストが現実を表現しているのか，それとも限定的なものか，という余計な推測の入る余地はなくなりますから，すべてが64bitで正しく動作するという確信を持ちながら，コードのリファクタやテストを行うことができます。
   </blockquote> 
-  <p><strong>InfoQ: Coverityの目的とは何でしょうか。</strong></p> 
+  <p><strong>Typemock Isolator++の機能について教えてください。</strong></p> 
   <blockquote>
-   Coverityは開発する組織がより良いソフトウエアを素早く開発できるように支援するため設立されました。Coverity Development Testing Platformは素早く効率的にコードのテストし、致命的な品質上、セキィリティ上の問題に対処するための静的解析を提供します。このプラットフォームは高品質でセキュアなソフトウエアを素早く提供できるようにすることで、ソフトウエア開発に競争力を提供します。
+   Typemock Isolator++は，Windows上のCおよびC++のための完全なモックフレームワークです。Visual Studio 2005以降を対象に，32bitと64bitをサポートします。インスタンスあるいはスタティック，グローバル，プライベートとパブリック，仮想と非仮想など，すべての関数コールをモックできます。特定のオブジェクトや型，いくつかのメソッドのみをダミーにして，その他は本物の実装を使用することも可能です。関数がコールされた回数をカウントして，それをアサートすることもできます。参照で返されるパラメータをシミュレートする機能もあります。テスト用にコードの修正したり，テストのために準備作業をしたりする必要はありません。
   </blockquote> 
-  <p><strong>InfoQ: Coverityは開発者にどのような利点を提供しますか。</strong></p> 
+  <p><strong>開発者の生産性は向上するのでしょうか？</strong></p> 
   <blockquote>
-    Coverityは開発者がより良いソフトウエアを素早く開発できるようにします。コードをテストし、致命的な影響力のある品質上、セキュリティ上の問題に対処できます。
+   Isolator++は&quot;テスト不能コード&quot;用にテストを記述できますから，アプリケーション全体をデバッグするよりも手早く，ユニットテストを使ってデバッグすることが可能です。テストの不可能なシナリオもテストできます(例えばコンピュータのクロックを変更する必要のあるシナリオでも，コード上で実行可能です)。テストのためにコードを変更すれば，機能を損なうことになりかねません。ユニットテストの生産性が向上することで，作業にじっくりと取り組む余裕が生まれるはずです。
   </blockquote> 
-  <p><strong>InfoQ: Coverityを使ってテストできるアプリの種類を教えてください。</strong></p> 
+  <p><strong>C#やVB.NETはサポートしていますか？</strong></p> 
   <blockquote>
-   C/C++、Java、C#で書かれたどのような種類のアプリでもテストできます。
-  </blockquote> 
-  <p><strong>InfoQ: iOS、Android、Windows Phone 8はどうでしょうか?</strong></p> 
-  <blockquote>
-    iOS、Android、Windowsモバイルデバイス向けにC/C++をサポートします。
+   いいえ，Isolator++はCとC++でのみ動作します。マネージドな.NET言語には，Isolator for .NETを用意しています。Isolator++ for .NETは単なる.NET用の&quot;すべてをモックする&quot;フレームワークではなく，SmartRunnerや視覚的なカバレッジ，テストコード補完やテストルールブックなどを備えています。
+   <br type="_moz" /> 
   </blockquote>
  </div> 
 </div><br><br><br><br><br><br></body></html>
