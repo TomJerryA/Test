@@ -1,35 +1,10 @@
-<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>Martin Fowler讲述重构的工作流程</h3><p>《重构：改善既有代码的设计》一书的作者<a href="http://en.wikipedia.org/wiki/Martin_Fowler">Martin Fowler</a>最近在其个人网站上发表了一篇<a href="http://martinfowler.com/articles/workflowsOfRefactoring/">文章</a>，探讨了如何通过各种工作流程来将代码重构融入到我们日常的编程工作当中。</p>
-<p>在文章中他还介绍了如何使用各种不同的工作流程，并且建议“为了最有效地进行代码重构，我们需要结合使用所有的重构工作流程，这样才能使不同的流程无缝地融入到开发工作当中”。</p>
-<p>Fowler将重构定义为“……一项用于对既有代码的主体结构进行调整的专门技术，可以在不影响其外部行为的情况下修改其内部结构”。</p>
-<p>Joshua Kerievsky在其著作<a href="http://industriallogic.com/xp/refactoring/">《重构与模式》</a>中建议：</p>
-<blockquote> 
- <p>通过持续地改善代码的设计，我们可以使代码变得越来越容易维护。这与通常所采用的做法形成了鲜明的对比。通常我们很少做代码重构，而是把大量的注意力放在如何方便快捷地添加新功能上面。如果我们养成了持续重构的良好习惯，就会发现代码变得越来越容易扩展和维护。</p> 
- <p>虽然在文中Fowler讲到重构技术现在已经为人们所熟知，但他还是建议大多数的团队仍然需要去更好地了解实施重构过程中可以使用的各种工作流程，以便在各种情况下都能够选择出最佳的流程加以应用 。</p> 
-</blockquote>
-<p>基于Don Roberts提出的<a href="http://en.wikipedia.org/wiki/Rule_of_three_(computer_programming)">三次法则</a>，网站SourceMaking<a href="http://sourcemaking.com/refactoring/when-should-you-refactor">描述</a>了需要进行代码重构的下列几种情形。</p>
-<blockquote> 
- <p>“第一次做某件事情时，可以只管去做。第二次做类似的事情时，虽不情愿，但总之还是把同样的事情重复又做了一遍。而第三次做类似的事情时，就要进行重构。”</p> 
- <ul> 
-  <li>当添加新函数时</li> 
-  <li>当修复bug时</li> 
-  <li>当进行代码评审时</li> 
- </ul> 
-</blockquote>
-<p>Fowler使用了“两顶帽子”的比喻，向我们解释了有些时候我们是在添加新的功能（添加功能帽子），而另外一些时候我们是在改善既有代码的质量（重构帽子）。这样的比喻还能够作为我们日常编程工作中的提醒，使我们清楚地认识到自己究竟工作在哪种角色下。在文中他还讲到“在编程过程中，我们可能需要在不同的帽子间频繁地转换，可能每隔几分钟就要转换一次，但我们每一时刻只能带一顶帽子”。</p>
-<p>借着上面的比喻，Fowler描述了第一种工作流程，可能也是使用最为广泛的一种流程，名字叫做“使用测试驱动开发进行重构”。这种流程基于以下循环：开始于绿色状态，编写测试用例（现阶段会执行失败），然后编写程序使之能够通过测试，最后再对代码的质量进行改进。来自planetgeek.ch 的<a href="http://www.planetgeek.ch/author/ursenzler/">Urs Enzler</a> <a href="http://www.planetgeek.ch/2011/08/23/refactoring-in-test-driven-development/">详细描述了</a>测试驱动开发与重构之间的关系。</p>
-<p>“捡垃圾式的重构”是下一种工作流程。Fowler在文中提出，这种流程可以应用在代码中出现大面积混乱段落时的情景。这种流程的基本原理就是“每次都对我们用到的部分代码进行清理，这样会简化我们下次使用时所需要做的清理工作。这种方法甚至还可以使当前要做的修改也变得容易”。</p>
-<p>之后Fowler还详细地解释了“针对代码可理解性的重构”。这种重构旨在使代码变得简单易懂，进而使程序变得易于使用和维护。文章中还引用了一段<a href="http://pt.wikipedia.org/wiki/Ward_cunningham">Ward Cunningham</a>的话来补充这一观点：</p>
-<blockquote> 
- <p>每当你不得不去搞明白一段代码究竟做了哪些事情的时候，在你的头脑中就会形成对于这段代码功能的一些理解，而一旦形成了这些理解，你就应该把它们固化到代码中，这样其他人就不必对这段代码再从头理解一遍。</p> 
-</blockquote>
-<p>文中还描述了其他三种工作流程，Fowler认为它们与前面所讲的三种流程同样重要：</p>
-<ul> 
- <li>“准备性的重构”——当我们开始开发一项新功能时可以采用这种方法。</li> 
- <li>“有计划的重构”——当问题代码太多，必须专门花时间来进行重构时可以采用这种方法。</li> 
- <li>“长周期的重构”——当我们需要在几轮迭代过程中替换掉一个较大的模块时可以采用这种方法。</li> 
-</ul>
-<p>你们是否也一直在做代码重构？</p>
-<p><strong>查看英文原文：</strong><a href="http://www.infoq.com/news/2014/01/fowler-workflows-refactoring">Martin Fowler Presented Workflows of Refactoring</a></p>
-<hr />
-<p>感谢<a href="http://www.infoq.com/cn/author/臧秀涛">臧秀涛</a>对本文的审校。</p>
-<p>给InfoQ中文站投稿或者参与内容翻译工作，请邮件至<a href="mailto:editors@cn.infoq.com">editors@cn.infoq.com</a>。也欢迎大家通过新浪微博（<a href="http://www.weibo.com/infoqchina">@InfoQ</a>）或者腾讯微博（<a href="http://t.qq.com/infoqchina">@InfoQ</a>）关注我们，并与我们的编辑和其他读者朋友交流。</p><br><br><br><br><br><br></body></html>
+<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>Layer 7调查——超媒体API预计会强劲增长</h3><p>Layer 7是CA Technologies的一家公司，它于近日发布了针对API设计和部署的调查结果。调查显示，API设计人员在安全性和可用性哪个应该最先关注方面存在分歧，XML表示和JSON表示占比基本相同，超媒体风格的API预计会强劲增长。总之，调查表明，没有一种放之四海而皆准的API管理方式。</p>
+<p>该调查是由Layer 7所属的<a href="http://www.apiacademy.co/">API Academy</a>在Layer 7的客户群成员中开展的，为期三十天，总共收到了180份来自API管理人员和企业架构师的回复，结果以<a href="http://events.layer7tech.com/state-api">信息图表（.pdf文件）</a>的形式呈现，读者可以从Layer 7的网站上下载。</p>
+<p>当问及他们最先关注什么时，18%的设计人员对此并不确定，其余的API设计人员在安全性（44%）和可用性（38%）两个方面占比基本相同。这表明，安全性和可用性仍然是API设计中的关键问题。将这份调查结果与InfoQ自己的<a href="http://www.infoq.com/research/api-management">API管理功能调查</a>相比就会发现，InfoQ的调查突出了安全性作为API管理最先关注的问题——证实了CA的调查。但是，在API可用性方面比较这两个调查是不可能的，因为InfoQ的调查并没有直接将API可用性认定为API管理的一个关注问题。</p>
+<p>对于Layer 7的这项调查，大部分回复都与组织本身使用的私有API有关。60%涉及公共API和私有API的混合，26%只涉及私有API，14%只涉及公共API。在这些API的数据表示方面，XML和JSON占比基本相同。</p>
+<p>API Academy将API分成三种常见风格——Tunnel风格（SOAP）、URI风格（CRUD）和超媒体风格（REST）。调查发现，SOAP（44%）和CRUD（42%）占比基相同，其余的26%为超媒体。不过，放眼未来计划，超媒体显示了更强劲的增长势头，28%的受访者计划增加超媒体支持，相比之下，只有19%的受访者计划增加SOAP或CRUD支持。</p>
+<p>Matt McLarty是CA Technologies的企业架构师和实践服务副总裁，InfoQ就调查结果与他进行了讨论。当问及技术和API的相关性时，Matt解释说，“在调查中，我们没有发现技术与行业或企业规模等人口统计学特征之间有任何的显著相关性。但是，API Academy与各种规模、行业和目标的公司都有紧密合作。经验告诉我们，许多大型企业往往都是由内而外启用他们的API，其结果是开始时他们常常用SOAP或纯XML。随着API对外界越来越开放，或者是由于移动的需求，他们通常会换成JSON。在大多数情况下，我们都鼓励使用JSON ，因为那是大部分客户端开发的首选，而且我们喜欢偏向于API可用性。”</p>
+<p>InfoQ注意到了一项令人印象深刻的结果，就是超媒体API的预期增长势头。Matt也认为，“当前，超媒体真地很热门。这个概念出现已经有段时间了（<a href="https://www.ics.uci.edu/~fielding/pubs/dissertation/top.htm">在Fielding的博士论文中</a>），但是，我认为它正在进入发展的快车道，因为其中确实有一些有用且实际的指导，在切实可行的层面上解释了它的好处，并提供了实际的应用程序。我认为，我们正处在这样一个阶段，许多框架提供了不同的好处，但在出现明确的领导者之前，还需要沉下心来做事。”</p>
+<p>最后，InfoQ问他，在API设计所用的工具类型方面，是否有什么信息。Matt解释说，“根据我们的经验，这再次回到了我们所面对的组织文化。在大多数情况下，大型企业都使用他们首选的设计工具（数据建模工具、UML），并调整它们以适应Web API环境。最近还有人提出了一些API设计规格说明，但在我们共事的企业里，还没有看到它们的应用。”</p>
+<p>关于这些调查结果，我们真得非常乐意听听读者的感想。您认为API设计应该最先关注什么？超媒体会是未来的API协议吗——在企业内部，或者企业外部，或者两者兼而有之？</p>
+<p><b>查看英文原文：</b><a href="http://www.infoq.com/news/2014/03/ca-api-survey">Layer 7 Survey - Strong Growth Predicted for Hypermedia APIs</a></p><br><br><br><br><br><br></body></html>

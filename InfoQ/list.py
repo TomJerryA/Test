@@ -1,20 +1,20 @@
 <html>
  <head></head> 
- <body>
-  <div>
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/8.py">InfoQ主催のカンファレンス QCon Tokyo 開催決定！【早期割引：30日まで！】</a>今年も4/30(水)にQConTokyo2014を開催します。 今年は広くてアクセスのよい会場でゆったりと1日技術について語り合える場をご提供したいと考えております。
-  </div>
-  <div>
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/7.py">Mike Cohn氏、スプリントレビューにおける未完成の作業について語る</a>Mike Cohn氏は、完成していないプロダクトバックログアイテムをスプリントレビューミーティングで披露することも時には価値があるといい、その理由について語っている。
-  </div>
-  <div>
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/6.py">Anypoint for APIs:Uri Saridへのインタビュー</a>MuleSoftがAnypoint platform for APIsの重大なアップデートをリリースした。このプラットフォームはAPIの設計とAPIの管理機能を提供する。InfoQはMuleSoftのCTOである、Uri Sarid氏にこのプラットフォームについて話を聞いた。
-  </div>
-  <div>
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/5.py">アジャイルチームでメンバ同士が学び合う方法</a>アジャイルチームは(外部の)コーチやメンタを使うことができる。しかし、チーム自身がメンバ同士でメンタリングやコーチイングをすることで成長することもできる。チームメンバは他のメンバからスキルや能力を学ぶことができる。チームが自己組織化して成長できるようになる。
-  </div>
-  <div>
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/4.py">Typemock Isolator++がアップデート，64bitをサポート</a>TypemockがIsolator++をリリースした。Windowsプラットフォーム用に記述された64bit C/C++コードのサポートに加えて，もともとテストを考慮していなかったようなレガシコードにも対応する。
+ <body> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/8.py">InfoQ主催のカンファレンス QCon Tokyo 開催決定！【早期割引：30日まで！】</a>今年も4/30(水)にQConTokyo2014を開催します。 今年は広くてアクセスのよい会場でゆったりと1日技術について語り合える場をご提供したいと考えております。 
+  </div> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/7.py">Mike Cohn氏、スプリントレビューにおける未完成の作業について語る</a>Mike Cohn氏は、完成していないプロダクトバックログアイテムをスプリントレビューミーティングで披露することも時には価値があるといい、その理由について語っている。 
+  </div> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/6.py">Anypoint for APIs:Uri Saridへのインタビュー</a>MuleSoftがAnypoint platform for APIsの重大なアップデートをリリースした。このプラットフォームはAPIの設計とAPIの管理機能を提供する。InfoQはMuleSoftのCTOである、Uri Sarid氏にこのプラットフォームについて話を聞いた。 
+  </div> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/5.py">アジャイルチームでメンバ同士が学び合う方法</a>アジャイルチームは(外部の)コーチやメンタを使うことができる。しかし、チーム自身がメンバ同士でメンタリングやコーチイングをすることで成長することもできる。チームメンバは他のメンバからスキルや能力を学ぶことができる。チームが自己組織化して成長できるようになる。 
+  </div> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/4.py">Typemock Isolator++がアップデート，64bitをサポート</a>TypemockがIsolator++をリリースした。Windowsプラットフォーム用に記述された64bit C/C++コードのサポートに加えて，もともとテストを考慮していなかったようなレガシコードにも対応する。 
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/3.py">PrismaticがSchema 0.2にデータ型強制変換を追加</a>Prismaticでは，同社のClojureデータ記述ライブラリであるSchemaの0.2リリースに，データの強制型変換(coercion)を追加した。これにより，不正な型のデータを単にリジェクトするのではなく，スキーマに適合させてインスタンスを変換するような設定が可能になる。InfoQではSchemaについて，PrismaticのJason Wolfe氏に話を聞いた。 
@@ -150,6 +150,6 @@
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/13.py">Cordova 3.3.0を使ってChromeアプリをAndroidとiOSにデプロイする</a>開発者はApache Cordova 3.3.0を使って、ChromeアプリをAndroidとiOSにデプロイできるようになった。 
-  </div>      
+  </div> 
  </body>
 </html>

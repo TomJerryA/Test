@@ -1,60 +1,32 @@
-<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>作者问答 – Java编码规范</h3><p>大多数开发者都同意编写安全的代码的必要性，但往往因为项目发布的压力使他们放弃了这一追求。而另一些开发者可能仅仅是不知道从哪里开始着手。无论是哪种情况，一篇现成的规范都会帮助他们改善这种善。</p>
-<p>InfoQ有幸与<a href="http://www.informit.com/store/java-coding-guidelines-75-recommendations-for-reliable-9780321933157?w_ptgrevartcl=Java+Coding+Guidelines+for+Reliability_2133373">《Java Coding Guidelines》</a>的作者们进行了一次对话，更多地了解了他们的新书是如何帮助开发者们编写更好的代码，并且使他们有一份优秀的规范可以作为参考。</p>
-<p><b>InfoQ</b><b>：大多数开发者都希望能够改善他们的代码质量，提高代码安全性，但也许他们还不知道从哪里着手。还有的开发者认为这一点从理论上来说虽然非常好，但是他们正在一个遗留系统的代码库中挣扎而无能为力。在这些不同的情况下，你会对这些开发者们说些什么呢？</b></p>
-<blockquote> 
- <p><b>作者：</b>你对这本书的使用方式很大程度上取决于你目前的工作。如果你正处于一个Java软件开发流程的开始阶段，你也许会打算通读一篇全书，以了解其中的规范的要旨。当系统开发的过程开始后，当你对于某些规范的应用存有疑问时，你就会回过头去重新审视这些规范。</p> 
- <p>另一方面，如果你正在维护一个现有系统，那或许只有你遇到了某些“奇怪的”问题的时候，你才会想起去重新读一篇某些规范，检查代码中是否存在某些问题，再对照规范进行检查。这是一种补救式的策略。</p> 
-</blockquote>
-<p><b>InfoQ</b><b>：看一下本书就会发现，本书的内容分为安全、防御性编程、可靠性、编程可理解性以及程序员的常见误解。在这些内容之中，你认为哪一部分是在编程中最需要注意的呢？</b></p>
-<blockquote> 
- <p><b>作者：</b>《Java Coding Guidelines》的主要目标是当开发者对如何正确地应用某些编程概念、构件或语言特性有些不确定的时候，帮助他们做出明智的选择。程序员的误解这一部分主要解决的问题是“最常见的误解有哪些？”编程可理解性这部分对于如何确保代码不存在歧义、易于维护这一点做了深入的讲解。而安全、防御性编程和可靠性章节逐步为读者介绍了创建健壮的系统，让它们能够从攻击或停机中立即恢复所需的知识。</p> 
-</blockquote>
-<p><b>InfoQ</b><b>：你的这本书和</b><a href="https://www.securecoding.cert.org/confluence/display/java/The+CERT+Oracle+Secure+Coding+Standard+for+Java"><i>《The CERT Oracle Secure Coding Standard for Java</i><i>》</i></a><b>一书是否有什么关系呢？读者们是否应该先阅读你的规范再去阅读那本书，或是两本书可以一起读呢？</b></p>
-<blockquote> 
- <p><b>作者：</b>《The CERT Oracle Secure Coding Standard for Java》一书为Java的安全编码定义了一些规则，如果你违背了这些规则，就有可能导致产生被人利用的弱点。《Java Coding Guidelines》则推荐了一些改善软件安全性和可靠性的一般性作法，而即使违背了其中的某些建议，也并不代表你的代码中就此生产了缺陷。这两本书最好是能够配合使用，它们提供了各自独立的一些指导规范，而且这两本书中的内容重复很少，甚至几乎没有。多数的规范都提供了一些应当遵循的通用编码原则，而编码标准则列举了各种应当避免的错误。《Java Coding Guidelines》也引用了《The CERT Oracle Secure Coding Standard for Java》中的内容，但它的整体依然是独立的。</p> 
-</blockquote>
-<p><b>InfoQ</b><b>：自动进行代码扫描的工具能够在多大程度上检测出这种错误呢？有了自动化工具，是否就代表程序员不必去熟悉这些概念了呢？</b></p>
-<blockquote> 
- <p><b>作者：</b>程序员应该熟悉《Java Coding Guidelines》中的各种概念，因为在开发阶段更容易避免在代码中产生缺陷和弱点，而如果在测试阶段，或者更糟的是在部署阶段，要找到并纠正这些问题就要难得多了。大多数现有的分析工具并不健全，并且也不完全，这意味着这些分析产生的结果有可能包含错误否定或者错误肯定。开发者必须能够判断工具的诊断结论是否代表着违背了某个原则，并且还要能够避免或消除在诊断结论中没有列举出的违背情况。CERT创建了源代码分析实验室（SCALe）工具，它使用了多种静态分析方式对代码进行评估，以找出对安全编码规则的违背情况。许多类似这样的工具都具有不重复的功能，因此需要使用多种工具以获得更大的检验覆盖程度。但SCALe过程只有部分是自动化的，对诊断结果必须进行人工分析，以消除错误肯定的结论。</p> 
-</blockquote>
-<p><b>InfoQ</b><b>：你是否注意到有些团队会专门推举出一位“安全专家”？难道不应该是整个团队都去熟悉这些安全性的内容吗？</b></p>
-<blockquote> 
- <p><b>作者：</b>如果整个团队都能够理解安全编码的概念，那效果会好得多。每个写代码的人都需要了解如何安全地编写代码，因为编写代码的时候也是调整你的代码的最佳时机。如果团队中的某位成员受过更多安全性方面的培训，那他可以通过代码审查和安全性审计的方式将这些知识有效地推广给整个团队。开发团队必须承诺他们会编写出遵循规范的代码，他们可以将本书作为参考。开发者可以参加或关注我们在<a href="http://www.securecoding.cert.org">www.securecoding.cert.org</a>网站所订制的编码标准，并通过newsletter或者是Linked上的安全编码论坛（Secure Coding Forum）进行讨论。</p> 
-</blockquote>
-<p><b>InfoQ</b><b>：你是否注意到有哪些错误是开发者会重复出现的吗？</b></p>
-<blockquote> 
- <p><b>作者：</b>某些错误会经常性地出现在Java中，那是因为这门语言在如何应用各种编程构件方面提供了很大的自由度。举例来说，安全编码规则中的ERR-08-J Do not catch NullPointerException or any of its ancestors （不要捕获NullPointerException异常或它的任何父类）就经常被违背，因为有些开发者忽视了Java所提供的异常处理特性。在代码中捕获或者抛出一个过于泛用的类型经常会导致错误被忽略的结果。异常处理始终都是一个挑战，因为许多Java应用和web框架将处理异常和失败情形的责任都丢给了开发者。</p> 
- <p>CERT为各种 Java的软件系统对《The CERT Oracle Secure Coding Standard for Java》的遵守情况做了一些分析，在我们的记录中，最容易被违背的规则有这几条：</p> 
- <p>A. EXP01-J. Never dereference null pointers（永远不要间接引用空指针）</p> 
- <p>B. ERR01-J. Do not allow exceptions to expose sensitive information （不要让异常暴露敏感信息）</p> 
- <p>C. ERR07-J. Do not throw RuntimeException, Exception, or Throwable（不要抛出RuntimeException、 Exception、或Throwable类型的异常）</p> 
- <p>D. ERR08-J. Do not catch NullPointerException or any of its ancestors（不要捕获NullPointerException异常或它的任何父类）</p> 
- <p>E. FIO04-J. Release resources when they are no longer needed（当不再需要某个资源的时候立即释放它）</p> 
- <p>F. ERR00-J. Do not suppress or ignore checked exceptions（不要抑制或忽略查到的异常）</p> 
-</blockquote>
+<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>安全领域中的大数据分析</h3><p><img style="float: left; margin-right: 10px" src="http://infoqstatic.com/resource/articles/bigdata-analytics-for-security/zh/resources/0220000.jpg" alt="" _href="img://null" _p="true" />本文最初发表在<a href="http://www.computer.org/portal/web/computingnow/securityandprivacy"><i>IEEE</i><i>安全及隐私</i></a><strong><i> </i></strong><i>杂志上，由InfoQ &amp; IEEE</i><i>计算机学会为您呈现。</i> <br /><br /> 企业定期收集几TB与安全相关的数据(比如网络事件、软件应用程序事件，以及人员活动事件)， 用来作合规性和事后取证分析。据估计，不同规模的大型企业每天发生的事件在上百亿到上千亿之间。随着企业启用的事件记录源越来越多，雇用的员工越来越多，部署的设备越来越多，运行的软件越来越多，这些数值还会继续增长。不幸的是，这种数据量和多样性会迅速变成骆驼背上的稻草。现有分析技术无法应对大规模数据，通常都会产生很多误报，因此功效被削弱了。随着企业向云架构迁移，并且收集的数据越来越多，这个问题进一步恶化了。</p>
+<div style="clear: both">
+ &nbsp;
+</div>
+<p>大数据分析—信息的大规模分析和处理—在几个领域用的热火朝天，并且最近这些年，因其承诺以前所未有的规模高效地分析和关联与安全相关的数据，也引起了安全社区的兴趣。然而，对安全而言，传统数据分析和大数据分析之间的差异并不是那么直观。毕竟信息安全社区十多年来一直在利用网络流量、系统日志和其它信息源的分析甄别威胁，检测恶意活动，而这些传统方式跟大数据有何不同还不清楚。</p>
+<p>为了解决这个问题，还有其它问题，云安全联盟(CSA)在2012年成立了大数据工作组。这个工作组由来自业内的和院校的志愿者组成，共同确定这一领域内的原则、纲领及所面临的挑战。它最新的报告， “<a href="https://cloudsecurityalliance.org/download/big-data-analytics-for-security-intelligence">安全智能中的大数据分析</a>”，重点探讨了大数据在安全领域中的作用。在这份报告中，详细阐述了利用大量结构化和非结构化数据的新工具的介入及广泛使用如何改变了安全分析领域。它还罗列了一些跟传统分析的基本差异，并指出了一些可能的研究方向。我们对这份报告中的一些关键点做了汇总。</p>
+<h2>大数据分析的进展</h2>
+<p>数据驱动的信息安全数据可以支撑银行的欺诈检测和基于异常的入侵监测系统(IDSs)。尽管为了取证和入侵检测，对日志、网络流和系统事件进行分析已经是信息安全社区面对了十多年的问题了，然而出于几个原因，传统技术有时候对长期的、大规模的分析支持力度不够：首先是以前保留大量的数据在经济上不可行。因此在传统的基础设施中，大多数事件日志和其他记录的计算机活动在一个固定的保留期（比如60天）后就被删除了。其次，在那种不完整，还很嘈杂的大型、非结构化数据集上执行分析和复杂查询的效率很低下。比如说，几个流行的信息安全和事件管理(SIEM)工具都不支持对非结构化数据的分析和管理，被严格限定在预定义的数据方案上。然而，因为大数据应用程序可以有效地清理、准备、查询那些异构的、不完整的、嘈杂格式的数据，所以它们也开始成为信息安全管理软件的一部分。最后，大型数据仓库的管理传统上都很昂贵，并且它们的部署通常需要很强的业务案例。而Hadoop 框架和其它大数据工具现在将大规模的、可靠的集群部署商品化了，因此在数据处理和分析上出现了新的机会。</p>
+<p>欺诈检测是大数据分析中最显眼的应用：信用卡和电话公司开展欺诈检测的历史已经有几十年了；然而从经济角度来看，必须用定制的基础设置来挖掘大数据做欺诈检测并不适于大规模采用。大数据技术的一个主要影响是它们让很多行业的企业能够承担构建基础设施来做安全监测的开支。</p>
+<p>特别是新的大数据技术，比如Hadoop生态圈 (包括 Pig、Hive、 Mahout 和RHadoop)、流挖掘、复杂事件处理和NoSQL数据库—能够以前所未有的规模和速度分析大规模的异构数据集。这些技术通过促进安全信息的存储、维护和分析改变着安全分析。比如说，WINE平台<sup>1</sup>和Bot-Cloud<sup>2</sup> 允许使用MapReduce高效地处理数据做安全分析。通过观察过去十年安全工具的反应发生了什么样的变化，我们可以找出其中的一些趋势。当IDS探测器的市场增长时，网络监测探测器和日志工具被部署到了企业网络中；然而，管理这些分散的数据源发过来的警告变成了一个很有挑战性的任务。结果安全厂商开始开发SIEMs ，致力于把警告信息和其它网络统计数据整合并关联起来，通过一个仪表板把所有信息呈现给安全分析人员。现在，大数据工具将更加分散数据源，时间范围更长的数据关联、整合和归纳整理起来交给安全分析人员，改进了安全分析人员可获取的信息。</p>
+<div id="lowerFullwidthVCR"></div>
+<p>Zions&nbsp; Bancorporation最近给出的一个案例研究可以让我们见到大数据工具的具体收益。它的研究发现，它所处理的数据质量和分析的事件数量比传统的SIEM（在一个月的数据负载中搜索要花20分钟到一个小时的时间）多出很多。在它用Hive运行查询的新Hadoop 系统中，相同的结果大概在一分钟左右就出来了。<sup>3</sup> 采用驱动这一实现的安全数据仓库，用户不仅可以从防火墙和安全设备中挖掘有意义的安全信息，还能从网站流、业务流程和其他日常事务中挖掘。将非结构化的数据和多种不同的数据集纳入一个分析框架中是大数据的特性之一。大数据工具还特别适合用作高级持续性威胁（APT）的检测和取证的基础工具。<sup>4,5</sup> APT的运行模式又低又慢（即执行时不引人注意，而时间又很长）；因此，它们可能会持续很长时间，而受害者却对入侵毫无所知。为了检测这些攻击，我们需要收集并关联大量分散的数据（包括来自内部数据源的数据和外部共享的智能数据），并执行长期的历史相关性风险，以便纳入网络历史上发生过的攻击的后验信息。</p>
+<h2>挑战</h2>
+<p>尽管在处理安全问题上，大数据分析应用程序的希望很显著，但我们必须提出几项挑战，从而去认识到它真正的潜力。在行业中分享数据，隐私特别重要，并且要避免违背数据重用的隐私原则法规，也就是说只能将数据用于收集它的目的。直到最近，隐私在很大程度上还取决于<a href="http://www.computer.org/security">www.computer.org/security</a> 75在抽取、分析和关联潜在敏感数据集能力上的技术局限性上。然而，大数据分析的发展为我们提供了抽取和关联这种数据的工具，让破坏隐私更容易了。因此，我们必须在了解隐私法规及推荐实践的情况下开发大数据应用程序。尽管在某些存在隐私法规的领域—比如说，在美国，美国联邦通信委员跟电信公司的合作，健康保险隐私及责任法案指出的医疗数据，几个州的公用事业委员会限制智能电网数据的使用，以及联邦贸易委员会正在制定Web活动的指导方针—所有这些活动都扩大了系统的覆盖范围，并且在很多情况下都会有不同的解读。即便有隐私法规在，我们也要懂得，那样大规模的数据收集和存储会吸引社会各界的关注，包括产业界（将我们的信息用在营销和广告上），政府（会强调这些数据对国家安全或法律执行很有必要）和罪犯（喜欢盗取我们的身份）。因此，作为大数据应用程序的架构师和设计者，我们要积极主动地创造出保障措施，防止对这些大数据库存的滥用。</p>
+<p>另外一个挑战是数据出处的问题。因为大数据让我们可以扩充用于处理的数据源，所以很难判断出哪个数据源符合我们的分析算法所要求的可信赖度，以便能生产出准确的结果。因此，我们需要反思工具中所用数据的真实性和完整性。我们可以研究源自对抗性机器学习和稳健统计的思路，找出并减轻恶意插入数据的影响。</p>
+<p>这个特别的CSA报告聚焦于大数据分析在安全方面的应用，但另一方面是用安全技术保护大数据。随着大数据工具不断被部署到企业系统中，我们不仅要利用传统的安全机制（比如在Hadoop内部集成传输层安全协议），还要引入新工具，比如Apache的Accumulo，来处理大数据管理中独有的安全问题。</p>
+<p>最后，这个报告中还有一个没有覆盖到，但还需要进一步开发的领域，即人机交互，特别是可视化分析如何帮助安全分析人员解读查询结果。可视化分析是通过交互式可视化界面促进推理分析能力的科学。跟为了高效计算和存储而开发的技术机制相比，大数据中的人机交互受到的关注比较少，但它也是大数据分析达成“承诺”必不可少的基础工具，因为它的目标是通过最有效的展示方式将信息传达给人类。大数据正在改变着用于网络监测、SIEM和取证的安全技术景观。然而，在进攻和防守永远不会停歇的军备竞赛中，大数据不是万能的，安全研究人员必须不断探索新的方式来遏制老练的攻击者。大数据还会让维持控制个人信息的泄漏变成持续不断的挑战。因此，我们需要付出更多的努力，用保护隐私的价值观培育新一代的计算机科学家和工程师，并跟他们一起开发出设计大数据系统的工具，从而让大数据系统能遵循普遍认可的隐私准则。</p>
+<h2>参考资料</h2>
+<ol> 
+ <li>T. Dumitras and D. Shou, “Toward a Standard Benchmark for Computer Security Research: The Worldwide Intelligence Network Environment (WINE),” Proc. EuroSys BADGERS Workshop, ACM, 2011, pp. 89–96.</li> 
+ <li>J. Fran&ccedil;ois et al., “BotCloud: Detecting Botnets Using MapReduce,” Proc. Workshop Information Forensics and Security, IEEE, 2011, pp. 1–6.</li> 
+ <li>E. Chickowski, “A Case Study in Security Big Data Analysis,” Dark Reading, 9 Mar. 2012.</li> 
+ <li>P. Giura and W. Wang, “Using Large Scale Distributed Computing to Unveil Advanced Persistent Threats,” Science J., vol. 1, no. 3, 2012, pp. 93–105.</li> 
+ <li>T.-F. Yen et al., “Beehive: Large-Scale Log Analysis for Detecting Suspicious Activity in Enterprise Networks,” to be published in Proc. Ann. Computer Security Applications Conference (ACSAC 13), ACM, Dec. 2013.</li> 
+</ol>
 <h2>关于作者</h2>
-<table cellspacing="0" cellpadding="0" border="1"> 
- <tbody> 
-  <tr> 
-   <td width="80" valign="top"><img _p="true" _href="img://null" alt="" style="float: left; margin-right: 10px" src="http://infoqstatic.com/resource/articles/java_coding_guidelines-interview/zh/resources/1123010.jpg" /></td> 
-   <td width="320" valign="top"> <p><b>Fred Long</b> 是Aberystwyth 大学计算机与科学系的一位高级讲师，也是学习与教学研究协会的主任，并且是SEI的一位客座科学家。</p> </td> 
-  </tr> 
-  <tr> 
-   <td width="80" valign="top"><img _p="true" _href="img://null" alt="" style="float: left; margin-right: 10px" src="http://infoqstatic.com/resource/articles/java_coding_guidelines-interview/zh/resources/1123011.jpg" /></td> 
-   <td width="320" valign="top"> <p><b>Dhruv Mohindra</b>, 是Persistent Systems Limited印度公司中所属于CTO办公室的安全性实践小组的技术领导，他为多个技术领域的信息安全进行顾问服务。</p> </td> 
-  </tr> 
-  <tr> 
-   <td width="80" valign="top"><img _p="true" _href="img://null" alt="" style="float: left; margin-right: 10px" src="http://infoqstatic.com/resource/articles/java_coding_guidelines-interview/zh/resources/1123012.jpg" /></td> 
-   <td width="320" valign="top"> <p><b>Robert C. Seacord</b> 是CERT的安全编码倡议小组的管理者，他也是CMU学校的计算机与科学系的一名副教授。</p> </td> 
-  </tr> 
-  <tr> 
-   <td width="80" valign="top"><img _p="true" _href="img://null" alt="" style="float: left; margin-right: 10px" src="http://infoqstatic.com/resource/articles/java_coding_guidelines-interview/zh/resources/1123013.jpg" /></td> 
-   <td width="320" valign="top"> <p><b>Dean F. Sutherland</b> 是CERT的高级软件安全性研究员，他曾在Tartan公司做过14年的软件工程师。</p> </td> 
-  </tr> 
-  <tr> 
-   <td width="80" valign="top"><img _p="true" _href="img://null" alt="" style="float: left; margin-right: 10px" src="http://infoqstatic.com/resource/articles/java_coding_guidelines-interview/zh/resources/1123014.jpg" /></td> 
-   <td width="320" valign="top"> <p><b>David Svoboda</b>是CERT的软件安全性工程师，从1991年开始，他就在多个CMU开发项目中担任主要开发者</p> </td> 
-  </tr> 
- </tbody> 
-</table>
-<p><strong>查看英文原文：</strong><a href="http://www.infoq.com/articles/java_coding_guidelines-interview">Author Q&amp;A: Java Coding Guidelines</a></p><br><br><br><br><br><br></body></html>
+<p><strong>Alvaro A. C&aacute;rdenas</strong>德克萨斯大学达拉斯分校的助理教授。在<a href="http://alvaro.cardenas@utdallas.edu">这里</a>联系他。</p>
+<p><strong>Pratyusa K. Manadhata</strong> HP实验室研究员。在<a href="http://manadhata@hp.com">这里</a>联系他。</p>
+<p><strong>Sreeranga P. Rajan</strong> 是美国富士通实验室的软件系统主任。可以通过sree@us.fujitsu.com联系他。<a href="http://ComputingNow.computer.org">这里</a>还有可以免费访问的入选的 CS文章和专栏。</p>
+<p><img style="float: left; margin-right: 10px" src="http://infoqstatic.com/resource/articles/bigdata-analytics-for-security/zh/resources/0220000.jpg" alt="" _href="img://null" _p="true" />这篇文章最初发表在<a href="http://www.computer.org/portal/web/computingnow/securityandprivacy"><strong><i> </i></strong></a><a href="http://www.computer.org/portal/web/computingnow/securityandprivacy"><i>IEEE</i><i>安全与隐私</i></a><strong><i> </i></strong><i>杂志上。</i><a href="http://www.computer.org/portal/web/computingnow/securityandprivacy"><strong><i> </i></strong></a><a href="http://www.computer.org/portal/web/computingnow/securityandprivacy"><i>IEEE</i><i>安全与隐私</i></a><strong><i>的主要目标是促进和追踪在安全、隐私和可靠性方面的进展，并将这些进展以一种实用的形式展示给范围广泛的专业团体，从学院派的研究人员到产业内的从业人员。</i></strong></p>
+<div style="clear: both"></div>
+<p><strong>原文英文链接：</strong><a href="http://www.infoq.com/articles/bigdata-analytics-for-security">Big Data Analytics for Security</a></p><br><br><br><br><br><br></body></html>

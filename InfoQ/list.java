@@ -1,8 +1,8 @@
 <html>
  <head></head> 
- <body>
-  <div>
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/12.java">Akka Toolkit 2.3 with Java 8 and Persistence Support</a>Latest version of the Akka toolkit, an implementation of Actor Model, comes with persistence enabling stateful actors to persist their internal state, together with support for Java 8 lambda expressions.
+ <body> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/12.java">Akka Toolkit 2.3 with Java 8 and Persistence Support</a>Latest version of the Akka toolkit, an implementation of Actor Model, comes with persistence enabling stateful actors to persist their internal state, together with support for Java 8 lambda expressions. 
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/11.java">Improving Process with Two Definitions of Done</a>Separate ideal and current versions of Definition of Done can be used in agile teams. The purpose is to expand Definition of Done to grow in maturity and quality. This can be implemented on physical boards as well as on other electronic Agile Tools like Jira. 
@@ -150,6 +150,6 @@
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/17.java">Prismatic Adds Data Type Coercion to Schema 0.2</a>Prismatic have added data coercion in the 0.2 release of their Clojure data description library, Schema. The addition of coercion means that the library doesn’t just reject data that has the wrong types, but it can be configured to modify instances to fit the schema. InfoQ talked to Prismatic's Jason Wolfe about Schema. 
-  </div>  
+  </div> 
  </body>
 </html>
