@@ -1,34 +1,179 @@
-<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>姜小凡：物理世界的数据越来越有价值</h3><p>进入二月下旬，北京迎来一轮漫长的雾霾天气，京东上许多空气净化器脱销，淘宝上3M口罩涨价不少，微博、微信上也流传着各种应对PM2.5的偏方。在未来的日子，我们不得不继续PM2.5问题。2013年，姜小凡和他的团队开发了一款成本200多元的PM2.5检测设备——PAM（便携式个人空气质量监测仪）。PAM最大的特点是成本低。同时，PAM考虑了地理信息、气候因素，并且通过机器学习的方式处理这些数据，建立模型，模型进一步修正数据，保证数据精确性。</p>
-<p>在<a href="http://www.qconbeijing.com/">QCon北京2014</a>大会上，姜小凡将就《PM2.5的大数据分析》为题分享，详解如何将廉价的传感器与云端数据结合实现PM2.5分析的。日前，InfoQ对姜小凡进行了专访，以下为采访内容：</p>
-<p><strong>InfoQ</strong>：姜小凡你好，向InfoQ的读者和QCon的参会者介绍下自己吧。</p>
-<blockquote> 
- <p><strong>姜小凡</strong>：我是Intel物联技术研究院的首席构架师，也是Intel研究院的主任研究员。最早我在伯克利读本科和博士，期间开始接触物联网这个方向，做了一些无线传感器网络和楼宇能源监测及管理的项目。在博士期间我也做了一些能源控制的startup，并也在美国的Google做了一些MIMO通信的研究。毕业之后我加入了微软亚洲研究院，那时候我主要研究移动互联网、室内定位等。2012年底我再次加入了Intel，为什么说我再次加入呢，是因为我本科毕业的时候，在加州那边的英特尔也工作过一段时间。自2012年底到现在，我们对很多领域的技术进行了探讨，并对其中一些进行了深入研究。其中一个项目是利用物联网和大数据手段做空气质量检测，如PM2.5和雾霾。</p> 
-</blockquote>
-<p><strong>InfoQ</strong>：目前你关注的重点是什么？</p>
-<blockquote> 
- <p><strong>姜小凡</strong>：把物联网技术真正应用到生活中，把技术真正推向市场并解决一些问题，是我们研究院所有人共同的目标，也是我们关注的重点。对于我个人来说，刚刚说的PM2.5和雾霾问题是我目前一个很重要的关注点。现在有各种手段做PM2.5监测，但是这些方式要么非常昂贵，要么很不精确。而我们利用比较廉价的传感器网络能实时的把颗粒物的数据传到云端，同时收集了不同维度的其他数据，包括气象数据，人的位置数据等，将这些数据融合在一起。最后用机器学习的方式处理这些数据，找到他们之间的关系，学习出不同维度数据互相的影响。通过这种方式，在云端做了空气模型，再通过这个模型增加数据的精确性。我认为这是一个非常经典的物联网和大数据的结合的项目，也希望能够向QCon的听众介绍这个项目。</p> 
- <p>当然我们不仅仅有空气质量方向的研究，我们也做一些可以快速应用的项目，我可以列举几个。如手机验真。现在国内的手机是有很多是仿品，怎么用数据和众包的方式自动检测到手机的真伪？这就涉及到手机硬软件的“指纹”收集，我们在云端建立了一个比较大的数据库，能收集到很多款Android手机的指纹。不同的操作系统，不同的软件版本会生成不同的指纹，通过指纹的方式非常简单的告诉消费者，你买的手机是正品还是仿品。</p> 
- <p>在室内定位方面，我们和海龙大厦合作，通过无线信号指纹的手段定位。这样，我们知道某个消费者时时的精确位置。基于位置信息，可以给消费者提供一些帮助，比如说室内导航，广告的推送。</p> 
- <p>此外还有一些其他的项目，包括我们在公交车做了人流的监测和预测，希望解决交通拥堵的问题。基本上我们现在都是比较实际的问题，希望用大数据、云计算的手段去解决这些问题，而不是花更多的钱去买一个更精确的传感器。我认为这是一个正确的方向。</p> 
-</blockquote>
-<p><strong>InfoQ</strong>：海龙大厦室内定位是通过WiFi信号实现的吗？</p>
-<blockquote> 
- <p><strong>姜小凡</strong>：是通过WiFi，这个技术在学术界已经有不少论文，但我们还没有看到很多真正的商业应用。我们这里要做的，不是去发论文讨论如何实现，或是如何添加一个什么创意来改进，而是真正将WiFi室内定位推进到应用的层面，我们知道任何一个实验室技术和真正实用化相比还有很大差距的，面对的问题也有很大区别。实验室关注的是可行性，可以对很多条件进行限定；但实际上很多条件是不可预知的，实际应用有太多的细节和技术难关需要解决。</p> 
-</blockquote>
-<p><strong>InfoQ</strong>：在过去一年当中，你观察到数据行业有哪些变化？</p>
-<blockquote> 
- <p><strong>姜小凡</strong>：开始的时候，大家都觉得大数据要像亚马逊、沃尔玛、Google这些公司那样收集了很多信息，然后通过模型或分析找到可利用的信息。很多人把大数据和Hadoop之类的技术划上等号，拿数据量来标榜大数据。而我的看法却不同，我认为大家越来越关注小数据的集合，为什么呢？之前一般直接从互联网提取数据，但是近一两年，看到的是很多物理世界的数据，比如手机里的加速度传感器的数据，GPS数据，PM2.5数据。这些和物理世界相关的数据越来越多，而且越来越有价值。我认为我们会渐渐把大数据的概念扩展，把空间信息、地理位置信息等meta data都加入进去。而我们更关注的不是数据本身，而是数据之间的关系和它们的相互作用。建立数据之间的关系是有难度的，处理起来也更加复杂。如在实时系统中，留给数据分析和反馈至前端的时间也许只有10毫秒，如何利用流处理和系统优化来达到，这是我们需要深入研究的。</p> 
-</blockquote>
-<p><strong>InfoQ</strong>：你怎么理解大数据处理与大数据应用？</p>
-<blockquote> 
- <p><strong>姜小凡</strong>：大数据处理方面，大家都认为大数据应该在云端做，但我觉得数据的处理应该是分布式的，我指的不仅是数据中心分散计算能力，而是数据应该在最利于处理的地方处理。比如，如果需要把所有数据以原始的状态发送到云端处理，对网络的压力是非常大的。所以我认为大数据处理，可以在例如手表之类的地方处理再发送到云端，比如视频数据会在摄像头内做一些特征提取，然后再把特征发送到云端。</p> 
- <p>大数据应用有一些经典的例子，比如通过数据分析知道用户在某一时间点喜欢购买的商品，超市可以通过预测来提前订货。在移动应用方面，刚才提到了在海龙大厦的室内定位就是其中之一。</p> 
-</blockquote>
-<p><strong>InfoQ</strong>：您曾经说过，希望把PAM传感器的价格降到两三百元人民币，这个目标还需要多久才能实现？</p>
-<blockquote> 
- <p><strong>姜小凡</strong>：这个目标在有一定生产量的前提下已经实现了。具体生产量是多少，我们还在进行核算，不过这个量应该不是很大。</p> 
-</blockquote>
-<p><strong>InfoQ</strong>：通过大量廉价的传感器搜集数据是未来实现大数据应用的有效手段吗？这其中的难点在哪儿？</p>
-<blockquote> 
- <p><strong>姜小凡</strong>：这里的挑战包括数据的可用性，精确性，以及把数据提取到云端的过程耗费的系统资源。以WiFi定位为例，原理上大家都理解，通过收集某一点的3个AP的信号强度，用三角定位实现。但在真实环境，无线信号波动非常大，遮挡物会改变信号强度，信号可能被反射和散射 ，造成信号强度衰减或者增递。物理世界的传感器数据，并没有互联网数据那么干净，需要大量的处理把传感器数据变成可用的数据。</p> 
-</blockquote><br><br><br><br><br><br></body></html>
+<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>环境特定的构建工具：Grunt、Gulp和Broccoli</h3><p>项目的开发、分期和产品版本之间可能会有巨大的改变，这是我们需要基于环境以及特定目标信息改变资源（脚本、样式、模板）、生成标记或者其他内容路径的原因之一。很幸运的是，在Grunt、Gulp和Broccolli生态系统中已经有很多构建工具能够帮助我们完成这些工作。不久之前来自于Google Chrome开发者关系团队的工程师Addy Osmani对解决该问题的三种方式（字符串替代、条件注释和模板变量）做了<a href="http://addyosmani.com/blog/environment-specific-builds-with-grunt-gulp-or-broccoli/">对比</a>。</p>
+<h2>最简单的选项—字符串/正则表达式替换</h2>
+<p>对于环境特定的输出，最简单的选项是使用字符串替换，通过一个简单的字符串或者正则表达式找出并移除/替代HTML文件中的块。构建文件中可能会有很多目标设置，其中的每一个都能够用任意内容替换字符串。</p>
+<p>例如，在Grunt中使用<a href="https://github.com/erickrdch/grunt-string-replace">grunt-string-replace</a>的一个非常基础的例子可能是在prod构建的时候将字符串source.js替换为build.js，如下所示：</p>
+<pre>
+module.exports = function(grunt) {
+  grunt.initConfig({
+    'string-replace': {
+      prod: {
+        src: './app/**/*.html',
+        dest: './dist/',
+        options: {
+          replacements: [{
+            pattern: 'source.js',
+            replacement: 'build.js'
+          }]
+        }
+      }
+    }
+  });
+  grunt.loadNpmTasks('grunt-string-replace');
+  grunt.registerTask('default', ['string-replace']);
+};</pre>
+<p>（<a href="https://github.com/outaTiME/grunt-replace">grunt-replace</a> 也能很好的满足这种场景）</p>
+<p>一般情况下，文本替换的方式需要少量配置，像Stephen Sawchuk（Yeoman和Bower的一位贡献者，他认为对于自己的设置而言其他的替代方案过于复杂）这样的开发人员会使用这种方式。从这个<a href="https://gist.github.com/stephenplusplus/523314c4bdda1a8ad1c0">gist</a>中你可以找到他在项目中是如何使用字符串替换的。</p>
+<p>如果你并没有使用Grunt，那么等价方案还有<a href="https://github.com/lazd/gulp-replace">gulp-replace</a>和<a href="https://github.com/outaTiME/broccoli-replace">broccoli-replace</a>。</p>
+<p>对于简单的场景而言，字符串替换能够很好地完成工作，例如需要更新或者删除多个文件中的一组字符串。但是如果你有大量需要替换的内容，同时需要在源文件和构建文件之间来回跳转以便于算出到底需要替换哪些内容时，这种方式就会变得难以维护。</p>
+<p>对于这种场景更好的解决方案是在源文件中就地定义替代品。也就是下面的选项。</p>
+<h2>条件注释</h2>
+<p>环境条件注释的基本思想是：在构建文件中通过最少的配置、使用HTML注释语法定义将一个字符串替代为目标内容所需要的逻辑和信息（例如路径）。这种方案的可读性比较好，同时也能够很容易地在每一个文件中实现。</p>
+<p>下面是一些可选方案：</p>
+<p>Grunt：</p>
+<ul> 
+ <li><a href="https://npmjs.org/package/grunt-targethtml/">grunt-targethtml</a></li> 
+ <li><a href="https://npmjs.org/package/grunt-preprocess/">grunt-preprocess</a></li> 
+ <li><a href="https://npmjs.org/package/grunt-processhtml/">grunt-processhtml</a></li> 
+</ul>
+<p>Gulp：</p>
+<ul> 
+ <li><a href="https://npmjs.org/package/gulp-preprocess/">gulp-preprocess</a></li> 
+ <li><a href="https://npmjs.org/package/gulp-processhtml/">gulp-processhtml</a></li> 
+</ul>
+<p>该列表前三个选项的注释语法在可读性和冗余度方面有所差异，但是它们都能有效地实现同样的结果。所有的选项都能够毫不费力地输出目标/环境特定的块，首先让我们来比较一下targethtml和preprocess：</p>
+<p><strong>一个</strong><code><b>grunt-targethtml</b></code> <strong>示例</strong><strong> (Dev vs. Production)</strong></p>
+<pre>
+Dev：
+&lt;!--(if target dev)&gt;&lt;!--&gt;
+ &lt;link rel=&quot;stylesheet&quot; href=&quot;dev.css&quot; /&gt;
+&lt;!--&lt;!(endif)--&gt;
+&lt;!--(if target dev)&gt;&lt;!--&gt;
+  &lt;script src=&quot;dev.js&quot;&gt;&lt;/script&gt;
+  &lt;script&gt;
+    var less = { env:'development' };
+  &lt;/script&gt;
+&lt;!--&lt;!(endif)--&gt;
+Production：
+&lt;!--(if target prod)&gt;&lt;!--&gt;
+  &lt;link rel=&quot;stylesheet&quot; href=&quot;release.css&quot;&gt;
+&lt;!--&lt;!(endif)--&gt;
+&lt;!--(if target prod)&gt;&lt;!--&gt;
+   &lt;script src=&quot;release.js&quot;&gt;&lt;/script&gt;
+&lt;!--&lt;!(endif)--&gt;</pre>
+<p><strong>同样的</strong><code><b>grunt-processhtml</b></code></p>
+<pre>
+Dev：
+&lt;!-- @if NODE_ENV='production' --&gt;
+ &lt;link rel=&quot;stylesheet&quot; href=&quot;dev.css&quot;&gt;
+&lt;!-- @endif --&gt;
+&lt;!-- @if NODE_ENV='production' --&gt;
+&lt;script src=&quot;dev.js&quot;&gt;&lt;/script&gt;
+&lt;script&gt;
+  var less = { env:'development' };
+&lt;/script&gt;
+&lt;!-- @endif --&gt;
+
+Production：
+&lt;!-- @if NODE_ENV='production' --&gt;
+&lt;link rel=&quot;stylesheet&quot; href=&quot;release.css&quot;&gt;
+&lt;!-- @endif --&gt;
+&lt;!-- @if NODE_ENV='production' --&gt;
+&lt;script src=&quot;release.js&quot;&gt;&lt;/script&gt;
+&lt;!-- @endif --&gt;</pre>
+<p>正如我们所看到的，按照注释的形式指定逻辑相当直接，这种方式已经被大量地使用，并没有太多的抱怨。</p>
+<p>使用条件注释的一个主要缺点是：标记文件中可能会包含大量与构建相关的逻辑。虽然有一些开发人员不喜欢这样，但是这些任务提供了可读性流。这也意味着我们没必要跳回Gruntfile中查看它到底正在干什么。</p>
+<p>之前列出了3个Grunt任务，那么grunt-processhtml怎么样呢？它有一点专业，你可以使用模板变量以及其他的一些不错的技巧包含完全不同的文件。</p>
+<p>例如，在下面的例子中只有当“dist”目标运行的时候才会将class修改为“production”：</p>
+<pre>
+&lt;!-- build:[class]:dist production --&gt;
+&lt;html class=&quot;debug_mode&quot;&gt;
+&lt;!-- /build --&gt;</pre>
+<p>或者使用任意一个文件替换目标中的一个块：</p>
+<pre>
+&lt;!-- build:include:dev dev/content.html --&gt;
+This will be replaced by the content of dev/content.html
+&lt;!-- /build --&gt;</pre>
+<p>或者根据目标删除一个块：</p>
+<pre>
+&lt;!-- build:remove --&gt;
+&lt;p&gt;This will be removed when any processhtml target is done&lt;/p&gt;
+&lt;!-- /build --&gt;
+&lt;!-- build:remove:dist --&gt;
+&lt;p&gt;But this one only when doing processhtml:dist target&lt;/p&gt;
+&lt;!-- /build --&gt;</pre>
+<p>如果确定需要配置代码注释块格式的能力，那么可以查看 <a href="https://npmjs.org/package/grunt-devcode/">grunt-devcode</a> ，它支持这些。下面是一些示例配置：</p>
+<pre>
+Gruntfile：
+Devcode：
+    {
+      options :
+      {
+        html: true,        // html files parsing?
+        js: true,          // javascript files parsing?
+        css: true,         // css files parsing?
+        clean: true,
+        block: {
+          open: 'condition', // open code block
+          close: 'conditionend' // close code block
+        },
+        dest: 'dist'
+      },
+Markup：
+&lt;!-- condition: !production --&gt;
+  &lt;li class=&quot;right&quot;&gt;
+    &lt;a href=&quot;#settings&quot; data-toggle=&quot;tab&quot;&gt;
+      Settings
+    &lt;/a&gt;
+  &lt;/li&gt;
+&lt;!-- conditionend --&gt;</pre>
+<p>如果你想利用占位符的方式实现，那么可以借助于模板变量。</p>
+<h2>HTML中的模板变量</h2>
+<p>构建时模板允许我们将源文件中定义的占位符字符串（例如&lt;%- title %&gt;）替换为构建文件（例如Gruntfile）中定义的与特定目标相关的数据（字符串、对象等任何你需要的内容）。与条件注释相比，使用这种方式时你注入的数据并不是在目标文件本身中指定的。这种类型的选项有：</p>
+<p>Grunt：</p>
+<ul> 
+ <li><a href="https://npmjs.org/package/grunt-template/">grunt-template</a></li> 
+ <li><a href="https://npmjs.org/package/grunt-include-replace/">grunt-include-replace</a></li> 
+</ul>
+<p>Gulp：</p>
+<ul> 
+ <li><a href="https://npmjs.org/package/gulp-template/">gulp-template</a></li> 
+</ul>
+<p>grunt-template基本上是对grunt.template.process()的包装。同时它主要针对的是基于目标的目标字符串操作，你可以通过data 对象根据dev/prod目标改变路径或者内容。下面就是一个这样的例子：</p>
+<pre>
+index.html.tpl
+
+Gruntfile.js
+module.exports = function(grunt) {
+    grunt.initConfig({
+        'template': {
+            'dev': {
+                'options': {
+                    'data': {
+                        'title': 'I &lt;3 JS in dev'
+                    }
+                },
+                'files': {
+                    'dev/index.html': ['src/index.html.tpl']
+                }
+            },
+            'prod': {
+                'options': {
+                    'data': {
+                        'title': 'I &lt;3 JS in prod'
+                    }
+                },
+                'files': {
+                    'dist/index.html': ['src/index.html.tpl']
+                }
+            }
+        }
+    });
+    grunt.loadNpmTasks('grunt-template');
+    grunt.registerTask('default', [
+        'template:prod'
+    ]);
+    grunt.registerTask('dev', [
+        'template:dev'
+    ]);
+};</pre>
+<p>grunt-include-replace 做的事情比较相似，只是模板字符串的格式不同(&lt;title&gt;@@title&lt;/title&gt;)。</p><br><br><br><br><br><br></body></html>

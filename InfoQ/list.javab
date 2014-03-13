@@ -2,6 +2,9 @@
  <head></head> 
  <body> 
   <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/34.javab">How Composite C1 Found Success by Becoming Open Source</a> In today’s environment it is difficult to offer commercial products, especially in highly competitive fields such as content management systems. Finding themselves being squeezed out of the market, Composite C1 found a way to thrive by releasing their core product under an open source license with cloud based hosting. 
+  </div> 
+  <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/33.javab">Lambda Architecture: Design Simpler, Resilient, Maintainable and Scalable Big Data Solutions</a> Lambda Architecture proposes a simpler, elegant paradigm designed to store and process large amounts of data. In this article, author Daniel Jebaraj presents the motivation behind the Lambda Architecture, reviews its structure with the help of a sample Java application. 
   </div> 
   <div> 
@@ -147,9 +150,6 @@
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/38.javab">I’d Rather Be Coding – Writing Things Down</a> For lots of reasons, most developers hate writing down anything that isn’t code. The Agile Manifesto deemphasizes documentation, but there are times on a project when a little documentation can go a long way. In this article, we will explore why collaboration over comprehensive documentation shouldn’t mean “NO” documentation – and when you should stop coding and start writing things down. 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/37.javab">Preparing for Your First MongoDB Deployment: Backup and Security</a> This article we focuses on the database backup tools and security policies when deploying MongoDB NoSQL databases. Topics like cloud backups with MongoDB Management Service (MMS), authentication, and authorization are covered. 
   </div> 
  </body>
 </html>

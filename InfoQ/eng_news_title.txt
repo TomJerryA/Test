@@ -1,1 +1,1 @@
-Akka Toolkit 2.3 with Java 8 and Persistence Support
+Amazon AppStream (GA) Apps Run on AWS and Stream to Devices around the World

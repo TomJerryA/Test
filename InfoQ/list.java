@@ -1,6 +1,15 @@
 <html>
  <head></head> 
- <body> 
+ <body>
+  <div>
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/14.java">Amazon AppStream (GA) Apps Run on AWS and Stream to Devices around the World</a>Amazon has made available the AppStream service which enables developers to run an application on AWS, then stream it to various devices.
+  </div> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/14.java">Audio Interviews on Making Agile Culture Change Stick</a>Following on from the &quot;Individuals and Interactions&quot; interview series Author Gill Broza launched a series titled &quot;A Packing List for your Agile Journey&quot; in which he will interview a variety of commentators, practitioners and authors on what it takes to make an agile transition sustainable in the long term. 
+  </div> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/13.java">Working with Investors as a Lean Startup</a>Entrepreneurs using lean startup can work with investors to raise capital for their business. Business plans from lean startups often differ from traditional startups and lean startup encourages learning from failure and to pivot, which might scare off investors. Can entrepreneurs and investors together use the lean startup approach to do fundraising? 
+  </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/12.java">Akka Toolkit 2.3 with Java 8 and Persistence Support</a>Latest version of the Akka toolkit, an implementation of Actor Model, comes with persistence enabling stateful actors to persist their internal state, together with support for Java 8 lambda expressions. 
   </div> 
@@ -141,15 +150,6 @@
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/18.java">How Team Members Learn From Each Other in Agile Teams</a>When adopting agile teams can use (external) coaches and mentors. But teams can also develop themselves by having team members mentoring and coaching each other. Team members can learn skills and abilities from other team members in multidisciplinary teams, enabling the team to grow as a whole and become self-organized. 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/18.java">Typemock Isolator++ Updated with 64 bit Support</a>Typemock has released Isolator++ with support for 64 bit C/C++ code including legacy code that was not originally written for testing. 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/18.java">Project Helios: An ASP.NET OWIN-based Web Host Running on IIS</a>Microsoft has released a project called Helios, a lightweight OWIN-based web host running on top of IIS. 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/17.java">Prismatic Adds Data Type Coercion to Schema 0.2</a>Prismatic have added data coercion in the 0.2 release of their Clojure data description library, Schema. The addition of coercion means that the library doesn’t just reject data that has the wrong types, but it can be configured to modify instances to fit the schema. InfoQ talked to Prismatic's Jason Wolfe about Schema. 
-  </div> 
+  </div>  
  </body>
 </html>

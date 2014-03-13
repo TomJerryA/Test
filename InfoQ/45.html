@@ -1,7 +1,41 @@
-<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>ThoughtWorks开源了Go持续交付平台</h3><p>ThoughtWorks最近<a href="http://www.thoughtworks.com/cn/news/go-continuous-delivery-now-available-as-free-open-source">宣布</a>，基于Apache 2.0开源协议对其旗下产品<a href="http://www.go.cd/">Go</a>平台进行开源。Go是ThoughtWorks研发的<a href="http://continuousdelivery.com/">持续交付</a>工具，旨在自动化和简化构建——测试——发布的流程，持续地发布企业的产品。</p>
-<p>这一声明兑现了ThoughtWorks的帮助企业和组织持续改进和交付高质量产品的承诺。竞争日益激烈的商业环境要求企业快速创新的同时，维持核心流程的稳定。Go可以为所有团队提供一个清晰的发布管道，避免低效和冗余。</p>
-<p>“我很高兴ThoughtWork将Go发布为免费开源的软件”，ThoughtWorks首席咨询师、《<a href="http://book.douban.com/subject/6862062/">持续交付</a>》的合著者Jez Humble说。“我们希望Go成为标准的开源devops工具链的一部分，这对于实现ThoughtWorks的宏伟目标——在业内实现持续交付的标准实践，是大有裨益的。”</p>
-<p>“Go是我们持续交付平台的核心。它将多个持续交付管道集中到一个统一的视图中。我们可以看到产品从提交到部署的整个过程和状态。Go是卓越的持续交付工具，它为ThoughtWorks和开源社区开启了新的篇章。”<a href="http://www.ancestry.com/">Ancestry.com</a>的工程生产力部门主管John Esser说道。“Go开源之后，将吸引更多的开发者为该平台做出贡献，提出更具体的建议。更广泛的社区将引入更优秀的理念，创建更加健壮的持续交付系统。”</p>
-<p>Go目前的工作流程如下图所示：</p>
-<p><img src="http://infoqstatic.com/resource/news/2014/03/thoughtworks-go-platform/zh/resources/0302001.png" width="600" _href="img://null" _p="true" alt="" /></p>
-<p>可以通过Go的<a href="http://www.go.cd/">官方网站</a>下载并查看它的<a href="http://www.go.cd/features/">特性</a>。</p><br><br><br><br><br><br></body></html>
+<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>用AWS、Scala、Akka、Play、MongoDB和Elasticsearch构建社交音乐服务</h3><p><a href="http://serendip.me/">Serendip.me</a>的前首席架构师<a href="https://twitter.com/margolis20">Rotem Hermon</a><a href="http://rore.im/posts/building-serendip/">撰文</a>介绍了初创音乐服务Serendip.me在架构及扩展方面所考虑的内容。</p>
+<p>Serendip.me为人们提供社交音乐服务，帮助人们发现朋友们分享的优秀音乐，并为他们介绍“知音” -那些靠近他们的社交圈子，有相似音乐品味的陌生人。</p>
+<p>Serendip运行在AWS之上，采用了如下这些技术：<a href="http://www.scala-lang.org/">scala</a> (还有一些Java), <a href="http://akka.io/">akka</a> (用来处理并发), <a href="http://www.playframework.com/">Play框架</a> (Web和API前端), <a href="http://www.mongodb.org/">MongoDB</a>和<a href="http://elasticsearch.org/">Elasticsearch</a>。</p>
+<h2>技术栈的选择</h2>
+<p>Serendip的主要功能是从公共音乐服务中收集Twitter上分享的所有音乐，所以它需要处理大量的数据，所以Serendip在选择语言和技术时，首先要考虑它们的扩展能力。</p>
+<p>因为JVM久经考验的性能和工具，并且还有很多采用这门语言开发的开源系统（比如Elasticsearch），所以他们选择JVM作为系统的基石。</p>
+<p>而在JVM的体系中，scala又脱颖而出，成为了一个有趣的选择。Scala可以用现代的方式写代码，又可以跟Java全面互通。此外还有一个很重要的原因，akka actor框架是非常合适的流处理基础设施（绝对是！）。刚刚开始流行起来的Play框架看起来也很不错。Serendip开始于2011年初，当时这些都是非常前沿的技术。到了2011年末，scala和akka合并成<a href="http://typesafe.com/">Typesafe</a>，Play也在不久之后加入。</p>
+<p>选择MongoDB是因为它对开发者友好，易用，功能集和可能的扩展能力（采用了自动分片技术）。但因为Serendip使用和查询数据的方式需要在MongoDB上创建很多大索引，而这样会很快引发性能和内存方面的问题。所以他们主要是用MongoDB存储键-值文档，还有几个需要计数器的功能依赖于它的原子增长。</p>
+<p>事实证明，这样使用时MongoDB非常牢靠。还容易操作，但主要是因为尽量避免使用分片，并且只有一个复制集（MongoDB的分片架构相当复杂）。</p>
+<p>查询数据需要一个完全成熟的搜索系统。在开源的搜索解决方案中，Elasticsearch是扩展性最强，并且面向云端的系统。它有动态索引机制，还提供了很多搜索和切面的可能性，可以在其上构建很多功能。因此，Elasticsearch成为了serendip架构中的一个中心组件。</p>
+<p>Serendip决定自己管理MongoDB和Elasticsearch，主要有两个原因。第一，Serendip要完全控制两个系统。不想在软件的升级/降级上依赖于其它元素。第二，因为serendip要处理大量数据，采用托管方案要比他们直接在EC2上自己管理昂贵得多。</p>
+<h2>一些数字</h2>
+<p>Serendip的“抽水泵” (处理Twitter公众流和Facebook用户订阅源的那部分)每天要消化大概5,000,000条信息项。这些信息项要经过一系列的“过滤器”，对它们进行检测，并解析出受支持服务（YouTube、Soundcloud、Bandcamp等）上的音乐链接，还要添加一些元数据上去。抽水泵和过滤器是akka的actor，并且整个过程是用单个m1.large EC2管理的。如果需要，可以用akka的远程actor将任务分发到集群中，轻松实现系统扩展。</p>
+<p>从这些信息项中，Serendip每天大概能得到850,000条有效的信息项(也就是真的包含相关音乐链接的信息项)。这些信息项在Elasticsearch中索引(还要在MongoDB中备份并持续计数)。因为每条有效的信息项都要更新几个对象，所以在Elasticsearch中的索引率大约为40条/秒。</p>
+<p>Serendip在Elasticsearch中保留一个月的信息项索引(微博和帖子)。每个月的索引大概包含25M信息项，有3个分片。集群运行着4个节点，每个都在m2.2xlarge实例上。这个配置有足够的内存运行Serendip所需的数据搜索。</p>
+<p>Serendip的MongoDB集群的操作频率大概是100次写/秒和300次读/秒，因为它处理更多的数据类型、技术和统计数据更新。复制集的主节点跑在一个m2.2xlarge实例上，副节点在一个m1.xlarge实例上。</p>
+<h2>构建订阅源</h2>
+<p>在设计Serendip主音乐订阅源的架构时，想让订阅源是动态的，并且可以根据用户的动作和输入作出反应。比如说，如果某位用户将一首歌标为“摇滚”，或将某位艺术家标为“趾高气昂”，那么这些动作应该马上反应到订阅源上。如果用户“不喜欢”一位艺术家，那以后就不应该再播放那些音乐。</p>
+<p>并且这个订阅源应该是几个源头的组合，比如朋友分享的音乐，喜爱的艺术家的音乐，以及有相同音乐品味的“建议”用户分享的音乐。</p>
+<p>这些需求意味着那种<a href="http://www.quora.com/What-is-the-best-storage-solution-for-building-a-news-feed-MongoDB-or-MySQL">“fan-out-on-write”</a>式的订阅源创建方式可能并不合适。应该实时构建订阅源，把跟用户相关的所有信号都用上。Elasticsearch的功能可以构建出这种实时的订阅源生成器。</p>
+<p>订阅源算法有几种选择信息项的“策略”，在每次订阅源的获取上都根据不同的比率动态组合。每个策略都会考虑到用户最近的动作和信号。策略的组合被转换成几种对鲜活数据的搜索，这些数据是不断地由Elasticsearch索引的。因为这些数据是基于时间的，并且索引每月创建一次，所以只需要查询全部数据中的一小部分子集。</p>
+<p>Elasticsearch非常擅于处理这些搜索。它还提供了一种扩展这种架构的著名路径-通过增加分片数量扩展写操作。通过增加更多的复制和物理节点扩展搜索。</p>
+<p>寻找“知音”的过程（根据用户的音乐品味进行匹配）充分利用了Elasticsearch的切面（聚合）能力。作为持续不断的社交流处理的一部分，系统通过计算顶级分享的艺术家来为它遇到的社交网络用户准备数据（在他们分享的音乐上使用切面搜索）。</p>
+<p>当Serendip用户给出一个信号（播放音乐或跟订阅源交互）时，它能为那位用户重新触发一次知音计算过程。这个算法按照喜爱艺术家（这个是不断在更新的）列表来寻找匹配程度最高的其他用户，并用一些额外的参数作为权重，比如流行程度、分享次数等。然后再用另一组算法过滤掉垃圾邮件发送者（是的，有音乐垃圾邮件发送者）和异常值。</p>
+<p>实践证明，这种处理能得出很好的结果，并不需要再用一套系统来运行更加复杂的聚类或推荐算法。</p>
+<h2>监测与部署</h2>
+<p>Serendip用<a href="http://www.serverdensity.com/">ServerDensity</a>做系统监测和报警。对于初创公司而言，它是一种易于使用的托管方案，有像样的功能集和合理的价格。ServerDensity原生提供了服务器和MongoDB的监测。Serendi还大量使用了它报告定制指标的能力来报告内部系统统计数据。</p>
+<p>内部统计数据采集机制负责采集系统内发生的所有动作，并把它们保留在一个MongoDB集合内。一个定期任务每隔一分钟从MongoDB中读取一次这些统计数据，并报告给ServerDensity。这样就可以用ServerDensity对Elasticsearch及运营数据进行监测和报警。</p>
+<p>服务器的管理和部署是用亚马逊Elastic Beanstalk完成的。Elastic Beanstalk是AWS的受限PaaS解决方案。很容易上手，但它不是功能完整的PaaS，对于大部分常见用例而言，它的基本功能已经足够了。它提供了易用的自动扩展配置，还可以通过EC2完整访问。</p>
+<p>应用程序的构建是由EC2上的Jenkins实例执行的。Play程序被打包成WAR。一个构建后置脚本将这个WAR作为新版本推送到Elastic Beanstalk上。这个新版本不会自动部署到服务器上-它的部署是手动完成的。通常是先部署到临时环境中进行测试，然后经过证实后再部署到生产环境中。</p>
+<h2>外卖</h2>
+<p>作为结论，这里有一些在构建Serendip的过程中得到的最重要的经验教训，重要程度跟顺序没什么关系。</p>
+<ol> 
+ <li><strong>知道如何扩展。</strong>一开始你可能并不需要扩展，但你得知道系统的每一部分能够如何扩展，以及能扩展到什么程度。如果扩展需要时间，要预先给你自己留出充足的时间。</li> 
+ <li><strong>为峰值做好准备。</strong>特别是在创业阶段，如果你总是接近满负荷运行，一个lifehacker或reddit帖子就能把你的系统宕掉。保留充足的边界空间，这样才能应对突发负载，或时刻准备好真正快速地扩展。</li> 
+ <li><strong>选择一门不会拖你后腿的语言。</strong>确保你所采用的技术在你的语言中有原生客户端，或者至少有维护得很活跃的一些。不要被等着类库更新给拖住。</li> 
+ <li><strong>相信炒作。</strong>你想要技术跟你的产品共同成长，不会过早死掉。一个充满活力的活跃社区，以及跟该项技术有关的一些噪音，是这种技术存活的良好迹象。</li> 
+ <li><strong>不要相信炒作。</strong>看看那些批判你正在评估的技术的帖子。它们可以告诉你它的弱点。但也不要太认真，当事情不能按照期望工作时，人们通常会变得情绪化。</li> 
+ <li><strong>玩得开心点。</strong>选择会让你兴奋的技术。要能让你觉得“哦，我能用它做的事情太酷啦”。毕竟那（也）是我们来这里的目的。</li> 
+</ol>
+<p><strong>查看英文原文:</strong><a href="http://rore.im/posts/building-serendip/">Building a social music service - the technology behind serendip.me</a></p><br><br><br><br><br><br></body></html>

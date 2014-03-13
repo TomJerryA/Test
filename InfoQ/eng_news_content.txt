@@ -1,13 +1,22 @@
-<p>The latest version of the Akka toolkit comes with persistence enabling stateful actors to persist their internal state. The recently released version 2.3.0 is also prepared for support of Java 8 lambda expressions.</p>
-<p>In Akka persistence, instead of current state, each change to an actor’s state are persisted. Changes are appended to a journal and an actors’ internal state can be rebuilt by replaying the stored changes. Support for event sourcing and at-least-once message deliveries is also provided.<br /> Using Java 8 and lambda expressions, both Actors and Finite State Machines (FSM) may now be implemented using lambda syntax thus removing the need for declaring anonymous inner classes.<br /> Both the persistence module and the lambda support are marked as <em>experimental</em> with an ambition to improve the API based on feedback from users.</p>
-<p>Other improvements include:</p>
+<p>Amazon has made available the AppStream service which enables developers to run an application on AWS, then&nbsp;stream it to various devices.</p>
+<p>After four months of limited preview introduced in November 2013, Amazon has announced the availability of their AppStream service for all developers. When using AppStream, an application can run in Amazon’s cloud having its output –video, audio, data- being streamed to thin client applications running on various devices across the Internet. The client app has the responsibility to receive and display the stream of information and to capture user’s input to send it back to the server. This approach has a number of benefits:</p>
 <ul> 
- <li>A cluster can from being partially unreachable now come back to working as normally again with the failure condition cleared when the affected nodes becomes responsive.</li> 
- <li>Cluster sharding can be used to distribute stateful actors over several nodes when the actors consume more resources than one machine can supply.</li> 
- <li>Removal of the experimental label from Akka IO package, but with the Pipeline infrastructure discontinued.</li> 
- <li>The OSGi support has been reworked to make akka-actor an OSGi bundle.</li> 
+ <li>the application is developed and tested for a single platform</li> 
+ <li>being simple, client apps can be easily developed for various platforms</li> 
+ <li>the application can run on&nbsp;powerful servers, not being constrained by device limitations</li> 
+ <li>updating the application usually means updating the server part, which can be done without affecting the user in any way</li> 
+ <li>the user does not have to download the app, which helps when dealing with relatively large apps</li> 
 </ul>
-<p>The documentation together with a getting started guide has been updated to reflect the changes in the framework. Akka is also part of a larger sample of a reactive platform.<br /> The new release contains some structural modifications requiring code changes when upgrading from 2.2.*. Upgrading from earlier version may require some extra steps.</p>
-<p>The Akka toolkit is an implementation of the Actor Model, available with both a Java and a Scala API. This 2.3 release is the first step in a larger milestone planned for second half of 2014.<br /> Akka is an open source product, licensed under the Apache 2 License.</p>
-<p> Vaughn Vernon, author of Implementing Domain-Driven Design, talked last year about actor model in reactive domain-driven design and in an earlier talk about the foundation for actor model together with DDD.</p>
-<p>A forum for Akka users is available with more than 3000 members.</p>
+<p>Existing applications can be enhanced to support streaming by using the AppStream SDK. Currently, AppStream supports only Windows applications, however, client apps can be deployed to all major platforms: Android, iOS, OS X, Windows, and Kindle/FireOS. Amazon also provides a Java SDK that wraps around a RESTful API used to interact with the AppStream service for authentication, authorization, handling errors, etc.. An AppStream app can access many of Amazon’s services –S3, RDS, NoSQL, SQS, SNS, etc. - within the limits of the same region.</p>
+<p>To use streaming on AWS, an application must be able to run on Windows Server 2008 or later. 32-bit apps are allowed through WoW64 extensions. .NET apps are also allowed. The application must be able to stream using the YUV 420 video format. Amazon provides EC2 G2 instance types for such applications, a 3D graphics instance that includes: 10 EC2 compute units with 8 virtual cores at 2.5 GHz, 15 GB RAM, 50 GB storage, and 1 NVIDIA GK104 GPU with 4GB RAM.</p>
+<p>There is a catch, however. Client devices must have good Internet connection all the time, Amazon recommending a 3Mbps connection for streaming 30 frames of 720p per sec. If an application is to work offline, the client app needs to handle the respective functionality locally.</p>
+<p>Amazon has also announced a number of service improvements introduced since November:</p>
+<blockquote> 
+ <ul> 
+  <li>Automated Version Resolution - AppStream now detects the SDK version that was used to create a client and launches compatible backend services automatically. This allows AppStream and the SDK to evolve without the need for a client upgrade.</li> 
+  <li>Mac Client Support - There's now an OSX SDK to enable the development of clients that run on the Mac.</li> 
+  <li>Client SDK Improvements - The client SDKs have been improved and now include support for game controllers. They also provided an enhanced input mapping model for keyboard and touch events.</li> 
+  <li>Simplified Getting-Started Experience - We have improved the documentation and the packaging model so that you can get your first application up and running quickly..</li> 
+ </ul> 
+</blockquote>
+<p>Amazon touts AppStream for letting developers create graphical intensive applications with lightweight clients that are only 5MB in size: games, CAD, video rendering. Hybrid configurations are possible, running part of the application on the server and part on the client. CCP’s Eve Online is an example of&nbsp;a massively multiplayer game that runs on Amazon using AppStream.</p>
