@@ -1,7 +1,7 @@
 <html>
  <head></head> 
- <body>
-  <div>
+ <body> 
+  <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/33.javab">Lambda Architecture: Design Simpler, Resilient, Maintainable and Scalable Big Data Solutions</a> Lambda Architecture proposes a simpler, elegant paradigm designed to store and process large amounts of data. In this article, author Daniel Jebaraj presents the motivation behind the Lambda Architecture, reviews its structure with the help of a sample Java application. 
   </div> 
   <div> 
@@ -150,6 +150,6 @@
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/37.javab">Preparing for Your First MongoDB Deployment: Backup and Security</a> This article we focuses on the database backup tools and security policies when deploying MongoDB NoSQL databases. Topics like cloud backups with MongoDB Management Service (MMS), authentication, and authorization are covered. 
-  </div>  
+  </div> 
  </body>
 </html>

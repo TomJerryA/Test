@@ -2,6 +2,9 @@
  <head></head> 
  <body> 
   <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/9.py">Nokia Xが印す，もうひとつのAndroid Fork</a>今回の記事では，最新かつ最重要なAndroidのフォークの試みについて概説する。これは開発者にとって新たなチャンスであると同時に，いくつかの課題も与えている。 
+  </div> 
+  <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/8.py">InfoQ主催のカンファレンス QCon Tokyo 開催決定！【早期割引：30日まで！】</a>今年も4/30(水)にQConTokyo2014を開催します。 今年は広くてアクセスのよい会場でゆったりと1日技術について語り合える場をご提供したいと考えております。 
   </div> 
   <div> 
@@ -147,9 +150,6 @@
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/14.py">Visual Studioリリース管理についてPieter Gheysens氏に聞く</a>Visual Studioリリース管理はVisual StudioとTeam Foundation Serverを利用して、ワークフローの作成を可能とする。InfoQ編集部は、VSRMについて Pieter Gheysens氏にインタビューを行い、VSRMの情報を入手した。 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/13.py">Cordova 3.3.0を使ってChromeアプリをAndroidとiOSにデプロイする</a>開発者はApache Cordova 3.3.0を使って、ChromeアプリをAndroidとiOSにデプロイできるようになった。 
   </div> 
  </body>
 </html>

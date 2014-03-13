@@ -2,6 +2,9 @@
  <head></head> 
  <body> 
   <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/20.htmlb">BYOC和混合云的崛起</a> BYOC正在市场上快速普及。对于IT部门而言，让那些不受监控、未经授权的服务运行在内网里，既引入了安全隐患，又把自己的基础架构搞得更加复杂，因此必须把它们管起来。本文作者提供了一些将BYOC集成到企业IT架构当中的经验，以及如何让混合云更好用的建议。 
+  </div> 
+  <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/19.htmlb">微博春晚背后的技术故事</a> 统计数据结果表明，马年春晚直播期间，微博的访问量和发表量都再创新高，而我们系统也自始至终平稳运行，经受住了此次高峰的考验。这成功的背后，是我们的工程师将近一个月的努力。其间面临了哪些问题，又是如何解决的呢？下面，我们一一为大家揭秘。 
   </div> 
   <div> 
@@ -147,9 +150,6 @@
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/25.htmlb">业务架构的主题和规则</a> 本文定义了业务架构的主题和规则。与其他方式不同，只有业务职能和业务信息才能成为架构中的实体，共同形成业务架构的主题。另一方面，业务架构的规则是对业务架构主要及次要任务的描述。 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/24.htmlb">使用Jazz Automation编写自动化测试</a> Jazz Automation是一个测试框架，构建它的目的是为所有类型的Web系统或者静态网站自动化同时加速验收/功能测试。它还能够容易地实现自动化集成测试。以前的时候这种类型的测试需要人工完成，劳动强度大又不准确。借助于自动化测试，公司能够创造高质量的应用程序，创造的产品bug更少，同时又加快了投入市场的速度。Jazz Automation支持下面的Web浏览器：IE、Firefox、Safari和Chrome。 
   </div> 
  </body>
 </html>

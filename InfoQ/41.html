@@ -1,52 +1,38 @@
-<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>百度技术沙龙第47期回顾：互联网后台服务高效开发实践（含资料下载）</h3><p>2014年2月22日，在由<a href="http://weibo.com/baidutech">@百度</a>主办、<a href="http://e.weibo.com/infoqchina">@InfoQ</a>负责策划组织和实施的第47期百度技术沙龙活动上，百度网页搜索部资深研发工程师蒋锦鹏、58同城技术中心架构部系统架构师姜中明，各自分享了其在互联网后台设计及高效开发方面的实战经验。他们的话题涉及“sofa技术研发”和“58同城统一监管平台的分析设计”这两个方面，本文将对讲师各自的分享做简单的回顾，同时提供相关资料的下载。</p>
-<h2>主题一：sofa-像搭积木一样构建系统（<a href="http://t.cn/8FRpXgE">下载讲稿</a>）</h2>
-<p>蒋锦鹏介绍了大量的百度网页搜索sofa框架的理念和应用，其演讲内容主要包括：hello world in sofa、sofa的机制原理、sofa的应用举例、搭建一个迷你搜索引擎、sofa的现状及未来工作。</p>
-<h3><b>一句话介绍</b><b> </b></h3>
-<p>sofa提供一套面向接口、面向组件开发的规范、运行时库、工具和平台支持。</p>
-<h3><b>sofa</b><b>解决什么问题</b><b> </b></h3>
-<p>统一接口定义方式</p>
-<p>纯面向接口的开发方式</p>
-<p>细粒度组件化支持</p>
-<p>本地、远程架构透明扩展</p>
-<p>跨编程语言开发</p>
-<p><img src="http://infoqstatic.com/resource/news/2014/02/baidu-salon47-summary/zh/resources/0227004.png" width="600" _href="img://null" _p="true" alt="" /></p>
-<p>“sofa虽然基本机制成型，但在稳定性、易用性、安全、多语言等方面还需要进一步完善。预计开源时间可能会在今年的下半年。”蒋锦鹏总结道。</p>
-<h2>主题二：58统一监管平台系统分析与设计（<a href="http://t.cn/8FRbwad">下载讲稿</a>）</h2>
-<p>姜中明从平台介绍、Agent服务分析、Agent服务设计、高效开发这四个维度介绍了58同城统一监管平台系统。姜中明从互联网架构师的视角，深入浅出的介绍了统一监管平台系统的整体架构和高效开发的方法，并阐述了普通开发者对平台分析的差异化。</p>
-<h3><b>整体架构</b></h3>
-<p><img src="http://infoqstatic.com/resource/news/2014/02/baidu-salon47-summary/zh/resources/0227005.png" width="600" _href="img://null" _p="true" alt="" /></p>
-<p><b>Agent</b><b>服务分析</b></p>
-<p>• <b>需求</b><b> </b></p>
-<p>– 接收平台指令，根据指令调用对应功能，完成相关任务</p>
-<p>– 通过Agent收集服务器数据和相关状态</p>
-<p>– 不间断服务，自动恢复</p>
-<p>• <b>特点</b><b> </b></p>
-<p>– 扩展性强</p>
-<p>– 灵活性高</p>
-<p>– 稳定性高</p>
-<p><b>通信选型</b></p>
-<p>• <b>平台的应用场景</b><b> </b></p>
-<p>– 多个子系统，互相交互</p>
-<p>– 多种状态互相影响</p>
-<p>– 交互过程有顺序，有冲突</p>
-<p>• <b>结论：分布式协调框架</b><b>Zookeeper</b></p>
-<p>– 状态维护，消息一致性保障</p>
-<p>– 免费的事件通知</p>
-<p>– 免费的网络通信</p>
-<p>“由该系统将公司资源进行整合，统一集中管理，配置，监控。可实现将公司技术资源统一化，规范化，自动化。以达到减小成本，提高效率，增强安全性，为公司节约成本、提高执行力。”姜中明讲解到。</p>
-<h2>OpenSpace（开放式讨论环节）</h2>
-<p>为了促进参会者与我们每期的嘉宾以及讲师近距离交流，深入探讨在演讲过程中的疑问，本次活动依然设置了Open Space（开放式讨论）环节。在Open Space的总结环节，几位话题小组长分别对讨论的内容进行了总结。</p>
-<p><b>蒋锦鹏</b>：活动组织的很好，大家对自己公司的平台理解都很深，我从中也学到了不少新的知识；</p>
-<p><b>姜中明</b>：本以为平台架构的话题层面有些脱离开发人群，但从openspace环节与参会者的互动交流情况看，效果还是很不错的。大家聊的很深入，提的问题都很专业。</p>
-<p>会上，一些参会者也通过新浪微博分享了他们的参会感受：</p>
+<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>运维利器Vagrant 1.5发布，Vagrant Cloud上线</h3><p>本周初，<a href="https://github.com/mitchellh">Mitchell Hashimoto</a>在Vagrant官方博客上宣布<a href="http://www.vagrantup.com/blog/vagrant-1-5-and-vagrant-cloud.html">Vagrant 1.5发布与Vagrant Cloud上线</a>。Hashimoto对Vagrant 1.5的描述如下：</p>
+<ul> 
+ <li>一个非常注重稳定性的Vagrant版本</li> 
+ <li>向后兼容。某些选项会输出warning，这些选项会在之后的版本中被移除</li> 
+</ul>
+<p>最重要的五个新功能：</p>
+<ul> 
+ <li><a href="http://www.vagrantup.com/blog/vagrant-1-5-and-vagrant-cloud.html#features">Vagrant Share</a></li> 
+ <li><a href="http://www.vagrantup.com/blog/vagrant-1-5-and-vagrant-cloud.html#features">Boxes 2.0</a></li> 
+ <li><a href="http://www.vagrantup.com/blog/vagrant-1-5-and-vagrant-cloud.html#features">Rsync Synced Folders</a></li> 
+ <li><a href="http://www.vagrantup.com/blog/vagrant-1-5-and-vagrant-cloud.html#features">Hyper-V</a></li> 
+ <li><a href="http://www.vagrantup.com/blog/vagrant-1-5-and-vagrant-cloud.html#features">SMB Synced Folders</a></li> 
+</ul>
+<p>下载地址在<a href="http://www.vagrantup.com/downloads.html">Vagrant官网</a>，需要的同学可以自取。</p>
+<p>跟Vagrant 1.5同时发布的<a href="https://vagrantcloud.com/">Vagrant Cloud</a>是配合Vagrant Share功能的一项公共云服务，这项服务目前为免费beta版，未来可能会发展成为收费模式。</p>
+<p>Rsync、Hyper-V和SMB都很容易理解，下面着重介绍一下Vagrant Share和Boxes 2.0，这两个功能可能很多Vagrant用户都会用到：</p>
+<p>Vagrant Share，即Vagrant环境共享功能，只要使用 <code>vagrant share</code> 这个指令，就可以把当前机器的环境配置生成一个可供其他联网人员访问的地址，知道这个地址的同学只要使用 <code>vagrant connect 被共享的地址</code> 指令，就可以读取被共享机器的vagrant环境。Vagrant Share支持HTTP、SSH、静态IP三种共享模式，HTTP为默认模式。在使用HTTP模式共享的情况下，任何人只要在浏览器里输入生成的地址就可以读取共享的信息，而无需在本机安装vagrant。</p>
+<p>Vagrant Share会将共享的机器暴露在外部环境之下，目前Vagrant官方提供了一些简单的安全选项，并计划引入ACL权限控制，未来还会提供自建Vagrant Share服务器的功能。目前，所有Vagrant Share都连接到<a href="https://vagrantcloud.com/">Vagrant Cloud</a>之上。</p>
+<p>Boxes 2.0则是在Vagrant 1.4的box之上做了如下改动：</p>
+<ul> 
+ <li>简化的box命名，格式类似 <code>hashicorp/precise64</code>。该名称同时是box的名称和访问地址</li> 
+ <li>box可以做版本控制，你可以部署box的升级，而其他使用了该box的用户也会收到可用升级通知</li> 
+ <li>box的共享目前也在Vagrant Cloud上进行</li> 
+</ul>
+<p>Boxes 2.0也向后兼容，之前的指令可以沿用。</p>
+<p>同一个命名的box可能对应不同的provider，如VirtualBox或者VMware，Boxes 2.0对此进行了简化处理：</p>
+<ol> 
+ <li>用户输入指令<code>vagrant box add hashicorp/precise64</code></li> 
+ <li>如果有多个provider的情况，vagrant会自己告诉用户这里有多个，并提示用户选择</li> 
+</ol>
+<p>最后，Hashimoto表示在下一个版本会有更大的惊喜：</p>
 <blockquote> 
- <p><a href="http://weibo.com/bjgjy">@_郭嘉懿_</a><em>：从大连跑来了。</em><em> </em><em>嗯。</em><em> </em><em>值得！</em><em> </em><em>希望二线城市也有这样的分享！</em></p> 
+ <p>在1.6版本中，你将能够随时看到系统中所有Vagrant环境的运行情况，再也不会害怕想不起来还有哪些VM在跑了！Vagrant也终于会对基于Windows的客户机提供完整的支持。然后我们还会添加至少两个服务商的支持。</p> 
 </blockquote>
-<blockquote> 
- <p><a href="http://weibo.com/n/%E8%81%82%E9%9D%96%E5%AE%87_dev?from=feed&amp;loc=at">@聂靖宇_dev</a>: ofa和现在再用的架构还是有一些相似的，这个讲义有必要拿回去在内部分享下。</p> 
-</blockquote>
-<blockquote> 
- <p><a href="http://weibo.com/u/1904899075">@曹坤波-乐视</a>：<em>58</em><em>这哥们对架构讲解还比较到位</em></p> 
-</blockquote>
-<p>有关百度技术沙龙的更多信息，可以通过新浪微博关注<a href="http://weibo.com/baidutech">@百度技术沙龙</a>，或者关注InfoQ官方微信：infoqchina，InfoQ上也总结了过往47期所有百度技术沙龙的演讲视频和资料等，感兴趣的读者可以<a href="http://www.infoq.com/cn/zones/baidu-salon/">直接浏览内容</a>。</p>
-<p><strong>特别提示：</strong>第48期百度技术沙龙将在3月15日，在北京车库咖啡举行，主题为《大规模机器学习》，欢迎关注<a href="http://weibo.com/infoqchina">@InfoQ</a>、<a href="http://weibo.com/baidutech">@百度技术沙龙</a>获取后续的活动信息。</p><br><br><br><br><br><br></body></html>
+<p>Kiip工程师Robby Colvin将这个消息<a href="https://news.ycombinator.com/item?id=7374263">发布到Hacker News</a>上之后，Hashimoto本人在帖子后面进行了回复与答疑。</p>
+<p>Gittip开发者<a href="https://www.gittip.com/patcon/">Patrick Connolly</a>表示对Hashimoto往vagrant core中添加越来越多的东西表示怀疑，认为有些东西应该放到插件里去做；Hashimoto表示core现在还很轻量，并且他认为这些特性都是core应该有的东西。</p>
+<p>用户anko抱怨VMware provider是收费的，Hashimoto说现在他们就是靠这个挣钱，毕竟VMware是收费的。而Hyper-V的支持代码大部分来自微软OpenTech，并且该代码以MIT协议开源，所以是免费的。</p>
+<p>Docker maintainer和boot2docker的作者也路过串门，发来贺电。</p><br><br><br><br><br><br></body></html>

@@ -1,25 +1,17 @@
-<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>InfoQの新機能 - RSSで好みのトピックをフォロー</h3><p><a target="_blank" href="http://www.infoq.com/news/2014/02/infoq-topics-rss"><em>原文(投稿日：2014/02/04)へのリンク</em></a></p>
+<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>Nokia Xが印す，もうひとつのAndroid Fork</h3><p><a target="_blank" href="http://www.infoq.com/news/2014/02/nokia-x-android-fork"><em>原文(投稿日：2014/02/25)へのリンク</em></a></p>
 <div class="article_page_left news_container text_content_container"> 
  <div class="text_info"> 
-  <p>2014年，InfoQに追加された新しい機能は<strong>トピックのRSSフィード</strong>だ。 この方法ならばRSSリーダを使用して，好みのトピックをフォローすることができる。もう記事を見逃すことはない。</p> 
-  <p>&nbsp;</p> 
-  <p align="center"><img align="middle" src="http://www.infoq.com/resource/news/2014/02/infoq-topics-rss/ja/resources/rss.jpg" _p="true" _href="img://rss.jpg" alt="" /></p> 
-  <p>&nbsp;</p> 
-  <p>トピックのフィードの例をいくつか挙げておこう。</p> 
-  <ul> 
-   <li><a href="http://www.infoq.com/jp/feed/mobile">モバイル&nbsp;<img src="http://www.infoq.com/resource/news/2014/02/infoq-topics-rss/ja/resources/rss-ico.jpg" alt="" _href="img://rss-ico.jpg" _p="true" /></a></li> 
-   <li><a href="http://www.infoq.com/feed/apm">Application Performance Management&nbsp;<img src="http://www.infoq.com/resource/news/2014/02/infoq-topics-rss/ja/resources/1rss-ico.jpg" alt="" _href="img://1rss-ico.jpg" _p="true" /></a></li> 
-   <li><a href="http://www.infoq.com/jp/feed/API">API&nbsp;<img src="http://www.infoq.com/resource/news/2014/02/infoq-topics-rss/ja/resources/2rss-ico.jpg" alt="" _href="img://2rss-ico.jpg" _p="true" /></a></li> 
-   <li><a href="http://www.infoq.com/feed/NoSQL">NoSQL&nbsp;<img src="http://www.infoq.com/resource/news/2014/02/infoq-topics-rss/ja/resources/3rss-ico.jpg" alt="" _href="img://3rss-ico.jpg" _p="true" /></a></li> 
-   <li><a href="http://www.infoq.com/jp/feed/cloud-computing">クラウドコンピューティング<img src="http://www.infoq.com/resource/news/2014/02/infoq-topics-rss/ja/resources/4rss-ico.jpg" alt="" _href="img://4rss-ico.jpg" _p="true" /></a></li> 
-   <li><a href="http://www.infoq.com/feed/rest">REST&nbsp;<img src="http://www.infoq.com/resource/news/2014/02/infoq-topics-rss/ja/resources/5rss-ico.jpg" alt="" _href="img://5rss-ico.jpg" _p="true" /></a></li> 
-  </ul> 
-  <p>InfoQの常連ユーザならすでに気付いているかも知れないが，我々の編集者が日々公開している記事はすべて，慎重に選択されたトピックでタグ付けされている。そのトピックは，<strong>3,500項目</strong>近い分類の中から取り出されているのだ！</p> 
-  <p>この分類法は我々のプラットフォームで独自に開発して，2006年以来，編集チームの努力で発展させてきたものだ。何年もの間ユーザは，これらトピックのページを訪れることで，興味を持ったコンテントに直接アクセスすることができている。</p> 
-  <p>&nbsp;</p> 
-  <p align="center"><img src="http://www.infoq.com/resource/news/2014/02/infoq-topics-rss/ja/resources/tags.jpg" alt="" _href="img://tags.jpg" _p="true" /></p> 
-  <p>&nbsp;</p> 
-  <p>例えば<a href="http://www.infoq.com/jp/html-5">http://www.infoq.com/jp/<em><strong>html-5</strong></em></a>を訪れてみてほしい。&quot;HTML5&quot;とタグ付けられたコンテントすべてにアクセスできるはずだ。コンテントタイプで絞り込んだり，&quot;<a href="http://www.infoq.com/jp/html-5/news">ニュース</a>&quot;や&quot;<a href="http://www.infoq.com/html-5/interviews">インタビュー</a>&quot;などに限定することもできる。</p> 
-  <p>新機能をぜひ楽しんでみてほしい。InfoQ.comに望む<a href="mailto:feedback@infoq.com?subject=InfoQ%20Improvement">改善についての意見</a>をお待ちしている。</p> 
+  <p>今回の記事では，最新かつ最重要なAndroidのフォークの試みについて概説する。これは開発者にとって新たなチャンスであると同時に，いくつかの課題も与えている。</p> 
+  <p>Nokiaは2月24日，同社&quot;新ファミリとして最初の３メンバ: Nokia X, X+, X&quot;を発表した(<a href="http://www.youtube.com/watch?v=oUCEN-XvC7g">YouTubeビデオ</a>)。将来的にファミリに新メンバが追加されることを暗示した言い回しだ。同社が開発した他機種と違うのは，Nokia Xが<a href="https://www.google.ro/url?sa=t&amp;rct=j&amp;q=&amp;esrc=s&amp;source=web&amp;cd=1&amp;cad=rja&amp;ved=0CCoQFjAA&amp;url=https%3A%2F%2Fsource.android.com%2F&amp;ei=CFkLU4zsJsXQtAbVlYGYCg&amp;usg=AFQjCNEwbPtB9FCGKBjUw_xawNYhKl883A&amp;sig2=UppJGijwnZKGcHxXvlBXKQ&amp;bvm=bv.61725948,d.Yms">Androidオープンソースプロジェクト</a>をベースとした，Googleのモバイルオペレーティングシステムの新たなフォークであることだ。同様なことは，AmazonがGingerbread(2.3)をベースに選択して，Kindle Fireシリーズ用のモバイルオペレーティングシステムを開発したのが最初だった。今回Nokiaは，16ヶ月前にリリースされたJelly Beans(4.1.2)を選択している。</p> 
+  <p>Nokiaは開発者に対して，彼らのAndroidアプリケーションをNokia Xデバイスでスムーズに動作させるために必要なのは，APKに数行のコードを追加することだけだ，と説明している。一部のアプリケーションに対してはそれは事実かも知れないが，このプロセスが当てはまらないアプリケーションもある。Androidのフォークを決定したことでNokiaは，マップのAPIやバックエンドサポート，クラウドメッセージング，通知，アプリ内課金，プレイストアといった，一連の<a href="http://developer.android.com/google/index.html">Google Service</a>を利用する恩恵を受けられなくなった。不可能ではないにせよ，Google Serviceに依存したアプリケーションの移植は容易ではないはずだ。</p> 
+  <p>Nokiaは自社のサービス – MixRadio, HereMaps, Navigation, Skype, OneDrive, Outlook.com, Bing – を提供する予定だが，Googleのサービスをそれらで置き換えるには，単にソースコードを変更する以上の作業が必要になる。大した機能は持っていないが移植が簡単なジャンクアプリケーションで，自分たちの店頭が埋め尽くされることのないように，アプリケーションの企画に注意することになるだろう。もうひとつの興味深い展開は，Nokia Xにサードパーティのアプリストアが含まれることだ。500,000以上のアプリを持つ中国の<a href="http://market.1mobile.com/?cid=9">1Mobile Market</a>や，100,000以上のアプリを持つロシアの<a href="http://market.1mobile.com/?cid=9">Yandex Store</a>などが参加している。</p> 
+  <p>1Mobileを使うAndroidユーザは，APKのダウンロードとアプリケーションの手動インストールをすることができる。 自動インストールとアンインストールを行うには支援が必要だ。Nokia Xでは自動インストールを提供する予定だが，Googleのサービスに依存するアプリケーションは正常に動作しない。</p> 
+  <p>ロシアの有力な検索プロバイダである<a href="http://yandex.com/">Yandex</a>は，Androidのフォークに対してまた別のアプローチを取っている。基本はAOSPだが，その上にアプリケーションストア，ホームページとダイアラ，ブラウザ，マップライブラリ，クラウドストレージなど，さまざまなアプリケーションやサービスを加え，Googleのコントールを避けてモバイルデバイスを作りたいデバイスメーカ用のファームウェアを構築しているのだ。このソリューションを採用したデバイスメーカには，Yandexのストアを通じて販売するアプリケーションの利益をシェアできるメリットがある。<a href="http://gigaom.com/2014/02/19/yandex-offers-apps-and-services-bundle-to-help-others-build-non-google-android-versions/">Gigaomの報道によると</a>，同社には，独自のAndroidバージョンを開発する意思はないようだ。</p> 
+  <blockquote> 
+   <p>当社には，独自のAndroidスレッドを開発する計画はありません – 費用が非常に掛かる上，特別な理由もないからです。当社が提供するのはAOSP上のレイヤ，つまりシステムツールとアプリケーション，サービスといったスタックなのです。</p> 
+  </blockquote> 
+  <p>このようなAndroidのフォークは成功するのだろうか？ 開発者はアプリケーションの移植に投資してくれるだろうか？ 2011年に発売開始されたAmazon Kindle Fireの例は，私たちにAndroidフォークが成功する可能性を見せてくれている。しかし<a href="http://www.amazon.com/b?node=3427287011">Amazonのアプリストア</a>には100,000を越えるアプリがあるにしても，同社はタブレットの販売台数や収益について何も発表していないのだ。Nokiaはこれを越えられるのだろうか？</p> 
+  <p>Nokia Xの発表に続いて，同社の買収を完了するプロセスにあるMicrosoftは，同社コミュニケーションデバイス担当副社長であるFrank X. Shaw氏を通じて，&quot;スマートフォン戦略の中心はあくまでもWindows Phoneである&quot;こと，同社の&quot;開発者向けコアデバイスプラットフォームはWindowsプラットフォームである&quot;ことを<a href="http://blogs.technet.com/b/microsoft_blog/archive/2014/02/24/mobile-world-congress-microsoft-and-nokia.aspx">明言した</a>。それを考えれば，Nokiaの所有者が交代した後，Nokia Xの新機種が続いて発売されるという確証はない。</p> 
+  <p>その一方でGoogleは，AOSPに含まれているアプリケーションやサービスの開発を停止することで，Androidをさらに強く掌握しようとしている。デバイスメーカに無償で提供されるGoogleサービスやプレイサービスに代えて，フォークによるAndroidデバイスのフラグメンテーションの回避などといった，数多くの条件を付けようとしているのだ。</p> 
  </div> 
 </div><br><br><br><br><br><br></body></html>
