@@ -1,8 +1,8 @@
 <html>
  <head></head> 
- <body>
-  <div>
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/10.py">Java 8ニュース:新しいアトミックナンバーを含むRC版を公開、モジュール化は外れる</a>Java8の最初のRC版が2月の始めにリリースされた。第1版のb128は2月4日、第2版は1週間後にOpenJDKのメーリングリストで発表された。
+ <body> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/10.py">Java 8ニュース:新しいアトミックナンバーを含むRC版を公開、モジュール化は外れる</a>Java8の最初のRC版が2月の始めにリリースされた。第1版のb128は2月4日、第2版は1週間後にOpenJDKのメーリングリストで発表された。 
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/9.py">Nokia Xが印す，もうひとつのAndroid Fork</a>今回の記事では，最新かつ最重要なAndroidのフォークの試みについて概説する。これは開発者にとって新たなチャンスであると同時に，いくつかの課題も与えている。 
@@ -150,6 +150,6 @@
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/15.py">DevOps採用の文化的問題</a>RebelLabsを率いるOliver White氏が先日の記事で，DevOpsのメリットを明確に示す調査結果があるにも関わらず，IT組織のDevOps採用が困難であることを詳説している。InfoQは氏にインタビューするとともに，この問題に関する調査報告を再検討した。 
-  </div>  
+  </div> 
  </body>
 </html>

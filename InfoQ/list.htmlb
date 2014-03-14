@@ -1,6 +1,12 @@
 <html>
  <head></head> 
- <body> 
+ <body>
+  <div>
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/21.htmlb">利用In-Database Analytics技术在大规模数据上实现机器学习的SGD算法</a> 随着应用数据的增长，在大规模数据集上进行统计分析和机器学习越来越成为一个巨大的挑战。目前，适用于统计分析/机器学习的语言/库有很多，如专为数据分析用途而设计的R语言，Python语言的机器学习库Scikits，支持分布式环境扩展的有基于Map-Reduce实现的Mahout，以及分布式内存计算框架Spark上的机器学习库MLlib等等。目前Spark框架也推出了R语言的接口SprakR。但是，本文要讨论的，则是另外一种设计思路，在database中实现统计分析和机器学习算法，即In-Database Analysis，Madlib库就是这种设计思路的代表。 
+  </div>
+  <div>
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/20.htmlb">基于反馈控制实现可靠的自动扩展服务</a> Philipp K. Janert说明了如何使用反应式方法，基于反馈控制可靠地自动扩展系统，提供了比确定性方法和基于规则的方法更精确的解决方案。 
+  </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/20.htmlb">BYOC和混合云的崛起</a> BYOC正在市场上快速普及。对于IT部门而言，让那些不受监控、未经授权的服务运行在内网里，既引入了安全隐患，又把自己的基础架构搞得更加复杂，因此必须把它们管起来。本文作者提供了一些将BYOC集成到企业IT架构当中的经验，以及如何让混合云更好用的建议。 
   </div> 
@@ -144,12 +150,6 @@
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/27.htmlb">敏捷项目估算：什么是故事？什么是点数？</a> 有没有想过在敏捷项目中我们该如何以及为什么要进行估算？在David Morris为InfoQ写的第一篇文章中，他描绘了自己从90年代以来的经验和其它几位主要敏捷作者的论述，对敏捷估算这个话题进行了探讨：它是什么？我们通常怎么做？为什么要做？对#NoEstimates（不要估算）争论的简要评价，以及最后为初学者提出了一些建议。 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/26.htmlb">Backbone与Angular的比较</a> Victor Savkin为读者分析了使用Backbone.js和Angular.js创建web应用的优缺点，并对这两种框架进行了深入比较。 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/25.htmlb">业务架构的主题和规则</a> 本文定义了业务架构的主题和规则。与其他方式不同，只有业务职能和业务信息才能成为架构中的实体，共同形成业务架构的主题。另一方面，业务架构的规则是对业务架构主要及次要任务的描述。 
-  </div> 
+  </div>   
  </body>
 </html>
