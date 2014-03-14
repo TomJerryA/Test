@@ -1,8 +1,8 @@
 <html>
  <head></head> 
- <body>
-  <div>
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/14.java">Amazon AppStream (GA) Apps Run on AWS and Stream to Devices around the World</a>Amazon has made available the AppStream service which enables developers to run an application on AWS, then stream it to various devices.
+ <body> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/14.java">Amazon AppStream (GA) Apps Run on AWS and Stream to Devices around the World</a>Amazon has made available the AppStream service which enables developers to run an application on AWS, then stream it to various devices. 
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/14.java">Audio Interviews on Making Agile Culture Change Stick</a>Following on from the &quot;Individuals and Interactions&quot; interview series Author Gill Broza launched a series titled &quot;A Packing List for your Agile Journey&quot; in which he will interview a variety of commentators, practitioners and authors on what it takes to make an agile transition sustainable in the long term. 
@@ -150,6 +150,6 @@
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/18.java">How Team Members Learn From Each Other in Agile Teams</a>When adopting agile teams can use (external) coaches and mentors. But teams can also develop themselves by having team members mentoring and coaching each other. Team members can learn skills and abilities from other team members in multidisciplinary teams, enabling the team to grow as a whole and become self-organized. 
-  </div>  
+  </div> 
  </body>
 </html>
