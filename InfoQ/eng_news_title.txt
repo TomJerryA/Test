@@ -1,1 +1,1 @@
-Amazon AppStream (GA) Apps Run on AWS and Stream to Devices around the World
+Docker Index Offers Private Repositories, Webhooks And Other Services

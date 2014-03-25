@@ -1,6 +1,60 @@
 <html>
  <head></head> 
- <body> 
+ <body>
+  <div>
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/29.java">Java 8 Launch Q&amp;A</a>Java 8 is one of the most highly anticipated programming language updates in many years. The release contains a date API, streams API and lambdas. Include permgen removal and you end up with a nice set of improvements. To learn more about this release, we sat down with Georges Saab, vice president of software development, Java Platform Group, Oracle.
+  </div> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/28.java">InfoQ Java 8 Launch Q&amp;A</a>Java 8 is one of the most highly anticipated programming language updates in many years. The release contains a date API, streams API and lambdas. Include permgen removal and you end up with a nice set of improvements. To learn more about this release, we sat down with Georges Saab, vice president of software development, Java Platform Group, Oracle. 
+  </div> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/27.java">Docker Index Offers Private Repositories, Webhooks And Other Services</a>Docker Inc., the company behind Docker, introduced a range of new services, including its first paid offering: private repositories. Docker index, Docker.io's public registry, now also offers webhooks, triggers and links for trusted builds and e-mail notifications. 
+  </div> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/27.java">Microservices and SOA</a>Over the past year or so we've started to hear about Microservices as potentially new architectural style. Recently Thoughtworks' Martin Fowler and James Lewis wrote an article defining Microservices. However, Steve Jones takes issue with the general theme and much in that article, believing that there is little new here and this is just a Service Oriented Deliver approach. 
+  </div> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/26.java">CouchDB Progresses As IBM Acquires Cloudant</a>IBM announced recently a definite agreement to acquire the major contributor to the CouchDB project, cloud database startup Cloudant. Adding CouchDB to IBM’s arsenal of technologies together with SoftLayer acquisition and MongoDB partnership creates an ecosystem of technologies bringing IBM in direct comparison with Amazon. A comparison of CouchDB, DynamoDB and ObjectRocket shows the strong points 
+  </div> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/25.java">HBase 0.98 Introduces Cell-based Security</a>Apache released HBase 0.98 primarily addressing convergence with Apache Accumulo via cell-based security while resolving over 230 JIRA issues. These new security features are modeled after Accumulo. 
+  </div> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/24.java">EF Gets Public Mapping API, Ability To Handle Commit Failures</a>Entity Framework 6.1 was recently released with several interesting improvements such as better tooling, CommitFailureHandler, IndexAttribute, a Public Mapping API and more. 
+  </div> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/23.java">Object Oriented Design Principles and Functional Programming</a>Independently from each other, Richard Warburton in a presentation, and Mark Seemann in a blog post both talks about object-orientation and the SOLID design principles from a functional programming perspective. 
+  </div> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/22.java">Using Sigma for Drawing Graphs</a>The team behind Sigma, a JavaScript library dedicated to drawing graphs in Web applications, released a new version of this tool. What this library provides is a way for developers to create graphs while making networks manipulation on webpages smooth and faster for the user. 
+  </div> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/21.java">AngularJS 2.0 Will Target Mobile Apps, Drop Support For Older Browsers</a>&quot;AngularJS 2.0 is a framework for mobile apps&quot; says the AngularJS team. The framework will continue to be supported for desktops, but the primary focus will be on getting the mobile bit right. The goals also include support for EcmaScript 6 along with a transpiler (since browsers don't support ES6 yet). 
+  </div> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/20.java">Vagrant Launches Collaboration Tools for Development Environments</a>DevOps tool provider Vagrant announced significant features in their 1.5 release, including a public image repository and the ability to share access to running environments. The Vagrant Cloud is meant to simplify the discovery and distribution of complete development environments. Vagrant Share lets developers collaborate with others by exposing HTTP or SSH access to these virtual environments. 
+  </div> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/19.java">Bringing Visual Studio's CodeLens Into Focus</a>CodeLens has been a popular feature of VS2013. The forthcoming Update 2 is bring an enhancement to CodeLens called Incoming Changes, designed to make working with multiple code branches on TFS easier. 
+  </div> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/18.java">Managing your Software Debt</a>Software debt exists in different ways. Technical debt is widely known, some other forms are competence debt and quality debt. Software debt can cause product maintenance costs to increase and can depress developers. Several solutions exist to manage software debt. 
+  </div> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/17.java">Android Wear: Details on the Developer Preview</a>Google has announced Android Wear, the anticipated platform for wearable devices, making available the Developer Preview for those enthusiasts that want to get in touch with this new feature or get a head start in making the first applications tailored for such devices. 
+  </div> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/17.java">Oracle Releases Java 8 at EclipseCon</a>Today at EclipseCon, Oracle announced the launch of the Java 8 platform, bringing Lambdas and Streams to the language as well as fixing some long-standing issues with the JVM. Read on to find out more about the release. 
+  </div> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/16.java">Data Warehousing in SQL Server 2014 RTM</a>SQL Server has been released to manufacturing with general availability set for April 1st. Through this week we’ll be covering various aspects of the new release starting with data warehousing. 
+  </div> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/15.java">Azul ReadyNow! Seeks to Eliminate JVM Warm-up</a>Azul Systems announces the release of ReadyNow! in the latest version of Azul's Zing runtime for Java. Includes a series of algorithms designed to obviate the need for &quot;warming-up&quot; the Java Virtual Machine. 
+  </div> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/15.java">Creating Apps for Samsung Gear with Tizen SDK for Wearable</a>After a first generation of wearable devices built with Android, Samsung decided to bring to market a second wave of devices based on Tizen, the open source mobile operating system developed along with Intel. Now, they have released an SDK for creating applications for such devices. 
+  </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/14.java">Amazon AppStream (GA) Apps Run on AWS and Stream to Devices around the World</a>Amazon has made available the AppStream service which enables developers to run an application on AWS, then stream it to various devices. 
   </div> 
@@ -96,60 +150,6 @@
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/34.java">Spark Officially Graduates From Apache Incubator</a>Recently, Spark graduated from the Apache incubator. Spark claims up to 100x speed improvements over Apache Hadoop over in-memory datasets and gracefully falling back to 10x speed improvement for on-disk performance. Based on Scala, it can run SQL queries and be used directly in R. It provides Machine Learning, Graph database capabilities and other further discussed in the article. 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/33.java">Akka Actors vs. Java EJBs from a High-Level Concurrency Perspective</a>There are both commonalities and some differences when comparing architectural principles and coding styles in Akka Actors and Java EE 7 Enterprise JavaBeans, specifically stateless session beans and JMS message-driven beans, Dr Gerald Loeffler concludes in a recent introductory talk when explaining and comparing the three approaches from a high-level concurrency view. 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/32.java">Having Actions Done from Retrospectives</a>Agile retrospectives help teams to find and do actions to improve continuously. There are different ways to do follow up on the actions and to evaluate if actions are leading to better team performance and more value delivered to customers. 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/31.java">Scaling The Happiness Index</a>A report on how happiness index could be scaled out from team level to organization level. Frank Schlesinger, Corinna Baldauf and Stowe Boyd shared their experiences of scaling the happiness index and tools for implementation. 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/30.java">Q&amp;A with VersionOne CEO Robert Holler – Agile Live Webinars</a>InfoQ spoke to VersionOne CEO Robert Holler about their Agile Live Webinar series 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/29.java">Going Offline with LocalForage</a>The Mozilla Foundation has released localForage, a new JavaScript library that promises to simplify the process of storing offline data in web applications. What makes this library unique is the fact that it tries to combine the best of both worlds: the features of some more recent technologies (asynchronism and blob support) with a simple API. 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/28.java">Mono JIT, GC Get Better</a>Mono 3.2.7 is out, with a lot of new features such as an improved JIT, new interpreter for LINQ, use of native instructions for 64 bits, and more. 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/27.java">Anypoint for APIs: An Interview with Uri Sarid</a>MuleSoft recently released a significant upgrade to their Anypoint platform for APIs which brings together API design, collaboration and API management features. InfoQ interviewed MuleSoft CTO, Uri Sarid to find out more about the platform. 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/26.java">New Gem Creates Test Boilerplate for Chef Cookbooks</a>Meez is a new gem that will help get started with test-driven infrastructure for Chef cookbooks. It creates all the boilerplate necessary to assess a cookbook’s quality using tools such as Test Kitchen, Foodcritic, ChefSpec and others, allowing the user to focus on writing actual tests and infrastructure code. 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/25.java">Nokia X Marks Another Android Fork</a>This article overviews the latest most important Android forking attempts which offer developers new opportunities but also some challenges. 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/24.java">IDE Integrated Search Engines</a>New tools are bringing the web directly into a programmer's IDE. As search engines continue to compete for customers, new programming-specific search functionality has been produced for Visual Studio users. 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/23.java">Agile 2014 Keynote Speakers Announced</a>The Agile Alliance has announced keynote speakers who will present at the Agile 2014 conference in Orlando, FL, USA. They are Aneesh Chopra, former and first U.S. Chief Technology Officer, Diana Larsen, author, consultant and an authority on agile adoption, and Bjarte Bogsnes a leader in the Beyond Budgeting community 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/22.java">Xamarin Sifts through Enterprise SAP Data</a>Xamarin and SAP Americas announced at MWC 2014 today a partnership aiming to provide .NET mobile developers the necessary tools to access and integrate enterprise SAP data into their applications. 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/21.java">CQRS Framework Axon 2.1 with Increased Event Handler Support and Performance Improvements</a>Version 2.1 of CQRS framework Axon supports annotations and ordering of event handlers, a new conflict resolution together with performance improvements. The recently released version also adds compatibility with OSGi. 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/21.java">Cordova 3.4 Embraces Firefox OS</a>Taking a detour from their original pure-HTML5 approach to mobile development, Mozilla has been working on adding support for Firefox OS to Cordova, which has happened with the latest Cordova 3.4.0. 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/20.java">Appurify and Xamarin Launch Continuous Integration for Mobile Apps on Variety of Devices</a>Two recently launched services, Appurify Mobile Platform and Xamarin Test Cloud, promise to help developers and enterprises automate testing and performance optimization of their mobile apps by allowing them to run apps on real iOS and Android devices and supporting automated testing and continuous integration. 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/19.java">Apple Buys TestFlight, Android Support Discontinued</a>Apple confirmed that it acquired Burstly, the owner TestFlight. TestFlight is a beta-testing platform for mobile applications which offers easy-to-use services to help in the process of distributing and testing apps for iOS and Android. Whereas TestFlight will continue to support iOS applications, testing of Android apps will be discontinued by March 21st. 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/19.java">QCon London in 2 weeks – Seven Key Reasons to Attend</a>Going into its 8th year, QCon London is UK’s premier event designed exclusively for senior enterprise software development professionals: technical team leads, architects, software engineers, and project managers. If you've thought of attending, there is still a chance to go to one of the best conferences for our craft. QCon is now less than 2 weeks away! Why register? Seven Key Reasons to Attend. 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/18.java">How Team Members Learn From Each Other in Agile Teams</a>When adopting agile teams can use (external) coaches and mentors. But teams can also develop themselves by having team members mentoring and coaching each other. Team members can learn skills and abilities from other team members in multidisciplinary teams, enabling the team to grow as a whole and become self-organized. 
-  </div> 
+  </div>  
  </body>
 </html>

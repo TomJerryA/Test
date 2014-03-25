@@ -1,135 +1,79 @@
-<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>基于AWS的自动化部署实践</h3><h2>1. 背景</h2>
-<p>在过去几年里，社交、移动和云计算深刻改变了整个互联网的格局。作为设计软件领域的全球领导厂商，Autodesk也与2009年正式开始从传统桌面设计软件提供商向在线服务、协作和移动端设计转型。在这次转型中，公司充分利用现代云计算的巨大优势给客户带来了大大超过传统桌面软件的处理能力、用户体验和性价比。其中AWS是目前公司服务的主要运行平台，每年在此投入千万美金级别。</p>
-<h3>1.1. 传统软件交付的挑战</h3>
-<p>在过去的30多年里，Autodesk拥有了非常多的桌面设计软件（如AutoCAD，Maya，3dsMax等）。由于设计软件经常需要处理超大的数据集合（如整个上海中心的设计模型）和极其复杂的运算逻辑（如阿凡达电影画面的绘制），其软件尺寸一般都比较大（GB级别）。以前，客户基本都是通过互联网下载、快递或者分销商获得软件安装包，整个过程比较耗时。另外，软件的升级、安装和维护也是一个非常大的工作量（一些大的设计公司要购买上千份软件拷贝）。尽管公司软件已经支持基于应用程序虚拟化的集中管理模式，但它还是有如前期基础设施建设成本大，服务能力缺乏弹性，仍需要专职运维人员等明显的缺点。所以，提升软件交付的用户体验成为我们必须要面对的一个问题。</p>
-<p>如大多数人所猜测，SaaS成为我们的第一个尝试方向。在2006年，Autodesk实验室开始尝试以SaaS提供设计软件服务的可能性，并且取得了不错的成绩。但是，目前SaaS应用仍然面临着浏览器能力限制、大数据传输慢等诸多问题，无法给专业设计师提供传统桌面软件一样的体验和设计能力。</p>
-<h3>1.2. 云计算带来的新可能</h3>
-<p>随着云计算的兴起，以AWS为代表的基础设施云提供商让我们有可能以一种全新的方法去解决这个问题。我们可以利用基础设施云的强大后台来帮助用户运行虚拟化的软件实例。用户无需下载、安装和维护这些软件，只需要链接到互联网上就可以在线使用我们的软件。而且按需付费以降低使用成本。基于此，Autodesk实验室在2009年开始这个尝试（注：该服务已经于2013年成为公司云平台产品的一部分），并选择了AWS做作为我们的后台云服务提供商。选择AWS有下面的几个原因：</p>
-<ul> 
- <li>需要基础设施云（IaaS）。现在的平台云（PaaS）大部分都是为Web服务准备的，并不适合我们运行虚拟化实例的要求。</li> 
- <li>需要强大的弹性运算能力。Autodesk设计软件对于计算的需求都很大，而计算能力的成本不低。所以，弹性计算能力能让我们很好的控制成本。AWS EC2在这方面非常符合我们的需求。</li> 
- <li>需要丰富的服务。除了运算能力，我们还需要给用户提供海量设计数据的存储，快速的数据访问，安全的访问控制等。AWS云服务在这方便服务非常完备，而且相互集成很容易。</li> 
- <li>需要稳定的服务。AWS EC2能够提供超过99.5%的弹性计算可用率，能为我们建立可靠服务提供坚实的基础设施。</li> 
- <li>需要全球化部署。Autodesk是一个在全球提供软件、服务的公司，所以我们希望基础设施提供商也能全球布局。而AWS已经在全球建立多个数据中心。</li> 
-</ul>
-<h2>2. 自动化部署</h2>
-<p>在完成服务的基本实现并上线服务后，整个后台的维护和部署成本在不断加大。尤其考虑到我们需要高频（每个月更新一次）、多地（多个AWS数据中心）部署服务并同时需要维持高的服务可用性，构建一个自动化的部署系统成为必须要做的事情。</p>
-<h3>2.1. 设定目标</h3>
-<p>作为一个运行在AWS上的服务，我们在设计之初就开始思考AWS给自动化部署带来的新可能和挑战。在我们看来，针对AWS上服务的自动化部署需要特别关注到下面的一些特点：</p>
+<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>用于大数据的嵌入式分析和统计</h3><p><img style="float: left; margin-right: 10px" src="http://infoqstatic.com/resource/articles/embedded-analytics-and-statistics-for-big-data/zh/resources/0227000.png" _href="img://null" _p="true" alt="" />本文最初发表在 <strong><a href="http://www.computer.org/portal/web/computingnow/software"><i>IEEE</i><i>软件</i></a><i> </i></strong><b>杂志上，由</b>InfoQ和IEEE计算机学会为你呈现。 <br /> <br /> 用于大数据的嵌入式分析和统计已经成为了业内一个重要的主题。随着数据量的不断增长，我们需要软件工程师对数据分析提供支持，并对数据进行一些统计计算。本文概要地介绍了嵌入式数据分析和统计的相关工具及类库，其中包括独立的软件包和带有统计能力的编程语言。我期待着收到本专栏读者和潜在的专栏作者的反馈，告诉我你们对这个专栏的想法，以及你们想要了解哪些相关技术。—Christof Ebert</p>
+<div style="clear:both"></div>
+<p>不管在信息技术界还是嵌入式技术界，大数据都已经变成了非常关键的概念。<sup>1</sup> 这样的软件系统通常都有众多的异构连接，包括软件应用程序、中间件和传感器之类的组件。随着云设施的使用不断增长，可用的数据资源变得更加丰富了；智能电网、智能车辆技术、医药最近都出现了这种相互连接的数据源。我们每年生产的数据将近1,200艾字节，并且这一数字有增无减。<sup>2,3</sup> 这样海量的非结构化数据是业务和IT主管无法回避的巨大挑战。</p>
+<p>大数据的定义由四个维度组成：数据量、数据源的复杂度、生产速度，以及潜在用户数。这些数据需要被组织起来，将无数的位和字节转换成可操作的信息—除非我们能提炼出其中的含义，否则数据再丰富都没用。在以前，程序员是写代码的，而统计学家是做统计的。程序员一般用通用的编程语言，而统计学家一般用专门的程序完成自己的日常工作，比如IBM的SPSS (用于社会科学的统计软件包)。统计学家摆弄的国家统计数据或市场调研通常只有选定人群能用，而程序员处理的大量数据都是放在数据库或日志文件中的。从云到几乎所有人都可用的大数据改变了这一切。</p>
+<p>(点击图片可以放大)</p>
+<p><a href="http://infoqstatic.com/resource/articles/embedded-analytics-and-statistics-for-big-data/zh/resources/0227001.png"> <img src="http://infoqstatic.com/resource/articles/embedded-analytics-and-statistics-for-big-data/zh/resources/0227001.png" width="600" _href="img://null" _p="true" alt="" /></a></p>
+<p>随着数据量和数据类型的不断增加，越来越需要软件工程师参与进来对它们做不同的统计分析。软件工程师积极地以前所未有的规模收集和分析数据，让它们变得有价值，拓展新的业务模型。1 比如说，考虑一下主动性维护。我们可以持续地对机器、网络进行监测，一旦发现违规和失效，则立即处理，从而让我们可以在破坏发生或系统瘫痪之前纠正它们。这可以从材料成本以及人工介入两方面降低维护成本。处理数据并找出其中的含义通常只是一个大项目中的一部分工作，或者只是嵌在某些软件中，配置中，或硬件优化问题中。幸运的是，大数据社区已经对这种需求作出了响应，他们创建了一系列的工具，可以将统计学家的一些魔力交给程序员—实际上，这些工具通常要比传统的统计工具更强大，因为它们能处理的数据量在规模上要比老的统计样本幅度更大。</p>
 <div id="lowerFullwidthVCR"></div>
+<h2>用于嵌入式分析和统计的技术</h2>
+<p>可以执行统计分析的软件有很多；表一给出了一些最流行的软件。它们的区别在于用户对它们统计复杂度的要求，易用性，以及它们是独立的软件包，还是带有统计能力的编程语言。</p>
+<p>表一中有三项很值得我们注意：R、Python、D3 (数据驱动文档Data- Drives-Documents)。R是一门面向统计的语言。Python是一门通用的编程语言，并且已经证实在科学家和研究人员中间很流行，他们会用它作科学及统计计算。D3是一个JavaScript库，用户可以用它创建可视化图形，并使用Web浏览器与之交互(比如放大、缩小、收起和展开) 。R、Python和D3都非常适用于嵌入式统计，有几个原因：</p>
 <ul> 
- <li>基础设施的服务化。在AWS中，你可以利用类似Cloud Formation服务在很短时间（几分钟）获取你所要的所有基础设施（包括运算、存储、网络、IO等），而这些基础设施已经按照你的要求自动配置、连接好。所以，我们可以让自动化部署把基础设施的管理也包括进来，而这在传统的数据中心模式下很难实现。</li> 
- <li>支持弹性资源。因为需要支持弹性，整个服务要在运行时动态加入新的基础设施，如计算单元等。自动化部署系统需要能让新加入的基础设施立马投入服务。</li> 
- <li>保护数据更为重要。在传统的数据中心，我们可以让部署完全在内部网络完成，在确认好所有的安全配置后再上线。但是AWS是一个公有云服务，你的所有部署其实是在公有网络上完成的。所以，我们必须在自动化部署中充分考虑到数据安全的问题。</li> 
+ <li>因为它们是独立的编程语言，可以轻松地通过标准语言机制跟其它系统交互，或者也可以通过导入及导出各种格式的数据。</li> 
 </ul>
-<p>结合上面的特点、DevOps的普遍实践和项目的实际情况，我们给整个自动化部署系统定下了下面的目标：</p>
 <ul> 
- <li>一键式部署：必须尽可能的自动化所有部署过程，包括基础设施的创建和部署。</li> 
- <li>多环境支撑：必须能够适应于Production、Staging和Development环境。</li> 
- <li>无服务中断：必须能够无缝的进行服务升级、切换。</li> 
- <li>随时可回滚：必须可以很容易的回滚到前面的版本以处理意外问题。</li> 
- <li>安全性检测：必须在确认部署环境的安全设置已经满足条件后才开始做部署工作。</li> 
+ <li>Python和R中的脚本可以直接嵌入到更大的分析工作流中。</li> 
 </ul>
-<h3>2.2. 整体架构</h3>
-<p>在确定目标后，我们进行了技术选型，希望能够找到既很好支持AWS相关自动化操作，又能集成DevOps优秀实践的方案（注：那时AWS还没有推出OpsWorks服务）。但最后并没有找到合适的方案，于是决定自己来实现整个自动化部署系统。经过几轮的改进和实现，现在的自动化部署系统整体结构如下：</p>
-<p><img width="600" src="http://infoqstatic.com/resource/articles/automated-deployment-practice-based-on-aws/zh/resources/0114000.png" alt="" _href="img://null" _p="true" /></p>
-<p>图1：自动化部署系统整体架构</p>
-<p>类似于传统的自动化部署，我们也同样有开发分支和发布分支，并与持续构建系统对接。当开发人员提交代码后，相应的构建就会在代码所在的分支自动触发。在完成代码编译和集成的自动化测试（目前主要是单元测试）后，将产生相应部署组件并存放在构建系统中（目前，每个构建会产生所有的系统组件并拥有同样的版本号）。至此，整个构建过程完成。</p>
-<p>为了支持多环境部署和安全隔离，我们使用两个独立的AWS账号来运行不同的环境。其中开发环境在一个ＡＷＳ账户内，只部署开发分支的构建。而生产系统则在另外一个AWS账户中，其下运行Prod/Staging两组环境。发布分支永远只会向Staging环境部署并在完成最后验证测试后与当前Prod环境进行热切换，从而达到无服务中断的目的。</p>
-<h3>2.3. 一键部署流程</h3>
-<p>在完成自动化持续构建后，我们就可以部署其中的任意版本。当部署某一构建版本时（无论开发分支还是发布分支），整个流程如下：</p>
-<p><img src="http://infoqstatic.com/resource/articles/automated-deployment-practice-based-on-aws/zh/resources/0114001.png" alt="" _href="img://null" _p="true" /></p>
-<p>图2：一键式部署流程</p>
+<ul> 
+ <li>Python和R程序可以直接用来构建应用程序，这些应用程序可以从各种数据源读取数据，用户可以直接通过Web跟这些应用程序做数据分析及可视化的交互。</li> 
+</ul>
+<ul> 
+ <li>借助D3，用户可以通过Web浏览器交互式地操作统计图形，将分析提升到更高水平。</li> 
+</ul>
+<ul> 
+ <li>它们比专业的统计包更靠近程序员的思维框架。</li> 
+</ul>
+<p>除了D3，这个表中的所有东西都提供了进行高级统计（比如多元和时间序列分析）的设施，或者自身具备，或者通过类库实现。尽管其中的每一个都有侧重点，更适合解决特定的目标问题。比如Python的Pandas包，善于支持时间序列分析，因为它就是为了对财务数据做这样的分析而写的。</p>
+<h2>Python的统计生态系统</h2>
+<p>现如今用来做统计的最流行的通用编程语言就是Python。在科学计算方面它总是受到青睐，还有几个优秀的Python工具可以用来完成更复杂的统计任务。Python中的基本科学库是<a href="http://www.numpy.org">NumPy</a>。它对Python的主要贡献是一个同构的多维数组，可以用来放操作数据的方法。它可以集成C/C++和Fortran，还有几个函数可以用来执行高级的数学及统计计算。它内部主要用的是自己的数据结构，用本地代码实现，所以在NumPy中执行的矩阵计算比在Python中执行相同的计算快得多。构建在NumPy 之上的<a href="http://www.scipy.org">SciPy</a>，提供了一些高层的数学和统计函数。SciPy再次处理了NumPy的数组；这些数组虽然很适合做数学计算，但处理可能会有缺失值的异构数据时有一点繁琐。为了解决这个问题，<a href="http://pandas.pydata.org">Pandas</a>提供了灵活的异构数据结构，很容易索引、切片，甚至合并和连接(类似于SQL表之间的连接)。 引入<a href="http://ipython.org">iPython</a>是个很吸引人的设置，它是一个交互式的Python shell，有命令行补足、很好的历史记录，以及很多其它特性，在操作数据时特别有用。然后还可以用<a href="http://matplotlib.org">Matplotlib</a>对结果可视化。</p>
+<p><img src="http://infoqstatic.com/resource/articles/embedded-analytics-and-statistics-for-big-data/zh/resources/0227002.png" width="600" _href="img://null" _p="true" alt="" /></p>
+<h2>举例说明</h2>
+<p><a href="http://data.worldbank.org">世界银行</a>是一个信息宝库，并且它的很多数据都可以通过Web访问。对于更复杂的分析，公众可以从<a href="http://datacatalog.worldbank.org">世界银行的数据目录</a>下载数据，或通过API访问它。最受欢迎的数据集是世界发展指标(WDI)。根据世界银行的说法，WDI包含“最新、最准确的全球发展数据，包含国家、地球和全球的估算。” WDI有两种可下载的格式：Microsoft Excel和逗号分隔值(CSV)文件。 (因为 Microsoft Excel文件不适合编程分析，所以我们在这里处理的是CSV文件。)</p>
+<p><img src="http://infoqstatic.com/resource/articles/embedded-analytics-and-statistics-for-big-data/zh/resources/0227003.png" width="600" _href="img://null" _p="true" alt="" /></p>
+<p><b>图</b><b>1.</b><b>计算世界发展指标相关性的</b><b>Python</b><b>程序。这个程序采集了最前面</b><b>30</b><b>个测量最多的指标，计算斯皮尔曼相关系数，并用图形显示结果。</b><b> </b></p>
+<p>WDI CSV包是一个42.5M的压缩文档。下载并解压后，你会见到主文件WDI_Data.csv。获得该文件内容概览的好办法是交互地检查它。因为我们要用Python，所以跟我们要用的那些工具交互的最好办法是发起一个iPython会话，然后加载数据：</p>
+<p><b>In [1]: import pandas as pd </b></p>
+<p><b>In [2]: data = pd.read_csv(“WDI_Data.csv”)</b></p>
+<p>结果在data中，一个包含数据的DataFrame。你可以把DataFrame看作一个二维数组，有一些易于操作的额外功能。在一个DataFrame中，数据被组织为几列和一个索引 (与行对应)。如果我们输入</p>
+<p><b>In [3]: data.columns</b></p>
+<p>我们会得到显示列名的输出：国家名、国家代码、指标名、指标代码。这些后面都跟着从1960到2012年每年的数据列。类似的，如果我们输入</p>
+<p><b>In [4]: data.index</b></p>
+<p>我们会看到数据有317,094行。每一行都对应一个国家一个特定指标从1960到2012年的值；一行中没有值的年份表明那一年在那个国家中没有测量这一指标。我们先看一下有多少指标</p>
+<p><b>In [5]: len(data[‘Indicator Name’].unique())</b> <br /> <b>Out[5]: 1289</b></p>
+<p>然后看一下有多少国家</p>
+<p><b>In [6]: len(data[‘Country Name’].unique())</b> <br /> <b>Out[6]: 246</b></p>
+<p>现在我们有一个要解决的问题：这些指标是彼此独立的，还是其中有些相互关联？</p>
+<p>因为我们是按年份和国家测量的指标，所以我们必须确定让哪个参数保持恒定，从而更精确地定义这个问题。一般而言，当样本增加时，我们会得到更好的统计结果。然后重新表述这个问题就变得有意义了：哪一年的测量结果最多，测量最多的指标是独立的，还是其中一些彼此相关？所谓“测量最多的指标”，是指那些在更多国家中测量的指标。事实证明，我们可以在大约50个LOC中找到问题的答案。图一中是完整的程序。</p>
+<p>代码1–10行导入了我们将要用到的库。第11行读取数据。在第13行中，我们给出了一个数值，这是我们要检查的测量最多的指标的个数。在第15行，我们找到了从0开始的带有年度测量值的第一列。在那之后，我们可以在第17行找到有最多测量值的那一列（2005年）。然后我们去掉了没有那些测量结果的所有数据。在第20到26行，我们获取了测量最多的指标。</p>
+<p>真正的统计计算从第28行开始，我们准备了一个表，用来存放每对指标相关性的结果值。在接下来的循环中，我们计算每对指标的相关性，并把它放在之前准备好的表中。最后，在第41到52行，我们把这些结果显示在屏幕上，并保存为一个PDF文件（见图二）。我们还把相关矩阵的垂直顺序做了反向处理，以便让最重要的指标出现在矩阵的顶部（代码41和49行）。</p>
+<p>对角线上有完美的相关性—理应如此，因为那里检查的是相同的指标。除此之外，我们的确看到了有些指标之间有相关性—有些是正相关的，甚至很强，也有些是负相关或者非常的负相关。</p>
+<p><img src="http://infoqstatic.com/resource/articles/embedded-analytics-and-statistics-for-big-data/zh/resources/0227004.png" width="600" _href="img://null" _p="true" alt="" /></p>
+<p><b>图</b><b>2. </b><b>图一中的</b><b>Python</b><b>程序创建出来的世界发展指标相关矩阵。</b></p>
+<h2>Python生态系统中更高级的组件</h2>
+<p>因为Python受到了科研界的青睐，一些专业化的工具也随之出现。其中有构建在NumPy、SciPy和matplotlib之上的<a href="http://scikit-learn.org/stable">Scikit-learn</a>，它提供了完备的机器学习工具包。对于符合层级结构的超大型数据集，Python提供了<a href="http://www.pytables.org">PyTables</a>，它以<a href="http://www.hdfgroup.org/HDF5">HDF5 </a>库为基础。这是一个行业热点， DARPA 在2013年从XDATA项目基金中拿出300万美元给Continuum Analytics作为奖励，让它进一步推进Python数据分析工具的开发。可以预料到的是接下来的几年这个生态系统仍将稳步发展。</p>
+<h2>用于统计计算的R项目</h2>
+<p>R是做统计的语言。可以这么说，Python让做统计变成了程序员的活，而R让写程序变成了统计人员的任务。这门语言的中心是有效操作表示统计数据集的对象。这些对象通常是向量、列表，和表示按行和列组织的数据集的数据帧。R有常用的流程控制结构，甚至用到了面向对象编程的思想（尽管它的面向对象实现跟我们在更传统的面向对象语言中的概念有很大差别）。R的卓越之处在于它所提供的各种统计类库。R的类库中几乎实现了所有的统计测试或方法（然而在Python中，有时你可能会发现你必须推出自己的实现）。为了让你明白它看起来是什么样的，图三给出了一个跟图一一样的程序，相同的逻辑，但实现用的是R而不是Python。图四是结果。</p>
+<p><img src="http://infoqstatic.com/resource/articles/embedded-analytics-and-statistics-for-big-data/zh/resources/0227005.png" width="600" _href="img://null" _p="true" alt="" /></p>
+<p><b>图</b><b>3. </b><b>用</b><b>R</b><b>实现图一中那个计算世界发展指标相关性的程序。</b></p>
+<h2>组合、联合、整合嵌入式分析技术</h2>
+<p>我们在本文中给出的例子是不同应用程序合并到一起处理大数据的典型办法。数据从源头（以某种原始格式）流向我们的统计包可接受的格式。统计包必须有一些能够操作和查询数据的办法，以便我们能取得想要检查的数据子集。这些都是统计分析必须有的。统计分析的结果可以用文本格式或图形渲染出来。我们可以在本地计算机上执行这一处理，也可以通过Web完成（此时数据的运算和处理是由服务器执行的，参数、结果和图形要通过Web浏览器）。这是一个很强大的概念，因为许多不同的设定，从ERP框架到汽车诊断软件，都可以将数据导出为CSV这样简单的格式—实际上，当我们遇到一个不允许导出任何东西，封闭并且有专有数据格式的软件时，应该视作是一种警告。</p>
+<p>要想按你想要的方式分析数据，你必须首先能够访问到它。所以你应该通过各种手段选择那些可以促进数据交换的技术，或者通过简单的导出机制，或者通过适当的调用，比如通过一个REST（表述性状态转移）API。</p>
+<p>数据一直在变大，所以你必须进行调研，看你正在考虑的工具能否胜任你的数据处理工作。你没必要在主存中处理所有数据。比如说，R有一个<a href="http://cran.r-project.org/web/packages/bigmemory/index.html"> 大内存</a> 库，让我们用共享内存和内存映射文件处理超大数据集。还有，要确保软件包不仅能处理大量输入，还要能处理大型数据结构：比如说，如果表的大小被限定在32位整型之内，你就不能处理有5百万条记录的表。</p>
+<p>在上面的例子中，警觉的读者可能已经注意到了，我们将数据变成适于统计分析的格式所用的代码，要比统计分析本身的代码还多，不管怎么说，那是由已经写好的函数做的。我们的例子有点儿小，所以预处理和真正的处理两者的比例可能尤其显得头重脚轻，但这个例子也表明了这一事实，即数据操作通常和数据分析同样重要（和苛刻）。实际上，R和NumPy/SciPy 真正的实力并不在于它们掌握了统计算法，而是在于它们知道如何有效地处理它们提供的数据结构。并且这基本上是程序员的工作，不是统计学家的。别处还有更深入的资源可供阅读。<sup>4-7</sup></p>
+<p><img src="http://infoqstatic.com/resource/articles/embedded-analytics-and-statistics-for-big-data/zh/resources/0227006.png" width="600" _href="img://null" _p="true" alt="" /></p>
+<p><b>图</b><b> 4. </b><b>用</b><b>R</b><b>做出来的世界发展指标相关矩阵</b></p>
+<h2>参考资料</h2>
 <ol> 
- <li>触发“一键部署”命令：在构建系统中选择好要部署的分支和版本，直接一键点击触发命令。</li> 
- <li>上传部署文件到S3：如图1所示，部署组件是在运行时动态下载安装。AWS S3提供在线存储并能够方便的下载到EC2实例中，所以把部署组件上传到S3中最合适不过。为了支持多版本并存和部署回滚，所有上传到S3的部署组件都按版本号分文件夹存储。</li> 
- <li>获取当前部署环境的配置文件：部署环境配置文件存在相应AWS账户下的S3中。它定义了当前AWS账户下面的部署配置，包括需要部署的数据中心列表，每个数据中心下面的基础设施描述（Cloud Formation Stack）。由于Prod/Staging环境都在同一个AWS账户下，每个数据中心都会有两组Cloud Formation Stack配置（分别用于Prod和Staging环境）。部署系统会选择当前Staging环境的Cloud Formation Stack作为下一步的部署目标。</li> 
- <li>初始化部署目标基础设施：根据当前选中的Cloud Formation Stack初始化整个基础设施，包括启动相应的EC2实例，绑定Elastic IPs等。</li> 
- <li>运行部署环境：在整个基础设施运行起来后，EC2实例第一步就是自动做运行时部署（利用操作系统的启动脚本实现）。具体运行时部署细节如下： <p><img src="http://infoqstatic.com/resource/articles/automated-deployment-practice-based-on-aws/zh/resources/0114002.png" alt="" _href="img://null" _p="true" /></p> <p>图3：运行时部署</p> </li> 
- <li>EC2实例在完成整个自动化部署中要及时进行有效性检测，如检测下载组件包是否完整正确，组件安装是否成功，期望的服务是否可以正确访问等。在完成所有部署和有效性检测后方加入的正式服务系统并处理用户请求，否则及时报告运维团队进行处理。</li> 
+ <li>C. Ebert and R. Dumke, Software Measurement, Springer, 2007.</li> 
+ <li>K. Michael and K.W. Miller, eds., Computer, vol. 46, no. 6, 2013.</li> 
+ <li>T. Menzies and T. Zimmermann, eds., IEEE Software, vol. 30, no. 4, 2013.</li> 
 </ol>
-<h3>2.4. 为什么选择运行时部署</h3>
-<p>看到上面部署流程，相信很多人会问一个问题：AWS不是可以通过虚拟机镜像（AMI）来启动EC2实例，为什么不把上面的部署组件直接烧入AMI？这样在EC2实例启动后就直接使用而无需做运行时部署。其实，我们的最初解决方案就是把部署组件直接烧入AMI，但很快就发现了这种方案的局限：</p>
-<p>部署组件的变化是非常频繁的，尤其是在发布前，一天都能够产生上十次的变化。这就意味着自动部署系统可能需要频繁产生AMI。而AMI的创建过程并不快（10分钟~1小时），并且过多的AMI也会造成管理问题和额外的存储成本。</p>
-<p>作为一个平台项目，各个产品会在我们的平台上运行。我们希望提供给各个产品部门的基本AMI是平台版本无关的。这样产品部门在基本AMI基础上部署它们产品并重新生成的产品AMI也是平台版本无关的。于是产品AMI可以不做任何修改就能够快速采用最新的平台版本。具体如下图所示：</p>
-<p><img width="600" src="http://infoqstatic.com/resource/articles/automated-deployment-practice-based-on-aws/zh/resources/0114003.png" alt="" _href="img://null" _p="true" /></p>
-<p>图4：自动化部署中的AMIs</p>
-<p>为了保证图4中的基本AMI和产品AMI是平台版本无关，我们就需要保证烧入AMI的所有部分都是能够独立于平台版本的。但是，启动脚本需要做平台组件的运行时部署，显然这个运行时部署脚本也会随着平台更新不断变化，所以我们无法直接把整个运行时部署脚本放到启动脚本中。针对这个问题，我们的解决方案就是把整个运行时部署脚本分成两部分。一部分做平台组件的安装、检测工作，并随安装组件存到S3中，而另外一部分只做基本不会改变的事情（下载平台组件包并调用自动化部署脚本）并设置为操作系统的启动脚本。这也是图3中启动脚本和自动化部署分开两部分的原因。</p>
-<p>正是因为采取了上面的AMI生成、管理策略，我们的产品部门基本上不用太频繁的更新它们产品的AMIs（除非产品自身有更新），真正做到平台版本和产品版本的去耦合，极大的降低了运维成本。</p>
-<h3>2.5. 运行时版本选择与回滚</h3>
-<p>由于产品AMI是平台版本独立的，以它为镜像运行起来的EC2实例无法知道应该去下载哪一个版本的平台组件。幸运的是AWS的EC2服务提供了“User Data”机制。简单来说，就是在启动EC2实例的时候可以传入一段用户自定义数据给AWS。当这个实例运行起来后，实例内部程序可以通过调用AWS EC2的元数据服务取得先前传入的用户自定义数据。于是，我们可以把当前需要运行的平台版本号以“User Data”的方式传给EC2实例，然后让启动脚本读取相应版本号并下载相应版本组件来部署。</p>
-<p>同样，基于“User Data”机制和平台版本无关的AMI，我们非常容易得实现版本的回滚。只需要修改传入给“User Data”中的版本号并保证要回滚到的平台组件版本仍然存在于S3中即可。即使是从零开始回滚到以前版本也可以在几分钟内完成（主要时间花费在启动EC2实例上）。在实际运营中，因为已经有了Prod/Staging的热切换，我们一般会在切换上新的版本后保持原来的版本运行一段时间（这段时间一般是问题的高发期）以便做到秒级的回滚。</p>
-<h4>2.6. 关于安全</h4>
-<p>如前面所说，我们需要格外关心在AWS上自动化部署的安全问题。在我们的实践中，时刻会遵循最小授权原则并利用AWS中的IAM服务实施，具体体现在下面的两个原则上：</p>
-<ul> 
- <li>不要让管理员之外的任何人直接使用AWS根账户（包括它的Access Key和Access Security）。取而代之的是创建专门的IAM User并给于其必须的权限</li> 
- <li>不要在公司防火墙之外使用任何账号的Access Key和Access Security。取而代之的是使用IAM Role来获取EC2实例运行时需要的资源访问权限。</li> 
-</ul>
-<p>例如，我们的构建系统需要访问多项AWS服务资源（如S3、EC2、Cloud Formation等），而构建系统又在防火墙内部，所以我们创建专用的 IAM User来做自动化部署并给予构建系统需要的资源访问权限。另外，EC2实例需要访问S3并下载部署组件，所以EC2应该以专用的IAM Role来运行并在IAM Role中给予相应的S3桶只读属性。</p>
-<h3>2.7. 为什么不是AWS OpsWorks</h3>
-<p>熟悉AWS服务的人可能都知道Amazon已经在2013年发布了它的DevOps服务： OpsWorks。我们的自动化部署系统为什么没有选择这个服务呢？最直接的原因就是我们开始构建自动化部署系统时候，AWS还没有发布OpsWorks。在AWS发布OpsWorks后，我们对此做了仔细调研，并决定继续使用目前的系统。要了解其背后原因，就要完整理解AWS提供的一系列应用程序管理服务（Application Management Services）之间的关系。这里，让我们首先看看AWS文档中这张示意图：</p>
-<p><img width="600" src="http://infoqstatic.com/resource/articles/automated-deployment-practice-based-on-aws/zh/resources/0114004.png" alt="" _href="img://null" _p="true" /></p>
-<p>图5：AWS中的应用程序管理服务</p>
-<p>就如上图所示，AWS为各种应用场景提供了不同的解决方案。由于针对的应用场景不同，这些服务的关注点也就不同。例如，AWS Elastic Beanstalk主要是为Web应用程序提供快速部署服务（有点类似国内SAE、BAE等服务），它帮助开发和运维人员隐藏了大量的底层细节，非常方便上手部署应用。但是，该服务在管理底层基础设施架构上就基本没有多少灵活性，无法适应项目的个性化需求。就我们的服务而言，它开始于最右边的完全自己定制方案。在AWS推出Cloud Formation后，为了提高系统的效率和自动化程度，我们迁移到以Cloud Formation为基础的新方案。但是我们没有继续向AWS OpsWorks迁移。究其缘由，让我们先多方面比较一下AWS OpsWorks和AWS Cloud Formation： </p>
-<table cellspacing="0" cellpadding="0" border="1"> 
- <tbody> 
-  <tr> 
-   <td width="115" valign="top"> <p><b>特性</b></p> </td> 
-   <td width="234" valign="top"> <p><b>AWS Cloud Formation</b></p> </td> 
-   <td width="289" valign="top"> <p><b>AWS OpsWorks</b></p> </td> 
-  </tr> 
-  <tr> 
-   <td width="115" valign="top"> <p><b>基础设施架构</b></p> </td> 
-   <td width="234" valign="top"> <p>以Stack的方式管理整个基础设施，你可以以任何你想要的架构组织你的基础设施。</p> </td> 
-   <td width="289" valign="top"> <p>遵循常见的架构实践，以Stack、Layer和App为核心观念来管理整个服务架构，并利用Chef 来把App自动化部署到各个Layer上。尽管它也有很大的灵活性，但是你需要把自己的基础设施架构映射到上面的这些概念中以实施该服务。</p> </td> 
-  </tr> 
-  <tr> 
-   <td width="115" valign="top"> <p><b>AWS</b><b>资源管理</b></p> </td> 
-   <td width="234" valign="top"> <p>支持几乎所有的AWS资源。你可以在Cloud Formation的JSON模板中方便地加入各种AWS资源。Cloud Formation会自动帮你管理各种资源之间的依赖关系。你也可以自定义一些资源之间的逻辑依赖关系。</p> </td> 
-   <td width="289" valign="top"> <p>支持主要的AWS服务资源（如EC2、EBS、ElasticIP，ELB等），并利用这些资源构建常见的Layers。当然你也可自己加入一些非内建的资源（如RDS服务）到OpsWorks中来，但是它无法达到Cloud Formation对于资源管理的广度。</p> <p>另外，目前的OpsWorks仅仅支持Amazon Linux 和Ubuntu LTS操作系统，你可以使用这些系统的默认AMI或者在这些默认AMI基础上创建的新AMI。</p> </td> 
-  </tr> 
-  <tr> 
-   <td width="115" valign="top"> <p><b>定制化</b></p> </td> 
-   <td width="234" valign="top"> <p>支持利用参数改变由资源模板定义的Stack默认行为。</p> </td> 
-   <td width="289" valign="top"> <p>支持利用自定义JSON改变Stack的默认行为。</p> </td> 
-  </tr> 
-  <tr> 
-   <td width="115" valign="top"> <p><b>自动部署</b></p> </td> 
-   <td width="234" valign="top"> <p>支持各种自动化部署工具（如Chef、Puppet等），但是你需要自己实现所有的自动化部署脚本。</p> </td> 
-   <td width="289" valign="top"> <p>支持基于Chef的自动化部署，并且提供了大量的内建自动化脚本。这些内建的自动化脚本会帮助开发和运维人员完成很多的常见工作（如自动部署Tomcat服务器等）并已经集成到整个服务中去。另外，它同样支持自定义的Chef脚本来实现项目相关的部署。</p> </td> 
-  </tr> 
-  <tr> 
-   <td width="115" valign="top"> <p><b>弹性支撑</b></p> </td> 
-   <td width="234" valign="top"> <p>支持完全自由控制的弹性策略。用户可以使用Auto-Scaling组加自定义的性能指标来确定Scale-up/down的条件。</p> </td> 
-   <td width="289" valign="top"> <p>提供基于负载（Load-Based）和基于时间（Time-Based）的弹性策略。其中基于负载的弹性策略主要考虑CPU、内存等几个主要因素。</p> </td> 
-  </tr> 
-  <tr> 
-   <td width="115" valign="top"> <p><b>系统监控</b></p> </td> 
-   <td width="234" valign="top"> <p>支持基于Cloud Watch的监控机制。用户可以监控大量的内建指标并添加自定义的监控指标到Cloud Watch中去。</p> </td> 
-   <td width="289" valign="top"> <p>提供以Stack为单元的整合监控界面，同样以Cloud Watch为基础提供监控服务。另外，它还提供了基于Ganglia的可选监控方案。</p> </td> 
-  </tr> 
-  <tr> 
-   <td width="115" valign="top"> <p><b>安全管理</b></p> </td> 
-   <td width="234" valign="top"> <p>支持IAM的完整功能。用户可以精细控制各个资源的访问权限。</p> </td> 
-   <td width="289" valign="top"> <p>支持IAM的完整功能。并能方便的把相应的安全策略批量实施。</p> </td> 
-  </tr> 
- </tbody> 
-</table>
-<p></p>
-<p>表1：Cloud Formation与OpsWorks的比较</p>
-<p>参考上面的比较和我们目前的自动化部署系统，OpsWorks对于我们仍然有一些限制：</p>
-<ul> 
- <li>无法支持Windows操作系统。我们的很多服务仍然是运行在Windows系统上。</li> 
- <li>无法提供自定义的弹性策略。我们的系统实现了自己的调度算法，目前把该调度算法映射到现在OpsWorks中还比较困难。</li> 
-</ul>
-<p>随着OpsWorks的发展，这些限制未来都可能会被解决。但是，作为一个已经运行的系统，我们仍然需要仔细评估OpsWorks带来的收益和成本以确定是否迁移。如果需要在AWS上面部署一个新的应用，推荐的实践就是如图5从左向右依次选择，并且在确认左面的方案有明确限制的情况下再考虑下一个选择。如果图5中左边服务已经能够解决问题，就不建议自己开发相应的系统。毕竟整个部署系统的开发和维护还是需要一个不小的成本，而AWS提供的这些应用程序管理服务都免费的。另外，在绝大多数情况下，Cloud Formation已经足够灵活以满足你在AWS上部署服务。但是，在某些情况下（例如，同时支持在多个云服务提供商上部署服务），你可能还得选择完全自己开发或采用第三方供应商的方案。</p>
-<p>在过去的一年里，我们利用上面的自动化部署系统让整个部署过程的耗时从最初的几天快速下降到几分钟之内，大大降低了的开发、运维人员的负担。如此同时，自动化部署还把部署出错的可能性降到了一个极低的水平，提高了系统的整体可用性。</p>
-<h2>3. 总结</h2>
-<p>在上面的文章中，我仔细介绍了整个自动化部署系统，并讨论了怎样充分利用AWS服务的特点来提高自动化部署的效率。该系统运行高效、稳定，而且极大程度的降低了平台自身和运行于平台上产品的运维成本。接下来，我们仍然会持续改进整个系统，其中关注的重点有：</p>
-<ul> 
- <li>解决各个平台组件之间的兼容问题。我们希望让自动化部署系统能够根据设置的规则自动检测各个组件内的兼容问题并选择合适版本自动化部署，这样，各个组件可以按照自动的节奏（和版本号）独立发布（而不是像现在所有的组件必须以一个版本一块部署）。</li> 
- <li>开发整个自动化部署系统的控制台界面（Dashboard）。该界面可以让我们自己和产品部门看到系统的目前部署状态及部署历史，并且可以让一键部署在该控制台触发，从而让平台内部的构建系统彻底隐藏在背后。</li> 
- <li>尝试和AWS OpsWorks的结合。OpsWorks的一个优势就是集成了大量DevOps实践精髓并提供了丰富的内建部署脚本，可以降低自动化部署系统自身的开发和维护成本。尽管如前所述，目前还没有办法向该系统迁移，但我们仍然会密切关注OpsWorks自身的发展，并会在平衡收益与成本的前提下积极尝试和AWS OpsWorks的结合。</li> 
-</ul>
 <h2>关于作者</h2>
-<p>徐桂林现为<a href="http://www.autodesk.com.cn/">Autodesk</a>中国研发中心的高级开发工程师。2007年加入Autodesk中国研发中心，先后在Autodesk Labs、CTO Office工作，现在Autodesk云平台事业部（Cloud Platform）工作。在2007年开始参与多个SaaS相关的开发，主要做前端开发。从2009年年底转向做后端，开始使用AWS服务并领导中国团队的开发工作。毕业于浙江大学计算机系CAD&amp;CG国家重点实验室，关注云计算、前端开发等相关技术。</p><br><br><br><br><br><br></body></html>
+<p><img style="float: left; margin-right: 10px" src="http://infoqstatic.com/resource/articles/embedded-analytics-and-statistics-for-big-data/zh/resources/0227007.png" _href="img://null" _p="true" alt="" /><strong>Panos Louridas</strong> 是希腊研究和技术网的顾问，同时也是雅典经济与商业大学的研究员。可以通过louridas@grnet.gr或louridas@aueb.gr联系到他。</p>
+<div style="clear:both"></div>
+<p><img style="float: left; margin-right: 10px" src="http://infoqstatic.com/resource/articles/embedded-analytics-and-statistics-for-big-data/zh/resources/0227008.png" _href="img://null" _p="true" alt="" /><strong>Christof Ebert</strong> 是矢量咨询服务的总经理。他是IEEE高级会员，IEEE软件的软件技术部的编辑。可以通过christof.<a href="mailto:christof.ebert@vector.com">ebert@vector.com</a>联系他。</p>
+<div style="clear:both"></div>
+<p><img style="float: left; margin-right: 10px" src="http://infoqstatic.com/resource/articles/embedded-analytics-and-statistics-for-big-data/zh/resources/0227000.png" _href="img://null" _p="true" alt="" />本文最初发表在 <a href="http://www.computer.org/portal/web/computingnow/software">IEEE软件</a><b> </b>杂志上。<a href="http://www.computer.org/portal/web/computingnow/software">IEEE 软件</a>的使命是构建领先的和面向未来的软件从业人员社区。这份杂志致力于提供可靠、使用、前沿的软件开发信息，让工程师和管理人员能够紧跟快速变化的技术。</p>
+<div style="clear:both"></div>
+<p><strong>原文英文链接：</strong><a href="http://www.infoq.com/articles/embedded-analytics-and-statistics-for-big-data">Embedded Analytics and Statistics for Big Data</a></p><br><br><br><br><br><br></body></html>

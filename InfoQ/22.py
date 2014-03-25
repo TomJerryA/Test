@@ -1,67 +1,16 @@
-<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>実験と価値提供のバランスをとる</h3><p><a target="_blank" href="http://www.infoq.com/news/2014/02/experiments-deliveries-product"><em>原文(投稿日：2014/02/06)へのリンク</em></a></p>
+<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>Etsyはいかにして1日に50回ものデプロイをしているのか</h3><p><a target="_blank" href="http://www.infoq.com/news/2014/03/etsy-deploy-50-times-a-day"><em>原文(投稿日：2014/03/17)へのリンク</em></a></p>
 <div class="article_page_left news_container text_content_container"> 
  <div class="text_info"> 
-  <p>リーンスタートアップの実験は顧客について学び、どのような機能に価値があるのかを判別する手助けをしてくれる。しかし、価値は製品を作り、実際に顧客に届けることで生まれるものだ。実験とデリバリのバランスを上手くとる必要がある。</p> 
-  <p>Huffingtonの<a href="http://www.huffingtonpost.com/keith-hanson/6-myths-about-lean-startu_b_4118057.html">リーンスタートアップの6つの神話</a>という記事で、Keith Hanson氏は“リーンスタートアップは機能と製品全体の対立を深める”という神話が神話に過ぎないことの理由を書いている。仮説と実験を伴ったビルド-計測-学習のサイクルが製品提供全体を助ける理由について説明する。</p> 
-  <blockquote> 
-   <p>リーンスタートアップの手法が私たちに教えていることは、&quot;機能による機能&quot;と&quot;私の製品は顧客の求めるすべてのものが詰まっている最強の製品だ&quot;の2分法である、という考え方は間違っています。メトリクスとそのメトリクスに結びついたビジネス上の目的が開発タスクの優先順位を駆動できる、というのがリーンスタートアップです。顧客の開発とビルド-計測-学習のフィードバックのループはリーンスタートアップでどのように開発がされるかを定義します。機能と完成した製品という間違った2分法が決めるのではありません。</p> 
-  </blockquote> 
-  <blockquote> 
-   <p>(…) 起業家は一般的に、これらの問いと答えを直感的に考え、ガイダンス抜きで反復的に製品と価値を改善します。リーンは起業家のこのような直感を磨き上げ、検証可能な仮説を作り、未来の意思決定のための学習を記録します。これらはすべてビジネスの成功のための重要指標に焦点を当てています。</p> 
-  </blockquote> 
-  <p><a href="http://www.infoq.com/author/Roman-Pichler">Roman Pichler氏</a>は<a href="http://www.romanpichler.com/blog/agile-product-management/learning-and-execution-in-scrum/">get your focus right: learning and execution in scrum</a>と題したブログ記事で、実験と学習の必要性について説明している。</p> 
-  <blockquote> 
-   <p>新しい製品と新しい機能を開発し始めるとき、わかっていることよりわかっていないことの方が多いのが普通です。ユーザのインタラクション、ユーザインターフェイスのデザイン、製品の機能、必要なアーキテクチャと技術。このようなことがわかっていないのです。最も困難なのは、このような非確実性と関連するリスクに対処することです。</p> 
-  </blockquote> 
-  <p><a href="http://www.infoq.com/author/Gil-Zilberfeld">Gil Zilberfeld氏</a>は、<a href="http://www.gilzilberfeld.com/2013/05/i-have-idea.html">I have an idea</a>という記事でリーンスタートアップを導入することについて書いている。氏は実験によってアイディアをテストする方法をふたつに別けて定義する。</p> 
-  <blockquote> 
-   <p>仮説のパートでは、顧客の視点から機能を定義します。</p> 
-   <ul> 
-    <li>どんなアイディアか。</li> 
-    <li>誰の役に立つのか。</li> 
-    <li>どんな問題を解決するのか。</li> 
-   </ul> 
-   <p>実験のパートでは、仮説にメリットがあるかどうかを学習する方法について記述します。</p> 
-   <ul> 
-    <li>何をするべきか。</li> 
-    <li>誰に見せるべきか。</li> 
-    <li>どのように計測するか。</li> 
-    <li>どのくらいのコストがかかるか</li> 
-    <li>なにをもって成功とするか。</li> 
-   </ul> 
-  </blockquote> 
-  <p>開発中は実験から価値提供に軸足を移す必要がある。Roman Pichler氏は次のように説明する。</p> 
-  <blockquote> 
-   <p>知識を獲得すればするほど、不確実性を解決することから実行へと焦点を移すべきです。リリースできる製品を開発するのです。アイディアをテストすることを優先するのではなく、機能を完成させ、段階的に新しい機能を追加していくことを始めるのです。</p> 
-  </blockquote> 
-  <p>Tim Ottinger氏は<a href="http://agileotter.blogspot.nl/2013/09/what-is-all-this-about-failure.html">what is all this about failure</a>というブログ記事で意思決定を支援する実験について書いている。</p> 
-  <blockquote>
-   興味深い問題というものはどんなものでも実験と学習が伴います。このような問題は次のようなサイクルを従えます。 
-   <ul> 
-    <li>やってみる(全力で)</li> 
-    <li>失敗する(意図的によくわからない課題に取り組んでみる)</li> 
-    <li>調べる(何がわからなかったのか見つける)</li> 
-    <li>学習する(新しい知識を合わせる)</li> 
-    <li>実行オプション: ピボット、保持、放棄、拡張</li> 
-   </ul> 
-  </blockquote> 
-  <p>4つのオプションは実験で得られた学習結果に基づいているという。</p> 
-  <blockquote> 
-   <p><i>ピボット</i>は成功の一種。より良い、異なるアプローチを選択するということだから(…)。</p> 
-   <p><i>放棄</i>するということは時間とお金を節約することに成功したということ。解決する価値のない問題や高価すぎて投資に中書せざるを得ないソリューションを特定できたということだから(…)。</p> 
-   <p><i>保持</i>するということは現在の方向性が正しく。これ以上に良いものはないと学習したときの行動(…)。</p> 
-   <p><i>拡張</i>とは素晴らしいアイディアを持っていることに気付き、今まで気付かなかった方法でそのアイディアを活用できること。</p> 
-  </blockquote> 
-  <p>実験することで製品の提供を始めるか、それとも追加の実験が必要な方向転換をするか、といったオプションの内実がわかる。しかし、実験の利点が生かせる程度に素早く意思決定する必要がある。</p> 
-  <blockquote> 
-   <p>十分に早い段階で失敗しないと選択肢が消えてしまいます。正しい方向を拡張したり、時間を無駄にする高価なアイディアを捨てたりする選択肢がなくなっているかもしれません。頑固に一生懸命働いて上手くいくことを願うことしかできないかもしれません。</p> 
-  </blockquote> 
-  <p>Jeff Scheinrock氏とMatt Richter-Sand氏は<a title="http://www.agilestartup.com/philosophy/stop-experimenting-start-building/" href="http://stop-experimenting-start-building/">stop experimenting, start building</a>という記事で、アイディアの検証とビジネスの構築のバランスをとる必要があると指摘している。</p> 
-  <blockquote> 
-   <p>ビジネスを構築するか、アイディアを完全に否定するかを決めなければならないときは必ず来ます。決める前にもう少しテストが必要だと思い込むのは簡単です。好むと好まざるに関わらず、どちらかを選ばなければならないのです。分析まひに陥ってはなりません。</p> 
-  </blockquote> 
-  <blockquote> 
-   <p>スタートアップにおいて100％確実なことはない。実験と実践のバランスをとりながらビジネスを前進させるのが重要だ。</p> 
-  </blockquote>
+  <p><a href="https://twitter.com/mrtazz"> Daniel Schauenberg氏</a>は先日の<a href="http://qconlondon.com/">QCon London</a>で、DevOpsや継続的インテグレーションを実践していることで有名な<a href="https://www.etsy.com/">Etsy</a>が、いかにして1日に50回ものデプロイをしているのかについて<a href="http://qconlondon.com/london-2014/presentation/Development,%20Deployment%20&amp;%20Collaboration%20at%20Etsy">語った</a>。リスクを最小限に抑えながらこのペースの変更を実現するためには、完全に自動化されたデプロイメントパイプライン、徹底的なアプリケーションのモニタリング、IRCベースの共同作業、これらすべてが重要なのだ。</p> 
+  <p>Etsyの開発への取り組みは、いくつもの小さくて途切れることのない変更を中心に回っている。直接影響するのは、一日に何度もデプロイする必要性だ。Daniel&nbsp;Schauenberg氏の言葉を借りれば、Etsyの開発者はいつどんなときでも「今すぐこの変更をデプロイするゆとりが自分にはあるか？」という質問の答えを知っていなければいけない。常にゆとりを持てるように、Etsyはさまざまなツールやプラクティスを導入した。たとえば、IRCベースのコミュニケーションは必須、開発者用仮想マシン、継続的インテグレーション、ワンクリックデプロイ、アプリケーションとシステムの徹底的なモニタリング、非難禁止のポストモーテム、それから開発チームと運用チームの双方がお互いにいつでも呼べば来るというオンコール方針をとった。</p> 
+  <p>開発者は一人ひとり、<a href="http://www.getchef.com/">Chef</a>で構成された<a href="http://www.linux-kvm.org/page/Main_Page">KVM</a> (Kernel-based Virtual Machine)を自分専用に持つ。本番環境で使用されるものと同じ<a href="http://docs.opscode.com/chef_overview_cookbooks.html">クックブック</a>が、開発者用の仮想マシンにも使用される。ということはつまり、各開発者が自分専用のEtsyをフルスタックで持つということだ。プロセス全体を自動化できるWebアプリケーションである<a href="http://codeascraft.com/2013/09/23/lxc-automating-containers-aka-virtual-madness-part-2/">Virtual Madness</a>を使うことで、誰でも仮想マシンをプロビジョニングすることが可能だ。</p> 
+  <p>継続的インテグレーションの面で、Daniel氏は<a href="https://github.com/etsy/TryLib">Try</a>がいかに彼らのプロセスの中心になっているかを説明した。Tryは、Etsyで使われているCIツールである<a href="http://jenkins-ci.org/">Jenkins</a>の上で、開発者がtrunkにコミットすることなしに<a href="http://codeascraft.com/2011/10/11/did-you-try-it-before-you-committed/">自分の変更をテストできる</a>ようにするためのツールだ。開発者が素早くかつ確実に自分の変更をテストしているその間でも、Tryはtrunkをキレイに保ち、それゆえデプロイを可能にしてくれる。CIクラスタは、150人のエンジニアと、さらに1日あたり<a href="http://codeascraft.com/2013/09/23/lxc-running-14000-tests-per-day-and-beyond-part-1/">1万4千回以上のテストスイートの実行</a>を十分に支えられるほどに強力なものでなければならない。Linuxコンテナである<a href="https://linuxcontainers.org/">LXC</a>はワークロードを並列化する。また、コンテナ同士の衝突を回避するために必要な隔離機能も用意されている。</p> 
+  <p>デプロイメントパイプラインは本番に行く前に、Princessという環境、すなわちステージング環境を通る。Princessは事実上の本番環境ではあるが、ここにはEtsyの社員だけがアクセスすることができる。<a href="https://github.com/etsy/deployinator">Deployinator</a>はEtsyで作られ使われているデプロイメントツールで、ワンクリックデプロイを提供するものだ。</p> 
+  <p>設定フラグはフィーチャーフラグとしても知られているが、これはデプロイメントプロセスを構成する上でなくてはならないものだ。<a href="https://github.com/etsy/feature">Feature API</a>を使うことでEtsyでは<a href="http://en.wikipedia.org/wiki/A/B_testing">A/Bテスト</a>が可能となり、1つまたはある一定の異なるフィーチャーの有効無効を完璧に指定できるのだ。</p> 
+  <p>モニタリングは、Etsyのチームが継続的デリバリーをおこなうための信頼を構築するためのカギだ。開発者は自分たちのフィーチャーをモニタリングし、全員がダッシュボード上のすべてのグラフにアクセスすることができる。Etsyの方針は、デフォルトでは、グラフ化可能なものはすべて<a href="http://shouldigraphit.com/">グラフに</a>、だ。時間とともにメトリクスの数がどんどん増加してきたので、Etsyは異常パターンの検出を容易にするために<a href="http://codeascraft.com/2013/06/11/introducing-kale/">Kale</a>を作った。すべてのログは、ログのS/N比を向上させるWebベースのリアルタイムログ表示ツール、<a href="https://github.com/etsy/supergrep">Supergrep</a>で見ることができる。</p> 
+  <p>IRCはEtsyのいたるところで使われているメインとなるコミュニケーションツールで、Etsyの共同作業文化のカギとなるものだ。いくつものさまざまなチャットルームがあり、それぞれに特定の目的がある。たとえば、#warroomというのがあるが、そこでは機能停止に関連する会話だけが許されている。その部屋は、原因究明の調査を調整したり、対応手段や解決手段の監視について議論したりということに使われるのだ。#warroomは他のチャットルームと同様、新参のエンジニアがROMることが奨励される場所のひとつであり、学ぶにはちょうど良い場所だと考えられている。</p> 
+  <p>機能停止や機能停止寸前になったあとは毎回、全員がポストモーテムに招かれる。ポストモーテムは非常に重要な文化的イベントで、財務部門の人やサポート部門の人でさえも望めば参加が可能だ。ポストモーテムは学習する機会としてあるのであって、だからこそ誰も非難されることはない。ポストモーテムに関するすべての情報は<a href="https://github.com/etsy/morgue">Morgue</a>に記録されている。たとえば、日付、深刻度、IRCのログ、グラフ、改善アクションなどだ。MorgueもまたEtsyが作ったツールで、ポストモーテムの記録保存という具体的な目的のために作られた。</p> 
+  <p>運用、開発、決済、サポートの部門にはオンコール方針がある。開発者は通常4週間毎に1週間の頻度で、原則交代制のオンコール状態におかれる。この方針の狙いは、Webサイトに迫る日々の問題を皆に意識し続けさせることだ。それによって、新しいフィーチャーを開発するときや既存のプロセスを改善するときに、それらの問題が考慮されるようになるのだ。</p> 
+  <p>Etsyの訪問者数は毎月6千万、月あたりのページビューは15億だ。</p> 
  </div> 
 </div><br><br><br><br><br><br></body></html>

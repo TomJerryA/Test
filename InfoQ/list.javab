@@ -2,6 +2,30 @@
  <head></head> 
  <body> 
   <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/40.javab">Remote Working Works</a> Do you assume that remote working is a compromise? Around 5 years ago my team, and much of our software house, decided we could work as effectively from home. Many of us left London and headed to the country, replacing bars and restaurants with poultry keeping and mountain biking. Today we are closer, collaborate more, recruit better people and work more effectively than we ever did. 
+  </div> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/39.javab">Virtual Panel on Immutable Infrastructure</a> “Immutable Infrastructure” is a term that has been increasingly talked about lately among the Ops community. InfoQ reached out to experienced ops engineers to ask them what is the definition and borders of immutable infrastructure as well as its benefits and drawbacks, in particular when compared to current widespread “desired state” configuration management solutions. 
+  </div> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/38.javab">Measuring Architecture Sustainability</a> In this article, authors discuss Morphosis, a multi-perspective measuring approach for architecture sustainability that includes evolution scenario analysis, architecture compliance checking, and tracking of architecture-level code metrics. These perspectives include change-prone requirements, technology choices, architecture erosion, and modularization best practices. 
+  </div> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/37.javab">SQL Server 2014: NoSQL Speeds with Relational Capabilities</a> For the last four years MS has been working on the first rewrite of SQL Server’s query execution since 1998. The goal is to offer NoSQL-like speeds with the capabilities of a relational database. 
+  </div> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/37.javab">Exploring Micro-frameworks: Spring Boot</a> In the first in a series of articles exploring Java-orientated micro-frameworks Dan Woods takes a look at Spring Boot. 
+  </div> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/36.javab">Scrum Master Allocation: The Case for a Dedicated Scrum Master</a> Sharing scrum masters across teams sounds like a great way to cut costs and stretch limited budgets in agile organizations. But you might not be saving as much as you think – here’s why. 
+  </div> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/35.javab">Author Q&amp;A: Portia Tung on The Dream Team Nightmare</a> Portia Tung answers questions about her &quot;build your own adventure&quot; book - The Dream Team Nightmare. Aimed at agile coaches and teams it presents a variety of scenarios for the reader to navigate. 
+  </div> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/35.javab">OpenJDK and HashMap …. Safely Teaching an Old Dog New (Off-Heap!) Tricks</a> This article surveys the impact the new OpenJDK Off-Heap JEP will have to empower Java HashMap with new off-heap capabilities, a radical departure from traditional Java priorities. 
+  </div> 
+  <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/34.javab">How Composite C1 Found Success by Becoming Open Source</a> In today’s environment it is difficult to offer commercial products, especially in highly competitive fields such as content management systems. Finding themselves being squeezed out of the market, Composite C1 found a way to thrive by releasing their core product under an open source license with cloud based hosting. 
   </div> 
   <div> 
@@ -126,30 +150,6 @@
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/46.javab">Interview and Book Review Change Artistry</a> The book change artistry is a collection of essays from Esther Derby, Don Gray, Johanna Rothman and Gerald M. Weinberg. The essays cover a variety of topics to support professionals in developing their organizational change skills. 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/45.javab">Book Review and Interview: Real World OCaml</a> The new book Real World OCaml provides a deep dive into the OCaml programming language. InfoQ caught up with the authors to hear about real world Ocaml users, its unique features, and much more. 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/44.javab">Beyond Piracy: Software Publishers Battle Greater Threats to Their Intellectual Property</a> Software is in everything from our automobiles to our mobile devices, and as the world becomes even further immersed in the digital era, new security threats are arising beyond the software industry. Today, software products are becoming more susceptible to incidences of reverse-engineering and code tampering – not just outright theft. 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/43.javab">The Sustainability Agenda in Kanban</a> This first article in the series on the Kanban “nine values, three agendas” model, explores the sustainability agenda: a common approach to Kanban adoption at the level of individuals and teams, often motivated by the need for relief from unsustainable practices and workloads. This sustainability agenda draws on the Kanban values transparency, balance, and collaboration. 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/42.javab">Design Patterns: Magic or Myth?</a> In this article, author discusses the effectiveness of the usage of design patterns in software development. The analysis is based on surveys and mapping studies conducted to indicate which patterns were considered useful under what circumstances. 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/41.javab">Durandal: Quick Start</a> Durandal is a lightweight JavaScript framework designed to make building Single Page Applications (SPAs) simple and elegant. It has strong support for MVC, MVP and MVVM so that no matter what type of front end architecture you prefer, Durandal can handle the task. 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/40.javab">Pragmatic Techniques for Maintaining a Legacy Application</a> Maintaining a legacy application can make you feel like mice in a maze. In this article Ping Chen shares her experiences on how to pragmatically maintain a large legacy application. &quot;Pragmatic” is the operative word; since a legacy application can have lots of technical debt, one has to be strategic in choosing the right battles. 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/39.javab">Tracking Schedule Progress in Agile</a> The challenge of knowing whether we are on track to deliver haunts projectmanagers and developmentmanagers at various levels as their organizations take on agile approaches to product and project development. Driving towards smaller work items and lower work in process brings the benefits of both better project risk management as well as more effective agile execution and learning. 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/38.javab">I’d Rather Be Coding – Writing Things Down</a> For lots of reasons, most developers hate writing down anything that isn’t code. The Agile Manifesto deemphasizes documentation, but there are times on a project when a little documentation can go a long way. In this article, we will explore why collaboration over comprehensive documentation shouldn’t mean “NO” documentation – and when you should stop coding and start writing things down. 
   </div> 
  </body>
 </html>

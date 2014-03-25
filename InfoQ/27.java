@@ -1,52 +1,45 @@
-<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>Anypoint for APIs: An Interview with Uri Sarid</h3><p>MuleSoft recently released a significant upgrade to their <a href="http://mulesoft.com/platform/api">Anypoint platform for APIs</a> which brings together API design, collaboration and API management features. InfoQ interviewed MuleSoft CTO, Uri Sarid to find out more about the platform.</p>
-<p>
- <bold>
-  <strong>InfoQ: The new release of Anypoint platform for APIs comprises three components: API Portal, API Manager and Mule Studio. Mule Studio is already well known, can you give us a brief overview of the two new components - API Portal and API Manager?</strong>
- </bold></p>
+<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>Docker Index Offers Private Repositories, Webhooks And Other Services</h3><p><a href="http://www.docker.com/">Docker Inc.</a>, the company behind <a href="https://www.docker.io/">Docker</a>, introduced a range of new services, including its first paid offering: <a href="https://index.docker.io/help/docs/#repositories">private repositories</a>. <a href="https://index.docker.io/">Docker index</a> now also offers webhooks, triggers and links for <a href="https://index.docker.io/help/docs/#trustedbuilds">trusted builds</a> and e-mail notifications.</p>
+<p>Docker index is a <a href="https://docs.docker.io/en/latest/terms/registry/">registry</a> for Docker <a href="https://docs.docker.io/en/latest/terms/image/#image-def">images</a> <a href="https://docs.docker.io/en/latest/terms/repository/#repository-def">repositories</a>. A repository is the way to share pre-built images, avoiding the need to recreate them every time by everyone. Although a rough analogy, repositories are to Docker what <a href="http://docs.vagrantup.com/v2/boxes.html">boxes</a> are to Vagrant. With the availability of private repositories it is now possible to control who can push or pull into a repository. It is now also possible to browse repositories by image tags and see the file system changes introduced by each.</p>
+<p>Successful repository pushes now trigger webhooks, when configured. The webhook URL will receive an HTTP POST with the following JSON payload:</p>
+<pre>
+{
+   &quot;push_data&quot;:{
+      &quot;pushed_at&quot;:1385141110,
+      &quot;images&quot;:[
+         &quot;imagehash1&quot;,
+         &quot;imagehash2&quot;,
+         &quot;imagehash3&quot;
+      ],
+      &quot;pusher&quot;:&quot;username&quot;
+   },
+   &quot;repository&quot;:{
+      &quot;status&quot;:&quot;Active&quot;,
+      &quot;description&quot;:&quot;my docker repo that does cool things&quot;,
+      &quot;is_trusted&quot;:false,
+      &quot;full_description&quot;:&quot;This is my full description&quot;,
+      &quot;repo_url&quot;:&quot;https://index.docker.io/u/username/reponame/&quot;,
+      &quot;owner&quot;:&quot;username&quot;,
+      &quot;is_official&quot;:false,
+      &quot;is_private&quot;:false,
+      &quot;name&quot;:&quot;reponame&quot;,
+      &quot;namespace&quot;:&quot;username&quot;,
+      &quot;star_count&quot;:1,
+      &quot;comment_count&quot;:1,
+      &quot;date_created&quot;:1370174400,
+      &quot;dockerfile&quot;:&quot;my full dockerfile is listed here&quot;,
+      &quot;repo_name&quot;:&quot;username/reponame&quot;
+   }
+}
+</pre>
+<p><a href="http://blog.docker.io/2013/11/introducing-trusted-builds/">Trusted Builds</a> is a service which allows to connect a repository to a GitHub account and add a post commit hook to a GitHub repository. This hook triggers a build and updates the image inside Docker index, maintaining a relationship between the image and the corresponding <a href="https://docs.docker.io/en/latest/reference/builder/">Dockerfile</a>.</p>
+<p>Trusted Builds received two enhancements: links and triggers. Links give the capability to synchronize Trusted Build repositories so that any update to a linked Trusted Build triggers an update on the other Trusted Build. Triggers give a simple process to start a repository build, without having to commit anything to GitHub, like so:</p>
+<pre>
+  $ curl --data &quot;build=true&quot; -X POST https://index.docker.io/u/samalba/docker-registry/trigger/b2562468-aea0-11e3-a39e-b6db5999dfec/
+</pre>
+<p>Finally, Docker index users can now be notified by e-mail on some events: when a Trusted Build or when another user stars or comments a repository.</p>
+<p>Docker index's new services increase the choice for Docker registries, since&nbsp;<a href="https://quay.io/">Quay.io</a> already offered similar capabilities to the ones now announced.</p>
+<p>Private repositories are the first <a href="https://index.docker.io/plans/">commercial offering</a> of Docker Inc., although there are plans to add more paid services, as <a href="http://blog.docker.io/2014/03/introducing-private-repos-webhooks-and-more/">stated</a> at Docker's blog:</p>
 <blockquote>
- <strong>US:</strong> The Anypoint API Portal is where you can design APIs in collaboration with your stakeholders and future app developers, mock them, document them, explore them before or after implementation with the console and the notebook and fully engage with your developer community. It's tightly integrated with the Anypoint API Manager, which gives you complete control over who can access your APIs, place limits on their usage, and measure and analyze how they're being used.
- <br /> 
+  All services on Docker.io to this point have been freely available, and we feel this is important in fostering an active, growing community around Docker. For this reason, most of Docker.io's services will continue to be free but, as Ben has already publicly shared, to support continued investment in Docker we will over time offer optional pay-for services. Private repos is the first example of this. 
 </blockquote>
-<p>
- <bold>
-  <strong>InfoQ: You're promoting a &quot;</strong>
-  <a href="http://blog.programmableweb.com/2014/01/09/the-emergence-of-api-first-development/"><strong>Design First</strong></a>
-  <strong>&quot; methodology whereby the API contract is the primary artifact and then the implementation follows. Can you describe the type of workflow or lifecycle that you envisage for API developers?</strong>
- </bold></p>
-<blockquote>
- <strong>US:</strong> It's like any other product design, where careful craftsmanship and attention to the user experience — in this case, the developer users — yields disproportionately high benefits once the product is launched — in this case, the API being published. So you roughly sketch out the API appropriate for the domain and the primary use cases using 
- <a href="http://raml.org/">RAML</a> (the RESTful API Modeling Language), and quickly put it in the hands of some test users. Even in this rough, early phase, there's a live console for the API, and a mocked &quot;implementation&quot; of the service the users can prototype with (e.g. with prototype mobile apps), as well as a live scripting notebook that lets them quickly work out usage scenarios and share their findings. The design is important because the ecosystem that develops around a successful API carries its own momentum, which resists breaking changes to the API. With the API design iterated on until it's accepted by stakeholders, it's time to implement — with confidence now that a faithful implementation will yield delighted developers and the desired benefits. In many cases, the implementation of the API is an exercise in connecting to and from a myriad of existing on-premise and in-cloud systems; Mule Studio and its APIkit components make quick work of turning a RAML spec into a set of Mule integration flows that realize the spec, scalable and maintainably. The resulting Mule application can be deployed in CloudHub or on premise (or a private cloud), while the API it exposes is automatically bound to the Anypoint API Manager, where policies can be applied to it, and to the Anypoint API Portal, where it can be discovered and consumed by app developers.
- <br /> 
-</blockquote>
-<p>
- <bold>
-  <strong>InfoQ: The <a href="http://www.infoq.com/news/2013/05/mulesoft-new-api-platform-mason">first release of APIKit</a> used Swagger as its document format. You've now moved to RAML. Can you tell us what motivated that change? Are there any lessons learned in terms of API documentation?</strong>
- </bold></p>
-<blockquote>
- <strong>US:</strong> Simply put, we realized ourselves what numerous others in the API space have realized: that Swagger and similar formats may be suitable as the *output* format of an API, something that expresses it after it exists, but they're not good for designing APIs. Nobody starts by writing down Swagger; they generate it from code, so the API is really designed via its implementation, which is a bit upside down. Moreover, it's quite a verbose description, which can easily lead to losing the forest in the trees: you get reams and reams of description, so you cannot see, and certainly cannot build in, a few clean patterns that can explicitly be reused throughout the API. With RAML, we aimed for a way of designing and expressing RESTful APIs that were as clean, expressive and efficient as REST itself. So far, so good.
- <br /> 
-</blockquote>
-<p>
- <bold>
-  <strong>InfoQ: Are there any changes to Service Registry?</strong>
- </bold></p>
-<blockquote>
- <strong>US:</strong> The service registry continues to be a great place to, well, keep a registry of all your services, whether REST or SOAP or even things that many wouldn't even call APIs such as FTP locations. But we're adding many API-specific features to it, such as new policies, integration with the Anypoint API Portal and more integration with existing customer systems.
- <br /> 
-</blockquote>
-<p>
- <bold>
-  <strong>InfoQ: Does API Manager work with APIs that haven't been implemented using Mule? Are there any differences in the way that Mule and non-Mule APIs interact with the platform?</strong>
- </bold></p>
-<blockquote>
- <strong>US: </strong>You can use Anypoint API Manager to control APIs that aren't implemented with Mule by proxying them through the API gateway. From a management perspective, or even a portal perspective, all the capabilities are available for these APIs as they would be if the implementation itself was in Mule.
- <br /> 
-</blockquote>
-<p>
- <bold>
-  <strong>InfoQ: What do you see as the biggest remaining challenge with APIs - either for providers or consumers?</strong>
- </bold></p>
-<blockquote>
- <strong>US: </strong>Though this certainly feels like the golden age of APIs, there's tremendous room for growth too: many enterprises still have not rolled out broad API initiatives. API design is just now being recognized as a critical discipline, best practices are few and far between, and there's very little consistency across APIs, even within the same organization. There's a huge gap between the API have's and have-not's. And that's felt directly by API consumers, who more often than not struggle with APIs that seem like an afterthought — because they were.
- <br /> 
-</blockquote><br><br><br><br><br><br></body></html>
+<p>The pricing plans start at 7$/month for at most five repositories up to 50$/month for a maximum of fifty repositories.</p><br><br><br><br><br><br></body></html>

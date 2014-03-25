@@ -1,38 +1,46 @@
-<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>推广幸福指数</h3><p><a href="http://www.scout24.com/Unternehmen.aspx">Immobilien Scout GmbH</a>的高级Scrum大师Frank Schlesinger，在他栖身的组织机构中实践了幸福指数，并且在最近的博客文章<a href="http://7oas7er.wordpress.com/2014/01/16/scaling-the-happiness-index/">推广幸福指数</a>中分享了他的经验。</p>
-<p>在文章中，他提到了如何将幸福指数从团队层面推广到组织机构层面。</p>
-<blockquote> 
- <p>幸福指数最初用于团队层面，随着时间的推移将团队情绪可视化，并帮助团队和管理层提升他们的幸福感。我们希望将其扩展到我们所有的IT产品开发团队。</p> 
-</blockquote>
-<p>Schlesinger探讨了他们如何实现幸福指数，以及如何将其推广到所有的团队中。他所使用的幸福指数与Jeff Sutherland所提到的相同，而这一概念最早在<a href="http://blog.crisp.se/2010/05/08/henrikkniberg/1273272420000">Crisp</a>中由<a href="http://www.crisp.se/konsulter/henrik-kniberg">Henrik Kniberg</a>引入。</p>
-<p>原版的幸福指数提出了以下问题：</p>
+<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>百度技术沙龙第48期回顾：大规模机器学习（含资料下载）</h3><p>2014年3月15日，在由<a href="http://weibo.com/baidutech">@百度</a>主办、<a href="http://e.weibo.com/infoqchina">@InfoQ</a>负责策划组织和实施的第48期百度技术沙龙活动上，来自百度联盟大数据机器学习技术负责人夏粉，和搜狗精准广告研发部技术经理王晓博，各自分享了其在机器学习方面的实战经验。他们的话题涉及“广告数据上的大规模机器学习”和“大数据场景下主题检索应用”这两个方面，本文将对讲师各自的分享做简单的回顾，同时提供相关资料的下载。</p>
+<h2>主题一：广告数据上的大规模机器学习（<a href="http://t.cn/8sAHMdS">下载讲稿</a>）</h2>
+<p>一个好的广告匹配系统，需要在解决上述挑战的同时，使用尽可能少的资源挖掘尽可能多的数据价值，提升广告匹配效率。围绕这个目的，夏粉老师以广告点击率预估问题为例，讲解如何利用大规模机器学习技术搭建一个容纳万亿特征数据的、分钟级别模型更新的、自动高效深度学习的、高效训练的点击率预估系统。</p>
+<h3><b>计算广告学与</b><b>CTR</b><b>预估</b></h3>
+<p><img src="http://infoqstatic.com/resource/news/2014/03/baidu-salon48-summary/zh/resources/0321000.png" width="600" alt="" _href="img://null" _p="true" /></p>
+<p>计算广告学所面临的最主要挑战是在特定语境下特定用户和相应的广告之间找到“最佳匹配”。语境可以是用户在搜索引擎中输入的查询词，也可以是用户正在读的网页，还可以是用户正在看的电影，等等。而用户相关的信息可能非常多也可能非常少。潜在广告的数量可能达到几十亿。因此，取决于对“最佳匹配”的定义，面临的挑战可能导致在复杂约束条件下的大规模优化和搜索问题。</p>
+<p>“我们用机器学习来做广告数据，如何把CTR如何做好，这需要梳理整个处理流程。把整个流程全部梳理完以后，我们才能发现有哪些可做点对点击预估有影响”，蒋锦鹏说。</p>
+<h3><b>大规模机器学习</b></h3>
+<p><img src="http://infoqstatic.com/resource/news/2014/03/baidu-salon48-summary/zh/resources/0321001.png" width="600" alt="" _href="img://null" _p="true" /></p>
+<p>特征规模大：训练样本，每天上百亿级别的访问量；特征类型复杂，广告、用户、流量、季节、节假日等。数据大、特征多、类别不平衡、噪音大。</p>
+<p>特征之间存在高度非线性关系: e.g., 不同用户（男、女），在不同年龄段，喜欢点不同广告；同一广告，在不同时间段，点击也不同；异或问题。</p>
+<p>数据训练频繁：策略定期更新，策略调研，频繁调用模型训练程序</p>
+<h3><b>模型时效性</b></h3>
+<p><img src="http://infoqstatic.com/resource/news/2014/03/baidu-salon48-summary/zh/resources/0321002.png" width="600" alt="" _href="img://null" _p="true" /></p>
+<p>稀疏性： 模型需要模型保存的信息尽可能少；</p>
+<p>时效性： 模型训练数据近可能少；</p>
+<p>稳定性： 模型需要的数据信息尽可能多；</p>
+<p>Google: 保留前N次模型的梯度及模型，信息损失大，模型不够稳</p>
+<h2>主题二：大数据场景下主题检索应用（<a href="http://t.cn/8sAHXwM">下载讲稿</a>）</h2>
+<p>通常大家碰到的数据集最多也就是几万到几十万篇文章这个量级，但在企业的实际场景中，如果遇到亿级数据该如何处理？如何利用有限的计算集群资源处理呢？</p>
+<p>超大的文集，王晓博围绕这一难题向大家介绍了LDA主题模型训练系统以及它在线上预测时需要面对的问题和解决办法。</p>
 <ul> 
- <li>你的名字是？</li> 
- <li>你有多快乐？（从1-非常不快乐，到5-非常快乐）</li> 
- <li>当前什么使你感觉最好？</li> 
- <li>当前什么使你感觉最糟糕？</li> 
- <li>什么能够增进你的幸福感？</li> 
+ <li>主题检索模型理论基础</li> 
+ <li>大数据场景下的挑战</li> 
+ <li>构建一个高效的训练系统</li> 
+ <li>模型在商业广告检索中的应用</li> 
 </ul>
-<p>Schlesinger在公司层面推进了幸福指数测试。为此，他对原版幸福指数的形式做了一些调整：他让测试匿名进行，并修改了部分问题。</p>
-<p>另一件我们希望与原版的幸福指数不同之处，是一般性的幸福度问题“你有多快乐？”对我们而言，该问题过于通用，因为我们希望了解那些我们或许能够影响的事情。我们从中衍生编制了两个独特的问题：</p>
-<ol> 
- <li>在自己的团队中，你的快乐程度如何？</li> 
- <li>就公司而言，你觉得有多快乐？</li> 
-</ol>
-<p>Schlesinger在Google Drive上发布了他的调查，并且每两周从各个团队获得输入。使用收集到的数据，他制作了一幅图表来展现幸福指数方面的提升。第一个问题对于团队主管或敏捷大师的工作质量给出了直接反馈。第二个问题则意在获取对组织机构文化的反馈。</p>
-<p>Schlesinger以季度为单位进行此项调研，并将结果在幸福评审会上与管理层和所有雇员分享。他分享了自己的想法——关于在组织机构内部打造一支专注于敏捷文化的团队方面，他是如何取得成功的。</p>
-<blockquote> 
- <p>我们总是能够感觉到自己工作在开放、友爱以及协作的公司文化中，这让我们感到快乐。因此对我们来说，也就毫不奇怪这种共有的直觉会体现在数据中……对此我们认为，这体现了我们已经在IT产品开发方面建立起的敏捷工作文化，而且每支团队都专注其中。首先你认同自己的团队，其次你也认同公司。</p> 
-</blockquote>
-<p>Schlesinger用这种方法来扩展IT和销售人员的幸福度，并发现这是一种与高级管理层就团队幸福度（有助于提升公司幸福度）进行沟通的良好途径。他为每个部门分别创建了幸福度的领域。</p>
-<blockquote> 
- <p>几个月后，销售部门的同事们也在我们的推动下，接纳了幸福指数的实践。这让我们能够找出哪些幸福来源是可以在IT和销售人员之间分享的；以及在相差如此之大的部门之间，需求与观念在哪些方面有所差异。</p> 
-</blockquote>
-<p><a href="http://www.experian.com/marketing-services/marketing-services.html">Experian Marketing Services UK</a>的技术产品管理负责人Corinna Baldauf，将员工幸福指数列为敏捷转型过程中的指标之一。她在博客文章<a href="http://finding-marbles.com/2014/02/11/metrics-i-can-believe-in/">我所信任的指标</a>中提到了使用happinessmetric.com来评估员工的幸福度。</p>
-<blockquote> 
- <p>员工幸福度，对许多事情来说这似乎都是个先行指标，例如员工加班（啧啧！）和收入。我们可以使用像<a href="https://www.happinessmetric.com/">Happiness Metric</a>这样的工具来进行评估。</p> 
-</blockquote>
-<p><a href="http://gigaom.com/">GigaOM</a>的主管研究员Stowe Boyd在<a href="http://research.gigaom.com/2013/05/tinypulse-is-a-small-and-simple-anonymous-feedback-tool/">博客</a>中提到了TINYPulse——一个匿名反馈工具，由TINYhr公司开发。这套工具整理匿名调查的结果，并展示人们在工作中有多快乐。TINYPulse还要求用户给出一些对他人的赞誉：谁最近帮助了他们或是让他们打起精神。此类反馈可以是匿名或具名的。</p>
-<blockquote> 
- <p>有了这些惊艳的轻量级工具，我们没有道理不通过评估来了解公司的氛围如何并分享评估结果。</p> 
-</blockquote>
-<p><strong>查看英文原文：</strong><a href="http://www.infoq.com/news/2014/02/scaling-happiness-index">Scaling The Happiness Index</a></p><br><br><br><br><br><br></body></html>
+<h3><b>发展过程</b><b>——VSM</b></h3>
+<p>向量空间模型是一个开创性的概念：</p>
+<p>优点：文档可以被表示成一个实数向量；</p>
+<p>不同长度的文档都能够被表示成定长的数列；</p>
+<p>引入与向量相关的计算方法。</p>
+<p>问题：文档被映射在词空间，向量维度太高；</p>
+<p>理解能力弱，对语义分析的支持不强通信选型</p>
+<h3>LDA模型简介</h3>
+<p><img src="http://infoqstatic.com/resource/news/2014/03/baidu-salon48-summary/zh/resources/0321003.png" width="600" alt="" _href="img://null" _p="true" /></p>
+<h2>OpenSpace（开放式讨论环节）</h2>
+<p>为了促进参会者与我们每期的嘉宾以及讲师近距离交流，深入探讨在演讲过程中的疑问，本次活动依然设置了Open Space（开放式讨论）环节。在Open Space的总结环节，几位话题小组长分别对讨论的内容进行了总结。</p>
+<p><b>夏粉</b>：深度学习话题在现在大数据时代将会越来越火，我在演讲时算是为大家抛了个砖，互动过程中大家问了许多实际的问题，希望我的解释能给大家带来一些帮助。</p>
+<p><b>王晓博</b>：关注机器学习的同学热情很高，夏老师讲的干货很多，但只要不涉及关键商业化数据，比如百度广告点击的具体数字，这些模型公布出来对大家的学习还是很有好处的。希望下次主办方能准备相关话题，这样在Open Space时，讲师可提前做一些准备，为听众做更针对性的解答。</p>
+<p>会上，一些参会者也通过新浪微博分享了他们的参会感受：</p>
+<p><a href="http://weibo.com/xynotes">爱新觉罗小牙</a>：和百度比，我们还处于石器时代。。</p>
+<p><a href="http://weibo.com/1276885594">豪_CHANGE</a>： <a href="http://weibo.com/n/%E5%A4%8F%E7%B2%89_%E7%99%BE%E5%BA%A6%E5%A4%8F%E8%80%81%E5%B8%88">@夏粉_百度夏老师</a>，您能讲下这个计算广告的数十亿特征具体就包括哪些吗。如何得到的？</p>
+<p><a href="http://weibo.com/imfxx">范斌_</a>：<a href="http://huati.weibo.com/k/%E7%99%BE%E5%BA%A6%E6%8A%80%E6%9C%AF%E6%B2%99%E9%BE%99">#百度技术沙龙#</a>提前将近一个小时来，人都快满了。大家拿着iPhone，iPad，kindle。看书，学习，讨论。程序员都这德行。</p>
+<p>有关百度技术沙龙的更多信息，可以通过新浪微博关注<a href="http://weibo.com/baidutech">@百度技术沙龙</a>，或者关注InfoQ官方微信：infoqchina，InfoQ上也总结了过往所有百度技术沙龙的演讲视频和资料等，感兴趣的读者可以<a href="http://www.infoq.com/cn/zones/baidu-salon/">直接浏览内容</a>。</p>
+<p><strong>特别提示：</strong>第48期百度技术沙龙将在4月19日，周六，在北京车库咖啡举行，主题为《大规模分布式存储实战解析》，欢迎关注<a href="http://weibo.com/infoqchina">@InfoQ</a>、<a href="http://weibo.com/baidutech">@百度技术沙龙</a>获取后续的活动信息。</p><br><br><br><br><br><br></body></html>

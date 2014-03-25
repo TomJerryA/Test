@@ -1,1 +1,1 @@
-Nokia Xが印す，もうひとつのAndroid Fork
+AmazonがAppStream APIにHALメディアタイプを選択

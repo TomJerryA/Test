@@ -1,0 +1,59 @@
+<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>.NETでドメイン駆動開発～ValueObject 前編～</h3><p>ドメイン駆動開発は業務ロジックをドメインに集中させ、画面やDB、他システムなど業務ロジックとは無関係なものから完全に切り離す設計・開発手法である。また、要件定義から基本設計、詳細設計、実装に至るまで同一のモデリング結果を用いることによって様々なメリットを享受しようとする手法でもあり、近年とても注目度の高い設計・開発手法だ。この記事ではドメイン駆動設計のパターンの一つとして紹介されているValueObjectについて.NETでの実装例をご紹介したい。 <br /> もちろん、アプリケーション全体でドメイン駆動設計・開発を行わなければメリットをフルに享受することはできないのだが、ドメイン駆動設計・開発へ興味を持っていただくための取っ掛かりとして、比較的理解しやすく導入しやすいValueObjectを取り上げてみたいと思う。ドメイン駆動開発に少しでも興味を持っていただけると幸いである。 <br /> <br /> さて、まずValueObjectとはなんだろうか。ドメイン駆動開発ではモデルの種類をValueObject、Entity、Serviceの3種類に分類する。EntityとServiceとはなんだろうか、と疑問も沸いてくるだろうが、今回は横に置いておくとして、まずはドメイン駆動開発の書籍として有名なEric Evans氏の『Domain-Driven Design（ドメイン駆動設計）』からValueObjectについての説明を引用しよう。</p>
+<p>「あるモデル要素について、その属性しか感心の対象とならないのであれば、その要素を値オブジェクトとして分類すること」 <br /> 「値オブジェクトに、自分が伝える属性の意味を表現させ、関係した機能を与えること」 <br /> 「値オブジェクトを不変なものとして扱うこと」 <br /> 「同一性を与えず、Entityを維持するために必要となる複雑な設計を避けること」</p>
+<p>このように解説されている。なんだか難しい表現である。これを私なりに解釈すると次のようになる。 <br /> ValueObjectとは、</p>
+<ol> 
+ <li>不変である。保持した値は決して変更されない。変更のアクションを外側から依頼された時は自身のプロパティ値の「コピー＋変更値」で新しいオブジェクトを生成して返却する。</li> 
+ <li>オブジェクトを識別する一意となる値を保持していない。例えば、データベースの自動採番列のようなものは保持していない。</li> 
+ <li>全プロパティ値が同じなら、同じオブジェクトである。例えオブジェクトのアドレスが異なっていても同じオブジェクト、として認識される。</li> 
+ <li>Entityのプロパティに使用する。</li> 
+</ol>
+<p>少しは理解しやすくなったかもしれないが、もっとわかりやすい説明を試みようと思う。実はこのValueObject、.NETではstring型がValueObjectの挙動と良く似ているではないか、と最近気がついた。そこでValueObjectを理解したかったら、先に.NETのstring型の挙動を理解すれば早道なのではないかと思いついた。本記事ではstring型の挙動について理解を深め、そこからValueObjectの理解へと繋げてみたい。他ではお目にかかったことがない説明方法の為、賛否両論があろうことと思われるが、とても実験的な説明手法であることを先にお断りしておく。では早速string型についての挙動を見てみよう。</p>
+<p>.NETではstring型のオブジェクト、つまり文字列のことであるが、この値が変更された場合、内部では元の文字列とは異なる新しい文字列が生成され、その新しい文字列への参照に切り替わることで値の変更が行われる。一度作られた文字列は、絶対に変更されることがないのである。（不変なのである） <br /> 次のC#のコードを見てほしい。</p>
+<pre>
+ 1: string&nbsp;firstValue=&nbsp;&quot;Test1&quot;;<br /> 2: unsafe <br /> 3: {<br /> 4: &nbsp;&nbsp;&nbsp;&nbsp;fixed&nbsp;(char*&nbsp;firstValuePointer&nbsp;=&nbsp;firstValue)&nbsp;&nbsp;&nbsp;&nbsp;//&nbsp;firstValueのポインタを取得 <br /> 5: &nbsp;&nbsp;&nbsp;&nbsp;{<br /> 6: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Console.WriteLine(&quot;初期値：{0}&quot;,&nbsp;new&nbsp;string(firstValuePointer));&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//&nbsp;&quot;Test1&quot;と表示される <br /> 7: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Console.WriteLine(&quot;初期値のaddress：{0:x}&quot;,&nbsp;(int)firstValuePointer);&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//&nbsp;① <br /> 8:<br /> 9: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;firstValue&nbsp;+=&nbsp;&quot;_Added&quot;;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//&nbsp;値を変更する <br />10: <br />11: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;fixed(char*&nbsp;addedValuePointer&nbsp;=&nbsp;firstValue)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//&nbsp;再度&nbsp;firstValueのポインタを取得 <br />12: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{<br />13: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Console.WriteLine(&quot;変更後値：{0}&quot;,&nbsp;new&nbsp;string(addedValuePointer));&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//&nbsp;&quot;Test1_Added&quot;と表示される <br />14: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Console.WriteLine(&quot;変更後値のaddress：{0:x}&quot;,&nbsp;(int)addedValuePointer);&nbsp;&nbsp;&nbsp;&nbsp;//&nbsp;①とは異なるアドレスが表示される <br />15: <br />16: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Console.WriteLine(&quot;初期値：{0}&quot;,&nbsp;new&nbsp;string(firstValuePointer));&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//&nbsp;&quot;Test1&quot;と表示される <br />17:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br />18:&nbsp;&nbsp;&nbsp;&nbsp;}<br />19: }<br />※unsafeはC#にてポインタを扱うときに使用するブロック。今回はstring型のオブジェクトのアドレスを取得するために使用している。</pre>
+<p>string型の変数firstValueの値変更の前後で内部挙動がどのようになっているのかを実験するコードである。1行目でfirstValueに文字列をセットし、7行目（①）で文字列へのアドレスを表示している。9行目でfirstValueの値を変更し、14行目で変更後のアドレスを表示している。string型は参照型なので、普通に考えれば7行目で表示されるアドレスと、14行目で表示されるアドレスは同じはずだが、実際には異なる値が表示される結果となる。 <br /> 最後の16行目の結果により、変更前のfirstValueへのアドレスには変更前の値が格納されたままであり、変更前のアドレスに格納されている文字列は変更されていないことが確認できる。 <br /> 実際の実行結果は次のようになる。</p>
+<div id="lowerFullwidthVCR"></div>
+<p><img src="http://www.infoq.com/resource/articles/DDD_ValueObject/ja/resources/pic01.png" alt="" _href="img://pic01.png" _p="true" /></p>
+<p>&nbsp;C#でアドレスを扱うというのはイレギュラーである。もしコードがわからなかったとしても無理に理解しようとしなくても大丈夫だ。このコードは説明の証跡として記載しているだけであり、深く理解する必要はない。string型のオブジェクトは一度作成されると内部的には不変であり、変更されたように見えても実は新しいstring型のオブジェクトに参照先が変わる、と覚えておいてほしい。</p>
+<p>では続いて同じ文字列を持つ異なるアドレスの2つのstring型オブジェクトに対する演算子の挙動を見てみよう。通常.NETでは参照型のオブジェクトに対して等価演算子を使用した場合、オブジェクトのアドレスが同じかどうかが判定基準となる。しかし、string型の場合はアドレスが判定基準に用いられていないのだ。 <br /> 次のC#のコードを見ていただきたい。</p>
+<pre>
+ 1: string&nbsp;firstValue=&nbsp;&quot;Test1&quot;;
+ 2: unsafe 
+ 3: {
+ 4: &nbsp;&nbsp;&nbsp;&nbsp;fixed&nbsp;(char*&nbsp;firstValuePointer&nbsp;=&nbsp;firstValue)&nbsp;&nbsp;&nbsp;&nbsp;//&nbsp;firstValueのポインタを取得
+ 5: &nbsp;&nbsp;&nbsp;&nbsp;{
+ 6: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Console.WriteLine(&quot;初期値のaddress：{0:x}&quot;,&nbsp;(int)firstValuePointer);&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//&nbsp;① 
+ 7: 
+ 8: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//&nbsp;firstValueの値をコピーして同じ値を持つ別のオブジェクトsecondValueを生成
+ 9: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;var&nbsp;copied&nbsp;=&nbsp;new&nbsp;char[firstValue.Length];
+10: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;firstValue.CopyTo(0,&nbsp;copied,&nbsp;0,&nbsp;firstValue.Length);
+11: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;var&nbsp;secondValue&nbsp;=&nbsp;new&nbsp;string(copied);
+12: 
+13: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;fixed&nbsp;(char*&nbsp;secondValuePointer&nbsp;=&nbsp;secondValue)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//&nbsp;secondValueのポインタを取得 
+14: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{
+15: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Console.WriteLine(&quot;変更後値のaddress：{0:x}&quot;,&nbsp;(int)secondValuePointer);&nbsp;&nbsp;&nbsp;&nbsp;//&nbsp;①とは異なるアドレスが表示される
+16: &nbsp;
+17: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Console.WriteLine(&quot;同じ値として評価する？：{0}&quot;,&nbsp;firstValue&nbsp;==&nbsp;secondValue);&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//&nbsp;&quot;True&quot;と表示される 
+18: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}
+19: &nbsp;&nbsp;&nbsp;&nbsp;}
+20: }</pre>
+<p>1行目で初期化されたfirstValue変数のアドレスを6行目（①）で表示している。9行目から11行目でfirstValueと同じ文字列だが異なるアドレスを持つオブジェクト、secondValueを生成している。15行目でsecondValueのアドレスを表示している。このアドレスは当然6行目（①）で表示されたアドレスとは異なるものが表示される。しかし、17行目では異なるアドレスに対する等価演算子の結果が trueとなることが表示されるのである。 <br /> 実際の実行結果は次のようになる。</p>
+<p><img src="http://www.infoq.com/resource/articles/DDD_ValueObject/ja/resources/1pic02.png" alt="" _href="img://1pic02.png" _p="true" /></p>
+<p>&nbsp;このように同じ文字列を持つ場合、アドレスが異なっても等価演算子は同じ文字列（オブジェクト）である、と認識される。string型のオブジェクトでは、文字列を格納するアドレスがオブジェクトの等価性には全くの無関係であることがおわかりいただけただろうか。</p>
+<p>さて、ここで再度ValueObjectの特徴をみてみよう。</p>
+<p>ValueObjectとは、</p>
+<ol> 
+ <li>不変である。保持した値は決して変更されない。変更のアクションを外側から依頼された時は自身のプロパティ値の「コピー＋変更値」で新しいオブジェクトを生成して返却する。</li> 
+ <li>オブジェクトを識別する一意となる値を保持していない。例えば、データベースの自動採番列のようなものは保持していない。</li> 
+ <li>全プロパティ値が同じなら、同じオブジェクトである。例えオブジェクトのアドレスが異なっていても同じオブジェクト、として認識される。</li> 
+ <li>Entityのプロパティに使用する。</li> 
+</ol>
+<p>1番目のstring型が不変であることはおわかりいただけただろう。文字列を変更した場合、変更後の文字列のアドレスに参照が置き換わるだけであったことも確認した。3番目について、同じプロパティ値（文字列）であればアドレスが異なっていても同じオブジェクトとして扱われていることもおわかりいただけたと思う。では2番目の「オブジェクトを識別するなにか」とはなんのことだろうか。 <br /> string型を例として考えみると、同じ文字列を持つstring型オブジェクトが複数存在した場合、それらオブジェクトを別のオブジェクトである、と識別する何か、を保持していないということである。一見、オブジェクトのアドレスが一意性を表すかのように思えるが、アドレスは常に同じではない。次に実行した時には変わってしまうものであり、過去に他のオブジェクトに使用されたアドレスかもしれないため、一意性を担保するために用いることはできない。このため、string型のオブジェクトは「オブジェクトを識別するなにか」は保持していないことがわかる。 <br /> 4番目の「Entityのプロパティに使用する。」はstring型をプロパティの型として用いるように、ValueObjectをEntityのプロパティに使用すれば良い、という意味である。string型と同じような性質を持つのだから同じように使用すれば良いのである。これはValueObjectとは何か、を説明しているのではなく、ValueObjectの使いどころの説明である。これについては次回実例をご紹介しながら説明したいと思う。</p>
+<p>さて、string型がValueObjectの特徴をすべて兼ね備えていることがおわかりいただけただろうか。では改めてValueObjectとはなんだろうか。</p>
+<p>ValueObjectとは、</p>
+<ol> 
+ <li>string型と同じような不変性質を持つ。</li> 
+ <li>Entityのプロパティに使用する属性用のclassのこと。</li> 
+</ol>
+<p>いかがだろう。とても簡単に表現されており、理解しやすくなってはいないだろうか。</p>
+<p>次回は.NETでのValueObjectの実装例をご紹介する予定だ。</p><br><br><br><br><br><br></body></html>

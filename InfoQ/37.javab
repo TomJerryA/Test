@@ -1,149 +1,42 @@
-<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>Preparing for Your First MongoDB Deployment: Backup and Security</h3><p>In the <a href="http://www.infoq.com/articles/mongodb-deployment-monitoring">first article of this two part series</a>, we discussed how many of the concepts, operations and processes for deploying Relational Databases can be directly applied to MongoDB, along with hardware selection and best practices for deployment and monitoring.</p>
-<p>In this article we focus on protecting your deployment with backup tools and security policies.</p>
-<h2>MongoDB Backup and Restore</h2>
-<p>There are three common approaches to backing up a MongoDB database:</p>
-<ul> 
- <li>Cloud backups with <a href="https://mms.mongodb.com/">MongoDB Management Service</a> (MMS)</li> 
- <li>Making file system copies</li> 
- <li>Using the <b>mongodump</b> tool packaged with MongoDB</li> 
-</ul>
-<h3>Backups with MongoDB Management Service (MMS)</h3>
-<p>In addition to monitoring discussed in the previous article, MMS provides a fully managed, cloud-based <a href="https://mms.mongodb.com/">backup solution</a> that is hosted in reliable, redundant and secure datacenters.</p>
-<p>The MMS Backup agent is locally installed to the MongoDB cluster and performs an initial synchronization, before then streaming encrypted and compressed data from the MongoDB oplog (used in MongoDB replica sets) to MMS.&nbsp; Snapshots are created every 6 hours.</p>
-<p><img alt="" _href="img://2Fig1.png" _p="true" src="http://www.infoq.com/resource/articles/mongodb-deployment-backup-security/en/resources/2Fig1.png" /></p>
-<div id="lowerFullwidthVCR"></div>
-<p>MMS Backup is the only solution that supports point-in-time recovery for replica sets and cluster-wide snapshots of sharded clusters. Oplog data for the last 24 hours is stored and can be applied to create a custom snapshot of a replica set. For sharded clusters, the balancer is paused every 6 hours and a no-op token is inserted across all shards, mongos’ and config servers. The oplog can be applied to all replica sets in the cluster until the point in which the token was inserted, providing a consistent snapshot across the cluster.</p>
-<p>To restore data, snapshots are sent via SCP directly to your server, or a custom URL can be generated to download them. MMS requires two-factor authentication for all restores.</p>
-<p>For more details on the backups with MMS service, checkout the <a href="https://mms.mongodb.com/help/backup/">documentation page</a> on MongoDB website.</p>
-<h3>File System Backups</h3>
-<p>File system backups, such as that provided by Linux LVM, quickly and efficiently create a consistent snapshot of the file system that can be copied for backup and restore purposes. For more information on how to use file system snapshots to create a backup of MongoDB, refer to the <a href="http://docs.mongodb.org/manual/tutorial/backup-databases-with-filesystem-snapshots/">Backup and Restore with File System Snapshots</a> documentation.</p>
-<p><b><small><font color="#80ff00">mongodump</font></small></b></p>
-<p><b><small><a href="http://docs.mongodb.org/manual/reference/program/mongodump/">mongodump</a></small></b> is a tool bundled with MongoDB that performs a live backup of the data in MongoDB. <small><b>mongodump</b></small> may be used to dump an entire database, collection, or result of a query<s>.</s> <b><small>mongodump</small></b><i> </i>can produce a dump of the data that reflects a single moment in time by dumping the <i>oplog</i> and then replaying it during <b><a href="http://docs.mongodb.org/manual/reference/program/mongorestore/#bin.mongorestore">mongorestore</a></b>, a tool that imports content from BSON database dumps produced by <b>mongodump</b>. <b>mongodump</b> can also work against an inactive set of database files.</p>
-<p>More information on creating backups can be found on the <a href="http://docs.mongodb.org/manual/administration/backups/">Backup and Restoration Strategies</a> MongoDB Documentation page.</p>
-<h2>Security</h2>
-<p>As with all software, administrators of MongoDB must consider security and risk exposures for a MongoDB deployment. There are no magic solutions for risk mitigation, and maintaining a secure MongoDB deployment is an ongoing process.</p>
-<h3>Defense in Depth</h3>
-<p>A <i>Defense in Depth</i> approach is recommended for securing MongoDB deployments, and it addresses a number of different methods for managing risk and reducing risk exposure.</p>
-<p>The intention of a <i>Defense In Depth</i> approach is to layer your environment to ensure there are no exploitable single points of failure that could allow an intruder or untrusted party to access the data stored in a MongoDB database. The most effective way to reduce the risk of exploitation is to run MongoDB in a trusted environment, to limit access, to follow a system of least privileges, to follow a secure development lifecycle, and to follow deployment best practices.</p>
-<p>Any database handling sensitive information needs to offer holistic approaches to security, encompassing:</p>
-<ul> 
- <li>User rights management to restrict access to sensitive data, implemented through authentication and authorization controls;</li> 
- <li>Logging operations against the database in an audit trail;</li> 
- <li>Data protection via encryption of data in-motion over the network and at rest in persistent storage;</li> 
- <li>Environmental and process controls.</li> 
-</ul>
-<p>MongoDB 2.4 introduced a number of capabilities to address the requirements above, and MongoDB 2.6 continues to build upon those capabilities. <a href="http://www.mongodb.com/subscription/development/downloads">A developer preview release of MongoDB Enterprise 2.6</a> is available now.</p>
-<h3>Authentication</h3>
-<p>The authentication of entities accessing MongoDB can be managed from within the database itself or via integration with external security mechanisms including <a href="http://docs.mongodb.org/manual/tutorial/control-access-to-mongodb-with-kerberos-authentication/">Kerberos services</a> with MongoDB Enterprise 2.4 or <a href="http://docs.mongodb.org/master/tutorial/configure-ldap-sasl-authentication/">LDAP</a>, Windows Active Directory and <a href="http://docs.mongodb.org/master/tutorial/configure-x509/">x.509 certification authorities</a> when using MongoDB 2.6.</p>
-<h3>Authorization</h3>
-<p>MongoDB allows administrators to define the permissions an application or user has, and what data they can see when querying the database. MongoDB has a number of <a href="http://docs.mongodb.org/manual/reference/user-privileges/">built-in roles</a>, and with MongoDB 2.6, the ability to configure <a href="http://docs.mongodb.org/master/release-notes/2.6/#user-defined-roles">granular user-defined roles</a>. For example, some users may have the right to view a record, but never to update or delete it.</p>
-<p>Developed with input from leading security professionals, MongoDB 2.6 offers <a href="http://docs.mongodb.org/master/release-notes/2.6/#redact-stage-to-provide-filtering-for-field-level-access-control">field level security</a> enforcing fine grained security authorization controls to sensitive data, with the ability to define declarative security policies which are implemented at run time. By enforcing control at the field level, a single document describing an asset can contain data with multiple security levels, avoiding the complexity of separating information with different security levels across multiple databases.</p>
-<h3>Auditing</h3>
-<p>MongoDB 2.6 adds support for logging of administrative actions taken against the database by maintaining an <a href="http://docs.mongodb.org/master/core/auditing/#auditing">audit log</a>. For ease of use, audit logs distributed across a MongoDB cluster can be merged into a single log, enabling the association of events from a single operation that affected multiple nodes.</p>
-<h3>Encryption</h3>
-<p>MongoDB provides capabilities to encrypt data in motion over the network and at rest in permanent storage.</p>
-<p><a href="http://docs.mongodb.org/manual/tutorial/configure-ssl/">Support for SSL</a> allows clients to connect to MongoDB over an encrypted channel. MongoDB supports <a href="http://docs.mongodb.org/manual/reference/configuration-options/#sslFIPSMode">FIPS 140-2 encryption</a> if run in FIPS Mode with a FIPS validated Cryptographic module.</p>
-<p>There are multiple ways to encrypting data at rest with MongoDB.&nbsp; One approach is to encrypt field-level data within the application layer, using the requisite encryption type that is appropriate for the application.</p>
-<p>Another option is to use third-party libraries such as NcryptFS and LUKS that provide disk-level encryption for Linux as part of the operating system kernel, providing advanced key management that ensures only authorized processes can access this data. For Windows platforms, technologies such as IBM Guardium Data Encryption, BitLocker Drive Encryption and TrueCrypt can also be used.</p>
-<p>The following is a checklist of the key steps to creating a secure deployment </p>
-<table cellspacing="0" cellpadding="0" border="0"> 
- <tbody> 
-  <tr> 
-   <td valign="top"> <p><small><b>Prepare Secure Operating Environment</b></small></p> </td> 
-   <td valign="top">&nbsp;</td> 
-  </tr> 
-  <tr> 
-   <td valign="top"> <p><small>Install MongoDB Enterprise Edition</small></p> </td> 
-   <td valign="top"> <p><small><a href="https://www.mongodb.com/products/downloads/mongodb-enterprise">Production release</a></small></p> <p><small><a href="http://www.mongodb.com/subscription/development/downloads">Development release</a></small></p> </td> 
-  </tr> 
-  <tr> 
-   <td valign="top"> <p><small>Configure network (firewall, bind IP addresses, VPN, etc.)</small></p> </td> 
-   <td valign="top"> <p><small>Review platform-specific documentation</small></p> <p><small><a href="http://docs.mongodb.org/manual/core/security-network/">MongoDB network documentation</a></small></p> </td> 
-  </tr> 
-  <tr> 
-   <td valign="top"> <p><small>Create MongoDB user account &amp; permissions</small></p> </td> 
-   <td valign="top"> <p><small>Review platform-specific and filesystem documentation for creating OS logins and permissions</small></p> </td> 
-  </tr> 
-  <tr> 
-   <td valign="top"> <p><small>Configure encrypted file system</small></p> </td> 
-   <td valign="top"> <p><small>Linux: <a href="http://www.gazzang.com/products/zncrypt/mongodb">Gazzang zNcrypt</a>, <a href="https://access.redhat.com/site/documentation/en-US/Red_Hat_Enterprise_Linux/6/html/Security_Guide/sect-Security_Guide-LUKS_Disk_Encryption.html">LUKS</a></small></p> <p><small>Windows: <a href="http://www-03.ibm.com/software/products/en/infosphere-guardium-data-encryption">IBM Guardium Data Encryption</a>, <a href="http://technet.microsoft.com/en-us/library/cc732774.aspx">BitLocker Drive Encryption</a>, <a href="http://www.truecrypt.org/">TrueCrypt</a></small></p> </td> 
-  </tr> 
-  <tr> 
-   <td valign="top">&nbsp;</td> 
-   <td valign="top">&nbsp;</td> 
-  </tr> 
-  <tr> 
-   <td valign="top"> <p><small><b>Prepare MongoDB Deployment</b></small></p> </td> 
-   <td valign="top">&nbsp;</td> 
-  </tr> 
-  <tr> 
-   <td valign="top"> <p><small>Configure preferred external authentication</small></p> </td> 
-   <td valign="top"> <p><small><a href="http://docs.mongodb.org/master/tutorial/configure-ldap-sasl-authentication/">LDAP documentation</a></small></p> <p><small><a href="http://docs.mongodb.org/manual/tutorial/control-access-to-mongodb-with-kerberos-authentication/">Kerberos documentation</a></small></p> <p><small><a href="http://docs.mongodb.org/ecosystem/tutorial/configure-red-hat-enterprise-linux-identity-management/">Red Hat IdM documentation</a></small></p> </td> 
-  </tr> 
-  <tr> 
-   <td valign="top"> <p><small>Configure inter-cluster authentication</small></p> </td> 
-   <td valign="top"> <p><small><a href="http://docs.mongodb.org/master/tutorial/configure-x509/">x.509 Certificate documentation</a></small></p> </td> 
-  </tr> 
-  <tr> 
-   <td valign="top"> <p><small>Setup SSL certificates</small></p> </td> 
-   <td valign="top"> <p><small><a href="http://docs.mongodb.org/manual/tutorial/configure-ssl/">SSL documentation</a></small></p> </td> 
-  </tr> 
-  <tr> 
-   <td valign="top"> <p><small>Enable FIPS mode</small></p> </td> 
-   <td valign="top"> <p><small><a href="http://docs.mongodb.org/manual/reference/configuration-options/#sslFIPSMode">FIPS mode documentation</a></small></p> </td> 
-  </tr> 
-  <tr> 
-   <td valign="top"> <p><small>Configure auditing</small></p> </td> 
-   <td valign="top"> <p><small><a href="http://docs.mongodb.org/master/core/auditing/#_auditing">Auditing of administrative actions (MongoDB)</a></small></p> <p><small><a href="http://www.ibm.com/developerworks/data/library/techarticle/dm-1306mongodb/">Administration of read/write operations (Guardium)</a></small></p> </td> 
-  </tr> 
-  <tr> 
-   <td valign="top">&nbsp;</td> 
-   <td valign="top">&nbsp;</td> 
-  </tr> 
-  <tr> 
-   <td valign="top"> <p><small><b>Define Users and Roles</b></small></p> </td> 
-   <td valign="top">&nbsp;</td> 
-  </tr> 
-  <tr> 
-   <td valign="top"> <p><small>Document roles that will access the system</small></p> </td> 
-   <td valign="top"> <p><small>Project team process</small></p> </td> 
-  </tr> 
-  <tr> 
-   <td valign="top"> <p><small>Create MongoDB admin account</small></p> </td> 
-   <td valign="top"> <p><small><a href="http://docs.mongodb.org/manual/reference/method/db.addUser/">Add User to MongoDB</a></small></p> </td> 
-  </tr> 
-  <tr> 
-   <td valign="top"> <p><small>Configure permissions for each role</small></p> </td> 
-   <td valign="top"> <p><small><a href="http://docs.mongodb.org/master/reference/user-privileges/">Built-in (standard) MongoDB roles</a></small></p> <p><small><a href="http://docs.mongodb.org/master/release-notes/2.6/#user-defined-roles">User defined roles</a></small></p> </td> 
-  </tr> 
-  <tr> 
-   <td valign="top"> <p><small><i>Optional Advanced Configuration: </i>Implement field level security</small></p> </td> 
-   <td valign="top"> <p><small><a href="http://docs.mongodb.org/master/release-notes/2.6/#redact-stage-to-provide-filtering-for-field-level-access-control">Redaction documentation</a></small></p> </td> 
-  </tr> 
-  <tr> 
-   <td valign="top">&nbsp;</td> 
-   <td valign="top">&nbsp;</td> 
-  </tr> 
-  <tr> 
-   <td valign="top"> <p><small><b>Monitor the Deployment</b></small></p> </td> 
-   <td valign="top">&nbsp;</td> 
-  </tr> 
-  <tr> 
-   <td valign="top"> <p><small>Configure MongoDB Management Service</small></p> </td> 
-   <td valign="top"> <p><small><a href="https://mms.mongodb.com/help/">MMS documentation</a></small></p> </td> 
-  </tr> 
-  <tr> 
-   <td valign="top"> <p><small>Monitor and apply latest patches</small></p> </td> 
-   <td valign="top"> <p><small><a href="https://groups.google.com/forum/#!forum/mongodb-announce">Subscribe to the MongoDB Announcements Google Group for availability of the latest releases and patches </a></small></p> <p><small>Monitor patch alerts and updates for infrastructure (server, network and storage components, OS, middleware, etc.)</small></p> </td> 
-  </tr> 
- </tbody> 
-</table>
-<p></p>
-<h3>Query Injection</h3>
-<p>As a client program assembles a query in MongoDB, it builds a BSON object, not a string. Thus traditional SQL injection attacks should not pose a risk to the system for queries submitted as BSON objects.</p>
-<p>However, several MongoDB operations permit the evaluation of arbitrary Javascript expressions and care should be taken to avoid malicious expressions. Fortunately most queries can be expressed in BSON and for cases where Javascript is required, it is possible to mix Javascript and BSON so that user-specified values are evaluated as values and not as code.</p>
-<h2>Conclusion</h2>
-<p>MongoDB users rely on the best practices discussed in both this and <a href="http://www.infoq.com/articles/mongodb-deployment-monitoring">the first article</a> to maintain the highly available, secure and scalable operations demanded by businesses today.</p>
-<p>These and other best practices are discussed in detail in the <a href="http://info.10gen.com/rs/10gen/images/10gen-MongoDB_Operations_Best_Practices.pdf">MongoDB Operations Guide</a> (opens a .pdf)</p>
+<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>SQL Server 2014: NoSQL Speeds with Relational Capabilities</h3><p>For the last four or five years Microsoft has been working on the first rewrite of SQL Server’s query execution since version 7 in 1998. The goal is to offer NoSQL-like speeds without sacrificing the capabilities of a relational database.</p>
+<p>At the heart of this endeavor is project Hekaton, their memory optimized tables. While still accessible via traditional T-SQL operations, internally they are a fundamentally different technology. This technology was conceived to address three trends in server hardware:</p>
+<h2>Memory is Getting Cheaper</h2>
+<p>SQL Server used to have ways to pin tables in memory. But this feature turned out to be bad for performance and was deprecated nearly a decade ago. Back then holding whole tables in limited memory systems just didn’t make any sense. Now with the wide spread availability of 64-bit processors and continuously declining memory prices, holding large databases in memory becomes more tenable.</p>
+<p><img src="http://www.infoq.com/resource/articles/SQL-Server-2014-NoSQL/en/resources/4Fig1.png" alt="" _href="img://4Fig1.png" _p="true" /></p>
+<h2>Stalling CPU Speeds</h2>
+<p>While the complexity of CPUs continue to increase, clock speeds have been stalled for nearly a decade. So to see gains in linear performance beyond what caching can offer, more efficient code needs to be run.</p>
+<p><img src="http://www.infoq.com/resource/articles/SQL-Server-2014-NoSQL/en/resources/1Fig2.png" alt="" _href="img://1Fig2.png" _p="true" /></p>
+<p>This is where T-SQL’s historic design decisions come into play. Currently queries, both ad hoc and stored procedure based, are only compiled to an intermediate language. From there they are interpreted rather than JIT-compiled into machine code. This allows for a large amount of flexibility, but at the cost of performance.</p>
+<p>In the past this was acceptable, as loads increased so did the CPU’s ability to handle serial workloads. But now that is no longer an option, Microsoft has decided to build a new execution engine that relies on fully compiled machine code.</p>
+<p>As we’ve mentioned in previous reports, <a href="http://www.infoq.com/news/2013/09/Compiled-Queries">this new engine is only available for stored procedures</a>. What you get in exchange for giving up dynamic queries is highly optimized C code that is generated specifically for the tables you are using.</p>
+<h2>Multicore Processors</h2>
+<p>It is getting hard to find even a smart phone that isn’t running multiple cores. With enterprise grade servers it isn’t unusual to see 48 or more cores. With multicore processing being the way of the future, it is vital that hot tables be optimized for concurrent access.</p>
+<p>This means SQL Server has to get away from locks and latches. A latch, considered to be a relatively cheap operation, can require one to two thousand CPU cycles. A lock is even worse, requiring roughly 10,000 cycles.</p>
+<p>Instead of these, the data structures used by in memory tables use interlocked exchanges. This drops the cost down to only 10 to 20 cycles. Of course there is a trade-off for this, without locks <a href="http://www.infoq.com/news/2013/09/Transactions-In-Memory-OLTP">queries against in memory tables are more likely to be aborted</a>, necessitating a manual retry of the operation.</p>
+<h2>Management and Application Design</h2>
+<p>With most NoSQL offerings the bulk of the cost isn’t in acquiring the database but rather deploying it. Microsoft hopes to reduce those costs by offering a gradual migration path to their alternative.</p>
+<p>The first cost in moving to a NoSQL database is identifying the hot tables that should be moved. Profiling tools can identify which tables are under the greatest load, but they can’t tell you how difficult it will be to migrate each candidate table.</p>
+<p>Once identified, the next cost is actually rewriting the application to abide by NoSQL conventions. This can be rather daunting as it tends to mean a fundamental change in how data is accessed.</p>
+<p>With SQL Server’s memory optimized tables, the changes are largely invisible to the application. As long as the table doesn’t contain any prohibited data types, the process can be largely automated.</p>
+<p>The next performance gain comes from using fully compiled stored procedures. For most enterprises systems still relying on stored procedures for most or all of their data access this shouldn’t be too difficult. And again, it is likely that the application will not need to be changed.</p>
+<p>Microsoft has noted that ISVs, which tend to support multiple databases, tend to be more reliant on ORMS and thus have more problems with this migration. Fortunately most ORMs now support stored procedures so this migration can be made over time.</p>
+<h2>File System Changes</h2>
+<p>Traditional tables and indexes are stored in pages. These are fetched and stored using random access, which can lead to performance problems if the data is fragmented. For this reason many companies are turning to expensive solid state drives to house their hottest data.</p>
+<p>Since memory optimized tables don’t use a page layout, Microsoft took the opportunity to redesign the way data is stored on disc so that all I/O is sequential. This makes it possible to good performance from traditional hard drives.</p>
+<p>This is made possible because the data section of records are never updated in a memory optimized table. Instead the header of the row is given a pointer to a new row containing the new timestamp and the updated values.</p>
+<p>On disc, rows are organized into pairs of files grouped by timestamp ranges. These two files are known as “data” and “delta”. When an insert or update occurs, new records are written to the data file. For updates and deletes, the ID for the old row version is added to delta file.</p>
+<p><img src="http://www.infoq.com/resource/articles/SQL-Server-2014-NoSQL/en/resources/3Fig3.png" alt="" _href="img://3Fig3.png" _p="true" /></p>
+<p><img src="http://www.infoq.com/resource/articles/SQL-Server-2014-NoSQL/en/resources/3Fig4.png" alt="" _href="img://3Fig4.png" _p="true" /></p>
+<p>If SQL Server is restarted, these pairs of files are read together. Any row in the data file that isn’t also in the delta file is pushed into memory. It takes roughly 1 second per GB to load a memory optimized table in this fashion.</p>
+<p>Do note that SQL Server will be unavailable until all memory optimized tables are loaded.</p>
+<h2>Memory Concerns</h2>
+<p>A significant restriction on memory optimized tables is that they have to stay in memory. Under no circumstances can a memory optimized table be paged to disc in part or in whole. So what happens when the size of the memory optimized tables grow beyond the amount of available memory?</p>
+<p>Well the short answer is “bad things”. Memory optimized tables will take over memory normally allocated to the buffer pool. Eventually the buffer pool won’t have enough memory to operate correctly and SQL Server will become unstable.</p>
+<p><img src="http://www.infoq.com/resource/articles/SQL-Server-2014-NoSQL/en/resources/2Fig5.png" alt="" _href="img://2Fig5.png" _p="true" /></p>
+<p>The work-around for this is to setup a resource governor to limit the amount of memory that memory optimized tables are allowed to consume. Only one such governor is allowed and the space it allocates is shared across all databases on that instance of SQL Server.</p>
+<p>Only about 80% of the memory optimized table memory space is actually available for data storage, the rest is needed for book keeping. So when you calculate your maximum data size, add about 25%.</p>
+<h2>Future Plans</h2>
+<p>Memory optimized tables represent a first step in SQL Server’s transformation and there is still a lot of work to be done. Many of the version one limitations such as no foreign key or check constraints will be lifted in future versions. Work also needs to be done on the transport layer, which has not yet been updated to take advantage of the layout for memory optimized tables and compiled stored procedures.</p>
+<p><i>All images courtesy of Microsoft.</i></p>
 <h2>About the Author</h2>
-<p><strong><img hspace="3" alt="" vspace="3" align="left" _href="img://mat_keep.jpg" _p="true" src="http://www.infoq.com/resource/articles/mongodb-deployment-backup-security/en/resources/mat_keep.jpg" />Mat Keep</strong> (@matkeep) is part of the MongoDB product marketing team, responsible for building the vision, positioning and content for MongoDB’s products and services, including the analysis of market trends and customer requirements. Prior to MongoDB, Mat was director of product management at Oracle Corp. with responsibility for the MySQL database in web, telecoms, cloud and big data workloads. This followed a series of sales, business development and analyst / programmer positions with both technology vendors and end-user companies.</p><br><br><br><br><br><br></body></html>
+<p><strong><img src="http://www.infoq.com/resource/articles/SQL-Server-2014-NoSQL/en/resources/JonathanAllen.jpg" vspace="3" hspace="3" align="left" alt="" _href="img://JonathanAllen.jpg" _p="true" />Jonathan Allen</strong> has been writing news report for InfoQ since 2006 and is currently the lead editor for the .NET queue. If you are interested in writing news or educational articles for InfoQ please contact him at jonathan@infoq.com.</p><br><br><br><br><br><br></body></html>

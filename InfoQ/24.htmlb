@@ -1,191 +1,316 @@
-<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>使用Jazz Automation编写自动化测试</h3><h2>Jazz Automation介绍</h2>
-<p>Jazz Automation是一个测试框架，构建它的目的是为所有类型的Web系统或者静态网站自动化同时加速验收/功能测试。它还能够容易地实现自动化集成测试。以前的时候这种类型的测试需要人工完成，劳动强度大又不准确。借助于自动化测试，公司能够创造高质量的应用程序，创造的产品bug更少，同时又加快了投入市场的速度。Jazz Automation支持以下Web浏览器：IE、Firefox、Safari和Chrome。 <br /> Jazz Automation和其他的自动化测试框架不同，它允许测试编写者使用纯英语描述软件的工作原理。</p>
-<p>大多数自动化测试框架在执行测试之前必须使用Java和Ruby这样的语言编程，例如Selenium和Cucumber。Jazz Automation提供了一个抽象层，测试编写者和配置人员不需要编程。</p>
-<h2>编写第一个测试脚本</h2>
-<p>让我们看看下面这个测试一个电子商务网站的规格。</p>
+<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>开发模块化的JavaScript组件</h3><p>现如今，虽然多数的web应用都使用了大量的JavaScript，但如何保持客户端功能的专注性、健壮性和可维护性依然是一个很大的挑战。</p>
+<p>尽管其它编程语言和系统都已经将关注分离和<a href="http://en.wikipedia.org/wiki/Don%27t_repeat_yourself">DRY</a>这样的基本原则视为理所当然的宗旨，但往往在进行浏览器端应用开发的时候，这些原则就被忽视了。</p>
+<p>造成这一现象的部分原因是JavaScript语言本身就在<a href="http://www.jwz.org/blog/2010/10/every-day-i-learn-something-new-and-stupid/#comment-1021">不断挣扎的历史</a>，在很长的一段时间内，它都难以获得开发者的认真关注和对待。</p>
+<p>而更重要的原因或许是源于服务端与客户端的差异造成的。虽然在这方面已经有大量的架构风格方面的概念，例如<a href="http://roca-style.org/">ROCA</a>，阐述了如何管理这种差异的方式。但还是缺乏如何实现这些概念的具体步骤的指南<sup>1</sup>。</p>
+<p>这些原因经常导致前端代码的高度过程化并且相对缺乏结构性，这种直接的代码调用方式减少了调用的开销，从而简化了代码调用的复杂性，JavaScript和浏览器也是因为这一点原因而允许这种调用方式的存在。但很快，通过这种方式实现的代码就会变得得难以维护。</p>
+<p>本文将通过一个示例为你展示某个简单的组件（widget）的演化过程，看看它是如何从一个庞大的、缺乏结构性的代码库进化为一个可重用的组件的。</p>
+<div id="lowerFullwidthVCR"></div>
+<h2>对联系人进行过滤</h2>
+<p>这个<a href="http://fnd.github.io/contacts-filter/">示例组件</a>的作用是对一个联系人列表通过名称进行过滤。它的最新成果以及它的全部演化过程都可以在这个<a href="https://github.com/FND/contacts-filter">GitHub代码库</a>中找到。我们鼓励读者们对<a href="https://github.com/FND/contacts-filter/commits/master">提交的代码</a>进行审阅，并且留下宝贵意见。</p>
+<p>按照<a href="http://jakearchibald.com/2013/progressive-enhancement-still-important/">渐进式增强</a>的<a href="http://alistapart.com/article/understandingprogressiveenhancement">原则</a>，我们首先从一个基础的HTML结构开始以描述所用到的数据。这里用到了<a href="http://microformats.org/wiki/h-card">h-card</a>这个微格式（microformat），它能够起到语义化的作用，使得联系人的各种信息显得具有意义：</p>
 <pre>
-Feature: Go to the Amazon web site, search for Harry Porter in the book section. Find
- Harry Potter and the Chamber of Secrets (book2) and then add it to the cart.
-   
-   Background: Establish the test settings for the test
-     Given the following settings:
-       | url             | http://www.amazon.com | 
-       | platform        | Vista                 |
-       | browser         | firefox               |
-       | browser version | 23                    |
-   Scenario: Verify that we have an empty cart on the amazon home page
-     Given I am ON the &quot;HomePage&quot;
-     Then I should EXPECT
-       | cartCount       | 0                     |
-   Scenario: Search for Harry Porter from the books category
-     Given I am ON &quot;HomePage&quot;
-     And I click &quot;allButton&quot;
-     And I select
-       | selectCategory  | Books                  |
-     And I enter
-       | searchField     | Harry Potter           | 
-     And I click &quot;go&quot;
-     And I wait 5 seconds
-     Then I should be ON the &quot;SearchResultsPage&quot;
-   Scenario: From the Search Results Page, verify the first result Special
-             Edition Harry Potter Paperback Box Set 
-     Given I am ON &quot;SearchResultsPage&quot;
-     Then I should EXPECT
-       | firstResult           | Special Edition Harry Potter Paperback Box Set |
-       | chamberOfSecretsBook2 | visible
-       |
-   Scenario: Click on the Chamber Of Secrets Book2 to reveal the details
-        Given I am ON &quot;SearchResultsPage&quot; 
-        And I CLICK &quot;chamberOfSecretsBook2&quot;
-        Then I should be ON the &quot;BookDetailPage&quot;
-   Scenario: Verify the details
-        Given I am ON the &quot;BookDetailPage&quot; 
-        Then I should EXPECT
-        | kindlePrice          | $7.99                    |
-        | hardcoverPrice       | $13.94                   |
-        | paperbackPrice       | $8.56                    |
-    Scenario: Add the book to my cart
-      Given I am ON the &quot;BookDetailPage&quot;
-      And I click &quot;hardcover&quot;
-      And I click &quot;addToCart&quot;
-      Then I should be ON the &quot;PreCheckoutPage&quot; 
-    Scenario: On the pre-checkout page, verify the details
-      Given I am ON the &quot;PreCheckoutPage&quot;
-      Then I should EXPECT
-        | orderSubtotal            | 13.94       |
-        | cartCount                | 1           |
-    Scenario: proceed to checkout
-      Given I am ON the &quot;PreCheckoutPage&quot;
-         And I click &quot;proceedToCheckout&quot;
-         Then I should be ON the &quot;SignInPage&quot; 
-         The test script should be extremely easy to read and understand, right? </pre>
-<p>上面显示的测试用例所使用的语言是Gherkin。Gherkin是一种领域特定语言（DSL），它允许用户使用纯的、可理解的英语描述一个应用程序应该如何工作。在开发测试脚本的时候，脚本编写者不需要理解或者描述实现。上面的规格大部分都是自由的文本，但是Gherkin也有一些关键词：<b>Feature</b>、<b>Scenario</b>、<b>Given</b>、<b>When</b>、<b>And</b>和<b>Then</b>。Jazz Automation扩展了这个关键词列表，增加了<b>Expect</b>、<b>On</b>、<b>Click</b>、<b>Hover</b>、<b>Wait</b>、<b>Refresh</b>、<b>Enter</b>、<b>Select</b>、<b>Forward</b>、<b>Backward</b>、<b>Visible</b>和 <b>Invisible</b>。</p>
-<p>与Gherkin相关的内容有很多，本文只讨论了其中的一部分；但是必须要清楚的一件事情是：它使用基于行的格式，必须保证完整性让它能够清楚如何为每一个功能执行相关步骤。</p>
-<p>借助于Jazz Automation，执行上面的测试我们不需要使用Java、Ruby等语言编写任何代码。使用Jazz Automation，每一个网站页面都必须被定义为一个页面（Page）。JSON和XML都可用于页面配置。每一个页面都包含了能够让Jazz Automation验证页面是否被正确加载的高层属性。同时，每一个页面还应该有一个或者多个元素的定义。仔细看看上面的这个规格，你将会注意到有一些单词是用双引号括起来的。双引号中的对象对于Jazz Automation而言是非常重要的。它们代表了页面对象或者页面上的元素。对于每一个项目，这些元素定义在一个或者多个页面文件中。</p>
-<p>让我们看看测试文件夹的目录结构。</p>
-<p><img width="300" src="http://infoqstatic.com/resource/articles/jazz-testing/zh/resources/1212003.png" alt="" _href="img://null" _p="true" /></p>
-<p>首先我们注意一下/features目录。我们应该将所有的测试规格都保存在这里。文件是.feature类型的，Jazz Automation可以一次性执行一个或者多个功能。功能和它们的执行顺序定义在<b>jazz.properties</b>文件中。其次，我们注意到在/pages目录下有一些“页面文件”。该目录是测试配置程序（Test Configurator）定义每一个页面和页面元素的地方，定义的内容将会在测试期间访问。测试规格只能引用在这里定义的页面和在页面文件中定义的页面元素。稍后我们将会介绍如何为页面文件自定义位置。在文章的最后，我们将会介绍强制的<b>jazz.properties</b>文件，现在我们先跳过它。</p>
-<h2>继续页面配置</h2>
-<p>测试配置程序是正确配置一个Jazz Automation测试的关键。Jazz Automation支持使用JSON和XML进行页面配置。</p>
-<p>测试配置员需要对jQuery这样的web技术有一定的经验。测试配置员需要为要访问的每一个Web页面创建一个页面（Page）。</p>
-<p>一个页面有一些必须的属性。每一个页面必须有一个pageName属性，同时至少有一个domElement。功能会频繁地使用pageName，同时它应该是有意义的，这样测试员才能够准确地知道它所引用的Web页面。DomElements是用于验证软件的Web页面元素。通常情况下它们指标签值、下拉框值、图片、按钮、显示的数据（定价等）。这些元素的名称应该是有意义的，这样测试编写者才能够理解每一个组件的目的。</p>
-<p>让我们看看下面这个JSON页面配置。</p>
+&lt;!-- index.html --&gt; 
+  
+ &lt;ul&gt;
+    &lt;li class=&quot;h-card&quot;&gt;    
+        &lt;img src=&quot;http://example.org/jake.png&quot; alt=&quot;avatar&quot; class=&quot;u-photo&quot;&gt;     
+        &lt;a href=&quot;http://jakearchibald.com&quot; class=&quot;p-name u-url&quot;&gt;Jake Archibald&lt;/a&gt;    
+        (&lt;a href=&quot;mailto:jake@example.com&quot; class=&quot;u-email&quot;&gt;e-mail&lt;/a&gt;)      
+   &lt;/li&gt;     
+   &lt;li class=&quot;h-card&quot;&gt;    
+        &lt;img src=&quot;http://example.org/christian.png&quot; alt=&quot;avatar&quot; class=&quot;u-photo&quot;&gt;     
+        &lt;a href=&quot;http://christianheilmann.com&quot; class=&quot;p-name u-url&quot;&gt;Christian Heilmann&lt;/a&gt;    
+        (&lt;a href=&quot;mailto:christian@example.com&quot; class=&quot;u-email&quot;&gt;e-mail&lt;/a&gt;)     
+   &lt;/li&gt;     
+   &lt;li class=&quot;h-card&quot;&gt;    
+        &lt;img src=&quot;http://example.org/john.png&quot; alt=&quot;avatar&quot; class=&quot;u-photo&quot;&gt;     
+        &lt;a href=&quot;http://ejohn.org&quot; class=&quot;p-name u-url&quot;&gt;John Resig&lt;/a&gt;     
+        (&lt;a href=&quot;mailto:john@example.com&quot; class=&quot;u-email&quot;&gt;e-mail&lt;/a&gt;)     
+   &lt;/li&gt;     
+   &lt;li class=&quot;h-card&quot;&gt;     
+        &lt;img src=&quot;http://example.org/nicholas.png&quot; alt=&quot;avatar&quot; class=&quot;u-photo&quot;&gt;     
+        &lt;a href=&quot;http://www.nczonline.net&quot; class=&quot;p-name u-url&quot;&gt;Nicholas Zakas&lt;/a&gt;     
+        (&lt;a href=&quot;mailto:nicholas@example.com&quot; class=&quot;u-email&quot;&gt;e-mail&lt;/a&gt;)     
+   &lt;/li&gt;     
+&lt;/ul&gt;</pre>
+<p>有一点请注意，在这里我们并不关心这个DOM结构是基于server端生成的HTML代码，或是由其它组件生成的，只要保证在初始化时，我们的组件能够依赖于这个基础结构就够了。这一结构实际上为表单项构成了一个基于DOM的数据结构 <b>[{ photo, website, name, e-mail }]</b>。</p>
+<p>有了这个基础结构之后，我们就可以开始实现我们的组件了。第一步是为用户提供一个输入字段，以输入联系人名称。虽然它并不属于DOM结构的契约，但我们的组件仍然要负责创建它并动态地加入到DOM结构中去（毕竟，如果没有我们的组件，那么添加这个字段就完全没有任何意义了）。</p>
 <pre>
-{
-    &quot;pageName&quot;:&quot;HomePage&quot;,
-    &quot;title&quot;: &quot;Amazon.com: Online Shopping for Electronics, Apparel, 
-Computers, Books, DVDs &amp; more&quot;,
-    &quot;urlExtension&quot;: &quot;www.amazon.com&quot;,
-      &quot;keyDomElementName&quot;: &quot;searchField&quot;,
-    &quot;domElements&quot; :
-    {
-        &quot;cartCount&quot; :
-        {
-            &quot;jquery&quot;: &quot;$('#nav-cart-count')&quot;
-        },
-        &quot;allButton&quot; :
-        {
-            &quot;jquery&quot;: &quot;$('#nav-search-in')&quot;
-        },
-        &quot;selectCategory&quot; :
-        {
-            &quot;jquery&quot;: &quot;$('#searchDropdownBox')&quot;
-        },
-        &quot;searchField&quot; :
-        {
-            &quot;jquery&quot;: &quot;$('#twotabsearchtextbox')&quot;
-        },
-        &quot;go&quot; :
-        {
-            &quot;jquery&quot;: &quot;$('.nav-submit-input')&quot;
-        }
-    }
-}</pre>
-<p>我们定义一个页面配置文件的关键组件。 </p>
-<table cellspacing="0" cellpadding="0" border="1"> 
- <tbody> 
-  <tr> 
-   <td width="183" valign="top"> <p>组件</p> </td> 
-   <td width="95" valign="top"> <p>必须</p> </td> 
-   <td width="90" valign="top"> <p>允许为空</p> </td> 
-   <td width="94" valign="top"> <p>允许忽略</p> </td> 
-   <td width="129" valign="top"> <p>注意</p> </td> 
-  </tr> 
-  <tr> 
-   <td width="183" valign="top"> <p>pageName</p> </td> 
-   <td width="95" valign="top"> <p>是</p> </td> 
-   <td width="90" valign="top"> <p>否</p> </td> 
-   <td width="94" valign="top"> <p>否</p> </td> 
-   <td width="129" valign="top"> <p>按照惯例，值应该匹配文件名</p> </td> 
-  </tr> 
-  <tr> 
-   <td width="183" valign="top"> <p>Title</p> </td> 
-   <td width="95" valign="top"> <p>否</p> </td> 
-   <td width="90" valign="top"> <p>是</p> </td> 
-   <td width="94" valign="top"> <p>是</p> </td> 
-   <td width="129" valign="top">&nbsp;</td> 
-  </tr> 
-  <tr> 
-   <td width="183" valign="top"> <p>urlExtension</p> </td> 
-   <td width="95" valign="top"> <p>否</p> </td> 
-   <td width="90" valign="top"> <p>是</p> </td> 
-   <td width="94" valign="top"> <p>否</p> </td> 
-   <td width="129" valign="top">&nbsp;</td> 
-  </tr> 
-  <tr> 
-   <td width="183" valign="top"> <p>keyDomElementName</p> </td> 
-   <td width="95" valign="top"> <p>否</p> </td> 
-   <td width="90" valign="top"> <p>是</p> </td> 
-   <td width="94" valign="top"> <p>是</p> </td> 
-   <td width="129" valign="top"> <p>推荐使用以便于确保在向前移动场景之前页面已经被完全加载，</p> </td> 
-  </tr> 
-  <tr> 
-   <td width="183" valign="top"> <p>domElements</p> </td> 
-   <td width="95" valign="top"> <p>是</p> </td> 
-   <td width="90" valign="top"> <p>否</p> </td> 
-   <td width="94" valign="top"> <p>否</p> </td> 
-   <td width="129" valign="top">&nbsp;</td> 
-  </tr> 
- </tbody> 
-</table>
-<p></p>
-<p>就是这样！</p>
-<p>一旦剩下的页面被定义完，我们就能够通过“完成”运行场景了。测试配置员必须要清楚下面的内容之一：jQuery、XPath或者CSS。我们使用它们“选择”需要测试的Web元素。jQuery是Jazz Automation最喜欢的选择器机制，同时对于大多数QA分析师而言他们要学会jQuery只需要几天的时间，特别是有那么多的在线教程并且可以使用现代Web浏览器的开发者工具。</p>
-<h2>普通配置</h2>
-<p>要讨论的最后一部分内容是必须的jazz.properties文件。该配置文件包含一些普通的配置项，例如项目名称（用于报告）、一个表明测试应该在远程运行还是在本地系统上运行的标记、动作和页面速度以及要执行的功能。其他的可选配置属性我们就不在此一一介绍了。</p>
+// main.js     
+
+ var contacts = jQuery(&quot;ul.contacts&quot;);     
+ jQuery('&lt;input type=&quot;search&quot; /&gt;').insertBefore(contacts);</pre>
+<p>（我们在这里仅是出于便利性而使用了<a href="http://jquery.com/">jQuery</a>，同时也考虑到它的广泛使用性。如果使用其它的DOM操作类库，也是出于同样的原因。）</p>
+<p>这个JavaScript文件本身以及它所依赖的jQuery文件都会在HTML文件的<a href="http://developer.yahoo.com/blogs/ydn/high-performance-sites-rule-6-move-scripts-bottom-7200.html">底部</a>进行引用。</p>
+<p>接下来开始加入所需的功能，对于那些不符合这个新建的字段中的输入名称的联系人，这个组件会将它们隐藏起来：</p>
 <pre>
-#project name
-projectName: Amazon
+// main.js     
 
-# turn on remote support. if useRemote true, you must specify the following 
-remoteWebDriverUrl property.
-useRemote: false
+ var contacts = jQuery(&quot;ul.contacts&quot;);     
+ jQuery('&lt;input type=&quot;search&quot; /&gt;').insertBefore(contacts).
+on(&quot;keyup&quot;, onFilter);     
 
-# remote web driver url - usually your sauceLabs url
-remoteWebDriverUrl: http://jazzautomation:****@ondemand.saucelabs.com:80/wd/hub
+ function onFilter(ev) {     
+     var filterField = jQuery(this);     
+     var contacts = filterField.next();     
+     var input = filterField.val();     
 
-# you can customize you folder name of pages. By default it is pages
-#pagesDirectoryName: pages
+     var names = contacts.find(&quot;li .p-name&quot;);     
+     names.each(function(i, node) {     
+         var el = jQuery(node);     
+         var name = el.text();     
 
-# page pacing between two pages loading
-pagePace: 10
-#action pacing between two actions on the same page. The default value is &quot;1 second&quot;. 
-actionPace: 1
+         var match = name.indexOf(input) === 0;     
+         var contact = el.closest(&quot;.h-card&quot;);     
+         if(match) {     
+             contact.show();     
+         } else {     
+             contact.hide();     
+         }     
+    });     
+ }</pre>
+<p>（引用一个分离的、具名的函数，比起定义一个匿名函数来说，通常会使得<a href="http://callbackhell.com/">回调函数更便于管理</a>。）</p>
+<p>请注意，这个事件处理函数依赖于特定的DOM环境，它取决于触发这个事件的元素（它的执行上下文会映射到<a href="http://www.quirksmode.org/js/this.html">this</a>指针上）。我们将从这个元素开始<a href="http://api.jquery.com/category/traversing/tree-traversal/">遍历</a>DOM结构，以访问联系人列表，并找出所有包含名称的元素（这是由微格式的语义所定义的）。如果某个名称的开头部分与当前输入的内容不匹配，我们就再次向上遍历，将相应的容器元素隐藏起来，否则的话，就要保证该元素依然可见。</p>
+<h2>测试</h2>
+<p>这段代码已经提供了我们所需的基本功能，是时候通过编写测试来继续增强它了<sup>2</sup>。在这个示例中，我们所使用的工具是<a href="http://qunitjs.com/">QUnit</a>。</p>
+<p>我们首先编写一个<a href="https://github.com/FND/contacts-filter/blob/db5b59ab1fb333c867b2f6ab1949ec78faad0e2a/test/index.html">最简单的HTML页面</a>，它将作为我们的测试集的入口。当然我们还需要引用我们的代码以及相应的依赖项（在这个例子中就是jQuery），这和我们之前创建的普通HTML页面的方式是一样的。</p>
+<pre>
+&lt;!-- test/index.html --&gt;     
 
-# features: can be a list of features, separated by comma
-features:searchForHarryPotter</pre>
-<h2>报告</h2>
-<p>对于每一个测试，Jazz Automation都会产生一个描述测试运行详细信息的报告。如果测试执行成功了，那么会生成一个展示成功率为100%的简单报告。如果测试执行失败了，那么会对错误发生的地方创建一个屏幕截图并插入到报告中。除此之外，报告是根据测试运行期间产生的数据文件生成的。该数据文件可用于历史追踪、图表和趋势分析。</p>
-<p>让我们看看下面这个失败的测试报告：</p>
-<p>（单击放大图片）</p>
-<p><a href="http://infoqstatic.com/resource/articles/jazz-testing/zh/resources/1212004.png"> <img src="http://infoqstatic.com/resource/articles/jazz-testing/zh/resources/1212004.png" width="200" _href="img://1212004.png" _p="true" /></a></p>
-<h2>结论</h2>
-<p>到现在为止我们已经结束了使用Jazz Automation编写自动化测试的旅程。对于好奇的读者，还有大量的内容需要学习。例如，Jazz Automation还能够通过Sauce Labs这样的公司所提供的技术在远程使用，这样的话你的组织就不需要维护进行全范围测试所必须的每一种浏览器和操作系统的可能组合。你还能够深入探索Jazz Automation如何应用于没有使用jQuery的网站。提示：这需要使用动态插入。</p>
-<p>Jazz Automation还通过用户界面测试和提供即时反馈完成了持续集成的循环。这比以往任何时候都要更加重要，因为产业已经转移到富HTML5和JavaScript用户界面上了。组织需要立即知道应用程序自上而下都在按照期望运行。另外，使用Gherkin作为我们的领域特定语言还允许关键的利益相关方明确地表达出他们对系统应该如何工作、如何与技术资源有效沟通的理解，让开发团队能够解放出来专心构建产品。</p>
-<p>我们不能将Jazz Automation错误地理解为可以替代传统的单元测试和集成测试框架，例如JUnit和TestNG。单元测试和集成测试在成功的软件开发中依然非常重要，Jazz Automation只是更进了一步，用户能够使用它编写针对用户界面的自动化测试。另外，Jazz Automation是DOM级别的测试，所以你能够在一个Web页面中到处移动条目，这样并不会导致测试错误。</p>
-<p>自动化用户界面测试并不是每一个组织优先考虑的事情，但是如果首先考虑了它，那么前端测试和回归测试就不会让你再次慢下来。</p>
+  &lt;div id=&quot;qunit&quot;&gt;&lt;/div&gt;       
+  &lt;div id=&quot;qunit-fixture&quot;&gt;&lt;/div&gt;          
+
+  &lt;script src=&quot;jquery.js&quot;&gt;&lt;/script&gt;       
+  &lt;script src=&quot;../main.js&quot;&gt;&lt;/script&gt;         
+
+  &lt;script src=&quot;qunit.js&quot;&gt;&lt;/script&gt; </pre>
+<p>有了这个基础结构之后，我们就要在<b>#qunit-fixture</b>这个元素中加入我们的示例数据了，即一个h-card的列表，还记得我们最开始时的那一段HTML结构吗？每一个测试开始时都会重置这个元素，保证测试数据的完整，也<a href="http://qunitjs.com/cookbook/#keeping-tests-atomic">避免任何可能的副作用产生</a>。</p>
+<p>我们的<a href="https://github.com/FND/contacts-filter/blob/173048f76c817e0688b25281461e2949fa802b32/test/test_filtering.js">第一个测试</a>保证这个组件正确地初始化，而且过滤功能和预期一样工作，能够将不满足输入条件的DOM元素隐藏起来。</p>
+<pre>
+// test/test_filtering.js     
+
+ QUnit.module(&quot;contacts filtering&quot;, {   
+     setup: function() { // cache common elements on the module object      
+         this.fixtures = jQuery(&quot;#qunit-fixture&quot;);     
+         this.contacts = jQuery(&quot;ul.contacts&quot;, this.fixtures);     
+     }     
+ });     
+
+ QUnit.test(&quot;filtering by initials&quot;, function() {     
+     var filterField = jQuery(&quot;input[type=search]&quot;, this.fixtures);     
+     QUnit.strictEqual(filterField.length, 1);  
+    
+     var names = extractNames(this.contacts.find(&quot;li:visible&quot;));     
+     QUnit.deepEqual(names, [&quot;Jake Archibald&quot;, &quot;Christian Heilmann&quot;,     
+             &quot;John Resig&quot;, &quot;Nicholas Zakas&quot;]);     
+
+     filterField.val(&quot;J&quot;).trigger(&quot;keyup&quot;); // simulate user input     
+     var names = extractNames(this.contacts.find(&quot;li:visible&quot;));     
+     QUnit.deepEqual(names, [&quot;Jake Archibald&quot;, &quot;John Resig&quot;]);     
+ });     
+
+ function extractNames(contactNodes) {     
+     return jQuery.map(contactNodes, function(contact) {     
+         return jQuery(&quot;.p-name&quot;, contact).text();     
+     });     
+ }</pre>
+<p>（<a href="http://api.qunitjs.com/strictEqual/">strictEqual</a>方法能够避免JavaScript在比较对象时会默认忽略类型信息的现象，这可以避免某些<a href="http://www.jslint.com/lint.html#eqeq">微妙的错误</a>出现。）</p>
+<p>随后我们将这个测试文件加入我们的测试集中（在QUnit引用的下方添加这个文件的引用），在浏览器中打开这个测试集，它应该告诉我们所有的测试都已通过：</p>
+<p><img src="http://infoqstatic.com/resource/articles/modular-javascript/zh/resources/0224030.png" width="600" _href="img://null" _p="true" alt="" /></p>
+<h2>动画效果</h2>
+<p>虽然这个widget运行没问题，但还不够吸引人，因此让我们来添加一点简单的动画效果。使用jQuery可以很简单地实现这一点：只要把<a href="http://api.jquery.com/show">show</a>和<a href="http://api.jquery.com/hide">hide</a>方法替换为相应的<a href="http://api.jquery.com/slideUp">slideUp</a>和<a href="http://api.jquery.com/slideDown">slideDown</a>方法就可以了。这一特性能够让这个朴素的示例的用户体验得到显著的提升。</p>
+<p>但是当你再一次运行这个测试集时，结果是过滤功能这次不能正确工作了，因为全部4个联系人都依然显示在页面上：</p>
+<p><img src="http://infoqstatic.com/resource/articles/modular-javascript/zh/resources/0224031.png" width="600" _href="img://null" _p="true" alt="" /></p>
+<p>这是由于动画效果是异步操作（就如AJAX操作一样），因此在动画结束前就已经完成了对过滤结果的检查。我们可以使用QUnit的<a href="http://api.qunitjs.com/category/async-control/">asyncTest</a>方法推迟检查的时间。</p>
+<pre>
+// test/test_filtering.js          
+
+  QUnit.asyncTest(&quot;filtering by initials&quot;, 3, function() { // expect 3 assertions     
+      // ...     
+      filterField.val(&quot;J&quot;).trigger(&quot;keyup&quot;); // simulate user input     
+      var contacts = this.contacts;     
+      setTimeout(function() { // defer checks until animation has completed     
+          var names = extractNames(contacts.find(&quot;li:visible&quot;));     
+          QUnit.deepEqual(names, [&quot;Jake Archibald&quot;, &quot;John Resig&quot;]);     
+          QUnit.start(); // resumes test execution     
+      }, 500);     
+  });</pre>
+<p>每次都打开浏览器检查测试集的结果有些繁琐，因此我们可以使用<a href="http://phantomjs.org/">PhantomJS</a>，这是一个后台浏览器。将它与<a href="https://github.com/jquery/qunit/tree/master/addons/phantomjs">QUnit runner</a>一起使用可以使测试过程自动化，并在控制台显示测试结果。</p>
+<pre>
+$ phantomjs runner.js test/index.html   
+ Took 545ms to run 3 tests. 3 passed, 0 failed.</pre>
+<p>这种方式使得通过持续集成进行自动化测试变得更为方便（当然，它做不到跨浏览器的错误检查，因为PhantomJS只使用了WebKit内核。不过现在也出现了支持<a href="http://slimerjs.org/">Firefox的Gecko</a>和<a href="http://triflejs.org/">Internet Explorer的Trident</a>引擎的后台浏览器。）</p>
+<h2>包含范围</h2>
+<p>目前为止，我们的代码虽然能够运行，但还不够优雅：由于浏览器不会在隔离的区间内运行JavaScript，因此这段代码会将<b>contacts</b>和<b>onFilter</b>两个变量暴露到全局命名空间内，初学者需要特别当心。不过我们可以自行修改这段代码，以避免变量污染全局命名空间，由于JavaScript中唯一的限定范围机制就是函数，因此我们只需将整个文件简单地封装在一个匿名函数中，并在最后调用这个函数就可以了：</p>
+<pre>
+(function() {    
+ var contacts = jQuery(&quot;ul.contacts&quot;);     
+ jQuery('&lt;input type=&quot;search&quot; /&gt;').insertBefore(contacts).
+on(&quot;keyup&quot;, onFilter);     
+ function onFilter(ev) {     
+     // ...     
+ } 
+ }());</pre>
+<p>这种方法被称为<a href="http://benalman.com/news/2010/11/immediately-invoked-function-expression/">立即调用的函数表达式</a>（IIFE）。</p>
+<p>现在，我们已经有效地将变量限定为一个自包含的模块中的私有变量了。</p>
+<p>我们还可以进一步改善代码，以防止在声明变量时因遗漏var而导致创建了新的全局变量。实现这一点只需激活<a href="http://www.yuiblog.com/blog/2010/12/14/strict-mode-is-coming-to-town/">strict模式</a>，它可以避免许多代码中的陷阱<sup>3</sup>。</p>
+<pre>
+(function() {    
+ &quot;use strict&quot;; // NB: must be the very first statement within the function 
+ // ...        
+ }());</pre>
+<p>在某个IIFE容器中指定strict模式，可以确保它只在被显式调用的模块中起作用。</p>
+<p>有了基于模块的本地变量之后，我们就可以利用这一点来引入本地别名，以达到便利性的目的，比方在我们的测试中可以这样做：</p>
+<pre>
+// test/test_filtering.js
+ (function($) {
+ &quot;use strict&quot;;
+ var strictEqual = QUnit.strictEqual;
+ // ...
+ var filterField = $(&quot;input[type=search]&quot;, this.fixtures);
+ strictEqual(filterField.length, 1);
+ }(jQuery));</pre>
+<p>现在我们有了两个别名：<b>$</b>和<b>strictEqual</b>，前者是通过一个IIFE参数进行定义的，它只在这个模块内部起作用。</p>
+<h2>组件 API</h2>
+<p>虽然我们的代码已经实现了良好的结构化，不过这个组件会在启动时（例如在这段代码刚刚加载时）自动初始化。这导致了难以预测它的初始化时机，而且使得不同种类的，或是新创建的元素不能够动态地被（重新）初始化。</p>
+<p>只需将现有的初始化代码封装在一个函数中，就可以简单地修正这一问题：</p>
+<pre>
+// widget.js
+  
+ window.createFilterWidget = function(contactList) { 
+     $('&lt;input type=&quot;search&quot; /&gt;').insertBefore(contactList).
+         on(&quot;keyup&quot;, onFilter);
+ };</pre>
+<p>通过这种方式，我们就将这个组件的功能与它的运行程序的生命周期解耦了。初始化的责任就转交给了应用程序，在我们的示例中就是测试工具。这通常意味着需要在应用程序的上下文中加入一些“粘合代码”以管理这些组件。</p>
+<p>请注意，我们显式地将函数赋给了全局的<b>window</b>对象，这是让我们的功能可以在IIFE外部访问的最简单方式。但这种方式将模块本身与某个特定的隐式上下文耦合在一起了：而<b>window</b>并不一定是全局对象（例如<a href="http://nodejs.org/api/globals.html#globals_global">在Node.js中</a>）。</p>
+<p>一个更为优雅的途径是明确指出代码的哪些部分将暴露给外部，并将这些部分聚集在一处。我们可以再次利用IIFE的优势实现这一点：因为IIFE仅仅是一个函数，我们可以在它的底部返回它的公开部分（例如我们所定义的API），并将返回值赋给某个外部（全局）范围内的变量：</p>
+<pre>
+// widget.js
+ var CONTACTSFILTER = (function($) {
+ function createFilterWidget(contactList) {
+     // ...
+ }
+ // ...
+ return createFilterWidget;
+ }(jQuery));</pre>
+<p>这一方式也叫做<a href="http://christianheilmann.com/2007/08/22/again-with-the-module-pattern-reveal-something-to-the-world/">揭示模块化模式</a>（revealing module pattern），至于使用大写是为了突出全局变量的一种约定。</p>
+<h2>封装状态</h2>
+<p>目前为止，我们的组件不仅功能良好而且结构合理，还包含了一个恰当的API。不过，如果我们继续按照这种方式引入更多的功能，就会导致对相互独立的函数的组合调用，这样很容易产生混乱的代码。对于UI组件这种注重状态的对象来说就更是如此。</p>
+<p>在我们的示例， 我们希望允许用户决定过滤条件是否是大小写敏感的，<a href="https://github.com/FND/contacts-filter/compare/c4f79f0078a1631538fa6af091cd63ddbfd96617%5E...cbe1d73f45a728c9abd1dcaa33bc2f0a19c2951a">因此我们加入了一个复选框，并相应地扩展了我们的事件处理函数</a>：</p>
+<pre>
+// widget.js
+  
+ var caseSwitch = $('&lt;input type=&quot;checkbox&quot; /&gt;');
+  
+ // ...
+
+ function onFilter(ev) {
+     var filterField = $(this);
+     // ...
+     var caseSwitch = filterField.prev().find(&quot;input:checkbox&quot;);
+     var caseSensitive = caseSwitch.prop(&quot;checked&quot;);
+
+     if(!caseSensitive) {
+         input = input.toLowerCase();
+     }
+     // ...  }</pre>
+<p>为了使组件的元素与事件处理函数相关联，这段代码增加了对某个特定DOM上下文的依赖性。解决该问题的一种选择是将DOM查找方法移至某个分离的函数中，由它根据指定的上下文决定查找哪个组件。而更加常见的方式是采用面向对象的途径。（JavaScript本身支持函数式编程与面向对象<sup>4</sup>编程两种风格，它允许开发者根据任务需求自行选择最为适合的编程风格。）</p>
+<p>因此我们<a href="https://github.com/FND/contacts-filter/compare/b45c6ff9263ee1121c8e79a2cdb0156cc13e4d95%5E...3b827086eeec47c902167a6c9a915dea4d8ef5a9">可以重写组件</a>的方法，让它通过某个实例追踪它的所有组件：</p>
+<pre>
+// widget.js
+  
+ function FilterWidget(contactList) {
+     this.contacts = contactList;
+     this.filterField = $('&lt;input type=&quot;search&quot; /&gt;').
+insertBefore(contactList);
+     this.caseSwitch = $('&lt;input type=&quot;checkbox&quot; /&gt;');
+ }</pre>
+<p>对API的这一改动虽然很小，影响却很大：我们现在不再通过调用<b>createFilterWidget(…)</b>方法，而是通过<b>new FilterWidget(…)</b>来初始化widget，它调用了方法的构造函数，并将上下文传递给一个新创建的对象<b>（</b><b>this</b><b>）</b>。为了强调<b>new</b>操作的必要性，按照约定，构造函数名称的首字母都是大写（这一点非常类似于其它语言中的类的命名方式）<sup>5</sup>。</p>
+<p>当然，我们需要根据这个新的结构重新实现功能，首先得加入一个方法，它根据输入内容来隐藏联系人，它的实现和之前在<b>onFilter</b>方法中的实现基本相同：</p>
+<pre>
+// widget.js
+  
+ FilterWidget.prototype.filterContacts = function(value) {
+     var names = this.contacts.find(&quot;li .p-name&quot;);
+     var self = this;
+     names.each(function(i, node) {
+         var el = $(node);
+         var name = el.text();
+         var contact = el.closest(&quot;.h-card&quot;);
+
+         var match = startsWith(name, input, self.caseSensitive);
+         if(match) {
+             contact.show();
+         } else {
+             container.hide();
+         }
+    });
+ }</pre>
+<p>（这里定义的<b>self</b>变量是为了在<b>each</b>这个回调函数中也可以访问到<b>this</b>对象，因为在<b>each</b>函数中也有它自己的<b>this</b>变量，这样就不能够直接访问外部范围中的<b>this</b>对象了。通过在内部引用<b>self</b>对象，它就创建了一个闭包。）</p>
+<p>注意<b>filterContacts</b>函数的实现有所变化了，它不再根据上下文查找DOM，而是简单地引用之前定义在构造函数中的元素。字符串匹配功能则被抽取成一个通用目的的函数，这也表示并非所有功能都必须成为某个对象的方法：</p>
+<pre>
+function startsWith(str, value, caseSensitive) {
+     if(!caseSensitive) {
+         str = str.toLowerCase();
+         value = value.toLowerCase();
+     }
+     return str.indexOf(value) === 0;
+ }</pre>
+<p>接下来我们将连接事件处理函数，否则这个方法是永远不会被触发的：</p>
+<pre>
+// widget.js    
+  function FilterWidget(contactList) {     
+     // ...    
+     this.filterField.on(&quot;keyup&quot;, this.onFilter);     
+     this.caseSwitch.on(&quot;change&quot;, this.onToggle);     
+ }     
+  FilterWidget.prototype.onFilter = function(ev) {     
+     var input = this.filterField.val(); 
+          this.filterContacts(input);     
+ };     
+  FilterWidget.prototype.onToggle = function(ev) {     
+     this.caseSensitive = this.caseSwitch.prop(&quot;checked&quot;);     
+ };</pre>
+<p>现在可以重新运行我们的测试了，它除了之前那些API的小改动之外，并不需要其它的任何调整。但是一个错误出现了，这是由于<b>this</b>对象并非我们所预计的对象。我们已经了解到事件处理函数调用时会将相应的DOM元素作为运行上下文，因此我们需要做出一些调整，使代码能够访问到组件实例。为了实现这一点，我们利用了闭包功能以重新映射执行上下文：</p>
+<pre>
+// widget.js
+  
+ function FilterWidget(contactList) {
+     // ...
+     var self = this;
+     this.filterField.on(&quot;keyup&quot;, function(ev) {
+         var handler = self.onFilter;
+         return handler.call(self, ev);
+     });
+ }</pre>
+<p>（<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function/call">call</a>是一个内置的方法，它能够调用任何函数，并将任何传入的对象作为上下文，首个传入参数将对应该函数中的<b>this</b>对象。另一选择是<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function/apply">apply</a>方法，它能够接受一个隐式的arguments变量，以避免显式地引用单个的参数，它的形式是：handler.apply(self, arguments).<sup>6</sup>）</p>
+<p><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function/apply">最终的结果</a>是，我们的widget中的每个方法都有着清晰的并且封装良好的职责。</p>
+<h2>jQuery API</h2>
+<p>如果使用jQuery，那么现在的API看起来还不够优雅。我们可以添加一个轻量的封装，它提供了另一种对jQuery开发者来说感觉更加自然的API。</p>
+<pre>
+jQuery.fn.contactsFilter = function() {
+     this.each(function(i, node) {
+         new CONTACTSFILTER(node);
+     });
+     return this;
+ };</pre>
+<p>（在jQuery的<a href="http://learn.jquery.com/plugins/advanced-plugin-concepts/">插件指南</a>中可以找到更详细的说明。）</p>
+<p>这样一来，我们就可以使用<b>jQuery(&quot;ul.contacts&quot;).contactsFilter()</b>这种方式调用组件了。如果将这一方法定义在一个单独的层中，就可以保证我们不依赖于某些特定的系统，因为将来版本的实现也许会为其它不同的系统提供额外的API封装，甚至可能会决定移除对jQuery的依赖或选择替代品。（当然，在这个示例中，弃用jQuery也意味着我们将不得不重写代码内部实现的某些部分。）</p>
+<h2>结论与展望</h2>
+<p>希望本文能够表达出编写可维护的JavaScript组件的一些关键原则。当然，并且每个组件都要遵循这个模式，但这里所表现的一概念对于任何组件来说都提供了一些必要的核心功能。</p>
+<p>进一步的增加或许要用到<a href="https://github.com/amdjs/amdjs-api/wiki/AMD">异步模块定义</a>（AMD），<a href="http://addyosmani.com/writing-modular-js/">它不仅改进了代码封装，而且使得模块之间的依赖更加清晰</a>，这就允许你按需加载代码（例如通过<a href="http://requirejs.org/">RequireJS</a>）。</p>
+<p>此外，近来有一些激动人心的新特性正在开发中：下个版本的JavaScript（官方称为ECMAScript 6）将引入一个语言级别的模块系统，当然，和任何新特性一样，它是否能够被广泛接受要取决于浏览器的支持。类似的，Web Components是正在实现的<a href="http://www.w3.org/TR/components-intro/#introduction">一组浏览器API</a>，它的目的是改善代码封装与可维护性，可以通过使用<a href="http://www.polymer-project.org/">Polymer</a>来感受一下其中的许多特性。但Web Components的进展如何还有待进一步观望。</p>
+<ol> 
+ <li>对于单页面应用来说这篇规范并不太适用，因为在这种情况下服务端和客户端的角色会有很大的不同。不过对这种方式的对比已经超出了本文的范围。</li> 
+ <li>或许你应该<a href="http://c2.com/cgi/wiki?TestDrivenDevelopment">先</a>编写测试方法。</li> 
+ <li>可以<a href="https://github.com/douglascrockford/JSLint/wiki/JSLINT">使用</a><a href="http://jslint.com/">JSLint</a>以避免这种情况和其它一些<a href="http://www.jslint.com/lint.html">常见问题</a>的发生，在<a href="https://github.com/FND/contacts-filter/blob/69685d52555091dcefa75b5715362655b41ff08e/Makefile#L16-17">我们的代码库</a>中就使用了<a href="https://github.com/FND/jslint-reporter">JSLint Reporter</a>。</li> 
+ <li>JavaScript使用原型而不是类，主要区别在于，类总是以某些方式表现出“独特性”，而任意对象都可以作为原型，作为创建新实例的模板。对于本文来说，这一区别基本可以忽略。</li> 
+ <li>当前流行版本的JavaScript引入了<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/create">Object.create</a>方法，作为“伪经典”语法的替代品。但原型继承的核心原则还是一样的。</li> 
+ <li>可以使用jQuery.proxy方法将代码改写为<b>this.filterField.on(&quot;keyup&quot;, $.proxy(self, &quot;onFilter&quot;));</b></li> 
+</ol>
 <h2>关于作者</h2>
-<p><img src="http://infoqstatic.com/resource/articles/jazz-testing/zh/resources/1212005.jpg" style="float: left; margin-right: 10px" alt="" _href="img://null" _p="true" /><b>Dedrick Boyd</b> 是一位老道的IT专家，他在完整软件开发和产品生命周期等领域有丰富的经验。他有技术技能，同时拥有管理各种产业中的大型和小型开发团队的经验，包括零售业、制药业、媒体及娱乐、医疗保健和金融服务业。Dedrick现在就职于<a href="http://www.statementcorp.com/">Statement</a>，在那里他是一位技术创新者，同时也是一位关系经理。他拥有佛罗里达州立大学管理信息系统（Management Information Systems）的学士学位。Dedrick的业余爱好包括：环游世界、读书、烹饪、美式足球和与家人共度光阴。</p>
-<div style="clear:both"></div>
-<p><b>查看英文原文</b>：<a href="http://www.infoq.com/articles/jazz-testing">Writing Automated Tests with Jazz Automation</a></p>
-<p>&nbsp;</p><br><br><br><br><br><br></body></html>
+<p><img style="float: left; margin-right: 10px" src="http://infoqstatic.com/resource/articles/modular-javascript/zh/resources/0224032.jpg" _href="img://null" _p="true" alt="" /><b>Frederik Dohr</b>刚刚开始职场生涯时，作为一个web开发者有些不情愿地摆弄着TiddlyWiki，这个wiki有时也被称为最早的单页面应用。他在BT的开源创新团队Osmosoft与众多优秀的同事工作了多年之后离开伦敦而返回德国。目前就职于innoQ。作为web开发来说，他始终坚持保持简洁，同时也产生了许多新的看法。</p>
+<div style="clear:both">
+ &nbsp;
+</div>
+<p><strong>查看英文原文：</strong><a href="http://www.infoq.com/articles/modular-javascript">Developing Modular JavaScript Components</a></p><br><br><br><br><br><br></body></html>

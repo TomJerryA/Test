@@ -1,39 +1,52 @@
-<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>Hortonworks牵手红帽，东软结盟阿里云 - OpenStack社区周报</h3><p>声明：本周报由华为OpenStack团队出品，由孔令贤整理，授权InfoQ中文站转载。欢迎转发，但请保留原作者信息！</p>
-<p>原文地址：<a href="http://lingxiankong.github.io/blog/2014/02/27/openstack-report-0216-0227/">http://lingxiankong.github.io/blog/2014/02/27/openstack-report-0216-0227/</a></p>
-<p>新浪微博：<a href="http://weibo.com/lingxiankong">@孔令贤HW</a></p>
-<p>博客地址：<a href="http://lingxiankong.github.io/">http://lingxiankong.github.io/</a></p>
-<h2>业界动态</h2>
-<p>2.10号，<a href="http://www.redhat.com/about/news/press-archive/2014/2/hortonworks-and-red-hat-deepen-strategic-alliance">大数据公司Hortonworks和Red Hat建立战略合作伙伴关系</a>，Red Hat会将Hortonworks Data Platform (HDP) 接入自己的存储产品，并且HDP也会与Red Hat Enterprise Linux OpenStack Platform整合以降低成本。</p>
-<p>风河公司近日<a href="http://www.businesswire.com/news/home/20140211005665/en/Wind-River-Advancing-Carrier-Grade-Cloud-Infrastructures#.UxUtKJTN9I8">宣布已经成为OpenStack基金会的企业赞助商</a>。作为OpenStack社区的一份子，风河将帮助推动这项平台技术在电信级云计算基础设施中的应用普及，同时与基金会其它成员积极协作，在各个行业推广开源云计算基础设施的发展。</p>
-<p>SUSE宣布正式发布<a href="https://www.suse.com/zh-cn/promo/susecloud3.html">SUSE Cloud 3</a>，它是企业级OpenStack发行版的最新版本，用于构建基础设施即服务（IaaS）私有云。SUSE Cloud 3 集成了VMware vCenter Server，可以完全支持VMware vSphere，因而能让客户非常灵活地、以高性价比、在现有的虚拟数据中心部署私有云。其安装框架使用Crowbar</p>
-<p>2.24号，<a href="http://stock.sohu.com/20140227/n395719641.shtml">东软集团已与阿里巴巴旗下阿里云结盟</a>，将逐渐把传统IT服务迁移到阿里云的云计算平台上。这意味着阿里云一举击败IBM、甲骨文等国外厂商，成功拿下国内最大的IT解决方案与服务提供商。</p>
-<p>阿朗（Alcatel-Lucent）在其CloudBand中选择了Red Hat Enterprise Linux OpenStack Platform作为云平台，实现NFV。此前，在NFV领域，RedHat已经与Dell合作，因为Dell是<a href="http://www.cloudnfv.com/">CloudNFV</a>的领军人物。</p>
-<p>VDI厂商<a href="http://vbridges.com/2014/02/18/virtual-bridges-announces-sponsorship-openstack-foundation">Virtual Bridges</a>作为OpenStack企业赞助商，其声称已经可以提供基于OpenStack的桌面云服务。</p>
-<p>我们都知道OpenStack是兼容AWS EC2 API的（虽然在兼容程度上不太理想），提供OpenStack私有云服务的各家厂商也都直接利用这个所谓的优势。记得在<a href="http://lingxiankong.github.io/blog/2013/12/05/openstack-report-1128-1205/">第三期</a>曾提过Google推出了GCE，2.19号，CloudScaling宣布其私有云解决方案OCS支持GCE API，并将其贡献到<a href="http://github.com/stackforge/gce-api">StackForge</a>。</p>
-<h2>社区跟踪</h2>
-<h3>Common</h3>
-<p>关于OpenNebula和OpenStack的对比，已经不是什么新话题了，OpenNebula的工程师也觉得有必要系统的澄清一下，&quot;<a href="http://opennebula.org/opennebula-vs-openstack-user-needs-vs-vendor-driven">While OpenNebula is an open-source effort focused on user needs, OpenStack is a vendor-driven effort</a>&quot;</p>
-<p>对于刚加入OpenStack贡献的新手来讲，如果配置不慎，估计都会碰到git review -s的问题，其中之一便是“Permission denied (publickey).”，解决办法如下：<a href="http://blog.phymata.com/2014/02/12/fixing-my-openstack-gerrit-problem/">Fixing my OpenStack Gerrit Permission denied (publickey) problem</a></p>
-<p>因为OpenStack相对灵活的安装部署，大部分的贡献者都会在自己的个人主机上使用虚拟机搭建OpenStack开发环境，网上的文档有很多，看一下Rackspace的工程师是怎么玩的？Inside My Home Rackspace Private Cloud, OpenStack Lab——<a href="http://www.rackspace.com/blog/inside-my-home-rackspace-private-cloud-openstack-lab-part-1-the-setup/">第一部分</a>，<a href="http://www.rackspace.com/blog/inside-my-home-rackspace-private-cloud-openstack-lab-part-2-the-networking/">第二部分</a>，<a href="http://www.rackspace.com/blog/inside-my-home-rackspace-private-cloud-openstack-lab-part-3-installing-a-high-availability-rackspace-private-cloud-with-chef-cookbooks/">第三部分</a>。</p>
-<p>Icehouse发布在即，一些新的项目已经为Juno做准备，比如<a href="https://wiki.openstack.org/wiki/Murano/Incubation">Murano正在申请进入Juno的孵化项目</a>。但Murano的境遇比较尴尬，因为其实它同时覆盖了Glance和Heat的功能，而OpenStack是不允许出现项目范围重复的。</p>
-<p>今天(2.24号)看maillist时发现了一个新项目<a href="https://wiki.openstack.org/wiki/PythonOpenStackSDK">&quot;PythonOpenStackSDK&quot;</a>，目的是提供一个与OpenStack服务统一交互接口。</p>
-<p>OpenStack社区专为女性的扩展项目开始了，为期3个月（3-5）。<a href="https://wiki.openstack.org/wiki/OutreachProgramForWomen">报名地址</a>（我相信国内应该没有女性关心吧）</p>
-<p>还记得第六期提到的'DefCore'么？Mirantis又抢先一步，发布了<a href="http://refstack.org/">RefStack</a>，从其信息尚未完善的主页来看，参与的厂商挺多。</p>
-<p>如何参与翻译工作？<a href="http://vmartinezdelacruz.com/make-openstack-speak-your-language-join-openstacks-i18n-community">这里有一些提示</a>。</p>
-<h3>Nova</h3>
-<p>2.27号，python-novaclient 2.16.0 released，参见<a href="https://bugs.launchpad.net/python-novaclient">修复的bug列表</a>。</p>
-<p>OpenStack实现AWS的VPC功能，社区早就有人提过，一拖再拖，现在终于<a href="https://blueprints.launchpad.net/nova/+spec/aws-vpc-support">又被raised up</a>。</p>
-<p>Gantt（独立出Nova的Scheduler）项目目前还在开发中，后续可能会托管到stackforge，并且还需要至少一个development cycle</p>
-<p><a href="https://etherpad.openstack.org/p/NovaV3APIDoneCriteria">V3 API目前的开发状态</a>。社区也在讨论Icehouse中是否要正式发布稳定版V3 API，但普遍认为，V3的特性并非那么的引人瞩目，并且V3 API也缺乏对nova-network的支持（后者在Icehouse并没有废弃），同时，V3 API还有很多工作要做。值得说明的是，两位来自IBM的童鞋对V3 API的实现做了很大贡献。V3 API目前比较尴尬的原因是，它并不兼容V2版本。或许，V2还会持续相当长的时间。<br /> <a href="http://lists.openstack.org/pipermail/openstack-dev/2014-February/027896.html">Future of the Nova API</a>。</p>
-<p><a href="http://lizards.opensuse.org/2014/02/08/another-way-to-access-a-cloud-vms-vnc-console/">另一种通过VNC连接VM的方式</a>。</p>
-<p>众所周知，OpenStack兼容AWS EC2接口，但是EC2接口的测试，可能会用到相应的工具，<a href="https://www.pdc.kth.se/resources/computers/pdc-cloud/euca2ools-for-openstack">euca2tools</a>便是其中一个。关于euca2tools的安装其实不是什么难事，但有个指导总是好的。</p>
-<p>Hyper-V对的OpenStack的支持越来越好，这个cloudbase团队确实比较牛逼，这不，Havana 2.2版本刚出来，对应Hyper-V自动化安装工具就<a href="http://www.cloudbase.it/openstack-havana-2013-2-2-hyper-v-compute-installer-released/">出来</a>了，一键式啊~</p>
-<p>看来在Nova中实现VM HA（非业务层面HA）是基本无望了，相关的讨论在<a href="http://lists.openstack.org/pipermail/openstack-dev/2014-February/027753.html">这里</a>和<a href="http://markmail.org/message/5zotly4qktaf34ei">这里</a>。</p>
-<p>其实之前我是比较关注Nova是否会提供类似DRS的功能。这个话题以前讨论过，但都没有一个结论。而且社区有相关的项目（比如Gantt），社区外也有<a href="http://openstack-neat.org/">相关的实现</a>。但，最近一个新的相关的<a href="https://blueprints.launchpad.net/nova/+spec/resource-optimization-service">bp</a>又出现了，我会持续跟踪进展。</p>
-<h3>Heat</h3>
-<p>2.19，<a href="https://launchpad.net/python-heatclient/+milestone/v0.2.5">python-heatclient 0.2.7 released</a>。该版本使用了requests库，而不是采用httpclient实现。</p>
-<p>目前对于heat的stack-update处理方式：如果update失败，在回滚使能的情况下，heat会尝试回滚到之前状态，但是如果回滚失败或者不允许回滚的情况下，heat没有处理保留failed的状态，用户此时就只能删除stack。有人提出一个<a href="https://blueprints.launchpad.net/heat/+spec/update-failure-recovery">bp</a>解决该问题。</p>
-<h3>Keystone</h3>
-<p>OpenStack中关于Keystone的文档应该有很多，但还是有一些东西貌似文档没有涉及（比如命令行中使用debug，创建用户得不到密码等），但很多人经过实践摸索，形成了非官方的“共识”，这里有一篇<a href="http://mirandazhangq.wordpress.com/2014/02/10/wish-list-common-misunderstanding-undocumented-openstack-identity-api-authentication-add-user/">博客</a>做了大概的说明。</p>
-<h3>Horizon</h3>
-<p>OpenStack的界面到底设计的如何？只有对比过后才知道。<a href="http://uxd-stackabledesign.rhcloud.com/?p=78">这篇文章</a>的作者应该是Horizon的UI设计人员，文章中对比了Netflix Asgard, Windows Azure, PayPal Aurora, CloudStack, Google Compute Engine, Amazon Web Services，信息量还是很大的。</p><br><br><br><br><br><br></body></html>
+<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>精益创业法：众里寻她千百度</h3><p>去年12月份的2013精益创业大会上，作为<a href="http://www.amazon.com/The-Lean-Startup-Entrepreneurs-Continuous/dp/0307887898/">The Lean Startup</a>（《精益创业》）一书的作者和精益创业<a href="http://theleanstartup.com/">活动</a>的创始人，Eric Ries近期向通用电气公司代表做了成果<a href="http://www.youtube.com/watch?v=nhmQNW1mkSk">展示</a>——所谓“全球最伟大的精益创业实现”。精益创业法正迅速成熟，远超面向初创企业的最初目标，近期来自Ries和其他人的报道开始就其企业适用性展开调查。与此不同，作为另一类呼声的代表，大数据创业公司GainSight的CEO——Nick Metha对精益创业法是初创企业的最佳选择表示怀疑。 </p>
+<p>据Ries透露，通用电气公司打算发布100种产品的MVP（最小可行产品），这些产品的开发遵照精益创业法。通用电气公司的精益创业提倡者Steve Liguori<a href="http://youtu.be/nhmQNW1mkSk?t=7m55s">解释</a>了为什么要在这么一所大公司推行精益实践： </p>
+<blockquote> 
+ <p>因为我们想创新，想精益，想创业，而有些东西，如果不关注、不重新思考、不重新执行，就会妨碍你做喜欢的事。这让我们选择了精益创业法。</p>
+</blockquote>
+<p>最近，Ries与<a href="http://www.amazon.com/The-Lean-Entrepreneur-Visionaries-Products/dp/111829534X/">Lean Entrepreneur</a>一书的作者<a href="http://about.me/brantcooper">Brant Cooper</a>和<a href="http://vlaskovits.com/">Patrick Vlaskovits</a>，就“成熟公司的精益引入”这个话题一同参与了<a href="http://www.youtube.com/watch?v=Eyf2DC6rafw">现场问答</a>：精益创业法正被越来越多地用在企业里，常被敏捷团队用以增强团队灵活性和规范学习。问答涉及精益创业法在企业中的有效情境，并指出公司的真正挑战是，创建一些小的自治团队，有类似初创企业的自由，能深入研究开发-测量-认知循环。 </p>
+<p>通过对比，Metha<a href="http://gigaom.com/2013/11/28/in-defense-of-the-fat-startup/">写道</a>，严格遵照开发-测量-认知循环，已经定位好产品市场的初创企业也许会坐失规模经济，从而无法最大化初期市场渗透力和影响力。精益方法“对于未获得产品市场定位和面向小众的那部分初创企业很有帮助”。他还指出，有很多公司能够获利是因为规模扩张而不是因为遵循精益： </p>
+<blockquote> 
+ <p>这些日子，我遇到了很多在我看来过于追求“精益”的成长型企业。这些企业有令人惊叹的产品，广阔的市场和资金渠道。不过似乎有一部分公司会因为错误的原因而选择不扩大规模。</p>
+</blockquote>
+<p>Metha将初创企业所能从最小可行产品扩展后获利的五个领域归结为： </p>
+<ol> 
+ <li>“市场供给” - 营销投资。</li> 
+ <li>“销售供给” - 销售投资。</li> 
+ <li>“饿死对手” - 扩大市场份额以迅速与竞争者拉开距离。</li> 
+ <li>“招募满足” - 用于吸引天才的可视化投资。</li> 
+ <li>“团队及自我满足“ - 用于挽留人才的薪水投资。</li>
+</ol>
+<p>前主流唱片艺术家、现阶段为起步期初创企业工作的<a href="http://lylemckeany.com/">Lyle McKeany</a>，近来分享了他在旧金山参加<a href="https://www.leanstartupmachine.com/">精益创业器</a>（LSM）的<a href="http://pando.com/2014/01/11/is-lean-startup-right-for-your-idea/">收获</a>。McKeany发现，他所遇到的很多初创企业，在应当“指出问题，用某种成功标准测试风险假设，在想到解法前和潜在客户谈谈”时，企图使用精益思维原则。他指出他所遇到的所有初创企业都是从某种初始产品开始，然后进入学习循环。在听LSM创始人Trevor Owens的报告时，他指出下列事实： </p>
+<blockquote> 
+ <p>Trevor给出的所有例子有一个共性：都没有用Trevor在LSM所教的精益思维原则。他们都不假思索地创建了一个潜在“解决方案”，很多企业在中心化之前就筹到了很多VC。此外，他们都遵循传统精益创业的座右铭，开发-测量-认知,即先开发再分析学习。</p>
+</blockquote>
+<p><a href="http://klinger.io/">Andreas Klinger</a>, 创业评论员和导师，近来写了一篇<a href="http://klinger.io/post/69794653694/why-lean-startup-sucks-for-startups">文章</a>“为何精益创业不适合初创企业。”Andreas证明，与全力成长、实现自我超越的初创企业相比，精益创业法更适用于有一定规模的企业。对初创企业而言，那些用于持续验证成功的时间，更应该被用于市场定位。Klinger所提的另一可选建议是，尽可能少的验证，不要被部分失败标准所限。他的观点是，对初创企业而言，与过分测量所谓的成功因素相比，验证企业不满足某些失败标准的详尽子集开销更小。Klinger指出，存在搜集信息过多，以至难以基于这些信息决策的情况，即： </p>
+<blockquote> 
+ <p>现实中的主观偏好和嘈杂信息使得获取理想质量的信息不大现实。</p>
+</blockquote>
+<p>发表在Pollenizer.com 上的2014年<a href="http://pollenizer.com/lean-startup-trends-2014">预测</a>中，她指出，Blogging Co 的卫报记者和导演——<a href="http://www.theguardian.com/profile/bronwen-clune">Bronwen Clune</a>，近年来鼓励企业内部使用精益创业方法。Clune写道大公司开始重新认识敏捷和精益创业，这有助于增强企业灵活性而改善大公司所习惯的慢周期。她写道： </p>
+<blockquote> 
+ <p>像敏捷在很多年所做的那样，精益思维正渗入企业圈。作为被那些小而敏捷的企业所超越的落伍者，引导企业追逐精益是创新的需要，。</p>
+</blockquote>
+<p>Clune还报道说微软现在正积极尝试“在总部推行一些小企业文化”，他们和精益创业器<a href="http://thenextweb.com/insider/2014/01/14/lean-startup-machine-partners-microsoft-ventures-expand-600-cities-next-18-months/">一道</a>，提升所接触的精益方法的宽度。 </p>
+<p>Metha所提的另一点是，有成熟产品的初创企业存在风险：也许是营销投资不足，也许是没有最大化其初期干涉和市场影响力。他写道： </p>
+<blockquote> 
+ <p>.. 市场投资得当会得到巨大回报。PR能让你对投资者和职员更有吸引力。好品牌能拉开你和竞争对手的距离。</p>
+</blockquote>
+<p>Clune强调这类营销关注点，预测2014年“growth hacking”会显著增长。Clune解释道，“growth hacking”是描述学习驱动营销这种新模式的术语——“是一种创意营销方式，通过分析思维和社会标准来出售商品并取得接触机会。”Clune将之描述为“一类营销活动，直接影响增长。” 她详细论述了营销该怎样成为产品开发周期的渐进式部分： </p>
+<blockquote> 
+ <p>营销并不独立于所创立的产品，从第一天起就是过程的一部分。它是产品的必要部分。</p>
+</blockquote>
+<p>当文章中被问及精益实践是否适用于所有初创企业时，Klinger的观点是，在已经有一定规模的企业中效果最好。Klinger觉得对小企业和巨型企业而言，同样的方法并不适用（这是种“船货崇拜”）。他认为，在那些肯花更多代价进行分析的企业和教育中，精益方法效果最好。他还写道“精益创业有助于企业去除中层管理决策”，使项目更高效而重视学习： </p>
+<blockquote> 
+ <p>需要外人接触或是为项目做决定时，项目质量和速度都会下降。精益创业提供了一种（理想状态下的）框架，通过数据压缩和验证，公司、可选项还有政策能被缩减到最简。</p>
+</blockquote>
+<p>Ries, Cooper和Vlaskovits的意见略有不同。Q&amp;A环节，他们讨论道，精益方法在很多初创企业中有效，并指出，企业中的精益创业法是针对那些恰好身在企业，并见证过精益创业为初创企业带来成功的那部分“早期接纳者”。是企业外基于精益创业法的迭代和学习的成功，带动了这部分企业内的热潮。 </p>
+<p>文中，Klinger建议我们根据当前状态落实开发-测量-认知的投入和形式。Metha提醒我们注意，为获得规模经济，迅速扩张是值得的。像Clune预测中所总结的，我们会继续找精益创业相关的成败示例： </p>
+<blockquote> 
+ <p>随着越来越多的不同工厂和企业尝试精益创业实践，会有越来越多失败的例子——因为文化，产品或者在尝试和测试后没有获得底线收益。或许精益创业法不会在每种情况下都有效，但还好。</p>
+</blockquote>
+<p><strong>查看英文原文：</strong><a href="http://www.infoq.com/news/2014/02/bestfit_for_lean_startup">Finding the Best-fit for Lean Startup Methodology</a></p>
+<hr />
+<p>感谢<a href="http://www.infoq.com/cn/author/杨赛">杨赛</a>对本文的审校。</p>
+<p>给InfoQ中文站投稿或者参与内容翻译工作，请邮件至<a href="mailto:editors@cn.infoq.com">editors@cn.infoq.com</a>。也欢迎大家通过新浪微博（<a href="http://www.weibo.com/infoqchina">@InfoQ</a>）或者腾讯微博（<a href="http://t.qq.com/infoqchina">@InfoQ</a>）关注我们，并与我们的编辑和其他读者朋友交流。</p><br><br><br><br><br><br></body></html>

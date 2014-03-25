@@ -1,111 +1,35 @@
-<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>为首次部署MongoDB做好准备：容量计划和监控</h3><p>如果你已经完成了自己新的MongoDB应用程序的开发，并且现在正准备将它部署进产品中，那么你和你的运营团队需要讨论一些关键的问题：</p>
-<ul> 
- <li>最佳部署实践是什么？</li> 
- <li>为了确保应用程序满足它所必须的服务层次我们需要监控哪些关键指标？</li> 
- <li>如何能够确定添加分片的时机？</li> 
- <li>有哪些工具可以对数据库进行备份和恢复？</li> 
- <li>怎样才能安全地访问所有新的实时大数据？</li> 
-</ul>
-<p>本文介绍了硬件选择、扩展、HA和监控。在查看详细信息之前，首先让我们处理一个最常见的问题：</p>
-<h2>部署MongoDB和部署RDBMS有什么不同？</h2>
-<p>你会发现MongoDB作为一个文档数据库，它和你已经熟悉的关系型数据库分享了很多同样的概念、操作、策略和过程。监控、索引、调整和备份等内容的流程和最佳实践可以应用到MongoDB。同时如果你想要开始自己的培训，那么可以从<a href="https://education.mongodb.com/">MongoDB大学</a>中获取到来自于开发者和DBA的免费在线课程。</p>
-<p>系统性能和容量规划是两个重要的主题，任何部署都需要处理这两个问题，无论是RDBMS还是NoSQL数据库都是如此。作为规划的一部分我们应该对数据卷（volume）、系统负载、性能（吞吐量及延迟时间）和容量利用建立基线。这些基线应该反映你对数据库在产品环境中执行的工作负载的期望，它们应该随着用户数、应用程序功能、性能SLA或者其他因素的变化定期地调整。</p>
-<p>基线将帮助你理解系统哪些时候是按照设计运行的，哪些时候可能会影响用户体验质量或者其他决定性系统因素的问题开始浮现。</p>
-<p>下面将会讨论关键的部署要素，包括硬件、扩展和HA，同时还会讨论为了维持最佳的系统性能你应该监控哪些内容。</p>
+<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>别闯进Hybrid App的误区</h3><p><strong>【引言】</strong>Hybrid App，一种开发模式，兼顾Web和Native的一种开发模式。有人说它把Web App扼杀在摇篮里，有人说它把Native App引向一个新阶段。我说，它是一把双刃剑，千万别闯进它的误区。本文是笔者在实践Hybrid App开发模式过程中总结出的一些经验教训，供读者参考。Hybrid App虽好，可万万不能仓促选择，盲目运用。</p>
+<p>智能手机日益普及，移动互联网乱战日趋白热化，开发一个应用早就不是技术圈热议的话题，iOS和Android上的App已经成了每个互联网产品的标配。“唯快不破”也是中被移动互联网人尊为铁律，快速迭代，高效开发，低成本上线是每一个App开发团队追求的目标。同时，随着HTML 5的不断升温和智能手机硬件性能的提高，Hybrid App的概念应运而生。这种“Native搭台，HTML 5唱戏”的Hybrid App开发模式一时间受到各个开发团队追捧，快速进入了大量开发团队，成为主流开发模式。</p>
+<p>Hybrid App优点众多，Web前端工程师0成本介入，不依赖版本的实时更新，快速实现跨平台需求，等等。而另一个方面，2012年Hybrid App的践行者Facebook决定大量弃用App中的HTML页面，转向更加Native化的方案。Facebook的这一举措也给Hybrid App方案的敲响了警钟，这似乎并不是一个完美的方案。</p>
+<p>本文主要跟大家分享一下我团队和个人在Hybrid App的实践中遇到的问题，提醒大家不要闯进Hybrid App的误区。</p>
+<h2><b>误区一：为了</b><b>HTML 5</b><b>而</b><b>Hybrid App</b><b>。</b><b></b></h2>
+<p>HTML 5在Hybrid App模式中是一个最常被提起的概念。HTML 5作为一个HTML 4.0.1和XHTML 1.0的升级版，基于旧版本有更强大的表现功能，并加入了Local Storage等技术，确实为Web页面提供了更大的想象空间和更多的可能性。但HTML 5处在目前的发展阶段，受到浏览器兼容性和手机硬件性能水平的影响，它所能提供的功能与Native仍然有很大差距。</p>
+<p>所以，我认为作为工程师要明确一款App采用Hybrid App模式的根本原因是什么。作为一款App其最根本的功能是满足使用者的需求，而并不是服务某项新技术。因此当决定采用Hybrid App去构建一款应用时，应该从应用本身功能特点和整个团队的开发资源配比统一考虑，是否有必要同时又有能力去驾驭一款“Native搭台，HTML唱戏”的Hybrid App。类似“HTML 5的时代已经到来，如果我们不这么做就变土鳖了，错过这场技术革新的大潮，终将被这个时代所淘汰”的话真不是一个有责任心的工程师应该发出的声音。</p>
 <div id="lowerFullwidthVCR"></div>
-<h3>清楚自己的工作集</h3>
-<p>在为部署MongoDB优化硬件预算的时候，RAM应该是或者接近于列表的第一位。</p>
-<p>为了实现低延迟的数据库操作MongoDB中广泛使用了RAM。在MongoDB中，所有的数据都是通过内存映射文件读取和操作的。从内存中读取数据是使用纳秒来度量的，而从磁盘中读取数据则是使用毫秒度量的，所以从内存中读取数据几乎比从磁盘中读取要快了十万倍。</p>
-<p>在正常操作期间最频繁访问的数据和索引的集合称为工作集，在理想的情况下它们应该在RAM中。工作集可能是整个数据库的一小部分，例如最近的事件所关联的应用程序数据或者最常访问的热门产品。</p>
-<p>MongoDB试图访问数据时发生的页面错误并不会被加载到RAM中。如果有空闲内存，那么操作系统将定位到磁盘上的页面并将它们直接加载到内存中。但是如果没有空闲内存，那么操作系统必须将内存中的一个页面写入磁盘，然后将被请求的页面读取到内存中。这个流程比访问已经存在于内存中的数据要慢。</p>
-<p>有些操作可能会在不经意间从内存中清除大量的工作集，这样会对性能产生严重影响。例如，对于一个浏览数据库中所有文档的查询而言，如果数据库比服务器上的RAM大，那么将会导致文档被读入内存而工作集被写出到磁盘。在项目的模式设计阶段为自己的查询定义合适的索引将会极大地降低这种风险发生的可能性。MongoDB<a href="http://docs.mongodb.org/manual/reference/method/cursor.explain/">说明</a>操作能够为查询计划和索引的使用提供信息。</p>
-<p>MongoDB<a href="http://docs.mongodb.org/manual/reference/command/serverStatus/">服务状态</a><a href="http://docs.mongodb.org/manual/reference/command/serverStatus/">命令</a>中包含了一个有用的输出：<a href="http://docs.mongodb.org/manual/reference/command/serverStatus/#server-status-workingset">工作集</a><a href="http://docs.mongodb.org/manual/reference/command/serverStatus/#server-status-workingset">文档</a>，它提供了一个MongoDB实例工作集的估算大小。运营团队可以按照给定的时间跟踪实例访问的页面数，包括工作集中最旧的文档到最新的文档之间的运行时间。通过跟踪这些指标我们能够发现什么时候工作集会接近现在的RAM限制从而积极地采取行动确保系统是可扩展的。</p>
-<p><a href="http://mms.mongodb.com/">MongoDB管理服务</a>和<a href="http://docs.mongodb.org/manual/reference/program/mongostat/">mongostat</a>能够帮助用户监控内存的使用情况，下面我们将会对此进行详细地讨论。</p>
-<h3>存储和磁盘I/O</h3>
-<p>MongoDB不需要共享存储（例如存储区域网络）。MongoDB能够使用本地附加的存储和固态硬盘（SSD）。</p>
-<p>MongoDB中的大部分磁盘访问模式并没有顺序属性，这样做的结果便是客户可以通过使用SSD获得巨大的性能收益。我们已经观察到使用SATA SSD和PCI获得的良好结果和强大的性能。商业SATA旋转驱动器可以媲美成本更高的旋转驱动器，这得益于MongoDB的非顺序访问模式：应该更有效地使用预算将其用于更多的RAM或者SSD上，而不是更多地用于昂贵的旋转驱动器上。</p>
-<p>在数据文件受益于SSD的同时，MongoDB的日记文件由于其自身的高顺序的写属性成为了快速常规磁盘的一个很好的候选。</p>
-<p>大多数MongoDB部署应该使用RAID-10。RAID-5和RAID-6没有提供足够的性能。RAID-0提供了很好的写性能，但是读性能有限，容错能力也不足。部署的MongoDB可以通过副本集（下面将会讨论）提供很强的数据可用性，同时用户应该考虑使用RAID和其他因素满足想要的SLA可用性。</p>
-<p>虽然我们应该设计MongoDB系统让它的工作集适合于内存，但是磁盘I/O依然是一个关键的性能考虑。MongoDB会定期地将写操作刷新到磁盘并提交到日记，所以在写负载较重的时候基础的磁盘子系统可能会变得不堪重负。iostat命令可以用于显示高磁盘利用率和过多的写队列。</p>
-<h3>CPU选择——速度还是内核？</h3>
-<p>MongoDB的性能通常不会绑定到CPU上。因为MongoDB很少会遇需要利用大量内核的工作负载，比起时钟速度较慢的多核服务器最好的选择是有更快的时钟速度。</p>
-<p>无论是什么系统，测量CPU的利用率都是非常重要的。如果观察到CPU的利用率很高但是并没有出现磁盘饱和或者页面错误这样的其他问题，那么系统中可能会存在不寻常的问题。例如，一个存在无限循环的MapReduce工作或者一个没有建立良好索引就对工作集中的大量文档进行排序和过滤的查询都可能会导致CPU利用率的飙升，但是它们却不会引发磁盘系统问题或者页面错误。用于监控CPU利用率的工具将在下面介绍。</p>
-<h3>扩展数据库——何时扩展和如何扩展？</h3>
-<p>MongoDB通过一种称为<a href="http://docs.mongodb.org/manual/core/sharding/">Sharding</a>的技术提供了水平扩展能力。Sharding能够在多个物理分区（称为片）之间分发数据。Sharding可以让MongoDB的部署解决单个服务器的硬件限制而不需要增加应用程序的复杂性，解决的硬件限制包括RAM和磁盘I/O的瓶颈。</p>
-<p><img width="600" _p="true" _href="img://null" alt="" src="http://infoqstatic.com/resource/articles/mongodb-deployment-monitoring/zh/resources/1212030.jpg" /></p>
-<p><b>MongoDB</b><b>自动分片和应用程序的透明度</b></p>
-<p>在系统资源变得有限之前实现分片是非常容易的，因此容量规划和主动监控在需要成功地扩展应用程序时是非常重要的元素。</p>
-<p>在下面的场景中用户应该考虑部署一个分片的MongoDB集群：</p>
-<ul> 
- <li><b>RAM</b><b>限制：</b>系统活动工作集的大小很快就会超过系统RAM的最大容量。</li> 
- <li><b>磁盘</b><b> I/O</b><b>限制：</b>系统有大量的写活动，但是操作系统写数据的速度不够快，无法满足需求；同时/或者I/O带宽限制了数据写入磁盘的速度。</li> 
- <li><b>存储限制：</b><i> </i>数据集接近或者超过了系统中的单个节点的存储容量。</li> 
-</ul>
-<p>Sharding的目标之一就是在多台服务器之间一致地分发数据。如果服务器资源的利用率并不是近似地相等，那么可能会存在引发调度错误的潜在问题。例如，选择一个糟糕的分片键可能会导致不平衡的数据分发。在这种情况下，即便不是所有的但是大部分查询也会被导向到正在管理数据的那个单独的MongoDB。</p>
-<p>另外，MongoDB可能会试图重新分发文档从而在服务器之间实现更加理想的平衡。虽然重新分发最终会实现一种更加令人满意的文档分发，但是有大量与重新平衡数据相关的工作，这些工作本身就有可能会产生影响导致无法实现预期性能的SLA。</p>
-<p>通过运行<a href="http://docs.mongodb.org/manual/reference/method/db.currentOp/">db.currentOp()</a>命令，你将能够了解集群现在正在执行哪些工作，包括跨分片的文档再平衡。</p>
-<p>为了确保数据能够在集群中的所有分片间均匀地分发，选择一个优秀的分片键是非常重要的。MongoDB文档中包含了一个关于<a href="http://docs.mongodb.org/manual/tutorial/choose-a-shard-key/">如何选择优秀分片键的教程</a>。</p>
-<h3>MongoDB复制集的高可用性</h3>
-<p>MongoDB使用本地复制维护<a href="http://docs.mongodb.org/manual/replication/">复制集</a>之间的多个数据副本。复制集可以通过发现错误（服务器、网络、OS或者数据库）和自动化故障修复避免停机时间。推荐的做法是：所有的MongoDB部署都应该配置复制。</p>
-<p>（单击放大图片）</p>
-<p><a href="http://infoqstatic.com/resource/articles/mongodb-deployment-monitoring/zh/resources/1212031.jpg"> <img width="600" _p="true" _href="img://null" alt="" src="http://infoqstatic.com/resource/articles/mongodb-deployment-monitoring/zh/resources/1212031.jpg" /></a></p>
-<h2>使用MongoDB复制集自恢复</h2>
-<p>对主节点数据库的修改操作会通过名为<i>oplog</i>的日志被复制到其他二级节点上。oplog包含了一个排序的幂等操作的集合，该集合中的操作会在二级节点上重放。oplog的大小是可配置的，默认是可用磁盘空间的5%。</p>
-<p><a name="OLE_LINK6"></a><a name="OLE_LINK5">正如下面的图表所阐述的，可以通过定位副本为服务器、机架、数据中心故障和网络分区提供容错性。</a></p>
-<p>（单击放大图片）</p>
-<p><a href="http://infoqstatic.com/resource/articles/mongodb-deployment-monitoring/zh/resources/1212032.jpg"> <img width="600" _p="true" _href="img://null" alt="" src="http://infoqstatic.com/resource/articles/mongodb-deployment-monitoring/zh/resources/1212032.jpg" /></a></p>
-<p>复制延迟是作为正常运行的一部分来监控的。它表示的是将主节点上的一个写操作复制到二级节点上所花费的时间。一定的延迟是正常的，但是如果复制延迟增长，则可能会引发问题。复制延迟产生的典型原因包括网络延迟、连接问题和磁盘延迟（例如二级节点的吞吐量劣于主节点）。</p>
-<p>复制状态和复制延迟可以通过<a href="http://docs.mongodb.org/manual/reference/command/replSetGetStatus/"><b>replSetGetStatus</b></a>命令重新恢复。</p>
-<h3>日志概述</h3>
-<p>作为所有部署的一部分，应该监控应用程序和数据库的日志以便发现错误并查看其他的系统信息。将应用程序和数据库的日志关联起来是非常重要的，因为这样才能决定应用程序中的活动最终是否需要对系统中的其他问题负责。例如，用户写入峰值可能会增加写入MongoDB的容量，这反过来可能会压垮下面的存储系统。如果没有应用程序和数据库日志的关联，那么可能要花费更多的时间才能够确定写入容量的增长是应用程序的问题而不是运行在MongoDB中的某些进程的问题。</p>
-<h3>MongoDB 监控工具</h3>
-<p>MongoDB包含了各种监控工具，让你能够积极地管理系统的运行和性能。</p>
-<p>MongoDB管理服务 (MMS)</p>
-<p><a href="http://mms.mongodb.com/">MongoDB管理服务（MMS）</a>提供了云监控和备份服务，帮助用户优化集群、解决性能问题、减轻运维风险。MMS备份服务将在以后的文章中讨论。</p>
-<p>MMS监控支持图表、自定义仪表盘和自定义警告。MMS仅需要最低限度的安装和配置。用户在所有的<b>MongoDB</b>实例上安装一个本地代理，该代理会跟踪与数据库使用情况相关的数百个关键的健康指标，包括：</p>
-<ul> 
- <li>操作数（Op Counters）—每秒钟执行的操作的数量</li> 
- <li>内存（Memory）—MongoDB正在使用的数据量</li> 
- <li>锁百分比（Lock Percent）—写锁消耗时间的百分比</li> 
- <li>后台刷新（Background Flush）—将数据刷新到磁盘消耗的平均时间</li> 
- <li>连接（Connections）—MongoDB当前打开的连接的数量</li> 
- <li>队列（Queues）—等待运行的操作的数量</li> 
- <li>页面错误（Page Faults）—磁盘的页面错误数</li> 
- <li>复制（Replication）—主节点操作日志的长度以及复制延时</li> 
- <li>日志（Journal）—写入日志的数据量</li> 
-</ul>
-<p>（单击放大图片）</p>
-<p><a href="http://infoqstatic.com/resource/articles/mongodb-deployment-monitoring/zh/resources/1212033.jpg"> <img width="600" _p="true" _href="img://null" alt="" src="http://infoqstatic.com/resource/articles/mongodb-deployment-monitoring/zh/resources/1212033.jpg" /></a></p>
-<p>这些指标会被安全地报告给MMS服务，告诉它它们是在哪里处理、聚合、通知的，并在浏览器中可视化显示。用户能够容易地根据各种性能指标了解他们集群的健康状况。</p>
-<h3>硬件监控</h3>
-<p><a href="http://munin-monitoring.org/">Munin node</a>是一个开源软件程序，它可以监控硬件并报告磁盘和RAM的使用情况这样的指标。MMS能够收集Munin node产生的这些数据，并在MMS仪表盘中将这些数据和其他数据一起展现给用户。因为每一个应用程序和部署都是唯一的，所以用户应该为磁盘利用率的峰值、网络活动的主要变化和平均查询长度/响应时间的增长创建警报。</p>
-<h3>数据库分析工具</h3>
-<p>MongoDB提供了一个<a href="http://docs.mongodb.org/manual/tutorial/manage-the-database-profiler/">性能分析工具</a>，该工具能够记录数据库操作相关的细粒度信息。分析工具可以记录所有事件的信息，也能够只记录那些持续时间超出了配置阈值的事件的信息。分析数据存储在一个固定集合中，用户能够很容易地从中搜索相关的事件——查询这个集合可能比尝试着去解析日志文件更加容易。</p>
-<h3>其他的监控工具</h3>
-<p>有各种各样的监控工具让你能够从其他的方面深入理解MongoDB系统。</p>
-<ul> 
- <li><a href="http://docs.mongodb.org/manual/reference/program/mongotop/"><b>mongotop</b></a> 是随MongoDB提供的一个工具，它能够跟踪并报告一个MongoDB集群当前的读、写活动。</li> 
- <li><a href="http://docs.mongodb.org/manual/reference/program/mongostat/"><b>mongostat</b></a> 是随MongoDB提供的另一个工具，它为所有的操作提供了一个全面概览，包括更新、插入的计数，页面错误、索引的丢失情况以及很多其他的关系到系统健康的重要指标。</li> 
- <li>Iostat、vmstat、netstat和sar这样的Linux工具也能为深入探索MongoDB系统提供有价值的信息。</li> 
- <li>对于Windows环境上的用户而言，性能监控器（Performance Monitor，一个Microsoft管理控制台单元）是一个非常有用的工具，可以用来测量各种指标。</li> 
-</ul>
-<p>如果想要获取更多与监控工具和监控内容相关的信息，可以查看MongoDB文档中的<a href="http://docs.mongodb.org/master/administration/monitoring">监控数据库系统</a>页面。</p>
-<h3>配置MongoDB</h3>
-<p>用户应该将配置选项存储到MongoDB的配置文件中。sysadmins能够通过这种方式在整个集群之间实现一致性的配置。配置文件支持MongoDB命令行所支持的所有选项。安装和升级应该通过流行的工具（例如Chef和Puppet）自动完成，同时MongoDB社区还提供并维护了这些工具的示例脚本。</p>
-<p>一个基础的MongoDB配置文件类似于下面的内容：</p>
-<ul> 
- <li><b>fork = true</b></li> 
- <li><b>bind_ip = 127.0.0.1</b></li> 
- <li><b>port = 27017</b></li> 
- <li><b>quiet = true</b></li> 
- <li><b>dbpath = /srv/mongodb</b></li> 
- <li><b>logpath = /var/log/mongodb/mongod.log</b></li> 
- <li><b>logappend = true</b></li> 
- <li><b>journal = true</b></li> 
-</ul>
-<p>你能够通过文档了解到与<a href="http://docs.mongodb.org/manual/administration/configuration/">MongoDB配置选项</a>相关的更多内容。在MongoDB文档<a href="http://www.mongodb.org/display/DOCS/Production+Notes">产品说明</a>页面上还维护着针对操作系统、文件系统、存储设备和其他系统相关主题特定配置的最新建议。</p>
-<h2>结论</h2>
-<p>在本文中我们介绍了哪些用于部署关系型数据库的概念、操作和流程可以被直接地应用到MongoDB上，同时还介绍了硬件选择和部署及监控的最佳实践。另外，有关于所有这些主题的详细讨论可以从<a href="http://info.10gen.com/rs/10gen/images/10gen-MongoDB_Operations_Best_Practices.pdf">MongoDB操作指南</a>（一个.pdf文件）中获取。</p>
-<h2>关于作者</h2>
-<p><img _p="true" _href="img://null" alt="" style="float: left; margin-right: 10px" src="http://infoqstatic.com/resource/articles/mongodb-deployment-monitoring/zh/resources/1212034.JPG" /><b>Mat Keep</b> (@matkeep) 是MongoDB产品营销团队的一员，负责为MongoDB的产品和服务构建愿景、定位和内容，同时也负责对市场趋势和客户需求进行分析。在就职于MongoDB之前，Mat是Oracle公司的产品管理总监，负责MySQL数据库在Web、电信行业、云和大数据方面的应用。在这之后他还在技术供应商和面向最终用户的公司中从事过一系列的工作，包括销售、商业开发与分析、程序员。</p>
-<p><b>查看英文原文</b>：<a href="http://www.infoq.com/articles/mongodb-deployment-monitoring">Preparing for Your First MongoDB Deployment: Capacity Planning and Monitoring</a></p><br><br><br><br><br><br></body></html>
+<h2><b>误区二：忽略关键因素</b><b></b></h2>
+<p>在谈到Hybrid App的场合我们更多提及的是它有诸多优点，如何架构一个Hybrid App，怎么让Web和Native和谐共处，然而Web开发中会被忽略的一些因素少被提起，这些因素又恰恰经常是一个Web页面能否正常运行在App中的决定性因素。</p>
+<p>Web开发是基于PC的一种开发模式，开发者使用PC浏览器模拟App中的Web View进行调试。PC浏览器与手机Web View的区别是巨大的，能支配的CPU资源，最大占有的内存，运行的网络环境，鼠标操作与触控操作的区别，浏览器对CSS/JS的解析和对事件处理，等等。</p>
+<p>App工程师，无论是iOS还是Android，最敏感的一个问题莫过于内存管理，而在Web开发则对这个问题没有过多注意。这就经常导致同一个功能界面Native实现中会通过一些技术手段，把内存容量控制在操作系统允许的范围内保证App正常运行。如果以Web方式接入App的页面没有一个明确的标准和严格的验收机制，相应的Web实现则不会过多考虑这方面的问题，而且浏览器也没有给前端工程师提供足够的Api支持处理内存问题，导致在某些条件下造成App无法正常运行，甚至Crash。</p>
+<p>同样的问题会出现在网络环境方面，虽然现在wifi覆盖越来越广，3G网络也日益普及，但App运行的网络环境与PC相比仍然有着巨大差距，wifi和蜂窝网络的切换，基站变化等诸多因素都会导致网络间歇性断开。Web开发总是默认有一个稳定的网络环境，因此在对于不稳定网络环境问题的处理上也有所欠缺。没有明确的对于低速网络或不稳定网络访问的处理，在很多情况下这些页面也会非常不给面子。</p>
+<h2><b>误区三：富交互导致体验差</b><b></b></h2>
+<p>这里所谓的体验问题一分为二：一是与手机平台默认交互习惯不一致的体验，二是与同样功能Native界面存在的体验差距。</p>
+<p>无论在Android还是iOS平台上，都有各自的一套交互习惯，包括视觉风格，界面切换，操作习惯等，与Web习惯完全不同。如果使用Web方式开发富交互的页面，或多页面功能就会出现这样的问题。</p>
+<p>以iOS界面切换为例，系统风格是新界面自右向左推入，后退时界面自左向右推出，而旧界面保持状态。Web开发的默认习惯则是刷新页面，无论新载入页面或是后退，都会对页面进行刷新。因此使用Web模式开发多界面功能就面临这样的交互习惯差异，造成体验上的损失。当然Web方式也可模拟Native的交互方式，但这样的模拟首先提高了开发成本，有悖于最初的高效原则，从效果上看，也很难达到Native的流畅性。</p>
+<p>另一个方面，也是上述提到的与Native相比，同样的功能在性能上存在巨大差距。Web界面上JS对HTML Node的操作需要消耗大量的CPU资源，手机CPU的性能还不能与PC相提并论，就算在智能手机之间，硬件水准也参差不齐，一个可以在iPhone 5上流畅运行的界面，跑到三星S III上很可能就卡住不动了。所以我们经常可以发现一些富交互页面上的操作无法达到令人满意的流畅度，而流畅度也正是用户评价一款App优劣的最直观因素。</p>
+<h2><b>误区四：跨平台</b><b></b></h2>
+<p>一次开发，跨平台运行是Web的优势，这也是很多App采用Hybrid模式的重要原因之一。兼容性问题在Web开发过程中往往不被关注，但当下智能手机的软硬件版本众多，兼容性绝对是一个不容忽视的问题。</p>
+<p>以Android手机为例，诸多主流品牌都有各自定制过的操作系统，浏览器内核对JS和CSS的解析，事件处理等方面都存在区别。以HTC One为例重叠在一起的层在某些情况下会对点击事件透传，而其他多数平台则不存在这个问题。并且目前移动平台的开发框架还没有完全成熟，可以很好的解决兼容性问题。所以就要求开发者在开发过程中要对兼容性做充分测试，对于某些特殊版本进行特殊处理。</p>
+<p>即使在相对统一的iOS平台，不同版本之间也存在较大差异。例如：在iOS 4.x版本中CSS甚至不支持position fix的属性，4英寸屏幕的设备无法很好的支持apple-mobile-web-app-capable属性，等等。</p>
+<h2><b>误区五：交互一致性。</b><b></b></h2>
+<p>交互一致性是一个非常容易被误读的概念，“一致性”经常被理解为同一个应用在各种平台和场景下要有一致性的体验。我认为在移动平台开发过程中，“一致性”应该是App视觉和交互习惯与其运行平台的习惯保持一致。而Web开发“一次开发，跨平台运行”的特性与此存在一定程度上的冲突。</p>
+<p>以“返回上一页面”的操作为例，在iOS平台上在页面顶部始终存在一个44像素高的导航栏，左侧有一个返回按钮用于返回操作，而Android平台则习惯使用设备提供的返回键操作。这个返回按钮在iOS平台可以通过绝对地址的方式连接到任何其他页面，而在Android平台返回按钮和设备的返回键则可能指向不同的位置。</p>
+<p>例如这样的一个流程：首页-&gt;列表-&gt;筛选-&gt;刷新过的列表，此时的返回操作被期望是导向首页，则页面上的返回按钮可以通过绝对链接的方式实现，而Android设备的返回键则只能返回上一个筛选页面，再次返回是筛选前的列表页。</p>
+<p>Hybrid App方案是一把双刃剑，一方面它平衡了Native App和Web页面的优缺点，一定程度上解决了Native App开发过程中迭代慢，版本依赖，Native开发资源不足的问题，但另一个方面过度依赖Hybrid方案会造成Web前端开发成本快速上升，甚至造成App整体体验下降，甚至造成功能缺失。</p>
+<p>不要为了Hybrid而Hybrid，控制好方案中Native与Web的边界。</p>
+<h2>扩展阅读</h2>
+<p>较早Mobtest针对Facebook的iOS App专门做的一片评测文章，阐述了使用大量HTML页面的App出现的问题：<a href="http://blog.mobtest.com/2012/05/heres-why-the-Facebook-ios-app-is-so-bad-uiwebviews-and-no-nitro/">http://blog.mobtest.com/2012/05/heres-why-the-Facebook-ios-app-is-so-bad-uiwebviews-and-no-nitro/</a></p>
+<p>资深开发者@李秉骏 在InfoQ发表的《Hybrid App实战》，阐述了Hybrid模式的优势与劣势，并简单介绍了开发Hybrid App所需的技术储备，供读者参考。：<a href="http://www.infoq.com/cn/articles/hybrid-app-development-combat">http://www.infoq.com/cn/articles/hybrid-app-development-combat</a></p>
+<p>资深开发者@唐巧 较早对Hybrid App主流框架PhoneGap的分析文章，笔者非常同意对PhoneGap框架的态度，PhoneGap虽好，可不要贪杯哟：http://blog.devtang.com/blog/2012/03/24/talk-about-uiwebview-and-phonegap/</p>
+<hr />
+<p>感谢<a href="http://www.infoq.com/cn/author/李永伦">李永伦</a>对本文的审校。</p>
+<p>给InfoQ中文站投稿或者参与内容翻译工作，请邮件至<a href="mailto:editors@cn.infoq.com">editors@cn.infoq.com</a>。也欢迎大家通过新浪微博（<a href="http://www.weibo.com/infoqchina">@InfoQ</a>）或者腾讯微博（<a href="http://t.qq.com/infoqchina">@InfoQ</a>）关注我们，并与我们的编辑和其他读者朋友交流。</p><br><br><br><br><br><br></body></html>

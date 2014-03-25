@@ -1,89 +1,60 @@
-<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>超越数据挖掘</h3><p><img _p="true" _href="img://null" alt="" style="float: left; margin-right: 10px" src="http://infoqstatic.com/resource/articles/beyond-data-mining/zh/resources/1220000.jpg" />本文最初发表在 <a href="http://www.computer.org/portal/web/computingnow/software"><i>IEEE </i><i>软件</i></a><strong><i> </i></strong><strong><i>杂志上，由</i></strong><i>InfoQ &amp; IEEE</i><i>计算机学会共同为您呈现。</i></p>
-<p>预测建模社区（predictive modeling community）将数据挖掘应用到来自软件项目的工件上。这项工作一直以来都非常成功，我们知道如何为软件的影响和不足构建预测模型，还能为学习“开发人员”的编程模式这样的任务构建预测模型（参见<a href="http://menzies.us/pdf/13idea.pdf">本文的扩展版本 </a>了解详情）。</p>
-<div style="clear:both"></div>
-<p>那就是说，为了对业内从业人员真正产生影响，我们需要改变预测建模社区的关注点。对数据而言，我们花在算法挖掘上的时间太多了，可实际上战场已经转移到我称之为景观挖掘（landscape mining）的东西上去了。为了给业内从业人员以支持，我们正准备转向我称之为决策挖掘，继而是讨论挖掘的东西上去。</p>
-<p>本文对图1中所示的四种挖掘器做了比较和对比：</p>
+<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>LinkedIn是如何使用Apache Samza的？</h3><p>Apache Samza是LinkedIn最近开源的一款流处理器。在题为《<a href="http://www.infoq.com/presentations/samza-linkedin">Samza：LinkedIn的实时流处理</a>》的演讲中，Chris Riccomini探讨了<a href="http://samza.incubator.apache.org/">Samza</a>的功能集，它如何与YARN和Kafka集成，LinkedIn如何用它，以及其未来路线图是什么。</p>
+<p>发生在LinkedIn的大部分处理是RPC样式的数据处理，这种情况需要非常快速的响应。在响应延迟谱的另一端是批处理，此处，他们大量使用了Hadoop。Hadoop处理和批处理通常发生在事后，经常晚几个小时。</p>
+<p>这样，在异步RPC处理和Hadoop样式的处理之间就出现了空白。对于前者，用户正积极等待响应；而对于后者，尽管已经努压缩，但仍然需要很长的时间才能运行完。</p>
+<p><img src="http://infoqstatic.com/resource/articles/linkedin-samza/zh/resources/0302002.png" width="600" _href="img://null" _p="true" alt="" /></p>
+<p>这个空白就是Samza适用的地方。我们可以在此处对数据进行异步处理，但也不能等待几个小时。操作时间通常以毫秒到分钟为单位。我们的想法是相对快速地对数据进行处理，并将其返回到需要它的地方，不管是下游系统，还是某个实时服务。</p>
+<p>Chris谈到，目前，在工具和环境方面，对流处理的支持最差。</p>
+<p>对于这种类型的处理，LinkedIn看到了许多应用场景——</p>
 <ul> 
- <li>算法挖掘器探索的是数据挖掘算法参数的调整。</li> 
- <li>景观挖掘器揭示了决策空间的形状。</li> 
- <li>决策挖掘器对如何最有效地改变一个项目发表意见。</li> 
- <li>讨论挖掘器帮社区针对不同的决策辩论取舍。</li> 
+ <li>当人们进入另一家公司、当他们喜欢一篇文章、当他们加入一个团体等等情况下进行新闻推送显示。</li> 
 </ul>
-<p>算法和景观挖掘是更侧重于研究的活动，要探索挖掘器的内部细节。而决策和讨论挖掘更侧重于从业人员，因为他们关注的是社区如何使用结论。</p>
-<h2>算法挖掘</h2>
-<p>尽管很少有人指出，但预测建模最初的前提是预测应该能够指导软件管理，换句话说，曾几何时，预测的目的是为了决策。</p>
-<div id="lowerFullwidthVCR"></div>
-<p>可悲的是，最初的目标看起来已经被遗忘了。这一领域中有太多的研究人员被困在一个怪圈中，发表那种只用很少时间探索数据，却把大把的时间用在数据算法上的论文。这些论文大多数都把重点放在探索算法的配置项上，而不是如何反映底层的数据。最近有论文指出这种算法挖掘收获甚微，因为通过这种方式得到的“提升”充其量也只能算是边缘化的。比如说，对于工作量估算和缺陷预测而言，比较简单的数据挖掘器跟更精巧的比起来，能达到同样，甚至更好的效果。<sup>1,2</sup></p>
-<h2>景观挖掘</h2>
-<p>算法挖掘是“跃了再看”，研究员把算法扔到数据上，然后看结果是什么。第二种方式是“先看再跃”，挖掘数据找出可能的推理空间，然后再跟学习器一起飞跃。这就是数据的“景观”。</p>
-<p><img width="600" _p="true" _href="img://null" src="http://infoqstatic.com/resource/articles/beyond-data-mining/zh/resources/1220001.png" alt="" /></p>
-<p>图1. 从左到右的四种挖掘代表着从过去到将来</p>
-<p>考虑下W1案例推理(CBR)系统，也被称为“达不溜（Dub-ya）”或“决策者”。<sup> 3</sup> CBR 通过侦测最近的相似案例做出结论。为了把W1做成景观挖掘器（我们会称之为W2），我们可以把训练数据聚类到一棵集群树中，其中的子节点包含的是父节点的子集群。然后用一个特性选择器遍历数据，拒绝那些其值无法区分出集群的特性。说得具体一点，就是我们检查整个集群中所有属性值的熵，把熵最高的那些删掉。最后我们可以用叶集群的中位数代替叶集群。这样特性的结果空间和样本非常小：几十个特性只剩下几个，几百个样本最终是每个集群中只有一个。</p>
-<p>因为推断现在被限定到集群的子树上了（现在叶节点中只有一个代表性样本），所以我们可以迅速构建出很多针对特定情境的局部模型。</p>
-<p>W2有两个重要特点。首先，它是景观挖掘器，映射出数据的不同区域，让我们可以在其中构建不同的模型。其次，尽管这些想法合在一起很独特，但W2的每一部分都是预测建模社区熟知的工具。那就是说，让预测建模社区可以重新调整工具，对准一个有趣的新目标。</p>
-<h2>决策挖掘</h2>
-<p>最近在ICSE 2012上有一个关于软件分析的演讲，行业从业人员回顾了数据挖掘技术的状态。<sup>4</sup> 演讲嘉宾指出：“预测一切都好，但决策制定怎么样呢？” 数据挖掘之所以有用，是因为它侧重于对具体问题的调查，但数据挖掘器处于更高层的决策流程的子过程中。</p>
-<p>为了把W2转成决策挖掘器（我们称之为W3），我们添加了对照组学习。分类能给出数据的不同区域，而对照组学习能给出这些区域的不同之处。对照组要比分类规则小得多，特别是当它们是作为某些决策树过程的后续处理结果而生成的时。在决策树上层学习的对照组倾向于消除大部分的可能性，只选很少的类别，它们用较少的额外限制达成这一效果。</p>
-<p>W3所用的集群跟W2找到的一样，但它会在其上应用嫉妒原则。每个集群找到它最渴望找到的最近相邻集群，比如对于工作量估算而言，项目的相邻集群是构建起来更廉价的集群。然后W3会在相邻集群上应用一个对照组学习，以便在那个集群中找出达成那些更优结果的最佳实践。最近在IEEE 软件工程期刊的一篇论文里，我指出这种基于嫉妒的“局部学习”比泛泛地从所有数据中学习得到的模型更好。<sup>5</sup></p>
-<p>W3给我们的经验跟W2一样：重构我们现有的工具能够得到新型的、创新的预测建模方式。</p>
-<h2>讨论挖掘</h2>
-<p>毕加索曾经说过“计算机很傻；它们只能告诉你答案。”讨论挖掘器不傻；它们知道，尽管预测和决策很重要，但得出那些结论的过程中产生的问题和线索也很重要。在我看来，讨论挖掘是预测建模社区即将面临的巨大挑战。在这个到处充斥着数字的新世纪，这样的讨论工具将成为必需品。没有它们，人类将无法浏览和利用不断增长的、可以随时获取的数字化信息。</p>
-<p>从某种意义上来说，讨论挖掘跟Web的关系非常紧密：</p>
+<p>新闻无法接受延时传播，如果使用Hadoop进行批量计算，那么响应时间可能是几个小时，甚至是一天之后。从新闻中非常快速地获取趋势分析文章很重要。</p>
 <ul> 
- <li>Web是用来做信息传输和访问的，主要目的是新信息的快速分享。</li> 
- <li>如果Web是讨论挖掘器，它很可能可以即时查询每个web页面，找到其它观念相似（或相左）的页面，找到之间的对照组，然后是赞同或驳斥的页面，然后运行查询，以便帮读者评估对照组中每个条目的合理性。</li> 
+ <li>广告——获取相关广告，以及跟踪和监控广告显示、点击次数和其它指标</li> 
+ <li>复杂监控——允许执行像“过去一分钟里最慢的五个页面”这样的复杂查询。</li> 
 </ul>
-<p>需要注意的是，目前大多数预测建模研究都算不上是讨论挖掘器，因为通常来说，大多数文献还在创建模型的方法中挣扎，我们就等着将来看模型的更新换代吧。 </p>
-<table cellspacing="1" cellpadding="0" border="0"> 
- <tbody> 
-  <tr> 
-   <td width="8%"> <p><strong>级别</strong></p> </td> 
-   <td width="9%"> <p><strong>是什么</strong></p> </td> 
-   <td width="42%"> <p><strong>任务</strong></p> </td> 
-   <td> <p><strong>用途</strong></p> </td> 
-  </tr> 
-  <tr> 
-   <td width="8%"> <p>0</p> </td> 
-   <td width="9%"> <p>做</p> </td> 
-   <td width="42%"> <p>预测, 决定</p> </td> 
-   <td> <p>回归、分类、近邻推理</p> </td> 
-  </tr> 
-  <tr> 
-   <td width="8%"> <p>1</p> </td> 
-   <td width="9%"> <p>说</p> </td> 
-   <td width="42%"> <p>汇总, 规划, 描述</p> </td> 
-   <td> <p>实例分区, 特征选择, 对照集</p> </td> 
-  </tr> 
-  <tr> 
-   <td width="8%"> <p>2</p> </td> 
-   <td width="9%"> <p>反应</p> </td> 
-   <td width="42%"> <p>权衡, 封装, 诊断, 监测</p> </td> 
-   <td> <p>聚类, 多目标优化, 异常检测</p> </td> 
-  </tr> 
-  <tr> 
-   <td width="8%"> <p>3</p> </td> 
-   <td width="9%"> <p>分享</p> </td> 
-   <td width="42%"> <p>隐私保护、数据压缩、新旧规则整合、</p> <p>找出竞争模型之间的变化量并进行辩论</p> </td> 
-   <td> <p>对照组学习, 迁移学习</p> </td> 
-  </tr> 
-  <tr> 
-   <td width="8%"> <p>4</p> </td> 
-   <td width="9%"> <p>规模</p> </td> 
-   <td width="42%"> <p>迅速完成上述全部任务</p> </td> 
-   <td> <p>?</p> </td> 
-  </tr> 
- </tbody> 
-</table>
-<p></p>
-<p><strong>表一</strong><strong> </strong><strong>讨论挖掘器的内部</strong></p>
-<p>有一个关于讨论挖掘器的开放性问题很有意思，就是应该如何评估它们。在讨论挖掘中，模型的目标是找到它自身的缺陷，并用更好的东西替代，这让我想起了苏珊&middot;桑塔格说过的话：“只有能够毁灭问题的答案才是好答案。”换句话说，我们不应该用准确性、回顾或精确程度评估这样的模型，而是应该用它们所造成的受众参与程度来评估。不，我也不知道该怎么做，但发现有这样清晰和重要的问题等着我们去解决，就会觉得很兴奋。</p>
-<p>从工程原理的角度来看，表一给出了讨论挖掘器的内部构造。注意，预测建模社区已经掌握了要组合成这种或其它新的挖掘器的各个部分。</p>
-<p>我们必须继续前进，并且我们能做到。算法挖掘已经足够好了：现在该去做别的了。行业从业人员真的不关心算法的内部细节，也不在乎数据如何分区。他们更关心用什么工具帮他们推动社区针对各种可能的决策展开辩论。</p>
-<h2>参考资料</h2>
-<p><sup>1</sup> K. Dejaeger et al., &quot;Data Mining Techniques for Software Effort Estimation: A Comparative Study,&quot; IEEE Trans. Software Eng., vol. 28, no. 2, pp. 375-397. <br /> <sup>2</sup> T. Hall et al., &quot;A Systematic Review of Fault Prediction Performance in Software Engineering,&quot;IEEE Trans. Software Eng., vol. 38, no. 6, pp. 1276-1304. <br /> <sup>3</sup> A. Brady and T. Menzies, &quot;Case-Based Reasoning vs. Parametric Models for Software Quality Optimization,&quot; Proc. 6th Int'l Conf. Predictive Models in Software Eng. (PROMISE 10), ACM, 2010; <br /> <sup>4</sup> T. Menzies and T. Zimmermann, &quot;Goldfish Bowl Panel: Software Development Analytics,&quot; Proc. 2012 Int'l Conf. Software Eng. (ICSE 2012), IEEE, 2012, pp. 1032-1033. <br /> <sup>5</sup> T. Menzies et al., &quot;<a href="http://goo.gl/k6qno">Local vs. Global Lessons for Defect Prediction and Effort Estimation</a>,&quot;IEEE Trans. Software Eng., preprint, published online Dec. 2012;</p>
-<h2>关于作者</h2>
-<p><img _p="true" _href="img://null" alt="" style="float: left; margin-right: 10px" src="http://infoqstatic.com/resource/articles/beyond-data-mining/zh/resources/1220002.png" /><strong>Tim Menzies</strong>是西弗吉尼亚大学计算机科学与电气工程学院计算机科学系的全职教授。他的邮箱是tim@menzies.us。</p>
+<h2><b>LinkedIn</b><b>的现有生态系统</b></h2>
+<p>Samza背后的动机及其架构都受到LinkedIn现有生态系统的巨大影响。因此，在深入研究Samza之前，对现有生态系统有个大概的了解很重要。</p>
+<p><a href="https://kafka.apache.org/">Kafka</a>是LinkedIn几年前发布的一个开源项目。它是一个满足消息队列和日志聚合两个需求的消息系统。LinkedIn的所有用户活动，所有的指标和监控数据，甚至是数据库变更都会进到这个系统。</p>
+<p>LinkedIn还有一个名为<a href="http://data.linkedin.com/projects/databus">Databus</a>的专用系统，该系统将他们所有的数据库做成了一个流模型。它像一个包含了每个键值对最新数据的数据库。但当该数据库变化时，他们实际上可以将变化集做成一个流。每个单独的变化是那个流中的一条消息。</p>
+<p>因为LinkedIn有Kafka，而且已经集成了好几年，所以LinkedIn的许多数据，几乎全部，都是流格式，而不是数据格式或者存储在Hadoop上。</p>
+<h2><b>创建Samza的动机</b></h2>
+<p>Chris谈到，当开始用Kafka和他们系统中的所有数据做流处理的时候，他们是从一个类似Web服务的东西开始的，它会启动，从Kafka读取消息并做一些处理，然后将消息写回。</p>
+<p>在做这件事的时候，他们意识到，要使它真正有用并具备可扩展性，有许多问题需要解决。比如分区：如何划分流？如何划分处理器？如何管理状态，其中状态本质上是指在处理器中维护的介于消息之间的东西，或者如果每次有消息到达的时候，计数器就会加1，那么它也可以是像总数这样的东西。如何重新处理？</p>
+<p>至于失败语义，我们会得到至少一次，或者至多一次，或者恰好一次消息，也有不确定性。如果流处理器与另一个系统交互，无论它是个数据库，还是依赖于时间或者消息的顺序，如何处理那些真正决定最终输出结果的数据？</p>
+<p>Samza试图解决其中的部分问题。</p>
+<h2><b>Samza</b><b>架构</b></h2>
+<p>流是Samza最基本的元素。较之对其它流处理系统的预期，Samza的流定义更严格而且堪称重量级。为了减少延时，其它处理系统，如Strom，往往有非常轻量化的流定义，比如说，从UDP到直接TCP连接的一切。</p>
+<p>Samza采用了不同的做法。首先，它希望流能够分区。它希望这些流是有顺序的。如果先读了消息3，又读了消息4，那么就无法在一个单独的分区里颠倒它们的顺序。它还希望流能够回放，就是说以后可以回头重读一条消息。它希望流具备容错能力。如果分区1里面的一台主机不复存在，那么流在其它主机上应该仍然可读。另外，流通常是无限的。一旦到达了流的末尾——比如说，分区0的消息6——只需要在有消息时设法重新读取下一条。那种情况并不是结束。</p>
+<p>这个定义可以很好地映射到Kafka，于是，LinkedIn用它做了Samza的流基础设施。</p>
+<p>在Samza中，有许多<a href="http://samza.incubator.apache.org/learn/documentation/0.7.0/introduction/concepts.html">概念</a>需要理解。要点是——</p>
+<ul> 
+ <li><a href="http://samza.incubator.apache.org/learn/documentation/0.7.0/container/streams.html">流</a>——Samza处理流。流是由一定数量的类型或类别相似的不可变消息组成。可以通过像Kafka这样的消息系统（其中每个主题是一个Samza流）或者数据库（表）或者甚至是Hadoop（HDFS中的一个文件目录）提供实际的实现。</li> 
+</ul>
+<p>诸如消息排序、批处理之类的事情是由流来处理的。</p>
+<ul> 
+ <li>“作业（Jobs）”——Samza作业是在一组输入流上执行逻辑转换从而将消息附加到一组输出流的代码。</li> 
+ <li>分区——为了可扩展性，每个流都被划分成一个或多个分区。每个分区都是一个完全有序的消息序列。</li> 
+ <li>“任务（Tasks）”——也是为了可扩展性，每个作业被分解成多个任务后进行分配。任务使用作业输入流相应分区中的数据。</li> 
+ <li>容器——分区和任务是逻辑并行单元，而容器是物理并行单元。每个容器是一个运行一个或多个任务的Unix进程（或者Linux cgroup）。</li> 
+ <li><a href="http://samza.incubator.apache.org/learn/documentation/0.7.0/container/task-runner.html">TaskRunner</a>——TaskRunner是Samza的流处理容器。它负责启动、执行以及关闭一个或多个StreamTask实例。</li> 
+ <li>“<a href="http://samza.incubator.apache.org/learn/documentation/0.7.0/container/checkpointing.html">检查点（Checkpointing）</a>”——检查点通常用于故障恢复。如果一个taskrunner由于某种原因宕掉了（比如，硬件故障），当重新启动时，它应该使用最后离开时的消息——这是通过检查点实现的。</li> 
+ <li><a href="http://samza.incubator.apache.org/learn/documentation/0.7.0/container/state-management.html">状态管理</a>——需要在不同的消息处理之间传递的数据称之为状态——它可以是保存一个总数那样简单的东西，也可以是复杂得多的东西。Samza允许任务维持一种持久可变且可查询的状态，而且，它与每个任务在物理上处于同一位置。状态需要具备高可用性：如果出现任务失败的情况，它可以在任务故障转移到另一台机器时还原。</li> 
+</ul>
+<p>数据存储是可插拔的，但Samza带有一个开箱即用的键-值存储。</p>
+<ul> 
+ <li>YARN（Yet Another Resource Manager）是Hadoop v2在v1基础上做的最大改进——它将Map-Reduce作业追踪器从资源管理中剥离出来，并允许Map-reduce替代方案使用相同的资源管理器。Samza使用YARN进行集群管理、故障跟踪等。</li> 
+</ul>
+<p>Samza提供了一个YARN ApplicationMaster和一个开箱即用的YARN作业运行程序。</p>
+<p><img src="http://infoqstatic.com/resource/articles/linkedin-samza/zh/resources/0302003.png" width="300" _href="img://null" _p="true" alt="" /></p>
+<p>读者可以通过查看详细<a href="http://samza.incubator.apache.org/learn/documentation/0.7.0/introduction/architecture.html">架构</a>来了解各种组件之间如何交互，也可以通过阅读整个<a href="http://samza.incubator.apache.org/learn/documentation/0.7.0/introduction/architecture.html">文档</a>来了解每个组件的细节。</p>
+<h2><b>可能的改进</b></h2>
+<p>在Samza中使用诸如YARN这样的组件有一个好处，就是允许在已经运行了草案任务、测试任务和MapReduce任务的同一个网格上运行Samza。对于上述所有的任务，都可以使用相同的基础设施。不过，由于现有的设置完全是试验性的，LinkedIn目前还没有在一个“多框架（multi-framework）”环境下运行Samza。</p>
+<p>Chris说，为了进入一个更大的多框架环境，进程隔离还需要做得更好一些。</p>
+<h2><b>结论</b></h2>
+<p>Samza是Apache的一个正在孵化中项目，相对还不成熟，因此还有很大的改进空间。使用<a href="http://samza.incubator.apache.org/startup/hello-samza/0.7.0/">hello-samza</a>工程是一个不错的入门方式，那是个很小的东西，在大约5分钟之内就可以配置好并运行。通过它，可以使用来自维基百科服务器的实时更改日志来弄清楚发生了什么，而且它还提供了一连串可供使用的东西。</p>
+<p>建立在Hadoop之上的STORM是另一个流处理器项目。读者可以查看<a href="http://samza.incubator.apache.org/learn/documentation/0.7.0/comparisons/storm.html">Samza和STORM比较</a>。</p>
+<h2><b>关于作者</b></h2>
+<p><img style="float: left; margin-right: 10px" src="http://infoqstatic.com/resource/articles/linkedin-samza/zh/resources/0302004.jpg" _href="img://null" _p="true" alt="" /><b>Chris Riccomini</b>是LinkedIn的一名资深软件工程师，他目前是Apache Samza项目的提交者和PMC成员。在LinkedIn，他参与了众多项目，包括：“你可能认识的人（People You May Know）”、REST.li、Hadoop、工程工具和OLAP系统。在加入LinkedIn之前，它在PayPal从事数据可视化和欺诈行为建模工作。</p>
 <div style="clear:both"></div>
-<p><img _p="true" _href="img://null" alt="" style="float: left; margin-right: 10px" src="http://infoqstatic.com/resource/articles/beyond-data-mining/zh/resources/1220000.jpg" />本文最初发表在 <a href="http://www.computer.org/portal/web/computingnow/software"><i>IEEE</i><i>软件</i></a><strong><i> </i></strong><i>杂志上。</i><a href="http://www.computer.org/portal/web/computingnow/software"><i>IEEE </i><i>软件</i></a><i>的使命是构建领先的和面向未来的软件从业人员社区。这份杂志致力于提供可靠、使用、前沿的软件开发信息，让工程师和管理人员能够紧跟快速变化的技术。 </i></p>
-<div style="clear:both"></div>
-<p><strong>原文英文链接：</strong><a href="http://www.infoq.com/articles/beyond-data-mining">Beyond Data Mining</a></p><br><br><br><br><br><br></body></html>
+<p><b>查看英文原文：</b><b><a href="http://www.infoq.com/articles/linkedin-samza">How LinkedIn Uses Apache Samza</a></b></p><br><br><br><br><br><br></body></html>

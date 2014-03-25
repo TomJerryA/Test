@@ -1,16 +1,17 @@
-<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>对Nagios适用性的争论</h3><p>在最近一次的<a href="http://www.youtube.com/watch?v=Q9BagdHGopg">伦敦DevOps集会</a>上，<a href="http://twitter.com/supersheep">Andy Sykes</a>引发了一场是否应该使用更好的解决方案来替代<a href="http://www.nagios.org/">Nagios</a>的<a href="http://www.reddit.com/r/sysadmin/comments/1y28wy/stop_using_nagios_so_it_can_die_peacefully/">争论</a>（Nagios是提供监控和告警服务的知名应用）。</p>
-<p>Andy承认，Nagios拥有简单的插件模型，并且从概念上说具有简单性和可靠性。但是其缺点更为显著。他认为，Nagios难以扩展，因为它不支持任何类型的集群。而且配置起来也比较麻烦，会涉及到大量服务器与客户端之间的复制。此外，另一个痛点则是缺乏一套简化系统整合与自定义仪表盘创建过程的API。在这个弹性和云的时代里，需要将新客户端告知主机，也将被视作一项重大缺陷。</p>
-<p>针对Nagios的不足之处，Andy给出了一些应对建议。他推荐采用<a href="http://sensuapp.org/">Sensu</a> 应对监控问题，使用<a href="http://graphite.readthedocs.org/en/latest/">Graphite</a>满足图形绘制需求，以及将<a href="http://flapjack.io/">Flapjack</a> 用于告警服务。不过对于探测异常和用户界面方面，Andy认为目前还没有什么合适的产品。</p>
-<p>对此，<a href="https://laur.ie/blog/">Laurie Denness</a>则持有不同意见，并<a href="https://laur.ie/blog/2014/02/why-ill-be-letting-nagios-live-on-a-bit-longer-thank-you-very-much/">阐述</a>了为何Etsy将继续使用Nagios。针对Andy提出的每条观点，Laurie都进行了辩驳。</p>
-<p>Laurie表示，对Etsy来说，“我们的主数据中心有1万项检查。一般而言每隔2到3分钟，就进行一组30秒的检查”。对此，必须进行一些优化调整。团队启用了Nagios的<a href="http://nagios.sourceforge.net/docs/3_0/largeinstalltweaks.html">use_large_installation_tweaks</a>标志以降低延迟，并且在惠普和戴尔服务器上禁用了扩展设置——因为Nagios似乎与这些设备使用的电源管理算法并不十分兼容。当Etsy开始使用两个数据中心时，他们选择在每个数据中心里安置一个Nagios实例，并使用<a href="https://github.com/lozzd/Nagdash">Nagdash</a>将状态和报告聚合在一起。</p>
-<p>在配置方面，Laurie宣称：</p>
+<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>Cloud Foundry 基金会成立</h3><p>Pivotal<a href="http://www.gopivotal.com/press-center/02242014-cloud-foundry-foundation">已宣布</a>通过创立Cloud Foundry基金会的方式来建立Cloud Foundry的开放管理模式。EMC、HP、IBM、Rackspace、SAP及VMware已表示要作为白金赞助商加入该基金。ActiveState和CenturyLink将会以黄金赞助商的身份加入。Pivotal的CEO Paul Maritz还在<a href="http://blog.gopivotal.com/news-2/pivotal-moves-to-establish-open-governance-model-for-cloud-foundry">博文</a>中提到，Canonical、Intel和Piston已参加了现行的社群指导委员会。</p>
+<p>该基金会的成立有助于Pivotal将自身的商业实体同开源性的Cloud Foundry项目进行分离。这恰是当年<a href="http://www.infoq.com/news/2012/09/OpenStack-Foundation">Rackspace打造OpenStack</a>的翻版。<a href="http://www.openstack.org/foundation/">OpenStack基金会</a>从宣告到成立用了将近一年的时间，因此Pivotal要想兑现承诺让Cloud Foundry基金会在夏季开始正常运作，就得有更加激进的时间表。</p>
+<p>虽然采用白金和黄金会员级别制，表明了Cloud Foundry基金会可能会依照OpenStack基金会的类似方式来运作，但Pivotal的开发大使<a href="http://www.infoq.com/author/Andy-Piper">Andy Piper</a>说道：</p>
 <blockquote> 
- <p>如果你花费时间来挑选Nagios配置文件，那么或许你无论如何都会喜欢它，并且正在大规模重写旧有的配置；要么或许走在了错误的路上。将之自动化是很容易的事情。</p> 
+ <p>“我们正在打造一个能满足Cloud Foundry生态系统独特需要的基金会，等与其他白金赞助商的合作敲定之后，我会很愿意再多谈谈这个项目。”</p> 
+ <p>“另一些白金级别的公司已经同我们接洽，而且想对Cloud Foundry下很大的筹码/投资，而只有这样做，他们才能在公平竞争中保有一席之地。开放管理模式的形成，允许其他的白金厂商能够以对其股东等负责的方式，在Cloud Foundry上下大赌注。”</p> 
 </blockquote>
-<p>Etsy同时也在使用<a href="https://github.com/xb95/nagios-api">nagios-api</a>——这个第三方项目面向Nagios，提供了类REST的JSON接口以将其自动化。</p>
-<p>针对Andy眼中Nagios目前的不足之处，Laurie给出了更为广泛的阐述。他认为，Unix哲学适用于使用Nagios的工作：“以许多小型部件和应用为基础，它们都负责应对特定的小规模问题，而用户使用管线将它们关联为一体。”事实上，Nagios拥有强大的生态系统，在Laurie看来这是一项强有力的优势。</p>
-<p>在谈到Laurie的见解时，<a href="http://lethargy.org/~jesus/">Theo Schlossnagle</a>延续了“Nagios尚有不足”的思路：</p>
+<p>每个白金赞助商会在三年内，每年投放50万美元来赞助Cloud Foundry的市场推广。Pivotal还提到，目前尚没有打算要增设新的白金层级的席位，而仍保持宣告之初时原有的7个成员，其中有三个席位由EMC集团旗下公司（EMC，VMware和Pivotal）把控。值得注意的是，在Pivotal刚启动时为其投资1亿美元的GE虽然未入席顶级赞助商之列，但他们或许更有兴趣作为最终用户而不是厂商来推动Cloud Foundry的发展。Andy Piper解释道：</p>
 <blockquote> 
- <p>对运营方面来说，我们需要的是读取系统遥测信息，并针对其行为提供深入的洞见。这是一个宽泛的任务，必须对收集到的数据进行分析。然而，Nagios以及其他类似设计的五花八门的产品，都不支持这种做法。</p> 
+ <p>“GE依然是投资者和重要的合作伙伴。在该通告发布时，他们还没有承诺加入到这个基金会中，但是当想到他们会在未来参与进来，我们仍旧而感到兴奋。”</p> 
 </blockquote>
-<p><strong>查看英文原文：</strong><a href="http://www.infoq.com/news/2014/02/nagios-discussion">Discussion on Nagios Fitness for Purpose</a></p><br><br><br><br><br><br></body></html>
+<p>我们现在尚不清楚社群指导委员会当中的某些小公司——如CloudCredo和Stark&amp;Wayne——将以什么方式加入基金会。而个人贡献者——如<a href="http://www.infoq.com/author/Nic-Williams">Dr. Nic Williams</a>和<a href="http://www.infoq.com/author/Colin-Humphreys">Colin Humphreys</a>——则在Cloud Foundry社群中非常抢眼而且有影响力，只是他们的公司没有太大的市场预算。</p>
+<p>除了挺身而出作为Cloud Foundry基金会的顶级赞助商外，IBM还<a href="http://www.infoq.com/author/Colin-Humphreys">宣布投资10亿美元</a>用于同Cloud Foundry开展基于<a href="http://www-01.ibm.com/software/ebusiness/jstart/bluemix/index.html">BlueMix</a>平台的PaaS项目。BlueMix运行在IBM的SoftLayer云服务中，并集成了一些IBM的中间件产品和应用平台。</p>
+<p><strong>参考英文原文：</strong><a href="http://www.infoq.com/news/2014/03/cloud_foundry_foundation"><strong>Cloud Foundry Foundation</strong></a><u><strong> </strong></u></p>
+<hr />
+<p>感谢<a href="http://www.infoq.com/cn/author/杨赛">杨赛</a>对本文的审校。</p>
+<p>给InfoQ中文站投稿或者参与内容翻译工作，请邮件至<a href="mailto:editors@cn.infoq.com">editors@cn.infoq.com</a>。也欢迎大家通过新浪微博（<a href="http://www.weibo.com/infoqchina">@InfoQ</a>）或者腾讯微博（<a href="http://t.qq.com/infoqchina">@InfoQ</a>）关注我们，并与我们的编辑和其他读者朋友交流。</p><br><br><br><br><br><br></body></html>

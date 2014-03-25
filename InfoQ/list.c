@@ -1,6 +1,12 @@
 <html>
  <head></head> 
- <body> 
+ <body>
+  <div>
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/43.c">CoffeeScript 1.7: encadeamento sem par&ecirc;nteses, Strings de m&uacute;ltiplas linhas e mais</a>Jeremy Ashkenas liberou a vers&atilde;o 1.7 do CoffeeScript introduzindo algumas mudan&ccedil;as que antecipam o popular conversor do JavaScript. A vers&atilde;o 1.7 inclu&iacute; uma das mais populares solicita&ccedil;&otilde;es da linguagem, o suporte ao encadeamento sem par&ecirc;nteses.
+  </div> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/42.c">Oracle lan&ccedil;a o Java 8</a>No dia 18/03, durante o EclipseCon, a Oracle anunciou o lan&ccedil;amento da plataforma Java 8, trazendo para a linguagem funcionalidades como Lambdas e Streams, al&eacute;m da corre&ccedil;&atilde;o de alguns problemas da JVM. Leia para conhecer mais sobre esse lan&ccedil;amento. 
+  </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/41.c">Submiss&otilde;es para Short Talks &amp; 7 motivos para participar do QCon SP</a>Falta apenas um m&ecirc;s para o QCon S&atilde;o Paulo (9-11 de abril), e o conte&uacute;do do evento est&aacute; quase 100% definido, com 48 de 50 palestras confirmadas e as sess&otilde;es da Solutions Tracks com presen&ccedil;a garantida de grandes empresas nacionais e internacionais. 
   </div> 
@@ -144,12 +150,6 @@
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/46.c">Go avan&ccedil;a a todo o vapor: vers&atilde;o 1.2 &eacute; liberada</a>Acaba de ser lan&ccedil;ada a vers&atilde;o 1.2 da linguagem de programa&ccedil;&atilde;o Go, que tr&aacute;s algumas mudan&ccedil;as na linguagem e tamb&eacute;m melhorias na performance de rede para as plataformas Windows e BSD. 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/45.c">Pr&aacute;ticas para escalar o Agile nas Empresas</a>Empresas que est&atilde;o adotando Agile de forma ampla em algum momento ter&atilde;o que escalar suas pr&aacute;ticas &aacute;geis. Em uma sess&atilde;o da confer&ecirc;ncia &quot;M&eacute;todos &aacute;geis no setor financeiro e em ambientes complexos&quot;, os participantes compartilharam suas experi&ecirc;ncias de como est&atilde;o escalando Agile nas empresas. 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/44.c">Reduza o desperd&iacute;cio atrav&eacute;s da mudan&ccedil;a do m&eacute;todo cascata para m&eacute;todo &aacute;gil</a>O desenvolvimento de software enxuto diz: toda iniciativa que n&atilde;o est&aacute; criando valor para o cliente &eacute; considerado desperd&iacute;cio. Como a transi&ccedil;&atilde;o do m&eacute;todo cascata para um m&eacute;todo &aacute;gil pode ajudar as empresas a reduzir o desperd&iacute;cio? 
-  </div> 
+  </div>  
  </body>
 </html>

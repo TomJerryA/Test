@@ -1,19 +1,20 @@
-<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>jQuery 1.11 & 2.1がnpmとBowerで公開</h3><p><a target="_blank" href="http://www.infoq.com/news/2014/01/jquery-1-11-2-1-0"><em>原文(投稿日：2014/01/24)へのリンク</em></a></p>
+<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>Cloud Foundry財団</h3><p><em><a target="_blank" href="http://www.infoq.com/news/2014/03/cloud_foundry_foundation">原文(投稿日：2014/03/10)へのリンク</a></em></p>
 <div class="article_page_left news_container text_content_container"> 
  <div class="text_info"> 
-  <p>最新のjQueryがnpmとBowerから入手可能だ。パフォーマンスが改善され，いくつかのバグが修正されている。</p> 
-  <p>jQueryチームは，人気のJavaScriptライブラリの新たなバージョンとして，1.11と2.1.0を同時にリリースした。ソースと縮小版(minified)ファイルは<a href="http://jquery.com/download/">ダウンロード</a>ページの他に，<a href="https://npmjs.org/package/jquery/">npm</a>と<a href="http://bower.io/">Bower</a>からも入手することができる。その他のパッケージ管理ツールについては，現時点でサポートの予定はない。</p> 
-  <p>最新のjQueryは，<a href="http://blog.jquery.com/2014/01/24/jquery-1-11-and-2-1-released/">強制的レイアウトとスタートアップ時のオーバーヘッドの削減</a>によって，パフォーマンスが向上している。</p> 
-  <blockquote> 
-   <p><b>強制的レイアウトの削減:</b> 今回のリリースで私たちは，時間のかかるレイアウト処理をブラウザに対して不注意に強制している部分の撲滅を目指しました。いくつか発見した中から特に，クラス名を変更する際に発生する可能性のある部分を排除しました。一部のページでは，これによってパフォーマンスが大きく向上します。</p> 
-   <p><b>細やかなカスタムビルド:</b>モジュールの定義に<a href="http://en.wikipedia.org/wiki/Asynchronous_module_definition">AMD</a>が使われるようになりました。スペースが限られている場合，ライブラリの小さなサブセットが容易に構築できます。詳しく知りたいのでしたら，詳細を記述した<a href="https://github.com/jquery/jquery#readme">READMEファイル</a>を，誰も見たことのない場所に隠してあります。</p> 
-   <p><b>スタートアップオーバーヘッドの低減:</b> 新しいモジュール構造と強制的レイアウトの回避に伴って，機能検出が必要な場合にのみ実行されるようにリファクタを実施しました。機能検出を必要とするAPIを呼び出さない限り，そのコードが実行されることはありません。 従来はページ読み込み時にすべての機能検出が実施されていたため，それが遅れを発生させていました。一般的に小さいのですが，特にモバイルプラットフォームでは余分な時間を加算していたのです。</p> 
+  <p>PivotalはCloud Foundry財団を設立し、「Cloud Foundryのためのオープンガバナンスモデルを確立するように働きかける」ことを<a href="http://www.gopivotal.com/press-center/02242014-cloud-foundry-foundation">発表した</a>。EMC、HP、IBM、Rackspace、SAPおよびVMwareは、財団にプラチナスポンサーとして参加することを表明している。ActiveStateとCenturyLinkはゴールドスポンサーとして加わる。PivotalのCEOであるPaul Maritzによる<a href="http://blog.gopivotal.com/news-2/pivotal-moves-to-establish-open-governance-model-for-cloud-foundry">ブログ投稿</a>では、すでに<a href="http://cloudfoundry.org/about/index.html">コミュニティ・アドバイザリー・ボード</a>に加わっているCanonical、Intel、Pistonもこの財団に関わることにも触れられている。</p> 
+  <p>Pivotalは財団を設立することで、営利団体としての自社と、オープンソースプロジェクトとしてのCloud Foundryを離しておくことができる。それは<a href="http://www.infoq.com/news/2012/09/OpenStack-Foundation">RackspaceがOpenStackでやった</a>ことと同様のことだ。<a href="http://www.openstack.org/foundation/">OpenStack財団</a>の発表から設立までにはほぼ1年かかったが、Pivotalはより積極的なスケジュールを約束している。Cloud Foundry財団はこの夏までに活動を始める計画だ。</p> 
+  <p>一方、プラチナとゴールドのレベル分けは、Cloud Founary財団がOpenStack財団と同じように運営される可能性があることを示唆している。Pivotalのデベロッパー支援担当者である<a href="http://www.infoq.com/author/Andy-Piper">Andy Piper</a>は次のように語った。</p> 
+  <blockquote>
+   私たちはCloud Foundryエコシステムの固有のニーズに合った財団を設立しようとしています。他のプラチナスポンサーとの計画が最終的に決定した暁には、その詳細をお伝えできるようになるでしょう。
   </blockquote> 
-  <p>縮小ファイルでは<a href="http://bugs.jquery.com/ticket/14415">開発者の混乱</a>を避けるために，<a href="https://docs.google.com/document/d/1U1RGAehQwRypUTovF1KRlpiOFze0b-_2gc6fAH0KY0k/edit">ソースマップコメント</a>が削除されている。</p> 
-  <blockquote> 
-   <p>今回のリリースでは，縮小ファイルにはソースマップコメントが含まれていません。 ... ソースマップの生成と配布は引き続き実施しますが，ブラウザがマップファイルのマニュアルでの関連付けをサポートしていない(現時点でサポートしているブラウザはありません)場合には，縮小ファイルの最後に適切なソースマップコメントを追加する必要があります。カスタムビルドプロセスを使用して独自のjQueryファイルを生成する場合，縮小ファイルにはソースマップコメントが含まれているので，マップが生成されます。そのままにしてソースマップを利用することも，編集してマップファイルを完全に無視することも可能です。</p> 
+  <blockquote>
+   それ以外のプラチナ企業が、Cloud Foundryに非常に大きな賭けや投資を行いたいということで私たちに連絡してきたとしても、彼らがテーブルに席を持っていた場合にしかこれを行うことができません。これは、公平な競争の場を確保するためです。このようなオープンガバナンス・モデルを形成することで、他のプラチナ・ベンダーは株主などに責任を果たしながらCloud Foundryに大きな投資を行うことができます。
   </blockquote> 
-  <p><a href="http://blog.jquery.com/2014/01/16/jquery-1-11-0-rc1-and-2-1-0-rc1-released/">バグ</a>もいくつか修正されている。</p> 
-  <p>1.11ブランチが古いブラウザ(IE 6,7,8)をサポートするのに対して，2.1.0ブランチではNode.jsでの開発，ChromeとFirefoxの拡張機能など，従来とは異なるWeb環境のサポートを加えている。</p> 
+  <p>プラチナスポンサーは各社とも、Cloud Foundryのマーケティングに対して3年間、年間50万ドルずつ支払うことになっている。Pivotalは、プラチナ層を設立時の7社以上に広げる計画がないことについても述べている。その7社のうちの3社はEMCの企業連合（EMC、VMware、Pivotal）である。GEは、Pivotalの創業期に1億ドルの投資をしているが、上位層に名を連ねていないことが着目される。ベンダーではなくエンドユーザーとしての立場で、Cloud Foundryの普及にはそれほど関心を持っていないのかもしれない。Andy Piperは次のように説明した。</p> 
+  <blockquote>
+   GEは、投資家かつ重要なパートナーであり続けます。この発表の時点では、GEはまだ財団に参加することを約束しておりませんが、将来的な参加は歓迎いたします。
+  </blockquote> 
+  <p>CloudCredoやStark &amp; Wayneのような、現在コミュニティ・アドバイザリー・ボードに参画している中小企業は、どのような形で財団に関わるようになるのかまだ不明である。<a href="http://www.infoq.com/author/Nic-Williams">Nic Williams博士</a>や<a href="http://www.infoq.com/author/Colin-Humphreys">Colin Humphreys</a>のような個人貢献者は、Cloud Foundryコミュニティにおいて非常に有名であり影響力を持っているが、彼らの会社は大規模なマーケティング予算を持っていない。</p> 
+  <p>Cloud Foundry財団の最上位スポンサーとしての活動に加えて、IBMは<a href="http://www-03.ibm.com/press/us/en/pressrelease/43257.wss">PaaSに対する10億ドルの投資を発表した</a>。投資するPaaSはCloud Foundryをベースにした<a href="http://www-01.ibm.com/software/ebusiness/jstart/bluemix/index.html">BlueMix</a>プラットフォームである。BlueMixはIBMのSoftLayerクラウド上で動作し、IBMの数あるミドルウェア製品およびアプリケーションプラットフォームに統合される。</p> 
  </div> 
 </div><br><br><br><br><br><br></body></html>

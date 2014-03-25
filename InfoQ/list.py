@@ -2,6 +2,57 @@
  <head></head> 
  <body> 
   <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/25.py">Tizen SDK for Wearableを使用したSamsung Gear向けアプリ開発</a>Androidを搭載した第１世代のウェアラブルデバイスに続いてSamsungは，Intelと共同で開発したオープンソースのモバイルオペレーティングシステムであるTizenを基盤とした，第２世代のデバイスの市場投入を決定した。そして今回，アプリケーション開発のためのSDKがリリースされている。 
+  </div> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/24.py">AmazonがAppStream APIにHALメディアタイプを選択</a>Amazonは，Amazon AppStreamプラットフォームにホストされたアプリケーションをプログラムから管理可能な新API，&quot;ApStream API&quot;をリリースした。このAPIの開発で同社が選択したのはHALメディアタイプだ。HALは，マシン・ツー・マシンAPIを構築するメディアタイプのための，最小限のハイパーメディアである。Amazonは，一般公開されている製品の技術としてハイパーメディアを選択した最大の組織のひとつ，ということになる。 
+  </div> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/23.py">ビッグデータ技術を用いたグラフ処理</a>極度に大きなグラフの処理は現在でもなお難しい問題だ。しかし最近のビッグデータ技術の進歩は，このようなタスクをより実用的なものにしている。ニューヨークを拠点にクロスデバイスなコンテント配信を手掛けているTapadはビッグデータを活用して，テラバイトサイズのデータにまで拡張可能なグラフ処理を，ビジネスモデルの中心とするスタートアップだ。 
+  </div> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/22.py">Etsyはいかにして1日に50回ものデプロイをしているのか</a>Daniel Schauenberg氏は先日のQCon Londonで、DevOpsや継続的インテグレーションを実践していることで有名なEtsyは1日に50回ものデプロイをしていると語った。リスクを最小限に抑えながらこのペースの変更を実現するためには、完全に自動化されたデプロイメントパイプライン、徹底的なアプリケーションのモニタリング、IRCベースの共同作業、これらすべてが重要なのだ。Etsyの訪問者数は毎月6千万、月あたりのページビューは15億だ。 
+  </div> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/21.py">Espresso LogicがDBaaSのストアドプロシージャを呼び出せるRESTful APIを提供</a>Espresso Logicが同社のDBaaSサービス用のストアドプロシージャにRESTfulなエンドポイントを追加した。 
+  </div> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/20.py">リーンスタートアップが投資家と付き合うには</a>リーンスタートアップを採用する起業家たちも，ビジネス資金の調達に投資家の協力を得ることがある。しかしリーンスタートアップで起業するビジネスプランには，従来の起業スタイルとは異なる部分が多い。また，失敗から学ぶ，ピボット(pivot, 路線変更)する，といった行動を重視するリーンスタートアップは，投資家から敬遠される可能性もある。起業家と投資家が一緒になって，資金調達にリーンスタートアップアプローチを使うことはできるのだろうか？ 
+  </div> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/19.py">DevOpsとは何（ではないの）か、そしてどうやって実現するのか</a>この記事では、DevOpsにまつわる誤解をいくつか議論し、文化の変化をもたらすことができるプロセスの序論を示す。その文化の変化こそがDevOpsのすべてなのである。 
+  </div> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/18.py">AppleがiOS 7のUIデザイン向けのマイクロサイトを提供</a>Appleは登録済みのiOS開発者向けに新しいマイクロサイトを提供し、iOS 7のUI設計に関する動画やドキュメントやホワイトペーパーを公開している。サイトの目的は開発者に&quot;iOS 7向けに洗練された直感的に使えるアプリを開発する&quot;ために必要な情報を提供することだ。 
+  </div> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/17.py">AmazonがAppStreamの提供を開始</a>AmazonはAppStreamの提供を開始した。これを使えば、開発者はアプリケーションをAWS上で動かし、さまざまなデバイスへ配信できる。 
+  </div> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/16.py">持続可能なリーンスタートアップチームに必要な態度</a>Ramli John氏は2013 Lean Startup Conferenceでminimum viable attitudes for lean startup teamsと題した講演を行った。氏によれば、チームが持続可能なリーンを行うためには、3つの態度が必要だ。すなわち、謙遜、飢餓感、幸福だ。 
+  </div> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/15.py">Akka Toolkit 2.3 は Java 8 と Persistence をサポートする</a>アクター・モデルの実装である、Akka Toolkitの最新版は、内部状態を永続化するステートフル・アクターを可能にする Persistence が、Java 8 のラムダ式のサポートと共に付属している。 
+  </div> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/14.py">２つのDoDによる開発プロセスの改善</a>DoD(Definition of Done)を理想と現状という２つのバージョンに分離しようというアイデアがある。目的とするのは，成熟度および品質の面でのDoDの拡大だ。物理的なボード上で実行する以外に，Jiraのようなアジャイルツールで実践することもできる。 
+  </div> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/13.py">Domino :Datascience-as-a-Service</a>Dominoはデータサイエンス向けのPlatform-as-a-Serviceであり、クラウド(EC2)を使ってPythonやRのような言語でデータ分析ができる。 
+  </div> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/12.py">JavaScriptとの相互運用を改善したElm 0.11</a>Elmのバージョン0.11リリースの目的はJavascriptとFRP言語をよりシンプルに組み合わせて使えるようにすることだ。 
+  </div> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/11.py">Cloud Foundry財団</a>PivotalはCloud Foundry財団を設立し、「Cloud Foundryのためのオープンガバナンスモデルを確立するように働きかける」ことを発表した。EMC、HP、IBM、Rackspace、SAPおよびVMwareは、財団にプラチナスポンサーとして参加することを表明している。ActiveStateとCenturyLinkはゴールドスポンサーとして加わる。 
+  </div> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/11.py">ThoughtWorksが継続的デリバリツールGoをオープンソース化</a>ThoughtWorksが継続的デリバリ(Continuous Delivery,CD)であるGoをオープンソースにした。このツールはCruiseControlを起源にしており、開発プロセス全体をカバーするパイプラインプロセスを提供する。つまり、継続的統合、テスト、デプロイメントだ。 
+  </div> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/11.py">アジャイルチームを互いに連携し協同させるためにスクラム・オブ・スクラムを使うこと</a>スクラム・オブ・スクラムは、複数のチームが関係しているときにデイリー・スタンドアップ・ミーティングをスケールするために用いられる。その目的は、チーム間で協同し作業を連携するアジャイルチームを支えることだ。何人かの執筆者が、スクラム・オブ・スクラムを用いた経験をもとに、それに対する見解を述べている。 
+  </div> 
+  <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/10.py">Java 8ニュース:新しいアトミックナンバーを含むRC版を公開、モジュール化は外れる</a>Java8の最初のRC版が2月の始めにリリースされた。第1版のb128は2月4日、第2版は1週間後にOpenJDKのメーリングリストで発表された。 
   </div> 
   <div> 
@@ -99,57 +150,6 @@
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/29.py">QCon New York 2014のトラック発表</a>6月9日から13日に開催されるQCon New Yorkのトラックが決定した。 Creating Culture, Continuous Delivery, Data Science, Architecture Case Studies, JavaScript, Mobileなどだ。今年はOSGi DevCon 2014も同じ場所で開催される。会場はNew York Marriott Brooklyn Bridgeだ。 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/28.py">ビッグデータ革命と遺伝子情報解析</a>Curoverse 社とTute Genomics社は、一般大衆に向けた遺伝子解析の提供を目指し、先月担保付き債権1,500万ドルの出資を受けた。Illumina社、Seven Bridges Genomics社、Complete Genomics社等は、研究者や民間組織に対して4桁ドル台の価格で全ゲノム配列解析サービスを提供している。Illumina社 は先ごろ、かねてから待望の1,000ドルのゲノム解析サービス HiSeq X Ten を発表した。 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/27.py">WildFly 8についてJason Greene氏へのインタビュー</a>Red HatのJBoss部門はWildFly 8を発表した。WildFly 8は以前はJBoss Application Serverという名で知られていた製品だ。InfoQはWildFlyのリードを努めた、Red HatのJBoss部門のJBoss EAP Platform ArchitectであるJason Greene氏にこの新しい製品について話を聞いた。 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/26.py">SparkRを使ってRでSparkを動かす</a>2014年1月にUCバークレーのAMPLabがApache SparkをRから使うための仕組みであるSparkRプロジェクトの開発者プレビューを発表した。 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/26.py">Salesforce.comが新しい.NET向けのツールキットをリリース</a>Salesforce.comは.NET開発者がオープンソースのツールキットを使って簡単にウェブサービスを利用できるようにしようとしている。これらのツールキットはForce.comのREST APIとChatter APIをターゲットにしており、Salesforce Platform AdvocateのWade Wegner氏が手がけている。氏がInfoQにこれらのコンポーネントの目的に話してくれた。 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/25.py">Parse、iOSとAndroid用の低レベルライブラリ集、Boltsを発表</a>Parse（数ヶ月前にFacebookが買収）がAndroidとiOS用の低レベルライブラリをまとめて、Boltsと名づけてオープンソース化した。Parseの発表によると、BoltsはParse/Facebookの共同成果であり、両社が独自に開発してきた小さな低レベルのユーティリティクラスを固めたものだ。 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/24.py">Masonryを使用したiOS Auto Layout</a>オープンソースプロジェクトMasonry目標は，Auto Layoutのコードをもっと簡潔で読みやすくすることだ。”Auto Layoutを適切なシンタックスでラップする軽量レイアウトフレームワーク”であるMasonryは，XIB-およびStoryboardの不要なエクスペリエンスを提供する。 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/23.py">CoffeeScript 1.7</a>Jeremy Ashkenas氏はCoffeeScriptバージョン1.7をリリースした。長らく期待されていた新しい機能がいくつか追加された。丸括弧なしの関数チェーニングだ。 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/22.py">実験と価値提供のバランスをとる</a>リーンスタートアップの実験は顧客について学び、どのような機能に価値があるのかを判別する手助けをしてくれる。しかし、価値は製品を作り、実際に顧客に届けることで生まれるものだ。実験とデリバリのバランスを上手くとる必要がある。 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/21.py">Google Cast SDK、MPEG-DASHやHTTP Live Streamingなどのサポートを追加</a>GoogleがCast SDKをリリースした。開発者はアダプティブストリーミング、MPEG-DASH、HLS (HTTP Live Streaming)、SmoothStreamingを使って新規および既存のモバイルアプリやWebサイトにChromecastを統合することができる。 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/20.py">DataFuがApacheのインキュベーションプロジェクトに</a>LinkedInによるHadoop用ライブラリのコレクションであるDataFuプロジェクトが１月第１週，正式にApache Software Foundation(ASF)のインキュベーションプロジェクトになった。 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/19.py">QCon London : 人気のトラック、セッション、スピーカー</a>8回目を迎える年次のQCon London(3月3日から7日)では、NASA、 Netflix、Twitter、The Financial Times、Etsyなどの深いプレゼンや事例を取り上げる予定だ。トピックはアーキテクチャ、DevOp、パフォーマンスとスケーラビリティ、アジャイル、Javaなどだ。カンファレンススケジュールも決定した、2月5日までに参加登録すれば149ポンド安い。 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/18.py">自己組織型チームを構築し維持するには</a>Mike Cohn氏，Thomas Cagley氏らによる，チームの自己組織化および自己組織型チームの継続的成功についての最近の解説記事をレポートする。 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/17.py">Android上のファイルを暗号化するFacebook Conceal</a>Facebookは，Android用のファイル暗号化および認証Java APIのセットであるConcealをオープンソースとして公開した。ライブラリを小さく保つためにConcealでは，OpenSSLのアルゴリズムと定義済みオプションのサブセットを使用する。現時点でのサイズは85KBだ。 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/16.py">Greg Young氏，CEP(複合イベント処理)を語る</a>Complex Event Processing(CEP/複合イベント処理)は，異なる時点で発生した事象を関連付けるために過去データ全体にクエリを行うような，時間軸上で実行する必要のある問題に対して非常に有効だ - 先日のプレゼンテーションで，Greg Young氏はこのように説明した。 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/16.py">Google、QUICでインターネットをスピードアップ</a>QUIC (Quick UDP Internet Connections、「クイック」と発音) はUDP上で動く多重化トランスポートプロトコルであり、主に0-RTT 接続オーバーヘッドを目標としている。 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/16.py">Eclipse財団10周年</a>Eclipse財団が10周年を迎えた。2004年2月のプレスリリースによれば、開発者、利用者、アドインプロバイダを集めて、Eclipseの長期的な方向性に責任を持つ委員会を作ろうという世話役としての役割がこの非営利組織を生み出した。 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/15.py">DevOps採用の文化的問題</a>RebelLabsを率いるOliver White氏が先日の記事で，DevOpsのメリットを明確に示す調査結果があるにも関わらず，IT組織のDevOps採用が困難であることを詳説している。InfoQは氏にインタビューするとともに，この問題に関する調査報告を再検討した。 
   </div> 
  </body>
 </html>

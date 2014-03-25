@@ -1,30 +1,17 @@
-<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>Prismatic Adds Data Type Coercion to Schema 0.2</h3><p><a href="http://getprismatic.com/">Prismatic</a> have added <a href="http://en.wikipedia.org/wiki/Type_conversion">data coercion</a> in the <a href="http://blog.getprismatic.com/blog/2014/1/4/schema-020-back-with-clojurescript-data-coercion">0.2 release</a> of their <a href="http://clojure.org/">Clojure</a> data description library, <a href="https://github.com/prismatic/schema">Schema</a>. The addition of coercion means that the library doesn’t just reject data that has the wrong types, but it can be configured to modify instances to fit the schema.</p>
-<p>In Clojure it is idiomatic to use <a href="http://clojure.org/data_structures#Data%20Structures-Keywords">keywords</a> for Map keys, meaning there is often some boilerplate code to perform the conversion when receiving <a href="http://www.json.org/ ">JSON</a> objects. Previously this conversion would have needed to be performed before attempting to validate the request. Now, if your schema defines the keys as keywords, <a href="https://github.com/prismatic/schema">Schema</a> will handle that for you. Of course, you can write your own coercers for your own specific needs. Along with this added capability, Prismatic claims the changes have reduced the time required to validate data by five times.</p>
-<p>Schema’s goal, when first <a href="http://blog.getprismatic.com/blog/2013/9/4/schema-for-clojurescript-data-shape-declaration-and-validation ">released in September,</a> was to “get many of the benefits of type systems in Clojure with less hassle”. When released it seemed it could compete with <a href="https://github.com/clojure/core.typed ">core.typed</a>, a Clojure library also bringing types to the language. This view <a href="https://news.ycombinator.com/item?id=6339607">was refuted</a> by core.typed’s author <a href="https://twitter.com/ambrosebs">Ambrose Bonnaire-Sergeant</a> at the time, arguing that they will in fact complement one another, a view he repeated during a later <a href="http://www.infoq.com/news/2013/10/core-typed">InfoQ interview on core.typed</a>.&nbsp;</p>
-<div>
- InfoQ had the chance to talk with 
- <a href="http://getprismatic.com/profile/w01fe">Jason Wolfe</a>, the library's lead author, about the future of Schema.
-</div>
-<div>
- &nbsp;
-</div>
-<p><b>InfoQ:</b> When Schema was originally released, it was suggested a combination of core.typed and Schema could be very powerful. Has your thinking progressed on this idea since then?</p>
-<blockquote>
- I've been excited about gradual types in Clojure since I saw my first Qi program a few years ago, and I think Ambrose is doing a great job of making that a reality. There are a few ways we've talked about that Schema could play well with core.typed, the most interesting of which is probably using Schema as a bridge between core.type-checked code and unchecked code. &nbsp; 
- <div>
-  &nbsp;
- </div> 
- <div>
-  That said, I'm sad to say that we haven't had the time to explore core.typed in depth yet, so I don't have much more to say on this just yet.&nbsp;
- </div> 
-</blockquote>
-<p><strong>InfoQ:</strong> Expanding to test data generation sounds challenging, are you integrating with <a href="https://github.com/reiddraper/simple-check ">simple-check</a>, making use of <a href="https://github.com/clojure/test.generative ">test.generative</a> or does Schema require a different approach?</p>
-<blockquote>
- We're still exploring the options. I've read a lot of really great things about simple-check, and I think this should be doable, but we're still trying to understand its implementation and figure out how to incorporate additional constraints into the generation process. There will also probably be a simple generator for pseudo-randomly fleshing out a partial datum, which is something we end up using often in tests.
-</blockquote>
-<p><strong>InfoQ:</strong> What further ideas do you have on extracting value from Schema definitions?</p>
-<blockquote> 
- <p>Coercions and transformation are extremely powerful and I think we're still figuring out all the applications they will enable. &nbsp;My colleague Dave Golland will be speaking at Clojure West on a new library “fnhouse” that ties together graph and schema to make building web APIs easy. Following this release will be “coax”, which automatically generates Objective C and ClojureScript model classes and client API libraries from fnhouse APIs. &nbsp;</p> 
- <p>After that, we have lots of crazy ideas, but nothing we're ready to talk about yet.</p> 
-</blockquote>
-<p><a href="https://github.com/prismatic/plumbing ">Graph</a> is Prismatics Clojure library, <a href="http://blog.getprismatic.com/blog/2013/2/1/graph-abstractions-for-structured-computation">released in 2013,</a> for expressing structured computation in a declarative style.</p><br><br><br><br><br><br></body></html>
+<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>Android Wear: Details on the Developer Preview</h3><p>Google has announced <a href="http://android-developers.blogspot.ro/2014/03/android-wear-developer-preview.html">Android Wear</a>, the anticipated platform for wearable devices, making available the <a href="http://developer.android.com/wear/preview/start.html">Developer Preview</a> for those enthusiasts that want to get in touch with&nbsp;this new feature or get a head start in making the first applications tailored for such devices.</p>
+<p>One of the good news coming out of Google is that Android Wear is paired with a host device&nbsp;– smartphone, tablet&nbsp;– and natively supports the host’s notifications. That means that all Android apps that generate notifications do not have to do anything else to&nbsp;see their messages on an Android watch. But, developers are still invited to create specific apps that take advantage of the new platform’s interface.</p>
+<p>It seems that most of Google’s work on Android Wear is related to its&nbsp;<a href="http://developer.android.com/wear/design/user-interface.html">User Interface</a>&nbsp;and <a href="http://developer.android.com/wear/design/index.html">Design Principles</a>, since the associated platform code is just a 30KB JAR file. The UI consists of two main components: a stream of cards and a way of taking user commands via touch or voice. The cards contain notifications shown on background images, the user navigating through cards with vertical swipes. Each card can have multiple pages accessed with horizontal swipes from right to left. A card can be dismissed with a left-to-right swipe. Cards can be stacked and can be accompanied by a notification sound and/or vibration.</p>
+<p>These cards can contain complex notifications such as GMail or Music, including icons associated with commands such as Reply to Email or Play Next Song. While an email reply cannot be typed on the keyboard-less device, it can be dictated over the incorporated microphone.</p>
+<p>Android Wear’s design principles are meant to provide “just the right information at just the right time.” For this purpose, Wear experiences need to be:</p>
+<ul> 
+ <li>Contextually aware and smart:&nbsp;provide the information based on location and&nbsp;at the right time</li> 
+ <li>Glanceable&nbsp;– the information is concise, uses images or icons</li> 
+ <li>Zero/low interaction&nbsp;– no or little interaction via swipes or voice</li> 
+ <li>Helpful&nbsp;– the main idea for such a device is to be “efficient, respectful, responsive.”</li> 
+</ul>
+<p>The specifications for future Android Wear devices have not been made public, but we can draw some early hints from the existing preview code and emulator.&nbsp;The emulator&nbsp;runs on Android 4.4.2 while the <a href="https://play.google.com/store/apps/details?id=com.google.android.wearablepreview.app&amp;ah=-fj0j8eN5wC7StHibipiMGIBwrs">host preview application</a>&nbsp;needs 4.3+. So, earlier phones up to 4.2 won’t work with Wear devices. That is because Wear uses the new notification mechanism introduced in 4.3.</p>
+<p>There are two types of emulators: Round and Square. Both support Bluetooth, WiFi, NFC, Jazz Hands&nbsp;multi-touch (5+ fingers)&nbsp;and have a large collection of sensors. They are configured with a <a href="http://www.qualcomm.com/snapdragon/processors/s4/specs">Qualcomm Snapdragon S4 Pro</a>&nbsp;processor, Adreno 320 GPU and 512 MB of RAM.</p>
+<p>Xamarin has released the same day an <a href="https://components.xamarin.com/view/androidwearpreview">Android Wear Developer Preview component</a>&nbsp;that lets developers&nbsp;create apps which interact with&nbsp;Wear devices using Xamarin toolchain.</p>
+<p>Motorola and LG have announced the <a href="http://www.theverge.com/2014/3/18/5522340/motorola-lg-announce-upcoming-android-wear-smartwatches">first Android Wear watches</a>, but the actual specs have not been provided yet. Asus, HTC, and Samsung are to follow. <a href="https://www.fossilgroup.com/">Fossil Group</a>, a design company specializing in fashion accessories and owner of <a href="https://www.fossilgroup.com/about-us/#portfolio">many brands</a> including Armani, Diesel, adidas Originals, has also shown their intent to enter the Android wearable market.</p>
+<p>&nbsp;</p>
+<p>Note: Developers are warned not to release to the public applications developed with this preview because the underlying code is about to change.</p><br><br><br><br><br><br></body></html>

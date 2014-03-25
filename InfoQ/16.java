@@ -1,43 +1,26 @@
-<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>Interview with VersionOne CEO Robert Holler on the State of Agile Survey Results</h3><p>Following on from the interview with VersionOne CEO Robert Holler about the Winter 2014 product <a href="http://www.infoq.com/news/2014/02/versionone-winter2014-release">release</a>, Holler also discuss the 8th <a href="http://stateofagile.versionone.com/">State of Agile</a>&nbsp;survey results with this reporter.</p>
-<p>Some of the results in the survey results are:</p>
-<ul> 
- <li>3501 responses collected</li> 
- <li>66% from North America, 20% from Europe the rest from other parts of the world</li> 
- <li>88% of respondents identify themselves as at least “knowledgeable” about agile techniques</li> 
- <li>88% of organizations represented are practicing agile development</li> 
- <li>72% or organizations have been practicing agile for over 2 years (19% over 5 years)</li> 
- <li>52% of respondents said they are using agile to manage the majority of their projects</li> 
- <li>76% of respondents are using distributed agile teams</li> 
- <li>Scrum and Scrum variants are the predominant methodology (73% across Scrum, Scrum/XP and Scrumban)</li> 
- <li>Agile portfolio management is increasing (32% practicing or plan to practice)</li> 
- <li>73% or respondents say agile projects have faster time to market</li> 
- <li>92% or respondents say implementing agile improved their ability to manage changing priorities</li> 
-</ul>
-<p>InfoQ: What was surprising to you in the survey results?</p>
-<blockquote>
-  When looking at the results, I look for two things – what’s the commonality from year to year and what the exceptions are from year to year.
- <br /> The common elements lie in some key areas – the key benefits, why are people choosing agile, what are the most used methodologies and what the primary success factors are. 
- <br /> The top benefits: 1) The ability to manage changing priorities, 2) increased productivity and 3) improved project visibility. Respondents have consistently through the years reported these as the main benefits of heading down the agile path.
- <br /> Why people are transitioning to agile: the top four are 1) to accelerate time to market, 2) manage changing priorities,3) better alignment between the business and IT, and 4) productivity. 
- <br /> Most used methodology: Scrum continues to dominate.
- <br /> Key success factors, especially as you start scaling: executive sponsorship, training &amp; education, common tooling infrastructure (management tools and technical tools like continuous integration and source control) 
- <br /> A common theme that permeates the entire report is the fact that this is a cultural change, it’s a human change, it’s not an overnight binary change and the barriers to adoption are primarily human issues as opposed to technology or practice issues.
- <br /> Looking at what’s evolving based on the survey results over the years, there are three key elements - knowledge, experience and the practices. 
- <br /> Knowledge: awareness of agile concepts and agile development is now pretty pervasive. Two years ago 81% of respondents knew about agile, which meant that 19% did not – now 88% have heard of agile; that’s a significant change over the last two years.
- <br /> Experience: companies with two or more years of experience have grown from about 50% to over 72%, so nearly three-quarters of organizations have more than two years of experience using agile, which points directly to maturity. 
- <br /> Personal experience with agile of two plus years has gone from 55% two years ago to 64% of respondents. 
- <br /> Another element of experience – last year the number of organizations with more than 10 teams practicing agile was around 30% and this year it’s around 38% which means that agile is certainly starting to scale and mature in organizations. 
- <br /> Practices: One of the most interesting changes is the number of organizations with distributed teams practicing agile a year ago was 35% this year it’s 76% - a huge change. This is clearly a significant change year over year and is simply the reality of scaling to more teams, more projects, more departments – software development is being done across distributed teams. It’s not ideal; we’d prefer that it not be the case, but it is reality. In today’s world distributed teams are the way that a majority of software development is being done. 
-</blockquote>
-<p>InfoQ: In your own teams, how distributed are you?</p>
-<blockquote>
- We’ve got 10-15% of our folks distributed around the country, but even within our core organization in Atlanta, Georgia, we have two shops – one in the suburbs and an office downtown – so our team is invariably split between the two sites. This has meant that we’ve had to understand what collaboration means and what we have to do to make it work. We’ve got good sound systems, good audio-video, big screens, dual-working stations – you name it, we’ve taken the steps to get people engaged and ensure we have as much high-bandwidth collaboration going on as possible given the fact that team members are in multiple locations.
-</blockquote>
-<p>InfoQ: That sounds like advice to others as well. Given the 76% of organizations using agile across distributed teams, what do the survey results tell us about the effectiveness of distributed teams?</p>
-<blockquote>
-  Looking at the rest of the survey, there is still great consistency in the benefits from prior years – significant time to market improvements, significant productivity improvements, significant visibility improvements. So, whether I’m distributed or not, adopting agile will improve outcomes no matter what. Am I as productive as I would like being distributed? No, but I think teams today have learned to overcome many of the challenges – clearly the higher bandwidth channels are better but by overlaying an agile process with the inherent degree of collaboration, the rhythm, the visibility &amp; transparency and the incremental nature is improving the face of software development. I think agile has helped overcome the “team in the dark” scenario tremendously and we’re doing much better today at software development than we used to, whether collocated or distributed.
- <br /> The other thing I noticed in the survey is the continuing progression and success of a couple of practices. The use of Kanban boards continues to climb (from 32% to 39% using Kanban). Recently the concept of APM (Agile Portfolio Management/Agile Program Management) has gone from about one-quarter of companies to almost one-third (32%) in the past year, which offers additional validation that agile is scaling fast. This is where we feel that companies like VersionOne can make the biggest difference – it’s in the scaled context that products and infrastructure like ours can really help in terms of enabling success. 
-</blockquote>
-<hr />
-<p>The next item in this series will discuss the AgileLIVE webinar series.</p>
-<p>&nbsp;</p><br><br><br><br><br><br></body></html>
+<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>Data Warehousing in SQL Server 2014 RTM</h3><p>SQL Server has been released to manufacturing with general availability set for April 1st. Through this week we’ll be covering various aspects of the new release starting with data warehousing. But first a note about pricing.</p>
+<p>Microsoft is heavily pushing a batteries included pricing model. To understand why this is important to them, you have to compare it to the a la carte model used by Oracle. While Oracle starts out as cheaper per processor (10,000 to 23,000 USD), gaining access to all of its features increases the price to 47,500/processor. By contrast SQL Server Enterprise includes off of their on premise offerings at a flat rate of 27,000/processor.</p>
+<p><b>Column Store</b></p>
+<p>Back in September we covered the new <a href="http://www.infoq.com/news/2013/09/Clustered-Columnstore">updatable column store tables</a> and there isn’t anything really new in terms of features since then. We do, however, have more advice on how to use it.</p>
+<p>First and foremost, make sure you have enough data to justify it. Each horizontal partition in a column store table can hold up to one million rows. So if you don’t have tens or hundreds of millions of rows in a single table then this is probably not the technology for you.</p>
+<p>Another thing to consider is access patterns. In a column store, accessing an entire row is relatively expensive compared to a traditional row store. So again, you shouldn’t be using this technology unless you are working with queries that scan ranges.</p>
+<p>The following illustration shows a logical view of a typical query. Notice how entire segments and columns can be eliminated, thus reducing the amount of I/O necessary to process the query.</p>
+<p>In terms of performance, most workloads see a 5 to 10X speed on queries. In one benchmark, they showed a 91% savings in disc space over a traditional table with “customary indexes”.</p>
+<p><img alt="" src="http://www.infoq.com/resource/news/2014/03/SQL-Server-2014-RTM/en/resources/4image1.png" _href="img://4image1.png" _p="true" /></p>
+<p>It should be noted that while column store tables are considered to be part of their “in memory” offering, they use the buffer pool as a cache just like any other table. So unlike a memory optimized table, you don’t have to load the entire table into memory at startup.</p>
+<p><b>Azure Based AlwaysOn Replicas</b></p>
+<p>For a while now it has been possible, but difficult, to use Windows Azure VMs to host <a href="http://weblogs.asp.net/scottgu/archive/2013/08/12/windows-azure-general-availability-of-sql-server-always-on-support-and-notification-hubs-autoscale-improvements-more.aspx">AlwaysOn Replicas</a>. These read-only, synchronized version of the database can geographically dispersed in order to improve latency and throughput for data consumers much like a CDN is used for static website files. And because they are cloud based, one can theoretically spin up new servers during peak demand months rather than having onsite hardware that lies fallow during the off season.</p>
+<p>The major change in SQL Server 2014 comes from the tooling. A wizard inside SQL Server Management Studio will guide administrators through the process of selecting a VM size and loading the appropriate encryption keys.</p>
+<p><img alt="" src="http://www.infoq.com/resource/news/2014/03/SQL-Server-2014-RTM/en/resources/image2.png" _href="img://image2.png" _p="true" /></p>
+<p>In order to encourage more use of this service, Microsoft is only charging for the VM, storage, and outbound traffic. Ingress traffic from the on premise SQL Server to the Azure Replica is free.</p>
+<p>When setting up an AlwaysOn Replica, choosing the correct synchronization mode is really important. Asynchronously updating the replicas makes writes to the master database faster, but can result in reads of stale data. For analytics where one is looking over weeks, months, or years of data that shouldn’t be an issue. This makes it a good fit for hosting column store data.</p>
+<p>Conversely, synchronous updates allow for accurate reporting of OLTP data. But if there is a significant amount of latency between the master and replica databases there could be serious performance problems. So you shouldn’t use this option for geographically dispersed replicas.</p>
+<p><b>Hybrid Databases and Data Archiving</b></p>
+<p>A new feature of SQL Server is the ability to create truly hybrid databases. While SQL Server itself runs either on premise or on an Azure VM, some or all of its data files are hosted in Windows Azure Storage.</p>
+<p><img alt="" src="http://www.infoq.com/resource/news/2014/03/SQL-Server-2014-RTM/en/resources/image3.png" _href="img://image3.png" _p="true" /></p>
+<p>With a sufficiently large buffer pool and a read-heavy workload, this feature is expected to offer good performance. But since latency can be an issue, this feature should mostly be used when you need to work with archival data. For example, if you want to run analytics over sales receipts for the last ten years but don’t want to take up expensive SAN space.</p>
+<p><b>Windows Azure Express Route </b></p>
+<p>One way to mitigate latency issues is by using <a href="http://www.windowsazure.com/en-us/pricing/details/expressroute/">Windows Azure Express Route</a>. Rather than tunneling through the Internet with a VPN, this service offers a dedicated connection between an Azure data center and your local infrastructure.</p>
+<p>For an Exchange Provider provides a 1 Gbps and a 10 Gbps tier that cost 600 and 10,000 USD per month respectively. In addition there is a 0.070/GB fee for outbound traffic in excess of 15/250 TB per month.</p>
+<p>Network Service Providers offer a different pricing model. It starts at 600 per month for 10 Mbps and ranges up to 12,000 per month for 1 Gbps. However, there is no charge for traffic in either direction.</p>
+<p>Note that the prices on the website currently reflect a 50% preview discount.</p><br><br><br><br><br><br></body></html>

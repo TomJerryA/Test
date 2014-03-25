@@ -1,22 +1,10 @@
-<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>Parse、iOSとAndroid用の低レベルライブラリ集、Boltsを発表</h3><p><a target="_blank" href="http://www.infoq.com/news/2014/02/parse-announces-bolts"><em>原文(投稿日：2014/02/10)へのリンク</em></a></p>
+<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>Tizen SDK for Wearableを使用したSamsung Gear向けアプリ開発</h3><p><a target="_blank" href="http://www.infoq.com/news/2014/03/samsung-gear-wearable-sdk"><em>原文(投稿日：2014/03/18)へのリンク</em></a></p>
 <div class="article_page_left news_container text_content_container"> 
  <div class="text_info"> 
-  <p>Parse（<a href="https://developers.facebook.com/blog/post/2013/04/25/welcoming-parse-to-facebook/">数ヶ月前にFacebookが買収</a>）がAndroidとiOS用の低レベルライブラリをまとめて、Boltsと名づけてオープンソース化した。Parseの発表によると、BoltsはParse/Facebookの共同成果であり、両社が独自に開発してきた小さな低レベルのユーティリティクラスを固めたものだ。</p> 
-  <p><a href="https://github.com/BoltsFramework">GitHubで公開された</a>最初のBoltsコンポーネントはTasksで、<a href="http://www.promisejs.org/intro/">JavaScript Promiseモデル</a>にしたがった非同期操作を目的としている。</p> 
-  <p>Promiseは<a href="http://www.promisejs.org/intro/">コールバックを使って非同期操作を処理するときによく見られる数々の問題</a>、特に複数のシリアルあるいはパラレルな非同期操作をやろうとすると、コールバック内で非同期操作をネストするせいですぐに面倒なことになるという問題を解決しようとしている。</p> 
-  <p>この目的のために、Promiseは完了するかもしないかもしれない、最終的にエラーになるおそれもあるタスクの結果を表現するもので、非同期操作はその実行結果として即座にPromiseを返すことができる。Promiseはいつでもアクセスすることができ、非同期操作がまだ完了していなければブロックすることができる。</p> 
-  <p>通常、Promiseには2つのコールバック、非同期タスクが完了したときに呼ばれるコールバックと失敗したときに呼ばれるコールバックを関連付ける。Promiseの独特なところは、コールバック自体がPromiseにカプセル化されていることだ。もとのPromiseで起こることに依存して、コールバックは将来のある時点で実行されるか、あるいはまったく実行されないことになる。</p> 
-  <p><img src="http://www.infoq.com/resource/news/2014/02/parse-announces-bolts/en/resources/promise-chaining.png" alt="" _href="img://promise-chaining.png" _p="true" /></p> 
-  <p>上の図にあるように（出典: <a href="http://www.slideshare.net/drprolix/promises-16473115">Promises, Luke Smith</a>）、この仕組みのおかげで、Promiseをつなげて非同期操作とそのコールバックを表現することができるので、一連の非同期操作は扱いやすくなる。</p> 
-  <p>Promiseのもう1つの利点は、Promiseのチェーンをエラーが伝搬するところにある。Promiseはそれが満たされたか否かを知っており、エラーハンドラが見つかるまでエラー状態はPromiseのチェーンを伝播することになる。そのため、チェーンに含まれる非同期操作ごとにエラーハンドラを用意する必要はない。</p> 
-  <p>Promisesの実装は<a href="http://www.infoq.com/articles/surviving-asynchronous-programming-in-javascript">JavaScript</a>、<a href="http://www.infoq.com/presentations/Asynchronous-Scala-Java">Scala</a>、<a href="http://dev.clojure.org/display/design/Promises">Clojure</a>など、多数の言語で利用できる。</p> 
-  <p>Parseによると、Tasksには<a href="https://github.com/BoltsFramework/Bolts-Android">AndroidのAsyncTask</a>や<a href="https://github.com/BoltsFramework/Bolts-iOS">iOSのNSOperation</a>よりも、さまざまなメリットがあるという。</p> 
-  <ul> 
-   <li>複数のタスクを連続実行をしても、コールバックのみを使った場合に起こるネストされた「ピラミッド」コードにはならない。</li> 
-   <li>Tasksは完全に構成可能であり、分岐、平行処理、複雑なエラーハンドリングが実行できる。</li> 
-   <li>タスクベースのコードを実行される順番に並べることができ、ロジックをコールバック関数に散らばらせる必要がない。</li> 
-  </ul> 
-  <p>BoltsコンポーネントはParseやFacebookのサービスとはまったく関係がなく、利用するのにParseやFacebookの開発者アカウントは必要ない。</p> 
-  <p>さらなるBoltsコンポーネントが発表されているが、Parseはまだ詳細をリリースしていない。</p> 
+  <p>Androidを搭載した第１世代のウェアラブルデバイスに続いてSamsungは，Intelと共同で開発したオープンソースのモバイルオペレーティングシステムである<a href="http://www.infoq.com/news/2011/09/Tizen">Tizen</a>を基盤とした，第２世代のデバイスの市場投入を決定した。そして今回，アプリケーション開発のための<a href="https://developer.tizen.org/downloads/tizen-sdk#wearable">SDK</a>がリリースされている。</p> 
+  <p>Samsung Gearのアプリには２つのタイプがある。ひとつはデバイス上でのみ動作する，ネットワーク接続の不要な&quot;Standalone&quot;，もうひとつはスマートフォンやタブレット上で動作するAndroidアプリケーションと，Gearデバイス上で動作するTizen側ウィジェットという，２つのコンポーネントを持った&quot;Host-Gear&quot;だ。コンポーネント間の通信にはBluetoothを使用する。ウィジェットの開発はTizen Wearable IDE上で，エミュレータを使って行う。作成したアプリは対応するホストアプリと別々に，あるいは一緒にパッケージした上で<a href="http://seller.samsungapps.com/">Samsung App Seller Office</a>に提出して，同社のアプリストアへの受け入れ前にレビューを受ける。App StoreやGoogle Playの場合と同様，Gearアプリの販売から生じる収入の30%はSamsumgが収得する。ユーザは，ホストとなるスマートフォンにインストールされたGear Managerを使ってアクセスし，アプリケーションをダウンロードする。</p> 
+  <p>デバイス上でのウィジェットは，Tizenの<a href="https://developer.tizen.org/dev-guide/2.2.0/org.tizen.web.appprogramming/html/basics_tizen_programming/web_runtime.htm">Web Runtime</a>内に表示される。Web Runtimeは，Chromeを使用しないHTML5 アプリケーション用ブラウザウィンドウだ。Tizen SDK for WearableはUbuntu 32および64bit，Windows 7 32および64bit，Max OS X上で動作する。</p> 
+  <p>Tizenプロジェクトが開始されたのは2011年9月のことだった。Samsungは今年のMWC 2014で，このオペレーティングシステムを使用した最初のスマートフォンを公開した。Ars Technicaではこのデバイスを評して&quot;優れた機能を備えたAndroidクローン&quot;と呼び，Andoirdに匹敵する豊富な機能と優れた性能に注目している。Samsungは，最終的にTizenが向かう方向を伺っているように思える。Androidと対等に競うことのできるOSに仕上げることは可能だろうが，大きな問題が残っている – アプリケーションだ。生まれたばかりのマーケットに対して，開発者たちはアプリを作ってくれるだろうか？</p> 
+  <p>Gearアプリに関しては，事態はさらに難しくなっている。AndroidとTizenの両方で開発しなければならないからだ。２つの異なったAPIを学び，2つのSDKで作業する必要がある。さらにウェアラブルデバイス用のGoogle SDKの登場も間近に迫っている。CNETによれば，<a href="http://news.cnet.com/8301-1023_3-57620090-93/google-to-launch-sdk-for-android-wearables-in-two-weeks/">今週中には発表されるはず</a>だ。</p> 
  </div> 
 </div><br><br><br><br><br><br></body></html>

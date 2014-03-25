@@ -1,22 +1,6 @@
-<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>从高层次并发角度比较AkkaActor和JavaEJB</h3><p>从架构原理和编码风格方面比较<a href="http://akka.io/">Akka</a> Actor和<a href="http://docs.oracle.com/javaee/7/tutorial/doc/overview008.htm/">Java EE 7 EJB</a>，尤其是无状态会话Bean和JMS消息驱动Bean，既有共同点，如三种类型都支持垂直和水平扩展。又有不同点，例如对异常和事务的处理方面。这是Gerald Loeffler博士在最近的一次<a href="https://skillsmatter.com/skillscasts/4987-high-level-concurrency-akka-actors-and-java-ee-7-ejbs#video">介绍性讲座</a>中，从高层次并发角度解释和比较这三种方式后作出的总结。</p>
-<p>Gerald是一名高级集成架构师，在此次讲座中，他将高层次并发定义为一种编程范式，在组件级别处理并发，并且要尽可能地向上抽象，使其与处理单个线程或任务以及向线程池提交等具体操作解除耦合。</p>
-<p>他围绕着<a href="http://en.wikipedia.org/wiki/Active_object">Active Object设计模式</a>思想展开演讲，该模式与传统设计模式相对独立，但是思想是相同的。演讲中的案例使用Scala语言，但是他认为所讲内容Java也适用。</p>
-<p>对于Gerald来说，从Active Object角度，有一个简单的心智模型：</p>
-<ul> 
- <li><strong>Akka Actor</strong>接收任意对象形式的消息，并以队列形式存储在邮箱中。通过统一的接口分别管理和定位这些消息。</li> 
- <li><strong>无状态会话Bean</strong>暴露在应用服务器中执行的异步方法，由容器控制其生命周期。</li> 
- <li><strong>JMS消息驱动Bean</strong>从JMS队列/主题中接收和处理预定义类型的消息。和会话Bean类似，该类型的Bean也由容器管理。</li> 
-</ul>
-<p>这三种类型的相同点是由线程异步执行，线程一般从线程池中获取，对同一个实例顺序访问。</p>
-<p>Gerald使用以下三种模式对这三种类型进行了比较，并配有相应的代码案例：</p>
-<ul> 
- <li><strong>本地单向异步请求</strong>，请求者向响应者发送异步请求，而响应者不会响应请求。</li> 
- <li><strong>请求异步上下文外请求</strong>，请求者向响应者发送消息，响应者响应请求并返回消息，请求者接收到消息后需要重建上下文。</li> 
- <li><strong>请求异步上下文内请求</strong>，当接收返回消息时，请求者通过某种方式已经保存了上下文。</li> 
-</ul>
-<p>最后，Gerald简短地总结了这三种类型的相同点，如三种类型都使用线程池，支持垂直和水平扩展，以及不同点，如异常处理，监督策略和事务处理。</p>
-<p><a href="http://akka.io/">Akka</a>是一款开源工具包和运行环境，用于在JVM中构建并发和事件驱动型应用。 <a href="http://en.wikipedia.org/wiki/Enterprise_JavaBeans">企业Java Bean</a>，即EJB，是Java EE标准的一部分，目前版本是<a href="http://www.oracle.com/technetwork/java/javaee/overview/index.html">Java EE 7</a>。</p>
-<p><strong>查看英文原文：</strong><a href="http://www.infoq.com/news/2014/02/akka-ejbs-concurrency">Akka Actors vs. Java EJBs from a High-Level Concurrency Perspective</a><a href="http://www.infoq.com/news/2014/03/orion-5"></a></p>
-<hr />
-<p>感谢<a href="http://www.infoq.com/cn/author/邵思华">邵思华</a>对本文的审校。</p>
-<p>给InfoQ中文站投稿或者参与内容翻译工作，请邮件至<a href="mailto:editors@cn.infoq.com">editors@cn.infoq.com</a>。也欢迎大家通过新浪微博（<a href="http://www.weibo.com/infoqchina">@InfoQ</a>）或者腾讯微博（<a href="http://t.qq.com/infoqchina">@InfoQ</a>）关注我们，并与我们的编辑和其他读者朋友交流。</p><br><br><br><br><br><br></body></html>
+<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>聚焦Visual Studio的CodeLens功能</h3><p>在与Visual Studio 2013旗舰版一并提供的功能中，CodeLens是最受欢迎的一个。在开发人员编辑的时候，<a href="http://msdn.microsoft.com/en-us/library/dn269218.aspx">CodeLens</a>提供了他正在使用的源代码的元信息。如果结合Team Foundation Server（TFS）一起使用，它还可以动态提供一些有用的数据：单元测试结果、更改历史、工作项历史。即将发布的VS2013 Update 2将会向该功能添加一项新的能力，称为“传入更改（Incoming Change）”。</p>
+<p>传入更改意在使在TFS上使用多个分支更容易。CodeLens状态栏增加了另一个字段（“传入更改”是个有用的标签），点击它（或者通过热键ALT+6访问）会产生一个工具提示，上面有几部分新信息：发生更改的分支名称、更改所在的变更集、作者和更改时间。</p>
+<p>这为什么有用？好的，当开发人员在自己的部分上工作时，该功能可以使他察觉到源代码树上正在发生的更改。他们可能并没有影响他的工作，但如果影响了，则可以避免负面冲突。<a name="OLE_LINK2"></a><a name="OLE_LINK1">Code diffs</a>也可以用于比较即将传入的更改和开发人员编辑器中的文件内容。</p>
+<p>细节级别是可配置的，如果对中间分支合并的完整更改历史感兴趣，那么就可以让它们都显示。（它们默认是隐藏的。）CodeLens的全部功能本身也是可以在选项菜单下配置的。传入更改和CodeLens提供的其它指示器可以根据需要单独启用和禁用。</p>
+<p>微软的Mathew Aniyan<a href="http://blogs.msdn.com/b/visualstudioalm/archive/2014/03/03/new-codelens-indicator-incoming-changes.aspx">提供</a>了一篇详细描述传入更改的文章，读者可以从中看到一个完整的图文并茂的演练。如果要试用该功能，则需要Team Foundation Server 2013 Update 2 RC和应用了Update 2 CTP2的Visual Studio 2013旗舰版。</p>
+<p><b>查看英文原文：</b><b><a href="http://www.infoq.com/news/2014/03/codelens_IC">Bringing Visual Studio's CodeLens Into Focus</a></b></p><br><br><br><br><br><br></body></html>

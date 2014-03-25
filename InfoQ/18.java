@@ -1,35 +1,48 @@
-<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>How Team Members Learn From Each Other in Agile Teams</h3><p>When adopting agile teams can use (external) coaches and mentors. But teams can also develop themselves by having team members mentoring and coaching each other. Team members can learn skills and abilities from other team members in multidisciplinary teams, enabling the team to grow as a whole and become self-organized.</p>
-<p>Scott W. Ambler explains in <a href="http://disciplinedagiledelivery.wordpress.com/2014/01/21/myths-and-misunderstandings-about-agile-teams/">myths and misunderstandings about agile teams</a> how agile supports that team members learn from each other.</p>
+<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>Managing your Software Debt</h3><p>Software debt exists in different ways. <a href="http://www.infoq.com/technicaldebt/">Technical debt</a>&nbsp;is widely known, some other forms are competence debt and quality debt. Software debt can cause product maintenance costs to increase and can depress developers. Several solutions exist to manage software debt.</p>
+<p>In the blog post&nbsp;<a href="http://www.leanway.no/competence-debt/">the other kind of software debt</a> Niklas Bj&ouml;rnerstedt talks about “competence debt”. He defines it as:</p>
 <blockquote> 
- <p>Agile promotes iterative, collaborative, and experimental strategies. This promotes learning within the team, it doesn’t reduce it. Agile, and lean strategies in particular, expect the team to learn as you go. They’ll learn more about the domain, about the technologies they’re working with, about how to work effectively, and about each other. When people work together collaboratively, not alone at their own desks, they start to pick up skills from one another naturally.</p> 
+ <p>The gap between what is in your codebase and how much of it you understand.</p> 
 </blockquote>
-<p>As a way to learn new skills and abilities, team members can coach each other as described in the article <a href="http://www.scrumexpert.com/knowledge/agile-coaching-everybody-needs-to-be-a-coach-in-agile/">everybody needs to be a coach in agile</a> on scrumexpert.com:</p>
+<p>To keep software maintenance low you should pay attention to both technical debt and competence debt, as Niklas explains:&nbsp;</p>
 <blockquote> 
- <p>When you observe a well-knit team in action, you’ll see a basic hygienic act of peer-coaching that is going on all the time. Team members sit down in pairs to transfer knowledge. When this happens, there is always one learner and one teacher. Their roles tend to switch back and forth over time with, perhaps, A coaching B about TCP/IP and then B coaching A about implementation of queues. When it works well, the participants are barely even aware of it. They may not even identify it as coaching; to them, it may just seem like work.</p> 
+ <p>Just as technical debt inexorably grows with time unless you fight it, competence debt also grows with time. The biggest difference between the two types of debt is that while technical debt grows faster the more you change a codebase, competence debt grows faster if you stop changing it! Competence debt is therefore a problem that is most acute in mature systems where active development has ended.</p> 
 </blockquote>
-<p>Mike McLaughlin talks about his experiences with mentoring in <a href="http://blogs.versionone.com/agile_management/2013/07/08/the-agile-coach-on-mentoring/">the agile coach on mentoring</a>. He gives an example how colleagues can be mentors for each other:</p>
+<p>Niklas&nbsp;proposes two techniques that can be used to reduce your debt: programming in pairs and code refactoring:&nbsp;</p>
 <blockquote> 
- <p>First off, you can have more than one mentor. And maybe you don’t even tag them with that moniker. That’s a lot of responsibility. Stop by their desk and ask them if they have a couple minutes for a quick chat on something perplexing or that you’d like to know more about. If they’re a good mentor, they’ll guide you, rather than answering all your questions directly.</p> 
+ <p>For me, the real value of pair programming is in reducing both technical debt and competence debt. By pairing, team members broaden the areas of the codebase they are familiar with and increase overlap. In a similar manner, the value of refactoring is not just the reduction of technical debt. Refactoring is a great way of reducing competence debt too. It is only when you can change a system that you truly understand it.</p> 
 </blockquote>
-<p>Team members mentoring each other can be a win-win solution for learning as Mike describes:</p>
+<p>When competence debt is accrued&nbsp;the effort needed to maintain systems increases, up to a point where organizations start to consider replacing the system:</p>
 <blockquote> 
- <p>Your relationship with a mentor should be a two-way street. The mentor needs to get something out of it as well. It’s not all about you all the time. Be sincerely interested in them. It’ll show and grow your bond with that person. At the end of the day, we’re all constantly learning from each other.</p> 
+ <p>People would claim that the old system was impossible to maintain when the real problem was that they did not understand how it worked. Yes, technical debt made things worse since the confusing code and lack of automated tests made it frustrating to understand the system. The impulse to rewrite typically comes when too few of the original developers are left and the business is unable to find new developers that are able or willing to learn.</p> 
 </blockquote>
-<p>Agile teams are often multidisciplinary. Tirrell Payton provides ideas for team members to learn new skills from each other in his blog post <a href="http://www.payton-consulting.com/can-agile-team-truly-cross-functional-team-member-different-skills-sets">how can an agile team be truly cross functional when team member have different skills sets?</a></p>
+<p>Mike Hustler wrote a blog post about&nbsp;<a href="http://www.appneta.com/blog/agile-technical-debt/">the most agile way to manage technical debt</a>&nbsp;where he discusses how to balance&nbsp;between developing product capabilities and managing technical debt.&nbsp;He explains&nbsp;how handing products over to a&nbsp;maintenance team can lead to increasing technical and competence debt:</p>
 <blockquote> 
- <p>Cross functionality doesn’t happen over night, and with a team that is just starting, you get very little cross functionality to start. This happens over time, with pairing, cross training, lunch and learn sessions, and other modes of sharing information about “how things work”.</p> 
- <p>Look for easy ways to make your teams cross functional first, then move up in difficulty. Allow time for the team to learn from each other and round out their skills. Allow for promiscuous pairing, and the cross functionality will come as a result of people’s natural curiosity.</p> 
+ <p>I have seen organizations build a separate maintenance team that is, for example, half the size of the new-feature team. In my opinion, this is the wrong approach (at least for the size of teams we work with). (…) The follow through which comes from the pride of ownership is lost because someone else is dealing with the bugs created by a different person, in fact a different team. Without solid communication, the backstory of why a certain initial approach was taken is lost. The domain knowledge is not present and thus the efficiency in fixing the issue is reduced. Even worse, I’ve seen maintenance teams of less experienced developers have trouble identifying the root cause of issues, resulting in band-aid fixes where rework would be preferred.</p> 
 </blockquote>
-<p>Skip Angel mentioned attributes of team members to become self-organized in the blog post <a href="http://www.bigvisible.com/2013/09/self-organization-the-secret-sauce/">self-organization: the secret sauce</a> which includes ideas that support team members to learn from each other:</p>
+<p>Technical debt depresses&nbsp;developers and can make them&nbsp;decide to leave which increase competence debt as Cory House&nbsp;described in his blog post&nbsp;<a href="http://blog.pluralsight.com/7-reasons-clean-code-matters">7 reasons clean code matters</a>:</p>
+<blockquote> 
+ <p>Writing sloppy or confusing code injects technical debt into our projects. And while technical debt can be useful when carefully considered in context, excessive technical debt is depressing and drives talent away from the organization. When the easy things become hard, developers start voting with their feet and go elsewhere. Developers derive more job satisfaction out of the quality of their work than the quantity. Technical debt decreases the chance of reuse and sets a low bar for quality throughout the rest of the code base.</p> 
+</blockquote>
+<p>David Hammerslag wrote&nbsp;the blog post&nbsp;<a href="http://www.bigvisible.com/2013/10/want-predictability-avoid-quality-debt/">want predictability? Avoid quality debt</a>&nbsp;where he&nbsp;discusses the effects of leaving defects that have been found in the code unsolved. His definition of quality debt is:</p>
+<blockquote> 
+ <p>Quality Debt is a measure of the effort needed to fix the defects existent in a software product at any given point in time.</p> 
+</blockquote>
+<p>He compares quality debt with technical debt:&nbsp;</p>
+<blockquote> 
+ <p>Technical debt is a measure of the quality of the design and the code, which is the internal quality of the software. Quality debt is a measure of the external quality of the code, the things that the user sees and experiences. A user never (directly) sees technical debt.</p> 
+ <p>A program could be completely quality debt free and have a huge technical debt. It could correctly implement all the required and expected functionality and run flawlessly. Yet its technical debt could be enormous, exhibiting every poor software design and implementation you can imagine. On the other hand, the best designed, most sublimely elegant code could still produce wrong results or be missing functionality.</p> 
+</blockquote>
+<p>&nbsp;Quality debt shouldn’t be ignored as David explains:</p>
+<blockquote> 
+ <p>Quality Debt is much like a financial debt: the older it gets the harder it is pay down. In the worst case a project puts off testing until the development is done. It is well established that the longer a defect ages the harder it is to fix. If many defects persist (either known or unknown) the effect is exacerbated as the defects mask each other, and fixes involve the same code.</p> 
+</blockquote>
+<p>&nbsp;David suggests several agile practices that can be used to manage defects and keep your quality debt low:</p>
 <blockquote> 
  <ul> 
-  <li>Accept change – Team is always looking for ways to improve how they work, we should be willing to open minded and accept change as it happens.</li> 
-  <li>Try new things – Team makes commitments as a group, we may have to step out of our comfort zone and learn something new in order to help the team commitment. This requires taking risks, experimenting and helping the team with work outside your job description.</li> 
-  <li>Take action, instead of waiting to be told what to do – We can not wait for someone to tell us what to do, if we see something that needs to be done, we share that with the team or do it if necessary.</li> 
-  <li>Help others to succeed – If you see that someone needs help or more experience in a certain skill, offer your assistance if you can. In the end, this helps the team succeed.</li> 
-  <li>Consensus decision making – The team will have to make many decision, they will need to agree as a team on how they will make decisions.</li> 
-  <li>Peer coaching and feedback – The team should be looking for ways to become cross-functional and amplify learning. One way of doing this is through peer coaching and giving feedback to one another.</li> 
-  <li>Group problem solving – The team is responsible for solving problems together quickly.</li> 
-  <li>Conflict management – Learning how to resolve conflicts, teams will have to agree together on how they will resolve conflicts amongst the team.</li> 
+  <li>Definition of Done.</li> 
+  <li>BDD / Automated Acceptance Testing.</li> 
+  <li>Continuous Integration.</li> 
+  <li>Automated Testing.</li> 
+  <li>Don’t tolerate “broken windows”.</li> 
  </ul> 
 </blockquote><br><br><br><br><br><br></body></html>

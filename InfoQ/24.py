@@ -1,22 +1,33 @@
-<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>Masonryを使用したiOS Auto Layout</h3><p><a target="_blank" href="http://www.infoq.com/news/2014/02/ios-auto-layout"><em>原文(投稿日：2014/02/07)へのリンク</em></a></p>
-<div class="article_page_left news_container text_content_container"> 
- <div class="text_info"> 
-  <p>オープンソースプロジェクトMasonry目標は，Auto Layoutのコードをもっと簡潔で読みやすくすることだ。</p> 
-  <p><a href="https://github.com/cloudkite/Masonry">Masonry</a>は，XIBやStoryboardを必要としないエクスペリエンスを実現するために “Auto Layoutを適切なシンタックスでラップする，ライトウェイトなレイアウトフレームワーク” である。開発者のJonas Budelmann氏の<a href="https://github.com/cloudkite/Masonry#whats-wrong-with-nslayoutconstraints">主張</a>によれば，AutoLayoutは強力である反面，そのコードは冗長で可読性の低いものになる傾向がある。</p> 
-  <p>Masonryはドメイン固有言語(DSL, Domain Specific Language)である。制約の定義と更新，属性参照，プライオリティ設定，デバッグサポートといったAuto Layoutの持つすべての機能を，使いやすいメソッドとして提供する。</p> 
-  <p>GitHubで公開されているサンプルコードは<a href="https://github.com/cloudkite/Masonry#prepare-to-meet-your-maker">一般的な使用方法と同時に，Masonryのコードの簡潔さ</a>を示すようにデザインされている。</p> 
-  <pre><p>UIEdgeInsets padding = UIEdgeInsetsMake(10, 10, 10, 10);</p><p>[view1 mas_makeConstraints:^(MASConstraintMaker *make) {<br />&nbsp;&nbsp; make.edges.equalTo(superview).with.insets(padding);<br />}];</p>
-</pre> 
-  <p>Auto Layoutの中核にあるのは<a href="https://developer.apple.com/library/ios/documentation/UserExperience/Conceptual/AutolayoutPG/AutoLayoutConcepts/AutoLayoutConcepts.html#//apple_ref/doc/uid/TP40010853-CH14-SW2">制約(constraint)</a>である。これはUI要素間の関係を数学的に表現したもので，優先度(priority)としきい値(threshold)で管理されたサイズと相対的位置で構成されている。制約は付加的に設定されることで<a href="https://developer.apple.com/library/ios/documentation/userexperience/conceptual/AutolayoutPG/ResolvingIssues/ResolvingIssues.html#//apple_ref/doc/uid/TP40010853-CH17-SW5">干渉</a>が発生することや，制約が不十分なために<a href="https://developer.apple.com/library/ios/documentation/userexperience/conceptual/AutolayoutPG/ResolvingIssues/ResolvingIssues.html#//apple_ref/doc/uid/TP40010853-CH17-SW7">曖昧さ</a>を生じることがあるが，いずれの場合も例外をスローさせることが可能だ。</p> 
-  <p>ビューの参照を持つ<a href="https://developer.apple.com/library/ios/documentation/AppKit/Reference/NSLayoutConstraint_Class/NSLayoutConstraint/NSLayoutConstraint.html">NSLayoutConstraint</a>を生成して属性や関連性を設定すれば，Masonryを使用せずにプログラム的に制約を生成することもできる。Appleも<a href="https://developer.apple.com/library/ios/documentation/UserExperience/Conceptual/AutolayoutPG/VisualFormatLanguage/VisualFormatLanguage.html#//apple_ref/doc/uid/TP40010853-CH3-SW1">Visual Format Language</a>という，関連性をテキストとして定義するDSLを提供している。</p> 
-  <p>Auto Layoutは義務的や排他的なものではなく，“Springs and Struts”方式のアプローチは現在でも有効だ。“Springs and Struts”，すなわち<a href="https://developer.apple.com/library/ios/documentation/UIKit/Reference/UIView_Class/UIView/UIView.html#//apple_ref/doc/uid/TP40006816-CH3-SW6">自動サイズ変更マスク</a>とは，親ビューの境界が変更されたときの応答方法を定義するものだ。</p> 
-  <p>Appleは<a href="https://developer.apple.com/library/ios/documentation/UserExperience/Conceptual/TransitionGuide/index.html#//apple_ref/doc/uid/TP40013174">Auto Layoutの採用に関して，説得力のある理由</a>を用意している。</p> 
-  <ul> 
-   <li>“Springs and Struts”では画面の方向やスクリーンサイズの違い，動的コンテントのサポートなどのために<a href="https://developer.apple.com/library/ios/documentation/WindowsViews/Conceptual/ViewPG_iPhoneOS/CreatingViews/CreatingViews.html#//apple_ref/doc/uid/TP40009503-CH5-SW35">コード</a>が必要。</li> 
-   <li>iOS 7の<a href="https://developer.apple.com/library/ios/documentation/userexperience/conceptual/transitionguide/AppearanceCustomization.html">Dynamic Type</a>により，ユーザがアプリのテキストサイズを好みに合わせて指定可能。</li> 
-   <li>iOS 6とiOS 7の両方をサポートし，各要素のメトリック上の違いを吸収。</li> 
-  </ul> 
-  <p>Auto Layoutにも基本的な問題がないとは言えない。Appleでは，一般的に使用されるUIScrollViewとAuto Layoutを併用するための<a href="https://developer.apple.com/library/ios/technotes/tn2154/_index.html#//apple_ref/doc/uid/DTS40013309">ガイダンス</a>を公開している。Matt Neuburg氏は“<a href="http://stackoverflow.com/questions/12943107/how-do-i-adjust-the-anchor-point-of-a-calayer-when-auto-layout-is-being-used/14105757#14105757">Auto Layoutがビュートランスフォームではうまく動作しない</a>”理由に関して，説得力のある論証を行うとともに，その代用としてレイヤトランスフォームを多用するように推奨している。</p> 
-  <p>Auto Layoutで作成するコードでは，<a href="https://developer.apple.com/library/ios/documentation/DeveloperTools/Conceptual/WhatsNewXcode/Articles/xcode_5_0.html#//apple_ref/doc/uid/TP40012953-SW25">Xcode 5で可能になったInterface Builderの拡張のメリットを享受することはできない</a>。具体的には<a href="https://developer.apple.com/library/ios/documentation/UserExperience/Conceptual/AutolayoutPG/ResolvingIssues/ResolvingIssues.html#//apple_ref/doc/uid/TP40010853-CH17-SW1">Auto Layoutの問題を視覚的に解決する機能</a>や，異なる方向，iOSバージョン，デバイスサイズの違いを確認するための<a href="https://developer.apple.com/library/ios/documentation/userexperience/conceptual/transitionguide/SupportingEarlieriOS.html">アシスタントエディタのプレビューモード</a>などだ。</p> 
- </div> 
-</div><br><br><br><br><br><br></body></html>
+<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>AmazonがAppStream APIにHALメディアタイプを選択</h3><p><a target="_blank" href="http://www.infoq.com/news/2014/03/amazon-hal-appstream"><em>原文(投稿日：2014/03/03)へのリンク</em></a></p>
+<p>Amazonは，Amazon AppStreamプラットフォームにホストされたアプリケーションをプログラムから管理可能な新API，&quot;<a href="http://docs.aws.amazon.com/appstream/latest/developerguide/rest-api.html#rest-api-hal">ApStream API</a>&quot;をリリースした。このAPIの開発で同社が選択したのは<a href="http://tools.ietf.org/html/draft-kelly-json-hal-06">HALメディアタイプ</a>だ。HALは，マシン・ツー・マシンAPIを構築するメディアタイプのための，最小限のハイパーメディアである。Amazonは，一般公開されている製品の技術としてハイパーメディアを選択した最大の組織のひとつ，ということになる。</p>
+<p>ハイパーメディアAPIはAPIの世界ではホットな話題だが，その支持者に対しては，現実での適用性に関する疑問が投げられることも多い。技術的な研究や議論が激増する一方で，ハイパーメディアAPIは現在のAPIエコシステムのごく一部を構成するに過ぎないのだ。SOA形式の製品開発をAmazonの開発チームに求めたのが，同社CEOのJeff Bezos氏であるというのはよく知られた話だ。その結果，数多くの内部APIと外部APIが作り出されることになった。最大ハイテク企業のひとつがHALを使ったハイパーメディアに賛成票を投じたことは，ハイパーメディア支持派を勇気づけるに違いない。</p>
+<p>ハイパーメディアコミュニティが現在取り組む課題のひとつがドキュメント化だ。ハイパーメディアサービスのドキュメントとはメディアタイプの定義であって，それ以上のものはない，というのが従来の答だ。しかしこのアプローチは，既存のアーキテクチャスタイルとは大きく異なっている。このギャップを埋めるために，コミュニティは新たな戦略に取り組んでいる。</p>
+<p>AppStream APIチームはAPIを，ヘッダ値，エラーコード，トップレベルリソース，リンク関係という，４つの大きなセクションの文書化を決定した。HTTPステータスコードとURLとパラメータの組み合わせに注目する，これまでのRESTfulサービスとは大きく異なる，従来のハイパーメディアのアプローチに極めて近い方法だ。HALユーザが仕様と用途について議論する場である<a href="https://groups.google.com/forum/#!msg/hal-discuss/3IyTn17m7Ps/AeBpQXadn8gJ">HAL-discussメーリングリスト</a>で，Andr&eacute;s Freyr&iacute;a Cede&ntilde;o氏は次のように発言している。</p>
+<blockquote> 
+ <p>ドキュメントに対する私の直感的な感想は，&quot;ハイパーメディアAPIが一般的なものならば，これで十分な資料だろう&quot;という線に沿ったものでした。しかし現在の状況を考えれば，開発者の作業の補助として十分なリソースであるとは言えません。</p> 
+</blockquote>
+<p>この傾向がどのように続いて，ハイパーメディアがAPIパターンとして確立されていくかは，今後明らかになるだろう。</p>
+<p>HALは現在，メディアタイプとしてIETFで標準化作業が続けられている。Mike Kelly氏によって生み出されたHALは，XMLとJSONに対して一連の規則を提供することによって，リソースの相互リンクをシンプルかつ分かりやすく表現することを目標にしている。</p>
+<p>次のHALレスポンスのサンプルはドラフトから抜粋したものだ。</p>
+<pre>
+{
+     &quot;_links&quot;: {
+       &quot;self&quot;: { &quot;href&quot;: &quot;/orders/523&quot; },
+       &quot;warehouse&quot;: { &quot;href&quot;: &quot;/warehouse/56&quot; },
+       &quot;invoice&quot;: { &quot;href&quot;: &quot;/invoices/873&quot; }
+     },
+     &quot;currency&quot;: &quot;USD&quot;,
+     &quot;status&quot;: &quot;shipped&quot;,
+     &quot;total&quot;: 10.20
+   }
+</pre>
+<p>HALでは<small>
+  <bold>
+   _links
+  </bold></small> と<small>
+  <bold>
+   _embedded
+  </bold></small>というトップレベルの予約プロパティが２つ定義されているが，ここでは<small>
+  <bold>
+   _links
+  </bold></small>を使用している。このオブジェクト中のリンク方法が，HALで標準化されたものだ。この例では架空の&quot;orders&quot;リソースへのリンクがあり，orderの格納されているwarehouseと，現在このorderに関連付けられている invoiceの両方にリンクしている。</p><br><br><br><br><br><br></body></html>

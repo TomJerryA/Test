@@ -1,30 +1,21 @@
-<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>LocalForage：引领离线时代</h3><p>Mozilla基金会发布了<a href="https://github.com/mozilla/localForage">localForage</a>，一个致力于简化web应用中离线数据存储过程的新型JavaScript库。</p>
-<p>因为<a href="http://www.html5rocks.com/en/tutorials/offline/whats-offline/#toc-html5-offline-storage">可选项很多</a>，离线支持虽说不是新兴浏览器技术，也常常过于碎片化。LocalForage的独到之处在于尝试融合两方优势：用简单API实现某些新兴技术特性（异步和blob支持）。这能为web应用提供强大的离线能力，使其更接近本地移动版本，这样，开发者工作起来也会更自然。</p>
-<p><a href="http://www.w3schools.com/html/html5_webstorage.asp">LocalStorage</a>是最早出现的一种可选技术，这一技术为离线存储提供了简单的数据访问功能。然而，<a href="http://calendar.perfplanet.com/2011/localstorage-read-performance/">基准测试</a>证实其速度较慢，而且只能同步使用，且无法处理二进制blob （例如，无法处理mp3文件缓存）。此后相继出现了其他两种很受欢迎的技术——<a href="https://developer.mozilla.org/en-US/docs/IndexedDB">IndexedDB</a>和<a href="http://html5doctor.com/introducing-web-sql-databases/">Web SQL</a>——异步，高效并支持大数据集。这两项技术的缺陷在于其API并不易于使用，而且都不为<a href="http://csimms.botonomy.com/2011/05/html5-storage-wars-localstorage-vs-indexeddb-vs-web-sql.html">所有主流浏览器支持</a>。</p>
-<p>最近发布的localForage尝试通过技术融合来克服这些困难——既有来自IndexedDB和Web SQL的异步性和blob支持，也支持极简的localStorage语法：</p>
-<pre>
-var settings = {color: 'black', font: 'Helvetica'};   
-localForage.setItem('settings', settings, function(result) {   
-  console.log(result);   
-});</pre>
-<p>相比单独使用localStorage，内置的IndexedDB和Web SQL支持能让web应用存储更多数据。其API的非阻塞特性使得web应用不必因get/set调用挂起主线程，从而提高了执行效率。此外，localForage支持回调，而<a href="http://www.promisejs.org/">ES6 Promises</a> 为开发者预留了最佳实现的选择权。</p>
-<p>无需手动管理（最好的驱动应独立于应用运行所依赖的浏览器进行选择），程序库就会自动装载并管理IndexedDB、Web SQL及localStorage驱动。 如果IndexedDB和Web SQL同时不可用，localForage将回退到localStorage，这样处理保证了至少基本数据都能离线存储了（尽管没有blob支持，而且速度会慢上许多）。</p>
-<p>LocalForage支持所有当代浏览器。而所有浏览器都支持异步存储，括号中标注了支持localStorage的浏览器版本：</p>
-<ul> 
- <li>Android Browser 2.1</li> 
- <li>BlackBerry 7</li> 
- <li>Chrome 23 (Chrome 4.0 with localStorage)</li> 
- <li>Chrome for Android 32</li> 
- <li>Firefox 10 (Firefox 3.5 with localStorage)</li> 
- <li>Firefox for Android 25</li> 
- <li>IE 10 (IE 8 with localStorage)</li> 
- <li>IE Mobile 10</li> 
- <li>Opera 15 (Opera 10.5 with localStorage)</li> 
- <li>Opera Mobile 11</li> 
- <li>PhoneGap/Apache Cordova 1.2.0</li> 
- <li>Safari 3.1</li> 
-</ul>
-<p><b>查看原文</b><b>链</b><b>接: </b><a href="http://www.infoq.com/news/2014/02/localforage-offline-data-web">Going Offline with LocalForage</a></p>
-<hr />
-<p>感谢<a href="http://www.infoq.com/cn/author/邵思华">邵思华</a>对本文的审校。</p>
-<p>给InfoQ中文站投稿或者参与内容翻译工作，请邮件至<a href="mailto:editors@cn.infoq.com">editors@cn.infoq.com</a>。也欢迎大家通过新浪微博（<a href="http://www.weibo.com/infoqchina">@InfoQ</a>）或者腾讯微博（<a href="http://t.qq.com/infoqchina">@InfoQ</a>）关注我们，并与我们的编辑和其他读者朋友交流。</p><br><br><br><br><br><br></body></html>
+<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>适合于云端部署的应用架构</h3><p>基于云的应用与运行在私有数据中心的应用之间最大的差别就是可扩展性。云提供了按需扩展的能力，能够根据负载的波动对应用进行扩展和收缩。但是传统应用要充分发挥云的优势，并不是简单地将应用部署到云上就万事大吉，而是需要根据云的特点围绕可扩展性重新进行架构设计，近日<a href="http://www.appdynamics.com/">AppDynamics</a>的开发布道者Dustin.Whittle<a href="http://www.appdynamics.com/blog/cloud/architecting-for-the-cloud/">撰文阐述了适合云端部署的应用架构</a>，对我们传统应用往云端部署有很大的启发和借鉴意义。</p>
+<h2>应用的架构</h2>
+<p>Dustin.Whittle给出了云应用的示例架构，它具有高度的可扩展性，如下图所示：</p>
+<p><img src="http://infoqstatic.com/resource/news/2014/03/architecting-for-the-cloud/zh/resources/0324000.png" width="600" _href="img://null" _p="true" alt="" /></p>
+<p>在这个图中，应用按照分层的理念进行了拆分，分别介绍如下：</p>
+<p><b><i>客户端层：</i></b>客户端层包含了针对目标平台的用户界面，可能会包括基于Web的、移动端的甚至是胖客户端的用户界面。一般来讲，这可能会是Web应用，包含诸如用户管理、会话管理、页面构建等功能，但是其他客户端所发起的交互都需要以RESTful服务的形式调用服务器。</p>
+<p><b><i>服务：</i></b>服务器包含了缓存服务以及聚合（aggregate）服务，其中缓存服务中持有记录系统（system of record）中最新的已知状态，而聚集服务会直接与记录系统交互，并且会执行一些破坏性的操作（会改变记录系统中的状态）。</p>
+<p><b><i>记录系统：</i></b>记录系统是领域特定的服务端，它会驱动业务功能，可能会包括客户管理系统、采购系统、预定系统等等，这些很可能是遗留系统，你的应用需要与其进行交互。聚集服务要负责将你的应用从这些特有的记录系统中抽象出来，并为你的应用提供一致的前端接口。</p>
+<p><i>ESB</i><i>：</i>当记录系统发生数据变化的时候，它需要触发到指定主题（topic）的事件，这就是事件驱动架构（event-driven architecture，EDA）能够影响应用的地方了：当记录系统进行了一项其他系统可能感兴趣的变更时，它会触发一个事件，任何关注记录系统的其他系统会监听到这个事件，并作出对应的响应。这也是使用使用主题（topic）而不是队列（queue）的原因：队列支持点对点（point-to-point）的消息，而主题支持发布-订阅（publish-subscribe）的消息或事件。当与遗留系统进行集成时，我们很期望这些遗留的系统能够免遭负载的影响。因此，我们实现了一个缓存系统，这个缓存系统维持了记录系统中所有最新的已知状态。缓存系统会使用EDA的规则监听记录系统的变化，它会更新自己所保存数据的版本，从而保证与记录系统中的数据相匹配。这是一个很强大的策略，不过会将一致性模型变为最终一致性，也就是说如果你在社交媒体上发布一条状态的话，你的朋友可能在几秒钟甚至几分钟之后才能看到，数据最终是一致的，但有时你所看到的与你的朋友所看到的并不一致。如果能接受这种一致性的话，就能在很大程度上实现可扩展性的收益。</p>
+<p><b><i>NoSQL</i></b><b><i>：</i></b>在数据存储方面，有很多的可选方案，但如果要存储大量数据的话，使用NoSQL存储能够更容易地扩展。有多种NoSQL存储可供选择，不过这要匹配所存储数据的特点，如MongoDB适合存储可搜索的数据，Neo4j适合存储高度互相关联的数据，而Cassandra适合存储键/值对，像Solr这样的搜索索引有利于加速对经常访问数据的查询。</p>
+<p>将应用拆分为多个层的时候，最好的模式就是使用面向服务架构（service-oriented architecture，SOA）。要实现这一点，可以使用SOAP，也可以使用REST，但是REST更为合适，因为它可扩展性更强。作者接下来对REST的理念进行了深入的阐述，InfoQ上关于REST已有很多相关的文章，如<a href="http://www.infoq.com/cn/articles/rest-introduction">这里</a>和<a href="http://www.infoq.com/cn/articles/understanding-restful-style">这里</a>，甚至包括<a href="http://en.wikipedia.org/wiki/Representational_state_transfer">Roy Fielding经典博士论文</a>的<a href="http://www.infoq.com/cn/minibooks/web-based-apps-archit-design">中译本</a>，所以这里不再赘述。不过，作者在这里特别强调了RESTful Web服务能够保持无状态性（stateless）。无状态是实现可扩展性的关键需求，因为无状态，所以请求可以由任何一个服务器响应。如果你在服务层上需要更多的容量时，只需要为该层添加虚拟机即可，而不需关注客户端状态保持的问题，负载可以很容易地重新分配。</p>
+<h2>部署到云端</h2>
+<p>前面介绍了基于云的应用架构，接下来作者阐述了这样的应用该如何部署到云端。</p>
+<p>RESTful Web服务要部署到Web容器中，并且要位于数据存储之前。这些Web服务是没有状态的，只会反映其暴露的底层数据的状态，因此可以根据需要部署任意数量的服务器。在基于云的部署中，开始时可以开启足够的实例以应对日常的需求，然后配置弹性策略，从而根据负载增加或减少服务器的数量。衡量饱和度的最好指标就是服务的响应时间。另外还需要考虑这些服务所使用的底层数据存储的性能。示例的部署图如下所示：</p>
+<p><img src="http://infoqstatic.com/resource/news/2014/03/architecting-for-the-cloud/zh/resources/0324001.png" width="600" _href="img://null" _p="true" alt="" /></p>
+<p>如果在云部署时有EDA的需求，那么就需要部署ESB，作者给出的建议是根据功能对ESB进行分区（partitioning），这样一个segment的过大负载不会影响到其他的segment。如下图所示：</p>
+<p><img src="http://infoqstatic.com/resource/news/2014/03/architecting-for-the-cloud/zh/resources/0324002.png" width="600" _href="img://null" _p="true" alt="" /></p>
+<p>这种分离使System 1的负载与System 2的负载实现了隔离。如果System 1产生的负载拖慢了ESB，它只会影响到自己的segment，并不会影响到System 2的segment，因为它部署在其他硬件上。如果ESB产品支持的话，我们还可以给指定的segment添加服务器来实现扩展。</p>
+<p>基于云的应用与传统应用有着很大的差别，因为它有着不同的扩展性需求。基于云的应用必须有足够的弹性以应对服务器的添加与移除，必须松耦合，必须尽可能的无状态，必须预先规划失败的情况，并且必须能够从几台服务器扩展到成千上万台服务器。</p>
+<p>针对云应用并没有唯一正确的架构，但是本文所阐述的RESTful服务以及事件驱动架构却是经过实践检验有效的架构。作者认为REST和EDA是实现云端可扩展应用的基本工具。</p>
+<p>目前，国内许多传统的软件厂商正在逐渐往云端迁移，希望本文所阐述的架构理念能够为读者提供一些借鉴。</p><br><br><br><br><br><br></body></html>

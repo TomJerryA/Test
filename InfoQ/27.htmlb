@@ -1,48 +1,158 @@
-<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>敏捷项目估算：什么是故事？什么是点数？</h3><h2>引言</h2>
-<p>当你要雇一位漆工来装饰你的房子，或者一位修理工来修你的车时，你会要他们先给个估算，对吗？你需要知道大概会花多少钱，需要多长时间。这是常识。</p>
-<p>然而经验告诉我们什么？初始的估算和最终的账单有多大差距？很有可能漆工会发现有松动的石膏需要铲除，墙面需要修补和重新粉刷；修理工一定会发现要让你车子重新上路还有些其它的问题要解决。在1951年的《纽约客》杂志中有这样一幅漫画，Syd Hoff画了一个修理工对他的客户说：</p>
-<blockquote> 
- <p>“当然，那不过只是个估算，实际的花费一定会更多”</p> 
-</blockquote>
-<p><img _p="true" _href="img://null" alt="" src="http://infoqstatic.com/resource/articles/agile-estimating-why-how/zh/resources/1212020.jpg" /></p>
-<p>如果漆工或修理工告诉我们的这些问题还不是非常紧迫，我们可以选择暂时不处理…… 然而，通常的情况是，我们会觉得不得不修复那些额外的问题。谁会想住在一个可能墙面受潮的房子里，或者开着一辆有可能方向盘失灵的车呢？</p>
-<p>那我们怎么解决这样的问题呢？常见的做法就是我们坚持要工人给一个全面的、确定最终价格的估算，也就是通常我们叫的“报价单”，这样工人就会花更多心思用更长的时间来进行更准确的估算。然而现实中，无论他们如何用心努力，终究还是无法预知到那些意想不到的问题。</p>
-<h2>在项目中，我们面临同样的问题</h2>
-<p>传统上，项目经理往往会致力于创建很详细的估算，这个估算从财务的角度要经得起推敲。当然这样的估算是基于能够预见的情况再加上针对“已知的未知因素”所设的应急预算…… 然而就像Donald Rumsfeld的名言所说“有一些我们未知的未知因素——有些事情我们根本不知道我们不知道”。就像上面那些商人，我们永远无法预知那些意想不到的情况。</p>
-<p>我们花越长的时间来创建详细的估算，麻烦却越多。我们可以把详细的估算看作是一个绑定报价，一个<a href="http://www.estherderby.com/2012/03/estimating-is-often-helpful-estimates-are-often-not.html">不同于真正交付价值的目标</a>，它使得我们的注意力都放到能在协议的日期和成本内交付一些东西——任何东西，无论它的价值高低。</p>
-<p>在每次实施后的回顾评审中，初始估算和实际之间的差距总是让我们备受打击，然后告诉我们自己下次再努力些。爱因斯坦曾经说过，所谓神经错乱就是“一遍又一遍地做同样的事情，却期望得到不同的结果”。因此事情不应该这样，一定有其它更好的方法。</p>
-<p>敏捷项目显然就不是这样？我们何不就从一个大概的需求范围开始，然后在做的过程中逐渐理清细节？嗯，对，但也不全对。在敏捷项目中我们不会去创建详细的估算来束缚自己，但是对将要进行的工作量的大小有一个认识还是很重要的，这就是为什么……</p>
-<h2>为什么我们需要估算</h2>
-<p>忘掉那些传统的估算，那些漂亮的精心制作的甘特图，那些图表迫使我们的注意力都放在要进行的任务上，而不是要交付的成果。在项目中有三种活动需要我们进行一些粗略的估算。</p>
+<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>从命令式编程到Fork/Join再到Java 8中的并行Streams</h3><p>Java 8带来了很多可以使编码更简洁的特性。例如，像下面的代码：</p>
+<pre>
+Collections.sort(transactions, new Comparator&lt;Transaction&gt;(){
+  public int compare(Transaction t1, Transaction t2){
+    return t1.getValue().compareTo(t2.getValue());
+  }
+});
+</pre>
+<p>可以用替换为如下更为紧凑的代码，功能相同，但是读上去与问题语句本身更接近了：</p>
+<pre>
+transactions.sort(comparing(Transaction::getValue));</pre>
+<p>Java 8引入的主要特性是Lambda表达式、方法引用和新的Streams API。它被认为是自20年前Java诞生以来语言方面变化最大的版本。要想通过详细且实际的例子来了解如何从这些特性中获益，可以参考本文作者和Alan Mycroft共同编写的《<a href="http://www.manning.com/urma/">Java 8 in Action: Lambdas, Streams and Functional-style programming</a>》一书。</p>
+<p>这些特性支持程序员编写更简洁的代码，还使他们能够受益于多核架构。实际上，编写可以优雅地并行执行的程序还是Java专家们的特权。然而，借助新的Streams API，Java 8改变了这种状况，让每个人都能够更容易地编写利用多核架构的代码。</p>
+<p>在这篇文章中，我们将使用以下三种风格，以不同方法计算一个大数据集的方差，并加以对比。</p>
 <ol> 
- <li>当我们在考虑一个新提议项目的合理性时，我们需要提前知道大概的成本，这样才能决定是否值得投入。</li> 
- <li>当我们正在将新的或改进的产品推向市场时，我们需要知道那些<a href="http://www.mountaingoatsoftware.com/blog/assigning-story-points-at-the-right-time-or-not-at-all">重要的特性大概什么时候可以发布</a>，这样我们才能安排相关的活动。</li> 
- <li>当我们在为工作排优先级时，产品负责人需要知道每个故事（或待办清单项）的成本，而团队需要知道每个故事的价值。</li> 
+ <li>命令式风格</li> 
+ <li>Fork/Join框架</li> 
+ <li>Streams API</li> 
 </ol>
-<p>有件事很有意思，<a href="http://msdn.microsoft.com/en-us/library/hh273052/">只要整个团队都一起参与进来共同协作</a>，估算本身也可以变成一种很有意义的活动。它有助于团队增进理解，并保证团队每个人都对要交付的需求范围和价值达成共识。</p>
-<p>然而对“估算”这个词的传统理解可能会让我们偏离这个方向。</p>
-<h2>使用“大小”而不是“估算”</h2>
-<p>为了避免让人误会我们讨论的是对成本和时间的估算，当我们评估一个故事的复杂程度时，有些人喜欢用“大小”而不是“估算”来描述。在90年代当我第一次使用Scrum和XP时——那时它们都还没有被称为敏捷实践——我们是使用T-shirt尺寸来评估故事的大小（S，M，L，和XL）。</p>
-<p>现在我们使用故事点数——<a href="http://agile.dzone.com/articles/story-point">一种评估故事之间相对大小的方法</a>——因此我们先找到可能最简单的故事，将它的点数设为1点，接下来用其他的故事与它进行比较，如果另一个故事比这个更复杂，那个故事可能就是3点。</p>
-<p>让评估变得更有趣的是，我们不采用简单连续的数列，比如1，2，3，4，5等——而是采用一种近似菲波拉契数列的形式，像1，2，3，5，8，13等（就如《达芬奇密码》里面看到的）。这样当数字越大相邻数之间的间隔也越大，使得我们更容易区分哪个故事更小哪个更大。</p>
-<p>尽管这不是一种精确的科学，但对上面提到的三种需要估算的情况这种方法已经足够好了。像John Maynard Keynes所说，“粗略的正确好过精确的错误”。这也意味着，我们仍然需要将故事点数转换成粗略的时间和成本估算。</p>
-<p>另一个主要用于敏捷项目的实践是建立“完成标准”，就是对<a href="http://www.dzone.com/articles/definitions-done-practice">一个故事要能够标注为完成并可发布所需要满足的所有条件</a>进行全面的理解，包括各种项目，比如用户文档、翻译、广告等等。</p>
-<p>假如我们有清晰的完成标准，就可以拿几个样例故事来计算所需要的工作量。基于这种计算我们就能为投资决策进行粗略的成本估算，为版本计划进行粗略的时间估算，让我们对故事有更充分的认识以便能协助产品负责人进行故事优先级的设置。</p>
-<p>然而有些人仍然认为即使以故事的方式进行估算也会让我们从真正的价值交付上分心。针对这一点，有一个围绕着#NoEstimates的讨论。</p>
-<h2>什么是#NoEstimates讨论</h2>
-<p>如果你在Twitter上关注了任何一位敏捷方面有影响力的人，你可能已经注意到他们有些人参与了#NoEstimates 标签的讨论。看起来这是要我们完全停止进行估算，其实它是要我们不再进行故事点数的评估，而是立即开始开发。</p>
-<p>这个讨论自从出现后已经有了一个迅速发展的势头，因为那些在大项目中工作的人他们感觉无论是<a href="http://softwaredevelopmenttoday.blogspot.co.nz/2012/01/story-points-considered-harmful-or-why.html">用故事点数进行评估还是仅仅统计故事的个数</a>，团队产量的跟踪结果基本是相同的。</p>
-<p>一定程度上这可能是因为那些有经验的交付团队每个迭代<a href="http://neilkillick.com/2013/01/31/noestimates-part-1-doing-scrum-without-estimates/">会将故事实时地（Just-in-time）以一致的标准拆分成更小的故事</a>——这样的拆分使得团队每个迭代能产出更多潜在可交付的增量——无论项目在迭代里是采用的非常小的故事，还是适度大一些的故事，最终每个迭代的产能报告看上去都差不多。</p>
-<p>#NoEstimates这种方式使得故事的优先级设置更简单了，使得交付团队能够更快地开始工作。然而可怜的产品负责人和项目投资方他们仍然需要知道项目大概要花费多少成本，需要多长时间。好消息是我们还可以基于故事个数的统计来进行粗略的估算，只要项目能够建立起<a href="http://www.stephenforte.net/Beyond+Agile+Estimation+Part+I+Measuring+Key+Data+Points.aspx">足够有效的度量指标</a>来让这样的估算可行。</p>
-<p>对于任何刚开始敏捷之旅的新团队来说，无论如何我都强烈建议你们采用故事点数进行估算，直到你具有了和那些团队一样的丰富经验和成熟度。</p>
-<h2>结论</h2>
-<p>作为总结，引用General Dwight D. Eisenhower的一句名言：“在准备开始一个项目时，我总是发现估算的数字是没有用的，但估算的过程却必不可少”。我们仍然需要进行估算，不管这样的活动叫什么名字，不管在这样的活动中我们如何进行计算。</p>
-<p>我要感谢Esther Derby（估算成为目标），Mike Cohn（为发布计划和优先级设置进行估算），Ahmed Sidky（全员估算），Martin Fowler（故事点数），Ian Mitchell（完成标准），Vasco Duarte（故事个数vs.故事点数），Stephen Forte（度量与估算），Neil Killick（有经验的团队定义更小的故事），和其他很多人，感谢他们在这个话题上给我的分享——以及我上面对他们各自论文的链接引用。</p>
+<p>方差是统计学中的概念，用于度量一组数的偏离程度。方差可以通过对每个数据与平均值之差的平方和求平均值来计算。例如，给定一组表示人口年龄的数：40、30、50和80，我们可以这样计算方差：</p>
+<ol> 
+ <li>计算平均值：(40 + 30 + 50 + 80) / 4 = 50</li> 
+ <li>计算每个数据与平均值之差的平方和：(40-50)<sup>2 </sup>+ (30-50)<sup>2</sup> + (50-50)<sup>2</sup> + (80-50)<sup>2</sup> = 1400</li> 
+ <li>最后平均：1400/4 = 350</li> 
+</ol>
+<h2>命令式风格</h2>
+<p>下面是计算方差的一种典型的命令式风格实现：</p>
+<pre>
+public static double varianceImperative(double[] population){
+   double average = 0.0;
+   for(double p: population){
+      average += p;
+   }
+   average /= population.length;
+
+   double variance = 0.0;
+   for(double p: population){
+     variance += (p - average) * (p - average);
+   }
+   return variance/population.length;
+}</pre>
+<p>为什么说这是命令式的呢？我们的实现用<i>修改状态的语句序列</i>描述了计算过程。这里，我们显式地对人口年龄数组中的每个元素进行迭代，而且每次迭代时更新average和variance这两个局部变量。这种代码很适合只有一个CPU的硬件架构。确实，它可以非常直接地映射到CPU的指令集。</p>
+<h2>Fork/Join框架</h2>
+<p>那么，如何编写适合在多核架构上执行的实现代码呢？应该使用线程吗？这些线程是不是要在某个点上同步？Java 7引入的Fork/Join框架缓解了一些困难，所以让我们使用该框架来开发方差算法的一个并行版本吧。</p>
+<pre>
+public class ForkJoinCalculator extends RecursiveTask&lt;Double&gt; {
+
+   public static final long THRESHOLD = 1_000_000;
+
+   private final SequentialCalculator sequentialCalculator;
+   private final double[] numbers;
+   private final int start;
+   private final int end;
+
+   public ForkJoinCalculator(double[] numbers, SequentialCalculator sequentialCalculator) {
+     this(numbers, 0, numbers.length, sequentialCalculator);
+   }
+
+   private ForkJoinCalculator(double[] numbers, int start, int end, SequentialCalculator 
+sequentialCalculator) {
+     this.numbers = numbers;
+     this.start = start;
+     this.end = end;
+     this.sequentialCalculator = sequentialCalculator;
+   }
+
+   @Override
+   protected Double compute() {
+     int length = end - start;
+     if (length &lt;= THRESHOLD) {
+         return sequentialCalculator.computeSequentially(numbers, start, end);
+     }
+     ForkJoinCalculator leftTask = new ForkJoinCalculator(numbers, start, start + length/2, 
+sequentialCalculator);
+     leftTask.fork();
+     ForkJoinCalculator rightTask = new ForkJoinCalculator(numbers, start + length/2, end, 
+sequentialCalculator);
+     Double rightResult = rightTask.compute();
+     Double leftResult = leftTask.join();
+     return leftResult + rightResult;
+  }
+}
+</pre>
+<p>这里我们编写了一个<i>RecursiveTask</i>类的子类，它对一个double数组进行切分，当子数组的长度小于等于给定阈值（THRESHOLD）时停止切分。切分完成后，对子数组进行顺序处理，并将下列接口定义的操作应用于子数组。</p>
+<pre>
+public interface SequentialCalculator {
+  double computeSequentially(double[] numbers, int start, int end);
+}</pre>
+<p>利用该基础设施，可以按如下方式并行计算方差。</p>
+<pre>
+ public static double varianceForkJoin(double[] population){
+   final ForkJoinPool forkJoinPool = new ForkJoinPool();
+   double total = forkJoinPool.invoke(new ForkJoinCalculator
+(population, new SequentialCalculator() {
+     @Override
+     public double computeSequentially(double[] numbers, int start, int end) {
+       double total = 0;
+       for (int i = start; i &lt; end; i++) {
+         total += numbers[i];
+       }
+       return total;
+     }
+  }));
+  final double average = total / population.length;
+  double variance = forkJoinPool.invoke(new ForkJoinCalculator
+(population, new SequentialCalculator() {
+    @Override
+    public double computeSequentially(double[] numbers, int start, int end) {
+      double variance = 0;
+      for (int i = start; i &lt; end; i++) {
+        variance += (numbers[i] - average) * (numbers[i] - average);
+      }
+      return variance;
+    }
+ }));
+ return variance / population.length;
+}</pre>
+<p>本质上，即便使用Fork/Join框架，相对于顺序版本，并行版本的编写和最后的调试仍然困难许多。</p>
+<h2>并行Streams</h2>
+<p>Java 8让我们可以以不同的方式解决这个问题。不同于编写代码指出计算如何实现，我们可以使用Streams API粗线条地描述让它做什么。作为结果，库能够知道如何为我们实现计算，并施以各种各样的优化。这种风格被称为<i>声明式编程</i>。Java 8有一个为利用多核架构而专门设计的并行Stream。我们来看一下如何使用它们来更快地计算方差。</p>
+<p>假定读者对本节探讨的Stream有些了解。作为复习，Stream&lt;T&gt;是T类型元素的一个序列，支持聚合操作。我们可以使用这些操作来创建表示计算的一个管道（pipeline）。这里的管道和UNIX的命令管道一样。并行Stream就是一个可以并行执行管道的Stream，可以通过在普通的Stream上调用parallel()方法获得。要复习Stream，可以参考<a href="http://download.java.net/jdk8/docs/api/java/util/stream/Stream.html">Javadoc文档</a>。</p>
+<p>好消息是，Java 8 API内建了一些算术操作，如max、min和average。我们可以使用Stream的几种基本类型特化形式来访问前面几个方法：IntStream（int类型元素）、LongStream（long类型元素）和DoubleStream（double类型元素）。例如，可以使用IntStream.rangeClosed()创建一系列数，然后使用max()和min()方法计算Stream中的最大元素和最小元素。</p>
+<p>回到最初的问题，我们想使用这些操作来计算一个规模较大的人口年龄数据的方差。第一步是从人口年龄数组创建一个Stream，可以通过Arrays.stream()静态方法实现：</p>
+<pre>
+DoubleStream populationStream = Arrays.stream(population).parallel();</pre>
+<p>我们可以使用DoubleStream所支持的average()方法：</p>
+<pre>
+double average = populationStream.average().orElse(0.0);</pre>
+<p>下一步是使用average计算方差。人口年龄中的每个元素首先需要减去平均值，然后计算差的平方。可以将其视作一个Map操作：使用一个Lambda表达式(double p) -&gt; (p - average) * (p - average)把每个元素转换为另一个数，这里是转换为该元素与平均值差的平方。一旦转换完成，我们就可以调用sum()方法来计算所有结果元素的和了。.</p>
+<p>不过别那么着急。Stream只能消耗一次。如果复用populationStream，我们会碰到下面这个令人惊讶的错误：</p>
+<pre>
+java.lang.IllegalStateException: stream has already been operated upon or closed</pre>
+<p>所以我们需要使用第二个流来计算方差，如下所示：</p>
+<pre>
+public static double varianceStreams(double[] population){
+   double average = Arrays.stream(population).parallel().average().orElse(0.0);
+   double variance = Arrays.stream(population).parallel()
+             .map(p -&gt; (p - average) * (p - average))
+             .sum() / population.length;
+   return variance;
+}</pre>
+<p>通过使用Streams API内建的操作，我们以声明式、而且非常简洁的方式重写了最初的命令式风格代码，而且声明式风格读上去几乎就是方差的数学定义。我们再来研究一下三种实现版本的性能。</p>
+<h2>基准测试</h2>
+<p>我们以非常不同的风格编写了三个版本的方差算法。Stream版本是最简洁的，而且是以声明式风格编写的，它让类库去确定具体的实现，并利用多核基础设施。不过你可能想知道它们的执行效果如何。为找出答案，让我们创建一个基准测试，对比一下三个版本的表现。我们先随机生成1到140之间的3000万个人口年龄数据，然后计算其方差。我们使用<a href="http://openjdk.java.net/projects/code-tools/jmh/">jmh</a>来研究每个版本的性能。Jmh是OpenJDK支持的一个Java套件。读者可以从<a href="https://github.com/java8/Variance">GitHub</a>克隆该项目，自己运行基准测试。</p>
+<p>基准测试运行的机器是Macbook Pro，配备2.3 GHz的4核Intel Core i7处理器，16GB 1600MHz DDR3内存。此外，我们使用的JDK 8版本如下：</p>
+<pre>
+java version &quot;1.8.0-ea&quot;
+Java(TM) SE Runtime Environment (build 1.8.0-ea-b121)
+Java HotSpot(TM) 64-Bit Server VM (build 25.0-b63, mixed mode)</pre>
+<p>结果用下面的柱状图说明。命令式版本用了60毫秒，Fork/Join版本用了22毫秒，而流版本用了46毫秒。</p>
+<p><img src="http://infoqstatic.com/resource/articles/forkjoin-to-parallel-streams/zh/resources/0224050.png" width="400" _href="img://null" _p="true" alt="" /></p>
+<p>这些数据应该谨慎对待。比如，如果在32位JVM上运行测试，结果很可能有较大的差别。然而有趣的是，使用Java 8中的Streams API这种不同的编程风格，为在场景背后执行一些优化打开了一扇门，而这在严格的命令式风格中是不可能的；相对于使用Fork/Join框架，这种风格也更为直接。</p>
 <h2>关于作者</h2>
-<p><img _p="true" _href="img://null" alt="" style="float: left; margin-right: 10px" src="http://infoqstatic.com/resource/articles/agile-estimating-why-how/zh/resources/1212021.JPG" /><b>David Morris </b>是一位独立业务敏捷性实践者、教练和讲师；通过他的公司Sophorum为新西兰各地的客户提供业务分析、团队领导，教练和培训服务。他有近30年的项目交付经验，在这30年中他以团队成员，团队领导，以及自己企业的负责人身份参与了各种类型的项目，比如战略、经营和技术类的项目，并在这些项目中运用了结构化的、迭代的和敏捷的方法。</p>
-<p>David 通过了CBAP、ICAgile Certified Practitioner、Certified ScrumMaster和 IT Certified Professional的认证。他主持研究小组、专业开发讲座和训练营；帮助Agile Auckland和IIBA NZ组织活动；在欧洲和澳大利亚的的各种大会和活动上进行演讲；并参与了多本书的创作（包括“Agile Extension to the BA Body of Knowledge”）；他也是一位活跃的博主，tweeter和维基百科编辑。</p>
-<p><strong>查看英文原文：</strong> <a href="http://www.infoq.com/articles/agile-estimating-why-how">Estimating on agile projects: what’s the story, what’s the point?</a></p>
-<p>译者信息：姚安峰，微博：霜木</p>
-<hr />
-<p>感谢<a href="http://www.infoq.com/cn/author/侯伯薇">侯伯薇</a>对本文的审校。</p>
-<p>给InfoQ中文站投稿或者参与内容翻译工作，请邮件至<a href="mailto:editors@cn.infoq.com">editors@cn.infoq.com</a>。也欢迎大家通过新浪微博（<a href="http://www.weibo.com/infoqchina">@InfoQ</a>）或者腾讯微博（<a href="http://t.qq.com/infoqchina">@InfoQ</a>）关注我们，并与我们的编辑和其他读者朋友交流。</p><br><br><br><br><br><br></body></html>
+<p><img style="float: left; margin-right: 10px" src="http://infoqstatic.com/resource/articles/forkjoin-to-parallel-streams/zh/resources/0224051.png" _href="img://null" _p="true" alt="" /><b>Raoul-Gabriel Urma</b> 20岁开始在剑桥大学攻读计算机科学博士学位。他的研究主要关注的是编程语言与软件工程。他以一等荣誉生的成绩获得了伦敦帝国理工学院的计算机科学工程硕士学位，并赢得一些技术创新奖项。他曾经为Google、eBay、Oracle和Goldman Sachs等很多大公司工作过，也参与过不少创业项目。此外，他还经常在Java开发者会议上发表讲话，也是一位Java课程讲师。他的Twitter：<a href="http://www.twitter.com/raoulUK">@raoulUK</a>，<a href="http://www.urma.com/">网站</a>。</p>
+<div style="clear: both"></div>
+<p><img style="float: left; margin-right: 10px" src="http://infoqstatic.com/resource/articles/forkjoin-to-parallel-streams/zh/resources/0224052.png" _href="img://null" _p="true" alt="" /><b>Mario Fusco</b> 是Red Hat的一位高级软件工程师，主要从事Drools核心和JBoss规则引擎方面的开发工作。作为Java开发者，他有着丰富的经验，参与了从媒体公司到金融部门等行业的很多企业级项目，而且经常作为项目的领导者。他的兴趣包括函数式编程和领域特定语言（Domain Specific Language，DSL）。凭借在这两个方面的激情，他创建了开源类库lambdaj，意在在Java中为操作集合提供一种内部Java DSL，并支持一点函数式编程。他的Twitter是<a href="http://www.twitter.com/mariofusco">@mariofusco</a>。</p>
+<div style="clear: both"></div>
+<p><strong>查看英文原文：</strong><a href="http://www.infoq.com/articles/forkjoin-to-parallel-streams">From Imperative Programming to Fork/Join to Parallel Streams in Java 8</a></p><br><br><br><br><br><br></body></html>

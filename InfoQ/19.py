@@ -1,28 +1,39 @@
-<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>QCon London : 人気のトラック、セッション、スピーカー</h3><p><a target="_blank" href="http://www.infoq.com/news/2014/02/qcon-london-2014"><em>原文(投稿日：2014/02/03)へのリンク</em></a></p>
-<div class="article_page_left news_container text_content_container"> 
- <div class="text_info"> 
-  <p>8回目を迎える年次の<a href="http://qconlondon.com/london-2014/?utm_source=infoq&amp;utm_medium=news&amp;utm_campaign=02032014">QCon London</a>(3月3日から7日)では、NASA、 Netflix、Twitter、The Financial Times、Etsyなどの深いプレゼンや事例を取り上げる予定だ。トピックはアーキテクチャ、DevOp、パフォーマンスとスケーラビリティ、アジャイル、Javaなどだ。<a href="http://qconlondon.com/london-2014/schedule/index.jsp?utm_source=infoq&amp;utm_medium=news&amp;utm_campaign=02032014">カンファレンススケジュール</a>も決定した、2月5日までに参加登録すれば<a href="https://secure.trifork.com/london-2014/registration/?utm_source=infoq&amp;utm_medium=news&amp;utm_campaign=02032014">149ポンド</a>安い。</p> 
-  <p>QConLondon.comのページビュー数によれば、最も人気のあるトラック、セッション、スピーカーは次の通り。</p> 
-  <p><strong>トラック</strong></p> 
-  <p><strong><a href="http://qconlondon.com/london-2014/tracks/show_track.jsp?trackOID=912&amp;utm_source=infoq&amp;utm_medium=news&amp;utm_campaign=02032014">Design to Exceed the Limit - High Scalable Architectures</a></strong> - 巨大アプリケーションの裏にある技術と高いスケーラビリティのための設計技法を学ぶ。</p> 
-  <p><strong><a href="http://qconlondon.com/london-2014/tracks/show_track.jsp?trackOID=914&amp;utm_source=infoq&amp;utm_medium=news&amp;utm_campaign=02032014">Big Data Architectures - Handling Too Big, Too Fast or Too Versatile Data</a></strong> – Hadoopエコシステムと関連技術、ビッグデータ問題を解決する一般的な設計パターンに基づいた設計の考慮点、先進的事例を探索する。</p> 
-  <p><strong><a href="http://qconlondon.com/london-2014/tracks/show_track.jsp?trackOID=922&amp;utm_source=infoq&amp;utm_medium=news&amp;utm_campaign=02032014">Everything you wanted to know about Computer Science (but were afraid to ask)</a></strong> - 多くの人が守るべき原則の基礎について深く知らない。このトラックでは、守るべき原則を十分に理解している今、コンピュータサイエンスの基礎を振り返る。</p> 
-  <p><strong>セッション</strong></p> 
-  <p><strong><a href="http://qconlondon.com/london-2014/tracks/show_track.jsp?trackOID=911&amp;utm_source=infoq&amp;utm_medium=news&amp;utm_campaign=02032014">Real Agile Delivery with DevOps</a> </strong>– DevOpを使ったアジャイルな価値提供が技術やツール以上のものなのかを学ぶ。</p> 
-  <p><strong>Top Sessions</strong></p> 
-  <p><strong><a href="http://qconlondon.com/london-2014/presentation/Reactive REST?utm_source=infoq&amp;utm_medium=news&amp;utm_campaign=02032014">Reactive REST</a></strong> - Netflixがどのようにリアクティブプログラミングを利用してRESTエンドポイントをビルドして利用しているかを学ぶ。また、同社がどのようにしてHTTPプロトコルの限界を回避し、ハイパフォーマンスなREST APIを作っているかも学ぶ。</p> 
-  <p><a href="http://qconlondon.com/london-2014/presentation/Continuous Improvement: Hell on Earth?utm_source=infoq&amp;utm_medium=news&amp;utm_campaign=02032014"><strong>Continuous Improvement: Hell on Earth?</strong> </a>- 事例を交えながら、継続的改善とは実際どのようなものなのか、他の産業や研究、アイディア、実際の経験などを見ながら'改善'へのアプローチはどんな方法が望ましいのかを考える。</p> 
-  <p><strong><a href="http://qconlondon.com/london-2014/presentation/A call for sanity in NoSQL?utm_source=infoq&amp;utm_medium=news&amp;utm_campaign=02032014">A Call for Sanity in NoSQL</a> </strong>- スケーラブルで簡単に利用できるデータシステムのためにNoSQLはすでに活躍している。このセッションではそのようなシステムの構築の仕方を学ぶ。</p> 
-  <p><strong><a href="http://qconlondon.com/london-2014/tracks/show_track.jsp?trackOID=920&amp;utm_source=infoq&amp;utm_medium=news&amp;utm_campaign=02032014">Reactive Programming - Tackling the Async Challenge</a> </strong>– 現実に使われているJavaとJavaScriptのReactive Extensions付きのリアクティブプログラミング、クライアントサイドでのリアクティブプログラミング、リアクティブプログラミングの背後にあるコンセプトなどを学ぶ。</p> 
-  <p><strong>スピーカー</strong></p> 
-  <ul> 
-   <li><strong><a href="http://qconlondon.com/london-2014/speaker/Erik+Meijer?utm_source=infoq&amp;utm_medium=news&amp;utm_campaign=02032014">Erik Meijer氏</a></strong> – Creator Rx, LINQ</li> 
-   <li><strong><a href="http://qconlondon.com/london-2014/speaker/Martin+Thompson?utm_source=infoq&amp;utm_medium=news&amp;utm_campaign=02032014">Martin Thompson氏</a></strong> – High-Performance Computing Specialist</li> 
-   <li><strong><a href="http://qconlondon.com/london-2014/speaker/Eva+Andreasson?utm_source=infoq&amp;utm_medium=news&amp;utm_campaign=02032014">Eva Andreasson氏</a> </strong>– Pioneer of Deterministic Garbage Collection</li> 
-   <li><strong><a href="http://qconlondon.com/london-2014/speaker/Damian+Conway?utm_source=infoq&amp;utm_medium=news&amp;utm_campaign=02032014">Damian Conway氏</a></strong> – Perl Boffin, Thoughtstream</li> 
-   <li><strong><a href="http://qconlondon.com/london-2014/speaker/Linda+Rising?utm_source=infoq&amp;utm_medium=news&amp;utm_campaign=02032014">Linda Rising氏</a></strong> – Queen of Patterns. Author of numerous books&nbsp;</li> 
-  </ul> 
-  <p>読者の皆さんにはぜひ参加してほしい。イギリスではこのような学習、ネットワーキング、企業向けソフトウエア開発のコミュニティのイノベーションの追跡をできる機会はない。<a href="https://secure.trifork.com/london-2014/registration/?utm_source=infoq&amp;utm_medium=news&amp;utm_campaign=02032014">2月5日までに参加登録すれば149ドル安い。</a></p> 
-  <p>QConはInfoQ.comとTriforkの共催。TriforkはDanish GOTOカンファレンスのプロデューサー。</p> 
- </div> 
-</div><br><br><br><br><br><br></body></html>
+<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>DevOpsとは何（ではないの）か、そしてどうやって実現するのか</h3><p><a target="_blank" href="http://www.infoq.com/news/2014/03/devops"><em>原文(投稿日：2014/03/06)へのリンク</em></a></p>
+<p>この記事では、DevOpsにまつわる誤解をいくつか議論し、文化の変化をもたらすことができるプロセスの序論を示す。その文化の変化こそがDevOpsのすべてなのである。</p>
+<p>「<a href="http://www.virtualizationpractice.com/devops-engineer-25120/">いや、あなたはDevOpsエンジニアではない</a>」と題した記事で、Mike Kavis （Cloud Technology PartnersのVP兼主任アーキテクト）は、DevOpsにまつわる誤解のいくつかに言及している。たとえば、彼が言うには、DevOpsという用語を間違って使っているチームがある。</p>
+<blockquote> 
+ <p>企業はDevOpsに取り組もうとしている。それらの企業の多くはDevOpsが何なのかを知らないが、それでもみなDevOpsを求めている。あちこちで、インフラチームが自分たちをDevOpsと呼び、草の根活動を主導しているのを見たことがある。開発チームはいないのかと尋ねると、しばしば彼らは次のどちらかの答えを返す。「彼らは呼ばなかった」か、もっと悪い場合は「彼らとは話をしたことがない」である。</p> 
+</blockquote>
+<p>自分自身をDevOpsだと宣伝するエンジニアもいるが、Kavisによれば彼らはDevOpsではない。なぜなら「DevOpsとは、人でも、役割でも、役職でもない」からだ。DevOpsエンジニアはどこにもいない。たとえ自分自身をそう呼ぶ人がいたとしても。DevOpsが役割でも資格でも役職でもないとすれば、DevOpsとは何なのか？Kavisの定義は以下の通りである。</p>
+<blockquote> 
+ <p>DevOpsとは文化の変化または運動であり、素晴らしいコミュニケーションとコラボレーション（チームワークとも呼ぶ）を奨励することで、より良い品質のソフトウェアをより確実で迅速に構築することを促進するものである。</p> 
+</blockquote>
+<p>詳しい説明は以下の通りである。</p>
+<blockquote> 
+ <p>DevOpsとはウォーターフォールからアジャイルやリーンへ移行するソフトウェア開発ライフサイクル（SDLC）の進化である。DevOpsはアジャイルをさらに推し進め、SDLCからムダを取り除くことに焦点を当てている。多くの場合、ムダやボトルネックは次の形で発見される。一貫性のない環境。手動のビルドおよび展開プロセス。品質やテスト技法の低さ。IT部署間のコミュニケーションと理解の欠如。頻繁な停止とSLA違反。そして貴重なITリソースを要求する一連の問題点によって、重要な時間や金がシステムの稼働を維持することに費やされる。…</p> 
+ <p>他に見た頻出パターンは、“DevOps”チームの最初のステップとして、ChefやPuppet（またはSaltとかAnsibleや、話題のものならなんでも）の利用を検討することが多いということである。彼らは解決するべき問題を定義していないにもかかわらず、それらを解決するためのツールを手にしている。多くの場合、こういうチームは数千行のスクリプトを構築する羽目になり、次のような悩みが生じる。「我々はChefスクリプトを書くのが仕事なのか？市場により速く到達するのを、もっと高品質でもっと確実なものにするのが仕事ではないのか？」こういうチームにありがちなこととして、コーディングによって独自スクリプトの山々に追い込まれ、実際にはもっと多くのムダをシステムに追加してしまう。そうではなく、システムからムダを取り除くこと、それこそがすべてのDevOpsムーブメントの背後にある原動力なのである。</p> 
+</blockquote>
+<p>DevOpsの意味するものが文化の変化であり、製品開発に関与する様々なチーム間のより良いコミュニケーションとコラボレーションを実現することなのだとすれば、次に浮かぶ疑問は、ではどうすればよいのかである。どうすればそのような変化を我々の会社にもたらすことができるのだろうか？</p>
+<p><a href="http://dtosolutions.com/">DTO Solutions</a> の共同創設者、Damon Edwardsは、 DevOps Days Mountain View 2013の基調講演「<a href="http://dev2ops.org/2013/12/how-to-initiate-a-devops-transformation-video/">DevOpsの変換を開始する方法</a>」で、DevOpsの文化を組織に導入するために推奨する3ステップのプロセスを提示した。</p>
+<p><strong>1. 「何のために？」を固める</strong></p>
+<p>Edwardsによると、組織のメンバーが、自分たちの<strong>存在理由</strong>について明確に理解することから始めることが重要である。何を達成しようとしているのか、そして目的は何なのか。その理由を知るためには、組織内の人々と交流し、自分たちが存在する<strong>理由</strong>を尋ねるだけでもいいかもしれない。組織の主な目的こそがDevOps文化を実現する唯一の理由で、他には存在しない。</p>
+<p><strong>DevOps</strong>とは目的を達成する手段にすぎず、それ自体が目的ではないとEdwardsは考えている。「DevOpsはあなたの<strong>動機</strong>ではないし、同僚の<strong>動機</strong>でもない。きっとあなたのビジネスの<strong>動機</strong>でもないはずだ。」彼は<strong>DevOps</strong>という単語をいったん忘れることすら提案している。注意してみると、彼は代わりに<strong>サービス・デリバリー</strong>という単語を使っている。なぜなら「我々はサービスを作るビジネスをしている」からだ。</p>
+<p><strong>2. 組織的な一致団結を固める</strong></p>
+<p>Edwardsが説明するプロセスの次のステップは、組織全体を一致団結させることである。そうすることで、誰もが「前提条件やルールをまとめて共有し、共通の目標に向かって」働くようになる。組織が正しく一致団結している状態とは、複数の人に共通のゴールを設定したならば、各自の目的を達成するために同じ方法が選択されることを指す。同じ課題には同じ解決策を導ける状態、それこそが「組織的な一致団結の究極の夢」である。</p>
+<p>このような団結を達成するためには、組織の中で<strong>DevOpsの未来像</strong>を作り上げる必要がある。しかしそれは、何かのプロセスを教えるだけでは実現できない。なぜなら、人は単に手順を機械的になぞろうとするものだからだ。必要なのは考え方を教えることである。Edwardsによれば、これは以下の手順に従うことによって達成することができる。</p>
+<ol> 
+ <li><strong>基本的な概念を教える</strong>。たとえば、 「1個流し、バッチ生産、仕掛り制限、プッシュ型とプル型、継続的デリバリー」といったものや、使用されるツールなど。組織内で共有される共通語彙を構成するような概念である。</li> 
+ <li><strong>全員の認識を合わせる</strong>。<br /> A. バリューストリーム・マッピング - リーンのコンセプトで、組織内で起こる情報や成果物の流れを明らかにし、価値創造につなげること。<br /> B. タイムライン分析 - 時間が費やされている箇所やボトルネックの箇所を発見しようとする試み。<br /> C. ムダ分析 - 組織が生み出すムダを徹底的に調べ上げて、それらをできる限り取り除くこと。</li> 
+ <li><strong>見える化の連鎖を作り出す</strong>。価値提供の連鎖にまたがる活動や、自分の活動が他者の活動にどのような影響を与えているかをを測定するということ。</li> 
+ <li><strong>ベースラインに反するプロジェクト/実験を特定する</strong>。ベースラインから逸脱しているプロジェクトや活動を特定し、是正措置を取る。</li> 
+ <li><strong>手順2・を繰り返す</strong>。それが継続的改善のプロセスである。</li> ・ 
+</ol>
+<p>これらのアイディアを実行に移すために、Edwardsは3日間のプログラムを提案している。</p>
+<ul> 
+ <li><strong>1日目</strong> - 原則を教え、ケーススタディやパターン／アンチパターンを提示する</li> 
+ <li><strong>2日目</strong> - 組織の現在の状態を分析し、問題を特定する技術やカイゼンの指標を提供する</li> 
+ <li><strong>3日目</strong> - 解決策やツールチェーンの自動化主義について議論し、ロードマップを構築する</li> 
+</ul>
+<p><strong>3. 継続的な改善の繰り返し</strong></p>
+<p>継続的にプロセスを改善するために以下を繰り返す。すなわち、計画の立案、計画の実施、成果の測定、継続指針の決定である。</p>
+<p>先日、EdwardsはQCon London 2014のセッション中にこれらの原則を提示した。<a href="http://qconlondon.com/london-2014/presentation/Dev%20%22Programming%22%20Ops%20For%20DevOps%20Success">「DevOpsの成功のためのDev “プログラミング” Ops」</a>というセッションは、InfoQで後日公開されることになっている。</p><br><br><br><br><br><br></body></html>

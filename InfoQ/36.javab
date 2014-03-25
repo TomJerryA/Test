@@ -1,75 +1,94 @@
-<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>Monty Taylor and Jim Blair on CI and Test Automation at OpenStack</h3><p>The <a href="http://www.openstack.org/">OpenStack</a> community has a team working on CI and test automation for the OpenStack developers submitting code.</p>
-<p>They run their own infrastructure - an OpenStack cloud by itself.</p>
-<p>Given the complexity of the project, with dozens of dependent projects and over 300 contributors submitting patches every month, standard CI systems simply wouldn't work.</p>
-<p>We talked with <a href="http://www.hpcloud.com/author/monty-taylor">Monty Taylor</a> and <a href="http://www.linkedin.com/pub/james-blair/36/1b2/98a">James Blair</a> to investigate the build and test challenges they face, and how they managed to tackle them.&nbsp;</p>
-<p><strong>InfoQ: Today, how many commits does your CI system handle every day? How about 6 months later when Icehouse is releasing?</strong></p>
-<blockquote> 
- <p><strong>Monty</strong>: During the peak, I think we landed around 400 commits a day. That's only the ones that succeeded, which is less than the number of changes that we test, because they only land if they passed the tests.</p> 
- <p><strong>Jim</strong>: And when the commit is reviewed, we test them again before we merge it.</p> 
- <p><strong>Monty</strong>: For each of those commits that we merge, there are about 8-10 different jobs that we run. And since we run them once on upload and once again before landing, that makes 20 jobs per change. There was a period of time, during the peak, where we ran 10,000 jobs in a day.</p> 
- <p>I think we doubled our velocity from Grizzly to Havana. I believe we have been consistently doubling each cycle, so by the time Icehouse releases, I expect this will double again.</p> 
-</blockquote>
+<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>Scrum Master Allocation: The Case for a Dedicated Scrum Master</h3><p>Your business has limited resources. You want to get more done, faster, for less money. Where should you cut back, and where should you invest? One popular answer is, cut back on scrum masters.</p>
+<p>Why cut back on scrum masters? Managers have limited headcount, and are looking for ways to stretch their budgets. Scrum masters are often not actually writing code. The functions of the scrum master are seen as supplementary, non-essential, and therefore fungible. Many organizations spread scrum masters across two, three, or even more teams.</p>
+<p>Teams are able to function without a full time scrum master, once they understand the basic agile process. The question is, what are those teams missing out on, that they could have had with a full time scrum master available to them? In other words, could you be incurring costs of productivity and delivery benefits if your team doesn’t have focused scrum master support?</p>
+<h2>Time for a sports analogy</h2>
+<p>I could easily make a case that your favorite sports team would also function without a full time coach, once they understand the game. But I bet you would never want to see your team without a full time coach. Why is this true? These athletes have been playing the game since they were children, honing their skills, strategies and understanding. What value does the coach add? Why not let the team be self-organizing? Or let the team captain take the role of the coach, as needed?</p>
+<h2>Experience</h2>
+<p>An experienced scrum master, like an experienced sports coach, has the wisdom and knowledge that comes from working with teams over a period of time. They’ve “seen it all before”, or at least a lot of it – and if they are in a network of agile coaches, they have access to insights about things they have not seen as well. They concentrate on knowing how to practice agile well, and how best to deal with impediments (whereas your team is focused on how to write software well, how to test it well, how to make it run fast, etc.). The team relies on the coach’s understanding of agile when they encounter new territory. The scrum master is with the team, observing them, proactively scanning for and resolving impediments, and inserting coaching and mentoring where they see a need, even when it may not have been requested.</p>
+<h2>Coaching skills</h2>
+<p>Another thing a good scrum master has is coaching skills. Coaching is actually a skill, an expertise, of its own. In its pure form, it is the act of enabling individuals and teams to first see themselves clearly – what is happening, what impact it is having, and how they themselves are complicit in it.</p>
 <div id="lowerFullwidthVCR"></div>
-<p><strong>InfoQ: What are the test jobs you run?</strong></p>
-<blockquote> 
- <p><strong>Jim</strong>: There is a coding style check. This is important because we have so many collaborators working, we have to make sure people follow the same coding conventions and use the same coding styles. It’s one of our simplest jobs, but also one of our most important.</p> 
- <p>There are unit test jobs, simple jobs just testing the project in question, no network interactions with other components. We do that for a couple of supported platforms: 2.6, 2.7 and 3.3. We run our 2.6 jobs on CentOS, and our 2.7 jobs on Ubuntu.</p> 
- <p>Then there are the integration test jobs. That's where we use <a href="http://devstack.org/">DevStack</a> to install all of the components, then we run templates on all of those components after they have been setup on a single node cloud instance. And we run several variations of that - all of the components can be configured in different ways, they can use different databases or messages queues, etc. We could run a lot of variations butwe try to keep it small and run only the most sensible variations: <a href="http://www.mysql.com/">MySQL</a>, <a href="http://www.postgresql.org/">PostgreSQL</a>, <a href="http://www.rabbitmq.com/">RabbitMQ</a>.</p> 
- <p><strong>Monty</strong>: We’re actually talking of adding <a href="http://zeromq.org/">ZeroMQ</a> tests.</p> 
- <p><strong>Jim</strong>: If a component becomes really important in the community and more and more people are using it, and if more people are willing to help debug problems, then we'll start running tests for that as well.</p> 
-</blockquote>
-<p><strong>InfoQ: Who writes these test jobs?</strong></p>
-<blockquote> 
- <p><strong>Monty</strong>: The developers. We have a small QA team primarily focusing on the machinery of testing systems rather than the test content itself. So we require that our developers write tests. They write unit tests and integration tests.</p> 
- <p><strong>Jim</strong>: In fact, we are talking about getting even stricter about that in the cycle: if you want to land a change, you need to have already written all the integration tests for that change.</p> 
- <p><strong>Monty</strong>: We consider if it's not tested, it's broken. It's usually true.</p> 
- <p><strong>Jim</strong>: Especially because the project moves so quickly. There are so many pieces, it's just too easy for somebody to accidentally break it.</p> 
-</blockquote>
-<p><strong>InfoQ: Are you covering performance test?</strong></p>
-<blockquote> 
- <p><strong>Jim</strong>: Not yet, we’d like to get to the point where we can. I think Boris Pavlovic is working on a performance testing system called <a href="https://wiki.openstack.org/wiki/Rally">Rally</a>. Joe Gordon has been working on scalability testing which is a bit different from performance testing but pretty related. We'd like to do those things.</p> 
- <p>There are many things we are not testing. But there is nothing that we are planning on not testing. We want to test everything but it takes time.</p> 
- <p>For this cycle, we are focusing a lot on upgrade testing. We have a small bit of upgrade testing now, but we want to do a lot more.</p> 
-</blockquote>
-<p><strong>InfoQ: How long does it take to run a single test job on an instance?</strong></p>
-<blockquote> 
- <p><strong>Monty</strong>: It takes about 20-40 minutes, depending on the cloud instance.</p> 
- <p><strong>Jim</strong>: We have done a lot of work to parallelize our testing and not only by running all of these different variants at the same time. We build a test framework called Test Repository for most of our unit tests which is really good at executing tests in parallel. It gives results pretty fast.</p> 
- <p><strong>Monty</strong>: Also <a href="https://github.com/openstack-infra/zuul">Zuul</a>, written by Jim, which allows us to run sets of jobs to test changes in parallel, but keeping their sequence at the same time.</p> 
-</blockquote>
-<p><strong>InfoQ: How many machines do you have to run the tests? What is the configuration for the instances used to run each of the test jobs?</strong></p>
-<blockquote> 
- <p><strong>Monty</strong>: We have no machines. All of our tests are running in public clouds. We have public cloud accounts donated by Rackspace and HP, and thankfully, they don't charge us any money. We have pretty much as many instances as we want.</p> 
- <p><strong>Jim</strong>: During the last cycle, I think we've peaked at 340 instances running in parallel. Each instance is a VM. For integration tests, we start with a very basic VM - 8GB of ram with Ubuntu Precise, and whatever goes along with this amount of ram. So we'll grab a node and let DevStack install the cloud on this very basic VM.</p> 
- <p><strong>Monty</strong>: It's more complicated than that, but that's the basic idea. We have a thing called <a href="https://github.com/openstack-infra/nodepool">nodepool</a>, which manages the collection of VMs that run this, prepare them by caching. We want to pre-download everything that DevStack will want to download from the internet, so that the tests themselves won't need to touch the internet.</p> 
- <p><strong>Jim</strong>: And when we're done, we delete it.</p> 
- <p>Also, we spin up many more VMs than our successful test jobs. Because of Zuul speculation model, sometimes it will be half way through a test, then realizing it will need something from somewhere else, so it no longer needs to run this test, it needs to run a different one, so we'll kill it and shoot up another one. If we run 10000 jobs a day, we might actually spin-up 100000 VMs.</p> 
-</blockquote>
-<p><strong>InfoQ: Can we consider Zuul as an improvement to the nvie git branch model that OpenStack is adopting? It seems that Zuul doesn't work if we have too many working branches.</strong></p>
-<blockquote> 
- <p><strong>Monty</strong>: We actually don't use the nvie get branch model. Because we use <a href="https://code.google.com/p/gerrit/">Gerrit</a>, it's actually much closer to the Linux kernel model where people send in patches via email. We don't make branches and then merge them. To a degree, each change winds up being like a virtual private branch. Rather than fixing a change by making a new commit and adding on top of the branch, we just amend the previous change. So we are working on individual commits that are going to land, rather than working on a branch merge model.</p> 
- <p>A developer could use a local branching model on their laptop if they want to, those branches aren't published branches. I don't know what branches Jim may use on his laptop. I use git in a weird way without any branches, I just reset refs a lot on my master because I'm crazy - I don't recommend it to people who are new to git.</p> 
- <p>It's actually Gerrit that forms the basis of our patch git workflow.</p> 
- <p><strong>Jim</strong>: We want to make sure that when people are reviewing, they are reviewing individual commits. Ideally, for each commit that goes into the project, that commit has been looked up properly. There are no messy branches. It’s very deliberate about making each commit as good as it can be and then merging that.</p> 
-</blockquote>
-<p><strong>InfoQ: Besides Zuul, you mentioned using Gearman to make Jenkins scalable, using Logstash to debug, and Test Repository to stream the test output automatically to committers. Currently, how is the feedback mechanism working? What do you want it to be like?</strong></p>
-<blockquote> 
- <p><strong>Monty</strong>: It’s getting better and better all the time. There are several things about this. Gearman is for Jenkins scalability. Jenkins was actually designed to be only a master, but there was a hack later. We now run a Jenkins master with a number of slaves to execute test jobs. We run a lot more parallel test jobs than most Jenkins installations do. There are many design points in Jenkins that involve global locking, and when you are using it the way we do, we consistently hit scaling problems.</p> 
- <p><strong>Jim</strong>: Because Jenkins wasn't designed to be used the way we do.</p> 
- <p><strong>Monty</strong>: So we wrote the Gearman plugin for Jenkins to allow Jenkins to register all of the jobs as potential Gearman jobs into the Gearman server. Then we can have multiple Jenkins masters for the same set of jobs, so Gearman will parcel out the jobs so that if one Jenkins master runs into scaling problem, we just make another Jenkins master.</p> 
- <p><strong>Jim</strong>: Usually, after adding about 100 slaves to a Jenkins master, it will start to have problems. Like I mentioned, we had about 340 at once. That means we need about 3.4 Jenkins masters to handle that kind of load.</p> 
- <p><strong>Monty</strong>: The other one that is really interesting, especially in the last cycle, is to setup the Logstash cluster. Each DevStack installation installs the entire cloud, then run tests against it. Even just installing the cloud produces a bunch of logs - you get nova logs, glance logs, etc. If there is a problem, it’s really hard for a developer to debug. So all of these logs are thrown into a very large Logstash cluster which indexes the logs using elastic search. We can then have developers look through the logs, looking for a pattern of what is happening. Joe Gordon and Sean Dague and Clark Boylan wrote the <a href="https://github.com/openstack-infra/elastic-recheck">Elastic Recheck</a>.</p> 
- <p><strong>Jim</strong>: And I wrote the graphs for it.</p> 
- <p><strong>Monty</strong>: As we hit flaky jobs that fail the tests, we'll then run scripts on Logstash to see if it is a type of failure that we have seen before. If it is, then we'll send you a link to what the bug might be. That is very helpful for people to find complex problems.</p> 
- <p><strong>Jim</strong>: I think this is really unique and cutting-edge. There aren't many projects that are this big and running so many tests and generating so much data that is available to help developers. As a developer working on your machine, it is very hard to see all of the problems that might come up after running your code a lot. Our test system runs your code a lot! And we will be working more in this cycle to see if we can automatically classify and identify changes and behaviors that might help developers track down problems.</p> 
-</blockquote>
-<p><strong>InfoQ: In general, what do you think is the hardest thing when working on this whole automation thing?</strong></p>
-<blockquote> 
- <p><strong>Monty</strong>: We have a lot of developers writing a lot of clouds. Our workload doubles every 6 months, the commit loads just keeps going up, we have to imagine what the next set of problems is going to be before they happen. Because once they happen, there is not enough time to develop a system that can fix it. Automating not to solve today’s problems but to solve problems that will come in the next 3 months.</p> 
- <p>And because we do all of this testing and changes are required to pass them, you have to make sure this system works every time. We have to be able to run the tests 10000 times a day so if the machinery isn't good, you might return errors to developers that aren't errors with their code, but errors in the machinery. We have to be very careful to write very solid automation, otherwise it's worse than having no automation. Also the internet breaks all the time. We have to work around the internet breaking - that's about half of what we do. All the sites, they all break. You don’t notice unless you’re hitting them with automation 10000 times a day! If Github is down 1% of the time, as a user that’s fine, you just retry. If my test systems are pulling from Github 10000 times a day, then that's 100 failures.</p> 
- <p>Actually we are very good performance testers of the two public cloud providers we run on. Sometimes we notice a problem, we'll call their operators and say, &quot;Hi, is there a networking problem in your datacenter?&quot; And they say, &quot;Oh yes, we just noticed it that too!&quot;</p> 
- <p><strong>Jim</strong>: Both of them are OpenStack clouds. So basically we are running tests for OpenStack on OpenStack. On one hand we are testing the project code itself, on another hand we are testing it on the operations side. It is actually very cool.</p> 
-</blockquote>
-<h2>About the Interviewees</h2>
-<p><strong><img src="http://www.infoq.com/resource/articles/interview-openstack-ci-test-automation/en/resources/Monty.jpg" vspace="3" hspace="3" align="left" alt="" _href="img://Monty.jpg" _p="true" />Monty Taylor</strong> is a Distinguished Technologist at HP, Member of the OpenStack Technical Committee and OpenStack Foundation Board of Directors. He leads the teams that run the OpenStack Developer Infrastructure, Ironic Bare Metal service and the TripleO project using OpenStack to deploy OpenStack. He is one of the OpenStack Founders and currently sits on both the OpenStack Foundation Board and the OpenStack Technical Committee.</p>
-<p><strong>Jim Blair</strong> is now the Principal Infrastructure Software Developer for OpenStack, as well as OpenStack CI core developer. He's also on the OpenStack Technical Committee and is the PTL of the OpenStack Infrastructre Program. He currently works for the OpenStack Foundation.</p><br><br><br><br><br><br></body></html>
+<p>The next step in coaching is to find the best solution by facilitating a discussion where the team themselves determines a solution – something they buy into, can deliver on, and will support ongoing. It’s all too easy – and most people’s instinct – to dictate a solution to the team, and then sigh and shrug when “they just don’t listen”. A skilled coach will get results by deriving the solution through the people who must implement it, thereby getting stronger buy-in and follow through. The coach also preserves the team memory for what was agreed to, and ensures they hold themselves accountable. The result of all of this is a much better likelihood that problems will be solved, and that they will be solved faster.</p>
+<h2>Perspective</h2>
+<p>Like players in a fast-paced game, a development team does and should get caught up in the moment. They are focused on the goal; they are in the middle of the action. Like a sports coach, the scrum master stands on the sidelines. Not jumping in and playing the game, but engaged and attentive to everything that’s going on, both within and around the team. The Scrum Master has the ability to get the 360 degree view, a perspective that</p>
+<ul> 
+ <li>is (ideally) unbiased and non-judgmental,</li> 
+ <li>can help the team get a better understanding of their situation and the alternatives available to them</li> 
+ <li>can be working proactively to prevent bad things from happening</li> 
+</ul>
+<p>Even just constantly asking the team, “what’s blocking you?” to reveal opportunities to speed things up makes a difference, since developers often are too overwhelmed or aren’t conditioned to reach out for help. As a trusted, engaged, but non-participatory ally, the coach can support the team in a unique way. (But, if the coach misses half the action, their effectiveness in this respect is hugely diminished!)</p>
+<h2>Continuous improvement</h2>
+<p>&nbsp;</p>
+<p>Software development teams generally catch on to the mechanics of the scrum process after 3 - 6 sprints, if they are properly trained and guided. They all know what Stand Up is, the three questions they’re supposed to answer, what to do at the demo, the outcome needed at sprint planning. But maintaining this over time takes dedication, and fortitude. When impediments arise, it’s easy for these practices to go off course, or backslide into “<a href="http://agileatlas.org/articles/item/fractional-scrum-or-scrum-but">scrum-but</a>”, without an agile leader to course correct. Even if the basic process is adopted properly and gels, there are lots of additional practices above and beyond basic scrum that teams would benefit from adopting: continuous integration, test driven development, pair programming, dev ops, etc. The coach’s role is to bring these challenges to the team when they’re ready and help them through the changes they need to make. Change is always hard. It helps to have a coach.</p>
+<p>Of course, a team will always improve on its own, if it’s using agile methods to inspect and adapt. That’s one of the great powers of agile methodology – the continuous improvement is built into the process. Similarly, a sports athlete will also improve on their own if they continue to train, inspect and adapt their skills. But how much faster can that athlete, or that development team, improve and progress with the skills and attention of a qualified coach at their disposal each day?</p>
+<h2>And when the Scrum Master’s away…</h2>
+<p>Sure, a team can function when the scrum master absent, and most of them do. They do the best they can in their circumstances. Often, one of the team members steps up and takes on the functions that the scrum master would have done, to the best of their ability. And what’s wrong with that?</p>
+<p>Well, nothing’s wrong with it; but having the scrum master there would have two benefits.</p>
+<ol> 
+ <li>The team would probably function better</li> 
+ <li>They will probably overcome obstacles faster, and</li> 
+ <li>The time and effort that team members spend compensating for the absent scrum master, can be applied fully towards completing the work in the backlog.</li> 
+</ol>
+<p>To compound the problem, when the scrum master’s engagement with each team is part-time, they become less effective in performing their role for any of their teams.</p>
+<ul> 
+ <li>They can’t respond in a timely manner to teams’ needs.</li> 
+ <li>Context switching between teams decreases their efficiency – context-switching costs an average of 20% productivity.</li> 
+ <li>They don’t have bandwidth to orchestrate process improvements.</li> 
+ <li>They are often the last to know about what’s going on.</li> 
+ <li>It becomes impossible for them to track the details of the stories and tasks the team works on – so they lose fluency with the work in progress.</li> 
+ <li>They don’t get to observe the nuances of the team’s interactions. So they are unable to offer specific guidance or the most effective coaching.</li> 
+</ul>
+<p>As a result, the organization around them then begins to question the scrum master role, perceiving it as ineffective or of little added value, because they observe nothing but scrum masters whose impact is impaired by being spread across multiple teams.</p>
+<h2>My team is already hyper productive!</h2>
+<p>Maybe you have a team that is already performing at peak efficiency, and using full on XP practices. Is there still value to having a dedicated scrum master when you’ve gotten to that stage? Again, my position is, yes. Let me ask you this – for how long will that team be kept intact as-is? Rarely do real world development teams go unchanged for more than a few months at a time. Resources get added, moved around; people move on to other companies or retire.</p>
+<p>The team dynamic is a delicate machine that gets tuned to the specific individuals who have come together to form the team. Changes in composition of the team, therefore, have a significant impact on team dynamics, and thus the ability to be productive. And even if the team itself stays intact, the environment around the team will inevitably be in a constant state of flux, presenting new challenges for the team to cope with.</p>
+<p>Organizations are made up of human beings, and human interrelationships are inherently dysfunctional, at least to some degree. The extent to which that inherent dysfunctionality impacts delivery of value to your customers depends on how effectively your team can manage it. Providing a coach for the team gives them a definite advantage in managing dysfunction.</p>
+<h2>Utilization</h2>
+<p>&nbsp;Another concern that may be raised about dedicated scrum masters is one of utilization. Consider a dedicated scrum master working with a team that understands the process and is pretty productive. You would probably determine that the scrum master is only busy doing scrum master work 50% of the time. Perhaps even less! It seems quite reasonable, then, to give that scrum master a second team to work with. They can clearly handle the additional load.</p>
+<p>In his wonderful book <u>Slack</u>, Tom DeMarco explains beautifully why the question of utilization is not as simple as it seems. In the case of the dedicated scrum master, the scrum master’s *availability* is a significant asset to the team. If the team needs something, the scrum master can respond immediately. When the team has an impediment that they need help resolving, the scrum master can get right to work on it. She doesn’t have to say, “ok I’ll get to that in a couple of hours when I finish doing sprint planning with my other team”. Having that availability means that the team’s needs are dealt with swiftly so progress can move forward. Problems that can be dealt with in the moment will prevent the team from suffering the inefficiency of context switching or sitting idle when they hit dead ends.</p>
+<p>As an added benefit, this availability also sends a message to the team that the organization supports them and believes that it is vital to keep their progress unimpeded. This message of urgency and commitment resonates and the team redoubles their own efforts to make progress. If the message is, “yeah, we know you have a problem, but you’ll have to wait”, the implication is that it’s ok if time is wasted. This attitude will inevitably get reflected in the team’s level of dedication.</p>
+<p>The rest of the scrum master’s time should not be considered unproductive. As mentioned above, the scrum master is actually busy observing the team. They may also be quietly working on potential improvements to their processes, tools or environment. If desired, the scrum master can assist with some of the team’s tasks, time permitting. Pairing with or working alongside members of the team gives the scrum master even greater insight into the challenges the team faces. They may uncover practices that the team has been taking for granted, but which can be simplified or eliminated. However, the team should never rely on scrum master commitment to working the stories in order to deliver on their sprint. The scrum master’s priority is to play the scrum master role, and that role pre-empts any other work they may take on.</p>
+<h2>Where are the numbers?</h2>
+<p>It would be great to see some numbers behind this dedicated scrum master benefit, wouldn’t it? How can we determine what is the best approach for the organization?</p>
+<p>When scrum masters are split across multiple teams, it’s easy to understand how money would be saved:</p>
+<p>Cost savings = (scrum master hourly salary * #hours) * (number of teams served -1)/ number of teams served</p>
+<p>So, for a scrum master who makes $50/hour serving 2 teams over a 2 week sprint,</p>
+<p>Cost savings = (50*80)*1/2 = $2000</p>
+<p>The cost, however, is harder to understand.</p>
+<ul> 
+ <li>It is the impedance to progress and improvement that the team suffers.</li> 
+ <li>It is the effort and time not applied to the completion of backlog items when team members are being scrum master surrogates.</li> 
+ <li>It’s the loss of the additional productivity that a scrum master might have obtained from the team by coaching them to implement improvements.</li> 
+ <li>It is the lost ROI from having features in customers’ hands sooner as a result of higher productivity.</li> 
+</ul>
+<p>To calculate lost productivity, we can use the following formulas:</p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;H = # hours spent to produce a deliverable<br /> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Productivity = unit of output/hours spent<br /> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Cost of the deliverable = (H * hourly salary for the team) + (#hours of scrum master time * scrum master hourly salary)<br /> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;If productivity increases by 5% with a dedicated scrum master, then the amount of hours spent to achieve the same deliverable H’ = H /1.05<br /> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;So the cost then = (H’ * hourly salary for the team) + (H’ * scrum master hourly salary)<br /> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;To determine the impact of lost productivity in our previous example, assume</p>
+<ul> 
+ <li>The hourly salary of the team is $50/hour for 7 team members, or $350</li> 
+ <li>The scrum master is split between two teams, and</li> 
+ <li>The deliverable takes the team one 2-week sprint.</li> 
+</ul>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Then,<br /> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;H = 80<br /> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;H’=76</p>
+<p>&nbsp;Cost with shared scrum master = (350*80) + (25*80) = $30000</p>
+<p>Cost with dedicated scrum master for the same deliverable = (350*76) + (50*76) = $30,400</p>
+<p>Which is comparable to the cost when sharing the scrum master!</p>
+<p>In the above example, we have almost completely offset the cost of having a dedicated scrum master. But we are not finished yet. The revenue stream from the deliverable can now be realized H-H’ hours sooner. There will be a corresponding increase in ROI, which can be calculated using a spreadsheet (if you’re like me and your eyes cross whenever you look at discounted ROI calculation!). In addition, the faster time to market realized by this improvement may be essential in highly competitive or seasonal businesses. Thus, there are certainly many projects where the combination of decreased development cost, increased ROI and faster time to market achieved through the attention of a dedicated scrum master will more than offset the scrum master’s cost.</p>
+<p>How much productivity improvement can be gained from dedicating a scrum master to one team? Unfortunately, I don’t know of any studies that have been yet conducted to determine this. 5% seems like a pretty fair and conservative expectation, though much greater improvements should be achievable, particularly with inexperienced teams. It would be great if an organization with a large agile implementation or the maker of an agile management tool could gather data comparing the productivity of teams with dedicated vs. shared scrum masters, so that we could make more than a wild guess about that number.</p>
+<h2>In conclusion…</h2>
+<p>One of the most powerful and frustrating aspects of being a scrum master is that if you do it well, no one notices you doing it. Good scrum masters can have a significant impact on the productivity of a team when they are</p>
+<ul> 
+ <li>experienced agilists with coaching expertise</li> 
+ <li>fully available to respond immediately to issues</li> 
+ <li>able to observe and tune into the nuances of the team’s interactions</li> 
+ <li>able to take the time to understand the work that the team is doing in detail</li> 
+ <li>not too busy to focus proactively on continuous improvement on behalf of the team</li> 
+</ul>
+<p>What we also can see is that the additional cost of dedicating a scrum master may well be entirely offset by the increase in productivity that they can derive. The cost offset comes from three sources:</p>
+<ul> 
+ <li>reduced development cost,</li> 
+ <li>faster time to market, and</li> 
+ <li>increased ROI.</li> 
+</ul>
+<p>More study should be devoted to the productivity impact of scrum master allocation based on empirical data. This would allow organizations to make better decisions regarding how many scrum masters they should allocate to their teams to drive the best chance for project success.</p>
+<h2>About the Author</h2>
+<p><b><img src="http://www.infoq.com/resource/articles/case-dedicated-scrum-master/en/resources/Melinda-Stelzer-Jacobson.jpg" vspace="3" hspace="3" align="left" alt="" _href="img://Melinda-Stelzer-Jacobson.jpg" _p="true" />Melinda Stelzer Jacobson </b>is an Agile Coach who believes that productivity and success are achieved by happy people in teams where trust, respect and communication are valued. Her belief is grounded in 15 years of software development experience spanning across telecommunications, banking, scientific devices, web sites and internet applications. Based in San Francisco, Melinda is a Certified Scrum Master, Certified Scrum practitioner, ICAgile Certified Professional in Agile Coaching, and Innovation Games Certified Collaboration Architect. In her spare time she saves cute orphan bunnies from being euthanized.</p><br><br><br><br><br><br></body></html>

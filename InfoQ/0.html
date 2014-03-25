@@ -1,25 +1,20 @@
-<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>Github发布Atom：意欲打造下一代编辑器</h3><p>2月26日，Github推出了<a href="https://atom.io/">Atom</a>，意欲打造下一代编辑器，Atom汲取了SublimeText、TextMate等编辑器的特点，采用Chromium、Node.js、Coffeescript和LESS，目前已经开放Mac版本内测申请，Atom正式版推出以后将会收费。</p>
-<h2>开发背景</h2>
-<p>Github的员工Nathan Sobo在Atom的博客中提到：“Sublime和TextMate十分方便，但是扩展性不足；另一方面，Emacs和 Vim扩展性很强却需要学习日程工作中很少用到的脚本语言。”因此，他们希望找到一个平衡点，于是就有了Atom这个项目。</p>
-<p>对于拥抱开源的Github来说，Atom将会把大部分的类库开源，目前已经开放了80多个扩展和插件。</p>
-<h2>技术堆栈</h2>
-<p>在Atom中主要使用了如下的技术堆栈：</p>
+<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>Java 外部功能接口</h3><p>JDK增强提案（JEP）191定义了<a href="http://openjdk.java.net/jeps/191">Java Foreign Function Interface</a>（FFI），它是可以将本地函数绑定到Java方法以及管理本地内存块的接口。该提案会使得向JDK中添加本地级别的新特性更容易，而且帮助提供了一个用于Java开发的标准FFI。当前，Java Native Interface（JNI）是编写Java本地代码的标准编程接口。JNI创建本地函数的方式并不简单，于是产生了像<a href="https://github.com/twall/jna">Java Native Access</a>（JNA）和<a href="https://github.com/jnr/jnr-ffi">Java Native Runtime</a>（JNR）这样的库。JNA和JNR都是基于JNI创建的，而JEP 191可能会基于JNR。</p>
+<p>JEP 191在Java级别提供了类似于JNA或JNR的外部函数接口。开发人员可以通过它轻松地访问本地函数，以及在JVM级别管理本地内存。它还将支持未来针对标准Java FFI的JSR。Java FFI API可用于实现本地支持的功能，像NIO、高级文件系统元数据、进程管理。使用FFI API而不是JNI绑定本地代码和内存将成为开发人员更喜欢的方式。JEP 191并不包含对JNI的增强，不过这些可能会加入到JSR进程中。</p>
+<p>目前，JNI是编写Java本地方法以及将Java虚拟机嵌入本地应用程序的标准编程接口。它管理着JVM和非托管的本地环境之间的边界，提供数据编组和对象生命周期管理协议。根据JEP 191，JNI在下列几个方面最令开发人员痛苦：</p>
 <ul> 
- <li>Chromium</li> 
- <li>Node.js</li> 
- <li>Coffeescript</li> 
- <li>LESS</li> 
+ <li>需要开发人员编写C代码，这意味着他们需要具备一个完全不同于Java的世界的专业知识。</li> 
+ <li>由于开发人员必须对JVM如何管理内存和代码多少有一些了解，所以典型的C和Java开发人员通常并不具备使用JNI所需的专业知识。</li> 
+ <li>开发人员必须能够为他们想要支持的每个平台构建代码，或者为终端用户提供适当的工具，由他们来完成这项工作。</li> 
+ <li>相比于相同的库绑定到本地应用程序，基于JNI的库性能通常较差。</li> 
+ <li>JNI充当了一个不透明的安全边界。JDK并不知道库中的函数可能会调用什么，或者库中的代码是否会损害JVM的稳定或安全。</li> 
 </ul>
-<p>编辑器首先是运行在桌面的，这是他们达成的第一个共识，但是对于一个桌面程序来说，需要跨域不同的平台，编程语言、模式也一直在变迁，易扩展性也将会是一个问题，于是Github选择做一个运行在桌面的Web程序，基础的架构采用的Chromium。Atom采用<a href="http://atom.github.io/space-pen/">Space-pen</a>实现视图与控制器绑定，简化了DOM的操作，类似于<a href="http://www.zhihu.com/question/22867204">Backbone.View</a>。从使用的截图中我们也可以看到编辑器其实是一个SPA：</p>
-<p><img src="http://infoqstatic.com/resource/news/2014/03/github-release-atom-beta/zh/resources/a1.png" width="500" alt="" _href="img://null" _p="true" /></p>
-<p>Atom所有的API都提供Node.js扩展，开发者可以通过require来加载模块，默认的开发语言是Coffeescript:</p>
-<p><img src="http://infoqstatic.com/resource/news/2014/03/github-release-atom-beta/zh/resources/a2.png" width="500" alt="" _href="img://null" _p="true" /></p>
-<p>同时，Atom提供了自己的包管理工具apm，通过apm，插件开发者可以将现有的TextMate插件和主题直接转换成Atom适用的版本，由于SublimeText和TextMate的插件有很大的相似性，这在一定程度上将会加速Atom插件的丰富程度，官方也提供了转换教程。 <img src="http://infoqstatic.com/resource/news/2014/03/github-release-atom-beta/zh/resources/a3.png" width="500" alt="" _href="img://null" _p="true" /></p>
-<h2>插件与主题</h2>
-<p>目前Atom有80多个插件，其中不乏Vim-mode、Autosave、Git Diff等实用特性，从开放的语言列表来看，对于C#、Python、Ruby、C等诸多语言已经提供了支持，其中部分语言插件是从TextMate中直接转化过来的，目前还不支持自动补全等特性；官方目前推出了5款主题，用户可以直接使用cmd-shift-P或者偏好页面来安装扩展包。另外，通过修改配置文件，Atom允许开发者对Atom进行深度的定制。</p>
-<p><img src="http://infoqstatic.com/resource/news/2014/03/github-release-atom-beta/zh/resources/a4.png" width="500" alt="" _href="img://null" _p="true" /></p>
-<h2>社区</h2>
-<p>从架构中我们就可以看出，plugin在Atom中占有很高的地位，Atom也意欲借鉴Node.js社区的模式，通过apm的方式将众多的扩展开发者聚集到一起，同时较低的贡献门槛也会在一定程度上提高大家的参与度。</p>
-<h2>总结</h2>
-<p>目前Atom还处于beta版本，很多功能还无法和TextMate、SublimeText等相媲美，例如无法打开大文件、不能像SublimeText一样设置项目文件等，但是其在扩展性上的设计将有可能把开发者聚拢起来，未来也将会有更多的开发者贡献自己的插件，这势必会对已有的编辑器带来不小的冲击。</p>
-<p>同时作为Github自家的产品，目前还不了解Atom与Github如何深度结合，从现有的官网来看，开发者可以在Atom页面使用OAuth对其进行授权，一种可能性是Atom的web版本也开发当中，一款面向未来的编辑器最终将会以怎样的方式呈现？让我们拭目以待。</p><br><br><br><br><br><br></body></html>
+<p>JNI的问题可以通过在JDK中内建FFI API来解决。Java FFI将更容易实现，而且不需要太多关于JVM内部原理和各种宿主平台的专业知识。FFI API将提供下列特性：</p>
+<ul> 
+ <li>一个描述本地库调用和本地内存结构的元数据系统。</li> 
+ <li>发现和加载本地库的机制。</li> 
+ <li>基于元数据将库/函数或内存结构绑定到Java端点的机制。</li> 
+ <li>用于Java数据类型和本地数据类型之间编组和解组的代码。</li> 
+</ul>
+<p>JEP 191还可能增加本地调用的JIT优化、GC层可知的本地内存和选择取消已知不必要的JNI安全保护的机制。它还会包含基于JRuby ffi-gen库的工具，用于从本地库收集函数和内存的元数据。开发人员还可以设置安全策略，允许绑定到特定函数，而不是库级别的权限。</p>
+<p>对Java FFI的需求已经产生了JNA和JNR库。JNA库应用更广泛。JNR库更全面，因为它实现了不同层次的抽象，提供了函数和内存元数据，对库和函数绑定进行了抽象。JNR已经在JRuby项目中大量使用，它可能会成为JEP 191的基础。</p>
+<p><b>查看英文原文：</b><b><a href="http://www.infoq.com/news/2014/03/java-foreign-function-interface">Java Foreign Function Interface</a></b></p><br><br><br><br><br><br></body></html>

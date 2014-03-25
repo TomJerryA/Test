@@ -1,31 +1,55 @@
-<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>数据爆炸、信息过载时代下的解决方案：QCon北京2014推荐系统与工程实践专题</h3><p>距第六届QCon全球软件开发大会（北京站）2014开幕仅剩一个半月，大会演讲嘉宾已经几近确认完毕。大会的演讲内容在官网：<a href="http://www.qconbeijing.com">http://www.qconbeijing.com</a>，以及InfoQ微博、微信公众帐号的最新播报：<a href="http://weibo.com/infoqchina">@InfoQ</a>、【infoqchina】不断更新。此次为大家介绍本届大会的推荐系统工程实践专题。</p>
-<p>需要注意的是，大会9折折扣期将在本月26日截止。如欲报名报请速点击<a href="http://qconbeijing.mymova.com/">报名页面</a>。</p>
-<p><strong>推荐系统工程实践：</strong></p>
-<p>在这个数据爆炸、信息过载的时代，用户面临过多内容时往往无所适从；另一方面信息的生产者也希望能更便捷的将内容传递到给合适的用户，而推荐系统的出现，很好的满足了两者的需求——即帮助用户完成个性化的信息过滤，又帮助信息找到最合适的用户。 搭建一个推荐系统本身并不难，但是搭建一个效果优良的推荐系统并不简单，而推荐系统的效果是决定整个产品成败的生命线。本专题将围绕推荐效果的优化技术进行探讨，通过深入分析推荐系统运转的各个重要环节，结合实践开发中积累的宝贵经验，为大家传道解惑。分享的内容将包括：</p>
+<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>使用Sigma库在Web应用中绘图</h3><p><a href="http://sigmajs.org/">Sigma</a>是一个致力于在Web应用中进行图形绘制的JavaScript库，目前其开发团队推出了新的<a href="https://github.com/jacomyal/sigma.js/blob/master/CHANGELOG.md">版本</a>。</p>
+<p>该JS库旨在帮助开发者们创建图形，同时也能够让用户在网页上进行网络操控变得更平顺、更快速。尽管这个新版本的推出是以修复Bug为主要目的，但之前的版本——发布于今年年初——完全是从无到有，使用全新架构开发而成。</p>
+<p>对于目前的特性列表，Sigma的网站给出了以下描述：</p>
 <ul> 
- <li>各种推荐算法实践中的特点如何？</li> 
- <li>怎样才能扬长避短让各种算法发挥特长？</li> 
- <li>设计良好的推荐系统架构是怎样的？</li> 
- <li>推荐的时效性应该怎样解决？</li> 
- <li>如何迅速捕捉用户偏好并实时完成推荐？</li> 
- <li>常用的推荐效果优化手段有哪些？分别起到什么样的作用？</li> 
- <li>如何平衡推荐系统的强时效性需求和大数据量的挖掘处理？</li> 
- <li>推荐结果应该以什么方式展示给用户？</li> 
- <li>怎样让用户更信赖推荐系统？</li> 
+ <li>定制渲染——开发者可以使用<a href="http://www.w3schools.com/html/html5_canvas.asp">Canvas</a>或<a href="http://www.khronos.org/webgl/">WebGL</a>内建渲染器，或是甚至自行编写。内建渲染器还提供了许多定制渲染过程的途径。</li> 
+ <li>面向交互——开发者可以捕捉用户对某个节点，执行点击鼠标或滑动鼠标滚轮的操作；也可以捕捉用户拖动图形或放大操作，并且总是能够掌握图形相对于屏幕的位置。</li> 
+ <li>强大的图形模型——Sigma只不过是个渲染引擎，但是开发者或许想要做更多的事情，例如运行自己的图形算法。对此，Sigma提供了可定制的图形模型，开发者可以自行添加定制的数据索引。</li> 
+ <li>可扩展——开发插件或简单的代码片段来增强Sigma的特性是件很容易的事情。现在，Sigma的主代码仓库中，已经开放了一些插件，用于读取某些流行图形文件格式或运行复杂布局算法。</li> 
+ <li>兼容性——Sigma适用于所有支持Canvas的现代浏览器，但在提供WebGL支持的浏览器上运行速度更快。</li> 
 </ul>
-<p>本届QCon的构建高效能团队专题，由ReSysChina发起人谷文栋负责出品主持。</p>
-<p>ReSysChina 成立于2009年八月，建立初衷，是想为业内关注推荐系统领域的朋友们提供一个交流讨论的社区。现在，ReSysChina已经组织过多次线下分享会，在嘉宾们为大家带来精彩观点的同时，也为推动个性化推荐技术在国内的普及做出了一些绵薄之力。</p>
-<p>谷文栋从2006年开始撰写个人博客“Beyond Search” <a href="http://www.guwendong.com/">http://www.guwendong.com/</a> ，内容专注于个性化推荐技术与产品，是国内推荐系统领域最早的博客作者之一。</p>
-<p>现在专题已经完全确认了四位演讲嘉宾。他们分别是：</p>
-<p><a href="http://www.qconbeijing.com/user/727">百度高级架构师 陈天健</a>。陈天健现供职于百度，2011年参与组建百度的推荐技术团队，近三年来设计和开发了百度的第一代、第二代和第三代推荐引擎和推荐系统云平台。 天健对于大规模推荐系统的设计开发和应用实践有较多的经验积累和总结抽象，致力于降低推荐系统构建成本和提高推荐系统的性能指标。</p>
-<p>这次大会，他会为大家分享《推荐系统时效性的实践与思考》：天健会基于百度推荐系统处理时效性问题的实践经验，总结实时推荐系统的设计规律和方法，探讨推荐系统的时效性如何从产品设计、推荐算法和系统架构等各个层面得到体现和提升。没有推荐系统实践经验的观众得到一些构建简单的推荐系统的方案，有推荐系统实践经验的观众得到一些提升系统时效性的方法，维护复杂推荐系统的观众得到一些分辨时效性需求的心得。</p>
-<p><a href="1号店资深经理">1号店资深经理王答明</a>。王答明是1号店负责个性化推荐方向的资深经理，之前曾是Autodesk内容搜索组上海区创始成员和技术负责人，也曾创建过国内最早的团购导航网站之一酷省网进行个性化团购推荐的尝试；熟悉的领域有机器学习，搜索，推荐系统，分布式处理等。</p>
-<p>这次他会为大家带来《1号店个性化推荐实践》：1号店作为国内领先的B2C电商网站之一，个性化推荐在其商业比重中所占的比例越来越大，众多的推荐栏位和场景需要健壮的架构，不同的算法，以及在线服务的有效协同；本次演讲会从产品和技术融合的角度介绍1号店在推荐系统上的实践和探索，不同的机器学习模型如何适用于不同的推荐应用，数据/算法各自重要性如何在真实商业场景中体现，推荐系统在用户体验和商业价值多重目标下如何平衡，以及支撑推荐的大数据挖掘架构等方面。听众将了解到大型B2C电商推荐系统的真实实践经验、众多机器学习算法如何适用于不同的场景、实际商业应用中，机器算法和人工规则融合经验，以及推荐系统在电商应用中除了传统手段之外的一些特殊点。</p>
-<p><a href="http://www.qconbeijing.com/user/680">世纪佳缘研发中心总监吴金龙</a>。吴金龙2005年从南开数学院保送至北大数学院计算数学专业攻读博士学位，研究方向为推荐系统中的协同过滤算法。2010年7月毕业后加入阿里云，主要从事PC和手机端输入法的开发。2011年8月加入世纪佳缘技术部研发中心，目前负责佳缘技术部研发中心的工作。</p>
-<p>世纪佳缘从十年前诞生于校园宿舍，到现在成长为中国最大的婚恋交友平台，目前已经拥有超过1亿的注册用户。它是国内第三类网站中的典型代表。吴金龙在分享中将以佳缘的几个具体产品为例，介绍我们如何应用机器学习和推荐技术来改进产品，在实现公司运营指标的同时提升用户的交友体验。最后金龙还将给出自己的几点相关思考。</p>
-<p><a href="http://www.qconbeijing.com/user/711">天猫推荐算法负责人张奇</a>。张奇2010年毕业于中国科学技术大学计算机系，信息检索方向博士。2010年7月加入阿里云计算， 搜索广告组，从事搜索广告算法研究，参与Yahoo中国搜索中搜索广告的排序算法设计，负责了国内最大规模之一的，每天近40亿网页浏览记录的挖掘、用户行为分析和User Profile 建模。2012年3月加入天猫产品技术部，推荐算法组，负责天猫推荐算法的改进和数十个推荐业务的优化，包括PC推荐业务、无线推荐业务，建立起一套基于机器学习的推荐算法流程。</p>
-<p>天猫的推荐业务快速成长，已经成为天猫最重要的导购产品之一，覆盖了商品推荐、品牌推荐、活动推荐等等维度。这次大会张奇会为大家分享天猫个性化推荐架构与实践。他会为大家介绍天猫推荐业务的特征和价值，并分享一下整个天猫推荐的算法架构，讨论他们在用户实时购物意图分析、在线CTR 预估、离线算法融合等等方面所做的工作。大家将会了解到电商推荐系统应用实例以及机器学习在推荐系统中的应用实例。</p>
-<p><strong>技术训练营信息：</strong></p>
-<p>本届大会全新打造的技术训练营（原会前培训）已经上线，在训练营中，我们邀请QCon讲师为对某一个领域具体实战技能感兴趣，入门浅的朋友提供集中的培训和指导。</p>
-<p>目前已上线的训练营包括《敏捷与模块化－OSGi理论与实践》、《iOS入门与进阶》、《JavaEE，企业应用互联网化的架构选择探讨》，和许多不同类别的测试课程，以及一门认证类课程《实践中的看板》。课程详情及报名方式，请查阅[技术训练营页面](http://www.qconbeijing.com/tutorials )。</p>
-<p>更多精彩信息不断更新中，详请跳转至<a href="http://www.qconbeijing.com">大会官网</a>查阅。每年QCon大会门票都会在开幕前售罄，及早预定可提前确保席位，并享受更低折扣。如有更多需要咨询，请联系qcon@cn.infoq.com，或直接致电010-64738142。报名请点击<a href="http://qconbeijing.mymova.com/">报名页面</a>。</p><br><br><br><br><br><br></body></html>
+<p>该JS库上月在Github上被推荐为<a href="https://github.com/trending">最流行的代码库</a>。InfoQ采访了Sigma的首席开发人员Alexis Jacomy，以进一步了解该项目：</p>
+<p><b>InfoQ</b><b>：开发</b><b>Sigma</b><b>背后的动机是什么？</b></p>
+<blockquote> 
+ <p>若干年前，我开始为Flash开发Web图形绘制工具，以帮助<a href="https://gephi.org/">Gephi</a>用户在Web页面上交互式展现他们的图形。Sigma最初只是我转向HTML5第一步，现在，在某种意义上它已经取得了成功，而这将继续激发我对于它的积极性。</p> 
+</blockquote>
+<p><b>InfoQ</b><b>：</b><b>Sigma</b><b>的新版本经历了重度重构，你这样做是为了实现什么目标？</b></p>
+<blockquote> 
+ <p>最初Sigma的源码非常严格，而且完全未经测试。对我来说，这次重构恰好是解决这些问题的机会。在这个版本中引入了更加一致的API，并使用了更多单元测试。此外，Sigma中的每一部分现在都是可覆盖的，这将允许开发者以插件的形式实现几乎任何特性。</p> 
+</blockquote>
+<p><b>InfoQ</b><b>：</b><b>JavaScript</b><b>领域还有其他一些为图形绘制提供支持的库。那么你认为</b><b>Sigma</b><b>何以成为独特的一个？</b></p>
+<blockquote> 
+ <p>Sigma是一个致力于图形绘制的JS库。它的目标是简化基础使用场景，同时也支持整合以用于加倍复杂的应用：</p> 
+ <ul> 
+  <li>以几个内建特性为例，我们可以看到它让开发者能够轻松实现多点触摸、平滑缩放并应对窗台大小调整。</li> 
+  <li>它提供了一些更加复杂的特性，并以插件的形式实现了它们。</li> 
+  <li>它的API和事件系统简化了与图形之间的交互。</li> 
+ </ul> 
+</blockquote>
+<p><b>InfoQ</b><b>：能不能介绍一些现在正在使用</b><b>Sigma</b><b>的项目？</b></p>
+<blockquote> 
+ <p>据我目前了解，以下项目正在整合Sigma的新版本，但是尚未完成产品化：</p> 
+ <p>来自Sciences-Po m&eacute;dialab（我当前的雇主，为最新版本的开发提供了经济支持）：</p> 
+ <ul> 
+  <li><a href="http://tools.medialab.sciences-po.fr/iwanthue/">http://tools.medialab.sciences-po.fr/iwanthue/</a></li> 
+  <li><a href="https://github.com/medialab/Hypertext-Corpus-Initiative">https://github.com/medialab/Hypertext-Corpus-Initiative</a></li> 
+  <li><a href="https://github.com/medialab/sciencescape">https://github.com/medialab/sciencescape</a></li> 
+ </ul> 
+ <p>来自牛津大学互联网研究所（<a href="http://www.oii.ox.ac.uk/microsites/hcn/?lang=cn">Oxford Internet Institute</a>）:</p> 
+ <ul> 
+  <li><a href="https://marketplace.gephi.org/plugin/sigmajs-exporter/">https://marketplace.gephi.org/plugin/sigmajs-exporter/</a>——Sigma的成功与之息息相关</li> 
+  <li><a href="https://apps.facebook.com/namegendev/">https://apps.facebook.com/namegendev/</a></li> 
+  <li><a href="http://collegeconnect.us/">http://collegeconnect.us</a></li> 
+ </ul> 
+ <p>其他项目：</p> 
+ <ul> 
+  <li><a href="http://moviegalaxies.com/">http://moviegalaxies.com/</a></li> 
+  <li><a href="http://linkurio.us/">http://linkurio.us/</a></li> 
+  <li><a href="http://app.algopol.fr/">http://app.algopol.fr/</a></li> 
+ </ul> 
+</blockquote>
+<p><b>InfoQ</b><b>：</b><b>Sigma</b><b>项目的计划几乎是什么？</b></p>
+<blockquote> 
+ <p>我的计划基本上是要保持对它的维护，并尝试让更多人参与到核心开发工作中。而且，还有一些特性我目前没有时间去实现，例如SVG渲染器或是基于布局算法的Web工作器。</p> 
+</blockquote>
+<p><strong>查看英文原文：</strong><a href="http://www.infoq.com/news/2014/03/sigma-javascript-graph-drawing">Using Sigma for Drawing Graphs</a></p><br><br><br><br><br><br></body></html>

@@ -1,21 +1,44 @@
-<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>LighTable IDE宣布开源并增加插件支持</h3><p>Chris Granger宣布对<a href="http://www.lighttable.com/">LightTable IDE </a>0.6版本<a href="http://www.chris-granger.com/2014/01/07/light-table-is-open-source/">开源</a>。该次发布的最大亮点在于第三方插件的支持。</p>
-<p>社区开始对其他语言插件的支持贡献力量，包括<a href="https://github.com/jetaggart/light-haskell">Haskell</a>、 <a href="https://github.com/darthdeus/LightTable-Ruby">Ruby</a>、<a href="https://github.com/enricosada/LightTable-FSharp">F#</a>、 <a href="https://github.com/rschroll/litex">LaTex</a>和<a href="https://github.com/MarcoPolo/lt-markdown">Markdown</a>，以及一些关注核心编辑体验的特性（包括<a href="https://github.com/Gozala/lt.plugins.bracketglow">Bracket Glow</a>、<a href="https://github.com/cndreisbach/lighttable-base16-themes">base16 theme</a>、<a href="https://github.com/Gozala/lt.plugins.match-highlighter">match highlighter</a>等）。所有的这些都以LightTable内置插件的方式提供。</p>
-<p>Chris提到，最初其<a href="http://www.chris-granger.com/2012/02/26/connecting-to-your-creation">灵感来源于Bret Victor</a>在《<a href="http://vimeo.com/36579366">发明的原则</a>》的演讲中提到的内容，其中 Bret描述的原则是：“创造者需要和他们的发明保持直接的关联”。Chris着手去编写一个IDE其目的是让开发人员在编写代码的时候能够得到即时的响应。在接下来的<a href="https://www.kickstarter.com/projects/ibdknox/light-table">Kickstarter竞选中</a> （译者注意：Kickstarter是一个创意融资平台）取得了成功，这表明这样的工具引起了人们广泛的兴趣。在竞选期间<a href="http://www.chris-granger.com/2012/05/17/light-table-is-in-yc">该项目被接纳</a>为<a href="http://ycombinator.com/">YComb</a>2012夏季的一个部分，以确保其创作。</p>
-<p>InfoQ就LightTable的今后发展采访了Chris。</p>
-<p><strong>InfoQ:</strong> 你是否担心过大量插件的产生或许会使得LightTable本身的可用性降低，或逐渐陷入困境？</p>
+<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>在关系型数据库中运行计算</h3><p>近日，<a href="http://www.jooq.org/">JOOQ</a>的官方博客上发表了一篇<a href="http://blog.jooq.org/2014/03/10/please-run-that-calculation-in-your-rdbms/">文章</a>，针对Stack Overflow上“<a href="https://iyism.com/browse.php?u=vmImIiLr4COP5LIee2Fp5y2skR3tYGkpgKRD%2BgXPILJybLFLFrL7OFGmRqD0mz3rjZ5clVKS71wtda9FMoB6OWRLkcoAoeisxrveC3JaZRkKo6eCd9m%2FeStt4dBP66xpCxn6qtYudfLXmv59dw%3D%3D&amp;b=29">如何使用Hibernate映射处理庞大的数据表</a>”这样一个问题，作者认为有必要提醒下开发人员，不要犯<a href="https://iyism.com/browse.php?u=vmImMzrl5GaK%2FbgdM2J09yz9zkHxPix73OMaulqMIuMsNuUQS66mfkq9UObigH%2F0gIwQ0RuC6lxscrZCJYE5NXFF2YoWuf2rhauBFW5aZxsKtLOPNA%3D%3D&amp;b=29">Java开发人员编写SQL时常犯的十个错误</a>中的第二项错误：在Java内存中处理数据。</p>
+<p>Stack Overflow上的问题可以归结为：从下面的中型表中计算出每个应用程序ID对应多少个状态为0或1的文档。用Hibernate该如何实现？</p>
+<pre>
+AppID | DocID | DocStatus 
+------+-------+----------
+1     | 100   | 0
+1     | 101   | 1    
+2     | 200   | 0    
+2     | 300   | 1
+...   | ...   | ...
+</pre>
+<p>“NO!不要用Hibernate！你要用SQL。Es-Queue-EI!……”，作者认为，有许多简单的方法可以让SQL服务器来运行这种查询，而且时间很短，又不用在聚合之前将所有的数据加载到Java内存。他分别使用GROUP BY、嵌套查询、SUM（）和PIVOT给出了四种实现方式，并认为其中任何一种的性能都会在数量级上超过任何基于Java的实现。文章的结尾这样写道：</p>
 <blockquote> 
- <p>Chris:总的来说，我认为开源生态系统的自身调节是相当不错的--有成千上万专为emacs/ vim的/sublime/textMate工作的插件，它们看上去都很好。我们的方法有一点不同，在于你甚至有更多的自由去改变其一切（你可以抛弃调我们所做的一切，并取代它），但我认为社区在推荐使用和忽略不应该用的方面是做的很好的。</p> 
- <p>我们希望做的更好的一点是，无需使用大量的插件也能够搭建一个良好的运行环境。例如Emacs和Vim，由于没有好的能针对x((译者注：指各类xWindow)用户体验的插件机制，那是相当可怕。LT的插件系统允许插件依赖于其他插件，这意味着如果你愿意，我们可以组织创建 “分布式”的插件系统。它们最终依赖于很多其他的插件，并提供了配置，使所有的插件都能协调工作。</p> 
- <p>这也恰好是在BOT架构令人眼前一亮的地方。终端用户很容易删除冲突的行为，并能不修改任何代码随机地协作运行。因此，对你的问题的简单回答是“不”，但我们也提前计划，以消除针对任意策略的插件的某些缺点。</p> 
+ <p>任何时候，只要合适就使用SQL!能用SQL的地方远比你想象的多。</p> 
 </blockquote>
-<p>BOT是代表Behaviour-Object-Tag，这词出现在Chris在<a href="http://www.chris-granger.com/2013/01/24/the-ide-as-data">LightTable架构</a>一文中。</p>
-<p><b>InfoQ:</b>在Kickstarter最初的计划中，对于项目开源的计划描述为“在某些程度上，在如何开源和商业的结合的问题中，这是一个实验—对于我们所有人来说都是宝贵的一课。”这两者目前是如何结合的？我们是否将看到收费的插件或者收费许可的某些高级的核心功能？</p>
+<p><a href="http://www.reddit.com/r/programming/comments/201q8y/please_run_that_calculation_in_your_rdbms/">该文在reddit用户之间引发了激烈的讨论</a>。ggtsu_00认为：</p>
 <blockquote> 
- <p>这一直是我们在试图解答的问题。虽然我们有许多可选的策略，能够将LT自身进行商业动作，但我们已经发现了别的更自然的方式去发展它。我们已决定建立服务去掌管它，而不是直接将Light Table商业化。我们将使用它们作为公司发展的催化剂。</p> 
- <p>我们还没准备好去讨论这些服务是什么，但我会说，它将能让我们对编程方式的了解发生戏剧性的改变。一种较好的方式是将LightTable设想为一个平台，它能让我们一开始就能在上面完成任务；让人们能够解决问题并创建所需。</p> 
- <p>我们最近的发布是朝该方向的第一步，但相信我，你现在看到的和将来相比，只是一个微不足道的光点而已。</p> 
+ <p>……如果计算减少了返回结果的行数，那么最好在数据库里计算。不过，许多计算是后处理或格式修改，这些最好是在应用服务器上进行。</p> 
 </blockquote>
-<p><strong>查看英文原文：</strong><a href="http://www.infoq.com/news/2014/02/lighttable-open-source">LightTable IDE Goes Open Source, Adds Plugin Support</a></p>
-<hr />
-<p>感谢<a href="http://www.infoq.com/cn/author/邵思华">邵思华</a>对本文的审校。</p>
-<p>给InfoQ中文站投稿或者参与内容翻译工作，请邮件至<a href="mailto:editors@cn.infoq.com">editors@cn.infoq.com</a>。也欢迎大家通过新浪微博（<a href="http://www.weibo.com/infoqchina">@InfoQ</a>）或者腾讯微博（<a href="http://t.qq.com/infoqchina">@InfoQ</a>）关注我们，并与我们的编辑和其他读者朋友交流。</p><br><br><br><br><br><br></body></html>
+<p>对于ggtsu_00的观点，lukasedar进行了补充，认为“争论的焦点是通过网络在处理数据的节点之间传输的数据量”。Grauenwolf则表示，如果将该观点中的“返回结果的行数”改为“返回结果的行数或列数”，那么他也赞同。而该观点的后半部分则引发了进一步的争论。ItsMeCaptainMurphy认为：</p>
+<blockquote> 
+ <p>这要看你做什么，构建数据库通常是用来尝试并行的，对于行级操作尤其如此。……而且你的数据库服务器的性能可能比Web服务器或客户端更强大。那么，有些事情确实是最好在应用程序端做，但并不是所有情况，甚至不是多数情况。</p> 
+</blockquote>
+<p>不过，emn13则认为这与数据库服务器的性能无关，而与代码性能相关：</p>
+<blockquote> 
+ <p>本地或近似本地代码的性能通常是SQL的1000倍，而且可能更高。即使是像Ruby或Python这样相当慢的语言在简单表达式求值方面也可能比大部分SQL服务器要快。</p> 
+ <p>SQL不是一个很好的通用计算器。如果计算没能减少返回结果的行数，就不能想当然地认为一台高性能的数据库服务器实际上会超过一部手机。</p> 
+ <p>……</p> 
+ <p>总而言之，由于大部分计算都很简单，所以没有减少数据也没关系。但当计算代价很高时，SQL通常是缓慢的。</p> 
+</blockquote>
+<p>为了使自己的观点更有说服力，他结合自身的经验作了进一步的说明：</p>
+<blockquote> 
+ <p>1000倍这个数量级是我在MS SQL SERVER上实现一个有向图节点计分算法时观察到的，不是假想的场景。</p> 
+</blockquote>
+<p>Ulukai对上述观点表示了赞同，他还补充说</p>
+<blockquote> 
+ <p>如果有非常复杂的逻辑需要执行，那么你应该仔细考虑。比如，我不会在数据库代码中执行“最短路径”算法，除非它获得原生支持。</p> 
+</blockquote>
+<p>在关系型数据库中进行计算，除了应用场景的问题，还有知识结构和使用习惯的问题。人们已经花了很多时间和精力来学习ORM框架的所有最细微的细节，所以他们真的不喜欢他们应该更好地学习SQL这样的建议。但crimson_chin认为：</p>
+<blockquote> 
+ <p>学习任何一个而不学习另一个都会让你处于不利地位。如果学了SQL没有学ORM，那你就要面临代码可能过于冗长且难以维护的风险。如果你学了ORM没有学SQL，那么你就要面临自我折磨的风险，因为一个查询为了获取项的名称列表却拉回了200列。</p> 
+</blockquote>
+<p>但同时，他认为数据库代码难以测试、管理和维护。因此，只有在可以明确地知道是最佳实践的时候，他才会使用数据库的特性来进行开发。</p>
+<p>总之，JOOQ的博文虽然引发了一场讨论，但文章本身的内容似乎没有多大的争议。至于什么时候应该在关系型数据库中进行计算，什么时候应该在应用程序端进行计算，大家也有一定的共识。具体做法则要视应用场景，并根据SQL、ORM各自的优缺点进行综合分析和测试，而这当然离不开对SQL和ORM的学习和使用经验。</p><br><br><br><br><br><br></body></html>

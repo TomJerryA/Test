@@ -1,21 +1,10 @@
-<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>LightTable IDE宣布开源并增加插件支持</h3><p>Chris Granger宣布对<a href="http://www.lighttable.com/">LightTable IDE </a>0.6版本<a href="http://www.chris-granger.com/2014/01/07/light-table-is-open-source/">开源</a>。该次发布的最大亮点在于第三方插件的支持。</p>
-<p>社区开始对其他语言插件的支持贡献力量，包括<a href="https://github.com/jetaggart/light-haskell">Haskell</a>、 <a href="https://github.com/darthdeus/LightTable-Ruby">Ruby</a>、<a href="https://github.com/enricosada/LightTable-FSharp">F#</a>、 <a href="https://github.com/rschroll/litex">LaTex</a>和<a href="https://github.com/MarcoPolo/lt-markdown">Markdown</a>，以及一些关注核心编辑体验的特性（包括<a href="https://github.com/Gozala/lt.plugins.bracketglow">Bracket Glow</a>、<a href="https://github.com/cndreisbach/lighttable-base16-themes">base16 theme</a>、<a href="https://github.com/Gozala/lt.plugins.match-highlighter">match highlighter</a>等）。所有的这些都以LightTable内置插件的方式提供。</p>
-<p>Chris提到，最初其<a href="http://www.chris-granger.com/2012/02/26/connecting-to-your-creation">灵感来源于Bret Victor</a>在《<a href="http://vimeo.com/36579366">发明的原则</a>》的演讲中提到的内容，其中 Bret描述的原则是：“创造者需要和他们的发明保持直接的关联”。Chris着手去编写一个IDE其目的是让开发人员在编写代码的时候能够得到即时的响应。在接下来的<a href="https://www.kickstarter.com/projects/ibdknox/light-table">Kickstarter竞选中</a> （译者注：Kickstarter是一个创意融资平台）取得了成功，这表明这样的工具引起了人们广泛的兴趣。在竞选期间<a href="http://www.chris-granger.com/2012/05/17/light-table-is-in-yc">该项目被接纳</a>为<a href="http://ycombinator.com/">YComb</a>2012夏季的一个部分，以确保其创作。</p>
-<p>InfoQ就LightTable的今后发展采访了Chris。</p>
-<p><strong>InfoQ:</strong> 你是否担心过大量插件的产生或许会使得LightTable本身的可用性降低，或逐渐陷入困境？</p>
-<blockquote> 
- <p>Chris:总的来说，我认为开源生态系统的自身调节是相当不错的--有成千上万专为emacs/ vim/sublime/textMate工作的插件，它们看上去都很好。我们的方法有一点不同，在于你甚至有更多的自由去改变其一切（你可以抛弃掉我们所做的一切，并取代它），但我认为社区在推荐使用和忽略不应该用的方面是做的很好的。</p> 
- <p>我们希望做的更好的一点是，无需使用大量的插件也能够搭建一个良好的运行环境。例如Emacs和Vim，由于没有好的能针对x((译者注：指各类xWindow)用户体验的插件机制，那是相当可怕。LT的插件系统允许插件依赖于其他插件，这意味着如果你愿意，我们可以组织创建 “分布式”的插件系统。它们最终依赖于很多其他的插件，并提供了配置，使所有的插件都能协调工作。</p> 
- <p>这也恰好是在BOT架构令人眼前一亮的地方。终端用户很容易删除冲突的行为，并能不修改任何代码随机地协作运行。因此，对你的问题的简单回答是“不”，但我们也提前计划，以消除针对任意策略的插件的某些缺点。</p> 
-</blockquote>
-<p>BOT是代表Behaviour-Object-Tag，这词出现在Chris在<a href="http://www.chris-granger.com/2013/01/24/the-ide-as-data">LightTable架构</a>一文中。</p>
-<p><b>InfoQ:</b>在Kickstarter最初的计划中，对于项目开源的计划描述为“在某些程度上，在开源和商业如何结合的问题中，这是一个实验—对于我们所有人来说都是宝贵的一课”。这两者目前是如何结合的？我们是否将看到收费的插件或者收费许可的某些高级的核心功能？</p>
-<blockquote> 
- <p>这一直是我们在试图解答的问题。虽然我们有许多可选的策略，能够将LT自身进行商业动作，但我们已经发现了别的更自然的方式去发展它。我们已决定建立服务去掌管它，而不是直接将Light Table商业化。我们将使用它们作为公司发展的催化剂。</p> 
- <p>我们还没准备好去讨论这些服务是什么，但我会说，它将能让我们对编程方式的了解发生戏剧性的改变。一种较好的方式是将LightTable设想为一个平台，它能让我们一开始就能在上面完成任务；让人们能够解决问题并创建所需。</p> 
- <p>我们最近的发布是朝该方向的第一步，但相信我，你现在看到的和将来相比，只是一个微不足道的光点而已。</p> 
-</blockquote>
-<p><strong>查看英文原文：</strong><a href="http://www.infoq.com/news/2014/02/lighttable-open-source">LightTable IDE Goes Open Source, Adds Plugin Support</a></p>
-<hr />
-<p>感谢<a href="http://www.infoq.com/cn/author/邵思华">邵思华</a>对本文的审校。</p>
-<p>给InfoQ中文站投稿或者参与内容翻译工作，请邮件至<a href="mailto:editors@cn.infoq.com">editors@cn.infoq.com</a>。也欢迎大家通过新浪微博（<a href="http://www.weibo.com/infoqchina">@InfoQ</a>）或者腾讯微博（<a href="http://t.qq.com/infoqchina">@InfoQ</a>）关注我们，并与我们的编辑和其他读者朋友交流。</p><br><br><br><br><br><br></body></html>
+<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>HBase 0.98引入了基于单元格的安全</h3><p>Apache发布的<a href="https://blogs.apache.org/hbase/entry/apache_hbase_0_98_0">HBase 0.98</a>主要是通过基于单元格的安全在安全性上趋同于Apache <a href="http://accumulo.apache.org/">Accumulo</a>，同时解决了230 JIRA问题。这些新的安全特性是按照Accumulo建模的。</p>
+<p>HBase和Accumulo都是Apache的项目，它们运行在Apache Hadoop上，参照Google的<a href="http://research.google.com/archive/bigtable.html">BigTable</a> 基础架构模型提供分布式的数据存储。</p>
+<p>单元格是HBase中可以用键识别的最底层单元。在之前的版本中，单元格的访问许可继承自列族系，而列族系的访问许可继承自表。</p>
+<p>Accumulo使用了类似的数据模型，不过它的安全模型跟传统的ACL（访问控制列表）不太一样，它的安全模型更精细，是基于单元格的安全。键中包含一个标签(label)，在访问单元格级别的不同数据部分时可以辅助做出更精细的决定。所以，根据这个标签上的内容，相同的数据上可能有多层信息访问。</p>
+<p>HBase 0.98解决了<a href="https://issues.apache.org/jira/browse/HBASE-8496">HBASE-8496</a>和<a href="https://issues.apache.org/jira/browse/HBASE-7663">HBASE-7663</a>两个问题。它们通过标签(tag)实现了基于单元格的安全。这些标签可以存储任何元数据，从而可以把ACL安全模型从表扩展到列族系，进而扩展到单元格。此外，在标签中还可以存储可见性表达式(visibility expression)，跟Accumulo一样提供访问单元格内不同信息片的粒度水平。</p>
+<p>从 <a href="https://hbase.apache.org/book.html#hbase.accesscontrol.configuration">API</a> 来看，像下面这样的调用会为user1设置对单元格的访问许可：</p>
+<pre>
+ put.setACL(“user1”, new Permission(Permission.Action.READ)) </pre>
+<p>Andrew Purtell，一位Intel的首席架构师，HBase的资深贡献者说：“随着Apache HBase 0.98的发布，从最终用户的角度来看有一些安全特性上的趋同。HBase对ACL的支持已经有一阵子了。现在我们又对Accumulo风格的可见性标签提供了支持，我们为用户提供了两个项目特性的超集。” Purtell在他 <a href="https://communities.intel.com/community/itpeernetwork/datastack/blog/2013/10/29/hbase-cell-security">基于单元格的安全博客</a>中介绍了这一特性的关键内容。</p>
+<p><strong>查看原文链接：</strong><a href="http://www.infoq.com/news/2014/03/hbase-098">HBase 0.98 Introduces 单元格-based Security</a></p><br><br><br><br><br><br></body></html>

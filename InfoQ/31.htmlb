@@ -1,47 +1,165 @@
-<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>作者访谈与书评：“Nagios企业监控实践（原书第2版）”</h3><p>David Josephsen的新书<a href="http://www.informit.com/store/nagios-building-enterprise-grade-monitoring-infrastructures-9780133135732">《Nagios企业监控实践（原书第2版）》</a>最近出版了。这本书包含了构建监控平台的最佳实践、侧重使用方面对Nagios的运作原理进行了介绍，并包含了实施Nagios项目的实用指南。David编写这本书虽然以帮助系统工程师和企业架构师为主，但书中包含的内容依然与大多数技术角色相关。David以官方在线文档中的内容为基础提供了系统集成的细节信息，并结合自身使用Nagios的经验介绍了一些高级主题，带领读者对Nagios的软件生态系统进行系统化的思考。 最佳实践 David明确了在监控解决方案的建设过程中，对被监控的业务和技术的深刻理解非常重要。他声称这是一个“过程方法”，实施过程应当是经过深思熟虑，而非东拼西凑的。在他看来，拼凑的方法存在很多问题，通常不会探讨监控解决方案中深层次关键技术方面。这本书为大家提供了一些建议，主要聚焦于被关注系统的一些全局特征，包括：需求的处理、系统所处的网络位置、网络依赖、系统安全、报警的滥用以及端口与应用监视的对比分析。</p>
-<p>尽管本书前面预先介绍了实施中所需的大量架构和业务知识，但Nagios依旧避免对被监控的大量系统作出假设。其实，Nagios自身无任何监控功能，设计它的目的是对监控检测的调度，并根据检测结果进行相应的通知。Nagios将实际的监控功能委托给能够返回状态文本的插件，通过这种方式，它可以避免对一体化的Agent产生依赖，从而符合Unix的设计哲学。Doug Mcllroy将Unix的设计哲学总结如下：</p>
-<p>“编写专一并且专注的程序（只做一件事，并把它做好）。编写能够协作的程序（程序间能够相互调用）。编写能够对文本流进行处理的程序，因为这是一种通用的接口。”</p>
-<h4>运作原理</h4>
-<p>Nagios使用一套定义明确的范式，其中包含“主机”和“服务”两个主要的逻辑对象，这是对被监控系统及其组成部分抽象的结果。服务属于主机，并且能够包含主机间或是服务间的关系——这就是依赖的概念。Nagios将主机和服务检测的重任转交给状态评估的插件管理，基本上每种类型的检测都拥有自己的插件。David借此机会详细介绍了Windows和Unix系统的监控方式。在Windows环境中提供的脚本开发技术包括：Wscript、OLE、COM、WMI以及PowerShell。NSClient++通过NRPE协议为Nagios和Windows脚本开发技术之间提供了提供了接口层。David认为NRPE插件是Unix/Linux系统的远程执行的首选工具，通过它作为接口可以调用bash、Python、Ruby、PERL等语言编写的插件以及命令行系统工具。David通过检查Nagios为其他对象（如网络设备和环境传感器）扩展监控的能力，完善了Nagios使用插件监控的精髓。</p>
-<p>书中很清楚地表明Nagios实质上是一套调度和通知系统。Nagios通过先进的算法调度服务检测——如长检测（Long Check Execution）执行、故障状态重试、为避免避免远程系统产生较高负载的交错检测以及延迟检测等手段，从而管控Nagios服务器负载。Nagios依然会并发运行检测，然后使用信息收集进程（Reaper）从消息队列中获得结果。Nagios根据状态的变化以及状态的类型（确定（Hard）或待定（Soft））触发通知。通知事件可以转而配置为发送电子邮件、或调用类似Pager Duty这样的系统（译者注：Pager Duty是一款告警通知系统，支持告警聚合、自动升级等功能，提供多种通知方式。）。另外，当问题持续时间过长时，还可以通过升级规则（Escalation）进行进一步的告警。此外，正常（OK）状态会先过渡到待定（Soft）状态，从而减少重要性较低的瞬态问题的通知。</p>
-<p>Nagios通过提供灵活的I/O接口完善了其以高度集中为目的的算法核心，从而使自身成为一套更为强大的记录、监控解决方案架构的一部分。主要的I/O接口包括Web界面、报表、Nagios用于处理命令的外部命令文件、性能数据处理以及先进的低层事件代理集成功能。性能数据处理功能为使用轮循数据库工具（如RRDtool）、图形系统（如Graphite）的高级可视化提供了集成点（Integration Point）。事件代理提供了先进的集成功能，包括通过诸如MKLiveStatus这样的插件所进行的Nagios状态查询，可以实现战术视图（Tactical Display）的集成（如NagVis）。</p>
-<div id="lowerFullwidthVCR"></div>
-<p>Nagios XI是Nagios Core衍生出的商业版本，它在Nagios Core基础上增强了配置的易用性——这部分工作通常被认为是Nagios最困难的部分。此外，商业版本同时还提供了专业支持并将一系列功能集成在系统中，而对于开源版本来说，这些功能就需要用户自己动手去集成了。</p>
-<p><img width="600" _p="true" _href="img://1figure1.png" src="http://infoqstatic.com/resource/articles/building-nagios-monitoring-infrastructure-review/zh/resources/1figure1.png" alt="" /></p>
-<p>Nagios是一款开源软件，专门为集成而设计。David虽然不打算让本书成为一本介绍编程的深奥书籍，但为了更好的介绍“事件代理（Nagios Event Broker，简称NEB）接口”，为了让读者能够进一步了解构建扩展Nagios核心功能组件的过程，他在本书中恰到好处引入了一份C语言编写的程序。</p>
-<h4>Nagios系统</h4>
-<p>David使本书成为一本全面的、深入的介绍Nagios安装、配置、集成、操作的书籍。他编写的内容足以使本书作为参考文档，不仅如此，他带领读者一步步熟悉Nagios软件生态系统，这样，读者就会明白Nagios的目的以及针对特定用途所需要深入研究的技术。</p>
-<p>“Nagios守护进程是专为Linux系统设计和运行的，但它也能够在任何类UNIX的操作系统上运行。”</p>
-<p>Nagios的守护进程（或服务器）能够很容易地安装在大多数Linux发行版和Unix变种上。在不同系统上安装的过程中，最大的区别就是文件的位置，但大多数人会按照文件系统层次结构标准进行安装：</p>
+<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>使用AppVeyor CI 和PowerShell部署应用</h3><h2><b>开头语</b></h2>
+<p>关于如何为单一的ASP.NET web应用程序设置持续集成，你可以找到很多文章。这些文章都写到如何通过Web Deploy来构建完美的环境来部署简单、只需稍作修改VS.NET模板的web应用程序。任何东西在这一完美环境下都能顺利进行。</p>
+<p>但是，真正部署应用程序的话却并非易事。总是有问题不断出现在以下情况中：当需要在注册表（Registry）或自定义文件夹中配置设置，或者你需要部署到Web集群时。</p>
+<p>本文中，我们通过使用PowerShell远程处理（PowerShell remoting）和AppVeyor CI为带有ASP.NET web应用程序和Windows Service的解决方案在其暂存（staging）和产品环境中配置持续集成。</p>
+<h2><b>解决方案概述</b></h2>
+<p>我们的示例中包含4个项目：</p>
 <ul> 
- <li>配置文件——/etc/nagios</li> 
- <li>HTML——/usr/share/nagios</li> 
- <li>CGI目录——/usr/share/nagios或/usr/lib/nagios</li> 
- <li>守护进程以及其他可执行文件——/usr/bin/nagios</li> 
- <li>Lock文件以及FIFO文件——/var/lib/nagios或/var/log/nagios</li> 
- <li>日志文件——/var/log/nagios</li> 
- <li>插件——/usr/libexec/nagios或/usr/lib/nagios</li> 
+ <li>DemoApp.Web -ASP.NET应用程序，前端</li> 
+ <li>DemoApp.Web.Tests -使用VisualStudio测试框架的web应用程序单元测试</li> 
+ <li>DemoApp.Service -承载WCF服务的Windows service，后端</li> 
+ <li>DemoApp.Service.Tests -使用NUnit框架的Windows service单元测试</li> 
 </ul>
-<p>由于Nagios是使用C语言编写的，因此只有很少的依赖关系。Nagios的依赖关系完全由所使用的功能和插件所决定。Web前端需要一个支持CGI的Web服务器（例如Apache）。而插件所需的依赖关系就更多了，因为它们才是真正去进行监控的程序——可能会依赖诸如：Ping、OpenSSL、Bind工具、Perl以及Python等等。</p>
-<p>Nagios能够通过Linux/Unix分发的特定软件包安装，也可以从源码包安装。两者都使用了标准机制。真正具有难度的是安装后的配置过程。David并不想对文件的设置进行漫长的介绍，虽然他确实在第4章中对配置的设置进行了说明：时间段（Timeperiods）、命令、联系人、联系人组、主机、服务、主机组、服务组、升级规则（Escalations）以及依赖关系（Dependencies）。</p>
-<p>在Nagios的架构中，插件需要同时安装在Nagios服务器以及远程系统中。Nagios通过NRPE协议与远程系统上的插件交互。因此，用户必须在在远程系统上安装NRPE，以便通过TCP/IP协议访问NRPE。在远程系统上的NRPE将以服务的形式运行，用户可以通过配置文件对访问服务器的地址以及执行的命令进行限制。</p>
-<p>David针对基于独立部署的Nagios守护进程，还专门增加了一整章内容来介绍Nagios的扩展。他从技术方面介绍了：分布式被动检测、二级Nagios守护进程、DNX、Op5 Merlin以及Mod Gearmen等内容。</p>
-<p>InfoQ就本书对<strong>David Josephsen</strong>进行了采访。</p>
-<p><strong>InfoQ：在Nagios的实施工作中，提高开发和运维人员之间协作的关键是什么？</strong></p>
-<blockquote> 
- <p><strong>David</strong>：在过去的20年中，DevOps可能为我们的行业带来了剧变。同时，这是个不错的问题，因为在我来看，系统监控看来就像DevOps中退化回割裂（开发和运维）的那部分，我不认为这是件好事。在此情境下，Nagios的问题一直都出在配置方面。运维类型人员喜欢灵活、稳定的后端（是文件而非数据库），以及针对大量挂钩（Hook）的丰富、复杂的配置参数。开发类型人员则喜欢“能够工作”、清晰的接口以及合适的通用数据模型。Nagios的核心以及如同太阳系一般围绕着它的工具，都趋向于突出这些个性类型的正交性。在类似#monitoringsucks等运动中，记录了开发人员是如何打破了传统Nagios风格的工具的……我想说的是，实施中连接运维和开发的桥梁是围绕接口展开的。如果你在一家公司中负责运维，并且有一支积极向上的开发或DevOps队伍，你需要确保他们有一些看着很熟悉的接口（如JSON/SQL/Web服务等），这就（如果可能）使他们能够在贵公司的变更管理框架下进行变更。否则，他们会围绕着你开展工作。想做到这一点，可能最简单的方法就是为自己的组织购买XI，但是肯定有很多方法可以无需花费金钱，并使开发成为沟通中的一部分。NRDP和其用于被动检测结果的HTTPS/XML接口就是很好的接口示例，可能会吸引我们中间的开发类型的人员。首先是了解他们想要的（他们可能不知道他们想要什么，所以可能第一步是帮助他们了解他们自己想要什么），然后是与他们配合，创建他们所需要的简洁、（他们）无需配置的接口。千里之行，始于足下。</p> 
-</blockquote>
-<p><strong>InfoQ：有没有什么软件产品、服务或开源项目能够作为优秀的工单/帮助台系统，并能与Nagios集成？</strong></p>
-<blockquote> 
- <p><strong>David</strong>：如果读者现在没有帮助台系统，那么Nagios集成将会是各位决策过程中的一个巨大的因素，因为Nagios自带的事件管理——由Nagios Enterprise出品的新一代工单系统将是一个显而易见的选择。XI和事件管理模块简直就是天生一对，所以读者不会有任何集成上的问题。个人而言，我曾经将Nagios与RT、Jira、VersionOne等工具集成，我可以明确的告诉各位，很少会在技术方面出现问题。但将Nagios通过REST API或类似的东西粘合到其它系统是相当繁琐的。如果你不想从头开始，那么也可以依赖于现成的插件。但一旦牵扯到干系人员之间的相互作用时，就不是小事了。如果读者想要与帮助台集成，就需要明确并消除那些误报和无谓的事件。在读者开始计划接口之前，应当花时间考虑下目前发送的Nagios告警内容，这些内容可能会成为帮助台工单不错的“原料”。理想情况下，在系统集成之前，读者应该有一份长度有限的列表——包含了所有可能的告警以及它们的意义/升级参数，从而自如地向帮助台传递信息（更加明确的提示：这份清单应该相当简洁）。</p> 
-</blockquote>
-<p><strong>InfoQ的：你是否曾经在测试驱动基础设施开发（Test Driven Infrastructure）的环境中使用Nagios？我的意思是，在被监控系统部署监控之前，这份检查列表就已经做完了——这样当所有的检查都正常时，你就可以认为系统实施完成了。如果你有此经历，能否介绍一下？如果没有，你如何看待这种方式呢？</strong></p>
-<blockquote> 
- <p><strong>David</strong>：我个人从来没有以这种方式使用Nagios，虽然我认为这是一个好主意——在它们投入生产之前，测试预期系统达到了正确的和预期的状态，但或许有更好的工具来完成类似的事情。比如，现在有很神奇的持续集成系统可供使用，如Hudson和Travis，将这类测试交给它们，比硬塞给Nagios要更加容易。然而，对于这个问题，正式的正确答案可能是使用Chef或其他配置管理引擎。这些才真正是<a href="http://wiki.opscode.com/display/chef/Opscode+Cookbook+Test+Process">测试驱动基础设施开发</a>的捷径。在Chef的帮助下，用户可以在系统安装到硬盘之前，设计出验证和测试结果都正确的系统。虽然我认为Nagios也可以使用，但我还是要推荐一些别的东西——有两个原因，但读者的环境有所不同，它们也可能不适用，所以我应该告诉各位它们是什么。首先，Nagios实际上是个通知引擎，在这种情境下读者们需要阻止它来避免通知——要么将其配置为不发送通知，要么配置为通知后关闭通知。无论哪种方式，实际上都是在浪费时间，只是会引发我脑海中的强迫症异常（OCD Exception）。第二个读者的测试将会很难设计，或者测试过于简单。我想说的是，读者们可以为Web建立一个测试套件：包含check<em>http、check</em>ping等等。但这些测试太过具体，并且它们明确让各位知道：是的，Web服务器可以工作在这个新环境中，这是唯一一种接近测试驱动基础设施开发的定义。在我将一台服务器投入生产环境中之前，有很多我想了解的内容。理想情况下，我希望它以一个已验证状态工作在生产环境中，而这类工作是依靠Chef来完成的。</p> 
-</blockquote>
-<h2>关于本书作者</h2>
-<p><img _p="true" _href="img://null" src="http://infoqstatic.com/resource/articles/building-nagios-monitoring-infrastructure-review/zh/resources/1212041.jpg" style="float: left; margin-right: 10px" alt="" /><strong>David Josephsen</strong>是DBG公司的系统工程总监，负责维护一群分布在各地的服务器农场（Server Farm）。他有超过十年的运维经验，亲自在复杂、大规模网络环境下维护过UNIX系统、路由器、防火墙、负载均衡等设备。他是《通过Nagios构建监控平台》（原书由Addison Wesely出版）一书的作者，他还撰写了《使用Ganglia进行监控》（原书由O'Reilly Media出版）一书的三个章节。目前他正在负责编写《;login》杂志中的“iVoyer“专栏。</p>
-<div style="clear:both">
- &nbsp;
-</div>
-<p><strong>查看英文原文：</strong><a href="http://www.infoq.com/articles/building-nagios-monitoring-infrastructure-review">Book Review: &quot;Nagios: Building Enterprise-Grade Monitoring Infrastructures for Systems &amp; Networks&quot;</a></p><br><br><br><br><br><br></body></html>
+<p><img src="http://infoqstatic.com/resource/articles/AppVeyor-CI/zh/resources/0324010.png" _href="img://null" _p="true" alt="" /></p>
+<p>该示例应用程序的代码库托管于<a href="https://bitbucket.org/appveyor/demoapp/src">BitBucket</a>：</p>
+<div id="lowerFullwidthVCR"></div>
+<h2><b>我们到底将如何部署？</b></h2>
+<p>我们遇到的第一个问题就是如何部署Windows service？我们没有针对Windows service的“发布”菜单，也没有相应的配置转换。根本没法用Web Deploy。为了自动化项目的部署，我们将使用PowerShell部署框架 - AppRolla。</p>
+<p>AppRolla利用PowerShell远程处理在目标机器上执行部署任务。部署任务将下载应用程序包，解包，更新配置设置，然后创建或更新应用程序网站及pool。该应用程序包仅仅是带有应用程序文件夹的压缩包，通过HTTP上传到外部存储。其内部并没有任何特别之处 - 模块写在PowerShell内，很容易查看和修改。</p>
+<p>为了让你对PowerShell部署一睹为快，我们现在就建立一个简单web应用程序，并将其部署到服务器上。</p>
+<p>整个流程中最具挑战性的部分可能就是设置带有SSL认证的PowerShell远程处理了。我们强烈建议使用HTTPS与远程服务器进行通信，因为所有的数据流量都是加密的。</p>
+<p>当你在Windows Azure 上创建新的虚拟机时，PowerShell远程会自动被激活和配置。防火墙将允许PowerShell远程HTTPS端点端口5986，另外我们也将HTTP端点添加到示例服务器上：</p>
+<p><img src="http://infoqstatic.com/resource/articles/AppVeyor-CI/zh/resources/0324012.png" _href="img://null" _p="true" alt="" /></p>
+<p>如果你需设置其它服务，可以参照该链接里的具体细节：<a href="https://github.com/AppVeyor/AppRolla/wiki/Configuring-Windows-PowerShell-remoting">guide on how to configure PowerShell remoting。</a></p>
+<p>为了在实例机器上快速安装IIS7.5，我们使用以下PowerShell命令：</p>
+<p>Add-WindowsFeature -Name Web-Default-Doc,Web-Dir-Browsing,Web-Http-Errors,Web-Static-Content,Web-Http-Logging,Web-Stat-Compression,Web-Filtering,Web-Net-Ext,Web-Net-Ext45,Web-Asp-Net,Web-Asp-Net45,Web-ISAPI-Ext,Web-Mgmt-Console</p>
+<p>我们创建带有“Hello world”的简单Web应用程序，然后将其部署到示例服务器。</p>
+<p><img src="http://infoqstatic.com/resource/articles/AppVeyor-CI/zh/resources/0324013.png" _href="img://null" _p="true" alt="" /></p>
+<p>创建一个新的SimpleWebApp-1.0.zip压缩包，将带有第一版本的default.aspx存档起来。</p>
+<p>现在，我们需要将该应用程序压缩包上传到外部存储，这样目标服务器就能通过HTTP来对其访问。该服务器可以是启用了FTP的web服务器，Amazon S3或Azure blob存储。对于该示例，我们使用DropBox。它为DropBox文件夹下所有项目提供公共的下载链接。</p>
+<p>将该SimpleWebApp-1.0.zip拷贝到你的DropBox文件夹中，然后右击文件夹，选择“Share DropBox link”。在浏览器中打开该链接，然后拷贝“Download”键的URL。</p>
+<p><img src="http://infoqstatic.com/resource/articles/AppVeyor-CI/zh/resources/03240141.png" width="600" _href="img://null" _p="true" alt="" /></p>
+<p>打开PowerShell的控制台“As administrator”,将执行政策（execution policy）改成为允许远程PowerShell脚本：</p>
+<pre>
+Set-ExecutionPolicy RemoteSigned</pre>
+<p>安装AppRolla.psl模块（将被安装到用户配置文件中）：</p>
+<pre>
+(new-object Net.WebClient).DownloadString(&quot;https://raw.github.com/AppVeyor/AppRolla/master/install.ps1&quot;) | iex</pre>
+<p>将AppRolla模块导入到当前会话中：</p>
+<pre>
+Import-Module AppRolla</pre>
+<p>AppRolla有两组cmdlets：配置和部署。通过配置cmdlets定义应用程序和环境。</p>
+<p>紧接着，添加新的“SimpleWebApp”应用程序，该应用程序只带有单一的“website”角色：</p>
+<pre>
+New-Application SimpleWebApp</pre>
+<p>Add-WebsiteRole SimpleWebApp Web -PackageURL &quot;&lt;your-dropbox-download-link&gt;&quot;</p>
+<p>在服务器上定义“示例”环境（在提示出现后，输入示例服务器的管理员证明 - 后面将有详细讲解）：</p>
+<pre>
+New-Environment demo</pre>
+<p>Add-EnvironmentServer demo &quot;appveyor-demo.cloudapp.net&quot; -Credential (Get-Credential)</p>
+<p>将“SimpleWebApp”应用程序作为版本1.0部署到“示例”环境上：</p>
+<pre>
+New-Deployment SimpleWebApp 1.0 -to demo</pre>
+<p><a href="http://infoqstatic.com/resource/articles/AppVeyor-CI/zh/resources/0324015.jpg"><img src="http://infoqstatic.com/resource/articles/AppVeyor-CI/zh/resources/0324015.jpg" width="600" _href="img://null" _p="true" alt="" /></a></p>
+<p>（点击图片放大）</p>
+<p>就这样！你已经通过PowerShell将你的Web应用程序发布到示例服务器上了：</p>
+<p><img src="http://infoqstatic.com/resource/articles/AppVeyor-CI/zh/resources/0324016.png" width="600" _href="img://null" _p="true" alt="" /></p>
+<p>现在，我们修改一下页面内容，然后部署一个新的示例应用程序版本。我们将“Hello,World!”改成“Hello, world2.0!”。随后，创建新的SimpleWebApp-1.1.zip文件将修改好的default.aspx文件存档，再次上传到DropBox。</p>
+<p>更新“website”角色，将其压缩包的URL修改为新的值：</p>
+<pre>
+Set-WebsiteRole SimpleWebApp Web -PackageUrl &lt;public-URL-of-SimpleWebApp-1.1&gt;</pre>
+<p>然后部署新版本1.1：</p>
+<pre>
+New-Deployment SimpleWebApp 1.1 -to demo</pre>
+<p><img src="http://infoqstatic.com/resource/articles/AppVeyor-CI/zh/resources/0324017.png" width="600" _href="img://null" _p="true" alt="" /></p>
+<p>从日志可以看出，每次部署都会在本地:\applications\&lt;application-name&gt;\&lt;role-name&gt;\&lt;version&gt;中生成新的文件夹。默认情况下，目标服务器上可以保留5个部署版本，因此应用程序可以很容易地回滚到上一版本：</p>
+<pre>
+Restore-Deployment SimpleWebApp -on demo</pre>
+<p>从示例环境中删除所有应用程序部署：</p>
+<pre>
+Remove-Deployment SimpleWebApp -from demo</pre>
+<p>整个过程，我们都使用简单且简洁的命令来完成所有工作！</p>
+<h2><b>使用AppVeyor CI持续构建</b></h2>
+<p></p>
+<p>&nbsp;</p>
+<p><a href="http://www.appveyor.com/">AppVeyor CI</a>是为Windows开发人员设计的基于云的持续集成和部署平台。它有自己的服务器，因此不需要安装或配置。就算需要，配置起来也非常简单。另外，AppVeyor CI对开源项目是免费的。</p>
+<p>为了在AppVeyor CI中设置工程，其代码源必须托管于在线源代码控制库上，比如：GitHub、BitBucket或Kiln。它支持Git和Mercurial。</p>
+<p>在我们示例中，我们使用托管于BitBucket的Mercurial库。对商业项目来说，BitBucket相当实用，它免费地提供无限制的私有库。</p>
+<h3><b>启用NuGet存储</b></h3>
+<p>如果你的解决方案依赖于NuGet管理包，不要忘了启用NuGet restore来自动下载构建服务器上的各种程序包。可以使用<a href="http://docs.nuget.org/docs/workflows/using-nuget-without-committing-packages">如何启用NuGe包存储</a>这一指导来确保在.Nuget文件夹中的NuGet.exe已经添加到库里了。</p>
+<h3>添加新项目</h3>
+<p>我们可以先从创建新项目开始：</p>
+<p><img src="http://infoqstatic.com/resource/articles/AppVeyor-CI/zh/resources/0324018.png" width="600" _href="img://null" _p="true" alt="" /></p>
+<p>一旦新项目建成，新的web hook就会自动添加到项目库中，为新构建拉开序幕。</p>
+<h3>构建配置和配置交换</h3>
+<p>当通过Web Deploy部署时，配置交换在应用程序配置过程中是一个关键。对于每个需要部署的环境，都需定义新的VS.NET解决方案配置，然后使用配置转换生成web.config，它带有数据库链接字符及其它应用程序针对每个环境特定的设置。该方法看起来可行，却有一系列问题：</p>
+<p>• 类似数据库链接字符这样的敏感数据存储于源代码控制中。</p>
+<p>• 配置转换应用于构建过程，每当项目部署到新环境中，都需要重新构建配置转换。</p>
+<p>当用AppVeyor部署时，配置转换非常有用，但并非是必需的。默认情况下，VS会产生两种配置：Debug和Release，大多数情况下，这种形式完全OK。Debug配置用于本地开发，而Release配置则用于CI流程生成可以部署到任何环境的包。配置转换应该“真正地”用于转换配置文件结构，比如：禁用“Debug”标识；启用自定义错误；或启用Autofac更换模式等适用于所有环境的常见设置。</p>
+<p>我们现在就可以开始改变Release设置页面中的项目构建配置：</p>
+<p><img src="http://infoqstatic.com/resource/articles/AppVeyor-CI/zh/resources/0324019.png" width="600" _href="img://null" _p="true" alt="" /></p>
+<p>AppVeyor提供三种构建方案：</p>
+<ul> 
+ <li><b>Visual Studio</b><b>方案</b> - 运行MSBuild于VS.NET解决方案或工程文件（如果没有指定，首先查找第一个.sln或.*proj文件），还有将所有项目构建结果以工件形式打包。</li> 
+ <li><b>MSBuild</b> - 根据自己的规定运行MSBuild，允许在“Packaging”页面上定义自定义的构建工件。</li> 
+ <li><b>Script</b> - 运行特定PowerShell脚本或批文件。为管理构建流程及其结果提供最大化的自由。</li> 
+</ul>
+<h3>组件版本</h3>
+<p>每个新项目构建都会收到新的版本号，该版本号的格式规定于“General”页面下。</p>
+<p>AppVeyor默认提供<a href="http://msdn.microsoft.com/en-us/library/System.Version.aspx">Windows style versioning</a>(major.minor.{build}.revision)，但是你也可以运用其它任意版本风格，比如：<a href="http://semver.org/">SemVer</a>（major.minor.patch.{build}）。</p>
+<p>当启用“Update assembly version attributes”时，AppVeyor会将解决方案目录下的所有AssemblyInfo.*文件设置成当前版本。</p>
+<h3>执行测试</h3>
+<p>AppVeyor能通过以下这些测试框架，在assembly中发现和运行测试：</p>
+<ul> 
+ <li>MSTest</li> 
+ <li>NUnit</li> 
+ <li>xUnit</li> 
+</ul>
+<p>当“测试”步骤被启动时，AppVeyor会分析“out”文档中所有的assembly，来确认它们对所支持的测试框架是否含有相应的引用。如果有，那么所有assembly内的测试将会在相应的测试执行器中运行一遍。所有assembly的测试结果也会集合显示在UI上。</p>
+<p>（点击图片放大）</p>
+<p><a href="http://infoqstatic.com/resource/articles/AppVeyor-CI/zh/resources/0324020.jpg"> <img src="http://infoqstatic.com/resource/articles/AppVeyor-CI/zh/resources/0324020.jpg" width="600" _href="img://null" _p="true" alt="" /></a></p>
+<h3>构建.测试.打包！</h3>
+<p>我们现在开始创建新构建，可以对项目库进行修改或点击“New Build”。</p>
+<p>该模拟项目的构建流程会生产两个构建工件：web application和Windows service。将它们下载下来，你会发现其内容就是带有应用文件的常规压缩文档。</p>
+<p>由于Windows service包基本上就是其“Bin”文件夹下用于生成web应用包的内容中还需包含的一些步骤：</p>
+<ol> 
+ <li>Web应用应是解决方案的一部分。</li> 
+ <li>创建应用了“file system”发布方法的新发布配置文件，并发布了使用MSBuild的WAP项目，该配置文件用来确保web.config修改以及其它发布设置的执行。</li> 
+ <li>将发布的web应用打包为一压缩文件。</li> 
+</ol>
+<p>构建工件将存储于Geo-redundant云存储中，能通过其独有的专属链接下载。如果想有自己专有的构建工件命名结构，以及允许公共访问的话，可以配置专有存储空间。</p>
+<h2>成功部署到预生产环境</h2>
+<p>我们现在开始往staging上配置自动化部署，作为该构建流程的一部分。</p>
+<p>该部署应脚本的形式来完成，可以是PowerShell或批处理文件。在项目库的根部创建“部署”文件夹以放置部署脚本。</p>
+<p>打开PowerShell命令行，跳转到“部署”文件夹，并执行以下命令下载模板脚本到现有目录：</p>
+<pre>
+(new-object Net.WebClient).DownloadString(&quot;https://raw.github.com/AppVeyor/Deployment/master/install.ps1&quot;) | iex</pre>
+<p>会有三个脚本被添加：configure.ps1、 project.ps1 和deploy.ps1。</p>
+<p>总的说来，我们只需要编辑一个文件就能配置部署：project.psl。该文件定义了我们将要部署的环境。将删除紧接着新staging环境那一行的备注，然后添加模拟服务器：</p>
+<pre>
+New-Environment Staging 
+Add-EnvironmentServer Staging “appveyor-demo.cloudapp.net”</pre>
+<p>返回到AppVeyor CI，打开项目设置的“Deployment”页面。</p>
+<p>选择“Run deployment script”，并指定脚本路径：</p>
+<pre>
+deployment\deploy.ps1</pre>
+<p>设置以下部署变量：</p>
+<pre>
+Environment: Staging   
+ServerUsername:    
+ServerPassword:    
+ApiAccessKey:   
+ApiSecretKey: </pre>
+<p><img src="http://infoqstatic.com/resource/articles/AppVeyor-CI/zh/resources/0324021.png" width="600" _href="img://null" _p="true" alt="" /></p>
+<p>ServerUsername和Password用来创建Credential对象以验证PowerShell的远程调用。以下两种情况要求到API关键字：a）阅读项目工件获取项目包的URL；b）验证目标服务器下载工件包。AppVeyor API关键字可以在用户配置的“API Keys”页面下找到。</p>
+<p>就这样。接着只要提交“deployment”文件夹，将其推送到项目库就可以开始该部署的新构建了。</p>
+<h2>如何更新web.config的链接字符？</h2>
+<p>部署变量通过$variables参数以哈希表形式传递到脚本中。对于项目或角色，如果想启用附加的配置变量，可以在Set-Application, Set-WebsiteRole或Set-ServiceRole cmdlets中使用“Configuration”参数。打开project.ps1，并添加以下语句：</p>
+<pre>
+Set-WebsiteRole $projectName DemoApp.Web -Configuration @{   
+    “ConnectionStrings.DefaultConnection” = $variables.DefaultConnection   
+}</pre>
+<p>}</p>
+<p>然后在部署设置页面上定义“DefaultConnection”变量，用于web应用的链接字符的传递。部署脚本通过web.config为web应用程序应用了角色配置，对Windows应用程序，则通过app.config，运用了以下这些规则：</p>
+<ul> 
+ <li>Setting with name “ConnectionStrings.&lt;name&gt;” updates connection string with &lt;name&gt; name in “connectionStrings”section.</li> 
+ <li>Setting with name “AppSettings.&lt;name&gt;” updates “AppSettings” value with &lt;name&gt; name.</li> 
+</ul>
+<h2>总结</h2>
+<p>本文中，我并非试图去低估或淡化其它的Web部署工具，它们可能在你的web应用中得到了很好的应用。但是，如果你的项目已经超出模板化的web应用，而必须部署到集群环境中或你需要更复杂，或对部署流程更多控制的话，那么绝对值得考虑像PowerShell remoting这样替代的解决方案。这对于具有PowerShell技能或使用PSake的开发人员来说，将会特别具有吸引力。</p>
+<h2>关于作者</h2>
+<p>Feodor Fitsner是个具有创业精神的.NET开发人员，他接触Windows Web平台已超过10年。Feodor最新项目就是Appveyor CI：专为.NET开发人员设计的主机型持续集成解决方案。在AppVeyor之前，Feodor针对Windows主机开发了DotNetPanel控制面板，之后就职于Microsoft的Azure 部门。</p>
+<p><strong>参考英文原文：</strong><a href="http://www.infoq.com/articles/AppVeyor-CI">Deploying it right with AppVeyor CI and PowerShell</a></p>
+<hr />
+<p>感谢<a href="http://www.infoq.com/cn/author/陈菲">陈菲</a>对本文的审校。</p>
+<p>给InfoQ中文站投稿或者参与内容翻译工作，请邮件至<a href="mailto:editors@cn.infoq.com">editors@cn.infoq.com</a>。也欢迎大家通过新浪微博（<a href="http://www.weibo.com/infoqchina">@InfoQ</a>）或者腾讯微博（<a href="http://t.qq.com/infoqchina">@InfoQ</a>）关注我们，并与我们的编辑和其他读者朋友交流。</p><br><br><br><br><br><br></body></html>

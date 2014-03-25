@@ -1,10 +1,31 @@
-<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>Greg Young氏，CEP(複合イベント処理)を語る</h3><p><a target="_blank" href="http://www.infoq.com/news/2014/01/complex-event-processing"><em>原文(投稿日：2014/01/29)へのリンク</em></a></p>
+<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>持続可能なリーンスタートアップチームに必要な態度</h3><p><a target="_blank" href="http://www.infoq.com/news/2014/03/attitudes-lean-startup"><em>原文(投稿日：2014/03/11)へのリンク</em></a></p>
 <div class="article_page_left news_container text_content_container"> 
  <div class="text_info"> 
-  <p>過去の記録データ全体にクエリを行うような，時間軸に対して実行しなければならない問題には，<a href="http://en.wikipedia.org/wiki/Complex_event_processing">Complex Event Processing</a>(CEP/複合イベント処理)が非常に有効だ – <a href="http://goodenoughsoftware.net/about/">Greg Young</a>氏は先日のプレゼンテーションで，このように提言した。<br /> 氏はイベント処理を，発生したある事象に関連するデータの経緯を解析し，そこから結論を導き出す方法だ，と説明している。ひとつの例は，異なった時間に発生した事象を関連付けしたい場合に用いられる，時間的相関の問合せだ。Twitterストリーム上で ，&quot;誕生日&quot; という単語を使ってから１分以内に &quot;プレゼント&quot; を使ったユーザを見つけ出す，あるいは臨床試験において，試験期間中の異なる時間にある特定の反応を示した患者を検索する，といった例が考えられる。</p> 
-  <p>問合せの作成に氏が使用しているのは，イベントストリーム上で動作するクエリ言語で，JavaScriptで実装されている。JavaScriptでクエリを記述するため，Webブラウザを使用した記述やデバッグも可能だ。<br /> このクエリ言語は，<a href="http://geteventstore.com/docs/what-is-an-event-store.html">イベントソース(Event Source)</a> の概念に従って開発された<a href="http://en.wikipedia.org/wiki/NoSQL">NoSQL</a>である<a href="http://geteventstore.com/">Event Store</a> に含まれている。イベントソーシングでは，状態を直接的に表現する代わりに，ある特定の時間に発生した事実(fact)の連続として表現する。この方法でデータを保存することにより，現在の状態だけでなく，状態の変化がすべて保存されるため，情報が失われることがなくなる。</p> 
-  <p>事実ないしイベントを保存することは，タイムマシンを作るようなもので，ある時間に立ち戻って過去の状態を見ることが可能になる。例えば，今日作成したレポート処理を実行して，１ヶ月前のレポートを発行することができるのだ。<br /> もうひとつのユースケースは，未来の方向に注目して，予測能力を評価するというものだ。1ヶ月前の時点で予測モデルを実行して今日の結果を予測し，実際の結果との比較を行うことでこれが可能になる。</p> 
-  <p>Event Storeはオープンソースプロダクトで，修正版BSDライセンスで公開されている。最初のリリースは2012年9月だ。</p> 
-  <p>Event Storeのリードアーキテクトを務めるGreg Young氏は，<a href="http://martinfowler.com/bliki/CQRS.html">CQRS</a> (Command Query Responsibility Segregation / コマンドクエリ責務分離) という造語で有名な独立系コンサルタントである。</p> 
+  <p>Ramli John氏は2013 Lean Startup Conferenceで<a href="http://ramlijohn.com/minimum-viable-attitudes-for-a-lean-startup-team/">minimum viable attitudes for lean startup teams</a>と題した講演を行った。氏によれば、チームが持続可能なリーンを行うためには、3つの態度が必要だ。すなわち、謙遜、飢餓感、幸福だ。</p> 
+  <p>InfoQは氏にリーンスタートアップでの態度について、幸福の重要さとリーンスタートアップの失敗への対処法について話を聞いた。</p> 
+  <p><strong>InfoQ: あなたの話はリーンスタートアップチームに必要な最低限の態度について述べました。なぜリーンスタートアップではこれらの態度が重要なのでしょうか。</strong></p> 
+  <blockquote> 
+   <p><strong>Ramli: </strong>リーンスタートアップのプロセスは簡単ではありません。リーンスタートアップはかっこいいと思うでしょう。しかし、実験に実験を重ねて成果で出ない場合、正しい態度を持っていることでさらに奮起し挑戦を再開できるのです。正しい態度を持っていなければ、数回の失敗であきらめてしまうでしょう。</p> 
+  </blockquote> 
+  <p><strong>InfoQ: 3つの態度として謙遜、飢餓感、幸福を挙げていますね。なぜこの3つなのですか。</strong></p> 
+  <blockquote> 
+   <p><strong>Ramli: </strong>ある企業のCEOがこの3つを彼が従業員に求めているものとして教えてくれました。彼から拝借したのです。しかし、この3つの態度は新しい従業員を雇うのにとって素晴らしいことだけでなく、効率的で仮説駆動のチームを維持するのにも役に立つのがわかりました。</p> 
+  </blockquote> 
+  <p><strong>InfoQ: リーンスタートアップのチームは強く、情熱的であなたが説明したようなことに基づいていなければなりません。控えめでいるにはどうしたらいいのでしょうか。 </strong></p> 
+  <blockquote> 
+   <p><strong>Ramli: </strong>謙遜とは間違いをしたときに間違いを認めるということです。すべてを知っているわけではなく、賢い人の助けを必要としていることを認めることです。自慢してはいけないということではありません。自分よりも賢い人に囲まれていれば間違いなく謙虚になれます。そして、優れた起業家は自分よりも優れた人々の中に身を置いています。</p> 
+  </blockquote> 
+  <p><strong>InfoQ: チームには飢餓感が必要で顧客のところへ出向いて彼らが何を必要としているのか調べたいという強い欲望が必要だとおっしゃっていますね。実際にこのようなことを実践した人について教えてください。</strong></p> 
+  <blockquote> 
+   <p><strong>Ramli: </strong>私はExtreme Lean TV (<a href="http://www.extremleantv.com/">www.extremleantv.com</a>)という新しい プロジェクトを始めました。このプロジェクトでは、飢餓感を持っている起業家を紹介します。例えば、Clay Hebertは<a href="http://www.extremelean.tv/save-100k-by-talking-to-customers/">顧客との対話によって1万ドル以上もコストを下げました</a>。Jonathan Goldbergは<a href="http://www.extremelean.tv/from-idea-to-money-in-14-days/">14日でアイディアを実現し顧客に販売しました</a>。</p> 
+  </blockquote> 
+  <p><strong>InfoQ: リーンスタートアップとして失敗に対処する必要があります。例えば、製品のアイディアが間違っていた場合です。幸福はこのような状況を救ってくれますか。</strong></p> 
+  <blockquote> 
+   <p><strong>Ramli: </strong>幸福とは偽の笑顔を振る舞うことではありません。ポジティブな態度をとることです。しかし、製品が失敗したときポジティブな態度を維持するのは大変なことです。このようなときサポートしてくれるネットワークがあると助かるでしょう。家族や近しい友人、チームなどです。私はチームが大きなサポートネットワークになる必要があると思います。チームが幸せでなかったらあなたも幸せでないのですから。チームとは毎日顔を合わせます。ポジティブな人に囲まれていれば幸せでしょう。</p> 
+  </blockquote> 
+  <p><strong>InfoQ: リーンスタートアップは1人か2人、あるいはあなたが説明したようなチームで行われます。チームを持つことの利点を教えてください。</strong></p> 
+  <blockquote> 
+   <p><strong>Ramli: </strong>私にとっては最低でも2人のチームが理想的です。ひとりの場合の問題は、自分を客観視できないことです。スキルや視点をチェックしてくれる他人が必要です。以前<a href="http://ramlijohn.com/why-startup-teams-need-to-fight/">チームには健全なディベート</a>が必要だとブログに書きました。</p> 
+  </blockquote>
  </div> 
 </div><br><br><br><br><br><br></body></html>

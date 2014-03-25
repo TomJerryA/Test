@@ -1,15 +1,18 @@
-<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>DevOps採用の文化的問題</h3><p><a target="_blank" href="http://www.infoq.com/news/2014/02/devops-adoption-difficulties"><em>原文(投稿日：2014/02/03)へのリンク</em></a></p>
+<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>Akka Toolkit 2.3 は Java 8 と Persistence をサポートする</h3><p><a target="_blank" href="http://www.infoq.com/news/2014/03/akka-2-3-released"><em>原文(投稿日：2014/03/11)へのリンク</em></a></p>
 <div class="article_page_left news_container text_content_container"> 
  <div class="text_info"> 
-  <p><a href="http://zeroturnaround.com/rebellabs">RebelLabs</a>を率いる<a href="http://zeroturnaround.com/author/oliver/">Oliver White</a>氏が<a href="http://zeroturnaround.com/rebellabs/why-your-organization-hates-devops-and-wont-implement-it-this-year-again/">先日の記事</a>で，DevOpsのメリットを明確に示す調査結果があるにも関わらず，IT組織のDevOps採用が困難であることを詳説している。InfoQは氏にインタビューするとともに，この問題に関する調査報告を再検討した。</p> 
-  <p>氏とのインタビューは，DevOpsによる明らかな改善効果の存在を示唆した<a href="http://zeroturnaround.com/rebellabs/rebel-labs-release-it-ops-devops-productivity-report-2013/">2013年のRebelLabsのレポート</a>の話題で始まった。レポートの内容は，同じトピックを取り上げた<a href="https://puppetlabs.com/2013-state-of-devops-infographic">PupperLabsの &quot;2013 State of DevOps&quot;</a>や，あるいは<a href="http://www.informationweek.com/strategic-cio/executive-insights-and-innovation/state-of-devops-big-gains-elusive/d/d-id/1113307">InformationWeek</a>の調査結果とも概ね一致する。それらすべてが達した結論は，DevOpsはITシステムをより堅牢にするのみならず，迅速かつ頻繁なデプロイメントとの親和性もある，というものだ。</p> 
-  <p>その一方で，昨年10月に実施されながら最近になって公表されたInformationWeekのDevOpsに関する調査報告では，DevOpsについて認識しているものは調査対象の75%，すでに実施しているものはわずか21%に過ぎない，という結果が出ている。RebelLabsの調査でも，DevOpsを活用しているのは全体の20%に過ぎなかったが，65%が重要なイニシアティブとして議論中であると回答している。これらの報告は，回答者の63%がDevOpsを運用中と報告したState of DevOpsによる調査とは対照的なものだ。ただし，これらの数字が相反しているとは言い切れない。DevOpsの採用ということ自体がイエス/ノーで回答できるものではない，という事情のある上に，いずれの調査においても，組織がDevOpsを具現化するために満たすべき基準を明確に定義できていないからだ。</p> 
-  <p>DevOpsの採用には文化的な障壁が高い，と氏は見ている。&quot;DevOpsの掲げる進歩的理想は恥ずかしいほど単純なものです – そのために人々は，こんな簡単なこともできないのならば，何もかもがめちゃくちゃなのだから，もう打つ手はない，と思ってしまうのです。&quot;</p> 
-  <p>InformationWeekの調査も同じく，DevOps活動の成功を阻害しかねない，いくつかの認識を思わせる – &quot;DevOpsを採用している技術プロ中で，セキュリティ向上を期待しているのは45%のみ，良否とも大きな影響はないと答えたのが32%，IT運用のセキュアを損なうという回答は7%です。&quot; 同じInformationWeekの記事ではMichael Davis氏が，従来型のIT組織が直面するかも知れない，別の困難さを指摘している – &quot;例えばWeb企業は膨大なコード変更を行いますが，アプリケーションの数はわずかです – 企業内のIT部門の多くが，迷路のようなレガシアプリの中で，変更を可能な限り少なくしようと努力するのとは対象的です。(...) 多分1980年代のシステムがあって，「ここにドラゴンがいる」といったソフトウェアドキュメントがあるのでしょう。システムがどうやって動いているのか，誰にも分かりません。いきおい，コードに手を出すな，という考え方になるのです。&quot;</p> 
-  <p>DevOpsの採用を容易にするためには，どうやって文化的障壁を克服すればよいのだろうか。氏は次のように答えてくれた。</p> 
-  <blockquote>
-   スタートになるのは，目標を念頭においた現実的なロードマップを設定することでしょう。 その時点で &quot;100%のDevOps化&quot; を目標にする必要はないと思います。もっと抽象的な目標 – チームがお互いに対話し，ともに作業する環境でこそ，DevOpsは実現できるのではないでしょうか？結局のところ，これは保証されたものではないのです。カルシウムの吸収促進にビタミンDを採るようなものです。そうしなければ骨折する(あるいは骨粗鬆症になる)可能性は高くなるかもしれませんが，そうすれば骨が決して折れない，という訳でもありません - 多少可能性が低くなる程度です。DevOpsは万能ではありませんが，後押しにはなります。DevOpsはサプリメント以上だが万能薬ではない，と皆が理解し始めれば，それに従ってDevOpsの採用も簡単になるでしょうし，原則を取り入れることが難しいという認識もなくなっていくと思います。
-  </blockquote> 
-  <p>RebeLasbが2014年もDevOps調査を行うという保証はないが，氏は &quot;調査の対象として興味深い分野は，組織のDevOpsアプローチ採用を阻害している実際の問題が何なのかについて，実践的，文化的な両面から理解を深めること&quot; だ，と考えている。</p> 
+  <p>最新版の <a href="http://akka.io/">Akka</a> Toolkit には、内部状態を永続化するステートフル・アクターを可能にする Persistence が付属する。最近リリースされた<a href="http://akka.io/news/2014/03/05/akka-2.3.0-released.html">バージョン 2.3.0</a> は Java 8 のラムダ式サポートも備えられている。</p> 
+  <p><a href="http://doc.akka.io/docs/akka/2.3.0/scala/persistence.html">Akka Persistence</a>では、現在の状態ではなく、アクターの状態の更新が永続化される。変更は履歴に追加され、アクターの内部状態は保存された変更をリプレイすることによって再構築可能である。Event Sourcingや少なくとも1回のメッセージ配信も保証されている。<br /> Java 8 やラムダ式を使うことにより、<a href="http://doc.akka.io/docs/akka/2.3.0/java/lambda-actors.html">アクター</a>と<a href="http://doc.akka.io/docs/akka/2.3.0/java/lambda-fsm.html">有限オートマトン</a> (<a href="http://en.wikipedia.org/wiki/Finite-state_machine">FSM</a>) の両方とも、匿名内部クラスを定義する必要性を排除し、ラムダ式を使って実装できるようになっている。<br /> Persitence モジュールとラムダ式サポートは<em>実験的機能</em>であると位置づけられており、双方ともユーザからのフィードバックに基づき API を拡張することを目論んでいる。</p> 
+  <p><a href="http://akka.io/news/2014/03/05/akka-2.3.0-released.html">他に以下の拡張</a>を含む：</p> 
+  <ul> 
+   <li>クラスタ機能として、影響するノードが応答するようになると障害条件をクリアして、部分的な到達不能から再び正常動作に復帰できるようになった 。</li> 
+   <li>Cluster Sharding は、アクターが一台のマシンを供給することによりリソースを消費した時に、いくつかのノードにステートフル・アクターを配布することができる。</li> 
+   <li>Akka IO パッケージは、実験的機能でなくなったが、パイプラインインフラストラクチャは廃止された。</li> 
+   <li><a href="http://en.wikipedia.org/wiki/OSGi">OSGi</a> サポートは akka-actor OSGi バンドルを作成するために再作業された。</li> 
+  </ul> 
+  <p><a href="http://doc.akka.io/docs/akka/2.3.0/intro/getting-started.html">Getting started</a> ガイドといっしょに<a href="http://akka.io/docs/">ドキュメント</a>は、フレームワークの変更点を反映して更新された 。Akka はより大きな<a href="http://typesafe.com/platform/getstarted">リアクティブ・プラットフォーム</a>のサンプルの一部でもある。<br /> 新しいリリースは、2.2.* からアップデートする際に<a href="http://doc.akka.io/docs/akka/snapshot/project/migration-guide-2.2.x-2.3.x.html">コードの修正</a>を必要とするいくつかの構造的な変更を含んでいる。より以前のバージョンからのアップグレードは、さらなるステップを必要とするかもしれない。</p> 
+  <p>Akka Toolkit は<a href="http://en.wikipedia.org/wiki/Actor_model">アクターモデル</a>の実装であり、Java と Scala API が利用可能である。 この 2.3 リリースは、2014年後半に計画されたより大きな<a href="https://docs.google.com/document/d/18W9-fKs55wiFNjXL9q50PYOnR7-nnsImzJqHOPPbM4E/pub">マイルストーン</a>の最初のステップである。<br /> Akka は、Apache 2 ライセンスの元にライセンスされた、オープンソース製品である。</p> 
+  <p><a href="http://www.informit.com/store/implementing-domain-driven-design-9780321834577">Implementing Domain-Driven Design</a>の著者である、<a href="http://vaughnvernon.co/">Vaughn Vernon</a>は昨年<a href="http://www.infoq.com/jp/news/2013/11/vernon-reactive-ddd">リアクティブドメイン駆動設計の中でのアクターモデル</a>について、より以前には<a href="http://www.infoq.com/jp/news/2013/06/actor-model-ddd">DDDとアクターモデルの基盤</a>について語っている。</p> 
+  <p>3000人以上のメンバーが参加している Akka ユーザのための<a href="https://groups.google.com/forum/#!forum/akka-user">フォーラム</a>が利用可能である。</p> 
  </div> 
 </div><br><br><br><br><br><br></body></html>

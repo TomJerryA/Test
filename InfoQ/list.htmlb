@@ -2,9 +2,51 @@
  <head></head> 
  <body>
   <div>
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/33.htmlb">LinkedIn是如何使用Apache Samza的？</a> Apache Samza是LinkedIn最近开源的一款流处理器。在题为《Samza：LinkedIn的实时流处理》的演讲中，Chris Riccomini探讨了Samza的功能集，它如何与YARN和Kafka集成，LinkedIn如何用它，以及其未来路线图是什么。 
+  </div> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/32.htmlb">使用Contemplate ThreadSafe发现并判断Java并发问题</a> 当使用并发编写正确和安全的Java软件时，我们需要很仔细地进行思考。因为错误使用并发会导致偶尔才出现的缺陷，这些缺陷甚至能够躲过最严格的测试环境。静态分析工具能够分析源码或编译形成的字节码，以便在执行之前就能发现隐藏在代码之中的缺陷。 
+  </div> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/32.htmlb">Java测试的自定义断言</a> 使用“匹配器类库（matcher libraries）”实现自定义断言，提高测试代码的可读性和可维护性。 
+  </div> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/31.htmlb">使用AppVeyor CI 和PowerShell部署应用</a> 部署实际应用不是一件易事。总是有问题不断出现在以下情况中：需要在注册表（Registry）或自定义文件夹中配置设置，或你需要部署到Web集群。本文中，我们通过使用PowerShell远程处理（PowerShell remoting）和AppVeyor CI为带有ASP.NET web应用程序和Windows Service的解决方案在其暂存（staging）和产品环境中配置持续集成。 
+  </div> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/30.htmlb">用于大数据的嵌入式分析和统计</a> 本文概要地介绍了嵌入式数据分析和统计的相关工具及类库，其中包括独立的软件包和带有统计能力的编程语言。两位作者还讨论了如何将这些嵌入式分析技术结合起来处理大数据。 
+  </div> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/29.htmlb">别闯进Hybrid App的误区</a> Hybrid App，一种开发模式，兼顾Web和Native的一种开发模式。有人说它把Web App扼杀在摇篮里，有人说它把Native App引向一个新阶段。我说，它是一把双刃剑，千万别闯进它的误区。本文是笔者在实践Hybrid App开发模式过程中总结出的一些经验教训，供读者参考。Hybrid App虽好，可万万不能仓促选择，盲目运用。 
+  </div> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/28.htmlb">JCA——一个名不见经传却重要的JavaEE规范</a> JCA(Java EE Connector Architecture)规范可以说是JavaEE规范集合里最“默默无闻”的，在JavaEE1.3规范发布时就加入了，比现在重要成员JPA, CDI等都早了很多。如此重要的规范，为何很少人知晓呢，本文就解释一些其中的原委。 
+  </div> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/27.htmlb">从命令式编程到Fork/Join再到Java 8中的并行Streams</a> 在这篇文章中，两位作者分别用命令式风格、Fork/Join框架和Java 8中新的Streams API三种方式计算了一个大数据集的方差，并进行了对比。 
+  </div> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/26.htmlb">通过一组RESTful API暴露CQRS系统功能</a> 我们在此提出并展示一种为CQRS系统创建一套RESTful API的方式。这种方式结合了HTTP的语义、REST API基于资源的风格，并能够处理分布式计算的某些问题，例如最终一致性和并发性。 
+  </div> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/25.htmlb">Spine.JS+Rails重客户端Web应用技术选型思路：『风车』架构设计</a> 风车这个项目开始于 2011 年 11 月份，之前叫做 Pragmatic.ly。从第一天开始我们基本上就定了大致的框架结构，在今天回头看，基本上整个架构都没有什么变化，可以算是个很成熟和很适合时代的方案，☺。 
+  </div> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/24.htmlb">开发模块化的JavaScript组件</a> 本文将通过一个示例为你展示某个简单的widget的演化过程，看看它是如何从一个庞大的、缺乏结构性的代码库进化为一个可重用的组件的。 
+  </div> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/23.htmlb">Redis计数在新浪微博的应用</a> 作为微博中一项重要的数据，计数类业务在微博业务中占的比重和重要性逐步提高。计数结果的准确度直接影响用户体验，并且很容易引起用户的投诉。在计数业务上，在不断的优化和改进中，我们将会分享所经历的三个阶段。 
+  </div> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/23.htmlb">Node.js V0.12新特性之Cluster轮转法负载均衡</a> Node核心代码的提交者Ben Noordhuis和Bert Belder会写一系列的文章来介绍Node 0.12的新特性,大概会有7到8篇的样子 。在这第一篇文章中，Ben会讲一讲新的轮转法集群算法。 
+  </div> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/22.htmlb">现代企业中性能分析的反模式</a> 文中我们提出了一些在现代企业平台中进行性能分析时最常见的反模式，包括它们的根源以及矫正策略。 
+  </div> 
+  <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/21.htmlb">利用In-Database Analytics技术在大规模数据上实现机器学习的SGD算法</a> 随着应用数据的增长，在大规模数据集上进行统计分析和机器学习越来越成为一个巨大的挑战。目前，适用于统计分析/机器学习的语言/库有很多，如专为数据分析用途而设计的R语言，Python语言的机器学习库Scikits，支持分布式环境扩展的有基于Map-Reduce实现的Mahout，以及分布式内存计算框架Spark上的机器学习库MLlib等等。目前Spark框架也推出了R语言的接口SprakR。但是，本文要讨论的，则是另外一种设计思路，在database中实现统计分析和机器学习算法，即In-Database Analysis，Madlib库就是这种设计思路的代表。 
-  </div>
-  <div>
+  </div> 
+  <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/20.htmlb">基于反馈控制实现可靠的自动扩展服务</a> Philipp K. Janert说明了如何使用反应式方法，基于反馈控制可靠地自动扩展系统，提供了比确定性方法和基于规则的方法更精确的解决方案。 
   </div> 
   <div> 
@@ -108,48 +150,6 @@
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/40.htmlb">“数据驱动生活，算法统治世界”——QCon北京2014专题出品人吴甘沙专访</a> 大数据可以被分为收集、组织、存储、检索、可视化以及数据分析，其核心是从数据中挖掘出价值。正如Google首席经济学家Hal Varian所说，数据是广泛可用的，所缺乏的是从中提取出知识的能力。数据收集的根本目的是根据需求从数据中提取有用的知识，并将其应用到具体的领域之中，而不同领域的大数据应用有不同的特点。本届QCon北京2014，InfoQ特别邀请到英特尔中国研究院首席工程师吴甘沙来打造“数据驱动生活，算法统治世界”专题，解读数据与算法与普通人生活的关系。 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/39.htmlb">你的应用就绪了吗？</a> 我们通常会按时间交付软件，在截止时间之前努力完成所有开发和测试工作。我们会优先完成那些自己觉得重要的部分，当应用达到确定的质量标准后，就准备上线了。但交付软件时，我们能辨别应用的就绪状态吗？ 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/38.htmlb">Scrum Master：职位还是角色？</a> Scrum交付团队需要专职Scrum Master。但在团队成长起来以后，是否仍然需要这样一个专职Scrum Master呢？本文提出了另一个方案。 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/37.htmlb">开发经理的职能</a> 开发经理要承担很多责任，但重要的是发布产品。担任这个职位需要很多技能，本文讨论了要成为一名能干的开发经理需要掌握哪些技能，哪些技能又能忽略。 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/36.htmlb">对培育市场创新来说，安全管理API技术至关重要</a> Web服务以实时创新的方式，带来了杰出的市场投放速度。但同时它需要在如何保护和管理API方面采用全新的标准，并具备在B2B企业网关层面进行组织机构间通讯的特质。 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/35.htmlb">Windows Server基础架构云参考架构：硬件之上的设计</a> 毫无疑问，移动互联网、社交网络、大数据和云计算已经成为IT发展的四个大的趋势。其中云计算又为前三个提供了一个理想的平台。今天不仅互联网公司，很多传统行业的大中型企业也在建设自己的私有云。本文旨在介绍一个基于Windows Server 2012和System Center 2012 SP1构建基础架构云其硬件部分的参考架构。 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/34.htmlb">阅读者（二十七）：两家公司，两个故事</a> 我基本不读当季的热门书，原因是希望让时间来帮忙筛选掉一些书，最近连续读了《打造Facebook：亲历Facebook爆发的5年》和《淘宝技术这十年》这两本不那么技术的书，它们分别和两家大公司有关，讲述了两段不同的故事。 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/33.htmlb">超越数据挖掘</a> 作者在文中探讨了预测建模社区的关注点需要做出的改变，并比较了四种不同的数据挖掘类型：算法挖掘、景观挖掘、决策挖掘和讨论挖掘。 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/32.htmlb">Android布局优化</a> 在Android开发中，我们常用的布局方式主要有LinearLayout、RelativeLayout、FrameLayout等，通过这些布局我们可以实现各种各样的界面。与此同时，如何正确、高效的使用这些布局方式来组织UI控件，是我们构建优秀Android App的主要前提之一。本篇内容就主要围绕Android布局优化来讨论在日常开发中我们使用常用布局需要注意的一些方面，同时介绍一款SDK自带的UI性能检测工具HierarchyViewer。 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/31.htmlb">作者访谈与书评：“Nagios企业监控实践（原书第2版）”</a> 最近，David Josephsen的一本关于构建监控平台最佳实践的新书出版了，该书侧重使用方面对Nagios的运作原理进行了介绍，并包含了实施Nagios项目的实用指南。David编写这本书虽然以帮助系统工程师和企业架构师为主，但书中包含的内容依然与大多数技术角色相关。 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/30.htmlb">基于AWS的自动化部署实践</a> 随着DevOps观念的深入发展，自动化部署已经逐渐成为现代软件开发、部署及运营中的重要一环。本文以Amazon Web Service（AWS）为背景，详细介绍了为运行在AWS上面的在线服务进行自动化部署的一种实践，呈现出传统DevOps精神与AWS服务的高度结合。 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/30.htmlb">宁愿编写代码？还是把事情都写下来吧！</a> 出于多方面原因，大多数开发者都很讨厌编写代码之外的东西。敏捷宣言也不再强调文档的重要性，但是有的时候，项目中的些许文档可能会起到很大的作用。在这篇文章中，我们来探讨一下，为什么“协作胜过面面俱到的文档”并不意味着“不要”文档，以及何时应该停下手中的代码，把事情记下来。 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/29.htmlb">为首次部署MongoDB做好准备：容量计划和监控</a> 在本文中作者Mat Keep将从容量计划和监控两个方面讨论MongoDB数据库的最佳部署实践。他还会介绍硬件选择、监控的关键指标和添加分片的时机等主题。 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/28.htmlb">从MVC在前端开发中的局限性谈起</a> 我们知道Controller的职责之一是负责响应用户在视图上的行为，而具体每个行为应如何进行响应，需要落实到Controller具体的方法上，这个方法我们可以称之为action。但问题来了，如何将用户在视图上的行为，与响应行为的方法action关联起来？甚至与Controller关联起来？URL便是方法之一，但是这样还是有局限性。本文就从这其中的局限性谈起。 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/27.htmlb">敏捷项目估算：什么是故事？什么是点数？</a> 有没有想过在敏捷项目中我们该如何以及为什么要进行估算？在David Morris为InfoQ写的第一篇文章中，他描绘了自己从90年代以来的经验和其它几位主要敏捷作者的论述，对敏捷估算这个话题进行了探讨：它是什么？我们通常怎么做？为什么要做？对#NoEstimates（不要估算）争论的简要评价，以及最后为初学者提出了一些建议。 
-  </div>   
+  </div>  
  </body>
 </html>
