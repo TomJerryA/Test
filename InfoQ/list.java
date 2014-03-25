@@ -1,8 +1,8 @@
 <html>
  <head></head> 
- <body>
-  <div>
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/29.java">Java 8 Launch Q&amp;A</a>Java 8 is one of the most highly anticipated programming language updates in many years. The release contains a date API, streams API and lambdas. Include permgen removal and you end up with a nice set of improvements. To learn more about this release, we sat down with Georges Saab, vice president of software development, Java Platform Group, Oracle.
+ <body> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/29.java">Java 8 Launch Q&amp;A</a>Java 8 is one of the most highly anticipated programming language updates in many years. The release contains a date API, streams API and lambdas. Include permgen removal and you end up with a nice set of improvements. To learn more about this release, we sat down with Georges Saab, vice president of software development, Java Platform Group, Oracle. 
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/28.java">InfoQ Java 8 Launch Q&amp;A</a>Java 8 is one of the most highly anticipated programming language updates in many years. The release contains a date API, streams API and lambdas. Include permgen removal and you end up with a nice set of improvements. To learn more about this release, we sat down with Georges Saab, vice president of software development, Java Platform Group, Oracle. 
@@ -150,6 +150,6 @@
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/34.java">Spark Officially Graduates From Apache Incubator</a>Recently, Spark graduated from the Apache incubator. Spark claims up to 100x speed improvements over Apache Hadoop over in-memory datasets and gracefully falling back to 10x speed improvement for on-disk performance. Based on Scala, it can run SQL queries and be used directly in R. It provides Machine Learning, Graph database capabilities and other further discussed in the article. 
-  </div>  
+  </div> 
  </body>
 </html>

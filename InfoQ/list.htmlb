@@ -1,7 +1,7 @@
 <html>
  <head></head> 
- <body>
-  <div>
+ <body> 
+  <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/33.htmlb">LinkedIn是如何使用Apache Samza的？</a> Apache Samza是LinkedIn最近开源的一款流处理器。在题为《Samza：LinkedIn的实时流处理》的演讲中，Chris Riccomini探讨了Samza的功能集，它如何与YARN和Kafka集成，LinkedIn如何用它，以及其未来路线图是什么。 
   </div> 
   <div> 
@@ -150,6 +150,6 @@
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/40.htmlb">“数据驱动生活，算法统治世界”——QCon北京2014专题出品人吴甘沙专访</a> 大数据可以被分为收集、组织、存储、检索、可视化以及数据分析，其核心是从数据中挖掘出价值。正如Google首席经济学家Hal Varian所说，数据是广泛可用的，所缺乏的是从中提取出知识的能力。数据收集的根本目的是根据需求从数据中提取有用的知识，并将其应用到具体的领域之中，而不同领域的大数据应用有不同的特点。本届QCon北京2014，InfoQ特别邀请到英特尔中国研究院首席工程师吴甘沙来打造“数据驱动生活，算法统治世界”专题，解读数据与算法与普通人生活的关系。 
-  </div>  
+  </div> 
  </body>
 </html>

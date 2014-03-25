@@ -2,7 +2,10 @@
  <head></head> 
  <body>
   <div>
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/43.c">CoffeeScript 1.7: encadeamento sem par&ecirc;nteses, Strings de m&uacute;ltiplas linhas e mais</a>Jeremy Ashkenas liberou a vers&atilde;o 1.7 do CoffeeScript introduzindo algumas mudan&ccedil;as que antecipam o popular conversor do JavaScript. A vers&atilde;o 1.7 inclu&iacute; uma das mais populares solicita&ccedil;&otilde;es da linguagem, o suporte ao encadeamento sem par&ecirc;nteses.
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/44.c">Akka Toolkit 2.3 com Java 8 e suporte a persist&ecirc;ncia</a>A &uacute;ltima vers&atilde;o do kit de ferramentas do Akka, uma implementa&ccedil;&atilde;o do Actor Model, possui como novidades a persist&ecirc;ncia, permitindo salvar o estado interno dos atores, juntamente com o suporte para express&otilde;es lambda do Java 8.
+  </div> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/43.c">CoffeeScript 1.7: encadeamento sem par&ecirc;nteses, Strings de m&uacute;ltiplas linhas e mais</a>Jeremy Ashkenas liberou a vers&atilde;o 1.7 do CoffeeScript introduzindo algumas mudan&ccedil;as que antecipam o popular conversor do JavaScript. A vers&atilde;o 1.7 inclu&iacute; uma das mais populares solicita&ccedil;&otilde;es da linguagem, o suporte ao encadeamento sem par&ecirc;nteses. 
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/42.c">Oracle lan&ccedil;a o Java 8</a>No dia 18/03, durante o EclipseCon, a Oracle anunciou o lan&ccedil;amento da plataforma Java 8, trazendo para a linguagem funcionalidades como Lambdas e Streams, al&eacute;m da corre&ccedil;&atilde;o de alguns problemas da JVM. Leia para conhecer mais sobre esse lan&ccedil;amento. 
@@ -147,9 +150,6 @@
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/47.c">Microsoft prev&ecirc; um sistema operacional &uacute;nico para dispositivos m&oacute;veis e sensores</a>Durante a confer&ecirc;ncia UBS Global Technology que ocorreu em novembro, Julie Larson-Green, vice-presidente executiva da divis&atilde;o Devices and Studios da Microsoft, discutiu a abordagem que sua empresa est&aacute; levando para o mercado de software para dispositivos m&oacute;veis. Foram selecionados os fragmentos mais interessantes da transcri&ccedil;&atilde;o desta palestra. 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/46.c">Go avan&ccedil;a a todo o vapor: vers&atilde;o 1.2 &eacute; liberada</a>Acaba de ser lan&ccedil;ada a vers&atilde;o 1.2 da linguagem de programa&ccedil;&atilde;o Go, que tr&aacute;s algumas mudan&ccedil;as na linguagem e tamb&eacute;m melhorias na performance de rede para as plataformas Windows e BSD. 
   </div>  
  </body>
 </html>
