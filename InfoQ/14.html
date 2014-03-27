@@ -1,31 +1,29 @@
-<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>如何审查合并的提交</h3><p>近日，苹果公司新发布的<a href="http://support.apple.com/kb/HT6147">iOS 7.0.6</a>一度闹得沸沸扬扬，这是由于它修复了一个<a href="https://www.imperialviolet.org/2014/02/22/applebug.html">因goto而引起的bug</a>。对于广大开发者来说，这个bug出现的原因以及如何避免其出现，成了热议的话题。</p>
-<p>知名博主<a href="http://weibo.com/haoel">陈皓</a>分享了他对于该事件的<a href="http://coolshell.cn/articles/11112.html">思考</a>。他认为这可能是代码在合并过程中导致的bug，而这种bug却很难在代码审查时被发现。</p>
-<p>前微软工程师，现就职于<a href="http://github.com">Github</a>的<a href="http://haacked.com/">Phil Haack</a>在其博客中分享了他的团队是<a href="http://haacked.com/archive/2014/02/21/reviewing-merge-commits/">如何审查合并提交</a>的。在此前，他们的合并流程是这样的（假设要将master分支合并到long-running-branch分支上）：</p>
-<ol> 
- <li>在long-running-branch分支上创建一个新的分支：merge-master-into-long-running-branch。</li> 
- <li>在该分支上执行合并。</li> 
- <li>将该分支推送（push）到Github上。</li> 
- <li>根据该提交创建一个拉请求（pull request），请团队其他人进行审查。</li> 
-</ol>
-<p>在git中，这相当于执行下面的命令集：</p>
-<pre>
-git checkout long-running-branch
-git checkout -b merge-master-into-long-running-branch
-git merge master
-# Manually do a lot of work to resolve the conflicts and commit those changes
-git push origin merge-master-into-long-running-branch
-</pre>
-<p>然而这样的方式可能会产生问题。Phil的同事<a href="http://paulbetts.org/">Paul Betts</a>指出，在将一个分支合并到另一个的时候，该合并提交的diff将显示从最后一次合并之后的所有改变。这很可能是已经审查过的代码。而我们真正想要看到的，是这次提交是否有冲突，以及如何解决这些冲突。</p>
-<p>参与<a href="https://github.com/libgit2/libgit2">LibGit2</a>开发的<a href="https://github.com/arrbee">Russell Belfer</a>给出了答案。</p>
-<p>在将一个分支合并到另一个分支时，会在这两个分支上各创建一个合并提交。以<a href="https://github.com/SignalR/SignalR">SignalR</a>的<a href="https://github.com/SignalR/SignalR/commit/cc5b002a5140e2d60184de42554a8737981c846c">一次合并提交</a>为例。该提交要将release分支合并到dev分支，该提交的SHA为cc5b002a5140e2d60184de42554a8737981c846c，以cc5b002a代替。</p>
-<p>我们可以使用git diff命令，从两个父分支上分别查看这个合并。例如：</p>
-<pre>
-git diff cc5b002a^1 cc5b002a
-git diff cc5b002a^2 cc5b002a
-</pre>
-<p>如果只想查看冲突的部分，可以使用git show命令：</p>
-<pre>
-git show --cc cc5b002a
-</pre>
-<p><a href="https://gist.github.com/Haacked/9192002">git show所展示的内容</a>，要比<a href="https://github.com/SignalR/SignalR/commit/cc5b002a5140e2d60184de42554a8737981c846c">整个合并提交的diff</a>少得多，因为--cc选项可以忽略没有冲突的部分，即只显示与该提交的所有父分支都不相同的部分。这样，审阅者就可以更加专注于冲突的部分，从而降低bug发生的概率。</p>
-<p>Phil在文章最后介绍了他是如何发现这样一个合并冲突的示例的。他执行了git log --min-parents=2 -p --cc命令，从而找出了至少有两个父分支的提交。</p><br><br><br><br><br><br></body></html>
+<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>专访Uri Sarid: Anypoint for APIs</h3><p>MuleSoft近期发布了<a href="http://mulesoft.com/platform/api">Anypoint platform for APIs</a> 的重要更新，对API设计、协作及API管理特性进行整合。为深入报道，InfoQ就Anypoint平台走访了MuleSoft的CTO——Uri Sarid。</p>
+<p><b>InfoQ</b><b>：新版</b><b>Anypoint platform for APIs</b><b>含三大组件：</b><b>API Portal, API Manager</b><b>和</b><b>Mule Studio</b><b>。其中，</b><b>Mule Studio</b><b>已经非常出名了，能向我们简单介绍下</b><b>API Portal</b><b>和</b><b>API Manager</b><b>这两种新组件么？</b></p>
+<blockquote> 
+ <p><b>US</b><b>：</b>Anypoint API Portal被用于和涉众、未来应用开发者共同进行API设计，通过API Console和API Notebook模拟、记录、探察实现前后的API，使整个开发团队参与其中。Anypoint API Manager则用于全面控制API来访人员、分配访问者的使用权限，以及API使用情况的测量分析。</p> 
+</blockquote>
+<p><b>InfoQ</b><b>：你提出过</b><b>&quot;</b><a href="http://blog.programmableweb.com/2014/01/09/the-emergence-of-api-first-development/"><b>设计先行</b></a><b>&quot;</b><b>方法学：</b><b>API</b><b>契约作为主要工件，而具体实现要遵循契约。能谈谈你为</b><b>API</b><b>开发者拟定的工作流类型或生命周期么？</b></p>
+<blockquote> 
+ <p><b>US</b><b>：</b>与其他产品设计相似，一旦精工细作且用户（这里指开发者）体验尽善尽美的产品推出（此处指API发布），就会带来不成比例的高收益。所以要通过<a href="http://raml.org/">RAML</a>（RESTful API建模语言）大致勾勒出同时适用于该领域和主要用例的API，并尽快交给测试用户。即便是在粗略成型的早期，也要有可用的API控制台和服务的模拟实现，以便用户体验原型（例如，移动应用原型），还要有可用的“故事板”（scripting notebook），以便他们尽快制定出使用方案并进行成果分享。设计很重要，因为如果API设计卓越，围绕其开发出的生态体系会自带动量，从而避免API（后期）的重大变革。API的设计要持续迭代到涉众满意后，才着手实现——相信那时，可靠的实现会让开发者们皆大欢喜，并带来理想收益。很多情况下，API的实现是与大量现存内置系统及云端系统的交互练习；Mule Studio及其组件APIkit能很快将RAML规约转换为相应的可扩展、可维护的Mule集成流集合。所生成的Mule应用能部署在CloudHub或内置系统（私有云）上，而对外公开的API则自动和Anypoint API Manager绑定，以便策略施行；同时，这部分API会和Anypoint API Portal绑定，以便应用开发人员发现并保存。</p> 
+</blockquote>
+<p><b>InfoQ</b><b>：</b><a href="http://www.infoq.com/news/2013/05/mulesoft-new-api-platform-mason"><b>APIKit</b><b>首次发布</b></a><b>时</b><b>用</b><b>Swagger</b><b>作为文档格式。如今转用</b><b>RAML</b><b>。这种转变的动因是什么？有没有</b><b>API</b><b>文档方面的教训？</b><b> </b></p>
+<blockquote> 
+ <p><b>US</b><b>：</b>简单说来，和API领域其他很多人一样，我们认识到：Swagger和简单格式也许适合作为API的“输出”格式，一种在其存在后再表达出来的东西，但不适合API设计。不会有开始就动笔写Swagger的人；Swagger是从代码中生成的，也就是说，API的设计应当源于实现，而Swagger有点本末倒置了。此外，Swagger的描述相当冗长，很容易不得要领：乱花渐欲迷人眼，势必难以构建，而少数整洁的模式显然是能在整个API中复用的。用RAML，是为了让RESTful API的设计表达同REST本身一样整洁、富于表现且高效。（教训的话，）目前还好。</p> 
+</blockquote>
+<p><b>InfoQ</b><b>：</b><b>Service Registry</b><b>有变化么</b><b>?</b></p>
+<blockquote> 
+ <p><b>US</b><b>：</b>Service registry还是那个存放所有服务注册表的上佳选择，无论是对REST，还是对SOAP，甚至对很多像FTP位置一样压根不调用API的服务。不过我们新添了很多API专用特性，比如新策略，和AnyPoint API Portal的集成还有更多和现存客户系统的集成。</p> 
+</blockquote>
+<p><b>InfoQ</b><b>：有些</b><b>API</b><b>不是用</b><b>Mule</b><b>实现的，</b><b>API Manager</b><b>能管理这部分</b><b>API</b><b>么？</b><b>Mule API</b><b>和非</b><b>Mule API</b><b>在与平台交互时是否存在差异？</b><b> </b></p>
+<blockquote> 
+ <p><b>US</b><b>：</b>Anypoint API Manager可以通过API网关代理控制那些不是用Mule实现的API。从管理甚至端口的角度看，这些API要保证所有功能可用，因为如果用Mule实现就该是这样。</p> 
+</blockquote>
+<p><b>InfoQ</b><b>：在你看来，</b><b>API</b><b>剩下的最大的挑战是什么——无论是对提供者还是使用者？</b></p>
+<blockquote> 
+ <p><strong>US：</strong>现阶段看，API正值黄金时代，不过还是有巨大的提升空间：很多企业还没有推出公开API倡议。API设计在不久前还被视作严格规范，最佳实践的数目极少也很少出现；即便是同一组织，API交互的一致性也很难保证。那些看起来是做了再想该怎么做的API，使用者宁愿不用——API是没想好就做的还是用心设计过的，一用便知。</p> 
+</blockquote>
+<p><strong>查看英文原文：</strong><a href="http://www.infoq.com/news/2014/02/anypoint-api-sarid">Anypoint for APIs: An Interview with Uri Sarid</a></p>
+<hr />
+<p>感谢<a href="http://www.infoq.com/cn/author/杨赛">杨赛</a>对本文的审校。</p>
+<p>给InfoQ中文站投稿或者参与内容翻译工作，请邮件至<a href="mailto:editors@cn.infoq.com">editors@cn.infoq.com</a>。也欢迎大家通过新浪微博（<a href="http://www.weibo.com/infoqchina">@InfoQ</a>）或者腾讯微博（<a href="http://t.qq.com/infoqchina">@InfoQ</a>）关注我们，并与我们的编辑和其他读者朋友交流。</p><br><br><br><br><br><br></body></html>

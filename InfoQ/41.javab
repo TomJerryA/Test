@@ -1,179 +1,26 @@
-<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>Durandal: Quick Start</h3><p><a href="http://durandaljs.com/">Durandal</a> is a lightweight JavaScript framework designed to make building Single Page Applications (SPAs) simple and elegant. It has strong support for MVC, MVP and MVVM so that no matter what type of front end architecture you prefer, Durandal can handle the task.</p>
-<p>With <a href="http://requirejs.org/">RequireJS</a> as its base and a thin layer of conventions, Durandal can provide amazing productivity while helping you to maintain SOLID coding practices. Pair that with out-of-the-box support for rich UI composition, modal dialogs, eventing/messaging, widgets, transitions, routing and more....and there's no doubt you'll be able to build whatever apps you can imagine.</p>
-<p>While Durandal has only been publicly available for about a year now, the community has grown at a breakneck pace.</p>
-<p>As a result, <a href="http://www.kickstarter.com/projects/eisenbergeffect/durandal-2014">we’ve launched a Kickstarter</a> to help us accomplish some amazing things in 2014. We hope you’ll check it out. But now, I’d like to show you how to build a simple Durandal application yourself.</p>
-<p>There are several ways to get started with Durandal, depending on your platform choice. While Durandal is a pure JavaScript library, independent of any server-side platforms, we try to package it up in a variety of ways that are appealing to web developers. For this brief tutorial, we’ll use our raw HTML Starter Kit. You can <a href="http://durandaljs.com/version/latest/HTML%20StarterKit.zip">download that directly</a> from the official site’s <a href="http://durandaljs.com/pages/downloads/">downloads page</a>.</p>
-<p>Once you’ve downloaded the HTML Starter Kit and unzipped it, you can actually run the sample app immediately by opening the <i>index.html</i> file in Firefox*, or by spinning up a web server and browsing to the index page.</p>
-<div id="lowerFullwidthVCR"></div>
-<p><img src="http://www.infoq.com/resource/articles/durandal-javascript-framework/en/resources/Fig.png" alt="" _href="img://Fig.png" _p="true" /></p>
-<p>The starter kit application demonstrates a basic navigation architecture with routing, history, data-binding, modal dialogs and more. But, we’re not going to look at that just yet. Instead, we’re going to write our own little app from scratch. To do this, locate the <i>app</i> folder and delete its contents, then delete the <i>index.html.</i> Now we have a completely blank project, pre-configured with all our scripts and css.</p>
-<p><i>*Note: IE, Chrome and Safari don't like serving the files directly from the file system. If you would like to use one of these browsers, simply use your preferred web server technology to serve the files.</i></p>
-<p><b>Index.html</b><br /> Let’s start by writing our own <i>index.html</i> file. Here’s the markup we’ll use:</p>
-<pre>
-&lt;!DOCTYPE html&gt;
-&lt;html&gt;
-  &lt;head&gt;
-    &lt;link rel=&quot;stylesheet&quot; href=&quot;lib/bootstrap/css/bootstrap.css&quot; /&gt;
-    &lt;link rel=&quot;stylesheet&quot; href=&quot;lib/font-awesome/css/font-awesome.css&quot; /&gt;
-    &lt;link rel=&quot;stylesheet&quot; href=&quot;lib/durandal/css/durandal.css&quot; /&gt;
-    &lt;link rel=&quot;stylesheet&quot; href=&quot;css/starterkit.css&quot; /&gt;
-  &lt;/head&gt;
-  &lt;body&gt;
-    &lt;div id=&quot;applicationHost&quot;&gt;&lt;/div&gt;
-    &lt;script src=&quot;lib/require/require.js&quot; data-main=&quot;app/main&quot;&gt;&lt;/script&gt;
-  &lt;/body&gt;
-&lt;/html&gt;</pre>
-<p>All we have here are a few css files, a single div called “applicationHost” and a single script tag. We’ve added <a href="http://getbootstrap.com/">Bootstrap</a> and <a href="http://fontawesome.io/">FontAwesome</a> here so we can easily make things look decent, but they aren’t required by Durandal. The important piece to notice is the script tag.</p>
-<p>Durandal encourages modular code practices by using RequireJS as one of its core building blocks. In a Durandal app, all JS code is written in modules. The script tag in our <i>index.html</i> loads RequireJS which facilitates the framework’s module strategy. Once the module loader is initialized it then uses the <i>data-main</i> attribute to start up our app. This attribute points to our <i>main</i> module. This is much like the <i>main</i> function in most c-based languages. It is the entry point for our application. Let’s go ahead and create that module now. To do that, first create a file named <i>main.js</i> and place it in the <i>app </i>folder. Here’s the code for that file:</p>
-<pre><u>main.js</u>
-requirejs.config({
-  paths: {
-    'text': '../lib/require/text',
-    'durandal':'../lib/durandal/js',
-    'plugins' : '../lib/durandal/js/plugins',
-    'transitions' : '../lib/durandal/js/transitions',
-    'knockout': '../lib/knockout/knockout-2.3.0',
-    'jquery': '../lib/jquery/jquery-1.9.1'
-    } 
-});
-define(function (require) {
-   var system = require('durandal/system'),
-       app = require('durandal/app');
-   system.debug(true);
-   app.title = 'Durandal Starter Kit';
-   app.configurePlugins({
-     router:true,
-     dialog: true
-   });
-   app.start().then(function() {
-     app.setRoot('shell');
-   });
-});</pre>
-<p>This is pretty standard “boilerplate” configuration for most Durandal apps. But, let’s go over this piece by piece:</p>
-<p>At the top we have the <i>requirejs.config</i> block. This section configures the module system so that it can find our core libraries. It’s just a set of relative paths, so that the first time we reference “jQuery” for example, the module system knows where to load it from. Here you see that we have paths configured for the requirejs text plugin (used to load views), Durandal’s core modules, Knockout and jQuery. In the same way that <a href="http://durandaljs.com/">Durandal</a> uses <a href="http://requirejs.org/">RequireJS</a> for modules, it uses <a href="http://knockoutjs.com/">Knockout</a> for data-binding and <a href="http://jquery.com/">jQuery</a> as its browser abstraction.</p>
-<p>After we set up the RequireJS configuration, we <i>define</i> our main module. All code in Durandal is written in modules and takes the following form:</p>
-<pre>
-define(function (require) {
-  var someModule = require('some/module');
-  ...other modules required here...
-  return someValue;
-});</pre>
-<p>To create a module you call the <i>define</i> function. You pass a function to <i>define</i> which serves as a factory for your module. Whatever you return from this function becomes your module instance. You can return an object to create singleton object modules or a function to create class constructor modules. Additionally, you can declaratively express dependencies upon other modules. To import another module into your module you use the <i>require</i> function.</p>
-<p>In our main module above, you can see that we import or <i>require</i> two of Durandal’s modules: <i>system </i>and <i>app</i>. We then use the <i>system</i> module to turn on framework debugging. After that we use the <i>app</i> module to set our app’s <i>title </i>and load two optional plugins. Finally, we tell the app to <i>start</i>, which is an asynchronous action, and when that completes we call a curious function: <i>setRoot.</i></p>
-<p>The call to <i>setRoot</i> is what actually causes something to be rendered on the screen. You can think of the <i>root</i> as your “main window”, “master layout” or the “shell” of your application. The parameter points to the module which contains our shell’s behavior. The only problem is..that doesn’t exist yet. So, let’s create it.</p>
-<h2>The Shell</h2>
-<p>Most components in Durandal contain both “behavior” and “presentation”. Your application’s shell should be no exception to this rule. We’ll represent these two different concerns by creating two files: a JavaScript file for the behavior and an HTML file for the presentation. Under your <i>app</i> folder create: <i>shell.js</i> and <i>shell.html</i>. I’ll give you the code for each of those now, then we’ll see how it all works.</p>
-<pre><u>shell.js</u>
-define(function (require) {
-  var app = require('durandal/app'),
-      ko = require('knockout');
-  return {
-     name: ko.observable(),
-     sayHello: function() {
-       app.showMessage('Hello ' + this.name() + '! Nice to meet you.', 'Greetings');
-     }
-   };
-});
-<u>shell.html</u>
-&lt;section&gt;
-  &lt;h2&gt;Hello! What is your name?&lt;/h2&gt;
-  &lt;form class=&quot;form-inline&quot;&gt;
-    &lt;fieldset&gt;
-       &lt;label&gt;Name&lt;/label&gt;
-       &lt;input type=&quot;text&quot; data-bind=&quot;value: name, valueUpdate: 'afterkeydown'&quot;/&gt;
-       &lt;button type=&quot;submit&quot; class=&quot;btn&quot; data-bind=&quot;click: sayHello, enable: name&quot;&gt;Click Me&lt;/button&gt;
-    &lt;/fieldset&gt;
-  &lt;/form&gt;
-&lt;/section&gt;</pre>
-<p>Notice that our <i>shell.js</i> defines a module as we have previously discussed. It has dependencies on two other modules: <i>app</i> and <i>knockout</i>. Our module returns an object literal as its definition. This object has one property, <i>name</i>, and one function, <i>sayHello.</i> The <i>name</i> property is special. Here, we have used <a href="http://knockoutjs.com/">Knockout</a> to create an <i>observable</i> property. An observable property supports two-way data-binding to html, change notification and a number of other features. Notice that the <i>sayHello</i> function uses this property to display a message box with Durandal’s <i>app</i> module.</p>
-<p>To fully understand this code, you need to look at it side-by-side with the HTML. Notice how the HTML has <i>data-bind</i> attributes in it. These attributes declaratively connect the HTML to the properties and functions in the module we just looked at. See how the input tag has a <i>data-bind</i> attribute that connections its <i>value</i> to our <i>name</i> property? It also specifies that our property should be updated after key down events (as opposed to focus change, which is the default). Also, take a look at the button. Its <i>click</i> event is bound to our <i>sayHello</i> function. Furthermore, the button will only be enabled when the <i>name</i> property has a truthy value. Pretty cool! Go ahead and run the app by opening <i>index.html</i> in Firefox or spinning up a web server to view it in another browser. When you do this, here’s what’s going to happen:</p>
-<ol> 
- <li>RequireJS will load.</li> 
- <li>RequireJS will load your <i>main.js</i> and configure the framework.</li> 
- <li>Your <i>main.js</i> will present the app by calling <i>setRoot.</i></li> 
- <li>The <i>shell.js</i> and <i>shell.html</i> files will be loaded, data-bound to one another and injected into the <i>applicationHost</i> div in the page.</li> 
-</ol>
-<p>Once it’s loaded, try typing in the input field and notice how the button’s enabled state changes. Then, click the button to see what happens.</p>
-<h2>Navigation</h2>
-<p>This is all pretty cool, but most applications don’t just have one page. So, let’s turn our <i>shell</i> into a navigation app. To start, rename your <i>shell.js</i> to <i>home.js</i> and your <i>shell.html</i> to <i>home.html</i>. Now, create two new files which will serve as our navigation shell. Here’s the source for the new <i>shell.js</i> and <i>shell.html.</i></p>
-<pre><u>shell.js</u>
-define(function (require) {
-  var router = require('plugins/router');
-  
-  return {
-     router: router,
-     activate: function () {
-       router.map([
-         { route: '', title:'Home', moduleId: 'home', nav: true }
-       ]).buildNavigationModel();
-       return router.activate();
-     }
-   };
-});
-<u>shell.html</u>
-&lt;div&gt;
- &lt;div class=&quot;navbar navbar-fixed-top&quot;&gt;
-  &lt;div class=&quot;navbar-inner&quot;&gt;
-   &lt;ul class=&quot;nav&quot; data-bind=&quot;foreach: router.navigationModel&quot;&gt;
-    &lt;li data-bind=&quot;css: { active: isActive }&quot;&gt;
-     &lt;a data-bind=&quot;attr: { href: hash }, html: title&quot;&gt;&lt;/a&gt;
-    &lt;/li&gt;
-   &lt;/ul&gt;
-   &lt;div class=&quot;loader pull-right&quot; data-bind=&quot;css: { active: router.isNavigating }&quot;&gt;
-     &lt;i class=&quot;icon-spinner icon-2x icon-spin&quot;&gt;&lt;/i&gt;
-   &lt;/div&gt;
-  &lt;/div&gt;
- &lt;/div&gt;
- &lt;div class=&quot;container-fluid page-host&quot; data-bind=&quot;router: { transition:'entrance' }&quot;&gt;&lt;/div&gt;
-&lt;/div&gt;</pre>
-<p>Looking at our navigation shell, you can see the same module pattern. Here we are requiring our router plugin and using that to create an object. We configure the router with a single route that points to our <i>home</i> module. This router configuration specifies the <i>route</i> pattern to match on, the <i>title</i> to display, the <i>moduleId</i> to load when the route is matched and whether or not we should tag this route as part of our visible navigation (<i>nav:true).</i> After we configure our routes, we then call <i>buildNavigationModel</i> which takes the route info, and builds a special collection that we can data-bind to for display as a top-level navigation UI. Finally, we activate the router. All of this takes place inside a function called <i>activate</i>. Every time Durandal presents a component on screen, it will look for an optional <i>activate</i> callback. If present, it will invoke it prior to data-binding. This allows modules to execute custom activation code, such as configuring the application’s router in this case.</p>
-<p>Once again, it’s easiest to understand if you look at the module side-by-side with it’s view. If you do that, you will first see how we are data-binding to the <i>navigationModel</i> property in order to generate a navbar. Each navigable route is turned into an <i>li</i> with a link that is bound to the route’s <i>hash</i> and <i>title</i>. As part of the navbar, we also bind an animating spinner icon to the router’s <i>isNavigating</i> property. As a result, whenever we are in the process of navigating from one page to another, the spinner will be visible and animating.</p>
-<p>At the bottom of the view is a special <i>router</i> binding which connects to our router in the module. This serves as a placeholder where the current “page” will be displayed. The <i>transition</i> property indicates that whenever the page changes, Durandal should use the “entrance” transition animation.</p>
-<p>Go ahead and run it again. It looks pretty similar to before, except now there’s a navbar. It’s not very impressive because we still only have one page. Let’s create a second page so we can navigate back and forth.</p>
-<h2>Mount Rainier</h2>
-<p>Let’s create a second page that calls Flickr and gets back a bunch of pictures to display of Mount Rainier. Our first step is to add another route. Update your shell’s router config so that it has these two routes now:</p>
-<pre>
-{ route:'', title:'Home', moduleId:'home', nav:true },
-{ route:'rainier', title:'Mount Rainier', moduleId:'rainier', nav:true }</pre>
-<p>That’s our original, default home route, plus our new route for the page we are about to add. By now, I hope you see the pattern emerging. We create a module and a view for our new page.</p>
-<pre><u>rainier.js</u>
-define(function (require) {
-  var http = require('plugins/http'),
-      ko = require('knockout');
-  var url = 'http://api.flickr.com/services/feeds/photos_public.gne';
-  var qs = { 
-    tags: 'mount ranier', 
-    tagmode: 'any', 
-    format: 'json' 
-  };
-  return {
-     images: ko.observableArray([]),
-     activate: function () {
-       var that = this;
-       if (this.images().length &gt; 0) {
-           return;
-       }
-     
-       return http.jsonp(url, qs, 'jsoncallback').then(function(response) {
-          that.images(response.items);
-       });
-     }
-   };
-});
-<u>rainier.html</u>
-&lt;section&gt;
-  &lt;h2&gt;Mount Rainier&lt;/h2&gt;
-  &lt;div class=&quot;row-fluid&quot;&gt;
-    &lt;ul class=&quot;thumbnails&quot; data-bind=&quot;foreach: images&quot;&gt;
-      &lt;li&gt;
-         &lt;img style=&quot;width: 260px; height: 180px;&quot; data-bind=&quot;attr: { src: media.m }&quot;/&gt;
-      &lt;/li&gt;
-    &lt;/ul&gt;
-  &lt;/div&gt;
-&lt;/section&gt;</pre>
-<p>I bet you can figure out how this works. Our module uses the http plugin to call the Flickr api in its activate callback. It then stores that data in it’s <i>images</i> observable array property. The view simply binds to that array of data.</p>
-<p>If you run the app now, you’ll see two items in the navbar and you’ll be able to navigate back and forth between them. You can also use the browser’s back button. There’s lots more details and tons more that Durandal can do. At this point, you might want to download the original starter kit and take a look at it in more detail to see a few more interesting tidbits. You’ll probably also want to download the official samples to see how other features work, like pub/sub messaging, custom modal dialogs, widgets, advanced view composition and more. If you want to see something really cool, <a href="http://www.kickstarter.com/projects/eisenbergeffect/durandal-2014/posts/695777">check out the app we’ll build as part of our Kickstarter funded training series</a>.</p>
-<p><a href="http://durandaljs.com/">Durandal</a> makes building rich, dynamic JavaScript apps simple by encouraging a modular approach. It’s no surprise that our community is growing so fast. We’re only getting started with our plans and we hope you’ll consider joining us on the adventure. <a href="http://www.kickstarter.com/projects/eisenbergeffect/durandal-2014">Please have a look at our Kickstarter</a>. We’ve got some cool goals for the 2014 year...and some awesome rewards for you. The web is changing, and it’s looking like a bright future is in store. We hope to see you there!</p>
-<h2>About the Author</h2>
-<p><strong><img vspace="3" hspace="3" align="left" _p="true" _href="img://Rob1.jpg" alt="" src="http://www.infoq.com/resource/articles/durandal-javascript-framework/en/resources/Rob1.jpg" />Rob Eisenberg</strong> is a JavaScript expert and .NET architect working out of Tallahassee, FL and he is the President of Blue Spire Consulting. Rob got his start with computer programming at the age of nine, when he thoroughly fell in love with his family's new Commodore 64. His fascination with programming started with the Commodore Basic language, then moved to Q Basic and QuickBasic and quickly continued on to C, C++, C# and JavaScript. Rob publishes technical articles regularly at <a href="http://devlicio.us/">devlicio.us</a> and has spoken at regional events and to companies concerning Web and .NET technologies, Agile software practices and UI engineering. He is coauthor of Sam's Teach Yourself WPF in 24 Hours and is the architect and lead developer of the Durandal and Caliburn.Micro frameworks.</p>
-<p>&nbsp;</p><br><br><br><br><br><br></body></html>
+<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>NoSQL, JSON, and Time Series Data Management: Interview with Anuj Sahni</h3><p>Time series data is an ordered sequence of values of a variable at equally spaced time intervals. Time series data is coming at us from all directions: sensors, mobile devices, Web tracking, financial events, factory automation, and utilities—to name just a few.</p>
+<p>Time series data management has been <a href="http://strata.oreilly.com/2013/04/the-re-emergence-of-time-series.html">gaining more attention</a> lately. InfoQ spoke with Anuj Sahni, Principal Product Manager&nbsp;of <a href="http://www.oracle.com/technetwork/database/database-technologies/nosqldb/overview/index.html">Oracle NoSQL Database</a> at Oracle about the time series data and how to do data modeling for this type of data.</p>
+<p><b>InfoQ: What is Time Series data and how is it different from structured data?</b></p>
+<blockquote> 
+ <p><b>Sahni:</b> Time series is sequence of data points that is captured at uniform time interval. Examples could be stock tick information from global stock exchanges, precious metals prices captured periodically, weather details at a specific longitude/latitude at periodic interval, continuous sensor feed from manufacturing machines or oil rigs etc. Time series information is not necessarily different but it is a) the volume and velocity aspect and b) the sparseness of the information that makes it challenging to be stored in traditional stores that are designed for well defined structured information.</p> 
+</blockquote>
+<p><b>InfoQ: What are the advantages of modeling a data set as Time Series data?</b></p>
+<blockquote> 
+ <p><b>Sahni:</b> Not all the data need to be represented as time series but if you have continuous feed of information coming at you (let's say from sensors) and you want to analyze the data based on the time dimension then it is prudent that you keep the arrival time of each feed and index it for faster queries.</p> 
+</blockquote>
+<p><b>InfoQ: What are the design considerations to keep in mind to store Time Series type of data in our databases?</b></p>
+<blockquote> 
+ <p><b>Sahni:</b> Time series data, generically speaking, is produced in large volumes so one need to give special consideration on how to persist them in the database and how well to access them. Therefore it is very important to find out in advance how you would be accessing your data for example in stock exchange demo, we know that stock tick information is generated once a second for each stock i.e. 86K ticks per stock per day. If we store that many records as separate rows then the time complexity to access this information would be huge, so we can group 5 minutes or 1 hour or one day worth of records as a single vector record. The benefits of storing information in larger chunks is obvious as you would do way fewer lookups into the NoSQL store to fetch the information for a specific period of time. Other point to remember is that if your window size is very small then you will be doing a lot of read/write operation and if it is too big then durability would be a concern as you can lose the information in the event of system failure. So you need to balance out both the forces.</p> 
+</blockquote>
+<p><b>InfoQ: Are there any design or architecture patterns that developers should follow when using Time Series Data?</b></p>
+<blockquote> 
+ <p><b>Sahni:</b> What's most important while designing the data model for any time series application is to know the access pattern and the granularity of information required by the client application. Though we might need to persist all the time series data but more than often we don't need to store each data point as a separate record in the database. If we can define a time window and store all the readings for that period of time as an array then we can significantly cut the number of actual records persisted in the database, improving the performance of the system. From our previous example, if each stock generates 84K data points per day then you would require that many random I/O on the disk to access the information which is way too many but if you could store the same information as an array where each array holds information for a specific hour then all you need is 24 lookups to fetch day's worth of data.</p> 
+ <p>The other aspect to balance out is the size of your array object (whether it is JSON, XML or anything else). You wouldn't want the window size of your array to be so big that you end up returning way too much information than you need, wasting the precious bandwidth. And if you make the window too fine grained then you are potentially lowering the throughput and increasing the latency of your system. So balance out both sides of the equation and come up with the right size time window to read/write collections of time series data to/from the database.</p> 
+</blockquote>
+<p><b>InfoQ: What are the limitations of storing a data set as Time Series data?</b></p>
+<blockquote> 
+ <p><b>Sahni:</b> I would say the real challenge with the time series data is to fine tune the system based on the requirements and the access patterns. If the access pattern changes in future then you might have to re-index, re-calculate the array size to optimize your queries. So each time-series application is very custom made, where you can apply the best practices but cannot just import the data modeling templates to a different time-series problem.</p> 
+</blockquote>
+<p>Anuj also <a href="https://oracleus.activeevents.com/2013/connect/sessionDetail.ww?SESSION_ID=8862">spoke</a> at last year’s JavaOne Conference on managing Time Series Data in applications.</p>
+<h2>About the Interviewee</h2>
+<p><strong><img hspace="3" alt="" vspace="3" align="left" _p="true" _href="img://anuj_photo.png" src="http://www.infoq.com/resource/articles/nosql-time-series-data-management/en/resources/anuj_photo.png" />Anuj Sahni</strong> is a Principal Product Manager at Oracle, where he is responsible for managing company's leadership NoSQL database and big data products. Anuj has over twelve years of product management/development experience in Fortune 500 companies. He has led highly successful, globally distributed, cross-functional teams to develop new software and cloud-based services. Anuj obtained his Master’s degree in Computer Engineering from University of Florida, and has published academic papers in bio-informatics fields as well. In his spare time, he enjoys cycling, tracking, and playing with his two daughters.</p><br><br><br><br><br><br></body></html>

@@ -2,6 +2,12 @@
  <head></head> 
  <body> 
   <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/35.htmlb">Oleg Shilo：基于CS-Script的Notepad++的插件</a> 如果只是想写几句试验代码，Visual Studio显得有点大材小用。因此一些开发者会选择轻量级的编辑器，如Notepad++，来满足编写脚本的需要。Oleg Shilo向我们介绍了他的项目，一个优秀的基于CS-Script的Notepad++的插件。 
+  </div> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/34.htmlb">豆瓣的研发管理</a> 本文基于庄表伟跟豆瓣工程副总裁段念的一次沟通整理而成，双方主要探讨了如何给团队设置规则、如何传输价值观、如何恰到好处的设置激励策略、如何考核工程师等话题。 
+  </div> 
+  <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/33.htmlb">LinkedIn是如何使用Apache Samza的？</a> Apache Samza是LinkedIn最近开源的一款流处理器。在题为《Samza：LinkedIn的实时流处理》的演讲中，Chris Riccomini探讨了Samza的功能集，它如何与YARN和Kafka集成，LinkedIn如何用它，以及其未来路线图是什么。 
   </div> 
   <div> 
@@ -144,12 +150,6 @@
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/42.htmlb">ReactiveCocoa - iOS开发的新框架</a> ReactiveCocoa（其简称为RAC）是由Github 开源的一个应用于iOS和OS X开发的新框架。RAC具有函数式编程和响应式编程的特性。它主要吸取了.Net的 Reactive Extensions的设计和实现，本文详细介绍了这个框架。 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/41.htmlb">借助JArchitect探究Cassandra CLI内部机制</a> 文中，作者通过使用JArchitect工具和CQLinq语言分析Cassandra CLI的源代码来探究CLI的架构模型。 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/40.htmlb">“数据驱动生活，算法统治世界”——QCon北京2014专题出品人吴甘沙专访</a> 大数据可以被分为收集、组织、存储、检索、可视化以及数据分析，其核心是从数据中挖掘出价值。正如Google首席经济学家Hal Varian所说，数据是广泛可用的，所缺乏的是从中提取出知识的能力。数据收集的根本目的是根据需求从数据中提取有用的知识，并将其应用到具体的领域之中，而不同领域的大数据应用有不同的特点。本届QCon北京2014，InfoQ特别邀请到英特尔中国研究院首席工程师吴甘沙来打造“数据驱动生活，算法统治世界”专题，解读数据与算法与普通人生活的关系。 
   </div> 
  </body>
 </html>

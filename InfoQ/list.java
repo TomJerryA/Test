@@ -1,6 +1,18 @@
 <html>
  <head></head> 
- <body> 
+ <body>
+  <div>
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/32.java">Apple Improves iOS Devices Deployment and Management for Enterprise and Education</a>Apple has recently announced some changes to its Device Enrollment and Volume Purchase Programs aiming at improving large-scale deployment of iOS devices to enterprise and education customers interested in deploying company-owned iOS devices or instituting a &quot;bring your own device&quot; (BYOD) policy.
+  </div> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/31.java">ASP.NET Web API Gets OData v4.0 Support, WCF Will Not</a>ASP.NET Web API 2.2 for OData v4.0 are now available as nightly builds. The team also released OData core libraries version 6.1 on nuget with several bug fixes and new features, especially increased support for OData v4 spec. However, the MS team suggested that WCF will not get OData v4 specific features. 
+  </div> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/31.java">Google Cuts Cloud Prices, Integrates CI Tools, Supports Windows and Manages VMs</a>Google had a Cloud Platform Live event on Tuesday (recorded here) unveiling a number of new features, improvements and a new pricing model. 
+  </div> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/30.java">Domain-Driven Design Using a Functional Language</a>Using a functional language in domain-driven design (DDD) the actual code can often become simple enough to be used instead of UML diagrams when discussing with domain experts, Scott Wlaschin stated in a recent talk about domain modelling together with functional programming using F#. 
+  </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/29.java">Java 8 Launch Q&amp;A</a>Java 8 is one of the most highly anticipated programming language updates in many years. The release contains a date API, streams API and lambdas. Include permgen removal and you end up with a nice set of improvements. To learn more about this release, we sat down with Georges Saab, vice president of software development, Java Platform Group, Oracle. 
   </div> 
@@ -138,18 +150,6 @@
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/38.java">Amazon Chooses HAL Media Type for AppStream API</a>Amazon has released a new API, the AppStream API, which allows you to programmatically manage apps hosted on the Amazon AppStream platform. For this API, they chose to build it with the HAL media type. HAL is a minimalist hypermedia enabled media type for building machine-to-machine APIs. Amazon is one of the largest organizations to choose hypermedia as a technique for a public-facing product. 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/37.java">Finding the Best-fit for Lean Startup Methodology</a>Raf Gemmail surveys recent commentary and presentations on the successes and failures of lean-startup methodology within both startups and big enterprise. 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/36.java">Discussion on Nagios Fitness for Purpose</a>At a recent London DevOps meetup, Andy Sykes launched a debate on whether Nagios, a well-known application that offers monitoring and alerting services, should be replaced with a better solution. Laurie Denness, from Etsy, argued in a reply that Nagios and its ecosystem still are a great solution in the monitoring and alerting arena. 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/35.java">Lessons Learned from Apple's GoToFail Bug</a>The recent security weakness found in both iOS and OS X hints at flaws in coding style guidelines, unit testing, system testing, code review policies, error management strategies, and tools deployment. An overview. 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/34.java">Spark Officially Graduates From Apache Incubator</a>Recently, Spark graduated from the Apache incubator. Spark claims up to 100x speed improvements over Apache Hadoop over in-memory datasets and gracefully falling back to 10x speed improvement for on-disk performance. Based on Scala, it can run SQL queries and be used directly in R. It provides Machine Learning, Graph database capabilities and other further discussed in the article. 
-  </div> 
+  </div>  
  </body>
 </html>

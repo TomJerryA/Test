@@ -1,45 +1,6 @@
-<p>Docker Inc., the company behind Docker, introduced a range of new services, including its first paid offering: private repositories. Docker index now also offers webhooks, triggers and links for trusted builds and e-mail notifications.</p>
-<p>Docker index is a registry for Docker images repositories. A repository is the way to share pre-built images, avoiding the need to recreate them every time by everyone. Although a rough analogy, repositories are to Docker what boxes are to Vagrant. With the availability of private repositories it is now possible to control who can push or pull into a repository. It is now also possible to browse repositories by image tags and see the file system changes introduced by each.</p>
-<p>Successful repository pushes now trigger webhooks, when configured. The webhook URL will receive an HTTP POST with the following JSON payload:</p>
-<pre>
-{
-   &quot;push_data&quot;:{
-      &quot;pushed_at&quot;:1385141110,
-      &quot;images&quot;:[
-         &quot;imagehash1&quot;,
-         &quot;imagehash2&quot;,
-         &quot;imagehash3&quot;
-      ],
-      &quot;pusher&quot;:&quot;username&quot;
-   },
-   &quot;repository&quot;:{
-      &quot;status&quot;:&quot;Active&quot;,
-      &quot;description&quot;:&quot;my docker repo that does cool things&quot;,
-      &quot;is_trusted&quot;:false,
-      &quot;full_description&quot;:&quot;This is my full description&quot;,
-      &quot;repo_url&quot;:&quot;https://index.docker.io/u/username/reponame/&quot;,
-      &quot;owner&quot;:&quot;username&quot;,
-      &quot;is_official&quot;:false,
-      &quot;is_private&quot;:false,
-      &quot;name&quot;:&quot;reponame&quot;,
-      &quot;namespace&quot;:&quot;username&quot;,
-      &quot;star_count&quot;:1,
-      &quot;comment_count&quot;:1,
-      &quot;date_created&quot;:1370174400,
-      &quot;dockerfile&quot;:&quot;my full dockerfile is listed here&quot;,
-      &quot;repo_name&quot;:&quot;username/reponame&quot;
-   }
-}
-</pre>
-<p>Trusted Builds is a service which allows to connect a repository to a GitHub account and add a post commit hook to a GitHub repository. This hook triggers a build and updates the image inside Docker index, maintaining a relationship between the image and the corresponding Dockerfile.</p>
-<p>Trusted Builds received two enhancements: links and triggers. Links give the capability to synchronize Trusted Build repositories so that any update to a linked Trusted Build triggers an update on the other Trusted Build. Triggers give a simple process to start a repository build, without having to commit anything to GitHub, like so:</p>
-<pre>
-  $ curl --data &quot;build=true&quot; -X POST https://index.docker.io/u/samalba/docker-registry/trigger/b2562468-aea0-11e3-a39e-b6db5999dfec/
-</pre>
-<p>Finally, Docker index users can now be notified by e-mail on some events: when a Trusted Build or when another user stars or comments a repository.</p>
-<p>Docker index's new services increase the choice for Docker registries, since&nbsp;Quay.io already offered similar capabilities to the ones now announced.</p>
-<p>Private repositories are the first commercial offering of Docker Inc., although there are plans to add more paid services, as stated at Docker's blog:</p>
-<blockquote>
-  All services on Docker.io to this point have been freely available, and we feel this is important in fostering an active, growing community around Docker. For this reason, most of Docker.io's services will continue to be free but, as Ben has already publicly shared, to support continued investment in Docker we will over time offer optional pay-for services. Private repos is the first example of this. 
-</blockquote>
-<p>The pricing plans start at 7$/month for at most five repositories up to 50$/month for a maximum of fifty repositories.</p>
+<p>Apple has recently announced some changes to its Device Enrollment and Volume Purchase Programs aiming at improving large-scale deployment of iOS devices to enterprise and education customers interested in deploying company-owned iOS devices or instituting a &quot;bring your own device&quot; (BYOD) policy.</p>
+<p>To account for all the changes, Apple has issued a new iOS deployment technical reference guide and Device Enrollment Program guide.</p>
+<p>According to Matthew Panzarino reporting for TechCrunch, one of the main improvements in the new Device Enrolment Program is support for hands-free configuration of deployed devices. The Device Enrollment Program allows to &quot;claim&quot; those devices and assign them to users via the Mobile Device Management (MDM) solution used by the customer. According to Apple, it is possible to automate MDM enrollment for every device and immediately configure account settings, apps, and access to IT services over the air, without need for physical access to each device to complete the setup.</p>
+<p>Another important aspect of the program, according to Fraser Speirs, Head of Computing and IT at Cedars School of Excellence in Scotland, is that devices can be automatically enrolled in MDMs and that the enrollment can be locked, so that users cannot circumvent it.</p>
+<p>The new Device Enrollment Program is exclusively available for devices bought directly through Apple. This is related, says Speirs, to the philosophical decision that admins should not be able to &quot;capture&quot; devices that they don't own. Furthermore, it is only available in the US, where Apple operates a direct sales model. For all other devices and/or countries, it remains possible to configure a device through Apple Configurator, which requires connecting the devices through USB before they are provided to users.</p>
+<p>Apple has also overhauled its Volume Purchase Program, which allows organisations to bulk buy applications that can be installed on multiple devices at once. Furthermore, VPP purchases can be made via purchase orders by enterprise customers, offering thus a new channel for institutions to acquire software directly from Apple.</p>

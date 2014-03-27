@@ -2,6 +2,9 @@
  <head></head> 
  <body> 
   <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/27.pyb">.NETでドメイン駆動開発～ValueObject後編～</a> 近年とても注目度の高いドメイン駆動開発について、独自の解説を交えながら.NETでの実装例をご紹介します。前編での解説に引き続き、ValueObjectの実装例をご紹介します。 
+  </div> 
+  <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/26.pyb">.NETでドメイン駆動開発～ValueObject 前編～</a> 近年とても注目度の高いドメイン駆動開発について、独自の解説を交えながら.NETでの実装例をご紹介します。まずはValueObjectパターン前編です。 
   </div> 
   <div> 

@@ -2,6 +2,9 @@
  <head></head> 
  <body> 
   <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/26.py">アジャイル文化定着のための音声インタビューシリーズ</a>昨年のインタビューシリーズ&quot;Individuals and Interactions&quot;に引き続き、“The Human Side of Agile”の著者であるGil Broza氏が&quot;A Packing List for your Agile Journey&quot;と題した音声インタビューシリーズを発表した。3月17日から21日までに行われrインタビューでは、さまざまなコメンテータ、実践家、作者が長期的なアジャイルへの転換を実現する方法について語る。 
+  </div> 
+  <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/25.py">Tizen SDK for Wearableを使用したSamsung Gear向けアプリ開発</a>Androidを搭載した第１世代のウェアラブルデバイスに続いてSamsungは，Intelと共同で開発したオープンソースのモバイルオペレーティングシステムであるTizenを基盤とした，第２世代のデバイスの市場投入を決定した。そして今回，アプリケーション開発のためのSDKがリリースされている。 
   </div> 
   <div> 
@@ -147,9 +150,6 @@
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/29.py">GoogleのJavaコーディング規約</a>Googleは、最近、Javaコーディング規約の完全な定義を公開した。 この規約は強制力を持つ厳格なルールであり、Google全体で従うべきものだ。単なるフォーマットだけでなく、他の約束事やコーディング規約についても書かれている。 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/29.py">QCon New York 2014のトラック発表</a>6月9日から13日に開催されるQCon New Yorkのトラックが決定した。 Creating Culture, Continuous Delivery, Data Science, Architecture Case Studies, JavaScript, Mobileなどだ。今年はOSGi DevCon 2014も同じ場所で開催される。会場はNew York Marriott Brooklyn Bridgeだ。 
   </div> 
  </body>
 </html>

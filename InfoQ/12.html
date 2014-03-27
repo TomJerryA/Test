@@ -1,19 +1,35 @@
-<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>Swift 1.13.0发布</h3><p>Swift是OpenStack在对象存储方面的核心项目，它在概念上类似于 Amazon S3 服务，不过Swift具有很强的扩展性、冗余和持久性，也兼容 S3 API。该项目在近几年发展迅速，版本发布也比较快，继1月28日发布1.12.0之后该团队又于最近发布了1.13.0。</p>
-<p>新版本的Swift不仅实现了一个蓝图同时还包含大量的bug修复，主要特性如下：</p>
+<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>JEP 192（String Deduplication in G1）简介</h3><p>JEP，即JDK Enhancement Proposals，指的是为增强JDK而引入的一些提案，比如Nashorn JavaScript引擎就是在JEP 174中提出的。2013年11月22日，来自Oracle的Per Liden创建了<a href="http://openjdk.java.net/jeps/192">JEP 192（String Deduplication in G1）</a>，意在增强G1垃圾收集器，去掉堆中重复的String对象，从而减少堆内存的占用。该文档近日又有更新，Per Liden也提交了<a href="http://mail.openjdk.java.net/pipermail/hotspot-dev/2014-March/012815.html">相应代码实现</a>，目前还处于审校和讨论中。 </p>
+<p>应该注意的是该特性只针对G1垃圾收集器，不适用于其他收集器。 </p>
+<p>很多大规模Java应用都受限于内存瓶颈，测量表明，这类应用中，String对象大概占了Java堆中活数据集的25%。而这些String 对象中，又大约有一半是重复的，这里的重复是指，对两个字符串string1和string2而言，string1.equals(string2)为true。存在重复的String对象本质上是对内存的浪费。JEP 192打算在G1收集器中实现自动和连续的String去重操作，以避免内存浪费，进而减少总的内存占用量。 </p>
+<p>目前String类有两个字段： </p>
+<blockquote> 
+ <p>private final char[] value; </p>
+ <p>private int hash;</p>
+</blockquote>
+<p>使用旧版本Java的读者可能有点诧异，其实早期版本中的count、offset等实例字段已经<a href="https://bugs.openjdk.java.net/browse/JDK-6924259">去掉</a>了，InfoQ之前也曾<a href="http://www.infoq.com/cn/news/2013/12/Oracle-Tunes-Java-String">报道</a>过。 </p>
+<p>value字段是特定于实现的，在String类之外看不到。因为String类不会修改该数组的内容，也不会将其用于同步，所以我们可以安全且透明地将其在多个String对象之间共享。也就是说我们可以将一个String对象的value指向另一个String对象的value。尽管该字段是final的，但因为去重操作是在虚拟机内部实现的，所以这不是问题。有兴趣的读者可以查看一下java.lang.System类的实现，其中的 </p>
+<blockquote> 
+ <p>public final static InputStream in = null;</p>
+</blockquote>
+<p>一句，就是先将final字段in设置为null，然后在native代码中重新赋值的。 </p>
+<p>这里需要注意的是，实现并没有真的去掉重复的String对象，去掉的只是对象中的<a name="OLE_LINK2"></a><a name="OLE_LINK1">char</a>数组。这样对应用才是透明的。去掉实际的String对象并不安全，因为应用可能将该对象用于同步等操作。这种实现不需要修改JDK类库或其他任何现有的Java代码。 </p>
+<p>Per Liden对大量大大小小的Java应用进行了测量，发现了下列结果： </p>
 <ul> 
- <li>帐户级别的ACL以及ACL格式V2。帐户将使用一个新的特权头表示ACL或者其他任何形式的帐户级别的访问控制。该特权头的值是一个由身份验证系统解释的JSON字典字符串。TempAuth上给出了一个参考实现，完整的文档可以查看<a href="http://swift.openstack.org/overview_auth.html">这里</a></li> 
- <li>新增一个WSGI环境标志以解决swob始终使用绝对位置的问题。借助于该特性插件能够在一个响应中使用规范之外的Location头</li> 
- <li>容器同步代理现在能够支持简单的负载均衡</li> 
- <li>为可恢复对象GETs增加了降低超时的配置选项</li> 
- <li>针对帐户总写入速率增加新的限制（ratelimit）方法</li> 
- <li>cname_lookup 插件允许多个storage_domain值</li> 
- <li>将所有DLO 功能转移至单一插件（中间件）。Swift Proxy会自动地将DLO插件置入请求链中的适当位置，处理方式和gatekeeper插件一样。所以在升级到1.13.0之后，即使未将DLO写入请求链，DLO依然能够在集群内正常运转。</li> 
- <li>移除了python-swiftclient依赖</li> 
- <li>新增辅助组以便于在特权提升期间处理用户</li> 
- <li>在记录请求头时，现在能够明确地指定应该记录哪些头</li> 
- <li>向帐户和容器服务器中添加了log_requests配置参数以便于匹配对象服务器中的参数。部署人员能够通过该参数为这些进程关闭日志消息</li> 
- <li>确保为DLO/SLO请求设置了swift.source</li> 
- <li>修复了覆写动态清单中的段内容会导致请求链出错的问题</li> 
- <li>在容器配额插件中适当地处理COPY动词</li> 
- <li>改进了Web列表和索引中的StaticWeb 404错误信息</li> 
-</ul><br><br><br><br><br><br></body></html>
+ <li>String对象平均占活数据的25%</li> 
+ <li>重复的String对象平均占活数据的13.5%</li> 
+ <li>String的平均长度为45个字符</li>
+</ul>
+<p>经过分析计算，通过去重、复用char数组，平均大概能减少10%的堆内存占用。 </p>
+<p>JEP 192文档中介绍了实现思路。垃圾收集执行时会访问堆上的活对象，在访问对象时可以判断一下该对象是否可以作为字符串去重的候选。如果是，将其插入一个队列。有一个负责去重的线程在后台运行，处理该队列。使用一个哈希表来记录String对象使用的所有唯一的char数组（即value）。在处理候选的String对象时，先查找哈希表，看是不是存在和当前处理对象内容相同的char数组。如果存在，则更新当前对象的value值，使其指向在哈希表中找到的char数组，这样垃圾收集器就可以在某个时间把当前对象原来的char数组回收掉了。如果不存在，则将当前对象的char数组插到哈希表中，供以后处理。对于哈希表中的某个char数组，如果引用它的所有对象都已经不可达了，即可将其移除。该哈希表会根据当前表项的数目动态调整，使用链表处理冲突。 </p>
+<p>这里有一个重要的参数：去重年龄阈值。对象的存活时间长短不一。对于存活时间很短的对象，执行去重操作其实是浪费资源。为避免这种情况，可以设置一个年龄阈值。在String对象的年龄等于该阈值时，才考虑对其进行去重操作，大于该阈值则是已经处理过的。该阈值应该提供一个合理的默认值，同时支持通过虚拟机选项来配置。 </p>
+<p>实际的去重操作在去重线程中完成。它会等待String对象引用出现在去重队列中，然后一个一个地将其从队列中去掉。在去掉时进行处理，计算字符串的哈希值，在哈希表中查找，如果可能的话执行去重操作。去重线程负责维护一些统计信息（已检查的候选对象数，去重的字符串数等），这些信息可以打印到GC日志中。 </p>
+<p>需要提供新的虚拟机命令行选项：</p>
+<ul> 
+ <li>UseStringDeduplication (bool) ——支持字符串去重 </li>
+ <li>PrintStringDeduplicationStatistics (bool) ——打印详细的去重统计信息 </li>
+ <li>StringDeduplicationAgeThreshold (uintx) ——设置String对象的年龄阈值</li>
+</ul>
+<p>文档中还对比评价了其他方案存在的一些问题，感兴趣的读者可以参考。</p>
+<hr />
+<p>感谢<a href="http://www.infoq.com/cn/author/张龙">张龙</a>对本文的审校。</p>
+<p>给InfoQ中文站投稿或者参与内容翻译工作，请邮件至<a href="mailto:editors@cn.infoq.com">editors@cn.infoq.com</a>。也欢迎大家通过新浪微博（<a href="http://www.weibo.com/infoqchina">@InfoQ</a>）或者腾讯微博（<a href="http://t.qq.com/infoqchina">@InfoQ</a>）关注我们，并与我们的编辑和其他读者朋友交流。</p><br><br><br><br><br><br></body></html>

@@ -1,131 +1,59 @@
-<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>Windows Server基础架构云参考架构：硬件之上的设计</h3><h2>综述</h2>
-<p>毫无疑问，移动互联网、社交网络、大数据和云计算已经成为IT发展的四个大的趋势。其中云计算又为前三个提供了一个理想的平台。今天不仅互联网公司，很多传统行业的大中型企业也在建设自己的私有云。本文旨在介绍一个基于Windows Server 2012和System Center 2012 SP1构建基础架构云其硬件部分的参考架构。</p>
-<h2>设计目标</h2>
-<ul> 
- <li>从运维角度，整个架构应该易于扩展，从小到4个机柜至大到整个数据中心可以方便的进行扩展和容量规划。</li> 
- <li>从用户的角度，整个架构应该可以兼容不同的应用类型，比如对计算敏感型，大内存型，和IO密集型等不同类型。</li> 
- <li>从服务交付的角度，整个架构应该能够满足不同的服务等级需求，如需要高可用的和无需高可用的。</li> 
- <li>从经济型角度，整个架构应该不依赖特定的硬件厂商或产品。</li> 
-</ul>
-<h2>Windows Server基础架构云的参考架构</h2>
-<p>Windows Server基础架构云的参考架构如下：</p>
-<p><img width="600" alt="" src="http://infoqstatic.com/resource/articles/windows-server-infrastructure-cloud-reference-architecture/zh/resources/0117000.png" _href="img://null" _p="true" /></p>
-<p>图1 Windows Server基础架构云的参考架构</p>
-<p>本文中我们将集中讨论上面参考架构中的硬件设计部分。</p>
-<p>为了实现前面拟定的设计目标，我们采用的模型首先要保证在计算和存储之间实现松耦合，只有这样才能保证我们更灵活地调度计算、存储、网络三种基础资源，组建足够体量的资源池按需承载不同类型的应用。基于相同的目的，我们采用了集中的存储而不是使用更低成本的直连存储。虽然直连存储的成本更低，但我们所采用的存储方案具有更高的可靠性，弹性和灵活性，这些都是企业非常关注的。另外，我们没有采用传统的光纤存储而代以新的完全基于网络的文件共享存储，这样的好处是相对于光纤存储,硬件采购成本较低，而且降低系统复杂度以及维护成本，但这样设计要求网络的部分必须具备足够的可靠性和高性能来满足IO密集型的需求。</p>
+<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>Oleg Shilo：基于CS-Script的Notepad++的插件</h3><p>如果只是想写几句试验代码，Visual Studio显得有点大材小用。因此一些开发者会选择轻量级的编辑器，如Notepad++，来满足编写脚本的需要。Oleg Shilo向我们介绍了他的项目，一个优秀的<a href="http://csscriptnpp.codeplex.com/">基于CS-Script的Notepad++的插件</a>。</p>
+<p><strong>InfoQ：CS-Script是什么？它与普通的C#有什么区别？</strong></p>
+<blockquote> 
+ <p>Oleg：简单来说，<a href="http://www.csscript.net/">CS-Script</a>是一个基于CLR的运行时环境，可以执行用C#编写的脚本。值得注意的是，CS-Script并不是一个解释器，而是封装了微软或Mono C#编译器的shell。因此它与普通的C#没有什么不同。实际上，它的脚本引擎面向的也是ECMA兼容的“单纯功能”的C#，与用Visual Studio或MonoDevelop编译成程序集的C#没有什么区别。</p> 
+ <p>描述CS-Script最简单的方式是：我们可以用C#编写算法，编译成程序集，然后直接执行该程序集，或在宿主应用程序中加载并执行。但CS-Script可以跳过编译阶段，而立即加载并执行代码，将C#代码当做脚本来处理。换句话说，运行时的C#脚本就是一个动态编译的程序集。</p> 
+ <p>当然，实际情况要比这复杂得多，而且CS-Script提供了众多吸引眼球的特性：自定义JIT编译、省略类的语法、自动命名空间到程序集的映射、接口对齐等。</p> 
+ <p>CS-Script现在已经9岁了，并且有一批用户。<a href="http://www.team-mediaportal.com/">MediaPortal</a>或<a href="http://www.flashdevelop.org/">FlashDevelop</a>就是基于CS-Script构建的。它还被用于AutoCAD插件、自动化和机器人、游戏和规则引擎。</p> 
+ <p>CS-Script受到了Python的启发和影响。尽管它们面对的是完全不同的运行时范式，但CS-Script还是从Python借鉴了不少有用的想法，如多脚本执行、预编译等等。</p> 
+</blockquote>
+<p><strong>InfoQ：为什么会为Notepad++创建一个插件？</strong></p>
+<blockquote> 
+ <p>Oleg：原因有很多。在Windows上开发的程序员很少有没听说过Notepad++的。对很多人来说，它是“必备”的源代码编辑器。能够获此殊荣，Notepad++是当之无愧的，因为它具有优秀的架构和近乎完美的实现。但除了这些赞誉，它还有一定的上升空间。</p> 
+ <p>我认为Notepad++的“自动补全”功能还有点简陋，还不足以成为智能的代码辅助工具。它只是按文件类型分组的一些“高频词”而已。</p> 
+ <p>我坚信这样一个很牛的编辑器应该变得更好。因此我决定为Notepad++实现一个C#的智能感知解决方案。</p> 
+ <p>我想让Notepad++能拥有与Visual Studio同种级别的智能感知。同时还包括“转到定义”、“查找引用”、“显示方法信息”、“添加缺少的‘using’”和代码格式化。这就是这个插件诞生的缘由。智能感知相关的功能基于NRefactory，但插件的核心是CS-Script。并且由于插件使用了脚本引擎，因此可以在Notepad++中直接执行C#代码。</p> 
+ <p>当实现完成后，我又催生了其他一些想法。因此又发布了另一个Notepad++插件（NppScript）。它使用C#脚本对Notepad++本身进行自动化。实际上每个这样的脚本自身，加上一些相关的插件特性（工具条图标、快捷键、菜单项），都可以看成是一个插件。下面的截图展示了这一想法。</p> 
+ <p>(点击图像放大)</p> 
+ <p><a href="http://infoqstatic.com/resource/articles/CS-Script-Notepad/zh/resources/0305010.png"> <img src="http://infoqstatic.com/resource/articles/CS-Script-Notepad/zh/resources/0305010.png" width="600" _href="img://null" _p="true" alt="" /></a></p> 
+</blockquote>
 <div id="lowerFullwidthVCR"></div>
-<p><img width="600" alt="" src="http://infoqstatic.com/resource/articles/windows-server-infrastructure-cloud-reference-architecture/zh/resources/0117001.png" _href="img://null" _p="true" /></p>
-<p>图2 Windows Server基础架构云的硬件架构模型</p>
-<h2>标准IaaS SKU</h2>
-<p>企业内部系统传统上主要通过冗余来实现高可用，例如对于一台服务器，所有的组件能冗余的都要冗余（比如内存、硬盘、网卡、电源），有的系统甚至实现了主板、CPU的冗余，但这样一来就意味着要投入昂贵的硬件。与此不同的是，市场上主流的公有云服务商为了给大部分客户提供低成本的服务，将高可用的责任很多时候交给用户来处理，比如要求用户的应用需要具备弹性能力（resilience），将相同角色的多个实例部署在不同的Fault Domain/Update Domain中来提高整个服务的高可用性。在本设计中我们借鉴了公有云的这一经验，不要求采用如此高度冗余的设备，相反我们的故障单元是机柜而不是里面某台服务器或存储，也就是说我们关注的是跨机柜的可靠性，包括了基础架构、平台、应用和数据。但同时考虑到对于私有云，更多的时候面临的是将企业现有的应用迁移到云上，这些应用很可能不能很好的处理stick session等问题，很难通过横向扩展多个无状态的实例来实现高可用，故而私有云IaaS在设计时还是应该考虑到为传统应用，甚至为传统上很难实现高可用的应用提供基础架构层级的高可用性服务。在这个设计中对于没有高可用性需求的用户，也可以在下面的设计中增加非群集的Hyper-V服务器和存储服务器来提供不同服务等级的服务。</p>
-<p><img width="600" alt="" src="http://infoqstatic.com/resource/articles/windows-server-infrastructure-cloud-reference-architecture/zh/resources/0117002.png" _href="img://null" _p="true" /></p>
-<p>图3 标准IaaS SKU的构成</p>
-<h2>计算节点的设计</h2>
-<p>对于计算节点我们设计了两组网络，所有的虚拟机发生的网络访问流量都走租户网络上的虚拟网络，而虚拟机发生的存储访问流量都重定向到物理机操作系统通过数据中心网络使用具备SMB Direct的SMB3协议直接同文件服务器群集通讯。</p>
-<p><img width="500" alt="" src="http://infoqstatic.com/resource/articles/windows-server-infrastructure-cloud-reference-architecture/zh/resources/0117003.png" _href="img://null" _p="true" /></p>
-<p>图4 计算节点的实现</p>
-<p>租户网络和数据中心网络在计算节点的用途小结如下：</p>
-<p>租户网络用于：</p>
-<ul> 
- <li>租户到租户的通讯</li> 
- <li>租户到外部的通讯</li> 
-</ul>
-<p>数据中心网络用于：</p>
-<ul> 
- <li>到存储节点的通讯（也就是到文件服务器，使用RDMA网卡）</li> 
- <li>虚拟机的实时迁移</li> 
- <li>虚拟机存储的实时迁移</li> 
- <li>群集心跳线</li> 
-</ul>
-<p>下面是一个标准的计算节点的硬件配置：</p>
-<p> </p>
-<table cellspacing="0" cellpadding="0" border="0"> 
- <tbody> 
-  <tr> 
-   <td width="12%" valign="top"> <p><b>项目</b></p> </td> 
-   <td width="87%" valign="top"> <p><b>标准配置</b></p> </td> 
-  </tr> 
-  <tr> 
-   <td width="12%" valign="top"> <p>处理器</p> </td> 
-   <td width="87%" valign="top"> <p>Intel Sandy Bridge CPU, 2 Socket x 6 cores (ES2640, Core frequency 2.5 GHz) = 12 cores</p> </td> 
-  </tr> 
-  <tr> 
-   <td width="12%" valign="top"> <p>内存</p> </td> 
-   <td width="87%" valign="top"> <p>16 DIMM x 8 GB = 128 GB</p> </td> 
-  </tr> 
-  <tr> 
-   <td width="12%" valign="top"> <p>存储</p> </td> 
-   <td width="87%" valign="top"> <p>内置 200 GB SSD (eMLC)</p> </td> 
-  </tr> 
-  <tr> 
-   <td width="12%" valign="top"> <p>网络</p> </td> 
-   <td width="87%" valign="top"> <p>2 x 10 GbE onboard (虚拟机所用的网络)</p> <p>2 x 10 GbE mezzanine with RDMA (用于访问存储节点、管理和实时迁移)</p> </td> 
-  </tr> 
- </tbody> 
-</table>
-<p></p>
-<p>表1 计算节点的标准配置</p>
-<h2>存储节点的设计</h2>
-<p>本设计中采用的存储架构是基于Windows Sever 2012的故障转移群集。以两节点来实现连续高可用（Continuous Availability）。为了提高性能，减少对于主机CPU的压力，采用了RDMA网卡，借助Windows Server 2012的SMB3文件服务器为计算节点提供Hyper-V虚拟机的存储。</p>
-<p><img width="500" alt="" src="http://infoqstatic.com/resource/articles/windows-server-infrastructure-cloud-reference-architecture/zh/resources/0117004.png" _href="img://null" _p="true" /></p>
-<p>图5 存储节点的实现</p>
-<p>存储节点通过SAS HBA卡连接了共享的SAS接口硬盘柜，每个节点到磁盘柜额带宽高达48Gb/s （2x4x6Gb/s）。</p>
-<p>这里的数据中心网络用于：</p>
-<ul> 
- <li>到计算节点的通讯</li> 
- <li>Storage Space重定向流量</li> 
- <li>备份和复制流量</li> 
-</ul>
-<p>下面是一个标准的计算节点的硬件配置：</p>
-<p> </p>
-<table cellspacing="0" cellpadding="0" border="0"> 
- <tbody> 
-  <tr> 
-   <td width="11%" valign="top"> <p><b>项目</b></p> </td> 
-   <td width="88%" valign="top"> <p><b>标准配置</b></p> </td> 
-  </tr> 
-  <tr> 
-   <td width="11%" valign="top"> <p>处理器</p> </td> 
-   <td width="88%" valign="top"> <p>Intel Sandy Bridge CPU, 2 Socket x 6 cores (Core frequency 2.5 GHz) = 12 cores</p> </td> 
-  </tr> 
-  <tr> 
-   <td width="11%" valign="top"> <p>内存</p> </td> 
-   <td width="88%" valign="top"> <p>16 x 8 GB = 128 GB</p> </td> 
-  </tr> 
-  <tr> 
-   <td width="11%" valign="top"> <p>存储</p> </td> 
-   <td width="88%" valign="top"> <p>2 x 10 GbE mezzanine with RDMA</p> </td> 
-  </tr> 
-  <tr> 
-   <td width="11%" valign="top"> <p>网络</p> </td> 
-   <td width="88%" valign="top"> <p>132 x 2.5” 10K SAS 900 GB Drives</p> <p>2 x JB9</p> </td> 
-  </tr> 
- </tbody> 
-</table>
-<p></p>
-<p>表2 存储节点的标准配置</p>
-<p>下图展示了计算节点和存储节点的连接方式</p>
-<p><img width="600" alt="" src="http://infoqstatic.com/resource/articles/windows-server-infrastructure-cloud-reference-architecture/zh/resources/0117005.png" _href="img://null" _p="true" /></p>
-<p>图6 计算节点和存储节点的连接</p>
-<h2>网络的冗余设计</h2>
-<p>本设计中使用的网络三层都有冗余，他们分别是：</p>
-<ul> 
- <li>每个数据中心2个汇聚层交换机</li> 
- <li>每个机柜2个租户网络交换机</li> 
- <li>每个机柜2个数据中心网络交换机</li> 
-</ul>
-<p>网络Trunk设置：</p>
-<ul> 
- <li>4 x 10 GbE租户网络接口聚合</li> 
- <li>4 x 10 GbE 数据中心网络接口聚合 -&gt; Aggregate</li> 
- <li>16 x 10 GbE 聚合到核心交换</li> 
-</ul>
-<p>下面是示意图：</p>
-<p><img width="600" alt="" src="http://infoqstatic.com/resource/articles/windows-server-infrastructure-cloud-reference-architecture/zh/resources/0117006.png" _href="img://null" _p="true" /></p>
-<p>图7 网络的冗余设计</p>
-<h2>小结</h2>
-<p>企业在设计自己的基础架构云时可以考虑采用或者部分采用上面的设计，事实上微软自己的很多产品已经采用了上面的设计，比如微软SQL Server 2012的并行数据仓库（PDW）就采用了类似的架构。微软自己的模块化数据中心也是采用一样的架构。</p>
-<p>由于篇幅所限，我们讨论硬件之上的设计，正如我们一开始所说的，我们的目标之一就是用应用的弹性取代对于硬件冗余的需求，当我们把一个机柜最为一个故障单元的时候，如何跨机柜、甚至跨数据中心来调度、部署应用就显得非常重要。这个部分我们将在以后进行介绍。</p>
-<hr />
-<p>感谢<a href="http://www.infoq.com/cn/author/马国耀">马国耀</a>对本文的审校。</p>
-<p>给InfoQ中文站投稿或者参与内容翻译工作，请邮件至<a href="mailto:editors@cn.infoq.com">editors@cn.infoq.com</a>。也欢迎大家通过新浪微博（<a href="http://www.weibo.com/infoqchina">@InfoQ</a>）或者腾讯微博（<a href="http://t.qq.com/infoqchina">@InfoQ</a>）关注我们，并与我们的编辑和其他读者朋友交流。</p><br><br><br><br><br><br></body></html>
+<blockquote> 
+ <p>另一个原因是因为CS-Script。尽管有了Visual Studio扩展和Windows Explorer Shell扩展，我还是觉得CS-Script不够圆满，没有一个专门的富编辑器。我当然知道Visual Studio提供了无与伦比的“编辑能力”，但它也不是“银弹”。我想让C#和CS-Script用户拥有一个强大且轻量级的编辑器，不需要考虑任何部署和license的问题。</p> 
+ <p>3年前我甚至认真地尝试着开发这样一款编辑器。我花了大量时间对SharpDevelop做反向工程，并且几乎完成了一个为C#量身定做的编辑器（代码名为UltraSharp）。它是一个基于编辑器的自定义的WinForm，包装了NRefactory 5预览版。但其性能和编辑功能都不能让人满意。因此我放弃了这个项目，转而专注于在Visual Studio中集成CS-Script。我虽然取得了成功，但仍旧心仪永久免费、性能卓越、轻量级的Notepad++。</p> 
+ <p>对于这个插件，我还有一个不太明显但却强烈的动机。我们日常工作如此复杂。框架、工厂、模式、设计原则……我们几乎忘记了编程的乐趣。我不止一次地在文章中看到介绍批量重命名工具、下载器、目录同步工具或仅仅是又一个MP3文件标签组织工具。这些工具常常是为了引出全功能的应用程序开发（或部署方案），但在很多情况下，同样的工具可以仅用几行代码实现：</p> 
+</blockquote>
+<pre>foreach(string file in Directory.GetFiles(&quot;.&quot;, &quot;*.mp3&quot;))
+{
+    var mp3 = TagLib.File.Create(file);
+    string dir = Path.GetDirectoryName(file);
+    string fileName = string.Format(&quot;{00}.{1}.mp3&quot;, mp3.Tag.Track, mp3.Tag.Title);
+    File.Move(file, Path.Combine(dir, fileName));
+}</pre>
+<blockquote> 
+ <p>在Notepad++中可以使用CS-Script.Npp插件来执行上述代码。它甚至可以准备一些脚本，能够在没有安装Notepad++的PC上运行。</p> 
+ <p>我认为Notepad++和CS_Script让我们有机会只关注代码，而不用担心代码的基础结构，不用考虑在哪里保存项目文件或寻找刚刚编译的可执行文件。乐在码中。</p> 
+</blockquote>
+<p><strong>InfoQ：创建一个Notepad++插件都包含哪些内容？</strong></p>
+<blockquote> 
+ <p>Oleg：传统的Notepad++插件开发要求用C++编写代码。尽管我用C++没问题，但我还是更喜欢C#。因此我用<a href="http://sourceforge.net/p/notepad-plus/discussion/482781/thread/32615d15">NppPlugin.NET</a>作为插件容器。需要特别指出的是，这个插件宿主方案可以优雅地应对互操作的挑战。它只是一个特殊的VS项目模板，包含一些聪明的预编译行为，可以注入特殊的导出符号。因此，非托管的宿主应用程序（如Notepad++）可以在不借助任何包装器的情况下，直接承载一个普通的程序集。该项目模板还提供了一个接口（结构、常量），提供在其他插件中存在的所有Notepad++功能。</p> 
+ <p>我使用了另一个第三方解决方案是ICSharpCode.NRefactory（属于SharpDevelop IDE）。它是最成熟的解析C#代码和构建语法树的开源解决方案。此外，它还实现了代码自动补全。但实际上它多少还是有点复杂。</p> 
+ <p>NRefactory没有文档。尽管作者提供了充分的代码示例，这貌似是一个更好的选择。但所有示例都是SharpDevelp特有的，如果不使用SharpDevelop UI控件套件的话，它们无法提供任何帮助。我花了大量时间和精力对API进行反向工程，并最终成功将其集成到Notepad++插件中。</p> 
+ <p>还有一个挑战是实现代码格式化。我做出了一个艰难的决定，实现自己的格式化解决方案，而不是使用NRefactory内置的格式化。这是因为NRefactory的格式化并不完备（至少我使用的版本是这样），而且对于非标准的语法（如没有类的C#脚本）不够灵活。</p> 
+ <p>在涉及到用户交互时，我复制了Visual Studio的所有主要用户体验：解决方案浏览器、输出面板，CodeMap等等。</p> 
+</blockquote>
+<p><strong>InfoQ：假设某公司创建了一个小型的DSL供内部使用。您认为让一个开发者创建他们自己的Notepad++插件是否可行？这是否需要整个团队的努力？</strong></p>
+<blockquote> 
+ <p>Oleg：这当然取决于开发的规模。解决方案由以下几个逻辑部分组成：插件基础、语法高亮、语法解析和用户交互支持。</p> 
+ <p>插件基础可以说是最简单的部分。NppPlugin.NET能承担大部分工作。因此完全可以由单个开发者搞定。如果开发需求不重，甚至可以使用NppScripts（Notepad++自动化插件）。整个基础结构不到100行代码。NppScripts发布时自带了一个脚本示例，可以实现自定义的自动补全——允许特定上下文补全建议的自动补全功能。</p> 
+ <p>语法高亮在大多数情况下可以通过定制内嵌的Notepad++样式来实现。某些高亮任务无法由定制完成，那么就需要自己开发完整的Lexar（通常用C++开发）。但也只需要一个开发者即可。</p> 
+ <p>语法解析器的工作量与语法的复杂度成正比。因此像DOS指令这样简单的语法只需要一个人。但像C#这样复杂的语法就肯定需要一个团队了。尽管CS-SCript.Npp是一个人完成的，不过好在我没有任何期限。</p> 
+ <p>为DSL支持用户交互也十分简单。大多数情况下只需要自动补全的弹出框和一些配置控制台。同样也是一个人的工作量。当然，除非DSL的复杂性要求在运行时进行密集的用户交互。</p> 
+ <p>在大多数情况下，DSL插件都可以由一个开发者完成。如果DSL的复杂性是中到高级的，就需要一个团队参与了。不过，即使对于一个简单的DSL来说，一对儿开发者可以提高整个开发速度，他们可以同时开发相对独立的领域：插件基础、语法高亮、语法解析和用户体验。</p> 
+</blockquote>
+<h2>关于受访者</h2>
+<p><img style="float: left; margin-right: 10px" src="http://infoqstatic.com/resource/articles/CS-Script-Notepad/zh/resources/0305011.png" _href="img://null" _p="true" alt="" /><b>Oleg Shilo</b>生于乌克兰，并在那里获得了他的第一个资质：研究化学的硕士学位。18年前移居澳大利亚，并获得了第二个资质：软件工程师。他在全澳洲机器人和自动化领域领先的工程公司工作。过去4年他就职于Aqsacom Australia，任首席技术专家。</p>
+<div style="clear:both">
+ &nbsp;
+</div>
+<p><strong>原文英文链接：</strong><a href="http://www.infoq.com/articles/CS-Script-Notepad">Oleg Shilo on CS-Script and Notepad++</a></p><br><br><br><br><br><br></body></html>

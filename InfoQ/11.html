@@ -1,0 +1,29 @@
+<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>Crittercism: 在MongoDB上实现每天数十亿次请求</h3><p>MongoDB的扩展能力可以满足你业务需求的增长——这也是为什么它的名字来源于单词humongous（极大的）的原因。当然，这并不是说你在使用MongoDB的路上并不会碰到一些发展的痛点。Crittercism是一家专门为手机应用程序提供技术支持的初创公司，该公司在过去两年间发展迅猛，其运营总监Mike Chesnut于最近发表了一篇博文，描述了公司在快速发展的过程中遇到的一些MongoDB陷阱以及从中学到的经验。在今年6月将会举行的<a href="http://world.mongodb.com/">MongoDB World</a>大会上，Mike Chesnut将会介绍Crittercism是如何在MongoDB上实现每秒30,000次请求的。</p>
+<h2>背景</h2>
+<p><a href="https://www.crittercism.com/">Crittercism</a>提供了世界上首个领先的移动应用性能管理（mAPM）解决方案。其SDK被嵌入了成千上万的应用中，在全世界有近十亿用户。该公司致力于收集性能数据，例如错误报告、崩溃诊断细节、面包屑（breadcrumbs，指导航记录）、设备/载体/OS统计和用户行为等。这些数据大部分是非结构化的，并且随着应用程序、版本、设备和使用模式的不同变化很大。</p>
+<p>Crittercism将所有的这些数据存储在MongoDB中以便于收集原始信息供用户以各种方式使用，同时还提供了将数据概括到易消化、可操作的维度所需的分析功能。在过去的18个月中，Crittercism每天的请求量增长了超过40倍，主要的MongoDB集群现在存储的数据量超过了20TB。</p>
+<p><img src="http://infoqstatic.com/resource/news/2014/03/crittercism-scaling-billions-req/zh/resources/0325000.png" width="600" alt="" _href="img://null" _p="true" /></p>
+<h2>路由</h2>
+<p>MongoDB文档显示，最常见的拓扑结构是在每一个客户端系统上包含一个路由器——<a href="http://docs.mongodb.org/manual/reference/program/mongos/">一个mongos进程</a>。Mike Chesnut表示他们开始的时候就是这样做的，并且在很长的一段时间内这种方式工作的很好。</p>
+<p><img src="http://infoqstatic.com/resource/news/2014/03/crittercism-scaling-billions-req/zh/resources/0325001.png" width="600" alt="" _href="img://null" _p="true" /></p>
+<p>但是随着生产环境中前端应用程序服务器的数量从十几台增长到几百台，Crittercism发现mongos路由和mongod分片服务器之间建立了几百、有时候甚至是几千个连接，负载非常重。这意味着每当<a href="http://docs.mongodb.org/manual/core/sharding-balancing/">chunk平衡</a>（MongoDB分片集群为了保持数据均匀分布所必须使用的平衡措施）发生的时候传送存储在<a href="http://docs.mongodb.org/manual/reference/config-database/">配置数据库</a>中的chunk位置信息都需要花费相当长的时间。这是因为每一个mongos路由都必须清楚地知道每一个chunk都存在于集群中的哪些位置。</p>
+<p>对于这一问题Mike Chesnut表示：</p>
+<p><i>我们发现将</i><i>mongos</i><i>路由合并到少数几台主机上能够减轻这个问题。我们产品的基础设施在</i><i>AWS</i><i>上，所以我们在每个可用区域内部署了</i><i>2</i><i>台</i><i>mongos</i><i>服务器。这样每个区域都有冗余，同时还为客户端提供了到</i><i>mongos</i><i>路由的最短网络路径。我们也担心请求路径中会增加额外的驿站，但是通过</i><i>Chef</i><i>配置所有的客户端让它们仅与自己区域内的</i><i>mongos</i><i>路由通信能够最小化这个问题。</i></p>
+<p><img src="http://infoqstatic.com/resource/news/2014/03/crittercism-scaling-billions-req/zh/resources/0325002.png" width="600" alt="" _href="img://null" _p="true" /></p>
+<p><i>这种拓扑结构的变化极大地减少了</i><i>mongos</i><i>路由和</i><i>mongod</i><i>分片服务器之间的连接的数量（这一点可以通过</i><a href="https://mms.mongodb.com/?pk_campaign=crittercism-blog&amp;pk_kwd="><i>MMS</i></a><i>衡量），并且没有明显地降低应用程序的性能。此外我们还对</i><i>MongoDB</i><i>做了一些改进，让它能够更有效地完成</i><i>mongos</i><i>更新和内部一致性检查。借助于这些措施以及新的网络拓扑结构，我们现在能够在不引发性能问题的情况下平衡集群中的</i><i>chunk</i><i>。</i></p>
+<p>分片替换</p>
+<p>Crittercism公司遇到的另一个场景是需要动态地替换mongod服务器从而迁移到更大的分片上。Mike Chesnut表示：</p>
+<p><i>对于这一问题我们再次采用了文档中</i><a href="http://docs.mongodb.org/ecosystem/platforms/amazon-ec2/"><i>推荐的最佳部署实践</i></a><i>，将</i><i>MongoDB</i><i>部署到使用大型</i><i>RAID 10</i><i>磁盘阵列并且运行着</i><i>xfs</i><i>的服务器实例上。我们使用了有</i><i>16</i><i>块磁盘的</i><i>AWS m2.4xlarge</i><i>实例。处于性能方面的考虑，我们使用了基本的</i><i>Linux mdadm</i><i>，但是这样也牺牲了磁盘配置灵活性。这样做的结果是当我们需要为分片分配更多容量的时候，我们需要执行一个迁移程序，有时候这会花费几天的时间。这意味着我们不仅需要提前做出合适的计划，还需要了解整个流程从而对其进行监控并在出现错误的时候做出响应。</i></p>
+<p><i>当所有副本的磁盘利用率大致相等的时候我们会开始一个复制集。首先我们会创建一个新的服务器实例，为它分配更多的磁盘，然后使用</i><i>rs.add()</i><i>方法将其添加到这个复制集中。</i></p>
+<p><img src="http://infoqstatic.com/resource/news/2014/03/crittercism-scaling-billions-req/zh/resources/0325003.png" width="600" alt="" _href="img://null" _p="true" /></p>
+<p><i>新副本将进入</i><i>STARTUP2</i><i>状态并在该状态保持一段时间（在我们的情况下通常是</i><i>2</i><i>到</i><i>3</i><i>天），在此期间它首先会复制数据，然后会通过操作日志（</i><i>oplog</i><i>）复制赶上进度并构建索引。索引的构建通常会停止复制过程（注意，这个行为在</i><a href="http://docs.mongodb.org/master/release-notes/2.6/#background-index-builds-replicate-to-secondaries"><i>MongoDB 2.6</i></a><i>中必定会改变），所以严格来说复制延迟时间并不是一直在缩短——在一段时间内它会稳步缩短，然后当一个索引构建发生的时候复制便会暂停，延迟时间会再次延长。一旦索引构建完成，那么复制将会再次恢复。值得注意的是，当索引构建发生的时候，</i><i>mongostat</i><i>以及其他任何需要读锁的操作都将被阻塞。</i></p>
+<p><i>副本最终会进入</i><i>SECONDARY</i><i>状态并具备完整的功能。这时候我们可以</i><a href="http://docs.mongodb.org/manual/reference/method/rs.stepDown/"><i>rs.stepDown()</i></a><i> </i><i>一个旧的副本，关闭它上面运行的</i><i>mongod</i><i>进程，然后通过</i><a href="http://docs.mongodb.org/manual/reference/method/rs.remove/"><i>s.remove()</i></a><i>方法将它从复制集中移除，让服务器做好退出的准备。</i></p>
+<p><img src="http://infoqstatic.com/resource/news/2014/03/crittercism-scaling-billions-req/zh/resources/0325004.png" width="600" alt="" _href="img://null" _p="true" /></p>
+<p><i>之后复制集中的每一个成员都会重复这个过程，直到这些成员都被使用更大磁盘的新实例替换为止。</i></p>
+<p><img src="http://infoqstatic.com/resource/news/2014/03/crittercism-scaling-billions-req/zh/resources/0325005.png" width="600" alt="" _href="img://null" _p="true" /></p>
+<p><i>虽然这个过程有点耗时，有点乏味，但是却可以让我们以一种优雅的方式增长数据库的足迹，不会对客户造成任何影响。</i></p>
+<h2>结论</h2>
+<p>和使用其他任何技术一样，运营大规模MongoDB也需要一些知识，有些知识你可以从文档中获取，而另一些则来自于经验。通过尝试一些不同的策略，例如上面提到的那些，你可以发现一些之前并不明显的灵活性。对于Crittercism的运维团队而言，合并mongos路由层无论是在性能方面还是在管理性方面都是一个巨大的成功，此外开发上面提到的迁移程序让我们能够持续地发展，在满足自己业务需要的同时不会影响我们的服务或者客户。</p>
+<hr />
+<p>感谢<a href="http://www.infoq.com/cn/author/程显峰">程显峰</a>对本文的审校。</p>
+<p>给InfoQ中文站投稿或者参与内容翻译工作，请邮件至<a href="mailto:editors@cn.infoq.com">editors@cn.infoq.com</a>。也欢迎大家通过新浪微博（<a href="http://www.weibo.com/infoqchina">@InfoQ</a>）或者腾讯微博（<a href="http://t.qq.com/infoqchina">@InfoQ</a>）关注我们，并与我们的编辑和其他读者朋友交流。</p><br><br><br><br><br><br></body></html>

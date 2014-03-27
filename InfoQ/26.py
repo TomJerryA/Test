@@ -1,14 +1,32 @@
-<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>SparkRを使ってRでSparkを動かす</h3><p><a target="_blank" href="http://www.infoq.com/news/2014/02/sparkr-announcement"><em>原文(投稿日：2014/02/11)へのリンク</em></a></p>
+<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>アジャイル文化定着のための音声インタビューシリーズ</h3><p><a target="_blank" href="http://www.infoq.com/news/2014/03/agile-culture-interviews"><em>原文(投稿日：2014/03/13)へのリンク</em></a></p>
 <div class="article_page_left news_container text_content_container"> 
  <div class="text_info"> 
-  <p>Rはデータサイエンティストにとって最も強力な言語のひとつであり、2014年1月にUCバークレーの<a href="https://amplab.cs.berkeley.edu/">AMPLab</a>がApache SparkをRから使うための仕組みであるSparkRプロジェクトの<a href="https://groups.google.com/forum/#!topic/apache-spark-user-mirror/tZs0dHeM6bk">開発者プレビュー</a>を発表したことでさらに強力になった。</p> 
-  <p>インメモリデータ処理のためのビッグデータフレームワークである<a href="http://spark.incubator.apache.org/">Apache Spark</a>はClouderaのような大企業の牽引力を手に入れた。Clouderaは最近、Cloudera Distribution for Hadoop (CDH)から <a href="http://blog.cloudera.com/blog/2014/02/spark-is-now-generally-available-for-cloudera-enterprise/">Sparkを正式にサポート</a>したとアナウンスした。最新のリリースである<a href="http://spark.incubator.apache.org/news/spark-0-9-0-released.html">Spark 0.9</a>をサポートしているが、このバージョンはSparkRの動作要件だ。SparkRはちょうどいいタイミングで現れたといえるだろう。というのも、CDHは最も人気のあるHadoopディストリビューションのひとつで、データサイエンスの分野での導入を後押しするはずだ。データサイエンティストはJavaやScalaよりもRに親しんでいる。O'Reillyの<a href="http://blog.revolutionanalytics.com/2014/01/in-data-scientist-survey-r-is-the-most-used-tool-other-than-databases.html">最新の調査</a>の通りだ。</p> 
-  <p>SparkRはSparkからRを使うための軽量なフロントエンドと言えるだろう。つまりSparkRはJavaやScalaほどの拡張性のあるAPIは持たないだろう。しかし、SparkのジョブをRから実行しデータを操作するには十分なAPIだ。クロージャをシリアライズする機能が重要な機能のひとつだろう。これによって変数をSparkクラスタに透過的にコピーできる。さらにSparkRはRのモジュールと組み込み関数経由で統合されており、Sparkクラスタに、計算に必要な特定のモジュールをロードするよう指示できる。しかし、クロージャとは違い、これは手動で設定しなければならない。技術についてのより詳細な説明は、<a href="http://amplab-extras.github.io/SparkR-pkg/">この要約</a>に書いてある。SparkRはSparkの<a href="http://spark.incubator.apache.org/docs/latest/ec2-scripts.html">EC2スクリプト</a>を活用して、EC2上で簡単にセットアップできるようになっている。この点についてもGithub上で<a href="https://github.com/amplab-extras/SparkR-pkg/wiki/SparkR-on-EC2">解説されている</a>。</p> 
-  <p>データサイエンス界隈の人たちはSparkRに注目している。中でもTwitterはこのプロジェクトに対してサポートメッセージを送っている。<a href="http://www.mlsecproject.org/">MLSecProject</a>を推進している<a href="https://twitter.com/alexcpsec">Alex Pinto氏</a>は次のようなツイートをしている。</p> 
-  <blockquote> 
-   <p>これは凄い。@amplabのSparkR。私の好きな技術でデータ分析ができる。</p> 
+  <p>昨年のインタビューシリーズ&quot;<a href="http://individualsandinteractions.com/">Individuals and Interactions</a>&quot;に引き続き、“<a href="http://www.infoq.com/articles/book-human-side-agile">The Human Side of Agile</a>”の著者であるGil Broza氏が<a href="http://youragilejourney.info/">&quot;A Packing List for your Agile Journey</a>&quot;と題した音声インタビューシリーズを発表した。3月17日から21日までに行われrインタビューでは、さまざまなコメンテータ、実践家、作者が長期的なアジャイルへの転換を実現する方法について語る。</p> 
+  <p>氏はInfoQにこのシリーズについて話してくれた。</p> 
+  <p>&quot;<a href="http://youragilejourney.info/">Packing List for Your Agile Journey</a>&quot;というインタビューシリーズについて簡単に教えてください。</p> 
+  <blockquote>
+   10人のリーダーが組織のアジャイルについて彼らの考える重要なコンセプトを語ります。いくつかのコンセプトはアジャイルを&quot;くっつく&quot;ようにするためのものです。例えばエクゼクティブリーダーシップやチームフレンドリー環境などのコンセプトです。また、プロセスの仕組みを実装することとアジャイルの成果を摘み取ることの違いの根底にあるコンセプトについても教えてくれます。例えば、技術的なエクセレンスや品質に対するマインドセット、&quot;getting to done&quot;というメンタリティ、反復と予測などです。
   </blockquote> 
-  <p>プロジェクトは<a href="http://github.com/amplab-extras/SparkR-pkg">Github上</a>にあり、既に100スター近くを集めている活発なコミュニティを持っている。このプロジェクトが生まれてまだ1ヶ月程度しか経っていないことを考えれば、素晴らしい成長だ。まだ、いくつかの課題がオープンのままになっており、コミュニティが活発に活動しているのが伺える。</p> 
-  <p>AMPLabのチームは将来SparkRを機会学習ライブラリである<a href="http://spark.incubator.apache.org/mllib/">MLlib</a>に組み込むことに興味を持っており、これが実現すれば、手動で定義をしなくてもアルゴリズムをシームレスに実行することができる。MLlibは機会学習プロジェクトである<a href="http://www.mlbase.org/">MLBase</a>の中のひとつのコンポーネントだ。MLBaseもまた、高いレベルの抽象と最適化機構を提供する。MLlibは最も急速に成長している機会学習ライブラリであり、137人以上の貢献者がいる。したがって、Rからこのライブラリが使えるようにするのはAMPLabにとって合理的だ。</p> 
+  <p>昨年のインタビューシリーズはどうでしたか。どのくらいの人が視聴し、コミュニティからどのくらいフィードバックがありましたか。</p> 
+  <blockquote>
+   昨年の仮想トレーニング/ミニカンファレンスは&quot;Individuals and Interactions: How to Put People Before Process for Outstanding Results&quot;という名前でした。世界中から150人が参加し、素晴らしいフィードバックをもらいました。ゲストやコンテンツの形式にとても満足してもらいました。好きなときに簡単に(そして安価に)視聴できるからです。
+  </blockquote> 
+  <p>フィードバックをふまえて今年はどんなことを変えますか。</p> 
+  <blockquote>
+   今年は同じフォーマットですが、コンテンツは違います。また、前回よりも多くの実践家や経験者にインタビューをしています。著者やコンサルタントへのインタビューは少なくなっています。
+  </blockquote> 
+  <p>今年のインタビューのテーマは何でしょう。</p> 
+  <blockquote>
+   昨年はアジャイルマニュフェストの第一の宣言(&quot;Individuals and Interactions&quot;)の着目しました。今年は、アジリティのための重要な成功要因に着目します。これは、アジャイルをプロセスと見なしていると見失いがちです。
+  </blockquote> 
+  <p>どのような方がスピーカーですか。どんなトピックを扱いますか。</p> 
+  <blockquote>
+   再登場するのはJohanna Rothmanだけです。彼女は&quot;getting to done&quot;についてのメンタリティを教えてくれます。また、Nick Oddsonが登場します。彼はDesire2Learnでバイスプレジデントを努めており、以前はOpenTextにいました。彼はアジャイルへの転換のためのエクゼクティブリーダーシップについて教えてくれます。Google Southeast Asiaでプロダクトマネジメントの責任者を努めるAndrew McGlincheyはリーンの考え方についての彼の経験を教えてくれます。Dan Mezickは文化的な適合性(適合しないときにどすればいいか)についての現代的な見方を詳しく説明します。ベストセラー&quot;Essential Scrum&quot;の著者Ken Rubinは、プロセスを超えてアジャイルについて教えてくれます。
+  </blockquote> 
+  <p>どのように人選をしたのですか。</p> 
+  <blockquote>
+   カリキュラムを作成しているとき、重要な10の要件とアジャイルで見逃されがちなゴールを特定しました。各トピックに対して、役に立つ情報を共有してくれる、私が知る限りの最良の人選をしました。コンサルタントや著者(短い期間で多くの組織の内実を見ている)と実践家(同じ組織で長い期間にわたって活動している)のバランスもとりました。アジャイルのアドバイスに対して多くの人は理論的だと考えています。今回のイベントのゲストは現実の実際のアジリティをどのように実現するか教えてくれます。
+  </blockquote> 
+  <p>詳細な情報<a href="http://youragilejourney.info/">ここ</a>で確認できる。</p> 
  </div> 
 </div><br><br><br><br><br><br></body></html>

@@ -1,8 +1,25 @@
-<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>TypeScript成为VisualStudio的正式成员</h3><p>Microsoft的开源编程语言TypeScript设计的初衷是为了使大型JavaScript应用开发更容易，同时提供现代工具的支持。相比TypeScript先前的0.95版本，即将发布的1.0版本的最新<a href="http://blogs.msdn.com/b/typescript/archive/2014/02/25/announcing-typescript-1-0rc.aspx">发布候选版本</a>有不少变化，其中最重要的要属处理泛化的新方式。TypeScript的开发团队改变了关键字“any”的行为，这样做是为了简化创建接口和子类时的类型检查。</p>
-<p>此外，对泛型的处理也产生了一些变化，这两种改变结合在一起后，会有利于处理某些场景，如“承诺参数是全类型泛化的类型”。另外还有重要的一点是，与TypeScript一起发布的库lib.d.ts也做了更新，提供对触摸和WebGL的支持。</p>
-<p>虽然对此发布版本的反馈总体上比较好，但是它毕竟是发布候选版本，所以不建议将其安装在关键的生产系统中，除非你愿意承担部分风险。据一些早期的使用者反映，还有若干稳定性问题需要处理。</p>
-<p>除了通过Update 2获取TypeScript 1.0RC外，也可以通过下载方式获取并作为<a href="http://www.typescriptlang.org/#Download">独立工具</a>使用。项目的源码放在<a href="http://typescript.codeplex.com/sourcecontrol/latest#README.txt">Codeplex</a>上。除了可以在Visual Studio中使用TypeScript外，在其他流行的文本编辑器中，如<a href="https://github.com/palantir/eclipse-typescript">Eclipse</a>和<a href="https://github.com/Railk/T3S">Sublime</a>也支持该语言。</p>
-<p><strong>查看英文原文：</strong><a href="http://www.infoq.com/news/2014/03/typescript_VS">TypeScript Becomes Full Member of Visual Studio</a></p>
-<hr />
-<p>感谢<a href="http://www.infoq.com/cn/author/邵思华">邵思华</a>对本文的审校。</p>
-<p>给InfoQ中文站投稿或者参与内容翻译工作，请邮件至<a href="mailto:editors@cn.infoq.com">editors@cn.infoq.com</a>。也欢迎大家通过新浪微博（<a href="http://www.weibo.com/infoqchina">@InfoQ</a>）或者腾讯微博（<a href="http://t.qq.com/infoqchina">@InfoQ</a>）关注我们，并与我们的编辑和其他读者朋友交流。</p><br><br><br><br><br><br></body></html>
+<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>《产品设计中的逆向思维》、《无线地图的性能优化》：QCon北京移动专题之二</h3><p>距第六届QCon全球软件开发大会（北京站）2014开幕还有整整一个月，大会的日程信息已经相当完整，欢迎在<a href="http://www.qconbeijing.com/schedule.html">日程页</a>查阅。大会的演讲内容在官网：<a href="http://www.qconbeijing.com">http://www.qconbeijing.com</a>，以及InfoQ微博、微信公众帐号的最新播报：<a href="http://weibo.com/infoqchina">@InfoQ</a>、【infoqchina】不断更新。</p>
+<p>历届QCon大会门票都会提前售罄，如欲报名报请速点击<a href="http://qconbeijing.mymova.com/">报名页面</a>。</p>
+<p>最新确认的移动专题演讲嘉宾及内容有：</p>
+<p><a href="http://www.qconbeijing.com/user/675">DailyCost Founder 梁国鹏</a>。梁国鹏1985年出生于广东深圳。9岁开始使用电脑，15岁设计开发了小有名气的交互式Flash个人网站AlienHome。在深圳中学超常班完成了5年制的初中高中连读课程，本科就读华南理工大学工业设计专业，后保送同济大学研究生继续工业设计方向的深造。在学期间曾获IDEA、红点、Electrolux Design Lab等国际设计奖项。曾获英国Royal College of Art以及美国Art Center College of Design两所世界著名学府工业设计专业的录取，但因个人原因未能如愿。</p>
+<p>2010至2014年曾任阿里云计算设计专家，云OS设计团队核心设计师，负责云OS第一款原型机的工业设计和系统视觉设计，带领云OS视觉设计团队负责云OS 2.0的视觉设计，带领云OS创新设计团队为云OS 3.0设计核心应用，为阿里云计算和云OS两家公司设计了企业品牌标识。</p>
+<p>记账应用DailyCost作者，一人业余时间独立完成了产品、设计、开发和运营。产品基于HTML5开发，支持25种语言，全球总下载量超50万，App Store中国区最高排名曾达到总榜第48名，财务榜第2名，并在全球超过60个国家和地区的财务榜都挤进过前5名，被《Time》杂志官网推荐，被CSDN评为HTML5标杆应用，并被邀请参展了都柏林Web Summit大会。</p>
+<p>这次QCon大会，国鹏会为大家分享《产品设计中的逆向思维》：</p>
+<blockquote> 
+ <p>当下，无论是移动App产品还是软硬件结合的项目都可谓炙手可热，同质化问题严重。用户如何在琳琅满目的产品中做出最终的选择？如何让产品在激烈的竞争中脱颖而出？这是每个创业团队都会关心的问题。不仅要在团队、资金、营销等多个方面下功夫，更要在产品设计上为用户带来实际的价值，解决用户的实际问题。在产品设计中提出有竞争力的创新方案，并在产品决策和执行的过程中有效的跟进，显得尤为重要。这次分享，我将结合我在热门记账应用DailyCost和即将发布的软硬件产品Dripo中所收获的经验，和各位分享我在产品设计中的思考方式和小技巧。希望对大家有所帮助。</p> 
+</blockquote>
+<p><a href="http://www.qconbeijing.com/user/739">网易有道产品经理 胡文渝</a>。胡文渝2012年4月加入网易有道，目前为有道云笔记移动端产品经理。在有道云笔记项目团队负责iPhone平台和iPad平台的产品设计，了解iOS平台特性以及面向用户的效率类产品的设计理念。推进了iPhone平台两次大的设计改版，在项目过程中，总结了如下经验：如何持续的获得实际使用者的反馈、建立闭环反馈机制、怎样保证团队各个成员的参与感、项目进度及节奏的管理。</p>
+<p>本次大会，她会带来《跨越鸿沟--有道云笔记产品改版实践》：</p>
+<blockquote> 
+ <p>伴随着产品或者某项新技术的发展，其面对的市场群体也在不断的产生变化。在产品 发展的早期，所面对的用户多是创新者及早期尝鲜者，当市场逐渐扩大至早期大众时，用户群的特征就会发生较为明显的改变。此时的产品是 否适合已经改变的用户结构，产品架构是否可以支撑接下来这个阶段的发展，都是产品人员应该去思考的问题。有道云 笔记此次的改版项目就 是在这个阶段针对市场的变化所作出的响应，对产品结构进行了较大的调整，也为接下来的产品发展做了准备。</p> 
+ <p>在进行改版项目时，由于项目的不可控性较强，因此常规的敏捷迭代开发方式不适合 这类项目的管理。在本次的项目中，笔记团队也尝试了“极速迭代开发”的模式，并取得了较好的效果，分享中也会详细讲解一下这种项目管理的工作方式。</p> 
+</blockquote>
+<p><a href="http://www.qconbeijing.com/user/746">高德副总经理 曾琨</a>。曾琨在互联网电子地图领域有14年的从业经历，擅长各类终端设备上的电子地图系统架构设计和核心算法实现，对移动地图应用产品及地图引擎的跨平台实现有独到的研究成果。从2007年起至今，整体负责高德地图产品的技术开发。</p>
+<p>作为市面上的leading地图类产品负责人，曾琨会为大家分享《无线地图的数据压缩和性能优化》，内容足以为其他移动app提供参考与借鉴：</p>
+<blockquote> 
+ <p>手机上通过无线下载海量地图数据，既要为用户节省流量，又要尽可能提供最丰富的数据内容和最流畅的用户体验，就需要在技术层面不断的进行优化。本讲座基于高德地图在客户端地图性能优化方面所作的众多尝试和技术研发成果，为大家介绍如何通过地图分治、要素矢量化和顶点压缩减低数据大小，如何构建地图数据流以便优化网络传输，加入基于图幅的LRU图库缓存管理机制，以及如何利用GPU硬件加速地图绘制等内容。</p> 
+</blockquote>
+<p><strong>技术训练营信息：</strong></p>
+<p>本届大会全新打造的技术训练营（原会前培训）已经上线，在训练营中，我们邀请QCon讲师为对某一个领域具体实战技能感兴趣，入门浅的朋友提供集中的培训和指导。</p>
+<p>目前已上线的训练营包括《敏捷与模块化－OSGi理论与实践》、《iOS入门与进阶》、《JavaEE，企业应用互联网化的架构选择探讨》，和许多不同类别的测试课程，以及一门认证类课程《实践中的看板》。课程详情及报名方式，请查阅<a href="http://www.qconbeijing.com/tutorials">技术训练营页面</a>。</p>
+<p>更多精彩信息不断更新中，详请跳转至<a href="http://www.qconbeijing.com">大会官网</a>查阅。如有更多需要咨询，请联系qcon@cn.infoq.com，或直接致电010-64738142。报名请点击<a href="http://qconbeijing.mymova.com/">报名页面</a>。</p><br><br><br><br><br><br></body></html>

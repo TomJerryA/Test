@@ -1,27 +1,10 @@
-<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>构建更好的WCF客户端</h3><p>坦白地说，Visual Studio默认生成的WCF客户端有问题。它不能直接匹配服务器端接口代码，这导致了许多代码和数据共享问题，而且经过了这么多年，生成的代码仍然有一个明显的Bug。在题为《<a href="http://msmvps.com/blogs/p3net/archive/2014/02/02/a-smarter-wcf-service-client-part-1.aspx">更智能的WCF服务客户端</a>》的系列文章中，<a href="http://msmvps.com/blogs/p3net/default.aspx">Michael Taylor</a>讨论了这些问题以及他为解决这些问题所做的努力。</p>
-<p>关于WCF客户端代理，一个众所周知的问题是，只有在服务器真正运行的时候才能生成。对于许多团队来说，这使得在构建时更新服务引用即使可能也非常困难。可是，团队不得不依靠记忆将变化通知对方，并根据需要手动更新服务引用。Michael继续写道：</p>
+<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>用函数式语言做领域驱动设计</h3><p>在<a href="http://en.wikipedia.org/wiki/Domain-driven_design">领域驱动设计</a> (DDD) 中使用<a href="http://en.wikipedia.org/wiki/Functional_language">函数式语言</a> ，在跟业务专家探讨时，真正的代码经常简单得足以取代各种UML图， <a href="http://fsharpforfunandprofit.com/about/">Scott Wlaschin</a> 在最近的<a href="http://www.meetup.com/FSharpLondon/">函数式伦敦群组</a>集会上<a href="http://skillsmatter.com/skillscasts/4971-domain-driven-design-with-scott-wlaschin">讲到</a>了一个用<a href="http://en.wikipedia.org/wiki/F_Sharp_(programming_language)">F#</a>做业务建模和<a href="http://en.wikipedia.org/wiki/Functional_programming">函数式编程</a>的真实案例。</p>
+<p>Scott，一位.NET架构师，同时也是<a href="https://leanpub.com/understandingfunctionalprogramming">掌握函数式编程</a>的作者，他很欣赏函数式编程，但面向对象的开发人员可能会觉得函数式编程很恐怖，接受不了仿函数、应用型、单子之类所有这些奇怪的专业术语，不过Scott宣传它们确实只是陌生的术语。对于Scott来说，面向对象编程的那些概念也很恐怖，比如多态、泛型、继承、协变等。他认为函数式编程更容易，因为它的概念更少，并且特别强调在他演示的例子中没用到这些概念中的任何一个。</p>
+<p>按照Scott的经验，很多开发人员都觉得函数式编程擅于解决数学和科学领域中的问题，但对于现实世界中的普通应用来说太复杂了，但他认为F#真的很适合做那些无聊的业务类应用程序(BLOBA)的开发；它非常精炼，有很多规避套路化代码的便利之处，还有一个确保程序正确性的类型系统。</p>
+<p>在领域驱动设计中比较F#和C#时，可以看看值对象和实体两种代码的例子，Scott说F#的代码通常会简单得多，有时候简单的都可以用来跟领域专家讨论领域模型了，甚至可以直接评审代码，都不用UML图或者其他模型。</p>
+<p>在介绍F#的类型系统时，Scott展示了如何把类型和用来做类型检查的注解变成领域建模工具，并用来呈现设计。因为编译器会做类型检查，所以类型系统可以被看作是编译时的单元测试。</p>
 <blockquote> 
- <p>用于生成引用的URL存储在生成的代码中（.svcmap）。如果引用被更新，就会使用原始URL。而如果原始URL过时了或者引用了开发人员的机器，这就会产生问题。更糟糕的是，即使没有更改实际的代码，为了重新生成引用而更改URL也会导致所有的文件发生变化。</p> 
+ <p>一个优秀的静态类型系统就像一个编译时单元测试。</p> 
 </blockquote>
-<p>在使用服务引用样式的WCF客户端时，一个常见错误是使用“using”块。虽然常见，但这种做法并不合适，因为当调用Dispose时，WCF客户端可能会抛出异常。这就是所谓的“<a href="http://www.theroks.com/wcf-dispose-problem-with-using-statement/">WCF Dispose问题</a>”，而变通做法很多。</p>
-<p>Michael还列举了其它问题，包括：</p>
-<ul> 
- <li>虽然WCF使用接口来隐藏实现细节，但生成的代码实际上包含了一个不同的接口，而这个接口恰巧共享了相同的名字。该接口在服务引用代码中定义。这使得跨项目使用原始接口更加困难。</li> 
- <li>更糟糕的是，部分方法签名可能会变化。比如，枚举和集合会默认转换成数组。甚至参数都可以移动。</li> 
- <li>在Visual Studio中，开发人员可以使用“查找所有引用（Find All References）”来找出对所有类型和成员的引用。但如果使用服务引用，那么FAR就无法检测到它们，这还是因为服务引用生成了新接口。</li> 
- <li>此外，任何已经订立的数据契约都可以修改，包括不属于原始对象的属性。如果任何代码使用了这些属性，而现在正在使用WCF提供的基础设施，那么这会使单元测试更困难。</li> 
- <li>由一个项目的服务引用生成的数据别想在其它任何项目中共享（即使是相同的服务）。对于编译器而言，不管名字如何，类型是不同的。</li> 
- <li>WCF使用接口的全部原因是抽象，但由于服务引用的工作机制，没有简单的方法可以抽象服务的实际用法。</li> 
-</ul>
-<p>Michaels首先<a href="http://msmvps.com/blogs/p3net/archive/2014/02/09/a-smarter-wcf-service-client-part-2.aspx">提供了ClientBase&lt;T&gt;的一个子类，该类正确实现了IDisposable模式</a>。他写道：</p>
-<blockquote> 
- <p>关于包装器，还有一点值得注意，那就是它实现了IDisposable。<a href="http://msdn.microsoft.com/en-us/library/ms576141(v=vs.110).aspx">ClientBase&lt;T&gt;</a>已经实现了这个接口，为什么我们还要实现它？因为基类型没有按照正确的方法实现这个接口。实现该接口的类应该提供一个可重写的方法供派生类实现，但该类没有这样做。为了修复清理代码，我们不得不重新实现该接口和具体的方法。不过，我们会正确地实现它，不管是在派生类型方面，还是在故障通道处理方面。</p> 
-</blockquote>
-<p>在其系列文章的<a href="http://msmvps.com/blogs/p3net/archive/2014/02/23/a-smarter-wcf-service-client-part-3.aspx">第三部分</a>，Michael谈了如何减少使单个服务调用自成一行所需的样板文件。比如：</p>
-<p>ServiceClientFactory.InvokeMethod&lt;ServiceReference1.IEmployeeService&gt;(c =&gt; c.Update(dlg.Employee));</p>
-<p>这种模式确实也有其自身的局限性：</p>
-<blockquote> 
- <p>上述代码最大的问题可能是依赖于一个静态类。静态类在测试的时候不容易模拟，因此，在WCF服务可用之前，任何使用了静态类的代码都不容易进行单元测试。一个变通的做法是，创建一个虚方法，然后调用静态类。但这样做的结果是，仅仅为了达到单元测试的目的，就创建了大量的虚方法（可能每个服务方法都有一个）。</p> 
-</blockquote>
-<p>Michael计划在以后的文章中纠正这些问题。</p>
-<p><b>查看英文原文：</b><b><a href="http://www.infoq.com/news/2014/03/WCF-Clients">Building a Better WCF Client</a></b></p><br><br><br><br><br><br></body></html>
+<p>Scott在结论中宣称F#是函数优先开发中低风险的、安全的选择，他的主要依据是F#有微软在后面撑腰。</p>
+<p><strong>原文英文链接：</strong><a href="http://www.infoq.com/news/2014/03/ddd-functional-language">Domain-Driven Design Using a Functional Language</a></p><br><br><br><br><br><br></body></html>

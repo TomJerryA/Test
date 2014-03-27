@@ -2,6 +2,9 @@
  <head></head> 
  <body> 
   <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/41.javab">NoSQL, JSON, and Time Series Data Management: Interview with Anuj Sahni</a> Time series data management is gaining more attention lately because the data is coming at us from all directions: sensors, mobile devices, Web tracking, financial events, factory automation, and utilities. InfoQ spoke with Anuj Sahni, Principal Product Manager at Oracle about the time series data and how to do data modeling for this type of data. 
+  </div> 
+  <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/40.javab">Remote Working Works</a> Do you assume that remote working is a compromise? Around 5 years ago my team, and much of our software house, decided we could work as effectively from home. Many of us left London and headed to the country, replacing bars and restaurants with poultry keeping and mountain biking. Today we are closer, collaborate more, recruit better people and work more effectively than we ever did. 
   </div> 
   <div> 
@@ -147,9 +150,6 @@
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/47.javab">Intelligent Evolution: Making Change Work</a> Some 80% of all improvement and change programmes fail: they did not achieve the expected results, the investment in the change programme was greater than the value achieved, “improvements” were seen as mostly bureaucratic, or changes were abandoned soon after the implementation. Intelligent Evolution ensures long-term business success rather than short-term satisfaction of a standard or theory. 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/46.javab">Interview and Book Review Change Artistry</a> The book change artistry is a collection of essays from Esther Derby, Don Gray, Johanna Rothman and Gerald M. Weinberg. The essays cover a variety of topics to support professionals in developing their organizational change skills. 
   </div> 
  </body>
 </html>
