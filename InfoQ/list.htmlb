@@ -2,6 +2,9 @@
  <head></head> 
  <body> 
   <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/36.htmlb">如何使用Microsoft技术栈</a> Microsoft技术栈最近有大量的变迁，这使得开发人员和领导者都想知道他们到底应该关注哪些技术。Microsoft自己并不想从官方层面上反对Silverlight这样的技术，相对而言他们更喜欢让这种技术慢慢淡出人们的视线，否则局面可能会更加混乱。 
+  </div> 
+  <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/35.htmlb">Oleg Shilo：基于CS-Script的Notepad++的插件</a> 如果只是想写几句试验代码，Visual Studio显得有点大材小用。因此一些开发者会选择轻量级的编辑器，如Notepad++，来满足编写脚本的需要。Oleg Shilo向我们介绍了他的项目，一个优秀的基于CS-Script的Notepad++的插件。 
   </div> 
   <div> 
@@ -147,9 +150,6 @@
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/43.htmlb">Docker：利用Linux容器实现可移植的应用部署</a> Docker是一种在Linux容器里运行应用的开源工具，一种轻量级的虚拟机。除了运行应用，Docker还提供了一些工具，借助Docker Index或自己托管的Docker注册表对进行了集装箱化处理的应用进行分发，从而简化复杂应用的部署过程。 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/42.htmlb">ReactiveCocoa - iOS开发的新框架</a> ReactiveCocoa（其简称为RAC）是由Github 开源的一个应用于iOS和OS X开发的新框架。RAC具有函数式编程和响应式编程的特性。它主要吸取了.Net的 Reactive Extensions的设计和实现，本文详细介绍了这个框架。 
   </div> 
  </body>
 </html>

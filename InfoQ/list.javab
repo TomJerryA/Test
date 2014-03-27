@@ -2,6 +2,9 @@
  <head></head> 
  <body> 
   <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/42.javab">Pair Painting</a> Victoria was painting her kitchen last week and it got her thinking about pair programming. She and her partner have painted rooms together before, and they've ended up with something they've been really proud of, but when she did this alone, even though she has the skills and the knowledge, it didn't end up as good. She wondered why? 
+  </div> 
+  <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/41.javab">NoSQL, JSON, and Time Series Data Management: Interview with Anuj Sahni</a> Time series data management is gaining more attention lately because the data is coming at us from all directions: sensors, mobile devices, Web tracking, financial events, factory automation, and utilities. InfoQ spoke with Anuj Sahni, Principal Product Manager at Oracle about the time series data and how to do data modeling for this type of data. 
   </div> 
   <div> 
@@ -147,9 +150,6 @@
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/48.javab">Discover and Diagnose Java Concurrency Problems Using Contemplate's ThreadSafe</a> Writing Java software that correctly and safely makes use of concurrency requires careful thought. Software that incorrectly accounts for concurrency can contain intermittent defects that elude even the most rigorous testing regimes. Static analysis tools can analyze source code or compiled bytecode to discover latent bugs hidden within code, long before it is executed. 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/47.javab">Intelligent Evolution: Making Change Work</a> Some 80% of all improvement and change programmes fail: they did not achieve the expected results, the investment in the change programme was greater than the value achieved, “improvements” were seen as mostly bureaucratic, or changes were abandoned soon after the implementation. Intelligent Evolution ensures long-term business success rather than short-term satisfaction of a standard or theory. 
   </div> 
  </body>
 </html>

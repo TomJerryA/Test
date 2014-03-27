@@ -1,43 +1,42 @@
-<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>Lessons Learned from Apple's GoToFail Bug</h3><p>The recent <a href="http://support.apple.com/kb/HT6147">security weakness</a> found in both iOS and OS X hints at flaws in coding style guidelines, unit testing, system testing, code review policies, error management strategies, and tools deployment.</p>
-<p><a href="http://www.zdnet.com/apple-and-the-ssltls-bug-open-questions-7000026628/">Larry Seltzer on ZDNet</a> described the bug as &quot;a shocking and embarrassing one&quot; and observed that the fact that Apple also provided a patch for iOS 6 provides a hint at its seriousness. &quot;I'm sure Apple doesn't want to do anything to make it easier for iOS users to stay on iOS 6, but they patched it anyhow. That's how serious it is,&quot; Larry says.</p>
-<p>By the time of writing, Apple has already released software updates for both iOS and OS X to fix the issue: a vulnerability in encrypted communications that allowed an attacker to intercept, read or modify encrypted data. Still, some lessons can be learned from this whole episode.</p>
-<p><a href="https://www.imperialviolet.org/2014/02/22/applebug.html">Google's Adam Langley</a> has explained that the bug is located in the <a href="https://developer.apple.com/library/mac/documentation/security/Reference/secureTransportRef/Reference/reference.html">SecureTransport framework</a>, an implementation of SSL/TLS protocols released as Open Source by Apple, and is caused by some code becoming <a href="http://en.wikipedia.org/wiki/Unreachable_code">unreachable</a>. If you take a look at the <a href="http://opensource.apple.com/source/Security/Security-55471/libsecurity_ssl/lib/sslKeyExchange.c">code below</a>:</p>
-<pre>
-static OSStatus
-SSLVerifySignedServerKeyExchange(SSLContext *ctx, bool isRsa, SSLBuffer signedParams,
-                                 uint8_t *signature, UInt16 signatureLen)
-{
-	OSStatus        err;
-	<i>...</i>
-
-	if ((err = SSLHashSHA1.update(&amp;hashCtx, &amp;serverRandom)) != 0)
-		goto fail;
-	if ((err = SSLHashSHA1.update(&amp;hashCtx, &amp;signedParams)) != 0)
-		goto fail;
-		goto fail;
-	if ((err = SSLHashSHA1.final(&amp;hashCtx, &amp;hashOut)) != 0)
-		goto fail;
-	<i>...</i>
-
-fail:
-	SSLFreeBuffer(&amp;signedHashes);
-	SSLFreeBuffer(&amp;hashCtx);
-	return err;
-}</pre>
-<p>You will notice the two <code>goto fail</code> lines in a row. The second <code>goto fail</code>, due to missing braces around the <code>if</code> block, will always produce a jump to the <code>fail</code> label, thus skipping the following checks. This combines with the fact that, at the moment of the jump, the <code>err</code> variable does not contain any error and will make the method return with no error. Adam Langley goes on to clarify:</p>
-<blockquote>
- This signature verification is checking the signature in a ServerKeyExchange message. This is used in DHE and ECDHE ciphersuites to communicate the ephemeral key for the connection. The server is saying: &quot;here's the ephemeral key and here's a signature, from my certificate, so you know that it's from me&quot;. Now, if the link between the ephemeral key and the certificate chain is broken, then everything falls apart. It is possible to send a correct certificate chain to the client, but sign the handshake with the wrong private key, or not sign it at all! There's no proof that the server possesses the private key matching the public key in its certificate. 
+<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>Q&A with Atlassian product marketing specialist Dave Meyer on Connect 1.0 and Atlassian Verified</h3><p>Atlassian<b> </b>have<b> </b>launched their new product <a href="http://blogs.atlassian.com/2014/03/introducing-atlassian-connect-1-0/">Atlassian Connect 1.0</a> to build add-ons for Atlassian applications like JIRA, Confluence, HipChat and a certification program for developers called <a href="http://blogs.atlassian.com/2014/03/new-marketplace-atlassian-verified/">Atlassian Verified</a>.</p>
+<p>InfoQ spoke to Dave Meyer, product marketing specialist at <a href="https://www.atlassian.com">Atlassian</a>.</p>
+<p><strong>InfoQ: Can you please tell us about the Atlassian Connect? What was the need of producing this product?</strong></p>
+<blockquote> 
+ <p>We built Atlassian Connect to make it easier for any developer to build a powerful add-on for JIRA or Confluence OnDemand (our software-as-service issue tracking and collaboration applications). As our hosted service has grown, we needed to build a development platform that could scale with it. With Atlassian Connect, rich add-ons for JIRA and Confluence can run and scale independently, which contributes to more security and stability for the entire offering.</p> 
 </blockquote>
-<p>According to Larry Seltzer we do not know how the bug was found out, due to Apple not giving out much detail, but this episode makes him wonder about code review practices at Apple. He also notes that while the error can be easily recognised when you look right at it, it could be hard to spot when you are looking at the [whole file], which is 1,970 line long.</p>
-<p>Many commenters to Twitter's <code>#gotofail</code> topic identified a blatant culprit in the use of goto, famously described as &quot;harmful&quot; in a <a href="http://www.cs.utexas.edu/users/EWD/ewd02xx/EWD215.PDF">Dijkstra's paper</a>. While this is undeniable, <a href="http://avandeursen.com/2014/02/22/gotofail-security/">Arie van Deursen</a>, Software Engineering Professor at Delft University of Technology, Netherlands, explains the use of <code>goto</code> with the attempt at implementing an exception-like mechanism in C through the use of the <a href="http://stackoverflow.com/questions/2789987/any-good-idioms-for-error-handling-in-straight-c-programs">return-error-code idiom</a>, thus making that idiom the real culprit.</p>
-<p>Indeed, van Deursen writes, the return-error-code idiom is ubiquitous in the file containing the bug, and this has its own problems. One of the key findings of a <a href="http://www.st.ewi.tudelft.nl/%7Earie/papers/exceptions/icse2006.pdf">2005 paper van Deursen authored with Magiel Bruntink and Tom Tourwe</a> is &quot;a defect density of 2.1 deviations from the return-error-code idiom per 1000 lines of code,&quot; as resulting from inspection of a large code base. Such high defect density was related to unchecked calls, incorrectly propagated return codes, and incorrectly handled error conditions, showing &quot;the idiom is particularly error prone.&quot;</p>
-<p><a href="http://www.kevinmarks.com">Kevin Marks</a>, a former Apple employee, notes in a comment to van Deursen's post that there are ways to use the error code return idiom more safely using preprocessor macros. Examples of such approaches are <a href="http://www.kevinmarks.com/personality.html">BailOSErr</a> and aiming at <a href="http://www.hpl.hp.com/techreports/Compaq-DEC/SRC-RR-40.pdf">implementing exceptions in C.</a></p>
-<p>Speaking of how error codes are managed, Chris Leishman commenting van Deursen's post remarks that the use of an error code which is initialised to success is a key factor for the double <code>goto</code> to actually cause the weakness. The system would have shown a safer behaviour if the error was initialised as <code>OSStatus err = OSUnknownError</code>.</p>
-<p>On another front, <a href="http://landonf.bikemonkey.org">Landon Fuller</a>, software engineer at <a href="https://plausible.coop">Plausible Labs</a>, <a href="https://github.com/landonf/Testability-CVE-2014-1266">provided a testability analysis of the code affected by the bug</a> and demonstrated that <a href="https://tools.ietf.org/html/rfc5246#section-7.4.3"><code>SSLVerifySignedServerKeyExchange</code></a> is unit-testable in isolation. This, according to <a href="http://agilesolutionspace.blogspot.com.es">C. Keith Ray</a>, strikes a point for TDD: &quot;you can’t write an <code>if</code> statement until you have a test that requires it. You’ll end up with a test for the <code>if</code> statement being true and a test for the if statement being false.&quot;</p>
-<p>Arie van Deursen also points to more controversial aspects of the story.</p>
-<p>He first notices that the file containing the bug &quot;is not routinely formatted automatically: There are plenty of inconsistent spaces, tabs, and code in comments,&quot; while &quot;correct indentation immediately shows something fishy is going on&quot; and would have allowed to spot the bug more easily. Along these lines, he goes as far as suggesting that &quot;code formatting is a security feature&quot; and that &quot;white space is a security concern&quot;.</p>
-<p>Langley writes in his blog that he thinks that code reviews could be effective to prevent such kind of issues. Arie van Deursen points out, though, that in a <a href="http://alex.nederlof.com/blog/2013/05/24/the-truth-about-code-reviews/">previous study of how code review is applied at Microsoft</a>, it turned out that</p>
-<blockquote>
- review does not result in identifying defects as often as project members would like and even more rarely detects deep, subtle, or “macro” level issues. Relying on code review in this way for quality assurance may be fraught. 
+<p><strong>InfoQ: Please tell us about some of the differentiating features of Atlassian Connect and how does it work?</strong></p>
+<blockquote> 
+ <p>With Atlassian Connect, any web application can become an add-on for JIRA or Confluence and offer a seamless, integrated experience for end users. Web applications serve a descriptor that describes the application, the permissions it needs, and &quot;modules&quot; – places in the application where it would like to insert content – that it will use.</p> 
+ <p>Connect add-ons use web standards like REST APIs and webhooks to communication with the Atlassian application, and we are providing client libraries for <a href="https://bitbucket.org/atlassian/atlassian-connect-express">node.js</a> and the <a href="https://bitbucket.org/atlassian/atlassian-connect-play-java/overview">Play framework</a> to making get started easy for developers.</p> 
 </blockquote>
-<p>Finally, tools did not help either in this case, since Clang <code>-Wall</code> option will not spot the double goto line and the ensuing unreachable code, as Langley points out. Clang offers a <code>-Weverything</code> flag which would have caught the issue, according to <a href="http://avandeursen.com/2014/02/22/gotofail-security/">Simon Nicolussi</a>, while GCC drops it silently. This is also confirmes by <a href="https://twitter.com/_peterdn/status/437224206330523648">Peter Nelson</a>, who also points at the existence of a specific <code>-Wunreachable-code</code> option. Van Deursen notesa that the main issue with unreachable code is that its detection is a fundamentally undecidable problem, thus leading to a tradeoff between completeness and false positives, thus possibly explaining why it is not included by default.</p><br><br><br><br><br><br></body></html>
+<p><strong>InfoQ: Do you have any plans to add more features in Atlassian Connect 1.0?</strong></p>
+<blockquote> 
+ <p>Yes – after the 1.0 release we plan to begin working on making Atlassian Connect available to customers running JIRA and Confluence on their own servers and developers who want to build products for both platforms. We have a number of additional enhancements for Atlassian Connect planned, as well as REST API improvements for JIRA and Confluence themselves.</p> 
+</blockquote>
+<p><strong>InfoQ: What products support Atlassian Connect?</strong></p>
+<blockquote> 
+ <p>The Atlassian Connect platform is currently supported in JIRA and Confluence OnDemand. Support for Atlassian Connect in HipChat is <a href="https://www.hipchat.com/docs/apiv2">currently in beta</a>. We expect Connect to eventually be available across the entire Atlassian suite, including our development tools Bitbucket, Stash, and Bamboo.</p> 
+</blockquote>
+<p><strong>InfoQ: What are the benefits of this product?</strong></p>
+<blockquote> 
+ <p>With Atlassian Connect, developers can build add-ons for JIRA and Confluence OnDemand using the technology stack of their choices. For developers who build and sell add-ons on the Atlassian Marketplace, it opens up a new market of customers for whom they can build products. Additionally, current and future JIRA and Confluence OnDemand customers can extend their instances with custom add-ons and add-ons from the Atlassian Marketplace. Atlassian Connect launched with <a href="https://marketplace.atlassian.com/plugins?marketingLabel=Built+with+Atlassian+Connect">15 third party add-ons</a> available in the Atlassian Marketplace, and more are in the works.</p> 
+</blockquote>
+<p><strong>InfoQ: Who are the end users for this product?</strong></p>
+<blockquote> 
+ <p>Atlassian Connect is a way for developers to build add-ons. Developers can build, share, and sell their add-ons in the Atlassian Marketplace. Additionally, customers can build their own add-ons with Atlassian Connect for private use.</p> 
+</blockquote>
+<p><strong>InfoQ: Please tell us about Atlassian Verified.</strong></p>
+<blockquote> 
+ <p>The Atlassian Verified program is a new way to make it easier for Atlassian customers to find great add-ons. Atlassian Verified is a certification for developers on the Marketplace who meet standards of traction, reliability, and support.</p> 
+ <p>Atlassian sets out standards on the following criteria:</p> 
+ <ul> 
+  <li><b>Traction</b> – Developers have built add-ons adopted by a critical mass of Atlassian customers</li> 
+  <li><b>Reliability</b> – Upgrade on your terms. Atlassian Verified developers will be compatible with the Atlassian application within two weeks of release</li> 
+  <li><b>Support</b> – Developers meet a published Service Level Agreement (SLA), have support websites, and are available at least eight hours a day, five days a week</li> 
+ </ul> 
+ <p>Developers in the Atlassian Marketplace who meet the program requirements will have a checkmark on their profiles that indicates they have been approved.</p> 
+</blockquote>
+<p><strong>InfoQ: Which certification Atlassian provides through Atlassian Verified? What is the procedure to get this certificate and who all are the eligible candidates?</strong></p>
+<blockquote> 
+ <p>Atlassian Verified developers meet great standards of traction, reliability, and support. Any developer with a commercial add-on that is sold through the Atlassian Marketplace can apply for Atlassian Verified through their Marketplace vendor account. A full list of the requirements for the Atlassian Verified program is <a href="https://developer.atlassian.com/display/MARKET/The+Atlassian+Verified+program">available here</a>.</p> 
+</blockquote><br><br><br><br><br><br></body></html>

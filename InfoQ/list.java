@@ -2,7 +2,16 @@
  <head></head> 
  <body>
   <div>
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/32.java">Apple Improves iOS Devices Deployment and Management for Enterprise and Education</a>Apple has recently announced some changes to its Device Enrollment and Volume Purchase Programs aiming at improving large-scale deployment of iOS devices to enterprise and education customers interested in deploying company-owned iOS devices or instituting a &quot;bring your own device&quot; (BYOD) policy.
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/35.java">Q&amp;A with Atlassian product marketing specialist Dave Meyer on Connect 1.0 and Atlassian Verified</a>InfoQ spoke to Atlassian product marketing specialist Dave Meyer on new product releases - Atlassian Connect 1.0 and Atlassian Verified.
+  </div> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/34.java">PHP Evolved: Facebook's New Hack Programming Language</a>PHP has long filled an important role at Facebook, and over the years the company has constantly sought to improve the language's performance. First there was the Hip Hop Virtual Machine, and now there is the Hack, programming language. 
+  </div> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/33.java">Measuring the Value of Agile Adoption</a>When defining a business case for adopting agile, the question can arise how you can measure the business value that can be delivered using agile software development. 
+  </div> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/32.java">Apple Improves iOS Devices Deployment and Management for Enterprise and Education</a>Apple has recently announced some changes to its Device Enrollment and Volume Purchase Programs aiming at improving large-scale deployment of iOS devices to enterprise and education customers interested in deploying company-owned iOS devices or instituting a &quot;bring your own device&quot; (BYOD) policy. 
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/31.java">ASP.NET Web API Gets OData v4.0 Support, WCF Will Not</a>ASP.NET Web API 2.2 for OData v4.0 are now available as nightly builds. The team also released OData core libraries version 6.1 on nuget with several bug fixes and new features, especially increased support for OData v4 spec. However, the MS team suggested that WCF will not get OData v4 specific features. 
@@ -141,15 +150,6 @@
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/41.java">Mike Cohn Suggests Unfinished Work in Sprint Review</a>Mike Cohn explains why sometimes it is worth to present unfinished product backlog items during the sprint review meeting. 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/40.java">Apple Rolls Out CarPlay</a>At the Geneva International Motor Show, Apple announced to roll out CarPlay partnering with premium car manufactures. CarPlay fully integrates iOS devices with existing infotainment capabilities of cars. Currently, Apple restricts CarPlay to a few applications like Maps, Phone or Messages. At the moment, there is no public API announced to write CarPlay enabled applications. 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/39.java">IBM Launches Contest for Cognitive Mobile Apps using Watson</a>At the Mobile World Congress, IBM has announced a developer contest for developers to create mobile consumer and business apps powered by IBM Watson cognitive computing platform. The winners of the IBM Watson Mobile Developer Challenge will receive design consulting and support from IBM to gain access to the market. 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/38.java">Amazon Chooses HAL Media Type for AppStream API</a>Amazon has released a new API, the AppStream API, which allows you to programmatically manage apps hosted on the Amazon AppStream platform. For this API, they chose to build it with the HAL media type. HAL is a minimalist hypermedia enabled media type for building machine-to-machine APIs. Amazon is one of the largest organizations to choose hypermedia as a technique for a public-facing product. 
   </div>  
  </body>
 </html>

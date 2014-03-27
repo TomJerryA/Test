@@ -2,6 +2,12 @@
  <head></head> 
  <body> 
   <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/28.py">Entity Framework 6.1リリース</a>近頃、リリースされたEntity Framework 6.1は多くの興味深い改善がなされている。例えば、ツーリングの改良、CommitFailureHandler、IndexAttribute、Public Mapping APIなどだ。 
+  </div> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/27.py">オブジェクト指向設計の原則と関数型プログラミング</a>互いに独立した活動として、Richard Warburtonはプレゼンテーションで、Mark Seemannはブログで、共に関数型プログラミングの観点から見たオブジェクト指向とSOLID設計原則について触れた。 
+  </div> 
+  <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/26.py">アジャイル文化定着のための音声インタビューシリーズ</a>昨年のインタビューシリーズ&quot;Individuals and Interactions&quot;に引き続き、“The Human Side of Agile”の著者であるGil Broza氏が&quot;A Packing List for your Agile Journey&quot;と題した音声インタビューシリーズを発表した。3月17日から21日までに行われrインタビューでは、さまざまなコメンテータ、実践家、作者が長期的なアジャイルへの転換を実現する方法について語る。 
   </div> 
   <div> 
@@ -144,12 +150,6 @@
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/31.py">HybridClusterが非営利ライセンスの無償化を発表</a>HybridClusterは，同社のクラウドホスティングプラットフォームの非営利利用ライセンスを無償にすると発表した。同プラットフォームはLAMP(Linux, Apache, MySQL, PHP)アプリケーションをサポートし，同社独自のマルチプロトコルプロキシサーバである‘AwesimoeProxy’，軽量コンテナ，ZFSベースのストレージファブリックを組み合わせることで，高可用性と自動スケールを提供する。 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/30.py">Pebbleがウェアラブルコンピューティング史上初のアプリストアを開設</a>Pebbleは 人気のPebbleとPebble Steelスマートウォッチを提供している。同社は今月始め、アプリストアを開設した。このアプリストアは顧客と開発者にアプリの配布チャンネルを提供し、&quot;ユーザがPebbleアプリを探す第一の場所&quot;を作ることが目的だ。 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/29.py">GoogleのJavaコーディング規約</a>Googleは、最近、Javaコーディング規約の完全な定義を公開した。 この規約は強制力を持つ厳格なルールであり、Google全体で従うべきものだ。単なるフォーマットだけでなく、他の約束事やコーディング規約についても書かれている。 
   </div> 
  </body>
 </html>
