@@ -2,6 +2,12 @@
  <head></head> 
  <body> 
   <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/36.htmlb">数据库变更部署自动化秘诀</a> Yaniv Yehuda探讨了自动化数据库部署所面临的挑战，并提供了基于敏捷和DevOps思想的建议。 
+  </div> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/36.htmlb">微博平台的链路追踪及服务质量保障系统——Watchman系统</a> 如其他大中型互联网应用一样，微博平台由众多的分布式组件构成，用户通过浏览器或移动客户端的每一个HTTP请求到达应用服务器后，会经过很多个业务系统或系统组件，并留下足迹（footprint）。但是这些分散的数据对于问题排查，或是流程优化都帮助有限。本文将会详细介绍新浪微博的实现方式和经验分享。 
+  </div> 
+  <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/36.htmlb">如何使用Microsoft技术栈</a> Microsoft技术栈最近有大量的变迁，这使得开发人员和领导者都想知道他们到底应该关注哪些技术。Microsoft自己并不想从官方层面上反对Silverlight这样的技术，相对而言他们更喜欢让这种技术慢慢淡出人们的视线，否则局面可能会更加混乱。 
   </div> 
   <div> 
@@ -144,12 +150,6 @@
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/45.htmlb">分布式系统的事务处理</a> 本文来自阿里巴巴北京研发中心、商家业务部任资深专家陈皓自己的博客（http://coolshell.cn/articles/10910.html），在本人许可下，由InfoQ中文站进行转载，在这里给大家分享。本文讨论了在数据冗余情况下考虑数据的一致性和性能的问题。 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/44.htmlb">豆瓣 CODE 两年历程回顾：git 不是万能的，没有 review 是万万不能的</a> 2014 年 2 月 14 日是豆瓣 CODE 项目成立两周年，同日豆瓣 CODE 团队宣布将整个框架开源。本次开源包含 CODE 框架以及 Mikoto、Linguist、P、CodeLive 等周边项目，感兴趣的工程师可以在这个基础上继续开发。下面，豆瓣 CODE 的工程师们将在 InfoQ 上分享一些 CODE 背后的故事。 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/43.htmlb">Docker：利用Linux容器实现可移植的应用部署</a> Docker是一种在Linux容器里运行应用的开源工具，一种轻量级的虚拟机。除了运行应用，Docker还提供了一些工具，借助Docker Index或自己托管的Docker注册表对进行了集装箱化处理的应用进行分发，从而简化复杂应用的部署过程。 
   </div> 
  </body>
 </html>

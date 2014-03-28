@@ -2,6 +2,9 @@
  <head></head> 
  <body> 
   <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/29.py">Jolt Awards 2014: モバイルとコーディング ツール</a>Dr. DobbsはJolt Award for Mobile and Coding Tools for 2014を発表した 
+  </div> 
+  <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/28.py">Entity Framework 6.1リリース</a>近頃、リリースされたEntity Framework 6.1は多くの興味深い改善がなされている。例えば、ツーリングの改良、CommitFailureHandler、IndexAttribute、Public Mapping APIなどだ。 
   </div> 
   <div> 
@@ -147,9 +150,6 @@
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/32.py">Bletchley ParkとTMNOCとの大きな問題</a>今日2月5日は，最初の電子計算機であるColossusの開発から70周年にあたる日だ。ColossusはLorenzの暗号メッセージ解読を目的として，1944年2月5日に運用が開始された。しかしながら，Bletchley Parkですべてがうまく行っている訳ではない。National Museum of Computingは激しい論争の中で，存在の意義を失いつつあるのだ。 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/31.py">HybridClusterが非営利ライセンスの無償化を発表</a>HybridClusterは，同社のクラウドホスティングプラットフォームの非営利利用ライセンスを無償にすると発表した。同プラットフォームはLAMP(Linux, Apache, MySQL, PHP)アプリケーションをサポートし，同社独自のマルチプロトコルプロキシサーバである‘AwesimoeProxy’，軽量コンテナ，ZFSベースのストレージファブリックを組み合わせることで，高可用性と自動スケールを提供する。 
   </div> 
  </body>
 </html>

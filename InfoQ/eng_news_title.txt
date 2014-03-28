@@ -1,1 +1,1 @@
-Apple Improves iOS Devices Deployment and Management for Enterprise and Education
+Meteor 0.7.1 Release Brings Dev Accounts, Further Improvements

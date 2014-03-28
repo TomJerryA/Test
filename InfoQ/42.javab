@@ -1,0 +1,407 @@
+<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>How to Protect Valuable or Personal Data on PC, Hard Drive and Flash Drive</h3><h2>Target Markets</h2>
+<ul> 
+ <li>Small business (mobile employees),</li> 
+ <li>Vertical Industries (insurance companies),</li> 
+ <li>Original Equipment Manufacturers (OEMs such as Siemens).</li> 
+</ul>
+<h2>The Purpose of Supporting BitLocker</h2>
+<h3>About BitLocker</h3>
+<p>Approximately 60% of all computers sold worldwide today are portable. Portable computers are taken everywhere: home, vacations, or business trips. It makes them an easy target for criminals, especially for the private data they contain. Flash drives are also an easy theft target. Even a failed hard drive that you send back to your vendor for warranty is a potential threat to your private intellectual property. How can your personal data be protected? With one word - encryption!</p>
+<p>Data encryption has gone mainstream with Windows BitLocker, an optional security feature that enables data protection on volumes with 128/256-bit AES (Advanced Encryption Standard) encryption. It first appeared in Windows Vista Enterprise and Vista Ultimate to protect the contents of hard disks from offline attacks - for example- when a hard disk is stolen and connected to another computer to retrieve the data it contains. To learn more on the subject, <a href="http://windows.microsoft.com/en-us/windows-vista/bitlocker-drive-encryption-overview">please visit</a>.</p>
+<p><b>Important take-away:</b> Windows BitLocker is ideal for protecting personal data from unauthorized access.</p>
+<h4><b>Third-party Data Backup and Recovery Tools</b></h4>
+<p>If you compare third-party backup and recovery solutions with the Windows native backup/restore utilities, when in most cases, third-party software provides much more efficient and flexible backup, data compression, recovery, wider customization options, multi-platform recovery environments, etc.</p>
+<p><b>Important take-away:</b> Third-party backup solutions are much more efficient than the Windows native utilities in protecting OS and personal data from multiple types of loss.</p>
+<h3>Combining BitLocker and Third-party Backup Software</h3>
+<p>Windows BitLocker can protect sensitive data from theft, but not data corruption or accidental deletion as a result of a hardware failure, virus attack or human error. However, third-party data backup and recovery solutions support those scenarios and can recover data from volumes encrypted by BitLocker, allowing backup, restore or copying of their contents as well as a number of other partitioning operations. For more information, please consult the <b><a href="#_Operations_Available_for">Operations Available for BitLocker Encrypted Volumes</a></b> chapter.</p>
+<div id="lowerFullwidthVCR"></div>
+<p><b>Important take-away: </b>Combining Windows BitLocker and third-party backup capabilities provides exceptional protection of OS and personal data from unauthorized access and data loss.</p>
+<h2>BitLocker and Paragon’s Backup Protect Against Data Loss and Unauthorized Access</h2>
+<h3>Turning on BitLocker</h3>
+<p>To encrypt volumes through BitLocker, your computer must meet certain requirements, which vary depending on the type of drive you’re encrypting (a local data, a system volume, a flash drive, etc.).</p>
+<h3>Encrypting system volumes</h3>
+<p>To encrypt/decrypt drives that accommodate Windows OS, BitLocker stores special keys for hardware devices:</p>
+<ul> 
+ <li>If a computer has a special microchip called TPM ver. 1.2 (Trusted Platform Module), BitLocker will store its keys here (default option);</li> 
+ <li>If a computer doesn’t support TPM 1.2 or higher, BitLocker will store its keys on a flash drive. However, this option is not available by default and must be enabled by an administrator.</li> 
+ <li>Please review the following requirements in order to encrypt the operating system drive:</li> 
+ <li>Your hard drive should have at least two partitions: a system volume that contains files required for the computer to startup, and a separate OS volume that contains the Windows OS itself. The system volume will remain unencrypted to allow the computer to boot, while the operating system volume will be encrypted against unauthorized access to data. BitLocker will create the second partition if only one is present in the system to begin with.</li> 
+ <li>Both volumes should be formatted with the NTFS file system.</li> 
+ <li>BIOS should either be compatible with TPM or support booting the computer from USB devices.</li> 
+ <li>We won’t go into detail on how to encrypt system volumes in Windows OS, as you can find in-depth information on the subject in your Windows Help System. For additional information, please use the following resources: <a href="http://windows.microsoft.com/en-us/windows-vista/bitlocker-drive-encryption-overview">resource #1</a>, <a href="http://msdn.microsoft.com/en-us/library/windows/hardware/gg487306.aspx">resource #2</a>.</li> 
+</ul>
+<h4>Encrypting data volumes or USB flash drives</h4>
+<p>Encryption of data volumes (local, or external) is much easier and transparent for the user and can be accomplished by using either a password or a smartcard with a PIN. For more information of this subject, please consult Windows Help System or the aforementioned resources.</p>
+<h3>Unlocking BitLocker Encrypted Volumes</h3>
+<p>Paragon’s solutions enable users to <a href="#operations_on_bitlocked_volumes">accomplish a number of operations</a> on volumes encrypted by Windows BitLocker, but only after the volumes are unlocked. Locked volumes will be recognized in the program’s interface as ‘Not formatted’ until they’ve been unlocked. The user can unlock these types of volumes only through Windows-native features:</p>
+<ul> 
+ <li>Windows graphical user interface,</li> 
+ <li>The <b>manage-bde</b> command line tool, which is available from both Windows and the WinPE recovery media.</li> 
+</ul>
+<p>Thus the first action required before working with a BitLocker encrypted volume will be to unlock in either Windows or the WinPE recovery media. Let’s consider both options under Windows 8 and the WinPE 4.1 based recovery environment.</p>
+<h4>In Windows</h4>
+<ol> 
+ <li>Initially we find an encrypted data volume (<b>F:)</b>, note, the drive is displayed as a locked volume in Windows Explorer.</li> 
+</ol>
+<p><img src="http://www.infoq.com/resource/articles/BitKeeper/en/resources/Fig1b.png" alt="" _href="img://Fig1b.png" _p="true" /></p>
+<p>In Paragon Hard Disk Manager (HDM), if viewing the hard disk layout through the main launcher of the program (<b>Open Advanced Interface</b>), this particular volume will be detected and identified as ’Not formatted’, thus no backup, restore, or copy operations will be available for use.</p>
+<p><img src="http://www.infoq.com/resource/articles/BitKeeper/en/resources/Fig2b.png" alt="" _href="img://Fig2b.png" _p="true" /></p>
+<ol start="2"> 
+ <li>To unlock the volume, right-click on the corresponding volume in Windows Explorer, then select <b>Unlock Volume…</b> or use the corresponding option from the HDM main launcher (<b>Partition &gt; Unlock Volume</b>).</li> 
+</ol>
+<table cellspacing="0" cellpadding="0" border="1"> 
+ <tbody> 
+  <tr> 
+   <td> <p><img src="http://www.infoq.com/resource/articles/BitKeeper/en/resources/i.png" _href="img://i.png" _p="true" align="middle" alt="" /></p> </td> 
+   <td> <p><b>NOTE: There are other ways to unlock a volume encrypted by BitLocker. For more information, please consult documentation provided by Microsoft.</b></p> </td> 
+  </tr> 
+ </tbody> 
+</table>
+<ol start="3"> 
+ <li>Enter an unlock password.</li> 
+</ol>
+<p><img src="http://www.infoq.com/resource/articles/BitKeeper/en/resources/Fig3b.png" alt="" _href="img://Fig3b.png" _p="true" /></p>
+<ol start="4"> 
+ <li>Once complete, the volume should be identified with an ‘unlocked’ icon, as shown below.</li> 
+</ol>
+<p><img src="http://www.infoq.com/resource/articles/BitKeeper/en/resources/Fig4b.png" alt="" _href="img://Fig4b.png" _p="true" /></p>
+<p>Now, when viewing the hard disk layout through the main launcher of the program (<b>Open Advanced Interface</b>), the volume will be detected and displayed correctly, and is available for all supported operations.</p>
+<p><img src="http://www.infoq.com/resource/articles/BitKeeper/en/resources/Fig5b.png" alt="" _href="img://Fig5b.png" _p="true" /></p>
+<h4>In WinPE</h4>
+<ol> 
+ <li>Start up the computer from the WinPE recovery media.</li> 
+</ol>
+<table cellspacing="0" cellpadding="0" border="1"> 
+ <tbody> 
+  <tr> 
+   <td> <p><img src="http://www.infoq.com/resource/articles/BitKeeper/en/resources/1i.png" _href="img://1i.png" _p="true" align="absMiddle" alt="" /></p> </td> 
+   <td width="718"> <p><b>To automatically boot from the recovery media please make sure the on-board BIOS is set up to boot from CD/USB first.</b></p> </td> 
+  </tr> 
+ </tbody> 
+</table>
+<ol start="2"> 
+ <li>Go to the <b>Security and BitLocker Encryption</b> section, and select <b>List of Volumes</b>.</li> 
+ <li>Define volumes encrypted by BitLocker (they will be detected as ‘Unknown’). If several BitLocker encrypted volumes are present (just as in our case below), you can pinpoint the required volume by its size.</li> 
+</ol>
+<p><img src="http://www.infoq.com/resource/articles/BitKeeper/en/resources/Fig6b.png" alt="" _href="img://Fig6b.png" _p="true" /></p>
+<p>When viewing the hard disk layout from main launcher of the program (<b>Open Advanced Interface</b>), you can easily see all the unknown volumes detected as ’Not formatted’, just like they are under Windows.</p>
+<p><img src="http://www.infoq.com/resource/articles/BitKeeper/en/resources/Fig7b.png" alt="" _href="img://Fig7b.png" _p="true" /><br /> </p>
+<table cellspacing="0" cellpadding="0" border="1"> 
+ <tbody> 
+  <tr> 
+   <td> <p><img src="http://www.infoq.com/resource/articles/BitKeeper/en/resources/2i.png" alt="" _href="img://2i.png" _p="true" /></p> </td> 
+   <td width="718"> <p><b>Drive letters in Windows and WinPE may differ, so please do not use them as identifiers.</b></p> </td> 
+  </tr> 
+ </tbody> 
+</table>
+<p></p>
+<ol start="4"> 
+ <li>Close the ‘<b>List of Volumes</b>’ dialog, then select <b>Unlock Encrypted Volumes</b>.</li> 
+ <li>Use provided examples and syntax to unlock the required volume(s). If you’d like to see all commands of the <b>manage-bde</b> tool, please run it with the ‘–help’ parameter (<b>manage-bde -help</b>).</li> 
+</ol>
+<p><img src="http://www.infoq.com/resource/articles/BitKeeper/en/resources/Fig8b.png" alt="" _href="img://Fig8b.png" _p="true" /></p>
+<p>As you can see in the screenshot above, we’re attempting to unlock volume <b>E:</b> by providing a path to the corresponding recovery key (<b>recoverykey.bek</b>), which is stored on a System Reserved partition (volume <b>C:</b>).</p>
+<p>NOTE: the System Reserved partition has the letter C: assigned, as work is performed in the WinPE recovery environment. </p>
+<table cellspacing="0" cellpadding="0" border="1"> 
+ <tbody> 
+  <tr> 
+   <td> <p><img src="http://www.infoq.com/resource/articles/BitKeeper/en/resources/3i.png" alt="" _href="img://3i.png" _p="true" /></p> </td> 
+   <td width="718"> <p><b>The same dialog can also be called from the Hard Disk Manager 14 main launcher (right-click on the required volume, then select ‘Unlock Volume’).</b></p> </td> 
+  </tr> 
+ </tbody> 
+</table>
+<p></p>
+<ol start="6"> 
+ <li>As a result, the volume should be unlocked.</li> 
+</ol>
+<p><img src="http://www.infoq.com/resource/articles/BitKeeper/en/resources/Fig9b.png" alt="" _href="img://Fig9b.png" _p="true" /></p>
+<p>Now, when going to the main launcher of our program (<b>Open Advanced Interface</b>), the volume will be correctly detected and is available for all supported operations.</p>
+<p><img src="http://www.infoq.com/resource/articles/BitKeeper/en/resources/Fig10b.png" alt="" _href="img://Fig10b.png" _p="true" /></p>
+<h3>Protecting BitLocker Encrypted Volumes</h3>
+<h4>Creating a Full Backup</h4>
+<p>Let’s consider how to create a pVHD full backup of a hard disk that contains BitLocker encrypted volumes. The process is similar to the one for separate volumes or a flash drive.</p>
+<ol> 
+ <li>Launch Paragon’s backup solution.</li> 
+ <li>Click the <b>New Backup Format</b> tab on the Ribbon Panel and select <b>Backup to VD</b>.</li> 
+ <li>On the wizard's Welcome page, click the<b> Next</b> button.</li> 
+ <li>Select the required partitions or entire hard disks you’d like to back up by using <b>Shift</b> or <b>Ctrl</b> to select several objects at once. Click <b>Next</b> to proceed.</li> 
+</ol>
+<p><img src="http://www.infoq.com/resource/articles/BitKeeper/en/resources/Fig11b.png" alt="" _href="img://Fig11b.png" _p="true" /><br /> </p>
+<table cellspacing="0" cellpadding="0" border="1"> 
+ <tbody> 
+  <tr> 
+   <td> <p><img src="http://www.infoq.com/resource/articles/BitKeeper/en/resources/4i.png" alt="" _href="img://4i.png" _p="true" /></p> </td> 
+   <td width="718"> <p><b>You’ve got the option to modify default backup settings by marking the appropriate checkbox on this page.</b></p> <p><b>By default the program will take into account any exclude filters preconfigured in the Settings dialog.</b></p> </td> 
+  </tr> 
+ </tbody> 
+</table>
+<p></p>
+<ol start="5"> 
+ <li>Specify a location for the resulting pVHD-based backup in the ‘Backup destination’ section. If you’d like to save it locally, either enter a full path to the target folder in the corresponding field, or use the <b>Browse</b> button to find it.</li> 
+</ol>
+<p><img src="http://www.infoq.com/resource/articles/BitKeeper/en/resources/Fig12b.png" alt="" _href="img://Fig12b.png" _p="true" /></p>
+<p>If you’re going to save the backup image on a network share, or a physical partition (a partition that doesn’t have a drive letter in the system), click on the <b>Browse</b> button. In the ensuing dialog you will see several options:</p>
+<p><img src="http://www.infoq.com/resource/articles/BitKeeper/en/resources/Fig13b.png" alt="" _href="img://Fig13b.png" _p="true" /></p>
+<ul> 
+ <li>Select <b>Disk Drives</b> to use a local disk as the backup destination;</li> 
+ <li>Select <b>Partitions</b> to use a physical partition as the backup destination;</li> 
+ <li>Click on the <b>Map Network Drive</b> icon to map a network share to use it as the backup destination (as in our case).</li> 
+</ul>
+<ol start="6"> 
+ <li>To map a network share, please do the following:</li> 
+</ol>
+<p><img src="http://www.infoq.com/resource/articles/BitKeeper/en/resources/Fig14b.png" alt="" _href="img://Fig14b.png" _p="true" /></p>
+<ul> 
+ <li>Click the abbreviated browse button [...] to locate the required network share or manually enter the full path to it;</li> 
+ <li>Define a letter for the mapped drive from the pull-down list of available drive letters;</li> 
+ <li>Mark the checkbox to make this connection permanent. Otherwise it will only be available for the current Windows session;</li> 
+ <li>Specify a valid user name and password to access the selected network share, if necessary.</li> 
+</ul>
+<p><img src="http://www.infoq.com/resource/articles/BitKeeper/en/resources/Fig15b.png" alt="" _href="img://Fig15b.png" _p="true" /></p>
+<ul> 
+ <li>Click <b>OK</b> when ready.</li> 
+</ul>
+<ol start="7"> 
+ <li>Edit the default archive name and description in the ‘Archive details’ section if necessary. Click <b>Next</b> to proceed.</li> 
+</ol>
+<p><img src="http://www.infoq.com/resource/articles/BitKeeper/en/resources/Fig16b.png" alt="" _href="img://Fig16b.png" _p="true" /></p>
+<ol start="8"> 
+ <li>Choose whether to execute the operation immediately after finishing the wizard and applying the pending changes (only if the virtual mode is enabled), or to generate a script file to be executed later.</li> 
+ <li>Click <b>Finish </b>to complete the wizard, and apply the pending changes.</li> 
+</ol>
+<table cellspacing="0" cellpadding="0" border="1"> 
+ <tbody> 
+  <tr> 
+   <td> <p><img src="http://www.infoq.com/resource/articles/BitKeeper/en/resources/5i.png" alt="" _href="img://5i.png" _p="true" /></p> </td> 
+   <td width="718"> <p><b>This operation can also be accomplished with Paragon’s recovery media.</b></p> </td> 
+  </tr> 
+ </tbody> 
+</table>
+<h4>Creating an Increment to pVHD</h4>
+<p>Backup is not a one-shot action, it should obviously be done on a recurring basis. This is where technologies that accelerate the process and reduce backup storage requirements come into play. pVHD-based incremental imaging offers such advantages. In Paragon’s backup solutions, it’s possible to maintain several incremental backup chains based on one base pVHD archive, provided each chain contains the changed data of a particular backup object(s). This option allows much more flexibility in managing backup contents.</p>
+<p>One of the crucial things about incremental imaging is the way changed data is parsed. In HDM there are three different methods which enable the user to pick the one that fits their preference (none of Paragon’s competitors currently offer this level of flexibility).</p>
+<p>Follow these steps to update a pVHD backup image:</p>
+<ol> 
+ <li>Launch Paragon’s backup solution.</li> 
+ <li>Click the <b>New Backup Format</b> tab on the Ribbon Panel, and select <b>Incremental Backup to VD</b>.</li> 
+ <li>On the wizard's Welcome page, click the Next button.</li> 
+ <li>On the Browse for Archive page, specify the required full (base) archive:</li> 
+</ol>
+<ul> 
+ <li>By clicking the <b>Switch to Archive List View</b> link, you can see a list of images contained in the Archive Database (if any). Please note that only sector-based images in the new format type (with a .pfi index file) are available to work with.</li> 
+</ul>
+<p><img src="http://www.infoq.com/resource/articles/BitKeeper/en/resources/Fig17b.png" alt="" _href="img://Fig17b.png" _p="true" /></p>
+<p>To get a clear-cut picture on properties of the required image, click on it and the section below will (i.e. Archive File Details) display a short description.</p>
+<ul> 
+ <li>By clicking the <b>Switch to File View</b> link, you can find the required image in the Explorer-like window. The section below (i.e. Archive File Details) will also display a short description of the selected image. Please note that only sector-based images in the new format type (with a .pfi index file) are available to work with.</li> 
+</ul>
+<p><img src="http://www.infoq.com/resource/articles/BitKeeper/en/resources/Fig18b.png" alt="" _href="img://Fig18b.png" _p="true" /></p>
+<p>HDM enables the creation of several incremental backup chains based on one base (full) pVHD, provided each chain contains the changed data of a particular object(s). In the wizard these chains will be associated with their base image.</p>
+<p><img src="http://www.infoq.com/resource/articles/BitKeeper/en/resources/Fig19b.png" alt="" _href="img://Fig19b.png" _p="true" /></p>
+<ol start="5"> 
+ <li>The <b>Archive Content</b> page displays detailed information about the contents of the archive.</li> 
+</ol>
+<p><img src="http://www.infoq.com/resource/articles/BitKeeper/en/resources/Fig20b.png" alt="" _href="img://Fig20b.png" _p="true" /></p>
+<ol start="6"> 
+ <li>Edit the default description to the created incremental image, if necessary. Specify the required method of acquiring information on the changed data:</li> 
+</ol>
+<p><img src="http://www.infoq.com/resource/articles/BitKeeper/en/resources/Fig21b.png" alt="" _href="img://Fig21b.png" _p="true" /></p>
+<ul> 
+ <li><b>Compare metadata </b>(default). At first, file system metadata on each source and backup volume will be analyzed. As a result, pairs of directory trees will be built. If working with NTFS volumes, directory trees will be built directly on MFT, skipping the file system analysis. The next action will be a comparison of file attributes (e.g. creation/modification date) inside directory trees of the source and backup volumes, to: 
+  <ul> 
+   <li>Copy all file clusters with changed attributes;</li> 
+   <li>Copy all file clusters with changed location of cluster chains;</li> 
+   <li>Copy all clusters of new files;</li> 
+   <li>Copy all sectors with metadata, for instance all copies of directories and MFT for NTFS. Depending on a file system and its location, a full metadata copy can exceed several hundreds of megabytes.</li> 
+  </ul> </li> 
+</ul>
+<p>This method is the fastest of all three, but the resulting increments will also be the largest.</p>
+<ul> 
+ <li><b>Compare all data</b>. At first, a list will be created of all occupied cluster chains. After comparison with the backup contents, all changed clusters will be copied. This method is slower, but more space is saved in comparison to the first option above. Please note, however, that if an increment has been performed after defragmentation, there may be a great amount of redundant data changes that might have occurred, as data is being moved during the defragmentation process, but not changed.</li> 
+ <li>&sect;<b>Compare changed data</b>. This is a combination of the previously mentioned methods above. After detection of new/changed files, a list of clusters to copy will be created. During the copying, clusters on source and backup volumes will be compared in order to copy only changed clusters and the clusters of new files, as well as clusters of changed file system metadata (not all metadata). This method is the slowest of all three, but it can guarantee increments will only contain changed/new data.</li> 
+</ul>
+<ol start="7"> 
+ <li>Choose whether to execute the operation immediately after finishing the wizard and applying the pending changes (only if Virtual Mode is enabled) or to generate a script file to be executed later.</li> 
+ <li>Click <b>Finish</b> to complete the wizard, and apply the pending changes.</li> 
+</ol>
+<p>After the operation is complete you’ll have generated an incremental update to the selected pVHD backup image, stored next to the base image. </p>
+<table cellspacing="0" cellpadding="0" border="1"> 
+ <tbody> 
+  <tr> 
+   <td> <p><img src="http://www.infoq.com/resource/articles/BitKeeper/en/resources/6i.png" alt="" _href="img://6i.png" _p="true" /></p> </td> 
+   <td width="718"> <p><b>This operation can also be accomplished with Paragon’s recovery media.</b></p> </td> 
+  </tr> 
+ </tbody> 
+</table>
+<p></p>
+<h3>Building WinPE Recovery Media</h3>
+<p>Local or external data volumes can be restored directly under Windows through the <b>Restore from VD Wizard</b>, while system volumes (it’s assumed that this OS is down and fails to boot) should be restored from Paragon’s recovery media, either Linux- or WinPE-based.</p>
+<p>Paragon offers two options to create recovery media, the Recovery Media Builder (RMB) and the Boot Media Builder (BMB), to help users build customizable boot media. In short the RMB is simpler and doesn’t require the download and installation of WAIK or OPK Tools to build WinPE; however, its functionality is limited. In this document we will focus on using the RMB as it’s the easiest way to build the WinPE-based recovery media.</p>
+<p>For more information on the subject, please consult Paragon’s BMB and RMB documentation, which you can find on the company’s website, in the <b><a href="http://www.paragon-software.com/my-account/">My Account Section</a></b> (you must be a registered user).</p>
+<h4>System Prerequisites</h4>
+<ul> 
+ <li>Windows XP or later;</li> 
+ <li>Paragon’s product installed;</li> 
+ <li>A 512MB or larger USB flash drive.</li> 
+</ul>
+<p>Please note that depending on the host system, product functionality can be restricted:</p>
+<ul> 
+ <li>You can specify whether to create a 32-bit (BIOS mode) or 64-bit (uEFI mode) Linux environment only in the 64-bit Recovery Media Builder. The 32-bit Recovery Media Builder can only prepare 32-bit Linux-based media.</li> 
+ <li>There’s no option to choose whether to build a 32-bit (BIOS mode) or 64-bit (uEFI mode) WinPE environment. Automatic detection will occur. For 64-bit systems a 64-bit WinPE environment will be built, while for 32-bit systems – 32-bit WinPE media is built.</li> 
+ <li>You can only prepare the Linux-based environment (flash, ISO) on Windows XP and Vista operating systems.</li> 
+ <li>Creation of WinPE-based ISO images is not available on Windows 8.1, or Server 2012 R1/R2.</li> 
+</ul>
+<h4>Operation Scenario</h4>
+<p>To build the WinPE recovery media on a flash drive, please do the following:</p>
+<ol> 
+ <li>Plug in a 512MB or larger flash drive. Please note, all data on that drive will be deleted, though after the recovery media is created, you may add data to the flash drive, space permitting.</li> 
+ <li>Select: <b>Start &gt; Programs &gt; Paragon Recovery Media Builder</b>, or double-click on its desktop icon.</li> 
+ <li>The welcome page introduces the wizard’s functionality. Click <b>Next </b>to proceed.</li> 
+</ol>
+<p><img src="http://www.infoq.com/resource/articles/BitKeeper/en/resources/Fig22.png" alt="" _href="img://Fig22.png" _p="true" /></p>
+<ol start="4"> 
+ <li>Select <b>Microsoft Windows PE</b>. As you can see on the screenshot there’s no option to choose whether to build a 32-bit (BIOS mode) or 64-bit (uEFI mode) WinPE environment. 64-bit systems build a 64-bit WinPE; 32-bit systems build a 32-bit WinPE.</li> 
+</ol>
+<p><img src="http://www.infoq.com/resource/articles/BitKeeper/en/resources/Fig23.png" alt="" _href="img://Fig23.png" _p="true" /></p>
+<ol start="5"> 
+ <li>Click on <b>Removable flash media</b>, then select a flash drive from the list of flash memory devices presently connected to the system (if multiple devices are detected). If you’d like to create an ISO image of the WinPE environment, please use the corresponding option.</li> 
+</ol>
+<p><img src="http://www.infoq.com/resource/articles/BitKeeper/en/resources/Fig24.png" alt="" _href="img://Fig24.png" _p="true" /></p>
+<ol start="6"> 
+ <li>The wizard will warn you that all data on the selected drive will be deleted. Please confirm the operation to proceed.</li> 
+</ol>
+<p><img src="http://www.infoq.com/resource/articles/BitKeeper/en/resources/Fig25.png" alt="" _href="img://Fig25.png" _p="true" /></p>
+<ol start="7"> 
+ <li>The entire operation takes a couple of minutes. Once complete, you’ll receive the required bootable media.</li> 
+</ol>
+<p><img src="http://www.infoq.com/resource/articles/BitKeeper/en/resources/Fig26.png" alt="" _href="img://Fig26.png" _p="true" /></p>
+<h3>Restoring BitLocker Encrypted Volumes</h3>
+<p>Let’s consider how to restore system volumes, as they’re the most complicated scenario which involves the use of the recovery media. For data volumes, the process is much easier.</p>
+<ol> 
+ <li>Start up the computer from the WinPE recovery media.</li> 
+</ol>
+<table cellspacing="0" cellpadding="0" border="1"> 
+ <tbody> 
+  <tr> 
+   <td> <p><img src="http://www.infoq.com/resource/articles/BitKeeper/en/resources/7i.png" alt="" _href="img://7i.png" _p="true" /></p> </td> 
+   <td width="718"> <p><b>To automatically boot from the recovery media please make sure the on-board BIOS is set up to boot from CD/USB first.</b></p> </td> 
+  </tr> 
+ </tbody> 
+</table>
+<ol start="2"> 
+ <li>Select <b>Switch to Full Scale Launcher</b>, and then click the <b>Restore from VD</b> item from the Wizards dropdown menu.</li> 
+ <li>On the Restore Wizard's Welcome page, click the Next button.</li> 
+ <li>On the Browse for Archive page you need to specify the required backup image:</li> 
+</ol>
+<ul> 
+ <li>Map a network drive where your archives reside: 
+  <ul> 
+   <li>Open the Map Network Drive dialog by clicking the appropriate button;</li> 
+  </ul> </li> 
+</ul>
+<p><img src="http://www.infoq.com/resource/articles/BitKeeper/en/resources/Fig27.png" alt="" _href="img://Fig27.png" _p="true" /></p>
+<ul> 
+ <ul> 
+  <li>Click the standard browse button [...] to browse for the required network share or manually enter a path to it;</li> 
+  <li>Define a letter from the pull-down list of available drive letters;</li> 
+  <li>Click the Connect as user button at the foot of the dialog page to specify a user name and password to access the selected network share if necessary.</li> 
+ </ul> 
+</ul>
+<p> </p>
+<table cellspacing="0" cellpadding="0" border="1"> 
+ <tbody> 
+  <tr> 
+   <td> <p><img src="http://www.infoq.com/resource/articles/BitKeeper/en/resources/8i.png" alt="" _href="img://8i.png" _p="true" /></p> </td> 
+   <td width="718"> <p><b>You can also map a network drive with the Network Configurator.</b></p> </td> 
+  </tr> 
+ </tbody> 
+</table>
+<p></p>
+<ul> 
+ <li>Choose the required archive in the Explorer-like window. The <b>Archive File Details</b> section displays a short description of the selected image. If you need more information on the selected backup object, please click the corresponding link at the bottom of the section. Click <b>Next</b> to proceed.</li> 
+</ul>
+<p><img src="http://www.infoq.com/resource/articles/BitKeeper/en/resources/Fig28.png" alt="" _href="img://Fig28.png" _p="true" /></p>
+<ol start="5"> 
+ <li>The <b>What to Restore</b> page displays detailed information about the contents of the archive. Select the required item to restore.</li> 
+</ol>
+<p><img src="http://www.infoq.com/resource/articles/BitKeeper/en/resources/Fig29.png" alt="" _href="img://Fig29.png" _p="true" /><br /> </p>
+<table cellspacing="0" cellpadding="0" border="1"> 
+ <tbody> 
+  <tr> 
+   <td> <p><img src="http://www.infoq.com/resource/articles/BitKeeper/en/resources/9i.png" alt="" _href="img://9i.png" _p="true" /></p> </td> 
+   <td width="718"> <p><b>If you need to restore several backup objects from a pVHD image in one operation, please use the Linux-based recovery media.</b></p> </td> 
+  </tr> 
+ </tbody> 
+</table>
+<p></p>
+<ol start="6"> 
+ <li>On the <b>Where to Restore</b> page, specify a target hard disk, and then select the desired partitions (if several in your computer). By default, the program offers to restore the archive exactly where it belongs, which is the goal of this scenario.</li> 
+</ol>
+<p><img src="http://www.infoq.com/resource/articles/BitKeeper/en/resources/Fig30.png" alt="" _href="img://Fig30.png" _p="true" /><br /> </p>
+<table cellspacing="0" cellpadding="0" border="1"> 
+ <tbody> 
+  <tr> 
+   <td> <p><img src="http://www.infoq.com/resource/articles/BitKeeper/en/resources/II.png" alt="" _href="img://II.png" _p="true" /></p> </td> 
+   <td width="718"> <p><b>All contents on the partition selected for restoring purposes will be deleted during the operation.</b></p> </td> 
+  </tr> 
+ </tbody> 
+</table>
+<p></p>
+<ol start="7"> 
+ <li>On the <b>Restore Results</b> page you can see the resulting hard disk layout. There’s also the possibility to change size of the partition and its location, if necessary, as well as an option to assign a particular drive letter. If you’re working with a 64-bit Windows OS configured in uEFI boot mode, the <b>Switch EFI to boot from destination drive</b> option will become available for you to define what instance of Windows OS you’d like to boot from once the operation is complete. Either way, you can specify a new bootable device at any time through Boot Corrector.</li> 
+</ol>
+<p><img src="http://www.infoq.com/resource/articles/BitKeeper/en/resources/Fig31.png" alt="" _href="img://Fig31.png" _p="true" /></p>
+<ol start="8"> 
+ <li>Choose whether to execute the operation immediately after finishing the wizard and applying the pending changes (only if the virtual mode is enabled) or to generate a script file to be executed later.</li> 
+ <li>Click <b>Finish </b>to complete the wizard and apply the pending changes.</li> 
+ <li>In the Progress window you can see real-time detailed reports on all the actions carried out by the program. Mark the checkbox at the bottom of the window to automatically switch off the computer on the successful accomplishment of the restore operation.</li> 
+ <li>After completing the operation, please reboot the computer.</li> 
+</ol>
+<table cellspacing="0" cellpadding="0" border="1"> 
+ <tbody> 
+  <tr> 
+   <td> <p><img src="http://www.infoq.com/resource/articles/BitKeeper/en/resources/10i.png" alt="" _href="img://10i.png" _p="true" /></p> </td> 
+   <td width="718"> <p><b>To make Windows bootable on different hardware, please complete the P2P Adjust OS Wizard as a post operation process.</b></p> </td> 
+  </tr> 
+ </tbody> 
+</table>
+<h2>Comparing Paragon’s Backup Tools with Windows-native Backup</h2>
+<p><b>Target System: </b>Windows 7 x64 Enterprise, residing on an MBR hard disk (120GB), that includes System Reserved (100 MB, non-encrypted) and Volume <b>C:</b>, (30 GB in size, where 15 GB is used, encrypted by BitLocker). The recovery key is on a NTFS formatted flash drive.</p>
+<h3>Backup</h3>
+<ul> 
+ <li>Windows Backup (system image): 24 minutes; resulting backup size is 9.7 GB.</li> 
+ <li>pVHD (System Reserved + Volume <b>C:</b>): 9 minutes, 13 seconds; resulting backup size is 5 GB.</li> 
+</ul>
+<p>As you can see, Paragon’s backup solution creates full system backups approximately 3x faster, while the resulting backup is 47% smaller in size.</p>
+<h3>Incremental Backup</h3>
+<ul> 
+ <li>Windows Backup (system image): 3 minutes, 43 seconds; resulting backup size is 500 MB.</li> 
+ <li>pVHD (System Reserved + Volume <b>C:</b>): 1 minute, 09 seconds; resulting backup size is 369 MB.</li> 
+</ul>
+<p>Paragon’s incremental imaging to pVHD is 4x faster, while the resulting image is &frac14; smaller.</p>
+<h3>Restore</h3>
+<ul> 
+ <li>Windows Backup (restore of the entire system from an increment): 35 minutes, 20 seconds</li> 
+ <li>pVHD Restore (restore of the entire system from an increment): 18 minutes, 39 seconds.</li> 
+</ul>
+<p>Paragon’s incremental restore from pVHD is approx. 2x faster.</p>
+<h2>Appendix</h2>
+<h3>Operations Available for BitLocker Encrypted Volumes</h3>
+<p>The following operations are currently supported on volumes encrypted by BitLocker:</p>
+<ul> 
+ <li>Backup Partition;</li> 
+ <li>Restore Partition;</li> 
+ <li>Copy Partition;</li> 
+ <li>Delete Partition;</li> 
+ <li>Change Volume Label;</li> 
+ <li>Add/Remove Drive Letter;</li> 
+ <li>Hide/Unhide Partition;</li> 
+ <li>Mark Partition as Active/Inactive;</li> 
+ <li>Change Serial Number;</li> 
+ <li>Change Partition ID;</li> 
+ <li>Test Surface;</li> 
+ <li>Check File System Integrity;</li> 
+ <li>Properties.</li> 
+</ul>
+<h2>About the Author</h2>
+<p><strong><img src="http://www.infoq.com/resource/articles/BitKeeper/en/resources/Sergey-Solomatin.png" vspace="3" hspace="3" align="left" alt="" _href="img://Sergey-Solomatin.png" _p="true" />Sergey Solomatin</strong> has served as a Technical Specialist at Paragon&nbsp; Software Group's System Utilities department since 2005. He holds a&nbsp; degree in Engineering at the Moscow State Institute of Steel and Alloys.</p><br><br><br><br><br><br></body></html>

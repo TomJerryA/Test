@@ -1,30 +1,10 @@
-<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>ThoughtWorks开源持续交付工具Go</h3><p>近日，ThoughtWorks开源了名为<a href="http://www.go.cd/">Go</a>的持续交付（CD）工具。它的前身是<a href="http://cruisecontrol.sourceforge.net/">CruiseControl</a>，提供了一个覆盖整个代码开发过程——持续集成、测试和部署——的管道式过程。</p>
-<p>尽管<a href="https://github.com/GoCD/GoCD">Go的GitHub账户</a>还在等待接收源代码，但开发人员已经可以获取可用于Windows、Mac OS X、Linux、Solaris或者是作为一个Java JAR包提供的<a href="http://www.go.cd/download/">二进制安装文件</a>，既有服务器端，也有代理。</p>
-<p>为了了解更多有关Go的计划，InfoQ采访了ThoughtWorks Studios开源项目经理Ken Mugrage。</p>
-<p><b>InfoQ</b><b>：是什么使Go富有吸引力？</b></p>
-<blockquote> 
- <p>从管道概念发展而来的为构建/测试/部署过程建模的能力。既然Go的构建目的是成为一款持续交付工具，所以这是该产品的核心概念。以管道作为最重要的概念，并管理依赖关系，只要“操作正确”，即使是最复杂的工作流程也不难建模。许多其它产品也试图设计上同样的功能，但通常虚有其表，或者是插件使它看起来像管道。</p> 
-</blockquote>
-<p><b>InfoQ</b><b>：跟我们聊一些Go的历史吧。</b></p>
-<blockquote> 
- <p>2007年，Go最早是作为一款名为“Cruise”的商业产品创建。创建它的团队很快就意识到，以前的持续集成解决方案的架构，无法支持我们实现网格和构建、测试、部署流程所要采用的方式。这使我们决定创建一个全新的商业产品。后续版本见证了产品在这两个特性上的发展，并具备了支持大型构建场和多个大型团队的能力。我们的2.0产品更名为Go，包含了在整个网格上运行大型验收测试套件的功能，并能够反馈目前哪些测试中断了以哪次检入中断了它们。在当时的商业CI工具中，这是我们独有的功能。</p> 
-</blockquote>
-<p><b>InfoQ</b><b>：为什么开源Go？</b></p>
-<blockquote> 
- <p>简单地说，我们已经得出结论，这样做是正确的。作为一家企业，ThoughtWorks致力于推广可靠的技术实践。事实上，我们的三大指导原则（我们称之为支柱）中有这样一条，“推动IT改革，追求软件卓越”。我们将开源Go产品看作是推广可靠的持续交付实践的一个重要方式。</p> 
- <p>另外，越来越多的业内人士希望，作为平台或基础设施一部分的任意软件都是开源的。其中有各种原因：期望更高的安全性&amp;健壮性、能够捐助、丰富的社区，坦白地讲，还有使用成本。鉴于Go是数据中心的重要组成部分，许多人将它看作基础设施。我们的客户使用Go协调他们所有应用程序的整个构建和部署周期。</p> 
-</blockquote>
-<p><b>InfoQ</b><b>：为了实现完全自动化的部署管道，Go需要集成其它什么工具吗？</b></p>
-<blockquote> 
- <p>这个问题确实有点难以回答。Go本身不需要任何东西，因此，这样一个清单将由用户的构建/测试/部署周期决定。</p> 
- <p>Go协调众多的移动部件，包括推动软件由代码编写进入用户可以访问的生产环境。Go监控版本控制系统或者包存储库的变化。当检测到变化，它就会运行构建/测试/部署周期所需的其它工具，其中包括构建管理器，如Apache Ant、Apache Maven、Microsoft MSBuild；自动化测试工具，如Selenium、Twist、Cucumber；基础设施管理工具，如Chef、Puppet等，还有许多。Go可以运行任何可以从命令行运行的东西。</p> 
-</blockquote>
-<p><b>InfoQ</b><b>：你们会继续开发Go的商业版本吗？你们还会继续提供支持吗？</b></p>
-<blockquote> 
- <p>我们会为Go提供商业插件和专业支持。插件将由需求决定，但它们会是诸如这样的东西，比如，对于非常大型的部署，能够连接到外部数据库（内部用的最多的是嵌入式数据库）来提升性能。</p> 
- <p>我有幸已经跟我们现有的大部分客户介绍了新模型，而且我想告诉你，无一例外，他们都很满意。</p> 
-</blockquote>
-<p>Go是一款既可以在本地又可以在云上安装的CD工具，而ThoughtWorks还提供了另外一种名为<a href="https://snap-ci.com/">Snap</a>的持续交付解决方案，这是一款托管的CD工具。Go可以扩展到数百台机器上的自动化CD过程；而Snap则是一款精简的工具，面向部署“需求更简单的应用程序”，Badrinath Janakiraman这样说道。他是Snap的产品负责人，他还说“这不是说一个更简单的应用程序，而只是说一个更简单的测试/部署模型。”</p>
-<p>Janakiraman说，与Go相比，Snap的优势在于“Snap使‘无服务器的’组织（从源代码到应用程序的所有一切都托管在SaaS &amp; PaaS服务上）能够以最小的工作量开始CD过程。一旦团队已经习惯设计按需发布的应用程序，随着部署需求越来越复杂，他们可能会选择弃用Snap。”</p>
-<p>Snap可以用于Java、Ruby、Python、JavaScript &amp; Node.js项目的持续集成，支持多种数据库——Sqlite3、PostgreSQL、MySQL、Redis、CouchDB、MongoDB——通过Capybara、Selenium、PhantomJS进行测试，并部署到Heroku或者AWS上。其它构建/测试/部署配置可根据要求支持。</p>
-<p><b>查看英文原文：</b><b><a href="http://www.infoq.com/news/2014/03/thoughtworks-go-snap">ThoughtWorks Open Sources Go, a CD Tool</a></b></p><br><br><br><br><br><br></body></html>
+<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>Trifacta通过服务简化数据整理方式</h3><a href="http://www.trifacta.com/"></a>
+<p><a href="http://www.trifacta.com/">Trifacta</a>是一种提供数据分析服务的平台，<a href="http://techcrunch.com/2013/12/05/trifacta-raises-12m-for-platform-that-uses-human-and-machine-interactions-to-prepare-data-for-analysis/">最近获得了</a>风险投资以推动其能使数据分析师更容易地做数据整理的工作。它的目标是能够比目前更快、更容易地收集、清理和转换数据。</p>
+<p><b></b><a href="http://en.wikipedia.org/wiki/Data_wrangling">数据整理(Data wrangling)</a>一直是每个大数据项目中最耗费时间和最令人痛苦的部分。在我们这个时代，数据是流动的、异构的，作为数据源其属性会不断变化。NoSQL数据库一直都尝试解答在存储方面是使用<a href="http://hbase.apache.org/">基于列式存储</a>还是<a href="http://www.mongodb.org/">基于文档型存储</a>，但问题依然是如何收集数据和应用其语义。</p>
+<p><b></b>Trifacta以用户为中心的角度而不是以程序员的角度去解决问题。业务分析师和数据科学家将能使用可视化的方式去清洗数据集。基于伯克利分校和斯坦福大学的研究，该平台的目的是使员工和机器一起合作，以从数据集中提取数据。</p>
+<p>使用可视化的方式我们可以从大数据集中自动化采样数据，这让分析师可以在很短的时间发现有趣的模式。Trifacta可以应用机器学习算法为重新组织信息和整理提供建议。分析师可以将数据集分组为信息的逻辑部分，每次将其规范化，并在其工作过程中以友好的界面方式显示。归纳概括整个数据集合是最后一个步骤，这将最终形成半结构化的数据集并最终成形。该平台是在底层设计时考虑到用户的体验，让数据分析师能专注于数据的处理，而无需开发复杂的管道去清理数据和把它们放入数据仓库。</p>
+<p>Trifacta的项目前身<a href="http://vis.stanford.edu/wrangler/">DataWrangler</a> 和<a href="http://vis.stanford.edu/papers/wrangler">相关研究文章</a>都可以在线获取并可以从中了解Trifacta是如何实现的，因为它们目前依然处于封闭的beta测试阶段，所以只能通过预约<a href="http://www.trifacta.com/product/early-access">邀请</a>的方式进行演示。</p>
+<p><strong>查看英文原文：</strong><b><a href="http://www.infoq.com/news/2013/12/trifacta-data-wrangling">Trifacta Seeks to Simplify Data Wrangling-as-a-Service</a></b></p>
+<hr />
+<p>感谢<a href="http://www.infoq.com/cn/author/侯伯薇">侯伯薇</a>对本文的审校。</p>
+<p>给InfoQ中文站投稿或者参与内容翻译工作，请邮件至<a href="mailto:editors@cn.infoq.com">editors@cn.infoq.com</a>。也欢迎大家通过新浪微博（<a href="http://www.weibo.com/infoqchina">@InfoQ</a>）或者腾讯微博（<a href="http://t.qq.com/infoqchina">@InfoQ</a>）关注我们，并与我们的编辑和其他读者朋友交流。</p><br><br><br><br><br><br></body></html>
