@@ -1,36 +1,36 @@
-<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>WhatsApp架构、Java EE 7特性、HackerEarth经验——架构周报</h3><p>本期的架构周报主要关注WhatsApp架构分享、Java EE 7的新特性、HackerEarth利用Apache和Django建站的优化经验、MySQL还是NoSQL的选择。</p>
-<p><strong>WhatsApp架构分享</strong></p>
-<p>Facebook以190亿美元收购WhatsApp，其每月4.5亿活跃用户奠定了其价值，Tod Hoff撰文<a href="http://highscalability.com/blog/2014/2/26/the-whatsapp-architecture-facebook-bought-for-19-billion.html">分析</a>了支撑每日数百亿消息的高可靠架构。其中的细节包括：</p>
-<ul> 
- <li>WhatsApp做后端消息路由的服务器系统使用Erlang实现，如此庞大数量的活跃用户只使用非常少的服务器来管理，团队一致认为这很大程度上归功于Erlang。</li> 
- <li>WhatsApp使用了什么样的协议？WhatsApp服务器池使用了SSL Socket，在客户端重新连接对消息进行获取之前，所有消息都会在服务器上排队。消息的成功获取会发回给WhatsApp服务器，它将会被重新转发给原始发送者，一旦客户端成功接收这条消息，它就会在服务器存储中擦除。</li> 
- <li>系统的健康状况主要看队列的长度，每个节点上消息队列的长度都会被一直监控，超过预先设置的临界值则会发出提醒，多个警报发生则标志着系统进入了下一个瓶颈。</li> 
- <li>有些代码基本上每天都在变化，通常情况下是一天几次。当然，峰值期间必须避开的。Erlang非常适用于将修改或者是新功能添加到产品，热加载意味着无需重新启动就可以实现修改，错误可以很快的得到解决，同样通过热加载，系统变得更加松耦合，这可以让更新快速的发布。</li> 
- <li>记录整个系统状态，包括OS状态、硬件状态、BEAM状态。这是为了便于从其他系统获取状态信息，如虚拟内存。跟踪记录CPU利用率、系统整体利用率、用户时间、系统时间、中断时间、上下文切换、系统调用、系统陷入、数据包发送和接收、所有进程队列中总消息数、繁忙的端口事件、通信速率、字节输入/输出、调度状态，垃圾回收状态等。</li> 
-</ul>
-<p>更多架构详情，可以查看Tod Hoff的<a href="http://highscalability.com/blog/2014/2/26/the-whatsapp-architecture-facebook-bought-for-19-billion.html">技术文章</a>。</p>
-<p><strong>Java EE 7特性</strong></p>
-<p>Java EE 7的新特性主要集中在提高开发人员的生产力、加强对 HTML5 动态可伸缩应用程序的支持和进一步满足苛刻的企业需求这三个方面。Java EE 7 使得开发人员可以写更少的样板代码，通过丰富的组件来提供一个完整、全面、集成的堆栈来支持和构建最新的 Web 应用程序和框架，同时提供更具扩展性、丰富性和简易的功能。</p>
-<p>“<a href="http://www.ibm.com/developerworks/cn/java/j-lo-javaee7/index.html">Java EE 7 三大新特性的介绍</a>”介绍了组件 WebSocket 1.0、JSON Processing 1.0、JAX-RS 2.0、JSF 2.2 和 JMS 2.0等。主要的特性可以概括为：</p>
-<ul> 
- <li>提高开发人员的生产力——通过一个紧密集成的平台简化了应用架构，减少样板代码和加强对注释的使用来提高效率，另外借助标准 RESTful Web 服务对客户端的支持提高了应用程序的可移植性。</li> 
- <li>加强对 HTML 5 动态可伸缩应用程序的支持——基于其可扩展的基础架构，Java EE 7 推动了对 HTML 5 应用的构建和支持。在新的平台中，借助具有行业标准的 JSON 简化了数据分析和交换，并通过低延迟和双向通信的 WebSockets 减少了响应时间。以及利用改进的 JAX-RS 2.0 更好地支持异步的、可扩展的、高性能的 RESTful 服务，从而更好地支持多用户的并发操作。</li> 
- <li>满足苛刻的企业需求——细化批处理作业，形成可管理的区块，以实现不间断的 OLTP 性能；简化多线程并发任务的定义，以提高可扩展性；以及提供具有选择性和灵活性的事务应用程序等。</li> 
-</ul>
-<p><strong>HackerEarth利用Apache和Django建站的优化经验</strong></p>
-<p>HackerEarth是一个对编程技能进行实践和测试的服务网站，highscalability上<a href="http://highscalability.com/blog/2014/2/10/13-simple-tricks-for-scaling-python-and-django-with-apache-f.html">刊载</a>了有关HackerEarth利用Apache和Django建站的优化经验，其中包括：</p>
-<ul> 
- <li>删除不必要的Apache模块。节省内存并提高性能。通过只包括你所需要的模块你可以将需要加载的模块数削减为一半。</li> 
- <li>使用Apache MPM (Multi-Processing Module 多路处理模块) worker。对于高流量服务器一般是一个更好的选择，因为它与prefork MPM相比会占用更少的内存。</li> 
- <li>关掉KeepAlive。实验显示，对于CloudFont中供应的静态文件来说这样做是更加有效的，进程/线程可以自由地瞬间处理新的请求，而不必等待一个请求到达旧的连接上去。</li> 
- <li>检查配置。启用mod_status.so和mod_info.so模块来看Apache是怎样运行的。这些信息帮助他们显著地减少了我们要运行的服务器数量，并且使应用程序更稳定，抵御流量的突增。</li> 
- <li>不要为运行了100台服务器而引以为豪。而应该写出更好的代码并调整系统。在大量的请求中投放许多服务器并不是什么值得骄傲的事，这意味着要确保，例如，一个请求不能查询数据库20以上。</li> 
-</ul>
-<p><strong>MySQL还是NoSQL的选择</strong></p>
-<p>开源数据领域被分成了两派，NoSQL和MySQL。John Engates<a href="http://thenextweb.com/dd/2014/03/04/open-source-data-grows-choosing-mysql-nosql/#!yrKvt">撰文</a>分析了NoSQL和MySQL的选择问题。他认为：</p>
-<blockquote> 
- <p>如果规模和性能比24小时的数据一致性更重要，那NoSQL是一个理想的选择。NoSQL依赖于BASE模型——基本可用、软状态、最终一致性。但如果要保证到“始终一致”，尤其是对于机密信息和财务信息，那么MySQL很可能是最优的选择。MySQL依赖于ACID模型——原子性、一致性、独立性和耐久性。</p> 
- <p>作为开源数据库，无论是关系型数据库还是非关系型数据库都在不断成熟，我们可以期待还会有一大批基于ACID和BASE模型的新应用产生。暂且把它称为混合方案。有时这些应用程序的设计需要认真地权衡利弊，有时还能意外的得到发展，做出一系列调整以适应不断变化的数据需求。</p> 
-</blockquote>
-<p>对架构领域感兴趣的读者可以关注即将于2014年4月25~27日在北京国际会议中心召开的<strong>QCon北京2014大会</strong>，专题包括<a href="http://www.qconbeijing.com/node/452">知名网站案例分析</a>、<a href="http://www.qconbeijing.com/node/450">扩展性、可用性与高性能</a>、<a href="http://www.qconbeijing.com/node/437">云计算服务探秘</a>、<a href="http://www.qconbeijing.com/node/441">大数据处理与大数据应用</a>等，许多讲座都与架构相关。读者可点击大会<a href="http://www.qconbeijing.com/">主页</a>查看详情。</p>
-<p>欢迎读者朋友推荐或者投稿架构相关的文章，联系邮箱为<a href="mailto:editors@cn.infoq.com">editors@cn.infoq.com</a>，标题请注明“架构专栏”。</p><br><br><br><br><br><br></body></html>
+<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>支撑Github的开源技术</h3><p>Github在3月19号开放了新的<a href="https://github.com/blog/1802-showcasing-interesting-projects-in-explore">项目展示页面（Showcase）</a>，Showcase根据项目属性来组织、定义一系列的开源项目列表，可以更清晰的发现你所需要的开源项目。在3月26日的Showcase中，Github放出了一个新的类目：<a href="https://github.com/showcases/projects-that-power-github">支撑Github的开源技术</a>，这里列举了Github所使用的一些主要的开源项目。</p>
+<p>如下是这些开源项目的介绍：</p>
+<ol> 
+ <li> <p><a href="https://github.com/github/linguist">linguist</a></p> <p>语言识别库，能够自动根据项目的代码来识别你所使用的语言。 在你的项目源代码页面，可以看到一个彩条，点开以后会显示项目中的编程语言比例。linguist主要通过文件的后缀来识别，对于一些通用的扩展名，例如.m文件，linguist通过一些语言的特征片段来做判断。由于编程语言很多，linguist还不能覆盖所有语言的检测。</p> </li> 
+ <li> <p><a href="https://github.com/defunkt/jquery-pjax">jquery-pjax</a></p> <p>pjax是Github的联合创始人之一<a href="https://github.com/defunkt">defunkt</a>的作品，它使用html的pushState特性与ajax，可以实现页面内容动态局部刷新，当点击项目源代码页面中具体的一个文件或者文件夹时，你将会看到页面的其他部分是不变的，只有定义的页面DOM会刷新，这里使用的就是pjax。</p> </li> 
+ <li> <p><a href="https://github.com/elasticsearch/elasticsearch">elasticsearch</a></p> <p>Eleasticsearch支撑了Github的搜索功能，2年之前Github使用Solor做搜索，随着用户和托管项目的增加，索引的大小超过了solor节点的最大存储空间，也出现了很多的问题，Github团队在思考解决方案时决定使用Elasticsearch做替换。Github最开始使用ES时，使用了44台亚马逊EC2实例，每台实例配备2T的存储，其中8台实例指负责查询请求。目前，Github已经将原有的EC搜索集群迁移到了东海岸的一个数据中心，使用8台物理主机替换了44台EC2。</p> </li> 
+ <li> <p><a href="https://github.com/rails/rails">Rails</a></p> <p>Ruby实现的MVC Web框架。Github的用户界面和功能大部分基于Rails构建，不过需要注意的是现在虽然Rails的项目版本已经发展到了Rails 4，但是Github依旧使用的是自己维护的2.3分支，对于不保持和现有的Rails主版本号一致的原因，Github员工Kneath做了如下的解释：</p> 
+  <ol> 
+   <li>. 花更过的时间来升级更新Rails，将会减少为用户构建新特性的时间，我们更关注用户；</li> 
+   <li>. 性能问题是一个很重要的考虑。在过去的几年中，我们极大的减少了响应时间。而升级Rails不仅会带来一个更慢的框架，而且还会引入一个不同的架构——我们需要再根据新的框架特性来定位优化性能。我们对于现有的框架已经做了很多的优化以保持性能稳定，最主要的是：将时间花费在升级上不会让我们的架构更快。</li> 
+   <li>. 过去的三年我们一直在升级这个堆栈，不升级Rails版本我们依然可以使用新的特性。</li> 
+  </ol> </li> 
+ <li> <p><a href="https://github.com/antirez/redis">Redis</a></p> <p>Redis是K/V存储系统，知名的NoSQL实现之一，在Github，主要使用Redis来进行队列中的异常处理。在Github早期，曾尝试过很多的基于Ruby的队列机制，也曾使用Amazon SQS，但是这些方案都不能在Github快速增长的同时满足稳定性要求，最终Github迁移到了使用Redis的技术方案resque。</p> </li> 
+ <li> <p><a href="https://github.com/sstephenson/sprockets">sprocket</a></p> <p>Sprocket是一个网站资源打包的Ruby库，它不仅能够管理JavaScript和CSS资源，还可以按照pipline的方式来流式预处理CoffeeScript、Sass、SCSS和LESS代码等；</p> </li> 
+ <li> <p><a href="https://github.com/libgit2/libgit2">libgit2</a></p> <p>libgit2是一个可移植、纯C语言实现的Git核心方法类库，提供API重新链入Git方法。Github的背后使用的原生的git来实现commit、push等功能，但是使用libgit2来针对桌面应用调用、Ruby代码中调用等；</p> </li> 
+ <li> <p><a href="https://github.com/libgit2/rugged">rugged</a></p> <p>libgit2的Ruby类库；</p> </li> 
+ <li> <p><a href="https://github.com/codahale/bcrypt-ruby">bcrypt-ruby</a></p> <p>OpenBSD bcypt()密码哈希算法的Ruby实现；</p> </li> 
+ <li> <p><a href="https://github.com/blog/1311-html-pipeline-chainable-content-filters">html-pipeline</a></p> <p>html-pipline是一个gem包，可以将现有Github前端HTML中的一些特性进行流式处理，例如在Github的评论框中，你可以@某一个人、输入emoji的表情、使用markdown的语法来写内容等，但是这些都是由单独的插件来控制的，html-pipeline可以流式的使用相应的插件处理原始内容，例如先将markdown转义成html，继而自动添加emoji表情，然后进行代码的语法高亮等。</p> </li> 
+ <li> <p><a href="https://github.com/github/gemoji">gemoji</a></p> <p>在2013年的QCon北京前夜：Github Drink Up活动中，来自Github的工程师Tim在现场的活动中谈到了他们的一个文化：使用emoji。他解释道：“很多情感使用文字不能做出形象的表达，但是使用emoji表情却能够起到不一样的效果”。在Github现有评论框或其他内容中，都可以看到emoji的身影，所使用的就是gemoji这个gem包。</p> </li> 
+ <li> <p><a href="https://github.com/jekyll/jekyll">jekyll</a></p> <p>Jekyll是一个静态博客生成的程序，Github中项目的Page页面，默认选型使用的就是jekyll。</p> </li> 
+ <li> <p><a href="https://github.com/gollum/gollum">gollum</a></p> <p>Gollum是一套基于git的wiki系统，Github项目的wiki系统背后使用的就是这套开源框架；</p> </li> 
+ <li> <p><a href="https://github.com/octokit/octokit.rb">octokit.rb</a></p> <p>Github API的官方Ruby SDK；</p> </li> 
+ <li> <p><a href="https://github.com/github/hubot">Hubot</a></p> <p>Hubot是Github自行开发的一个聊天机器人，当然它已经超过了聊天机器人的范畴，Github作为一个异步办公的团队，日常的协作、沟通很大部分依赖于聊天室，通过Hubot，Github的员工可以在聊天室中给机器人定制一些特定的回复、3D打印模型，甚至通过hubot来部署生成环境的代码、获取服务状态等，在2013年的QCon北京中，Giuthub的工程曾针对如何使用Hubot做运维进行过分享：<a href="http://www.qconbeijing.com/2013/speaker.php?id=151">《ChatOps at GitHub》</a>。</p> </li> 
+ <li> <p><a href="https://github.com/mbostock/d3">d3</a></p> <p>d3是使用JavaScript实现的数据可视化框架，使用HTML、SVG和CSS等，在d3的基础之上发展处诸如crossfilter、NVD3.js等一系列扩展或者简化框架，并且形成了一个良好的社区。作者<a href="https://avatars1.githubusercontent.com/u/230541?s=140">mbostock</a>目前供职于NYTimes，d3是他的博士论文项目，目前Github使用d3来展示托管项目提交历史、记录等的可视化效果图。</p> </li> 
+ <li> <p><a href="https://github.com/cameronmcefee/plax">plax</a></p> <p>plax是控制视差元素的JavaScript类库，你可以在404、505等页面看到它的实现效果。</p> </li> 
+ <li> <p><a href="https://github.com/ajaxorg/ace">ace</a></p> <p>Ace是一个使用Javascript开发的代码编辑器，具备语法高亮、快捷键绑定等特性， Github使用Ace实现<a href="https://github.com/blog/1557-github-flow-in-the-browser">基于web的代码编辑功能</a>。</p> </li> 
+ <li> <p><a href="https://github.com/madrobby/zepto">zepto</a></p> <p>Zepo是一个JavaScript框架，其特点是兼容现有jQuery API的同时，自身体积十分小；</p> </li> 
+ <li> <p><a href="https://github.com/zeroclipboard/zeroclipboard">zeroclipborad</a></p> <p>Github的“点击复制到粘贴板”的功能就是使用的zeroclipboard，zeroclipboard使用一个不可见的Adobe Flash动画来实现复制粘贴，并提供Javascript的API接口以供调用。</p> </li> 
+ <li> <p><a href="https://github.com/brianmario/charlock_holmes">charlock_holmes</a></p> <p>charlock_holmes用来检测字符编码格式，并可以自动将字符编码转化成UTF-8。</p> </li> 
+ <li> <p><a href="https://github.com/puppetlabs/puppet">puppet</a></p> <p>服务器运维工具，可以进行自动化部署、集群管理等。</p> </li> 
+ <li> <p><a href="https://github.com/moment/moment">moment</a></p> <p>moment是一个日期框架，用于解析、验证、格式化日期等，其中一个常用的功能是将原始的Javascript时间类型转化成方便阅读的时间说明格式，例如：”2小时之前“、”3天之前“这种形式。</p> </li> 
+ <li> <p><a href="https://github.com/bower/bower">bower</a></p> <p>前端资源包管理工具，可以通过<code>bower install &lt;package&gt;</code>的形式将常用的前端资源下载到本地的项目目录中，例如：bower install bootstrap将会自动下载bootstrap的项目资源到本地的项目目录中，不需要自己手动来下载、移动资源文件，并且通过配置文件可以方便分享给同事、简化项目初始化等；</p> </li> 
+ <li> <p><a href="https://github.com/github/resque">resque</a></p> <p>Resque是Github Enterprise中使用的一个基于Redis的后台作业控制系统，提供<a href="https://github.com/blog/542-introducing-resque">可视化的界面</a>，可以方便的监控后台作业的运行状态和监控情况。</p> </li> 
+</ol>
+<p>另外，Github还发布了“<a href="https://github.com/showcases/projects-that-power-github-for-windows">支撑Github Windows客户端的开源项目</a>”和“<a href="https://github.com/showcases/projects-that-power-github-for-mac">支撑Github Mac客户端的开源项目</a>”两个Showcase。</p>
+<p>感谢<a href="http://infoq.com/author/杨赛">杨赛</a>对本文的审校。</p><br><br><br><br><br><br></body></html>

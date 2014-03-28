@@ -1,36 +1,25 @@
-<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>演讲预告：大规模运营Redis的经验@京东</h3><p>在2013年的QCon上海云计算分会场，京东云平台首席架构师<a href="http://www.qconbeijing.com/user/710">刘海锋</a>介绍了<a href="http://www.infoq.com/cn/presentations/jingdong-file-system-and-a-unified-data-center-storage">京东自主研发的分布式存储</a> – 京东文件系统(JFS)，以及基于JFS的统一数据中心存储策略。除了分布式存储之外，刘海锋的团队同时也负责开发一套分布式内存存储平台（RAM store platform），这套自主研发的快速分布式KV存储系统可兼容Redis数据类型、提供多租户统一服务、固有的集群模式、弹性可扩展、同步复制协议、常驻但不受限于内存、更强的持久性、更低的运维与硬件成本。</p>
-<p>在2014年的QCon北京大会，刘海锋将根据他们开发这套系统的经验，分享大规模运营Redis的经验，自研系统的设计思路，以及京东在数据存储方面的技术体系。InfoQ中文站在会前对刘海锋进行了一次采访，邀请他对存储、Redis等方向分享自己的观点。</p>
-<h3>嘉宾简介</h3>
-<p>刘海锋（<a href="http://weibo.com/bladehliu">@刘海锋0011</a>），京东系统技术部负责人、云平台首席架构师、以及京东架构委员会负责人。他领导存储、缓存、消息、服务框架团队，致力于打造坚实的系统技术平台，稳定支持京东业务的高速发展。</p>
-<p><strong>InfoQ：先谈谈你对存储系统、云存储、文件系统、数据库这一块当前发展趋势的看法吧。</strong></p>
+<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>Amazon选择HAL作为AppStreamAPI的媒体类型</h3><p>Amazon发布了新API——<a href="http://docs.aws.amazon.com/appstream/latest/developerguide/rest-api.html#rest-api-hal">AppStream API</a>，可以使用它通过编程的方式管理托管在Amazon AppStream平台上的应用。Amazon选择使用<a href="http://tools.ietf.org/html/draft-kelly-json-hal-06">HAL媒体类型</a>构建了该API。HAL是一种具有简约超媒体特点的媒体类型，用于构建设备到设备之间的API。在采用超媒体作为公共产品实现技术的大型企业当中，Amazon是其中之一。</p>
+<p>虽然在API领域中，超媒体API是一个很热的话题，但其倡导者也经常被问起一个问题，即它在现实世界中的适用范围。针对该技术曾经有过很多研究和讨论，超媒体API也是目前API生态系统的一小部分。Amazon的CEO，Jeff Bezos，以让他的团队使用SOA风格构建其产品而出名，最终打造了大量对内和对外的API。这份对通过HAL实现超媒体技术的信任，而且出自一家科技大公司，足以使那些超媒体的支持者精神振奋。</p>
+<p>但是超媒体社区当前需要解决一个问题，那就是如何描述超媒体。典型描述超媒体服务的方法是提供一种媒体类型定义，别无其他。但是该方法与其他架构风格明显不同，所以超媒体社区正努力寻找其他策略来弥补该差距。</p>
+<p>AppStream API团队通过四个主要部分来描述API：头部值、错误码、顶级资源和链接关系。这与传统的REST风格服务有所不同，REST风格服务专注于使用HTTP状态码、URL和参数的组合。但是该方式与传统超媒体方式非常接近。在<a href="https://groups.google.com/forum/#!msg/hal-discuss/3IyTn17m7Ps/AeBpQXadn8gJ">HAL的讨论邮件列表</a>里，HAL用户在这里讨论HAL标准以及其用法，Andr&eacute;s Freyr&iacute;a Cede&ntilde;o这样说道：</p>
 <blockquote> 
- <p>刘海锋：数据量越来越大，业务需求也在增多。互联网业务后台需要不同的数据抽象——object/file/kv/tables……但多租户统一管理、服务化是重要的趋势。比如，给各个业务提供全托管的RDBMS服务、缓存服务、海量非结构数据存取服务，而不是上线一个业务就申请一些机器搭建存储。</p> 
+ <p>我对文档的直觉反应就是沿着这条线往下走，“如果超媒体API成为标准，这能充分描述超媒体API”。基于目前的技术水平，我认为缺乏充分的可供开发人员使用的配套资源。</p> 
 </blockquote>
-<p><strong>InfoQ：用内存存储一般都是因为业务对读写性能有极高的要求。京东大规模内存存储平台现在主要服务于哪些业务？这些业务对读写的要求是什么样的？</strong></p>
-<blockquote> 
- <p>刘海锋：非常多的在线业务都需要高速的缓存。比如每次京东购物下单、商品价格展示等等。</p> 
-</blockquote>
-<p><strong>InfoQ：Redis在官网上的定义是“高级KV存储系统”，特点在于速度快、数据结构丰富。你如何定义Redis这套系统？</strong></p>
-<blockquote> 
- <p>刘海锋：高质量的开源软件。使用方便，速度快，数据类型丰富。用得最多的是string, hashmap两种。</p> 
-</blockquote>
-<p><strong>InfoQ：基于Redis进行二次开发的过程中，有哪些需要避开的坑？有哪些是比较好的实践？</strong></p>
-<blockquote> 
- <p>刘海锋：Redis是高质量的开源软件。准确地说，是高质量的单机KV内存存储server。但是要大规模应用到生产环境，需要做很多工作来满足公司业务需求。</p> 
- <p>最早是部署使用单个Redis实例，然后主从复制，集群分片，支持presharding的Java客户端，进而完善监控体系、配置中心，逐渐建设了一个平台来统一托管整个公司的Redis集群。</p> 
-</blockquote>
-<p><strong>InfoQ：Redis持久化如果持续进行磁盘写入会造成进程阻塞，这个问题如何解决？</strong></p>
-<blockquote> 
- <p>刘海锋：RDB dump其实是fork出一个子进程做的，写入并不会阻塞父进程。但是fork操作的执行开销较高，会block父进程不能及时响应请求。持久化方式是由各个业务自行选择的，有的选择没有持久化，有的选择AOF，有的是RDB但是dump时间也是设置好的，比如凌晨几点等等。</p> 
-</blockquote>
-<p><strong>InfoQ：是否研究过目前在Alpha版本的Redis Cluster，有什么发现？</strong></p>
-<blockquote> 
- <p>刘海锋：当然调研和测试过Redis Cluster，现在还不是production ready，所以我们在按照自己的方式搞定集群模式。</p> 
-</blockquote>
-<p><strong>InfoQ：对于京东内存存储平台，下一步的开发计划是什么？</strong></p>
-<blockquote> 
- <p>刘海锋：从今年年初开始，我们团队正在研发和实施京东的下一代内存存储平台 - JimStore。简单地说，JimStore自主研发的分布式系统（dataserver基于Redis），实现多租户统一管理的、弹性扩展的Redis集群。</p> 
- <p>技术方面，分步骤做了一些事情：</p> 
- <p>通过分布式选举做精确的故障检测；自动的故障切换；增加磁盘存储，较冷数据会淘汰至磁盘，这样单实例就支持更大的数据量；自主研发集群模式，实现容量的透明扩展；整个平台多租户服务。</p> 
-</blockquote>
-<p>距第六届QCon全球软件开发大会（北京站）2014开幕仅剩一个半月，大会演讲嘉宾已经几近确认完毕。大会的演讲内容在官网：<a href="http://www.qconbeijing.com/">http://www.qconbeijing.com</a>，以及InfoQ微博、微信公众帐号的最新播报：<a href="http://weibo.com/infoqchina">@InfoQ</a>、【infoqchina】不断更新。大会9折折扣期将在本月26日截止。如欲报名报请速点击<a href="http://qconbeijing.mymova.com/">报名页面</a>。</p><br><br><br><br><br><br></body></html>
+<p>随着超媒体成为公认的API模式，我们看看这种趋势如何继续。</p>
+<p>HAL是一种媒体类型，IETF正在将其标准化。HAL最初由Mike Kelly创作，致力于向XML和JSON提供一种简单易懂的公约集合，用于描述资源对另一个资源的链接。</p>
+<p>下面是HAL响应的样例，摘自标准草案：</p>
+<pre>{
+    &quot;_links&quot;: {
+        &quot;self&quot;: { &quot;href&quot;: &quot;/orders/523&quot; },
+        &quot;warehouse&quot;: { &quot;href&quot;: &quot;/warehouse/56&quot; },
+        &quot;invoice&quot;: { &quot;href&quot;: &quot;/invoices/873&quot; }
+    },
+    &quot;currency&quot;: &quot;USD&quot;,
+    &quot;status&quot;: &quot;shipped&quot;,
+    &quot;total&quot;: 10.20
+}
+</pre>
+<p>HAL定义了两个预留的顶级属性，<em>links和</em>embedded。你可以从<a href="http://tools.ietf.org/html/draft-kelly-json-hal-06#section-4.1.1">这里</a>查看_links。在上面的对象中，HAL标准定义了链接的组成方式。在该样例中，你可以看到虚构的&quot;订单&quot;资源的链接，该“订单”链接到它所存储的仓库和与之相关联的发票。</p>
+<hr />
+<p>感谢<a href="http://www.infoq.com/cn/author/邵思华">邵思华</a>对本文的审校。</p>
+<p>给InfoQ中文站投稿或者参与内容翻译工作，请邮件至<a href="mailto:editors@cn.infoq.com">editors@cn.infoq.com</a>。也欢迎大家通过新浪微博（<a href="http://www.weibo.com/infoqchina">@InfoQ</a>）或者腾讯微博（<a href="http://t.qq.com/infoqchina">@InfoQ</a>）关注我们，并与我们的编辑和其他读者朋友交流。</p><br><br><br><br><br><br></body></html>
