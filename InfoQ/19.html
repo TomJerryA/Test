@@ -1,26 +1,50 @@
-<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>Retr-O-Mat回顾活动生成器：现在有了印刷版</h3><p><img style="float: left; margin-right: 10px" src="http://infoqstatic.com/resource/news/2014/03/retromat-print/zh/resources/0307000.JPG" _href="img://null" _p="true" alt="" />很多敏捷过程的迭代都包括回顾会议。其目的是寻求改善，但要找到改善的具体措施需要创造力。因此敏捷教练和团队想出了各种活动来推动这个过程，回顾会议通常分为5个阶段：准备阶段、数据收集、洞察问题、确定方案和结束。 <br /> <br /> InfoQ的迷你书《<a href="http://www.infoq.com/minibooks/agile-retrospectives-value">Getting Value out of Agile Retrospectives - A Toolbox of Retrospective Exercises</a>》和<a href="http://retrospectivewiki.org/index.php?title=Main_Page">Retrospective Wiki</a>为回顾会议各个阶段的活动提供了灵感。<br /> <br />但了解所有这些活动，并将它们合并到回顾会议中，具有相当的工作量。为了保持创造力，避免流于形式，Corinna Baldauf构建了<a href="http://www.plans-for-retrospectives.com/">Retr-O-Mat</a>：它是一个在线工具，从活动池中随机选择5个活动，将它们合并起来用于回顾，每个活动对应于回顾的一个阶段。</p>
-<div style="clear:both"></div>
-<p>最近，Corinna决定发行这个工具的<a href="http://www.plans-for-retrospectives.com/print/index.html">印刷版本</a>。它提供了更便捷的方式来访问各种活动，而且不需要连接互联网。这些活动印刷在卡片上，每个阶段一叠。卡片与封面和封底一起采用活页装订。这样就可以任意组合这些活动。</p>
-<p>尽管随机性也许可以激发创造力，但随机的活动可能并不适合团队的情况。引导者（facilitator）应该始终确保活动是符合目标的，否则可以选择其它的活动。InfoQ采访了Corinna，了解Retr-O-Mat的在线版本、离线版本以及未来的计划。</p>
-<p><b>InfoQ：Corinna，你创建Retr-O-Mat的动机是什么？</b></p>
+<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>Java 8发布Q&A</h3><p>多年以来，Java 8一直是最受期待的编程语言更新之一。这次发布的版本包含了日期API、Streams API和Lambda。包括移除永久代（permgen）在内，还有一些不错的改进。为了解该版本的更多信息，我们采访了Oracle Java 平台组的软件开发副总裁<a href="https://www.linkedin.com/in/georgessaab">Georges Saab</a>。</p>
+<p><b>InfoQ</b><b>：对于我们中那些没有紧跟</b><b>Lambda</b><b>项目的人，你可以就实现中涉及的内容给我们提供一些概念吗？我想这是</b><b>Java</b><b>语言、虚拟机和类库第一次这么协调的演进。</b></p>
 <blockquote> 
- <p>我当年阅读“敏捷回顾”，了解到它的各个阶段时，我就在想，如果有什么东西像老虎机一样，能够为每个阶段建议进行某个活动，那该多方便啊。但不存在这样的工具。之后我继续推进回顾会议。我喜欢将回顾会议中的活动多样化，这样团队就可以从不同的角度来观察。但要完成所有这些不同的计划是非常耗时间的。另外，我经常读到很多好的想法，但之后又忘记了。Retr-O-Mat可以解决所有这些问题：收集好的想法，当需要时就可以展示出来。对我和所有人来说都是这样。</p> 
+ <p>之前版本中，很多较大的特性都只影响了语言、虚拟机和类库这三个领域中的某一个，或者是另一种情形，每个领域的改变都是经历了一系列主要版本才引入的。</p> 
+ <p>借助Java 8中的Lambda，我们协调地对语言、类库和JVM进行了修改，在开发过程中，每个领域都能够影响和增强其他领域的设计与实现。</p> 
+ <p>例如，我们在JVM上实验了Lambda的不同备选方案，发现可以使用InvokeDynamic。这个过程中我们发现可以通过InvokeDynamic加以改进。以自然的方式结合使用Lambda和集合类，这种期望引出了Streams API的设计，扩展方法也由此而来，而扩展方法又需要语言方面的支持。</p> 
+ <p>这是一个历经多年的演进过程，期间也有大量来自社区的极佳的反馈。</p> 
 </blockquote>
-<p><b>InfoQ：你使用了其他“敏捷思想”的活动，他们对你的Retr-O-Mat有什么反应？</b></p>
+<p><b>InfoQ</b><b>：你认为</b><b>Lambda</b><b>的加入会把</b><b>Groovy</b><b>和</b><b>Scala</b><b>开发者带回</b><b>Java</b><b>语言吗？</b><b> </b></p>
 <blockquote> 
- <p>到目前为止，我接触的每个人都持支持态度。我感谢每一个分享活动想法和直接对Retr-O-Mat提出建议的人。我要特别感谢Esther Derby、Diana Larson和Judith Andresen，很多活动都来源于他们。</p> 
+ <p>有趣的是你提到的这两种语言（还有很多其他语言）都运行在JVM上。实际上为支持Java 之外的语言运行在JVM上，我们做了很多工作。而且我们认为，对语言实现者而言，哪些东西在JVM上表现很好，哪些表现不好，这方面的经验他们还有很多要学的。当然实验小众语言比实验大众语言要容易得多。我们真正关注的是以深思熟虑、负责任的方式解决能够改进数百万Java开发者工作的事情。</p> 
 </blockquote>
-<p><b>InfoQ：对我来说电子化的工具似乎更有用，是什么让你想去做一个印刷版本？</b></p>
+<p><b>InfoQ</b><b>：</b><b>Lambda</b><b>和</b><b>Streams API</b><b>的结合可以帮助我们开发清晰简洁的代码，但是像在过滤器后面跟一个过滤器这样以函数式方式缩减一个集合的范围，人们已经表露了对潜在的性能问题的担忧。这种担忧合理吗？为缓解这种开销引入了什么优化吗？</b></p>
 <blockquote> 
- <p>对我来说也是这样。当我刚开始有这个印刷版本的想法时，我也放弃了这个想法。我的意思是，如果已经有数字版本，它包含了更多的活动，而且你还可以在任意时间添加活动，活动描述也更加详细，谁还会去购买印刷版本呢？</p> 
- <p>之所以会推出印刷版，其原因正如我更喜欢一块真实的任务板，而不是数字任务板一样：它就在那里。你能触摸到它。它邀请你拿起它，与它一起玩。当我意识到我会购买印刷版时，我就去把它制作了出来。我也很喜欢它产生的过程。</p> 
+ <p>Stream支持中间操作（<i>intermediate</i>）和最终操作（<i>terminal</i>）。像过滤器这样的中间操作实际上本身不执行任何过滤，相反，它们会创建一个新的Stream，而这个Stream会在被遍历到时提供被过滤Stream中匹配给定谓词的元素。因此，一方面，创建额外的过滤器可能会致使运行时执行额外的工作。</p> 
+ <p>另一方面，惰性处理Stream，像所有中间操作都在Stream上做处理，会带来很高的效率，比如多个操作可以合并到对数据的一遍处理中。结合底层强有力的JVM优化——Lambda在设计时也是仔细考虑过支持JVM优化的，额外的过滤器的潜在影响会明显减少。</p> 
+ <p>另一个需要考虑的是，通过Stream和Lambda，可以更轻松地使用并行。此外，对于用户不是特别关心其相交顺序的Stream，减轻其顺序约束对并行Stream上的操作可能有好处。</p> 
 </blockquote>
-<p><b>InfoQ：对于回顾会议，团队最大的错误是什么，Retr-O-Mat如何提供帮助？</b></p>
+<p><b>InfoQ</b><b>：</b><b>Java 8</b><b>的另一个重要特性是</b><b>Java</b><b>类型上的注解支持开发可插入式的类型检查器。你能多介绍一下吗，比如你希望看到开发者使用该特性来处理哪类任务？</b></p>
 <blockquote> 
- <p>我书中提到的一些回顾会议，并不算是我曾经见过的最糟糕的回顾会议。“引导者”只是在小组那走过场，每个人都可以表达他们的不满。这时候，能够引导真正讨论的活动计划将很有帮助。更重要的问题是你不能忘了要去跟踪团队曾经商量好要做出的改变。</p> 
+ <p>该特效支持在类型的名字上使用注解，可以使用这些类型的大部分地方都可以使用这种注解。作为这一变化的一个结果，开发者可以编写注解，使用可插入式的类型检查器在编译时探测错误条件。社区正在为空指针错误、锁和国际化问题开发这样的检查器和注解模式。</p> 
+ <p>Prof. Michael Ernst教授的Checker框架（<a href="http://checker-framework.org/">checker-framework.org</a>）是这方面信息和实现的一个很好的参考，该框架提供了十多个这样的工具，其中一个是用于检查空指针的检查器。Michael也担任过JSR 308的联席领导者，该语言特性就是在JSR 308中指定的。</p> 
+ <p>如果能够看到至少有一个这样的注解机制在将来应用到JDK代码库中，我会很开心。而且当然，如果更广大的Java开发者社区开始在他们自己的代码库中使用该技术，并为解决其软件质量问题开发新的检查器，也会让人非常欣慰。</p> 
+ <p>特别是在有关嵌入式和对安全要求很高的系统中，这种新方法允许在类型上加上重要属性和约束，而且这些属性和约束的使用可以用作编译过程的一部分，还可以同时进行静态分析。这为其他领域相关编程语言的用户在将来迁移到Java平台提供了一条途径。</p> 
 </blockquote>
-<p><b>InfoQ：是的，Ben最近也在一篇新闻稿</b><a href="http://www.infoq.com/news/2014/02/retrospective-actions-done"><b>following up retrospectives</b></a><b>中提到了。对于别的创新，例如Plan-O-Mat，你有什么计划吗？</b></p>
+<p><b>InfoQ</b><b>：你认为在</b><b>Java 8</b><b>中对动态语言的最大增强体现在哪里？</b></p>
 <blockquote> 
- <p>确实有人曾在Twitter上向我建议Plan-O-Mat。我喜欢这个主意，但我不知道哪儿能获得与回顾一样多的话题。这也是为什么我一直没有接近它的原因。当然我不会介意任何人<a href="https://github.com/findingmarbles/Retromat">在github上fork Retr-O-Mat</a>和创建Plan-O-Mat！我个人还会继续为Retr-O-Mat增加活动、功能、图片和更多语言版本，同时我还会管理好我最近的项目<a href="http://wall-skills.com/">Wall-Skills.com</a>和<a href="http://mail-skills.com/">Mail-Skills.com</a>。这些都让我够忙的:)</p> 
+ <p>那一定要说HotSpot VM中的性能改进了，特别是围绕invokedynamic所做的工作。JDK 8一个重要的新特性是Nashorn JavaScript引擎，这是一种流行动态语言的一个轻量级、高性能的实现。改进Nashorn的性能，帮我们在虚拟机中优化动态语言实现找到了新的机会。</p> 
+ <p>此外，Nashorn现在提供了一种非常方便的在JavaScript中使用Java的方式，支持以JavaScript编写完整的JavaFX应用，并运行在JVM上。运行在JVM上的动态语言和Java之间那种透明的互操作性为编写这样的应用提供了一种强有力的方式。</p> 
 </blockquote>
-<p><strong>原文英文链接：</strong><a href="http://www.infoq.com/news/2014/03/retromat-print">The Retr-O-Mat Retrospective Activity Generator: Now Available in Print</a></p><br><br><br><br><br><br></body></html>
+<p><b>InfoQ</b><b>：对</b><b>Java</b><b>和安全的担忧几乎一直是去年的头条新闻。</b><b>Java 8</b><b>对</b><b>Java</b><b>浏览器或其他地方有具体的改进吗？</b></p>
+<blockquote> 
+ <p>很多重要的安全改进和新特性已经作为Oracle Java SE 7更新的一部分交付了，包括部署规则集（Deployment Rule Sets）和异常站点列表（Exception Site Lists）。维护Java的安全是我们的第一要务。</p> 
+ <p>此外，Java SE 8包含了一些新的安全特性。最明显的可能是传输层安全（Transport Layer Security）实现的增强：现在平台默认支持TLS 1.2。除了全面的安全API，还有很多其他增强，包括从证书撤销检查改进到新的加密算法。</p> 
+</blockquote>
+<p><b>InfoQ</b><b>：你是否知道使用</b><b> Java 5</b><b>、</b><b>6</b><b>和</b><b>7</b><b>的</b><b>Java</b><b>开发者比例？在加速</b><b>Java 8</b><b>的采用方面有什么计划吗？</b></p>
+<blockquote> 
+ <p>在过去的6至9个月，我在世界各地的会议上发表过演讲，每次我都会问人们正在使用哪个版本。基于这种非正式且不够科学的调查，大部分Java开发者目前在使用Java SE 7，仍在使用Java 6的明显属于少数（但不可忽略），还有少数人使用更老的版本。从开发者的角度看，Java SE 8以新的语言特性和API的形式为快速采用带来了充足的理由。随着像NetBeans、Eclipse和IntelliJ IDEA等IDE努力在即将发布的版本中提供支持这些特性的良好工具，我预计开发者会快速拥抱Java SE 8。</p> 
+</blockquote>
+<p><b>InfoQ</b><b>：去年的</b><b>JavaOne</b><b>，最大的主题之一就围绕</b><b>Java ME</b><b>、</b><b>SE</b><b>和</b><b>EE</b><b>的统一。</b><b>Java 8</b><b>在这个方向上走到什么程度了？</b></p>
+<blockquote> 
+ <p>在Java SE 8的众多特性之中，有一个特性就是支持紧凑配置（Compact Profiles）。它们定义了Java SE平台规范的一些子集配置，支持部署不需要完整平台、运行在小型设备上的应用。结合HotSpot中的其他改进，比如减少类的元数据的内存占用，以及从整体上减少虚拟机内存占用，该特性支持JDK 8针对小型设备上的应用开发与部署按比例缩减。为进一步简化这一点，JDK 8中包含了一个新工具<b>jdeps</b>，支持开发者找出其代码依赖的配置。</p> 
+ <p>而另一个方向，Java ME 8也正在增强，包含的语言特性、虚拟机和类库更为接近Java SE 8了。尽管你不能马上在Java ME 8代码中使用Lambda，但是该平台现在支持Java SE 5、6和7中引入的语言构造，比如断言、泛型、枚举、在switch中使用字符串、try-with-resources语句和菱形操作符。类似地，核心类库也做了更新，支持现代Web协议，像IPv6，也支持高级安全特性，包括支持TLS 1.2。与过去相比，Java SE和Java ME两个平台走得更近了。</p> 
+</blockquote>
+<p><b>InfoQ</b><b>：何时能看到</b><b>Stripped Implementations</b><b>加入</b><b>Java</b><b>中？</b></p>
+<blockquote> 
+ <p>在Java SE 8发布之后，我们需要再看一下如何将该特性在Java SE 9之前的某个版本加入到平台中。这并非技术问题，而是事关如何确保规范文本和相关法律框架支持相应的用例，同时避免Java平台分裂。</p> 
+</blockquote>
+<p>非常感谢Georges回答我们的问题。Oracle会通过 <a href="http://eventreg.oracle.com/profile/web/index.cfm?PKWebId=0x637279c68&amp;source=InfoQ">网络直播方式正式介绍Java</a>，届时InfoQ还会进行相关报道。</p>
+<p><strong>查看英文原文：</strong><a href="http://www.infoq.com/news/2014/03/java8-launch-qa">Java 8 Launch Q&amp;A</a></p><br><br><br><br><br><br></body></html>
