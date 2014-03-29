@@ -1,27 +1,52 @@
-<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>Amazon Chooses HAL Media Type for AppStream API</h3><p>Amazon has released a new API, the <a href="http://docs.aws.amazon.com/appstream/latest/developerguide/rest-api.html#rest-api-hal">AppStream API</a>, which allows you to programmatically manage applications hosted on the Amazon AppStream platform. For this API, they chose to build it with <a href="http://tools.ietf.org/html/draft-kelly-json-hal-06">the HAL media type</a>. HAL is a minimalistic hypermedia enabled media type for building machine-to-machine APIs. Amazon is one of the largest organizations to choose hypermedia as a technique for a public-facing product.</p>
-<p>While hypermedia APIs are a hot topic in the API space, advocates are often asked about its real-world applicability. While there has been an explosion of research and debate on the technique, hypermedia APIs make up a small fraction of the current API ecosystem. Amazon's CEO, Jeff Bezos, famously required his teams to build products in an SOA style, leading to a large number of internal and external APIs. This vote of confidence in hypermedia via HAL from one of tech's biggest companies should hearten hypermedia enthusiasts.</p>
-<p>One question that the hypermedia community is currently grappling with is documentation. The traditional answer to documenting hypermedia services consists of providing a media type definition and nothing more. This approach is significantly different than other architectural styles, and so the community has been working on other strategies to assist bridging this gap.</p>
-<p>The AppStream API team chose to document the API in four major sections: header values, error codes, top-level resources, and link relations. This is very different from more traditional RESTful services, which focus on combinations of HTTP status codes, URLs, and parameters. This approach is very close to the traditional hypermedia approach. <a href="https://groups.google.com/forum/#!msg/hal-discuss/3IyTn17m7Ps/AeBpQXadn8gJ">On the HAL-discuss mailing list</a>, a place for HAL users to talk about the specification and its uses, Andr&eacute;s Freyr&iacute;a Cede&ntilde;o said this:</p>
+<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>Amazon Responds to Recent Google Cloud Price Cuts</h3><p>Google announced <a href="http://www.infoq.com/news/2014/03/google-cloud">major price cuts for some of their cloud services</a> including Compute Engine, Storage and BigQuery. But their price advantage lasted for only for 24 hours because the following day <a href="http://aws.typepad.com/aws/2014/03/aws-price-reduction-42-ec2-s3-rds-elasticache-and-elastic-mapreduce.html">Amazon slashed the prices for some of their services</a> – EC2, S3, RDS, ElasticCache and MapReduce.</p>
+<p>Following is a summary of AWS’ price cuts:</p>
+<table cellspacing="0" cellpadding="2" width="625" border="1" unselectable="on"> 
+ <tbody> 
+  <tr> 
+   <td valign="top" width="131"><strong>Service</strong></td> 
+   <td valign="top" width="114"><strong>Price Cut by %</strong></td> 
+   <td valign="top" width="358"><strong>Comment</strong></td> 
+  </tr> 
+  <tr> 
+   <td valign="top" width="131">EC2 – on demand</td> 
+   <td valign="top" width="114">7-40</td> 
+   <td valign="top" width="358">Price cuts depend on instance type.</td> 
+  </tr> 
+  <tr> 
+   <td valign="top" width="131">EC2 – reserved</td> 
+   <td valign="top" width="114">10-40</td> 
+   <td valign="top" width="358">Price cuts depend on instance type. AWS has also volume discounts resulting in discounts up to 68%.</td> 
+  </tr> 
+  <tr> 
+   <td valign="top" width="131">S3</td> 
+   <td valign="top" width="114">36-65</td> 
+   <td valign="top" width="358">An average of 51%.</td> 
+  </tr> 
+  <tr> 
+   <td valign="top" width="131">RDS</td> 
+   <td valign="top" width="114">28</td> 
+   <td valign="top" width="358">Average.</td> 
+  </tr> 
+  <tr> 
+   <td valign="top" width="131">ElasticCache</td> 
+   <td valign="top" width="114">34</td> 
+   <td valign="top" width="358">Average</td> 
+  </tr> 
+  <tr> 
+   <td valign="top" width="131">MapReduce</td> 
+   <td valign="top" width="114">27-61</td> 
+   <td valign="top" width="358">hs1.8xlarge now costs &lt;$1,000/TB/year.</td> 
+  </tr> 
+ </tbody> 
+</table>
+<p>Jeff Bezos, CEO of Amazon, is the one who posted the price reductions on their website, reminding customers that this is Amazon’s 42<sup>nd</sup> cut since 2008. But, commenting on his <a href="http://aws.typepad.com/aws/2014/03/aws-price-reduction-42-ec2-s3-rds-elasticache-and-elastic-mapreduce.html">blog post</a>, some of the readers thanked Google for “reducing our bills.”</p>
+<p><a href="http://www.rightscale.com/blog/cloud-cost-analysis/aws-responds-price-cuts-google-vs-aws-pricing-round-2">RightScale compared AWS’ new prices against Google’s</a>, concluding that they are exactly the same for on-demand standard instances, but Google still has cheaper high-memory and high-cpu instances by 33% and 16% respectively, but AWS high-memory provides 30% more memory and AWS high-cpu has double memory and a SSD, so their offer is actually roughly the same.</p>
+<p>When it comes to 1-year reserved instances vs. sustained-use, AWS’ standard and high-memory instances are 10 to 20% cheaper than Google’s 100%-use, while high-cpu ones are more expensive (2-3%). AWS has a major price difference for 3-year reserved instances which are 32-48% cheaper than Google sustained-use. But there is a difference in their models too: one has to pay up-front for AWS reserved instances while Google sustained-use price is calculate as-you-go. RightScale outlined three price advantage scenarios for different types of cloud users:</p>
 <blockquote> 
- <p>My gut reaction to the docs were along the lines of &quot;this would be sufficient documentation if hypermedia APIs were the norm&quot;. Given the current state of art though, I don't think there are enough ancillary resources for developers to work with.</p> 
+ <ul> 
+  <li>For cloud users who have plenty of cash and can accurately predict their usage, AWS RIs can save money.&nbsp;</li> 
+  <li>For the many cloud users who are still growing their cloud workloads quickly and leveraging a blend of on-demand and reserved instances, the most cost-effective option will depend on the exact type of instances required and the ability to make effective use of RIs.</li> 
+  <li>For cloud users who don’t have a lot of predictability in their workloads and are using primarily on-demand, they will likely save money with Google.</li> 
+ </ul> 
 </blockquote>
-<p>We'll see how this trend continues as hypermedia becomes a more established API pattern.</p>
-<p>HAL is a media type currently undergoing standardization by the IETF. Originally authored by Mike Kelly, HAL is focused on providing a simple, easy to understand set of conventions to XML and JSON for resources to link to one another.</p>
-<p>Here's a sample HAL response, from the draft:</p>
-<pre>
-{
-     &quot;_links&quot;: {
-       &quot;self&quot;: { &quot;href&quot;: &quot;/orders/523&quot; },
-       &quot;warehouse&quot;: { &quot;href&quot;: &quot;/warehouse/56&quot; },
-       &quot;invoice&quot;: { &quot;href&quot;: &quot;/invoices/873&quot; }
-     },
-     &quot;currency&quot;: &quot;USD&quot;,
-     &quot;status&quot;: &quot;shipped&quot;,
-     &quot;total&quot;: 10.20
-   }
-</pre>
-<p>HAL defines two reserved top-level properties, </p>
-<pre>_links</pre>
-<pre>_embedded</pre>
-<pre>_links</pre>
-<p></p><br><br><br><br><br><br></body></html>
+<p><a href="http://blogs.msdn.com/b/windowsazure/archive/2013/04/16/the-power-of-and.aspx">Microsoft pledged their “commitment to match Amazon Web Services prices</a> for commodity services such as compute, storage and bandwidth,” a year ago when announcing price cuts for some of their Azure services. We kept this article on hold hoping that Microsoft would make a price&nbsp;announcement this week, but nothing came out of Redmond by the time of its publishing.</p><br><br><br><br><br><br></body></html>

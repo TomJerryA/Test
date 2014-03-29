@@ -1,6 +1,9 @@
 <html>
  <head></head> 
- <body> 
+ <body>
+  <div>
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/38.java">Amazon Responds to Recent Google Cloud Price Cuts</a>Google announced major price cuts for some of their cloud services including Compute Engine, Storage and BigQuery. But their price advantage lasted for only for 24 hours because the following day Amazon slashed the prices for some of their services – EC2, S3, RDS, ElasticCache and MapReduce.
+  </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/37.java">Meteor 0.7.1 Release Brings Dev Accounts, Further Improvements</a>Matt DeBergalis has released version 0.7.1 of Meteor, with the improvements to oplog and minimongo, CSS preprocessing, and Meteor developer accounts. Version 0.7.1 includes added support to minimongo for what DeBergalis refers to on the Meteor blog as “more of the ‘estoteric corners’ of the MongoDB query language.&quot; 
   </div> 
@@ -147,9 +150,6 @@
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/44.java">Orion 5 Supports More Languages and Can Deploy to Cloud</a>Enhancements in Orion 5 include: syntax highlighting for several languages, content assist for several Node.js libraries and databases, better syntax validation, cloud deployment and others. 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/43.java">The Retr-O-Mat Retrospective Activity Generator: Now Available in Print</a>Random retrospective activity generator &quot;Retr-O-Mat&quot; now available as printed edition, contains 50 activities from various sources. 
-  </div> 
+  </div>  
  </body>
 </html>
