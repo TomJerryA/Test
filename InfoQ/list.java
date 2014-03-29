@@ -1,11 +1,11 @@
 <html>
  <head></head> 
- <body>
-  <div>
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/37.java">Meteor 0.7.1 Release Brings Dev Accounts, Further Improvements</a>Matt DeBergalis has released version 0.7.1 of Meteor, with the improvements to oplog and minimongo, CSS preprocessing, and Meteor developer accounts. Version 0.7.1 includes added support to minimongo for what DeBergalis refers to on the Meteor blog as “more of the ‘estoteric corners’ of the MongoDB query language.&quot;
-  </div>
-  <div>
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/36.java">Rebecca Parsons on the ThoughtWorks Technology Radar</a>In January ThoughtWorks released the latest version of their Technology Radar in which they track what's interesting in the software development ecosystem. The big themes this year are (1) early warning systems and recovery in production, (2) the tension between privacy and big data, (3) the javascript ecosystem and (4) blurring of the line between the physical and virtual worlds.
+ <body> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/37.java">Meteor 0.7.1 Release Brings Dev Accounts, Further Improvements</a>Matt DeBergalis has released version 0.7.1 of Meteor, with the improvements to oplog and minimongo, CSS preprocessing, and Meteor developer accounts. Version 0.7.1 includes added support to minimongo for what DeBergalis refers to on the Meteor blog as “more of the ‘estoteric corners’ of the MongoDB query language.&quot; 
+  </div> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/36.java">Rebecca Parsons on the ThoughtWorks Technology Radar</a>In January ThoughtWorks released the latest version of their Technology Radar in which they track what's interesting in the software development ecosystem. The big themes this year are (1) early warning systems and recovery in production, (2) the tension between privacy and big data, (3) the javascript ecosystem and (4) blurring of the line between the physical and virtual worlds. 
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/35.java">Q&amp;A with Atlassian product marketing specialist Dave Meyer on Connect 1.0 and Atlassian Verified</a>InfoQ spoke to Atlassian product marketing specialist Dave Meyer on new product releases - Atlassian Connect 1.0 and Atlassian Verified. 
@@ -150,6 +150,6 @@
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/43.java">The Retr-O-Mat Retrospective Activity Generator: Now Available in Print</a>Random retrospective activity generator &quot;Retr-O-Mat&quot; now available as printed edition, contains 50 activities from various sources. 
-  </div>   
+  </div> 
  </body>
 </html>

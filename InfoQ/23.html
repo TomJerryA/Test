@@ -1,6 +1,29 @@
-<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>改进的JIT编译器RyuJIT为.NET提速</h3><p>微软一直为开发出一个新的即时（Just-in-Time，JIT）编译器而不懈努力，以替换.NET框架中现有的JIT。新的编译器代号为RyuJIT，相对于其第一个预览版本和产品中目前使用的JIT 编译器，<a href="http://blogs.msdn.com/b/dotnet/archive/2014/02/27/ryujit-ctp2-getting-ready-for-prime-time.aspx">最新的CTP</a>版本有显著改进。</p>
-<p>RyuJIT能够比JIT64更快地生成代码，这是第一个CTP版本表现出来的成绩之一。根据微软提供的信息，RyuJIT生成代码的速度几乎是JIT64的两倍。在CTP2中，团队在维持这一改进的同时，还改进了所生成代码的质量。这无疑是很重要的一步，因为尽管编译时间很重要，但最终结果高效执行甚至更为重要。</p>
-<p>那么CTP2怎么样呢？根据微软的测试，CTP2在一些领域比CTP1快得多，不过在一些基准测试上，性能却又轻微下降。与JIT64相比，CTP2利弊并存。尽管有些领域性能有明显改进，但是还有些领域，CTP2要慢很多。整体上看CTP2好一些，但是仍然有很多工作要做。</p>
-<p>要深入检查CTP2发布时提供的性能结果， 微软的Kevin Frei撰写了一篇文章，<a href="http://blogs.msdn.com/b/clrcodegeneration/archive/2014/02/26/lies-damn-lies-and-benchmarks.aspx">详细描述</a>了测试所用的基准测试。有些值得注意的基准测试包括Roslyn 项目的源代码、SciMark和FsharpFFT。</p>
-<p>RyuJIT CTP2现在已经提供<a href="http://aka.ms/RyuJIT">下载</a>，但是请记住，它需要Windows 8.1或Windows Server 2012 R2。当RyuJIT进入产品正式发布时，它将支持更多操作系统。</p>
-<p><strong>查看英文原文：</strong><a href="http://www.infoq.com/news/2014/03/ryuJIT-CTP2">RyuJIT's Improved Compiler Boosts .NET</a></p><br><br><br><br><br><br></body></html>
+<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>减小iOS应用程序的大小 - iOS移动开发周报</h3><h2>新闻</h2>
+<ol> 
+ <li> <p><a href="https://deals.iphoneincanada.ca/sales/the-mac-freebie-bundle-3-0">《The Mac Freebie Bundle 3.0》</a>：该网站提供了7个原本收费的Mac App的免费购买。笔者试用了一下其中的X-Mirage，它可以把iPhone投到Mac上，并提供录象功能，适合将演示导出成视频。另外那个页面有Bug，在购买时信用卡信息不用填写，留空就可以直接购买成功。</p> </li> 
+ <li> <p><a href="http://www.macstories.net/news/apple-testing-related-search-suggestions-on-the-app-store/">《App Store 将增加匹配相关搜索关键字的新功能》</a>：新增加的功能有助于提高相关关键词的点击量。</p> </li> 
+</ol>
+<h2>教程</h2>
+<ol> 
+ <li> <p><a href="http://nonomori.farbox.com/post/injection-plugin-for-xcode">《injection plugin for xcode》</a>：Injection Plugin For Xcode 是 Xcode 上的一个插件。利用它可以修改应用代码，实时在模拟器或实机上看到效果而不需要重启应用。作者介绍了该插件的详细使用方式。</p> </li> 
+ <li> <p><a href="http://www.pasanpremaratne.com/2014/03/15/UI-Prototyping-with-Quartz-Composer-and-Origami/">《UI Prototyping with Quartz Composer and Origami》</a>：由于工具的欠缺，大量的交互设计师的工作效率非常低下，他们为了做出一个新颖的效果常常需要花费大量精力。这次Facebook免费开放出基于苹果Quartz Composer的增强工具集Origami，使得交互设计工作得到更好的辅助。不过另一方面，该工具仍然需要设计师具备一定的逻辑思维能力，所以对于广大设计师来说，交互设计工具Origami对设计师带来的既是机会，同时也是挑战。本教程介绍了如何使用Quartz Composer 和 Origami来做交互设计。</p> </li> 
+ <li> <p>写给 iOS 开发者的系列教程：从有iOS开发背景的人的角度，学习其它语言：</p> 
+  <ol> 
+   <li><a href="http://stuartkhall.com/posts/android-development-tips-for-ios-devs">Android篇</a></li> 
+   <li><a href="http://t.cn/8sbXyOH">C++ 篇1</a>和<a href="http://t.cn/8sbXLyg">C++ 篇2</a></li> 
+   <li><a href="http://t.cn/8FpEP4x">Go 篇</a></li> 
+  </ol> </li> 
+ <li> <p><a href="http://beyondvincent.com/blog/2014/03/26/cookbook-moving-table-view-cells-with-a-long-press-gesture/">《利用长按手势移动 Table View Cells》</a>：本教程中介绍了如何通过长按手势来移动 table view中的cell，这种操作方式就像苹果自家的天气 App 一样。</p> </li> 
+ <li> <p><a href="http://beyondvincent.com/blog/2014/03/24/reducing-the-size-of-my-app/">《减小iOS应用程序的大小》</a>：本文收集了一些减小程序安装包大小的相关技巧(当第一次下载和安装程序时)。如果是针对升级程序的话，可以看这篇文章: <a href="https://developer.apple.com/library/ios/qa/qa1779/">《减小iOS应用程序升级时所需下载的大小》</a>，这与第一次安装使用的工作原理有所不同。</p> </li> 
+ <li> <p><a href="http://blog.devtang.com/blog/2014/03/21/weak_object_lifecycle_and_tagged_pointer/">《NSNumber对象缓存以及Tagged Pointer》</a>：本文讨论了<code>NSNumber</code>对象的缓存以及苹果在64位系统引入的<code>Tagged Pointer</code>对象。</p> </li> 
+</ol>
+<h2>工具</h2>
+<ol> 
+ <li><a href="http://qcdesigners.com/index.php/forums/topic/100/it-s-finally-here-j-qc-1-0-a-u/">jQC 1.0</a>：jQC是一个与Facebook之前开源的Origami兼容的工具，提供了15个新的Patch来提高Quartz Composer的功能。Quartz Composer是苹果提供的一个交互设计工具。</li> 
+</ol>
+<h2>开源项目</h2>
+<ol> 
+ <li> <p><a href="https://github.com/gbammc/WechatPayDemo">WechatPayDemo</a>: WechatPayDemo是一个非官方的微信支付Demo，基于微信SDK1.4.1构建。由于微信官方并没有提供支付功能的iOS Demo，加上官方的文档错误，使得本文作者花了较大精力调试。他希望开源这个工程来帮助其他iOS开发者少有一些弯路。</p> </li> 
+ <li> <p><a href="http://trawor.farbox.com/post/vz">微转iOS客户端和服务端</a>：微转是一个基于微博的数码设备平台，客户端和后台全部基于AVOSCloud服务实现。作者将其iOS客户端和服务端代码全部开源。</p> </li> 
+ <li> <p><a href="https://github.com/facebook/Tweaks">Tweaks</a>：Tweaks让开发者可以方便地对特定事物进行标记——比如动画效果的时间，或者是按钮的颜色，或者是图片的透明度——并在使用设备实际运行应用时让开发者方便地进行实时调整。</p> </li> 
+</ol><br><br><br><br><br><br></body></html>
