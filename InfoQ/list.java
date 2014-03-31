@@ -2,10 +2,16 @@
  <head></head> 
  <body>
   <div>
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/41.java">JCACHE Specification Finalized</a>After thirteen years of development and evolution, JSR-107 - JCACHE, has been finalized.
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/43.java">Mobile App Performance Report Benchmarks Crashes and Responsiveness on iOS and Android</a>Crittercism, maker of a mobile app performance management solution, has analysed one month of performance data and compiled it into a Mobile Experience Benchmark report focusing on two aspects of a mobile performance: app uptime and app responsiveness. Results highlight app categories with the highest crash and error rates and provide the basis for a comparison among iOS and Android versions.
   </div>
   <div>
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/40.java">Oracle Talks to Architects and Partners About Java 8 in Launch Webinar</a>Almost three years after the release of Java 7, Oracle last week released Java 8, touted as the most revolutionary Java release ever. This week Oracle presented a one-hour public webinar looking into features, background, and community reaction. InfoQ captured some important highlights of the webinar.
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/42.java">RESTistential Crisis over Hypermedia APIs</a>Software developer Evan Cordell initiated a debate about how the hypermedia constraint of REST is at odds with common web APIs requirements in the API-Craft mailing list a few weeks ago.
+  </div> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/41.java">JCACHE Specification Finalized</a>After thirteen years of development and evolution, JSR-107 - JCACHE, has been finalized. 
+  </div> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/40.java">Oracle Talks to Architects and Partners About Java 8 in Launch Webinar</a>Almost three years after the release of Java 7, Oracle last week released Java 8, touted as the most revolutionary Java release ever. This week Oracle presented a one-hour public webinar looking into features, background, and community reaction. InfoQ captured some important highlights of the webinar. 
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/39.java">To Have and Have Not StackMob- Part 1 of 2: MBaaS Provider's Customers get Short End of Backend</a>Extra! Extra! Sunday May 11, 2014 StackMob will cease operations. The end of StackMob --progenitor of mobile backend as a service (MBaaS)-- will be official on the above date. PayPal dictated its closure after eBay's online payment system acquired the company at the close of 2013. 
@@ -144,12 +150,6 @@
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/49.java">Building a Better WCF Client</a>The WCF client that Visual Studio generates by default is a problem. Besides not being a direct match with the server-side interface code, which causes a lot of code and data sharing problems, the generated code still has a glaring bug after all these years. Michael Taylor discusses these issue and his attempts to address them in a series titled “A Smarter WCF Service Client”. 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/48.java">Using Scrum of Scrums with Agile Teams to Coordinate and Collaborate</a>Scrum of scrums can be used to scale the daily stand-up meeting when multiple teams are involved. Its purpose is to support agile teams in collaborating and coordinating their work with other teams. Several authors have shared views on scrum of scrums, with experiences of using them. 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/47.java">Cassandra Gains Momentum On Enterprise Adoption Around 2.1 Release</a>Cassandra is rapidly heading towards 2.1 release, with 2.1.0-beta1 already available for evaluation. We take a look at major features introduced in the latest major release and what's coming up. Supported by DataStax, Cassandra is expanding its reach towards the enterprise world. DataStax recently announced a partner network program, Patrick McFadin called out on MongoDB's scaling issues and other 
   </div>   
  </body>
 </html>

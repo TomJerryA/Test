@@ -1,30 +1,30 @@
-<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>The Retr-O-Mat Retrospective Activity Generator: Now Available in Print</h3><p>Many agile processes contain a retrospective every iteration. Its purpose is to look for improvement, but finding concrete steps for improvement requires creativity. So agile coaches and teams came up with different activities facilitating this process, which is generally divided into 5 phases: stage setting, data gathering, insight generation, decision making and closing.</p>
-<p>Inspiration for activities for these phases of retrospectives can for example be taken from the <a href="http://www.infoq.com/minibooks/agile-retrospectives-value">InfoQ Minibook &quot;Getting Value out of Agile Retrospectives - A Toolbox of Retrospective Exercises&quot;</a>&nbsp;or the <a href="http://retrospectivewiki.org/index.php?title=Main_Page">Retrospective Wiki</a>.</p>
-<p>But getting to know all the activities and combining them to a retrospective is quite some work. To keep up the creativity and prevent any routine, Corinna Baldauf has built the <a href="http://www.plans-for-retrospectives.com/">Retr-O-Mat</a>: An online tool which combines 5 random generated activities, one for each phase of the retrospective, out of a pool of activities.<br /> <img src="http://www.infoq.com/resource/news/2014/03/retromat-print/en/resources/photo.JPG" align="right" alt="" _href="img://photo.JPG" _p="true" style="padding-left:15px" /><br /> Just recently Corinna decided then to publish a <a href="http://www.plans-for-retrospectives.com/print/index.html">paper version</a>. It provides easy access to a variety of activities without internet access. Activities are printed on cards, which are stacked per phase. The stacks of cards are spiral bound with a front cover and back. This allows any combination of activities. <br /> While the random nature might stimulate creativity, it can happen that randomized activities are not fitting to the situation in the team. A facilitator should always ensure the activities are fit for purpose and possibly pick others from the whole selection.<br /> InfoQ reached out to Corinna to ask her about the Retr-O-Mat online and offline and possible future plans.</p>
-<p><b>InfoQ: Corinna, what was the motivation for creating the Retr-O-Mat?</b></p>
-<blockquote>
-  Back when I read “Agile Retrospectives” and learned about the phases, I thought how convenient it would be to have something like a slot machine that suggests activities for each phase. But no such tool existed. I went on to facilitate a lot of retrospectives. I like to vary the activities, so that the team will look from a different angle each time. But coming up with all these different plans was time consuming. Plus, I would often read about great ideas and then forget about them. Retr-O-Mat solved all these problems: Collect great ideas and display them when needed. For me or anyone else.
- <br type="_moz" /> 
-</blockquote>
-<p><b>InfoQ: You are using activities from other &quot;agile minds&quot;. What were their reactions to your Retr-O-Mat?</b></p>
-<blockquote>
-  So far, everyone I reached out to was supportive. I’m grateful to everyone who shares ideas for activities and to those that submit suggestions directly to Retr-O-Mat. Esther Derby, Diana Larson and Judith Andresen deserve special thanks, as they are the sources of many activities. 
-</blockquote>
-<p><b>InfoQ: What was the trigger for doing the print edition? An electronic tool looks much more powerful and useful to me.</b></p>
-<blockquote>
-  To me, too. When I first conceived of a print edition I discarded the idea. I mean, who would buy a print edition, when the digital version contains more activities, you can add activities any time, and the descriptions can be more detailed?
- <br /> The print edition is neat for the same reason I prefer a physical task board to a digital one: It’s there. You can touch it. It invites you to pick it up and play with it. When I realized that I would buy a print edition, I went ahead and created it. And I love how it turned out! 
-</blockquote>
-<p><b>InfoQ: What is the biggest mistake teams make in retrospectives, and how does the Retr-O-Mat help?</b></p>
-<blockquote>
-  Some of the worst retrospectives I’ve ever seen weren’t retrospectives in my book. The “facilitator” just went around the group and everyone could air their grievances. A plan with activities that lead to an actual discussion could help here. An even more important issue is that you should not miss to follow up on the changes the team agreed upon. 
-</blockquote>
-<p><b>InfoQ: Yes, Ben also wrote on <a href="http://www.infoq.com/news/2014/02/retrospective-actions-done">following up retrospectives</a> recently. Any plans for another innovation, like a Plan-O-Mat?</b></p>
-<blockquote>
-  Someone indeed did already suggest a Plan-O-Mat to me on Twitter. I like the idea but don’t know anywhere near as much about that topic as I do about retros. That’s why I never approached it. Though I wouldn’t mind anyone 
- <a href="https://github.com/findingmarbles/Retromat">forking Retr-O-Mat on github</a> and creating a Plan-O-Mat!
- <br /> Personally, I’ll keep adding activities, functionality, photos and more languages to Retr-O-Mat, as well as tend my more recent projects 
- <a href="http://wall-skills.com/">Wall-Skills.com</a> and 
- <a href="http://mail-skills.com/">Mail-Skills.com</a>. These are keeping me busy enough :) 
-</blockquote>
-<p>&nbsp;</p><br><br><br><br><br><br></body></html>
+<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>Mobile App Performance Report Benchmarks Crashes and Responsiveness on iOS and Android</h3><p><a href="http://crittercism.com">Crittercism</a>, maker of a mobile app performance management solution, has analysed one month of mobile app performance data and compiled it into a <a href="http://s3.documentcloud.org/documents/1097982/state-of-mobile-performance.pdf">Mobile Experience Benchmark report</a> focusing on two aspects of a mobile app's performance: app uptime and app responsiveness. Results highlight which app categories have the highest crash and error rates and provide the basis for a comparison among iOS and Android versions, as well as different devices and manufacturers.</p>
+<p>Crittercism claims to have based its findings on the analysis of more than 3 billions events per day, gathering data from 1 billion app users who are accessing its solution monthly. The data spans over 2582 different mobile devices and 106 OS versions, relying on 691 wireless networks to access the internet. The heterogeneity of the mobile ecosystem is, according to Crittercism, one of the main factor influencing app performance.</p>
+<p><strong>Main Responsiveness Takeaways</strong></p>
+<ul> 
+ <li>The average app depends on 6 cloud services, e.g. Facebook, Flurry, Google Analytics, etc.; the aggregated performance of such services is a key factor in determining app responsiveness;</li> 
+ <li>9% of calls to services takes longer than 1 second; 21% of calls to services have error rates over 1%;</li> 
+ <li>Google Analytics is the best performing service, with Facebook and Twitter scoring quite low, both in error rate and response time;</li> 
+ <li>network access performance can vary a lot, going from a 0.8x response time for Canada to a 2.1x response time for India, being 1.0 the normalized US response time.</li> 
+</ul>
+<p><strong>Main Uptime Takeaways</strong></p>
+<ul> 
+ <li>47% of apps crash more than 1% of the time;</li> 
+ <li>15% have a crash rate over 2%;</li> 
+ <li>gaming apps have the highest crash rate at 4.4%;</li> 
+ <li>e-commerce and social apps crash rate is below 1%, while business, news, media, and gaming apps crash rate is over 1%;</li> 
+ <li>tablets crash more often than phones.</li> 
+</ul>
+<p><em>Android</em></p>
+<ul> 
+ <li>Gingerbread has the highest crash rate in the Android ecosystem at 1.7%, while still <a href="http://developer.android.com/about/dashboards/index.html">having a significant share among Android versions at 19%</a>; </li> 
+ <li>KitKat, Jelly Bean, and Ice Cream Sandwich have far better performance than Gingerbread at 0.7% crash rate, with a <a href="http://developer.android.com/about/dashboards/index.html">cumulative share of 80% among Android versions</a>;</li> 
+ <li>Samsung devices have the top spot for both Android tablets and phones stability.</li> 
+</ul>
+<p><em>iOS</em></p>
+<ul> 
+ <li>iOS 7.1 is the most stable iOS version, with a 1.6% crash rate;</li> 
+ <li>iOS 6 and iOS 7 have crash rate over 2%; iOS 6 <a href="https://developer.apple.com/support/appstore/">has a share of 12% among iOS versions, while the split iOS 7/7.1 is not officially known</a>;</li> 
+ <li>iPhone 5 is the most stable Apple mobile device.</li> 
+</ul>
+<p>Crittercism <a href="http://www.forbes.com/sites/tomiogeron/2012/02/02/does-ios-crash-more-than-android-a-data-dive/">released a similar report in 2012 comparing mobile app crashes on iOS and Android</a> and yielding similar results.</p><br><br><br><br><br><br></body></html>

@@ -1,7 +1,7 @@
 <html>
  <head></head> 
- <body>
-  <div>
+ <body> 
+  <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/44.javab">Interview with Tobias Mayer about the People’s Scrum and AgileLib</a> The people’s Scrum by Tobias Mayer is a collection of essays covering topics like self-organizing, team working, craftsmanship, technical debt, estimation, retrospectives, culture and Scrum adoption. InfoQ interviewed Tobias about the importance of people, teams and self organization with Scrum and about AgileLib.net, a new initiative for sharing agile resources. 
   </div> 
   <div> 
@@ -150,6 +150,6 @@
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/1.javab">Non-functional Requirements in Architectural Decision Making</a> In this article, authors present an empirical study based on a survey about the software architecture practices for managing non-functional requirements (NFRs) and decision making in software development process. They also discuss about how these requirements are elicited, documented, and validated at different organizations. 
-  </div>  
+  </div> 
  </body>
 </html>

@@ -1,8 +1,8 @@
 <html>
  <head></head> 
- <body>
-  <div>
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/45.c">Domino: Datascience-as-a-Service</a>O Domino, uma plataforma para a ci&ecirc;ncia anal&iacute;tica de dados e dispon&iacute;vel como servi&ccedil;o na nuvem (EC2), permite que qualquer pessoa realize um trabalho anal&iacute;tico usando linguagens como Python ou R.
+ <body> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/45.c">Domino: Datascience-as-a-Service</a>O Domino, uma plataforma para a ci&ecirc;ncia anal&iacute;tica de dados e dispon&iacute;vel como servi&ccedil;o na nuvem (EC2), permite que qualquer pessoa realize um trabalho anal&iacute;tico usando linguagens como Python ou R. 
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/44.c">Akka Toolkit 2.3 com Java 8 e suporte a persist&ecirc;ncia</a>A &uacute;ltima vers&atilde;o do kit de ferramentas do Akka, uma implementa&ccedil;&atilde;o do Actor Model, possui como novidades a persist&ecirc;ncia, permitindo salvar o estado interno dos atores, juntamente com o suporte para express&otilde;es lambda do Java 8. 
@@ -150,6 +150,6 @@
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/48.c">Neo4j 2.0: Novo navegador e esquema</a>A Neo Technology disponibilizou o Neo4j 2.0, agora com novo navegador de grafos, r&oacute;tulos nos n&oacute;s, esquema opcional e aprimoramento da linguagem de consulta Cypher. 
-  </div>  
+  </div> 
  </body>
 </html>
