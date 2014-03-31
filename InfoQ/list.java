@@ -2,7 +2,10 @@
  <head></head> 
  <body>
   <div>
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/38.java">Amazon Responds to Recent Google Cloud Price Cuts</a>Google announced major price cuts for some of their cloud services including Compute Engine, Storage and BigQuery. But their price advantage lasted for only for 24 hours because the following day Amazon slashed the prices for some of their services – EC2, S3, RDS, ElasticCache and MapReduce.
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/39.java">To Have and Have Not StackMob- Part 1 of 2: MBaaS Provider's Customers get Short End of Backend</a>Extra! Extra! Sunday May 11, 2014 StackMob will cease operations. The end of StackMob --progenitor of mobile backend as a service (MBaaS)-- will be official on the above date. PayPal dictated its closure after eBay's online payment system acquired the company at the close of 2013.
+  </div> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/38.java">Amazon Responds to Recent Google Cloud Price Cuts</a>Google announced major price cuts for some of their cloud services including Compute Engine, Storage and BigQuery. But their price advantage lasted for only for 24 hours because the following day Amazon slashed the prices for some of their services – EC2, S3, RDS, ElasticCache and MapReduce. 
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/37.java">Meteor 0.7.1 Release Brings Dev Accounts, Further Improvements</a>Matt DeBergalis has released version 0.7.1 of Meteor, with the improvements to oplog and minimongo, CSS preprocessing, and Meteor developer accounts. Version 0.7.1 includes added support to minimongo for what DeBergalis refers to on the Meteor blog as “more of the ‘estoteric corners’ of the MongoDB query language.&quot; 
@@ -147,9 +150,6 @@
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/45.java">Big Data Hadoop Solutions, State of Affairs in Q1/2014</a>According to a new Forrest report, Hadoop’s momentum is unstoppable. Its usage in the enterprise is continuously growing due to its ability to offer companies new ways to store, process, analyze, and share big data. The report takes a look at Hadoop vendors and ranks them. 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/44.java">Orion 5 Supports More Languages and Can Deploy to Cloud</a>Enhancements in Orion 5 include: syntax highlighting for several languages, content assist for several Node.js libraries and databases, better syntax validation, cloud deployment and others. 
   </div>  
  </body>
 </html>

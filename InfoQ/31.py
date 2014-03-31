@@ -1,12 +1,22 @@
-<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>HybridClusterが非営利ライセンスの無償化を発表</h3><p><a target="_blank" href="http://www.infoq.com/news/2014/02/hybridcluster_free"><em>原文(投稿日：2014/02/05)へのリンク</em></a></p>
+<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>アンドロイドウェアの開発者向けプレビュー詳細</h3><p><a target="_blank" href="http://www.infoq.com/news/2014/03/android-wear"><em>原文(投稿日：2014/03/19)へのリンク</em></a></p>
 <div class="article_page_left news_container text_content_container"> 
  <div class="text_info"> 
-  <p><a href="http://www.hybridcluster.com">HybridCluster</a>は，同社のクラウドホスティングプラットフォームの非営利利用ライセンスを無償にすると<a href="http://www.hybridcluster.com/blog/containers-distributed-storage-future-now-free-hybridcluster-non-commercial-licenses/">発表した</a>。同プラットフォームは<a href="http://en.wikipedia.org/wiki/LAMP_(software_bundle)">LAMP</a>(Linux, Apache, MySQL, PHP)アプリケーションをサポートし，同社独自のマルチプロトコルプロキシサーバである‘AwesimoeProxy’，軽量コンテナ，<a href="http://en.wikipedia.org/wiki/ZFS">ZFS</a>ベースのストレージファブリックを組み合わせることで，高可用性と自動スケールを提供する。</p> 
-  <p>HybridClusterは実を言うと，LAMP中のLinuxはサポートしていない。代わりとして，<a href="http://en.wikipedia.org/wiki/OpenZFS">OpenZFS</a>(Linuxの安定サポートが公開されたのはつい最近だ)で使用可能な<a href="http://en.wikipedia.org/wiki/Freebsd">FreeBSD</a>を実行する。スケーラビリティと回復能力の大部分を支えているのが，ZFSファイルシステムとボリュームマネージャの採用であり，それを実現したのは，アプリケーション毎に用意された，独立運用の可能な分散型レプリカのセットだ。HybridClusterの<a href="http://docs.hybridcluster.com/release-2.0/03-features/features.html#awesomeproxy">独自コンポーネント</a>は，フロントエンドのAwesomeProxy，分散処理とレプリケーション，マイグレーションを行うSiteJuggler，システム設定を担うYakdで構成される。創設者のLuke Marsden氏は<a href="http://en.wikipedia.org/wiki/HAProxy">HAproxy</a>とAwesomeProxyの違いについて，次のようにコメントしている。</p> 
-  <blockquote>
-   HAProxyとの大きな違いは，AwesomeProxyがSiteJugglerと統合されていることです。単一障害点を持たず，高度な分散アルゴリズムと分散ストレージを使用するSiteJugglerとの統合により，データセンタ内の汎用ハードウェアを使用したフェールオーバが自動的に実現されています。AwesomeProxy自体について言えば，MySQLのバイナリプロトコルやFTP, IMAP, POP. SMTP, SSH他，有用なプロトコルを数多く理解することができます。そして最後に，AwesomeProxyは当社のライブマイグレーションシステムのキーコンポーネントなのです。実行中の処理が完了するまで，新たなリクエストはProxy上で保留されます。その後，下位のファイルシステムがアンマウントされ，変更情報の残り数百キロバイトがネットワークを通じてレプリケートされた後に，マウントとセットアップが実行されます。その時点で，ライブマイグレーション以前に構築されていたリクエストが解放されます - このようにして，大陸を越えた規模のライブマイグレーションが数秒間で，ユーザに気付かれることなく実施されるのです。
-  </blockquote> 
-  <p>FlexContainersは<a href="http://en.wikipedia.org/wiki/Chroot">Chroot</a>と<a href="http://en.wikipedia.org/wiki/FreeBSD_Jail">FreeBSD jail</a>をベースとした2タイプが提供される。それぞれサポートするテンプレートオプションや下位機能に違いがある。chroot版はPHPやPython，あるいはPerlといったCGI/FastCGI Webサイトで使用するためのものだ。MySQLデータベースとEメールアカウントには独自のZFSファイルシステムが割り当てられるので，独立したマイグレーションやスケールが可能だ。さらにマルチテナンシがそれぞれのサービス内でネイティブに処理される。Jailコンテナは内部的にはさまざまな形式が可能だ(<a href="http://en.wikipedia.org/wiki/Docker_(software)">Docker</a>コンテナによく似ている)。コンテナはテンプレートから生成することでデプロイを高速化することも，<a href="http://en.wikipedia.org/wiki/Copy_on_write">コピー・オン・ライト</a>技術を使用してストレージスペースを節約することもできる。</p> 
-  <p>同社がターゲットとするのは，従来のWebアプリケーションプラットフォームを，よりスケーラブルで信頼性の高いものにしたいと考えているWebホストプロバイダだ。営利使用での価格は，最小の100FlexContainer構成で1ポンド/月である。無料使用の条件はかなり広く，‘非営利ライセンスは，営利目的を意図しない任意の目的に使用される場合に適用可能です’となっている。ホビーストやその他のオープンプロジェクトにアピールすることが目的と思われる。</p> 
+  <p>Googleから待望のウェアラブルデバイス向けプラットフォーム<a href="http://android-developers.blogspot.ro/2014/03/android-wear-developer-preview.html">ア ンドロイドウェア</a>と先行開発者がより早く新機能を用いて新しいアプリの開発ができる<a href="http://developer.android.com/wear/preview/start.html">開 発者向けプレビュー</a>を一緒に発表された。</p> 
+  <p>Googleから出たグッドニュースの中で一つはアンドロイドウェアがホスト機器(スマートフォン又はタブレット)とペア で、ホスト通知を基本的にサポートするということだ。それはすべての既存アンドロイドアプリが別途対応をしなくてもアンドロイドワッチからメッセージが見 れるのを意味する。しかし、開発者たちはそれにしても新プラットフォームの利点を取り入れ、新しい専用アプリを作りたがっている。</p> 
+  <p>プラットフォームのコードがだった30KBのJARファイルであることから、Googleのアンドロイドウェア向けの作業はほとんど が<a href="http://developer.android.com/wear/design/user-interface.html">ユー ザインタフェース</a>と<a href="http://developer.android.com/wear/design/index.html">デザ イン方針</a>に 関するものとみられる。UIは連速で表示されるカードと音声又はタッチ操作によるユーザコマンドの２つのメインコンポネントで構成されている。機器からの 通知を表示するカードはバックグラウンドイメージの上で表示され、カードを垂直にスライドすることでユーザ操作を行う。個々のカードは複数のページを持 ち、水平スライドでページ操作ができる。カードは右から左へスライドで解除される。カードは重ねられるし、音又は振動と一緒に表示することもできる。</p> 
+  <p>それらのカードにはGメールや音楽プレーヤー見たいなアプリからの通知を含めており、メールの返信又は次の曲の再生などの操作アイコンを含んでいる。メール返信はキーボードを持っていない機器の場合、内蔵マイクでも操作できる。</p> 
+  <p>アンドロイドウェアのデザイン原則は”ちょうどいい時にちょうどいい情報”を提供することである。そのためにアンドロイドウェアには以下の要素が 必要となる：</p> 
+  <ul> 
+   <li>スマートな前後脈絡の認識：位置と時間情報に基づいた情報提供</li> 
+   <li>高い認識性：イメージとアイコンを使った簡潔な情報　</li> 
+   <li>ゼロ又は少ない操作：最低限の音声又はスライドによる操作</li> 
+   <li>役に立つ：ウェアラブル機器の本旨は”効率性、良いマナー、応答性”である　</li> 
+  </ul> 
+  <p>正式版アンドロイドウェアの仕様はまだ公開されていないが、現在公開されたいるプレビューのコードとエミュレータをヒントにして予測 できる。<a href="https://play.google.com/store/apps/details?id=com.google.android.wearablepreview.app&amp;ah=-fj0j8eN5wC7StHibipiMGIBwrs">ホ ストプレビューアプリケーション</a>は4.3以上が必要で、エミュレータはアンドロイド4.4.2上で動く。従って、古い4.2バージョンの機器とは動かない。なぜなら、アンドロイドウェアは4.3からサポートする新しい通知方式を使っているからだ。</p> 
+  <p>エミュレータは四角形と円形の２種類が用意されていて、Bluetooth, WiFi, NFC, Jazz Hands multi-touch (5本以上指)と多数のセンサーをサポートする。<br /> &nbsp;それらは<a href="http://www.qualcomm.com/snapdragon/processors/s4/specs">Qualcomm Snapdragon S4 Pro</a>プロセサー、Adreno 320 GPU そして512 MBのRAMで動くように設定されている。</p> 
+  <p>XamarinはXamarinツールチェインを使って相互作用できるアプリが作れる<a href="https://components.xamarin.com/view/androidwearpreview">ア ンドロイドウェア開発者向けプレビューコンポネント</a>を同じ日に発表した。</p> 
+  <p>MotorolaとLGは最初の<a href="http://www.theverge.com/2014/3/18/5522340/motorola-lg-announce-upcoming-android-wear-smartwatches">ア ンドロイドウェアワッチ</a>を発表したが、実際の仕様はまだ公開されていない。Asus, HTCそしてサムスンもその次を追う。ファッションアクセサリデザイン専門会社であり、Armani, Diesel, adidas Originalsを含む<a href="https://www.fossilgroup.com/about-us/#portfolio">複数のブラン ド</a>を持つ<a href="https://www.fossilgroup.com/">Fossil Group</a>はアンドロイドウェア市場への参戦を表明した。</p> 
+  <p>&nbsp;</p> 
+  <p>参考：開発者たちはこのプレビューの発表により、基礎コード変更のことを心配しなくていい。</p> 
  </div> 
 </div><br><br><br><br><br><br></body></html>

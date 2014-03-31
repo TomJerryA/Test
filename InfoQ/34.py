@@ -1,89 +1,50 @@
-<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>アジャイルでユースケースを利用する - ユースケース2.0，スライシング，ラミネーティング</h3><p><a target="_blank" href="http://www.infoq.com/news/2014/02/use-cases-agile"><em>原文(投稿日：2014/02/13)へのリンク</em></a></p>
+<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>Docker Indexがプライベートリポジトリとウェブフックを提供</h3><p><a target="_blank" href="http://www.infoq.com/news/2014/03/docker-private-repositories"><em>原文(投稿日：2014/03/24)へのリンク</em></a></p>
 <div class="article_page_left news_container text_content_container"> 
  <div class="text_info"> 
-  <p>アジャイルソフトウェア開発を使って製品をインクリメンタルに開発し提供する場合，要件項目はプロダクトバックログに収集，整理される。ここで使用される要件定義テクニックはユースケースだ。アジャイルの製品要件管理でユースケースを利用するテクニックには，ユースケース2.0やスライシング，ラミネーティングなどがある。</p> 
-  <p>Shobha Rangasamy Somasundaram氏とAmol Sharma氏はブログに，<a href="http://www.infosysblogs.com/infosys-labs/2013/10/can_formal_requirement_methods.html">フォーマルな要件定義手法がアジャイルでも有効か</a>を検討した記事を書いた。その中で両氏は，ウォーターフォールとアジャイルソフトウェア開発における要件の利用方法について比較を行っている。</p> 
-  <blockquote> 
-   <p>従来型のソフトウェア開発であるウォーターフォールプロセスでは，要件定義フェーズに次のような手法を使用します – ブレーンストーミング，アンケート，モデリング，プロトタイピング，観察，フォーカスグループ，調査，リバースエンジニアリング，インタビュー，ドキュメント解析，JAD(Joint Application Development) – コラボレーションとドメインモデル開発のワークショップ。ウォーターフォールにおいて要件を用意するのはクライアントやBA，プロダクトオーナなどの仕事です。彼らはそこで意見交換をして，最終的に要件定義書を作成します。そこで確定した要件が，次の開発チームへと引き渡されるのです。</p> 
+  <p><a href="https://www.docker.io/">Docker</a>を提供する<a href="http://www.docker.com/">Docker Inc.</a>が新しいサービスを発表した。初の商用サービスである<a href="https://index.docker.io/help/docs/#repositories">プライベートリポジトリ</a>も含む。<a href="https://index.docker.io/">Docker index</a>はウェブフック、トリガ、<a href="https://index.docker.io/help/docs/#trustedbuilds">Trusted Builds</a>のためのリンク、メールによる通知を提供する。</p> 
+  <p>Docker indexはDockerの<a href="https://docs.docker.io/en/latest/terms/image/#image-def">イメージ</a><a href="https://docs.docker.io/en/latest/terms/repository/#repository-def">リポジトリ</a>のための<a href="https://docs.docker.io/en/latest/terms/registry/">レジストリ</a>だ。リポジトリはプレビルドイメージを共有するための手段であり、毎回、全員が環境を再作成しなくてもよいようにする。雑な類推だが、Dockerにとってのリポジトリは、Vagrantにとっての<a href="http://docs.vagrantup.com/v2/boxes.html">ボックス</a>だ。プライベートリポジトリが利用できるようになることで、誰がリポジトリにプッシュやリポジトリからのプルができるのかを制御できる。また、イメージタグを使ってリポジトリを閲覧し、ファイルシステムの変更を見ることができる。</p> 
+  <p>リポジトリへのプッシュからウェブフックを起動することもできる。ウェブフックのURLは下記のJSONペイロードを伴ったHTTPのPOSTリクエストを受けつける。</p> 
+  <pre>
+{
+   &quot;push_data&quot;:{
+      &quot;pushed_at&quot;:1385141110,
+      &quot;images&quot;:[
+         &quot;imagehash1&quot;,
+         &quot;imagehash2&quot;,
+         &quot;imagehash3&quot;
+      ],
+      &quot;pusher&quot;:&quot;username&quot;
+   },
+   &quot;repository&quot;:{
+      &quot;status&quot;:&quot;Active&quot;,
+      &quot;description&quot;:&quot;my docker repo that does cool things&quot;,
+      &quot;is_trusted&quot;:false,
+      &quot;full_description&quot;:&quot;This is my full description&quot;,
+      &quot;repo_url&quot;:&quot;https://index.docker.io/u/username/reponame/&quot;,
+      &quot;owner&quot;:&quot;username&quot;,
+      &quot;is_official&quot;:false,
+      &quot;is_private&quot;:false,
+      &quot;name&quot;:&quot;reponame&quot;,
+      &quot;namespace&quot;:&quot;username&quot;,
+      &quot;star_count&quot;:1,
+      &quot;comment_count&quot;:1,
+      &quot;date_created&quot;:1370174400,
+      &quot;dockerfile&quot;:&quot;my full dockerfile is listed here&quot;,
+      &quot;repo_name&quot;:&quot;username/reponame&quot;
+   }
+}
+</pre> 
+  <p><a href="http://blog.docker.io/2013/11/introducing-trusted-builds/">Trusted Builds</a>はリポジトリとGitHubのアカウントをひも付け、GitHubリポジトリにポストコミットフックを追加する。このフックはDocker index内のイメージのビルドとアップデートを起動し、イメージと対応する<a href="https://docs.docker.io/en/latest/reference/builder/">Dockerfile</a>の関係をメンテナンスする。</p> 
+  <p>Trusted Buildsはふたつの改善が行われた。リンクとトリガだ。リンクによってTrusted Buildのリポジトリが同期されるようになる。どのようなアップデートでもリンクされているTrusted Buildは他のTrusted Buildのアップデートを起動するのだ。トリガは単純なプロセスであり、リポジトリのビルドを起動する。GitHubには何もコミットしなくていい。</p> 
+  <pre>
+  $ curl --data &quot;build=true&quot; -X POST https://index.docker.io/u/samalba/docker-registry/trigger/b2562468-aea0-11e3-a39e-b6db5999dfec/
+</pre> 
+  <p>Docker indexのユーザがイベントが発生したことをメールで受け取れるようになった。Trusted Buildや他のユーザのコミットなどのイベントだ。</p> 
+  <p>Docker indexの新しいサービスはDockerレジストリの選択肢を増やす。<a href="https://quay.io/">Quay.io</a>はすでに同じようなサービスを提供している。</p> 
+  <p>プライベートリポジトリはDocker Incの初の<a href="https://index.docker.io/plans/">商用サービス</a>だ。彼らは支払いが必要なサービスを他にも構想している。同社の<a href="http://blog.docker.io/2014/03/introducing-private-repos-webhooks-and-more/">ブログ</a>によれば、</p> 
+  <blockquote>
+    Docker.io上のすべてのサービスは現在、無料です。これはDocker周辺のコミュニティを活発にし育てる上で重要なことです。したがってほとんどのサービスは引き続き無料で提供します。しかし、Benがすでに発表したように、Dockerに継続して投資していくには、オプションの商用サービスを提供する必要があります。プライベートリポジトリはその一環です。
   </blockquote> 
-  <blockquote> 
-   <p>(...) アジャイルの時代になって，プロジェクトの初期段階や，少数の限定的な個人による要件定義は行われなくなりました。しかし，ソフトウェア開発のライフサイクル全体に対する影響力は変わっていません。アジャイルでは要件の文書化方法をひとつに決めていません。それよりも&quot;必要十分である&quot;ことを重視しています。詳細は必要になった時点で初めて，時間を費やして展開されます。ひとつに限定されていた&quot;要件定義段階&quot;は分解，分散されて，普遍的な存在になっています。従来と同じ分析方法を用いて，ライフサイクル全体を通じて実行されるのです。</p> 
-  </blockquote> 
-  <p>ブログ記事にはロードマップとユースケース，ユーザストーリを組み合わせて製品要件を管理する方法が詳細に説明されている。</p> 
-  <p>Andy Hayward氏は一連のブログ記事で，さまざまな要件手法について検討を行った。&quot;<a href="http://whyarerequirementssohard.wordpress.com/2013/10/16/when-to-use-user-stories-use-cases-and-ieee-830-part-2-use-cases/">when to use user stories, use cases and IEEE 830 - Part 2: Use cases</a>&quot;と題した記事では，ユースケースの形式について取り上げている。</p> 
-  <blockquote> 
-   <p>ユースケースは非常にフォーマルに記述して，プロセスを極めて正確に定義することも可能ですし，Alistair Cockburn氏が&quot;簡易ユースケース(Use Case Brief)&quot;という言葉で表現したような，単純な段落形式を使って，ユーザストーリより多少詳細という程度に記述することもできます。さらにその２つの中間にも，さまざまなバリエーションがあります。アナリストはこの広い範囲から，プロジェクトの必要性に合わせて選択を行えばよいのです。ところが残念なことに，ほとんどの組織では，標準的なテンプレートを用意してこの柔軟性を制限してしまっています。</p> 
-  </blockquote> 
-  <p>氏の説明によると，ユースケースを小さな部分にブレークダウンする作業は，時として困難な場合がある。</p> 
-  <blockquote> 
-   <p>ユースケースに関する問題点は，それが通常，多数の要件をひとつの大きな情報として閉じ込めてしまっていることです。これによって開発者は，ユースケースの複雑性を想定した作業計画が困難になりますし，管理者は価値や優先度の有意な判断が難しくなります。それぞれのユースケースを，ステップ全体として実現可能なパスを描き出せるような‘シナリオ’のリストに分割することは可能です。ただしそれを行うには，各シナリオの実行に先だって&quot;システムのあるべき姿&quot;を描き出すというように，さらに多くの作業が必要になります。</p> 
-  </blockquote> 
-  <p>&quot;<a href="http://www.ivarjacobson.com/Software_Use_Case_Essentials/">Use Case 2.0 Essential Practice</a>&quot;というWebサイトには，ユースケースのスライシングを使って要件を把握する手法 (ベースは<a href="http://www.ivarjacobson.com/Use_Case2.0_ebook/">Use-Case 2.0 ebook</a>)が概説されている。</p> 
-  <blockquote> 
-   <ul> 
-    <li>システムが行うべきことを正確に記述する。</li> 
-    <li>要件の各部分をグループにまとめて，大まかなスコープ管理を行う。</li> 
-    <li>要件をスライスして製品バックログ項目を作成し，それに従って反復型開発を実施する。</li> 
-    <li>ユーザの要求に対応するため，優先順位を絶えず見直す。</li> 
-    <li>開発者とユーザがともに理解しやすいような，シンプルな視覚モデルと意味のある機能要件を作り上げる。</li> 
-    <li>スクラムやIJI Iterative Essentialsといった，反復的かつバックログ駆動の管理手法のメリットを活用する。</li> 
-    <li>ユーザの機能要件をジャストインタイムに十分な詳細度で把握することで，彼らのビジネス目標をサポートする。</li> 
-   </ul> 
-  </blockquote> 
-  <p>ユースケーススライシングは，アジャイルで製品の開発と提供をインクリメンタルに行うための方法だ。</p> 
-  <blockquote> 
-   <p>IJI Iterative Essentialsの実践は，アクタとユースケースを見つけ出して，開発すべきユースケース部分(スライス)を選択し，優先度を付与することから始まります。次にユースケーススライスの詳細化を行いますが，それ以上に重要なのがテストの詳述化です。そうした上で，そのテストを満足するようにソフトウェアを実装するのです。テストを実施して，検証済の動作可能なソフトウェアとしての進捗を追跡し，チームを変更およびサポートするために結果をフィードバックします。</p> 
-  </blockquote> 
-  <p><a href="http://www.infoq.com/author/Ivar-Jacobson">Ivan Jacobson</a>氏がブログ記事&quot;<a href="http://blog.ivarjacobson.com/architecture/">Architecture</a>&quot;で説明しているように，まずはスリムなシステムから開発を始めるとよいだろう。</p> 
-  <blockquote> 
-   <p>[スリムなシステムとは，] ユースケース(あるいはシナリオ)の重要なパスをすべて備えたシステムです。重要なサブシステムやコンポーネント，クラス，ノードなどは漏らさず実装します。通常この段階では，完成コードの5～15%程度にしかなりませんが，重要項目の動作を保証するにはこれで十分です。何よりも大切なのは，スリムなシステムを拡張してシステムを完成可能なことです。</p> 
-  </blockquote> 
-  <p>Richard Schaaf氏は&quot;<a href="http://blog.xebia.com/2012/07/12/improving-user-stories-with-usecases/">Improving User Stories with Use Cases</a>&quot;と題したブログ記事で，ユースケースを使用した製品要件の管理にユースケース2.0がいかに有用かを説明している。氏によれば，ユーザストーリに関連して問題があるのならば，その定義プロセスを見直す必要がある。</p> 
-  <blockquote> 
-   <p>ここで問題なのは (..) 長期的に有効かつ有用なユーザストーリを記述することは非常に困難だ，という点です。私たちに必要なのはユーザストーリの代替手段ではありません。それを考え出すための，もっとよい方法なのです。</p> 
-  </blockquote> 
-  <blockquote> 
-   <p>プロダクトバックログが時間の経過によって劣化することは珍しいことではありません。これはチームにとって，本当に重要な問題となります。アジャイル組織が真の成功を収めるには，ユーザストーリ作成のプロセスを重視する姿勢こそが必要なのです。</p> 
-  </blockquote> 
-  <p>氏が提案するのは，ユーザストーリの定義にユースケーススライスを使用することだ。</p> 
-  <blockquote> 
-   <p>ユースケーススライスとは，ユースケースを貫く流れをひとつに集めたものです。その中には，ユーザに対する価値の明確なテストケースが含まれています。この流れはユースケースストーリと呼ばれています。</p> 
-  </blockquote> 
-  <p>氏はユースケースをユースケースストーリに分解して，それをユースケーススライスの定義に使用する方法について説明する。そうしてできたユースケーススライスが，プロダクトバックログに必要なユーザストーリとなり得るのだ。</p> 
-  <blockquote> 
-   <p>ユースケースをモデリングに正しく使用したのであれば，これらのユースケースストーリそれぞれが確かな価値を持っています。ユースケーススライスは，これらのユースケースストーリを選択(ひとつないし複数)した上で，満たすべきテストケースをいくつか加えればよいのです。</p> 
-   <p>こうして定義されたユースケーススライスは，ユーザストーリとしての基準をすべて満たしています。結果として私たちは，誰のためか(開始アクタ)，何が必要か(ユースケースストーリとテストケース)，価値は何か(ユースケースの構築方法に由来)，といったことを理解します。ゆえにユースケーススライスはユーザストーリそのものであり，プロダクトバックログの項目としても使用可能なのです。</p> 
-  </blockquote> 
-  <p>ユースケーススライスを使用するメリットについて，氏は次のように説明する。</p> 
-  <blockquote> 
-   <p>ユースケースを中心に置くことにより，常にシステム全体を視野に入れることができます。</p> 
-   <p>詳細なレベルが早い段階で議論されますから，適切なタイミングで十分なレベルの詳細に到達可能です。</p> 
-   <p>ユースケーススライスの定義を通じて，それぞれのユーザストーリが価値を中心として一貫したストーリであることを確認できます。</p> 
-  </blockquote> 
-  <p><a href="http://www.infoq.com/author/Alistair-Cockburn">Alistair Cockburn</a>氏の記事&quot;<a href="http://alistair.cockburn.us/Laminating+not+slicing">Laminating not slicing</a>&quot;には，氏が&quot;ラミネーティング&quot;と呼ぶメタファについての説明がある。</p> 
-  <blockquote> 
-   <p>しかしながら，その言葉は逆です。私たちが行うのは，巨大な象のような要件をスライスに解体することではありません。私たちは何もないところから始めて，象を作り上げるのです。象のスライスを山ほど集めたところで，それが象になるはずがありません。 私たちはここで，最小の時間でりっぱな象の外観を作り出すような，ラミネーションの手順について議論したいと思います。</p> 
-  </blockquote> 
-  <p>ラミネーティングの第一歩となるのが<a href="http://alistair.cockburn.us/Walking+skeleton">ウォーキングスケルトン(walking skeleton)</a>だ。</p> 
-  <blockquote> 
-   <p>ウォーキングスケルトンとは，小規模なエンド・ツー・エンド処理を実行する，システムの最小単位の実装です。完成品と同じアーキテクチャを使用する必要はありませんが，主要なアーキテクチャコンポーネントとはリンクさせていた方がよいでしょう。アーキテクチャは機能と並行して発展させればよいのですから。</p> 
-  </blockquote> 
-  <p>ソフトウェア製品ないしシステムの「ウォーキングスケルトン」とは，どのようなものだろう？ 氏はいくつかの例を挙げる。</p> 
-  <blockquote> 
-   <p>ウォーキングスケルトンの構成要素は，設計されるシステムによってさまざまです。クライアントサーバシステムならば，画面-データベース-バックエンドという構成の１機能になるでしょうし，マルチティアあるいはマルチプラットフォームのシステムであれば，ティアあるいはプラットフォーム間で動作するコネクションでしょう。コンパイラならば言語のもっとも簡単な要素であろうトークンのひとつをコンパイルする構成，ビジネスプロセスの場合は簡単なビジネストランザクション (Jeff Patton氏が，後述する&quot;Essential Interaction Design&quot;のテクニックで説明したような) のワークスルーです。</p> 
-  </blockquote> 
-  <p>ウォーキングスケルトンの次には，氏が &quot;<a href="http://alistair.cockburn.us/The+A-B+work+split%2c+feature+thinning+and+fractal+walking+skeletons">The A-B work split, feature thinning and fractal walking skeletons</a>” で説明しているような外面のラミネートに着手する。</p> 
-  <blockquote> 
-   <p>機能Fの一部をカーブの急上昇部分に置いて，&quot;残りの機能でトラブルを起こさなくて済むようにこの部分をしっかりやろう&quot;，と伝えます (これがA部分です)。そして機能Fの残り部分 (B部分) をカーブの末尾まで遅らせます。こうしておくことで，Bをいつでも実行できるようになります。</p> 
-  </blockquote> 
-  <p>インクリメンタルな製品開発で使用可能な機能単位の決定と優先度付けを行うには，A-Bスプリットをどのように行えばよいのだろう。氏はいくつかの戦略を提供している。</p> 
-  <blockquote> 
-   <ul> 
-    <li><a href="http://alistair.cockburn.us/The+A-B+work+split">A-Bスプリット</a>ではA機能の実施について，残りの作業をいつでも実施できるレベルまで行う，とされています。</li> 
-    <li>Jeff Patton氏の &quot;<a href="http://alistair.cockburn.us/Feature+thinning">Fearure Thinning</a>&quot;は違います - 非常に素晴らしいものである必要はないが，完全に動作すると評するに相応しいレベルまで実装するのです (普通のブレーキは必要だが，アンチロックブレーキまでは不要，というように)。</li> 
-    <li><a href="http://alistair.cockburn.us/Walking+Skeleton">ウォーキングスケルトン</a>戦略は，部品間のコネクションを確立する上で必要な，ほぼ最低限 (サブ最低限?) の機能を実現する，という方法です。氏は最近になってこれを拡張し，各ストーリ用のミニ・ウォーキングスケルトンを定義しました(<a href="http://agileproductdesign.com/blog/the_new_backlog.html).">http://agileproductdesign.com/blog/the_new_backlog.html).</a>。このナイスな用語の説明として，Gery Derbier氏は「リカーシブ・ウォーキングスケルトン」あるいは「フラクタル・ウォーキングスケルトン」という言葉を私に提案してきました。Geryはこれらをプロジェクトで使用していて，非常に気に入っていると言っています。そうでしょう – この考え方はA-Bスプリットと多少なりとも関係していますし，それゆえにリスク軽減という特徴も備えていますから。Jeffのミニ(フラクタル)ウォーキングスケルトンにFeature Thinningの発想が含まれているのかどうか分かりませんが，この２つにはほとんど違いがないのかも知れません。</li> 
-   </ul> 
-  </blockquote> 
-  <p>ユースケースによる製品要件の管理に，読者はどのような方法を使っているのだろうか - ユースケース2.0，スライシング，ラミネーティング，あるいは他の手法？</p> 
+  <p>料金はリポジトリ数が5つで月額7ドル。最大５０リポジトリで月額50ドル。</p> 
  </div> 
 </div><br><br><br><br><br><br></body></html>

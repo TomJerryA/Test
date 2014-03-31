@@ -1,13 +1,78 @@
-<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>IBM Launches Contest for Cognitive Mobile Apps using Watson</h3><p>At the <a href="http://www.mobileworldcongress.com/">Mobile World Congress</a>, IBM has announced a developer contest for developers to create mobile consumer and business apps powered by <a href="http://www-03.ibm.com/innovation/us/watson/">IBM Watson cognitive computing platform</a>.</p>
-<p>The winners of the <a href="http://www-03.ibm.com/press/us/en/pressrelease/43309.wss">IBM Watson Mobile Developer Challenge</a> will receive design consulting and support from IBM to gain access to the market.</p>
-<p>IBM Watson is a computer system capable of answering questions posed in natural language. <a href="https://blogs.discovermagazine.com/sciencenotfiction/2010/06/28/watson-fails-the-turing-test-but-just-might-pass-the-jeopardy-test/">Watson is not yet able to pass the Turing Test</a> but it could <a href="http://www.cio.com/article/665677/IBM_Watson_Vanquishes_Human_Jeopardy_Foes">win the TV game show Jeopardy</a> against <a href="http://www.youtube.com/watch?v=WFR3lOm_xhE">former winners Brad Rutter and Ken Jennings</a>. Rutter and Jennings are not two randomly chosen human opponents: Rutter holds the record for Jeopardy! winnings while Jennings holds the record for longest Jeopardy! winning streak with 74 straight wins.</p>
-<p><a href="http://en.wikipedia.org/wiki/Watson_(computer)#Software">Watson's software</a> was written in various languages, including Java, C++, and Prolog. Watson is based on Apache Hadoop framework for distributed computing, Apache UIMA (Unstructured Information Management Architecture) framework, IBM’s DeepQA software and SUSE Linux Enterprise Server 11 operating system. <a href="ftp://public.dhe.ibm.com/common/ssi/ecm/en/pow03061usen/POW03061USEN.PDF">According to IBM</a>, &quot;more than 100 different techniques are used to analyze natural language, identify sources, find and generate hypotheses, find and score evidence, and merge and rank hypotheses.&quot;</p>
-<p><a href="http://en.wikipedia.org/wiki/Watson_(computer)#Processing">Watson's basic working principle</a> is to parse keywords in a clue while searching for related terms as responses. Watson's main strength is its <a href="http://wayback.archive.org/web/20110414214425/http://www.pbs.org/wgbh/nova/tech/will-watson-win-jeopardy.html">ability to quickly execute thousands of proven language analysis algorithms simultaneously</a> to find the correct answer. The more algorithms find the same answer independently, the more likely Watson is to be correct. Once Watson has a small number of potential solutions, it is able to check against its database to ascertain whether the solution makes sense.</p>
-<p>In IBM's vision, <a href="http://www.cio.com/article/746296/IBM_Looks_to_Outsmart_Big_Data_Competition_With_Watson">cognitive computing comes down to three abilities</a>, each paired to a specific service IBM is offering:</p>
-<ul> 
- <li> <p>Watson Discovery Advisor is intended to help find the right questions in data through natural language processing and to provide human-style communication.</p> </li> 
- <li> <p>Watson Analytics allows users to explore big data insights through visual representations, without the need for advanced analytics training.</p> </li> 
- <li> <p>Watson Explorer is intended to help users uncover and share data-driven insights through a unified view.</p> </li> 
-</ul>
-<p>The new step that <a href="http://www-03.ibm.com/press/us/en/pressrelease/42867.wss">IBM has taken with the creation of the Watson Group</a> has led to opening up Watson's technology through the <a href="http://www-03.ibm.com/innovation/us/watson/watson_ecosystem.shtml">Watson Development Cloud</a>, which aims at offering <a href="http://blog.programmableweb.com/2013/11/19/ibm-uses-restful-apis-to-turn-watson-into-a-cloud-service/">Watson functionality through a RESTful API</a> to enable third parties to design, develop, and deploy cognitive applications.</p>
-<p>Other companies are playing in the cognitive computation field. <a href="http://www.expectlabs.com">Expect Labs</a>, makers of the <a href="http://www.expectlabs.com/mindmeld/">MindMeld app</a> for dynamically suggesting content in response to the topics in a spoken conversation, have recently launched their own <a href="http://blog.programmableweb.com/2014/02/19/today-in-apis-expect-labs-launches-mindmeld-api-and-5-new-apis/">cognitive platform as a service</a>, which could <a href="http://gigaom.com/2014/02/19/more-ai-for-developers-as-expect-labs-releases-the-mindmeld-api/">help build something similar to Google Now</a>. Wolfram released in 2009 its <a href="https://www.wolframalpha.com">Wolfram Alpha</a> computational knowledge engine <a href="http://en.wikipedia.org/wiki/Wolfram_Alpha">able to respond to natural language questions and generate a human-readable answer</a>. Finally, Google is also there. <a href="http://www.theguardian.com/technology/2014/feb/22/robots-google-ray-kurzweil-terminator-singularity-artificial-intelligence?">In a recent interview with The Guardian</a>, Google engineering director Ray Kurzweil explained how important natural language processing is to Google: “IBM’s Watson is a pretty weak reader on each page, but it read the 200m pages of Wikipedia. And basically what I’m doing at Google is to try to go beyond what Watson could do. To do it at Google scale.”</p><br><br><br><br><br><br></body></html>
+<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>To Have and Have Not StackMob- Part 1 of 2: MBaaS Provider's Customers get Short End of Backend</h3><p><strong>THE</strong>&nbsp;<a href="https://blog.stackmob.com/2013/12/stackmob-joins-paypal/">end of StackMob</a> --progenitor of mobile backend as a service (MBaaS)-- will be official on the above date. <a href="https://www.paypal-community.com/t5/PayPal-Forward/PayPal-Welcomes-the-StackMob-Team/ba-p/779315">PayPal dictated</a> its closure after eBay's online payment system acquired the company at the close of 2013.</p>
+<p class="MsoNormal"><span style="font-size:14.0pt;mso-bidi-font-size:16.0pt"><img src="http://www.infoq.com/resource/news/2014/03/StackMob-MBaaS-closes-doors/en/resources/stackmob_banner.jpg" alt="" _href="img://stackmob_banner.jpg" _p="true" />
+  <!--[endif]-->
+  <o:p></o:p></span></p>
+<p class="MsoNormal">Reactions from the mobile community ran from dismay to stoic acceptance to &quot;<a href="http://www.broadbandconvergent.com/opinion/analysis-shakeout-coming-emerging-mobile-backendasaservice-mbaas-space/">I told you so</a>&quot;…<span style="font-size:14.0pt;mso-bidi-font-size:16.0pt">
+  <o:p></o:p></span></p>
+<p class="MsoNormal">ReadWrite commenter- <a href="https://www.facebook.com/hovik.pogosyan" target="_blank"><b><span style="mso-bidi-font-size:6.0pt;font-family:Helvetica;mso-bidi-font-family:
+Helvetica;color:#3B5998;text-decoration:none;text-underline:none">Hovo Pogosyan</span></b></a><span class="apple-converted-space"><span style="mso-bidi-font-size:6.0pt;font-family:
+Helvetica;mso-bidi-font-family:Helvetica;color:gray">&nbsp;</span></span><span class="fsmfwnfcg"><span style="mso-bidi-font-size:6.0pt;font-family:Helvetica;
+mso-bidi-font-family:Helvetica;color:gray">&middot;</span></span><span class="apple-converted-space"><span style="mso-bidi-font-size:6.0pt;font-family:
+Helvetica;mso-bidi-font-family:Helvetica;color:gray">&nbsp;&nbsp;</span></span><span class="fsmfwnfcg"><span style="mso-bidi-font-size:6.0pt;font-family:Helvetica;
+mso-bidi-font-family:Helvetica;color:gray"><a href="https://www.facebook.com/pages/Los-Angeles-California/110970792260960" target="_blank"><span style="color:#898F9C;text-decoration:none;text-underline:
+none">Los Angeles, California</span></a></span></span></p>
+<p class="MsoNormal">&nbsp;</p>
+<blockquote>
+ I have been contacting Stackmob support since January, ASKING BEGGING for a support plan. Now they decide to shut down? You know some early notification would have been nice. 
+ <span style="mso-bidi-font-size:6.5pt;font-family:Helvetica;mso-bidi-font-family:
+Helvetica;color:#333333">(Cost us plenty of time and resources) </span>
+ <span style="mso-bidi-font-size:6.0pt;font-family:Helvetica;mso-bidi-font-family:
+Helvetica;color:#1A1A1A">Before I spent 30k developing my whole application around Stackmob's iOS SDK. Anyone know if Parse is worth taking a shot?</span>
+</blockquote>
+<p>&nbsp;</p>
+<p class="MsoNormal"><b>Tech Crunch commenter</b> Waqasmakhdum-</p>
+<blockquote>
+ That's why developers should be asking questions beyond uptime and cost...about the&nbsp;future viability of their provider like where is the data? What happens if the backend service disappears/ownership transfers?
+</blockquote>
+<p>&nbsp;<span style="font-size:14.0pt;mso-bidi-font-size:16.0pt">
+  <!--[if !supportEmptyParas]-->&nbsp;
+  <!--[endif]-->
+  <o:p></o:p></span></p>
+<p class="MsoNormal"><b>ReadWrite commenter</b> <a href="https://www.facebook.com/gmansoor.us" target="_blank"><b><span style="mso-bidi-font-size:6.0pt;font-family:Helvetica;mso-bidi-font-family:
+Helvetica;color:#3B5998;text-decoration:none;text-underline:none">Ghazenfer Mansoor</span></b></a><span class="apple-converted-space"><span style="mso-bidi-font-size:
+6.0pt;font-family:Helvetica;mso-bidi-font-family:Helvetica;color:gray">&nbsp;</span></span><span class="fsmfwnfcg"><span style="mso-bidi-font-size:6.0pt;font-family:Helvetica;
+mso-bidi-font-family:Helvetica;color:gray">&middot;</span></span><span class="apple-converted-space"><span style="mso-bidi-font-size:6.0pt;font-family:
+Helvetica;mso-bidi-font-family:Helvetica;color:gray">&nbsp;&nbsp;</span></span><span class="fsmfwnfcg"><span style="mso-bidi-font-size:6.0pt;font-family:Helvetica;
+mso-bidi-font-family:Helvetica;color:gray"><a href="https://www.facebook.com/pages/Founder-CTO/117929081590052" target="_blank"><span style="color:#898F9C;text-decoration:none;text-underline:
+none">Founder &amp; CTO</span></a></span></span><span class="apple-converted-space"><span style="mso-bidi-font-size:6.0pt;font-family:
+Helvetica;mso-bidi-font-family:Helvetica;color:gray">&nbsp;</span></span><span class="fsmfwnfcg"><span style="mso-bidi-font-size:6.0pt;font-family:Helvetica;
+mso-bidi-font-family:Helvetica;color:gray">at</span></span><span class="apple-converted-space"><span style="mso-bidi-font-size:6.0pt;font-family:
+Helvetica;mso-bidi-font-family:Helvetica;color:gray">&nbsp;</span></span><span class="fsmfwnfcg"><span style="mso-bidi-font-size:6.0pt;font-family:Helvetica;
+mso-bidi-font-family:Helvetica;color:gray"><span style="color:#898F9C"><a href="https://www.facebook.com/techrivers" target="_blank">Technology Rivers</a>-</span></span></span></p>
+<blockquote>
+ <span style="mso-bidi-font-size:6.0pt;font-family:Helvetica;mso-bidi-font-family:
+Helvetica;color:#1A1A1A">That's one of the (reasons that) I suggest customers (do not) use these type of tools. Short term benefits; mostly (ends) up like this in the long run. I sense Parse is going to do the same sooner or later. Good for some, who will get migration projects.</span>
+</blockquote>
+<p>&nbsp;
+ <!--[if !supportEmptyParas]-->&nbsp;
+ <!--[endif]-->
+ <o:p></o:p></p>
+<p class="MsoNormal"><span class="authorpublisher-anchor-color"><b><span style="mso-bidi-font-size:7.5pt;font-family:inherit;color:#3F4549">ReadWrite commenter- <span style="mso-bidi-font-size:6.5pt;color:#C80F32"><a href="http://readwrite.com/2014/02/12/stackmob-shutting-down">Fred Destin</a>-</span></span></b></span></p>
+<blockquote>
+ <span style="mso-bidi-font-size:7.5pt;font-family:inherit;color:#3F4549">Think StackMob may have been the first but hardly a defining company. Defaulted back to HTML5 only, had made some odd architecture choices. Think <a href="http://www.youtube.com/watch?v=TxTn9w9r3MM">we should be happy</a> that all the people there found a home through acquihire but not overstate the importance of the shutdown.</span>
+</blockquote>
+<p><span style="font-size:14.0pt;
+mso-bidi-font-size:16.0pt">
+  <o:p></o:p></span></p>
+<p>Mobile app developersdevelopers often use a backend service provider like StackMob to defray the cost of creating the less glamorous portions of their software program's nuts and bolts. Like authenticating, managing and storing their application users' data, to name only a few of the services offered by these keepers of the clouds.</p>
+<p style="margin:0in;margin-bottom:.0001pt"><b><span style="mso-bidi-font-size:7.5pt;font-family:inherit;
+color:#3F4549">Tech Crunch commenter </span>Muthu Leesa JohnJan</b>-&nbsp;</p>
+<blockquote>
+ the popularity of MBaaS is shooting up for a reason - this light weight mobile middleware will provide a great app development infrastructure,&nbsp;access backend systems, integrate with third party platforms, and support application services to offer a great user experience.
+</blockquote>
+<p class="MsoNormal">With other <a href="https://blog.stackmob.com/2013/04/auto-importer-available-for-parse-customers-joining-stackmob/">industry mainstay Parse</a> being acquired by Facebook not long ago, even the casual observer can see <a href="https://www.elance.com/j/stackmob-parse-migration-ios-iphone-application/53523889/">a trend developing</a> where acquisitions of MBaaS providers are used to beef-up the reach of enterprises like Facebook and PayPal into the ever-widening mobile computing arena.</p>
+<p>Taking notice of the explosive growth of the <a href="http://www.kinvey.com/blog/3652/the-evolving-enterprise-backend-as-a-service-ecosystem">mobile ecosystem</a>, <a href="http://www.espressologic.com/reactive-programming-startup-espresso-logic-snags-1-6m-funding-for-industry-first-backend-service/">Angel investors</a> are spawning <a href="http://www.xconomy.com/seattle/2012/05/30/buddy-platform-open-for-business-raises-1m-for-app-backend-service/">the proliferation</a> of evermore MBaaS providers. These startups, along with their apps and customers' data will usually be locked-in to the proprietary technology that is featured by most MBaaS providers.
+ <!--[if !supportEmptyParas]-->&nbsp;
+ <!--[endif]-->
+ <o:p></o:p></p>
+<p class="MsoNormal"><span class="authorpublisher-anchor-color"><b><span style="mso-bidi-font-size:7.5pt;font-family:inherit;color:#3F4549">ReadWrite commenter- <a href="http://readwrite.com/2014/02/12/stackmob-shutting-down"><span style="mso-bidi-font-size:6.5pt;color:#C80F32">Matt Cumello</span></a> (</span></b></span><em><span style="font-size: 7pt; font-family: Arial;">Director of Marketing of AnyPresence)</span></em><em><span style="font-family: Arial; font-style: normal;">-</span></em></p>
+<blockquote>
+ MBaaS customers clearly need to weigh the pros and cons of using a 100% cloud-based solution versus an enterprise solution with no platform lock-in and flexible hosting. The platform lock-in is huge in this scenario, as StackMob’s customers have essentially been left out in the cold. With 
+ <a href="http://www.anypresence.com/blog/2013/04/fool-me-once-the-truth-about-enterprise-mobility-and-platform-lock-in/">solutions like AnyPresence</a>, the run-time and design-time APIs are separate, making it possible for customers to not only own the data in their apps, but also the server and app code as well.
+</blockquote>
+<p>&nbsp;</p>
+<p class="MsoBodyText"><em>In part two of To Have and Have Not StackMob we'll examine why MBaaS will continue to thrive.</em><span style="mso-bidi-font-size:7.5pt;font-family:inherit;
+color:#3F4549">
+  <!--[if !supportEmptyParas]-->&nbsp;
+  <!--[endif]-->
+  <o:p></o:p></span></p><br><br><br><br><br><br></body></html>
