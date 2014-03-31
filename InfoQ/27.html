@@ -1,41 +1,10 @@
-<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>InfoQ互联网极限性能黑客马拉松：La/nmp架构秒杀活动开始报名</h3><p><a href="https://github.com/InfoQ/server-hackathon">InfoQ互联网极限性能黑客马拉松</a>是面向Server团队的线上PK活动，参赛团队的目标是在限定资源、限定技术下设计出能最大化利用底层资源所有性能的架构。InfoQ希望通过本活动为互联网公司提供成熟、可落地的架构方案。</p>
-<h2>本次活动主题：<a href="https://github.com/InfoQ/server-hackathon/blob/master/first-phase.md">La/nmp架构秒杀</a></h2>
-<h3>业务场景</h3>
-<p>电商促销，促销商品设置100个库存，预计在促销开始的第一秒内有100万人参与抢购。</p>
-<h3>资源限制</h3>
-<p>每队提供5台机器，默认配置为：4core 4Gmem 10G CentOS 6.4 x86_64</p>
-<h3>技术限制</h3>
-<ol> 
- <li>业务层逻辑使用PHP开发，版本不限；后端语言的选择无限制</li> 
- <li>操作系统使用Linux，版本不限</li> 
- <li>其他依赖系统全部采用开源方案</li> 
-</ol>
-<h3>测试方案</h3>
-<p>参赛者完成代码与文档的提交后，将自己所分配机器的公网IP报告给评委。评委会导流量至该IP进行压测，在监控工具Zabbix中检查服务器的QPS与其他指标，主要考察点包括：</p>
-<ol> 
- <li>对瞬时并发的处理能力</li> 
- <li>对超卖的处理方式</li> 
- <li>页面加载的处理方式</li> 
-</ol>
-<h2>参赛方式</h2>
-<h3>1、报名</h3>
-<p>在2014年3月21日之前发邮件给 editors@cn.infoq.com ，邮件标题为：报名参加InfoQ互联网极限性能黑客马拉松：La/nmp架构秒杀</p>
-<p>邮件正文包含：</p>
+<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>Microsoft Azure在中国正式商用</h3><p>微软中国在2014年3月26日宣布由世纪互联运营的Microsoft Azure在中国正式商用。<a href="http://windowsazure.cn/">Azure官网</a>上的在线购买入口尚未开放，有意购买Azure服务的用户可致电官网上的支持电话以联系Azure的销售人员（定价<a href="http://windowsazure.cn/zh-cn/pricing/overview/">参考这里</a>）。同日，微软发放了第三批免费体验账号2000个，不过在发放后15分钟内已被抢注一空。</p>
+<p>本次发布会释出了如下信息：</p>
+<p>功能方面，目前中国版Azure上可用的服务包括网站、虚拟机、云服务、SQL、存储、虚拟网络、Service Bus队列服务、活动目录，与开始公测时开放的服务是一样的。国际版Azure上的其他服务，如CDN、HDInsight等，进入中国版Azure的时间仍未确定。</p>
+<p>用户方面，全球Microsoft Azure每天新增1000个左右客户。中国的Azure自公测以来的十个月共发展了3000多个用户，其中160多个是商业运营。本次发布会展示的客户案例分别是人人经纬名片通、武汉智慧城市、上海西班牙中心官方网站、CNTV的热门节目视频直播、PPTV、蓝港在线的手机网游《苍穹之剑3D》、河南云和软件、光明网“媒体云”、《狄仁杰之神都龙王》的特效渲染。</p>
+<p>策略方面，Satya Nadella在今年2月上任微软CEO后提出“cloud-first, mobile-first”的口号，Scott Guthrie则接任Satya此前担任的Cloud and Enterprise执行副总裁一职。2014年3月25日，微软<a href="http://blogs.msdn.com/b/windowsazure/archive/2014/03/25/upcoming-name-change-for-windows-azure.aspx">在MSDN官方博客上发布声明</a>将Windows Azure更名为Microsoft Azure，新名称从2014年4月3日起生效。微软全球资深副总裁兼微软亚太研发集团主席张亚勤在发布会上强调Azure的可靠性、灵活性和开放性，并列出Azure服务的如下竞争优势：</p>
 <ul> 
- <li>姓名、电话、邮箱（最好是Gmail）、QQ</li> 
- <li>200字左右的个人介绍，可包含您所擅长或感兴趣的技术领域</li> 
- <li>个人GitHub主页</li> 
- <li>为防止打酱油，请列出你当前管理的（或曾经管理过的）一台la/nmp服务器的配置、平均qps、最大能承载的qps</li> 
-</ul>
-<p>一人参赛，提供个人信息；多人组团参赛，提供每个人的信息。我们将在3月22日向所有按规定方式报名的团队发放服务器实例并发布公告。</p>
-<h3>2、部署调试、提交方案与代码</h3>
-<p>在2014年3月30日之前，在分配的服务器资源上完成部署、调试，并提供如下信息：</p>
-<ol> 
- <li>代码：将干净的代码上传至Github</li> 
- <li>架构文档：上传至新浪微盘，包含技术选型思路、优化方案、运维方案</li> 
-</ol>
-<h3>3、公布评审结果</h3>
-<p>评审结果在2014年4月6日之前公布。</p>
-<h2>奖品</h2>
-<p>按规定完成部署调试、方案提交的团队均可获得《Puppet实战》或《MacTalk&middot;人生元编程》一本，如有其他想看的书也可告知，我们尽量去搞。</p>
-<p>测试跑分最高的团队可获赠特别奖品——Cherry键盘一枚。</p><br><br><br><br><br><br></body></html>
+ <li>可支持多种开源技术与企业内部的现有技术：Windows、Linux、.NET、Java、Node.js、Python。同日微软开放技术（上海）有限公司发布的<a href="https://vmdepot.msopentech.cn/List/Index">VM Depot</a>为Azure中国用户提供700余种开源镜像。</li> 
+ <li>99.95%的企业级服务等级协议（SLA）保证，每年停机检修时间不超过4.38小时。</li> 
+ <li>北京、上海两地数据中心做异地备份，每一份数据在两地分别提供3个数据备份，共计6个数据备份。</li> 
+</ul><br><br><br><br><br><br></body></html>

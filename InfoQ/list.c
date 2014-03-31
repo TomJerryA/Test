@@ -1,6 +1,9 @@
 <html>
  <head></head> 
- <body> 
+ <body>
+  <div>
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/45.c">Domino: Datascience-as-a-Service</a>O Domino, uma plataforma para a ci&ecirc;ncia anal&iacute;tica de dados e dispon&iacute;vel como servi&ccedil;o na nuvem (EC2), permite que qualquer pessoa realize um trabalho anal&iacute;tico usando linguagens como Python ou R.
+  </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/44.c">Akka Toolkit 2.3 com Java 8 e suporte a persist&ecirc;ncia</a>A &uacute;ltima vers&atilde;o do kit de ferramentas do Akka, uma implementa&ccedil;&atilde;o do Actor Model, possui como novidades a persist&ecirc;ncia, permitindo salvar o estado interno dos atores, juntamente com o suporte para express&otilde;es lambda do Java 8. 
   </div> 
@@ -147,9 +150,6 @@
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/48.c">Neo4j 2.0: Novo navegador e esquema</a>A Neo Technology disponibilizou o Neo4j 2.0, agora com novo navegador de grafos, r&oacute;tulos nos n&oacute;s, esquema opcional e aprimoramento da linguagem de consulta Cypher. 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/47.c">Microsoft prev&ecirc; um sistema operacional &uacute;nico para dispositivos m&oacute;veis e sensores</a>Durante a confer&ecirc;ncia UBS Global Technology que ocorreu em novembro, Julie Larson-Green, vice-presidente executiva da divis&atilde;o Devices and Studios da Microsoft, discutiu a abordagem que sua empresa est&aacute; levando para o mercado de software para dispositivos m&oacute;veis. Foram selecionados os fragmentos mais interessantes da transcri&ccedil;&atilde;o desta palestra. 
-  </div> 
+  </div>  
  </body>
 </html>

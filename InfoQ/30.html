@@ -1,30 +1,51 @@
-<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>Elm 0.11改进与JavaScript的互操作</h3><p><a href="http://elm-lang.org/">Elm</a>最近的<a href="http://elm-lang.org/blog/announce/0.11.elm">0.11版本</a>致力于简化<a href="http://en.wikipedia.org/wiki/Functional_reactive_programming">FRP</a>语言和Javascript的组合使用。为实现该目标，Elm主要添加了两个功能：</p>
-<ol> 
- <li>能够创建组件（<a href="http://elm-lang.org/learn/Components.elm">Component</a>），组件是编译后的Elm代码，可以嵌入在div内。嵌入之后可以作为页面正常的一部分。</li> 
- <li>端口（<a href="http://elm-lang.org/learn/Ports.elm">Port</a>）用于JavaScript和Elm之间的通信。消息会通过定义好的传入端口（in-port）传到Elm组件中，而应答通过订阅了传出端口（out-port）的回调函数来处理。</li> 
-</ol>
-<p>这两个元素结合在一起，为使用Elm的<a href="http://www.haskell.org/haskellwiki/Haskell">Haskell</a>风格语法和<a href="http://elm-lang.org/Libraries.elm">库</a>创建可嵌入的UI组件和处理单元提供了支持。</p>
-<p>2013年11月，第一届<a href="http://elm-lang.org/blog/announce/Workshop-2013.elm">Elm研讨会</a>在布达佩斯举行。Elm的作者<a href="https://twitter.com/czaplic">Evan Czaplicki</a>在会上谈到了<a href="https://www.youtube.com/watch?v=Bv8elmoComE">Elm的未来</a>。他指出，按照优先顺序，Elm有四件需要处理的开发任务：</p>
-<ol> 
- <li>以库的方式分享。</li> 
- <li>HTML和JavaScript的集成。</li> 
- <li>使其他人可以方便地向Elm做出贡献。</li> 
- <li>尾递归优化。</li> 
-</ol>
-<p>应社区要求，他还演示了Elm的一个<a href="https://github.com/evancz/elm-repl">REPL</a>（即Read-Eval-Print Loop）原型。</p>
-<p>Elm的<a href="http://elm-lang.org/">主页</a>有很多Elm应用<a href="http://elm-lang.org/Examples.elm">示例</a>，我们可以与其互动。有一个很基础的马里奥（<a href="http://elm-lang.org/edit/examples/Intermediate/Mario.elm">Mario</a>）游戏，基本上是在<a href="https://thestrangeloop.com/">Strange Loop</a> 2013会议上，<a href="http://www.infoq.com/presentations/elm-reactive-programming">在现场观众面前</a>实现的，突出显示了Elm的图形功能。如果想看一个更实用的例子，可以看一下<a href="https://github.com/evancz/TodoFRP">Todo应用</a>（<a href="http://elm-lang.org/misc/Todo.html">demo</a>），它相当于Web框架的“Hello World”。如果想深入地了解一下Elm 的理论基础，可以查看Evan的<a href="http://people.seas.harvard.edu/~chong/pubs/pldi13-elm.pdf">论文</a>，<a href="https://github.com/evancz/elm-at-pldi-2013">发表</a>在2013年的“编程语言设计与实现会议”（<a href="http://www.sigplan.org/conferences/pldi/main">Programming Language Design and Implementation</a> Conference 2013）上。</p>
-<p>InfoQ就Evan在这些优先任务上的开发进度采访了他。</p>
-<p><b>InfoQ</b><b>：</b>在研讨会上，听上去您可能会集成<a href="https://www.npmjs.org/">Node Package Modules</a>，以提供Elm的库解决方案，但是就能够将Elm模块与其余部分分离这点，您有所保留。您是不是设法解决了这个问题，还是说您决定采用不同方案了？</p>
-<blockquote> 
- <p><b>Evan</b><b>：</b>我决定采用一种不同的方案，而且我很开心自己这么做了。<a href="http://library.elm-lang.org/">Elm Public Library</a>是最近发布的，它使得以库的方式分享程序非常容易。它也是通过GitHub提供的，不过对Elm用户而言，从头构建也是很愉快的体验。它使我可以自由地提供<a href="http://library.elm-lang.org/catalog/evancz-Elm/0.11/">易于搜索的文档</a>（<a href="https://github.com/evancz/elm-get/tree/master/website/src">用Elm编写的</a>）。<a href="http://elm-lang.org/blog/announce/PackageManager.elm">宣告</a>中更深入地谈到了技术决策和路线图，但重点是，我们现在可以分享库了！</p> 
-</blockquote>
-<p><b>InfoQ</b><b>：</b>2012年，您希望Elm<a href="https://www.youtube.com/watch?v=vF03oQu7rkw">得到业界更多支持</a>。您在<a href="http://prezi.com/">Prezi</a>工作的<a href="http://engineering.prezi.com/blog/2013/05/21/elm-at-prezi/">这种身份</a>为您带来了所追求的东西吗？</p>
-<blockquote> 
- <p><b>Evan</b><b>：</b>毫无疑问！在Prezi的工作对加速Elm的开发意义重大，但更重要的是，它使得我可以真正地专注于为业界用户准备好Elm的生态系统。这是我很久以来的目标，但是现在我有了一个友好且技术熟练的支撑团队，可以帮助我使目标成为现实。所以当我优先考虑某些特性或调整某个API时，总是有工程师乐于探讨并改进这些东西。我直接受到了Prezi的语言互操作基础设施的启发，从而有了Elm的端口（<a href="http://elm-lang.org/blog/announce/0.11.elm">port</a> ），进而使得Elm/JS可以简单无缝地进行互操作了。</p> 
-</blockquote>
-<p><b>InfoQ</b><b>：</b>Elm现在的路线图是什么样的？</p>
-<blockquote> 
- <p><b>Evan</b><b>：</b>0.11版本中的端口和即将到来的彻底修订的Graphics.Input，让我感觉Elm已经非常接近产品状态了。今年夏天，我们会将精力集中于进一步发掘运行时的性能，支持尾递归优化，以及改进调试与IDE支持。致力于优化和工具，表明我们总体上在向支持产品用户转变，而不是继续把精力投在语言本身上。</p> 
- <p>与此同时，Prezi内部已经在使用Elm。这种情况让我非常开心。到目前为止，我主要观察到的是，组件模型在实践中表现非常好。有些组件用Elm编写很不错，而且现在我们可以很方便地将其集成到更大的JS或TypeScript项目中。实际上我们在Prezi打算找一位开发者，让他编写更多Elm代码，我认为这将是一个可以证明Elm 已经为业界使用做好准备的一个考验。</p> 
-</blockquote>
-<p><strong>查看英文原文：</strong><a href="http://www.infoq.com/news/2014/03/elm_011">Elm 0.11 Improves JavaScript Interop</a></p><br><br><br><br><br><br></body></html>
+<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>亚马逊对Google近期降低云服务价格作出回应</h3><p>Google在近期公布了<a href="http://www.infoq.com/news/2014/03/google-cloud">部分云服务的大降价</a>，涉及了计算引擎、存储和BigQuery。但其价格优势仅仅保持了24小时，因为第二天亚马逊就<a href="http://aws.typepad.com/aws/2014/03/aws-price-reduction-42-ec2-s3-rds-elasticache-and-elastic-mapreduce.html">大幅削减了旗下部分服务的价格</a>，包括EC2、S3、RDS、ElasticCache和MapReduce.</p>
+<p>以下是亚马逊本次降价的概述： </p>
+<table cellspacing="0" cellpadding="0" border="1"> 
+ <tbody> 
+  <tr> 
+   <td valign="top" width="136"> <p><strong>服务</strong></p> </td> 
+   <td valign="top" width="118"> <p><strong>降价百分比</strong></p> </td> 
+   <td valign="top" width="371"> <p><strong>补充说明</strong></p> </td> 
+  </tr> 
+  <tr> 
+   <td valign="top" width="136"> <p>EC2——按需实例</p> </td> 
+   <td valign="top" width="118"> <p>7-40</p> </td> 
+   <td valign="top" width="371"> <p>具体降价情况取决于实例类型。</p> </td> 
+  </tr> 
+  <tr> 
+   <td valign="top" width="136"> <p>EC2——预留实例</p> </td> 
+   <td valign="top" width="118"> <p>10-40</p> </td> 
+   <td valign="top" width="371"> <p>具体降价情况取决于实例类型。AWS还提供了总量折扣，最多打折68%。</p> </td> 
+  </tr> 
+  <tr> 
+   <td valign="top" width="136"> <p>S3</p> </td> 
+   <td valign="top" width="118"> <p>36-65</p> </td> 
+   <td valign="top" width="371"> <p>平均降价幅度为51%。</p> </td> 
+  </tr> 
+  <tr> 
+   <td valign="top" width="136"> <p>RDS</p> </td> 
+   <td valign="top" width="118"> <p>28</p> </td> 
+   <td valign="top" width="371"> <p>平均值。</p> </td> 
+  </tr> 
+  <tr> 
+   <td valign="top" width="136"> <p>ElasticCache</p> </td> 
+   <td valign="top" width="118"> <p>34</p> </td> 
+   <td valign="top" width="371"> <p>平均值。</p> </td> 
+  </tr> 
+  <tr> 
+   <td valign="top" width="136"> <p>MapReduce</p> </td> 
+   <td valign="top" width="118"> <p>27-61</p> </td> 
+   <td valign="top" width="371"> <p>HS1 实例 (hs1.8xlarge)：现在的费用不超过1千美元/TB/年。</p> </td> 
+  </tr> 
+ </tbody> 
+</table>
+<p></p>
+<p>亚马逊首席执行官杰夫贝索斯在其网站上贴出了降价说明，提醒客户这是亚马逊自2008年以来的第42次降价。但是，在贝索斯的<a href="http://aws.typepad.com/aws/2014/03/aws-price-reduction-42-ec2-s3-rds-elasticache-and-elastic-mapreduce.html">博客文章</a>后面的评论中，部分读者反馈表示：感谢Google“压低了我们的账单”。</p>
+<p><a href="http://www.rightscale.com/blog/cloud-cost-analysis/aws-responds-price-cuts-google-vs-aws-pricing-round-2">RightScale对AWS新价格与Google这次降价做了对比</a>，结果显示，对于按需标准实例，双方价格完全相同；而Google在高内存和高CPU实例方面，依旧分别有33%和16%的价格优势。但是与对手相比，AWS高内存实例提供的内存多30%，而其高CPU实例拥有双倍内存和固态硬盘，因此二者实际上基本相当。而一年期的预留实例与Google持续使用模型中100%使用（阶梯价格最大折扣幅度）相比，AWS标准和高内存实例拥有10%~20%的价格优势，而高CPU实例却贵2%~3%。另外，AWS还对3年期预留实例做出了大幅降价，与Google持续使用模型相比便宜32%~48%。二者的计价模式还有一些不同：AWS预留实例需要预先付款，而Google持续使用模型则是按使用付费。RightScale针对不同类型的云服务使用者，列出了三项价格优势场景：</p>
+<ul> 
+ <li>对于现金充足且能够精确预估自己的使用情况的云服务使用者来说，AWS预留实例能够帮他们节约资金。</li> 
+ <li>对于云计算工作负责依旧处于快速成长阶段，且混合使用按需和预留实例的众多云服务使用者来说，最经济的选择依赖于具体需要的实例类型，以及有效使用预留实例的能力。</li> 
+ <li>而对于对自己的工作负载没有太强预估能力、目前主要使用按需实例的使用者来说，选择Google更容易省钱。</li> 
+</ul>
+<p>一年以前，当微软宣布降低部分Azure服务的时候，他们<a href="http://blogs.msdn.com/b/windowsazure/archive/2013/04/16/the-power-of-and.aspx">曾承诺将“恪守承诺，匹配亚马逊AWS的定价策略</a>，涉及计算、存储和带宽等常用服务”。我们翻出这篇文章，期待微软在本周内做出价格调整的声明，但是至本文发稿时，Redmond尚未给出任何消息。</p>
+<p><strong>查看英文原文：</strong><a href="http://www.infoq.com/news/2014/03/aws-price-cut">Amazon Responds to Recent Google Cloud Price Cuts</a></p><br><br><br><br><br><br></body></html>

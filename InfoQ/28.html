@@ -1,57 +1,71 @@
-<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>ArchSummit深圳2014重装上阵，现在开始征集演讲主题</h3><p>继2012年全球架构师峰会ArchSummit落户深圳，2014年InfoQ再次来到华南IT重镇深圳，将于7月18-19在万科国际会议中心举办第二届ArchSummit全球架构师峰会。</p>
-<p>秉承&quot;促进软件开发领域知识与创新的传播&quot;原则，在保持往届ArchSummit水准，发挥QCon特色之余，组委会更针对深圳软件行业情况设置了特别专题，专门选择了6个当前最受关注的领域：游戏、电商、云服务、社交网络SNS、移动互联网、金融。希望为大家展现这些行业中架构师各自的风采，分享业务分析、技术架构的能力。而在大数据、智能硬件、数据中心和自动化运维这3个专题会引导大家对新技术、新趋势的关注。</p>
-<p>具体演讲话题请参见<a href="www.archsummit.com">大会官网</a>，现在各个专题向全社会征集演讲议题。同时大会门票已经开始销售，越早报名，优惠越多，报名链接<a href="http://archsummit.mymova.com/">请点此处</a>。</p>
-<p><strong>演讲议题形式：</strong></p>
+<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>第70期QClub回顾：腾讯云图沙龙之腾讯游戏云关键技术剖析</h3><p>4月29日下午，《第70期QClub：腾讯云图沙龙之腾讯游戏云关键技术剖析》在北京车库咖啡举行。此次活动试图深入刨析将游戏云背后的关键技术，当然游戏云背后有大量的技术积累做支撑，远非几个小时的分享交流就能剖析清楚。未来几个月，QClub还将与腾讯陆续举办腾讯云图沙龙，进一步解读腾讯云背后的关键技术，欢迎关注。</p>
+<p>29日活动当天选定了三个技术方向，腾讯云派出了孙小滨、李浩和李杰三位工程师分别就《海量数据下的关键因子选取》、《高可靠的移动推送服务》、《移动场景下的动态数据加速》话题进行了分享，来自小米、百度、腾讯、奇虎360、中科院计算所等120余名听众参与了活动。</p>
+<p>在Q/A和OpenSpace环节，大约一个多小时的过程中，孙小滨、李浩和李杰三位工程师回答了听众许多问题。</p>
+<p><img width="580" _p="true" _href="img://tx04.jpg" alt="" src="http://infoqstatic.com/resource/news/2014/03/qclub70-qcloud/zh/resources/tx04.jpg" /></p>
+<p>本次活动的PPT和视频近期将在InfoQ网站上发布。</p>
+<p><strong>分享一：《高可靠的移动推送服务》——腾讯云高级工程师 李浩</strong><br /> <br /> 李浩重点介绍了腾讯信鸽推送服务的架构及在保证服务的可用性、数据持久性方面的实现方式。同时，还介绍了链接策略和省电、省流量的具体方法。</p>
+<p><img width="580" alt="" src="http://infoqstatic.com/resource/news/2014/03/qclub70-qcloud/zh/resources/tx01.png" _href="img://tx01.png" _p="true" /></p>
+<blockquote>
+ <strong>连接策略<br /> </strong> 
+ <p>多端口、双协议支持&middot;应对移动网关代理的端口限制（80 8080 443 14000）</p> 
+ <ul> 
+  <li>支持TCP、HTTP两种协议</li> 
+ </ul> 
+ <p>终端跑马、IP直连&middot;根据备选IP列表进行并发测速（IP+端口+协议）</p> 
+ <ul> 
+  <li>后端根据终端连接情况，定时更新终端的备选IP列表</li> 
+  <li>终端在连接空闲时上报测速数据，便于后端决策</li> 
+ </ul> 
+ <p><strong>后台重定向</strong></p> 
+ <p>应对终端转换地域但未及时跑马等情况，后台引导至最优接入点</p> 
+ <ul> 
+  <li>安全保证&middot;通道安全、SDK反加壳、频率打击</li> 
+ </ul> 
+</blockquote>
+<p><strong>分享二：《海量数据下的关键因子选取》——腾讯云高级工程师 孙小滨</strong></p>
+<p>孙小滨首先介绍了Data Plus多维数据实时分析平台的特点：</p>
 <ul> 
- <li>演讲时长：45分钟，包括提问环节。</li> 
- <li>演讲内容标准： 
-  <ul> 
-   <li>观点：申请人演讲的观点是否明确，所阐述的内容是否吸引人，是否有助于听众在知识和经验方面的积累？</li> 
-   <li>实践：ArchSummit演讲内容，均以实践为出发;</li> 
-   <li>深度：演讲内容的深度将直接关系到听众的收获，听众能够从演讲中挖掘出的内容也是组委会看重的，原则上，有深度的演讲稿被采纳的机会更高；</li> 
-   <li>专业声誉：演讲人在所提交演讲涉及的专业领域的成就和从业经验也会作为评审的参考标准；</li> 
-   <li>不要广告：ArchSummit讲台不是厂商宣传的舞台，请不要试图在演讲时做任何形式的广告;</li> 
-   <li>听众所得：听众在演讲分享中可能的收获是组委会最关注的，这也是ArchSummit大会举办的重要意义。</li> 
-  </ul> </li> 
+ <li>抽象为指标池、维度池，可以支持海量报表（抽几个指标和维度做组合查询）</li> 
+ <li>支持自定义指标和维度，方便用户自定义高级数据模型</li> 
+ <li>强大的ETL能力，支持多路的数据输入（TDW（复杂模型的T+1离线分析）、DCAgent、DataProxy（准实时分析）等）</li> 
+ <li>平行扩展，能够支持海量的指标和维度</li> 
+ <li>查询速度快，绝大多数请求可以1s内返回，即使对于非常复杂的查询，也能在15s内返回</li> 
+ <li>动态调整数据的层次结构，固化部分View，整体运算代价小，存储消耗小。</li> 
 </ul>
-<p><strong>议题提交指南：</strong></p>
-<p>请按下面规定格式发送申请信息至<a href="speakers@cn.infoq.com">speakers@cn.infoq.com</a>。</p>
+<p>接下来孙小滨介绍了Rollup与Lattice，以及包含了查询层、计算流层、计算层、存储层的整体架构和流程。</p>
+<p><strong>分享三：《移动场景下的动态数据加速》——腾讯云高级工程师 李杰</strong></p>
+<p>李杰介绍了腾讯云在基础设施方面，尤其是网络、数据存储的优势：</p>
 <ul> 
- <li>姓名：</li> 
- <li>手机：</li> 
- <li>邮箱：</li> 
- <li>微博/LinkedIn/微信公众号：（如果有）</li> 
- <li>公司：</li> 
- <li>部门：</li> 
- <li>职位：</li> 
- <li>个人简介：（300字左右）</li> 
- <li>大头照：（600*800分辨率或更高）</li> 
- <li>演讲经历：</li> 
- <li>所属专题：</li> 
- <li>演讲主题：（标注是否已分享过）</li> 
- <li>主题摘要：（200-300字）</li> 
- <li>听众受益：（列举几个收益）</li> 
+ <li>源站：开发商部署在腾讯云机房的云主机服务；</li> 
+ <li>测速服务器：跟源站同网络环境，用来做路由测速；</li> 
+ <li>就近接入集群：两百多个遍布全国的就近接入机房；</li> 
+ <li>加速接入名字服务：根据请求域名，解析提供同省、同网的就近接入点；</li> 
+ <li>业务数据分析：MTA系统；</li> 
+ <li>监控统计：加速对比直接实时数据展现(全国地图＋时间曲线)；</li> 
 </ul>
-<p>内容提交请在邮件中直接用文本发送申请信息，除非附带演讲slides/提交大头照，否则请勿发送附件。</p>
-<p>关于个人简介、演讲主题及摘要的范例，与QCon标准相同，可以参见QCon北京网站：<a href="www.qconbeijing.com">www.qconbeijing.com</a>。</p>
-<p><strong>演讲嘉宾福利：</strong></p>
-<ul> 
- <li>免费参加所有大会所有课程；</li> 
- <li>优先享有和国际讲师单独沟通的机会或陪同；</li> 
- <li>外地讲师由组委会承担差旅；</li> 
- <li>可参与为演讲嘉宾特别设置的独享聚会；</li> 
- <li>组委会将会根据现场听众反馈对优秀讲师予以额外鼓励。</li> 
-</ul>
-<p><strong>注意事项：</strong></p>
-<ul> 
- <li>在大会议程尚未完全确定之前，可自由提交演讲议题。</li> 
- <li>若内容合适，但相应专题已无空档，可优先在下届ArchSummit获得演讲机会。</li> 
- <li>请确保您所提供的个人信息内容准确无误，一旦确认，信息将会刊登在大会官网并印制在会刊中。。</li> 
- <li>请确保您在演讲内容中使用的案例已经获得第三方的认可和允许。我们将不负责由此引起的任何纠纷和问题。</li> 
- <li>确认的演讲内容将发布在主办单位的有关媒介中，包括会议演讲PPT、现场视频等。此非强制条款，如果不同意，请提前声明。</li> 
- <li>对于已提交演讲议题的审批结果，我们将在提交之日起一个月内通过电子邮件或电话联系的方式通知您。</li> 
- <li>演讲机会以ArchSummit组委会最终发送的演讲邀请函为准。</li> 
-</ul>
-<p><strong>推荐机制：</strong></p>
-<p>如果在您心目中有非常合适的演讲人选，欢迎向组委会推荐。请在邮件中尽可能详述被推荐人的个人信息与可分享的话题信息至<a href="speakers@cn.infoq.com">speakers@cn.infoq.com</a>。一旦被推荐者确认成功，推荐人可获得一份InfoQ纪念品。</p>
-<p><strong>如果您在业内鼎鼎大名，可以直接发送给我们您的大名/ID/微博等任何可联络信息，我们将即刻与您联系。</strong></p><br><br><br><br><br><br></body></html>
+<p><img width="580" alt="" src="http://infoqstatic.com/resource/news/2014/03/qclub70-qcloud/zh/resources/tx02.png" _href="img://tx02.png" _p="true" /></p>
+<p>接下来李杰介绍了SDK、ANS和OC的架构和策略。</p>
+<p><strong>自由讨论</strong></p>
+<p>三个分享结束后，是茶歇和OpenSpace。OpenSpace是供参会者和讲师充分沟通的环节，不过在现场从茶歇开始，三位讲师就没有获得休息的机会，一直被参会者包围直到活动结束。许多参会者在微博上发表了评论：&nbsp;</p>
+<blockquote>
+ <a href="http://weibo.com/1631062982/ADdlXlktk">歆无所恋</a>：#Qclub腾讯云图沙龙#比较感兴趣的是推荐及营收的交叉和级联分析，多源加速。&nbsp;
+ <br type="_moz" /> 
+</blockquote>
+<blockquote>
+ <a href="http://weibo.com/1170829561/ADdxbfK0M">泊舟人</a>：#QClub腾讯云图沙龙#腾讯信鸽服务省电、省流量，是应为优化了处理逻辑...慢心跳
+ <br type="_moz" /> 
+</blockquote>
+<blockquote>
+ <a href="http://weibo.com/1054764633/ADdODkPzs">守住每一天</a>：#QClub腾讯云图沙龙# 大数据。进行Topview多维度，多指标，自定义，实时的分析，会对数据进行校对后提供给客户。数据架构的模型都相同，处理大数据的一个点就是：从已有结果集，再次计算。最关注的纬度为，年龄，手机，地域。 I'm at #车库咖啡#
+ <br type="_moz" /> 
+</blockquote>
+<blockquote>
+ <a href="http://weibo.com/1984467097/ADdG3tIc3">李-庆芳</a>：#QClub腾讯云图沙龙#能分享下当前信鸽单机服务器多少内存可以支持多少长链接，在实际上又做了哪些内存方便的优化？在群发时如何处理瞬间高峰导致的系统波动？
+ <br type="_moz" /> 
+</blockquote>
+<blockquote>
+ <a href="http://weibo.com/1652831930/ADdBJqPg9">__王秋实</a>：#QClub腾讯云图沙龙#移动app的服务端设计，运维，除了要关注传统pc服务后端的问题，还要考虑省电，网络不稳定情况下的链接等问题，另外手机上也更容易追踪用户行为。
+ <br type="_moz" /> 
+</blockquote>
+<p><img width="580" _p="true" _href="img://tx03.jpg" alt="" src="http://infoqstatic.com/resource/news/2014/03/qclub70-qcloud/zh/resources/tx03.jpg" /></p>
+<p>关于本次活动的PPT和视频近期将在InfoQ网站上发布，本次活动的更多图片在<a href="http://xiangce.baidu.com/picture/album/list/e5de0a07a14ec718eec6efe187df4e18f617da16">这里</a>。未来几个月，QClub还会与腾讯联合组织腾讯云图沙龙，欢迎关注。如果您希望在腾讯云图沙龙上讨论一些技术话题或其他建议，请通过<a href="http://weibo.com/qclubchina">@QClob中国</a>告诉我们，下期再见。</p><br><br><br><br><br><br></body></html>

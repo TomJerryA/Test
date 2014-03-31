@@ -1,18 +1,17 @@
-<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>Mike Cohn Suggests Unfinished Work in Sprint Review</h3><p>Mike Cohn, one of the founders of the <a href="https://www.google.pt/url?sa=t&amp;rct=j&amp;q=&amp;esrc=s&amp;source=web&amp;cd=1&amp;cad=rja&amp;ved=0CD4QFjAA&amp;url=http://www.scrumalliance.org/&amp;ei=L_L7UvWoOMGThgeZyIDwDg&amp;usg=AFQjCNFsRHGpU0AsRxA6FAKZUOZHRJYL5g&amp;sig2=J8St-93-l_oDZaauSAksYg&amp;bvm=bv.61190604,d.ZG4">Scrum Alliance</a>, challenged the agile community about the <a href="http://www.mountaingoatsoftware.com/blog/only-show-finished-work-during-a-sprint-review-maybe">contents of a sprint review</a>, suggesting that sometimes it is worth to present unfinished product backlog items.</p>
-<p>By definition, the <a href="http://en.wikipedia.org/wiki/Scrum_(software_development)#End_meetings">Sprint Review Meeting</a> is the first part of the last day of a sprint, on which the team shows to the customers the product of the last iteration (sprint). For this meeting, the rules are:</p>
-<ul> 
- <li>Review the work that was completed and the planned work that was not completed.</li> 
- <li>Present the completed work to the stakeholders (a.k.a. &quot;the demo&quot;).</li> 
- <li>Incomplete work cannot be demonstrated.</li> 
- <li>Four-hour time limit.</li> 
-</ul>
-<p>Cohn starts his post by reinforcing the main rule above - during the demonstration, the team is allowed to show the completed work items of the iteration. By doing this, you assure that the customers will only see the amount of work that is really finished, the one that is compliant with the <a href="https://www.scrumalliance.org/community/articles/2008/september/how-do-we-know-when-we-are-done">team's done list</a>.</p>
-<p>Then, he talks about the risks of giving a team the permission to present unfinished backlog items:</p>
-<ul> 
- <li>False progress of the work really completed.</li> 
- <li>Customer expectations rises to a higher level, assuming as done (or nearly done) all of the items discussed during the meeting.</li> 
-</ul>
-<p>But, based on the fact that the main objective of this kind of meeting is to obtain feed-back from the stakeholders, he states that sometimes it is worth to show some unfinished work: &quot;For example, you may have everyone you need to comment on whether the visual design of this next item meets everyone's expectations. So go ahead, show that feature and get feedback on it. &quot;</p>
-<p>Cohn's post has had a lot of different answers and feedback. For example, Илья wrote that Cohn is &quot;opening a dangerous box by telling people they're able to show the unDone work...Yes it's hard and you need a certain courage to show what is DONE only&quot;.</p>
-<p>On the other hand, Adam Myhr states that showing unfinished work during Sprint Review Meeting &quot;seems to me that breaking this rule is done to accomplish something other than the intent of the Sprint Review. In my mind that is an opportunity for proper use of Scrum framework&quot;.</p>
-<p>There are several discussions on the unfinished work topic. In a <a href="http://programmers.stackexchange.com/questions/107774/with-agile-what-do-when-a-user-story-doesnt-get-completed-in-an-iteration">thread</a> at Programmers Stack Exchange, GuyR refers to a much less-common approach: &quot;At the sprint review, the Product Owner, in consultation with the sprint team and stakeholders makes the decision on done-ness&quot;. In this case, the items are presented whether they are finished or not.</p><br><br><br><br><br><br></body></html>
+<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>JCACHE Specification Finalized</h3><p>Oracle <a href="https://blogs.oracle.com/theaquarium/entry/jcache_is_final_i_repeat" target="_blank">announced this month</a> that the <a href="https://jcp.org/en/jsr/detail?id=107" target="_blank">JCACHE specification</a> is now final. JSR-107 was the oldest living on the books, and was initiated on March 6, 2001. After thirteen years of evolution and development, the &quot;Java Temporary Caching API&quot; will bring Java a common interface for interacting with caching systems.</p>
+<p>Oracle had received <a href="https://blogs.oracle.com/reza/entry/java_ee_7_survey_results" target="_blank">high levels of interest</a> for JCACHE to be included in last year's Java EE 7 release, but after missing &quot;a few critical deadlines&quot;, <a href="https://blogs.oracle.com/theaquarium/entry/jcache_to_miss_java_ee" target="_blank">the JSR was dropped from the candidate list</a>. Following Oracle's recent <a href="https://java.net/downloads/javaee-spec/JavaEE8_Community_Survey_Results.pdf" target="_blank">Java EE 8 survey</a>, nearly two-thirds of all respondents expressed an interest in having JCACHE be included as part of the language's next Enterprise Edition. With the announcement of the specification's finalization, Oracle made note that the project's <a href="https://github.com/jsr107/RI" target="_blank">reference implementation</a> can be used as a drop-in to a Java EE 6 or Java EE 7 application, without having to wait for Java EE 8.</p>
+<p>In itself, JCACHE provides a Map-like API for accessing caches, SPIs for spooling caches to persistent disk, an API for retrieving a named cache, and an API for registering event listeners. It does not, however, specify strategies for evictions, replication, or transactions. The work for defining those characteristics of caching is being done as part of <a href="https://jcp.org/en/jsr/detail?id=347" target="_blank">JSR-347 - JGRID</a>, to which JCACHE is a preceding and foundational component.</p>
+<p>InfoQ caught up with Ben Cotton, who is a member of both the JSR-107 and JSR-347 expert groups, to ask some questions about JCACHE and the future of caching on the JVM:</p>
+<p>InfoQ: Why JCACHE?</p>
+<blockquote>
+  JCACHE will do for the Java Caching community exactly what JDBC did for the Java RDBMS community. 
+ <br />
+ <br /> It promises to give Java a standard API with which JCACHE programmers can transparently operate on their data operands, independent of their data locality. With explicit join points to hibernate and JPA L2 views, It won't matter if the data operand is a column in a data base, or a Map.Entry
+</blockquote>
+<p>InfoQ: What do you have planned for the future?</p>
+<blockquote>
+  1. Transactions 
+ <br /> 2. Interaction with JGRID (JSR-347). JCACHE is the &quot;tree&quot;. JGRID is the forest. 
+ <br /> 3. Opening up transparent API join-points to ultra-premium Java locality libraries' data operands (ie. Peter's OpenHFT SHM) 
+</blockquote>
+<p>In addition to the open source reference implementation, the JSR-107 specification is freely available on the <a href="https://github.com/jsr107/jsr107spec" target="_blank">project's GitHub page</a>, including issue and commit history.</p><br><br><br><br><br><br></body></html>

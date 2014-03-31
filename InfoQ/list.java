@@ -2,7 +2,13 @@
  <head></head> 
  <body>
   <div>
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/39.java">To Have and Have Not StackMob- Part 1 of 2: MBaaS Provider's Customers get Short End of Backend</a>Extra! Extra! Sunday May 11, 2014 StackMob will cease operations. The end of StackMob --progenitor of mobile backend as a service (MBaaS)-- will be official on the above date. PayPal dictated its closure after eBay's online payment system acquired the company at the close of 2013.
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/41.java">JCACHE Specification Finalized</a>After thirteen years of development and evolution, JSR-107 - JCACHE, has been finalized.
+  </div>
+  <div>
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/40.java">Oracle Talks to Architects and Partners About Java 8 in Launch Webinar</a>Almost three years after the release of Java 7, Oracle last week released Java 8, touted as the most revolutionary Java release ever. This week Oracle presented a one-hour public webinar looking into features, background, and community reaction. InfoQ captured some important highlights of the webinar.
+  </div> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/39.java">To Have and Have Not StackMob- Part 1 of 2: MBaaS Provider's Customers get Short End of Backend</a>Extra! Extra! Sunday May 11, 2014 StackMob will cease operations. The end of StackMob --progenitor of mobile backend as a service (MBaaS)-- will be official on the above date. PayPal dictated its closure after eBay's online payment system acquired the company at the close of 2013. 
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/38.java">Amazon Responds to Recent Google Cloud Price Cuts</a>Google announced major price cuts for some of their cloud services including Compute Engine, Storage and BigQuery. But their price advantage lasted for only for 24 hours because the following day Amazon slashed the prices for some of their services – EC2, S3, RDS, ElasticCache and MapReduce. 
@@ -144,12 +150,6 @@
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/47.java">Cassandra Gains Momentum On Enterprise Adoption Around 2.1 Release</a>Cassandra is rapidly heading towards 2.1 release, with 2.1.0-beta1 already available for evaluation. We take a look at major features introduced in the latest major release and what's coming up. Supported by DataStax, Cassandra is expanding its reach towards the enterprise world. DataStax recently announced a partner network program, Patrick McFadin called out on MongoDB's scaling issues and other 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/46.java">Puppet Enterprise 3.2 Brings Fully Supported Modules</a>Puppet Labs has just released Puppet Enterprise 3.2, the commercially supported Puppet release. This release includes improvements such as fully supported modules, automation of tasks by non-root users and a tech preview of Razor, an application that discovers and provisions new servers. 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/45.java">Big Data Hadoop Solutions, State of Affairs in Q1/2014</a>According to a new Forrest report, Hadoop’s momentum is unstoppable. Its usage in the enterprise is continuously growing due to its ability to offer companies new ways to store, process, analyze, and share big data. The report takes a look at Hadoop vendors and ranks them. 
-  </div>  
+  </div>   
  </body>
 </html>

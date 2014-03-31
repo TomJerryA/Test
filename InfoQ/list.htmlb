@@ -2,6 +2,15 @@
  <head></head> 
  <body> 
   <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/39.htmlb">看DeepMind如何用Reinforcement learning玩游戏</a> 说到机器学习最酷的分支，非Deep learning和Reinforcement learning莫属（以下分别简称DL和RL）。这两者不仅在实际应用中表现的很酷，在机器学习理论中也有不俗的表现。DeepMind工作人员合两者之精髓，在Stella模拟机上让机器自己玩了7个Atari 2600的游戏，结果是玩的冲出美洲，走向世界，超越了物种的局限。不仅战胜了其他机器人，甚至在其中3个游戏中超越了人类游戏专家。噢，忘记说了，Atari 2600是80年代风靡美国的游戏机，当然你现在肯定不会喜欢了。长成什么样子？玩玩当下最火的flappy bird吧！ 
+  </div> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/38.htmlb">ActiveJPA——针对JPA的活动记录模式</a> ActiveJPA是Martin Fowler所提出的活动记录模式的Java实现，它围绕JPA提供了一些有益的抽象以简化数据访问。借助于ActiveJPA，模型本身会作为DAO并与数据库交互，这样就不需要额外的代码作为数据访问层了。在本文中，ActiveJPA的主要提交者将会对其进行讨论并且提供了大量的使用样例。 
+  </div> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/37.htmlb">Oleg Shilo：基于CS-Script的Notepad++插件</a> Oleg Shilo向我们介绍了他的项目，一个优秀的基于CS-Script的Notepad++的插件。 
+  </div> 
+  <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/36.htmlb">数据库变更部署自动化秘诀</a> Yaniv Yehuda探讨了自动化数据库部署所面临的挑战，并提供了基于敏捷和DevOps思想的建议。 
   </div> 
   <div> 
@@ -141,15 +150,6 @@
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/48.htmlb">虚拟座谈会：性能调优面面观</a> 在应用交付领域，看上去性能调优仍然没有成为主流。InfoQ采访了性能监控领域的5位大师，探讨了其原因，以及我们该做些什么。讨论非常激烈。虚拟座谈会的5位成员是Ben Evans、Charlie Hunt、Kirk Pepperdine、Martin Thompson和Monica Beckwith。 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/47.htmlb">跟Alexander Smirnov聊图形可视化</a> To help the user understand what they are seeing, developers often turn to bar and pie charts. But that only works for discrete data; when at the links between data other tools come into play. We asked Alexander Smirnov, creator of GraphX, to explain what graph visualization is and how it can be used. 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/46.htmlb">DevOps ≠ Chef/Puppet</a> 如何才能实现DevOps呢？很多人会不假思索地告诉你，使用Chef/Puppet，你就能实现DevOps。于是，DevOps变成了一个简单的问题，选择Chef还是Puppet。这并不奇怪，在开源软件盛行的今天，各种软件声称自己是DevOps工具，而人们通常不会去思考一项新技术或者新思路背后的缘由，人们需要的是“银弹”。 如同Agile，把DevOps等同于工具层面的Chef/Puppet，是错误的，会严重束缚人们的思维。在国内Cloud Native应用开发时代即将开启的今天，充分认识DevOps是很有必要的。 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/45.htmlb">分布式系统的事务处理</a> 本文来自阿里巴巴北京研发中心、商家业务部任资深专家陈皓自己的博客（http://coolshell.cn/articles/10910.html），在本人许可下，由InfoQ中文站进行转载，在这里给大家分享。本文讨论了在数据冗余情况下考虑数据的一致性和性能的问题。 
   </div> 
  </body>
 </html>

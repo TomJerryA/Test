@@ -1,7 +1,19 @@
-<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>Spark从Apache孵化器正式毕业</h3><p>近日，Spark从Apache孵化器<a href="http://www.datanami.com/datanami/2014-02-18/spark_graduates_apache_incubator.html">毕业</a>。Spark声称，与Apache Hadoop相比，它在内存数据集上的性能提升了高达100倍，而在磁盘数据集上的性能则正常回落到10倍。自2010年开源以来，Spark一直是社区中<a href="http://www.youtube.com/watch?v=KspReT2JjeE#t=254">最活跃</a>的项目之一。</p>
-<p>它的快速成长可以归于几个原因。为了利用众所周知的SQL语言，它可以将自身的<a href="https://spark.incubator.apache.org/examples.html">DSL</a>与<a href="http://shark.cs.berkeley.edu/">SQL</a>相结合。Spark的基本API是一种Scala DSL，围绕名为弹性分布式数据集（<a href="http://dev.bizo.com/2013/01/what-makes-spark-exciting.html">RDD</a>）的分布式项集合构建。利用分布式执行，RDD可以支持批量和聚集操作，如筛选、映射和reduceByKey。Spark可以使用Hive SQL提供具有同等执行速度的原生Scala API。重用<a href="http://hive.apache.org/">Hive</a>的前端和后端意味着它可以与Hive一起使用，共享数据、查询和UDFs。</p>
-<p>Spark使用<a href="https://spark.incubator.apache.org/mllib/">MLib</a>提供了一系列开箱即用的机器学习算法，涉及分类、回归分析、聚簇和推荐领域。MLib只是<a href="http://www.mlbase.org/">MLBase</a>的一个组件。<a href="http://ampcamp.berkeley.edu/wp-content/uploads/2013/07/amp_camp_8_30_13-1.pdf">MLBase</a>是一个分布式机器学习系统，旨在使机器学习任务对于终端用户和ML研究人员都更简单易懂。它是第一个将用户从算法选择中解放出来的系统，并针对分布式执行进行自动优化。<a href="http://www.cs.berkeley.edu/~ameet/mlbase.pdf">算法选择</a>是根据ML最佳实践和基于成本的模型实现的。分布式执行与Apache <a href="https://mahout.apache.org/">Mahout</a>类似，并针对机器学习的数据访问模式进行了优化。</p>
-<p>图算法可以用<a href="http://amplab.github.io/graphx/">GraphX</a>实现，后者结合了数据并行和“图并行（graph-parallel）”两种系统语义。GraphX提供了可以与Apache <a href="https://giraph.apache.org/">Giraph</a>相媲美甚或更好的<a href="https://amplab.cs.berkeley.edu/wp-content/uploads/2014/02/graphx.pdf">性能</a>，而Apache <a href="https://giraph.apache.org/">Giraph</a>则是Facebook使用的著名的图处理系统。</p>
-<p><a href="http://amplab-extras.github.io/SparkR-pkg/">SparkR</a>向R暴露了Spark API，允许统计人员从R函数直接向Apache Spark集群提交作业。除了RDBMS之外，R是<a href="http://www.r-bloggers.com/in-data-scientist-survey-r-is-the-most-used-tool-other-than-databases/">最受数据科学家欢迎</a>的工具。它的主要问题是单线程以及本来不是为大型数据集而设计。SparkR解决了这些问题，但有限制，它只对像梯度下降法这种本来就并行的算法才<a href="https://amplab.cs.berkeley.edu/2014/01/26/large-scale-data-analysis-made-easier-with-sparkr/">有效</a>。</p>
-<p>Spark可以<a href="http://www.infoq.com/news/2014/01/Spark-Storm-Real-Time-Analytics">部署</a>在Apache <a href="http://hadoop.apache.org/docs/r2.0.2-alpha/hadoop-yarn/hadoop-yarn-site/YARN.html">YARN</a>上，易于与异构系统集成和共存。它还是由<a href="http://www.cloudera.com/">Cloudera</a>和<a href="http://databricks.com/">Databricks</a>支持的<a href="http://vision.cloudera.com/reintroducing-cloudera-enterprise-now-with-apache-spark/">Cloudera企业</a>数据中心版的一部分，其中Databricks是Spark商业化的推动者。最后，<a href="https://spark.incubator.apache.org/streaming/">Streaming</a>可以帮助快速创建原型及应用有效的分布式系统语义。读者可以从<a href="https://github.com/apache/incubator-spark">GitHub</a>上获取Spark的代码。</p>
-<p><b>查看英文原文：</b><b><a href="http://www.infoq.com/news/2014/02/Spark-Graduate-Apache-Incubator">Spark Officially Graduates From Apache Incubator</a></b></p><br><br><br><br><br><br></body></html>
+<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>RethinkDB 1.12发布</h3><p>RethinkDB是一款开源的分布式数据库，用于存储JSON文档，可以很容易地扩展到多台机器。它有一门令人愉快的查询语言，支持表连接和group等真正有用的查询，并且安装简单、易于学习。</p>
+<p>近日，RethinkDB 1.12发布，这是迄今为止最重大的发布之一。它带来了超过<a href="https://github.com/rethinkdb/rethinkdb/issues?milestone=53&amp;state=closed">200项功能增强</a>，其中包括：</p>
+<ul> 
+ <li>极大地简化了map/reduce和聚合命令</li> 
+ <li>缓存经过重大改进，消除了长期稳定性和性能方面的局限</li> 
+ <li>支持ARM架构</li> 
+ <li>新增四个用于对象和字符串操作的ReQL命令</li> 
+ <li>许多Bug修复、稳定性增强和性能提升</li> 
+</ul>
+<p>新版本删除了group_by和grouped_map_reduce命令，代之以一个更强大的新命令group。该命令将文档序列分组，其后链接的任何命令都是在每个分组上单独调用，而不是在序列的所有文档上。而且，链接的命令不局限于内置的聚合命令，可以是任何一个或一系列命令。此外，除了已有的聚合命令count、sum和avg外，1.12版本还增加了min和max。读者可以进一步阅读，了解更多关于<a href="http://rethinkdb.com/api/python/#group">group命令</a>和新的<a href="http://rethinkdb.com/docs/map-reduce/">map/reduce基础架构</a>的信息。</p>
+<p>1.12版本对缓存的基础架构进行了许多改进。对于用户而言，最大的变化是他们不需要手动为表设置缓存大小了，RethinkDB会根据不同表的使用情况和系统可用内存空间动态地调整缓存大小。另外，为了帮助解决用户报告的各种稳定性问题，RethinkDB还做了许多用户看不到的修改。</p>
+<p>四个月前，<a href="https://github.com/davidthomas426">David Thomas</a>贡献了一个<a href="https://github.com/rethinkdb/rethinkdb/pull/1625">拉拽请求</a>，其中包含了在ARM上编译和运行RethinkDB所需要的修改。经过几个月的测试和各种修复，该请求已经并入了RethinkDB的主干。不过，ARM支持是试验性的，还有一些问题需要解决。</p>
+<p>另外，新版本还增加了几个用于字符串和对象操作的命令，如用于大小写转换的downcase和upcase、用于分隔字符串的split和以编程方式从键-值对创建JSON对象的object。读者可以从<a href="http://rethinkdb.com/api">API文档</a>中了解更多相关信息。</p>
+<p>最后，RethinkDB 1.12还在性能和稳定性方面做了许多改进，如在RethinkDB的Web服务器上增加了<a href="https://github.com/rethinkdb/rethinkdb/issues/1746">压缩支持</a>，增加了<a href="https://github.com/rethinkdb/rethinkdb/issues/1806">自动化性能回归测试</a>，<a href="https://github.com/rethinkdb/rethinkdb/issues/1043">改进了并行数据处理代码</a>等。</p>
+<p>这里需要特别提醒一下，上述功能增强中有一项破坏性修改，即用group代替group_by和grouped_map_reduce。用户在升级时需要针对这项修改调整应用程序，详情见<a href="https://gist.github.com/coffeemug/9518214">1.12迁移指南</a>。再者，升级之前务必先<a href="http://rethinkdb.com/docs/migration">迁移数据</a>。</p>
+<p>读者可以从<a href="http://rethinkdb.com/docs/install/">这里</a>下载试用。</p>
+<hr />
+<p>感谢<a href="http://www.infoq.com/cn/author/包研">包研</a>对本文的审校。</p>
+<p>给InfoQ中文站投稿或者参与内容翻译工作，请邮件至<a href="mailto:editors@cn.infoq.com">editors@cn.infoq.com</a>。也欢迎大家通过新浪微博（<a href="http://www.weibo.com/infoqchina">@InfoQ</a>）或者腾讯微博（<a href="http://t.qq.com/infoqchina">@InfoQ</a>）关注我们，并与我们的编辑和其他读者朋友交流。</p><br><br><br><br><br><br></body></html>

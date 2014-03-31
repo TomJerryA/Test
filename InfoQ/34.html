@@ -1,22 +1,71 @@
-<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>Java EE 8开始最后一轮社区调研</h3><p>Oracle宣布开始<a href="http://glassfish.org/survey">第三轮社区调研</a>，这也是最后一轮，邀请Java EE社区就Java 企业版的下一版本Java EE 8以及Glassfish参考实现的成形发表意见。</p>
-<p>前面两轮调研分别于<a href="http://www.infoq.com/cn/news/2013/12/Oracle-Soliciting-JavaEE8-Commun">2013年12月</a>和<a href="http://www.infoq.com/cn/news/2014/01/ee8-survey-pt2">2014年1月</a>宣布。</p>
-<p>根据Oracle的Java EE/GlassFish布道师Reza Rahman在<a href="https://blogs.oracle.com/theaquarium/entry/java_ee_8_survey_last">The Aquarium博客</a>上发布的信息，</p>
-<blockquote> 
- <p>“前面两轮调研关注的是具体的特性，而最后这轮探讨的完全是确定最重要特性的优先级。”</p> 
-</blockquote>
-<p>调研的引言中加入了这么一句：</p>
-<blockquote> 
- <p>“我们无法做到在一次发布中实现列表上的一切特性，而且肯定还有些是需要做的，但没有列出来。希望你们能告诉我们，如何分配有限的资源。”</p> 
-</blockquote>
-<p>Oracle<a href="https://java.net/downloads/javaee-spec/JavaEE8_Community_Survey_Results.pdf">分析</a>了前两轮调研的结果，社区最喜欢的一些特性包括：</p>
+<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>如何缓存存储过程的结果</h3><p>Brent Ozar是咨询公司<a href="http://www.brentozar.com/">Brent Ozar Unlimited</a>的创始人和负责人，同时也是一名微软最有价值专家和SQL Server DBA。他发表了一篇博文，介绍一种缓存存储过程结果的方案及应用场景。</p>
+<p>在文章开头，他给出了这样一个场景：一家在线商店需要在每个物品的页面上显示用户买过的相关产品。他认为，在完美的世界中，这些数据应该在Web/应用层缓存。但是，有时候，开发人员会构建存储过程来获取这类数据，而最终存储过程的调用过于频繁。</p>
+<p>Brent指出，对于这种已经使用了存储过程的情况，可以构建一个缓存供存储过程使用。</p>
+<p>假如加入缓存层之前的代码如下：</p>
+<pre>
+CREATE PROCEDURE dbo.usp_GetRelatedItems
+@ItemID INT AS
+BEGIN
+SELECT RelatedItemID,RelatedItemName
+FROM dbo.BigComplicatedView
+WHERE SoldItemID=@ItemID;
+END
+GO
+</pre>
+<p>代码一：原来的存储过程</p>
+<p>则加入缓存层之后的代码如下：</p>
+<pre>
+CREATE PROCEDURE dbo.usp_GetRelatedItems
+    @ItemID INT AS
+BEGIN
+  IF EXISTS(SELECT * FROM Cache.dbo.GetRelatedItems
+            WHERE ItemID=@ItemID)
+      SELECT * 
+      FROM Cache.dbo.GetRelatedItems
+      WHERE ItemID=@ItemID
+  ELSE
+      SELECT RelatedItemID,RelatedItemName
+      FROM dbo.BigComplicatedView
+      WHERE SoldItemID=@ItemID;
+END
+GO
+</pre>
+<p>代码二：实现缓存（一）</p>
+<p>代码二引入了一个新表Cache.dbo.GetRelatedItems，其中Cache是新建的数据库。该表中的列比usp_GetRelatedItems的返回结果多了一个输入字段和一个ID，其格式如下：</p>
+<p><img src="http://infoqstatic.com/resource/news/2014/03/cache-store-process/zh/resources/0330000.png" width="600" _href="img://null" _p="true" alt="" /></p>
+<p>该表中的数据可以根据需要每天晚上或者每周进行一次truncate。另外，在实际工作中实现这样一个方案时，他还会根据大量A/B性能测试的结果创建恰当的聚簇索引。</p>
+<p>代码二并未对缓存表进行操作。如果数据没有缓存，其实需要将其插入缓存表，代码如下：</p>
+<pre>
+CREATE PROCEDURE dbo.usp_GetRelatedItems
+    @ItemID INT AS
+BEGIN
+  /*查看待查找的记录是否已经缓存*/
+  IF NOT EXISTS(SELECT * FROM Cache.dbo.GetRelatedItems
+            WHERE ItemID=@ItemID)
+      BEGIN 
+        /*缓存中没有记录，因此插入缓存*/
+        INSERT INTO Cache.dbo.GetRelatedItems
+          (ItemID,RelatedItemID,RelatedItemName)   
+        SELECT RelatedItemID,RelatedItemName
+        FROM dbo.BigComplicatedView
+        WHERE SoldItemID=@ItemID;
+      END
+  /*从缓存中获取记录*/    
+  SELECT * 
+  FROM Cache.dbo.GetRelatedItems
+  WHERE ItemID=@ItemID      
+END
+GO
+</pre>
+<p>代码三：实现缓存（二）</p>
+<p>他承认，这种做法会增加SQL Server的写负载，但他只有在面临下面这些情况时才使用这种方案：</p>
 <ul> 
- <li>79%的人认为包含Java API for JSON Binding的JSR非常重要</li> 
- <li>超过77%的人提议标准化服务端事件Java API</li> 
- <li>79%的人要求Java EE 8中的安全拦截器</li> 
- <li>相对于JMX或其他方案，超过77%的人更喜欢RESTful风格的部署、管理和监控API</li> 
- <li>74%要求被删减的EJB 2.x远程和本地接口</li> 
+ <li>操作极为密集但只读的存储过程</li> 
+ <li>调用非常频繁（每分钟几百或几千次）</li> 
+ <li>其结果变化频率少于每天一次（或者不关心实时精度）</li> 
+ <li>业务需要非常快的系统改进速度，没有时间等着开发人员实现一个缓存层</li> 
 </ul>
-<p>有40%的人说现在还不是关注NoSQL标准化的时候，让人有点吃惊。</p>
-<p>新一轮调研只是要求受访者跨13个大类对各条目打分，总分为100。这些大类包括“JCACHE”、“Java API for JSON Binding”以及“日志中的改进”。</p>
-<p>最后一轮调研将于太平洋时间2014年3月24日星期一的中午12点关闭。</p>
-<p><strong>查看英文原文：</strong><a href="http://www.infoq.com/news/2014/03/Java-EE-8-Survey-Last-Call">Java API for JSON Binding</a></p><br><br><br><br><br><br></body></html>
+<p>最后，他指出，这只是紧急情况下让业务恢复运行的一种创可贴式方案。另外，他还推荐了一些与缓存相关的资源，包括<a href="http://www.brentozar.com/archive/2013/02/the-fastest-query-is-the-one-you-never-make/">最快的查询是不用执行的那个</a>、<a href="http://www.brentozar.com/archive/2012/05/picking-your-cache/">选择缓存方式</a>、<a href="http://www.brentozar.com/archive/2011/04/better-living-through-caching/">通过缓存让系统更好地运行</a>。有兴趣的读者可以进一步阅读。</p>
+<hr />
+<p>感谢<a href="http://www.infoq.com/cn/author/包研">包研</a>对本文的审校。</p>
+<p>给InfoQ中文站投稿或者参与内容翻译工作，请邮件至<a href="mailto:editors@cn.infoq.com">editors@cn.infoq.com</a>。也欢迎大家通过新浪微博（<a href="http://www.weibo.com/infoqchina">@InfoQ</a>）或者腾讯微博（<a href="http://t.qq.com/infoqchina">@InfoQ</a>）关注我们，并与我们的编辑和其他读者朋友交流。</p><br><br><br><br><br><br></body></html>

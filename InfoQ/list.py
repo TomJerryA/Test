@@ -1,20 +1,20 @@
 <html>
  <head></head> 
- <body>
-  <div>
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/34.py">Docker Indexがプライベートリポジトリとウェブフックを提供</a>Dockerを提供するDocker Inc.が新しいサービスを発表した。初の商用サービスであるプライベートリポジトリも含む。Docker indexはウェブフック、トリガ、Trusted Buildsのためのリンク、メールによる通知を提供する。
-  </div>
-  <div>
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/33.py">マイクロサービスとSOA</a>ここ数年，新たな可能性を持ったアーキテクチャスタイルとして，マイクロサービスが取り沙汰されるようになった。最近でもThoughtworksのMartin Fowler, James Lewis両氏が，マイクロサービスを定義する記事を書いている。しかしSteve Jones氏は，その記事を含むテーマ全般に異を唱える。マイクロサービスに新規性はほとんどない，単なるサービス指向デリバリアプローチだ，というのが氏の意見だ。
-  </div>
-  <div>
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/32.py">Vagrantが開発環境向けコラボレーションツールをリリース</a>DevOpのツールを提供しているVagrantはバージョン1.5の重要な機能を発表した。公開イメージリポジトリと実行環境へのアクセスを共有する機能だ。Vagrant Cloudは完全な開発環境の発見と配信をシンプルにする。Vagrant Shareを使えば開発者は仮想環境へHTTPやSSHでアクセスする方法を他者に公開してコラボレーションできる。
-  </div>
-  <div>
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/31.py">アンドロイドウェアの開発者向けプレビュー詳細</a>Googleは待望のウェアラブル機器向けプラットフォームであるアンドロイドウェアと、より早く新機能を用いて新しいアプリを開発したい熱烈な先行開発者がウェアラブル機器上で動くアプリを作れる開発プレビューを発表した。
-  </div>
-  <div>
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/30.py">Cassandra、2.1リリースに向け勢いづく</a>Cassandraは2.1リリースに向けて鋭意開発が進められており、2.1.0-beta1もすでにリリースされている。この記事では最新のメジャーリリースで追加された主要な解く著について概観する。DataStaxの支援によって、企業向けの導入も進んでおり、DataStaxは最新パートナーシッププログラムを発表している。
+ <body> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/34.py">Docker Indexがプライベートリポジトリとウェブフックを提供</a>Dockerを提供するDocker Inc.が新しいサービスを発表した。初の商用サービスであるプライベートリポジトリも含む。Docker indexはウェブフック、トリガ、Trusted Buildsのためのリンク、メールによる通知を提供する。 
+  </div> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/33.py">マイクロサービスとSOA</a>ここ数年，新たな可能性を持ったアーキテクチャスタイルとして，マイクロサービスが取り沙汰されるようになった。最近でもThoughtworksのMartin Fowler, James Lewis両氏が，マイクロサービスを定義する記事を書いている。しかしSteve Jones氏は，その記事を含むテーマ全般に異を唱える。マイクロサービスに新規性はほとんどない，単なるサービス指向デリバリアプローチだ，というのが氏の意見だ。 
+  </div> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/32.py">Vagrantが開発環境向けコラボレーションツールをリリース</a>DevOpのツールを提供しているVagrantはバージョン1.5の重要な機能を発表した。公開イメージリポジトリと実行環境へのアクセスを共有する機能だ。Vagrant Cloudは完全な開発環境の発見と配信をシンプルにする。Vagrant Shareを使えば開発者は仮想環境へHTTPやSSHでアクセスする方法を他者に公開してコラボレーションできる。 
+  </div> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/31.py">アンドロイドウェアの開発者向けプレビュー詳細</a>Googleは待望のウェアラブル機器向けプラットフォームであるアンドロイドウェアと、より早く新機能を用いて新しいアプリを開発したい熱烈な先行開発者がウェアラブル機器上で動くアプリを作れる開発プレビューを発表した。 
+  </div> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/30.py">Cassandra、2.1リリースに向け勢いづく</a>Cassandraは2.1リリースに向けて鋭意開発が進められており、2.1.0-beta1もすでにリリースされている。この記事では最新のメジャーリリースで追加された主要な解く著について概観する。DataStaxの支援によって、企業向けの導入も進んでおり、DataStaxは最新パートナーシッププログラムを発表している。 
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/29.py">Jolt Awards 2014: モバイルとコーディング ツール</a>Dr. DobbsはJolt Award for Mobile and Coding Tools for 2014を発表した 
@@ -150,6 +150,6 @@
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/37.py">VersionOne社CEORobert Holler氏へのインタビュー</a>VersionOne社CEOのRobert Holler氏に2014年冬のリリースと投資テーマについて話を聞いた。 
-  </div>      
+  </div> 
  </body>
 </html>

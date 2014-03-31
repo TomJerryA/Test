@@ -1,10 +1,11 @@
-<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>Layer 7调查——超媒体API预计会强劲增长</h3><p>Layer 7是CA Technologies的一家公司，它于近日发布了针对API设计和部署的调查结果。调查显示，API设计人员在安全性和可用性哪个应该最先关注方面存在分歧，XML表示和JSON表示占比基本相同，超媒体风格的API预计会强劲增长。总之，调查表明，没有一种放之四海而皆准的API管理方式。</p>
-<p>该调查是由Layer 7所属的<a href="http://www.apiacademy.co/">API Academy</a>在Layer 7的客户群成员中开展的，为期三十天，总共收到了180份来自API管理人员和企业架构师的回复，结果以<a href="http://events.layer7tech.com/state-api">信息图表（.pdf文件）</a>的形式呈现，读者可以从Layer 7的网站上下载。</p>
-<p>当问及他们最先关注什么时，18%的设计人员对此并不确定，其余的API设计人员在安全性（44%）和可用性（38%）两个方面占比基本相同。这表明，安全性和可用性仍然是API设计中的关键问题。将这份调查结果与InfoQ自己的<a href="http://www.infoq.com/research/api-management">API管理功能调查</a>相比就会发现，InfoQ的调查突出了安全性作为API管理最先关注的问题——证实了CA的调查。但是，在API可用性方面比较这两个调查是不可能的，因为InfoQ的调查并没有直接将API可用性认定为API管理的一个关注问题。</p>
-<p>对于Layer 7的这项调查，大部分回复都与组织本身使用的私有API有关。60%涉及公共API和私有API的混合，26%只涉及私有API，14%只涉及公共API。在这些API的数据表示方面，XML和JSON占比基本相同。</p>
-<p>API Academy将API分成三种常见风格——Tunnel风格（SOAP）、URI风格（CRUD）和超媒体风格（REST）。调查发现，SOAP（44%）和CRUD（42%）占比基相同，其余的26%为超媒体。不过，放眼未来计划，超媒体显示了更强劲的增长势头，28%的受访者计划增加超媒体支持，相比之下，只有19%的受访者计划增加SOAP或CRUD支持。</p>
-<p>Matt McLarty是CA Technologies的企业架构师和实践服务副总裁，InfoQ就调查结果与他进行了讨论。当问及技术和API的相关性时，Matt解释说，“在调查中，我们没有发现技术与行业或企业规模等人口统计学特征之间有任何的显著相关性。但是，API Academy与各种规模、行业和目标的公司都有紧密合作。经验告诉我们，许多大型企业往往都是由内而外启用他们的API，其结果是开始时他们常常用SOAP或纯XML。随着API对外界越来越开放，或者是由于移动的需求，他们通常会换成JSON。在大多数情况下，我们都鼓励使用JSON ，因为那是大部分客户端开发的首选，而且我们喜欢偏向于API可用性。”</p>
-<p>InfoQ注意到了一项令人印象深刻的结果，就是超媒体API的预期增长势头。Matt也认为，“当前，超媒体真地很热门。这个概念出现已经有段时间了（<a href="https://www.ics.uci.edu/~fielding/pubs/dissertation/top.htm">在Fielding的博士论文中</a>），但是，我认为它正在进入发展的快车道，因为其中确实有一些有用且实际的指导，在切实可行的层面上解释了它的好处，并提供了实际的应用程序。我认为，我们正处在这样一个阶段，许多框架提供了不同的好处，但在出现明确的领导者之前，还需要沉下心来做事。”</p>
-<p>最后，InfoQ问他，在API设计所用的工具类型方面，是否有什么信息。Matt解释说，“根据我们的经验，这再次回到了我们所面对的组织文化。在大多数情况下，大型企业都使用他们首选的设计工具（数据建模工具、UML），并调整它们以适应Web API环境。最近还有人提出了一些API设计规格说明，但在我们共事的企业里，还没有看到它们的应用。”</p>
-<p>关于这些调查结果，我们真得非常乐意听听读者的感想。您认为API设计应该最先关注什么？超媒体会是未来的API协议吗——在企业内部，或者企业外部，或者两者兼而有之？</p>
-<p><b>查看英文原文：</b><a href="http://www.infoq.com/news/2014/03/ca-api-survey">Layer 7 Survey - Strong Growth Predicted for Hypermedia APIs</a></p><br><br><br><br><br><br></body></html>
+<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>面向对象设计原则与函数式编程</h3><p><a href="http://insightfullogic.com/about/">Richard Warburton</a>最近在演讲中讲到，面向对象编程有诸多公认的设计原则，比如<a href="http://en.wikipedia.org/wiki/SOLID">SOLID</a>原则，但是转向函数式编程后，许多开发人员就不知道如何运用这些设计技巧了。</p>
+<p><a href="http://blog.ploeh.dk/about.html">Mark Seemann</a>在最近的一篇博客中也就同一主题发表了自己的看法，如果你能将SOLID原则发挥到极致，那么函数式编程同样非常吸引人。</p>
+<p>Richard是伦敦JCP委员会的一员。在演讲中，他认为SOLID原则——由<a href="http://en.wikipedia.org/wiki/Robert_c_martin">Robert C. Martin</a>在21世纪初期提出——是公认的面向对象编程设计原则之一，并仔细分析了SOLID的五个原则，试图找出与函数式相同或者至少与某一功能相关的蛛丝马迹。</p>
+<p>根据Richard的经验，尽管许多开发人员不知道在函数式设计中如何使用已有的设计技巧，但是函数式编程往往有助于实现SOLID原则，并且在实现面向对象的封装方面，函数式思维确实能够助你一臂之力。</p>
+<p>Richard得出的结论是每个SOLID原则与函数式都有对应关系。我们不用放弃那些已有的设计模式；与之相反，通过简化或清理，或者以一种简化方式使用这些已有知识，我们还能改善已有设计模式。</p>
+<p>Mark是一位软件架构师并兼职独立顾问。以他的经验，SOLID原则可以促成一种设计风格，而且该风格使函数式编程颇有吸引力。</p>
+<p>当使用SOLID原则中的单一职责原则（<a href="http://en.wikipedia.org/wiki/Single_responsibility_principle">SRP</a>）和接口隔离原则（<a href="http://en.wikipedia.org/wiki/Interface_segregation_principle">ISP</a>）时，最终的结果是代码库中有很多细粒度接口和类，每个这样的类和接口只有一个方法。</p>
+<p>所以Mark由此得出结论，如果因为反复使用SOLID原则而导致很多只有一个方法的小类，那么我们可以将函数建模成具有数据的行为，这也可能是转向函数编程语言的机会，如F#语言。</p>
+<hr />
+<p>感谢<a href="http://www.infoq.com/cn/author/臧秀涛">臧秀涛</a>对本文的审校。</p>
+<p>给InfoQ中文站投稿或者参与内容翻译工作，请邮件至<a href="mailto:editors@cn.infoq.com">editors@cn.infoq.com</a>。也欢迎大家通过新浪微博（<a href="http://www.weibo.com/infoqchina">@InfoQ</a>）或者腾讯微博（<a href="http://t.qq.com/infoqchina">@InfoQ</a>）关注我们，并与我们的编辑和其他读者朋友交流。</p><br><br><br><br><br><br></body></html>

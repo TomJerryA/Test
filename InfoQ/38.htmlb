@@ -1,16 +1,201 @@
-<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>Scrum Master：职位还是角色？</h3><p>几个月前，我在一次本地敏捷用户组聚会上，加入了关于Scrum Master的同行交流。我在会上的发言造成了一些小骚动，我问的第一个问题是“各位所在公司采用全职Scrum Master的有多少？”出席的公司代表们表示，他们都有全职Scrum Master。于是我接着问了第二个问题“他们做些什么工作？”也许我的提问方式已经暗示了雇佣全职Scrum Master比较奇怪，因为当时我在现场经历了几次鸦雀无声的片刻。除了我的同事，其他大部分人都奇怪地看着我，好像我有三只脑袋一样。最终，他们还是迁就了显然没有好好学习的我，用《Scrum指南》里关于Scrum Master的描述来回答我。当我说我们已经用不着全职Scrum Master时，他们都震惊了。其实我还没说，我们从来就没有用过全职Scrum Master。</p>
-<p>《Scrum指南》对Scrum Master的角色做了一般性的描述：负责指导、训练、指引和消除障碍。对刚出道的Scrum团队，这些事情要耗费一些时间。还不熟悉Scrum的团队要通过书本来学习Scrum，需要有一个人来负责指导、训练、指引和消除障碍等工作。可是，交付团队成长起来之后呢？指导减少，训练减少，尽管仍然需要在持续改进方面加以训练。指引还是必需的，不过这只占用很少的时间。随着团队学会了自己处理障碍，障碍也会减少。如果某个团队成员的全职工作是负责指导、训练、指引和消除障碍，而所有这些工作的工作量只占用他们10%到25%的时间的话，那他们多余的时间干什么呢？</p>
-<p>所以，我们是这样操作的。我们也从Scrum起步，但并没有严格照搬书本。我们的项目经理同时负责好几个项目，所以要与多个项目团队协作。我们首先对项目经理进行敏捷培训。他们中有些参加的是高阶课程，有几个甚至拿到了Scrum Master和PMI的Agile Project Managers认证。于是，这些项目经理成了我们第一批Scrum Master。因为资源有限（我们的项目经理还没有团队数量多），或许也是有点先见之明，我们没有立即让Scrum Master去负责单个团队。没错，我们从一开始就违反了Scrum原则。一般来说，每个项目经理负责两个团队，他们承担着Scrum Master的角色。所以他们很忙，但是还能应付。正如大家能想象到的，他们的职责就是对团队进行Scrum指导训练、指引Scrum仪式并消除障碍。在前九个月甚至一年内，我们一直都是这样运作的。</p>
-<p>很幸运，在这种运作方式之下，我们的Scrum团队成长起来了。当我在与员工的一对一谈话中不断被问到项目经理（注意，他们没被称呼为Scrum Master）在团队中的作用时，我意识到，我们将项目经理作为Scrum Master的做法开始出问题了。交付团队成员觉得他们被不同的人过度管理了。他们已经有自己的职能经理（functional manager）了，现在又多一个Scrum Master，而且后者不是交付团队中的成员。</p>
-<p>因此，我们在架构上做了一些改动。我们允许各个交付团队在内部选择自己的Scrum Master。这个Scrum Master仍然作为全职的交付团队成员，不过他同时还要负责指引Scrum仪式，并在出现障碍时作为第一联络人。那项目经理怎么安排呢？首先，他们还是项目经理，负责一些项目管理工作，譬如进行跨团队协作等。不过他们还被委以敏捷教练的职责。这样一来，敏捷训练不再是我们强加给交付团队的任务，而是成为一种应要求提供的支援。这样效果还不错。那些在敏捷方法和思想上已经成熟的团队，不再有被过度管理的感觉；而那些仍处于成长中的团队，他们也有人可以请教。</p>
-<p>在我们继续成长的道路上，还有一个小小的转变。我们把项目经理（Project Manager）提升为程序经理（Program Manager）。所以，他们现在要负责跨团队协作的行动，比如那些跨产品以及涉及多个交付团队的项目。我们还在管理汇报上做了调整，我们把“职能经理/上级”改为“交付团队经理/上级”。后者我们称之为交付经理（delivery manager）。另外，现在是由交付经理来负责敏捷训练与指导了。我们现在仍然这么做，尽管想法古怪，但团队一直交付正常，所以似乎效果还不错。</p>
+<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>ActiveJPA——针对JPA的活动记录模式</h3><p>ActiveRecord是Ruby on Rails的ORM层，大体上类似于Java中的Hibernate。ActiveRecord基于约定优于配置的原则，所以它使用起来比Hibernate更容易。在简化基本的数据操作方面，如创建、读取、更新和删除，它确实是非常棒的。</p>
+<p>借助于ActiveRecord，你的模型类也会作为数据访问对象（Data Access Object，DAO）来执行CRUD操作。在初步探究之后，我对ActiveRecord产生了浓厚的兴趣，因此开始寻找一种解决方案来简化基于Java持久化API（Java Persistence API，JPA）的ORM框架的使用。</p>
+<p>大多数JPA应用都会有某种类型的数据访问层（Data Access Layer，DAL）来与数据库进行交互。通常DAL会包含数据访问对象或符合<a href="http://martinfowler.com/eaaCatalog/repository.html">Repository设计模式</a>的类。</p>
+<p>DAO的实现与实体对象通常是一对一的关系，而Repository则是针对每个<a href="http://martinfowler.com/bliki/DDD_Aggregate.html">聚合根（aggregate root）</a>实现一个。不管是哪种场景，应用最后都会创建多个类与数据库进行交互。尽管适当的抽象能够有效限制所创建类的数量，但是它终究还是会在应用中引入一个额外的层，这都是需要维护和测试的。</p>
+<p><a href="https://github.com/activejpa/activejpa">ActiveJPA</a>基于JPA，提供了<a href="http://www.martinfowler.com/eaaCatalog/activeRecord.html">Martin Fowler所提出的活动记录模式（Active Record pattern）</a>的Java实现。借助于ActiveJPA，模型本身会作为DAO并与数据库交互，这样就不需要额外的代码作为数据访问层了。</p>
+<p>ActiveJPA使用到了JPA规范，因此所有JPA的ORM实现（Hibernate、EclipseLink、OpenJPA等）都可以与ActiveJPA协同使用。</p>
 <div id="lowerFullwidthVCR"></div>
-<p>对我们来说，Scrum Masters刚开始是个职位，然后随着我们在敏捷上的成长，演变成为一个角色。我们将Scrum Master的职责分成两个部分，一是训练与指导，另一个是指引与消除障碍。让团队进行自我管理，允许他们可持续成长，这样运作很有效，因为训练不再是强加给他们的任务，而是应要求提供的支援。而且，很多团队采用轮流担任Scrum Master角色的办法，这有利于让更多团队成员体验这个角色。此外，我们发现，交付团队里的所有成员都可以担任Scrum Master。比如，我们的业务分析师、开发人员、QA测试都当过Scrum Master。我们还发现，Scrum Master还时常在交付团队内部兼任着敏捷训练与指导的角色，因为那些有兴趣担负Scrum Master角色的人，往往也对学习敏捷原则感兴趣，他们愿意在团队里分享学习所得。</p>
-<p>最后，让管理层高兴的最重要一点是，用较少的人完成同样的工作量。我们有16个交付团队。不采用专职Scrum Master，让我们腾出了16个人及其相关预算。正是这样，我们才得以拥有16个交付团队，而不是13个，我们需要这些多余的人员去填充真正有意义的角色。</p>
-<p>实际上，我这篇文章是想提醒正在走向敏捷的各位。如果你雇佣一大把全职Scrum Master（就像圣路易斯这里一样），你需要有一个应对方案，以便在交付团队成熟以后知道该怎么做。至少在这里，大部分受雇的Scrum Master具有项目管理背景。这没什么错，但正如我一再提到的，要准备好回答“现在如何安置这些曾经作为Scrum Master的项目经理呢？”这个问题。</p>
+<h2>将已有的JPA模型转换为ActiveJPA</h2>
+<p>要将已有的模型转换为ActiveJPA，只需让你的模型实现扩展org.activejpa.entity. Model即可：</p>
+<pre>
+@java.persistence.Entity   
+public class YourModel extends org.activejpa.entity.Model {   
+}</pre>
+<h3>执行CRUD操作</h3>
+<p>你的模型将会从ActiveJPA的模型类中继承得到很多的CRUD功能。</p>
+<pre>
+//根据id获得订单    
+Order order = Order.findById(12345L);
+
+// 根据customer获得其已发货的订单   
+List orders = Order.where(&quot;customerEmail&quot;, &quot;dummyemail@dummy.com&quot;,
+ &quot;status&quot;, &quot;shipped&quot;);
+
+// 得到匹配过滤条件的第一条订单记录 
+Long count = Order.first(&quot;customerEmail&quot;, &quot;dummyemail@dummy.com&quot;, 
+&quot;status&quot;, &quot;shipped&quot;);
+
+// 得到匹配过滤条件的唯一一条订单记录
+Long count = Order.one(&quot;customerEmail&quot;, &quot;dummyemail@dummy.com&quot;, 
+&quot;status&quot;, &quot;shipped&quot;);
+
+// 得到所有的记录   
+List orders = Order.all();
+
+// 检查指定标识符的订单是否存在   
+boolean exists = Order.exists(1234L);
+
+// 保存订单   
+order.persist();
+
+// 删除订单   
+order.delete();
+
+// 刷新订单
+order.refresh();
+
+// 与持久化上下文中已有的订单进行合并
+order.merge();</pre>
+<h2>过滤与分页</h2>
+<p>对记录进行过滤时，你并不需要创建JPQL或criteria查询。ActiveJPA提供了一个复杂的过滤器，用于在不同的操作间进行连接（conjunction）：</p>
+<pre>
+// 获取匹配指定Email地址且账单额大于1000的所有订单，并且要进行分页 
+Filter filter = new Filter();    
+filter.setPageNo(1);    
+filter.setPerPage(25);    
+filter.addCondition(new Condition(&quot;customerEmail&quot;, Operator.eq,
+ &quot;dummyemail@dummy.com&quot;);
+
+filter.addCondition(new Condition(&quot;billingAmount&quot;, Operator.gt, 
+1000.00);   
+List orders = Order.where(filter);
+
+// 对满足过滤条件的订单进行计数   
+Long count = Order.count(filter);
+
+// 删除匹配这个过滤器的订单   
+Long count = Order.deleteAll(filter);</pre>
+<h3>嵌套查询</h3>
+<p>ActiveJPA允许嵌套过滤参数。这样的话就能更容易地在运行时创建动态查询。例如，你获取的订单中，至少要有一个订单项是基于“book”类别的产品创建的。</p>
+<pre>
+// 得到至少包含一个book项的所有订单 
+Filter filter = new Filter();    
+filter.setPageNo(1);    
+filter.setPerPage(25);    
+filter.addCondition(new Condition(&quot;orderItems.product.category&quot;,
+ Operator.eq, &quot;books&quot;);    
+List orders = Order.where(filter);</pre>
+<h2>使用集合</h2>
+<p>上面讨论的所有CRUD操作同时可以在集合级别执行。将查询范围设置到集合类的用法如下所示：</p>
+<pre>
+// 在订单中，根据id查找订单项    
+order.collections(&quot;orderItems&quot;).findById(123L);
+
+// 得到第一个已发货的订单项
+order.collections(“orderItems”).first(“status”, “shipped”);
+
+// 得到所有取消的订单项   
+order.collections(“orderItems”).where(“status”, “cancelled”);
+
+// 得到集合中的所有项   
+order.collections(“orderItems”).all();
+
+// 往集合中添加一项   
+order.collections(“orderItems”).add(orderItem);
+
+// 移除集合中的一项   
+order.collections(“orderItems”).remove(orderItem);</pre>
+<p>过滤和分页也可以使用到集合之中</p>
+<pre>
+// 对一个订单中的订单项基于过滤器进行查询并进行分页
+Filter filter = new Filter();   
+filter.setPageNo(1);    
+filter.setPerPage(25);
+
+filter.addCondition(new Condition(“status”, “shipped”);   
+order.collections(&quot;orderItems&quot;).where(filter);
+
+// 在订单中，得到匹配过滤器的订单项的数量
+
+order.collections(“orderItems”).count(filter);</pre>
+<h2>动态更新</h2>
+<p>ActiveJPA支持对模型的动态更新。在有些场景下这是很有用的，例如用户通过浏览器更新一个表单。你可以传递一个包含属性的map来进行更新，而不是调用每个属性的setter方法：</p>
+<pre>
+// 更新属性    <br />
+Map attributes = new HashMap();    
+attributes.put(&quot;billingAmount&quot;, 1000.0);  
+order.updateAttributes(attributes);</pre>
+<p>你也可以更新非原始/非包装类型的域，只需给这些对象传递map即可。以下的样例展现了更新一个订单的收获地址和账单金额。</p>
+<pre>
+// 更新一个订单的收获地址和账单金额<br />
+Map attributes = new HashMap();<br />
+Map address = new HashMap();<br />
+address.put(“city”, “Bangalore”);<br />
+address.put(“state”, “Karnataka”);<br />
+attributes.put(“shippingAddress”, address);<br />
+attributes.put(&quot;billingAmount&quot;, 1000.0);<br />
+order.updateAttributes(attributes);</pre>
+<p><b>注意</b>：目前尚不支持更新list/set/array域，未来的版本将会提供支持。</p>
+<h2>事务处理</h2>
+<p>默认情况下，如果没有事务，ActiveJPA将会为所有的更新操作启动一个事务，不过你也可以将整个工作单元包装到一个事务之中：</p>
+<pre>
+JPAContext context = JPA.instance.getDefaultConfig().getContext();    
+context.beginTxn();    
+boolean failed = true;    
+try {    
+ // 你的工作单元置于此处    
+failed = false;    
+} finally {    
+ // 提交或回滚事务    
+context.closeTxn(failed);    
+}</pre>
+<p>如果已经存在了外部的事务，那么ActiveJPA将会使用这个事务，但是不会进行提交或回滚。应该由应用来负责关闭该事务。</p>
+<h2>测试你的模型</h2>
+<p>ActiveJPA为TestNG提供了一个基本的测试类，它会将ActiveJPA以挂钩（hook）的方式添加到测试运行时之中。只需让你的测试类扩展自<i>org.activejpa.entity.testng.BaseModelTest</i>类即可。以下为一个样例代码：</p>
+<pre>
+public class OrderTest extends BaseModelTest {
+     @Test
+     public void testCreateOrder() {
+       Order order = new Order();
+       order.setCustomerEmail(&quot;dummyemail@dummy.com&quot;);
+       ...
+       ...
+       order.persist();
+       Assert.assertEquals(Order.where(&quot;customerEmail&quot;,
+ &quot;dummyemail@dummy.com&quot;).get(0), order);
+    }
+  }
+}</pre>
+<h2>使用起步</h2>
+<h3>搭建Maven</h3>
+<p>ActiveJPA可以以Maven artifact的方式来获取，能够非常容易地集成到你的应用之中。只需在你的pom.xml文件中添加如下的maven依赖：</p>
+<pre>
+&lt;dependencies&gt;    <br />&lt;dependency&gt;    <br />&lt;groupId&gt;org.activejpa&lt;/groupId&gt;    <br />&lt;artifactId&gt;activejpa-core&lt;/artifactId&gt;    <br />&lt;version&gt;0.1.5&lt;/version&gt;    <br />&lt;/dependency&gt;    <br />&lt;/dependencies&gt;
+<br />&lt;repositories&gt;   <br />&lt;repository&gt;    <br />&lt;id&gt;activejpa-repo&lt;/id&gt;    <br />&lt;url&gt;https://raw.github.com/ActiveJpa/activejpa/mvn-repo/releases&lt;/url&gt;    <br />&lt;snapshots&gt;    <br />&lt;enabled&gt;true&lt;/enabled&gt;    <br />&lt;updatePolicy&gt;always&lt;/updatePolicy&gt;    <br />&lt;/snapshots&gt;    <br />&lt;/repository&gt;    <br />&lt;/repositories&gt;</pre>
+<h3>嵌入到你的应用之中</h3>
+<p>ActiveJPA需要在实体类加载前就嵌入到你的应用之中。如果你使用Tomcat的话，那么ServletContextListener就是做这件事的一个很好的地方。你可以将以下的代码编写到上下文监听器的contextInitialized()方法之中。</p>
+<pre>
+// 动态加载Java代理   
+ActiveJpaAgentLoader.instance().loadAgent();
+
+// 添加定义在persistence.xml中的持久化单元，以“order”名进行标识。
+persistence.xml应该位于类路径下   
+JPA.addPersistenceUnit(&quot;order&quot;);
+
+// 如果你已经创建了实体管理工厂的话，可以将其关联到ActiveJpa上  
+// JPA.addPersistenceUnit(&quot;order&quot;, entityManagerFactory);</pre>
+<h2>与Spring框架集成</h2>
+<p>将ActiveJPA与Spring这样的框架进行集成是很容易的。大多数的应用都会使用Spring的注解来配置JPA和管理事务。ActiveJPA能够以两种方式来进行配置——你可以让它来创建实体管理工厂也可以传入一个已存在的对象。在Spring配置JPA的情况下，我们可以使用Spring所创建的实体管理工厂。这样就能保证ActiveJPA使用Spring所创建的相同的连接和事务，从而提供无缝的集成。</p>
+<p>以下的代码展现了如何将ActiveJPA集成到Spring应用之中，这个应用是部署在servlet容器里面的。它使用了一个自定义的上下文加载监听器，从而将ActiveJPA嵌入到应用之中。需要注意的是，这很类似与上面的servlet样例，区别在于这里使用了Spring框架的ContextLoaderListener：</p>
+<pre>
+public class CustomContextListener extends ContextLoaderListener {
+  @Override
+  public void contextInitialized(ServletContextEvent event) {
+          try {
+                    // 在这里动态加载Java代理
+                    ActiveJpaAgentLoader.instance().loadAgent();
+          } catch (Exception e) {
+                    throw new RuntimeException(e);
+          }
+          super.contextInitialized(event);
+          JPA.instance.addPersistenceUnit(&quot;default&quot;, 
+getCurrentWebApplicationContext().getBean(EntityManagerFactory.
+class), true);
+   }
+}</pre>
+<h3>样例应用</h3>
+<p>在GitHub的<a href="https://github.com/ActiveJpa/activejpa">ActiveJPA工程页面</a>上有一个示例应用，包含了很多更具体的样例，展现了<a href="https://github.com/ActiveJpa/activejpa/tree/master/activejpa-examples/activejpa-examples-spring">Spring-ActiveJPA</a>的集成。</p>
 <h2>关于作者</h2>
-<p><img src="http://infoqstatic.com/resource/articles/scrum-master-position-role/zh/resources/1230000.jpg" style="float: left; margin-right: 10px" alt="" _href="img://null" _p="true" /><strong>Brian Lawrence</strong>目前是密苏里州圣路易斯TriZetto Provider Solutions公司IT总监，他负责若干敏捷和看板产品开发团队与应用架构。自爱德华&middot;尤登（Edward Yourdan）时代起，他就醉心于流程。他在职业生涯中，曾对开发组织进行过若干方法论改革，包括统一软件开发过程（RUP）、精炼统一过程（EssUP）和敏捷。他热爱过程改进，寻求更好、更快、代价更低的软件开发方式。他目前正热衷于敏捷环境中的管理方式。</p>
-<p><strong>原文英文链接：</strong><a href="http://www.infoq.com/articles/scrum-master-position-role">Scrum Master: Position or Role?</a></p>
-<hr />
-<p>感谢<a href="http://www.infoq.com/cn/author/侯伯薇">侯伯薇</a>对本文的审校。</p>
-<p>给InfoQ中文站投稿或者参与内容翻译工作，请邮件至<a href="mailto:editors@cn.infoq.com">editors@cn.infoq.com</a>。也欢迎大家通过新浪微博（<a href="http://www.weibo.com/infoqchina">@InfoQ</a>）或者腾讯微博（<a href="http://t.qq.com/infoqchina">@InfoQ</a>）关注我们，并与我们的编辑和其他读者朋友交流。</p><br><br><br><br><br><br></body></html>
+<p><img style="float: left; margin-right: 10px" src="http://infoqstatic.com/resource/articles/ActiveJPA/zh/resources/0310030.jpg" _href="img://null" _p="true" alt="" /><b>Ganesh Subramanian</b>是<a href="http://www.hightail.com/">Hightail</a>的架构师，在构建高扩展、低延迟的跨域分布式应用架构方面有超过十年的工作经验。Ganesh曾经参与<a href="http://www.flipkart.com/">Flipkart</a>（印度最大的电子商务厂商）的供应链管理平台的架构，他还是活跃的开源社区（<a href="https://github.com/activejpa/activejpa">ActiveJPA</a>, <a href="http://minnal.github.io/minnal/">Minnal</a>, <a href="https://github.com/minnal/autopojo">AutoPojo</a>等）贡献者以及<a href="http://ganeshsubramanian.com/blog">技术博客</a>的作者，在业余时间，他喜欢看电影（各种流派）以及陪伴家人。</p>
+<div style="clear:both"></div>
+<p>原文英文链接：<a href="http://www.infoq.com/articles/ActiveJPA">ActiveJPA – Active Record Pattern for JPA</a></p><br><br><br><br><br><br></body></html>
