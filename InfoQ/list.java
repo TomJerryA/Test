@@ -2,10 +2,13 @@
  <head></head> 
  <body>
   <div>
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/43.java">Mobile App Performance Report Benchmarks Crashes and Responsiveness on iOS and Android</a>Crittercism, maker of a mobile app performance management solution, has analysed one month of performance data and compiled it into a Mobile Experience Benchmark report focusing on two aspects of a mobile performance: app uptime and app responsiveness. Results highlight app categories with the highest crash and error rates and provide the basis for a comparison among iOS and Android versions.
-  </div>
-  <div>
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/42.java">RESTistential Crisis over Hypermedia APIs</a>Software developer Evan Cordell initiated a debate about how the hypermedia constraint of REST is at odds with common web APIs requirements in the API-Craft mailing list a few weeks ago.
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/44.java">DDD and CQRS Using the Functional Language F#</a>A focus on behaviour and a more declarative style of code are two benefits for Domain-Driven Design (DDD) when moving from an object-oriented language like C# to a functional one like F#, Lev Gorodinski claims in a recent presentation, using an example that includes event sourcing and Command-Query Responsibility Separation (CQRS) to show some of the benefits and challenges in a move to F#.
+  </div> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/43.java">Mobile App Performance Report Benchmarks Crashes and Responsiveness on iOS and Android</a>Crittercism, maker of a mobile app performance management solution, has analysed one month of performance data and compiled it into a Mobile Experience Benchmark report focusing on two aspects of a mobile performance: app uptime and app responsiveness. Results highlight app categories with the highest crash and error rates and provide the basis for a comparison among iOS and Android versions. 
+  </div> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/42.java">RESTistential Crisis over Hypermedia APIs</a>Software developer Evan Cordell initiated a debate about how the hypermedia constraint of REST is at odds with common web APIs requirements in the API-Craft mailing list a few weeks ago. 
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/41.java">JCACHE Specification Finalized</a>After thirteen years of development and evolution, JSR-107 - JCACHE, has been finalized. 
@@ -147,9 +150,6 @@
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/0.java">What Is (Not) DevOps, and How Do We Get There?</a>In this article we discuss some of the misunderstandings surrounding DevOps and provide an introduction to a process that can bring the cultural shift that DevOps is all about. 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/49.java">Building a Better WCF Client</a>The WCF client that Visual Studio generates by default is a problem. Besides not being a direct match with the server-side interface code, which causes a lot of code and data sharing problems, the generated code still has a glaring bug after all these years. Michael Taylor discusses these issue and his attempts to address them in a series titled “A Smarter WCF Service Client”. 
-  </div>   
+  </div>  
  </body>
 </html>
