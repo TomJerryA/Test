@@ -1,5 +1,11 @@
-<p>A focus on behaviour and a more declarative style of code are two benefits for Domain-Driven Design (DDD) when moving from an object-oriented language like C# to a functional one like F#, Lev Gorodinski claims in a recent presentation, using an example that includes event sourcing and Command-Query Responsibility Separation (CQRS).</p>
-<p>Lev has been using F# heavily during the last year and exclusively for the last 8 months and in his presentation he uses an example based on Greg Young’s original&nbsp;CQRS example to demonstrate how a F# implementation contrasts with a C# one, showing some of the benefits and challenges.</p>
-<p>Implementing his example in a typical object-oriented approach Lev finds a number of issues, e.g. it’s quite verbose, and the entities have a dependency to the event source implementation.<br /> In the F# implementation though there are improvements, it’s a lot less code, e.g. boilerplate code, which makes it less verbose, and the code is more explicit, capturing what happens in a function without hidden side effects.</p>
-<p>Using DDD with an F# approach gives for Lev some benefits, it lets him focus on behaviour as opposed to the infrastructure required to implement it, which also means moving away from a CRUD thinking. It also supports a more declarative code; instead of writing code, it’s more about declaring a specification, with F# implementing the specification.<br /> Lev points out that the benefits are all tenants of DDD and listed in two of the DDD books, written by Eric Evans and Vaughn Vernon respectively.</p>
-<p>One of the challenges Lev experienced when moving to F# was the new paradigm, when he started he was doing C# style of code but in F#, which took a while to overcome to really make a shift to functional programming. It’s also a language that supports both functional and object oriented programming and sometimes he finds it hard to decide which option to use.</p>
+<p>This year's edition of The Shallot has been released. &nbsp;The Shallot is an online magazine which conducts deep analysis of the state of the information technology industry looking at a broad range of topics.</p>
+<p>This year's edition covers important areas such as:</p>
+<ul> 
+ <li>CEO with Tourettes Mistaken as Visionary&nbsp;</li> 
+ <li>Pivoteers, Inc Celebrates Ten Years of Pivoting</li> 
+ <li>Outsourcing of Executives Returns High Shareholder Value</li> 
+ <li>Scrum Team Abandons Story Points for Bitcoin</li> 
+ <li>Self-Directed Team Chooses Command-and-Control Structure: Waits for Manager to Make Decisions</li> 
+</ul>
+<p>Publication of The Shallot is the result of deep investigitave journalism and analysis over the previous year&nbsp;&nbsp;by a team of dedicated reporters from all around the world, which is why it takes a whole year for an edition to be produced.</p>
+<p>&nbsp;</p>

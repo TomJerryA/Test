@@ -1,6 +1,12 @@
 <html>
  <head></head> 
- <body> 
+ <body>
+  <div>
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/41.htmlb">西蒙•布朗谈可持续竞争力</a> 为什么有些团队很成功，而其他团队不那么成功呢？团队可以使用流程开展工作吗？管理人员如何帮助团队变得更好？团队需要有改善软件质量的激励措施吗？InfoQ采访了西蒙•布朗，他从持续改进、平衡人员与流程，以及软件质量与架构等几个方面谈了可持续竞争力。 
+  </div>
+  <div>
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/40.htmlb">测试数据构造秘技（1） ——专属数据引用数据分离</a> 持续集成难，自动化测试更难；测试环境准备难，测试数据准备更难。测试数据准备秘技这个系列，我希望能将测试数据准备的一线经验和体会完整地呈现给大家，将教科书上一些抽象的原则，用鲜活的示例来给读者解释明白，希望能对一线的测试从业人员起到指导作用。 
+  </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/39.htmlb">看DeepMind如何用Reinforcement learning玩游戏</a> 说到机器学习最酷的分支，非Deep learning和Reinforcement learning莫属（以下分别简称DL和RL）。这两者不仅在实际应用中表现的很酷，在机器学习理论中也有不俗的表现。DeepMind工作人员合两者之精髓，在Stella模拟机上让机器自己玩了7个Atari 2600的游戏，结果是玩的冲出美洲，走向世界，超越了物种的局限。不仅战胜了其他机器人，甚至在其中3个游戏中超越了人类游戏专家。噢，忘记说了，Atari 2600是80年代风靡美国的游戏机，当然你现在肯定不会喜欢了。长成什么样子？玩玩当下最火的flappy bird吧！ 
   </div> 
@@ -144,12 +150,6 @@
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/0.htmlb">执行分析还是内存分析？</a> 在寻找执行热点的时候，有时内存分析将会提供比执行分析更加清晰的图像。在本文中，Kirk Pepperdine谈论了一些决定应该在什么时候采用哪种类型的分析器的指示灯。 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/49.htmlb">浅析基于微软SQL Server 2012 Parallel Data Warehouse的大数据解决方案</a> 本文将深入介绍SQL Server 2012 Parallel Data Warehouse的Polybase技术，并结合具体业务场景示例讲解Polybase技术如何为业务人员提供简单易用的大数据解决方案。 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/48.htmlb">虚拟座谈会：性能调优面面观</a> 在应用交付领域，看上去性能调优仍然没有成为主流。InfoQ采访了性能监控领域的5位大师，探讨了其原因，以及我们该做些什么。讨论非常激烈。虚拟座谈会的5位成员是Ben Evans、Charlie Hunt、Kirk Pepperdine、Martin Thompson和Monica Beckwith。 
-  </div> 
+  </div>   
  </body>
 </html>

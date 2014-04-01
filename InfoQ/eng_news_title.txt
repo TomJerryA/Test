@@ -1,1 +1,1 @@
-DDD and CQRS Using the Functional Language F#
+The Shallot 2014 Edition Published

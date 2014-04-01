@@ -1,38 +1,19 @@
-<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>运维利器Vagrant 1.5发布，Vagrant Cloud上线</h3><p>本周初，<a href="https://github.com/mitchellh">Mitchell Hashimoto</a>在Vagrant官方博客上宣布<a href="http://www.vagrantup.com/blog/vagrant-1-5-and-vagrant-cloud.html">Vagrant 1.5发布与Vagrant Cloud上线</a>。Hashimoto对Vagrant 1.5的描述如下：</p>
-<ul> 
- <li>一个非常注重稳定性的Vagrant版本</li> 
- <li>向后兼容。某些选项会输出warning，这些选项会在之后的版本中被移除</li> 
-</ul>
-<p>最重要的五个新功能：</p>
-<ul> 
- <li><a href="http://www.vagrantup.com/blog/vagrant-1-5-and-vagrant-cloud.html#features">Vagrant Share</a></li> 
- <li><a href="http://www.vagrantup.com/blog/vagrant-1-5-and-vagrant-cloud.html#features">Boxes 2.0</a></li> 
- <li><a href="http://www.vagrantup.com/blog/vagrant-1-5-and-vagrant-cloud.html#features">Rsync Synced Folders</a></li> 
- <li><a href="http://www.vagrantup.com/blog/vagrant-1-5-and-vagrant-cloud.html#features">Hyper-V</a></li> 
- <li><a href="http://www.vagrantup.com/blog/vagrant-1-5-and-vagrant-cloud.html#features">SMB Synced Folders</a></li> 
-</ul>
-<p>下载地址在<a href="http://www.vagrantup.com/downloads.html">Vagrant官网</a>，需要的同学可以自取。</p>
-<p>跟Vagrant 1.5同时发布的<a href="https://vagrantcloud.com/">Vagrant Cloud</a>是配合Vagrant Share功能的一项公共云服务，这项服务目前为免费beta版，未来可能会发展成为收费模式。</p>
-<p>Rsync、Hyper-V和SMB都很容易理解，下面着重介绍一下Vagrant Share和Boxes 2.0，这两个功能可能很多Vagrant用户都会用到：</p>
-<p>Vagrant Share，即Vagrant环境共享功能，只要使用 <code>vagrant share</code> 这个指令，就可以把当前机器的环境配置生成一个可供其他联网人员访问的地址，知道这个地址的同学只要使用 <code>vagrant connect 被共享的地址</code> 指令，就可以读取被共享机器的vagrant环境。Vagrant Share支持HTTP、SSH、静态IP三种共享模式，HTTP为默认模式。在使用HTTP模式共享的情况下，任何人只要在浏览器里输入生成的地址就可以读取共享的信息，而无需在本机安装vagrant。</p>
-<p>Vagrant Share会将共享的机器暴露在外部环境之下，目前Vagrant官方提供了一些简单的安全选项，并计划引入ACL权限控制，未来还会提供自建Vagrant Share服务器的功能。目前，所有Vagrant Share都连接到<a href="https://vagrantcloud.com/">Vagrant Cloud</a>之上。</p>
-<p>Boxes 2.0则是在Vagrant 1.4的box之上做了如下改动：</p>
-<ul> 
- <li>简化的box命名，格式类似 <code>hashicorp/precise64</code>。该名称同时是box的名称和访问地址</li> 
- <li>box可以做版本控制，你可以部署box的升级，而其他使用了该box的用户也会收到可用升级通知</li> 
- <li>box的共享目前也在Vagrant Cloud上进行</li> 
-</ul>
-<p>Boxes 2.0也向后兼容，之前的指令可以沿用。</p>
-<p>同一个命名的box可能对应不同的provider，如VirtualBox或者VMware，Boxes 2.0对此进行了简化处理：</p>
-<ol> 
- <li>用户输入指令<code>vagrant box add hashicorp/precise64</code></li> 
- <li>如果有多个provider的情况，vagrant会自己告诉用户这里有多个，并提示用户选择</li> 
-</ol>
-<p>最后，Hashimoto表示在下一个版本会有更大的惊喜：</p>
-<blockquote> 
- <p>在1.6版本中，你将能够随时看到系统中所有Vagrant环境的运行情况，再也不会害怕想不起来还有哪些VM在跑了！Vagrant也终于会对基于Windows的客户机提供完整的支持。然后我们还会添加至少两个服务商的支持。</p> 
-</blockquote>
-<p>Kiip工程师Robby Colvin将这个消息<a href="https://news.ycombinator.com/item?id=7374263">发布到Hacker News</a>上之后，Hashimoto本人在帖子后面进行了回复与答疑。</p>
-<p>Gittip开发者<a href="https://www.gittip.com/patcon/">Patrick Connolly</a>表示对Hashimoto往vagrant core中添加越来越多的东西表示怀疑，认为有些东西应该放到插件里去做；Hashimoto表示core现在还很轻量，并且他认为这些特性都是core应该有的东西。</p>
-<p>用户anko抱怨VMware provider是收费的，Hashimoto说现在他们就是靠这个挣钱，毕竟VMware是收费的。而Hyper-V的支持代码大部分来自微软OpenTech，并且该代码以MIT协议开源，所以是免费的。</p>
-<p>Docker maintainer和boot2docker的作者也路过串门，发来贺电。</p><br><br><br><br><br><br></body></html>
+<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>Amazon vs. Google vs. Windows Azure评测与比较</h3><p>InfoWorld测试中心的Peter Wayner近日对GCE、Azure和AWS进行了一组基准测试并<a href="http://www.infoworld.com/d/cloud-computing/ultimate-cloud-speed-tests-amazon-vs-google-vs-windows-azure-237169?footer">发布测试报告</a>。报告初步结论为：GCE性能最快，Azure最慢，AWS表现中庸但价格最贵。</p>
+<p>Peter Wayner采用的是开源的DaCapo压力测试套件，分别对小型，中型和大型机实例在Amazon EC2、GCE、以及微软Windows Azure进行测试。DaCapo是由14个常见Java程序捆绑而成的集合，它尽可能地模拟生产环境，对机器进行一系列的测试。子测试会偏重CPU、RAM等不同方面，有的会进行性能组合测试，有些测试会采取多线程模式。</p>
+<p>这组测试套件中大家可能比较熟悉的测试有：Tomcat测试，启动Web服务器，编译网页；Luindex&amp;Lusearch测试（常见的索引和搜索工具），即部署并运行Lucene；Avrora，将模拟一些微控制器（microcontrollers），这个测试可能只对芯片设计者有用，但该测试可以收集到真实的原始CPU数据。</p>
+<p>作者分别在每个云平台三种不同的Linux机器上运行了DaCapo测试，使用默认JVM。启动的实例配置并非完全一致，而是在规模和价格方面大致相当。下表为三家机器配置和每小时的花费。</p>
+<p><img src="http://infoqstatic.com/resource/news/2014/04/amazon-google-windows-azure/zh/resources/0401000.png" width="600" _href="img://null" _p="true" alt="" /></p>
+<p>纵观三家平台，从速度上来说，谷歌是最快的。这三家完成基准测试分别用时为：谷歌 575s，亚马逊 719s，Windows Azure 834s。谷歌的机器在DaCapo测试的14个套间中有13个是最快的，Windows Azure的机器只有在一个测试案例中表现最快。</p>
+<p>从价格上来说，谷歌也是最便宜的，Windows Azure紧随其后。执行DaCapo套件在三家云平台的花费分别为谷歌 3.78cents，Windows Azure 3.8cents，Amazon 5cents。在14个测试案例中，其中八个谷歌的机器花费最少；Windows Azure的实例在五个测试案例中花费最少；亚马逊机器只有在一个测试案例花费最少。如下图：</p>
+<p><img style="float: left; margin-right: 5px" src="http://infoqstatic.com/resource/news/2014/04/amazon-google-windows-azure/zh/resources/0401002.png" width="300" _href="img://null" _p="true" alt="" /> <img style="float: right; margin-right: 5px" src="http://infoqstatic.com/resource/news/2014/04/amazon-google-windows-azure/zh/resources/0401003.png" width="300" _href="img://null" _p="true" alt="" /></p>
+<div style="clear:both"></div>
+<p>有些很有意思的结果：在微软的平台上测试时，绿色和红色结果(绿色表示花费少，耗时短；红色表示花费多，耗时长)可能会出现在同一台机器上，这意味着：便宜的机器性能很好，或昂贵的机器表现一般。谷歌的单CPU的机器充满了绿色，即速度快还省钱，但运行Tradesoap测试呈现红色，这就暴露出谷歌在处理Tradesoap测试中的可能存在的策略问题。</p>
+<p>谷歌使用GCEU（Google Compute Engine Unit）作为不同机型计算能力的度量单位，亚马逊对应的有ECU（Elastic Compute Units）；高CU（Compute Unit）机器的性能是否能成倍提升？拿亚马逊的例子来说：m3.2xlarge约为26 ECUs，m3.medium约为3 ECUs；在大部分的压力测试中，m3.2xlarge型号的机器仅是m3.medium速度的2-4倍，虽然在某些压力测试中的表现能达到8倍的效果。</p>
+<p>大家可下载<a href="http://nancy.viila.info/wp-content/uploads/2014/03/aws_goolge_azure.pdf">详细的测试数据</a>进行阅读。值得注意的是，Peter Wayner并没有对存储进行测试，而写密集型或读密集型的应用性能往往受到存储性能的制约。另外，本测试结果如果采用不同的Java版本，也可能导致测试性能的巨大差异。</p>
+<p><strong>参考阅读：</strong></p>
+<p><a href="http://www.infoworld.com/d/cloud-computing/cloud-review-8-public-cloud-services-put-the-test-214403?source=fssr">Cloud review: 8 public cloud services put to the test</a></p>
+<p><a href="http://www.infoworld.com/d/cloud-computing/benchmarking-amazon-ec2-the-wacky-world-of-cloud-performance-217626">Benchmarking Amazon: The wacky world of cloud performance</a></p>
+<p><a href="http://www.infoworld.com/d/cloud-computing/cloud-computing-in-2012-infoworld-special-report-187077">Cloud Computing Deep Dive</a></p>
+<hr />
+<p>感谢<a href="http://www.infoq.com/cn/author/杨赛">杨赛</a>对本文的审校。</p>
+<p>给InfoQ中文站投稿或者参与内容翻译工作，请邮件至<a href="mailto:editors@cn.infoq.com">editors@cn.infoq.com</a>。也欢迎大家通过新浪微博（<a href="http://www.weibo.com/infoqchina">@InfoQ</a>）或者腾讯微博（<a href="http://t.qq.com/infoqchina">@InfoQ</a>）关注我们，并与我们的编辑和其他读者朋友交流。</p><br><br><br><br><br><br></body></html>

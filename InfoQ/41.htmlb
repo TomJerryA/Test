@@ -1,111 +1,48 @@
-<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>借助JArchitect探究Cassandra CLI内部机制</h3><p>关系型数据库管理系统（RDBMS）是存储和使用数据最常用的系统，但对于超大量数据，这些数据库的扩展性不是很好。</p>
-<p>近年来，由于对关系型数据库替代产品的需求日益增长，<a href="http://en.wikipedia.org/wiki/NoSQL">NoSQL</a>的概念已经受到广泛的欢迎。NoSQL背后的最大动机是可扩展性。NoSQL数据库解决方案提供了一种存储和使用超大量数据的方法，而且开销更小，工作量更少，性能更好，停机时间更短。</p>
-<p><a href="http://cassandra.apache.org/">Apache Cassandra</a>是一个基于列的NoSQL数据库。它是Facebook为推动其收件箱搜索功能而开发的，后来成为Apache的开源项目。<a href="http://nosql.mypopescu.com/post/407159447/cassandra-twitter-an-interview-with-ryan-king#_blank">Twitter</a>、<a href="http://nosql.mypopescu.com/post/441535855/digg-going-the-cassandra-way#_blank">Digg</a>、Reddit及其他许多组织都已经开始使用它。</p>
-<p>Cassandra本身提供了一个非常基础的交互式命令行接口（CLI）。开发人员可以使用CLI连接到集群中的远程节点，创建或更新模式以及设置和检索记录。</p>
-<p>对于Cassandra管理员而言，CLI是一个有用的工具。即使只提供了基础的命令，它也是一个很好的例子，从中可以知道如何实现Cassandra客户端。要开发自定义的Cassandra客户端甚至是扩展CLI工具，必须得了解CLI的内部工作原理。</p>
-<p>本文将使用<a href="http://www.jarchitect.com/">JArchitect</a>工具和CQLinq语言分析CLI的代码库，以探究CLI的架构模型。JArchitect工具用来分析代码结构，并指定设计原则，以获得更好的代码质量。借助JArchitect，软件质量可以用代码度量进行测量，用“图（graph）”和“树图（treemap）”进行可视化，并用标准和自定义的规则来执行。</p>
-<div id="lowerFullwidthVCR"></div>
-<p>下面是分析得出的依赖关系图：</p>
-<p><img width="600" _p="true" _href="img://null" alt="" src="http://infoqstatic.com/resource/articles/cassandra-cli-internals/zh/resources/0108010.png" /></p>
-<p>Cassandra使用了若干大家熟知的jar包，如antlr、log4j、slf4j、commons-lang，也使用了若干大家不怎么知道的jar包，比如下面这些：</p>
-<ul> 
- <li><a href="http://thrift.apache.org/">Libthrift</a>：它是一个跨多种编程语言和用例的API，其目标是尽可能高效和无缝地实现跨语言通信和数据序列化的可靠性和高性能。</li> 
- <li><a href="https://code.google.com/p/snakeyaml/">Snakeyaml</a>：YAML是一个为人工可读性和与脚本语言交互而设计的数据序列化格式。Cassandra的配置文件用了这一格式。</li> 
- <li><a href="http://jackson.codehaus.org/">Jackson</a>：一个高性能JSON processor。</li> 
- <li><a href="https://code.google.com/p/snappy/">Snappy</a>：它是一个用C++编写的快速压缩/解压缩程序，最初由Google开发，snappy-java是其Java版本。</li> 
- <li><a href="https://github.com/stephenc/high-scale-lib">High-scale-lib</a>：它是一个并发和高扩展性实用程序的集合，其目的是为了直接取代包java.util.*或者java.util.concurrent.*中的集合类，而当许多CPU并发使用集合时性能更好。</li> 
-</ul>
-<p>下图的矩阵图是对这些JAR文件之间依赖权重的更为详细的说明。</p>
-<p><img _p="true" _href="img://null" alt="" src="http://infoqstatic.com/resource/articles/cassandra-cli-internals/zh/resources/0108011.png" /></p>
-<h2><b>Cassandra</b><b>命令行接口</b></h2>
-<p>包org.apache.cassandra.cli实现了命令行接口逻辑，入口是CliMain类。</p>
-<p>使用下面的CQLinq查询查找main方法调用的方法：</p>
-<pre>
-from m in Methods where m.IsUsedBy 
-(&quot;org.apache.cassandra.cli.CliMain.main(String[])&quot;) 
-select new { m, m.NbBCInstructions } </pre>
-<p><img _p="true" _href="img://null" alt="" src="http://infoqstatic.com/resource/articles/cassandra-cli-internals/zh/resources/0108012.png" /></p>
-<p>Main方法用了<a href="http://jline.sourceforge.net/">JLine</a>，这是一个处理控制台输入的Java库。通过它，开发人员不需要太费力就可以写出很棒的CLI应用程序。它对命令历史、Tab键自动补全、行编辑、自定义键绑定以及字符屏蔽提供了开箱即用的支持。</p>
-<p>以下是main方法用到的两个有趣的方法：</p>
-<ul> 
- <li>connect：该方法用于连接Cassandra数据库服务器。</li> 
- <li>processStatetementInteractive：该方法用于执行来自用户的命令。</li> 
-</ul>
-<p><img width="600" _p="true" _href="img://null" alt="" src="http://infoqstatic.com/resource/articles/cassandra-cli-internals/zh/resources/0108013.png" /></p>
-<h2><b>CLI</b><b>与Cassandra服务器之间的通信</b></h2>
-<p>在与Cassandra服务器进行交互之前，客户端必须使用connect方法连接到服务器。</p>
-<p>下面的查询查找connect方法直接或间接使用的所有方法：</p>
-<pre>
-from m in Methods
-let depth0 = m.DepthOfIsUsedBy(&quot;org.apache.cassandra.cli.CliMain.connect
-(String,int)&quot;)
-where depth0 &gt;= 0 orderby depth0
-select new { m, depth0 }</pre>
-<p><img _p="true" _href="img://null" alt="" src="http://infoqstatic.com/resource/articles/cassandra-cli-internals/zh/resources/0108014.png" /></p>
-<p>CLI使用Thrift库与服务器进行通信，Thrift允许开发人员用一个简单的定义文件定义数据类型和服务接口。将这个文件作为输入，编译器会生成代码，开发人员可以用这些代码轻松地构建RPC客户端和服务器，从而实现跨编程语言的无缝通信。无需编写大量的样板代码来序列化和传输对象以及调用远程代码，开发人员就可以马上开始处理业务。</p>
-<p>下面是Thrift服务器实现的一个简单例子：</p>
-<p>Thrift服务器实现了org.apache.thrift.server.TServer接口，其构造函数接收一个processor和一个服务器传输规范类的实例作为参数。Processor需要一个handler来处理传入的请求。</p>
-<p>让我们在Cassandra服务器中找出所有的这些组成部分。为了做到这一点，我们可以从找出所有继承了TServer类的类开始。</p>
-<pre>
-public class Server {
-       public static class SomethingHandler implements Something.Iface {
-              public SomethingHandler() {}
-              public int ping() {
-                    return 1;
-                     }
-       }
-public static void main(String [] args) {
-       SomethingHandler handler = new SomethingHandler();
-       Something.Processor processor = new Something.Processor(handler);
-       TServerTransport serverTransport = new TServerSocket(9090);
-       TServer server = new TSimpleServer(processor, serverTransport);
-       //下面的语句适用于多线程服务器
-       // server = new TThreadPoolServer(processor, serverTransport)
-       server.serve();
-}
-}</pre>
-<p>Thrift服务器实现了org.apache.thrift.server.TServer接口，其构造函数接收一个processor和一个服务器传输规范类的实例作为参数。Processor需要一个handler来处理传入的请求。</p>
-<p>让我们在Cassandra服务器中找出所有的这些组成部分。为了做到这一点，我们可以从找出所有继承了TServer类的类开始。</p>
-<pre>
-from t in Types
-let depth0 = t.DepthOfDeriveFrom(&quot;org.apache.thrift.server.TServer&quot;)
-where depth0 &gt;= 0 orderby depth0
-select new { t, depth0 }</pre>
-<p><img _p="true" _href="img://null" alt="" src="http://infoqstatic.com/resource/articles/cassandra-cli-internals/zh/resources/0108015.png" /></p>
-<p>Cassandra定义了如下类：</p>
-<p>CustomTThreadPoolServer：它是Apache Thrift类TThreadPoolServer的一个稍作修改的版本。TThreadPoolServer类会使用一个线程池为传入的请求提供服务。</p>
-<p>CustomerTHsHaServer：该服务器的目的是避免IO粘在一个CPU上。为了获得更大的吞吐量，它将IO任务分配给多个线程。Selector线程的数目可以与可用的CPU数目相同。</p>
-<p>CustomTNonBlockingServer：它使用一个非阻塞的套接字传输方式。</p>
-<p>以下是ThriftServer启动时所做的工作：</p>
-<p><img width="600" _p="true" _href="img://null" alt="" src="http://infoqstatic.com/resource/articles/cassandra-cli-internals/zh/resources/0108016.png" /></p>
-<p>该过程会使用工厂类创建一个TServer，并创建一个CassandraServer handler来处理传入的请求，后者实现了<a name="OLE_LINK2"></a><a name="OLE_LINK1">Cassandra.Iface</a>接口，其中包含了Cassandra支持的所有命令。下图展示了该接口的部分方法：</p>
-<p><img _p="true" _href="img://null" alt="" src="http://infoqstatic.com/resource/articles/cassandra-cli-internals/zh/resources/0108017.png" /></p>
-<p>正如前面的Thrift服务器示例所示，需要用processor处理传入的请求；所有这些processor都继承了ProcessFunction类。</p>
-<p>下面是部分Cassandra processor：</p>
-<p><img _p="true" _href="img://null" alt="" src="http://infoqstatic.com/resource/articles/cassandra-cli-internals/zh/resources/0108018.png" /></p>
-<p>在找出Cassandra Thrift服务器的组成部分之后，让我们回到客户端，找出main方法调用connect方法时发生了什么。</p>
-<p><img width="600" _p="true" _href="img://null" alt="" src="http://infoqstatic.com/resource/articles/cassandra-cli-internals/zh/resources/0108019.png" /></p>
-<p><b>org.apache.thrift.TServiceClient</b>用于客户端和服务器之间的通信，它调用sendBase方法向Thrift服务器发送消息。</p>
-<p>在服务器上，login processor接收这一请求，并调用login方法。</p>
-<p><img width="600" _p="true" _href="img://null" alt="" src="http://infoqstatic.com/resource/articles/cassandra-cli-internals/zh/resources/0108020.png" /></p>
-<p>下面的依赖关系图展示了login方法调用的部分方法。</p>
-<p><img width="600" _p="true" _href="img://null" alt="" src="http://infoqstatic.com/resource/articles/cassandra-cli-internals/zh/resources/0108021.png" /></p>
-<p>下面会通过添加一个新方法MyMethod进入到扩展CLI的步骤。</p>
-<p>在查明CLI的内部工作原理之后，我们可以很容易地给它添加新方法，下面是所需的主要步骤：</p>
-<p>I- 扩展服务器：</p>
-<ul> 
- <li>向<b>Cassandra.Iface</b>接口中添加方法</li> 
- <li>向<b>CassandraServer</b>类中添加该方法的实现</li> 
- <li>新建一个继承<b>ProcessFunction&lt;T&gt;</b>的类<b>Cassandra.Processor.MyMethod&lt;I&gt;。</b></li> 
- <li>在<b>Cassandra.Processor&lt;I&gt;.getProcessMap</b>方法返回的Map中添加上一步中新建的processor的一个实例。</li> 
-</ul>
-<p>II- 扩展客户端：</p>
-<ul> 
- <li>新增一个开关项，并在<b>CliOptions.processArgs</b>方法中对其进行处理。</li> 
- <li>向<b>Cassandra.Client</b>类中添加一个方法，并使用<b>TServiceClient.sendBase</b>方法向服务器发送请求。</li> 
-</ul>
-<h2>结论</h2>
-<p>学习如何实现<a name="OLE_LINK8"></a><a name="OLE_LINK7">Cassandra客户端</a>，命令行接口是一个很好的例子，而且从现实项目中学习要好过只是在网上搜索例子。因此，要开发Cassandra客户端的话，就要毫不犹豫地仔细阅读它的源代码，并享受其中的乐趣。</p>
-<h2>关于作者</h2>
-<p><b>Dane Dennis</b>是JArchitect产品经理。他为<a href="http://www.codergears.com/">CoderGears</a>工作，这是一家为开发人员和架构师开发工具的公司。</p>
-<p><b>查看英文原文：</b><b><a href="http://www.infoq.com/articles/cassandra-cli-internals">Cassandra CLI Internals Using JArchitect</a></b></p><br><br><br><br><br><br></body></html>
+<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>西蒙•布朗谈可持续竞争力</h3><p>为什么有些团队很成功，而其他团队不那么成功呢？团队可以使用流程开展工作吗？管理人员如何帮助团队变得更好？团队需要有改善软件质量的激励措施吗？在2013年6月举行的GOTO阿姆斯特丹大会上名为“<a href="http://gotocon.com/dl/goto-amsterdam-2013/slides/SimonBrown_SustainableCompetenceThePeopleVsProcessAndTechnology.pdf">可持续竞争力——人员与流程和技术</a>”的演讲中，西蒙&middot;布朗谈论了其中部分话题。</p>
+<p>InfoQ采访了西蒙&middot;布朗，他从持续改进、平衡人员与流程，以及软件质量与架构等几个方面谈了可持续竞争力。</p>
+<p><b>InfoQ</b><b>：您可以向InfoQ的读者介绍下自己吗？</b></p>
+<blockquote> 
+ <p><strong>西蒙：</strong>我经常把自己描绘成一个懂架构的软件开发人员，或者会写代码的软件架构师。和许多人一样，我的职业生涯也是从一名软件开发人员开始的，然后逐步成为项目的软件架构师。只要可能，我仍然参与到日复一日的开发工作中。</p> 
+ <p>五年前，我搬回到海峡群岛的泽西岛。由于泽西岛并不以软件开发闻名，所以这可能看上去是个奇怪的选择，但我出生在那里，而且那是一个极好的生活之地，尤其是如果有孩子。那之前，我在伦敦为一家IT咨询公司工作了十二年，虽然我的大部分工作重点在城区的金融业，但我在垂直行业中的工作范围很广泛。从技术的角度来看，那些大部分是Java项目：从富桌面应用程序和网站到分布式消息和面向服务的架构。</p> 
+ <p>在过去几年里，我的大部分工作是帮助软件团队理解软件架构、技术领导力，以及与敏捷性的平衡。我正在写一本书，叫做“<i>Sofeware Architecture for Developers</i>”（由Leanpub.com连载）。跟我合作过的团队遍及整个欧洲，我教他们软件架构以及如何采用一种“恰到好处”的方法做预先设计。实际上，这与引入技术领导力有关，在通往敏捷性的道路上，这一点经常被忘记。</p> 
+</blockquote>
+<p><b>InfoQ</b><b>：您谈到，并非所有的团队创建时都是一样的。您能解释下那是什么意思吗？</b></p>
+<blockquote> 
+ <p><strong>西蒙：</strong>虽然我们都希望能够在一个敏捷布道家所描述的经验超级丰富的自组织团队里工作，但以我的经验来看，这样的情况比较少。在现实世界中，一个人很少有机会选择与他共事的人。有些人很棒，而有些人则没那么棒！不同人的动机也不同。有些人从事软件开发，是因为他们享受使用技术生产某个东西所具有的创造性挑战。其他人从事IT工作是因为工资高。由于IT行业里有各种各样的人，所以说并非所有的团队创建时都是一样的。</p> 
+</blockquote>
+<p><b>InfoQ</b><b>：您在演讲中介绍了使用流程开展工作的团队。这些流程是什么？流程如何帮助团队开展工作，以及如何改进团队的工作方式？</b></p>
+<blockquote> 
+ <p><strong>西蒙：</strong>软件团队经常使用若干流程来开展工作，从塑造软件项目运行方式的高级流程，到帮助团队将需求转变为代码直到测试的低级流程。如果回顾过去，在敏捷成为主流之前，许多软件团队都曾经是由明确的流程驱动并遵循这些流程。瀑布模型和统一软件开发过程（RUP）是两个明显的例子。作为一个产业，我们现在不再遵循明确的流程，而且“敏捷理念（agile mindset）”告诉我们，可以通过调整工作方式获得改进。可以说，盲目地遵循流程已经过时了。可是，虽然通常这是件好事，但我经常发现，软件团队因此而不知道从哪开始。一个明确定义的流程会提供一个起点，在团队不知道从哪儿开始的时候会非常有用。虽说并没有得到很多关注，但DSDM Atern是一个管理敏捷项目的流程框架。尽管在敏捷社区有些人说这是自相矛盾，但我个人认为，对于刚刚接触敏捷的团队而言，Atern是一个不错的起点。这里的关键是，它只是一个*起点*，应该随着团队经验日益丰富而调整。</p> 
+</blockquote>
+<p><b>InfoQ</b><b>：计划驱动的方法非常关注流程，而敏捷喜欢人胜过流程。用什么方式可以平衡人和流程，结合两者的优点？</b></p>
+<blockquote> 
+ <p><strong>西蒙：</strong>对我来说，这是个关于将一些组织结构和纪律落实到位的问题，因为我们不想要一种“放任状态（free for all）”。一个成员富有经验的团队所具有的经验使他们自然而然就能做正确的事。这就是为什么说他们有经验！一个成员能力参差不齐的团队，就像在现实世界中经常见到的那些团队那样，常常需要一些指导。我会建议这样的团队保留简单的流程，并确保每个人都知道这些流程是什么。流程可以严格，但有时候，人们只是需要一些指导以及工作界限。关键是要了解跟自己共事的人，并根据需要调整流程等级。</p> 
+</blockquote>
+<p><b>InfoQ</b><b>：外包要求你作为客户与供应商合作，从而保证你可以从他们那里得到你想要的。这听上去简单，但许多组织为此陷入了挣扎。为什么？</b></p>
+<blockquote> 
+ <p><strong>西蒙：</strong>让我们设想一下，一个内部IT能力非常有限的组织需要构建一个能为企业带来若干好处的新软件系统。一种选择是通过雇佣人员或利用承包商有系统地建立和发展自己内部的IT能力。长远来看，这可能是更好的选择，但是，对于不太了解IT的人而言，这听起来很复杂。另一个选择是把工作外包给一家IT供应商，付钱给他们，让他们为组织处理一切相关事宜。为了从这种关系中获利，就需要建立合作关系。虽然这听上去很简单，但是合约协议和组织缺乏IT经验会成为障碍。</p> 
+ <p>我曾经见过现在仍然会见到的大部分客户-供应商合同形式是：“我们支付X，你们在日期Z前交付Y”；固定了价格、范围和时间。想想你最近一次决定雇人安装厨房、翻新浴室或者扩建一个房间。对于想要什么，你得有个大致的想法，还得有个预算。但是，如果你想法变了，要改变瓷砖的类型或者窗户的尺寸，那会发生什么？如果合同价格一定，你可能会发现，由于你侵蚀了供应商的利益空间，“合作”关系开始破裂，工作用时开始变得长于预期。</p> 
+ <p>有效合作的关键是确保人们不把客户-供应商约定看成“我们和他们”。每个人都要有这样的想法，我们是一个团队，我们有共同的目标。以我的经验来看，只要简单地使客户与供应商的距离非常近，并在同一间办公室里工作，通常就足以保证项目有一个好的开端。</p> 
+</blockquote>
+<p><b>InfoQ</b><b>：您谈到了质量激励。首先，我们真的需要质量激励吗？它为什么重要？</b></p>
+<blockquote> 
+ <p><strong>西蒙：</strong>这又回到了那个问题，为何并非所有的软件团队创建时都是一样的。如果一个供应商为你安装厨房，当他们投机取巧或者使用不合规格的材料时通常会很明显。通常，外观检查就是所有要做的事，因为很少有地方你看不到。在软件世界里，情况并非如此。当然，供应商可能会交付一个非常优美的网站，所以，从表面上看，网站看起来很好。但是，内部质量——那些“在引擎盖下面”你看不到的东西怎么样呢？换句话说，你怎么知道软件设计是不是“好”以及代码是不是“好”？内部质量不佳的软件往往难以变更、增强、维护、管理和支持。虽然这些问题可能不会立即显现出来，但稍后，你必然要为此付出代价。如果不了解软件开发的任何事情，那么该如何判断正在交付的软件质量是不是很高？</p> 
+ <p>当然，可以在合同中加入若干质量指标（如单元测试覆盖率、圈复杂度等），但这些并不能保证质量，而且我也见过把一些指标当儿戏的团队。理想的情况是可以相信供应商会做正确的事。如果供应商有个糟糕的团队，并且受利益而不是技术驱动，那么你可能就会发现自己做了一笔不公平的交易。而且由于不是做技术工作的，所以你永远都不会看后台代码，也就可能永远不会发现。过去，我审查过若干外包的软件项目，我确实见过一些项目不是由我说的“专业开发人员”构建的！如果客户团队中有能够客观地审查交付物的人，那会有所帮助，否则，我会建议他们雇佣一个可信任的顾问，由他代表他们做这项工作。再说一下，客观是关键。</p> 
+</blockquote>
+<p><b>InfoQ</b><b>：为了交付优质的软件，优秀的团队会怎么做？在您看来，什么是有用的，什么是没用的？</b></p>
+<blockquote> 
+ <p><strong>西蒙：</strong>编写软件相对比较容易。但编写好的软件，就没那么简单了。这关乎纪律和对细节的关注。优秀的团队会有意识地关注他们交付的软件的质量，而且他们懂得用清晰易读的代码构建架构良好的软件的重要性。这样的团队也会采用诸如自动化测试和持续集成那样的做法。尽管这些技术实践已被看作是“主流”，但我还是遇到了没有采用它们的团队。甚至连使用源代码控制都不能保证！颇具讽刺意味的是，更优秀的团队经常在那里设法持续改进。通常，这样的团队具有鼓励学习、分享经验和持续改进的文化。另外，对于自己的工作，他们有激情。</p> 
+</blockquote>
+<p><b>InfoQ</b><b>：您谈到了团队中的软件架构。这是一个什么样的角色，如何履行？</b></p>
+<blockquote> 
+ <p><strong>西蒙：</strong>软件架构角色关乎软件团队的技术领导力，这是考虑这一角色的最简单方式。传统上，人们认为软件架构师是这样的人，他为开发团队制定解决方案，并自己承担实现解决方案这一易惹麻烦的任务。我的观点是，软件架构角色可以由团队中的一个人或许多人充当，这关乎通过协作与指导发挥技术领导力。简而言之，该角色的职责包括理解构成解决方案的要素、设计解决方案、保证解决方案可行、根据需求改进解决方案以及负责技术质量。这一描述过于简单，该角色的职责可以而且应该包含编码，但它已经抓住了主要内容。</p> 
+</blockquote>
+<p><b>InfoQ</b><b>：为了使团队中的专业人才能够发展自我、培养和提高他们的技能和价值，管理人员可以做些什么工作？</b></p>
+<blockquote> 
+ <p><strong>西蒙：</strong>在我的职业生涯中，我非常幸运，因为我工作过的大部分组织都有一个非常结构化的技术职业路径。例如，为了进到下一个工资级别或角色，你需要证明你已经展示了若干能力。多半，这些能力基于技术*和*软技能（例如，咨询和领导力）。除此之外，通过适当的技术和软技能培训，组织在实际帮助人们沿着职业路径前进的过程中投资巨大。组织还为每个指定一位导师，帮助确保人们的职业生涯从来不会被忘记。</p> 
+ <p>大体上，大多数这样的组织都有一种卓越的文化，奖励学习和帮助他人学习。从实践角度来看，这包括创造一个人们不会为寻求帮助而感到害怕的环境，并通过诸如“特殊兴趣小组”——人们可以聚到一起分享经验——这样的活动来保证团队意识。在我看来，这一切都指向组织文化。组织文化非常重要。</p> 
+</blockquote>
+<h2><b>关于受访者</b></h2>
+<p><img style="float: left; margin-right: 10px" src="http://infoqstatic.com/resource/articles/simon-brown-sustainable-competence/zh/resources/0310040.jpg" _href="img://null" _p="true" alt="" /><b>西蒙•布朗</b>居住在泽西岛（海峡群岛中最大的岛屿），他作为一名独立顾问，专注于软件架构、技术领导力以及与敏捷的平衡。西蒙是一名屡获殊荣的演讲者，经常在国际软件开发大会上发言，也为欧洲的软件团队提供咨询和培训。他是“编码架构（<a href="http://www.codingthearchitecture.com/">Coding the Architecture</a>）” （一个实用的关于软件架构实践经验的网站）的创始人，著有<i><a href="http://leanpub.com/software-architecture-for-developers">Software Architecture for Developers</a></i>一书（一本通过Leanpub连载的电子书）。他仍然在编写代码。西蒙的Twitter账号是<a href="http://twitter.com/simonbrown">@simonbrown</a>。</p>
+<div style="clear: both"></div>
+<p><b>查看英文原文：</b><b><a href="http://www.infoq.com/articles/simon-brown-sustainable-competence">Interview with Simon Brown about Sustainable Competence</a></b></p><br><br><br><br><br><br></body></html>

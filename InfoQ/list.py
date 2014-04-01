@@ -2,6 +2,9 @@
  <head></head> 
  <body> 
   <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/35.py">Googleがクラウドを値下げ、CIツールを統合し、WindowsとマネージドVMをサポート</a>Googleは同社のクラウドプラットフォームに関するライブイベントを開催し(録画がここで見られる)多くの新機能や改善を発表した。 
+  </div> 
+  <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/34.py">Docker Indexがプライベートリポジトリとウェブフックを提供</a>Dockerを提供するDocker Inc.が新しいサービスを発表した。初の商用サービスであるプライベートリポジトリも含む。Docker indexはウェブフック、トリガ、Trusted Buildsのためのリンク、メールによる通知を提供する。 
   </div> 
   <div> 
@@ -147,9 +150,6 @@
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/38.py">GoogleのBigQueryが勢いづく</a>Googleが提供するSaaS型のデータストアであるBigQueryが勢いづいているようだ。BigQueryを使うとクラウド上の大規模な列指向のデータ構造にSQLライクな言語で問い合わせが実行できる。 Google AnalyticsやGoogle Apps Scriptとの連携も可能だ。 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/37.py">VersionOne社CEORobert Holler氏へのインタビュー</a>VersionOne社CEOのRobert Holler氏に2014年冬のリリースと投資テーマについて話を聞いた。 
   </div> 
  </body>
 </html>

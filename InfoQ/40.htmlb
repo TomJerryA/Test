@@ -1,37 +1,71 @@
-<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>“数据驱动生活，算法统治世界”——QCon北京2014专题出品人吴甘沙专访</h3><p>大数据可以被分为收集、组织、存储、检索、可视化以及数据分析，其核心是从数据中挖掘出价值。正如Google首席经济学家Hal Varian所说，数据是广泛可用的，所缺乏的是从中提取出知识的能力。数据收集的根本目的是根据需求从数据中提取有用的知识，并将其应用到具体的领域之中，而不同领域的大数据应用有不同的特点。</p>
-<p><a href="http://www.qconbeijing.com/">本届QCon北京2014</a>，InfoQ特别邀请到<a href="http://www.qconbeijing.com/user/661">英特尔中国研究院首席工程师吴甘沙</a>来打造“数据驱动生活，算法统治世界”专题，解读数据与算法与普通人生活的关系。</p>
-<p>吴甘沙主要研究方向包括大数据的计算范式和架构，软硬件协同设计，数据安全和权利，以及数据作为服务的应用模式和支撑环境。曾经参与和主持移动受控运行时（Managed Runtime）和并行编程等研究项目。发表学术论文10余篇，获得美国专利23项和国际专利10余项，另有17项专利待审中。</p>
-<p>以下是采访内容。</p>
-<p><strong>InfoQ：</strong>吴甘沙你好，大家都知道你是Intel中国研究院的首席工程师，在大数据、Spark、嵌入式开发有许多研究，Intel中国研究院培养了许多出色的工程师，在智能交通、传感器等方面做了许多工作。能否再请你介绍一下自己以及Intel中国研究院。</p>
-<blockquote> 
- <p><strong>吴甘沙：</strong>我的经历很简单，离开大学后就一直在英特尔中国研究院。前五年做Java虚拟机，从服务器上一直做到手机上；中间四年做并行计算，从多核做到众核；最近四、五年转到分布式计算，先是物联网，现在专注于大数据。</p> 
- <p>英特尔中国研究院有不少有趣的、有影响力的研究，请大家关注英特尔的爱迪生，这项在CES上获得最佳创新大奖殊荣的技术就是来自中国研究院。另一个值得关注的技术是基于X86的云基站，它有可能在根本上改变未来的无线通信基础设施。</p> 
-</blockquote>
+<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>测试数据构造秘技（1） ——专属数据引用数据分离</h3><p>最近在企业里面看了一些测试案例的数据准备，发现了一个共性问题：测试数据中存在大量冗余，这些冗余会给后续的测试案例及数据维护带来大量的成本。</p>
+<p>为了便于大家理解，先举一个例子：</p>
+<p>测试信用卡交易金额汇总，测试数据完全从csv中加载，每个测试案例根据csv中的数据，assert特定返回值（由于篇幅限制，这里只举了一个简单的例子。实际看到的情况是，csv完全没有字段名称信息，一行里面成百上千个数据，而且还有许许多多类似结构的csv文件作为测试数据）。</p>
+<p>Csv1</p>
+<p><img src="http://infoqstatic.com/resource/articles/test-data-structure-part1/zh/resources/0319020.png" width="600" _href="img://null" _p="true" alt="" /></p>
+<p>Csv2</p>
 <div id="lowerFullwidthVCR"></div>
-<p><strong>InfoQ：</strong>你曾经说过，无论做任何事，只要你认真对待，即使是走弯路，同样也能获得另一种成功。这让我想到了另外一句话：屡战屡败，屡败屡战，但每次失败都比上一次更美好。</p>
-<blockquote> 
- <p><strong>吴甘沙：</strong>对我来说，学会欣赏失败的美好还需提高素养:)。从失败中成功，仍然是小概率事件，要放大这个概率需要两方面相辅相成：一是我们自身要有小强精神，学会失败并快乐着；二是环境要容忍和鼓励失败，英特尔研究院专门有一个奖项来奖励“有价值的失败”。</p> 
-</blockquote>
-<p><strong>InfoQ：</strong>目前你关注的重点是什么？</p>
-<blockquote> 
- <p><strong>吴甘沙：</strong>大数据如何产生价值。具体来说，兴趣从分布式基础设施、数据管理转到数据分析、可视化和用户工具；关注如何做到隐私无虞的数据开放，如何用数据安全技术和经济激励机制鼓励数据交换和共享。</p> 
-</blockquote>
-<p><strong>InfoQ：</strong>过去一年中，你观察到大数据领域有哪些值得关注变化？</p>
-<blockquote> 
- <p><strong>吴甘沙：</strong>国外更多地开始关注大数据栈的上层，关注行业应用和服务；国内在行业上走得更早，但发现技术没有跟上，现在也开始夯实大数据栈的下层，已经有专业的公司提供大数据基础产品和解决方案。Hadoop还是主流，但Spark的早期接受者已经星火燎原。</p> 
- <p>在应用模式上，也慢慢从简单的查询和NoSQL取代SQL，转为数据挖掘和非结构化数据分析。传统行业，如金融、健康医疗和教育，对大数据技术的需求井喷。但总体来讲，除商业外，做得很深、很透的大数据行业解决方案还不多，这是未来一两年值得期待的。另外，对数据隐私、安全、定价和交换/交易的关注显著升温。</p> 
-</blockquote>
-<p><strong>InfoQ：</strong>你是QCon北京2014大会“数据驱动生活，算法统治世界”专题的出品人，能否谈谈你对此次专题的策划？</p>
-<blockquote> 
- <p><strong>吴甘沙：</strong>我把主题定为“数据驱动生活，算法统治世界”。我们生活中很多的决策，如我们对什么产生了兴趣，发生了怎样的购买行为，都可能是数据驱动的。另一方面，从股市的运行到交通的控制，算法又在悄悄地指挥这个世界的运行。所以我们嘉宾的演讲题目必须是贴近我们生活的，同时嘉宾们又会用技术流的方式说明白这些应用下面大数据计算和分析的工作机制。</p> 
-</blockquote>
-<p><strong>InfoQ：</strong>你怎么理解大数据处理与大数据应用？</p>
-<blockquote> 
- <p><strong>吴甘沙：</strong>就是挖矿工具和挖矿的关系。挖矿工具要好用、耐用，而挖不同的矿则要靠经验加上工具的熟练使用。</p> 
-</blockquote>
-<p><strong>InfoQ：</strong>Spark Summit 2013上有许多非常棒的研究实践，包括Spark、Spark Streaming在内这样的高生产率工具出现后，帮助垂直领域专家发挥了创造力，这是否意味着未来几年大数据领域将迎来创新的高潮？出现通过大数据真正改变人们生活的公司和产品？</p>
-<blockquote> 
- <p><strong>吴甘沙：</strong>我很相信这一点。Spark以及BDAS（Berkeley Data Analytics Stack）就是好用的挖矿工具，今年达到商用，明年全面铺开。那挖矿的人还等什么呢？这将是又一次淘金潮（Gold Rush）。</p> 
-</blockquote>
-<p>此专题详细信息，请见<a href="http://www.qconbeijing.com/node/441">专题页面</a>。关于此次QCon北京其他专题的详细信息，请移步至<a href="http://www.qconbeijing.com/">大会官网</a>。</p>
-<p>需要特别注明的是，每年QCon大会门票都会在开幕前售罄，及早预定可提前确保席位，并享受更低折扣。现在报名参加将可享受8折优惠。团体购票（5人及以上）将享有更多优惠。详请咨询qcon【at】cn.infoq.com，或直接致电010-64738142。报名请点击<a href="http://qconbeijing.mymova.com/">报名页面</a>。</p><br><br><br><br><br><br></body></html>
+<p><img src="http://infoqstatic.com/resource/articles/test-data-structure-part1/zh/resources/0319021.png" width="600" _href="img://null" _p="true" alt="" /></p>
+<p>在这两个文件里面，我注意到有大量冗余。以csv格式的测试案例为例，想象一下如果未来这个表结构发生变化（增加或减少字段），那么需要修改所有这些csv文件，会是什么样的工作量！</p>
+<p><img src="http://infoqstatic.com/resource/articles/test-data-structure-part1/zh/resources/0319022.png" width="600" _href="img://null" _p="true" alt="" /></p>
+<p><img src="http://infoqstatic.com/resource/articles/test-data-structure-part1/zh/resources/0319023.png" width="600" _href="img://null" _p="true" alt="" /></p>
+<p>在乔梁翻译的《持续交付：发布可靠软件的系统方法》一书，其实已经给出了解决思路，只不过由于没有具体实例，不是很容易理解。</p>
+<p>经何勉提醒，发现在《实例化需求》一书中，也提到了类似思路，但同样都没有实例，：）：</p>
+<p>下面我们就以上面例子为基础，说明一下两本书中的思路如何具体应用：</p>
+<ul> 
+ <li>应用程序引用数据(Application reference data)是测试无关数据，但它们是应用程序启动所必需的，这些数据往往是指一些基表和基础数据；</li> 
+ <li>测试引用数据（Test reference data）是那些和测试相关，但是对测试行为没有多大影响的数据，在下面两个例子中，黄色就是测试引用数据 <p><img src="http://infoqstatic.com/resource/articles/test-data-structure-part1/zh/resources/0319024.png" width="600" _href="img://null" _p="true" alt="" /></p> </li> 
+ <li>测试专属数据（Test specific data）：真正影响测试行为的特征数据 <p><img src="http://infoqstatic.com/resource/articles/test-data-structure-part1/zh/resources/0319025.png" width="600" _href="img://null" _p="true" alt="" /></p> </li> 
+</ul>
+<p>了解了测试引用数据和测试专属数据的区别后，我就可以介绍测试数据构造第一秘技了：</p>
+<p><b>将测试引用数据和测试专属数据的准备过程分离，分离复用测试引用数据准备，而将测试专属数据保存在测试脚本中</b>。</p>
+<p>具体的做法是，第一个例子中，我们建议在每个测试案例里面，先使用一段公共程序为每个案例准备一样的测试引用数据，然后再用UPDATE语句来将测试专属数据导入，测试案例的伪码如下：</p>
+<p>测试案例1</p>
+<p>从CSV导入测试引用数据</p>
+<p><img src="http://infoqstatic.com/resource/articles/test-data-structure-part1/zh/resources/0319026.png" width="600" _href="img://null" _p="true" alt="" /></p>
+<p>测试专属数据导入</p>
+<pre>
+UPDATE transactions SET amount = 15.99 WHERE id = 1;
+UPDATE transactions SET amount = 30.98 WHERE id = 2;
+UPDATE transactions SET amount = 75.95 WHERE id = 5;
+UPDATE transactions SET amount = 150.9 WHERE id = 10;UPDATE transactions SET amount = 750.5 WHERE id = 50;</pre>
+<p>测试执行</p>
+<p>测试验证 （总和是1024.32）</p>
+<p>测试案例2</p>
+<p>从CSV导入测试引用数据</p>
+<p><img src="http://infoqstatic.com/resource/articles/test-data-structure-part1/zh/resources/0319027.png" width="600" _href="img://null" _p="true" alt="" /></p>
+<p>测试专属数据导入</p>
+<pre>
+UPDATE transactions SET amount = 34.56 WHERE id = 1;
+UPDATE transactions SET amount = 56.78 WHERE id = 2;
+UPDATE transactions SET amount = 57.97 WHERE id = 5;
+UPDATE transactions SET amount = 44.32 WHERE id = 10;
+UPDATE transactions SET amount = 234.65 WHERE id = 50;</pre>
+<p>测试执行</p>
+<p>测试验证 （总和是428.28）</p>
+<p>这样做主要有两点好处：</p>
+<ul> 
+ <li>测试案例可维护性：上面这些案例中，测试引用数据由于使用了INSERT语句，它其实会受到数据库表结构变化的影响，而测试专属数据准备由于使用UPDATE语句，不会受到数据库表结构变化的影响。我们通过统一测试引用数据准备程序，将这种变化的冲击大大降低，未来数据表结构变更，我们只需修改统一的测试引用数据准备程序而无需修改每一个案例，这其实暗合了DRY原则（Don’t repeat yourself）。</li> 
+ <li>测试案例可读性：由于我们将测试引用数据准备从独立出来了，只要看测试案例本身，就可以明确地看到测试专属数据，被测行为和结果验证，让案例可读性大大提升。</li> 
+</ul>
+<p>为了便于大家理解，我们再举另一个例子，假设有一个测试汇率转换接口，测试输入是xml文件：</p>
+<p>XML1</p>
+<p><img src="http://infoqstatic.com/resource/articles/test-data-structure-part1/zh/resources/0319028.png" width="600" _href="img://null" _p="true" alt="" /></p>
+<p>XML2</p>
+<p><img src="http://infoqstatic.com/resource/articles/test-data-structure-part1/zh/resources/0319029.png" width="600" _href="img://null" _p="true" alt="" /></p>
+<p>应用测试引用数据和测试专属数据分离原则，可以看到哪些是引用数据，哪些是专属数据</p>
+<p><img src="http://infoqstatic.com/resource/articles/test-data-structure-part1/zh/resources/0319030.png" width="600" _href="img://null" _p="true" alt="" /></p>
+<p><img src="http://infoqstatic.com/resource/articles/test-data-structure-part1/zh/resources/0319031.png" width="600" _href="img://null" _p="true" alt="" /></p>
+<p>因此，在测试案例中，我们会先准备并加载一个基底XML文件，再设置测试专属数据，下面是利用Robot Framework编写的两个测试案例，可以看出，未来如果XML文件的结构有任何变更，我们都只需要修改基底XML文件即可，而不需要修改任何测试案例了</p>
+<p><img src="http://infoqstatic.com/resource/articles/test-data-structure-part1/zh/resources/0319032.png" width="600" _href="img://null" _p="true" alt="" /></p>
+<p><img src="http://infoqstatic.com/resource/articles/test-data-structure-part1/zh/resources/0319033.png" width="600" _href="img://null" _p="true" alt="" /></p>
+<p>Base.xml</p>
+<p><img src="http://infoqstatic.com/resource/articles/test-data-structure-part1/zh/resources/0319034.png" width="600" _href="img://null" _p="true" alt="" /></p>
+<p>至此，我们想大家已经明白，对于测试数据准备这个步骤而言，将测试引用数据和测试专属数据分离，会非常有效地提升测试案例可维护性和可读性。</p>
+<p>如果大家感兴趣，可以加入我本人建立了一个“分层自动化测试”QQ群20442181进一步讨论，或关注微信号Agile-Testing-China。</p>
+<h2>作者简介</h2>
+<p>吴穹，资深敏捷专家，Agilean联合创始人</p>
+<p><a href="mailto:wuqiong@agilean.cn">wuqiong@agilean.cn</a></p>
+<hr />
+<p>感谢<a href="http://www.infoq.com/cn/author/侯伯薇">侯伯薇</a>对本文的审校。</p>
+<p>给InfoQ中文站投稿或者参与内容翻译工作，请邮件至<a href="mailto:editors@cn.infoq.com">editors@cn.infoq.com</a>。也欢迎大家通过新浪微博（<a href="http://www.weibo.com/infoqchina">@InfoQ</a>）或者腾讯微博（<a href="http://t.qq.com/infoqchina">@InfoQ</a>）关注我们，并与我们的编辑和其他读者朋友交流。</p><br><br><br><br><br><br></body></html>

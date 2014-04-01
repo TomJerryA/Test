@@ -2,7 +2,19 @@
  <head></head> 
  <body>
   <div>
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/44.java">DDD and CQRS Using the Functional Language F#</a>A focus on behaviour and a more declarative style of code are two benefits for Domain-Driven Design (DDD) when moving from an object-oriented language like C# to a functional one like F#, Lev Gorodinski claims in a recent presentation, using an example that includes event sourcing and Command-Query Responsibility Separation (CQRS) to show some of the benefits and challenges in a move to F#.
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/47.java">The Shallot 2014 Edition Published</a>The 2014 Edition of The Shallot - the online magazine which conducts deep analysis of the state of the information technology industry - has been released.
+  </div>
+  <div>
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/46.java">Lean UX Conference Returns to NYC</a>The Lean UX Conference is returning to NYC April 10-12, 2014 and this year includes a wide variety of speakers as well as workshops from Jeff Gothelf, Dave Snowden and Michael Cheveldave. I had a chance to sit down with one of the conference founders, Will Evans to discuss what to expect from the conference this year.
+  </div> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/46.java">New York Times Lab Introduces Visual Stream Processing Tool</a>The New York Times R&amp;D Lab has released streamtools, a general purpose, graphical tool for dealing with streams of data, under Apache 2 license. 
+  </div> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/45.java">Microsoft Beefs Up Cloud Identity Services as Part of Mobile Push</a>As part of launching an Enterprise Mobility Suite, Microsoft announced that Azure Active Directory Premium was set to hit General Availability. Microsoft Azure Active Directory Premium extends the free identity management and single sign-on service with additional group-management capabilities, rebranding options, security analytics, and more. 
+  </div> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/44.java">DDD and CQRS Using the Functional Language F#</a>A focus on behaviour and a more declarative style of code are two benefits for Domain-Driven Design (DDD) when moving from an object-oriented language like C# to a functional one like F#, Lev Gorodinski claims in a recent presentation, using an example that includes event sourcing and Command-Query Responsibility Separation (CQRS) to show some of the benefits and challenges in a move to F#. 
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/43.java">Mobile App Performance Report Benchmarks Crashes and Responsiveness on iOS and Android</a>Crittercism, maker of a mobile app performance management solution, has analysed one month of performance data and compiled it into a Mobile Experience Benchmark report focusing on two aspects of a mobile performance: app uptime and app responsiveness. Results highlight app categories with the highest crash and error rates and provide the basis for a comparison among iOS and Android versions. 
@@ -138,18 +150,6 @@
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/4.java">ThoughtWorks Open Sources Go, a CD Tool</a>ThoughtWorks has recently open sourced their Continuous Delivery (CD) tool, called Go, having its origins in CruiseControl and providing a pipeline process that covers the entire code development process: continuous integration, testing and deploying. 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/3.java">RyuJIT's Improved Compiler Boosts .NET</a>The next generation .NET compiler from Microsoft, codename RyuJIT, has just had a second preview version release. While still very much a beta, the initial results are impressive when compared to both the first preview and the current 64-bit JIT compiler used by NET today. 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/2.java">Jolt Awards 2014: Mobile and Coding Tools</a>Dr. Dobbs has awarded the Jolt Award for Mobile and Coding Tools for 2014. 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/1.java">QCon New York 2014 Update: Netflix, LinkedIn, Google, Foursquare Case Studies Confirmed (Jun 11-13)</a>The third annual QCon New York (Jun 11-13, 2014) will feature in-depth case studies from LinkedIn, Netflix, Foursquare, Google, Mount Sinai, Gilt and others. Hear how these companies are dealing with some of the greatest challenges in the arenas of Big Data, DevOps, Cloud Computing, Architecture, and Software Delivery. Register before Mar 15th and save $500. 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/0.java">What Is (Not) DevOps, and How Do We Get There?</a>In this article we discuss some of the misunderstandings surrounding DevOps and provide an introduction to a process that can bring the cultural shift that DevOps is all about. 
-  </div>  
+  </div>   
  </body>
 </html>
