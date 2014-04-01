@@ -1,11 +1,11 @@
 <html>
  <head></head> 
- <body>
-  <div>
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/47.c">Agile para constru&ccedil;&atilde;o de Equipes Distribu&iacute;das</a>Na apresenta&ccedil;&atilde;o &quot;experi&ecirc;ncias com agile em equipes distribu&iacute;das&quot;, Joost Mulders e Andriy Korpan mostraram no XP Days Benelux 2013 como unir&atilde;o uma equipe de desenvolvimento na costa da Ucr&acirc;nia com um cliente na Holanda, usando pr&aacute;ticas &aacute;geis.
-  </div>
-  <div>
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/46.c">Desenvolvedor Java &eacute; o mais procurado e bem pago pelo mercado</a>Desenvolvedores Java foram os mais procurados pelos recrutadores em 2013 e, n&atilde;o por acaso, s&atilde;o os mais bem pagos no mercado. &Eacute; a conclus&atilde;o de um editorial do site JAXenter, publicado em janeiro, a partir de alguns pesquisas realizadas nos EUA sobre o tema.
+ <body> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/47.c">Agile para constru&ccedil;&atilde;o de Equipes Distribu&iacute;das</a>Na apresenta&ccedil;&atilde;o &quot;experi&ecirc;ncias com agile em equipes distribu&iacute;das&quot;, Joost Mulders e Andriy Korpan mostraram no XP Days Benelux 2013 como unir&atilde;o uma equipe de desenvolvimento na costa da Ucr&acirc;nia com um cliente na Holanda, usando pr&aacute;ticas &aacute;geis. 
+  </div> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/46.c">Desenvolvedor Java &eacute; o mais procurado e bem pago pelo mercado</a>Desenvolvedores Java foram os mais procurados pelos recrutadores em 2013 e, n&atilde;o por acaso, s&atilde;o os mais bem pagos no mercado. &Eacute; a conclus&atilde;o de um editorial do site JAXenter, publicado em janeiro, a partir de alguns pesquisas realizadas nos EUA sobre o tema. 
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/45.c">Domino: Datascience-as-a-Service</a>O Domino, uma plataforma para a ci&ecirc;ncia anal&iacute;tica de dados e dispon&iacute;vel como servi&ccedil;o na nuvem (EC2), permite que qualquer pessoa realize um trabalho anal&iacute;tico usando linguagens como Python ou R. 
@@ -150,6 +150,6 @@
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/0.c">ORMs e a Ignor&acirc;ncia da Persist&ecirc;ncia</a>Julie Lerman recentemente notou que o Entity Framework pode trabalhar com construtores e setters privados, o que promove ignor&acirc;ncia da persist&ecirc;ncia. Exploramos melhor o assunto. 
-  </div>   
+  </div> 
  </body>
 </html>

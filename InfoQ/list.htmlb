@@ -1,10 +1,10 @@
 <html>
  <head></head> 
- <body>
-  <div>
+ <body> 
+  <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/41.htmlb">西蒙•布朗谈可持续竞争力</a> 为什么有些团队很成功，而其他团队不那么成功呢？团队可以使用流程开展工作吗？管理人员如何帮助团队变得更好？团队需要有改善软件质量的激励措施吗？InfoQ采访了西蒙•布朗，他从持续改进、平衡人员与流程，以及软件质量与架构等几个方面谈了可持续竞争力。 
-  </div>
-  <div>
+  </div> 
+  <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/40.htmlb">测试数据构造秘技（1） ——专属数据引用数据分离</a> 持续集成难，自动化测试更难；测试环境准备难，测试数据准备更难。测试数据准备秘技这个系列，我希望能将测试数据准备的一线经验和体会完整地呈现给大家，将教科书上一些抽象的原则，用鲜活的示例来给读者解释明白，希望能对一线的测试从业人员起到指导作用。 
   </div> 
   <div> 
@@ -150,6 +150,6 @@
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/0.htmlb">执行分析还是内存分析？</a> 在寻找执行热点的时候，有时内存分析将会提供比执行分析更加清晰的图像。在本文中，Kirk Pepperdine谈论了一些决定应该在什么时候采用哪种类型的分析器的指示灯。 
-  </div>   
+  </div> 
  </body>
 </html>
