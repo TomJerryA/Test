@@ -1,0 +1,11 @@
+<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>Appleが企業と教育向けにiOSデバイスの配布と管理を改善</h3><p><a target="_blank" href="http://www.infoq.com/news/2014/03/apple_ios_deployment_improvement"><em>原文(投稿日：2014/03/26)へのリンク</em></a></p>
+<div class="article_page_left news_container text_content_container"> 
+ <div class="text_info"> 
+  <p>AppleはDevice EnrollmentとVolume Purchase Programsの変更を発表した。これは、企業や教育向けに大規模にiOSデバイスが配布される状況を改善するためだ。企業が所有しているiOSデバイスが配布される場合もあれば、 &quot;bring your own device&quot;(BYOD)ポリシーを決めている場合もある。</p> 
+  <p>この変更を説明するため、AppleはiOSの配置に関する新しい<a href="http://images.apple.com/iphone/business/docs/iOS_Deployment_Technical_Reference_EN_Feb14.pdf">技術参照ガイド</a>と<a target="_blank" href="http://images.apple.com/iphone/business/docs/DEP_Business_Guide_EN_Feb14.pdf">Device Enrollment Programのガイド</a>を発表した。</p> 
+  <p><a href="http://techcrunch.com/2014/02/26/apple-launches-big-improvements-for-ios-management-tools-for-enterprise-and-education/">TechCrunchのMatthew Panzarino氏の記事によれば</a>、新しいDevice Enrolment Programの主要な改善ポイントのひとつは、配置したデバイスに触れずに構成できる点だ。Device Enrollment Programを適用すれば、顧客が利用しているモバイルデバイス管理(MDM)ソリューション経由でユーザにデバイスを割り当てることができる。Appleによれば、すべてのデバイスでMDMの登録を自動化でき、アカウントの設定、アプリの設定もすぐにでき、ITサービスへアクセスできる。物理的に各デバイスを設定する必要はない。</p> 
+  <p>スコットランドのCedars School of ExcellenceでComputing and IT部門の責任者を努める<a href="http://www.speirs.org/blog/2014/2/27/understanding-apples-new-deployment-programs?utm_campaign=iOS_Dev_Weekly_Issue_136&amp;utm_medium=email&amp;utm_source=iOS%2BDev%2BWeekly">Fraser Speirs氏</a>によるとこのプログラムで重要なのはデバイスが自動的にMDMに登録され、登録がロックされて、ユーザが登録状態を回避できないということだ。</p> 
+  <p>新しいDevice Enrollment ProgramはAppleから直接買われたデバイスでのみ利用できる。これは、管理者が所有していないデバイスを&quot;補足&quot;できるべきではないという考え方に基づいた決定だとSpeirs氏は言う。さらにこのプログラムはAppleが販売モデルを直接運営しているアメリカでしか利用できない。他のデバイスや国では、デバイスを<a href="help.apple.com/configurator/mac">Apple Configurator</a>を使って構成することは引き続きできる。これにはデバイスをユーザに配布する前にUSB経由で接続する必要がある。</p> 
+  <p>また、Appleは<a href="www.apple.com/business/vpp">Volume Purchase Program</a>も改善した。企業が大量のデバイスに一斉にインストールする予定のアプリケーションを一括購入できるようにしたのだ。さらにこの購入方法の場合、注文は企業顧客から直接行われるので、Appleから直接ソフトウエアを調達する新しいチャネルができたことになる。</p> 
+ </div> 
+</div><br><br><br><br><br><br></body></html>

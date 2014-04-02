@@ -2,7 +2,10 @@
  <head></head> 
  <body>
   <div>
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/48.java">Apache Subversion to Migrate to Git</a>Today, Greg Stein, founder of the Apache Subversion project, raised a request to migrate the Subversion codebase to Git. More controversial than the decision itself was the way that the decision was made, by the PMC on the private mailing list. Read on to find out what happened and what the current state is.
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/49.java">RightScale: Top 9 Public and Top 6 Private Clouds</a>RightScale, a service provider across multiple clouds, has published the results of their annual State of Cloud 2014 survey conducted in February of this year. This article highlights some of the most significant findings.
+  </div> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/48.java">Apache Subversion to Migrate to Git</a>Today, Greg Stein, founder of the Apache Subversion project, raised a request to migrate the Subversion codebase to Git. More controversial than the decision itself was the way that the decision was made, by the PMC on the private mailing list. Read on to find out what happened and what the current state is. 
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/47.java">The Shallot 2014 Edition Published</a>The 2014 Edition of The Shallot - the online magazine which conducts deep analysis of the state of the information technology industry - has been released. 
@@ -147,9 +150,6 @@
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/6.java">Elm 0.11 Improves JavaScript Interop</a>Elm’s recent 0.11 release aims to simplify using the FRP language in combination with Javascript. 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/5.java">Cloud Foundry Foundation</a>Pivotal have announced ‘moves to establish [an] open governance model for Cloud Foundry’ by creating a Cloud Foundry Foundation. EMC, HP, IBM, Rackspace, SAP and VMware have expressed a desire to join the foundation as platinum sponsors. ActiveState and CenturyLink will join as gold level sponsors. 
   </div>  
  </body>
 </html>

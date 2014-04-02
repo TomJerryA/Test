@@ -1,6 +1,15 @@
 <html>
  <head></head> 
- <body> 
+ <body>
+  <div>
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/37.py">Connect 1.0とAtlassian VerifiedについてDave Meyer氏が語る</a>InfoQはAtlassianのプロダクトマーケティングスペシャリストであるDave Meyer氏に同社の新しい製品であるAtlassian Connect 1.0とAtlassian Verifiedの話を聞いた。
+  </div>
+  <div>
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/36.py">アジャイル適用の価値を評価する</a>アジャイルを適用するビジネスケースを定義するときに疑問に思うかも知れないのが，アジャイルソフトウェア開発の採用によって達成できるビジネスバリューをどうやって評価すればよいのか，ということだ。
+  </div>
+  <div>
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/35.py">Appleが企業と教育向けにiOSデバイスの配布と管理を改善</a>AppleはDevice EnrollmentとVolume Purchase Programsの変更を発表した。これは、企業や教育向けに大規模にiOSデバイスが配布される状況を改善するためだ。企業が所有しているiOSデバイスが配布される場合もあれば、 &quot;bring your own device&quot;(BYOD)ポリシーを決めている場合もある。
+  </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/35.py">Googleがクラウドを値下げ、CIツールを統合し、WindowsとマネージドVMをサポート</a>Googleは同社のクラウドプラットフォームに関するライブイベントを開催し(録画がここで見られる)多くの新機能や改善を発表した。 
   </div> 
@@ -141,15 +150,6 @@
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/41.py">Project Helios: IIS上のASP.NET OWINベースのWebホスト ランタイム</a>Microsoftは、Heliosと呼ばれるIIS上で実行される軽量なOWINベースのWebホストをリリースした。 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/40.py">V8でバックグラウンドコンパイルの挑戦</a>この記事には、ChromeのJavaScriptエンジンV8に最近追加されたバックグラウンドコンパイルの詳細が含まれている。 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/39.py">SharpDevelop 5リリース</a>SharpDevelop 5がリリースされた。クラスブラウザ、サーチグルーピングが搭載されており、パーシャル型のGo To定義が改善されている。また、ILSpyも統合されている。また、カーソルを使ったインサート、コンテキストアクション、コードインスペクション、スクロールバー、バックグラウンド構文チェック、リンクモード、変数の自動命名、XMLベースのツールチップなどの機能を搭載している。 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/38.py">GoogleのBigQueryが勢いづく</a>Googleが提供するSaaS型のデータストアであるBigQueryが勢いづいているようだ。BigQueryを使うとクラウド上の大規模な列指向のデータ構造にSQLライクな言語で問い合わせが実行できる。 Google AnalyticsやGoogle Apps Scriptとの連携も可能だ。 
-  </div> 
+  </div>    
  </body>
 </html>

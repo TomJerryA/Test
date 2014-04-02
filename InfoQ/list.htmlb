@@ -2,6 +2,12 @@
  <head></head> 
  <body> 
   <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/42.htmlb">Node.js V0.12新特性之性能优化</a> v0.12悠长的开发周期(已经过去九个月了，并且还在继续，是有史以来最长的一次)让核心团队和贡献者们有充分的机会对性能做一些优化。本文会介绍其中最值得注意的几个。 
+  </div> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/42.htmlb">Node.js V0.12新特性之在单进程中跑多个实例</a> 经常有人提出，希望Node.js能被嵌入到其他程序中，特别是让它能跟其他事件循环整合而且（与此同时）支持多个Node执行情境：也就是说让多个Node实例在同一个进程中和平共处的能力。StrongLoop接到了一个客户的订单，在Node v0.12中实现了在同一个事件循环中使用多个执行情境的能力。 
+  </div> 
+  <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/41.htmlb">西蒙•布朗谈可持续竞争力</a> 为什么有些团队很成功，而其他团队不那么成功呢？团队可以使用流程开展工作吗？管理人员如何帮助团队变得更好？团队需要有改善软件质量的激励措施吗？InfoQ采访了西蒙•布朗，他从持续改进、平衡人员与流程，以及软件质量与架构等几个方面谈了可持续竞争力。 
   </div> 
   <div> 
@@ -144,12 +150,6 @@
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/2.htmlb">Node 出现 uncaughtException 之后的优雅退出方案</a> Node 的异步特性是它最大的魅力，但是在带来便利的同时也带来了不少麻烦和坑，错误捕获就是一个。由于 Node 的异步特性，导致我们无法使用 try/catch 来捕获回调函数中的异常，本文将讨论一种Node 出现 uncaughtException 之后的优雅退出方案。 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/1.htmlb">使用Spring Boot构建RESTful Web服务以访问存储于Aerospike集群中的数据</a> Spring Boot能够帮助你很容易地构建基于Spring的应用。Aerospike是分布式和可复制的内存数据库，它遵循ACID。本文将会引领你使用Spring Boot和Aerospike创建一个简单的RESTful Web服务。 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/0.htmlb">执行分析还是内存分析？</a> 在寻找执行热点的时候，有时内存分析将会提供比执行分析更加清晰的图像。在本文中，Kirk Pepperdine谈论了一些决定应该在什么时候采用哪种类型的分析器的指示灯。 
   </div> 
  </body>
 </html>

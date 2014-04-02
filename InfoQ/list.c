@@ -1,6 +1,12 @@
 <html>
  <head></head> 
- <body> 
+ <body>
+  <div>
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/49.c">Apple oferece microsite para design de interface do usu&aacute;rio para iOS7</a>A Apple est&aacute; oferecendo aos desenvolvedores iOS registrados um novo microsite com uma cole&ccedil;&atilde;o de v&iacute;deos, documentos e artigos t&eacute;cnicos sobre design de interface de usu&aacute;rio para iOS 7. O novo site visa oferecer ao desenvolvedor a informa&ccedil;&atilde;o necess&aacute;ria “para criar aplicativos refinados, envolventes e intuitivos para iOS 7.”
+  </div>
+  <div>
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/48.c">Chef Sugar ajuda a melhorar a experi&ecirc;ncia de autoria de receitas do Chef</a>Chef Sugar &eacute; uma extens&atilde;o do Chef que oferece m&eacute;todos DSL para tornar as receitas mais leg&iacute;veis. Seth Vargo, autor do Chef, escreveu sobre as suas motiva&ccedil;&otilde;es para criar o Sugar, ilustrando-as atrav&eacute;s de exemplos. O InfoQ.com falou com Vargo para saber mais sobre seus pontos de vista a respeito de 'a&ccedil;&uacute;car sint&aacute;tico' e os benef&iacute;cios de uma arquitetura de componentes plug&aacute;veis.
+  </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/47.c">Agile para constru&ccedil;&atilde;o de Equipes Distribu&iacute;das</a>Na apresenta&ccedil;&atilde;o &quot;experi&ecirc;ncias com agile em equipes distribu&iacute;das&quot;, Joost Mulders e Andriy Korpan mostraram no XP Days Benelux 2013 como unir&atilde;o uma equipe de desenvolvimento na costa da Ucr&acirc;nia com um cliente na Holanda, usando pr&aacute;ticas &aacute;geis. 
   </div> 
@@ -144,12 +150,6 @@
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/2.c">Planos futuros para o C#</a>No NDC Londres, Mads Torgersen prop&ocirc;s mudan&ccedil;as para a linguagem C#. S&atilde;o apenas propostas e n&atilde;o existem garantias de que ir&atilde;o aparecer em alguma vers&atilde;o espec&iacute;fica da linguagem. Veja um resumo e uma breve an&aacute;lise dessas propostas 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/1.c">Akka e DDD: Combinando Programa&ccedil;&atilde;o Reativa e Domain-Driven Design</a>Vaughn Vernon, autor do livro Implementing Domain-Driven Design, explica como o uso de Scala e Akka (implementa&ccedil;&atilde;o de Modelo de Atores) em conjunto com o DDD ajudam a remover a sobrecarga arquitetural encontrada frequentemente em arquiteturas orientada &agrave; eventos ou hexagonais. 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/0.c">ORMs e a Ignor&acirc;ncia da Persist&ecirc;ncia</a>Julie Lerman recentemente notou que o Entity Framework pode trabalhar com construtores e setters privados, o que promove ignor&acirc;ncia da persist&ecirc;ncia. Exploramos melhor o assunto. 
-  </div> 
+  </div>   
  </body>
 </html>

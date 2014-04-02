@@ -1,179 +1,41 @@
-<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>环境特定的构建工具：Grunt、Gulp和Broccoli</h3><p>项目的开发、分期和产品版本之间可能会有巨大的改变，这是我们需要基于环境以及特定目标信息改变资源（脚本、样式、模板）、生成标记或者其他内容路径的原因之一。很幸运的是，在Grunt、Gulp和Broccolli生态系统中已经有很多构建工具能够帮助我们完成这些工作。不久之前来自于Google Chrome开发者关系团队的工程师Addy Osmani对解决该问题的三种方式（字符串替代、条件注释和模板变量）做了<a href="http://addyosmani.com/blog/environment-specific-builds-with-grunt-gulp-or-broccoli/">对比</a>。</p>
-<h2>最简单的选项—字符串/正则表达式替换</h2>
-<p>对于环境特定的输出，最简单的选项是使用字符串替换，通过一个简单的字符串或者正则表达式找出并移除/替代HTML文件中的块。构建文件中可能会有很多目标设置，其中的每一个都能够用任意内容替换字符串。</p>
-<p>例如，在Grunt中使用<a href="https://github.com/erickrdch/grunt-string-replace">grunt-string-replace</a>的一个非常基础的例子可能是在prod构建的时候将字符串source.js替换为build.js，如下所示：</p>
-<pre>
-module.exports = function(grunt) {
-  grunt.initConfig({
-    'string-replace': {
-      prod: {
-        src: './app/**/*.html',
-        dest: './dist/',
-        options: {
-          replacements: [{
-            pattern: 'source.js',
-            replacement: 'build.js'
-          }]
-        }
-      }
-    }
-  });
-  grunt.loadNpmTasks('grunt-string-replace');
-  grunt.registerTask('default', ['string-replace']);
-};</pre>
-<p>（<a href="https://github.com/outaTiME/grunt-replace">grunt-replace</a> 也能很好的满足这种场景）</p>
-<p>一般情况下，文本替换的方式需要少量配置，像Stephen Sawchuk（Yeoman和Bower的一位贡献者，他认为对于自己的设置而言其他的替代方案过于复杂）这样的开发人员会使用这种方式。从这个<a href="https://gist.github.com/stephenplusplus/523314c4bdda1a8ad1c0">gist</a>中你可以找到他在项目中是如何使用字符串替换的。</p>
-<p>如果你并没有使用Grunt，那么等价方案还有<a href="https://github.com/lazd/gulp-replace">gulp-replace</a>和<a href="https://github.com/outaTiME/broccoli-replace">broccoli-replace</a>。</p>
-<p>对于简单的场景而言，字符串替换能够很好地完成工作，例如需要更新或者删除多个文件中的一组字符串。但是如果你有大量需要替换的内容，同时需要在源文件和构建文件之间来回跳转以便于算出到底需要替换哪些内容时，这种方式就会变得难以维护。</p>
-<p>对于这种场景更好的解决方案是在源文件中就地定义替代品。也就是下面的选项。</p>
-<h2>条件注释</h2>
-<p>环境条件注释的基本思想是：在构建文件中通过最少的配置、使用HTML注释语法定义将一个字符串替代为目标内容所需要的逻辑和信息（例如路径）。这种方案的可读性比较好，同时也能够很容易地在每一个文件中实现。</p>
-<p>下面是一些可选方案：</p>
-<p>Grunt：</p>
+<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>度量敏捷实施的价值</h3><p>如何度量敏捷软件开发所能交付的业务价值？当定义一个业务场景实施敏捷时，这个问题就会出现。</p>
+<p>在博文《<a href="http://blogs.versionone.com/agile_management/2014/02/19/agile-metrics-measuring-process-value/">敏捷指标：度量过程价值</a>》中，Michael Moore对为什么度量敏捷交付的价值很重要进行了说明：</p>
+<blockquote> 
+ <p>（……）敏捷不只是跟效率有关，它还关注成效（价值交付）。毕竟，如果一个过程/方法能够让你做事更快速/便捷，但最终却没能向终端用户交付更多的价值，那它有什么好呢？因此，敏捷承诺降低成本和增加收益。</p> 
+ <p>因此，如果你注重效率的提升，而且这可能是你采用敏捷的唯一理由，那么你很可能会看到预期的结果；产品交付更快了。但是，如果在这个过程中不注重增加收益/价值（比如，产品结果），那么最终你真的只是延缓了组织不可避免的死亡。没有任何降低的成本可以弥补生产收益的缺乏。</p> 
+</blockquote>
+<p>Michael谈到了使用所谓的“海盗指标（pirate metrics）”度量敏捷的价值：获取、激活、保持、转介和收益。当度量价值的时候，最初应该关注提供敏捷获取相关信息的指标。当获取增加，则关注重点可以转向度量激活：</p>
+<blockquote> 
+ <p>用这个模型做例子，如果将它应用到敏捷转型的运营和过程方面，我们会考虑用什么指标呢？收益的等价物是速度吗（我知道，不能比较！）？所有参加新人训练营的人都会成为敏捷转型的参与者吗？</p> 
+</blockquote>
+<p>早些时候，InfoQ<a href="http://www.infoq.com/cn/articles/Jones-measuring-agile-adoption">就敏捷实施的度量采访了Capers Jones</a>。他提到了几个可以在方法迁移时使用的基本测量值；这些指标可以用于度量敏捷的价值：</p>
+<blockquote> 
+ <p>为了度量生产力，世界上两个使用最广泛的测量值是“每人月的功能点数”和它的倒数，“每个功能点的工时”。对于评判生产力而言，速度超过每人月10个功能点则相当不错；速度小于每人月7个功能点则不是那么好。有些敏捷项目已经超过每人月15个功能点，对于瀑布式开发而言，这几乎不可能发生。</p> 
+ <p>对于度量质量而言，最有效的测量值是“潜在缺陷”，该值使用功能点和“缺陷排除效率”进行了规范化。潜在缺陷是在需求、设计、代码、文档和不当的修复中发现的Bug总数。每个功能点有超过5个潜在缺陷则很糟糕；小于3个则相当不错。</p> 
+</blockquote>
+<p><a href="http://www.infoq.com/author/Ken-Schwaber">Ken Schwaber</a>写了一篇博文《<a href="https://www.scrum.org/Blog/ArtMID/1765/ArticleID/6/Agile-Value">敏捷价值</a>》，探讨了如何度量IT投资创造的价值：</p>
+<blockquote> 
+ <p>（……）价值定义为组织财务上的支出收益。在进行度量的时候，价值可以包含整个组织，也可以进行限制，比如限制到单个部门或生产线。无论如何，它必须包含受支出影响的方方面面。</p> 
+</blockquote>
+<p>组织投资价值可以通过名为“<a href="http://www.agility-path.com/Solutions/Agility-Index-Snapshot">敏捷指数（agility index）</a>”的单一指标进行度量，该指标是在“<a href="http://www.agility-path.com/Agility-Path-Framework">敏捷路径框架（agility path framework）</a>”中定义的。该指标结合了几个指标的结果：</p>
 <ul> 
- <li><a href="https://npmjs.org/package/grunt-targethtml/">grunt-targethtml</a></li> 
- <li><a href="https://npmjs.org/package/grunt-preprocess/">grunt-preprocess</a></li> 
- <li><a href="https://npmjs.org/package/grunt-processhtml/">grunt-processhtml</a></li> 
+ <li>运营指标：度量组织效率。这些指标严重倾向于IT，即组织内的软件开发和部署。它们包括流程、生产周期、稳定性、质量、使用率和发布周期。业务运营效率没有包含在这些测量值中，而是作为Kotter International（John Kotter） Accelerate！项目的一部分在2014年加以处理。</li> 
+ <li>组织指标：度量投资效率对市场的影响和组织累计获得的价值。这些指标包括员工人均收入、客户和员工满意度以及产品/系统成本比率。</li> 
 </ul>
-<p>Gulp：</p>
+<p>正如Ken所述，人们可以在Scrum冲刺结束的时候度量它交付的价值：</p>
+<blockquote> 
+ <p>在敏捷项目中，每个冲刺或迭代都是一个完整的项目。它有需求、预算和截止日期。最后，它有一整套的软件功能。根据它所完成的工作，另一个项目可以或者不可以启动，并向刚刚完成的功能中添加更多的功能。每个冲刺单独度量。</p> 
+</blockquote>
+<p>Cutter的博文《<a href="http://blog.cutter.com/2014/03/07/its-far-too-easy-to-measure-agiles-value-in-the-wrong-way/">人们太容易用错误的方式度量敏捷的价值</a>》探讨了敏捷价值度量的必要性。关于计算什么以及需要避免的陷阱，Tom Grant提供了一些指导方针：</p>
 <ul> 
- <li><a href="https://npmjs.org/package/gulp-preprocess/">gulp-preprocess</a></li> 
- <li><a href="https://npmjs.org/package/gulp-processhtml/">gulp-processhtml</a></li> 
+ <li>“敏捷方法的价值不同于敏捷团队生产的软件的价值”：在组织里，评估故事的业务价值无助于保证敏捷实施的投资。</li> 
+ <li>“业务价值存在于业务活动这一层次上”：不是故事有业务价值，而是业务活动使用交付的软件。Tom写道“价值存在于史诗和主题这一层次上”。</li> 
+ <li>“投资组合必须在计算价值方面发挥一些作用”：已交付软件的业务价值部分还与它不包含的功能有关。</li> 
+ <li>“价值是一种互补的度量”：度量价值需要同时包含技术的生产者和消费者。</li> 
+ <li>“没有人相信可以精确地度量，但它们依然有用”：虽然无法精确地计算价值，但人们仍然想有一个数值可以拿来讨论。</li> 
+ <li>“ROI计算结果可以大到难以置信”：当看到很大的数值时，人们可能会怀疑，但它们可能是正确的。</li> 
+ <li>“对于回报的投资可能比投资回报率更重要”：在敏捷上的投资不足可能会导致实施失败。</li> 
+ <li>“除了ROI之外，还有许多其它的指标”：在实施敏捷的业务场景中，其它指标也可能会有用。</li> 
 </ul>
-<p>该列表前三个选项的注释语法在可读性和冗余度方面有所差异，但是它们都能有效地实现同样的结果。所有的选项都能够毫不费力地输出目标/环境特定的块，首先让我们来比较一下targethtml和preprocess：</p>
-<p><strong>一个</strong><code><b>grunt-targethtml</b></code> <strong>示例</strong><strong> (Dev vs. Production)</strong></p>
-<pre>
-Dev：
-&lt;!--(if target dev)&gt;&lt;!--&gt;
- &lt;link rel=&quot;stylesheet&quot; href=&quot;dev.css&quot; /&gt;
-&lt;!--&lt;!(endif)--&gt;
-&lt;!--(if target dev)&gt;&lt;!--&gt;
-  &lt;script src=&quot;dev.js&quot;&gt;&lt;/script&gt;
-  &lt;script&gt;
-    var less = { env:'development' };
-  &lt;/script&gt;
-&lt;!--&lt;!(endif)--&gt;
-Production：
-&lt;!--(if target prod)&gt;&lt;!--&gt;
-  &lt;link rel=&quot;stylesheet&quot; href=&quot;release.css&quot;&gt;
-&lt;!--&lt;!(endif)--&gt;
-&lt;!--(if target prod)&gt;&lt;!--&gt;
-   &lt;script src=&quot;release.js&quot;&gt;&lt;/script&gt;
-&lt;!--&lt;!(endif)--&gt;</pre>
-<p><strong>同样的</strong><code><b>grunt-processhtml</b></code></p>
-<pre>
-Dev：
-&lt;!-- @if NODE_ENV='production' --&gt;
- &lt;link rel=&quot;stylesheet&quot; href=&quot;dev.css&quot;&gt;
-&lt;!-- @endif --&gt;
-&lt;!-- @if NODE_ENV='production' --&gt;
-&lt;script src=&quot;dev.js&quot;&gt;&lt;/script&gt;
-&lt;script&gt;
-  var less = { env:'development' };
-&lt;/script&gt;
-&lt;!-- @endif --&gt;
-
-Production：
-&lt;!-- @if NODE_ENV='production' --&gt;
-&lt;link rel=&quot;stylesheet&quot; href=&quot;release.css&quot;&gt;
-&lt;!-- @endif --&gt;
-&lt;!-- @if NODE_ENV='production' --&gt;
-&lt;script src=&quot;release.js&quot;&gt;&lt;/script&gt;
-&lt;!-- @endif --&gt;</pre>
-<p>正如我们所看到的，按照注释的形式指定逻辑相当直接，这种方式已经被大量地使用，并没有太多的抱怨。</p>
-<p>使用条件注释的一个主要缺点是：标记文件中可能会包含大量与构建相关的逻辑。虽然有一些开发人员不喜欢这样，但是这些任务提供了可读性流。这也意味着我们没必要跳回Gruntfile中查看它到底正在干什么。</p>
-<p>之前列出了3个Grunt任务，那么grunt-processhtml怎么样呢？它有一点专业，你可以使用模板变量以及其他的一些不错的技巧包含完全不同的文件。</p>
-<p>例如，在下面的例子中只有当“dist”目标运行的时候才会将class修改为“production”：</p>
-<pre>
-&lt;!-- build:[class]:dist production --&gt;
-&lt;html class=&quot;debug_mode&quot;&gt;
-&lt;!-- /build --&gt;</pre>
-<p>或者使用任意一个文件替换目标中的一个块：</p>
-<pre>
-&lt;!-- build:include:dev dev/content.html --&gt;
-This will be replaced by the content of dev/content.html
-&lt;!-- /build --&gt;</pre>
-<p>或者根据目标删除一个块：</p>
-<pre>
-&lt;!-- build:remove --&gt;
-&lt;p&gt;This will be removed when any processhtml target is done&lt;/p&gt;
-&lt;!-- /build --&gt;
-&lt;!-- build:remove:dist --&gt;
-&lt;p&gt;But this one only when doing processhtml:dist target&lt;/p&gt;
-&lt;!-- /build --&gt;</pre>
-<p>如果确定需要配置代码注释块格式的能力，那么可以查看 <a href="https://npmjs.org/package/grunt-devcode/">grunt-devcode</a> ，它支持这些。下面是一些示例配置：</p>
-<pre>
-Gruntfile：
-Devcode：
-    {
-      options :
-      {
-        html: true,        // html files parsing?
-        js: true,          // javascript files parsing?
-        css: true,         // css files parsing?
-        clean: true,
-        block: {
-          open: 'condition', // open code block
-          close: 'conditionend' // close code block
-        },
-        dest: 'dist'
-      },
-Markup：
-&lt;!-- condition: !production --&gt;
-  &lt;li class=&quot;right&quot;&gt;
-    &lt;a href=&quot;#settings&quot; data-toggle=&quot;tab&quot;&gt;
-      Settings
-    &lt;/a&gt;
-  &lt;/li&gt;
-&lt;!-- conditionend --&gt;</pre>
-<p>如果你想利用占位符的方式实现，那么可以借助于模板变量。</p>
-<h2>HTML中的模板变量</h2>
-<p>构建时模板允许我们将源文件中定义的占位符字符串（例如&lt;%- title %&gt;）替换为构建文件（例如Gruntfile）中定义的与特定目标相关的数据（字符串、对象等任何你需要的内容）。与条件注释相比，使用这种方式时你注入的数据并不是在目标文件本身中指定的。这种类型的选项有：</p>
-<p>Grunt：</p>
-<ul> 
- <li><a href="https://npmjs.org/package/grunt-template/">grunt-template</a></li> 
- <li><a href="https://npmjs.org/package/grunt-include-replace/">grunt-include-replace</a></li> 
-</ul>
-<p>Gulp：</p>
-<ul> 
- <li><a href="https://npmjs.org/package/gulp-template/">gulp-template</a></li> 
-</ul>
-<p>grunt-template基本上是对grunt.template.process()的包装。同时它主要针对的是基于目标的目标字符串操作，你可以通过data 对象根据dev/prod目标改变路径或者内容。下面就是一个这样的例子：</p>
-<pre>
-index.html.tpl
-
-Gruntfile.js
-module.exports = function(grunt) {
-    grunt.initConfig({
-        'template': {
-            'dev': {
-                'options': {
-                    'data': {
-                        'title': 'I &lt;3 JS in dev'
-                    }
-                },
-                'files': {
-                    'dev/index.html': ['src/index.html.tpl']
-                }
-            },
-            'prod': {
-                'options': {
-                    'data': {
-                        'title': 'I &lt;3 JS in prod'
-                    }
-                },
-                'files': {
-                    'dist/index.html': ['src/index.html.tpl']
-                }
-            }
-        }
-    });
-    grunt.loadNpmTasks('grunt-template');
-    grunt.registerTask('default', [
-        'template:prod'
-    ]);
-    grunt.registerTask('dev', [
-        'template:dev'
-    ]);
-};</pre>
-<p>grunt-include-replace 做的事情比较相似，只是模板字符串的格式不同(&lt;title&gt;@@title&lt;/title&gt;)。</p><br><br><br><br><br><br></body></html>
+<p>你度量敏捷实施的业务价值吗？</p>
+<p><b>查看英文原文：</b><b><a href="http://www.infoq.com/news/2014/03/measuring-value-agile">Measuring the Value of Agile Adoption</a></b></p><br><br><br><br><br><br></body></html>

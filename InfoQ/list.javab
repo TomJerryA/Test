@@ -2,6 +2,9 @@
  <head></head> 
  <body> 
   <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/45.javab">eXtreme Programming The Methodology</a> A practical approach to implementing eXtreme Programming as a methodology. This article first sets the stage regarding the values, roles, plan &amp; manage, and design &amp; development principles of XP are. Then it discusses a personal experience from an Agile Coach perspective implementing eXtreme Programming followed by recommendations, and conclusion. 
+  </div> 
+  <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/45.javab">Seven Steps to Create an Unbeatable Enterprise Mobility Strategy</a> As mobility is transforming our lives, this article gives a step-by-step approach on how enterprises can seamlessly connect their mobile workforce to back-end systems for increased productivity. Covering topics like business goal definition, API and data security or user experience it provides a broad overview on what to keep in mind while planning an enterprise mobility strategy. 
   </div> 
   <div> 
@@ -147,9 +150,6 @@
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/3.javab">Interview with Ole Jepsen on Leadership in Agile</a> Good leaders create an environment where self-organizing teams can thrive and create great products and services to delight their customers: that is what Ole Jepsen explains in this interview. At the XP Days Benelux conference he talked about truly leading people and the subtle but important differences between taking and giving control. 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/2.javab">Interview with Raffi Krikorian on Twitter's Infrastructure</a> Raffi Krikorian, Vice President of Platform Engineering at Twitter, gives an insight on how Twitter prepares for unexpected traffic peaks and how system architecture is designed to support failure. 
   </div> 
  </body>
 </html>

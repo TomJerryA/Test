@@ -1,70 +1,25 @@
-<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>QCon SP 2014: 25+ palestras e 30+ palestrantes confirmados, programação inicial no ar</h3><p>O <a href="http://qconsp.com">QCon SP 2014</a> j&aacute; est&aacute; com quase metade do conte&uacute;do definido. S&atilde;o mais de <a href="http://qconsp.com/speakers">30 palestrantes</a> com presen&ccedil;a garantida e cerca de 25 <a href="http://qconsp.com/2014-presentations">palestras confirmadas</a>.</p>
-<p>O evento, que acontece de 9 a 11 de abril no <a href="http://qconsp.com/venue-hotel">WTC</a>, contar&aacute; com a presen&ccedil;a de grandes engenheiros e l&iacute;deres t&eacute;cnicos de empresas como NASA, Red Hat, Cloudera, Globo.com, Heroku, Locaweb, Walmart.com, Caelum, Dextra, Twitter, Buscap&eacute; Company, Canonical e ThoughtWorks. Uma <a href="http://qconsp.com/schedule">programa&ccedil;&atilde;o preliminar</a> est&aacute; no ar.</p>
-<p><strong>Dia 23 de dezembro &eacute; o &uacute;ltimo dia na faixa de pre&ccedil;os atual; inscri&ccedil;&otilde;es at&eacute; l&aacute; garantem economias de mais de 40% sobre o pre&ccedil;o final.</strong> Mais de 200 pessoas j&aacute; confirmaram presen&ccedil;a no evento. <a href="http://qconsp.com/registration">Garanta a sua participa&ccedil;&atilde;o</a>!</p>
-<p>Veja a seguir detalhes sobre o que j&aacute; temos programado para o quinto QCon S&atilde;o Paulo.</p>
-<h2>Keynotes e Apresenta&ccedil;&otilde;es</h2>
-<p>J&aacute; s&atilde;o quatro palestras internacionais confirmadas (e outras quatro em ajustes finais) - que cobrem de Java 8, &agrave; produtividade de equipes, a Data Science e Big Data:</p>
-<ul class="c3 lst-kix_8pg3x8964x6o-0 start"> 
- <li><strong>Data Science at NASA with Visual Analytics</strong>, <a href="http://qconsp.com/user/rob-witoff">Rob Witoff</a>&nbsp;(Pioneiro de Big Data na NASA/JPL)</li> 
- <li><strong>The Hadoop Ecosystem</strong>, <a href="http://qconsp.com/user/todd-lipcon">Todd Lipcon</a> (Membro-fundador do Hadoop e Engenheiro da Cloudera)</li> 
- <li><strong>Making Virtual and Remote Teams Shine</strong>, por <a href="http://qconsp.com/user/floyd-marinescu-0">Floyd Marinescu</a> (Fundador dos sites InfoQ e eventos QCon)</li> 
- <li><strong>Monadic Java: Functional Programming Patterns Applied</strong>, por <a href="http://qconsp.com/user/mario-fusco">Mario Fusco</a> (criador do LambdaJ e Core Developer do Drools da Red Hat)</li> 
+<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>Apple oferece microsite para design de interface do usuário para iOS7</h3><p>A Apple est&aacute; oferecendo aos desenvolvedores iOS registrados um <a href="https://developer.apple.com/design/">novo microsite</a> com uma cole&ccedil;&atilde;o de v&iacute;deos, documentos e artigos t&eacute;cnicos sobre design de interface de usu&aacute;rio para iOS 7. O novo site visa oferecer ao desenvolvedor a informa&ccedil;&atilde;o necess&aacute;ria &quot;para criar aplicativos refinados, envolventes e intuitivos para iOS 7.&quot;</p>
+<p>O site re&uacute;ne alguns documentos fundamentais para o desenvolvimento iOS, incluindo:</p>
+<ul> 
+ <li><a href="https://developer.apple.com/library/ios/documentation/UserExperience/Conceptual/MobileHIG/">Guia de Interface Humana do iOS</a>, que foi completamente reformulado para levar em conta o novo paradigma de interface de usu&aacute;rio do iOS7;</li> 
+ <li><a href="https://developer.apple.com/library/ios/documentation/UserExperience/Conceptual/TransitionGuide/">Guia de transi&ccedil;&atilde;o de interface de usu&aacute;rio do iOS 7</a>, resumindo todas as mudan&ccedil;as visuais introduzidas no iOS 7, como por exemplo, bot&otilde;es sem bordas, barras transl&uacute;cidas, e layouts em tela cheia para views;</li> 
+ <li><a href="https://developer.apple.com/library/ios/documentation/UserExperience/Conceptual/UIKitUICatalog/">Cat&aacute;logo de interface de usu&aacute;rio UIKit</a>, um cat&aacute;logo com os elementos de interface de usu&aacute;rio utilizados em aplicativos iOS e um guia de como configur&aacute;-los;</li> 
+ <li><a href="https://developer.apple.com/design/tips/">Recomenda&ccedil;&otilde;es no design de interface dos usu&aacute;rios</a>, uma cole&ccedil;&atilde;o de dicas organizadas em quatro categorias: interatividade, legibilidade, gr&aacute;ficos e clareza.</li> 
 </ul>
-<p>Conhe&ccedil;a tamb&eacute;m uma sele&ccedil;&atilde;o das palestras de brasileiros, que v&ecirc;m de v&aacute;rios estados e pa&iacute;ses para apresentar o que de mais inovador est&aacute; sendo feito aqui e l&aacute; fora:</p>
-<p><strong>Big Data, Data Science e Arquiteturas</strong></p>
-<ul class="c3 lst-kix_k37oxx8mhu03-0 start"> 
- <li><a href="http://qconsp.com/presentation/data-science-em-tempo-real">Data Science em Tempo Real</a>,&nbsp;por <a href="http://qconsp.com/user/fabiane-nardon">Fabiane Nardon</a></li> 
- <li><a href="http://qconsp.com/user/fabiane-nardon">U</a><a href="http://qconsp.com/presentation/um-sistema-de-recomenda%C3%A7%C3%A3o-de-produtos-baseado-em-grafos">m sistema de recomenda&ccedil;&atilde;o de produtos baseado em grafos</a>,&nbsp;por <a href="http://qconsp.com/user/andre-fatala">Andr&eacute; Fatala</a>e <a href="http://qconsp.com/user/renato-pedigoni">Renato Pedigoni</a></li> 
- <li><a href="http://qconsp.com/user/renato-pedigoni">L</a><a href="http://qconsp.com/presentation/linux-containers-em-alta-escala-desafios-na-heroku">inux Containers em Alta Escala: Desafios na Heroku</a>,&nbsp;por <a href="http://qconsp.com/user/fabio-kung">F&aacute;bio Kung</a></li> 
+<p>Al&eacute;m disso, o site lista uma sele&ccedil;&atilde;o de v&iacute;deos da <a href="https://developer.apple.com/wwdc/">Confer&ecirc;ncia Apple World Wide Developer de 2013</a> ou <a href="https://developer.apple.com/tech-talks/">palestras t&eacute;cnicas</a> que s&atilde;o consideradas particularmente relevantes no contexto do design da interface de usu&aacute;rio para o iOS 7:</p>
+<ul> 
+ <li><a href="https://developer.apple.com/wwdc/videos/?id=208">O que h&aacute; de novo no design de interface de usu&aacute;rio no iOS</a>, um passeio pelo iOS 7 ilustrando seus princ&iacute;pios de design atrav&eacute;s de uma revis&atilde;o de apps que a Apple redesenhou para isso;</li> 
+ <li><a href="https://developer.apple.com/wwdc/videos/?id=225">Melhores pr&aacute;ticas para &oacute;timos design de interface de usu&aacute;rio no iOS</a>, com o objetivo de evitar armadilhas comuns e fornecer perspectivas sobre o que torna um aplicativo intuitivo e bonito na vis&atilde;o da Apple;</li> 
+ <li><a href="https://developer.apple.com/tech-talks/videos/?id=2">Design de Interface de Usu&aacute;rio de apps para o iOS7,</a> descrevendo novas funcionalidades no iOS 7 como por exemplo: camadas, tingimento, tipografia, efeitos de movimento, din&acirc;mica e anima&ccedil;&atilde;o.</li> 
 </ul>
-<p><strong>Culturas e Equipes</strong></p>
-<ul class="c3 lst-kix_9t1p4b945bep-0 start"> 
- <li><a href="http://qconsp.com/presentation/colabora%C3%A7%C3%A3o-como-caminho-para-times-extraordin%C3%A1rios">A colabora&ccedil;&atilde;o como caminho para times extraordin&aacute;rios</a>,&nbsp;por <a href="http://qconsp.com/user/leandro-guimar%C3%A3es">Leandro Guimar&atilde;es</a></li> 
- <li><a href="http://qconsp.com/user/leandro-guimar%C3%A3es">S</a><a href="http://qconsp.com/presentation/s%C3%B3-mais-uma-dose-como-inserir-aprendizagem-di%C3%A1ria-na-sua-empresa">&oacute; mais uma dose: como inserir aprendizagem di&aacute;ria na sua empresa</a>,&nbsp;por <a href="http://qconsp.com/user/alexandre-magno">Alexandre Magno</a></li> 
+<p>O material acima &eacute; somente uma sele&ccedil;&atilde;o de materiais que o o site de desenvolvedores da Apple oferece. Em particular, o site de desenvolvedores Apple disponibiliza para desenvolvedores registrados todos os v&iacute;deos das sess&otilde;es de <a href="https://developer.apple.com/wwdc/videos/">WWDC 2013</a> (evento em que o iOS 7 foi apresentado). Al&eacute;m disto, podem tamb&eacute;m ser encontrados v&iacute;deos exclusivos relacionados a interface do usu&aacute;rio como:</p>
+<ul> 
+ <li><a href="https://developer.apple.com/wwdc/videos/?id=206">Introdu&ccedil;&atilde;o ao UIKit Dynamics</a>, focando anima&ccedil;&otilde;es e transi&ccedil;&otilde;es movidos pelo novo motor de f&iacute;sica do iOS 7;</li> 
+ <li><a href="https://developer.apple.com/wwdc/videos/?id=226">Implementa&ccedil;&atilde;o de interface de usu&aacute;rio atraente no iOS</a>, ensinando como conseguir anima&ccedil;&atilde;o e transi&ccedil;&otilde;es responsivas;</li> 
+ <li><a href="https://developer.apple.com/wwdc/videos/?id=210">Introduzindo o Text Kit</a>, o novo mecanismo de texto no iOS 7, fornecendo capacidades de manipula&ccedil;&atilde;o de texto e diagrama&ccedil;&atilde;o sofisticados;</li> 
+ <li><a href="https://developer.apple.com/wwdc/videos/?id=221">T&eacute;cnicas avan&ccedil;adas com o UIKit Dynamics</a>, indo al&eacute;m do b&aacute;sico aplicando o dynamics em views e view controllers;</li> 
+ <li><a href="https://developer.apple.com/wwdc/videos/?id=220">Layouts de texto avan&ccedil;ado e efeitos com o Text Kit</a>, entrando em detalhes sobre a manipula&ccedil;&atilde;o de texto avan&ccedil;ado;</li> 
+ <li><a href="https://developer.apple.com/wwdc/videos/?id=218">Transi&ccedil;&otilde;es customizadas usando View Controllers</a>, ensinando como definir transi&ccedil;&otilde;es customizadas entre view controllers;</li> 
+ <li><a href="https://developer.apple.com/wwdc/videos/?id=214">Customizando a apar&ecirc;ncia da app para o iOS7</a>, sobre a capacidade de customiza&ccedil;&atilde;o para views e controles para adotar a interface de usu&aacute;rio do iOS7.</li> 
 </ul>
-<p><strong>DevOps, Continuous Delivery e al&eacute;m</strong></p>
-<ul class="c3 lst-kix_qqew8nu2qikn-0 start"> 
- <li><a href="http://qconsp.com/presentation/devops-no-mundo-real">DevOps no mundo real</a>,&nbsp;por&nbsp;<a href="http://qconsp.com/user/rodrigo-campos">Rodrigo Campos</a></li> 
-</ul>
-<ul class="c3 lst-kix_ygq2gw9g07oa-0 start"> 
- <li><a href="http://qconsp.com/user/rodrigo-campos">M</a><a href="http://qconsp.com/presentation/modelo-bizprodevops-do-neg%C3%B3cio-%C3%A0s-opera%C3%A7%C3%B5es-passando-por-gest%C3%A3o-de-produtos-e">odelo BizProDevOps: do neg&oacute;cio &agrave;s opera&ccedil;&otilde;es, passando por gest&atilde;o de produtos e desenvolvimento</a>,&nbsp;por&nbsp;<a href="http://qconsp.com/user/luiz-parzianello">Luiz Parzianello</a></li> 
-</ul>
-<p><strong>Desempenho e Escalabilidade na Pr&aacute;tica</strong></p>
-<ul class="c3 lst-kix_4kv4vkds6wg7-0 start"> 
- <li><a href="http://qconsp.com/presentation/thumbor-escalabilidade-em-processamento-de-imagens-com-reconhecimento-facial-para-20">Thumbor: Escalabilidade em processamento de imagens com reconhecimento facial para 20 milh&otilde;es de brasileiros</a>,&nbsp;por <a href="http://qconsp.com/user/bernardo-heynemann">Bernardo Heynemann</a></li> 
-</ul>
-<p><strong>Linguagens Din&acirc;micas e Funcionais</strong></p>
-<ul class="c3 lst-kix_a2afs6m55mst-0 start"> 
- <li><a href="http://qconsp.com/presentation/javascript-funcional">JavaScript Funcional</a>,&nbsp;por <a href="http://qconsp.com/user/nando-vieira">Nando Vieira</a></li> 
- <li><a href="http://qconsp.com/user/nando-vieira">E</a><a href="http://qconsp.com/presentation/entendendo-o-garbage-collector-do-ruby">ntendendo o Garbage Collector do Ruby</a>,&nbsp;por <a href="http://qconsp.com/user/fabio-akita">F&aacute;bio Akita</a></li> 
- <li><a href="http://qconsp.com/user/fabio-akita">V</a><a href="http://qconsp.com/presentation/voltando-gostar-de-guis-com-go-e-qml">oltando a gostar de GUIs com Go e QML</a>,&nbsp;por <a href="http://qconsp.com/user/gustavo-niemeyer">Gustavo Niemeyer</a></li> 
- <li><a href="http://qconsp.com/user/gustavo-niemeyer">S</a><a href="http://qconsp.com/presentation/sabe-o-php-ele-mudou-e-voc%C3%AA-deveria-fazer-o-mesmo">abe o PHP? ele mudou e voc&ecirc; deveria fazer o mesmo!</a>,&nbsp;por <a href="http://qconsp.com/user/anderson-casemiro">Anderson Casimiro</a></li> 
-</ul>
-<p><strong>Fronteiras do Desenvolvimento</strong></p>
-<ul class="c3 lst-kix_h30rkohu7tee-0 start"> 
- <li><a href="http://qconsp.com/presentation/test-driven-infrastructure-na-globocom">Test-driven Infrastructure na Globo.com</a>,&nbsp;por <a href="http://qconsp.com/user/fernando-carolo">Fernando Carolo</a> e <a href="http://qconsp.com/user/rogerio-schneider">Rog&eacute;rio Schneider</a></li> 
- <li><a href="http://qconsp.com/user/rogerio-schneider">P</a><a href="http://qconsp.com/presentation/programa%C3%A7%C3%A3o-funcional-reativa-lidando-com-c%C3%B3digo-ass%C3%ADncrono">rograma&ccedil;&atilde;o funcional reativa: Lidando com c&oacute;digo ass&iacute;ncrono</a>,&nbsp;por <a href="http://qconsp.com/user/leonardo-borges">Leonardo Borges</a></li> 
-</ul>
-<p><strong>Java na Crista da Onda</strong></p>
-<ul class="c3 lst-kix_dyrpzlehfjzl-0 start"> 
- <li><a href="http://qconsp.com/presentation/java-8-na-pr%C3%A1tica-do-lambda-%C3%A0s-novas-apis">Java 8 na pr&aacute;tica, do Lambda &agrave;s novas APIs</a>,&nbsp;por <a href="http://qconsp.com/user/michael-nascimento">Michael Nascimento</a></li> 
- <li><a href="http://qconsp.com/user/michael-nascimento">M</a><a href="http://qconsp.com/presentation/multithreading-e-java-ee-pouca-mudan%C3%A7a-no-c%C3%B3digo-e-muita-nos-resultados">ultithreading e Java EE: pouca mudan&ccedil;a no c&oacute;digo e muita nos resultados</a>,&nbsp;por <a href="http://qconsp.com/user/gilliard-cordeiro">Gilliard Cordeiro</a></li> 
-</ul>
-<p><strong>Front-end e Mobile</strong></p>
-<ul class="c3 lst-kix_wqo13z2dh675-0 start"> 
- <li><a href="http://qconsp.com/presentation/web-components-na-pr%C3%A1tica">Web Components na Pr&aacute;tica</a>,&nbsp;por <a href="http://qconsp.com/user/bernard-de-luna">Bernard de Luna</a></li> 
- <li><a href="http://qconsp.com/user/bernard-de-luna">R</a><a href="http://qconsp.com/presentation/rumo-ao-http20-o-que-vem-por-a%C3%AD-e-o-que-voc%C3%AA-pode-utilizar-j%C3%A1-com-spdy">umo ao HTTP2.0: o que vem por a&iacute; e o que voc&ecirc; pode utilizar j&aacute; com SPDY</a>,&nbsp;por <a href="http://qconsp.com/user/sergio-lopes">S&eacute;rgio Lopes</a></li> 
- <li><a href="http://qconsp.com/user/sergio-lopes">F</a><a href="http://qconsp.com/presentation/firefox-os-e-vanguarda-do-desenvolvimento-de-aplicativos-com-html5">irefox OS e a vanguarda do desenvolvimento de aplicativos com HTML5</a>,&nbsp;por <a href="http://qconsp.com/user/andre-garzia">Andr&eacute; Garzia</a></li> 
-</ul>
-<h2>Tutoriais: aprendizado sofisticado com a qualidade QCon</h2>
-<p>Est&aacute; avan&ccedil;ada a programa&ccedil;&atilde;o de tutoriais, que s&atilde;o sess&otilde;es aprofundadas de tr&ecirc;s horas e meia. Nos tutoriais j&aacute; confirmados s&atilde;o cobertos grandes temas atuais, incluindo NoSQL, Redes Sociais, APIs REST e Programa&ccedil;&atilde;o Funcional:</p>
-<ul class="c3 lst-kix_1jzkrquzr27e-0 start"> 
- <li><a href="http://qconsp.com/tutorial/api-de-streaming-do-twitter-convertendo-tweets-em-opini%C3%B5es">API de Streaming do Twitter</a> - Luis Felipe Cipriani, Engenheiro do Twitter Brasil</li> 
- <li><a href="http://qconsp.com/tutorial/nosql-aplicado">NoSQL Aplicado</a> - Edward Ribeiro, Committer do Cassandra e VoitDB</li> 
- <li><a href="http://qconsp.com/tutorial/apis-web-restful-0">APIs Web RESTFul</a> - Eder Ignatowicz, Engenheiro da Dextra</li> 
- <li><a href="http://qconsp.com/tutorial/lambdas-java">Lambdas in Java</a> - Mario Fusco, Sr Engineer da Red Hat e Core Developer do Drools</li> 
-</ul>
-<p>O Dia de Tutoriais acontece na quarta-feira, 9 de abril. No mesmo dia, teremos uma sequ&ecirc;ncia de Short Talks, palestras no estilo &quot;TED&quot; com dura&ccedil;&atilde;o de 20 minutos.</p>
-<hr />
-<p>Lembramos que este ano o evento ser&aacute; realizado em novo local, o <a href="http://wtceventscenter.com.br">WTC Events Center</a>,&nbsp;elevando o QCon para um novo patamar de sofistica&ccedil;&atilde;o e conforto para os participantes. Tanto os tutoriais como a confer&ecirc;ncia acontecer&atilde;o no mesmo centro de eventos.</p>
-<p>Acompanhe mais novidades do evento em <a href="http://qconsp.com">qconsp.com</a>,&nbsp;e na nossa conta do <a href="http://twitter.com/qconsp">Twitter</a> e p&aacute;gina do <a href="http://facebook.com/qconsp">Facebook.</a></p><br><br><br><br><br><br></body></html>
+<p>De acordo com <a href="http://techcrunch.com/2014/02/28/apple-adds-new-designing-great-apps-micro-site-for-ios-7-developers/">Darrell Etherington escrevendo para o Tech Crunch</a>, o novo microsite da Apple, embora n&atilde;o ofere&ccedil;a nenhum material novo, pode ajudar os desenvolvedores a refinar seus produtos e prover a n&atilde;o desenvolvedores uma vista de como a Apple visualiza o design das apps e quais tratamentos de interface de usu&aacute;rio s&atilde;o especialmente relevantes para isso.</p><br><br><br><br><br><br></body></html>
