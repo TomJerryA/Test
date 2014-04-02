@@ -1,14 +1,14 @@
 <html>
  <head></head> 
- <body>
-  <div>
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/37.py">Connect 1.0とAtlassian VerifiedについてDave Meyer氏が語る</a>InfoQはAtlassianのプロダクトマーケティングスペシャリストであるDave Meyer氏に同社の新しい製品であるAtlassian Connect 1.0とAtlassian Verifiedの話を聞いた。
-  </div>
-  <div>
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/36.py">アジャイル適用の価値を評価する</a>アジャイルを適用するビジネスケースを定義するときに疑問に思うかも知れないのが，アジャイルソフトウェア開発の採用によって達成できるビジネスバリューをどうやって評価すればよいのか，ということだ。
-  </div>
-  <div>
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/35.py">Appleが企業と教育向けにiOSデバイスの配布と管理を改善</a>AppleはDevice EnrollmentとVolume Purchase Programsの変更を発表した。これは、企業や教育向けに大規模にiOSデバイスが配布される状況を改善するためだ。企業が所有しているiOSデバイスが配布される場合もあれば、 &quot;bring your own device&quot;(BYOD)ポリシーを決めている場合もある。
+ <body> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/37.py">Connect 1.0とAtlassian VerifiedについてDave Meyer氏が語る</a>InfoQはAtlassianのプロダクトマーケティングスペシャリストであるDave Meyer氏に同社の新しい製品であるAtlassian Connect 1.0とAtlassian Verifiedの話を聞いた。 
+  </div> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/36.py">アジャイル適用の価値を評価する</a>アジャイルを適用するビジネスケースを定義するときに疑問に思うかも知れないのが，アジャイルソフトウェア開発の採用によって達成できるビジネスバリューをどうやって評価すればよいのか，ということだ。 
+  </div> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/35.py">Appleが企業と教育向けにiOSデバイスの配布と管理を改善</a>AppleはDevice EnrollmentとVolume Purchase Programsの変更を発表した。これは、企業や教育向けに大規模にiOSデバイスが配布される状況を改善するためだ。企業が所有しているiOSデバイスが配布される場合もあれば、 &quot;bring your own device&quot;(BYOD)ポリシーを決めている場合もある。 
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/35.py">Googleがクラウドを値下げ、CIツールを統合し、WindowsとマネージドVMをサポート</a>Googleは同社のクラウドプラットフォームに関するライブイベントを開催し(録画がここで見られる)多くの新機能や改善を発表した。 
@@ -150,6 +150,6 @@
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/41.py">Project Helios: IIS上のASP.NET OWINベースのWebホスト ランタイム</a>Microsoftは、Heliosと呼ばれるIIS上で実行される軽量なOWINベースのWebホストをリリースした。 
-  </div>    
+  </div> 
  </body>
 </html>

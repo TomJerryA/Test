@@ -1,13 +1,25 @@
-<p>In INFRA-7524 Greg Stein, founder of the Subversion project and previous winner of the O'Reilly Open Source award, has requested that the Apache Subversion project be migrated to Git. This will allow the development of the Subversion repository be developed with Git.</p>
-<p>Although posted on April 1, the switch is not an April fool. In fact, the vote was taken on an internal/private mailing list, and the result was something that Greg was not happy with, suggesting that he might have to hang up the VP subversion hat. The Apache foundation is even drafting an official response to the situation.</p>
-<p>Although this seems like a big change, in fact the Git repositories at Apache have been mirroring projects for some time using the unidirectional git-svn bridge. So the Apache SVN Git repository has been available for some time, and is browsable at GitHub already. The significant change is that in future the Git repository will be read-write for Apache committers, and the existing SVN repository will become locked.</p>
-<p>New changes coming in the SVN client for 1.9 will allow the <code>ra_git</code> module to check out and work with Git repositories using the SVN client. This work is being developed in the ra-git branch, and provides (local) svn repository identifiers based on upstream git commits. Existing SVN tools will be able to use this both as a local checkout repository format and as a means to commit to a central Git server; in essence, it's a Git client with an SVN command line interface. Unlike the existing git-svn support, this uses Git natively between the client and server (and probably caches the Git repository locally on the client side) but continues to allow tools to locally operate on SVN checkouts.</p>
-<p>Many of the commenters on the thread are less concerned about the irony of hosting SVN on Git as much as the private events that led to this occurring. Jim Jagielski, co-founder of the Apache Foundation expressed concerns that the vote was taken by the PMC behind closed doors, instead of the open democracy that Apache is known for. Even though Greg didn't vote for it, it was taken by the PMC for the Subversion project:</p>
-<blockquote> 
- <p>Look. The short of it is: the Apache Subversion project chose this. We want to get our stuff coded and released. For our backend, we don't need the super-huge repositories that Subversion supports. Our project stores some binaries, but we can make Git work for us. We have no need for Subversion's fine-grained authorization ... shoot. We allow ALL ASF committers access to our repository. There are no barriers to the migration here, and some of the stuff that Infra has done for integration with GitHub? Pretty cool. Positives, and only little negatives.</p> 
- <p>Don't get me wrong. I see the benefits. As the VP, I gotta represent the project. I really DO NOT LIKE this decision. But that is not for me to decide, and it is not for you (Jim/Rich) to decide for us. It is a decision of the PMC. Sure... they held the vote in private. But that does NOT deny the result of their vote. Pushing this vote to dev@ would simply incite riot. The people who have the voting power would NOT CHANGE.</p> 
- <p>So. As the VP of the Apache Subversion project, I opened this ticket. The Infrastructure team is moving on this ticket. If you, Rich, or any other Director/Officer have a problem with that, then bring it up at our April Board meeting. Otherwise, get out of this ticket. As Pilato and Tony have noted: this is not the forum.</p> 
-</blockquote>
-<p>With the conversion already underway and testing being done on the Git repository, the process more than the decision is under the spotlight.</p>
-<p>Subversion remains the single biggest version control system, but is being rapidly replaced with Git in the open-source community; the decision to move the source for the Subversion implementation itself is an acceptance of that fact. But Subversion still remains large in enterprises and inertia is always present when moving repository types. What is clear is that Git is becoming a winner on the back-end, with the SVN client able to check out either SVN repositories or Git repositories.</p>
-<p>What do you think of the decision to move the Subversion repository over to Git?</p>
+<p>A constant complaint amongst .NET developers is the myriad of different XAML-based UIs. The problems started with Silverlight, which had a similar but different set of controls than WPF. Silverlight for Windows Phone added a third set, and XAML for WinRT a fourth.</p>
+<p>In today’s Build Keynote we heard that Microsoft is finally starting the reconciliation process with the introduction of Common XAML UI. Based on XAML for WinRT, this UI framework will allow the same UI code to be shared on phones, tablets, desktop computers, and eventually Xbox One.</p>
+<p>A cornerstone of the Common UI is a new project type called “shared projects”. This is a new concept for Visual Studio and works very differently than portable class libraries. A shared project cannot be independently compiled into a DLL or EXE. Instead it is merged at build time into one or more traditional project types. The traditional projects are informally referred to as “project heads”.</p>
+<p>Core primitives such as panels, buttons, and text boxes/buttons will have the same behavior on Windows and Windows phone. Higher level primitives such as Hub, AppBar/CommandBar, date/time pickers, ListView, flyouts, and media will have the same API on both platforms but will behave differently. The Ads SDK will also have a common API signature between the platforms, but again the behaviors will differ.</p>
+<p>It should be noted that some features will silently fail. For example, if you have too many buttons in the CommandBar then Windows Phone will only render the first few.</p>
+<p>While many of the controls are scalable to different screen sizes, there will be times when you need to tailor the behavior for some devices. One way to accomplish this is through the use of platform specific custom controls. Shared controls can reference these platform specific custom controls so long as a control with the correct name exists in each project head.</p>
+<p>Another option for improving code reuse is the use of conditional compilation and #if def in the code-behind. In this sense it is like the classic approach of sharing source code files between projects using soft links.</p>
+<p>Resource files, the same that are used for localization, offer a third way to tailor the user experience. The cited example is how command bar buttons are expected to be in lower case on phones and title cased on the desktop.</p>
+<p>While most of the APIs are now shared, there are some UI aspects that are not available on all platforms. The most significant ones are:</p>
+<p>Windows Only APIs</p>
+<ul> 
+ <li>SearchBox</li> 
+ <li>Settings Flyout</li> 
+</ul>
+<p>Windows Phone Only APIs</p>
+<ul> 
+ <li>Pivot</li> 
+ <li>AutoSuggestBox</li> 
+ <li>ContentDialog</li> 
+ <li>Maps</li> 
+ <li>System Chrome</li> 
+ <li>Progress area, in-call UI</li> 
+</ul>
+<p>The Windows and Windows Phone back button do behave differently, so some custom work around them may be needed. Platform specific code will also be necessary for file pickers, share, and settings.</p>
+<p>Common XAML and Universal Apps are available in all versions Visual Studio 2013 Update 2.</p>

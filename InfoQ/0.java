@@ -1,38 +1,21 @@
-<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>What Is (Not) DevOps, and How Do We Get There?</h3><p>In this article we discuss some of the&nbsp;misunderstandings surrounding DevOps and provide an introduction to a process that can bring the cultural shift that DevOps is all about.</p>
-<p>In a post entitled&nbsp;“<a href="http://www.virtualizationpractice.com/devops-engineer-25120/">No, You Are Not a DevOps Engineer</a>”,&nbsp;Mike Kavis,&nbsp; VP/Principal Architect for Cloud Technology Partners, has addressed some of the misconceptions surrounding DevOps. For example, he mentions how some teams are misusing the term DevOps:</p>
-<blockquote> 
- <p>Enterprises are struggling with DevOps. They all want DevOps even though many do not know what it is. In many cases, I see infrastructure teams who are calling themselves DevOps leading a grassroots initiative. When I ask them where the development team is, they often say either “we did not invite them,” or even worse, “we don’t talk to them.”</p> 
-</blockquote>
-<p>Some engineers advertise themselves as DevOps, but they are not, according to Kavis, because&nbsp;“DevOps is not a person, a role, or a title. You are not a DevOps engineer, even though you may call yourself one.” If DevOps is not a role, a qualification, a title, then what is it? Kavis’ definition is:</p>
-<blockquote> 
- <p>DevOps is a culture shift or a movement that encourages great communication and collaboration (aka teamwork) to foster building better-quality software more quickly with more reliability.</p> 
-</blockquote>
-<p>He then details:</p>
-<blockquote> 
- <p>DevOps is the progression of the software development lifecycle (SDLC) from Waterfall to Agile to Lean. DevOps goes beyond Agile and focuses on removing waste from the SDLC. Often, the waste or bottlenecks are found in the forms of inconsistent environments, manual build and deployment processes, poor quality and testing practices, lack of communication and understanding between IT silos, frequent outages and failing SLAs, and whole suite of issues that require precious IT resources to spend significant time and money keeping the systems running. …</p> 
- <p>Another reoccurring pattern I see is that a “DevOps” team’s first step is often to figure out if they are going to use Chef or Puppet (or Salt or Ansible or whatever else is hot). They have not even defined the problems that they are setting out to solve, but they have the tools in hand to solve them. Often these teams wind up building thousands of lines of the scripts, which raises the question, “are we in the business of writing Chef scripts or in the business of getting to market faster with better quality and more reliability?” Too often, these teams code themselves into a corner with mountains of proprietary scripts that actually add more waste to the system, instead of removing waste from the system, which is what the driving forces behind the DevOps movement are all about.</p> 
-</blockquote>
-<p>If DevOps is a cultural change meant to bring better communication and collaboration between various teams involved in creating a product, the next question that comes to mind is how do we get there, how do we bring this change into our company?</p>
-<p>Damon Edwards, co-founder of <a href="http://dtosolutions.com/">DTO Solutions</a>, keynoted on “<a href="http://dev2ops.org/2013/12/how-to-initiate-a-devops-transformation-video/">How to initiate a DevOps Transformation</a>” during DevOps Days Mountain View 2013, presenting a three-steps process he is recommending to introduce the DevOps culture into an organization:</p>
-<p><strong>1. Build the “Why?”</strong></p>
-<p>According to Edwards, it is important to start by having a clear understanding of <em>why</em> the members of an organization are there, what they are trying to accomplish, what is their purpose. To find out that reason, one could simply socialize with people in the organization and ask them <em>why</em> they are there. The main purpose of the organization is the only reason for implementing a DevOps culture, and there is no other.</p>
-<p>Edwards considers that <em>DevOps</em> is just a means to reach an end, and not an end in itself: “DevOps is not your <em>why</em>, not your co-workers’ <em>why</em>, certainly not your business’ <em>why.” </em>He even suggests forgetting the <em>DevOps</em> term, noting the he’s using <em>service delivery</em> instead because “we are in the business of making a service.”</p>
-<p><strong>2. Building Organizational Alignment</strong></p>
-<p>The next step in Edwards’ process is to align the entire organization so everyone would work “towards a common goal under a shared set of assumptions and rules.” An organization is correctly aligned when giving the same goal to multiple people, they choose the same way to achieve the respective purpose; they have the same answers for the same problem. That would be the “ultimate dream of the organizational alignment.”</p>
-<p>To achieve this alignment, one needs to develop a <em>DevOps Vision</em> within the organization. That is not obtained by teaching a process, because people will simply try to mechanically follow some steps. What is needed is to teach a way of thinking. According to Edwards, this can be achieved by following the next steps:</p>
-<ol> 
- <li><strong>Teach the basic concepts</strong>, such as “single piece flow, working in batches, limit work in progress, pull vs. push, continuous delivery”, the tools that can be used, etc., concepts that make up a common vocabulary to be shared by the organization.</li> 
- <li><strong>Getting everyone on the same page</strong> through<br /> a. Value Stream Mapping – a Lean concept detailing the flow of information and artifacts going on inside an organization, leading to value creation.<br /> b. Timeline Analysis – attempts to discover where time is spent, where are the bottlenecks.<br /> c. Waste Analysis – determining all sorts of waste that&nbsp;are produced by an organization in order to eliminate them as much as possible</li> 
- <li><strong>Developing metrics chains</strong>, which are meant to measure the activity across the value delivery chain and how one’s activity impacts others’.</li> 
- <li><strong>Identify projects/experiments against baseline</strong>. Identify which projects or activities deviate from the baseline and take corrective measures.</li> 
- <li><strong>Repeat steps 2-4. </strong>This constitutes a Continuous Improvement process.</li> 
-</ol>
-<p>In order to implement these ideas, Edwards proposes a 3-days program:</p>
-<ul> 
- <li><strong>Day 1 – </strong>Teach the principles, present a case study, patterns and anti-patterns</li> 
- <li><strong>Day 2 – </strong>Analyze the current status of the organization providing problem identification techniques and improvement metrics</li> 
- <li><strong>Day 3 – </strong>Discussing solutions and tool-chain automation principles, building a roadmap</li> 
-</ul>
-<p><strong>3. Continuous Improvement Loops</strong></p>
-<p>These loops are meant to continually improve the process by Making Plans, Implementing Plans, Measuring Outcomes, and Deciding on How to Continue.</p>
-<p>Edwards has recently presented these principles during his QCon London 2014 session called <a href="http://qconlondon.com/london-2014/presentation/Dev%20%22Programming%22%20Ops%20For%20DevOps%20Success">&quot;Dev ‘Programming’ Ops For DevOps Success&quot;</a>, session that will be later made available on InfoQ.</p><br><br><br><br><br><br></body></html>
+<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>Microsoft Opens Windows to the Universal App: One App for All Platforms</h3><p class="MsoNormal" style="margin-bottom: 0.0001pt;">Today at the opening day of Microsoft’s Build developer conference the company formally announced Universal Windows apps.&nbsp; These apps will run across the Windows family of devices:&nbsp; phone, tablet, and desktop PC.&nbsp; The upcoming release of Windows Phone 8.1 will align that platform with the existing Windows 8.1 platform that exists for desktops and tablets.&nbsp; This change means that developers can write a single app that will run unmodified on all of these platforms.&nbsp; Developers will retain the ability to customize the app behavior and appearance for each environment if they desire.
+ <o:p></o:p></p>
+<p class="MsoNormal" style="margin-bottom: 0.0001pt;">
+ <o:p>
+  &nbsp;
+ </o:p></p>
+<p class="MsoNormal" style="margin-bottom: 0.0001pt;">During the keynote, Microsoft Director <a href="http://blogs.windows.com/windows/b/buildingapps/archive/2014/04/02/extending-platform-commonality-through-universal-windows-apps.aspx">Kevin Gallo</a> demonstrated this new binary by taking an existing Windows 8.1 app in Visual Studio and then added Windows Phone 8.1 compatibility in a straightforward manner.&nbsp; Under the existing solution, nodes appear in Visual Studio’s Solution Explorer for the original Windows 8.1 target and the newly added Windows Phone 8.1 target.&nbsp; A third node exists for code common to both platforms.&nbsp; Developers can control which portions of the code are stored in this common code, and which is stored in a platform specific manner.&nbsp; One advantage of this approach is that app logic can be stored in the common area to be shared by both platforms, while still allowing developers to add device specific functionality—be it keyboards and mice or the presence of GPS information on phones.
+ <o:p></o:p></p>
+<p class="MsoNormal" style="margin-bottom: 0.0001pt;">
+ <o:p>
+  &nbsp;
+ </o:p></p>
+<p class="MsoNormal" style="margin-bottom: 0.0001pt;">Under the hood, universal apps are running on the Windows Runtime, which was originally introduced with Windows 8. &nbsp;NuGet packages installed for a particular platform are by default associated with that platform, but developers have the option to reuse it for the newly added targets.&nbsp; For an example, Gallo demonstrated how JSON.NET was part of the Windows 8.1 app, and then easily added to the Windows Phone 8.1 target when that target was added to the solution.
+ <o:p></o:p></p>
+<p class="MsoNormal" style="margin-bottom: 0.0001pt;">
+ <o:p>
+  &nbsp;
+ </o:p></p>
+<p class="MsoNormal" style="margin-bottom: 0.0001pt;">&nbsp;</p>
+<p class="MsoNormal" style="margin-bottom: 0.0001pt;">InfoQ is covering the Build 2014 Conference first hand and will continue to provide updates on this and all news that emerges—stay tuned.
+ <o:p></o:p></p><br><br><br><br><br><br></body></html>

@@ -1,24 +1,149 @@
-<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>Jolt Awards 2014: Mobile and Coding Tools</h3><p>Dr. Dobbs has awarded the Jolt Award for Mobile and Coding Tools for 2014.</p>
-<p><a href="http://www.drdobbs.com/joltawards/">Dr. Dobb's Journal</a>&nbsp;has recently&nbsp;announced the winners of the <a href="http://www.drdobbs.com/joltawards/jolt-awards-mobile-development-tools/240166387?pgno=1">Jolt Awards for Mobile Development Tools</a>.&nbsp;This award is meant to recognize the best tools for creating mobile applications. This year’s award recognizes the improvements made by cross-platform mobile development tools, noting that if “they continue to close the gap with native applications, they might well become the tool of choice for all development, save the most demanding.”</p>
-<p>Anyone could submit a tool for review, and the judges have selected six of them which were deeply reviewed and evaluated, but the methodology used was not disclosed. The winners are:</p>
-<p><strong>Jolt Award: <a href="http://xamarin.com/">Xamarin 2.0</a></strong></p>
-<p>Xamarin has received the award for “the elegance of this solution and its ability to work with familiar tools to target the principal mobile platforms.” Xamarin lets C# developers to create cross-platform mobile application in Visual Studio or Xamarin Studio, most of the code being independent from the platform it is developed for. Developers need to use Objective-C or Java only for the interface, Xamarin providing a fully native interface for applications, which is considered superior to the HTML5 cross-platform flavor.</p>
-<p><font style="FONT-WEIGHT: bold">Jolt Productivity Award: </font><a href="http://phonegap.com/"><font style="FONT-WEIGHT: bold">PhoneGap</font></a></p>
-<p>Adobe PhoneGap was awarded for its ability to create cross-platform applications with web technologies&nbsp;–JavaScript, HTML, CSS- for a large collection of mobile platforms -Amazon Fire OS, Android, BlackBerry, iOS, Symbian, Windows Phone, Windows 8.x, and Tizen-.</p>
-<p>Among the features that recommended PhoneGap, it was mentioned: the code is open sourced as Apache Cordova, detailed documentation, PhoneGap Build provides automated support for building apps for multiple platforms, and developers need to know only JavaScript to program for many platforms.</p>
-<p><font style="FONT-WEIGHT: bold">Jolt Productivity Award: </font><a href="http://www.appcelerator.com/titanium/titanium-studio/"><font style="FONT-WEIGHT: bold">Titanium Studio</font></a></p>
-<p>Features that promoted Titanium Studio: ability to target the mobile Web, Android, Blackberry, iOS and Tizen, good integration between Alloy MVC&nbsp;– a framework built on Node.js, supporting Backbone.js and Underscore.js - and Eclipse IDE, good support for the entire development lifecycle, good separation between the interface, business code and data model, ability to test the app in the browser, and usefulness for data and cloud-oriented mobile apps.</p>
-<p><font style="FONT-WEIGHT: bold">Finalist: </font><a href="http://coronalabs.com/products/corona-sdk/"><font style="FONT-WEIGHT: bold">Corona SDK</font></a></p>
-<p>Corona uses Lua to build graphically intensive apps for Android, iOS, Kindle Fire, and Nook, with support for Windows 8 and WP 8 coming soon. Corona is recommended when one needs to “develop a 2D rich app with an animated UI or a game that needs to interact with the typical Facebook login and some RESTful services.” Other highlighted features: simple interaction with SQLite, good support for in-app purchases and monetization, extensive documentation, fast simulator, ability to call native C++, Objective-C or Java code from Lua (Enterprise edition).</p>
-<p><font style="FONT-WEIGHT: bold">Finalist: </font><a href="http://www.sencha.com/products/touch"><font style="FONT-WEIGHT: bold">Sencha Touch 2.3.1</font></a></p>
-<p>Sencha Touch was rewarded for its ability to create HTML5 apps for Android, BlackBerry, iOS, Windows 8.x, Windows Phone, and Tizen, having good performance, a large collection of UI controls, icons and themes, MVC, support for Apache Cordova and PhoneGap Build, and its success in “making HTML5 apps look like native apps on mobile devices.”</p>
-<p><font style="FONT-WEIGHT: bold">Finalist: </font><a href="http://livecode.com/livecode-6-5/"><font style="FONT-WEIGHT: bold">LiveCode 6.5</font></a></p>
-<p>LiveCode was included among finalists for being a RAD tool which provides a simple drag&amp;drop interface for beginner developers wanting to create iOS and Android apps. LiveCode uses a custom English-like scripting language to create cross-platform apps for iOS, Android, Windows, Linux and Mac OS X, but without a native look.</p>
-<p>Earlier this year, Dr. Dobb's Journal awarded their prize for the best general <a href="http://www.drdobbs.com/joltawards/jolt-awards-coding-tools/240165725">Coding Tools</a>:</p>
-<p><strong>Jolt Award: </strong><a href="http://www.visualstudio.com/products/visual-studio-premium-with-msdn-vs"><strong>Microsoft Visual Studio 2013, Premium Edition</strong></a></p>
-<p><strong>Productivity Award: </strong><a href="http://www.jetbrains.com/idea/"><strong>JetBrains IntelliJ IDEA 13 Ultimate Edition</strong></a></p>
-<p><strong>Productivity Award: </strong><a href="http://ipython.org/notebook.html"><strong>IPython Notebook</strong></a></p>
-<p><strong>Finalist: </strong><a href="https://www.devexpress.com/Products/CodeRush/"><strong>Developer Express CodeRush 13.2</strong></a></p>
-<p><strong>Finalist: </strong><a href="http://www.jetbrains.com/resharper/"><strong>JetBrains Resharper 8</strong></a></p>
-<p><strong>Finalist: </strong><a href="https://c9.io/"><strong>Cloud9 IDE</strong></a></p>
-<p>Dr. Dobb’s has given&nbsp;their Jolt Awards&nbsp;for books and software development tools since 1991. Any&nbsp;software tool&nbsp;can be submitted for evaluation&nbsp;(<a href="http://twimgs.com/ddj/images/article/2011/0811/JoltNomination.pdf">PDF form</a>). Only product release versions are accepted; no alphas, no betas. Nominations need to be made within the time frame specified by the <a href="http://www.drdobbs.com/joltawards/jolt-calendar/229403131">awards calendar</a>.</p><br><br><br><br><br><br></body></html>
+<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>Highlights from Microsoft's Build 2014 Opening Keynote</h3><p class="MsoNormal">Microsoft’s Build conference began today with a series of fast-paced announcements and presentations by several key personnel demonstrating the company’s shift to open Windows to the entire platform.&nbsp; What follows is a running diary of the major announcements made today.&nbsp; We will be posting updates as these details are expanded on in detail.
+ <o:p></o:p></p>
+<p class="MsoNormal">
+ <o:p>
+  &nbsp;
+ </o:p></p>
+<p class="MsoNormal">Joe Belfiore, CVP Operating Systems Group, started the keynote by talking about Windows Phone 8.1.&nbsp; This update brings several usability enhancements to the phone’s OS, including more personalization and customization for the lock and start screens.&nbsp; The biggest addition is the arrival of Cortana, Microsoft’s answer to Apple’s Siri voice recognition system on the iPhone.
+ <o:p></o:p></p>
+<p class="MsoNormal">
+ <o:p>
+  &nbsp;
+ </o:p></p>
+<p class="MsoNormal">Brief overview of the new features of <b>Windows Phone 8.1</b>:
+ <o:p></o:p></p>
+<p class="MsoNormal"><b>Action center</b>&nbsp; (pull down from the top)
+ <o:p></o:p></p>
+<ul> 
+ <li>Battery life
+  <o:p></o:p></li> 
+ <li>Can use dual SIM cards
+  <o:p></o:p></li> 
+ <li>Quick settings – wifi / Bluetooth / airplane mode / etc
+  <o:p></o:p></li> 
+ <li>Internet Sharing
+  <o:p></o:p>
+  <o:p>
+   &nbsp;
+  </o:p></li> 
+</ul>
+<p class="MsoNormal"><b>Personalize lock &amp; Start screens</b>
+ <o:p></o:p></p>
+<ul> 
+ <li>New APIs to customize lock screen
+  <o:p></o:p></li> 
+ <li>Customize number /size amount of icons
+  <o:p></o:p></li> 
+ <li>Customize wallpaper that the tiles display on</li> 
+</ul>
+<p><b>Cortana</b></p>
+<p>
+ <o:p></o:p></p>
+<ul> 
+ <li>Presence as a Live tile
+  <o:p></o:p></li> 
+ <li>Cortana can be extended with 3<sup>rd</sup> party apps
+  <o:p></o:p></li> 
+ <li>Supports creating speech enabled 3<sup>rd</sup> party apps
+  <o:p></o:p></li> 
+ <li>Cortana’s stores user personalization information in the notebook, which allows users to customize what items Cortana knows about.
+  <o:p></o:p></li> 
+</ul>
+<p class="MsoNormal"><b>Wi-Fi Sense
+  <o:p></o:p></b></p>
+<ul> 
+ <li>Simplify connecting to Wi-fi networks 
+  <ul> 
+   <li>Allows auto-accepting Terms of Use when required</li> 
+   <li>Can provided name/email/ phone number when required, also can be edited
+    <o:p></o:p></li> 
+  </ul> </li> 
+ <li>Can automatically share Wi-fi passwords with approved contacts ( Outlook.com / Skype contacts / Facebook friends).&nbsp; Shared transparently between machines, but the user never actually sees the password.
+  <o:p></o:p></li> 
+</ul>
+<p class="MsoNormal">The enhancements to Windows Phone 8.1 are not limited to the end user.&nbsp; Nick Hedderman, Senior Product Manager demonstrated several new phone management features for corporate phone administrators:
+ <o:p></o:p></p>
+<p class="MsoNormal">
+ <o:p>
+  &nbsp;
+ </o:p></p>
+<p class="MsoNormal"><b>Windows Phone 8.1 for Business
+  <o:p></o:p></b></p>
+<ul> 
+ <li>Enroll device into a corporate role (even if the one previously was setup for personal-use only)
+  <o:p></o:p></li> 
+ <li>Support Enterprise VPN
+  <o:p></o:p></li> 
+ <li>S/MIME
+  <o:p></o:p> 
+  <ul> 
+   <li>Signed and encrypt emails
+    <o:p></o:p></li> 
+  </ul> </li> 
+ <li>Can disable local downloading of files.
+  <o:p></o:p></li> 
+ <li>Can deny apps from running on a phone, even existing installed apps already on the phone
+  <o:p></o:p></li> 
+ <li>When a user leaves the corporation or switches devices, the corporate management is completely removed.&nbsp; App permissions are restored, VPN removed, etc
+  <o:p></o:p></li> 
+</ul>
+<p class="MsoNormal">
+ <o:p>
+  &nbsp;
+ </o:p></p>
+<p class="MsoNormal">Moving beyond the updates for Windows Phone 8.1, the keynote then moved to the forthcoming Update for Windows 8.1.&nbsp; This Update will be made available for free to all Windows 8.X users on April 8.&nbsp; InfoQ has <a href="http://www.infoq.com/news/2014/04/universal_win_apps">more information</a> on the universal Windows app, supporting Windows 8.1 and Windows Phone 8.1 in a <a href="http://www.infoq.com/news/2014/04/universal_win_apps">separate article</a>.
+ <o:p></o:p></p>
+<p class="MsoNormal">
+ <o:p>
+  &nbsp;
+ </o:p></p>
+<p class="MsoNormal"><b>Windows 8.1 Update 1
+  <o:p></o:p></b></p>
+<p class="MsoNormal">Cortana on the phone and Bing on desktop share user details (when you are logged in to Bing).
+ <o:p></o:p></p>
+<ul> 
+ <li>Windows Task bar can have apps pinned to it
+  <o:p></o:p> 
+  <ul> 
+   <li>This includes displaying their live tiles on the Start menu
+    <o:p></o:p></li> 
+  </ul> </li> 
+ <li>Switch between apps whether they are Modern of Win32 desktop apps
+  <o:p></o:p></li> 
+ <li>Doesn’t affect the changes / operation for touch based operations
+  <o:p></o:p></li> 
+ <li>New PC Settings tile
+  <o:p></o:p> 
+  <ul> 
+   <li>Provides natural/familiar home for PC settings
+    <o:p></o:p></li> 
+  </ul> </li> 
+ <li>Power button and search button display on Start screen by default
+  <o:p></o:p></li> 
+ <li>Right-click context menu to resize / pin to taskbar
+  <o:p></o:p></li> 
+ <li>Control click to select multiple tiles and move them around en masse
+  <o:p></o:p></li> 
+ <li>Improving Windows Store update to mouse &amp; keyboard friendly
+  <o:p></o:p></li> 
+ <li>New apps are highlighted in the All Apps list when they are added so they are not as easy to overlook when added
+  <o:p></o:p></li> 
+</ul>
+<p class="MsoNormal">
+ <o:p>
+  &nbsp;
+ </o:p></p>
+<p class="MsoNormal">WinJS is now open source (under the Apache license) and going cross-platform.&nbsp; Joining this announcement is the availability of Windows 8.1 Update on MSDN.&nbsp; VS2013 Update 2 RC is publicly available for all versions (paid and express) of Visual Studio.&nbsp; Windows Phone 8.1 will be available for developers later this month.
+ <o:p></o:p></p>
+<p class="MsoNormal">
+ <o:p>
+  &nbsp;
+ </o:p></p>
+<p class="MsoNormal">Stephen Elop, EVP of Nokia presented several new phone types, including the new flagship device, the Nokia Lumia 930.&nbsp; This will be made available in June for $599.&nbsp; The Lumia 630 and Lumia 635 will target the lower end of the market, but still include a 1.2GHz quadcore SnapDragon processor.&nbsp; The 630 will be available in a dual-SIM card model.&nbsp; Prices range from $159 to approximately $189.
+ <o:p></o:p></p>
+<p class="MsoNormal">
+ <o:p>
+  &nbsp;
+ </o:p></p>
+<p class="MsoNormal">New Microsoft CEO Satya Nadella concluded the keynote by addressing some prerecorded user questions.&nbsp; The main theme of his comments was that he wants Microsoft to operate as a challenger to the current market rather than as an incumbent.&nbsp;&nbsp;
+ <o:p></o:p></p><br><br><br><br><br><br></body></html>
