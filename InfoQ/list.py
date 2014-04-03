@@ -2,6 +2,18 @@
  <head></head> 
  <body> 
   <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/41.py">QCon Tokyo 2014 【組込み系／モノづくり】 トラックのご紹介</a>QCon Tokyoのカテゴリのひとつとして「組込み系／モノづくり」トラックをご用意しています。 日本のお家芸ともいえる組込み系ソフトウェアの開発にも今ひしひしと変革の波が押し寄せています。安くて高機能の家電製品や組込み機器を提供すれば飛ぶようにモノが売れる時代は終わり、以下に付加価値を付け、モノとサービスと環境の総合的な組合せによって今までにない体験をいかに提供できるか。スピーディなデリバリと意外性、そして充実した使用感が求められるという新しい次元にモノづくりは突入したといえるでしょう。 
+  </div> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/40.py">QCon Tokyo 2014 【アジャイル／モデリング】 トラックのご紹介</a>QCon Tokyoは、最新技術を追い求めるデベロッパのための情報コミュニティ「InfoQ」が主催する、エンジニアによるエンジニアのためのワールドワイド カンファレンスです。そのカテゴリのひとつとして「アジャイル／モデリング」カテゴリを設定しています。 アジャイルは単純な「試してみた」という段階から、「そのテクニックを使って何をするか」という段階に移行しています。本トラックでは、その「次」を考えていただけるような内容をご用意しました。グリーとサイバーエージェントという、ゲーム業界の注目会社からの両氏が並び立ち、さらに、DevLOVE主催者の人気セッションもあります。 
+  </div> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/39.py">QCon Tokyo 2014 【クラウド/DevOps】 トラックのご紹介</a>QCon Tokyoは、最新技術を追い求めるデベロッパのための情報コミュニティ「InfoQ」が主催する、エンジニアによるエンジニアのためのワールドワイド カンファレンスです。 今回のQcon Tokyo 2014 では、クラウド時代の技術動向にこだわって「クラウド/DevOps」カテゴリを設定しています。クラウドが主要なインフラとして台頭する一方、どのように活用してくのか設計、運用時に考慮するべきポイントが多数あります。そこで本トラックでは、クラウドを適切に活用・運用する方法を紹介します。 
+  </div> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/38.py">ソフトウェアの負債を扱う</a>ソフトウェアの負債というのは様々なかたちで存在している。技術的負債は広く知られているし、他の形態としては能力的負債とか品質的負債というものがある。ソフトウェアの負債はプロダクトの維持管理コストを増やし、開発者の気持ちを落ち込ませうるものだ。ソフトウェアの負債を扱うためにはいくつかの解決法がある。 
+  </div> 
+  <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/37.py">Connect 1.0とAtlassian VerifiedについてDave Meyer氏が語る</a>InfoQはAtlassianのプロダクトマーケティングスペシャリストであるDave Meyer氏に同社の新しい製品であるAtlassian Connect 1.0とAtlassian Verifiedの話を聞いた。 
   </div> 
   <div> 
@@ -138,18 +150,6 @@
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/45.py">Red HatのJBossチームがWild Fly 8をローンチ - Java EE 7をフルサポート，組み込み可能な新Webサーバを装備</a>Red HatのJBoss部門は本日，WildFly 8の提供開始を発表した。これまではJBoss Application Server(JAS)という名称だったプロダクトだ。このリリースではJava EE7を完全にサポートするとともに，まったく新しいWebサーバであるUndertow，新たなセキュリティ機能，実行中のシステムを更新可能なパッチシステムを備えている。 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/44.py">Docker、Mac OS XとBTRFSをサポート</a>Docker 0.8のリリースの一部として、Docker.ioチームはMac OS XへのインストールサポートとAUFSの代替としてBTRFSが使えるようになったことを発表した。 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/43.py">Telerik Platformを使ったWeb, ハイブリッド, ネイティブアプリの開発</a>Telerik PlatformはWeb, ハイブリッド, さらにはiOS, Android, Windows Phoneのネイティブアプリを, Webベースのダッシュボード，デスクトップ，あるいはVisual Studioを使って開発する仕組みを提供する。 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/42.py">NightwatchでEnd-to-Endテストを行う</a>Nightwatchは、Node.js上で動く受け入れテスト用のフレームワークである。このツールは、Webアプリケーションのテストを自動化するために、Selenium WebDriver APIを使用している。また、Selenium Serverと相性が悪いJavaScriptやCSSセレクタを使ってEnd-to-Endテストを書くことができるよう、シンプルなシンタックスを用意している。 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/41.py">Project Helios: IIS上のASP.NET OWINベースのWebホスト ランタイム</a>Microsoftは、Heliosと呼ばれるIIS上で実行される軽量なOWINベースのWebホストをリリースした。 
   </div> 
  </body>
 </html>

@@ -2,6 +2,12 @@
  <head></head> 
  <body> 
   <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/42.htmlb">响应式Web图形篇 —— icon fonts 的探析及应用</a> 像素完美（Pixel Perfection）、分辨率无关（Resolution Independent）和多平台体验一致性是设计师们的追求。 可访问性（Accessability）、加载性能和重构灵活性是前端工程师们关心的主题。 当下互联网设备「风起云涌」，显示分辨率「层出不穷」，为 Web 创建者们带来越来越多的难题。 
+  </div> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/42.htmlb">OSGi Bundle Convert插件原理</a> 普通的web应用要转换为OSGi应用，经常会遇到应用中依赖的Jar是非标准的情况，这些Jar可能只遵守了部分OSGi规范，甚至Manifest信息是空的。这种情况在OSGi 应用中根本无法使用这个非标准的Jar做为Bundle，故必须要将这个非标准的Jar转换成遵守OSGi规范的Bundle。另外用Maven管理的仓库，由于不同开发者对规范的理解不同，在仓库中也存在了各种规范或者不规范的Jar，如果我们能很好的将Maven仓库中的Jar转换成标准的Bundle，Maven仓库也就转换成对应的OSGi Bundle仓库，对于非OSGi的应用而言也就可以很方便的利用Maven仓库，普通web应用也可以平滑的切换到OSGi环境。 
+  </div> 
+  <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/42.htmlb">Node.js V0.12新特性之性能优化</a> v0.12悠长的开发周期(已经过去九个月了，并且还在继续，是有史以来最长的一次)让核心团队和贡献者们有充分的机会对性能做一些优化。本文会介绍其中最值得注意的几个。 
   </div> 
   <div> 
@@ -144,12 +150,6 @@
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/3.htmlb">Java里快如闪电的线程间通讯</a> 完全不用锁、同步器、信号量、等待和通知，在Java里开发一个轻量、无锁的线程间通讯框架；并且也没有队列、消息、事件或任何其他并发专用的术语或工具。只用普通的老式Java接口实现POJO的通讯。 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/2.htmlb">关于DevOps你必须知道的11件事</a> 尽管很多人视DevOps为ITIL和ITSM的颠覆，而我则有着不同的看法，在支撑IT运维的业务流程方面，ITIL和ITSM流程无疑还是最好的。实际上，他们描述了需要被IT运维支持的功能集合，这些功能集合足以支撑DevOps式的工作流。本文从DevOps的定义入手，介绍DevOps的理念、基本原则以及一些模式。 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/2.htmlb">Node 出现 uncaughtException 之后的优雅退出方案</a> Node 的异步特性是它最大的魅力，但是在带来便利的同时也带来了不少麻烦和坑，错误捕获就是一个。由于 Node 的异步特性，导致我们无法使用 try/catch 来捕获回调函数中的异常，本文将讨论一种Node 出现 uncaughtException 之后的优雅退出方案。 
   </div> 
  </body>
 </html>

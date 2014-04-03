@@ -2,6 +2,9 @@
  <head></head> 
  <body> 
   <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/0.c">Armazenamento Offline com o LocalForage</a>A Funda&ccedil;&atilde;o Mozilla lan&ccedil;ou o localForage, uma nova biblioteca JavaScript que promete simplificar o processo de armazenamento de dados offline em aplica&ccedil;&otilde;es web. O que torna esta biblioteca &uacute;nica &eacute; o fato que ela tenta combinar o melhor dos mundos: assincronismo e suporte a blob. 
+  </div> 
+  <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/49.c">Apple oferece microsite para design de interface do usu&aacute;rio para iOS7</a>A Apple est&aacute; oferecendo aos desenvolvedores iOS registrados um novo microsite com uma cole&ccedil;&atilde;o de v&iacute;deos, documentos e artigos t&eacute;cnicos sobre design de interface de usu&aacute;rio para iOS 7. O novo site visa oferecer ao desenvolvedor a informa&ccedil;&atilde;o necess&aacute;ria “para criar aplicativos refinados, envolventes e intuitivos para iOS 7.” 
   </div> 
   <div> 
@@ -147,9 +150,6 @@
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/3.c">PayPal muda de Java para JavaScript</a>PayPal decidiu usar JavaScript de ponta-a-ponta, do browser at&eacute; o servidor de backend para aplica&ccedil;&otilde;es web, descontinuando o c&oacute;digo legado escrito em JSP/Java. 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/2.c">Planos futuros para o C#</a>No NDC Londres, Mads Torgersen prop&ocirc;s mudan&ccedil;as para a linguagem C#. S&atilde;o apenas propostas e n&atilde;o existem garantias de que ir&atilde;o aparecer em alguma vers&atilde;o espec&iacute;fica da linguagem. Veja um resumo e uma breve an&aacute;lise dessas propostas 
   </div> 
  </body>
 </html>

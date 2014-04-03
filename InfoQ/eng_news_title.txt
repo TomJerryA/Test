@@ -1,1 +1,1 @@
-Introducing Common XAML UI
+Microsoft Speeds Up Windows Store Apps with .NET Native

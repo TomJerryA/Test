@@ -1,27 +1,38 @@
-<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>Project Helios: IIS上のASP.NET OWINベースのWebホスト ランタイム</h3><p><a target="_blank" href="http://www.infoq.com/news/2014/02/helios"><em>原文(投稿日：2014/02/19)へのリンク</em></a></p>
-<div class="article_page_left news_container text_content_container"> 
- <div class="text_info"> 
-  <p>Microsoftは、IISの上で実行される軽量の<a href="http://owin.org/spec/owin-1.0.0.html">OWIN</a>をベースにしたWebホストであるHeliosと呼ばれるプロジェクトをリリースした。</p> 
-  <p>Heliosは、<a href="http://www.asp.net/aspnet/overview/owin-and-katana/an-overview-of-project-katana">昨年の夏にMicrosoftによって発表された</a>別のプロジェクト<a href="http://katanaproject.codeplex.com/">Katana</a>のステップに続いている。これは、インストールして、使用して、分離して管理できるよりも、いくつかの独立した小さなコンポーネントを提供することで、.NET Web開発者がASP.NET/IISモノリスを避けて、OWIN仕様を実装したWebホストで実行することができる。</p> 
-  <p>ASP.NETの問題のひとつは、.NET Frameworkに含まれているため、数年かかるメジャーバージョンアップのリリースサイクルに紐付いており、特定のテストとバグフィックスのプロセスに影響を受けることである。より機敏に、反応よくWebツールを開発するために、ASP.NETチームはSystem.Web.dllに依存しない、はるかに早い開発サイクルで、迅速に修正を適用できる、いくつかのより小さなコンポーネント (ASP.NET MVC、 ASP.NET Web API) を開発した。それだけでなく開発者はカスタムOWIN上または、OWINのリファレンス実装であるKatana上にホストされたWebアプリケーションをデプロイすることができる。</p> 
-  <p>Heliosは、Microsoftの本格的なWebサーバーではなく、IIS上で動作するWebランタイムである。<a href="http://weblog.west-wind.com/posts/2013/Nov/23/Checking-out-the-Helios-IIS-Owin-Web-Server-Host">Rick Strahl氏は以下のように説明する</a>:</p> 
-  <blockquote> 
-   <p>Heliosは、OWINベースのインターフェイスとコンテキスト セマンティクスをベースに提供するために、System.Webを使わず、直接IISのネイティブ・インターフェイスをフックしています。これは、既存のASP.NET実行環境とは完全に切り離されており、モジュールのパイプラインとデフォルトのASP.NETランタイム プロセスをバイパスして実行されます。… Heliosは、非常に軽量で、生のIIS上で起動するWebホストのショートサーキットされたバージョンです。IISとASP.NETは密接に紐付いていますが、IISコアはかなり軽量で、完全にネイティブコードで実行されることを覚えておいてください。ASP.NETモジュールやハンドラーがインストールされている場合、ASP.NETは相互作用のみがキックされ、それらはネイティブコードとネイティブモジュールのみの場合と比べて遅くなります。</p> 
-  </blockquote> 
-  <p>Heliosの背景は、IISが提供している成熟していて、豊富な環境を、従来のASP.NETなしで提供しようというアイディアである。 これらのゴールは、「Webサーバーの高密度化」「Webホストの模倣よりも自己ホストの模倣」「Webアプリケーションのデプロイ摩擦の減少」を提供することであると、ASP.NETのセキュリティエンジニアである<a href="http://social.msdn.microsoft.com/profile/levibroderick/">Levi Broderick氏は言う</a>。しかし「それらは既存のアプリケーションの100%互換を提供しようとしていません。具体的にはHeliosプロジェクトは、.aspxや.ashxエンドポイントなどのASP.NETイズムはサポートしていません」</p> 
-  <p>開発については、Heliosは次の基本要件がある: Windows 8かWindows Server 2012、.NET Framework 4.5.1、Visual Studio 2012か2013。Broderick氏は、Windows 7で開発している開発者のために「この要件は将来のプレリリースで」緩和する可能性があると述べた。Heliosアプリケーションは、Windows Azureまたは、Windows Server 2012、.NET Framework 4.5.1と完全信頼を持つ任意のホスティング環境にデプロイすることができる。</p> 
-  <p>パフォーマンスの面で言うと、ASP.NETの“Hello World”アプリケーションと比較して、Heliosは2～3倍以上のスループットを実現しているが、実際のアプリケーションはこれよりもはるかに複雑であるため、2つのWebソリューションの比較のベースとして採用することはできないとBroderick氏は言う。しかしメモリ消費量の面では、<a href="http://blogs.msdn.com/b/webdev/archive/2014/02/18/supplemental-to-asp-net-project-helios.aspx#_On_performance_and">Heliosは、System.Webよりもよい</a>:</p> 
-  <blockquote> 
-   <p>絶対数では、Heliosアーキテクチャは、私たちのサンプルアプリケーションにおいて、標準のASP.NETパイプラインと比較しておよそ1 GB少なく、50,000の同時リクエストを達成しました。サンプルアプリケーションは、最小のベースラインで設計されており、重要なアプリケーションにも同様の絶対値を期待することができます。</p> 
-  </blockquote> 
-  <p>注意: Broderick氏の<a href="http://blogs.msdn.com/b/webdev/rsscomments.aspx?WeblogPostID=10500903">コメント</a>の通り、MicrosoftはまだHeliosにコミットしていない:</p> 
-  <ul>
-   <!--EndFragment-->
-  </ul> 
-  <ul> 
-   <p>
-    <!--EndFragment-->私たちはこの作業をやめて、リリースされない可能性があります。例えば、人々が実際にそれを望んでいなかったとき、チームが解散してしまったとき、よりよい何かが現れたとき、その他私たちが想像つかない多くの理由があり得ます。チームは、これがAzure専用になることには興味がありません。</p> 
-  </ul> 
-  <p>開発者は<a href="https://www.nuget.org/packages/Microsoft.Owin.Host.IIS/">Microsoft.Owin.Host.IIS NuGetパッケージ</a>をインストールした後で、Visual Studioから直接HeliosベースのASP.NETアプリケーションを開発することができる。</p> 
+<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>QCon Tokyo 2014 【組込み系／モノづくり】 トラックのご紹介</h3><p><a href="http://www.qcontokyo.com/" target="_blank">QCon Tokyo</a>&nbsp;は、最新技術を追い求めるデベロッパのための情報コミュニティ「InfoQ」が主催する、エンジニアによるエンジニアのためのワールドワイド カンファレンスです。そのカテゴリのひとつとして「組込み系／モノづくり」トラックをご用意しています。</p>
+<p>日本のお家芸ともいえる組込み系ソフトウェアの開発にも今ひしひしと変革の波が押し寄せています。安くて高機能の家電製品や組込み機器を提供すれば飛ぶようにモノが売れる時代は終わり、以下に付加価値を付け、モノとサービスと環境の総合的な組合せによって今までにない体験をいかに提供できるか。スピーディなデリバリと意外性、そして充実した使用感が求められるという新しい次元にモノづくりは突入したといえるでしょう。</p>
+<p>昨年は3Dプリンターの広げる新しいモノづくり環境の可能性を慶応大学 田中徹也準教授の基調講演で熱く語っていただきました。今年は東大に入学できる人工頭脳・ロボットの研究開発に本気で取り組む国立情報学研究所の新井紀子先生の基調講演をとおして、モノづくりがソフトウェアのみならず数学・論理学・人工知能・ロボット・脳科学・社会学等の総合的な知見を新しい知の体験・革新的なサービスとして組み立て直すという世界的な大きな潮流を感じ取ってもらえればと思います。</p>
+<p>「組込み系／モノづくり」トラックの一般講演については3本用意しました。</p>
+<p>まず、日本マイクロソフト太田寛 氏【ブログ:<a href="http://blogs.msdn.com/b/hirosho/" target="_blank">デバイスとITの架け橋</a>】と豆蔵 技術コンサルティング事業部による「フィジカル・コンピューティングにおける.Net Micro Frameworkの可能性」です。Micro Frameworkとは、Microsoft Reserch（Microsoft社の研究部門）開発の小規模組込み向けを狙い、Apache License V2.0によるOpen Sourceのオペレーティング・システムです。MMUなしの32bit CPUで256KB ROM, 64KB RAM のメモリ構成で動作し、ARMやX86、SHなど、さまざまなCPUアーキテクチャで実行可能です。組み込みアプリケーション開発がVisual Studio上で手軽に行え、実機でのソースコード・デバッグ、シミュレータ・デバッグ機能も利用可能。バーチャルマシンやライブラリのソースコードも開示されています。今後、メカ、エレキとITを融合したモノづくりのプロトタイピングや実際のプラットフォームとして非常に有用です。最後に紹介するデモでは、.NET Micro Framework と .NET Gadgeteer を用いてセンサーを制御し、センサー情報をクラウド（Azure）に蓄積するM2Mの一例をご紹介します。とくに、センサー情報をクラウドに蓄積する組み込み機器と、クラウドのセンサー情報をきっかけに動作する組み込み機器の2台が、クラウドを経由して協調動作するところにクラウドとフィジカルコンピューティングの融合する未来を感じ取っていただければと思います。</p>
+<p>2つめのセッションは、<a href="http://www.intel.co.jp/content/www/jp/ja/homepage.html" target="_blank">インテル株式会社</a>ソフトウェア＆サービス事業部ソフトウェア開発製品部テクニカル・コンサルティング・エンジニアの林 侃(はやし かん)氏による「IA搭載組込み機器向けソフトウェア開発製品のご紹介」です。PCやサーバーだけでなく、様々な組み込みシステムにおいてもインテルのアーキテクチャーは採用されています。性能要件によっては、ソフトウェア開発においてプロセッサーの性能を引き出し、搭載される複数のコアを最大限活用する必要があります。本セッションでは、IA搭載の組み込みシステムのために役に立つインテルのソフトウェア開発製品をご紹介します。</p>
+<p>3つめのセッションは、<a href="http://mobiquitous.com/" target="_blank">はこだて未来大学</a>の塚田浩二 準教授による「生活家電インターフェースの新潮流（仮）」です。栗原一貴氏との共同研究「SpeechJammer」がイグノーベル賞（Acostics Prize)を受賞したことでも有名です。食事を「奏でる」フォーク: EaTheremin(イーテルミン）や身の回りにある様々な日用品に小型のセンサやコンピュータを搭載し，情報技術で「拡張」された日用品を用いて生活をさりげなく支援するシステム「日用品インタフェース」を提案・開発されています。今回もあっと驚く斬新なアイデアで、日本のモノづくりに新しい風をもたらしてくれる研究をご紹介いただきます。</p>
+<p>そして、さいごのビアパーティにもぜひ参加していただいて、スピーカーも含めた参加者のみなさんと交流し、みんなで「あたらしい日本のモノづくりの未来」を考え、開発現場に夢を持ち帰りましょう！</p>
+<div>
+ &nbsp;
+</div>
+<blockquote> 
+ <div>
+  ●開催概要
  </div> 
-</div><br><br><br><br><br><br></body></html>
+ <div>
+  &nbsp;
+ </div> 
+ <div>
+  開催日時：2014年4月30日(水) 10:00-19:00 (19:00～ ビアパーティあり)
+ </div> 
+ <div>
+  &nbsp;
+ </div> 
+ <div>
+  会　　　場：アルカディア市ヶ谷
+ </div> 
+ <div>
+  &nbsp;
+ </div> 
+ <div>
+  公式サイト：http://qcontokyo.com/
+ </div> 
+</blockquote>
+<div>
+ &nbsp;
+</div>
+<p>&nbsp;</p><br><br><br><br><br><br></body></html>

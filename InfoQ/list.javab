@@ -2,6 +2,9 @@
  <head></head> 
  <body> 
   <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/45.javab">Key Takeaway Points and Lessons Learned from QCon London 2014</a> This article summarizes the key takeaways and highlights from QCon London 2014 as blogged and tweeted by attendees. Over the course of the next 4 months, InfoQ will be publishing most of the conference sessions online, including 27 video interviews that were recorded by the InfoQ editorial team. The publishing schedule can be found on the QCon London web site. 
+  </div> 
+  <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/45.javab">eXtreme Programming The Methodology</a> A practical approach to implementing eXtreme Programming as a methodology. This article first sets the stage regarding the values, roles, plan &amp; manage, and design &amp; development principles of XP are. Then it discusses a personal experience from an Agile Coach perspective implementing eXtreme Programming followed by recommendations, and conclusion. 
   </div> 
   <div> 
@@ -147,9 +150,6 @@
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/4.javab">Interfacing between Linear Waterfall and Agile Approaches</a> Michael discusses ways to integrate agile &amp; scrum approaches with linear management styles often required to achieve organizational control in large complex environments. He talks about how to achieve an Agile PMO and how it can be applied in environments which are not naturally perceived as being agile-friendly. 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/3.javab">Interview with Ole Jepsen on Leadership in Agile</a> Good leaders create an environment where self-organizing teams can thrive and create great products and services to delight their customers: that is what Ole Jepsen explains in this interview. At the XP Days Benelux conference he talked about truly leading people and the subtle but important differences between taking and giving control. 
   </div> 
  </body>
 </html>

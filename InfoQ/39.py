@@ -1,11 +1,54 @@
-<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>SharpDevelop 5リリース</h3><p><a target="_blank" href="http://www.infoq.com/news/2014/02/sharpdevelop-5"><em>原文(投稿日：2014/02/14)へのリンク</em></a></p>
-<div class="article_page_left news_container text_content_container"> 
- <div class="text_info"> 
-  <p><a href="http://community.sharpdevelop.net/forums/t/20270.aspx">SharpDevelop 5 Beta 1</a>がリリースされた。<a href="http://community.sharpdevelop.net/blogs/andreasweizel/archive/2014/01/11/what-s-new-in-class-browser.aspx">クラスブラウザ</a>、<a href="http://community.sharpdevelop.net/blogs/siegfried_pammer/archive/2013/08/18/new-in-sharpdevelop-5-group-search-results-by-project-or-project-and-file.aspx">サーチグルーピング</a>が搭載されており、パーシャル型の<a href="http://community.sharpdevelop.net/blogs/siegfried_pammer/archive/2013/08/18/new-in-sharpdevelop-5-go-to-definition-on-partial-types-improved.aspx">Go To定義</a>が改善されている。また、<a href="http://community.sharpdevelop.net/blogs/siegfried_pammer/archive/2014/01/25/ilspy-debugger-integration-in-sharpdevelop-5.aspx">ILSpy</a>も統合されている。この最新のリリースのクラスブラウザはすべてのプロジェクト、名前空間、型、型メンバの階層構造を見ることができる。型メンバをダブルクリックすればコードエディタが表示され、右クリックではナビゲーションやリファクタリングコマンドを実行できるコンテキストメニューが表示される。</p> 
-  <p>もとは2000年に<a href="http://www.icsharpcode.net/OpenSource/SD/Changes.aspx">開発された</a>SharpDevelopだが、今や、外部のどんな.NETアセンブリでも読み込むことができる。ILSpyと同じようにファイルシステムからでもGACからでも読み込める。開発者はダブルクリックした型の逆コンパイルしたコンテンツを見ることができる。</p> 
-  <p>SharpDevelop 5以前では、ウィンドウやコントロールの型の名前をCtrl+クリックすることでクラスのXAMLを表示することができた。しかし、最新のリリースでは、移動したいファイルの名前がポップアップで表示される。また、プロジェクトを検索する機能やプロジェクトとファイルをまとめて検索する機能も提供する。また、AddIn Managerのインターフェイスも提供する。これは、IDEの機能をアドインで拡張するのに使える。アドインはNuGetや*.sdaddinパッケージファイルで追加できる。</p> 
-  <p>最新のリリースには現在デバッグしているプロセスを表すノードが含まれている。読み込んだモジュールとILSpyのようにメソッドを開いたり、逆コンパイルできる。ソースコードなしでメソッドにステップインできるのだ。開発者はブレイクポイントを設定し、ステップスルーしたり、式を評価したりできる。</p> 
-  <p>&quot;私たちは今SharpDevelop 5を開発しています。多くの生産性の改善を行っています。ひとつ興味深いのはSD5はライセンスを変えたことです。SDのコードを別のアプリケーションで利用できるのです。&quot;とSharpDevelopプロジェクトのChristoph Wille氏は言う。</p> 
-  <p><a href="http://community.sharpdevelop.net/blogs/">SharpDevelop 5</a>にはカーソルを使ったインサート、コンテキストアクション、コードインスペクション、スクロールバー、バックグラウンド構文チェック、リンクモード、変数の自動命名、XMLベースのツールチップなどの機能を搭載している。さらに、開発者はCtrl+F7で式をウォッチできる。</p> 
+<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>QCon Tokyo 2014 【クラウド/DevOps】 トラックのご紹介</h3><p><a href="http://www.qcontokyo.com/" target="_blank">&nbsp;QCon Tokyo</a>&nbsp;は、最新技術を追い求めるデベロッパのための情報コミュニティ「InfoQ」が主催する、エンジニアによるエンジニアのためのワールドワイド カンファレンスです。 今回のQcon Tokyo 2014 では、クラウド時代の技術動向にこだわって「クラウド/DevOps」カテゴリを設定しています。クラウドが主要なインフラとして台頭する一方、どのように活用してくのか設計、運用時に考慮するべきポイントが多数あります。そこで本トラックでは、クラウドを適切に活用・運用する方法を紹介します。&nbsp;</p>
+<div>
+ まず、海外セッションは、Yahoo Engineering のEugene Ciurana氏によるセッションです。Yahoo!では、リリース後3週間で世界25ヶ国のiOS マーケットで最上位の地位を獲得した
+ <a href="http://matome.naver.jp/odai/2135217781400347501" target="_blank">Summly</a>の開発ノウハウを元にして、モバイルアプリケーションを構築しました。クラウドを活用して、ファイブ・ナイン(99.999%) の可用性システムを低予算で構築した技術について、発端、開発、リリース、進化についてステップごとに解説します。
+</div>
+<div>
+ &nbsp;
+</div>
+<div>
+ 日本のDevOpsセッションは、
+ <a href="http://www.ca.com/jp/default.aspx" target="_blank">日本CA株式会社</a>の西野 寛史氏による「DevとOpsをより良い関係に導く、新世代のアプリケーションテスト」です。開発したアプリケーションの欠陥が原因で本番稼働後に不具合が発生すると、運用側はその対応に膨大な労力を費やすことになります。開発工程のできるだけ早期の段階で如何に充実したテストが行えるかが鍵になります。そして、実現に向けてのヒントは、IT以外のモノづくり現場にありました。新世代のアプリケーションテストとは何か、そしてそれを 実現するために誕生した新技術「サービスの仮想化」についてご紹介します。
+</div>
+<div>
+ &nbsp;
+</div>
+<div>
+ 日本のもう１つのセッションはクラウド開発コンソーシアム「Azure Council Experts」の谷口有近氏と上坂貴志氏による「Enterprise Cloud Design Pattern」です。
+ <a href="http://msdn.microsoft.com/en-us/library/dn568099.aspx" target="_blank">Cloud Design Pattern</a>とは、Microsoft patterns&amp;practicesグループが提供するクラウドでホストされるアプリケーションの共通問題に対する解決パターン集です。エンタープライズでのクラウド適用や、代表的なCloud Design Patternを幾つかピックアップし、お話したいと思います
+</div>
+<div>
+ &nbsp;
+</div>
+<div>
+ クラウドとDevOpsの最新動向方法に夢を膨らませ、ビアパーティーでアイデアを語り合いましょう！
+</div>
+<div>
+ &nbsp;
+</div>
+<blockquote> 
+ <div>
+  ●開催概要
  </div> 
+ <div>
+  &nbsp;
+ </div> 
+ <div>
+  開催日時：2014年4月30日(水) 10:00-19:00 (19:00～ ビアパーティあり)
+ </div> 
+ <div>
+  &nbsp;
+ </div> 
+ <div>
+  会　　　場：アルカディア市ヶ谷
+ </div> 
+ <div>
+  &nbsp;
+ </div> 
+ <div>
+  公式サイト：http://qcontokyo.com/
+ </div> 
+</blockquote>
+<div>
+ &nbsp;
 </div><br><br><br><br><br><br></body></html>

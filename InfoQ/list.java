@@ -2,13 +2,37 @@
  <head></head> 
  <body>
   <div>
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/2.java">Highlights from Microsoft's Build 2014 Opening Keynote</a>The opening keynote for Build 2014 kicked off with several big announcements. Today marked the formal announcement of Windows Phone 8.1 and the soon to be released Windows 8.1 Update.
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/7.java">Microsoft Speeds Up Windows Store Apps with .NET Native</a>.NET Native is an attempt from Microsoft to reduce the start up times and memory footprint of Windows Store applications.
   </div>
   <div>
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/1.java">Introducing Common XAML UI</a>Based on the WinRT API, the Common XAML UI framework will allow the same UI code to be shared on phones, tablets, desktop computers, and eventually Xbox One.
-  </div>
-  <div>
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/0.java">Microsoft Opens Windows to the Universal App: One App for All Platforms</a>Microsoft has formally introduced Windows universal apps, allowing developers to write a single app that will run on all Windows-based devices: phones, tablets, and PCs. This move unifies the platform in a significant way.
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/6.java">Spark Gets a Dedicated Big Data Platform</a>Spark users can now use a new Big Data platform provided by intelligence company Atigeo, which bundles most of the UC Berkeley stack into a unified framework optimized for low-latency data processing that can provide significant improvements over more traditional Hadoop-based platforms.
+  </div> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/6.java">Concerns about Measuring Velocity for Team Improvement</a>Agile teams measure the velocity of their sprints. It helps them to plan and track their progress and provides insight for product owners to plan product releases. Can teams also use velocity data when they want to improve themselves? Several authors have written about velocity and shared their concerns on measuring velocity to improve the productivity of teams. 
+  </div> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/5.java">Android/iOS Testing with Devices as a Service</a>As new combinations of hardware, operating system version, and carrier customizations continue to proliferate, testing mobile devices has grown increasingly challenging. Perfecto Mobile’s solution to this is their “Devices as a Service” offering called MobileCloud. Rather than purchasing all of the devices you need for testing, MobileCloud allows you to rent them on an hourly or monthly basis. 
+  </div> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/4.java">TypeScript 1.0 Released</a>Microsoft's TypeScript language has now reached official 1.0 status and is available for use on several platfroms, including VS2012/VS2013, Eclipse, and in source form. 
+  </div> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/4.java">Visual Basic 6: The Looming Crisis</a>It may come as a surprise to you, but Visual Basic 6 is still a major component of many larger enterprises, especially in the financial sector. And with Windows XP rapidly approaching its end of life companies are again left with the painful question of how to leave it behind. 
+  </div> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/3.java">Patterns and Anti-Patterns for Scalable and Available Cloud Architectures</a>More than anything else, architectural choices matter when designing a system with high scalability and availability. Using Azure customers as an example, Microsoft talks about the patterns and anti-patterns they see with their Azure customers and how it affects the four facets of system architecture. 
+  </div> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/3.java">Future-Proofing Desktop Applications for Hardware Enhancements</a>Though CPUs aren’t getting any faster, other hardware capabilities are rapidly increasing. This is most evident in high DPI displays and the way they shrink legacy applications to the point of illegibility. So for perhaps the first time since the 90’s, future proofing for better monitors is becoming vital. 
+  </div> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/2.java">Highlights from Microsoft's Build 2014 Opening Keynote</a>The opening keynote for Build 2014 kicked off with several big announcements. Today marked the formal announcement of Windows Phone 8.1 and the soon to be released Windows 8.1 Update. 
+  </div> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/1.java">Introducing Common XAML UI</a>Based on the WinRT API, the Common XAML UI framework will allow the same UI code to be shared on phones, tablets, desktop computers, and eventually Xbox One. 
+  </div> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/0.java">Microsoft Opens Windows to the Universal App: One App for All Platforms</a>Microsoft has formally introduced Windows universal apps, allowing developers to write a single app that will run on all Windows-based devices: phones, tablets, and PCs. This move unifies the platform in a significant way. 
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/49.java">RightScale: Top 9 Public and Top 6 Private Clouds</a>RightScale, a service provider across multiple clouds, has published the results of their annual State of Cloud 2014 survey conducted in February of this year. This article highlights some of the most significant findings. 
@@ -126,30 +150,6 @@
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/15.java">Azul ReadyNow! Seeks to Eliminate JVM Warm-up</a>Azul Systems announces the release of ReadyNow! in the latest version of Azul's Zing runtime for Java. Includes a series of algorithms designed to obviate the need for &quot;warming-up&quot; the Java Virtual Machine. 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/15.java">Creating Apps for Samsung Gear with Tizen SDK for Wearable</a>After a first generation of wearable devices built with Android, Samsung decided to bring to market a second wave of devices based on Tizen, the open source mobile operating system developed along with Intel. Now, they have released an SDK for creating applications for such devices. 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/14.java">Amazon AppStream (GA) Apps Run on AWS and Stream to Devices around the World</a>Amazon has made available the AppStream service which enables developers to run an application on AWS, then stream it to various devices. 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/14.java">Audio Interviews on Making Agile Culture Change Stick</a>Following on from the &quot;Individuals and Interactions&quot; interview series Author Gill Broza launched a series titled &quot;A Packing List for your Agile Journey&quot; in which he will interview a variety of commentators, practitioners and authors on what it takes to make an agile transition sustainable in the long term. 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/13.java">Working with Investors as a Lean Startup</a>Entrepreneurs using lean startup can work with investors to raise capital for their business. Business plans from lean startups often differ from traditional startups and lean startup encourages learning from failure and to pivot, which might scare off investors. Can entrepreneurs and investors together use the lean startup approach to do fundraising? 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/12.java">Akka Toolkit 2.3 with Java 8 and Persistence Support</a>Latest version of the Akka toolkit, an implementation of Actor Model, comes with persistence enabling stateful actors to persist their internal state, together with support for Java 8 lambda expressions. 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/11.java">Improving Process with Two Definitions of Done</a>Separate ideal and current versions of Definition of Done can be used in agile teams. The purpose is to expand Definition of Done to grow in maturity and quality. This can be implemented on physical boards as well as on other electronic Agile Tools like Jira. 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/10.java">Domino: Datascience-as-a-Service</a>Domino, a Platform-as-a-Service for data science, enables people to do analytical work using languages such as Python or R in the cloud (EC2). 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/9.java">Java EE 8 Survey Last Call</a>Oracle announces the third final survey on Java EE 8, the next version of Java Enterprise Edition, and the Glassfish reference implementation. 
-  </div>    
+  </div>   
  </body>
 </html>
