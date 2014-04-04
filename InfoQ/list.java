@@ -2,10 +2,31 @@
  <head></head> 
  <body>
   <div>
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/7.java">Microsoft Speeds Up Windows Store Apps with .NET Native</a>.NET Native is an attempt from Microsoft to reduce the start up times and memory footprint of Windows Store applications.
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/13.java">Changes to the Silverlight Runtime for Windows Phone</a>Until now we’ve been focusing on Common XAML, but now our attention turns to Silverlight for Windows Phone. Though Common XAML (i.e. Universal Apps) is meant to eventually replace it, the Silverlight framework is still a viable option for Windows Phone developers.
   </div>
   <div>
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/6.java">Spark Gets a Dedicated Big Data Platform</a>Spark users can now use a new Big Data platform provided by intelligence company Atigeo, which bundles most of the UC Berkeley stack into a unified framework optimized for low-latency data processing that can provide significant improvements over more traditional Hadoop-based platforms.
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/12.java">A Q&amp;A with the XAML Performance Leadership Team</a>This panel discussion mostly covers XAML, but there are still some thoughts on its relationship to WPF and the desktop in general.
+  </div>
+  <div>
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/11.java">C# Compiler Released As Open Source</a>The destination of Microsoft's Roslyn project has been revealed: the rewrite of the C# and VB compilers has been released under an open source license by Microsoft. Not only will users benefit from the improved tooling Roslyn supports, they can also look under the hood to add features or analyze behavior.
+  </div>
+  <div>
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/10.java">What’s New in Azure Networking</a>The new version of Azure brings with it enhanced options for private networks, virtual private networks, and multi-region load balancing.
+  </div> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/10.java">A WPF Q&amp;A</a>A panel of 9 Microsoft desktop developers were available during a lunch time Q&amp;A. This session was not filmed, but we were able to record some of the WPF questions and Microsoft’s answers. 
+  </div> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/9.java">Highlights from Build 2014’s Second Keynote</a>Today felt like a day of housekeeping. Mostly it was about promoting products from preview/beta to production status. There were some big revelations around opening sourcing Roslyn the formation of the .NET Foundation, but even these were just doing what the community has been asking for all along. 
+  </div> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/8.java">Features of the New Windows Phone App Model</a>Windows Phone 8.1 has several features that developers can utilize to improve their apps and provide a better user experience. 
+  </div> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/7.java">Microsoft Speeds Up Windows Store Apps with .NET Native</a>.NET Native is an attempt from Microsoft to reduce the start up times and memory footprint of Windows Store applications. 
+  </div> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/6.java">Spark Gets a Dedicated Big Data Platform</a>Spark users can now use a new Big Data platform provided by intelligence company Atigeo, which bundles most of the UC Berkeley stack into a unified framework optimized for low-latency data processing that can provide significant improvements over more traditional Hadoop-based platforms. 
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/6.java">Concerns about Measuring Velocity for Team Improvement</a>Agile teams measure the velocity of their sprints. It helps them to plan and track their progress and provides insight for product owners to plan product releases. Can teams also use velocity data when they want to improve themselves? Several authors have written about velocity and shared their concerns on measuring velocity to improve the productivity of teams. 
@@ -129,27 +150,6 @@
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/21.java">AngularJS 2.0 Will Target Mobile Apps, Drop Support For Older Browsers</a>&quot;AngularJS 2.0 is a framework for mobile apps&quot; says the AngularJS team. The framework will continue to be supported for desktops, but the primary focus will be on getting the mobile bit right. The goals also include support for EcmaScript 6 along with a transpiler (since browsers don't support ES6 yet). 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/20.java">Vagrant Launches Collaboration Tools for Development Environments</a>DevOps tool provider Vagrant announced significant features in their 1.5 release, including a public image repository and the ability to share access to running environments. The Vagrant Cloud is meant to simplify the discovery and distribution of complete development environments. Vagrant Share lets developers collaborate with others by exposing HTTP or SSH access to these virtual environments. 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/19.java">Bringing Visual Studio's CodeLens Into Focus</a>CodeLens has been a popular feature of VS2013. The forthcoming Update 2 is bring an enhancement to CodeLens called Incoming Changes, designed to make working with multiple code branches on TFS easier. 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/18.java">Managing your Software Debt</a>Software debt exists in different ways. Technical debt is widely known, some other forms are competence debt and quality debt. Software debt can cause product maintenance costs to increase and can depress developers. Several solutions exist to manage software debt. 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/17.java">Android Wear: Details on the Developer Preview</a>Google has announced Android Wear, the anticipated platform for wearable devices, making available the Developer Preview for those enthusiasts that want to get in touch with this new feature or get a head start in making the first applications tailored for such devices. 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/17.java">Oracle Releases Java 8 at EclipseCon</a>Today at EclipseCon, Oracle announced the launch of the Java 8 platform, bringing Lambdas and Streams to the language as well as fixing some long-standing issues with the JVM. Read on to find out more about the release. 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/16.java">Data Warehousing in SQL Server 2014 RTM</a>SQL Server has been released to manufacturing with general availability set for April 1st. Through this week we’ll be covering various aspects of the new release starting with data warehousing. 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/15.java">Azul ReadyNow! Seeks to Eliminate JVM Warm-up</a>Azul Systems announces the release of ReadyNow! in the latest version of Azul's Zing runtime for Java. Includes a series of algorithms designed to obviate the need for &quot;warming-up&quot; the Java Virtual Machine. 
-  </div>   
+  </div>     
  </body>
 </html>

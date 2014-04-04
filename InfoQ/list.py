@@ -1,6 +1,12 @@
 <html>
  <head></head> 
- <body> 
+ <body>
+  <div>
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/43.py">QCon Tokyo 2014 【組込み系/モノづくり】 トラックのご紹介</a>QCon Tokyoのカテゴリのひとつとして「組込み系/モノづくり」トラックをご用意しています。 日本のお家芸ともいえる組込み系ソフトウェアの開発にも今ひしひしと変革の波が押し寄せています。安くて高機能の家電製品や組込み機器を提供すれば飛ぶようにモノが売れる時代は終わり、以下に付加価値を付け、モノとサービスと環境の総合的な組合せによって今までにない体験をいかに提供できるか。スピーディなデリバリと意外性、そして充実した使用感が求められるという新しい次元にモノづくりは突入したといえるでしょう。
+  </div>
+  <div>
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/42.py">QCon Tokyo 2014 【アジャイル/モデリング】 トラックのご紹介</a>QCon Tokyoは、最新技術を追い求めるデベロッパのための情報コミュニティ「InfoQ」が主催する、エンジニアによるエンジニアのためのワールドワイド カンファレンスです。そのカテゴリのひとつとして「アジャイル/モデリング」カテゴリを設定しています。 アジャイルは単純な「試してみた」という段階から、「そのテクニックを使って何をするか」という段階に移行しています。本トラックでは、その「次」を考えていただけるような内容をご用意しました。グリーとサイバーエージェントという、ゲーム業界の注目会社からの両氏が並び立ち、さらに、DevLOVE主催者の人気セッションもあります。
+  </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/41.py">QCon Tokyo 2014 【組込み系／モノづくり】 トラックのご紹介</a>QCon Tokyoのカテゴリのひとつとして「組込み系／モノづくり」トラックをご用意しています。 日本のお家芸ともいえる組込み系ソフトウェアの開発にも今ひしひしと変革の波が押し寄せています。安くて高機能の家電製品や組込み機器を提供すれば飛ぶようにモノが売れる時代は終わり、以下に付加価値を付け、モノとサービスと環境の総合的な組合せによって今までにない体験をいかに提供できるか。スピーディなデリバリと意外性、そして充実した使用感が求められるという新しい次元にモノづくりは突入したといえるでしょう。 
   </div> 
@@ -144,12 +150,6 @@
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/47.py">マップ，HTML5ビューア，高度なバーコードとWindows AzureをサポートするActiveReports 8</a>ComponentOneがActiveReports 8をリリースした。マップ，RSS14Stacked, RSSLimited, MicroPDF417などのバーコード，さらには部分信頼あるいは完全信頼の両環境下でWindows Azureをサポートする。さまざまなモバイルデバイス用に最適化したアプリケーションを開発するためのHTML5ビューアも同梱されている。 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/46.py">DevOps CafeポッドキャストがQCon London 2014 DevOpsトラックを紹介</a>前回のDevOps Cafe Podcats(エピソード47)は，QCon London 2014 DevOpsトラックのプレビューだった。トラックのホストであるManuel Pais, Shane Hasite両氏による各セッションの選択理由の説明に続いて，それぞれの講演者が自身の講演について紹介した。その後は科学的手法の重要性について，あるいはアジャイルの&quot;Done&quot;の定義をDevOpsにどのように適応すべきかなど，さまざまな話題が議論された。 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/45.py">Red HatのJBossチームがWild Fly 8をローンチ - Java EE 7をフルサポート，組み込み可能な新Webサーバを装備</a>Red HatのJBoss部門は本日，WildFly 8の提供開始を発表した。これまではJBoss Application Server(JAS)という名称だったプロダクトだ。このリリースではJava EE7を完全にサポートするとともに，まったく新しいWebサーバであるUndertow，新たなセキュリティ機能，実行中のシステムを更新可能なパッチシステムを備えている。 
-  </div> 
+  </div>   
  </body>
 </html>

@@ -1,1 +1,1 @@
-Microsoft Speeds Up Windows Store Apps with .NET Native
+Changes to the Silverlight Runtime for Windows Phone
