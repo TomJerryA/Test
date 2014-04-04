@@ -2,10 +2,16 @@
  <head></head> 
  <body>
   <div>
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/16.java">Introducing the .NET Foundation</a>Microsoft’s evolution towards a major open source player has reached the next step with the introduction of the .NET Foundation. The purpose of the foundation is to “be the steward of a growing collection of open source technologies for.NET” including ASP.NET MVC, Xamarin Mimekit, and the .NET Compiler Platform.
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/18.java">AlchemyAPI and The State of Deep Learning</a>AlchemyAPI recently announced a taxonomy and a sentiment analysis API based on deep learning that can help transform digital content into ad inventory. IBM, Yahoo, Microsoft, Facebook, Google and others are working in the deep learning space. We take the high level view of what deep learning is all about and what are the key advances throughout the past months in the field.
   </div>
   <div>
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/15.java">Google publishes FarmHash, a new family of hash functions for strings</a>Google has just announced FarmHash, a new family of hash functions for strings. FarmHash is a successor to CityHash, from which it inherits many tricks and techniques. FarmHash has multiple goals and claims to improve CityHash on several accounts.
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/17.java">Node.js Tools for Visual Studio Beta 1</a>Microsoft has just released a beta of Node.js Tools for Visual Studio, also known as NTVS. Notable for this release is support for the free version of Visual Studio, known formally as Visual Studio Express for Web, and TypeScript.
+  </div> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/16.java">Introducing the .NET Foundation</a>Microsoft’s evolution towards a major open source player has reached the next step with the introduction of the .NET Foundation. The purpose of the foundation is to “be the steward of a growing collection of open source technologies for.NET” including ASP.NET MVC, Xamarin Mimekit, and the .NET Compiler Platform. 
+  </div> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/15.java">Google publishes FarmHash, a new family of hash functions for strings</a>Google has just announced FarmHash, a new family of hash functions for strings. FarmHash is a successor to CityHash, from which it inherits many tricks and techniques. FarmHash has multiple goals and claims to improve CityHash on several accounts. 
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/14.java">IDC: The Past, Present and Future of HTML5</a>The recently released IDC study, The Evolving State of HTML5 by Al Hilwa, Research Director for Application Development, attempts to evaluate the advances made so far, the current state and takes a look at the future of HTML5 as a unifying web platform. 
@@ -144,12 +150,6 @@
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/26.java">CouchDB Progresses As IBM Acquires Cloudant</a>IBM announced recently a definite agreement to acquire the major contributor to the CouchDB project, cloud database startup Cloudant. Adding CouchDB to IBM’s arsenal of technologies together with SoftLayer acquisition and MongoDB partnership creates an ecosystem of technologies bringing IBM in direct comparison with Amazon. A comparison of CouchDB, DynamoDB and ObjectRocket shows the strong points 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/25.java">HBase 0.98 Introduces Cell-based Security</a>Apache released HBase 0.98 primarily addressing convergence with Apache Accumulo via cell-based security while resolving over 230 JIRA issues. These new security features are modeled after Accumulo. 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/24.java">EF Gets Public Mapping API, Ability To Handle Commit Failures</a>Entity Framework 6.1 was recently released with several interesting improvements such as better tooling, CommitFailureHandler, IndexAttribute, a Public Mapping API and more. 
   </div>   
  </body>
 </html>
