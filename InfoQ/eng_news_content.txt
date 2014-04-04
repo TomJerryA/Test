@@ -1,14 +1,38 @@
-<p>The recently released IDC study, The Evolving State of HTML5 by Al Hilwa, Research Director&nbsp;for Application Development, attempts to evaluate the advances made so far, the current state and takes a look at the future of HTML5 as a unifying web platform.</p>
-<p>The IDC study notes that HTML5 was initially seen as “as a unifying technology for application development across all client-side platforms.” Apple’s announcement in 2010 to ban Flash from their devices and focus on HTML5 instead set “the tone for such high expectations,” and indeed HTML5 has been backed by major software or hardware players, including Apple, Google, Nokia, BlackBerry, Intel, to name a few. And the author of the study remarks that HTML5 has several compelling advantages, including: “Cross-platform unifier”, “Vendor support and neutrality”, and “Ecosystem traction”.</p>
-<p>Many embraced HTML5 because “the Web is popular and ubiquitous”, many developers have invested heavily in web technologies for the last two decades, and due to the proliferation of open source projects attempting to satisfy the need for tools targeting this platform. But soon enough, some realized the downside of HTML5, the study outlining:</p>
+<p>Microsoft’s evolution towards a major open source player has reached the next step with the introduction of the .NET Foundation. The purpose of the foundation is to “be the steward of a growing collection of open source technologies for.NET”.</p>
+<p>The founding members include six from non-Microsoft companies:</p>
 <ul> 
- <li>Rapid pace of device change – HTML5 has not kept up with the proliferation of new devices introducing all sorts of new features</li> 
- <li>Device and platform fragmentation – each browser and device vendor chooses what HTML5 features to implement</li> 
- <li>Weak mobile browser implementations – the mobile browsers were left behind</li> 
- <li>Inadequate tooling – lack of or immature tooling</li> 
- <li>Developer skill immaturity – lack of developers proficient with the new technology</li> 
+ <li>Miguel de Icaza of Xamarin.</li> 
+ <li>Laurent Bugnion of IdentityMine</li> 
+ <li>Niels Hartvig of Umbraco</li> 
+ <li>Nigel Sampson of Compiled Experience</li> 
+ <li>Anthony von der Hoom of Glimpse</li> 
+ <li>Paul Betts of GitHub</li> 
 </ul>
-<p>As a result, some experienced an “inevitable disillusionment” and dropped HTML5, at least partially, the author mentioning Facebook and LinkedIn which abandoned their HTML5 apps in 2012 and 2013 respectively, opting for native solutions. But others kept the course and have been successful as it is the case of Financial Times.</p>
-<p>The IDC study continues by assessing the current state of the web platform, focusing on video/H.264 and WebRTC. While these components are not an integral part of HTML5 by definition, they do play a major role in the whole web ecosystem. After several years of contention on what video codecs to dominate the web, Hilwa noted that Google has solved its patent disputes with MPEG LA, the H.264 patent custodian, and Cisco has decided to open source its H.264 implementation prompting Mozilla to become a supporter of the most common video format. As a result, IDC expects “the debate in HTML5 video standardization to begin to settle down in 2014 as a result of these developments, though the adoption of H.264 and/or Web into the official standards will likely remain elusive.”</p>
-<p>Regarding WebRTC, Hilwa&nbsp;highlights three issues: Apple and Microsoft’s reluctance to implement the technology, managing and controlling media streams through signaling, and the integration with web video.</p>
-<p>For the near future, 2014-2017, the study anticipates that while HTML5 will progress, the native vs. web controversy will continue, HTML5 failing to displace native applications for mobile devices. HTML5 will “gain significant traction as a technology for several classes of apps” such as “content-based publishing apps for magazines and electronic books” and enterprise apps. Also, hybrid apps will represent a large share of HTML5-based applications over the next years.</p>
+<p>Currently there are 24 projects in the foundation, mostly donated by Microsoft and Xamarin.</p>
+<ul> 
+ <li>.NET API for Hadoop WebClient</li> 
+ <li>.NET Compiler Platform (&quot;Roslyn&quot;)</li> 
+ <li>.NET Map Reduce API for Hadoop</li> 
+ <li>.NET Micro Framework</li> 
+ <li>ASP.NET MVC</li> 
+ <li>ASP.NET SignalR</li> 
+ <li>ASP.NET Web API</li> 
+ <li>ASP.NET Web Pages</li> 
+ <li>Composition (MEF2)</li> 
+ <li>Entity Framework</li> 
+ <li>Linq to Hive</li> 
+ <li>MEF (Managed Extensibility Framework)</li> 
+ <li>OWIN Authentication Middleware</li> 
+ <li>Rx (Reactive Extensions)</li> 
+ <li>Web Protection Library</li> 
+ <li>Windows Azure .NET SDK</li> 
+ <li>Windows Phone Toolkit</li> 
+ <li>WnsRecipe</li> 
+ <li>Xamarin couchbase-lite-net</li> 
+ <li>Xamarin Mailkit</li> 
+ <li>Xamarin Mimekit</li> 
+ <li>Xamarin System.Drawing</li> 
+ <li>Xamarin.Auth</li> 
+ <li>Xamarin.Mobile</li> 
+</ul>
+<p>While the community reaction has been generally positive, one point of contention is the lack of mention for Silverlight or WPF. With Silverlight on the web being completely depreciated and WPF in maintenance mode, developers were hoping Microsoft would open source the aging bits.</p>

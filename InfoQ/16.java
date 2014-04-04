@@ -1,26 +1,38 @@
-<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>Data Warehousing in SQL Server 2014 RTM</h3><p>SQL Server has been released to manufacturing with general availability set for April 1st. Through this week we’ll be covering various aspects of the new release starting with data warehousing. But first a note about pricing.</p>
-<p>Microsoft is heavily pushing a batteries included pricing model. To understand why this is important to them, you have to compare it to the a la carte model used by Oracle. While Oracle starts out as cheaper per processor (10,000 to 23,000 USD), gaining access to all of its features increases the price to 47,500/processor. By contrast SQL Server Enterprise includes off of their on premise offerings at a flat rate of 27,000/processor.</p>
-<p><b>Column Store</b></p>
-<p>Back in September we covered the new <a href="http://www.infoq.com/news/2013/09/Clustered-Columnstore">updatable column store tables</a> and there isn’t anything really new in terms of features since then. We do, however, have more advice on how to use it.</p>
-<p>First and foremost, make sure you have enough data to justify it. Each horizontal partition in a column store table can hold up to one million rows. So if you don’t have tens or hundreds of millions of rows in a single table then this is probably not the technology for you.</p>
-<p>Another thing to consider is access patterns. In a column store, accessing an entire row is relatively expensive compared to a traditional row store. So again, you shouldn’t be using this technology unless you are working with queries that scan ranges.</p>
-<p>The following illustration shows a logical view of a typical query. Notice how entire segments and columns can be eliminated, thus reducing the amount of I/O necessary to process the query.</p>
-<p>In terms of performance, most workloads see a 5 to 10X speed on queries. In one benchmark, they showed a 91% savings in disc space over a traditional table with “customary indexes”.</p>
-<p><img alt="" src="http://www.infoq.com/resource/news/2014/03/SQL-Server-2014-RTM/en/resources/4image1.png" _href="img://4image1.png" _p="true" /></p>
-<p>It should be noted that while column store tables are considered to be part of their “in memory” offering, they use the buffer pool as a cache just like any other table. So unlike a memory optimized table, you don’t have to load the entire table into memory at startup.</p>
-<p><b>Azure Based AlwaysOn Replicas</b></p>
-<p>For a while now it has been possible, but difficult, to use Windows Azure VMs to host <a href="http://weblogs.asp.net/scottgu/archive/2013/08/12/windows-azure-general-availability-of-sql-server-always-on-support-and-notification-hubs-autoscale-improvements-more.aspx">AlwaysOn Replicas</a>. These read-only, synchronized version of the database can geographically dispersed in order to improve latency and throughput for data consumers much like a CDN is used for static website files. And because they are cloud based, one can theoretically spin up new servers during peak demand months rather than having onsite hardware that lies fallow during the off season.</p>
-<p>The major change in SQL Server 2014 comes from the tooling. A wizard inside SQL Server Management Studio will guide administrators through the process of selecting a VM size and loading the appropriate encryption keys.</p>
-<p><img alt="" src="http://www.infoq.com/resource/news/2014/03/SQL-Server-2014-RTM/en/resources/image2.png" _href="img://image2.png" _p="true" /></p>
-<p>In order to encourage more use of this service, Microsoft is only charging for the VM, storage, and outbound traffic. Ingress traffic from the on premise SQL Server to the Azure Replica is free.</p>
-<p>When setting up an AlwaysOn Replica, choosing the correct synchronization mode is really important. Asynchronously updating the replicas makes writes to the master database faster, but can result in reads of stale data. For analytics where one is looking over weeks, months, or years of data that shouldn’t be an issue. This makes it a good fit for hosting column store data.</p>
-<p>Conversely, synchronous updates allow for accurate reporting of OLTP data. But if there is a significant amount of latency between the master and replica databases there could be serious performance problems. So you shouldn’t use this option for geographically dispersed replicas.</p>
-<p><b>Hybrid Databases and Data Archiving</b></p>
-<p>A new feature of SQL Server is the ability to create truly hybrid databases. While SQL Server itself runs either on premise or on an Azure VM, some or all of its data files are hosted in Windows Azure Storage.</p>
-<p><img alt="" src="http://www.infoq.com/resource/news/2014/03/SQL-Server-2014-RTM/en/resources/image3.png" _href="img://image3.png" _p="true" /></p>
-<p>With a sufficiently large buffer pool and a read-heavy workload, this feature is expected to offer good performance. But since latency can be an issue, this feature should mostly be used when you need to work with archival data. For example, if you want to run analytics over sales receipts for the last ten years but don’t want to take up expensive SAN space.</p>
-<p><b>Windows Azure Express Route </b></p>
-<p>One way to mitigate latency issues is by using <a href="http://www.windowsazure.com/en-us/pricing/details/expressroute/">Windows Azure Express Route</a>. Rather than tunneling through the Internet with a VPN, this service offers a dedicated connection between an Azure data center and your local infrastructure.</p>
-<p>For an Exchange Provider provides a 1 Gbps and a 10 Gbps tier that cost 600 and 10,000 USD per month respectively. In addition there is a 0.070/GB fee for outbound traffic in excess of 15/250 TB per month.</p>
-<p>Network Service Providers offer a different pricing model. It starts at 600 per month for 10 Mbps and ranges up to 12,000 per month for 1 Gbps. However, there is no charge for traffic in either direction.</p>
-<p>Note that the prices on the website currently reflect a 50% preview discount.</p><br><br><br><br><br><br></body></html>
+<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>Introducing the .NET Foundation</h3><p>Microsoft’s evolution towards a major open source player has reached the next step with the introduction of the <a href="http://www.dotnetfoundation.org/">.NET Foundation</a>. The purpose of the foundation is to “be the steward of a growing collection of open source technologies for.NET”.</p>
+<p>The founding members include six from non-Microsoft companies:</p>
+<ul> 
+ <li>Miguel de Icaza of Xamarin.</li> 
+ <li>Laurent Bugnion of IdentityMine</li> 
+ <li>Niels Hartvig of Umbraco</li> 
+ <li>Nigel Sampson of Compiled Experience</li> 
+ <li>Anthony von der Hoom of Glimpse</li> 
+ <li>Paul Betts of GitHub</li> 
+</ul>
+<p>Currently there are 24 projects in the foundation, mostly donated by Microsoft and Xamarin.</p>
+<ul> 
+ <li><a href="http://hadoopsdk.codeplex.com/">.NET API for Hadoop WebClient</a></li> 
+ <li><a href="http://roslyn.codeplex.com/">.NET Compiler Platform (&quot;Roslyn&quot;)</a></li> 
+ <li><a href="http://hadoopsdk.codeplex.com/">.NET Map Reduce API for Hadoop</a></li> 
+ <li><a href="http://netmf.codeplex.com/">.NET Micro Framework</a></li> 
+ <li><a href="http://aspnetwebstack.codeplex.com/">ASP.NET MVC</a></li> 
+ <li><a href="https://github.com/SignalR/SignalR">ASP.NET SignalR</a></li> 
+ <li><a href="http://aspnetwebstack.codeplex.com/">ASP.NET Web API</a></li> 
+ <li><a href="http://aspnetwebstack.codeplex.com/">ASP.NET Web Pages</a></li> 
+ <li><a href="http://mef.codeplex.com/">Composition (MEF2)</a></li> 
+ <li><a href="http://entityframework.codeplex.com/">Entity Framework</a></li> 
+ <li><a href="http://hadoopsdk.codeplex.com/">Linq to Hive</a></li> 
+ <li><a href="http://mef.codeplex.com/">MEF (Managed Extensibility Framework)</a></li> 
+ <li><a href="http://katanaproject.codeplex.com/SourceControl/latest#src/Microsoft.Owin.Security.Google/GoogleOAuth2AuthenticationMiddleware.cs">OWIN Authentication Middleware</a></li> 
+ <li><a href="https://rx.codeplex.com/">Rx (Reactive Extensions)</a></li> 
+ <li><a href="http://wpl.codeplex.com/">Web Protection Library</a></li> 
+ <li><a href="https://github.com/WindowsAzure/azure-sdk-for-net">Windows Azure .NET SDK</a></li> 
+ <li><a href="http://phone.codeplex.com/">Windows Phone Toolkit</a></li> 
+ <li><a href="https://github.com/nickharris/WnsRecipe">WnsRecipe</a></li> 
+ <li><a href="https://github.com/xamarin/couchbase-lite-net">Xamarin couchbase-lite-net</a></li> 
+ <li><a href="https://github.com/jstedfast/MailKit">Xamarin Mailkit</a></li> 
+ <li><a href="https://github.com/jstedfast/MimeKit">Xamarin Mimekit</a></li> 
+ <li><a href="https://github.com/mono/mono/tree/master/mcs/class/System.Drawing">Xamarin System.Drawing</a></li> 
+ <li><a href="https://github.com/xamarin/Xamarin.Auth">Xamarin.Auth</a></li> 
+ <li><a href="https://github.com/xamarin/Xamarin.Mobile">Xamarin.Mobile</a></li> 
+</ul>
+<p>While the community reaction has been generally positive, one point of contention is the lack of mention for Silverlight or WPF. With Silverlight on the web being completely depreciated and WPF in maintenance mode, developers were hoping Microsoft would open source the aging bits.</p><br><br><br><br><br><br></body></html>

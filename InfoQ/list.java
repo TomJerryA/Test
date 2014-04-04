@@ -2,7 +2,13 @@
  <head></head> 
  <body>
   <div>
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/14.java">IDC: The Past, Present and Future of HTML5</a>The recently released IDC study, The Evolving State of HTML5 by Al Hilwa, Research Director for Application Development, attempts to evaluate the advances made so far, the current state and takes a look at the future of HTML5 as a unifying web platform.
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/16.java">Introducing the .NET Foundation</a>Microsoft’s evolution towards a major open source player has reached the next step with the introduction of the .NET Foundation. The purpose of the foundation is to “be the steward of a growing collection of open source technologies for.NET” including ASP.NET MVC, Xamarin Mimekit, and the .NET Compiler Platform.
+  </div>
+  <div>
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/15.java">Google publishes FarmHash, a new family of hash functions for strings</a>Google has just announced FarmHash, a new family of hash functions for strings. FarmHash is a successor to CityHash, from which it inherits many tricks and techniques. FarmHash has multiple goals and claims to improve CityHash on several accounts.
+  </div> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/14.java">IDC: The Past, Present and Future of HTML5</a>The recently released IDC study, The Evolving State of HTML5 by Al Hilwa, Research Director for Application Development, attempts to evaluate the advances made so far, the current state and takes a look at the future of HTML5 as a unifying web platform. 
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/13.java">Changes to the Silverlight Runtime for Windows Phone</a>Until now we’ve been focusing on Common XAML, but now our attention turns to Silverlight for Windows Phone. Though Common XAML (i.e. Universal Apps) is meant to eventually replace it, the Silverlight framework is still a viable option for Windows Phone developers. 
@@ -144,12 +150,6 @@
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/24.java">EF Gets Public Mapping API, Ability To Handle Commit Failures</a>Entity Framework 6.1 was recently released with several interesting improvements such as better tooling, CommitFailureHandler, IndexAttribute, a Public Mapping API and more. 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/23.java">Object Oriented Design Principles and Functional Programming</a>Independently from each other, Richard Warburton in a presentation, and Mark Seemann in a blog post both talks about object-orientation and the SOLID design principles from a functional programming perspective. 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/22.java">Using Sigma for Drawing Graphs</a>The team behind Sigma, a JavaScript library dedicated to drawing graphs in Web applications, released a new version of this tool. What this library provides is a way for developers to create graphs while making networks manipulation on webpages smooth and faster for the user. 
-  </div>  
+  </div>   
  </body>
 </html>
