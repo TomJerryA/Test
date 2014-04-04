@@ -1,17 +1,17 @@
 <html>
  <head></head> 
- <body>
-  <div>
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/13.java">Changes to the Silverlight Runtime for Windows Phone</a>Until now we’ve been focusing on Common XAML, but now our attention turns to Silverlight for Windows Phone. Though Common XAML (i.e. Universal Apps) is meant to eventually replace it, the Silverlight framework is still a viable option for Windows Phone developers.
-  </div>
-  <div>
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/12.java">A Q&amp;A with the XAML Performance Leadership Team</a>This panel discussion mostly covers XAML, but there are still some thoughts on its relationship to WPF and the desktop in general.
-  </div>
-  <div>
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/11.java">C# Compiler Released As Open Source</a>The destination of Microsoft's Roslyn project has been revealed: the rewrite of the C# and VB compilers has been released under an open source license by Microsoft. Not only will users benefit from the improved tooling Roslyn supports, they can also look under the hood to add features or analyze behavior.
-  </div>
-  <div>
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/10.java">What’s New in Azure Networking</a>The new version of Azure brings with it enhanced options for private networks, virtual private networks, and multi-region load balancing.
+ <body> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/13.java">Changes to the Silverlight Runtime for Windows Phone</a>Until now we’ve been focusing on Common XAML, but now our attention turns to Silverlight for Windows Phone. Though Common XAML (i.e. Universal Apps) is meant to eventually replace it, the Silverlight framework is still a viable option for Windows Phone developers. 
+  </div> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/12.java">A Q&amp;A with the XAML Performance Leadership Team</a>This panel discussion mostly covers XAML, but there are still some thoughts on its relationship to WPF and the desktop in general. 
+  </div> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/11.java">C# Compiler Released As Open Source</a>The destination of Microsoft's Roslyn project has been revealed: the rewrite of the C# and VB compilers has been released under an open source license by Microsoft. Not only will users benefit from the improved tooling Roslyn supports, they can also look under the hood to add features or analyze behavior. 
+  </div> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/10.java">What’s New in Azure Networking</a>The new version of Azure brings with it enhanced options for private networks, virtual private networks, and multi-region load balancing. 
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/10.java">A WPF Q&amp;A</a>A panel of 9 Microsoft desktop developers were available during a lunch time Q&amp;A. This session was not filmed, but we were able to record some of the WPF questions and Microsoft’s answers. 
@@ -150,6 +150,6 @@
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/21.java">AngularJS 2.0 Will Target Mobile Apps, Drop Support For Older Browsers</a>&quot;AngularJS 2.0 is a framework for mobile apps&quot; says the AngularJS team. The framework will continue to be supported for desktops, but the primary focus will be on getting the mobile bit right. The goals also include support for EcmaScript 6 along with a transpiler (since browsers don't support ES6 yet). 
-  </div>     
+  </div> 
  </body>
 </html>

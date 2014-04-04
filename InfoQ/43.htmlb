@@ -1,230 +1,40 @@
-<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>Docker：利用Linux容器实现可移植的应用部署</h3><p><a href="http://docker.io">Docker</a>是一种在Linux<strong>容器</strong>里运行应用的开源工具，一种轻量级的虚拟机。除了运行应用，Docker还提供了一些工具，借助<a href="http://index.docker.io">Docker Index</a>或自己托管的Docker注册表对进行了集装箱化处理的应用进行分发，从而简化复杂应用的部署过程。</p>
-<p>我将在本文介绍如今在部署复杂系统时公司所面临的挑战，Docker怎样有效地解决这个问题，以及Docker的其他用例。</p>
-<h2>部署的挑战</h2>
-<p>服务器应用的部署已经越来越复杂了。把几个Perl脚本拷贝到正确目录就完成服务器应用的安装，这种时代已经一去不复返了。如今的软件有很多类型的需求：</p>
-<ul> 
- <li>对已安装软件和库的依赖（“Python版本高于2.6.3，使用Django 1.2”）</li> 
- <li>依赖于正在运行的服务（“需要一个MySQL 5.5数据库和一个RabbitMQ队列”）</li> 
- <li>依赖于特定的操作系统（“在64位的Ubuntu Linux 12.04上构建、测试”）</li> 
- <li>资源需求： 
-  <ul> 
-   <li>最小的可用内存（“需要1GB的可用内存”）</li> 
-   <li>能绑定特定的端口（“绑定80和443端口”）</li> 
-  </ul> </li> 
-</ul>
-<p>我们来看一个相对简单的应用的部署：<a href="http://www.wordpress.org">Wordpress</a>。Wordpress的安装通常要求：</p>
-<ul> 
- <li>Apache 2</li> 
- <li>PHP 5</li> 
- <li>MySQL</li> 
- <li>Wordpress源码</li> 
- <li>一个Wordpress MySQL数据库，配置Wordpress使用该数据库</li> 
- <li>Apache的配置： 
-  <ul> 
-   <li>加载PHP模块</li> 
-   <li>支持URL重写和<tt>.htaccess</tt>文件</li> 
-   <li>指向WordPress源码的<tt>DocumentRoot</tt></li> 
-  </ul> </li> 
-</ul>
-<p>在服务器上部署、运行这样一个系统，我们可能会遇到下面的问题和挑战：</p>
-<ol> 
- <li><strong>隔离性：</strong>如果我们已经在这个服务器上部署了不同的网站，已有的网站只能在<a href="http://nginx.org/">nginx</a>上运行，而Wordpress依赖于Apache，这时我们就会有麻烦：它们都监听80端口。同时运行两个网站是可以的，但需要调整配置（修改监听端口），设置反向代理等。库级别也会出现类似的冲突，如果还要运行一个仍然依赖PHP4的老应用就会出问题，因为Wordpress不再支持PHP4，同时运行PHP4和PHP5则非常困难。运行在同一个服务器上的应用没有互相<strong>隔离</strong>（在文件系统级别和网络级别），所以它们可能会互相冲突。</li> 
- <li><strong>安全性：</strong><strong>Wordpress</strong>的安全记录并不是非常好。所以还是给它创建个沙箱，至少黑客入侵时不会影响其他运行的应用。</li> 
- <li><strong>升级、降级：</strong>升级应用一般会覆盖现有文件。升级过程中会发生什么？系统要关闭么？如果升级失败，或者不对该怎么办？我们怎样快速回退到先前的版本？</li> 
- <li><strong>快照、备份：</strong>一旦所有的内容都设置好，就给系统创建一个“快照”，以便能备份快照，甚至能移到另一个服务器上再次启动，或者拷贝到多个服务器上以备不时之需。</li> 
- <li><strong>重复性：</strong>系统出新版本之后，比较好的做法是先在测试基础设施上自动部署并测试，然后再发布到生产系统。通常会利用诸如<a href="http://www.opscode.com/chef/">Chef</a>、<a href="https://puppetlabs.com/">Puppet</a>等工具在服务器上自动安装一堆包，等一切内容都就绪后，再在生产系统上运行相同的部署脚本。这在百分之九十九的情况下都没有问题。但有百分之一的例外，在部署到测试环境和生产环境之间的时间跨度里，你依赖的包在包仓库里有了更新，而新版本并不兼容。结果生产环境的设置和测试环境不同，还有可能破坏生产系统。假如没有控制部署的每一个方面（例如托管自己的APT或YUM仓库），持续在多个阶段（比如测试、预演、生产环境）<strong>重复搭建</strong>出完全相同的系统就很困难。</li> 
- <li><strong>资源限制：</strong>如果我们的Wordpress耗费CPU资源，并占用了所有的CPU周期，导致其他应用无法做任何事情怎么办？如果它用尽了全部可用的内存呢？或者疯狂写日志阻塞磁盘呢？要是能限制应用的可用资源，比如CPU、内存和磁盘空间，就会非常方便。</li> 
- <li><strong>易于安装：</strong>也许有Debian或CentOS包，抑或是能自动执行所有复杂步骤并安装Wordpress的Chef菜谱。但这些菜谱很难稳定下来，因为它们需要考虑目标系统上可能的系统配置。很多情况下，这些菜谱只能在干净的系统上运行。因此，你不太可能更换成自己的包或Chef菜谱。这样的话，安装就是个复杂的系统工程，而不是午休期间就能搞定的事情。</li> 
- <li><strong>易于移除：</strong>软件应该能轻松、干净地移除，不留痕迹。但部署应用通常要调整已有的配置文件、设置状态（MySQL数据库的数据，日志），完全移除应用也变得不那么容易。</li> 
-</ol>
-<p>那我们应该如何解决这些问题呢？</p>
+<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>用Kiji构建实时、个性化推荐系统</h3><p>现在网上到处都有推荐。亚马逊等主流电子商务网站根据它们的页面属性以各种形式向用户推荐产品。Mint.com之类的财务规划网站为用户提供很多建议，比如向用户推荐他们可能想要办理的信用卡，可以提供更好利率的银行。谷歌根据用户搜索历史记录的信息优化搜索结果，找到相关性更高的结果。</p>
+<p>这些知名公司使用推荐提供情境化的、有相关性的用户体验，以提高转化率和用户满意度。这些建议原来一般由每天晚上、每周或每月生成新推荐的批处理作业计算提供。</p>
+<p>然而对于某些类型的推荐，响应时间有必要比批量处理作业所需的时间更短，比如为消费者提供基于地理位置的推荐。比如电影推荐系统，若用户先前看过动作片，但现在要找一部喜剧片，批量推荐很可能会给出更多动作片，而不是最相关的喜剧片。本文将会介绍如何使用Kiji框架，它是一个用来构建大数据应用和实时推荐系统的开源框架。</p>
+<h2>Kiji，以实体为中心数据和360度视角</h2>
+<p>要构建实时推荐系统，首先需要一个能存储<a href="http://www.kiji.org/enabling-360-view-with-entity-centric-storage">360视角</a>客户的系统。此外，我们需要具备迅速获取与指定用户相关数据的能力，以便在用户与网站和移动应用交互时做出推荐。 Kiji是一个构建实时应用的模块化开源框架，它收集，存储和分析这类数据。</p>
+<p>一般情况下，一个360度视图所需的数据可以被称为以实体为中心的数据。一个实体可以是任意数量的东西，比如客户、用户、帐户，或者POS系统或移动设备之类更抽象的东西。</p>
+<p>一个<a href="http://docs.kiji.org/userguides/schema/1.3.2/data-model/">以实体为中心的存储系统</a>要能在一行数据中存储与某个特定实体有关的一切信息。这对传统的关系型数据库来说是个挑战，因为这些信息可能既有状态型数据（如姓名，电子邮件地址等）又有事件流（如点击）。传统的系统需要把这些数据存放在多张表中，处理时再把这些表联接起来，这使得它很难做到实时处理。为了解决这个问题，Kiji用了Apache HBase，它在四个维度 - 行、列族、列标识和时间戳-存储数据。借助时间戳维度和HBase存储多个版本Cell的能力，Kiji能够存储有更多状态的缓慢变化的事件流数据。</p>
 <div id="lowerFullwidthVCR"></div>
-<h2>虚拟机！</h2>
-<p>我们决定在单独的虚拟机上运行独立的应用，例如<a href="http://aws.amazon.com/ec2/">Amazon的EC2</a>，大部分问题这时会迎刃而解：</p>
-<ol> 
- <li><strong>隔离性：</strong>在一个VM上安装一个应用，应用是完全独立的，除非它们攻入了对方的防火墙。</li> 
- <li><strong>重复性：</strong>用你喜欢的方式准备系统，然后创建一个AMI。你可以随意实例化多个AMI实例。完全是可重现的。</li> 
- <li><strong>安全性：</strong>由于我们完全隔离，如果Wordpress遭到攻击，其余的基础设施并不会受到影响——除非你没有保管好SSH密钥或者在哪里都使用同一个密码，但你应该不会这么做吧？</li> 
- <li><strong>资源限制：</strong>VM会分配特定的CPU周期、可用内存和磁盘空间，没有加价的话就不能超额。</li> 
- <li><strong>易于安装：</strong>越来越多的应用能够在EC2上运行，只要在<a href="https://aws.amazon.com/marketplace">AWS marketplace</a>上点击一个按钮就能实例化应用。启动只需要几分钟，就是这样。</li> 
- <li><strong>易于移除：</strong>不需要某个应用了？销毁VM。干净又方便。</li> 
- <li><strong>升级、降级：</strong><a href="http://www.infoq.com/cn/news/2013/06/netflix">Netflix如何部署代码</a>里提到，只需要在新VM上部署新版本，然后让负载均衡器指向部署了新版本的VM。<strong>不过</strong>应用如果需要在本地保存状态，这种方法就不是很好用了。</li> 
- <li><strong>快照、备份：</strong>点击一个按钮（或者调用一下API）就能获得EBS磁盘的快照，快照会备份到<a href="http://aws.amazon.com/s3">S3</a>中。</li> 
-</ol>
-<p>完美！</p>
-<p>不过……我们有个新问题：虚拟机在两个方面比较<strong>昂贵</strong>：</p>
-<ul> 
- <li><strong>金钱：</strong>你真的有那么多钱为每个应用启动一个EC2实例？另外你能预测到需要多少个实例么？如果你以后需要更多的资源，你需要停止VM进行升级——否则就要为闲置资源白白付钱，直到真正用起来（除非你用能动态调整大小的Solaris Zones，比如<a href="http://www.joyent.com/">Joyent</a>上的）。</li> 
- <li><strong>时间：</strong>虚拟机相关的操作大多都很慢：启动要几分钟，捕捉快照要几分钟，创建镜像也需要几分钟。世界不停转动，我们可没有这种时间！</li> 
-</ul>
-<p>我们能做得更好吗？</p>
-<p>进入<a href="http://docker.io">Docker</a>的世界吧。</p>
-<p><a href="http://docker.io">Docker</a>是由公共PaaS提供商<a href="https://www.dotcloud.com">dotCloud</a>的人发起的开源项目，<a href="http://www.infoq.com/cn/news/2013/04/Docker">于去年初发起</a>。从技术角度来说，Docker（主要用<a href="http://golang.org">Go</a>语言编写）试图简化两种已有技术的使用：</p>
-<ul> 
- <li><a href="http://lxc.sourceforge.net/">LXC：Linux容器</a>，允许独立进程在比普通Unix进程更高的隔离级别上运行。使用的技术术语是<strong>集装箱化</strong>：一个<strong>容器</strong>里运行一个进程。容器支持的隔离级别有： 
-  <ul> 
-   <li>文件系统：容器只能访问自己的沙箱文件系统（类似于<a href="http://en.wikipedia.org/wiki/Chroot">chroot</a>），否则要<a href="http://docs.docker.io/en/latest/commandline/command/run/">专门挂载</a>到容器的文件系统中才能访问。</li> 
-   <li>用户名字空间：容器有自己的用户数据库（也就是容器的root不等于主机的root账户）。</li> 
-   <li>进程名字空间：只有容器里的进程才是可见的（<tt>ps aux</tt>的输出会非常简洁）。</li> 
-   <li>网络名字空间：每个容器都有自己的虚拟网络设备和虚拟IP（因此它可以绑定任意端口，不用占用主机端口）。</li> 
-  </ul> </li> 
- <li><a href="http://aufs.sourceforge.net/">AUFS：高级多层的统一文件系统</a>，可用来创建联合、写时拷贝的文件系统。</li> 
-</ul>
-<p>Docker可以安装在任何支持AUFS和内核版本大于等于3.8的Linux系统上。但从概念上来说它并不依赖于这些技术，以后也可以和类似的技术一起运行，例如<a href="http://www.oracle.com/technetwork/server-storage/solaris/containers-169727.html">Solaris的Zones</a>或<a href="http://www.freebsd.org/doc/en_US.ISO8859-1/books/handbook/jails.html">BSD jails</a>，并将<a href="http://en.wikipedia.org/wiki/ZFS">ZFS</a>作为文件系统。不过目前只能选择Linux 3.8+和AUFS。</p>
-<p>那Docker为什么有意思呢？</p>
-<ul> 
- <li>Docker非常<strong>轻量</strong>。启动VM是个大动作，需要占用大量内存；而启动Docker容器只耗费很少的CPU和内存，并且非常快。几乎和启动一个常规进程没什么区别。不仅运行容器快，构建镜像、捕获文件系统的快照也很快。</li> 
- <li>它运行在<strong>已经虚拟化过的环境</strong>中。也就是说，你可以在EC2实例、Rackspace VM或VirtualBox里运行Docker。事实上，在Mac和Windows上使用Docker的首选方式是<a href="http://docs.docker.io/en/latest/installation/vagrant/">使用Vagrant</a>。</li> 
- <li>Docker容器<strong>能移植到</strong>任何运行Docker的操作系统上。无论是Ubuntu还是CentOS，只要Docker运行着，你的容器就能运行。</li> 
-</ul>
-<p>让我们回到前面的部署、操作问题列表，看看Docker是怎么解决的：</p>
-<ol> 
- <li><strong>隔离性：</strong>Docker在文件系统和网络级别隔离了应用。从这个意义上来讲很像在运行”真正的“虚拟机。</li> 
- <li><strong>重复性：</strong>用你喜欢的方式准备系统（登录并在所有软件里执行<tt>apt-get<tt>命令，或者使用<a href="http://docs.docker.io/en/latest/use/builder/">Dockerfile</a>），然后把修改提交到镜像中。你可以随意实例化若干个实例，或者把镜像传输到另一台机器，完全重现同样的设置。</tt></tt></li> 
- <tt><tt> 
-   <ul> 
-    <li><strong>安全性：</strong>Docker容器比普通的进程隔离更为安全。Docker团队<a href="http://blog.docker.io/2013/08/containers-docker-how-secure-are-they/">已经确定了一些安全问题</a>，正在着手解决。</li> 
-    <li><strong>资源约束：</strong>Docker现在能限制CPU的使用率和内存用量。目前还不能直接限制磁盘的使用情况。</li> 
-    <li><strong>易于安装：</strong>Docker有一个<a href="https://index.docker.io/">Docker Index</a>，这个仓库存储了现成的Docker镜像，你用一条命令就可以完成实例化。比如说，要使用Clojure REPL镜像，只要运行<tt>docker run -t -i zefhemel/clojure-repl</tt>命令就能自动获取并运行该镜像。</li> 
-    <li><strong>易于移除：</strong>不需要应用了？销毁容器就行。</li> 
-    <li><strong>升级、降级：</strong>和EC2 VM一样：先启动应用的新版本，然后把负载均衡器切换到新的端口。</li> 
-    <li><strong>快照、备份：</strong>Docker能提交镜像并给镜像打标签，和EC2上的快照不同，Docker是<strong>立即处理的</strong>。</li> 
-   </ul> </tt></tt>
-</ol>
-<h2>怎么使用Docker</h2>
-<p>假设你已经安装了Docker。要在Ubuntu容器中运行bash，只要执行：</p>
-<pre>
-docker run -t -i ubuntu /bin/bash</pre>
-<p>根据“ubuntu”镜像的下载情况，Docker会选择下载或者使用本地可用的拷贝，然后在Ubuntu容器里运行<tt>/bin/bash</tt>。接着你就能在容器里执行几乎所有典型的Ubuntu操作，比如安装新的包。</p>
-<p>我们来安装个“hello”：</p>
-<pre>
-$ docker run -t -i ubuntu /bin/bash
-<span style="text-decoration: underline;">root@78b96377e546:/#</span> apt-get install hello
-Reading package lists... Done
-Building dependency tree... Done
-The following NEW packages will be installed:
-  hello
-0 upgraded, 1 newly installed, 0 to remove and 0 not upgraded.
-Need to get 26.1 kB of archives.
-After this operation, 102 kB of additional disk space will be used.
-Get:1 http://archive.ubuntu.com/ubuntu/ precise/main hello amd64 2.7-2 [26.1 kB]
-Fetched 26.1 kB in 0s (390 kB/s)
-debconf: delaying package configuration, since apt-utils is not installed
-Selecting previously unselected package hello.
-(Reading database ... 7545 files and directories currently installed.)
-Unpacking hello (from .../archives/hello_2.7-2_amd64.deb) ...
-Setting up hello (2.7-2) ...
-<span style="text-decoration: underline;">root@78b96377e546:/#</span> hello
-Hello, world!
-</pre>
-<p>现在退出，然后再运行一次相同的Docker命令：</p>
-<pre><span style="text-decoration: underline;">root@78b96377e546:/#</span> exit
-exit
-$ docker run -t -i ubuntu /bin/bash
-<span style="text-decoration: underline;">root@e5e9cde16021:/#</span> hello
-bash: hello: command not found</pre>
-<p>怎么了？我们美丽的hello命令哪儿去了？事实上我们刚刚根据干净的Ubuntu镜像启动了一个<strong>新的</strong>容器。要继续先前那个，我们必须把它<strong>提交</strong>到<strong>仓库</strong>中。我们退出这个容器，看看先前启动容器的ID是什么：</p>
-<pre>
-$ docker ps -a
-ID                  IMAGE                   COMMAND                CREATED              STATUS              PORTS
-e5e9cde16021        ubuntu:12.04            /bin/bash              About a minute ago   Exit 127
-78b96377e546        ubuntu:12.04            /bin/bash              2 minutes ago        Exit 0</pre>
-<p><tt>docker ps</tt>命令能列出当前运行的容器，<tt>docker ps -a</tt>还会显示已经退出的容器。每个容器都有一个唯一的ID，类似于Git提交哈希值。命令也列出了容器基于的镜像、运行的命令、创建时间、当前状态，以及容器暴露的端口和与主机端口之间的映射。</p>
-<p>上面那个是我们第二次启动的容器，不包含“hello”；下面那个是我们想重用的，所以我们提交一下，再创建一个新的容器：</p>
-<pre>
-$ docker commit 78b96377e546 zefhemel/ubuntu
-356e4d516681
-$ docker run -t -i zefhemel/ubuntu /bin/bash
-<span style="text-decoration: underline;">root@0d7898bbf8cd:/#</span> hello
-Hello, world!</pre>
-<p>我用容器ID把容器提交到了仓库中。仓库类似于Git仓库，包含一或多个打了标签的镜像。如果像我一样没有指定标签名称，标签会被命名为“latest”。运行<tt>docker images</tt>命令可以查看本地安装的所有镜像。</p>
-<p>Docker提供了一些基础镜像（比如<tt>ubuntu</tt>和<tt>centos</tt>），你也可以创建自己的镜像。用户仓库的命名模型和<a href="http://github.com">Github</a>的类似：<a href="https://index.docker.io/account/signup/">Docker用户名</a>后面跟一个斜线，然后再跟仓库名称。</p>
-<p>前面创建Docker镜像的方式并不是特别正规，你可以试试。更简洁的方式是使用<tt>Dockerfile</tt>。</p>
-<h2>使用Dockerfile构建镜像</h2>
-<p><tt>Dockerfile</tt>是个简单的文本文件，介绍了如何从基础镜像构建镜像。我在<a href="https://github.com/zefhemel/docker-images">Github上提供了几个</a>Dockerfile。下面的文件用来运行、安装SSH服务器：</p>
-<pre>
-FROM ubuntu
-RUN apt-get update
-RUN apt-get install -y openssh-server
-RUN mkdir /var/run/sshd
-RUN echo &quot;root:root&quot; | chpasswd
-EXPOSE 22</pre>
-<p>上面的内容一目了然。<tt>FROM</tt>命令定义了基础镜像，基础镜像可以是官方的，也可以是我们刚刚创建的<tt>zefhemel/ubuntu</tt>。<tt>RUN</tt>命令用来配置镜像。在这里，我们更新了APT包仓库，安装了openssh-server，创建了一个目录，然后给我们的root账户设置了一个再简单不过的密码。<tt>EXPOSE</tt>命令会向外暴露22端口（SSH端口）。接下来看看如何构建并实例化这个Dockerfile。</p>
-<p>第一步是构建一个镜像。在包含Dockerfile的目录下运行：</p>
-<pre>
-$ docker bui ld -t zefhemel/ssh .</pre>
-<p>这会创建一个<tt>zefhemel/ssh</tt>仓库，包含我们新的SSH镜像。如果创建成功，就能进行实例化了：</p>
-<pre>
-$ docker run -d zefhemel/ssh /usr/sbin/sshd -D</pre>
-<p>和前面的命令不一样。<tt>-d</tt>表示会在后台运行容器，而不是运行bash，所以我们用前台模式（用<tt>-D</tt>参数指定）运行了<tt>sshd</tt>守护进程。</p>
-<p>让我们检查运行中的容器，看看命令做了些什么：</p>
-<pre>
-$ docker ps
-ID                  IMAGE                   COMMAND                CREATED             STATUS              PORTS
-23ee5acf5c91        zefhemel/ssh:latest     /usr/sbin/sshd -D      3 seconds ago       Up 2 seconds        49154-&gt;22
-</pre>
-<p>可以看到我们的容器启动着。PORTS头下的内容比较有意思。由于我们<tt>EXPOSE</tt>了22端口，这个端口现在映射到了主机系统的一个端口（这里是49154）。让我们看看它能否运行。</p>
-<pre>
-$ ssh root@localhost -p 49154
-The authenticity of host '[localhost]:49154 ([127.0.0.1]:49154)' can't be established.
-ECDSA key fingerprint is f3:cc:c1:0b:e9:e4:49:f2:98:9a:af:3b:30:59:77:35.
-Are you sure you want to continue connecting (yes/no)? yes
-Warning: Permanently added '[localhost]:49154' (ECDSA) to the list of known hosts.
-root@localhost's password: &lt;I typed in 'root' here&gt;
-Welcome to Ubuntu 12.04 LTS (GNU/Linux 3.8.0-27-generic x86_64)
-
- * Documentation:  https://help.ubuntu.com/
-
-The programs included with the Ubuntu system are free software;
-the exact distribution terms for each program are described in the
-individual files in /usr/share/doc/*/copyright.
-
-Ubuntu comes with ABSOLUTELY NO WARRANTY, to the extent permitted by
-applicable law.
-
-<span style="text-decoration: underline;">root@23ee5acf5c91:~#</span></pre>
-<p>再次成功了！现在有了一个运行的SSH服务器，我们能登录它。在有人猜出密码并攻击容器之前，让我们先从SSH退出，杀掉容器。</p>
-<pre>
-$ docker kill 23ee5acf5c91</pre>
-<p>如你所见，容器的22端口映射到了49154端口，但这是完全随机的。要把它映射到特定端口，运行命令时传入<tt>-p</tt>参数：</p>
-<pre>
-docker run -p 2222:22 -d zefhemel/ssh /usr/sbin/sshd -D</pre>
-<p>现在，如果2222端口可用，我们的端口就会映射到2222上。我们在Dockerfile的结尾再添加一行内容，以便我们的镜像对用户更加友好：</p>
-<pre>
-CMD /usr/sbin/sshd -D</pre>
-<p>CMD表示<strong>构建</strong>镜像时并不会运行命令，<strong>实例化</strong>时才运行。所以不传递其它参数时就会执行<tt>/usr/sbin/sshd -D</tt>。然后我们可以直接运行：</p>
-<pre>
-docker run -p 2222:22 -d zefhemel/ssh</pre>
-<p>得到的结果和前面一样。要发布新创建的镜像，只要运行<tt>docker push</tt>就可以了：</p>
-<pre>
-docker push zefhemel/ssh</pre>
-<p>登录之后，<a href="https://index.docker.io/u/zefhemel/">镜像就可用了</a>，用先前的<tt>docker run</tt>命令就能执行命令。</p>
-<p>让我们回到Wordpress的例子。怎样在容器里用Docker运行Wordpress呢？要构建一个Wordpress镜像，我们要创建一个Dockerfile：</p>
-<ol> 
- <li>安装Apache、PHP5和MySQL</li> 
- <li>下载Wordpress，解压到文件系统的某个地方</li> 
- <li>创建一个MySQL数据库</li> 
- <li>更新WordPress的配置文件，指向MySQL数据库</li> 
- <li>把WordPress设置为Apache的<tt>DocumentRoot</tt></li> 
- <li>启动MySQL和Apache（比如用<a href="http://supervisord.org/">supervisord</a>）</li> 
-</ol>
-<p>幸运的是，<a href="https://index.docker.io/search?q=wordpress">很多人已经成功了</a>，比如<a href="https://github.com/jbfink/docker-wordpress">John Fink的GitHub库</a>就包括创建这样一个Wordpress镜像需要的所有内容。</p>
-<h2>Docker用例</h2>
-<p>除了用可靠、可重复的方式简化复杂应用的部署，Docker还有很多用途。下面是一些有趣的Docker用法和项目：</p>
-<ul> 
- <li>持续集成和部署：在Docker容器里构建软件，确保构建之间的隔离性。构建好的软件镜像可以自动推到私有的Docker仓库中，并部署到测试环境或生产环境。</li> 
- <li><a href="http://progrium.com/blog/2013/06/19/dokku-the-smallest-paas-implementation-youve-ever-seen/">Dokku</a>：一个简单的PaaS，用<a href="http://progrium.com/blog/2013/06/19/dokku-the-smallest-paas-implementation-youve-ever-seen/">不到一百行的Bash</a>构建而成。</li> 
- <li><a href="https://flynn.io/">Flynn</a>和<a href="http://deis.io/">Deis</a>，两个使用Docker的开源PaaS项目。</li> 
- <li><a href="http://blog.docker.io/2013/07/docker-desktop-your-desktop-over-ssh-running-inside-of-a-docker-container/">在容器里运行桌面环境</a>。</li> 
- <li><a href="http://coreos.com/">CoreOS</a>验证了Docker的合理性，CoreOS是个非常轻量级的Linux发行版，其中的应用都用Docker安装、运行，由<a href="http://www.freedesktop.org/wiki/Software/systemd/">systemd</a>管理。</li> 
-</ul>
-<h2>Docker不是什么</h2>
-<p>尽管Docker有助于系统的可靠部署，但它本身并不是个完全成熟的部署系统。它操作的是容器里运行的应用。哪个容器安装在哪个服务器上，以及如何启动它们，则超出了Docker的范围。</p>
-<p>同样的，Docker也不处理跨多个容器（可能在多个物理服务器上，也可能在多个VM上）运行的应用。要让容器互相通信，需要某些发现机制，来找出哪些IP和端口上的其他应用可用。这和跨常规虚拟机的服务发现非常相似。<a href="https://github.com/coreos/etcd">etcd</a>等工具，或者其他的服务发现机制都能用来解决这个问题。</p>
+<p><img src="http://infoqstatic.com/resource/articles/kiji/zh/resources/0320000.png" width="600" _href="img://null" _p="true" alt="" /></p>
+<p>HBase是Apache Hadoop使用的一个键-值存储系统，它构建在HDFS之上，为大数据解决方案提供了必需的可扩展性。在HBase上开发应用程序面临的巨大挑战是，它要求所有进出系统的数据都是字节数组。为了解决这个问题，Kiji的最终核心组件是Apache Avro，被Kiji用来存储易于处理的数据类型，如标准字符串和整数，以及由用户定义的更复杂的数据类型。 读写数据时，Kiji为应用程序做必要的序列化和解序列化处理。</p>
+<h2>开发用在实时中的模型</h2>
+<p>Kiji为开发模型提供了两套API，Java和Scala，两套API都支持批量和实时组件。如此划分的目的是将模型执行划分为不同阶段。批量阶段是训练阶段，是一个典型的学习过程，在该过程中，将使用完整的数据集来训练模型。该阶段的输出可能是线性分类器的参数，或者聚类算法的群集位置，或在协同过滤系统中相互关联条目的相似性矩阵。实时阶段被称为评分阶段，取得经过训练的模型，并将它与实体数据相结合产生衍生信息。关键是这些衍生数据被当作一等公民，也就是说它可以存回到实体所在的行中，用于推荐，或作为后续计算的输入。</p>
+<p>Java API被称为KijiMR， 而Scala API构成了KijiExpress工具的核心。 KijiExpress利用Scalding库提供API来构建复杂的MapReduce工作流，同时避免了大量Java冗余代码，以及串联MapReduce作业所必需的任务调度和协作。</p>
+<h2>个体与总体</h2>
+<p>之所以要划分出批量训练和实时评分两个阶段，是因为Kiji观察到总体趋势变化缓慢，而个体趋势的变化迅速。</p>
+<p>比如一个包含上千万次购买记录的用户总体数据集。多一次购买不太可能对总体趋势的好恶造成重大影响。但对于一个只有10次购买记录的特定用户而言，第11次购买将对系统判断用户兴趣产生巨大影响。鉴于这种主张，应用程序只需在收集到足以影响总体趋势的数据时再重新训练它的模型。但对于特定用户而言，我们可以通过实时响应用户的行为来改善推荐的相关性。</p>
+<h2>实时给模型评分</h2>
+<p>为了做到实时评分，KijiScoring模块提供了一个惰性计算系统，应用程序可以只为经常与其交互的活跃用户生成最新推荐。通过惰性计算，Kiji应用程序不必为那些不经常光顾或再没回来过的用户生成推荐。这还有些额外的好处，Kiji可以在推荐时考虑像移动设备的位置之类的情境信息。</p>
+<p>KijiScoring的主要组件叫Freshener。Freshener实际上是另外两个Kiji组件的组合：ScoringFunctions和FreshnessPolicies。正如前面提到的，一个模型包括训练和评分两个阶段。ScoringFunction是一段代码，描述了如何把经过训练的模型和单一实体的数据组合起来产生一个分数或建议。FreshnessPolicy定义数据变得陈旧或过时的时间。比如说，普通的FreshnessPolicy会指出超过一个小时后数据就过期了。更复杂的策略可能会在实体经历过一定次数的事件后将其标记为过期，比如点击或产品访问等事件。最后，ScoringFunction和FreshnessPolicy被附着在Kiji表中特定的列上，在必要时被触发来刷新数据。</p>
+<p><img src="http://infoqstatic.com/resource/articles/kiji/zh/resources/0320001.png" width="600" _href="img://null" _p="true" alt="" /></p>
+<p>进行实时评分的应用程序中包含一个服务器层，被称为KijiScoring服务器，它是负责刷新陈旧数据的执行层。当用户与应用程序交互时，请求将被传递到KijiScoring服务器层，它直接与HBase集群通信。KijiScoring服务器将会请求数据，并且在获取到数据后根据FreshnessPolicy检查数据是否是最新的。如果是最新的数据，它将其直接返回给客户端。如果是过时的数据， KijiScoring服务器将为发出请求的用户运行指定的ScoringFunction。你需要掌握的要点是它只为发出请求的用户刷新数据或推荐；而不是执行批处理操作，刷新所有用户的数据。这样Kiji就可以只是做那些有必要做的工作。数据刷新完成后会被返回给用户，同时写回HBase以备后用。</p>
+<p>一个典型的Kiji应用程序将包括一定数量的KijiScoring服务器，它们是可以向外扩展的无状态Java进程，并能够运行使用单一实体的数据作为输入的ScoringFunction。Kiji应用程序通过KijiScoring服务器过滤客户端请求，由它决定数据是否是最新的。若有必要，它会在把所有推荐传回客户端之前运行ScoringFunction进行刷新，并将重算后的数据写到HBase中，以备后用。</p>
+<h4>将模型部署到生产系统中</h4>
+<p>能够轻松迭代其底层的预测模型是实时推荐系统的一个重要目标，避免因为要将新的或改进过的模型部署到生产环境而停掉应用程序。Kiji为此提供了Kiji模型库，它结合了描述模型以及用来训练模型和给模型评分的代码如何执行的元数据。KijiScoring服务器需要知道什么样的列访问会触发刷新，要用的FreshnessPolicy，以及将在用户数据上执行的ScoringFunction，以及所有经过训练的模型的位置，或给模型评分所必需的外部数据。元数据也存在一个Kiji系统表中，只是另一种最底层的HBase表。此外，模型库在受管的Maven库中为已注册的模型存储代码工件。KijiScoring服务器为新登记或未登记模型定期轮询模型库，按需加载或卸载代码。</p>
+<h2>整合到一起</h2>
+<p>使用协同过滤是一种非常常用的推荐提供方式。协同过滤算法通常会建立一个大型的相似矩阵，用来存放一个产品跟产品目录中其它产品的关联信息。矩阵中的每一行代表一个产品Pi，每一列代表另一种产品Pj。（Pi，Pj）中的值就是两个产品之间的相似度。</p>
+<p><img src="http://infoqstatic.com/resource/articles/kiji/zh/resources/0320002.png" width="500" _href="img://null" _p="true" alt="" /></p>
+<p>在Kiji中，相似矩阵是通过批量训练过程计算出来的，然后被存储在文件或Kiji表中。相似矩阵中的每一行都会被存放在Kiji产品表中某一行的单独列中。在实践中，这一列可能会变得非常大，因为其中放的是目录中所有产品的清单和相似性。通常情况下，批处理作业也会挑出相似度最高的条目存到表中。</p>
+<p><img src="http://infoqstatic.com/resource/articles/kiji/zh/resources/0320003.png" width="500" _href="img://null" _p="true" alt="" /></p>
+<p>相似矩阵在评分时是通过KeyValueStore API访问的，这个API可以访问外部数据。对于无法完全放在内存中的大型矩阵，可以把它们放在分布式的表中，这样应用程序可以只请求计算必需的数据，从而大幅降低对内存的需求。.</p>
+<p>既然我们在评分阶段之前已经做了很多繁重的​​工作，那么评分自然成了一种相当简单的操作。如果我们想基于被查看的条目展示推荐信息，一个通用的评分函数只是从产品表中查找相关产品，并显示它们。</p>
+<p>将该过程再推进一点并对结果做个性化处理是一个相对简单的任务。在个性化系统中，评分函数将会取得用户最近对产品的评级，并使用KeyValueStore API查找与用户评价过的产品相似的产品。结合评级和存储在产品表中的产品相似度，应用程序可以预测用户给相关条目下的评级，并将预测评级最高的产品推荐给用户。通过限制所用评级和所有已评级的相似产品的数量，系统在用户与应用程序进行交互时可以很轻松地处理上述操作。</p>
+<p><img src="http://infoqstatic.com/resource/articles/kiji/zh/resources/0320004.png" width="300" _href="img://null" _p="true" alt="" /></p>
 <h2>结论</h2>
-<p>虽然本文描述的所有内容用原始的LXC、cgroups和AUFS也可能实现，但实现起来绝对没有那么<a href="http://www.infoq.com/presentations/Simple-Made-Easy">容易或简单</a>。Docker提供了一种简单的方式将复杂应用打包到容器中，而且能轻松版本化、可靠分发。进而让轻量级的Linux容器和真正的虚拟机一样灵活、强大，但成本更低、方式更为便捷。即便<a href="http://www.vagrantup.com">Vagrant</a> VirtualBox VM在Macbook Pro上，使用运行在其中的Docker创建的Docker镜像也能很好地运行在<a href="http://aws.amazon.com/ec2">EC2</a>、<a href="http://www.rackspace.com">Rackspace Cloud</a>或物理硬件上，反之亦然。</p>
-<p>Docker可以从<a href="http://www.docker.io">它的网站</a>上获取，并免费使用。交互式的<a href="https://www.docker.io/gettingstarted">入门指南</a>很不错。<a href="http://blog.docker.io/2013/08/getting-to-docker-1-0/">项目的路线图</a>指出，第一个生产就绪的版本是2013年10月发布的0.8版本，不过此前大家已经在生产环境里使用Docker了。</p>
-<h2>作者简介</h2>
-<p><img src="http://infoqstatic.com/resource/articles/docker-containers/zh/resources/0108030.jpg" style="float: left; margin-right: 10px" alt="" _href="img://null" _p="true" /><strong>Zef Hemel</strong>是<a href="http://www.logicblox.com/">LogicBlox</a>公司的开发者布道师和产品管理团队成员，LogicBlox基于逻辑编程（尤其是<a href="https://en.wikipedia.org/wiki/Datalog">Datalog</a>）开发应用服务器和数据库引擎。此前他是<a href="http://c9.io/">Cloud9 IDE</a>的工程副总裁，开发基于浏览器的IDE。Zef工作之初就涉足Web领域，从二十世纪九十年代起就在开发Web应用。他是声明式编程环境的拥趸。</p>
-<div style="clear:both"></div>
-<p><strong>查看英文原文：</strong><a href="http://www.infoq.com/articles/docker-containers">Docker: Using Linux Containers to Support Portable Application Deployment</a></p><br><br><br><br><br><br></body></html>
+<p>在本文中，我们可以了解到如何用Kiji开发一个可以实时刷新推荐的推荐系统。利用HBase进行低延迟处理，用Avro存储复杂的数据类型，使用MapReduce和Scalding处理数据，应用程序能够在实时情境中给用户提供相关推荐。如果你想看看这个系统的样例代码，请访问<a href="http://github.com/wibidata/kiji-shopping">WibiData Github</a>。</p>
+<h2>关于作者</h2>
+<p><img style="float: left; margin-right: 10px" src="http://infoqstatic.com/resource/articles/kiji/zh/resources/0320005.jpg" _href="img://null" _p="true" alt="" /><strong>Natkins</strong><strong>（</strong><strong>@ nattyice</strong><strong>）是</strong><strong>WibiData</strong><strong>的现场工程师，他专注于帮助用户在</strong><strong>Kiji</strong><strong>和</strong><strong>WibiEnterprise</strong><strong>之上构建大数据应用。在为</strong><strong>WibiData</strong><strong>工作之前，乔恩曾是</strong><strong>Cloudera</strong><strong>和</strong><strong>Vertica</strong><strong>系统的软件工程师。</strong></p>
+<hr />
+<p>感谢<a href="http://www.infoq.com/cn/author/吴海星">吴海星</a>对本文的审校。</p>
+<p>给InfoQ中文站投稿或者参与内容翻译工作，请邮件至<a href="mailto:editors@cn.infoq.com">editors@cn.infoq.com</a>。也欢迎大家通过新浪微博（<a href="http://www.weibo.com/infoqchina">@InfoQ</a>）或者腾讯微博（<a href="http://t.qq.com/infoqchina">@InfoQ</a>）关注我们，并与我们的编辑和其他读者朋友交流。</p><br><br><br><br><br><br></body></html>
