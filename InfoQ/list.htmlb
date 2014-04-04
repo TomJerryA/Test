@@ -2,6 +2,9 @@
  <head></head> 
  <body>
   <div>
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/44.htmlb">Web安全实战</a> 本章将主要介绍使用Node.js开发web应用可能面临的安全问题，读者通过阅读本章可以了解web安全的基本概念，并且通过各种防御措施抵御一些常规的恶意攻击，搭建一个安全的web站点。 
+  </div> 
+  <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/43.htmlb">用Kiji构建实时、个性化推荐系统</a> 现在网上到处都有推荐。亚马逊等主流电子商务网站根据它们的页面属性以各种形式向用户推荐产品。Mint.com之类的财务规划网站为用户提供很多建议，比如向用户推荐他们可能想要办理的信用卡，可以提供更好利率的银行。谷歌根据用户搜索历史记录的信息优化搜索结果，找到相关性更高的结果。 
   </div> 
   <div> 
@@ -147,9 +150,6 @@
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/4.htmlb">在实践中实施看板</a> 在精益看板大会上，InfoQ问Arne Roock博士，团队如何评估看板是不是正确的工具以及如何开始实施。他给出了若干规定性建议。 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/3.htmlb">专访Yammer公司Brian Murray：精益创业和最简化可实行产品的使用</a> Brian Murray详细地说明了Yammer是如何使用最简化可实行产品来检验他们在业务上的用户假设，以及为什么他们要在自己的产品架构的上投入如此多的精力。 
   </div>  
  </body>
 </html>

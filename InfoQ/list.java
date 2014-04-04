@@ -1,6 +1,9 @@
 <html>
  <head></head> 
- <body> 
+ <body>
+  <div>
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/14.java">IDC: The Past, Present and Future of HTML5</a>The recently released IDC study, The Evolving State of HTML5 by Al Hilwa, Research Director for Application Development, attempts to evaluate the advances made so far, the current state and takes a look at the future of HTML5 as a unifying web platform.
+  </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/13.java">Changes to the Silverlight Runtime for Windows Phone</a>Until now we’ve been focusing on Common XAML, but now our attention turns to Silverlight for Windows Phone. Though Common XAML (i.e. Universal Apps) is meant to eventually replace it, the Silverlight framework is still a viable option for Windows Phone developers. 
   </div> 
@@ -147,9 +150,6 @@
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/22.java">Using Sigma for Drawing Graphs</a>The team behind Sigma, a JavaScript library dedicated to drawing graphs in Web applications, released a new version of this tool. What this library provides is a way for developers to create graphs while making networks manipulation on webpages smooth and faster for the user. 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/21.java">AngularJS 2.0 Will Target Mobile Apps, Drop Support For Older Browsers</a>&quot;AngularJS 2.0 is a framework for mobile apps&quot; says the AngularJS team. The framework will continue to be supported for desktops, but the primary focus will be on getting the mobile bit right. The goals also include support for EcmaScript 6 along with a transpiler (since browsers don't support ES6 yet). 
-  </div> 
+  </div>  
  </body>
 </html>
