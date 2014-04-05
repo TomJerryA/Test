@@ -2,10 +2,16 @@
  <head></head> 
  <body>
   <div>
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/18.java">AlchemyAPI and The State of Deep Learning</a>AlchemyAPI recently announced a taxonomy and a sentiment analysis API based on deep learning that can help transform digital content into ad inventory. IBM, Yahoo, Microsoft, Facebook, Google and others are working in the deep learning space. We take the high level view of what deep learning is all about and what are the key advances throughout the past months in the field.
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/20.java">Creating Single Page Apps With Angular.JS and ASP.NET</a>Angular.JS is a popular framework created by Google for creating single page applications. Despite its origins, it can also easily work with ASP.NET to provide Microsoft-centric developers the same powerful capabilities.
   </div>
   <div>
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/17.java">Node.js Tools for Visual Studio Beta 1</a>Microsoft has just released a beta of Node.js Tools for Visual Studio, also known as NTVS. Notable for this release is support for the free version of Visual Studio, known formally as Visual Studio Express for Web, and TypeScript.
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/19.java">Facebook, Google, LinkedIn, and Twitter Want to Make Sure that MySQL Is “Web-Scale”</a>Facebook, Google, LinkedIn, and Twitter have decided to make sure that a relational databases is “web-scale”, so they have put their efforts behind WebScaleSQL, a branch of MySQL 5.6 Community Edition.
+  </div> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/18.java">AlchemyAPI and The State of Deep Learning</a>AlchemyAPI recently announced a taxonomy and a sentiment analysis API based on deep learning that can help transform digital content into ad inventory. IBM, Yahoo, Microsoft, Facebook, Google and others are working in the deep learning space. We take the high level view of what deep learning is all about and what are the key advances throughout the past months in the field. 
+  </div> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/17.java">Node.js Tools for Visual Studio Beta 1</a>Microsoft has just released a beta of Node.js Tools for Visual Studio, also known as NTVS. Notable for this release is support for the free version of Visual Studio, known formally as Visual Studio Express for Web, and TypeScript. 
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/16.java">Introducing the .NET Foundation</a>Microsoft’s evolution towards a major open source player has reached the next step with the introduction of the .NET Foundation. The purpose of the foundation is to “be the steward of a growing collection of open source technologies for.NET” including ASP.NET MVC, Xamarin Mimekit, and the .NET Compiler Platform. 
@@ -144,12 +150,6 @@
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/27.java">Docker Index Offers Private Repositories, Webhooks And Other Services</a>Docker Inc., the company behind Docker, introduced a range of new services, including its first paid offering: private repositories. Docker index, Docker.io's public registry, now also offers webhooks, triggers and links for trusted builds and e-mail notifications. 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/27.java">Microservices and SOA</a>Over the past year or so we've started to hear about Microservices as potentially new architectural style. Recently Thoughtworks' Martin Fowler and James Lewis wrote an article defining Microservices. However, Steve Jones takes issue with the general theme and much in that article, believing that there is little new here and this is just a Service Oriented Deliver approach. 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/26.java">CouchDB Progresses As IBM Acquires Cloudant</a>IBM announced recently a definite agreement to acquire the major contributor to the CouchDB project, cloud database startup Cloudant. Adding CouchDB to IBM’s arsenal of technologies together with SoftLayer acquisition and MongoDB partnership creates an ecosystem of technologies bringing IBM in direct comparison with Amazon. A comparison of CouchDB, DynamoDB and ObjectRocket shows the strong points 
   </div>   
  </body>
 </html>

@@ -1,4 +1,41 @@
-<p>AlchemyAPI recently announced a taxonomy and a sentiment analysis API based on deep learning that can help transform digital content into ad inventory. Matching the content of a webpage with relevant ads is the goal of every advertiser as it improves click through rates and drives down cost per click. AlchemyAPI delivers an API that can drill down to 1,000 categories and down to five levels deep. The API also offers the ability to create new categories from any arbitrary phrase. This can be useful for niche content that can’t otherwise be targeted by ads.</p>
-<p>Deep learning is a bottom-up approach using unsupervised learning to train a system and then using feedback from other supervised learning systems to refine the results. Coupled with Big Data and several layers, Deep Neural Networks can deliver better accuracy across a broad range of applications. <br /> Throughout the past months there has been high activity in the deep learning space with a series of product launches and acquisitions. </p>
-<p>IBM is utilizing Watson, the Jeopardy winner for research on personalized medicine. Watson uses DeepQA to analyze, process and answer questions with confidence.<br /> Yahoo has acquired LookFlow and IQ Engines, both in the image recognition space. LookFlow is using deep learning for image recognition and will join the Flickr team and apply their knowledge in deep learning projects for Yahoo. <br /> Facebook hired NYU deep learning expert Yann LeCun to run its AI lab. Yann LeCun is leading efforts to make Facebook better understand people and pick the correct subset of information to show to them.<br /> Microsoft recently demoed a speech-to-speech English to Mandarin translation engine, claiming to have reduced error rates by 30% the most in speech recognition since hidden Markov modelling was introduced in 1979.</p>
-<p>Last but not least, Google acquired DeepMind in January, a startup that is working towards building an AI system that thinks, according to Carnegie Mellon professor Larry Waserman. DeepMind boasts a lineup of great researchers in the AI field, on par with Google’s own researchers. Google is investing heavily in deep learning and not without a reason as search, pattern recognition for security puproses, social and commerce can all benefit from better AI systems.</p>
+<p class="MsoNormal">Wednesday’s Build sessions included a presentation by David Catuhe and Jon Galloway on incorporating AngularJS into ASP.NET applications.&nbsp; The resulting setup provides a way for developers to quickly build modern single-page web applications.&nbsp; 
+ <o:p></o:p>
+ <o:p>
+  &nbsp;
+ </o:p></p>
+<p class="MsoNormal">Angular was created by Google and is now operated as an open source project that they support.&nbsp; As its name implies, it is a JavaScript-based library that follows the Model View Controller (MVC) design pattern.&nbsp; As Catuhe and Galloway explain, Angular uses dependency injection to power your ASP.NET application.&nbsp; A single file, <code>angular.min.js</code>, is the only one needed to enable support.&nbsp; (NuGet users can grab the latest version (beta) or the stable release.)
+ <o:p></o:p></p>
+<p class="MsoNormal">They point out that Angular usage is not an all-or-nothing approach, if you prefer to only utilize its functionality on selected portions of your page that is a supported possibility.&nbsp; In any event, Catuhe and Galloway recommend creating an “apps” directory under your Scripts folder for your project to help organize your files.
+ <o:p></o:p></p>
+<p class="MsoNormal">An important word of caution about minification:&nbsp; by default using minification on your app’s code will break as it will interfere with Angular’s dependency injection.&nbsp; (The tutorial documentation for Angular has more details on this under the “A Note on Minification” section.)
+ <o:p></o:p></p>
+<p class="MsoNormal">To actually activate Angular within your webpage, add “ng-app” to your html tag:
+ <o:p></o:p></p>
+<p><code> </code></p>
+<p class="MsoNormal"><code>&lt;html ng-app … &gt;
+  <o:p></o:p></code></p>
+<p><code> </code></p>
+<p>&nbsp;This lets Angular know it should get ready to do something.&nbsp; Angular uses <code>$http</code> for loading files by using its own lightweight version of jQuery.&nbsp; If your project already has a copy of jQuery installed, Angular will instead use that version to be consistent.
+ <o:p></o:p>
+ <o:p>
+  &nbsp;
+ </o:p></p>
+<p class="MsoNormal">Catuhe and Galloway proceeded to demo their sample application, a single page application (SPA) based on displaying and storing information about Magic: The Gathering cards.&nbsp; SPA’s use a view to build the UI, and Angular itself uses routing to define these views</p>
+<p class="MsoNormal">Since deep links in Angular can conflict with MVC Routes, they suggest using a Catchall route:
+ <o:p></o:p></p>
+<p>&nbsp;</p>
+<blockquote>
+ <code> <p class="MsoNormal">routes.MapRoute(<br /> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; name: &quot;Catch all route for SPA&quot;,<br /> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; url: &quot;App/{*catchall}&quot;,<br /> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; defaults: new{<br /> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; controller = &quot;Home&quot;, <br /> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; action = &quot;Index&quot;});
+   <o:p></o:p></p> </code>
+</blockquote>
+<p>&nbsp;</p>
+<p class="MsoNormal">Another tip for displaying HTML.&nbsp; If the HTML is generated from a view, proceed without difficulty.&nbsp; However if the HTML is coming from a file (MyHTML.html) then use an IIS Rewrite rule to change the URL:
+ <o:p></o:p></p>
+<p><code> </code></p>
+<p class="MsoNormal"><code>/myHTML.html -&gt; /myHTML
+  <o:p></o:p></code></p>
+<code> </code>
+<p></p>
+<p class="MsoNormal">To see their demo application in action, consult the presentation’s Channel9 page for more information.
+ <o:p></o:p></p>
+<p>&nbsp;</p>

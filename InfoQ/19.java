@@ -1,21 +1,11 @@
-<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>Bringing Visual Studio's CodeLens Into Focus</h3><p class="Standard">One of the most popular features shipping with Visual Studio 2013 Ultimate is CodeLens.&nbsp; <a href="http://msdn.microsoft.com/en-us/library/dn269218.aspx">CodeLens</a> provides meta-information about the source you are working with while you edit it.&nbsp; When used in conjunction with Team Foundation Server (TFS), several useful stats are provided on the fly:&nbsp; unit test results, change history, and work item history.&nbsp; To this functionality the forthcoming Update 2 to VS2013 will add a new ability called Incoming Changes.
- <o:p></o:p>
- <o:p>
-  &nbsp;
- </o:p></p>
-<p class="Standard">Incoming Changes is intended to make working with multiple branches on TFS easier.&nbsp; Another field is added to the CodeLens status (helpfully labeled “incoming change”) which when clicked (or accessed via hotkey ALT+6) will produce a tool tip with several new pieces of information:&nbsp; the name of the branch a change occurred on, which changeset it is accessed on, the author, and a datestamp.
- <o:p></o:p></p>
-<p class="Standard">Why is this helpful?&nbsp; Well it provides insight as to changes that are happening in the source tree while are working on your section.&nbsp; Perhaps their work has no bearing on yours, but if it does negative collisions can be avoided.&nbsp; Code diffs can also be performed to compare the upcoming change with the contents of the file in your editor.
- <o:p></o:p></p>
-<p class="Standard">The level of detail is configurable, so if you are interested in the full change history of intermediate branch merges you can enable them to be shown.&nbsp; (The default is to hide them.)&nbsp; The overall CodeLens feature itself is also configurable under the Options menu.&nbsp; Incoming Changes and the other indicators CodeLens offers can be individually enabled/disabled as desired.
- <o:p></o:p></p>
-<p class="Standard">For a complete illustrated walkthrough, Microsoft’s Mathew Aniyan has <a href="http://blogs.msdn.com/b/visualstudioalm/archive/2014/03/03/new-codelens-indicator-incoming-changes.aspx">provided</a> an article describing Incoming Changes in detail.&nbsp; To try out the feature for yourself, you will need Team Foundation Server 2013 Update 2 RC and Visual Studio 2013 Ultimate with Update 2 CTP2 applied.&nbsp; 
- <o:p></o:p></p>
-<p class="Standard">
- <o:p>
-  &nbsp;
- </o:p></p>
-<p class="Standard">
- <o:p>
-  &nbsp;
- </o:p></p><br><br><br><br><br><br></body></html>
+<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>Facebook, Google, LinkedIn, and Twitter Want to Make Sure that MySQL Is “Web-Scale”</h3><p>Facebook, Google, LinkedIn, and Twitter have decided to make sure that a relational databases is “web-scale”, so they have put their efforts behind <a href="http://webscalesql.org/">WebScaleSQL</a>, a branch of MySQL 5.6 Community Edition.</p>
+<p>MySQL is already used by the above mentioned companies at a web-scale level, but they are facing “similar challenges with the technology”, and they came up with the idea to “create and maintain the common set of changes required to use MySQL and further customize it for our needs, rather than each of us maintaining separate branches,” said Steaphan Greene, Software Engineer at Facebook, in an interview with InfoQ. The project is “open, so everyone in the MySQL community can benefit and contribute to the code,” added Greene.</p>
+<p>When asked why MySQL and not MariaDB, Greene said that they “reached a consensus that MySQL-5.6 was the right choice for this, as it has the production-ready features we need to operate at scale, and the features planned for MySQL-5.7 seem like a fitting path forward for us,” but they will “continue to revisit this decision as the ecosystem evolves.”</p>
+<p>It is important to note that this is a branch of MySQL 5.6.17 and not a fork, and the changes introduced in&nbsp;WebScaleSQL are going to be pushed back into the trunk as long as “MySQL community releases continue,” according to the <a href="http://webscalesql.org/faq.html">project’s FAQ</a>.</p>
+<p>The 4 web-scale companies have collaborated on MySQL for the past few months, setting up an automated framework and a <a href="https://www.facebook.com/l.php?u=https%3A%2F%2Fgithub.com%2Fwebscalesql%2Fwebscalesql-5.6%2Fcommit%2F8b6adf69913226cab5cf8aaf45914e66b812692d&amp;h=yAQE0Aw1N&amp;s=1">suite of stress tests</a> for evaluating proposed changes to the codebase. When a code change is submitted it gets included in the codebase if it useful to at least another company from those participating to the project. Patches specific only to one company are not included.</p>
+<p>So far LinkedIn has contributed “some changes to the test framework, suggested improvements and reviewed changes submitted by other members,” told us Davi Arnaut, a LinkedIn engineer.</p>
+<p><a href="https://github.com/twitter/mysql/wiki/WebScaleSQL-and-Twitter-MySQL">Twitter has contributed</a> with a <a href="https://github.com/webscalesql/webscalesql-5.6/commit/d086837b5487647b130ce471c45f8c9093e87855">back port of a buffer pool optimization from MySQL 5.7</a>, support for <a href="https://github.com/webscalesql/webscalesql-5.6/commit/5c030170c88b9d30165919e903eb6b5f54246b65">NUMA interleave policy</a>, and a number of fixes.</p>
+<p><a href="https://github.com/webscalesql/webscalesql-5.6/commits/webscalesql-5.6.16">All project commits</a> can be tracked on <a href="https://github.com/webscalesql">GitHub’s project</a> page.</p>
+<p>For the near future, Facebook intends to contribute an asynchronous client, including “production-tested versions of table, user, and compression statistics,” compression and logical read-ahead.</p>
+<p>For the long term future, WebScaleSQL will attempt to address the scalability issues that very large MySQL deployments face as they arrive.</p>
+<p>WebScaleSQL will not provide builds but only source code. This allows each of the four companies to download the code, add company-specific patches and optimizations and&nbsp;create the builds as desired.</p><br><br><br><br><br><br></body></html>
