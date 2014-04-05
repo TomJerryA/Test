@@ -1,6 +1,15 @@
 <html>
  <head></head> 
- <body> 
+ <body>
+  <div>
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/23.java">Create Your Own Scaffold in Visual Studio 2013.2</a>An important part of ASP.NET MVC is the set of code generators called scaffolds. Inspired by Ruby on Rails, these code generators can be used to quickly create controllers and views based on a model class. New in VS 2013 Update 2 is the ability to create your own scaffolds that plug into the overall framework.
+  </div>
+  <div>
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/22.java">WinRT Apps Move Slightly Closer to Being Enterprise Ready</a>A major limitation of WinRT apps in the enterprise has been the licensing model. In the past companies were asked to setup an Active Directory or pay 3,000 per hundred computers for side-loading keys. As part of the Windows 8.1 Update that requirement has been considerably softened.
+  </div>
+  <div>
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/21.java">SIMD Support in .NET</a>Six years after Mono, Microsoft’s implementation of the CLR has finally gained support for SIMD via RyuJIT. Still in community preview, RyuJIT is the next generation JIT compiler for .NET.
+  </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/20.java">Creating Single Page Apps With Angular.JS and ASP.NET</a>Angular.JS is a popular framework created by Google for creating single page applications. Despite its origins, it can also easily work with ASP.NET to provide Microsoft-centric developers the same powerful capabilities. 
   </div> 
@@ -141,15 +150,6 @@
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/30.java">Domain-Driven Design Using a Functional Language</a>Using a functional language in domain-driven design (DDD) the actual code can often become simple enough to be used instead of UML diagrams when discussing with domain experts, Scott Wlaschin stated in a recent talk about domain modelling together with functional programming using F#. 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/29.java">Java 8 Launch Q&amp;A</a>Java 8 is one of the most highly anticipated programming language updates in many years. The release contains a date API, streams API and lambdas. Include permgen removal and you end up with a nice set of improvements. To learn more about this release, we sat down with Georges Saab, vice president of software development, Java Platform Group, Oracle. 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/28.java">InfoQ Java 8 Launch Q&amp;A</a>Java 8 is one of the most highly anticipated programming language updates in many years. The release contains a date API, streams API and lambdas. Include permgen removal and you end up with a nice set of improvements. To learn more about this release, we sat down with Georges Saab, vice president of software development, Java Platform Group, Oracle. 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/27.java">Docker Index Offers Private Repositories, Webhooks And Other Services</a>Docker Inc., the company behind Docker, introduced a range of new services, including its first paid offering: private repositories. Docker index, Docker.io's public registry, now also offers webhooks, triggers and links for trusted builds and e-mail notifications. 
-  </div> 
+  </div>    
  </body>
 </html>

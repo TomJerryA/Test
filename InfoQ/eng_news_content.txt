@@ -1,41 +1,9 @@
-<p class="MsoNormal">Wednesday’s Build sessions included a presentation by David Catuhe and Jon Galloway on incorporating AngularJS into ASP.NET applications.&nbsp; The resulting setup provides a way for developers to quickly build modern single-page web applications.&nbsp; 
- <o:p></o:p>
- <o:p>
-  &nbsp;
- </o:p></p>
-<p class="MsoNormal">Angular was created by Google and is now operated as an open source project that they support.&nbsp; As its name implies, it is a JavaScript-based library that follows the Model View Controller (MVC) design pattern.&nbsp; As Catuhe and Galloway explain, Angular uses dependency injection to power your ASP.NET application.&nbsp; A single file, <code>angular.min.js</code>, is the only one needed to enable support.&nbsp; (NuGet users can grab the latest version (beta) or the stable release.)
- <o:p></o:p></p>
-<p class="MsoNormal">They point out that Angular usage is not an all-or-nothing approach, if you prefer to only utilize its functionality on selected portions of your page that is a supported possibility.&nbsp; In any event, Catuhe and Galloway recommend creating an “apps” directory under your Scripts folder for your project to help organize your files.
- <o:p></o:p></p>
-<p class="MsoNormal">An important word of caution about minification:&nbsp; by default using minification on your app’s code will break as it will interfere with Angular’s dependency injection.&nbsp; (The tutorial documentation for Angular has more details on this under the “A Note on Minification” section.)
- <o:p></o:p></p>
-<p class="MsoNormal">To actually activate Angular within your webpage, add “ng-app” to your html tag:
- <o:p></o:p></p>
-<p><code> </code></p>
-<p class="MsoNormal"><code>&lt;html ng-app … &gt;
-  <o:p></o:p></code></p>
-<p><code> </code></p>
-<p>&nbsp;This lets Angular know it should get ready to do something.&nbsp; Angular uses <code>$http</code> for loading files by using its own lightweight version of jQuery.&nbsp; If your project already has a copy of jQuery installed, Angular will instead use that version to be consistent.
- <o:p></o:p>
- <o:p>
-  &nbsp;
- </o:p></p>
-<p class="MsoNormal">Catuhe and Galloway proceeded to demo their sample application, a single page application (SPA) based on displaying and storing information about Magic: The Gathering cards.&nbsp; SPA’s use a view to build the UI, and Angular itself uses routing to define these views</p>
-<p class="MsoNormal">Since deep links in Angular can conflict with MVC Routes, they suggest using a Catchall route:
- <o:p></o:p></p>
-<p>&nbsp;</p>
-<blockquote>
- <code> <p class="MsoNormal">routes.MapRoute(<br /> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; name: &quot;Catch all route for SPA&quot;,<br /> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; url: &quot;App/{*catchall}&quot;,<br /> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; defaults: new{<br /> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; controller = &quot;Home&quot;, <br /> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; action = &quot;Index&quot;});
-   <o:p></o:p></p> </code>
+<p>An important part of ASP.NET MVC is the set of code generators called scaffolds. Inspired by Ruby on Rails, these code generators can be used to quickly create controllers and views based on a model class. While development can be done without them, it often requires quite a bit of boilerplate code that, if coded incorrectly, will compile but fail at runtime.</p>
+<p>ASP.NET Scaffolding is considered to be a new feature for Visual Studio 2013, but ASP.NET MVC has had comparable tooling support for several versions now. What’s new in VS 2013 Update 2 is the ability to create your own scaffolds that plug into the overall framework. The process starts with the Basic Scaffolder project type.</p>
+<p>After setting the header information (name, version, etc.) you need to decide whether or not to display a custom UI. This UI, invoked via the ShowUIAndValidate abstract method, should be used specifically for soliciting the user for additional options. If not needed, simply override the method to return true.</p>
+<p>Joost de Nijs continues,</p>
+<blockquote> 
+ <p>Now that the scaffolder has the user inputs necessary to do your scaffolding (and you have persisted that data), it is time to modify the project. There are several types of actions built into the Scaffolding Framework to help you build your scaffolder, these are in the ICodeGeneratorActionsService interface of the Microsoft.AspNet.Scaffolding.12.0 dll. Of course you can create your own actions, but the benefit of using the method calls exposed by the Scaffolding Framework is that they can be Rolled Back in case any step of the Scaffolding Fails. Rolling back will return the project to the state it was in prior to the scaffolder being invoked.</p> 
 </blockquote>
-<p>&nbsp;</p>
-<p class="MsoNormal">Another tip for displaying HTML.&nbsp; If the HTML is generated from a view, proceed without difficulty.&nbsp; However if the HTML is coming from a file (MyHTML.html) then use an IIS Rewrite rule to change the URL:
- <o:p></o:p></p>
-<p><code> </code></p>
-<p class="MsoNormal"><code>/myHTML.html -&gt; /myHTML
-  <o:p></o:p></code></p>
-<code> </code>
-<p></p>
-<p class="MsoNormal">To see their demo application in action, consult the presentation’s Channel9 page for more information.
- <o:p></o:p></p>
-<p>&nbsp;</p>
+<p>Creating new folders and static files is straight forward, just call the correct Action Service method. But for real work you’ll need to learn how to write T4 templates.</p>
+<p>ASP.NET MVC grew up with NuGet, so it isn’t surprising that Scaffolder projects include the ability to programmatically install NuGet packages.</p>
