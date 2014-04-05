@@ -2,13 +2,16 @@
  <head></head> 
  <body>
   <div>
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/23.java">Create Your Own Scaffold in Visual Studio 2013.2</a>An important part of ASP.NET MVC is the set of code generators called scaffolds. Inspired by Ruby on Rails, these code generators can be used to quickly create controllers and views based on a model class. New in VS 2013 Update 2 is the ability to create your own scaffolds that plug into the overall framework.
-  </div>
-  <div>
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/22.java">WinRT Apps Move Slightly Closer to Being Enterprise Ready</a>A major limitation of WinRT apps in the enterprise has been the licensing model. In the past companies were asked to setup an Active Directory or pay 3,000 per hundred computers for side-loading keys. As part of the Windows 8.1 Update that requirement has been considerably softened.
-  </div>
-  <div>
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/21.java">SIMD Support in .NET</a>Six years after Mono, Microsoft’s implementation of the CLR has finally gained support for SIMD via RyuJIT. Still in community preview, RyuJIT is the next generation JIT compiler for .NET.
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/24.java">Mobile Usage Report Highlights Trends and Shifts in Mobile Device Use</a>Mobile analytics firm Flurry has issued a report analyzing time spent on mobile devices by the average US consumer between January and March of 2014. This is the second such report that Flurry issues, allowing for an interesting comparison year to year showing, among other things, that mobile devices are changing the way the web is consumed.
+  </div> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/23.java">Create Your Own Scaffold in Visual Studio 2013.2</a>An important part of ASP.NET MVC is the set of code generators called scaffolds. Inspired by Ruby on Rails, these code generators can be used to quickly create controllers and views based on a model class. New in VS 2013 Update 2 is the ability to create your own scaffolds that plug into the overall framework. 
+  </div> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/22.java">WinRT Apps Move Slightly Closer to Being Enterprise Ready</a>A major limitation of WinRT apps in the enterprise has been the licensing model. In the past companies were asked to setup an Active Directory or pay 3,000 per hundred computers for side-loading keys. As part of the Windows 8.1 Update that requirement has been considerably softened. 
+  </div> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/21.java">SIMD Support in .NET</a>Six years after Mono, Microsoft’s implementation of the CLR has finally gained support for SIMD via RyuJIT. Still in community preview, RyuJIT is the next generation JIT compiler for .NET. 
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/20.java">Creating Single Page Apps With Angular.JS and ASP.NET</a>Angular.JS is a popular framework created by Google for creating single page applications. Despite its origins, it can also easily work with ASP.NET to provide Microsoft-centric developers the same powerful capabilities. 
@@ -147,9 +150,6 @@
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/31.java">Google Cuts Cloud Prices, Integrates CI Tools, Supports Windows and Manages VMs</a>Google had a Cloud Platform Live event on Tuesday (recorded here) unveiling a number of new features, improvements and a new pricing model. 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/30.java">Domain-Driven Design Using a Functional Language</a>Using a functional language in domain-driven design (DDD) the actual code can often become simple enough to be used instead of UML diagrams when discussing with domain experts, Scott Wlaschin stated in a recent talk about domain modelling together with functional programming using F#. 
-  </div>    
+  </div>  
  </body>
 </html>
