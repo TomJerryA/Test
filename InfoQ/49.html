@@ -1,52 +1,37 @@
-<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>精益创业法：众里寻她千百度</h3><p>去年12月份的2013精益创业大会上，作为<a href="http://www.amazon.com/The-Lean-Startup-Entrepreneurs-Continuous/dp/0307887898/">The Lean Startup</a>（《精益创业》）一书的作者和精益创业<a href="http://theleanstartup.com/">活动</a>的创始人，Eric Ries近期向通用电气公司代表做了成果<a href="http://www.youtube.com/watch?v=nhmQNW1mkSk">展示</a>——所谓“全球最伟大的精益创业实现”。精益创业法正迅速成熟，远超面向初创企业的最初目标，近期来自Ries和其他人的报道开始就其企业适用性展开调查。与此不同，作为另一类呼声的代表，大数据创业公司GainSight的CEO——Nick Metha对精益创业法是初创企业的最佳选择表示怀疑。 </p>
-<p>据Ries透露，通用电气公司打算发布100种产品的MVP（最小可行产品），这些产品的开发遵照精益创业法。通用电气公司的精益创业提倡者Steve Liguori<a href="http://youtu.be/nhmQNW1mkSk?t=7m55s">解释</a>了为什么要在这么一所大公司推行精益实践： </p>
+<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>Espresso Logic的DBaas服务将SQL存储过程封装到了RESTful API中</h3><p><a href="http://www.espressologic.com/">Espresso Logic</a>在其DBaas服务中添加了支持SQL存储过程的RESTful终结点。</p>
+<p>Espresso Logic通过分析数据库架构，为每个表创建REST终结点，提供过滤、排序、认证、分页、锁优化等功能，以RESTful API的方式，为企业提供了一个SQL DBaaS服务。Espresso宣布它们可以为数据库存储过程自动生成API，将存储过程暴露为REST资源，并以JSON作为输出结果。与DBaaS的交互可以通过<a href="http://eval.espressologic.com/LogicDesigner/#/">Espresso Designer</a>（需要账号）来完成，它可以对所有资源进行基于角色的安全访问。在操作数据库时，开发者可以不必编写SQL查询，而是在响应式编程环境中用JavaScript编写业务逻辑。</p>
+<p>例如，可以对下面的URL发送GET请求，获取<code>get_employee</code>存储过程的详细内容：</p>
+<pre>
+http://houston.d.espressologic.com/rest/abl/demo/v1/@procedures/get_employee
+</pre>
+<p>输出结果如下所示：</p>
+<pre>
+{
+  &quot;@metadata&quot;: {
+    &quot;href&quot;: &quot;http://houston.d.espressologic.com/rest/abl/demo/v1/@procedures/get_employee&quot;
+  },
+  &quot;name&quot;: &quot;get_employee&quot;,
+  &quot;remarks&quot;: &quot;given an employee id and a number 'plus_one', adds one to the number and returns the employee info as well as picture, voice and icon&quot;,
+  &quot;args&quot;: [
+    {
+      &quot;name&quot;: &quot;given_employee_id&quot;,
+      &quot;type&quot;: &quot;BIGINT&quot;,
+      &quot;direction&quot;: &quot;IN&quot;
+    },
+    {
+      &quot;name&quot;: &quot;plus_one&quot;,
+      &quot;type&quot;: &quot;BIGINT&quot;,
+      &quot;direction&quot;: &quot;IN_OUT&quot;
+    }
+  ]
+}</pre>
+<p>Espresso的CEO和联合创始人R. Paul Singh表示，Espresso Logic为以下数据库配置提供了服务：</p>
 <blockquote> 
- <p>因为我们想创新，想精益，想创业，而有些东西，如果不关注、不重新思考、不重新执行，就会妨碍你做喜欢的事。这让我们选择了精益创业法。</p>
+ <ul> 
+  <li>我们连接到用户自己的数据库。安全起见，用户需要使用反向的SSH管道。</li> 
+  <li>我们使用适当的API连接到不同的云数据库服务，包括Amazon RDS（MySQL、SQL Server和Oracle）和Azure SQL</li> 
+  <li>如果用户希望我们为他们建立一个新的数据库，我们目前可以提供AWS中的MySQL，在不久的将来还将提供更多选择。不过，该特性目前只是beta版，设计器中并不支持。</li> 
+ </ul> 
 </blockquote>
-<p>最近，Ries与<a href="http://www.amazon.com/The-Lean-Entrepreneur-Visionaries-Products/dp/111829534X/">Lean Entrepreneur</a>一书的作者<a href="http://about.me/brantcooper">Brant Cooper</a>和<a href="http://vlaskovits.com/">Patrick Vlaskovits</a>，就“成熟公司的精益引入”这个话题一同参与了<a href="http://www.youtube.com/watch?v=Eyf2DC6rafw">现场问答</a>：精益创业法正被越来越多地用在企业里，常被敏捷团队用以增强团队灵活性和规范学习。问答涉及精益创业法在企业中的有效情境，并指出公司的真正挑战是，创建一些小的自治团队，有类似初创企业的自由，能深入研究开发-测量-认知循环。 </p>
-<p>通过对比，Metha<a href="http://gigaom.com/2013/11/28/in-defense-of-the-fat-startup/">写道</a>，严格遵照开发-测量-认知循环，已经定位好产品市场的初创企业也许会坐失规模经济，从而无法最大化初期市场渗透力和影响力。精益方法“对于未获得产品市场定位和面向小众的那部分初创企业很有帮助”。他还指出，有很多公司能够获利是因为规模扩张而不是因为遵循精益： </p>
-<blockquote> 
- <p>这些日子，我遇到了很多在我看来过于追求“精益”的成长型企业。这些企业有令人惊叹的产品，广阔的市场和资金渠道。不过似乎有一部分公司会因为错误的原因而选择不扩大规模。</p>
-</blockquote>
-<p>Metha将初创企业所能从最小可行产品扩展后获利的五个领域归结为： </p>
-<ol> 
- <li>“市场供给” - 营销投资。</li> 
- <li>“销售供给” - 销售投资。</li> 
- <li>“饿死对手” - 扩大市场份额以迅速与竞争者拉开距离。</li> 
- <li>“招募满足” - 用于吸引天才的可视化投资。</li> 
- <li>“团队及自我满足“ - 用于挽留人才的薪水投资。</li>
-</ol>
-<p>前主流唱片艺术家、现阶段为起步期初创企业工作的<a href="http://lylemckeany.com/">Lyle McKeany</a>，近来分享了他在旧金山参加<a href="https://www.leanstartupmachine.com/">精益创业器</a>（LSM）的<a href="http://pando.com/2014/01/11/is-lean-startup-right-for-your-idea/">收获</a>。McKeany发现，他所遇到的很多初创企业，在应当“指出问题，用某种成功标准测试风险假设，在想到解法前和潜在客户谈谈”时，企图使用精益思维原则。他指出他所遇到的所有初创企业都是从某种初始产品开始，然后进入学习循环。在听LSM创始人Trevor Owens的报告时，他指出下列事实： </p>
-<blockquote> 
- <p>Trevor给出的所有例子有一个共性：都没有用Trevor在LSM所教的精益思维原则。他们都不假思索地创建了一个潜在“解决方案”，很多企业在中心化之前就筹到了很多VC。此外，他们都遵循传统精益创业的座右铭，开发-测量-认知,即先开发再分析学习。</p>
-</blockquote>
-<p><a href="http://klinger.io/">Andreas Klinger</a>, 创业评论员和导师，近来写了一篇<a href="http://klinger.io/post/69794653694/why-lean-startup-sucks-for-startups">文章</a>“为何精益创业不适合初创企业。”Andreas证明，与全力成长、实现自我超越的初创企业相比，精益创业法更适用于有一定规模的企业。对初创企业而言，那些用于持续验证成功的时间，更应该被用于市场定位。Klinger所提的另一可选建议是，尽可能少的验证，不要被部分失败标准所限。他的观点是，对初创企业而言，与过分测量所谓的成功因素相比，验证企业不满足某些失败标准的详尽子集开销更小。Klinger指出，存在搜集信息过多，以至难以基于这些信息决策的情况，即： </p>
-<blockquote> 
- <p>现实中的主观偏好和嘈杂信息使得获取理想质量的信息不大现实。</p>
-</blockquote>
-<p>发表在Pollenizer.com 上的2014年<a href="http://pollenizer.com/lean-startup-trends-2014">预测</a>中，她指出，Blogging Co 的卫报记者和导演——<a href="http://www.theguardian.com/profile/bronwen-clune">Bronwen Clune</a>，近年来鼓励企业内部使用精益创业方法。Clune写道大公司开始重新认识敏捷和精益创业，这有助于增强企业灵活性而改善大公司所习惯的慢周期。她写道： </p>
-<blockquote> 
- <p>像敏捷在很多年所做的那样，精益思维正渗入企业圈。作为被那些小而敏捷的企业所超越的落伍者，引导企业追逐精益是创新的需要，。</p>
-</blockquote>
-<p>Clune还报道说微软现在正积极尝试“在总部推行一些小企业文化”，他们和精益创业器<a href="http://thenextweb.com/insider/2014/01/14/lean-startup-machine-partners-microsoft-ventures-expand-600-cities-next-18-months/">一道</a>，提升所接触的精益方法的宽度。 </p>
-<p>Metha所提的另一点是，有成熟产品的初创企业存在风险：也许是营销投资不足，也许是没有最大化其初期干涉和市场影响力。他写道： </p>
-<blockquote> 
- <p>.. 市场投资得当会得到巨大回报。PR能让你对投资者和职员更有吸引力。好品牌能拉开你和竞争对手的距离。</p>
-</blockquote>
-<p>Clune强调这类营销关注点，预测2014年“growth hacking”会显著增长。Clune解释道，“growth hacking”是描述学习驱动营销这种新模式的术语——“是一种创意营销方式，通过分析思维和社会标准来出售商品并取得接触机会。”Clune将之描述为“一类营销活动，直接影响增长。” 她详细论述了营销该怎样成为产品开发周期的渐进式部分： </p>
-<blockquote> 
- <p>营销并不独立于所创立的产品，从第一天起就是过程的一部分。它是产品的必要部分。</p>
-</blockquote>
-<p>当文章中被问及精益实践是否适用于所有初创企业时，Klinger的观点是，在已经有一定规模的企业中效果最好。Klinger觉得对小企业和巨型企业而言，同样的方法并不适用（这是种“船货崇拜”）。他认为，在那些肯花更多代价进行分析的企业和教育中，精益方法效果最好。他还写道“精益创业有助于企业去除中层管理决策”，使项目更高效而重视学习： </p>
-<blockquote> 
- <p>需要外人接触或是为项目做决定时，项目质量和速度都会下降。精益创业提供了一种（理想状态下的）框架，通过数据压缩和验证，公司、可选项还有政策能被缩减到最简。</p>
-</blockquote>
-<p>Ries, Cooper和Vlaskovits的意见略有不同。Q&amp;A环节，他们讨论道，精益方法在很多初创企业中有效，并指出，企业中的精益创业法是针对那些恰好身在企业，并见证过精益创业为初创企业带来成功的那部分“早期接纳者”。是企业外基于精益创业法的迭代和学习的成功，带动了这部分企业内的热潮。 </p>
-<p>文中，Klinger建议我们根据当前状态落实开发-测量-认知的投入和形式。Metha提醒我们注意，为获得规模经济，迅速扩张是值得的。像Clune预测中所总结的，我们会继续找精益创业相关的成败示例： </p>
-<blockquote> 
- <p>随着越来越多的不同工厂和企业尝试精益创业实践，会有越来越多失败的例子——因为文化，产品或者在尝试和测试后没有获得底线收益。或许精益创业法不会在每种情况下都有效，但还好。</p>
-</blockquote>
-<p><strong>查看英文原文：</strong><a href="http://www.infoq.com/news/2014/02/bestfit_for_lean_startup">Finding the Best-fit for Lean Startup Methodology</a></p>
-<hr />
-<p>感谢<a href="http://www.infoq.com/cn/author/杨赛">杨赛</a>对本文的审校。</p>
-<p>给InfoQ中文站投稿或者参与内容翻译工作，请邮件至<a href="mailto:editors@cn.infoq.com">editors@cn.infoq.com</a>。也欢迎大家通过新浪微博（<a href="http://www.weibo.com/infoqchina">@InfoQ</a>）或者腾讯微博（<a href="http://t.qq.com/infoqchina">@InfoQ</a>）关注我们，并与我们的编辑和其他读者朋友交流。</p><br><br><br><br><br><br></body></html>
+<p>Espresso的服务基于AWS，但他们“计划在未来添加其他云服务，下一个正在开发中的是微软Azure”，Singh说道。他们还为希望在自己的厂房中运行服务的企业提供了设备。</p>
+<p><strong>原文英文链接：</strong><a href="http://www.infoq.com/news/2014/03/espresso-logic-dbaas-rest-api">Espresso Logic DBaaS Now Wraps SQL Stored Procedures in RESTful APIs</a></p><br><br><br><br><br><br></body></html>

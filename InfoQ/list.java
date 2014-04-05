@@ -1,11 +1,11 @@
 <html>
  <head></head> 
- <body>
-  <div>
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/20.java">Creating Single Page Apps With Angular.JS and ASP.NET</a>Angular.JS is a popular framework created by Google for creating single page applications. Despite its origins, it can also easily work with ASP.NET to provide Microsoft-centric developers the same powerful capabilities.
-  </div>
-  <div>
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/19.java">Facebook, Google, LinkedIn, and Twitter Want to Make Sure that MySQL Is “Web-Scale”</a>Facebook, Google, LinkedIn, and Twitter have decided to make sure that a relational databases is “web-scale”, so they have put their efforts behind WebScaleSQL, a branch of MySQL 5.6 Community Edition.
+ <body> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/20.java">Creating Single Page Apps With Angular.JS and ASP.NET</a>Angular.JS is a popular framework created by Google for creating single page applications. Despite its origins, it can also easily work with ASP.NET to provide Microsoft-centric developers the same powerful capabilities. 
+  </div> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/19.java">Facebook, Google, LinkedIn, and Twitter Want to Make Sure that MySQL Is “Web-Scale”</a>Facebook, Google, LinkedIn, and Twitter have decided to make sure that a relational databases is “web-scale”, so they have put their efforts behind WebScaleSQL, a branch of MySQL 5.6 Community Edition. 
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/18.java">AlchemyAPI and The State of Deep Learning</a>AlchemyAPI recently announced a taxonomy and a sentiment analysis API based on deep learning that can help transform digital content into ad inventory. IBM, Yahoo, Microsoft, Facebook, Google and others are working in the deep learning space. We take the high level view of what deep learning is all about and what are the key advances throughout the past months in the field. 
@@ -150,6 +150,6 @@
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/27.java">Docker Index Offers Private Repositories, Webhooks And Other Services</a>Docker Inc., the company behind Docker, introduced a range of new services, including its first paid offering: private repositories. Docker index, Docker.io's public registry, now also offers webhooks, triggers and links for trusted builds and e-mail notifications. 
-  </div>   
+  </div> 
  </body>
 </html>

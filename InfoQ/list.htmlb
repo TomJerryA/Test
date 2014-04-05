@@ -1,7 +1,7 @@
 <html>
  <head></head> 
- <body>
-  <div>
+ <body> 
+  <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/45.htmlb">高质量代码——书评与采访</a> 由Stephen Vance所撰写的《高质量代码》（Quality Code）一书涵盖了软件开发生命周期的各个方面，尤其关注于提交高质量的产品。Stephen在本书中谈论了为支持软件技术水准测试所需的一些实践。InfoQ有幸与作者进行了交流，对本书的内容以及测试应用程序代码的最佳实践进行了一番讨论。 
   </div> 
   <div> 
@@ -150,6 +150,6 @@
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/5.htmlb">可视化Java垃圾回收</a> 垃圾回收，就像双陆棋一样，只需几分钟来学习，但要用一生来精通。本文是对资深培训师兼顾问Ben Evans最近在InfoQ的演讲“可视化垃圾回收”的总结。在演讲中，他从基础谈起讨论了垃圾回收。 
-  </div>  
+  </div> 
  </body>
 </html>
