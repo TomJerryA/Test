@@ -1,55 +1,54 @@
-<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>Red HatのJBossチームがWild Fly 8をローンチ - Java EE 7をフルサポート，組み込み可能な新Webサーバを装備</h3><p><a target="_blank" href="http://www.infoq.com/news/2014/02/wildfly8-launch"><em>原文(投稿日：2014/02/12)へのリンク</em></a></p>
+<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>Java 8 ローンチ Q&A</h3><p><a target="_blank" href="http://www.infoq.com/news/2014/03/java8-launch-qa"><em>原文(投稿日：2014/03/25)へのリンク</em></a></p>
 <div class="article_page_left news_container text_content_container"> 
  <div class="text_info"> 
-  <p>Red HatのJBoss部門は本日，<a href="http://wildfly.org">WildFly 8</a>の提供開始を<a href="http://wildfly.org/news/2014/02/11/WildFly8-Final-Released/">発表した</a>。これまではJBoss Application Server(JAS)という名称だったプロダクトだ。今回のリリースではJava EE7認定を取得し，Web ProfileとFull Profileの両方をサポートする。さらに，まったく新しいWebサーバであるUndertow，新たなセキュリティ機能，実行中のシステムを更新可能なパッチシステムを備えている。</p> 
-  <p>UndertowはServlet 3.1コンテナであり，HTTP管理インターフェースのサーバでもある。新しいコンテナはHTTP/1.1 RFCの一部である<a href="http://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html#sec14.42">HTTP Upgrade</a>をサポートしており，HTTP接続を他のプロトコルにアップグレードすることができる。そのもっとも一般的な用途は，Webソケット接続における，ブラウザなどクライアントによる全二重接続の確立だ。</p> 
-  <p>HTTP Upgradeでは単一のHTTPポート上に複数のプロトコルを多重化することができるため，複数のポートを使用する必要がなくなり，ファイアウォールの設定が簡略化できる。WildFlyそれ自体，わずか２つのポートしか使用しない。JNDIとEJBコールはUndertowサブシステムの8080ポート上に，管理プロトコルはWeb管理ポート(9090)上に，それぞれ多重化されている。</p> 
-  <p>一例として，接続確立後の最初のEJB要求は，通信の上では次のようなものになる。</p> 
-  <pre>
-GET / HTTP/1.1<br />Host: example.com<br />Upgrade: jboss-remoting<br />Connection: Upgrade<br />Sec-JbossRemoting-Key: dGhlIHNhbXBsZSBub25jZQ==</pre> 
-  <p>これに対してUndertowは，アップグレード可能であることをクライアントに応答する。</p> 
-  <pre>
-HTTP/1.1 101 Switching Protocols<br />Upgrade: jboss-remoting<br />Connection: Upgrade<br />Sec-JbossRemoting-Accept: s3pPLMBiTxaQ9kYGzzhZRbK+xOo=</pre> 
-  <p>その後はWildFly EJBレイヤにソケットが渡されて，通常のEJB接続として動作する。</p> 
-  <p>最初のHTTP要求にわずかなオーバーヘッドがあるものの，接続してしまえばパフォーマンスは完全に同等のはずだ。必要なポート数が確実に少なくなる分，全体として見ればメリットがあることを期待できる。Red Hat JBoss部門でJBoss EAPプラットフォームアーキテクトを務めるWildFlyリーダのJason Greene氏は，InfoQに次のように語っている。</p> 
+  <p>Java 8は，長年に渡って最も待望されていた，プログラム言語のアップデートのひとつだ。今回のリリースでは日付APIやストリームAPI，ラムダ式といった新機能が導入される一方で，PermGenが廃止されるなど，総合的に見て望ましい方向の改良が行われている。我々はリリースの詳細を知るため，Java Platformグループでソフトウェア開発を担当する，Oracle VPの<a href="https://www.linkedin.com/in/georgessaab">Georges Saab</a>氏に話を聞いた。</p> 
+  <p><strong>InfoQ: ラムダプロジェクトの経緯に詳しくない読者のために，今回導入される実装がどのようなものか，簡単に説明して頂けますか？ 言語とVMとライブラリがすべて協調して関与するような改良は，今回が初めてではないかと思うのですが。</strong></p> 
   <blockquote> 
-   <p>HTTP要求を処理する必要があるので，接続確立時にさらにオーバヘッドがいくらか発生しますが，Undertowの効率性によって非常に低く抑えられています。アップグレード要求後は，HTTPを使用しない場合と完全に同じ動作をしますので，その意味から見たパフォーマンスについてはまったく同じです。インパクトが極めて小さいので，私たちはこれをデフォルト設定にしました。 初期設定のWildFly 8はわずか２つのHTTPポートしか使用しません。ひとつは管理用，もうひとつはアプリケーション用です。その他のプロトコルはすべて，これらのポートを再利用しています。</p> 
+   <p>過去のリリースで実現された言語機能のほとんどは，その３つの領域のいずれかひとつだけに影響するものでした。あるいはメジャーリリースを機会として，それぞれの領域に更新が導入されたこともありました。</p> 
+   <p>Java 8のラムダ式では，言語とライブラリ，そしてJVMにも同時に手を加えています。そのために開発全体を通じて，各領域が他の領域の設計や実装に影響したり，強化したりすることが可能だったのです。</p> 
+   <p>例えばVMでは，ラムダ式を実装するためにさまざまな方法を実験しました。そこからInvokeDynamicを使用する方法を見つけ出すことや，InvokeDynamicで何が改善されるかを理解することができたのです。ラムダ式をコレクションで自然に使用したいという要望から，ストリームAPIの設計が生まれました。拡張メソッドの導入においては，言語面でのサポートも必要になりました。</p> 
+   <p>これらは数年間に及ぶ発展のプロセスです。その過程ではコミュニティから，たくさんの素晴らしいフィードバックもありました。</p> 
   </blockquote> 
-  <p>Undertowは組み込みモードでも使用可能なように設計されている。構築したサーバにHTTPハンドラを登録して，要求を非ブロック方式で処理するためのチェーン構成APIが用意されているのだ。<a href="http://undertow.io">undertow.io</a>Webサイトでの使用例を挙げる。</p> 
-  <pre>
-public class HelloWorldServer {
-
-    public static void main(final String[] args) {
-        Undertow server = Undertow.builder()
-                .addListener(8080, &quot;localhost&quot;)
-                .setHandler(new HttpHandler() {
-                    @Override
-                    public void handleRequest(final HttpServerExchange exchange) throws Exception {
-                        exchange.getResponseHeaders().put(Headers.CONTENT_TYPE, &quot;text/plain&quot;);
-                        exchange.getResponseSender().send(&quot;Hello World&quot;);
-                    }
-                }).build();
-        server.start();
-    }
-}
-</pre> 
-  <p>Undertowでは，Servlet APIに基づいてコードを組み込むこともできる。これについては，いくつかの例が<a href="https://github.com/undertow-io/undertow/blob/master/examples/src/main/java/io/undertow/examples/servlet/ServletServer.java">GitHub</a>にある。</p> 
-  <p>新しいWebサーバだけでなく，WildFly 8は監査ログやロールベースのセキュリティモデルの導入によって，セキュリティ面でも著しく向上している。</p> 
-  <p>監査システムは，管理モデルに対するどのような操作であっても，ローカルファイルまたはサーバ上のログに確実に記録されるように設計されている。</p> 
-  <p>WildFlyは２タイプのアクセス管理プロバイダを添付して提供される。&quot;シンプル&quot;タイプはAS 7と同等で完全にオール・オア・ナッシング形式のものだが，RBAC(Role Based Access Control)タイプは管理者それぞれに権限を設定可能だ(監視用ロール，更新ロール，といったように)。</p> 
-  <p>WildFlyには７つのロールがあらかじめ定義されている。</p> 
-  <ol> 
-   <li><strong>モニタ</strong>: 最小限の権限を持つ。 コンフィギュレーションと現在のランタイム情報を参照できるが，機密性の高いリソースとデータ，監査ログおよび関連リソースにはアクセスできない。</li> 
-   <li><strong>オペレータ</strong>: 監視ロールのすべての権限に加えて，実行状態の変更 – サーバのリロードあるいはシャットダウン，JMSデスティネーションの一時停止と再開が可能。ただし永続的なコンフィギュレーションを変更することはできない。</li> 
-   <li><strong>メンテナ</strong>: オペレーターロールのすべての権限。 永続的なコンフィギュレーションの変更，すなわちアプリケーションのデプロイや，JMSデスティネーションの追加といった操作が可能。このロールでは，サーバとデプロイメントに関する，ほとんどすべてのコンフィギュレーションを変更することができる。ただし機密性の高い情報(パスワードなど)の参照や変更，監査情報の参照や変更を行うことはできない。</li> 
-   <li><strong>デプロイヤ</strong>:&nbsp;メンテナとほとんど同じだが，対象がデプロイに関する修正に制限されている。その他の一般的な設定を変更することはできない。</li> 
-   <li><strong>管理者</strong>:&nbsp;パスワードやセキュリティ関連の設定といった，機密性の高い情報の参照と変更が可能。ただし監査ログに関する操作はできない。</li> 
-   <li><strong>監査人</strong>:&nbsp;モニタロールのすべての権限を持つ。基本的には読み取りのみのロールだが，監査ログシステムに関する設定は修正も可能。</li> 
-   <li><strong>スーパーユーザ</strong>:&nbsp;AS 7のアドミニストレータと同じく，すべての権限を所有する。</li> 
-  </ol> 
-  <p>RBACデータはActive Directoryを含む，ほとんどすべてのLDAPサーバに保存することができる。</p> 
-  <p>WildFlyには新しいパッチシステムも含まれている。これは当初，JBoss EAPのために開発されたもので，JBossの用意したパッチをリモートあるいはローカルで適用することができる。実行中のシステムに対するパッチ適用も可能だが，それを有効にするには再起動が必要になる。</p> 
-  <p>最後に，WildFlyはおもにJava EEのサポートにフォーカスしているが，その他の言語や環境用にも使用することができる。例えば<a href="http://torquebox.org">TorqueBox</a>プロジェクトでは，サーバ上でRuby on Railsを稼働させることが可能だ。</p> 
-  <p>詳細は<a href="http://wildfly.org">WildFlyのwebサイト</a>あるいは<a href="http://wildfly.org/news/2013/11/21/WildFly-8-Webinar/">webiner記録</a>で見ることができる。InfoQではJason Greene氏に<a href="http://www.infoq.com/jp/news/2014/02/wildfly8-interview">さらに広範な話題でのインタビュー</a>も行っている。そこではさまざまな話題と合わせて，新しい監査ログシステムであるUndertowの背景や，GlassFishの<a href="http://www.infoq.com/jp/news/2013/11/glassfish-commercial-dead/">商用サポートを廃止する</a>という，Oracleの決定が持つ影響についても取り上げている。</p> 
+  <p><strong>InfoQ: ラムダ式を追加したことで，GroovyやScalaを使っている開発者たちがJava言語に戻ってくるでしょうか？</strong></p> 
+  <blockquote>
+   今あげたふたつの言語が，いずれもJVM上で動作する(他にもホスト環境はありますが)というのは意味深いですね。私たちはむしろ，JVM上でJava以外の言語をサポートするための開発を，これまでたくさん行ってきました。言語の実装者たちはその経験を通じて，どのような言語がJVMに適しているか，あるいは適していないかという点で，多くのことを学んできたと思います。言語開発で実験を行う場合，何百万という開発者が使っている言語よりも，数千人規模の言語の方がずっと簡単なのは当然のことです。私たちが本当に目指しているのは，数百万人というJava開発者たちの開発作業の支援 - 思慮と責任を持って進化させていく，そのための取り組みなのです。
+  </blockquote> 
+  <p><strong>InfoQ: ラムダ式とストリームAPIを組み合わせることで，明快かつ簡潔なコードが記述できるようになりますが，関数プログラム的な方法でフィルタが次々と適用されることから，潜在的なパフォーマンスオーバーヘッドに対する懸念の声も聞かれます。このような心配は合理的なものでしょうか？ オーバーヘッドを軽減するために，どのような最適化が導入されていますか？</strong></p> 
+  <blockquote> 
+   <p>ストリームは<em>中間(intermediate)</em>と<em>末端(terminal)</em>での処理をサポートします。フィルタのような中間処理は，それ自身ではフィルタ処理を実行せず，新たなストリームを生成します。そのストリームを通過するときに，指定された述語にマッチするフィルタの処理要素が提供されるのです。ですからフィルタを追加することで，結果としてランタイムで実行される処理が増加する可能性はあります。</p> 
+   <p>その一方で，ストリーム上のすべての中間処理がそうなのですが，ストリームの遅延処理によって複数の処理をデータのワンパス内に融合することで，非常に大きな効率化が実現できます。ラムダ式の周到な設計で実現されたJVM内部の大幅な最適化とも相まって，フィルタ追加による影響の可能性は著しく低減されているのです。</p> 
+   <p>もうひとつ考慮してほしいのが，ストリームとラムダ式によって並列処理の利用が極めて容易になることです。さらに並列ストリーム上の操作には，順序による制約を緩和するメリットもあります。ベースとなるストリームの実施順序について，ユーザが気にする必要はありません。</p> 
+  </blockquote> 
+  <p><strong>InfoQ: Java 8の大きな特長としてもうひとつ，プラグイン可能なタイプチェッカの開発を可能にする&quot;Annotations on Java Types&quot;があります。これについてもう少し詳しく説明して頂けますか – 例えばこの機能を使って，開発者にどのようなことをして欲しいと思いますか？</strong></p> 
+  <blockquote> 
+   <p>この機能は，型名称に対するアノテーションを可能にするもので，型を使用できるほとんどの場所で使用できます。変更の結果，プラグイン可能なタイプチェッカを使って，コンパイル時にエラー状態を検出するアノテーションが記述できるようになりました。このようなチェッカとアノテーションのスキームは，nullポインタエラーやロック，あるいは国際化といった問題に対処するため，コミュニティで開発されたものです。</p> 
+   <p>実装例や情報ソースとしては，Michael Ernst教授の&quot;<a href="http://checker-framework.org">checker-framework.org</a>&quot;がよいでしょう。nullチェックなど，たくさんのツールを提供しています。教授はこの言語仕様を定めた，JSR 308の仕様リーダのひとりでもあります。</p> 
+   <p>将来的にはJDKのコードベースにも，この種のアノテーションスキームがひとつくらいは採用されるとよいと思っています。そしてもちろん，さらに広いJavaコミュニティの開発者たちが，自身のコードベースでこのテクノロジを使ってくれて，ソフトウェア品質の問題に対処する新たなチェッカが開発されれば素晴らしいですね。</p> 
+   <p>特に安全性が重視される組み込みシステムでは，このようなデータ型に重要な属性と制約を設定する手法によって，それらをコンパイル時に検証したり，静的に解析したりすることが可能になります。Java以外の，そのドメイン特有のプログラム言語を使用しているユーザに対しても，将来的にJavaプラットフォームに移行する手段を提供することになるでしょう。</p> 
+  </blockquote> 
+  <p><strong>InfoQ: Java 8の動的言語用の機能として，最も大きな拡張は何だと思いますか？</strong></p> 
+  <blockquote> 
+   <p>それは間違いなくHotSpot VM関連のパフォーマンス向上，特にinvokedynamicに関連する部分ですね。新機能として重要なのはNashorn JavaScript Engineでしょう。人気の高いスクリプト言語の，軽量でパフォーマンスに優れた実装です。Nashornのパフォーマンスが向上したことは，VM上で最適化された動的言語実装の選択肢がひとつ増えた，という意味にもなります。</p> 
+   <p>さらにNashornではJavaクラスのアクセスも簡単ですので，JavaScriptからJavaを使用する非常に便利な手段も提供しています。JavaFXアプリケーションをすべてJavaScriptで記述して，JVM上で動作させるようなことも可能になりました。JavaとJVM上で動作する動的言語との透過的な相互運用性が，このようなアプリケーションを開発するパワフルな方法を実現しているのです。</p> 
+  </blockquote> 
+  <p><strong>InfoQ: 昨年は，Javaのセキュリティに関する話題をニュースで見ない日がないほどでした。Java 8ではJavaブラウザプラグインやその他の面で，特別な改良が行われているのでしょうか？</strong></p> 
+  <blockquote> 
+   <p>デプロイメントルールセットや例外サイトリストなどの重要なセキュリティ改善や新機能が，OracleのJava SE 7アップデートを通じて数多く提供されてきました。Javaの適切なセキュリティを維持することは，私たちにとって最重要課題なのです。</p> 
+   <p>さらにJava SE 8では，新たなセキュリティ機能もいくつか追加されています。もっとも目を引くのは，TLS(Transport Layer Security)の実装としてTLS 1.2がプラットフォーム標準になったことでしょう。セキュリティAPIの全面的な改良に加えて，証明書失効チェックの改善から新しい暗号アルゴリズムに至るまで，さまざまな拡張機能があります。</p> 
+  </blockquote> 
+  <p><strong>InfoQ: Java5, 6, 7を使用しているJava開発者の割合についてご存じですか？ Java 8の適用を促進するための計画は何かあるのでしょうか？</strong></p> 
+  <blockquote> 
+   <p>私は過去6～ 9ヶ月間，世界中のカンファレンスで話をしてきたのですが，その度，皆が使用しているバージョンについて尋ねました。非公式かつ非科学的なサーベイではありますが，その結果からは現在，ほとんどの開発者がJava SE 7を使っているようです。6を使い続けている数はそれより少なく(ただし無視し難い数です)，それより古いバージョンを使っているのはごく少数でした。開発者の視点からは，Java SE 8には新しい言語機能やAPIなど，早期に採用せずにはいられないような理由が備わっています。NetBeansやEclipse，IntelliJ IDEAといったIDEも，次期リリースでこれらの機能用に優れたツーリングを提供する努力をしていますから，開発者からの支持もすぐに得られるものと期待しています。</p> 
+  </blockquote> 
+  <p><strong>InfoQ: 昨年のJavaOneでの大きなテーマのひとつが，Java ME, SE, EEというプラットフォームの統一に関するものでした。Java 8では，この方向はどうなっているのでしょうか？</strong></p> 
+  <blockquote> 
+   <p>Java SE 8には多くの新機能がありますが，コンパクトプロファイルのサポートもそのひとつです。これはJava SEプラットフォーム仕様のサブセットプロファイルをいくつか定義して，プラットフォームの全機能を必要としないアプリケーションのデプロイと，小規模デバイス上での実行を可能にするものです。HotSpotの他の改良点，例えばクラスのメタデータのメモリ使用量削減や，さらにはVM自体のメモリ削減などとも相まって，小規模デバイス用のアプリケーション開発とデプロイ用に，JDK 8のスケールダウンを実現しています。この作業を簡単にするためJDK 8には，開発者のコードが依存するプロファイルを見つけ出す<strong>jdeps</strong>という新しいツールがあります。</p> 
+   <p>別の方向からは，Java ME 8の言語とVM, ライブラリの配置を，Java SE 8に近いものに拡張する作業も行っています。ラムダ式はまだ使用できませんが，アサーションやジェネリクス，列挙型，文字列によるswitch，try-with-resources，ダイアモンドオペレータなど，Java SE 1.5, 6, 7で導入された言語構造がJava MEのコードでサポートされるようになりました。それと同時にコアクラスライブラリも，新しいwebプロトコルをサポートするようにアップデートされました。IPv6や，TLS 1.2のサポートのような最新のセキュリティ機能がサポートされて，Java SEとJava MEプラットフォームはこれまでより近いものになっています。</p> 
+  </blockquote> 
+  <p><strong>InfoQ: Stripped ImplementationsがJavaに追加されるのは，いつ頃になるのでしょうか？</strong></p> 
+  <blockquote> 
+   <p>Java SE 8のリリースが完了したら，Java SE 9のリリースに先行してプラットフォームに追加する方法を再検討する予定です。技術的な問題はないのですが，Javaプラットフォームの断片化を回避しながら適切なユースケースを可能にするため，仕様書類の整備や法律関連の枠組みを確立する，という課題が残っています。</p> 
+  </blockquote> 
+  <p>我々の質問に答えてくれたGeorges Saab氏に感謝したい。Oracleは<a href="http://eventreg.oracle.com/profile/web/index.cfm?PKWebId=0x637279c68&amp;source=InfoQ">今日この後，Webinarを通じてJavaの提供を正式に発表する</a>。InfoQでもその様子を報告する予定である。</p> 
  </div> 
 </div><br><br><br><br><br><br></body></html>

@@ -1,11 +1,27 @@
-<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>Docker、Mac OS XとBTRFSをサポート</h3><p><a target="_blank" href="http://www.infoq.com/news/2014/02/docker_0_8"><em>原文(投稿日：2014/02/17)へのリンク</em></a></p>
+<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>LocalForageでアプリケーションのオフライン対応を行う</h3><p><a target="_blank" href="http://www.infoq.com/news/2014/02/localforage-offline-data-web"><em>原文(投稿日：2014/02/26)へのリンク</em></a></p>
 <div class="article_page_left news_container text_content_container"> 
  <div class="text_info"> 
-  <p><a href="http://blog.docker.io/2014/02/docker-0-8-quality-new-builder-features-btrfs-storage-osx-support/">Docker 0.8のリリース</a>の一部として、Docker.ioチームは<a href="http://docs.docker.io/en/latest/installation/mac/">Mac OS Xへのインストールサポート</a>と<a href="http://en.wikipedia.org/wiki/Aufs">AUFS</a>の代替として<a href="http://en.wikipedia.org/wiki/Btrfs">BTRFS</a>が使えるようになったことを発表した。</p> 
-  <p>Macサポートは、<a href="http://get.docker.io/builds/Darwin/x86_64/docker-latest">ネイティブのDocker OS Xクライアント</a>と<a href="http://en.wikipedia.org/wiki/Virtualbox">VirtualBox</a>で動かすのに必要な軽量な<a href="https://github.com/steeve/boot2docker">Boot2Docker</a>仮想マシン (VM) から構成される（OS XはDockerに必要なLinuxコンテナをサポートしていないため）。このリリース以前は、MacユーザはLinux仮想マシン上でDockerクライアントとデーモンの両方を動かす必要があった。</p> 
-  <p>DockerチームはLinuxコンテナ (<a href="http://en.wikipedia.org/wiki/Lxc">LXC</a>) 関連をOS Xに移植することを望んでいたが、今のところ、デーモンはVMで起動する必要がある。Boot2Dockerは最小限のLinux環境とVirtualBoxで動くコマンドラインスクリプト一式を提供する。Boot2Dockerはライフサイクル管理とともに、VMで動作するSSHとDockerデーモンのポートマッピングの面倒を見る。DOCKER_HOST環境変数を使うことで、クライアントはデフォルトのネイティブUnixソケットではなく、TCPでDockerデーモンに接続することができる。残念ながら、Boot2DockerはまだDocker自身のポートマッピングメカニズムと統合されておらず、ホストであるMacからコンテナ内で動いているサービスに接続するためには、<a href="https://github.com/dotcloud/docker/issues/4007">VirtualBoxとDocker両方のポートをマップする</a>必要がある。</p> 
-  <p>BTRFSドライバはまだ実験的なものとされており、既存のBTRFSパーティションを用意する必要がある。Dockerの動作には、基本となる<a href="http://en.wikipedia.org/wiki/Copy_on_write">コピーオンライト</a>ファイルシステムの利用が不可欠だ。イメージとイメージから生成したコンテナはファイルシステムブランチにマッピングされたレイヤにより構成される。<a href="http://en.wikipedia.org/wiki/Zfs">ZFS</a>ドライバの作業も進行中だ。</p> 
-  <p>また、Docker.ioチームは特定の機能とは関係なしに、月1回リリースすると発表した。これは元VMware VPでGreylock Partnersの<a href="http://www.greylock.com/teams/50-Jerry-Chen">Jerry Chen</a>氏による<a href="http://blog.docker.io/2014/01/docker-closes-15-m-series-b-funding/">$15mの投資ラウンド</a>に沿ったもので、Dockerを製品レベルにし、コミュニティプラットフォームを築き、商用化に向けた道筋をつけていく予定だ。Dockerチームは<a href="https://github.com/dotcloud/docker">githubのmasterブランチ</a>を安定させ、これを最新版を求めている人へのリファレンスポイントにすると約束している。なお、最新の投資ラウンドに先立ち、<a href="http://www.infoq.com/news/2013/10/dotcloud-renamed-docker">dotCloudは社名をDocker Incに変更した</a>。</p> 
-  <p>Dockerの背景と使われ方について、詳しくはZef Hemel氏の「<a href="http://www.infoq.com/jp/articles/docker-containers/">Docker: Linuxコンテナを使ってアプリケーションの配置を支援する</a>」を参照。</p> 
+  <p>Mozilla財団が<a href="https://github.com/mozilla/localForage">localForage</a>をリリースした。localForgeは、Webアプリケーションのオフラインデータをシンプルに保存できるようにする、新しいJavaScriptライブラリである。</p> 
+  <p>最近のブラウザの技術ではないにも関わらず、<a href="http://www.html5rocks.com/en/tutorials/offline/whats-offline/#toc-html5-offline-storage">選択肢の多さ</a>から、オフライン対応は常に統一感のない状態であった。このライブラリをユニークなものにしているのは、最新のクライアントサイド技術の特徴である非同期性とBlob対応という両方の長所を、シンプルなAPIとして組み合わせようとしている事である。このライブラリは、Webアプリケーションに強力なオフライン機能を提供する。そして、Webアプリケーションをモバイルのネイティブアプリケーションと同等の存在に近づけ、開発者の作業をより直感的にしている。</p> 
+  <p>最初の選択肢のひとつであった<a href="http://www.w3schools.com/html/html5_webstorage.asp">localStorage</a>は、オフラインの保存領域に対するシンプルなデータアクセスを提供した。しかしながら、その遅さ、同期性やバイナリのBlobが扱えない（例えば、mp3ファイルのキャッシュができない）ことが<a href="http://calendar.perfplanet.com/2011/localstorage-read-performance/">ベンチマークテスト</a>によって示されている。それ以来、評判の良い他の2つの選択肢―<a href="https://developer.mozilla.org/en-US/docs/IndexedDB">IndexedDB</a>と<a href="http://html5doctor.com/introducing-web-sql-databases/">Web SQL</a>―が登場してきた。これらは非同期性を持ち、高速であり、そして多くのデータセットをサポートしている。これら２つの技術の難点は、APIの使用方法があまりシンプルではないということと、どちらも<a href="http://csimms.botonomy.com/2011/05/html5-storage-wars-localstorage-vs-indexeddb-vs-web-sql.html">すべてのメジャーなブラウザでサポートされているわけではない</a>ということである。</p> 
+  <p>直近のlocalForgeのリリースは、統合された技術を用いてこれらの問題を打開しようとしている。すなわち非同期性と、とてもシンプルなlocalStorageのシンタックスを用いた、IndexedDBとWeb SQLのBlobサポートである。</p> 
+  <pre><p>var settings = {color: 'black', font: 'Helvetica'};   <br />localForage.setItem('settings', settings, function(result) {   <br />&nbsp;&nbsp;console.log(result);   <br />});</p></pre> 
+  <p>IndexedDBとWeb SQLのサポートを含めることにより、localStorage単体よりも多くのWebアプリケーションのデータ保存が可能となる。また、APIのノンブロッキングという性質は、get/setのコールにおいて、メインスレッドからの応答がなくならないようにする。そのため、Webアプリケーションをより高速化するのである。さらに、localForgeはコールバックと<a href="http://www.promisejs.org/">ES6 Promises</a>をサポートしており、開発者にとって最適な実装方法を選べるようにしている。</p> 
+  <p>このライブラリはIndexedDB、Web SQLそしてlocalStorageのドライバの自動読み込みと管理を行うので、手動でドライバを扱う必要がない（Webアプリケーションを動かしているブラウザに関係なく、最適なドライバが選ばれる）。IndexedDBもWeb SQLも利用できない場合、localForageはlocalStorageを代わりに使用するため、少なくとも基本的なデータはオフラインに保存することができる（しかし、Blobのサポートはなく、パフォーマンスはより遅くなる）。</p> 
+  <p>localForageはすべてのモダンブラウザをサポートしている。非同期のデータ保存はすべてのブラウザで利用可能であり、以下の一覧のカッコの中は 該当する localStorageのサポートバージョンである。</p> 
+  <ul> 
+   <li>Android Browser 2.1</li> 
+   <li>BlackBerry 7</li> 
+   <li>Chrome 23 （localStorageはChrome 4.0以降）</li> 
+   <li>Chrome for Android 32</li> 
+   <li>Firefox 10（localStorageはFirefox 3.5以降）</li> 
+   <li>Firefox for Android 25</li> 
+   <li>IE 10（localStorageはIE 8以降）</li> 
+   <li>IE Mobile 10</li> 
+   <li>Opera 15（localStorageはOpera 10.5以降）</li> 
+   <li>Opera Mobile 11</li> 
+   <li>PhoneGap/Apache Cordova 1.2.0</li> 
+   <li>Safari 3.1</li> 
+  </ul> 
  </div> 
 </div><br><br><br><br><br><br></body></html>

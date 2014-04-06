@@ -1,6 +1,15 @@
 <html>
  <head></head> 
- <body> 
+ <body>
+  <div>
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/46.py">ThoughtWorks Technology RadarについてRebecca Parsons氏が語る</a>1月、ThoughtWorksは最新のTechnology Radarで、同社が追跡しているソフトウエア開発のエコシステムの動向を発表した。1)プロダクション環境での警告システムとリカバリ、2)プライバシとビッグデータの緊張関係、3)JavaScriptのエコシステム、4)物理と仮想の環境の境界の曖昧化、の4つが今年の大きなテーマだ。
+  </div>
+  <div>
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/45.py">Java 8 ローンチ Q&amp;A</a>Java 8は，長年に渡って最も待望されていたプログラム言語のアップデートのひとつだ。今回のリリースでは日付APIやストリームAPI，ラムダ式といった新機能が導入される一方で，PermGenが廃止されるなど，総合的に見て望ましい方向の改良が行われている。我々はリリースの詳細を知るため，Java Platformグループでソフトウェア開発を担当する，Oracle VPのGeorges Saab氏に話を聞いた。
+  </div>
+  <div>
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/44.py">LocalForageでアプリケーションのオフライン対応を行う</a>Mozilla財団がlocalForgeをリリースした。localForgeは、Webアプリケーションのオフラインデータをシンプルに保存できるようにする、新しいJavaScriptライブラリである。このライブラリをユニークなものにしているのは、最新のクライアントサイド技術の特徴である非同期性とBlob対応という両方の長所を、シンプルなAPIとして組み合わせようとしている事である。
+  </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/43.py">QCon Tokyo 2014 【組込み系/モノづくり】 トラックのご紹介</a>QCon Tokyoのカテゴリのひとつとして「組込み系/モノづくり」トラックをご用意しています。 日本のお家芸ともいえる組込み系ソフトウェアの開発にも今ひしひしと変革の波が押し寄せています。安くて高機能の家電製品や組込み機器を提供すれば飛ぶようにモノが売れる時代は終わり、以下に付加価値を付け、モノとサービスと環境の総合的な組合せによって今までにない体験をいかに提供できるか。スピーディなデリバリと意外性、そして充実した使用感が求められるという新しい次元にモノづくりは突入したといえるでしょう。 
   </div> 
@@ -141,15 +150,6 @@
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/0.py">OpenAccess ORMがTelerik Data Accessに名称変更，改良UIとカラーのビジュアルデザイナを追加</a>Telerikは先日，OpenAccess ORMをTelerik Data Accessと名称変更するとともに，ユーザインターフェースの改良やカラーのビジュアルデザイナ，Telerik.DataAccess.Core, Telerik.DataAccess.Fluent, Telerik.DataAccess.Fluent.SampleといったNuGetパッケージを追加した。 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/49.py">HazelcastがMapReduce APIをサポート</a>オープンソースのインメモリデータグリッドソリューションHazelcastがMapReduceAPIを新たに導入した。 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/48.py">restyle.jsを使ったCSS処理</a>Andrea Giammarchi氏が開発しているrestyle.jsはJavaScriptベースのCSSプリプロセッサであり、サーバ(Node.js)でもブラウザでも動作する。 &quot;シンプルなCSSアプローチ&quot;と自称するこのツールはCSSのルールとプロパティのプレフィックス付きのバリエーションを生成し、DOMに挿入できる。 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/47.py">マップ，HTML5ビューア，高度なバーコードとWindows AzureをサポートするActiveReports 8</a>ComponentOneがActiveReports 8をリリースした。マップ，RSS14Stacked, RSSLimited, MicroPDF417などのバーコード，さらには部分信頼あるいは完全信頼の両環境下でWindows Azureをサポートする。さまざまなモバイルデバイス用に最適化したアプリケーションを開発するためのHTML5ビューアも同梱されている。 
-  </div> 
+  </div>    
  </body>
 </html>

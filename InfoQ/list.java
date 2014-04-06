@@ -1,8 +1,11 @@
 <html>
  <head></head> 
- <body>
-  <div>
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/24.java">Mobile Usage Report Highlights Trends and Shifts in Mobile Device Use</a>Mobile analytics firm Flurry has issued a report analyzing time spent on mobile devices by the average US consumer between January and March of 2014. This is the second such report that Flurry issues, allowing for an interesting comparison year to year showing, among other things, that mobile devices are changing the way the web is consumed.
+ <body> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/25.java">Modern C++ and Visual Studio</a>Modern C++ support continues to be an area of focus for Microsoft. This week at Build Herb Sutter gave a talk which provided an update on their current efforts, the level of CPP support being added in the next Visual Studio preview, and what is in store for the future. 
+  </div> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/24.java">Mobile Usage Report Highlights Trends and Shifts in Mobile Device Use</a>Mobile analytics firm Flurry has issued a report analyzing time spent on mobile devices by the average US consumer between January and March of 2014. This is the second such report that Flurry issues, allowing for an interesting comparison year to year showing, among other things, that mobile devices are changing the way the web is consumed. 
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/23.java">Create Your Own Scaffold in Visual Studio 2013.2</a>An important part of ASP.NET MVC is the set of code generators called scaffolds. Inspired by Ruby on Rails, these code generators can be used to quickly create controllers and views based on a model class. New in VS 2013 Update 2 is the ability to create your own scaffolds that plug into the overall framework. 
@@ -148,8 +151,5 @@
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/31.java">ASP.NET Web API Gets OData v4.0 Support, WCF Will Not</a>ASP.NET Web API 2.2 for OData v4.0 are now available as nightly builds. The team also released OData core libraries version 6.1 on nuget with several bug fixes and new features, especially increased support for OData v4 spec. However, the MS team suggested that WCF will not get OData v4 specific features. 
   </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/31.java">Google Cuts Cloud Prices, Integrates CI Tools, Supports Windows and Manages VMs</a>Google had a Cloud Platform Live event on Tuesday (recorded here) unveiling a number of new features, improvements and a new pricing model. 
-  </div>  
  </body>
 </html>
