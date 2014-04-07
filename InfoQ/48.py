@@ -1,53 +1,57 @@
-<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>restyle.jsを使ったCSS処理</h3><p><a target="_blank" href="http://www.infoq.com/news/2014/02/restylejs"><em>原文(投稿日：2014/02/17)へのリンク</em></a></p>
+<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>Googleのクラウド価格引き下げに対するAmazonの反応</h3><p><a target="_blank" href="http://www.infoq.com/news/2014/03/aws-price-cut"><em>原文(投稿日：2014/03/29)へのリンク</em></a></p>
 <div class="article_page_left news_container text_content_container"> 
  <div class="text_info"> 
-  <p>Andrea Giammarchi氏が開発している<a href="https://github.com/WebReflection/restyle">restyle.js</a>はJavaScriptベースのCSSプリプロセッサであり、サーバ(Node.js)でもブラウザでも動作する。 &quot;シンプルなCSSアプローチ&quot;と自称するこのツールはCSSのルールとプロパティのプレフィックス付きのバリエーションを生成し、DOMに挿入できる。</p> 
-  <p>既存のCSSには機能的な不足はないものの、Andrea氏はサーバとクライアントの両方で動作する<a href="http://webreflection.blogspot.co.uk/2014/02/restylejs-simplified-css-approach.html">軽量なもの</a>がない、という。</p> 
+  <p>GoogleはComputer Engine, Storage, BigQueryなど，同社の<a href="http://www.infoq.com/news/2014/03/google-cloud">クラウドサービスの価格を大幅に引き下げる</a>と発表した。しかし同社の価格的なアドバンテージはわずか24時間しか続かなかった。Amazonがその翌日，EC2, S3, RDS, ElasticCache, MapReduceといった<a href="http://aws.typepad.com/aws/2014/03/aws-price-reduction-42-ec2-s3-rds-elasticache-and-elastic-mapreduce.html">同社のサービスを大幅に切り下げた</a>ためだ。</p> 
+  <p>次表はAWSの価格引き下げの概要をまとめたものだ。</p> 
+  <table cellspacing="0" cellpadding="2" width="625" border="1" unselectable="on"> 
+   <tbody> 
+    <tr> 
+     <td valign="top" width="131"><strong>サービス</strong></td> 
+     <td valign="top" width="114"><strong>値下げ率 (%)</strong></td> 
+     <td valign="top" width="358"><strong>コメント</strong></td> 
+    </tr> 
+    <tr> 
+     <td valign="top" width="131">EC2 - オンデマンド</td> 
+     <td valign="top" width="114">7-40</td> 
+     <td valign="top" width="358">値下げ率はインスタンスタイプによって異なる。</td> 
+    </tr> 
+    <tr> 
+     <td valign="top" width="131">EC2 - リザーブド</td> 
+     <td valign="top" width="114">10-40</td> 
+     <td valign="top" width="358">値下げ率はインスタンスタイプによって異なる。最大68%の値引きとなるボリュームディスカウトもある。</td> 
+    </tr> 
+    <tr> 
+     <td valign="top" width="131">S3</td> 
+     <td valign="top" width="114">36-65</td> 
+     <td valign="top" width="358">平均51%</td> 
+    </tr> 
+    <tr> 
+     <td valign="top" width="131">RDS</td> 
+     <td valign="top" width="114">28</td> 
+     <td valign="top" width="358">平均</td> 
+    </tr> 
+    <tr> 
+     <td valign="top" width="131">ElasticCache</td> 
+     <td valign="top" width="114">34</td> 
+     <td valign="top" width="358">平均</td> 
+    </tr> 
+    <tr> 
+     <td valign="top" width="131">MapReduce</td> 
+     <td valign="top" width="114">27-61</td> 
+     <td valign="top" width="358">hs1.8xlargeの価格で1000ドル/TB/年以下になる。</td> 
+    </tr> 
+   </tbody> 
+  </table> 
+  <p>Amazon CEOのJeff Bezos氏がWebサイトに掲載した顧客向けの価格引き下げ記事には，今回はAmazonが2008年以降に実施した値下げの42回目である，と記載されている。しかしその<a href="http://aws.typepad.com/aws/2014/03/aws-price-reduction-42-ec2-s3-rds-elasticache-and-elastic-mapreduce.html">ブログ記事</a>には何人かの読者が，彼らの&quot;費用削減を実現してくれた&quot;Googleに対する感謝のコメントを寄せている。</p> 
+  <p><a href="http://www.rightscale.com/blog/cloud-cost-analysis/aws-responds-price-cuts-google-vs-aws-pricing-round-2">AWSの新価格をGoogleの価格と比較したRightScale</a>では，On Demandの標準インスタンス価格はまったく同じ，という結論に達している。しかしハイメモリとハイCPUのインスタンスにおいては，Googleの方がまだ，それぞれ33%および16%低価格である。ただしAWSのハイメモリインスタンスはメモリ容量が30%大きく，ハイCPUではメモリおよびSSD容量が倍であるので，実質的にはほとんど同じだ。</p> 
+  <p>１年間のリザーブドインスタンスと長期利用割引(Sustained Use)を比較すると，AWSの標準およびハイメモリインスタンスの方がGoogleの100%-useよりも10～20%安価だが，ハイCPUについては高価(2～3%)だ。AWSの価格差が大きいのは3年間のリザーブドインスタンスで，Googleの長期利用割引よりも32～48%低価格である。しかしながらモデルの差も大きく，AWSが前払いであるのに対して，Googleの費用は年次計算になっている。RightScaleではクラウドユーザ向けに，価格的に優位な３つのシナリオを描いてみせている。</p> 
   <blockquote> 
-   <p>&quot;yet another CSS preprocessor&quot;を探しているなら、次のことを教えます。私が何人かの著名なCSS開発者やウェブ開発者に話を聞いたところ、そのようなスクリプトは存在しなかったです。&quot;なんで誰も作っていないんだろう&quot;、と思うでしょう。私の考えでは、誰かがすでに作っているものの、圧縮して0.8KBでサーバとIE6まで含んだクライアントと互換性のあるものがないんです。つまりrestyleのことです。</p> 
+   <ul> 
+    <li>キャッシュが潤沢で利用方法を正確に予測できるクラウドユーザは，AWSのRIで費用を節約することができます。</li> 
+    <li>クラウドのワークロードがまだ急激に増加中で，オンデマンドインスタンスとリザーブドインスタンスを併用するメリットを得たい多くのユーザにとって，もっともコスト効果の高い方法は，必要とするインスタンスの正確なタイプとRI利用の有効度によって異なります。</li> 
+    <li>ワークロードに関する予測可能性が高くなく，主としてオンデマンドを利用するクラウドユーザは，Googleのサービスを使用することで費用を節約できるでしょう。</li> 
+   </ul> 
   </blockquote> 
-  <p>このライブラリは、restyle()というメソッドを公開し、ふたつの引数をとる。ひとつはJavaScriptのオブジェクトでCSSやDOMスタイルの編集に似た文法を持つ。</p> 
-  <pre>
- restyle({
-    'body &gt; div.my-div': {
-        backgroundColor: 'goldenrod',
-        backgroundImage: 'url(mybg.png)'
-    }
-}); </pre> 
-  <p>これによって、次のCSSが出来上がる。</p> 
-  <pre>
- body &gt; div.my-div {
-    background-color: goldenrod;
-    background-url: url(mybg.png);
-} </pre> 
-  <p>異なる方法でJavaScriptオブジェクトを定義し、出力結果を得ることもできる。</p> 
-  <pre>
- restyle({
-    'body &gt; div.my-div': {
-        background: {
-            color: 'goldenrod',
-            image: 'url(mybg.png)'
-        }
-    }
-}); </pre> 
-  <p>もちろん、特別なことはしていない。マークアップの記述の減量もわずかだ。しかし、restyle.jsは標準的なCSSでは冗漫になってしまうときにはrestyle.jsは効果的だ。例えば、ベンダプレフィックスを使うとき、ふたつ目の引数を使ってベンダプレフィックスを定義すればいい。例えば、</p> 
-  <pre>
- restyle({
-    '.my-div': {
-        transition: 'background-color 500ms ease';
-        backgroundColor: '#00f';
-    }
-}, ['moz', 'webkit']); </pre> 
-  <p>出力結果は以下の通り。</p> 
-  <pre>
- .my-div {
-    -webkit-transition: background-color 500ms ease;
-    -moz-transition: background-color 500ms ease;
-    transition: background-color 500ms ease;
-    background-color: #00f;
-} </pre> 
-  <p>これは、アニメーションのロールを記述とき、とても使いやすい。2、3のコードがベンダプレフィックスがついたCSSの属性に変換される。サーバでは、第2引数を省略すればプレフィックスなしになる。ブラウザで動作しているrestyle.jsでは、ブラウザの種類に関わらず、すべてのベンダプレフィックスを生成する。</p> 
-  <p>restyle()関数は環境によって異なる結果を返す。Node.jsでは、結果のCSSを含む文字列を返す。ブラウザでは、CSSは自動的にDOMに挿入され即座に反映される。返却値は属性ノード(スタイルエレメント)、css(CSSを含む文字列)、remove()メソッドを含むオブジェクトを返す。removeメソッドは挿入したスタイルをDOMから削除する。</p> 
-  <p>サンプルページは<a href="http://webreflection.github.io/restyle/">ここで確認できる</a>。実際にrestyle.jsを使って動作を確認できる。Andrea氏の記事への<a href="http://webreflection.blogspot.co.uk/2014/02/restylejs-simplified-css-approach.html#comments">コメント</a>が指摘するように、restyle.jsは<a href="https://github.com/krasimir/absurd">AbsurdJS</a>と同じアイディアでできている。大きさは10分の1だが、Arestyleは軽量で触ってみる価値はある。<a href="https://github.com/WebReflection/restyle/blob/master/README.md">readme</a>を読んでみるのもいいだろう。</p> 
+  <p>MicrosoftはAzureサービスの価格を部分的に引き下げた１年前に，&quot;計算やストレージ，帯域幅といった一般的サービスについては，<a href="http://blogs.msdn.com/b/windowsazure/archive/2013/04/16/the-power-of-and.aspx">価格をAmazonのWebサービスに合わせる</a>&quot; ことを約束している。我々はMicrosoftが価格を発表する今週まで今回の記事の発表を保留していたのだが，公開時点に至るまでレドモンドからは何の発表もない。</p> 
  </div> 
 </div><br><br><br><br><br><br></body></html>

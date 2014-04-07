@@ -2,13 +2,19 @@
  <head></head> 
  <body>
   <div>
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/46.py">ThoughtWorks Technology RadarについてRebecca Parsons氏が語る</a>1月、ThoughtWorksは最新のTechnology Radarで、同社が追跡しているソフトウエア開発のエコシステムの動向を発表した。1)プロダクション環境での警告システムとリカバリ、2)プライバシとビッグデータの緊張関係、3)JavaScriptのエコシステム、4)物理と仮想の環境の境界の曖昧化、の4つが今年の大きなテーマだ。
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/48.py">Googleのクラウド価格引き下げに対するAmazonの反応</a>GoogleはComputer Engine, Storage, BigQueryなど，同社のクラウドサービスの価格を大幅に引き下げると発表した。しかし同社の価格的なアドバンテージはわずか24時間しか続かなかった。Amazonがその翌日，EC2, S3, RDS, ElasticCache, MapReduceといった同社のサービスを大幅に切り下げたためだ。
   </div>
   <div>
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/45.py">Java 8 ローンチ Q&amp;A</a>Java 8は，長年に渡って最も待望されていたプログラム言語のアップデートのひとつだ。今回のリリースでは日付APIやストリームAPI，ラムダ式といった新機能が導入される一方で，PermGenが廃止されるなど，総合的に見て望ましい方向の改良が行われている。我々はリリースの詳細を知るため，Java Platformグループでソフトウェア開発を担当する，Oracle VPのGeorges Saab氏に話を聞いた。
-  </div>
-  <div>
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/44.py">LocalForageでアプリケーションのオフライン対応を行う</a>Mozilla財団がlocalForgeをリリースした。localForgeは、Webアプリケーションのオフラインデータをシンプルに保存できるようにする、新しいJavaScriptライブラリである。このライブラリをユニークなものにしているのは、最新のクライアントサイド技術の特徴である非同期性とBlob対応という両方の長所を、シンプルなAPIとして組み合わせようとしている事である。
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/47.py">Meteor 0.7.1がリリース，開発者アカウントなど多数を改良</a>Matt DeBergalis氏がMeteorバージョン0.7.1をリリースした。oplogとminimongoの改善，CSSプリプロセス，Meteor開発者アカウントなどを備える。バージョン0.7.1ではminimongoのサポートが追加された。Meteorブログでの氏の説明によれば，これは&quot;MongoDBクエリ言語の更なる秘所&quot;とでも表現すべきものだ。
+  </div> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/46.py">ThoughtWorks Technology RadarについてRebecca Parsons氏が語る</a>1月、ThoughtWorksは最新のTechnology Radarで、同社が追跡しているソフトウエア開発のエコシステムの動向を発表した。1)プロダクション環境での警告システムとリカバリ、2)プライバシとビッグデータの緊張関係、3)JavaScriptのエコシステム、4)物理と仮想の環境の境界の曖昧化、の4つが今年の大きなテーマだ。 
+  </div> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/45.py">Java 8 ローンチ Q&amp;A</a>Java 8は，長年に渡って最も待望されていたプログラム言語のアップデートのひとつだ。今回のリリースでは日付APIやストリームAPI，ラムダ式といった新機能が導入される一方で，PermGenが廃止されるなど，総合的に見て望ましい方向の改良が行われている。我々はリリースの詳細を知るため，Java Platformグループでソフトウェア開発を担当する，Oracle VPのGeorges Saab氏に話を聞いた。 
+  </div> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/44.py">LocalForageでアプリケーションのオフライン対応を行う</a>Mozilla財団がlocalForgeをリリースした。localForgeは、Webアプリケーションのオフラインデータをシンプルに保存できるようにする、新しいJavaScriptライブラリである。このライブラリをユニークなものにしているのは、最新のクライアントサイド技術の特徴である非同期性とBlob対応という両方の長所を、シンプルなAPIとして組み合わせようとしている事である。 
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/43.py">QCon Tokyo 2014 【組込み系/モノづくり】 トラックのご紹介</a>QCon Tokyoのカテゴリのひとつとして「組込み系/モノづくり」トラックをご用意しています。 日本のお家芸ともいえる組込み系ソフトウェアの開発にも今ひしひしと変革の波が押し寄せています。安くて高機能の家電製品や組込み機器を提供すれば飛ぶようにモノが売れる時代は終わり、以下に付加価値を付け、モノとサービスと環境の総合的な組合せによって今までにない体験をいかに提供できるか。スピーディなデリバリと意外性、そして充実した使用感が求められるという新しい次元にモノづくりは突入したといえるでしょう。 
@@ -144,12 +150,6 @@
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/2.py">Mono，JITとGCを改良</a>Mono 3.2.7が公開された。改良されたJIT，LINQ用の新しいインタプリタ，64bitネイティブ命令の使用など，数多くの新機能を備える。 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/1.py">IDE組み込み検索エンジン</a>新たなツールがプログラマのIDEの中に直接Webを実現する。検索エンジンがユーザ獲得にしのぎを削る中，新たなプログラミング指向の検索機能がVisual Studioユーザ向けに誕生した。 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/0.py">OpenAccess ORMがTelerik Data Accessに名称変更，改良UIとカラーのビジュアルデザイナを追加</a>Telerikは先日，OpenAccess ORMをTelerik Data Accessと名称変更するとともに，ユーザインターフェースの改良やカラーのビジュアルデザイナ，Telerik.DataAccess.Core, Telerik.DataAccess.Fluent, Telerik.DataAccess.Fluent.SampleといったNuGetパッケージを追加した。 
-  </div>    
+  </div>   
  </body>
 </html>
