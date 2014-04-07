@@ -1,6 +1,12 @@
 <html>
  <head></head> 
- <body> 
+ <body>
+  <div>
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/26.java">Ratchet Becomes a Real Framework, Gets a New Home</a>The mobile application prototyping tool, Ratchet, has been promoted to a full application framework, and moved into the Bootstrap GitHub repo. It also has new documentation and new themes for iOS and Android.
+  </div>
+  <div>
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/25.java">WinJS Goes Open Source, Adds Windows Phone 8.1 Support</a>The Windows Library for JavaScript (WinJS) is now fully open source and no longer limited to the Microsoft platform. Alongside this announcement, the 2.1 release adds support for Windows Phone 8.1.
+  </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/25.java">Modern C++ and Visual Studio</a>Modern C++ support continues to be an area of focus for Microsoft. This week at Build Herb Sutter gave a talk which provided an update on their current efforts, the level of CPP support being added in the next Visual Studio preview, and what is in store for the future. 
   </div> 
@@ -144,12 +150,6 @@
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/33.java">Measuring the Value of Agile Adoption</a>When defining a business case for adopting agile, the question can arise how you can measure the business value that can be delivered using agile software development. 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/32.java">Apple Improves iOS Devices Deployment and Management for Enterprise and Education</a>Apple has recently announced some changes to its Device Enrollment and Volume Purchase Programs aiming at improving large-scale deployment of iOS devices to enterprise and education customers interested in deploying company-owned iOS devices or instituting a &quot;bring your own device&quot; (BYOD) policy. 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/31.java">ASP.NET Web API Gets OData v4.0 Support, WCF Will Not</a>ASP.NET Web API 2.2 for OData v4.0 are now available as nightly builds. The team also released OData core libraries version 6.1 on nuget with several bug fixes and new features, especially increased support for OData v4 spec. However, the MS team suggested that WCF will not get OData v4 specific features. 
-  </div> 
+  </div>   
  </body>
 </html>

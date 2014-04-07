@@ -1,28 +1,17 @@
-<p>Mobile analytics firm Flurry has issued a report analyzing time spent on mobile devices by the average US consumer between January and March of 2014. This is the second such report that Flurry issues, allowing for an interesting comparison year to year.</p>
-<p>Simon Khalaf, Flurry's CEO, presents in full detail the most important findings on Flurry's blog. Here is a summary of the major highlights.</p>
-<p><strong>General Highlights</strong></p>
-<ul> 
- <li>The overall time that the average US consumer has spent on a mobile device has risen to 2 hrs and 42 minutes per day (+12 minutes, or 9.5%).</li> 
- <li>Apps confirmed their lead over the mobile web, accounting for 86% of consumer's time.</li> 
- <li>Mobile web shrank to just 14% of consumer's time, roughly 22 minutes, from 20% last year.</li> 
-</ul>
-<p><strong>App Categories</strong></p>
-<ul> 
- <li>Games maintained their leadership at 32% of time spent.</li> 
- <li>Social and messaging applications increased their share from 24% to 28%.</li> 
- <li>Productivity apps doubled their share from 2% to 4%.</li> 
- <li>Entertainment and utility apps kept their 8% share.</li> 
- <li>Browsers shrank their share from 20% to 14%, with Safari going from 12% to 7%.</li> 
-</ul>
-<p><strong>Top Franchises</strong></p>
-<ul> 
- <li>Facebook, with an overall 17% share, confirms itself as the leader in US, although it loses some share within the growing social apps category.</li> 
- <li>YouTube, with an overall 4% share, gets 50% of the entertainment category.</li> 
- <li>Facebook and Google together account for approximately 25% of time.</li> 
- <li>The top ten franchises account for less than 40% of the overall time spent, signalling the fragmentation of the market and the opportunity for new franchises to emerge.</li> 
- <li>New apps like Pinterest, Snapchat, WhatsApp (recently acquired by Facebook), Waze (acquired by Google), and Spotify received wide adoption and commanded a percent or two of the time spent.</li> 
-</ul>
-<p>According to Simon Khalaf, while it is too early to predict how apps will behave in 2014, it is clear that &quot;apps have won and the mobile browser is taking a back seat.&quot;</p>
-<p>According to Sarah Perez, reporting for TechCrunch, the shrinking share held by Facebook within the growing social apps category points to the shift from socializing on Facebook to sharing within smaller and more private messaging applications. Furthermore, says Sarah, the small increase in overall average time spent, just 12 minutes or 9.5% of time, seems to indicate that a levelling off of time users spend on devices is taking place.</p>
-<p>Sarah also adds that while Flurry has gathered its data from its network of over 450,000 mobile applications installed on over 1.3 billion devices worldwide, it has also used comScore to determine its figures on mobile browser usage and mobile applications and NetMarketShare for the distribution of browser usage.</p>
-<p>A Google search&nbsp;shows that Flurry's report sparked many reactions over the web, many of them focusing on apps dominance over mobile browser use. In a&nbsp;Twitter discussion, though, Pete Spande remarks that most popular apps, including Twitter, LinkedIn, Facebook, Flipboard, etc. include embedded browsers that are responsible for many visits to web sites, so Flurry results are far from implying that the mobile web has lost relevance. What is changing is the way to access it.</p>
+<p class="MsoNormal" style="margin-bottom:0in;margin-bottom:.0001pt">Last June at Build 2013 Paul Gusmorino spoke about WinJS 2.0 and the speed improvements that it introduced.&nbsp; This past week at Build 2014 he returned to discuss WinJS 2.1 and where the library is headed next.&nbsp; The Windows Library for JavaScript (WinJS) is intended to be an effective way to build applications using HTML, CSS, and JavaScript.&nbsp; Originally created by Microsoft, its capabilities are not limited to the Windows platform.</p>
+<p class="MsoNormal" style="margin-bottom:0in;margin-bottom:.0001pt">&nbsp;</p>
+<p class="MsoNormal" style="margin-bottom:0in;margin-bottom:.0001pt">Joining the major push by Microsoft to release several of its technologies under open source licenses, Gusmorino announced that WinJS is now licensed under the Apache license with the project hosted on GitHub.&nbsp; Microsoft’s hope is that this will allow WinJS to be a common library usable on all modern devices and browsers without requiring massive rewrites.&nbsp; Alongside this outreach, WinJS 2.1 has been released to support Windows Phone 8.1.&nbsp; For the Microsoft stack this means that there are currently 3 variants of WinJS in use across Xbox, Windows Phone, and Windows 8 apps.&nbsp; Gusmorino indicated that unifying these 3 platforms is a goal set for 2015 under WinJS 3.0.&nbsp; The project has produced a road map indicating their next steps for the release.
+ <o:p></o:p>&nbsp;</p>
+<blockquote> 
+ <p class="MsoNormal">WinJS Project Goals</p> 
+ <ul> 
+  <li>Deliver true app experience</li> 
+  <li>Build with native experience</li> 
+  <li>Enable shared code across devices</li> 
+  <li>Contribute to the community new material -- &nbsp;“not deliver Microsoft’s version of something that you already have”</li> 
+  <li><em>Maintain and increase modularity</em></li> 
+ </ul> 
+</blockquote>
+<p class="MsoNormal" style="margin-bottom:0in;margin-bottom:.0001pt">Examples of WinJS in action are available at Try WinJS, which includes demos with code for all of the controls in the library.&nbsp; Microsoft maintains a separate project page which is a useful companion to the GitHub page for Windows-based developers. &nbsp;Preparing WinJS for Windows Phone brought about a few changes intended to provide for a better phone experience.&nbsp; The Pivot control was added, and several controls were improved.&nbsp; These changes included performance, and accessibility.</p>
+<p class="MsoNormal" style="margin-bottom:0in;margin-bottom:.0001pt">
+ <o:p></o:p></p>

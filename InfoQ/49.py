@@ -1,21 +1,88 @@
-<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>HazelcastがMapReduce APIをサポート</h3><p><a target="_blank" href="http://www.infoq.com/news/2014/02/hazelcast-mapreduce-api"><em>原文(投稿日：2014/02/18)へのリンク</em></a></p>
-<div class="article_page_left news_container text_content_container"> 
- <div class="text_info"> 
-  <p>Hazelcast Inc.のシニアソフトウェアエンジニアである<a href="http://de.linkedin.com/in/noctarius">Christoph Engelbert</a>氏とのインタビューを紹介する。<br /> <br /> <strong>InfoQ</strong>: Hazelcastという会社とそのビジネスモデルについて，簡単に説明をお願いします。</p> 
-  <p><strong>Christoph</strong>: Hazelcastはオープンソースのインメモリ・データグリッドソリューションで，Apache License 2のもとに公開されています。Map, List, Set, Queue, Lock, ExecutorServiceなど一般的なJava APIの多くを分散形式で実装した上に，パーティション化されたクラスタ環境用の機能を追加しています。分散型のクエリ(Predicate)や，特定ノード上で実行可能なRunnable/Callableクラスなどがその例です。</p> 
-  <p>同時にHazelcastは，オープンソースプロジェクトの開発，配布，サポートを行う企業の名称でもあります。私たちはミッションクリティカルな環境に必要な商用サポートやトレーニング，技術支援を行うとともに，クラスタ監視および管理，高度な予測可能性のためのソリューションや，パフォーマンスやクラスタセキュリティ，C++やC#など他のネイティブAPIクライアント言語といった面での拡張機能を製品として提供しています。HazelcastはすべてJavaで記述されていますが，memcached準拠のAPIやRESTfulインターフェースなどを通じて多言語をサポートしているのです。</p> 
-  <p><strong>InfoQ</strong>: アプリケーションやバーティカル，オープンソースプロジェクトなどで，Hazelcastを使ったものはありますか。また通常はどのような使い方をされるのでしょうか？</p> 
-  <p><strong>Christoph</strong>: Hazelcastは金融の分野から出発して，低レイテンシなトレーディングアプリやリスク，金融取引といったアプリケーションで利用されています。大規模な通信会社やネットワーク機器メーカ，クラウドプロバイダなどでも使われていますし，インターネットやモバイル決済，ゲームとギャンブル，旅行やホスピタリティ，Eコマースといった領域への取り組みも始めています。<a href="http://www.linkedin.com/groups/Im-searching-your-usecases-Hazelcast-2991377.S.278475085">ユースケースとしては，大部分が</a>キャッシュやアプリケーションのスケーリングです。<a href="https://github.com/orientechnologies/orientdb">OrientDB</a>や<a href="http://vertx.io/">Vert.</a><a href="http://vertx.io/">X</a>, <a href="http://www.mulesoft.com/">MuleSoft</a>, <a href="http://wso2.com/">WSO2</a>, <a href="http://shiro.apache.org/">Apache Shiro</a>のように，Hazelcast上に自身のソリューションを構築している企業やプロジェクトもたくさんあります。</p> 
-  <p><strong>InfoQ</strong>: 先日<a href="http://github.com/noctarius/castmapr">MapReduce API</a>がリリースされましたが，そのメインの開発者はあなただと伺っています。どのような動機からこれを作ろうと考えたのですか？</p> 
-  <p><strong>Christoph</strong>: CasMapRは研究プロジェクトとして始めました。新しいHazelcast 3 APIに参加したいと思っていたところ，最近になってMapReduce用(JBossクラスタを使用していたので)の別のAPIで開発を行う機会があったのです。それがHazelcastにフィットするように思われたので，2013年の終わりにHazelcastに参加したとき，Hazelcastのメインディストリビューション採用に関しての議論を始めました。</p> 
-  <p><strong>InfoQ</strong>: それではあなたが，CasMapRをHazelcastに移植したのですか？</p> 
-  <p><strong>Christoph</strong>: そういうことになりますね。最初は単に，コードベースをコアディストリビューションに移行しようと考えていました。しかし時間が経つにつれて，もっとリアクティブプログラムに合ったものにしたいと思うようになったので，内部のほとんどを書き直しました。公開APIについてもたくさん議論しています。CasMapRは全体的に，私の好きなInfinispanのAPIにインスパイアされてます。 新しいMapReduce APIとして私たちは，もっとHadoopらしいAPI(オリジナルの<a href="http://research.google.com/archive/mapreduce.html">Google資料</a>に近いもの)ものにすることを決めたのですが，ジョブの定義方法についてはDSLの方法を継承することにしました。その結果，古い実装で再利用されたのは，ほんの一部だけになってしまいました。新しい実装は，設計レベルで完全にコンカレントです。MapフェーズとReduceフェーズは完全に並列実行されますし，システム全体がストリーミング的な方法で(チャンク処理をベースとして)動作するのです。現在では旧実装の作業はすべて中止して，すべての労力をHazelcast内部のMapReduce APIに費やしています。</p> 
-  <p><strong>InfoQ</strong>: それはすばらしいですね。では，HazelcastのMapReduce APIの代表的な(そう推測される)ユースケースは，どのようなものなのでしょう。例えば，<a href="http://docs.mongodb.org/manual/core/map-reduce/">MongoDBのMapReduce API</a>やHadoopとはどのように違いますか？</p> 
-  <p><strong>Christoph</strong>: Hazelcast MapReduce APIが使用される典型的なシナリオとしては，<a href="http://www.hazelcast.org/docs/latest/manual/html-single/#MapEntryProcessor">EntryProcessor</a>がしっくりこないような分散コンピュータ環境があげられます。データ変換が必要か，複数のデータソースを利用したいのかのいずれかです。 また，実行時間の長い操作にも適しています。現行のシステムではすべてがパーティションスレッド上で直接動作するので，データ変更のために明示的にロックを行う必要がないからです。完全にストリーミングな解析の実行が可能になるように，今後どこかのバージョンで継続的なmapとreduceをサポートするつもりです。このもっともよい例は何といってもTwitterでしょう。リツイートやお気に入り，その他多くの統計解析を行うためにTwitterは，ツイートをリアルタイム処理しています。リスク管理や解析の上でも，この方法は有用です。</p> 
-  <p>Hadoopとの最大の違いは，インメモリであること，リアルタイム処理であることの２つです。 Hadoopにはさまざまなフェーズがあって，それぞれのフェーズが次々と実行されています。しかしHazelcastはコンカレントな内部設計によってmapとreduceがすべてのノードで並列的に実行されますから，最大のパフォーマンスを得ることができるのです。フェーズそれ自体はHadoopのものと極めて近く，マッピング(とコンバイニング)，シャッフリング(ノードへのパーティショニング), レデューシングフェーズなどがあるのですが，Hadoopほど明確に分離されてはいません。</p> 
-  <p>MongoDBとの比較は，MongoDBのMapReduce APIを使った経験がないので難しいのですが，コンバイナが欠けているように思います。コンバイナは非常に多くのデータベースを扱う上で便利ですが，先程も言いましたように，私が実装を詳しく知らないだけなのかも知れません。</p> 
-  <p><strong>InfoQ</strong>: なるほど。では最後の質問ですが，Hazelcast MapReduce APIに関して，何か読者に伝えておきたいことはありますか？</p> 
-  <p><strong>Christoph</strong>: そうですね，個人的な希望ですが，APIのテストドライブをして頂いて，可能な限り多くのフィードバックを提供してほしいと思っています。APIは完全に安定していますので，非常に満足しています。それから，実運用におけるユーザのエクスペリエンスをさらに調査して，調整すべき領域をもっと見つけたいですね。まだまだ改善の余地はあると思います。</p> 
-  <p>インタビューにご協力頂いて，ありがとうございました！</p> 
+<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>QCon Tokyo 2014 【モバイル/HTML5】 トラックのご紹介</h3><p><a href="http://www.qcontokyo.com/" target="_blank">QCon Tokyo</a>は、最新技術を追い求めるデベロッパのための情報コミュニティ「InfoQ」が主催する、エンジニアによるエンジニアのためのワールドワイド カンファレンスです。</p>
+<div>
+ QCon Tokyo 2014は、昨年に引き続き「モバイル/HTML5」トラックが設けられ、本年度も選りすぐりのセッションを用意しています。
+</div>
+<div>
+ 昨今のHTML5/CSS/JavaScriptに基づくクライアントプログラミングでは、製作するコンテンツの狙いを実現する為の極めて高いクオリティが求められるようになってきました。
+</div>
+<div>
+ それらを実現するポイントは、
+</div>
+<div>
+ &nbsp;
+</div>
+<div>
+ ①HTML/CSSが正しく設計された拡張性/保守性に優れたコンテンツ
+</div>
+<div>
+ ②マルチスクリーン対応をする際に利用者に対して効果的なコンテンツ
+</div>
+<div>
+ ③コンテンツにとって最適なアーキテクチャ（構造）
+</div>
+<div>
+ &nbsp;
+</div>
+<div>
+ の３つです。
+</div>
+<div>
+ 今回の「モバイル/HTML5」トラックでは、それぞれのセッションにおいて、上記の課題について考えてゆきたい、と思います。
+</div>
+<div>
+ &nbsp;
+</div>
+<div>
+ 今回の「モバイル/HTML5」トラックは、上記で上げた課題に対応した以下のセッションを用意しています。
+</div>
+<div>
+ &nbsp;
+</div>
+<div>
+ まず、サイバーエージェント/フロントエンドエンジニアの谷 拓樹さんは、「モダンなCSS設計パターンを作る」というテーマです。昨今の潮流であるJavaScriptを用いたリッチなフロントエンド実装に際し、HTML/CSSをきちんと設計することの重要性を事例を交えながらお話頂きます。
+</div>
+<div>
+ &nbsp;
+</div>
+<div>
+ 次に、Webディレクターやデザイン専門学校の講師としてご活躍のフロントエンドデベロッパー 三浦 敦史さんは、「レスポンシブルWebデザイン と アダプティブWebデザイン - マルチ環境対応の考え方」というテーマです。三浦さんのレスポンシブルWebデザインに関するセッションは昨年も参加者から好評でしたが、今年はより最適なマルスクリーン環境に対応する為のアダプティブWebデザインについて、レスポンシブルWebデザインとの比較をしながら、具体的なコンテンツの解説を交えてお話頂きます。
+</div>
+<div>
+ &nbsp;
+</div>
+<div>
+ 最後のセッションは、米フィナンシャル・タイムズ社にてWebテクノロジーの研究/開発を行なっているアンドリュー ベッツ（Andrew Betts）さんが、「Components &amp; Modules for Front End Sanity at Scale」について話します。
+</div>
+<div>
+ WebUIにモジュール化の考え方を取り入れ、サイト全体のコンテンツ管理に、構成管理/バージョン管理の思想を導入することにより、保守性/変更容易性に極めて優れた大規模サイトを構築する、という革新的なフィナンシャル・タイムズ社の取り組みをご紹介します。
+</div>
+<div>
+ &nbsp;
+</div>
+<blockquote> 
+ <div>
+  ●開催概要
  </div> 
-</div><br><br><br><br><br><br></body></html>
+ <div>
+  &nbsp;
+ </div> 
+ <div>
+  開催日時：2014年4月30日(水) 10:00-19:00 (19:00～ ビアパーティあり)
+ </div> 
+ <div>
+  &nbsp;
+ </div> 
+ <div>
+  会　　　場：アルカディア市ヶ谷
+ </div> 
+ <div>
+  &nbsp;
+ </div> 
+ <div>
+  公式サイト：http://qcontokyo.com/
+ </div> 
+</blockquote>
+<div>
+ &nbsp;
+</div>
+<p>&nbsp;</p><br><br><br><br><br><br></body></html>

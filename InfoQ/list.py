@@ -1,11 +1,14 @@
 <html>
  <head></head> 
- <body>
-  <div>
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/48.py">Googleのクラウド価格引き下げに対するAmazonの反応</a>GoogleはComputer Engine, Storage, BigQueryなど，同社のクラウドサービスの価格を大幅に引き下げると発表した。しかし同社の価格的なアドバンテージはわずか24時間しか続かなかった。Amazonがその翌日，EC2, S3, RDS, ElasticCache, MapReduceといった同社のサービスを大幅に切り下げたためだ。
-  </div>
-  <div>
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/47.py">Meteor 0.7.1がリリース，開発者アカウントなど多数を改良</a>Matt DeBergalis氏がMeteorバージョン0.7.1をリリースした。oplogとminimongoの改善，CSSプリプロセス，Meteor開発者アカウントなどを備える。バージョン0.7.1ではminimongoのサポートが追加された。Meteorブログでの氏の説明によれば，これは&quot;MongoDBクエリ言語の更なる秘所&quot;とでも表現すべきものだ。
+ <body> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/49.py">QCon Tokyo 2014 【モバイル/HTML5】 トラックのご紹介</a>QCon Tokyo 2014は、昨年に引き続き「モバイル/HTML5」トラックが設けられ、本年度も選りすぐりのセッションを用意しています。 昨今のHTML5/CSS/JavaScriptに基づくクライアントプログラミングでは、製作するコンテンツの狙いを実現する為の極めて高いクオリティが求められるようになってきました。 それらを実現するポイントは、 ①HTML/CSSが正しく設計された拡張性/保守性に優れたコンテンツ ②マルチスクリーン対応をする際に利用者に対して効果的なコンテンツ ③コンテンツにとって最適なアーキテクチャ（構造） の３つです。 今回の「モバイル/HTML5」トラックでは、それぞれのセッションにおいて、上記の課題について考えてゆきたい、と思います。 
+  </div> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/48.py">Googleのクラウド価格引き下げに対するAmazonの反応</a>GoogleはComputer Engine, Storage, BigQueryなど，同社のクラウドサービスの価格を大幅に引き下げると発表した。しかし同社の価格的なアドバンテージはわずか24時間しか続かなかった。Amazonがその翌日，EC2, S3, RDS, ElasticCache, MapReduceといった同社のサービスを大幅に切り下げたためだ。 
+  </div> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/47.py">Meteor 0.7.1がリリース，開発者アカウントなど多数を改良</a>Matt DeBergalis氏がMeteorバージョン0.7.1をリリースした。oplogとminimongoの改善，CSSプリプロセス，Meteor開発者アカウントなどを備える。バージョン0.7.1ではminimongoのサポートが追加された。Meteorブログでの氏の説明によれば，これは&quot;MongoDBクエリ言語の更なる秘所&quot;とでも表現すべきものだ。 
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/46.py">ThoughtWorks Technology RadarについてRebecca Parsons氏が語る</a>1月、ThoughtWorksは最新のTechnology Radarで、同社が追跡しているソフトウエア開発のエコシステムの動向を発表した。1)プロダクション環境での警告システムとリカバリ、2)プライバシとビッグデータの緊張関係、3)JavaScriptのエコシステム、4)物理と仮想の環境の境界の曖昧化、の4つが今年の大きなテーマだ。 
@@ -148,8 +151,5 @@
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/3.py">PrismaticがSchema 0.2にデータ型強制変換を追加</a>Prismaticでは，同社のClojureデータ記述ライブラリであるSchemaの0.2リリースに，データの強制型変換(coercion)を追加した。これにより，不正な型のデータを単にリジェクトするのではなく，スキーマに適合させてインスタンスを変換するような設定が可能になる。InfoQではSchemaについて，PrismaticのJason Wolfe氏に話を聞いた。 
   </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/2.py">Mono，JITとGCを改良</a>Mono 3.2.7が公開された。改良されたJIT，LINQ用の新しいインタプリタ，64bitネイティブ命令の使用など，数多くの新機能を備える。 
-  </div>   
  </body>
 </html>

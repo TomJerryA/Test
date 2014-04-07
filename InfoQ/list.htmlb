@@ -1,6 +1,15 @@
 <html>
  <head></head> 
- <body> 
+ <body>
+  <div>
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/47.htmlb">Pair Painting 结对粉刷房间</a> Victoria上周粉刷了一下家中的厨房，这一过程使她联想起了结对编程。她和她的搭档之前也有过粉刷房间的经验，而且出来的效果也让她们感到十分自豪。但换成了她自己来做的话，尽管她具有良好的技能与知识，但最终的效果也不那么理想。她对此产生了疑问：事情为什么是这样？ 
+  </div> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/47.htmlb">最好的流程是没有流程</a> 官僚机构常常烦恼于大型产品开发的工作量。正如技术债会减缓研发速度，流程债则会减缓商业发展。你有没有节省过12,096,000%的时间？理清战略。流程自动化。并行工作。专心地协作。你知道吗？MS project的一个系统默认值有可能会让你的计划缺乏弹性。消除流程债，快速上市。 
+  </div> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/46.htmlb">Node.js的线程和进程</a> 很多Node.js初学者都会有这样的疑惑，Node.js到底是单线程的还是多线程的？通过本章的学习，能够让读者较为清晰的理解Node.js对于单/多线程的关系和支持情况。同时本章还将列举一些让Node.js的web服务器线程阻塞的例子，最后会提供Node.js碰到这类cpu密集型问题的解决方案。在学习本章之前，读者需要对Node.js有一个初步的认识，熟悉Node.js基本语法、cluster模块、child_process模块和express框架；接触过apache的http压力测试工具ab；了解一般web服务器对于静态文件的处理流程。 
+  </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/45.htmlb">高质量代码——书评与采访</a> 由Stephen Vance所撰写的《高质量代码》（Quality Code）一书涵盖了软件开发生命周期的各个方面，尤其关注于提交高质量的产品。Stephen在本书中谈论了为支持软件技术水准测试所需的一些实践。InfoQ有幸与作者进行了交流，对本书的内容以及测试应用程序代码的最佳实践进行了一番讨论。 
   </div> 
@@ -141,15 +150,6 @@
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/8.htmlb">深度剖析京东云引擎核心技术</a> 京东云引擎构建于Cloud Foundry之上，为更好地服务于个人开发者与京东ISV，开发团队对Cloud Foundry做了许多重要扩展，如智能路由、弹性伸缩、智能启动与资源隔离及访问控制。本文为您一一剖析它们的实现原理。 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/7.htmlb">仆人领导</a> 本文中，我们将讨论仆人领袖，或者是潜在的Scrum Master、敏捷项目经理、潜在的客户经理，及你所需要填充的任意角色上，可能需要的素质、偏好和非技术技能。 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/6.htmlb">达成销售，然后构建</a> “在编写任何代码之前，确保先有一个失败测试。”在90年代晚期出现时，这曾是个革命性的概念。而现如今，许多成功的企业家实践了另一个相似的理念：“在构建产品/服务以前，首先确保拥有付费的客户。”Naresh Jain介绍了寻找有效的MVP以验证其教育产品的方法，以及为何敏捷方法未能奏效。 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/5.htmlb">可视化Java垃圾回收</a> 垃圾回收，就像双陆棋一样，只需几分钟来学习，但要用一生来精通。本文是对资深培训师兼顾问Ben Evans最近在InfoQ的演讲“可视化垃圾回收”的总结。在演讲中，他从基础谈起讨论了垃圾回收。 
-  </div> 
+  </div>  
  </body>
 </html>
