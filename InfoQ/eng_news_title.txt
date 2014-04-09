@@ -1,1 +1,1 @@
-Meteor 0.8: Blaze Release Overhauls Rendering System
+Rails 4.1 Improves Boot Time and Responsive Layouts

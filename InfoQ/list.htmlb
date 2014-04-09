@@ -1,7 +1,7 @@
 <html>
  <head></head> 
- <body>
-  <div>
+ <body> 
+  <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/2.htmlb">使用MySQL、Hudson、Gradle、Maven和Git实现数据库DevOps</a> DevOps这个术语描述的是经改良的开发团队与运维团队之间的协作。在软件工程中，数据库通常都位于关键路径之中。本文介绍了什么是DevOps，并且解释了使用了具体概念和工具的数据库DevOps是什么样的。 
   </div> 
   <div> 
@@ -150,6 +150,6 @@
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/13.htmlb">与Ole Jepsen谈敏捷中的领导力</a> 优秀的领导者创造环境让自我管理（self-organizing）团队茁壮成长，从而创造伟大的产品和服务去满足客户的需求。这是Ole Jepsen在本次采访中表达的观点。在XP Days Benelux会议上，他谈到什么是真正的领导力，以及控制和放权之间微妙但重要的差异。 
-  </div>  
+  </div> 
  </body>
 </html>

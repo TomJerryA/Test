@@ -1,7 +1,7 @@
 <html>
  <head></head> 
- <body>
-  <div>
+ <body> 
+  <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/39.cb">Javascript: Desenvolvendo Componentes Modulares</a> Embora a maioria das aplica&ccedil;&otilde;es web hoje em dia utilizem uma grande quantidade de JavaScript, mantendo o foco na funcionalidade do lado do cliente, a robustez e sustentabilidade continuam sendo um grande desafio. Este artigo apresentar&aacute; um exemplo de evoluir um simples widget a partir de uma base de c&oacute;digo, em grande parte n&atilde;o estruturado a um componente reutiliz&aacute;vel. 
   </div> 
   <div> 

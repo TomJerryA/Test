@@ -1,0 +1,15 @@
+<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>Rails 4.1 Improves Boot Time and Responsive Layouts</h3><p>After two release candidates, the Rails team <a href="http://weblog.rubyonrails.org/2014/4/8/Rails-4-1/">has just released Rails 4.1.0</a>. The point release is meant to signify that the changes are backwards-compatible and upgrading should be painless.</p>
+<p>Rails 4.1 includes <a href="https://github.com/rails/spring">Spring</a> (no relation to the JVM application framework) to speed up development by preloading your application: &quot;With Spring, your application is a persistent process that can be reused across commands, so only the first run is slow. And we automatically detect code changes, and reload just those parts&quot;. After a <a href="http://edgeguides.rubyonrails.org/upgrading_ruby_on_rails.html#spring">simple setup</a>, your rake and rails commands will take advantage of the preloading.</p>
+<p>In today's mobile world, websites should respond to different screen form-factors. Action Pack Variants helps you render different templates depending on the user's device category, like how you can already respond with different file formats:&nbsp;</p>
+<pre class="code">
+respond_to do |format|
+  format.html do |html|
+    html.tablet # renders app/views/projects/show.html+tablet.erb
+    html.phone { extra_setup; render ... }
+  end
+end
+</pre>
+<p>Basecamp has been using this technique to serve desktop browsers, mobile browsers and native mobile apps from a single Rails application.</p>
+<p>Rails 4.1 also brings new features to some of its components: Active Record now supports <a href="http://api.rubyonrails.org/v4.1.0/classes/ActiveRecord/Enum.html">Enums</a> that are mapped to simple integer values in the database. Action Mailer has gained support for <a href="http://api.rubyonrails.org/v4.1.0/classes/ActionMailer/Base.html#class-ActionMailer::Base-label-Previewing+emails">previewing email templates</a> in the browser, instead of having to deliver them to get a preview.</p>
+<p>To improve the security of your applications, the keys and tokens your application needs can now be stored at a central place in <em>config/secrets.yml</em>.</p>
+<p>If you plan to upgrade your application, have a look at the <a href="http://edgeguides.rubyonrails.org/upgrading_ruby_on_rails.html#upgrading-from-rails-4-0-to-rails-4-1">migration guide</a> that gives you detailed instructions on all the new features. And even though it's a minor release, <a href="http://edgeguides.rubyonrails.org/4_1_release_notes.html#railties-removals">there were some removals</a>, so make sure to check them before upgrading. To learn more about all the new features, have a look at <a href="http://brewhouse.io/blog/2013/12/17/whats-new-in-rails-4-1.html?brewPubStart=1">Godfrey Chan's blog post</a>.</p><br><br><br><br><br><br></body></html>

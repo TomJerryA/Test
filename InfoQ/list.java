@@ -1,6 +1,9 @@
 <html>
  <head></head> 
- <body> 
+ <body>
+  <div>
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/28.java">Rails 4.1 Improves Boot Time and Responsive Layouts</a>Rails 4.1 can now preload your application to improve startup time and comes with improvements for Action Pack, Active Record, and Action Mailer.
+  </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/28.java">JCP Members Voting No on JSR-48 WBEM</a>London Java Community and other JCP members will be voting &quot;no&quot; on JSR 48 WBEM Service Specification, a set of APIs for Web-Based Enterprise Management. 
   </div> 
@@ -147,9 +150,6 @@
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/37.java">Meteor 0.7.1 Release Brings Dev Accounts, Further Improvements</a>Matt DeBergalis has released version 0.7.1 of Meteor, with the improvements to oplog and minimongo, CSS preprocessing, and Meteor developer accounts. Version 0.7.1 includes added support to minimongo for what DeBergalis refers to on the Meteor blog as “more of the ‘estoteric corners’ of the MongoDB query language.&quot; 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/36.java">Rebecca Parsons on the ThoughtWorks Technology Radar</a>In January ThoughtWorks released the latest version of their Technology Radar in which they track what's interesting in the software development ecosystem. The big themes this year are (1) early warning systems and recovery in production, (2) the tension between privacy and big data, (3) the javascript ecosystem and (4) blurring of the line between the physical and virtual worlds. 
-  </div> 
+  </div>  
  </body>
 </html>

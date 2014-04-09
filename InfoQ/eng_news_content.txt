@@ -1,25 +1,15 @@
-<p>Meteor has released version 0.8, bringing an “an overhaul of Meteor's rendering system.”</p>
-<p>Meteor’s next generation live templating engine, Blaze, includes support for fine-grained DOM updates, jQuery integration and simpler API. Blaze replaces the live page update engine Spark that was introduced in version 0.4 in 2012.</p>
-<p>On the Meteor blog Matt Debergalis describes Blaze as “developer-friendly” and that its architecture improves on Spark in “several ways.”</p>
-<p>Blaze comes in two parts; the first part is a build-time compiler that transforms templates into JavaScript code. Spacebars -- the Handlebars-style compiler -- turns HTML templates into live updating DOM elements, allowing users to write normal looking HTML templates and helpers.</p>
-<blockquote> 
- <p>“When a user changes data or new data arrives over the network that a template depends on, Blaze updates your screen automatically,” without the need to “declare any dependencies or write code to manage how the screen updates,” Debergalis said.</p> 
-</blockquote>
-<p>The second part of Blaze is the runtime API that “renders elements, keeps track of their dependencies, and updates them through their complete lifecycle as those dependencies change”.</p>
-<p>Among the replacements for advanced Spark APIs are the removal of Meteor.render, and a new pattern for defining custom block helpers. The list of added and deprecated APIs include the UI.body is now a template corresponding to the entire BODY element.</p>
-<p>The Spacebars parser allows users to do several things that were “previously impossible”, such as:</p>
-<ul> 
- <li>HTML-aware updates. The template parser now parses HTML tags in addition to stache tags, making finer-grained reactive updates possible, including attribute-level updates to DOM elements.</li> 
- <li>Precompilation. The Spacebars compiler generates simple procedural code that calls an internal Meteor interface which in the future will perform either client-side or server-side rendering. This is more efficient than either interpreting the template or parsing its HTML output at runtime.</li> 
- <li>Syntax extensions. Handlebars syntax is extremely minimal, and we foresee adding some additional well-chosen extensions over time. (We will also implement the top features of current Handlebars that are missing from Meteor, like #each that supports objects and lets you access the current index or key.)</li> 
-</ul>
-<p>As of Meteor 0.8 the Handlebars namespace is deprecated. The Handlebars.SafeString is now Spacebars.SafeString, and Handlebars.registerHelper is now UI.registerHelper</p>
-<p>Spacebars requires HTML to be “well-formed”. The Using Blaze github page notes: “In Spark, HTML parsing was done by the browser which is more lenient.”</p>
-<p>In addition, the Blaze HTML parser doesn't currently fully implement the HTML spec. The release notes specify that it doesn't automatically close certain tags, such as &lt;p&gt; and &lt;li&gt;.</p>
-<p>The 0.8 release was greeted by the Meteor community with enthusiasm. In the Meteor group on LinkedIn, user Uğur Toprakdeviren started a discussion, asking: “What is your opinion of new version of Meteor 0.8.0 (Blaze, Spacebars etc)”.</p>
-<p>Aaron Singmaster-Judd, founder &amp; CTO at Ongo Works, replied “awesome, well done, and kudos to the Meteor team and the community package developers work on the new codebase.</p>
-<blockquote> 
- <p>“[it] may require some effort to upgrade existing packages, and renders a fair amount of information out in the webs invalid, but worth the price of progress.”</p> 
-</blockquote>
-<p>On Hacker News, the update was also well received. User elsherbini commented on the jQuery integration “jquery compatibility is huge, awesome!”. Other users shared the positive sentiment about the Blaze release, including TylerE commenting on the compiler: “I have to say I'm pretty excited, since it now looks like there is a non-hacky way to use jade templates, which as far as I'm concerned are a big win.”</p>
-<p>Debergalis notes that the live templating engine is the only new feature of the 0.8 release and is a major step towards the Meteor 1.0 release.</p>
+<p>After two release candidates, the Rails team has just released Rails 4.1.0. The point release is meant to signify that the changes are backwards-compatible and upgrading should be painless.</p>
+<p>Rails 4.1 includes Spring (no relation to the JVM application framework) to speed up development by preloading your application: &quot;With Spring, your application is a persistent process that can be reused across commands, so only the first run is slow. And we automatically detect code changes, and reload just those parts&quot;. After a simple setup, your rake and rails commands will take advantage of the preloading.</p>
+<p>In today's mobile world, websites should respond to different screen form-factors. Action Pack Variants helps you render different templates depending on the user's device category, like how you can already respond with different file formats:&nbsp;</p>
+<pre class="code">
+respond_to do |format|
+  format.html do |html|
+    html.tablet # renders app/views/projects/show.html+tablet.erb
+    html.phone { extra_setup; render ... }
+  end
+end
+</pre>
+<p>Basecamp has been using this technique to serve desktop browsers, mobile browsers and native mobile apps from a single Rails application.</p>
+<p>Rails 4.1 also brings new features to some of its components: Active Record now supports Enums that are mapped to simple integer values in the database. Action Mailer has gained support for previewing email templates in the browser, instead of having to deliver them to get a preview.</p>
+<p>To improve the security of your applications, the keys and tokens your application needs can now be stored at a central place in <em>config/secrets.yml</em>.</p>
+<p>If you plan to upgrade your application, have a look at the migration guide that gives you detailed instructions on all the new features. And even though it's a minor release, there were some removals, so make sure to check them before upgrading. To learn more about all the new features, have a look at Godfrey Chan's blog post.</p>
