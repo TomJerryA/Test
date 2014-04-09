@@ -1,8 +1,8 @@
 <html>
  <head></head> 
- <body>
-  <div>
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/1.c">Lean Startup: Atitudes para equipes sustent&aacute;veis</a>Ramli John deu uma palestra sobre as atitudes m&iacute;nimas vi&aacute;veis para equipes de lean startup na confer&ecirc;ncia lean startup em 2013. De acordo com Ramli existem tr&ecirc;s atitudes que ajudam equipes lean se manterem sustent&aacute;veis ao longo do tempo: humildade, vontade de aprender e felicidade.
+ <body> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/1.c">Lean Startup: Atitudes para equipes sustent&aacute;veis</a>Ramli John deu uma palestra sobre as atitudes m&iacute;nimas vi&aacute;veis para equipes de lean startup na confer&ecirc;ncia lean startup em 2013. De acordo com Ramli existem tr&ecirc;s atitudes que ajudam equipes lean se manterem sustent&aacute;veis ao longo do tempo: humildade, vontade de aprender e felicidade. 
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/0.c">Armazenamento Offline com o LocalForage</a>A Funda&ccedil;&atilde;o Mozilla lan&ccedil;ou o localForage, uma nova biblioteca JavaScript que promete simplificar o processo de armazenamento de dados offline em aplica&ccedil;&otilde;es web. O que torna esta biblioteca &uacute;nica &eacute; o fato que ela tenta combinar o melhor dos mundos: assincronismo e suporte a blob. 
@@ -150,6 +150,6 @@
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/4.c">Os custos para versionamento de uma API</a>Controle de vers&atilde;o para servi&ccedil;os &eacute; algo que tem sido um problema fundamental para SOA. H&aacute; muitos exemplos de experi&ecirc;ncias adquiridas e compartilhadas ao longo dos &uacute;ltimos anos, poucos desses exemplos foram comparados de maneira concreta e contrastados &agrave;s diferentes abordagens existentes. Jean-Jacques Dubray publicou sobre as experi&ecirc;ncias de sua equipe nesta &aacute;rea. 
-  </div>  
+  </div> 
  </body>
 </html>

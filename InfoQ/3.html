@@ -1,46 +1,29 @@
-<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>百度技术沙龙第48期回顾：大规模机器学习（含资料下载）</h3><p>2014年3月15日，在由<a href="http://weibo.com/baidutech">@百度</a>主办、<a href="http://e.weibo.com/infoqchina">@InfoQ</a>负责策划组织和实施的第48期百度技术沙龙活动上，来自百度联盟大数据机器学习技术负责人夏粉，和搜狗精准广告研发部技术经理王晓博，各自分享了其在机器学习方面的实战经验。他们的话题涉及“广告数据上的大规模机器学习”和“大数据场景下主题检索应用”这两个方面，本文将对讲师各自的分享做简单的回顾，同时提供相关资料的下载。</p>
-<h2>主题一：广告数据上的大规模机器学习（<a href="http://t.cn/8sAHMdS">下载讲稿</a>）</h2>
-<p>一个好的广告匹配系统，需要在解决上述挑战的同时，使用尽可能少的资源挖掘尽可能多的数据价值，提升广告匹配效率。围绕这个目的，夏粉老师以广告点击率预估问题为例，讲解如何利用大规模机器学习技术搭建一个容纳万亿特征数据的、分钟级别模型更新的、自动高效深度学习的、高效训练的点击率预估系统。</p>
-<h3><b>计算广告学与</b><b>CTR</b><b>预估</b></h3>
-<p><img src="http://infoqstatic.com/resource/news/2014/03/baidu-salon48-summary/zh/resources/0321000.png" width="600" alt="" _href="img://null" _p="true" /></p>
-<p>计算广告学所面临的最主要挑战是在特定语境下特定用户和相应的广告之间找到“最佳匹配”。语境可以是用户在搜索引擎中输入的查询词，也可以是用户正在读的网页，还可以是用户正在看的电影，等等。而用户相关的信息可能非常多也可能非常少。潜在广告的数量可能达到几十亿。因此，取决于对“最佳匹配”的定义，面临的挑战可能导致在复杂约束条件下的大规模优化和搜索问题。</p>
-<p>“我们用机器学习来做广告数据，如何把CTR如何做好，这需要梳理整个处理流程。把整个流程全部梳理完以后，我们才能发现有哪些可做点对点击预估有影响”，蒋锦鹏说。</p>
-<h3><b>大规模机器学习</b></h3>
-<p><img src="http://infoqstatic.com/resource/news/2014/03/baidu-salon48-summary/zh/resources/0321001.png" width="600" alt="" _href="img://null" _p="true" /></p>
-<p>特征规模大：训练样本，每天上百亿级别的访问量；特征类型复杂，广告、用户、流量、季节、节假日等。数据大、特征多、类别不平衡、噪音大。</p>
-<p>特征之间存在高度非线性关系: e.g., 不同用户（男、女），在不同年龄段，喜欢点不同广告；同一广告，在不同时间段，点击也不同；异或问题。</p>
-<p>数据训练频繁：策略定期更新，策略调研，频繁调用模型训练程序</p>
-<h3><b>模型时效性</b></h3>
-<p><img src="http://infoqstatic.com/resource/news/2014/03/baidu-salon48-summary/zh/resources/0321002.png" width="600" alt="" _href="img://null" _p="true" /></p>
-<p>稀疏性： 模型需要模型保存的信息尽可能少；</p>
-<p>时效性： 模型训练数据近可能少；</p>
-<p>稳定性： 模型需要的数据信息尽可能多；</p>
-<p>Google: 保留前N次模型的梯度及模型，信息损失大，模型不够稳</p>
-<h2>主题二：大数据场景下主题检索应用（<a href="http://t.cn/8sAHXwM">下载讲稿</a>）</h2>
-<p>通常大家碰到的数据集最多也就是几万到几十万篇文章这个量级，但在企业的实际场景中，如果遇到亿级数据该如何处理？如何利用有限的计算集群资源处理呢？</p>
-<p>超大的文集，王晓博围绕这一难题向大家介绍了LDA主题模型训练系统以及它在线上预测时需要面对的问题和解决办法。</p>
+<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>Flurry移动业务使用分析报告及部分反馈</h3><p>移动业务分析公司Flurry最近发布了一份报告，对2014年一到三月期间，普通美国用户在移动设备上投入的时间进行了分析。这是Flurry发布的第二份此类报告，它们可以为跨年度对比提供支持。</p>
+<p>在博客上，Flurry的CEO <a href="http://www.infoq.com/news/2014/04/flurry_mobile_report_2014">Simon Khalaf详细完整地介绍了</a>报告中最重要的发现。以下是其重点内容的摘要：</p>
+<h2><b>整体要点</b></h2>
 <ul> 
- <li>主题检索模型理论基础</li> 
- <li>大数据场景下的挑战</li> 
- <li>构建一个高效的训练系统</li> 
- <li>模型在商业广告检索中的应用</li> 
+ <li>美国用户平均每天在移动设备上花费的时间，在过去十二个月里已经上升至2小时42分钟（增加了12分钟，或者说9.5%）。</li> 
+ <li>应用在用户平均使用时间中占据了86%的份额，确立了压倒移动浏览器的统治地位。</li> 
+ <li>用户使用移动浏览器的平均时间，从去年的20%缩水至14%，大概减少了22分钟。</li> 
 </ul>
-<h3><b>发展过程</b><b>——VSM</b></h3>
-<p>向量空间模型是一个开创性的概念：</p>
-<p>优点：文档可以被表示成一个实数向量；</p>
-<p>不同长度的文档都能够被表示成定长的数列；</p>
-<p>引入与向量相关的计算方法。</p>
-<p>问题：文档被映射在词空间，向量维度太高；</p>
-<p>理解能力弱，对语义分析的支持不强通信选型</p>
-<h3>LDA模型简介</h3>
-<p><img src="http://infoqstatic.com/resource/news/2014/03/baidu-salon48-summary/zh/resources/0321003.png" width="600" alt="" _href="img://null" _p="true" /></p>
-<h2>OpenSpace（开放式讨论环节）</h2>
-<p>为了促进参会者与我们每期的嘉宾以及讲师近距离交流，深入探讨在演讲过程中的疑问，本次活动依然设置了Open Space（开放式讨论）环节。在Open Space的总结环节，几位话题小组长分别对讨论的内容进行了总结。</p>
-<p><b>夏粉</b>：深度学习话题在现在大数据时代将会越来越火，我在演讲时算是为大家抛了个砖，互动过程中大家问了许多实际的问题，希望我的解释能给大家带来一些帮助。</p>
-<p><b>王晓博</b>：关注机器学习的同学热情很高，夏老师讲的干货很多，但只要不涉及关键商业化数据，比如百度广告点击的具体数字，这些模型公布出来对大家的学习还是很有好处的。希望下次主办方能准备相关话题，这样在Open Space时，讲师可提前做一些准备，为听众做更针对性的解答。</p>
-<p>会上，一些参会者也通过新浪微博分享了他们的参会感受：</p>
-<p><a href="http://weibo.com/xynotes">爱新觉罗小牙</a>：和百度比，我们还处于石器时代。。</p>
-<p><a href="http://weibo.com/1276885594">豪_CHANGE</a>： <a href="http://weibo.com/n/%E5%A4%8F%E7%B2%89_%E7%99%BE%E5%BA%A6%E5%A4%8F%E8%80%81%E5%B8%88">@夏粉_百度夏老师</a>，您能讲下这个计算广告的数十亿特征具体就包括哪些吗。如何得到的？</p>
-<p><a href="http://weibo.com/imfxx">范斌_</a>：<a href="http://huati.weibo.com/k/%E7%99%BE%E5%BA%A6%E6%8A%80%E6%9C%AF%E6%B2%99%E9%BE%99">#百度技术沙龙#</a>提前将近一个小时来，人都快满了。大家拿着iPhone，iPad，kindle。看书，学习，讨论。程序员都这德行。</p>
-<p>有关百度技术沙龙的更多信息，可以通过新浪微博关注<a href="http://weibo.com/baidutech">@百度技术沙龙</a>，或者关注InfoQ官方微信：infoqchina，InfoQ上也总结了过往所有百度技术沙龙的演讲视频和资料等，感兴趣的读者可以<a href="http://www.infoq.com/cn/zones/baidu-salon/">直接浏览内容</a>。</p>
-<p><strong>特别提示：</strong>第48期百度技术沙龙将在4月19日，周六，在北京车库咖啡举行，主题为《大规模分布式存储实战解析》，欢迎关注<a href="http://weibo.com/infoqchina">@InfoQ</a>、<a href="http://weibo.com/baidutech">@百度技术沙龙</a>获取后续的活动信息。</p><br><br><br><br><br><br></body></html>
+<h2><b>应用类</b></h2>
+<ul> 
+ <li>游戏保持了应用类别中的领跑地位，占据了用户使用时间的32%。</li> 
+ <li>社交与通讯类应用的占比，从24%上升至28%。</li> 
+ <li>生产力类别应用的占比翻翻，从2%上升至4%。</li> 
+ <li>娱乐与工具类应用保持了8%的占比。</li> 
+ <li>浏览器应用的占比从20%缩水至14%，特别是Safari从12%减少到了7%。</li> 
+</ul>
+<h2><b>“大鳄</b><b>”</b><b>品牌</b></h2>
+<ul> 
+ <li>尽管在不断增长的社交应用类中丢失了一些份额，但Facebook依旧将用户平均使用时间的17%纳入囊中，确保了自己在美国的领跑者地位。</li> 
+ <li>YouTube占有用户平均使用时间的4%，这意味着它享有娱乐类应用中的半壁江山。</li> 
+ <li>Facebook和Google所有应用合计占有约25%的用户平均使用时间。</li> 
+ <li>在用户总体使用时间中，前十大品牌加起来仅占据了不到40%的比例，这意味着市场的碎片化，以及新品牌诞生的机遇。</li> 
+ <li>新应用——例如Pinterest、Snapchat、WhatsApp（最近被Facebook收购）、Waze（被Google收购）和Spotify——得到了用户的广泛使用，占据了用户使用时间的一到两个百分点。</li> 
+</ul>
+<p>Simon Khalaf表示，尽管现在预测应用在2014年中的表现如何还为时尚早，但是显然“应用已经胜出，而移动浏览器正在退居二线”。</p>
+<p><a href="http://techcrunch.com/2014/04/01/mobile-app-usage-increases-in-2014-as-mobile-web-surfing-declines/">Sarah Perez在TechCrunch上的报告</a>指出，社交类应用中，Facebook的用户花费时间占比下降，代表着用户从基于Facebook进行社交，向着在较小且更私密的通讯应用中进行分享的方式转变。此外，Sarah还表示，平均总使用时间的微小增幅（只有12分钟，或者说9.5%），似乎昭示着用户在设备上投入的时间正在趋于稳定。</p>
+<p>Sarah还补充道，尽管Flurry已经从它所覆盖的45万款移动应用（全球总装机量13亿台）上获取了大量数据，但是它还使用了来自comScore和NetMarketShare的数据，分别用来校验移动浏览器和移动应用使用情况，以及浏览器使用情况分布两方面的数据。</p>
+<p>不过，<a href="http://www.google.com/search?q=Flurry+mobile+report+2014">Google搜索显示</a>，Flurry的报告在网上激起了许多反馈声音，其中很大一部分集中在应用压倒移动浏览器使用方面。在<a href="https://twitter.com/jyarow/status/450988152753094657">Twitter上的一场讨论中</a>，Pete Spande点评了最流行的那些应用（包括Twitter、LinkedIn、Facebook、Flipboard等等），认为它们都带有内嵌浏览器，用来负责对Web站点的许多访问。因此远不能凭借Flurry的结果就认为移动浏览器已经不合时宜。正在改变的是使用移动浏览器的方式。</p>
+<p><strong>查看英文原文：</strong><a href="http://www.infoq.com/news/2014/04/flurry_mobile_report_2014">Mobile Usage Report Highlights Trends and Shifts in Mobile Device Use</a></p><br><br><br><br><br><br></body></html>

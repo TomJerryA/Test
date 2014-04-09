@@ -1,11 +1,20 @@
 <html>
  <head></head> 
- <body>
-  <div>
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/26.java">Ratchet Becomes a Real Framework, Gets a New Home</a>The mobile application prototyping tool, Ratchet, has been promoted to a full application framework, and moved into the Bootstrap GitHub repo. It also has new documentation and new themes for iOS and Android.
-  </div>
-  <div>
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/25.java">WinJS Goes Open Source, Adds Windows Phone 8.1 Support</a>The Windows Library for JavaScript (WinJS) is now fully open source and no longer limited to the Microsoft platform. Alongside this announcement, the 2.1 release adds support for Windows Phone 8.1.
+ <body> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/28.java">JCP Members Voting No on JSR-48 WBEM</a>London Java Community and other JCP members will be voting &quot;no&quot; on JSR 48 WBEM Service Specification, a set of APIs for Web-Based Enterprise Management. 
+  </div> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/28.java">Heartbleed allows dumping client and server memory remotely</a>The recently disclosed Heartbleed bug allows a remote client to query the contents of a remote SSL server's memory when using vulnerable versions of OpenSSL, disclosing passwords and other secure credentials to eavesdroppers. Application sites like Yahoo! Mail and Amazon Web Services have been affected. Read on to find out more about what the bug entails,and what you should do. 
+  </div> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/27.java">Meteor 0.8: Blaze Release Overhauls Rendering System</a>Meteor has released version 0.8, bringing an “an overhaul of Meteor's rendering system.” Meteor’s next generation live templating engine, Blaze, includes support for fine-grained DOM updates, jQuery integration and simpler API. Blaze replaces the live page update engine Spark that was introduced in version 0.4 in 2012. 
+  </div> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/26.java">Ratchet Becomes a Real Framework, Gets a New Home</a>The mobile application prototyping tool, Ratchet, has been promoted to a full application framework, and moved into the Bootstrap GitHub repo. It also has new documentation and new themes for iOS and Android. 
+  </div> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/25.java">WinJS Goes Open Source, Adds Windows Phone 8.1 Support</a>The Windows Library for JavaScript (WinJS) is now fully open source and no longer limited to the Microsoft platform. Alongside this announcement, the 2.1 release adds support for Windows Phone 8.1. 
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/25.java">Modern C++ and Visual Studio</a>Modern C++ support continues to be an area of focus for Microsoft. This week at Build Herb Sutter gave a talk which provided an update on their current efforts, the level of CPP support being added in the next Visual Studio preview, and what is in store for the future. 
@@ -142,14 +151,5 @@
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/36.java">Rebecca Parsons on the ThoughtWorks Technology Radar</a>In January ThoughtWorks released the latest version of their Technology Radar in which they track what's interesting in the software development ecosystem. The big themes this year are (1) early warning systems and recovery in production, (2) the tension between privacy and big data, (3) the javascript ecosystem and (4) blurring of the line between the physical and virtual worlds. 
   </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/35.java">Q&amp;A with Atlassian product marketing specialist Dave Meyer on Connect 1.0 and Atlassian Verified</a>InfoQ spoke to Atlassian product marketing specialist Dave Meyer on new product releases - Atlassian Connect 1.0 and Atlassian Verified. 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/34.java">PHP Evolved: Facebook's New Hack Programming Language</a>PHP has long filled an important role at Facebook, and over the years the company has constantly sought to improve the language's performance. First there was the Hip Hop Virtual Machine, and now there is the Hack, programming language. 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/33.java">Measuring the Value of Agile Adoption</a>When defining a business case for adopting agile, the question can arise how you can measure the business value that can be delivered using agile software development. 
-  </div>   
  </body>
 </html>

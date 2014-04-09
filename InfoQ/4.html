@@ -1,44 +1,39 @@
-<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>在关系型数据库中运行计算</h3><p>近日，<a href="http://www.jooq.org/">JOOQ</a>的官方博客上发表了一篇<a href="http://blog.jooq.org/2014/03/10/please-run-that-calculation-in-your-rdbms/">文章</a>，针对Stack Overflow上“<a href="https://iyism.com/browse.php?u=vmImIiLr4COP5LIee2Fp5y2skR3tYGkpgKRD%2BgXPILJybLFLFrL7OFGmRqD0mz3rjZ5clVKS71wtda9FMoB6OWRLkcoAoeisxrveC3JaZRkKo6eCd9m%2FeStt4dBP66xpCxn6qtYudfLXmv59dw%3D%3D&amp;b=29">如何使用Hibernate映射处理庞大的数据表</a>”这样一个问题，作者认为有必要提醒下开发人员，不要犯<a href="https://iyism.com/browse.php?u=vmImMzrl5GaK%2FbgdM2J09yz9zkHxPix73OMaulqMIuMsNuUQS66mfkq9UObigH%2F0gIwQ0RuC6lxscrZCJYE5NXFF2YoWuf2rhauBFW5aZxsKtLOPNA%3D%3D&amp;b=29">Java开发人员编写SQL时常犯的十个错误</a>中的第二项错误：在Java内存中处理数据。</p>
-<p>Stack Overflow上的问题可以归结为：从下面的中型表中计算出每个应用程序ID对应多少个状态为0或1的文档。用Hibernate该如何实现？</p>
-<pre>
-AppID | DocID | DocStatus 
-------+-------+----------
-1     | 100   | 0
-1     | 101   | 1    
-2     | 200   | 0    
-2     | 300   | 1
-...   | ...   | ...
-</pre>
-<p>“NO!不要用Hibernate！你要用SQL。Es-Queue-EI!……”，作者认为，有许多简单的方法可以让SQL服务器来运行这种查询，而且时间很短，又不用在聚合之前将所有的数据加载到Java内存。他分别使用GROUP BY、嵌套查询、SUM（）和PIVOT给出了四种实现方式，并认为其中任何一种的性能都会在数量级上超过任何基于Java的实现。文章的结尾这样写道：</p>
-<blockquote> 
- <p>任何时候，只要合适就使用SQL!能用SQL的地方远比你想象的多。</p> 
-</blockquote>
-<p><a href="http://www.reddit.com/r/programming/comments/201q8y/please_run_that_calculation_in_your_rdbms/">该文在reddit用户之间引发了激烈的讨论</a>。ggtsu_00认为：</p>
-<blockquote> 
- <p>……如果计算减少了返回结果的行数，那么最好在数据库里计算。不过，许多计算是后处理或格式修改，这些最好是在应用服务器上进行。</p> 
-</blockquote>
-<p>对于ggtsu_00的观点，lukasedar进行了补充，认为“争论的焦点是通过网络在处理数据的节点之间传输的数据量”。Grauenwolf则表示，如果将该观点中的“返回结果的行数”改为“返回结果的行数或列数”，那么他也赞同。而该观点的后半部分则引发了进一步的争论。ItsMeCaptainMurphy认为：</p>
-<blockquote> 
- <p>这要看你做什么，构建数据库通常是用来尝试并行的，对于行级操作尤其如此。……而且你的数据库服务器的性能可能比Web服务器或客户端更强大。那么，有些事情确实是最好在应用程序端做，但并不是所有情况，甚至不是多数情况。</p> 
-</blockquote>
-<p>不过，emn13则认为这与数据库服务器的性能无关，而与代码性能相关：</p>
-<blockquote> 
- <p>本地或近似本地代码的性能通常是SQL的1000倍，而且可能更高。即使是像Ruby或Python这样相当慢的语言在简单表达式求值方面也可能比大部分SQL服务器要快。</p> 
- <p>SQL不是一个很好的通用计算器。如果计算没能减少返回结果的行数，就不能想当然地认为一台高性能的数据库服务器实际上会超过一部手机。</p> 
- <p>……</p> 
- <p>总而言之，由于大部分计算都很简单，所以没有减少数据也没关系。但当计算代价很高时，SQL通常是缓慢的。</p> 
-</blockquote>
-<p>为了使自己的观点更有说服力，他结合自身的经验作了进一步的说明：</p>
-<blockquote> 
- <p>1000倍这个数量级是我在MS SQL SERVER上实现一个有向图节点计分算法时观察到的，不是假想的场景。</p> 
-</blockquote>
-<p>Ulukai对上述观点表示了赞同，他还补充说</p>
-<blockquote> 
- <p>如果有非常复杂的逻辑需要执行，那么你应该仔细考虑。比如，我不会在数据库代码中执行“最短路径”算法，除非它获得原生支持。</p> 
-</blockquote>
-<p>在关系型数据库中进行计算，除了应用场景的问题，还有知识结构和使用习惯的问题。人们已经花了很多时间和精力来学习ORM框架的所有最细微的细节，所以他们真的不喜欢他们应该更好地学习SQL这样的建议。但crimson_chin认为：</p>
-<blockquote> 
- <p>学习任何一个而不学习另一个都会让你处于不利地位。如果学了SQL没有学ORM，那你就要面临代码可能过于冗长且难以维护的风险。如果你学了ORM没有学SQL，那么你就要面临自我折磨的风险，因为一个查询为了获取项的名称列表却拉回了200列。</p> 
-</blockquote>
-<p>但同时，他认为数据库代码难以测试、管理和维护。因此，只有在可以明确地知道是最佳实践的时候，他才会使用数据库的特性来进行开发。</p>
-<p>总之，JOOQ的博文虽然引发了一场讨论，但文章本身的内容似乎没有多大的争议。至于什么时候应该在关系型数据库中进行计算，什么时候应该在应用程序端进行计算，大家也有一定的共识。具体做法则要视应用场景，并根据SQL、ORM各自的优缺点进行综合分析和测试，而这当然离不开对SQL和ORM的学习和使用经验。</p><br><br><br><br><br><br></body></html>
+<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>.NET基金会成立</h3><p>随着<a href="http://www.dotnetfoundation.org/">.NET基金会</a>的成立，微软在成为主要的开源参与者的道路上又前进了一步。该基金会的宗旨是“成为越来越多的开源.NET项目的管理者”。</p>
+<p>基金会有六位创始人，均非微软公司员工：</p>
+<ul> 
+ <li>来自Xamarin的Miguel de Icaza</li> 
+ <li>来自IdentityMine的Laurent Bugnion</li> 
+ <li>来自Umbraco的Niels Hartvig</li> 
+ <li>来自Nigel Sampson的Compiled Experience</li> 
+ <li>来自Glimpse的Anthony von der Hoom</li> 
+ <li>来自GitHub的Paul Betts</li> 
+</ul>
+<p>该基金会目前有24个项目，大多是微软和Xamarin捐赠的。</p>
+<ul> 
+ <li><a href="http://hadoopsdk.codeplex.com/">.NET API for Hadoop WebClient</a></li> 
+ <li><a href="http://roslyn.codeplex.com/">.NET编译器平台(&quot;Roslyn&quot;)</a></li> 
+ <li><a href="http://hadoopsdk.codeplex.com/">.NET Map Reduce API for Hadoop</a></li> 
+ <li><a href="http://netmf.codeplex.com/">.NET Micro Framework</a></li> 
+ <li><a href="http://aspnetwebstack.codeplex.com/">ASP.NET MVC</a></li> 
+ <li><a href="https://github.com/SignalR/SignalR">ASP.NET SignalR</a></li> 
+ <li><a href="http://aspnetwebstack.codeplex.com/">ASP.NET Web API</a></li> 
+ <li><a href="http://aspnetwebstack.codeplex.com/">ASP.NET Web Pages</a></li> 
+ <li><a href="http://mef.codeplex.com/">Composition (MEF2)</a></li> 
+ <li><a href="http://entityframework.codeplex.com/">Entity Framework</a></li> 
+ <li><a href="http://hadoopsdk.codeplex.com/">Linq to Hive</a></li> 
+ <li><a href="http://mef.codeplex.com/">MEF (Managed Extensibility Framework)</a></li> 
+ <li><a href="http://katanaproject.codeplex.com/SourceControl/latest#src/Microsoft.Owin.Security.Google/GoogleOAuth2AuthenticationMiddleware.cs">OWIN Authentication Middleware</a></li> 
+ <li><a href="https://rx.codeplex.com/">Rx (Reactive Extensions)</a></li> 
+ <li><a href="http://wpl.codeplex.com/">Web Protection Library</a></li> 
+ <li><a href="https://github.com/WindowsAzure/azure-sdk-for-net">Windows Azure .NET SDK</a></li> 
+ <li><a href="http://phone.codeplex.com/">Windows Phone Toolkit</a></li> 
+ <li><a href="https://github.com/nickharris/WnsRecipe">WnsRecipe</a></li> 
+ <li><a href="https://github.com/xamarin/couchbase-lite-net">Xamarin couchbase-lite-net</a></li> 
+ <li><a href="https://github.com/jstedfast/MailKit">Xamarin Mailkit</a></li> 
+ <li><a href="https://github.com/jstedfast/MimeKit">Xamarin Mimekit</a></li> 
+ <li><a href="https://github.com/mono/mono/tree/master/mcs/class/System.Drawing">Xamarin System.Drawing</a></li> 
+ <li><a href="https://github.com/xamarin/Xamarin.Auth">Xamarin.Auth</a></li> 
+ <li><a href="https://github.com/xamarin/Xamarin.Mobile">Xamarin.Mobile</a></li> 
+</ul>
+<p>尽管社区的响应普遍较为积极，但是有一点颇有争议，那就是没提到Silverlight或WPF。随着Web上的Silverlight被完全冷落，以及WPF进入维护模式，开发者希望微软开源这些逐渐老化的技术。</p>
+<p><strong>查看英文原文：</strong><a href="http://www.infoq.com/news/2014/04/Net-Foundation">Introducing the .NET Foundation</a></p><br><br><br><br><br><br></body></html>

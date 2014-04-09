@@ -2,6 +2,21 @@
  <head></head> 
  <body>
   <div>
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/2.htmlb">使用MySQL、Hudson、Gradle、Maven和Git实现数据库DevOps</a> DevOps这个术语描述的是经改良的开发团队与运维团队之间的协作。在软件工程中，数据库通常都位于关键路径之中。本文介绍了什么是DevOps，并且解释了使用了具体概念和工具的数据库DevOps是什么样的。 
+  </div> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/1.htmlb">豆瓣的基础架构</a> 本文根据InfoQ中文站对豆瓣洪强宁（@hongqn）的沟通交流整理而成。洪强宁介绍了豆瓣的架构和组件，并分享了豆瓣基础平台部的一些团队经验。文中截图来自洪强宁在2013年CTO俱乐部中的分享。 
+  </div> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/0.htmlb">DevOps @ Spotify</a> 本文是“DevOps每月实战故事”系列的一部分。每个月我们都会听听来自不同团队的DevOps故事，了解哪些对我们有用，哪些没有用，并且描绘出DevOps实施过程中所面对的挑战。在这个问题上，我们学会了如何从DevOps中吸取经验教训并贯穿在Spotify的工程师管理中。其结果是团队领导者、产品经理以及敏捷教练共同收获一个健康的Potlac（注：Potlac是作者自造的生词，意思是Product Owner + Team Lead + Agile Coach）。 
+  </div> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/49.htmlb">更好地实施敏捷</a> 敏捷实施现在举步维艰——组织对敏捷实践进行授权式管理并期望团队可以改变其工作的方式，但是这种改变看上去是不可持续的。该文是一系列研究文章中的第一篇，这些文章探讨了为什么这种情况会发生，并且给出了一个替代方案——开放式敏捷实施基于邀请和参与，而不是来自上级的授权和指示。 
+  </div> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/48.htmlb">通过Microsoft Azure服务设计网络架构的经验分享</a> 本文从产品设计和架构角度分享了Microsoft Azure网络服务方面的使用经验，希望你在阅读本文之后能够了解这些服务之间，从而更好地设计你的架构。 
+  </div> 
+  <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/47.htmlb">Pair Painting 结对粉刷房间</a> Victoria上周粉刷了一下家中的厨房，这一过程使她联想起了结对编程。她和她的搭档之前也有过粉刷房间的经验，而且出来的效果也让她们感到十分自豪。但换成了她自己来做的话，尽管她具有良好的技能与知识，但最终的效果也不那么理想。她对此产生了疑问：事情为什么是这样？ 
   </div> 
   <div> 
@@ -135,21 +150,6 @@
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/13.htmlb">与Ole Jepsen谈敏捷中的领导力</a> 优秀的领导者创造环境让自我管理（self-organizing）团队茁壮成长，从而创造伟大的产品和服务去满足客户的需求。这是Ole Jepsen在本次采访中表达的观点。在XP Days Benelux会议上，他谈到什么是真正的领导力，以及控制和放权之间微妙但重要的差异。 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/12.htmlb">Durandal快速入门</a> Durandal是一个轻量级的JavaScript框架，其目标是使单页面应用（SPAs）的开发变得简单而优雅。它支持MVC、MVP和MVVM等模式，因此不论你采用哪种类型的前端架构，Durandal都能胜任。 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/11.htmlb">10大准则令完美的开发/测试实验室成为可能</a> 对企业来说，开发和测试驱动业务的软件所需的时间，往往就像是个无底洞。现在，凭借能够将私有和公有云规范化的新技术，“终极软件开发实验室”不止成为可能而且还具有成本效益。为了实现超敏捷软件开发，这里给出了若干关键准则，用来构建企业DevOps梦寐以求的下一代开发/测试实验室。 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/10.htmlb">HBase优化案例分析：Facebook Messages系统问题与解决方案</a> 该论文首先讲了Facebook的分析方法包括tracing/analysis/simulation，FM系统的架构和文件与数据构成等，接下来开始分析FM系统在性能方面的一些问题，并提出了解决方案。 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/9.htmlb">PyParallel：Python的一个快速并行版本</a> By combining asynchronous I/O with a shared-nothing architecture, PyParallel research project is able to execute code in a parallel context faster than it can using CPython’s normal interpreter. And it does this without removing the GIL. The secret, no reference counting or garbage collection of any kind. 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/8.htmlb">深度剖析京东云引擎核心技术</a> 京东云引擎构建于Cloud Foundry之上，为更好地服务于个人开发者与京东ISV，开发团队对Cloud Foundry做了许多重要扩展，如智能路由、弹性伸缩、智能启动与资源隔离及访问控制。本文为您一一剖析它们的实现原理。 
   </div>  
  </body>
 </html>

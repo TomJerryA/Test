@@ -1,1 +1,1 @@
-WinJS Goes Open Source, Adds Windows Phone 8.1 Support
+Meteor 0.8: Blaze Release Overhauls Rendering System

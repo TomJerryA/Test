@@ -1,45 +1,25 @@
-<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>Docker Index Offers Private Repositories, Webhooks And Other Services</h3><p><a href="http://www.docker.com/">Docker Inc.</a>, the company behind <a href="https://www.docker.io/">Docker</a>, introduced a range of new services, including its first paid offering: <a href="https://index.docker.io/help/docs/#repositories">private repositories</a>. <a href="https://index.docker.io/">Docker index</a> now also offers webhooks, triggers and links for <a href="https://index.docker.io/help/docs/#trustedbuilds">trusted builds</a> and e-mail notifications.</p>
-<p>Docker index is a <a href="https://docs.docker.io/en/latest/terms/registry/">registry</a> for Docker <a href="https://docs.docker.io/en/latest/terms/image/#image-def">images</a> <a href="https://docs.docker.io/en/latest/terms/repository/#repository-def">repositories</a>. A repository is the way to share pre-built images, avoiding the need to recreate them every time by everyone. Although a rough analogy, repositories are to Docker what <a href="http://docs.vagrantup.com/v2/boxes.html">boxes</a> are to Vagrant. With the availability of private repositories it is now possible to control who can push or pull into a repository. It is now also possible to browse repositories by image tags and see the file system changes introduced by each.</p>
-<p>Successful repository pushes now trigger webhooks, when configured. The webhook URL will receive an HTTP POST with the following JSON payload:</p>
-<pre>
-{
-   &quot;push_data&quot;:{
-      &quot;pushed_at&quot;:1385141110,
-      &quot;images&quot;:[
-         &quot;imagehash1&quot;,
-         &quot;imagehash2&quot;,
-         &quot;imagehash3&quot;
-      ],
-      &quot;pusher&quot;:&quot;username&quot;
-   },
-   &quot;repository&quot;:{
-      &quot;status&quot;:&quot;Active&quot;,
-      &quot;description&quot;:&quot;my docker repo that does cool things&quot;,
-      &quot;is_trusted&quot;:false,
-      &quot;full_description&quot;:&quot;This is my full description&quot;,
-      &quot;repo_url&quot;:&quot;https://index.docker.io/u/username/reponame/&quot;,
-      &quot;owner&quot;:&quot;username&quot;,
-      &quot;is_official&quot;:false,
-      &quot;is_private&quot;:false,
-      &quot;name&quot;:&quot;reponame&quot;,
-      &quot;namespace&quot;:&quot;username&quot;,
-      &quot;star_count&quot;:1,
-      &quot;comment_count&quot;:1,
-      &quot;date_created&quot;:1370174400,
-      &quot;dockerfile&quot;:&quot;my full dockerfile is listed here&quot;,
-      &quot;repo_name&quot;:&quot;username/reponame&quot;
-   }
-}
-</pre>
-<p><a href="http://blog.docker.io/2013/11/introducing-trusted-builds/">Trusted Builds</a> is a service which allows to connect a repository to a GitHub account and add a post commit hook to a GitHub repository. This hook triggers a build and updates the image inside Docker index, maintaining a relationship between the image and the corresponding <a href="https://docs.docker.io/en/latest/reference/builder/">Dockerfile</a>.</p>
-<p>Trusted Builds received two enhancements: links and triggers. Links give the capability to synchronize Trusted Build repositories so that any update to a linked Trusted Build triggers an update on the other Trusted Build. Triggers give a simple process to start a repository build, without having to commit anything to GitHub, like so:</p>
-<pre>
-  $ curl --data &quot;build=true&quot; -X POST https://index.docker.io/u/samalba/docker-registry/trigger/b2562468-aea0-11e3-a39e-b6db5999dfec/
-</pre>
-<p>Finally, Docker index users can now be notified by e-mail on some events: when a Trusted Build or when another user stars or comments a repository.</p>
-<p>Docker index's new services increase the choice for Docker registries, since&nbsp;<a href="https://quay.io/">Quay.io</a> already offered similar capabilities to the ones now announced.</p>
-<p>Private repositories are the first <a href="https://index.docker.io/plans/">commercial offering</a> of Docker Inc., although there are plans to add more paid services, as <a href="http://blog.docker.io/2014/03/introducing-private-repos-webhooks-and-more/">stated</a> at Docker's blog:</p>
-<blockquote>
-  All services on Docker.io to this point have been freely available, and we feel this is important in fostering an active, growing community around Docker. For this reason, most of Docker.io's services will continue to be free but, as Ben has already publicly shared, to support continued investment in Docker we will over time offer optional pay-for services. Private repos is the first example of this. 
+<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>Meteor 0.8: Blaze Release Overhauls Rendering System</h3><p><a href="http://www.meteor.com">Meteor</a> has released version 0.8, bringing an “an overhaul of Meteor's rendering system.”</p>
+<p>Meteor’s next generation live templating engine, Blaze, includes support for fine-grained DOM updates, jQuery integration and simpler API. Blaze replaces the live page update engine Spark that was <a href="https://www.meteor.com/blog/2012/08/31/introducing-spark-a-new-live-page-update-engine">introduced in version 0.4</a> in 2012.</p>
+<p>On the <a href="https://www.meteor.com/blog/2014/03/27/meteor-080-introducing-blaze">Meteor blog</a> Matt Debergalis describes Blaze as “developer-friendly” and that its architecture improves on Spark in “several ways.”</p>
+<p>Blaze comes in two parts; the first part is a build-time compiler that transforms templates into JavaScript code. Spacebars -- the Handlebars-style compiler -- turns HTML templates into live updating DOM elements, allowing users to write normal looking HTML templates and helpers.</p>
+<blockquote> 
+ <p>“When a user changes data or new data arrives over the network that a template depends on, Blaze updates your screen automatically,” without the need to “declare any dependencies or write code to manage how the screen updates,” Debergalis <a href="https://www.meteor.com/blog/2014/03/27/meteor-080-introducing-blaze">said</a>.</p> 
 </blockquote>
-<p>The pricing plans start at 7$/month for at most five repositories up to 50$/month for a maximum of fifty repositories.</p><br><br><br><br><br><br></body></html>
+<p>The second part of Blaze is the runtime API that “renders elements, keeps track of their dependencies, and updates them through their complete lifecycle as those dependencies change”.</p>
+<p>Among the <a href="https://github.com/meteor/meteor/wiki/Using-Blaze#replacements-for-advanced-spark-apis">replacements</a> for advanced Spark APIs are the removal of Meteor.render, and a new pattern for defining custom block helpers. The list of <a href="https://github.com/meteor/meteor/wiki/Using-Blaze#added-and-deprecated-apis">added and deprecated APIs</a> include the UI.body is now a template corresponding to the entire BODY element.</p>
+<p>The <a href="https://github.com/meteor/meteor/blob/devel/packages/spacebars/README.md">Spacebars</a> parser allows users to do several things that were “previously impossible”, such as:</p>
+<ul> 
+ <li>HTML-aware updates. The template parser now parses HTML tags in addition to stache tags, making finer-grained reactive updates possible, including attribute-level updates to DOM elements.</li> 
+ <li>Precompilation. The Spacebars compiler generates simple procedural code that calls an internal Meteor interface which in the future will perform either client-side or server-side rendering. This is more efficient than either interpreting the template or parsing its HTML output at runtime.</li> 
+ <li>Syntax extensions. Handlebars syntax is extremely minimal, and we foresee adding some additional well-chosen extensions over time. (We will also implement the top features of current Handlebars that are missing from Meteor, like #each that supports objects and lets you access the current index or key.)</li> 
+</ul>
+<p>As of Meteor 0.8 the Handlebars namespace is deprecated. The Handlebars.SafeString is now Spacebars.SafeString, and Handlebars.registerHelper is now UI.registerHelper</p>
+<p>Spacebars requires HTML to be “well-formed”. The <a href="https://github.com/meteor/meteor/wiki/Using-Blaze">Using Blaze</a> github page notes: “In Spark, HTML parsing was done by the browser which is more lenient.”</p>
+<p>In addition, the Blaze HTML parser doesn't currently fully implement the HTML spec. The release notes specify that it doesn't automatically close <a href="https://github.com/meteor/meteor/issues/1842">certain tags</a>, such as &lt;p&gt; and &lt;li&gt;.</p>
+<p>The 0.8 release was greeted by the Meteor community with enthusiasm. In the Meteor <a href="http://www.linkedin.com/groups?home=&amp;gid=4556383&amp;trk=anet_ug_hm&amp;goback=%2Egmr_4556383">group</a> on LinkedIn, user Uğur Toprakdeviren started a <a href="http://www.linkedin.com/groups/What-is-your-opinion-about-4556383.S.5855220594395619330?trk=groups_most_recent-0-b-ttl&amp;goback=%2Egmr_4556383">discussion</a>, asking: “What is your opinion of new version of Meteor 0.8.0 (Blaze, Spacebars etc)”.</p>
+<p>Aaron Singmaster-Judd, founder &amp; CTO at Ongo Works, replied “awesome, well done, and kudos to the Meteor team and the community package developers work on the new codebase.</p>
+<blockquote> 
+ <p>“[it] may require some effort to upgrade existing packages, and renders a fair amount of information out in the webs invalid, but worth the price of progress.”</p> 
+</blockquote>
+<p>On Hacker News, the update was also well received. User elsherbini <a href="https://news.ycombinator.com/item?id=7484804">commented</a> on the jQuery integration “jquery compatibility is huge, awesome!”. Other users shared the positive sentiment about the Blaze release, including TylerE <a href="https://news.ycombinator.com/item?id=7485394">commenting</a> on the compiler: “I have to say I'm pretty excited, since it now looks like there is a non-hacky way to use jade templates, which as far as I'm concerned are a big win.”</p>
+<p>Debergalis notes that the live templating engine is the only new feature of the 0.8 release and is a major step towards the Meteor 1.0 release.</p><br><br><br><br><br><br></body></html>

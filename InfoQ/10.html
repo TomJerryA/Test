@@ -1,55 +1,37 @@
-<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>使用Sigma库在Web应用中绘图</h3><p><a href="http://sigmajs.org/">Sigma</a>是一个致力于在Web应用中进行图形绘制的JavaScript库，目前其开发团队推出了新的<a href="https://github.com/jacomyal/sigma.js/blob/master/CHANGELOG.md">版本</a>。</p>
-<p>该JS库旨在帮助开发者们创建图形，同时也能够让用户在网页上进行网络操控变得更平顺、更快速。尽管这个新版本的推出是以修复Bug为主要目的，但之前的版本——发布于今年年初——完全是从无到有，使用全新架构开发而成。</p>
-<p>对于目前的特性列表，Sigma的网站给出了以下描述：</p>
-<ul> 
- <li>定制渲染——开发者可以使用<a href="http://www.w3schools.com/html/html5_canvas.asp">Canvas</a>或<a href="http://www.khronos.org/webgl/">WebGL</a>内建渲染器，或是甚至自行编写。内建渲染器还提供了许多定制渲染过程的途径。</li> 
- <li>面向交互——开发者可以捕捉用户对某个节点，执行点击鼠标或滑动鼠标滚轮的操作；也可以捕捉用户拖动图形或放大操作，并且总是能够掌握图形相对于屏幕的位置。</li> 
- <li>强大的图形模型——Sigma只不过是个渲染引擎，但是开发者或许想要做更多的事情，例如运行自己的图形算法。对此，Sigma提供了可定制的图形模型，开发者可以自行添加定制的数据索引。</li> 
- <li>可扩展——开发插件或简单的代码片段来增强Sigma的特性是件很容易的事情。现在，Sigma的主代码仓库中，已经开放了一些插件，用于读取某些流行图形文件格式或运行复杂布局算法。</li> 
- <li>兼容性——Sigma适用于所有支持Canvas的现代浏览器，但在提供WebGL支持的浏览器上运行速度更快。</li> 
-</ul>
-<p>该JS库上月在Github上被推荐为<a href="https://github.com/trending">最流行的代码库</a>。InfoQ采访了Sigma的首席开发人员Alexis Jacomy，以进一步了解该项目：</p>
-<p><b>InfoQ</b><b>：开发</b><b>Sigma</b><b>背后的动机是什么？</b></p>
+<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>OpenSSL Heartbleed漏洞事件记录</h3><p>2014年4月7日开始在互联网上引起轩然大波的“OpenSSL Heartbleed”漏洞是一个非常严重的漏洞，安全人士“道哥的黑板报”表示该漏洞可能成为2014年的“最佳漏洞”之一，造成的影响可能会超过去年Struts框架远程执行漏洞。</p>
+<p>以下是InfoQ中文站对本次漏洞披露过程、讨论过程和影响范围的事件记录，供参考。</p>
+<p>2014年4月7日，CloudFlare公司在其博客上发布了一个<a href="https://blog.cloudflare.com/staying-ahead-of-openssl-vulnerabilities">公开声明</a>，表示发现了OpenSSL 1.0.1版本当中的一个尚未被公开的漏洞，并表示CloudFlare已经在之前一周修复该bug。同日，OpenSSL官网发布该漏洞通告，漏洞标识为<a href="http://www.openssl.org/news/secadv_20140407.txt">CVE-2014-0160</a>，通告内容如下：</p>
 <blockquote> 
- <p>若干年前，我开始为Flash开发Web图形绘制工具，以帮助<a href="https://gephi.org/">Gephi</a>用户在Web页面上交互式展现他们的图形。Sigma最初只是我转向HTML5第一步，现在，在某种意义上它已经取得了成功，而这将继续激发我对于它的积极性。</p> 
+ <p>TLS心跳扩展的处理过程漏掉了一步边界检测的步骤，这个漏洞使攻击者能够从客户端与服务器端连接的内存泄露中读取多达64KB的数据。</p> 
+ <p>OpenSSL 1.0.1、1.0.1f、1.0.2-beta和1.0.2-beta1版本包含本漏洞。</p> 
+ <p>Google安全组的Neel Mehta发现了本漏洞，而Adam Langley <a href="mailto:agl@chromium.org">agl@chromium.org</a> 和Bodo Moeller <a href="mailto:bmoeller@acm.org">bmoeller@acm.org</a> 提供了漏洞的补丁，感谢他们。</p> 
+ <p>所有受影响的用户需尽快升级至OpenSSL 1.0.1g版本。升级有困难的用户可以通过<code>-DOPENSSL_NO_HEARTBEATS</code>选项重新编译OpenSSL进行临时修补。</p> 
+ <p>1.0.2-beta2更新中将修复这个漏洞。</p> 
 </blockquote>
-<p><b>InfoQ</b><b>：</b><b>Sigma</b><b>的新版本经历了重度重构，你这样做是为了实现什么目标？</b></p>
+<p>官方通告发布之后，<a href="http://www.codenomicon.com/">安全公司Codenomicon</a>单独建立网页对该漏洞进行更详细的描述与跟进，并表示其工程师在该漏洞披露之前早已单独发现了这个漏洞。由于该漏洞跟heartbeat与内存泄露的相关性，本漏洞被形象的描述为<a href="http://heartbleed.com/">Heartbleed</a>（心脏出血）。Heartbleed.com上有一份详细的FAQs，摘要部分如下：</p>
 <blockquote> 
- <p>最初Sigma的源码非常严格，而且完全未经测试。对我来说，这次重构恰好是解决这些问题的机会。在这个版本中引入了更加一致的API，并使用了更多单元测试。此外，Sigma中的每一部分现在都是可覆盖的，这将允许开发者以插件的形式实现几乎任何特性。</p> 
-</blockquote>
-<p><b>InfoQ</b><b>：</b><b>JavaScript</b><b>领域还有其他一些为图形绘制提供支持的库。那么你认为</b><b>Sigma</b><b>何以成为独特的一个？</b></p>
-<blockquote> 
- <p>Sigma是一个致力于图形绘制的JS库。它的目标是简化基础使用场景，同时也支持整合以用于加倍复杂的应用：</p> 
  <ul> 
-  <li>以几个内建特性为例，我们可以看到它让开发者能够轻松实现多点触摸、平滑缩放并应对窗台大小调整。</li> 
-  <li>它提供了一些更加复杂的特性，并以插件的形式实现了它们。</li> 
-  <li>它的API和事件系统简化了与图形之间的交互。</li> 
+  <li>这是一个非常严重的bug，导致全球互联网大量私钥和其他加密信息处于暴露的危险下。</li> 
+  <li>本漏洞从2011年12月开始进入OpenSSL，并在2012年3月14日OpenSSL 1.0.1正式发布后开始大量流入市场。</li> 
+  <li>Debian Wheezy、Ubuntu 12.04.4 LTS、CentOS 6.5、Fedora 18、OpenBSD 5.3、FreeBSD 10.0、NetBSD 5.0.2、OpenSUSE 12.2等发行版默认搭载了含有本漏洞的OpenSSL版本。</li> 
+  <li>利用本漏洞抓取敏感信息不会留下任何痕迹。</li> 
  </ul> 
 </blockquote>
-<p><b>InfoQ</b><b>：能不能介绍一些现在正在使用</b><b>Sigma</b><b>的项目？</b></p>
-<blockquote> 
- <p>据我目前了解，以下项目正在整合Sigma的新版本，但是尚未完成产品化：</p> 
- <p>来自Sciences-Po m&eacute;dialab（我当前的雇主，为最新版本的开发提供了经济支持）：</p> 
- <ul> 
-  <li><a href="http://tools.medialab.sciences-po.fr/iwanthue/">http://tools.medialab.sciences-po.fr/iwanthue/</a></li> 
-  <li><a href="https://github.com/medialab/Hypertext-Corpus-Initiative">https://github.com/medialab/Hypertext-Corpus-Initiative</a></li> 
-  <li><a href="https://github.com/medialab/sciencescape">https://github.com/medialab/sciencescape</a></li> 
- </ul> 
- <p>来自牛津大学互联网研究所（<a href="http://www.oii.ox.ac.uk/microsites/hcn/?lang=cn">Oxford Internet Institute</a>）:</p> 
- <ul> 
-  <li><a href="https://marketplace.gephi.org/plugin/sigmajs-exporter/">https://marketplace.gephi.org/plugin/sigmajs-exporter/</a>——Sigma的成功与之息息相关</li> 
-  <li><a href="https://apps.facebook.com/namegendev/">https://apps.facebook.com/namegendev/</a></li> 
-  <li><a href="http://collegeconnect.us/">http://collegeconnect.us</a></li> 
- </ul> 
- <p>其他项目：</p> 
- <ul> 
-  <li><a href="http://moviegalaxies.com/">http://moviegalaxies.com/</a></li> 
-  <li><a href="http://linkurio.us/">http://linkurio.us/</a></li> 
-  <li><a href="http://app.algopol.fr/">http://app.algopol.fr/</a></li> 
- </ul> 
-</blockquote>
-<p><b>InfoQ</b><b>：</b><b>Sigma</b><b>项目的计划几乎是什么？</b></p>
-<blockquote> 
- <p>我的计划基本上是要保持对它的维护，并尝试让更多人参与到核心开发工作中。而且，还有一些特性我目前没有时间去实现，例如SVG渲染器或是基于布局算法的Web工作器。</p> 
-</blockquote>
-<p><strong>查看英文原文：</strong><a href="http://www.infoq.com/news/2014/03/sigma-javascript-graph-drawing">Using Sigma for Drawing Graphs</a></p><br><br><br><br><br><br></body></html>
+<h3>社区讨论</h3>
+<p>该漏洞在被公开纰漏后开始迅速传播。OpenSSL官方通告在<a href="https://news.ycombinator.com/item?id=7548468">Hacker News</a>、<a href="http://lwn.net/Articles/593683/">LWN</a>、<a href="http://www.zhihu.com/question/23328658">知乎</a>等平台上引发大量讨论，讨论方向包括：</p>
+<p>吐槽OpenSSL的编码实践。造成边界检查失效的代码被视为“难以通过代码审查”，而即使是<a href="http://git.openssl.org/gitweb/?p=openssl.git;a=commitdiff;h=96db9023b881d7cd9f379b0c154650d6c108e9a3">修复的补丁</a>也被评价为“<a href="https://news.ycombinator.com/item?id=7552634">不忍直视</a>”：</p>
+<pre>
+if (1 + 2 + 16 &gt; s-&gt;s3-&gt;rrec.length) 
+if (1 + 2 + payload + 16 &gt; s-&gt;s3-&gt;rrec.length) </pre>
+<p>OpenBSD的<a href="http://article.gmane.org/gmane.os.openbsd.misc/211963">deraadt评价“OpenSSL的开发团队是不负责任的”</a>，还有人把2009年的一篇《<a href="https://www.peereboom.us/assl/assl/html/openssl.html">OpenSSL的开发者们都是猴子</a>》推到了Hacker News上，批评该项目的代码质量。</p>
+<p>dmix写了一个脚本遍历Alexa排名前一千的网站，遍历结果显示约有30%~40%的网站包含本漏洞。他表示没有测试中国的网站，因为国内网站的443端口从国外嗅探纷纷会超时。</p>
+<p>ZDNet的读者<a href="http://www.zdnet.com/heartbleed-serious-openssl-zero-day-vulnerability-revealed-7000028166/">谴责了CloudFlare</a>，认为这次造成这么大的影响很大程度上是因为CloudFlare没有走“负责任的漏洞披露过程”，在官方补丁发布之前先做了通告，而CloudFlare的工程师则坚称自己披露的时间点在OpenSSL官方通告被分享到Hacker News之后，因此没有过失。</p>
+<p>@ex509 在其博客上针对本漏洞写了一篇详细的<a href="http://blog.existentialize.com/diagnosis-of-the-openssl-heartbleed-bug.html">技术分析</a>，国内的<a href="http://drops.wooyun.org/author/Fish">Fish</a>将其翻译为中文并发布在<a href="http://drops.wooyun.org/papers/1381">乌云知识库</a>。</p>
+<p>知道创宇的余弦<a href="http://www.zhihu.com/question/23328658/answer/24241031">在知乎上表示</a>“@知道创宇安全研究团队 实测可以Dump出淘宝、微信、网银、陌陌、12306等各大使用OpenSSL服务的一些内存信息，里面有用户等的敏感内容（有些重要网站含明文密码）”，并表示“这事的影响超乎想象。”</p>
+<p>@ZoomEye 搜索引擎制作了一份<a href="http://www.zoomeye.org/lab/openssl">受本次漏洞影响的网站地图</a>。</p>
+<p>360网站卫士推出了一个<a href="http://wangzhan.360.cn/heartbleed">该漏洞的检查服务</a>，该服务技术负责人赵武<a href="http://weibo.com/2033280760/AEL3FCcoX?mod=weibotime">在微博上建议</a>“负责任的网站方没搞清楚之前还是先停服务吧。”</p>
+<h3>影响范围</h3>
+<p>4月8日，有大量由该bug导致的各网站漏洞被披露在Wooyun.org，包括蘑菇街、搜狗、盛大网络、UCloud、淘宝、开源中国、豌豆荚、唯品会等，各网站的工程师均在Wooyun上回应表示正在修复，部分大型网站的OpenSSL问题已经修复。</p>
+<p>AWS在4月8日发布<a href="https://aws.amazon.com/security/security-bulletins/aws-services-updated-to-address-openssl-vulnerability/">升级通知</a>表示收到本漏洞影响的ELB服务器已经升级，EC2上提供的AMI已经替换为没有该漏洞的版本，同时也在帮助其Elastic Beanstalk和CloudFront的用户修复本问题。</p>
+<p><a href="https://blogs.akamai.com/2014/04/heartbleed-faq-akamai-systems-patched.html">Akamai首席安全官在4月8日发布博客</a>表示已经在本漏洞公开纰漏之前完成了修复。<a href="https://blog.heroku.com/archives/2014/4/8/openssl_heartbleed_security_update">Heroku在4月8日发布修复通告</a>后提醒用户更改密码。</p>
+<p>已经发布升级通告的发行版包括<a href="https://www.redhat.com/archives/rhsa-announce/2014-April/msg00017.html">红帽</a>（RHEL桌面版、服务器版、HPC、Workstation）、<a href="https://lists.fedoraproject.org/pipermail/announce/2014-April/003205.html">Fedora</a>（19、20）、<a href="http://www.ubuntu.com/usn/usn-2165-1/">Ubuntu</a>（13.10、12.10、12.04 LTS）、<a href="http://www.debian.org/security/2014/dsa-2896">Debian</a>。</p><br><br><br><br><br><br></body></html>

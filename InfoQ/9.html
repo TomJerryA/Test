@@ -1,47 +1,14 @@
-<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>管理软件债务</h3><p>软件债务以不同的形式存在。<a href="http://www.infoq.com/technicaldebt/">技术债务</a>广为人知，能力债务和质量债务是另外的一些形式。软件债务会导致产品运维成本增加，使开发人员沮丧。现在有几种解决方案可以管理软件债务。</p>
-<p>在博文《<a href="http://www.leanway.no/competence-debt/">另一种软件债务</a>》中，Niklas Bj&ouml;rnerstedt谈了“能力债务”，并将它定义为：</p>
+<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>WinJS开源，增加Windows Phone 8.1支持</h3><p>在去年六月的Build 2013大会上，Paul Gusmorino<a href="http://www.infoq.com/news/2013/07/winjs20">谈论</a>了WinJS 2.0及其带来的速度提升。在上周的Build 2014大会上，他<a href="http://channel9.msdn.com/Events/Build/2014/2-506">又来</a>谈论了WinJS 2.1以及该库下一步的发展方向。Windows Library for JavaScript（WinJS）原本是要成为使用HTML、CSS和JavaScript构建应用程序的有效途径。它最初由微软创建，不过，其功能不局限于Windows平台。</p>
+<p>Gusmorino参与主推了微软依据开源许可证发布的几项技术。他宣布，WinJS现在依据Apache许可证授权，项目托管在<a href="https://github.com/winjs/winjs/">GitHub</a>上。微软的希望是，这可以使WinJS成为一个可以用在所有现代设备和浏览器上的通用库，而且不需要大量重写。除了这项扩展外，WinJS 2.1已经发布，并支持Windows Phone 8.1。对于微软技术栈而言，这意味着在Xbox、Windows Phone和Windows 8应用程序中间在用的WinJS变体现在有三种。Gusmorino表示，统一这三种平台是为2015年WinJS 3.0设定的目标。该项目已经生成了一个<a href="https://github.com/winjs/winjs/wiki/Roadmap#the-future">路线图</a>，说明了他们下一步的发布步骤。</p>
 <blockquote> 
- <p>代码库中有什么和你了解多少之间的差距。</p> 
+ <p>WinJS项目目标</p> 
+ <ul> 
+  <li>提供真正的应用程序体验</li> 
+  <li>构建本地体验</li> 
+  <li>实现跨设备代码共享</li> 
+  <li>向社区贡献新材料——“不是提供用户已有的某个东西的微软版本”</li> 
+  <li>保持和提高模块化</li> 
+ </ul> 
 </blockquote>
-<p>为了将软件运维成本保持在一个较低的水平上，技术债务和能力债务都应该受到重视，正如Niklas的阐述：</p>
-<blockquote> 
- <p>除非你偿还，否者技术债务将不可避免地随着时间增长，同样地，能力债务也会随着时间增长。这两种债务之间最大的不同在于：代码库修改越多，技术债务增长越快；而如果停止修改，能力债务就会更快地增长。因此，在成熟的系统中，现行开发已经结束，能力债务最为严重。</p> 
-</blockquote>
-<p>Niklas推荐了两种可用于减少债务的技术：结对编程和代码重构：</p>
-<blockquote> 
- <p>在我看来，结对编程的真正价值在于减少了技术债务和能力债务。通过结对，团队成员扩大了他们熟悉的代码库范围，并且增加了重叠范围。类似地，重构的价值也不仅仅是减少技术债务。重构还是一种减少能力债务的好方法。只有真正地了解一个系统时，你才能修改它。</p> 
-</blockquote>
-<p>当能力债务增长，系统运维所需的工作量就会增加，到了一定程度，组织就会开始考虑替换该系统：</p>
-<blockquote> 
- <p>当真正的问题是他们不知道系统如何工作时，人们就会声称旧系统无法运维。是的，技术债务使情况变得更糟，因为混乱的代码和缺少自动化测试使得系统了解起来令人沮丧。当最初的开发人员剩下的太少，而企业又无法找到新的能够或愿意学习的开发人员，通常就会产生重写的冲动。</p> 
-</blockquote>
-<p>Mike Hustler写了一篇博文《<a href="http://www.appneta.com/blog/agile-technical-debt/">管理技术债务最敏捷的方式</a>》。他在文中探讨了如何平衡产品开发能力和管理技术债务。他对将产品移交给运维团队如何导致技术和能力债务的增长进行了说明：</p>
-<blockquote> 
- <p>我见过有的组织建立一个单独的运维团队，比如，规模是新功能团队的一半。在我看来，这个做法是错误的（至少，对于与我们合作的那种规模的团队而言是如此）。（……）源于主人翁自豪感的那份坚持没有了，因为某人正在处理的Bug是由另一个人造成的，事实上，是另一个团队。如果没有良好的沟通，最初为什么采用某个特定方法的背景就无从知晓。缺少领域知识导致问题修复的效率降低。更糟糕的是，我见过有的运维团队，成员是缺乏经验的开发人员，他们很难确定问题的根源，导致了将返工当首选的创可贴式修复的发生。</p> 
-</blockquote>
-<p>技术债务会令开发人员沮丧，并使他们放弃会增加能力债务的系统。Cory House在博文《<a href="http://blog.pluralsight.com/7-reasons-clean-code-matters">干净代码重要的七个原因</a>》中有这样的描述：</p>
-<blockquote> 
- <p>编写马虎或混乱的代码会使项目出现技术债务。当结合上下文仔细考虑，技术债务可能有用，但过多的技术债务会令人沮丧，进而导致组织人才流失。当简单的事情变得困难，开发人员开始用脚投票，去其它地方。相比于工作数量，开发人员更能从其工作质量上获得工作满足感。技术债务降低了重用机会，而且为代码库的其余部分设置了一个较低的质量门槛。</p> 
-</blockquote>
-<p>David Hammerslag写了一篇博文《<a href="http://www.bigvisible.com/2013/10/want-predictability-avoid-quality-debt/">想要可预见性吗？避免质量债务</a>》。在文中，他探讨了放着代码中已发现的缺陷不解决的影响。他将质量债务定义为：</p>
-<blockquote> 
- <p>质量债务是在任意给定的时间点修复软件产品中的一个缺陷所需要的工作量的度量。</p> 
-</blockquote>
-<p>他将质量债务与技术债务做了比较：</p>
-<blockquote> 
- <p>技术债务衡量设计和代码的质量，是软件的内部质量。质量债务衡量代码的外部质量，是用户可以看到和体验到的东西。用户永远无法（直接）看到技术债务。</p> 
- <p>一个程序可以完全没有质量债务，而有大量的技术债务。所有必需和预期的功能都可以正确地实现，并完美地运行。然而，技术债务可能相当多，显示出你能想象到的每一个糟糕的软件设计和实现。另一方面，最好的设计，最优雅的代码也可能产生错误的结果或缺少功能。</p> 
-</blockquote>
-<p>David写道，质量债务应该忽略：</p>
-<blockquote> 
- <p>质量债务很像财务债务：时间越久越难偿还。在最坏的情况下，项目将测试推迟到开发完成之后。缺陷存在时间越久就越难以修复，这已是不争的事实。如果许多缺陷持续存在（不管是已知的，还是未知的），影响就会因为缺陷相互遮掩而加剧，而修复会涉及相同的代码。</p> 
-</blockquote>
-<p>David推荐了几种可以用于管理缺陷及将质量债务保持在较低水平上的敏捷实践：</p>
-<ul> 
- <li>完工定义。</li> 
- <li>BDD/自动验收测试。</li> 
- <li>持续集成。</li> 
- <li>自动化测试。</li> 
- <li>不容忍“破窗”。</li> 
-</ul>
-<p><b>查看英文原文：</b><b><a href="http://www.infoq.com/news/2014/03/managing-software-debt">Managing your Software Debt</a></b></p><br><br><br><br><br><br></body></html>
+<p>WinJS的实战示例可以在<a href="http://try.buildwinjs.com/">Try WinJS</a>上找到，其中包含了针对库中所有控件的演示程序和代码。微软维护了一个单独的<a href="http://msdn.microsoft.com/en-us/windows/dn632015">项目页面</a>，对于面向基于Windows的开发人员的GitHub页面而言，这是一个有益的伴侣。准备中的WinJS for Windows Phone带来若干变化，旨在提供一种更好的手机体验。它增加了Pivot控件，并对若干控件进行了改进。这些变化包含了性能和辅助功能。</p>
+<p><b>查看英文原文：</b><b><a href="http://www.infoq.com/news/2014/04/winjs21">WinJS Goes Open Source, Adds Windows Phone 8.1 Support</a></b></p><br><br><br><br><br><br></body></html>

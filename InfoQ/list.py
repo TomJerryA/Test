@@ -2,6 +2,18 @@
  <head></head> 
  <body> 
   <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/1.py">Microsoftは、Windowsをユニバーサルアプリに開放した: ひとつのアプリをすべてのプラットフォームに</a>Microsoftは、開発者がひとつのアプリを書くとすべてのWindowsベースのデバイス(Phone, タブレット、PC)で実行できるようになるWindowsユニバーサルアプリを正式に発表した。これによりプラットフォームが統合されることになる。 
+  </div> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/0.py">Microsoftは、モバイルプッシュの一環としてクラウドIDサービスを提供する</a>Enterprise Mobility Suiteの立ち上げの一部として、MicrosoftはAzure Active Directory Premiumの一般提供を発表した。Microsoft Azure Active Directory Premiumは、無料のID管理と追加のグループ管理機能でシングル サインオン、ブランディングオプション、セキュリティ分析などを拡張する。 
+  </div> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/0.py">QCon Tokyo 2014 【ビッグデータ/分散処理】 トラックのご紹介</a>QCon Tokyoは、最新技術を追い求めるデベロッパのための情報コミュニティ「InfoQ」が主催する、エンジニアによるエンジニアのためのワールドワイド カンファレンスです。昨年に引き続き注目されている「ビッグデータ/分散処理」について、今年もカテゴリが設定されています。 分散処理技術については、ビッグデータのニーズとともにどんどん進化しています。本トラックでは分散処理技術の最新情報について、事例を交え紹介していきます。 
+  </div> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/0.py">関数型言語を使ったドメイン駆動設計</a>ドメイン駆動設計 (DDD) で関数型言語を使用すると、多くの場合で実際のコードが簡単になり、ドメイン専門家と議論する際にUMLの代わりとして使うこともできると、Scott Wlaschinは関数型ロンドン市民グループの最近の会議で述べた。講演内容は、F#を使った関数型プログラミングにドメインモデリングを適用することについてであった。 
+  </div> 
+  <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/49.py">QCon Tokyo 2014 【モバイル/HTML5】 トラックのご紹介</a>QCon Tokyo 2014は、昨年に引き続き「モバイル/HTML5」トラックが設けられ、本年度も選りすぐりのセッションを用意しています。 昨今のHTML5/CSS/JavaScriptに基づくクライアントプログラミングでは、製作するコンテンツの狙いを実現する為の極めて高いクオリティが求められるようになってきました。 それらを実現するポイントは、 ①HTML/CSSが正しく設計された拡張性/保守性に優れたコンテンツ ②マルチスクリーン対応をする際に利用者に対して効果的なコンテンツ ③コンテンツにとって最適なアーキテクチャ（構造） の３つです。 今回の「モバイル/HTML5」トラックでは、それぞれのセッションにおいて、上記の課題について考えてゆきたい、と思います。 
   </div> 
   <div> 
@@ -138,18 +150,6 @@
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/7.py">Mike Cohn氏、スプリントレビューにおける未完成の作業について語る</a>Mike Cohn氏は、完成していないプロダクトバックログアイテムをスプリントレビューミーティングで披露することも時には価値があるといい、その理由について語っている。 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/6.py">Anypoint for APIs:Uri Saridへのインタビュー</a>MuleSoftがAnypoint platform for APIsの重大なアップデートをリリースした。このプラットフォームはAPIの設計とAPIの管理機能を提供する。InfoQはMuleSoftのCTOである、Uri Sarid氏にこのプラットフォームについて話を聞いた。 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/5.py">アジャイルチームでメンバ同士が学び合う方法</a>アジャイルチームは(外部の)コーチやメンタを使うことができる。しかし、チーム自身がメンバ同士でメンタリングやコーチイングをすることで成長することもできる。チームメンバは他のメンバからスキルや能力を学ぶことができる。チームが自己組織化して成長できるようになる。 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/4.py">Typemock Isolator++がアップデート，64bitをサポート</a>TypemockがIsolator++をリリースした。Windowsプラットフォーム用に記述された64bit C/C++コードのサポートに加えて，もともとテストを考慮していなかったようなレガシコードにも対応する。 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/3.py">PrismaticがSchema 0.2にデータ型強制変換を追加</a>Prismaticでは，同社のClojureデータ記述ライブラリであるSchemaの0.2リリースに，データの強制型変換(coercion)を追加した。これにより，不正な型のデータを単にリジェクトするのではなく，スキーマに適合させてインスタンスを変換するような設定が可能になる。InfoQではSchemaについて，PrismaticのJason Wolfe氏に話を聞いた。 
   </div> 
  </body>
 </html>

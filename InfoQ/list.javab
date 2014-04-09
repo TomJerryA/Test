@@ -2,6 +2,12 @@
  <head></head> 
  <body> 
   <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/47.javab">Distributing Complex Services in Cross-Geolocational IDCs</a> In this interview, first published on InfoQ China, Micro Sun describes some of the techniques Tencent use to scale Qzone, a social networking platform in China with over 600 million monthly active users, 
+  </div> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/46.javab">The Book of F# - Review and Interview with Dave Fancher</a> The book of F#, authored by Dave Fancher examines the concepts associated with F# with the help of comprehensive explanation and relevant source codes. Towards the end of the book, Fancher provides coverage of advanced topics such as asynchronous and parallel programming. 
+  </div> 
+  <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/45.javab">Bug Fixing Vs. Problem Solving - From Agile to Lean</a> Lean has proved to be instrumental in moving beyond Agile to set up a practice of continuous improvement with direct effects on team performance and engagement. Making a clear distinction between bugs and problems has proved to be instrumental in this improvement. 
   </div> 
   <div> 
@@ -144,12 +150,6 @@
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/7.javab">Kanban’s service orientation agenda</a> This second article in the series on the Kanban “nine values, three agendas” model explores the service orientation agenda. Building on the sustainability agenda, this agenda adds the values of customer focus, flow, and leadership. Individually, each of these brings some challenge; collectively, they can represent to a significant sense of direction, a much more outward-looking approach to change. 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/6.javab">The Neuroscience of Agile Leadership</a> Why does having the overview and influence make us feel rewarded? How do we adapt better to change? And how can we shift mindsets to become more Agile? Find out from breakthrough research in neuroscience why all the &quot;soft, people stuff&quot; around Agile works, how we can help people adapt better to change, and how we can influence real mindset shifts in an organization. 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/5.javab">ActiveJPA – Active Record Pattern for JPA</a> ActiveJPA is a Java implementation of Martin Fowler’s Active Record pattern that wraps around JPA and provides useful abstractions to simplify data access. With ActiveJPA, models themselves act as a DAO and interact with the database without requiring additional code for the DAL. In this article the primary committer discusses ActiveJPA and provides plenty of usage examples. 
   </div> 
  </body>
 </html>

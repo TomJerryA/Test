@@ -1,10 +1,9 @@
-<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>HBase 0.98引入了基于单元格的安全</h3><p>Apache发布的<a href="https://blogs.apache.org/hbase/entry/apache_hbase_0_98_0">HBase 0.98</a>主要是通过基于单元格的安全在安全性上趋同于Apache <a href="http://accumulo.apache.org/">Accumulo</a>，同时解决了230 JIRA问题。这些新的安全特性是按照Accumulo建模的。</p>
-<p>HBase和Accumulo都是Apache的项目，它们运行在Apache Hadoop上，参照Google的<a href="http://research.google.com/archive/bigtable.html">BigTable</a> 基础架构模型提供分布式的数据存储。</p>
-<p>单元格是HBase中可以用键识别的最底层单元。在之前的版本中，单元格的访问许可继承自列族系，而列族系的访问许可继承自表。</p>
-<p>Accumulo使用了类似的数据模型，不过它的安全模型跟传统的ACL（访问控制列表）不太一样，它的安全模型更精细，是基于单元格的安全。键中包含一个标签(label)，在访问单元格级别的不同数据部分时可以辅助做出更精细的决定。所以，根据这个标签上的内容，相同的数据上可能有多层信息访问。</p>
-<p>HBase 0.98解决了<a href="https://issues.apache.org/jira/browse/HBASE-8496">HBASE-8496</a>和<a href="https://issues.apache.org/jira/browse/HBASE-7663">HBASE-7663</a>两个问题。它们通过标签(tag)实现了基于单元格的安全。这些标签可以存储任何元数据，从而可以把ACL安全模型从表扩展到列族系，进而扩展到单元格。此外，在标签中还可以存储可见性表达式(visibility expression)，跟Accumulo一样提供访问单元格内不同信息片的粒度水平。</p>
-<p>从 <a href="https://hbase.apache.org/book.html#hbase.accesscontrol.configuration">API</a> 来看，像下面这样的调用会为user1设置对单元格的访问许可：</p>
-<pre>
- put.setACL(“user1”, new Permission(Permission.Action.READ)) </pre>
-<p>Andrew Purtell，一位Intel的首席架构师，HBase的资深贡献者说：“随着Apache HBase 0.98的发布，从最终用户的角度来看有一些安全特性上的趋同。HBase对ACL的支持已经有一阵子了。现在我们又对Accumulo风格的可见性标签提供了支持，我们为用户提供了两个项目特性的超集。” Purtell在他 <a href="https://communities.intel.com/community/itpeernetwork/datastack/blog/2013/10/29/hbase-cell-security">基于单元格的安全博客</a>中介绍了这一特性的关键内容。</p>
-<p><strong>查看原文链接：</strong><a href="http://www.infoq.com/news/2014/03/hbase-098">HBase 0.98 Introduces 单元格-based Security</a></p><br><br><br><br><br><br></body></html>
+<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>微软开源C#编译器</h3><p>4 月3日，微软向公众发布了<a href="http://msdn.microsoft.com/en-us/vstudio/roslyn.aspx">Roslyn</a>编译器项目，该项目采用了Apache开源许可协议。C#的创始人&nbsp;Anders Hejlsberg在Build大会的第二场主题演讲中将这一令人震惊的消息公之于众。微软向Roslyn项目投入了大量人力物力，<a>从头</a>重写了C#和VB.NET的编译器，同时向开发人员开放了编译过程，以便他们提供更好的工具和编辑器支持。</p>
+<p>如今整个项目都发布在微软的<a href="http://roslyn.codeplex.com/">CodePlex</a>站点上，无论是在Windows下，还是在其它平台下，任何开发人员都可以免费获得&nbsp;。如果机器安装了Git，还可以通过<a>一次</a><a href="https://git01.codeplex.com/roslyn">clone</a>操作直接获得整个项目。</p>
+<p>如果<a>只</a>想尝试一下Roslyn，可以到<a href="http://go.microsoft.com/fwlink/?LinkId=394641">Connect</a>站点上下载预览版。如果想更深入地了解源代码，并在自己的环境中编译源代码，以满足自己测试和实验的需要，则需安装Visual Studio 2013专业版（或更高版本）、<a href="http://www.microsoft.com/en-us/download/details.aspx?id=40758">Visual Studio 2013 SDK</a>、<a href="http://www.microsoft.com/en-us/download/details.aspx?id=42307">Visual Studio 2013 Update 2 RC</a>，以及.NET编译器平台<a href="http://go.microsoft.com/fwlink/?LinkId=394641">最终用户预览版</a>（.NET Compiler Platform (Roslyn) End User Preview）。</p>
+<p>Roslyn主页上的“项目路线图（roadmap）”页面中罗列了很多<a href="http://roslyn.codeplex.com/wikipage?title=Roadmap&amp;referringTitle=Home">正在开发的功能</a>，绝大部分都是一些特性添加和质量提升。“<a href="https://roslyn.codeplex.com/wikipage?title=Language%20Feature%20Status&amp;referringTitle=Documentation">项目状态</a>”页面则主要显示了C#和VB新功能开发的最新状态。</p>
+<p>这次发布的作为.NET基础的核心技术，标志着&nbsp;微软在思想上的重大变化。尽管CLR不开源，但是能看到编译器，也能为各个平台的开发者带来好处。（例如，Mono的CLR允许Roslyn生成的代码在非微软平台上运行）。</p>
+<p><strong>查看英文原文：</strong> <a href="http://www.infoq.com/news/2014/04/roslyn_oss">C# Compiler Released As Open Source</a></p>
+<hr />
+<p>感谢<a href="http://www.infoq.com/cn/author/臧秀涛">臧秀涛</a>对本文的审校。</p>
+<p>给InfoQ中文站投稿或者参与内容翻译工作，请邮件至<a href="mailto:editors@cn.infoq.com">editors@cn.infoq.com</a>。也欢迎大家通过新浪微博（<a href="http://www.weibo.com/infoqchina">@InfoQ</a>）或者腾讯微博（<a href="http://t.qq.com/infoqchina">@InfoQ</a>）关注我们，并与我们的编辑和其他读者朋友交流。</p><br><br><br><br><br><br></body></html>
