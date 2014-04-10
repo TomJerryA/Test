@@ -2,6 +2,12 @@
  <head></head> 
  <body> 
   <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/4.htmlb">微博config service实践</a> 作为大型复杂分布式系统，微博平台中存在大量的配置信息，这些配置信息定义了平台中的RPC服务和资源（memcached、redis、mysql等）的地址，以及这些服务和资源的元数据信息。 
+  </div> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/3.htmlb">理论上的开放式敏捷实施</a> 在关于开放式敏捷实施的一系列文章中的第三篇文章里，Dan Mezick介绍了该方法的理论背景，并且解释了为什么其他文章中所描述的技术能够有助于实现可持续的敏捷转型。 
+  </div> 
+  <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/2.htmlb">使用MySQL、Hudson、Gradle、Maven和Git实现数据库DevOps</a> DevOps这个术语描述的是经改良的开发团队与运维团队之间的协作。在软件工程中，数据库通常都位于关键路径之中。本文介绍了什么是DevOps，并且解释了使用了具体概念和工具的数据库DevOps是什么样的。 
   </div> 
   <div> 
@@ -144,12 +150,6 @@
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/14.htmlb">采访Jan de Baere：一家敏捷公司的兴衰</a> 是什么让一家咨询公司的经理决定彻底改变文化？在敏捷之旅布鲁塞尔会议上，Jan de Baere解释了原因，并说明这家公司是如何采用敏捷，他们经历了怎样的历程，最后又为何突然终止。InfoQ采访了他，谈论敏捷的方法、文化和信任，以及从一次敏捷旅程中学到的东西。 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/13.htmlb">Node.js软肋之CPU密集型任务</a> Node.js的EventLoop只考虑了I/O操作，但对于需要占用大量CPU资源的计算，显得有点儿先天不足。本文分析了Node.js不擅于处理CPU密集型任务的原因，并给出了加强Node.js处理CPU密集型任务能力的几种办法。https://gist.github.com/wuhaixing/cce3abd50585d931c3f7 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/13.htmlb">与Ole Jepsen谈敏捷中的领导力</a> 优秀的领导者创造环境让自我管理（self-organizing）团队茁壮成长，从而创造伟大的产品和服务去满足客户的需求。这是Ole Jepsen在本次采访中表达的观点。在XP Days Benelux会议上，他谈到什么是真正的领导力，以及控制和放权之间微妙但重要的差异。 
   </div> 
  </body>
 </html>

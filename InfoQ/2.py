@@ -1,19 +1,13 @@
-<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>Mono，JITとGCを改良</h3><p><a target="_blank" href="http://www.infoq.com/news/2014/02/mono-3-2-7"><em>原文(投稿日：2014/02/26)へのリンク</em></a></p>
+<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>全てを自動化しよう！ DevOps ツール Puppet が Windows Azure をサポート対象に</h3><p><a target="_blank" href="http://www.infoq.com/news/2013/12/puppet-windows-azure"><em>原文(投稿日：2013/12/19)へのリンク</em></a></p>
 <div class="article_page_left news_container text_content_container"> 
  <div class="text_info"> 
-  <p><a href="http://news.mono-project.com/2014/02/25/mono-3-2-7-is-out/">Mono 3.2.7が公開された</a>。改良されたJIT，LINQ用の新しいインタプリタ，64bitネイティブ命令の使用など，数多くの新機能を備える。</p> 
-  <p>５ヶ月に及ぶ開発の成果を蓄積した大規模な機能リリースだ。最大の改良点は内部的なパフォーマンス改善と最適化，互換性の向上だろう。注目すべきものをいくつか挙げると -</p> 
-  <ul> 
-   <li>ARMのHardFP ABI(Application Binary Interface)が初めてサポートされた。より新しいバージョンのLinux上でmonoが利用可能になるとともに，それらのターゲットに，よりよいコードを生成する。詳細を理解するには，<a href="http://www.gurucoding.com/en/rpi_cross_compiler/diff_hardfp_softfp.php">HardFPとSoftFPの違い</a>について読んでみてほしい。</li> 
-   <li>ABCREM(<a href="https://github.com/mono/mono/blob/master/mono/mini/abcremoval.c">Array Bound Checks Removal</a>)最適化の<a href="https://github.com/mono/mono/commit/6c0fa0d567f69e58bba4603f5b14435a7d827ab4">64bitシステムでの動作が向上した</a>。</li> 
-   <li>２つの新しい最適化 - <a href="http://en.wikipedia.org/wiki/Loop-invariant_code_motion">Loop Invariant Code Motion</a>(ループ内不変式の移動)パスと<a href="http://llvm.org/docs/AliasAnalysis.html">Alias Analysis</a>(エイリアス解析)。いくつかの機能において，最大20%のパフォーマンス向上を実現している。</li> 
-   <li>64bit CAS命令が32bitシステム上でサポートされた。これにより，マルチコアでのPLINGワークロードが大きく向上している。</li> 
-   <li>最新バージョンのLLVMを採用したことにより，高速なTLS(Thread Local Storage)アクセスコードが生成可能になった。</li> 
-   <li>GCのマイクロ最適化 - 内部データ構造の最適化，および組み込み関数(intrinsics)利用によるコアループの速度向上。</li> 
-   <li><a href="http://www.mono-project.com/AOT">FullAOT</a>ランタイムから利用可能なLINQおよび動的ステートメント用のインタプリタ。</li> 
-   <li><a href="https://github.com/mono/mono/commit/3b664f331fe8a1920e88437d91b715775dc789f6">Task Awaiters</a>によるカスタムタスクスケジューラのサポート向上。</li> 
-   <li>C#コンパイラの到達可能性およびフロー解析の大幅な向上と，それによるコード警告の改善。</li> 
-  </ul> 
-  <p>リリースにはいくつかのバグ修正も含まれている。改良点の全リストは<a href="http://www.mono-project.com/Release_Notes_Mono_3.2#New_in_Mono_3.2.7">リリースノート</a>で見ることができる。</p> 
+  <p>Microsoft の世界で DevOps 自動化をしたいことはないだろうか？Microsoft の世界における自動化の多くは、Microsoft プロダクトスタックのサポートが遅い著名なオープンソースの利用でなく、PowerShell や System Center といった Microsoft の提供するツールを利用することを意図する。このことは開発者や管理者にとって変わり始めており、Windows Azure におけるリソースに対して Puppet 等のツールを利用してプロビジョニングや管理を行うことができる。</p> 
+  <p>オープンソースに注力する Microsoft 子会社である <a href="http://msopentech.com/" target="_blank">Microsoft Open Technologies</a> (MS Open Tech) が <a href="http://forge.puppetlabs.com/msopentech/windowsazure" target="_blank">Puppet module and command line interface</a> をリリースした。同ツールを利用することで、ユーザは仮想マシン、仮想ネットワーク、データベースのプロビジョニングと管理ができる。更に、同ツールは <a href="http://forge.puppetlabs.com/" target="_blank">1,800以上のコミュニティ定義 Puppet Configurations</a> を Windows Azure 上で利用できるという門戸を開いたことになる。なぜ彼らはこのツールを作成したかについては <a href="http://blogs.msdn.com/b/interoperability/archive/2013/12/12/windows-azure-provisioning-of-linux-and-windows-via-puppet.aspx" target="_blank">本ツールのリリースに関するブログ投稿</a> に観点が記載されている。</p> 
+  <blockquote> 
+   <p>MS Open Tech は、著名な DevOps ツールを跨いだ相互運用性の向上に注力して本ツール作成に着手してきた。DevOps はソフトウェア開発とITオペレーション間の相互管理に着目している。アジャイルソフトウェア開発チーム（急激な変更が必要）と稼働時間を最大化したいオペレーションチーム（信頼性への影響があると思われる）のコラボレーションと統合を強化している。DevOps は両チームが更に協力し合える方法を探っている。Windows Azure に関する Puppet Module の貢献は、Puppet ユーザが Windows Azure 環境で自身のスキルを活用可能とするための重要な一歩だ。</p> 
+  </blockquote> 
+  <p>本 Puppet モジュールは Windows と Linux 両方の仮想マシンをサポートしており、CLI は作成, 削除, 一覧, 停止, 開始の処理を伴っている。更に、CLI を利用した <a href="http://www.windowsazure.com/en-us/services/virtual-network/" target="_blank">仮想ネットワーク</a>と<a href="http://www.windowsazure.com/en-us/services/sql-database/" target="_blank">SQL databases</a>についての作成と構成が可能だ。1, 900近いコミュニティが作成した Puppet のマニフェストにアクセス可能なことで、<a href="http://forge.puppetlabs.com/simondean/iis" target="_blank">IIS サーバの設定</a>, <a href="http://forge.puppetlabs.com/puppetlabs/registry" target="_blank">Windows のレジストリ構成</a>, Linux 上での<a href="http://forge.puppetlabs.com/puppetlabs/nginx" target="_blank">NGINXの設定</a> 等の操作を仮想マシンに適用させることができる。</p> 
+  <p>Puppet は 2011 年にリリースされた 2.7.6 から Windows をサポートしている。システムの状態を表すモデル駆動のマニフェストを登録した Puppet Master は Linux 上で動作する必要があるが、Puppet エージェントがホストされるサーバやワークステーションは Linux と Windows どちらでも動作させることができる。Puppet の Master/Agent モードでは Puppet エージェントが Puppet Master からマニフェストを取得し、インスタンスの状態を設定した通りに変更させる。Puppet は<a href="https://github.com/puppetlabs" target="_blank">オープンソース</a>として利用可能であり、機能が強化された Enterprise バージョンを購入することもできる。<a href="https://puppetlabs.com/puppet/enterprise-vs-open-source" target="_blank">オープンソース・エンタープライズの両バージョン</a>で AWS と Google Compute Engine におけるクラウドの仮想マシンをプロビジョニング可能であり、Enterprise Puppet は <a href="http://datamarket.azure.com/application/bbd95fe6-13a7-45c4-8b29-944ee496a030" target="_blank">Windows Azure を含む</a>様々なクラウドで実行させることができる。</p> 
+  <p>Puppet の主要な競合である <a href="http://www.getchef.com/" target="_blank">Chef</a> では、Windows Azure との統合を1年以上を提案してきたが、<a href="https://github.com/opscode/knife-azure" target="_blank">Windows Azure プラグイン</a>は仮想マシンの作成と処理にのみ注力している。これにより、Microsoft 製品の利用者は DevOps 自動化の二つの主要なツールを Windows Server と Windows Azure に利用することが可能になった。<a href="http://www.vagrantup.com/" target="_blank">Vagrant</a> は開発者とシステム管理者が利用するツールであり、開発環境を素早く構築することができる。Windows 端末で Vagrant を実行することが可能だが、仮想のゲストは Linux OS のみ利用可能だ。Vagrant 1.4 のリリースノートでは、Vagrant 1.5 では Windows もゲストとして利用可能になる旨が記載されているため、Microsoft 主体の開発者はこれら主要なツールとエコシステムの恩恵を受けることができる。</p> 
  </div> 
 </div><br><br><br><br><br><br></body></html>

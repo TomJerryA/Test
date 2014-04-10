@@ -1,29 +1,33 @@
-<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>专访Uri Sarid: Anypoint for APIs</h3><p>MuleSoft近期发布了<a href="http://mulesoft.com/platform/api">Anypoint platform for APIs</a> 的重要更新，对API设计、协作及API管理特性进行整合。为深入报道，InfoQ就Anypoint平台走访了MuleSoft的CTO——Uri Sarid。</p>
-<p><b>InfoQ</b><b>：新版</b><b>Anypoint platform for APIs</b><b>含三大组件：</b><b>API Portal, API Manager</b><b>和</b><b>Mule Studio</b><b>。其中，</b><b>Mule Studio</b><b>已经非常出名了，能向我们简单介绍下</b><b>API Portal</b><b>和</b><b>API Manager</b><b>这两种新组件么？</b></p>
+<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>Java 8会干掉Scala吗？</h3><p>最令人期待的Java 8已于2014年3月18日<a href="http://www.oracle.com/technetwork/java/javase/8train-relnotes-latest-2153846.html">发布</a>，该版本包含很多令人兴奋的新特性，被认为是自Java 5发布以来对Java做出的最大改变。对于开发者而言，最值得注意的特性包括：<a href="http://en.wikipedia.org/wiki/Lambda_%28programming%29">Lambda表达式/闭包</a>、<a href="http://docs.oracle.com/javase/tutorial/java/IandI/defaultmethods.html">接口支持静态方法</a>、<a href="http://docs.oracle.com/javase/tutorial/java/IandI/defaultmethods.html">默认方法</a>、函数式接口、<a href="http://docs.oracle.com/javase/8/docs/api/index.html?java/util/stream/package-summary.html">java.util.stream</a>、改善了泛型中对类型推理的支持、<a href="http://docs.oracle.com/javase/8/docs/api/index.html?java/time/LocalDate.html">java.time</a>以及<a href="http://openjdk.java.net/projects/nashorn/">Nashorn</a> JavaScript引擎。另外，新版本还<a href="http://java.dzone.com/articles/java-8-permgen-metaspace">移除了PermGen</a>。 </p>
+<p>而被一部分人认为是Java替代者的Scala则是一门有趣的语言，它一方面吸收并继承了多种语言中的优秀特性，另一方面也没有抛弃Java这个强大的平台，它可以运行在 Java 虚拟机之上，能够轻松地与Java互联互通。与Java不同的是，Scala既支持面向对象的特性，又支持函数式编程，它的风格和特性吸引了大量的开发人员，那么新版本的Java能否借助大量的特性“创新”干掉Scala呢？系统架构师、开源布道者Ahmed Soliman最近在自己的博客上发表了一篇博文表达了自己的看法，同时这篇文章在<a href="http://www.linkedin.com/groups/Will-Java-8-Kill-Scala-746917.S.245445785">LinkedIn</a>和<a href="https://news.ycombinator.com/item?id=7478367">Hacker News</a>上也引起了激烈的讨论，下面是笔者摘录的一些观点。 </p>
+<p>Ahmed Soliman认为： </p>
 <blockquote> 
- <p><b>US</b><b>：</b>Anypoint API Portal被用于和涉众、未来应用开发者共同进行API设计，通过API Console和API Notebook模拟、记录、探察实现前后的API，使整个开发团队参与其中。Anypoint API Manager则用于全面控制API来访人员、分配访问者的使用权限，以及API使用情况的测量分析。</p> 
+ <p>Java 8新引入的Lambda表达式并不像Scala中的Lambda那么强大，它仅仅触及了Lambda的皮毛。例如，并不是所有函数都可以作为一等元素（first-class）传入其他函数中，函数必须被显式地定义为Lambda表达式或者使用函数式接口。在集合操作方面，借助于新的java.util.stream包，开发人员可以在一些Java集合上编写函数式风格的操作，这和Scala中的方法类似，但是后者更简洁、类型更精确。Java和Scala之间依然有很大的差距，Java并不会变成一门函数式语言，它的目标是企业，同时要保证稳固的向后兼容性；而Scala的目标则是多核软件开发。Java 8向前迈出了伟大的一步，这一点让很多人都非常兴奋，甚至对于Scala程序员也是如此，但是它的目标并不是“干掉”Scala，事实上，这两者应该是一种互补的关系。</p>
 </blockquote>
-<p><b>InfoQ</b><b>：你提出过</b><b>&quot;</b><a href="http://blog.programmableweb.com/2014/01/09/the-emergence-of-api-first-development/"><b>设计先行</b></a><b>&quot;</b><b>方法学：</b><b>API</b><b>契约作为主要工件，而具体实现要遵循契约。能谈谈你为</b><b>API</b><b>开发者拟定的工作流类型或生命周期么？</b></p>
+<p>来自于Reply 的<a href="http://www.linkedin.com/groups?viewMemberFeed=&amp;gid=746917&amp;memberID=15366741">Stefano S</a>回复说：<b></b> </p>
 <blockquote> 
- <p><b>US</b><b>：</b>与其他产品设计相似，一旦精工细作且用户（这里指开发者）体验尽善尽美的产品推出（此处指API发布），就会带来不成比例的高收益。所以要通过<a href="http://raml.org/">RAML</a>（RESTful API建模语言）大致勾勒出同时适用于该领域和主要用例的API，并尽快交给测试用户。即便是在粗略成型的早期，也要有可用的API控制台和服务的模拟实现，以便用户体验原型（例如，移动应用原型），还要有可用的“故事板”（scripting notebook），以便他们尽快制定出使用方案并进行成果分享。设计很重要，因为如果API设计卓越，围绕其开发出的生态体系会自带动量，从而避免API（后期）的重大变革。API的设计要持续迭代到涉众满意后，才着手实现——相信那时，可靠的实现会让开发者们皆大欢喜，并带来理想收益。很多情况下，API的实现是与大量现存内置系统及云端系统的交互练习；Mule Studio及其组件APIkit能很快将RAML规约转换为相应的可扩展、可维护的Mule集成流集合。所生成的Mule应用能部署在CloudHub或内置系统（私有云）上，而对外公开的API则自动和Anypoint API Manager绑定，以便策略施行；同时，这部分API会和Anypoint API Portal绑定，以便应用开发人员发现并保存。</p> 
+ <p>Scala在设计上就是函数式，而Java则是被扩展成函数式，在函数式的纯度上这两门语言就不一样，我认为Java 8是否能够取得成功很大程度上取决于JDK的实现情况。如果JDK 8稳固且凝聚性高，那么对Scala而言必然会造成巨大的冲击。如果仅仅需要学习一些新的语法就能利用和其他语言相似的语法及特性，那放弃自己熟悉的语言去学习一门新语言的理由是什么呢？</p>
 </blockquote>
-<p><b>InfoQ</b><b>：</b><a href="http://www.infoq.com/news/2013/05/mulesoft-new-api-platform-mason"><b>APIKit</b><b>首次发布</b></a><b>时</b><b>用</b><b>Swagger</b><b>作为文档格式。如今转用</b><b>RAML</b><b>。这种转变的动因是什么？有没有</b><b>API</b><b>文档方面的教训？</b><b> </b></p>
+<p>openForce信息技术的拥有者<a href="http://www.linkedin.com/groups?viewMemberFeed=&amp;gid=746917&amp;memberID=9927146">GesmbH</a>评论说： </p>
 <blockquote> 
- <p><b>US</b><b>：</b>简单说来，和API领域其他很多人一样，我们认识到：Swagger和简单格式也许适合作为API的“输出”格式，一种在其存在后再表达出来的东西，但不适合API设计。不会有开始就动笔写Swagger的人；Swagger是从代码中生成的，也就是说，API的设计应当源于实现，而Swagger有点本末倒置了。此外，Swagger的描述相当冗长，很容易不得要领：乱花渐欲迷人眼，势必难以构建，而少数整洁的模式显然是能在整个API中复用的。用RAML，是为了让RESTful API的设计表达同REST本身一样整洁、富于表现且高效。（教训的话，）目前还好。</p> 
+ <p>Java不可能替代Scala。首先Scala开发非常活跃，设计清晰，目标明确。JDK的开发则比较停滞。很显然，对于Oracle而言按时交付一个新的JDK好像有一些麻烦。所以，我个人对JDK 8在2014年能否包含之前承诺的所有特性持怀疑态度。而就Scala而言，如果一切进展顺利，那么我们可以在今年见到Scala 2.11，该版本会解决很多令人讨厌的问题。其次，JDK类库在设计上就有一些缺陷，要成为一门真正的函数式语言必须要解决这些缺陷，例如集合框架。再就是Java相对于很多其他的语言太过于啰嗦，我使用Java开发了12多年的企业应用，而使用Scala才两年，但是我并不想回到过去。当然Java生态系统非常优秀，JVM也非常伟大，但是Java作为一门语言已经有点过时了。</p>
 </blockquote>
-<p><b>InfoQ</b><b>：</b><b>Service Registry</b><b>有变化么</b><b>?</b></p>
+<p>数据和软件工程师<a href="http://www.linkedin.com/groups?viewMemberFeed=&amp;gid=746917&amp;memberID=8991756">Adam R</a>评论到： </p>
 <blockquote> 
- <p><b>US</b><b>：</b>Service registry还是那个存放所有服务注册表的上佳选择，无论是对REST，还是对SOAP，甚至对很多像FTP位置一样压根不调用API的服务。不过我们新添了很多API专用特性，比如新策略，和AnyPoint API Portal的集成还有更多和现存客户系统的集成。</p> 
+ <p>我认为Java 8的函数式功能太少，来得也太迟了。虽然这确实是一个改进，但是距离Scala依然很远。那些真正在乎这些功能的开发人员早就转向了其他的函数式语言。Java 8确实会为Java开发人员带来函数式编程的意识，但是一部分开发人员期望获得更多的特性，而另一部分则根本不在乎。</p>
 </blockquote>
-<p><b>InfoQ</b><b>：有些</b><b>API</b><b>不是用</b><b>Mule</b><b>实现的，</b><b>API Manager</b><b>能管理这部分</b><b>API</b><b>么？</b><b>Mule API</b><b>和非</b><b>Mule API</b><b>在与平台交互时是否存在差异？</b><b> </b></p>
+<p>来自于Cabot Research的软件工程师<a href="http://www.linkedin.com/groups?viewMemberFeed=&amp;gid=746917&amp;memberID=1191993">Brian</a> T认为： </p>
 <blockquote> 
- <p><b>US</b><b>：</b>Anypoint API Manager可以通过API网关代理控制那些不是用Mule实现的API。从管理甚至端口的角度看，这些API要保证所有功能可用，因为如果用Mule实现就该是这样。</p> 
+ <p>考虑到Java 7给我们带来的灾难，同时鉴于Java 8仅实现了闭包的一部分而其余部分将会在Java 9中实现，我认为Scala根本没必要担心。就是在昨天我们不得不将一台新机器从Java 7回退到Java 6，原因是一些Eclipse插件无法在新版本上工作。Java 8可能会是少数人使用（相对而言）的一门优秀语言。</p>
 </blockquote>
-<p><b>InfoQ</b><b>：在你看来，</b><b>API</b><b>剩下的最大的挑战是什么——无论是对提供者还是使用者？</b></p>
+<p>Eranation在Hacker News上评论说： </p>
 <blockquote> 
- <p><strong>US：</strong>现阶段看，API正值黄金时代，不过还是有巨大的提升空间：很多企业还没有推出公开API倡议。API设计在不久前还被视作严格规范，最佳实践的数目极少也很少出现；即便是同一组织，API交互的一致性也很难保证。那些看起来是做了再想该怎么做的API，使用者宁愿不用——API是没想好就做的还是用心设计过的，一用便知。</p> 
+ <p>作为一个Scala和Java开发者，我甚至没有一点兴趣在下一个项目中放弃Scala转向Java 8。如果只能选择Java，那么最好是Java 8，但是如果有其他选择，我想除了Lambda之外Scala还有很多吸引我的地方。 </p>
+ <p>所有的东西都是表达式，它支持推导式（特别是有多种可能的情况，使用漂亮的语法解决死亡回调三角）、隐式转换、Case类、模式匹配、元组、字符串插入、多行字符串、默认参数、命名参数、类型推断、内置依赖注入，同时所有元素的equals和hashcode方法都已经被正确地实现（可以使用元组甚至是数组作为map的键）。 </p>
+ <p>我认为Scala依然会呆在这里，至少对于Scala开发人员来说是这样的，我非常确定没有任何一个Scala开发人员会说：“Java 8支持Lambda表达式了？非常好，再见Scala！”。我会考虑Java 8只有两个原因，就是编译时间和二进制兼容性。如果忽略掉这两个原因，我只能说Java 8所做的这一切恰好证明了Scala正走在正确的路上。 </p>
+ <p>我确实希望Scala能够提升它与Java 8的互操作性，例如用同样的方法支持函数式接口，向Java 8集合中添加新的隐式转换等。如果有一门语言具备Scala的所有功能，同时做的比Scala更好，那么我会毫不犹豫的使用它。但是到目前为止我还没发现有这样一门语言（当然，我需要的是基于JVM的语言，同时最好是一门静态类型的语言，所以选择余地并不是很广）。Java 8有非常大的提升，我很高兴Java开发人员能够使用这些特性，但是这并不是让大家考虑从Scala转向Java的原因。</p>
 </blockquote>
-<p><strong>查看英文原文：</strong><a href="http://www.infoq.com/news/2014/02/anypoint-api-sarid">Anypoint for APIs: An Interview with Uri Sarid</a></p>
+<p>本文只摘录了<a href="http://www.linkedin.com/groups/Will-Java-8-Kill-Scala-746917.S.245445785">LinkedIn</a>和<a href="https://news.ycombinator.com/item?id=7478367">Hacker News</a>上面有关于此讨论的部分观点，如果你想了解更多的信息，可以自己去查看详细内容。</p>
 <hr />
-<p>感谢<a href="http://www.infoq.com/cn/author/杨赛">杨赛</a>对本文的审校。</p>
+<p>感谢<a href="http://www.infoq.com/cn/author/吴海兴">吴海兴</a>对本文的审校。</p>
 <p>给InfoQ中文站投稿或者参与内容翻译工作，请邮件至<a href="mailto:editors@cn.infoq.com">editors@cn.infoq.com</a>。也欢迎大家通过新浪微博（<a href="http://www.weibo.com/infoqchina">@InfoQ</a>）或者腾讯微博（<a href="http://t.qq.com/infoqchina">@InfoQ</a>）关注我们，并与我们的编辑和其他读者朋友交流。</p><br><br><br><br><br><br></body></html>

@@ -1,1 +1,1 @@
-Microsoftは、モバイルプッシュの一環としてクラウドIDサービスを提供する
+Modern C++とVisual Studio

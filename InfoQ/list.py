@@ -2,6 +2,24 @@
  <head></head> 
  <body> 
   <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/7.py">Modern C++とVisual Studio</a>Modern C++サポートは、Microsoftがフォーカスし続ける領域である。今週、BuildにおいてHerb Sutter氏は、彼らの現在の取り組みについて最新情報を提供し、次のVisual Studio previewに追加されるCPPサポートレベルと将来について話した。 
+  </div> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/6.py">モバイル利用動向レポート</a>モバイル分析の企業であるFlurryは、平均的なアメリカの消費者がモバイルデバイスに費やす時間についてのレポートを公表した。調査期間は2014年1月から3月。Flurryがレポートを公表するのはこれで２回目。比較すると興味深い事実が明らかになる。 
+  </div> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/5.py">New York Times Labがストリーム処理ツールを公開</a>The New York Times R&amp;D Labがstreamtoolsを発表した。これはデータのストリームを処理するグラフィカルなツールで一般的な用途で使える。 
+  </div> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/4.py">関数型言語F#を使ったDDDとCQRS</a>ドメイン駆動設計(DDD)を実践する上で、C#のようなオブジェクト指向言語からF#のような関数型の言語へ移行すると、振る舞いに着目できることとより宣言的なコードになることのふたつの利点がある、とLev Gorodinski氏は言う。氏は最近のプレゼンでイベントソーシングとCommand-Query Responsibility Separation(CQRS)を例に挙げて説明した。 
+  </div> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/3.py">JCACHEの仕様が完成</a>13年の開発と進化を経て、JSR-107が完成した。 
+  </div> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/2.py">全てを自動化しよう！ DevOps ツール Puppet が Windows Azure をサポート対象に</a>Microsoft の世界において DevOps の自動化とは何だろうか？典型的な例としては、Microsoft の製品スタックをサポートするのが遅い知名度のあるオープンソース ツールを利用するのに代わり、PowerShell や System Center 等の Microsoft が提供する製品群を利用することを意味する。しかし、開発者やシステム管理者にとってのこの構図は近年変わり始めており、Windows Azure では Puppet の様なリソースを管理するツールを利用することができる。 
+  </div> 
+  <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/1.py">Microsoftは、Windowsをユニバーサルアプリに開放した: ひとつのアプリをすべてのプラットフォームに</a>Microsoftは、開発者がひとつのアプリを書くとすべてのWindowsベースのデバイス(Phone, タブレット、PC)で実行できるようになるWindowsユニバーサルアプリを正式に発表した。これによりプラットフォームが統合されることになる。 
   </div> 
   <div> 
@@ -132,24 +150,6 @@
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/11.py">Cloud Foundry財団</a>PivotalはCloud Foundry財団を設立し、「Cloud Foundryのためのオープンガバナンスモデルを確立するように働きかける」ことを発表した。EMC、HP、IBM、Rackspace、SAPおよびVMwareは、財団にプラチナスポンサーとして参加することを表明している。ActiveStateとCenturyLinkはゴールドスポンサーとして加わる。 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/11.py">ThoughtWorksが継続的デリバリツールGoをオープンソース化</a>ThoughtWorksが継続的デリバリ(Continuous Delivery,CD)であるGoをオープンソースにした。このツールはCruiseControlを起源にしており、開発プロセス全体をカバーするパイプラインプロセスを提供する。つまり、継続的統合、テスト、デプロイメントだ。 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/11.py">アジャイルチームを互いに連携し協同させるためにスクラム・オブ・スクラムを使うこと</a>スクラム・オブ・スクラムは、複数のチームが関係しているときにデイリー・スタンドアップ・ミーティングをスケールするために用いられる。その目的は、チーム間で協同し作業を連携するアジャイルチームを支えることだ。何人かの執筆者が、スクラム・オブ・スクラムを用いた経験をもとに、それに対する見解を述べている。 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/10.py">Java 8ニュース:新しいアトミックナンバーを含むRC版を公開、モジュール化は外れる</a>Java8の最初のRC版が2月の始めにリリースされた。第1版のb128は2月4日、第2版は1週間後にOpenJDKのメーリングリストで発表された。 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/9.py">Nokia Xが印す，もうひとつのAndroid Fork</a>今回の記事では，最新かつ最重要なAndroidのフォークの試みについて概説する。これは開発者にとって新たなチャンスであると同時に，いくつかの課題も与えている。 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/8.py">InfoQ主催のカンファレンス QCon Tokyo 開催決定！【早期割引：30日まで！】</a>今年も4/30(水)にQConTokyo2014を開催します。 今年は広くてアクセスのよい会場でゆったりと1日技術について語り合える場をご提供したいと考えております。 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/7.py">Mike Cohn氏、スプリントレビューにおける未完成の作業について語る</a>Mike Cohn氏は、完成していないプロダクトバックログアイテムをスプリントレビューミーティングで披露することも時には価値があるといい、その理由について語っている。 
   </div> 
  </body>
 </html>
