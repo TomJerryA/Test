@@ -1,31 +1,38 @@
-<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>ASP.NET Web API Gets OData v4.0 Support, WCF Will Not</h3><p>ASP.NET Web API 2.2 for OData v4.0 are now available as nightly builds. The team also <a href="http://blogs.msdn.com/b/odatateam/archive/2014/03/21/odata-6-1-and-odata-client-6-1-are-now-shipped.aspx">released OData core libraries version 6.1 on nuget</a> with several bug fixes and new features, especially increased support for OData v4 spec. However, the MS team suggested that WCF will not get OData v4 specific features.</p>
-<p>OData v4.0 and OData JSON Format v4.0 <a href="http://blogs.msdn.com/b/interoperability/archive/2014/03/17/odata-v4-0-and-odata-json-format-v4-0-approved-as-oasis-standards.aspx">were recently adopted as an OASIS standard</a>. You can read&nbsp;<a href="http://docs.oasis-open.org/odata/new-in-odata/v4.0/new-in-odata-v4.0.html">what is new in OData v4.0</a>.</p>
-<p>Following are the improvements in both ASP.NET Web API 2.2 and the OData core libraries -</p>
-<ul> 
- <li>Protocol and format changes from V3 to V4</li> 
- <li>OData attribute routing</li> 
- <li>Support for defining functions in OData model and binding them to controller actions</li> 
- <li>Model aliasing - allowing different names for types or properties of OData models and CLR Types</li> 
- <li>Ability to define which properties of the model can be filtered, sorted, expanded or navigated across</li> 
- <li>Support for ETags</li> 
- <li><a href="http://aspnetwebstack.codeplex.com/workitem/1584">Support for Enums</a></li> 
- <li>Support for $format query string option so client can specify the format</li> 
- <li><a href="http://blogs.msdn.com/b/odatateam/archive/2014/03/05/use-singleton-to-define-your-special-entity.aspx">Singleton support</a></li> 
- <li><a href="http://blogs.msdn.com/b/odatateam/archive/2014/03/13/containment-is-coming-with-odata-v4.aspx">Containment support</a></li> 
-</ul>
-<p>Known limitations -</p>
-<ul> 
- <li>There are many OData v4 featuers that are still not supported - the main focus of the release was feature parity with earlier release along with few new features</li> 
- <li>OData core libraries are capable of serializing the OData v4 Atom format but this is not officially supported since Atom specification is not at CS2 stage yet.</li> 
-</ul>
-<p>On the client side, there is a new package that supports only OData v4.0 - if your client needs to consume both V1-3 and V4 services, then you'll have to use both the new and the old packages in your application.</p>
-<p>A somewhat controversial decision is to reduce investments in making WCF a stack for building OData services. This is what the OData Services team had to say -</p>
+<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>Role of Managers in Agile Retrospectives</h3><p>Agile teams use retrospectives to reflect upon their way of working. Since it’s the team’s own responsibility to continuously improve themselves they have to decide upon the actions that they will do. What can managers do to support their teams when they are doing agile retrospectives?</p>
+<p>Len Lagestee wrote the blog post <a href="http://a%20managers%20guide%20to%20attending%20agile%20team%20events/">a managers guide to attending agile team events</a> in which he talks about the role of managers in the sprint planning sessions, daily stand-ups, sprint reviews and retrospectives. He explains what makes it different for managers to attend these events:</p>
 <blockquote> 
- <p>..we do plan to reduce investment in WCF Data Services as a stack for creating OData services. To mitigate the inconvenience this may cause, we are working on cleaning up the code and making it compatible with OData v4, and will then release that stack as open source. We do not plan to put any significant investment into adding v4-specific features to the WCF DS stack.</p> 
+ <p>If you are a manager with direct reports on an Agile team (you are making performance, promotion, or salary and bonus assessments on one or more team members), I believe a set of expected behaviors should apply to you. This is not meant to be exclusionary but your presence, reactions, words, and body language WILL impact team dynamics – sometimes negatively.</p> 
 </blockquote>
-<p>The community, however, wants WCF to support OData 4.0. <a href="http://blogs.msdn.com/b/odatateam/archive/2014/03/21/odata-core-libraries-now-support-odata-v4.aspx#10510961">Says Adam</a> -</p>
+<p>Len stated his opinion about how managers should be involved in agile retrospectives:</p>
 <blockquote> 
- <p>As our business tier is written in WCF DS, I feel that we have been thrown under the bus on this decision. We have invested so much effort in working around the weaknesses of WCF DS (prop change tracking, performance, containment, hackish T4 support for client proxies, terrible EF6 alpha quality provider, etc) and have been happily awaiting your new v4 release only to find out at this stage that you are abandoning it. Switching to Web API at this point seems like we pay the price for every decision you make. We are a Gold MS Partner.</p> 
+ <p>Don’t attend [sprint retrospectives], ever. The team should be comfortable sharing areas to improve when necessary and when they believe something may come back to haunt them or someone else in a performance review they may not say what should be said. If you are sensing something is not right with the team, setup a different time with your direct report, the team, product owner and/or Scrum Master to discuss your concerns.</p> 
 </blockquote>
-<p>Others have <a href="http://blogs.msdn.com/b/odatateam/archive/2014/03/21/odata-6-1-and-odata-client-6-1-are-now-shipped.aspx#10510500">also</a> <a href="http://blogs.msdn.com/b/odatateam/archive/2014/03/21/odata-6-1-and-odata-client-6-1-are-now-shipped.aspx#10510761">requested</a> that for OData v4.0 support in WCF. We can only wait and watch whether Microsoft changes it's decision on this.</p>
-<p>You can get started with <a href="http://blogs.msdn.com/b/webdev/archive/2014/03/13/getting-started-with-asp-net-web-api-2-2-for-odata-v4-0.aspx">writing an OData v4.0 service</a> and use the <a href="http://blogs.msdn.com/b/odatateam/archive/2014/03/11/how-to-use-odata-client-code-generator-to-generate-client-side-proxy-class.aspx">OData Client Code Generator</a> to generate client-side proxy classes.</p><br><br><br><br><br><br></body></html>
+<p>In stead of being directly involved in retrospectives, managers can support their teams by become visionary and human as Len described in his blog post <a href="http://illustratedagile.com/2012/11/26/two-things-leaders-should-be/">two things leaders should be</a>:</p>
+<blockquote> 
+ <p>As a leader begins to craft and communicate a vision, anticipation begin to build around what the future may bring and a network of teams begins to rally around the vision. This will require breaking away from day-to-day decision making and allowing those closest to the action to make those decisions in real-time.</p> 
+ <p>When leaders and managers are authentically themselves, a connection begins to form between the visionary and those who will work to make the vision a reality. This connection cannot be underrated and will begin to establish the trust necessary for a nimble, networked, and flexible organization to exist. And without the trust of your people, your vision is meaningless.</p> 
+</blockquote>
+<p>In the book <a href="http://www.infoq.com/articles/Agile-Retrospective-Derby-Larsen">Agile Retrospectives: Making good teams great</a> Esther Derby and Diana Larsen wrote about&nbsp;a risk they see when managers attend the retrospective:</p>
+<blockquote> 
+ <p>Managers won’t be in every retrospective, but when they are, they are particularly prone to dominating the conversation. It’s not always their fault—if team members hold back when a manager is in the room (for whatever reason), the manager tends to fill the dead air. Meet with managers before the retrospective. Coach them on appropriate participation. Ask them to let others talk first, acknowledge the contributions others make, and be careful how they disagree.</p> 
+</blockquote>
+<p>It can be useful to have managers attending release and project retrospectives say Esther and Diana, where they suggest to coach managers about their involvement in the retrospective prior to the meeting:</p>
+<blockquote> 
+ <p>Differences in power and status inﬂuence interactions within a retrospective. People who have responsibility for evaluating or appraising the performance of team members—functional managers, project managers, directors, development managers—hold a form of power, and people may defer to them. Meet with each manager before the retrospective to consider his or her roles in discussions. Ask each manager to hold back and create signals to help communicate when a manager is being too assertive.</p> 
+</blockquote>
+<p>The InfoQ eBook <a href="http://www.infoq.com/minibooks/agile-retrospectives-value">Getting Value out of Agile Retrospectives - A Toolbox of Retrospective Exercises</a> written by the author of this post and Luis Gon&ccedil;alves says:</p>
+<blockquote> 
+ <p>Managers should enable and support teams in doing retrospectives. They can ask and expect teams to improve within the possibilities and constraints of the organization, and contribute to the organization’s goals, but it is up to the team to choose how they improve and where they decide not to improve (now). A manager must respect the judgment of his/her employees and rely on the team’s professionalism, trusting them to manage their own journey.</p> 
+</blockquote>
+<p>Kristin Runyan wrote a blog post on <a href="http://www.kristinrunyan.com/agile-culture-teamwork/">agile culture: Management and teamwork</a> in which she describes how managers can support agile teams:</p>
+<blockquote> 
+ <p>Members of management – manager, director, VP, whatever – should present the team with the problem or opportunity and let them ‘self organize’ to determine how they will solve the problem with teamwork.</p> 
+</blockquote>
+<p>She explains how adopting agile impacts the role of the manager in agile meetings such as stand-ups and retrospectives, which can initially be uncomfortable for a manager:</p>
+<blockquote> 
+ <p>One of the hardest things for management in an Agile organization is to truly empower self-organizing teams because – by definition – it means that the manager is not part of the team. That is a hard position to be in. To attend a Stand-Up meeting and not speak is difficult. To have a suggestion for how to solve a problem, and yet be silent so the team can come to their own solution is difficult. To watch the team head off to their retrospective and know that you are not invited is difficult. The effective Agile Manager is the one who can accept the differences in the role, respect the boundaries of the team and allow everyone to grow and learn. When the manager does this, their value to the organization goes up exponentially. They are no longer just a manager divvying out tasks and writing performance reviews – they are now a leader, a builder of talent, a facilitator of progress.&nbsp; That is something that every organization needs!</p> 
+</blockquote>
+<p>In a follow up blog post called <a href="http://www.kristinrunyan.com/agile-culture-organization/">agile culture: Impacts to the organization</a> Kristin provides a idea for managers on how&nbsp;to support their teams in using retrospectives to improve themselves:</p>
+<blockquote> 
+ <p>The next time [the team] come to you with a problem or roadblock, instead of offering a solution, ask questions. “How do you think the team could solve that issue?” ”Have to talked as a group about this situation?” “Did you discuss this in your retrospective?” It will only take one or two instances of you pushing the problem back on the team for them to figure out that they need to solve their own problems and you will support them.</p> 
+</blockquote><br><br><br><br><br><br></body></html>

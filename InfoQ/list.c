@@ -1,6 +1,9 @@
 <html>
  <head></head> 
- <body> 
+ <body>
+  <div>
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/2.c">O compilador do C# foi lan&ccedil;ado como c&oacute;digo aberto</a>A Microsoft lan&ccedil;ou o projeto do compilador Roslyn, sob a licen&ccedil;a de c&oacute;digo aberto Apache. Esse impressionante an&uacute;ncio foi feito durante o segundo keynote na confer&ecirc;ncia Build, pelo criador do C#, Anders Hejlsberg.
+  </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/1.c">Lean Startup: Atitudes para equipes sustent&aacute;veis</a>Ramli John deu uma palestra sobre as atitudes m&iacute;nimas vi&aacute;veis para equipes de lean startup na confer&ecirc;ncia lean startup em 2013. De acordo com Ramli existem tr&ecirc;s atitudes que ajudam equipes lean se manterem sustent&aacute;veis ao longo do tempo: humildade, vontade de aprender e felicidade. 
   </div> 
@@ -147,9 +150,6 @@
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/5.c">Utilizando retrospectivas para aperfei&ccedil;oamento pessoal</a>Equipes &aacute;geis utilizam retrospectivas para melhorar seu desempenho, refletindo sobre sua forma de trabalhar e definindo a&ccedil;&otilde;es de melhoria. As retrospectivas tamb&eacute;m podem ser utilizadas para o aperfei&ccedil;oamento do desempenho pessoal, adicionalmente ou em substitui&ccedil;&atilde;o &agrave;s avalia&ccedil;&otilde;es de desempenho. 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/4.c">Os custos para versionamento de uma API</a>Controle de vers&atilde;o para servi&ccedil;os &eacute; algo que tem sido um problema fundamental para SOA. H&aacute; muitos exemplos de experi&ecirc;ncias adquiridas e compartilhadas ao longo dos &uacute;ltimos anos, poucos desses exemplos foram comparados de maneira concreta e contrastados &agrave;s diferentes abordagens existentes. Jean-Jacques Dubray publicou sobre as experi&ecirc;ncias de sua equipe nesta &aacute;rea. 
-  </div> 
+  </div>  
  </body>
 </html>

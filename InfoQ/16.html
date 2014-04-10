@@ -1,5 +1,15 @@
-<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>Doc-To-Help 2013 v2增加了响应式设计和内容控件</h3><p>Component One发布了<a href="http://www.doctohelp.com/Downloads/">Doc-To-Help 2013 v2</a>，它带有一个响应式的用户界面机制，其开发代号为NetHelp。NetHelp用户界面可以根据用户使用的设备来自动调节用户界面的外观。这一项特性意味着，只要发布一个版本到网页上，用户就会在笔记本电脑，平板电脑，智能手机和其他类似的便携式设备上看到不同的界面。</p>
-<p><a href="http://www.doctohelp.com/Downloads/">Doc-To-Help 2013 v2</a>包括内容<a href="http://showme.doctohelp.com/widgetexplorer/">控件</a>，例如Note、Lightbox、Gallery、Carousel、Topic Contents、Tabs和Code Highlighter。它们是编辑和互动内容的控件板块，你可以把它们添加到HTML5内容编辑的源文件里。</p>
-<p><a href="http://showme.doctohelp.com/widgetexplorer/index.html#!Documents/LightBox.htm">Lightbox</a>控件显示一些缩略图，当用户点击一个缩略图模型，弹出的模态对话框会显示它原尺寸的图像。另一方面，<a href="http://showme.doctohelp.com/widgetexplorer/index.html#!Documents/Carousel.htm">Carousel</a>控件显示一组自带链接的幻灯片图像；Gallery控件展示一系列缩略图图像，用户不用在浏览上花太多时间，就能选择他们想打开的图像。</p>
-<p>在链接目录的帮助下，用户使用新推出的Topic Contents控件，就可以轻松地浏览长话题。而<a href="http://showme.doctohelp.com/widgetexplorer/index.html#!Documents/Tabs.htm">Tabs</a>控件则允许用户以标签式风格的界面来组织信息。在帮助文件中，用户用code highlighter控件添加代码片段。新版本的特性还包括用户可以用Copy Code按钮把片段复制到剪贴板。</p>
-<p><strong>查看英文原文：</strong><a href="http://www.infoq.com/news/2014/01/doc-to-help-2013-v2">Doc-To-Help 2013 v2 Adds Responsive Design and Content Widgets</a></p><br><br><br><br><br><br></body></html>
+<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>Rails 4.1改进启动时间和响应布局</h3><p>在经历了两个候选版本后，Rails团队<a href="http://weblog.rubyonrails.org/2014/4/8/Rails-4-1/">刚刚发布了Rails 4.1.0</a>。以“单点版本（point release）”发布意在说明更改向后兼容，可以无痛升级。</p>
+<p>Rails 4.1包含<a href="https://github.com/rails/spring">Spring</a>（与那个JVM应用程序框架无关），通过预加载应用程序来加速启动：“借助Spring，应用程序成为一个持久进程，可以跨命令重用，因此，只有第一次运行慢。而且，我们自动检测代码更改，并只将这些部分重新加载。”在经过<a href="http://edgeguides.rubyonrails.org/upgrading_ruby_on_rails.html#spring">简单的设置</a>之后，rake和rails命令就可以充分利用预加载了。</p>
+<p>在当今的移动世界，网站应该对不同的屏幕规格作出响应。Action Pack Variants可以帮助开发人员根据用户的设备种类渲染不同的模板，就像开发人员已经可以响应不同的文件格式那样：</p>
+<pre>
+respond_to do |format|
+  format.html do |html|
+    html.tablet # renders app/views/projects/show.html+tablet.erb
+    html.phone { extra_setup; render ... }
+  end
+end</pre>
+<p>Basecamp已经使用该技术从单个Rails应用程序为桌面浏览器、移动浏览器和原生移动应用程序提供服务。</p>
+<p>另外，Rails 4.1为部分组件带来了新特性：Active Record现在支持<a href="http://api.rubyonrails.org/v4.1.0/classes/ActiveRecord/Enum.html">枚举</a>，后者映射到数据库中的简单整型值。Action Mailer支持在浏览器中<a href="http://api.rubyonrails.org/v4.1.0/classes/ActionMailer/Base.html#class-ActionMailer::Base-label-Previewing+emails">预览邮件模板</a>，而不用必须发送才能预览。</p>
+<p>为了提高应用程序的安全性，应用程序需要的密钥和令牌现在可以集中存储在config/secrets.yml文件中。</p>
+<p>如果读者计划升级应用程序，那么可以看下<a href="http://edgeguides.rubyonrails.org/upgrading_ruby_on_rails.html#upgrading-from-rails-4-0-to-rails-4-1">迁移指南</a>，其中给出了所有新特性的详细说明。而且，虽然是个小版本，<a href="http://edgeguides.rubyonrails.org/4_1_release_notes.html#railties-removals">它也删除了一些内容</a>，因此，在升级之前务必针对它们进行检查。要了解所有新特性的更多信息，可以看下<a href="http://brewhouse.io/blog/2013/12/17/whats-new-in-rails-4-1.html?brewPubStart=1">Godfrey Chan的博客文章</a>。</p>
+<p><b>查看英文原文：</b><b><a href="http://www.infoq.com/news/2014/04/rails-41">Rails 4.1 Improves Boot Time and Responsive Layouts</a></b></p><br><br><br><br><br><br></body></html>

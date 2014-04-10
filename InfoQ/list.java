@@ -1,6 +1,21 @@
 <html>
  <head></head> 
- <body> 
+ <body>
+  <div>
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/33.java">MongoDB 2.6 Release - An Interview With Kelly Stirman</a>MongoDB needs no introduction for NoSQL users. Kelly Stirman, Director of Product at MongoDB is answering questions about the latest stable 2.6 release. Storage fragmentation, index intersection, full text search and MongoDB in enterprise are discussed. And also, we finally have more info about one of the most watched and voted feature requests at MongoDB jira tracker, collection level locking.
+  </div>
+  <div>
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/32.java">Spring Boot Goes GA</a>Pivotal, last week, announced the first general availability release of the Spring Boot framework.
+  </div>
+  <div>
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/31.java">Role of Managers in Agile Retrospectives</a>Agile teams use retrospectives to reflect upon their way of working. Since it’s the team’s own responsibility to continuously improve themselves they have to decide upon the actions that they will do. What can managers do to support their teams when they are doing agile retrospectives?
+  </div> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/30.java">The Performance of Dart 1.3 Is on Par with Node.js</a>The Google Dart team has announced Dart SDK 1.3 which improves the performance of asynchronous server-side code to the point that Dart VM is on par with Node.js, the later using another Google technology, the V8 engine. 
+  </div> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/29.java">iBeacon Device Maker Estimote Releases 1.3 SDK with UUID Customization</a>Estimote, a maker of iBeacon devices, has released a new version of their mobile SDK that allows developers to build contextual computing solutions using small Bluetooth low energy (Bluetooth LE or BLE) beacons called “motes”. These devices are capable of broadcasting BLE signals that can be detected by compatible smartphones to enable a variety of micro-location services. 
+  </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/28.java">Rails 4.1 Improves Boot Time and Responsive Layouts</a>Rails 4.1 can now preload your application to improve startup time and comes with improvements for Action Pack, Active Record, and Action Mailer. 
   </div> 
@@ -135,21 +150,6 @@
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/42.java">RESTistential Crisis over Hypermedia APIs</a>Software developer Evan Cordell initiated a debate about how the hypermedia constraint of REST is at odds with common web APIs requirements in the API-Craft mailing list a few weeks ago. 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/41.java">JCACHE Specification Finalized</a>After thirteen years of development and evolution, JSR-107 - JCACHE, has been finalized. 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/40.java">Oracle Talks to Architects and Partners About Java 8 in Launch Webinar</a>Almost three years after the release of Java 7, Oracle last week released Java 8, touted as the most revolutionary Java release ever. This week Oracle presented a one-hour public webinar looking into features, background, and community reaction. InfoQ captured some important highlights of the webinar. 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/39.java">To Have and Have Not StackMob- Part 1 of 2: MBaaS Provider's Customers get Short End of Backend</a>Extra! Extra! Sunday May 11, 2014 StackMob will cease operations. The end of StackMob --progenitor of mobile backend as a service (MBaaS)-- will be official on the above date. PayPal dictated its closure after eBay's online payment system acquired the company at the close of 2013. 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/38.java">Amazon Responds to Recent Google Cloud Price Cuts</a>Google announced major price cuts for some of their cloud services including Compute Engine, Storage and BigQuery. But their price advantage lasted for only for 24 hours because the following day Amazon slashed the prices for some of their services – EC2, S3, RDS, ElasticCache and MapReduce. 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/37.java">Meteor 0.7.1 Release Brings Dev Accounts, Further Improvements</a>Matt DeBergalis has released version 0.7.1 of Meteor, with the improvements to oplog and minimongo, CSS preprocessing, and Meteor developer accounts. Version 0.7.1 includes added support to minimongo for what DeBergalis refers to on the Meteor blog as “more of the ‘estoteric corners’ of the MongoDB query language.&quot; 
-  </div> 
+  </div>    
  </body>
 </html>

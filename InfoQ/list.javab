@@ -2,6 +2,9 @@
  <head></head> 
  <body> 
   <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/47.javab">Q&amp;A with Robert Pankowecki on his book Developers Oriented Project Management</a> Self-organized teams manage their work, the processes that they use and the way that they work together as a team and with their stakeholders. Robert Pankowecki is writing a book on Developers Oriented Project Management which aims to help programmers, product owners, project managers and agile company owners to improve their project management practices and move towards more flat organizations. 
+  </div> 
+  <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/47.javab">Distributing Complex Services in Cross-Geolocational IDCs</a> In this interview, first published on InfoQ China, Micro Sun describes some of the techniques Tencent use to scale Qzone, a social networking platform in China with over 600 million monthly active users, 
   </div> 
   <div> 
@@ -147,9 +150,6 @@
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/8.javab">Building Applications With Hadoop</a> When building applications using Hadoop, it is common to have input data from various sources coming in various formats. In his presentation, “New Tools for Building Applications on Apache Hadoop”, Eli Collins overviews how to build better products with Hadoop and various tools that can help, such as Apache Avro, Apache Crunch, Cloudera ML and the Cloudera Development Kit. 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/7.javab">Kanban’s service orientation agenda</a> This second article in the series on the Kanban “nine values, three agendas” model explores the service orientation agenda. Building on the sustainability agenda, this agenda adds the values of customer focus, flow, and leadership. Individually, each of these brings some challenge; collectively, they can represent to a significant sense of direction, a much more outward-looking approach to change. 
   </div> 
  </body>
 </html>

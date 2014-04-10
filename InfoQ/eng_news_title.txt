@@ -1,1 +1,1 @@
-Rails 4.1 Improves Boot Time and Responsive Layouts
+MongoDB 2.6 Release - An Interview With Kelly Stirman
