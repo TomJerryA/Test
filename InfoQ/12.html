@@ -1,35 +1,15 @@
-<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>JEP 192（String Deduplication in G1）简介</h3><p>JEP，即JDK Enhancement Proposals，指的是为增强JDK而引入的一些提案，比如Nashorn JavaScript引擎就是在JEP 174中提出的。2013年11月22日，来自Oracle的Per Liden创建了<a href="http://openjdk.java.net/jeps/192">JEP 192（String Deduplication in G1）</a>，意在增强G1垃圾收集器，去掉堆中重复的String对象，从而减少堆内存的占用。该文档近日又有更新，Per Liden也提交了<a href="http://mail.openjdk.java.net/pipermail/hotspot-dev/2014-March/012815.html">相应代码实现</a>，目前还处于审校和讨论中。 </p>
-<p>应该注意的是该特性只针对G1垃圾收集器，不适用于其他收集器。 </p>
-<p>很多大规模Java应用都受限于内存瓶颈，测量表明，这类应用中，String对象大概占了Java堆中活数据集的25%。而这些String 对象中，又大约有一半是重复的，这里的重复是指，对两个字符串string1和string2而言，string1.equals(string2)为true。存在重复的String对象本质上是对内存的浪费。JEP 192打算在G1收集器中实现自动和连续的String去重操作，以避免内存浪费，进而减少总的内存占用量。 </p>
-<p>目前String类有两个字段： </p>
-<blockquote> 
- <p>private final char[] value; </p>
- <p>private int hash;</p>
-</blockquote>
-<p>使用旧版本Java的读者可能有点诧异，其实早期版本中的count、offset等实例字段已经<a href="https://bugs.openjdk.java.net/browse/JDK-6924259">去掉</a>了，InfoQ之前也曾<a href="http://www.infoq.com/cn/news/2013/12/Oracle-Tunes-Java-String">报道</a>过。 </p>
-<p>value字段是特定于实现的，在String类之外看不到。因为String类不会修改该数组的内容，也不会将其用于同步，所以我们可以安全且透明地将其在多个String对象之间共享。也就是说我们可以将一个String对象的value指向另一个String对象的value。尽管该字段是final的，但因为去重操作是在虚拟机内部实现的，所以这不是问题。有兴趣的读者可以查看一下java.lang.System类的实现，其中的 </p>
-<blockquote> 
- <p>public final static InputStream in = null;</p>
-</blockquote>
-<p>一句，就是先将final字段in设置为null，然后在native代码中重新赋值的。 </p>
-<p>这里需要注意的是，实现并没有真的去掉重复的String对象，去掉的只是对象中的<a name="OLE_LINK2"></a><a name="OLE_LINK1">char</a>数组。这样对应用才是透明的。去掉实际的String对象并不安全，因为应用可能将该对象用于同步等操作。这种实现不需要修改JDK类库或其他任何现有的Java代码。 </p>
-<p>Per Liden对大量大大小小的Java应用进行了测量，发现了下列结果： </p>
+<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>IDC：HTML5的过去、现在与未来</h3><p>IDC应用开发研究主管<a href="http://www.idc.com/getdoc.jsp?containerId=PRF003108">Al Hilwa</a>最近撰写并发布了一份研究报告：<a href="http://www.idc.com/getdoc.jsp?containerId=247499">HTML5演进状态</a>。在报告中，Hilwa力图评估迄今为止所取得的进步和当前的状态，并对HTML5作为统一Web平台的未来进行了展望。</p>
+<p>该报告指出，最初HTML5被看作是“一套统一的技术，用于横跨各类型客户侧平台的应用开发”。苹果在2010年宣布禁止在其设备上运行Flash，转而专注于HTML5。这一举措竖起了对HTML5的“极高期望”，而HTML5也得到了主流软硬件公司的支持，这一阵营包括苹果、Google、诺基亚、黑莓、英特尔等等。另外该报告的作者还对HTML5的若干特性加以赞誉，认为它作为“跨平台的统一者”、“供应商的支持和中立性”以及“生态系统吸引力”，拥有令人瞩目的优势。</p>
+<p>许多人对HTML5报以欢迎的态度是因为“Web很流行且无处不在”；而且，在过去二十年间，许多开发者在Web技术方面做出了大量投入，另外为了满足Web平台对工具的需求，应运而生的开源项目也在不断涌现。但是很快，一些人意识到了HTML5的不足，对此该报告指出：</p>
 <ul> 
- <li>String对象平均占活数据的25%</li> 
- <li>重复的String对象平均占活数据的13.5%</li> 
- <li>String的平均长度为45个字符</li>
+ <li>设备变更的快速节奏——对于不断涌现的新设备上引入的各种类型的新特性，HTML5未能紧跟其步伐；</li> 
+ <li>设备和平台碎片化——每家浏览器和设备制造商都自行选择了要实现的HTML5特性；</li> 
+ <li>移动浏览器实现不力——移动浏览器的脚步滞后了；</li> 
+ <li>工具不足——缺乏工具，或现有工具不够成熟；</li> 
+ <li>开发技能不成熟——缺少精通新技术的开发者；</li> 
 </ul>
-<p>经过分析计算，通过去重、复用char数组，平均大概能减少10%的堆内存占用。 </p>
-<p>JEP 192文档中介绍了实现思路。垃圾收集执行时会访问堆上的活对象，在访问对象时可以判断一下该对象是否可以作为字符串去重的候选。如果是，将其插入一个队列。有一个负责去重的线程在后台运行，处理该队列。使用一个哈希表来记录String对象使用的所有唯一的char数组（即value）。在处理候选的String对象时，先查找哈希表，看是不是存在和当前处理对象内容相同的char数组。如果存在，则更新当前对象的value值，使其指向在哈希表中找到的char数组，这样垃圾收集器就可以在某个时间把当前对象原来的char数组回收掉了。如果不存在，则将当前对象的char数组插到哈希表中，供以后处理。对于哈希表中的某个char数组，如果引用它的所有对象都已经不可达了，即可将其移除。该哈希表会根据当前表项的数目动态调整，使用链表处理冲突。 </p>
-<p>这里有一个重要的参数：去重年龄阈值。对象的存活时间长短不一。对于存活时间很短的对象，执行去重操作其实是浪费资源。为避免这种情况，可以设置一个年龄阈值。在String对象的年龄等于该阈值时，才考虑对其进行去重操作，大于该阈值则是已经处理过的。该阈值应该提供一个合理的默认值，同时支持通过虚拟机选项来配置。 </p>
-<p>实际的去重操作在去重线程中完成。它会等待String对象引用出现在去重队列中，然后一个一个地将其从队列中去掉。在去掉时进行处理，计算字符串的哈希值，在哈希表中查找，如果可能的话执行去重操作。去重线程负责维护一些统计信息（已检查的候选对象数，去重的字符串数等），这些信息可以打印到GC日志中。 </p>
-<p>需要提供新的虚拟机命令行选项：</p>
-<ul> 
- <li>UseStringDeduplication (bool) ——支持字符串去重 </li>
- <li>PrintStringDeduplicationStatistics (bool) ——打印详细的去重统计信息 </li>
- <li>StringDeduplicationAgeThreshold (uintx) ——设置String对象的年龄阈值</li>
-</ul>
-<p>文档中还对比评价了其他方案存在的一些问题，感兴趣的读者可以参考。</p>
-<hr />
-<p>感谢<a href="http://www.infoq.com/cn/author/张龙">张龙</a>对本文的审校。</p>
-<p>给InfoQ中文站投稿或者参与内容翻译工作，请邮件至<a href="mailto:editors@cn.infoq.com">editors@cn.infoq.com</a>。也欢迎大家通过新浪微博（<a href="http://www.weibo.com/infoqchina">@InfoQ</a>）或者腾讯微博（<a href="http://t.qq.com/infoqchina">@InfoQ</a>）关注我们，并与我们的编辑和其他读者朋友交流。</p><br><br><br><br><br><br></body></html>
+<p>因此，一些人心中涌起了“无可避免的幻灭感”并抛弃了HTML5，至少部分程度上如此。报告作者以Facebook和LinkedIn为例，它们分别在2012和2013年放弃了各自的HTML5应用，转而采用原生解决方案。但是还有一些坚持下来并取得了成功，例如金融时报。</p>
+<p>接下来，这份IDC研究报告聚焦于视频/H.264和WebRTC，评估了Web平台的当前状态。尽管这些组件并未整合在HTML5规范中，但它们都在整个Web生态系统中扮演了关键角色。Hilwa指出，在经历了数年之久的视频编码领域Web主导权之争后， Google已经解决了与MPEG LA（H.264专利管理人）之间的专利争端，而思科已经决定将其H.264实现开源，以促进Mozilla成为这一最常用视频格式的支持者。因此，IDC预期“随着这一系列进展，HTML5视频标准化领域的争论将在2014年开始缓和下来。不过将H.264和/或WebRTC纳入官方标准的问题，很可能依旧是可望而不可及的。”</p>
+<p>对于WebRTC，Hilwa强调了三点：苹果和微软对于实现这项技术的排斥，通过信号来管理和控制媒体流，以及与Web视频的整合。</p>
+<p>对于不久的将来（2014-2017），这份报告预测HTML5将继续前行，原生与Web之争还将继续，但HTML5将无法在移动设备上取代原生应用的位置。HTML5将“作为一种适用于多类应用的技术获得显著的吸引力”，例如“针对杂志、电子书等领域开发的基于内容的推送应用”，以及企业级应用。此外，在今后数年间，混合应用也将在基于HTML5的应用中占据很大的份额。</p>
+<p><strong>查看英文原文：</strong><a href="http://www.infoq.com/news/2014/04/idc-html5">IDC: The Past, Present and Future of HTML5</a></p><br><br><br><br><br><br></body></html>

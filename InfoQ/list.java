@@ -1,8 +1,8 @@
 <html>
  <head></head> 
- <body>
-  <div>
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/28.java">Rails 4.1 Improves Boot Time and Responsive Layouts</a>Rails 4.1 can now preload your application to improve startup time and comes with improvements for Action Pack, Active Record, and Action Mailer.
+ <body> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/28.java">Rails 4.1 Improves Boot Time and Responsive Layouts</a>Rails 4.1 can now preload your application to improve startup time and comes with improvements for Action Pack, Active Record, and Action Mailer. 
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/28.java">JCP Members Voting No on JSR-48 WBEM</a>London Java Community and other JCP members will be voting &quot;no&quot; on JSR 48 WBEM Service Specification, a set of APIs for Web-Based Enterprise Management. 
@@ -150,6 +150,6 @@
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/37.java">Meteor 0.7.1 Release Brings Dev Accounts, Further Improvements</a>Matt DeBergalis has released version 0.7.1 of Meteor, with the improvements to oplog and minimongo, CSS preprocessing, and Meteor developer accounts. Version 0.7.1 includes added support to minimongo for what DeBergalis refers to on the Meteor blog as “more of the ‘estoteric corners’ of the MongoDB query language.&quot; 
-  </div>  
+  </div> 
  </body>
 </html>
