@@ -2,10 +2,13 @@
  <head></head> 
  <body>
   <div>
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/37.java">Expression Evaluator: A Lightweight C# Compiler Service</a>While the .NET community eagerly awaits a production version of Roslyn, work must continue. So today we’re looking at another compiler service, Expression Evaluator. While other compiler services are trying to be as comprehensive as possible, here we see one that is going the other direction.
-  </div>
-  <div>
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/36.java">QCon New York Update: 60/100 Speakers; Gilad Bracha, Netflix Keynotes Confirmed (Jun 11-13, 2014)</a>Gilad Bracha, Co-Author of the Java Spec, and Dianne Marsh, Director of Engineering at Netflix have been confirmed as keynote speakers for the third annual QCon New York (Jun 11-13, 2014). The tutorials schedule has been finalized and the preliminary conference schedule is now live. New speakers are being added daily to the conference website, with more than 60/100 speakers already confirmed.
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/38.java">Hydra Takes On Hadoop</a>The social-networking company AddThis open-sourced Hydra under the Apache version 2.0 License in a recent announcement. Hydra grew from an in-house platform created to process semi-structured social data as live streams and do efficient query processing on those data sets.
+  </div> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/37.java">Expression Evaluator: A Lightweight C# Compiler Service</a>While the .NET community eagerly awaits a production version of Roslyn, work must continue. So today we’re looking at another compiler service, Expression Evaluator. While other compiler services are trying to be as comprehensive as possible, here we see one that is going the other direction. 
+  </div> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/36.java">QCon New York Update: 60/100 Speakers; Gilad Bracha, Netflix Keynotes Confirmed (Jun 11-13, 2014)</a>Gilad Bracha, Co-Author of the Java Spec, and Dianne Marsh, Director of Engineering at Netflix have been confirmed as keynote speakers for the third annual QCon New York (Jun 11-13, 2014). The tutorials schedule has been finalized and the preliminary conference schedule is now live. New speakers are being added daily to the conference website, with more than 60/100 speakers already confirmed. 
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/35.java">ASP.NET Identity 2 Adds Two-factor Authentication, Account Lockout, Security Stamp and Bug Fixes</a>ASP.NET Identity 2 RTM, recently released by Microsoft provides support for Two-factor authentication, account lockout, security stamp besides several improvements and bug fixes. 
@@ -147,9 +150,6 @@
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/46.java">Lean UX Conference Returns to NYC</a>The Lean UX Conference is returning to NYC April 10-12, 2014 and this year includes a wide variety of speakers as well as workshops from Jeff Gothelf, Dave Snowden and Michael Cheveldave. I had a chance to sit down with one of the conference founders, Will Evans to discuss what to expect from the conference this year. 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/46.java">New York Times Lab Introduces Visual Stream Processing Tool</a>The New York Times R&amp;D Lab has released streamtools, a general purpose, graphical tool for dealing with streams of data, under Apache 2 license. 
-  </div>   
+  </div>  
  </body>
 </html>
