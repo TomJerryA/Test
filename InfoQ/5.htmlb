@@ -1,100 +1,190 @@
-<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>可视化Java垃圾回收</h3><p>垃圾回收，就像双陆棋一样，只需几分钟来学习，但要用一生来精通。</p>
-<p>Ben Evans是一名资深培训师兼顾问，他在演讲<a href="http://www.infoq.com/presentations/Visualizing-Java-GC">可视化垃圾回收</a>中从基础谈起讨论了垃圾回收。</p>
-<p>以下是对其演讲的简短总结。</p>
-<h2><b>基础</b></h2>
-<p>当谈到释放不再使用的内存，垃圾回收已经在很大程度上取代了早期技术，比如手动内存管理和引用计数。</p>
-<p>这是件好事，因为内存管理令人厌烦，学究式地簿记是计算机擅长的，而不是人擅长的。在这方面，语言的运行时环境比人强。</p>
-<p>现代的垃圾回收非常高效，远远超过早期语言中典型的手工分配。通常，具有其它语言背景的人只盯着垃圾回收造成的中断，却没有完全理解自动内存管理发生作用的上下文环境。</p>
+<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>探寻从HDFS到Spark的高效数据通道：以小文件输入为案例</h3><p>为了保证高效的数据移动，locality是大数据栈以及分布式应用程序所必须保证的性质，这一点在Spark中尤为明显。如果数据集大到不能保证完全放入内存，那就不能贸然使用cache()将数据固化到内存中。如果读取数据不能保证较好的locality性质的话，不论是对即席查询还是迭代计算都将面临输入瓶颈。而作为常用的分布式文件系统，HDFS承担着数据存储、一致性保证等关键问题。HDFS自开发之初就与Google GFS一脉相承，因此也继承了其无法较好的处理小文件的问题，但大量小文件输入又是分布式计算中常见场景。本文以小文件输入为案例，看看从HDFS到Spark的数据通道中到底发生了什么，并讨论如何设计有效的小文件输入。了解了这些话题，可以更高效的使用Spark。</p>
+<h2>背景</h2>
+<p>MLlib进展如火如荼，近期最令人振奋的消息莫过于MLlib对sparse vector的支持，以及随之而来的一系列重构和改进工作。机器学习一般算法的输入是训练集和测试集，通常来说是(label, key : value)这样的序对。对于这种输入，直接使用SparkContext提供的textFile()接口就好了，MLlib内部会转换成LabeledPoint类。但MLlib还缺少图模型算法，如LDA。LDA (Latent Allocation Dirichlet)算法常用来获取文档集合的主题，是机器学习中广泛应用的算法，其输入格式和核心组件与常见的机器学习分类、聚类算法不同。</p>
+<p>两个月之前，笔者有一份差不多要完成的基于Spark的并行LDA算法准备提交给Spark社区，同时也在准备酝酿已久的学术论文。当笔者完成了LDA算法的核心模块Gibbs sampling之后，突然发觉要想实现一个“可用的“LDA算法，不仅仅是一个核心功能这么简单，还牵扯到许多零碎的事情。所谓零碎的事情，其实并不简单。机器学习算法就是这样，学起来难，但是真正懂了之后发现核心算法特别简单，预处理又非常难。总之，机器学习算法学起来难的地方做起来简单，但是学起来简单的地方, 并不见得很快就能做好。</p>
+<p>大部分的零碎工作在语料库的预处理和后续输出的模型的使用上，这些零碎的工作机器学习者们都不怎么注重，因为书本上很少会讲到这些知识。就拿后者来说，模型后续使用这件事儿看起来小，其实不然，这关系到机器学习算法的实际运用能力。我们做模型的最终目的除了发论文之外还是想让它对现实生活产生影响。学术派关注模型多，但对学术和工业的结合看的相对少一点，线下模型如何轻松部署？模型可否增量训练？模型的训练和使用是否可以同步进行？是否可以做到对模型的在线查询？这都是将机器学习“搬出实验室”的关键问题。这类问题在Strata大会上有很多工业界人士做了很好的讲解，比如<a href="http://strata.oreilly.com/2014/02/bridging-the-gap-between-research-and-implementation.html">这里</a>。</p>
+<p>闲言莫谈，回到语料库的预处理工作。关于分词的问题不多谈，笔者学习ScalaNLP的做法，直接在Lucene的分词实现上裹了一层Scala的接口。但是在语料集的输入上花了很多时间。Spark目前所有的标准输入接口是SparkContext类中提供的textFile(path, miniSplits)接口，但该接口不适合语料库的直接输入，因为这是一个文本行处理函数，每次只能操作其中的一行文本。而LDA更期待的输入格式是Key-Value对，其中key是文件的绝对路径（便于分辨和去重），value是文件的全部内容。由于Spark下层多使用HDFS作为输入，因此笔者打算自己定制InputFormat。</p>
+<h2>LDA应用场景</h2>
+<p>首先得说明一些问题。LDA的实际使用场景有二：</p>
 <div id="lowerFullwidthVCR"></div>
-<p>标记&amp;清除是Java（及其它运行时环境）用于垃圾回收的基本算法。</p>
-<p>在标记&amp;清除算法中，引用会从每个线程栈的桢指向程序的堆。所以，从栈开始，循着指针找到所有可能的引用，然后再循着这些引用递归下去。</p>
-<p>当递归完成，就找到了所有的活对象，其它的都是垃圾。</p>
-<p>请注意，人们经常漏掉的一点是，运行时环境本身也有一个“分配清单（allocation list）”，上面列出了指向每个对象的指针，该列表由垃圾回收器负责维护，并帮助垃圾回收器进行垃圾清理。因此，运行时环境总是可以找出由它创建但尚未回收的对象。</p>
-<p><img width="600" src="http://infoqstatic.com/resource/articles/Visualizing-Java-Garbage-Collection/zh/resources/0108001.png" alt="" _href="img://null" _p="true" /></p>
-<p><b>图一</b></p>
-<p>上面插图中所示的栈只是一个与单个应用程序线程相关的栈；每个应用程序线程都有一个类似的栈，每个栈本身都有一组指向堆的指针。</p>
-<p>如果垃圾回收器试图在应用程序运行过程中获取活对象的快照，那么它就要追踪运动着的目标，那样很容易漏掉一些严重超时的对象分配，因而无法获得一个准确的快照。因此，“Stop the World”是有必要的；也就是，停止应用程序线程足够长的时间，以便捕获活对象的快照。</p>
-<p>下面是垃圾回收器必须遵循的两条黄金法则：</p>
+<p>第一种是在实验室环境下使用，这是最直观的情况。例如你有一堆小文件存在本地磁盘上，即你的语料库。可能你想直接把它们上传到HDFS，或者在每台机器的磁盘上仍一份，甚至直接放在当前机器的本地磁盘好了（这种情况下不是真正的分布式，所有的Spark executor只会在你当前机器上启动），之后打开Spark调用其中的LDA算法。如果你只是打算做个实验，这样就足够了。换言之，这是一种offline的训练方式。</p>
+<p>第二种情况是工业应用，你可能不会有一堆离线的语料库，而是有一个流式管道，语料文本源源不断地传递过来，如twitter/weibo feed等。或许你可以把这些数据放到HDFS或HBase上，也有可能直接处理流数据，而不管最终存储。</p>
+<p>这是完全不同的应用场景，针对不同的场景要有不同的处理方式。不论是实验室环境下的尝试，还是工业应用，两者都很重要。本文只涉及offline的数据处理方法，因为offline的数据处理才更加需求让数据经过HDFS。</p>
+<h4>离线LDA训练</h4>
+<p>离线场景下或许我们不必理会语料集预处理的过程，直接交给最终用户好了。用户将语料集转换成你指定的样式，之后将预处理结果上载到HDFS，这样你的LDA程序可以直接访问这部分数据，而我们要做的只是规定好输入的样式，妙不可言。我们舒服了，用户吃些苦头。例如我们指定用户输入文件的每一行是一个完整的文件内容，开头处以Tab分割作为文件名。这样我们可以直接调用textFile()接口，自己切分一下就可以得到”文件名--文件内容”这个KV对。值得一提的是，这种离线场景下看似不好用的方法，在工业界线上训练过程中反倒可能有好的效果。比如一次记录过来就是一个KV对，这样就省去了这一步输入的处理。</p>
+<p>或许我们可以进一步帮帮用户。咱们写一个预处理程序，不论是串行的还是并行的，帮助用户进行预处理，Mahout就是这么做的。这种情况下，可能需要最终用户写一个ad-hoc的shell脚本组织所有的工作流和数据流。Mahout中的dirTosequentialFile就是把本地磁盘或者HDFS上的目录读入，将其中的小文件合并在一起转换成一个sequential file。</p>
+<p>但是，笔者觉得最好的方法还是将预处理过程与LDA训练过程融合起来，不要让用户做这么多工作就能调用Spark上的LDA，用户只需要指定文件路径即可。这时我们必须提供函数将语料库所有的文本和文件名读入。CombineFileInputFormat比较适合处理小文件，因此最初笔者实现了一个CombineFileInputFormat，一个CombineFileRecordReader，一个FileLineWritable以及一个类似于textFile()的接口。</p>
+<pre>
+Interface exposed to end-user - SparkContext.scala
+  def wholeTextFiles(path: String): RDD[(String, String)] = {
+    newAPIHadoopFile(
+      path,
+      classOf[WholeTextFileInputFormat],
+      classOf[String],
+      classOf[String])
+  }
+</pre>
+<p>要注意的是，虽然笔者这么做了，但这并不代表小文件输入的最佳实践。实际上，最佳实践是不要使用小文件。因为将大量的小文件放到HDFS上是比较糟糕的，不仅将block用满率降低，还会占满NameNode上面的索引。这里只是讨论一种可行的方案。</p>
+<p>分析几个问题。首先是HDFS中block的大小。我们在这里称之“小文件”的文件究竟有多“小”？是否会超过HDFS的block大小？答案是肯定的。在这种情况下，如果我们按照block位单位读取数据，那么我们就要自己处理同一个文件的block拼接的问题，尤其是文件由多字节字符组成的时候，如UTF编码的字符，很可能在一个字符中间被切断。如果不能正确的拼接各个block，会出现乱码的情况。</p>
+<p>重点是，考虑到性能问题，我们不希望有额外的网络传输开销存在，尤其是不必要的网络传输。我们希望同一个文件的block都在同一个节点上，这样在合并这些block的时候就完全不会出现机器之间数据的网络传输。HDFS里面很讨厌的一点是，这里有两套极为相同的API，分别在mapred和mapreduce两个包下，稍不注意用错了API就会有一种很抓狂的感觉。笔者最初为了兼容Spark中HadoopRDD的接口，用了mapred的这套API，其中的CombineFileRecordReader中的isSplitable()函数是不起作用的，因为如果不修改CombineFileRecordReader本身的代码就无法阻止一个文件的多个block分配到不同的split中的情况。一旦这件事情发生，那拼接一个文件的时候就无法阻止shuffle的发生。</p>
+<h2>在线LDA训练</h2>
+<p>现在来看看在线训练。注意线上产品不应该使用上述方式运行。当然，如果不顾及线上模型训练，认为模型可以线下训练好的话另当别论。数据处理部门的人是不会把大量原始文本存储到本地磁盘，之后再将数据上传到服务器处理的。在我看来，大数据就应该放到合适的地方去。这种场景下，原始文本或者网页应该存储到一种KV存储中，例如HBase（Facebook在其论文<a href="http://www.infoq.com/cn/articles/hbase-casestudy-facebook-messages"><i>Analysis of HDFS Under HBase: A Facebook Messages Case Study</i></a>中详述了HDFS之上的HBase性能问题，值得一看。）。除此之外，HDF5也是种不错的选择。</p>
+<h2>网络传输来自哪里</h2>
+<p>笔者一直在讨论避免网络传输开销的问题，那么网络传输到底出现在哪里从而导致的不可避免呢？</p>
+<p>首先，文件大小超过单个block大小的文件不免被切分，不论是ASCII编码的文件，还是UTF这种多字节编码的文件，都需要一个join的过程。最好的情况下，我们期望同一个文件所有的block都从同一个机器上读取，这样可以避免网络传输。</p>
+<p>第二，出于效率的考量，mapred包中的CombineFileInputFormat不能保证这一点。这是因为每个block都会有副本的存在。为了保证数据读取的高效，同一个文件的不同block可能读取不同机器上的副本。同时由于单个split大小的限制，同一个机器上的block也可能分到不同的split里面。正是由于HDFS多副本容错的特性，导致同个文件不同的block甚至可能在任何一个位置被读取。</p>
+<h2>自定义Partitioner怎么样</h2>
+<p>在笔者看来，Spark之所以好用的原因之一就是可以简单地定制partition方法。使用自定制的partitioner来重新安排我们KV对的存储。然而，定制化的partitioner最大的作用是在迭代地进行RDD join的时候，正如Spark PageRank所展示的那样。如果是一次性的使用，有点得不偿失，因为第一次的shuffle在所难免。</p>
+<h3>Hadoop locality全揭秘</h3>
+<p>为了更好的了解Hadoop I/O保持良好locality的秘密，我们要深入看一看mapred包中的InputFormat实现。我们选择FileInputFormat作为突破口，因为这也是spark的“重点使用对象”。首先要记住这些后面会经常用到的概念：rack、node、file、block、replica。数据中心通常由一堆堆rack组成，rack是同一个机架中的机器。由于同个rack之间网络状况通常都是非常好的，因此考虑本地性的时候通常也将同个rack中的数据算作本地数据。一个rack由多个node组成，这里的node特指作为DataNode的机器。HDFS上每个文件包含多个block，每个block有一些副本（通常是三个）。要注意的是Hadoop的worker可能包含所有的DataNode节点，当然也会出现不匹配的现象，即有些机器仅仅是DataNode节点而非Hadoop worker，反之亦然。同时也要注意，考虑到鲁棒性，每个block的三副本通常都是当前node一个，本rack其他机器一个，其他rack上一个。</p>
+<p>把Hadoop worker也考虑进来后，问题稍显复杂。程序可能分布在多个worker上，数据分布在多个DataNode上。因此，问题抽象成如何在worker和DataNode之间做多对一的映射（一个worker会可能处理多个DataNode上的数据，而一份数据通常只要一个worker处理就好了），使得读取HDFS文件时造成的网络开销最小？换句话说，读取文件整体耗时最少。</p>
+<p>这件事儿不是很容易，因为应用程序和数据之间还隔着好多层。程序所直接接触的就是文件名。一个文件被分为多个block，每个block可能存在于每一个数据节点上，其副本存在于其他节点上，不同的节点还属于不同的rack。我们先从程序开始看起。以Spark为例，我们调用hadoopRDD = sc.textFile(path)告诉Spark开始读取path中的数据。这个path可能是一个本地文件路径，更常见的是HDFS路径。为了分布式处理的要求，hadoopRDD通常情况下是被切分的。那么，其partition的信息来自何处呢？答案就是HDFS中的split，更确切的说是FileSplit，其在FileInputFormat中被用到。FileSplit就是这样一种程序和block之间的映射。</p>
+<p>每个FileSplit都是一个block集合，里面的block会在同一个worker上的同一个程序读出，因此也理所当然作为一个partition。为了保持同一个split中block的本地性，FileSplit花了大力气把合适的block放到一起。例如贡献度计算，以及node-block、rack-block之间的双向链表等。现在我们把之前的程序-block映射问题退化成split-block的映射问题。</p>
+<h2>Node/Rack贡献度计算</h2>
+<p>假设我们有一个split，其中有三个block，这三个block来自8个节点。8个节点属于4个不同的rack，每个block有三个副本。假设这三个block的大小分别为100、150、75。这种情况下怎么安排“最佳地点”？即该split应该在哪个worker上计算？</p>
+<p><img src="http://infoqstatic.com/resource/articles/hdfs-spark-data-channel/zh/resources/0411002.png" width="600" _href="img://null" _p="true" alt="" /></p>
+<p>首先，我们一致同意的一点是“最佳地点”应该是所有node的子集。在我们的例子中，这个集合是[h1 --- h8]这八个节点。怎样对这个集合进行排序，依次找到“最佳地点”、“次佳地点”？</p>
+<p>对节点集合进行排序有两种方法，分别是考虑rack的信息和不考虑rack的信息。上文说过，可以将同一个rack中的block也算做本地的block。要想排序，先要确定准则，即什么才是“好”。参照上图，我们定义一个“effective size”的概念，这是说在本节点上，存在多少比特有效的数据可供读取。同样的，rack的effective size就是该rack上所有的有效读取的比特。注意，并非是将该节点有的block以及字节数加起来这么简单，这里的“有效”是指的有区分度的字节数。例如，Rack4有两个block，每个block的大小都是75，但Rack4的effective size只有75，并非150，因为这两个block具有相同的内容，他们互为副本。</p>
+<p>考虑到rack的计算方式就是将rack看作跟node同等的位置，计算effective size之后，可得如下顺序：</p>
+<p>1. Rack 2 (250)</p>
 <ol> 
- <li>垃圾回收器必须回收所有的垃圾。</li> 
- <li>垃圾回收器必须从不回收任何活对象。</li> 
+ <li>h4 (150)</li> 
+ <li>h3 (100)</li> 
 </ol>
-<p>但这两条规则并不是对等的；如果违反了第二条规则，结果会使数据遭到破坏。</p>
-<p>另一方面，如果违反了第一条规则，则会是另一种情况，系统并不总是能够回收所有的垃圾，但最终会回收所有的垃圾，那么这是可以接受的，而实际上，这是垃圾回收器的基本原理。</p>
-<h2><b>HotSpot</b></h2>
-<p>现在，我们来说下HotSpot，它实际上是一个C、C++以及许多特定于平台的汇编程序组成的混合体。</p>
-<p>当人们想到解释器，就会想到一个很大的while循环，其中包含一个很长的switch语句。但HotSpot解释器比那个要复杂的多（由于性能原因）。在开始阅读JDK源代码的时候，就会发现HotSpot中实在是有许多汇编程序代码。</p>
-<h2><b>对象创建</b></h2>
-<p>Java会预先分配大量的连续空间，就是我们所说的“堆”。之后，HotSpot完全在用户空间里管理这块内存。</p>
-<p>如果一个Java进程占用了大量的系统（或内核）时间，那么毫无疑问，它不是在进行垃圾回收——因为所有的垃圾回收内存“簿记（bookkeeping）”都是在用户空间进行的。</p>
-<h2><b>内存池</b></h2>
-<p><img width="600" src="http://infoqstatic.com/resource/articles/Visualizing-Java-Garbage-Collection/zh/resources/0108002.png" alt="" _href="img://null" _p="true" /></p>
-<p><b>图二</b></p>
-<p>“永久代（PermGen）”是一个存储区域，用于保存那些需要在程序生存期内一直存活的东西，如类的元数据。不过，随着应用程序服务器的出现，它们有自己的类加载器，并且需要重新加载类的元数据，永久代作为一个优化决策开始显得糟糕，所幸，它在Java 8中消失了。</p>
-<p>Java 8将会使用一个名为“元空间（Metaspace）”的新概念。元空间与永久代并不完全相同。它在堆的外面，由操作系统管理。这意味着，它不会在Java堆中，而是在本地内存里。目前，这还不是一个非常好的消息，因为没有多少工具能够让用户轻松地查看本地内存。所以，永久代消失是件好事，但工具赶上这个变化还需要一些时间。</p>
-<h2><b>Java堆布局</b></h2>
-<p>现在，我们来看下Java堆。注意堆空间之间的虚拟空间。它们提供了一点浮动量，以允许对内存池进行一定量的尺寸调整，又不用为任何对象移动付出代价。</p>
-<p><img width="600" src="http://infoqstatic.com/resource/articles/Visualizing-Java-Garbage-Collection/zh/resources/0108003.png" alt="" _href="img://null" _p="true" /></p>
-<p><b>图三</b></p>
-<p><b>“弱代假设（Weak Generational Hypothesis）”</b></p>
-<p>就现状而言，究竟为什么要将堆分成所有这些内存池？</p>
-<p><img width="600" src="http://infoqstatic.com/resource/articles/Visualizing-Java-Garbage-Collection/zh/resources/0108004.png" alt="" _href="img://null" _p="true" /></p>
-<p><b>图四</b></p>
-<p>有的运行时事实无法通过静态分析推导出来。上面的插图说明有两组对象：一组存活时间短，一组存活时间长——所以，做额外的簿记以便利用这一事实是有意义的。在Java平台中，有许多类似的作为优化写入平台的事实。</p>
-<h2><b>演示</b></h2>
-<p>Ben Evans进行了一系列的动画<a href="https://github.com/kittylyst/jfx-mem">演示</a>。第一个演示是个Flash，说明了对象在Eden区和一个新生代Survivor空间之间移动，并最终进入老年代的过程。</p>
-<p><b>图五</b>是用JavaFX再现了同样的过程。</p>
-<p><img width="600" src="http://infoqstatic.com/resource/articles/Visualizing-Java-Garbage-Collection/zh/resources/0108005.png" alt="" _href="img://null" _p="true" /></p>
-<p><b>图五</b></p>
-<h2><b>运行时开关</b></h2>
-<p><b>‘强制性’参数</b></p>
-<ul> 
- <li>-verbose：gc——为用户输出一些GC信息</li> 
- <li>-Xloggc:&lt;文件路径&gt;——指定日志输出路径，要确保磁盘有空间</li> 
- <li>-XX：+PringGCDetails——为辅助工具提供“最低限度信息（Minimum information）” <p>——用这个参数代替-verbose：gc</p> </li> 
- <li>--XX：PrintTenuringDistribution——“过早提升（Premature promotion）”信息</li> 
-</ul>
-<h2><b>基本堆大小参数</b></h2>
-<ul> 
- <li><b>-Xms&lt;size&gt; </b>—— 设置预留给堆的最小内存值</li> 
- <li><b>-Xmx&lt;size&gt;</b> —— 设置预留给堆的最大内存值</li> 
- <li><b>-XX:MaxPermSize=&lt;size&gt;</b>——设置永久代的最大内存值 <p>——有利于Spring应用程序和应用服务器</p> </li> 
-</ul>
-<p>以前，我们被教导要把-Xms和-Xmx的值设的一样大。不过这已经变了。因此，现在可以为-Xms设置一个合理范围内较小的值，或者根本就不设置，因为堆的适应能力现在已经非常好了。</p>
-<h2><b>其它参数</b></h2>
-<ul> 
- <li>-XX:NewRatio=N</li> 
- <li>-XX:NewSize=N</li> 
- <li>-XX:MaxNewSize=N</li> 
- <li>-XX:MaxHeapFreeRatio</li> 
- <li>-XX:MinHeapFreeRatio</li> 
- <li>-XX:SurvivorRatio=N</li> 
- <li>-XX:MaxTenuringThreshold=N</li> 
-</ul>
-<p><img width="600" src="http://infoqstatic.com/resource/articles/Visualizing-Java-Garbage-Collection/zh/resources/0108006.png" alt="" _href="img://null" _p="true" /></p>
-<p><b>图六</b></p>
-<h2><b>为什么要有日志文件</b></h2>
-<p>日志文件的好处是能够用于取证分析，可以使用户免于为了再现问题而不得不再执行一次代码（如果是一个罕见的生产环境错误，那么重现并不容易）。</p>
-<p>另外，它们包含的信息比针对内存的JMX MXBeans所能提供的信息更多，且不说轮询JMX本身会引入一系列GC问题。</p>
-<h2><b>工具</b></h2>
-<ul> 
- <li><b>HP JMeter</b><b>（用Google查询一下）</b> <p>——免费，非常可靠，但不再提供支持/功能增强</p> </li> 
- <li><b><a href="http://www.tagtraum.com/gcviewer.html">GCViewer</a></b> <p>——免费，开源，但界面有点丑</p> </li> 
- <li><b><a href="http://code.google.com/a/eclipselabs.org/p/garbagecat/">GarbageCat</a></b> <p>——名字最好听</p> </li> 
- <li><b><a href="http://www.ibm.com/developerworks/java/jdk/tools/gcmv/">IBM GCMV</a></b> <p>——支持J9</p> </li> 
- <li><b><a href="http://www.jclarity.com/products/censum">jClarity Censum</a></b> <p>——界面最美观，而且最有用——不过，这是我们的偏见！</p> </li> 
-</ul>
-<h2><b>小结</b></h2>
-<ul> 
- <li><b>需要了解一些GC基础理论</b></li> 
- <li><b>要让新生代的大部分对象在年轻时死亡</b></li> 
- <li><b>打开GC日志！</b>——原始日志文件难以阅读——使用工具</li> 
- <li><b>使用工具来帮助自己调优</b>——测量，而不是猜测</li> 
-</ul>
-<p>查看完整演讲视频，请点击<a href="http://www.infoq.com/presentations/Visualizing-Java-GC">这里</a>。</p>
-<h2><b>关于作者</b></h2>
-<p><img src="http://infoqstatic.com/resource/articles/Visualizing-Java-Garbage-Collection/zh/resources/0108007.jpg" style="float: left; margin-right: 10px" alt="" _href="img://null" _p="true" /><b>Ben Evans</b>是一家Java/JVM性能分析创业公司jClarity的CEO。在业余时间，他是伦敦Java社区的一名负责人，也是Java社区过程执行委员会成员之一。他先前的项目包括：对Google IPO、金融交易系统做性能测试，为若干90年代最大的电影开发获奖网站等等。</p>
-<div style="clear:both">
- &nbsp;
-</div>
-<p><b>查看英文原文：</b><b><a href="http://www.infoq.com/articles/Visualizing-Java-Garbage-Collection">Visualizing Java Garbage Collection</a></b></p><br><br><br><br><br><br></body></html>
+<p>2. Rack 1 (175)</p>
+<ol> 
+ <li>h1 (175)</li> 
+ <li>h2 (100)</li> 
+</ol>
+<p>3. Rack 3 (150)</p>
+<ol> 
+ <li>h5 (150)</li> 
+ <li>h6 (150)</li> 
+</ol>
+<p>4. Rack 4 (75)</p>
+<ol> 
+ <li>h7 (75)</li> 
+ <li>h8 (75)</li> 
+</ol>
+<p>因此，优先顺序是<b>h4 &gt; h3 &gt; h1 &gt; h2 &gt; h5 &gt; h6 &gt; h7 &gt; h8</b>。</p>
+<p>不考虑rack的方法更简单，节点排序的结果为：</p>
+<ol> 
+ <li>h1 (175)</li> 
+ <li>h4 (150)</li> 
+ <li>h5 (150)</li> 
+ <li>h6 (150)</li> 
+ <li>h2 (100)</li> 
+ <li>h3 (100)</li> 
+ <li>h7 (75)</li> 
+ <li>h8 (75)</li> 
+</ol>
+<p>其优先顺序为 <b>h1 &gt; h4 &gt; h5 &gt; h6 &gt; h2 &gt; h3 &gt; h7 &gt; h8</b>。</p>
+<p>更多细节参见Hadoop的测试用例： <a href="https://github.com/apache/hadoop-common/blob/release-1.0.4/src/test/org/apache/hadoop/mapred/TestGetSplitHosts.java">https://github.com/apache/hadoop-common/blob/release-1.0.4/src/test/org/apache/hadoop/mapred/TestGetSplitHosts.java</a></p>
+<h2>双向链表</h2>
+<p>CombineFileInputFormat选择了另外的方式保持locality的性质，它使用双向链表将block串在一起，之后先是逐节点扫描block，再次是逐rack扫描node，最后剩下来的“残片”丢到最后一堆处理，这样最大限度的保证locality，并且维持partition的大小尽可能平衡。缺点就是出现跨block的文件的情况下，同一个文件的block很有可能落到不同的partition中。这里的陷阱是，在Hadoop老API中，isSplitable()函数不能起到保持同一个文件内容在同一个partition中的作用，而在新API中反倒有这个功能了。各位使用的时候可要睁大眼睛。顺便说一句，新API虽然加入了这个功能，但是不切分文件的情况下，在保持locality和partition均衡的性质上可就没老API好了。无论如何，这些trade-off总是逃不掉的。</p>
+<pre>
+Double linked lists sweep for constructing split - CombineFileInputFormat.java
+// mapping from a rack name to the list of blocks it has
+HashMap&lt;String, List&lt;OneBlockInfo&gt;&gt; rackToBlocks =
+new HashMap&lt;String, List&lt;OneBlockInfo&gt;&gt;();
+// mapping from a block to the nodes on which it has replicas
+HashMap&lt;OneBlockInfo, String[]&gt; blockToNodes =
+new HashMap&lt;OneBlockInfo, String[]&gt;();
+// mapping from a node to the list of blocks that it contains
+HashMap&lt;String, List&lt;OneBlockInfo&gt;&gt; nodeToBlocks =
+new HashMap&lt;String, List&lt;OneBlockInfo&gt;&gt;();
+...
+// process all nodes and create splits that are local
+// to a node. 
+for (Iterator&lt;Map.Entry&lt;String,
+List&lt;OneBlockInfo&gt;&gt;&gt; iter = nodeToBlocks.entrySet().iterator();
+iter.hasNext();) {</pre>
+<h3>如何读取</h3>
+<p>聊了这么多，我们总算清楚MapReduce类的程序如何在组织split的时候保持良好的block的本地性了。我们很开心的获得其中的“最佳地点”，并将这个信息传递给spark的partition。下一步工作就是Spark根据“最佳地点”，如上例中的节点h4，启动worker上的处理进程/线程开始读取数据了。现在h4启动了spark的executor开始处理split中的block。但是稍等，h4怎么知道从哪个节点上获得每个block呢？要知道，每个block有三个副本呢！具体读取该block的哪个副本这个信息并未传递给partition。</p>
+<p>从RecordReader开始，我们再来一步步还原数据读取的过程。有了上面的基础，这次的旅程应该很快了。以笔者写的BatchFileRecordReader为例：</p>
+<pre>
+Constructer of BatchFileRecoderReader - BatchFileRecorderReader.java
+    public BatchFileRecordReader(
+            CombineFileSplit split,
+            Configuration conf,
+            Reporter reporter,
+            Integer index)
+            throws IOException {
+        path = split.getPath(index);
+        startOffset = split.getOffset(index);
+        pos = startOffset;
+        end = startOffset + split.getLength(index);
+
+        FileSystem fs = path.getFileSystem(conf);
+        fileIn = fs.open(path);
+        fileIn.seek(startOffset);
+
+        totalMemory = Runtime.getRuntime().totalMemory();
+    }
+</pre>
+<p>在上面的代码中，我们从split中拿到了path，注意这里的path是当前文件路径，可不是block路径。有了它，我们可以拿到一个fileIn，其类型为FSDataInputStream。之后我们seek到这个block开始的位置，称作startOffset。等一下，我们根本没用到“最佳地点”的信息，是不是很奇怪呢？我们之前花了大量力气拿到的信息，这里没有用到。</p>
+<p>这里需要记住的是，目前为止我们获得的split信息只是为每个block分配了计算节点，仅此而已。如何读取由别的代码控制。那么再来看看FSDataInputStream，这里也没有太多东西，只有一些看上去没啥用的代码。</p>
+<pre>
+FSDataInputStream.java
+public class FSDataInputStream extends DataInputStream
+    implements Seekable, PositionedReadable, Closeable {
+
+    public FSDataInputStream(InputStream in)
+        throws IOException {
+        super(in);
+        if( !(in instanceof Seekable) || !(in instanceof PositionedReadable) ) {
+            throw new IllegalArgumentException(
+            &quot;In is not an instance of Seekable or PositionedReadable&quot;);
+        }
+    }
+
+    public synchronized void seek(long desired) throws IOException {
+        ((Seekable)in).seek(desired);
+    }
+}
+</pre>
+<p>好吧，我们另觅他途。注意之前fileIn是由fs.open()这个调用获得的，在HDFS的场景下，这个fs其实是DistributedFileSystem，即常说的DFS。结果我们在DFS中找到了由DFSInputStream包装成的FSDataInputStream，前者在DFSClient中实现。我们所期待的函数是blockSeekTo()，这个函数负责给定偏移量之后找到合适的block。之后它会找到最优的DataNode，并从中读取数据。</p>
+<pre>
+Find an appropriate block and select a DataNode - DFSClient.java
+    DatanodeInfo chosenNode = null;
+    int refetchToken = 1; // only need to get a new access token once
+    while (true) {
+        //
+        // Compute desired block
+        //
+        LocatedBlock targetBlock = getBlockAt(target, true);
+        assert (target==this.pos) : &quot;Wrong postion &quot; + pos + &quot; expect &quot; + target;
+        long offsetIntoBlock = target - targetBlock.getStartOffset();
+
+        DNAddrPair retval = chooseDataNode(targetBlock);
+        chosenNode = retval.info;
+        InetSocketAddress targetAddr = retval.addr;
+    }
+</pre>
+<p>这其中最重要的函数是chooseDataNode()，它非常简单，只是从一个DataNode列表中选择第一个node。如果第一个node连接不上，再找第二个，依次类推。bestNode()函数中的注释说这里的node列表已经按照优先规则排序好的了。很奇怪，这是在什么时候排序的呢？</p>
+<p>实际上，在这个文件首次打开的时候就已经排序好了。参见openInfo()函数，它调用callGetBlockLocations()函数进行排序。后者在NameNode中的getBlockLocations()中查询信息。可以看到它调用了clusterMap中的pseudoSortByDistance()进行排序。至此，我们获得了Hadoop为应用保持数据本地性的全景。</p>
+<pre>
+Get block locations and sorted in the priority order - FSNamesystem.java
+    LocatedBlocks getBlockLocations(String clientMachine, String src,
+        long offset, long length) throws IOException {
+        LocatedBlocks blocks = getBlockLocations(src, offset, length, true, true);
+        if (blocks != null) {
+            //sort the blocks
+            DatanodeDescriptor client = host2DataNodeMap.getDatanodeByHost(
+                clientMachine);
+            for (LocatedBlock b : blocks.getLocatedBlocks()) {
+                clusterMap.pseudoSortByDistance(client, b.getLocations());
+            }
+        }
+        return blocks;
+    }
+</pre>
+<h2>结语</h2>
+<p>分布式数据并行环境下，保持数据的本地性是非常重要的内容，事关分布式系统性能高下。要想更好的了解Spark是怎么运作的，输入也许是很重要的一个环节。举一个小例子，你或许有心情在一台不错的机器上使用Spark处理100GB的数据。按理说这不应算作多大的应用场景，但如果不仔细调整一下你的输入的话，你会发现Spark甚至会在这台机器上切分上千个partition来并行处理这份数据。而这上千个partition随便来一个shuffle造成的百万量级的shuffle数据交换会把Spark性能拖死。实际上，调用Hadoop的API访问本地磁盘的默认块大小为32MB，据其分块策略，当然会产生上千个partition。另外，如果你本地是一堆小文件，如LDA的语料库，你会发现Spark甚至会为每个文件分配一个或多个partition！所以，这下你应该知道为什么有时简单的Spark程序也会非常慢了吧。</p>
+<p>本文为了解决LDA小文件输入的问题，一步步揭开HDFS与Spark的数据通道的故事。总结来看，为了分布式使用各个机器，HDFS读取的时候将数据分成了各个分块，为了防止straggler的产生，MapReduce的读取模块会尽量保证各个分块在每台机器上的大小和个数均衡。为了保证较好的locality，Spark获取preferredLocation信息，尽量保证在临近的机器上读取所需的数据。为了合理读取小文件，CombineFileInputFormat合理安排小文件分片，既要保证数据在各个分块中均衡，又不能切断单个文件。为了保证HDFS与Spark之间的高效数据通道，正可谓”无所不用其极”。</p>
+<h2><b>作者简介</b></h2>
+<p>尹绪森，Intel实习生，熟悉并热爱机器学习相关内容，对自然语言处理、推荐系统等有所涉猎。目前致力于机器学习算法并行、凸优化层面的算法优化问题，以及大数据平台性能调优。对Spark、Mahout、GraphLab等开源项目有所尝试和理解，并希望从优化层向下，系统层向上对并行算法及平台做出贡献。</p>
+<hr />
+<p>感谢<a href="http://www.infoq.com/cn/author/辛湜">辛湜</a>对本文的审校。</p>
+<p>感谢<a href="http://www.infoq.com/cn/author/包研">包研</a>对本文的策划。</p>
+<p>给InfoQ中文站投稿或者参与内容翻译工作，请邮件至<a href="mailto:editors@cn.infoq.com">editors@cn.infoq.com</a>。也欢迎大家通过新浪微博（<a href="http://www.weibo.com/infoqchina">@InfoQ</a>）或者腾讯微博（<a href="http://t.qq.com/infoqchina">@InfoQ</a>）关注我们，并与我们的编辑和其他读者朋友交流。</p><br><br><br><br><br><br></body></html>

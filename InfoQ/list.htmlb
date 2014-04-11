@@ -2,6 +2,18 @@
  <head></head> 
  <body> 
   <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/8.htmlb">发布一个package</a> 合理使用Node.js的包能够解决很多问题，本章将带领大家一步步开发一个基于libuv库让Node.js支持多线程的名为libuv_thread包，开发并测试完成后，我们将它发布到npm上供其他开发人员下载和使用。在学习本章之前，读者需要有C++语法基础；对libuv库和v8引擎的嵌入式开发有所了解；熟悉Node.js的基本模块用法。 
+  </div> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/7.htmlb">单元化架构，为什么要用以及我们如何做到</a> 微博粉丝服务平台在单元化架构方面的实践已经在QCon讲过，这次重又写起文章，我想传播知识已经不那么重要（单元化架构不是创新，稍后会详细介绍），更重要的是还是希望能够借此引起诸位的思考，能够在架构层面多投入精力思考和尝试。 
+  </div> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/6.htmlb">SQL Server 2014 – 关系型的能力、NoSql的速度</a> 近4年来，微软一直在致力于重写SQL Server的查询执行引擎，这还是自1998年来的首次尝试。重写的目标是在不牺牲关系型数据库特色的前提下，提供类似于NoSQL的高速度。其中的核心是Hekaton，即内存优化表。虽然依然能够通过传统的T-SQL操作对其进行访问，但其内部已经是基于完全不同的技术所实现。 
+  </div> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/5.htmlb">探寻从HDFS到Spark的高效数据通道：以小文件输入为案例</a> 为了保证高效的数据移动，locality是大数据栈以及分布式应用程序所必须保证的性质，这一点在Spark中尤为明显。如果数据集大到不能保证完全放入内存，那就不能贸然使用cache()将数据固化到内存中。如果读取数据不能保证较好的locality性质的话，不论是对即席查询还是迭代计算都将面临输入瓶颈。而作为常用的分布式文件系统，HDFS承担着数据存储、一致性保证等关键问题。HDFS自开发之初就与Google GFS一脉相承，因此也继承了其无法较好的处理小文件的问题，但大量小文件输入又是分布式计算中常见场景。本文以小文件输入为案例，看看从HDFS到Spark的数据通道中到底发生了什么，并讨论如何设计有效的小文件输入。了解了这些话题，可以更高效的使用Spark。 
+  </div> 
+  <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/4.htmlb">微博config service实践</a> 作为大型复杂分布式系统，微博平台中存在大量的配置信息，这些配置信息定义了平台中的RPC服务和资源（memcached、redis、mysql等）的地址，以及这些服务和资源的元数据信息。 
   </div> 
   <div> 
@@ -138,18 +150,6 @@
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/18.htmlb">安全领域中的大数据分析</a> 作者在本文中探讨了大数据和Hadoop在安全分析领域中所扮演的角色，以及在做安全信息和事件管理(SIEM)、欺诈检测等安全分析的用例中，如何使用MapReduce高效地处理数据。 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/17.htmlb">运营精益创业组织的柔术</a> 通过练习巴西柔术，Yiannis将经营精益创业组织的做法和原则跟这门武术所需的技巧和宗旨联系到一起。他向我们展示了两者的内在实践有多相似，以及掌握巴西柔术的做法如何帮助精益创业组织节省精力，实现结果的最大化。 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/16.htmlb">程序员的工具</a> 作为一名程序员，我会用到许多工具。道理很简单，因为它们可以提高我的工作效率。但这里有个前提条件，那就是这些工具可以很好地支持我在工作和编码中的实践。如果某些工具违背了这些实践以及它们背后的价值观，我就不会使用或者有限地使用那些有用的功能。在本文中，我会分享一些工具以及背后的思考，希望对广大程序员朋友有所启示和帮助。 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/15.htmlb">单元化架构，为什么要用以及我们如何做到</a> 微博粉丝服务平台在单元化架构方面的实践已经在QCon讲过，这次重又写起文章，我想传播知识已经不那么重要（单元化架构不是创新，稍后会详细介绍），更重要的是还是希望能够借此引起诸位的思考，能够在架构层面多投入精力思考和尝试。 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/14.htmlb">采访Jan de Baere：一家敏捷公司的兴衰</a> 是什么让一家咨询公司的经理决定彻底改变文化？在敏捷之旅布鲁塞尔会议上，Jan de Baere解释了原因，并说明这家公司是如何采用敏捷，他们经历了怎样的历程，最后又为何突然终止。InfoQ采访了他，谈论敏捷的方法、文化和信任，以及从一次敏捷旅程中学到的东西。 
   </div> 
  </body>
 </html>

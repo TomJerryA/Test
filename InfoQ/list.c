@@ -2,6 +2,9 @@
  <head></head> 
  <body> 
   <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/3.c">Big Data: A linguagem realmente importa?</a>Big Data &eacute; um campo no qual um simples milisegundo perdido pode ser significante considerando bilh&otilde;es de eventos. E ainda, linguagens comumente consideradas lentas como Python ganharam muita popularidade no ano passado. Artigos recentes e discuss&otilde;es na comunidade de Big Data reascenderam um debate sobre a escolha de uma linguagem de programa&ccedil;&atilde;o para a ci&ecirc;ncia de dados e Big Data. 
+  </div> 
+  <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/2.c">O compilador do C# foi lan&ccedil;ado como c&oacute;digo aberto</a>A Microsoft lan&ccedil;ou o projeto do compilador Roslyn, sob a licen&ccedil;a de c&oacute;digo aberto Apache. Esse impressionante an&uacute;ncio foi feito durante o segundo keynote na confer&ecirc;ncia Build, pelo criador do C#, Anders Hejlsberg. 
   </div> 
   <div> 
@@ -147,9 +150,6 @@
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/6.c">Ca&ccedil;a aos bugs: Aprimorando a capacidade dos testes</a>Na recente confer&ecirc;ncia &quot;Testing Portugal 2013&quot;, Klays Olsen apresentou t&eacute;cnicas para ca&ccedil;ar bugs seguindo o estilo de testes explorat&oacute;rios. 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/5.c">Utilizando retrospectivas para aperfei&ccedil;oamento pessoal</a>Equipes &aacute;geis utilizam retrospectivas para melhorar seu desempenho, refletindo sobre sua forma de trabalhar e definindo a&ccedil;&otilde;es de melhoria. As retrospectivas tamb&eacute;m podem ser utilizadas para o aperfei&ccedil;oamento do desempenho pessoal, adicionalmente ou em substitui&ccedil;&atilde;o &agrave;s avalia&ccedil;&otilde;es de desempenho. 
   </div> 
  </body>
 </html>

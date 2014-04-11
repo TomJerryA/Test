@@ -1,6 +1,18 @@
 <html>
  <head></head> 
- <body> 
+ <body>
+  <div>
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/37.java">Expression Evaluator: A Lightweight C# Compiler Service</a>While the .NET community eagerly awaits a production version of Roslyn, work must continue. So today we’re looking at another compiler service, Expression Evaluator. While other compiler services are trying to be as comprehensive as possible, here we see one that is going the other direction.
+  </div>
+  <div>
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/36.java">QCon New York Update: 60/100 Speakers; Gilad Bracha, Netflix Keynotes Confirmed (Jun 11-13, 2014)</a>Gilad Bracha, Co-Author of the Java Spec, and Dianne Marsh, Director of Engineering at Netflix have been confirmed as keynote speakers for the third annual QCon New York (Jun 11-13, 2014). The tutorials schedule has been finalized and the preliminary conference schedule is now live. New speakers are being added daily to the conference website, with more than 60/100 speakers already confirmed.
+  </div> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/35.java">ASP.NET Identity 2 Adds Two-factor Authentication, Account Lockout, Security Stamp and Bug Fixes</a>ASP.NET Identity 2 RTM, recently released by Microsoft provides support for Two-factor authentication, account lockout, security stamp besides several improvements and bug fixes. 
+  </div> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/34.java">Secure Coding for the Android Platform</a>CERT Secure Coding team, part of the Software Engineering Institute at Carnegie Mellon University, have recently released secure coding guidelines specific to Java's application in the Android platform. InfoQ interviews Lori Flynn, one of the researchers who authored them. 
+  </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/33.java">MongoDB 2.6 Release - An Interview With Kelly Stirman</a>MongoDB needs no introduction for NoSQL users. Kelly Stirman, Director of Product at MongoDB is answering questions about the latest stable 2.6 release. Storage fragmentation, index intersection, full text search and MongoDB in enterprise are discussed. And also, we finally have more info about one of the most watched and voted feature requests at MongoDB jira tracker, collection level locking. 
   </div> 
@@ -138,18 +150,6 @@
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/46.java">New York Times Lab Introduces Visual Stream Processing Tool</a>The New York Times R&amp;D Lab has released streamtools, a general purpose, graphical tool for dealing with streams of data, under Apache 2 license. 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/45.java">Microsoft Beefs Up Cloud Identity Services as Part of Mobile Push</a>As part of launching an Enterprise Mobility Suite, Microsoft announced that Azure Active Directory Premium was set to hit General Availability. Microsoft Azure Active Directory Premium extends the free identity management and single sign-on service with additional group-management capabilities, rebranding options, security analytics, and more. 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/44.java">DDD and CQRS Using the Functional Language F#</a>A focus on behaviour and a more declarative style of code are two benefits for Domain-Driven Design (DDD) when moving from an object-oriented language like C# to a functional one like F#, Lev Gorodinski claims in a recent presentation, using an example that includes event sourcing and Command-Query Responsibility Separation (CQRS) to show some of the benefits and challenges in a move to F#. 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/43.java">Mobile App Performance Report Benchmarks Crashes and Responsiveness on iOS and Android</a>Crittercism, maker of a mobile app performance management solution, has analysed one month of performance data and compiled it into a Mobile Experience Benchmark report focusing on two aspects of a mobile performance: app uptime and app responsiveness. Results highlight app categories with the highest crash and error rates and provide the basis for a comparison among iOS and Android versions. 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/42.java">RESTistential Crisis over Hypermedia APIs</a>Software developer Evan Cordell initiated a debate about how the hypermedia constraint of REST is at odds with common web APIs requirements in the API-Craft mailing list a few weeks ago. 
-  </div> 
+  </div>   
  </body>
 </html>

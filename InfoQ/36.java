@@ -1,28 +1,33 @@
-<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>Rebecca Parsons on the ThoughtWorks Technology Radar</h3><p>In January <a href="http://www.thoughtworks.com/">ThoughtWorks</a> released the latest version of their <a href="http://www.thoughtworks.com/radar/#/">Technology Radar</a> in which they track what's interesting in the software development ecosystem. &nbsp;InfoQ spoke to Rebecca Parsons (CTO) about the latest results.</p>
-<p>InfoQ: Firstly Thanks Rebecca for taking the time to talk about the Technology Radar. Could you briefly introduce yourself and the team behind the Radar.</p>
-<blockquote>
- The ThoughtWorks Technology Radar is produced by the Technology Advisory Board (TAB) of ThoughtWorks. The TAB is made up of technologists from all over the globe, representing India, Germany, the UK, South Africa, the US, Canada, Brazil, Australia and China. I started the TAB several years ago when I became the CTO to advise me on matters of importance to the ThoughtWorks technology community. The broad representation of the TAB brings a different perspective to questions as the technology landscape is different in the various countries in which ThoughtWorks does business. The Radar is an opinionated document, representing the opinions of myself and the TAB. While we crowd-source input to the Radar from the broader ThoughtWorks community, the TAB as a collective chooses what goes on it. 
- <br /> 
-</blockquote>
-<p>InfoQ: Why does ThoughtWorks produce (and share) the Technology Radar – surely this is a lot of effort for something made freely available.</p>
-<blockquote>
- We started the Radar as a way to track what was happening in the technology community and identifying areas we might want to participate in more fully. However, we've always been a big believer in transparency, participating in many conferences, writing blogs and books, and open sourcing many of our tools. Publishing the Radar just seemed the natural thing to do. I am gratified at how interest in the Radar continues to increase.
-</blockquote>
-<p>InfoQ: So what are the big trends in this Radar?&nbsp;</p>
-<blockquote>
- For each radar, we try to identify the themes. As the number of &quot;blips&quot; on the Radar have increased, these themes have become more important as a way of highlighting the broader trends we are seeing. The four themes this time include: 1) early warning systems and recovery in production, 2) the tension between privacy and big data, 3) the javascript ecosystem, and 4) blurring of the line between the physical and virtual worlds. The themes don't always indicate areas with the largest number of items; instead we focus on what we are seeing that's interesting.
-</blockquote>
-<p>InfoQ: The way the Radar is presented is interesting – you seem to be offering some very explicit advice in terms of the four levels the elements are plotted on – Adopt, Trial, Assess, Hold. What is the intent behind these categories?</p>
-<blockquote>
- When we started the Radar, we were most interested in what new things we should be watching. The Assess ring represents things to watch, while the Trial ring are items that we believe are ready for businesses to pilot. As we thought about publishing this externally, though, we thought it important to include our recommendations on what organizations should or shouldn't be doing. Our test for the Adopt ring is if we would &quot;mock you in the pub&quot; for not doing it. Since our target includes both early adopters and more conservative enterprises, there are some things that don't make it to adopt as quickly as some might expect. The Hold ring is a challenging one with two different purposes: things that aren't ready for prime time yet and things that aren't working out in practice. The latter category is far more common for the Hold ring, although I try to limit things in that ring to items that are widely used.
- <br /> 
-</blockquote>
-<p>InfoQ: What sort of benefits could organizations anticipate if they take the advice about adopting the various elements at the centre of the Radar – what business problems could potentially be addressed?</p>
-<blockquote>
- The Radar is a point in time document, and we fade blips from the Radar if they've not moved for two Radars (or sooner if the Radar is too crowded). So, the Adopt ring on any given Radar doesn't include all the items that we believe should be standard practice. That said, the Adopt ring includes items that we believe are important to achieving software excellence.
-</blockquote>
-<p>InfoQ: Possibly looking beyond the Radar, what are some of the important technology related risks that organizations are facing today and what should they be doing to mitigate them?</p>
-<blockquote>
-  It's hard to generalize, but I think organizations are not yet prepared for the pace of change that will be required in their technology offerings. For some, this is the result of being over-zealous and outsourcing too much of their technology capability. For others, this stems from a poor buy decision, investing in a package that now holds too much of what should be their business differentiators. For still others, this comes from having an architecture that is too coupled or is not adaptive enough. Enterprises that used to think they were in a different business now realize that they have to be, at some level, a technology company as well. There's a lot of work to be done to make these systems adaptive. 
-</blockquote>
-<p>&nbsp;</p><br><br><br><br><br><br></body></html>
+<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>QCon New York Update: 60/100 Speakers; Gilad Bracha, Netflix Keynotes Confirmed (Jun 11-13, 2014)</h3><p>Gilad Bracha, Co-Author of the Java Spec, and Dianne Marsh, Director of Engineering at Netflix have been confirmed as <a href="https://www.qconnewyork.com/keynotes?utm_source=infoq&amp;utm_medium=news&amp;utm_campaign=04112014news">keynote speakers</a> for the third annual QCon New York (Jun 11-13, 2014).&nbsp; The tutorials schedule has been <a href="https://www.qconnewyork.com/tutorials?utm_source=infoq&amp;utm_medium=news&amp;utm_campaign=04112014news">finalized</a> and new speakers are being added daily to the conference website, with more than 60/100 speakers already confirmed. <a href="https://qconnewyork.com/registration?utm_source=infoq&amp;utm_medium=news&amp;utm_campaign=04112014news">Register</a>&nbsp;<strong>before Apr 19th</strong>&nbsp;and save $400.</p>
+<p>QCon New York is a practitioner-driven conference designed for people influencing innovation in their software development teams: team leads, architects, project managers, engineering directors. &nbsp;There will be two days of full &amp; half day&nbsp;<strong>tutorials from&nbsp;June 9-10</strong>&nbsp;(Mon-Tues) and a full&nbsp;<strong>3-day conference from June 11-13</strong>&nbsp;(Wed-Fri).</p>
+<p>This year’s sessions include:</p>
+<ul> 
+ <li><a href="https://qconnewyork.com/presentation/structure-personalization-scale-deep-dive-linkedin-search/?utm_source=infoq&amp;utm_medium=news&amp;utm_campaign=04112014news"><strong>Data Science @ LinkedIn</strong></a>, by <strong>Daniel Tunkelang</strong>, Head of Query Understanding at LinkedIn</li> 
+ <li><a href="https://www.qconnewyork.com/presentation/functional-programming-concepts-facebooks-mobile-apps?utm_source=infoq&amp;utm_medium=news&amp;utm_campaign=04112014news"><strong>The Functional Programming Concepts in Facebook's Mobile Apps</strong></a>, by <strong>Adam Ernst</strong>, iOS Engineer at Facebook</li> 
+ <li><a href="https://www.qconnewyork.com/presentation/big-data-capital-markets?utm_source=infoq&amp;utm_medium=news&amp;utm_campaign=04112014news"><strong>Big Data in Capital Markets</strong></a>, by <strong>Clive Saha</strong>, Lead Consultant at Risk Focus, Distributed Computing</li> 
+ <li><a href="https://www.qconnewyork.com/presentation/migrating-microservices?utm_source=infoq&amp;utm_medium=news&amp;utm_campaign=04112014news"><strong>Migrating to Microservices</strong></a>, by <strong>Adrian Cockcroft</strong>, Lead Netflix's migration to a large scale</li> 
+ <li><a href="https://www.qconnewyork.com/presentation/advanced-data-visualization-html5-and-risk-analysis?utm_source=infoq&amp;utm_medium=news&amp;utm_campaign=04112014news"><strong>Advanced Data Visualization: HTML5 and Risk Analysis</strong></a>, by Fabrice Aresu, Product Manager for Risk Solutions at Luxoft</li> 
+ <li><a href="https://www.qconnewyork.com/presentation/devops-culture-and-practices-create-flow?utm_source=infoq&amp;utm_medium=news&amp;utm_campaign=04112014news"><strong>DevOps Culture And Practices To Create Flow</strong></a>, by Jez Humble, Co-Author of “Continuous Delivery”</li> 
+ <li><a href="https://www.qconnewyork.com/presentation/data-science-mount-sinai/?utm_source=infoq&amp;utm_medium=news&amp;utm_campaign=04112014news"><strong>Data Science @ Mount Sinai</strong></a>, by <strong>Jeff Hammerbacher</strong>, Founder, Cloudera; Creator of Facebook's Data Science Practice</li> 
+ <li><a href="https://www.qconnewyork.com/presentation/typescript-%E2%80%93-scaling-javascript?utm_source=infoq&amp;utm_medium=news&amp;utm_campaign=04112014news"><strong>TypeScript – Scaling up JavaScript</strong></a>, by Jonathan Turner, Co-Designer of the TypeScript Language</li> 
+ <li><a href="https://www.qconnewyork.com/presentation/github-communications-culture-and-tools?utm_source=infoq&amp;utm_medium=news&amp;utm_campaign=04112014news"><strong>GitHub Communications Culture and Tools</strong></a>, by Matthew McCullough, Trainer at GitHub</li> 
+ <li><a href="https://www.qconnewyork.com/presentation/evolving-rest-iot-world?utm_source=infoq&amp;utm_medium=news&amp;utm_campaign=04112014news"><strong>Evolving REST for an IoT World</strong></a>, by <strong>Todd Montgomery</strong>, Ex-NASA Researcher, Chief Architect, Kaazing</li> 
+ <li><a href="https://www.qconnewyork.com/presentation/functional-programming-frontend-facebook-react?utm_source=infoq&amp;utm_medium=news&amp;utm_campaign=04112014news"><strong>Functional programming on the frontend with Facebook React</strong></a>, by Dustin Getz, React Pioneer</li> 
+ <li><u>Big Data at Facebook</u>, by <strong>Justin Moore</strong>, Engineer, Facebook</li> 
+</ul>
+<p>Other confirmed speakers include:</p>
+<ul> 
+ <li><strong>Eric Evans</strong>, Creator of Domain Driven Design</li> 
+ <li><strong>Brian Goetz</strong>, Java Language Architect at Oracle</li> 
+ <li><strong>Rob Witoff</strong>, Data Scientist, CTO’s Office, NASA</li> 
+ <li><strong>Asif Makhani</strong>, Director of Engineering at LinkedIn</li> 
+ <li><strong>Nell Thomas</strong>, Data Analyst, Etsy</li> 
+ <li><strong>John Musser</strong>, Founder, ProgrammableWeb</li> 
+ <li><strong>Jon Hoffman</strong>, Foursquare Engineer</li> 
+ <li><strong>Kirk Pepperdine</strong>, Java Performance Expert</li> 
+ <li><strong>Nicolas Bevacqua</strong>, Author of JavaScript Application Design</li> 
+</ul>
+<p>See the complete list of <a href="https://www.qconnewyork.com/speakers?utm_source=infoq&amp;utm_medium=news&amp;utm_campaign=04112014news">confirmed speakers here</a>.</p>
+<p>QCon New York is a conference designed to meet the unique needs of senior software practitioners – technical team leads, architects, and software engineers - such as yourself.&nbsp; With a high speaker-to-attendee ratio, facilitated peer learning, and numerous networking opportunities, QCon has inspired thousands of technical leaders, helping them drive change and innovation in their software development projects.</p>
+<p>Registration for QCon New York is $1,895 ($400 off) for the 3-day conference (including OSGi DevCon).&nbsp;<a href="https://qconnewyork.com/registration?utm_source=infoq&amp;utm_medium=news&amp;utm_campaign=04112014news"><strong>Register</strong></a>&nbsp;before April 19th to receive the best rate available.</p>
+<p>Corporate and group discounts are also available. Please email&nbsp;<a href="mailto:info@qconnewyork.com">info@qconnewyork.com</a>&nbsp;for details.</p><br><br><br><br><br><br></body></html>
