@@ -1,14 +1,14 @@
 <html>
  <head></head> 
- <body>
-  <div>
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/33.java">MongoDB 2.6 Release - An Interview With Kelly Stirman</a>MongoDB needs no introduction for NoSQL users. Kelly Stirman, Director of Product at MongoDB is answering questions about the latest stable 2.6 release. Storage fragmentation, index intersection, full text search and MongoDB in enterprise are discussed. And also, we finally have more info about one of the most watched and voted feature requests at MongoDB jira tracker, collection level locking.
-  </div>
-  <div>
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/32.java">Spring Boot Goes GA</a>Pivotal, last week, announced the first general availability release of the Spring Boot framework.
-  </div>
-  <div>
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/31.java">Role of Managers in Agile Retrospectives</a>Agile teams use retrospectives to reflect upon their way of working. Since it’s the team’s own responsibility to continuously improve themselves they have to decide upon the actions that they will do. What can managers do to support their teams when they are doing agile retrospectives?
+ <body> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/33.java">MongoDB 2.6 Release - An Interview With Kelly Stirman</a>MongoDB needs no introduction for NoSQL users. Kelly Stirman, Director of Product at MongoDB is answering questions about the latest stable 2.6 release. Storage fragmentation, index intersection, full text search and MongoDB in enterprise are discussed. And also, we finally have more info about one of the most watched and voted feature requests at MongoDB jira tracker, collection level locking. 
+  </div> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/32.java">Spring Boot Goes GA</a>Pivotal, last week, announced the first general availability release of the Spring Boot framework. 
+  </div> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/31.java">Role of Managers in Agile Retrospectives</a>Agile teams use retrospectives to reflect upon their way of working. Since it’s the team’s own responsibility to continuously improve themselves they have to decide upon the actions that they will do. What can managers do to support their teams when they are doing agile retrospectives? 
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/30.java">The Performance of Dart 1.3 Is on Par with Node.js</a>The Google Dart team has announced Dart SDK 1.3 which improves the performance of asynchronous server-side code to the point that Dart VM is on par with Node.js, the later using another Google technology, the V8 engine. 
@@ -150,6 +150,6 @@
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/42.java">RESTistential Crisis over Hypermedia APIs</a>Software developer Evan Cordell initiated a debate about how the hypermedia constraint of REST is at odds with common web APIs requirements in the API-Craft mailing list a few weeks ago. 
-  </div>    
+  </div> 
  </body>
 </html>

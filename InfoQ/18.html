@@ -1,10 +1,50 @@
-<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>ErLLVM——面向HiPE的LLVM后端</h3><p>High Performance Erlang（HiPE）是面向<a href="http://www.erlang.org/">Erlang</a>的一个高性能原生代码编译器，而ErLLVM项目就是为了给HiPE提供多后端支持而设计的。ErLLVM使用了LLVM基础架构。</p>
-<p><a href="http://llvm.org/">LLVM</a>是一些模块化、可复用的编译器和工具链技术的集合，得到了Apple等公司的大力支持，比如目前Mac OS上默认的C/C++/Objective-C编译器Clang就是一个LLVM前端。为提高复用程度，LLVM采用了<a href="http://www.aosabook.org/llvm.html">分阶段的设计方式</a>。它将编译器分为前端、优化器和后端三个部分，定义好接口，然后分别设计应用于不同阶段的工具，这样对编程语言感兴趣的人就可以专注与前端，对优化感兴趣的人可以专注于中间的优化器部分，而对特定目标平台感兴趣的人只需要关注后端。ErLLVM正是利用了LLVM的这种优点，为多后端支持提供了方便。此外，LLVM的稳定性也早已得到社区的验证，所以HiPE可以可靠地依赖它。</p>
-<p>ErLLVM目前支持AMD64和x86架构，对ARM的支持工作也正在进行之中。</p>
-<p>下面我们简单地了解一下ErLLVM的架构。在采用LLVM之前，HiPE的架构如下图所示：</p>
-<p><img src="http://infoqstatic.com/resource/news/2014/03/ErLLVM/zh/resources/0326000.png" width="600" _href="img://null" _p="true" alt="" /></p>
-<p>Icode被翻译为RTL（“register-transfer language”，一种类RISC的底层汇编语言），然后从RTL生成面向具体平台的机器语言。而ErLLVM就是<a href="http://erllvm.softlab.ntua.gr/documentation/design/pipeline/">在RTL之后插入了LLVM后端</a>：</p>
-<p><img src="http://infoqstatic.com/resource/news/2014/03/ErLLVM/zh/resources/0326001.png" width="600" _href="img://null" _p="true" alt="" /></p>
-<p>RTL代码被翻译为LLVM汇编语言，翻译完成之后，生成的LLVM代码会被保存在一个文件中，之后就可以利用LLVM的工具链生成目标文件了。工具链的调用顺序可以用下图表示：</p>
-<p><img src="http://infoqstatic.com/resource/news/2014/03/ErLLVM/zh/resources/0326002.png" _href="img://null" _p="true" alt="" /></p>
-<p>ErLLVM的网站上提供了一份<a href="http://erllvm.softlab.ntua.gr/documentation/installation/">安装说明</a>，<a href="http://weibo.com/tchuba">@淘宝褚霸</a>也专门撰写了一篇<a href="http://blog.yufeng.info/archives/3104">博客</a>介绍ErLLVM的使用，感兴趣的读者可以参考。</p><br><br><br><br><br><br></body></html>
+<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>关于测量数据用于团队改进的一些事儿</h3><p>敏捷团队需要测量其Sprint速率，以帮助团队计划并跟踪其进度，同时也为产品所有者规划产品发布提供洞见。那么当团队想要改进自身的时候，是否也可以使用速率数据？若干作者围绕速率撰文，并针对测量速率以改进团队生产力分享了各自的关注点。</p>
+<p>Catia Oliveira在Scrum联盟网站上发表了一篇文章：<a href="http://www.scrumalliance.org/community/articles/2014/february/velocity">如何计算并使用速率，以帮助我们的团队和项目</a>。她总结了测量速率对团队的帮助如下：</p>
+<p>如果了解了团队的速率，那么我们将能够了解：</p>
+<ul> 
+ <li>迄今为止已经交付了多少价值（用故事点和已完成用户故事的方式计算），以及</li> 
+ <li>什么时候能够交付产品待办事项列表中的全部用户故事，以及</li> 
+ <li>当某个指定日期来临，能够交付多少故事点</li> 
+</ul>
+<p>她还列出了一系列能够对速率产生影响的因素：</p>
+<ul> 
+ <li>路障——又名阻碍</li> 
+ <li>燃料——积极性，驱动我们前进的因素</li> 
+ <li>驾驶经验——具有知识/专业知识/专业能力的开发者</li> 
+ <li>车况——开发环境</li> 
+ <li>能见度——项目透明度</li> 
+ <li>方向——项目目标</li> 
+ <li>交通/驾驶规则——流程</li> 
+ <li>目的地——产品</li> 
+</ul>
+<p>George Dinwiddie编写了一篇题为<a href="http://blog.gdinwiddie.com/2014/03/04/tracking-velocity/">跟踪速率</a>的博客文章。在文章中他表示，由团队测量速率是有帮助的行为，因为它会帮助我们了解团队工作情况如何。但是他也针对使用速率数据来测量生产力给出了警告：</p>
+<blockquote> 
+ <p>速率<b>并不是</b>对生产力的模拟，然而人们很容易陷入这种思维陷阱。“在一次Sprint中，我们可以完成的故事点总量是28个。”但28个故事点并不是工作总量，而是一种预估。（……）我们可以使用更多的故事点进行预估，或是将工作切分为更小的故事，以此来轻易地操纵这种预估的总量。这是如此简单，我们可能在不经意或非刻意的情况下就这么去做了。</p> 
+ <p>（……）尽管速率也许能够用来大略地跟踪生产力，但随着我们试图这样使用它来促进生产力提升而失效。</p> 
+</blockquote>
+<p>2012年，Tim Ottinger发表了一篇博客文章<a href="http://agileotter.blogspot.ca/2012/09/14-weird-observations-about-agile-team.html?">观察敏捷团队速率发现的14件怪事</a>，在其中针对他经常遇到的关于速率的问题，给出了一系列答案。他首先表示，虽然我们可以测量速率，但却无法直接地控制它：</p>
+<blockquote> 
+ <p>速率是一套“测量仪表”，而不是“控制旋钮”。我们不可能简单地将它调高——这样做只会让我们把它弄坏。</p> 
+</blockquote>
+<p>Tim认为，团队绩效提升与团队速率测量结果之间的关系，可能会非常复杂：</p>
+<blockquote> 
+ <p>当团队表现提升时，要么速率上升而故事点大体保持不变，要么速率基本相当而分配给每个故事的故事点有所减少。然而，在某种程度上，很多时候二者都会出现。这也正是我们无法跨团队比较速率的原因之一（当然，还有其他许多原因）。</p> 
+</blockquote>
+<p>在博客文章<a href="http://www.jeremyjarrell.com/velocity-is-not-the-goal/">速率并非目标</a>中，Jeremy Jarrell解释了对敏捷团队来说，为何拥有可预测的速率非常重要：</p>
+<blockquote> 
+ <p>对组织机构来说，始终如一地施行高速率的团队是非常宝贵的。而那些往往更不稳定的团队——在一个Sprint中落实高速率，而在接下来的则出现大幅下跌——将不像它们最开始表现出的那样有价值。</p> 
+ <p>其原因在于，<i>速率</i>的价值无法与<i>可预测性</i>相比拟。在敏捷团队中我们所做的许多事情，都是以增加团队可预测性为目标而完成的。团队可预测性越高，我们对未来的规划就越高效。这让我们能够更聪明地面对风险，并且基于我们的团队在给定的时间表中有能力交付哪些东西，来制定更加现实的战略。</p> 
+</blockquote>
+<p>对于想要变得更加具有可预见性，同时又希望自身速率得到提升的团队，Jeremy给出了一些解决方案：</p>
+<blockquote> 
+ <p>那么，是否这就意味着团队不应该努力测量出自己的速率？其实并非如此，而是意味着团队不应该以提高速率作为其目标。与之相反，团队应该专注于为提高速率所需采取的那些行动。采用这类实践将自然而然地得到更高的速率，例如持续改进工程流程，或是系统地识别并消除风险。</p> 
+</blockquote>
+<p>Nathan Dintenfass撰写了博客文章<a href="http://productsarehard.com/deconstructing-agile-part-1-language-of-agile-is-broken/">敏捷的语言</a>已经衰败，在其中他提到了使用速率数据来提高团队生产力时面临的一些风险：</p>
+<blockquote> 
+ <p>速率作为生产力的可量化测量指标，对大部分团队在改变自身流程方面设立的目标来说具有毁灭性的影响。管理者往往希望对完成更多故事点的员工给予更多奖金，以这种方式来提高速率。然而，这种态度完全走入了歧路，激励机制会带来明显的“腐化”——特别是当团队找到了一些让故事点“通胀”的理由，或是为了团队自身的原因而给出更大数字的时候。实际上我们想要的，是真实坦率地对相关难度进行评估，从而能够准确且满怀信心地测量在我们可以给定周期内完成哪些工作。如果速率褪变为某些不良内容，而不是可供参考的估算（以及承诺），它将会对制作出良好的软件产生完全负面的作用。</p> 
+</blockquote>
+<p>Tim Ottinger总结了他<a href="http://agileotter.blogspot.ca/2012/09/14-weird-observations-about-agile-team.html?">对敏捷团队速率的观察</a>，对此他表示：</p>
+<blockquote> 
+ <p>速率最大的问题，来自于不理解它却又将它当作生产力或繁忙程度的通用指标。使用速率的诀窍在于，不要过分严肃地对待它；同时，应该以改进我们的工作系统和组织机构为重点，而不是提升团队的速率。</p> 
+</blockquote>
+<p><strong>查看英文原文：</strong><a href="http://www.infoq.com/news/2014/04/concerns-velocity-improvement">Concerns about Measuring Velocity for Team Improvement</a></p><br><br><br><br><br><br></body></html>
