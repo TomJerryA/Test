@@ -1,0 +1,66 @@
+<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>作者访谈：Programming for Kids</h3><p>Peter Armstrong专门为那些想学编程的孩子写了这本书。<a href="https://leanpub.com/programmingforkids">Programming for Kids</a>一书中含有大量Ruby编写的、适合9-14岁孩子学习编程基础的实例。书中还向孩子们展示了如何在Mac上使用命令行。父母可以坐在孩子身边一起学习。</p>
+<p>InfoQ就孩子学习计算机编程和培养编程技巧的不同方法，以及用Leanpub自助出版电子书等问题采访了这本书的作者Peter Armstrong。</p>
+<p><strong>InfoQ:是什么让你决定为孩子写一本编程书？</strong></p>
+<blockquote> 
+ <p><strong>Peter:</strong>我想教儿子。他是重度玩家，７岁时决定要学编程。那个时候我试着教他，但他准备得不怎么样。他用过Scratch，想深入了解Lego Mindstorms，但还没有准备好坐在电脑前思考并录入——像程序员那样的编程模式。所以，我在等。9岁的时候，他又求我教他，我觉得他可能准备好了。就给他买了很多评价相当不错的编程书，但这些书让他充满挫败感。如果是青少年，这些书会很合用，9岁的话，要求还是过高了。原理要描述得更浅显，例子也要更短些，诸如此类。所以，如果儿子确实想读这样一本合适的书。我会为他写的。我为专业程序员写过很多编程书，但我从未给孩子写过书。不过，因为这些年一直在为儿子解惑，我觉得自己可以试试。圣诞时有些空暇时间，就写了这本书。儿子学完了整本书，并且大胆地提出了自己感到困惑的地方！</p> 
+</blockquote>
+<p><strong>InfoQ: 哪一年龄阶段的孩子可以开始学编程？这本书面向的又是哪一年龄段？ </strong></p>
+<blockquote> 
+ <p><strong>Peter:</strong> 我觉得9或10岁的孩子就可以开始学编程。有些情况下8岁也行。这本书面向9到14岁的孩子。对更大些的孩子也适用——有个同事半开玩笑地说，他们应该向地方高校非计算机专业的一年级新生推荐这本书——但最适合的读者应该是9到14岁的孩子。对于更大的孩子，有更多选择。</p> 
+</blockquote>
+<p><strong>InfoQ: 书中有很多编程练习。你为什么选择练习这种编程教学方式？ </strong></p>
+<blockquote> 
+ <p><strong>Peter:</strong>起初，这本书只有一些我为儿子所写的模仿示例。没有任何练习。但Yves Hanoulle在着手翻译丹麦版的时候，在邮件中强烈建议我试试练习。我这样做时，发现我所认为儿子理解了的东西实际上并没有达到预想的层次。所以，我重新组织了结构并将练习作为这本书的关注重点。书有185页，其中30页是练习答案！有了这些练习，才能真正知道你是否理解了。</p> 
+</blockquote>
+<p><strong>InfoQ: 为什么选Ruby做编程语言？ </strong></p>
+<blockquote> 
+ <p><strong>Peter:</strong>主要是因为Ruby简单。JavaScript或CoffeeScript也可以选，但那样的话，要么需要和浏览器及DOM交互，要么需要安装Node.js。我决定选一门符合以下条件的语言：(1)孩子的Mac上已经装好了；(2)交互执行(REPL)并且(3)简单。基本上只剩下Ruby和Python可选，而相比Python，我更擅长Ruby。比如，Leanpub本身就是用Ruby on Rails搭建的。</p> 
+</blockquote>
+<p><strong>InfoQ:对象在Ruby中相当核心，为什么你却只字未提？</strong></p>
+<blockquote> 
+ <p><b>Peter:</b>这本书的目标是向孩子介绍编程基础，而不是特定的编程范式。既不是面向对象编程，也不是函数式编程，更不是Ruby编程。只是编程。书中我没有完全隐藏Ruby的特征（例如，我用了块），但我希望这本书主要关注通用概念，比如循环，迭代，条件语句等。此外，我想让书变得有趣，这也是为什么我大量使用了say命令（包括反引号）等等。</p> 
+</blockquote>
+<p><b>InfoQ:</b><b>书里是纯粹介绍编码，还是也教孩子们测试？</b></p>
+<blockquote> 
+ <p><b>Peter:</b>只关注编码。书里有随机测试（ad hoc testing），但没有单元或集成测试。这本书是在教孩子编程基础，而不是软件工程。这也有助于发挥我自己的优势：也许我是公司里最糟糕的自动化测试人员，同时可以说是最好的随机测试人员。</p> 
+</blockquote>
+<p><b>InfoQ: </b><b>现阶段绝大多数软件开发都在团队中进行。书里有没有合作练习，也就是孩子们能一起做练习的地方？教师能将这本书用在课堂上和学生团队中么？</b></p>
+<blockquote> 
+ <p><b>Peter</b>: 这本书是为独立完成阅读和学习的孩子所写的。孩子们也可以一起读书做练习。我认为Yves的孩子们是在一起做练习，因为他在做丹麦语翻译。对于教师和课堂：当然没问题！孩子们可以在计算机课上用这本书，一个人或团队。本书没有DRM（数字版权保护），而价格也能被整个课堂或学校接受。</p> 
+</blockquote>
+<p><b>InfoQ:</b><b>要是父母也想学编程怎么办？他们能和孩子一起读这本书么？</b></p>
+<blockquote> 
+ <p><b>Peter:</b>那是当然！我鼓励父母坐在孩子身边一起学习——特别是在孩子用父母笔记本的时候。我希望父母能和孩子们一起学习。对我而言，编程是一种新知识。</p> 
+</blockquote>
+<p><b>InfoQ:</b><b>这本书正被译为丹麦文</b><b>、</b><b>法文和西班牙文。进展如何？</b></p>
+<blockquote> 
+ <p><b>Peter:</b>非常棒！反响出人意料，尤其是丹麦版本译者Yves Hanoulle。他大着胆子在我写了很少一部分的时候（近5章）就开始翻译这本书。不过，某种程度上这并不是真的风险，因为他只想用来教儿子。现在，对我而言很有意思的一件事是，写作时同步翻译让我更多关注如何完成一章。我尊重Yves不想浪费他的时间，所以不想让他因为我的重写而耗费精力。我让他比我的进度晚几章，直到我确定书的大方向。那种情况下，一旦完成，我会让他立刻翻译儿子验证过的章节。只有通过了测试，我才会考虑下面要写的章节。我认为如果不做任何修改，每章都难以通过儿子的检验。</p> 
+</blockquote>
+<p><strong>InfoQ:由于书在Leanpub发布，以后我们能看到新版本么？ </strong></p>
+<blockquote> 
+ <p><b>Peter:</b>会的！现在这一版本已经完成。一旦被翻译为多种语言、获得广泛认同，我就会试着更新。也许我会开发出一个系列。例如，我没有教web、对象、函数式编程等等。但随着本书的发展，我慢慢发现了最佳篇幅。绝大多数儿童读物不可能有500页！所以我还是挺高兴包括练习题答案只有143页的。读完这本书，做完所有练习，就是一件巨大的成就。对9岁的孩子而言，尤其如此！所以，我更希望在读完143页后获得这种巨大的成就感，而不是200或300页后一些小孩因放弃而一无所获。</p> 
+</blockquote>
+<p><b>InfoQ:</b><b>如果孩子想当好的软件开发者，除却编程，还要学些什么技巧？</b></p>
+<blockquote> 
+ <p><b>Peter:</b>很多。首要的一点是交流。无论是说还是写，你要能清楚准确的交流。另一方面，你要能在讨论时聆听并快速思考，以便了解真正的需求，重要和不重要的各是什么。你要有自信，不要因为害羞而错过争论。创业之前我当了十多年的程序员，现在我是名创业公司创始人，相当于产品拥有者。我在职业中真正所学的技能之一就是辨别什么是真正的需求，什么不是。如果你能避免解决那些难而非必要的问题，就太好了！</p> 
+</blockquote>
+<p><b>InfoQ:</b><b>要是孩子读完这本书后想学更多编程方面的知识，能做什么？</b></p>
+<blockquote> 
+ <p><b>Peter</b>: 还有很多为年龄更大的孩子所准备的书，理论上这应该是下一步。也有很多像<a href="http://www.codecademy.com/">这样</a>的网站，现在就很好，并且还在快速提升。</p> 
+</blockquote>
+<p><strong>InfoQ:你写过很多编程练习方面的书籍，Flexible Rails和Hello! Flex 4（《Flex 4一学就会》）。这和为孩子们写书有什么不同？ </strong></p>
+<blockquote> 
+ <p><b>Peter:</b>首先，背景知识。孩子们不光不知道终端是什么，他们还不知道文本文件是什么或是控制键和命令键的位置。所以，这些都要解释。书的开头，我甚至附了一张键盘图，用箭头标示出某些键，由于儿子毕竟只是个玩家，没有用过一些必要的键。类似的，每次你用像反引号 (`) 或是脱字号(^)，需要在键盘上标注所在的位置以及如何输入。这很难。为专业程序员写书时，主要的挑战在于让书有趣，而我不需要解释如何运行Spotlight或终端。另一方面，看到儿子喜欢按书学习很让我欣慰——一旦我说有完成的章节需要验证，他就放下视频游戏，抓过笔记本。除了享受读书的乐趣外，他还很认真！我还记得他带我去修改某处稍显迷惑的地方时，说，“这就是为何你要有测试人员。如果这被出版，是不是会有一场灾难？”他的完美主义像我。</p> 
+</blockquote>
+<p><strong>InfoQ:作为Leanpub的联合创始人，这是你在Leanpub上的第二本书。你从这本书的写作中学到了什么有关Leanpub产品的事情么？ </strong></p>
+<blockquote> 
+ <p><b>Peter:</b>是的！我们的翻译和共同执笔者工作流需要一定的改进！现在他们用Dropbox，还好，但当有多个版本的时候（比如，原版书籍），译者会不知道究竟改了哪些，基于Git的工作流会更稳妥一些。这也适用于共同创作的情况，如果多个作者需要编辑同一份文件。所以，2014年我们要做些改变。另一件事是一名翻译所提的，通过一次点击从原本中获取所有设置和登陆页面文本。这非常有意义，还未实现这点让我很吃惊。站在用户角度使用Leanpub很赞：一些事看去微不足道，但实际上对作者而言很重要。只有真正经历过问题，才会感同身受！</p> 
+</blockquote>
+<p>可以从Leanpub下载一份<a href="http://samples.leanpub.com/programmingforkids-sample.pdf">programming for kids试读本。</a></p>
+<h2>作者简介</h2>
+<p><img style="float: left; margin-right: 10px" src="http://infoqstatic.com/resource/articles/programming-for-kids/zh/resources/0331005.png" _href="img://null" _p="true" alt="" /><b>Peter Armstrong</b>是<a href="https://leanpub.com/">Leanpub</a>和<a href="https://dashcube.com/">Dashcube</a>的联合创始人，是4本书的作者：<a href="https://leanpub.com/lean">Lean Publishing</a>、 <i>Flexible Rails</i><i>、</i><i>Hello! </i><i>Flex 4</i>以及<a href="https://leanpub.com/programmingforkids">Programming for Kids</a>。有超过十年的软件开发经验，其中8年在硅谷初创企业。Peter是精益发布和创业的资深演讲者。可以通过peter@leanpub.com与他联系。</p>
+<div style="clear:both"></div>
+<p>查看原文链接：<a href="http://www.infoq.com/articles/programming-for-kids">Author Q&amp;A on Programming for Kids</a></p>
+<hr />
+<p>感谢<a href="http://www.infoq.com/cn/author/崔康">崔康</a>对本文的审校。</p>
+<p>给InfoQ中文站投稿或者参与内容翻译工作，请邮件至<a href="mailto:editors@cn.infoq.com">editors@cn.infoq.com</a>。也欢迎大家通过新浪微博（<a href="http://www.weibo.com/infoqchina">@InfoQ</a>）或者腾讯微博（<a href="http://t.qq.com/infoqchina">@InfoQ</a>）关注我们，并与我们的编辑和其他读者朋友交流。</p><br><br><br><br><br><br></body></html>

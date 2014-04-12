@@ -1,5 +1,26 @@
-<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>进化了的PHP：Facebook新的Hack编程语言</h3><p>Facebook对PHP的偏爱众所周知。追溯到Facebook的创建初期，PHP支撑起了该公司的很多产品。PHP的一大优势是，它是一种动态语言，非常适合快速建立原型，但是动态特性也往往会导致大规模代码库开发和维护的复杂化。为处理这些问题，Facebook发布了<a href="http://hacklang.org/">Hack</a>——一种希望在保持PHP优势的同时通过所谓的“渐变类型（gradual-typing）”和一些新语言特性加以增强的新编程语言。</p>
-<p>渐变类型的使用意味着，在Hack中动态类型和静态类型代码可以在同一文件中互操作。这使得已有的PHP代码可以根据其所在的每个项目的需要转换为Hack，同时不需要很大的前期转换代价。为帮助从PHP向Hack迁移，Facebook正在提供<a href="http://docs.hhvm.com/manual/en/install.hack.conversion.php">转换工具</a>。在用户编辑源文件时，Hack会予以监控。有个系统守护进程会监控本地文件系统，当修改被保存到磁盘时，一个类型检查器会快速分析所做修改。Facebook表示，这种转变平均会消耗200毫秒，很少会超过一分钟。</p>
-<p>Hack不仅带来了类型特性，还提供了其他一些语言特性。其中包括类型注解、可以为空的类型、泛型、集合和Lambda。Hack语言<a href="http://docs.hhvm.com/manual/en/hack.intro.php">参考</a>提供了这些特性相关的、目前可用的所有细节信息。和Facebook的PHP代码一样，<a href="http://hacklang.org/">Hack</a>也运行在Facebook的Hip Hop虚拟机（<a href="http://hhvm.com/">HVVM</a>）上，HVVM使用即时编译技术（JIT）来提升程序性能。</p>
-<p>如果想了解PHP在Facebook使用情况的更多背景，可以查看InfoQ发布的去年12月对Facebook的Keith Adam的<a href="http://www.infoq.com/interviews/adams-php-facebook">访谈</a>。</p>
-<p><strong>查看英文原文：</strong><a href="http://www.infoq.com/news/2014/03/Facebook_Hack">PHP Evolved: Facebook's New Hack Programming Language</a></p><br><br><br><br><br><br></body></html>
+<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>.NET中的SIMD</h3><p>在Mono六年之后，微软的CLR实现最终通过RyuJIT提供了对SIMD的支持。RyuJIT 目前仍处在社区预览阶段，它是下一代的.NET JIT编译器。</p>
+<p>SIMD代表的是单指令流多数据流（Single Instruction，Multiple Data）。它是一组特殊的CPU 指令集，其中的指令可以对包含在大小为2、4、8或16的数组中的每个元素同时执行同一操作。在2008年<a href="http://www.infoq.com/cn/news/2008/11/Mono-SMID">Mono宣布对SIMD的支持</a>时，我们曾报道过。</p>
+<blockquote> 
+ <p>性能收益非常显著。执行Spring-Gravity算法，原生C++程序用了9.5秒。比较而言，将其逐行转换到Mono中，执行用了17.7秒。而再将其从标准操作符转换为SIMD函数，运行Mono的时间下降到1.7秒。</p> 
+</blockquote>
+<p>很明显这种特性可以应用于游戏物理引擎和科学研究中，还可以应用于在一系列股票和基金上执行同样计算的金融应用中。</p>
+<p>在.NET中开启SIMD，不仅需要安装RyuJIT并使用正确的向量类型。微软的<a href="http://blogs.msdn.com/b/clrcodegeneration/archive/2014/04/03/ryujit-ctp3-how-to-use-simd.aspx">Kevin Frei</a>列出了一些步骤：</p>
+<ol> 
+ <li>下载并安装<a href="http://aka.ms/RyuJIT">RyuJIT CTP3</a>（同以前一样，需要x64 Windows 8.1或Window Server 2012R2）</li> 
+ <li>设置“use RyuJIT”环境变量：set COMPLUS_AltJit=*</li> 
+ <li>现在请注意，下面和以前有点区别了：</li> 
+ <li>设置一个新的（而且是临时的）“enable SIMD stuff”环境变量：set COMPLUS_FeatureSIMD=1</li> 
+ <li>把Microsoft.Bcl.Simd NuGet包添加到你的项目中（必须选择“include Prerelease”或使用–Pre选项）</li> 
+ <li>在RyuJIT最终配置好之前还有一些必须处理的麻烦事：对于你编写的会使用新的Vector类型的方法，请将一个对Microsoft.Numerics.Vectors.Vector&lt;T&gt;的引用添加到会在该方法调用之前调用的某个类的构造器中。我建议就把它放在你的程序的入口类的类构造器中。它必须出现在类的构造器，而不是实例构造器中。</li> 
+ <li>确保应用确实运行在x64上。如果没有看到你的进程中加载了protojit.dll（通过tasklist /M protojit.dll查看），那应该是遗漏了上面的某些东西。</li> 
+</ol>
+<p>应该注意的是，可用的SIMD不止一类。Kevin写道，</p>
+<blockquote> 
+ <p>对那些想直接尝试这一特性的人而言，我们可以快速地看一个细节：在AVX代码应该会比SSE2更好的硬件上，我们打算（而且我们已经开发了原型）让Vector&lt;T&gt;自动使用AVX SIMD类型。然而要想正确处理，还需要对.NET运行时做些修改。因为这一限制（时间也不允许），CTP版本只能支持SSE2。</p> 
+</blockquote>
+<p>RyuJIT本身主要是为改进应用在64位机器上的启动时间而设计的。以前微软假定消费者使用的是x86，而x64仅被用于运行服务器的IT部门手中，所以启动时间并不是很严重的问题。这使他们可以选择面向x86的快速JIT编译器，面向x64的则是慢一些、但更高效的JIT编译器。快进了大约十年，情况已经发生了变化。</p>
+<p><a href="http://blogs.msdn.com/b/dotnet/archive/2013/09/30/ryujit-the-next-generation-jit-compiler.aspx">2013年9月的.NET框架博客</a>上曾经介绍：</p>
+<blockquote> 
+ <p>.NET代码生成团队一直在为一个新的下一代x64编译器而努力工作，该编译器代号为RyuJIT。这一新的JIT编译器是原来的两倍快，使用它编译的应用，启动时间最多可以减少30%（花在JIT编译器上的时间只是启动时间的一部分，所以应用启动时间并不会随着JIT性能加倍而减半）。此外，新的JIT编译器仍然会生成极好的代码，可以在服务器进程长期运行的过程中高效执行。</p> 
+</blockquote>
+<p><strong>查看英文原文：</strong><a href="http://www.infoq.com/news/2014/04/SIMD-CLR">SIMD Support in .NET</a></p><br><br><br><br><br><br></body></html>

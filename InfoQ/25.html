@@ -1,32 +1,26 @@
-<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>ASP.NET Web API已支持OData v4.0，但WCF不会</h3><p>ASP.NET Web API 2.2 for OData v4.0每日构建版现已发布。团队还<a href="http://blogs.msdn.com/b/odatateam/archive/2014/03/21/odata-6-1-and-odata-client-6-1-are-now-shipped.aspx">在nuget上发布了OData核心库6.1版</a>，其中包含数项Bug修复和新功能，尤其是增加了对OData v4规范的支持。不过，微软的团队表示，WCF将不会获得OData v4的特有功能。</p>
-<p>最近，OData v4.0和OData JSON Format v4.0<a href="http://blogs.msdn.com/b/interoperability/archive/2014/03/17/odata-v4-0-and-odata-json-format-v4-0-approved-as-oasis-standards.aspx">被采纳为一项OASIS标准</a>。读者可以查看<a href="http://docs.oasis-open.org/odata/new-in-odata/v4.0/new-in-odata-v4.0.html">OData v4.0有哪些新功能</a>。</p>
-<p>以下是ASP.NET Web API 2.2和OData核心库的改进——</p>
+<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>微软推出Common XAML UI</h3><p>在.NET开发人员中间，一直有人抱怨基于XAML的不同用户界面种类太多。该问题开始于Silverlight，它有一套与WPF类似但不同的控件。Silverlight for Windows Phone增加了第三套，而XAML for WinRT则增加了第四套。</p>
+<p>在4月2日的Build主题演讲中，我们听说微软最终已经开始了整合过程，推出了Common XAML UI。该UI框架基于XAML for WinRT，允许同样的UI代码在手机、平板电脑、台式电脑、最终在Xbox One上共享。</p>
+<p>Common UI的基础是一个称为“共享项目”的新项目类型。这是Visual Studio的一个新概念，其工作方式与可移植类库有很大的不同。一个共享项目不能单独编译成DLL或EXE。相反，它会在构建时合并到一个或多个传统的项目类型中。传统项目的非正式名称为“项目头（project heads）”。</p>
+<p>面板、按钮、文本框/按钮等核心基元在Windows和Windows Phone上将会有相同的行为。Hub、AppBar/CommandBar、日期/时间选择器、ListView、浮出控件和媒体等高级基元在两个平台上将会有相同的API，但行为不同。Ads SDK在两个平台上也有共用的API签名，但也是行为不同。</p>
+<p>需要注意的是，部分功能会悄无声息地失效。例如，如果在CommandBar中有太多的按钮，那么Windows Phone将只渲染前面的几个。</p>
+<p>虽然许多控件可以根据屏幕尺寸的不同伸缩，但有时候，开发人员需要针对某些设备定制控件的行为。一种实现方式是使用特定于平台的自定义控件。共享控件可以引用这些特定于平台的自定义控件，只要控件在每个项目头里有正确的名称。</p>
+<p>提高代码重用的另一种选择是在后台代码中使用条件编译和#if def。从这个意义上讲，它就像在项目之间使用软链接共享源代码文件的经典方式。</p>
+<p>资源文件提供了定制用户体验的第三种方式，用法与本地使用相同。以命令栏按钮为例，它们如何能按照预期在手机上小写，在台式电脑上首字母大写。</p>
+<p>虽然大部分API现在可以共享，但有些特性并不是在所有平台都可用。最值得注意的有：</p>
+<p>仅与于Windows平台的API</p>
 <ul> 
- <li>协议和格式从V3变到V4</li> 
- <li>OData属性路由</li> 
- <li>支持在OData模型中定义函数并绑定到控制器动作</li> 
- <li>模型别名——允许OData模型和CLR Types的类型或属性有不同的名称</li> 
- <li>可以定义模型的哪些属性能够过滤、排序、扩展或导航</li> 
- <li>支持ETags</li> 
- <li><a href="http://aspnetwebstack.codeplex.com/workitem/1584">支持枚举</a></li> 
- <li>支持$format查询字符串选项，因此客户端可以指定格式</li> 
- <li><a href="http://blogs.msdn.com/b/odatateam/archive/2014/03/05/use-singleton-to-define-your-special-entity.aspx">支持单例</a></li> 
- <li><a href="http://blogs.msdn.com/b/odatateam/archive/2014/03/13/containment-is-coming-with-odata-v4.aspx">支持包含</a></li> 
+ <li>SearchBox</li> 
+ <li>Settings Flyout</li> 
 </ul>
-<p>已知的局限性——</p>
+<p>仅用于Windows Phone平台的API</p>
 <ul> 
- <li>还有许多OData v4功能不支持——此次发布的重点是与早期版本同等的功能以及少数几项新功能</li> 
- <li>OData核心库能够序列化OData v4 Atom格式，但由于Atom规范还没有进入CS2阶段，所以这不是官方支持。</li> 
+ <li>Pivot</li> 
+ <li>AutoSuggestBox</li> 
+ <li>ContentDialog</li> 
+ <li>Maps</li> 
+ <li>System Chrome</li> 
+ <li>Progress area, in-call UI</li> 
 </ul>
-<p>在客户端方面，有一个新程序包，但只支持OData v4.0——如果客户端需要使用V1-3以及V4的服务，那么开发人员不得不在应用程序中同时使用新旧程序包。</p>
-<p>一个有些争议的决定是，在使WCF成为一个构建OData服务的技术栈方面减少投资。OData Services团队是这样说的——</p>
-<blockquote> 
- <p>……对于作为创建OData服务技术栈的WCF Data Services，我们确实计划减少对它的投资。为了减轻由此造成的不便，我们正努力清理代码，以便使它与OData v4兼容，而之后，我们会将该技术栈开源。我们不计划在将V4的特有功能添加到WCF DS技术栈方面进行任何重大的投资。</p> 
-</blockquote>
-<p>不过，社区仍然希望WCF能支持OData 4.0。<a href="http://blogs.msdn.com/b/odatateam/archive/2014/03/21/odata-core-libraries-now-support-odata-v4.aspx#10510961">Adam说</a>——</p>
-<blockquote> 
- <p>由于我们的业务层是用WCF DS编写的，所以对于这个决定，我觉得我们被扔在了车轮下。我们已经花费了这么多精力来克服WCF DS的弱点（变更跟踪支持、性能、包含、客户端代理的可怜的T4支持、糟糕的EF6 alpha质量提供程序等），愉快地等待新的v4版本的发布，想不到事到如今你们竟然放弃了它。这时候切换到Web API，看来是我们为你们的每个决定买单。我们可是微软的黄金合作伙伴。</p> 
-</blockquote>
-<p><a href="http://blogs.msdn.com/b/odatateam/archive/2014/03/21/odata-6-1-and-odata-client-6-1-are-now-shipped.aspx#10510500">还有</a>其他人<a href="http://blogs.msdn.com/b/odatateam/archive/2014/03/21/odata-6-1-and-odata-client-6-1-are-now-shipped.aspx#10510761">要求</a>在WCF中支持OData v4.0。我们只能等等看，微软是否会改变这项决定。</p>
-<p>读者可以从<a href="http://blogs.msdn.com/b/webdev/archive/2014/03/13/getting-started-with-asp-net-web-api-2-2-for-odata-v4-0.aspx">编写一个OData v4.0服务</a>入手，并使用<a href="http://blogs.msdn.com/b/odatateam/archive/2014/03/11/how-to-use-odata-client-code-generator-to-generate-client-side-proxy-class.aspx">OData客户端代码生成器</a>来生成客户端代理类。</p>
-<p><b>查看英文原文：</b><b><a href="http://www.infoq.com/news/2014/03/asp-net-odata-4">ASP.NET Web API Gets OData v4.0 Support, WCF Will Not</a></b></p><br><br><br><br><br><br></body></html>
+<p>Windows和Windows Phone的后退按钮行为不同，因此可能需要围绕它们做些自定义工作。另外，有必要针对文件选择器、共享和设置编写特定于平台的代码。</p>
+<p>Visual Studio 2013 Update 2的所有版本都提供了Common XAML和Universal Apps。</p>
+<p><b>查看英文原文：</b><b><a href="http://www.infoq.com/news/2014/04/Common-XAML">Introducing Common XAML UI</a></b></p><br><br><br><br><br><br></body></html>

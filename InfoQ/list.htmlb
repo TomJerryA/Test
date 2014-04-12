@@ -2,6 +2,9 @@
  <head></head> 
  <body> 
   <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/8.htmlb">作者访谈：Programming for Kids</a> “Programming for Kids”一书中含有大量Ruby编写的、适合9-14岁孩子学习编程基础的实例。书中还向孩子们展示了如何在Mac上使用命令行。父母可以坐在孩子身边一起学习。InfoQ就”孩子该如何学编程”采访了本书作者Peter Armstrong。 
+  </div> 
+  <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/8.htmlb">发布一个package</a> 合理使用Node.js的包能够解决很多问题，本章将带领大家一步步开发一个基于libuv库让Node.js支持多线程的名为libuv_thread包，开发并测试完成后，我们将它发布到npm上供其他开发人员下载和使用。在学习本章之前，读者需要有C++语法基础；对libuv库和v8引擎的嵌入式开发有所了解；熟悉Node.js的基本模块用法。 
   </div> 
   <div> 
@@ -147,9 +150,6 @@
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/19.htmlb">微博春晚背后的技术故事</a> 统计数据结果表明，马年春晚直播期间，微博的访问量和发表量都再创新高，而我们系统也自始至终平稳运行，经受住了此次高峰的考验。这成功的背后，是我们的工程师将近一个月的努力。其间面临了哪些问题，又是如何解决的呢？下面，我们一一为大家揭秘。 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/18.htmlb">安全领域中的大数据分析</a> 作者在本文中探讨了大数据和Hadoop在安全分析领域中所扮演的角色，以及在做安全信息和事件管理(SIEM)、欺诈检测等安全分析的用例中，如何使用MapReduce高效地处理数据。 
   </div> 
  </body>
 </html>

@@ -1,8 +1,8 @@
 <html>
  <head></head> 
- <body>
-  <div>
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/38.java">Hydra Takes On Hadoop</a>The social-networking company AddThis open-sourced Hydra under the Apache version 2.0 License in a recent announcement. Hydra grew from an in-house platform created to process semi-structured social data as live streams and do efficient query processing on those data sets.
+ <body> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/38.java">Hydra Takes On Hadoop</a>The social-networking company AddThis open-sourced Hydra under the Apache version 2.0 License in a recent announcement. Hydra grew from an in-house platform created to process semi-structured social data as live streams and do efficient query processing on those data sets. 
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/37.java">Expression Evaluator: A Lightweight C# Compiler Service</a>While the .NET community eagerly awaits a production version of Roslyn, work must continue. So today we’re looking at another compiler service, Expression Evaluator. While other compiler services are trying to be as comprehensive as possible, here we see one that is going the other direction. 
@@ -150,6 +150,6 @@
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/46.java">Lean UX Conference Returns to NYC</a>The Lean UX Conference is returning to NYC April 10-12, 2014 and this year includes a wide variety of speakers as well as workshops from Jeff Gothelf, Dave Snowden and Michael Cheveldave. I had a chance to sit down with one of the conference founders, Will Evans to discuss what to expect from the conference this year. 
-  </div>  
+  </div> 
  </body>
 </html>

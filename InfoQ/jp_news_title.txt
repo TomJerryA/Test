@@ -1,1 +1,1 @@
-Modern C++とVisual Studio
+C#コンパイラがオープンソースとして公開される

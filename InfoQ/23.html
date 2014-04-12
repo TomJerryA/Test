@@ -1,29 +1,35 @@
-<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>减小iOS应用程序的大小 - iOS移动开发周报</h3><h2>新闻</h2>
+<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>学习开源项目的若干建议</h3><p>随着国内开源社区和项目的不断发展，学习、应用、贡献开源项目的开发人员越来越多。最近，研究过多个开源项目(包括KVM/QEMU、libvirt、OpenStack、Ceph、Zabbix等)的业内专家章宇在其<a href="http://yizhaolingyan.net/?p=123" target="_blank">博客</a>中分享了学习开源项目的若干建议，值得读者借鉴。</p>
+<p>章宇认为，学习开源项目，可以划分为五个层次，分别是：</p>
 <ol> 
- <li> <p><a href="https://deals.iphoneincanada.ca/sales/the-mac-freebie-bundle-3-0">《The Mac Freebie Bundle 3.0》</a>：该网站提供了7个原本收费的Mac App的免费购买。笔者试用了一下其中的X-Mirage，它可以把iPhone投到Mac上，并提供录象功能，适合将演示导出成视频。另外那个页面有Bug，在购买时信用卡信息不用填写，留空就可以直接购买成功。</p> </li> 
- <li> <p><a href="http://www.macstories.net/news/apple-testing-related-search-suggestions-on-the-app-store/">《App Store 将增加匹配相关搜索关键字的新功能》</a>：新增加的功能有助于提高相关关键词的点击量。</p> </li> 
+ <li>了解项目的基本概念、基本用途、逻辑结构、基本原理、产生背景、应用场景等基本知识。这个层次的基本定位其实就是“科普”。如果对于一个项目只需要有些基本了解，且短期内并不需要上手进行实际技术工作，则学习到这个层次也就可以先应付一下了。</li> 
+ <li>掌握项目的基本安装流程和使用方法。这个层次的基本定位是“入门”，以便对这个项目获得直观认识，对其安装和使用获得亲身体验。如果只是需要以as-is方式使用这个项目，则初步学习到这个层次即可。</li> 
+ <li>了解代码的组织，找到各个主要逻辑/功能模块与代码文件之间的对应关系，通过代码分析走通几个关键的、有代表性的执行流程。这个层次的基本定位是“深入”，开始理解这个项目的实际实现，能够真正将项目的功能、工作原理和代码实现对应起来，获得对这个项目工作过程的直观认识。这个层次是学习开源项目代码的真正开始。如果希望基于这一项目进行应用开发，或者针对与这一项目密切相关的其他项目进行工作时，则对项目本身的代码进行这一层次的理解，会很有帮助。</li> 
+ <li>了解该项目所有代码模块、程序文件的作用，走通所有主要执行流程。这个层次的基本定位是“掌握”，能够比较全面、系统地理解这个项目的设计和实现，并且熟悉项目各个部分的代码。如果希望对项目进行深度定制修改，或者对社区有所贡献，则应当以达到这个层次作为目标。</li> 
+ <li>钻研、领悟该项目的各种设计思想与代码实现细节。这个层次的基本定位是“精通”，精益求精，学无止境。这是大神们追求的境界。如果希望成为项目社区的重要贡献者乃至核心贡献者，则应当以这个层次作为努力的目标。</li> 
 </ol>
-<h2>教程</h2>
+<p>学习开源项目，必须要掌握一些基础知识，章宇指出了三点：</p>
+<ul> 
+ <li>该项目涉及的技术领域的背景知识。举例而言，分析Linux Kenrel，则应该了解操作系统原理；学习OpenStack，则应该知道什么是云计算。如果没有这些背景知识作为基础，上来就死磕源代码，只能是事半功倍。</li> 
+ <li>该项目开发使用的语言及其各种开发调试工具。</li> 
+ <li>英语。很遗憾，目前为止真正流行的开源项目大部分不是起源于国内。因此，除了学习个别极其流行、文档完备的项目之外，大家还是需要自行搜集阅读英文资料参考。学好英语很重要。</li> 
+</ul>
+<p>有了学习的目标和基础知识，接下来就是学习的思路和过程，章宇总结了一套由表及里、逐渐深入的学习方法。</p>
+<blockquote> 
+ <p>在刚开始接触一个项目的时候，我们看到的其实就是一个黑盒子。根据文档，我们一定会发现盒子上具有若干对外接口。通常而言，这些接口可以被分为三类：</p> 
+ <ul> 
+  <li>配置接口：用于对盒子的工作模式、基本参数、扩展插件等等重要特性进行配置。这些配置往往是在盒子启动前一次性配好。在盒子的工作过程中，这些配置或者不变，或者只在少数的情况下发生改变。</li> 
+  <li>控制接口：用于在盒子的工作过程中，对于一些重要的行为进行操纵。这是盒子的管理员对盒子进行控制命令注入和状态信息读取的通路。</li> 
+  <li>数据接口：用于盒子在工作过程中读取外部数据，并在内部处理完成后向外输出数据。这是盒子的用户真正关心的数据通路。</li> 
+ </ul> 
+ <p>因此，在分析一个开源项目的代码时，可以围绕重要的配置、控制、数据接口展开分析工作，特别应该注意理解一个关键的接口背后隐藏的操作流程。例如，针对数据接口，至少应当走通一条完整的数据输入输出流程，也即在代码中找到数据从输入接口进入盒子后，经过各种处理、转发步骤，最终从输出接口被传输出去的整个执行过程。一旦走通了这样一条流程，则可以将与数据处理相关的各个主要模块、主要步骤贯穿起来，并将逻辑模块图上和文档中的抽象概念对应到代码实现之中，可以有效推进对于项目的深入理解。</p> 
+ <p>在实践这一思路的过程中，笔者建议可以优先从控制接口和数据接口中各自选择一二重要者进行背后的执行流程详细分析，力争找到其中每一步的函数调用及数据传递关系（对于一些系统、应用库提供的底层函数可以先行跳过以节省时间）。这一工作完成之后，则第三层次的学习目标即可初步达成。</p> 
+ <p>配置接口在不同的项目中的重要程度不同。对于一些架构极为灵活、配置空间甚大的项目（如OpenStack的Ceilometer），则可以适当多花些时间加以研究，否则简单了解即可。</p> 
+</blockquote>
+<p>作者以“OpenStack Cinder”为例，讲述了如何学习开源项目：</p>
 <ol> 
- <li> <p><a href="http://nonomori.farbox.com/post/injection-plugin-for-xcode">《injection plugin for xcode》</a>：Injection Plugin For Xcode 是 Xcode 上的一个插件。利用它可以修改应用代码，实时在模拟器或实机上看到效果而不需要重启应用。作者介绍了该插件的详细使用方式。</p> </li> 
- <li> <p><a href="http://www.pasanpremaratne.com/2014/03/15/UI-Prototyping-with-Quartz-Composer-and-Origami/">《UI Prototyping with Quartz Composer and Origami》</a>：由于工具的欠缺，大量的交互设计师的工作效率非常低下，他们为了做出一个新颖的效果常常需要花费大量精力。这次Facebook免费开放出基于苹果Quartz Composer的增强工具集Origami，使得交互设计工作得到更好的辅助。不过另一方面，该工具仍然需要设计师具备一定的逻辑思维能力，所以对于广大设计师来说，交互设计工具Origami对设计师带来的既是机会，同时也是挑战。本教程介绍了如何使用Quartz Composer 和 Origami来做交互设计。</p> </li> 
- <li> <p>写给 iOS 开发者的系列教程：从有iOS开发背景的人的角度，学习其它语言：</p> 
-  <ol> 
-   <li><a href="http://stuartkhall.com/posts/android-development-tips-for-ios-devs">Android篇</a></li> 
-   <li><a href="http://t.cn/8sbXyOH">C++ 篇1</a>和<a href="http://t.cn/8sbXLyg">C++ 篇2</a></li> 
-   <li><a href="http://t.cn/8FpEP4x">Go 篇</a></li> 
-  </ol> </li> 
- <li> <p><a href="http://beyondvincent.com/blog/2014/03/26/cookbook-moving-table-view-cells-with-a-long-press-gesture/">《利用长按手势移动 Table View Cells》</a>：本教程中介绍了如何通过长按手势来移动 table view中的cell，这种操作方式就像苹果自家的天气 App 一样。</p> </li> 
- <li> <p><a href="http://beyondvincent.com/blog/2014/03/24/reducing-the-size-of-my-app/">《减小iOS应用程序的大小》</a>：本文收集了一些减小程序安装包大小的相关技巧(当第一次下载和安装程序时)。如果是针对升级程序的话，可以看这篇文章: <a href="https://developer.apple.com/library/ios/qa/qa1779/">《减小iOS应用程序升级时所需下载的大小》</a>，这与第一次安装使用的工作原理有所不同。</p> </li> 
- <li> <p><a href="http://blog.devtang.com/blog/2014/03/21/weak_object_lifecycle_and_tagged_pointer/">《NSNumber对象缓存以及Tagged Pointer》</a>：本文讨论了<code>NSNumber</code>对象的缓存以及苹果在64位系统引入的<code>Tagged Pointer</code>对象。</p> </li> 
+ <li>首先，想对Cinder进行分析，一定要了解若干相关的基础知识。什么是云计算？什么是块存储？什么是OpenStack？Cinder在OpenStack里的作用？等等等等。如果对这些东西没有概念，则后续学习是很难开展下去的。</li> 
+ <li>在此基础上，如果有条件，则最好能够亲自部署和实际操作一下Cinder（包括必要的其他OpenStack组件），以便对Cinder获得一个直观的认识和体验，为后续分析提供一些参考。此处假定Cinder使用的后端是Ceph，而OpenStack上运行的虚拟机是KVM。</li> 
+ <li>然后，应该从概念上对我们要分析的系统的逻辑框架有个理解。从总体的范畴上讲，应该了解Horizon和Nova各自的逻辑模块结构，以及它们和Cinder的协同工作方式、关系。这部分与Cinder的控制接口及执行路径分析密切相关。此外，还应该了解Cinder和KVM/QEMU、Ceph之间的相互关系。这对于真正理解Cinder很有帮助。从Cinder自身而言，应该了解其内部逻辑模块构成、各自的功能、相互间的控制、数据连接关系等。</li> 
+ <li>在完成上述准备之后，则可以开始对Cinder的代码进行分析了。如前所述，应该考虑在控制接口和数据接口中各自选择一两个关键的、有代表性的加以分析。至于配置接口，假定其实现了某一配置即可，暂时不需要过多花费时间。Cinder的核心功能其实是OpenStack上的volume管理。至少在Cinder+Ceph方案中，Cinder自身并不在数据传输关键路径上。因此，控制接口的分析就是Cinder源代码分析的重中之重。就入手阶段而言，则有两个接口及其对应执行流程可以作为Cinder分析的起点，即volume的create和attach操作。如果能够彻底打通这两个操作的执行流程（至少要看到Cinder与Ceph通过librbd交互的层面），则对于真正理解Cinder的功能与实现大有帮助。虽然基于KVM的虚拟机在通过QEMU访问Cinder创建的、Ceph提供的volume时并不通过Cinder，也即，这一部分的源代码其实已经超出了Cinder源代码学习的范畴，但是，如果希望真正彻底地理解Cinder，则对于这一部分知识还是应该有所涉猎，至少应该有概念上的了解。</li> 
 </ol>
-<h2>工具</h2>
-<ol> 
- <li><a href="http://qcdesigners.com/index.php/forums/topic/100/it-s-finally-here-j-qc-1-0-a-u/">jQC 1.0</a>：jQC是一个与Facebook之前开源的Origami兼容的工具，提供了15个新的Patch来提高Quartz Composer的功能。Quartz Composer是苹果提供的一个交互设计工具。</li> 
-</ol>
-<h2>开源项目</h2>
-<ol> 
- <li> <p><a href="https://github.com/gbammc/WechatPayDemo">WechatPayDemo</a>: WechatPayDemo是一个非官方的微信支付Demo，基于微信SDK1.4.1构建。由于微信官方并没有提供支付功能的iOS Demo，加上官方的文档错误，使得本文作者花了较大精力调试。他希望开源这个工程来帮助其他iOS开发者少有一些弯路。</p> </li> 
- <li> <p><a href="http://trawor.farbox.com/post/vz">微转iOS客户端和服务端</a>：微转是一个基于微博的数码设备平台，客户端和后台全部基于AVOSCloud服务实现。作者将其iOS客户端和服务端代码全部开源。</p> </li> 
- <li> <p><a href="https://github.com/facebook/Tweaks">Tweaks</a>：Tweaks让开发者可以方便地对特定事物进行标记——比如动画效果的时间，或者是按钮的颜色，或者是图片的透明度——并在使用设备实际运行应用时让开发者方便地进行实时调整。</p> </li> 
-</ol><br><br><br><br><br><br></body></html>
+<p>除此之外，作者还提供了一些建议，比如过好笔记、不要过分纠缠于细节等，完整的内容可以查章宇的博客。InfoQ的读者对学习开源项目有何心得，欢迎发表自己的看法。</p><br><br><br><br><br><br></body></html>

@@ -2,6 +2,18 @@
  <head></head> 
  <body> 
   <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/11.py">C#コンパイラがオープンソースとして公開される</a>MicrosoftのRoslynプロジェクトの結末が明らかにされた。C#とVBのコンパイラがMicrosoftによってオープンソースライセンスで公開されたのだ。Roslynがサポートするツールの改善によって利用者が便利になるだけでなく、舞台裏を覗き、機能を追加したり振る舞いを分析したりすることもできる。 
+  </div> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/10.py">Microsoft Build 2014オープニングキーノートのハイライト</a>Build 2014のオープニングキーノートは、いくつかの大きな発表で開始した。本日は、Windows Phone 8.1とまもなくリリースされるWindows 8.1 Updateの正式発表を迎えた。 
+  </div> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/9.py">ハイパーメディアAPIをめぐるREST主義者的危機</a>ソフトウェア開発者のEvan Cordell氏は数週間前のAPI-Craftメールリストで，ハイパーメディアのREST制約は一般的なWeb API要件とどのように違うのか，という議論の口火を切った。 
+  </div> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/8.py">Java他言語関数インターフェース</a>JDK強化提案 (JEP) 191は、Java他言語関数インターフェース (FFI)を定義する。FFIは、ネイティブ関数をJavaのメソッドにバインドしたり、ネイティブメモリのブロックを管理したりできるインターフェースだ。このJEPは、JDKに新しいネイティブレベルの機能を追加しやすくしたり、Java開発で使う標準FFIを提供できるようにしたりする。 
+  </div> 
+  <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/7.py">Modern C++とVisual Studio</a>Modern C++サポートは、Microsoftがフォーカスし続ける領域である。今週、BuildにおいてHerb Sutter氏は、彼らの現在の取り組みについて最新情報を提供し、次のVisual Studio previewに追加されるCPPサポートレベルと将来について話した。 
   </div> 
   <div> 
@@ -138,18 +150,6 @@
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/15.py">Akka Toolkit 2.3 は Java 8 と Persistence をサポートする</a>アクター・モデルの実装である、Akka Toolkitの最新版は、内部状態を永続化するステートフル・アクターを可能にする Persistence が、Java 8 のラムダ式のサポートと共に付属している。 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/14.py">２つのDoDによる開発プロセスの改善</a>DoD(Definition of Done)を理想と現状という２つのバージョンに分離しようというアイデアがある。目的とするのは，成熟度および品質の面でのDoDの拡大だ。物理的なボード上で実行する以外に，Jiraのようなアジャイルツールで実践することもできる。 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/13.py">Domino :Datascience-as-a-Service</a>Dominoはデータサイエンス向けのPlatform-as-a-Serviceであり、クラウド(EC2)を使ってPythonやRのような言語でデータ分析ができる。 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/12.py">JavaScriptとの相互運用を改善したElm 0.11</a>Elmのバージョン0.11リリースの目的はJavascriptとFRP言語をよりシンプルに組み合わせて使えるようにすることだ。 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/11.py">Cloud Foundry財団</a>PivotalはCloud Foundry財団を設立し、「Cloud Foundryのためのオープンガバナンスモデルを確立するように働きかける」ことを発表した。EMC、HP、IBM、Rackspace、SAPおよびVMwareは、財団にプラチナスポンサーとして参加することを表明している。ActiveStateとCenturyLinkはゴールドスポンサーとして加わる。 
   </div> 
  </body>
 </html>
