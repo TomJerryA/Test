@@ -2,6 +2,24 @@
  <head></head> 
  <body> 
   <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/16.py">Ratchetが真のフレームワークに，新たなホスト先も</a>モバイルアプリのプロトタイピングツールRatchetが拡張されて，完全なアプリケーションフレームワークになるとともに，BootstrapのGithubレポジトリに移動された。さらにドキュメントが更新され，iOSとAndroid用のテーマも追加されている。 
+  </div> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/15.py">WinJSはオープンソースになって、Windows Phone 8.1サポートが加わった</a>Windows Library for JavaScript (WinJS)は、完全なオープンソースになって、Microsoftプラットフォームに制限されなくなった。発表と並行して、Windows Phone 8.1をサポートした2.1リリースが発表された。 
+  </div> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/14.py">Angular.JS と ASP.NET を利用した Single Page アプリケーションの作成</a>Angular.JS は Google によって作成されたSingle Page アプリケーションを作成するための著名なフレームワークだ。その出自によらずASP.NET 上で動作させるのが容易であり、Microsoft 主体の開発者も強力な機能を利用することができる。 
+  </div> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/13.py">GoogleがFarmHashを公開，文字列ハッシュ関数のニューファミリー</a>Googleは文字列ハッシュ関数のニューファミリーとなるFarmHashを発表した。CityHashの後継として多くのトリックやテクニックを継承するFarnHashには，いくつもの目標がある。また，いくつかの面でCityHashよりも改善されている。 
+  </div> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/13.py">IDC: HTML5の過去、現在、未来</a>最近リリースされたIDCのアプリケーション開発リサーチディレクターAl Hilwa氏による調査結果、HTML5進化の状況(The Evolving State of HTML5)では、 HTML5を統合Webプラットフォームとする現在の状況と将来の展望の評価を試みている。 
+  </div> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/12.py">セルベースのセキュリティが導入されたHBase 0.98</a>ApacheはHBase 0.98をリリースした。セルベースのセキュリティを通じてApache Accumuloとの共通化を計ると同時に，230以上のJIRAイシューを解決することを主な目的としている。新たに導入されたセキュリティ機能は，Accumuloをモデルとしたものだ。 
+  </div> 
+  <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/11.py">C#コンパイラがオープンソースとして公開される</a>MicrosoftのRoslynプロジェクトの結末が明らかにされた。C#とVBのコンパイラがMicrosoftによってオープンソースライセンスで公開されたのだ。Roslynがサポートするツールの改善によって利用者が便利になるだけでなく、舞台裏を覗き、機能を追加したり振る舞いを分析したりすることもできる。 
   </div> 
   <div> 
@@ -132,24 +150,6 @@
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/21.py">Espresso LogicがDBaaSのストアドプロシージャを呼び出せるRESTful APIを提供</a>Espresso Logicが同社のDBaaSサービス用のストアドプロシージャにRESTfulなエンドポイントを追加した。 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/20.py">リーンスタートアップが投資家と付き合うには</a>リーンスタートアップを採用する起業家たちも，ビジネス資金の調達に投資家の協力を得ることがある。しかしリーンスタートアップで起業するビジネスプランには，従来の起業スタイルとは異なる部分が多い。また，失敗から学ぶ，ピボット(pivot, 路線変更)する，といった行動を重視するリーンスタートアップは，投資家から敬遠される可能性もある。起業家と投資家が一緒になって，資金調達にリーンスタートアップアプローチを使うことはできるのだろうか？ 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/19.py">DevOpsとは何（ではないの）か、そしてどうやって実現するのか</a>この記事では、DevOpsにまつわる誤解をいくつか議論し、文化の変化をもたらすことができるプロセスの序論を示す。その文化の変化こそがDevOpsのすべてなのである。 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/18.py">AppleがiOS 7のUIデザイン向けのマイクロサイトを提供</a>Appleは登録済みのiOS開発者向けに新しいマイクロサイトを提供し、iOS 7のUI設計に関する動画やドキュメントやホワイトペーパーを公開している。サイトの目的は開発者に&quot;iOS 7向けに洗練された直感的に使えるアプリを開発する&quot;ために必要な情報を提供することだ。 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/17.py">AmazonがAppStreamの提供を開始</a>AmazonはAppStreamの提供を開始した。これを使えば、開発者はアプリケーションをAWS上で動かし、さまざまなデバイスへ配信できる。 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/16.py">持続可能なリーンスタートアップチームに必要な態度</a>Ramli John氏は2013 Lean Startup Conferenceでminimum viable attitudes for lean startup teamsと題した講演を行った。氏によれば、チームが持続可能なリーンを行うためには、3つの態度が必要だ。すなわち、謙遜、飢餓感、幸福だ。 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/15.py">Akka Toolkit 2.3 は Java 8 と Persistence をサポートする</a>アクター・モデルの実装である、Akka Toolkitの最新版は、内部状態を永続化するステートフル・アクターを可能にする Persistence が、Java 8 のラムダ式のサポートと共に付属している。 
   </div> 
  </body>
 </html>

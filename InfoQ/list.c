@@ -1,6 +1,9 @@
 <html>
  <head></head> 
- <body> 
+ <body>
+  <div>
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/3.c">SEMENG 2014: Big Data, JVM's e Redes Sociais, ZigBee e Forense Computacional</a>Inicia hoje, 14 de abril, em Sorocaba/SP a semana de engenharia da FACENS - Faculdade de Engenharia de Sorocaba. V&aacute;rios temas ser&atilde;o abordados dentre estes Big Data, JVM's e Redes Sociais, ZigBee, Forense Computacional, Conectividade em autom&oacute;veis.
+  </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/3.c">Big Data: A linguagem realmente importa?</a>Big Data &eacute; um campo no qual um simples milisegundo perdido pode ser significante considerando bilh&otilde;es de eventos. E ainda, linguagens comumente consideradas lentas como Python ganharam muita popularidade no ano passado. Artigos recentes e discuss&otilde;es na comunidade de Big Data reascenderam um debate sobre a escolha de uma linguagem de programa&ccedil;&atilde;o para a ci&ecirc;ncia de dados e Big Data. 
   </div> 
@@ -147,9 +150,6 @@
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/7.c">Presto: O Sistema para consultas SQL distribu&iacute;das do Facebook</a>O Facebook liberou o c&oacute;digo fonte do Presto, o sistema para consultas SQL distribu&iacute;das. O Presto usa uma arquitetura pipelined em vez do Map/Reduce encontrado em outros softwares para Big Data. Em produ&ccedil;&atilde;o desde o come&ccedil;o do ano, o Facebook j&aacute; o implantou em v&aacute;rias regi&otilde;es geogr&aacute;ficas e conseguiu escalar com sucesso um &uacute;nico cluster de 1.000 n&oacute;s. 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/6.c">Ca&ccedil;a aos bugs: Aprimorando a capacidade dos testes</a>Na recente confer&ecirc;ncia &quot;Testing Portugal 2013&quot;, Klays Olsen apresentou t&eacute;cnicas para ca&ccedil;ar bugs seguindo o estilo de testes explorat&oacute;rios. 
-  </div> 
+  </div>  
  </body>
 </html>

@@ -1,17 +1,11 @@
-<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>Domino :Datascience-as-a-Service</h3><p><a target="_blank" href="http://www.infoq.com/news/2014/03/domino-datascience-as-a-service"><em>原文(投稿日：2014/03/11)へのリンク</em></a></p>
+<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>GoogleがFarmHashを公開，文字列ハッシュ関数のニューファミリー</h3><p><a target="_blank" href="http://www.infoq.com/news/2014/04/google_farmhash"><em>原文(投稿日：2014/04/04)へのリンク</em></a></p>
 <div class="article_page_left news_container text_content_container"> 
  <div class="text_info"> 
-  <p>データサイエンス向けPlatform-as-a-Serviceである<a href="http://www.dominoup.com/">Domino</a>を使えば、PythonやRのような言語をクラウドで使ってデータ分析ができる。</p> 
-  <p>Nick Elprin氏(Dominoの共同創業者)によれば、データサイエンティストはDominoを使ってインフラではなく分析に注力できる。</p> 
-  <blockquote>
-   データ量が増え、データ分析手法がより洗練されると、データ分析に必要なツールの使い勝手が悪くなり、データサイエンスの分野に取り組むのに不要な制限が生まれます。
-  </blockquote> 
-  <p>Dominoは3つの柱で成り立っている。</p> 
-  <ol> 
-   <li><em>クラウドに直接配置して実行</em>: 既存のコード(Python, R, Matlab, Julia, シェル)をEC2上で直接実行でき、負荷をかけず、リソースを使いすぎずに長時間実行できる。これを実現するための細かな調整はシステムが自動で実施してくれる。AMIの管理、マシンの起動と停止、マシンへの安全なデータ転送、分析結果の安全な取得などだ。</li> 
-   <li><em>データサイエンスのバージョン管理</em>: Dominoの利用者はGitのようなツールは分析作業では使いにくいことを知っている。というのは、大規模なデータセットを扱えないし、入力と結果の間にリンクを作成できないからだ。Dominoはプロジェクト全体のスナップショットを自動的に取得する。現時点では40GBまで。スナッショットがあるので過去の作業を簡単に追跡できる。</li> 
-   <li><em>コラボレーション</em>: Githubのプロジェクトのように、Dominoのプロジェクトは表示、編集、プロジェクトの実行ができる協力者を持つことができる。衝突を検知し、更新結果の通知を送信できる。チームの作業が進捗するたびに議論で利用できるノートブック機能もある。</li> 
-  </ol> 
-  <p><a href="http://inside-bigdata.com/2014/02/21/data-science-cloud-domino/">従量課金モデル</a>のDominoはフリーのアカウントもあり、月額サブスクリプションもある。InfoQがNick Elprin氏に取材したところ、まだ若いプラットフォームであるにもかからわらず、すでにあらゆる分野の<a href="http://bickson.blogspot.com/2014/03/domino-data-labs-run-data-analytics-in.html">データサイエンスの実践者</a>に使われている。学術の世界では数千の画像を分析する環境学者、<a href="https://www.kaggle.com/">Kaggleのコンテスト</a>に参加するデータサイエンスコンサルタント、マーケティング企業などだ。</p> 
+  <p>Googleは文字列ハッシュ関数のニューファミリーとなる<a href="http://code.google.com/p/farmhash/">FarmHash</a>を発表した。<a href="http://code.google.com/p/cityhash/">CityHash</a>の後継として多くのトリックやテクニックを継承するFarnHashには，いくつもの目標がある。また，いくつかの面でCityHashよりも改善されている。</p> 
+  <p>同ライブラリをJyrki Alakuijala氏と共同開発した，Googleのエンジニアである<a href="http://google-opensource.blogspot.com.es/2014/03/introducing-farmhash.html">Geoff Pike氏によると</a>，FarmHashはGoogleのデータセンタで一般的に使用するCPUタイプを前提に開発されてはいるが，携帯電話やタブレット，PCなどにも素早く容易に適応できることを目標のひとつにしているという。これにより，既存の3２ビットおよび64ビットのハッシュ実装が改善される。</p> 
+  <p>CityHashと比較した場合，もうひとつの改善点として氏が挙げるのは，さまざまなプラットフォーム特有の実装上で同じインターフェースを提供できる点だ。このためFarmHashは，ハッシュテーブル用に高速で頑強だが，すべてのプラットフォームに共通でなくてもよいハッシュ関数を必要とするようなケースにも対応する。</p> 
+  <p>このようなすべてのため，CityHashのコードが600行程度であるのに対して，FarmHashの実装コードは1,500行(テスト関連コードを除く)に達している。CityHashの完全な解析結果は<a href="http://www.stanford.edu/class/ee380/Abstracts/121017-slides.pdf">オンラインで公開されている</a>。</p> 
+  <p>今のところFarmHashには，32, 64, 128ビットプラットフォーム用の，バイト配列のためのハッシュ関数のみが含まれている。今後の開発では整数やタプル，その他のデータをサポートする計画だ。</p> 
+  <p>CityHashのハッシュアルゴリズムには，複数のハッシュ衝突の発生(ハッシュフラッディング)を許容するハッシュアルゴリズム内の<a href="http://asfws12.files.wordpress.com/2012/11/asfws2012-jean_philippe_aumasson-martin_bosslet-hash_flooding_dos_reloaded.pdf">弱点を狙った攻撃</a>に対する<a href="http://www.itnews.com.au/News/330529,crypto-collisions-cause-denial-of-service-in-major-hashes.aspx">脆弱性が発見されている</a>。これにより，同種のハッシュアルゴリズムを使用する任意のアプリケーションが急激に過負荷となる可能性があるが，<a href="http://www.cvedetails.com/vulnerability-list/vendor_id-1224/product_id-23646/year-2012/opdos-1/Google-Cityhash.html">CityHashに対するエクスプロイトの存在は確認されていない</a>。この脆弱性は<a href="http://en.wikipedia.org/wiki/MurmurHash">MurmurHash</a>をベースとした他の主要なハッシュ実装にも影響するが，FarmHashが同じ脆弱性の影響を受けるのか，現時点では明確になっていない。</p> 
  </div> 
 </div><br><br><br><br><br><br></body></html>

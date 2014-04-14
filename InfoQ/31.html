@@ -1,45 +1,32 @@
-<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>Google云服务降价，整合持续集成工具，支持Windows和托管虚拟机</h3><p>本周二，Google举行了云平台的现场活动（点击查看<a href="https://www.youtube.com/watch?v=Xt7O2oHNCOU&amp;feature=share&amp;t=1h4m10s">视频记录</a>），展示了一系列新特性、改进和全新定价模型。</p>
-<h2><b>定价</b></h2>
-<p>Google认为，云计算价格应该跟随硬件领域的摩尔定律，而且在过去数年间硬件价格以每年20%到30%的幅度下降。因此，Google决定大幅降低旗下多项云服务的价格： </p>
-<table cellspacing="0" cellpadding="0" border="1"> 
- <tbody> 
-  <tr> 
-   <td valign="top" width="148"> <p><b>服务</b></p> </td> 
-   <td valign="top" width="118"> <p><b>费用下降百分比</b></p> </td> 
-   <td valign="top" width="285"> <p><b>备注</b></p> </td> 
-  </tr> 
-  <tr> 
-   <td valign="top" width="148"> <p>计算引擎</p> </td> 
-   <td valign="top" width="118"> <p>32%</p> </td> 
-   <td valign="top" width="285"> <p>降价覆盖各个区域、规模和类型</p> </td> 
-  </tr> 
-  <tr> 
-   <td valign="top" width="148"> <p>存储</p> </td> 
-   <td valign="top" width="118"> <p>68%</p> </td> 
-   <td valign="top" width="285"> <p>目前价格2.6美分/GB</p> </td> 
-  </tr> 
-  <tr> 
-   <td valign="top" width="148"> <p>BigQuery</p> </td> 
-   <td valign="top" width="118"> <p>85%</p> </td> 
-   <td valign="top" width="285"> <p>按需使用的价格为5美元/TB</p> </td> 
-  </tr> 
- </tbody> 
-</table>
-<p></p>
-<p>Google展示了一套<a href="https://developers.google.com/compute/pricing#sustained_use">持续使用折扣模型</a>，给出了阶梯折扣价格：以使用实例时间为梯度，每1/4个月为一档，而使用整月的价格将降低30%。与过去的定价模型相比，在这种情况下的整体价格将下降53%。除了提供基于使用情况的多样性价格折扣外，持续折扣模型的好处还包括：用户无需提前决定自己在一整个月里需要使用多少个实例。价格将根据用户在一个月中的实例使用时长——25%、50%、75%或整月——自动折扣。</p>
-<p>跨多个云平台的服务提供商RightScale<a href="http://www.rightscale.com/blog/cloud-cost-analysis/google-slashes-cloud-prices-google-vs-aws-price-comparison">对Google的新定价与亚马逊定价进行了详细比较</a>，其结果显示：对按需实例来说，GAE比AWS的价格低37.78%~60%。持续使用（GAE）与一年期预留实例（AWS）相比，便宜21.18%~32.05%——取决于具体实例类型。而与三年期AWS预留实例相比，Google的价格要超过亚马逊的服务，大概在3%到18%之间，但是RightScale还发现：</p>
-<p>需要注意的一件重要的事情是，购买AWS预留实例需要对同一实例类型（并且是相同操作系统、处于同一区域）进行为期一年或三年的认购。哪怕AWS按需使用的小时单位费用在三年中有所下降，客户也无法享受到更低的预留实例费用。AWS有时候确实会降低预留实例的每小时费用，然而从<a href="http://aws.typepad.com/aws/2013/02/reserved-instance-price-reduction-for-amazon-ec2.html">以往情况</a>来看，AWS并不是每次都将相同的折扣运用到已经购买的预留实例上。相反，Google的持续使用定价将以按需使用的基准费率按百分比折算。随着其基准费率的降低，持续使用价格也将会同时下降。</p>
-<p>因此，未来Google的任何降价，都将在生效的那一刻立刻惠及所有的客户。</p>
-<h2><b>开发者工具</b></h2>
-<p>现在，Google应用引擎（GAE）集成了用于构建、测试和向云中发布应用的工具。代码仓库方面，它支持Git/GAE或GitHub；持续集成方面，则支持Maven、Gradle和Jenkins。在现场活动中，Google展示了开发者如何向主代码仓库提交修订，以及如何查看经过自动化构建、测试和部署过程的代码。</p>
-<p>Google还添加了对动态迁移的支持，<a href="http://www.youtube.com/watch?v=Xt7O2oHNCOU&amp;feature=share&amp;t=1h11m48s">展示了如何将一个正在运行的视频方面的实例</a>，迁移到云中的不同地理位置——需要的准备时间为大约20到30秒，而实际在旧实例和新实例之间进行切换的时候，用户能够感知到的时间差只有一秒左右。新实例拥有相同的IP地址和配置，除了会有一条关于切换的日志外，一切都与旧实例一模一样。Google没有详细介绍他们如何实现这一切，但视频应用的切换只需要在视频中的指定时间开始流传输。对其他类型的应用来说，切换或许会复杂许多。尽管如此，动态迁移还是令人印象深刻，而且能够快速完成。</p>
-<p>现在，GAE已经将各个实例的日志整合在一起，并支持过滤、搜索以及详细的堆栈跟踪，以用于调试。</p>
-<h2><b>操作系统</b></h2>
-<p>Google计算引擎（GCE）增加了对Windows Server 2008 R2、SUSE Linux Server企业版和RHEL的支持。</p>
-<p>Google还发布了一项整合的云DNS服务。</p>
-<h2><b>托管虚拟机</b></h2>
-<p>在目前的初步试用中，<a href="https://developers.google.com/cloud/managed-vms">托管虚拟机</a>所享有的好处包括计算引擎的灵活性、可扩展性和自动管理。当GAE中没有可用资源，或是当某人希望访问本地代码或资源时，可以使用托管虚拟机。虚拟机构建之后，将被整合到应用引擎中，能够访问不同的服务，例如内存缓存、数据存储、任务队列等，而且它将是自动托管的。</p>
-<h2><b>BigQuery</b></h2>
-<p>现在，BigQuery用户可以使用tabledata().insertAll()，以100K记录/秒/表的速率进行<a href="https://developers.google.com/bigquery/streaming-data-into-bigquery">流传输</a>，并能够以几乎实时的方式支持大型数据流分析。静态数据分析的价格为：静态数据分析2.6美分/GB/月（数据上传、导出和表读取免费），1美分/100k条记录的流传输。对于按需查询，无论交互式还是批处理查询，价格都是0.5美分/GB。对大型工作负载，预订查询能力起步价格为两万美元/月——Google表示，该价格比其他提供商同类服务便宜75%。</p>
-<p>而其他云服务供应商（特别是亚马逊）将如何应对Google本次降价还有待关注。</p>
-<p><strong>查看英文原文：</strong><a href="http://www.infoq.com/news/2014/03/google-cloud">Google Cuts Cloud Prices, Integrates CI Tools, Supports Windows and Manages VMs</a></p><br><br><br><br><br><br></body></html>
+<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>利用大数据技术进行图处理</h3><p>处理非常大型的图对象一直都是个挑战，但最近大数据技术的进步却让这一工作变得更具实践性。作为纽约市的一家专注于跨设备内容分发的创业公司，<a href="http://www.tapad.com/">Tapad</a>利用大数据技术处理TB级的数据，并已将图处理作为其商业模型的核心业务。</p>
+<p>像Facebook和Twitter这样的社交网络，其数据天生就适合于图表示法。而对这方面属性不太明显的数据，我们也可以用图对象来表示，比如Tapad的设备图。Tapad的联合创始人兼CTO，<a href="http://www.tapad.com/team-member/dag-liodden/">Dag Liodden</a>，解释了为什么对设备使用图表示法很有意义：</p>
+<blockquote> 
+ <p>“Tapad采用面向图的方式对设备间的关系进行建模。在设备图中，我们把匿名标示符（如cookie ID）表示为节点并且追踪这些节点的市场信息。节点间的边则结合使用测定数据、概率统计模型以及机器学习技术计分或加权重。我们将‘设备’的概念定义为一个起始设备或节点（比如说某个浏览器的cookie ID）和由该起点出发的、在一组可定制边约束下能达到的节点集合（比如说一个Tablet和一个Connected TV的cookie ID）。相对于单个节点仅有的聚合信息，实际的图结构使我们能够在动态平衡数据准确度和规模方面更具灵活性，而且还能更容易地运用新的边推理模型来对图进行扩充。”</p> 
+</blockquote>
+<p>用合适的工具完成合适的工作很重要，这个道理同样适用于图处理：对于通过传统工作负载就能处理的图对象，我们就没必要使用大数据技术。正如Dag所说：</p>
+<blockquote> 
+ <p>“‘大数据’对我而言就像个门槛，跨过之后你就不能再使用少数通用的、现成的工具来存储和分析数据了，而是要依据具体的用例对不同的技术加以取舍。随着软硬件解决方案的进步和成熟，这些阈值每年都在变动，而我们所处理的数据集的大小以及所进行的分析的复杂程度亦是如此。”</p> 
+</blockquote>
+<p>对Facebook来说，这个阈值达到了几PB级，详情可参阅他们在<a href="http://www.sigmod.org/2013/">2013纽约ACM SIGMOD大会</a>上的<a href="http://borthakur.com/ftp/sigmod2013.pdf">报告</a>。对Tapad而言，图对象的数据量虽然较小，但依然不可能用传统的方法来处理：</p>
+<blockquote> 
+ <p>“全美的图对象当前有大约11亿个节点，它们代表着移动电话、平板、笔记本、游戏终端以及电视机。其中有些节点是临时的，比如因为浏览器使用非持久的cookie，导致节点缺少数据而没有边缘。非临时节点平均有大概5个边缘和约500个离散的信息片段与其相关联，如行为分段。实时图数据量达到了几TB级，而且我们还要跨多个数据中心每秒对其进行几十万次的读取、写入操作。图对象的更新实现了跨地域相互复制，每个数据中心由配备了20TB Flash SSD存储和2TB RAM的服务器来支撑。”</p> 
+</blockquote>
+<p>近几年涌现出很多处理大型图对象的技术，尤其是2013年，我们看到了几个新成员加入到该生态系统中。有两类系统值得考虑：</p>
+<ul> 
+ <li>针对OLTP工作负载，能够快速低延迟访问小部分图数据的图数据库。</li> 
+ <li>针对OLAP工作负载，能够对图对象中的大部分数据进行批处理的图处理引擎。</li> 
+</ul>
+<p>知名的图数据库已经<a href="http://en.wikipedia.org/wiki/Graph_database#Graph_database_projects">很多了</a>，但最近仍冒出了几个标新立异的项目。<a href="http://www.neo4j.org/">Neo4j</a>算是最老牌、最成熟的图数据库之一，但因<a href="http://stackoverflow.com/a/21566766/1332690">不支持分片</a>而依然存在可伸缩性的问题。另一个相当年轻，却在2013年非常流行的数据库便是<a href="http://thinkaurelius.github.io/titan/">Titan</a>。作为后端无关的图数据库，它支持<a href="https://hbase.apache.org/">HBase</a>和<a href="http://cassandra.apache.org/">Cassandra</a>的可伸缩架构，并且如<a href="http://thinkaurelius.com/2013/05/13/educating-the-planet-with-pearson/">2013年的一篇博文</a>所报道的，它在内部使用了一套优化的顶点和边表示法以使其能处理几十亿个边对象。</p>
+<p>但你不必非要使用图特定数据库，更通用的可伸缩的NoSQL数据库也是有效的解决方案。基于Google <a href="http://research.google.com/archive/bigtable.html">BigTable</a>并在2011年开源的<a href="https://accumulo.apache.org/">Apache Accumulo</a>就是一个通用数据库的例子，它的数据记录很灵活，所以也适合存储大型图对象，同时还可以用来存储含有类型化的边和权重的图对象，<a href="http://www.pdl.cmu.edu/SDI/2013/slides/big_graph_nsa_rd_2013_56002v1.pdf">2013年发布的一份技术报告</a>表明NSA也在使用它。Cassandra或者<a href="http://www.aerospike.com/">Aerospike</a>则是另一种数据库，它们能通过适当的数据模型，用边、顶点和权重给图对象高效地建模。Facebook也构建了自己的解决方案，他们在被称为<a href="https://www.facebook.com/notes/facebook-engineering/tao-the-power-of-the-graph/10151525983993920">Tao</a>的系统中使用了MySQL和Memcache组合，并正在使用这一方案为其用户提供社区图服务。据Dag所说，Tapad在其设备图的设计过程中也运用了同样的哲学：</p>
+<blockquote> 
+ <p>“将实时的图对象保存在键值对存储中可以支持快速的遍历和更新。我们就是把图的快照周期性地存进HDFS，然后从中提取它们进行高级图处理并用其他数据流来扩充，之后再把结果回填至‘实时图’。虽然使用图特定的数据库会有一些优势，但以我们目前的设置，既可以在键值对存储中极快且简单地遍历图对象，还可在Hadoop上慢速但非常灵活地进行遍历和分析操作，对我们来说它工作的很好，至少现在如此。”</p> 
+</blockquote>
+<p><a>和存储于数据库中的图对象一样</a> ，可大规模进行的操作也只是局限于查找和小范围的遍历。至于在图对象中进行更加复杂的分析，就需要分布式的批处理框架。为了达到最佳性能，<a href="http://graphlab.org/projects/source.html">GraphLab</a>框架使用了<a href="http://en.wikipedia.org/wiki/Message_Passing_Interface">Message Passing Interaface(MPI)</a>模型来调整并运行基于HDFS数据的复杂算法。而新近的框架如<a href="https://giraph.apache.org/">Apache Giraph</a>和<a href="https://hama.apache.org/">Apache Hama</a>则基于<a href="http://en.wikipedia.org/wiki/Bulk_synchronous_parallel">Bulk Synchronous Paralle(BSP)</a>范式，该范式是由Google的<a href="http://googleresearch.blogspot.com/2009/06/large-scale-graph-computing-at-google.html">Pregel</a>项目推广开的。而生态系统中最新的项目便是<a href="https://amplab.cs.berkeley.edu/publication/graphx-grades/">GraphX</a>和<a href="http://thinkaurelius.github.io/faunus/">Faunus</a>。GraphX项目运行于2013年才问世的<a href="https://spark.incubator.apache.org/">Spark</a>之上，而Faunnus则通过用<a href="http://hadoop.apache.org/">Hadoop</a>运行<a href="http://en.wikipedia.org/wiki/MapReduce">MapReduce</a>作业的方式来处理Titan数据库中图对象。Tapad正在运用这些新技术处理其离线图数据。按照Dag所说：</p>
+<blockquote> 
+ <p>“目前，我们主要的图处理框架虽是Apache Giraph，但我们也在尝试Saprk GraphX和GraphLab。所有这些架构还都很年轻，学习曲线也颇为陡峭，而且全都有自己的优缺点及注意事项。举个例子，Giraph和GraphX由于能很好地支持我们的Hadoop架构所以很方便，但GraphLab却完全是因为其性能而更吸引我们。”</p> 
+</blockquote>
+<p>有些项目正试图提供统一的架构以支持OLTP和OLAP查询。来自<a href="http://www.lab41.org/">Lab41</a>的<a href="https://github.com/Lab41/Dendrite">Dendrite</a>就是这样一个项目，它利用基于Titan的GraphLab进行存储、处理，并用<a href="http://angularjs.org/">AngularJS</a>实现可视化。因为这个非常年轻的项目在2014年年初才公开，所以社群反响有限，但是它试着顾及到所有用例，这应该有助于它的普及。</p>
+<p><strong>参考英文原文：</strong><a href="http://www.infoq.com/news/2014/03/graph-bigdata-tapad">Graph Processing Using Big Data Technologies</a><b><u> </u></b></p>
+<hr />
+<p>感谢<a href="http://www.infoq.com/cn/author/孙镜涛">孙镜涛</a>对本文的审校。</p>
+<p>给InfoQ中文站投稿或者参与内容翻译工作，请邮件至<a href="mailto:editors@cn.infoq.com">editors@cn.infoq.com</a>。也欢迎大家通过新浪微博（<a href="http://www.weibo.com/infoqchina">@InfoQ</a>）或者腾讯微博（<a href="http://t.qq.com/infoqchina">@InfoQ</a>）关注我们，并与我们的编辑和其他读者朋友交流。</p><br><br><br><br><br><br></body></html>

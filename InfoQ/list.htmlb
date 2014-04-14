@@ -2,6 +2,18 @@
  <head></head> 
  <body> 
   <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/10.htmlb">左耳朵耗子谈云计算：拼的就是运维</a> 本文根据InfoQ中文站跟陈皓（@左耳朵耗子）在2014年3月的一次聊天内容整理而成。在沟通中，陈皓分享了自己对云计算的理解，包括云计算为什么会分三层，实现一个云平台的难点在什么地方，运维之于云计算的重要性，电商云为什么有价值等。 
+  </div> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/9.htmlb">虚拟座谈会：大数据一栈式方案Spark</a> Spark正在占据越来越多的大数据新闻的重要位置，除了性能优异，Spark到底具备了那些特性，让学术界和工业界对其充满了兴趣？同时，Spark还处在快速发展的阶段，开发者和用户不得不解决不稳定和bug，Scala语言也有较高的学习门槛，这些也会成为Spark普及的障碍。当然，尽管Spark提供了一栈式的大数据方案，但并不意味着他适合任何场景。本期虚拟座谈会将讨论Spark的优势和不足，分享在国内领先的Spark开发者遇到的挑战和瓶颈。 
+  </div> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/9.htmlb">4个9是如何炼成的？</a> 微博服务可用性提升是2013年微博平台技术团队的一个重要目标，为此，平台内部还特别建立的微博平台的SLA指标体系，其中微博平台核心服务接口（主要以feed服务相关接口为主）的可用性指标为：全年平均接口请求性能&lt;100ms的比例&gt;99.99%，即4个9的可用性指标。 
+  </div> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/9.htmlb">一秒钟法则：来自腾讯无线研发的经验分享</a> 在2014年4月11日的腾讯分享日活动上， 来自腾讯MIG的移动互联网事业群运营总监/T4专家，负责运营QQ手机浏览器、腾讯PC浏览器、腾讯手机安全管家、腾讯电脑管家产品的刘昕介绍了移动无线产品研发中的“一秒钟法则”。本文根据该演讲内容整理形成。 
+  </div> 
+  <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/8.htmlb">作者访谈：Programming for Kids</a> “Programming for Kids”一书中含有大量Ruby编写的、适合9-14岁孩子学习编程基础的实例。书中还向孩子们展示了如何在Mac上使用命令行。父母可以坐在孩子身边一起学习。InfoQ就”孩子该如何学编程”采访了本书作者Peter Armstrong。 
   </div> 
   <div> 
@@ -138,18 +150,6 @@
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/22.htmlb">现代企业中性能分析的反模式</a> 文中我们提出了一些在现代企业平台中进行性能分析时最常见的反模式，包括它们的根源以及矫正策略。 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/21.htmlb">利用In-Database Analytics技术在大规模数据上实现机器学习的SGD算法</a> 随着应用数据的增长，在大规模数据集上进行统计分析和机器学习越来越成为一个巨大的挑战。目前，适用于统计分析/机器学习的语言/库有很多，如专为数据分析用途而设计的R语言，Python语言的机器学习库Scikits，支持分布式环境扩展的有基于Map-Reduce实现的Mahout，以及分布式内存计算框架Spark上的机器学习库MLlib等等。目前Spark框架也推出了R语言的接口SprakR。但是，本文要讨论的，则是另外一种设计思路，在database中实现统计分析和机器学习算法，即In-Database Analysis，Madlib库就是这种设计思路的代表。 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/20.htmlb">基于反馈控制实现可靠的自动扩展服务</a> Philipp K. Janert说明了如何使用反应式方法，基于反馈控制可靠地自动扩展系统，提供了比确定性方法和基于规则的方法更精确的解决方案。 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/20.htmlb">BYOC和混合云的崛起</a> BYOC正在市场上快速普及。对于IT部门而言，让那些不受监控、未经授权的服务运行在内网里，既引入了安全隐患，又把自己的基础架构搞得更加复杂，因此必须把它们管起来。本文作者提供了一些将BYOC集成到企业IT架构当中的经验，以及如何让混合云更好用的建议。 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/19.htmlb">微博春晚背后的技术故事</a> 统计数据结果表明，马年春晚直播期间，微博的访问量和发表量都再创新高，而我们系统也自始至终平稳运行，经受住了此次高峰的考验。这成功的背后，是我们的工程师将近一个月的努力。其间面临了哪些问题，又是如何解决的呢？下面，我们一一为大家揭秘。 
   </div> 
  </body>
 </html>

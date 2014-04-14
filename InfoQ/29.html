@@ -1,18 +1,24 @@
-<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>Jeremy Freeman:从计算机的角度探索神经学</h3><p>计算机技术已经成为人类了解自身奥秘的重要工具，无论在生物科学还是神经学，高容量的计算和存储集群、新型软件正扮演者越来越重要的角色。InfoQ专访了霍华德&middot;休斯医学研究所研究员Jeremy Freeman，他通过计算机技术收集斑马鱼的神经元信息，并挖掘其中的规律。同时作为<a href="http://www.qconbeijing.com/">QCon北京2014</a>大会《<a href="http://www.qconbeijing.com/node/495">大数据处理与大数据应用</a>》专题的讲师，Jeremy Freeman将就《大规模脑计算——操控脑，绘制脑地图》话题做分享。以下为专访全文：</p>
-<p><strong>InfoQ</strong>:你好Jeremy Freeman，请介绍下自己吧。</p>
-<p><strong>Jeremy Freeman</strong>:大家好，我叫Jeremy Freeman，是来自于霍华德&middot;休斯医学研究所的一位研究组负责人。我现在的工作是借助于云计算技术研究大脑。</p>
-<p><strong>InfoQ</strong>:你在Spark Summit 2013上做的斑马鱼的神经元演示很吸引人，做这项研究的初衷是什么？</p>
-<p><strong>Jeremy Freeman</strong>:我的激情来源于我对大脑工作原理的渴求。大脑是非常复杂的，特别是人类的大脑，但即使是老鼠、鱼和苍蝇这样的小动物它们的大脑依旧不简单。大脑如此复杂的原因之一就是它有非常多的神经元：苍蝇和鱼有数十万，老鼠有数百万，人类有数十亿。长期以来我们一次仅能记录少数神经元的活动，但是在过去的十年间有很多技术获得了长足的发展，甚至有些技术在最后这几年才发展起来，它们让我们能够同时测量非常大规模的神经元的活动。虽然我们现在能够产生所有的这些数据，但是我们能够拿它们做什么呢?我们怎样才能找到蕴含在这些复杂数据中的模式，帮助我们理解大脑的工作原理呢？我一直在从计算机的角度探索神经学，使用这些新型的数据——通过它们达到理解大脑的目的——是一个非常令人鼓舞的挑战。</p>
-<p><strong>InfoQ</strong>:你的实验中利用了大量最先进的大数据技术。可否讲一下这些大数据技术对你实验带来了什么帮助？在使用Spark的过程中，你都遇到了什么挑战？</p>
-<p><strong>Jeremy Freeman</strong>:神经数据如此之大以致于它需要新技术的支撑。我们需要快速地处理大规模的数据。但是神经数据还有另外一个挑战，那就是我们几乎不知道什么是“正确的”分析。相反的，我们需要交互式地探索数据，并且适应需要重复查询的复杂模型。Spark能够完美地契合我们的场景，因为它正好是为这两种用例而设计的。开源是Spark的另一个优势，它有一个奇妙的用户社区，能够被扩展到支持流式分析。最大的挑战是Spark以及其他被普遍使用的大数据技术在神经科学领域的应用还很少，所以我和我的合作者们不得不一起从头开始构建一个新的分析集。但是我希望我们所构建的东西现在能够对神经科学社区有所帮助。</p>
-<p><strong>InfoQ</strong>:规模突破是进行神经元实验面对的问题，大规模神经元实验主要有哪些挑战？你认为现在的科技能够支持比斑马鱼更强大的大脑分析了吗？</p>
-<p><strong>Jeremy Freeman</strong>:斑马鱼的关键优势是它是透明的，特殊的显微镜利用这一点几乎能够同时监控它整个大脑的神经响应。对于其他的动物，例如老鼠，我们能够测量相当大区域内（几百个神经元）的活动，但是不可能延伸到整个大脑。令人兴奋的是，同时使用显微镜和大规模电记录的新技术可能给了我们扩大测量范围的机会。我的合作者们正在积极地开发这些技术，而我的主要焦点是如何使用这些数据。</p>
-<p><strong>InfoQ</strong>:有些人说你是他们见过的计算机科学家里面对生物了解最多的，也是生物科学家里面对计算机技术了解最多的。你此有什么评价吗？</p>
-<p><strong>Jeremy Freeman</strong>:谢谢这样夸奖我！我不知道这是不是真的。从我还是一个孩子开始，我一直在尽可能多的去学习神经科学和计算方面的知识，因为我意识到它们之间是如何联系的。尤其是现在，这两者的关系变得越来越紧密，几乎缺一不可。在这个过程中很多人让我受益匪浅，包括来自于不同网络的朋友、合作者、导师、我的神经科学家伙伴、Spark社区以及其他高科技企业中的朋友。</p>
-<p><strong>InfoQ</strong>:说说你将在QCon北京2014大会上的分享吧。</p>
-<p><strong>Jeremy Freeman</strong>:我将会介绍我们是如何使用Spark映射和操作大脑的。我首先会介绍我们使用的动物模型以及合作者们开发的、能够让我们同时记录这些动物大脑中成千上万神经元活动的技术。然后我会介绍这些实验数据给我们带来的技术分析挑战，以及我们是如何使用Sprak克服这些挑战的。特别会介绍我们为了对神经数据进行快速、探索性分析而开发的一个开源类库，并给出一些示例展示这个类库是如何帮助我们在整个大脑的层面上理解功能性组织、感觉处理的瞬时动态以及活动行为的。基于在Spark Summit上的呈现，我将会介绍一个新的专门针对分解神经响应瞬时动态的分析家族，同时还会介绍一个新的使用Spark Streaming在实验期间分析在线流式神经数据的方法集，以及与新的在线机器学习算法相关的技术。</p>
-<p>此专题详细信息，请见<a href="http://www.qconbeijing.com/node/441">专题页面</a>。关于此次QCon北京其他专题的详细信息，请移步至<a href="http://www.qconbeijing.com/">大会官网</a>。</p>
-<p>需要特别注明的是，每年QCon大会门票都会在开幕前售罄，及早预定可提前确保席位，并享受更低折扣。3月26日前报名参加可享受9折优惠。团体购票（5人及以上）将享有更多优惠。详请咨询qcon【at】cn.infoq.com，或直接致电010-64738142。报名请点击报名页面。</p>
-<hr />
-<p>感谢<a href="http://www.infoq.com/cn/author/辛湜">辛湜</a>@hashjoin 对本文的审校。</p>
-<p>给InfoQ中文站投稿或者参与内容翻译工作，请邮件至<a href="mailto:editors@cn.infoq.com">editors@cn.infoq.com</a>。也欢迎大家通过新浪微博（<a href="http://www.weibo.com/infoqchina">@InfoQ</a>）或者腾讯微博（<a href="http://t.qq.com/infoqchina">@InfoQ</a>）关注我们，并与我们的编辑和其他读者朋友交流。</p><br><br><br><br><br><br></body></html>
+<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>Meteor 0.8：发布全新的渲染系统Blaze</h3><p><a href="http://www.meteor.com/">Meteor</a>最近发布了0.8版本，该版本“对Meteor的渲染系统做了一次彻底的检查”。Meteor的下一代实时模板引擎Blaze支持细粒度的DOM更新、jQuery集成和更简单的API。Blaze替代了在2012年发布的<a href="https://www.meteor.com/blog/2012/08/31/introducing-spark-a-new-live-page-update-engine">0.4版本</a>中所引入的实时页面更新引擎Saprk。</p>
+<p>Matt Debergalis在<a href="https://www.meteor.com/blog/2014/03/27/meteor-080-introducing-blaze">Meteor的博客</a>上将Blaze描述为“对开发者友好的”，同时它的架构比起Spark有几个方面的提升。</p>
+<p>Blaze包含两部分：第一部分是一个构建时编译器，它将模板转换成JavaScript代码。Spacebars——Handlebars风格的编译器——将HTML模板转换成实时更新的DOM元素，用户能够编写普通样子的HTML模板和帮助器。</p>
+<blockquote> 
+ <p>“当某个用户修改了数据或者某个模板依赖的新数据通过网络抵达的时候，Blaze就会自动地更新你的屏幕，不需要声明任何依赖，也不需要编写管理应该如何更新屏幕的代码。”Debergalis <a href="https://www.meteor.com/blog/2014/03/27/meteor-080-introducing-blaze">说</a>。</p> 
+</blockquote>
+<p>Blaze的第二部分是运行时API，它“渲染元素，跟踪元素的依赖，在元素的完整生命周期内随着依赖的变化更新元素”。</p>
+<p>对之前Spark API的<a href="https://github.com/meteor/meteor/wiki/Using-Blaze#replacements-for-advanced-spark-apis">替代</a>包括移除了Meteor.render，为定制块帮助器的定义引入了一个新模式。<a href="https://github.com/meteor/meteor/wiki/Using-Blaze#added-and-deprecated-apis">添加和废弃的API</a>列表包括UI.body现在是与整个BODY元素相关的一个模板。</p>
+<p><a href="https://github.com/meteor/meteor/blob/devel/packages/spacebars/README.md">Spacebars</a>解析器让用户能够做一些之前不能做的事情，例如：</p>
+<ul> 
+ <li>HTML感知更新。模板解析器现在会解析HTML元素，这让细粒度的响应更新成为可能，包括对DOM元素进行属性级的更新。</li> 
+ <li>预编译。Spacebars编译器会生成调用内部Meteor接口的简单程序代码以便于在将来执行客户端或者服务器端的渲染工作。这比在运行时解释模板或者解析它的HTML输出更加有效。</li> 
+ <li>语法扩展。Handlebars语法极小，我们预见随着时间的发展需要添加一些额外的、精选的扩展。我们还会实现Handlebars 现在支持但是Meteor并不具备的顶层特性，例如支持对象，让你能够访问当前索引或者键的#each。</li> 
+</ul>
+<p>在Meteor 0.8中Handlebars命名空间已经被废弃。现在Handlebars.SafeString改成了Spacebars.SafeString，而Handlebars.registerHelper则变成了UI.registerHelper。</p>
+<p>Spacebars需要HTML是“格式良好的”。<a href="https://github.com/meteor/meteor/wiki/Using-Blaze">引用Blaze</a>项目GitHub页面上的说明：“在Spark中HTML解析是通过浏览器完成的，这种方式更加宽容”。</p>
+<p>另外，Blaze HTML解析器目前还没有完全实现HTML规范。发布说明中还特别指出它并不会自动地关闭<a href="https://github.com/meteor/meteor/issues/1842">某些标签</a>，例如&lt;p&gt;和&lt;li&gt;。Meteor社区非常欢迎0.8版本的发布。在LinkedIn网站上的Meteor<a href="http://www.linkedin.com/groups?home=&amp;gid=4556383&amp;trk=anet_ug_hm&amp;goback=%2Egmr_4556383">组</a>中，用户Uğur Toprakdeviren发起了一个<a href="http://www.linkedin.com/groups/What-is-your-opinion-about-4556383.S.5855220594395619330?trk=groups_most_recent-0-b-ttl&amp;goback=%2Egmr_4556383">讨论</a>，他问道：“对于新版本的Meteor（Blaze、Spacebars等）你的观点是什么呢？”。</p>
+<p>Ongo Works的创建者和CTO Aaron Singmaster-Judd回复说：“真了不起，做的好，感谢Meteor团队和在新代码库上工作的社区包开发者。”。</p>
+<blockquote> 
+ <p>“升级已有的包可能需要一些努力，而这也会导致Web上呈现出大量无效的信息，但是这是值得的。”</p> 
+</blockquote>
+<p>Hacker News上的用户对于该更新的反应也很不错。用户elsherbini 对jQuery集成的<a href="https://news.ycombinator.com/item?id=7484804">评论</a>是“jQuery兼容的工作量非常巨大，赞一个！”。其他用户也分享了自己对Blaze的正面评价，TylerE 对编译器的<a href="https://news.ycombinator.com/item?id=7485394">评价</a>是：“不得不说，我非常兴奋，因为现在终于可以按照一种非旁门左道的方式去使用jade模板了，对我而言这是重大的胜利。”。</p>
+<p>Debergalis指出实时模板引擎是0.8版本中仅有的新特性，它向Meteor 1.0版本迈出了重要的一步。</p>
+<p><b>查看英文原文</b>：<a href="http://www.infoq.com/news/2014/04/meteor-08-blaze">Meteor 0.8: Blaze Release Overhauls Rendering System</a></p><br><br><br><br><br><br></body></html>
