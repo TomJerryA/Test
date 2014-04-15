@@ -1,30 +1,53 @@
-<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>Mobile App Performance Report Benchmarks Crashes and Responsiveness on iOS and Android</h3><p><a href="http://crittercism.com">Crittercism</a>, maker of a mobile app performance management solution, has analysed one month of mobile app performance data and compiled it into a <a href="http://s3.documentcloud.org/documents/1097982/state-of-mobile-performance.pdf">Mobile Experience Benchmark report</a> focusing on two aspects of a mobile app's performance: app uptime and app responsiveness. Results highlight which app categories have the highest crash and error rates and provide the basis for a comparison among iOS and Android versions, as well as different devices and manufacturers.</p>
-<p>Crittercism claims to have based its findings on the analysis of more than 3 billions events per day, gathering data from 1 billion app users who are accessing its solution monthly. The data spans over 2582 different mobile devices and 106 OS versions, relying on 691 wireless networks to access the internet. The heterogeneity of the mobile ecosystem is, according to Crittercism, one of the main factor influencing app performance.</p>
-<p><strong>Main Responsiveness Takeaways</strong></p>
-<ul> 
- <li>The average app depends on 6 cloud services, e.g. Facebook, Flurry, Google Analytics, etc.; the aggregated performance of such services is a key factor in determining app responsiveness;</li> 
- <li>9% of calls to services takes longer than 1 second; 21% of calls to services have error rates over 1%;</li> 
- <li>Google Analytics is the best performing service, with Facebook and Twitter scoring quite low, both in error rate and response time;</li> 
- <li>network access performance can vary a lot, going from a 0.8x response time for Canada to a 2.1x response time for India, being 1.0 the normalized US response time.</li> 
-</ul>
-<p><strong>Main Uptime Takeaways</strong></p>
-<ul> 
- <li>47% of apps crash more than 1% of the time;</li> 
- <li>15% have a crash rate over 2%;</li> 
- <li>gaming apps have the highest crash rate at 4.4%;</li> 
- <li>e-commerce and social apps crash rate is below 1%, while business, news, media, and gaming apps crash rate is over 1%;</li> 
- <li>tablets crash more often than phones.</li> 
-</ul>
-<p><em>Android</em></p>
-<ul> 
- <li>Gingerbread has the highest crash rate in the Android ecosystem at 1.7%, while still <a href="http://developer.android.com/about/dashboards/index.html">having a significant share among Android versions at 19%</a>; </li> 
- <li>KitKat, Jelly Bean, and Ice Cream Sandwich have far better performance than Gingerbread at 0.7% crash rate, with a <a href="http://developer.android.com/about/dashboards/index.html">cumulative share of 80% among Android versions</a>;</li> 
- <li>Samsung devices have the top spot for both Android tablets and phones stability.</li> 
-</ul>
-<p><em>iOS</em></p>
-<ul> 
- <li>iOS 7.1 is the most stable iOS version, with a 1.6% crash rate;</li> 
- <li>iOS 6 and iOS 7 have crash rate over 2%; iOS 6 <a href="https://developer.apple.com/support/appstore/">has a share of 12% among iOS versions, while the split iOS 7/7.1 is not officially known</a>;</li> 
- <li>iPhone 5 is the most stable Apple mobile device.</li> 
-</ul>
-<p>Crittercism <a href="http://www.forbes.com/sites/tomiogeron/2012/02/02/does-ios-crash-more-than-android-a-data-dive/">released a similar report in 2012 comparing mobile app crashes on iOS and Android</a> and yielding similar results.</p><br><br><br><br><br><br></body></html>
+<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>Cucumber.js for BDD in JavaScript: An Interview with Julien Biezemans</h3><p>Julien Biezemans is a Cucumber core team member and the author of <a href="https://github.com/cucumber/cucumber-js">Cucumber.js</a>. Cucumber.js is a native JavaScript implementation of Cucumber, and is a strict port that can run on any JavaScript environment.</p>
+<p>Running on Node.js as well as within any browsers, Cucumber.js is virtually serviceable against everything producing JavaScript and HTML (Node.js, Ruby on Rails, PHP, .NET, etc)</p>
+<p><strong>InfoQ: What is Cucumber.js? Why should somebody care about it, what problems does it solve?</strong></p>
+<blockquote> 
+ <p><strong>Biezemans</strong>: Cucumber.js is the JavaScript port of the well-known Behaviour-driven development (BDD) tool called Cucumber, initially written in Ruby by <a href="http://aslakhellesoy.com/">Aslak Helles&oslash;y</a>. There are several Cucumber implementations nowadays, including Ruby, the JVM, .NET, PHP, C++, and more.</p> 
+ <p>Cucumber is an automation tool that is able to translate specifications (mostly concerning software development) written in human languages, like English or French, into some code computers can understand such as JavaScript, Ruby, or Java. That code then drives any sort of software that can be automated. It has become a popular solution for web application automation, but has been used in other various fields, like native mobile app development, embedded systems, and even hardware testing.</p> 
+ <p>BDD is an agile methodology that was developed by Dan North based on test-driven development. It promotes communication, conversations and close collaboration between everyone involved in a project. One of the underlying objectives of BDD is to bridge that well-known gap between business and technology. Often, people from those two worlds don't understand each other well.</p> 
+ <p>The idea of writing scenarios (or &quot;examples&quot;) in a natural language is one approach to solving that communication issue. Those specifications are produced and used as a reference during discussions between the stakeholders, with a shared vocabulary. They're also used to drive the actual development of the system: the developers will automate them before implementing the described features of the system; they become tests that can literally drive the coding process. And finally, they're used in the long-term as both living documentation and regression tests.</p> 
+</blockquote>
+<p><strong>InfoQ: Please can you tell me about some of the use cases for Cucumber.js?</strong></p>
+<blockquote> 
+ <p><strong>Biezemans</strong>: As for most of the Cucumber flavours, the obvious use case of Cucumber.js is web automation. It is written on top of the Node.js stack but is able to run on any JavaScript environment (think browsers!). That's the interesting bit about Cucumber.js, compared to the other implementations: it can be used on a broader range of environments. JavaScript is sort of the ubiquitous language nowadays, it's obviously available in all browsers but also on servers, thanks to technologies like Node.js and the JVM. I know there are teams automating web apps built with various technologies like Node.js, Angular.js, Backbone, PHP, Java, Ruby, and Rails, to name a few.</p> 
+ <p>That being said, there are other interesting uses of Cucumber.js. It is particularly efficient and pleasant to interact with network resources (e.g. with HTTP) with Node.js. That's why it's pretty easy and common to test HTTP APIs with Cucumber.js combined to some network-aware assertion libraries (the backend does not have to be JavaScript-backed). That's one thing I'd like to insist on: Cucumber doesn't know anything about the web, HTTP, networks or CLIs. It's there to translate some natural language specifications into runnable computer code. Whatever you hook to that code is none of Cucumber's business.</p> 
+ <p>Cucumber.js can be also be used to automate command-line interface applications (a good example is Cucumber.js that has got its own test suite it runs against itself on the CLI).</p> 
+</blockquote>
+<p><strong>InfoQ: Can you describe for me some kind of problems that are a better fit for one tool than another? In what circumstances would someone use Cucumber.js, and when would they be better suited to using something else?</strong></p>
+<blockquote> 
+ <p><strong>Biezemans</strong>: There are many JavaScript TDD/BDD and other testing tools out there; some of which are really good. Cucumber (Ruby) suffered a hype wave a few years ago: everybody jumped on it, thinking it was the silver bullet. However, in many cases, it didn't make much sense to add the extra layer imposed by Cucumber (i.e. the specifications written in a plain natural language).</p> 
+ <p>The conversations between the developers and the rest of the stakeholders at that time were nonexistent, so there were no needs for scenarios written in English and it just got in the way of the coders, increasing the cost of maintenance for no good reason.</p> 
+ <p>This still happens today. It's a well-known fact that we -- technical people -- tend to be attracted to new shiny tools and start questioning their true relevance only after we've hit our thumbs a few too many times with the tool. My main advice to anyone considering Cucumber would be to ask themselves the following questions: &quot;Will the team (everyone, not only the tech people) benefit from scenarios written in plain English? Is there a chance it'll help someone understand things better and communicate more efficiently?&quot; If the answer is yes, then Cucumber might be the right tool for the job.</p> 
+ <p>Don't get me wrong, though, I've seen successful teams using Cucumber only on the &quot;tech side of things&quot;. I think the reason is that scenarios help people step away from the technical concerns and have deeper thoughts about the expectations in terms of capabilities and behaviours of the system they're building.</p> 
+</blockquote>
+<p><strong>InfoQ: Tell me about the Cucumber.js community? Do you get community volunteers contributing, and can InfoQ readers contribute?</strong></p>
+<blockquote> 
+ <p><strong>Biezemans</strong>: Cucumber.js is almost three years old, and the community is growing. It's on a smaller scale, similar to what's happening to the Node.js community: there are people coming from very different places. There are developers and testers coming from various communities just because of the omnipresence of JavaScript. I find it really enriching because you get the chance to share new experiences and ideas regarding similar problems sometimes solved very differently than what we're used to. Diversity is good!</p> 
+ <p>The opposite is also true, JavaScript is a good vector for spreading what we think are effective principles and practices (i.e. BDD!) to communities we had no connections with before.</p> 
+ <p>There are regular contributions and we've got some very supportive people. We're in the process of bringing all the Cucumber &quot;sub-communities&quot; together. That was actually the theme for this year's <a href="https://cucumber.pro/cukeup/">CukeUp!</a> conference: one big happy BDD family. We really don't want to see the community fragment into specific technologies, that's why there's only one Cucumber mailing list. Support for Cucumber.js is being added to popular IDEs like Jetbrains Webstorm 8 and Visual Studio. I see that as a good sign regarding adoption of the tool.</p> 
+ <p>Anyone willing to contribute can visit <a href="http://git.io/cukejs">Cucumber.js GitHub repo</a> to check out the pending issues and send pull requests.</p> 
+</blockquote>
+<p><strong>InfoQ: What are you working on for the next major release (would that be 0.4.5?) and when is going to be?</strong></p>
+<blockquote> 
+ <p><strong>Biezemans</strong>: There's a demand for a plugin system. Attaching result formatters and other listeners to Cucumber.js is currently possible, but has two drawbacks:</p> 
+ <ol> 
+  <li> <p>You have to deal with some of the internal objects</p> </li> 
+  <li> <p>The CLI argument parser is not flexible enough to let you specify plugin-related options when invoking Cucumber.js from your terminal.</p> </li> 
+ </ol> 
+ <p>The objective is to make Cucumber.js more modular, and let people publish simple plugins to repositories like NPM and Bower. A plugin API will probably make us release 0.5, and we'll most certainly rely on that API to add support for Cucumber Pro, the collaboration platform we're working on at Cucumber Ltd.</p> 
+ <p>There's an interesting <a href="https://github.com/cucumber/cucumber-js/pull/151">pull request for parallel runs</a> that should be merged pretty soon.</p> 
+ <p>I'd like to revisit the packaging system we use for the web. As I said earlier, Cucumber.js is built with Node.js. To make it run on the browser, it has to be bundled. The current code for that is pretty obscure, based on an archaic version of Browserify and is not tested.</p> 
+ <p>And as with any projects, there are some issues, mostly regarding JavaScript callbacks and hooks that must be fixed.</p> 
+</blockquote>
+<p><strong>InfoQ: What are the plans for the longer term plans for Cucumber.js?</strong></p>
+<blockquote> 
+ <p><strong>Biezemans</strong>: Once we have a better web packaging system, I'd like to make Cucumber.js more visible to the browser-only scene; it's already possible to run it on a browser, but not straightforward. It's a shame because I think there's a whole &quot;market&quot; there, especially with the rise of frameworks like Angular.js and Ember.js.</p> 
+ <p>As mentioned before, the documentation could be improved. It would be useful, especially for newcomers, to have access to more examples, tutorials and demonstrations of how to use Cucumber.js in various environments.</p> 
+ <p>There are a few missing ancillary features (details available in the development status table on the <a href="https://github.com/cucumber/cucumber-js/blob/master/README.md">README</a>) compared to the other Cucumber flavours. These should be implemented before we release 1.0.</p> 
+</blockquote>
+<p><strong>InfoQ: Other than your work on Cucumber.js, and BDD in general, tell me about something you have a passion for?</strong></p>
+<blockquote> 
+ <p><strong>Biezemans</strong>: I'm highly interested in service-oriented architectures, event sourcing, and domain-driven design. I've been building systems based on those concepts and patterns for quite a few years now. I've open sourced an experimental Node.js library, called <a href="https://www.npmjs.org/package/plutonium">Plutonium</a>, for DDD/Event Sourcing and I would like to give it more love in the future.</p> 
+ <p>I'm a designer wannabe (and learning!).</p> 
+ <p>Computers aside, I love spending time with my family. My kids are such a source of joy and discovery. I dig science in general and I am particularly interested in physics and cosmology. Oh, I can't live without music in my ears, but it's been a long time since I played the guitar myself.</p> 
+</blockquote><br><br><br><br><br><br></body></html>

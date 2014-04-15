@@ -1,1 +1,1 @@
-Udi Dahan on Event-Driven Architecture and Loosely Coupled Systems
+Android 4.1.1 Vulnerable to Reverse Heartbleed

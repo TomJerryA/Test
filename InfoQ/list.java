@@ -1,6 +1,18 @@
 <html>
  <head></head> 
- <body> 
+ <body>
+  <div>
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/43.java">Cucumber.js for BDD in JavaScript: An Interview with Julien Biezemans</a>Julien Biezemans is a Cucumber core team member and the author of Cucumber.js. Cucumber.js is a native JavaScript implementation of Cucumber, and is a strict port that can run on any JavaScript environment. Running on Node.js as well as within any browsers, Cucumber.js is virtually serviceable against everything producing JavaScript and HTML (Node.js, Ruby on Rails, PHP, .NET, etc)
+  </div>
+  <div>
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/42.java">Android 4.1.1 Vulnerable to Reverse Heartbleed</a>Google announced last week that Android 4.1.1 is susceptible to the Heartbleed OpenSSL bug. While Android 4.1.1 is, according to Google, the only Android version vulnerable to Heartbleed, it remains in use in millions of smartphones and tablets. Android 4.1.1 devices have been shown to leak significant amount of data in a &quot;reverse Heartbleed&quot; attack.
+  </div> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/41.java">Spring Updated for Java 8</a>Java 8 might be difficult for enterprise projects to adopt, mostly because of established Java EE application servers. Those using Tomcat and Jetty will likely have an edge in upgrading. Spring 4.0.3 was recently released, with official support for Java 8 as well as many WebSocket improvements. 
+  </div> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/40.java">Why Agile Works in Context to Organizations in Australia</a>A report on why agile works for Australia’s most progressive organizations like ANZ, Bankwest, Commonwealth Bank, NAB, Suncorp, Allianz, SunSuper and many more and their journey to DevOps and continuous delivery. 
+  </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/39.java">Udi Dahan on Event-Driven Architecture and Loosely Coupled Systems</a>We should build systems more loosely coupled to achieve properties like robustness, resilience and scalability, Udi Dahan emphasizes in a recent presentation discussing how we can model our systems using more event-driven and asynchronous patterns and some of the challenges developers face when introducing these principles and patterns into development. 
   </div> 
@@ -138,18 +150,6 @@
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/1.java">Introducing Common XAML UI</a>Based on the WinRT API, the Common XAML UI framework will allow the same UI code to be shared on phones, tablets, desktop computers, and eventually Xbox One. 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/0.java">Microsoft Opens Windows to the Universal App: One App for All Platforms</a>Microsoft has formally introduced Windows universal apps, allowing developers to write a single app that will run on all Windows-based devices: phones, tablets, and PCs. This move unifies the platform in a significant way. 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/49.java">RightScale: Top 9 Public and Top 6 Private Clouds</a>RightScale, a service provider across multiple clouds, has published the results of their annual State of Cloud 2014 survey conducted in February of this year. This article highlights some of the most significant findings. 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/48.java">Apache Subversion to Migrate to Git</a>Today, Greg Stein, founder of the Apache Subversion project, raised a request to migrate the Subversion codebase to Git. More controversial than the decision itself was the way that the decision was made, by the PMC on the private mailing list. Read on to find out what happened and what the current state is. 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/47.java">The Shallot 2014 Edition Published</a>The 2014 Edition of The Shallot - the online magazine which conducts deep analysis of the state of the information technology industry - has been released. 
-  </div> 
+  </div>   
  </body>
 </html>
