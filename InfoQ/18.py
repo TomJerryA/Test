@@ -1,30 +1,16 @@
-<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>AppleがiOS 7のUIデザイン向けのマイクロサイトを提供</h3><p><a target="_blank" href="http://www.infoq.com/news/2014/03/apple-ios7-ui-microsite"><em>原文(投稿日：2014/03/14)へのリンク</em></a></p>
+<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>MySQLを“ウェブスケール”にするためにFacebook, Google, LinkedIn,Twitterが協力</h3><p><a target="_blank" href="http://www.infoq.com/news/2014/04/webscalesql"><em>原文(投稿日：2014/04/04)へのリンク</em></a></p>
 <div class="article_page_left news_container text_content_container"> 
  <div class="text_info"> 
-  <p>Appleは登録済みのiOS開発者向けに<a href="https://developer.apple.com/design/">新しいマイクロサイト</a>を提供し、iOS 7のUI設計に関する動画やドキュメントやホワイトペーパーを公開している。サイトの目的は開発者に&quot;iOS 7向けに洗練された直感的に使えるアプリを開発する&quot;ために必要な情報を提供することだ。</p> 
-  <p>このサイトはiOS開発のための次のような基礎的なドキュメントを提供する。</p> 
-  <ul> 
-   <li><a href="https://developer.apple.com/library/ios/documentation/UserExperience/Conceptual/MobileHIG/">iOS Human Interface Guidelines</a>は新しいiOS7のUIのパラダイムを考慮して完全に書き直された。</li> 
-   <li><a href="https://developer.apple.com/library/ios/documentation/UserExperience/Conceptual/TransitionGuide/">iOS 7 UI Transition Guide</a>はiOS 7で導入されたビジュアルの変更、例えば、ボーダレスボタン、半透明バー、フルスクリーンレイアウトなどを要約している。</li> 
-   <li><a href="https://developer.apple.com/library/ios/documentation/UserExperience/Conceptual/UIKitUICatalog/">UIKit User Interface Catalog</a>はiOSアプリで使われているほとんどのUI要素とそれらの要素の構成方法を説明する。</li> 
-   <li><a href="https://developer.apple.com/design/tips/">UI Design Dos and Don'ts</a>はインタラクティビティ、リーダビリティ、グラフィクス、クラリティの4つのカテゴリで構成されているヒント集。</li> 
-  </ul> 
-  <p>これらに加えて、このサイトでは<a href="https://developer.apple.com/wwdc/">2013 Apple World Wide Developer Conference</a>や<a href="https://developer.apple.com/tech-talks/">Tech Talks</a>のiOS 7向けUI設計に関連する動画を紹介している。</p> 
-  <ul> 
-   <li><a href="https://developer.apple.com/wwdc/videos/?id=208">What’s New in iOS User Interface Design</a>。これは、Appleが特別にiOS 7向けに設計し直したアプリをレビューしながらiOS 7の設計原則を概観する。</li> 
-   <li><a href="https://developer.apple.com/wwdc/videos/?id=225">Best Practices for Great iOS UI Design</a>。失敗を避け、直感的で美しいアプリを作るための方法を教える。</li> 
-   <li><a href="https://developer.apple.com/tech-talks/videos/?id=2">User Interface Design for iOS 7 Apps</a>。レイヤリング、色付け、タイポグラフィ、モーション効果、アニメーションなどiOS 7の新しい機能を説明。</li> 
-  </ul> 
-  <p>上述のコンテンツはApple開発者サイトからのセレクションだ。特に、Apple開発者サイトは登録済み開発者向けに<a href="https://developer.apple.com/wwdc/videos/">WWDC 2013</a>のすべてのセッションを公開している。ここでは、iOS 7が紹介され、ここでしか見られないUI関連の動画がある。</p> 
-  <ul> 
-   <li><a href="https://developer.apple.com/wwdc/videos/?id=206">Getting Started with UIKit Dynamics</a>。iOS 7の物理エンジンを使ったアニメーションとトランジッションの説明。</li> 
-   <li><a href="https://developer.apple.com/wwdc/videos/?id=226">Implementing Engaging UI on iOS</a>。レスポンシブなアニメーションとトランジッションの実現方法。</li> 
-   <li><a href="https://developer.apple.com/wwdc/videos/?id=210">Introducing Text Kit</a>。iOS 7の新しいテキストエンジンの説明。</li> 
-   <li><a href="https://developer.apple.com/wwdc/videos/?id=221">Advanced Techniques with UIKit Dynamics</a>。ビューやビューコントローラーにダイナミクスを適用する方法。</li> 
-   <li><a href="https://developer.apple.com/wwdc/videos/?id=220">Advanced Text Layouts and Effects with Text Kit</a>。一歩進んだテキスト処理について。</li> 
-   <li><a href="https://developer.apple.com/wwdc/videos/?id=218">Custom Transitions Using View Controllers</a>。カスタムのトランジッションを定義する方法。</li> 
-   <li><a href="https://developer.apple.com/wwdc/videos/?id=214">Customising Your App’s Appearance for iOS 7</a>。ビューやコントロールをiOS 7へ合わせるためのカスタマイズについて。</li> 
-  </ul> 
-  <p><a href="http://techcrunch.com/2014/02/28/apple-adds-new-designing-great-apps-micro-site-for-ios-7-developers/">Tech CrunchのDarrell Etherington氏の記事によれば</a>、新しいマイクロサイトは新しいコンテンツを提供しないが、開発者が製品を磨き上げ、非開発者にはiOS 7の設計についてAppleがどう考えているかを理解する場になる。</p> 
+  <p>Facebook、Google、LinkedIn、Twitterは共同でリレーショナルデータベースを“ウェブスケール”にするため、<a href="http://webscalesql.org/">WebScaleSQL</a>を立ち上げた。これは、MySQL 5.6 Community Editionのブランチだ。</p> 
+  <p>MySQLは上述の企業ですでにウェブスケールの規模で使われているが、“同じような課題に直面して”いた。そこで共同で“各社で別々のブランチをメンテナンスするのではなく、自分たちのニーズに適う共通の変更を開発、メンテナンスし、さらにカスタマイズをする”ことにした、とFacebookのソフトウエアエンジニアであるSteaphan Greene氏はInfoQのインタビューに答えた。このプロジェクトは“オープンであり、MySQLコミュニティの全員がに貢献でき、全員に利益があります”。</p> 
+  <p>MariaDBではなくなぜMySQLなのか、という問いに対して、Greene氏は“MySQL-5.6が最適だという合意が生まれました。大規模な利用に耐えうる状態であり、MySQL-5.7で予定されている機能も私たちの行く末に適している”からだ、と答えた。</p> 
+  <p>これがMySQL 5.6.17のブランチであり、フォークではないことに注意する必要がある。WebScaleSQLで導入される変更は“MySQLのコミュニティリリースが続く限り”トランクに反映される、と<a href="http://webscalesql.org/faq.html">プロジェクトのFAQ</a>には書いてある。</p> 
+  <p>上述の4社は過去数ヶ月、MySQLについても協業してきた。自動化されたフレームワークを立ち上げ、コードベースに提案された変更を評価するための<a href="https://www.facebook.com/l.php?u=https%3A%2F%2Fgithub.com%2Fwebscalesql%2Fwebscalesql-5.6%2Fcommit%2F8b6adf69913226cab5cf8aaf45914e66b812692d&amp;h=yAQE0Aw1N&amp;s=1">ストレステストスイート</a>を開発した。コードの変更がサブミットされたとき、プロジェクトに参加している最低でもひとつの他の企業でも役に立つ場合にコードベースに取り込まれる。特定の企業にだけ便利なパッチは取り込まれない。</p> 
+  <p>今まで、LinkedInは“テストフレームワークの変更、改善の提案や他のメンバの変更のレビュー”を行ってきた、と同社のマネージャのDavi Arnaut氏は言う。</p> 
+  <p><a href="https://github.com/twitter/mysql/wiki/WebScaleSQL-and-Twitter-MySQL">Twitter</a>は<a href="https://github.com/webscalesql/webscalesql-5.6/commit/d086837b5487647b130ce471c45f8c9093e87855">MySQL 5.7からのバッファプール最適化のバックポート</a>や<a href="https://github.com/webscalesql/webscalesql-5.6/commit/5c030170c88b9d30165919e903eb6b5f54246b65">NUMAインターリーブポリシー</a>、多くの改善を行った。</p> 
+  <p><a href="https://github.com/webscalesql/webscalesql-5.6/commits/webscalesql-5.6.16">すべてのプロジェクトのコミット</a>は<a href="https://github.com/webscalesql">GitHubのプロジェクトページ</a>で確認できる。</p> 
+  <p>近い将来、Facebookは非同期クライアントを開発するつもりだ。このクライアントには、“テーブル、ユーザ、圧縮統計のプロダクションテストバージョン”が含まれている。</p> 
+  <p>長期的には、WebScaleSQLはMySQLの直面している大規模な配置での問題に対処する計画だ。</p> 
+  <p>WebScaleSQLはビルドは提供しない。ソースコードだけだ。これによって4社はそれぞれ、コードをダウンロードし、それぞれの企業固有のパッチ適用や最適化を行って、望ましいビルドを作成する。</p> 
  </div> 
 </div><br><br><br><br><br><br></body></html>

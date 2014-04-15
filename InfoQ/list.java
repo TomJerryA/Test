@@ -2,6 +2,9 @@
  <head></head> 
  <body> 
   <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/39.java">Udi Dahan on Event-Driven Architecture and Loosely Coupled Systems</a>We should build systems more loosely coupled to achieve properties like robustness, resilience and scalability, Udi Dahan emphasizes in a recent presentation discussing how we can model our systems using more event-driven and asynchronous patterns and some of the challenges developers face when introducing these principles and patterns into development. 
+  </div> 
+  <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/38.java">Hydra Takes On Hadoop</a>The social-networking company AddThis open-sourced Hydra under the Apache version 2.0 License in a recent announcement. Hydra grew from an in-house platform created to process semi-structured social data as live streams and do efficient query processing on those data sets. 
   </div> 
   <div> 
@@ -147,9 +150,6 @@
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/47.java">The Shallot 2014 Edition Published</a>The 2014 Edition of The Shallot - the online magazine which conducts deep analysis of the state of the information technology industry - has been released. 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/46.java">Lean UX Conference Returns to NYC</a>The Lean UX Conference is returning to NYC April 10-12, 2014 and this year includes a wide variety of speakers as well as workshops from Jeff Gothelf, Dave Snowden and Michael Cheveldave. I had a chance to sit down with one of the conference founders, Will Evans to discuss what to expect from the conference this year. 
   </div> 
  </body>
 </html>

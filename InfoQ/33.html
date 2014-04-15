@@ -1,19 +1,13 @@
-<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>RethinkDB 1.12发布</h3><p>RethinkDB是一款开源的分布式数据库，用于存储JSON文档，可以很容易地扩展到多台机器。它有一门令人愉快的查询语言，支持表连接和group等真正有用的查询，并且安装简单、易于学习。</p>
-<p>近日，RethinkDB 1.12发布，这是迄今为止最重大的发布之一。它带来了超过<a href="https://github.com/rethinkdb/rethinkdb/issues?milestone=53&amp;state=closed">200项功能增强</a>，其中包括：</p>
-<ul> 
- <li>极大地简化了map/reduce和聚合命令</li> 
- <li>缓存经过重大改进，消除了长期稳定性和性能方面的局限</li> 
- <li>支持ARM架构</li> 
- <li>新增四个用于对象和字符串操作的ReQL命令</li> 
- <li>许多Bug修复、稳定性增强和性能提升</li> 
-</ul>
-<p>新版本删除了group_by和grouped_map_reduce命令，代之以一个更强大的新命令group。该命令将文档序列分组，其后链接的任何命令都是在每个分组上单独调用，而不是在序列的所有文档上。而且，链接的命令不局限于内置的聚合命令，可以是任何一个或一系列命令。此外，除了已有的聚合命令count、sum和avg外，1.12版本还增加了min和max。读者可以进一步阅读，了解更多关于<a href="http://rethinkdb.com/api/python/#group">group命令</a>和新的<a href="http://rethinkdb.com/docs/map-reduce/">map/reduce基础架构</a>的信息。</p>
-<p>1.12版本对缓存的基础架构进行了许多改进。对于用户而言，最大的变化是他们不需要手动为表设置缓存大小了，RethinkDB会根据不同表的使用情况和系统可用内存空间动态地调整缓存大小。另外，为了帮助解决用户报告的各种稳定性问题，RethinkDB还做了许多用户看不到的修改。</p>
-<p>四个月前，<a href="https://github.com/davidthomas426">David Thomas</a>贡献了一个<a href="https://github.com/rethinkdb/rethinkdb/pull/1625">拉拽请求</a>，其中包含了在ARM上编译和运行RethinkDB所需要的修改。经过几个月的测试和各种修复，该请求已经并入了RethinkDB的主干。不过，ARM支持是试验性的，还有一些问题需要解决。</p>
-<p>另外，新版本还增加了几个用于字符串和对象操作的命令，如用于大小写转换的downcase和upcase、用于分隔字符串的split和以编程方式从键-值对创建JSON对象的object。读者可以从<a href="http://rethinkdb.com/api">API文档</a>中了解更多相关信息。</p>
-<p>最后，RethinkDB 1.12还在性能和稳定性方面做了许多改进，如在RethinkDB的Web服务器上增加了<a href="https://github.com/rethinkdb/rethinkdb/issues/1746">压缩支持</a>，增加了<a href="https://github.com/rethinkdb/rethinkdb/issues/1806">自动化性能回归测试</a>，<a href="https://github.com/rethinkdb/rethinkdb/issues/1043">改进了并行数据处理代码</a>等。</p>
-<p>这里需要特别提醒一下，上述功能增强中有一项破坏性修改，即用group代替group_by和grouped_map_reduce。用户在升级时需要针对这项修改调整应用程序，详情见<a href="https://gist.github.com/coffeemug/9518214">1.12迁移指南</a>。再者，升级之前务必先<a href="http://rethinkdb.com/docs/migration">迁移数据</a>。</p>
-<p>读者可以从<a href="http://rethinkdb.com/docs/install/">这里</a>下载试用。</p>
+<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>在Visual Studio 2013.2中创建你自己的脚手架</h3><p>ASP.NET MVC的一个重要组成是一组名为脚手架的代码生成器。<a href="https://en.wikipedia.org/wiki/Scaffold_(programming)">受Ruby on Rails的启发</a>，这些代码生成器可以被用来基于一个模型类快速创建控制器和视图。虽然不使用它们也可以完成开发工作，但这常常需要编写大量的样板文件，如果写得有错误，即使能通过编译，在运行期也会出错。</p>
+<p><u><a href="http://www.asp.net/visual-studio/overview/2013/aspnet-scaffolding-overview">ASP.NET Scaffolding</a></u>被认为是Visual Studio 2013的新特性，而目前ASP.NET MVC已经有了支持数个版本的类似工具。在VS 2013 Update 2中的新功能使你可以创建自己的脚手架，这些脚手架可以嵌入到整个框架中。你可以从<u><a href="http://blogs.msdn.com/b/webdev/archive/2014/04/03/creating-a-custom-scaffolder-for-visual-studio.aspx">Basic Scaffolder项目类型</a></u>开始这个过程。</p>
+<p>设置头信息（名称、版本等等）之后，你需要决定是不是显示一个自定义的UI。这个UI被ShowUIAndValidate的抽象方法调用，可以专门为用户提供附加选择。如果不需要，简单地覆盖这些方法直接返回true就可以了。</p>
+<p>Joost de Nijs继续介绍说，</p>
+<blockquote> 
+ <p>现在，脚手架工已经有了做脚手架所必需的用户输入（以及你已经持久化的数据），是修改项目的时候了。在Scaffolding框架中内嵌了几类action，它们能帮助你构建自己的脚手架，这些都在Microsoft.AspNet.Scaffolding.12.0 dll的ICodeGeneratorActionsService接口里。当然，你也可以创建你自己的action，但是，使用Scaffolding框架显式地暴露的这些方法调用的好处在于，脚手架的任何一步出现错误时都可以被回滚。项目将回滚到脚手架工被调用之前的状态。</p> 
+ <p>创建新的文件夹和静态文件非常简单，只需要调用正确的Action Service方法。但是如果用于实际的工作，你就需要去学习如何编写T4模版了。</p> 
+ <p>ASP.NET MVC与NuGet一起成长，所以当Scaffolder项目能够以编程的方式安装NuGet包时，也并不会令人感到惊奇。</p> 
+</blockquote>
+<p><strong>查看英文原文：</strong><u><a href="http://www.infoq.com/news/2014/04/Scaffold">Create Your Own Scaffold in Visual Studio 2013.2</a></u></p>
 <hr />
-<p>感谢<a href="http://www.infoq.com/cn/author/包研">包研</a>对本文的审校。</p>
+<p>感谢<a href="http://www.infoq.com/cn/author/邵思华">邵思华</a>对本文的审校。</p>
 <p>给InfoQ中文站投稿或者参与内容翻译工作，请邮件至<a href="mailto:editors@cn.infoq.com">editors@cn.infoq.com</a>。也欢迎大家通过新浪微博（<a href="http://www.weibo.com/infoqchina">@InfoQ</a>）或者腾讯微博（<a href="http://t.qq.com/infoqchina">@InfoQ</a>）关注我们，并与我们的编辑和其他读者朋友交流。</p><br><br><br><br><br><br></body></html>

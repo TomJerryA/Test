@@ -1,1 +1,1 @@
-ASP.NET Identity 2 Adds Two-factor Authentication, Account Lockout, Security Stamp and Bug Fixes
+Udi Dahan on Event-Driven Architecture and Loosely Coupled Systems

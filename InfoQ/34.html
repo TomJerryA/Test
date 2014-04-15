@@ -1,71 +1,7 @@
-<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>如何缓存存储过程的结果</h3><p>Brent Ozar是咨询公司<a href="http://www.brentozar.com/">Brent Ozar Unlimited</a>的创始人和负责人，同时也是一名微软最有价值专家和SQL Server DBA。他发表了一篇博文，介绍一种缓存存储过程结果的方案及应用场景。</p>
-<p>在文章开头，他给出了这样一个场景：一家在线商店需要在每个物品的页面上显示用户买过的相关产品。他认为，在完美的世界中，这些数据应该在Web/应用层缓存。但是，有时候，开发人员会构建存储过程来获取这类数据，而最终存储过程的调用过于频繁。</p>
-<p>Brent指出，对于这种已经使用了存储过程的情况，可以构建一个缓存供存储过程使用。</p>
-<p>假如加入缓存层之前的代码如下：</p>
-<pre>
-CREATE PROCEDURE dbo.usp_GetRelatedItems
-@ItemID INT AS
-BEGIN
-SELECT RelatedItemID,RelatedItemName
-FROM dbo.BigComplicatedView
-WHERE SoldItemID=@ItemID;
-END
-GO
-</pre>
-<p>代码一：原来的存储过程</p>
-<p>则加入缓存层之后的代码如下：</p>
-<pre>
-CREATE PROCEDURE dbo.usp_GetRelatedItems
-    @ItemID INT AS
-BEGIN
-  IF EXISTS(SELECT * FROM Cache.dbo.GetRelatedItems
-            WHERE ItemID=@ItemID)
-      SELECT * 
-      FROM Cache.dbo.GetRelatedItems
-      WHERE ItemID=@ItemID
-  ELSE
-      SELECT RelatedItemID,RelatedItemName
-      FROM dbo.BigComplicatedView
-      WHERE SoldItemID=@ItemID;
-END
-GO
-</pre>
-<p>代码二：实现缓存（一）</p>
-<p>代码二引入了一个新表Cache.dbo.GetRelatedItems，其中Cache是新建的数据库。该表中的列比usp_GetRelatedItems的返回结果多了一个输入字段和一个ID，其格式如下：</p>
-<p><img src="http://infoqstatic.com/resource/news/2014/03/cache-store-process/zh/resources/0330000.png" width="600" _href="img://null" _p="true" alt="" /></p>
-<p>该表中的数据可以根据需要每天晚上或者每周进行一次truncate。另外，在实际工作中实现这样一个方案时，他还会根据大量A/B性能测试的结果创建恰当的聚簇索引。</p>
-<p>代码二并未对缓存表进行操作。如果数据没有缓存，其实需要将其插入缓存表，代码如下：</p>
-<pre>
-CREATE PROCEDURE dbo.usp_GetRelatedItems
-    @ItemID INT AS
-BEGIN
-  /*查看待查找的记录是否已经缓存*/
-  IF NOT EXISTS(SELECT * FROM Cache.dbo.GetRelatedItems
-            WHERE ItemID=@ItemID)
-      BEGIN 
-        /*缓存中没有记录，因此插入缓存*/
-        INSERT INTO Cache.dbo.GetRelatedItems
-          (ItemID,RelatedItemID,RelatedItemName)   
-        SELECT RelatedItemID,RelatedItemName
-        FROM dbo.BigComplicatedView
-        WHERE SoldItemID=@ItemID;
-      END
-  /*从缓存中获取记录*/    
-  SELECT * 
-  FROM Cache.dbo.GetRelatedItems
-  WHERE ItemID=@ItemID      
-END
-GO
-</pre>
-<p>代码三：实现缓存（二）</p>
-<p>他承认，这种做法会增加SQL Server的写负载，但他只有在面临下面这些情况时才使用这种方案：</p>
-<ul> 
- <li>操作极为密集但只读的存储过程</li> 
- <li>调用非常频繁（每分钟几百或几千次）</li> 
- <li>其结果变化频率少于每天一次（或者不关心实时精度）</li> 
- <li>业务需要非常快的系统改进速度，没有时间等着开发人员实现一个缓存层</li> 
-</ul>
-<p>最后，他指出，这只是紧急情况下让业务恢复运行的一种创可贴式方案。另外，他还推荐了一些与缓存相关的资源，包括<a href="http://www.brentozar.com/archive/2013/02/the-fastest-query-is-the-one-you-never-make/">最快的查询是不用执行的那个</a>、<a href="http://www.brentozar.com/archive/2012/05/picking-your-cache/">选择缓存方式</a>、<a href="http://www.brentozar.com/archive/2011/04/better-living-through-caching/">通过缓存让系统更好地运行</a>。有兴趣的读者可以进一步阅读。</p>
+<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>通过Syslog4NET整合Linux和Windows日志</h3><p>无论什么服务器环境，都需要准确记录日志。为了便于集中管理日志，应用程序通常会把日志记录到主机操作系统的中央日志系统上。对于Windows系统这指的是事件查看器（Event Viewer），而Linux/UNIX系统则是指Syslog，这种状况已经持续了几十年。这种系统级的差异使得在异构环境下很难统一日志管理。正如其名字显示的那样，<a href="https://github.com/merchantwarehouse/syslog4net">Syslog4net</a>为.NET应用程序提供了一种简单的方式可以直接把日志记录到Syslog守护进程 。 </p>
+<p>Syslog4net是<a href="https://logging.apache.org/log4net/">log4net</a>的一个插件，借助于该插件log4net能够创建出符合RFC5424标准的信息。虽然log4net现在可以把消息写入Syslog服务器，但是并不满足Syslog4net提供的标准格式。使用RFC5424标准可以提供更多的域，包括消息优先级，应用程序名称和多个主机间的主机名。该小组指出，除了这些域，Syslog4net还可以用来记录异常。异常信息会被记录到Syslog，而异常的全部细节（消息，堆栈跟踪等）则会被记录在本地。这保证了发生异常时不会出现日志溢出的情况。最后，Syslog4net满足任何数据（键、值）记录的需求。 </p>
+<p>Syslog4net由Dominic Lachowicz和 Joe Polino 编写，版权归Merchant Warehouse LLC所有。该项目是开源的，且在Apache许可下可用。项目文件托管在<a href="https://github.com/merchantwarehouse/syslog4net">GitHub</a>上，使用的语言是C#。 </p>
+<p><strong>查看英文原文：</strong><a href="http://www.infoq.com/news/2014/03/syslog4NET">Integrating Windows Logging Through Linux With Syslog4NET </a></p>
 <hr />
-<p>感谢<a href="http://www.infoq.com/cn/author/包研">包研</a>对本文的审校。</p>
+<p>感谢<a href="http://www.infoq.com/cn/author/孙镜涛">孙镜涛</a>对本文的审校。</p>
 <p>给InfoQ中文站投稿或者参与内容翻译工作，请邮件至<a href="mailto:editors@cn.infoq.com">editors@cn.infoq.com</a>。也欢迎大家通过新浪微博（<a href="http://www.weibo.com/infoqchina">@InfoQ</a>）或者腾讯微博（<a href="http://t.qq.com/infoqchina">@InfoQ</a>）关注我们，并与我们的编辑和其他读者朋友交流。</p><br><br><br><br><br><br></body></html>

@@ -1,11 +1,16 @@
-<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>面向对象设计原则与函数式编程</h3><p><a href="http://insightfullogic.com/about/">Richard Warburton</a>最近在演讲中讲到，面向对象编程有诸多公认的设计原则，比如<a href="http://en.wikipedia.org/wiki/SOLID">SOLID</a>原则，但是转向函数式编程后，许多开发人员就不知道如何运用这些设计技巧了。</p>
-<p><a href="http://blog.ploeh.dk/about.html">Mark Seemann</a>在最近的一篇博客中也就同一主题发表了自己的看法，如果你能将SOLID原则发挥到极致，那么函数式编程同样非常吸引人。</p>
-<p>Richard是伦敦JCP委员会的一员。在演讲中，他认为SOLID原则——由<a href="http://en.wikipedia.org/wiki/Robert_c_martin">Robert C. Martin</a>在21世纪初期提出——是公认的面向对象编程设计原则之一，并仔细分析了SOLID的五个原则，试图找出与函数式相同或者至少与某一功能相关的蛛丝马迹。</p>
-<p>根据Richard的经验，尽管许多开发人员不知道在函数式设计中如何使用已有的设计技巧，但是函数式编程往往有助于实现SOLID原则，并且在实现面向对象的封装方面，函数式思维确实能够助你一臂之力。</p>
-<p>Richard得出的结论是每个SOLID原则与函数式都有对应关系。我们不用放弃那些已有的设计模式；与之相反，通过简化或清理，或者以一种简化方式使用这些已有知识，我们还能改善已有设计模式。</p>
-<p>Mark是一位软件架构师并兼职独立顾问。以他的经验，SOLID原则可以促成一种设计风格，而且该风格使函数式编程颇有吸引力。</p>
-<p>当使用SOLID原则中的单一职责原则（<a href="http://en.wikipedia.org/wiki/Single_responsibility_principle">SRP</a>）和接口隔离原则（<a href="http://en.wikipedia.org/wiki/Interface_segregation_principle">ISP</a>）时，最终的结果是代码库中有很多细粒度接口和类，每个这样的类和接口只有一个方法。</p>
-<p>所以Mark由此得出结论，如果因为反复使用SOLID原则而导致很多只有一个方法的小类，那么我们可以将函数建模成具有数据的行为，这也可能是转向函数编程语言的机会，如F#语言。</p>
+<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>Apache Hadoop 2.4.0发布</h3><p>Hadoop 2.4.0已于<a href="http://hortonworks.com/blog/apache-hadoop-2-4-0-released/">近日发布</a>。这是今年发布的第二个版本，上一个版本是2月份发布的Hadoop 2.3.0。 </p>
+<p>该版本带来了很多重要的特性<a href="http://hadoop.apache.org/releases.html#07+April%2C+2014%3A+Release+2.4.0+available">增强</a>，包括： </p>
+<ul> 
+ <li>支持HDFS中的访问控制列表</li> 
+ <li>对HDFS中的滚动升级提供了原生支持</li> 
+ <li><a href="https://issues.apache.org/jira/browse/HDFS-5698">使用protocol-buffer对HDFS FSImage进行序列化和反序列化</a>，使运维升级可以更平滑地进行</li> 
+ <li>在HDFS中提供了完整的HTTPS支持</li> 
+ <li>支持YARN资源管理器（ResourceManager）的自动故障切换（高可用支持）</li> 
+ <li>通过应用历史服务（<a href="https://issues.apache.org/jira/browse/YARN-321">Application History Service</a>）和应用时间轴服务（<a href="https://issues.apache.org/jira/browse/YARN-1530">Application Timeline Service</a>）增强了对YARN上的新应用的支持</li> 
+ <li>通过向YARN CapacityScheduler中<a href="https://issues.apache.org/jira/browse/YARN-185">添加抢占（Preemption</a>）来支持强服务等级协议（SLA）</li>
+</ul>
+<p>该版本还修复了很多bug。欲了解更多细节，可以查阅<a href="http://hadoop.apache.org/docs/r2.4.0/hadoop-project-dist/hadoop-common/releasenotes.html">发布说明</a>。新版本可以在Hadoop的网站上<a href="http://mirror.bit.edu.cn/apache/hadoop/common/hadoop-2.4.0/">下载</a>。 </p>
+<p>根据Hadoop的<a href="http://wiki.apache.org/hadoop/Roadmap">路线图</a>，2.5.0版本将继续增强异构存储、动态资源配置等特性，该版本计划于5月份发布。</p>
 <hr />
-<p>感谢<a href="http://www.infoq.com/cn/author/臧秀涛">臧秀涛</a>对本文的审校。</p>
+<p>感谢<a href="http://www.infoq.com/cn/author/梁堰波">梁堰波</a>对本文的审校。</p>
 <p>给InfoQ中文站投稿或者参与内容翻译工作，请邮件至<a href="mailto:editors@cn.infoq.com">editors@cn.infoq.com</a>。也欢迎大家通过新浪微博（<a href="http://www.weibo.com/infoqchina">@InfoQ</a>）或者腾讯微博（<a href="http://t.qq.com/infoqchina">@InfoQ</a>）关注我们，并与我们的编辑和其他读者朋友交流。</p><br><br><br><br><br><br></body></html>

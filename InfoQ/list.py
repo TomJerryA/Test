@@ -2,6 +2,12 @@
  <head></head> 
  <body> 
   <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/18.py">MySQLを“ウェブスケール”にするためにFacebook, Google, LinkedIn,Twitterが協力</a>Facebook、Google、LinkedIn、Twitterは共同でリレーショナルデータベースを“ウェブスケール”にするため、WebScaleSQLを立ち上げた。これは、MySQL 5.6 Community Editionのブランチだ。 
+  </div> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/17.py">TypeScript 1.0 のリリース</a>Microsoft は TypeScript 1.0 のリリースを発表し、VS2012/VS2013 や Eclipse や source form 等のプラットフォームで利用可能になった。 
+  </div> 
+  <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/16.py">Ratchetが真のフレームワークに，新たなホスト先も</a>モバイルアプリのプロトタイピングツールRatchetが拡張されて，完全なアプリケーションフレームワークになるとともに，BootstrapのGithubレポジトリに移動された。さらにドキュメントが更新され，iOSとAndroid用のテーマも追加されている。 
   </div> 
   <div> 
@@ -144,12 +150,6 @@
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/23.py">ビッグデータ技術を用いたグラフ処理</a>極度に大きなグラフの処理は現在でもなお難しい問題だ。しかし最近のビッグデータ技術の進歩は，このようなタスクをより実用的なものにしている。ニューヨークを拠点にクロスデバイスなコンテント配信を手掛けているTapadはビッグデータを活用して，テラバイトサイズのデータにまで拡張可能なグラフ処理を，ビジネスモデルの中心とするスタートアップだ。 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/22.py">Etsyはいかにして1日に50回ものデプロイをしているのか</a>Daniel Schauenberg氏は先日のQCon Londonで、DevOpsや継続的インテグレーションを実践していることで有名なEtsyは1日に50回ものデプロイをしていると語った。リスクを最小限に抑えながらこのペースの変更を実現するためには、完全に自動化されたデプロイメントパイプライン、徹底的なアプリケーションのモニタリング、IRCベースの共同作業、これらすべてが重要なのだ。Etsyの訪問者数は毎月6千万、月あたりのページビューは15億だ。 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/21.py">Espresso LogicがDBaaSのストアドプロシージャを呼び出せるRESTful APIを提供</a>Espresso Logicが同社のDBaaSサービス用のストアドプロシージャにRESTfulなエンドポイントを追加した。 
   </div> 
  </body>
 </html>

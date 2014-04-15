@@ -1,1 +1,1 @@
-Angular.JS と ASP.NET を利用した Single Page アプリケーションの作成
+TypeScript 1.0 のリリース

@@ -2,6 +2,9 @@
  <head></head> 
  <body> 
   <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/10.htmlb">投资于质量，不再有技术债务</a> 在软件系统中处理技术债务是一个复杂的挑战。代码总是能进一步优化，但客户只关心功能。本文讨论一个新的比喻“质量投资（Quality Investment）”。它有助于更好地沟通系统质量，并通过权衡偿还技术债务与投资回报来指导质量提升。 
+  </div> 
+  <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/10.htmlb">左耳朵耗子谈云计算：拼的就是运维</a> 本文根据InfoQ中文站跟陈皓（@左耳朵耗子）在2014年3月的一次聊天内容整理而成。在沟通中，陈皓分享了自己对云计算的理解，包括云计算为什么会分三层，实现一个云平台的难点在什么地方，运维之于云计算的重要性，电商云为什么有价值等。 
   </div> 
   <div> 
@@ -147,9 +150,6 @@
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/23.htmlb">Node.js V0.12新特性之Cluster轮转法负载均衡</a> Node核心代码的提交者Ben Noordhuis和Bert Belder会写一系列的文章来介绍Node 0.12的新特性,大概会有7到8篇的样子 。在这第一篇文章中，Ben会讲一讲新的轮转法集群算法。 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/22.htmlb">现代企业中性能分析的反模式</a> 文中我们提出了一些在现代企业平台中进行性能分析时最常见的反模式，包括它们的根源以及矫正策略。 
   </div> 
  </body>
 </html>
