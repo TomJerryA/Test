@@ -1,52 +1,48 @@
-<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>天猫推荐算法团队的那些事儿</h3><p>天猫技术部算法组是一个相对比较新的团队，刚刚成立一年，目前有10个算法工程师和5个开发工程师。这个团队所负责的内容是天猫上的数十个推荐产品，这些推荐产品帮助消费者找到他们喜欢的东西，将用户跟商品匹配的路径缩短。当然对天猫平台来说，推荐算法的价值在于提高转化率。从去年的双十一开始，天猫技术部推荐算法组第一次将推荐产品引入到了双十一大促活动当中。</p>
-<p>2014年，阿里巴巴集团举办了<a href="http://102.alibaba.com/competition/addDiscovery/gameIntroduce.htm">阿里巴巴大数据竞赛</a>，大赛的规则、题目、比赛数据、评价标准与评审，都是由算法组负责。最近，InfoQ中文站采访了这个团队的负责人张奇（得福），了解天猫推荐算法组的团队情况与工作内容。</p>
-<h3>嘉宾简介</h3>
-<p>张奇，花名得福，2010年毕业于中国科学技术大学计算机系，信息检索方向博士。2010年7月加入阿里云计算， 搜索广告组，从事搜索广告算法研究，参与Yahoo中国搜索中搜索广告的排序算法设计，负责了国内最大规模之一的，每天近40亿网页浏览记录的挖掘、用户行为分析和User Profile 建模。2012年3月加入天猫产品技术部，推荐算法组，负责天猫推荐算法的改进和数十个推荐业务的优化，包括PC推荐业务、无线推荐业务，建立起一套基于机器学习的推荐算法流程。</p>
-<p><strong>InfoQ：简单介绍一下天猫技术部推荐算法组的职责和团队分工？</strong></p>
-<blockquote> 
- <p>得福：推荐算法和搜索、广告系统类似，很多模块之间都有上下游关系，如分析用户偏好兴趣，采集用户点击、购买行为，计算用户现在想买什么，比如想买连衣裙还是t-shirt，连衣裙是日韩风格还是欧美风格。还有的组做排序，比如有一堆的商品，连衣裙，天猫有几十万款连衣裙，给用户看什么？这就需要先做品牌、价位的筛选，再有个性化排序，给每个商品计算分数，通过预测点击率、购买率，来给候选商品做重排序，这样选出10个、20个商品给用户看。另外还有一些固定的物理属性，如用户的性别、收入水平等。每个模块都有上下游关系，不同的人做不同的系统。每个推荐流程都有用户行为分析、商品检索、个性化排序、返回前台的过程。</p> 
- <p>产品上来说有不同分工，我们这边也是PM制度：比如一共有40~50个推荐产品，如果有新的产品要开发，就需要PM来协调上下游的模块的同事一起去完成。PM跟运营或PD沟通需求是什么，需要我们怎样支持，需求怎样拆解成现有的推荐算法能够支持的模块，然后安排各个模块的同学去开发，还要监控上线之后产品的效果，效果好或不好，有数据报表，不好有改进意见。每个产品都要有同学去负责。</p> 
- <p>整个推荐分商品推荐、品牌推荐、活动这三种，如果一个同事对某种类型比较熟悉了，跟对应的业务方也非常熟悉了，可能他就专门把这个类型的产品负责好。商品推荐比较广泛，推荐比较多，就要分给不同的同学。总体来说，这一块在系统上是横向的划分，业务上是纵向的划分。</p> 
-</blockquote>
-<p><strong>InfoQ：你以前做的是阿里云搜索。搜索和推荐产品上从算法和产品的角度来看，差别大么？</strong></p>
-<blockquote> 
- <p>得福：算法和产品都不太一样。算法方面，搜索是处理带有明确意图的query，很多工作都基于对query的理解上面，包括query怎么分词，如何抽取有用的信息，包括品牌、商品型号、类目等，就是通过query的关键词抽取来反映用户意图，然后做查询、排序。推荐的话，用户不会输入query，他们用自己的行为表达自己的兴趣。对我们来说这更困难，你要从非常多的行为里把用户的兴趣抽象出来，我们需要做很多用户意图理解的模块。这是两者在算法上最大的区别。</p> 
- <p>产品方面，搜索是一个通用系统，固定的产品形式就是有一个框。推荐的产品可以有很多变种，不同行业也不一样，比如服装可能是基于风格、搭配来推荐，书籍、音乐则是另外一种推荐方式，比如书籍要考虑话题、类别、知识水平，所以比搜索来说，产品形式会更加复杂。</p> 
-</blockquote>
-<p><strong>InfoQ：验证新算法会有AB测试吧？怎么做的？</strong></p>
-<blockquote> 
- <p>得福：我们的测试有两种，一种离线测试（线下测试），一种线上测试。一开始我们都做线上AB test，你拿5%或10%的流量供测试，95%或90%的流量作为基准，然后你可以做参数变动或算法调整。这是以前。后来我们考虑到，因为同时会有很多算法想要做测试，一方面流量有限，而且对天猫来说流量是非常值钱的，每个用户可能只有20分钟或者30分钟，所以一个算法如果未经验证就到线上做AB，其实是很浪费流量的，对用户的体验也不好，5%或10%的用户可能会使用一个非常差的版本。</p> 
- <p>所以渐渐就开发了一套离线评测方法，不需要线上流量就能测试：它用以前的日志去模拟现在的行为，相当于把日志作为模型的输入，看不同版本的算法在日志上跑的结果怎么样，来判断这个东西放到线上后大概的效果。这种系统不会100%准确，离线结果A比B好10%并不表示在线上也是10%，但一般如果离线显示A比B好，那到线上A一般也会比B好，好多少不一定。我们用离线方法就可以淘汰很多不太靠谱的算法——A如果比B明显要差，我们就可以去掉。只有A比B好，我们才拿到线上测，保证流量能够被充分利用。另一个好处是，离线测试十分快速，因为处理日志跑起来是很快的，可能十几分钟就跑完了很大的用户量，而线上一方面流量少——不可能切换太多过来，同时你需要看很多天，效果才能稳定下来，可能需要一到两周才能看出效果。</p> 
- <p>所以这两个方法现在我们同时在用，互相补充。</p> 
-</blockquote>
-<p><strong>InfoQ：天猫算法跟产品相关性比较大，会有很多跟产品的沟通。而你们也在产品开发更下一个层面。跟PM、PD、运营的沟通模式是怎样的？</strong></p>
-<blockquote> 
- <p>得福：PD是我们的需求方。PD冲在最前面，跟业务靠的比较近，甚至会跟业务绑在一起。PD去了解业务的需求，然后提前跟我们交流需求是否合理，如果合理且我们能接受开发量，就回去写PRD、MRD这种文档。这可能会涉及很多个开发团队，就要把开发团队的工作量、时间都安排好，最终确定一个上线时间。</p> 
- <p>一般PD会先写MRD，证明该产品需求是合理的。再写PRD，对产品进行详细的功能描述，分哪些模块，谁来开发，都要涉及。最后会有PRD评测，所有相关方都会到，如果有意见会让PD去改。如果大家觉得OK，PD需要指定PM和最终上线时间，如每个团队在哪些时间点要提供哪些接口出来，测试时间等等。</p> 
-</blockquote>
-<p><strong>InfoQ：你们在去年完成了多少项目？</strong></p>
-<blockquote> 
- <p>得福：我们不是按照项目的个数来算工作量。我们总体的评价是，通过推荐帮天猫带来多少成交，这是我们最重要的指标。这些指标的实现过程有很多小项目累加，包括新项目的开发和老项目的优化，目的都是提高转化率，不会拆的那么细。</p> 
- <p>其他具体的方向也有一些，比如无线的产品创新做的如何，或者大赛的支持等等。</p> 
-</blockquote>
-<p><strong>InfoQ：你在去年最值得分享的成就是什么？</strong></p>
-<blockquote> 
- <p>得福：双十一。去年是我们第一次在双十一尝试这种千人千面的推荐方式，而不是纯卖场的方式，我们是第一次做这种尝试，也突破了很多阻力。当时开发非常辛苦，也不是很高科技，很多跟运营一起的工作，数据都是excel来传递，自动化系统都没有准备好，因为系统没有打通，所以很多人肉的工作，非常痛苦。那段时间加班很多，容易出错，很多时间用来做协调的工作，不过最后效果还是很好的，转化率比原来那种卖场方式能提高10%~20%左右，给业务带来比较多的价值。</p> 
-</blockquote>
-<p><strong>InfoQ：转化率是对整个团队的考评。对于每个人的考评，你们是怎么做的？</strong></p>
-<blockquote> 
- <p>得福：我们对工程师个人的考评主要分三个部分：1、业务推动，比如承接了哪些新产品开发，在过程中起了什么作用，是PM、模块开发还是数据报表开发等。如果作为PM，对推动业务做了什么，比如老业务上去可能效果并不好，你是否通过一些主动的行为——如改变产品形式——来把它的效果提升。这是很大一块。2、技术工作，如你在这段时间有没有算法方面的创新？数据结果有没有做产品化、工具化，把之前做的工作总结、凝练、抽象出来，让别的同学也可以去用？3、团队贡献，如你是否做了一些对其他同学支持、分享的工作。这个跟前面两个也有关系，相当于是从前两个部分中抽取出跟团队支持相关的内容来进行评估。</p> 
-</blockquote>
-<p><strong>InfoQ：任务的分配是指派的，还是大家可以自己选择感兴趣的方向？</strong></p>
-<blockquote> 
- <p>得福：一开始肯定是指派的任务。到你熟悉整个业务了，或者对某个方向掌握非常好了，就会放手让这个同学去做某一块的业务，不需要team leader去管。一般可能需要半年时间。</p> 
-</blockquote>
-<p><strong>InfoQ：你们的团队招聘主要是什么渠道？</strong></p>
-<blockquote> 
- <p>得福：我们的社招不多，应届生和转岗比较多。对应届生，如果是研究生，我们要求他要么是工程能力很好，项目的深度、广度掌握的比较好，跟我们的方向比较一致，要么是研究做的比较好，论文质量高。社招的话，因为他有经验了，我们主要要求他的经验跟我们的方向比较一致，同时他在之前公司做的结果比较好，做成功过一些项目，对项目细节和全局都能掌握的比较好，算法能力也比较好。我们对社招的要求比较高，名额也紧张，通过率比较低。</p> 
-</blockquote>
-<p><strong>InfoQ：对这次的天猫天池算法大赛有什么期待？</strong></p>
-<blockquote> 
- <p>得福：其实我们以前没想过这个比赛会做的这么大，原来我们只是觉得好玩就行了，在小圈子里面有兴趣的同学来一起玩，加强算法交流，也没有想限制在学生的范围，而是希望其他公司的同学也可以来一起玩，通过这个比赛加强交流，也认识认识其他公司的团队。</p> 
- <p>后来这个比赛做大了，做到集团层面了，整个集团层面可能希望有一些校招的效果，对我们来说也是更好的事情。如果有很好的学生愿意过来，我们当然非常高兴。不过我们更希望大家更纯粹的在这个平台上进行比赛。</p> 
-</blockquote><br><br><br><br><br><br></body></html>
+<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>Lambda表达式让Spark编程更容易</h3><p>近日，Databricks官方网站发表了一篇<a href="http://databricks.com/blog/2014/04/14/Spark-with-Java-8.html">博文</a>，用示例说明了lambda表达式如何让Spark编程更容易。文章开头即指出，Spark的主要目标之一是使编写大数据应用程序更容易。Spark的Scala和Python接口一直很简洁，但由于缺少函数表达式，Java API有些冗长。因此，随着Java 8增加了<a href="http://docs.oracle.com/javase/tutorial/java/javaOO/lambdaexpressions.html">lambda表达式</a>，他们更新了Spark的API。Spark 1.0将提供Java 8 lambda表达式支持，而且与Java的旧版本保持兼容。该版本将在5月初发布。</p>
+<p>文中举了两个例子，用于说明Java 8如何使代码更简洁。第一个例子是使用Spark的filter和count算子在一个日志文件中查找包含“error”的行。这很容易实现，但在Java 7中需要向filter传递一个Function对象，这有些笨拙：</p>
+<pre>
+JavaRDD&lt;String&gt; lines = sc.textFile(&quot;hdfs://log.txt&quot;).filter(
+new Function&lt;String, Boolean&gt;() {
+public Boolean call(String s) {
+return s.contains(&quot;error&quot;);
+}
+});
+long numErrors = lines.count();
+</pre>
+<p>在Java 8中，代码更为简洁：</p>
+<pre>
+JavaRDD&lt;String&gt; lines = sc.textFile(&quot;hdfs://log.txt&quot;)
+.filter(s -&gt; s.contains(&quot;error&quot;));
+long numErrors = lines.count();
+</pre>
+<p>当代码更长时，对比更明显。文中给出了第二个例子，读取一个文件，得出其中的单词数。在Java 7中，实现代码如下：</p>
+<pre>
+JavaRDD&lt;String&gt; lines = sc.textFile(&quot;hdfs://log.txt&quot;);
+//将每一行映射成多个单词
+JavaRDD&lt;String&gt; words = lines.flatMap(
+new FlatMapFunction&lt;String, String&gt;() {
+public Iterable&lt;String&gt; call(String line) {
+return Arrays.asList(line.split(&quot; &quot;));
+}
+});
+// 将单词转换成(word, 1)对
+JavaPairRDD&lt;String, Integer&gt; ones = words.mapToPair(
+new PairFunction&lt;String, String, Integer&gt;() {
+public Tuple2&lt;String, Integer&gt; call(String w) {
+return new Tuple2&lt;String, Integer&gt;(w, 1);
+}
+});
+// 分组并按键值添加对以产生计数
+JavaPairRDD&lt;String, Integer&gt; counts = ones.reduceByKey(
+new Function2&lt;Integer, Integer, Integer&gt;() {
+public Integer call(Integer i1, Integer i2) {
+return i1 + i2;
+}
+});
+counts.saveAsTextFile(&quot;hdfs://counts.txt&quot;);
+</pre>
+<p>而在Java 8中，该程序只需要几行代码： JavaRDD&lt;String&gt; lines = sc.textFile(&quot;hdfs://log.txt&quot;); JavaRDD&lt;String&gt; words = lines.flatMap(line -&gt; Arrays.asList(line.split(&quot; &quot;))); JavaPairRDD&lt;String, Integer&gt; counts = words.mapToPair(w -&gt; new Tuple2&lt;String, Integer&gt;(w, 1)) .reduceByKey((x, y) -&gt; x + y); counts.saveAsTextFile(&quot;hdfs://counts.txt&quot;);</p>
+<p>要了解更多关于Spark的信息，可以查看<a href="http://spark.apache.org/docs/latest/index.html">官方文档</a>。Spark只需<a href="http://spark.apache.org/downloads.html">下载</a>解压即可运行，而无须安装。</p>
+<hr />
+<p>感谢<a href="http://www.infoq.com/cn/author/辛湜">辛湜</a>对本文的审校。</p>
+<p>给InfoQ中文站投稿或者参与内容翻译工作，请邮件至<a href="mailto:editors@cn.infoq.com">editors@cn.infoq.com</a>。也欢迎大家通过新浪微博（<a href="http://www.weibo.com/infoqchina">@InfoQ</a>）或者腾讯微博（<a href="http://t.qq.com/infoqchina">@InfoQ</a>）关注我们，并与我们的编辑和其他读者朋友交流。</p><br><br><br><br><br><br></body></html>

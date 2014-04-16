@@ -1,15 +1,16 @@
-<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>Etsy是如何做到每天50次以上部署的</h3><p><a href="https://twitter.com/mrtazz">Daniel Schauenberg</a>在<a href="http://qconlondon.com/">伦敦QCon</a>大会上描述了<a href="https://www.etsy.com/">Etsy</a>是如何做到每天50次部署的。Etsy以其DevOps和持续交付的实践而闻名。一个完全自动化的部署管道、全面的应用监控和基于IRC（互联网中继聊天）的协作是能达到这个变更频率的同时又保持最小风险的重要因素。</p>
-<p>Etsy的开发策略是反复围绕着做许多小的、连续的变更。这样做的一个直接后果就是需要每天做很多次部署。用Daniel Schauenberg的话来说，在任何时刻每个Etsy的开发人员都需要知道下面这个问题的答案：“我现在有足够的信心来部署这个变更吗？”。为了能够每次都可以轻松部署，Etsy采取了一系列的工具和做法：强制基于IRC的沟通、开发者虚拟机、持续集成、一键式部署、全面的应用和系统监控、对于开发和运营团队都采取免责怪的事后检查（post-mortem）和随叫随到的政策。</p>
-<p>每个开发人员都拥有自己的通过<u><a href="http://www.getchef.com/">Chef</a></u>配置的<u><a href="http://www.linux-kvm.org/page/Main_Page">KVM</a></u>（基于内核的虚拟机）。在线上运营中使用的<a href="http://docs.opscode.com/chef_overview_cookbooks.html">cookbooks</a>也同样地用在了开发人员的虚拟机中，这意味着每个开发者都有自己完整的Etsy栈。任何人都可以通过<a href="http://codeascraft.com/2013/09/23/lxc-automating-containers-aka-virtual-madness-part-2/">Virtual Madness</a>(一个可以实现整个过程自动化的Web应用)来提供一个虚拟机。</p>
-<p>在持续集成方面，Daniel解释了<a href="https://github.com/etsy/TryLib">Try</a>是如何成为所有过程的核心。Try是一个工具，它允许开发人员在<a href="http://jenkins-ci.org/">Jenkins</a>(在Etsy中使用的持续集成工具)中<u><a href="http://codeascraft.com/2011/10/11/did-you-try-it-before-you-committed/">测试他的代码变更</a></u>，而不需要先提交到trunk中。Try有助于保持trunk干净从而实现可部署，而同时让开发人员能够快速、可靠地测试他们的变更。CI(持续集成)集群必须强大到足以支持150名​工程师，以及每天超过<a href="http://codeascraft.com/2013/09/23/lxc-running-14000-tests-per-day-and-beyond-part-1/">14000个测试集的运行</a>。<u><a href="https://linuxcontainers.org/">LXC</a></u>(Linux容器）会平衡工作的负载，它们还提供了隔离机制，确保不同测试的执行之间不会冲突。</p>
-<p>部署管道会经过Princess，或者工作台，这是一种上线前的环境。Princess的所有意图和目的就是上线环境，但只有Etsy的员工可以访问它。<u><a href="https://github.com/etsy/deployinator">Deployinator</a></u>是由Etsy构建并使用的部署工具，提供一键式部署。</p>
-<p>配置标志，也被称为功能标志，是部署过程中的一个主要组成部分。<a href="https://github.com/etsy/feature">通过其功能API</a>，Etsy能够做<u><a href="http://en.wikipedia.org/wiki/A/B_testing">A/B测试</a></u>，即完全启用或者禁用某一功能或一个给定功能的变体。</p>
-<p>监控是Etsy团队建立信心做持续交付的关键。开发人员做自己的功能监控，而且每个人都可以通过仪表盘看到所有的监控图表。Etsy具有这样一个策略，在默认情况下所有可以被绘制的信息都会被制成<u><a href="http://shouldigraphit.com/">图表</a></u>。随着时间的推移，指标的数量一直稳步增加，所以Etsy建立了<a href="http://codeascraft.com/2013/06/11/introducing-kale/">Kale</a>来帮助检测异常模式。所有的日志都可以通过<u><a href="https://github.com/etsy/supergrep">Supergrep</a></u>展现出来，Supergrep是一个基于Web的日志展示工具，这增加了日志的信噪比。</p>
-<p>IRC是贯穿Etsy的主要沟通工具，也是Etsy协作文化的关键。里面有很多不同的聊天室，每一个都具有特定目的。例如，在聊天室＃warroom中仅允许中断事故有关的会谈。聊天室是用来协调调查，讨论应对措施和解决方案监控的。与其他的聊天室一样，＃warroom是个鼓励新工程师们潜水的地方，因为这些聊天室被认为是学习的好地方。</p>
-<p>每次中断发生，或接近中断的时候，所有人被邀请来做事后检查。事后检查是一个重要的文化活动，如果财务和支持人员需要，他们也可以参与。事后检查是为了成为一个学习的机会，所以它们不应该包含责备。所有事后检查相关的信息被记录在<a href="https://github.com/etsy/morgue">Morgue</a>里面：日期、严重性、IRC日志、图表和补救措施。Morgue是Etsy为了保存事后检查记录而特别构建的另一种工具。</p>
-<p>对于运营、开发、支付和支持部门的员工都采取随叫随到的政策。开发人员通常轮流地在每四个星期里的某一周提供随叫随到的支持。该政策的目的是让每个人都意识到上线产品每天所面临的问题，使他们能够在开发新功能或改进现有流程时考虑到这些问题。</p>
-<p>Etsy拥有约60万的月访问量和每月1.5十亿页面浏览量。</p>
-<p><b>查看英文原文</b>：<a href="http://www.infoq.com/news/2014/03/etsy-deploy-50-times-a-day">How Etsy Deploys More Than 50 Times a Day</a></p>
+<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>Domino：数据科学即服务</h3><p><a href="http://www.dominoup.com/">Domino</a>是一个用于数据科学的PaaS（平台即服务）云计算平台，人们可以使用Python或R语言在这个云平台上做数据分析工作。</p>
+<p>据 Nick Elprin（Domino的创始人之一）所说，Domino 让数据科学家只需专注于自己的分析工作，而不用关注软硬件基础设施：</p>
+<blockquote> 
+ <p>“我们认为，随着数据量的增加和分析技术的越来越成熟，现代数据分析工具在易用性方面已经滞后，并且访问科学领域数据上还有一些不必要的限制。”</p> 
+</blockquote>
+<p>Domino平台上的三大支柱功能：</p>
+<ol> 
+ <li>&nbsp;<i>直接到云部署和执行</i>：Domino允许在EC2上运行现有的代码（Python、R、Matlab、Julia、shell scripts等等），以承载长时间运行或资源密集型任务。该系统还关注云端底层管件功能，比如: AMI管理，启动和停止机器，将数据安全传输到另一机器上，再将结果安全返回。</li> 
+ <li><i>数据科学的版本控制</i>：Domino团队计算过，类似于Git之类的分布式版本控制系统并不足以应付分析工作流，因为它们没能力处理大数据集，并且不能在输入和结果（例如图表、数字）间建立联系。Domino会自动保持整个项目的快照，目前最高至40GB，这样就很容易追溯整个工作的历史，包括代码、数据和结果。</li> 
+ <li><i>协作</i>：类似Github，Domino也可以用于合作开发项目。合作者可以查看、编辑并运行这个项目。Domino会检测冲突，运行结束后将更新的结果发送通知，并且它还有个内部笔记 ，方便讨论团队工作进展。</li> 
+</ol>
+<p>用<a href="http://inside-bigdata.com/2014/02/21/data-science-cloud-domino/">随收随付</a>的方式，Domino的定价范围从免费入门到每月付费订阅。正如InfoQ从 Nick Elprin那里了解到的，尽管这个平台还处于发展早期，但是它已经被各个<a href="http://bickson.blogspot.com/2014/03/domino-data-labs-run-data-analytics-in.html">科学领域的从业者</a>所使用: 从学者（如为研究分析了数千张图片的生态学家）到数据科学顾问（把它用于<a href="https://www.kaggle.com/">Kaggle比赛</a>），以及市场营销公司（帮助客户更好定向投递）。</p>
+<p><strong>参考英文原文：</strong><a href="http://www.infoq.com/news/2014/03/domino-datascience-as-a-service">Domino: Datascience-as-a-Service</a></p>
 <hr />
-<p>感谢<a href="http://www.infoq.com/cn/author/崔康">崔康</a>对本文的审校。</p>
+<p>感谢<a href="http://www.infoq.com/cn/author/侯伯薇">侯伯薇</a>对本文的审校。</p>
 <p>给InfoQ中文站投稿或者参与内容翻译工作，请邮件至<a href="mailto:editors@cn.infoq.com">editors@cn.infoq.com</a>。也欢迎大家通过新浪微博（<a href="http://www.weibo.com/infoqchina">@InfoQ</a>）或者腾讯微博（<a href="http://t.qq.com/infoqchina">@InfoQ</a>）关注我们，并与我们的编辑和其他读者朋友交流。</p><br><br><br><br><br><br></body></html>

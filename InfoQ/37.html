@@ -1,34 +1,56 @@
-<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>网宿推出移动应用分发与加速解决方案MAA</h3><p>3月26日，网宿推出了专门针对移动应用的分发与加速解决方案<a href="https://maa.chinanetcenter.com/index">MAA</a>，据网宿官方介绍，MAA能够在正常的通信速率基础上平均提升50%以上，并且可以代理目前大部分的传输协议。开发者只需要在自己的移动应用中嵌入SDK，通过4行代码就可以使用MAA功能。</p>
-<p>网宿科技副总裁刘洪涛首先谈到了MAA的产生背景：</p>
-<blockquote> 
- <p>m……从网宿平台的流量分析中，我们发现，移动端所占的流量从2010年的1%增长至2013年的8%…… 在影响移动应用网络传输过程的众多因素中，固网传输的环节造成的延时仅占到30%左右，而移动网络占70%。也就是说，在网络传输过程中移动网络消耗时间占比远高于固网。网宿MAA的重要意义在于首次将互联网传输过程的分发及优化延伸至移动终端，从而全面提升了固网以及移动网络的传输效率。</p> 
-</blockquote>
-<p>三年前网宿厦门的研发团队开始着手MAA的产品研发，目前团队已经形成了100人左右的规模，在被问及传统的CDN加速方面为什么不能直接应用于移动应用的加速时，MAA的产品经理刘喻博士回答道：</p>
-<blockquote> 
- <p>固网和移动网络有很大的不同，对于固网在第一次建立连接的时候一般需要十几到几十毫秒，我们认为这是不错的环境，但是在移动网络中，大量的连接时间超过了一百毫秒，平均时间是300毫秒，考虑到丢包和误码等情况，实际用户体验更差……</p> 
- <p>……传统的CDN网络优化是双边的，也就是说需要在接收端和发送端来配合优化，在网速的平台上这些都不是问题，但是在移动网络中，如果内容被放到了边缘节点，则这个问题是没有办法解决的……</p> 
- <p>MAA提供的SDK的作用就是在应用和边缘节点之间建立双向的优化通道，提高用户的可用带宽使用率。</p> 
-</blockquote>
-<p>随后，刘喻提到了MAA中具体使用到的技术与所尝试的优化：</p>
+<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>OpenStack大数据项目Sahara概述</h3><p>2013年4月，OpenStack社区知名厂商Mirantis正式宣布了基于OpenStack的开源BDaaS（BigData-as-a-Service）项目——Sahara（原名Savanna），正式开始了在OpenStack上构建大数据服务能力的努力。</p>
+<p>近日，开源技术专家章宇（<a href="http://weibo.com/yizhaolingyan">@一棹凌烟</a>）在<a href="http://yizhaolingyan.net/?p=134">其博客</a>上分享了对Sahara项目的研究心得。整个介绍系列分为7篇文章，除前言部分外，其余六篇分别是：</p>
 <ul> 
- <li>高效链路优化技术：网宿MAA支持链路复用，提高带宽利用率和应用响应速度；</li> 
- <li>上下行传输优化技术：网宿MAA有效提高移动APP上下行交互传输速率，加载速度提升50%，可用性提升至99.5%；</li> 
- <li>带宽感知及优化技术：网宿MAA支持智能检测终端网络环境，判断网络制式（2G\3G\WIFI\4G），并根据不同应用场景，实时调整移动加速策略；</li> 
- <li>内容智能适配：网宿MAA支持HTML、JS、CSS、TXT、XML无损压缩，自主研发的无线传输及压缩技术，实现传输效率提升40%；同时支持根据终端分辨率及网络环境智能调节图片大小。</li> 
+ <li><a href="http://yizhaolingyan.net/?p=145">Sahara概述</a>：介绍项目的目的、概况、发展等基本情况</li> 
+ <li><a href="http://yizhaolingyan.net/?p=155">Sahara使用方式</a>：介绍具体如何使用Sahara进行大数据业务操作</li> 
+ <li><a href="http://yizhaolingyan.net/?p=171">Sahara设计实现</a>：介绍Sahara的架构设计与实现</li> 
+ <li><a href="http://yizhaolingyan.net/?p=183">Sahara与AWS EMR和Serengeti的对比</a>：将Sahara与目前最知名的公有云大数据服务和Hadoop虚拟化项目进行简单对比分析</li> 
+ <li><a href="http://yizhaolingyan.net/?p=195">对Sahara的若干思考</a></li> 
+ <li><a href="http://yizhaolingyan.net/?p=199">小结与展望</a></li> 
 </ul>
-<p>另外在MAA的后台，会提供详细的访问数据与监测结果。</p>
-<p>在随后的采访中，我们针对如下的问题和刘洪涛、刘喻做了沟通：</p>
-<p><strong>InfoQ:刚才你说到网宿可能会成为云计算服务的提供商。假设网宿已经具备这样的能力，我想了解网宿在这块具体做哪些工作？</strong></p>
+<p>在《<a href="http://yizhaolingyan.net/?p=145">Sahara概述</a>》中，章宇介绍了Sahara的定位、功能的演进、社区支持力度与整体发展的趋势。</p>
+<p>Sahara最初的基本定位是基于OpenStack提供简单的Hadoop集群创建方式，不过随着项目不断演进，Sahara所涵盖的范畴也有所扩大。章宇<a href="http://yizhaolingyan.net/?p=145">从两个层面</a>介绍了Sahara项目的发展方向：</p>
 <blockquote> 
- <p>刘洪涛：其实是这样一个概念，我们现在讲云计算，其实就是IaaS、PaaS、SaaS，尤其是是IaaS这个层面。其实网宿肯定做的是底层，IaaS现在就是云存储、云主机，就没有别的。但是我们认为未来，再过若干年之后云计算这个行业的形态应该会发生很大变化，会细分出来，绝对不可能一个大平台一统天下，说所有的云都是这个样子，这是不可能的。所以我们认为未来一定会出现很多细分，其实我们倒过来看CDN这个行业最早期就被称为云计算的雏形，它最早能够实现网络资源的池化，它相当于一个资源池，能够按照需求去使用，而且能够复用。其实CDN最早被称为云计算的雏形，如果未来进入到云计算领域，现在已经进入到云计算领域里面去了，因为我们的CDN平台已经云化了，只不过我们是一个云分发的平台。那么再往下一步，这个只是传输环节，那么讲到存储、计算、安全，我认为未来伴随着CDN领域的成长，是有机会进入到那个领域里，这是必然的。将来互联网的平台服务提供者一定是多元化的，一定是有自己的个性特点，然后相互能够有交叉的这么一个形态出现，而不是只做自己。</p> 
+ <p>从服务层次的维度看，Sahara已经开始从利用OpenStack的IaaS能力，提供简单的大数据工具集群创建和管理服务，扩展到提供分析即服务（Analytic-as-a-Service）层面的大数据业务应用能力。Sahara v0.3中引入的EDP（Elastic Data Processing）就是一个明确的体现。</p> 
+ <p>从承载的业务类型维度看，Sahara也很有可能会迅速突破单一的Hadoop工具范畴，拓展支持其他新兴的大数据工具。例如，关于<a href="https://blueprints.launchpad.net/sahara/+spec/spark-plugin">提供Spark支持的BP</a>已经被提交至社区，目前正在等待review。</p> 
 </blockquote>
-<p><strong>InfoQ：网宿在SDN方面有没有哪些尝试？</strong></p>
+<p>Sahara项目的发展较快，其项目PTL Sergey Lukjanov已经宣布Sahara将于OpenStack Juno版本中<a href="http://www.gossamer-threads.com/lists/openstack/dev/36760?page=last">正式成为integrated项目</a>，目前代码已经提交，并在等待review，其版本演进可以参见<a href="https://wiki.openstack.org/wiki/Sahara/Roadmap">其wiki页面介绍</a>。目前Sahara已经被集成在RDO中，因此可以被更为简单方便的安装部署。</p>
+<p>《<a href="http://yizhaolingyan.net/?p=155">Sahara使用方式</a>》简单介绍了Sahara的使用模式、基本概念与操作流程。</p>
+<p>Sahara有两种使用模式：</p>
+<ul> 
+ <li>基本的大数据集群应用模式（基本模式）</li> 
+ <li>通过EDP机制引入的分析即服务模式（EDP模式）</li> 
+</ul>
+<p>简单来说，基本模式要求用户自己从底层搭建Hadoop虚拟机、建立集群，技术门槛较高；而EDP模式有点类似于AWS EMR服务，对底层的Hadoop集群操作和Hadoop业务操作进行了封装，暴露给用户的只有非常简单的接口，使用简便。</p>
+<p>章宇介绍了Sahara当中的节点（node）、节点组(node group)、节点组模板（node group template）、集群（cluster）、集群模板（cluster template）、任务（job）等关键概念，并简单列出了在基本模式下用Sahara建立Hadoop集群的操作流程。整个介绍比较概括，step by step的操作文档可参考<a href="http://docs.openstack.org/developer/sahara/devref/quickstart.html">Sahara官方的QuickStart</a>。</p>
+<p>接下来，章宇开始从研究代码的层面<a href="http://yizhaolingyan.net/?p=171">介绍Sahara的设计与实现</a>。Sahara的设计有两大特点：</p>
+<p>1、模块化、可配置：</p>
 <blockquote> 
- <p>刘洪涛：我们认为SDN跟CDN其实是在网络上是不同层面，SDN更偏底层。它要努力颠覆的是传统依赖于纯硬件的固网的传输网络这个层面，就是说三层网络上做工作。这不是CDN公司做的，这应该是华为、思科包括运营商在做的事情。</p> 
- <p>SDN发展之后将来对CDN是一个很大的促进。因为SDN使现有的硬件网络变得更加灵活。CDN大家也知道，是基于四层以上的网络，当你的底层网络变得更灵活的时候，那么CDN应用的形态的变化也可以变得更灵活，更加贴近用户的需求。如果SDN能够实现，其实我们CDN面临的瓶颈都可以解决。比如说CDN规模大了，你还面临节点规模的瓶颈，节点上面你跑的内容不同，也会有问题。包括节点的伸缩度、传输的伸缩度都有可能会碰到问题。那么希望CDN真的能够做到像想象那么灵活，这样的话对于CDN是一个革命性的改善，我们所处的基础环境变好了，我们可以做的更好。</p> 
+ <p>Sahara中的大量功能和机制，都基于可选择、可配置的模块化插件实现，例如：可以通过对engine的配置来选择不同的Hadoop集群编配引擎，通过对plugin的配置来选择不同的Hadoop发行版安装与部署方式和工具，等等。</p> 
 </blockquote>
-<p><strong>InfoQ：MAA跟传统的CDN产品相比，它跟我们最终用户接触的更近了、直接到终端。类似于这方面的开发，网宿未来有没有像现在这种手机应用，比如像手机加速等软件？他们和MAA有哪些区别？</strong></p>
+<p>2、代码重用：</p>
 <blockquote> 
- <p>刘洪涛：未来我们肯定会有。我们有针对用户做流量节省的工作，因为我们最开始做这个技术的时候就是在整个移动互联网去试探。我们最开始不可能直接抓一个客户说，你要不要跟我一起做？所以我们最开始推出了一个马头流量，这个东西是网宿推的。它最大的工作就是节省流量，其实是针对用户，他装在自己的手机里面，所有的应用都能够做流量节省。这个以流量节省为主，所以速度是一个附带功能。我们会把很多加速的技术放在不同版本上面让用户经验，发现不错、合适的会留在MAA这个产品里面，因为MAA毕竟是一个企业产品。它对我们来说有非常重要的利润，提供利润和收入。</p> 
- <p>刘喻：其实我们推出来面向终端用户，推到整个APP市场上让用户去使用，其实很大的初衷并不是说我们想做toC的市场，因为网宿科技一个toB的公司，定位非常清楚，我们不能跟自己的客户抢客户。所以出来这个产品的初衷就是说希望能够有几十万、上百万的用户，拿这些用户来验证我们的技术思路。我们叫马头流量产品，一个方面节省流量，另外一个可以提高速度。就像刘喻刚才讲的，拿各种提高速度的办法在不同的版本里面去发布，让用户去感受。因为有很多用户很愿意去互动，他也愿意跟我们提意见。因为这些客户端它有测试功能，所以我们可以直接把相关的网络参数传回来，去验证我们的加速效果怎样。换句话说，那是一个验证我们移动互联网的加速技术的产品，MAA推出的很多技术都是通过那个马头流量验证过来的。</p> 
-</blockquote><br><br><br><br><br><br></body></html>
+ <p>Sahara也尽可能重用了OpenStack自身提供的IaaS层组件及其服务，例如：利用Nova提供虚拟机资源，利用Horizon提供人机界面，等等。</p> 
+</blockquote>
+<p>Sahara对Horizon（界面）、Glance（镜像管理）、Keystone（身份认证）、Heat（集群配置）、Ceilometer（监控）、Nova（虚拟机管理）、Neutron（网络）、Cinder（块存储）和Swift（对象存储）都有不同程度的代码复用，其中Nova、Glance和Keystone是必要组件，其他组件可选用。</p>
+<p>Sahara的整体架构可参考<a href="http://yizhaolingyan.net/wp-content/uploads/2014/04/component.png">其架构图</a>。其中，章宇建议：</p>
+<blockquote> 
+ <p>在分析集群创建流程时，主要应关注sahara.api、sahara.service.api、sahara.service.engine和sahara.plugins这四个package的各自行为及相互关系。其中，sahara.service.api中的_provision_cluster()驱动了整个cluster创建的过程。</p> 
+</blockquote>
+<p>接下来，章宇从产品和技术的层面<a href="http://yizhaolingyan.net/?p=183">将Sahara与EMR、Serengeti进行了对比</a>，要点如下：</p>
+<ul> 
+ <li>EMR在Sahara基本模式的基础上融合了EDP模式的特点</li> 
+ <li>EDP的用户只需要指定“哪些数据”、“哪个集群”、“哪个程序包”这三要素，而完全不用关心集群如何创建、如何管理这样的与自己核心业务诉求无关的问题</li> 
+ <li>EMR的用户则除了需要在创建集群时指定大量信息外，还需要负责集群和业务的运行管理</li> 
+ <li>比较而言，EDP的用户是纯粹的大数据业务应用者，而EMR的用户则身兼业务应用和系统运维两种职责</li> 
+ <li>基于EMR的大数据解决方案，全面涵盖了数据的存储、计算、分析、共享等各个处理环节，这是Sahara还难以企及的</li> 
+ <li>Sahara和<a href="http://www.projectserengeti.org/">Serengeti</a>的区别，可以说是“应用云化”和“应用虚拟化”的区别。Serengeti项目的主要关注点在于如何为搭建在虚拟机环境下的Hadoop集群提高性能和可靠性，这里面的思考是Sahara可以借鉴的</li> 
+</ul>
+<p>介绍到这里，章宇<a href="http://yizhaolingyan.net/?p=195">对Sahara目前的状态</a>进行了概述，认为目前的Sahara还面临以下几点挑战：</p>
+<ul> 
+ <li>Sahara的管理平面性能存在疑问，创建和发布集群的等待时间有待测试</li> 
+ <li>复杂管理的成功率方面，目前Sahara中没有看到明确的处理机制，这是一个缺失</li> 
+ <li>Sahara搭建的Hadoop在虚拟化环境下的性能有待优化，不过这个问题可以等到前面两个关键问题解决了之后再来优化</li> 
+ <li>Auto-scaling的缺失。目前Sahara要扩展需要人工执行</li> 
+ <li>Sahara最大的亮点在EDP，其价值有待进一步挖掘</li> 
+</ul><br><br><br><br><br><br></body></html>

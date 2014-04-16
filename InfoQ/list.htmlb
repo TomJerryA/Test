@@ -1,6 +1,12 @@
 <html>
  <head></head> 
- <body> 
+ <body>
+  <div>
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/12.htmlb">给高管当教练</a> 敏捷教练们对与管理层一起工作并不感到陌生，他们常会与项目经理以及团队经理一道促进团队层面的变革。但现在他们需要促进管理层面的变革，这彻底改变了敏捷教练的工作范围。本文帮助敏捷教练了解他们的目标受众的语境，并提出一套与这种语境相匹配的教练语言。 
+  </div>
+  <div>
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/11.htmlb">微博关系服务与Redis的故事</a> 新浪微博的工程师们曾经在多个公开场合都讲到过，微博平台当前在使用并维护着可能是世界上最大的Redis集群，其中最大的一个业务，单个业务使用了超过 10T 的内存，这里说的就是微博关系服务。 
+  </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/10.htmlb">投资于质量，不再有技术债务</a> 在软件系统中处理技术债务是一个复杂的挑战。代码总是能进一步优化，但客户只关心功能。本文讨论一个新的比喻“质量投资（Quality Investment）”。它有助于更好地沟通系统质量，并通过权衡偿还技术债务与投资回报来指导质量提升。 
   </div> 
@@ -144,12 +150,6 @@
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/24.htmlb">开发模块化的JavaScript组件</a> 本文将通过一个示例为你展示某个简单的widget的演化过程，看看它是如何从一个庞大的、缺乏结构性的代码库进化为一个可重用的组件的。 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/23.htmlb">Redis计数在新浪微博的应用</a> 作为微博中一项重要的数据，计数类业务在微博业务中占的比重和重要性逐步提高。计数结果的准确度直接影响用户体验，并且很容易引起用户的投诉。在计数业务上，在不断的优化和改进中，我们将会分享所经历的三个阶段。 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/23.htmlb">Node.js V0.12新特性之Cluster轮转法负载均衡</a> Node核心代码的提交者Ben Noordhuis和Bert Belder会写一系列的文章来介绍Node 0.12的新特性,大概会有7到8篇的样子 。在这第一篇文章中，Ben会讲一讲新的轮转法集群算法。 
-  </div> 
+  </div>   
  </body>
 </html>

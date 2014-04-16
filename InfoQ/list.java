@@ -1,8 +1,8 @@
 <html>
  <head></head> 
- <body>
-  <div>
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/44.java">Windows Management Framework 5 Preview Introduces Package Manager And Network Switches Cmdlets</a>Microsoft announced the availability of the Windows Management Framework V5 Preview, which includes Windows PowerShell OneGet, a package manager in the spirit of yum and apt-get; a set of cmdlets to manage network switches; and some polishing on Windows PowerShell Desired State Configuration (DSC).
+ <body> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/44.java">Windows Management Framework 5 Preview Introduces Package Manager And Network Switches Cmdlets</a>Microsoft announced the availability of the Windows Management Framework V5 Preview, which includes Windows PowerShell OneGet, a package manager in the spirit of yum and apt-get; a set of cmdlets to manage network switches; and some polishing on Windows PowerShell Desired State Configuration (DSC). 
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/43.java">Cucumber.js for BDD in JavaScript: An Interview with Julien Biezemans</a>Julien Biezemans is a Cucumber core team member and the author of Cucumber.js. Cucumber.js is a native JavaScript implementation of Cucumber, and is a strict port that can run on any JavaScript environment. Running on Node.js as well as within any browsers, Cucumber.js is virtually serviceable against everything producing JavaScript and HTML (Node.js, Ruby on Rails, PHP, .NET, etc) 
@@ -150,6 +150,6 @@
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/2.java">Highlights from Microsoft's Build 2014 Opening Keynote</a>The opening keynote for Build 2014 kicked off with several big announcements. Today marked the formal announcement of Windows Phone 8.1 and the soon to be released Windows 8.1 Update. 
-  </div>  
+  </div> 
  </body>
 </html>

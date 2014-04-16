@@ -1,195 +1,151 @@
-<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>Durandal快速入门</h3><p><a href="http://durandaljs.com/">Durandal</a>是一个轻量级的JavaScript框架，其目标是单页面应用（SPAs）的开发变得简单而优雅。它支持MVC、MVP和MVVM等模式，因此不论你采用哪种类型的前端架构，Durandal都能胜任。</p>
-<p>Durandal以<a href="http://requirejs.org/">RequireJS</a>为基础，加上一个轻量级的惯例层，带来了令人惊叹的生产效率，并且帮助你维持稳健的编码实践。配上开箱即用的富界面组件、模态对话框、事件/消息、组件、过渡效果、导航等等，使你可以轻松开发出任何你能想象的应用。</p>
-<p>尽管Durandal才发布大约一年时间，但其社区正以飞快的速度成长。</p>
-<p>因此，我们推出了一个<a href="http://www.kickstarter.com/projects/eisenbergeffect/durandal-2014">Kickstarter</a>来帮助我们在2014年完成一些神奇的事情，希望你能关注。但现在，我将向你展示如何开发一个简单的Durandal程序。</p>
-<p>要开始使用Durandal，可以有多种方式，这取决于你的平台。因为Durandal是一个纯JavaScript库，独立于任何服务端平台，我们尝试用多种方式来打包，以满足各类Web开发人员。在本教程中，我们将直接使用HTML Starter Kit。你可以在<a href="http://durandaljs.com/pages/downloads/">官方网站</a>上直接<a href="http://durandaljs.com/version/latest/HTML%20StarterKit.zip">下载</a>。</p>
-<p>下载完HTML Starter Kit后，解压缩，你就可以直接在Firefox各版本中打开<i>index.html</i>页面，运行其示例程序了。或者你也可以将其部署到Web服务器中，浏览其index页面。</p>
+<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>给高管当教练</h3><p>随着敏捷渐成主流，许多组织都进行了向敏捷实践的过渡。但我们也看到，目前的敏捷转型往往并不像大多数公司所希望的那样是成功的银弹。</p>
+<p>敏捷转型还主要聚焦于团队层面，实施诸如Scrum、看板、极限编程实践，或者这些实践的组合和变体。这无疑使团队得到了进步，但在大多数情况下并没有改变组织的其余部分，从而只能算是次优的方案。</p>
+<p>不幸的是，这已经导致许多组织声称敏捷“（对我们来说）行不通”，并且常常就恢复到传统的瀑布式方法去了。</p>
+<p>但真理不是这样的。这些组织声称敏捷行不通的事实，实际上意味着敏捷实践常常带来的影响显现了。它使得诸多问题浮现，这些问题正是需要加以解决，而不是被忽视。这不应该被看作是敏捷转型的结束，反而应被看做起点。</p>
+<p>敏捷教练们对与管理层一起工作并不感到陌生，他们常会与项目经理以及团队经理一道促进团队层面的变革。但现在他们需要促进管理层面的变革，这彻底改变了敏捷教练的工作范围。</p>
+<p>在这些层级上引入的变革常常引起对变革的阻力。敏捷教练现在需要一种新的技能，以便能够感知这种阻力，并且学习如何克服阻力和推动组织所需要的变革的技巧。</p>
 <div id="lowerFullwidthVCR"></div>
-<p><img src="http://infoqstatic.com/resource/articles/durandal-javascript-framework/zh/resources/0213002.png" width="600" _href="img://null" _p="true" alt="" /></p>
-<p>Starter Kit演示了一个基本的导航架构，包括导航、页面历史、数据绑定、模态对话框等等。当然，我们不只是看看而已，我们要从头开始写一个小程序。首先打开app文件夹，删除里面的所有内容，然后删除<i>index.html</i>。这样我们就有了一个空项目，并且预配置了所有必须的scripts和css。</p>
-<p><i>*</i><i>注：</i><i>IE, Chrome</i><i>和</i><i>Safari</i><i>可能无法从文件系统中直接打开这类文件。如果你仍希望使用这些浏览器，可以将其部署到你喜欢的</i>Web<i>服务器中。</i></p>
-<p><b>Index.html</b><br /> 我们开始编写<i>index.html</i>文件，内容如下：</p>
-<pre>
-&lt;!DOCTYPE html&gt; 
-&lt;html&gt; 
-  &lt;head&gt; 
-    &lt;link rel=&quot;stylesheet&quot; href=&quot;lib/bootstrap/css/bootstrap.css&quot; /&gt; 
-    &lt;link rel=&quot;stylesheet&quot; href=&quot;lib/font-awesome/css/font-awesome.css&quot; /&gt; 
-    &lt;link rel=&quot;stylesheet&quot; href=&quot;lib/durandal/css/durandal.css&quot; /&gt; 
-    &lt;link rel=&quot;stylesheet&quot; href=&quot;css/starterkit.css&quot; /&gt; 
-  &lt;/head&gt; 
-  &lt;body&gt; 
-    &lt;div id=&quot;applicationHost&quot;&gt;&lt;/div&gt; 
-    &lt;script src=&quot;lib/require/require.js&quot; data-main=&quot;app/main&quot;&gt;&lt;/script&gt; 
-  &lt;/body&gt; 
-&lt;/html&gt;</pre>
-<p>我们看到，文件中只有一些css样式文件，一个id为applicationHost的简单的div， ，一个script标签。我们加上了<a href="http://getbootstrap.com/">Bootstrap</a>和<a href="http://fontawesome.io/">FontAwesome</a>，使界面看起来美观一些，但它们并不是Durandal所必须的。我们要关注的关键代码是script标签。</p>
-<p>Durandal采用RequireJS作为其核心构件之一，鼓励模块化的编程方式。在Durandal应用中，所有的JS代码都写在模块中。上文<i>index.html</i>中的script标签就是用于加载RequireJS来完成框架的模块策略。当模块加载器完成初始化后，它通过<i>data-main</i>属性的值来启动应用。就像C语言中的<i>main</i>函数一样，<i>data-main</i>属性指向的是主模块，是整个应用的入口。让我们进行下一步，创建这个模块。首先创建一个名为<i>main.js</i>的文件，把它放到<i>app</i>文件夹下。其代码如下：</p>
-<pre>
-main.js 
-requirejs.config({ 
-  paths: { 
-    'text': '../lib/require/text', 
-    'durandal':'../lib/durandal/js', 
-    'plugins' : '../lib/durandal/js/plugins', 
-    'transitions' : '../lib/durandal/js/transitions', 
-    'knockout': '../lib/knockout/knockout-2.3.0', 
-    'jquery': '../lib/jquery/jquery-1.9.1' 
-    }  
-}); 
-define(function (require) { 
-   var system = require('durandal/system'), 
-       app = require('durandal/app'); 
-   system.debug(true); 
-   app.title = 'Durandal Starter Kit'; 
-   app.configurePlugins({ 
-     router:true, 
-     dialog: true 
-   }); 
-   app.start().then(function() { 
-     app.setRoot('shell'); 
-   }); 
-});</pre>
-<p>这是一个非常标准的Durandal应用的样板配置。我们详细地看一下代码。</p>
-<p>文件的最上面是<i>requirejs.config</i>代码。这部分代码用于配置模块系统，使其能够找到核心库。配置的都是一些相对路径，因此当我们引用“jQuery”时，模块系统就知道到哪里去加载它。我们可以看到，路径的配置包括requirejs的text插件（用于加载视图）、Durandal的核心模块、Knockout和jQuery。<a href="http://durandaljs.com/">Durandal</a>采用<a href="http://requirejs.org/">RequireJS</a>来构建模块，<a href="http://knockoutjs.com/">Knockout</a>用于数据绑定，而<a href="http://jquery.com/">jQuery</a>用于浏览器层的抽象。</p>
-<p>完成RequireJS的配置后，定义应用的主模块。Durandal应用的所有代码都写在模块中，并且按照以下格式：</p>
-<pre>
-define(function (require) { 
-  var someModule = require('some/module'); 
-  ...other modules required here... 
-  return someValue; 
-});</pre>
-<p>我们用<i>define</i>函数来创建一个模块。它的参数是另一个函数，这个函数是模块的工厂。也就是说，这个函数的返回值将是模块的一个实例。当函数返回一个对象时，你可以创建单例对象模块。或者返回一个函数，你可以创建一个类构造器模块。另外，你也可以声明该模块依赖于其他模块，此时你需要使用<i>require</i>函数来引入其他模块。</p>
-<p>在上面的主模块代码中，你可以看到我们引入或者说<i>require</i>了两个Durandal模块：<i>system</i>和<i>app</i>。然后通过<i>system</i>模块开启框架的调试功能，通过<i>app</i>模块设置应用的标题，加载两个可选的插件。最后，我们调用<i>start</i>方法启动应用。该方法是一个异步的动作，当它结束时，调用一个特殊的方法：<i>setRoot</i>。</p>
-<p>当<i>setRoot</i>方法被调用时，才会真正去展示页面。你可以将<i>root</i>视为应用的主窗口、主布局或者应用的shell。该方法的参数指向一个包含shell的行为的模块。现在唯一的问题是，嗯，它还不存在。好吧，我们开始创建它。</p>
-<h2>Shell</h2>
-<p>Durandal的大部组件都同时包含行为（behavior）和展现（presentation）。你的应用的shell毫无疑问也遵循这个规则。我们将通过两个文件来展示这两个不同的概念：一个是用于行为的JavaScript文件，另一个是用于展现的HTML文件。在<i>app</i>文件夹下创建：<i>shell.js</i>和<i>shell.html</i><i>。</i>两个文件的代码如下所示，我们来看看它们是如何工作的。</p>
-<pre>
-shell.js 
-define(function (require) { 
-  var app = require('durandal/app'), 
-      ko = require('knockout'); 
-  return { 
-     name: ko.observable(), 
-     sayHello: function() { 
-       app.showMessage('Hello ' + this.name() + '! Nice to meet you.',
- 'Greetings'); 
-     } 
-   }; 
-}); 
-shell.html 
-&lt;section&gt; 
-  &lt;h2&gt;Hello! What is your name?&lt;/h2&gt; 
-  &lt;form class=&quot;form-inline&quot;&gt; 
-    &lt;fieldset&gt; 
-       &lt;label&gt;Name&lt;/label&gt; 
-       &lt;input type=&quot;text&quot; data-bind=&quot;value: name, valueUpdate:
- 'afterkeydown'&quot;/&gt; 
-       &lt;button type=&quot;submit&quot; class=&quot;btn&quot; data-bind=&quot;click: sayHello, enable: 
-name&quot;&gt;Click Me&lt;/button&gt; 
-    &lt;/fieldset&gt; 
-  &lt;/form&gt; 
-&lt;/section&gt;</pre>
-<p>首先看看<i>shell.js</i>，正如我们之前讲到的，它定义了一个模块。同时它还依赖两个别的模块：<i>app</i>和<i>knockout</i>。从代码可以看出，模块返回了一个对象。这个对象有一个<i>name</i>属性和一个<i>sayHello</i>方法。属性<i>name</i>看起来有点特别，它是我们使用<a href="http://knockoutjs.com/">Knockout</a>创建的一个可被观察的(<i>observable</i>)属性。可被观察的（<i>observable</i>）属性支持数据到html的双向绑定，变更通知和一些其它特性。注意看<i>sayHello</i>中调用了<i>app</i>模块的方法来显示一个包含<i>name</i>属性值的消息对话框。</p>
-<p>要完全理解这些代码，你应该将它与HTML代码放到一起来看。注意观察HTML中的<i>data-bind</i>属性。该属性将HTML与模块中的属性和方法联系起来。例如input标签通过<i>data-bind</i>属性将它的值与<i>name</i>属性连接起来的。它同时还指定，当key down事件发生时，属性<i>name</i>的值将被更新（如果不指定事件，则默认光标离开时会进行更新）。同样地，按钮的<i>click</i>事件绑定了<i>sayHello</i>方法，而且仅当<i>name</i>属性的值为真时，按钮才是有效状态。看起来是不是很酷？现在就把应用运行起来，你可以用Firefox打开<i>index.html</i>，或者如果你使用其他浏览器的话，可以部署到Web服务器下然后浏览<i>index.html</i>。当页面打开时，会经历以下这些步骤：</p>
-<ol> 
- <li>加载RequireJS。</li> 
- <li>RequireJS将加载<i>main.js</i>，然后配置框架。</li> 
- <li><i>main.js</i>调用<i>setRoot</i>展示整个应用。</li> 
- <li>加载<i>shell.js</i>和<i>shell.html</i>，绑定数据，然后注入到页面的<i>applicationHost</i> div中。</li> 
-</ol>
-<p>当页面加载完成后，在输入框中试着输入一些内容，观察按钮的有效性是如何变化的，然后点击按钮看看发生了什么。</p>
-<h2>导航</h2>
-<p>上面的例子看起来不错，但大多数应用都不只有一页。所以，我们开始下一步，将它扩展成具有页面导航的应用。首先，把<i>shell.js</i>改名为<i>home.js</i>，<i>shell.html</i>改名为<i>home.html</i>。然后创建两个新文件<i>shell.js</i>和<i>home.js</i>用于导航。以下是两个新文件的代码：</p>
-<pre>
-shell.js 
-define(function (require) { 
-  var router = require('plugins/router'); 
-   
-  return { 
-     router: router, 
-     activate: function () { 
-       router.map([ 
-         { route: '', title:'Home', moduleId: 'home', nav: true } 
-       ]).buildNavigationModel(); 
-       return router.activate(); 
-     } 
-   }; 
-}); 
-shell.html 
-&lt;div&gt; 
- &lt;div class=&quot;navbar navbar-fixed-top&quot;&gt; 
-  &lt;div class=&quot;navbar-inner&quot;&gt; 
-   &lt;ul class=&quot;nav&quot; data-bind=&quot;foreach: router.navigationModel&quot;&gt; 
-    &lt;li data-bind=&quot;css: { active: isActive }&quot;&gt; 
-     &lt;a data-bind=&quot;attr: { href: hash }, html: title&quot;&gt;&lt;/a&gt; 
-    &lt;/li&gt; 
-   &lt;/ul&gt; 
-   &lt;div class=&quot;loader pull-right&quot; data-bind=&quot;css: { active: 
-router.isNavigating }&quot;&gt; 
-     &lt;i class=&quot;icon-spinner icon-2x icon-spin&quot;&gt;&lt;/i&gt; 
-   &lt;/div&gt; 
-  &lt;/div&gt; 
- &lt;/div&gt; 
- &lt;div class=&quot;container-fluid page-host&quot; data-bind=&quot;router: { 
-transition:'entrance' }&quot;&gt;&lt;/div&gt; 
-&lt;/div&gt;</pre>
-<p>可以看到，<i>shell.js</i>仍然是模块的标准定义方式。首先require了一个router插件，利用它创建对象。我们配置了一个route指向<i>home</i>模块。router配置中指定了每个route匹配的模式、显示的标题、对应加载的moduleId，以及<i>route</i>匹配时，是否应该将此route显示到导航栏中（<i>nav:true</i>）。配置完成后，调用<i>buildNavigationModel</i>。该方法利用route信息，构建一个特殊的集合，这个集合通过数据绑定，可以用来显示页面顶部的导航栏。最后，我们激活这个router。所有这些都发生在<i>activate</i>方法中。每次Durandal向屏幕展现一个组件时，它都会查找可选的<i>activate</i>回调方法。如果找到，就会在数据绑定前调用此方法。因此这种方式允许你执行自定义的激活代码，例如上面的例子在<i>activate</i>方法中配置应用程序的router。</p>
-<p>如果把模块和视图的代码放到一起，这次你应该很容易理解它们是如何工作的了。首先绑定<i>navigationModel</i>属性，生成一个导航栏navbar。每一个可导航的route被转换成一个li标签，其中包含一个链接。链接的标题对应<i>title</i>，地址对应<i>hash</i>。同时，在navbar中还包含了一个spinner动画图标，并将其与<i>router.isNavigating</i>属性进行绑定。当应用从一个页面导航到另一页面时，我们就能看到一个spinner动画图标。</p>
-<p>在html文件的最下方有一个特殊的<i>router</i>绑定，也就是连接模块中的router。它扮演占位符的角色，用于显示当前页面。属性<i>transition</i>表示当页面发生变化时，Durandal要使用“entrance”过渡动画。</p>
-<p>现在将它运行起来。它看起来跟之前差不多，除了在顶端多了个导航栏。因为现在仍然只有一个页面，因此没有什么令人印象深刻的东西。我们开始创建第二个页面，以便能够在页面间前进或后退。</p>
-<h2>第二页：雷尼尔峰</h2>
-<p>我们创建的第二个页面将调用Flickr，获取一组雷尼尔峰的照片并进行展示。首先修改shell的router配置，增加另一个route，这样它就有了两个route：</p>
-<pre>
-{ route:'', title:'Home', moduleId:'home', nav:true }, 
-{ route:'rainier', title:'Mount Rainier', moduleId:'rainier', nav:true }</pre>
-<p>第一个是我们之前的home route，第二个是新的route用于即将创建的新页面。这时候，希望你已经知道应该怎么做了。我们为新页面创建一个模块（module）和一个视图（view）。</p>
-<pre>
-rainier.js 
-define(function (require) { 
-  var http = require('plugins/http'), 
-      ko = require('knockout'); 
-  var url = 'http://api.flickr.com/services/feeds/photos_public.gne'; 
-  var qs = {  
-    tags: 'mount ranier',  
-    tagmode: 'any',  
-    format: 'json'  
-  }; 
-  return { 
-     images: ko.observableArray([]), 
-     activate: function () { 
-       var that = this; 
-       if (this.images().length &gt; 0) { 
-           return; 
-       } 
-      
-       return http.jsonp(url, qs, 'jsoncallback').then(function(response) { 
-          that.images(response.items); 
-       }); 
-     } 
-   }; 
-}); 
-rainier.html 
-&lt;section&gt; 
-  &lt;h2&gt;Mount Rainier&lt;/h2&gt; 
-  &lt;div class=&quot;row-fluid&quot;&gt; 
-    &lt;ul class=&quot;thumbnails&quot; data-bind=&quot;foreach: images&quot;&gt; 
-      &lt;li&gt; 
-         &lt;img style=&quot;width: 260px; height: 180px;&quot; data-bind=&quot;attr:
- { src: media.m }&quot;/&gt; 
-      &lt;/li&gt; 
-    &lt;/ul&gt; 
-  &lt;/div&gt; 
-&lt;/section&gt;</pre>
-<p>我想你已经能够看出来它是怎么工作的了。新模块在activate回调方法中使用http插件调用Flickr的api去获取图片。然后将数据保存到<i>images</i>属性中。<i>Images</i>是一个可被观察的（observable）数组，页面绑定这个数组并展示图片。</p>
-<p>将应用运行起来，可以看到在导航栏中出现了两项，你能在两者间进行前进和后退操作。你也可以使用浏览器的返回按钮。Durandal能做的事情远不止这些。也许你该下载Starter Kit并仔细研究，就会发现一些更有趣的东西。又或者你应该将官方的示例程序下载下来，看看各种功能是如何工作的，例如发布/订阅消息、自定义模态对话框、组件、高级的视图组合等等。如果你想看一些更酷的东西，可以看看<a href="http://www.kickstarter.com/projects/eisenbergeffect/durandal-2014/posts/695777">Kickstarter资助的系列培训</a>中我们将构建的应用。</p>
-<p><a href="http://durandaljs.com/">Durandal</a>通过模块化的方法，使得构建富客户端，动态的JavaScript应用更加简单。因此理所当然地，我们的社区发展得非常快。我们的计划才刚刚开始，希望你也能加入我们的奇妙旅程。请浏览一下我们的<a href="http://www.kickstarter.com/projects/eisenbergeffect/durandal-2014/posts/695777">Kickstarter</a>。2014年我们已经有了一些很酷的目标，同时，也有一些非常棒的奖励给你。Web正在发生改变，光明的未来指日可待，希望我们在那里相逢。</p>
-<h2>关于作者</h2>
-<p><img style="float: left; margin-right: 10px" src="http://infoqstatic.com/resource/articles/durandal-javascript-framework/zh/resources/0213003.jpg" _href="img://null" _p="true" alt="" /><b>Rob Eisenberg</b>是一个JavaScript专家和.NET架构师，工作在佛罗里达州的塔拉哈西，同时他还是Blue Spire 咨询公司的总裁。Rob在9岁时开始计算机编程，那时他彻底地爱上了家里的新Commodore 64。他痴迷于编程，从Commodore Basic语言到Q Basic和QuickBasic开始，很快转到C, C++, C#和JavaScript。Rob定期在<a href="http://devlicio.us/">devlicio.us</a>上发表技术文章，并经常在区域性的专业活动中和相关公司做演讲和报告，主要涉及Web和.NET技术，敏捷软件开发实践和UI工程。他是Sam出版的《Teach Yourself WPF in 24 Hours》一书的联合作者，也是Durandal和Caliburn.Micro框架的架构师和首席开发人员。</p>
-<p><b>原文英文链接：</b><a href="http://www.infoq.com/articles/durandal-javascript-framework">Durandal: Quick Start</a></p>
+<p>在本文中我将讲解一种教练技巧，它可以帮助敏捷教练了解他们的目标受众的语境，并形成一套与这种语境相匹配的教练语言。</p>
+<h2><b>日新月异的世界</b></h2>
+<p>但首先，到底为什么组织需要变革呢？</p>
+<p>商业世界正在迅速变化，而且变化的速度还在不断增加。麦肯锡全球研究所发布的下图显示出这种变化速度越来越快。</p>
+<p><img src="http://infoqstatic.com/resource/articles/coaching-cxo/zh/resources/0331010.jpg" _href="img://null" _p="true" alt="" /></p>
+<p>无线电广播从诞生起用了38年才获得5000万用户，而Twitter只用了9个月就积累到5000万用户。</p>
+<p>进一步放大此图到消费类应用领域，一款名为愤怒的小鸟（Angry Birds）的游戏只用了35天就达到了5000万用户的里程碑。</p>
+<p>诚然，这些数字只是一些例子，但它也清楚地表明，企业需要能够应对频度不断增加的变化。</p>
+<p>杰克&middot;韦尔奇（曾任通用电气首席执行官20年）说过：</p>
+<p><i><b>“如果外部变化的速度超过了内部变革的速度，末日就近了。”</b></i></p>
+<p>为了跟得上这些市场中的变化，以传统方式对组织进行变革显得捉襟见肘。利用公司架构重组的方式来重建一个组织以适应环境变化，那真是太慢了。到重组完成的时候，市场已经又改变了。</p>
+<p>如果你想应对市场变化，或者更好的应对、预知它们，变革就不该再被视为一项个别的活动，而应该成为你的组织内的一个不断持续的过程。</p>
+<p>一个组织需要不断从自身、市场和竞争对手那里学习，调整它们的组织和战略。把组织打造成一个敏捷组织，在各个层面执行敏捷实践，将帮助你实现这一目标。</p>
+<h2><b>改造各层级的管理</b></h2>
+<p>眼下有了一个雄心勃勃的目标，把组织改造成一个真正的适应性的组织。在大多数情况下，尤其是在大型组织中，固有的架构（和人员）已经存在了几十年。</p>
+<p>敏捷教练一直在团队层级担任变革经理的角色，大多只是专注于IT部门的开发团队。有时会允许涉及运维部门，就像我们在最近的开发运维运动（DevOps Movement）中看到的那样。</p>
+<p>但现在我们需要把整个组织变为一个敏捷型组织，为了做到这一点，我们需要在组织的各个层级推动变革。</p>
+<p><img src="http://infoqstatic.com/resource/articles/coaching-cxo/zh/resources/0331011.png" _href="img://null" _p="true" alt="" /></p>
+<p>在本文中我将抛开团队层级的变革不谈，而是只围绕组织架构中的更高层级来讨论。</p>
+<p>敏捷教练需要使用不同的方法引入变革到组织中的不同管理层级中。</p>
+<p>大多数敏捷教练都有在团队层级推动变革的经验，从敏捷诞生起这就是他们关注的领域。在这些变革过程中敏捷教练也和管理层打过交道，但主要是为了获取对团队层级的变革的支持。</p>
+<p>然而，当向组织中的管理层级引入变革时，这些管理者突然就成为了所引入变革的目标人物。</p>
+<p>现在，这对于敏捷教练来说也不是新鲜事了，我们中的一些人已经尝试去做到这一点。不幸的是，在大多数情况下，敏捷教练们都遇到了来自组织中这些层级的巨大的阻力。</p>
+<p>人们对待改变的第一反应常常是拒绝，而当管理层级的人想要拒绝一项变革时，他们就会利用自己的权力来拒绝。</p>
+<p>如果敏捷教练不能成功克服这种阻力，他将无法推动这个组织所需要的变革。</p>
+<h2><b>抗拒变革</b></h2>
+<p>为了能够克服当我们引入变革时出现的阻力，我们首先需要理解为什么会有某种程度的阻力产生，阻碍人们采纳关于变革的提议。要理解这种行为，我们需要看看有关人类大脑的一些基本知识。</p>
+<p>基本上在大脑中存在两个负责决策的机体，一个是前额叶皮质，第二个是包含杏仁核的边缘系统。</p>
+<p>前额叶皮质位于前额后面，是覆盖于脑部前方的一个薄层。</p>
+<p><img src="http://infoqstatic.com/resource/articles/coaching-cxo/zh/resources/0331012.jpg" _href="img://null" _p="true" alt="" /></p>
+<p>这部分大脑负责创造性思维、洞察力、推理和决策。这是我们在努力引入变革时希望在人体中激活的那一部分。</p>
+<p>在我们的大脑中第二个负责决策的机体就是位于大脑中央的边缘系统。</p>
+<p><img src="http://infoqstatic.com/resource/articles/coaching-cxo/zh/resources/0331013.jpg" _href="img://null" _p="true" alt="" /></p>
+<p>边缘系统包含杏仁核，这是大脑中涉及情绪过程的区域。</p>
+<p>情绪上的紧张，例如愤怒和恐惧，会激发杏仁核。这是我们的生存本能。</p>
+<p>如果你走在森林里，突然有一只咆哮的熊在你面前，你的反应会很简单。你的心率会提高，你的焦虑水平也会上升，你会在千钧一发之际做出决定，是和熊搏斗、是逃之夭夭，还是留在那里一动不动。由于熊可能带来致命的危险，边缘系统迅速决定，奔跑可能意味着最高的生存机会，所以为了活命你就奔跑。</p>
+<p>虽然这种本能反应在某些情况下是有利的，但它也有一个坏处。当杏仁核发挥作用时，毫不夸张的说它会劫持大脑，并且麻痹前额叶皮质，暂停它的所有功能，从而阻止我们进行思考和推理。</p>
+<h2><b>视变革为威胁</b></h2>
+<p>让我们从变革管理的角度来看看这个现象，以及对应的看看，当你做为敏捷教练引入变革时一个中层管理者或者高管的反应会是怎样？</p>
+<p>对于大多数管理者——无论高低——变革都会被视为一种威胁。特别是这种变革暗示着他们自己的角色将发生变化的时候，而这恰恰就是在敏捷转型时经常出现的情况。</p>
+<p>人类大脑对这种威胁的反应，与你遇到那只咆哮的熊时的反应类似。对于大脑来说，威胁就是威胁，不管它是危及生命的情况，还是感觉威胁到了他或她在组织中的位置。</p>
+<p>新的变革所带来的威胁会激发杏仁核，反过来杏仁核就劫持大脑和麻痹前额叶皮质。此项变革所指向的这位管理者就会出于本能去保护自己。当感到抗拒变革是最安全的方案时，他或她就会这么做。</p>
+<p>甚至在前面讲的有关熊的情景中，这也导致了一个问题。边缘系统基于所感知到的威胁是要让我们奔跑，但是如果我们还可以思考，我们就会想到熊比人跑得快得多，奔跑算不上一种活命的选择。如果知道熊最初也会被突然遇到一个人而吓到，那么大声喊叫、疯狂地挥舞可能就是更好的选择。然而，我们大脑的边缘系统阻止了我们做出这些结论。也许有经验的野外生存教练会有关于到底应该怎样恰当反应的章法，但一般游客可能只会奔跑逃命。</p>
+<p>敏捷转型会引入变革，变革会触发阻力，如果这种阻力妨止了变革的实施，那么敏捷在整个组织范围内的实施就会停下来，除非我们能够克服那种阻力。</p>
+<h2><b>克服阻力</b></h2>
+<p>为了推动一个组织内的变革，我们需要找出克服阻力的办法。</p>
+<p>如前所述，阻力是在人们感受到威胁时被激发的。在几乎所有情况下，这种威胁都是基于情绪的。无论是否有实际的威胁存在，那个经历这些感受的人都会将其看作一个实际的威胁。在许多情况下，他们担心失去自己的职位、权力、地位，甚至他们的工作。</p>
+<p>如果人们是由于情绪反应而拒绝变革的话，我们可以认为关键就是要理解这些情绪，向积极的情绪去引导以减少恐惧，并且让人们感知到将要进行的变革更是一个创新的机会，而不是一个威胁。最终，这将会使敏捷教练能够推动所需的变革。</p>
+<p>这听起来很容易，但在现实中却困难得多，并不存在一种能够适用于所有情况的解决方案。我们仍须进行与人和情绪有关的工作，这意味着每一个人、每一种情况都是不同的，需要使用不同的方法处理。</p>
+<p>然而有一些指导原则可以用来帮助你，我将在本文的其余部分讨论。</p>
+<h3><b>第一步：进入情境</b></h3>
+<p>不要冒冒失失闯进高管的办公室，告诉他你已经有了能够解决他的公司所有问题的解决方案。做做功课，了解他们的实际处境和想法。他们甚至可能都没有意识到你所提出的问题本身，更别说准备好和你探讨它的解决方案了。</p>
+<p>一个很好的准备步骤是针对你试图说服的人绘制一幅同理心地图（Empathy Map）。</p>
+<p><img src="http://infoqstatic.com/resource/articles/coaching-cxo/zh/resources/0331014.jpg" _href="img://null" _p="true" alt="" /></p>
+<p>同理心地图可以帮助你找出一个人听到的、看到的、讲的和做的事情。这将帮助你了解这个人的想法和看法，并最终告诉你他或她的得与失是什么。找出什么才是让人接受变革的最有说服力的因素，这是非常有用的。</p>
+<p>利用好你通过和目标人物的谈话而绘制的同理心地图这副“画”，验证你的同理心地图，并且为了获得对这个人充分的了解在必要时调整你的画。</p>
+<p>有关如何创建<a href="http://innovationgames.com/empathy-map/">同理心地图</a>的更多信息，请参阅Innovation Games<sup>&reg;</sup>网站。</p>
+<h3><b>第二步：预期阻力</b></h3>
+<p>即使你认为你的想法是最好的解决方案，仍然会遇到阻力。那种你利用和首席执行官在电梯里的短暂瞬间浮光略影的讲你的想法，首席执行官一拍即合，在整个公司付诸实施，并为此对你无尽赞美的桥段，是极不可能发生的。</p>
+<p>应该预期你的想法会受到质疑，而且最初的反应将是对变革的抗拒。为这一切做好准备，你才能应付得来。</p>
+<p>为这种阻力做好准备的最佳办法是控制好你自己的压力水平。作为一个变革者，应对怀疑、恐惧，和承受对每一个步骤的质疑，都会对你自己的压力水平产生负面影响。</p>
+<p>努力使你自己的压力保持在尽可能低的水平，并确保你自己在你所推行的变革中没有任何个人瓜葛。不牵扯任何个人瓜葛，才能使你自己的情绪独立出来，并让你专注于你所要引入变革的对象人物的反应和情绪。</p>
+<h3><b>第三步：利用积极的情绪导向变革</b></h3>
+<p>积极的情绪是变革管理的关键。用积极的情绪帮助你说服他人的方法之一是使用影响力。已经有许多书籍写了关于如何使用这些情绪来影响他人。它们大多归结为几个基本的说服技巧：</p>
+<ul> 
+ <li>互惠</li> 
+ <li>稀缺</li> 
+ <li>权威</li> 
+ <li>一致和承诺</li> 
+ <li>喜好</li> 
+ <li>社会认同</li> 
+</ul>
+<p>这些影响力是Robert B. Cialdini在他的著作《影响力》中提出的。我会对每种影响力进行简短说明。</p>
+<h3><b>互惠</b></h3>
+<p>不管你在组织的任何层级引入变革，都应有心理准备，就是站在你面前的人心里会想“这事会为我带来什么”。当试图改变组织中的一些东西，你可能要求管理层的支持、参与和也许一些投资。他们就想直截了当的知道这事会为他们带来什么。</p>
+<p>事先做好这个功课。找出你要他或她给予支持、参与和投资后，他或她可以换取什么收益。</p>
+<h3><b>稀缺</b></h3>
+<p>人们对错过的事物是敏感的。弄清楚如果他们没有接受你所提议的变革，他们会错过些什么。</p>
+<p>也别做得过火，说公司现在需要变革，否则它就会灰飞烟灭。在敏捷转型中，使用这种影响力的最佳方法是量化你所提议的变革没有进行的话公司将会承受的损失。说明这些量化的损失时，如果你使用了以下一些令他们感兴趣的数字的话就最好了：</p>
+<ul> 
+ <li>收入损失；</li> 
+ <li>成本增加，相对于不变或减少的收入；</li> 
+ <li>合同流失；</li> 
+ <li>员工离职。</li> 
+</ul>
+<h3><b>权威</b></h3>
+<p>掌握你所讲的内容，确保在你的故事中没有纰漏。如果你想得到人们接受你所提议的任何变革的机会，你得获得人们在这个领域对你的权威的信任。</p>
+<p>要对这个领域了如指掌，能够回答问题，并切中要害。此外，如果你在此领域获得过认证，比方说你持有一些证书、发表过一些文章、写过一些书，或者拥有过往的经验，都会有所助益。如果你自己不具备这种权威（人之所长总乃有限），就找到具备这种权威的人，并请求他们的帮助。</p>
+<h3><b>一致和承诺</b></h3>
+<p>人们有与先前的立场保持一致的倾向。如果你可以表明所提议的变革将有助于管理者履行先前的承诺，那么他起码会有兴趣听你讲些什么。</p>
+<p>例如，如果一位管理者一直致力于组织的服务或产品的质量工作，那么把你所提议的变革与质量的改进联系起来，并且指出你明白质量对于这家公司的重要程度，将会为你所提议的变革赢得更大的接受度。</p>
+<h3><b>喜好</b></h3>
+<p>首席执行官愿意听从谁的话，是和他一样穿着的人，还是穿帽衫和运动鞋的技术派？虽然这可能看起来是一个冒失的说法，但事实就是这样。人们愿意听从和他们在外表、生活方式、兴趣爱好等方面相类似的人的话。</p>
+<p>当你在一次企业的敏捷转型中，和多名教练一起工作，要确定把你们中间的谁搬上台面，就选择那个和变革所提向的目标人物有最多“联系”的人吧。</p>
+<p>现在，在引入变革时你应该怎样利用这一点使它成为你的优势呢？首先，适度是关键。不要穿着你的结婚礼服去打动首席执行官，那太不自然，你自己也会觉得不舒服。保持自己本来的样子，让自己舒服和看起来值得信赖。但在重要的商务会议上还是要谨慎考虑衣着。这可能就是造成是请到会议桌旁还是直接踢出门外的差异的原因。</p>
+<p>但是，如果这位首席执行官和你恰好没有任何相似的兴趣或爱好又怎么办呢？去看看他信任的圈子。谁是和他有联系的人，有没有人愿意支持你的想法，并愿意把它举荐给首席执行官？</p>
+<h3><b>社会认同</b></h3>
+<p>榜样的力量是无穷的，如果在别人哪儿适用，为什么不可以用在我们这儿呢？成功案例可以成为非常有效的说服者。要绘声绘色的讲故事，只是列举事实不会给人留下深刻印象，讲一个真实的故事，让人们可以把他们自己投射进去，就能让人们更容易的记住它。</p>
+<p>但要注意别随便拣个案例来，要用跟你的对象人物相关的案例。比方说，如果你想说服一家大型航空公司转向敏捷，就别用谷歌或Facebook的案例。否则回应就会很简单的成为：“我们不是谷歌。”在这种特定的情况下，美国西南航空公司可能就是一个更好的案例。</p>
+<h3><b>第四步：懂得让步</b></h3>
+<p>你无法避免你所提议的变革仍然受到某些人的抵制的情况，在这种情况下，懂得让步就很重要了。</p>
+<p>积极的情绪会使一个人朝向所提议的变革，但哪怕最细小的关于这项变革的负面情绪也会使一个人逃离，认识到这一点是非常重要的。</p>
+<p><img src="http://infoqstatic.com/resource/articles/coaching-cxo/zh/resources/0331015.jpg" _href="img://null" _p="true" alt="" /></p>
+<p>当你遇到抗拒的时候，不要犯一个常见的错误，就是和抗拒你的提议的人进入争辩。后退一步，告知你了解他或她的顾虑，暂且停止这次讨论，确定关于晚一些时候如何回到讨论中来的方法就够了。</p>
+<p>事后分析这次沟通以及出现的阻力，从中获取一些信息。试着去理解这个人所关注的问题，并尝试使用影响力模式来把你的故事讲给他听。</p>
+<h3><b>把全部所知付诸实践</b></h3>
+<p>进入真实的情境，为遭遇阻力做好准备，所谓的影响力本身并不足以是解决方案。把它们放在一起综合运用，才会使它们更强大。了解你将要谈话的对象，你才能创建出那样的情境，让你的变革成功获得接受的机会最大。既有可能你只需要运用一种影响力，也有可能你需要运用几种影响力的组合。</p>
+<p>就举一位首席财务官（CFO）的例子来说，首先，你需要了解他们使用的框架参照法（Frame of Reference），一项重要的信息是他们使用的成本核算方法。</p>
+<p>许多公司仍然使用标准化的成本核算方式，它建立在传统的可扩展效率的理念上，讲求的是压缩成本，特别是劳动力成本（这曾经是构成生产成本的最大部分）。这种倾向降低劳动力成本的概念框架的结果就是，我们发现一些组织专注于削减成本，采取的措施往往是裁员和外包，由此带来创新缺乏、客户不满和员工的离心离德。</p>
+<p>面临的挑战是该去寻一位成本会计师，开始不再只考虑降低成本，而是专注于为客户创造新的价值。有一些成本核算方法支持这一点，比如产出会计（Throughput Accounting）或者超预算（Beyond Budgeting）方法，这是运用约束理论（TOC）的业绩衡量的一种管理会计技术。它实际上是一种为了实现利润最大化的商业智能。与专注于靠“削减成本”和减少费用来赚取利润不同，产出会计理论主要侧重于创造更多的产出。</p>
+<p>因此，一位运用产出会计技术工作的首席财务官已经可以理解敏捷就是致力于创造价值，这使得我们更容易找到共同点。</p>
+<p>相比如果有一位首席财务官，他的框架参照法是标准化的成本核算，想让他成为对话伙伴就困难得多了。</p>
+<p>无疑，谈论降低风险总是一种奏效的方式，即使是面对最传统的成本会计师。John Goodsen建议画一幅投资回报率（ROI）图表来比较敏捷和瀑布方式，成本会计师轻易就可以发现投资越来越多，却没有中期回报的风险。除非环境是完全静态的，工作也完全可以预测，否则任何一个延迟或一项技术纰漏的影响都是巨大的。投资了这么多却没有任何回报的前提下，任何延迟都是灾难性的。</p>
+<p><img src="http://infoqstatic.com/resource/articles/coaching-cxo/zh/resources/0331016.jpg" _href="img://null" _p="true" alt="" /></p>
+<p>Trond Wingard建议用一种首席财务官最熟悉的语言跟他们交谈，那就是“数字”。他提供了一份<a href="http://trondwingard.com/2010/03/cfo-frequent-releases-part-1/">计算电子表格</a>，可以表明频繁的发布能够提高项目的经济表现和投资回报率（ROI）。这份电子表格显示了发布频率和功能点优先级排序对于净现值（NPV）、内部收益率（IRR）、投资回收期和投资回报率（ROI）的影响。</p>
+<p>Steve Denning是一个讲故事方法的巨大的倡导者，因为即使成本核算是有关数字的事情，但事实上人类还是基于具体场景做出决策。你越是了解那位首席财务官自认为他所生活的场景，就越有机会植入一个新的场景，去改变他的行为。因此，选择一个符合那位首席财务官的价值体系的故事，才是一个成功的故事，以便把你们联系起来。</p>
+<p>一些首席财务官们已经实施了产出会计、精益会计或者超预算，再运用其他一些你能想到的能够帮助建立联系的影响力吧，并组织一场圆桌讨论。这也非常适用于首席执行官、首席信息官们，因为这里有能够为他们提供权威、喜好和社会认同的知音，同时帮助他们深入了解他们组织内的挑战（并帮助他们找到办法去应对）。</p>
+<h2><b>结论</b></h2>
+<p>商业世界正在以闪电般的速度发生变化，并且变化的速度还在不断增加。为了生存和在这个新的世界里蓬勃发展，组织需要以更快、更充分的方式应对变化。</p>
+<p>要做到这一点，组织需要打造一种不断进行评价和变革的机制，成为一个自我学习和自适应的组织。</p>
+<p>教练们在组织内的管理层级试图推动某种变革时，往往会遇到变革的阻力。变革往往被视为一种威胁，激发出负面情绪导致人们抗拒变革。</p>
+<p>如果你想在这个层级上的教练活动取得成功，你就需要理解你的新的目标受众的目标和理想，以及他们的关切和情绪，并以此认识去引导积极的情绪，最终推动变革。</p>
+<h2><b>引用</b></h2>
+<p>本篇文章包含Astrid Claessen和Joost Mulders在2013年比荷卢XP日中关于这一主题的演讲的内容。这次演讲的幻灯片可以在<a href="http://www.kuzidi.com/resources/presentations/xpdays2013/succeedingwithagile/">这里</a>下载。</p>
+<h2><b>来源</b></h2>
+<p>本篇文章的研究使用了以下书籍和文章：</p>
+<ul> 
+ <li>《Your brain at work》，David Rock；</li> 
+ <li>《沉静领导之道》，David Rock；</li> 
+ <li>《大脑和情商》，Daniel Coleman；</li> 
+ <li>《影响力》，Robert B. Cialdini；</li> 
+ <li><a href="http://www.forbes.com/sites/stevedenning/2011/08/16/how-do-you-explain-radical-management-or-agile-to-a-cfo/">《How Do You Explain Radical Management (Or Agile) To A CFO?》</a>，Steve Denning；</li> 
+ <li><a href="http://trondwingard.com/2010/03/cfo-frequent-releases-part-1/">《CFO's Case for Frequent Releases》</a>，<a href="http://trondwingard.com/about/">Trond Wing&aring;rd</a></li> 
+</ul>
+<p>这段涂鸦笔记<a href="https://www.youtube.com/watch?v=cFdCzN7RYbw">视频</a>总结了本文中提到影响力，也即Robert B. Cialdini在《影响力》中提出的概念。</p>
+<h2><b>关于作者</b></h2>
+<p><img style="float: left; margin-right: 10px" src="http://infoqstatic.com/resource/articles/coaching-cxo/zh/resources/0331017.jpg" _href="img://null" _p="true" alt="" /><b>Joost Mulders</b>是总部位于荷兰的<a href="http://www.kuzidi.com/">Kuzidi</a>的合伙人及创始人之一。他在IT企业的各种角色中都拥有广泛的经验，从开发者到管理团队成员。他把这些经验和神经科学及心理学的知识结合起来，在敏捷转型中为人员、团队和组织提供教练服务。</p>
 <div style="clear:both">
  &nbsp;
 </div>
+<p><b>查看英文原文</b>：<u><a href="http://www.infoq.com/articles/coaching-cxo">Coaching the CxO</a></u></p>
 <hr />
-<p>感谢<a href="http://www.infoq.com/cn/author/马国耀">马国耀</a>对本文的审校。</p>
+<p>感谢<a href="http://www.infoq.com/cn/author/崔康">崔康</a>对本文的审校。</p>
 <p>给InfoQ中文站投稿或者参与内容翻译工作，请邮件至<a href="mailto:editors@cn.infoq.com">editors@cn.infoq.com</a>。也欢迎大家通过新浪微博（<a href="http://www.weibo.com/infoqchina">@InfoQ</a>）或者腾讯微博（<a href="http://t.qq.com/infoqchina">@InfoQ</a>）关注我们，并与我们的编辑和其他读者朋友交流。</p><br><br><br><br><br><br></body></html>
