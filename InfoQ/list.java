@@ -2,10 +2,13 @@
  <head></head> 
  <body>
   <div>
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/43.java">Cucumber.js for BDD in JavaScript: An Interview with Julien Biezemans</a>Julien Biezemans is a Cucumber core team member and the author of Cucumber.js. Cucumber.js is a native JavaScript implementation of Cucumber, and is a strict port that can run on any JavaScript environment. Running on Node.js as well as within any browsers, Cucumber.js is virtually serviceable against everything producing JavaScript and HTML (Node.js, Ruby on Rails, PHP, .NET, etc)
-  </div>
-  <div>
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/42.java">Android 4.1.1 Vulnerable to Reverse Heartbleed</a>Google announced last week that Android 4.1.1 is susceptible to the Heartbleed OpenSSL bug. While Android 4.1.1 is, according to Google, the only Android version vulnerable to Heartbleed, it remains in use in millions of smartphones and tablets. Android 4.1.1 devices have been shown to leak significant amount of data in a &quot;reverse Heartbleed&quot; attack.
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/44.java">Windows Management Framework 5 Preview Introduces Package Manager And Network Switches Cmdlets</a>Microsoft announced the availability of the Windows Management Framework V5 Preview, which includes Windows PowerShell OneGet, a package manager in the spirit of yum and apt-get; a set of cmdlets to manage network switches; and some polishing on Windows PowerShell Desired State Configuration (DSC).
+  </div> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/43.java">Cucumber.js for BDD in JavaScript: An Interview with Julien Biezemans</a>Julien Biezemans is a Cucumber core team member and the author of Cucumber.js. Cucumber.js is a native JavaScript implementation of Cucumber, and is a strict port that can run on any JavaScript environment. Running on Node.js as well as within any browsers, Cucumber.js is virtually serviceable against everything producing JavaScript and HTML (Node.js, Ruby on Rails, PHP, .NET, etc) 
+  </div> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/42.java">Android 4.1.1 Vulnerable to Reverse Heartbleed</a>Google announced last week that Android 4.1.1 is susceptible to the Heartbleed OpenSSL bug. While Android 4.1.1 is, according to Google, the only Android version vulnerable to Heartbleed, it remains in use in millions of smartphones and tablets. Android 4.1.1 devices have been shown to leak significant amount of data in a &quot;reverse Heartbleed&quot; attack. 
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/41.java">Spring Updated for Java 8</a>Java 8 might be difficult for enterprise projects to adopt, mostly because of established Java EE application servers. Those using Tomcat and Jetty will likely have an edge in upgrading. Spring 4.0.3 was recently released, with official support for Java 8 as well as many WebSocket improvements. 
@@ -147,9 +150,6 @@
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/2.java">Highlights from Microsoft's Build 2014 Opening Keynote</a>The opening keynote for Build 2014 kicked off with several big announcements. Today marked the formal announcement of Windows Phone 8.1 and the soon to be released Windows 8.1 Update. 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/1.java">Introducing Common XAML UI</a>Based on the WinRT API, the Common XAML UI framework will allow the same UI code to be shared on phones, tablets, desktop computers, and eventually Xbox One. 
-  </div>   
+  </div>  
  </body>
 </html>
