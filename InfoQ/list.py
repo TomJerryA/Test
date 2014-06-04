@@ -1,6 +1,60 @@
 <html>
  <head></head> 
- <body> 
+ <body>
+  <div>
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/36.py">IBMのNick O'Leary氏がNode-REDで「モノのインターネット」をデモ</a>Nick O'Leary氏は先回のQCon Londonで，モノのインターネット(Internet of Things / IoT)に注目したオープンソースプロジェクトのNode-REDを発表した。IBMのEmerging Technologyチームが開発したこのプロジェクトは，&quot;ハードウェアデバイス，API，オンラインサービスが画期的な方法で結合された&quot;仮想環境をブラウザ上で実現する。
+  </div>
+  <div>
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/35.py">David Mole, Sandy Mamoli両氏に聞く - Trade MeにおけるSpotifyのスクワッドモデル導入について</a>アジャイルコーチのDavid Mole氏とSandy Mamoli氏は先日，ウェリントンのアジャイルミートアップグループで，ニュージーランド最大のオンライン企業であるTrade Meでの成功体験について講演した。彼らはSpotify型のスクワッドモデル(Squad Model)をTrade Meに導入すべく，チームの自己形成(Self Formation)とビッグバン方式のマイグレーションを行ったのだ。その動機と経験を理解するため，我々は彼らの話を聞いた。
+  </div>
+  <div>
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/34.py">企業におけるアジャイルとリーンを活用したサービス管理</a>アジャイルソフトウェア開発やスクラムは企業が本当にアジャイルの約束を果たすために十分なものではない、とDave van Herpen氏は言う。彼が提案するのは、企業全体を通じたコラボレーションを改善するために、ITサービス管理がアジャイルやリーンのプラクティスをDevOpsとあわせて適用する、ということだ。
+  </div>
+  <div>
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/33.py">SDKやコンパイル、コードの署名なしにデバイス上のPhoneGapアプリケーションをテストする</a>PhoneGapがアプリケーションのテストツールであるPhoneGap Developer Appをリリースした。このツールは、アプリケーション開発時のテストにおいて、SDK一式やコンパイル、コードの署名が必要ないというものである。なお、GapReloadと組み合わせたLiveReloadも同じことを行うことができる。
+  </div>
+  <div>
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/32.py">HerokuとSalesforce.comのデータリポジトリをリンクする新たなコネクタを発表</a>Heroku（2010年にSalesforce.comが買収）が2つのクラウドプラットフォームの最初のビルトイン統合サービスを発表した。このHeroku PostgresとSalesforce (Oracle) データベースの双方向データ同期は、Herokuにホストされたモバイル顧客向けアプリケーションをSalesforceで動作するビジネスシステムとつなげる手段として位置づけられている。
+  </div>
+  <div>
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/31.py">アジャイルのガバナンスにおけるマネジメントの役割</a>複数のアジャイルチームを管理するにはどうすればいいだろうか。アムステルダムで開催されたAgile GovernanceカンファレンスでChristoph Johann Stettina氏がアジャイルのガバナンスとマネジメントの役割について発表した。
+  </div>
+  <div>
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/30.py">エンタープライズシステムの新たなスタイル - SDA(Software-Defined Architecture)</a>GartnerのVP兼フェローであるYefim V. Natis氏によると，最近上昇中の新たなエンタープライズアーキテクチャスタイルがあるという – それがSDA(Software-Defined Archtecture)だ。
+  </div>
+  <div>
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/29.py">C#でSOLIDにする</a>Autonomous Solutions Inc.のソフトウェア開発者Brannon B. King氏は2014年5月のMSDN MagazineでC#でSOLIDの原則に反することの危険性と題した記事を公開した。著者は、開発者のミスでC#コードがSOLIDの原則を破ることで、拡張または維持することがより難しくなる概要を説明した。
+  </div>
+  <div>
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/28.py">PostgreSQLのNoSQL機能が大幅に向上</a>PostgreSQL 9.4 Beta版には待望の&quot;バイナリJSON&quot;型，JSONBが実装されている。この文書データのための新しいストレージ形式には，JSONデータをハイパフォーマンスに操作するためのインデックス処理，関数，演算子が用意される。
+  </div>
+  <div>
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/27.py">Facebook の決断：MVCはスケールしない。ならば Flux だ。</a>MVC アーキテクチャは増大するニーズに応じてスケールすることができないため、Facebook社は、Fluxと呼ばれる別のデザインパターンを用いることを決断した。
+  </div>
+  <div>
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/26.py">SplunkがHunk 6.1をリリース</a>Splunkは機械が生成したデータを検索や監視、分析することに特化した企業だ。同社はHunk 6.1のリリースを発表した。Hunkはビッグデータ分析のプラットフォームを提供する。ストリーミングリソースライブラリを使うことで開発者はHunkをどのようなNoSQLエンジンにも接続できるようになった。Apache CassandraやMongoDBやNeo4jなどだ。
+  </div>
+  <div>
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/25.py">FirefoxにHTML5 DRMを追加するというMozillaの計画にさまざまな反応があった</a>Mitchell Baker氏は今週、MozillaはFirefoxにEncrypted Media Extensions (EME)を追加して、ブラウザーにシステムを実装済のMicrosoft, Google, Appleに並んだと発表した。Free Software Foundationは、MozillaとAdobeのパートナーシップを非難しており、Adobeは&quot;フリーソフトウェア運動とMozillaの基本理念に反している&quot;と説明している。
+  </div>
+  <div>
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/24.py">QCon San Francisco 2014 (11/3-7) 参加登録開始、プレゼンテーション・トップ10</a>QCon San Francisco 2014 (11/3-7)の参加登録が始まった。このThe Hyatt Regency San Franciscoで開催されるイベントは今回で8回目を迎え、100名の講演者が登壇し、15のトラックが行われ、さまざまな人脈作りの機会を提供する。6月21日までに参加登録すれば、$800のディスカウントが受けられる。
+  </div>
+  <div>
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/23.py">Cascading 3.0 が複数のフレームワークをサポート。 Concurrent Driven によるビッグデータアプリケーションの管理</a>ConcurrentはCascading 3.0 を初夏にリリースする予定である。これを使えばMapReduce、Tez、Spark、Storm等の複数のビッグデータフレームワーク上で特定のアプリケーションを実行できる。さらに、Drivenという新しいConcurrentの商用製品はビッグデータ・アプリケーションのための強力なエンタープライズ・データ・アプリケーション管理機能を提供する。
+  </div>
+  <div>
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/22.py">アジャイルプロジェクトのためのガバナンス</a>アムステルダムで5月13日に行われるアジャイルガバナンスカンファレンスにおいて、Andrew Craddock氏は程よく管理されたアジャイルプロジェクトについての講演を行う。InfoQは、アジャイルガバナンスとは何か、またアジャイル開発プロセスにガバナンスプラクティスを組み込むことがなぜ必要とされるのかについて彼にインタビューを行った。
+  </div> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/21.py">リモートからクライアントとサーバのメモリをダンプできてしまう脆弱性Heartbleed</a>最近明らかになったOpenSSLのHeartbleedバグを突くとリモートクライアントがサーバ側のメモリの中を覗けてしまう。Yahoo! MailやAmazon Web Servicesが影響を受けている。 
+  </div> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/20.py">レンダリングシステムを刷新したMeteor 0.8</a>Meteorのバージョン0.8が公開された。“Meteorのレンダリングシステムが改善されている”という。Meteorの次世代テンプレートエンジンであるBlazeは細かなDOMの更新が可能であり、jQueryと統合され、APIが単純になった。今回のリリースで2012年のバージョン0.4導入されたページ更新エンジンであるSparkがBlazeに置き換わった。 
+  </div> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/19.py">チームの改善のためにベロシティを計測することへの懸念</a>アジャイルチームは自分たちのスプリントごとのベロシティを計測する。そうすることで彼らは、計画をたて、進捗をトラッキングし、プロダクトオーナーにプロダクトのリリースプランを作るための手がかりを与えることができるようになる。チームは、自らを改善したいときに、ベロシティのデータを利用できるのだろうか？ 何人かの著者がベロシティについて書いており、チームの生産性を高めることを目的としてベロシティを計測することについての懸念を伝えている。 
+  </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/18.py">MySQLを“ウェブスケール”にするためにFacebook, Google, LinkedIn,Twitterが協力</a>Facebook、Google、LinkedIn、Twitterは共同でリレーショナルデータベースを“ウェブスケール”にするため、WebScaleSQLを立ち上げた。これは、MySQL 5.6 Community Editionのブランチだ。 
   </div> 
@@ -96,60 +150,6 @@
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/40.py">QCon Tokyo 2014 【アジャイル／モデリング】 トラックのご紹介</a>QCon Tokyoは、最新技術を追い求めるデベロッパのための情報コミュニティ「InfoQ」が主催する、エンジニアによるエンジニアのためのワールドワイド カンファレンスです。そのカテゴリのひとつとして「アジャイル／モデリング」カテゴリを設定しています。 アジャイルは単純な「試してみた」という段階から、「そのテクニックを使って何をするか」という段階に移行しています。本トラックでは、その「次」を考えていただけるような内容をご用意しました。グリーとサイバーエージェントという、ゲーム業界の注目会社からの両氏が並び立ち、さらに、DevLOVE主催者の人気セッションもあります。 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/39.py">QCon Tokyo 2014 【クラウド/DevOps】 トラックのご紹介</a>QCon Tokyoは、最新技術を追い求めるデベロッパのための情報コミュニティ「InfoQ」が主催する、エンジニアによるエンジニアのためのワールドワイド カンファレンスです。 今回のQcon Tokyo 2014 では、クラウド時代の技術動向にこだわって「クラウド/DevOps」カテゴリを設定しています。クラウドが主要なインフラとして台頭する一方、どのように活用してくのか設計、運用時に考慮するべきポイントが多数あります。そこで本トラックでは、クラウドを適切に活用・運用する方法を紹介します。 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/38.py">ソフトウェアの負債を扱う</a>ソフトウェアの負債というのは様々なかたちで存在している。技術的負債は広く知られているし、他の形態としては能力的負債とか品質的負債というものがある。ソフトウェアの負債はプロダクトの維持管理コストを増やし、開発者の気持ちを落ち込ませうるものだ。ソフトウェアの負債を扱うためにはいくつかの解決法がある。 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/37.py">Connect 1.0とAtlassian VerifiedについてDave Meyer氏が語る</a>InfoQはAtlassianのプロダクトマーケティングスペシャリストであるDave Meyer氏に同社の新しい製品であるAtlassian Connect 1.0とAtlassian Verifiedの話を聞いた。 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/36.py">アジャイル適用の価値を評価する</a>アジャイルを適用するビジネスケースを定義するときに疑問に思うかも知れないのが，アジャイルソフトウェア開発の採用によって達成できるビジネスバリューをどうやって評価すればよいのか，ということだ。 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/35.py">Appleが企業と教育向けにiOSデバイスの配布と管理を改善</a>AppleはDevice EnrollmentとVolume Purchase Programsの変更を発表した。これは、企業や教育向けに大規模にiOSデバイスが配布される状況を改善するためだ。企業が所有しているiOSデバイスが配布される場合もあれば、 &quot;bring your own device&quot;(BYOD)ポリシーを決めている場合もある。 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/35.py">Googleがクラウドを値下げ、CIツールを統合し、WindowsとマネージドVMをサポート</a>Googleは同社のクラウドプラットフォームに関するライブイベントを開催し(録画がここで見られる)多くの新機能や改善を発表した。 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/34.py">Docker Indexがプライベートリポジトリとウェブフックを提供</a>Dockerを提供するDocker Inc.が新しいサービスを発表した。初の商用サービスであるプライベートリポジトリも含む。Docker indexはウェブフック、トリガ、Trusted Buildsのためのリンク、メールによる通知を提供する。 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/33.py">マイクロサービスとSOA</a>ここ数年，新たな可能性を持ったアーキテクチャスタイルとして，マイクロサービスが取り沙汰されるようになった。最近でもThoughtworksのMartin Fowler, James Lewis両氏が，マイクロサービスを定義する記事を書いている。しかしSteve Jones氏は，その記事を含むテーマ全般に異を唱える。マイクロサービスに新規性はほとんどない，単なるサービス指向デリバリアプローチだ，というのが氏の意見だ。 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/32.py">Vagrantが開発環境向けコラボレーションツールをリリース</a>DevOpのツールを提供しているVagrantはバージョン1.5の重要な機能を発表した。公開イメージリポジトリと実行環境へのアクセスを共有する機能だ。Vagrant Cloudは完全な開発環境の発見と配信をシンプルにする。Vagrant Shareを使えば開発者は仮想環境へHTTPやSSHでアクセスする方法を他者に公開してコラボレーションできる。 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/31.py">アンドロイドウェアの開発者向けプレビュー詳細</a>Googleは待望のウェアラブル機器向けプラットフォームであるアンドロイドウェアと、より早く新機能を用いて新しいアプリを開発したい熱烈な先行開発者がウェアラブル機器上で動くアプリを作れる開発プレビューを発表した。 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/30.py">Cassandra、2.1リリースに向け勢いづく</a>Cassandraは2.1リリースに向けて鋭意開発が進められており、2.1.0-beta1もすでにリリースされている。この記事では最新のメジャーリリースで追加された主要な解く著について概観する。DataStaxの支援によって、企業向けの導入も進んでおり、DataStaxは最新パートナーシッププログラムを発表している。 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/29.py">Jolt Awards 2014: モバイルとコーディング ツール</a>Dr. DobbsはJolt Award for Mobile and Coding Tools for 2014を発表した 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/28.py">Entity Framework 6.1リリース</a>近頃、リリースされたEntity Framework 6.1は多くの興味深い改善がなされている。例えば、ツーリングの改良、CommitFailureHandler、IndexAttribute、Public Mapping APIなどだ。 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/27.py">オブジェクト指向設計の原則と関数型プログラミング</a>互いに独立した活動として、Richard Warburtonはプレゼンテーションで、Mark Seemannはブログで、共に関数型プログラミングの観点から見たオブジェクト指向とSOLID設計原則について触れた。 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/26.py">アジャイル文化定着のための音声インタビューシリーズ</a>昨年のインタビューシリーズ&quot;Individuals and Interactions&quot;に引き続き、“The Human Side of Agile”の著者であるGil Broza氏が&quot;A Packing List for your Agile Journey&quot;と題した音声インタビューシリーズを発表した。3月17日から21日までに行われrインタビューでは、さまざまなコメンテータ、実践家、作者が長期的なアジャイルへの転換を実現する方法について語る。 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/25.py">Tizen SDK for Wearableを使用したSamsung Gear向けアプリ開発</a>Androidを搭載した第１世代のウェアラブルデバイスに続いてSamsungは，Intelと共同で開発したオープンソースのモバイルオペレーティングシステムであるTizenを基盤とした，第２世代のデバイスの市場投入を決定した。そして今回，アプリケーション開発のためのSDKがリリースされている。 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/24.py">AmazonがAppStream APIにHALメディアタイプを選択</a>Amazonは，Amazon AppStreamプラットフォームにホストされたアプリケーションをプログラムから管理可能な新API，&quot;ApStream API&quot;をリリースした。このAPIの開発で同社が選択したのはHALメディアタイプだ。HALは，マシン・ツー・マシンAPIを構築するメディアタイプのための，最小限のハイパーメディアである。Amazonは，一般公開されている製品の技術としてハイパーメディアを選択した最大の組織のひとつ，ということになる。 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/23.py">ビッグデータ技術を用いたグラフ処理</a>極度に大きなグラフの処理は現在でもなお難しい問題だ。しかし最近のビッグデータ技術の進歩は，このようなタスクをより実用的なものにしている。ニューヨークを拠点にクロスデバイスなコンテント配信を手掛けているTapadはビッグデータを活用して，テラバイトサイズのデータにまで拡張可能なグラフ処理を，ビジネスモデルの中心とするスタートアップだ。 
-  </div> 
+  </div>                
  </body>
 </html>

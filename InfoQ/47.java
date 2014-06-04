@@ -1,11 +1,20 @@
-<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>The Shallot 2014 Edition Published</h3><p>This year's edition of <a href="http://theshallot.org/">The Shallot</a> has been released. &nbsp;The Shallot is an online magazine which conducts deep analysis of the state of the information technology industry looking at a broad range of topics.</p>
-<p>This year's edition covers important areas such as:</p>
+<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>Ember.js 1.5 Released: New Testing Features, Improved UX</h3><p>The <a href="http://emberjs.com/">Ember.js</a> team has released <a href="https://github.com/emberjs/ember.js/blob/v1.5.0/CHANGELOG.md">version 1.5</a>, with new testing features, and an eager URL update that will “provide for a better UX 99% of the time,” according to Ember core team member Robert Jackson.</p>
+<p>Jackson, posting on the <a href="http://emberjs.com/blog/2014/03/30/ember-1-5-0-and-ember-1-6-beta-released.html">Ember.js blog</a>, described the new version as having “a ton of bug fixes and small improvements” as well as new features in the release.</p>
+<p>Version 1.5 includes Handlebars logging of primitive value, described by Jackson as a feature that ”allows you to log primitive values (strings, numbers, etc) from within your templates.&quot; In previous versions of Ember.js, the {{log}} helper would only allow the usage of bound property lookup.</p>
+<p>The release’s new testing helpers include currentRouteName, currentPath, and currentURL, and are described by Jackson as making it easier “to make assertions on the state of routing in your application.&quot;</p>
+<p>Aside from Handlebars logging and the testing helpers, the Ember.js 1.5 brings changes to Ember.computed.oneWay, and the new Ember.isBlank shortcut, for checking if a particular object is empty or an empty string.</p>
+<p>In previous versions, to avoid data propagates back up users would have to do “<small><b>Ember.computed.oneWay('foo').readOnly()</b></small>” but the new release allows developers to use “<small><b>Ember.computed.readOnly('foo')</b></small>”&nbsp; for the same result.</p>
+<p>Other new features include the Eager updating URL: “Previously, the URL in the address bar would only update at the very end of the transition. This change causes the URL update to happen immediately unless the transition was aborted/redirected within the same run loop, which provides for a better UX 99% of the time,” Jackson said.</p>
+<p>A notable bug fix in 1.5 is noted for breaking the edge-case of using_super out of line. In previous versions of Ember.js, an infinite loop would occur when more than one _super was called for a given function name and there was no terminating function. Jackson calls on anyone affected by the breaking bug fix to comment on <a href="https://github.com/emberjs/ember.js/pull/4301">#4632</a>.</p>
+<p>Other bug fixes in Ember.js 1.5 include:</p>
 <ul> 
- <li>CEO with Tourettes Mistaken as Visionary&nbsp;</li> 
- <li>Pivoteers, Inc Celebrates Ten Years of Pivoting</li> 
- <li>Outsourcing of Executives Returns High Shareholder Value</li> 
- <li>Scrum Team Abandons Story Points for Bitcoin</li> 
- <li>Self-Directed Team Chooses Command-and-Control Structure: Waits for Manager to Make Decisions</li> 
+ <li>run.bind keeps the arguments from the callback.</li> 
+ <li>Ember.copy now supports Date</li> 
+ <li>Allow components with layoutName specified by parent class to specify templateName</li> 
+ <li>PromiseProxyMixin reset isFulfilled and isRejected</li> 
 </ul>
-<p>Publication of The Shallot is the result of deep investigitave journalism and analysis over the previous year&nbsp;&nbsp;by a team of dedicated reporters from all around the world, which is why it takes a whole year for an edition to be produced.</p>
-<p>&nbsp;</p><br><br><br><br><br><br></body></html>
+<p>Response to the update from the community was mostly positive. On the blog post user Adrian Meredith <a href="http://emberjs.com/blog/2014/03/30/ember-1-5-0-and-ember-1-6-beta-released.html#comment-1313061713">asked</a> “when is query params going to be done...Really surprised at how low priority this is, does no-one have search in their apps?&quot;</p>
+<p>User Ilya Radchenko <a href="http://emberjs.com/blog/2014/03/30/ember-1-5-0-and-ember-1-6-beta-released.html#comment-1313275654">responded</a> “It's not low priority. The core team wants to do it right, because it's an important feature and a very difficult problem with many edge cases.&quot; Core team member Alex Matchneer confirmed this, <a href="http://emberjs.com/blog/2014/03/30/ember-1-5-0-and-ember-1-6-beta-released.html#comment-1319093624">adding</a> “it's extremely high priority...we don't really encourage this sort of thing but many folk are using query-params-new happily in production.”</p>
+<p>On the <a href="http://discuss.emberjs.com/">Ember.js Discussion Forum</a> user gordon​_​kristan referred to a “significant performance decrease going from 1.4.0 to 1.5.0”, <a href="http://discuss.emberjs.com/t/1-5-0-performance-decrease/4733">mentioning</a> “My app has gone from loading the home page in about 5 seconds to taking about 30 seconds.&quot;</p>
+<p>While the cause of the performance decrease hadn’t been identified at time of press, <a href="http://discuss.emberjs.com/users/stefan/activity">Stefan Penner</a> -- member of the core Ember.js team -- responded “[H]opefully not, but this could be related to my performance tuning. We did thoroughly test across several big apps, with only positive throughput improvements.&quot;</p>
+<p>With the 1.5 release announcement came the beta release of version 1.6, including <a href="https://github.com/emberjs/ember.js/blob/v1.6.0-beta.1/CHANGELOG.md">new features</a> and a performance improvement to the cache lookup throughput.</p><br><br><br><br><br><br></body></html>

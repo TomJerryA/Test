@@ -1,59 +1,133 @@
-<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>超媒体API引发的REST生存危机</h3><p>几周以前，软件开发者<a href="http://stackoverflow.com/users/374460/evan-cordell">Evan Cordell</a>在<a href="https://groups.google.com/forum/#!topic/api-craft/7c1tyHv2VQ4">API-Craft</a> 邮件组中引发了一场对话，就关于REST在超媒体方面的约束，与常见Web API需求之间如何存在分歧进行了讨论。</p>
-<p>在讨论“REST的生存危机（RESTisential crisis）”话题的时候，Cordell注意到，经过数年之久的辩论和实践，REST风格终于开始透露出它藏得最深的秘密——超媒体约束。尽管Web证明了REST风格完美适用于人类驱动的交互，但对于它在一般性可编程Web API方面的效用的担心，在Web API社区中却似乎在不断上升。</p>
-<p>在这场讨论中，他首先给出了REST的描述，以及在面向特定领域Web API时超媒体的制约，接下来考虑了对其他架构风格的需求，选用REST中最好的部分，并替换掉其中的一些约束，以获得不同的价值，例如有效和可靠的M2M（Machine-to-Machine）通讯。</p>
-<p>讨论中所列出的主要担忧，涉及了不同的途径，用来应对接口随着时间推移而产生的变更。第一套解决方案要求并行运行若干API版本，甚至若干API编配以用于特定客户端体验，<a href="http://www.infoq.com/news/2013/12/api-orchestration-layer">例如Netflix所展示的做法</a>。其灵活性方面则需要面对设计和运营方面的重大挑战。</p>
-<p>第二个解决方案要求预先投入更多的努力，来设计一套更易于应对变化的RESTful超媒体API，并限制对客户端的影响——就像HTML浏览器和服务器的工作和演进那样。但部分讨论参与者（特别是Web工程师<a href="https://twitter.com/mikekelly85">Mike Kelly</a>）对此表达了自己的担心，主要集中在实现该方案涉及的复杂度和API使用者需要承担的额外负担方面。以下是讨论摘要，包括对Evan最初帖子内容和章节标题的摘录：</p>
-<h2>1) 好的API不会发生变化</h2>
-<ul> 
- <li>考虑一下Joshua Bloch在设计公共Java API方面的经验，我们似乎可以认为，相同的规则也可以运用到可编程Web API上。</li> 
- <li>API是遵循外观模式的接口，面向客户端的部分不应该发生变化。然而，可以将多重或演进的实现（包括运行时数据）暴露出来，而无须改变API约定。</li> 
-</ul>
-<h2>2) 版本管理不起作用</h2>
-<p>与“传统”API相比，“Web API”公开出来的内容要多得多。它暴露出数据；而且对于持续变化数据的大型集合，它通常还会把其当前状态公之于众。那么，当我们的领域模型拥有两个版本，它们共享部分数据子集但使用不同方式访问的时候，该如何有效的进行版本管理？这会强迫客户端发生分裂。</p>
-<ul> 
- <li>超媒体能够帮助API演进并变得不那么脆弱，但是如果数据和领域模型发生根本性改变，那么在没有开发者人工介入的情况下，客户端将无法自动适配这些变动。</li> 
-</ul>
-<h2>3) 超媒体毁掉了资源定位</h2>
-<ul> 
- <li>REST阻止了来自客户端的固定URI和任何关于服务器资源的先验知识。在实践中，保存了URI（例如书签）和服务器的客户端，需要处理其URI空间的演变（重定向）。</li> 
- <li>超媒体无法将API提供者与API使用者的惰性行为隔离开，后者将不会遵循恰当的超媒体流，而是直接针对目标资源和URI。</li> 
- <li>由于超媒体API往往非常复杂，难以理解和使用，所以开发者将必然会优化其客户端并采用捷径——而这将会使为了将API变更与客户端隔离的所有努力化作泡影。</li> 
-</ul>
-<h2>4) 对人类用户来说，超媒体富有意.义；但对机器则并非如此</h2>
-<ul> 
- <li>机器并不善于处理随时间推移发生的变化，相反人类则非常擅长解读变更并决定下一步想要做什么。超媒体与人类在本质上非常贴近，而对机器来说这意味着相当程度的隔阂。</li> 
- <li>领域模型方面的变动，要求客户端使用它的方式也发生改变，超媒体并没有对此采用什么特别的手法。</li> 
-</ul>
-<p>一个真正的REST/超媒体客户端，其实是人机交互（HCI）的一种形式，而不是API。（或者说，是AHI——应用与人交互）。</p>
-<h2>5) 带外数据究竟有什么坏处？</h2>
-<ul> 
- <li>API是否真的有必要天生可发现？</li> 
- <li>当API响应的格式具有高度复杂性、难以阅读的时候，API凭什么应该具有自我说明性（self documenting）？</li> 
- <li>真正易于阅读的材料应该是：组织结构精妙的HTML、由浏览器渲染、具有交互式例子和清晰的描述。</li> 
-</ul>
-<h2>6) 超媒体API与WADL真的不一样吗？</h2>
-<p>可发现的超媒体API有什么不同？“HAPI”看上去就像是一套WADL弥漫其中的API。我们依旧必须从单独一个端点开始，依旧必须了解基于其响应，我们可以用API干什么。</p>
-<ul> 
- <li>其中部分必须具有领域模型的描述，而它们还将随时间推移发生改变。</li> 
-</ul>
-<h2>7) Web的模拟</h2>
-<ul> 
- <li>假定这样一个场景：在原生移动应用中使用REST API，我们拥有两门语言（Android ML和iOSMLS，分别拥有所需的代码）；</li> 
- <li>使用针对特定领域的超媒体媒体类型，依旧需要编写能够理解这一领域的客户端代码。</li> 
-</ul>
-<h2>8) 关于REST，有哪些是真正的优点？</h2>
-<ul> 
- <li> <p>除了超媒体和文档网（Web of documents）外，REST还提供：</p> 
-  <ul> 
-   <ul> 
-    <li>强制要求无状态服务器，从而使其易于扩展</li> 
-    <li>鼓励通过资源将信息解耦合</li> 
-   </ul> 
-  </ul> </li> 
-</ul>
-<blockquote style="margin-right: 0px" dir="ltr"> 
- <p>基础内容非常简单，我们可以与服务器以语义上富有意义的方式进行对话，而且只需要在所有平台和语言中包含http库即可。</p> 
+<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>InfoQ在课堂Q/A整理：基于AWS云平台的高可用应用设计</h3><p>5月21日，AWS中国首席云技术顾问方国伟在InfoQ在线课堂介绍了AWS高可用和非高可用的服务分类，从高可用角度对典型服务进行介绍，以及高可用设计的5大常见设计原则，并结合AWS的相关服务依次进行了架构设计分析。期间，方国伟回答了许多网友的问题，InfoQ对其进行了整理和补充，一并提供给大家。</p>
+<p>你也可以重复<a href="http://www.infoq.com/cn/presentations/high-availability-application-design-based-on-aws-cloud-platform">收看本次在线课堂</a>。</p>
+<p><strong>关于存储</strong></p>
+<p><strong>Q：instance down掉之后，这个instance上的数据会保留吗？能找回来吗？以前看到文档说要用EBS才能保障instance down掉之后的数据保留，是这样吗？是否有其他方案？</strong></p>
+<blockquote> 
+ <p><strong>方国伟：</strong>有好几个问题就讲instance storage与EBS数据存储的问题，我统一讲一下。因为EC2里边的数据存储一般分两大类，一个是instance storage，另一个是EBS。instance storage是放在EC2里的硬盘里边的，是通过虚拟化实现的。如果这个EC2所在的物理机或instance出问题，那这个EC2的数据就不能访问了。为了解决这个问题，我们提供了EBS，EBS是通过网络访问的，如果你的instance出问题了，数据还在EBS里边。那可能有人会问，EBS的数据会不会丢呢？EBS的数据一般可靠性比较高，我们有个数据叫annual failure rate（AFR）会比一般的硬盘低好多，一般是普通硬盘的1/5到1/10。那EBS还是有可能要出问题，那怎么办？一种方式是定期对EBS做snapshot，snapshot的数据放在S3里，S3的数据持久性是11个9，非常高了。这是可以解决EBS丢数据的一个解决方案。</p> 
 </blockquote>
-<p>以上摘要包含了对若干讨论参与者回复内容的摘抄，特别是Evan Cordell，以及Mike Amundsen、Jorn Wildt和Mike Kelly。作为免责声明，需要指出的是，本文作者也在开始阶段参与了这场讨论。</p>
-<p>从自身的经验来看，各位读者是否认为我们需要更好地区分REST和Web API架构风格，区分人类驱动超媒体和M2M通讯的使用案例？</p>
-<p><strong>查看英文原文：</strong><a href="http://www.infoq.com/news/2014/03/rest-at-odds-with-web-apis">RESTistential Crisis over Hypermedia APIs</a></p><br><br><br><br><br><br></body></html>
+<p><strong>Q：instance down掉后EBS会自动卸载吗？</strong></p>
+<blockquote> 
+ <p><strong>方国伟：</strong>一般会自动卸载。</p> 
+</blockquote>
+<p><strong>Q：每个instance都有对应的EBS，（instance）销毁后EBS上存储的数据怎么处理？</strong></p>
+<blockquote> 
+ <p><strong>方国伟：</strong>EBS上数据如何处理完全由用户自己决定。用户可以保留EBS卷，从而保留数据，也可以把EBS删除从而删除其上的数据。另外，用户也可以通过先制作EBS卷快照然后再删除EBS卷的方式来保留数据，因为以后还可以根据这个快照来重新生成一个包含这些旧数据的新EBS卷。</p> 
+</blockquote>
+<p><strong>Q：instance storage怎么使用？哪些数据可以放在instance storage里面？</strong></p>
+<blockquote> 
+ <p><strong>方国伟：</strong>这就有不同的场景，主要看你的数据有哪些对持久性要求，如果不是特别高，就放到instance storage里。或者在instance的数据在别的instance里有备份的，这样相当于一份丢了，从软件架构上自己可以从别的instance中恢复。</p> 
+</blockquote>
+<p><strong>Q：AWS自己的DR是怎么设计的？如果一个region出现问题，怎么恢复呢？用户数据有sunshine吗？</strong></p>
+<blockquote> 
+ <p><strong>方国伟：</strong>我们在设计这个平台的时候，region和region之间基本上是相互独立的，在默认情况下，你在region里面部署了应用程序，如果这个region宕掉了，当然你的应用就宕掉了。这里首先要指出一点，region本身不是一个数据中心，只要是商用region，我们至少要保证有两个AZ以上。这里强调一点，AZ本身也不是一个数据中心，有可能是多个数据中心组成一个AZ，所以整个region宕掉的可能性非常小。如果你有一个对可靠性要求特别高的应用，你可以自己在部署的时候跨region部署，但这个需要用户来做架构上面跨region的应用架构设计、数据拷贝等等。AWS是不会主动帮你来做的，最重要的原因是很多国家和地区对数据本身有一定的独立性要求，比如欧盟要求数据放在欧盟的region里边，AWS是不能把数据从region里主动让它离开的，这个数据拷贝的动作一定要用户自己操作才能进行。</p> 
+</blockquote>
+<p><strong>关于数据库</strong></p>
+<p><strong>Q：RDS的Multi-AZ部署支持SQL Server吗？</strong></p>
+<blockquote> 
+ <p><strong>方国伟：</strong>我们最新宣布支持SQL Server，这样四个数据库类型（My SQL、Oracle、 PostgreSQL和SQL Server）都支持Multi-AZ Deployment了。</p> 
+</blockquote>
+<p><strong>Q：原来部署到Windows+MySQL上的BS应用，如果要部署到AWS，应该做哪些大的改动？</strong></p>
+<blockquote> 
+ <p><strong>方国伟：</strong>不需要大的改动，Windows用EC2，MySQL可用EC2也可以用RDS服务。AWS的兼容性很好的。</p> 
+</blockquote>
+<p><strong>Q：DynamoDB怎么进行备份？</strong></p>
+<blockquote> 
+ <p><strong>方国伟：</strong>一般情况下是不需要用户做备份，因为我们已经帮你备了三个拷贝，甚至更多。不过多个拷贝是在一个region里面的，如果你对数据可靠性要求非常高，可以跨region做拷贝，这个备份也非常简单。</p> 
+</blockquote>
+<p><strong>Q：当数据库master出现问题后，切换到slave，是否支持可写？如果支持可写，是否会出现master和slave互为双写的情况？</strong></p>
+<blockquote> 
+ <p><strong>方国伟：</strong>是支持可写的，因为Multi-AZ部署是完全切换，这个跟Read Replica不太一样.在RDS服务里，对数据库的两个相关的服务，一个就是Multi-AZ部署，Multi-AZ部署完全是一个主拷贝和一个副拷贝，也就说这两个是同步复制的，一般所有的访问都是针对那个master拷贝的，当master拷贝出问题的时候，它会自动切换，这个访问不是通过IP的，而是通过Domain Name，所以对应用程序来讲，它是透明的。如果应用Read Replica，那当然可以把一些读操作放到Read Replica上面，那这个跟Multi-AZ又不太一样。</p> 
+ <p>master和slave互为双写？不会的，因为它始终同时只有一个是写的，要保持数据的一致性。</p> 
+</blockquote>
+<p><strong>Q：SQS最高是多少并发，需不需要做HA？</strong></p>
+<blockquote> 
+ <p><strong>方国伟：</strong>一般来讲这个不是问题，你不需要做HA，SQS本身就是高可用的，而且它是Auto Scaling，我们有非常大批量的用户在用都没有问题。</p> 
+</blockquote>
+<p><strong>关于Auto Scaling</strong></p>
+<p><strong>Q：自动修复的功能，如果启动新的虚机，怎么部署代码啊？</strong></p>
+<blockquote> 
+ <p><strong>方国伟：</strong>一般来讲有两大类方法。第一类，你把应用的代码做在AMI里面。Auto Scaling也好，还是你自己启动一个Instance也好，我们肯定会用到一个AMI，这样你新建了那个Instance里面就已经包含了你要部署的代码，你要部署的运行时环境，中间件等等。但是有的同学问，我的应用可能会有不同版本，或者改变比较多，那这个部署太不灵活了，所以我们另外还有办法，你在部署以后可以通过EC2有一个特性user data来实现，当应用部署启动Instance后，user data会帮你执行一段脚本，或者可以传进去一些参数给脚本，你他指定他从某个地方，比如S3上面下载一个新的程序的代码，然后在Instance启动之后去执行。将这两种方式结合起来，一般可以满足绝大部分用户关于动态软件和代码的需求。</p> 
+</blockquote>
+<p><strong>Q：Auto Scaling策略需要编程实现吗？</strong></p>
+<blockquote> 
+ <p><strong>方国伟：</strong>一般不需要。Auto Scaling实现需要用户做三个事情：</p> 
+ <ol> 
+  <li>配置launch configuration，launch configuration存储了一个Instance以后，它应该是包含什么样的信息，用哪个AMI，放在哪个region里面，用哪几个AZ。</li> 
+  <li>建个Auto Scaling Group，设置最少有多少个Instance，最大多少个Instance。</li> 
+  <li>最后一个Scaling policy，它定义了如果CloudWatch监控到超过预值后，要做个什么操作，这个操作大部分情况下是不需要编码来做的。当然除非特别复杂，你可以定制来做一些事情。</li> 
+ </ol> 
+</blockquote>
+<p><strong>Q：这个健康监测是AWS提供的吗？</strong></p>
+<blockquote> 
+ <p><strong>方国伟：</strong>是通过CloudWatch提供的，用户也可以自己配置一些监控指标。</p> 
+</blockquote>
+<p><strong>Q：启动新的EC2实例，需要加载Image，AMI。Image可以定制吗？加载自己的(custom)吗？</strong></p>
+<blockquote> 
+ <p><strong>方国伟：</strong>当然可以的。AMI的来源有几种方式，你可以用AWS官方提供的，或者社区提供的。当然社区提供的AMI要要做安全方面检查。当然你可以自己定制AMI，我们有专门的工具和API来帮你定制。对于绝大部分用户，比较常用的方式是使用官方提供的AMI，然后在此基础上自己做镜像，而不是所有操作系统，所有环境从头开始自己来做。</p> 
+</blockquote>
+<p><strong>Q：EC2实例的镜像（AMI）是不是可以事先准备好，使用的时候直接使用？</strong></p>
+<blockquote> 
+ <p><strong>方国伟：</strong>当然，实例的镜像都是事先准备好的。如果你根据AMI新建一个实例，你可以通过EC2 create AMI功能根据当前运行的实例生成一个AMI，你可以把AMI存在你自己的地方。生成以后，可以用这个自动生成的AMI，每个AMI都有id，所以你在创建Auto Scaling的launch configuration时可以根据id调用需要的AMI。</p> 
+</blockquote>
+<p><strong>Q：Auto Scaling对windows和Linux的AMI有区别吗？</strong></p>
+<blockquote> 
+ <p><strong>方国伟：</strong>Auto Scaling使用过程在Windows、Linux上没有区别，在我们平台上面都有支持的，没有问题。</p> 
+</blockquote>
+<p><strong>Q：SQS是顺序保证的吗？</strong></p>
+<blockquote> 
+ <p><strong>方国伟：</strong>不保存，我们不保证first in first out，SQS能保证不丢。但是顺序保证，通常需要通过应用程序层来实现。</p> 
+</blockquote>
+<p><strong>Q：我们需要考虑CDN吗？</strong></p>
+<blockquote> 
+ <p><strong>方国伟：</strong>我们全球有CDN服务Cloud Front，我们全球现在应该有51个点。国内我们会用合作伙伴的CDN设施，我们现在官方推荐的是网宿。</p> 
+</blockquote>
+<p><strong>关于AWS中国的服务</strong></p>
+<p><strong>Q： AWS什么时候在中国商用？</strong></p>
+<blockquote> 
+ <p><strong>方国伟：</strong>现阶段还处于有限预览阶段，只针对邀请客户开放。如果需求，建议联系AWS的销售人员。</p> 
+</blockquote>
+<p><strong>Q：AWS有没有中文版？</strong></p>
+<blockquote> 
+ <p><strong>方国伟：</strong>我们国内的版本就有中文版，如果你是有限预览用户，你可能已经看到了。如果你需要使用，你可以在www.amazonaws.cn上面申请。当然目前并不是申请了就能用，原因很多了。申请之后，我们销售可能会跟你联系，我们内部会有个排队的过程。基本上，我们会根据用户的情况来筛选，哪些用户来进入有限预览名单。</p> 
+</blockquote>
+<p><strong>Q：（AWS）有中文版试用吗？AWS有没有针对个人开发者的一些优惠政策？例如流量或CPU消耗一定程度下是免费的？</strong></p>
+<blockquote> 
+ <p><strong>方国伟：</strong>关于中国和国外的帐号或私有帐号的问题，我来解释下。首先，AWS没有所谓的试用帐号，任何人申请的帐号都是一样的。用户可以自己区分，这个帐号是用来做测试的，另外一个帐号做生产。对AWS来讲，对所有的帐号是一视同仁，都是生产帐号。对开发人员来讲，我们有一个免费试用套餐，英文叫free usage tier，目前这个套餐针对海外全球服务系统，那free usage tier的意思是在一定的额度下面，所有注册AWS帐号的用户，在一年之内免费使用这些资源。如果你想熟悉一下AWS的功能，你就可以用这个free usage tier。当然，free usage tier是给所有用户的，只要你注册了，新用户都享受这个服务，哪怕你一上来就是做生产，我们也会把free user tier那部分的费用，帮你从实际的帐单里面扣除。</p> 
+</blockquote>
+<p><strong>Q：有没有渠道来申请试用呢？</strong></p>
+<blockquote> 
+ <p><strong>方国伟：</strong>请访问<a href="https://www.amazon.com/ap/signin?openid.assoc_handle=aws&amp;openid.return_to=https%3A//portal.aws.amazon.com/gp/aws/developer/registration/index.html?ie=UTF8&amp;nc1=h_ct&amp;openid.mode=checkid_setup&amp;openid.ns=http%3A//specs.openid.net/auth/2.0&amp;openid.identity=http%3A//specs.openid.net/auth/2.0/identifier_select&amp;openid.claimed_id=http%3A//specs.openid.net/auth/2.0/identifier_select&amp;action=&amp;disableCorpSignUp=&amp;clientContext=&amp;marketPlaceId=&amp;poolName=&amp;authCookies=&amp;pageId=aws.ssop&amp;siteState=awscustomer&amp;accountStatusPolicy=P1&amp;sso=&amp;openid.pape.preferred_auth_policies=MultifactorPhysical&amp;openid.pape.max_auth_age=3600&amp;openid.ns.pape=http%3A//specs.openid.net/extensions/pape/1.0&amp;server=/ap/signin?ie=UTF8&amp;accountPoolAlias=&amp;forceMobileApp=0&amp;forceMobileLayout=0">www.amazonaws.cn</a>网站，有个提交申请的链接。</p> 
+</blockquote>
+<p><strong>Q：AWS现在还是必须使用外币信用卡才能注册使用吗？</strong></p>
+<blockquote> 
+ <p><strong>方国伟：</strong>AWS全球账户是需要支持外币信用卡，但国内服务开放后会公布国内的支付方式。</p> 
+</blockquote>
+<p><strong>Q：AWS在国内有没有国内建AZ？</strong></p>
+<blockquote> 
+ <p><strong>方国伟：</strong>那当然了，我们商用的时候肯定会有多个AZ。 第一个region在北京，所以整个数据中心都会在北京地区，我们是跟合作伙伴合作的。根据我们去年12月份发布的计划，第二个region会在宁夏。</p> 
+</blockquote>
+<p><strong>Q：有没有联系方式？</strong></p>
+<blockquote> 
+ <p><strong>方国伟：</strong>我的微博是 @方国伟_云端，邮箱是guowfang@amazon.com 。</p> 
+</blockquote>
+<p><strong>AWS能部署应用</strong></p>
+<p><strong>Q：AWS对应用有要求吗，什么样的应用架构适合部署到AWS上？除了使用AWS的组件之外，对应用本身有没有什么要求，才能实现云应用的高可用性。</strong></p>
+<blockquote> 
+ <p><strong>方国伟：</strong>如果你的应用只是要部署在AWS上，这个要求是非常低的，你的应用只要可以部署在虚拟环境，理论上差不多就可以运行在AWS上面。但是，如果你的应用要充分利用云计算平台的一些特性，尤其是高弹性、高可靠性、高可用性这些云的特点，那你对应用本身就需要做一些在架构上的调整。今天的讲座更多侧重在高可用性方面，6月17日还有个讲座“<a href="http://www.infoq.com/cn/vendorcontent/show.action?vcr=2812">如何通过架构设计来体现应用本身的弹性</a>”，这是两个不同的维度来看应用。所以说，如果你要充分利用云平台一些特性，那在应用架构上需要做些调整。（<strong>InfoQ注</strong>：6月7日在上海IC咖啡QClub技术沙龙上，方国伟与Autodesk高级软件工程师丁建将分享<a href="http://www.infoq.com/cn/vendorcontent/show.action?vcr=2842">AWS云平台上建立规模应用的实践</a>，你可以与两位专家当面交流，参会者将获得AWS纪念T恤及25美金AWS抵扣券，欢迎免费报名。）</p> 
+</blockquote>
+<p><strong>Q：哪些AWS服务是可以跨region的呢？</strong></p>
+<blockquote> 
+ <p><strong>方国伟：</strong>绝大部分AWS服务都是在一个region里面的，只有很少的服务可以跨region的。身份认证和访问控制（IAM），Route53，CloudFront（CDN），web console是跨region的。</p> 
+</blockquote>
+<p><strong>案例资料</strong></p>
+<p><strong>Q：海外的AWS案例，有一些介绍么？</strong></p>
+<blockquote> 
+ <p><strong>方国伟：</strong>请访问aws.amazon.com上的case study资料，上面有许多案例。</p> 
+</blockquote>
+<p><strong>Q：讲座的PPT可以提供吗？</strong></p>
+<blockquote> 
+ <p><strong>方国伟：</strong>你回头关注一下我们的博客，我们博客会提供Link，大家可以去下载的。我们国内会有一个中文的博客，应该是blog.csdn.net/awschina。（InfoQ注：在所有注册本期在线课程的用户都会受到答谢EDM，EDM中同样有<a href="http://www.infoq.com/cn/presentations/high-availability-application-design-based-on-aws-cloud-platform">PPT下载地址</a>）。</p> 
+</blockquote>
+<hr />
+<p>感谢<a href="http://www.infoq.com/cn/author/方国伟">方国伟</a>对本文的审校。</p>
+<p>给InfoQ中文站投稿或者参与内容翻译工作，请邮件至<a href="mailto:editors@cn.infoq.com">editors@cn.infoq.com</a>。也欢迎大家通过新浪微博（<a href="http://www.weibo.com/infoqchina">@InfoQ</a>）或者腾讯微博（<a href="http://t.qq.com/infoqchina">@InfoQ</a>）关注我们，并与我们的编辑和其他读者朋友交流。</p><br><br><br><br><br><br></body></html>

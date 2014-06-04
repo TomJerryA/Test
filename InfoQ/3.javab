@@ -1,83 +1,176 @@
-<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>Interview with Ole Jepsen on Leadership in Agile</h3><p>Good leaders create an environment where self-organizing teams can thrive and create great products and services to delight their customers: that is what Ole Jepsen explained in this interview. At the <a href="http://www.xpdays.net/">XP Days Benelux conference</a> he talked about truly leading people and the subtle but important differences between taking and giving control.</p>
-<p>InfoQ interviewed Ole on leadership in agile, self organizing teams and focusing on people.&nbsp;</p>
-<p><b>InfoQ: What in your opinion is great leadership?</b></p>
-<p><b>Ole:</b> I think, that most leaders have (and should have?) their own beliefs about what great leadership is.</p>
-<p>Here is the essence of what I personally believe:</p>
-<p>“Don’t tell people what to do”. Rather “involve and engage people” and create an environment, where people are motivated, take ownership and unleash their full potential – not because they are <i>told</i> to, but because they <i>want</i> to.</p>
+<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>Virtual Panel on Reactive Programming</h3><p>Reactive programming is a very hot topic: libraries for building reactive systems are mushrooming on many platforms and languages. Initiatives like the <a href="http://www.reactivemanifesto.org/">Reactive Manifesto</a> (watch the <a href="http://www.infoq.com/interviews/cesarini-klang-reactive-manifesto">InfoQ interview</a> with Francesco Cesarini and Viktor Klang) are promoting the idea, and with <a href="http://www.reactive-streams.org/">Reactive Streams</a> (also see <a href="http://www.infoq.com/news/2014/04/reactive-streams-akka-streams">Reactive Streams with Akka Streams</a> on InfoQ) there are even efforts to provide interoperability between reactive libraries.</p>
+<p>But what does it mean to be reactive? How do implementations differ from each other? InfoQ brought together three proponents of reactive programming in a virtual panel to find out and learn more about the individual projects.</p>
+<p>Note: we probably missed <em>your</em> favorite library to handle streams of data and other reactive use cases. Tell us in the comments which other libraries you'd like to see covered (and a good panel participant to&nbsp; contact) and we'll try to put together a sequel to this virtual panel.</p>
+<p>The participants:</p>
+<p><strong>Viktor Klang</strong> is a Chief Architect at Typesafe and former <a href="http://akka.io">Akka</a> project leader.</p>
+<p><strong>Timothy Baldridge</strong> is a Clojure Developer at Cognitect and <a href="https://github.com/clojure/core.async">Core.Async</a> committer.</p>
 <div id="lowerFullwidthVCR"></div>
-<p>In other words, I believe, that if you understand <i>people</i> – if you understand <i>human nature</i> – then you have a much better chance of becoming a great leader.</p>
-<p>Obviously you can only do this, if everybody understand how your organization is aiming to delight your customers (organizational clarity) – and if people have the competence needed to do so. So rather than telling people what to do – leaders should spend most of their time creating organizational clarity and supporting people in their life-long journey of building and increasing their competence.</p>
-<p><b>InfoQ: What is the importance of leadership in agile? Why do we need leaders, when we aim to have self organizing team?</b></p>
-<p><b>Ole:</b> I believe that true leaders are the ones building great organizations that are creating great products and services to delight their customers. While self organizing teams are a very important part of this, somebody needs to set up and maintain the environment where these self organizing teams thrive. Furthermore – there is much more for the leaders to do…</p>
-<p>So any team need someone to</p>
-<ul> 
- <li><i>support</i> them in being self organizing teams</li> 
- <li>help them <i>remove impediments</i>, and</li> 
- <li><i>challenge the status</i> quo and help them keep improving</li> 
-</ul>
-<p>Good leaders are doing exactly that. Good leaders are <i>not telling people what to do</i>, but rather creating an environment, where each team and each individual know what to do – by getting everybody to understand how their organization want to delight their customers (“organizational clarity”) and by helping everybody understand how they individually can contribute to that goal. Also good leaders take on the responsibility of the competence within the organization. I have worked with many “leaders” with the belief, that education and personal growth is the responsibility of each individual. I strongly disagree. Personally I have made my biggest professional and personal leaps, when leaders and other people around me have challenged me to get our of my comfort zone, and live up to my full potential. And I have seen people around me grow, when I have challenged them and supported them on their own professional journeys. To me, nothing beats helping and seeing people evolve and get better at what they do. And nothing gives me more joy than seeing people discover that they are capable of doing things that they had not even been dreaming about before.</p>
-<p>On a side-note, <i>telling people what to do</i> comes in many disguises. Company policies and process descriptions is one of these disguises. And I’m not arguing, that a few general guidelines are bad – but a lot of companies have way too many detailed instructions on how people need to do their work. Another example is Bonus systems. First you hire people for their experience, knowledge and energy trusting that they will do a great job in your company – and then you try to “specify” their behavior by telling them how you will measure them by e.g. KPI’s (Key Performance Indicators or Kill Performance Instantly – you pick ;-). I’m sure that you can think of many other ways of “telling people what to do - in disguise”…</p>
-<p>In other words, leaders should</p>
-<ul> 
- <li>set direction by creating <i><u>organizational clarity</u></i> (how do we delight our customers)</li> 
- <li>work with people to help them get the <i>individual competence</i> they need to do their job – including making the majority of the decisions</li> 
- <li><i>give control</i> to individuals and teams – <i>not take control</i> (and ownership) away from them</li> 
-</ul>
-<p><b>InfoQ: In your session you talk about truly leading people. Can you explain what that mean? And how it differs from what you call &quot;leadership in disguise&quot;? </b></p>
-<p><b>Ole:</b> When I talk about “leadership in disguise”, I’m thinking about “leaders”, who are telling people what to do most of the time. There are several issues with this approach:</p>
-<p>The biggest problem about telling people what to do is, that you take away their opportunity to feel that they matter – and that they are clever enough to figure out what to do by themselves. You are jeopardizing one of the fundamental elements of motivation: Influencing your own (work-)life. This is also known as “autonomy”.</p>
-<p>This goes hand in hand with Daniel Pinks work (“Drive”) – uncovering, that all knowledge workers on the Planet are pretty much only motivated by “Purpose” (knowing and agreeing to organizational goals), “Autonomy” (making most day-to-day decisions) and “Mastery” (getting <i>really</i> good at what you are doing). The autonomy part is also supported by the neuroscience and David Rocks “Neural Leadership”, where an important element is the SCARF model, describing that social behavior is driven by the SCARF elements: Status, Certainty, Autonomy, Relatedness and Fairness.</p>
-<p>So leaders that are spending most their time making decisions and telling people what to do – they mean well, and they are taking peoples uncertainty and doubts away by telling everybody what to do. What they do not realize is, that while they are doing so, that are actually taking autonomy and thereby motivation and ownership away from people. If leaders want to move from “leadership in disguise” to true leadership, they need to stop telling people what to do and rather help everybody understand the “organizational clarity” and “individual competence”, so that everybody know what should be done and how to do it in collaboration with their peers.</p>
-<p>An other problem about telling people what to do is: What if you are wrong? Or what if they just know better than you? Since they are (or should be) closer to the actual work and to the customers, there’s a fairly good chance, that this is the case.</p>
-<p>The last problem that I want to bring up here is: What when you are not around? I have personally experienced this over and over again. My worst experience is probably from a smartphone service company that had one of the most visionary founders that I have ever worked with. This guy had the gift of getting every customer to see new opportunities for their business, just by talking to them for a couple of hours. This was amazing, really amazing. However, there was a problem: He would always come back from his meetings start telling everybody to stop whatever they were doing (usually yesterdays fantastic idea) and get them to start working on something completely different. After a while nobody was really motivated to start of finish anything, because they would probably get a new “order” later in the day, when the founder came back from a customer with a new fantastic and very important idea…</p>
-<p>To wrap it up – if you want to truly lead people, you need to stop running around and “being nice to people” by telling them what to do – but rather to keep searching for what delight the customers and keep reminding people by discussing this organizational clarity. Also you need to help people with their individual competences AND last but not the least – to motivate people and let them take ownership by letting them – and helping them – plan, make decisions and then perform their work accordingly.</p>
-<p><b>InfoQ: You mentioned that the book &quot;Turn the Ship Around&quot; by David Marquet’s has inspired you. Can you elaborate on that?</b></p>
-<p><b>Ole:</b> I discovered (not just read – but <i>discovered</i> ;-) David Marquet’s award winning book in the fall of 2012. Then we promptly decided to buy 100 copies and give away to our goAgile clients and people in our network. Then I told my goAgile colleges, that I would create a relationship to David Marquet because I admired his experiences and his thinking, and I wanted to learn more from him. They all laughed and made fun of me for wanting to “become friends” with an award winning and famous author. Since then we have become friends and are now working together on seminars, trainings courses etc. Very inspiring!!!</p>
-<p>What fascinated me was, that pretty much everything I believe in around leadership was right there in one story – in one person.</p>
-<p>The short version of the story is the following: David Marquet was trained for one submarine in the US Navy, but became captain of a different submarine – the Santa Fee, which was rated worst on all ratings at the time. David on-boarded Santa Fee, started to take control and giving orders, like captains of submarines are supposed to do. Unfortunately many of the orders that David was barking could not be carried out, simply because Santa Fee was not the submarine he was trained for. So here David Marquet was captain of a submarine that he did not know – with a crew who were trained to do what they were told. A deadly combination..!!</p>
-<p>David realized that he had to do something completely different. So instead of <i>taking control</i> of the Santa Fee and the crew – he started giving<i> control</i>. Asking people what they thought should be done, and then go ahead and do it. Since this was a little scary at first, they implemented the “I intend to…” rule, so people would 1. say what they intended to do and then 2. do it (unless somebody – David or somebody else – disagreed).</p>
-<p>This may sound like a subtle difference to how captains (and leaders) are usually performing their leadership – but the difference was huge. People began to feel that they mattered. They started thinking a lot more than they used to – to figure out what to do, and to what degree their intentions would support their mission. The officers (middle managers) starting to copy David way of performing leadership – and pretty soon leadership was performed at every level in the organization – including people with no subordinates, who would begin to plan their own work together with their peers.</p>
-<p>After two years the Santa Fee was rated the best submarine <i>ever</i> in the US Navy, and people from Davis crew are now serving as captains on other submarines – increasing the quality of life for the people they lead.</p>
-<p>David Marquet and his story <a href="http://davidmarquet.com/books/turn-the-ship-around/overview/">Turn the Ship Around</a> made me realize how subtle the difference is between true leadership and telling people what to do. It starting me to think about how we can get leaders – including myself – to see the difference between “helping people by telling them what to do” and helping people to understand the bigger picture (organizational clarity), and that <i>their knowledge</i> and <i>their</i> competence and <i>their</i> experience and least but not last <i>their</i> opinion matters.</p>
-<p>And I’m still thinking…!!! (Thanks, David)</p>
-<p><b>InfoQ: How can good leadership contribute to agile adoption in enterprises?</b></p>
-<p><b>Ole:</b> Let me start with a little story: At an Agile conference some year ago, I was at a bar with my friend Mike. We were having a great time, and then Mikes boss Brian came and had a beer with us. He told me about the training, he was doing – and I got confused, and asked “What training? Are you not Mikes boss?”. Brian then told me how he saw his most important job as a leader – to lead change, help people and the company to change things, so they could serve their customers better. I nodded and asked: “So how much of you time do you spend <i>leading</i> – and how much of your time do you spend <i>changing</i>?” – and he almost got upset with me. He lectured me, that LEADING <i>IS</i> CHANGING, which has been one of my most important mantras since.</p>
-<p>Adapting to Agile is a very big challenge for enterprises. I’m not just talking about having a Scrum team or two in a corner of the organization, but real wall-to-wall and top-to-bottom Agile adoption, where you harvest all the benefits of Agile – including getting people at every level feeling happier and more motivated and hence better at delighting the customers.</p>
-<p>In day to day life, we know that leaders should not tell people what to do. It decreases motivation and is not good in many other ways. Leaders should rather involve and engage people and create the space for them to take ownership. This is even more true, when it comes to doing things in a different way. When it comes to leading change.</p>
-<p>So to answer the question – leadership is not only <i>contributing</i> to Agile adoption in enterprises. Leadership <i>IS</i> adopting enterprises to become the best at delighting the customers of your business.</p>
-<p><b>InfoQ: What inspires you – around leadership? </b></p>
-<p><b>Ole:</b> Personally I am currently mostly inspired by the following great leaders and their work – probably because they all focus on <i>people</i>.</p>
-<p><a href="/resource/articles/leadership-in-agile-ole-jepsen/en/resources/Fig.jpg" _href="resource://Fig.jpg"><img src="http://www.infoq.com/resource/articles/leadership-in-agile-ole-jepsen/en/resources/Fig1-small.jpg" alt="" _href="img://Fig1-small.jpg" _p="true" /></a></p>
-<p><b><small>(Click on the image to enlarge it)</small></b></p>
-<p><b>Alexander Kjerulf</b> – people experience <a href="https://www.youtube.com/watch?feature=player_detailpage&amp;v=Eq81wx6aPbA"><b>Happiness at Work</b></a> if they</p>
-<ul> 
- <li>have good <i>Relationships</i> with people they work with and</li> 
- <li>are creating <i>Results</i> with their co-workers</li> 
-</ul>
-<p><b>Barbara Fredrickson</b> and her science on <a href="http://www.positivityratio.com"><b>Positivity</b></a></p>
-<ul> 
- <li>Positive emotions <i>increases our awareness</i></li> 
- <li>Positivity <i>change us</i> – it even change our physiology</li> 
-</ul>
-<p><b>Daniel Pink</b> – people are <a href="https://www.youtube.com/watch?feature=player_detailpage&amp;v=u6XAPnuFjJc"><b>Intrinsically motivated</b></a> by:</p>
-<ul> 
- <li>Knowing and agreeing to the <i>Purpose</i> of their organization</li> 
- <li><i>Autonomy</i> – having influence over their work-life</li> 
- <li><i>Mastery</i> – having the chance to get really good at what they do</li> 
-</ul>
-<p><b>David Rock</b> and his <a href="http://www.neuroleadership.org"><b>Neural Leadership</b></a> with these drivers for social behavior – the SCARF model:</p>
-<ul> 
- <li>Status – where am I compared to others</li> 
- <li>Certainty – do I know what will happen next</li> 
- <li>Autonomy – do I have influence (same as Pink)</li> 
- <li>Relatedness – do I have relationships with others (same as Kjerulf)</li> 
- <li>Fairness – do I get what I deserve, and do others</li> 
-</ul>
-<p>And last but not least <b>David Marquet</b> and his <b>Leader-Leader</b> model</p>
-<ul> 
- <li><i>Create leaders</i> at every level by…</li> 
- <li><i>Give control – don’t take control</i>…</li> 
- <li>Communicate <i>Organizational Clarity</i> (Purpose – same as Pink) and nourish <i>Individual Competence</i></li> 
-</ul>
-<h2>About the Interviewee</h2>
-<p><strong><img src="http://www.infoq.com/resource/articles/leadership-in-agile-ole-jepsen/en/resources/OleJenson.png" vspace="3" hspace="3" align="left" alt="" _href="img://OleJenson.png" _p="true" />Ole Jepsen</strong> is an Agile transformation coach working with organizations to create lasting change. Ole is a founder of the Agile Leadership Network (ALN), the Danish Agile User Group and Agile Coach Camp Denmark – and he is active in international Agile and Leadership communities, speaking at conferences and consulting worldwide.</p><br><br><br><br><br><br></body></html>
+<p><strong>Jafar Husain</strong> is a Technical Lead at Netflix and contributes to <a href="https://github.com/Netflix/RxJava">RxJava</a>.</p>
+<p>We asked them to answer the following questions:</p>
+<ol> 
+ <li>Please give us a short introduction to your library or framework.</li> 
+ <li>How do you achieve reactiveness/concurrency? On what primitives, concepts, or language constructs does it build? Can the programmer control how the code is executed or deal with back pressure?</li> 
+ <li>How does it integrate with the facilities of the platform, i.e. I/O libraries, Collections, available algorithms, etc.?</li> 
+ <li>Compared to other approaches in your language, why is your solution better? Does it mainly prevent mistakes, lower the hurdle, or enable new styles of programming?</li> 
+ <li>For what kind of problems is your library the best solution, or what was the original motivation to implement it? And when would you use something different?</li> 
+ <li>Do I need to rethink the way I program? That is, are there any restrictions, can I only use pure functions, do I wrap everything in a monad or have to pass continuations?</li> 
+ <li>Does your programming language or platform bring any benefits, or are there things it complicates or makes outright impossible? Were there particular implementation challenges that you'd like to share?</li> 
+</ol>
+<p><strong>InfoQ: Please give us a short introduction to your library or framework.</strong></p>
+<blockquote>
+ <strong>Viktor Klang:</strong> Akka is a library and runtime for 
+ <a href="http://www.reactivemanifesto.org/">Reactive</a> applications on the JVM (primarily Java and Scala, but bindings to JRuby, Clojure and more exists) which employs Actors (see 
+ <a href="http://en.wikipedia.org/wiki/Actor_model#cite_note-1">Actor Model</a>) as its primary construct for concurrency; distribution; resilience; and scales from tiny devices to massive servers and from a single node up to thousands in a cluster.
+</blockquote>
+<blockquote>
+ <strong>Timothy Baldridge:</strong> Core.Async is a library that enables CSP (
+ <a href="http://en.wikipedia.org/wiki/Communicating_sequential_processes">Communicating Sequential Processes</a>) style programming in Clojure (on the JVM) and ClojureScript (on JavaScript VMs). As the paradigm name suggests this is a way of organizing code as logical threads communicating over channels. A nice way to think about CSP is a manufacturing assembly line. Logical threads of execution are the workers, and the queues provide the conveyor belts the workers use to communicate.
+ <br /> 
+</blockquote>
+<blockquote>
+ <strong>Jafar Husain:</strong> Rx poses the question: 
+ <i>What's the difference between an Event and a collection like an Array or a Set?</i> Today most developers program against events and collections very differently. Rx presents you with a unified programming model for both events and collections. The library enables you to work with events the same way that you work with collections, transforming them using functions like map, filter, and reduce. Rather than building state machines to respond to sequences of events, you use these methods to create complex events from simple ones.
+ <br /> 
+</blockquote>
+<p><strong>InfoQ: How do you achieve reactiveness/concurrency? On what primitives, concepts, or language constructs does it build? Can the programmer control how the code is executed or deal with back pressure?</strong></p>
+<blockquote>
+ <strong>Timothy Baldridge:</strong> The code is organized into logical threads. These threads may or may not map 1:1 with OS threads, that is up to the programmer. Communication between logical threads is via blocking queues known as channels. These channels provide back pressure and support multiple readers and writers on the same channel. Due to the simplicity of this model it is quite easy to scale to greater levels of parallelism as needed, one simply allocates more logical threads to read from or write to the same channel.
+ <br /> 
+</blockquote>
+<blockquote>
+ <strong>Jafar Husain: </strong>RX introduces a new collection type: the Observable. An Observable is similar to an event on a UI element, but an Observable is a first-class object which can be passed around just like a List or a Set. 
+ <br /> 
+ <br /> Like an Event, you can subscribe a callback to an Observable and be notified whenever data arrives asynchronously. However an Observable adds the notion of completion to event streams. This simple addition enables developers to build complex, event-driven systems without ever having to explicitly unsubscribe. 
+ <br /> 
+ <br /> Normally when building long-lived applications like user interfaces you must be careful to unsubscribe from events in order to avoid memory leaks. Events will hold onto your handlers, even in situations in which they will never fire them again (ex. &quot;document.onload&quot; which fires when a web page DOM has loaded). By contrast when Observable streams of data complete, your handler is automatically unsubscribed. 
+ <br /> 
+ <br /> You can control when an operation occurs by using a Scheduler.&nbsp; A Scheduler controls when and where an Observable notifies you that data has arrived. Schedulers can ensure that subscriptions or notifications happen on a different thread, or on the same thread after certain period of time. 
+ <br /> 
+ <br /> For example, you can parallelize the execution of two Observables by scheduling each of them to run on the thread pool. In single-threaded environments like JS, schedulers can be used to observe an event stream at key times in the event loop, 
+ <br /> 
+ <br /> With regard to back pressure, it is always possible to unsubscribe from an Observable to stem the flow of data and then resubscribe later. More sophisticated approaches are currently being explored, and you can expect to see them in future versions of Rx.
+ <br /> 
+</blockquote>
+<blockquote>
+ <strong>Viktor Klang:</strong> As mentioned previously, the main abstraction is Akka Actors (&quot;Actors&quot;), a JVM implementation of the Actor Model. An Actor is logically isolated from other Actors, which means that Actors run concurrently with each other, inside what is called an ActorSystem—a logical hierarchy of Actors.
+ <br /> 
+ <br /> At the core of an Actor is a behavior which it applies to its incoming messages, and you communicate with the Actor by sending it messages which it then processes one at a time. While processing a message it can decide to: create new Actors; send messages to Actors it knows about; change behavior for the next message it processes; or any combination of these actions. Both the creation of Actors and sending messages to them is performed asynchronously. This means that Actors are inherently Event-Driven.
+ <br /> 
+ <br /> An Actor has:&nbsp; 
+ <ul> 
+  <li>a &quot;parent&quot; Actor which created it</li> 
+  <li>a behavior which it will apply to the next message it processes</li> 
+  <li>a Mailbox where it stores inbound messages while it is busy processing</li> 
+  <li>a Dispatcher which coordinates the execution of the Actor</li> 
+  <li>0..N &quot;child&quot; Actors which it has created</li> 
+ </ul> 
+ <p>An Actor is a very light-weight construct—typically weighing in at around 450 bytes—which means that you can run millions of them concurrently on commodity hardware.<br /> <br /> <strong>Execution</strong><br /> Execution of Actors (the application of messages to behaviors) is done by Akka Dispatchers, which are typically backed by an <a href="http://docs.oracle.com/javase/7/docs/api/java/util/concurrent/ExecutorService.html">ExecutorService</a>. All configurable by the programmer—both programmatically and externally through configuration. In fact, most things are configurable and customizable by the programmer: Mailbox implementation, ExecutorServices, Dispatchers etc.<br /> <br /> <strong>Backpressure </strong><br /> Backpressure is implemented by Acking/Naking inbound messages—this means non-blocking, asynchronous backpressure.<br /> <br /> <strong>Resilience</strong><br /> Resilience is achieved through something called Supervision, where thrown exceptions inside an Actor are escalated to that Actor's parent while execution is suspended for the failing Actor until the parent decides how to handle the failure. The following outcomes are possible:</p> 
+ <ul> 
+  <li>Resume (ignore the failure and resume processing message for the failing actor)</li> 
+  <li>Restart (throw away the old instance of the failing actor and create a new one, keeping the Mailbox intact)</li> 
+  <li>Stop (terminates the failing actor)</li> 
+  <li>Escalate (re-throws the failure, escalating the problem to the &quot;grandparent&quot;)</li> 
+ </ul> 
+ <p>This Supervisor Hierarchy means that Actors can create new Actors to perform potentially risky operations, and then use Supervision to deal with any failures, without putting themselves at risk. This is commonly referred to as &quot;<a href="http://www.erlang.se/doc/programming_rules.shtml#HDR15">The Error Kernel Pattern</a>&quot;.<br /> <br /> What's interesting is that this also works when the hierarchy is spread out over multiple nodes, due to the message-driven nature combined with <a href="http://doc.akka.io/docs/akka/2.2.3/scala/remoting.html#Failure_Detector">Failure Detectors</a>.<br /> <br /> A common pattern is also to have groups of Actors use different Dispatchers &amp; ExecutorServices to isolate their execution—so if one group runs amok, the others are unaffected. This is commonly referred to as “Bulkheading”.</p> 
+</blockquote>
+<p><strong>InfoQ: How does it integrate with the facilities of the platform, i.e. I/O libraries, Collections, available algorithms, etc.?</strong></p>
+<blockquote>
+ <strong>Jafar Husain:</strong> Observable implements most of the collection transformation functions that you'll find on Java 8's new Stream type, C#'s Enumerable type, and Javascript's Array type. If you know how to use functions like map, filter, and reduce to transform collections, you can easily build complex asynchronous programs with Rx.
+ <br /> 
+ <br /> Rx provides helper methods to transform any asynchronous interface into an Observable. This makes it easy to gradually integrate Rx into any existing program. You can start small, using composition on a subset of the events in your system, and then gradually expanding it.
+ <br /> 
+</blockquote>
+<blockquote>
+ <strong>Viktor Klang:</strong> Akka has an IO library which builds on top of Java's NIO capabilities that exposes IO as simple and familiar message passing: sending and receiving chunks of data.
+ <br /> 
+ <br /> For Collections you are free to use whatever you want inside your Actors, but when sending messages with collections in them, it is strongly advised to send immutable collections.
+ <br /> 
+ <br /> That aside, you can use any JVM library of your choice.
+</blockquote>
+<blockquote>
+ <strong>Timothy Baldridge:</strong> Most platform libraries on both the Java and JavaScript virtual machines support async via callbacks. At the lowest level, Core.Async channels use this same model. It is therefore very easy to have a callback from the host VM to put an item into a channel or a callback attached to a channel call some VM method.
+ <br /> 
+</blockquote>
+<p><strong>InfoQ: Compared to other approaches in your language, why is your solution better? Does it mainly prevent mistakes, lower the hurdle, or enable new styles of programming?</strong></p>
+<blockquote>
+ <strong>Viktor Klang:</strong>&nbsp; Actors are a general-purpose construct that unifies concurrency, distribution and failure management, which enables scaling both up &amp; down and in &amp; out. For more specialized use cases other tools like 
+ <a href="http://doc.akka.io/docs/akka/2.2.3/scala/futures.html">Futures</a>, 
+ <a href="http://doc.akka.io/docs/akka/2.2.3/scala/agents.html">Agents</a>, etc may come in handy.
+</blockquote>
+<blockquote>
+ <strong>Timothy Baldridge:</strong> Often, when an application reaches a certain size, programmers will create distributed queues to break the program up into smaller more manageable pieces. This model also opens more options for scalability as programmers can then tweak the number of readers and writers to a queue as needed to improve performance. 
+ <br /> 
+ <br /> The question them must be asked, why don’t we build our systems this way from the start? Why not start with a highly decoupled system by designing our applications as sets of logical threads communicating over in-process queues. Then when the time comes to scale our app we can start replacing these in-process queues with distributed queues.
+ <br /> 
+ <br /> Systems built in this way are often easier to debug as each component can be tested on its own before attaching it via channels to other components.
+ <br /> 
+</blockquote>
+<blockquote>
+ <strong>Jafar Husain: </strong>Rx is easy to learn because it leverages a developers existing knowledge of how to compose collections using transformation functions like map, filter, and reduce.&nbsp; In fact the hardest part is unlearning the idea that events are somehow different than the collections you already work with every day.
+ <br /> 
+ <br /> RX also helps developers avoid common pitfalls like memory leaks. When building conventional event-based systems developers commonly rely on state machines to determine when to unsubscribe from events. Rx allows you to build event streams that declaratively specify the conditions under which they end. Once an event stream ends, it cleans up any outstanding subscriptions for you.
+ <br /> 
+</blockquote>
+<p><strong>InfoQ: For what kind of problems is your library the best solution, or what was the original motivation to implement it? And when would you use something different?</strong></p>
+<blockquote>
+ <strong>Timothy Baldridge:</strong> Core.Async succeeds very well in systems where a program needs to interface with other systems in an asynchronous fashion. These systems could be external queueing services, databases or even the HTML DOM. However, this model does introduce a small amount of overhead. Therefore it would probably be unwise to use this library when the only goal is parallelism. For example: I wouldn’t use core.async to build a 3D raytracer. If you have a problem that is synchronous and embarrassingly parallel, there are better options available.
+ <br /> 
+</blockquote>
+<blockquote>
+ <strong>Jafar Husain:</strong> The idea for Rx came about when Erik Meijer and Brian Beckman noticed the fundamental correspondence between the Iterator pattern and the Observer pattern. Each pattern enables a data producer to send data to a data consumer progressively, one item at a time. The difference is that in the Iterator pattern the consumer is in control, pulling data from the producer, whereas in the Observer pattern the producer is in control, pushing data to the consumer. 
+ <br /> 
+ <br /> Erik and Brian noticed a curious omission in the Observer pattern. In the Iterator pattern, there is a well-defined way for the producer to signal to the consumer that the sequence of data has ended, but in the Observer pattern there is no such semantic. For example, there is no well-defined way for a DOM event to signal to a consumer that no more data will arrive.
+ <br /> 
+ <br /> Erik and Brian realized that these two ubiquitous design patterns could be unified if they simply added the notion of completion to the Observer pattern. The result was a new type: an Observable. These two types are duals, which means that any operator that can be used to compose an Iterable can also be defined for an Observable. This means it is possible to query event streams just like databases.
+ <br /> 
+</blockquote>
+<blockquote>
+ <strong>Viktor Klang:</strong>&nbsp; Akka was created by Jonas Bon&eacute;r as a way to bring a lot of the good things from Erlang onto the JVM—specifically having independent “processes” that communicate via messages and dealing with failure through Supervision.
+ <br /> 
+ <br /> One driving principle behind Akka is that all of the fundamental operations are location transparent, which means that it does not matter where the Actor is located, for the purpose of ending it messages or supervising it. This makes Akka the perfect tool for distributing an application across multiple machines, both for increased processing power and for resilience.
+</blockquote>
+<p><strong>InfoQ: Do I need to rethink the way I program? That is, are there any restrictions, can I only use pure functions, do I wrap everything in a monad or have to pass continuations?</strong></p>
+<blockquote>
+ <strong>Timothy Baldridge:</strong> Thankfully monads or continuation passing are not required. The lightweight threads in Core.Async are supported via a code-rewriting macro. The users of the library simply wrap their code in a “go” block, and the macro does the rest; rewriting the code into callbacks that are attached to channels. This is one of the most powerful features of the library, it allows programmers write code that looks much like the imperative code they write every day.
+ <br /> 
+ <br /> The one area that does take a little thought is when it comes to IO. The library makes a distinction between logical threads that are backed by OS threads, and those that are not. These two types of threads work better for different tasks. Dedicated threads are often used for IO while lightweight threads are recommended for more CPU intensive tasks.
+ <br /> 
+</blockquote>
+<blockquote>
+ <strong>Viktor Klang:</strong> I’d say at first you change the way you program by starting to think about communication—the protocol of messages that will flow between your Actors.
+ <br /> A quick and fun way of doing that is by thinking about how you would solve it with people—because humans coordinate by sending each other messages, whether it be email, spoken language, instant messaging or otherwise. We don’t flip other people’s neurons directly! (compare to shared memory concurrency.)
+ <br /> Another interesting change is how you can now start to decompose your architecture into individual pieces that can run independently of each other.
+ <br /> 
+ <br /> The second change is to think about failure management, with the delegation of risky operations to shield the important parts of your application from cascading failure.
+ <br /> 
+ <br /> Since Actors run concurrently with other Actors, it is important to not share mutable state between Actors—Actors should only interact via messages.
+ <br /> 
+ <br /> But the code that runs inside of the Actor—its behavior—is normal, call-me-some-methods, kind of code.
+</blockquote>
+<blockquote>
+ <strong>Jafar Husain: </strong>If you already know how to use functional composition to transform collections, you don't need to change the way that you program. It's worth pointing out that Observable is actually a slightly rephrased version of the continuation monad, and side effects are delayed until you subscribe. However in practice, developers don't really need to know about monads to use RX. At Netflix, we train developers to use this technology without ever mentioning the &quot;M&quot; word.
+ <br /> 
+</blockquote>
+<p><strong>InfoQ: Does your programming language or platform bring any benefits, or are there things it complicates or makes outright impossible? Were there particular implementation challenges that you'd like to share?</strong></p>
+<blockquote>
+ <strong>Viktor Klang:</strong> Akka Actors makes it simple to create applications which can grow and shrink as needed—it works both in the small and in the large, as an example, we recently did an 
+ <a href="http://googlecloudplatform.blogspot.se/2014/01/large-akka-cluster-on-google-compute.html">experiment on Google Compute Engine</a> where we ran 2500 Akka nodes in a single cluster.
+ <br /> 
+ <br /> Scala, the language in which Akka is implemented, has very good support for immutable, efficient data structures and makes it very simple to create immutable message types with “case classes”.
+ <br /> 
+ <br /> Speaking of challenges—two come to mind: creating lock-free versions of most of the concurrency coordination; and the research and implementation of Akka Cluster, which is a 
+ <a href="http://letitcrash.com/post/26626939256/status-report-of-akka-cluster">long</a> and 
+ <a href="http://doc.akka.io/docs/akka/2.2.3/common/cluster.html">interesting</a> story in itself.
+ <br /> 
+</blockquote>
+<blockquote>
+ <strong>Jafar Husain:</strong> Obviously it is easier to write in a functional style if your programming language has closures. This was perhaps the biggest obstacle to porting Rx to Java. Ben Christensen, who is responsible for Netflix's popular open source Java port of Rx, had created adapters for a host of languages like Scala, Clojure, and Groovy to make RX easier to use on the JVM. Using Rx will also get much easier in Java with the release of Java 8, which introduces closures to the language for the first time. 
+</blockquote>
+<blockquote>
+ <strong>Timothy Baldridge:</strong> The Clojure language supports a very advanced macro system that allows programmers to extend the language as needed. This has allowed us to write the entire core.async library without once touching the Clojure compiler. The added benefit to this was that porting the library to ClojureScript took a matter of hours, instead of days or weeks.
+ <br /> 
+ <br /> This in my opinion shows the true power of Clojure and core.async. To be able to write asynchronous code for Clojure on the JVM and then have it “just work” on ClojureScript in a browser is extremely powerful.
+ <br /> 
+</blockquote>
+<h2>About the Panelists</h2>
+<p><strong><img src="http://www.infoq.com/resource/articles/reactive-vp/en/resources/jafarhusain.jpg" vspace="3" hspace="3" align="left" alt="" _href="img://jafarhusain.jpg" _p="true" />Jafar Husain</strong> has been working as a software developer for 18 years. He's developed software for companies like GE, Microsoft, and Netflix. He is currently a member of the TC39, theJavascript standards committee. He specializes in building web servers and clients using functional reactive programming and is the architect of the &quot;Falkor&quot; protocols that powers all Netflix devices. A highly-rated speaker, he has spoken about reactive programming to QCon, YOW!, and given Channel 9 interviews on the subject. He has also authored interactive training software to help developers learn about functional reactive programming.<br /> <strong><img src="http://www.infoq.com/resource/articles/reactive-vp/en/resources/timothybaldridge.png" vspace="3" hspace="3" align="left" alt="" _href="img://timothybaldridge.png" _p="true" />Timothy Baldridge</strong> (@timbaldridge) is a developer with Cognitect Inc. He hails from the mountain regions of Denver Colorado (USA). Timothy is a polyglot programmer with experience in Clojure, C#, Python, and Erlang. Most recently he was deeply involved in the development of Clojure's Core.Async library, where he designed, implemented, and maintains the state-machine code rewriting<br /> macro known as &quot;go&quot;.<br /> <strong><img src="http://www.infoq.com/resource/articles/reactive-vp/en/resources/viktorklang.jpg" vspace="3" hspace="3" align="left" alt="" _href="img://viktorklang.jpg" _p="true" />Viktor Klang</strong> (@viktorklang)—Chief Architect at Typesafe and former Tech Lead for the Akka project—has a long background on the JVM and currently has a passion for concurrent, asynchronous, distributed and resilient programming.</p><br><br><br><br><br><br></body></html>

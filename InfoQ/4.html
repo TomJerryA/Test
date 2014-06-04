@@ -1,39 +1,45 @@
-<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>.NET基金会成立</h3><p>随着<a href="http://www.dotnetfoundation.org/">.NET基金会</a>的成立，微软在成为主要的开源参与者的道路上又前进了一步。该基金会的宗旨是“成为越来越多的开源.NET项目的管理者”。</p>
-<p>基金会有六位创始人，均非微软公司员工：</p>
-<ul> 
- <li>来自Xamarin的Miguel de Icaza</li> 
- <li>来自IdentityMine的Laurent Bugnion</li> 
- <li>来自Umbraco的Niels Hartvig</li> 
- <li>来自Nigel Sampson的Compiled Experience</li> 
- <li>来自Glimpse的Anthony von der Hoom</li> 
- <li>来自GitHub的Paul Betts</li> 
-</ul>
-<p>该基金会目前有24个项目，大多是微软和Xamarin捐赠的。</p>
-<ul> 
- <li><a href="http://hadoopsdk.codeplex.com/">.NET API for Hadoop WebClient</a></li> 
- <li><a href="http://roslyn.codeplex.com/">.NET编译器平台(&quot;Roslyn&quot;)</a></li> 
- <li><a href="http://hadoopsdk.codeplex.com/">.NET Map Reduce API for Hadoop</a></li> 
- <li><a href="http://netmf.codeplex.com/">.NET Micro Framework</a></li> 
- <li><a href="http://aspnetwebstack.codeplex.com/">ASP.NET MVC</a></li> 
- <li><a href="https://github.com/SignalR/SignalR">ASP.NET SignalR</a></li> 
- <li><a href="http://aspnetwebstack.codeplex.com/">ASP.NET Web API</a></li> 
- <li><a href="http://aspnetwebstack.codeplex.com/">ASP.NET Web Pages</a></li> 
- <li><a href="http://mef.codeplex.com/">Composition (MEF2)</a></li> 
- <li><a href="http://entityframework.codeplex.com/">Entity Framework</a></li> 
- <li><a href="http://hadoopsdk.codeplex.com/">Linq to Hive</a></li> 
- <li><a href="http://mef.codeplex.com/">MEF (Managed Extensibility Framework)</a></li> 
- <li><a href="http://katanaproject.codeplex.com/SourceControl/latest#src/Microsoft.Owin.Security.Google/GoogleOAuth2AuthenticationMiddleware.cs">OWIN Authentication Middleware</a></li> 
- <li><a href="https://rx.codeplex.com/">Rx (Reactive Extensions)</a></li> 
- <li><a href="http://wpl.codeplex.com/">Web Protection Library</a></li> 
- <li><a href="https://github.com/WindowsAzure/azure-sdk-for-net">Windows Azure .NET SDK</a></li> 
- <li><a href="http://phone.codeplex.com/">Windows Phone Toolkit</a></li> 
- <li><a href="https://github.com/nickharris/WnsRecipe">WnsRecipe</a></li> 
- <li><a href="https://github.com/xamarin/couchbase-lite-net">Xamarin couchbase-lite-net</a></li> 
- <li><a href="https://github.com/jstedfast/MailKit">Xamarin Mailkit</a></li> 
- <li><a href="https://github.com/jstedfast/MimeKit">Xamarin Mimekit</a></li> 
- <li><a href="https://github.com/mono/mono/tree/master/mcs/class/System.Drawing">Xamarin System.Drawing</a></li> 
- <li><a href="https://github.com/xamarin/Xamarin.Auth">Xamarin.Auth</a></li> 
- <li><a href="https://github.com/xamarin/Xamarin.Mobile">Xamarin.Mobile</a></li> 
-</ul>
-<p>尽管社区的响应普遍较为积极，但是有一点颇有争议，那就是没提到Silverlight或WPF。随着Web上的Silverlight被完全冷落，以及WPF进入维护模式，开发者希望微软开源这些逐渐老化的技术。</p>
-<p><strong>查看英文原文：</strong><a href="http://www.infoq.com/news/2014/04/Net-Foundation">Introducing the .NET Foundation</a></p><br><br><br><br><br><br></body></html>
+<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>C#的SOLID原则实践</h3><p>Brannon B. King是供职于<a href="http://asirobots.com/">Autonomous Solution Inc.</a>的一名软件工程师，他在<a href="http://www.infoq.com/news/2013/08/solid-principles-revisited">MSDN杂志</a><a href="http://msdn.microsoft.com/en-us/magazine/dn683788.aspx">2014年05月刊</a>发表了一篇题为<a href="http://msdn.microsoft.com/en-us/magazine/dn683797.aspx">《违背C#中SOLID原则的危险》</a>的文章。作者指出了研发人员在C#编码中可能出现的一些常见错误，违背<a href="http://en.wikipedia.org/wiki/SOLID_(object-oriented_design)">SOLID原则</a>将导致代码不易扩展、难以维护。</p>
+<p>King提供了计数器的示例代码，并针对SOLID每条原则给出了建议，但为了简洁起见我们只节选了开闭原则（OCP）相关的一些内容。<a href="http://en.wikipedia.org/wiki/Open/closed_principle#cite_note-1">开闭原则</a>（OCP）规定“软件实体（类、模块、函数等）应该对扩展开放，对修改关闭”。根据King的说法，下面这段代码违背了开闭原则</p>
+<pre>
+void DrawNerd(Nerd nerd) {
+ if (nerd.IsSelected) DrawEllipseAroundNerd(nerd.Position, nerd.Radius);
+ if (nerd.Image != null) DrawImageOfNerd(nerd.Image, nerd.Position, nerd.Heading);
+ if (nerd is IHasBelt) // a rare occurrence
+DrawBelt(((IHasBelt)nerd).Belt);
+ // Etc.
+}</pre>
+<p>因为你需要在客户每次需要显示新增内容时修改此方法，而且，客户始终需要显示新增内容。建议将绘制替换成通用程序：</p>
+<pre>
+readonly IList&lt;IRenderer&gt; _renderers = new List&lt;IRenderer&gt;();
+void Draw(Nerd nerd) 
+{   foreach (var renderer in _renderers)
+renderer.DrawIfPossible(_context, nerd); }</pre>
+<p>思路是这样的：</p>
+<blockquote> 
+ <p>…编写实现已知接口的绘制类（或有关绘制类的类）。呈现器必须能够决定其是否可以或应该基于输入内容绘制任何内容。例如，带式绘制代码可以移动到其自身的“带式呈现器”，用于检查接口并视需要继续执行。</p> 
+</blockquote>
+<p>基类引用继承类是违背开闭原则的另一个例子</p>
+<pre>
+class Nerd {
+public void DanceTheDisco() {
+   if (this is ChildOfNerd)
+      throw new CoordinationException(&quot;Can't&quot;);
+   ...
+}
+}
+class ChildOfNerd : Nerd { ... }</pre>
+<p>作者建议“基类绝不能直接引用其继承类。”。</p>
+<p>对等类中也可能存在该问题：</p>
+<pre>
+class NerdsInAnArc {
+public bool Intersects(NerdsInAnLine line) {
+...
+ }
+ ...
+}</pre>
+<p>King解释道：</p>
+<blockquote> 
+ <p>通常情况下，对象层次结构中的弧线和直线是对等的。它们不应该知道彼此之间的非继承的详尽细节，因为这些细节通常是最优交叉算法所需的。随时修改其中一个，而无需更改另一个。这再一次违背了单一责任。存储弧线，还是分析这些弧线？将分析操作置于其自己的实用程序类中。</p> 
+</blockquote>
+<p>尽管对于小型项目来说可能不是很必要，但为了避免产生面条式代码，代码规模越大，严格执行SOLID原则的重要性就越明显。</p>
+<p><b>原文链接：<b><a href="http://www.infoq.com/news/2014/05/solid-c-sharp">Becoming SOLID in C#</a></b></b></p><br><br><br><br><br><br></body></html>

@@ -1,251 +1,183 @@
-<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>现代企业中性能分析的反模式</h3><p><b>什么是性能分析</b></p>
-<p>“性能分析”一词有许多种定义，但在我看来最有用的一个是：</p>
-<blockquote> 
- <p>一种由测量驱动的方法，用以了解一个应用程序在负载下的行为。</p> 
-</blockquote>
-<p>这个定义的好处是，它提醒您注意测量是整个过程的关键点。并通过简单的延伸，也提醒您统计和数据分析可能是性能工程师的重要工具。</p>
-<p>进一步讲，它使我们更相信应把性能分析看作是一项基础的实证研究活动，是它把输入和输出粘合在一起组成实验科学。</p>
-<p>这样，这些输出就可以被框定为一系列具有量化答案的问题，比如：</p>
+<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>Netty系列之Netty高性能之道</h3><h2>1. 背景</h2>
+<h3>1.1. 惊人的性能数据</h3>
+<p>最近一个圈内朋友通过私信告诉我，通过使用Netty4 + Thrift压缩二进制编解码技术，他们实现了10W TPS（1K的复杂POJO对象）的跨节点远程服务调用。相比于传统基于Java序列化+BIO（同步阻塞IO）的通信框架，性能提升了8倍多。</p>
+<p>事实上，我对这个数据并不感到惊讶，根据我5年多的NIO编程经验，通过选择合适的NIO框架，加上高性能的压缩二进制编解码技术，精心的设计Reactor线程模型，达到上述性能指标是完全有可能的。</p>
+<p>下面我们就一起来看下Netty是如何支持10W TPS的跨节点远程服务调用的，在正式开始讲解之前，我们先简单介绍下Netty。</p>
+<h3>1.2. Netty基础入门</h3>
+<p>Netty是一个高性能、异步事件驱动的NIO框架，它提供了对TCP、UDP和文件传输的支持，作为一个异步NIO框架，Netty的所有IO操作都是异步非阻塞的，通过Future-Listener机制，用户可以方便的主动获取或者通过通知机制获得IO操作结果。</p>
+<p>作为当前最流行的NIO框架，Netty在互联网领域、大数据分布式计算领域、游戏行业、通信行业等获得了广泛的应用，一些业界著名的开源组件也基于Netty的NIO框架构建。</p>
+<h2>2. Netty高性能之道</h2>
+<h3>2.1. RPC调用的性能模型分析</h3>
+<h4><b>2.1.1. </b>传统RPC调用性能差的三宗罪</h4>
+<p>网络传输方式问题：传统的RPC框架或者基于RMI等方式的远程服务（过程）调用采用了同步阻塞IO，当客户端的并发压力或者网络时延增大之后，同步阻塞IO会由于频繁的wait导致IO线程经常性的阻塞，由于线程无法高效的工作，IO处理能力自然下降。</p>
 <div id="lowerFullwidthVCR"></div>
-<blockquote> 
- <p>如果有10倍的客户数，系统还有足够的内存来应付吗？</p> 
- <p>在客户看来，应用程序的平均响应时间是多少？</p> 
- <p>（这个响应时间）在其余部分的分布是什么样子的？</p> 
- <p>与我们的竞争对手相比如何？</p> 
-</blockquote>
-<p>在这种形式中，使用这些最佳实践所表达出的性能更具有科学性，而不是艺术性；更是一种从根本上可以量化的行为，并且与业务活动有着直接的关系。</p>
-<p>然而，尽管有这些属性，性能指标却常常屈居于一个尴尬的状态，知名的最佳实践滞后于从业者的现实处境。</p>
-<p>有一些不同的模型可以佐证这一点，可能其中很有趣的一个就来自Carey Flichel的精湛之作《为什么开发者总是选昏招（Why Developers Keep Making Bad Technology Choices）》。</p>
-<p>在文章中，Carey特别提出了导致开发者做出错误选择的五大因素：</p>
-<ul> 
- <li>乏味；</li> 
- <li>简历加料；</li> 
- <li>同侪压力；</li> 
- <li>缺乏了解现有系统；</li> 
- <li>被误读的，或者根本不存在的问题。</li> 
-</ul>
-<p>在本篇文章中，我们提出一些在企业平台上最常见的性能分析反模式，并尝试使用Carey所列举的几种基本因素进行阐述。获得以下的结论所使用到的具体例子是从Java生态系统抽取来的，但类似的描述也适用于许多其他类型的企业系统。</p>
-<p>每一项基本因素都对应于一些常见的认知偏差。例如，乏味和简历加料都源于对现有技术的逃离——这些技术是开发人员在他的日常工作中整天使用的——以及他们对美好明天的雄心壮志。</p>
-<p>以下就列举这些反模式，这里使用了一种向“四人组（Gang of Four）”，当然也包括反模式的开创者Brown等前辈致敬的风格和格式。</p>
-<h2><b>反模式目录</b></h2>
-<h3><b><i>只见光鲜亮丽</i></b></h3>
-<p><b>描述</b></p>
-<p>最新最酷的技术往往是第一指向目标。</p>
-<p><b>典型意见</b></p>
-<blockquote> 
- <p>万事开头难，我们需要颠覆性的开始。</p> 
-</blockquote>
-<p><b>真实情况</b></p>
-<ul> 
- <li>这只是在黑暗中的灵光一闪；</li> 
- <li>开发者并不真正了解新技术。</li> 
-</ul>
-<p><b>根本原因</b></p>
-<ul> 
- <li>乏味；</li> 
- <li>简历加料。</li> 
-</ul>
-<p><b>探讨</b></p>
-<p>这种反模式在年轻的团队中最常见。急于证明自己，或者尽力避免绑在他们眼中的“遗留”系统上，他们往往倡导新的、“热”的技术。也可能巧合的是，这类技术又常常在跳槽时能为他们带来更高的薪水。</p>
-<p>因此，面对任何性能问题时，合乎逻辑的潜意识结论就是先来看看新的技术。毕竟，它还没有为人熟知，所以一双有创见的眼睛总是有益的，不是吗？</p>
-<p><b>解决方法</b></p>
-<ul> 
- <li>测量，并去找出真正的瓶颈；</li> 
- <li>确保围绕新的组件有足够的日志记录。</li> 
-</ul>
-<p><img src="http://infoqstatic.com/resource/articles/Performance-Analysis-Antipatterns/zh/resources/0224005.jpg" width="500" _href="img://null" _p="true" alt="" /></p>
-<h3><b><i>只见简单事物</i></b></h3>
-<p><b>描述</b></p>
-<p>首先把系统中最简单的部分列为目标。</p>
-<p><b>典型意见</b></p>
-<blockquote> 
- <p>让我们从我们了解的部分开始吧。</p> 
-</blockquote>
-<p><b>真实情况</b></p>
-<ul> 
- <li>开发人员懂得怎么为这部分（可能只是这部分？）系统调优。</li> 
-</ul>
-<p><b>根本原因</b></p>
-<ul> 
- <li>缺乏对现有系统的理解。</li> 
-</ul>
-<p><b>探讨</b></p>
-<p>作为“只见光鲜亮丽”反模式的对偶，这种反模式经常出现在旧的、更成熟的团队，这类团队常常是个维护者、保持灯亮着的角色。如果他们的应用程序最近被合并到或搭配了新技术，团队可能会感到恐惧或不愿意参与到新系统中去。</p>
-<p>在这种情况下，开发人员可能会感觉只分析那些熟悉的系统组件会更令人舒服，希望他们可以在不离开他们的舒适区的条件下达到预期目标。</p>
-<p>特别值得注意的是，这前两个反模式都出自于一种对于未知的反应。在“只见光鲜亮丽”中，这表现为一种开发者（或团队）希望学习更多并获得优势的愿望，基本上是一个进攻型策略。相反的，“只见简单事物”是一种防御型策略，只搞熟悉的部分，而避开有潜在威胁性的新技术。</p>
-<p><b>解决方法</b></p>
-<ul> 
- <li>测量，以确定真正的瓶颈；</li> 
- <li>从领域专家那里寻求帮助，判断问题是否出自一个不常为人所知的组件。</li> 
-</ul>
-<p><img src="http://infoqstatic.com/resource/articles/Performance-Analysis-Antipatterns/zh/resources/0224005.jpg" width="500" _href="img://null" _p="true" alt="" /></p>
-<h3><b><i>我的桌面就是用户验收测试（UAT）环境</i></b></h3>
-<p><b>描述</b></p>
-<p>用户验收测试环境与生产环境之间有显著差异。</p>
-<p><b>典型意见</b></p>
-<blockquote> 
- <p>一个全尺寸的用户验收测试环境过于昂贵了。</p> 
-</blockquote>
-<p><b>真实情况</b></p>
-<ul> 
- <li>由于不同环境之间的差异最终造成的服务中断损失，几乎总是贵过多买几台机器。</li> 
-</ul>
-<p><b>根本原因</b></p>
-<ul> 
- <li>被误读的，或者根本不存在的问题。</li> 
-</ul>
-<p><b>探讨</b></p>
-<p>我的桌面就是用户验收测试环境来自于一种不同类型的认知偏差，我们以前从未见过。这种认知偏差固执的认为执行一些用户验收测试总比什么都不做要好。不幸的是，这种满心希冀从根本上误解了企业环境的复杂本质。为了使任何一种有意义的推断具有合理性，用户验收测试环境都必须与生产环境等同。</p>
-<p>在现代的适应性环境中，运行时子系统会善用可用资源。如果这些资源与目标部署环境截然不同，它们将根据不同的情况做出不同的决策，使得我们做出的漂亮的推断完全失去意义。</p>
-<p><b>解决方法</b></p>
-<ul> 
- <li>跟踪服务中断的成本，以及与所流失客户相关的机会成本；</li> 
- <li>投资搭建一个与生产环境一致的用户验收测试环境；</li> 
- <li>在大多数情况下，上述第一项成本远远大于第二项。</li> 
-</ul>
-<p><img src="http://infoqstatic.com/resource/articles/Performance-Analysis-Antipatterns/zh/resources/0224005.jpg" width="500" _href="img://null" _p="true" alt="" /></p>
-<h3><b><i>模拟生产数据难以编造</i></b></h3>
-<p><b>描述</b></p>
-<p>在用户验收测试中使用的数据看起来一点也不像生产系统中的。</p>
-<p><b>典型意见</b></p>
-<blockquote> 
- <p>保持生产系统与用户验收测试系统的同步太难了。</p> 
-</blockquote>
-<p><b>真实情况</b></p>
-<ul> 
- <li>在用户验收测试中使用的数据必须近似于生产系统，这样才能得到准确结果。</li> 
-</ul>
-<p><b>根本原因</b></p>
-<ul> 
- <li>缺乏对现有系统的理解。</li> 
-</ul>
-<p><b>探讨</b></p>
-<p>这种反模式也落入了“聊胜于无”的陷阱。这个想法就是，即使使用过期的和并不具代表性的数据测试都比不测试好。</p>
-<p>与前面的一样，这是一个极其危险的推理过程。在系统测试中，虽然使用一些东西（即使它并不像生产数据）执行一定规模的测试，总能揭示出一些缺陷和疏漏，但它却带来了安全的错觉。</p>
-<p>到系统投产时，实际使用模式与由用户验收测试数据确定的预期基准模型风马牛不相及，开发和运维团队就会被好好的上一课，他们已经被用户验收测试所带来的温暖光芒给照的洋洋得意，在一次大规模生产系统发布后，毫无准备的直面这种全然恐怖。</p>
-<p><b>解决方法</b></p>
-<ul> 
- <li>咨询数据领域的专家，并投资建立一个把生产数据迁移回用户验收测试环境的流程；</li> 
- <li>对大规模投产做好万全准备；</li> 
- <li>只要有可能，建立专门的“最坏情况”小组或工具（比如<a href="http://www.codinghorror.com/blog/2011/04/working-with-the-chaos-monkey.html">捣乱猴</a>）。</li> 
-</ul>
-<p><img src="http://infoqstatic.com/resource/articles/Performance-Analysis-Antipatterns/zh/resources/0224005.jpg" width="500" _href="img://null" _p="true" alt="" /></p>
-<h3><b><i>性能秘诀（又名，按民间传说调优）</i></b></h3>
-<p><b>描述</b></p>
-<p>盲目应用代码和参数变更。</p>
-<p><b>典型意见</b></p>
-<blockquote> 
- <p>我在Stack Overflow网站上找到了这些很棒的秘诀。一切都变了。</p> 
-</blockquote>
-<p><b>真实情况</b></p>
-<ul> 
- <li>开发者并未理解上下文，或者所谓性能秘诀的基础，真正的影响是未知的。</li> 
-</ul>
-<p><b>根本原因</b></p>
-<ul> 
- <li>缺乏对现有系统的理解；</li> 
- <li>同侪压力。</li> 
-</ul>
-<p><b>探讨</b></p>
-<p>性能秘诀是对已知问题的权变措施，从根本上说就是一个寻找问题出处的过程。它们会有一个有效期，但通常标识日期错的很离谱。在软件或平台未来的发布版本中，最终会有人证实这条秘诀根本不灵（即使在最好的情况下）。</p>
-<p>性能建议的一个特别糟糕的来源就是管理员手册。手册中写的常是缺乏上下文的一般性建议。这种建议以及所谓的“推荐配置”往往只是律师所坚持的，如果供应商被起诉，作为辩护的另一条理据。</p>
-<p>Java的性能在一个特定的上下文中才有意义，具有大量的影响因素。如果我们脱离那个上下文，由于执行环境的复杂性，几乎就不可能推理得到结论。</p>
-<p><b>解决方法</b></p>
-<ul> 
- <li>只使用那些经过良好测试和充分理解的技术，它们才是直接关系到一个系统的最重要的方面的。</li> 
-</ul>
-<p><img src="http://infoqstatic.com/resource/articles/Performance-Analysis-Antipatterns/zh/resources/0224005.jpg" width="500" _href="img://null" _p="true" alt="" /></p>
-<h3><b><i>替罪羊</i></b></h3>
-<p><b>描述</b></p>
-<p>某些组件总被认定为问题所在。</p>
-<p><b>典型意见</b></p>
-<blockquote> 
- <p>肯定是JMS，或者Hibernate，或者另一个什么库。</p> 
-</blockquote>
-<p><b>真实情况</b></p>
-<ul> 
- <li>得出这个结论前的分析不足。</li> 
-</ul>
-<p><b>根本原因</b></p>
-<ul> 
- <li>同侪压力；</li> 
- <li>被误读的，或者根本不存在的问题。</li> 
-</ul>
-<p><b>探讨</b></p>
-<p>这种反模式通常是管理人员或业务人员所犯的。在许多情况下，他们对整个技术栈没有充分的了解，就通过经验主义或者未确认的认知偏差进一步得出结论。当然，技术人员对此反模式也远未达到免疫。</p>
-<p><b>解决方法</b></p>
-<ul> 
- <li>顶住急于下结论的压力；</li> 
- <li>进行正常的分析；</li> 
- <li>把分析结果传达给所有利益相关者（以尽力展现导致问题的更真实的原因的图景）。</li> 
-</ul>
-<p><img src="http://infoqstatic.com/resource/articles/Performance-Analysis-Antipatterns/zh/resources/0224005.jpg" width="500" _href="img://null" _p="true" alt="" /></p>
-<h3><b><i>拨弄开关</i></b></h3>
-<p><b>描述</b></p>
-<p>团队变得痴迷于JVM的参数开关。</p>
-<p><b>典型意见</b></p>
-<blockquote> 
- <p>我只要修改这些设置，我们就会得到更好的性能。</p> 
-</blockquote>
-<p><b>真实情况</b></p>
-<ul> 
- <li>团队并未理解变更带来的影响。</li> 
-</ul>
-<p><b>根本原因</b></p>
-<ul> 
- <li>缺乏对现有系统的理解；</li> 
- <li>被误读的，或者根本不存在的问题。</li> 
-</ul>
-<p><b>探讨</b></p>
-<p>JVM有上百个参数开关，这为我们提供了一个高度可配置的运行时环境，但也诱惑我们想要利用所有的配置项。这通常是错误的，JVM的默认值和自我管理能力一般都足够了。有些参数开关之间有意想不到的组合关系，盲目调整甚至是很危险的。</p>
-<p><b>解决方法</b></p>
-<p>在应用任何参数开关的变更之前：</p>
-<ul> 
- <li>在生产系统中进行测量；</li> 
- <li>在用户验收测试时，每次只改变1个参数开关；</li> 
- <li>在用户验收测试时，测试发生的变化；</li> 
- <li>在用户验收测试时，重复测试；</li> 
- <li>安排人手重新校验你的推断。</li> 
-</ul>
-<p><img src="http://infoqstatic.com/resource/articles/Performance-Analysis-Antipatterns/zh/resources/0224005.jpg" width="500" _href="img://null" _p="true" alt="" /></p>
-<h3><b><i>“</i></b><b><i>微”基准测试</i></b></h3>
-<p><b>描述</b></p>
-<p>只在系统的一些非常细小的方面努力调优。</p>
-<p><b>典型意见</b></p>
-<blockquote> 
- <p>看看我们是不是能加快方法分派时间……</p> 
-</blockquote>
-<p><b>真实情况</b></p>
-<p>微小变更对整个系统层面的影响是完全未知的。</p>
-<p><b>根本原因</b></p>
-<ul> 
- <li>缺乏对现有系统的理解；</li> 
- <li>被误读的，或者根本不存在的问题；</li> 
- <li>简历加料；</li> 
- <li>同侪压力。</li> 
-</ul>
-<p><b>探讨</b></p>
-<p>性能调优是一项统计性的活动，它依赖于一个非常具体的执行环境。这意味着，大型系统通常比小型系统容易进行基准测试，因为在大型系统中，大数定律会按照工程师的期望发挥作用，帮助纠正在平台中扭曲个别事件的影响。</p>
-<p>相对应的，在复杂环境中，越是需要聚焦于系统的一个方面，就越需加倍努力解耦组成平台的那些独立的子系统（例如线程、垃圾回收、调度，JIT编译等），至少在Java和C#环境中如此。这是非常难做到的，对统计数字的处理容易受到外部因素影响，而且软件工程师们在成长的道路上通常学不到这种技能。这就容易造成一种结果，工程师们本以为正在对某个系统层面进行基准测试，所得到的数字却并不能准确的反映那个系统层面的行为。</p>
-<p>有一个不幸的倾向，就是这还会与人的认知偏差结合起来，使人们误以为找到了一些本不存在的模式。总之，这些效应把我们带往障碍之路，一个性能工程师被不良统计数字或者不当控制深深引诱，还热切地宣称要达成一个同侪无法企及的性能基准或者效果。</p>
-<h3><b>解决方法</b></h3>
-<ul> 
- <li>不要做“微”基准测试，除非你有一个已知的关于它的现实用例。如若要做，就做得公开，和你的同侪一起完成；</li> 
- <li>做好自己犯了很多错误的准备，反复自省。</li> 
-</ul>
-<p><img src="http://infoqstatic.com/resource/articles/Performance-Analysis-Antipatterns/zh/resources/0224005.jpg" width="500" _href="img://null" _p="true" alt="" /></p>
-<h2><b>结语</b></h2>
-<p>为什么在性能调优中会出现这些反模式？在调优的过程中，是什么激励了认知偏差，从而导致这种不正确的结论？</p>
-<p>回答这些问题的关键之处，是理解软件工程与其他工程学科有着本质不同。在广阔的机械工程系统领域，我们可以很好的理解小零件的物理属性，而复合效应只会带来少量的（而且常常是被充分了解的）意外表现。</p>
-<p>软件就不同了。我们所开发的系统远比人类在其他领域的成果更称得上精工巧琢。这既是因为我们使用非常简单的基础零件，而且还因为我们制造了工具，使我们可以驾驭为数浩繁的零件。不幸的是（或者迷人的是，看你怎么看了），随着软件已经变得越来越复杂，我们发现它有高度的突生特性。意思也就是说，随着复杂度增加，始料未及的现象已经显现。如我们在本文中所讨论的一样，这其中并不都是正面的。</p>
-<h2><b>致谢</b></h2>
-<p>特别感谢Martijn Verburg、Kirk Pepperdine、Trisha Gee和James Gough（以及更多人），他们向我解释（有些时候是命名）这些反模式。</p>
-<h2><b>关于作者</b></h2>
-<p><img style="float: left; margin-right: 10px" src="http://infoqstatic.com/resource/articles/Performance-Analysis-Antipatterns/zh/resources/0224015.jpg" _href="img://null" _p="true" alt="" /><b>Ben Eva</b><b>ns</b>是jClarity的首席执行官，jClarity是一个Java/JVM性能分析的初创企业。在业余时间，他是伦敦Java社区的领导者之一，还在JCP执行委员会拥有一个席位。他做过的项目包括谷歌IPO的性能测试、几个金融交易系统，以及为一些90年代的著名电影编写的备受赞誉的网站等等。</p>
-<div style="clear:both">
- &nbsp;
-</div>
-<p><strong>查看英文原文：</strong><u><a href="http://www.infoq.com/articles/Performance-Analysis-Antipatterns">Modern Enterprise Performance Analysis Antipatterns</a></u></p>
+<p>下面，我们通过BIO通信模型图看下BIO通信的弊端：</p>
+<p><img src="http://infoqstatic.com/resource/articles/netty-high-performance/zh/resources/0529010.png" width="600" _href="img://null" _p="true" alt="" /></p>
+<p>图2-1 BIO通信模型图</p>
+<p>采用BIO通信模型的服务端，通常由一个独立的Acceptor线程负责监听客户端的连接，接收到客户端连接之后为客户端连接创建一个新的线程处理请求消息，处理完成之后，返回应答消息给客户端，线程销毁，这就是典型的一请求一应答模型。该架构最大的问题就是不具备弹性伸缩能力，当并发访问量增加后，服务端的线程个数和并发访问数成线性正比，由于线程是JAVA虚拟机非常宝贵的系统资源，当线程数膨胀之后，系统的性能急剧下降，随着并发量的继续增加，可能会发生句柄溢出、线程堆栈溢出等问题，并导致服务器最终宕机。</p>
+<p>序列化方式问题：Java序列化存在如下几个典型问题：</p>
+<p>1) Java序列化机制是Java内部的一种对象编解码技术，无法跨语言使用；例如对于异构系统之间的对接，Java序列化后的码流需要能够通过其它语言反序列化成原始对象（副本），目前很难支持；</p>
+<p>2) 相比于其它开源的序列化框架，Java序列化后的码流太大，无论是网络传输还是持久化到磁盘，都会导致额外的资源占用；</p>
+<p>3) 序列化性能差（CPU资源占用高）。</p>
+<p>线程模型问题：由于采用同步阻塞IO，这会导致每个TCP连接都占用1个线程，由于线程资源是JVM虚拟机非常宝贵的资源，当IO读写阻塞导致线程无法及时释放时，会导致系统性能急剧下降，严重的甚至会导致虚拟机无法创建新的线程。</p>
+<h4>2.1.2. 高性能的三个主题</h4>
+<p>1) 传输：用什么样的通道将数据发送给对方，BIO、NIO或者AIO，IO模型在很大程度上决定了框架的性能。</p>
+<p>2) 协议：采用什么样的通信协议，HTTP或者内部私有协议。协议的选择不同，性能模型也不同。相比于公有协议，内部私有协议的性能通常可以被设计的更优。</p>
+<p>3) 线程：数据报如何读取？读取之后的编解码在哪个线程进行，编解码后的消息如何派发，Reactor线程模型的不同，对性能的影响也非常大。</p>
+<p><img src="http://infoqstatic.com/resource/articles/netty-high-performance/zh/resources/0529011.png" width="300" _href="img://null" _p="true" alt="" /></p>
+<p>图2-2 RPC调用性能三要素</p>
+<h3>2.2. Netty高性能之道</h3>
+<h4>2.2.1. 异步非阻塞通信</h4>
+<p>在IO编程过程中，当需要同时处理多个客户端接入请求时，可以利用多线程或者IO多路复用技术进行处理。IO多路复用技术通过把多个IO的阻塞复用到同一个select的阻塞上，从而使得系统在单线程的情况下可以同时处理多个客户端请求。与传统的多线程/多进程模型比，I/O多路复用的最大优势是系统开销小，系统不需要创建新的额外进程或者线程，也不需要维护这些进程和线程的运行，降低了系统的维护工作量，节省了系统资源。</p>
+<p>JDK1.4提供了对非阻塞IO（NIO）的支持，JDK1.5_update10版本使用epoll替代了传统的select/poll，极大的提升了NIO通信的性能。</p>
+<p>JDK NIO通信模型如下所示：</p>
+<p><img src="http://infoqstatic.com/resource/articles/netty-high-performance/zh/resources/0529012.png" width="600" _href="img://null" _p="true" alt="" /></p>
+<p>图2-3 NIO的多路复用模型图</p>
+<p>与Socket类和ServerSocket类相对应，NIO也提供了SocketChannel和ServerSocketChannel两种不同的套接字通道实现。这两种新增的通道都支持阻塞和非阻塞两种模式。阻塞模式使用非常简单，但是性能和可靠性都不好，非阻塞模式正好相反。开发人员一般可以根据自己的需要来选择合适的模式，一般来说，低负载、低并发的应用程序可以选择同步阻塞IO以降低编程复杂度。但是对于高负载、高并发的网络应用，需要使用NIO的非阻塞模式进行开发。</p>
+<p>Netty架构按照Reactor模式设计和实现，它的服务端通信序列图如下：</p>
+<p><img src="http://infoqstatic.com/resource/articles/netty-high-performance/zh/resources/0529013.png" width="600" _href="img://null" _p="true" alt="" /></p>
+<p>图2-3 NIO服务端通信序列图</p>
+<p>客户端通信序列图如下：</p>
+<p><img src="http://infoqstatic.com/resource/articles/netty-high-performance/zh/resources/0529014.png" width="600" _href="img://null" _p="true" alt="" /></p>
+<p>图2-4 NIO客户端通信序列图</p>
+<p>Netty的IO线程NioEventLoop由于聚合了多路复用器Selector，可以同时并发处理成百上千个客户端Channel，由于读写操作都是非阻塞的，这就可以充分提升IO线程的运行效率，避免由于频繁IO阻塞导致的线程挂起。另外，由于Netty采用了异步通信模式，一个IO线程可以并发处理N个客户端连接和读写操作，这从根本上解决了传统同步阻塞IO一连接一线程模型，架构的性能、弹性伸缩能力和可靠性都得到了极大的提升。</p>
+<h4>2.2.2. 零拷贝</h4>
+<p>很多用户都听说过Netty具有“零拷贝”功能，但是具体体现在哪里又说不清楚，本小节就详细对Netty的“零拷贝”功能进行讲解。</p>
+<p>Netty的“零拷贝”主要体现在如下三个方面：</p>
+<p>1) Netty的接收和发送ByteBuffer采用DIRECT BUFFERS，使用堆外直接内存进行Socket读写，不需要进行字节缓冲区的二次拷贝。如果使用传统的堆内存（HEAP BUFFERS）进行Socket读写，JVM会将堆内存Buffer拷贝一份到直接内存中，然后才写入Socket中。相比于堆外直接内存，消息在发送过程中多了一次缓冲区的内存拷贝。</p>
+<p>2) Netty提供了组合Buffer对象，可以聚合多个ByteBuffer对象，用户可以像操作一个Buffer那样方便的对组合Buffer进行操作，避免了传统通过内存拷贝的方式将几个小Buffer合并成一个大的Buffer。</p>
+<p>3) Netty的文件传输采用了transferTo方法，它可以直接将文件缓冲区的数据发送到目标Channel，避免了传统通过循环write方式导致的内存拷贝问题。</p>
+<p>下面，我们对上述三种“零拷贝”进行说明，先看Netty 接收Buffer的创建：</p>
+<p><img src="http://infoqstatic.com/resource/articles/netty-high-performance/zh/resources/0529015.png" width="600" _href="img://null" _p="true" alt="" /></p>
+<p>图2-5 异步消息读取“零拷贝”</p>
+<p>每循环读取一次消息，就通过ByteBufAllocator的ioBuffer方法获取ByteBuf对象，下面继续看它的接口定义：</p>
+<p><img src="http://infoqstatic.com/resource/articles/netty-high-performance/zh/resources/0529016.png" width="600" _href="img://null" _p="true" alt="" /></p>
+<p>图2-6 ByteBufAllocator 通过ioBuffer分配堆外内存</p>
+<p>当进行Socket IO读写的时候，为了避免从堆内存拷贝一份副本到直接内存，Netty的ByteBuf分配器直接创建非堆内存避免缓冲区的二次拷贝，通过“零拷贝”来提升读写性能。</p>
+<p>下面我们继续看第二种“零拷贝”的实现CompositeByteBuf，它对外将多个ByteBuf封装成一个ByteBuf，对外提供统一封装后的ByteBuf接口，它的类定义如下：</p>
+<p><img src="http://infoqstatic.com/resource/articles/netty-high-performance/zh/resources/0529017.png" width="600" _href="img://null" _p="true" alt="" /></p>
+<p>图2-7 CompositeByteBuf类继承关系</p>
+<p>通过继承关系我们可以看出CompositeByteBuf实际就是个ByteBuf的包装器，它将多个ByteBuf组合成一个集合，然后对外提供统一的ByteBuf接口，相关定义如下：</p>
+<p><img src="http://infoqstatic.com/resource/articles/netty-high-performance/zh/resources/0529018.png" width="600" _href="img://null" _p="true" alt="" /></p>
+<p>图2-8 CompositeByteBuf类定义</p>
+<p>添加ByteBuf，不需要做内存拷贝，相关代码如下：</p>
+<p><img src="http://infoqstatic.com/resource/articles/netty-high-performance/zh/resources/0529019.png" width="600" _href="img://null" _p="true" alt="" /></p>
+<p>图2-9 新增ByteBuf的“零拷贝”</p>
+<p>最后，我们看下文件传输的“零拷贝”：</p>
+<p><img src="http://infoqstatic.com/resource/articles/netty-high-performance/zh/resources/0529020.png" width="600" _href="img://null" _p="true" alt="" /></p>
+<p>图2-10 文件传输“零拷贝”</p>
+<p>Netty文件传输DefaultFileRegion通过transferTo方法将文件发送到目标Channel中，下面重点看FileChannel的transferTo方法，它的API DOC说明如下：</p>
+<p><img src="http://infoqstatic.com/resource/articles/netty-high-performance/zh/resources/0529021.png" width="600" _href="img://null" _p="true" alt="" /></p>
+<p>图2-11 文件传输 “零拷贝”</p>
+<p>对于很多操作系统它直接将文件缓冲区的内容发送到目标Channel中，而不需要通过拷贝的方式，这是一种更加高效的传输方式，它实现了文件传输的“零拷贝”。</p>
+<h4>2.2.3. 内存池</h4>
+<p>随着JVM虚拟机和JIT即时编译技术的发展，对象的分配和回收是个非常轻量级的工作。但是对于缓冲区Buffer，情况却稍有不同，特别是对于堆外直接内存的分配和回收，是一件耗时的操作。为了尽量重用缓冲区，Netty提供了基于内存池的缓冲区重用机制。下面我们一起看下Netty ByteBuf的实现：</p>
+<p><img src="http://infoqstatic.com/resource/articles/netty-high-performance/zh/resources/0529022.png" width="600" _href="img://null" _p="true" alt="" /></p>
+<p>图2-12 内存池ByteBuf</p>
+<p>Netty提供了多种内存管理策略，通过在启动辅助类中配置相关参数，可以实现差异化的定制。</p>
+<p>下面通过性能测试，我们看下基于内存池循环利用的ByteBuf和普通ByteBuf的性能差异。</p>
+<p>用例一，使用内存池分配器创建直接内存缓冲区：</p>
+<p><img src="http://infoqstatic.com/resource/articles/netty-high-performance/zh/resources/0529023.png" width="600" _href="img://null" _p="true" alt="" /></p>
+<p>图2-13 基于内存池的非堆内存缓冲区测试用例</p>
+<p>用例二，使用非堆内存分配器创建的直接内存缓冲区：</p>
+<p><img src="http://infoqstatic.com/resource/articles/netty-high-performance/zh/resources/0529024.png" width="600" _href="img://null" _p="true" alt="" /></p>
+<p>图2-14 基于非内存池创建的非堆内存缓冲区测试用例</p>
+<p>各执行300万次，性能对比结果如下所示：</p>
+<p><img src="http://infoqstatic.com/resource/articles/netty-high-performance/zh/resources/0529040.png" width="600" _href="img://null" _p="true" alt="" /></p>
+<p>图2-15 内存池和非内存池缓冲区写入性能对比</p>
+<p>性能测试表明，采用内存池的ByteBuf相比于朝生夕灭的ByteBuf，性能高23倍左右（性能数据与使用场景强相关）。</p>
+<p>下面我们一起简单分析下Netty内存池的内存分配：</p>
+<p><img src="http://infoqstatic.com/resource/articles/netty-high-performance/zh/resources/0529025.png" width="600" _href="img://null" _p="true" alt="" /></p>
+<p>图2-16 AbstractByteBufAllocator的缓冲区分配</p>
+<p>继续看newDirectBuffer方法，我们发现它是一个抽象方法，由AbstractByteBufAllocator的子类负责具体实现，代码如下：</p>
+<p><img src="http://infoqstatic.com/resource/articles/netty-high-performance/zh/resources/0529026.png" width="600" _href="img://null" _p="true" alt="" /></p>
+<p>图2-17 newDirectBuffer的不同实现</p>
+<p>代码跳转到PooledByteBufAllocator的newDirectBuffer方法，从Cache中获取内存区域PoolArena，调用它的allocate方法进行内存分配：</p>
+<p><img src="http://infoqstatic.com/resource/articles/netty-high-performance/zh/resources/0529027.png" width="600" _href="img://null" _p="true" alt="" /></p>
+<p>图2-18 PooledByteBufAllocator的内存分配</p>
+<p>PoolArena的allocate方法如下：</p>
+<p><img src="http://infoqstatic.com/resource/articles/netty-high-performance/zh/resources/0529028.png" width="600" _href="img://null" _p="true" alt="" /></p>
+<p>图2-18 PoolArena的缓冲区分配</p>
+<p>我们重点分析newByteBuf的实现，它同样是个抽象方法，由子类DirectArena和HeapArena来实现不同类型的缓冲区分配，由于测试用例使用的是堆外内存，</p>
+<p><img src="http://infoqstatic.com/resource/articles/netty-high-performance/zh/resources/0529029.png" width="600" _href="img://null" _p="true" alt="" /></p>
+<p>图2-19 PoolArena的newByteBuf抽象方法</p>
+<p>因此重点分析DirectArena的实现：如果没有开启使用sun的unsafe，则</p>
+<p><img src="http://infoqstatic.com/resource/articles/netty-high-performance/zh/resources/0529030.png" width="600" _href="img://null" _p="true" alt="" /></p>
+<p>图2-20 DirectArena的newByteBuf方法实现</p>
+<p>执行PooledDirectByteBuf的newInstance方法，代码如下：</p>
+<p><img src="http://infoqstatic.com/resource/articles/netty-high-performance/zh/resources/0529031.png" width="600" _href="img://null" _p="true" alt="" /></p>
+<p>图2-21 PooledDirectByteBuf的newInstance方法实现</p>
+<p>通过RECYCLER的get方法循环使用ByteBuf对象，如果是非内存池实现，则直接创建一个新的ByteBuf对象。从缓冲池中获取ByteBuf之后，调用AbstractReferenceCountedByteBuf的setRefCnt方法设置引用计数器，用于对象的引用计数和内存回收（类似JVM垃圾回收机制）。</p>
+<h4>2.2.4. 高效的Reactor线程模型</h4>
+<p>常用的Reactor线程模型有三种，分别如下：</p>
+<p>1) Reactor单线程模型；</p>
+<p>2) Reactor多线程模型；</p>
+<p>3) 主从Reactor多线程模型</p>
+<p>Reactor单线程模型，指的是所有的IO操作都在同一个NIO线程上面完成，NIO线程的职责如下：</p>
+<p>1) 作为NIO服务端，接收客户端的TCP连接；</p>
+<p>2) 作为NIO客户端，向服务端发起TCP连接；</p>
+<p>3) 读取通信对端的请求或者应答消息；</p>
+<p>4) 向通信对端发送消息请求或者应答消息。</p>
+<p>Reactor单线程模型示意图如下所示：</p>
+<p><img src="http://infoqstatic.com/resource/articles/netty-high-performance/zh/resources/0529032.png" width="600" _href="img://null" _p="true" alt="" /></p>
+<p>图2-22 Reactor单线程模型</p>
+<p>由于Reactor模式使用的是异步非阻塞IO，所有的IO操作都不会导致阻塞，理论上一个线程可以独立处理所有IO相关的操作。从架构层面看，一个NIO线程确实可以完成其承担的职责。例如，通过Acceptor接收客户端的TCP连接请求消息，链路建立成功之后，通过Dispatch将对应的ByteBuffer派发到指定的Handler上进行消息解码。用户Handler可以通过NIO线程将消息发送给客户端。</p>
+<p>对于一些小容量应用场景，可以使用单线程模型。但是对于高负载、大并发的应用却不合适，主要原因如下：</p>
+<p>1) 一个NIO线程同时处理成百上千的链路，性能上无法支撑，即便NIO线程的CPU负荷达到100%，也无法满足海量消息的编码、解码、读取和发送；</p>
+<p>2) 当NIO线程负载过重之后，处理速度将变慢，这会导致大量客户端连接超时，超时之后往往会进行重发，这更加重了NIO线程的负载，最终会导致大量消息积压和处理超时，NIO线程会成为系统的性能瓶颈；</p>
+<p>3) 可靠性问题：一旦NIO线程意外跑飞，或者进入死循环，会导致整个系统通信模块不可用，不能接收和处理外部消息，造成节点故障。</p>
+<p>为了解决这些问题，演进出了Reactor多线程模型，下面我们一起学习下Reactor多线程模型。</p>
+<p>Rector多线程模型与单线程模型最大的区别就是有一组NIO线程处理IO操作，它的原理图如下：</p>
+<p><img src="http://infoqstatic.com/resource/articles/netty-high-performance/zh/resources/0529033.png" width="600" _href="img://null" _p="true" alt="" /></p>
+<p>图2-23 Reactor多线程模型</p>
+<p>Reactor多线程模型的特点：</p>
+<p>1) 有专门一个NIO线程-Acceptor线程用于监听服务端，接收客户端的TCP连接请求；</p>
+<p>2) 网络IO操作-读、写等由一个NIO线程池负责，线程池可以采用标准的JDK线程池实现，它包含一个任务队列和N个可用的线程，由这些NIO线程负责消息的读取、解码、编码和发送；</p>
+<p>3) 1个NIO线程可以同时处理N条链路，但是1个链路只对应1个NIO线程，防止发生并发操作问题。</p>
+<p>在绝大多数场景下，Reactor多线程模型都可以满足性能需求；但是，在极特殊应用场景中，一个NIO线程负责监听和处理所有的客户端连接可能会存在性能问题。例如百万客户端并发连接，或者服务端需要对客户端的握手消息进行安全认证，认证本身非常损耗性能。在这类场景下，单独一个Acceptor线程可能会存在性能不足问题，为了解决性能问题，产生了第三种Reactor线程模型-主从Reactor多线程模型。</p>
+<p>主从Reactor线程模型的特点是：服务端用于接收客户端连接的不再是个1个单独的NIO线程，而是一个独立的NIO线程池。Acceptor接收到客户端TCP连接请求处理完成后（可能包含接入认证等），将新创建的SocketChannel注册到IO线程池（sub reactor线程池）的某个IO线程上，由它负责SocketChannel的读写和编解码工作。Acceptor线程池仅仅只用于客户端的登陆、握手和安全认证，一旦链路建立成功，就将链路注册到后端subReactor线程池的IO线程上，由IO线程负责后续的IO操作。</p>
+<p>它的线程模型如下图所示：</p>
+<p><img src="http://infoqstatic.com/resource/articles/netty-high-performance/zh/resources/0529034.png" width="600" _href="img://null" _p="true" alt="" /></p>
+<p>图2-24 Reactor主从多线程模型</p>
+<p>利用主从NIO线程模型，可以解决1个服务端监听线程无法有效处理所有客户端连接的性能不足问题。因此，在Netty的官方demo中，推荐使用该线程模型。</p>
+<p>事实上，Netty的线程模型并非固定不变，通过在启动辅助类中创建不同的EventLoopGroup实例并通过适当的参数配置，就可以支持上述三种Reactor线程模型。正是因为Netty 对Reactor线程模型的支持提供了灵活的定制能力，所以可以满足不同业务场景的性能诉求。</p>
+<h4>2.2.5. 无锁化的串行设计理念</h4>
+<p>在大多数场景下，并行多线程处理可以提升系统的并发性能。但是，如果对于共享资源的并发访问处理不当，会带来严重的锁竞争，这最终会导致性能的下降。为了尽可能的避免锁竞争带来的性能损耗，可以通过串行化设计，即消息的处理尽可能在同一个线程内完成，期间不进行线程切换，这样就避免了多线程竞争和同步锁。</p>
+<p>为了尽可能提升性能，Netty采用了串行无锁化设计，在IO线程内部进行串行操作，避免多线程竞争导致的性能下降。表面上看，串行化设计似乎CPU利用率不高，并发程度不够。但是，通过调整NIO线程池的线程参数，可以同时启动多个串行化的线程并行运行，这种局部无锁化的串行线程设计相比一个队列-多个工作线程模型性能更优。</p>
+<p>Netty的串行化设计工作原理图如下：</p>
+<p><img src="http://infoqstatic.com/resource/articles/netty-high-performance/zh/resources/0529035.png" width="600" _href="img://null" _p="true" alt="" /></p>
+<p>图2-25 Netty串行化工作原理图</p>
+<p>Netty的NioEventLoop读取到消息之后，直接调用ChannelPipeline的fireChannelRead(Object msg)，只要用户不主动切换线程，一直会由NioEventLoop调用到用户的Handler，期间不进行线程切换，这种串行化处理方式避免了多线程操作导致的锁的竞争，从性能角度看是最优的。</p>
+<h4>2.2.6. 高效的并发编程</h4>
+<p>Netty的高效并发编程主要体现在如下几点：</p>
+<p>1) volatile的大量、正确使用;</p>
+<p>2) CAS和原子类的广泛使用；</p>
+<p>3) 线程安全容器的使用；</p>
+<p>4) 通过读写锁提升并发性能。</p>
+<p>如果大家想了解Netty高效并发编程的细节，可以阅读之前我在微博分享的《多线程并发编程在 Netty 中的应用分析》，在这篇文章中对Netty的多线程技巧和应用进行了详细的介绍和分析。</p>
+<h4>2.2.7. 高性能的序列化框架</h4>
+<p>影响序列化性能的关键因素总结如下：</p>
+<p>1) 序列化后的码流大小（网络带宽的占用）；</p>
+<p>2) 序列化&amp;反序列化的性能（CPU资源占用）；</p>
+<p>3) 是否支持跨语言（异构系统的对接和开发语言切换）。</p>
+<p>Netty默认提供了对Google Protobuf的支持，通过扩展Netty的编解码接口，用户可以实现其它的高性能序列化框架，例如Thrift的压缩二进制编解码框架。</p>
+<p>下面我们一起看下不同序列化&amp;反序列化框架序列化后的字节数组对比：</p>
+<p><img src="http://infoqstatic.com/resource/articles/netty-high-performance/zh/resources/0529036.png" width="600" _href="img://null" _p="true" alt="" /></p>
+<p>图2-26 各序列化框架序列化码流大小对比</p>
+<p>从上图可以看出，Protobuf序列化后的码流只有Java序列化的1/4左右。正是由于Java原生序列化性能表现太差，才催生出了各种高性能的开源序列化技术和框架（性能差只是其中的一个原因，还有跨语言、IDL定义等其它因素）。</p>
+<h4>2.2.8. 灵活的TCP参数配置能力</h4>
+<p>合理设置TCP参数在某些场景下对于性能的提升可以起到显著的效果，例如SO_RCVBUF和SO_SNDBUF。如果设置不当，对性能的影响是非常大的。下面我们总结下对性能影响比较大的几个配置项：</p>
+<p>1) SO_RCVBUF和SO_SNDBUF：通常建议值为128K或者256K；</p>
+<p>2) SO_TCPNODELAY：NAGLE算法通过将缓冲区内的小封包自动相连，组成较大的封包，阻止大量小封包的发送阻塞网络，从而提高网络应用效率。但是对于时延敏感的应用场景需要关闭该优化算法；</p>
+<p>3) 软中断：如果Linux内核版本支持RPS（2.6.35以上版本），开启RPS后可以实现软中断，提升网络吞吐量。RPS根据数据包的源地址，目的地址以及目的和源端口，计算出一个hash值，然后根据这个hash值来选择软中断运行的cpu，从上层来看，也就是说将每个连接和cpu绑定，并通过这个hash值，来均衡软中断在多个cpu上，提升网络并行处理性能。</p>
+<p>Netty在启动辅助类中可以灵活的配置TCP参数，满足不同的用户场景。相关配置接口定义如下：</p>
+<p><img src="http://infoqstatic.com/resource/articles/netty-high-performance/zh/resources/0529037.png" width="600" _href="img://null" _p="true" alt="" /></p>
+<p>图2-27 Netty的TCP参数配置定义</p>
+<h3>2.3. 总结</h3>
+<p>通过对Netty的架构和性能模型进行分析，我们发现Netty架构的高性能是被精心设计和实现的，得益于高质量的架构和代码，Netty支持10W TPS的跨节点服务调用并不是件十分困难的事情。</p>
+<h2>3. 作者简介</h2>
+<p>李林锋，2007年毕业于东北大学，2008年进入华为公司从事高性能通信软件的设计和开发工作，有6年NIO设计和开发经验，精通Netty、Mina等NIO框架。Netty中国社区创始人，《Netty权威指南》作者。</p>
+<p>联系方式：新浪微博 Nettying 微信：Nettying</p>
 <hr />
-<p>感谢<a href="http://www.infoq.com/cn/author/臧秀涛">臧秀涛</a>对本文的审校。</p>
+<p>感谢<a href="http://www.infoq.com/cn/author/张龙">张龙</a>对本文的审校,<a href="http://www.infoq.com/cn/author/郭蕾">郭蕾</a>对本文的策划。</p>
 <p>给InfoQ中文站投稿或者参与内容翻译工作，请邮件至<a href="mailto:editors@cn.infoq.com">editors@cn.infoq.com</a>。也欢迎大家通过新浪微博（<a href="http://www.weibo.com/infoqchina">@InfoQ</a>）或者腾讯微博（<a href="http://t.qq.com/infoqchina">@InfoQ</a>）关注我们，并与我们的编辑和其他读者朋友交流。</p><br><br><br><br><br><br></body></html>

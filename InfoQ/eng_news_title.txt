@@ -1,1 +1,1 @@
-Windows Management Framework 5 Preview Introduces Package Manager And Network Switches Cmdlets
+AWS Management Portal for VMware vCenter

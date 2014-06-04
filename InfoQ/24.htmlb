@@ -1,316 +1,80 @@
-<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>开发模块化的JavaScript组件</h3><p>现如今，虽然多数的web应用都使用了大量的JavaScript，但如何保持客户端功能的专注性、健壮性和可维护性依然是一个很大的挑战。</p>
-<p>尽管其它编程语言和系统都已经将关注分离和<a href="http://en.wikipedia.org/wiki/Don%27t_repeat_yourself">DRY</a>这样的基本原则视为理所当然的宗旨，但往往在进行浏览器端应用开发的时候，这些原则就被忽视了。</p>
-<p>造成这一现象的部分原因是JavaScript语言本身就在<a href="http://www.jwz.org/blog/2010/10/every-day-i-learn-something-new-and-stupid/#comment-1021">不断挣扎的历史</a>，在很长的一段时间内，它都难以获得开发者的认真关注和对待。</p>
-<p>而更重要的原因或许是源于服务端与客户端的差异造成的。虽然在这方面已经有大量的架构风格方面的概念，例如<a href="http://roca-style.org/">ROCA</a>，阐述了如何管理这种差异的方式。但还是缺乏如何实现这些概念的具体步骤的指南<sup>1</sup>。</p>
-<p>这些原因经常导致前端代码的高度过程化并且相对缺乏结构性，这种直接的代码调用方式减少了调用的开销，从而简化了代码调用的复杂性，JavaScript和浏览器也是因为这一点原因而允许这种调用方式的存在。但很快，通过这种方式实现的代码就会变得得难以维护。</p>
-<p>本文将通过一个示例为你展示某个简单的组件（widget）的演化过程，看看它是如何从一个庞大的、缺乏结构性的代码库进化为一个可重用的组件的。</p>
+<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>书籍问答：敏捷文化 —— 信任与责任引导之道</h3><p>当企业采用敏捷时，发展敏捷文化是他们经常要做的事情。</p>
+<p>这样的文化变革使管理者领导人们的方式，转变为帮助人们成为自组织。</p>
+<p>这本<em>The Agile Culture</em>介绍了如何塑造具有活力和创造力的文化，并且提供了建立信任、主人翁意识和克服组织中的阻力和壁垒的工具。</p>
+<p>你可以下载这本书的<a href="http://ptgmedia.pearsoncmg.com/images/9780321940148/samplepages/0321940148.pdf">第一章</a>。</p>
+<p>InfoQ采访了作者Pollyanna Pixton、Paul Gibson和Niel Nickolaisen，谈及敏捷文化与领导力、应对失败与恐惧，以及敏捷中的度量。</p>
+<p><strong>InfoQ：是什么让你们决定写一本敏捷文化的书？</strong></p>
 <div id="lowerFullwidthVCR"></div>
-<h2>对联系人进行过滤</h2>
-<p>这个<a href="http://fnd.github.io/contacts-filter/">示例组件</a>的作用是对一个联系人列表通过名称进行过滤。它的最新成果以及它的全部演化过程都可以在这个<a href="https://github.com/FND/contacts-filter">GitHub代码库</a>中找到。我们鼓励读者们对<a href="https://github.com/FND/contacts-filter/commits/master">提交的代码</a>进行审阅，并且留下宝贵意见。</p>
-<p>按照<a href="http://jakearchibald.com/2013/progressive-enhancement-still-important/">渐进式增强</a>的<a href="http://alistapart.com/article/understandingprogressiveenhancement">原则</a>，我们首先从一个基础的HTML结构开始以描述所用到的数据。这里用到了<a href="http://microformats.org/wiki/h-card">h-card</a>这个微格式（microformat），它能够起到语义化的作用，使得联系人的各种信息显得具有意义：</p>
-<pre>
-&lt;!-- index.html --&gt; 
-  
- &lt;ul&gt;
-    &lt;li class=&quot;h-card&quot;&gt;    
-        &lt;img src=&quot;http://example.org/jake.png&quot; alt=&quot;avatar&quot; class=&quot;u-photo&quot;&gt;     
-        &lt;a href=&quot;http://jakearchibald.com&quot; class=&quot;p-name u-url&quot;&gt;Jake Archibald&lt;/a&gt;    
-        (&lt;a href=&quot;mailto:jake@example.com&quot; class=&quot;u-email&quot;&gt;e-mail&lt;/a&gt;)      
-   &lt;/li&gt;     
-   &lt;li class=&quot;h-card&quot;&gt;    
-        &lt;img src=&quot;http://example.org/christian.png&quot; alt=&quot;avatar&quot; class=&quot;u-photo&quot;&gt;     
-        &lt;a href=&quot;http://christianheilmann.com&quot; class=&quot;p-name u-url&quot;&gt;Christian Heilmann&lt;/a&gt;    
-        (&lt;a href=&quot;mailto:christian@example.com&quot; class=&quot;u-email&quot;&gt;e-mail&lt;/a&gt;)     
-   &lt;/li&gt;     
-   &lt;li class=&quot;h-card&quot;&gt;    
-        &lt;img src=&quot;http://example.org/john.png&quot; alt=&quot;avatar&quot; class=&quot;u-photo&quot;&gt;     
-        &lt;a href=&quot;http://ejohn.org&quot; class=&quot;p-name u-url&quot;&gt;John Resig&lt;/a&gt;     
-        (&lt;a href=&quot;mailto:john@example.com&quot; class=&quot;u-email&quot;&gt;e-mail&lt;/a&gt;)     
-   &lt;/li&gt;     
-   &lt;li class=&quot;h-card&quot;&gt;     
-        &lt;img src=&quot;http://example.org/nicholas.png&quot; alt=&quot;avatar&quot; class=&quot;u-photo&quot;&gt;     
-        &lt;a href=&quot;http://www.nczonline.net&quot; class=&quot;p-name u-url&quot;&gt;Nicholas Zakas&lt;/a&gt;     
-        (&lt;a href=&quot;mailto:nicholas@example.com&quot; class=&quot;u-email&quot;&gt;e-mail&lt;/a&gt;)     
-   &lt;/li&gt;     
-&lt;/ul&gt;</pre>
-<p>有一点请注意，在这里我们并不关心这个DOM结构是基于server端生成的HTML代码，或是由其它组件生成的，只要保证在初始化时，我们的组件能够依赖于这个基础结构就够了。这一结构实际上为表单项构成了一个基于DOM的数据结构 <b>[{ photo, website, name, e-mail }]</b>。</p>
-<p>有了这个基础结构之后，我们就可以开始实现我们的组件了。第一步是为用户提供一个输入字段，以输入联系人名称。虽然它并不属于DOM结构的契约，但我们的组件仍然要负责创建它并动态地加入到DOM结构中去（毕竟，如果没有我们的组件，那么添加这个字段就完全没有任何意义了）。</p>
-<pre>
-// main.js     
-
- var contacts = jQuery(&quot;ul.contacts&quot;);     
- jQuery('&lt;input type=&quot;search&quot; /&gt;').insertBefore(contacts);</pre>
-<p>（我们在这里仅是出于便利性而使用了<a href="http://jquery.com/">jQuery</a>，同时也考虑到它的广泛使用性。如果使用其它的DOM操作类库，也是出于同样的原因。）</p>
-<p>这个JavaScript文件本身以及它所依赖的jQuery文件都会在HTML文件的<a href="http://developer.yahoo.com/blogs/ydn/high-performance-sites-rule-6-move-scripts-bottom-7200.html">底部</a>进行引用。</p>
-<p>接下来开始加入所需的功能，对于那些不符合这个新建的字段中的输入名称的联系人，这个组件会将它们隐藏起来：</p>
-<pre>
-// main.js     
-
- var contacts = jQuery(&quot;ul.contacts&quot;);     
- jQuery('&lt;input type=&quot;search&quot; /&gt;').insertBefore(contacts).
-on(&quot;keyup&quot;, onFilter);     
-
- function onFilter(ev) {     
-     var filterField = jQuery(this);     
-     var contacts = filterField.next();     
-     var input = filterField.val();     
-
-     var names = contacts.find(&quot;li .p-name&quot;);     
-     names.each(function(i, node) {     
-         var el = jQuery(node);     
-         var name = el.text();     
-
-         var match = name.indexOf(input) === 0;     
-         var contact = el.closest(&quot;.h-card&quot;);     
-         if(match) {     
-             contact.show();     
-         } else {     
-             contact.hide();     
-         }     
-    });     
- }</pre>
-<p>（引用一个分离的、具名的函数，比起定义一个匿名函数来说，通常会使得<a href="http://callbackhell.com/">回调函数更便于管理</a>。）</p>
-<p>请注意，这个事件处理函数依赖于特定的DOM环境，它取决于触发这个事件的元素（它的执行上下文会映射到<a href="http://www.quirksmode.org/js/this.html">this</a>指针上）。我们将从这个元素开始<a href="http://api.jquery.com/category/traversing/tree-traversal/">遍历</a>DOM结构，以访问联系人列表，并找出所有包含名称的元素（这是由微格式的语义所定义的）。如果某个名称的开头部分与当前输入的内容不匹配，我们就再次向上遍历，将相应的容器元素隐藏起来，否则的话，就要保证该元素依然可见。</p>
-<h2>测试</h2>
-<p>这段代码已经提供了我们所需的基本功能，是时候通过编写测试来继续增强它了<sup>2</sup>。在这个示例中，我们所使用的工具是<a href="http://qunitjs.com/">QUnit</a>。</p>
-<p>我们首先编写一个<a href="https://github.com/FND/contacts-filter/blob/db5b59ab1fb333c867b2f6ab1949ec78faad0e2a/test/index.html">最简单的HTML页面</a>，它将作为我们的测试集的入口。当然我们还需要引用我们的代码以及相应的依赖项（在这个例子中就是jQuery），这和我们之前创建的普通HTML页面的方式是一样的。</p>
-<pre>
-&lt;!-- test/index.html --&gt;     
-
-  &lt;div id=&quot;qunit&quot;&gt;&lt;/div&gt;       
-  &lt;div id=&quot;qunit-fixture&quot;&gt;&lt;/div&gt;          
-
-  &lt;script src=&quot;jquery.js&quot;&gt;&lt;/script&gt;       
-  &lt;script src=&quot;../main.js&quot;&gt;&lt;/script&gt;         
-
-  &lt;script src=&quot;qunit.js&quot;&gt;&lt;/script&gt; </pre>
-<p>有了这个基础结构之后，我们就要在<b>#qunit-fixture</b>这个元素中加入我们的示例数据了，即一个h-card的列表，还记得我们最开始时的那一段HTML结构吗？每一个测试开始时都会重置这个元素，保证测试数据的完整，也<a href="http://qunitjs.com/cookbook/#keeping-tests-atomic">避免任何可能的副作用产生</a>。</p>
-<p>我们的<a href="https://github.com/FND/contacts-filter/blob/173048f76c817e0688b25281461e2949fa802b32/test/test_filtering.js">第一个测试</a>保证这个组件正确地初始化，而且过滤功能和预期一样工作，能够将不满足输入条件的DOM元素隐藏起来。</p>
-<pre>
-// test/test_filtering.js     
-
- QUnit.module(&quot;contacts filtering&quot;, {   
-     setup: function() { // cache common elements on the module object      
-         this.fixtures = jQuery(&quot;#qunit-fixture&quot;);     
-         this.contacts = jQuery(&quot;ul.contacts&quot;, this.fixtures);     
-     }     
- });     
-
- QUnit.test(&quot;filtering by initials&quot;, function() {     
-     var filterField = jQuery(&quot;input[type=search]&quot;, this.fixtures);     
-     QUnit.strictEqual(filterField.length, 1);  
-    
-     var names = extractNames(this.contacts.find(&quot;li:visible&quot;));     
-     QUnit.deepEqual(names, [&quot;Jake Archibald&quot;, &quot;Christian Heilmann&quot;,     
-             &quot;John Resig&quot;, &quot;Nicholas Zakas&quot;]);     
-
-     filterField.val(&quot;J&quot;).trigger(&quot;keyup&quot;); // simulate user input     
-     var names = extractNames(this.contacts.find(&quot;li:visible&quot;));     
-     QUnit.deepEqual(names, [&quot;Jake Archibald&quot;, &quot;John Resig&quot;]);     
- });     
-
- function extractNames(contactNodes) {     
-     return jQuery.map(contactNodes, function(contact) {     
-         return jQuery(&quot;.p-name&quot;, contact).text();     
-     });     
- }</pre>
-<p>（<a href="http://api.qunitjs.com/strictEqual/">strictEqual</a>方法能够避免JavaScript在比较对象时会默认忽略类型信息的现象，这可以避免某些<a href="http://www.jslint.com/lint.html#eqeq">微妙的错误</a>出现。）</p>
-<p>随后我们将这个测试文件加入我们的测试集中（在QUnit引用的下方添加这个文件的引用），在浏览器中打开这个测试集，它应该告诉我们所有的测试都已通过：</p>
-<p><img src="http://infoqstatic.com/resource/articles/modular-javascript/zh/resources/0224030.png" width="600" _href="img://null" _p="true" alt="" /></p>
-<h2>动画效果</h2>
-<p>虽然这个widget运行没问题，但还不够吸引人，因此让我们来添加一点简单的动画效果。使用jQuery可以很简单地实现这一点：只要把<a href="http://api.jquery.com/show">show</a>和<a href="http://api.jquery.com/hide">hide</a>方法替换为相应的<a href="http://api.jquery.com/slideUp">slideUp</a>和<a href="http://api.jquery.com/slideDown">slideDown</a>方法就可以了。这一特性能够让这个朴素的示例的用户体验得到显著的提升。</p>
-<p>但是当你再一次运行这个测试集时，结果是过滤功能这次不能正确工作了，因为全部4个联系人都依然显示在页面上：</p>
-<p><img src="http://infoqstatic.com/resource/articles/modular-javascript/zh/resources/0224031.png" width="600" _href="img://null" _p="true" alt="" /></p>
-<p>这是由于动画效果是异步操作（就如AJAX操作一样），因此在动画结束前就已经完成了对过滤结果的检查。我们可以使用QUnit的<a href="http://api.qunitjs.com/category/async-control/">asyncTest</a>方法推迟检查的时间。</p>
-<pre>
-// test/test_filtering.js          
-
-  QUnit.asyncTest(&quot;filtering by initials&quot;, 3, function() { // expect 3 assertions     
-      // ...     
-      filterField.val(&quot;J&quot;).trigger(&quot;keyup&quot;); // simulate user input     
-      var contacts = this.contacts;     
-      setTimeout(function() { // defer checks until animation has completed     
-          var names = extractNames(contacts.find(&quot;li:visible&quot;));     
-          QUnit.deepEqual(names, [&quot;Jake Archibald&quot;, &quot;John Resig&quot;]);     
-          QUnit.start(); // resumes test execution     
-      }, 500);     
-  });</pre>
-<p>每次都打开浏览器检查测试集的结果有些繁琐，因此我们可以使用<a href="http://phantomjs.org/">PhantomJS</a>，这是一个后台浏览器。将它与<a href="https://github.com/jquery/qunit/tree/master/addons/phantomjs">QUnit runner</a>一起使用可以使测试过程自动化，并在控制台显示测试结果。</p>
-<pre>
-$ phantomjs runner.js test/index.html   
- Took 545ms to run 3 tests. 3 passed, 0 failed.</pre>
-<p>这种方式使得通过持续集成进行自动化测试变得更为方便（当然，它做不到跨浏览器的错误检查，因为PhantomJS只使用了WebKit内核。不过现在也出现了支持<a href="http://slimerjs.org/">Firefox的Gecko</a>和<a href="http://triflejs.org/">Internet Explorer的Trident</a>引擎的后台浏览器。）</p>
-<h2>包含范围</h2>
-<p>目前为止，我们的代码虽然能够运行，但还不够优雅：由于浏览器不会在隔离的区间内运行JavaScript，因此这段代码会将<b>contacts</b>和<b>onFilter</b>两个变量暴露到全局命名空间内，初学者需要特别当心。不过我们可以自行修改这段代码，以避免变量污染全局命名空间，由于JavaScript中唯一的限定范围机制就是函数，因此我们只需将整个文件简单地封装在一个匿名函数中，并在最后调用这个函数就可以了：</p>
-<pre>
-(function() {    
- var contacts = jQuery(&quot;ul.contacts&quot;);     
- jQuery('&lt;input type=&quot;search&quot; /&gt;').insertBefore(contacts).
-on(&quot;keyup&quot;, onFilter);     
- function onFilter(ev) {     
-     // ...     
- } 
- }());</pre>
-<p>这种方法被称为<a href="http://benalman.com/news/2010/11/immediately-invoked-function-expression/">立即调用的函数表达式</a>（IIFE）。</p>
-<p>现在，我们已经有效地将变量限定为一个自包含的模块中的私有变量了。</p>
-<p>我们还可以进一步改善代码，以防止在声明变量时因遗漏var而导致创建了新的全局变量。实现这一点只需激活<a href="http://www.yuiblog.com/blog/2010/12/14/strict-mode-is-coming-to-town/">strict模式</a>，它可以避免许多代码中的陷阱<sup>3</sup>。</p>
-<pre>
-(function() {    
- &quot;use strict&quot;; // NB: must be the very first statement within the function 
- // ...        
- }());</pre>
-<p>在某个IIFE容器中指定strict模式，可以确保它只在被显式调用的模块中起作用。</p>
-<p>有了基于模块的本地变量之后，我们就可以利用这一点来引入本地别名，以达到便利性的目的，比方在我们的测试中可以这样做：</p>
-<pre>
-// test/test_filtering.js
- (function($) {
- &quot;use strict&quot;;
- var strictEqual = QUnit.strictEqual;
- // ...
- var filterField = $(&quot;input[type=search]&quot;, this.fixtures);
- strictEqual(filterField.length, 1);
- }(jQuery));</pre>
-<p>现在我们有了两个别名：<b>$</b>和<b>strictEqual</b>，前者是通过一个IIFE参数进行定义的，它只在这个模块内部起作用。</p>
-<h2>组件 API</h2>
-<p>虽然我们的代码已经实现了良好的结构化，不过这个组件会在启动时（例如在这段代码刚刚加载时）自动初始化。这导致了难以预测它的初始化时机，而且使得不同种类的，或是新创建的元素不能够动态地被（重新）初始化。</p>
-<p>只需将现有的初始化代码封装在一个函数中，就可以简单地修正这一问题：</p>
-<pre>
-// widget.js
-  
- window.createFilterWidget = function(contactList) { 
-     $('&lt;input type=&quot;search&quot; /&gt;').insertBefore(contactList).
-         on(&quot;keyup&quot;, onFilter);
- };</pre>
-<p>通过这种方式，我们就将这个组件的功能与它的运行程序的生命周期解耦了。初始化的责任就转交给了应用程序，在我们的示例中就是测试工具。这通常意味着需要在应用程序的上下文中加入一些“粘合代码”以管理这些组件。</p>
-<p>请注意，我们显式地将函数赋给了全局的<b>window</b>对象，这是让我们的功能可以在IIFE外部访问的最简单方式。但这种方式将模块本身与某个特定的隐式上下文耦合在一起了：而<b>window</b>并不一定是全局对象（例如<a href="http://nodejs.org/api/globals.html#globals_global">在Node.js中</a>）。</p>
-<p>一个更为优雅的途径是明确指出代码的哪些部分将暴露给外部，并将这些部分聚集在一处。我们可以再次利用IIFE的优势实现这一点：因为IIFE仅仅是一个函数，我们可以在它的底部返回它的公开部分（例如我们所定义的API），并将返回值赋给某个外部（全局）范围内的变量：</p>
-<pre>
-// widget.js
- var CONTACTSFILTER = (function($) {
- function createFilterWidget(contactList) {
-     // ...
- }
- // ...
- return createFilterWidget;
- }(jQuery));</pre>
-<p>这一方式也叫做<a href="http://christianheilmann.com/2007/08/22/again-with-the-module-pattern-reveal-something-to-the-world/">揭示模块化模式</a>（revealing module pattern），至于使用大写是为了突出全局变量的一种约定。</p>
-<h2>封装状态</h2>
-<p>目前为止，我们的组件不仅功能良好而且结构合理，还包含了一个恰当的API。不过，如果我们继续按照这种方式引入更多的功能，就会导致对相互独立的函数的组合调用，这样很容易产生混乱的代码。对于UI组件这种注重状态的对象来说就更是如此。</p>
-<p>在我们的示例， 我们希望允许用户决定过滤条件是否是大小写敏感的，<a href="https://github.com/FND/contacts-filter/compare/c4f79f0078a1631538fa6af091cd63ddbfd96617%5E...cbe1d73f45a728c9abd1dcaa33bc2f0a19c2951a">因此我们加入了一个复选框，并相应地扩展了我们的事件处理函数</a>：</p>
-<pre>
-// widget.js
-  
- var caseSwitch = $('&lt;input type=&quot;checkbox&quot; /&gt;');
-  
- // ...
-
- function onFilter(ev) {
-     var filterField = $(this);
-     // ...
-     var caseSwitch = filterField.prev().find(&quot;input:checkbox&quot;);
-     var caseSensitive = caseSwitch.prop(&quot;checked&quot;);
-
-     if(!caseSensitive) {
-         input = input.toLowerCase();
-     }
-     // ...  }</pre>
-<p>为了使组件的元素与事件处理函数相关联，这段代码增加了对某个特定DOM上下文的依赖性。解决该问题的一种选择是将DOM查找方法移至某个分离的函数中，由它根据指定的上下文决定查找哪个组件。而更加常见的方式是采用面向对象的途径。（JavaScript本身支持函数式编程与面向对象<sup>4</sup>编程两种风格，它允许开发者根据任务需求自行选择最为适合的编程风格。）</p>
-<p>因此我们<a href="https://github.com/FND/contacts-filter/compare/b45c6ff9263ee1121c8e79a2cdb0156cc13e4d95%5E...3b827086eeec47c902167a6c9a915dea4d8ef5a9">可以重写组件</a>的方法，让它通过某个实例追踪它的所有组件：</p>
-<pre>
-// widget.js
-  
- function FilterWidget(contactList) {
-     this.contacts = contactList;
-     this.filterField = $('&lt;input type=&quot;search&quot; /&gt;').
-insertBefore(contactList);
-     this.caseSwitch = $('&lt;input type=&quot;checkbox&quot; /&gt;');
- }</pre>
-<p>对API的这一改动虽然很小，影响却很大：我们现在不再通过调用<b>createFilterWidget(…)</b>方法，而是通过<b>new FilterWidget(…)</b>来初始化widget，它调用了方法的构造函数，并将上下文传递给一个新创建的对象<b>（</b><b>this</b><b>）</b>。为了强调<b>new</b>操作的必要性，按照约定，构造函数名称的首字母都是大写（这一点非常类似于其它语言中的类的命名方式）<sup>5</sup>。</p>
-<p>当然，我们需要根据这个新的结构重新实现功能，首先得加入一个方法，它根据输入内容来隐藏联系人，它的实现和之前在<b>onFilter</b>方法中的实现基本相同：</p>
-<pre>
-// widget.js
-  
- FilterWidget.prototype.filterContacts = function(value) {
-     var names = this.contacts.find(&quot;li .p-name&quot;);
-     var self = this;
-     names.each(function(i, node) {
-         var el = $(node);
-         var name = el.text();
-         var contact = el.closest(&quot;.h-card&quot;);
-
-         var match = startsWith(name, input, self.caseSensitive);
-         if(match) {
-             contact.show();
-         } else {
-             container.hide();
-         }
-    });
- }</pre>
-<p>（这里定义的<b>self</b>变量是为了在<b>each</b>这个回调函数中也可以访问到<b>this</b>对象，因为在<b>each</b>函数中也有它自己的<b>this</b>变量，这样就不能够直接访问外部范围中的<b>this</b>对象了。通过在内部引用<b>self</b>对象，它就创建了一个闭包。）</p>
-<p>注意<b>filterContacts</b>函数的实现有所变化了，它不再根据上下文查找DOM，而是简单地引用之前定义在构造函数中的元素。字符串匹配功能则被抽取成一个通用目的的函数，这也表示并非所有功能都必须成为某个对象的方法：</p>
-<pre>
-function startsWith(str, value, caseSensitive) {
-     if(!caseSensitive) {
-         str = str.toLowerCase();
-         value = value.toLowerCase();
-     }
-     return str.indexOf(value) === 0;
- }</pre>
-<p>接下来我们将连接事件处理函数，否则这个方法是永远不会被触发的：</p>
-<pre>
-// widget.js    
-  function FilterWidget(contactList) {     
-     // ...    
-     this.filterField.on(&quot;keyup&quot;, this.onFilter);     
-     this.caseSwitch.on(&quot;change&quot;, this.onToggle);     
- }     
-  FilterWidget.prototype.onFilter = function(ev) {     
-     var input = this.filterField.val(); 
-          this.filterContacts(input);     
- };     
-  FilterWidget.prototype.onToggle = function(ev) {     
-     this.caseSensitive = this.caseSwitch.prop(&quot;checked&quot;);     
- };</pre>
-<p>现在可以重新运行我们的测试了，它除了之前那些API的小改动之外，并不需要其它的任何调整。但是一个错误出现了，这是由于<b>this</b>对象并非我们所预计的对象。我们已经了解到事件处理函数调用时会将相应的DOM元素作为运行上下文，因此我们需要做出一些调整，使代码能够访问到组件实例。为了实现这一点，我们利用了闭包功能以重新映射执行上下文：</p>
-<pre>
-// widget.js
-  
- function FilterWidget(contactList) {
-     // ...
-     var self = this;
-     this.filterField.on(&quot;keyup&quot;, function(ev) {
-         var handler = self.onFilter;
-         return handler.call(self, ev);
-     });
- }</pre>
-<p>（<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function/call">call</a>是一个内置的方法，它能够调用任何函数，并将任何传入的对象作为上下文，首个传入参数将对应该函数中的<b>this</b>对象。另一选择是<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function/apply">apply</a>方法，它能够接受一个隐式的arguments变量，以避免显式地引用单个的参数，它的形式是：handler.apply(self, arguments).<sup>6</sup>）</p>
-<p><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function/apply">最终的结果</a>是，我们的widget中的每个方法都有着清晰的并且封装良好的职责。</p>
-<h2>jQuery API</h2>
-<p>如果使用jQuery，那么现在的API看起来还不够优雅。我们可以添加一个轻量的封装，它提供了另一种对jQuery开发者来说感觉更加自然的API。</p>
-<pre>
-jQuery.fn.contactsFilter = function() {
-     this.each(function(i, node) {
-         new CONTACTSFILTER(node);
-     });
-     return this;
- };</pre>
-<p>（在jQuery的<a href="http://learn.jquery.com/plugins/advanced-plugin-concepts/">插件指南</a>中可以找到更详细的说明。）</p>
-<p>这样一来，我们就可以使用<b>jQuery(&quot;ul.contacts&quot;).contactsFilter()</b>这种方式调用组件了。如果将这一方法定义在一个单独的层中，就可以保证我们不依赖于某些特定的系统，因为将来版本的实现也许会为其它不同的系统提供额外的API封装，甚至可能会决定移除对jQuery的依赖或选择替代品。（当然，在这个示例中，弃用jQuery也意味着我们将不得不重写代码内部实现的某些部分。）</p>
-<h2>结论与展望</h2>
-<p>希望本文能够表达出编写可维护的JavaScript组件的一些关键原则。当然，并且每个组件都要遵循这个模式，但这里所表现的一概念对于任何组件来说都提供了一些必要的核心功能。</p>
-<p>进一步的增加或许要用到<a href="https://github.com/amdjs/amdjs-api/wiki/AMD">异步模块定义</a>（AMD），<a href="http://addyosmani.com/writing-modular-js/">它不仅改进了代码封装，而且使得模块之间的依赖更加清晰</a>，这就允许你按需加载代码（例如通过<a href="http://requirejs.org/">RequireJS</a>）。</p>
-<p>此外，近来有一些激动人心的新特性正在开发中：下个版本的JavaScript（官方称为ECMAScript 6）将引入一个语言级别的模块系统，当然，和任何新特性一样，它是否能够被广泛接受要取决于浏览器的支持。类似的，Web Components是正在实现的<a href="http://www.w3.org/TR/components-intro/#introduction">一组浏览器API</a>，它的目的是改善代码封装与可维护性，可以通过使用<a href="http://www.polymer-project.org/">Polymer</a>来感受一下其中的许多特性。但Web Components的进展如何还有待进一步观望。</p>
-<ol> 
- <li>对于单页面应用来说这篇规范并不太适用，因为在这种情况下服务端和客户端的角色会有很大的不同。不过对这种方式的对比已经超出了本文的范围。</li> 
- <li>或许你应该<a href="http://c2.com/cgi/wiki?TestDrivenDevelopment">先</a>编写测试方法。</li> 
- <li>可以<a href="https://github.com/douglascrockford/JSLint/wiki/JSLINT">使用</a><a href="http://jslint.com/">JSLint</a>以避免这种情况和其它一些<a href="http://www.jslint.com/lint.html">常见问题</a>的发生，在<a href="https://github.com/FND/contacts-filter/blob/69685d52555091dcefa75b5715362655b41ff08e/Makefile#L16-17">我们的代码库</a>中就使用了<a href="https://github.com/FND/jslint-reporter">JSLint Reporter</a>。</li> 
- <li>JavaScript使用原型而不是类，主要区别在于，类总是以某些方式表现出“独特性”，而任意对象都可以作为原型，作为创建新实例的模板。对于本文来说，这一区别基本可以忽略。</li> 
- <li>当前流行版本的JavaScript引入了<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/create">Object.create</a>方法，作为“伪经典”语法的替代品。但原型继承的核心原则还是一样的。</li> 
- <li>可以使用jQuery.proxy方法将代码改写为<b>this.filterField.on(&quot;keyup&quot;, $.proxy(self, &quot;onFilter&quot;));</b></li> 
-</ol>
-<h2>关于作者</h2>
-<p><img style="float: left; margin-right: 10px" src="http://infoqstatic.com/resource/articles/modular-javascript/zh/resources/0224032.jpg" _href="img://null" _p="true" alt="" /><b>Frederik Dohr</b>刚刚开始职场生涯时，作为一个web开发者有些不情愿地摆弄着TiddlyWiki，这个wiki有时也被称为最早的单页面应用。他在BT的开源创新团队Osmosoft与众多优秀的同事工作了多年之后离开伦敦而返回德国。目前就职于innoQ。作为web开发来说，他始终坚持保持简洁，同时也产生了许多新的看法。</p>
+<blockquote> 
+ <p><strong>Pollyana, Paul &amp; Niel：</strong>我们发现采纳敏捷原则最大的绊脚石之一就是命令与控制型文化。在这种文化中，生产率是实际潜力的50%或更低。团队很难对结果全权负责（因为领导在命令和控制其他人做什么）。这样的团队很难成为自组织，也很难具有积极性和创造力。当他们被微管理着时，谁还会有积极性和创造力。</p> 
+</blockquote>
+<p><strong>InfoQ：书中提到采纳敏捷的一个壁垒是不知道如何去改变文化。你能详细说说吗？</strong></p>
+<blockquote> 
+ <p><strong>Pollyana, Paul &amp; Niel：</strong>很多组织纠结于变革，是因为变革很难而且有不确定性。取得结果需要时间。很多做得不错的公司会问为什么他们要改变。只有当它看到变革的价值，并且想学习如何去做时，组织才算准备好。他们明白会有困难和痛苦，但他们会共同努力去克服它们。</p> 
+ <p>敏捷是一种思维模式，关注于交付客户喜爱的优质产品。敏捷聚焦于比竞争对手更快地推向市场。在命令与控制型文化中，事情以串行的方式发生。开发与测试间有大量的空间。大部分时间里听不到客户的声音，甚至常常到项目结束才能听到客户的声音。企业领导觉得他们“知道”客户所想，但这往往是错的。在当今瞬息万变的世界中，组织应该重点关注如何解除团队的束缚，提供他们所需的支持。这与那些团队按照领导的指示去做，因为领导知道得最多的老观点有很大的不同。</p> 
+</blockquote>
+<p><strong>InfoQ：支持敏捷的文化主要有哪些因素？</strong></p>
+<blockquote> 
+ <p><strong>Pollyana, Paul &amp; Niel：</strong>信任和主人翁意识、团结并认可客户目标、诚实地处理不确定性、连接团队与客户、不断学习、失败是可接受的而不是接受惩罚，并且鼓励创新和创意。</p> 
+</blockquote>
+<p><strong>InfoQ：为什么从命令控制型文化转变为支持敏捷的文化这么难？</strong></p>
+<blockquote> 
+ <p><strong>Pollyana, Paul &amp; Niel：</strong>这是个很好的问题。数据显示，信任和主人翁意识的文化具有很高的生产率（看看最佳雇主学会所做的工作）。大多数领导者不知道如何建立信任与主动负责的文化。他们只知道命令和控制。这是我们升职的方式，也通常是我们进入高级职位的行为。在某些情况下，它是我们得到的回报：成为一个知道一切的人，能告诉其他人如何工作。</p> 
+ <p>我们写这本书是为了给领导者提供一些工具，让他们能够建立信任和全权负责的文化。这具有一定的挑战性，因此学习这些工具有助于帮助领导者克服他们的各种恐惧：失败、失去控制、失去自己的身份、失去他们精通的知识，以及他们如何看待自己在组织中的角色：背负一切，解决问题。</p> 
+</blockquote>
+<p><strong>InfoQ：书中描述了信任－主人翁模型。它是什么以及它如何帮助组织改变它们的文化？</strong></p>
+<blockquote> 
+ <p><strong>Pollyana, Paul &amp; Niel：</strong>我们相信并且也发现，当存在一种信任和主人翁意识的文化时，就会发生一些伟大的事情。在这种文化中，组织、领导和流程相信团队和个人会交付期待的（以及有时候不期待的）结果。为了不辜负这种信任，个人和团队觉得有责任交付期待的（以及有时候不期待的）结果。我相信你一定记得在你的生命当中有这样的时候，你被充分地信任，最终你让结果发生。我们很确信，这种时候是有激情和创造力的。我们所希望的，是这应该成为所有团队和领导者的标准。</p> 
+</blockquote>
+<p><strong>InfoQ：如果领导信任一个团队，但团队没有能力全权负责时会怎么样？</strong></p>
+<blockquote> 
+ <p><strong>Pollyana, Paul &amp; Niel：</strong>即使团队有能力全权负责，经理们也会常常担心团队没有这个能力。我们的建议是使用我们描述的工具来扭转这个局面。定义工作的目的。聚焦于什么和为什么。抵制住从团队收回责任的诱惑。通过反问而不是直接给答案。</p> 
+</blockquote>
+<p><strong>InfoQ：领导如何解决团队失败的情况？</strong></p>
+<blockquote> 
+ <p><strong>Pollyana, Paul &amp; Niel：</strong>领导需要与团队合作。向团队描述状况和需求，提出疑问，他们准备如何解决问题。然后，让团队成员自愿成为他们自己。即使他们问，也别告诉他们应该怎么做。对他们的想法（不是你的想法）保持关注。确保从错误中学习是安全的。将失败的风险控制在团队的能力范围内。如果你正处在从低信任度复苏的文化中，应注意保持始终如一和值得信赖。</p> 
+</blockquote>
+<p><strong>InfoQ：请说说哪些事情可以在团队中建立信任？</strong></p>
+<blockquote> 
+ <p><strong>Pollyana, Paul &amp; Niel：</strong>从信任别人开始，而不是要求人们赢得你的信任。尽量排除你的恐惧。度量过程而不是人，然后让团队度量自己（不需要他们分享结果）。不要将绩效考核与薪酬调整联系起来。期待成功，接受失败。异常时也能开心。</p> 
+</blockquote>
+<p><strong>InfoQ：Edward Deming的全面质量管理（Total Quality Management）一个关键原则是赶走恐惧。你的书中提到排除脆弱的恐惧。两者之间有什么关联吗？</strong></p>
+<blockquote> 
+ <p><strong>Pollyana, Paul &amp; Niel：</strong>当然了。脆弱的恐惧就是恐惧，它阻止进步。如果你害怕犯错，你能取得多大进步？如果你担心工作，你会取得什么进展？如果你害怕抓住机会，你能抓住多少机会？所以，是的，我们完全同意Deming先生的观点，我们必须创造一种信任的、具有很高的风险承受能力的文化。</p> 
+</blockquote>
+<p><strong>InfoQ：在你的书中有个建议，要建立全权负责，就应该提问而不是回答。你能举一些领导者该如何做的例子吗？</strong></p>
+<blockquote> 
+ <p><strong>Pollyana, Paul &amp; Niel：</strong>我们使用的一些问题包括：</p> 
+ <p>你想怎么解决或者达到这个？我想听听你采取了哪些方法？谁能跟你一起想些办法？你有哪些选项，哪些已经试过？哪个选项可能有效？为什么它们可能有效？你需要我做些什么？</p> 
+</blockquote>
+<p><strong>InfoQ：书中你介绍了几种工具，可以用来帮助处理模糊和不确定性。你能举几个例子吗？</strong></p>
+<blockquote> 
+ <p><strong>Pollyana, Paul &amp; Niel：</strong>第7章关注于处理模糊和不确定性。这章介绍了一个我们称为主动风险管理的工具。使用这个工具，我们定义潜在风险，我们如何降低风险，以及当我们不断迭代，朝着坚定的目标前进时，如何跟踪风险的变化。这个方法的关键部分是让风险和进度可视化。另一个工具是任何迭代方法。</p> 
+</blockquote>
+<p><strong>InfoQ：要让敏捷工作，合作是非常重要的。你是如何启动和促进合作的？</strong></p>
+<blockquote> 
+ <p><strong>Pollyana, Paul &amp; Niel：</strong>作为领导者，要认识到我们最重要的角色之一就是领导合作。这意味着要使用一个合作的过程。在一个过程中，明确要做的决定或要回答的问题。然后让每个人，保持安静，将答案写在便签上，一个答案一张便签，尽可能多地写出答案。读出这些想法，然后将他们放到墙上。然后安静地分组并投票哪一类对团队最重要。这种方法可以最大限度地减少领导的影响，并信任团队他们知道该做些什么。</p> 
+</blockquote>
+<p><strong>InfoQ：书中有一章是关于度量的。我认为度量在敏捷中同样重要，但我看到过它们更多的是起负面作用。关于敏捷中的度量，你有些什么建议？</strong></p>
+<blockquote> 
+ <p><strong>Pollyana, Paul &amp; Niel：</strong>正如你所期望的，我们对度量有很强烈的感觉。正确的度量有助于进展和结果。错误的度量导致游戏和气馁。我们有一些通用的度量指导方针。例如，度量过程而不是人、使用少量指标、一致的预期结果以及展示趋势。错误度量的例子比好的度量要多得多，因为很多时候，组织使用度量来惩罚或查找错误。当构建信任和全权负责的文化时，我们应该问问，我们的度量是否构建了信任和责任。如果是，保留它们。如果否，删除掉。</p> 
+</blockquote>
+<p><strong>InfoQ：如果经理们正在寻找方法，将他们的文化改变成更加敏捷，根据你的经验，他们第一步可以做些什么？</strong></p>
+<blockquote> 
+ <p><strong>Pollyana, Paul &amp; Niel：</strong>把他们做的每一件事滤一遍，问问自己，“这件事能增加信任吗？它能增加责任感吗？”</p> 
+</blockquote>
+<p>这篇采访基于<em>The Agile Culture: Leading through Trust and Ownership</em>，该书作者为<a href="http://www.informit.com/authors/bio.aspx?a=4195299c-9887-4ab0-85cb-b9cf25e55346">Pollyanna Pixton</a>、<a href="http://www.informit.com/authors/bio.aspx?a=aa58b2fd-eadd-4f86-8c6d-15d473c1ad73">Paul Gibson</a>和<a href="http://www.informit.com/authors/bio.aspx?a=61eb65d0-d185-483a-a6bc-d3956acaf9be">Niel Nickolaisen</a>，由Pearson/Addison-Wesley Professional出版于2014年2月，ISBN 0-321-94014-8。更多信息请访问<a href="http://www.informit.com/store/agile-culture-leading-through-trust-and-ownership-9780321940148">出版社网站</a>。</p>
+<h2>关于书作者</h2>
+<p><img style="float: left; margin-right: 10px" src="http://infoqstatic.com/resource/articles/agile-culture-trust-ownership/zh/resources/0522003.jpg" _href="img://null" _p="true" alt="" /><strong>Pollyanna Pixton</strong>：是协同领导力方面的国际知名专家，Accelinnova公司的总裁。该公司提供经过验证的工具，用于引导变革。Pollyanna领导了瑞士电子交易所的开发。</p>
 <div style="clear:both">
  &nbsp;
 </div>
-<p><strong>查看英文原文：</strong><a href="http://www.infoq.com/articles/modular-javascript">Developing Modular JavaScript Components</a></p><br><br><br><br><br><br></body></html>
+<p><img style="float: left; margin-right: 10px" src="http://infoqstatic.com/resource/articles/agile-culture-trust-ownership/zh/resources/0522004.jpg" _href="img://null" _p="true" alt="" /><strong>Paul Gibson</strong>为IBM开发产品超过30多年。最近4年，他帮助领导、指导、培训和转变IBM世界各地的开发团队在合作、敏捷和精益方法方面的能力。他是英国计算机学会终生会员。</p>
+<div style="clear:both">
+ &nbsp;
+</div>
+<p><img style="float: left; margin-right: 10px" src="http://infoqstatic.com/resource/articles/agile-culture-trust-ownership/zh/resources/0522005.jpg" _href="img://null" _p="true" alt="" /><strong>Niel Nickolaisen</strong>是O.C. Tanner的首席技术官。Niel致力于研究快速、务实的方法改善过程、团队和结果。他热衷于IT和领导力变革，以及演讲、撰写文章和培训别人如何去做。</p>
+<div style="clear:both">
+ &nbsp;
+</div>
+<p><strong>原文链接：</strong><a href="http://www.infoq.com/articles/agile-culture-trust-ownership">Q&amp;A on the Book: The Agile Culture - Leading through Trust and Ownership</a></p><br><br><br><br><br><br></body></html>

@@ -1,29 +1,27 @@
-<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>Jolt Awards 2014: モバイルとコーディング ツール</h3><p><a target="_blank" href="http://www.infoq.com/news/2014/03/jolt-mobile-tools"><em>原文(投稿日：2014/03/07)へのリンク</em></a></p>
+<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>C#でSOLIDにする</h3><p><a target="_blank" href="http://www.infoq.com/news/2014/05/solid-c-sharp"><em>原文(投稿日：2014/05/23)へのリンク</em></a></p>
 <div class="article_page_left news_container text_content_container"> 
  <div class="text_info"> 
-  <p>Dr. Dobbsは、Jolt Award for Mobile and Coding Tools for 2014を表彰した。</p> 
-  <p><a href="http://www.drdobbs.com/joltawards/">Dr. Dobb's Journal</a>は先日、<a href="http://www.drdobbs.com/joltawards/jolt-awards-mobile-development-tools/240166387?pgno=1">Jolt Awards for Mobile Development Tools</a>のウイナーを発表した。これは最も優れたモバイルアプリケーション開発ツールを表彰するものである。今年のアワードは、クロスプラットフォームのモバイル開発ツールによる改善が認められ、“それらはネイティブアプリケーションのギャップを埋め続け、あらゆる開発で選択できるツールとなり、もっとも厳しい要求から救うことになるかもしれない。”</p> 
-  <p>レビュー対象のツールは誰でも提出することができ、審査員は厳しい審査と評価の結果、6つを選出するが、その詳細は明らかにされていない。勝者は次の通り:</p> 
-  <p><strong>Jolt Award: <a href="http://xamarin.com/">Xamarin 2.0</a></strong></p> 
-  <p>Xamarinは “優れたソリューションと使い慣れたツールで主要なモバイルプラットフォームを対象にできる機能で”受賞した。Xamarinは、C#開発者がVisual StudioやXamarin Studioでクロスプラットフォームのモバイルアプリケーションを作成することができ、コードのほとんどは開発対象のプラットフォームから独立している。開発者はObjective-CやJavaをインターフェイスのためだけに使用する必要があり、XamarinはHTML5のクロスプラットフォームよりも優れた、完全にネイティブなアプリケーションのインターフェイスを提供する。</p> 
-  <p><font style="FONT-WEIGHT: bold">Jolt Productivity Award: </font><a href="http://phonegap.com/"><font style="FONT-WEIGHT: bold">PhoneGap</font></a></p> 
-  <p>Adobe PhoneGapは、-JavaScript, HTML, CSS- といったWeb技術で-Amazon Fire OS, Android, BlackBerry, iOS, Symbian, Windows Phone, Windows 8.x, Tizen-といった多くのモバイルプラットフォーム向けのクロスプラットフォームアプリケーションを開発する機能で受賞した。</p> 
-  <p>PhoneGapで推奨される機能として言及されている: コードはApache Cordovaとしてオープンソース化されており、詳細なドキュメントが提供され、PhoneGapビルドは複数プラットフォーム向けのアプリビルドの自動サポートを提供し、開発者は多くのプラットフォーム向けのプログラムにJavaScriptだけを知っていればよい。</p> 
-  <p><font style="FONT-WEIGHT: bold"> Jolt Productivity Award: </font><a href="http://www.appcelerator.com/titanium/titanium-studio/"><font style="FONT-WEIGHT: bold">Titanium Studio</font></a></p> 
-  <p>Titanium Studioが推進している機能: モバイルWeb、Android、Blackberry、iOS、Tizenを対象として、– Node.js上に組み込まれたフレームワークで、Backbone.jsとUnderscore.jsをサポートする - Alloy MVC、Eclipse IDEとうまく統合され、開発ライフサイクル全体をうまくサポートし、ビジネスコードとデータモデルといったインターフェイス間をうまく分離しており、ブラウザー上のアプリをテストでき、データの有用性、クラウド指向のモバイルアプリがうまく統合されている。</p> 
-  <p><font style="FONT-WEIGHT: bold">ファイナリスト: </font><a href="http://coronalabs.com/products/corona-sdk/"><font style="FONT-WEIGHT: bold">Corona SDK</font></a></p> 
-  <p>Coronaは、Android, iOS, Kindle Fire, Nookと、まもなくサポートされるWindows 8とWP 8向けのグラフィック中心のアプリを構築するためにLuaを使用している。“アニメーションUIを持つリッチは2Dアプリや、典型的なFacebookログインといくつかのRESTfulサービスとの対話が必要なゲーム”のひとつが必要な時にはCoronaをお薦めしている。その他の強調された特徴: SQLiteとのシンプルな対話、アプリ内購入や収益化のための優れたサポート、豊富なドキュメント、高速なシミュレーター、Lua (Enterprise edition)からネイティブC++, Objective-CやJavaコードを呼び出す機能。</p> 
-  <p><font style="FONT-WEIGHT: bold">ファイナリスト: </font><a href="http://www.sencha.com/products/touch"><font style="FONT-WEIGHT: bold">Sencha Touch 2.3.1</font></a></p> 
-  <p>Sencha Touchは、Android, BlackBerry, iOS, Windows 8.x, Windows Phone, Tizen向けのHTML5アプリを開発する機能を提供するもので、優れたパフォーマンス、豊富なUIコントロール、アイコンとテーマ、MVC、Apache CordovaとPhoneGapビルドをサポートし、“モバイルデバイスのネイティブ アプリに見えるHTML5アプリの開発”で成功している。</p> 
-  <p><font style="FONT-WEIGHT: bold">ファイナリスト: </font><a href="http://livecode.com/livecode-6-5/"><font style="FONT-WEIGHT: bold">LiveCode 6.5</font></a></p> 
-  <p>LiveCodeは、iOSとAndroidアプリの開発を望む初心者開発者向けに単純なドラッグ＆ドロップ インターフェイスを提供するRADツールのファイナリストに選ばれた。LiveCodeは、カスタムの英語に似たスクリプト言語を使用して、iOS, Android, Windows, Linux, Mac OS X向けのクロスプラットフォームアプリを開発するが、ネイティブな見た目ではない。</p> 
-  <p>今年の初めDr. Dobb's Journal は、もっとも一般的な<a href="http://www.drdobbs.com/joltawards/jolt-awards-coding-tools/240165725">コーディング ツール</a>を表彰した:</p> 
-  <p><strong>Jolt Award: </strong><a href="http://www.visualstudio.com/products/visual-studio-premium-with-msdn-vs"><strong>Microsoft Visual Studio 2013, Premium Edition</strong></a></p> 
-  <p><strong>Productivity Award: </strong><a href="http://www.jetbrains.com/idea/"><strong>JetBrains IntelliJ IDEA 13 Ultimate Edition</strong></a></p> 
-  <p><strong>Productivity Award: </strong><a href="http://ipython.org/notebook.html"><strong>IPython Notebook</strong></a></p> 
-  <p><strong>ファイナリスト: </strong><a href="https://www.devexpress.com/Products/CodeRush/"><strong>Developer Express CodeRush 13.2</strong></a></p> 
-  <p><strong>ファイナリスト: </strong><a href="http://www.jetbrains.com/resharper/"><strong>JetBrains Resharper 8</strong></a></p> 
-  <p><strong>ファイナリスト: </strong><a href="https://c9.io/"><strong>Cloud9 IDE</strong></a></p> 
-  <p>Dr. Dobb’sは、1991年から書籍とソフトウェア開発ツールにJolt Awardsを与えている。あらゆるソフトウェアツールは、評価を送信することができる(<a href="http://twimgs.com/ddj/images/article/2011/0811/JoltNomination.pdf">PDFフォーム</a>)。製品リリースのみが対象であり、アルファやベータは対象外である。推薦は、<a href="http://www.drdobbs.com/joltawards/jolt-calendar/229403131">アワードカレンダー</a>に明記されている時間軸で登録する必要がある。</p> 
+  <p><a href="http://asirobots.com/">Autonomous Solutions Inc.</a>のソフトウェア開発者Brannon B. King氏は<a href="http://msdn.microsoft.com/en-us/magazine/dn683788.aspx">2014年5月</a>の<a href="http://www.infoq.com/jp/news/2013/09/solid-principles-revisited">MSDN Magazine</a>で<a href="http://msdn.microsoft.com/en-us/magazine/dn683797.aspx">C#でSOLIDの原則に反することの危険性</a>と題した記事を公開した。著者は、開発者のミスでC#コードが<a href="http://en.wikipedia.org/wiki/SOLID_(object-oriented_design)">SOLIDの原則</a>を破ることで、拡張または維持することがより難しくなる概要を説明した。</p> 
+  <p>King氏は、カウンターコードのサンプルとすべてのSOLIDの原則のためのアドバイスを提供したが、簡潔にするためにオープン・クローズドの原則(OCP)に関係した一部を抽出した。<a href="http://en.wikipedia.org/wiki/Open/closed_principle#cite_note-1">OCP</a>では、&quot;<i>ソフトウェア エンティティ (クラス, モジュール, 関数など)は、拡張のためにオープンでだが、変更にはクローズであるべき</i>&quot;と位置づけている。King氏によると、以下のコードはOCPを破壊する。</p> 
+  <pre><p>void DrawNerd(Nerd nerd) {<br />&nbsp;&nbsp; if (nerd.IsSelected) DrawEllipseAroundNerd(nerd.Position, nerd.Radius);<br />&nbsp;&nbsp; if (nerd.Image != null) DrawImageOfNerd(nerd.Image, nerd.Position, nerd.Heading);<br />&nbsp;&nbsp; if (nerd is IHasBelt) // a rare occurrence<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; DrawBelt(((IHasBelt)nerd).Belt);<br />&nbsp;&nbsp; // Etc.<br />}</p></pre> 
+  <p>なぜなら“あなたが、顧客が新しいものを表示するニーズがあるたびにこのメソッドを変更する必要がある”ため、代わりに描画するための汎用的なプロシージャーを提案する:</p> 
+  <pre>
+readonly IList&lt;IRenderer&gt; _renderers = new List&lt;IRenderer&gt;();
+void Draw(Nerd nerd) {
+   foreach (var renderer in _renderers)<br /> &nbsp;&nbsp;&nbsp; renderer.DrawIfPossible(_context, nerd);
+}</pre> 
+  <p>このアイディアは</p> 
+  <blockquote> 
+   <p>…よく知られたインターフェイスを実装した描画クラス(または描画に関するクラス)を書きます。レンダラーは、入力に応じてなにを書くかを判断するために、賢くある必要があります。たとえば、ベルトを描画するコードは、インターフェイスをチェックして、必要に応じて進める“ベルトレンダラー”に移動することができます。</p> 
+  </blockquote> 
+  <p>OCPを破壊するその他の例は、継承クラスを参照するクラスである。</p> 
+  <pre><p>class Nerd {<br />   public void DanceTheDisco() {<br />      if (this is ChildOfNerd)<br />         throw new CoordinationException(&quot;Can't&quot;);<br />   &nbsp;&nbsp; ...<br />   }</p><p>}<br />class ChildOfNerd : Nerd { ... }</p></pre> 
+  <p>著者のアドバイスは“基底クラスを直接継承先から参照してはならない。”ということである。この問題はピアクラスで表すことができる:</p> 
+  <pre><p>class NerdsInAnArc {<br />   public bool Intersects(NerdsInAnLine line) {<br />&nbsp;&nbsp;&nbsp; ...<br />&nbsp;&nbsp; }<br />&nbsp;&nbsp; ...<br />}</p></pre> 
+  <p>King氏は説明する:</p> 
+  <blockquote> 
+   <p>Arcsとlinesは一般的にはオブジェクト階層でピアです。相互について親密に知るべきではなく、それらの詳細は、最適な共有アルゴリズムで必要になることがあります。他を変更することなく、自由に変更できるようにしておきます。これはまた、単一責務の原則に違反します。あなたはarcsをストアしますか、それともそれを分析しますか？独自のユーティリティクラスに分析操作を含めます。</p> 
+  </blockquote> 
+  <p>小さなプロジェクトでは、SOLIDの原則を厳格に適用する必要はないかもしれないが、大きなコードベースでは、さらに重要になり、“スパゲッティ”コードを避けることは非常に望ましい。</p> 
  </div> 
 </div><br><br><br><br><br><br></body></html>

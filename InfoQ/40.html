@@ -1,98 +1,15 @@
-<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>SQLite vs MySQL vs PostgreSQL:关系型数据库比较</h3><p>自1970年埃德加&middot;科德提出关系模型之后，关系型数据库便开始出现，经过了40多年的演化，如今的关系型数据库种类繁多，功能强大，使用广泛。面对如此之多的关系型数据库，我们应该如何权衡找出适合自己应用场景的数据库系统呢？<a href="https://twitter.com/ostezer">O.S. Tezer</a>最近在DigitalOcean上发表了一篇博文，对比了SQLite、MySQL和PostgreSQL这三个常用的、流行的关系型数据库管理系统（RDBMS），希望能对你有所帮助。</p>
-<p><a href="https://twitter.com/ostezer">O.S. Tezer</a>分别从数据库支持的数据类型、优势、劣势、何时应该使用以及何时不应该使用该数据库这5个方面对SQLite、MySQL和PostgreSQL做了比较。</p>
-<h2><strong>SQLite</strong></h2>
-<p>SQLite是一款轻型数据库，它遵守ACID，能够嵌入到使用它的应用程序中。作为一个自包含的、基于文件的数据库，SQLite提供了非常出色的工具集能够处理所有类型的数据，与托管在服务器上基于进程的关系型数据库相比它的约束更少，也更易用。</p>
-<p>当应用程序使用SQLite时，SQLite并非作为一个独立进程通过某种通信协议（例如socket）与应用程序通信，而是作为应用程序的一部分，应用程序通过调用SQLite的接口直接访问数据文件。感谢类库的底层技术，它让SQLite变得非常快速、高效并且十分强大。</p>
-<h3>SQLite支持的数据类型</h3>
-<p>SQLite支持的数据类型包括：NULL、INTEGER、REAL、TEXT、BLOB。</p>
-<p><b>注意</b>：如果你想了解与SQLite数据类型相关的更多内容，可以参阅<a href="http://www.sqlite.org/datatype3.html">官方文档</a>。</p>
-<h3>SQLite的优点</h3>
-<ul> 
- <li><b>基于文件</b> <p>整个数据库完全由磁盘上的一个文件构成，这使得它的可移植性非常好。</p> </li> 
- <li><b>标准化</b> <p>尽管它看起来像一个“简化版”的数据库实现，但是SQLite确实支持SQL。它省略了一些功能（RIGHT OUTER JOIN和FOR EACH STATEMENT），但同时也增加了一些额外的功能。</p> </li> 
- <li><b>非常适合开发甚至是测试</b> <p>在大多数应用程序的开发阶段，大部分开发人员可能都非常需要一个能够支持并发扩展的解决方案。SQLite 包含丰富的功能，所能提供的特性超乎开发所需，使用起来也非常简洁——只需要一个文件和一个C链接库。</p> </li> 
-</ul>
-<h3>SQLite的缺点</h3>
-<ul> 
- <li><b>没有用户管理</b> <p>高级数据库都支持用户系统，例如管理连接对数据库和表的访问权限。鉴于SQLite的目的和性质（没有多客户端并发的高层设计），它并不包含这些功能。</p> </li> 
- <li><b>缺少通过优化获得额外性能的空间</b> <p>还是由于设计方面的原因，无法通过优化SQLite获得大量的额外性能。这个类库非常容易调整、也非常容易使用。它并不复杂，所以从技术上无法让它变得更快，因为它已经很快了。</p> </li> 
-</ul>
-<h3>何时应该使用SQLite</h3>
-<ul> 
- <li><b>嵌入式应用程序</b> <p>所有需要可移植性、不需要扩展的应用程序，例如单用户的本地应用、移动应用或者游戏。</p> </li> 
- <li><b>替代磁盘访问</b> <p>在很多情况下，需要直接读写磁盘文件的应用程序可以切换到SQLite从而受益于SQLite提供的额外功能以及使用结构化查询语言（SQL）所带来的简便性。</p> </li> 
- <li><b>测试</b> <p>对大部分应用程序而言没必要使用额外的进程测试业务逻辑（例如应用程序的主要目标：功能）。</p> </li> 
-</ul>
-<h3>何时不应该使用SQLite</h3>
-<ul> 
- <li><b>多用户应用程序</b> <p>如果有多个客户端需要访问并使用同一个数据库，那么最好使用功能完整的关系型数据库（例如MySQL），而不是选择SQLite。</p> </li> 
- <li><b>需要高写入量的应用程序</b> <p>写操作是SQLite的一个局限。该DBMS在同一时刻仅允许一个写操作，因而也限制了其吞吐量。</p> </li> 
-</ul>
-<h2><b>MySQL</b></h2>
-<p>MySQL是最受欢迎的一个大规模数据库服务器。它是一款功能丰富的开源产品，许多网站和在线应用程序都使用该数据库。MySQL的入门相对比较简单，开发者可以从Internet上获取到大量与该数据库相关的信息。</p>
-<p><b>注意:</b>鉴于该产品的受欢迎程度，使用该数据库可以让我们受益于大量第三方应用程序、工具以及集成类库。</p>
-<p>尽管MySQL并没有尝试实现完整的SQL标准，但是它依然为用户提供了大量功能。作为一个独立的数据库服务器，应用程序需要与MySQL守护进程通信才能访问数据库——不同于SQLite。</p>
-<h3>MySQL支持的数据类型</h3>
-<p>MySQL支持的数据类型包括TINYINT、SMALLINT、MEDIUMINT、INT或INTEGER、BIGINT、FLOAT、DOUBLE、DOUBLE PRECISION、REAL、DECIMAL、NUMERIC、DATE、DATETIME、TIMESTAMP、TIME、YEAR、CHAR、VARCHAR、TINYBLOB, TINYTEXT、BLOB, TEXT、MEDIUMBLOB、MEDIUMTEXT、LONGBLOB, LONGTEXT、ENUM、SET。</p>
-<h3>MySQL的优点</h3>
-<ul> 
- <li><b>易用</b> <p>很容易安装。第三方工具，包括可视化工具，让用户能够很容易入门。</p> </li> 
- <li><b>功能丰富</b> <p>MySQL支持关系型数据库应该有的大部分功能——或者直接支持、或者间接支持。</p> </li> 
- <li><b>安全</b> <p>支持很多安全特性，有些非常高级，并且是内置于MySQL中。</p> </li> 
- <li><b>可扩展也非常强大</b> <p>MySQL能够处理大量数据，并且在需要的时候可以规模化使用。</p> </li> 
- <li><b>快速</b> <p>放弃某些标准让MySQL能够非常高效、简捷地工作，因而速度更快。</p> </li> 
-</ul>
-<h3>MySQL的缺点</h3>
-<ul> 
- <li><b>已知限制</b> <p>MySQL从一开始就没有打算做所有事情，因而它在功能方面有一定的局限性，并不能满足一些先进应用程序的要求。</p> </li> 
- <li><b>可靠性问题</b> <p>MySQL对某些功能（例如引用、事务、审计等）的实现方式使得它与其他的关系型数据库相比缺少了一些可靠性。</p> </li> 
- <li><b>开发停滞</b> <p>尽管MySQL依然是一款开源产品，但是自从它被收购之后人们就对其开发进展有很多抱怨。需要注意的是有一些基于MySQL的、完整集成的数据库在标准的MySQL之上附加了其他价值，例如MariaDB。</p> </li> 
-</ul>
-<h3>何时应该使用MySQL</h3>
-<ul> 
- <li><b>分布式操作</b> <p>如果SQLite不能满足你的需求，那么将MySQL引入到开发栈中，就像任何其他独立的数据库服务器一样，它能够给你带来大量的操作自由度以及一些先进的功能。</p> </li> 
- <li><b>高安全性</b> <p>MySQL的安全机制通过一种简单的方式为数据的访问和使用提供了可靠的保护。</p> </li> 
- <li><b>网站和</b><b>Web</b><b>应用</b> <p>尽管有一些约束，但是绝大部分网站和Web应用都可以简单地运行在MySQL上。相关的灵活可扩展的工具非常易于使用和管理——事实证明这些工具在长期运行时非常有用。</p> </li> 
- <li><b>定制解决方案</b> <p>MySQL有丰富的配置项和运行模式，如果你需要一个高度量身定制的解决方案，那么MySQL能够非常容易地尾随并执行你的规则。</p> </li> 
-</ul>
-<h3>何时不应该使用MySQL</h3>
-<ul> 
- <li><b>SQL</b><b>遵从性</b> <p>因为MySQL并没有打算实现完整的SQL标准，所以它并不完全符合SQL。如果你可能需要与这样的关系型数据库集成，那么从MySQL切换过去可能并不容易。</p> </li> 
- <li><b>并发性</b> <p>尽管MySQL和一些其他的存储引擎能够非常好地执行读操作，但是并发读写可能会有问题。</p> </li> 
- <li><b>缺少功能</b> <p>MySQL缺少某些功能，例如全文本搜索。</p> </li> 
-</ul>
-<h2><b>PostgreSQL</b></h2>
-<p>PostgreSQL是一款先进的、开源的对象关系型数据库管理系统，它的主要目标是遵从标准和可扩展。PostgreSQL，或者说Postgres，试图将ANSI/ISO SQL标准及其修正结合起来。</p>
-<p>与其他关系型数据库相比，PostgreSQL独特的地方是它支持高度需要的、完整的面向对象以及关系型数据库的功能，例如完全支持可靠性事务。</p>
-<p>由于其强大的底层技术，PostgreSQL能够非常高效地处理很多任务。得益于多版本并发控制（MVCC），它能够在没有读锁的情况下实现并发并保证ACID。</p>
-<p>PostgreSQL是高度可编程的，因此扩展性非常好，它支持称为“存储过程”的自定义程序。用户可以创建这种函数简化重复的、复杂的以及经常需要的数据库操作的执行。</p>
-<p>尽管该数据库非常强大，但是它却没有像MySQL那么流行，即便如此依然有很多优秀的第三方工具和类库可以让我们更容易地使用它。</p>
-<h3>PostgreSQL支持的数据类型</h3>
-<p>PostgreSQL支持的数据类型包括：bigint、bigserial、bit [(n)]、bit varying [(n)]、boolean、box、bytea、character varying [(n)]、character [(n)]、cidr、circle、date、double precision、inet、integer、interval [fields] [(p)]、line、lseg、macaddr、money、numeric [(p,s)]、path、point、polygon、real、smallint、serial、text、time、timestamp、tsquery、tsvector、txid_snapshot、uuid、xml</p>
-<h3>PostgreSQL的优点</h3>
-<ul> 
- <li><b>开源且遵从</b><b>SQL</b><b>标准</b> <p>PostgreSQL是一款开源的、免费的、功能非常强大的关系型数据库。</p> </li> 
- <li><b>强大的社区</b> <p>由一个忠实的、经验丰富的社区支持，用户可以通过知识库和Q&amp;A网站获得全天候的免费服务。</p> </li> 
- <li><b>强有力的第三方支持</b> <p>除了非常先进的特性之外，PostgreSQL还有很多优秀的、开源的第三方工具可以辅助系统的设计、管理和使用。</p> </li> 
- <li><b>可扩展</b> <p>可以通过存储过程扩展PostgreSQL的功能。</p> </li> 
- <li><b>面向对象</b> <p>PostgreSQL不仅是一个关系型数据库，它还是一个面向对象的数据库——支持嵌套等功能。</p> </li> 
-</ul>
-<h3>PostgreSQL的缺点</h3>
-<ul> 
- <li><b>性能</b><b>:</b> <p>对于简单繁重的读取操作，使用PostgreSQL可能有点小题大做，同时性能也比MySQL这样的同类产品要差。</p> </li> 
- <li><b>流行程度</b> <p>尽管有大量的部署，但是鉴于该数据库的性质，它的受欢迎程序并不高。</p> </li> 
- <li><b>托管</b> <p>由于上面提到的几点，很难找到提供托管PostgreSQL实例的主机或者服务提供商。</p> </li> 
-</ul>
-<h3>何时应该使用PostgreSQL</h3>
-<ul> 
- <li><b>数据完整性</b> <p>当绝对需要可靠性和数据完整性的时候，PostgreSQL是更好的选择。</p> </li> 
- <li><b>复杂的定制程序</b> <p>如果需要数据库执行定制程序，那么可扩展的PostgreSQL是更好的选择。</p> </li> 
- <li><b>集成</b><b>:</b> <p>如果将来可能需要将整个数据库迁移到其他合适的解决方案上（例如Oracle），那么PostgreSQL可能兼容性最好也更容易切换。</p> </li> 
- <li><b>复杂的设计</b> <p>与其他开源且免费的数据库相比，对于复杂的数据库设计PostgreSQL在功能方面最全面，潜力最大，不需要你放弃其他有价值的资产。</p> </li> 
-</ul>
-<h3>何时不应该使用PostgreSQL</h3>
-<ul> 
- <li><b>速度</b> <p>如果你只需要快速读取操作，那么PostgreSQL并不合适。</p> </li> 
- <li><b>简单</b> <p>除非你需要绝对的数据完整性，ACID遵从性或者设计复杂，否则PostgreSQL对于简单的场景而言有点多余。</p> </li> 
- <li><b>复制</b> <p>对于缺少数据库和系统管理经验的人而言使用MySQL实现复制要更简单，除非你愿意花费时间、精力和资源。</p> </li> 
-</ul><br><br><br><br><br><br></body></html>
+<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>Vagrant 1.6发布，支持Docker Containers</h3><p>最新发布的Vagrant 1.6版本提供了<a href="http://www.vagrantup.com/blog/feature-preview-vagrant-1-6-docker-dev-environments.html">对Docker开发环境的支持</a>。此前，Vagrant支持的虚拟化环境有VirtualBox、VMware和AWS等。</p>
+<p>本次更新后，Vagrant用户可以将Docker container作为虚拟机管理的操作对象，在自己的工作流中使用。Docker provider支持来自Dockerfiles的容器（创建新容器的场景）以及来自<a href="https://index.docker.io/">Docker Index</a>的repo。Docker Index目前已经积累了大量预配置的repo，包括官方的Ubuntu、CentOS和Fedora系统镜像，以及预装了MySQL、Java或MongoDB环境的系统。</p>
+<p>新版Vagrant还包含了两个新指令：docker-logs用于展示容器的日志，docker-run用于在容器中执行指定的命令。在对Linux containers支持不佳的OS X和Windows等环境上，Vagrant的做法是自动将容器跑在一个代理Linux虚机上并帮用户自动管理，用户无需专门为此进行安装配置。</p>
+<p>随着<a href="http://www.infoq.com/news/2014/05/docker_0_11">Docker逐渐迈向1.0版</a>，越来越多的工具开始支持Docker。就在几周前，红帽刚刚<a href="http://www.redhat.com/about/news/press-archive/2014/4/linux-container-innovations">宣布了几个跟Linux container有关的新项目</a>，包括流式应用交付以及基于Docker的跨裸机、虚机、私有云和公有云的系统管理体系。Google基础架构部副总裁Eric Brewer对Linux container做了如下评论：</p>
+<blockquote> 
+ <p>Google的生产环境已经在大量使用Linux应用容器。Linux容器的运行时隔离以及部署的灵活性都非常出色，既减少了管理分布式应用的复杂度，又增加了我们整体的运维效率。</p> 
+</blockquote>
+<p>Vagrant 1.6还加入了一些其他方面的<a href="http://www.vagrantup.com/blog/vagrant-1-6.html">新特性</a>，其中有两点也很值得关注：</p>
+<ol> 
+ <li>Windows客户机：在Vagrant 1.6中，用户可以在Vagrant环境中（VirtualBox、Hyper-V、EC2等）使用PowerShell脚本、Chef、Puppet等工具来<a href="http://www.vagrantup.com/blog/feature-preview-vagrant-1-6-windows.html">为Windows客户机进行软件的安装配置</a>。Windows客户机上的vagrant rdp相当于Linux上的vagrant ssh，用户可以用该指令对Windows环境进行单命令的远程操作。微软OpenTech公司专门提供了一个<a href="http://vagrantbox.msopentech.com/">内含Windows评估版的Vagrant Hyper-V镜像</a>。</li> 
+ <li>全局状态控制：Vagrant 1.6引入了<a href="http://www.vagrantup.com/blog/feature-preview-vagrant-1-6-global-status.html">global-status指令</a>，该指令可以展示本机系统下所有已创建的Vagrant环境的状态。在全局控制下，你可以通过每一个Vagrant环境的唯一识别码（uid）从任意目录下对该环境进行管理，而无需先进入该Vagrantfile所在的目录。该命令可以进行所有Vagrant操作，包括销毁、启动、挂起等。</li> 
+</ol>
+<p>此外，新版Vagrant还引入了一个vagrant version指令，该指令可以显示你当前的Vagrant版本，还可以在有新版本的时候提醒你升级。另外，Vagrant 1.6中的Vagrantfile可以搭载一条信息，该信息会在vagrant up后显示出来。另外，新版Vagrant还支持用LZMA格式对镜像进行压缩。</p>
+<p>完整更新日志见<a href="https://github.com/mitchellh/vagrant/blob/v1.6.0/CHANGELOG.md">Github上的Changelog</a>。</p>
+<p><strong>查看英文原文：</strong><a href="http://www.infoq.com/news/2014/05/vagrant-1-6-docker">Vagrant 1.6 Adds Support for Docker Containers</a></p><br><br><br><br><br><br></body></html>

@@ -1,49 +1,29 @@
-<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>アジャイル適用の価値を評価する</h3><p><a target="_blank" href="http://www.infoq.com/news/2014/03/measuring-value-agile"><em>原文(投稿日：2014/03/27)へのリンク</em></a></p>
+<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>IBMのNick O'Leary氏がNode-REDで「モノのインターネット」をデモ</h3><p><a target="_blank" href="http://www.infoq.com/news/2014/05/ibm-node-red-qconlondon"><em>原文(投稿日：2014/05/26)へのリンク</em></a></p>
 <div class="article_page_left news_container text_content_container"> 
  <div class="text_info"> 
-  <p>アジャイルを適用するビジネスケースを定義するとき，疑問に思うかも知れないのが，アジャイルソフトウェア開発の採用によって達成できるビジネスバリューをどうやって評価すればよいのか，ということだ。</p> 
-  <p>&quot;<a href="http://blogs.versionone.com/agile_management/2014/02/19/agile-metrics-measuring-process-value/">Agile Metrics: Measuring Process Value</a>&quot;と題したブログ記事ではMichael Moore氏が，アジャイルのもたらす価値を測定することが重要な理由について説明している。</p> 
-  <blockquote> 
-   <p>(...) アジャイルは効率性だけではありません。有効性(価値の提供)もまた，アジャイルの目的なのです。突き詰めてしまえば，プロセスやメソッドとは，あなたの作業を迅速かつ安価にすることを支援するものです。でもそれでは，エンドユーザに提供する価値を犠牲にすることにならないでしょうか？それゆえアジャイルでは，コストの削減と収益の向上をともに約束しているのです。</p> 
+  <p><a href="https://twitter.com/knolleary">Nick O'Leary</a>氏は先回の<a href="http://qconlondon.com/">QCon London</a>で，<a href="http://en.wikipedia.org/wiki/Internet_of_Things">モノのインターネット(Internet of Things / IoT)</a>に注目したオープンソースプロジェクトの<a href="http://nodered.org/">Node-RED</a>を発表した。IBMの<a href="http://ibm.com/blogs/et">Emerging Technologyチーム</a>が開発したこのプロジェクトは，&quot;ハードウェアデバイス，API，オンラインサービスが画期的な方法で結合された&quot;仮想環境をブラウザ上で実現する。Raspberry Piのような低価格ハードウェアに加えて，開発者が&quot;配管工事に煩わされることなく本来の作業に集中できるようにする&quot;ため，クラウド上でも稼働するのが特徴だ。</p> 
+  <p>最初にIoTのユースケースをいくつか紹介した後に，氏は，Node-REDの使いやすさと多能性をデモンストレーションしてみせた。その内容は，自身のWebブラウザ上で，&quot;#qconlondon&quot;というハッシュタグの付いたツイートを処理する小さなメッセージフローを作成して，ツイートの感情分析(sentiment analysis)をする，というものだ。ポジティブなツイートの数が，演台の前に設置されたLEDパネルにシリアルポート経由で表示されるとともに，WebSocketを通じてブラウザ上にも表示された。</p> 
+  <p><a href="/resource/news/2014/06/ibm-node-red-qconlondon/ja/resources/Node-RED-WS-Tweet-Demo-QCon-London-2014.png" target="_blank"><img src="http://www.infoq.com/resource/news/2014/06/ibm-node-red-qconlondon/ja/resources/Node-RED-WS-Tweet-Demo-QCon-London-2014-small.jpg" _href="img://Node-RED-WS-Tweet-Demo-QCon-London-2014-small.jpg" _p="true" alt="" /></a></p> 
+  <p>このサンプルが特定の問題の解法を示したに過ぎないことを強調しながらも，氏は，オープンデータとAPIの品質向上に寄与する点をメリットとして説明した上で，デバイスとプラットフォームの細分化がそれぞれの問題を難しくしている点を指摘した。すなわち，&quot;相互運用性は半分もなく，APIはすべてバラバラ，異なったプロトコルがたくさんあって，[...]&nbsp;見事なほどの混乱状態です。&quot; 結果的に開発者は，&quot;自分の目的を達成するためよりも，ソリューション同士のつなぎ合わせに時間を浪費&quot;しなければならない。</p> 
+  <p>Node-REDの目標はこの状況を変えることにある。Node-REDの持つブラウザベースのエディタでは，使い勝手に優れた機能をカプセル化した，さまざまな種類の&quot;ノード&quot;を&quot;パレット&quot;から選択して&quot;フロー&quot;に接続し，それぞれの動作を設定することができる。作成したフローは，ボタンをクリックするだけで<a href="http://nodejs.org/">Node.js</a>ベースのランタイムに配信が可能だ。例えばTwitterノードは，OAuth認証フローの実行方法とTwitter REST APIの操作手順をカプセル化することで，実装の詳細をすべて開発者から隠ぺいする。</p> 
+  <p>QConに参加した<a href="http://davidlaing.com/">David Laing</a>氏はプレゼンテーションの後，Node-REDを試してみるためにその次のセッションを飛ばすことにした。</p> 
+  <blockquote>
+   Node-REDは，&quot;ＡならばＢ&quot;的なワークフローの優れたオープンソースソリューションです。監視APIからデータを取り出して，ある条件が成立した場合に警告を発する処理ワークフローを，私は２時間以内で構築することができました。
   </blockquote> 
-  <blockquote> 
-   <p>ですからあなたの重視する点，おそらくは貴方自身がアジャイルを選択した理由が効率性の向上にあるのならば，その期待はきっと叶うことでしょう – さまざまな事が，これまでよりも早く片付くようになるはずです。しかし，ここで利益あるいは価値(つまり製品の結果)の増加という目標が度外視されているのなら，結果として組織の不可避な死を先延ばししているに過ぎません。いかにコストを削減したところで，利益創出の欠如を補うことはできないのです。</p> 
-  </blockquote> 
-  <p>氏はアジャイルを計測する手段としてAARRR(Acquisition/獲得, Activation/活性化, Retention/維持, Referral/紹介, Revenue/収益)，いわゆる&quot;海賊指標(Pirate Metrics)&quot;について言及している。アジャイルの価値を評価する上でまず最初に注目すべきなのは，&quot;Acquisition/獲得&quot;に関する情報を得るための指標だ。これが向上すれば，次の&quot;Activation/活性化&quot;評価へと中心を移すことが可能になる。</p> 
-  <blockquote> 
-   <p>このモデルをひとつの例として，アジャイル移行の運用面およびプロセス面に改めて適用するならば，私たちは何を指標として考えればよいのでしょうか？ &quot;Revenue/収益&quot;は&quot;Velocity/ベロシティ&quot;と等価なのでしょうか(そんなことはないでしょう)？ &quot;Acquisition/獲得&quot;は，ブートキャンプで訓練を受けた人の数で測ればよいのでしょうか？</p> 
-  </blockquote> 
-  <p>InfoQでは以前，<a href="http://www.infoq.com/articles/Jones-measuring-agile-adoption">アジャイル適用の評価に関してCapers Jones氏にインタビューしたことがある</a>。その場で氏は，ある方法論から別のものに移行する場合に使用可能な，基本的な指標をいくつか挙げてくれた。それらの指標は，アジャイルの価値計測にも用いることができるはずだ。</p> 
-  <blockquote> 
-   <p>生産性を評価する上で世界的にもっとも広く使用されている指標として，&quot;１人月あたりのファンクションポイント(FP)数&quot;と，その逆数である&quot;1FPあたりの作業時間数&quot;の２つがあります。生産性を判断する目的ならば，１人月あたり10FPを越えれば良好で，7FPを下回る場合は問題があると言えます。アジャイルプロジェクトの中には，人月あたり15FPを越えるものもあります。これはウォーターフォールではほぼ不可能な数値です。</p> 
-   <p>品質を測定するためには，ファンクションポイントで正規化した&quot;欠陥ポテンシャル(DefectPotentials)&quot;と&quot;欠陥除去効率&quot;がもっとも効果的な方法です。欠陥ポテンシャルとは要件，設計，コード，ドキュメント，バグフィックスにおいて検出されたバグの合計数です。FPあたりの欠陥ポテンシャルが5を越えると不良，欠陥数が3を下回れば良好といえます。</p> 
-  </blockquote> 
-  <p><a href="http://www.infoq.com/author/Ken-Schwaber">Ken Schwaber</a>氏は，IT投資によって生み出される価値の評価方法を論じた&quot;<a href="https://www.scrum.org/Blog/ArtMID/1765/ArticleID/6/Agile-Value">Agile Value</a>&quot;というブログ記事を書いている。</p> 
-  <blockquote> 
-   <p>(...) 価値とは，支出に対して組織が受け取る財務的な利益として定義されます。測定された価値は，組織がひとつの部署ないし生産ラインであるかのように組織全体を包含するものであったり，あるいはそのような制約を課されたものかも知れません。いずれにせよ，支出に影響される領域を包含するものであることは間違いありません。</p> 
-  </blockquote> 
-  <p>投資の組織的な価値は，<a href="http://www.agility-path.com/Agility-Path-Framework">アジリティ・パス・フレームワーク</a>で定義されている<a href="http://www.agility-path.com/Solutions/Agility-Index-Snapshot">アジリティインデックス</a>という，単独の指標で評価することができる。この指標は，いくつかの指標から得た結果を組み合わせたものだ。</p> 
-  <blockquote> 
-   <ul> 
-    <li>運用指標(Operational Metrics)。組織の効率性を評価するための指標。この指標はITに特化したもので，組織におけるソフトウェアの開発と導入という両面を評価する。フローやサイクルタイム，安定化，品質，利用率，リリースサイクルタイムなどがこの指標に含まれる。ビジネス運用効率は指標に含まれていないが，(John Kotter氏の)Kotter Internationalが2014年に行う&quot;Accelerate!&quot;プログラムの一部に取り込まれる予定だ。</li> 
-    <li>組織的指標。市場における投資の効率化による影響，および組織的価値の増加を評価する指標である。従業員あたりの利益，顧客および従業員の満足度，製品ないしシステムのコスト比などがこの指標に含まれる。</li> 
-   </ul> 
-  </blockquote> 
-  <p>スクラムのスプリント終了時に提供された価値を評価することができる，と氏は説明する。</p> 
-  <blockquote> 
-   <p>アジャイルプロジェクトにおけるスプリントやイテレーションは，完結したひとつのプロジェクトです。要件と予算，納期があり，終了時には完成したソフトウェア機能のセットが存在します。完了した内容に基づいて，別のプロジェクトを始めるにせよ始めないにせよ，完成した機能にさらなる機能が加えられます。スプリントはそれぞれ，独立して評価されるのです。</p> 
-  </blockquote> 
-  <p>Cutterのブログ記事 &quot;<a href="http://blog.cutter.com/2014/03/07/its-far-too-easy-to-measure-agiles-value-in-the-wrong-way/">It’s Far Too Easy To Measure Agile’s Value In The Wrong Way</a>&quot;には，アジャイルの価値評価における要件が検討されている。その中でTom Grant氏は，算出すべきこのガイドラインと回避すべき落とし穴について説明する。</p> 
+  <p>軽量なランタイムは通常スタンドアロンで動作するが，<a href="http://nodered.org/docs/embedding.html">他のNode.jsアプリへの組み込み</a>も可能だ。さらに先日，ヘッドレスモードでUIを使わずに実行できる機能も追加された。</p> 
+  <p>提供されているノードのタイプは，幅広い機能をカバーする。それらが入出力や各機能の有無，特定の機能との統合などによって，次例のように分類されてパレットに表示される。</p> 
   <ul> 
-   <li>“アジャイルメソッドの価値とアジャイルチームが創出するソフトウェアの価値は同じではない” - ストーリのビジネス価値の見積は，組織にアジャイルを適用する投資の保証には役立たない。</li> 
-   <li>“ビジネス価値はビジネスアクティビティのレベルに存在する” - ビジネス価値はストーリにあるのではなく，提供されたソフトウェアを使用するビジネスアクティビティにある。&quot;価値は物語やテーマのレベルで存在するのです&quot;と氏は述べている。</li> 
-   <li>&quot;価値を算出する上で，ポートフォリオが何らかの役割を持たなければならない&quot; – 提供されるソフトウェアのビジネス価値は，そこに含まれていない機能に関連する部分もある。</li> 
-   <li>&quot;価値は相互的評価である&quot; – 価値の評価には技術の提供者と利用者双方が含まれる必要がある。</li> 
-   <li>&quot;評価の正確性を信じる人はいないが，それでも評価は有効だ&quot; – 価値を正確に算出できなくても，人々は議論の対象とする数値を求めるものだ。</li> 
-   <li>&quot;ROI値は信じられないほど大きな値となる場合がある&quot; – あまりに高い数値は人々を懐疑的にするかも知れないが，それでも正しくないとは限らない。</li> 
-   <li>&quot;収益への投資は投資からの収益より重要な場合もある&quot; – アジャイルへの不十分な投資が，アジャイル適用の失敗につながるかも知れない。</li> 
-   <li>&quot;ROI以外にも評価値はたくさんある&quot; – アジャイル適用のビジネスケースにおいては，他の指標も同じように有効な可能性がある。</li> 
+   <li>ハードウェア – Rasperry Pi, BeagleBone Black, Arduino</li> 
+   <li>ネットワーク – HTTP, TCP, UDP, MQTT, WebSocket</li> 
+   <li>パーザ – CSV, JSON, XML</li> 
+   <li>変換 – JavaScript関数, Mustacheテンプレート</li> 
+   <li>ソーシャル – Twitter, Twillio, Email, IRC, RSS, XMPP</li> 
+   <li>ストレージ – ファイルシステム, MongoDB, MySQL, PostgreSQL, Redis</li> 
+   <li>分析 – 感情分析, 統計分析</li> 
   </ul> 
-  <p>読者はアジャイル適用のビジネス価値を測定しているだろうか？</p> 
+  <p>&quot;関数(Function)&quot;ノードは，<a href="http://nodered.org/docs/writing-functions.html">ユーザの定義したJavaScript</a>をサンドボックス内で実行することで，入力メッセージ(JavaScriptオブジェクト)を，場合によっては複数の出力に変換する。さらに&quot;投入(Inject)&quot;ノードでは，フローの手操作による起動や繰り返し起動，入力内容をエディタのデバッグパネルに表示するノードの&quot;デバッグ&quot;などが可能だ。</p> 
+  <p>新しいノードタイプも簡単に作成できる。ノードはそれぞれ，サーバ側の動作を定義したJavaScriptファイルと，エディタ上のノードのインターフェースを定義するHTMLファイルで構成される。<a href="https://www.npmjs.org/">Node.jsパッケージリポジトリ</a>で公開されている何万というモジュールを選択して利用すれば，パレットノードの範囲を拡張して，新たな機能を追加することも可能だ。</p> 
+  <p>Node-REDのユーザインターフェースには複数のワークスペースがあり，フローを並行して編集することができる。クリップボードや組み込みライブラリを対象として，フローのエクスポートやインポートにも対応する。シリアライズや転送を容易にするために，フローはJSONで表現される。Node-REDエディタに直接ドラッグ・アンド・ドロップすれば，JSON構造体を個別に登録することも可能だ。公開<a href="http://flows.nodered.org/">フローライブラリ</a>に登録して，他のユーザと情報を共有することもできる。公開されたフローはGitHubに，登録者のプライベートなGistとして保存される。</p> 
+  <p>プロジェクトのソースコードとイシュートラックは<a href="https://github.com/node-red/node-red">GitHubで利用可能だ</a>。<a href="https://github.com/node-red/node-red-nodes">別のリポジトリ</a>には，拡張用のノードも公開されている。<a href="http://nodered.org/docs/">資料はメインサイトで</a>，進捗情報や最新状況は<a href="http://blog.nodered.org/">ブログ</a>や<a href="https://twitter.com/NodeRED">Twitter</a>を通じて，それぞれ提供される。コミュニティにより深く関わりたければ，活発な<a href="https://groups.google.com/forum/#!forum/node-red">Googleグループ</a>に参加するのがよいだろう。</p> 
  </div> 
 </div><br><br><br><br><br><br></body></html>

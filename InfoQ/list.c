@@ -1,6 +1,48 @@
 <html>
  <head></head> 
- <body> 
+ <body>
+  <div>
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/17.c">Aperfei&ccedil;oando o desenvolvimento de produtos com Flow Thinking</a>Um estudo de caso sobre a obten&ccedil;&atilde;o de apoio ao flow thinking usando um modelo mental e met&aacute;foras, apresentado na confer&ecirc;ncia Lean Kanban Central Europe. O InfoQ entrevistou Hakan Forss e Erik Schon sobre sua jornada dos m&eacute;todos e ferramentas aos princ&iacute;pios e forma de pensar e como usam a gest&atilde;o visual ao implementar o pensamento de fluxo para melhorar o desenvolvimento de produtos na Ericsson.
+  </div>
+  <div>
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/16.c">Java ME 8: Liberada a vers&atilde;o final</a>Terrence Barr, diretor de produtos da Oracle, anunciou o lan&ccedil;amento do Java ME 8, agora ainda mais alinhando com o Java SE 8 e a Internet das Coisas.
+  </div>
+  <div>
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/15.c">Princ&iacute;pios de design orientado a objetos e programa&ccedil;&atilde;o funcional</a>Com opini&otilde;es independentes, Richard Warburton em uma apresenta&ccedil;&atilde;o e Mark Seemann em uma publica&ccedil;&atilde;o em seu blog falam sobre orienta&ccedil;&atilde;o a objetos e princ&iacute;pios de design SOLID a partir de uma perspectiva funcional.
+  </div>
+  <div>
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/14.c">Especifica&ccedil;&atilde;o JCACHE finalizada</a>Ap&oacute;s treze anos de evolu&ccedil;&atilde;o e desenvolvimento, a JSR-107 da especifica&ccedil;&atilde;o de JCACHE foi finalizada.
+  </div>
+  <div>
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/13.c">Dropbox anuncia o Pyston: uma nova implementa&ccedil;&atilde;o Python baseada em compila&ccedil;&atilde;o JIT</a>A Dropbox anunciou recentemente em seu blog t&eacute;cnico que est&aacute; desenvolvendo o Pyston, uma nova implementa&ccedil;&atilde;o em c&oacute;digo-aberto da linguagem Python. O objetivo do Pyston &eacute; ser uma implementa&ccedil;&atilde;o de alta performance e ajudar a empresa a atingir suas metas de desempenho imposs&iacute;veis de alcan&ccedil;ar com o Python.
+  </div>
+  <div>
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/12.c">QCon Rio: inscri&ccedil;&otilde;es abertas, 3 keynotes internacionais e 18 palestrantes confirmados</a>Ap&oacute;s sucesso em 5 edi&ccedil;&otilde;es em S&atilde;o Paulo, o maior evento independente para desenvolvedores e arquitetos ganha sua primeira edi&ccedil;&atilde;o no Rio de Janeiro. O QCon Rio 2014 acontece de 23 a 25 de setembro e contar&aacute; com engenheiros de empresas como Red Hat, Amazon, Globo.com, Twitter e Zendesk, com 3 keynotes internacionais confirmados. Inscreva-se at&eacute; 3 de junho e aproveite descontos de mais de 40%.
+  </div>
+  <div>
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/11.c">RightScale: Top Clouds Privados e P&uacute;blicos</a>RigthScale, um provedor de servi&ccedil;os para diversos clouds, publicou os resultados da State of Cloud 2014, sua pesquisa anual realizada em fevereiro deste ano. Este artigo destaca alguns dos resultados mais significativos.
+  </div>
+  <div>
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/10.c">Lan&ccedil;amento do Java 8: Perguntas e Respostas</a>O Java 8 &eacute; uma das atualiza&ccedil;&otilde;es de linguagem de programa&ccedil;&atilde;o mais esperadas em muitos anos. O lan&ccedil;amento cont&eacute;m a API de datas, a API de stream e as lambdas. Inclui a remo&ccedil;&atilde;o do permgen e termina com um bom conjunto de melhorias. Para aprender mais sobre este lan&ccedil;amento, sentamos com Georges Saab, vice-presidente de desenvolvimento de software da Java Platform Group na Oracle.
+  </div>
+  <div>
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/9.c">NetBeans 8: Suporte ao Java 8, HTML5 e muito mais</a>O NetBeans 8 cont&ecirc;m uma s&eacute;rie de melhorias para o Java 8 e Java EE, bem como o suporte ao HTML5.
+  </div>
+  <div>
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/8.c">Linguagem Funcional para Modelagem de Dom&iacute;nio (DDD)</a>O uso de uma linguagem funcional, ao inv&eacute;s de diagramas UML, pode ser usado como um m&eacute;todo simples o suficiente para defini&ccedil;&atilde;o e discu&ccedil;&atilde;o de modelos de dom&iacute;nio (DDD). Esta foi uma declara&ccedil;&atilde;o dada por Scott Wlaschin em uma conversa recente sobre modelagem de dom&iacute;nio e programa&ccedil;&atilde;o funcional.
+  </div>
+  <div>
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/7.c">Gerencie as d&iacute;vidas do seu software</a>Existem diferentes tipos de d&iacute;vida de software. A d&iacute;vida t&eacute;cnica &eacute; a mais conhecida, mas n&atilde;o a &uacute;nica. Existem tamb&eacute;m as d&iacute;vidas de compet&ecirc;ncia e de qualidade. As d&iacute;vidas de software podem causar o aumento dos custos de manuten&ccedil;&atilde;o e tamb&eacute;m desencorajar desenvolvedores. Felizmente existem solu&ccedil;&otilde;es para gerenci&aacute;-las.
+  </div>
+  <div>
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/6.c">Microsoft abre Windows para o Universal App: um app para todas as plataformas</a>A Microsoft apresentou formalmente o Windows universal apps, permitindo que desenvolvedores escrevam um simples aplicativo que poder&aacute; ser executado em todos os dispositivos com base no Windows: celulares, tablets e PCs. Este movimento unifica a plataforma de forma significativa.
+  </div> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/5.c">Solu&ccedil;&otilde;es Hadoop Big Data, e o estado das coisas no Q1/2014 da Forrest</a>De acordo com um novo relat&oacute;rio da Forrest, o momento do Hadoop &eacute; de crescimento cont&iacute;nuo sem paralisa&ccedil;&otilde;es. Sua utiliza&ccedil;&atilde;o nas empresas est&aacute; crescendo continuamente devido &agrave; sua capacidade de oferecer &agrave;s empresas novas formas de armazenar, processar, analisar e compartilhar Big Data. O relat&oacute;rio analisa os fornecedores Hadoop procurando classific&aacute;-los. 
+  </div> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/4.c">Greg Young em: Usando processamento de eventos complexos</a>Greg Young explicou em uma recente apresenta&ccedil;&atilde;o que o processamento de eventos complexos, CEP, pode ser muito &uacute;til para realizar tarefas onde o problema esteja relacionado com dados temporais, como por exemplo, pesquisas sobre dados hist&oacute;ricos onde se pretende correlacionar fatos que ocorreram em diferentes datas ou horas. 
+  </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/3.c">SEMENG 2014: Big Data, JVM's e Redes Sociais, ZigBee e Forense Computacional</a>Inicia hoje, 14 de abril, em Sorocaba/SP a semana de engenharia da FACENS - Faculdade de Engenharia de Sorocaba. V&aacute;rios temas ser&atilde;o abordados dentre estes Big Data, JVM's e Redes Sociais, ZigBee, Forense Computacional, Conectividade em autom&oacute;veis. 
   </div> 
@@ -108,48 +150,6 @@
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/20.c">Software entregue vs necessidade dos usu&aacute;rios</a>Pela segunda vez em dois anos, a Avon volta atr&aacute;s e cancela um projeto milion&aacute;rio que prometia entregar facilidades e avan&ccedil;os para suas opera&ccedil;&otilde;es. 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/19.c">Cocos2D V3 com editor para cria&ccedil;&atilde;o de jogos, recursos de f&iacute;sica e portabilidade de iOS para Android</a>Foi liberada a vers&atilde;o Release Candidate do Cocos2D V3, que agora inclui tamb&eacute;m o editor para jogos SpriteBuilder, integra&ccedil;&atilde;o com o Chipmunk2D e suporte &agrave; portabilidade de iOS para Android. 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/18.c">Ser&aacute; que o Agile gera projetos suicidas?</a>Em um post recente no blog do Gartner, Thomas Murphy levantou se existe uma tend&ecirc;ncia dos projetos &aacute;geis tornarem-se cont&iacute;nuos ciclos suicidas. 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/17.c">Salesforce lan&ccedil;a primeira API com Salesforce1</a>No evento Dreamforce que ocorreu recentemente em S&atilde;o Francisco, a Salesforce lan&ccedil;ou sua plataforma Salesforce1. As entregas iniciais focam no dispositivo m&oacute;vel e tem como objetivo melhorar a interface do usu&aacute;rio &quot;Touch&quot; por ter um conjunto mais rico de interfaces de programa&ccedil;&atilde;o de aplicativos. 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/16.c">Desenvolvedores presos ao .NET 4.0</a>Sempre que uma nova vers&atilde;o do CLR &eacute; liberada, como no .NET 2.0 e 4.0, os desenvolvedores s&atilde;o relutantes a migrarem para novas vers&otilde;es. As atualiza&ccedil;&otilde;es no CLR trazem mudan&ccedil;as no comportamento em tempo de execu&ccedil;&atilde;o que podem quebrar o c&oacute;digo existente. Exemplos incluem a desastrosa propriedade DateTime.Kind ou cria&ccedil;&atilde;o de exceptions n&atilde;o capturadas em threads no background que terminem o processo. 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/15.c">Design Thinking e Cultura de Colabora&ccedil;&atilde;o</a>Design thinking trata-se da cria&ccedil;&atilde;o de uma vis&atilde;o de futuro, n&atilde;o somente gerenciar o presente. Bill Burnett da Univercidade de Stanford recentemente falou sobre Design thinking e quais quest&otilde;es devemos fazer para mudar do Design para o Design thinking. 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/14.c">Funda&ccedil;&atilde;o Eclipse lan&ccedil;a Subsidi&aacute;ria Europ&eacute;ia</a>Na EclipseCon 2013 da Europa, a Funda&ccedil;&atilde;o Eclipse lan&ccedil;ou a Funda&ccedil;&atilde;o Eclipse GmbH Europ&eacute;ia, uma funda&ccedil;&atilde;o subsidi&aacute;ria localizada in Zwingenberg (Hessen), Alemanha. A funda&ccedil;&atilde;o foi criada para promover o apoio para a comunidade open source do Eclipse na Europa. 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/13.c">Ritmo sustent&aacute;vel: Como obt&ecirc;-lo e melhor&aacute;-lo?</a>Como princ&iacute;pio do Manifesto &Aacute;gil, o ritmo sustent&aacute;vel &eacute; considerado por muitos como fundamental para uma ado&ccedil;&atilde;o &aacute;gil. Atingir, por&eacute;m, um ritmo sustent&aacute;vel pode ser dif&iacute;cil, pois pede-se que as equipes acelerem cada vez mais. Qual sua experi&ecirc;ncia na ado&ccedil;&atilde;o de ritmo sustent&aacute;vel com sua equipe? Como foi tentar melhorar a velocidade de entrega e estabelecer um ritmo sustent&aacute;vel em outro patamar? 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/12.c">Google Glass: Kit de desenvolvimento com Xamarin.Android</a>Recentemente foi liberado o kit de desenvolvimento do Glass que permite que os desenvolvedores construam aplica&ccedil;&otilde;es que trabalham com o Google Glass usando o C# e o Xamarin.Android. 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/12.c">Google Play Services 4.1 agora com suporte ao Drive</a>O Google atualizou o Play Services para adicionar suporte ao Drive, jogos multiplayer com base em turnos e mais redes de an&uacute;ncios. 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/11.c">QCon SP: Hadoop, BigData na NASA, League of Legends e 7 tutoriais confirmados</a>O QCon SP 2014 (9-11 abril no WTC), j&aacute; tem confirmados mais de 40 palestrantes e 35 palestras, al&eacute;m de quase todos os tutoriais definidos. Hoje &eacute; o &uacute;ltimo dia para aproveitar a faixa de pre&ccedil;os atual. 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/10.c">Async/Await - Efeitos sobre desempenho e outras armadilhas</a>O Async/Await &eacute; considerado uma das mais poderosas capacidades introduzidas no C# 5. Mas ser&aacute; que existem armadilhas que devemos evitar? E quais s&atilde;o os custos associados com o uso dessas primitivas? 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/9.c">S&atilde;o necess&aacute;rias alternativas ao REST?</a>Ole Lensmar, o criador do SoapUI, recentemente questionou se REST est&aacute; perdendo a atratividade e se s&atilde;o necess&aacute;rias alternativas. S&atilde;o discutidos diversos pontos em rela&ccedil;&atilde;o a aplica&ccedil;&atilde;o de REST. 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/8.c">PhoneGap 3.3: Suporte do BlackBerry aprimorado e API de carregamento de recursos no Android</a>O PhoneGap 3.3 oferece agora a habilidade para redirecionar recursivamente as requisi&ccedil;&otilde;es de carregamento de recursos Android. Tamb&eacute;m oferece melhorias no suporte ao BlackBerry 10 e depura&ccedil;&atilde;o no iOS. 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/7.c">Presto: O Sistema para consultas SQL distribu&iacute;das do Facebook</a>O Facebook liberou o c&oacute;digo fonte do Presto, o sistema para consultas SQL distribu&iacute;das. O Presto usa uma arquitetura pipelined em vez do Map/Reduce encontrado em outros softwares para Big Data. Em produ&ccedil;&atilde;o desde o come&ccedil;o do ano, o Facebook j&aacute; o implantou em v&aacute;rias regi&otilde;es geogr&aacute;ficas e conseguiu escalar com sucesso um &uacute;nico cluster de 1.000 n&oacute;s. 
-  </div> 
+  </div>             
  </body>
 </html>

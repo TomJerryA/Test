@@ -1,21 +1,29 @@
-<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>Desenvolvedores presos ao .NET 4.0</h3><p>Por outro lado, as atualiza&ccedil;&otilde;es de bibliotecas tendem a serem aceitas de bra&ccedil;os abertos. Enquanto muitos desenvolvedores n&atilde;o estavam exatamente correndo para adotar o .NET 3.0 ou 3.5, os desenvolvedores n&atilde;o temiam isso tamb&eacute;m. Apenas utilizavam casualmente atrav&eacute;s de algo que necessitavam em determinado momento.</p>
-<p>Para o .NET 4.5 n&atilde;o estamos vendo o mesmo tipo de atitude para a ado&ccedil;&atilde;o. Depois de <a href="http://www.reddit.com/r/dotnet/comments/1n8iru/is_anyone_stuck_on_net_40/">uma pesquisa informal</a> a raz&atilde;o esmagadora para permanecerem no .NET 4.0 foi o Windows XP e o Windows Server 2003. Embora estes produtos tenham d&eacute;cadas de idade e est&atilde;o efetivamente no final de suas vidas muitas empresas est&atilde;o relutantes em deix&aacute;-los. Aqui v&atilde;o algumas cita&ccedil;&otilde;es:</p>
-<blockquote> 
- <p>Praticamente todos os desenvolvedores das empresas est&atilde;o presos no 4.0 devido ao suporte ao XP.</p> 
+<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>Java ME 8: Liberada a versão final</h3><p>Terrence Barr, diretor de produtos da Oracle, <a href="http://terrencebarr.wordpress.com/2014/04/30/java-me-8-released/">anunciou o lan&ccedil;amento</a> do Java ME 8. Ap&oacute;s dois anos de trabalho, essa vers&atilde;o foi lan&ccedil;ada um m&ecirc;s ap&oacute;s a Java SE 8. Houve um alinhamento das APIs do Java ME 8 com o Java SE 8 e tamb&eacute;m a prepara&ccedil;&atilde;o do Java para a Internet das Coisas e seus desafios em especial relacionados a desempenho, portabilidade e escalabilidade.</p>
+<p>Nas palavras de Terrence Barr, o Java ME 8 &quot;fornece uma plataforma de arquitetura extens&iacute;vel e em camadas permitindo a constru&ccedil;&atilde;o de solu&ccedil;&otilde;es de softwares customizados de forma f&aacute;cil e que cobre uma grande diversidade de casos embarcados.&quot;</p>
+<p>Essa vers&atilde;o foi criada a partir da especifica&ccedil;&atilde;o <a href="https://jcp.org/en/jsr/detail?id=360">JSR 360</a>&nbsp;<span id="docs-internal-guid-1d69c0db-5cd8-0004-d5b5-290fdbf3451b"><span style="font-size: 16px; font-family: Georgia; vertical-align: baseline; white-space: pre-wrap;">–</span></span>&nbsp;Java ME Connected Limited Device Configuration (CLDC) 8, fornecendo o n&uacute;cleo da JVM e ambiente de execu&ccedil;&atilde;o; e a <a href="https://jcp.org/en/jsr/detail?id=361">JSR 361</a>&nbsp;<span id="docs-internal-guid-1d69c0db-5cd8-0004-d5b5-290fdbf3451b"><span style="font-size: 16px; font-family: Georgia; vertical-align: baseline; white-space: pre-wrap;">–</span></span>&nbsp;Java ME Embedded Profile (MEEP) 8, que define uma avan&ccedil;ada plataforma de aplica&ccedil;&otilde;es. Essa vers&atilde;o veio dois anos depois que a Java Community Process ME foi mesclada com a SE/EE em um &uacute;nico comit&ecirc; executivo da JCP, de acordo com o documento de processos <a href="https://jcp.org/ja/procedures/jcp2_9">JCP 2.9</a>.</p>
+<p>Conforme o an&uacute;ncio e a documenta&ccedil;&atilde;o, a lista a seguir apresenta as principais funcionalidades que foram inclu&iacute;das:</p>
+<ol start="1"> 
+ <li>Alinhamento com o Java 8 para o desenvolvimento eficiente em tr&ecirc;s &aacute;reas chaves, seguindo a portabilidade do c&oacute;digo entre o Java SE e o Java ME: 
+  <ul> 
+   <li>Funcionalidades da linguagem Java;</li> 
+   <li>Bibliotecas e APIs principais;</li> 
+   <li>Funcionalidades principais da maquina virtual.</li> 
+  </ul> </li> 
+ <li>Desenhado para embarcados&nbsp;<span id="docs-internal-guid-1d69c0db-5cd8-0004-d5b5-290fdbf3451b"><span style="font-size: 16px; font-family: Georgia; vertical-align: baseline; white-space: pre-wrap;">–</span></span>&nbsp;continua pequeno e eficiente, compat&iacute;vel com as vers&otilde;es anteriores e desenhado para tratar opera&ccedil;&otilde;es de longos processamentos;</li> 
+ <li>Altamente port&aacute;vel e escal&aacute;vel;</li> 
+ <li>Consistente entre os dispositivos;</li> 
+ <li>Avan&ccedil;ada plataforma de aplica&ccedil;&otilde;es incluindo o modelo &quot;Multiplica&ccedil;&otilde;es&quot; que permite a execu&ccedil;&atilde;o isolada de m&uacute;ltiplas aplica&ccedil;&otilde;es.</li> 
+ <li>Servi&ccedil;os de software modularizado;</li> 
+ <li>Dom&iacute;nios Multi-Clientes (&quot;particionamento&quot;&nbsp;<span id="docs-internal-guid-1d69c0db-5cd8-0004-d5b5-290fdbf3451b"><span style="font-size: 16px; font-family: Georgia; vertical-align: baseline; white-space: pre-wrap;">–</span></span>&nbsp;pensado para a multi-tenancy exceto nos embarcados);</li> 
+ <li>Acesso direto ao hardware do dispositivo&nbsp;<span id="docs-internal-guid-1d69c0db-5cd8-0004-d5b5-290fdbf3451b"><span style="font-size: 16px; font-family: Georgia; vertical-align: baseline; white-space: pre-wrap;">–</span></span>&nbsp;&quot;API de I/O do dispositivo&quot;, deixando as aplica&ccedil;&otilde;es Java com acesso direto independente da plataforma aos perif&eacute;ricos.</li> 
+ <li>Compatibilidade com as APIs padr&otilde;es, tal como, I/O de arquivos, servi&ccedil;os web, mensagens wireless e servi&ccedil;os de seguran&ccedil;a;</li> 
+ <li>Melhorias nas ferramentas e plugins para embarcados nas IDEs populares.</li> 
+</ol>
+<p>Ben Evans, Java Champion, disse ao InfoQ.com:</p>
+<blockquote>
+  &Eacute; otimo ver o Java ME ganhando uma nova vers&atilde;o. H&aacute; muito trabalho para ser feito na &aacute;rea da Internet das Coisas (Internet of Things - IoT)&nbsp;
+ <span id="docs-internal-guid-1d69c0db-5cd8-0004-d5b5-290fdbf3451b"><span style="font-size: 16px; font-family: Georgia; vertical-align: baseline; white-space: pre-wrap;">–</span></span>&nbsp;e algo que ajude o Java a se preparar para isso &eacute; uma boa not&iacute;cia. Ainda precisamos fazer mais&nbsp;
+ <span id="docs-internal-guid-1d69c0db-5cd8-0004-d5b5-290fdbf3451b"><span style="font-size: 16px; font-family: Georgia; vertical-align: baseline; white-space: pre-wrap;">–</span></span>&nbsp;principalmente nos protocolos de largura de banda ultra-low. Mas isso &eacute; um grande passo pela frente e uma not&iacute;cia muito bem vinda.
 </blockquote>
-<blockquote> 
- <p>N&atilde;o podemos migrar para o 4.5 devido a necessidade de suportar o XP por mais alguns anos, pois os clientes n&atilde;o atualizam seus hardwares. Ainda temos usu&aacute;rios utilizando NT no ano em que o Vista foi lan&ccedil;ado.</p> 
-</blockquote>
-<blockquote> 
- <p>Nossa! Estou preso no 4.0 por ter servidores Windows 2003.</p> 
- <p>&quot;Por que gastar dinheiro licenciando novos SO's quando os servidores antigos fazem o que precisamos?!&quot; me disseram.</p> 
- <p>N&atilde;o concordo com esta avalia&ccedil;&atilde;o, mas em pequenas empresas &eacute; dif&iacute;cil justificar ao propriet&aacute;rio o que h&aacute; de errado com o .NET 4.0. N&atilde;o h&aacute; nada de errado com .NET 4.0. N&atilde;o acho que haja alguma coisa que eu possa fazer sobre isso, infelizmente estou preso e fazendo as coisas da forma antiga.</p> 
-</blockquote>
-<p>Uma equipe de desenvolvimento est&aacute; lidando com este problema atrav&eacute;s da remo&ccedil;&atilde;o do SO do cliente deste quadro.</p>
-<blockquote> 
- <p>Estamos abordando isto mudando cada vez mais o trabalho atual para ser executado no servidor, deixando o lado do cliente &quot;leve&quot;, com o eventual objetivo de eliminar a publica&ccedil;&atilde;o em um cliente para poder executar tudo no navegador.</p> 
-</blockquote>
-<p>A outra raz&atilde;o que ouvimos para que os desenvolvedores continuem no .NET 4.0 &eacute; as mudan&ccedil;as da interface do Visual Studio. A pr&oacute;xima cita&ccedil;&atilde;o n&atilde;o &eacute; incomum.</p>
-<blockquote> 
- <p>Estou preso ao .NET 4.0 porque o 4.5 esta amarrado no Visual Studio 2012. Eu e meus colegas desenvolvedores realmente n&atilde;o gostamos da interface do VS 2012. Parace que o VS 2013 melhorou embora (n&atilde;o t&atilde;o plano e incolor como o VS 2012), ent&atilde;o talvez atualizemos em breve.</p> 
-</blockquote><br><br><br><br><br><br></body></html>
+<p>No <a href="http://www.oracle.com/technetwork/java/embedded/overview/javame/index.html">site de refer&ecirc;ncia</a> em Java ME da Oracle &eacute; poss&iacute;vel encontrar uma vis&atilde;o geral de todas as novidades.</p>
+<p>Para come&ccedil;ar a desenvolver com o Java ME 8, baixe o <a href="http://www.oracle.com/technetwork/java/javame/javamobile/download/sdk/index.html">Java ME SDK 8</a> da Oracle, junto com o ambiente de emula&ccedil;&atilde;o de dispositivos e a documenta&ccedil;&atilde;o.</p><br><br><br><br><br><br></body></html>

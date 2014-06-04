@@ -1,25 +1,12 @@
-<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>Introducing Common XAML UI</h3><p>A constant complaint amongst .NET developers is the myriad of different XAML-based UIs. The problems started with Silverlight, which had a similar but different set of controls than WPF. Silverlight for Windows Phone added a third set, and XAML for WinRT a fourth.</p>
-<p>In today’s Build Keynote we heard that Microsoft is finally starting the reconciliation process with the introduction of Common XAML UI. Based on XAML for WinRT, this UI framework will allow the same UI code to be shared on phones, tablets, desktop computers, and eventually Xbox One.</p>
-<p>A cornerstone of the Common UI is a new project type called “shared projects”. This is a new concept for Visual Studio and works very differently than portable class libraries. A shared project cannot be independently compiled into a DLL or EXE. Instead it is merged at build time into one or more traditional project types. The traditional projects are informally referred to as “project heads”.</p>
-<p>Core primitives such as panels, buttons, and text boxes/buttons will have the same behavior on Windows and Windows phone. Higher level primitives such as Hub, AppBar/CommandBar, date/time pickers, ListView, flyouts, and media will have the same API on both platforms but will behave differently. The Ads SDK will also have a common API signature between the platforms, but again the behaviors will differ.</p>
-<p>It should be noted that some features will silently fail. For example, if you have too many buttons in the CommandBar then Windows Phone will only render the first few.</p>
-<p>While many of the controls are scalable to different screen sizes, there will be times when you need to tailor the behavior for some devices. One way to accomplish this is through the use of platform specific custom controls. Shared controls can reference these platform specific custom controls so long as a control with the correct name exists in each project head.</p>
-<p>Another option for improving code reuse is the use of conditional compilation and #if def in the code-behind. In this sense it is like the classic approach of sharing source code files between projects using soft links.</p>
-<p>Resource files, the same that are used for localization, offer a third way to tailor the user experience. The cited example is how command bar buttons are expected to be in lower case on phones and title cased on the desktop.</p>
-<p>While most of the APIs are now shared, there are some UI aspects that are not available on all platforms. The most significant ones are:</p>
-<p>Windows Only APIs</p>
+<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>Google Is Now Indexing JavaScript and CSS Content: Pitfalls to Avoid</h3><p>Google has announced that Googlebot, its web crawler, now executes and indexes some content in JavaScript. This change could impact negatively search results, unless a few basic rules are taken into account.</p>
+<p>In a <a href="http://googlewebmastercentral.blogspot.com.es/2014/05/understanding-web-pages-better.html">post on Google's Webmaster Central Blog</a>, developers Erik Hendriks and Michael Xu, and Webmaster Trends Analyst Kazushi Nagayama, advise web developers that some changes that have taken place in the way Google handles JavaScript content when indexing web pages could impact negatively search results and provide a few hints as to how to prevent that.</p>
+<p>According to Hendriks, Xu, and Nagayama, &quot;in the past few months, Google's indexing system has been rendering a substantial number of web pages more like an average user’s browser&quot; would when JavaScript has been turned on. This differs from the way Google traditionally indexed pages, i.e., by &quot;only looking at the raw textual content that we’d get in the HTTP response body and didn't really interpret what a typical browser running JavaScript would see.&quot;</p>
+<p>Sometimes, they write, JavaScript rendering will not have the expected outcome, &quot;which may negatively impact search results for a site&quot;. To prevent this from occurring, they are offering some hints at potential problems and possible ways around them:</p>
 <ul> 
- <li>SearchBox</li> 
- <li>Settings Flyout</li> 
+ <li>Sites blocking JavaScript or CSS files from access will not allow Google's indexing system to see a site like an average user. The recommendation is to allow for JavaScript and CSS files access in robots.txt. This is especially relevant for mobile sites, since JavaScript and CSS files would allow Google algorithms to understand that a page is optimized for mobile.</li> 
+ <li>Web servers should also be able to handle the volume of crawl requests for resources, otherwise rendering results may be affected.</li> 
+ <li>JavaScript code which is too complex or arcane could also prevent rendering the page fully and accurately.</li> 
+ <li>Sometimes, JavaScript is used to remove content from a page rather than adding; this will make the removed content inaccessible to Google indexing engine.</li> 
 </ul>
-<p>Windows Phone Only APIs</p>
-<ul> 
- <li>Pivot</li> 
- <li>AutoSuggestBox</li> 
- <li>ContentDialog</li> 
- <li>Maps</li> 
- <li>System Chrome</li> 
- <li>Progress area, in-call UI</li> 
-</ul>
-<p>The Windows and Windows Phone back button do behave differently, so some custom work around them may be needed. Platform specific code will also be necessary for file pickers, share, and settings.</p>
-<p>Common XAML and Universal Apps are available in all versions Visual Studio 2013 Update 2.</p><br><br><br><br><br><br></body></html>
+<p>Finally, suggest Hendriks, Xu and Nagayama, it's always a good idea to have a webpage degrade gracefully. This will make its content accessible to search engines that can't execute JavaScript yet.</p>
+<p>Google is working on a tool that should be available soon to help webmasters better understand how Googlebot renders JavaScript and CSS content.</p><br><br><br><br><br><br></body></html>

@@ -1,48 +1,33 @@
-<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>Utilizando retrospectivas para aperfeiçoamento pessoal</h3><p>Equipes &aacute;geis utilizam retrospectivas para melhora do desempenho, refletindo sobre sua forma de trabalhar e definindo a&ccedil;&otilde;es de melhoria. As retrospectivas tamb&eacute;m podem ser utilizadas para o aperfei&ccedil;oamento do desempenho pessoal, adicionalmente ou em substitui&ccedil;&atilde;o &agrave;s avalia&ccedil;&otilde;es de desempenho. Tais retrospectivas podem ser feitas como uma reuni&atilde;o &quot;one-on-one&quot; em que participam o gestor e seu direto, pode ainda ser individualmente ou mesmo em equipe.</p>
-<p>Stephanie BySouth escreveu um post sobre <a href="http://www.innovationbysouth.com.au/lean-agile-systems-thinking/retrospective-for-all-professionals/">como a retrospectiva &aacute;gil pode beneficiar todos os profissionais, n&atilde;o apenas as equipes de entrega</a>. BySouth prop&otilde;e a utiliza&ccedil;&atilde;o de retrospectivas para avalia&ccedil;&otilde;es de desempenho e refaz&ecirc;-las em um ciclo mensal ao inv&eacute;s de anual:</p>
+<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>Soluções Hadoop Big Data, e o estado das coisas no Q1/2014 da Forrest</h3><p>De acordo com o novo <a href="http://www.google.com/url?q=http%3A%2F%2Finfo.mapr.com%2Frs%2Fmapr%2Fimages%2FThe_Forrester_Wave__Big_D%2520%25282%2529.pdf&amp;sa=D&amp;sntz=1&amp;usg=AFQjCNFqCpDfGzW1fVBgfqBo_e6ORbWWSg">relat&oacute;rio da Forest</a>, muitas empresas est&atilde;o procurando ter um conhecimento mais profundo da massiva quantidade de dados estruturados, n&atilde;o estruturados, semi-estruturados e bin&aacute;rios que j&aacute; possuem. Uma das conclus&otilde;es do relat&oacute;rio &eacute; que</p>
 <blockquote> 
- <p>(...) existem benef&iacute;cios de se realizar retrospectivas mais frequentes com sua equipe, seus gestores ou at&eacute; consigo mesmo;</p> 
- <ul class="c12 lst-kix_70pyv1340hvc-0 start"> 
-  <li>erros ou desempenho ruim podem ser discutidos e resolvidos pr&oacute;ximo a quando o evento ocorreu, ao inv&eacute;s de esquecidos, ou at&eacute; n&atilde;o corrigidos</li> 
-  <li>as a&ccedil;&otilde;es que antes ocorreriam nas avalia&ccedil;&otilde;es de desempenho, agora tornam-se mais confort&aacute;veis, porque a frequ&ecirc;ncia lhe d&aacute; mais pr&aacute;tica;</li> 
-  <li>a dura&ccedil;&atilde;o &eacute; menor j&aacute; que &eacute; necess&aacute;rio concentrar-se apenas nos acontecimentos das &uacute;ltimas semanas;</li> 
-  <li>a conversa muda do foco de avalia&ccedil;&atilde;o para um foco em mentoria e melhoria de desempenho, pois passa a existir visibilidade do que foi constru&iacute;do a cada m&ecirc;s.</li> 
- </ul> 
+ <p>&nbsp;</p> 
+ <p>A maioria das empresas estimam que est&atilde;o somente analisando 12% de todos os dados que possuem, deixando 88% de seus dados sem uma an&aacute;lise mais elaborada. A falta de &aacute;reas de armazenamento e a falta de capacidade de an&aacute;lise s&atilde;o as principais raz&otilde;es disto. Adicionando-se a isto, muitas vezes &eacute; imposs&iacute;vel julgar quais s&atilde;o os dados que possuem valor ou n&atilde;o. Em rela&ccedil;&atilde;o ao tempo de armazenamento dos dados para o Big Data, devemos capturar e armazenar tudo. Dados que talvez possam parecer completamente irrelevantes para o neg&oacute;cio em um dado momento, como dados de mobile e GPS, podem ser uma mina de ouro no futuro.</p> 
 </blockquote>
-<p>Com frequ&ecirc;ncia, as avalia&ccedil;&otilde;es de desempenho s&atilde;o consideradas conversas dif&iacute;ceis, tanto por empregados quanto por seus gestores. Fazer retrospectivas pessoais de forma recorrente ajuda a tornar mais suaves essas conversas e extrair mais valor delas:</p>
+<p>Como resultado, muitas empresas est&atilde;o procurando o Hadoop para resolver os seguintes problemas:</p>
+<ul class="c8 lst-kix_u8zwimio2l1w-0 start"> 
+ <li>Capturar e armazenar todos os dados relevantes para o neg&oacute;cio da empresa</li> 
+ <li>Suportar an&aacute;lises avan&ccedil;adas capacitando a inclus&atilde;o de intelig&ecirc;ncia de neg&oacute;cios, visualiza&ccedil;&atilde;o avan&ccedil;ada e an&aacute;lise preditiva para explora&ccedil;&atilde;o dos dados de novas maneiras.</li> 
+ <li>Compartilhar os dados rapidamente com todos que os necessitem. A combina&ccedil;&atilde;o de dados de m&uacute;ltiplas fontes, pode ajudar uma empresa a encontrar respostas para quest&otilde;es complexas que foram anteriormente questionadas ou respostas que ainda n&atilde;o foram questionadas.</li> 
+ <li>O cont&iacute;nuo acomodamento de grande volumes e dados e novas fontes de dados. O Hadoop permite solu&ccedil;&otilde;es r&aacute;pidas de escalabilidade com um baixo custo efetivo, habilitando o controle do aumento do volume, velocidade e variedade dos dados.</li> 
+</ul>
+<p>De acordo com o relat&oacute;rio, a procura por solu&ccedil;&otilde;es Hadoop est&aacute; em uma crescente ascens&atilde;o, surgindo assim mais e mais fornecedores nesta &aacute;rea. Embora o Hadoop seja um projeto Apache de c&oacute;digo fonte aberto onde todos podem fazer o download gratuitamente, a maioria das empresas preferem solu&ccedil;&otilde;es de fornecedores. Al&eacute;m do empacotamento de todos os componentes Hadoop os fornecedores garantem o funcionamento de todos os componentes juntos (vers&otilde;es compat&iacute;veis), tamb&eacute;m oferecendo suporte a n&iacute;vel empresarial e estendem, aumentando o Apache Hadoop (Commom, HDFS, MapReduce) fazendo implementa&ccedil;&otilde;es em seus componentes n&uacute;cleo adicionando recursos diferenciados tornando assim suas solu&ccedil;&otilde;es atraentes para as empresas.</p>
+<p>O relat&oacute;rio da Forrest analisa de perto nove fornecedores: Amazon Web Services, Cloudera, Hortonworks, IBM, Intel, MapR Techonologies, Microsoft, Pivotal Software, e Teradata, avaliando-os com base nos seguintes crit&eacute;rios:</p>
+<ul class="c8 lst-kix_twvveptehqke-0 start"> 
+ <li>A oferta atual, incluindo a arquitetura da solu&ccedil;&atilde;o, dados e caracter&iacute;sticas de processamento, configura&ccedil;&atilde;o, gest&atilde;o e ferramentas de monitoramento e de compatibilidade e recursos comunit&aacute;rios.</li> 
+ <li>Estrat&eacute;gia, incluindo o plano para atender &agrave;s atuais demandas dos clientes e preencher as lacunas existentes para implementa&ccedil;&otilde;es empresariais. Avalia&ccedil;&atilde;o de estrat&eacute;gias inclu&iacute;ndo op&ccedil;&otilde;es de aquisi&ccedil;&atilde;o, capacidade interna para executar a estrat&eacute;gia e roadmap de produtos e recursos de suporte ao cliente.</li> 
+ <li>Presen&ccedil;a de mercado, incluindo as finan&ccedil;as da empresa, presen&ccedil;a global e base instalada e estrat&eacute;gias com parcerias com outros fornecedores de software, empresas de presta&ccedil;&atilde;o de servi&ccedil;os de software como servi&ccedil;o (SaaS) /nuvem/provedores de hospedagem.</li> 
+</ul>
+<p>As principais conclus&otilde;es do relat&oacute;rio s&atilde;o as seguintes:</p>
+<ul class="c8 lst-kix_1s90r0nwbbeb-0 start"> 
+ <li>Existem muitos l&iacute;deres, mas n&atilde;o existe um dominante.</li> 
+</ul>
 <blockquote> 
- <p>Quando conversas dif&iacute;ceis s&atilde;o feitas com mais frequ&ecirc;ncia, &eacute; constru&iacute;do um n&iacute;vel de conforto que permite que as emo&ccedil;&otilde;es diminuam e, com treinamento, as conversas sejam focadas no trabalho.</p> 
+ <p>&nbsp;</p> 
+ <p>Os l&iacute;deres em solu&ccedil;&otilde;es Hadoop para Big Data s&atilde;o Amazon Web Services, Cloudera, Hortonworks, IBM, MapR Technologies, Pivot Software e Teradata. Os fornecedores come&ccedil;am com o projeto Apache de c&oacute;digo aberto adicionando em seguida pacotes de componentes, suporte, integra&ccedil;&otilde;es, e inova&ccedil;&otilde;es que preenchem as lacunas do Hadoop para as empresas. Todos os fornecedores tem feito isso de formas diferentes - como um fornecedor individual a sua classifica&ccedil;&atilde;o e seu perfil pode tornar sua escolha clara.</p> 
 </blockquote>
-<p>No post <a href="http://www.leanimpact.org/implement-lean-in-four-steps/">quatro formas simples de sua organiza&ccedil;&atilde;o sem fins lucrativos adotar o Lean hoje</a>, Lloyd Nimetz escreve sobre &quot;processos Lean para gerenciar pessoas&quot;. Nimetz oferece v&aacute;rias dicas para organiza&ccedil;&otilde;es que querem implementar o gerenciamento &aacute;gil de desempenho; Uma delas &eacute; fazer retrospectivas semestrais:</p>
-<blockquote> 
- <p>(...) pelo menos 30% das avalia&ccedil;&otilde;es de desempenho impactam negativamente o desempenho do funcion&aacute;rio. Existem muitas alternativas melhores. Advogo pela &quot;restrospectiva&quot;, na qual o objetivo n&atilde;o &eacute; avaliar o desempenho, mas encontrar formas de melhor&aacute;-lo.</p> 
-</blockquote>
-<p>Lloyd descreve como se pode fazer retrospectivas com foco na melhoria pessoal para os funcion&aacute;rios:</p>
-<blockquote> 
- <p>Os gerentes e subordinados diretos se encontram um-a-um duas vezes por ano para discutir como o desempenho pode ser melhorado: tanto o individual quanto o organizacional ou do time.</p> 
- <ul class="c12 lst-kix_2uzouvmn66i3-0 start"> 
-  <li>Feedbacks rec&iacute;procos: feedback do e para o empregado;</li> 
-  <li>O objetivo da reuni&atilde;o de retrospectiva n&atilde;o &eacute; comunicar os n&iacute;veis de desempenho (isso j&aacute; est&aacute; sendo validado no acompanhamento de meta de desempenho mensal)</li> 
-  <li>N&atilde;o &eacute; uma reuni&atilde;o para discutir decis&otilde;es de compensa&ccedil;&atilde;o;</li> 
-  <li>Uma reuni&atilde;o anual, separada, &eacute; necess&aacute;ria para comunicar decis&otilde;es relacionadas a sal&aacute;rios e b&ocirc;nus.</li> 
- </ul> 
-</blockquote>
-<p>Johannes Thones escreveu uma s&eacute;rie de artigos sobre <a href="http://blog.jthoenes.net/personal-retrospectives/">retrospectivas pessoais</a>. O artigo <a href="http://blog.jthoenes.net/2012/02/20/personal-retrospectives-an-introduction/">&quot;Retrospectivas pessoais</a> <a href="http://blog.jthoenes.net/2012/02/20/personal-retrospectives-an-introduction/">-</a><a href="http://blog.jthoenes.net/2012/02/20/personal-retrospectives-an-introduction/"> uma introdu&ccedil;&atilde;o&quot;</a> oferece uma explica&ccedil;&atilde;o sobre o tema:</p>
-<blockquote> 
- <p>Em ess&ecirc;ncia, a retrospectiva pessoal &eacute; igual &agrave;s retrospectivas de projetos. &Eacute; uma retrospectiva onde a equipe &eacute; s&oacute; voc&ecirc;. Pensa-se sobre sua vida por si pr&oacute;prio. Pode-se, opcionalmente, ter uma retrospectiva no qual outra pessoa importante para voc&ecirc;, como um bom amigo, facilite a reuni&atilde;o. Por&eacute;m, sempre fa&ccedil;o a retrospectiva pessoal por conta pr&oacute;pria.</p> 
-</blockquote>
-<p>Thones descreveu os benef&iacute;cios que obt&eacute;m utilizando essa forma de retrospectiva:</p>
-<blockquote> 
- <p>Utilizo retrospectivas para aprender o que acontece comigo e o que do que fa&ccedil;o afeta minha vida, para poder melhorar minha forma de trabalho e meu bem estar pessoal.</p> 
-</blockquote>
-<blockquote> 
- <p>Fazer retrospectivas pessoais me ajudou a ganhar um novo n&iacute;vel de alerta. Desde que as utilizo, aprendi muito sobre mim, embora isso possa ser apenas um efeito de estar ficando mais velho.</p> 
-</blockquote>
-<p>Marc Philipes escreveu sobre <a href="http://thinkrelevance.com/blog/2012/05/02/why-retrospectives-should-get-personal">porque retrospectivas deveriam ser pessoais</a> em descreveu como as equipes de sua empresa est&atilde;o fazendo:</p>
-<blockquote> 
- <p>Os ingredientes chave para uma retrospectiva pessoal na Relevance acontecem com cinco ou mais membros da equipe que t&ecirc;m experi&ecirc;ncia em primeira m&atilde;o com o desempenho recente do sujeito e outro funcion&aacute;rio da Relevance que atua como um facilitador neutro para a discuss&atilde;o. Durante a reuni&atilde;o, &eacute; oferecida ao indiv&iacute;duo uma hora de feedback aberto e honesto que valida e valoriza as &aacute;reas onde eles est&atilde;o fornecendo o melhor valor para sua equipe e clientes, e chama aten&ccedil;&atilde;o para caminhos que podem n&atilde;o estar atingindo o esperado ou que tem maior espa&ccedil;o para crescer.</p> 
-</blockquote>
-<p>As retrospectivas pessoais podem ajudar profissionais a melhorar a seu desempenho individual e suas contribui&ccedil;&otilde;es para o time:</p>
-<blockquote> 
- <p>N&atilde;o se trata de uma avalia&ccedil;&atilde;o. N&atilde;o h&aacute; altera&ccedil;&otilde;es de sal&aacute;rio, posi&ccedil;&atilde;o ou de responsabilidades como um resultado direto do que &eacute; dito. &Eacute; um f&oacute;rum seguro para possibilitar ajudar pessoas da Relevance ao longo de suas jornadas. Um encontro pessoal e &agrave;s vezes dif&iacute;cil pode n&atilde;o ser para qualquer um ou para todas as organiza&ccedil;&otilde;es, mas &eacute; uma op&ccedil;&atilde;o que deveria ser considerada ao procurar por formas de se conseguir chegar ao pr&oacute;ximo n&iacute;vel de desempenho individual e de grupo.</p> 
-</blockquote><br><br><br><br><br><br></body></html>
+<p>&nbsp;</p>
+<ul class="c8 lst-kix_dgi2j7y95r82-0 start"> 
+ <li>Soluc&otilde;es mais jovens, casam muito bem com fornecedores renomados do mercado.</li> 
+</ul>
+<p>Intel e Microsoft, s&atilde;o novos fornecedores renomados de solu&ccedil;&otilde;es Hadoop para Big Data. A Microsoft tem um robusto roteiro para o HDInsight o que a tornar&aacute; t&atilde;o atraente quanto os outros l&iacute;deres. O <a href="http://www.google.com/url?q=http%3A%2F%2Fwww.microsoft.com%2Fen-us%2Fserver-cloud%2Fsolutions%2Fbig-data.aspx%23fbid%3DqzMjr37TLoR&amp;sa=D&amp;sntz=1&amp;usg=AFQjCNE1ChNwdw-QmdzE6QLa4x7ABda2zw">Microsoft HDInsight</a> tamb&eacute;m foi projetado para o Azure, sendo a melhor solu&ccedil;&atilde;o para os clientes da Microsoft que desejam implementar o Hadoop no Azure. A Intel tem focado muito suas inova&ccedil;&otilde;es no n&iacute;vel de chip; a Intel ainda necessita refor&ccedil;ar a sua estrat&eacute;gia e ferramentas empresariais para fazer mais incurs&otilde;es como uma solu&ccedil;&atilde;o corporativa.</p>
+<p>Embora, de acordo com o relat&oacute;rio, estas avalia&ccedil;&otilde;es do mercado de solu&ccedil;&otilde;es Big Data Hadoop sejam somente um ponto de partida inicial, ele fornece excelentes informa&ccedil;&otilde;es para qualquer empresa que esteja tentando explorar este complexo cen&aacute;rio de fornecedores Hadoop.</p><br><br><br><br><br><br></body></html>

@@ -1,212 +1,47 @@
-<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>Node.js软肋之CPU密集型任务</h3><p>Node.js在<a href="http://www.nodejs.org/">官网</a>上是这样定义的:“一个搭建在Chrome JavaScript运行时上的平台，用于构建高速、可伸缩的网络程序。Node.js采用的事件驱动、非阻塞I/O模型使它既轻量又高效，是构建运行在分布式设备上的数据密集型实时程序的完美选择。”Web站点早已不仅限于内容的呈现，很多交互性和协作型环境也逐渐被搬到了网站上，而且这种需求还在不断地增长。这就是所谓的数据密集型实时（data-intensive real-time）应用程序，比如在线协作的白板，多人在线游戏等，这种web应用程序需要一个能够实时响应大量并发用户请求的平台支撑它们，这正是Node.js擅长的领域。</p>
-<p>用Node.js处理I/O密集型任务相当简单，只需要调用它准备好的异步非阻塞函数就行了。然而数据密集型实时（data-intensive real-time）应用程序并不是只有I/O密集型任务，当碰到CPU密集型任务时，比如要对数据加解密（<a href="https://github.com/ncb000gt/node.bcrypt.js">node.bcrypt.js</a>），数据压缩和解压（<a href="https://github.com/isaacs/node-tar">node-tar</a>），或者要根据用户的身份对图片做些个性化处理，这时候该怎么办呢？我们先来了解下Node.js自身的编程模型。</p>
-<h2>Node.js的先天条件</h2>
-<h3>网络编程策略</h3>
-<p>上世纪90年代提出了一个著名的<a href="http://inspire.twgg.org/internet/host-setting/item/434-unix-c10k-problem-and-libevent-introduction-to-libraries.html">C10K问题</a>。大概意思是当用户数超过1万时，很多没设计好的网络服务程序性能将急剧下降，甚至瘫痪。这时候升级硬件也不管用了，问题的根源是系统处理请求的策略，有再多的硬件资源它也用不起来。后来人们总结出了四种典型的网络编程策略：</p>
-<ol> 
- <li>服务器为每个客户端请求分配一个线程/进程，使用阻塞式I/O。Java就是这种策略，Apache也是，这种策略还是很多交互式应用的首选。因为阻塞，这种策略很难实现高性能，但非常简单，可以实现复杂的交互逻辑。</li> 
- <li>服务器用一个线程处理所有客户端请求，使用非阻塞的I/O及事件机制。node.js采用的就是这种策略。这种策略实现起来比较简单，方便移植，也能提供足够的性能，但无法充分利用多核CPU资源。 3.服务器会分配多个线程来处理请求，但每个线程只处理其中一组客户端的请求，使用非阻塞的I/O及事件机制。这是对第二种策略的简单改进，在多线程并发上容易出现bug。</li> 
- <li>服务器会分配多个线程来处理请求，但每个线程只处理其中一组客户端的请求，使用异步I/O。这种策略在支持异步I/O的操作系统上性能非常高，但实现起来很难，主要用在windows平台上。</li> 
-</ol>
-<p>因为大多数网站的服务器端都不会做太多的计算，它们只是接收请求，交给其它服务（比如文件系统或数据库），然后等着结果返回再发给客户端。所以聪明的Node.js针对这一事实采用了第二种策略，它不会为每个接入请求繁衍出一个线程，而是用一个主线程处理所有请求。避开了创建、销毁线程以及在线程间切换所需的开销和复杂性。这个主线程是一个非常快速的event loop，它接收请求，把需要长时间处理的操作交出去，然后继续接收新的请求，服务其他用户。下图描绘了Node.js程序的请求处理流程：</p>
-<p><img src="http://infoqstatic.com/resource/articles/nodejs-weakness-cpu-intensive-tasks/zh/resources/0304003.png" width="600" alt="" _href="img://null" _p="true" /></p>
-<p>主线程event loop收到客户端的请求后，将请求对象、响应对象以及回调函数交给与请求对应的函数处理。这个函数可以将需要长期运行的I/O或本地API调用交给内部线程池处理，在线程池中的线程处理完后，通过回调函数将结果返回给主线程，然后由主线程将响应发送给客户端。那么event loop是如何实现这一流程的呢？这要归功于Node.js平台的<a href="https://code.google.com/p/v8/">V8引擎</a>和<a href="https://github.com/joyent/libuv">libuv</a>。</p>
-<div id="lowerFullwidthVCR"></div>
-<h2>Event Loop和Tick</h2>
-<p>每个Node程序的主线程都有一个event loop，JavaScript代码全在这个单线程下运行。所有的I/O操作以及对本地API的调用，或者是异步的（借助程序所在平台的机制），或者运行在另外的线程中。这全都是通过libuv处理的。所以当socket上有数据过来，或本地API函数返回时，需要有种同步的方式调用对刚发生的这一特定事件感兴趣的JavaScript函数。</p>
-<p>在发生事件的线程中直接调用JS函数是不安全的，因为那样也会遇到常规多线程程序遇到的问题，竞态条件、非原子操作的内存访问等等。所以要以一种线程安全的方式把事件放在队列中，如果写成代码，大致应该是这样的：</p>
+<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>Node.js V0.12新特性之给子进程的同步API</h3><p>尽管发明Node.js的初衷主要是为了<a href="https://en.wikipedia.org/wiki/Nodejs">编写Web服务器</a>，但开发人员又发现了其他适用（和不适用！）Node的用途。令人觉得惊喜的是，这些用途中有一个是编写shell脚本。并且那确实有意义：Node的跨平台支持已经相当好了，既然前端和后端都用JavaScript写了，如果构建系统也用JavaScript写不是更好吗，对吧？</p>
+<h2>异步对shell脚本的坏处</h2>
+<p>在这一用途上值得称道的库是<a href="http://gruntjs.org/">Grunt</a>，它是构建在<a href="http://www.shelljs.org/">ShellJS</a>之上的。然而ShellJS有一块硬骨头要啃：Node迫使它用异步I/O。尽管对于Web服务器来说异步I/O很棒，因为它必须随时做出响应，但对于需要逐步执行的shell脚本来说，异步I/O意义不大。</p>
+<p>所以，ShellJS的作者们发现了一个“有趣的”解决办法，让它可以运行一个shell命令，然后等着命令完成。大致上是下面这样的代码：</p>
 <pre>
-lock (queue) {
-    queue.push(event);
-}
-</pre>
-<p>然后在执行JavaScript的主线程中（即event loop的c代码）：</p>
-<pre>
-while (true) {
-    // tick开始
+var child_process = require('child_process');
+var fs = require('fs');
 
-    lock (queue) {
-        var tickEvents = copy(queue); 
-// 将当前队列中的条目复制的线程自有的内存中
-        queue.empty(); // ..清空共享的队列
-    }
+function execSync(command) {
+// 在子shell中运行命令
+child_process.exec(command + ' 2&gt;&amp;1 1&gt;output &amp;&amp; echo done! &gt; done');
 
-    for (var i = 0; i &lt; tickEvents.length; i++) {
-        InvokeJSFunction(tickEvents[i]);
-    }
-
-    // tick结束
-}
-</pre>
-<p><code>while (true)</code> (在真正的node源码中并不是这样的；这里只是为了说明)表示event loop。里面的<code>for</code>为队列中的每个事件调用JS函数。Event loop在每个<strong>tick</strong>中都会调用与外部事件相关联的零个或多个回调函数，一旦队列被清空，并且最后一个函数返回后，<strong>tick</strong>就结束了。然后回到开始（下一个tick），重新开始检查其它线程在JavaScript运行时加到队列中的事件。</p>
-<p>那么这个队列中的东西都是谁放进来的呢？</p>
-<ul> 
- <li>process.nextTick</li> 
- <li>setTimeout/setInterval</li> 
- <li>I/O (来自fs、net等)</li> 
- <li>crypto中的CPU密集型函数，比如crypto streams、pbkdf2和PRNG</li> 
- <li>所有使用<a href="http://nikhilm.github.io/uvbook/threads.html#libuv-work-queue">libuv工作队列</a>异步调用C/C++库的本地模块</li> 
-</ul>
-<h2>当Event loop遇到CPU密集型任务</h2>
-<p>因为event loop在处理所有的任务/事件时，都是沿着事件队列顺序执行的，所以在其中任何一个任务/事件本身没有完成之前，其它的回调、监听器、超时、<code>nextTick()</code>的函数都得不到运行的机会，因为被阻塞的event loop根本没机会处理它们，此时程序最好的情况是变慢，最糟的情况是停滞不动，像死掉一样。所以当Node.js遇到高CPU占用率的任务时，event loop会被阻塞住，形成下面这种局面：</p>
-<p><img src="http://infoqstatic.com/resource/articles/nodejs-weakness-cpu-intensive-tasks/zh/resources/0304004.png" width="600" alt="" _href="img://null" _p="true" /></p>
-<h3>被阻塞的event loop</h3>
-<p>下面给出两段代码，看一下event loop被阻塞住时的具体表现。</p>
-<p>这段代码中的event loop以最快的速度运转，不断地向控制台中输出<code>.</code>：</p>
-<p><strong>代码清单1.</strong> 快速行进的event loop</p>
-<pre>
-(function spinForever () {
-  process.stdout.write(&quot;.&quot;);
-  process.nextTick(spinForever);
-})();
-</pre>
-<p>然后我们在这段代码中再加上一个计算斐波那契数列的任务。</p>
-<p><strong>代码清单2.</strong> 被高CPU占用率计算阻塞的event loop</p>
-<pre>
-function fibo (n) {
-  return n &gt; 1 ? fibo(n - 1) + fibo(n - 2) : 1;
+// 阻塞事件循环，知道命令执行完
+while (!fs.existsSync('done')) {
+// 什么都不做
 }
 
-(function fiboLoop () {
-  process.stdout.write(fibo(45).toString());
-  process.nextTick(fiboLoop);
-})();
+// 读取输出
+var output = fs.readFileSync('output');
 
-(function spinForever() {
-  process.stdout.write(&quot;.&quot;);
-  process.nextTick(spinForever);
-})();
-</pre>
-<p>计算斐波那契数列是一个CPU密集型的任务，event loop要在计算结果出来后才有机会进入下一个tick，执行输出<code>.</code>的简单任务，感觉就像服务器死掉了一样。在我的机器上计算斐波那契数列时，取值<code>45</code>可以明显感觉到程序的停滞，你可以根据自己的CPU性能调节该值。</p>
-<blockquote> 
- <p><strong>process.nextTick()</strong></p> 
- <p>在Node 0.8（及之前）的版本中，<code>process.nextTick()</code>中指定的函数通常会比其它任何I/O先被调用，然而并不能保证一定会这样。但很多开发人员（包括Node.js的内部团队）开始用<code>process.nextTick</code>实现“稍后再做，但要在任何真正的I/O执行之前”。然而在负载比较大时，因为I/O很多，可能导致<code>nextTick</code>被别的东西占先，从而引发一些很怪异的错误。所以在v.0.10之后，<code>netxtTick</code>的语义被改了，那些函数变成在每次从C++进入JavaScript的调用之后马上运行。也就是说，如果你的JavaScript代码调用了<code>process.nextTick</code>，只要代码即将运行完成时，在回到event loop之前那个回调就会被调用。</p> 
- <p>然而还有很多程序用递归调用<code>process.nextTick</code>，以免长期运行的任务抢占了I/O event loop。为了不把这些程序都搞垮，Node现在会输出一个废弃警告，提示你在这些任务中使用<code>setImmediate</code>。不过对我们这个例子来说，这两个版本之间的差异没有影响。</p> 
-</blockquote>
-<h3>被闲置的CPU内核</h3>
-<p>最开始，线程只是用于分配单个处理器处理时间的一种机制。但假如操作系统本身支持多个CPU/内核，那么每个线程都可以得到一个不同自己的CPU/内核，实现真正的“并行运算”。在这种情况下，多线程程序可以提高资源使用效率。Node.js是单线程程序，它只有一个event loop，也只占用一个CPU/内核。现在大部分服务器都是多CPU或多核的，当Node.js程序的event loop被CPU密集型的任务占用，导致有其它任务被阻塞时，却还有CPU/内核处于闲置的状态，造成资源的浪费。</p>
-<p>你可以再次运行代码清单2中的代码，启动<code>top</code>（或者Windows的任务管理器）查看CPU的使用情况。我这台Mac上是一个双核的i7处理器，当node的CPU占用率在100%左右浮动时，系统的CPU占用率却只有28%左右。</p>
-<p>既然Node.js程序几乎完全运行在单个CPU/内核上，所以我们需要做些额外的工作才能提升它的扩展性。Node.js提供了一组管理进程的API，还允许你给它编写本地扩展，所以有很多种不同的办法可以让程序的代码并行运行。</p>
-<h2>把CPU密集型任务分给子线程</h2>
-<p>自Node.js诞生之日起，就有人质疑它的单线程模型面对<a href="http://en.wikipedia.org/wiki/Computer_multitasking#Cooperative_multitasking.2Ftime-sharing">协作式多任务</a>时的处理能力。但这个实际上并不是Node.js产生的新问题，在JavaScript中由来已久，可以采用<a href="http://tech.pro/tutorial/1487/web-worker-patterns">Web Worker模式</a>应对。因此我们的问题就变成了如何在Node.js程序中实现Web Worker模式，首先来看一个在Node.js中控制进程的API。</p>
-<pre>
-child_process.fork()</pre>
-<p>Node.js中有管理子进程的<a href="http://nodejs.org/api/child_process.html"><code>child_process</code></a>模块，可以用<code>fork()</code>方法创建新的子进程实例。这个子进程是用IPC通道添加的，可以通过<code>.send(message)</code>函数发送消息给它，用<code>.on('message')</code>监听它发送的消息。而在子进程中，可以用<code>process.on('message',callback)</code>监听父进程发送的消息，并通过<code>process.send(message)</code>向父进程发送消息。接下来我们<code>fork()</code>一个子进程，把计算斐波那契数列的任务交给它，这需要两个文件。</p>
-<p><strong>代码清单3.</strong> 主进程文件forkParent.js</p>
-<pre>
-var cp = require('child_process');
+// 删除临时文件。
+fs.unlinkSync('output');
+fs.unlinkSync('done');
 
-var child = cp.fork(__dirname+'/forkChild.js');
-
-child.on('message', function(m) {
-  process.stdout.write(m.result.toString());
-});
-
-(function fiboLoop () {
-  child.send({v:40});
-  process.nextTick(fiboLoop);
-})();
-
-
-(function spinForever () {
-  process.stdout.write(&quot;.&quot;);
-  process.nextTick(spinForever);
-})();
-</pre>
-<p>在主进程中用<code>cp.fork()</code>创建了子进程<code>child</code>，并用<code>child.on('message', callback)</code>监听子进程发来的消息，输出计算结果。现在的<code>fiboLoop()</code>也不再执行具体的计算操作，只是用<code>child.send({v:40});</code>不停的发消息给子进程。</p>
-<p><strong>代码清单4.</strong> 计算斐波那契数列的子进程文件forkChild.js</p>
-<pre>
-function fibo (n) {
-  return n &gt; 1 ? fibo(n - 1) + fibo(n - 2) : 1;
+return output;
 }
-
-process.on('message', function(m) {
-  process.send({ result: fibo(m.v) });
-});
 </pre>
-<p>子进程文件很简单，还是原来那个计算用的函数，以及一个监听消息的<code>process.on('message',callback)</code>，计算结果并用<code>process.send(message, [sendHandle])</code>发送消息给父进程。此外，父进程和子进程两者之间发送消息是同步的，所以两边是有来有往，工作开展地井然有序。运行<code>node forkParent.js</code>，结果跟我们预期的一样，输出<code>.</code>的任务不再受到阻塞，欢快地在屏幕上刷了一大堆<code>.</code>，然后每隔一段输出一个<code>165580141</code>。我们再用<code>top</code>查看一下资源的使用情况，会发现有两个node进程，CPU占用率也增加了很多。</p>
-<p><img src="http://infoqstatic.com/resource/articles/nodejs-weakness-cpu-intensive-tasks/zh/resources/0304005.png" width="600" alt="" _href="img://null" _p="true" /></p>
-<p>实际上<code>fork()</code>得到的并不是<strong>子</strong>进程，而是一个全新的Node.js程序实例。并且每个新实例至少需要30ms的启动时间和10M内存，也就是说通过<code>fork()</code>繁衍进程，不光是充分利用了CPU，也需要很多内存，所以不能<code>fork()</code>太多。如果你有兴趣，可以再<code>fork()</code>一个或几个进程，并创建跟这个（些）进程交互的函数，查看下资源占用情况。</p>
-<h3>cluster</h3>
-<p>使用<a href="http://nodejs.org/api/cluster.html">cluster</a>模块可以充分利用多核CPU资源，在Node.js的0.6版被纳入核心模块，但目前（V0.10.26）仍处于实验状态。借助cluster模块，Node.js程序可以同时在不同的内核上运行多个”工人进程“，每个”工人进程“做的都是相同的事情，并且可以接受来在同一个TCP/IP端口的请求。相对于在Ngnix或Apache后面启动几个Node.js程序实例而言，cluster用起来更加简单便捷。虽然cluster模块繁衍线程实际上用的也是<code>child_process.fork</code>，但它对资源的管理要比我们自己直接用<code>child_process.fork</code>管理得更好。下面是用cluster实现的代码：</p>
-<p><strong>代码清单5.</strong> 用cluster繁衍工人进程计算斐波那契数列</p>
+<p>换句话说，在shell执行你的命令时，ShellJS依然在运行，并持续不断地轮询着文件系统，检查是否能找到表明命令已经完成的那个文件。有点儿像<a href="http://www.youtube.com/watch?v=4vUBsTJYK28">驴子</a>。</p>
+<p>这种效率低下又丑陋不堪的解决办法让<a href="https://github.com/joyent/node/graphs/contributors">Node核心团队</a>受刺激了，实现了一个真正的解决方案 – Node v0.12最终应该会支持同步运行子进程。实际上这个特性已经在路线图上放了<a href="https://github.com/joyent/node/issues/1167">很长时间了</a>– 我记得是在2011年的<a href="http://2013.jsconf.eu/">JSConf.eu</a>上(!) ，跟现在已经退休的Node维护者<a href="https://github.com/felixge">Felix Geisendoerfer</a>坐在一起，勾勒出了一个实现execSync的办法。在过了两年多以后，这一特性现在终于<a href="https://github.com/joyent/node/compare/joyent:d58c206...joyent:e8df267">出现在了master分支上</a>。</p>
+<p>恭喜，ShellJS的人们挑了一个很好的刺儿! :)</p>
+<h2>同步对shell脚本的好处</h2>
+<p>我们刚加上的API spawnSync跟它的异步小伙伴类似，它提供的底层API让你可以完全掌控子进程的设置。它还会返回所有我们能够收集的信息：退出码、终止信号、可能的启动错误，以及这个进程的全部输出。当然，在流中使用spawnSync没有任何意义-它是同步的，所以事件处理器不能在进程退出前运行-所以进程的所有输出会被缓冲到一个单例字符串或缓冲对象中。</p>
+<p>并且就像众所周知的exec（运行shell命令）和execFile(用于运行一个可执行文件)方法一样，我们为常见的情况添加了execSync和execFileSync，它们比spawnSync更易用。如果你用了这些API，Node会假定你关心的只是进程写到stdout中的数据。如果进程或shell返回了非零的退出码，node会认为出现错误了，exec(Sync)会抛出。</p>
+<p>比如获取项目git历史的代码就像下面这样简单：</p>
 <pre>
-function fibo (n) {
-  return n &gt; 1 ? fibo(n - 1) + fibo(n - 2) : 1;
-}
-
-var cluster= require('cluster');
-
-if (cluster.isMaster) {
-    cluster.fork();
-} else {
-    (function fiboLoop () {
-        process.stdout.write(fibo(40).toString());
-        process.nextTick(fiboLoop);
-    })();
-}
-
-(function spinForever () {
-  process.stdout.write(&quot;.&quot;);
-  process.nextTick(spinForever);
-})();
+var history = child_process.execSync('git log', { encoding: 'utf8' });
+process.stdout.write(history);
 </pre>
-<p>代码很简单，如果是主进程，就<code>fork()</code>工人进程，这里也可以用循环遍历，根据CPU内核的个数繁衍相应数量甚至更多的进程；如果是工人进程，就执行<code>fiboLoop</code>。你可以自行用<code>top</code>查看一下资源占用情况，你会发现这种方式用得资源比上面那种方式要少。</p>
-<p>虽然cluster模块可以充分利用资源，用起来也比较简单，但它只是解决了负载分配的问题。但其实做得也不是特别好，在0.10版本之前，cluster把负载分配的工作交给了操作系统，然而实践证明，最终负载都落在了两三个进程上，分配并不均衡。所以在0.12版中，cluster改用round-robin方式分配负载。详情请参见<a href="https://gist.github.com/wuhaixing/bed6a4b60941b86f32e7">这里</a>。</p>
-<h3>第三方模块</h3>
-<p>除了Node.js官方提供的API，Node.js社区也为这个问题贡献了几个模块。</p>
-<p>比如Mozilla Identity团队为Persona开发的<a href="https://github.com/lloyd/node-compute-cluster">node-compute-cluster</a>。这个模块可以繁衍和管理完成特定计算的一组进程。你可以设定最大进程数，然后由node-compute-cluste根据负载确定进程数量。它还会追踪运行进程的数量，以及工作完成的平均时长等统计信息，方便你分析系统的处理能力。下面是一个简单的例子：</p>
-<pre>
-const computecluster = require('compute-cluster');
-
-// 分配计算集群
-var cc = new computecluster({ module: './worker.js' });
-
-// 并行运行工作
-cc.enqueue({ input: 35 }, function (error, result) {
-  console.log(&quot;35：&quot;, result);
-});
-cc.enqueue({ input: 40 }, function (error, result) {
-  console.log(&quot;40：&quot;, result);
-});
-</pre>
-<p>文件worker.js中的代码应该响应<code>message</code>事件处理队列中的任务：</p>
-<pre>
-process.on('message', function(m) {
-  var output;
-  var output = fibo(m.input);
-  process.send(output);
-});
-</pre>
-<p>还有功能强大的<a href="https://github.com/xk/node-threads-a-gogo">threads_a_gogo</a>。参考文献中的第一篇文章介绍了一个拼字游戏解密程序<a href="https://github.com/neilk/letterpwn">LetterPwn</a>，本文在很大程度上是受这篇文章的启发而写的，其中就是用threads_a_gogo管理CPU密集型计算线程的。由于篇幅所限，就不再展开介绍了。不过最后我们用threads_a_gogo线程池的例子作为结尾：</p>
-<pre>
-function fibo (n) {
-  return n &gt; 1 ? fibo(n - 1) + fibo(n - 2) : 1;
-}
-
-var numThreads= 10;
-var threadPool= require('threads_a_gogo').createPool(numThreads).all.eval(fibo);
-
-threadPool.all.eval('fibo(40)', function cb (err, data) {
-  process.stdout.write(&quot; [&quot;+ this.id+ &quot;]&quot;+ data);
-  this.eval('fibo(40)', cb);
-});
-
-(function spinForever () {
-  process.stdout.write(&quot;.&quot;);
-  process.nextTick(spinForever);
-})();
-</pre>
-<h2>参考文献</h2>
-<ol> 
- <li><a href="http://neilk.net/blog/2013/04/30/why-you-should-use-nodejs-for-CPU-bound-tasks/">Why you should use Node.js for CPU-bound tasks</a>,Neil Kandalgaonkar,2013.4.30;</li> 
- <li><a href="https://github.com/xk/node-threads-a-gogo">TAGG项目文档</a></li> 
- <li><a href="http://howtonode.org/understanding-process-next-tick">Understanding process.nextTick()</a>,Kishore Nallan,2013.5.13</li> 
- <li><a href="http://blog.nodejs.org/2013/03/11/node-v0-10-0-stable/">Node v0.10.0 changes from 0.8:FASTER PROCESS.NEXTTICK</a></li> 
- <li><a href="http://stackoverflow.com/questions/19822668/what-exactly-is-a-node-js-event-loop-tick">What exactly is a Node.js event loop tick? </a>,StackOverflow,2013.11.6</li> 
- <li><a href="https://hacks.mozilla.org/2012/11/fully-loaded-node-a-node-js-holiday-season-part-2/">Fully Loaded Node – A Node.JS Holiday Season, part 2</a>,Lloyd Hilaiel,2012.11.20</li> 
- <li><a href="https://github.com/wuhaixing/cpubound">本文源码</a></li> 
-</ol>
-<hr />
-<p>感谢<a href="http://www.infoq.com/cn/author/水羽哲">水羽哲</a>对本文的审校。</p>
-<p>给InfoQ中文站投稿或者参与内容翻译工作，请邮件至<a href="mailto:editors@cn.infoq.com">editors@cn.infoq.com</a>。也欢迎大家通过新浪微博（<a href="http://www.weibo.com/infoqchina">@InfoQ</a>）或者腾讯微博（<a href="http://t.qq.com/infoqchina">@InfoQ</a>）关注我们，并与我们的编辑和其他读者朋友交流。</p><br><br><br><br><br><br></body></html>
+<p>现在你可能在想“怎么要用这么长时间？”从表面上看，启动一个子进程并读取它的输出看起来简直是小菜一碟。也确实是这样-如果你只关心非常常见的情况。但是，我们不想做出来的解决方案只是一半。</p>
+<p>当需要同时发送输入并读取一或多个输出流时，有两个选择：用线程-或者用事件循环。比如<a href="https://github.com/python-git/python/blob/master/Lib/sub%20%0Aprocess.py">Python的实现</a>，我们发现他们或者用事件循环（在Unix系的平台上）或者用线程（在Windows上）。并且它的实现可真不是一碟小菜。</p>
+<p>2011年我们就意识到Node已经有一个非常棒的事件循环库了，即<a href="https://github.com/joyent/libuv">libuv</a>。理论上已经具备了实现这一特性的所有条件。然而总是有或大或小的问题，让它并不能真正可靠地工作。</p>
+<p>比如说，当子进程退出时，kernel会给node发送一个SIGCHLD信号通知它，但当有多个事件循环存在时，有很长一段时间libuv都不能正确处理信号。还有，删除事件循环并且不留下堆栈跟踪的能力也是最近才加上的。之前Node根本不管，它只是在某点退出，然后让OS打扫战场。如果我们需要一个临时的事件循环，并且在不需要它后仍然继续运行，这种策略就不太合适了。</p>
+<p>慢慢的，随着时间的推移，所有这些问题都被解决了。所以如果你现在再设法看看过去那些缓冲区管理、参数解析、超时处理等诸如此类的东西，你会发现这个特性的核心只是一个事件循环，带子进程、计时器，还有一堆附着在它上面的管道。</p>
+<p>如果你不关心它都是如何运作的，只需要看看<a href="https://github.com/joyent/node/blob/e8df2676748e944388896dfd767e0%20%0A1906ae2e4eb/doc/api/child_process.markdown#child_processspawnsynccommand%20%0A-args-options">文档</a>，让node为控制子进程提供的丰富选项震你一下吧。现在谁愿意去把ShellJS修好？:)</p>
+<h2>作者简介</h2>
+<p>本文最初由<a href="http://strongloop.com/strongblog/author/bert-belder/">Bert Belder</a>发表在<a href="http://strongloop.com/">StrongLoop</a>上。Bert Belder从2010年就开始做Node.js了，并且他还是libuv的主要编写者之一，Node.js就是在这个库上构建的。他除了是StrongLoop和Node核心的技术领导者，他正在做的特性还会让Node处于创新的最前沿，甚至是在1.0版出来之后。<a href="http://strongloop.com/">StrongLoop</a>降低了在Node中<a href="http://strongloop.com/mobile-application-development/loopback/">开发APIs</a>的难度，还添加了监测、集群化以及私有注册的支持等DevOps能力。</p>
+<p><strong>查看英文原文：</strong><a href="http://strongloop.com/strongblog/whats-new-in-node-js-v0-12-execsync-a-synchronous-api-for-child-processes/">What’s New in Node.js v0.12 – execSync: a Synchronous API for Child Processes</a> 2014年3月12日</p><br><br><br><br><br><br></body></html>

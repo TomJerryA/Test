@@ -1,21 +1,13 @@
-<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>Features of the New Windows Phone App Model</h3><p class="MsoNormal" style="margin-bottom:0in;margin-bottom:.0001pt">At Build 2014 Andrew Clinick gave a presentation titled, <a href="http://channel9.msdn.com/Events/Build/2014/2-509">“The New Windows Phone App Model”</a>, in which he described the new features of this model that is coming with Windows Phone 8.1.&nbsp;<br /> &nbsp;</p>
-<p class="MsoNormal" style="margin-bottom:0in;margin-bottom:.0001pt">The first of these features is the ability to process push notifications before a <a href="http://msdn.microsoft.com/en-us/library/windowsphone/develop/jj662938(v=vs.105).aspx">toast update</a> appears.&nbsp; Previously a user would see an update appear and theny would want to immediately tap the update to act on it.&nbsp; This posed a performance problem as the app may itself be processing the event that generated the update, causing a lag between the user’s tap and the app’s response.&nbsp; Now an app may process the event, perform any updates it needs, and then generate the toast update.&nbsp; Then when the user acts on the toast the app is ready for their participation with little or no lag.
- <o:p></o:p></p>
-<p class="MsoNormal" style="margin-bottom:0in;margin-bottom:.0001pt">
- <o:p>
-  &nbsp;
- </o:p></p>
-<p class="MsoNormal" style="margin-bottom:0in;margin-bottom:.0001pt">Developers looking for an easier way to demo their apps can benefit from the new ability to display their phone’s screen on an external display via USB.&nbsp; Newer Lumia handsets can also use a MiraCast adapter to reproduce their display as well.
- <o:p></o:p></p>
-<p class="MsoNormal" style="margin-bottom:0in;margin-bottom:.0001pt">
- <o:p>
-  &nbsp;
- </o:p></p>
-<p class="MsoNormal" style="margin-bottom:0in;margin-bottom:.0001pt">OneDrive is taking an expanded role with Windows Phone.&nbsp; If a user customizes their phone’s start screen tile layout, that layout and associated metadata is backed up to OneDrive daily.&nbsp; This preserves the user’s experience in the event their phone is lost or damaged.&nbsp; A user’s app data is also backed up to OneDrive and each app can use 100 kilobytes for free.&nbsp; This storage does not impact the user’s personal quota on OneDrive and is not visible to them.&nbsp; (If you want to show your app’s data, the OneDrive SDK should be used.)
- <o:p></o:p></p>
-<p class="MsoNormal" style="margin-bottom:0in;margin-bottom:.0001pt">
- <o:p>
-  &nbsp;
- </o:p></p>
-<p class="MsoNormal" style="margin-bottom:0in;margin-bottom:.0001pt">Working with the <a href="http://www.infoq.com/news/2014/04/universal_win_apps">universal Windows apps</a>&nbsp;platform, developers can send notifications to all instances of the app on a user’s devices or just specific ones.&nbsp; So for example a game may want to alert the user that it is their turn to play whether they are currently using their Windows Phone or 8.1 desktop. &nbsp;However, at present these notices don’t sync, so there is no way for your phone to tell your PC that you acknowledged the notice (so each notice would have to be closed separately.)
- <o:p></o:p></p><br><br><br><br><br><br></body></html>
+<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>What changes brought by C++14 could break a C++11 program?</h3><p>C++14, the new C++ standard succeeding C++11, will bring a host of changes to the language. Although it is planned to be a small extension over its predecessor, <a href="http://en.wikipedia.org/wiki/C%2B%2B14">featuring mainly bug fixes and small improvements</a>, it is inevitable that a few changes might make a correct C++11 program break under a C++14-compliant compiler.</p>
+<p>An overall view of all of changes that the new standard will likely bring can be <a href="http://www.open-std.org/jtc1/sc22/wg21/docs/papers/2013/n3797.pdf">found on the Open Standards web page</a>, while <a href="http://meetingcpp.com/index.php/br/items/looking-at-c14.html">more synthetical views can be found elsewhere</a>.</p>
+<p>While the name C++14 suggests a release in 2014, this date is not fixed. Actually, the working draft of the language, N3936, was published on March 2, 2014 and <a href="https://isocpp.org/std/status">if all national bodies approve it, the C++14 International Standard will be published in late summer</a>.</p>
+<p>Support for the new language features is also well underway on major C++ compilers: <a href="http://clang.llvm.org/cxx_status.html">Clang</a> &quot;fully implements all of the current draft&quot;; <a href="http://gcc.gnu.org/projects/cxx1y.html">GCC</a> and <a href="http://blogs.msdn.com/b/vcblog/archive/2013/12/02/c-11-14-core-language-features-in-vs-2013-and-the-nov-2013-ctp.aspx">Visual Studio</a> also offer some support for C++14 new features.</p>
+<p>Most of C++14 new features will not break source compatibility with current C++11 standard. The introduction of generic lambdas, e.g., allowing lambda function parameters to be declared with the <code>auto</code> type specifier, will not break compatibility with C++11 lambdas. However, it is foreseen that a number of new features will indeed be cause for some concerns. Thus, Stack Overflow user Filip Ros&eacute;en <a href="http://stackoverflow.com/questions/23980929/what-changes-introduced-in-c14-can-potentially-break-a-program-written-in-c1">collected all the relevant information that he could found in the working draft itself</a>.</p>
+<p>Here is a short list of changes that could potentially break C++11:</p>
+<ul> 
+ <li> <p>Digit Separators</p> <p>The digit separator was introduced so that one could, in a more readable manner, write numeric literals and split them up in a more natural way.</p> </li> 
+ <li> <p>Sized Deallocation</p> <p>C++14 introduces the opportunity to declare a global overload of <code>operator delete</code> suitable for sized deallocation, something which wasn't possible in C++11.</p> </li> 
+ <li> <p><code>constexpr</code> member-functions, no longer implicitly <code>const</code></p> <p>There are many changes to <code>constexpr</code> in C++14, but the only change that will change semantics between C++11, and C++14 is the constantness of a member-function marked as <code>constexpr</code>.</p> </li> 
+ <li> <p>Removal of <code>std::gets</code></p> <p><code>std::gets</code> has been removed from the Standard Library because it is considered dangerous.</p> </li> 
+</ul>
+<p>For a more detailed discussion, including code samples, and references to C++ drafts, see the post on <a href="http://stackoverflow.com/questions/23980929/what-changes-introduced-in-c14-can-potentially-break-a-program-written-in-c1">Stack Overflow</a>.</p><br><br><br><br><br><br></body></html>

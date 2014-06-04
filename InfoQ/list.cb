@@ -1,6 +1,15 @@
 <html>
  <head></head> 
- <body> 
+ <body>
+  <div>
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/42.cb">Hadoop na nuvem</a> Os provedores de solu&ccedil;&otilde;es Hadoop, atualmente dentre as mais populares tecnologias de Big Data em ambientes de nuvem p&uacute;blica ou privada evolu&iacute;ram. H&aacute; diversos fornecedores de solu&ccedil;&otilde;es baseadas em Hadoop no mercado, como Cloudera, HortonWorks e MapR, provendo variadas solu&ccedil;&otilde;es em nuvem. Este artigo, apresenta uma an&aacute;lise deste novo panorama. 
+  </div>
+  <div>
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/41.cb">Java na Web com VRaptor 4</a> Conhe&ccedil;a na pr&aacute;tica o VRaptor, que na sua nova vers&atilde;o 4 utiliza o CDI 1.1 como base, incluindo princ&iacute;pios do framework e uma sele&ccedil;&atilde;o de novidades da nova vers&atilde;o. 
+  </div> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/40.cb">Asser&ccedil;&otilde;es Customizadas em Testes</a> Este artigo discute algumas aplica&ccedil;&otilde;es das chamadas “bibliotecas de matchers” na implementa&ccedil;&atilde;o de asser&ccedil;&otilde;es customizadas, a fim de tornar os testes mais leg&iacute;veis e de f&aacute;cil manuten&ccedil;&atilde;o. 
+  </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/39.cb">Javascript: Desenvolvendo Componentes Modulares</a> Embora a maioria das aplica&ccedil;&otilde;es web hoje em dia utilizem uma grande quantidade de JavaScript, mantendo o foco na funcionalidade do lado do cliente, a robustez e sustentabilidade continuam sendo um grande desafio. Este artigo apresentar&aacute; um exemplo de evoluir um simples widget a partir de uma base de c&oacute;digo, em grande parte n&atilde;o estruturado a um componente reutiliz&aacute;vel. 
   </div> 

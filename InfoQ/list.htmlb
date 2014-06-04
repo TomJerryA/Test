@@ -2,9 +2,54 @@
  <head></head> 
  <body>
   <div>
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/12.htmlb">给高管当教练</a> 敏捷教练们对与管理层一起工作并不感到陌生，他们常会与项目经理以及团队经理一道促进团队层面的变革。但现在他们需要促进管理层面的变革，这彻底改变了敏捷教练的工作范围。本文帮助敏捷教练了解他们的目标受众的语境，并提出一套与这种语境相匹配的教练语言。 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/26.htmlb">构建服务端的AMD/CMD模块加载器</a> 在前端开发领域，相信大家对AMD/CMD规范一定不会陌生，尤其对requireJS、seaJS等模块加载器更是耳熟能详，不少网站目前也正在使用。requireJS、seaJS的出现，极大程度的促进了前端模块化编程方式的发展，前端的代码风格趋近标准化。而两者的共同特点都是运行在浏览器端的模块加载器，可以智能解析模块依赖关系，并自动加载相关模块。而我们今天介绍的是服务端的AMD/CMD模块加载器— styleCombine，一个为前端模块化开发及性能提升而诞生的前端开发神器。 
   </div>
   <div>
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/25.htmlb">企业数据移动化</a> Val Huber介绍了企业数据移动化的一些方法，包括从现有数据库Schema创建RESTful API，扩展API，定义多表层级资源，使用声明式响应表达式增加行为。 
+  </div>
+  <div>
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/24.htmlb">书籍问答：敏捷文化 —— 信任与责任引导之道</a> 当企业采用敏捷时，发展敏捷文化是他们经常要做的事情。这样的文化变革使管理者领导人们的方式，转变为帮助人们成为自组织。这本The Agile Culture介绍了如何塑造具有活力和创造力的文化，并且提供了建立信任、主人翁意识和克服组织中的阻力和壁垒的工具。 
+  </div>
+  <div>
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/23.htmlb">深入理解Tagged Pointer</a> 为了节省内存和提高执行效率，苹果提出了Tagged Pointer的概念。对于64位程序，引入Tagged Pointer后，相关逻辑能减少一半的内存占用，以及3倍的访问速度提升，100倍的创建、销毁速度提升。本文从Tagged Pointer试图解决的问题入手，带领读者理解Tagged Pointer的实现细节和优势，最后指出了使用时的注意事项。 
+  </div>
+  <div>
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/22.htmlb">Netty系列之Netty高性能之道</a> Netty是一个高性能、异步事件驱动的NIO框架，它提供了对TCP、UDP和文件传输的支持，作为一个异步NIO框架，Netty的所有IO操作都是异步非阻塞的，通过Future-Listener机制，用户可以方便的主动获取或者通过通知机制获得IO操作结果。 
+  </div>
+  <div>
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/21.htmlb">架构与敏捷：不得不说的故事</a> 这篇文章描述了架构和软件开发过程间的关系，以及架构将如何满足诸如功能需求、操作特性和开发者适居性等一系列需求。文章中还谈到了务实的架构师与开发者和涉众共事时的责任。 
+  </div>
+  <div>
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/20.htmlb">基于开源软件在Azure平台建立大规模系统的最佳实践</a> 本文和读者分享一些最佳实践经验，并在文末以中国网络电视台的系统迁移作为参考案例。 
+  </div>
+  <div>
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/19.htmlb">数据库持续交付</a> 在各种持续过程中，数据库是一个真正的挑战。对自动化来说，数据库对象变更脚本放入传统版本控制工具或使用“比较并同步”工具，这是效率低下或者风险很高的事情，因为两个概念彼此互不相识。在持续交付和DevOps中，需要更好的解决方案。 
+  </div>
+  <div>
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/18.htmlb">一种有效的测试策略</a> 文章介绍Jimmy Bogard在做一个大型项目时实施的一种有效的测试分层策略：包括系统测试、皮下测试、单元测试。作者认为最有价值的测试策略是从全系统测试开始，然后往下移，直至单元测试。当一个应用程序对业务有决定性作用时它将不得不面临变更，这样的全盘考虑特别有效。 
+  </div>
+  <div>
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/17.htmlb">浅谈Java 8的函数式编程</a> Java 8为Java带来了函数式编程。Ben Evans在本文中讨论了函数的意义。 
+  </div>
+  <div>
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/16.htmlb">从数据库查询中寻找设计问题</a> 企业应用程序的开发人员经常和数据库打交道，有时会过于依赖SQL强大的查询能力，随着需求的演化，SQL可能会越来越复杂，难以维护。复杂查询带来可能不仅仅是性能问题，其背后隐藏的还有可能是不恰当的架构和设计。查询应该受到更多的关注。 
+  </div>
+  <div>
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/15.htmlb">支付宝分布式事务测试方案</a> 传统的基于数据库本地事务的解决方案只能保障单个服务的一次处理具备原子性、隔离性、一致性与持久性，但无法保障多个分布服务间处理的一致性。因此，我们必须建立一套分布式服务处理之间的协调机制，保障分布式服务处理的原子性、隔离性、一致性与持久性。 
+  </div> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/15.htmlb">书评：《使用Chef框架进行测试驱动基础设施开发第2版》</a> Stephen Nelson-Smith在他的新书《使用Chef框架进行测试驱动基础设施开发第2版》中涵盖了“基础设施即代码”理论之后的基本原理，并且对Ruby、Chef框架和一些重要工具进行了介绍。本书的主要部分通过详细的示例来描述如何使用必需的工具编写完整测试的基础结构代码。 
+  </div> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/14.htmlb">采访与书评——《软件工程的技术与社会化历史》</a> Capers Jones是《软件工程的技术与社会化历史》一书的作者，他在本书中为读者介绍了信息技术与软件开发的进化概况。InfoQ有幸与Capers进行了一番对话，谈论了软件工程的发展动力和重大事件，以及它们对我们的社会所带来的影响。 
+  </div> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/13.htmlb">Node.js V0.12新特性之给子进程的同步API</a> ShellJS给Node.js添加了一个编写shell脚本的用处，但Node.js的异步I/O对shell脚本来说是块难啃的骨头。ShellJS虽然找到了办法，但效率低下又丑陋不堪。所以Node.js的核心团队决定让Node v0.12支持同步运行子进程。 
+  </div> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/12.htmlb">给高管当教练</a> 敏捷教练们对与管理层一起工作并不感到陌生，他们常会与项目经理以及团队经理一道促进团队层面的变革。但现在他们需要促进管理层面的变革，这彻底改变了敏捷教练的工作范围。本文帮助敏捷教练了解他们的目标受众的语境，并提出一套与这种语境相匹配的教练语言。 
+  </div> 
+  <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/11.htmlb">微博关系服务与Redis的故事</a> 新浪微博的工程师们曾经在多个公开场合都讲到过，微博平台当前在使用并维护着可能是世界上最大的Redis集群，其中最大的一个业务，单个业务使用了超过 10T 的内存，这里说的就是微博关系服务。 
   </div> 
   <div> 
@@ -105,51 +150,6 @@
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/36.htmlb">数据库变更部署自动化秘诀</a> Yaniv Yehuda探讨了自动化数据库部署所面临的挑战，并提供了基于敏捷和DevOps思想的建议。 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/36.htmlb">微博平台的链路追踪及服务质量保障系统——Watchman系统</a> 如其他大中型互联网应用一样，微博平台由众多的分布式组件构成，用户通过浏览器或移动客户端的每一个HTTP请求到达应用服务器后，会经过很多个业务系统或系统组件，并留下足迹（footprint）。但是这些分散的数据对于问题排查，或是流程优化都帮助有限。本文将会详细介绍新浪微博的实现方式和经验分享。 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/36.htmlb">如何使用Microsoft技术栈</a> Microsoft技术栈最近有大量的变迁，这使得开发人员和领导者都想知道他们到底应该关注哪些技术。Microsoft自己并不想从官方层面上反对Silverlight这样的技术，相对而言他们更喜欢让这种技术慢慢淡出人们的视线，否则局面可能会更加混乱。 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/35.htmlb">Oleg Shilo：基于CS-Script的Notepad++的插件</a> 如果只是想写几句试验代码，Visual Studio显得有点大材小用。因此一些开发者会选择轻量级的编辑器，如Notepad++，来满足编写脚本的需要。Oleg Shilo向我们介绍了他的项目，一个优秀的基于CS-Script的Notepad++的插件。 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/34.htmlb">豆瓣的研发管理</a> 本文基于庄表伟跟豆瓣工程副总裁段念的一次沟通整理而成，双方主要探讨了如何给团队设置规则、如何传输价值观、如何恰到好处的设置激励策略、如何考核工程师等话题。 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/33.htmlb">LinkedIn是如何使用Apache Samza的？</a> Apache Samza是LinkedIn最近开源的一款流处理器。在题为《Samza：LinkedIn的实时流处理》的演讲中，Chris Riccomini探讨了Samza的功能集，它如何与YARN和Kafka集成，LinkedIn如何用它，以及其未来路线图是什么。 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/32.htmlb">使用Contemplate ThreadSafe发现并判断Java并发问题</a> 当使用并发编写正确和安全的Java软件时，我们需要很仔细地进行思考。因为错误使用并发会导致偶尔才出现的缺陷，这些缺陷甚至能够躲过最严格的测试环境。静态分析工具能够分析源码或编译形成的字节码，以便在执行之前就能发现隐藏在代码之中的缺陷。 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/32.htmlb">Java测试的自定义断言</a> 使用“匹配器类库（matcher libraries）”实现自定义断言，提高测试代码的可读性和可维护性。 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/31.htmlb">使用AppVeyor CI 和PowerShell部署应用</a> 部署实际应用不是一件易事。总是有问题不断出现在以下情况中：需要在注册表（Registry）或自定义文件夹中配置设置，或你需要部署到Web集群。本文中，我们通过使用PowerShell远程处理（PowerShell remoting）和AppVeyor CI为带有ASP.NET web应用程序和Windows Service的解决方案在其暂存（staging）和产品环境中配置持续集成。 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/30.htmlb">用于大数据的嵌入式分析和统计</a> 本文概要地介绍了嵌入式数据分析和统计的相关工具及类库，其中包括独立的软件包和带有统计能力的编程语言。两位作者还讨论了如何将这些嵌入式分析技术结合起来处理大数据。 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/29.htmlb">别闯进Hybrid App的误区</a> Hybrid App，一种开发模式，兼顾Web和Native的一种开发模式。有人说它把Web App扼杀在摇篮里，有人说它把Native App引向一个新阶段。我说，它是一把双刃剑，千万别闯进它的误区。本文是笔者在实践Hybrid App开发模式过程中总结出的一些经验教训，供读者参考。Hybrid App虽好，可万万不能仓促选择，盲目运用。 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/28.htmlb">JCA——一个名不见经传却重要的JavaEE规范</a> JCA(Java EE Connector Architecture)规范可以说是JavaEE规范集合里最“默默无闻”的，在JavaEE1.3规范发布时就加入了，比现在重要成员JPA, CDI等都早了很多。如此重要的规范，为何很少人知晓呢，本文就解释一些其中的原委。 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/27.htmlb">从命令式编程到Fork/Join再到Java 8中的并行Streams</a> 在这篇文章中，两位作者分别用命令式风格、Fork/Join框架和Java 8中新的Streams API三种方式计算了一个大数据集的方差，并进行了对比。 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/26.htmlb">通过一组RESTful API暴露CQRS系统功能</a> 我们在此提出并展示一种为CQRS系统创建一套RESTful API的方式。这种方式结合了HTTP的语义、REST API基于资源的风格，并能够处理分布式计算的某些问题，例如最终一致性和并发性。 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/25.htmlb">Spine.JS+Rails重客户端Web应用技术选型思路：『风车』架构设计</a> 风车这个项目开始于 2011 年 11 月份，之前叫做 Pragmatic.ly。从第一天开始我们基本上就定了大致的框架结构，在今天回头看，基本上整个架构都没有什么变化，可以算是个很成熟和很适合时代的方案，☺。 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/24.htmlb">开发模块化的JavaScript组件</a> 本文将通过一个示例为你展示某个简单的widget的演化过程，看看它是如何从一个庞大的、缺乏结构性的代码库进化为一个可重用的组件的。 
-  </div>   
+  </div>             
  </body>
 </html>

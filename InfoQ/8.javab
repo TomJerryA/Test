@@ -1,51 +1,96 @@
-<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>Building Applications With Hadoop</h3><p><i>When building applications using Hadoop, it is common to have input data from various sources coming in various formats. In his presentation, “<a href="http://www.infoq.com/presentations/hadoop-frameworks-api">New Tools for Building Applications on Apache Hadoop</a></i><i>”, Eli Collins, tech lead for Cloudera’s Platform Team overviews how to build better products with Hadoop and various tools that can help, such as Apache Avro, Apache Crunch, Cloudera ML and the Cloudera Development Kit.</i></p>
-<p><b><small>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;Presentation transcript edited by <a href="http://www.infoq.com/author/Roopesh-Shenoy">Roopesh Shenoy</a></small></b></p>
-<h2>Avro</h2>
-<p><a href="https://github.com/apache/avro">Avro</a> is a project for data serialization in formats. It is similar to Thrift or Protocol Buffers. It's expressive. You can deal in terms of records, arrays, unions, enums. It's efficient so it has a compact binary representation. One of the benefits of logging an Avro is that you get much smaller data files. All the traditional aspects of Hadoop data formats, like compressible or splittable data, are true of Avro.</p>
-<p>One of the reasons Doug Cutting (founder of the Hadoop project) created the Avro project was that a lot of the formats in Hadoop were Java only. It’s important for Avro to be interoperable – to a lot of different languages like Java, C, C++, C#, Python, Ruby, etc. – and to be usable by a lot of tools.</p>
-<p>One of the goals for Avro is a set of formats and serialization that's usable throughout the data platform that you're using, not just in a subset of the components. So MapReduce, Pig, Hive, Crunch, Flume, Sqoop, etc. all support Avro.</p>
-<p>Avro is dynamic and one of its neat features is that you can read and write data without generating any code. It will use reflection and look at the schema that you've given it to create classes on the fly. That's called Avro-generic formats. You can also specify formats for which Avro will generate optimal code.</p>
+<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>Ansible’s View on IT Automation</h3><p><i>Configuration management is the foundation that makes modern infrastructure possible.&nbsp; Tools that enable configuration management are required in the toolbox of any operations team, and many development teams as well. Although all the tools aim to solve the same basic set of problems, they adhere to different visions and exhibit different characteristics. The issue is how to choose the tool that best fits each organization's scenarios.</i></p>
+<p><i>This InfoQ article is part of a <a href="http://www.infoq.com/configuration-management-tools/">series</a> that aims to introduce some of the configuration tools on the market, the principles behind each one and what makes them stand out from each other. You can subscribe to notifications about new articles in the series <a href="http://www.infoq.com/feed/Configuration-Management-Tools">here</a>.</i></p>
+<p>&nbsp;</p>
+<p><a href="http://ansible.com">Ansible</a> started as an open source project in February of 2012 with the goal of automating multi-tier IT configurations and processes without relying on management agents to be installed on the remote systems. As it’s grown in use over the last two plus years, it is worth exploring some of the design choices and concepts presented - and why it works the way it does.</p>
+<p>Foremost, it’s important to understand that Ansible is a general-purpose IT automation system, but does not wish to be considered exclusively a configuration management system. This is because, for many of our users, the more interesting part of the equation is in how business applications are deployed on top of the OS configuration - or how upgrade processes and ad-hoc server maintenance processes are orchestrated.</p>
+<p>While Ansible does contain a robust series of modules for Configuration Management tasks (as with CFEngine, Puppet, or Chef), Ansible is also concerned with cloud provisioning (AWS, Rackspace, Google, OpenStack, etc), software deployment (in the same vein as Fabric or Capistrano), and automation of orchestration procedures like zero downtime rolling upgrades.</p>
 <div id="lowerFullwidthVCR"></div>
-<p>Avro was designed with expectation that you would change your schema over time. That's an important attribute in a big-data system because you generate lots of data, and you don’t want to constantly reprocess it. You're going to generate data at one time and have tools process that data maybe two, three, or four years down the line. Avro has the ability to negotiate differences between schemata so that new tools can read old data and vice versa.</p>
-<p>Avro forms an important basis for the following projects.</p>
-<h2>Crunch</h2>
-<p>You're probably familiar with Pig and Hive and how to process data with them and integrate valuable tools. However, not all data formats that you use will fit Pig and Hive.</p>
-<p>Pig and Hive are great for a lot of logged data or relational data, but other data types don’t fit as well. You can still process poorly fitting data with Pig and Hive, which don’t force you to a relational model or a log structure, but you have to do a lot of work around it. You might find yourself writing unwieldy user-defined functions or doing things that are not natural in the language. People, sometimes, just give up and start writing raw Java MapReduce programs because that's easier.</p>
-<p><a href="https://github.com/cloudera/crunch">Crunch</a> was created to fill this gap. It's a higher-level API than MapReduce. It's in Java. It's lower level than, say, Pig, Hive, Cascade, or other frameworks you might be used to. It's based on a paper that Google published called FlumeJava. It's a very similar API. Crunch has you combine a small number of primitives with a small number of types and effectively allow the user to create really lightweight UDS, which are just Java methods and classes to create complex data pipelines.</p>
-<p>Crunch has a number of advantages.</p>
-<ul> 
- <li>It's just Java. You have access to a full programming language.</li> 
- <li>You don't have to learn Pig.</li> 
- <li>The type system is well-integrated. You can use Java POJOs, but there's also a native support for Hadoop Writables in Avro. There's no impedance mismatch between the Java codes you're writing and the data that you're analyzing.</li> 
- <li>It's built as a modular library for reuse. You can capture your pipelines in Crunch code in Java and then combine it with arbitrary machine learning program later, so that someone else can reuse that algorithm.</li> 
-</ul>
-<p>The fundamental structure is a parallel collection so it's a distributed, unordered collection of elements. This collection has a parallel do operator which you can imagine turns into a MapReduce job. So if you had a bunch of data that you want to operate in parallel, you can use a parallel collection.</p>
-<p>And there's something called the parallel table, which is a subinterface of the collection, and it's a distributed sorted map. It also has a group by operators you can use to aggregate all the values for a given key. We'll go through an example that shows how that works.</p>
-<p>Finally, there's a pipeline class and pipelines are really for coordinating the execution of the MapReduce jobs that will actually do the back-end processing for this Crunch program.</p>
-<p>Let’s take an example for which you've probably seen all the Java code before, <a href="https://hadoop.apache.org/docs/r1.2.1/mapred_tutorial.html#Example%3A+WordCount+v1.0">word count</a>, and see what it looks like in Crunch.</p>
-<p><a _href="resource://Fig1.png" href="/resource/articles/apps-with-hadoop/en/resources/Fig1.png"><img _p="true" _href="img://Fig1-small.png" alt="" src="http://www.infoq.com/resource/articles/apps-with-hadoop/en/resources/Fig1-small.png" /></a></p>
-<p><b><small>(Click on the image to enlarge it)</small></b></p>
-<p>It’s a lot smaller and simpler. The first line creates a pipeline. We create a parallel collection of all the lines from a given file by using the pipeline class. And then we get a collection of words by running the parallel do operator on these lines.</p>
-<p>We've got a defined anonymous function here that basically processes the input and word count splits on the word and emits that word for each map task.</p>
-<p>Finally, we want to aggregate the counts for each word and write them out. There's a line at the bottom, pipeline run. Crunch's planner does lazy evaluation. We're going to create and run the MapReduce jobs until we've gotten a full pipeline together.</p>
-<p>If you're used to programming Java and you've seen the Hadoop examples for writing word count in Java, you can tell that this is a more natural way to express that. This is among the simplest pipelines you can create, and you can imagine you can do many more complicated things.</p>
-<p>If you want to go even one step easier than this, there's a wrapper for Scala. This is very similar idea to Cascade, which was built on Google FlumeJava. Since Scala runs on the JVM, it's an obvious natural fit. Scala's type inference actually ends up being really powerful in the context of Crunch.</p>
-<p><a _href="resource://Fig2.png" href="/resource/articles/apps-with-hadoop/en/resources/Fig2.png"><img _p="true" _href="img://Fig2-small.png" alt="" src="http://www.infoq.com/resource/articles/apps-with-hadoop/en/resources/Fig2-small.png" /></a></p>
-<p><b><small>(Click on the image to enlarge it)</small></b></p>
-<p>This is the same program but written in Scala. We have the pipeline and we can use Scala's built-in functions that map really nicely to Crunch – so word count becomes a one-line program. It’s pretty cool and very powerful if you're writing Java code already and want to do complex pipelines.</p>
-<h2>Cloudera ML</h2>
-<p><a href="https://github.com/cloudera/ml">Cloudera ML</a> (machine learning) is an open-source library and tools to help data scientists perform the day-to-day tasks, primarily of data preparation to model evaluation.</p>
-<p>With built-in commands for summarizing, sampling, normalizing, and pivoting data, Cloudera ML has recently added a built-in clustering algorithm for k-means, based on an algorithm that was just developed a year or two back. There are a couple of other implementations as well. It's a home for tools you can use so you can focus on data analysis and modeling instead of on building or wrangling the tools.</p>
-<p>It’s built using Crunch. It leverages a lot of existing projects. For example, the vector formats: a lot of ML involves transforming raw data that's in a record format to vector formats for machine-learning algorithms. It leverages Mahout's vector interface and classes for that purpose. The record format is just a thin wrapper in Avro, and HCatalog is record and schema formats so you can easily integrate with existing data sources.</p>
-<p>For more information on Cloudera ML, visit the projects’ <a href="../../../../../Downloads/github.com/cloudera/ml">GitHub page</a>; there's a bunch of examples with datasets that can get you started.</p>
-<h2>Cloudera Development Kit</h2>
-<p>Like Cloudera ML, <a href="https://github.com/cloudera/cdk">Cloudera Development Kit</a> a set of open-source libraries and tools that make writing applications on Hadoop easier. Unlike ML though, it's not focused on using machine learning like a data scientist. It's directed at developers trying to build applications on Hadoop. It's really the plumbing of a lot of different frameworks and pipelines and the integration of a lot of different components.</p>
-<p>The purpose of the CDK is to provide higher level APIs on top of the existing Hadoop components in the CDH stack that codify a lot of patterns in common use cases.</p>
-<p>CDK is prescriptive, has an opinion on the way to do things, and tries to make it easy for you to do the right thing by default, but it’s architect is a system of loosely coupled modules. You can use modules independent of each other. It's not an uber-framework that you have to adopt in whole. You can adopt it piecemeal. It doesn't force you into any particular programming paradigms. It doesn't force you to adopt a ton of dependencies. You can adopt only the dependencies of the particular modules you want.</p>
-<p>Let's look at an example. The first module in CDK is the data module, and the goal of the data module is to make it easier for you to work with datasets on Hadoop file systems. There are a lot of gory details to clean up to make this work in practice; you have to worry about serialization, deserialization, compression, partitioning, directory layout, commuting, getting that directory layout, partitioning to other people who want to consume the data, etc.</p>
-<p>The CDK data module handles all this for you. It automatically serializes and deserializes data from Java POJOs, if that's what you have, or Avro records if you use them. It has built-in compression, and built-in policies around file and directory layouts so that you don't have to repeat a lot of these decisions and you get smart policies out of the box. It will automatically partition data within those layouts. It lets you focus on working on a dataset on HDFS instead of all the implementation details. It also has plugin providers for existing systems.</p>
-<p>Imagine you're already using Hive and HCatalog as a metadata repository, and you've already got a schema for what these files look like. CDK integrates with that. It doesn't require you to define all of your metadata for your entire data repository from scratch. It integrates with existing systems.</p>
-<p>You can learn more about the various CDK modules and how to use them in <a href="http://cloudera.github.io/cdk/docs/current/">the documentation</a>.</p>
-<p>In summary, working with data from various sources, preparing and cleansing data and processing them via Hadoop involves a lot of work. Tools such as Crunch, Cloudera ML and CDK make it easier to do this and leverage Hadoop more effectively.</p>
+<p>Ansible is able to apply itself to all of these different tasks more easily because rather than modeling rigorous configurations of single hosts, it is designed more around modeling services (which may span hosts) or arbitrary processes that a user would like to automate.</p>
+<p>As such, very step wise processes that may require multiple steps to be executed on different hosts can fit into Ansible’s domain.</p>
+<p>Ansible approaches management by not requiring any daemons to be installed on the remote systems, instead connecting to remote machines over OpenSSH. Ansible does not just execute shell commands over SSH, but uses it as a transport medium, transferring modules from a control machine to the remote managed machines.</p>
+<p>These modules describe how to get a given resource from the current state of an environment to another, but can also break down into arbitrary commands when needed.</p>
+<p>Ansible modules can be written in any dynamic language, and typically consume and emit JSON. as such, while Ansible is implemented in Python, it’s possible to extend Ansible with modules written in Ruby, Perl, or even Bash. The core of Ansible contains 235 some modules, which are all, by community convention, implemented in Python so they can be more easily maintained by the developer community as a whole.</p>
+<h2>Design Goals: Simplicity, Ease of Use, and Maximum Security</h2>
+<p>Ultimately, there are a lot of automation options out there, and it’s important for any user to evaluate them and choose the tool that best fits their mentality and approach to working.</p>
+<p>Ansible focuses around ease of use, ease of development/change of automation content, and IT security.</p>
+<p>Ease of use to Ansible is mostly around keeping syntax human readable, with the goal that a user not trained in Ansible should be able to read and understand an Ansible playbook, even to the point of understanding how it would configure a system. Ease of use is also magnified by not having to manage any remote daemons - with some other approaches, if a daemon is not installed or not functioning, a remote system cannot be managed. Similarly, such a daemon may consume too many resources on the remote node that are needed for other computing tasks.</p>
+<p>Ease of development and change in automation content is somewhat misunderstood. Frequently the discussion is one of “low learning curve”, though ultimately the most important cost is day to day time. Ansible was written to minimize day to day time spent with the automation software and increase time spendable for development on core business applications or other strategic IT projects.</p>
+<p>Finally, security is a key goal. Ansible uses OpenSSH as a transport because it is very widely peer reviewed, and does not create an extra system where keys must be managed. Benefitting from extreme levels of peer review and widespread use, in the event of OpenSSH having security vulnerabilities, it is patched rapidly.</p>
+<p>Ansible uses OS native security credentials, so it works with su, sudo, Kerberos, passwords, keys, identity management software, and so on.</p>
+<h2>Example of a Zero Downtime Rolling Update with a LAMP Stack</h2>
+<p>To understand how Ansible can describe an arbitrary IT workflow processs, it’s helpful to see an example. Ansible calls it’s automation language playbooks, and one of the most fundamental shows how to deploy a LAMP stack that is using HAProxy as a load balancer. HAProxy is chosen here because is freely available, but Ansible also contains modules for working with load balancers such as Citrix Netscalers or F5 BigIP devices, as well as various IaaS-based load balancers.</p>
+<p>The basic configuration of the system can be described as a simple list of hosts, separately managed in an inventory file. An example inventory file might look like this:</p>
+<pre>
+[webservers]
+www01.example.com
+www02.example.com
+[databases]
+db01.example.com
+db02.example.com</pre>
+<p>Ansible doesn’t have to use a static inventory file -- it can also dynamically pull inventory from various providers, such as EC2, with each tag name in a cloud automatically becoming available as a group. For this example however, we’ll just show something basic:</p>
+<pre>
+---
+- hosts: all
+  roles:
+  - common
+
+- hosts: dbservers
+  roles:
+  - db
+
+- hosts: webservers
+  roles:
+  - base-apache
+  - web
+
+- hosts: lbservers
+  roles:
+  - haproxy
+
+- hosts: monitoring
+  roles:
+  - base-apache
+  - nagios
+</pre>
+<p>In the above example, at each “- hosts” line, Ansible is saying “talk to all the hosts in this group, and apply the selected roles to them“.</p>
+<p>As such, it’s evident that Ansible descriptions of infrastructure can be very simple. Roles are abstractions around more detailed instructions in Ansible.</p>
+<p>For instance, the “web” role is pretty simple, and contains a task file that looks like:</p>
+<pre>
+---
+- name: Install php and git
+  yum: name={{ item }} state=present
+  with_items:
+   - php
+   - php-mysql
+   - git
+
+- name: Configure SELinux
+  seboolean: name=httpd_can_network_connect_db state=true persistent=yes
+  when: sestatus.rc != 0
+
+- name: Copy the code from repository
+  git: repo={{ repository }} version={{ webapp_version }} dest=/var/www/html/
+</pre>
+<p>As shown above, various packages are installed with the yum package manager (if not already installed), SELinux security booleans are set (if so required), and software is checked out from a git repository.</p>
+<p>The full source of this example is located on <a href="https://github.com/ansible/ansible-examples/tree/master/lamp_haproxy">GitHub</a> and you can see how it can be extended to work with <a href="https://github.com/ansible/ansible-examples/blob/master/lamp_haproxy/rolling_update.yml">HAProxy </a>.</p>
+<h2>Why Push Based Automation Works: Declarative Resource Models and Optimizing The Implementation</h2>
+<p>Ansible is by default a push-based system that uses SSH for transport.</p>
+<p>Many earlier configuration management systems were pull-based, where nodes would wake up periodically and check in with a central server.</p>
+<p>In this model, it is often difficult to orchestrate a change that requires updating one set of servers before another, and is further complicated when doing things on other servers on behalf of another. Ansible makes this easier by being very explicit, pushing changes out to specific nodes, and making it possible to describe the steps one would update on one’s infrastructure, just as if telling a human to perform those steps.<br /> The pull based methods are valid, and in some cases have some other interesting properties, but frequently it is assumed that SSH push-based either (A) is inefficient or (B) that Ansible is merely being “SSH in a for loop”, which is not correct.</p>
+<p>While being push-based, Ansible keeps the the idea of declarative models of system state - asking systems to fulfill a given property rather than blindly running commands, but also recognizing that sometimes blindly running commands is required. Ansible also makes it possible to save the result of commands into variables and use the results of those variables to make decisions during the automation run.</p>
+<p>There are a lot of tuning options in the SSH implementation, including the option to use ControlPersist to reuse SSH connections (which is a native SSH feature that will keep connections open for up to N minutes per host), the ability to “pipeline” operations to reduce file transfer, and full support for non-root operation, including the usage of sudo or su as appropriate. If on older Enterprise Linux platforms, an “accelerated mode” can login to remote systems over SSH and set up a higher speed secure transport that will expire after 30 minutes of non-use. Finally, Ansible makes use of python’s multiprocessing library, able to talk to many systems in parallel to increase speed of simultaneous configuration of larger infrastructures. In rolling updates for continuous deployment, you’ll seldom need this, but for running ad-hoc commands or batch reconfigurations, it’s quite handy to be able to spin up a very large number of machines in parallel.</p>
+<p>Also it’s worth pointing out that while it can configure remote systems by SSH, it can also talk to web services and other APIs or even ask humans for input. Examples include the “uri” module for REST requests, or the cloud modules, which communicate with services including Amazon AWS, Rackspace, GCE, or OpenStack.</p>
+<p>Ansible also features a “check mode” where it can run a playbook against a set of remote systems and report whether it would have needed to make any changes on the remotes to fulfill the playbook, all without making any changes. Using this method, it is possible to detect if systems may have drifted away from a previously configured state.</p>
+<p>All of these properties together enable a model that is not only suited for classical configuration management, but also orchestration of higher level configurations, like the rolling update example above, or also application deployment scenarios such as deploying from a tarball, git repository, or other system on top of a pre-configured OS or cloud instance.</p>
+<h2>Enabling Community Contribution</h2>
+<p>Ansible is designed around being a very wide-scale open source project as it believes very much in connecting brilliant developers and systems administrators so they can share knowledge and common tooling.</p>
+<p>To do this, it aims to be pluggable not only in terms of modules, but also various other plugins - including inventory sources to pull from different IaaS providers and management software, or even callback plugins to feed output into external systems like team chat servers.</p>
+<p>Most notably, Ansible features a “batteries included” approach to module development. Ansible modules are low-level building blocks, things like “service”, package management modules, “user” and “group” modules, all the way to modules to provision new cloud instances. Rather than have users find what modules are the best among a community commons, Ansible encourages contribution of these modules to the core standard library. The result of this is that users picking up the program have some 235 modules, all community maintained, which they can use to start assembling their infrastructure automation. Module contribution is maximized by keeping source code straightforward, and making sure there are good resources about how (and when) to write new modules.</p>
+<p>Content using the modules are usually grouped into “roles”, as shown above. Roles can be freely shared <a href="http://galaxy.ansible.com/">here</a>, which is powered by GitHub repositories.</p>
+<p>Ansible is freely available to download. To find out how to try Ansible and about other features contained in it, visit the documentation <a href="http://docs.ansible.com">site</a>.</p>
 <h2>About the Author</h2>
-<p><strong><img src="http://www.infoq.com/resource/articles/apps-with-hadoop/en/resources/Eli-Collins.jpg" vspace="3" hspace="3" align="left" alt="" _href="img://Eli-Collins.jpg" _p="true" />Eli Collins</strong> is the tech lead for Cloudera's Platform team, an active contributor to Apache Hadoop and member of its project management committee (PMC) at the Apache Software Foundation. Eli holds Bachelor's and Master's degrees in Computer Science from New York University and the University of Wisconsin-Madison, respectively.</p><br><br><br><br><br><br></body></html>
+<p><strong><img vspace="3" hspace="3" align="left" _p="true" _href="img://Michael-DeHaan.jpg" alt="" src="http://www.infoq.com/resource/articles/ansible-view-on-it-automation/en/resources/Michael-DeHaan.jpg" />Michael DeHaan</strong> is the CTO of Ansible, Inc, and creator of popular DevOps-friendly automation systems Cobbler and Ansible. Prior to Ansible, Michael helped build and define systems management software for such companies as IBM, Adaptec, Red Hat (where he built Cobbler as part of the Emerging Technologies group), and Puppet Labs. Michael lives in Morrisville, NC and can be found <a href="http://michaeldehaan.net/">online</a> and on <a href="http://twitter.com/laserllama">Twitter</a>.&nbsp;&nbsp;&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p><i>Configuration management is the foundation that makes modern infrastructure possible.&nbsp; Tools that enable configuration management are required in the toolbox of any operations team, and many development teams as well. Although all the tools aim to solve the same basic set of problems, they adhere to different visions and exhibit different characteristics. The issue is how to choose the tool that best fits each organization's scenarios.</i></p>
+<p><i>This InfoQ article is part of a <a href="http://www.infoq.com/configuration-management-tools/articles">series</a> that aims to introduce some of the configuration tools on the market, the principles behind each one and what makes them stand out from each other. You can subscribe to notifications about new articles in the series <a href="http://www.infoq.com/feed/Configuration-Management-Tools">here</a>.</i></p><br><br><br><br><br><br></body></html>

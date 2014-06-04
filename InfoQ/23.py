@@ -1,33 +1,34 @@
-<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>ビッグデータ技術を用いたグラフ処理</h3><p><a target="_blank" href="http://www.infoq.com/news/2014/03/graph-bigdata-tapad"><em>原文(投稿日：2014/03/17)へのリンク</em></a></p>
+<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>Cascading 3.0 が複数のフレームワークをサポート。 Concurrent Driven によるビッグデータアプリケーションの管理</h3><p><a target="_blank" href="http://www.infoq.com/news/2014/05/driven"><em>原文(投稿日：2014/05/13)へのリンク</em></a></p>
 <div class="article_page_left news_container text_content_container"> 
  <div class="text_info"> 
-  <p>極度に大きなグラフの処理は現在でもなお難しい問題だ。しかし最近のビッグデータ技術の進歩は，このようなタスクをより実用的なものにしている。ニューヨークを拠点にクロスデバイスなコンテント配信を手掛けている<a href="http://www.tapad.com/">Tapad</a>はビッグデータを活用して，テラバイトサイズのデータにまで拡張可能なグラフ処理を，ビジネスモデルの中心とするスタートアップだ。</p> 
-  <p>FacebookやTwitterなどソーシャルネットワークには，グラフ表現に適したデータが含まれている。一方でグラフは，Tapadのデバイスグラフのように，もっと不明確なデータの表現に使用することもできる。Tapadの共同創設者でCTOの<a href="http://www.tapad.com/team-member/dag-liodden/">Dag Liodden</a>氏は，デバイスの表現方法としてグラフが合理的である理由を，次のように説明する。</p> 
-  <blockquote>
-   Tapadではデバイス間の関係をモデル化するために，グラフ指向のアプローチを採用しています。このDevice Graph上では，匿名の識別子(クッキーIDなど)がノードとして表現されます。これらのノードを，マーケティング情報として追跡しているのです。ノード間のエッジには，決定論的データおよび統計的確率論モデルと機械学習技術とを組み合わせて，採点や重み付けが行われます。&quot;デバイス&quot;というコンセプトは，開始デバイス / ノード(例えばあるブラウザのクッキーID)とノードのコレクション(例えばタブレットとネット接続テレビのクッキーID)を使って，特定のエッジ制約のセットに到達可能な開始点，というように定義されるものです。単に情報をひとつのノードに集めるのではなく，実際のグラフ構造として保持することで，正確性と拡張性の動的なバランスをとる柔軟性が生まれるのに加えて，新たなエッジ推測モデルによるグラフの強化も容易になります。
-  </blockquote> 
-  <p>適切なツールを適切な作業に使用することは重要である。グラフ処理も同じことだ。氏が言うように，従来的なワークロードで処理可能なグラフであれば，ビッグデータ技術を使用する必要はまったくない。</p> 
-  <blockquote>
-   私にとって&quot;ビッグデータ&quot;とは，データの保存や解析が汎用的な既製ツールの小さなセットでは間に合わなくなり，個々のユースケースに合わせた技術を用いる必要が生まれる，その境界値のことです。ソフトウェアとハードウェアのソリューションの進化と成熟に伴って，この境界値は毎年移動しています。一方で私たちの扱うデータサイズや，実施すべき分析の高度化のレベルも同じように変わってきています。
-  </blockquote> 
-  <p>Facebookの場合，この境界値は一桁のペタバイトの位置にあると，<a href="http://www.sigmod.org/2013/">ニューヨークで行われた2013 ACM SIGMODカンファレンス</a>の<a href="http://borthakur.com/ftp/sigmod2013.pdf">提出資料</a>に詳述されている。 Tapadがグラフで扱うデータはこれよりも少ないが，それでも従来の方法で処理するのは不可能な量だ。</p> 
-  <blockquote>
-   米国のグラフには現在，携帯電話やタブレット，ノートPC，ゲーム機やTVなど，全部で11億ほどのノードがあります。中には一時的なノードもあります。例えばブラウザの非永続的なクッキーによるものなどは，データ量も少ないですしエッジもありません。一時的でないノードは平均で５つのエッジと，行動セグメントやそれに関連した500程度の固有情報を保持しています。ライブグラフのデータには数TBの容量があり，複数のデータセンタに渡って毎秒数十万回の読み取り／書き込みが行われています。最新のグラフデータは地理的に相互複製されます。各データセンタは現在，20TBのフラッシュSSDストレージと2TBのRAMを搭載したサーバ群で運用されています。
-  </blockquote> 
-  <p>大規模なグラフ処理に使用される技術の数は，ここ数年間で急増している。特に2013年には，いくつもの新技術がこのエコシステムに登場した。システムとして考えた場合，これらは２つのクラスに分類される。</p> 
+  <p class="MsoNormal">ビッグデータアプリケーションを実装するにあたり、企業は<span style="mso-ascii-font-family:Calibri;mso-hansi-font-family:Calibri;mso-bidi-font-family:
+&quot;Helvetica Light&quot;;color:#343434">Apache </span><a href="http://hadoop.apache.org/"><span style="mso-ascii-font-family:Calibri;
+mso-hansi-font-family:Calibri;mso-bidi-font-family:&quot;Helvetica Light&quot;">MapReduce</span></a><span style="mso-ascii-font-family:Calibri;mso-hansi-font-family:Calibri;mso-bidi-font-family:
+&quot;Helvetica Light&quot;;color:#343434">、Apache </span><a href="http://tez.incubator.apache.org/"><span style="font-family:&quot;Calibri Light&quot;,&quot;sans-serif&quot;;
+mso-ascii-theme-font:major-latin;mso-fareast-font-family:&quot;Times New Roman&quot;;
+mso-hansi-theme-font:major-latin">Tez</span></a><span class="MsoHyperlink"><span style="font-family:&quot;Calibri Light&quot;,&quot;sans-serif&quot;;mso-ascii-theme-font:major-latin;
+mso-fareast-font-family:&quot;Times New Roman&quot;;mso-hansi-theme-font:major-latin"> </span></span><span style="mso-ascii-font-family:Calibri;mso-hansi-font-family:Calibri;mso-bidi-font-family:
+&quot;Helvetica Light&quot;;color:#343434">、Apache </span><a href="http://spark.apache.org/"><span style="font-family:&quot;Calibri Light&quot;,&quot;sans-serif&quot;;
+mso-ascii-theme-font:major-latin;mso-fareast-font-family:&quot;Times New Roman&quot;;
+mso-hansi-theme-font:major-latin">Spark</span></a><span style="mso-ascii-font-family:
+Calibri;mso-hansi-font-family:Calibri;mso-bidi-font-family:&quot;Helvetica Light&quot;;
+color:#343434"> あるいは Apache </span><a href="http://storm.incubator.apache.org/"><span style="mso-ascii-font-family:Calibri;mso-hansi-font-family:Calibri;mso-bidi-font-family:
+&quot;Helvetica Light&quot;">Storm</span></a> など、数々のフレームワークを選ぶことができる。 <span class="MsoHyperlink"><span style="mso-ascii-font-family:Calibri;mso-hansi-font-family:Calibri;mso-bidi-font-family:
+&quot;Helvetica Light&quot;;color:windowtext;text-decoration:none;text-underline:none">これらのフレームワークには一長一短があり、どれが最適かはアプリケーション次第である。全てのフレームワークを一つの Apache YARN クラスタで実行することは可能であるが、各フレームワークには少しづつ違ったプログラミングモデルがあり、互換性のない API を使わなければならず、アプリケーションをフレームワークからフレームワークへと移植するのは容易ではない。</span></span></p> 
+  <p class="MsoNormal">Concurrent の主要製品であり、新製品でもある <a href="http://www.cascading.org/%20">Cascading 3.0</a> はこれらの問題の多くを解決する。Cascading は人気のある Java <a href="http://ja.wikipedia.org/wiki/%E3%83%89%E3%83%A1%E3%82%A4%E3%83%B3%E5%9B%BA%E6%9C%89%E8%A8%80%E8%AA%9E">ドメイン固有言語</a><span style="mso-spacerun:yes">&nbsp; </span>(DSL) の一つであり、MapReduce API を使用した大規模データワークフローのための関数プログラミングを定義し、実装するためのDSLとして２００７年後半に登場した。 Cascading は “配管” のイメージで、データのパイプラインを構築する: 構成要素はデータの流れを分配したり、合流したり、取り付けることができ、さらには演算処理を一連の流れとして実行することができる。</p> 
+  <p class="MsoNormal">このためユーザは Cascading アプリケーションを<a href="http://ja.wikipedia.org/wiki/%E9%96%89%E8%B7%AF">閉路</a>を持たない<a href="http://ja.wikipedia.org/wiki/%E6%9C%89%E5%90%91%E3%82%B0%E3%83%A9%E3%83%95">有向グラフ</a> (DAG) として表すことができる。 これは Cascading の planner によって、元はMapReduceである基礎的なフレームワークに変換されたものである。</p> 
+  <p class="MsoNormal">Cascading 3.0 は MapReduce 以上のものを提供する。企業の開発者はデータ処理をするアプリケーションを一度開発し、それを業務目的に最も適したフレームワーク上で実行することができる。 Cascading 3.0 がまずサポートするのは: ローカルのインメモリ、 Apache MapReduce ( Hadoop 1 と 2 どちらもサポートされる)、 そして Apache Tez である。 まもなくコミュニティの支援を用いて、 Apache Spark™、 Apache Storm その他のフレームワークが、プラグイン可能でカスタマイズできる新しい planner を通じてサポートされる予定である。</p> 
+  <p class="MsoNormal">Cascading 3.0 から導入される新しい planner は、実行時にローカルトポロジに基づいたメタデータを用いてグラフの正確性を確認したり、グラフのノードをアノテートすることができる。　この planner はグラフを変換してノードを平衡化、挿入、削除及び並び替えをすることができる。 さらにはグラフを分割して、再帰的により小さい計算単位（例えば Map や Reduce ノード、あるいは Tez プロセス）に対応する部分グラフを探す。</p> 
+  <p class="MsoNormal">一旦適切な計算単位が定義されると、Cascading は実行時の設定を構築する。これにはフレームワークの全てのAPI群を切り分ける jar （と Maven POM） が用いられる。これらの jar と POM は Cascading　が提供する。</p> 
+  <p class="MsoNormal">Cascading 3.0 が実装するオープンでプラグイン可能な構造により、製品は容易にサポートするフレームワークを追加できるようになる。 これを行うには指定されたフレームワークとそのフレームワークに必要な jar や POM のための新しいルールセットを実装する。</p> 
+  <p class="MsoNormal">Cascading 3.0 をオープンソースにしたのに加えて、Concurrent は最近商用製品 <a href="http://cascading.io/">Driven</a> を発表した。 これはリアルタイム監視や、運用のためのコントロール、そして Cascading アプリケーションのパフォーマンス管理機能を提供する。 Driven には次の機能をサポートするためにいくつかの画面がある:</p> 
   <ul> 
-   <li>グラフデータのごく一部に少ない遅延で素早くアクセスする，OLTPワークロード用のグラフデータベース。</li> 
-   <li>グラフの大半をバッチ処理可能な，OLAPワークロード用のグラフ処理エンジン。</li> 
+   <li>Understand – 実行中のデータ・アプリケーションをリアルタイムに可視化し、各処理をさらに視覚的に掘り下げる。</li> 
+   <li>Diagnose – 失敗した処理（とその理由）や、パフォーマンスの悪いアプリケーションを素早く確認する。</li> 
+   <li>Optimize – 視覚的にアプリケーションの処理状況を分析し、パフォーマンスの問題や異常を発見する。</li> 
+   <li>Track – アプリケーションのリアルタイムなパフォーマンスを視覚化や、過去のデータとの比較をする。</li> 
   </ul> 
-  <p>グラフデータベースにはすでに<a href="http://en.wikipedia.org/wiki/Graph_database#Graph_database_projects">多数の</a>製品があるが，さらにいくつかのプロジェクトが登場し，最近では差別化も行われている。<a href="http://www.neo4j.org/">Neo4j</a>はもっとも古く，もっとも成熟したグラフデータベースのひとつだが，<a href="http://stackoverflow.com/a/21566766/1332690">シャーディングをサポートしていない</a>ことによるスケール性の問題をいまだ残している。その他のデータベースでは，かなり新しい製品ではあるが，2013年に多くの支持を得るようになったのが<a href="http://thinkaurelius.github.io/titan/">Titan</a>だ。バックエンド非依存のデータベースとして<a href="https://hbase.apache.org/">HBase</a>，<a href="http://cassandra.apache.org/">Cassandra</a>などスケーラブルなアーキテクチャを活用可能であると同時に，最適化された頂点とエッジによる表現を内部で使用することにより，数十億のエッジまでスケール可能であると，<a href="http://thinkaurelius.com/2013/05/13/educating-the-planet-with-pearson/">2013年のブログ記事</a>には発表されている。</p> 
-  <p>しかしながら，グラフ用の特別なデータベースは必須ではない。もっと汎用的でスケーラブルなNoSQLデータベースでも，問題に対する効果的なソリューションとなり得る。Googleの<a href="http://research.google.com/archive/bigtable.html">BigTable</a>をベースとして2011年にオープンソース公開された<a href="https://accumulo.apache.org/">Aapche Accumulo</a>は，大規模なグラフ保存に適した汎用データベースの一例である。柔軟なレコード構造によってグラフの型付きエッジやウェイトの保存が可能なこのデータベースは，NSAで実際に使用されている，と<a href="http://www.pdl.cmu.edu/SDI/2013/slides/big_graph_nsa_rd_2013_56002v1.pdf">2013年に出版されたテクニカルレポート</a>にはある。その他の例としては，Cassandraあるいは<a href="http://www.aerospike.com/">Aerospike</a>なども，適切なデータモデルを使用することで，グラフのエッジや頂点やウェイトのモデル化が可能だ。Facebookもまた，MySQLとMemcacheを使用した独自のソリューションを<a href="https://www.facebook.com/notes/facebook-engineering/tao-the-power-of-the-graph/10151525983993920">Tao</a>と呼ばれるシステム内に構築して，ユーザへのソーシャルグラフ提供に利用している。Tapadのデバイスグラフ設計でもこれと同じ原理を使用している，と氏はいう。</p> 
-  <blockquote>
-   トラバースと更新を高速化するため，ライブグラフはキーバリューストアに保存されています。また定期的にスナップショットグラフをHDFSに保存して，より複雑なグラフ処理や，他のデータストリームによる補填に使用できるようにしています。その結果は，後で&quot;ライブグラフ&quot;にフィードバックされます。グラフ専用のデータベースを使うことにもメリットはあります。ですが私たちは現在，キーバリューストアを用いた非常に高速かつシンプルなグラフのトラバースと，Hadoopの提供する低速だが非常にフレキシブルなトラバースと分析を併用する方法を採用しています – 現時点では，ですが。
-  </blockquote> 
-  <p>データベースに格納されたグラフを使用するにしても，実行可能なオペレーションは，おそらく参照や限定的なトラバースに限られるだろう。グラフの大部分をもっと複雑に解析するには，バッチ処理用の分散フレームワークが不可欠だ。<a href="http://graphlab.org/projects/source.html">GraphLab</a>フレームワークは，パフォーマンスを最大化するために<a href="http://en.wikipedia.org/wiki/Message_Passing_Interface">MPI (Message Passing Interface}</a>モデルを採用して，HDFS内のデータを対象とした複雑なアルゴリズムを大規模に実行可能としている。より新しい<a href="https://giraph.apache.org/">Apache Giraph</a>や<a href="https://hama.apache.org/">Apache Hama</a>などのフレームワークでは，Googleの<a href="http://googleresearch.blogspot.com/2009/06/large-scale-graph-computing-at-google.html">Pregel</a>プロジェクトで有名になった<a href="http://en.wikipedia.org/wiki/Bulk_synchronous_parallel">BSP(Bulk Synchronous Parallel)</a>パラダイムを基盤とする。さらに最新のエコシステムには，2013年に公開された<a href="https://spark.incubator.apache.org/">Spark</a>上で動作する<a href="https://amplab.cs.berkeley.edu/publication/graphx-grades/">GraphX</a>プロジェクトや，<a href="http://hadoop.apache.org/">Hadoop</a>を使って<a href="http://en.wikipedia.org/wiki/MapReduce">MapReduce</a>ジョブを実行し，Titanデータベース上でグラフ処理を行う<a href="http://thinkaurelius.github.io/faunus/">Faunus</a>などが加わっている。Tapadではオフライングラフデータの処理に，これら新しい技術を使用している。氏によれば，</p> 
-  <blockquote>
-   今のところ，グラフ処理フレームワークとしてはApache Giraphを中心に使用していますが，Spark GraphXやGraplabについても試験中です。これらのフレームワークはどれもかなり若いのですが，学習曲線の上昇率は非常に高く，いずれも長所と短所，注意すべき点があります。例えば，GiraphとGraphXにHadoopインフラストラクチャとの相性がよいという利点がある一方で，Graphlabはそのパフォーマンスそのものが非常に魅力的である，というようにです。
-  </blockquote> 
-  <p>OLTPとOLAPクエリの両方に対応可能な，統合的なフレームワークを提供しようとしているプロジェクトもある。<a href="http://lab41.co/">Lab41</a>の<a href="https://github.com/Lab41/Dendrite">Dendrite</a>は，そのようなプロジェクトのひとつだ。ストレージとプロセッシングにTitanとGraphLabを，ビジュアル処理に<a href="http://angularjs.org/">AngularJS</a>を使用する。2014年初めに発表されたばかりの非常に若いプロジェクトであるため，コミュニティの評価も限定的だが，すべてのユースケースをカバーしようという点が，今後の採用を後押しするに違いない。</p> 
+  <p class="MsoNormal">Concurrent の新しい製品によって、アプリケーションは Apache Tez 等の優れた新しいフレームワークへ移行しやすくなる。これによって企業はビジネスの要求に合う一つのAPIで標準化を行い、様々な業務上の問題に対処することができる。また、より新しく、より問題に適したビッグデータフレームワークを大量の書き直しをすることなく導入できる。Driven は新規及び既存のビッグデータアプリケーション運用状況を、開発から本番環境に至るまで可視化する。</p> 
+  <p>&nbsp;</p> 
  </div> 
 </div><br><br><br><br><br><br></body></html>

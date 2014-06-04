@@ -1,39 +1,102 @@
-<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>基于反馈控制实现可靠的自动扩展服务</h3><h2>介绍</h2>
-<p>当我们部署服务应用到生产环境时，需要决定在线的服务器数量。这是个困难的决定，因为对于一个指定的流量负载，通常我们不知道需要多少服务器。因此，人们为了“安全起见”，不得不使用更多（也可能是过多）的服务器。但是服务器是有成本的，所以这样做会让事情变得过于昂贵。</p>
-<p>事实上，事情比这还要糟糕。流量不会一整天都保持不变。如果我们按高峰期流量部署服务器，那么基本上大部分的服务器大多数时间都处于使用率不足的状态。特别是在一个基于云的部署场景中，服务器实例能够在任何时刻自由分配，我们应该能够意识到，如果不论何时，我们都只激活处理该时刻负载所需的服务器实例，那么就能显著地节省成本。</p>
-<p>对于这个问题，一种可能的办法是使用一个固定的时间表，对一天中的每个小时都指定（以某种方式）所需的服务器实例数量。这种方法的难点是固定的时间表无法处理随机的变化：如果由于某种原因，今天的流量比昨天大10%，那么这个时间表将无法提供额外的服务器来处理这个意料之外的负载。同样地，如果流量峰值提前了半个小时，一个基于固定时间表的系统也将无法应对。</p>
-<p>与其使用一个固定的（基于时间的）计划，我们也可以考虑一种基于规则的解决方案：对任何给定的流量负载，我们有一种规则来指定使用多少服务器实例。这个方案比基于时间表的方案更具有弹性，但它需要我们（提前）知道处理每种流量负载需要多少服务器。而且如果流量的性质发生变化，这是有可能发生的，例如，如果需要长时间运行的查询的比例增加了，会发生什么呢？基于规则的方案将无法正确应对。</p>
-<p>反馈控制是一种设计模式，它完全能够处理所有这些挑战。通过持续监视一些服务指标（例如响应时间），如果指标值偏离期望值，则做出适当的调整（例如增加或减少服务器）。因为反馈来源于被控制系统的实际行为，因此它能够处理甚至不可预见的事件（例如流量超出了所有的预期）。另外，对比之前基于规则的方案，反馈控制只需要很少的被控制系统的相关信息。其原因是反馈是真正的自我修正：因为持续对服务质量指标进行着监测，一旦它偏离期望值，将被立即观察到并立即进行修正。而且在必要时，这个过程是可以重复的。简单地说：如果响应时间恶化，反馈控制系统只需激活额外的服务器实例，如果仍然没有改善，它就再增加更多的服务器实例。这就是反馈控制的全部过程。</p>
-<p>反馈控制一直是机械和电气工程的标准方法，但在软件架构中，它很少作为一种设计理念。它特别适用于信息不完整，并且会随机变化的情况，它与计算机科学确定性的算法解决方案完全不同。最后，尽管反馈控制的概念很简单，但要使其生效，在一个生产环境中部署一个真实的控制器仍然需要了解和明白一些实战“技巧”。本文将介绍一些概念和常见的困难。</p>
+<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>基于开源软件在Azure平台建立大规模系统的最佳实践</h3><h2>前言</h2>
+<p>Microsoft Azure 是微软公有云的唯一解决方案。借助这一平台，用户可以以多种方式部署和发布自己的应用。 这是一个开放的平台，除了对于Windows服务器和SQL Server的支持，Microsoft Azure也支持了大量主流开源软件和框架，包括Linux, Tomcat&reg;, Java&reg;等。如何将一个基于开源软件的系统迁移到Microsoft Azure平台，并充分发挥云在弹性、敏捷性等方面的优势? 本文和读者分享一些最佳实践经验，并在文末以中国网络电视台的系统迁移作为参考案例。</p>
+<p>阅读本文之前，希望读者对Microsoft Azure有所了解。读者可以登录<a href="http://www.windowsazure.cn">http://www.windowsazure.cn</a> 得到关于这一平台的各项信息。本文提到了如下概念：</p>
+<p>- 基础设施即服务(IaaS: Infrastructure as a Service): 消费者通过互联网获得计算机基础设施类的资源，包括计算资源（虚机），存储资源和网络资源等。</p>
+<p>- 平台即服务(PaaS: Platform as a Service): 云平台的服务提供商对资源在IaaS的基础上做进一步封装，将IaaS层对用户透明。消费者借助开发工具和一系列开发语言，在云平台上构建自己的应用，而无需管理和维护虚机、存储、网络等基础设施。</p>
+<h2>在Azure中使用Linux虚拟服务器:</h2>
+<p>Azure平台目前支持三种类型的Linux操作系统: UBUNTU, CENTOS和SUSE。他们的版本分别是:</p>
+<p>- Ubuntu Server 12.04 LTS</p>
 <div id="lowerFullwidthVCR"></div>
-<h2>反馈回路的本质</h2>
-<p>下图显示的是一个基本的反馈回路。在右侧，我们看到控制系统。它的“输出”是相关的服务质量指标。指标的值不停地提供给控制器，与左侧输入的期望值进行比较（系统的输出指标的期望值被称为“设定值”）。基于这两个输入（服务质量指标的实际值与期望值），控制器计算出控制系统合适的控制动作。例如，如果响应时间的实际值比期望值慢，控制动作将包括激活额外的服务器实例。</p>
-<p><img src="http://infoqstatic.com/resource/articles/auto-scaling-feedback/zh/resources/0224004.jpg" width="600" _href="img://null" _p="true" alt="" /></p>
-<p>该图显示了所有反馈回路的通用结构。它的基本组件是控制器和被控制的系统。信息从系统的输出流经返回路径到达控制器，与“设定值”进行比较。通过这两个输入，控制器决定相应的控制动作。</p>
-<p>那么，控制器实际上做了哪些工作？它如何决定应该采取什么动作？</p>
-<p>要回答这个问题，我们要记住使用反馈控制的主要目的是减少系统实际输出与期望值的偏差。这个偏差可以表示为“跟踪误差”：</p>
-<pre>
-误差 = 实际值 – 期望值</pre>
-<p>为了减少这种误差，控制器可以做任何它认为合适的事情。我们当然有绝对的自由来设计这个算法，但是我们要知道被控制系统的一些知识。</p>
-<p>让我们重新考虑数据中心这个场景。我们知道增加服务器数量可以减少平均响应时间。所以，我们可以选择这样一种控制策略，当实际响应时间比期望值差时，就增加在线服务器的数量（如果情况相反，则减少服务器数量）。但其实我们还能做得更好，因为这个算法只有标志，没有将误差的大小考虑在内。如果跟踪误差很大，我们就应该做更大的调整。事实上，通常的做法是将控制动作正比于跟踪误差。</p>
-<pre>
-动作 = k * 误差</pre>
-<p>其中k是一个数值。选择这种算法，大的偏差将导致大的修正动作，而小的偏差将导致相应较小的修正。这两个方面都很重要：大动作是为了快速减少大的偏差。但同样重要的是当误差较小时，控制动作应该变小。我们只有做到这一点，控制循环才会趋向于一个稳定的状态。否则，其行为将总是围绕着期望值振荡，通常我们希望避免这种结果。</p>
-<p>正如我们之前所说的：可以自由地为反馈控制器选择特定算法，但通常保持简单是一种好的设计思想。反馈控制的“神奇”取决于信息流的回路结构，而不是那些特别复杂的控制器。为了允许更简单的控制器，反馈控制需要更复杂的系统架构。</p>
-<p>然而有一件事是必须确保的：控制动作必须在正常的方向上。为了保证这一点，我们应该对被控制系统的一些行为有所了解。通常这不是问题，正如我们知道更多的服务器意味着更快的响应时间，等等。但是这是一个我们必须知道的关键信息。</p>
-<h2>具体实现面临的问题</h2>
-<p>目前为止，我们关于反馈控制的描述大部分是概念。然而，将这些高级别的想法转换成具体实现时，需要处理一些实现细节。最重要的是对于跟踪误差的大小应该产生多大的控制动作。（如果我们使用之前的公式，就是要为常量k选择一个值。）</p>
-<p>在控制实现中，为这个常量选择特定值的过程，被称为控制器“调试”。控制器调试是工程上权衡的一种表达方式：如果我们选择相对较小的控制动作，控制器将缓慢地响应，跟踪误差将保持较长时间。另一方面，如果我们选择较大的控制动作，控制器将快速响应，但是也存在“过度修正”的风险，导致相反方向的误差。如果我们让控制器做过大的动作，可能让控制回路变得不稳定：当发生这种情况时，控制器尝试用不断增长的序列动作来补偿每个偏差，所有时间都在增加动作幅度，从一个极端摆到另一个极端。这种形式的不稳定比缓慢操作更糟糕，因此必须避免。控制器调试的挑战是在不造成回路不稳定的前提下，找到控制动作的最大值。</p>
-<p>在选择控制动作的大小时，通常的作法是逆向工作：给定一个某种规模的跟踪误差，多大的修正动作能够完全消除这个误差？请记住，我们不需要精确地知道这个值，反馈控制的自修正特性确保在选择调试参数值时可以有一定的公差。但我们至少要保证量级的顺序是正确的。（换句话说：要将平均查询响应时间提高0.1秒，我们大约要增加一台、十台还是一百台服务器？）</p>
-<p>有些系统对控制动作的响应比较慢。例如，一台新的（虚拟的）服务实例，可能要花几分钟的时间，才能开始接收传入的请求。在这种情况下，我们要把这种滞后或延迟考虑在内：在增加的实例生效前，跟踪误差将持续存在，我们必须防止控制器增加更多的实例，否则，我们最终将有太多的服务器在线。不能快速响应的系统是一种特殊的挑战，需要加倍小心。然而，已经有现成的方法来“调试”这类系统。（基本上，首先需要了解滞后或延迟的时间，然后使用专门的插件公式获得调试参数值。）</p>
-<h2>需要特别考虑的因素</h2>
-<p>我们要始终牢记反馈控制是一种反应式控制策略：事情会先变得糟糕（至少有一点糟糕），然后才会有修正动作。如果这是不能接受的，那么反馈控制可能不适合。在实践中，这通常不是问题：一个调试良好的反馈控制器将检测并响应甚至非常小的偏差，通常能保证系统比基于规则的策略或人工操作更接近于它所需的行为状态。</p>
-<p>一个更加需要严重关注的情况是，没有一种反应式控制策略能够处理比控制动作生效更快的干扰。例如，如果增加在线服务器实例需要几分钟时间，那么我们无法响应几秒甚至更短时间内的流量峰值。（与此同时，我们完全能够处理几分钟或几小时内的流量变化。）如果我们需要处理波形非常尖的负载，那么我们必须想办法提高控制动作的速度（例如提供热备用服务器），或者采用非反应式的机制（例如使用消息缓冲）。</p>
-<p>另一个值得考虑的问题是如何选择服务质量的度量方式。反馈控制器最终做的唯一事情是保持输出值与期望值匹配，因此我们要确保我们选择的度量方式能够很好地表达这种行为。同时，在任何时间，这种度量方式都必须是有效且快速的。（例如，我们无法在一个有明显延迟的度量方式上构建一个有效的控制策略。）最后要考虑的是这种度量方式不能有太多的噪音，因为噪音可能“干扰”控制器。如果这种度量方式本身会有噪音，那么通常需要先进行平滑处理之后才能用于控制信号。（例如，与最近一个请求的响应时间相比，最近数个请求的平均响应时间是一个更好的信号：取平均值能够平滑随机的变化。）</p>
-<h2>总结</h2>
-<p>虽然我们介绍了数据中心自动扩展的反馈控制，但它其实有更广泛的应用领域：不论我们是需要维护一些期望的行为，还是面对不确定和变化，都应该考虑将反馈控制作为一个选项。它比确定性的方法更可靠，也比基于规则的解决方案更简单。但它需要新的思考方式，并且明白一些特定的技术才能生效。</p>
-<h2>延伸阅读</h2>
-<p>本文只介绍了反馈控制的一些基本概念。更多信息请访问<a href="http://programming.oreilly.com/pjanert">我的博客</a>或者阅读<a href="http://shop.oreilly.com/product/0636920028970.do">我的书</a>（Feedback Control for Computer Systems; O'Reilly, 2013）。</p>
-<h2>关于作者</h2>
-<p><strong>Philipp K. Janert</strong><strong>提供数据分析和算法建模的咨询服务，他之前的职业是物理学家和软件工程师。他是最畅销书《基于开源工具的数据分析》（</strong>O'Reilly<strong>）和《</strong>Gnuplot in Action: Understanding Data with Graphs》（Manning Publications）<strong>的作者。在他最近的著作《</strong>Feedback Control for Computer Systems》中，他演示了汽车巡航控制的原理也同样适用于数据中心的管理和其它企业系统。他也为O'Reilly Network、IBM developerWorks和IEEE Software撰写文章。他拥有华盛顿大学理论物理学的博士学位。您可以访问他公司的<a href="http://www.principal-value.com/">网站</a>。</p>
-<p><strong>原文英文链接：</strong><a href="http://www.infoq.com/articles/auto-scaling-feedback">Reliable Auto-Scaling using Feedback Control</a></p><br><br><br><br><br><br></body></html>
+<p>- Ubuntu Server 12.10</p>
+<p>- Ubuntu Server 13.10</p>
+<p>- Ubuntu Server 14.04 LTS</p>
+<p>- OpenLogic</p>
+<p>- SUSE Linux Enterprise Server 11 SP3</p>
+<p><img src="http://infoqstatic.com/resource/articles/best-practices-of-building-large-scale-systems/zh/resources/0519040.png" width="600" _href="img://null" _p="true" alt="" /></p>
+<p>在Azure平台使用Linux虚机，有如下最佳实践帮助用户得到更好的体验。</p>
+<h3>为Linux 配置交换分区(SWAP)</h3>
+<p>在Linux中保留swap分区有两个重要的原因:</p>
+<ol> 
+ <li>当物理内存不足以支撑系统和应用程序（进程）的运作时，这个 swap 空间可以用作临时存放使用率不高的内存分页，把腾出的内存交给急需的应用程序（进程）使用。</li> 
+ <li>即使你的机器拥有足够多的物理内存，也有一些程序会在它们初始化时残留的极少再用到的内存分页内容转移到 swap 空间，以此让出物理内存空间。对于有发生内存泄漏几率的应用程序（进程），swap 空间更是重要，因为谁也不想看到由于物理内存不足导致系统崩溃。</li> 
+</ol>
+<p>在Azure平台上，当用户通过镜像库，创建出一台Linux服务器时，默认并没有分配任何交换分区。运行free命令，我们可以看到swap所对应的数字为0。</p>
+<p><img src="http://infoqstatic.com/resource/articles/best-practices-of-building-large-scale-systems/zh/resources/0519041.png" width="600" _href="img://null" _p="true" alt="" /></p>
+<p>读者也许会问，既然swap分区如此重要，为什么Azure平台的镜像不自动配置好swap分区？一个重要的原因是, swap分区的大小和位置是由用户各自的使用场景决定的，Azure保留客户自己定制的灵活性，把这一工作留给用户，在虚机创建之后进行。</p>
+<p>如何创建swap分区？下面的例子在/mnt/resource目录下创建5GB的swap分区。</p>
+<ol> 
+ <li>切换至root用户</li> 
+ <li>运行命令: fallocate –l 5g /mnt/resource/swap5g</li> 
+ <li>运行命令: chmod 600 /mnt/resource/swap5g</li> 
+ <li>运行命令: mkswap /mnt/resource/swap5g</li> 
+ <li>运行命令: swapon /mnt/resource/swap5g</li> 
+</ol>
+<p><img src="http://infoqstatic.com/resource/articles/best-practices-of-building-large-scale-systems/zh/resources/0519042.png" width="600" _href="img://null" _p="true" alt="" /></p>
+<h3>Linux虚机的非持久化磁盘</h3>
+<p>每一台Linux虚拟服务器都自带一块非持久化磁盘。这块磁盘的读写速度很高，但它并不存在于Azure的持久化存储设备上，而且在宿主机上。用户一定要注意不能把需要持久化的数据放在这个目录下/mnt/resource，否则当服务器重启以后，这些数据将会丢失。</p>
+<p><img src="http://infoqstatic.com/resource/articles/best-practices-of-building-large-scale-systems/zh/resources/0519043.png" width="600" _href="img://null" _p="true" alt="" /></p>
+<h2>在Azure中使用Tomcat</h2>
+<p>如果用户原有的应用部署于Tomcat服务器上，有两种迁移模式：IaaS和PaaS。使用IaaS模式，用户通过Azure创建虚机，并把Tomcat安装到虚拟服务器上，然后部署应用。使用PaaS模式，用户借助Azure提供的工具，将原有应用部署为“云服务”。如果客户的应用并不一定要求是Linux操作系统（即应用中没有使用到Linux操作系统的特殊功能），我们推荐的方式是PaaS。下面我们仔细讲解把Tomcat应用部署为Azure Cloud Service的优势和便利之处。（如何通过Eclipse将Tomcat应用部署到Azure，请参考官方文档: <a href="http://msdn.microsoft.com/library/azure/hh694271.aspx">http://msdn.microsoft.com/library/azure/hh694271.aspx</a> ）</p>
+<p>当我们在Eclipse中创建了Windows Azure工程以后，单击右键，选择“部署”。在弹出的部署对话框中，我们可以看到对于JDK和Tomcat的部署有三种方式：</p>
+<ol> 
+ <li>使用客户本地开发环境的JDK和Tomcat。 <p>这种方式最为直观，客户只需指定自己机器上JDK和Tomcat所在的位置即可。缺点是上传的时间较长。不过这样的工作只需在第一次部署时进行，以后更新应用程序时将不再需要。</p> </li> 
+ <li>使用第三方提供的在Windows Azure上的JDK。</li> 
+ <li>使用Azure存储中的JDK和Tomcat。</li> 
+</ol>
+<p>这种方式需要客户提前将JDK和Tomcat压缩包上传到Azure存储中。客户可以借助一系列工具，例如<a href="http://azurestorageexplorer.codeplex.com/">Windows Azure Storage Explorer</a>, <a href="http://blogs.msdn.com/b/windowsazurestorage/archive/2012/12/03/azcopy-uploading-downloading-files-for-windows-azure-blobs.aspx">AzCopy</a>等。这种方法最为快捷，也是笔者推荐的。</p>
+<p><img src="http://infoqstatic.com/resource/articles/best-practices-of-building-large-scale-systems/zh/resources/0519044.png" width="600" _href="img://null" _p="true" alt="" /></p>
+<h2>在Azure中使用MySQL</h2>
+<p>通过Microsoft Azure的镜像库部署CentOS虚拟服务器，在YUM Repository里自带了MySQL的安装程序包。用户可以很方便的通过”yum install mysql”安装MySQL服务器。对于部署了MySQL的虚机，请执行命令“chkconfig --list mysql”将MySQL进程加入到虚机启动程序里。这样，当虚机被重启时，可以保证MySQL服务自动恢复正常。</p>
+<p>如何实现MySQL的高可用性架构。客户有多种选择，例如通过MySQL, Heartbeat, DRBD来做虚机状态监控和数据同步。也可以选择Oracle版本的MySQL Cluster。在全球的Azure实例上，客户还可以直接采用ClearDB提供的MySQL as a Service。</p>
+<h2>对于大规模应用的最佳实践</h2>
+<h4>使用Azure PowerShell批量部署虚机</h4>
+<p>当我们需要部署上百台甚至更多的虚机时，使用基于浏览器的<a href="http://manage.windowsazure.cn/">Azure管理门户</a>是非常耗时的。特别是如果我们需要在短时间内将服务器就绪，使用图形界面人工操作更是不现实的。Azure管理门户提供的所有管理功能都可以通过<a href="http://az412849.vo.msecnd.net/downloads01/windowsazure-powershell.0.6.15.msi">PowerShell</a>来实现。对于非Windows环境，Azure也提供了<a href="http://az412849.vo.msecnd.net/downloads02/windowsazure-cli.0.6.17.msi">命令行接口</a>。</p>
+<p>例如，我们需要部署100台基于CentOS的Apache服务器。推荐的方法是首先通过Azure镜像库部署一台CentOS服务器（目前的版本是CentOS 6.5）。安装Apache，并对其进行自己需要的配置。之后，将这台虚机制作为镜像(image)。制作方法参考: <a href="http://azure.microsoft.com/en-us/documentation/articles/virtual-machines-linux-capture-image/">http://azure.microsoft.com/en-us/documentation/articles/virtual-machines-linux-capture-image/</a> 。制作完成后，我们就可以通过这个镜像文件，批量部署虚机。参考下面的PowerShell脚本。</p>
+<p><img src="http://infoqstatic.com/resource/articles/best-practices-of-building-large-scale-systems/zh/resources/0519045.png" width="600" _href="img://null" _p="true" alt="" /></p>
+<p>注意: Azure的云服务(Cloud Service)目前最多可以容纳50台虚机。如果您的应用程序需要50台以上的虚机，则需要创建多个云服务。</p>
+<h3>使用Azure的自动伸缩功能</h3>
+<p>很多时候，我们对系统规模的需要是动态的。例如一个投票系统，平时的用户访问量不大。当有大型活动（例如春晚）的时候，系统访问量激增。这是我们需要系统的规模随需而变。还有些爆发性增长是不可预测的。针对这种场景，Azure提供了自动伸缩功能。您可以根据 CPU 使用率的平均百分比或基于队列中的消息数指定缩放。</p>
+<p>在 Windows Azure 管理门户的“缩放”页上，您可以手动缩放应用程序，也可以设置参数使其自动缩放。您可以缩放运行 Web 角色、辅助角色或虚拟机的应用程序。若要缩放运行 Web 角色或辅助角色实例的应用程序，您需要添加或删除角色实例以适应工作负载。</p>
+<p>在配置应用程序的缩放之前，应考虑以下信息：</p>
+<ul> 
+ <li>您必须将虚拟机添加到可用性集，才能缩放使用它们的应用程序。您添加的虚拟机最初可能处于打开或关闭状态，但它们在扩展操作中将打开，在缩减操作中将关闭。有关虚拟机和可用性集的更多信息，请参见<a href="http://www.windowsazure.cn/zh-cn/manage/windows/common-tasks/manage-vm-availability/">管理虚拟机的可用性</a>。</li> 
+ <li>缩放受内核使用情况影响。较大的角色实例或虚拟机使用更多内核。您只能在您的订阅的内核限制内缩放应用程序。例如，如果您的订阅的上限是二十个内核，并且您通过两个中等规模的虚拟机（一共四个内核）运行某个应用程序，则对于订阅中的其他云服务部署，您只能扩展十六个内核。可用性集中用于缩放应用程序的所有虚拟机必须具有相同大小。</li> 
+ <li>您必须先创建队列并使其与角色或可用性集关联，然后才能基于消息阈值缩放应用程序。</li> 
+ <li>您可以缩放链接到云服务的资源。</li> 
+</ul>
+<h3>使用Azure虚拟网络提高整体性能</h3>
+<p>当我们使用Azure的IaaS服务创建虚机时，往往需要几台虚机之间达到高速的互连互通。例如，我们创建了一个Windows Server 2008 R2作为应用服务器，还创建了一台SQL Server 2008 R2 Standard作为数据库服务器。当应用服务器访问数据库服务器时，我们希望它们通过Azure内部网络（即后台数据中心中的网络)彼此对话，而不是要绕过Internet。要达到这个目标，有两种方法：</p>
+<ol> 
+ <li>将这些虚机放在同一个云服务里。</li> 
+ <li>将这些虚机放在同一个虚拟网络里。</li> 
+</ol>
+<p>在一个经典的三层架构的系统中，我们通常都要借助虚拟网络来部署虚机。由于目前一个云服务最多容纳50台虚机，仅使用云服务往往是不够的。因为系统规模扩大后，很可能超过50台的限制，这样我们就需要部署多个云服务。在多个云服务中，Azure并不保证虚机的互联互通走的是内网IP。如何使用虚拟网络部署虚机，读者可以参考这篇文章: <a href="http://blog.csdn.net/azureincubationchina/article/details/10212871">http://blog.csdn.net/azureincubationchina/article/details/10212871</a> 。</p>
+<p>在某种情况下，系统被部署成PaaS和IaaS混合的模式。例如Web服务器部署为云服务，数据库服务器部署在虚机上。这时，我们仍然希望Web服务器和数据库服务器处于同一虚拟网络中。要达到这一点，用户首先将IaaS虚机部署到某个虚拟网络中，之后编辑云服务的*.csfg文件，加入下面的段落即可。</p>
+<p><img src="http://infoqstatic.com/resource/articles/best-practices-of-building-large-scale-systems/zh/resources/0519046.png" width="600" _href="img://null" _p="true" alt="" /></p>
+<h2>中国网络电视台 (CNTV) 案例参考</h2>
+<p>有关CNTV在Microsoft Azure的应用场景和商业价值，读者可参考下面的文章。本文集中介绍技术架构部分。</p>
+<p>- Windows Azure助力马年春晚网络直播，为CNTV带来三大惊喜: <a href="http://blog.sina.com.cn/s/blog_6b8988220102edgt.html">http://blog.sina.com.cn/s/blog_6b8988220102edgt.html</a></p>
+<p>- CNTV转型“一云多屏”新媒体 微软Windows Azure保驾护航: <a href="http://www.cnetnews.com.cn/2014/0216/3011306.shtml">http://www.cnetnews.com.cn/2014/0216/3011306.shtml</a></p>
+<h3>技术架构</h3>
+<p>CNTV原有数据中心存在丰富的IT资源和关键数据，如何将原有IT系统与Windows Azure融合，以获得系统资源最佳的利用率和的效率是需要重点考虑的问题。CNTV的VDN视频分发网络需要达到每秒处理8万次用户请求，经过多次测试与论证，CNTV原有IT系统承担40%的用户请求，另外60%的用户请求将有Windows Azure完成，也就是CNTV内部设有一条基线，基线以下的业务放在原有IT系统中，而基线以上的业务则放在Windows Azure，比如每天有4000万的UV访问，基线是1600万的UV，超过1600万UV请求就会放在Windows Azure之上，而整个的切换过程属于无缝切换，用户完全感受不到。</p>
+<p>在Windows Azure中，CNTV的VDN前端Tomcat服务器采用Azure Cloud Service中的Worker Role，接收来自客户端的请求，并返回结果。用户使用Eclipse，安装Azure SDK插件作为开发和发布环境。在前端，用户部署了两个Cloud Service，一个部署在Azure北京数据中心，另一个在上海数据中心。在两个VIP的前端，用户的F5设备对HTTP请求进行分流。</p>
+<p>当Tomcat服务器接收到请求后，需要首先访问MEMCACHE服务器，查找数据，如果缓存中不存在要查询的数据，则访问后台MySQL数据库，并更新MEMCACHE。在Windows Azure中，MEMCACHE服务器和MySQL服务器，分别由多个实例组成负载均衡集。</p>
+<p>用户自有数据中心中运行着MySQL的主库。主库通过VPN连接，定期将数据同步到Windows Azure上的从库中。</p>
+<p><img src="http://infoqstatic.com/resource/articles/best-practices-of-building-large-scale-systems/zh/resources/0519047.png" width="600" _href="img://null" _p="true" alt="" /></p>
+<p>在Azure Cloud Service中，每种角色对应多个实例，属于同一个负载均衡集。当其中一台虚机发生问题，Windows Azure会自动生成一台新的虚机替换。当系统发生后台维护时，Windows Azure也会确保这组虚机不会同时重启，从而保证服务的延续性和系统的高可用性。</p>
+<p>对于数据库管理系统，MySQL Master DB在客户自有数据中心，Slave MySQL在Windows Azure中。两边通过MySQL Bin-log进行数据同步。同时，两台从库属于一个高可用集。通过开源框架Guzz实现了MySQL的读写分离。</p>
+<h2>参考文档</h2>
+<ol> 
+ <li>Windows Azure Plugin for Eclipse with Java</li> 
+ <li><a href="http://msdn.microsoft.com/library/azure/hh694271.aspx">http://msdn.microsoft.com/library/azure/hh694271.aspx</a></li> 
+ <li>下载Eclipse IDE: <a href="http://www.eclipse.org/downloads/">http://www.eclipse.org/downloads/</a></li> 
+ <li>下载Azure Storage Explorer: <a href="http://azurestorageexplorer.codeplex.com/">http://azurestorageexplorer.codeplex.com/</a></li> 
+ <li>下载针对Azure存储的高速上传和下载工具AzCopy: <a href="http://blogs.msdn.com/b/windowsazurestorage/archive/2012/12/03/azcopy-uploading-downloading-files-for-windows-azure-blobs.aspx">http://blogs.msdn.com/b/windowsazurestorage/archive/2012/12/03/azcopy-uploading-downloading-files-for-windows-azure-blobs.aspx</a></li> 
+ <li>下载Azure PowerShell: <a href="http://az412849.vo.msecnd.net/downloads01/windowsazure-powershell.0.6.15.msi">http://az412849.vo.msecnd.net/downloads01/windowsazure-powershell.0.6.15.msi</a></li> 
+ <li>下载跨平台命令行接口: <a href="http://az412849.vo.msecnd.net/downloads02/windowsazure-cli.0.6.17.msi">http://az412849.vo.msecnd.net/downloads02/windowsazure-cli.0.6.17.msi</a></li> 
+ <li>在Azure中为Linux虚机制作镜像文件: <a href="http://azure.microsoft.com/en-us/documentation/articles/virtual-machines-linux-capture-image/">http://azure.microsoft.com/en-us/documentation/articles/virtual-machines-linux-capture-image/</a></li> 
+ <li>如何缩放应用程序: <a href="http://www.windowsazure.cn/zh-cn/manage/services/cloud-services/how-to-scale-a-cloud-service/">http://www.windowsazure.cn/zh-cn/manage/services/cloud-services/how-to-scale-a-cloud-service/</a></li> 
+</ol>
+<hr />
+<p>感谢<a href="http://www.infoq.com/cn/author/马国耀">马国耀</a>对本文的审校，<a href="http://www.infoq.com/cn/author/刘大玮">刘大玮</a>和Shirley Wang对本文的策划。</p>
+<p>给InfoQ中文站投稿或者参与内容翻译工作，请邮件至<a href="mailto:editors@cn.infoq.com">editors@cn.infoq.com</a>。也欢迎大家通过新浪微博（<a href="http://www.weibo.com/infoqchina">@InfoQ</a>）或者腾讯微博（<a href="http://t.qq.com/infoqchina">@InfoQ</a>）关注我们，并与我们的编辑和其他读者朋友交流。</p><br><br><br><br><br><br></body></html>

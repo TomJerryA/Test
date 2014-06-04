@@ -1,6 +1,66 @@
 <html>
  <head></head> 
- <body> 
+ <body>
+  <div>
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/14.java">Facebook Unveils Jest for JavaScript Unit Testing, Automatic Mocking</a>Facebook has released Jest, built on top of the Jasmine test framework, for JavaScript Unit Testing. Jest automatically mocks dependencies when running tests, and uses CommonJS instead of a proprietary module loader.
+  </div>
+  <div>
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/13.java">Java Currency and Money Standard Forges Ahead</a>The Java standard for Currency and Money (JSR 354) currently under development reached another important milestone this May with the publication of a second Public Review draft. InfoQ spoke to Anatole Tresch of Credit Suisse who is leading the standardisation effort.
+  </div>
+  <div>
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/12.java">AWS Management Portal for VMware vCenter</a>Amazon Web Services (AWS) have announced a Management Portal plugin for VMware’s vCenter. The plugin allows public cloud EC2 instances to be managed alongside of private VMware instances using the same administration console. The aim of the plugin is to make it simple for VMware customers to build hybrid clouds that span from their private environments to Amazon’s public services.
+  </div>
+  <div>
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/11.java">DataTorrent 1.0 Handles &gt;1B Real-time Events/sec</a>DataTorrent is a real-time streaming and analyzing platform that can process over 1B real-time events/sec.
+  </div>
+  <div>
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/10.java">Designing SOA Systems with ServiceMatrix</a>The Particular Service Platform has four headline components: ServiceMatrix, ServiceInsight, ServicePulse, and the well-respected NServiceBus. Over the next few weeks, we’ll be looking at each in turn starting with ServiceMatrix, their SOA design tool.
+  </div>
+  <div>
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/9.java">Apple Releases Swift, a High-performance High-level Language for iOS and OSX</a>Today at WWDC 2014, Apple announced the beta availability of a new programming language, swift, which is set to ship with iOS 8 and OSX Yosemite later this year. Swift is a high-level programming language that will be familiar to JavaScript developers, but is compiled using LLVM to produce highly performant executable code for both OSX and iOS platforms.
+  </div>
+  <div>
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/8.java">What changes brought by C++14 could break a C++11 program?</a>C++14, the new C++ standard, will bring a host of changes to the language. Although it is planned to be a small extension over its predecessor, featuring mainly bug fixes and small improvements, it is inevitable that a few changes could make a correct C++11 program break under a C++14-compliant compiler. With the new standard approaching a mature status, it is now worth asking where the risk lies.
+  </div>
+  <div>
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/7.java">DDD Exchange Day 2014 in London due In Three Weeks</a>The sixth DDD Exchange Day in London is due in three weeks with a speaker list including Eric Evans, Martin Thompson, Alberto Brandolini and Greg Young. Eric will in his opening keynote challenge the fundamental assumptions of DDD and dig into the root assumptions to challenge each of them.
+  </div>
+  <div>
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/6.java">Play 2.3 Released: Modularization, Java 8 and WebJars</a>The Play 2.3 release increases modularization of the framework by separating parts from the framework. Also, the Play shell has been replaced by Activator, which includes a browser UI and project templates. InfoQ also talked to Play tech lead James Roper to learn more about the changes and futures plans.
+  </div>
+  <div>
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/5.java">Functional Patterns in Domain-Driven Design</a>Implementing Domain-Driven Design (DDD) concepts using object orientation principles with state and behaviour often gives you a muddled mutable model, instead building domain objects with only state and behaviour as standalone functions leads to a better realization, Debasish Ghosh claims in a recent blog post.
+  </div>
+  <div>
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/4.java">US Department of Defense (DoD) is Going Agile</a>US Department of Defense (DoD) is going agile with the help of Dr. Jeff Sutherland. DoD created a plan of IT modernization and started using new models of software acquisition.
+  </div>
+  <div>
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/3.java">PowerShell Desired State Configuration Takes on Linux</a>Microsoft continues to invest in PowerShell, its command-line shell and associated scripting language. PowerShell Desired State Configuration (DSC) can now manage Linux boxes in the same vein as it does for Windows. Microsoft open source DSC for Linux and is hosting the project at GitHub.
+  </div>
+  <div>
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/2.java">Git Gets Better Defaults, Faster</a>Git 2.0 is finally released, almost a month after the first release candidate was available. This comes with performance improvements such as introduction of bit-map indexes, as well as sensible defaults, especially helping first-time users.
+  </div>
+  <div>
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/1.java">Google Is Now Indexing JavaScript and CSS Content: Pitfalls to Avoid</a>Google has announced that Googlebot, its web crawler, now executes and indexes some content in JavaScript. This change could impact negatively search results, unless a few basic rules are taken into account.
+  </div>
+  <div>
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/0.java">Updated, Open Sourced Status.IE Site Boosts Multiplatform Web Development</a>The Status.IE project provides compatibility information for 4 major web browsers, allowing developers to see which features are available based on the browsers they need to support. Microsoft has open-sourced both the code serving the project and the data it offers, making it easy for developers to further their own development projects.
+  </div> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/49.java">Q&amp;A with Targetprocess Executives about Targetprocess v3</a>InfoQ spoke to Michael Dubakov &amp; Andrey Mihailenko of Targetprocess about the upcoming release of version 3 of the product. They discussed the new features which are included in the release and how these features can benefit customers. 
+  </div> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/48.java">Haskell Gets iOS Support, Several language and Performance Improvements</a>GHC 7.8.1 was recently released, bringing several language, compiler and performance improvements. Haskell can now be compiled for iOS, and sports new features such as Closed Type Families, Roles, Overloaded Lists, Pattern Synonyms. 
+  </div> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/47.java">Ember.js 1.5 Released: New Testing Features, Improved UX</a>The Ember.js team has released version 1.5, with new testing features, and an eager URL update that will “provide for a better UX 99% of the time,” according to Ember core team member Robert Jackson. Jackson, posting on the Ember.js blog, described the new version as having “a ton of bug fixes and small improvements” as well as new features in the release. 
+  </div> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/46.java">Matias Duarte, Android’s Chief Designer: Make Apps for Screens, Not for Mobile</a>Matias Duarte, Head of Design at Android, has recently held an interview on software design during Accel Design Conference 2014 underlining the need for a shift in software design approach from separate apps made for different devices to one app for multiple screens. 
+  </div> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/45.java">Build 2014 Retrospective</a>In this opinion piece, a look is taken at Microsoft's recent Build conference and how the company may be signaling its desire for an increased focus on attracting developers. 
+  </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/44.java">Windows Management Framework 5 Preview Introduces Package Manager And Network Switches Cmdlets</a>Microsoft announced the availability of the Windows Management Framework V5 Preview, which includes Windows PowerShell OneGet, a package manager in the spirit of yum and apt-get; a set of cmdlets to manage network switches; and some polishing on Windows PowerShell Desired State Configuration (DSC). 
   </div> 
@@ -90,66 +150,6 @@
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/18.java">AlchemyAPI and The State of Deep Learning</a>AlchemyAPI recently announced a taxonomy and a sentiment analysis API based on deep learning that can help transform digital content into ad inventory. IBM, Yahoo, Microsoft, Facebook, Google and others are working in the deep learning space. We take the high level view of what deep learning is all about and what are the key advances throughout the past months in the field. 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/17.java">Node.js Tools for Visual Studio Beta 1</a>Microsoft has just released a beta of Node.js Tools for Visual Studio, also known as NTVS. Notable for this release is support for the free version of Visual Studio, known formally as Visual Studio Express for Web, and TypeScript. 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/16.java">Introducing the .NET Foundation</a>Microsoft’s evolution towards a major open source player has reached the next step with the introduction of the .NET Foundation. The purpose of the foundation is to “be the steward of a growing collection of open source technologies for.NET” including ASP.NET MVC, Xamarin Mimekit, and the .NET Compiler Platform. 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/15.java">Google publishes FarmHash, a new family of hash functions for strings</a>Google has just announced FarmHash, a new family of hash functions for strings. FarmHash is a successor to CityHash, from which it inherits many tricks and techniques. FarmHash has multiple goals and claims to improve CityHash on several accounts. 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/14.java">IDC: The Past, Present and Future of HTML5</a>The recently released IDC study, The Evolving State of HTML5 by Al Hilwa, Research Director for Application Development, attempts to evaluate the advances made so far, the current state and takes a look at the future of HTML5 as a unifying web platform. 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/13.java">Changes to the Silverlight Runtime for Windows Phone</a>Until now we’ve been focusing on Common XAML, but now our attention turns to Silverlight for Windows Phone. Though Common XAML (i.e. Universal Apps) is meant to eventually replace it, the Silverlight framework is still a viable option for Windows Phone developers. 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/12.java">A Q&amp;A with the XAML Performance Leadership Team</a>This panel discussion mostly covers XAML, but there are still some thoughts on its relationship to WPF and the desktop in general. 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/11.java">C# Compiler Released As Open Source</a>The destination of Microsoft's Roslyn project has been revealed: the rewrite of the C# and VB compilers has been released under an open source license by Microsoft. Not only will users benefit from the improved tooling Roslyn supports, they can also look under the hood to add features or analyze behavior. 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/10.java">What’s New in Azure Networking</a>The new version of Azure brings with it enhanced options for private networks, virtual private networks, and multi-region load balancing. 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/10.java">A WPF Q&amp;A</a>A panel of 9 Microsoft desktop developers were available during a lunch time Q&amp;A. This session was not filmed, but we were able to record some of the WPF questions and Microsoft’s answers. 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/9.java">Highlights from Build 2014’s Second Keynote</a>Today felt like a day of housekeeping. Mostly it was about promoting products from preview/beta to production status. There were some big revelations around opening sourcing Roslyn the formation of the .NET Foundation, but even these were just doing what the community has been asking for all along. 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/8.java">Features of the New Windows Phone App Model</a>Windows Phone 8.1 has several features that developers can utilize to improve their apps and provide a better user experience. 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/7.java">Microsoft Speeds Up Windows Store Apps with .NET Native</a>.NET Native is an attempt from Microsoft to reduce the start up times and memory footprint of Windows Store applications. 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/6.java">Spark Gets a Dedicated Big Data Platform</a>Spark users can now use a new Big Data platform provided by intelligence company Atigeo, which bundles most of the UC Berkeley stack into a unified framework optimized for low-latency data processing that can provide significant improvements over more traditional Hadoop-based platforms. 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/6.java">Concerns about Measuring Velocity for Team Improvement</a>Agile teams measure the velocity of their sprints. It helps them to plan and track their progress and provides insight for product owners to plan product releases. Can teams also use velocity data when they want to improve themselves? Several authors have written about velocity and shared their concerns on measuring velocity to improve the productivity of teams. 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/5.java">Android/iOS Testing with Devices as a Service</a>As new combinations of hardware, operating system version, and carrier customizations continue to proliferate, testing mobile devices has grown increasingly challenging. Perfecto Mobile’s solution to this is their “Devices as a Service” offering called MobileCloud. Rather than purchasing all of the devices you need for testing, MobileCloud allows you to rent them on an hourly or monthly basis. 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/4.java">TypeScript 1.0 Released</a>Microsoft's TypeScript language has now reached official 1.0 status and is available for use on several platfroms, including VS2012/VS2013, Eclipse, and in source form. 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/4.java">Visual Basic 6: The Looming Crisis</a>It may come as a surprise to you, but Visual Basic 6 is still a major component of many larger enterprises, especially in the financial sector. And with Windows XP rapidly approaching its end of life companies are again left with the painful question of how to leave it behind. 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/3.java">Patterns and Anti-Patterns for Scalable and Available Cloud Architectures</a>More than anything else, architectural choices matter when designing a system with high scalability and availability. Using Azure customers as an example, Microsoft talks about the patterns and anti-patterns they see with their Azure customers and how it affects the four facets of system architecture. 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/3.java">Future-Proofing Desktop Applications for Hardware Enhancements</a>Though CPUs aren’t getting any faster, other hardware capabilities are rapidly increasing. This is most evident in high DPI displays and the way they shrink legacy applications to the point of illegibility. So for perhaps the first time since the 90’s, future proofing for better monitors is becoming vital. 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/2.java">Highlights from Microsoft's Build 2014 Opening Keynote</a>The opening keynote for Build 2014 kicked off with several big announcements. Today marked the formal announcement of Windows Phone 8.1 and the soon to be released Windows 8.1 Update. 
-  </div> 
+  </div>                
  </body>
 </html>

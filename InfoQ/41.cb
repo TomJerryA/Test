@@ -1,0 +1,145 @@
+<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>Java na Web com VRaptor 4</h3><p>Trabalhar com Java na web apresenta diversas possibilidades com frameworks MVC baseados em a&ccedil;&otilde;es. O VRaptor &eacute; um desses frameworks, e em sua <a href="http://www.google.com/url?q=http%3A%2F%2Fblog.caelum.com.br%2Flancamento-do-vraptor-4-final%2F&amp;sa=D&amp;sntz=1&amp;usg=AFQjCNE2gMaa0DoX_DodV9aEWfjArDtbJA">vers&atilde;o 4</a> utiliza o <a href="http://www.google.com/url?q=http%3A%2F%2Fwww.cdi-spec.org%2F&amp;sa=D&amp;sntz=1&amp;usg=AFQjCNHswizqb3ugdqD-bVVGGvIQWrj-Qg">CDI 1.1</a> como base. Veremos neste artigo alguns dos princ&iacute;pios do framework e uma sele&ccedil;&atilde;o de novidades da nova vers&atilde;o.</p>
+<h1>Controllers e Conven&ccedil;&otilde;es</h1>
+<p>Tudo que se precisa fazer para criar um controller do VRaptor &eacute; adicionar a anota&ccedil;&atilde;o @Controller. A partir da&iacute; o framework j&aacute; utiliza suas conven&ccedil;&otilde;es de URLs e JSPs, exigindo o m&iacute;nimo de configura&ccedil;&otilde;es. Veja um exemplo:</p>
+<pre>
+@Controller
+public class UsuarioController {
+ 	public void lista() {
+... 
+}
+}
+</pre>
+<p>A conven&ccedil;&atilde;o de URLs do VRaptor &eacute; <em>nomeDoController/nomeDoMetodo</em>; portanto o m&eacute;todo lista() seria mapeado para a URL <em>/usuario/lista</em>. Repare que o sufixo <em>Controller</em> n&atilde;o &eacute; considerado na rota.</p>
+<p>Outra conven&ccedil;&atilde;o importante &eacute; da p&aacute;gina JSP pra a qual o VRaptor vai fazer o dispatch. Ela &eacute; bem parecida com a conven&ccedil;&atilde;o de URLs.O VRaptor procura a JSP no diret&oacute;rio:</p>
+<pre>
+WEB-INF/jsp/nomeDoController/nomeDoMetodo.jsp, 
+</pre>
+<p>que neste caso ser&aacute;:</p>
+<div id="lowerFullwidthVCR"></div>
+<pre>
+WEB-INF/jsp/usuario/lista.jsp.
+</pre>
+<p>Todos os m&eacute;todos p&uacute;blicos dos controllers ser&atilde;o mapeados seguindo essas conven&ccedil;&otilde;es, e passam a atender requests independente do verbo HTTP utilizado.</p>
+<p>Pode-se explicitamente declarar qual tipo de requisi&ccedil;&atilde;o cada m&eacute;todo vai atender, por exemplo utilizando a anota&ccedil;&atilde;o @Get. H&aacute; ainda as anota&ccedil;&otilde;es @Post, @Put e @Delete. Se preferir n&atilde;o utilizar a conven&ccedil;&atilde;o de URLs, voc&ecirc; pode passar a URL como <em>value</em> dessas anota&ccedil;&otilde;es de verbo, ou utilizar a anota&ccedil;&atilde;o @Path se o verbo for indiferente:</p>
+<pre>
+@Get(&quot;alguma/outra/url&quot;)
+public void lista(){ ... }
+</pre>
+<h1>Recebimento de par&acirc;metros</h1>
+<p>Pode-se receber par&acirc;metros nos m&eacute;todos do seu controller. De acordo com os par&acirc;metros da requisi&ccedil;&atilde;o o VRaptor tenta popular esses valores. Isso pode ser feito com valores simples, como um <em>long</em> no caso do seguinte m&eacute;todo:</p>
+<pre>
+@Get
+public void busca(long id){
+…
+}
+</pre>
+<p>Se o request tiver algum par&acirc;metro cujo nome seja <em>id</em>, ou seja, igual ao do par&acirc;metro do m&eacute;todo, o VRaptor tenta converter esse valor para o tipo esperado.</p>
+<p>O m&eacute;todo busca(), na primeira forma que foi escrito, pode ser acessado pela URL <em>/usuario/busca?id=1</em>, por exemplo. H&aacute; ainda como fazer isso utilizando uma URL parametrizada:</p>
+<pre>
+@Get(&quot;usuario/busca/{id}&quot;)
+public void busca(long id){ 
+…
+}
+</pre>
+<p>Neste caso um exemplo de URL seria <em>/usuario/busca/1</em>.</p>
+<p>Tamb&eacute;m podemos receber objetos mais complexos, como no caso do m&eacute;todo adiciona() que recebe um objeto Usuario:</p>
+<pre>
+@Post
+public void adiciona(Usuario usuario){ ... }
+</pre>
+<p>Na view ter&iacute;amos o <em>formulario.jsp</em> parecido com:</p>
+<pre>
+&lt;form action=”/usuario/adiciona” method=”post”&gt;
+	&lt;input type=”text” name=”usuario.nome”/&gt;
+	&lt;input type=”text” name=”usuario.email”/&gt;
+&lt;input type=”submit”  value=”Adicionar”&gt;
+&lt;/form&gt;
+</pre>
+<p>&nbsp;</p>
+<p>Exemplos de par&acirc;metros do request para este formul&aacute;rio seriam:</p>
+<pre>
+usuario.nome = Rodrigo Turini
+usuario.email = rodrigoatturini@caelum.com.br
+...
+</pre>
+<h1>Manipula&ccedil;&atilde;o do resultado</h1>
+<p>Para deixar os objetos dos m&eacute;todos acess&iacute;veis pela p&aacute;gina JSP podemos simplesmente retorn&aacute;-los - da seguinte forma:</p>
+<pre>
+@Get
+public List&lt;Usuario&gt; lista(){
+	return usuarioDao.lista();
+}
+</pre>
+<p>Como estamos retornando um List&lt;Usuario&gt;, o nome da vari&aacute;vel acessada em sua view ser&aacute; <em>${usuarioList}</em>. Se o retorno fosse um &uacute;nico objeto, a vari&aacute;vel seria apenas ${usuario}.</p>
+<p>H&aacute; outra forma de retornar objetos para a view: utilizando a interface especialista Result. Podemos pedir esse bean injetado em nosso controller e utilizar seu m&eacute;todo include():</p>
+<pre>
+@Controller
+public class UsuarioController {
+	@Inject private Result result;
+	@Inject private UsuarioDao usuarioDao;
+	@Get
+	public void lista(){
+		List&lt;Usuario&gt; lista = usuarioDao.lista();
+		result.include(lista);
+		result.include(&quot;usuarios&quot;, lista);
+	}
+}
+</pre>
+<p>Na primeira chamada a include(), a vari&aacute;vel inclu&iacute;da ser&aacute; ${usuarioList}, assim como no retorno do m&eacute;todo. Por&eacute;m repare que no segundo include() demos um nome para o objeto inclu&iacute;do; portanto ser&aacute; este o utilizado.</p>
+<p>Existem diversos outros m&eacute;todos no Result para nos auxiliar com o trabalho com a view. Por exemplo, veja como se pode devolver essa lista de objetos serializada em JSON:</p>
+<pre>
+@Get
+public void listaEmJSON(){
+	List&lt;Usuario&gt; usuarios = usuarioDao.lista();
+	result.use(json()).from(usuarios).serialize();
+}
+</pre>
+<p>O m&eacute;todo json() vem da classe Results, que possui outros m&eacute;todos para resultados comuns - como xml(), html() e jsonp(). H&aacute; ainda o m&eacute;todo representation(), que retorna de acordo com o <em>accept format</em> do request.</p>
+<h1>Facilmente configur&aacute;vel</h1>
+<p>Tudo isso que vimos &eacute; facilmente configur&aacute;vel. Como suas classes s&atilde;o gerenciadas pelo CDI (managed beans) podemos especializar qualquer componente do VRaptor.</p>
+<p>Por exemplo, para mudar a view renderizada por padr&atilde;o, ou mudar o local em que &eacute; procurada, especializamos o DefaultPathResolver:</p>
+<pre>
+@Specializes
+public class CustomPathResolver extends DefaultPathResolver {
+    @Override
+    protected String getPrefix() {
+        return &quot;/pasta/raiz/&quot;;
+    }
+}
+</pre>
+<p>Da mesma forma, pode-se mudar a conven&ccedil;&atilde;o de URLs sobrescrevendo o PathAnnotationRoutesParser.</p>
+<h1>Integrando VRaptor com JPA</h1>
+<p>A integra&ccedil;&atilde;o com CDI tamb&eacute;m facilita o gerenciamento das classes que n&atilde;o s&atilde;o de nosso projeto. Integrar o VRaptor com JPA, por exemplo, &eacute; um processo simples. Pode-se escrever um producer para o EntityManager parecido com esse:</p>
+<pre>
+public class EntityManagerCreator {
+	@Inject private EntityManagerFactory factory;
+	@Produces @RequestScoped
+	public EntityManager getEntityManager() {
+		return factory.createEntityManager();
+	}
+
+	public void destroy(@Disposes EntityManager em) {
+		if (em.isOpen()) {
+			em.close();
+		}
+	}
+}
+</pre>
+<p>Com isso, em qualquer bean da sua aplica&ccedil;&atilde;o, &eacute; poss&iacute;vel injetar esse objeto. Por exemplo:</p>
+<pre>
+public class UsuarioDao {
+	@Inject private EntityManager em;
+	public void adiciona(Usuario usuario) {
+		em.getTransaction().begin();
+		em.persist(usuario);
+		em.getTransaction().commit();
+	}
+	...
+}
+</pre>
+<p>Pode-se criar um interceptor simples para fazer o <a href="https://www.google.com/url?q=https%3A%2F%2Fgithub.com%2Fcaelum%2Fvraptor-jpa%2Fblob%2Fmaster%2Fsrc%2Fmain%2Fjava%2Fbr%2Fcom%2Fcaelum%2Fvraptor%2Fjpa%2FJPATransactionInterceptor.java&amp;sa=D&amp;sntz=1&amp;usg=AFQjCNF4FmicUatznZ_sTjiudZ545QpJog">open transaction in view</a>, mas isso e diferentes outros recursos j&aacute; foram implementados nos diversos plugins para o VRaptor 4. Veja alguns desses plugins <a href="http://www.google.com/url?q=http%3A%2F%2Fwww.vraptor.org%2Fen%2Fdocs%2Fplugins%2F&amp;sa=D&amp;sntz=1&amp;usg=AFQjCNGfWdaBFyyhxZhc08HGn0J6DLEQcA">nessa p&aacute;gina</a> da documenta&ccedil;&atilde;o.</p>
+<h1>Mais sobre o Vraptor</h1>
+<p>Mais informa&ccedil;&otilde;es sobre o framework podem ser obtidas <a href="http://www.google.com/url?q=http%3A%2F%2Fwww.vraptor.org%2Fpt%2F&amp;sa=D&amp;sntz=1&amp;usg=AFQjCNF59kgzG5dXcNy0KRD3w09HkIxcBg">em sua documenta&ccedil;&atilde;o</a>, que conta com <a href="http://www.google.com/url?q=http%3A%2F%2Fwww.vraptor.org%2Fpt%2Fdocs%2Fguia-de-1-minuto%2F&amp;sa=D&amp;sntz=1&amp;usg=AFQjCNFGewRvvCX1CGZUkddarN1mUTnrow">guias de 1</a> e <a href="http://www.google.com/url?q=http%3A%2F%2Fwww.vraptor.org%2Fpt%2Fdocs%2Fguia-de-10-minutos%2F&amp;sa=D&amp;sntz=1&amp;usg=AFQjCNG_GHObfelo54LuAJSbT4B_nxY71A">10 minutos</a>, <a href="http://www.google.com/url?q=http%3A%2F%2Fwww.vraptor.org%2Fpt%2Fcookbook%2Faceitando-urls-com-ou-sem-barra-no-final%2F&amp;sa=D&amp;sntz=1&amp;usg=AFQjCNEbB2M_wbzP7-rEzUPtHSt6w3j8dA">cookbooks enviados por usu&aacute;rios</a> e um <a href="http://www.google.com/url?q=http%3A%2F%2Fwww.vraptor.org%2Fpt%2Fdocs%2Fmigrando-de-um-projeto-com-vraptor3%2F&amp;sa=D&amp;sntz=1&amp;usg=AFQjCNFYPBH3xmKLt4FgS7jjHqbdALehaw">guia r&aacute;pido</a> para auxiliar na migra&ccedil;&atilde;o de vers&otilde;es anteriores. Pode ser &uacute;til tamb&eacute;m ler mais sobre a <a href="http://www.google.com/url?q=http%3A%2F%2Fdocs.jboss.org%2Fcdi%2Fspec%2F1.1%2Fcdi-spec.html%2520&amp;sa=D&amp;sntz=1&amp;usg=AFQjCNHVNgtTVIS9rFWlVcXZXVyFbuK5xg">especifica&ccedil;&atilde;o do CDI 1.1 e todos seus recursos</a>, que se integram ao n&uacute;cleo do Vraptor.</p>
+<p>&nbsp;</p>
+<h1>Sobre o autor</h1>
+<p><strong>Rodrigo Turini</strong> &eacute; bacharel em Ci&ecirc;ncia da Computa&ccedil;&atilde;o, desenvolvedor e instrutor pela Caelum. Desenvolve sistemas em Java para web e atualmente foca seus estudos em programa&ccedil;&atilde;o funcional e Java 8, assuntos coberto no livro que escreveu com Paulo SIlveira.</p><br><br><br><br><br><br></body></html>

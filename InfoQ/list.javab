@@ -1,6 +1,45 @@
 <html>
  <head></head> 
- <body> 
+ <body>
+  <div>
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/10.javab">Using SEMAT in Agile Adoption</a> The article Agile and SEMAT-Perfect Partners describes what the Software Engineering Method and Theory (SEMAT) initiative adds to agile and how SEMAT can be used when organizations adopt agile. InfoQ interviewed Ivan Jacobson and Ian Spence about what SEMAT is and how agile teams can use it, and on combining Essence from SEMAT with other software engineering frameworks like SAFe, CMMI, etc. 
+  </div>
+  <div>
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/9.javab">Web APIs and the n+1 Problem</a> The n+1 one problem doesn’t just affect ORMs. Any kind of Web API, RPC/Web Service or RESTful, can suffer from the same performance problems. In this article, Ali Kheyrollahi discusses some of the common scenarios that lead to n+1 in web APIs and ways to correct them. 
+  </div>
+  <div>
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/8.javab">Ansible’s View on IT Automation</a> Michael DeHaan, creator of Ansible, introduces the general-purpose IT automation system. He describes the tool’s guiding principles: simplicity, ease of use and maximum security. The philosophy behind its community is also discussed, including the importance of Ansible’s plugin-based model. Michael uses a simple but common scenario to demonstrate Ansible. 
+  </div>
+  <div>
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/7.javab">8 Great Java 8 Features No One's Talking about</a> In this article Tal Weiss focuses on some lesser known API's in the new Java 8. 
+  </div>
+  <div>
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/6.javab">Taking Back Agile</a> An interview with Tim Ottinger and Ruud Wijnands about the way that organizations adopt agile, services provided by the industry, and the importance of technical practices and craftsmanship in agile. 
+  </div>
+  <div>
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/5.javab">Exploring the ENTIRE DevOps Toolchain for (Cloud) Teams</a> Once the cultural DevOps transformation is under way, how can teams shipping cloud (or on-premises) applications use the full suite of DevOps technologies to simplify delivery and management at scale? 
+  </div>
+  <div>
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/4.javab">An interview with Matt Winn on JP Morgan’s Agile Transformation</a> Matt Winn, from J.P. Morgan’s securities group, Singapore describes his own perspective of using Large-Scale Scrum to create significant change within a tier-one financial services firm. 
+  </div>
+  <div>
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/3.javab">Virtual Panel on Reactive Programming</a> InfoQ talked to three Reactive experts – Viktor Klang (Akka), Timothy Baldridge (Core.Async), Jafar Husain (RxJava) – to find out how their libraries and frameworks help you write better applications. 
+  </div>
+  <div>
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/2.javab">Microservices: Decomposing Applications for Deployability and Scalability</a> This article describes the increasingly popular Microservice architecture pattern, used to architect large, complex and long-lived applications as a set of cohesive services that evolve over time. 
+  </div>
+  <div>
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/1.javab">Data Modeling in Graph Databases: Interview with Jim Webber and Ian Robinson</a> Graph data modeling requires a different paradigm than modeling with Relational or other NoSQL databases. InfoQ spoke with Jim Webber and Ian Robinson about data modeling with Graph databases. 
+  </div>
+  <div>
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/0.javab">Exchanging Industry Experiences with Agile Methodologies</a> The Agile Consortium Belgium, Sirris and Agoria organized an event to share experiences with agile methodologies like Scrum, Kanban, visual management, XP, DSDM and Lean. 
+  </div>
+  <div>
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/49.javab">From MDM to MDM: From Managing Devices to Apps to Data</a> Mobile operations management is one of the top priorities of modern enterprise and after establishing solutions for device management, the next challenge is to manage and secure mobile business data. 
+  </div> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/48.javab">Untangling the Enterprise With Continuous Delivery</a> John Kordyback explains why you should and how you can introduce Continuous Delivery into a typical enterprise, where dozens of systems adopted over the years generate massive complexity. Learn how value-stream mapping and Lean Startup thinking help to create a deployment process which serves as a solid foundation for further improvements on the whole software change lifecycle. 
+  </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/48.javab">Nashorn - The Combined Power of Java and JavaScript in JDK 8</a> With JDK 8, Nashorn replaces Rhino as Java’s standard JavaScript engine for the benefit of improved performance and compatibility. Avatar.js brings the popular Node framework’s programming model to Nashorn, enabling many JavaScript server applications to run in a Java environment. In this article JavaScript expert Oliver Zeigermann explains the hows and the why's. 
   </div> 
@@ -111,45 +150,6 @@
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/24.javab">The Kanban Survivability Agenda</a> This third and last article in the series on the Kanban “nine values, three agendas” model explores the survivability agenda. The values associated with this agenda are understanding, agreement, and respect; these say much about the philosophy that underlies Kanban, the humane, start with what you do now approach to change. 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/23.javab">Reliable Auto-Scaling using Feedback Control</a> Philipp K. Janert explains how to reliably auto-scale systems using a reactive approach based on feedback control which provides a more accurate solution than deterministic or rule-based ones. 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/22.javab">Author Q&amp;A – The Lean Mindset by Tom and Mary Poppendieck</a> The Lean Mindset is a collection of research results and case studies from companies applying lean in product development and delivery. A lean mindset according to Mary and Tom Poppendieck is about “developing the expertise to ask the right questions, solve the right problems, and do the right thing in the situation at hand”. 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/21.javab">Book Review: Test-Driven Infrastructure with Chef - Second Edition</a> The second edition of Stephen Nelson-Smith's book &quot;Test-Driven Infrastructure with Chef&quot; covers the principles behind &quot;Infrastructure as Code&quot;, provides an introduction to Ruby, Chef, and important Tools. The main part consists of detailed examples on how to use the tools required to write fully tested infrastructure code. 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/20.javab">Modern Enterprise Performance Analysis Antipatterns</a> In this article we present some of the most common performance analysis antipatterns in the enterprise platform, expressed in terms of their basic causes along with remediation strategies. 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/19.javab">No More Technical Debt - Invest in Quality</a> Handling Technical Debt in a software system is a complex challenge. Code can always be improved – but customers only care about features. This article discusses the new metaphor “Quality Investments”. It helps to better communicate the quality of the system and guide improvements by focusing on their pay off and return of investment. 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/18.javab">Solving the Gordian Knot of Chronic Overcommittment in Development Organizations</a> Why do we promise more than we can deliver? Why do we say yes when we are already too busy? Chronic Overcommitment is a pervasive problem in the IT industry. In this article we take a look at the behaviors that drive over commitment and the dynamics at play in your organization the make it a difficult problem to solve. Finally, we offer some advice to those who suffer from this affliction. 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/17.javab">Answering Common Cloud Security Questions from CIOs</a> With the news stories of possible data breaches at enterprises like Target, and the current trend of companies migrating to cloud environments for the flexibility, scalability, agility, and cost-effectiveness they offer, CIOs have been asking hard questions about cloud security. 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/16.javab">Big Data Analytics for Security</a> In this article, authors discuss the role of big data and Hadoop in security analytics space and how to use MapReduce to efficiently process data for security analysis for use cases like Security Information and Event Management (SIEM) and Fraud Detection. 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/15.javab">3 years of Kanban at Sandvik IT: The Story of an Improvement Journey</a> This is the story of an enterprise-wide Kanban implementation. It explains why Sandvik IT chose the Kanban method; how it was deployed using a kick-start concept; how it was followed-up using a depth-of-kanban assessment; and the effects so far. The article includes links to concrete and step-by-step information on how to run these kick-starts and assessments 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/14.javab">How LinkedIn Uses Apache Samza</a> Apache Samza is a stream processor LinkedIn recently open-sourced. In his presentation, Samza: Real-time Stream Processing at LinkedIn, Chris Riccomini discusses Samza's feature set, how Samza integrates with YARN and Kafka, how it's used at LinkedIn, and what's next on the roadmap. 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/13.javab">The Secrets of Database Change Deployment Automation</a> Yaniv Yehuda looks at the challenges involved in automating database deployments and offer suggestions based on Agile and DevOps concepts. 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/12.javab">Leveraging the Practice of &quot;Being Agile&quot; to Design an Agile Management Curriculum</a> This article by a group of UC Berkeley Extension Agile Management Program participants describes one approach to communicating and enhancing the exceptional value possible when the practice and personal experience of Agile values and principles is used as a foundational Agile Management curriculum element, enabling effective adaptation and application of Agile practices in many contexts. 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/11.javab">Virtual Roundtable: The Future of PaaS in Cloud Computing</a> There has been a raging debate about PaaS and whether it is still a valuable part of a cloud portfolio, so InfoQ reached out to four leaders in the cloud domain (cloud advocate Krish Subramanian, cloud developer Dan Turkenkopf, cloud executive JP Morgenthal, and cloud expert James Urquhart) for their opinions on the future of PaaS. 
-  </div> 
+  </div>             
  </body>
 </html>

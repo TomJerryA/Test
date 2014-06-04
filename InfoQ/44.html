@@ -1,98 +1,27 @@
-<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>SQLite vs MySQL vs PostgreSQL：关系型数据库比较</h3><p>自1970年埃德加&middot;科德提出关系模型之后，关系型数据库便开始出现，经过了40多年的演化，如今的关系型数据库种类繁多，功能强大，使用广泛。面对如此之多的关系型数据库，我们应该如何权衡找出适合自己应用场景的数据库系统呢？<a href="https://twitter.com/ostezer">O.S. Tezer</a>最近在DigitalOcean上发表了一篇博文，<a href="https://www.digitalocean.com/community/articles/sqlite-vs-mysql-vs-postgresql-a-comparison-of-relational-database-management-systems">对比了SQLite、MySQL和PostgreSQL这三个常用的、流行的关系型数据库管理系统（RDBMS）</a>，希望能对你有所帮助。</p>
-<p><a href="https://twitter.com/ostezer">O.S. Tezer</a>分别从数据库支持的数据类型、优势、劣势、何时应该使用以及何时不应该使用该数据库这5个方面对SQLite、MySQL和PostgreSQL做了比较。</p>
-<h2><strong>SQLite</strong></h2>
-<p>SQLite是一款轻型数据库，它遵守ACID，能够嵌入到使用它的应用程序中。作为一个自包含的、基于文件的数据库，SQLite提供了非常出色的工具集能够处理所有类型的数据，与托管在服务器上基于进程的关系型数据库相比它的约束更少，也更易用。</p>
-<p>当应用程序使用SQLite时，SQLite并非作为一个独立进程通过某种通信协议（例如socket）与应用程序通信，而是作为应用程序的一部分，应用程序通过调用SQLite的接口直接访问数据文件。感谢类库的底层技术，它让SQLite变得非常快速、高效并且十分强大。</p>
-<h3>SQLite支持的数据类型</h3>
-<p>SQLite支持的数据类型包括：NULL、INTEGER、REAL、TEXT、BLOB。</p>
-<p><b>注意</b>：如果你想了解与SQLite数据类型相关的更多内容，可以参阅<a href="http://www.sqlite.org/datatype3.html">官方文档</a>。</p>
-<h3>SQLite的优点</h3>
-<ul> 
- <li><b>基于文件</b> <p>整个数据库完全由磁盘上的一个文件构成，这使得它的可移植性非常好。</p> </li> 
- <li><b>标准化</b> <p>尽管它看起来像一个“简化版”的数据库实现，但是SQLite确实支持SQL。它省略了一些功能（RIGHT OUTER JOIN和FOR EACH STATEMENT），但同时也增加了一些额外的功能。</p> </li> 
- <li><b>非常适合开发甚至是测试</b> <p>在大多数应用程序的开发阶段，大部分开发人员可能都非常需要一个能够支持并发扩展的解决方案。SQLite 包含丰富的功能，所能提供的特性超乎开发所需，使用起来也非常简洁——只需要一个文件和一个C链接库。</p> </li> 
-</ul>
-<h3>SQLite的缺点</h3>
-<ul> 
- <li><b>没有用户管理</b> <p>高级数据库都支持用户系统，例如管理连接对数据库和表的访问权限。鉴于SQLite的目的和性质（没有多客户端并发的高层设计），它并不包含这些功能。</p> </li> 
- <li><b>缺少通过优化获得额外性能的空间</b> <p>还是由于设计方面的原因，无法通过优化SQLite获得大量的额外性能。这个类库非常容易调整、也非常容易使用。它并不复杂，所以从技术上无法让它变得更快，因为它已经很快了。</p> </li> 
-</ul>
-<h3>何时应该使用SQLite</h3>
-<ul> 
- <li><b>嵌入式应用程序</b> <p>所有需要可移植性、不需要扩展的应用程序，例如单用户的本地应用、移动应用或者游戏。</p> </li> 
- <li><b>替代磁盘访问</b> <p>在很多情况下，需要直接读写磁盘文件的应用程序可以切换到SQLite从而受益于SQLite提供的额外功能以及使用结构化查询语言（SQL）所带来的简便性。</p> </li> 
- <li><b>测试</b> <p>对大部分应用程序而言没必要使用额外的进程测试业务逻辑（例如应用程序的主要目标：功能）。</p> </li> 
-</ul>
-<h3>何时不应该使用SQLite</h3>
-<ul> 
- <li><b>多用户应用程序</b> <p>如果有多个客户端需要访问并使用同一个数据库，那么最好使用功能完整的关系型数据库（例如MySQL），而不是选择SQLite。</p> </li> 
- <li><b>需要高写入量的应用程序</b> <p>写操作是SQLite的一个局限。该DBMS在同一时刻仅允许一个写操作，因而也限制了其吞吐量。</p> </li> 
-</ul>
-<h2><b>MySQL</b></h2>
-<p>MySQL是最受欢迎的一个大规模数据库服务器。它是一款功能丰富的开源产品，许多网站和在线应用程序都使用该数据库。MySQL的入门相对比较简单，开发者可以从Internet上获取到大量与该数据库相关的信息。</p>
-<p><b>注意:</b>鉴于该产品的受欢迎程度，使用该数据库可以让我们受益于大量第三方应用程序、工具以及集成类库。</p>
-<p>尽管MySQL并没有尝试实现完整的SQL标准，但是它依然为用户提供了大量功能。作为一个独立的数据库服务器，应用程序需要与MySQL守护进程通信才能访问数据库——不同于SQLite。</p>
-<h3>MySQL支持的数据类型</h3>
-<p>MySQL支持的数据类型包括TINYINT、SMALLINT、MEDIUMINT、INT或INTEGER、BIGINT、FLOAT、DOUBLE、DOUBLE PRECISION、REAL、DECIMAL、NUMERIC、DATE、DATETIME、TIMESTAMP、TIME、YEAR、CHAR、VARCHAR、TINYBLOB, TINYTEXT、BLOB, TEXT、MEDIUMBLOB、MEDIUMTEXT、LONGBLOB, LONGTEXT、ENUM、SET。</p>
-<h3>MySQL的优点</h3>
-<ul> 
- <li><b>易用</b> <p>很容易安装。第三方工具，包括可视化工具，让用户能够很容易入门。</p> </li> 
- <li><b>功能丰富</b> <p>MySQL支持关系型数据库应该有的大部分功能——或者直接支持、或者间接支持。</p> </li> 
- <li><b>安全</b> <p>支持很多安全特性，有些非常高级，并且是内置于MySQL中。</p> </li> 
- <li><b>可扩展也非常强大</b> <p>MySQL能够处理大量数据，并且在需要的时候可以规模化使用。</p> </li> 
- <li><b>快速</b> <p>放弃某些标准让MySQL能够非常高效、简捷地工作，因而速度更快。</p> </li> 
-</ul>
-<h3>MySQL的缺点</h3>
-<ul> 
- <li><b>已知限制</b> <p>MySQL从一开始就没有打算做所有事情，因而它在功能方面有一定的局限性，并不能满足一些先进应用程序的要求。</p> </li> 
- <li><b>可靠性问题</b> <p>MySQL对某些功能（例如引用、事务、审计等）的实现方式使得它与其他的关系型数据库相比缺少了一些可靠性。</p> </li> 
- <li><b>开发停滞</b> <p>尽管MySQL依然是一款开源产品，但是自从它被收购之后人们就对其开发进展有很多抱怨。需要注意的是有一些基于MySQL的、完整集成的数据库在标准的MySQL之上附加了其他价值，例如MariaDB。</p> </li> 
-</ul>
-<h3>何时应该使用MySQL</h3>
-<ul> 
- <li><b>分布式操作</b> <p>如果SQLite不能满足你的需求，那么将MySQL引入到开发栈中，就像任何其他独立的数据库服务器一样，它能够给你带来大量的操作自由度以及一些先进的功能。</p> </li> 
- <li><b>高安全性</b> <p>MySQL的安全机制通过一种简单的方式为数据的访问和使用提供了可靠的保护。</p> </li> 
- <li><b>网站和</b><b>Web</b><b>应用</b> <p>尽管有一些约束，但是绝大部分网站和Web应用都可以简单地运行在MySQL上。相关的灵活可扩展的工具非常易于使用和管理——事实证明这些工具在长期运行时非常有用。</p> </li> 
- <li><b>定制解决方案</b> <p>MySQL有丰富的配置项和运行模式，如果你需要一个高度量身定制的解决方案，那么MySQL能够非常容易地尾随并执行你的规则。</p> </li> 
-</ul>
-<h3>何时不应该使用MySQL</h3>
-<ul> 
- <li><b>SQL</b><b>遵从性</b> <p>因为MySQL并没有打算实现完整的SQL标准，所以它并不完全符合SQL。如果你可能需要与这样的关系型数据库集成，那么从MySQL切换过去可能并不容易。</p> </li> 
- <li><b>并发性</b> <p>尽管MySQL和一些其他的存储引擎能够非常好地执行读操作，但是并发读写可能会有问题。</p> </li> 
- <li><b>缺少功能</b> <p>MySQL缺少某些功能，例如全文本搜索。</p> </li> 
-</ul>
-<h2><b>PostgreSQL</b></h2>
-<p>PostgreSQL是一款先进的、开源的对象关系型数据库管理系统，它的主要目标是遵从标准和可扩展。PostgreSQL，或者说Postgres，试图将ANSI/ISO SQL标准及其修正结合起来。</p>
-<p>与其他关系型数据库相比，PostgreSQL独特的地方是它支持高度需要的、完整的面向对象以及关系型数据库的功能，例如完全支持可靠性事务。</p>
-<p>由于其强大的底层技术，PostgreSQL能够非常高效地处理很多任务。得益于多版本并发控制（MVCC），它能够在没有读锁的情况下实现并发并保证ACID。</p>
-<p>PostgreSQL是高度可编程的，因此扩展性非常好，它支持称为“存储过程”的自定义程序。用户可以创建这种函数简化重复的、复杂的以及经常需要的数据库操作的执行。</p>
-<p>尽管该数据库非常强大，但是它却没有像MySQL那么流行，即便如此依然有很多优秀的第三方工具和类库可以让我们更容易地使用它。</p>
-<h3>PostgreSQL支持的数据类型</h3>
-<p>PostgreSQL支持的数据类型包括：bigint、bigserial、bit [(n)]、bit varying [(n)]、boolean、box、bytea、character varying [(n)]、character [(n)]、cidr、circle、date、double precision、inet、integer、interval [fields] [(p)]、line、lseg、macaddr、money、numeric [(p,s)]、path、point、polygon、real、smallint、serial、text、time、timestamp、tsquery、tsvector、txid_snapshot、uuid、xml</p>
-<h3>PostgreSQL的优点</h3>
-<ul> 
- <li><b>开源且遵从</b><b>SQL</b><b>标准</b> <p>PostgreSQL是一款开源的、免费的、功能非常强大的关系型数据库。</p> </li> 
- <li><b>强大的社区</b> <p>由一个忠实的、经验丰富的社区支持，用户可以通过知识库和Q&amp;A网站获得全天候的免费服务。</p> </li> 
- <li><b>强有力的第三方支持</b> <p>除了非常先进的特性之外，PostgreSQL还有很多优秀的、开源的第三方工具可以辅助系统的设计、管理和使用。</p> </li> 
- <li><b>可扩展</b> <p>可以通过存储过程扩展PostgreSQL的功能。</p> </li> 
- <li><b>面向对象</b> <p>PostgreSQL不仅是一个关系型数据库，它还是一个面向对象的数据库——支持嵌套等功能。</p> </li> 
-</ul>
-<h3>PostgreSQL的缺点</h3>
-<ul> 
- <li><b>性能</b><b>:</b> <p>对于简单繁重的读取操作，使用PostgreSQL可能有点小题大做，同时性能也比MySQL这样的同类产品要差。</p> </li> 
- <li><b>流行程度</b> <p>尽管有大量的部署，但是鉴于该数据库的性质，它的受欢迎程序并不高。</p> </li> 
- <li><b>托管</b> <p>由于上面提到的几点，很难找到提供托管PostgreSQL实例的主机或者服务提供商。</p> </li> 
-</ul>
-<h3>何时应该使用PostgreSQL</h3>
-<ul> 
- <li><b>数据完整性</b> <p>当绝对需要可靠性和数据完整性的时候，PostgreSQL是更好的选择。</p> </li> 
- <li><b>复杂的定制程序</b> <p>如果需要数据库执行定制程序，那么可扩展的PostgreSQL是更好的选择。</p> </li> 
- <li><b>集成</b><b>:</b> <p>如果将来可能需要将整个数据库迁移到其他合适的解决方案上（例如Oracle），那么PostgreSQL可能兼容性最好也更容易切换。</p> </li> 
- <li><b>复杂的设计</b> <p>与其他开源且免费的数据库相比，对于复杂的数据库设计PostgreSQL在功能方面最全面，潜力最大，不需要你放弃其他有价值的资产。</p> </li> 
-</ul>
-<h3>何时不应该使用PostgreSQL</h3>
-<ul> 
- <li><b>速度</b> <p>如果你只需要快速读取操作，那么PostgreSQL并不合适。</p> </li> 
- <li><b>简单</b> <p>除非你需要绝对的数据完整性，ACID遵从性或者设计复杂，否则PostgreSQL对于简单的场景而言有点多余。</p> </li> 
- <li><b>复制</b> <p>对于缺少数据库和系统管理经验的人而言使用MySQL实现复制要更简单，除非你愿意花费时间、精力和资源。</p> </li> 
-</ul><br><br><br><br><br><br></body></html>
+<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>敏捷开发领跑传统测试</h3><p>Diego Lo Giudice是<a href="http://www.forrester.com/home/">Forrester Research</a>的首席分析师，他在近期的<a href="http://www.computerweekly.com/feature/Why-agile-development-races-ahead-of-traditional-testing">博客</a>中探讨了敏捷开发为什么领跑传统测试，他在博客中说，“敏捷实践正在打散传统的测试组织。敏捷开发人员总是要完成更多的测试，所以QA专业人员需要参与到开发团队的日常运作中。”</p>
+<p>按照Deigo所说的这种近期的趋势，QA专业人员应更加关注先进的测试实践。</p>
+<blockquote> 
+ <p>他们需要通过深入参与这些先进的实践（比如测试驱动开发、增量的测试自动化和持续构建与集成）以适应不断变化的环境，显著地影响开发人员和测试人员的日常活动。</p> 
+</blockquote>
+<p>单独的测试和开发团队不适合敏捷工作环境，Deigo指出。</p>
+<blockquote> 
+ <p>当测试团队与开发分离时，测试人员通常是去努力发现更多可能的缺陷——但前提是开发人员已经编写了代码……</p> 
+ <p>如果把测试人员和开发人员分开，就很难把他们的工作整合到一个持续交付流水线中。</p> 
+</blockquote>
+<p>在<a href="http://www.slideshare.net/lisacrispin/changing-your-testing-mindset-booster-conference-bergen-norway-2014">挪威卑尔根市召开的2014年Booster Conference</a>期间，关于“<a href="http://lisacrispin.com/2014/03/13/booster-conference-bergen-norway-2014/">转变你的测试心态</a>”的会议上，Lisa Crispin（《敏捷软件测试：测试人员与敏捷团队的实践指南》的合著者）发言了自己的意见。她的重点更多地集中在开发人员和测试人员的协作上。</p>
+<blockquote> 
+ <p>与之截然相反……我们在此是去发现缺陷，或者确保需求得到满足，或者是对软件施以破坏</p> 
+ <p>想想我们如何把质量加进来？</p> 
+</blockquote>
+<p>Deigo还提到传统测试为什么落后于敏捷开发。</p>
+<ol> 
+ <li>大量手工的测试活动降低了交付速度。</li> 
+ <li>团队只能在系统开发并集成完成之后才开始测试。但遗憾的是，项目经常拖期，所以团队最后只好压缩和牺牲剩下的活动。</li> 
+ <li>团队积累了太多的技术债。按时交付有这么一个天敌，那就是在开发末期才发现你的应用中有重要的质量问题。缺陷发现得过晚会导致高返工率和巨大的浪费。</li> 
+</ol>
+<p>出于这些原因，寻求测试的转变使其遵循敏捷就极其重要了。在测试实践方面的转变也改变了开发团队挑选测试工具的方式。Deigo谈了他在测试工具方面的看法。</p>
+<p>开发人员想要的是能够轻易地嵌入到其集成开发环境（IDE）中的工具，而QA和其他软件专业人士更喜欢提供更高层次抽象，并且易于使用的工具。</p>
+<p><b>查看英文原文：</b><a href="http://www.infoq.com/news/2014/04/agile-testing"><b>Agile Development Races Ahead of Traditional Testing</b></a></p>
+<hr />
+<p>感谢<a href="http://www.infoq.com/cn/author/臧秀涛">臧秀涛</a>对本文的审校。</p>
+<p>给InfoQ中文站投稿或者参与内容翻译工作，请邮件至<a href="mailto:editors@cn.infoq.com">editors@cn.infoq.com</a>。也欢迎大家通过新浪微博（<a href="http://www.weibo.com/infoqchina">@InfoQ</a>）或者腾讯微博（<a href="http://t.qq.com/infoqchina">@InfoQ</a>）关注我们，并与我们的编辑和其他读者朋友交流。</p><br><br><br><br><br><br></body></html>

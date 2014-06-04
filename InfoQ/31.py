@@ -1,22 +1,31 @@
-<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>アンドロイドウェアの開発者向けプレビュー詳細</h3><p><a target="_blank" href="http://www.infoq.com/news/2014/03/android-wear"><em>原文(投稿日：2014/03/19)へのリンク</em></a></p>
+<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>アジャイルのガバナンスにおけるマネジメントの役割</h3><p><a target="_blank" href="http://www.infoq.com/news/2014/05/management-agile-governance"><em>原文(投稿日：2014/05/20)へのリンク</em></a></p>
 <div class="article_page_left news_container text_content_container"> 
  <div class="text_info"> 
-  <p>Googleから待望のウェアラブルデバイス向けプラットフォーム<a href="http://android-developers.blogspot.ro/2014/03/android-wear-developer-preview.html">ア ンドロイドウェア</a>と先行開発者がより早く新機能を用いて新しいアプリの開発ができる<a href="http://developer.android.com/wear/preview/start.html">開 発者向けプレビュー</a>を一緒に発表された。</p> 
-  <p>Googleから出たグッドニュースの中で一つはアンドロイドウェアがホスト機器(スマートフォン又はタブレット)とペア で、ホスト通知を基本的にサポートするということだ。それはすべての既存アンドロイドアプリが別途対応をしなくてもアンドロイドワッチからメッセージが見 れるのを意味する。しかし、開発者たちはそれにしても新プラットフォームの利点を取り入れ、新しい専用アプリを作りたがっている。</p> 
-  <p>プラットフォームのコードがだった30KBのJARファイルであることから、Googleのアンドロイドウェア向けの作業はほとんど が<a href="http://developer.android.com/wear/design/user-interface.html">ユー ザインタフェース</a>と<a href="http://developer.android.com/wear/design/index.html">デザ イン方針</a>に 関するものとみられる。UIは連速で表示されるカードと音声又はタッチ操作によるユーザコマンドの２つのメインコンポネントで構成されている。機器からの 通知を表示するカードはバックグラウンドイメージの上で表示され、カードを垂直にスライドすることでユーザ操作を行う。個々のカードは複数のページを持 ち、水平スライドでページ操作ができる。カードは右から左へスライドで解除される。カードは重ねられるし、音又は振動と一緒に表示することもできる。</p> 
-  <p>それらのカードにはGメールや音楽プレーヤー見たいなアプリからの通知を含めており、メールの返信又は次の曲の再生などの操作アイコンを含んでいる。メール返信はキーボードを持っていない機器の場合、内蔵マイクでも操作できる。</p> 
-  <p>アンドロイドウェアのデザイン原則は”ちょうどいい時にちょうどいい情報”を提供することである。そのためにアンドロイドウェアには以下の要素が 必要となる：</p> 
-  <ul> 
-   <li>スマートな前後脈絡の認識：位置と時間情報に基づいた情報提供</li> 
-   <li>高い認識性：イメージとアイコンを使った簡潔な情報　</li> 
-   <li>ゼロ又は少ない操作：最低限の音声又はスライドによる操作</li> 
-   <li>役に立つ：ウェアラブル機器の本旨は”効率性、良いマナー、応答性”である　</li> 
-  </ul> 
-  <p>正式版アンドロイドウェアの仕様はまだ公開されていないが、現在公開されたいるプレビューのコードとエミュレータをヒントにして予測 できる。<a href="https://play.google.com/store/apps/details?id=com.google.android.wearablepreview.app&amp;ah=-fj0j8eN5wC7StHibipiMGIBwrs">ホ ストプレビューアプリケーション</a>は4.3以上が必要で、エミュレータはアンドロイド4.4.2上で動く。従って、古い4.2バージョンの機器とは動かない。なぜなら、アンドロイドウェアは4.3からサポートする新しい通知方式を使っているからだ。</p> 
-  <p>エミュレータは四角形と円形の２種類が用意されていて、Bluetooth, WiFi, NFC, Jazz Hands multi-touch (5本以上指)と多数のセンサーをサポートする。<br /> &nbsp;それらは<a href="http://www.qualcomm.com/snapdragon/processors/s4/specs">Qualcomm Snapdragon S4 Pro</a>プロセサー、Adreno 320 GPU そして512 MBのRAMで動くように設定されている。</p> 
-  <p>XamarinはXamarinツールチェインを使って相互作用できるアプリが作れる<a href="https://components.xamarin.com/view/androidwearpreview">ア ンドロイドウェア開発者向けプレビューコンポネント</a>を同じ日に発表した。</p> 
-  <p>MotorolaとLGは最初の<a href="http://www.theverge.com/2014/3/18/5522340/motorola-lg-announce-upcoming-android-wear-smartwatches">ア ンドロイドウェアワッチ</a>を発表したが、実際の仕様はまだ公開されていない。Asus, HTCそしてサムスンもその次を追う。ファッションアクセサリデザイン専門会社であり、Armani, Diesel, adidas Originalsを含む<a href="https://www.fossilgroup.com/about-us/#portfolio">複数のブラン ド</a>を持つ<a href="https://www.fossilgroup.com/">Fossil Group</a>はアンドロイドウェア市場への参戦を表明した。</p> 
-  <p>&nbsp;</p> 
-  <p>参考：開発者たちはこのプレビューの発表により、基礎コード変更のことを心配しなくていい。</p> 
+  <p>複数のアジャイルチームを管理するにはどうすればいいだろうか。<a href="http://conferences.unicom.co.uk/agile-governance/">アムステルダムで開催されたAgile Governanceカンファレンス</a>でChristoph Johann Stettina氏がアジャイルのガバナンスとマネジメントの役割について発表した。氏はヨーロッパの14の大企業がどのようにアジャイルプロジェクト管理の手法をITプロジェクトに導入しているかを研究した。氏の研究結果は<a href="http://www.sciencedirect.com/science/article/pii/S0263786314000489">Agile portfolio management: An empirical perspective on the practice in use</a>というレポートにまとめられている。</p> 
+  <p>Christoph氏によれば、アジャイルの手法は、複数のソフトウエアプロジェクトを組織化する方法に静かな革命を起こした。アジャイルは‘新しい標準’となり、複数プロジェクトのマネジメントは個々のチームを超えてアジャイルを実践する機会になっている。</p> 
+  <p>氏はアジャイルのカバナンスが従来の管理理論の前提を如何にして衝突したかを説明する。従来の管理手法は以下のような前提を持っていた。</p> 
+  <blockquote> 
+   <ul> 
+    <li>プロジェクトの道筋と結果を完全に予想できる。</li> 
+    <li>常にひとつのクライアントだけ。</li> 
+    <li>命令と制御に注力。</li> 
+    <li>内容には踏み込まない。</li> 
+    <li>インプットと結果だけマネジメントする。</li> 
+   </ul> 
+  </blockquote> 
+  <p>氏は自身の研究結果を以下のように説明した。</p> 
+  <blockquote> 
+   <p>アジャイルがプロジェクトのポートフォリオに組み込まれると、従来の考え方と衝突します。Prince-2のような従来の手法は予測的ですが、一方でアジャイルは適応的です。緊急発進ができ、反復的で探索的です。アジャイルチームは自己管理を実行し、事前に定義されたインプットとアウトプットだけに支配されません。イノベーションはどこでも発現します。プロジェクトの道筋も変わります。アジャイルチームは従来のプロジェクト管理のタスクを引き継ぎ、より効率的になるためにはある程度の自己管理を実施しなければなりません。</p> 
+   <p>プロジェクトとチームの俊敏さはより素早い価値提供を可能にします。研究対象の企業ではよりマネジメントと密接に協力しようとしていました。安定したチームで働くことで競争力を得ようとしていたのです。アジャイルチームが2週間のスプリントで結果を出すことができるなら、4半期に一度プログラムとポートフォリオを調整するのでは不十分かもしれません。もっと頻繁に調整する必要がありそうです。</p> 
+  </blockquote> 
+  <p>マネジメントは文脈と内容を関連する領域を超えて絶えず支援し変換し続ける必要がある、とChristoph氏は言う。文脈と内容は絶えず変わっている。反復的なルーチンの中に変換作業を埋め込む必要がある。これを実現するためには、マネージャは情報が共有され理解されることを保証する必要があるのだ。氏は以下のように結論付ける。</p> 
+  <blockquote> 
+   <ul> 
+    <li>アジャイルのマネジメントはセンスメイキングです。マネージャは文脈と行動を理解しなければなりません。</li> 
+    <li>ルーチンはガバナンスの重要なツールです。どの手法を適用するか、どのように適用するかは状況に依存します。</li> 
+    <li>アジャイルの実践はルーチンです。書籍を読んでも勉強できませんが、コーチングを利用することはできます。また、ゲームを使ってアジャイルの実践を学習することもできます。</li> 
+    <li>学んだことをチーム間で共有するために振り返りが必要です。アジャイルは学習であり適応です。チームレベルで学んだことは積極的にチームを超えて共有する必要があります。</li> 
+   </ul> 
+  </blockquote>
  </div> 
 </div><br><br><br><br><br><br></body></html>

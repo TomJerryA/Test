@@ -1,19 +1,22 @@
-<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>Amazon vs. Google vs. Windows Azure评测与比较</h3><p>InfoWorld测试中心的Peter Wayner近日对GCE、Azure和AWS进行了一组基准测试并<a href="http://www.infoworld.com/d/cloud-computing/ultimate-cloud-speed-tests-amazon-vs-google-vs-windows-azure-237169?footer">发布测试报告</a>。报告初步结论为：GCE性能最快，Azure最慢，AWS表现中庸但价格最贵。</p>
-<p>Peter Wayner采用的是开源的DaCapo压力测试套件，分别对小型，中型和大型机实例在Amazon EC2、GCE、以及微软Windows Azure进行测试。DaCapo是由14个常见Java程序捆绑而成的集合，它尽可能地模拟生产环境，对机器进行一系列的测试。子测试会偏重CPU、RAM等不同方面，有的会进行性能组合测试，有些测试会采取多线程模式。</p>
-<p>这组测试套件中大家可能比较熟悉的测试有：Tomcat测试，启动Web服务器，编译网页；Luindex&amp;Lusearch测试（常见的索引和搜索工具），即部署并运行Lucene；Avrora，将模拟一些微控制器（microcontrollers），这个测试可能只对芯片设计者有用，但该测试可以收集到真实的原始CPU数据。</p>
-<p>作者分别在每个云平台三种不同的Linux机器上运行了DaCapo测试，使用默认JVM。启动的实例配置并非完全一致，而是在规模和价格方面大致相当。下表为三家机器配置和每小时的花费。</p>
-<p><img src="http://infoqstatic.com/resource/news/2014/04/amazon-google-windows-azure/zh/resources/0401000.png" width="600" _href="img://null" _p="true" alt="" /></p>
-<p>纵观三家平台，从速度上来说，谷歌是最快的。这三家完成基准测试分别用时为：谷歌 575s，亚马逊 719s，Windows Azure 834s。谷歌的机器在DaCapo测试的14个套间中有13个是最快的，Windows Azure的机器只有在一个测试案例中表现最快。</p>
-<p>从价格上来说，谷歌也是最便宜的，Windows Azure紧随其后。执行DaCapo套件在三家云平台的花费分别为谷歌 3.78cents，Windows Azure 3.8cents，Amazon 5cents。在14个测试案例中，其中八个谷歌的机器花费最少；Windows Azure的实例在五个测试案例中花费最少；亚马逊机器只有在一个测试案例花费最少。如下图：</p>
-<p><img style="float: left; margin-right: 5px" src="http://infoqstatic.com/resource/news/2014/04/amazon-google-windows-azure/zh/resources/0401002.png" width="300" _href="img://null" _p="true" alt="" /> <img style="float: right; margin-right: 5px" src="http://infoqstatic.com/resource/news/2014/04/amazon-google-windows-azure/zh/resources/0401003.png" width="300" _href="img://null" _p="true" alt="" /></p>
-<div style="clear:both"></div>
-<p>有些很有意思的结果：在微软的平台上测试时，绿色和红色结果(绿色表示花费少，耗时短；红色表示花费多，耗时长)可能会出现在同一台机器上，这意味着：便宜的机器性能很好，或昂贵的机器表现一般。谷歌的单CPU的机器充满了绿色，即速度快还省钱，但运行Tradesoap测试呈现红色，这就暴露出谷歌在处理Tradesoap测试中的可能存在的策略问题。</p>
-<p>谷歌使用GCEU（Google Compute Engine Unit）作为不同机型计算能力的度量单位，亚马逊对应的有ECU（Elastic Compute Units）；高CU（Compute Unit）机器的性能是否能成倍提升？拿亚马逊的例子来说：m3.2xlarge约为26 ECUs，m3.medium约为3 ECUs；在大部分的压力测试中，m3.2xlarge型号的机器仅是m3.medium速度的2-4倍，虽然在某些压力测试中的表现能达到8倍的效果。</p>
-<p>大家可下载<a href="http://nancy.viila.info/wp-content/uploads/2014/03/aws_goolge_azure.pdf">详细的测试数据</a>进行阅读。值得注意的是，Peter Wayner并没有对存储进行测试，而写密集型或读密集型的应用性能往往受到存储性能的制约。另外，本测试结果如果采用不同的Java版本，也可能导致测试性能的巨大差异。</p>
-<p><strong>参考阅读：</strong></p>
-<p><a href="http://www.infoworld.com/d/cloud-computing/cloud-review-8-public-cloud-services-put-the-test-214403?source=fssr">Cloud review: 8 public cloud services put to the test</a></p>
-<p><a href="http://www.infoworld.com/d/cloud-computing/benchmarking-amazon-ec2-the-wacky-world-of-cloud-performance-217626">Benchmarking Amazon: The wacky world of cloud performance</a></p>
-<p><a href="http://www.infoworld.com/d/cloud-computing/cloud-computing-in-2012-infoworld-special-report-187077">Cloud Computing Deep Dive</a></p>
+<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>Splunk Hunk 6.1为大数据分析增加新功能</h3><p><a href="http://www.splunk.com/">Splunk</a>是一家专注于搜索、监控和分析机器生成的数据的公司，该公司最近宣布推出大数据分析平台<a href="http://www.splunk.com/view/splunk-introduces-hunk-6-1/SP-CAAAMTB">Hunk6.1</a>版本。</p>
+<p>基于大数据进行广告分析并进一步为决策提供有用的数据，这是一件具有挑战性的事情。Hunk为快速访问、分析和可视化<a href="http://hadoop.apache.org/">Hadoop</a>及其他<a href="http://en.wikipedia.org/wiki/NoSQL">NoSQL</a>数据库的数据提供了一个平台以解决这些挑战。</p>
+<p>我们可以把Hunk看做有点类似于<a href="http://hive.apache.org/">Hive</a>的软件：<a href="http://hive.apache.org/">Hive</a>是一个开源SQL引擎，用于对Hadoop中的数据进行查询。Hive和Hunk收到用户的查询任务时，会将它编译成一系列的<a href="http://en.wikipedia.org/wiki/MapReduce">MapReduce</a>任务，并在集群上运行。</p>
+<ul> 
+ <li>Hunk使用的是Splunk的 <a href="http://en.wikipedia.org/wiki/SPL_(Search_Processing_Language)">Search Processing Language</a>（SPL）语言，而不是SQL。</li> 
+ <li>Hunk不需要事先定义模式，而是在查询任务执行的时候创建模式。</li> 
+ <li>Hunk不需要等MapReduce任务完成之后再展示结果。为了提供更好的用户体验，Hunk在MapReduce在后台运行时，通过流的方式展示中期结果。</li> 
+ <li>除了查询引擎之外，Hunk还包括了一个内置的可视化层，用户可以通过他们自己的搜索结果创建图表并进行保存。</li> 
+</ul>
+<p>6.1版本的Splunk 增加了一些<a href="http://www.splunk.com/view/hunk-whats-new/SP-CAAAMSE">新功能</a>：</p>
+<ul> 
+ <li><a href="http://docs.splunk.com/Documentation/Splunk/latest/Report/Acceleratereports">报告加速</a>：在Hadoop中缓存搜索结果，缩短报告响应时间，提升性能。该功能可以针对单独报告启用。</li> 
+ <li>仪表板和图表现在具备了可交互性：支持图表叠加、平移和缩放控制，以及下拉。</li> 
+ <li>用户可以将图表和报告嵌入到第三方业务应用中。</li> 
+ <li>Hunk不限于支持Hadoop。<a href="http://docs.splunk.com/Documentation/Hunk/6.1/Hunk/StreamingLibraries">流式资源库</a>让开发者可以将Hunk连到任何NoSQL数据存储，比如<a href="http://cassandra.apache.org/">Apache Cassandra</a>、<a href="http://www.mongodb.org/">MongoDB</a>和<a href="http://www.neo4j.org/">Neo4j</a>。</li> 
+ <li>通过<a href="http://docs.splunk.com/Documentation/Hunk/6.1/Hunk/Userimpersonation">通道授权</a>改善安全性，管理者可以控制哪一个Hunk的用户能够提交MapReduce和访问<a href="http://hadoop.apache.org/docs/r2.3.0/hadoop-project-dist/hadoop-hdfs/HdfsUserGuide.html">HDFS</a>文件。</li> 
+ <li>Hunk添加了新的文件格式的支持，包括<a href="http://wiki.apache.org/hadoop/SequenceFile">sequence files</a>、<a href="http://en.wikipedia.org/wiki/RCFile">RCFile</a>、<a href="http://docs.hortonworks.com/HDPDocuments/HDP2/HDP-2.0.0.2/ds_Hive/orcfile.html">ORC files</a> 和<a href="http://parquet.io/">Parquet</a>。</li> 
+</ul>
+<p><strong>查看英文原文：</strong><a href="http://www.infoq.com/news/2014/05/splunk-hunk-6.1">Splunk's Hunk 6.1 Brings New Capabilities for Big Data Analytics</a></p>
 <hr />
 <p>感谢<a href="http://www.infoq.com/cn/author/杨赛">杨赛</a>对本文的审校。</p>
 <p>给InfoQ中文站投稿或者参与内容翻译工作，请邮件至<a href="mailto:editors@cn.infoq.com">editors@cn.infoq.com</a>。也欢迎大家通过新浪微博（<a href="http://www.weibo.com/infoqchina">@InfoQ</a>）或者腾讯微博（<a href="http://t.qq.com/infoqchina">@InfoQ</a>）关注我们，并与我们的编辑和其他读者朋友交流。</p><br><br><br><br><br><br></body></html>

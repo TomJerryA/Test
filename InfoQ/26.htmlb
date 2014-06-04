@@ -1,194 +1,77 @@
-<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>通过一组RESTful API暴露CQRS系统功能</h3><p><a href="http://martinfowler.com/bliki/CQRS.html">命令和查询责任分离</a>（CQRS）是由Greg Young提出的一种将系统的读（查询）、写（命令）操作分离为两种独立子系统的架构模式。命令通常是异步执行的，并存储在一个事务型数据库中，而读操作则通常是最终一致的，并且数据来自于解正规化的视图。</p>
-<p>本文在此提出并为读者展示一种为CQRS系统创建一套RESTful API的方式。这种方式结合了HTTP的语义、REST API基于资源的风格，并能够处理分布式计算的某些问题，例如最终一致性和并发性。</p>
-<p>此外我们还提供了<a href="https://github.com/aliostad/m-r">一套原型API</a>，它建立于Greg Young编写的<b>m-r</b> CQRS原型之上，后者也被称为<b>SimplestPossibleThing</b>。m-r可以认为是CQRS原型的事实标准，它鼓舞了许多团队采用并创建CQRS系统。虽然这个m-r原型很简单，但它已经能够展示在现实世界中使用RESTful CQRS系统的某些机遇和挑战了。</p>
-<p>我们在将下一部分审阅m-r的领域模型，随后对相关特性的API设计进行一些探索。最后，我们将对一些所做的选择展开讨论，并且讨论一些RESTful m-r的概念和理论内容。</p>
-<h2>m-r领域</h2>
-<p>m-r模型是一个经过简化的库存管理系统的领域模型，你可以创建新库存物品（假设它是某种类型的产品），重命名或取消激活（即<i>逻辑删除</i>）它们。被取消激活的物品将不再为用户所见，而所有活动的物品都可以被获取，并且能够看到每个物品的所有细节。你也能够增加或减少这些库存物品，指定所加入或减少的物品数据。换句话说，在建立库存量之后，就可以开始使用这个系统了。</p>
-<p>用户将通过同步的查询来查看物品列表或是物品细节，对于物品状态的修改将通过命令来实现。在现实世界中，命令应该是异步执行的，但由于代码中使用了内存中的事件总线（Event Bus）及事件处理函数，因此在最终实现中命令都是同步执行的。</p>
+<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>构建服务端的AMD/CMD模块加载器</h3><p>本文原文地址：http://trock.lofter.com/post/117023_1208040 。经作者推荐，分享至InfoQ中文站。</p>
+<h2><strong>引言：&nbsp; </strong></h2>
+<p>在前端开发领域，相信大家对AMD/CMD规范一定不会陌生，尤其对requireJS、seaJS等模块加载器更是耳熟能详，不少网站目前也正在使用。requireJS、seaJS的出现，极大程度的促进了前端模块化编程方式的发展，前端的代码风格趋近标准化。而两者的共同特点都是运行在<strong>浏览器端</strong>的模块加载器，可以智能解析模块依赖关系，并自动加载相关模块。而我们今天介绍的是<strong>服务端的AMD/CMD模块加载器</strong>— <a href="http://loftyjs.com/fdevlib/stylecombine.html">styleCombine</a>，一个为前端模块化开发及性能提升而诞生的前端开发神器。</p>
+<h2><strong>解决的问题：</strong></h2>
+<p>相信大家对服务端加载器的概念比较陌生，为方便理解，不如我们先看一个最终的效果示例：</p>
+<p>某位前端同学使用 AMD 的开发模式写了如下一个html页面：</p>
+<pre>
+&lt;html&gt;
+        …
+        &lt;body&gt;
+           &lt;script src=”http://www.1688.com/mod/a.js&quot; &gt;&lt;/script&gt;
+          &lt;script data-sc-amd=”true” src=”http://www.1688.com/mod/b.js&quot; &gt;&lt;/script&gt;
+        &lt;/body&gt;
+&lt;/html&gt;</pre>
+<p>其中 a.js 是一个普通的 JS 文件，非 AMD 模块。</p>
 <div id="lowerFullwidthVCR"></div>
-<p><img src="http://infoqstatic.com/resource/articles/rest-api-on-cqrs/zh/resources/0224030.png" width="600" _href="img://null" _p="true" alt="" /></p>
-<p>m-r模型实现了CQRS：命令和查询被分别存储在不同的地方，并且各自由系统中完全不同的部分进行处理。</p>
-<p>除了CQRS之外，m-r也使用了<a href="http://martinfowler.com/eaaDev/EventSourcing.html">事件溯源</a>（Event Sourcing）作为它的持久化机制。在这种方式中，对于领域模型的修改会被捕获为一系列的事件，这些事件会按照它们被调用的顺序存储起来。为了获取某个模型的当前状态，需要将所有事件按照它们发生的顺序进行重播。换句话说，模型中实体的状态信息是不会被持久化的。举例来说，如果我们创建了一个库存物品，随后将它重命名两次，那么我们将会得到一个<b>InventoryItemCreated</b>事件和两个<b>InventoryItemRenamed</b>事件，这些事件都会被保存在事件存储（Event Store）中。</p>
-<p>事件是连续的，并且每个事件都带有一个版本号，用以在并发时进行检查。举例来说，如果某个库存物品在版本2的基础上进行重命名，但正好有另一个重命名发生在同一个物品上，并使它的当前版本变为3，那么这种情况就会导致并发异常。</p>
-<p>命令与领域事件通常是一对一的关系，当<i>调用</i>了某个命令之后，领域模型会发起并存储一个事件。领域事件是事件溯源的基石，它和跨多个边界上下文（bounded context）的事件不同，往往粒度更细，并且只包括所需的最小数量的信息。因此，它并不是一个适合于在不同的边界上下文之间进行集成的工具。除了使用一个进程内的事件总线之外，m-r还用到了一个内存中的事件存储。这个存储本质就是一个哈希表，它使用模型的id作为键，并且持续跟踪模型中发生的任何事件。</p>
-<p>如欲了解CQRS和事件溯源的更多信息，你可以阅读Greg Young的<a href="http://cqrs.files.wordpress.com/2010/11/cqrs_documents.pdf">这本迷你书</a>。</p>
-<h2>创建一套上层的REST API</h2>
-<p>如果你倾向于先去感受一下最终的实现，可以<a href="http://m-r.azurewebsites.net/index.html#/">在这里看一下一个目前（暂时性）可运行</a>的原型。我们鼓励你使用fiddler或者浏览器自带的开发工具去检查一下这个简单的示例中的HTTP请求。在<a href="https://github.com/aliostad/m-r">GitHub</a>上可以找到包括这套API和一个基本的Angular应用的源代码。不过我们还是要强调，它的实现方式和使用的技术并非关键所在，读者更应该关注于设计方式及HTTP的展现。</p>
-<h3>公开领域的构造</h3>
-<p>对于这个API层来说，最重要的责任是将底层的领域建模为资源，并通过HTTP语义暴露出来。在这个过程中，API层将创建一个<b>公共领域</b>，它由资源（以及它们的唯一标识符-&gt;URL）以及输入和输出的消息所构成。底层的领域越简单，这个公开领域和底层领域的相似程度就越高。</p>
-<p>（单击图片以放大）</p>
-<p><a href="http://infoqstatic.com/resource/articles/rest-api-on-cqrs/zh/resources/0224031.jpg"> <img src="http://infoqstatic.com/resource/articles/rest-api-on-cqrs/zh/resources/0224031.jpg" width="600" _href="img://null" _p="true" alt="" /></a></p>
-<p>在这个例子中，我们创建的公开领域与底层的领域还是比较相似的，但即使是这种简单的领域，我们也不能够直接将底层的领域暴露出去：这可能造成领域的内部实现被泄漏出去，而且领域内部也不一定包含API层所需的全部属性。比方说，所有的内部命令都会用一个<i>整数</i>来表示并发时所需的<b>版本号</b>，而在公开领域中则用<i>字符串</i>表示这个属性。我们稍后将会使用这个属性作为ETag，而根据HTTP规格要求，ETag必须是不透明的。</p>
-<p>简单来说，我们所创建的公开领域表现了内部的领域类，但又不完全相同。这种公开领域通常被称为一个视图模型（Vide Model）。这个术语并不太准确，因为这种表达方式感觉上对公开领域有些排斥，将它视为一种“哑”模型，因此我们倾向于使用一个新术语“输出模型”（output model）。它将被应用到输入和输出消息中（命令和输出模型）。</p>
-<h3>资源</h3>
-<p>我们很自然地想到应该有一个<b>InventoryItem</b>资源，因此我们将领域中的这个单根实体暴露为一个单独的资源，可以用<b>/api/InventoryItem</b>方便地进行表示。每个库存物品将用<b>/api/InventoryItem/{id}</b>进行表示，m-r使用了全局唯一标识符（GUID）作为Id。</p>
-<p>使用这个单独的根对象就可以完整的表现我们的领域了。还有一种方式是使用<b>/api/InventoryItem/{id}/Stock</b>这个资源作为添加和删除库存量（即签入或移除物品）的方法。从本质上说它们没有什么高下之分，无非是哪种方式能够更好地表现资源而已。由于第一种方式更加简便，因此我们就使用这种方式。</p>
-<p>（单击图片以放大）</p>
-<p><a href="http://infoqstatic.com/resource/articles/rest-api-on-cqrs/zh/resources/0224032.jpg"> <img src="http://infoqstatic.com/resource/articles/rest-api-on-cqrs/zh/resources/0224032.jpg" width="600" _href="img://null" _p="true" alt="" /></a></p>
-<h3>查询</h3>
-<p>我们需要两个查询：<b>GetInventoryItems</b>和<b>GetInventoryItemDetails</b>。这里我们将通过两个GET方法<b>/api/InventoryItem</b>和<b>/api/InventoryItem/{id}</b>暴露出这两个查询功能。</p>
-<p><b>GetInventoryItems</b>方法能够获取仅包含了物品<b>名称</b>和<b>Id</b>的一个列表，它会根据<b>ACCEPT</b>头决定返回JSON或是XML（ASP.NET Web API能够支持这一功能）。如果某个资源适合于缓存，那么所有的GET请求都有可能返回缓存数据。<b>GetInventoryItems</b>返回<b>InventoryItemListDataCollection</b>作为输出消息。虽然可以通过数据内容的哈希生成ETag，不过这里我们选择将列表中每一项的<b>Id</b>和<b>名称</b>进行哈希后得到的结果作为ETag返回给客户端（例如浏览器）。客户端可以选择将资源缓存起来，并针对ETag使用<b>If-Non-Match</b>进行条件请求。我们选择将资源的<b>max-age</b>设为0，因此客户端的GET会始终使用条件请求，不过也可以选择设置一个人为的过期时间。</p>
+<p>而 b.js 是一个 AMD 模块，它的内容是：</p>
 <pre>
-GET /api/InventoryItem HTTP/1.1 
-Accept:application/json, text/plain, */* 
-Accept-Encoding:gzip,deflate,sdch 
-If-None-Match:&quot;LdHipfxR7BsfBI3hwqt2BLsno8ic98KmrIA1y67Nnw4=&quot;
-</pre>
-<p>返回结果</p>
+define(“mod/b”, [“mod/c”], function(c){
+          console.log(“I am module b”);              
+})</pre>
+<p>mod/c.js 也是一个 AMD 模块，它的内容是：</p>
 <pre>
-HTTP/1.1 304 Not Modified 
-ETag: &quot;LdHipfxR7BsfBI3hwqt2BLsno8ic98KmrIA1y67Nnw4=&quot;
-</pre>
-<p><b>GetInventoryItemDetails</b>方法会返回某个库存物品的细节，包括<b>Id</b>，<b>Name</b>和<b>CurrentCount</b>属性，最后一项属性记录了当前的库存数量。虽然内部领域的读取模型（read model）包含了版本号，但如果将某个数值类型的版本号直接作为ETag会产生安全性问题，因为客户端可以轻易地猜出下一个数值。因此，我们选择了使用高级加密标准（AES）对版本号进行加密后，作为<b>InventoryItemDetails</b>方法的ETag输出。</p>
-<p>为每个操作都重新实现ETag对于API层来说有些负担过重，因此我们定义了一个<b>IConcurrencyAware</b>接口：</p>
+define(“mod/b”, [“mod/c”], function(c){
+           console.log(“I am module b”);              
+})</pre>
+<p>显然，模块 b 依赖于模块 c ，而模块 c 又依赖了模块 d 。这样的一个页面，在页面初始加载时，使用requireJS将会异步加载子模块，算上非 AMD 模块 a.js，一共将产生4个JS加载请求。</p>
+<p>而若有了 styleComine，事情将会变得很不一样。前端同学写的 html 源码经由 styleCombine 处理后，自动的转换成了如下格式：</p>
 <pre>
-public interface IConcurrencyAware 
-{ 
-    string ConcurrencyVersion { get; set; } 
-}
-</pre>
-<p>每个支持ETag的输出模型都要实现这个接口，当API层看到某个输出模型支持这个接口时，就会读取版本号并设置ETag值。另一方面，当API层对条件式GET请求进行响应时，会将生成的ETag与客户端在<b>If-None-Match</b>头中传入的值进行比较。所有这些操作都可以通过一个单独的全局filter实现：<b>ConcurrencyAwareFilter</b>。</p>
-<p>需要注意的是，添加、删除或者重命名某个库存物品时应该使物品列表的缓存失效。请看下面的例子（条件式GET请求的逻辑是在浏览器端完成的，不需要特别编写代码实现）：</p>
-<pre>
-GET /api/InventoryItem HTTP/1.1 
-If-None-Match:&quot;CWtdfNImBWZDyaPj4UjiQr/OrCDIpmjVhwp8Zjy+Ok0=&quot;
-</pre>
-<p>返回结果是一个状态码为200的完整响应，并且包含了一个新的ETag值：</p>
-<pre>
-HTTP/1.1 200 OK 
-Cache-Control:max-age=0, private 
-Content-Length:68 
-ETag:&quot;0O/961NRFDiIwvl66T1057MG4jjLaxDBZaZHD9EGeks=&quot; 
-Content-Type:application/json; charset=utf-8; domain-
-model=InventoryItemListDataCollection; version=1.0.0.0; 
-format=application%2fjson; schema=application%2fjson; is-text=true 
-...
-</pre>
-<p>请注意Content-Type头包含了额外的参数，这是对于“<a href="http://byterot.blogspot.co.uk/2012/12/5-levels-of-media-type-rest-csds.html">媒体类型的五种级别</a>”（或者简称<b>5LMT</b>）概念的一种实现，这种方式不是将所有信息都塞到一个单独的令牌（token）中，而是使用不同的参数来表达对用户有用的不同级别的数据，能够表达不同级别的有用信息。下文会对这个主题做进一步的讨论。</p>
-<h3>命令</h3>
-<p>查询通常会映射到GET方法，而命令则需要映射到POST、PUT、DELETE和PATCH方法。将HTTP谓词映射到CRUD操作是一种流行的观念，但在真实世界中很少能够将谓词和数据库操作一一对应。实际上，REST API并不在对持久化存储之上的一个简单封装，相反，它是指引用户去了解业务领域、操作与工作流的一扇门。因此它必须能够不依赖于特定的谓词去表达某个维度的意图。</p>
-<p>一种常见的方式是使用远程过程调用（RPC）风格的资源，例如<b>/api/InventoryItem/{id}/rename</b>。虽然它看上去确实去除了对某种谓词的依赖，但它违反了REST面向资源的表现能力。我们需要记住，资源是一个名词，HTTP谓词则表示动词和动作，而自描述的消息（REST的宗旨之一）则是表达其它维度信息和意图的手段。实际上，在HTTP消息中所包含的命令就应该足以描述任何人为的操作了。但是，完全依赖于请求体中的消息也有它自己的问题，因为请求体通常是作为流传递的，要在辩认出它的具体操作之前获取整个请求体有时是不可能做到的，而且这也不是一种明智的做法。这里，我们将展示一种基于5LMT中的第4级别（即领域模型）处理请求的方式，命令的类型将包含在<b>Content-Type</b>头中的某个参数内。</p>
-<pre>
-PUT /api/InventoryItem/4454c398-2fbb-4215-b986-fb7b54b62ac5 HTTP/1.1  
-Accept:application/json, text/plain, */* 
-Accept-Encoding:gzip,deflate,sdch 
-Content-Type:application/json;domain-model=RenameInventoryItemCommand
-</pre>
-<p>这样就能够将请求正确地输送给服务端相应的处理方法了。那这种方式是否将过多的信息泄露给客户端了呢？并非如此。输入输出消息的schema（以及名称）是<b>公开领域</b>的一部分，客户端必须能够完整地访问到它，因此它们依赖于schema也是在我们所预期的。</p>
-<p>至于客户端的实现只用了最少量的代码，这里使用了一个<b>AngularJS</b><i>的装饰（decorator</i><i>）</i>封装了<b>$http</b>服务，它能够读取这个原型的返回内容，并且能够在<b>Content-Type</b>头中加入额外的参数信息。只要保持JavaScript<i>构造函数</i>的名称不变就没有问题。</p>
-<p>我们已经解决了辨认当前正被调用的方法的问题，接下来需要将命令按照语义映射到相应的HTTP谓词。在将命令映射到谓词时，选择正确谓词的关键不仅仅在于语义，同样要考虑<b>幂等性</b>（至于谓词的安全性则无需顾忌，因为任何一个命令谓词都是不安全的）。PUT、PATCH和DELETE是幂等的，而POST则不是幂等的（多次调用一个幂等的谓词的结果与仅调用一次是相同的）。</p>
-<h3>CreateInventoryItemCommand</h3>
-<p>从CRUD范式的角度来说，<b>CreateInventoryItemCommand</b>很自然地适用于POST方法。（这里只显示重要的头信息）</p>
-<pre>
-POST /api/InventoryItem HTTP/1.1 
-Content-Type:application/json;domain-model=CreateInventoryItemCommand  
-
-{&quot;name&quot;: &quot;CQRS Book&quot;}
-</pre>
-<p>返回的响应如下:</p>
-<pre>
-HTTP/1.1 202 Accepted 
-Location: http://localhost/SimpleCQRS.Api/api/InventoryItem/
-109712b9-c3d5-4948-9947-b07382f9c8d9
-</pre>
-<p>该操作将在location头信息中返回这个将被创建的库存物品（因为所有操作都是异步执行的）的URL地址。</p>
-<h5>DeactivateInventoryItemCommand</h5>
-<p>如同前文所述，取消激活库存物品就代表一次逻辑删除。此外，删除操作是幂等的，因为多次删除一个库存物品的效果和一次删除是一样的。因此我们将使用DELETE选项作为取消激活某个物品的方式（该方法带有一个空的方法体）。</p>
-<pre>
-DELETE /api/InventoryItem/f2b75f21-001a-4eed-b8f3-35bf5e4e9b0d HTTP/1.1 
-Content-Type:application/json;domain-model=DeactivateInventoryItemCommand  
-
-{}
-</pre>
-<p>返回的响应如下:</p>
-<pre>
-HTTP/1.1 202 Accepted</pre>
-<p>虽然也可以在方法体中传递id，但在URL中已经提供了id信息。<b>DeactivateInventoryItemCommand</b>构造函数的唯一职责是正确地设置<b>domain-model</b>这个参数。</p>
-<h5>RenameInventoryItemCommand</h5>
-<p><b>RenameInventoryItemCommand</b>比起其它命令来说更有趣一点。首先，重命名一个库存物品也就是进行修改，因此使用PUT谓词是最合适的。另一方面，如果你正在重命名某个物品时，你的同事也在尝试将其重命名为另一个名字的话会怎样呢？这就是一个并发问题。HTTP通过<b>If-Unmodified-Since</b>和<b>If-Match</b>提供了对资源进行并发修改时的保护机制。因为我们使用了ETag，因此就相应地设置<b>If-Match</b>：</p>
-<pre>
-PUT /api/InventoryItem/f2b75f21-001a-4eed-b8f3-35bf5e4e9b0d HTTP/1.1 
-Content-Type:application/json;domain-model=RenameInventoryItemCommand 
-If-Match:&quot;DL1IsUoH709K+N5TXFzlQeQI5arO8r/U0SzXcRhuXLc=&quot;  
-
-{&quot;newName&quot;: &quot;CQRS Book 1&quot;}
-</pre>
-<p><b>AngularJs</b>的controller会传递ETag值，并传入模型中，之后在条件式PUT请求时进行使用。如你所见，<b>ETag</b><b>的值仅仅是对领域模型中版本号的一种表现</b>，但我们对其进行加密以满足<a href="http://www.w3.org/Protocols/rfc2616/rfc2616-sec3.html#sec3.11">HTTP规格</a>的需要。服务端获取到这个值之后进行解密并还原成版本号的数值。如果版本号不匹配，领域模型就会抛出一个<b>ConcurrencyException</b>异常，在API层的<b>ConcurrencyExceptionFilterAttribute</b>类捕获到这个异常之后，会以HTTP语义的方式表现该异常。</p>
-<pre>
-HTTP/1.1 412 Precondition Failed</pre>
-<p>这个例子很好地说明了HTTP的并发如何与CQRS的并发检查机制相结合。</p>
-<h3>CheckInItemsToInventoryCommand和RemoveItemsFromInventoryCommand</h3>
-<p>这两个命令就更加有趣了。我们将往库存中加入或删除一些物品。从某方面来说，这种操作是对库存物品的数量进行更新，因此可以将其实现为一个PUT（也许PATCH更合适）方法。但因为这两个命令并非幂等（比如说，调用CheckInItemsToInventoryCommand两次应该添加两次库存），因此最适合的谓词实际上是POST。</p>
-<p>客户端将在<b>Content-Type</b>头信息中的参数中设置领域模型的名称，如同我们之前所见的一样。</p>
-<pre>
-POST /api/InventoryItem/f2b75f21-001a-4eed-b8f3-35bf5e4e9b0d HTTP/1.1 
-Content-Type:application/json;domain-model=CheckInItemsToInventoryCommand  
-
-{&quot;count&quot;: &quot;230&quot;}
-</pre>
-<p>返回的响应是一样的：</p>
-<pre>
-HTTP/1.1 202 Accepted</pre>
-<h5>HTTP的其它方面</h5>
-<p>实现HTTP的一些其它方面也会带来一些好处，HEAD也是一个重要的谓词，它的响应结果和GET方法一样，但返回的响应体中不包括任何内容。我们为所有GET资源都实现了HEAD谓词，例如：</p>
-<pre>
-HEAD /api/InventoryItem HTTP/1.1 
-Accept:application/json, text/plain, */* 
-Accept-Encoding:gzip,deflate,sdch
-</pre>
-<p>将返回</p>
-<pre>
-HTTP/1.1 200 OK </pre>
-<pre>
-ETag: &quot;LdHipfxR7BsfBI3hwqt2BLsno8ic98KmrIA1y67Nnw4=&quot;</pre>
-<p>具体在实现中会将HEAD请求转向给GET方法的处理函数，而框架本身会在最后负责移除返回的内容。这一系列实现都是自动触发的，因此在响应中可以正确地获得ETag。</p>
-<p>另一个需要实现的重要谓词是OPTIONS，这个谓词可以用以生成API文档，不过我们这里只是简单的返回该资源支持的所有谓词：</p>
-<pre>
-OPTIONS /api/InventoryItem/f2b75f21-001a-4eed-b8f3-35bf5e4e9b0d HTTP/1.1</pre>
-<p>它将返回如下内容：</p>
-<pre>
-HTTP/1.1 200 OK 
-Allow: GET,POST,OPTIONS,HEAD,DELETE,PUT 
-Content-Length: 46 
-Content-Type: application/json; charset=utf-8; domain-model=String%5b%5d; version=4.0.0.0; 
-format=application%2fjson; schema=application%2fjson; is-text=true  
-
-[&quot;GET&quot;,&quot;POST&quot;,&quot;OPTIONS&quot;,&quot;HEAD&quot;,&quot;DELETE&quot;,&quot;PUT&quot;]
-</pre>
-<p>请注意，响应中的<b>Allow</b>头对于OPTIONS请求来说是必须的。不过HTTP规格本身并没有指定OPTIONS响应体中具体写法，因此我们就将允许的谓词作为一个字符串数组返回（注意，在domain-model参数中的<b>String[]</b>是经过<b>UrlEncoded</b>方法编码的结果）。可以利用这个谓词生成符合各种schema和语言需求的API文档。</p>
-<p>除了这些方法之外的任何调用都会返回一个<i>方法未找到（</i><i>method not found</i><i>）</i>或者405状态码，ASP.NET Web API自身已经实现了这一功能：</p>
-<pre>
-PUT /api/InventoryItem HTTP/1.1  
-
-{}
-</pre>
-<p>它将返回：</p>
-<pre>
-HTTP/1.1 405 Method Not Allowed 
-Allow: POST,GET,HEAD,OPTIONS  
-
-{&quot;message&quot;:&quot;Http Method not supported&quot;}
-</pre>
-<h2>讨论</h2>
-<p>这一部分将详细叙述某些理论概念，以及我们的决定中一些比较困难，或者可能引起争议的部分。</p>
-<h3>可选的并发检查</h3>
-<p>在m-r最初的实现中，所有命令（除了<b>CreateInventoryItemCommand</b>，它已经隐式地包含了值为0的版本号）都包含一个整数型的<b>CurrentVersion</b>字段。而这个版本中将它们修改为可选的（即C#中的可空类型）。</p>
-<p>在一方面，服务端应该负责保证自身状态的完整性。因此它不能、也不应该依赖于客户端所提供的版本号。并发检查是作为一个特性提供给客户端的，而不是服务端用以保证模型完整性的机制。如果客户端关心并发行为，那它就可以选择性地发送版本号，这已经通过在ETag中的加密信息提供给它们了。要记住的是，并发检查与服务端的事件版本号是不同的概念，后者是服务端的内部实现机制。</p>
-<p>另一方面，对于某些操作来说，并发检查是没有意义的。举例来说，如果两个客户端在同一时间（调用<b>CheckInItemsToInventoryCommand</b>方法）添加了20个库存物品，并且它们都具有版本号n，那么其中有一个命令就会失败，但这种失败是不必要的，因为我们确实需要添加40个物品。这种问题在高访问量的情况下会被放大。想象一下，如果大量的用户涌入亚马逊网站去购买哈利波特的最新一期，在多数情况下他们都会遇到并发问题。</p>
-<p>在HTTP中执行PUT（和PATCH）操作时会认为并发是一个可选的检查，这一点并非偶然。虽然并发检查可以异步执行，但我们需要尽力保证它必须同步执行，因此当我们返回状态码202（已接受）时，就代表服务端已经确认了没有并发冲突情况的产生。</p>
-<h5>媒体类型的五种级别（5LMT）和创建新的媒体类型</h5>
-<p>在社区里常见的一种做法是创建新的媒体类型，通常称为打造新的媒体类型。举例来说：</p>
-<pre>
-Content-Type:application/vnd.InventoryItemListDataCollection.1.0.0.0+json;</pre>
-<p>这种使用非正规的方式表示某个媒体类型的子类型已经成为了一种通用的实践（已经实际上成为一种约定了），它将子系统分解为一些特定的、或者是正式的元素，并通过+号连接在一起。已经有些经过注册的媒体类型使用了这种约定，例如<b>application/rss+xml</b>和<b>application/atom+xml</b>。这两个示例处于媒体类型级别中的第3级别（或者叫做schema级别），而application/xml则处于第2级别（format级别）。某种意义上说，<b>application/atom+xml</b>就是一种<b>application/xml</b>类型，它们使用相同的format，而前者还指明了会使用ATOM schema。</p>
-<p>虽然这一约定会在未来版本的HTTP规格中得到认可，但它并未解决媒体类型不断增长的问题。首先，使用任何未注册的媒体类型都是<a href="http://www.w3.org/Protocols/rfc2616/rfc2616-sec3.html#sec3.7">HTTP规格</a>所不提倡的，使用以上类型的<b>Content-Type</b>值也是一样。实际上，如果我们需要在所有API中为五个不同媒体级别的任意组合都注册一种媒体类型，那互联网号码分配局（IANA）恐怕需要发动一大批人去专门从事这个规模巨大的任务了。另一方面，许多客户端系统使用基于dictionary的媒体类型去处理这种请求，它们将不能够应付新创建的媒体类型。</p>
-<p>因此使用5LMT能够允许现有的客户端继续按照之前的方式正常工作，而更先进的客户端则可以利用更高级别的信息，它们都是作为独立的实体提供的。</p>
-<h5>通过一个公开的领域保护内部领域是关键所在</h5>
-<p>将服务端的内部实现进行抽象对客户端来说是非常重要的。如同之前所述，为较小的领域所创建的公开领域和内部领域会比较相似，但即使是在m-r这个示例中，我们也不能够将内部领域直接暴露出来，而必须创建一个独立的模型，<b>它表现了客户端能够接收和交互的信息</b>。</p>
-<p>我们还应该将公开领域文档化，并展现给客户端。这一方面的进展值得关注，因为已经有各种不同的方法和实践开始露出水面了（从WADL到Swagger、RAML和RestDown等等）。</p>
-<h2>结论</h2>
-<p>不仅通过一套REST API暴露CQRS是可能的，而且HTTP语义的丰富性也使得我们能够在它的基础上编写一套流畅而有效的API。整个流程包括创建一个由命令和查询（输入输出消息）组成的公开领域，以及能够处理并发和缓存的各种资源。此外，我们还需要将内部领域的查询和命令映射为HTTP谓词，并且使用状态码以表现状态转换和异常。使用5LMT将有助于创建完全RESTful，而不是远程过程调用风格的资源。所有这些都可以通过一个很小但可以运行的原型应用进行展现，该原型是通过ASP.NET Web API和AngularJS实现的。</p>
-<h2>关于作者</h2>
-<p><img style="float: left; margin-right: 10px" src="http://infoqstatic.com/resource/articles/rest-api-on-cqrs/zh/resources/0224033.jpg" _href="img://null" _p="true" alt="" /><b>Ali Kheyrollahi</b> 是一位解决方案架构师、作者、博主、开源软件的作者和贡献者，目前任职于伦敦的一家大型电子商务企业。他对HTTP、Web API、REST、DDD和概念模型抱有极大的热情。而在处理实际的业务问题上又坚持实用性。他在这一行已有12年以上的经验，并在多个优秀企业工作过。他对于计算机视觉和机器学习领域有着深厚的兴趣，并且已经发布了多篇论文。在之前，他曾是一名医师，并作为一名非专科医生工作了5年。可以在这里找到他的博客，此外他在twitter上也非常活跃，可以通过@aliostad关注他。</p>
-<div style="clear:both"></div>
-<p><strong>查看原文地址：</strong><a href="http://www.infoq.com/articles/rest-api-on-cqrs">Exposing CQRS Through a RESTful API</a></p><br><br><br><br><br><br></body></html>
+&lt;html&gt;
+        …
+        &lt;body&gt;
+                &lt;script src=”http://www.1688.com/mod/??a.js,b.js,c,js,d.js?_v=9c6b7bc035092416” &gt;&lt;/script&gt;
+        &lt;/body&gt;
+&lt;/html&gt;</pre>
+<p>很明显，原本需要4个请求才能加载的AMD JS模块，现在全都 combo 在一个url中一次请求完成，性能的提升那是非常自然的事情。</p>
+<p>从上面的示例你至少可以认识到：styleCombine 是一个藏身在服务器端的家伙，因为他能直接改变html的输出源码；另外就是它能够自动分析出模块 a 的多层级依赖关系，并自动拼接成 combo URL的形式，使得多个模块的请求被合并为一个。正由于styleCombine有以上两个特性，所以我们称之为<strong>服务端的AMD/CMD模块加载器</strong>。</p>
+<h2><strong>styleCombine 拥有的功能：</strong></h2>
+<ol> 
+ <li> <p>将 HTML 页面上的多个 js/css 请求自动地合并成一个请求，发送给<a href="http://tengine.taobao.org/index_cn.html">combo服务器</a>。</p> </li> 
+ <li> <p>对于入口的 AMD/CMD 模块，能够自动解析出模块的深层依赖关系，并将所依赖文件及页面上的其它 js 文件合并为一个请求发送。</p> </li> 
+ <li> <p>对 HTML 页面中每个 js/css 链接都会根据文件内容自动地添加版本号后缀，js/css 内容更新将触发版本号的实时更新，使得浏览器端缓存或 CDN 缓存能够强制失效。</p> </li> 
+</ol>
+<h2>有了这样一个神器，想象一下<strong>你可以做什么</strong>？</h2>
+<ul> 
+ <li>模块化、组件化的开发模式可以更彻底（尤其是对内容型页面而言）：一个页面的各模板可以任意地拆分，相关的 CSS、JS 文件可以内嵌引用到这个模板中，而当各个模块最终组装为一个页面时，所有的 CSS、JS&nbsp; 都将被自动合并成一个请求。模块化开发爽了，而又不损耗性能！</li> 
+ <li>无需进行苦逼的线下打包配置等工作，开发时我们就使用浏览器端的加载器进行调试，而上线了就让 styleCombine 来自动做服务端加载，整个过程对开发者完全透明。</li> 
+ <li>静态资源部署 CDN 将成为一件惬意的事，智能更新的时间戳解决了文件缓存问题，妈妈再也不用担心我手工修改时间戳清缓存的苦逼生活了！</li> 
+</ul>
+<h2><strong>实现原理：</strong></h2>
+<p>styleCombine 的使用可以说对前端开发者完全透明，不必对现有的前后端<strong>应用架构</strong>做任何修改即可快速享用到 styleCombine 带来的强大功能！ 那么它是如何做到的呢？</p>
+<p>styleCombine 是由以下三部分构成：</p>
+<ul> 
+ <li> <p>安装在应用服务器上的<a href="https://github.com/zhiwen/styleCombine3"> apache/nginx 模块</a></p> </li> 
+ <li> <p>运行在静态资源服务器上的 NodeJS <a href="https://github.com/fangdeng/VersionCenter">依赖解析服务 VersionCenter</a></p> </li> 
+ <li> <p>提供样式 combo 服务的 <a href="http://tengine.taobao.org/index_cn.html">Tengine 服务器</a></p> <p>三大模块系统配合完成上述功能：</p> </li> 
+</ul>
+<p><img src="http://infoqstatic.com/resource/articles/construction-of-the-service-side-amd-cmd-module-loader/zh/resources/0519050.png" width="600" _href="img://null" _p="true" alt="" /></p>
+<p>当用户访问我们的页面时，apache/nginx 模块会负责将应用端（比如Java程序）输出的 html 先进行一次处理，匹配所有的 &lt;script&gt;及&lt;link&gt;标签，对于 AMD/CMD JS 模块则取出子模块的依赖列表。将匹配到的所有&lt;script&gt;或&lt;link&gt;标签，按照标准的 combo service格式，拼接为相应的 combo URL，并加上 md5 时间戳。</p>
+<p>上面流程中的获取 AMD/CMD JS 模块依赖子模块列表的工作显然是不能在用户访问时进行（性能考虑），而是由 NodeJS 服务在线下计算的。那如何计算呢？ 只需要遍历代码分支中的每个AMD/CMD JS模块，并让requireJS、seaJS运行在Node环境中，那么这个文件所有被依赖的模块都会被递归的找到，最终形成一个映射表（示意图）：</p>
+<p><img src="http://infoqstatic.com/resource/articles/construction-of-the-service-side-amd-cmd-module-loader/zh/resources/0519051.jpg" _href="img://null" _p="true" alt="" /></p>
+<p>md5 时间戳也是由 NodeJS 服务线下根据每个静态资源文件的内容算出文件自己对于的 md5 值，并最终根据合并的所有文件算一个总的 md5 值来得到的。 任何一个文件内容发生变化，那么 md5 值就会自动更新。也就是说还有一个 url —&gt; md5 码的映射表存在。</p>
+<p>apache/nginx 模块就是根据这两张映射表来完成合并逻辑，并最终在服务端完成了AMD/CMD 模块的加载。</p>
+<h2><strong>在线实例：</strong></h2>
+<p>目前 styleCombine 已在阿里巴巴中文站各核心业务页面上广泛使用，经历过多次大促的考验，属于比较成熟的解决方案，推广成本很低。</p>
+<p>可以研究下这个正在使用 styleCombine 的在线页面：打开 <a href="http://quan.1688.com/">http://quan.1688.com/</a>&nbsp; 查看下页面的源码，你会发现 JS、CSS 已经是被combo过的。 而若是你打开这个链接再看页面源码 <a href="http://quan.1688.com/?_debugMode_=1">http://quan.1688.com/?_debugMode_=1</a>&nbsp;&nbsp; 就会发现原来在开发状态下页面完全是模块化的，并且 AMD 模块的子模块也被合并进来了。</p>
+<h2><strong>方案优劣分析：</strong></h2>
+<ol> 
+ <li>部署成本：styleCombine 系统由三部分组成，需要相互配合方可正常工作。对 nginx 服务器、nodejs 比较熟悉的同学，整体的部署成本不会高，我们后期也会提供更加自动化的部署脚本来简化这一流程。在部署完毕的后续开发流程中，styleCombine 系统对开发者、应用架构是完全透明的，不增加后期维护成本。</li> 
+ <li>与浏览器端加载器的优劣比较：实际上两者不是对立的关系，而是相互的配合，服务端的加载器能够完成浏览器端加载器不能完成的一些功能，比如对<strong>多层依赖关系</strong>的解析并一次性 combo，比如对 JS、CSS 文件内容变化自动更新时间戳的支持等。它更适用于大型网站对性能有着<strong>极致化要求</strong>的应用场景，并有利于网站<a href="http://trock.lofter.com/post/117023_d6b0f4">长久地保持高性能</a>。 <p>但并非有了服务端的加载器就不需要浏览器端的加载器，比如一些需要异步加载的模块，服务端是无法处理到 html 源码的，所以就需要浏览器端的加载器配合进行，seaJS、requireJS 也都实现了动态 combo 功能（但无法做到多层依赖的一次 combo ）。</p> </li> 
+ <li>系统目前更适用于多页面应用的场景，对单页应用，由于异步加载的模块较多，目前只能发挥出对页面初始加载时的优化功能。PS：对于这个问题 <a href="http://weibo.com/p/1005051734864282/weibo">@前端农民工</a> 提供了一种解决思路，可以把文件依赖列表通过 apache/nginx 模块注入到页面上，这样单页应用也可以在异步加载时一次 combo 获取依赖文件。</li> 
+</ol>
+<h2><strong>结束语：</strong></h2>
+<p>styleCombine 以创新性的思维实现了前端代码的服务器端加载，对开发者透明，对应用架构几乎无改造成本，而带来的是更彻底的模块化开发方式及应用性能的自动化保障！</p>
+<hr />
+<p>感谢<a href="http://www.infoq.com/cn/author/张云龙">张云龙</a>对本文的审校。</p>
+<p>给InfoQ中文站投稿或者参与内容翻译工作，请邮件至<a href="mailto:editors@cn.infoq.com">editors@cn.infoq.com</a>。也欢迎大家通过新浪微博（<a href="http://www.weibo.com/infoqchina">@InfoQ</a>）或者腾讯微博（<a href="http://t.qq.com/infoqchina">@InfoQ</a>）关注我们，并与我们的编辑和其他读者朋友交流。</p><br><br><br><br><br><br></body></html>

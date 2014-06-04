@@ -1,50 +1,39 @@
-<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>Docker Indexがプライベートリポジトリとウェブフックを提供</h3><p><a target="_blank" href="http://www.infoq.com/news/2014/03/docker-private-repositories"><em>原文(投稿日：2014/03/24)へのリンク</em></a></p>
+<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>企業におけるアジャイルとリーンを活用したサービス管理</h3><p><a target="_blank" href="http://www.infoq.com/news/2014/05/agile-lean-service-management"><em>原文(投稿日：2014/05/07)へのリンク</em></a></p>
 <div class="article_page_left news_container text_content_container"> 
  <div class="text_info"> 
-  <p><a href="https://www.docker.io/">Docker</a>を提供する<a href="http://www.docker.com/">Docker Inc.</a>が新しいサービスを発表した。初の商用サービスである<a href="https://index.docker.io/help/docs/#repositories">プライベートリポジトリ</a>も含む。<a href="https://index.docker.io/">Docker index</a>はウェブフック、トリガ、<a href="https://index.docker.io/help/docs/#trustedbuilds">Trusted Builds</a>のためのリンク、メールによる通知を提供する。</p> 
-  <p>Docker indexはDockerの<a href="https://docs.docker.io/en/latest/terms/image/#image-def">イメージ</a><a href="https://docs.docker.io/en/latest/terms/repository/#repository-def">リポジトリ</a>のための<a href="https://docs.docker.io/en/latest/terms/registry/">レジストリ</a>だ。リポジトリはプレビルドイメージを共有するための手段であり、毎回、全員が環境を再作成しなくてもよいようにする。雑な類推だが、Dockerにとってのリポジトリは、Vagrantにとっての<a href="http://docs.vagrantup.com/v2/boxes.html">ボックス</a>だ。プライベートリポジトリが利用できるようになることで、誰がリポジトリにプッシュやリポジトリからのプルができるのかを制御できる。また、イメージタグを使ってリポジトリを閲覧し、ファイルシステムの変更を見ることができる。</p> 
-  <p>リポジトリへのプッシュからウェブフックを起動することもできる。ウェブフックのURLは下記のJSONペイロードを伴ったHTTPのPOSTリクエストを受けつける。</p> 
-  <pre>
-{
-   &quot;push_data&quot;:{
-      &quot;pushed_at&quot;:1385141110,
-      &quot;images&quot;:[
-         &quot;imagehash1&quot;,
-         &quot;imagehash2&quot;,
-         &quot;imagehash3&quot;
-      ],
-      &quot;pusher&quot;:&quot;username&quot;
-   },
-   &quot;repository&quot;:{
-      &quot;status&quot;:&quot;Active&quot;,
-      &quot;description&quot;:&quot;my docker repo that does cool things&quot;,
-      &quot;is_trusted&quot;:false,
-      &quot;full_description&quot;:&quot;This is my full description&quot;,
-      &quot;repo_url&quot;:&quot;https://index.docker.io/u/username/reponame/&quot;,
-      &quot;owner&quot;:&quot;username&quot;,
-      &quot;is_official&quot;:false,
-      &quot;is_private&quot;:false,
-      &quot;name&quot;:&quot;reponame&quot;,
-      &quot;namespace&quot;:&quot;username&quot;,
-      &quot;star_count&quot;:1,
-      &quot;comment_count&quot;:1,
-      &quot;date_created&quot;:1370174400,
-      &quot;dockerfile&quot;:&quot;my full dockerfile is listed here&quot;,
-      &quot;repo_name&quot;:&quot;username/reponame&quot;
-   }
-}
-</pre> 
-  <p><a href="http://blog.docker.io/2013/11/introducing-trusted-builds/">Trusted Builds</a>はリポジトリとGitHubのアカウントをひも付け、GitHubリポジトリにポストコミットフックを追加する。このフックはDocker index内のイメージのビルドとアップデートを起動し、イメージと対応する<a href="https://docs.docker.io/en/latest/reference/builder/">Dockerfile</a>の関係をメンテナンスする。</p> 
-  <p>Trusted Buildsはふたつの改善が行われた。リンクとトリガだ。リンクによってTrusted Buildのリポジトリが同期されるようになる。どのようなアップデートでもリンクされているTrusted Buildは他のTrusted Buildのアップデートを起動するのだ。トリガは単純なプロセスであり、リポジトリのビルドを起動する。GitHubには何もコミットしなくていい。</p> 
-  <pre>
-  $ curl --data &quot;build=true&quot; -X POST https://index.docker.io/u/samalba/docker-registry/trigger/b2562468-aea0-11e3-a39e-b6db5999dfec/
-</pre> 
-  <p>Docker indexのユーザがイベントが発生したことをメールで受け取れるようになった。Trusted Buildや他のユーザのコミットなどのイベントだ。</p> 
-  <p>Docker indexの新しいサービスはDockerレジストリの選択肢を増やす。<a href="https://quay.io/">Quay.io</a>はすでに同じようなサービスを提供している。</p> 
-  <p>プライベートリポジトリはDocker Incの初の<a href="https://index.docker.io/plans/">商用サービス</a>だ。彼らは支払いが必要なサービスを他にも構想している。同社の<a href="http://blog.docker.io/2014/03/introducing-private-repos-webhooks-and-more/">ブログ</a>によれば、</p> 
-  <blockquote>
-    Docker.io上のすべてのサービスは現在、無料です。これはDocker周辺のコミュニティを活発にし育てる上で重要なことです。したがってほとんどのサービスは引き続き無料で提供します。しかし、Benがすでに発表したように、Dockerに継続して投資していくには、オプションの商用サービスを提供する必要があります。プライベートリポジトリはその一環です。
+  <p>アジャイルソフトウェア開発やスクラムは企業が本当にアジャイルの約束を果たすために十分なものではない、とDave van Herpen氏は言う。彼が提案するのは、企業全体を通じたコラボレーションを改善するために、ITサービス管理がアジャイルやリーンのプラクティスをDevOpsとあわせて適用する、ということだ。&nbsp;</p> 
+  <p><a href="http://conferences.unicom.co.uk/agile-governance/">5月13日にアムステルダムで行われるアジャイルガバナンスカンファレンス</a>において、Dave氏は&quot;企業のアジリティへの道は、善意で敷き詰められている&quot;と題した講演を行う。InfoQは氏にインタビューし、アジャイルやリーンのやり方でのサービス管理や継続的にITサービスを改善する方法について聞いた。</p> 
+  <p><strong>InfoQ: ITILには継続的サービス改善（CSI）があります。CSIとはどんなもので、なぜ組織がそれをしたがるのか、説明してもらえますか？</strong></p> 
+  <blockquote> 
+   <p><strong>Dave氏</strong>: ITILによる継続的サービス改善は、ITプロセスやサービスの、効率や有効性を継続的に改善するプロセスです。これをトヨタ生産システムの（システム）カイゼン、スクラムにおけるレトロスペクティブセレモニーと比較したくなるかもしれません。どれも（例えば組織、プロセス、製品、サービスなどの）システムの継続的改善を目的としたものです。ITILのアプローチとここに挙げたようなそれ以外の方法の主な違いは、ITILがCSIを分離した1つのプロセスとみなす一方、それ以外の方法論は継続的改善を（日々のビジネス）プロセスの一部であると考えることです。ITILでは、CSIのほかに4つのプロセスエリアあるいは出版物を定義しています：サービスストラテジ、サービスデザイン、サービストランジション、そして、サービスオペレーションです。CSIはこれらすべてのプロセスの弾み車となることが狙いであり、ITサービス組織がそのプロセスやサービスを継続的に最適化し、その結果として（内部または外部の）顧客に届ける価値を継続的に改善することを可能にします。</p> 
   </blockquote> 
-  <p>料金はリポジトリ数が5つで月額7ドル。最大５０リポジトリで月額50ドル。</p> 
+  <p><strong>InfoQ: あなたの書いた記事</strong><a href="http://www.theitsmreview.com/2014/04/agile-csi-continuous-improvement-dave/"><strong>アジャイルCSI：継続的サービス改善を正しく行う（Agile CSI: continual service improvement done right）</strong></a><strong>では、アジャイルやリーンのプラクティスをITサービス管理にどのように適用するかについて述べています。なぜ、アジャイルとリーンなのでしょうか？</strong></p> 
+  <blockquote> 
+   <p><strong>Dave氏</strong>: ITサービス組織がこの、例えば10年ほどの直面してきた主な課題は、デリバリー（変更）の速さ、サービスの質、柔軟性、文化的側面や行動的側面、顧客満足、ビジネス改善、そして、IT（プロセスやサービスの）ランドスケープの複雑さの増大などに関するものです。ITILはこれらの課題のごくわずかに対してしかガイドラインを提供していません。実際のところ、プロセス数の増大によって、サービス組織の複雑さや管理負担が増大しているだけなのです。</p> 
+   <p>リーンやアジャイルの原理、方法、手段は数多くのビジネス組織やIT組織においてこれらのギャップを埋めることが明確に照明されてきています。たとえば、リーンは純粋に学習の文化を実現するもので、効果的なバリューストリームと顧客志向にフォーカスします。アジャイルは製品やサービスの柔軟で高速なデリバリに貢献することが示されており、継続的改善と分野横断的コラボレーションにフォーカスします。</p> 
+  </blockquote> 
+  <p><strong>InfoQ: あなたが継続的改善を追跡した手法と、アジャイルやリーンの概念を活用してそこから得られた結果について、教えてくれますか？</strong></p> 
+  <blockquote> 
+   <p><strong>Dave氏</strong>: 私がブログの中で書いた組織では、最初に、過去数年の間に積み上がっていた巨大な改善のバックログをなくすためにスクラムを活用しました。つまり、それまでは、組織の文化、個人の態度、ITプロセスやその対象物が積極的かつ継続的な改善において目標とされていなかったのです。単にある作業を実施するだけでなく、日々の作業やサービスの改善にフォーカスし明らかな価値を置くようになって、これらはすべて変わり始めました。このことで、改善に関する完全なバックログができ、それはスクラムボード上で追跡されるようになりました。3つのスプリントの終わりにはカンバンボードに移行し、インシデント、問題、変更、改善を含むようになりました。その時以来、カンバンボードはパフォーマンスや改善の進捗の追跡に使われています。他にも、ツールの母Excelをボードに載らなくなったあとの過去の改善（メトリック、サイクルタイム、価値）の追跡に利用しています。&nbsp;</p> 
+  </blockquote> 
+  <p><strong>InfoQ: DevOpsは開発と運用がより密接に連携するための一つの方法です。DevOpsは彼らが継続的に改善するのに役立つでしょうか？役立つ例をあげていただけますか？</strong></p> 
+  <blockquote> 
+   <p><strong>Dave氏</strong>: DevOpsのマインドセットと哲学をよく見ると、それが開発と運用についてだけのものではないとわかります。ビジネス、サプライヤー、アーキテクチャー、セキュリティ、テスティングなどの密接なコラボレーションにも関係しています。それを実施する中で、リーン、アジャイル、ToCからの基本的原理によって、顧客の焦点、デリバリの速度、そして継続的改善をも確実なものになります。私が見てきたDevOpsチームの中には、レトロスペクティブ（振り返り）に取り組んでいるチームもあれば、システムや現場のカイゼンを採用するチームや、独自の方法を発見したチームもありました。それに加えて、DevOpsはコラボレーションや文化に強く焦点を置くだけでなく、自動化に重きを置くことで、スループットの速さ、フィードバックループ、品質の予測性を確実にします。最後に、DevOpsの文化は、継続的改善のための基礎的なベースとして、評価指標（例えば、タイムトゥバリュー（価値実現までの時間）、MTTR（平均修復時間）など）に強くこだわります。&nbsp;</p> 
+  </blockquote> 
+  <p><strong>InfoQ: 顧客に対するITサービスを改善するよりよい方法を発見したい組織に対して、何を行うことを提案しますか？</strong></p> 
+  <blockquote> 
+   <p><strong>Dave氏</strong>: 最初に継続的改善のためのマインドセットを獲得することにフォーカスすることを提案します。これにより常にITガバナンスにおける変化も共に起こるはずです。つまり、従業員の中に継続的改善のマインドセットをつくり出すことができても、（中間）管理職がその動きに報いることがなかったり、これらの改善に対する（時間的、あるいはフォーカスできる）余地をまったく与えなかったりすれば、決してうまくいかないでしょう。アジャイルやリーンの原理や手段を活用することで、ずっと先まで（私の考えでは、例えばITIL CSIよりもずっと先に）行くことができますが、顧客やサプライヤー、マネジメントも含めて関わる人々から望ましい態度や行動を勝ち取るために必要な努力を過小評価してはいけません。</p> 
+  </blockquote> 
+  <p><strong>InfoQ: アムステルダムでのアジャイルガバナンスカンファレンスで、あなたはエンタープライズアジリティへの道について語りますね。この道はどのようなもので、どのように旅すべきものですか？</strong></p> 
+  <blockquote> 
+   <p><strong>Dave氏</strong>: プレゼンテーションでは、エンタープライズアジリティにとっての4つのとても重要なパターンについて講演するつもりです:</p> 
+   <ol> 
+    <li>戦略とリスクアライメント（例：ポートフォリオ）</li> 
+    <li>サイズと複雑性を扱うこと（例：スケーリング）</li> 
+    <li>ライフサイクル全体を通じたコラボレーション（例：DevOps）</li> 
+    <li>外部の関係者を統合すること（例：SIAM）</li> 
+   </ol> 
+   <p>これら4つのパターンは、相当な大きさがあり、独立した内部のソフトウェア開発チームの中だけではなく、企業全体でのアジリティを実現しようと努力している組織にとっては基本的な事柄です。私は、現実に行われているいくつかの例を使って、企業レベルでのこのアジリティを実現する現実的な手段について述べる予定です。</p> 
+  </blockquote>
  </div> 
 </div><br><br><br><br><br><br></body></html>

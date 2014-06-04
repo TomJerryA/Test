@@ -1,45 +1,340 @@
-<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>微博春晚背后的技术故事</h3><h2>前言</h2>
-<p>一年一度的春晚再次落下帷幕，而微博也顺利地陪伴大家度过除夕之夜。</p>
-<p>谈及马年春晚，人们首先想到的不是春晚上精彩的节目，而是微博上的吐槽，边看春晚，边刷微博，边吐槽，已经成了国人的习惯。看春晚不再是为了看节目，而是为了能够在微博上吐槽，知道大家在吐槽什么，更有人戏称不是春晚成就了微博，而是微博拯救了春晚。</p>
-<p>马年春晚又格外引人注目，不仅仅是因为冯小刚亲自坐镇，担当总导演，更值得一提的是本届春晚首次将社交平台作为其与观众互动的主要途径，而新浪微博更是成为官方二维码独家合作方。在节目播出时，用户通用手机客户端，扫描屏幕右下角的官方二维码，即可参与春晚的话题讨论。不仅如此，参与讨论的观众，还可以免费获得微博红包，抽大奖的机会。如此一来，大大的提升了微博的活跃度瞬间提升，同时在线人数翻了几倍，给微博系统带来前所未有的访问压力。</p>
-<p>根据以往统计的数据，春晚期间微博的访问量将激增到日常水平的数倍之多，而瞬时发表量更是飙升数十倍，如此场景丝毫不亚于淘宝双11和12306抢票时的”盛况”。</p>
-<p>而最后的统计数据结果表明，马年春晚直播期间，微博的访问量和发表量都再创新高，而我们系统也自始至终平稳运行，经受住了此次高峰的考验。这成功的背后，是我们的工程师将近一个月的努力。其间面临了哪些问题，又是如何解决的呢？下面，我们一一为大家揭秘。</p>
-<h2>挑战1：如何应对数倍于日常访问量的压力？</h2>
-<p>每年春运抢票时，12306都会崩溃；淘宝双11时，也会有短暂的购买失败的情况。究其原因还是，有限的服务器资源难以承受上千万人同时在线访问。同样，春晚的时候，微博的访问量也会激增，同时在线人数到达日常的数倍之多。面对突然增长的访问压力，大部分互联网公司都会临时扩容来加以应对，同样我们也需要进行扩容。那么如何进行扩容？哪些部分需要扩容？具体扩容多少？这都是厄需解决的问题。</p>
+<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>数据库持续交付</h3><h2>快速变化的世界，敏捷、DevOps和自动化</h2>
+<p>业务需求是变革最显著的驱动力，事倍功半、快速交付是成功的行业先锋与其它公司的区别。</p>
+<p>如果竞争对手交付的特性比你更快、质量更高，你最终将失去市场份额。“<a href="http://www.dbmaestro.com/products-solutions/agile-team-collaboration">敏捷开发</a>”的诞生源于快速变化的需求，以有限的资源，应对不断变化的需求，产出有保证的最佳质量。</p>
+<p>你再无法等待6个月后的版本；瀑布方法的大版本概念已经过时了。</p>
+<p>技术公司和IT部门期待的是敏捷。</p>
+<p>接下来就是开发与运维的自然连接，因此诞生了“<a href="http://www.dbmaestro.com/2013/11/devops-for-database-a-win-win-approach">DevOps</a>”。</p>
+<p>要高效地掌握敏捷Spring开发和实践DevOps，你必须实施部署和过程的自动化。否则部署和发布就需要手动的步骤和过程，无法保证可重复的准确性，容易出现人为错误，也无法以较高的频率处理。</p>
 <div id="lowerFullwidthVCR"></div>
-<p>需要提到一点的是，微博目前线上部署了几千台服务器，来保障日常的正常访问。假如面对原来数倍的访问压力时，如果简单粗暴通过线性扩容来应对的话，需要部署原来数倍的服务器，也就是需要上万台服务器。无论从硬件成本还是从管理成本上，这都是不可接受的。那么，又该如何做呢？</p>
-<h3>在线压测，找极限，最小化扩容前端机</h3>
-<p>众所周知，为了尽可能的保障线上运行的服务器的稳定，资源都是有一定冗余度的，一般安全值在30%以上。在面临5倍的访问量时，出于成本的考虑，单纯的扩容难以令人接受。这个时候，就要充分利用每台服务器，在不影响业务性能的前提下，使每台服务器的利用率发挥到极限，可以极大的降低资源扩容的数量。如何评估服务器的承受极限是其中的关键，为此我们在业务低峰时期，对线上的服务器进行了实际的压测。具体方法如下：</p>
-<p>假如线上一个服务池里有300台 tomcat服务器在提供API服务，正常情况下，每台服务器的负载都小于1（为了简化模型，我们这里只提到了系统load这个指标，实际情况要比这个复杂的多，还要考虑CPU 利用率、带宽、io延迟等）。通过运维系统，我们以10%、20%、30%、40%、50%等比例逐步将该服务池里的300台 tomcat 机器503，通过观察一台 tomcat 服务器的负载以及 API 服务的接口性能，当服务器的负载达到极限或者 API 服务的接口性能达到阈值时，假设此时服务池里正常状态的 tomcat 服务器的数量是100台，那么我们就可以推断出该服务池，极限情况下可以承受3倍与日常的访问压力。同理，为了承担5倍的访问量，只需再扩容一倍机器即可。</p>
-<h2>挑战2：如何应对瞬时可达几万/s 的发表量？</h2>
-<p>互联网应用有个显著特点，就是读多写少。针对读多有很多成熟的解决方案，比如可以通过cache 来缓存热数据来降低数据库的压力等方式来解决。而对于写多的情况，由于数据库本身写入性能瓶颈，相对较难解决。</p>
-<p>微博系统在处理发表微博时，采用了异步消息队列。具体来讲，就是用户发表微博时，不是直接去更新数据库和缓存，而是先写入到 mcq消息队列中。再通过队列机处理程序读取消息队列中的消息，再写入到数据库和缓存中。那么，如何保证消息队列的读写性能，以及如何保证队列机处理程序的性能，是系统的关键所在。</p>
-<h3>按消息大小设置双重队列，保证写入速度。</h3>
-<p>众所知之，微博最大长度不超过140个字，而大部分用户实际发表的微博长度都比较小。为了提高写入消息队列的速度，我们针对不同长度的微博消息，写入不同大小的消息队列。比如以512字节为分界线，大于512字节的写入长队列，小于512字节的写入短队列，其中短队列的单机写入性能要远远高于长队列。实际在线结果表明，短队列的QPS 在万/s 级别，长队列的QPS 在千/s 级别，而99%的微博消息长度均小于512字节。这种优化，大大提高了微博消息的写入和读取性能。</p>
-<h3>堵塞队列，压队列机极限处理能力。</h3>
-<p>为了验证队列机处理程序的极限处理能力，我们在业务低峰时期，对线上队列机进行了实际的压测，具体方法如下：</p>
-<p>通过开关控制，使队列机处理程序停止读取消息，从而堵塞消息队列，使堆积的消息分别达到10万，20万，30万，60万，100万，然后再打开开关，使队列机重新开始处理消息，整个过程类似于大坝蓄水，然后开闸泄洪，可想而知，瞬间涌来的消息对队列机将产生极大的压力。通过分析日志，来查找队列机处理程序最慢的地方，也就是瓶颈所在。</p>
-<p>通过两次实际的压测模拟，出乎意料的是，我们发现系统在极限压力下，首先达到瓶颈的并非是数据库写入，而是缓存更新。因此，为了提高极限压力下，队列机处理程序的吞吐量，我们对一部分缓存更新进行了优化。</p>
-<h2>挑战3：如何保证系统的可靠性？</h2>
-<p>无论是发微博，还是刷 feed，在微博系统内的处理过程都十分复杂，依赖着各种内部资源和外部服务，保证系统的可靠性显得尤为困难。</p>
-<p>为此，我们内部开发了代号为试金石——TouchStone的压测系统，对系统的可靠性进行全面检测。</p>
-<p>首先，我们对微博的各个接口进行了服务依赖和资源依赖的梳理，并针对每个服务和资源定义了相应的 SLA 和降级开关。然后，模拟资源或者服务出现异常，再来查看其对接口性能的影响。以 redis资源为例， 假设系统定义了redis的 SLA是300ms，相应的端口是6379，通过 TouchStone，使该端口不可用，从而模拟 redis 资源出现异常，然后验证依赖该资源的接口的性能，确保 SLA 。同时，通过降级开关，对该资源进行降级，验证降级开关的有效。</p>
-<p>基于以上方法，对系统进行了全面的检测，并对各个服务和资源的 SLA 和降级开关进行梳理，总结成业务降级手册，保证在出现问题时，运维人员无需开发的介入，也能第一时间根据降级手册进行降级，确保问题能够尽快解决。</p>
-<h2>挑战4：如何保证核心系统的稳定性？</h2>
-<p>任何一个系统，都包含核心系统和非核心系统。在出现异常的情况下，弃车保帅，只保障核心系统的稳定性也是可以接受的。</p>
-<p>为此，我们降核心接口和非核心接口拆分，部分部署到不同的应用池子当中，确保非核心业务不会影响核心业务。比如发微博和刷 feed 属于核心业务，而评论，赞属于非核心业务，所以两者应当部署到不同的应用池中。在评论或者赞出现异常时，发微博和刷 feed 就不会受到影响，从而保障系统核心业务的稳定性。</p>
-<p>同样，对于一个业务，也要区分核心逻辑和非核心逻辑。以发微博为例，更新缓存和写数据库属于核心逻辑，而给其它业务部门推送数据则属于非核心逻辑。因此，可以将推送数据进行异步化处理，交给单独的线程池处理，在出现异常时，不会对更新缓存和写数据库造成影响。</p>
-<h2>挑战5：如何做到异地容灾？</h2>
-<p>近些年来，异地容灾成为全球性互联网企业面临的难题之一。无论是在国内，以微信为例，还是在国外，以 twitter 为例，都曾经出现过全球性宕机的事故。由此可见，异地容灾仍旧是一个挑战。</p>
-<p>微博早在2010年就开始了多机房的部署，如今已经具备三大机房（分别针对联通、电信和海外用户）。</p>
-<p>由于人为或者天气等不可抗拒因素，网络故障近年来时有发生。微博的三个机房，各自独立承担了一部分用户的访问。在一个机房出现故障或者压力过大的时候，通过DNS切换等手段，将流量迁移到另外两个机房，从而确保该访问该机房的用户不受影响。一个现实的情况例子，在马年春晚直播期间，由于观看人群的地域分布的特点，出现了联通机房的访问量突增，同时在线人数的增长超过了电信机房和广州机房，我们通过切换一部分联通机房的流量到电信机房，使得联通机房的负载降到了安全值的范围。</p>
-<h2>挑战6：如何实时监控系统状态？</h2>
-<p>我们都知道，地震的发生都是有前兆的，比如一些动物的异常反应。同样，系统中的任何问题出现之前，也是有线索可寻的。这就需要对系统的关键指标做实时的监控，当指标出现异常时，能够第一时间发出报警信息。</p>
-<p>为此，我们基于实时流处理系统 Storm 开发了一套监控系统——dashboard。有别于以往的监控系统，它能实时处理系统产生的海量日志，绘制出更加直观的曲线，方便运维进行管理。通过 dashborad，我们能够了解系统的实时状态，主要包括feed的访问量、微博的发表量、队列机的处理性能，消息队列的堆积量等指标。当某个监控指标出现异常时，能够第一时间在 dashboard 中反映出来，从而第一时间采取措施，解决问题，避免问题扩大化。</p>
-<h2>后记</h2>
-<p>春晚已经过去一个月了，渐渐成为回忆。但春晚背后，我们的工程师所付出的巨大的努力所产生的价值，却是一笔宝贵的财富，希望这篇文章能给大家带来启发甚至帮助，也在此向为微博春晚默默贡献的工程师们致敬！</p>
-<h2>关于作者</h2>
-<p>胡忠想（微博昵称：<a href="http://weibo.com/134262443">@古月中心相心</a>），目前任职于新浪微博的平台研发部门，主要负责微博 Feed 服务相关工作，曾先后参与微博 Feed 存储、微博计数器、微博阅读数等重大业务产品的开发。2012年3月份毕业于北京航空航天大学计算系，同年4月份，加入新浪微博并工作至今。业余爱好户 外，曾徒步过贡嘎、雨崩，攀登过四姑娘三峰。</p>
-<hr />
-<p>感谢<a href="http://www.infoq.com/cn/author/张凯峰">张凯峰</a>对本文的审校。</p>
-<p>给InfoQ中文站投稿或者参与内容翻译工作，请邮件至<a href="mailto:editors@cn.infoq.com">editors@cn.infoq.com</a>。也欢迎大家通过新浪微博（<a href="http://www.weibo.com/infoqchina">@InfoQ</a>）或者腾讯微博（<a href="http://t.qq.com/infoqchina">@InfoQ</a>）关注我们，并与我们的编辑和其他读者朋友交流。</p><br><br><br><br><br><br></body></html>
+<p><img style="float: right" src="http://infoqstatic.com/resource/articles/Database-Continuous-Delivery/zh/resources/0519003.png" _href="img://null" _p="true" alt="" />持续集成、持续交付和持续部署是常用的原则和实践，用来结构化处理自动化过程，为软件开发、构建、测试和发布过程中的参与者建立基本规则。</p>
+<p>这些并不是新原则，但它们正在获得关注和采纳，证明其价值，就像若干年前的敏捷开发一样。</p>
+<p>作为一套原则和实践，持续集成、持续交付和持续部署并不能“一码通吃”。明白每个公司都有自己独特的挑战，这非常重要，这些实践应该进行相应调整，以适应组织结构和文化过程。</p>
+<div style="clear:both"></div>
+<h3>持续集成</h3>
+<p>持续集成的目的是简化开发，避免集成问题。</p>
+<p><img style="float: right" src="http://infoqstatic.com/resource/articles/Database-Continuous-Delivery/zh/resources/0519004.png" _href="img://null" _p="true" alt="" />这个目标通常需要构建服务器的帮助。这些服务器从版本控制库获取变更代码，自动构建并运行单元测试验证变更，确保为开发者提供及时反馈。单元测试可能会重复运行，甚至在每次提交变更（签入）后运行，从而防止或者及时提醒开发者，变更的代码可能影响了其它代码或者无法通过测试。</p>
+<p>除了执行代码为中心的单元测试，集成测试或应用程序级别的回归测试有助于确保代码的完整性和质量水平。</p>
+<div style="clear:both"></div>
+<p><strong>集成问题的快速反馈，自动化测试的质量保障，有助于高度可视化整体开发过程、节省问题定位时间、节省整体开发和集成时间，以及确保更高的质量。</strong></p>
+<h3>持续交付</h3>
+<p>持续交付是持续集成的下一个自动化步骤。为了努力变得更高效、精益和更敏捷，我们开始计划和确保每一个变更都是“可发布的”，从而确保我们始终有一个可测试的版本用于部署。</p>
+<p>应该实现变更自动在不同的生命周期阶段中移动，整个过程看起来就像下面这张图：</p>
+<p>（点击查看大图）</p>
+<p><a href="http://infoqstatic.com/resource/articles/Database-Continuous-Delivery/zh/resources/0519005.png"> <img src="http://infoqstatic.com/resource/articles/Database-Continuous-Delivery/zh/resources/0519005.png" width="600" _href="img://null" _p="true" alt="" /></a></p>
+<p>开发时提交变更--&gt;构建部署包--&gt;运行单元测试--&gt;变更移到测试和后续阶段环境--&gt;运行验收测试。</p>
+<p>如果有失败，我们将得到自动的问题提醒，重新返回到开发，开始新的循环。</p>
+<p>一旦过程完成，一个经过完整测试的应用程序就可以轻点一下按钮发布到生产环境中了。产品的实际部署一般是人工进行，然后重新运行回归测试。</p>
+<p>由于所有变更都已经过测试和验证，部署也已经在前面的生命周期阶段测试过，因此部署到实际生产环境中就变得容易很多，并且显著降低了风险。</p>
+<p>遵循持续交付实践，我们将始终有可发布的版本，因此我们可以基于商务决策和上市时间等要求按时发布。</p>
+<h3>持续部署</h3>
+<p>下一步是持续部署，持续部署将变更自动推到产品环境（区别于持续交付），然后在那运行最后的测试集。</p>
+<p><img style="float: right" src="http://infoqstatic.com/resource/articles/Database-Continuous-Delivery/zh/resources/0519006.png" _href="img://null" _p="true" alt="" />在SaaS类型的应用或产品（如Facebook，Amazon等）中运用持续部署非常有意义，因为公司可以将部分流量转到新特性上，做A/B测试，新老版本并列运行，评估新变更，更有信心地进行总体度量和管理变更。</p>
+<p>持续部署也许有风险，因为我们使用同意按钮消除了人的因素，并且我们要记住，即使上述情况下是有道理的，但从业务的视角它并不总是有意义的。（也许我错了，我很难想像银行的一名开发人员，没有经过同意，就部署变更到生产环境。）</p>
+<div style="clear:both"></div>
+<h2>衡量持续过程的成功</h2>
+<p>持续过程带来的成功通常非常明确，主要关注这些领域：</p>
+<ol> 
+ <li>更快的变更——能够更快反应</li> 
+ <li>更少的变更回退——更高的代码质量，更短的上市周期</li> 
+ <li>更多稳定版本——对最终用户来说缺陷更少</li> 
+ <li>开发和运维间更好地合作（DevOps...）</li> 
+</ol>
+<p>通过将“一切”自动化，并将测试、重点更新和过程移到“上游”，我们看到更好的服务、更高的客户满意度和更好的盈亏底线。</p>
+<h2>安全的数据库持续交付</h2>
+<p>数据库部署是非常棘手的；与其它软件组件，如代码和编译过的代码不同，数据库不是文件集合。数据库是我们最有价值资产的容器，包含了我们必须保留的业务数据。它包括了应用的数据，客户交易等。为了促进数据库变更，需要开发临时代码，处理数据库Schema结构（表结构）、数据库代码（过程、函数等）以及应用程序使用的数据（元数据、查找内容或者参数表）的脚本。</p>
+<p>通过将数据库对象变更脚本提交到传统版本控制库中实现自动化，这种方法的用处是非常有限的，也缺少灵活性并与数据库本身失去了关联。同时它也可能是不真实的，由于变更冲突容易导致丢失目标环境的更新。对于自动化来说，使用“比较并同步”的工具是有风险的。这两个概念并不兼容，因为它们彼此并不知道对方。</p>
+<p>一个简单的自动化过程基于构建一次，多次部署（Build Once Deploy Many system），它看起来是这样的：</p>
+<p>提交变更到版本控制库--&gt;构建--&gt;部署测试--&gt;运行单元测试--&gt;部署到下一级别--&gt;运行更多测试--&gt;...--&gt;部署到UAT--&gt;测试--&gt;部署到生产环境</p>
+<p>一个构建步骤，对应多个部署和测试步骤，这就是构建一次，多次部署。</p>
+<p>尽管它对原生代码的二进制文件有效，但部署数据库却并非如此，因为你不能简单地复制和粘贴，而是要将老版本转换到新版本，同时保持业务数据还存在数据库中。</p>
+<p>有很多这样的场景，脚本创建之后，在它被运行之前，目标环境发生了变化。举个例子，在这个过程之外，数据库打了一个关键补丁，或者另一个团队在并行工作。每种情况都打破了预期结果，导致构建一次，部署多次的方法中产生了问题。</p>
+<p>（点击查看大图）</p>
+<p><a href="http://infoqstatic.com/resource/articles/Database-Continuous-Delivery/zh/resources/0519007.png"> <img src="http://infoqstatic.com/resource/articles/Database-Continuous-Delivery/zh/resources/0519007.png" width="600" _href="img://null" _p="true" alt="" /></a></p>
+<p>［数据库部署，构建一次，部署多次失败］</p>
+<h3数据库自动化——构建并按需部署> 
+ <p>使用构建和按需部署方法升级数据库，将会按需生成从当前版本升级到下一版本的数据库变更脚本，确保目标状态是最新的，并且是经过验证和考虑的。 </p>
+ <p>成功升级到预产品（Pre-production）后，脚本被保存起来重用，因此生产环境升级是基于在预产品上测试过的脚本。 </p>
+ <p>（点击查看大图） </p>
+ <p><a href="http://infoqstatic.com/resource/articles/Database-Continuous-Delivery/zh/resources/0519008.png"> <img src="http://infoqstatic.com/resource/articles/Database-Continuous-Delivery/zh/resources/0519008.png" width="600" _href="img://null" _p="true" alt="" /></a></p> 
+ <p>［构建和按需部署］ </p>
+ <h3>自动化的信心</h3> 
+ <p>如果对自动化没有信心，就没人会使用它。由于缺少不同的环境间数据库代码冲突的提醒，DBA和开发者很难依赖简单的比较并同步方法生成的脚本。 </p>
+ <p>通过签入代码时进行提醒，以文件为基础的版本控制多年前就已经解决了沙盒、分支并行开发中遇到的同样问题。如果发生冲突，开发者将收到警告，他/她提交的代码自从签出后已经被别人修改。开发者在本地电脑合并变更，然后再签入合并的代码。 </p>
+ <p>而数据库则不同，它并没有保存在开发者的电脑上；代码存在于各种环境中，任何有权限的人都能修改它。当生成变更脚本时，应该使用基线方法（与现代的，以文件为基础的版本工具使用的是相同的方法）解决合并问题。 </p>
+ <p><img src="http://infoqstatic.com/resource/articles/Database-Continuous-Delivery/zh/resources/0519009.png" width="600" _href="img://null" _p="true" alt="" /></p> 
+ <p>基线影响分析 </p>
+ <h2>检查盒子</h2> 
+ <p>当我们实施持续交付时，认识到数据库持续过程需要健壮的数据库版本控制、安全的自动化部署和清晰的工作过程，并且过程的自动化将帮助我们定义解决方案的类型。 </p>
+ <p>以下是这些挑战的一些例子，<a href="http://www.dbmaestro.com/">DBmaestro</a>有助于解决这些问题。 </p>
+ <ol> 
+  <li>强化数据库版本控制。这能保证所有数据库变更遵循一个强制的文档过程，这样我们就始终知道谁在什么时间，因为什么原因做了什么改变。这是后续过程的基础。 <p><img src="http://infoqstatic.com/resource/articles/Database-Continuous-Delivery/zh/resources/0519010.png" width="550" _href="img://null" _p="true" alt="" /></p> </li>
+  <li>使用基于任务的开发过程，有助于将每一个引入的变更与变更请求、故障单或工作项关联起来。后期的部署可以依靠这些信息来帮助决定哪些变更需要发布、哪些即将发布以及哪些要推迟。 </li>
+  <li>基线明确的部署，连接到版本控制工具，分析引入的变更有哪些影响，帮助我们安全地确定应该部署哪些变更。更重要的是，它让我们明确应该取消哪些变更，才不会推翻其他团队部署的重要变更，或者覆盖补丁程序到生产环境中。<p><img src="http://infoqstatic.com/resource/articles/Database-Continuous-Delivery/zh/resources/0519011.png" width="550" _href="img://null" _p="true" alt="" /></p> </li>
+  <li>自动化接口（Web-service，命令行API等等）是创建一个和谐过程所必须的，将数据变更的处理作为完整过程的一部分，与Java或.Net代码变更的交付紧密结合。能够自动升起红色标记和“停止这一行”是持续过程必不可少的步骤。我们想要的最后一件事是可以随意将变更部署到生产环境，因此当有什么东西不满足我们的安全假定时，应该能够得到警告，这将直接决定我们能够沉睡还是做噩梦。</li>
+ </ol> 
+ <h2>总结</h2> 
+ <p>在各种持续过程中，数据库是一个真正的挑战。对自动化来说，数据库对象变更脚本放入传统版本控制工具或使用“比较并同步”工具，这是效率低下或者风险很高的事情，因为两个概念彼此互不相识。在持续交付和DevOps中，需要更好的解决方案。 </p>
+ <p>数据库持续交付需要遵循变更管理的成熟的最佳实践，强制在数据库上执行单一的变更过程，当融入其他发布过程时，能够处理部署冲突，消除代码覆盖、交叉更新和代码合并的风险， </p>
+ <h2>关于作者</h2> 
+ <p><img style="float: left; margin-right: 10px" src="http://infoqstatic.com/resource/articles/Database-Continuous-Delivery/zh/resources/0519012.png" _href="img://null" _p="true" alt="" /><strong>Yaniv Yehuda</strong>是<a href="http://www.dbmaestro.com/">DBmaestro</a>公司的共同创始人和CTO，该公司是一家企业软件开发公司，专注于数据库开发和部署技术。Yaniv同时还是Extreme Technology公司的共同创始人和开发经理，该公司是服务于以色列市场的IT服务提供商。Yaniv曾是以色列国防军计算机中心Mamram的上尉，在那里他担任软件工程经理。 </p>
+ <div style="clear:both"></div> 
+ <p><b>原文链接：</b><a href="http://www.infoq.com/articles/Database-Continuous-Delivery">Database Continuous Delivery</a> </p>
+ <div class="clear"></div> 
+ <div class="random_links"> 
+  <ul> 
+   <li><a><span class="gray_color">领域</span></a></li> 
+   <li><a class="f_taxonomy" href="/cn/architecture-design" name="architecture-design" id="6,821"><b>架构 &amp; 设计</b></a></li> 
+   <li><a><span class="gray_color">专栏</span></a></li> 
+   <li><a class="f_taxonomy" href="/cn/Database" name="Database" id="1,159">数据库</a></li> 
+   <li><a class="f_taxonomy" href="/cn/cloud-computing" name="cloud-computing" id="3,857">云计算</a></li> 
+   <li><a class="f_taxonomy" href="/cn/Continuous_Delivery" name="Continuous_Delivery" id="6,766">持续交付</a></li> 
+   <li><a class="f_taxonomy" href="/cn/agile_techniques" name="agile_techniques" id="782">敏捷技术</a></li> 
+   <li><a class="f_taxonomy" href="/cn/Devops" name="Devops" id="6,555">DevOps</a></li> 
+   <li><a class="f_taxonomy" href="/cn/continuous_integration" name="continuous_integration" id="1,086">持续集成</a></li> 
+   <li><a class="f_taxonomy" href="/cn/agile" name="agile" id="743">敏捷</a></li> 
+   <li><a class="f_taxonomy" href="/cn/Database_Management" name="Database_Management" id="3,876">数据库管理</a></li> 
+  </ul> 
+ </div> 
+ <div class="related_sponsors relEdRelRes"> 
+  <div class="gray_section_related only1 fullWidth"> 
+   <div class="related_editorial recommended only1"> 
+    <p class="title">相关内容</p> 
+    <div id="editorial_links" class="links"> 
+     <div class="clear"></div> 
+    </div> 
+   </div> 
+  </div> 
+  <div class="clear"></div> 
+  <div class="related_research"></div> 
+ </div> 
+ <script type="text/javascript">
+    $.ajax({
+        url: "/api/recommendationlinks.action",
+        contentType: "application/x-www-form-urlencoded; charset=utf-8",
+        type: 'POST',
+        data: {"topicIds": "171,2186,1008,351,-1000,-1000", "title": "数据库持续交付", "contentPath": "/articles/Database-Continuous-Delivery", "language": "zh"},
+        success: displayRelatedEditorial,
+        async: false
+    });
+    
+    function displayRelatedEditorial(data) {
+        var trackingCode = "?utm_source=infoq&utm_medium=related_content_link&utm_campaign=relatedContent_articles_clk";
+        if (data.length > 0) {
+            for (var i = 0; i < data.length; i++) {
+                if (i === 5) {
+                    break;
+                }
+                var link = $('<h3 title="" class="' + data[i].contentType + '">\n\
+                                    <a title="" href="' + data[i].url + trackingCode +
+                        '">' + data[i].title + '</a></h3>');
+                $('#editorial_links').append(link);
+            }
+            $('.gray_section_related > .related_editorial.recommended').css('display', 'block');
+        }
+    }
+</script> 
+ <script type="text/javascript">
+    $.ajax({
+        type: "POST",
+        url: '/widgets/researchHorizontalWidget.action',
+        contentType: "application/x-www-form-urlencoded; charset=utf-8",
+        data: {
+            "path": 'Database-Continuous-Delivery',
+            "uriMapping": 'articles'
+        },
+        success: displayRelatedResearch,
+        error: function() {
+            // fail silently
+        },
+        async: false
+    });
+    
+    function displayRelatedResearch(data) {
+        if (InfoQConstants.language != 'en') {
+            return;
+        }
+        if (data.matchedList && data.matchedList.length > 0) {
+            $('.related_research').append('<p class="title">相关调查</p>')
+            for (var i = 0; i < data.matchedList.length; i++) {
+                var link = $('<a class="rel_results" title="" href="' + data.matchedList[i][0] +
+                        '?utm_source=infoqresearch&utm_campaign=rr-content">' +
+                        '<img border="0" alt="" src="' + data.matchedList[i][2] + '">' +
+                        data.matchedList[i][1] +
+                        '</a>');
+                $('.related_research').append(link);
+            }
+            if (data.latestList) {
+                for (var i = 0; i < data.latestList.length; i++) {
+                    var link = $('<a class="rel_results" title="" href="' + data.latestList[i][0] +
+                            '?utm_source=infoqresearch&utm_campaign=rr-content">' +
+                            '<img border="0" alt="" src="' + data.latestList[i][2] + '">' +
+                            data.latestList[i][1] +
+                            '</a>');
+                    $('.related_research').append(link);
+                }
+            }
+            $('.related_research').show();
+        }
+    }
+</script> 
+ <script type="text/javascript">
+    
+        $(function() {
+        	var grayBox = $('.gray_section_related');
+            var recommendedColumn = $('.gray_section_related > .related_editorial.recommended');
+            var recommendedExists = $(recommendedColumn).css('display') === 'block';
+            var researchRow = $('.related_research');
+            var researchExists = $(researchRow).css('display') === 'block';
+
+            if (recommendedExists || researchExists) {
+                $('.related_sponsors.relEdRelRes').show(); // show the big related box
+            }
+
+            // in case all three available, leave now
+            if (recommendedExists) {
+            	$(grayBox).show(); // show the gray box for vcr and recommendations
+                return;
+            }
+        });
+</script> 
+ <div class="clear"></div> 
+ <div class="clear"></div> 
+ <script type="text/javascript">
+
+    var JSi18n = JSi18n || {}; // define only if not already defined
+    JSi18n.re='Re:';
+    JSi18n.errorSubject='Please enter a subject.';
+    JSi18n.errorBody='You can not post a blank message. Please type your message and try again.';
+    JSi18n.errorInvalidLinks='您的回复中包含无效的链接，请检查后重试';
+    JSi18n.stopWatchText='Stop Watching Thread';
+    JSi18n.startWatchText='Watch Thread';
+    JSi18n.timeExpiredMessage='已超出允许的5分钟编辑时长，我们为给您带来的不便深表抱歉。';
+    JSi18n.repostButtonFormat='重新发送 ($m 剩余)';
+    JSi18n.timeExpiredButton='超时';
+    JSi18n.sessionExpiredMessage='您的会话已超时，请登录后重新提交';
+    JSi18n.editLinkFormat='编辑 ($m 分钟剩余)';
+    JSi18n.enter_subject='请输入主题';
+    JSi18n.enter_message='信息';
+    JSi18n.content_datetime_format='yyyy年M月d日';
+
+var forumID=1;
+var threadID=36397;
+var ctxPath= '';
+var postAddress= ctxPath + '/forum/post!post.action?language=' + 'zh';
+var repostAddress= ctxPath + '/forum/repost.action?language=' + 'zh';
+var postAddWatches= ctxPath + '/forum/watches!add.action';
+var postRemoveWatches= ctxPath + '/forum/watches!remove.action';
+var loggedIn=false;
+var threadWatched=false;
+
+
+var forumNotificationDefault=false;
+
+var commentEditPeriod=5;
+</script> 
+ <script type="text/javascript" src="/dwr/interface/ForumNotifications.js"></script> 
+ <script type="text/javascript" src="http://infoqstatic.com/scripts/ui/jquery.autosize.js"></script> 
+ <script type="text/javascript" src="http://infoqstatic.com/scripts/date.js"></script> 
+ <div class="comment_here"> 
+  <div id="postFormDeck"> 
+   <div id="deckText"> 
+    <h2>您好，朋友！</h2> 您需要 
+    <a href="/reginit.action">注册一个InfoQ账号</a> 或者 
+    <a class="login" href="javascript:;">登录</a> 才能进行评论。在您完成注册后还需要进行一些设置。
+    <br /> 
+    <div id="getMost">
+     <h2>获得来自InfoQ的更多体验。</h2>
+    </div> 
+   </div> 
+  </div> 
+  <a id="theCommentsSection"></a> 
+  <h3>告诉我们您的想法</h3> 
+  <form onsubmit="return false;" target="" enctype="multipart/form-data" method="post" action="" name=""> 
+   <div class="area" name="comments"> 
+    <input type="text" id="subject" value="" /> 
+    <textarea id="body"></textarea> 
+   </div> 
+   <div class="clear"></div> 
+   <p class="allowed">允许的HTML标签: a,b,br,blockquote,i,li,pre,u,ul,p</p> 
+   <input type="checkbox" class="checkReply emailMe" name="emailMe" /> 
+   <span class="tocheck">当有人回复此评论时请E-mail通知我</span> 
+   <div class="clear"></div> 
+   <input type="button" value="发送信息" class="submit" id="subButton" /> 
+  </form> 
+  <div class="clear"></div> 
+ </div> 
+ <div class="comments"> 
+  <div class="comments_title">
+   社区评论 
+   <span id="watch"> <a href="javascript:void(0)" class="watch_thread"></a> </span> 
+  </div> 
+  <div class="clear"></div> 
+ </div> 
+ <div class="all_comments"> 
+ </div> 
+ <!-- overlay --> 
+ <div id="overlay_comments"> 
+  <a href="javascript:;" class="close_comment" title="">关闭</a> 
+  <h4><strong></strong> by <span id="author"></span> <span id="timepast"></span></h4> 
+  <p id="body"></p> 
+  <div class="alt"> 
+   <span>发布于 <span id="timestamp"></span></span> 
+  </div> 
+  <div class="clear"></div> 
+  <ul class="help_links"> 
+   <li><a title="" class="view">查看</a></li> 
+   <li><a title="" href="javascript:;" class="reply">回复</a></li> 
+   <li><a title="" href="#" class="backtop">回到顶部</a></li> 
+  </ul> 
+  <div class="clear"></div> 
+ </div> 
+ <!-- reply box --> 
+ <div id="replyPopup" class="popupLoginComments"> 
+  <a title="" class="close_login_popup" href="javascript:;">关闭</a> 
+  <form onsubmit="return false;" target="" action="" name="tpopup-reply" method="post"> 
+   <label class="label_login">主题</label> 
+   <input type="text" class="login_text subject" name="subject" /> 
+   <label class="label_login"> 您的回复 <a style="float: right; text-decoration: underline; font-weight: normal; color: grey;" href="#" onclick="CommentsHandler.quoteOriginalMessage();return false;"> 引用原消息 </a> </label> 
+   <textarea class="commentsReply" name="commentsReply"></textarea> 
+   <div class="clear"></div> 
+   <p class="error allowed"></p> 
+   <div class="clear"></div> 
+   <p class="allowed">允许的HTML标签: a,b,br,blockquote,i,li,pre,u,ul,p</p> 
+   <input type="checkbox" class="checkReply emailMe" name="emailMe" /> 
+   <span class="tocheck">当有人回复此评论时请E-mail通知我</span> 
+   <div class="clear"></div> 
+   <input type="button" id="submit-reply" name="submit-reply" value="发送信息" /> 
+   <input type="reset" class="reset-reply" name="reset-reply" value="取消" /> 
+  </form> 
+ </div> 
+ <!-- edit comment box --> 
+ <div id="editCommentPopup" class="popupLoginComments"> 
+  <a title="" class="close_login_popup" href="javascript:;">关闭</a> 
+  <form onsubmit="return false;" target="" action="" name="tpopup-reply" method="post"> 
+   <label class="label_login">主题</label> 
+   <input type="text" class="login_text subject" name="subject" /> 
+   <label class="label_login">您的回复</label> 
+   <textarea class="commentsReply" name="commentsReply"></textarea> 
+   <div class="clear"></div> 
+   <p class="error allowed"></p> 
+   <div class="clear"></div> 
+   <p class="allowed">允许的HTML标签: a,b,br,blockquote,i,li,pre,u,ul,p</p> 
+   <input type="checkbox" class="checkReply emailMe" name="emailMe" /> 
+   <span class="tocheck">当有人回复此评论时请E-mail通知我</span> 
+   <div class="clear"></div> 
+   <p class="time_expired allowed"></p> 
+   <input type="button" id="resubmit-reply" name="submit-reply" value="" /> 
+   <input type="reset" class="reset-reply" name="reset-reply" value="取消" /> 
+  </form> 
+ </div> 
+ <!-- notification popup --> 
+ <div id="messagePopup" class="popupLoginComments"> 
+  <a title="" class="close_login_popup" href="javascript:;">关闭</a> 
+  <div class="clear"></div> 
+  <p class="allowed"></p> 
+  <div class="clear"></div> 
+  <input type="reset" class="reset-reply" name="reset-reply" value="OK" /> 
+ </div> 
+ <div id="responseContent"></div> 
+ <a id="noOfComments" title="" href="#theCommentsSection" class="comments_like"> <span class="comments_counts"> <span class="nr"> 讨论 </span> </span> </a> 
+</h3数据库自动化——构建并按需部署><br><br><br><br><br><br></body></html>
