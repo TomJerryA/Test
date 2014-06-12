@@ -1,158 +1,90 @@
-<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>从命令式编程到Fork/Join再到Java 8中的并行Streams</h3><p>Java 8带来了很多可以使编码更简洁的特性。例如，像下面的代码：</p>
-<pre>
-Collections.sort(transactions, new Comparator&lt;Transaction&gt;(){
-  public int compare(Transaction t1, Transaction t2){
-    return t1.getValue().compareTo(t2.getValue());
-  }
-});
-</pre>
-<p>可以用替换为如下更为紧凑的代码，功能相同，但是读上去与问题语句本身更接近了：</p>
-<pre>
-transactions.sort(comparing(Transaction::getValue));</pre>
-<p>Java 8引入的主要特性是Lambda表达式、方法引用和新的Streams API。它被认为是自20年前Java诞生以来语言方面变化最大的版本。要想通过详细且实际的例子来了解如何从这些特性中获益，可以参考本文作者和Alan Mycroft共同编写的《<a href="http://www.manning.com/urma/">Java 8 in Action: Lambdas, Streams and Functional-style programming</a>》一书。</p>
-<p>这些特性支持程序员编写更简洁的代码，还使他们能够受益于多核架构。实际上，编写可以优雅地并行执行的程序还是Java专家们的特权。然而，借助新的Streams API，Java 8改变了这种状况，让每个人都能够更容易地编写利用多核架构的代码。</p>
-<p>在这篇文章中，我们将使用以下三种风格，以不同方法计算一个大数据集的方差，并加以对比。</p>
-<ol> 
- <li>命令式风格</li> 
- <li>Fork/Join框架</li> 
- <li>Streams API</li> 
-</ol>
-<p>方差是统计学中的概念，用于度量一组数的偏离程度。方差可以通过对每个数据与平均值之差的平方和求平均值来计算。例如，给定一组表示人口年龄的数：40、30、50和80，我们可以这样计算方差：</p>
-<ol> 
- <li>计算平均值：(40 + 30 + 50 + 80) / 4 = 50</li> 
- <li>计算每个数据与平均值之差的平方和：(40-50)<sup>2 </sup>+ (30-50)<sup>2</sup> + (50-50)<sup>2</sup> + (80-50)<sup>2</sup> = 1400</li> 
- <li>最后平均：1400/4 = 350</li> 
-</ol>
-<h2>命令式风格</h2>
-<p>下面是计算方差的一种典型的命令式风格实现：</p>
-<pre>
-public static double varianceImperative(double[] population){
-   double average = 0.0;
-   for(double p: population){
-      average += p;
-   }
-   average /= population.length;
-
-   double variance = 0.0;
-   for(double p: population){
-     variance += (p - average) * (p - average);
-   }
-   return variance/population.length;
-}</pre>
-<p>为什么说这是命令式的呢？我们的实现用<i>修改状态的语句序列</i>描述了计算过程。这里，我们显式地对人口年龄数组中的每个元素进行迭代，而且每次迭代时更新average和variance这两个局部变量。这种代码很适合只有一个CPU的硬件架构。确实，它可以非常直接地映射到CPU的指令集。</p>
-<h2>Fork/Join框架</h2>
-<p>那么，如何编写适合在多核架构上执行的实现代码呢？应该使用线程吗？这些线程是不是要在某个点上同步？Java 7引入的Fork/Join框架缓解了一些困难，所以让我们使用该框架来开发方差算法的一个并行版本吧。</p>
-<pre>
-public class ForkJoinCalculator extends RecursiveTask&lt;Double&gt; {
-
-   public static final long THRESHOLD = 1_000_000;
-
-   private final SequentialCalculator sequentialCalculator;
-   private final double[] numbers;
-   private final int start;
-   private final int end;
-
-   public ForkJoinCalculator(double[] numbers, SequentialCalculator sequentialCalculator) {
-     this(numbers, 0, numbers.length, sequentialCalculator);
-   }
-
-   private ForkJoinCalculator(double[] numbers, int start, int end, SequentialCalculator 
-sequentialCalculator) {
-     this.numbers = numbers;
-     this.start = start;
-     this.end = end;
-     this.sequentialCalculator = sequentialCalculator;
-   }
-
-   @Override
-   protected Double compute() {
-     int length = end - start;
-     if (length &lt;= THRESHOLD) {
-         return sequentialCalculator.computeSequentially(numbers, start, end);
-     }
-     ForkJoinCalculator leftTask = new ForkJoinCalculator(numbers, start, start + length/2, 
-sequentialCalculator);
-     leftTask.fork();
-     ForkJoinCalculator rightTask = new ForkJoinCalculator(numbers, start + length/2, end, 
-sequentialCalculator);
-     Double rightResult = rightTask.compute();
-     Double leftResult = leftTask.join();
-     return leftResult + rightResult;
-  }
-}
-</pre>
-<p>这里我们编写了一个<i>RecursiveTask</i>类的子类，它对一个double数组进行切分，当子数组的长度小于等于给定阈值（THRESHOLD）时停止切分。切分完成后，对子数组进行顺序处理，并将下列接口定义的操作应用于子数组。</p>
-<pre>
-public interface SequentialCalculator {
-  double computeSequentially(double[] numbers, int start, int end);
-}</pre>
-<p>利用该基础设施，可以按如下方式并行计算方差。</p>
-<pre>
- public static double varianceForkJoin(double[] population){
-   final ForkJoinPool forkJoinPool = new ForkJoinPool();
-   double total = forkJoinPool.invoke(new ForkJoinCalculator
-(population, new SequentialCalculator() {
-     @Override
-     public double computeSequentially(double[] numbers, int start, int end) {
-       double total = 0;
-       for (int i = start; i &lt; end; i++) {
-         total += numbers[i];
-       }
-       return total;
-     }
-  }));
-  final double average = total / population.length;
-  double variance = forkJoinPool.invoke(new ForkJoinCalculator
-(population, new SequentialCalculator() {
-    @Override
-    public double computeSequentially(double[] numbers, int start, int end) {
-      double variance = 0;
-      for (int i = start; i &lt; end; i++) {
-        variance += (numbers[i] - average) * (numbers[i] - average);
-      }
-      return variance;
-    }
- }));
- return variance / population.length;
-}</pre>
-<p>本质上，即便使用Fork/Join框架，相对于顺序版本，并行版本的编写和最后的调试仍然困难许多。</p>
-<h2>并行Streams</h2>
-<p>Java 8让我们可以以不同的方式解决这个问题。不同于编写代码指出计算如何实现，我们可以使用Streams API粗线条地描述让它做什么。作为结果，库能够知道如何为我们实现计算，并施以各种各样的优化。这种风格被称为<i>声明式编程</i>。Java 8有一个为利用多核架构而专门设计的并行Stream。我们来看一下如何使用它们来更快地计算方差。</p>
-<p>假定读者对本节探讨的Stream有些了解。作为复习，Stream&lt;T&gt;是T类型元素的一个序列，支持聚合操作。我们可以使用这些操作来创建表示计算的一个管道（pipeline）。这里的管道和UNIX的命令管道一样。并行Stream就是一个可以并行执行管道的Stream，可以通过在普通的Stream上调用parallel()方法获得。要复习Stream，可以参考<a href="http://download.java.net/jdk8/docs/api/java/util/stream/Stream.html">Javadoc文档</a>。</p>
-<p>好消息是，Java 8 API内建了一些算术操作，如max、min和average。我们可以使用Stream的几种基本类型特化形式来访问前面几个方法：IntStream（int类型元素）、LongStream（long类型元素）和DoubleStream（double类型元素）。例如，可以使用IntStream.rangeClosed()创建一系列数，然后使用max()和min()方法计算Stream中的最大元素和最小元素。</p>
-<p>回到最初的问题，我们想使用这些操作来计算一个规模较大的人口年龄数据的方差。第一步是从人口年龄数组创建一个Stream，可以通过Arrays.stream()静态方法实现：</p>
-<pre>
-DoubleStream populationStream = Arrays.stream(population).parallel();</pre>
-<p>我们可以使用DoubleStream所支持的average()方法：</p>
-<pre>
-double average = populationStream.average().orElse(0.0);</pre>
-<p>下一步是使用average计算方差。人口年龄中的每个元素首先需要减去平均值，然后计算差的平方。可以将其视作一个Map操作：使用一个Lambda表达式(double p) -&gt; (p - average) * (p - average)把每个元素转换为另一个数，这里是转换为该元素与平均值差的平方。一旦转换完成，我们就可以调用sum()方法来计算所有结果元素的和了。.</p>
-<p>不过别那么着急。Stream只能消耗一次。如果复用populationStream，我们会碰到下面这个令人惊讶的错误：</p>
-<pre>
-java.lang.IllegalStateException: stream has already been operated upon or closed</pre>
-<p>所以我们需要使用第二个流来计算方差，如下所示：</p>
-<pre>
-public static double varianceStreams(double[] population){
-   double average = Arrays.stream(population).parallel().average().orElse(0.0);
-   double variance = Arrays.stream(population).parallel()
-             .map(p -&gt; (p - average) * (p - average))
-             .sum() / population.length;
-   return variance;
-}</pre>
-<p>通过使用Streams API内建的操作，我们以声明式、而且非常简洁的方式重写了最初的命令式风格代码，而且声明式风格读上去几乎就是方差的数学定义。我们再来研究一下三种实现版本的性能。</p>
-<h2>基准测试</h2>
-<p>我们以非常不同的风格编写了三个版本的方差算法。Stream版本是最简洁的，而且是以声明式风格编写的，它让类库去确定具体的实现，并利用多核基础设施。不过你可能想知道它们的执行效果如何。为找出答案，让我们创建一个基准测试，对比一下三个版本的表现。我们先随机生成1到140之间的3000万个人口年龄数据，然后计算其方差。我们使用<a href="http://openjdk.java.net/projects/code-tools/jmh/">jmh</a>来研究每个版本的性能。Jmh是OpenJDK支持的一个Java套件。读者可以从<a href="https://github.com/java8/Variance">GitHub</a>克隆该项目，自己运行基准测试。</p>
-<p>基准测试运行的机器是Macbook Pro，配备2.3 GHz的4核Intel Core i7处理器，16GB 1600MHz DDR3内存。此外，我们使用的JDK 8版本如下：</p>
-<pre>
-java version &quot;1.8.0-ea&quot;
-Java(TM) SE Runtime Environment (build 1.8.0-ea-b121)
-Java HotSpot(TM) 64-Bit Server VM (build 25.0-b63, mixed mode)</pre>
-<p>结果用下面的柱状图说明。命令式版本用了60毫秒，Fork/Join版本用了22毫秒，而流版本用了46毫秒。</p>
-<p><img src="http://infoqstatic.com/resource/articles/forkjoin-to-parallel-streams/zh/resources/0224050.png" width="400" _href="img://null" _p="true" alt="" /></p>
-<p>这些数据应该谨慎对待。比如，如果在32位JVM上运行测试，结果很可能有较大的差别。然而有趣的是，使用Java 8中的Streams API这种不同的编程风格，为在场景背后执行一些优化打开了一扇门，而这在严格的命令式风格中是不可能的；相对于使用Fork/Join框架，这种风格也更为直接。</p>
-<h2>关于作者</h2>
-<p><img style="float: left; margin-right: 10px" src="http://infoqstatic.com/resource/articles/forkjoin-to-parallel-streams/zh/resources/0224051.png" _href="img://null" _p="true" alt="" /><b>Raoul-Gabriel Urma</b> 20岁开始在剑桥大学攻读计算机科学博士学位。他的研究主要关注的是编程语言与软件工程。他以一等荣誉生的成绩获得了伦敦帝国理工学院的计算机科学工程硕士学位，并赢得一些技术创新奖项。他曾经为Google、eBay、Oracle和Goldman Sachs等很多大公司工作过，也参与过不少创业项目。此外，他还经常在Java开发者会议上发表讲话，也是一位Java课程讲师。他的Twitter：<a href="http://www.twitter.com/raoulUK">@raoulUK</a>，<a href="http://www.urma.com/">网站</a>。</p>
-<div style="clear: both"></div>
-<p><img style="float: left; margin-right: 10px" src="http://infoqstatic.com/resource/articles/forkjoin-to-parallel-streams/zh/resources/0224052.png" _href="img://null" _p="true" alt="" /><b>Mario Fusco</b> 是Red Hat的一位高级软件工程师，主要从事Drools核心和JBoss规则引擎方面的开发工作。作为Java开发者，他有着丰富的经验，参与了从媒体公司到金融部门等行业的很多企业级项目，而且经常作为项目的领导者。他的兴趣包括函数式编程和领域特定语言（Domain Specific Language，DSL）。凭借在这两个方面的激情，他创建了开源类库lambdaj，意在在Java中为操作集合提供一种内部Java DSL，并支持一点函数式编程。他的Twitter是<a href="http://www.twitter.com/mariofusco">@mariofusco</a>。</p>
-<div style="clear: both"></div>
-<p><strong>查看英文原文：</strong><a href="http://www.infoq.com/articles/forkjoin-to-parallel-streams">From Imperative Programming to Fork/Join to Parallel Streams in Java 8</a></p><br><br><br><br><br><br></body></html>
+<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>虚拟圆桌：云计算中PaaS的未来</h3><p>对平台即服务（PaaS）这一概念大家<a href="http://www.infoq.com/news/2014/01/paas-future">众说纷纭</a>，在云世界里它是否依然占有一席之地呢。为此，InfoQ特意请来了四位云领域的领袖人物，分享他们对PaaS未来的看法。</p>
+<p>这次访问中，云前驱Krishnan Subramanian，云开发者Dan Turkenkopf，云执行官JP Morgenthal和云专家James Urquhart讨论了对PaaS的误解，以及其在未来云计算中的地位。</p>
+<p><b>InfoQ</b><b>：</b><b>PaaS</b><b>带来哪些Iaas没有的实际价值（非理论上的）？为什么就不能使用虚拟机来作为多种应用组合的主机？</b></p>
+<blockquote> 
+ <p><strong>Krish：</strong>当然，你完全可以使用虚拟机，管理工具等设置一个用于提供类似PaaS价值的环境。这一点是毫无疑问的。但是PaaS所做的是在无缝衔接开发工具的同时，为企业市场内的IT商店将复杂性从自动化中带出。在我看来，这就是它的两个主要亮点，其作用就是提高开发人员的生产力，以及使组织在请求新的DevOps技巧上没有负担。原因在于使开发和生产紧密合作的同时，Devs和Ops角色一直以来都是分开的。</p> 
+</blockquote>
+<blockquote> 
+ <p><strong>JP：</strong>从这个角度上来看，我认为PaaS的首要作用就是简化了应用的生命周期管理，其中包括缩小应用满足用户需求和建立服务等级。考虑到不使用PaaS部署的应用很可用使用多层服务器方式。这意味着需建立和配置堆栈中所有不同组件，包括数据库，网页服务器，应用服务器，和负载均衡器等。这在运营上要花费相当大的精力，维护起来费用也很高。而且很多情况下，开发所用的堆栈往往和运营所用的并不完全一致。因此在开发环境下往往无法重现在生产环境下可能产生的失败。PaaS为应用所提供的服务允许开发人员专心构建业务问题的解决方案，而非管理运营或发布堆栈。PaaS能管理发布，并确保应用满足产品层目标服务等级。</p> 
+</blockquote>
+<blockquote> 
+ <p><strong>Dan：</strong>如果这么限定该问题的话，那就有点大打折扣了。如果你就是担心管理应用组件的话，正如你所说的，是有很多选择的。但我还是觉得PaaS比起大多数其它的方式更加地适合企业环境，由于它为开发和运营人员创建了通用的交互模式，而这也只是一个平台的最基本价值。</p> 
+ <p>当然我也不会把所有的云架构师（老理念）都叫过来，然后讨论这些抽象概念的合理分层以及相关所有内容。相反，我们可以关注PaaS是如何支持服务生态系统，并从中受益的。而这也是自动化容器解决方案所不能做到的。一个合理的平台允许企业服务的无缝使用，比如：验证、授权、映射/简化等。执行PaaS的最好方法是通过“不用您联系我们，我们将联系您（don't call us, we'll call you）”的控制反转原则。这些都可以在CloudFoundry服务绑定、OpenShift插件盒和Apprenda&amp;Heroku附加组件中看到。</p> 
+ <p>往更深层看，我看到了PaaS真正的未来：经功能直接注入到应用以提供附加特性（比如Apprenda能处理多租户架构）或指导应用加强管理功能（可查看William Louth的PaaS理论）。但我说这些可能有点偏题。</p> 
+</blockquote>
+<blockquote> 
+ <p><strong>James：</strong>该问题暴露了关于开发（及其其他人员）在使用云时候的一个重要误解。这并非是一个仅采用某一种服务的问题，而是如何去最好地通过云结合使用这些可用服务(和其他软件)。这就是为什么我认为开发人员所关注的顶级模型最好是通过“服务即平台”这一规则来捕获的。就像思科的Lew Tucker 和其他人提及的.</p> 
+ <p>“服务即平台”从开发者角度将SaaS，PaaS和IaaS等概念结合在一起，并更多地关注有哪些服务可以被使用起来，而非如何被使用的。服务即平台驱动了一个概念，该概念包含可组合性胜于具体内容（查看<a href="http://gigaom.com/2013/02/16/devops-complexity-and-anti-fragility-in-it-context-and-composition">这里</a>）和“SaaS、PaaS和IaaS”只是涉及不同的、却往往彼此重叠的使用体验。</p> 
+ <p>PaaS在可自动化的大型在线软件应用的核心可拓展性和可用性上是否具有价值？答案当然是肯定的。但是AWS和其他每天不断添加的服务可用性已开始模糊了完全规范框架和完全自我组合的“IaaS”选项间的界限。</p> 
+ <p>最后，PaaS 一直都涵盖了纯IaaS（带有一些以开发者为中心的自动化抛出）和SaaS的有针对性扩展以及其它由上下文指定的软件模型。在大环境上, 就PaaS为云计算这一整体服务性消费接口（尤其重要）所真正带来的价值来看，将其“另归一类”的需要则最大化地减弱了。</p> 
+</blockquote>
+<p><b>InfoQ</b><b>：</b><b>从Heroku和Google App Engine的早期开始，PaaS这一概念是否就已经开始演化？如果是的话，为什么以及如何演进的？</b></p>
+<blockquote> 
+ <p><strong>Krish：</strong>是啊，PaaS从早期就开始演进了。开始时PaaS主要关注解决托管服务规模这一问题的。大多数早期平台都是通过在运算组织构造的顶层使用不同服务来构建的。为了达到规模上的有效性，早期的PaaS解决方案在架构上对应用进行了限制。尽管它取得了部分开发人员的兴趣，但是企业却对这些PaaS供应商所提出的限制有所顾虑。随着关注企业PaaS的出现，我们看到演进慢慢从对缩放的关注转移到提高开发者生成力，并减少限制。同时我们也看到了部分开源平台开始使用容器模式，这对应用的可移植性非常重要。</p> 
+</blockquote>
+<blockquote> 
+ <p><strong>JP：</strong>从Heroku和GAE早期开始，PaaS以概念和工具快速演进。但是我偏向将这些归类到框架，而非PaaS。目前，PaaS在规模上提供更多的控制，并为新服务带来了更大的集成能力。平台上有更多简化方式来满足特定服务等级。尽管如此，随着私有和共有PaaS的出现，这一概念肯定已产生分支。私有PaaS主要关注于开发人员将应用交付到IT运营这一过程的体验，而公共PaaS更多的是关心如何允许开发人员在产品环境下操作和管理应用。</p> 
+</blockquote>
+<blockquote> 
+ <p><strong>James：</strong>首先，PaaS产品试图成为开发人员编程体验整体的一部分，它为关键服务提供的架构是固定的，而且模式是“要么接受，要么不用”。很快大家就发现这一模式根本不能应用到更广范围的网页开发市场，因此早期PaaS供应商很快便引进更广泛的服务、编程语言和部署方法。</p> 
+ <p>现代PaaS更多的是关于运营自动化，而非代码抽象，这是至关重要的。服务接口的标准化更多从连通性和运营角度出发，而不是从“检测服务如何被使用”的角度。Cloud Foundry和Heroku所工作的生态系统就是很好的例子，它们提供了高度可组合模型，强调了运营自动化，并将应用模式的适用性拓展到最宽范围。</p> 
+ <p>最后，正如我在第一个回答里指出的，最先进的IaaS工具所提供的自动化类型与“纯PaaS”产品间的界限将会越来越模糊，以致服务接口标准将开始出现。PaaS平台产品提供的增值将围绕着接口和格式的一致性展开，这将大大打开跨多供应商的应用平台市场。这时我们就会停止讨论PaaS vs. IaaS，而开始讨论它们作为整体所能带来的效益。</p> 
+</blockquote>
+<blockquote> 
+ <p><strong>Dan：</strong>早期PaaS基本是为个体开发人员或初创型企业处理应用级托管。这样取代了自己从托管公式购买服务器空间，且配置LAMP堆栈，你可以从PaaS供应商租用其计算资源，然后遵循其设计和部署规则。事实上，早期PaaS的杀手级功能就是基于Git的部署。这个功能不仅很酷，也缩短了开发时间，符合了“我们为开发人员简化事务”这一价值主张。</p> 
+ <p>今天，‘PaaS’这一概念已被热心的市场和运营人员‘盗用’了。尽管这点看上去漫不经心，但是我还是认为有一部分是符合事实的。我们今天能有这一谈话的原因之一就是现在任意与自动化部署及规模有关的内容都叫PaaS。因此，我们发现单个分类里却包含了这么宽范的功能。</p> 
+ <p>我们在接下来18个月左右将看到一些对该术语的微调，而这将从如Azure、Google Compute和Verizon等这样的供应商开始。这些公司既不是IaaS也不是PaaS的供应商，但他们作为资源供应商提供了多种多样的消费形式。就这样，在我看来我们将看到一个全新的关注点，它将关注如何允许我在上一问题答案中提到过的服务模型，甚至将生成一类新的流行语。</p> 
+</blockquote>
+<p><b>InfoQ</b><b>：</b><b>大家对PaaS的这些描述都非常优秀，但我还是觉得有些远不可攀。现今的大部分商业（公共的）PaaS产品不都在可管理模式下提供网页和应用服务、部署工具和应用管理工具，而不是Krish的“无约束环境”或James的“基于编码抽象上的自动化”吗？在朝着“服务及平台”这一超越传统PaaS约束的理想前进的路上，你在哪方面看到了相应的变化？</b></p>
+<blockquote> 
+ <p><strong>Dan：</strong>其实大部分传统PaaS供应商已经或多或少地展开该愿景一段时间了。在上一回答中，我提到了大量供应商所用的插件模式。Apprenda的整个理念就是围绕着对客户应用的深度集成来构建的。Azure提供了许多类似ESB，及多因素验证等平台服务。Buildpacks和cartridges现在大多用于绑定特定运行时和插件，但他们主要服务于比较健壮的组合应用。这些例子不胜枚举。</p> 
+ <p>那为什么市场会呈现出对应用托管和管理的关注呢？其实部分是因为PaaS还处于早期，而且应用也需最先设置于平台上的。也有一部分是因为这些功能是所有对能否定义为平台因素中比较常见的线程（不管他们是否遵循Simon Wardley提出的正确的抽象层）。还有一部分是因为平台供应商本身也在前进。目前没有任何人有完整的解决方案，或者我们已经知道完整的解决方案是什么样子。听听我们今天的谈话就知道了。尤其相对于普通大众，我们已经有非常类似的理念了，然而我们又都赞同略不相同的结束状态，以及我能想象为了完成该状态各自将会有不同的过程。</p> 
+ <p>随着使用不断成熟，平台也不断演进，越来越多的人会将IT作为一个整体系统，而非一堆不同的应用程序。我们也将看到PaaS的其它因素会被推向前沿。尽管已经有公司这么做了（比如：Netflix），但大部分都是自产自销。这点虽然很好，但不好推广。作为商业系统应用，PaaS应该与主流一同发展。</p> 
+</blockquote>
+<blockquote> 
+ <p><strong>Krish：</strong>我同意Dan的看法。我们对PaaS的采用还处于早期阶段，随着使用的增加，它也会不断演进。PaaS依然被看作是托管的拓展的最大原因是因为PaaS托管服务在早期非常成功，而这些服务已经调整为了更多地满足客户处理网页应用的需求，而不是IT重构平台。</p> 
+ <p>但这点随着越来越多的企业开始拥抱“现代PaaS”产品开始变化，公司意识到PaaS为他们重构IT以及将其转换从而满足新挑战提供了可能。在这一点上，我喜欢Jonathan Murray的可组合企业这一想法，他在现代企业应如何构建其IT平台术语上有正确的诠释。我们看到越来越多组织拥护该方式和开放式架构的平台，这将帮助企业构建强大且灵活的平台。</p> 
+ <p>当然企业内部的变化是缓慢的，PaaS供应商在如何将它们的服务用于构建这类现代IT平台上还未有好的成果。但随着传感因素不断遍布企业内部，这一趋势正在快速变化，组织意识到如果不转换其IT方式，将错过大数据所带来的利益。</p> 
+ <p>PaaS供应商需要给企业明确的信息。现代IT需要大规模自动化，但这可以通过更高的命令抽象来更有效地完成。另外，他们需要很好地为IT人员解释下堆栈中的更高层抽象来减少错误面。</p> 
+</blockquote>
+<blockquote> 
+ <p><strong>JP：</strong>你的问题倒是引出了另外一个问题，我们是否需要分开考虑私有PaaS和公有的PaaS。归根结底，它们可以共享一个通用模型。但是私有PaaS强调了运营和应用开发两个不同责任间更深层次的区别。公有PaaS则巧妙地设计用于开发云应用的团队，而这些团队也很可能负责在产品上的应用管理和运营。因此我可能不会说以上的描述遥不可及，但我同意我们可能无法在一个公有PaaS产品上找到所有特性。</p> 
+</blockquote>
+<p><b>InfoQ</b><b>：</b><b>JP</b><b>提到了私有和公有PaaS间的区别。你们觉得它们是否应该各自拥有不同的特性，或其中一个环境中的某些功能比另一个中更重要？</b></p>
+<blockquote> 
+ <p><strong>JP：</strong>从一方面来讲，私有PaaS必须能被IT运营人员支持。这本身就包含对管理，监控和配置的一系列需求。而在公有PaaS中，供应商则会负责这些需求。另外一方面，如我在上个问题中提到的，它们之间的工具也是不同的。在我看来私有PaaS里的工具在应用开发和IT运营间建立互相协作的DevOps流程，而公有PaaS则关注为工程师或开发人员提供用于支持和简化应用部署和管理流程的工具。</p> 
+</blockquote>
+<blockquote> 
+ <p><strong>Dan：</strong>其实主要的区别不在私有对公有；而是中间件VS运营服务。平台功能应完全与其运行的计算服务分离开来。这样才能保证不同服务交付形式下，从裸机到内部虚拟化，再到混合语，最后完全公开，应用体验一致。应用平台的选择结果不应由完全无关的决定来支配。</p> 
+ <p>很显然公司会根据是否自己运营平台来做决定。这样类似机器和策略的管理就成为评价标准中的重要部分，不然这些因素可能会被忽略。但这不能消除管理平台的需要，只是改变了谁应负责。对于平台供应商，不论是内部还是外部服务供应商来实现该功能都不应是个问题。</p> 
+ <p>如果初始PaaS供应商在没有试图提供软件及提供底层运行环境的话，市场会强制要求他们跟上发展步伐。我们持续将两个领域的责任混合在一起的话将是个不幸的遗留问题，而非特色。</p> 
+</blockquote>
+<blockquote> 
+ <p><strong>Krish：</strong>我同意Dan的说法，这与私有还是公有无关。一个架构良好的现代PaaS产品不论以公有还是私有PaaS形式（以内部部署形式托管）都应提供相同体验。在PaaS早期，当我们只有由Google App Engine和Heroku托管的服务时，为了满足规模上的运营效率，它们在应用设计上还有一些限制。但新一代关注企业的PaaS产品改变了这一情况。不论我们喜欢与否，混合云都将是未来一段时间的主流。现代PaaS产品试图缩短公有及私有PaaS间的差距，这样企业不仅可以从两种部署中获得优势,同时获取不同托管版本。</p> 
+ <p>在这方面，我想将Docker带入我们的讨论。随着容器的推广，不论Docker还是其它，私有和公有间的区别将会完全消失。我们不仅可以获取两个版本的类似环境，也可以在公有和私有PaaS间无缝地移植应用。在某些情况下，如果将多平台产品标准化到容器模型，很可能我们甚至能够在跨平台移植应用。</p> 
+</blockquote>
+<p><b>InfoQ</b><b>：</b><b>PaaS</b><b>似乎在其他“热点”概念中也被提及，比如：容器和DevOps。你们是如何看待这些观点间的交互呢？</b></p>
+<blockquote> 
+ <p><strong>Krish：</strong>对我来说，这很简单。PaaS是DevOps和容器的推动者，是底层的标准化组件（针对某些PaaS产品）。</p> 
+</blockquote>
+<blockquote> 
+ <p><strong>Dan：</strong>我认为你提到的所有概念都驱动着一个相同的目标：我们在努力改善业务服务交付。DevOps是一种服务交付方式，它推荐了某些类型的流程，而不用指明这些流程是如何执行的。容器和PaaS在DevOps里都发挥着很好的作用，尤其当你想将DevOps概念调整到当前独立的企业IT商店时（当然说总比做起来容易）。</p> 
+ <p>容器提供了一些很好的功能，包括便携性和应用隔离，可以满足众多企业的需求。但这只是平台应提供的一小部分功能，如Krish所说的，PaaS供应商应考虑使用容器技术来完成这些目标。</p> 
+ <p>PaaS是一个相对比较完整的解决方案，尤其私有PaaS能促进DevOps的价值，哪怕是那些本身并非构建用以处理纯DevOps的企业。在这些情况下，平台可以作为通用语言将开发人员和运营人员组织在一起，确保最好质量的服务交付。</p> 
+</blockquote>
+<blockquote> 
+ <p><strong>JP：</strong>在我的博文《Without A Strong PaaS, ITaaS, DevOps &amp; IaaS Fall Short》里，我指出了一个很强的关联，它介于将PaaS作为渠道为客户交付常用共享平台和那些为DevOps制定设计、构建、测试、运行和终止（退役）相关DevOps管道的运营及开发。总的说来，PaaS只是一个工具。跟所有的工具一样，其秘诀在于你怎么用它以获取你想要的结果。由于产品环境和开发环境的设置不同，多年来一直是低质量、停机和高成本的原因。PaaS所提供的IT关注于以应用为中心，这就要求非IT相关事务具有敏捷性和高效性。它允许Ops关注于其服务的设计和交付以允许PaaS和应用开发专注其业务需求。而容器则是支持这一目标的完美工具，它为流程和数据提供了隔离，以允许开发/测试场景更简易的交付。</p> 
+</blockquote>
+<h2><b>关于被访者</b></h2>
+<p><img style="float: left; margin-right: 10px" src="http://infoqstatic.com/resource/articles/paas-roundtable/zh/resources/0603000.png" _href="img://null" _p="true" alt="" /><b>JM Morgenthal</b>，用“企业IT之声”来形容他是最好不过的。他为技术应用以及在实际环境下为大中型企业交付的复杂性带来独特视角。他是一位有着25年经验的高级信息技术主管，是拥有技术的深度和广度以及强大的商业触觉的独特组合.JP在云计算和集成领域是个知名作家和思想领袖。</p>
+<div style="clear:both"></div>
+<p><img style="float: left; margin-right: 10px" src="http://infoqstatic.com/resource/articles/paas-roundtable/zh/resources/0603001.png" _href="img://null" _p="true" alt="" /><b>James Urquhart</b><b>，</b>戴尔云管理器产品总监（前身为Enstratius），该产品是混合云管理环境的先驱之一。James一直是分布式系统技术专家，主要关注虚拟化、可拓展架构及云计算。James曾被MIT Technology Review、NextWeb和Huffington Post提名为领先的云计算专家，James经常为GigaOm撰写关于云计算和分布式系统趋势等方面的文章。</p>
+<div style="clear:both"></div>
+<p><img style="float: left; margin-right: 10px" src="http://infoqstatic.com/resource/articles/paas-roundtable/zh/resources/0603002.png" _href="img://null" _p="true" alt="" /><b>Dan Turkenkopf</b>（@dturkenk）现在是Tampa Bay Rays的前端开发人员和分析师。在发现其梦寐以求的棒球队工作之前，他曾在Apprenda，CGI和IBM从事过应用云计算架构师。当前他与妻子，还有4岁的双胞胎住在纽约州萨拉托加温泉。在其难得的空闲时刻，他喜欢阅读系统复杂性方面内容，还喜欢编程，销售精酿啤酒，很难说他更喜欢哪个。</p>
+<div style="clear:both"></div>
+<p><img style="float: left; margin-right: 10px" src="http://infoqstatic.com/resource/articles/paas-roundtable/zh/resources/0603003.png" _href="img://null" _p="true" alt="" /><b>Krish Subramanian</b>目前担任Red Hat，OpenShift Strategy的主管。在Red Hat，他与OpenShift团队致力将旗下PaaS发展为主导性PaaS产品。在此之前，他是一名行业分析师及<a href="http://rishidot.com/">Rishidot Research</a>创始人。他的关注领域包括平台服务、大数据和开源。</p>
+<div style="clear:both"></div>
+<p><strong>查看英文原</strong><strong>文</strong>：<a href="http://www.infoq.com/articles/paas-roundtable">Virtual Roundtable: The Future of PaaS in Cloud Computing</a></p>
+<hr />
+<p>感谢<a href="http://www.infoq.com/cn/author/陈菲">陈菲</a>对本文的审校。</p>
+<p>给InfoQ中文站投稿或者参与内容翻译工作，请邮件至<a href="mailto:editors@cn.infoq.com">editors@cn.infoq.com</a>。也欢迎大家通过新浪微博（<a href="http://www.weibo.com/infoqchina">@InfoQ</a>）或者腾讯微博（<a href="http://t.qq.com/infoqchina">@InfoQ</a>）关注我们，并与我们的编辑和其他读者朋友交流。</p><br><br><br><br><br><br></body></html>

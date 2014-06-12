@@ -1,14 +1,17 @@
-<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>WinJS开源，增加Windows Phone 8.1支持</h3><p>在去年六月的Build 2013大会上，Paul Gusmorino<a href="http://www.infoq.com/news/2013/07/winjs20">谈论</a>了WinJS 2.0及其带来的速度提升。在上周的Build 2014大会上，他<a href="http://channel9.msdn.com/Events/Build/2014/2-506">又来</a>谈论了WinJS 2.1以及该库下一步的发展方向。Windows Library for JavaScript（WinJS）原本是要成为使用HTML、CSS和JavaScript构建应用程序的有效途径。它最初由微软创建，不过，其功能不局限于Windows平台。</p>
-<p>Gusmorino参与主推了微软依据开源许可证发布的几项技术。他宣布，WinJS现在依据Apache许可证授权，项目托管在<a href="https://github.com/winjs/winjs/">GitHub</a>上。微软的希望是，这可以使WinJS成为一个可以用在所有现代设备和浏览器上的通用库，而且不需要大量重写。除了这项扩展外，WinJS 2.1已经发布，并支持Windows Phone 8.1。对于微软技术栈而言，这意味着在Xbox、Windows Phone和Windows 8应用程序中间在用的WinJS变体现在有三种。Gusmorino表示，统一这三种平台是为2015年WinJS 3.0设定的目标。该项目已经生成了一个<a href="https://github.com/winjs/winjs/wiki/Roadmap#the-future">路线图</a>，说明了他们下一步的发布步骤。</p>
+<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>DataTorrent 1.0每秒处理超过10亿个实时事件</h3><p><a href="https://www.datatorrent.com/">DataTorrent</a>是一个实时的流式处理和分析平台，它每秒可以处理超过10亿个实时事件。</p>
+<p>与<a href="https://blog.twitter.com/2013/new-tweets-per-second-record-and-how">Twitter平均每秒大约6000条微博</a>相比，最近发布的<a href="https://www.datatorrent.com/">DataTorrent 1.0</a>似乎已经超出了需求，它每秒可以处理超过10亿个实时事件。他们<a href="https://www.datatorrent.com/scaling-up-event-ingestion/">在一个包含37个节点的集群上进行了测试</a>，每个节点256GB内存、12核超线程CPU。在CPU达到饱和之前，DataTorrent声称已经实现了线性扩展，而CPU达到饱和时处理速度为每秒16亿个事件。Phu Hoang是DataTorrent的联合创始人和CEO，他告诉InfoQ，在同样的硬件上，他们的解决方案在性能上比Apache Spark要高“好几个数量级”。</p>
+<p>DataTorrent基于Hadoop 2.x构建，是一个实时的、有容错能力的数据流式处理和分析平台，它使用本地Hadoop应用程序，而这些应用程序可以与执行其它任务，如批处理，的应用程序共存。该平台的架构如下图所示：</p>
+<p><img src="http://infoqstatic.com/resource/news/2014/06/datatorrent/zh/resources/0609040.png" width="" _href="img://null" _p="true" alt="" /></p>
+<p>StrAM（Streaming Application Master）是一个本地的YARN Application Master，负责管理将要在Hadoop集群上执行的逻辑DAG（Directed Acyclic Graph），包括资源分配、分区、扩展、调度、Web服务、运行时更改、统计、SLA执行、安全等等。</p>
+<p>在架构示意图的上层，用户应用程序作为已连接的算子和/或应用程序模板存在。算子的示例有InputReceiver（模拟接收输入数据）、Average（针对指定维度的键计算数据平均值）、RedisAverageOutput（将计算好的平均值写入Redis数据存储）、SmtpAvgOperator（发送电子邮件警报）。这些算子是<a href="https://github.com/DataTorrent/Malhar">Malhar</a>库的一部分，该库包含了超过400个这样的算子，并在GitHub上开源。用户可以根据需要编写其它算子。</p>
+<p>我们问Hoang，是什么使DataTorrent比Spark更快：</p>
 <blockquote> 
- <p>WinJS项目目标</p> 
- <ul> 
-  <li>提供真正的应用程序体验</li> 
-  <li>构建本地体验</li> 
-  <li>实现跨设备代码共享</li> 
-  <li>向社区贡献新材料——“不是提供用户已有的某个东西的微软版本”</li> 
-  <li>保持和提高模块化</li> 
- </ul> 
+ <p><b>PH</b><b>：</b>DataTorrent侧重于使企业能够通过流式处理实时采取行动，而Spark希望使Spark引擎适用于处理连续事件流，这就在架构上产生了两个重要的区别。性能和有状态的容错能力是两个重点关注的方面。</p> 
+ <ol> 
+  <li>性能——作为一个本地Hadoop 2.0产品，DataTorrent RTS从头开始设计和构建，它关注性能和高可用性，并最终实现了以亚秒级延时逐个处理事件。DataTorrent RTS在启动时就将应用程序调度到Hadoop容器中，如果应用程序不需要更改，映射就固定不变，这样就不会引入任何调度开销。另一方面，Spark基于Hadoop 2.0之前的版本构建，它利用Spark引擎以小批量或“迷你批量”高效地运行许多“map reduce”作业。这种设计策略要求现在的Spark（通过Application Master）必须将每个最小批调度到集群上，这意味着巨大的开销，降低了系统速度。</li> 
+  <li>有状态的容错能力——按照设计，DataTorrent RTS能够进行复杂的、有状态的高性能计算，并具有容错能力。这是企业的一项关键需求，在不丢失任何数据、任何状态的情况下从故障中恢复，这是一项必备的能力。这里，DataTorrent RTS的设计中心是使用Java编程以及为企业开发人员/ISV解除容错能力设计的“负担”（也就是说，由DataTorrent RTS为开发人员处理）。Spark确实也提供了容错能力，但只针对无状态处理。Spark的设计中心是使用函数式语言Scala，处理连续事件流的算子是无状态的。如果企业想向Spark添加有状态的处理，他们需要将那部分代码作为应用程序的一部分进行编写，这很难，而且会影响性能。</li> 
+ </ol> 
 </blockquote>
-<p>WinJS的实战示例可以在<a href="http://try.buildwinjs.com/">Try WinJS</a>上找到，其中包含了针对库中所有控件的演示程序和代码。微软维护了一个单独的<a href="http://msdn.microsoft.com/en-us/windows/dn632015">项目页面</a>，对于面向基于Windows的开发人员的GitHub页面而言，这是一个有益的伴侣。准备中的WinJS for Windows Phone带来若干变化，旨在提供一种更好的手机体验。它增加了Pivot控件，并对若干控件进行了改进。这些变化包含了性能和辅助功能。</p>
-<p><b>查看英文原文：</b><b><a href="http://www.infoq.com/news/2014/04/winjs21">WinJS Goes Open Source, Adds Windows Phone 8.1 Support</a></b></p><br><br><br><br><br><br></body></html>
+<p>据Hoang说，经验证，DataTorrent适用于“所有主要的Hadoop分发，既包括本地部署，也包括基于云的部署（前者如Cloudera、Hortonworks、MapR，后者如Amazon AWS和Google Cloud），这赋予了企业灵活性，使他们既可以更换Hadoop供应商，也可以无障碍地更改部署选项。”</p>
+<p>虽然DataTorrent是一款商业应用程序，但它也带来了一个包含所有功能的免费层级，可以用于中小型应用程序。</p>
+<p><b>查看英文原文：</b><b><a href="http://www.infoq.com/news/2014/06/datatorrent">DataTorrent 1.0 Handles &gt;1B Real-time Events/sec</a></b></p><br><br><br><br><br><br></body></html>

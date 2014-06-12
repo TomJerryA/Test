@@ -1,165 +1,93 @@
-<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>使用AppVeyor CI 和PowerShell部署应用</h3><h2><b>开头语</b></h2>
-<p>关于如何为单一的ASP.NET web应用程序设置持续集成，你可以找到很多文章。这些文章都写到如何通过Web Deploy来构建完美的环境来部署简单、只需稍作修改VS.NET模板的web应用程序。任何东西在这一完美环境下都能顺利进行。</p>
-<p>但是，真正部署应用程序的话却并非易事。总是有问题不断出现在以下情况中：当需要在注册表（Registry）或自定义文件夹中配置设置，或者你需要部署到Web集群时。</p>
-<p>本文中，我们通过使用PowerShell远程处理（PowerShell remoting）和AppVeyor CI为带有ASP.NET web应用程序和Windows Service的解决方案在其暂存（staging）和产品环境中配置持续集成。</p>
-<h2><b>解决方案概述</b></h2>
-<p>我们的示例中包含4个项目：</p>
-<ul> 
- <li>DemoApp.Web -ASP.NET应用程序，前端</li> 
- <li>DemoApp.Web.Tests -使用VisualStudio测试框架的web应用程序单元测试</li> 
- <li>DemoApp.Service -承载WCF服务的Windows service，后端</li> 
- <li>DemoApp.Service.Tests -使用NUnit框架的Windows service单元测试</li> 
-</ul>
-<p><img src="http://infoqstatic.com/resource/articles/AppVeyor-CI/zh/resources/0324010.png" _href="img://null" _p="true" alt="" /></p>
-<p>该示例应用程序的代码库托管于<a href="https://bitbucket.org/appveyor/demoapp/src">BitBucket</a>：</p>
-<div id="lowerFullwidthVCR"></div>
-<h2><b>我们到底将如何部署？</b></h2>
-<p>我们遇到的第一个问题就是如何部署Windows service？我们没有针对Windows service的“发布”菜单，也没有相应的配置转换。根本没法用Web Deploy。为了自动化项目的部署，我们将使用PowerShell部署框架 - AppRolla。</p>
-<p>AppRolla利用PowerShell远程处理在目标机器上执行部署任务。部署任务将下载应用程序包，解包，更新配置设置，然后创建或更新应用程序网站及pool。该应用程序包仅仅是带有应用程序文件夹的压缩包，通过HTTP上传到外部存储。其内部并没有任何特别之处 - 模块写在PowerShell内，很容易查看和修改。</p>
-<p>为了让你对PowerShell部署一睹为快，我们现在就建立一个简单web应用程序，并将其部署到服务器上。</p>
-<p>整个流程中最具挑战性的部分可能就是设置带有SSL认证的PowerShell远程处理了。我们强烈建议使用HTTPS与远程服务器进行通信，因为所有的数据流量都是加密的。</p>
-<p>当你在Windows Azure 上创建新的虚拟机时，PowerShell远程会自动被激活和配置。防火墙将允许PowerShell远程HTTPS端点端口5986，另外我们也将HTTP端点添加到示例服务器上：</p>
-<p><img src="http://infoqstatic.com/resource/articles/AppVeyor-CI/zh/resources/0324012.png" _href="img://null" _p="true" alt="" /></p>
-<p>如果你需设置其它服务，可以参照该链接里的具体细节：<a href="https://github.com/AppVeyor/AppRolla/wiki/Configuring-Windows-PowerShell-remoting">guide on how to configure PowerShell remoting。</a></p>
-<p>为了在实例机器上快速安装IIS7.5，我们使用以下PowerShell命令：</p>
-<p>Add-WindowsFeature -Name Web-Default-Doc,Web-Dir-Browsing,Web-Http-Errors,Web-Static-Content,Web-Http-Logging,Web-Stat-Compression,Web-Filtering,Web-Net-Ext,Web-Net-Ext45,Web-Asp-Net,Web-Asp-Net45,Web-ISAPI-Ext,Web-Mgmt-Console</p>
-<p>我们创建带有“Hello world”的简单Web应用程序，然后将其部署到示例服务器。</p>
-<p><img src="http://infoqstatic.com/resource/articles/AppVeyor-CI/zh/resources/0324013.png" _href="img://null" _p="true" alt="" /></p>
-<p>创建一个新的SimpleWebApp-1.0.zip压缩包，将带有第一版本的default.aspx存档起来。</p>
-<p>现在，我们需要将该应用程序压缩包上传到外部存储，这样目标服务器就能通过HTTP来对其访问。该服务器可以是启用了FTP的web服务器，Amazon S3或Azure blob存储。对于该示例，我们使用DropBox。它为DropBox文件夹下所有项目提供公共的下载链接。</p>
-<p>将该SimpleWebApp-1.0.zip拷贝到你的DropBox文件夹中，然后右击文件夹，选择“Share DropBox link”。在浏览器中打开该链接，然后拷贝“Download”键的URL。</p>
-<p><img src="http://infoqstatic.com/resource/articles/AppVeyor-CI/zh/resources/03240141.png" width="600" _href="img://null" _p="true" alt="" /></p>
-<p>打开PowerShell的控制台“As administrator”,将执行政策（execution policy）改成为允许远程PowerShell脚本：</p>
-<pre>
-Set-ExecutionPolicy RemoteSigned</pre>
-<p>安装AppRolla.psl模块（将被安装到用户配置文件中）：</p>
-<pre>
-(new-object Net.WebClient).DownloadString(&quot;https://raw.github.com/AppVeyor/AppRolla/master/install.ps1&quot;) | iex</pre>
-<p>将AppRolla模块导入到当前会话中：</p>
-<pre>
-Import-Module AppRolla</pre>
-<p>AppRolla有两组cmdlets：配置和部署。通过配置cmdlets定义应用程序和环境。</p>
-<p>紧接着，添加新的“SimpleWebApp”应用程序，该应用程序只带有单一的“website”角色：</p>
-<pre>
-New-Application SimpleWebApp</pre>
-<p>Add-WebsiteRole SimpleWebApp Web -PackageURL &quot;&lt;your-dropbox-download-link&gt;&quot;</p>
-<p>在服务器上定义“示例”环境（在提示出现后，输入示例服务器的管理员证明 - 后面将有详细讲解）：</p>
-<pre>
-New-Environment demo</pre>
-<p>Add-EnvironmentServer demo &quot;appveyor-demo.cloudapp.net&quot; -Credential (Get-Credential)</p>
-<p>将“SimpleWebApp”应用程序作为版本1.0部署到“示例”环境上：</p>
-<pre>
-New-Deployment SimpleWebApp 1.0 -to demo</pre>
-<p><a href="http://infoqstatic.com/resource/articles/AppVeyor-CI/zh/resources/0324015.jpg"><img src="http://infoqstatic.com/resource/articles/AppVeyor-CI/zh/resources/0324015.jpg" width="600" _href="img://null" _p="true" alt="" /></a></p>
-<p>（点击图片放大）</p>
-<p>就这样！你已经通过PowerShell将你的Web应用程序发布到示例服务器上了：</p>
-<p><img src="http://infoqstatic.com/resource/articles/AppVeyor-CI/zh/resources/0324016.png" width="600" _href="img://null" _p="true" alt="" /></p>
-<p>现在，我们修改一下页面内容，然后部署一个新的示例应用程序版本。我们将“Hello,World!”改成“Hello, world2.0!”。随后，创建新的SimpleWebApp-1.1.zip文件将修改好的default.aspx文件存档，再次上传到DropBox。</p>
-<p>更新“website”角色，将其压缩包的URL修改为新的值：</p>
-<pre>
-Set-WebsiteRole SimpleWebApp Web -PackageUrl &lt;public-URL-of-SimpleWebApp-1.1&gt;</pre>
-<p>然后部署新版本1.1：</p>
-<pre>
-New-Deployment SimpleWebApp 1.1 -to demo</pre>
-<p><img src="http://infoqstatic.com/resource/articles/AppVeyor-CI/zh/resources/0324017.png" width="600" _href="img://null" _p="true" alt="" /></p>
-<p>从日志可以看出，每次部署都会在本地:\applications\&lt;application-name&gt;\&lt;role-name&gt;\&lt;version&gt;中生成新的文件夹。默认情况下，目标服务器上可以保留5个部署版本，因此应用程序可以很容易地回滚到上一版本：</p>
-<pre>
-Restore-Deployment SimpleWebApp -on demo</pre>
-<p>从示例环境中删除所有应用程序部署：</p>
-<pre>
-Remove-Deployment SimpleWebApp -from demo</pre>
-<p>整个过程，我们都使用简单且简洁的命令来完成所有工作！</p>
-<h2><b>使用AppVeyor CI持续构建</b></h2>
-<p></p>
-<p>&nbsp;</p>
-<p><a href="http://www.appveyor.com/">AppVeyor CI</a>是为Windows开发人员设计的基于云的持续集成和部署平台。它有自己的服务器，因此不需要安装或配置。就算需要，配置起来也非常简单。另外，AppVeyor CI对开源项目是免费的。</p>
-<p>为了在AppVeyor CI中设置工程，其代码源必须托管于在线源代码控制库上，比如：GitHub、BitBucket或Kiln。它支持Git和Mercurial。</p>
-<p>在我们示例中，我们使用托管于BitBucket的Mercurial库。对商业项目来说，BitBucket相当实用，它免费地提供无限制的私有库。</p>
-<h3><b>启用NuGet存储</b></h3>
-<p>如果你的解决方案依赖于NuGet管理包，不要忘了启用NuGet restore来自动下载构建服务器上的各种程序包。可以使用<a href="http://docs.nuget.org/docs/workflows/using-nuget-without-committing-packages">如何启用NuGe包存储</a>这一指导来确保在.Nuget文件夹中的NuGet.exe已经添加到库里了。</p>
-<h3>添加新项目</h3>
-<p>我们可以先从创建新项目开始：</p>
-<p><img src="http://infoqstatic.com/resource/articles/AppVeyor-CI/zh/resources/0324018.png" width="600" _href="img://null" _p="true" alt="" /></p>
-<p>一旦新项目建成，新的web hook就会自动添加到项目库中，为新构建拉开序幕。</p>
-<h3>构建配置和配置交换</h3>
-<p>当通过Web Deploy部署时，配置交换在应用程序配置过程中是一个关键。对于每个需要部署的环境，都需定义新的VS.NET解决方案配置，然后使用配置转换生成web.config，它带有数据库链接字符及其它应用程序针对每个环境特定的设置。该方法看起来可行，却有一系列问题：</p>
-<p>• 类似数据库链接字符这样的敏感数据存储于源代码控制中。</p>
-<p>• 配置转换应用于构建过程，每当项目部署到新环境中，都需要重新构建配置转换。</p>
-<p>当用AppVeyor部署时，配置转换非常有用，但并非是必需的。默认情况下，VS会产生两种配置：Debug和Release，大多数情况下，这种形式完全OK。Debug配置用于本地开发，而Release配置则用于CI流程生成可以部署到任何环境的包。配置转换应该“真正地”用于转换配置文件结构，比如：禁用“Debug”标识；启用自定义错误；或启用Autofac更换模式等适用于所有环境的常见设置。</p>
-<p>我们现在就可以开始改变Release设置页面中的项目构建配置：</p>
-<p><img src="http://infoqstatic.com/resource/articles/AppVeyor-CI/zh/resources/0324019.png" width="600" _href="img://null" _p="true" alt="" /></p>
-<p>AppVeyor提供三种构建方案：</p>
-<ul> 
- <li><b>Visual Studio</b><b>方案</b> - 运行MSBuild于VS.NET解决方案或工程文件（如果没有指定，首先查找第一个.sln或.*proj文件），还有将所有项目构建结果以工件形式打包。</li> 
- <li><b>MSBuild</b> - 根据自己的规定运行MSBuild，允许在“Packaging”页面上定义自定义的构建工件。</li> 
- <li><b>Script</b> - 运行特定PowerShell脚本或批文件。为管理构建流程及其结果提供最大化的自由。</li> 
-</ul>
-<h3>组件版本</h3>
-<p>每个新项目构建都会收到新的版本号，该版本号的格式规定于“General”页面下。</p>
-<p>AppVeyor默认提供<a href="http://msdn.microsoft.com/en-us/library/System.Version.aspx">Windows style versioning</a>(major.minor.{build}.revision)，但是你也可以运用其它任意版本风格，比如：<a href="http://semver.org/">SemVer</a>（major.minor.patch.{build}）。</p>
-<p>当启用“Update assembly version attributes”时，AppVeyor会将解决方案目录下的所有AssemblyInfo.*文件设置成当前版本。</p>
-<h3>执行测试</h3>
-<p>AppVeyor能通过以下这些测试框架，在assembly中发现和运行测试：</p>
-<ul> 
- <li>MSTest</li> 
- <li>NUnit</li> 
- <li>xUnit</li> 
-</ul>
-<p>当“测试”步骤被启动时，AppVeyor会分析“out”文档中所有的assembly，来确认它们对所支持的测试框架是否含有相应的引用。如果有，那么所有assembly内的测试将会在相应的测试执行器中运行一遍。所有assembly的测试结果也会集合显示在UI上。</p>
-<p>（点击图片放大）</p>
-<p><a href="http://infoqstatic.com/resource/articles/AppVeyor-CI/zh/resources/0324020.jpg"> <img src="http://infoqstatic.com/resource/articles/AppVeyor-CI/zh/resources/0324020.jpg" width="600" _href="img://null" _p="true" alt="" /></a></p>
-<h3>构建.测试.打包！</h3>
-<p>我们现在开始创建新构建，可以对项目库进行修改或点击“New Build”。</p>
-<p>该模拟项目的构建流程会生产两个构建工件：web application和Windows service。将它们下载下来，你会发现其内容就是带有应用文件的常规压缩文档。</p>
-<p>由于Windows service包基本上就是其“Bin”文件夹下用于生成web应用包的内容中还需包含的一些步骤：</p>
+<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>存储系统的那些事</h3><p>存储系统从其与生俱来的使命来说，就难以摆脱复杂系统的魔咒。无论是从单机时代的文件系统，还是后来C/S或B/S结构下数据库这样的存储中间件兴起，还是如今炙手可热的云存储服务来说，存储都很复杂，而且是越来越复杂。</p>
+<p>存储为什么会复杂，要从什么是存储谈起。存储这个词非常平凡，存储 + 计算（操作）就构成了一个朴素的计算机模型。简单来说，存储就是负责维持计算系统的状态的单元。从维持状态的角度，我们会有最朴素的可靠性要求。比如单机时代的文件系统，机器断电、程序故障、系统重启等常规的异常，文件系统必须可以正确地应对，甚至对于磁盘扇区损坏，文件系统也需要考虑尽量将损失降到最低。对于大部分的业务程序而言，你只需要重点关注业务的正常分支流程就行，对于出乎意料的情况，通常只需抛出一个错误，告诉用户你不该这么玩。但是对于存储系统，你需要花费绝大部分精力在各种异常情况的处理上，甚至你应该认为，这些庞杂的、多样的错误分支处理，才是存储系统的“正常业务逻辑”。</p>
+<p>到了互联网时代，有了C/S或B/S结构，存储系统又有了新指标：可用性。为了保证服务质量，那些用户看不见的服务器程序必须时时保持在线，最好做到逻辑上是不宕机的（可用性100%）。服务器程序怎么才能做到高可用性？答案是存储中间件。没有存储中间件，意味着所有的业务程序，都必须考虑每做一步就对状态进行持久化，以便自己挂掉后另一台服务器（或者自己重启后），知道之前工作到哪里了，接下去应该做些什么。但是对状态进行持久化（也就是存储）会非常繁琐，如果每个业务都自己实现，负担无疑非常沉重。但如果有了高可用的存储中间件，服务器端的业务程序就只需操作存储中间件来更新状态，通过同时启动多份业务程序的实例做互备和负载均衡，很容易实现业务逻辑上不宕机。</p>
+<p>所以，数据库这样的存储中间件出现基本上是历史必然。尽管数据库很通用，但它决不会是唯一的存储中间件。比如业务中用到的富媒体（图片、音视频、Office文档等），我们很少会去存储到数据库中，更多的时候我们会把它们放在文件系统里。但是单机时代诞生的文件系统，真的是最适合存储这些富媒体数据的么？不，文件系统需要改变，因为：</p>
 <ol> 
- <li>Web应用应是解决方案的一部分。</li> 
- <li>创建应用了“file system”发布方法的新发布配置文件，并发布了使用MSBuild的WAP项目，该配置文件用来确保web.config修改以及其它发布设置的执行。</li> 
- <li>将发布的web应用打包为一压缩文件。</li> 
+ <li>伸缩性。单机文件系统的第一个问题是单机容量有限，在存储规模超过一台机器可管理的时候，应该怎么办。</li> 
+ <li>性能瓶颈。通常，单机文件系统在文件数目达到临界点后，性能会快速下降。在4TB的大容量磁盘越来越普及的今天，这个临界点相当容易到达。</li> 
+ <li>可靠性要求。单机文件系统通常只是单副本的方案，但是今天单副本的存储早已无法满足业务的可靠性要求。数据需要有冗余（比较经典的做法是3副本），并且在磁盘损坏时及早修复丢失的数据，以避免所有的副本损坏造成数据丢失。</li> 
+ <li>可用性要求。单机文件系统通常只是单副本的方案，在该机器宕机后，数据就不可读取，也不可写入。</li> 
 </ol>
-<p>构建工件将存储于Geo-redundant云存储中，能通过其独有的专属链接下载。如果想有自己专有的构建工件命名结构，以及允许公共访问的话，可以配置专有存储空间。</p>
-<h2>成功部署到预生产环境</h2>
-<p>我们现在开始往staging上配置自动化部署，作为该构建流程的一部分。</p>
-<p>该部署应脚本的形式来完成，可以是PowerShell或批处理文件。在项目库的根部创建“部署”文件夹以放置部署脚本。</p>
-<p>打开PowerShell命令行，跳转到“部署”文件夹，并执行以下命令下载模板脚本到现有目录：</p>
-<pre>
-(new-object Net.WebClient).DownloadString(&quot;https://raw.github.com/AppVeyor/Deployment/master/install.ps1&quot;) | iex</pre>
-<p>会有三个脚本被添加：configure.ps1、 project.ps1 和deploy.ps1。</p>
-<p>总的说来，我们只需要编辑一个文件就能配置部署：project.psl。该文件定义了我们将要部署的环境。将删除紧接着新staging环境那一行的备注，然后添加模拟服务器：</p>
-<pre>
-New-Environment Staging 
-Add-EnvironmentServer Staging “appveyor-demo.cloudapp.net”</pre>
-<p>返回到AppVeyor CI，打开项目设置的“Deployment”页面。</p>
-<p>选择“Run deployment script”，并指定脚本路径：</p>
-<pre>
-deployment\deploy.ps1</pre>
-<p>设置以下部署变量：</p>
-<pre>
-Environment: Staging   
-ServerUsername:    
-ServerPassword:    
-ApiAccessKey:   
-ApiSecretKey: </pre>
-<p><img src="http://infoqstatic.com/resource/articles/AppVeyor-CI/zh/resources/0324021.png" width="600" _href="img://null" _p="true" alt="" /></p>
-<p>ServerUsername和Password用来创建Credential对象以验证PowerShell的远程调用。以下两种情况要求到API关键字：a）阅读项目工件获取项目包的URL；b）验证目标服务器下载工件包。AppVeyor API关键字可以在用户配置的“API Keys”页面下找到。</p>
-<p>就这样。接着只要提交“deployment”文件夹，将其推送到项目库就可以开始该部署的新构建了。</p>
-<h2>如何更新web.config的链接字符？</h2>
-<p>部署变量通过$variables参数以哈希表形式传递到脚本中。对于项目或角色，如果想启用附加的配置变量，可以在Set-Application, Set-WebsiteRole或Set-ServiceRole cmdlets中使用“Configuration”参数。打开project.ps1，并添加以下语句：</p>
-<pre>
-Set-WebsiteRole $projectName DemoApp.Web -Configuration @{   
-    “ConnectionStrings.DefaultConnection” = $variables.DefaultConnection   
-}</pre>
-<p>}</p>
-<p>然后在部署设置页面上定义“DefaultConnection”变量，用于web应用的链接字符的传递。部署脚本通过web.config为web应用程序应用了角色配置，对Windows应用程序，则通过app.config，运用了以下这些规则：</p>
-<ul> 
- <li>Setting with name “ConnectionStrings.&lt;name&gt;” updates connection string with &lt;name&gt; name in “connectionStrings”section.</li> 
- <li>Setting with name “AppSettings.&lt;name&gt;” updates “AppSettings” value with &lt;name&gt; name.</li> 
-</ul>
-<h2>总结</h2>
-<p>本文中，我并非试图去低估或淡化其它的Web部署工具，它们可能在你的web应用中得到了很好的应用。但是，如果你的项目已经超出模板化的web应用，而必须部署到集群环境中或你需要更复杂，或对部署流程更多控制的话，那么绝对值得考虑像PowerShell remoting这样替代的解决方案。这对于具有PowerShell技能或使用PSake的开发人员来说，将会特别具有吸引力。</p>
-<h2>关于作者</h2>
-<p>Feodor Fitsner是个具有创业精神的.NET开发人员，他接触Windows Web平台已超过10年。Feodor最新项目就是Appveyor CI：专为.NET开发人员设计的主机型持续集成解决方案。在AppVeyor之前，Feodor针对Windows主机开发了DotNetPanel控制面板，之后就职于Microsoft的Azure 部门。</p>
-<p><strong>参考英文原文：</strong><a href="http://www.infoq.com/articles/AppVeyor-CI">Deploying it right with AppVeyor CI and PowerShell</a></p>
+<p>在分布式存储系统出现前，有一些基于单机文件系统的改良版本被一些应用采纳。比如在单机文件系统上加 RAID5 做数据冗余，来解决单机文件系统的可靠性问题。假设 RAID5 的数据修复时间是1天（实际上往往做不到，尤其是业务系统本身压力比较大的情况下，留给 RAID 修复用的磁盘读写带宽很有限），这种方案单机的可靠性大概是100年丢失一次数据（即可靠性是2个9）。看起来尚可？但是你得小心两种情况。一种是你的集群规模变大，你仍然沿用这个土方法，比如你现在有 100 台这样的机器，那么就会变成1年就丢失一次数据。另一种情况是如果实际数据修复时间是 3 天，那么单机的可靠性就直降至4年丢失一次数据，100台就会是15天丢失一次数据。这个数字显然无法让人接受。</p>
+<p>Google GFS 是很多人阅读的第一份分布式存储的论文，这篇论文奠定了 3 副本在分布式存储系统里的地位。随后 Hadoop 参考此论文实现了开源版的 GFS —— HDFS。但关于 Hadoop 的 HDFS 实际上业界有不少误区。GFS 的设计有很强的业务背景特征，本身是用来做搜索引擎的。HDFS 更适合做日志存储和日志分析（数据挖掘），而不是存储海量的富媒体文件。因为：</p>
+<div id="lowerFullwidthVCR"></div>
+<ol> 
+ <li>HDFS 的 block 大小为 64M，如果文件不足 64M 也会占用 64M。而富媒体文件大部分仍然很小，比如图片常规尺寸在 100K 左右。有人可能会说我可以调小 block 的尺寸来适应，但这是不正确的做法，HDFS 的架构是为大文件而设计的，不可能简单通过调整 block 大小就可以满足海量小文件存储的需求。</li> 
+ <li>HDFS 是单 Master 结构，这决定了它能够存储的元数据条目数有限，伸缩性存在问题。当然作为大文件日志型存储，这个瓶颈会非常晚才遇到；但是如果作为海量小文件的存储，这个瓶颈很快就会碰上。</li> 
+ <li>HDFS 仍然沿用文件系统的 API 形式，比如它有目录这样的概念。在分布式系统中维护文件系统的目录树结构，会遭遇诸多难题。所以 HDFS 想把 Master 扩展为分布式的元数据集群并不容易。</li> 
+</ol>
+<p>分布式存储最容易处理的问题域还是单键值的存储，也就是所谓的 Key-Value 存储。只有一个 Key，就意味着我们可以通过对 Key 做 Hash，或者对 Key 做分区，都能够让请求快速定位到特定某一台存储机器上，从而转化为单机问题。这也是为什么在数据库之后，会冒出来那么多 NoSQL 数据库。因为数据库和文件系统一样，最早都是单机的，在伸缩性、性能瓶颈（在单机数据量太大时）、可靠性、可用性上遇到了相同的麻烦。NoSQL 数据库的名字其实并不恰当，他们更多的不是去 SQL，而是去关系（我们知道数据库更完整的称呼是关系型数据库）。有关系意味着有多个索引，也就是有多个 Key，而这对数据库转为分布式存储系统来说非常不利。</p>
+<p>七牛云存储的设计目标是针对海量小文件的存储，所以它对文件系统的第一个改变也是去关系，也就是去目录结构（有目录意味着有父子关系）。所以七牛云存储不是文件系统（File System），而是键值存储（Key-Value Storage），用时髦点的话说是对象存储（Object Storage）。不过七牛自己喜欢把它叫做资源存储（Resource Storage），因为它是用来存储静态资源文件的。蛮多七牛云存储的新手会问，为什么我在七牛的 API 中找不到创建目录这样的 API，根本原因还是受文件系统这个经典存储系统的影响。</p>
+<p>七牛云存储的第一个实现版本，从技术上来说是经典的 3 副本的键值存储。它由元数据集群和数据块集群组成。每个文件被切成了 4M 为单位的一个个数据块，各个数据块按 3 副本做冗余。但是作为云存储，它并不仅仅是一个分布式存储集群，它需要额外考虑：</p>
+<ol> 
+ <li>网络问题，也就是文件的上传下载问题。文件上传方面，我们得考虑在相对比较差的网络条件下（比如2G/3G网络）如何确保文件能够上传成功，大文件（七牛云存储的单文件大小理论极限是1TB）如何能够上传成功，如何能够更快上传。文件下载加速方面，考虑到 CDN 已经发展了 10 多年的历史，非常成熟，我们决定基于 CDN 来做下载加速。</li> 
+ <li>数据处理。当用户文件托管到了七牛，那么针对文件内容的数据处理需求也会自然衍生。比如我们第一个客户就给我们提了图片缩略图相关的需求。在音视频内容越来越多的时候，自然就有了音视频转码的需求。可以预见在Office文档多了后，也就会有 Office 文档转换的需求。</li> 
+</ol>
+<p>所以从技术上来说，七牛云存储是这样的：</p>
+<p>七牛云存储 = 分布式存储集群 + 上传加速网络（下载外包给CDN） + 数据处理集群</p>
+<p>网络问题并不是七牛要解决的核心问题，只是我们要面对的现实困难。所以在这个问题上如果能够有足够专业的供应商，能够外包我们会尽可能外包。而分布式存储集群的演进和优化，才是我们最核心的事情。早在 2012 年 2 月，我们就启动了新一代基于纠删码算术冗余的存储系统的研发。新存储系统的关注焦点在：</p>
+<ol> 
+ <li>成本。经典的 3 副本存储系统虽然经典，但是代价也是高昂的，需要我们投入 3 倍的存储成本。那么有没有保证高可靠和高可用的前提下把成本做下来？</li> 
+ <li>可靠性。如何进一步提升存储系统的可靠性？答案是更高的容错能力（从允许同时损坏2块盘到允许同时损坏4块盘），更快的修复速度（从原先3小时修复一块坏盘到30分钟修复一块坏盘）。</li> 
+ <li>伸缩性。如何从系统设计容量、IO吞吐能力、网络拓扑结构等角度，让系统能够支持EB级别的数据存储规模？关于伸缩性这个话题，涉及的点是全方位的，本文不展开讨论，后面我们另外独立探讨这个话题（让我们把焦点放在成本和可靠性上）。</li> 
+</ol>
+<p>在经过了四个大的版本迭代，七牛新一代云存储（v2）终于上线。新存储的第一大亮点是引入了纠删码（EC）这样的算术冗余方案，而不再是经典的 3 副本冗余方案。我们的 EC 采用的是 28 + 4，也就是把文件切分为 28 份，然后再根据这 28 份数据计算出 4 份冗余数据，最后把这 32 份数据存储在 32 台不同的机器上。这样做的好处是既便宜，又提升了可靠性和可用性。从成本角度，同样是要存储 1PB 的数据，要买的存储服务器只需 3 副本存储的 36.5%，经济效益相当好。从可靠性方面，以前 3 副本只能允许同时损坏2块盘，现在能够允许同时损坏4块盘，直观来说这大大改善了可靠性（后面讨论可靠性的时候我们给出具体的数据）。从可用性角度，以前能够接受 2 台服务器下线，现在能够同时允许 4 台服务器下线。</p>
+<p>新存储的第二大亮点是修复速度，我们把单盘修复时间从 3 小时提升到了 30 分钟以内。修复时间同样对提升可靠性有着重要意义（后面讨论可靠性的时候我们给出具体的数据）。这个原因是比较容易理解的。假设我们的存储允许同时坏 M 块盘而不丢失数据，那么集群可靠性，就是看在单位修复时间内，同时损坏 M+1 块盘的概率。例如，假设我们修复时间是 3 小时，那么 3 副本集群的可靠性就是看 3 小时内同时损坏 3 块盘的概率（也就是丢数据的概率）。</p>
+<p>让我们回到存储系统最核心的指标 —— 可靠性。首先，可靠性和集群规模是相关的。假设我们有 1000 块磁盘的集群，对于 3 副本存储系统来说，这 1000 块盘同时坏 3 块就会发生数据丢失，这个概率显然比 3 块盘同时坏 3 块要高很多。基于这一点，有些人会想这样的土方法：那我要不把集群分为 3 块磁盘一组互为镜像，1000 块盘就是 333 组（不好意思多了1块，我们忽略这个细节），是不是可以提升可靠性？这些同学忽略了这样一些关键点：</p>
+<ol> 
+ <li>3 块盘同时坏 3 块盘（从而丢失数据）的概率为 p，那么 333 组这样的集群，丢失数据的概率是 1-(1-p)^333 ≈ p * 333，而不是 p。</li> 
+ <li>互为镜像的麻烦之处是修复速度存在瓶颈。坏一块盘后你需要找一个新盘进行数据对拷，而一块大容量磁盘数据对拷的典型时间是 15 小时（我们后面将给出 15 小时同时坏 3 块盘的概率）。要想提升这个修复速度，第一步我们就需要打破镜像带来的束缚。</li> 
+</ol>
+<p>如果一个存储系统的修复时间是恒定的，那么这个存储集群在规模扩大的时候，必然伴随着可靠性的降低。所以最理想的情况是集群越大，修复速度越快。这样才能抵消因集群增大导致坏盘概率增加带来负面影响。计算表明，如果我们修复速度和集群规模成正比（线性关系），那么集群随着规模增大，可靠性会越来越高。</p>
+<p>下表列出了1000块硬盘的存储集群在不同存储方案、不同修复时间下的可靠性计算结果： </p>
+<table border="1" cellspacing="0" cellpadding="0"> 
+ <tbody> 
+  <tr> 
+   <td valign="top" width="102"> <p>副本存储方案</p> </td> 
+   <td valign="top" width="94"> <p>容错度（M）</p> </td> 
+   <td valign="top" width="85"> <p>修复时间</p> </td> 
+   <td valign="top" width="132"> <p>数据丢失概率（P）</p> </td> 
+   <td valign="top" width="85"> <p>可靠性</p> </td> 
+  </tr> 
+  <tr> 
+   <td valign="top" width="102" rowspan="3"> <p>3副本方案</p> </td> 
+   <td valign="top" width="94" rowspan="3"> <p>2</p> </td> 
+   <td valign="top" width="85"> <p>30分钟</p> </td> 
+   <td valign="top" width="132"> <p>1.00E-08</p> </td> 
+   <td valign="top" width="85"> <p>8个9</p> </td> 
+  </tr> 
+  <tr> 
+   <td valign="top" width="85"> <p>3小时</p> </td> 
+   <td valign="top" width="132"> <p>1.00E-05</p> </td> 
+   <td valign="top" width="85"> <p>5个9</p> </td> 
+  </tr> 
+  <tr> 
+   <td valign="top" width="85"> <p>15小时</p> </td> 
+   <td valign="top" width="132"> <p>1.00E-02</p> </td> 
+   <td valign="top" width="85"> <p>2个9</p> </td> 
+  </tr> 
+  <tr> 
+   <td valign="top" width="102" rowspan="3"> <p>28+4算术冗余方案</p> </td> 
+   <td valign="top" width="94" rowspan="3"> <p>4</p> </td> 
+   <td valign="top" width="85"> <p>30分钟</p> </td> 
+   <td valign="top" width="132"> <p>1.00E-16</p> </td> 
+   <td valign="top" width="85"> <p>16个9</p> </td> 
+  </tr> 
+  <tr> 
+   <td valign="top" width="85"> <p>3小时</p> </td> 
+   <td valign="top" width="132"> <p>1.00E-11</p> </td> 
+   <td valign="top" width="85"> <p>11个9</p> </td> 
+  </tr> 
+  <tr> 
+   <td valign="top" width="85"> <p>15小时</p> </td> 
+   <td valign="top" width="132"> <p>1.00E-07</p> </td> 
+   <td valign="top" width="85"> <p>7个9</p> </td> 
+  </tr> 
+ </tbody> 
+</table>
+<p></p>
+<p>对于数据丢失概率具体的计算公式和计算方法，由于篇幅所限，本文中不做展开，我会另找机会讨论。</p>
+<p>对我个人而言，七牛新一代云存储（v2）的完成，了了我多年的夙愿。但七牛不会就此停止脚步。我们在存储系统上又有了一些好玩的想法。从长远来说，单位存储的成本会越来越廉价（硬件和软件系统都会推动这个发展趋势）。而存储系统肯定会越来越复杂。例如，有赖于超高的容错能力，七牛对单块磁盘的可靠性要求降低了很多，这就为未来我们采用桌面硬盘而不是企业硬盘作为存储介质打下基础。但是单块磁盘可靠性的降低，则会进一步推动存储系统往复杂的方向发展。基于这个推理，我认为存储必然需要转为云服务，成为水电煤一样的基础设施。存储系统越来越复杂，越来越专业，这就导致自建存储的难度和成本越来越高，自建存储的必要性也越来越低。必然有那么一天，你会发现云存储的成本远低于自建存储的成本，到时自建存储就会是纯投入而无产出，也就没有多少人会去热衷于干这样的事情了。</p>
 <hr />
-<p>感谢<a href="http://www.infoq.com/cn/author/陈菲">陈菲</a>对本文的审校。</p>
+<p>感谢<a href="http://www.infoq.com/cn/author/张逸">张逸</a>对本文的审校。</p>
 <p>给InfoQ中文站投稿或者参与内容翻译工作，请邮件至<a href="mailto:editors@cn.infoq.com">editors@cn.infoq.com</a>。也欢迎大家通过新浪微博（<a href="http://www.weibo.com/infoqchina">@InfoQ</a>）或者腾讯微博（<a href="http://t.qq.com/infoqchina">@InfoQ</a>）关注我们，并与我们的编辑和其他读者朋友交流。</p><br><br><br><br><br><br></body></html>

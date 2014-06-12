@@ -1,54 +1,14 @@
-<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>QCon Tokyo 2014 【クラウド/DevOps】 トラックのご紹介</h3><p><a href="http://www.qcontokyo.com/" target="_blank">&nbsp;QCon Tokyo</a>&nbsp;は、最新技術を追い求めるデベロッパのための情報コミュニティ「InfoQ」が主催する、エンジニアによるエンジニアのためのワールドワイド カンファレンスです。 今回のQcon Tokyo 2014 では、クラウド時代の技術動向にこだわって「クラウド/DevOps」カテゴリを設定しています。クラウドが主要なインフラとして台頭する一方、どのように活用してくのか設計、運用時に考慮するべきポイントが多数あります。そこで本トラックでは、クラウドを適切に活用・運用する方法を紹介します。&nbsp;</p>
-<div>
- まず、海外セッションは、Yahoo Engineering のEugene Ciurana氏によるセッションです。Yahoo!では、リリース後3週間で世界25ヶ国のiOS マーケットで最上位の地位を獲得した
- <a href="http://matome.naver.jp/odai/2135217781400347501" target="_blank">Summly</a>の開発ノウハウを元にして、モバイルアプリケーションを構築しました。クラウドを活用して、ファイブ・ナイン(99.999%) の可用性システムを低予算で構築した技術について、発端、開発、リリース、進化についてステップごとに解説します。
-</div>
-<div>
- &nbsp;
-</div>
-<div>
- 日本のDevOpsセッションは、
- <a href="http://www.ca.com/jp/default.aspx" target="_blank">日本CA株式会社</a>の西野 寛史氏による「DevとOpsをより良い関係に導く、新世代のアプリケーションテスト」です。開発したアプリケーションの欠陥が原因で本番稼働後に不具合が発生すると、運用側はその対応に膨大な労力を費やすことになります。開発工程のできるだけ早期の段階で如何に充実したテストが行えるかが鍵になります。そして、実現に向けてのヒントは、IT以外のモノづくり現場にありました。新世代のアプリケーションテストとは何か、そしてそれを 実現するために誕生した新技術「サービスの仮想化」についてご紹介します。
-</div>
-<div>
- &nbsp;
-</div>
-<div>
- 日本のもう１つのセッションはクラウド開発コンソーシアム「Azure Council Experts」の谷口有近氏と上坂貴志氏による「Enterprise Cloud Design Pattern」です。
- <a href="http://msdn.microsoft.com/en-us/library/dn568099.aspx" target="_blank">Cloud Design Pattern</a>とは、Microsoft patterns&amp;practicesグループが提供するクラウドでホストされるアプリケーションの共通問題に対する解決パターン集です。エンタープライズでのクラウド適用や、代表的なCloud Design Patternを幾つかピックアップし、お話したいと思います
-</div>
-<div>
- &nbsp;
-</div>
-<div>
- クラウドとDevOpsの最新動向方法に夢を膨らませ、ビアパーティーでアイデアを語り合いましょう！
-</div>
-<div>
- &nbsp;
-</div>
-<blockquote> 
- <div>
-  ●開催概要
+<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>非互換の電子医療情報を統一するZoeticxミドルウェアAPI</h3><p><a target="_blank" href="http://www.infoq.com/news/2014/05/zoeticx-api"><em>原文(投稿日：2014/05/29)へのリンク</em></a></p>
+<div class="article_page_left news_container text_content_container"> 
+ <div class="text_info"> 
+  <p><a href="http://zoeticx.com/">Zoeticx</a>は，現存する任意のプロバイダからのデータを，単一の共通フォーマットに統合可能なミドルウェアを開発した。新たにリリースしたAPIを使えば，このミドルウェアに簡単にアクセスすることができる。これによって，複数のデータベースに異なるフォーマットで格納されたレコードを扱うアプリケーションの開発が容易になる。</p> 
+  <p>医療情報の電子的な格納には現在，350以上の競合するフォーマットが存在している。</p> 
+  <p>ZoeticxのこのミドルウェアはPatient-Clarityプラットフォームという名称で，クラウド上に配置されている。ゲートウェイ経由でそれぞれのEMR(Electronic Medical Record)フォーマットにアクセスし，Zoeticxが提供する独自の共通フォーマットに変換する仕組みだ。現時点ではEpic, Cerner, Allscripts, Sunrise, Allscripts Professional, OpenVistAという，もっとも一般的な５つのフォーマットがサポートされている。ゲートウェイは共有スペースを対象に設計されているので，さらにフォーマットを追加することも簡単だ。</p> 
+  <p>APIの公開リリースは今回が初めてだが，すでにZoericxの３つのアプリケーション – <a href="http://zoeticx.com/patient-clarity-care-applications/">CareCompliance, CareIntelligence, CareSynergy</a> – で使用されている。同社自身のアプリに使用することで，APIのパフォーマンスやスケーラビリティ，完全性を徹底的に検査することが可能になった。</p> 
+  <p>今回リリースされたAPIでは， 患者の臨床データのサポートをおもな目的にしている。請求，スケジュール，支払いについては，サブシステムが医療サービスプロバイダ毎に大きく異なるため，現時点ではサポートされていない。Zoeticxの創業者でCEOのThanh Tran氏はInfoQに対して，現時点での計画の範囲内では，それらサブシステムのサービスを追加する予定はないと述べている。</p> 
+  <p>APIの大きな問題のひとつが応答性だ。ミドルウェアレイヤはクラウド上にあるが，EMRは通常，医療施設でオンサイトに存在している。このような余分なレイヤの参照が，データ配信の遅延を引き起こす可能性があるのだ。ICUで15分間隔，他ではそれ以下というように，データ参照頻度が比較的低いので，遅延が小さければ許容される。この問題の対処を支援するためZoeticxでは，パフォーマンスを継続的に監視し，問題発生時には即座に警告を発する<a href="http://newrelic.com">NewRelic</a>アナリティクスを開発中だ。</p> 
+  <p>ZoeticxのAPIは，分裂したEMR分野に従事する開発者にとっては大きな前進だが，同時にいくつかの課題も示している。潜在的ユーザにとって大きな障害となるのは， ドキュメントが不十分なことだ。現在のところ，利用可能なドキュメントは，Javadocに埋め込まれたものがあるのみだ。 エンドポイントを見つけ出すには，まず，どのJavaクラスがエンドポイントを実装しているかを見付け出さなければならない。これは必ずしも直感的なものではない。エンドポイントから受け取る可能性のある応答コードについても，資料には指示されていない。クエリパラメータやメッセージボディに関しても，属性名以上の説明はない。</p> 
+  <p>APIは部分によって，<a href="http://martinfowler.com/articles/richardsonMaturityModel.html">Richardson Maturity Model(成熟度モデル)</a>スケールのレベル０からレベル２の間で変動している。例えば，ひとつの機器を削除するには<em>/api/gizmo/delete</em>に<em>POST</em>する必要がるが，これは明らかにRPCスタイルだ。動詞(verb)が適切に使用されている場合でも，エンドポイントはそれを信頼していない。大部分の<em>DELETE</em>が<em>/resorce/delete</em>に対応する一方で，<em>POST</em>のほとんどが<em>/resource/add</em>に対応する，という具合だ。APIの使用するエンドポイントフォーマットも一般的なものではない。エンドポイントURLに特定のEMRが含まれている場合，識別子はURLの最後ではなく先頭に指示される，といった具合だ。例えばあるEMRから機器を削除するには，<em>/{emrId}/api/gizmo/delete</em>に<em>POST</em>する。</p> 
+  <p>このような課題はあるにせよ，Patient-Clarity APIは複数の異なるEMRフォーマットを扱う上で，非常に便利なツールである。ひとつのEMRを処理するための複雑性が非常に大きい上に，同時に複数のフォーマットを使用する場合には面倒な点がある。 APIを学習するための相当なスピンアップ時間を加味しても，Zoeticxのミドルウェアは，医療関係アプリケーション開発者にとって相当な時間の節約をもたらしてくれるはずだ。</p> 
  </div> 
- <div>
-  &nbsp;
- </div> 
- <div>
-  開催日時：2014年4月30日(水) 10:00-19:00 (19:00～ ビアパーティあり)
- </div> 
- <div>
-  &nbsp;
- </div> 
- <div>
-  会　　　場：アルカディア市ヶ谷
- </div> 
- <div>
-  &nbsp;
- </div> 
- <div>
-  公式サイト：http://qcontokyo.com/
- </div> 
-</blockquote>
-<div>
- &nbsp;
 </div><br><br><br><br><br><br></body></html>

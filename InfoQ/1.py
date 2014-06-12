@@ -1,26 +1,40 @@
-<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>Microsoftは、Windowsをユニバーサルアプリに開放した: ひとつのアプリをすべてのプラットフォームに</h3><p><a target="_blank" href="http://www.infoq.com/news/2014/04/universal_win_apps"><em>原文(投稿日：2014/04/02)へのリンク</em></a></p>
+<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>アーキテクチャでアジャイルを管理する</h3><p><a target="_blank" href="http://www.infoq.com/news/2014/06/governing-agile-architecture"><em>原文(投稿日：2014/06/05)へのリンク</em></a></p>
 <div class="article_page_left news_container text_content_container"> 
  <div class="text_info"> 
-  <p class="MsoNormal" style="margin-bottom: 0.0001pt;">本日、MicrosoftのBuild developer conferenceの初日に、正式にユニバーサルWindowsアプリを発表した。これらのアプリはデバイスのWindowsファミリーを横断して実行される:&nbsp; phone, タブレット, デスクトップPC。今後リリースされるWindows Phone 8.1では、既存のデスクトップとタブレット向けのWindows 8.1プラットフォームと並ぶことになる。この変更により、開発者がひとつのアプリを変更することなく、すべてのプラットフォームで実行できるようになる。開発者が希望すれば、それぞれの環境における動作と外観をカスタマイズすることもできる。
-   <o:p></o:p></p> 
-  <p class="MsoNormal" style="margin-bottom: 0.0001pt;">
-   <o:p>
-    &nbsp;
-   </o:p></p> 
-  <p class="MsoNormal" style="margin-bottom: 0.0001pt;">キーノートにおいて、Microsoftのディレクター<a href="http://blogs.windows.com/windows/b/buildingapps/archive/2014/04/02/extending-platform-commonality-through-universal-windows-apps.aspx">Kevin Gallo氏</a>は、Visual Studioで既存のWindows 8.1アプリから新しいバイナリーを取り出して、簡単にWindows Phone 8.1互換を追加するデモを実施した。Visual Studioの既存のWindows 8.1ターゲットソリューションの下に新たにWindows Phone 8.1ターゲットが追加で表示されるようになる。3番目のノードは、両方のプラットフォームで共通のコードである。開発者は、コードがこの共通コードに格納するか、プラットフォーム固有として格納するかをコントロールすることができる。このアプローチの利点は、アプリのロジックを両方のプラットフォームで共有できるように共通の領域に格納することができるし、継続してキーボードやマウスまたは、PhoneのGPS情報といった、デバイス固有の機能を追加することもできる。
-   <o:p></o:p></p> 
-  <p class="MsoNormal" style="margin-bottom: 0.0001pt;">
-   <o:p>
-    &nbsp;
-   </o:p></p> 
-  <p class="MsoNormal" style="margin-bottom: 0.0001pt;">中を見てみると、ユニバーサルアプリはWindows 8で導入されたWindows Runtime上で実行される。特定のプラットフォーム向けにインストールされたNuGetパッケージは、デフォルトでそのプラットフォームに関連づけられているが、開発者は新しく追加されたターゲット向けに再利用することができる。例えば、Gallo氏はソリューションにWindows Phone 8.1ターゲットを追加したときにWindows 8.1アプリの一部であるJSON.NETを簡単に追加できることをデモした。
-   <o:p></o:p></p> 
-  <p class="MsoNormal" style="margin-bottom: 0.0001pt;">
-   <o:p>
-    &nbsp;
-   </o:p></p> 
-  <p class="MsoNormal" style="margin-bottom: 0.0001pt;">&nbsp;</p> 
-  <p class="MsoNormal" style="margin-bottom: 0.0001pt;">InfoQは、Build 2014 Conferenceの一報をカバーしており、これについてのアップデートを継続して提供していく。お楽しみに。
-   <o:p></o:p></p> 
+  <p>”アジャイルパートナとして活動するためには，ガバナンスにおけるアーキテクチャの役割を根本的に変えることが必要だ”，とJan van Santbrink氏は言う。<a href="http://conferences.unicom.co.uk/agile-governance/">アムステルダムで行われたAgile Governanceカンファレンス</a>で氏は，アジャイルの考え方と共存する上で，アーキテクチャがガバナンスにおいて担うべき重要な役割についてプレゼンテーションを行った。</p> 
+  <p>アジャイルとアーキテクチャが連携しなければならない理由は何か，アジャイルの意思決定(decision taking)に対してアーキテクチャはどのような支援を行い得るのか，アーキテクチャを実践する開発のメリットは何か。InfoQは氏にインタビューして，これらを確かめることにした。</p> 
+  <p><strong>InfoQ: アーキテクチャとは何なのか，考えをお聞かせください。設計との違いはどこにあるのでしょうか？</strong></p> 
+  <blockquote> 
+   <p><strong>Jan</strong>: アーキテクチャはコンポーネントのレベルであって，そのコンポーネントのあり方や実現方法を定義するのが設計です。アーキテクチャは複数のアプリケーションに及びますが，設計はひとつのアプリケーションを対象としている点も違います。</p> 
+  </blockquote> 
+  <p><strong>InfoQ: アジャイルとアーキテクチャの連携が重要なのはなぜでしょう？ それがない場合はどうなるのですか？</strong></p> 
+  <blockquote> 
+   <p><strong>Jan</strong>: 重要なのは，アーキテクチャとアジャイルが常に両立するように，互いに協力することです。どちらにも不必要な作業を避けるためには，連携が必要だと考えています。もし連携しなければ，チームソリューションが企業レベルの構想に合わないものになり，開発コストや維持コストの上昇につながるでしょう。</p> 
+  </blockquote> 
+  <p><strong>InfoQ: 先日のプレゼンテーションでは，SAFe(Scaled Agile Framework)にアーキテクチャが組み込まれている状況を説明されていましたね。それについて，詳しく説明して頂けますか？</strong></p> 
+  <blockquote> 
+   <p><strong>Jan</strong>: SAFeではアーキテクチャを出発点として重視した上で，アーキテクチャの機能を定義しています。これらの機能はバックログに積まれて，ビジネスオーナによって優先度を付けられます。何らかの機能を開発して多数のビジネス機能をサポートすることが必要ならば，ジャスト・イン・タイムの別々のスプリントへ向かうランウェイに加えられるのです。</p> 
+  </blockquote> 
+  <p><strong>InfoQ: 意思決定におけるアーキテクチャの役割にも触れていましたね。トップマネージャが望む意思決定とはどのようなもので，アーキテクチャはそれをどのようにサポートするのでしょう？</strong></p> 
+  <blockquote> 
+   <p><strong>Jan</strong>: トップマネジメントの任務はビジネス上の問題を解決することです。アーキテクトは，問題に対するソリューションの提案やメリット，デメリット，リスクの定義を行って，適切なソリューションへの同意を得ることでそれをサポートします。これは高レベルのソリューションですので，設計や開発を行う前には詳細化が必要です。</p> 
+  </blockquote> 
+  <p><strong>InfoQ: アジャイルを採用する企業でも，これらの決定は必要なのでしょうか？ やはりトップマネージャがその任を担うのでしょうか，あるいはチームレベルまで降りることになるのですか？</strong></p> 
+  <blockquote> 
+   <p><strong>Jan</strong>: アジャイルが自動的に問題を解決する訳ではありませんから，意思決定はいつでも必要です。意思決定は組織のすべてのレベルで発生しますが，戦略的な決定が運用レベルで行われることはないはずです。もし行われているのなら，それは組織に問題があります。</p> 
+  </blockquote> 
+  <p><strong>InfoQ: アーキテクチャとアジャイルは，両立することの難しい，異質なものと理解されることもあります。</strong><strong>この２つが組み合わされて，お互いをサポートするような例はありますか？</strong></p> 
+  <blockquote> 
+   <p><strong>Jan</strong>: エンタープライズアーキテクチャ(EA)が常にトップダウン的な性質を持つのに対して，アジャイル設計はボトムアップ的な性質を持っていると思います。チームがソリューションとプロジェクトアーキテクチャを備えれば，この２つを両立することは可能なはずです。EAが提供する，既知の依存関係に基づいた適切な作業パッケージに対して，アジャイルチームの方では，実際に運用されているガイドラインに基づいたフィードバックを提供するのです。</p> 
+  </blockquote> 
+  <p><strong>InfoQ: アジャイルのコンテキストで，エンタープライズアーキテクチャとしてTOGAF(The Open Group Architecture Framework)を使用した例はありますか？</strong></p> 
+  <blockquote> 
+   <p><strong>Jan</strong>: 私の意見としては，TOGAFはエンタープライズアーキテクチャにのみ関連するものですから，組織に対して安定性を求めます。アジャイルEAの導入によるアジリティは，アジャイル開発チームとはまったく違うものになるでしょう。</p> 
+  </blockquote> 
+  <p><strong>InfoQ: アーキテクチャの導入は，開発に対してどのようなメリットがあるのでしょう？ どの程度の投資が必要なのでしょうか？</strong></p> 
+  <blockquote> 
+   <p><strong>Jan</strong>: メリットとしては，<br /> a.&nbsp;&nbsp;&nbsp;&nbsp; バリューチェーンが，ステークホルダの発見を支援する<br /> b.&nbsp;&nbsp;&nbsp; 構成要素と依存関係が，適切な作業パッケージとチームの編成を支援する<br /> c.&nbsp;&nbsp;&nbsp;&nbsp; トップマネジメントの承認の下で，不必要な変更を排除する<br /> d.&nbsp;&nbsp;&nbsp; 標準とガイドライン</p> 
+   <p>投資金額は組織によって大きく違いますから，一概には言えません。</p> 
+  </blockquote>
  </div> 
 </div><br><br><br><br><br><br></body></html>

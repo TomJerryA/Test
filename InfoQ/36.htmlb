@@ -1,63 +1,176 @@
-<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>数据库变更部署自动化秘诀</h3><h2><b>瞬息万变的世界：敏捷 &amp; DevOps</b></h2>
-<p>由于业务需求是变更最主要的驱动者，少做一些，但做得更好，交付更快，这是领先的企业和成功的企业与其他企业的不同之处。</p>
-<p>当竞争对手交付了相关功能，速度比你快，质量比你好，那么你最终会丧失市场份额。用投资于销售和市场营销活动的方式弥补产品的不足，其代价会很高，而且可能不可靠，而且你可能会发现，客户转向了质量卓越的产品。</p>
-<p>这正是“敏捷开发”产生的原因：需要更快地采取行动，应对不断变化的需求（因为我们的目标市场和竞争对手永远不会静止不动），可信赖的最佳品质，经常资源不足。敏捷就是源于科技公司和IT部门的期望。</p>
-<p>自然地，下一步是找到一个将敏捷应用于生产的方法：连接开发和运维。这就产生了“DevOps”。</p>
-<p>运维的主要目标是保证应用程序的稳定和健康，而开发的主要目标是不断地创新，并提供满足业务和客户需求的应用程序。理解这两点是DevOps发展的关键。既然变更是稳定最大的敌人这点没有疑问，那么理解和调和这种冲突应该是DevOps的主要目标。</p>
-<p>为了有效地掌握敏捷冲刺部署以及实施DevOps，人们需要能够实现部署自动化。否则，部署和发布就需要手动操作步骤和过程，而这些操作并不总是能够准确地重复，容易出现人为错误，并且无法进行高频率地处理。</p>
+<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>Apache Kafka：下一代分布式消息系统</h3><h2>简介</h2>
+<p><a href="http://kafka.apache.org/">Apache Kafka</a>是分布式发布-订阅消息系统。它最初由LinkedIn公司开发，之后成为Apache项目的一部分。Kafka是一种快速、可扩展的、设计内在就是分布式的，分区的和可复制的提交日志服务。</p>
+<p>Apache Kafka与传统消息系统相比，有以下不同：</p>
+<ul> 
+ <li>它被设计为一个分布式系统，易于向外扩展；</li> 
+ <li>它同时为发布和订阅提供高吞吐量；</li> 
+ <li>它支持多订阅者，当失败时能自动平衡消费者；</li> 
+ <li>它将消息持久化到磁盘，因此可用于批量消费，例如<a href="http://en.wikipedia.org/wiki/Extract,_transform,_load">ETL</a>，以及实时应用程序。</li> 
+</ul>
+<p>本文我将重点介绍Apache Kafka的架构、特性和特点，帮助我们理解Kafka为何比传统消息服务更好。</p>
+<p>我将比较Kafak和传统消息服务<a href="https://www.rabbitmq.com/">RabbitMQ</a>、Apache <a href="http://activemq.apache.org/">ActiveMQ</a>的特点，讨论一些Kafka优于传统消息服务的场景。在最后一节，我们将探讨一个进行中的示例应用，展示Kafka作为消息服务器的用途。这个示例应用的完整源代码在<a href="https://github.com/abhioncbr/Kafka-Message-Server">GitHub</a>。关于它的详细讨论在本文的最后一节。</p>
+<h2>架构</h2>
+<p>首先，我介绍一下Kafka的基本概念。它的架构包括以下组件：</p>
+<ul> 
+ <li><strong>话题（Topic）</strong>是特定类型的<strong>消息</strong>流。<strong>消息</strong>是字节的有效负载（Payload），话题是消息的分类名或种子（Feed）名。</li> 
+ <li><strong>生产者（Producer）</strong>是能够发布消息到话题的任何对象。</li> 
+ <li>已发布的消息保存在一组服务器中，它们被称为<strong>代理（Broker）或Kafka集群</strong>。</li> 
+ <li><strong>消费者</strong>可以订阅一个或多个话题，并从Broker拉数据，从而消费这些已发布的消息。</li> 
+</ul>
+<p><img src="http://infoqstatic.com/resource/articles/apache-kafka/zh/resources/0609010.png" width="400" _href="img://null" _p="true" alt="" /></p>
 <div id="lowerFullwidthVCR"></div>
-<p>处理数据库部署并不简单；不像其它软件组件和代码或者已编译的代码，数据库不是一个文件集合。那不是可以从开发环境复制到测试环境然后复制到生产环境的东西，因为数据库是个容器，里面装了我们最有价值且必须保存的资产——业务数据。它保存了所有应有程序内容、客户事务处理等。为了促成数据库变更，需要开发迁移代码——用于处理数据库模式结构（表结构）的脚本、数据库代码（过程、函数等）和应用程序使用的内容（元数据表、查找内容表或者参数表）。</p>
-<h2><b>数据库变更部署流程的挑战</b></h2>
-<p>应对数据库挑战的一个方法是，迫使数据库变更遵循一般过程：创建数据库对象的脚本，然后存储在传统的版本控制系统中。</p>
-<p>那造成了其它的挑战，包括：</p>
+<p>图1：Kafka生产者、消费者和代理环境</p>
+<p>生产者可以选择自己喜欢的序列化方法对消息内容编码。为了提高效率，生产者可以在一个发布请求中发送一组消息。下面的代码演示了如何创建生产者并发送消息。</p>
+<p><strong>生产者示例代码：</strong></p>
+<pre>
+producer = new Producer(…); 
+message = new Message(“test message str”.getBytes()); 
+set = new MessageSet(message); 
+producer.send(“topic1”, set); 
+</pre>
+<p>为了订阅话题，消费者首先为话题创建一个或多个消息流。发布到该话题的消息将被均衡地分发到这些流。每个消息流为不断产生的消息提供了迭代接口。然后消费者迭代流中的每一条消息，处理消息的有效负载。与传统迭代器不同，消息流迭代器永不停止。如果当前没有消息，迭代器将阻塞，直到有新的消息发布到该话题。Kafka同时支持点到点分发模型（Point-to-point delivery model），即多个消费者共同消费队列中某个消息的单个副本，以及发布-订阅模型（Publish-subscribe model），即多个消费者接收自己的消息副本。下面的代码演示了消费者如何使用消息。</p>
+<p><strong>消费者示例代码：</strong></p>
+<pre>
+streams[] = Consumer.createMessageStreams(“topic1”, 1) 
+for (message : streams[0]) { 
+bytes = message.payload(); 
+// do something with the bytes 
+} 
+</pre>
+<p>Kafka的整体架构如图2所示。因为Kafka内在就是分布式的，一个Kafka集群通常包括多个代理。为了均衡负载，将话题分成多个分区，每个代理存储一或多个分区。多个生产者和消费者能够同时生产和获取消息。</p>
+<p><img src="http://infoqstatic.com/resource/articles/apache-kafka/zh/resources/0609011.png" width="600" _href="img://null" _p="true" alt="" /></p>
+<p>图2：Kafka架构</p>
+<h2>Kafka存储</h2>
+<p>Kafka的存储布局非常简单。话题的每个分区对应一个逻辑日志。物理上，一个日志为相同大小的一组分段文件。每次生产者发布消息到一个分区，代理就将消息追加到最后一个段文件中。当发布的消息数量达到设定值或者经过一定的时间后，段文件真正写入磁盘中。写入完成后，消息公开给消费者。</p>
+<p>与传统的消息系统不同，Kafka系统中存储的消息没有明确的消息Id。</p>
+<p>消息通过日志中的逻辑偏移量来公开。这样就避免了维护配套密集寻址，用于映射消息ID到实际消息地址的随机存取索引结构的开销。消息ID是增量的，但不连续。要计算下一消息的ID，可以在其逻辑偏移的基础上加上当前消息的长度。</p>
+<p>消费者始终从特定分区顺序地获取消息，如果消费者知道特定消息的偏移量，也就说明消费者已经消费了之前的所有消息。消费者向代理发出异步拉请求，准备字节缓冲区用于消费。每个异步拉请求都包含要消费的消息偏移量。Kafka利用<a href="http://man7.org/linux/man-pages/man2/sendfile.2.html">sendfile API</a>高效地从代理的日志段文件中分发字节给消费者。</p>
+<p><img src="http://infoqstatic.com/resource/articles/apache-kafka/zh/resources/0609012.png" width="600" _href="img://null" _p="true" alt="" /></p>
+<p>图3：Kafka存储架构</p>
+<h2>Kafka代理</h2>
+<p>与其它消息系统不同，Kafka代理是无状态的。这意味着消费者必须维护已消费的状态信息。这些信息由消费者自己维护，代理完全不管。这种设计非常微妙，它本身包含了创新。</p>
+<ul> 
+ <li>从代理删除消息变得很棘手，因为代理并不知道消费者是否已经使用了该消息。Kafka创新性地解决了这个问题，它将一个简单的基于时间的SLA应用于保留策略。当消息在代理中超过一定时间后，将会被自动删除。</li> 
+ <li>这种创新设计有很大的好处，消费者可以故意倒回到老的偏移量再次消费数据。这违反了队列的常见约定，但被证明是许多消费者的基本特征。</li> 
+</ul>
+<h2>ZooKeeper与Kafka</h2>
+<p>考虑一下有多个服务器的分布式系统，每台服务器都负责保存数据，在数据上执行操作。这样的潜在例子包括分布式搜索引擎、分布式构建系统或者已知的系统如<a href="http://hadoop.apache.org/">Apache Hadoop</a>。所有这些分布式系统的一个常见问题是，你如何在任一时间点确定哪些服务器活着并且在工作中。最重要的是，当面对这些分布式计算的难题，例如网络失败、带宽限制、可变延迟连接、安全问题以及任何网络环境，甚至跨多个数据中心时可能发生的错误时，你如何可靠地做这些事。这些正是<a href="http://zookeeper.apache.org/">Apache ZooKeeper</a>所关注的问题，它是一个快速、高可用、容错、分布式的协调服务。你可以使用ZooKeeper构建可靠的、分布式的数据结构，用于群组成员、领导人选举、协同工作流和配置服务，以及广义的分布式数据结构如锁、队列、屏障（Barrier）和锁存器（Latch）。许多知名且成功的项目依赖于ZooKeeper，其中包括HBase、Hadoop 2.0、Solr Cloud、Neo4J、<a href="http://incubator.apache.org/blur/">Apache Blur</a>（Incubating）和Accumulo。</p>
+<p>ZooKeeper是一个分布式的、分层级的文件系统，能促进客户端间的松耦合，并提供最终一致的，类似于传统文件系统中文件和目录的Znode视图。它提供了基本的操作，例如创建、删除和检查Znode是否存在。它提供了事件驱动模型，客户端能观察特定Znode的变化，例如现有Znode增加了一个新的子节点。ZooKeeper运行多个ZooKeeper服务器，称为<strong>Ensemble</strong>，以获得高可用性。每个服务器都持有分布式文件系统的内存复本，为客户端的读取请求提供服务。</p>
+<p><img src="http://infoqstatic.com/resource/articles/apache-kafka/zh/resources/0609013.png" width="600" _href="img://null" _p="true" alt="" /></p>
+<p>图4：ZooKeeper Ensemble架构</p>
+<p>上图4展示了典型的ZooKeeper ensemble，一台服务器作为Leader，其它作为Follower。当Ensemble启动时，先选出Leader，然后所有Follower复制Leader的状态。所有写请求都通过Leader路由，变更会广播给所有Follower。变更广播被称为<strong>原子广播</strong>。</p>
+<p><strong>Kafka中ZooKeeper的用途</strong>：正如ZooKeeper用于分布式系统的协调和促进，Kafka使用ZooKeeper也是基于相同的原因。ZooKeeper用于管理、协调Kafka代理。每个Kafka代理都通过ZooKeeper协调其它Kafka代理。当Kafka系统中新增了代理或者某个代理故障失效时，ZooKeeper服务将通知生产者和消费者。生产者和消费者据此开始与其它代理协调工作。Kafka整体系统架构如图5所示。</p>
+<p><img src="http://infoqstatic.com/resource/articles/apache-kafka/zh/resources/0609014.png" width="600" _href="img://null" _p="true" alt="" /></p>
+<p>图5：Kafka分布式系统的总体架构</p>
+<h2>Apache Kafka对比其它消息服务</h2>
+<p>让我们了解一下使用Apache Kafka的两个项目，以对比其它消息服务。这两个项目分别是LinkedIn和我的项目：</p>
+<h3>LinkedIn的研究</h3>
+<p>LinkedIn团队做了个<a href="http://research.microsoft.com/en-us/um/people/srikanth/netdb11/netdb11papers/netdb11-final12.pdf">实验研究</a>，对比Kafka与Apache ActiveMQ V5.4和RabbitMQ V2.4的性能。他们使用ActiveMQ默认的消息持久化库<a href="http://activemq.apache.org/kahadb.html">Kahadb</a>。LinkedIn在两台Linux机器上运行他们的实验，每台机器的配置为8核2GHz、16GB内存，6个磁盘使用RAID10。两台机器通过1GB网络连接。一台机器作为代理，另一台作为生产者或者消费者。</p>
+<h3>生产者测试</h3>
+<p>LinkedIn团队在所有系统中配置代理，异步将消息刷入其持久化库。对每个系统，运行一个生产者，总共发布1000万条消息，每条消息200字节。Kafka生产者以1和50批量方式发送消息。ActiveMQ和RabbitMQ似乎没有简单的办法来批量发送消息，LinkedIn假定它的批量值为1。结果如下面的图6所示：</p>
+<p><img src="http://infoqstatic.com/resource/articles/apache-kafka/zh/resources/0609015.png" width="600" _href="img://null" _p="true" alt="" /></p>
+<p>图6：LinkedIn的生产者性能实验结果</p>
+<p><strong>Kafka性能要好很多的主要原因包括：</strong></p>
+<ul> 
+ <li>Kafka不等待代理的确认，以代理能处理的最快速度发送消息。</li> 
+ <li>Kafka有更高效的存储格式。平均而言，Kafka每条消息有9字节的开销，而ActiveMQ有144字节。其原因是JMS所需的沉重消息头，以及维护各种索引结构的开销。LinkedIn注意到ActiveMQ一个最忙的线程大部分时间都在存取B-Tree以维护消息元数据和状态。</li> 
+</ul>
+<h3>消费者测试</h3>
+<p>为了做消费者测试，LinkedIn使用一个消费者获取总共1000万条消息。LinkedIn让所有系统每次拉请求都预获取大约相同数量的数据，最多1000条消息或者200KB。对ActiveMQ和RabbitMQ，LinkedIn设置消费者确认模型为自动。结果如图7所示。</p>
+<p><img src="http://infoqstatic.com/resource/articles/apache-kafka/zh/resources/0609016.png" width="600" _href="img://null" _p="true" alt="" /></p>
+<p>图7：LinkedIn的消费者性能实验结果</p>
+<p><strong>Kafka性能要好很多的主要原因包括：</strong></p>
+<ul> 
+ <li>Kafka有更高效的存储格式；在Kafka中，从代理传输到消费者的字节更少。</li> 
+ <li>ActiveMQ和RabbitMQ两个容器中的代理必须维护每个消息的传输状态。LinkedIn团队注意到其中一个ActiveMQ线程在测试过程中，一直在将KahaDB页写入磁盘。与此相反，Kafka代理没有磁盘写入动作。最后，Kafka通过使用sendfile API降低了传输开销。</li> 
+</ul>
+<p>目前，我正在工作的一个项目提供实时服务，从消息中快速并准确地提取场外交易市场（OTC）定价内容。这是一个非常重要的项目，处理近25种资产类别的财务信息，包括债券、贷款和ABS（资产担保证券）。项目的原始信息来源涵盖了欧洲、北美、加拿大和拉丁美洲的主要金融市场领域。下面是这个项目的一些统计，说明了解决方案中包括高效的分布式消息服务是多么重要：</p>
+<ul> 
+ <li>每天处理的消息数量超过<strong>1,300,000</strong>；</li> 
+ <li>每天解析的OTC价格数量超过<strong>12,000,000</strong>；</li> 
+ <li>支持超过25种资产类别；</li> 
+ <li>每天解析的独立票据超过<strong>70,000</strong>。</li> 
+</ul>
+<p>消息包含PDF、Word文档、Excel及其它格式。OTC定价也可能要从附件中提取。</p>
+<p>由于传统消息服务器的性能限制，当处理大附件时，消息队列变得非常大，我们的项目面临严重的问题，JMSqueue一天需要启动2-3次。重启JMS队列可能丢失队列中的全部消息。项目需要一个框架，不论解析器（消费者）的行为如何，都能够保住消息。Kafka的特性非常适用于我们项目的需求。</p>
+<p>当前项目具备的特性：</p>
 <ol> 
- <li>由于是两个单独的系统，版本控制系统中的脚本与它们所代表的数据库对象之间没有关联。数据库代码的编写和测试都是在数据库端完成，脱离了任何最佳编码实践（检入、检出、标记等），容易出现“旧时代”的所有问题，比如： 
-  <ul> 
-   <li>代码覆盖在数据库中很常见，因为没有什么能够防止它发生。</li> 
-   <li>在数据库上运行代码之前，要先从版本控制系统中取得脚本，还要防止工作在错误的版本上；但是没有强制措施可以保证这一点。</li> 
-   <li>脚本在版本控制系统中的路径可能会出错，因为开发人员靠记忆做这件事。</li> 
-   <li>流程之外的更新会被忽视等等。</li> 
-  </ul> </li> 
- <li>脚本是手动编写的，容易出现认为错误、语法错误等等。 </li> 
- <li>为了拥有以后可能需要的一切，开发人员竟然不得不为每个对象保存两到三个脚本：对象的实际代码、升级脚本和回滚脚本。 </li> 
- <li>脚本很难进行整体测试。一个人单独更新了一个对象，而另一个人单独更新了另一个对象，如果脚本需要以特定的顺序运行，那么以任意顺序运行通常就会由于错误的依赖关系而产生错误。 </li> 
- <li>如果一个脚本被开发成代表整个更新而不是单个变更的单独脚本，那么它可以处理依赖关系，但处理项目范围的变更就要困难得多了。那是一个很长的命令列表。 </li> 
- <li>除非非常有经验，否则这些脚本中会缺少从编写到运行这段时间内发生在目标环境里的变更；可能会覆盖生产环境中的热补丁，或者与另一个团队并行操作。 </li> 
- <li>内容变更管理非常困难。实际上，版本控制系统不适合元数据或者查找内容。在大部分情况下，根本就没有对它们进行管理。 </li> 
+ <li>使用Fetchmail获取远程邮件消息，然后由Procmail过滤并处理，例如单独分发基于附件的消息。</li> 
+ <li>每条消息从单独的文件获取，该文件被处理（读取和删除）为一条消息插入到消息服务器中。</li> 
+ <li>消息内容从消息服务队列中获取，用于解析和提取信息。</li> 
 </ol>
-<p><a href="http://infoqstatic.com/resource/articles/Database-Change-Deployment-Automation/zh/resources/0310020.jpg"><img src="http://infoqstatic.com/resource/articles/Database-Change-Deployment-Automation/zh/resources/0310020.jpg" width="600" _href="img://null" _p="true" alt="" /></a></p>
-<p>（点击上图可以查看大图）</p>
-<p>最近十年，出现了另一种理念，就是使用工具处理环境间迁移代码的生成。这种操作方式被贴上了“<b>比较&amp;同步</b>”的标签，是说用一种机械的比较方法检查源环境中的数据库对象，并将它与目标环境进行比较，如果发现差异，就会自动生成一个仿照源对象更改目标对象的脚本。在一段时间内，这似乎是个好方法，直到其缺陷变得越来越明显。</p>
-<p>数据库的比较常常是在选定的检查点上执行的，通常是在开发周期结束之后，部署之前：</p>
-<ol> 
- <li>比较工具并不清楚发生在它运行之前的变更，或者任何发生在目标环境中的变更。没有版本控制，我们就没有变更信息，只知道特定时间点的差异。</li> 
- <li>对象脚本保存在传统的版本控制解决方案中，而部署使用的是比较&amp;同步工具，你可以放开了想象，这两者之间是如何的无法协同。一个系统对另一个系统一无所知。</li> 
- <li>手动检查和关于每个变更的详细知识必须是部署流程的一部分。否则，下面这样的不幸就会发生，用过时的代码或者来自完全从事另外一项工作的团队的结构覆盖了生产环境中恰当的、最新的更新（比如由一个开发团队提供的热补丁）。</li> 
- <li>团队之间的代码合并完全无法实现。如果需要合并，就需要手动编写代码。</li> 
-</ol>
-<p>手动流程使用“比较&amp;同步”工具还是可以的，但需要熟练和耐心。对数据库而言，试图基于这些工具自动化部署流程包含了相当大的风险。</p>
-<p>DBA深知数据库部署的陷阱，同时作为最不合时宜的故障的受害人，往往回避基于上述流程的自动化，因为他们对自动脚本生成器的准确性没有信心，或者对保证预先准备好的、手动生成的脚本在开发完成后任何时候都依然正确的能力没有信心。为了避免冲突，他们常常把事情掌握在自己手中。小心翼翼地检查变更，手动创建尽可能贴合部署活动的变更脚本，相比之下，这种做法似乎不那么令人沮丧。</p>
-<h2><b>安全的数据库部署自动化</b></h2>
-<p>通过将数据库对象变更脚本写进传统的版本控制系统中实现自动化的做法有局限性、不灵活、与数据库本身脱节，而且可能不合标准，并容易因为脚本冲突丢失目标环境的更新。使用“比较&amp;同步”工具实现自动化则是一件有风险的事。这两种理念没有结合在一起，一个不知道另一个，必须找出一种更好的解决方案。</p>
-<p>为了将数据库恰当地自动化，必须考虑下列因素：</p>
-<ol> 
- <li>在<b>执行一个工作流程</b>时，有恰当的<b>数据库版本控制系统</b>，应对数据库独有的挑战。这可以防止任何流程外的变更、代码覆盖、或者不完整的更新。 </li> 
- <li>利用已经证明了的版本控制<b>最佳实践</b>，获得关于谁在什么时间因为什么做了什么的完整信息。确保变更的完美记录是以后部署的基础。 <p><img src="http://infoqstatic.com/resource/articles/Database-Change-Deployment-Automation/zh/resources/0310021.jpg" width="550" _href="img://null" _p="true" alt="" /></p> </li> 
- <li>与<b>基于任务的开发</b>相协调，使每个版本控制下的变更与一个变更请求或者一个问题单相关联。这使得基于任务的部署、部分部署和最后时刻的范围变更可以在代码和数据库之间协调。 </li> 
- <li>确保<b>配置管理&amp;一致性</b>，这样，每个开发环境、分支、主干、沙箱以及测试或生产环境都遵循相同的结构、一致的状态；或者对任何偏差和差异做详细说明。 </li> 
- <li>处理部署流程自动化的<b>脚本化</b>接口能够在每次执行时提供<b>可重复</b>的结果。如果不得不使用用户界面一次又一次地做同样的工作，那么即使是最先进的解决方案也会变得繁琐。 <p>&nbsp;</p> </li> 
- <li>提供<b>可靠的</b>部署脚本，能够解决冲突、合并代码、以及与其他团队交叉更新；同时还能忽略错误的代码覆盖，以及完全集成到版本控制库。 <p><a href="http://infoqstatic.com/resource/articles/Database-Change-Deployment-Automation/zh/resources/0310022.jpg"><img src="http://infoqstatic.com/resource/articles/Database-Change-Deployment-Automation/zh/resources/0310022.jpg" width="550" _href="img://null" _p="true" alt="" /></a></p> <p>（点击上图可以查看大图）</p> </li> 
- <li>动态提供自动生成的开发脚本，处理部署项目范围内的任意组合，从多模式的大型更新，到基于单任务的变更及其所依赖的对象。 </li> 
- <li>在变更部署前后，利用“标签”（标记数据库结构快照和相关内容）作为安全网，这样，随时都可以简单快速地回滚。 </li> 
- <li>可以完全集成到其它系统（ALM、变更管理/问题单、构建服务器以及发布管理器）。 </li> 
-</ol>
-<p>实现一种能够应对这些挑战的解决方案，将使企业能够实行恰当的数据库自动化。数据库自动化很容易与变更和发布流程的其余部分集成，进而实现完整的端到端的自动化。</p>
-<p><a href="http://infoqstatic.com/resource/articles/Database-Change-Deployment-Automation/zh/resources/0310023.jpg"><img src="http://infoqstatic.com/resource/articles/Database-Change-Deployment-Automation/zh/resources/0310023.jpg" width="600" _href="img://null" _p="true" alt="" /></a></p>
-<p>（点击上图可以查看大图）</p>
-<h2><b>总结</b></h2>
-<p>数据库对自动化提出了一个真正的挑战。将数据库对象变更脚本写进传统的版本控制系统或者使用“比较&amp;同步”工具，对于自动化而言，这两种理念要么效率不高，要么是件纯冒险的事，因为它们彼此之间互不知晓。要以数据库DevOps的形式实现一种更好的解决方案。</p>
-<p>数据库DevOps应该遵循已经证明了的变更管理最佳实践，在数据库上强制实行单一的变更流程，能够解决部署冲突，降低代码覆盖、交叉更新和代码合并的风险，同时能够插入到发布流程的其余部分。</p>
-<h2><b>关于作者</b></h2>
-<p><img style="float: left; margin-right: 10px" src="http://infoqstatic.com/resource/articles/Database-Change-Deployment-Automation/zh/resources/0310024.png" _href="img://null" _p="true" alt="" /><b>Yaniv Yehuda</b>是<a href="http://www.dbmaestro.com/">DBmaestro</a>的联合创始人和CTO，这是一家专注于数据库开发和部署技术的企业级软件开发公司。Yaniv还是Extreme Technology的联合创始人和开发主管，这是一家面向以色列市场的IT服务提供商。Yaniv曾经是以色列国防军计算机中心Mamram的一名上尉，他在那里担任软件工程经理。</p>
-<div style="clear: both"></div>
-<p><b>查看英文原文：</b><b><a href="http://www.infoq.com/articles/Database-Change-Deployment-Automation">The Secrets of Database Change Deployment Automation</a></b></p><br><br><br><br><br><br></body></html>
+<h2>示例应用</h2>
+<p>这个示例应用是基于我在项目中使用的原始应用修改后的版本。我已经删除日志的使用和多线程特性，使示例应用的工件尽量简单。示例应用的目的是展示如何使用Kafka生产者和消费者的API。应用包括一个<a href="https://github.com/abhioncbr/Kafka-Message-Server/blob/master/Kafka-Message-Server-Example/src/main/java/com/kafka/message/server/example/core/KafkaMailProducer.java">生产者示例</a>（简单的生产者代码，演示Kafka生产者API用法并发布特定话题的消息），<a href="https://github.com/abhioncbr/Kafka-Message-Server/blob/master/Kafka-Message-Server-Example/src/main/java/com/kafka/message/server/example/core/KafkaMailConsumer.java">消费者示例</a>（简单的消费者代码，用于演示Kafka消费者API的用法）以及<a href="https://github.com/abhioncbr/Kafka-Message-Server/blob/master/Kafka-Message-Server-Example/src/main/java/com/kafka/message/server/example/other/launch/CreateFile.java">消息内容生成</a>API（在特定路径下生成消息内容到文件的API）。下图展示了各组件以及它们与系统中其它组件间的关系。</p>
+<p><img src="http://infoqstatic.com/resource/articles/apache-kafka/zh/resources/0609017.png" width="600" _href="img://null" _p="true" alt="" /></p>
+<p>图8：示例应用组件架构</p>
+<p>示例应用的结构与Kafka源代码中的例子程序相似。应用的源代码包含Java源程序文件夹‘src’和'config'文件夹，后者包括几个配置文件和一些Shell脚本，用于执行示例应用。要运行示例应用，请参照<a href="https://github.com/abhioncbr/Kafka-Message-Server/blob/master/README.md">ReadMe.md</a>文件或GitHub网站<a href="https://github.com/abhioncbr/Kafka-Message-Server/wiki/How-to-run-sample-application">Wiki页面</a>的说明。</p>
+<p>程序构建可以使用<a href="http://maven.apache.org/">Apache Maven</a>，定制也很容易。如果有人想修改或定制示例应用的代码，有几个Kafka构建脚本已经过修改，可用于重新构建示例应用代码。关于如何定制示例应用的详细描述已经放在项目GitHub的<a href="https://github.com/abhioncbr/Kafka-Message-Server/wiki/How-to-customize-sample-application">Wiki页面</a>。</p>
+<p>现在，让我们看看示例应用的核心工件。</p>
+<p><a href="https://github.com/abhioncbr/Kafka-Message-Server/blob/master/Kafka-Message-Server-Example/src/main/java/com/kafka/message/server/example/core/KafkaMailProducer.java">Kafka生产者代码示例</a></p>
+<pre>
+/** 
+ * Instantiates a new Kafka producer. 
+ * 
+ * @param topic the topic 
+ * @param directoryPath the directory path 
+ */ 
+public KafkaMailProducer(String topic, String directoryPath) { 
+       props.put(&quot;serializer.class&quot;, &quot;kafka.serializer.StringEncoder&quot;); 
+       props.put(&quot;metadata.broker.list&quot;, &quot;localhost:9092&quot;); 
+       producer = new kafka.javaapi.producer.Producer&lt;Integer, String&gt;(new ProducerConfig(props)); 
+       this.topic = topic; 
+       this.directoryPath = directoryPath; 
+} 
+
+public void run() { 
+      Path dir = Paths.get(directoryPath); 
+      try { 
+           new WatchDir(dir).start(); 
+           new ReadDir(dir).start(); 
+      } catch (IOException e) { 
+           e.printStackTrace(); 
+      } 
+} 
+</pre>
+<p>上面的代码片断展示了Kafka生产者API的基本用法，例如设置生产者的属性，包括发布哪个话题的消息，可以使用哪个序列化类以及代理的相关信息。这个类的基本功能是从邮件目录读取邮件消息文件，然后作为消息发布到Kafka代理。目录通过java.nio.WatchService类监视，一旦新的邮件消息Dump到该目录，就会被立即读取并作为消息发布到Kafka代理。</p>
+<p><a href="https://github.com/abhioncbr/Kafka-Message-Server/blob/master/Kafka-Message-Server-Example/src/main/java/com/kafka/message/server/example/core/KafkaMailConsumer.java">Kafka消费者代码示例</a></p>
+<pre>
+public KafkaMailConsumer(String topic) { 
+       consumer = 
+Kafka.consumer.Consumer.createJavaConsumerConnector(createConsumerConfig()); 
+       this.topic = topic; 
+} 
+
+/** 
+ * Creates the consumer config. 
+ * 
+ * @return the consumer config 
+ */ 
+private static ConsumerConfig createConsumerConfig() { 
+      Properties props = new Properties(); 
+      props.put(&quot;zookeeper.connect&quot;, KafkaMailProperties.zkConnect); 
+      props.put(&quot;group.id&quot;, KafkaMailProperties.groupId); 
+      props.put(&quot;zookeeper.session.timeout.ms&quot;, &quot;400&quot;); 
+      props.put(&quot;zookeeper.sync.time.ms&quot;, &quot;200&quot;); 
+      props.put(&quot;auto.commit.interval.ms&quot;, &quot;1000&quot;); 
+      return new ConsumerConfig(props); 
+} 
+
+public void run() { 
+      Map&lt;String, Integer&gt; topicCountMap = new HashMap&lt;String, Integer&gt;(); 
+      topicCountMap.put(topic, new Integer(1)); 
+      Map&lt;String, List&lt;KafkaStream&lt;byte[], byte[]&gt;&gt;&gt; consumerMap = consumer.createMessageStreams(topicCountMap); 
+      KafkaStream&lt;byte[], byte[]&gt; stream = consumerMap.get(topic).get(0); 
+      ConsumerIterator&lt;byte[], byte[]&gt; it = stream.iterator();
+      while (it.hasNext()) 
+      System.out.println(new String(it.next().message())); 
+}
+</pre>
+<p>上面的代码演示了基本的消费者API。正如我们前面提到的，消费者需要设置消费的消息流。在Run方法中，我们进行了设置，并在控制台打印收到的消息。在我的项目中，我们将其输入到解析系统以提取OTC定价。</p>
+<p>在当前的质量保证系统中，我们使用Kafka作为消息服务器用于概念验证（Proof of Concept，POC）项目，它的整体性能优于JMS消息服务。其中一个我们感到非常兴奋的特性是消息的再消费（re-consumption），这让我们的解析系统可以按照业务需求重新解析某些消息。基于Kafka这些很好的效果，我们正计划使用它，而不是用Nagios系统，去做日志聚合与分析。</p>
+<h2>总结</h2>
+<p>Kafka是一种处理大量数据的新型系统。Kafka基于拉的消费模型让消费者以自己的速度处理消息。如果处理消息时出现了异常，消费者始终可以选择再消费该消息。</p>
+<h2>关于作者</h2>
+<p><img style="float: left; margin-right: 10px" src="http://infoqstatic.com/resource/articles/apache-kafka/zh/resources/0609018.jpg" _href="img://null" _p="true" alt="" /><strong>Abhishek Sharma</strong>是金融领域产品的自然语言处理（NLP）、机器学习和解析程序员。他为多个公司提供算法设计和解析开发。Abhishek的兴趣包括分布式系统、自然语言处理和使用机器算法进行大数据分析。</p>
+<div style="clear:both"></div>
+<p><strong>查看英文原文：</strong><a href="http://www.infoq.com/articles/apache-kafka">Apache Kafka: Next Generation Distributed Messaging System</a></p><br><br><br><br><br><br></body></html>

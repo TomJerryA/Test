@@ -1,88 +1,30 @@
-<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>QCon Tokyo 2014 【モバイル/HTML5】 トラックのご紹介</h3><p><a href="http://www.qcontokyo.com/" target="_blank">QCon Tokyo</a>は、最新技術を追い求めるデベロッパのための情報コミュニティ「InfoQ」が主催する、エンジニアによるエンジニアのためのワールドワイド カンファレンスです。</p>
-<div>
- QCon Tokyo 2014は、昨年に引き続き「モバイル/HTML5」トラックが設けられ、本年度も選りすぐりのセッションを用意しています。
-</div>
-<div>
- 昨今のHTML5/CSS/JavaScriptに基づくクライアントプログラミングでは、製作するコンテンツの狙いを実現する為の極めて高いクオリティが求められるようになってきました。
-</div>
-<div>
- それらを実現するポイントは、
-</div>
-<div>
- &nbsp;
-</div>
-<div>
- ①HTML/CSSが正しく設計された拡張性/保守性に優れたコンテンツ
-</div>
-<div>
- ②マルチスクリーン対応をする際に利用者に対して効果的なコンテンツ
-</div>
-<div>
- ③コンテンツにとって最適なアーキテクチャ（構造）
-</div>
-<div>
- &nbsp;
-</div>
-<div>
- の３つです。
-</div>
-<div>
- 今回の「モバイル/HTML5」トラックでは、それぞれのセッションにおいて、上記の課題について考えてゆきたい、と思います。
-</div>
-<div>
- &nbsp;
-</div>
-<div>
- 今回の「モバイル/HTML5」トラックは、上記で上げた課題に対応した以下のセッションを用意しています。
-</div>
-<div>
- &nbsp;
-</div>
-<div>
- まず、サイバーエージェント/フロントエンドエンジニアの谷 拓樹さんは、「モダンなCSS設計パターンを作る」というテーマです。昨今の潮流であるJavaScriptを用いたリッチなフロントエンド実装に際し、HTML/CSSをきちんと設計することの重要性を事例を交えながらお話頂きます。
-</div>
-<div>
- &nbsp;
-</div>
-<div>
- 次に、Webディレクターやデザイン専門学校の講師としてご活躍のフロントエンドデベロッパー 三浦 敦史さんは、「レスポンシブルWebデザイン と アダプティブWebデザイン - マルチ環境対応の考え方」というテーマです。三浦さんのレスポンシブルWebデザインに関するセッションは昨年も参加者から好評でしたが、今年はより最適なマルスクリーン環境に対応する為のアダプティブWebデザインについて、レスポンシブルWebデザインとの比較をしながら、具体的なコンテンツの解説を交えてお話頂きます。
-</div>
-<div>
- &nbsp;
-</div>
-<div>
- 最後のセッションは、米フィナンシャル・タイムズ社にてWebテクノロジーの研究/開発を行なっているアンドリュー ベッツ（Andrew Betts）さんが、「Components &amp; Modules for Front End Sanity at Scale」について話します。
-</div>
-<div>
- WebUIにモジュール化の考え方を取り入れ、サイト全体のコンテンツ管理に、構成管理/バージョン管理の思想を導入することにより、保守性/変更容易性に極めて優れた大規模サイトを構築する、という革新的なフィナンシャル・タイムズ社の取り組みをご紹介します。
-</div>
-<div>
- &nbsp;
-</div>
-<blockquote> 
- <div>
-  ●開催概要
+<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>Git 2.0リリース</h3><p><a target="_blank" href="http://www.infoq.com/news/2014/05/git-2-0"><em>原文(投稿日：2014/05/30)へのリンク</em></a></p>
+<div class="article_page_left news_container text_content_container"> 
+ <div class="text_info"> 
+  <p>Git 2.0がリリースされた。リリース候補版から1ヶ月程度でのリリースだ。ビットマップインデックスによる性能改善、センシブルデフォルトによる初心者の利便性向上などが特徴だ。既存ユーザにとっては、前のバージョンと同等の機能を維持する選択肢もある。</p> 
+  <p>Gitのユーザは初期のリリースバージョンからこれらの機能に刺激を受けてきた。GitのメンテナであるJunio Hamano氏は次のように書いている(<a href="http://git-blame.blogspot.co.uk/2014/05/git-20.html">抜粋</a>)。</p> 
+  <blockquote>
+   ..新しいリリースには刺激的なものがない(というひともいるかもしれません)が、私たちはまさにそのような言葉を既存のユーザから聞きたいのです。近頃のリリースでは、2.0以前の新しいデフォルトをユーザが使えるようにするためのノブを追加してきました。そして、1.x系と2.0リリースとの間には操作上の違いがあることを警告してきました。これまでGitを使ってきたユーザはきっと現時点までに十分に準備できていると思います。そして、&quot;Git 2.0&quot;は&quot;デフォルトを放り投げる&quot;最終ステップとして設計されています。
+  </blockquote> 
+  <p>大きな改善点は以下の通り。</p> 
+  <ul> 
+   <li>pushがデフォルトで&quot;simple&quot;になる(&quot;matching&quot;ではなく)。カレントのブランチをリモートの同じ名前のブランチに追加する。</li> 
+   <li>パスの指定無しで&quot;git add -u&quot;あるいは&quot;git add -A&quot;を実行した場合、サブディレクトリ内で実行した場合でもツリー全体を処理する。カレントディレクトリに対する追加を制限するにはピリオドを追加する(&quot;git add -u .&quot;あるいは&quot;git add -A .&quot;)必要がある。</li> 
+   <li>&quot;git add &lt;path&gt;&quot;と&quot;git add -A &lt;path&gt;&quot;が同じ挙動になる。</li> 
+  </ul> 
+  <p>Felipe Contreras氏は<a href="http://felipec.wordpress.com/2014/05/29/git-v2-0-0/">後方互換性がない点</a>について詳しく説明している。</p> 
+  <p>ほかにも改善点がある。</p> 
+  <ul> 
+   <li>&quot;-h&quot;(no header)と&quot;-c&quot;(count)オプションをつけると&quot;git grep&quot;がネイティブのgrepに似た挙動になる。</li> 
+   <li>コミットを作成するコマンド、例えば、&quot;-pull&quot;や&quot;-rebase&quot;は&quot;--gpg-sign&quot;オプションを受け付ける(<a href="http://mikegerwitz.com/papers/git-horror-story">サインドコミットについてはこちらを参照</a>)。</li> 
+   <li>&quot;pull.ff&quot;(ファーストフォワードのみ受け付け)、&quot;git reset&quot;のための&quot;-N&quot;オプション、&quot;commit.gpgsign&quot;(&quot;git commit&quot;を使ったときに常にサインする)などの新しいオプションの追加。</li> 
+   <li>.gitignoreファイルの空白が警告され無視される(クオートされていれば無視されない)。</li> 
+  </ul> 
+  <p>性能改善と実装の改善もなされている。</p> 
+  <ul> 
+   <li><a href="http://www.eclipsecon.org/2013/sites/eclipsecon.org.2013/files/Scaling%20Up%20JGit%20-%20EclipseCon%202013.pdf">JGitのビットマップインデックス</a>が移植された。クローンやフェッチ処理でのカウントフェーズが劇的に改善する(インデックス用にいくらかのディスクスペースが必要)。</li> 
+   <li>&quot;git log --cc&quot;による、複数のペアレントの差分表示が最適化された。</li> 
+  </ul> 
+  <p>詳細については<a href="http://article.gmane.org/gmane.comp.version-control.git/250341">リリースノート</a>で確認できる。</p> 
  </div> 
- <div>
-  &nbsp;
- </div> 
- <div>
-  開催日時：2014年4月30日(水) 10:00-19:00 (19:00～ ビアパーティあり)
- </div> 
- <div>
-  &nbsp;
- </div> 
- <div>
-  会　　　場：アルカディア市ヶ谷
- </div> 
- <div>
-  &nbsp;
- </div> 
- <div>
-  公式サイト：http://qcontokyo.com/
- </div> 
-</blockquote>
-<div>
- &nbsp;
-</div>
-<p>&nbsp;</p><br><br><br><br><br><br></body></html>
+</div><br><br><br><br><br><br></body></html>

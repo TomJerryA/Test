@@ -1,8 +1,17 @@
-<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>WinRT Apps Move Slightly Closer to Being Enterprise Ready</h3><p>A major limitation of WinRT apps in the enterprise has been the licensing model. In the past companies were asked setup an Active Directory or pay 3,000 per hundred computers for side-loading keys. As part of the Windows 8.1 Update that requirement has been considerably softened.</p>
-<p>Under the new rules, companies with Open License agreements can <a href="http://blogs.windows.com/windows/b/business/archive/2014/04/02/building-the-mobile-workplace-with-windows-and-windows-phone.aspx">purchase a Multiple Activation Key for approximately 100 dollars</a>. This key, also known as a MAK, is needed for any Windows 8.1 RT, Pro, or Enterprise computers not part of a domain. Windows 8.1 Pro or Enterprise computers that are part of a domain can <a href="http://technet.microsoft.com/en-us/library/hh852635.aspx">sideload apps by following the directions on TechNet</a>. Standard versions of Windows 8.x only support sideloading if it is outfitted as a developer’s rig.</p>
-<p>Other problems with using WinRT apps in the enterprise continue to persist. Aside from the obvious lack of support for older machines running Windows 7, there still isn’t a good way to distribute WinRT apps within the enterprise. <a href="http://www.lhotka.net/weblog/Windows8SideLoadingImprovements.aspx">Rockford Lhotka</a> writes about three options,</p>
-<blockquote> 
- <p>Microsoft offers InTune, which is a full MDM (mobile device management) product. If you find the value proposition of an MDM compelling then InTune is probably the right answer for you – though there’s a per device/per month cost (ranging from $6/device/month to $11/device/month) so you don’t get MDM for free of course.</p> 
- <p>I’ve been coordinating an open source project called <a href="http://www.lhotka.net/weblog/ct.ashx?id=3a6efc45-380d-4b21-aa4c-09f536cd9aed&amp;url=http%3a%2f%2fgithub.com%2fmagenic%2forgportal">OrgPortal</a> that you can use to (relatively) easily create an app store for your organization.</p> 
- <p>There’s another open source project called <a href="http://www.lhotka.net/weblog/ct.ashx?id=3a6efc45-380d-4b21-aa4c-09f536cd9aed&amp;url=http%3a%2f%2fcompanystore.codeplex.com">CompanyStore</a> that is very similar.</p> 
-</blockquote><br><br><br><br><br><br></body></html>
+<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>JetBrains 0xDBE: A Tool for DBAs and SQL Developers</h3><p>Up until now, JetBrains’ IDEs have included plug-ins for dealing with database administration and development tasks. JetBrains has decided to extract the respective functionality and place it in an IDE of its own, namely <a href="http://www.jetbrains.com/dbe/">0xDBE</a>.</p>
+<p>0xDBE is an IntelliJ-based editor targeted at DBAs and developers working with SQL databases. Andrey Cheptsov, Product Manager for JetBrains, told InfoQ that 0xDBE works with the following databases:&nbsp;DB2, Derby, H2, HSQLDB, MySQL, Oracle, PostgreSQL, SQL Server, SQLite and Sybase.</p>
+<p>Some of the most important features of 0xDBE are:</p>
+<ul> 
+ <li>Code completion for foreign keys, alter statements, inserts</li> 
+ <li>Parameter suggestions for values, functions and procedures</li> 
+ <li>Symbol renaming in data source and SQL files</li> 
+ <li>Finding symbols in data source and SQL files</li> 
+ <li>Detecting errors in SQL code, offering the option to add unresolved table/columns to a data source</li> 
+ <li>SQL Editor with multiple carets, toggled comments, etc.</li> 
+ <li>Code formatting based on user-defined styles</li> 
+ <li>Table Editor</li> 
+ <li>Code navigation to declaration, symbol, etc.</li> 
+ <li>Schema Editor that can be used to edit tables, indices, foreign keys, functions, procedures, etc.</li> 
+</ul>
+<p>0xDBE runs on Windows, OS X&nbsp;and Linux. Those interested can access the <a href="http://www.jetbrains.com/dbe/eap/">Early Access Program</a>, while the GA is expected for the end of the year, according to Cheptsov.</p>
+<p>When&nbsp;asked if 0xDBE will be enhanced to work with NoSQL databases, Cheptsov said that “NoSQL is also interesting for us, but SQL is the top priority for now.”</p><br><br><br><br><br><br></body></html>

@@ -1,4 +1,25 @@
-<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>TypeScript 1.0发布</h3><p>微软发布了TypeScript 1.0正式版，这是作为JavaScript的超集而构建的一门语言。TypeScript是微软支持的一等语言，在VS2013和VS2012中都获得了支持。TypeScript的项目经理Jonathan Turner<a href="http://blogs.msdn.com/b/typescript/archive/2014/04/02/announcing-typescript-1-0.aspx">宣布</a>，借着这个版本，微软开放了这门语言，开始接受公众的贡献，以促进该语言的持续成长。</p>
-<p>TypeScript的意图是使得大规模JavaScript应用更容易维护和支持。TypeScript为用户提供了一个稳定的平台，支持他们构建应用、创建和分享兼容未来的TypeScript版本的类型定义文件。</p>
-<p>该版本有多种获取途径。在VS2012中，可以通过来自Visual Studio Gallery的一个强大<a href="http://visualstudiogallery.msdn.microsoft.com/fa041d2d-5d77-494b-b0ba-8b4550792b4d">强大工具</a>获得支持。Visual Studio 2013用户可以通过<a href="http://www.microsoft.com/en-us/download/details.aspx?id=42307">Update 2 RC包</a>获得支持。Eclipse用户可以通过<a href="https://github.com/palantir/eclipse-typescript">安装一个插件</a>获得支持TypeScript的编辑器。最后，<a href="https://typescript.codeplex.com/releases/view/120282">源代码</a>可以在CodePlex上获得，对于喜欢npm格式的开发者，还有一个<a href="https://www.npmjs.org/package/typescript">npm包</a>。TypeScript使用了Apache开源许可协议。Turner指出，有兴趣向TypeScript做出贡献的开发者应该查阅<a href="https://typescript.codeplex.com/wikipage?title=Guidelines%20for%20Contributors">TypeScript wiki</a>上列出的指南。</p>
-<p><strong>查看英文原文：</strong><a href="http://www.infoq.com/news/2014/04/typescript_1">TypeScript 1.0 Released</a></p><br><br><br><br><br><br></body></html>
+<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>HTTP/1.1协议更新：RFC 2616遭废弃</h3><h2 id="http11协议更新rfc2616遭废弃">HTTP/1.1协议更新：RFC2616遭废弃</h2>
+<p>近日，IETF更新了HTTP/1.1协议，这是10多年来HTTP/1.1协议的首次重大更新。组织者将原来的<a href="http://tools.ietf.org/html/rfc2616">RFC 2616</a>拆分为六个单独的<a href="http://tools.ietf.org/html/rfc7230">协议说明</a>，并重点对原来语义模糊的部分进行了解释，新的协议说明更易懂、易读。新的协议说明包括以下六部分：</p>
+<ul> 
+ <li>RFC7230 - HTTP/1.1: Message Syntax and Routing - low-level message parsing and connection management</li> 
+ <li>RFC7231 - HTTP/1.1: Semantics and Content - methods, status codes and headers</li> 
+ <li>RFC7232 - HTTP/1.1: Conditional Requests - e.g., If-Modified-Since</li> 
+ <li>RFC7233 - HTTP/1.1: Range Requests - getting partial content</li> 
+ <li>RFC7234 - HTTP/1.1: Caching - browser and intermediary caches</li> 
+ <li>RFC7235 - HTTP/1.1: Authentication - a framework for HTTP authentication</li> 
+</ul>
+<p>早在2007年，IETF内部就成立了名为<a href="http://trac.tools.ietf.org/wg/httpbis/trac/wiki#RevisingHTTP1.1">HTTPbis</a>的工作小组来完成对HTTP/1.1的修订，他们的目标是让HTTP/1.1协议规范更加清晰易读，而不是添加新特性或者升级协议。在整个协议的修订过程中，小组成员共发布了26个草稿版本，修改次数超过2600次，处理了550多个<a href="http://trac.tools.ietf.org/wg/httpbis/trac/report/19">问题</a>。在文档整理过程中，HTTPbis也对HTTP/1.1协议的一些不合理或者不安全的地方进行了改进，Evert在其<a href="http://evertpot.com/http-11-updated/">博客</a>上总结了此次更新中的一些重大变化：</p>
+<ol> 
+ <li>对如何处理不应该出现的空格进行了规定，将修复HTTP Response Splitting漏洞</li> 
+ <li>移除每个服务器两个连接的限制</li> 
+ <li>不再支持HTTP/0.9</li> 
+ <li>默认编码不再是ISO-8859-1</li> 
+ <li>服务器不再被强制要求处理所有Content-*请求头内容</li> 
+ <li>PUT请求头禁止使用Content-Range</li> 
+ <li>如果请求头中Referer不存在，建议使用about:blank，以便对“没有Referer”和“我不想发送Referer”加以区别</li> 
+ <li>状态码204, 404, 405, 414 和501现在可以缓存了（cachable）</li> 
+ <li>状态码301和302现在允许用户代理（user-agent）将请求方式从POST改为GET。虽然原标准不允许，但其实人们早就在这样做了，标准迎合现实，这就是个很好的例子。</li> 
+ <li>请求头的Location现在可以包含相对URI和片段标识符（fragment identifiers）</li> 
+ <li>Content-MD5被移除</li> 
+</ol>
+<p>更多详细的改进内容请读者阅读RFC中的<a href="http://tools.ietf.org/html/rfc7230#appendix-A.2">Changes from RFC 2616</a>部分。</p><br><br><br><br><br><br></body></html>

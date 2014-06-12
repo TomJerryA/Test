@@ -1,10 +1,10 @@
 <html>
  <head></head> 
- <body>
-  <div>
+ <body> 
+  <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/42.cb">Hadoop na nuvem</a> Os provedores de solu&ccedil;&otilde;es Hadoop, atualmente dentre as mais populares tecnologias de Big Data em ambientes de nuvem p&uacute;blica ou privada evolu&iacute;ram. H&aacute; diversos fornecedores de solu&ccedil;&otilde;es baseadas em Hadoop no mercado, como Cloudera, HortonWorks e MapR, provendo variadas solu&ccedil;&otilde;es em nuvem. Este artigo, apresenta uma an&aacute;lise deste novo panorama. 
-  </div>
-  <div>
+  </div> 
+  <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/41.cb">Java na Web com VRaptor 4</a> Conhe&ccedil;a na pr&aacute;tica o VRaptor, que na sua nova vers&atilde;o 4 utiliza o CDI 1.1 como base, incluindo princ&iacute;pios do framework e uma sele&ccedil;&atilde;o de novidades da nova vers&atilde;o. 
   </div> 
   <div> 

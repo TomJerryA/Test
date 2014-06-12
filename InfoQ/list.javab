@@ -2,39 +2,54 @@
  <head></head> 
  <body>
   <div>
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/15.javab">Video Lesson Introducing Scrum and Agile</a> The video lesson Scrum fundamentals by Tommy Norman is a downloadable training which gives an introduction to agile software development using Scrum. InfoQ interviewed Tommy about why he made this introduction training, the roles, artifacts and events of Scrum, User Stories and collaboration in teams, and on-line resources where people can learn more about agile. 
+  </div>
+  <div>
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/14.javab">Purely Functional Configuration Management with Nix and NixOS</a> This article gives a short introduction to NixOS, a Linux distribution, and to Nix, the package manager on which NixOS is based. These provide a declarative approach to configuration management with many advantages to users, such as strong reproducibility and atomic upgrades and rollbacks. 
+  </div>
+  <div>
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/13.javab">A Pragmatic Approach to Scaling Security in the Cloud</a> Security. Cloud. Two words that are almost always together but rarely happily. Read on to learn why that isn’t the case and what you need to known about securing your critical infrastructure in the cloud. 
+  </div>
+  <div>
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/12.javab">The Original Sin of Software Metrics</a> This article explains why it is inherently wrong to set up software metrics to try and 'improve' the software development process, and offers some alternatives. 
+  </div>
+  <div>
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/11.javab">Apache Kafka: Next Generation Distributed Messaging System</a> Apache Kafka is a distributed publish-subscribe messaging system. This article covers the architecture, features and characteristics of Kafka and how it compares with other messaging systems. 
+  </div> 
+  <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/10.javab">Using SEMAT in Agile Adoption</a> The article Agile and SEMAT-Perfect Partners describes what the Software Engineering Method and Theory (SEMAT) initiative adds to agile and how SEMAT can be used when organizations adopt agile. InfoQ interviewed Ivan Jacobson and Ian Spence about what SEMAT is and how agile teams can use it, and on combining Essence from SEMAT with other software engineering frameworks like SAFe, CMMI, etc. 
-  </div>
-  <div>
+  </div> 
+  <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/9.javab">Web APIs and the n+1 Problem</a> The n+1 one problem doesn’t just affect ORMs. Any kind of Web API, RPC/Web Service or RESTful, can suffer from the same performance problems. In this article, Ali Kheyrollahi discusses some of the common scenarios that lead to n+1 in web APIs and ways to correct them. 
-  </div>
-  <div>
+  </div> 
+  <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/8.javab">Ansible’s View on IT Automation</a> Michael DeHaan, creator of Ansible, introduces the general-purpose IT automation system. He describes the tool’s guiding principles: simplicity, ease of use and maximum security. The philosophy behind its community is also discussed, including the importance of Ansible’s plugin-based model. Michael uses a simple but common scenario to demonstrate Ansible. 
-  </div>
-  <div>
+  </div> 
+  <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/7.javab">8 Great Java 8 Features No One's Talking about</a> In this article Tal Weiss focuses on some lesser known API's in the new Java 8. 
-  </div>
-  <div>
+  </div> 
+  <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/6.javab">Taking Back Agile</a> An interview with Tim Ottinger and Ruud Wijnands about the way that organizations adopt agile, services provided by the industry, and the importance of technical practices and craftsmanship in agile. 
-  </div>
-  <div>
+  </div> 
+  <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/5.javab">Exploring the ENTIRE DevOps Toolchain for (Cloud) Teams</a> Once the cultural DevOps transformation is under way, how can teams shipping cloud (or on-premises) applications use the full suite of DevOps technologies to simplify delivery and management at scale? 
-  </div>
-  <div>
+  </div> 
+  <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/4.javab">An interview with Matt Winn on JP Morgan’s Agile Transformation</a> Matt Winn, from J.P. Morgan’s securities group, Singapore describes his own perspective of using Large-Scale Scrum to create significant change within a tier-one financial services firm. 
-  </div>
-  <div>
+  </div> 
+  <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/3.javab">Virtual Panel on Reactive Programming</a> InfoQ talked to three Reactive experts – Viktor Klang (Akka), Timothy Baldridge (Core.Async), Jafar Husain (RxJava) – to find out how their libraries and frameworks help you write better applications. 
-  </div>
-  <div>
+  </div> 
+  <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/2.javab">Microservices: Decomposing Applications for Deployability and Scalability</a> This article describes the increasingly popular Microservice architecture pattern, used to architect large, complex and long-lived applications as a set of cohesive services that evolve over time. 
-  </div>
-  <div>
+  </div> 
+  <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/1.javab">Data Modeling in Graph Databases: Interview with Jim Webber and Ian Robinson</a> Graph data modeling requires a different paradigm than modeling with Relational or other NoSQL databases. InfoQ spoke with Jim Webber and Ian Robinson about data modeling with Graph databases. 
-  </div>
-  <div>
+  </div> 
+  <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/0.javab">Exchanging Industry Experiences with Agile Methodologies</a> The Agile Consortium Belgium, Sirris and Agoria organized an event to share experiences with agile methodologies like Scrum, Kanban, visual management, XP, DSDM and Lean. 
-  </div>
-  <div>
+  </div> 
+  <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/49.javab">From MDM to MDM: From Managing Devices to Apps to Data</a> Mobile operations management is one of the top priorities of modern enterprise and after establishing solutions for device management, the next challenge is to manage and secure mobile business data. 
   </div> 
   <div> 
@@ -135,21 +150,6 @@
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/28.javab">Custom Assertions in Java Tests</a> Using so-called &quot;matcher libraries&quot; to implement custom assertions to make tests more readable and maintainable. 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/27.javab">Interview and Book Review of The Technical and Social History of Software Engineering</a> Capers Jones wrote the book The Technical and Social History of Software Engineering in which he provides an overview of the evolution of information technology and software development. InfoQ interviewed Capers about advancements and events in software engineering and the effects that they have had on our society. 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/26.javab">Quality Code - Book Review and Interview</a> Quality Code book, authored by Stephen Vance, covers the different aspects of software development lifecycle with focus on delivering quality product. In the book, Stephen discusses the practices for supporting software craftsmanship testing. InfoQ spoke with the author about the book and the best practices for testing application code. 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/25.javab">Embedded Analytics and Statistics for Big Data</a> This article provides an overview of tools and libraries available for embedded data analytics and statistics, both stand-alone software packages and programming languages with statistical capabilities. The authors also discuss how to combine and integrate these embedded analytics technologies to handle big data. 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/24.javab">From Imperative Programming to Fork/Join to Parallel Streams in Java 8</a> The authors compare different methods to compute the variance of a large data set using an imperative style, The fork/join framework and the new Streams API in Java 8 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/24.javab">The Kanban Survivability Agenda</a> This third and last article in the series on the Kanban “nine values, three agendas” model explores the survivability agenda. The values associated with this agenda are understanding, agreement, and respect; these say much about the philosophy that underlies Kanban, the humane, start with what you do now approach to change. 
-  </div>             
+  </div>      
  </body>
 </html>

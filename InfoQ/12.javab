@@ -1,517 +1,109 @@
-<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>Leveraging the Practice of "Being Agile" to Design an Agile Management Curriculum</h3><h2>Introduction</h2>
-<p>The University of California Berkeley Extension (UCBX) Agile Management Program (<a href="http://extension.berkeley.edu/public/category/courseCategoryCertificateProfile.do?method=load&amp;certificateId=17114&amp;selectedProgramAreaId=11463&amp;selectedProgramStreamId=15566">AMP</a>) integrates experiential, team-based learning projects with Agile content to enhance ‘Agile Being’ as well as ‘Agile Doing’. The design emphasizes use of Agile values and principles to understand, experience, apply, and adapt Agile methods and practices to specific situations.</p>
-<p>During the 2013 summer session, a team of five students in the UCBX Agile Management Principles and Practices course self-selected to enable greater awareness of the AMP and to further leverage its Agile value and principle-centric character. The team was motivated by direct experience of the program’s unusually positive personal or workplace impact, and the relative lack of awareness of the AMP among potential participants.</p>
-<p>Two of the authors (Berry and Thomas) had previously participated in an AMP team project to recommend practical ways for bringing the practice of Agile values and principles into US Federal Agency IT programs<sup>1</sup>. That real world example furthered their thinking about the considerable value generated through the deliberate confluence of (a) Agile and (b) a generative approach to applying and adapting Agile methods to foster emergence of Agile values in specific contexts.</p>
-<p>At the same time, they were struck by the contrast between the transformative impact the AMP was having on students, and the relative lack of awareness about this educational option among others who might benefit. At the outset of the subsequent AMP Principles and Practices class, three others with similar experiences (Jackson, Kabbara, and Swaminathan) joined these two to purse the work described here. End-to-end, the team had 5 weeks to prepare and execute the study as part of their class work.</p>
-<p>“What would make the program even more valuable?”</p>
-<p>“I would strongly suggest AMP retain an emphasis on the spirit of Agile. There remains an easy misconception that success is in the content rather than the mindset of being Agile. Are we too used to linking PM and Agile together to think these are based in methods or steps to outcomes? A seasoned PM recently told me he now knows the success is in the people.” - survey response from a UC Berkeley Extension AMP participant</p>
+<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>The Original Sin of Software Metrics</h3><p>When I was still a very naive, starry-eyed software manager, there was one technical issue for which I proposed to create 2 defects, one for fixing the issue, one for putting in more logs around the area to make it more diagnosable in the future. In the meeting, a DEV manager more senior than I objected, “no, the logging one should be an enhancement, not a defect. We are putting things into the product which it doesn’t have before, therefore it should be an enhancement.” The manager was not kidding, he said it in all seriousness, and other managers agreed. The logic was so out of my “common sense” that I was both astonished and amused. All this was because a few days previously an even more senior manager wrote an email asking why the number of defects was so high. That manager didn’t ask us to reduce the number: he simply showed an interest and asked a question.</p>
+<p>After I grew more cynical, I played along to make metrics more pleasant. For example, we had a metric tracking the number of server defects reported by customers. The usual tricks to make it more pleasant were:</p>
+<ol> 
+ <li>Lower severity</li> 
+ <li>Combine multiple defects into one</li> 
+ <li>Argue a defect is actually an enhancement</li> 
+</ol>
+<p>My distrust and disregard of software metrics grew, was it because of me being insubordinate, or are most software metrics screwed from the beginning? To my relief, I do not have an attitude problem. There are plenty of books out there that explain why metrics in a creative industry are problematic. The books that inspired me are:</p>
+<p><a href="http://www.amazon.com/Measuring-Managing-Performance-Organizations-Robert/dp/0932633366/ref=sr_1_sc_1?ie=UTF8&amp;qid=1392711485&amp;sr=8-1-spell&amp;keywords=Measuring+and+ManagingPerformance+in+Organizations">Measuring and Managing Performance in Organizations</a></p>
+<p><a href="http://www.amazon.com/Drive-Surprising-Truth-About-Motivates/dp/1594484805/ref=sr_1_1?ie=UTF8&amp;qid=1395981923&amp;sr=8-1&amp;keywords=drive">Drive: The Surprising Truth About What Motivates Us</a></p>
+<p>These books are really scientific and dry. In this article I apply what I have learned from these books into software metrics and I hope do so in a less dry way.</p>
 <div id="lowerFullwidthVCR"></div>
-<h2>Methods</h2>
-<h3>Project Charter and Strategy</h3>
-<p>The team first established a charter to guide its work including a statement of purpose (vision, mission, and associated success measures), a set of working agreements, and definition of the context for team operations. The context discussions resulted in a Project Boundary Chart showing the team’s relationship to key stakeholders, and an overall strategy to achieve the team’s purpose. A prospective Analysis Chart was also created to identify the probability and likely impact of events (both positive and negative) which could affect the work.</p>
-<p>The team adopted the following mission:</p>
-<p>Recommending to UCBX AMP<i> leadership an Agile, Lean, and sustainable strategy to raise </i><i>(especially</i><i> in the Northern California/ San Francisco Bay </i><i>Area),</i></p>
+<p>Other references include:</p>
+<p><a href="http://www.infoq.com/news/2012/04/An-Introduction-Software-Quality">An Introduction to Software Quality</a></p>
+<p><a href="http://www.amazon.com/The-Lean-Startup-Entrepreneurs-Continuous/dp/0307887898/ref=sr_1_1?ie=UTF8&amp;qid=1396234106&amp;sr=8-1&amp;keywords=The+Lean+Startup">The Lean Startup</a></p>
+<h2>Tom’s first attempt</h2>
+<p>In this imaginary scenario, Tom was a program manager of a big software company overseeing several products. Some products had bad reputations as customers had reported many defects.</p>
+<p>The workflow for customers reporting defects was:</p>
+<p><img _p="true" _href="img://figure-sin.jpg" alt="" src="http://www.infoq.com/resource/articles/metrics-original-sin/en/resources/figure-sin.jpg" /></p>
+<p>Tom opened the metric dashboard, and saw those bad-rep products had many defects. Tom noticed that products with good rep had much fewer defects. So he established a rule that in 1 year, products must reduce the number of defects to be below 50.</p>
+<p>Here, Tom made his first mistake. Just because A leads to B (good quality leads to fewer defects), doesn’t mean B leads to A (fewer defects means good quality). Aristotle (335 B.C.) was among the first to record the human tendency to forget the directional nature of implication on observing correlation.</p>
+<p>One year late, Tom was puzzled. On the one hand, the bad-rep products had dramatically reduced their backlog of defects, one product even reduced the number from 250 to 40, a big achievement! And yet Tom still received complaints from customers, in fact, complaints were getting louder.</p>
+<p>Tom decided to probe into the whole workflow of “defect reporting – defect creating – defect fixing”. He observed how each product team handled customer issues. It didn’t take him long to observe these things:</p>
 <ol> 
- <li><i>awareness and experience of Agile benefits, </i></li> 
- <li><i>awareness of AMP availability and its particular compelling value, and</i></li> 
- <li><i>support to the AMP among alumni, instructors, UC Berkeley staff, and professional organizations and companies”. </i></li> 
+ <li>Product team members argued with customers that the issue they reported was not really a defect, it was something the product hadn’t implemented, so the issue should be an enhancement request. If customer pressed to get the enhancement implemented, the product team members would argue that it was not in line with the product roadmap.</li> 
+ <li>Product team decided a defect was of so low severity that it was not worth fixing and closed it.</li> 
+ <li>For some issues, because that could not be consistently reproduced, for example, dirty data issues, performance issues, the product team didn’t even create defects; various “workarounds” were given to customers, such as cleaning up data or buying more powerful computers.</li> 
 </ol>
-<p>&nbsp;<strong>Figure 1</strong> displays these charter elements graphically.</p>
-<p><b><small>Figure 1: Summary of the Charter for this Study.</small></b></p>
-<p><a href="/resource/articles/being-agile-management-curriculum/en/resources/Fig1.png" _href="resource://Fig1.png"><img src="http://www.infoq.com/resource/articles/being-agile-management-curriculum/en/resources/Fig1-small.png" alt="" _href="img://Fig1-small.png" _p="true" /></a></p>
-<p><b><small>(Click on the image to enlarge it)</small></b></p>
-<h3>Interview and Survey Design</h3>
-<p>Data and information to generate findings and related recommendations were obtained through a series of interviews with Agile education leaders, and through surveys of UCBX AMP students and potential students located in or near the San Francisco Bay Area. These were among key stakeholder groups identified in the Boundary Chart.</p>
-<p>Interviews focused on discovering: (1) the rationale for the design of or participation in a specific Agile Management curriculum, (2) the attributes associated with that curriculum, and (3) the impacts of that curriculum.</p>
-<p>Interviews were conducted with the UC Berkeley Extension AMP Program Director<sup>2</sup> and Marketing Manager, with two AMP faculty who also serve on the AMP Advisory Council<sup>3</sup>, with a leader of a group of AMP alumni working to Implement Agile in departments at UC Berkeley, with a UC Berkeley Haas Business School leader, and with one of two leaders of the Agile Project Management Program at UC Irvine.</p>
-<p>A survey was created for UCBX AMP alumni and current students to understand their reasons for enrolling in the program, the value it had produced, how they had applied what they learned, and the impact it had on their results at work and in life.</p>
-<p>Information was also sought on how UCBX alumni and current students learned about the AMP, and their recommendations on the most effective outreach channels going forward. Preferences for curriculum delivery were assessed (face-to-face, online live, online prerecorded, blended), and data on best times and locations for participation was collected. Questions also covered participant role at work, courses they had taken, and what would make the UCBX AMP even better.</p>
-<p>Parallel surveys were conducted for two large “Meetup” groups drawing in Agile professionals from much of the San Francisco Bay region. These included the Bay Area Agile Leadership Network (Bay ALN) and the Silicon Valley Agile Leadership Network (Silicon Valley ALN). Survey responses were solicited from those who had not yet participated in the AMP.</p>
-<p>Questions for these potential participants focused on what would be most important reasons for them to enroll in the UCBX AMP, the value or outcomes they would expect from participating, outreach channels that worked best for them, preferred means of delivery and location for the training, and their role at work. Potential participants were also asked if they were currently aware of the UCBX AMP.</p>
-<h3>Analysis of Interview Replies and Survey Data</h3>
+<h2>Tom’s second attempt</h2>
+<p>Tom still believed his defect metric was good, it was just people did it wrong. Being a reflective man, Tom’s first thought was not “those damn software engineers cheated me”, but “I should make it harder for them to game the metric.” So he changed the process to the following:</p>
+<p><img src="http://www.infoq.com/resource/articles/metrics-original-sin/en/resources/figure-sin2.jpg" alt="" _href="img://figure-sin2.jpg" _p="true" /></p>
+<p>Tom reasoned, the failure of his previous attempt was because the RnD team controlled how the data was generated, so instead of RnD creating defects, support was put in charge of creating them; support had substantial knowledge about the product, they had the final say whether it was a defect or an enhancement and they could also decide on the severity of a defect from users’ point of view.</p>
+<p>Tom was happy with the idea. It was not easy to change the process, and it caused some squabbles between support and RnD teams. But Tom muscled through and persevered. He believed that the cost of this change would be justified by the gains.</p>
+<p>One year later, Tom was more puzzled. From the metric dashboard, he could see RnD team was burning down the backlog of defects quickly, but new defects were reported almost as quickly. What went wrong?</p>
+<p>Tom talked to the managers of these products and he was frustrated with their feedback. Everyone said they had met the targets and therefore they were performing well, and there were things that were out of their control.</p>
+<p>Tom didn’t know that his metric, intended to make people accountable, actually caused nobody to be accountable. Edwards Deming, often considered father of both the Japanese and the American quality movements, has declared performance measurement “the most powerful inhibitor to quality and productivity in the Western world” (Gabor, Andrea, Catch a Falling Star System, U.S. News and World Report (June 5, 1989, p.43))</p>
+<h2>Tom’s conversation with Bob</h2>
+<p>Tom sought out the manager of product Phoenix Bob, who was his college classmate. Tom always thought Phoenix was a bad name for a product, he has seen two products named Phoenix that went up in flames. He secretly worried his old buddy from college would be caught up in a fire too. Phoenix was not in a good shape: its backlog of defects was burning down quickly, but the influx of new defects was alarming.</p>
+<p>Tom: “Hey, buddy, what is the matter with the defect metric? Why hasn’t it improved Phoenix’s quality?”</p>
+<p>Bob (raised his eyebrows almost irritably): “How do you define quality of software?”</p>
+<p>Tom (taken back by the question, and stuttered): “Well… A good quality software has fewer defects. “</p>
+<p>Bob: “That is only remotely true. There are three aspects of software quality depending on who you are talking to. “</p>
+<p>Bob opened his laptop, and pointed to the following diagram, and continued:</p>
+<p><img src="http://www.infoq.com/resource/articles/metrics-original-sin/en/resources/3Fig3.png" alt="" _href="img://3Fig3.png" _p="true" /></p>
+<p>“The first aspect is functional quality, which means the software performs the tasks that it is intended to do for users. Including:</p>
 <ul> 
- <li>Information from interviews of Agile Management Program leaders, instructors, and marketing specialists was evaluated for patterns of response to questions on the rationale for the curriculum design and intended participant outcomes, attributes of the program including means and character of delivery and locations used, market segment focus, marketing intentions and practices, enrollment changes over time, future plans, and uncertainties or needs for further information. Understandings distilled from this analysis were used as a frame for reviewing survey responses, and as a direct source of recommendations.</li> 
- <li>Survey data was reviewed by first examining tables and bar charts automatically generated by the survey software. The team especially noted items most commonly selected by participants, and those least commonly selected. Comparisons of these patterns were made between those who had participated in the AMP versus potential participants from the Meetup groups. Additional charts were prepared to better detect patterns and differences within and between these groups.</li> 
- <li>The team also read through the list of written answers to questions on value received or desired, what changed as a result of participating in the UCBX AMP, the impact of those changes, and how the AMP could be made even more valuable. Items mentioned most frequently were noted, and charts were later prepared showing the frequency of specific statements made.</li> 
- <li>The interview with the leader of the UC Irvine Extension (UCIX) Agile Management Project was used (along with study of the UCIX AMP website) to create a comparison chart between the two programs. The team intended to examine differences in content and focus, course delivery, and outreach channel strategy between the two programs, as well as to assess their complementarity.</li> 
+ <li>Meeting or anticipating the specified requirements. Since we are working on products, not on contracted projects, we are working on assumptions that what we are working on will solve customers’ problems.</li> 
+ <li>Creating software that has few defects.</li> 
+ <li>Good enough performance.</li> 
+ <li>Ease of learning and ease of use.</li> 
 </ul>
-<h3>Generating Findings and Recommendations</h3>
-<p>The overall patterns of responses to interview questions and of survey data were used to generate findings. It is important to note that the individual experiences of the authors (the team members) and their conversations with others acted as a background context and filter that influenced interpretation of results.</p>
-<p>Commonly noted findings were rolled up into the Findings reported in the next section. Toward the conclusion of the project, each member of the team was asked to formulate recommendations based on the findings. A common set of recommendations was then prepared and is reported below the Findings section.</p>
-<h2>Findings</h2>
-<h3>1. Interview Findings</h3>
-<p>1.1. Regarding the UCBX AMP:</p>
-<p>1.1.1. Curriculum design and attributes:</p>
-<p>1.1.1.1. UCBX AMP instructors deliberately designed an experiential, project-focused curriculum to instill Agile values and associated principles, and enable participants to put those into practice. This approach was intended to (a) embody Agile’s systemic nature, facilitating direct experience of the relationship of Agile methods to values and principles necessary for realization of Agile benefits. We also understood that this would (b) support students in gaining the self-generative ability to apply, adapt, or create appropriate Agile practices in many situations.</p>
-<p>1.1.1.2. Curriculum focus on “Being Agile” required (a) live, in-person classes with a significant degree of interaction, trust building, and safety, and (b) individual class sessions long enough to enable the coherent building of momentum in leveraging and applying “Agile Being” to create effective “Agile Doing” (applying Agile practices)<sup>4</sup>. As a consequence, all UCBX Agile curriculum courses were offered in person, usually in full or multiple day formats. Interaction and self-organizing teamwork are an integral element of course design.</p>
-<p>1.1.1.3. Recognition: UC Berkeley Extension issues an Award of Completion certificate with 90 hours required, including two required classes and a minimum of two electives. Total fees associated with the minimum are approximately $2600.</p>
-<p>1.1.2. Impacts observed:</p>
-<p>1.1.2.1. UCBX AMP instructors shared their experience of significant shifts in course participant attitudes, outcomes, and sense of the possible at work and in their personal lives (including expected outcomes described above). Instructor experiences matched observations of the authors during and following course work, and a number of comments made by alumni in the surveys.</p>
-<p>1.1.2.2. Our interview with a leader of a group of AMP alumni working to Implement Agile in departments at UC Berkeley revealed that the UCBX AMP was proving to be a pivotal resource for training and inspiring UC Berkeley staff in working toward effective use of Agile approaches on the UC Berkeley campus.</p>
-<p>1.1.3. Outreach strategy:</p>
-<p>Initial outreach for the UXBX AMP included in-person group introduction sessions, brief presentations at Agile events in the region, participation at Agile conferences, and print media. After the first year, UCBX leadership reoriented outreach to mass media with a focus on raising general awareness of UCBX courses. This meant that specific AMP outreach and awareness raising was limited to standard brochures and catalog publication and a small number of in-person introductory sessions. While the mass media campaign helped overall UCBX enrollment, enrollment in the fledgling AMP dropped. Enrollment in the most recent year has increased. Word-of-mouth from AMP graduates and faculty is informally reported among students and faculty as a key factor in this increase. Survey results showed that the traditional catalog was also an important marketing force in raising awareness about the AMP.</p>
-<p>1.1.4. Relationship of the UCBX Agile Management Program to the UC Berkeley campus business curriculum:</p>
-<p>Our interview with a leader of one of the UC Berkeley Haas School of Business Centers showed potential synergy with the UCBX AMP regarding Agile-related teaching interests and the importance the foundational nature of experiencing “Being Agile” in creating value for students. However, existing funding streams and mechanisms do not incentivize a strong relationship or coordinated/collaborative efforts, and drive separate focus between these two potential academic partners.</p>
-<p>1.2. UC Irvine Extension Agile Project Management (chosen as curriculum comparison case example):</p>
-<p>1.2.1. UC Irvine Extension Agile curriculum design and attributes:</p>
-<p>1.2.1.1. UC Irvine Extension’s educational focus is providing the technical Agile skills and training sought by tech employers in their region, and was therefore more technically oriented, consistent with other US-based Agile curricula we encountered. Courses are delivered on-line (with the exception of one experimental course). A wider range of methodology/technical course offerings is available than at UCBX, with sessions of less than full day duration. At the time of our interview, UCIX had been experimenting with how to make on-line courses more interactive.</p>
-<p>1.2.1.2. Recognition: UC Irvine Extension awards an Agile Management Certificate with 150 hours required, including a specified set of 5 required classes and a minimum of 4 semester units of electives. Total fees associated with the minimum are approximately $5100.</p>
-<p>1.2.2. Impacts observed:</p>
-<p>UC Irvine Extension reported significant interest and participation from Southern California technology firms in their Agile curriculum, as well as satisfied students and graduates.</p>
-<p>1.2.3. Outreach strategy:</p>
-<p>1.2.3.1. UCIX has a very active, iterative Agile market research effort supporting rapid Agile program evolution (using student inquiries about the UCIX Agile program, local/regional employer and participant interviews and relationship building, and paid marketing studies).</p>
-<p>1.2.3.2. UCIX also uses incoming email and phone inquiries about the AMP to immediately engage potential participants and employers in a market research, enrollment, and coaching conversation that explores: (a) how they learned about the program, (b) the value they want out of the AMP, and (c) how the AMP can meet their specific requirements, leading to development of initial curriculum plans for those individuals.</p>
-<p>1.2.3.3. UCIX is also experimenting with e-oriented outreach channels. Sharing of market research findings and experiences between UCIX and UCBX, with UCB campus counterparts, and with others in the UC system appears to hold the potential for substantial mutual value.</p>
-<h3>2. Findings from Customer Surveys</h3>
-<p>2.1. Survey Responses from Current AMP Students and Alumni</p>
-<p>Major patterns observed:</p>
-<p>2.1.1. Who responded to the survey:</p>
-<p>2.1.1.1. <i>The response rate was approximately 27%</i> using a best-constructed non-duplicate AMP email list maintained by alumni (32 total respondents) as the base population size</p>
-<p>2.1.1.2. The blue (left-most) bars in each cluster in Figure 2 show how these respondents categorized their professional role. <i>The top two categories were “Project Leader or Manager” and “Business Professional”.</i></p>
-<p><b><small>Figure 2: Role of Survey Respondents.</small></b></p>
-<p><img src="http://www.infoq.com/resource/articles/being-agile-management-curriculum/en/resources/1Fig2.png" alt="" _href="img://1Fig2.png" _p="true" /></p>
-<p>2.1.2. Curriculum design and attributes:</p>
-<p><i>2.1.2.1. </i><i>Participants highly valued the:</i></p>
+<p>The metric you defined is largely around ‘creating software that has few defects’.</p>
+<p>The second aspect is structural quality, which is what I am most interested in because of my former life as a software engineer. It is all about ‘-abilities’, which are as hard to define as art, because sometimes it is in the eyes of the beholder. This aspect includes:</p>
 <ul> 
- <li><i>current AMP learning experience.</i></li> 
- <li><i>in-person workshop interaction.</i></li> 
- <li><i>core foundation of Agile values, principles, and practices</i>.</li> 
+ <li>Code testability.</li> 
+ <li>Code maintainability.</li> 
+ <li>Code understandability.</li> 
+ <li>Code efficiency.</li> 
+ <li>Code security.</li> 
 </ul>
-<p><i>63% rated “Gain Agile leadership and/or management abilities” and 41% “How to think, and be, Agile” as among their most important reasons for participating in the UCBX AMP, while only 31% rated “Gain specific Agile technical knowledge or skills” as one of their most important reasons for participating</i>.</p>
-<p>The blue (left-most) bars in each cluster in Figure 3 show the full set of important reasons for enrolling in the AMP.</p>
-<p><b><small>Figure 3: Most Important Reasons for Enrolling in the UCBX AMP</small></b></p>
-<p><a href="/resource/articles/being-agile-management-curriculum/en/resources/Fig3.png" _href="resource://Fig3.png"><img src="http://www.infoq.com/resource/articles/being-agile-management-curriculum/en/resources/Fig3-small.png" alt="" _href="img://Fig3-small.png" _p="true" /></a></p>
-<p><b><small>(Click on the image to enlarge it)</small></b></p>
-<p>2.1.2.2. In written responses to the question <i>“What would make the program even more valuable?”</i> the most frequent responses were:</p>
+<p>I like ‘code understandability’ the best. Code is meant to be read by human beings. When I read code, I expect to read it like a very boring novel, there should be neither twists nor surprises. A machine can read the code no matter how ugly it is, but the machine doesn’t maintain the code, human beings do. “</p>
+<p>Tom: “Are you telling me that in order to satisfy the defect metric, you had to sacrifice these ‘-ability’ qualities?”</p>
+<p>Bob: “Yes! We were able to work around the metric two years ago by creating fewer defects, it was cheating, but we were managing the damage. You redesigned the workflow last year and tied our hands even more. In order to keep up with the metric, we had to increase our speed, and in the process, we were forced to sacrifice the structural quality. Code became more and more complex because we were putting more and more band-aids. By our estimation, the code became 20% more complicated. The result, as you can see, a lot of regressions and much longer time for new development. By neglecting structural qualities, we are incurring technical debts, which, sooner or later, we have to pay back…”</p>
+<p>Tom (light in his eyes): “Wait a minute. You said ‘-ability’ qualities are like art not possible even to define. But you can measure it! You just said you measured it to be 20% more complicated. What if we measure ‘-ability’ qualities? ”</p>
+<p>Bob (smiled at his friend’s enthusiasm): “Let me first finish the 3<sup>rd</sup> aspect of software quality. It is about process quality, which includes:</p>
 <ul> 
- <li><i>full certification</i> upon completion of course requirements,</li> 
- <li><i>add courses,</i> particularly in the areas of <i>Agile Leadership and Agile practice/methodology</i></li> 
+ <li>Meeting the delivery dates.</li> 
+ <li>Meeting the budgets.</li> 
+ <li>A repeatable development process that reliably delivers quality software. If a process is so stressful that it forces out the best people in the team then it’s not a good process.</li> 
+ <li>Long term maintenance cost. To lower cost, it sometimes means the product has to embed some monitoring and supportability features that are not specified by and paid for by customers. But an easier-to-maintain system lowers the cost and makes happier customers.</li> 
 </ul>
-<p>2.1.2.3. Course location:</p>
-<ul> 
- <li>Phy<i>sical locations were the most popular, </i>with interest in blended physical and online.</li> 
- <li>A central location in the region (San Francisco at 78%, followed by Berkeley at 63%) was most favored for physical courses, followed by much lower percentages for areas to the north, south, and east depending on location of participants.</li> 
- <li><i>Online was not popular among AMP alumni and current students</i> (9% for on-line live, and 3% for 24/7 recorded), as respondents preferred (or at least in some cases had seen the importance of) in-person interaction, though minds were open to an appropriate blended physical and online approach (38%).</li> 
-</ul>
-<p>“Considering the quality and value of the experience you want from AMP courses, what locations would work for you?”</p>
-<p>“Agile really benefits from face to face.” - survey response from a UC Berkeley Extension AMP participant</p>
-<p>2.1.2.4. Course timing:</p>
-<ul> 
- <li><i>Weekends work</i> for many current AMP participants and alumni (78% selected this as a time which would work for them).</li> 
- <li>Evenings were less popular - a backup choice that would work for 44% of alumni and current participants.</li> 
- <li>Friday was a close third at 41%.</li> 
- <li>Full days courses were preferred over half day courses by 2 to 1.</li> 
-</ul>
-<p>2.1.3. UCBX AMP impacts on participants:</p>
-<p>2.1.3.1. <i>A plurality of written comments noted significant shifts or value gained in work contexts as a result of participating in the AMP.</i> Some also commented on similar effects in their personal life.</p>
-<p>2.1.3.2. Here are written statements volunteered by survey respondents’ about the value, application, and impact of the UCBX AMP<sup>5</sup>:</p>
-<h3>What value have you received from the Agile Management Program?</h3>
-<p> </p>
-<table cellspacing="0" cellpadding="0" border="0"> 
- <tbody> 
-  <tr> 
-   <td valign="bottom" width="578"> <p><small>“It was of high value, I really enjoyed all the classes.”</small></p> </td> 
-  </tr> 
-  <tr> 
-   <td valign="bottom" width="578"> <p><small>“Simplification and reiteration have been the most valuable ideas that I've implemented as well as Excellence over Perfection.”</small></p> </td> 
-  </tr> 
-  <tr> 
-   <td valign="bottom" width="578"> <p><small>“A clear understanding of what agile means and what methods, practices, and concepts can be applied.”</small></p> </td> 
-  </tr> 
-  <tr> 
-   <td valign="bottom" width="578"> <p><small>“Provided a lot of food for thought and left me energized to go back to work and apply at least parts of what I've learned!”</small></p> </td> 
-  </tr> 
-  <tr> 
-   <td valign="bottom" width="578"> <p><small>“Confidence to lead an Agile transformation in my company.”</small></p> </td> 
-  </tr> 
-  <tr> 
-   <td valign="bottom" width="578"> <p><small>“I am PMI-ACP certified professional. I was looking for a &quot;formal agile education learning opportunities&quot;. This is the value added from my perspective.” </small></p> </td> 
-  </tr> 
-  <tr> 
-   <td valign="bottom" width="578"> <p><small>“Understanding of Agile and how it can be applied in non-technical projects.”</small></p> </td> 
-  </tr> 
-  <tr> 
-   <td valign="bottom" width="578"> <p><small>“The class I took was a great overview into understanding what agile was and to get a sense of how to apply it.”</small></p> </td> 
-  </tr> 
-  <tr> 
-   <td valign="bottom" width="578"> <p><small>“With UCB Agile courses taken so far I have established a firm bridgeway to applying Agile Thinking in all aspects of my personal and professional life.” </small></p> </td> 
-  </tr> 
-  <tr> 
-   <td valign="bottom" width="578"> <p><small>“A good foundation of knowledge to help start the transition of my organization to Agile.”</small></p> </td> 
-  </tr> 
-  <tr> 
-   <td valign="bottom" width="578"> <p><small>“The Agile Management Program supports change of 'being' as well as 'doing,' through its application of Agile principle to project work. The deepest value I have received is at the level of being more Agile. This includes a greater sense of ease in unpredictable circumstances, and a greater ability to navigate uncertainty. The program provides evidence that short planning horizons, customer involvement (early and often!), and iterative development are keys to project success. Taking this into action, I have gained a wide range of tools for managing projects in an Agile way. An example: The &quot;catalytic probe,&quot; is a fast way to gain information in complex situations, providing quick feedback on how to proceed. In addition, the AMP has provided a wonderful setting and opportunity to develop my Agile professional network. The environment for collaborative learning is exceptional, and promotes enduring relationships and a continuing community of learning.” </small></p> </td> 
-  </tr> 
-  <tr> 
-   <td valign="bottom" width="578"> <p><small>“Increase in individual and team productivity and satisfaction. Decrease in time to achieve desired outcomes. More robust, resilient personal and team capacity to work through challenges and to innovate. More comprehensive perspective, understanding, and capacity to act.” </small></p> </td> 
-  </tr> 
-  <tr> 
-   <td valign="bottom" width="578"> <p><small>“Enormous value - My exposure to agile management program completely changed the way I started looking at a team, at my team members and every new idea or problem that we encounter in our daily business lives. Most importantly, agile philosophy has helped me to separate all the noise from the real content that we should focus when dealing with business needs.”</small></p> </td> 
-  </tr> 
-  <tr> 
-   <td valign="bottom" width="578"> <p><small>“Because of Agile training, I was able to move from desktop service manager to project manager. Will soon take training in scrum master and product owner. Allowed me to change direction in my career.”</small></p> </td> 
-  </tr> 
-  <tr> 
-   <td valign="bottom" width="578"> <p><small>“The value that I have received has been in creditability through this program. It has allowed me to be confident in using what I have learned from real life experiences. It has allowed me to be more competent in my knowledge I have gained through attending the various classes.”</small></p> </td> 
-  </tr> 
-  <tr> 
-   <td valign="bottom" width="578"> <p><small>“Increased capability and vision in professional and personal life. Significantly better time management. I am, and more important, am seen to be, more productive.”</small></p> </td> 
-  </tr> 
-  <tr> 
-   <td valign="bottom" width="578"> <p><small>“A great overview of Agile and the opportunity to put an entirely new set of tools and techniques to use in the classroom setting, as well as on-the-job.”</small></p> </td> 
-  </tr> 
-  <tr> 
-   <td valign="bottom" width="578"> <p><small>“Liked the most about thinking &quot;agile&quot;.”</small></p> </td> 
-  </tr> 
-  <tr> 
-   <td valign="bottom" width="578"> <p><small>“I have learnt the importance of prioritizing value 24/7. I have learnt the importance of seeing problems from all perspectives. My previous dislike of waste has been validated.”</small></p> </td> 
-  </tr> 
-  <tr> 
-   <td valign="bottom" width="578"> <p><small>“Be more Agile and understand the concept in detail. Use the practices daily at my job. Lean Kanban is the most helpful class.”</small></p> </td> 
-  </tr> 
-  <tr> 
-   <td valign="bottom" width="578"> <p><small>“I have learned how to iterate through a problem to identify what done looks like and how to engage a team to work towards that. I believe I have become a more skilled facilitator to help folks work through a problem and use tools such as Kanban to help focus work.”</small></p> </td> 
-  </tr> 
-  <tr> 
-   <td valign="bottom" width="578"> <p><small>“language in the field; integration with my career coaching; technology cache; confidence”</small></p> </td> 
-  </tr> 
-  <tr> 
-   <td valign="bottom" width="578"> <p><small>“I have broadened my professional network outside of my organization. I participate in a diverse Agile community-building network within my organization. I have increased the number of tools I can use in problem solving which includes how I approach seeking solutions. I feel confident in my grounding in the spirit or practices and principles of Agile management.”</small></p> </td> 
-  </tr> 
-  <tr> 
-   <td valign="bottom" width="578"> <p><small>“Tools that I can use daily as part of my job.”</small></p> </td> 
-  </tr> 
- </tbody> 
-</table>
-<p></p>
-<h3>How have you applied what you learned?</h3>
-<p><small> </small></p>
-<table cellspacing="0" cellpadding="0" border="0"> 
- <tbody> 
-  <tr> 
-   <td valign="bottom" width="578"> <p><small>“Yes.”</small></p> </td> 
-  </tr> 
-  <tr> 
-   <td valign="bottom" width="578"> <p><small>“I use agile techniques every day.”</small></p> </td> 
-  </tr> 
-  <tr> 
-   <td valign="bottom" width="578"> <p><small>“Somewhat.”</small></p> </td> 
-  </tr> 
-  <tr> 
-   <td valign="bottom" width="578"> <p><small>“I've already sent a few emails and plan to have discussions with my boss.”</small></p> </td> 
-  </tr> 
-  <tr> 
-   <td valign="bottom" width="578"> <p><small>“Mentoring, building standards and implementing Agile in my department.”</small></p> </td> 
-  </tr> 
-  <tr> 
-   <td valign="bottom" width="578"> <p><small>“In my last couple of roles, I have been tasked with building agile teams. I've shared various exercises and agile practices with those teams and leadership as well.”</small></p> </td> 
-  </tr> 
-  <tr> 
-   <td valign="bottom" width="578"> <p><small>“I am currently performing an Agile coach role at work following Scrum Methodologies being part of PMO, Strategic Management.” </small></p> </td> 
-  </tr> 
-  <tr> 
-   <td valign="bottom" width="578"> <p><small>“Only to a limited degree.”</small></p> </td> 
-  </tr> 
-  <tr> 
-   <td valign="bottom" width="578"> <p><small>“I have been able to apply some of the broader principles and practices (especially timeboxing and retrospectives). I don't currently work in an agile environment, so have not yet applied many of the specific practices.”</small></p> </td> 
-  </tr> 
-  <tr> 
-   <td valign="bottom" width="578"> <p><small>“I use many aspects of Aglie Think daily now, from MVP to Kanban to keeping the question &quot;What is most important now?&quot; front and center to the best of my ability.” </small></p> </td> 
-  </tr> 
-  <tr> 
-   <td valign="bottom" width="578"> <p><small>“Yes, we have recently transitioned our product development process to SCRUM, and the principles and practices learned have direct application.”</small></p> </td> 
-  </tr> 
-  <tr> 
-   <td valign="bottom" width="578"> <p><small>“Immediate application has been in AMP project work, and in projects I am currently developing for our own business. Shortened time horizons and iterative planning have been helpful in both arenas. I have used the catalytic probe tool frequently to determine partner and customer interest in services. I am also applying the Sprint or Pomodoro method to product development.”</small></p> </td> 
-  </tr> 
-  <tr> 
-   <td valign="bottom" width="578"> <p><small>“Have applied core Agile values, principles, practices, methods, and mindset to prioritize, simplify, and smooth daily and weekly work flow (and life), and more reliability use cadence and time blocks to produce value for customers, company, and self.” </small></p> </td> 
-  </tr> 
-  <tr> 
-   <td valign="bottom" width="578"> <p><small>“Everyday.”</small></p> </td> 
-  </tr> 
-  <tr> 
-   <td valign="bottom" width="578"> <p><small>“I was able to apply Agile on a daily basis even as a desktop service manager and outside of project management. I've also teamed up with other AMP alumni working at UC Berkeley in order to develop a culture of Agile on the campus and to allow other AMP alumni from UC Berkeley to plug in.”</small></p> </td> 
-  </tr> 
-  <tr> 
-   <td valign="bottom" width="578"> <p><small>“Working as a Certified Scrum Master, I feel having the opportunity to take the Agile classes has given me an advantage over other people that just took the Scrum Master certification. I feel the classes have given me the foundation to practice as a CSM.”</small></p> </td> 
-  </tr> 
-  <tr> 
-   <td valign="bottom" width="578"> <p><small>“Influenced colleagues to form new teams to work differently. Moved house in record time.”</small></p> </td> 
-  </tr> 
-  <tr> 
-   <td valign="bottom" width="578"> <p><small>“I use many of the tools and techniques we have learned, such as Chartering, Task Boards, Iterations (GEFN), Retrospectives, 4L's in my current role. Although I am not managing software development projects, I seek out opportunities to apply these tools whenever possible.”</small></p> </td> 
-  </tr> 
-  <tr> 
-   <td valign="bottom" width="578"> <p><small>“Starting an agile project now.”</small></p> </td> 
-  </tr> 
-  <tr> 
-   <td valign="bottom" width="578"> <p><small>“My personal and professional lives have been enriched by a value-focused world view. My mind has experienced a rebirth.”</small></p> </td> 
-  </tr> 
-  <tr> 
-   <td valign="bottom" width="578"> <p><small>“I have used retrospectives.”</small></p> </td> 
-  </tr> 
-  <tr> 
-   <td valign="bottom" width="578"> <p><small>“Yes, on daily.”</small></p> </td> 
-  </tr> 
-  <tr> 
-   <td valign="bottom" width="578"> <p><small>“I use retrospectives to regularly do a lessons learned for pieces of work. I regularly use JIRA Kanban boards to help my team establish group and individual priorities so we have a shared and common understanding of what needs to be done.”</small></p> </td> 
-  </tr> 
-  <tr> 
-   <td valign="bottom" width="578"> <p><small>“job interview for current role; team leadership; strategic planning; stakeholder buy in”</small></p> </td> 
-  </tr> 
-  <tr> 
-   <td valign="bottom" width="578"> <p><small>“I have integrated simple tools such as time boxing to create urgency in decision making. I adapted the working agreement model for group guidelines in working together. I strive to reframe failure as a set back to fail fast as a desired step in continuous improvement. Overall I translate or modify the success steps used in IT environments into business process improvement.”</small></p> </td> 
-  </tr> 
-  <tr> 
-   <td valign="bottom" width="578"> <p><small>“Yes, I use individual tools as part of my work.”</small></p> </td> 
-  </tr> 
- </tbody> 
-</table>
-<small> </small>
-<p></p>
-<h3>What Impact has this had on the results you produce?</h3>
-<p><small> </small></p>
-<table cellspacing="0" cellpadding="0" border="0"> 
- <tbody> 
-  <tr> 
-   <td valign="bottom" width="578"> <p><small>“I have been able to produce more work, not waste as much time, and find more joy in getting things done. :) ”</small></p> </td> 
-  </tr> 
-  <tr> 
-   <td valign="bottom" width="578"> <p><small>“It has differentiated my practice.”</small></p> </td> 
-  </tr> 
-  <tr> 
-   <td valign="bottom" width="578"> <p><small>“Positive team building and cutting out some of the overhead in large projects.”</small></p> </td> 
-  </tr> 
-  <tr> 
-   <td valign="bottom" width="578"> <p><small>“Increased Productivity.”</small></p> </td> 
-  </tr> 
-  <tr> 
-   <td valign="bottom" width="578"> <p><small>“The teams that I worked with became more aware of time, business value, and feedback loops. As a result, they delivered faster and more efficiently.”</small></p> </td> 
-  </tr> 
-  <tr> 
-   <td valign="bottom" width="578"> <p><small>“This program has given me a lot of insights in my formal agile education/learning. I really learned a lot in this Agile Management Program.” </small></p> </td> 
-  </tr> 
-  <tr> 
-   <td valign="bottom" width="578"> <p><small>Not much really.</small></p> </td> 
-  </tr> 
-  <tr> 
-   <td valign="bottom" width="578"> <p><small>“I hope it will have an impact in my career change goals.”</small></p> </td> 
-  </tr> 
-  <tr> 
-   <td valign="bottom" width="578"> <p><small>“Agile thinking has allowed me to establish and adjust realistic daily focal points in a manner that make total sense. The iterative ways of Agile firmly guide me through what would otherwise be difficult due to rigid thinking in a world that is changing minute by minute.”</small></p> </td> 
-  </tr> 
-  <tr> 
-   <td valign="bottom" width="578"> <p><small>“It has recently given great visibility into the cadence and capabilities of the team.”</small></p> </td> 
-  </tr> 
-  <tr> 
-   <td valign="bottom" width="578"> <p><small>“1. Quicker discovery of what initiatives hold promise, and which are of lesser value. 2. Faster production of incremental value. 3. Greater involvement of customers in product development.”</small></p> </td> 
-  </tr> 
-  <tr> 
-   <td valign="bottom" width="578"> <p><small>“Easier to produce given results, and maintain quality and energy levels. More capacity to focus on priority projects, and be aware of and respond to opportunities. Assists harvesting the value available when working from a whole system, team, and collaboration partner perspective.” </small></p> </td> 
-  </tr> 
-  <tr> 
-   <td valign="bottom" width="578"> <p><small>“Impacts on Me: <br /> - Reduced a lot of stress on me, while managing teams and business needs <br /> - A much better management of time <br /> - Almost removed Micro Management from my management style <br /> For Teams: <br /> - More self managed <br /> - Better productivity, as teams are able to make faster decisions and are able to help various prioritization processes that our team has to go through to design and develop various business requirements.”</small></p> </td> 
-  </tr> 
-  <tr> 
-   <td valign="bottom" width="578"> <p><small>“I'm able to document and measure real value to myself and my organization in ways I could not previously have done. I'm able to create prioritization in a disciplined way.”</small></p> </td> 
-  </tr> 
-  <tr> 
-   <td valign="bottom" width="578"> <p><small>“It has been a tremendous impact to my career and to my project teams I have coached and worked with. I have seen the value added, I have seen the teams collaborate and make a big impact to the project in their deployments. (They have done some WOW things)”</small></p> </td> 
-  </tr> 
-  <tr> 
-   <td valign="bottom" width="578"> <p><small>“Better outcomes, perception of more viable products delivered due to smaller and more frequent deliverables, better time management.”</small></p> </td> 
-  </tr> 
-  <tr> 
-   <td valign="bottom" width="578"> <p><small>“I produce results faster, and I only produce what I believe has value. I have ceased producing many of the artifacts from typical project management (e.g. Communication Plan, Risk Register) which I believe are of little or no value (given how rarely they are viewed or referenced).”</small></p> </td> 
-  </tr> 
-  <tr> 
-   <td valign="bottom" width="578"> <p><small>“Too early to tell.”</small></p> </td> 
-  </tr> 
-  <tr> 
-   <td valign="bottom" width="578"> <p><small>“Less waste. More productivity. More value in all aspects if my life.”</small></p> </td> 
-  </tr> 
-  <tr> 
-   <td valign="bottom" width="578"> <p><small>“20 to 30% more efficient.”</small></p> </td> 
-  </tr> 
-  <tr> 
-   <td valign="bottom" width="578"> <p><small>“I think my documentation is much better since it is more focused. The folks I work with seem happier when their work is more focused.”</small></p> </td> 
-  </tr> 
-  <tr> 
-   <td valign="bottom" width="578"> <p><small>“Involved team; up to date knowledge of what team needs; respect of IT, UX staff and students and employers; better program design.”</small></p> </td> 
-  </tr> 
-  <tr> 
-   <td valign="bottom" width="578"> <p><small>“The classroom discussion made it very clear that the reality is there will be resistance and that change is incremental. I am pleased with my own methods and the results. I am not yet comfortable with the behaviors related to resistance to change. I think front line supervisors and managers need even more active leadership support.”</small></p> </td> 
-  </tr> 
-  <tr> 
-   <td valign="bottom" width="578"> <p><small>“They help me be more productive and achieve results more easily.”</small></p> </td> 
-  </tr> 
- </tbody> 
-</table>
-<small> </small>
-<p></p>
-<p>2.1.4. Outreach strategy:</p>
-<p>2.1.4.1. Main ways UCBX AMP alumni and current students found out about the AMP (Survey respondents could select more than one answer):&nbsp;</p>
-<ul> 
- <li><i>printed or online catalog or brochure (81%) </i></li> 
- <li><i>colleague or friend (34%).</i></li> 
- <li>email (22%)</li> 
- <li>employer recommendation (10%).</li> 
-</ul>
-<p>None reported learning about the AMP through radio or TV advertising.</p>
-<p>2.1.4.2. <i>Best ways going forward to market the AMP</i> according to alumni and current students:</p>
-<ul> 
- <li>Catalog and brochures (44%)</li> 
- <li>colleagues or friends (41%)</li> 
- <li>online social media like LinkedIn, Facebook, Google+ (34%)</li> 
- <li>website or blog (28%)</li> 
- <li>recommended via an employer (28%)</li> 
- <li>email (22%)</li> 
- <li>webinars (22%).</li> 
-</ul>
-<p>2.2. Survey Responses from Potential AMP Participants</p>
-<p>Major patterns observed in survey responses from potential participants in the San Francisco Bay Area Agile Leadership Network (BA ALN0 and in the Silicon Valley Agile Leadership Network (SV ALN):</p>
-<p>2.2.1. Who responded to the survey:</p>
-<p>2.2.1.1. <i>The response rate was approximately 3%</i> from the BA ALN and 2% from the SV ALN (24 and 18 responses, respectively) using Meetup mailing lists of approximately 1000 each in which duplicate names had not been removed.</p>
-<p>2.2.1.2. The green bars in each cluster in Figure 2 show how the combination of these two ALN groups categorized their professional role. <i>The top two categories were “Project Leader or Manager” and “Agile Coach or Scrum Master”.</i></p>
-<p><b><small>Figure 2 repeated: Role of Survey Respondents.</small></b></p>
-<p><img src="http://www.infoq.com/resource/articles/being-agile-management-curriculum/en/resources/2Fig2.png" alt="" _href="img://2Fig2.png" _p="true" /></p>
-<p>2.2.2. Curriculum design and attributes:</p>
-<p><i>2.2.2.1. </i><i>Which would be most important if enrolling in the UCBX AMP (more:</i></p>
-<ul> 
- <li><i>“Gain Agile leadership and/or management abilities” (62%)</i></li> 
- <li><i>“How to think, and be, Agile” (40%)</i></li> 
- <li><i>“Gain Specific Technical knowledge or skills” (31%)</i>.</li> 
-</ul>
-<p>The green bars in each cluster in Figure 3 show the full set of important reasons for potential participants in the ALN enrolling in the AMP.</p>
-<p><b><small>Figure 3 repeated: Most Important for Potential Participants if Enrolling in the UCBX AMP</small></b></p>
-<p><a href="/resource/articles/being-agile-management-curriculum/en/resources/Fig3.png" _href="resource://Fig3.png"><img src="http://www.infoq.com/resource/articles/being-agile-management-curriculum/en/resources/1Fig3-small.png" alt="" _href="img://1Fig3-small.png" _p="true" /></a></p>
-<p><b><small>(Click on the image to enlarge it)</small></b></p>
-<p>2.2.2.2. In written responses to the question <i>“What would make the program even more valuable?”</i> the most frequent responses were:</p>
-<ul> 
- <li><i>More on Agile methods and practices, particularly practical application and adaption in different circumstances encountered in practice, and at scale</i>.</li> 
- <li><i>Enabling the practice of Agile values and principles among organizational leaders and middle managers, and Agile transformation.</i></li> 
- <li>Perspectives and discussion with those experienced with Agile implementation.</li> 
-</ul>
-<p>2.2.2.3. Course location:</p>
-<ul> 
- <li><i>Central physical locations were the most popular (61% and 57% for the top physical location for the BA ALN and SV ALN, respectively), </i>with interest in 24/7 online the second most popular (57%) among BA ALN respondents, and blended physical and online second most popular (50%) among the SV ALN respondents.</li> 
-</ul>
-<p>2.2.2.4. Course timing for live training:</p>
-<ul> 
- <li><i>Evenings (66%) and weekends (51%) were preferred</i> by potential participants.</li> 
- <li>Potential participants from the ALN preferred shorter sessions, as survey respondents rated both full day and half day options lower than 20%.</li> 
-</ul>
-<p>2.2.2.5. Overall, potential participants from the ALN:</p>
-<ul> 
- <li>Recognized the importance of actually implementing Agile values and principles in leadership, management, and methodology in order to obtain promised benefits of Agile.</li> 
- <li>At the same time, tended to think about course offerings more in terms of technical Agile methods training.</li> 
- <li>Valued the importance of in-person workshops and longer individual sessions less than those who had experienced the UCBX AMP.</li> 
-</ul>
-<p>2.2.3. Outreach strategy:</p>
-<p><i>2.2.3.1. </i><i>Only about one third of current SV ALN respondents and one half of BA ALN respondents were aware of the existence of the UCBX AMP.</i></p>
-<p>2.2.3.2. <i>Best ways going forward to market the AMP</i> according to potential participants from the ALNs:</p>
-<ul> 
- <li>email (62%)</li> 
- <li>website or blog (55%)</li> 
- <li>colleagues or friends (31%)</li> 
- <li>recommended via an employer (31%)</li> 
- <li>online social media like LinkedIn, Facebook, Google+ (29%)</li> 
- <li>Catalog and brochures (29%)</li> 
- <li>webinars (24%).</li> 
-</ul>
-<p>The preferences for the first two channels -- email, and website or blog –differed dramatically from those recommended by current students and alumni as seen in Figure 4 below.</p>
-<p><b><small>Figure 4: Preferred Outreach Channels</small></b>/p&gt;</p>
-<p><a href="/resource/articles/being-agile-management-curriculum/en/resources/Fig4.png" _href="resource://Fig4.png"><img src="http://www.infoq.com/resource/articles/being-agile-management-curriculum/en/resources/Fig4-small.png" alt="" _href="img://Fig4-small.png" _p="true" /></a></p>
-<p><b><small>(Click on the image to enlarge it)</small></b></p>
-<h2>Conclusions and Associated Recommendations</h2>
-<h3>The value of “Being Agile” as a Foundational Curriculum Element was Substantiated.</h3>
-<p>The UCBX AMP has demonstrated its power to prepare its participants for being and doing Agile in environments of rapid change.</p>
+<p>These three aspects affect each other. I care most about structural quality because I am a hard-core software engineer. If code is written beautifully – sorry, I am describing it as a piece of art -- it will lead to fewer defects and quicker development cycles. But I am also part of the value-delivering chain: I can’t be too obsessed with the beauty of the code. I and everybody in the value-delivering chain have to balance these factors. Every project is different and the circumstances can change every day.”</p>
+<p>Tom: “Ok, I get it now. But I need to understand the status of each product, I promise I won’t setup goals on these metrics, but simply use them as information to understand the status of each product.”</p>
+<p>Bob (signed): “I trust you because I’ve known you for a long time. But there is nothing inherent about a metric that guarantees it is informational. What if you were moved to another department and someone else replaced you? Or what if you had a change of heart? The moment you setup a board with numbers written on it, people will use them as targets and will be motivated to meet them – that is the magic of numbers.”</p>
+<p>Tom’s heart sank. He now came to the full realization of the mistakes he had made.</p>
 <ol> 
- <li>The value of using a “Being Agile” focus on Agile values and principles as a foundation for Agile’s effective application is (1) producing results for UCBX AMP participants and is (2) becoming appreciated as an important and valuable learning element by those who participate in the UCBX AMP.</li> 
- <li>The importance of employing Agile values and principles in reaping the potential benefits of Agile methods is also known by many potential participants, but the implications for Agile curriculum content, form, and process/delivery is not.</li> 
+ <li>He was mistaken about the directional nature of correlation. Having fewer defects doesn’t mean better quality.</li> 
+ <li>He was mistaken that defects are the only dimension. In fact, there are so many dimensions in developing software that other dimensions are greatly distorted when people maximize one single dimension.</li> 
+ <li>He was mistaken that he was able to find all the key dimensions. Software work is so creative, so complex and so constantly evolving, it is impossible for a manager to understand every aspect of it and thus control it. In fact, it is not his job to understand and control everything, his job is to enable people to do their jobs and to provide inspiration and assistance.</li> 
 </ol>
-<p>Recommendation: Enrich the Core UCBX Agile Curriculum As a Foundation for Agile Pathways</p>
+<p>But Tom shouldn’t have beaten himself up so much. To his credit, he proposed to use metrics as informational, but it takes more than his personal charm to convince people that metrics won’t be used otherwise. There are features that are at the corporation level that affect trust-building between employees and managers, such as:</p>
 <ul> 
- <li>Steward and further enrich the current, essential character of the AMP, with its focus on “being” Agile to enable self-organizing application of tools for “doing” Agile effectively and successfully. <i>Doing so focuses on ensuring achievement of the enduring outcomes and value desired by current and potential participants (customers), even though some curriculum elements and the degree of interaction and physical presence required may not seem familiar or necessary to those who have not yet participated.</i></li> 
- <li>Add a differentiated set of required courses (for example, Introduction to Agile Management, Transition to Agile, and Agile Leadership) to the core curriculum.</li> 
- <li>Sequence core courses to provide an Agile values/systems context for specific Agile tools/methodologies electives, enhancing the probability of successful Agile practices application, leverage, and delivery on the promise of significant value creation.</li> 
+ <li>Organization size. Large organizations are perceived as less personal than smaller ones.</li> 
+ <li>Organizational prestige. Employees are more likely to identify with firms that are widely known and widely regarded.</li> 
+ <li>Degree to which employee needs are met in the organization.</li> 
+ <li>Perceived level of mutual commitment. The more employees perceive that the organization has taken on responsibility for their well-being, the more loyal employees are likely to be.</li> 
 </ul>
-<h3>The Desire and Demand Exists in Both Existing and Potential Participants to Expand Agile Methodology Offerings.</h3>
-<p>Recommendation: Evolve Electives to Enable Differentiation &amp; Choice of Pathways</p>
-<ul> 
- <li>Add electives to enable distinct pathways for Agile leadership and management, and for Agile technical operations. Clearly differentiate the outcomes and content for each elective, enabling students to choose courses and create the pathway appropriate to their needs.</li> 
- <li>Populate the Agile leadership and management pathway with electives that match current customer requirements and priorities (examples include Quality and Risk Management in Agile, Agile Product Ownership, Agile Estimation and Planning).</li> 
- <li>Populate the Agile technical operations pathway with electives that match current customer requirements and priorities (examples include Agile Management Using Scrum; Agile Management Using XP; Agile Management Using Lean; Agile Management using DSDM, Advanced KANBAN Metrics).</li> 
- <li>‘Instantly’ add to Agile/Lean tool and technical course choices by crediting coursework taken elsewhere in the UC system (for example through the UCIX Agile Project Management Program).</li> 
- <li>Make selected Agile Management electives available as electives in the UC Berkeley Extension Project Management certification curriculum. Common cause exists between UC Extension Agile programs and between UC Berkeley business curricula and the UC Berkeley Extension AMP, and value to students could be enhanced by greater collaboration among these institutions.</li> 
-</ul>
-<h3>Possibilities Exist for Experimenting with Additional Curriculum Delivery Options which Both Protect Essential Requirements for Enabling Participants to Reap the Benefits of Agile Being While Addressing Participant Availability Constraints.</h3>
-<p>Recommendation: Explore Course Delivery Options that Match Prospective Student Priorities</p>
-<ul> 
- <li>Prospective student survey data indicates a modest desire for on-line Agile course availability. In the short term, consider publicizing the availability of on-line courses through the UCIX Agile Project Management Program, and the ability to transfer credits for up to two classes within the UC Extension system.</li> 
- <li>Experiment, possibly in cooperation with UCIX Agile, with on-line delivery of one or more specific content chunk slices, and with interactive on-line support to individuals or teams working on class assignments between face-to-face sessions.</li> 
- <li>On an experimental basis, explore longer evening classes which minimize interruption and the building of momentum in the class. Expand the set of courses at UCBX Belmont for those coming up from the south Bay Area, to match priorities revealed in our survey of prospective students.</li> 
-</ul>
-<h3>The Value and Benefits of Leveraging,an Agile Curriculum with a “Being Agile” Core Foundation Will be Very Limited Unless the Availability, Character, and Benefits of this Type of Curriculum are Known. Significant Potential Exists for Improving UCBX AMP Marketing Results.</h3>
-<p>Although the program is well positioned to 'catch the Agile wave,' its lack of visibility and the lack of visibility of its results and deeper value has limited growth.</p>
-<ol> 
- <li>A majority of local potential AMP participants who responded to the surveys were not aware of the existence of the program.</li> 
- <li>A number of important outreach channels preferred by existing and potential AMP participants are unused or are being given low emphasis.</li> 
-</ol>
-<p>There are many Agile, innovative marketing, outreach, and networking tactics that can change this situation and help the Program deliver value to a rapidly expanding customer base.</p>
-<p>Recommendation: Strengthen Marketing Through Channels that Match Customer Preferences</p>
-<ul> 
- <li>Engage a broader market of prospective students via increased on-line marketing to include email, websites/blogs, webinars, and social media.</li> 
- <li>Build out the UCBX AMP website, creating a blog with Alumni guest posts, and placing testimonials front and center (text, images, videos, and audio) with offers by alumni to speak to those interested in participating the AMP.</li> 
- <li>Funnel/mirror some or all AMP website content on the AMP alumni site, YouTube, LinkedIn, and other professional social network sites.</li> 
- <li>Use incoming email and phone inquiries about the AMP to immediately engage potential participants and employers in a market research, enrollment, and coaching conversation that explores: (a) how they learned about the program, (b) the value they want out of the AMP, and (c) how the AMP meets their specific requirements.</li> 
- <li>Celebrate the “graduation” of Agile learners by organizing a public event that will generate publicity.</li> 
- <li>Measure ROI of various outreach channels in connecting with potential participants, and with employers who want to sponsor AMP employee training: Adapt marketing budget and tactics to match results. each – Final Report</li> 
-</ul>
-<p>Recommendation: Tap Networking Power for Enhanced Outreach</p>
-<ul> 
- <li>Develop stronger links to Agile campus resources at UC Berkeley (faculty, staff, informal UC Berkeley Agile working group(s) and Centers within the Haas School of Business).</li> 
- <li>Leverage the networking potential of the program as a value-adding element by creating meet-ups and events for current learners and alumni, and by sponsoring, attending, and being visible at Agile/Lean Conferences and events.</li> 
- <li>Use networking to insure key Agile employers in Northern California are aware of UCBX AMP value, how to contact graduates, and how to take advantage of the AMP (for example, encourage UCBX instructors and alumni to offer face-to-face information sessions at their companies).</li> 
- <li>Encourage alumni, satisfied employers, instructors, and UCBX staff to speak at ALN, other Agile/Lean professional groups, and at Project Management Institute (PMI) to create visibility and employer engagement.</li> 
- <li>Actively invite referrals to the AMP through the e-mail list of AMP alumni and instructors.</li> 
-</ul>
-<h3>Participant Effort and Generative Ability to be Effective in Employing Agile Values and Practices as a Result of Completing the AMP is Under Recognized and Under Acknowledged.</h3>
-<p>Recommendation: From Sequence to Certificate: Offer Full Certification for the AMP</p>
-<ul> 
- <li>Develop a full Certification pathway for the AMP (150 instructional hours with designated required and elective courses) including possible additional certifications related to specific subject or practice areas.</li> 
-</ul>
-<h3>Continued Curricula Development Would Benefit from an Even Greater Use of an Important Agile Value: Systems Thinking.</h3>
-<p>Recommendation: More Widely and Thoroughly Apply Systems Thinking &amp; Approach to UCBX Agile Management Program&nbsp;</p>
-<ul> 
- <li>Assess Agile industry trends and program models annually via UC Extension system-wide collaborative studies.</li> 
- <li>Use on-going, iterative surveys of customers and employers in the UCBX local region to understand the priorities and preferences that drive enrollment.</li> 
- <li>Draw on Agile trend studies and local assessments to inform annual curriculum development, course scheduling, and marketing initiatives.</li> 
- <li>Establish Centers of Agile/Lean Excellence within the UC Extension system (based on program focus).</li> 
- <li>Enable transfer of credit and participation in courses from all UC Agile sponsors (in accordance with lead campus program requirements - the campus with whom the student is enrolled).</li> 
-</ul>
-<h2>Presentation of Study and Follow-Up</h2>
-<p>Study intent, methodology, findings, and recommendations were presented to the full UCBX AMP Principles and Practices class on July 20, 2013, with several guests in attendance. The final report and survey statistics summaries were circulated to all those interviewed, and to those interested from the two ALN groups surveyed. A meeting was held with UCBX AMP leadership to discuss the study’s findings and recommendations. The Director of the AMP stated that study was of significant value, and that discussions of its recommendations with AMP faculty would go forward.</p>
-<p>In retrospect, engaging customers to identify features they wanted in the UCBX AMP curriculum provided a real world example of Agile values, principles, practices, and benefits in action. This project (conducted in a brief 5 week set of iterations) created value for:</p>
-<ol> 
- <li>The students conducting the study (two have now joined the UCBX AMP faculty),</li> 
- <li>Current faculty, leadership, and marketing for the UCBX AMP, and</li> 
- <li>Potential participants.</li> 
-</ol>
-<p><i>“What Impact has this had on the results you produce?”</i></p>
-<p>“I have been able to produce more work, not waste as much time, and find more joy in getting things done. :) ”</p>
-<p>“The teams that I worked with became more aware of time, business value, and feedback loops. As a result, they delivered faster and more efficiently.”</p>
-<p>“1. Quicker discovery of what initiatives hold promise, and which are of lesser value. 2. Faster production of incremental value. 3. Greater involvement of customers in product development.”</p>
-<hr align="left" size="1" width="33%" />
-<p><sup>1</sup> This earlier AMP team project, <a href="https://drive.google.com/folderview?id=0B8L8GU8FgcI8NHhGSWZhYUJfV1k&amp;usp=sharing">Improving Federal Adoption of Agile IT Methods</a>, took as a starting point findings from a July 2012 US General Services Administration report (12‐681) showing the value, practicality, and necessity for employing Agile approaches in US Federal IT development efforts. The class team, composed of professionals from different sectors, made several recommendations: (1) Federal Blue Ribbon Panel to identify and refine best Agile practices, (2) engagement of Agency leadership in promoting Agile change and in adapting best practices, (3) streamlining to Agile practices in planning, procurement, reporting, and compliance, (4) facilitating collaboration, commitment, and continuous learning at the project team level, and (5) initiating implementation through pilot projects.</p>
-<p><sup>2</sup> Mr. Tom Kendrick, UC Berkeley Extension, Agile Management Program Director, &amp; Program Director for Project Management.</p>
-<p><sup>3</sup> These were Pat Reed and Ainsley Nies, key founding UCBX AMP faculty who played a major role in setting the character and direction of the AMP. They also served as our Principles and Practices paired instructor team.</p>
-<p><sup>4</sup> The two AMP instructors interviewed said that, in their experience, current evening class lengths limit buildup of learning velocity and momentum (similar to Agile understanding of productivity at work).</p>
-<p><sup>5</sup> Comments in quotes are from separate individuals in response to each question (only one comment per person per question). Only a portion of respondents responded to each question. As authors of the paper were allowed to take the survey, their comments (if they choose to respond to a given question) are also included here.</p>
-<h2>About the Authors</h2>
-<p><b><img src="http://www.infoq.com/resource/articles/being-agile-management-curriculum/en/resources/Susan.jpg" vspace="3" hspace="3" align="left" alt="" _href="img://Susan.jpg" _p="true" />Susan E. Berry</b> is a partner in Aligned for Results, LLC, where she helps people collaborate to craft a compelling vision for their company, team, or community, and use Agile processes to bring their vision to life.&nbsp; She draws on extensive experience facilitating collaboration in contexts from local to global. Work roles include UN World Health Organization Staff Development and Training Officer, Training Consultant for the US Office of Personnel Management, and Director of Ed/Tech Service for Rural Community Assistance Corporation.&nbsp; MA, University of Wisconsin-Madison, NLP Practitioner, CSM&reg;, CSPO&reg;, Innovation Games&reg; Certified Collaboration Architect, and graduate of the UC Berkeley Agile Management Program.&nbsp;&nbsp; See full one page bio <a href="https://www.aligned4results.com/susan-berry-at-aligned-for-results/">here</a>.</p>
-<p><b><img src="http://www.infoq.com/resource/articles/being-agile-management-curriculum/en/resources/Christian-Jackson.jpg" vspace="3" hspace="3" align="left" alt="" _href="img://Christian-Jackson.jpg" _p="true" />Christian Jackson </b>is an experienced organizational change and efficiency consultant based in the San Francisco Bay Area, having served organizations including the Kaiser Permanente health care system.&nbsp; Melding people and technical skills, he is focused on finding ways to do things better, easier, and more robustly.&nbsp; Christian helps those he is assisting improve communication, interaction, and relationships between systems and between people, including better shared use of resources.&nbsp; He is active in community activities, supporting non-profit initiatives such as introducing men to a wider (and co-incidentally healthier) palate, and a joint effort between Eating Healthy, UC Berkeley and Kaiser helping residents access local resources in improving their health outcomes.</p>
-<p><b><img src="http://www.infoq.com/resource/articles/being-agile-management-curriculum/en/resources/Nadine.jpg" vspace="3" hspace="3" align="left" alt="" _href="img://Nadine.jpg" _p="true" />Nadine Kabbara </b>is a Learning and Development consultant with more than 15 years of international experience. She is a seasoned business trainer and has designed, developed, and delivered numerous corporate learning programs, and has coached professionals in career planning and development. Prior to that, as Manager at Deloitte consulting, Nadine led global Human Capital projects and Organizational Development initiatives.&nbsp; Nadine holds an MBA and is a certified Senior Professional in Human Resources (SPHR) and a certified Project Management Professional (PMP). She is also certified in Instructional Design, covering the latest technology and trends in the Learning and Development (L&amp;D) field. As an experienced project management practitioner and trainer, Nadine is highly interested in the transition of professionals and organizations from “traditional” project management to Agile approaches. She has recently completed the program “Agile Management” at UC Berkeley Extension, and has joined the program’s team of instructors.</p>
-<p><b><img src="http://www.infoq.com/resource/articles/being-agile-management-curriculum/en/resources/Bala.png" vspace="3" hspace="3" align="left" alt="" _href="img://Bala.png" _p="true" />Balasubramanian Swaminathan </b>is currently working as a Senior Agile Program Manager (Strategic Management) and performs Agile Management coach role at CPP Inc. He also currently works at UC Berkeley Extension as Adjunct Instructor for Agile Management. He has an overall 17+ years of software industry and management experience. Bala is an Engineer (BS – Electronics and Communication Engineer) and MBA (Marketing) graduate holder.&nbsp; He had worked as an R&amp;D Engineer in the field of Real-Time Embedded Systems.&nbsp; Bala held different senior roles in R&amp;D Software industries (to mention few: Healthcare, Security Control, Automotive and Radar Communication System). He had also worked in the Product Support Group as Sr. Project Manager offering outstanding customer product support (Radiation Oncology) and also performed Sr. Technical Project Manager in the R&amp;D group (Radiation Oncology).&nbsp; He is PMP certified, PMI-ACP and CSP (Certified Scrum Professional) and CSM certified. He had also completed the formal education in Project Management, Project Human Resource Management and Agile Management in UC Berkeley Extension.</p>
-<p><strong><img src="http://www.infoq.com/resource/articles/being-agile-management-curriculum/en/resources/Randy.jpg" vspace="3" hspace="3" align="left" alt="" _href="img://Randy.jpg" _p="true" />Randall W. Thomas </strong>as partner at Aligned for Results, LLC, assists individuals, teams, and organizations to produce exceptional value. His passion is enabling people to discover and apply their tremendous abilities to self-vitalize, create, and work together in common purpose.&nbsp; Former University of California Berkeley Principal Investigator and Senior Fellow in the eco/geospatial science and technology sector, and UN consultant and visiting scholar at European Universities serving initiatives that spanned large area spatial data/information applications, project development, budgeting, implementation, collaboration, and training.&nbsp; PhD, MS, BS, University of California Berkeley, NLP Practitioner, CSM&reg;, CSPO&reg;, Innovation Games&reg; Certified Collaboration Architect, UC Berkeley Extension Agile Management Program Award of Completion. See full one page bio &nbsp;<a href="https://www.aligned4results.com/randy-thomas-at-aligned-for-results/">here</a>.</p><br><br><br><br><br><br></body></html>
+<p>Tom (sounded desperate):”What are you saying? We should abandon all metrics? Wouldn’t that lead to chaos?”</p>
+<p>Bob (winked at Tom):” if we abandon all metrics, you wouldn’t have a job. First, it won’t lead to chaos. People have an intrinsic motivation to do a good job. Every decent software engineer wants to write good code and come up with good solutions. Software changes so quickly and new technology pops up every day, if an engineer doesn’t have an intrinsic motivation to learn new technologies, he will quickly find himself left behind. The metrics you created forced my team to do quick-and-dirty solutions. It affects my team’s morale, because they are not doing things that they can be proud of. In fact, some members are so disappointed with their work, I am afraid they might want to leave. ”</p>
+<p>Tom winced, he didn’t know that his metrics had such a damage. Bob caught his expression and went on to explain: “If you think about it, it is not surprising. Software, by definition, it’s creative and requires innovative, non-routine solutions. If something is routine, we will devise programs to have computers do it for us. Because of this nature, it is interesting and rewarding. Now you imposed this metric, you practically dictated what we should to do – fixing defects, how we should do it – fixing them quickly, when we should do it – in a year. It took our autonomy from work, reduced us to working ants, made the job less interesting and dampened our initiatives and passion; not only that, it went against the nature of software – it discouraged innovation, which is the key element of software, because our focus was narrowed on one aspect, we were not thinking out of the box which was necessary for innovation.</p>
+<p>But you can still use the metrics, because many of them do reflect quality. You can also set a target – most people will assume those metrics as targets anyway – but you should realize these metrics measure only a small subset of dimensions – and arguably not the key dimensions. So you should be careful not to set an extreme target, for example, 50 defects is an extreme number and will motivate people to short-cut by all means; second, you should leave each team to interpret the data themselves, in other words, these metrics become each team’s self-assessment tools, it tells them they are doing something wrong, and they should come up with practical ways to improve them. For example, they might conclude that their code ‘testability’ suffers which leads to a lot of regressions, so they should invest more on refactoring or automation. “</p>
+<p>Tom:” What you said makes a lot of sense. But I’ve learned so much today that it shakes my belief and confidence. Do you think we can make successful software after making the changes you suggested?&quot;</p>
+<p>Bob (chuckled):” How I wish that was true. You must have seen this amusing picture which sums up the problem so perfectly.”</p>
+<p>Bob pointed to the picture in his laptop.</p>
+<p><b><small>(Click on the image to enlarge it)</small></b></p>
+<p><a href="/resource/articles/metrics-original-sin/en/resources/Fig4.jpg" _href="resource://Fig4.jpg"><img src="http://www.infoq.com/resource/articles/metrics-original-sin/en/resources/Fig4-small.jpg" alt="" _href="img://Fig4-small.jpg" _p="true" /></a></p>
+<p>Tom (smiled): “The business consultant did a fantastic job, didn’t she? She painted for the customer something more comfortable than what he asked for, and after the customer realized the truth it’s too late, data is in, process is changed. He couldn’t get out.”</p>
+<p>Bob:” The landscape has changed. Competitors are more nimble in providing what customers want at a low cost. Back to the metrics question, even if we write beautiful code, even if we have zero defects, even if we complete it within time and budget, it doesn’t mean we are producing something that the customer wants. What we are measuring is not the end result, which is how customers perceive our product, but substitute characteristics: we can do a fantastic job on these substitute characteristics but still get miserable end results. Since we are making products, we are essentially anticipating or even making up customer needs, if we make a mistake it might be many releases before we realize the mistake, and that could be very costly.”</p>
+<p>Tom:” Yes, we need to shorten the time from the first clip of the picture to the last clip.”</p>
+<p>Bob:” Exactly! We have a golden opportunity here -- dog food! We are a very big company, plenty of opportunities to eat our own dog food. “</p>
+<p>Tom:” Dog food?”</p>
+<p>Bob:” Yes. We can sell products internally. After all, if our own company does not want to use our own products, chances are slim we can force them down other companies’ throat, no matter how brilliant the business consultants are. Instead of lumping twenty big features in a major release every 6 months, we can dissect big features and release each small feature continuously to internal customers. You can measure how quick each team does continuous release and how well end customers perceive them. The ability to do good continuous release is a testament of how well the whole team – including developer, QA, product owners – functions. Customers’ feedback is the ultimate measurement. Moreover, seeing that what they are doing is making a direct impact on end users will greatly boost people’s intrinsic motivation. “</p>
+<p>Tom (smiled wryly):” I like your idea, but it is not easy as you might think to smooth out internal cooperation and communication to eat our own dog food. Last year, I ruffled quite some features trying to push through the workflow changes. In a big company, there are many people, but there are also many turf wars and political plays.”</p>
+<p>Bob:” But we can’t make modernized products without modernizing our management approaches while the rest of the world is modernizing. I do not want to see Phoenix go up in flames…”</p>
+<p>Tom:” At a minimum, I’d like to have a discussion about the current metrics. What are their intentions? Are they triggering behaviors that are in compliance with the letter of the intentions but are defying the spirit? And more importantly, right now there is no metric that measures the end result – How do customers respond to each release? How do they like each new feature? Or are they using new features at all? If we have such discussions I am sure many new ideas will pop up. For example, in addition to dog food, we might want to develop some reference customers and make arrangements with them.”</p>
+<h2>Endnotes</h2>
+<p>I wrote this article mainly to point out the original sin of software metrics and to break people away from the conception that “the metrics are good, people are doing it wrong, so more processes should be set up to make people comply with the metrics.” The end of the article has a feeble attempt to offer some solutions, but at the end of the day, it is about building a culture that taps into and nurtures intrinsic motivations, which is a topic I do not have enough experience to talk about. I hope this article has provided some basis for a discussion about management approaches in a creative industry such as software.</p>
+<h2>About the Author</h2>
+<p><strong><img vspace="3" hspace="3" align="left" src="http://www.infoq.com/resource/articles/metrics-original-sin/en/resources/1Chen-Ping.jpg" alt="" _href="img://1Chen-Ping.jpg" _p="true" />Chen Ping</strong> lives in Shanghai, China and graduated with a Masters Degree in Computer Science in 2005. Since then she has worked for Lucent and Morgan Stanley. Currently she is working for HP as a Development manager. Outside of work, she likes to study Chinese medicine. She blogs <a href="http://perfspy.blogspot.com/">here</a>.</p><br><br><br><br><br><br></body></html>

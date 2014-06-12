@@ -1,37 +1,57 @@
-<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>OpenSSL Heartbleed漏洞事件记录</h3><p>2014年4月7日开始在互联网上引起轩然大波的“OpenSSL Heartbleed”漏洞是一个非常严重的漏洞，安全人士“道哥的黑板报”表示该漏洞可能成为2014年的“最佳漏洞”之一，造成的影响可能会超过去年Struts框架远程执行漏洞。</p>
-<p>以下是InfoQ中文站对本次漏洞披露过程、讨论过程和影响范围的事件记录，供参考。</p>
-<p>2014年4月7日，CloudFlare公司在其博客上发布了一个<a href="https://blog.cloudflare.com/staying-ahead-of-openssl-vulnerabilities">公开声明</a>，表示发现了OpenSSL 1.0.1版本当中的一个尚未被公开的漏洞，并表示CloudFlare已经在之前一周修复该bug。同日，OpenSSL官网发布该漏洞通告，漏洞标识为<a href="http://www.openssl.org/news/secadv_20140407.txt">CVE-2014-0160</a>，通告内容如下：</p>
+<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>ArchSummit深圳2014大会“SNS”专题：微信、Qzone、陌陌、贴吧同台分享</h3><p>由InfoQ主办的<a href="http://sz2014.archsummit.com/" target="_blank">ArchSummit全球架构师峰会</a>即将于7月18-19日在深圳举行，此次会议重点解析九个当前最受关注的领域，包括：<a href="http://sz2014.archsummit.com/node/498" target="_blank">SNS</a>、 <a href="http://sz2014.archsummit.com/node/499" target="_blank">移动互联网</a>、 <a href="http://sz2014.archsummit.com/node/500" target="_blank">金融</a>、 <a href="http://sz2014.archsummit.com/node/501" target="_blank">大数据</a>、 <a href="http://sz2014.archsummit.com/node/502" target="_blank">智能硬件</a>、 <a href="http://sz2014.archsummit.com/node/494" target="_blank">游戏</a>、 <a href="http://sz2014.archsummit.com/node/497" target="_blank">云计算</a>、<a href="http://sz2014.archsummit.com/node/503" target="_blank">自动化运维</a>、<a href="http://sz2014.archsummit.com/node/495" target="_blank">电商</a>等专题。其中的SNS专题目前讲师已经全部确认，来自微信、Qzone、陌陌、贴吧的架构师将分享宝贵的实战经验。</p>
+<p>腾讯Qzone前端核心技术负责人郭润增，担任“<a href="http://sz2014.archsummit.com/node/498" target="_blank">随机应变的SNS</a>” 专题的出品人，其先后经历了Qzone 5.0、6.0（主导）、8.0（主导）的产品研发和技术演变，而个人技术上也经历了从”Flash 开发“到”Web前端开发“再到”安卓终端开发“等几次转型。这一路上推动了整个PC Qzone Feeds系统的架构演变（为了提升可维护性和灵活性），并不断深挖整个Qzone首页的打开速度的优化空间，同时经过不断地尝试和实践，成功在解决 “Web前端CPU性能”这个问题上找到了有效的监控方案和优化办法，并在最新的Qzone 8.0系统架构上针对“首屏卡”的问题取得了Qzone历史上的突破性优化成果。 专题的主旨是：</p>
 <blockquote> 
- <p>TLS心跳扩展的处理过程漏掉了一步边界检测的步骤，这个漏洞使攻击者能够从客户端与服务器端连接的内存泄露中读取多达64KB的数据。</p> 
- <p>OpenSSL 1.0.1、1.0.1f、1.0.2-beta和1.0.2-beta1版本包含本漏洞。</p> 
- <p>Google安全组的Neel Mehta发现了本漏洞，而Adam Langley <a href="mailto:agl@chromium.org">agl@chromium.org</a> 和Bodo Moeller <a href="mailto:bmoeller@acm.org">bmoeller@acm.org</a> 提供了漏洞的补丁，感谢他们。</p> 
- <p>所有受影响的用户需尽快升级至OpenSSL 1.0.1g版本。升级有困难的用户可以通过<code>-DOPENSSL_NO_HEARTBEATS</code>选项重新编译OpenSSL进行临时修补。</p> 
- <p>1.0.2-beta2更新中将修复这个漏洞。</p> 
+ <p>如果要细数“互联网时代”给全人类带来哪些颠覆的话，SNS（社会性网络服务）肯定会被列入其中，因为我们已经都离不开SNS，它将人类的社交活动从线下 搬到了线上，大大节省了成本，让“天涯若比邻”成为现实。而对于企业来说，拥有一款成功的SNS绝对是梦寐以求的（以致我们当中的不少人所从事的工作都会 跟SNS有所关联），而这几年我们确实也目睹了一个又一个SNS社区从我们的网络世界里面萌生、成长，有的意气风发、生机勃勃，也有的英年早逝、昙花一 现。而这一路上，不管产品成败与否，有太多太多的架构师在背后不断优化架构、优化体验、优化性能，这些宝贵的经验财富值得通过一个有影响力的平台传播并传 承下去，因为SNS的征战远未继续，我们还需努力，于是有了今天这个主题。</p> 
 </blockquote>
-<p>官方通告发布之后，<a href="http://www.codenomicon.com/">安全公司Codenomicon</a>单独建立网页对该漏洞进行更详细的描述与跟进，并表示其工程师在该漏洞披露之前早已单独发现了这个漏洞。由于该漏洞跟heartbeat与内存泄露的相关性，本漏洞被形象的描述为<a href="http://heartbleed.com/">Heartbleed</a>（心脏出血）。Heartbleed.com上有一份详细的FAQs，摘要部分如下：</p>
+<p><b>高可用即时通讯架构</b></p>
+<p>专题讲师李志威是陌陌科技CTO， 08年毕业后就职于网易，2011年作为联合创始人一同陌陌创业，现任陌陌CTO，管理公司100人的技术团队。至今陌陌已拥有超过1亿3千万的用户，是国内移动社交领域的领先者。 他的演讲题目是“高可用即时通讯架构”：</p>
 <blockquote> 
+ <p>即时通讯是社交网络的重要组成部分，通讯服务是否稳定快速，对社交体验尤为重要。陌陌完全基于移动端，面对国内复杂的网络环境，差异巨大的手机平台，在通讯方面比桌面软件面临更多的挑战。</p> 
+ <p>要构建高可用的即时通讯服务，将会面临很多问题：</p> 
  <ul> 
-  <li>这是一个非常严重的bug，导致全球互联网大量私钥和其他加密信息处于暴露的危险下。</li> 
-  <li>本漏洞从2011年12月开始进入OpenSSL，并在2012年3月14日OpenSSL 1.0.1正式发布后开始大量流入市场。</li> 
-  <li>Debian Wheezy、Ubuntu 12.04.4 LTS、CentOS 6.5、Fedora 18、OpenBSD 5.3、FreeBSD 10.0、NetBSD 5.0.2、OpenSUSE 12.2等发行版默认搭载了含有本漏洞的OpenSSL版本。</li> 
-  <li>利用本漏洞抓取敏感信息不会留下任何痕迹。</li> 
+  <li>各省份链路质量差别非常大，可能会出现运营商DNS劫持，端口屏蔽等</li> 
+  <li>频繁断线的手机网络下如何保障可靠地收发信息</li> 
+  <li>移动端弱网络下如何快速稳定睇批量收取群信息</li> 
+  <li>版本快速迭代，升级功能不能断开用户连接</li> 
+ </ul> 
+ <p>陌陌上线近3年，通讯服务器集群承载了超过千万的连接数，笔者将在本次会议分享一下其中的架构和经验。</p> 
+</blockquote>
+<p><b>微信Android客户端架构演进及其对开发流程的影响</b></p>
+<p>专题讲师赵原是微信Android开发组组长， 其作为初创人员启动微信项目，负责Android客户端开发。伴随微信从零开始成长，推进了微信Android客户端三年以来的架构演进，包括多进程架构设计、插件 开发模式。致力于研究如何通过更好的技术架构设计，提高团队开发效率，实现快速、高效的敏捷开发流程，打造高执行力的技术团队。 他的演讲题目是“微信Android客户端架构演进及其对开发流程的影响”：</p>
+<blockquote> 
+ <p>微信Android客户端的架构演进史，可以说是一个典型Android应用在从小到大的成长过程中的“踩坑”与“填坑”的历史。从1.0版本安装包的 354KB，到今天5.3版本的24.1MB，从最开始两三个码农的突击作业，到今天的“集团军”开发力量，微信的体量在不断增大，开发同学遇到的“成长 的烦恼”也越来越多：</p> 
+ <ul> 
+  <li>为什么微信收消息又延迟了？为什么我得每次打开微信才收到消息？</li> 
+  <li>为什么我的微信无法安装了？为什么微信启动越来越慢了？</li> 
+  <li>为什么我的eclipse突然无法debug微信了？如何把编译速度提升80%？</li> 
+  <li>如何在一个月左右的周期内排入5个迭代？如何并行发布3个以上代码线的客户端版本？</li> 
+  <li>如何减小因为增加开发人力而带来的资源损耗？</li> 
+ </ul> 
+ <p>Android系统先天的弊端与产品需求研发过程的矛盾，推动着客户端架构演进史这架车轮不断向前滚动。不断调整进化的架构，在为微信未来的高速成长保驾护航。欢迎各位和我们一起来了解微信Android客户端的架构演进过程。</p> 
+</blockquote>
+<p><b>贴吧服务端架构变迁史</b></p>
+<p>专题讲师许立强是百度贴吧架构师，负责LAMP基础技术、OXP私有云和贴吧基础设施方面的技术工作。在这期间，经历&amp;主导了贴吧架构的Lamp化、服务化、平 台化等多次技术演变，在构建高性能高并发的复杂系统方面积累了丰富的经验。10年创立了公司核心MVC开发框架Bingo2。11年组建Nginx技术小 组来建立公司内Nginx技术体系，并推广应用到公司核心部门。12年负责构建OXP私有云平台，目前已经接入公司几十个核心产品，机器规模超过4000 台。他的演讲题目是“贴吧服务端架构变迁史”：</p>
+<blockquote> 
+ <p>贴吧作为全球最大的中文社区，每日几百亿的浏览请求，上亿次的提交更新和每月上千次的产品更新迭代，对技术和架构都提出非常高的要求和挑战。</p> 
+ <p>在过去十几年的发展历程中，贴吧服务端架构经历了好几轮的调整和优化，从最初的简单架构到LAMP化的转型，再到平台化、服务化。每一次调整和变 化，既有需求驱动，又有问题驱动，同事也有技术驱动。跟随这些架构变迁，贴吧在构建高性能高并发的大规模复杂产品系统方面沉淀了非常多的经验和收货，本次 演讲将重点大家分享每次架构转型的原因、过程、经验和教训。</p> 
+ <p>听众受益：</p> 
+ <ul> 
+  <li>了解一个社区产品从小到大的过程中，技术上的挑战。</li> 
+  <li>了解如何构建一个流量大、系统复杂且更新很频繁的社区架构。</li> 
+  <li>了解在移动互联网的今天，社区架构存在哪些挑战并且如何应对。</li> 
  </ul> 
 </blockquote>
-<h3>社区讨论</h3>
-<p>该漏洞在被公开纰漏后开始迅速传播。OpenSSL官方通告在<a href="https://news.ycombinator.com/item?id=7548468">Hacker News</a>、<a href="http://lwn.net/Articles/593683/">LWN</a>、<a href="http://www.zhihu.com/question/23328658">知乎</a>等平台上引发大量讨论，讨论方向包括：</p>
-<p>吐槽OpenSSL的编码实践。造成边界检查失效的代码被视为“难以通过代码审查”，而即使是<a href="http://git.openssl.org/gitweb/?p=openssl.git;a=commitdiff;h=96db9023b881d7cd9f379b0c154650d6c108e9a3">修复的补丁</a>也被评价为“<a href="https://news.ycombinator.com/item?id=7552634">不忍直视</a>”：</p>
-<pre>
-if (1 + 2 + 16 &gt; s-&gt;s3-&gt;rrec.length) 
-if (1 + 2 + payload + 16 &gt; s-&gt;s3-&gt;rrec.length) </pre>
-<p>OpenBSD的<a href="http://article.gmane.org/gmane.os.openbsd.misc/211963">deraadt评价“OpenSSL的开发团队是不负责任的”</a>，还有人把2009年的一篇《<a href="https://www.peereboom.us/assl/assl/html/openssl.html">OpenSSL的开发者们都是猴子</a>》推到了Hacker News上，批评该项目的代码质量。</p>
-<p>dmix写了一个脚本遍历Alexa排名前一千的网站，遍历结果显示约有30%~40%的网站包含本漏洞。他表示没有测试中国的网站，因为国内网站的443端口从国外嗅探纷纷会超时。</p>
-<p>ZDNet的读者<a href="http://www.zdnet.com/heartbleed-serious-openssl-zero-day-vulnerability-revealed-7000028166/">谴责了CloudFlare</a>，认为这次造成这么大的影响很大程度上是因为CloudFlare没有走“负责任的漏洞披露过程”，在官方补丁发布之前先做了通告，而CloudFlare的工程师则坚称自己披露的时间点在OpenSSL官方通告被分享到Hacker News之后，因此没有过失。</p>
-<p>@ex509 在其博客上针对本漏洞写了一篇详细的<a href="http://blog.existentialize.com/diagnosis-of-the-openssl-heartbleed-bug.html">技术分析</a>，国内的<a href="http://drops.wooyun.org/author/Fish">Fish</a>将其翻译为中文并发布在<a href="http://drops.wooyun.org/papers/1381">乌云知识库</a>。</p>
-<p>知道创宇的余弦<a href="http://www.zhihu.com/question/23328658/answer/24241031">在知乎上表示</a>“@知道创宇安全研究团队 实测可以Dump出淘宝、微信、网银、陌陌、12306等各大使用OpenSSL服务的一些内存信息，里面有用户等的敏感内容（有些重要网站含明文密码）”，并表示“这事的影响超乎想象。”</p>
-<p>@ZoomEye 搜索引擎制作了一份<a href="http://www.zoomeye.org/lab/openssl">受本次漏洞影响的网站地图</a>。</p>
-<p>360网站卫士推出了一个<a href="http://wangzhan.360.cn/heartbleed">该漏洞的检查服务</a>，该服务技术负责人赵武<a href="http://weibo.com/2033280760/AEL3FCcoX?mod=weibotime">在微博上建议</a>“负责任的网站方没搞清楚之前还是先停服务吧。”</p>
-<h3>影响范围</h3>
-<p>4月8日，有大量由该bug导致的各网站漏洞被披露在Wooyun.org，包括蘑菇街、搜狗、盛大网络、UCloud、淘宝、开源中国、豌豆荚、唯品会等，各网站的工程师均在Wooyun上回应表示正在修复，部分大型网站的OpenSSL问题已经修复。</p>
-<p>AWS在4月8日发布<a href="https://aws.amazon.com/security/security-bulletins/aws-services-updated-to-address-openssl-vulnerability/">升级通知</a>表示收到本漏洞影响的ELB服务器已经升级，EC2上提供的AMI已经替换为没有该漏洞的版本，同时也在帮助其Elastic Beanstalk和CloudFront的用户修复本问题。</p>
-<p><a href="https://blogs.akamai.com/2014/04/heartbleed-faq-akamai-systems-patched.html">Akamai首席安全官在4月8日发布博客</a>表示已经在本漏洞公开纰漏之前完成了修复。<a href="https://blog.heroku.com/archives/2014/4/8/openssl_heartbleed_security_update">Heroku在4月8日发布修复通告</a>后提醒用户更改密码。</p>
-<p>已经发布升级通告的发行版包括<a href="https://www.redhat.com/archives/rhsa-announce/2014-April/msg00017.html">红帽</a>（RHEL桌面版、服务器版、HPC、Workstation）、<a href="https://lists.fedoraproject.org/pipermail/announce/2014-April/003205.html">Fedora</a>（19、20）、<a href="http://www.ubuntu.com/usn/usn-2165-1/">Ubuntu</a>（13.10、12.10、12.04 LTS）、<a href="http://www.debian.org/security/2014/dsa-2896">Debian</a>。</p><br><br><br><br><br><br></body></html>
+<h3>Qzone在移动网络所面临的挑战与解决方案</h3>
+<p>专题讲师俞尚是腾讯社交平台部高级工程师， 早期QQ浏览器内核开发骨干成员，对早年MTK的 Feature Phone平台有深入了解，擅长性能优化，专精于算法研究，对内存管理比较熟悉，对移动网络可靠性并发性有较多的了解。现从事QQ空间Android版本开发。另一位讲师郑闫强是WNS移动平台框架的负责人，先负责了Qzone平台的建设，是Qzone平台转型到SNS社交平台主架构师之一。这两位Qzone的前后端负责人共同分享了一个演讲“Qzone在移动网络所面临的挑战与解决方案”：</p>
+<blockquote> 
+ <p>手机Qzone作为国内首屈一指的移动app应用，其月活跃用户超过5亿，日活跃用户超过2亿，同时在线人数上千万。如何为如此巨大的海量用户提供稳定，可 靠的移动服务？对后台架构，客户端开发模式都提出了严格的挑战。加上国内移动无线网络的复杂环境，各大手机厂商对安卓系统的定制，导致了移动互联网时代要 比PC互联网时代面临更加复杂的问题与挑战。手机Qzone团队经过几年的摸索与探讨，总结了一些实战经验，借此机会可以与大家一起分享探讨。</p> 
+ <ul> 
+  <li>如何解决手机app与服务器之间的连通性问题</li> 
+  <li>如何加快移动无线网络的传输速度</li> 
+  <li>如何做到保持上千万的长连接</li> 
+  <li>如何快速选择可用连接</li> 
+  <li>如何省电，省流量</li> 
+  <li>如何保证弱网络下的服务质量</li> 
+ </ul> 
+</blockquote>
+<p><a href="http://sz2014.archsummit.com/" target="_blank">ArchSummit全球架构师峰会</a>即将于7月18-19日在深圳举行，此次会议重点解析九个当前最受关注的领域，包括：<a href="http://sz2014.archsummit.com/node/498" target="_blank">SNS</a>、 <a href="http://sz2014.archsummit.com/node/499" target="_blank">移动互联网</a>、 <a href="http://sz2014.archsummit.com/node/500" target="_blank">金融</a>、 <a href="http://sz2014.archsummit.com/node/501" target="_blank">大数据</a>、 <a href="http://sz2014.archsummit.com/node/502" target="_blank">智能硬件</a>、 <a href="http://sz2014.archsummit.com/node/494" target="_blank">游戏</a>、 <a href="http://sz2014.archsummit.com/node/497" target="_blank">云计算</a>、<a href="http://sz2014.archsummit.com/node/503" target="_blank">自动化运维</a>、<a href="http://sz2014.archsummit.com/node/495" target="_blank">电商</a>等专题。目前正在火热报名中，感兴趣的读者可以访问<a href="http://sz2014.archsummit.com/" target="_blank">网站主页</a>了解更多信息。</p><br><br><br><br><br><br></body></html>

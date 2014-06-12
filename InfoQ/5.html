@@ -1,7 +1,29 @@
-<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>Google发布FarmHash，一个新的用于字符串的哈希函数系列</h3><p>Google刚刚发布了<a href="http://code.google.com/p/farmhash/">FarmHash</a>，一个新的用于字符串的哈希函数系列。FarmHash从<a href="http://code.google.com/p/cityhash/">CityHash</a>继承了许多技巧和技术，是它的后继。FarmHash有多个目标，声称从多个方面改进了CityHash。</p>
-<p>Geoff Pike是Google的软件工程师，该库由他和Jyrki Alakuijala共同编写。<a href="http://google-opensource.blogspot.com.es/2014/03/introducing-farmhash.html">根据他的报道</a>，虽然FarmHash的开发一直受到Google数据中心里常见的CPU类型影响，但该库的目标之一是使开发人员可以快速便捷地将其应用在电话、平板电脑以及台式电脑上。正是因为这个原因，他们已经改进了现有的32和64位哈希实现。</p>
-<p>Geoff写道，与CityHash相比，FarmHash的另一项改进是在多个特定于平台的实现之上提供了一个接口。这样，当开发人员只是想要一个用于哈希表的、快速健壮的哈希函数，而不需要在每个平台上都一样时，FarmHash也能满足要求。</p>
-<p>考虑了上述所有内容，FarmHash的实现代码达到了大约1500行（不包括测试相关的代码），相比之下，CityHash的代码大约为600行。读者可以在<a href="http://www.stanford.edu/class/ee380/Abstracts/121017-slides.pdf">这里</a>找到CityHash的全面分析。</p>
-<p>目前，FarmHash只包含在32、64和128位平台上用于字节数组的哈希函数。未来开发计划包含了对整数、元组和其它数据的支持。</p>
-<p>CityHash的哈希算法被发现容易受到<a href="http://asfws12.files.wordpress.com/2012/11/asfws2012-jean_philippe_aumasson-martin_bosslet-hash_flooding_dos_reloaded.pdf">针对算法漏洞的攻击</a>，该漏洞允许多个哈希冲突发生（哈希泛滥）。尽管<a href="http://www.cvedetails.com/vulnerability-list/vendor_id-1224/product_id-23646/year-2012/opdos-1/Google-Cityhash.html">没有已知的CityHash漏洞利用程序</a>，但这类攻击能够很快地让用了这种哈希算法的任何应用程序过载。该漏洞还影响了其它基于<a href="http://en.wikipedia.org/wiki/MurmurHash">MurmurHash</a>的主要哈希实现。目前还不清楚FarmHash是否能够免受相同漏洞的影响。</p>
-<p><b>查看英文原文：</b><b><a href="http://www.infoq.com/news/2014/04/google_farmhash">Google publishes FarmHash, a new family of hash functions for strings</a></b></p><br><br><br><br><br><br></body></html>
+<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>Dropbox经验谈：iOS和Android的C++跨平台开发</h3><p>Dropbox的开发人员最近分享了他们在移动App开发方面的经验。App如何才能做到同时支持iOS和Android两个平台而又不需要在每个平台上对相同的功能重复编码。下面就让我们详细了解一下他们为什么这么做，从中得到什么好处以及在这个过程中探索出哪些关键经验。 </p>
+<p>几个月前，Dropbox的开发人员Stephen Poletto和Sean Beausoleil在给Facebook的开发人员做<a href="https://www.youtube.com/watch?v=S5rXCvu9-NM">讲座</a>时提到，iOS和Android平台代码库的不一致会带来一系列问题： </p>
+<ul> 
+ <li>开发和维护成本成倍增加。</li> 
+ <li>开发团队需要多次修复同样的缺陷。</li> 
+ <li>针对某个平台报告的缺陷可能会被另一个平台忽视掉。</li> 
+ <li>不同平台的App行为可能会有预料之外的细微差异。</li> 
+ <li>性能优化成本高昂并且与平台相关。</li>
+</ul>
+<p>Dropbox赖以克服上述这些问题的策略基础就是为所有UI无关的代码建立一个共享的跨平台C++库，例如数据和网络部分的逻辑。UI部分还是使用原生代码编写，以便尽可能地利用平台对动画特效和设备传感器等的支持，并且确保充分的响应速度。 </p>
+<p>与更倾向用HTML 5或JavaScript等较抽象语言的自顶向下的方法相对应，Poletto和Beausoleil将这种方式描述为自底向上的方法。据两位开发人员介绍，这些方法通常难以达到预期的性能要求。 </p>
+<p>另外一方面，iOS平台能够很好的支持C++代码，而且这些代码也可以很方便的与<a href="http://en.wikipedia.org/wiki/Objective-C#bjective-C.2B.2B">Objective C++</a>代码结合。并且，尽管不像iOS App那样方便，Android App也可以通过<a href="http://www.ntu.edu.sg/home/ehchua/programming/android/Android_NDK.html">Android原生开发组件（</a>NDK）使用C++代码。 </p>
+<p>在<a href="http://www.uikonf.com/">UIKonf 2014</a>大会上，Mailbox app的开发者Steven Kabbes为听众解释了Dropbox开发者如何通过<a href="https://code.google.com/p/gyp/">gyp</a>来处理NDK开发的复杂性，Google的元构建（meta-build）系统可以用一个<a href="https://github.com/skabbes/mx3/blob/develop/mx3.gyp">JSON描述文件生成</a>Xcode项目，Android和Unix下的makefile文件以及Visual Studio项目。Steven还在GitHub上发布了一个<a href="https://github.com/skabbes/mx3/blob/develop/mx3.gyp">项目</a>来展示Dropbox中使用到的一些跨平台技术。 </p>
+<h2><b>C++</b><b>层的设计</b></h2>
+<p>Dropbox的跨平台C++层架构比较简洁，包括： </p>
+<ul> 
+ <li>一个SQLite数据库，扮演着“真相来源”的角色。</li> 
+ <li>一个独立运行的同步服务线程，以保持Dropbox服务器和本地SQLite数据库的同步。</li> 
+ <li>一个操作队列，维护所有尚未执行的用户操作。</li> 
+ <li>一个操作线程，负责从操作队列中提取用户操作，并在Dropbox服务器上执行这些操作。</li>
+</ul>
+<p>Dropbox跨平台C++层的基本理念是在它和原生代码之间划分出明确的边界。这意味着C++层与UI层之间没有任何数据共享，而且对象的来回复制也要穿过层与层之间的边界。这种策略的优点在于当涉及到并发时，两个层次可以被认为是完全独立的，因此它们不需要任何跨层的锁定，并且可以在无需考虑另外一方的情况下处理并发。 </p>
+<p>Dropbox C++层的主要组件是一个由SQLite驱动的查询和持久化框架，让Dropbox开发者可以避免使用iOS平台上的Core Data框架。Kabbes解释说，Core Data是一个快速而强大的框架，这个决定并不是由于Core Data框架本身的问题，完全是为了满足同时支持Android、iOS、Mac平台的需求，将来还需要支持Windows平台。这个组件并非为了完全替代Core Data框架，而只是提供持久化和查询的功能，加上用以保证UI反应速度的一个组件，即与NSManagedObjectContextObjectsDidChangeNotification功能类似的一个C++通知机制。Kabbes认为这是一个非常关键的组件。通过这一机制，只需要传输增量的变化。关于持久化组件的更多细节信息可以阅读<a href="https://github.com/skabbes/uikonf_coredata_talk">Kabbes在GitHub上的笔记和</a><a href="http://oleb.net/blog/2014/05/how-dropbox-uses-cplusplus-cross-platform-development/">Ole Begemann发表的博文。</a> </p>
+<p>设计跨平台C++层时，面临的一个难题是权衡什么情况下需要从头开始重新实现OS本身已经提供了的功能，什么情况下仅需编写包装器（wrapper）封装这个功能。正如Poletto所说，你不可能用C++重新实现整个平台。因此，对于网络访问或SSL证书验证等基础功能，会通过封装的方式从C++层回调到原生平台。Ole Begemann列举了几个例子说明哪些功能不适于重新实现，例如，使用NSURLSession进行的后台下载，App的后台行为，以及iCloud访问等。其他一些情况下，则可以重写那些由平台相关的API所提供的功能，例如NSUserDefaults已经被<a href="https://code.google.com/p/leveldb/">LevelDB</a>替换成Dropbox的代码。 </p>
+<p>据Poletto介绍，在iOS和Android平台之间共享同一个代码库能够带来一系列的好处。首先，几乎可以肯定，iOS和Android团队之间会有更加紧密的协作。其次，开发团队能够更早地捕捉到缺陷，并且可以在两个平台上同时修复这些缺陷。再次，性能调优可以同时优化两个平台。最后，Dropbox可以利用Android的beta测试程序来测试“iOS代码”，这样就可以立即修复问题而不需要等待App Store的审查过程。 </p>
+<p><b>查看</b><b>英文原文</b>：<a href="http://www.infoq.com/news/2014/05/dropbox-cpp-crossplatform-mobile">C++ Cross-Platform iOS and Android Development: The Dropbox Lesson</a></p>
+<hr />
+<p>感谢<a href="http://www.infoq.com/cn/author/崔康">崔康</a>对本文的审校。</p>
+<p>给InfoQ中文站投稿或者参与内容翻译工作，请邮件至<a href="mailto:editors@cn.infoq.com">editors@cn.infoq.com</a>。也欢迎大家通过新浪微博（<a href="http://www.weibo.com/infoqchina">@InfoQ</a>）或者腾讯微博（<a href="http://t.qq.com/infoqchina">@InfoQ</a>）关注我们，并与我们的编辑和其他读者朋友交流。</p><br><br><br><br><br><br></body></html>

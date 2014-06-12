@@ -1,53 +1,29 @@
-<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>ソフトウェアの負債を扱う</h3><p><a target="_blank" href="http://www.infoq.com/news/2014/03/managing-software-debt"><em>原文(投稿日：2014/03/20)へのリンク</em></a></p>
+<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>PrimeFaces 5 リリース - モバイルサポート刷新，プッシュサポートを大幅に改善</h3><p><a target="_blank" href="http://www.infoq.com/news/2014/05/primefaces5"><em>原文(投稿日：2014/05/29)へのリンク</em></a></p>
 <div class="article_page_left news_container text_content_container"> 
  <div class="text_info"> 
-  <p>ソフトウェアの負債というのは様々なかたちで存在している。<a href="http://www.infoq.com/technicaldebt/">技術的負債</a>は広く知られているし、他の形態としては能力的負債とか品質的負債というものがある。ソフトウェアの負債はプロダクトの維持管理コストを増やし、開発者の気持ちを落ち込ませうるものだ。ソフトウェアの負債を扱うためにはいくつかの解決法がある。</p> 
-  <p>Niklas Bj&ouml;rnerstedt氏はブログ記事「<a href="http://www.leanway.no/competence-debt/">技術的負債のその他いろいろ</a>」の中で「能力的負債」に触れている。彼はこう定義する。</p> 
-  <blockquote> 
-   <p>自分たちのコードベースにあるものと、そのうち実際に自分たちが理解しているものとのギャップ。</p> 
+  <p>PrimeTekの最新リリースである<a href="http://blog.primefaces.org/?p=3132">PrimeFace 5.0</a>には，新しいグラフAPIとコンポーネント，例外ハンドラが追加されている。さらに，モバイルサポートは新たに書き直され，プッシュ機能が改良された。PF5と略称される今回のリリースは，JavaServer Faces 2.0以降に対応する。 また，前バージョンの4.0から5.0への<a href="https://code.google.com/p/primefaces/wiki/MigrationGuide">マイグレーションガイド</a>が，プロジェクトのWikiに公開されている。</p> 
+  <p>PrimeFace Mobile (PFM) はスクラッチから書き直され，コアディストリビューションに含まれるようになった。新しいPFMは<a href="http://jquerymobile.com/">jQuery Mobile</a>をベースとしている。 また，PF5コンポーネントの大部分に対応するMobile RenderKitがあり，ページの遅延ローディングやレスポンシブなウィジェットが提供される。</p> 
+  <p>新しいPrimeFace Push 2.0では，プッシュサポートが大幅に改良されたという。このPrimeFace Pushは<a href="https://github.com/Atmosphere/atmosphere">Atmosphere</a>フレームワークをベースに，同フレームワークと<a href="http://async-io.org/">Async-IO</a>の開発者である<a href="https://www.linkedin.com/in/jfarcand">Jeanfrancois Arcand</a>氏が開発したものだ。Atmosphereがサポートする<a href="https://github.com/Atmosphere/atmosphere/wiki/Supported-WebServers-and-Browsers">多数のWebサーバとブラウザ</a>を，Pushも引き継いでいる。</p> 
+  <p>PrimeFaceリリースの２週間後，PrimeTekはさらに<a href="http://www.primefaces.org/showcase/">Nextgen Showcase</a>を<a href="http://blog.primefaces.org/?p=3160">発表した</a>。</p> 
+  <blockquote>
+   PF5はPrimeFacesのNextgenバージョンです。リリースから長期を経過した旧版に代わって，Nextgen Showcaeに対応します。刷新されたShowcaseは，私たちの友人であるプロデザイナの
+   <a href="http://tr.linkedin.com/in/cemaltun">Cem Altun</a>の手によるものです。
   </blockquote> 
-  <p>ソフトウェア維持管理の手間を低く保つためには、技術的負債と能力的負債のどちらにも注意を払わなくてはならないと、Niklas氏は説明する。</p> 
-  <blockquote> 
-   <p>努力しないでいると技術的負債が時間とともに容赦なく増えるのとまさに同じで、能力的負債もまた時間とともに増えていきます。2種類の負債の大きな違いは、技術的負債の増加が早くなればなるほどコードベースをいじることも増えますが、コードベースをいじるのをやめた途端に能力的負債の増加の速度は増すということです！ それゆえ、活発な開発が終了したあとの落ち着いたシステムにおいては、能力的負債がもっとも深刻な問題となるのです。</p> 
+  <p>プロジェクトの&quot;<a href="http://www.primefaces.org/whyprimefaces">Why PrimeFaces</a>&quot;というページには，&quot;多くの人にとってPrimeFacesは，JSFコンポーネントライブラリのデファクトスタンダードです&quot;とあり，その証拠として，以下のGoogle Trendsグラフが引用されている。</p> 
+  <p style="text-align:center"><a href="http://www.google.com/trends/explore?hl=en-US#q=primefaces,+richfaces,+icefaces"><img src="http://www.infoq.com/resource/news/2014/06/primefaces5/ja/resources/all2.png" alt="" _href="img://all2.png" _p="true" /></a></p> 
+  <p>JSFは今年，何度かの精査に直面している。直近では<a href="http://www.thoughtworks.com/radar/#/languages-and-frameworks/jsf">Thoughtworks Technology Radar 2014</a>の中で<a href="http://www.thoughtworks.com/radar/#/languages-and-frameworks/jsf">次のように述べられている</a>。</p> 
+  <blockquote>
+   JSF -- JavaServer Faces -- を使用してトラブルに見舞われるチームは後を断ちません。この技術の使用は避けた方がよいでしょう。
   </blockquote> 
-  <p>Niklas氏は、負債を減らすための2つのテクニックを提案している。それは、ペアプログラミングとコードのリファクタリングだ。</p> 
-  <blockquote> 
-   <p>私にとってペアプログラミングの実質的価値は、技術的負債と能力的負債のどちらをも減らすことにあります。ペアになることによって、チームメンバーは熟知するコードベースのエリアを広げ、オーバーラップする部分を増やします。同じように、リファクタリングの価値は、技術的負債を減らすことだけではありません。リファクタリングは能力的負債を減らすための素晴らしい方法でもあります。システムを変更できてはじめて、そのシステムを真に理解できるのです。</p> 
-  </blockquote> 
-  <p>能力的負債が発生すると、システムをメンテナンスするにはますます大変なエネルギーが必要になる。そしてついに組織はシステムのリプレースを考え始めるのだ。</p> 
-  <blockquote> 
-   <p>人々は旧システムの維持管理は不可能だと主張してききませんでしたが、それがどう動いているのかがわかっていないということが本質的な問題でした。入り組んだコードと自動テストの不足がシステムを理解するときの頭痛の種となり、それゆえ技術的負債が事態をより悪化させていたのです。残された初期開発メンバーがあまりに少なく、習得が可能もしくは習得に前向きな新メンバーを見つけられないとき、書き直したいという衝動が生じるのはよくあることです。</p> 
-  </blockquote> 
-  <p>Mike Hustler氏は「<a href="http://www.appneta.com/blog/agile-technical-debt/">もっともアジャイルな技術的負債のマネジメント方法</a>」というブログ記事を書き、プロダクトの機能の開発と技術的負債のやりくりとのバランスの取り方について考察している。彼は、プロダクトを保守チームに引き渡すことが、いかに技術的負債や能力的負債の増加につながるか説明している。</p> 
-  <blockquote> 
-   <p>私は組織が保守チーム、たとえば新規開発の半分のサイズで別のチームを作る、というのを見たことがあります。（少なくとも一緒に働くチームのサイズについてだけでも）これは正しくないやり方だと私は思います。（中略）オーナーシップを誇りに最後までやり通す、ということがなくなります。なぜなら、他の人、つまり他のチームが作ったバグに誰か他の人が対応しているからです。密なコミュニケーションがなければ、なぜ最初にそのやり方が採用されたのかという背景の話が失われるのです。ドメイン知識がなければ、問題点を修正するにも効率が悪くなります。さらに悪いことに、経験の浅い開発者からなる保守チームが問題の根本的原因を特定するのに苦労した挙句、むしろ作り替えたほうがいいくらいの応急処置を施して終わり、というのを見たことがあります。</p> 
-  </blockquote> 
-  <p>技術的負債は開発者を意気消沈させ、彼らは会社を辞めることを決意する、そしてそれが能力的負債を増大させるのだ、とCory House氏は彼のブログ記事「<a href="http://blog.pluralsight.com/7-reasons-clean-code-matters">クリーンコードが重要な7つの理由</a>」の中で説明している。</p> 
-  <blockquote> 
-   <p>ずさんだったりわかりにくいコードを書くことは、自分たちのプロジェクトに技術的負債を持ち込むことになります。そして、前後の事情を考慮しながら慎重に検討するようなときには技術的負債は役に立ちますが、その一方、度を超えた技術的負債はやる気を失わさせ、才能を持った人を組織から去らせてしまいます。簡単なことが難しくなったとき、開発者は自分の退席によって反対の意思表示をし、どこか他へ行ってしまいます。開発者は仕事の量よりも質から、より多くの働きがいを得るものです。技術的負債は再利用の機会を減らし、残りのコードベース全体の品質指標を低くしていまいます。</p> 
-  </blockquote> 
-  <p>David Hammerslag氏はブログ記事「<a href="http://www.bigvisible.com/2013/10/want-predictability-avoid-quality-debt/">予測能力が欲しい？ 品質的負債を回避せよ</a>」を書き、コードの中に未解決で発見された欠陥を放置しておくことの影響について考察している。彼の定義する品質的負債とはこれだ。</p> 
-  <blockquote> 
-   <p>品質的負債とは、ソフトウェアプロダクトの中にどの時点でも存在する欠陥を修正する手間の尺度です。</p> 
-  </blockquote> 
-  <p>彼は品質的負債と技術的負債を比較している。</p> 
-  <blockquote> 
-   <p>技術的負債は設計とコードの品質の尺度であって、ソフトウェアの内部品質です。品質的負債とはコードの外部品質の尺度であり、ユーザーが目にし体験するものです。ユーザーは技術的負債を（直接）目にすることは絶対にありません。</p> 
-   <p>プログラムは、品質的負債がひとつもなく、技術的負債が山のようにあるという状態になりえます。要求され期待された機能性をすべて正確に実装することも、完璧に動作することもできるでしょう。しかし技術的負債が膨大になり、あなたが想像しうるあらゆる粗末な設計や実装を示すこともあるのです。その一方で、最良の設計の神々しいまでに洗練されたコードでも、間違った結果を生じたり機能性に欠けることだってありえるのです。</p> 
-  </blockquote> 
-  <p>David氏は、品質的負債は無視されるべきではないと説明する。</p> 
-  <blockquote> 
-   <p>品質的負債は借金と非常によく似ています。なぜなら、古くなればなるほど返済が難しくなるからです。最悪の場合、開発が終わるまでプロジェクトはテストを先延ばしにします。欠陥は寝かせば寝かすほど直すのが難しくなるということは定説です。仮に多くの欠陥が（既知だろうが未知だろうが）存在し続ければ、欠陥はお互いを隠しあいながら影響は深刻化し、いくつもの修正が同じコードに影響するようになるのです。</p> 
-  </blockquote> 
-  <p>David氏は、欠陥をうまく扱い品質的負債を少なく保つために使えるいくつかのアジャイルプラクティスを提案している。</p> 
-  <blockquote> 
-   <ul> 
-    <li>完成の定義</li> 
-    <li>BDD / 受け入れテストの自動化</li> 
-    <li>継続的インテグレーション</li> 
-    <li>自動テスト</li> 
-    <li>割れ窓を放置しない</li> 
-   </ul> 
-  </blockquote>
+  <p>PrimeFaces創設者で開発リーダの<a href="https://www.linkedin.com/pub/%C3%A7a%C4%9Fatay-%C3%A7ivici/1/849/a17">&Ccedil;ağatay &Ccedil;ivici</a>氏は，&quot;<a href="http://blog.primefaces.org/?p=3035">JSF is not what you've been told anymore</a>&quot;と題されたブログ記事で，BootstrapをCSSに指定して，通常のHTML要素をJSFコンポーネントとして使用する方法があることを紹介している。</p> 
+  <p>RebelLabsの<a href="http://zeroturnaround.com/rebellabs/java-tools-and-technologies-landscape-for-2014/">Java Tools and Technologies Landscape for 2014</a>によると，JSFはWebフレームワークとしての利用数では２番目にランクされている。</p> 
+  <p>&nbsp;</p> 
+  <div style="margin:0 auto;width:500px">
+   <blockquote class="twitter-tweet" lang="en"> 
+    <p>回答者の40%が<a href="https://twitter.com/search?q=%23SpringMVC&amp;src=hash">#SpringMVC</a>を使用しており，以下<a href="https://twitter.com/search?q=%23JSF&amp;src=hash">#JSF</a>(21%), <a href="https://twitter.com/search?q=%23Vaadin&amp;src=hash">#Vaadin</a>(16%)となっています – <a href="http://t.co/0fSgZxiZQU">http://t.co/0fSgZxiZQU</a> <a href="http://t.co/5PrT45h9cM">pic.twitter.com/5PrT45h9cM</a></p> — RebelLabs (@RebelLabs) 
+    <a href="https://twitter.com/RebelLabs/statuses/469176327007117312">2014年5月21日</a>
+   </blockquote> 
+   <script src="//platform.twitter.com/widgets.js" async="async" charset="utf-8"></script>
+  </div> 
  </div> 
 </div><br><br><br><br><br><br></body></html>

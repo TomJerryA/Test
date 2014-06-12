@@ -1,33 +1,17 @@
-<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>ThoughtWorks Technology RadarについてRebecca Parsons氏が語る</h3><p><a target="_blank" href="http://www.infoq.com/news/2014/03/thoughtworks-radar-201401"><em>原文(投稿日：2014/03/28)へのリンク</em></a></p>
+<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>Vagrant 1.6、Dockerコンテナのサポートを追加</h3><p><a target="_blank" href="http://www.infoq.com/news/2014/05/vagrant-1-6-docker"><em>原文(投稿日：2014/05/26)へのリンク</em></a></p>
 <div class="article_page_left news_container text_content_container"> 
  <div class="text_info"> 
-  <p>1月、<a href="http://www.thoughtworks.com/">ThoughtWorks</a>は最新の<a href="http://www.thoughtworks.com/radar/#/">Technology Radar</a>で、同社が追跡しているソフトウエア開発のエコシステムの動向を発表した。InfoQは同社CTOのRebecca Parsons氏に今回の調査について話を聞いた。</p> 
-  <p>InfoQ: お話を伺う機会を頂きありがとうございます。自己紹介、そしてRadarの作成に携わったチームを簡単に紹介していただけますでしょうか。</p> 
-  <blockquote>
-   ThoughtWorks Technology RadarはThoughtWorksのTechnology Advisory Board (TAB)が作成します。TABを構成しているのは、インド、ドイツ、イギリス、南アフリカ、アメリカ、カナダ、ブラジル、オーストラリア、中国の技術者たちです。TABを作ったのは数年前、私がCTOになったときです。ThoughtWorksの技術コミュニティにとって重要なことをアドバイスしてもらうために作りました。ThoughtWorksがビジネスをしている国ごとに技術のあり方は異なります。なので、TABもある問題に対してさまざまな見解を持ちます。Radarは私たちの見解を示したドキュメントです。私自身とTABの考えを反映しています。RadarへのインプットはThoughtWorksのコミュニティへクラウドソースしていますが、TABも協力して技術コミュニティの動向を見ています。
-   <br /> 
+  <p>Vagrantの新バージョン1.6には、これまでサポートされてきたVirtualBoxやVMware、AWSといった仮想化およびクラウドプロバイダに加えて、<a href="http://www.vagrantup.com/blog/feature-preview-vagrant-1-6-docker-dev-environments.html">Dockerベースの開発環境</a>のサポートが含まれている。</p> 
+  <p>この新リリースによって、Vagrantユーザはこれまで使ってきたのと同じ仮想マシン操作およびワークフローを、Dockerコンテナを使って実行することが可能になる。Dockerプロバイダは繰り返し新規コンテナを作成するのに役立つDockerfilesからのコンテナや<a href="https://index.docker.io/">Docker index</a>サポートしている。そこには事前ビルドされた多くのリポジトリが並び、公式のUbuntuやCentOS、Fedoraのベースイメージをはじめ、MySQL、Java、MongoDBといった環境も含まれている。このリリースにはDockerプロバイダ向けの2つの新しいコマンドも含まれている。<em>docker-logs</em>はコネクタログを表示し、<em>docker-run</em>はコンテナ内における任意のコマンド実行を可能にする。LinuxコンテナをネイティブでサポートしないOS XやWindowsといったプラットフォーム上では、追加のソフトウェアを用意する必要なしに、コンテナを実行するプロキシLinux VMを自動で管理してくれる。</p> 
+  <p>Dockerが<a href="http://www.infoq.com/news/2014/05/docker_0_11">バージョン1.0に近づくにつれ</a>、Dockerコンテナをサポートするツールも増えてきている。ちょうど数週間前、Red HatはコンテナおよびDockerテクノロジによるベアメタルシステム、仮想マシン、プライベートおよびパブリッククラウドにわたる、最新のアプリケーションデリバリーおよびオーケストレーションのための新たなLinuxコンテナプロジェクトを<a href="http://www.redhat.com/about/news/press-archive/2014/4/linux-container-innovations">発表した</a>。Googleのインフラストラクチャ担当バイスプレジデントのEric Brewer氏は、Linuxコンテナについてこう語っている。</p> 
+  <blockquote> 
+   <p>Googleではプロダクションシステムをサポートするのに、Linuxアプリケーションコンテナをフル活用しています。コンテナはハイレベルなランタイムの分離とデプロイメントの柔軟性をもたらし、管理している分散アプリケーションの複雑さを減らし、全体の運用効率を高めています。</p> 
   </blockquote> 
-  <p>InfoQ: なぜThoughtWorksはTechnology Radarを作成(そして共有)しているのでしょうか。無料で利用できるドキュメントとしてはとても手間がかかっていると思います。</p> 
-  <blockquote>
-   私たちはRadarを技術コミュニティ内で何が起きているのか参加するを追跡するため、そして、参入するべき領域を特定するために作りました。しかし、私たちは透過性への指向が強く、多くのカンファレンスに参加し、ブログと本を書いています。多くのツールもオープンソースにしています。なので、Radarを公開するのは自然なことです。Radarに対する関心が増え続けていることに満足しています。
-  </blockquote> 
-  <p>InfoQ: 今回のRadarの大きなトレンドはなんでしょう。</p> 
-  <blockquote>
-   どのRadarでも私たちはテーマを特定しています。Radar上の&quot;ブリップ&quot;の数が増えれば、そのテーマは私たちが見ている幅広いトレンドを強調するものとして重要です。今回は4つのテーマを含んでいます。1)プロダクション環境での警告システムとリカバリ、2)プライバシとビッグデータの緊張関係、3)JavaScriptのエコシステム、4)物理と仮想の環境の境界の曖昧化です。これらのテーマには常に最大数の話題が詰まっているわけではありません。私たちが面白いと思った領域に着目しています。
-  </blockquote> 
-  <p>InfoQ: Radarの表現方法は面白いですね。要素がプロットされている4つのレベルの観点から明確なアドバイスをしているように思えます。適用、検証、評価、維持の4つのレベルです。このようなカテゴリにはどのような意図があるのでしょうか。</p> 
-  <blockquote>
-   私たちがRadarを開始したとき、着目するべき新しい物事に興味を持っていました。評価は着目するべきものを示します。検証はビジネスで実施を計画するに足るものを示します。私たちはこの結果を公表することを考えていましたので、企業がするべきこと、するべきでないことについての私たちのおすすめが書かれているのが重要だと思いました。適用はもし適用しなければ、私たちに笑われるものを示しています。私たちの顧客にはアーリーアダプターとより保守的な企業の両方を含んできます。予想以上に早くは導入できないものもあります。維持が示すのは、ふたつの異なる目的に対して適用が困難なものです。つまり、重要な局面ではまだ使えないものと実践で利用できないものです。後者のカテゴリに属するものの方が多いですが、このカテゴリに分類されるのはすでに広く使われている技術に限定しようとしています。
-   <br /> 
-  </blockquote> 
-  <p>InfoQ: Radarの真ん中のさまざまな要素についてのアドバイスを聞くことで企業はどのような効果を期待できますか。ビジネス上のどのような問題に対処できるでしょうか。</p> 
-  <blockquote>
-   私たちが現時点で標準的であると考えているすべての要素が適用に分類されているのではありません。適用に分類されているのは、ソフトウエアとしてのエクセレンスを達成するために重要なものが適用に分類されています。
-  </blockquote> 
-  <p>InfoQ: 今日の企業が直面しているリスクと関連のある重要な技術はなんでしょうか。リスクを緩和するにはどうすればいいでしょう。</p> 
-  <blockquote>
-    一般化した議論は難しいですが、私が思うに、企業は技術が必要とする変化のペースについていけていません。自身の技術に熱心すぎたり、アウトソースしすぎたりした結果でしょう。また、上手ではない購買や投資が原因の場合もあるでしょう。自分たちのビジネスの特徴を盛り込み過ぎたパッケージに投資してしまった場合です。結合度が強すぎる設計、適応的でない設計が原因の場合もあります。独特のビジネスをやってきたと考えていた企業はある種の水準でテクノロジー企業にならなければならないことに気付いています。適応的なシステムを作り上げるにはたくさんの仕事をしなければなりません。
-  </blockquote> 
-  <p>&nbsp;</p> 
+  <p>Vagrant 1.6には以下のような注目すべき<a href="http://www.vagrantup.com/blog/vagrant-1-6.html">新機能</a>も追加されている。</p> 
+  <ol> 
+   <li> <p>Windowsゲスト: Vagrant 1.6では、Vagrant環境 (VirtualBox, Hyper-V, EC2など) 内での<a href="http://www.vagrantup.com/blog/feature-preview-vagrant-1-6-windows.html">Windows実行のサポートが追加</a>され、ソフトウェアのインストールおよび設定にPowerShellスクリプト、Chef、Puppetなどを使うことができる。Windowsゲストには、Linuxにおける<em>vagrant ssh</em>に相当する<em>vagrant rdp</em>が提供され、Windows環境における完全なリモートデスクトップ環境へのシングルコマンドアクセスを可能にする。Microsoft Open TechではHyper-V用にパッケージされたVagrant boxの形で<a href="http://vagrantbox.msopentech.com/">Windowsの評価コピーを提供している</a>。</p> </li> 
+   <li> <p>グローバルステータスとコントロール: Vagrant 1.6では<a href="http://www.vagrantup.com/blog/feature-preview-vagrant-1-6-global-status.html">新しい<em>global-status</em>コマンド</a>が導入され、システム上に生成したすべてのVagrant環境のステータスを表示する。Vagrant環境ごとに割り当てられたユニークなIDを使うことで、グローバルコントロールはVagrantfileのあるディレクトリだけでなく、任意のディレクトリからのコントロールを可能にする。グローバルなIDを指定して、destroy, up, suspend,...といった任意のVagrantコマンドを使うことができる。</p> </li> 
+  </ol> 
+  <p>ほかにも、現在のVagrantバージョンだけでなく、そのバージョンが古いか教えてくれる新しい<em>version</em>コマンドや、これまでは最初の<em>vagrant up</em>で実行するだけだったのが、任意の<em>vagrant up</em>や<em>vagrant reload</em>コマンドで実行するようプロビジョナーを設定できる機能、といったものも含まれている。またVagrant 1.6からは、<em>vagrant up</em>後に表示されるpost-upメッセージをVagrantfilesに入れることができ、boxをLZMAで圧縮することもできる。これは多くの場合、サイズをずっと小さくする。</p> 
  </div> 
 </div><br><br><br><br><br><br></body></html>

@@ -1,38 +1,16 @@
-<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>Introducing the .NET Foundation</h3><p>Microsoft’s evolution towards a major open source player has reached the next step with the introduction of the <a href="http://www.dotnetfoundation.org/">.NET Foundation</a>. The purpose of the foundation is to “be the steward of a growing collection of open source technologies for.NET”.</p>
-<p>The founding members include six from non-Microsoft companies:</p>
+<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>Online Resources to Learn Apple's Swift Language</h3><p>Apple introduction of Swift, a new programming language for the OS X and iOS platform, has sparked some interest from the developers' community. In just a couple of days, <a href="http://stackoverflow.com/questions/tagged/swift-language">almost 500 questions have been already asked on Stack Overflow</a>, while a <a href="https://github.com/search?q=language%3Aswift&amp;ref=cmdform">GitHub query</a> shows that there are already about 350 repositories written in Swift.</p>
+<p>For anyone interested in learning about the language, the Web offers useful resources to start:</p>
 <ul> 
- <li>Miguel de Icaza of Xamarin.</li> 
- <li>Laurent Bugnion of IdentityMine</li> 
- <li>Niels Hartvig of Umbraco</li> 
- <li>Nigel Sampson of Compiled Experience</li> 
- <li>Anthony von der Hoom of Glimpse</li> 
- <li>Paul Betts of GitHub</li> 
+ <li> <p><strong>The Swift Programming Language</strong></p> <p>Apple has made freely available on iTunes <a href="https://itunes.apple.com/us/book/swift-programming-language/id881256329?mt=11">&quot;The Swift Language Reference&quot; ebook</a>. Accessing iTunes requires an Apple device, though, but there is a chance to learn the language for anyone else, too. The same content is indeed also available on Apple website in <a href="https://developer.apple.com/library/prerelease/ios/documentation/Swift/Conceptual/Swift_Programming_Language/">HTML format</a>. Given the novelty of the language, this ebook is definitely the fundamental resource and covers all the aspects of the language, including interoperability with C/Objective-C.</p> </li> 
+ <li> <p><strong><a href="http://www.raywenderlich.com/73997/swift-language-highlights">Swift Language Highlights</a></strong></p> <p>From RayWenderlich.com, a short presentation of some of the new features that Swift introduces from the perspective of an Objective-C programmer: <a href="http://en.wikipedia.org/wiki/Type_inference">type inference</a>, <a href="http://en.wikipedia.org/wiki/Generic_programming">generics</a>, switch statements, and constness.</p> </li> 
+ <li> <p><strong><a href="http://ios-blog.co.uk/tutorials/ios8-how-to-use-objective-c-classes-in-swift/">How to use Objective-C Classes in Swift</a></strong></p> <p>Step by step guide by Mark Petherbridge describing how you go about creating a <em>bridging header</em> to be able to use an Objective-C class from Swift.</p> </li> 
+ <li> <p><strong><a href="http://jamesonquave.com/blog/developing-ios-apps-using-swift-tutorial/">Developing iOS Apps Using Swift</a></strong></p> <p>A five-part series tutorial by Jameson Quave to start developing iOS apps with Swift from the ground up. The tutorial covers the following topics: creating an &quot;hello world&quot; app; making web API requests and parsing the resulting JSON; best practices using protocols and delegates; interactive table views; async image loading and caching.</p> </li> 
+ <li> <p><strong><a href="http://www.learnswift.tips">LearnSwift.tips</a></strong></p> <p>A collection of learning resources about the Swift language organized according to their audience (beginner, intermediate, advanced), also including a selection of interesting projects from GitHub.</p> </li> 
+ <li> <p><strong><a href="http://cdn2.raywenderlich.com/wp-content/uploads/2014/06/RW-Swift-Cheatsheet-0_3.pdf">Swift language cheat sheet</a></strong></p> <p>Another resource from RayWenderlich.com summarizing the most important Swift syntax in one page. It covers: class implementation, methods declaration, object instantiation/use, variable declaration, control flow, strings/array/dictionary quick examples.</p> </li> 
+ <li> <p><strong><a href="http://http://www.sososwift.com/">So So Swift</a></strong></p> <p>A large collection of resources, including tutorials, videos, and repositories, listed in chronological order.</p> </li> 
+ <li> <p><strong><a href="https://raw.githubusercontent.com/densh/talks/master/swift-vs-scala-211-2014-06-03/Swift%20vs%20Scala%202.11.pdf">Swift vs. Scala Comparison Sheet</a></strong></p> <p>Comparison between Swift and Scala syntaxes covering control flow structures, expressions, declarations, patterns, and types.</p> </li> 
+ <li> <p><strong><a href="http://pietschsoft.com/post/2014/06/07/Basic-Comparison-of-C-and-Apple-Swift-Programming-Language-Syntax">C# vs. Swift Syntax Comparison</a></strong></p> <p>A basic comparison of C# and Swift Syntax. Also, don't miss the <a href="http://www.reddit.com/r/programming/comments/27sghl/basic_comparison_of_c_and_apple_swift_programming/">discussion on r/programming</a>.</p> </li> 
+ <li> <p><strong><a href="http://swiftlang.eu">SwiftLang.eu</a></strong></p> <p>Another site collecting Swift resources. It gives access to Apple's &quot;The Swift Programming Language Book&quot; in MOBI, PDF, and ePub formats. Furthermore, it includes a community section for developers to share thoughts and source code.</p> </li> 
 </ul>
-<p>Currently there are 24 projects in the foundation, mostly donated by Microsoft and Xamarin.</p>
-<ul> 
- <li><a href="http://hadoopsdk.codeplex.com/">.NET API for Hadoop WebClient</a></li> 
- <li><a href="http://roslyn.codeplex.com/">.NET Compiler Platform (&quot;Roslyn&quot;)</a></li> 
- <li><a href="http://hadoopsdk.codeplex.com/">.NET Map Reduce API for Hadoop</a></li> 
- <li><a href="http://netmf.codeplex.com/">.NET Micro Framework</a></li> 
- <li><a href="http://aspnetwebstack.codeplex.com/">ASP.NET MVC</a></li> 
- <li><a href="https://github.com/SignalR/SignalR">ASP.NET SignalR</a></li> 
- <li><a href="http://aspnetwebstack.codeplex.com/">ASP.NET Web API</a></li> 
- <li><a href="http://aspnetwebstack.codeplex.com/">ASP.NET Web Pages</a></li> 
- <li><a href="http://mef.codeplex.com/">Composition (MEF2)</a></li> 
- <li><a href="http://entityframework.codeplex.com/">Entity Framework</a></li> 
- <li><a href="http://hadoopsdk.codeplex.com/">Linq to Hive</a></li> 
- <li><a href="http://mef.codeplex.com/">MEF (Managed Extensibility Framework)</a></li> 
- <li><a href="http://katanaproject.codeplex.com/SourceControl/latest#src/Microsoft.Owin.Security.Google/GoogleOAuth2AuthenticationMiddleware.cs">OWIN Authentication Middleware</a></li> 
- <li><a href="https://rx.codeplex.com/">Rx (Reactive Extensions)</a></li> 
- <li><a href="http://wpl.codeplex.com/">Web Protection Library</a></li> 
- <li><a href="https://github.com/WindowsAzure/azure-sdk-for-net">Windows Azure .NET SDK</a></li> 
- <li><a href="http://phone.codeplex.com/">Windows Phone Toolkit</a></li> 
- <li><a href="https://github.com/nickharris/WnsRecipe">WnsRecipe</a></li> 
- <li><a href="https://github.com/xamarin/couchbase-lite-net">Xamarin couchbase-lite-net</a></li> 
- <li><a href="https://github.com/jstedfast/MailKit">Xamarin Mailkit</a></li> 
- <li><a href="https://github.com/jstedfast/MimeKit">Xamarin Mimekit</a></li> 
- <li><a href="https://github.com/mono/mono/tree/master/mcs/class/System.Drawing">Xamarin System.Drawing</a></li> 
- <li><a href="https://github.com/xamarin/Xamarin.Auth">Xamarin.Auth</a></li> 
- <li><a href="https://github.com/xamarin/Xamarin.Mobile">Xamarin.Mobile</a></li> 
-</ul>
-<p>While the community reaction has been generally positive, one point of contention is the lack of mention for Silverlight or WPF. With Silverlight on the web being completely depreciated and WPF in maintenance mode, developers were hoping Microsoft would open source the aging bits.</p><br><br><br><br><br><br></body></html>
+<p>You can also find a background introduction to the language and its relationship with the LLVM compiler in <a href="http://www.infoq.com/news/2014/06/apple-swift">this Alex Blewitt's post on InfoQ</a>.</p>
+<p>Swift can presently only be used from within the Xcode 6 developer preview that Apple has published for all <a href="https://developer.apple.com/devcenter/ios/index.action">developers registered with an Apple Developer Program</a>.</p><br><br><br><br><br><br></body></html>

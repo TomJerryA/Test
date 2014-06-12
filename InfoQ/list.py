@@ -2,49 +2,94 @@
  <head></head> 
  <body>
   <div>
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/36.py">IBMのNick O'Leary氏がNode-REDで「モノのインターネット」をデモ</a>Nick O'Leary氏は先回のQCon Londonで，モノのインターネット(Internet of Things / IoT)に注目したオープンソースプロジェクトのNode-REDを発表した。IBMのEmerging Technologyチームが開発したこのプロジェクトは，&quot;ハードウェアデバイス，API，オンラインサービスが画期的な方法で結合された&quot;仮想環境をブラウザ上で実現する。
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/1.py">アーキテクチャでアジャイルを管理する</a>アムステルダムで行われたAgile GovernanceカンファレンスでJan van Santbrink氏は，アジャイルの考え方と共存する上で，アーキテクチャがガバナンスにおいて担うべき重要な役割についてプレゼンテーションを行った。アジャイルとアーキテクチャが連携しなければならない理由は何か，アジャイルの意思決定に対してアーキテクチャはどのような支援を行い得るのか，アーキテクチャを実践する開発のメリットは何か。InfoQは氏にインタビューして，これらを確かめることにした。
   </div>
   <div>
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/35.py">David Mole, Sandy Mamoli両氏に聞く - Trade MeにおけるSpotifyのスクワッドモデル導入について</a>アジャイルコーチのDavid Mole氏とSandy Mamoli氏は先日，ウェリントンのアジャイルミートアップグループで，ニュージーランド最大のオンライン企業であるTrade Meでの成功体験について講演した。彼らはSpotify型のスクワッドモデル(Squad Model)をTrade Meに導入すべく，チームの自己形成(Self Formation)とビッグバン方式のマイグレーションを行ったのだ。その動機と経験を理解するため，我々は彼らの話を聞いた。
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/0.py">DDD Exchange Day 2014がLondonで開催</a>6回目 DDD Exchange Dayがロンドンで6月20日に開催される。Eric Evans氏、Martin Thompson氏、Alberto Brandolini氏、Greg Young氏が参加する。EricはオープニングのキーノートでDDDの根本的な仮定に挑戦する。
   </div>
   <div>
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/34.py">企業におけるアジャイルとリーンを活用したサービス管理</a>アジャイルソフトウェア開発やスクラムは企業が本当にアジャイルの約束を果たすために十分なものではない、とDave van Herpen氏は言う。彼が提案するのは、企業全体を通じたコラボレーションを改善するために、ITサービス管理がアジャイルやリーンのプラクティスをDevOpsとあわせて適用する、ということだ。
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/49.py">Git 2.0リリース</a>Git 2.0がリリースされた。リリース候補版から1ヶ月程度でのリリースだ。ビットマップインデックスによる性能改善、センシブルデフォルトによる初心者の利便性向上などが特徴だ。既存ユーザにとっては、前のバージョンと同等の機能を維持する選択肢もある。
   </div>
   <div>
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/33.py">SDKやコンパイル、コードの署名なしにデバイス上のPhoneGapアプリケーションをテストする</a>PhoneGapがアプリケーションのテストツールであるPhoneGap Developer Appをリリースした。このツールは、アプリケーション開発時のテストにおいて、SDK一式やコンパイル、コードの署名が必要ないというものである。なお、GapReloadと組み合わせたLiveReloadも同じことを行うことができる。
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/48.py">AppleのSwift言語を学ぶためのオンラインリソース</a>AppleがOS XとiOSプラットフォームに向けての新言語Swiftを導入したことで、開発者コミュニティからの関心に火がついている。Swiftについてさらに学びたいと思うなら、ここで有用なオンラインリソースが見つけられるだろう。
   </div>
   <div>
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/32.py">HerokuとSalesforce.comのデータリポジトリをリンクする新たなコネクタを発表</a>Heroku（2010年にSalesforce.comが買収）が2つのクラウドプラットフォームの最初のビルトイン統合サービスを発表した。このHeroku PostgresとSalesforce (Oracle) データベースの双方向データ同期は、Herokuにホストされたモバイル顧客向けアプリケーションをSalesforceで動作するビジネスシステムとつなげる手段として位置づけられている。
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/47.py">毎秒10億件以上のリアルタイムイベントを処理するDataTorrent 1.0</a>DataTorrentはリアルタイムストリーミングおよび解析用のプラットフォームである。毎秒10億件以上のリアルタイムイベントを処理することができる。
   </div>
   <div>
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/31.py">アジャイルのガバナンスにおけるマネジメントの役割</a>複数のアジャイルチームを管理するにはどうすればいいだろうか。アムステルダムで開催されたAgile GovernanceカンファレンスでChristoph Johann Stettina氏がアジャイルのガバナンスとマネジメントの役割について発表した。
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/46.py">Vagrant 1.6、Dockerコンテナのサポートを追加</a>Vagrantの新バージョン1.6には、これまでサポートされてきたVirtualBoxやVMware、AWSといった仮想化およびクラウドプロバイダに加えて、Dockerベースの開発環境のサポートが含まれている。
   </div>
   <div>
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/30.py">エンタープライズシステムの新たなスタイル - SDA(Software-Defined Architecture)</a>GartnerのVP兼フェローであるYefim V. Natis氏によると，最近上昇中の新たなエンタープライズアーキテクチャスタイルがあるという – それがSDA(Software-Defined Archtecture)だ。
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/45.py">Appleが新しいiOS 8 SDKと開発者ツールを発表</a>Appleは2014年のWorldwide Developer Conferenceで、新しいモバイルOSであるiOS 8を新しいSDKと開発ツールとともに発表した。4000を超える新しいAPIには、HealthKit、HomeKit、CloudKitなどの新しいフレームワークが含まれており、ゲーミングのプラットフォームとしても強化されている。また、Objective-Cの後継言語である新しい言語も発表した。
   </div>
   <div>
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/29.py">C#でSOLIDにする</a>Autonomous Solutions Inc.のソフトウェア開発者Brannon B. King氏は2014年5月のMSDN MagazineでC#でSOLIDの原則に反することの危険性と題した記事を公開した。著者は、開発者のミスでC#コードがSOLIDの原則を破ることで、拡張または維持することがより難しくなる概要を説明した。
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/44.py">Visual Studio &quot;14&quot; Previewは大きな機能パックである</a>VS2013後継の最初のプレビューがリリースされ、最新のプロジェクトが統合されてひとつのパッケージになっている。ほぼすべての技術プラットフォームが影響を受けており、ASP.NET, C++, VB/C#開発者すべてが大幅な変更を受け取ることになる。
   </div>
   <div>
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/28.py">PostgreSQLのNoSQL機能が大幅に向上</a>PostgreSQL 9.4 Beta版には待望の&quot;バイナリJSON&quot;型，JSONBが実装されている。この文書データのための新しいストレージ形式には，JSONデータをハイパフォーマンスに操作するためのインデックス処理，関数，演算子が用意される。
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/43.py">VMware vCenterを管理するAWS Management Portal</a>Amazon Web Services (AWS)がVMware vCenter用のManagement Portalプラグインを発表した。パブリッククラウドであるEC2インスタンスとプライベートクラウドのVMwareインスタンスを，同一の管理コンソールから管理できる。VMwareユーザのプライベート環境をAmazonのパブリックサービスに拡張して，ハイブリッドクラウドを容易に構築可能にすることを目的としたプラグインだ。
   </div>
   <div>
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/27.py">Facebook の決断：MVCはスケールしない。ならば Flux だ。</a>MVC アーキテクチャは増大するニーズに応じてスケールすることができないため、Facebook社は、Fluxと呼ばれる別のデザインパターンを用いることを決断した。
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/42.py">Xamarin.Formsで完全にネイティブなクロスプラットフォームUIを実現</a>Xamarinを使ってクロスプラットフォームのネイティブモバイルアプリケーションを書く場合、これまでは平均してコードの80％程度を共有できていた。しかし、UIコードに関わる残りの20％についてはプラットフォームごとに別々に書かなければならなかった。最新リリースである Xamarin 3.0 では Xamarin_Forms というMVVMライブラリが導入された。これにより、単一のUIコードをC#で記述すれば、iOS上でもAndroid上でもWindows Phone上でもネイティブに実行させることができる。
   </div>
   <div>
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/26.py">SplunkがHunk 6.1をリリース</a>Splunkは機械が生成したデータを検索や監視、分析することに特化した企業だ。同社はHunk 6.1のリリースを発表した。Hunkはビッグデータ分析のプラットフォームを提供する。ストリーミングリソースライブラリを使うことで開発者はHunkをどのようなNoSQLエンジンにも接続できるようになった。Apache CassandraやMongoDBやNeo4jなどだ。
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/41.py">AppleがSwiftをリリース - iOSとOSXのための高性能かつ高レベルなプログラム言語</a>本日のWWDC 2014でAppleが新プログラム言語Swiftの提供を発表した。今年後半，iOS 8およびOSX Yosemiteと合わせてリリースされる。SwiftはJavaScript開発者には馴染みやすい，高レベルなプログラム言語だが，LLVMを使用してコンパイルされることで，OSX およびiOS両プラットフォーム用のハイパフォーマンスな実行コードを生成する。
   </div>
   <div>
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/25.py">FirefoxにHTML5 DRMを追加するというMozillaの計画にさまざまな反応があった</a>Mitchell Baker氏は今週、MozillaはFirefoxにEncrypted Media Extensions (EME)を追加して、ブラウザーにシステムを実装済のMicrosoft, Google, Appleに並んだと発表した。Free Software Foundationは、MozillaとAdobeのパートナーシップを非難しており、Adobeは&quot;フリーソフトウェア運動とMozillaの基本理念に反している&quot;と説明している。
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/40.py">C++によるiOSとAndroidでのクロスプラットフォーム開発：Dropboxの教訓</a>Dropboxの開発者が、最近、アプリをiOSとAndroidの両方でそれぞれのプラットフォームごとにすべてを書き直すことなくサポートする方法についての講演をいくつか行っている。以下、そのアプローチをとることになった理由、それがもたらす恩恵、そのプロセスを通じて得られるいくつかのキーポイントについて再点検してみよう。
   </div>
   <div>
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/24.py">QCon San Francisco 2014 (11/3-7) 参加登録開始、プレゼンテーション・トップ10</a>QCon San Francisco 2014 (11/3-7)の参加登録が始まった。このThe Hyatt Regency San Franciscoで開催されるイベントは今回で8回目を迎え、100名の講演者が登壇し、15のトラックが行われ、さまざまな人脈作りの機会を提供する。6月21日までに参加登録すれば、$800のディスカウントが受けられる。
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/39.py">非互換の電子医療情報を統一するZoeticxミドルウェアAPI</a>Zoeticxは，現存する任意のプロバイダからのデータを，単一の共通フォーマットに統合可能なミドルウェアを開発した。新たにリリースしたAPIを使えば，このミドルウェアに簡単にアクセスすることができる。これによって，複数のデータベースに異なるフォーマットで格納されたレコードを扱うアプリケーションの開発が容易になる。
   </div>
   <div>
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/23.py">Cascading 3.0 が複数のフレームワークをサポート。 Concurrent Driven によるビッグデータアプリケーションの管理</a>ConcurrentはCascading 3.0 を初夏にリリースする予定である。これを使えばMapReduce、Tez、Spark、Storm等の複数のビッグデータフレームワーク上で特定のアプリケーションを実行できる。さらに、Drivenという新しいConcurrentの商用製品はビッグデータ・アプリケーションのための強力なエンタープライズ・データ・アプリケーション管理機能を提供する。
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/38.py">PrimeFaces 5 リリース - モバイルサポート刷新，プッシュサポートを大幅に改善</a>PrimeTekの最新リリースであるPrimeFace 5.0には，新しいグラフAPIとコンポーネント，例外ハンドラが追加されている。さらに，モバイルサポートは新たに書き直され，プッシュ機能が改良された。PF5と略称される今回のリリースは，JavaServer Faces 2.0以降に対応する。 PrimeFace Mobile (PFM) はスクラッチから書き直され，コアディストリビューションに含まれるようになった。新しいPFMはjQuery Mobileをベースとしている。
   </div>
   <div>
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/22.py">アジャイルプロジェクトのためのガバナンス</a>アムステルダムで5月13日に行われるアジャイルガバナンスカンファレンスにおいて、Andrew Craddock氏は程よく管理されたアジャイルプロジェクトについての講演を行う。InfoQは、アジャイルガバナンスとは何か、またアジャイル開発プロセスにガバナンスプラクティスを組み込むことがなぜ必要とされるのかについて彼にインタビューを行った。
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/37.py">マイクロサービスの強み弱み</a>マイクロサービスが最近話題になっており、噂も生まれている。10年以上に渡り、重たく、扱いにくいSOAソリューションが続いたが、マイクロサービスはそれを置き換える待望のソリューションなのだろうか。それとも単に一枚岩のソリューションズよりも単純なだけなのか。
+  </div> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/36.py">IBMのNick O'Leary氏がNode-REDで「モノのインターネット」をデモ</a>Nick O'Leary氏は先回のQCon Londonで，モノのインターネット(Internet of Things / IoT)に注目したオープンソースプロジェクトのNode-REDを発表した。IBMのEmerging Technologyチームが開発したこのプロジェクトは，&quot;ハードウェアデバイス，API，オンラインサービスが画期的な方法で結合された&quot;仮想環境をブラウザ上で実現する。 
+  </div> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/35.py">David Mole, Sandy Mamoli両氏に聞く - Trade MeにおけるSpotifyのスクワッドモデル導入について</a>アジャイルコーチのDavid Mole氏とSandy Mamoli氏は先日，ウェリントンのアジャイルミートアップグループで，ニュージーランド最大のオンライン企業であるTrade Meでの成功体験について講演した。彼らはSpotify型のスクワッドモデル(Squad Model)をTrade Meに導入すべく，チームの自己形成(Self Formation)とビッグバン方式のマイグレーションを行ったのだ。その動機と経験を理解するため，我々は彼らの話を聞いた。 
+  </div> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/34.py">企業におけるアジャイルとリーンを活用したサービス管理</a>アジャイルソフトウェア開発やスクラムは企業が本当にアジャイルの約束を果たすために十分なものではない、とDave van Herpen氏は言う。彼が提案するのは、企業全体を通じたコラボレーションを改善するために、ITサービス管理がアジャイルやリーンのプラクティスをDevOpsとあわせて適用する、ということだ。 
+  </div> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/33.py">SDKやコンパイル、コードの署名なしにデバイス上のPhoneGapアプリケーションをテストする</a>PhoneGapがアプリケーションのテストツールであるPhoneGap Developer Appをリリースした。このツールは、アプリケーション開発時のテストにおいて、SDK一式やコンパイル、コードの署名が必要ないというものである。なお、GapReloadと組み合わせたLiveReloadも同じことを行うことができる。 
+  </div> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/32.py">HerokuとSalesforce.comのデータリポジトリをリンクする新たなコネクタを発表</a>Heroku（2010年にSalesforce.comが買収）が2つのクラウドプラットフォームの最初のビルトイン統合サービスを発表した。このHeroku PostgresとSalesforce (Oracle) データベースの双方向データ同期は、Herokuにホストされたモバイル顧客向けアプリケーションをSalesforceで動作するビジネスシステムとつなげる手段として位置づけられている。 
+  </div> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/31.py">アジャイルのガバナンスにおけるマネジメントの役割</a>複数のアジャイルチームを管理するにはどうすればいいだろうか。アムステルダムで開催されたAgile GovernanceカンファレンスでChristoph Johann Stettina氏がアジャイルのガバナンスとマネジメントの役割について発表した。 
+  </div> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/30.py">エンタープライズシステムの新たなスタイル - SDA(Software-Defined Architecture)</a>GartnerのVP兼フェローであるYefim V. Natis氏によると，最近上昇中の新たなエンタープライズアーキテクチャスタイルがあるという – それがSDA(Software-Defined Archtecture)だ。 
+  </div> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/29.py">C#でSOLIDにする</a>Autonomous Solutions Inc.のソフトウェア開発者Brannon B. King氏は2014年5月のMSDN MagazineでC#でSOLIDの原則に反することの危険性と題した記事を公開した。著者は、開発者のミスでC#コードがSOLIDの原則を破ることで、拡張または維持することがより難しくなる概要を説明した。 
+  </div> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/28.py">PostgreSQLのNoSQL機能が大幅に向上</a>PostgreSQL 9.4 Beta版には待望の&quot;バイナリJSON&quot;型，JSONBが実装されている。この文書データのための新しいストレージ形式には，JSONデータをハイパフォーマンスに操作するためのインデックス処理，関数，演算子が用意される。 
+  </div> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/27.py">Facebook の決断：MVCはスケールしない。ならば Flux だ。</a>MVC アーキテクチャは増大するニーズに応じてスケールすることができないため、Facebook社は、Fluxと呼ばれる別のデザインパターンを用いることを決断した。 
+  </div> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/26.py">SplunkがHunk 6.1をリリース</a>Splunkは機械が生成したデータを検索や監視、分析することに特化した企業だ。同社はHunk 6.1のリリースを発表した。Hunkはビッグデータ分析のプラットフォームを提供する。ストリーミングリソースライブラリを使うことで開発者はHunkをどのようなNoSQLエンジンにも接続できるようになった。Apache CassandraやMongoDBやNeo4jなどだ。 
+  </div> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/25.py">FirefoxにHTML5 DRMを追加するというMozillaの計画にさまざまな反応があった</a>Mitchell Baker氏は今週、MozillaはFirefoxにEncrypted Media Extensions (EME)を追加して、ブラウザーにシステムを実装済のMicrosoft, Google, Appleに並んだと発表した。Free Software Foundationは、MozillaとAdobeのパートナーシップを非難しており、Adobeは&quot;フリーソフトウェア運動とMozillaの基本理念に反している&quot;と説明している。 
+  </div> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/24.py">QCon San Francisco 2014 (11/3-7) 参加登録開始、プレゼンテーション・トップ10</a>QCon San Francisco 2014 (11/3-7)の参加登録が始まった。このThe Hyatt Regency San Franciscoで開催されるイベントは今回で8回目を迎え、100名の講演者が登壇し、15のトラックが行われ、さまざまな人脈作りの機会を提供する。6月21日までに参加登録すれば、$800のディスカウントが受けられる。 
+  </div> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/23.py">Cascading 3.0 が複数のフレームワークをサポート。 Concurrent Driven によるビッグデータアプリケーションの管理</a>ConcurrentはCascading 3.0 を初夏にリリースする予定である。これを使えばMapReduce、Tez、Spark、Storm等の複数のビッグデータフレームワーク上で特定のアプリケーションを実行できる。さらに、Drivenという新しいConcurrentの商用製品はビッグデータ・アプリケーションのための強力なエンタープライズ・データ・アプリケーション管理機能を提供する。 
+  </div> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/22.py">アジャイルプロジェクトのためのガバナンス</a>アムステルダムで5月13日に行われるアジャイルガバナンスカンファレンスにおいて、Andrew Craddock氏は程よく管理されたアジャイルプロジェクトについての講演を行う。InfoQは、アジャイルガバナンスとは何か、またアジャイル開発プロセスにガバナンスプラクティスを組み込むことがなぜ必要とされるのかについて彼にインタビューを行った。 
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/21.py">リモートからクライアントとサーバのメモリをダンプできてしまう脆弱性Heartbleed</a>最近明らかになったOpenSSLのHeartbleedバグを突くとリモートクライアントがサーバ側のメモリの中を覗けてしまう。Yahoo! MailやAmazon Web Servicesが影響を受けている。 
@@ -105,51 +150,6 @@
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/3.py">JCACHEの仕様が完成</a>13年の開発と進化を経て、JSR-107が完成した。 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/2.py">全てを自動化しよう！ DevOps ツール Puppet が Windows Azure をサポート対象に</a>Microsoft の世界において DevOps の自動化とは何だろうか？典型的な例としては、Microsoft の製品スタックをサポートするのが遅い知名度のあるオープンソース ツールを利用するのに代わり、PowerShell や System Center 等の Microsoft が提供する製品群を利用することを意味する。しかし、開発者やシステム管理者にとってのこの構図は近年変わり始めており、Windows Azure では Puppet の様なリソースを管理するツールを利用することができる。 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/1.py">Microsoftは、Windowsをユニバーサルアプリに開放した: ひとつのアプリをすべてのプラットフォームに</a>Microsoftは、開発者がひとつのアプリを書くとすべてのWindowsベースのデバイス(Phone, タブレット、PC)で実行できるようになるWindowsユニバーサルアプリを正式に発表した。これによりプラットフォームが統合されることになる。 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/0.py">Microsoftは、モバイルプッシュの一環としてクラウドIDサービスを提供する</a>Enterprise Mobility Suiteの立ち上げの一部として、MicrosoftはAzure Active Directory Premiumの一般提供を発表した。Microsoft Azure Active Directory Premiumは、無料のID管理と追加のグループ管理機能でシングル サインオン、ブランディングオプション、セキュリティ分析などを拡張する。 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/0.py">QCon Tokyo 2014 【ビッグデータ/分散処理】 トラックのご紹介</a>QCon Tokyoは、最新技術を追い求めるデベロッパのための情報コミュニティ「InfoQ」が主催する、エンジニアによるエンジニアのためのワールドワイド カンファレンスです。昨年に引き続き注目されている「ビッグデータ/分散処理」について、今年もカテゴリが設定されています。 分散処理技術については、ビッグデータのニーズとともにどんどん進化しています。本トラックでは分散処理技術の最新情報について、事例を交え紹介していきます。 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/0.py">関数型言語を使ったドメイン駆動設計</a>ドメイン駆動設計 (DDD) で関数型言語を使用すると、多くの場合で実際のコードが簡単になり、ドメイン専門家と議論する際にUMLの代わりとして使うこともできると、Scott Wlaschinは関数型ロンドン市民グループの最近の会議で述べた。講演内容は、F#を使った関数型プログラミングにドメインモデリングを適用することについてであった。 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/49.py">QCon Tokyo 2014 【モバイル/HTML5】 トラックのご紹介</a>QCon Tokyo 2014は、昨年に引き続き「モバイル/HTML5」トラックが設けられ、本年度も選りすぐりのセッションを用意しています。 昨今のHTML5/CSS/JavaScriptに基づくクライアントプログラミングでは、製作するコンテンツの狙いを実現する為の極めて高いクオリティが求められるようになってきました。 それらを実現するポイントは、 ①HTML/CSSが正しく設計された拡張性/保守性に優れたコンテンツ ②マルチスクリーン対応をする際に利用者に対して効果的なコンテンツ ③コンテンツにとって最適なアーキテクチャ（構造） の３つです。 今回の「モバイル/HTML5」トラックでは、それぞれのセッションにおいて、上記の課題について考えてゆきたい、と思います。 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/48.py">Googleのクラウド価格引き下げに対するAmazonの反応</a>GoogleはComputer Engine, Storage, BigQueryなど，同社のクラウドサービスの価格を大幅に引き下げると発表した。しかし同社の価格的なアドバンテージはわずか24時間しか続かなかった。Amazonがその翌日，EC2, S3, RDS, ElasticCache, MapReduceといった同社のサービスを大幅に切り下げたためだ。 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/47.py">Meteor 0.7.1がリリース，開発者アカウントなど多数を改良</a>Matt DeBergalis氏がMeteorバージョン0.7.1をリリースした。oplogとminimongoの改善，CSSプリプロセス，Meteor開発者アカウントなどを備える。バージョン0.7.1ではminimongoのサポートが追加された。Meteorブログでの氏の説明によれば，これは&quot;MongoDBクエリ言語の更なる秘所&quot;とでも表現すべきものだ。 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/46.py">ThoughtWorks Technology RadarについてRebecca Parsons氏が語る</a>1月、ThoughtWorksは最新のTechnology Radarで、同社が追跡しているソフトウエア開発のエコシステムの動向を発表した。1)プロダクション環境での警告システムとリカバリ、2)プライバシとビッグデータの緊張関係、3)JavaScriptのエコシステム、4)物理と仮想の環境の境界の曖昧化、の4つが今年の大きなテーマだ。 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/45.py">Java 8 ローンチ Q&amp;A</a>Java 8は，長年に渡って最も待望されていたプログラム言語のアップデートのひとつだ。今回のリリースでは日付APIやストリームAPI，ラムダ式といった新機能が導入される一方で，PermGenが廃止されるなど，総合的に見て望ましい方向の改良が行われている。我々はリリースの詳細を知るため，Java Platformグループでソフトウェア開発を担当する，Oracle VPのGeorges Saab氏に話を聞いた。 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/44.py">LocalForageでアプリケーションのオフライン対応を行う</a>Mozilla財団がlocalForgeをリリースした。localForgeは、Webアプリケーションのオフラインデータをシンプルに保存できるようにする、新しいJavaScriptライブラリである。このライブラリをユニークなものにしているのは、最新のクライアントサイド技術の特徴である非同期性とBlob対応という両方の長所を、シンプルなAPIとして組み合わせようとしている事である。 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/43.py">QCon Tokyo 2014 【組込み系/モノづくり】 トラックのご紹介</a>QCon Tokyoのカテゴリのひとつとして「組込み系/モノづくり」トラックをご用意しています。 日本のお家芸ともいえる組込み系ソフトウェアの開発にも今ひしひしと変革の波が押し寄せています。安くて高機能の家電製品や組込み機器を提供すれば飛ぶようにモノが売れる時代は終わり、以下に付加価値を付け、モノとサービスと環境の総合的な組合せによって今までにない体験をいかに提供できるか。スピーディなデリバリと意外性、そして充実した使用感が求められるという新しい次元にモノづくりは突入したといえるでしょう。 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/42.py">QCon Tokyo 2014 【アジャイル/モデリング】 トラックのご紹介</a>QCon Tokyoは、最新技術を追い求めるデベロッパのための情報コミュニティ「InfoQ」が主催する、エンジニアによるエンジニアのためのワールドワイド カンファレンスです。そのカテゴリのひとつとして「アジャイル/モデリング」カテゴリを設定しています。 アジャイルは単純な「試してみた」という段階から、「そのテクニックを使って何をするか」という段階に移行しています。本トラックでは、その「次」を考えていただけるような内容をご用意しました。グリーとサイバーエージェントという、ゲーム業界の注目会社からの両氏が並び立ち、さらに、DevLOVE主催者の人気セッションもあります。 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/41.py">QCon Tokyo 2014 【組込み系／モノづくり】 トラックのご紹介</a>QCon Tokyoのカテゴリのひとつとして「組込み系／モノづくり」トラックをご用意しています。 日本のお家芸ともいえる組込み系ソフトウェアの開発にも今ひしひしと変革の波が押し寄せています。安くて高機能の家電製品や組込み機器を提供すれば飛ぶようにモノが売れる時代は終わり、以下に付加価値を付け、モノとサービスと環境の総合的な組合せによって今までにない体験をいかに提供できるか。スピーディなデリバリと意外性、そして充実した使用感が求められるという新しい次元にモノづくりは突入したといえるでしょう。 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/40.py">QCon Tokyo 2014 【アジャイル／モデリング】 トラックのご紹介</a>QCon Tokyoは、最新技術を追い求めるデベロッパのための情報コミュニティ「InfoQ」が主催する、エンジニアによるエンジニアのためのワールドワイド カンファレンスです。そのカテゴリのひとつとして「アジャイル／モデリング」カテゴリを設定しています。 アジャイルは単純な「試してみた」という段階から、「そのテクニックを使って何をするか」という段階に移行しています。本トラックでは、その「次」を考えていただけるような内容をご用意しました。グリーとサイバーエージェントという、ゲーム業界の注目会社からの両氏が並び立ち、さらに、DevLOVE主催者の人気セッションもあります。 
   </div>                
  </body>
 </html>

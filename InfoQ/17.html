@@ -1,22 +1,34 @@
-<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>使用Angular.JS和ASP.NET创建单页应用</h3><p>周三（4月2日）的Build大会上，David Catuhe和Jon Galloway做了一个关于将<a href="http://angularjs.org/">AngularJS</a>用于ASP.NET应用程序的演讲。他们为开发者提供了一种方式，可以快速构建流行的单页Web应用。</p>
-<p>Angular是由Google创建并运营的开源项目。顾名思义，这是一个基于JavaScript的库，遵循模型-视图-控制器（MVC）设计模式。如Catuhe和Galloway所说，Angular使用依赖注入，使ASP.NET应用更加强大。要想启用Angular，只需要引入单个文件angular.min.js。（NuGet用户可以<a href="http://www.nuget.org/packages/angularjs/">获取</a>最新版本（beta）或稳定版本。）</p>
-<p>他们指出，Angular并不是一个非此即彼的方案，你完全可以仅使用其中的页面选取功能。不管怎样，Catuhe和Galloway都建议在项目的Scripts文件夹下创建一个“apps”目录，来组织文件。</p>
-<p>压缩JS文件时需要格外注意：由于会影响Angular的依赖注入，因此默认情况下对应用代码进行压缩会破坏应用程序本身。（Angular教程文档的“A Note on Minification”一节对此进行了<a href="http://docs.angularjs.org/tutorial/step_05">详细介绍</a>。）</p>
-<p>要真正在页面中激活Angular，需要在html标签中添加“ng-app”：</p>
-<pre><code>&lt;html ng-app … &gt;
-</code></pre>
-<p>这可以通知Angular准备好做某些事情。Angular通过其自带的轻量级版本的jQuery，使用$http加载文件。如果项目已经安装了jQuery，Angular将会使用该版本，以保持一致性。</p>
-<p>Catuhe和Galloway还展示了一个示例应用，一个显示并存储“万智牌”信息的单页应用（SPA）。单页应用只用一个视图来构建UI，而Angular本身使用路由来定义这些视图。</p>
-<p>由于Angular中过深的链接会使MVC路由造成冲突，因此他们建议使用一个路由：</p>
-<pre>routes.MapRoute(
-             name: &quot;Catch all route for SPA&quot;,
-             url: &quot;App/{*catchall}&quot;,
-             defaults: new{
-                             controller = &quot;Home&quot;, 
-                             action = &quot;Index&quot;});
-</pre>
-<p>还有一个关于显示HTML的小技巧。如果HTML是视图生成的，一切都没有问题。但如果HTML来自文件（如MyHTML.html），应该使用IIS重写规则来改变URL：</p>
-<pre>/myHTML.html -&gt; /myHTML
-</pre>
-<p>要想观看完整的demo应用，请查阅该演讲的<a href="http://channel9.msdn.com/Events/Build/2014/3-644">Channel9页面</a>。</p>
-<p><strong>原文链接：</strong><a href="http://www.infoq.com/news/2014/04/asp_net-angular">Creating Single Page Apps With Angular.JS and ASP.NET</a></p><br><br><br><br><br><br></body></html>
+<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>如何在AWS云平台上构建千万级用户应用</h3><h2>AWS服务概述</h2>
+<p>高扩展性应用建设并非把应用直接迁移到云平台上就能轻易实现，相反我们需要根据云平台的特性进行专门的设计，这包括选择合适的云服务类型并进行良好的应用架构设计。对于希望基于AWS构建千万级用户应用的开发者而言，不仅需要对区域（Region）、可用区（AZ）和边缘站点等基础设施的分布有所了解，更需要了解不同的AWS服务各自的特点和最佳实践。</p>
+<p>AWS的服务可大致按照其所处层面分为三类，从下到上依次是基础服务层、应用服务层、部署和管理层。基础服务层也有两层，下层是计算（EC2、WorkSpaces）、存储（S3、EBS、Glacier、Storage Gateway）、网络（VPC、Direct Connect、ELB、Route53），上层是数据库（RDS、Dynamo、ElastiCache、RedShift）、数据分析（EMR、Data Pipeline、Kinesis）、内容分发（CloudFront）。应用服务层主要是把邮件服务、消息队列服务等通用的功能单独抽离出来。部署和管理层则有用于监控的CloudWatch，用于部署运维工作的BeanStalk、OpsWorks、CloudFormation和CloudTrail等，以及IAM、Federation等身份管理服务。</p>
+<h2>单机到多实例</h2>
+<p>传统的单机服务，到AWS上面就是跑在一个EC2实例上，这个实例上跟以前的服务器一样上面安装所有的Web应用、数据库等，搭配一个EIP，外部用Route53做DNS。遇到瓶颈后，简单的扩展就是将小的实例换成大的实例，比如small换成2xlarge、8xlarge，服务结构不变，可以快速实现，但是最终都会遇到极限。</p>
+<p>到了这一步，就要从单实例服务变成多实例。这一步骤涉及到Web实例和数据库实例的拆分，数据库可以开始考虑选择SQL或者NoSQL。SQL大家比较熟悉，优点很明显，缺点主要在规模变大之后呈现，不过一般对于百万级用户量内的应用，SQL是能够满足需求的；但如果数据量增长速度很快，数据是非结构化或者半结构化的，应用要求的延时低、写入的速度要求快，那考虑NoSQL会更合适一些。</p>
+<p>几百个用户的情况，一个RDS实例+一个Web实例即可满足需求，前端直接用一个EIP，即单机的情况；用户上千的情况，建议启动两个RDS实例+Web实例并将实例部署在不同的可用区，前端用ELB做负载均衡。</p>
+<p>对于百万级以下用户的规模，每一个可用区内会有多个Web实例和RDS实例组成的集群，其中Active RDS实例和Standby RDS实例要放在不同的可用区，其他RDS实例均为只读。</p>
+<p>到了这个规模之后，再要往上扩展到百万级，就需要改变部分工作负载的设计方式了。</p>
+<h2>改变部分工作负载的设计方式</h2>
+<p>第一步可以引入S3和CloudFront。把静态内容从Web实例中迁移到S3上，适合的文件类型包括静态数据（CSS、JS、图片、视频）、日志、备份等。S3具备11个9的持久性，本身是海量存储，可以支撑大量的并发访问，而且成本很低。CDN方面，CloudFront以Web Service接口的方式提供服务，支持动态和静态内容、流式视频，支持根域，支持客户化SSL证书。</p>
+<p>第二步可以引入ElastiCache和DynamoDB。ElastiCache是托管的Memcached和Redis服务，API是一样的，两者都是非常快的缓存服务（毫秒级别），区别在于Memcached使用一个AZ，Redis可以跨AZ复制。DynamoDB是NoSQL服务，后台存储基于SSD，平均延时在毫秒级别。</p>
+<p>这时候我们可以开始考虑弹性的问题，即应用的自动扩展。弹性的实现有四个前提：</p>
+<ol> 
+ <li>完善的、基于指标的监控体系</li> 
+ <li>自动化构建</li> 
+ <li>自动化部署</li> 
+ <li>集中化日志管理</li> 
+</ol>
+<p>在AWS上实现自动构建部署，可以选择Beanstalk、OpsWorks或CloudFormation，也可以完全自己写脚本配合定制AMI来实现。Elastic Beanstalk是全自动化的，基于容器实现，适合常规的Web应用；OpsWorks是半自动化的，适合较为复杂的应用开发流程，可以对资源配给、配置管理、应用部署、软件升级、监控、身份控制进行定制化；CloudFormation是基于模板的管理模式，可定制的范围更大。</p>
+<p>如果以上都做到，那么一个百万级用户量的应用基本上可以比较好的管理起来。进一步到千万级用户量的规模，我们需要更多的引入面向服务的架构设计，即SOA。</p>
+<h2><a href="$-1" name="user-content-soasoasoa"></a>SOA、SOA、SOA</h2>
+<p>SOA在04、05年讲得比较多，到现在基本上已经是大家都认可的做法，非常适合大规模应用的场景，其核心在于松耦合。</p>
+<p>比如消息队列服务SQS，加在模块A和模块B之间，这样即使模块A宕掉了，模块B也仍然可以正常运行一段时间。美国大选网站就是采用了这样的思路，在SQL实例压力大的时候把实例关掉，换上一个更大的实例，因为前面有SQS顶着才可以这样做。</p>
+<p>而AWS上的通知服务（SNS）、邮件服务（SES），也建议大家多多采用，而不要自己搭建Web实例来做，因为此类服务在处理海量请求方面的能力要远远超过一般的实现。</p>
+<p>千万级规模对数据库的性能挑战是很大的，对于SQL，联邦（federation）、分片（sharding）都是常用的方法，将“热”表、快速写数据迁移到NoSQL也是一种思路。应用的性能挑战方面，重点则在于即时获得反馈（完善实时的监控+报警），以及持续的调优各个模块。</p>
+<h2>参考资料</h2>
+<ul> 
+ <li><a href="http://aws.amazon.com">AWS官网</a></li> 
+ <li><a href="http://aws.amazon.com/architecture/">AWS参考架构</a></li> 
+ <li><a href="http://aws.amazon.com/whitepapers/">AWS白皮书</a></li> 
+ <li><a href="http://aws.amazon.com/blogs/aws/">AWS英文博客</a></li> 
+ <li><a href="http://run.qwiklab.com/">在线动手实验</a></li> 
+</ul><br><br><br><br><br><br></body></html>

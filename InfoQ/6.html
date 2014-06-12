@@ -1,9 +1,27 @@
-<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>微软开源C#编译器</h3><p>4 月3日，微软向公众发布了<a href="http://msdn.microsoft.com/en-us/vstudio/roslyn.aspx">Roslyn</a>编译器项目，该项目采用了Apache开源许可协议。C#的创始人&nbsp;Anders Hejlsberg在Build大会的第二场主题演讲中将这一令人震惊的消息公之于众。微软向Roslyn项目投入了大量人力物力，<a>从头</a>重写了C#和VB.NET的编译器，同时向开发人员开放了编译过程，以便他们提供更好的工具和编辑器支持。</p>
-<p>如今整个项目都发布在微软的<a href="http://roslyn.codeplex.com/">CodePlex</a>站点上，无论是在Windows下，还是在其它平台下，任何开发人员都可以免费获得&nbsp;。如果机器安装了Git，还可以通过<a>一次</a><a href="https://git01.codeplex.com/roslyn">clone</a>操作直接获得整个项目。</p>
-<p>如果<a>只</a>想尝试一下Roslyn，可以到<a href="http://go.microsoft.com/fwlink/?LinkId=394641">Connect</a>站点上下载预览版。如果想更深入地了解源代码，并在自己的环境中编译源代码，以满足自己测试和实验的需要，则需安装Visual Studio 2013专业版（或更高版本）、<a href="http://www.microsoft.com/en-us/download/details.aspx?id=40758">Visual Studio 2013 SDK</a>、<a href="http://www.microsoft.com/en-us/download/details.aspx?id=42307">Visual Studio 2013 Update 2 RC</a>，以及.NET编译器平台<a href="http://go.microsoft.com/fwlink/?LinkId=394641">最终用户预览版</a>（.NET Compiler Platform (Roslyn) End User Preview）。</p>
-<p>Roslyn主页上的“项目路线图（roadmap）”页面中罗列了很多<a href="http://roslyn.codeplex.com/wikipage?title=Roadmap&amp;referringTitle=Home">正在开发的功能</a>，绝大部分都是一些特性添加和质量提升。“<a href="https://roslyn.codeplex.com/wikipage?title=Language%20Feature%20Status&amp;referringTitle=Documentation">项目状态</a>”页面则主要显示了C#和VB新功能开发的最新状态。</p>
-<p>这次发布的作为.NET基础的核心技术，标志着&nbsp;微软在思想上的重大变化。尽管CLR不开源，但是能看到编译器，也能为各个平台的开发者带来好处。（例如，Mono的CLR允许Roslyn生成的代码在非微软平台上运行）。</p>
-<p><strong>查看英文原文：</strong> <a href="http://www.infoq.com/news/2014/04/roslyn_oss">C# Compiler Released As Open Source</a></p>
+<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>MySQL计划对系统表采用ACID</h3><p>MySQL目前仍然用MyISAM而不是InnoDB存储其关键的系统表，这可能让许多开发者感到很惊讶。因为MyISAM并不是ACID（原子性、一致性、隔离性和持久性）兼容的，当修改像权限这样的系统对象时，可能会导致数据丢失或损坏。Morgan Tocker已经对外宣布<a href="http://www.tocker.ca/2014/05/22/mysql-soon-to-store-system-tables-in-innodb.html">MySQL团队计划使用InnoDB作为MySQL系统表的存储引擎</a>。</p>
+<p><a href="http://en.wikipedia.org/wiki/MyISAM">MyISAM</a>是MySQL最初使用的存储引擎。它基于IBM的主机数据库技术——索引顺序存取方法（Indexed Sequential Access Method），即<a href="http://en.wikipedia.org/wiki/ISAM">ISAM</a>。由于MyISAM不支持事务，也就没有与之相关的开销，所以它往往要比其他的数据库存储引擎速度更快一些。这种引擎的缺点在于它不是ACID兼容的，所以很容易造成数据损坏，特别是在电力故障的情况下。</p>
+<p>MyIASM的首选替代方案就是由Innobase Oy公司开发的<a href="http://en.wikipedia.org/wiki/InnoDB">InnoDB</a>。因为其可以提供ACID兼容的事务、外键约束及其他一些功能，Oracle在MySQL5.5就将InnoDB设定为默认的存储引擎。</p>
+<p>目前仍在积极开发的<a href="http://en.wikipedia.org/wiki/Comparison_of_MySQL_database_engines">其他MySQL存储引擎</a>包括：</p>
+<ul> 
+ <li>Oracle开发的Archive</li> 
+ <li>Monty Program公司的Aria</li> 
+ <li>Monty Program公司的CONNECT</li> 
+ <li>Oracle的CSV</li> 
+ <li>Oracle的NDB</li> 
+ <li>Calpont公司的InfiniDB</li> 
+ <li>TokuTek公司的TokuDB</li> 
+ <li>Percona公司的XtraDB</li> 
+ <li>Monty Program公司的FederatedX</li> 
+ <li>Monty Program公司的CassandraSE</li> 
+ <li>Monty Program公司的sequence</li> 
+ <li>Monty Program公司的mroonga</li> 
+</ul>
+<p>尽管MySQL计划只支持InnoDB，它的分支<a href="http://en.wikipedia.org/wiki/MariaDB">MariaDB</a>对存储引擎的选择仍保持完全不可知的状态。</p>
+<p>关于发布日期，Morgan表示：</p>
+<blockquote> 
+ <p>与包含明确功能的版本不同，开发里程碑版本（DMR）的‘发布列车’模型要求各个特性在合并之前必须已经处于稳定状态。所以我不想在这里提前透露还在开发初期的工作。只能说很快。:D</p> 
+</blockquote>
+<p><strong>查看英文原文：</strong><a href="http://www.infoq.com/news/2014/05/MySQL-System-Tables">MySQL to Adopt ACID for System Tables</a></p>
 <hr />
-<p>感谢<a href="http://www.infoq.com/cn/author/臧秀涛">臧秀涛</a>对本文的审校。</p>
+<p>感谢<a href="http://www.infoq.com/cn/author/杨赛">杨赛</a>对本文的审校。</p>
 <p>给InfoQ中文站投稿或者参与内容翻译工作，请邮件至<a href="mailto:editors@cn.infoq.com">editors@cn.infoq.com</a>。也欢迎大家通过新浪微博（<a href="http://www.weibo.com/infoqchina">@InfoQ</a>）或者腾讯微博（<a href="http://t.qq.com/infoqchina">@InfoQ</a>）关注我们，并与我们的编辑和其他读者朋友交流。</p><br><br><br><br><br><br></body></html>

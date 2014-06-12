@@ -1,41 +1,9 @@
-<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>Creating Single Page Apps With Angular.JS and ASP.NET</h3><p class="MsoNormal">Wednesday’s Build sessions included a presentation by David Catuhe and Jon Galloway on incorporating <a href="http://angularjs.org/">AngularJS</a> into ASP.NET applications.&nbsp; The resulting setup provides a way for developers to quickly build modern single-page web applications.&nbsp; 
- <o:p></o:p>
- <o:p>
-  &nbsp;
- </o:p></p>
-<p class="MsoNormal">Angular was created by Google and is now operated as an open source project that they support.&nbsp; As its name implies, it is a JavaScript-based library that follows the Model View Controller (MVC) design pattern.&nbsp; As Catuhe and Galloway explain, Angular uses dependency injection to power your ASP.NET application.&nbsp; A single file, <code>angular.min.js</code>, is the only one needed to enable support.&nbsp; (NuGet users can <a href="http://www.nuget.org/packages/angularjs/">grab</a> the latest version (beta) or the stable release.)
- <o:p></o:p></p>
-<p class="MsoNormal">They point out that Angular usage is not an all-or-nothing approach, if you prefer to only utilize its functionality on selected portions of your page that is a supported possibility.&nbsp; In any event, Catuhe and Galloway recommend creating an “apps” directory under your Scripts folder for your project to help organize your files.
- <o:p></o:p></p>
-<p class="MsoNormal">An important word of caution about minification:&nbsp; by default using minification on your app’s code will break as it will interfere with Angular’s dependency injection.&nbsp; (The tutorial documentation for Angular has <a href="http://docs.angularjs.org/tutorial/step_05">more details</a> on this under the “A Note on Minification” section.)
- <o:p></o:p></p>
-<p class="MsoNormal">To actually activate Angular within your webpage, add “ng-app” to your html tag:
- <o:p></o:p></p>
-<p><code> </code></p>
-<p class="MsoNormal"><code>&lt;html ng-app … &gt;
-  <o:p></o:p></code></p>
-<p><code> </code></p>
-<p>&nbsp;This lets Angular know it should get ready to do something.&nbsp; Angular uses <code>$http</code> for loading files by using its own lightweight version of jQuery.&nbsp; If your project already has a copy of jQuery installed, Angular will instead use that version to be consistent.
- <o:p></o:p>
- <o:p>
-  &nbsp;
- </o:p></p>
-<p class="MsoNormal">Catuhe and Galloway proceeded to demo their sample application, a single page application (SPA) based on displaying and storing information about Magic: The Gathering cards.&nbsp; SPA’s use a view to build the UI, and Angular itself uses routing to define these views</p>
-<p class="MsoNormal">Since deep links in Angular can conflict with MVC Routes, they suggest using a Catchall route:
- <o:p></o:p></p>
-<p>&nbsp;</p>
+<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>Ayasdi Partners with Cloudera</h3><p><a href="http://www.ayasdi.com/">Ayasdi</a> <a href="http://www.ayasdi.com/connect/ayasdi-cloudera-partnes-to-enable-real-time-query-free-analysis-of-massive-data.html">announced</a> last month a partnership with <a href="http://www.cloudera.com/">Cloudera</a>, the biggest distributor of <a href="http://hadoop.apache.org/">Apache Hadoop</a>. The partnership that will ensure the compatibility of their solution with <a href="http://www.cloudera.com/content/cloudera/en/products-and-services/cloudera-enterprise.html">Cloudera Enterprise 5</a>, the latest version of Cloudera’s big data platform based on Apache Hadoop.</p>
+<p>Ayasdi, which means &quot;to seek&quot; in Cherokee, is a data analysis start-up founded in 2008 by three mathematicians to commercialize a novel approach to discover insight from high-dimensional and large data sets. Initially funded by the <a href="http://www.darpa.mil/">Defense Advanced Research Project</a> (DARPA) and the <a href="http://www.nsf.gov/">National Science Foundation</a> (NSF), this approach is based on a new area of mathematics called <a href="http://en.wikipedia.org/wiki/Topological_data_analysis">Topological Data Analysis</a> (TDA) and allows customers such as <a href="http://www.ge.com/">General Electric</a>, <a href="http://www.merck.com/">Merck</a>, the <a href="http://www.fda.gov/">US Food and Drug Administration</a> (FDA) or the <a href="http://www.cdc.gov/">Centers for Disease Control and Prevention</a> (CDC) to highlight the geometric structures of their data and build compact summaries that are easier to visualize and easier to explore interactively, without the need to write query or algorithm.</p>
+<p>The fundamental idea behind is that data has shape and shape has meaning. In the context of TDA, data are typically represented as a large finite set of points in space, and shapes are used to describe how points are related to each other. For example, a simple aspect of shape &quot;how many pieces do they break into&quot;, or &quot;how do they break into cluster&quot; can reveal conceptually different parts of a phenomena. Another aspect &quot;is there any loop&quot; can indicate a recurrent or periodic behavior. Topology is precisely that branch of mathematics that studies this notion of shape and TDA aims to extend that mathematical formalism for defining and measuring qualitative geometric information to large and noisy cloud points.</p>
+<p>From a technical perspective, Ayasdi Platform leverages CDH 5's <a href="http://wiki.apache.org/hadoop/HDFS">Hadoop Distributed File System</a> (HDFS) for managing large amounts of customer data and uses <a href="https://hbase.apache.org/">HBase</a> for storing some of its operational metadata that is randomly accessed and frequently updated. According to <a href="https://www.linkedin.com/in/spracklen">Lawrence Spracklen</a>, Chief Architect at Ayasdi, the company also leverages <a href="http://spark.apache.org/">Spark</a> for various ETL activities and is partnering with Intel to help drive performance, robustness and minimal overhead security but it uses a custom non-hadoop stack to compute and distribute topological networks.</p>
+<p>Asked about the size of the current largest Cloudera cluster used by Ayasdi's customers, Lawrence explains us that scale is only one part of the story.</p>
 <blockquote>
- <code> <p class="MsoNormal">routes.MapRoute(<br /> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; name: &quot;Catch all route for SPA&quot;,<br /> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; url: &quot;App/{*catchall}&quot;,<br /> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; defaults: new{<br /> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; controller = &quot;Home&quot;, <br /> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; action = &quot;Index&quot;});
-   <o:p></o:p></p> </code>
+ The Ayasdi Data Platform is horizontally scalable, and readily scales to many tens of nodes. However, the size of the Cloudera cluster is far less interesting than the overall size of the data set coupled with the complexity of the data. As a frame of reference, advancements in data analysis technology haven’t kept up with this fast paced data environment of change and growth. The lack of development around data analysis technology stems from the inherent challenges posed by the computations and techniques needed in order to analyze extremely complex, high dimensional data. Ayasdi’s solution was built to find insights in extremely complex data. Examples include data sets of medical disorders and disease e.g. cancer, PTSD, and diabetes. These data sets are not always big but tend to be extremely complex.
 </blockquote>
-<p>&nbsp;</p>
-<p class="MsoNormal">Another tip for displaying HTML.&nbsp; If the HTML is generated from a view, proceed without difficulty.&nbsp; However if the HTML is coming from a file (MyHTML.html) then use an IIS Rewrite rule to change the URL:
- <o:p></o:p></p>
-<p><code> </code></p>
-<p class="MsoNormal"><code>/myHTML.html -&gt; /myHTML
-  <o:p></o:p></code></p>
-<code> </code>
-<p></p>
-<p class="MsoNormal">To see their demo application in action, consult the presentation’s <a href="http://channel9.msdn.com/Events/Build/2014/3-644">Channel9 page</a> for more information.
- <o:p></o:p></p>
-<p>&nbsp;</p><br><br><br><br><br><br></body></html>
+<p>YouTube hosts videos (<a href="https://www.youtube.com/watch?v=gtFVdGb9Y8w">one</a>, <a href="https://www.youtube.com/watch?v=kctyag2Xi8o">two</a>) that explore TDA in more detail. The International Conference on Machine Learning (ICML) offers a PDF to the same end, as has a Topological Data Analysis and Machine Learning Theory <a href="http://www.birs.ca/workshops/2012/12w5081/report12w5081.pdf">workshop held in 2012</a>. For a more concrete example, the Institute for Computational and Mathematical Engineering at Stanford University (ICME) <a href="http://comptop.stanford.edu/u/preprints/mapperPBG.pdf">presents</a> a computational method for extracting simple descriptions of high dimensional data.</p><br><br><br><br><br><br></body></html>

@@ -1,61 +1,228 @@
-<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>How LinkedIn Uses Apache Samza</h3><p><i>Apache Samza is a stream processor LinkedIn recently open-sourced. In his presentation, Samza: Real-time Stream Processing at LinkedIn, Chris Riccomini <a href="http://www.infoq.com/presentations/samza-linkedin">discusses</a> Samza's feature set, how Samza integrates with YARN and Kafka, how it's used at LinkedIn, and what's next on the roadmap.</i></p>
-<p><b><small>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;Presentation transcript edited by <a href="http://www.infoq.com/author/Roopesh-Shenoy">Roopesh Shenoy</a></small></b></p>
-<p>Apache Samza is a stream processor LinkedIn recently open-sourced. In his presentation, <a href="http://www.infoq.com/presentations/samza-linkedin">Samza: Real-time Stream Processing at LinkedIn</a>, Chris Riccomini discusses <a href="http://samza.incubator.apache.org/">Samza</a>'s feature set, how Samza integrates with YARN and Kafka, how it's used at LinkedIn, and what's next on the roadmap.</p>
-<p>Bulk of processing that happens at LinkedIn is RPC-style data processing, where one expects a very fast response. On the other end of their response latency spectrum, they have batch processing, for which they use Hadoop for quite a bit. Hadoop processing and batch processing typically happens after the fact, often hours later.</p>
-<p>There's this gap between synchronous RPC processing, where the user is actively waiting for a response, and this Hadoop-style processing which despite efforts to shrink it still it takes a long time to run through.<i> </i></p>
-<p><img src="http://www.infoq.com/resource/articles/linkedin-samza/en/resources/3Fig1.png" alt="" _href="img://3Fig1.png" _p="true" /></p>
+<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>Purely Functional Configuration Management with Nix and NixOS</h3><p><i>Configuration management is the foundation that makes modern infrastructure possible.&nbsp; Tools that enable configuration management are required in the toolbox of any operations team, and many development teams as well. Although all the tools aim to solve the same basic set of problems, they adhere to different visions and exhibit different characteristics. The issue is how to choose the tool that best fits each organization's scenarios.</i></p>
+<p><i>This InfoQ article is part of a <a href="http://www.infoq.com/configuration-management-tools/">series</a> that aims to introduce some of the configuration tools on the market, the principles behind each one and what makes them stand out from each other. You can subscribe to notifications about new articles in the series <a href="http://www.infoq.com/feed/Configuration-Management-Tools">here</a>.</i></p>
+<p>&nbsp;</p>
+<p>In this article, I’ll give a short introduction to <a href="http://nixos.org/"><strong>NixOS</strong></a>, a Linux distribution, and to <a href="http://nixos.org/nix"><strong>Nix</strong></a>, the package manager on which NixOS is based. These provide a declarative approach to configuration management with many advantages to users, such as strong reproducibility and atomic upgrades and rollbacks.</p>
+<h2>The problem</h2>
+<p>As any system administrator knows, managing the configuration of a system is fraught with peril.</p>
+<p>You upgrade one package and discover that other packages on your system no longer work. This turns out to be because some shared dependencies got upgraded as well, and they’re not perfectly backwards-compatible. Windows users call this the <i>DLL hell</i>, but it’s a fairly universal phenomenon.</p>
 <div id="lowerFullwidthVCR"></div>
-<p>That's where Samza fits in. This is where we can process stuff asynchronously, but we're also not waiting for hours. It typically operates in the order of milliseconds to minutes. The idea is to process stuff relatively quickly and get the data back to wherever it needs to be, whether that's a downstream system or some real-time service.</p>
-<p>Chris mentions that right now, this stream processing is the worst-supported in terms of tooling and environment.</p>
-<p>LinkedIn sees a lot of use cases for this type of processing –</p>
+<p>You upgrade to the latest version of your Linux distribution. It doesn’t work properly. There is no easy way to undo the upgrade. People on the Internet scold you for not knowing you really should have done a clean reinstall.</p>
+<p>Your production server dies. Now you need to reproduce its configuration on a new machine, but nobody knows exactly what that configuration was, because it was the result of people making manual changes over a period of time.</p>
+<p>Your team develops an application that has many dependencies. Your developers waste a lot of time setting up their build environments. Every time a dependency changes, everybody on the team needs to upgrade their environments manually.</p>
+<p>These problems have a number of common causes:</p>
 <ul> 
- <li>Newsfeed displays when people move to another company, when they like an article, when they join a group, et cetera.<i> </i></li> 
+ <li>Configuration and package management tools are not sufficiently <i>declarative</i>: there is no convenient specification that describes the desired configuration of the system, or it’s not guaranteed that the actual configuration corresponds to that specification.</li> 
+ <li>Configuration changes are realised in a “destructive” way, by overwriting the previous configuration. For instance, a package upgrade on Unix will typically update files in <b><small>/usr/bin</small></b> or <b><small>/etc</small></b>.</li> 
 </ul>
-<p>News is latency-sensitive and if you use Hadoop to batch-compute it, you might be getting responses hours or maybe even a day later. It is important to get trending articles in News pretty quickly.</p>
+<p>NixOS is a Linux distribution with a fully declarative approach to configuration management designed to overcome these problems. It builds on Nix, a package manager that builds and stores packages in a way that does away with the “destructive” model of package managers like RPM or Apt. NixOS extends this approach to the configuration management of an entire Linux system. This gives many advantages, most importantly:</p>
 <ul> 
- <li>Advertising – getting relevant advertisements, as well as tracking and monitoring ad display, clicks and other metrics</li> 
- <li>Sophisticated monitoring that allows performing of complex querys like &quot;the top five slowest pages for the last minute.&quot;</li> 
+ <li><i>Atomic upgrades</i>: during a package or system upgrade, the system remains in a consistent state. If you run a program at any point in time, you’ll get the old or the new version, but not something in between. Similarly, if the system crashes half-way through an upgrade, it will still work. Put in another way, upgrades are <i>transactional</i>.</li> 
+ <li><i>Rollbacks</i>: upgrades don’t overwrite the old packages and configuration files, so if a new configuration doesn’t work, you can revert to the previous state. This also makes testing configuration changes less scary.</li> 
+ <li><i>Reproducibility</i>: Nix tries very hard to ensure that a package build always produces the same result. This property extends to NixOS: deploying a NixOS configuration on another machine will yield the same result, regardless of whether this machine is a clean install or already had a previous configuration.</li> 
 </ul>
-<h2>Existing Ecosystem at LinkedIn</h2>
-<p>The existing ecosystem at LinkedIn has had a huge influence in the motivation behind Samza as well as it’s architecture. Hence it is important to have at least a glimpse of what this looks like before diving into Samza.</p>
-<p><a href="https://kafka.apache.org/">Kafka</a> is an open-source project that LinkedIn released a few years ago. It is a messaging system that fulfills two needs – message-queuing and log aggregation. All of LinkedIn’s user activity, all the metrics and monitoring data, and even database changes go into this.</p>
-<p>LinkedIn also has a specialized system called <a href="http://data.linkedin.com/projects/databus">Databus</a>, which models all of their databases as a stream. It is like a database with the latest data for each key-value pair. But as this database mutates, you can actually model that set of mutations as a stream. Each individual change is a message in that stream.</p>
-<p>Because LinkedIn has Kafka and because they’ve integrated with it for the past few years, a lot of data at LinkedIn, almost all of it, is available in a stream format as opposed to a data format or on Hadoop.</p>
-<h2>Motivation for Building Samza</h2>
-<p>Chris mentions that when they began doing stream processing, with Kafka and all this data in their system, they started with something like a web service that would start up, read messages from Kafka and do some processing, and then write the messages back out.</p>
-<p>As they did this, they realized that there were a lot of problems that needed to be solved in order to make it really useful and scalable. Things like partitioning: how do you partition your stream? How do you partition your processor? How do you manage state, where state is defined essentially as something that you maintain in your processor between messages, or things like count if you're incrementing a counter every time a message comes in. How do you re-process?</p>
-<p>With failure semantics, you get at least once, at most once, exactly once messaging. There is also non-determinism. If your stream processor is interacting with another system, whether it's a database or it's depending on time or the ordering of messages, how you deal with stuff that actually determines the output that you will end up sending?</p>
-<p>Samza tries to address some of these problems.</p>
-<h2>Samza Architecture</h2>
-<p>The most basic element of Samza is a stream. The stream definition for Samza is much more rigid and heavyweight than you would expect from other stream processing systems. Other processing systems, such as Storm, tend to have very lightweight stream definitions to reduce latency, everything from, say, UDP to a straight-up TCP connection.</p>
-<p>Samza goes the other direction. It wants its streams to be, for starters, partitions. It wants them to be ordered. If you read Message 3 and then Message 4, you are never going to get those inverted within a single partition. It also wants them to replayable, which means you should be able to go back to reread a message at a later date. It wants them to be fault-tolerant. If a host from Partition 1 disappears, it should still be readable on some other hosts. Also, the streams are usually infinite. Once you get to the end – say, Message 6 of Partition 0 – you would just try to reread the next message when it's available. It's not the case that you're finished.</p>
-<p>This definition maps very well to Kafka, which LinkedIn uses as the streaming infrastructure for Samza.</p>
-<p>There are many <a href="http://samza.incubator.apache.org/learn/documentation/0.7.0/introduction/concepts.html">concepts</a> to understand within Samza. In a gist, they are –</p>
+<h2>A quick tour of Nix</h2>
+<p>We’ll start with a brief introduction to using the Nix package manager. Installing a package via Nix works pretty much as you’d expect from any package manager. For example, the following will install Git and its dependencies and make it available to the user:</p>
+<pre>
+$ nix-env -i git
+installing 'git-1.9.3'
+
+$ git --version
+git version 1.9.3
+</pre>
+<p>However, what sets Nix apart from conventional package managers is the way in which packages are stored:</p>
+<pre>
+$ readlink -f $(which git)
+/nix/store/hn79nsyhnlwqyspwqsbmgzacny35hn3w-git-1.9.3/bin/git
+</pre>
+<p>That is, packages don’t live in shared directories such as <b><small>/usr/bin</small></b> or <b><small>/usr/lib</small></b>, but each have their own directory underneath the <i>Nix store</i> (<b><small>/nix/store</small></b>), such as <b><small>hn79nsyhnlwqyspwqsbmgzacny35hn3w-git-1.9.3</small></b>. The characters at the start of the name are a <i>cryptographic hash</i> of all inputs used to build the package. These include the source code of the package and the build script, but also dependencies such as the C compiler and libraries against which Git links (such as OpenSSL).</p>
+<p>Many of Nix’s advantages flow from the use of these hashes. For instance, let’s look at what happens if we upgrade a package. Nix installs packages from sets of package descriptions called <i>Nix expressions</i>. One such set is the <a href="https://github.com/NixOS/nixpkgs">Nix Packages collection</a> (Nixpkgs), which provides thousands of packages. You can get it by cloning its Git repository, but most users get it through a so-called <i>Nix channel</i>. If you’re “subscribed” to the Nixpkgs channel, you can get the most recent set of Nix expressions:</p>
+<pre>
+$ nix-channel --update&nbsp;</pre>
+<p>It may be that the channel brings an updated version of the Nix expression for Git. So we do the upgrade:</p>
+<pre>
+$ nix-env -u
+upgrading 'git-1.9.3' to 'git-2.0.0'
+
+$ git --version
+git version 2.0.0
+</pre>
+<p>However, the old version of Git is not gone, because the new one is stored in a different path in the Nix store (for example, <b><small>/nix/store/5l83x6jlq9kpxf7jk6d7ly12kry8jdkk-git-2.0.0/bin/git</small></b>). This means that you can roll back to the previous configuration:</p>
+<pre>
+$ nix-env --roll-back
+switching from generation 505 to 504
+
+$ git --version
+git version 1.9.3&nbsp;</pre>
+<p>So how does this work? In Nix, whenever you install, upgrade or uninstall a package via <b><small>nix-env</small></b>, Nix builds a tree of symbolic links (called a <i>user environment</i>) pointing to the installed packages. The current user environment is reachable from the user’s <b><small>PATH</small></b> environment variable, through some indirections. (See Figure 1. The dashed arrows denote symlinks.) Running <b><small>nix-env -u</small></b> will first build or download Git and its dependencies, then build a new user environment. This will not affect the old version of Git in any way. Finally, it will update the symlink <b><small>/nix/var/nix/profiles/default</small></b> to point at the new user environment (e.g. moving from the old <b><small>default-42-link</small></b> to the new <b><small>default-43-link</small></b>). The latter step is an atomic action. Thus, running <b><small>git</small></b> will either give you the old version or the new version, but not an inconsistent mix of the two (which would be the case if Git’s files were overwritten in place).</p>
+<p><b><small>(Click on the image to enlarge it)</small></b></p>
+<p><a href="/resource/articles/configuration-management-with-nix/en/resources/fig3large.jpg" _href="resource://fig3large.jpg"><img _p="true" _href="img://fig3small.jpg" alt="" src="http://www.infoq.com/resource/articles/configuration-management-with-nix/en/resources/fig3small.jpg" /></a></p>
+<p><b><small>Figure 1:</small></b><small> Profiles</small></p>
+<p>Packages can be removed from a profile by running <b><small>nix-env -e <i>package-name</i></small></b>. This builds a new symlink tree from which the symlinks to the specified package have been removed. So removing a package from a profile doesn’t cause it to be deleted from disk, since the user may want to roll back at some point.</p>
+<p>Since disk space is not quite infinite, Nix allows packages to be <i>garbage-collected</i>. This works pretty much like garbage collection in programming languages: Nix will delete any path in the Nix store that is not reachable from a “root”. Roots include the symlinks in <b><small>/nix/var/nix/profiles</small></b> but also any open files (to prevent active programs from being garbage-collected). This does require telling Nix that you don’t need to roll back anymore. For example:</p>
+<pre>
+$ nix-env --delete-generations 10d
+$ nix-collect-garbage
+</pre>
+<p>The first command tells Nix that you don’t want to roll back to any profile version (“generation”) older than ten days, while the second performs the actual deletion.&nbsp;</p>
+<p>Users can have multiple profiles. This makes it easy to experiment with new versions of software, or to keep different versions around for different purposes. For instance, you could have multiple versions of GCC in different profiles. This works because those versions don’t interfere with each other — they’re stored in different paths in the Nix store. Similarly, Nix supports <i>multi-user</i> package management: you don’t have to be root to install software. This is safe because packages installed by one user don’t appear in the profile of other users. But if two users install the exact same package, it will be stored only once.</p>
+<h3>Building packages</h3>
+<p><i>Nix expressions</i> are a simple purely functional language that tell Nix how to build packages. For example, here is a Nix expression for building the Nano editor:</p>
+<pre>
+with import &lt;nixpkgs&gt; { };
+
+stdenv.mkDerivation {
+  name = &quot;nano-2.3.2&quot;;
+
+  # The source tarball, downloaded into some place in the Nix store.
+  src = fetchurl {
+    url = ftp://ftp.gnu.org/pub/gnu/nano/nano-2.3.2.tar.gz;
+    sha256 = &quot;1s3b21h5p7r8xafw0gahswj16ai6k2vnjhmd15b491hl0x494c7z&quot;;
+  };
+
+  # The dependencies, referring to variables in &lt;nixpkgs&gt;.
+  buildInputs = [ ncurses gettext ];
+
+  # This is actually unnecessary:
+  buildCommand =
+    ''
+      tar xf $src
+      cd nano-*
+      ./configure --prefix=$out
+      make
+      make install
+    '';
+}
+</pre>
+<p>This calls the function <b><small>stdenv.mkDerivation</small></b> (a high-level abstraction that provides standard Unix dependencies such as GCC and Make) with arguments that specify the inputs to the build, such as the source code, additional dependencies such as <b><small>ncurses</small></b>, and a build script. (In fact, the build script can be omitted in this case because <b><small>mkDerivation</small></b> assumes standard <a href="http://www.gnu.org/software/autoconf/">Autoconf-style</a> packages by default.)</p>
+<p>You can install such a package via <b><small>nix-env -i nano</small></b>, but you can also build it without installing it into a profile:</p>
+<pre>
+$ nix-build ./nano.nix
+…
+/nix/store/22y58w45fskjz6k7xyryx9s6ri22j2bq-nano-2.3.2
+</pre>
+<p>This will leave you with a symlink <b><small>./result</small></b> pointing to the result in the Nix store, so you can test the package by running <b><small>./result/bin/nano</small></b>.&nbsp;</p>
+<p>Building a package works as follows. Nix evaluates the given Nix expression. The result of the evaluation is a graph whose nodes are package build actions (each producing one path in the Nix store) and whose edges denote dependencies. Nix will then build each package in the graph in the right order, unless its store path already exists. Nix ensures a transactional semantics: builds can always safely be interrupted, restarted, or run in parallel.</p>
+<p>You may have noticed that the Nix expression for Nano specifies build dependencies but not run-time dependencies. This is because Nix can figure out run-time dependencies automatically by <i>scanning</i> for cryptographic hashes of store paths inside the output of the build. For instance, if the <b><small>ncurses</small></b> dependency evaluates to the store path <b><small>/nix/store/8h3mfka2jmbjgaqdh1b95h7vh28j8906-ncurses-5.9</small></b>, and the <b><small>nano</small></b> binary contains the string <b><small>8h3mfka2…</small></b> (which will be the case, because of the dynamic library search path embedded in Linux executables), then Nix will conclude that Nano has a run-time dependency on <b><small>ncurses</small></b>. The set of all store paths reachable in this way is called the <i>closure</i> of a package. Such a closure can be copied to another machine and should behave there in the same way, since it includes all run-time dependencies. Nix thus makes it easy to send a program to another machine, e.g.</p>
+<pre>
+$ nix-copy-closure --to server.example.org $(which firefox)
+</pre>
+<p>will copy your exact version of Firefox and all its run-time dependencies to a remote machine via SSH.&nbsp;</p>
+<h3>A purely functional package manager</h3>
+<p>So what does it mean to say that Nix is a purely functional package manager? There are several aspects to this.</p>
+<p>The Nix expression language is <i>lazy and purely functional</i>, like Haskell. Laziness is particularly important, since it means that variables that refer to packages are not built unless they are needed. For instance, the expression <b><small>import &lt;nixpkgs&gt;</small></b> in the example imports the Nix Packages collection. It would be bad if all its packages were built even if they were not used.</p>
+<p>The fact that it’s a functional language means that it enables functional abstractions (including higher-order functions such as <b><small>map</small></b>) to capture common code patterns.</p>
+<p>Package builds are intended to be <i>pure</i>: they should only depend on their declared inputs. This means they shouldn’t download things from the network, depend on the current time, use programs in <b><small>/usr/bin</small></b>, and so on. Nix tries hard to enforce this: for instance, it clears the environment so that variables like <b><small>PATH</small></b> cannot be used to pass undeclared dependencies to builds, and optionally performs builds in a <a href="http://en.wikipedia.org/wiki/Chroot">chroot</a> so that paths like <b><small>/usr</small></b> are not visible. But it cannot guarantee purity because current operating systems have no way to enforce determinism; for instance, if a build script makes its output depend on the phase of the moon, there is not much Nix can do about it. But in practice, it works pretty well.</p>
+<p>The result of building a package — the paths in the Nix store — can be seen as a <i>purely functional data structure</i>: they are objects that refer to each other, never change after they have been constructed, and are only deleted when they become unreachable. (Another example of the use of persistent purely functional data structures outside of functional programming is Git repositories.) A package can only be “modified” by building a new one, which may use some or all of the dependencies of the old one. This is transitive: if we change the Nix expression for <b><small>ncurses</small></b> and run <b><small>nix-build nano.nix</small></b>, then both <b><small>ncurses</small></b> and Nano will be rebuilt, even if the Nix expression for nano didn’t change.</p>
+<p>The purely functional approach does have a price: upgrading a fundamental dependency, like Glibc, may be fairly expensive, since everything that depends on the updated package needs to be rebuilt as well. However, Nix has a feature that ensures that even such upgrades can be done fairly quickly: the <i>binary cache</i>.</p>
+<h3>Binary caches</h3>
+<p>As described above, Nix has a <i>source-based</i> model, like Gentoo Linux: Nix expressions describes how to build a package and its dependencies from source. This is convenient for developers, since it makes it easy to modify packages, but not so much for users, since building everything from source is slow. However, Nix allows the best of both the source- and binary-based worlds via its <i>binary cache</i> mechanism, which allows it to transparently “optimise” a build from source into a download of a binary.</p>
+<p>This works as follows. Suppose that Nix has evaluated a Nix expression and computed that it needs to build the store path <b><small>/nix/store/pdskwizjw8ar31hql2wjnnx6g0s6xc50-glibc-2.19</small></b>. It will then first fetch the URL <b><small>http://cache.nixos.org/pdskwizjw8ar31hql2wjnnx6g0s6xc50.narinfo</small></b>. (<b><small>cache.nixos.org</small></b> is the default binary cache, but you also create your own, for instance for your internal packages.) If it exists, it will contain (a pointer to) a prebuilt binary tarball, which Nix will unpack into the store instead of building from source.</p>
+<h3>Developing with Nix</h3>
+<p>Nix is not only useful as a package manager, but also as a tool for setting up build environments for development projects. A Nix expression can serve as a declarative specification of all the dependencies that your project needs. Nix can then automatically build or download these dependencies in the exact versions required by your project, freeing developers from having to do this manually. In this use case, Nix essentially serves as a more general <a href="http://virtualenv.readthedocs.org/en/latest/">virtualenv</a> (since it’s language-agnostic), or as a <a href="http://www.vagrantup.com/">Vagrant</a> that doesn’t require a virtual machine.</p>
+<p>Nix usually performs non-interactive builds (e.g. <b><small>nix-build nano.nix</small></b>). But it also has a command, <b><small>nix-shell</small></b>, that builds or downloads all dependencies of a package, but not the package itself. Instead it drops you into an interactive shell where all necessary environment variables are set so that the dependencies in the Nix store can be found. For instance, for C/C++ dependencies (such as <b><small>ncurses</small></b> above) this would be the compiler and linker search paths; for Python dependencies it would be <b><small>PYTHONPATH</small></b>; and so on.</p>
+<p>For instance, to get a environment for building Nano:</p>
+<pre>
+$ nix-shell nano.nix
+</pre>
+<p>If your Nix store doesn’t already have the exact versions of <b><small>ncurses</small></b>, <b><small>gcc</small></b> and the other dependencies required by the Nix expression for Nano, Nix will build or download them. So you can then interactively edit, build and test the software as usual:</p>
+<pre>
+[nix-shell]$ tar xf $src
+[nix-shell]$ cd nano
+[nix-shell]$ ./configure
+[nix-shell]$ make
+[nix-shell]$ ./src/nano
+[nix-shell]$ emacs src/nano.c …
+[nix-shell]$ make&nbsp;</pre>
+<p>Of course, Nano’s dependencies are fairly trivial. But many projects have highly specific dependencies, and changing or adding to them is a pain. Nix makes this trivial. For instance, suppose your project depends on some specific versions of dependencies:</p>
+<pre>
+buildInputs = [ boost149 python27 ];
+</pre>
+<p>One day you decide to switch to more recent versions of Boost and Python. Instead of every team member having to upgrade those dependencies locally and manually, you just change the Nix expression:</p>
+<pre>
+buildInputs = [ boost155 python33 ];
+</pre>
+<p>Then when others pull this change and re-run <b><small>nix-shell</small></b>, they will get the new build environment, and it will be consistent with what everybody else on the team is using.&nbsp;</p>
+<h2>NixOS</h2>
+<p>NixOS is a Linux distribution that uses Nix as its package manager, and more importantly, extends the purely functional approach to package management to configuration management of the entire system. This means that all static bits of a running Linux system are kept in the Nix store, built by Nix expressions. This includes not just packages but also configuration files, boot scripts, and <a href="http://www.freedesktop.org/wiki/Software/systemd/"><b><small>systemd</small></b></a> units. For instance, there is a Nix function that builds the configuration file for the OpenSSH server, resulting in a store path like</p>
+<pre>
+/nix/store/91cj8hvpj9563ab9kpzmyypsd77il6av-sshd_config
+</pre>
+<p>Almost the entire system lives in the Nix store; there is almost no <b><small>/bin</small></b> or <b><small>/usr</small></b> and only a fairly small <b><small>/etc</small></b>.&nbsp;</p>
+<p>So why would we want this? The reason is that it lifts all of Nix’s nice properties to the level of the system as a whole:</p>
 <ul> 
- <li><a href="http://samza.incubator.apache.org/learn/documentation/0.7.0/container/streams.html">Streams</a> – Samza processes streams. A stream is composed of immutable messages of a similar type or category. The actual implementation can be provided via a messaging system such as Kafka (where each topic becomes a Samza Stream) or a database (table) or even Hadoop (a directory of files in HDFS)</li> 
+ <li>The system can be upgraded almost atomically. The building of a new configuration (i.e. the process of building or downloading the store paths of the new configuration) is atomic. So if the power fails halfway through an upgrade, you’ll get either the old or the new configuration, but not something in between, let alone something that doesn’t boot. However, actually switching over to the new configuration requires actions such as restarting system services (e.g., if the PostgreSQL configuration file changed, then the PostgreSQL <b><small>systemd</small></b> service will be restarted). Since performing these actions is not instantaneous, the system will briefly be in an inconsistent state. Even so, if you reboot or the system crashes, it will boot entirely into the new configuration.</li> 
+ <li>The system can be rolled back. This is because nothing in the Nix store gets overwritten when you switch to a new configuration. For example, NixOS’ GRUB boot menu allows you to boot into any previous configuration that hasn’t been garbage-collected:</li> 
 </ul>
-<p>Things like message ordering, batching are handled via streams.</p>
+<p><img _p="true" _href="img://1fig2.jpg" alt="" src="http://www.infoq.com/resource/articles/configuration-management-with-nix/en/resources/1fig2.jpg" /></p>
 <ul> 
- <li>Jobs – a Samza job is code that performs logical transformation on a set of input streams to append messages to a set of output streams</li> 
- <li>Partitions – For scalability, each stream is broken into one or more partitions. Each partition is a totally ordered sequence of messages</li> 
- <li>Tasks – again for scalability, a job is distributed by breaking it into multiple tasks. The task consumes data from one partition for each of the job’s input streams</li> 
- <li>Containers – whereas partitions and tasks are logical units of parallelism, containers are unit physical parallelism. Each container is a unix process (or linux cgroup) and runs one or more tasks.</li> 
- <li><a href="http://samza.incubator.apache.org/learn/documentation/0.7.0/container/task-runner.html">TaskRunner</a> – Taskrunner is Samza’s stream processing container. It manages startup, execution and shutdown of one or more StreamTask instances.</li> 
- <li><a href="http://samza.incubator.apache.org/learn/documentation/0.7.0/container/checkpointing.html">Checkpointing</a> – Checkpointing is generally done to enable failure recovery. If a taskrunner goes down for some reason (hardware failure, for e.g.), when it comes back up, it should start consuming messages where it left off last – this is achieved via Checkpointing.</li> 
- <li><a href="http://samza.incubator.apache.org/learn/documentation/0.7.0/container/state-management.html">State management</a> – Data that needs to be passed between processing of different messages can be called state – this can be something as simple as a keeping count or something a lot more complex. Samza allows tasks to maintain persistent, mutable, queryable state that is physically co-located with each task. The state is highly available: in the event of a task failure it will be restored when the task fails over to another machine.</li> 
+ <li>System configurations can easily be reproduced elsewhere.</li> 
+ <li>Configuration changes can easily be tested.</li> 
+ <li>It’s declarative: the system configuration is entirely specified by a set of Nix expressions.</li> 
 </ul>
-<p>This datastore is pluggable, but Samza comes with a key-value store out-of-the-box.</p>
-<ul> 
- <li>YARN (Yet Another Resource Manager) is Hadoop v2’s biggest improvement over v1 – it separates the Map-Reduce Job tracker from the resource management and enables Map-reduce alternatives to use the same resource manager. Samza utilizes YARN to do cluster management, tracking failures, etc.</li> 
-</ul>
-<p>Samza provides a YARN ApplicationMaster and a YARN job runner out of the box.</p>
-<p><img src="http://www.infoq.com/resource/articles/linkedin-samza/en/resources/1Fig2.png" alt="" _href="img://1Fig2.png" _p="true" /></p>
-<p>You can understand how the various components (YARN, Kafka and Samza API) interact by looking at the detailed <a href="http://samza.incubator.apache.org/learn/documentation/0.7.0/introduction/architecture.html">architecture</a>. Also read the overall <a href="http://samza.incubator.apache.org/learn/documentation/0.7.0/">documentation</a> to understand each component in detail.</p>
-<h2>Possible Improvements</h2>
-<p>One of the advantages of using something like YARN with Samza is that it enables you to potentially run Samza on the same grid that you already run your draft tasks, test tasks, and MapReduce tasks. You could use the same infrastructure for all of that. However, LinkedIn currently does not run Samza in a multi-framework environment because the existing setup itself is quite experimental.</p>
-<p>In order to get into a more multi-framework environment, Chris says that the process isolation would have to get a little better.</p>
+<p>Here is how a user specifies the desired configuration of a system, for example, running <b><small>sshd</small></b>, PostgreSQL and the KDE desktop environment:</p>
+<pre>
+{ config, pkgs, ... }:
+
+{
+  fileSystems.&quot;/&quot;.device = &quot;/dev/disk/by-label/nixos&quot;;
+
+  networking.hostName = &quot;mandark&quot;;
+
+  environment.systemPackages = [ pkgs.firefox ];
+
+  services.openssh.enable = true;
+  services.openssh.forwardX11 = true;
+
+  services.postgresql.enable = true;
+  services.postgresql.enableTCPIP = true;
+
+  services.xserver.enable = true;
+  services.xserver.desktopManager.kde4.enable = true;
+}
+</pre>
+<p>This file is essentially an input to a Nix function that assembles a complete Linux system by invoking numerous other functions to build the subparts. For instance, the stanza <b><small>services.openssh.enable = true</small></b> causes a function to be called that generates a <b><small>sshd_config</small></b> file and a systemd unit in the Nix store.&nbsp;</p>
+<p>NixOS is modular: every aspect of the system (such as PostgreSQL or KDE) is defined in a separate module, and users can provide their own modules. In fact, the configuration file shown above <i>is</i> a module. In complex deployments, it’s often convenient to factor out commonality between different configurations into shared modules.</p>
+<p>You change a system by editing the configuration specification and running the command:</p>
+<pre>
+$ nixos-rebuild switch
+</pre>
+<p>This builds the new configuration (essentially by invoking Nix to build the whole thing in the Nix store) and then switches over to the new configuration by starting, stopping and restarting system services as needed. For instance, if we remove the line <b><small>services.openssh.enable = true</small></b>, then <b><small>sshd</small></b> will be stopped; and if we change <b><small>services.postgresql.enableTCPIP</small></b> to <b><small>false</small></b>, then PostgreSQL will be restarted. (NixOS automatically figures out whether services need to be restarted by comparing the store paths of the corresponding <b><small>systemd</small></b> units.)&nbsp;</p>
+<p>Thus, when <b><small>nixos-rebuild</small></b> finishes, the actual system configuration is always in sync with the specified configuration. This is a big difference with conventional Linux distributions, where the actual configuration is typically the result of “imperative” changes (think RPM post-install scripts scribbling all over <b><small>/etc</small></b>). In NixOS, performing a reconfiguration on an existing system will give you the same result as what you would get by doing a clean reinstall (minus mutable stable such as log files and user home directories).</p>
+<p>In the configuration management <a href="https://www.usenix.org/legacy/event/lisa02/tech/full_papers/traugott/traugott_html/">literature</a>, this is called a <strong>congruent</strong> model, in contrast to a <strong>convergent</strong> model, where running a configuration management tool makes the actual configuration (hopefully) “converge” on the intended one. For example, in Puppet, if you <i>remove</i> a stanza such as</p>
+<pre>
+package { &quot;postgresql&quot;:
+  ensure =&gt; &quot;installed&quot;
+}
+</pre>
+<p>and re-run Puppet, then the package <b><small>postgresql</small></b> won’t be removed, resulting in an actual configuration that doesn’t entirely correspond with the specified configuration. In NixOS, the equivalent change <i>will</i> cause the package to disappear from the <b><small>PATH</small></b> of users. This is a big deal: it means you don’t have to worry whether a clean redeployment will give you an identical result.</p>
+<p>&nbsp;A nice demonstration of the power of declarative, reproducible specifications is the command <b><small>nixos-rebuild build-vm</small></b>, which builds a script that runs a virtual machine (using QEMU/KVM) with a configuration identical to what you would get on your actual machine if you ran <b><small>nixos-rebuild switch</small></b>. This gives an easy and safe way to try out configuration changes before applying them to the real system.</p>
+<p>The declarative approach also extends to networks of machines. NixOS has a tool named <strong>NixOps</strong> that provisions and deploys networks of NixOS machines from declarative specifications. For example, the following specifies a network of two machines named <b><small>database</small></b> and <b><small>webserver</small></b>, to be provisioned as VirtualBox instances running on your local machine:</p>
+<pre>
+{
+  database =
+    { deployment.targetEnv = &quot;virtualbox&quot;;
+      services.postgresql.enable = true;
+      services.postgresql.enableTCPIP = true;
+      ...
+    };
+
+  webserver =
+    { deployment.targetEnv = &quot;virtualbox&quot;;
+      services.httpd.enable = true;
+      services.httpd.documentRoot = &quot;/data&quot;;
+      ...
+    };
+}
+</pre>
+<p>If you run <b><small>nixops deploy</small></b>, NixOps will create two VirtualBox instances running NixOS with the given specifications. NixOps supports different target environments; changing the value of <b><small>deployment.targetEnv</small></b> to <b><small>ec2</small></b> will cause the machines to be created as Amazon EC2 instances. You reconfigure by editing the specification and running <b><small>nixops deploy</small></b> again; it will figure out what actions need to be taken to realise your changes. For instance, if you add a machine to the specification, NixOps will create it; if you remove one, NixOps will destroy it.</p>
+<p><b><small>(Click on the image to enlarge it)</small></b></p>
+<p><a _href="resource://fig1large.jpg" href="/resource/articles/configuration-management-with-nix/en/resources/fig1large.jpg"><img _p="true" _href="img://1fig1small.jpg" alt="" src="http://www.infoq.com/resource/articles/configuration-management-with-nix/en/resources/1fig1small.jpg" /></a></p>
+<p><small><strong>Figure 2:</strong> A NixOps network consisting of three VirtualBox machine</small></p>
 <h2>Conclusion</h2>
-<p>Samza is a relatively young project incubating at Apache so there's a lot of room to get involved. A good way to get started is with the <a href="http://samza.incubator.apache.org/startup/hello-samza/0.7.0/">hello-samza</a> project, which is a little thing that will get you up and running in about five minutes. It will let you play with a real-time change log from the Wikipedia servers to let you figure out what's going on in and give you a stream of stuff to play with.</p>
-<p>The other stream processing project built on top of Hadoop is STORM. You can see a <a href="http://samza.incubator.apache.org/learn/documentation/0.7.0/comparisons/storm.html">comparison between Samza and STORM</a></p>
+<p>Nix provides a radically different way to manage packages, by borrowing from the way that languages like Haskell deal with memory. This leads to advantages like atomic upgrades and rollbacks, reproducibility, and so on. NixOS extends this to the configuration management of an entire Linux system, resulting in a Linux distribution with a truly declarative configuration model, atomic upgrades and rollbacks, reproducibility, safe testing of configuration changes, and more. NixOps further builds on this by adding automated provisioning of networks of NixOS machines from declarative specifications.</p>
+<p>NixOS has an active and growing development community. For instance, the recent 14.04 release had around 130 contributors. Nix, NixOS and NixOps are free software and available from <a href="http://nixos.org/">http://nixos.org/</a>.</p>
 <h2>About the Author</h2>
-<p><strong><img src="http://www.infoq.com/resource/articles/linkedin-samza/en/resources/Chris-Riccomini.jpg" vspace="3" hspace="3" align="left" alt="" _href="img://Chris-Riccomini.jpg" _p="true" />Chris Riccomini</strong> is a Staff Software Engineer at LinkedIn, where he's is currently working as a committer and PMC member for Apache Samza. He's been involved in a wide range of projects at LinkedIn, including, &quot;People You May Know&quot;, REST.li, Hadoop, engineering tooling, and OLAP systems. Prior to LinkedIn, he worked on data visualization and fraud modeling at PayPal.</p><br><br><br><br><br><br></body></html>
+<p><strong>Eelco Dolstra</strong> is a Computer Scientist at LogicBlox, Inc. He obtained a PhD in Computer Science at Utrecht University and was a postdoc at Delft University of Technology. He developed the Nix package manager as part of his PhD thesis research.</p>
+<p>&nbsp;</p>
+<p><i>Configuration management is the foundation that makes modern infrastructure possible.&nbsp; Tools that enable configuration management are required in the toolbox of any operations team, and many development teams as well. Although all the tools aim to solve the same basic set of problems, they adhere to different visions and exhibit different characteristics. The issue is how to choose the tool that best fits each organization's scenarios.</i></p>
+<p><i>This InfoQ article is part of a <a href="http://www.infoq.com/configuration-management-tools/">series</a> that aims to introduce some of the configuration tools on the market, the principles behind each one and what makes them stand out from each other. You can subscribe to notifications about new articles in the series <a href="http://www.infoq.com/feed/Configuration-Management-Tools">here</a>.</i></p><br><br><br><br><br><br></body></html>

@@ -1,9 +1,23 @@
-<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>微软通过.NET Native为Windows Store应用提速</h3><p><a href="http://msdn.microsoft.com/en-US/vstudio/dotnetnative">.NET Native</a>是微软的一次尝试，旨在降低Windows Store应用的启动时间和内存占用。</p>
-<p>自从去年11月份，有人发现Windows Store应用的启动速度有了大幅提高后，<a href="http://blogs.microsoft.co.il/sasha/2013/11/25/speculating-about-microsoft-project-n/">对该项目的猜测</a>就已经开始了。在微软内部，.NET Native叫做“项目N”，它使用微软C++基础设施，将托管代码预编译为原生代码，从而大幅提升.NET应用的性能。这项技术与<a href="http://msdn.microsoft.com/en-us/library/6t9t5wcf(v=vs.110).aspx">NGen</a>（Native Image Generator）或为Store应用进行动态编译是不同的。</p>
-<p>.NET Native工具链最初生成MSIL，然后由C++优化器处理并生成MDIL（依赖于机器的中间语言），.NET Native团队的项目经理Mani Ramaswamy这样说道。他在<a href="http://channel9.msdn.com/Shows/Going+Deep/Inside-NET-Native">Channel 9的访谈</a>中提供了很多技术细节。在该访谈中，开发主管Shawn Farkas介绍，原生应用会静态地链接到只有几百KB大小的Mrt100.dll。Mrt100.dll代表一个最小化的CLR，为静态编译进行了重构和优化。因此，应用程序启动时将运行于这个最小化的CLR之上，不会加载整个.NET运行时，不会涉及任何JIT编译。</p>
-<p>应用程序仍然可以使用dynamic来访问在运行时才能决定其类型的对象。Ramaswamy说，这是在代码优化阶段，保留所有可能在运行时访问的类型时实现的。此外，仍然还可以使用标准的后台垃圾回收。</p>
-<p>这些优化将应用的启动时间缩短到原来的60%。.NET Native目前为预览版，并且面向的是Windows Store应用，但.NET Native团队希望将范围扩大到普通的.NET桌面应用。</p>
-<p>对于.NET开发者来说，没有什么改变。在应用程序级别没有引入抽象机，整个开发调试的体验也保持一致。得到改变的是构建，需要为特殊的硬件平台生成特殊的构建版本（目前已经支持ARM和x86-64bit，x86-32bit也即将支持）。优化后，构建时间可能要比原来多1-2分钟。</p>
-<p>目前并不是一切都十分顺利。MSDN有一节专门介绍<a href="http://msdn.microsoft.com/en-us/library/dn584397(v=vs.110).aspx">用.NET Native编译应用程序</a>，其中一个页面介绍<a href="http://msdn.microsoft.com/en-us/library/dn600634(v=vs.110).aspx">将应用迁移到.NET Native</a>。两者在以下方面存在一些差别：运行时、处理动态编程和反射、大量不支持的场景和API以及Visual Studio。</p>
-<p>要想使用原生代码，必须安装<a href="http://www.microsoft.com/en-us/download/details.aspx?id=42307">Visual Studio 2013 Update 2 RC</a>和.<a href="http://go.microsoft.com/fwlink/?LinkID=393600">NET Native SDK</a>。</p>
-<p><strong>原文英文链接：</strong><a href="http://www.infoq.com/news/2014/04/net-native">Microsoft Speeds Up Windows Store Apps with .NET Native</a></p><br><br><br><br><br><br></body></html>
+<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>苹果发布Swift编程语言 - iOS移动开发周报</h3><h2>教程</h2>
+<ol> 
+ <li> <p><a href="https://itunes.apple.com/gb/book/swift-programming-language/id881256329?mt=11">《The Swift Programming Language》</a>：这是苹果官方出版的Swift学习教材，可以免费下载到iBooks中阅读。其中文版翻译项目也在 Github 上火热进行中，地址在<a href="https://github.com/numbbbbb/the-swift-programming-language-in-chinese">这里</a>。</p> </li> 
+ <li> <p><a href="http://www.raywenderlich.com/73967/swift-cheat-sheet-and-quick-reference">《Swift Cheat Sheet and Quick Reference》</a>：出自raywenderlich的一份Swift快速参考手册，现在还比较简单，但它正快速更新中。</p> </li> 
+ <li> <p><a href="http://www.raywenderlich.com/73997/swift-language-highlights">《Swift Language Highlights: An Objective-C Developer’s Perspective》</a>：文章比较了Swift和Objective-C语言的差异性。</p> </li> 
+ <li> <p><a href="http://blog.txx.im/blog/2014/06/07/wwdc14-session-402/">《WWDC14 Session 402 》学习笔记</a>：<a href="http://weibo.com/rpplusplus">@糖炒小虾_txx</a>完成了三篇关于Swift的学习笔记，主要内容均来自WWDC14 Session 402的视频。</p> </li> 
+ <li><a href="http://www.splasmata.com/?p=2798">《Swift 和Objective-C性能测试》</a>：苹果在WWDC视频中只是简单提到Swift在排序和加密算法上比Objective-C快。本文对两者的性能进行了更复杂的测试，文章中做的测试结果如下：循环100万次，Objective-C比Swift快 29倍；变量增加1， Objective-C比Swift快 46倍。还有一些其它比较，大家可以自己看原文，所以真相是：Swift其实不一定比OC快。</li> 
+ <li> <p><a href="http://onevcat.com/2014/06/walk-in-swift/">《行走于 Swift 的世界中》</a>：笔者和周围朋友讨论swift的技术细节，大家都觉得swift比想像中要复杂，onevcat的本文讲述了不少swift的细节。从中你会看到，swift真的不简单。</p> </li> 
+ <li> <p><a href="http://code.csdn.net/news/2820075">《Swift编程语言资料大合集》</a>：来自CSDN整理的Swift学习合集资料。</p> </li> 
+ <li> <p><a href="http://weekly.manong.io/issues/33?ref=swift">《Swift 特刊》</a>：来自码农周刊的Swift学习合集资料。</p> </li> 
+</ol>
+<h2>工具</h2>
+<p><a href="http://www.iwangke.me/2014/06/07/wwdc-2014-download-script/">下载脚本</a>：该脚本是WWDC 2014 PDF 及session 视频下载脚本。</p>
+<h2>开源项目</h2>
+<ol> 
+ <li> <p><a href="https://developer.apple.com/wwdc/resources/sample-code/">WWDC的示例代码</a>：比起GitHub上的开源项目，官方的代码更有参考价值。比如Session 406的代码Lister就用一个Swift实现的包含OSX和iOS的Productivity App，还演示了各种Cocoa新功能。</p> </li> 
+ <li> <p><a href="https://github.com/fullstackio/FlappySwift">FlappySwift</a>：FlappySwift用swift重写的一个开源Flappy Bird游戏。</p> </li> 
+ <li> <p><a href="https://github.com/YANGReal/JokeClient-Swift">JokeClient-Swift</a>：JokeClient-Swift是<a href="http://weibo.com/208083608">@YANGReal</a>用swift写了一个开源的糗事百科的客户端，主要涉及网络请求，图片加载、缓存、自定义UITableViewCell、delegate以及closure，内容接口基于糗事百科API。</p> </li> 
+ <li> <p><a href="https://github.com/austinzheng/swift-2048">swift-2048</a>：一个用Swift实现的2048游戏。</p> </li> 
+ <li> <p><a href="https://github.com/croath/UIImageView-BetterFace-Swift">UIImageView-BetterFace-Swift</a>：UIImageView-BetterFace-Swift是一个根据目标图象中头像的位置进行智能图片裁剪的开源库，该地址是其更新的Swift版本。</p> </li> 
+ <li> <p><a href="https://github.com/onevcat/Easy-Cal-Swift">Easy-Cal-Swift</a>：swift是类型安全（type safe) 的语言。但是，由于它有类型推断（type inference）能力，所以当能推断出类型时，你不必非要写对应的类型。对于 字面量（literal value），整数会被推断成Int，浮点数会被推断成Double类型。但是，它并没有定义整数和浮点之间的加法，本项目实现了一个常用的运算符重载，这样就可以支持整数和浮点数做加法了。</p> </li> 
+ <li> <p><a href="https://github.com/amitburst/HackerNews">HackerNews</a>：用Swift实现的HackerNews客户端。</p> </li> 
+</ol><br><br><br><br><br><br></body></html>

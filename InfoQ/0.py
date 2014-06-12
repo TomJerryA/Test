@@ -1,13 +1,28 @@
-<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>Microsoftは、モバイルプッシュの一環としてクラウドIDサービスを提供する</h3><p><a target="_blank" href="http://www.infoq.com/news/2014/03/azure-ad-premium"><em>原文(投稿日：2014/03/31)へのリンク</em></a></p>
+<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>DDD Exchange Day 2014がLondonで開催</h3><p><a target="_blank" href="http://www.infoq.com/news/2014/05/ddd-exchange-2014"><em>原文(投稿日：2014/05/31)へのリンク</em></a></p>
 <div class="article_page_left news_container text_content_container"> 
  <div class="text_info"> 
-  <p>Enterprise Mobility Suiteの立ち上げの一部として、MicrosoftはAzure Active Directory Premiumの一般提供を発表した。Microsoft Azure Active Directory Premiumは、無料のID管理と追加のグループ管理機能でシングル サインオン、ブランディングオプション、セキュリティ分析などを拡張する。</p> 
-  <p>Microsoft Enterprise Mobility Suite (EMS)– 既存サービスに対抗する完全に新しい製品–は、先週のイベントで、新しいMicrosoft CEO Satya Nadella氏によって<a href="http://blogs.technet.com/b/microsoft_blog/archive/2014/03/27/a-cloud-for-everyone-on-every-device.aspx">紹介され</a>、Microsoft VP Brad Anderson氏によって、ブログに詳しい説明が投稿された。<a href="http://blogs.technet.com/b/in_the_cloud/archive/2014/03/27/enterprise-mobility-for-every-business-and-every-device.aspx?WT.mc_id=Blog_Intune_Launch_PCIT">Anderson氏は</a>EMSが対応している3つの主要な分野を示した: Microsoft Intuneによって配信されるモバイルデバイス管理、Microsoft Azure Active Directory Rights Management Servicesによるデータ保護、Microsoft Azure Active Directory (AD) PremiumによるID管理の提供。</p> 
-  <p>現在、Microsoft Azure ADは、オンプレミスのディレクトリーとSaaSアプリケーションにシングルサインオンを提供するクラウドにホストされたユーザーリポジトリを提供している。対応するアプリケーションはカスタムで構築するか、Wordpress, Box, Salesforce.com, Marketo, そしてもちろんOffice 365が含まれる成長中のギャラリーから選択することができる。 4月からAzure AD Premiumは一般提供され、基本サービスに<a href="http://blogs.technet.com/b/ad/archive/2014/03/25/identity-and-access-management-for-every-user-in-every-organization-using-any-service-on-any-device.aspx">機能のホスト</a>を追加する。AD Premiumには、セルフサービスのパスワードリセット(後方でオンプレミスのディレクトリーと同期)、セルフサービスのグループ管理、ユーザーごとの多要素認証の設定、ブランディングのカスタマイズ、9つの新しいセキュリティレポートが追加されている。購入者は、Microsoft Enterprise Agreementを通じて、現在無料のプレビューが進行中のAD Premiumをアクティブ化することができる。</p> 
-  <p>ForbesのBen Kepes氏は、この発表を<a href="http://www.forbes.com/sites/benkepes/2014/03/30/microsofts-enterprise-mobility-suite-covering-all-the-bases-flexibly/">見て</a>、Intune, Right Management, Azure AD Premiumの組み合わせ方法の完全なストーリーを説明した。</p> 
+  <p>6回目 <a href="https://skillsmatter.com/conferences/1776-ddd-exchange-2014">DDD Exchange Day</a>がロンドンで6月20日にEric Evansをホストとして開催される。同氏はオリジナルの<a href="http://domaindrivendesign.org/books/evans_2003">DDDブック</a>の著者。このイベントの基本的なアイディアはコミュニティにアイディアや実践を広めることだ。Eric氏に加え、以下のスピーカーが参加する。</p> 
+  <ul> 
+   <li>Martin Thompson氏。クリーンな代表モデルについて話す。</li> 
+   <li>Alberto Brandolini氏。<a href="http://ziobrando.blogspot.se/2013/11/introducing-event-storming.html">Event Storming</a>のレシピについて話す。</li> 
+   <li>Greg Young氏</li> 
+  </ul> 
+  <p>このイベントを開催するSkills MatterのCEOのWendy Devolder氏はインタビューでこのイベントについての考えを教えてくれた。</p> 
+  <p><strong>InfoQ:このイベントは6回目ですね。DDDへの関心は変わっていますか。どのように変化しているのでしょうか。</strong></p> 
   <blockquote> 
-   <p>これら3つのソリューションすべてを使うことで、組織はシングルサインオンをセットアップすることができるため、ユーザーはシームレスに使いたいアプリケーションすべてをシームレスに使うことができる。企業のITは従業員が使用する様々なデバイスを管理することができ、それらデバイスをまたいだデータアクセスをコントロールすることができる。大規模企業では、従業員にエンドユーザー向けアプリケーションを提供する企業の<a href="http://www.apple.com/iphone/from-the-app-store/">App Store</a>を構築することができる。そしてデーターは暗号化して安全にデバイス間で転送することができる。</p> 
+   <strong>Wendy:</strong>当初は、参加者はDDDの正体を突き止めるために参加していました。現在は、‘自分のプロジェクトでDDDを実践したいのだけれど、どうしたらいいか’、という参加者が多いです。また、現在では多くの大企業がDDDでソフトウエアを開発しています。Eric Evans氏はDDD Exchangeを彼自身にとっての“チェックポイント”と捉えており、DDDが現在どのような地点にあるのかを考えています。彼が言うには、かつてよりもDDDの目標を達成するのが簡単になっています。“リッチで複雑なソフトウエア。ビジネスの目的にフィットするソフトウエア”を開発するという目標です。私たちは毎回のこのイベントの目的を、DDDを活気づかせ、DDDをビジネスに活用する方法を明確にするということ、にしています。
   </blockquote> 
-  <p>Kepes氏はMicrosoftのBrad Anderson氏と話すことで、(デバイスではなく)シングルユーザーの価格を提供し、世界で最も人気のあるID管理プラットフォームActive Directoryと密接に統合されているため、単一ベンダーのEMSは魅力的であることがわかった。Kepes氏は、組織はシンプルなセルフサービスを提供したく「使いやすさとコントロールのバランス」を望んでいるが、データ保護とガバナンスを必要としていると見ている。Anderson氏は、Microsoftが顧客に様々なシチュエーションで柔軟性を提供し、Azure AD Premiumのようなツールは、このようなソリューションを提供すると考えている。</p> 
+  <p><strong>InfoQ: 今年は何か特定の領域や概念に着目しますか。</strong></p> 
+  <blockquote> 
+   <strong>Wendy:</strong>EricはオープニングのキーノートでDDDの根本的な仮定に挑戦します。彼は、DDDが適切な状態を維持するには、DDDのソフトウエア開発へのアプローチを練り続け、持続可能な側面を持たない部分は破棄していく必要がある、ということを説明するつもりです。根本の仮定を掘り下げ、それぞれに挑戦するつもりなのです。DDDの基礎を練り上げるために、彼は2、3人の仲間を奮起させ、DDDの更なる深みと蒸留を追求します。また、彼に続いて、Martin Thompsonがクリーンなモデルを持つ意味について話し、Arollaの共同創立者であるCyrille Martraireが、DDDと関数型プログラミングを最良に組み合わせた、モノロイドを使ったドメインモデリングについて話します。
+  </blockquote> 
+  <p><strong>InfoQ: 参加者やスピーカとしてどのような人物をターゲットにしていますか。</strong></p> 
+  <blockquote> 
+   <strong>Wendy:</strong>幅広い層に向けたカンファレンスです。CTO、プロジェクトマネージャ、ソフトウエアアーキテクト、テスター、さまざまなレベルの開発者などがターゲットです。DDDは多くのシナリオで利用できますので、誰でもこのイベントから価値を引き出すことができるでしょう。
+  </blockquote> 
+  <p><strong>InfoQ: 参加者にはこのイベントからどのような価値を手に入れてほしいですか。</strong></p> 
+  <blockquote> 
+   <strong>Wendy:</strong> このイベントは単にDDDについてすばらしい講演が聞けるというだけではありません。このカンファレンスでは、DDDについての情報共有や学びを専門家から受たいと思っている、情熱を持った人たちの集まりなのです。新しいつながりや集まりが生まれ、DDD eXchange 2014が終わっても会話は続きます。‘公園のベンチ’という概念は参加者が専門家のパネルディスカッションに参加するというものですが、このように著名なリーダーの隣に座って議論に参加する機会があるということがこのイベントをよく表しています。
+  </blockquote>
  </div> 
 </div><br><br><br><br><br><br></body></html>

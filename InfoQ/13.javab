@@ -1,62 +1,112 @@
-<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>The Secrets of Database Change Deployment Automation</h3><h2>A fast moving world; Agile &amp; DevOps</h2>
-<p>As business needs are the most significant driver of change, doing better with less and delivering it sooner is what differentiates leading and successful companies from the rest.</p>
-<p>When a competitor delivers relevant features, faster and with better quality than you, you’re eventually going to lose market share. Investing in sales and marketing campaigns to compensate for your product is expensive and not always reliable and you might find out that customers are moving to the superior product.</p>
-<p>This is exactly why 'Agile Development' was born: the need to move quicker, deal with ever changing requirements (as our target market and competition are never standing still), with best quality that can be assured, usually with not enough resources. Agile is what is expected from technology companies and IT divisions.</p>
-<p>The next natural step from Agile is finding a way to take Agile to production; linking development with operations. This has given rise to 'DevOps'.</p>
-<p>Understanding the main goal of operations is to maintain stable and healthy applications, and the main goal of development is to continually innovate and provide applications that meet business and customer needs, is crucial to the development of DevOps. While there is no doubt that change is the greatest enemy of stability, understanding and reconciling this conflict should be the main goal of DevOps.</p>
-<p>To effectively master Agile sprint deployments and to practice DevOps, one needs to be able to implement deployment automation. Otherwise deployments and releases will require manual steps and processes, which are not always accurately repeatable, prone to human errors, and cannot be handled with high frequency.</p>
+<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>A Pragmatic Approach to Scaling Security in the Cloud</h3><p><i>Cloud computing is more than just fast self-service of virtual infrastructure. Developers and admins are looking for ways to provision and manage at scale. This InfoQ article is part of a <a href="http://www.infoq.com/automation-in-the-cloud-and-management-at-scale/">series focused on automation tools and ideas</a> for maintaining dynamic pools of compute resources. You can subscribe to notifications about new articles in the series <a href="http://www.infoq.com/feed/Automation-in-the-Cloud-and-Management-at-Scale">here</a>.</i></p>
+<p>&nbsp;</p>
+<p>Security. Cloud. Two words that are almost always together but rarely happily.</p>
+<p>For years, vendors and consultants rooted in traditional, data center centric world views hollered from the rooftops that the public cloud was a security disaster in the making. Hyperbole reigned supreme and any dramatic turn of phrase that had vague roots in fear, uncertainty, or doubt was touted as the reason you shouldn't be moving to the public cloud.</p>
+<p>It's not surprising really. Traditional approaches to information security don't work well in the cloud.</p>
+<p>The only way to stem the inevitable migration to the cloud was to ensure that it became canon that the public cloud was insecure. Fortunately, the business drivers for migration are just too strong.</p>
 <div id="lowerFullwidthVCR"></div>
-<p>Dealing with database deployments is tricky; unlike other software components and code or compiled code, a database is not a collection of files. It is not something you can just copy from your development to testing and to production because the database is a container of our most valued asset – the business data, which must be preserved. It holds all application content, customer transactions, etc. In order to promote database changes, a transition code needs to be developed - scripts to handle database schema structure (table structure), database code (procedures, functions, etc.), and content used by the application (metadata, lookup content or parameters tables).</p>
-<h2>The challenges of database change deployment processes</h2>
-<p>One way of dealing with the database challenge is to force the database into the generic process: create scripts out of database objects and store them in the traditional version control.</p>
-<p>That creates other challenges, namely:</p>
+<p>The key to a successful migration is to understand the model behind cloud security and to adopt a cultural willingness to a new way of doing things.</p>
+<p>With the high levels of scrutiny that IT organizations are under these days, that can be a tall order. Each high profile breach brings renewed attention. Information security is quickly becoming a regular topic at the board level.</p>
+<p>The pressure is on and no one wants to screw up.</p>
+<p>The good news is that if you and your security team take the time to understand the model for security in the cloud and then put the right tools, processes, &amp; people in place you can be <strong>more</strong> secure in the cloud than in your current environment.</p>
+<p>Let's take a deeper look at the keys to successful security in the cloud…</p>
+<h2>Sharing The Responsibility</h2>
+<p>It all starts with two words, &quot;shared responsibility&quot;.</p>
+<p>This is the model for security that all <a href="http://azure.microsoft.com/en-us/support/trust-center/">cloud</a><sup><a href="#1-1">1</a></sup> <a href="http://aws.amazon.com/security/">service</a><sup><a href="#1-2">2</a></sup> <a href="https://cloud.google.com/files/Google-CommonSecurity-WhitePaper-v1.4.pdf">providers</a><sup><a href="#1-3">3</a></sup> operate under. The good news is that it's ridiculously simple to understand.</p>
+<p>The challenge with the model is that it will have significant impact on the way your security has to approach their roles. The traditional view of being a gatekeeper or even being in complete control has to go. Toss it out the window.</p>
+<p>A modern security practice has to be flexible and understand it's role within the shared responsibility model. With a solid understand of the model and the partnership it implies, you can start to build a dynamic, successful practice.</p>
+<p><i>Notes</i></p>
 <ol> 
- <li>Scripts in the version control system are not connected to the database objects they represent as these are two separated systems. Coding and testing of the database code is done at the database side, disconnected from any of the coding best practices (check-in, check-out, labels etc.), and prone to all illnesses of the 'old days' such as: 
-  <ul> 
-   <li>Code-overrides in the database are common as there is nothing to prevent it.</li> 
-   <li>Scripts are required to be taken from the version control before starting the code on the database, to prevent working on the wrong version; but there is nothing to enforce that.</li> 
-   <li>Scripts do not always find their way to the version control system, as it depends on the developer to remember to do so.</li> 
-   <li>Out of process updates go unnoticed, etc.</li> 
-  </ul> </li> 
- <li>Scripts are manually coded, prone to human error, syntax error etc.</li> 
- <li>To have everything you might later need, you actually have to save two to three scripts for each object; the actual code of the object, the upgrade script, and a roll-back script.</li> 
- <li>Scripts are hard to test in their entirely, as you make changes to a single object, while someone else makes a change to another single object, and running in any order would usually raise errors due to faulty dependencies between these scripts that need to run in a specific order.</li> 
- <li>If a script is developed as a single script to represent the entire update, instead of a single change, it can deal with dependencies, but is much harder to deal with project scope changes. It is a big list of commands.</li> 
- <li>And these scripts, unless super sophisticated, are unaware of changes made in the target environment during the time passed from their coding to the time they are run; potentially overriding production hot-fixes, or work done in parallel by another team.</li> 
- <li>Content changes are very hard to manage. Metadata or lookup content does not practically fit into the version control. In most cases they are simply not managed.</li> 
+ <li><a href="http://azure.microsoft.com/en-us/support/trust-center/">Microsoft Azure Trust Center</a></li> 
+ <li><a href="http://aws.amazon.com/security/">AWS Security Center</a></li> 
+ <li><a href="https://cloud.google.com/files/Google-CommonSecurity-WhitePaper-v1.4.pdf">Google's Approach To IT Security</a></li> 
 </ol>
-<p><a href="/resource/articles/Database-Change-Deployment-Automation/en/resources/grafs-03.jpg" _href="resource://grafs-03.jpg"><img src="http://www.infoq.com/resource/articles/Database-Change-Deployment-Automation/en/resources/grafs-03-small.jpg" alt="" _href="img://grafs-03-small.jpg" _p="true" /></a></p>
-<p>(Click on the image to enlarge it)</p>
-<p>Another concept that emerged in the last decade is using tools for dealing with creation of the transition code between environments. This way of operation is tagged as <b>'compare &amp; sync'</b>, meaning a mechanical comparison examines database objects in a source environment, comparing it to the target environment, and if a difference is discovered, a script to change the target object to mimic the source object is automatically created. For a while it seemed like a good solution, until the holes became more obvious.</p>
-<p>The comparison is often performed on a database at selected check-points, usually before deployment, after the development cycle has ended:</p>
+<h3>The Model</h3>
+<p>The model itself is simple. Your cloud provider is responsible for the security of the following areas:</p>
+<ul> 
+ <li>facilities</li> 
+ <li>physical infrastructure</li> 
+ <li>network infrastructure</li> 
+ <li>virtualization layer</li> 
+</ul>
+<p>You are responsible for the security of:</p>
+<ul> 
+ <li>the operating system</li> 
+ <li>any applications</li> 
+ <li>your data</li> 
+</ul>
+<p>That's it. That's all. A nice, clear division of labour.</p>
+<p>This clear line is what makes it possible to <strong>increase your security</strong> by moving to the public cloud. I've referred to this possibility a few times. The reason it's possible to increase your security posture is because this model immediately removes the half of your security workload.</p>
+<p>Think about that for a minute. Your limited resources now only have to cover half of the areas they previous had to cover. With the shared responsibility model you can focus on fewer areas which means you can focus more resources on those tasks. That's a huge win.</p>
+<p><a href="http://aws.amazon.com/solutions/case-studies/">Big</a><sup><a href="#2-1">1</a></sup> <a href="https://cloud.google.com/customers/">name</a><sup><a href="#2-2">2</a></sup> <a href="http://azure.microsoft.com/en-us/case-studies/">organizations</a><sup><a href="#2-3">3</a></sup> have realized this and are now moving sensitive workloads into the cloud. There's no reason that you shouldn't be planning to do the same. Sharing the workload lets you deliver high quality security with the same set of resources you have now.</p>
+<p>Don't worry, I won't tell you boss. You can still ask for more budget to cover the migration. But just think of what you could accomplish with that increase now that you only have to focus on half of the work.</p>
+<p><i>Notes</i></p>
 <ol> 
- <li>The compare tool is unaware of any changes that occurred before the time it ran, or any changes that took place at the target environment. We had no information about change, no version control. Just the differences at the given time.</li> 
- <li>Keeping object scripts in a traditional version control solution while using a compare &amp; sync tool to deploy is as un-synergic as you can imagine. One is completely unaware of the other.</li> 
- <li>Manual inspection and detailed knowledge regarding each change must be part of a deployment process. Otherwise, mishaps like overriding good and up-to-date update to production (like a hot fix supplied by one team of developers), with an out-of-date code or structure from a second team that is working on something else entirely.</li> 
- <li>Merging of code between different teams is out of the question. If you need to merge – you need to write the code manually.</li> 
+ <li><a href="http://aws.amazon.com/solutions/case-studies/">Customer Success. Powered by the AWS Cloud</a></li> 
+ <li><a href="https://cloud.google.com/customers/">Companies Using Google Cloud</a></li> 
+ <li><a href="http://azure.microsoft.com/en-us/case-studies/">Customer and Partner Success Stories for Microsoft Azure</a></li> 
 </ol>
-<p>Manual processes using a 'compare &amp; sync' tool are possible, but require proficiency and patience. Trying to automate deployment processes based on these tools encompasses a substantial risk to the database.</p>
-<p>DBAs, being both well aware of database deployment pitfalls and bearers of the scars of the most inopportune break downs, tend to shy away from automation based on the above processes, as they are not confident in the accuracy of the automation script generators or the ability for pre-prepared manually-generated scripts to remain true any time after they were developed. In order to avoid conflicts, they often take things into their own hands. The path of carefully examining changes and manually creating change scripts as close to the deployment event as possible seems less frustrating by comparison.</p>
-<h2>Safe database deployment automation</h2>
-<p>Achieving automation by scripting database objects change-scripts into traditional version control is limited, inflexible, disconnected from the database itself, and may be untrue and prone to miss updates of target environment because of conflicting scripts. Using 'compare &amp; sync' tools is a risky thing to automate. The two concepts do not play together, as one is unaware of the other. A better solution must be found.</p>
-<p>In order to take a database into proper automation, you must factor in the following:</p>
+<h3>Trust But Verify</h3>
+<p>Of course it's not all unicorns and rainbows. From a security perspective, you can't just assume that everything will work out on the cloud providers side of the model. A little paranoia can be a very healthy thing.</p>
+<p>You need to verify that your provider is holding up their end of the deal and providing the security that you expect and rely on.</p>
+<p>The good news is that you're not the only client of the provider in this situation and the providers are waking up to this fact. The information your need to verify and validate the provider's claims on security is not something that you–as their client–should have to work to track down. This is why the leaders in the field are adopting a near transparent information sharing policy.</p>
+<p>Leading providers have published landing pages or information centers where all of their security and compliance information is posted<sup><a href="#3-1">1</a></sup>. Typically anything you need above and beyond this published information is only a support call away.</p>
+<p>Under the shared responsibility model (and good ol' common sense) it's up to you to read through this information and to understand exactly what your provider is doing to security the facilities, physical infrastructure, network infrastructure, and the virtualization layer.</p>
+<p>Also key is to understand what tools–if any–that the provider has created to help you secure your areas of responsibility. Have they provides a robust identity and access control framework? Firewall controls for your virtual machines? You need to understand what these features are capable of and how to deploy them properly.</p>
+<p><i>Notes</i></p>
 <ol> 
- <li>Proper <b>database version control</b>, dealing with databases’ unique challenges, while <b>enforcing a single work process</b>. This prevents any out of process changes, code overrides, or incomplete updates.</li> 
- <li>Leverage proven version control <b>best practices</b> for complete information about who was doing what, when, and why. Making sure changes are perfectly documented is the base for &nbsp;later deploying them.&nbsp;<a href="/resource/articles/Database-Change-Deployment-Automation/en/resources/grafs-03.jpg" _href="resource://grafs-03.jpg"><img src="http://www.infoq.com/resource/articles/Database-Change-Deployment-Automation/en/resources/grafs-02-small.jpg" alt="" _href="img://grafs-02-small.jpg" _p="true" /></a>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; (Click on the image to enlarge it)</li> 
- <li>Harmony with <b>task based development</b> enables correlating each version control change with a change request or a trouble ticket. This enables task based deployments, partial deployments, and last minute scope changes to be coordinated between code and database.</li> 
- <li>Ensure <b>configuration management &amp; consistency</b> so every development environment, branch, trunk, sand-box, and testing or production environment follows the same structure, and matching status; or any deviation and difference are well accounted for.</li> 
- <li><b>Scriptable</b> interfaces, to deal with automation of deployment processes, providing <b>repeatable</b> results every single time. Even the most sophisticated solution becomes cumbersome if you have to use the UI to do the same task over and over again.</li> 
- <li>Provide<b> reliable</b> deployment scripts, which are capable of dealing with conflicts and merges of database code, and cross updates from other teams; while also ignoring wrong code overrides, and are fully integrated into the version control repository. &nbsp;<a href="/resource/articles/Database-Change-Deployment-Automation/en/resources/grafs-04.jpg" _href="resource://grafs-04.jpg"><img src="http://www.infoq.com/resource/articles/Database-Change-Deployment-Automation/en/resources/grafs-04-small.jpg" alt="" _href="img://grafs-04-small.jpg" _p="true" /></a>(Click on the image to enlarge)</li> 
- <li>Provide automatically generated development scripts on the fly to deal with deploying any combination of project scope, from multi-schema mega-updates, to a single task based change and its dependent objects.</li> 
- <li>Leveraging 'Labels' (Tagging of database structure snapshots and relevant content) before and after deployment of changes, to act as a safety-net, so quick and easy roll-backs are always close at hand.</li> 
- <li>Fully integratable to other systems (ALM, Change management / trouble tickets, build servers, and release managers).</li> 
+ <li>Leading providers information sharing around security: <a href="http://aws.amazon.com/security/">AWS</a>, <a href="http://azure.microsoft.com/en-us/support/trust-center/">Microsoft</a>, and <a href="https://cloud.google.com/files/Google-CommonSecurity-WhitePaper-v1.4.pdf">Google</a></li> 
 </ol>
-<p>Implementing a solution to deal with these challenges would enable a company to practice proper database automation. Database automation which would be easy to integrate with the rest of change and release processes, to achieve a complete end to end automation.&nbsp;</p>
-<p><a href="/resource/articles/Database-Change-Deployment-Automation/en/resources/grafs-05.jpg" _href="resource://grafs-05.jpg"><img src="http://www.infoq.com/resource/articles/Database-Change-Deployment-Automation/en/resources/grafs-05-small.jpg" alt="" _href="img://grafs-05-small.jpg" _p="true" /></a></p>
-<p>(Click on the image to enlarge)</p>
-<h2>Summary</h2>
-<p>The database sets up a real challenge for automation. Scripting database objects change-scripts into traditional version or using 'compare &amp; sync' tools is either an inefficient or plain risky thing to automate, as the two concepts are unaware of the other. A better solution needs to be implemented in the shape of DevOps for database.</p>
-<p>DevOps for database should follow the proven best practices of change management, enforcing a single change process over the database, and enable dealing with deployment conflicts to eliminate the risk of code overrides, cross updates and merges of code, while plugging into the rest of the release process.</p>
+<h3>In Practice</h3>
+<p>Now that you understand the model in theory, you're probably wondering what it looks like in practice. Let's take the example of facing a PCI (payment card industry) audit.</p>
+<p>Audit's are about as much fun as they sound but they do an excellent job of highlighting how the shared responsibility model works in practice. If you don't have to be PCI compliant, don't worry. Just substitute your favorite compliance framework and the example still holds.</p>
+<p>The <a href="https://www.pcisecuritystandards.org/documents/PCI_DSS_v3.pdf">PCI framework</a> touches nearly every area of information processing. From the facilities where the data is stored to how information is discarded during processing, compliance requires security controls (process or tools) in all areas of the shared responsibility model.</p>
+<p>But as we know, we don't control the security in the facilities, physical infrastructure, network infrastructure, or the virtualization layer. So how do you successfully respond to an audit?</p>
+<p>Well an audit response is a shared activity that you lead.</p>
+<p>You need your cloud providers help to respond to the audit. You will need validation that their controls are in place and working in order to be successful.</p>
+<p>Now you're not the only client of theirs in this situation so it's not surprising that most cloud providers already have 3rd party audit evidence available for their clients to assist in audit response.</p>
+<p>Simply open a support request and ask for the appropriate documentation.</p>
+<p>Now you can provide that to your auditor and it should satisfy compliance for the areas of provider responsibility. Now you can focus your audit response on the security you've applied to the operating system, applications, and your data.</p>
+<p>The audit documentation from your cloud provider is the verification of their side of the model. Add the documentation of the controls you've implemented for the operating system, your applications, how you handle your data, and the processes that you use to manage the whole deployment and you've got your audit response.</p>
+<p>That's the shared responsibility model in action and it highlights how migrating to the cloud can simplify compliance.</p>
+<h2>Shifting Controls</h2>
+<p>Understanding the overall model is a great first step but it also raises questions along the lines of:</p>
+<ul> 
+ <li>&quot;What about my intrusion prevention system?&quot;</li> 
+ <li>&quot;How do I monitor my network?&quot;</li> 
+ <li>&quot;Can my provider deploy my gateway controls for me?&quot;</li> 
+</ul>
+<p>When confronted with a new challenge, our instinctive response is to try and map our existing experiences to the new challenge. In this case, trying to figure out how to deploy the same set of security controls in the same manner is a recipe for disaster.</p>
+<p>Our previous model of a strong boundary no longer holds water in the cloud.</p>
+<h3>The Wall</h3>
+<p>A traditional data center typically has &quot;big iron&quot; controls deployed at each of the interconnects. Anywhere the data center connects to another environment, security is used to create a choke point. At each choke point traffic is analyzed, verified, and either permitted to proceed or dropped. We commonly refer to this design as the &quot;<a href="http://www.cse-cst.gc.ca/its-sti/publications/itsg-csti/itsg22-eng.html">zones</a>&quot; approach and it's worked well for years.</p>
+<p>In effect, this creates a strong wall around your data center much like a medieval castle.</p>
+<p>Unfortunately when viewed in the context of a cloud deployment, medieval is an accurate description.</p>
+<p>Using this approach is the cloud is a recipe for failure. You'll quickly hit performance bottlenecks and be strained to maintain a high level of security in a very dynamic environment.</p>
+<p>The irony of the public cloud is that while compute and storage resources are available in abundance, bandwidth is typically scarce. All of the traditional methods of deploying these controls are bandwidth intensive.</p>
+<p>Successful security in the cloud moves these same controls to the virtual machine. We move from single, large security controls that protect the entire data centre to controls deployed directly on the virtual machine and responsible for only that virtual machine. This allow the use of much smaller rule sets since the control now has the context in which it's running.</p>
+<p>Think of it this way: the traditional method is to have the city guard check everyone at the gate. The guard has to know the business of everyone in the city and then validate whether or not the folks at the gate have a valid reason for being there. By moving that check to the door of the business someone is visiting, it makes it a lot easier for the guard at the door to do more in-depth checks. The guard at the door only has to keep track of the one business, not the entire city.</p>
+<p>Moving controls to the virtual machine allows great context which means we can deploy richer policies to each of these controls. That's important in a dynamic environment where changes happen minute-to-minute instead of week-to-week.</p>
+<h3>Keeping Tabs</h3>
+<p>To stretch the metaphor a bit, you're probably wondering how the captain of the guard keeps track of which guards are stationed at each business and how well each of them are doing. That's a valid question and one we need to address in order to be successful.</p>
+<p>As we migrate to the cloud, we've shifted from a small number of deployed controls (only at the interconnects) to hundreds, thousands, or tends of thousands of controls. This generates two main challenges: deployment, and management.</p>
+<h4>Deployment</h4>
+<p>Even in a traditional data center deployment was a challenge. Nobody really enjoys racking a set of boxes that weigh 15–40 Kgs. In the cloud that physical challenge goes away but how can you rapidly deploy a thousand or more applications?</p>
+<p>The good news is that this isn't a security problem. This is a general operations problem.</p>
+<p>The better news is that your organization has probably already solved the issue. It might be with a solid strategy for &quot;gold&quot; images of virtual machines or on-demand orchestration via tools like <a href="http://www.getchef.com/chef/">Chef</a> or <a href="http://puppetlabs.com">Puppet</a>. One way or another, you need to method of simplifying application deployment in the cloud.</p>
+<p>Don't re-invent the wheel. Leverage the existing solution in your organization and use it to deploy the security controls to your virtual machines. This way you only have to prioritize the deployment (security should be the first thing applied to a new machine) instead of creating a new distribution challenge.</p>
+<h4>Management</h4>
+<p>That leaves the challenge of managing all of these controls now that they've been deployed. Regardless of security technology, vendor, etc. you absolutely have to have a method of managing these controls from a central location.</p>
+<p>Operationally it's not feasible to expect a small team (or even a large one) to manage thousands of controls. Especially when the major of them will be doing the exact same thing. Your security team should be able to view the security of one web server in the same manner as they can view the security of one hundred web servers.</p>
+<p>Centralized, automated management is the only logical method of addressing this challenge. That's another shift in the way we think about security controls.</p>
+<h2>Stronger, Faster</h2>
+<p>If you understand the shared responsibility model for security in the public cloud, you will be successful and at the very least maintain your current levels of security.</p>
+<p>But if you take the time to truly understand not only the model but also the nature of cloud deployments you can easily strengthen your security posture. More importantly you can strengthen your security posture without spending more time or budget.</p>
+<p>Computer systems are good at repetitive tasks. Take advantage of this by automating the deployment and management of your security controls. This will let your security team focus on doing in-depth analysis and adding value to your organization.</p>
+<p>Imagine if you team was viewed as the key piece that enabled your organization to move to the cloud and modernize it's IT infrastructure. The team that allowed the organization to simplify IT service delivery and really raise the bar on what can be done with modern technology.</p>
+<p>Wouldn't that be a nice position to be in?</p>
 <h2>About the Author</h2>
-<p><img src="http://www.infoq.com/resource/articles/Database-Change-Deployment-Automation/en/resources/Yaniv-Yehuda.png" vspace="3" hspace="3" align="left" alt="" _href="img://Yaniv-Yehuda.png" _p="true" /></p>
-<p><strong>Yaniv Yehuda</strong> is the Co-Founder and CTO of <a href="http://www.dbmaestro.com/">DBmaestro,</a> an Enterprise Software Development Company focusing on database development and deployment technologies. Yaniv is also the Co-Founder and the head of development for Extreme Technology, an IT service provider for the Israeli market. Yaniv was a captain in Mamram, the Israel Defense Forces computer centers where he served as a software engineering manager.</p><br><br><br><br><br><br></body></html>
+<p><strong><img vspace="3" hspace="3" align="left" _p="true" _href="img://Mark-Nunnikhoven.jpeg" alt="" src="http://www.infoq.com/resource/articles/cloud-security-at-scale/en/resources/Mark-Nunnikhoven.jpeg" />Mark Nunnikhoven</strong>, Vice President, Cloud &amp; Emerging Technologies at Trend Micro focuses on helping organizations as they move from the data centre to hybrid environments to working fully in the cloud. Bringing over 15 years of practical experience to the table, he is regularly sought after to speak on cloud computing, usable security systems, and modernizing security practices.&nbsp;He can be reached <a href="http://markn.ca">online</a> and <a href="https://twitter.com/marknca">@marknca</a>.</p>
+<p>&nbsp;</p>
+<p><i>Cloud computing is more than just fast self-service of virtual infrastructure. Developers and admins are looking for ways to provision and manage at scale. This InfoQ article is part of a <a href="http://www.infoq.com/automation-in-the-cloud-and-management-at-scale/">series focused on automation tools and ideas</a> for maintaining dynamic pools of compute resources. You can subscribe to notifications about new articles in the series <a href="http://www.infoq.com/feed/Automation-in-the-Cloud-and-Management-at-Scale">here</a>.</i></p>
+<p>&nbsp;</p><br><br><br><br><br><br></body></html>

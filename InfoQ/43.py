@@ -1,38 +1,12 @@
-<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>QCon Tokyo 2014 【組込み系/モノづくり】 トラックのご紹介</h3><p><a href="http://www.qcontokyo.com/" target="_blank">QCon Tokyo</a>&nbsp;は、最新技術を追い求めるデベロッパのための情報コミュニティ「InfoQ」が主催する、エンジニアによるエンジニアのためのワールドワイド カンファレンスです。そのカテゴリのひとつとして「組込み系/モノづくり」トラックをご用意しています。</p>
-<p>日本のお家芸ともいえる組込み系ソフトウェアの開発にも今ひしひしと変革の波が押し寄せています。安くて高機能の家電製品や組込み機器を提供すれば飛ぶようにモノが売れる時代は終わり、以下に付加価値を付け、モノとサービスと環境の総合的な組合せによって今までにない体験をいかに提供できるか。スピーディなデリバリと意外性、そして充実した使用感が求められるという新しい次元にモノづくりは突入したといえるでしょう。</p>
-<p>昨年は3Dプリンターの広げる新しいモノづくり環境の可能性を慶応大学 田中徹也準教授の基調講演で熱く語っていただきました。今年は東大に入学できる人工頭脳・ロボットの研究開発に本気で取り組む国立情報学研究所の新井紀子先生の基調講演をとおして、モノづくりがソフトウェアのみならず数学・論理学・人工知能・ロボット・脳科学・社会学等の総合的な知見を新しい知の体験・革新的なサービスとして組み立て直すという世界的な大きな潮流を感じ取ってもらえればと思います。</p>
-<p>「組込み系/モノづくり」トラックの一般講演については3本用意しました。</p>
-<p>まず、日本マイクロソフト太田寛 氏【ブログ:<a href="http://blogs.msdn.com/b/hirosho/" target="_blank">デバイスとITの架け橋</a>】と豆蔵 技術コンサルティング事業部による「フィジカル・コンピューティングにおける.Net Micro Frameworkの可能性」です。Micro Frameworkとは、Microsoft Reserch（Microsoft社の研究部門）開発の小規模組込み向けを狙い、Apache License V2.0によるOpen Sourceのオペレーティング・システムです。MMUなしの32bit CPUで256KB ROM, 64KB RAM のメモリ構成で動作し、ARMやX86、SHなど、さまざまなCPUアーキテクチャで実行可能です。組み込みアプリケーション開発がVisual Studio上で手軽に行え、実機でのソースコード・デバッグ、シミュレータ・デバッグ機能も利用可能。バーチャルマシンやライブラリのソースコードも開示されています。今後、メカ、エレキとITを融合したモノづくりのプロトタイピングや実際のプラットフォームとして非常に有用です。最後に紹介するデモでは、.NET Micro Framework と .NET Gadgeteer を用いてセンサーを制御し、センサー情報をクラウド（Azure）に蓄積するM2Mの一例をご紹介します。とくに、センサー情報をクラウドに蓄積する組み込み機器と、クラウドのセンサー情報をきっかけに動作する組み込み機器の2台が、クラウドを経由して協調動作するところにクラウドとフィジカルコンピューティングの融合する未来を感じ取っていただければと思います。</p>
-<p>2つめのセッションは、<a href="http://www.intel.co.jp/content/www/jp/ja/homepage.html" target="_blank">インテル株式会社</a>ソフトウェア＆サービス事業部ソフトウェア開発製品部テクニカル・コンサルティング・エンジニアの林 侃(はやし かん)氏による「IA搭載組込み機器向けソフトウェア開発製品のご紹介」です。PCやサーバーだけでなく、様々な組み込みシステムにおいてもインテルのアーキテクチャーは採用されています。性能要件によっては、ソフトウェア開発においてプロセッサーの性能を引き出し、搭載される複数のコアを最大限活用する必要があります。本セッションでは、IA搭載の組み込みシステムのために役に立つインテルのソフトウェア開発製品をご紹介します。</p>
-<p>3つめのセッションは、<a href="http://mobiquitous.com/" target="_blank">はこだて未来大学</a>の塚田浩二 準教授による「生活家電インターフェースの新潮流（仮）」です。栗原一貴氏との共同研究「SpeechJammer」がイグノーベル賞（Acostics Prize)を受賞したことでも有名です。食事を「奏でる」フォーク: EaTheremin(イーテルミン）や身の回りにある様々な日用品に小型のセンサやコンピュータを搭載し，情報技術で「拡張」された日用品を用いて生活をさりげなく支援するシステム「日用品インタフェース」を提案・開発されています。今回もあっと驚く斬新なアイデアで、日本のモノづくりに新しい風をもたらしてくれる研究をご紹介いただきます。</p>
-<p>そして、さいごのビアパーティにもぜひ参加していただいて、スピーカーも含めた参加者のみなさんと交流し、みんなで「あたらしい日本のモノづくりの未来」を考え、開発現場に夢を持ち帰りましょう！</p>
-<div>
- &nbsp;
-</div>
-<blockquote> 
- <div>
-  ●開催概要
+<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>VMware vCenterを管理するAWS Management Portal</h3><p><a target="_blank" href="http://www.infoq.com/news/2014/06/aws-vcenter-plugin"><em>原文(投稿日：2014/06/03)へのリンク</em></a></p>
+<div class="article_page_left news_container text_content_container"> 
+ <div class="text_info"> 
+  <p>Amazon Web Services (AWS)が<a href="https://aws.amazon.com/blogs/aws/aws-management-portal-for-vcenter/">VMware vCenter用のManagement Portalプラグイン</a>を発表した。パブリッククラウドであるEC2インスタンスとプライベートクラウドのVMwareインスタンスを，同一の管理コンソールから管理できる。VMwareユーザのプライベート環境をAmazonのパブリックサービスに拡張して，ハイブリッドクラウドを容易に構築可能にすることを目的としたプラグインだ。</p> 
+  <p>AWSプラグインによるハイブリッドクラウドの構築は，VMware自身が2013年8月にローンチした<a href="http://www.vmware.com/products/vcloud-hybrid-service">vCHS(vCloud Hybrid Service)</a>と競合する。現在のvCHSは，利用する処理能力分の前払いが必要な，リザーブドインスタンス価格モデルでのみ使用可能だ。先日の<a href="http://www.reddit.com/r/IAmA/comments/25ys3b/we_are_the_hybrid_cloud_team_at_vmware_and_are/">vCHSチームによるReddit AMA(Ask Me Anything)</a>でも，オンデマンド料金に関する話題がもっとも多かった。2014年第２四半期には従量制サービスの提供が予定されている。</p> 
+  <p>VMwareは自身のクラウドオーケストレーションを以前から用意している。2012年のDynamicOpsの買収以降は，Amazonのサービスとの相互運用機能も含まれている。その後，ブランド名がvCAC(vCloud Automation Center)に変更され，さまざまなタイプの仮想インフラストラクチャやプライベートクラウド，パブリッククラウドに対応した。VMware米国CTOのChris Wolf氏は，攻撃的なブログ記事 &quot;<a href="http://cto.vmware.com/dont-be-fooled/">Don’t Be Fooled By Import Tools Disguised as Hybrid Cloud Management</a>&quot; の中で，vCenterのAWSプラグインよりvCACのようなスイートの方が，より多くの抽象化効果を得ることができると主張している。しかしながら，vCenterとvCACという２製品の間にある階層の差は，VMwareのカスタマベースに技術レベルの異なる層が存在することを示している。Amazonはそのローエンドを攻撃対象に選択したのだ。</p> 
+  <p>プラグインの機能のひとつであるイメージインポートは，Amazonにある<a href="http://aws.amazon.com/ec2/vm-import/">VMインポート</a>機能の上位機能として，VMwareなど一般的な仮想インフラストラクチャのファイル形式をサポートする。vCenterが統合されれば，企業レベルのオペレーティングシステムのイメージを，ポイント＆クリック操作でAWSにインポート可能になるはずだ。インスタンスの基本的なライフサイクル管理 - 開始，停止，再起動にも対応する。</p> 
+  <p>このプラグインは，AmazonのVPC(Virtual Private Cloud)インスタンスのみで動作する。EC2クラッシクはサポート対象外である。これはVPCをデフォルトとする最近の施策に従ったものだ。AmazonがIPsecあるいは<a href="http://aws.amazon.com/ec2/vm-import/">Direct Connect</a>接続を提供している方法を考えれば，企業がVPCを選択するという前提に立つのは合理的だと言える。VPCやサブネット，関連するセキュリティグループのコンフィギュレーションも，プラグインによって容易になる。ただしIPsec接続(あるいはDirect Connect)の設定機能は提供されていない。そのため，EC2にデプロイされたインスタンスがVMあるいは企業内の他のサービスに接続する必要のある場合には，帯域外のアクティビティが発生する可能性がある。</p> 
+  <p>ロールベースのアクセス管理も提供されるので，AWS内で誰が何をすることができるのかという管理や制御もvCenterから可能になる。プラグインは現在，利用企業毎にひとつのIDプロバイダ(ディレクトリ)，単一のAWSアカウントでの利用に制限されている。IDはプラグインを<a href="http://docs.aws.amazon.com/amp/latest/userguide/setting-up.html">インストールする過程</a>で，エンタープライズディレクトリとAWS <a href="http://aws.amazon.com/iam/">IAM(Identity and Access Management)</a>内に作成しておく必要がある。SSHキーのペアもプラグイン内で管理可能だ。ただしAWSメタデータ内のキーペアと，それを使用するインポートしたイメージとの関連性について，プラグインの資料には説明がない(VMインポートの資料で<a href="http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/PreparingYourVirtualMachine.html">部分的にふれている</a>のみだ)。</p> 
+  <p>Amazonはプラグインそのものを無償で配布して，AWSの使用料を通常のレートで課金している。市場で提供されている，より洗練されたクラウドオーケストレーションツールの一部が備えているような，課金管理や予測機能などはまったく提供されない。</p> 
  </div> 
- <div>
-  &nbsp;
- </div> 
- <div>
-  開催日時：2014年4月30日(水) 10:00-19:00 (19:00～ ビアパーティあり)
- </div> 
- <div>
-  &nbsp;
- </div> 
- <div>
-  会　　　場：アルカディア市ヶ谷
- </div> 
- <div>
-  &nbsp;
- </div> 
- <div>
-  公式サイト：http://qcontokyo.com/
- </div> 
-</blockquote>
-<div>
- &nbsp;
-</div>
-<p>&nbsp;</p><br><br><br><br><br><br></body></html>
+</div><br><br><br><br><br><br></body></html>

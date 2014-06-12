@@ -2,40 +2,52 @@
  <head></head> 
  <body>
   <div>
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/17.c">Aperfei&ccedil;oando o desenvolvimento de produtos com Flow Thinking</a>Um estudo de caso sobre a obten&ccedil;&atilde;o de apoio ao flow thinking usando um modelo mental e met&aacute;foras, apresentado na confer&ecirc;ncia Lean Kanban Central Europe. O InfoQ entrevistou Hakan Forss e Erik Schon sobre sua jornada dos m&eacute;todos e ferramentas aos princ&iacute;pios e forma de pensar e como usam a gest&atilde;o visual ao implementar o pensamento de fluxo para melhorar o desenvolvimento de produtos na Ericsson.
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/21.c">A Apple anuncia o seu novo iOS 8 SDK e novas ferramentas de desenvolvimento</a>A Apple anunciou seu novo iOS 8 SDK e ferramentas de desenvolvimento na confer&ecirc;ncia WWDC de 2014. O novo software inclui mais de 4000 novas API's, incluindo novos pacotes como o HelthKit, HomeKit, CloudKit e melhorias relacionadas com jogos. Tamb&eacute;m foi anunciado pela Apple a nova linguagem com o objetivo de ser a sucessora do Objective-C.
   </div>
   <div>
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/16.c">Java ME 8: Liberada a vers&atilde;o final</a>Terrence Barr, diretor de produtos da Oracle, anunciou o lan&ccedil;amento do Java ME 8, agora ainda mais alinhando com o Java SE 8 e a Internet das Coisas.
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/20.c">A armadilha dos frameworks</a>Robert Martin (Uncle Bob), autor de Clean Code (c&oacute;digo limpo), faz uma an&aacute;lise sobre os riscos envolvidos na utiliza&ccedil;&atilde;o de frameworks de desenvolvimento. Para Martin, grande parte dos programadores acoplam cedo demais seus sistemas ao c&oacute;digo de frameworks, afetando negativamente o design das aplica&ccedil;&otilde;es.
   </div>
   <div>
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/15.c">Princ&iacute;pios de design orientado a objetos e programa&ccedil;&atilde;o funcional</a>Com opini&otilde;es independentes, Richard Warburton em uma apresenta&ccedil;&atilde;o e Mark Seemann em uma publica&ccedil;&atilde;o em seu blog falam sobre orienta&ccedil;&atilde;o a objetos e princ&iacute;pios de design SOLID a partir de uma perspectiva funcional.
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/19.c">Swift: a nova linguagem da Apple para iOS e OS X</a>Na confer&ecirc;ncia WWDC 2014, a Apple anunciou uma vers&atilde;o inicial de sua nova linguagem de programa&ccedil;&atilde;o, Swift, prevista para lan&ccedil;amento com o iOS 8 e o OSX Yosemite. &Eacute; uma linguagem de alto n&iacute;vel e que &eacute; compilada pela LLVM para gerar c&oacute;digo execut&aacute;vel de alto desempenho para ambas as plataformas OSX e iOS.
   </div>
   <div>
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/14.c">Especifica&ccedil;&atilde;o JCACHE finalizada</a>Ap&oacute;s treze anos de evolu&ccedil;&atilde;o e desenvolvimento, a JSR-107 da especifica&ccedil;&atilde;o de JCACHE foi finalizada.
-  </div>
-  <div>
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/13.c">Dropbox anuncia o Pyston: uma nova implementa&ccedil;&atilde;o Python baseada em compila&ccedil;&atilde;o JIT</a>A Dropbox anunciou recentemente em seu blog t&eacute;cnico que est&aacute; desenvolvendo o Pyston, uma nova implementa&ccedil;&atilde;o em c&oacute;digo-aberto da linguagem Python. O objetivo do Pyston &eacute; ser uma implementa&ccedil;&atilde;o de alta performance e ajudar a empresa a atingir suas metas de desempenho imposs&iacute;veis de alcan&ccedil;ar com o Python.
-  </div>
-  <div>
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/12.c">QCon Rio: inscri&ccedil;&otilde;es abertas, 3 keynotes internacionais e 18 palestrantes confirmados</a>Ap&oacute;s sucesso em 5 edi&ccedil;&otilde;es em S&atilde;o Paulo, o maior evento independente para desenvolvedores e arquitetos ganha sua primeira edi&ccedil;&atilde;o no Rio de Janeiro. O QCon Rio 2014 acontece de 23 a 25 de setembro e contar&aacute; com engenheiros de empresas como Red Hat, Amazon, Globo.com, Twitter e Zendesk, com 3 keynotes internacionais confirmados. Inscreva-se at&eacute; 3 de junho e aproveite descontos de mais de 40%.
-  </div>
-  <div>
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/11.c">RightScale: Top Clouds Privados e P&uacute;blicos</a>RigthScale, um provedor de servi&ccedil;os para diversos clouds, publicou os resultados da State of Cloud 2014, sua pesquisa anual realizada em fevereiro deste ano. Este artigo destaca alguns dos resultados mais significativos.
-  </div>
-  <div>
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/10.c">Lan&ccedil;amento do Java 8: Perguntas e Respostas</a>O Java 8 &eacute; uma das atualiza&ccedil;&otilde;es de linguagem de programa&ccedil;&atilde;o mais esperadas em muitos anos. O lan&ccedil;amento cont&eacute;m a API de datas, a API de stream e as lambdas. Inclui a remo&ccedil;&atilde;o do permgen e termina com um bom conjunto de melhorias. Para aprender mais sobre este lan&ccedil;amento, sentamos com Georges Saab, vice-presidente de desenvolvimento de software da Java Platform Group na Oracle.
-  </div>
-  <div>
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/9.c">NetBeans 8: Suporte ao Java 8, HTML5 e muito mais</a>O NetBeans 8 cont&ecirc;m uma s&eacute;rie de melhorias para o Java 8 e Java EE, bem como o suporte ao HTML5.
-  </div>
-  <div>
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/8.c">Linguagem Funcional para Modelagem de Dom&iacute;nio (DDD)</a>O uso de uma linguagem funcional, ao inv&eacute;s de diagramas UML, pode ser usado como um m&eacute;todo simples o suficiente para defini&ccedil;&atilde;o e discu&ccedil;&atilde;o de modelos de dom&iacute;nio (DDD). Esta foi uma declara&ccedil;&atilde;o dada por Scott Wlaschin em uma conversa recente sobre modelagem de dom&iacute;nio e programa&ccedil;&atilde;o funcional.
-  </div>
-  <div>
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/7.c">Gerencie as d&iacute;vidas do seu software</a>Existem diferentes tipos de d&iacute;vida de software. A d&iacute;vida t&eacute;cnica &eacute; a mais conhecida, mas n&atilde;o a &uacute;nica. Existem tamb&eacute;m as d&iacute;vidas de compet&ecirc;ncia e de qualidade. As d&iacute;vidas de software podem causar o aumento dos custos de manuten&ccedil;&atilde;o e tamb&eacute;m desencorajar desenvolvedores. Felizmente existem solu&ccedil;&otilde;es para gerenci&aacute;-las.
-  </div>
-  <div>
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/6.c">Microsoft abre Windows para o Universal App: um app para todas as plataformas</a>A Microsoft apresentou formalmente o Windows universal apps, permitindo que desenvolvedores escrevam um simples aplicativo que poder&aacute; ser executado em todos os dispositivos com base no Windows: celulares, tablets e PCs. Este movimento unifica a plataforma de forma significativa.
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/18.c">Modern C++ e o Visual Studio</a>O suporte ao Modern C++ continua a ser uma &aacute;rea de foco para Microsoft. Na confer&ecirc;ncia Build, Herb Sutter deu uma palestra fornecendo uma atualiza&ccedil;&atilde;o sobre os esfor&ccedil;os atuais, o n&iacute;vel de suporte ao CPP que est&aacute; sendo adicionado &agrave; pr&oacute;xima vers&atilde;o do Visual Studio, e o que est&aacute; guardado para o futuro.
+  </div> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/17.c">Aperfei&ccedil;oando o desenvolvimento de produtos com Flow Thinking</a>Um estudo de caso sobre a obten&ccedil;&atilde;o de apoio ao flow thinking usando um modelo mental e met&aacute;foras, apresentado na confer&ecirc;ncia Lean Kanban Central Europe. O InfoQ entrevistou Hakan Forss e Erik Schon sobre sua jornada dos m&eacute;todos e ferramentas aos princ&iacute;pios e forma de pensar e como usam a gest&atilde;o visual ao implementar o pensamento de fluxo para melhorar o desenvolvimento de produtos na Ericsson. 
+  </div> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/16.c">Java ME 8: Liberada a vers&atilde;o final</a>Terrence Barr, diretor de produtos da Oracle, anunciou o lan&ccedil;amento do Java ME 8, agora ainda mais alinhando com o Java SE 8 e a Internet das Coisas. 
+  </div> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/15.c">Princ&iacute;pios de design orientado a objetos e programa&ccedil;&atilde;o funcional</a>Com opini&otilde;es independentes, Richard Warburton em uma apresenta&ccedil;&atilde;o e Mark Seemann em uma publica&ccedil;&atilde;o em seu blog falam sobre orienta&ccedil;&atilde;o a objetos e princ&iacute;pios de design SOLID a partir de uma perspectiva funcional. 
+  </div> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/14.c">Especifica&ccedil;&atilde;o JCACHE finalizada</a>Ap&oacute;s treze anos de evolu&ccedil;&atilde;o e desenvolvimento, a JSR-107 da especifica&ccedil;&atilde;o de JCACHE foi finalizada. 
+  </div> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/13.c">Dropbox anuncia o Pyston: uma nova implementa&ccedil;&atilde;o Python baseada em compila&ccedil;&atilde;o JIT</a>A Dropbox anunciou recentemente em seu blog t&eacute;cnico que est&aacute; desenvolvendo o Pyston, uma nova implementa&ccedil;&atilde;o em c&oacute;digo-aberto da linguagem Python. O objetivo do Pyston &eacute; ser uma implementa&ccedil;&atilde;o de alta performance e ajudar a empresa a atingir suas metas de desempenho imposs&iacute;veis de alcan&ccedil;ar com o Python. 
+  </div> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/12.c">QCon Rio: inscri&ccedil;&otilde;es abertas, 3 keynotes internacionais e 18 palestrantes confirmados</a>Ap&oacute;s sucesso em 5 edi&ccedil;&otilde;es em S&atilde;o Paulo, o maior evento independente para desenvolvedores e arquitetos ganha sua primeira edi&ccedil;&atilde;o no Rio de Janeiro. O QCon Rio 2014 acontece de 23 a 25 de setembro e contar&aacute; com engenheiros de empresas como Red Hat, Amazon, Globo.com, Twitter e Zendesk, com 3 keynotes internacionais confirmados. Inscreva-se at&eacute; 3 de junho e aproveite descontos de mais de 40%. 
+  </div> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/11.c">RightScale: Top Clouds Privados e P&uacute;blicos</a>RigthScale, um provedor de servi&ccedil;os para diversos clouds, publicou os resultados da State of Cloud 2014, sua pesquisa anual realizada em fevereiro deste ano. Este artigo destaca alguns dos resultados mais significativos. 
+  </div> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/10.c">Lan&ccedil;amento do Java 8: Perguntas e Respostas</a>O Java 8 &eacute; uma das atualiza&ccedil;&otilde;es de linguagem de programa&ccedil;&atilde;o mais esperadas em muitos anos. O lan&ccedil;amento cont&eacute;m a API de datas, a API de stream e as lambdas. Inclui a remo&ccedil;&atilde;o do permgen e termina com um bom conjunto de melhorias. Para aprender mais sobre este lan&ccedil;amento, sentamos com Georges Saab, vice-presidente de desenvolvimento de software da Java Platform Group na Oracle. 
+  </div> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/9.c">NetBeans 8: Suporte ao Java 8, HTML5 e muito mais</a>O NetBeans 8 cont&ecirc;m uma s&eacute;rie de melhorias para o Java 8 e Java EE, bem como o suporte ao HTML5. 
+  </div> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/8.c">Linguagem Funcional para Modelagem de Dom&iacute;nio (DDD)</a>O uso de uma linguagem funcional, ao inv&eacute;s de diagramas UML, pode ser usado como um m&eacute;todo simples o suficiente para defini&ccedil;&atilde;o e discu&ccedil;&atilde;o de modelos de dom&iacute;nio (DDD). Esta foi uma declara&ccedil;&atilde;o dada por Scott Wlaschin em uma conversa recente sobre modelagem de dom&iacute;nio e programa&ccedil;&atilde;o funcional. 
+  </div> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/7.c">Gerencie as d&iacute;vidas do seu software</a>Existem diferentes tipos de d&iacute;vida de software. A d&iacute;vida t&eacute;cnica &eacute; a mais conhecida, mas n&atilde;o a &uacute;nica. Existem tamb&eacute;m as d&iacute;vidas de compet&ecirc;ncia e de qualidade. As d&iacute;vidas de software podem causar o aumento dos custos de manuten&ccedil;&atilde;o e tamb&eacute;m desencorajar desenvolvedores. Felizmente existem solu&ccedil;&otilde;es para gerenci&aacute;-las. 
+  </div> 
+  <div> 
+   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/6.c">Microsoft abre Windows para o Universal App: um app para todas as plataformas</a>A Microsoft apresentou formalmente o Windows universal apps, permitindo que desenvolvedores escrevam um simples aplicativo que poder&aacute; ser executado em todos os dispositivos com base no Windows: celulares, tablets e PCs. Este movimento unifica a plataforma de forma significativa. 
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/5.c">Solu&ccedil;&otilde;es Hadoop Big Data, e o estado das coisas no Q1/2014 da Forrest</a>De acordo com um novo relat&oacute;rio da Forrest, o momento do Hadoop &eacute; de crescimento cont&iacute;nuo sem paralisa&ccedil;&otilde;es. Sua utiliza&ccedil;&atilde;o nas empresas est&aacute; crescendo continuamente devido &agrave; sua capacidade de oferecer &agrave;s empresas novas formas de armazenar, processar, analisar e compartilhar Big Data. O relat&oacute;rio analisa os fornecedores Hadoop procurando classific&aacute;-los. 
@@ -138,18 +150,6 @@
   </div> 
   <div> 
    <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/24.c">Cordova 3.3.0: Publicando Aplica&ccedil;&otilde;es Chrome no Android e iOS</a>Desenvolvedores podem agora publicar aplica&ccedil;&otilde;es Chrome no Android e iOS com o Apache Cordova 3.3.0. 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/23.c">XDK: A Intel alavancando o desenvolvimento multi plataforma com HTML5</a>Em dezembro de 2013, a Intel anunciou seus planos de lan&ccedil;ar o Intel XDK NEW para o mercado atrav&eacute;s da vers&atilde;o oficial do Intel XDK e convidando todos os desenvolvedores para migrarem da vers&atilde;o anterior at&eacute; o fim de Fevereiro de 2014. Vamos ver o que &eacute; o Intel XDK e as novidades da &uacute;ltima vers&atilde;o. 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/22.c">Adicionando prop&oacute;sito e hip&oacute;teses &agrave;s retrospectivas &aacute;geis</a>Fazer retrospectivas com frequ&ecirc;ncia contribui para que as equipes aprendam a se aperfei&ccedil;oar. Voc&ecirc; pode tornar as retrospectivas mais efetivas adicionando prop&oacute;sito e validando se as a&ccedil;&otilde;es definidas nelas est&atilde;o realmente gerando melhorias com o uso de hip&oacute;teses. 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/21.c">Lan&ccedil;ada vers&atilde;o 2.0 do Slick, biblioteca de mapeamento funcional-relacional para Scala</a>Foi lan&ccedil;ada recentemente a vers&atilde;o 2.0 do Slick, biblioteca em Scala para mapeamento funcional-relacional - Functional-Relacional Mapping, FRM, (correspondente ao mapeamento objeto-relacional nas linguagens orientadas &agrave; objetos). A nova vers&atilde;o do Slick traz um gerador de c&oacute;digo para engenharia reversa de schemas e uma nova arquitetura para o driver que suporta bancos de dados n&atilde;o SQL. 
-  </div> 
-  <div> 
-   <a href="https://raw.github.com/TomJerryA/Test/master/InfoQ/20.c">Software entregue vs necessidade dos usu&aacute;rios</a>Pela segunda vez em dois anos, a Avon volta atr&aacute;s e cancela um projeto milion&aacute;rio que prometia entregar facilidades e avan&ccedil;os para suas opera&ccedil;&otilde;es. 
-  </div>             
+  </div>     
  </body>
 </html>

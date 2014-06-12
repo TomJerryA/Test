@@ -1,33 +1,83 @@
-<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>Java 8会干掉Scala吗？</h3><p>最令人期待的Java 8已于2014年3月18日<a href="http://www.oracle.com/technetwork/java/javase/8train-relnotes-latest-2153846.html">发布</a>，该版本包含很多令人兴奋的新特性，被认为是自Java 5发布以来对Java做出的最大改变。对于开发者而言，最值得注意的特性包括：<a href="http://en.wikipedia.org/wiki/Lambda_%28programming%29">Lambda表达式/闭包</a>、<a href="http://docs.oracle.com/javase/tutorial/java/IandI/defaultmethods.html">接口支持静态方法</a>、<a href="http://docs.oracle.com/javase/tutorial/java/IandI/defaultmethods.html">默认方法</a>、函数式接口、<a href="http://docs.oracle.com/javase/8/docs/api/index.html?java/util/stream/package-summary.html">java.util.stream</a>、改善了泛型中对类型推理的支持、<a href="http://docs.oracle.com/javase/8/docs/api/index.html?java/time/LocalDate.html">java.time</a>以及<a href="http://openjdk.java.net/projects/nashorn/">Nashorn</a> JavaScript引擎。另外，新版本还<a href="http://java.dzone.com/articles/java-8-permgen-metaspace">移除了PermGen</a>。 </p>
-<p>而被一部分人认为是Java替代者的Scala则是一门有趣的语言，它一方面吸收并继承了多种语言中的优秀特性，另一方面也没有抛弃Java这个强大的平台，它可以运行在 Java 虚拟机之上，能够轻松地与Java互联互通。与Java不同的是，Scala既支持面向对象的特性，又支持函数式编程，它的风格和特性吸引了大量的开发人员，那么新版本的Java能否借助大量的特性“创新”干掉Scala呢？系统架构师、开源布道者Ahmed Soliman最近在自己的博客上发表了一篇博文表达了自己的看法，同时这篇文章在<a href="http://www.linkedin.com/groups/Will-Java-8-Kill-Scala-746917.S.245445785">LinkedIn</a>和<a href="https://news.ycombinator.com/item?id=7478367">Hacker News</a>上也引起了激烈的讨论，下面是笔者摘录的一些观点。 </p>
-<p>Ahmed Soliman认为： </p>
-<blockquote> 
- <p>Java 8新引入的Lambda表达式并不像Scala中的Lambda那么强大，它仅仅触及了Lambda的皮毛。例如，并不是所有函数都可以作为一等元素（first-class）传入其他函数中，函数必须被显式地定义为Lambda表达式或者使用函数式接口。在集合操作方面，借助于新的java.util.stream包，开发人员可以在一些Java集合上编写函数式风格的操作，这和Scala中的方法类似，但是后者更简洁、类型更精确。Java和Scala之间依然有很大的差距，Java并不会变成一门函数式语言，它的目标是企业，同时要保证稳固的向后兼容性；而Scala的目标则是多核软件开发。Java 8向前迈出了伟大的一步，这一点让很多人都非常兴奋，甚至对于Scala程序员也是如此，但是它的目标并不是“干掉”Scala，事实上，这两者应该是一种互补的关系。</p>
-</blockquote>
-<p>来自于Reply 的<a href="http://www.linkedin.com/groups?viewMemberFeed=&amp;gid=746917&amp;memberID=15366741">Stefano S</a>回复说：<b></b> </p>
-<blockquote> 
- <p>Scala在设计上就是函数式，而Java则是被扩展成函数式，在函数式的纯度上这两门语言就不一样，我认为Java 8是否能够取得成功很大程度上取决于JDK的实现情况。如果JDK 8稳固且凝聚性高，那么对Scala而言必然会造成巨大的冲击。如果仅仅需要学习一些新的语法就能利用和其他语言相似的语法及特性，那放弃自己熟悉的语言去学习一门新语言的理由是什么呢？</p>
-</blockquote>
-<p>openForce信息技术的拥有者<a href="http://www.linkedin.com/groups?viewMemberFeed=&amp;gid=746917&amp;memberID=9927146">GesmbH</a>评论说： </p>
-<blockquote> 
- <p>Java不可能替代Scala。首先Scala开发非常活跃，设计清晰，目标明确。JDK的开发则比较停滞。很显然，对于Oracle而言按时交付一个新的JDK好像有一些麻烦。所以，我个人对JDK 8在2014年能否包含之前承诺的所有特性持怀疑态度。而就Scala而言，如果一切进展顺利，那么我们可以在今年见到Scala 2.11，该版本会解决很多令人讨厌的问题。其次，JDK类库在设计上就有一些缺陷，要成为一门真正的函数式语言必须要解决这些缺陷，例如集合框架。再就是Java相对于很多其他的语言太过于啰嗦，我使用Java开发了12多年的企业应用，而使用Scala才两年，但是我并不想回到过去。当然Java生态系统非常优秀，JVM也非常伟大，但是Java作为一门语言已经有点过时了。</p>
-</blockquote>
-<p>数据和软件工程师<a href="http://www.linkedin.com/groups?viewMemberFeed=&amp;gid=746917&amp;memberID=8991756">Adam R</a>评论到： </p>
-<blockquote> 
- <p>我认为Java 8的函数式功能太少，来得也太迟了。虽然这确实是一个改进，但是距离Scala依然很远。那些真正在乎这些功能的开发人员早就转向了其他的函数式语言。Java 8确实会为Java开发人员带来函数式编程的意识，但是一部分开发人员期望获得更多的特性，而另一部分则根本不在乎。</p>
-</blockquote>
-<p>来自于Cabot Research的软件工程师<a href="http://www.linkedin.com/groups?viewMemberFeed=&amp;gid=746917&amp;memberID=1191993">Brian</a> T认为： </p>
-<blockquote> 
- <p>考虑到Java 7给我们带来的灾难，同时鉴于Java 8仅实现了闭包的一部分而其余部分将会在Java 9中实现，我认为Scala根本没必要担心。就是在昨天我们不得不将一台新机器从Java 7回退到Java 6，原因是一些Eclipse插件无法在新版本上工作。Java 8可能会是少数人使用（相对而言）的一门优秀语言。</p>
-</blockquote>
-<p>Eranation在Hacker News上评论说： </p>
-<blockquote> 
- <p>作为一个Scala和Java开发者，我甚至没有一点兴趣在下一个项目中放弃Scala转向Java 8。如果只能选择Java，那么最好是Java 8，但是如果有其他选择，我想除了Lambda之外Scala还有很多吸引我的地方。 </p>
- <p>所有的东西都是表达式，它支持推导式（特别是有多种可能的情况，使用漂亮的语法解决死亡回调三角）、隐式转换、Case类、模式匹配、元组、字符串插入、多行字符串、默认参数、命名参数、类型推断、内置依赖注入，同时所有元素的equals和hashcode方法都已经被正确地实现（可以使用元组甚至是数组作为map的键）。 </p>
- <p>我认为Scala依然会呆在这里，至少对于Scala开发人员来说是这样的，我非常确定没有任何一个Scala开发人员会说：“Java 8支持Lambda表达式了？非常好，再见Scala！”。我会考虑Java 8只有两个原因，就是编译时间和二进制兼容性。如果忽略掉这两个原因，我只能说Java 8所做的这一切恰好证明了Scala正走在正确的路上。 </p>
- <p>我确实希望Scala能够提升它与Java 8的互操作性，例如用同样的方法支持函数式接口，向Java 8集合中添加新的隐式转换等。如果有一门语言具备Scala的所有功能，同时做的比Scala更好，那么我会毫不犹豫的使用它。但是到目前为止我还没发现有这样一门语言（当然，我需要的是基于JVM的语言，同时最好是一门静态类型的语言，所以选择余地并不是很广）。Java 8有非常大的提升，我很高兴Java开发人员能够使用这些特性，但是这并不是让大家考虑从Scala转向Java的原因。</p>
-</blockquote>
-<p>本文只摘录了<a href="http://www.linkedin.com/groups/Will-Java-8-Kill-Scala-746917.S.245445785">LinkedIn</a>和<a href="https://news.ycombinator.com/item?id=7478367">Hacker News</a>上面有关于此讨论的部分观点，如果你想了解更多的信息，可以自己去查看详细内容。</p>
-<hr />
-<p>感谢<a href="http://www.infoq.com/cn/author/吴海兴">吴海兴</a>对本文的审校。</p>
-<p>给InfoQ中文站投稿或者参与内容翻译工作，请邮件至<a href="mailto:editors@cn.infoq.com">editors@cn.infoq.com</a>。也欢迎大家通过新浪微博（<a href="http://www.weibo.com/infoqchina">@InfoQ</a>）或者腾讯微博（<a href="http://t.qq.com/infoqchina">@InfoQ</a>）关注我们，并与我们的编辑和其他读者朋友交流。</p><br><br><br><br><br><br></body></html>
+<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body><h3>QCon上海2014大会启动筹备，15个专题征集演讲嘉宾</h3><p><a href="http://www.qconshanghai.com/" target="_blank">QCon</a>是由InfoQ主办的全球顶级技术盛会，每年在伦敦、北京、东京、纽约、圣保罗、上海、旧金山召开。自2007年3月份首次举办以来，已经有包括传统制造、金融、电信、互联网、航空航天等领域的数万名架构师、项目经理、团队领导者和高级开发人员参加过QCon大会。</p>
+<p>自2009年首届中国QCon大会以来，已经有近千名软件研发领域的精英，在国内不同城市的十余场QCon大会中，面向数万名的开发者分享过他们在各个领域的经验。</p>
+<p>2014年10月16-18日，QCon将来到上海光大会展中心国际大酒店。本次组委会针对热点与趋势，革新议程，设置了15个专题，分别是：</p>
+<ul> 
+ <li><b>知名网站案例分析</b>：依然是知名网站背后的技术故事，关注技术演进路上的酸甜苦辣。</li> 
+ <li><b>金融系统架构与设计</b>：面对互联网的来袭，金融领域要变的不仅仅是业务，还有技术架构。</li> 
+ <li><b>反应式编程</b>：基于事件的编程很平常，但是基于事件优雅地编程就不是那么容易了，看看反应式编程这一极客关注的技术能给程序员带来什么新鲜感。</li> 
+ <li><b>自动化运维</b>：尤其是对于中大型网站，运维一直面临非常大的挑战，现在又讲究开发运维一体化，本专题关注自动化运维给团队带来的价值。</li> 
+ <li><b>如何构建工程师文化团队</b>：工程师文化团队有什么特点，具备什么优劣势，如何构建才是良策？工程师文化团队又是如何协作的？</li> 
+ <li><b>扩展性、可用性、高性能</b>：如何设计、构建、运维一个高可用、快速、大规模的系统？</li> 
+ <li><b>Hadoop，超越MapReduce</b>：基于Hadoop技术生态系统，探究系统设计过程中的基础要素和设计考量。</li> 
+ <li><b>真实的云计算应用实践</b>：基于云构建自己的架构，而不仅仅是部署。</li> 
+ <li><b>移动开发中的痛点</b>：探讨移动开发（包括软硬结合）过程中的挑战和解决方案。</li> 
+ <li><b>基于DevOps的真正敏捷交付</b>：通过具体的案例了解持续交付、DevOps等相关流程、技术和实践等。</li> 
+ <li><b>大数据架构</b>：在基于海量数据设计架构时，资深的架构师会作何考量，在保证扩展性的同时又如何让数据价值最大化？</li> 
+ <li><b>不仅仅是Java</b>：深入探究Java开发过程中常见的问题，比如Java垃圾收集，性能调优，Java 8中的Lambdas和流处理等。</li> 
+ <li><b>隐私和安全性</b>：谈安全总是离不开隐私，而隐私又和数据紧密相关，我们如何从技术上解决安全带来的挑战？</li> 
+ <li><b>没有后端：前端第一原则下的Web开发</b>：设想一下如果不考虑后端，只管构建靠谱的应用，会是什么结果？</li> 
+ <li><b>精益创业/创新</b>：创业（包括内部团队创新）之路上他们成功的秘密，所用到的技术和流程，以及痛苦的经验等。</li> 
+</ul>
+<p>现在各个专题向全社会征集演讲嘉宾。以下是征集形式与具体要求。&nbsp;</p>
+<p><strong>演讲议题形式：</strong></p>
+<ul> 
+ <li>演讲时长：45分钟，包括提问环节。</li> 
+ <li>演讲内容标准： 
+  <ul> 
+   <li>观点：申请人演讲的观点是否明确，所阐述的内容是否吸引人，是否有助于听众在知识和经验方面的积累？</li> 
+   <li>实践：QCon演讲内容，均以实践为出发。</li> 
+   <li>深度：演讲内容的深度将直接关系到听众的收获，听众能够从演讲中挖掘出的内容也是组委会看重的，原则上，有深度的演讲稿被采纳的机会更高。</li> 
+   <li>专业声誉：演讲人在所提交演讲涉及的专业领域的成就和从业经验也会作为评审的参考标准。</li> 
+   <li>不要广告：QCon讲台不是厂商宣传的舞台，请不要试图在演讲时做任何形式的广告。</li> 
+   <li>听众所得：听众在演讲分享中可能的收获是组委会最关注的，这也是QCon大会举办的重要意义。</li> 
+  </ul> </li> 
+</ul>
+<p><strong>议题提交指南：</strong></p>
+<p>请按下面规定格式发送申请信息至<a href="mailto:speakers@cn.infoq.com">speakers@cn.infoq.com</a>。</p>
+<ul> 
+ <li>姓名：</li> 
+ <li>手机：</li> 
+ <li>邮箱：</li> 
+ <li>微博/LinkedIn/微信公众号：（如果有）</li> 
+ <li>公司：</li> 
+ <li>部门：</li> 
+ <li>职位：</li> 
+ <li>个人简介：（300字左右）</li> 
+ <li>大头照：（肖像照不小于400x500像素，半身照不小于800x1000像素，尽量不要提供全身照）</li> 
+ <li>演讲经历：</li> 
+ <li>所属专题：</li> 
+ <li>演讲主题：（标注是否已分享过）</li> 
+ <li>主题摘要：（200-300字）</li> 
+ <li>听众受益：（列举几个收益）</li> 
+</ul>
+<p>内容提交请在邮件中直接用文本发送申请信息，除非附带演讲slides/提交大头照，否则请勿发送附件。</p>
+<p>关于个人简介、演讲主题及摘要的范例，可以参见<a href="http://www.qconshanghai.com/" target="_blank">QCon上海网站</a>。</p>
+<p><strong>演讲嘉宾福利：</strong></p>
+<ul> 
+ <li>免费参加所有大会所有课程；</li> 
+ <li>优先享有和国际讲师单独沟通的机会或陪同；</li> 
+ <li>外地讲师由组委会承担差旅；</li> 
+ <li>可免费参与本届QCon特别策划的讲师培训与独享聚会；</li> 
+ <li>组委会将会根据现场听众反馈对优秀讲师予以额外鼓励。</li> 
+</ul>
+<p><strong>注意事项：</strong></p>
+<ul> 
+ <li>在大会议程尚未完全确定之前，可自由提交演讲议题。</li> 
+ <li>若内容合适，但相应专题已无空档，可优先在下届QCon获得演讲机会。</li> 
+ <li>请确保您所提供的个人信息内容准确无误，一旦确认，信息将会刊登在大会官网并印制在会刊中。</li> 
+ <li>请确保您在演讲内容中使用的案例已经获得第三方的认可和允许。我们将不负责由此引起的任何纠纷和问题。</li> 
+ <li>确认的演讲内容将发布在主办单位的有关媒介中，包括会议演讲PPT、现场视频等。此非强制条款，如果不同意，请提前声明。</li> 
+ <li>对于已提交演讲议题的审批结果，我们将在大会开始前一个月通过电子邮件或电话联系的方式通知您。</li> 
+ <li>演讲机会以QCon组委会最终发送的演讲邀请函为准。</li> 
+</ul>
+<p><strong>推荐机制：</strong></p>
+<p>如果在您心目中有非常合适的演讲人选，欢迎向组委会推荐。请在邮件中尽可能详述被推荐人的个人信息与可分享的话题信息至<a href="mailto:speakers@cn.infoq.com">speakers@cn.infoq.com</a>。一旦被推荐者确认成功，推荐人可获得一份InfoQ纪念品。</p>
+<p><strong>如果您在业内鼎鼎大名，想担任演讲嘉宾或者专题的出品人，可以直接发送给我们您的大名/ID/微博等任何可联络信息，我们将即刻与您联系。</strong></p>
+<p><strong>参会信息：</strong></p>
+<p>大会已启动报名。及早注册，可享受更低折扣。报名信息请访问<a href="http://www.qconshanghai.com/" target="_blank">QCon上海</a>页面。</p>
+<p>若您对大会赞助、展示、媒体合作感兴趣，请按如下分类邮箱联系，我们将尽快予以回复：</p>
+<ul> 
+ <li>会务咨询：<a href="mailto:qcon@cn.infoq.com">qcon@cn.infoq.com</a></li> 
+ <li>赞助咨询：<a href="mailto:sponsor@cn.infoq.com">sponsor@cn.infoq.com</a></li> 
+ <li>媒体合作：<a href="mailto:media@cn.infoq.com">media@cn.infoq.com</a></li> 
+</ul><br><br><br><br><br><br></body></html>
